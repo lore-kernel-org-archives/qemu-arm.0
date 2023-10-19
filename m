@@ -1,64 +1,65 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp346068ejb;
-        Thu, 19 Oct 2023 01:04:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHzxfDM3DEye8jstErnonetBvHbEUx3wns2htNVA2AQYoTAHSPT7JS5/ekPxOp7YHolJhV8
-X-Received: by 2002:a05:622a:14c7:b0:417:f85b:5a5a with SMTP id u7-20020a05622a14c700b00417f85b5a5amr1567894qtx.5.1697702647105;
-        Thu, 19 Oct 2023 01:04:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697702647; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp348819ejb;
+        Thu, 19 Oct 2023 01:09:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGSMV28ay0OEUfT9pRZ/g5myCQo9SmtE56bG/WyesifNi1OECF9B9/TVmeN4RN1E5MFODvc
+X-Received: by 2002:a05:6214:1c0f:b0:66d:50a8:2439 with SMTP id u15-20020a0562141c0f00b0066d50a82439mr2102331qvc.23.1697702946434;
+        Thu, 19 Oct 2023 01:09:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697702946; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWgtj0hYpsLTueyGQB+5XPu3/91oJKdEx3+WhDadlvHDTNogAq/HScJmAz82A/xIN6
-         SSF9uU51Q9nBlW9CsDCGVs/SZGcEpjwjKCMI654Lv9Ps9r7Kj/2aasLeCXPFbefxHhSu
-         xol+B0qy4tBDmkTNoQA4iztlkWw5wqIoNAVffGtRZfseN1EPQXf7XsDv3mcHKuZf3FlS
-         q6VpfaQsd6N1CnfinSrNC4RuByRWm4AyPWzE4hz7n1wwV+TOC3fDnRYVbTOcHbg4so6G
-         Cmde83/SEC7pVMVp05V7F7EAjn+quK0Y92uyLopsAm8TxpSx5vHERaYIjPDeSnhMgoHz
-         Q6iQ==
+        b=F+nG+lbLF5rsg8J5Yrsfd6xopYRjXQ9CzYTxiTLf+i1/alwZYbJDQaYSTOHsxWxQgz
+         3r/44yTMfKpLpYVko/ie7yC/rSWNRO3wTXtig+n/v5cP43CzC7bDevs1jLoIVXmtUCCK
+         OY1auMJf6VBvsqmeKrD3W7VL29kHnrxHy8f6SJfSsK822frCLPGJ25B5wiU/xv2pdW6J
+         oVzMHNGRrpAE327SQQOTgJsV8poeFR+fv+WTZth+6fMiDjC1sOsRi8LzvzNBewvakVIC
+         OLjpeC5XNqlvHDluPbNgyBJooo31iR1tP0lNkBLnVLtTED/LCecMMFGdaiOQFhu1fhAU
+         dMCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=T4AqWwiad5P0KfSm5/F6yk4N5Xup2Jk1c9JH5xAhyQ4=;
+        bh=O8nAYJzLRp/3kpS3RTUC/1+Wir/Dx28zy/10b2mdv98=;
         fh=mIJGsCCezl/E0qHOjEsRVAduFTIo6OTQPvroE0vb+p0=;
-        b=Zmpmjgm3vtv386D/WFKg++B5TVkkoTO6ubtb5GXN4WsSikqbhIN6Vl17UAuwjGUwu5
-         nEwVllK+3pWUBM2UPC1maf/tdaDgs/qsD53b1Np7G1v4LgPGeDR7+AoIhxXqAgGomhRj
-         4C/bRkIayqnQBGSiKemTYFnFx7jCll3woY94iqsVLCZ4GHzew89z8j6U5RJgcwnWQTHT
-         j3ahR7NRnoIafVRcVq+9+mqo6LWI6G2EnPOZj700vThrz+pyZ5TaVFX01dxCFOd+qLc0
-         O37bsyyy2IhDzaYJsP6tbaSEv+1guGGI4j8D1HnMfy6TxLjda5l7bv88rm4E+hDW6hjZ
-         Yf4Q==
+        b=hisOfd272GEt9gVwK7bwvVmcdon9VbiX/FTspf98jamKIT7Vnty5ON8/WeYhYjNaKS
+         HiunyWnMkqsAB4eMn5d8m/qls3ySZjRuiKJQ2sLx14CKZXA5EapEzgmUlQW05C7M92qf
+         kS/9WZ77k/UV7egsK6QI3IYAUHo9lX6TOpAL+Gg3AJx1QBzpP+bSAQkgy/yZrBDXlJEW
+         GQ92W8UJE5fZmSJmvPyOM+fVThzuCdwx9FG5bQOrAm5LE/FwuS2BAr6ehGamMdKT3H5J
+         APjwuUk3FN0gIILkFJRfy6VTBXGCawmM6IWSM09R+vJ2zfXecXz8Nk5vLrOAzsvW+OpH
+         8wfg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p21-20020a05622a00d500b004179ca2f158si1172174qtw.355.2023.10.19.01.04.06
+        by mx.google.com with ESMTPS id oj11-20020a056214440b00b0065b2e14c1c3si1187266qvb.463.2023.10.19.01.09.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 01:04:07 -0700 (PDT)
+        Thu, 19 Oct 2023 01:09:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtO0S-000468-95; Thu, 19 Oct 2023 04:03:48 -0400
+	id 1qtO5W-0002jR-0a; Thu, 19 Oct 2023 04:09:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=PA0m=GB=kaod.org=clg@ozlabs.org>)
- id 1qtO0Q-00045U-Br; Thu, 19 Oct 2023 04:03:46 -0400
+ id 1qtO5Q-0002hu-G0; Thu, 19 Oct 2023 04:08:57 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=PA0m=GB=kaod.org=clg@ozlabs.org>)
- id 1qtO0N-0006xa-V9; Thu, 19 Oct 2023 04:03:46 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SB0bK0zgkz4xdy;
- Thu, 19 Oct 2023 19:03:41 +1100 (AEDT)
+ id 1qtO5N-0007lS-PH; Thu, 19 Oct 2023 04:08:56 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SB0j948xkz4xdm;
+ Thu, 19 Oct 2023 19:08:45 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SB0bF52sBz4x80;
- Thu, 19 Oct 2023 19:03:37 +1100 (AEDT)
-Message-ID: <99d8e47e-ef22-4f0b-bae5-750a2d1b6970@kaod.org>
-Date: Thu, 19 Oct 2023 10:03:35 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SB0j61tVXz4xdV;
+ Thu, 19 Oct 2023 19:08:42 +1100 (AEDT)
+Message-ID: <78725dd0-53c3-4b6f-a632-2fed0d383b79@kaod.org>
+Date: Thu, 19 Oct 2023 10:08:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 01/10] hw/fsi: Introduce IBM's Local bus
@@ -96,7 +97,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ulLuNGDpdyVh
+X-TUID: ZfYrMWxRKb84
 
 On 10/11/23 17:13, Ninad Palsule wrote:
 > This is a part of patchset where IBM's Flexible Service Interface is
@@ -203,6 +204,14 @@ On 10/11/23 17:13, Ninad Palsule wrote:
 > +#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), BE_BIT(b))
 > +
 >   #endif
+
+Oh I forgot. please remove this change above.
+
+Thanks,
+
+C.
+
+
 > diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
 > new file mode 100644
 > index 0000000000..d7117d1299
@@ -229,22 +238,10 @@ On 10/11/23 17:13, Ninad Palsule wrote:
 > +
 > +    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_FSI_LBUS,
 > +                       FSI_LBUS_MEM_REGION_SIZE - FSI_LBUSDEV_IOMEM_SIZE);
-
-the region init should be done in an init handler (this to avoid the realize
-of the bus)
-
 > +
 > +    QLIST_FOREACH(node, &lbus->devices, next) {
 > +        memory_region_add_subregion(&lbus->mr, node->ldev->address,
 > +                                    &node->ldev->iomem);
-
-This is redudant with what is done in cfam_realize() and please
-remove this list, also redudant with the bus list.
-
-Thanks,
-
-C.
-
 > +    }
 > +}
 > +

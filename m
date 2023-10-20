@@ -1,111 +1,144 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1065859ejb;
-        Fri, 20 Oct 2023 01:34:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH9I4Fl7BcFhDA9HMxWy0ziU/QBL5qN+Wj3JUSfL8nNu8LemgRkWPP1E33ijcAiIKrLiDvn
-X-Received: by 2002:a05:622a:191f:b0:405:45e1:de14 with SMTP id w31-20020a05622a191f00b0040545e1de14mr1230482qtc.27.1697790888444;
-        Fri, 20 Oct 2023 01:34:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697790888; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1074481ejb;
+        Fri, 20 Oct 2023 01:58:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGv9iQbMC62G6zJ/5wbsVdlwk5BaCmQy53C5zy+Av/qyMOe3zSsIrU7ZNJEicS5Fi0I2UQ9
+X-Received: by 2002:a67:c888:0:b0:457:e3bb:867 with SMTP id v8-20020a67c888000000b00457e3bb0867mr1620224vsk.6.1697792289259;
+        Fri, 20 Oct 2023 01:58:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697792289; cv=none;
         d=google.com; s=arc-20160816;
-        b=xSTyU26K5NWWXE0O9ej5tjks0rXl2uiZOadQt45PkxBnXxnvUiv65TeYZt3zhq9BxU
-         PM8As2p9cUymwFmWYH4ncqJyxwBSz4WYKqpusD/rdc8eFINTRcwL/YoFkWQpEddOD7LJ
-         YMsKwxgGDORtbJIEV8pj1zaE3v1QWJ11k6VZDpQy0SgknGoPKOfRQr0KxczbRmigozjE
-         vXmEHfHPwrvZOXnKx40ZIJ+2Tq7FkBZluVN4NZwRS4Yc8hXWbNVQ4697gdb5ng1TJbgU
-         VjM8tl8TgIKnkyiAQE4AH4e7eRIPGFTlbAK1p2p6lD6KE3ZrgdC8RdtUO7zQSWTGIq82
-         o+NQ==
+        b=kzsS8a7mYq8nWy03efjQv7wGf2Ok111vcWwPembMg0vfUt8P+8K12MnOKxArzDnF+o
+         SryLVuIDluVKV//og5dpaEMsm4kRvtwqE9q9NMKoTVWoY0SPsOuTro0SmItSRDAW3Ude
+         TOpvpdggivYjaKCO7uctkRm4iBT7ra46Tc4ntf6kX4N5wjqZTM96lYHFyYtWWnTrJTwv
+         rN9+eEn1v6HZ+C4bSUFootJW1Q7Ye0+ntr7o1Wnh0mIbTyOFfLPkXuSI8hpSbAmnmEux
+         tDYJPhCXohXkz1qYqOxcivqXA/+ttGhA7OWZ9J1y7/RBATjjvBG0Mduu04HJISFD8ADw
+         teTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=ExjKUgn7axteSCEOabWgquodqKYCjk/OCBBPC9x63g4=;
-        fh=o3kaWeSVHD0lAvrj8JuJPxnxZn4rnrdXfjGdDLMTnfM=;
-        b=GqVlUexQOG1uy17BR5z8gFmEx9W3WKuj2TSdinLJNlQXtY47Cf8zJcAArT8uuumAHK
-         fsjOwNvMK4Why6DaasyuaBaQU0dkxt9OdYWUs3sFGakAKT8iOvv9+HX1knzIKhPLMBlj
-         vD51UhFtiVA9IkXb5q32MyGrnx9PS5IpqRlcBJkpXx5fN+rOcoCXuFDKVdkhwMN588U2
-         iP3Lk7MrpP0VQRuo0s9UCA886/aAw2Yxo4J29UclXM36kml7BIKrKneoXn3GABaIRUpo
-         G2eNs8cdAYexGZkscKwXoiq7GNwcF5k2WtZicKvZ6VLcvxxkYrzMc8dmjLk9wbDPJCpA
-         OPVQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=z91of7EUqtBkze7i5FpmXticuTy9uw+cJIt4LzsJFmI=;
+        fh=38tbsy5dIgB7KIMLhzpYuIJbD6iFvOooSSD6dMI8z+o=;
+        b=JxmlKsVhSWG4FG5t47XFZ7fhQrWBTgIFAP/CZaroirgNPzRd/+ep+PQ/0b8KVjqnga
+         LKS7wCj5EfyEMXi/Z8OWAstZCqx2eaGUKmhClPx9okNiU4LGbwH35K64fDergIZPntXl
+         36jbYlYUfpxWt6AklmCZhOtILv3Te2tBubpLqtqSdixVF6kkCDEgvLjYTq+VtdNQza+k
+         gqJpkrXECuj1+tcPgMc07r8rw+xJoP9M0tpQJKmw/1JmEkabdHSTskogZsNyuH4CdzC0
+         u0scMHFkw4d31InTu1VbQ++4BgOhZ4pu6rSM5sCkwyzUFmVP6RVwe2coUqHgm0qCs+j9
+         SCeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JWPKZBw8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C1lDtETR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18-20020a05622a001200b00419894fe568si920877qtw.343.2023.10.20.01.34.48
+        by mx.google.com with ESMTPS id y11-20020a056214016b00b00668da565494si1034236qvs.162.2023.10.20.01.58.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 01:34:48 -0700 (PDT)
+        Fri, 20 Oct 2023 01:58:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JWPKZBw8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C1lDtETR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtkxR-0000IK-0I; Fri, 20 Oct 2023 04:34:15 -0400
+	id 1qtlKS-0001m7-Sp; Fri, 20 Oct 2023 04:58:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtkxI-00008Z-Oj
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 04:34:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtlKO-0001lP-Ef
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 04:57:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtkxH-0002oZ-8Z
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 04:34:04 -0400
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtlKM-0002H4-4B
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 04:57:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697790842;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ExjKUgn7axteSCEOabWgquodqKYCjk/OCBBPC9x63g4=;
- b=JWPKZBw80TXiLeS2g4vPUQL8/4tcTUryceENRk5cZfNwuKxmfBTatpaENeHH1UyhBYxuUt
- 1tiH5KDVlDI1S3ZGKOEroOgUnnMbD2B2WrjM8Oci5lm4/G/xT/mBAWfOxOH9Z2pHW1EwSt
- sCOCr4j1/BKw4bmtld7T4k4R2dYLswI=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-74-Esz6OVCDNQuLDrNUykpu6Q-1; Fri, 20 Oct 2023 04:33:51 -0400
-X-MC-Unique: Esz6OVCDNQuLDrNUykpu6Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BE61088D023;
- Fri, 20 Oct 2023 08:33:50 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C3568CEF;
- Fri, 20 Oct 2023 08:33:50 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9433A21E6A1F; Fri, 20 Oct 2023 10:33:49 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  Juan Quintela
- <quintela@redhat.com>,  Peter Xu <peterx@redhat.com>,  Leonardo Bras
- <leobras@redhat.com>
-Subject: Re: [PATCH v2 10/22] qapi: Correct error message for
- 'vcpu_dirty_limit' parameter
-References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-11-philmd@linaro.org>
-Date: Fri, 20 Oct 2023 10:33:49 +0200
-In-Reply-To: <20231005045041.52649-11-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:27
- +0200")
-Message-ID: <875y318zgy.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ s=mimecast20190719; t=1697792273;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=z91of7EUqtBkze7i5FpmXticuTy9uw+cJIt4LzsJFmI=;
+ b=C1lDtETRf/lWMaX1fyIqLQDuUXq9tv9ln7eRhwK0AXpYuR7UBLT34x/RER02cP8+wah3Xh
+ 53cGOE875ODqeQhN5m4TaZnCRUCydg11euKU4QjrwIAJZABuyeRa2nBES7g6sadHn8MH7Z
+ HlPuots6WdT6OHuT2DHJhMQr4BE/Vtk=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-281-ouHuzTJUMWuqxpGd2SDIIw-1; Fri, 20 Oct 2023 04:57:51 -0400
+X-MC-Unique: ouHuzTJUMWuqxpGd2SDIIw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-408524e2368so1545035e9.0
+ for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 01:57:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697792271; x=1698397071;
+ h=mime-version:message-id:date:reply-to:user-agent:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=z91of7EUqtBkze7i5FpmXticuTy9uw+cJIt4LzsJFmI=;
+ b=pEYQ9imrOy4fr5iBhtNrn69mm7LC1IR5FvTfS/Wds8k3JzWYozy66LctuQdiLefIo7
+ mQaBvmtFHimVO3ZbzCxpgPryERDoCNpi/RFsLHtbJUWhtEun3jVNXJhxRLOakdYp0DQZ
+ bqYpOzG83FIFOrgG+Rw32yy46qftFW2Io4rYR7gtsnrU9R6+u5DGRTYJLJIw3FV7S5Ra
+ +fTOR9WxezUF5wJ4hK5BQzJq+dj0OT3RhaJUcguSDZt81E7CqQ3+/4AEDdqLBKM6IrXS
+ 6scnQY7YAhES9nSpOm+2RNsd4MNi6uSh3IbffWIZkRKHhANEPMsvbgMTFIBbIORUWT2T
+ wtxQ==
+X-Gm-Message-State: AOJu0Yyq8jb9mAGBxnT4dY1RbvbWKdnTKv7bmGTg41TIizV/yVfH/2hn
+ jIYMMaoPb1T5Wvv9y1WqCWMQyrdTgqnzNAsL2/2iEmP6IhXdZE3O1Y/TFca0y9O6NKvwBJzTzqd
+ Cn/vlM9mGPsA8EGQ=
+X-Received: by 2002:a05:600c:15c1:b0:3fc:dd9:91fd with SMTP id
+ v1-20020a05600c15c100b003fc0dd991fdmr858076wmf.40.1697792270717; 
+ Fri, 20 Oct 2023 01:57:50 -0700 (PDT)
+X-Received: by 2002:a05:600c:15c1:b0:3fc:dd9:91fd with SMTP id
+ v1-20020a05600c15c100b003fc0dd991fdmr858061wmf.40.1697792270328; 
+ Fri, 20 Oct 2023 01:57:50 -0700 (PDT)
+Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
+ [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
+ v21-20020a05600c12d500b004081a011c0esm6322011wmd.12.2023.10.20.01.57.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Oct 2023 01:57:49 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Cc: <qemu-devel@nongnu.org>,  Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  <qemu-ppc@nongnu.org>,
+ Nicholas Piggin <npiggin@gmail.com>,  <qemu-s390x@nongnu.org>,  Gerd
+ Hoffmann <kraxel@redhat.com>,  Corey Minyard <cminyard@mvista.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  David Hildenbrand <david@redhat.com>,
+ "Ilya Leoshkevich" <iii@linux.ibm.com>,  Fabiano Rosas <farosas@suse.de>,
+ "Eric Farman" <farman@linux.ibm.com>,  Peter Xu <peterx@redhat.com>,
+ "Harsh Prateek Bora" <harshpb@linux.ibm.com>,  John Snow
+ <jsnow@redhat.com>,  <qemu-block@nongnu.org>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Stefan Weil <sw@weilnetz.de>,
+ <qemu-arm@nongnu.org>,  Jason Wang <jasowang@redhat.com>,  Corey Minyard
+ <minyard@acm.org>,  Leonardo Bras <leobras@redhat.com>,  "Thomas Huth"
+ <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  "Michael
+ S. Tsirkin" <mst@redhat.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  David
+ Gibson <david@gibson.dropbear.id.au>,  Halil Pasic <pasic@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>
+Subject: Re: [PATCH 07/13] RFC migration: icp/server is a mess
+In-Reply-To: <20231020100626.57debfa4@bahia> (Greg Kurz's message of "Fri, 20
+ Oct 2023 10:06:26 +0200")
+References: <20231019190831.20363-1-quintela@redhat.com>
+ <20231019190831.20363-8-quintela@redhat.com>
+ <20231019233958.17abb488@bahia> <875y313g4b.fsf@secure.mitica>
+ <20231020100626.57debfa4@bahia>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
+Date: Fri, 20 Oct 2023 10:57:49 +0200
+Message-ID: <87fs251xiq.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,54 +151,160 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DppGOWTHJFNu
+X-TUID: 1w2DMkYLMNbl
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Greg Kurz <groug@kaod.org> wrote:
+> On Fri, 20 Oct 2023 09:30:44 +0200
+> Juan Quintela <quintela@redhat.com> wrote:
+>
+>> Greg Kurz <groug@kaod.org> wrote:
+>> > On Thu, 19 Oct 2023 21:08:25 +0200
+>> > Juan Quintela <quintela@redhat.com> wrote:
+>> >
+>> >> Current code does:
+>> >> - register pre_2_10_vmstate_dummy_icp with "icp/server" and instance
+>> >>   dependinfg on cpu number
+>> >> - for newer machines, it register vmstate_icp with "icp/server" name
+>> >>   and instance 0
+>> >> - now it unregisters "icp/server" for the 1st instance.
+>> >> 
+>> >> This is wrong at many levels:
+>> >> - we shouldn't have two VMSTATEDescriptions with the same name
+>> >> - In case this is the only solution that we can came with, it needs to
+>> >>   be:
+>> >>   * register pre_2_10_vmstate_dummy_icp
+>> >>   * unregister pre_2_10_vmstate_dummy_icp
+>> >>   * register real vmstate_icp
+>> >> 
+>> >> As the initialization of this machine is already complex enough, I
+>> >> need help from PPC maintainers to fix this.
+>> >> 
+>> >> Volunteers?
+>> >> 
+>> >> CC: Cedric Le Goater <clg@kaod.org>
+>> >> CC: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> >> CC: David Gibson <david@gibson.dropbear.id.au>
+>> >> CC: Greg Kurz <groug@kaod.org>
+>> >> 
+>> >> Signed-off-by: Juan Quintela <quintela@redhat.com>
+>> >> ---
+>> >>  hw/ppc/spapr.c | 7 ++++++-
+>> >>  1 file changed, 6 insertions(+), 1 deletion(-)
+>> >> 
+>> >> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+>> >> index cb840676d3..8531d13492 100644
+>> >> --- a/hw/ppc/spapr.c
+>> >> +++ b/hw/ppc/spapr.c
+>> >> @@ -143,7 +143,12 @@ static bool pre_2_10_vmstate_dummy_icp_needed(void *opaque)
+>> >>  }
+>> >>  
+>> >>  static const VMStateDescription pre_2_10_vmstate_dummy_icp = {
+>> >> -    .name = "icp/server",
+>> >> +    /*
+>> >> +     * Hack ahead.  We can't have two devices with the same name and
+>> >> +     * instance id.  So I rename this to pass make check.
+>> >> +     * Real help from people who knows the hardware is needed.
+>> >> +     */
+>> >> +    .name = "pre-2.10-icp/server",
+>> >>      .version_id = 1,
+>> >>      .minimum_version_id = 1,
+>> >>      .needed = pre_2_10_vmstate_dummy_icp_needed,
+>> >
+>> > I guess this fix is acceptable as well and a lot simpler than
+>> > reverting the hack actually. Outcome is the same : drop
+>> > compat with pseries-2.9 and older.
+>> >
+>> > Reviewed-by: Greg Kurz <groug@kaod.org>
+>> 
+>> I fully agree with you here.
+>> The other options given on this thread is deprecate that machines, but I
+>> would like to have this series sooner than 2 releases.
+>
+> Yeah and, especially, the deprecation of all these machine types is
+> itself a massive chunk of work as it will call to identify and
+> remove other related workarounds as well. Given that pretty much
+> everyone working in PPC/PAPR moved away, can the community handle
+> such a big change ?
+>
+>>  And what ppc is
+>> doing here is (and has always been) a hack and an abuse about how
+>> vmstate registrations is supposed to work.
+>> 
+>
+> Sorry again... We should have involved migration experts at the time. :-)
 
-> QERR_INVALID_PARAMETER_VALUE is defined as:
->
->   #define QERR_INVALID_PARAMETER_VALUE \
->       "Parameter '%s' expects %s"
->
-> The current error is formatted as:
->
->   "Parameter 'vcpu_dirty_limit' expects is invalid, it must greater then =
-1 MB/s"
->
-> Replace by:
->
->   "Parameter 'vcpu_dirty_limit' is invalid, it must greater then 1 MB/s"
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  migration/options.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/migration/options.c b/migration/options.c
-> index 1d1e1321b0..79fce0c3a9 100644
-> --- a/migration/options.c
-> +++ b/migration/options.c
-> @@ -1163,9 +1163,8 @@ bool migrate_params_check(MigrationParameters *para=
-ms, Error **errp)
->=20=20
->      if (params->has_vcpu_dirty_limit &&
->          (params->vcpu_dirty_limit < 1)) {
-> -        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
-> -                   "vcpu_dirty_limit",
-> -                   "is invalid, it must greater then 1 MB/s");
-> +        error_setg(errp, "Parameter 'vcpu_dirty_limit' is invalid,"
-> +                         " it must greater then 1 MB/s");
->          return false;
->      }
+I would have told you that this can't be done O:-)
 
-Make that "greater than", please.
+Sent another version with a vmstate hack to accomodate this.  You don't
+have to deprecate the machines due to migration O:-)
 
-Arrgh, the unit is MB/s even in QMP:
+And now that I have ppc gurus attention, could you comment in the other
+question:
 
-    # @vcpu-dirty-limit: Dirtyrate limit (MB/s) during live migration.
-    #     Defaults to 1.  (Since 8.1)
+./hw/ppc/spapr_iommu.c
 
-Should be Bytes.  Escaped review, and now it's too late to fix.
+static void spapr_tce_table_realize(DeviceState *dev, Error **errp)
+{
+    ...
+    vmstate_register(VMSTATE_IF(tcet), tcet->liobn, &vmstate_spapr_tce_table,
+                     tcet);
+}
+
+./include/hw/ppc/spapr.h
+
+struct SpaprTceTable {
+    ...
+    uint32_t liobn;
+    ....
+};
+
+./include/migration.h
+
+static inline int vmstate_register(VMStateIf *obj, int instance_id,
+                                   const VMStateDescription *vmsd,
+                                   void *opaque);
+
+
+liobn is an uint32_t and insntance_id is an int.
+
+For this series, I started with this:
+
+static inline int vmstate_register(VMStateIf *obj, int instance_id,
+                                   const VMStateDescription *vmsd,
+                                   void *opaque)
+{
+    if (instance_id < 0) {
+        error_report("vmstate_register: Invalid device: %s instance_id: %d",
+                     vmsd->name, instance_id);
+        return -1;
+    }
+    return vmstate_register_with_alias_id(obj, instance_id, vmsd,
+                                          opaque, -1, 0, NULL);
+}
+
+And it failed on this.  So I change the test to
+
+    if (instance_id == VM_INSTANCE_ID_ANY) {
+       ....
+    }
+
+But we are still having troubles with signs here.
+
+Posible actions:
+- Look the other side and hope that liobn is never -1.
+  (if it is -1, it would become 0, so not really a big trouble).
+- change vmstate type to uint32_t and make VM_INSTANCE_ID_ANY to UINT32_MAX
+  (exact same problem if liobn happens to be UINT32_MAX)
+
+I have no clue what are the valid values of liobn.  So I am leaning to
+just look the other way and do nothing.
+
+Advise?
+
+Thanks, Juan.
+
+
 

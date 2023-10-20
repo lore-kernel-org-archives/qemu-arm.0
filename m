@@ -1,163 +1,95 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1179952ejb;
-        Fri, 20 Oct 2023 05:24:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGfL6V90QQyFCERZN+5/0rY36/Fn0Q0wqMnb1GoSgNZ24IEnlG6g9bg6wVVmCa0rg5012v6
-X-Received: by 2002:ac8:5746:0:b0:419:8ec7:cfc6 with SMTP id 6-20020ac85746000000b004198ec7cfc6mr1155506qtx.12.1697804660911;
-        Fri, 20 Oct 2023 05:24:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697804660; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1191402ejb;
+        Fri, 20 Oct 2023 05:43:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFjoGy0N5ATiTd4MWYkdkCdTdUP+ibD6l+9PTM4R/FeCOMtpVhKzVm6uu7109awxZLkxehu
+X-Received: by 2002:a05:6808:181a:b0:3b2:e48d:97b4 with SMTP id bh26-20020a056808181a00b003b2e48d97b4mr1687672oib.26.1697805800779;
+        Fri, 20 Oct 2023 05:43:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697805800; cv=none;
         d=google.com; s=arc-20160816;
-        b=INO8VizeEmgNqeqNGLr4uk+o78n1KBIEcozfJ6fJ+PTVY81jB+o9NknWfECeLran64
-         Y0qdcPFWO8Cg3mocj5zrraZjE9Afr7TLST12iXniSCmOLACOwGfo1d7GLfp8kH0QOvHZ
-         +8KDaeVJG014g+5OxgPhCqvGmtnzvysxnEN4vXX0U1m1/63cEsb4gDfNI6k6jIQSPt3C
-         bnEop84OdQxu1AzRHZntKv5+sQHxrYh8h7Lb68ifSrqbTHx4OdHAyKYyE3hpg1U79MwO
-         4iv9vHaoh81HLFtNe2ffAvCBQojlekElBLDlStsArvVANHrF3jW6VNc6RL+6Hsz1W+A4
-         hVYA==
+        b=SE8pbBzTTyB3RPoa4lXlu5DX12uXFf7mjqc1Ta8utlcMmtL2JXaJDrisoU1wbLBC7O
+         N0HRrfku8nqtUYbF8HBl8zEFyKP6oCDKaq1cdBU7CnHbs0YRhtduQPXnXWJJRev3qwso
+         jzSbJQ74Ql5fGCeukK0xHo/7+lnN+pRvw1Wb5Hoft2kv07mp4uYKlGkbgaeW/uEoMvGn
+         tyyBszm0QxFGPdrYr4Y0LgsYOg50L64nI3+c3geXE6rg7dbT1UuhP0gUykatPTRrt4Hk
+         DNXf+0r8d+QiLr71mMmOwmgacgSBNwWSfrfzog4HSViTR0hjrjt+yIB4Px0mhy01EncG
+         aIHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zjDyuZC1ZuzAGuT/gza9xvDcqT79Mx7wDsEBQE0fS3w=;
-        fh=HnnsnCAzcutRJBtCWq7AY5qFhQFikDYkO89DShKVRRw=;
-        b=QLkDjdEznbIV39SgKhJVfUh9BQI6u/jdSB8bNh44Gq2q6MZOy6AQ2sUpqUVoNiqW1I
-         mr38mFDtCcY6GDvHrjWmW21VBYHysWT99zT1cewaeWMoFzf3nUGZwJIXbasgN0koLyia
-         egSUQqQ6Zw/ssNMLnFG/B3TX95+n4iHCi7SRnw6RdGHTlZAMQYEkqTBOEykpW/5v+QwY
-         8vCO7yq1a5kb/ii52ONab/6CMtZieVhPAUNrBp2LsgJFb/2wvY4ERNRJ+1lCFHBTcuV2
-         z6EnNyVgghsCLnLSwIYcUbjUKJuok9LLPpjlxlKo7MrclkYLg31yctQojGN3RhohuZqc
-         TbwA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=JgYRYfVN2wmMdrJzr4H4BHxRRAkSYpG/2MSUCzcBSxk=;
+        fh=gq5iZYiK9fa56zYdj80gh8+jtDm+Rj8YgRTtHjP/gtE=;
+        b=VBxSiM5/ajNSgWuy9+f39aiijZGjFOUtMGnEaZyenh3ykqp9HrAcxJ47uJ86LIdmrk
+         Kur5hb1i4GdFh6KPeQFBRlGMLnp0wgGvFzBK2xSlfwH/BI4UlHXonBjfJTNemUvTQdN+
+         ZPP0DsxTonGE5AST/jD053sQEOcrDq5wCePhQEgJXPOHLxTXLF9Dyc6v9yyyaHb5xTdF
+         ACH/93IqYdpZeQ+scX0sCOnnavsKChsLggtsfF1rBbGktW9rrx2ye65/1uEJE+MKoXcs
+         amgqF7Cr1bPgpSMOo/lsboGarQcCOg9h1V/o7j/1FkzZh+UfvNyewDnbBGRPr/sKgLaD
+         dCVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=nUQjXkL1;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=Wm7hI22o;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g18-20020ac87f52000000b00419ccbf006esi1211311qtk.337.2023.10.20.05.24.20
+        by mx.google.com with ESMTPS id e20-20020ad442b4000000b0066d15c73fc0si1311475qvr.120.2023.10.20.05.43.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 05:24:20 -0700 (PDT)
+        Fri, 20 Oct 2023 05:43:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=nUQjXkL1;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=Wm7hI22o;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtoXw-0004GS-HY; Fri, 20 Oct 2023 08:24:08 -0400
+	id 1qtoqD-0000U0-83; Fri, 20 Oct 2023 08:43:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qtoXt-0004Eg-Vd; Fri, 20 Oct 2023 08:24:06 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1qtoqA-0000TY-GG; Fri, 20 Oct 2023 08:42:58 -0400
+Received: from collins.uni-paderborn.de ([2001:638:502:c003::14])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qtoXr-0000dL-F8; Fri, 20 Oct 2023 08:24:05 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39KCCLVG023996; Fri, 20 Oct 2023 12:23:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=zjDyuZC1ZuzAGuT/gza9xvDcqT79Mx7wDsEBQE0fS3w=;
- b=nUQjXkL1BMsal4up55i0zx/QT3Ov0JORcgwYSxz0Fq/MOOkIo67oePqkSec4pZ+SqDYJ
- +gZfAu0Vui5LIQMuB25rjP3H1J1brlzWX9SB1qyWQvWA+5nIMTnc21QejxQbJ9wCZifw
- erQ2324PC0xqcSdwl7ft3c0kNQ5b3UyRj8RtJUtDdq97VyFi9Iz0JZvh5bHxj79mt90y
- oMaZdxFZMWLUUFIFTsORvQJG5w0/XoyYxjY53TBS5Dqck0wwfnKmqZUnBBuod6C0CsYE
- ucTVREUyAsnRf9kfh1/sqz1CwgP1vJpqMVJgSeAAX3mP4CjikrXA0i8Fwv3qjal0cVu5 JQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tusbjgdfu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 12:23:37 +0000
-Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39KCCR40024627;
- Fri, 20 Oct 2023 12:23:33 GMT
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tusbjgd9s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 12:23:33 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39KCEDGi019377; Fri, 20 Oct 2023 12:22:40 GMT
-Received: from smtprelay03.wdc07v.mail.ibm.com ([172.16.1.70])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc454enu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 12:22:40 +0000
-Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
- [10.241.53.100])
- by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39KCMc8b24052434
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 20 Oct 2023 12:22:39 GMT
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C066658057;
- Fri, 20 Oct 2023 12:22:38 +0000 (GMT)
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D47D358061;
- Fri, 20 Oct 2023 12:22:36 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTPS;
- Fri, 20 Oct 2023 12:22:36 +0000 (GMT)
-Message-ID: <3b898f46-cb88-15cb-43e6-06ccde6295c9@linux.ibm.com>
-Date: Fri, 20 Oct 2023 08:22:35 -0400
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1qtoq4-0006GA-S6; Fri, 20 Oct 2023 08:42:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=JgYRYfVN2wmMdrJzr4H4BHxRRAkSYpG/2MSUCzcBSxk=; b=Wm7hI22o3FjUOVjR3zmc+5SJzf
+ ZYFf+8fF1qH+ySCvCruygoDxxq0C3jWxXYNcw/w/RxqXfzsYvFg+IXKwOQ7awxLzmevui6oc2XRII
+ lk0S6SAVmSr9eITQZ5FgQ7zdSiZbusKMc8d3f+KORJGgf+4IoHxcx6518JVAbw6/gXt0=;
+Date: Fri, 20 Oct 2023 14:42:38 +0200
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, qemu-arm@nongnu.org, 
+ laurent@vivier.eu, ysato@users.sourceforge.jp, jcmvbkbc@gmail.com
+Subject: Re: [PATCH 6/7] target/tricore: Use tcg_gen_*extract_tl
+Message-ID: <lw6uup7czj4pwtinvjeusqyb36gj72cjkaqzfqhpo6ocjnqxjv@xhgpmv75cxnn>
+References: <20231019182921.1772928-1-richard.henderson@linaro.org>
+ <20231019182921.1772928-7-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2 10/13] migration: Improve example and documentation of
- vmstate_register()
-Content-Language: en-US
-To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- David Gibson <david@gibson.dropbear.id.au>,
- Corey Minyard <cminyard@mvista.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
- Corey Minyard <minyard@acm.org>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Halil Pasic <pasic@linux.ibm.com>, Leonardo Bras <leobras@redhat.com>,
- John Snow <jsnow@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
- qemu-block@nongnu.org, qemu-s390x@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Stefan Weil <sw@weilnetz.de>
-References: <20231020090731.28701-1-quintela@redhat.com>
- <20231020090731.28701-11-quintela@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <20231020090731.28701-11-quintela@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: oOZL2AWOXPhZT7lT-gjxbXXS-v30HLMu
-X-Proofpoint-GUID: edyELfx3TsWmz_jtHwcjN9zNLisljS8n
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-20_10,2023-10-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 lowpriorityscore=0
- mlxlogscore=999 clxscore=1015 impostorscore=0 malwarescore=0 phishscore=0
- spamscore=0 suspectscore=0 priorityscore=1501 bulkscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
- definitions=main-2310200102
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231019182921.1772928-7-richard.henderson@linaro.org>
+X-IMT-Source: Extern
+X-IMT-rspamd-score: 32
+X-IMT-Spam-Score: 0.0 ()
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2023.10.20.123017, AntiVirus-Engine: 6.0.2,
+ AntiVirus-Data: 2023.10.8.602001
+X-Sophos-SenderHistory: ip=79.202.213.239, fs=1998398, da=185414827, mc=83,
+ sc=0, hc=83, sp=0, fso=1998398, re=0, sd=0, hd=0
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+Received-SPF: pass client-ip=2001:638:502:c003::14;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=collins.uni-paderborn.de
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -172,42 +104,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NJSOxD4Ry7MC
+X-TUID: PvfVeoCQ+1ox
 
-
-On 10/20/23 05:07, Juan Quintela wrote:
-> Signed-off-by: Juan Quintela <quintela@redhat.com>
-
-
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-
+On Thu, Oct 19, 2023 at 11:29:20AM -0700, Richard Henderson wrote:
+> The EXTR instructions can use the extract opcodes.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   docs/devel/migration.rst | 12 ++++++++----
->   1 file changed, 8 insertions(+), 4 deletions(-)
->
-> diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-> index c3e1400c0c..bfd8710c95 100644
-> --- a/docs/devel/migration.rst
-> +++ b/docs/devel/migration.rst
-> @@ -165,13 +165,17 @@ An example (from hw/input/pckbd.c)
->         }
->     };
->
-> -We are declaring the state with name "pckbd".
-> -The ``version_id`` is 3, and the fields are 4 uint8_t in a KBDState structure.
-> -We registered this with:
-> +We are declaring the state with name "pckbd".  The ``version_id`` is
-> +3, and there are 4 uint8_t fields in the KBDState structure.  We
-> +registered this ``VMSTATEDescription`` with one of the following
-> +functions.  The first one will generate a device ``instance_id``
-> +different for each registration.  Use the second one if you already
-> +have an id that is different for each instance of the device:
->
->   .. code:: c
->
-> -    vmstate_register(NULL, 0, &vmstate_kbd, s);
-> +    vmstate_register_any(NULL, &vmstate_kbd, s);
-> +    vmstate_register(NULL, instance_id, &vmstate_kbd, s);
->
->   For devices that are ``qdev`` based, we can register the device in the class
->   init function:
+>  target/tricore/translate.c | 20 ++++----------------
+>  1 file changed, 4 insertions(+), 16 deletions(-)
+
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+
+Cheers,
+Bastian

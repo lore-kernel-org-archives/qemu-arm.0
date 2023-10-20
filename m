@@ -1,286 +1,212 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1428567ejb;
-        Fri, 20 Oct 2023 11:28:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFnC7e/xxurBJ0A0CHaXL8JZB5NiK6AscWF8Xj/ABLh4FT4Ald7ue6d8PYURsjVT88NJl2p
-X-Received: by 2002:ac8:5fc8:0:b0:419:4e1c:6904 with SMTP id k8-20020ac85fc8000000b004194e1c6904mr3662542qta.20.1697826481679;
-        Fri, 20 Oct 2023 11:28:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697826481; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1472000ejb;
+        Fri, 20 Oct 2023 12:42:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHZp9WcVIfnQWZZkpKUp5BdsDOEfsskh+HmEx+Dj6WxGJMYK6FXyllKOBqbocoQ12lL1tz6
+X-Received: by 2002:a05:6214:e85:b0:66d:25f7:de15 with SMTP id hf5-20020a0562140e8500b0066d25f7de15mr3876421qvb.31.1697830967582;
+        Fri, 20 Oct 2023 12:42:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697830967; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZaRlK1vIr9CyWxRf6F1g6CTau2NERRQQA/1KsxPUBjKjsYIVHxG5qsUb3ZohxV81U/
-         5ETyItfvFHvuziXMlVTn21ABBTyp7JjoSzlUb4hnYSsL+PktGqsfa1IJlvbvDv4qiysq
-         igrXM/65NXasZ/JPf6H5Xh0rwSRnzyf2BLsfYqK/O/2XvzIRgwyGJ9bvuLFZNYLEy5tc
-         PJydBYKc4VnEgwMS6G/JHw9xwtAxta2uTZpWD1ukKmcCG0C7aRhSTr7mcDZ7k6Ys62QO
-         l1JrzlzlBnMquCfMl9G4AqrBq0WrQwsymjI+AMuEgBw+wBVoKiirWqpHF49lYGpH1r5A
-         FDYg==
+        b=j7iKwcjwHwCRh90OsOyUFU/M8jwxThfR/9DK+/a4gDvK5GQKZRBRFT5GEnu1A6zPcy
+         R2DaB6/Z6jYM/mOs5Wucwnjb0+SL3xzQhdc2Cebd8rPQ6w5siOBmKjNIL4jhoV4P1k6L
+         yveTl6FvJe9diMwqXetnC5kSO09Ki6aaNhM9Zsx41+g3MsR1k+95bzq4rzmyJr6yK1RX
+         c5wuNymHpbaGAIJ/ZrTXhq6kdOd1FSgj8zq+QaqVPyxeJkGR2ysyx9jvCvbp4QY46uKR
+         Qe6xOl6cxecueyj1NmQHd5gXmHIXALa4oEnlALW4kaJg2c9V6KUzW4Qd4w+Y6zJEl3cF
+         Mhuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
          :from:dkim-signature;
-        bh=lig+LDr57YXcnYGopx56FUkFXwaNEIsJy4/9rWP4y/s=;
-        fh=e3pTa9Kjw2EyI6YQo+47bINjWG4udEvUvYOACJZu5mg=;
-        b=kXmIIbT0Z9TYy6HzBlgVJ4GRtIYb+uMmg2EN1gS0OmEoAYvlcx5nNyOJNLX+mGLwfY
-         pHDnjXjGWqnmgG7Jjb3MM1M6ifuG4wa/hyVOrtEJ+T7OTvY21q/80jhxf+7C3olH9W7l
-         K6b/IsDG9DVQn4F8wv/qda16OMW1YYIBVlcI0Rnsoe74ccD17btVr22Uy/aSP2CnrodG
-         kJzufPJuFcTrjJvNPEBnUG2/dsABtYMNu2cX3wL8VzvzEXylJK1VhUVaUGgaDT6hmXfQ
-         /BcpnQ1rVK2oQ5iQct3Kam7aY05CVJ7KpGaBqhSvkJKRsRKVIQx5MP6jqcglvwajFTl/
-         XtwA==
+        bh=v48IUSneCiRncr9ecoZFXzb9Et9iUGjrOJ+H4dvshHg=;
+        fh=2EDaoL4FdFbptH2DhUt+Z/CEAFIVzTSk1KAKo7J8cTg=;
+        b=EEzvctw+u/u8g5BnU7349m4akAIbAoG29IW0I/ia/FotIs+qoDKYIKahWoQxxbh839
+         a5XIci5Y4QOo+ZKrHKp50N61K1V4l2R9jhlAGPbW4DgIOoDjynuk3fQc7sKgQxVV8NG8
+         c234+NuvBY1MYKOPN1SwGgPQA3IXer3y5Chun+Rnoef7eN66C1Pj9dZGFS0KT/FnOHbD
+         20oWFEgjJcSMK3BUqLir8ZsMx6NRX2ivHjjqL8CGzcFinNCoIeaVVa6wovDi9jGkMrT/
+         rxtv+smmxc+us4rqZvj5jzyt/lJDxt9ufSMj0b2xXx7adGscfI0xClDmZcmj205YaoPl
+         CJvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=n78AzHff;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f269nDCw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j12-20020ac85f8c000000b0041954258c3fsi1643590qta.557.2023.10.20.11.28.01
+        by mx.google.com with ESMTPS id c15-20020a05622a024f00b0041817f70871si1789637qtx.510.2023.10.20.12.42.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 11:28:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 12:42:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=n78AzHff;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f269nDCw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtuDx-0006p3-TI; Fri, 20 Oct 2023 14:27:55 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtvOL-0000xa-8P; Fri, 20 Oct 2023 15:42:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qtuDw-0006oN-1e; Fri, 20 Oct 2023 14:27:52 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtvOJ-0000wx-8j
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 15:42:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qtuDq-0006e3-QG; Fri, 20 Oct 2023 14:27:51 -0400
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39KIEdrq027540; Fri, 20 Oct 2023 18:27:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=lig+LDr57YXcnYGopx56FUkFXwaNEIsJy4/9rWP4y/s=;
- b=n78AzHffTuXsutMOeDUle9UqlknKOi4YifDX1dizWmGWinTVD7qUUm+2GDXIEfA0aSh4
- dhvlMiSI6GFkR7r3SBY+2DVyYmd/3mu01DMKZarEL/IoQvH2/6Qok63fn7cQyC33OICe
- yQ3RZYznI3tqqXj8K684DXJY9JO1YldhDSzdFXm6XdhlvyTIerIt7zFJ7hZnJXA9sWIG
- vXuqIac/muKJRRRxcB3dedHFcmUJQ3shnumMnTbVP0M8b0eabgFMasBUgxP28yKSRW0o
- XCDF/ORangVvOjwB9Jd6+hsZxia8XWkz95U3j+rDji8oVEfXb1qjpqu9ZgxV8bPOrqKS jQ== 
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tuxner8av-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 18:27:29 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39KHTT9k024183; Fri, 20 Oct 2023 18:24:04 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tuc296eas-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 18:24:04 +0000
-Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
- [10.39.53.231])
- by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39KIO4UX721620
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 20 Oct 2023 18:24:04 GMT
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 381BA58056;
- Fri, 20 Oct 2023 18:24:04 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B759558045;
- Fri, 20 Oct 2023 18:24:03 +0000 (GMT)
-Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
- by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 20 Oct 2023 18:24:03 +0000 (GMT)
-From: Glenn Miles <milesg@linux.vnet.ibm.com>
-To: qemu-devel@nongnu.org
-Cc: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- andrew@codeconstruct.com.au, Joel Stanley <joel@jms.id.au>,
- philmd@linaro.org
-Subject: [PATCH v2 2/3] misc/pca9552: Let external devices set pca9552 inputs
-Date: Fri, 20 Oct 2023 13:23:20 -0500
-Message-Id: <20231020182321.163109-3-milesg@linux.vnet.ibm.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20231020182321.163109-1-milesg@linux.vnet.ibm.com>
-References: <20231020182321.163109-1-milesg@linux.vnet.ibm.com>
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtvOH-0008Ia-MV
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 15:42:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697830957;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=v48IUSneCiRncr9ecoZFXzb9Et9iUGjrOJ+H4dvshHg=;
+ b=f269nDCwpePKctXydBDwVq+ddyk4EdqSXnRoryVzTW8h/JOWYZeaPExQiq/KixNZyQ0pmf
+ dzhxHhh8guatCLq2mFJKrdIsng0nUcXcljS/4IoYXp5J5zlPilKGpnKDpVtLWtBzlfMQQL
+ +DY/6ITtk4nDs5wnp6yjc/8vyBTzVeo=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-198-N4vlMGlBPNCN3zYVx6S0jQ-1; Fri, 20 Oct 2023 15:42:35 -0400
+X-MC-Unique: N4vlMGlBPNCN3zYVx6S0jQ-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-407d3e55927so7147935e9.1
+ for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 12:42:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697830954; x=1698435754;
+ h=mime-version:message-id:date:reply-to:user-agent:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=v48IUSneCiRncr9ecoZFXzb9Et9iUGjrOJ+H4dvshHg=;
+ b=UP4rWNeLD/I2uZAfVXWxPHj4ZveeZgFadXkJ8v6q76I+6t3ulFJFrAXNePeOX9YxKP
+ BhDev01yv5LgayjiLFOrig2qi6cDE3H/mtpcEeYkMDo6Jo4KpcIvvnxFrSeOXpnOErK3
+ xuzqWQVbRDsYl4chQ7r3UiyeyjEY+/dYeC5PTuC2you8zsLK74CTDpoPS4EB680Ho9xt
+ YQt1zkJNvM92dun2BUOF5UgOyQVcOAig1l2ZeOrFq9qOyPiqI8G6nlC3Xl5wOmn9YPvc
+ Lxl3P0YA4uE3h2jpnt484J+Fxn8Zzcf5KFjD1PY7M4xvAqTUUlpuloHI7lZsuiDBURZj
+ Gfww==
+X-Gm-Message-State: AOJu0YwqVgy6/ymIAGMrk6hPaJv2lklGPdpqbNpY7V2su3DHrPX0DhCQ
+ VOvgT4uqSVWcSDlWeQ3lsfvWFseJVSpNzrcEKyy7qc9qAGD5q8r8br/IMw1FxhLDVdH4Jr/jqyC
+ ijSVUt0tkAq0eaaM=
+X-Received: by 2002:a05:600c:4f12:b0:405:36d7:4582 with SMTP id
+ l18-20020a05600c4f1200b0040536d74582mr2070951wmq.15.1697830954312; 
+ Fri, 20 Oct 2023 12:42:34 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f12:b0:405:36d7:4582 with SMTP id
+ l18-20020a05600c4f1200b0040536d74582mr2070918wmq.15.1697830953954; 
+ Fri, 20 Oct 2023 12:42:33 -0700 (PDT)
+Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
+ [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
+ m16-20020a7bca50000000b00405d9a950a2sm7546702wml.28.2023.10.20.12.42.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Oct 2023 12:42:33 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Harsh
+ Prateek Bora <harshpb@linux.ibm.com>,  David Hildenbrand
+ <david@redhat.com>,  Samuel Thibault <samuel.thibault@ens-lyon.org>,  Eric
+ Farman <farman@linux.ibm.com>,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
+ David Gibson <david@gibson.dropbear.id.au>,  Corey Minyard
+ <cminyard@mvista.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Peter Xu
+ <peterx@redhat.com>,  Corey Minyard <minyard@acm.org>,  Stefan Berger
+ <stefanb@linux.vnet.ibm.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Halil Pasic <pasic@linux.ibm.com>,
+ Leonardo Bras <leobras@redhat.com>,  John Snow <jsnow@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Jason
+ Wang <jasowang@redhat.com>,  qemu-block@nongnu.org,
+ qemu-s390x@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Daniel Henrique
+ Barboza <danielhb413@gmail.com>,  Stefan Weil <sw@weilnetz.de>,  Stefan
+ Berger <stefanb@linux.ibm.com>
+Subject: Re: [PATCH v2 03/13] migration: Use vmstate_register_any() for isa-ide
+In-Reply-To: <efef6d37-925c-415e-9a59-85e528eacb7b@redhat.com> (Thomas Huth's
+ message of "Fri, 20 Oct 2023 16:12:44 +0200")
+References: <20231020090731.28701-1-quintela@redhat.com>
+ <20231020090731.28701-4-quintela@redhat.com>
+ <efef6d37-925c-415e-9a59-85e528eacb7b@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
+Date: Fri, 20 Oct 2023 21:42:33 +0200
+Message-ID: <871qdpytau.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: a7CJ_Kaq1m5ldByWoKpmt8m_MPXtyFNm
-X-Proofpoint-ORIG-GUID: a7CJ_Kaq1m5ldByWoKpmt8m_MPXtyFNm
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-20_10,2023-10-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 malwarescore=0
- priorityscore=1501 lowpriorityscore=0 clxscore=1015 impostorscore=0
- adultscore=0 phishscore=0 spamscore=0 suspectscore=0 mlxlogscore=999
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310170001 definitions=main-2310200154
-Received-SPF: none client-ip=148.163.158.5;
- envelope-from=milesg@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HrKl9An7Y2PC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WtroXy1QHAvK
 
-Allow external devices to drive pca9552 input pins by adding
-input GPIO's to the model.  This allows a device to connect
-its output GPIO's to the pca9552 input GPIO's.
+Thomas Huth <thuth@redhat.com> wrote:
+> On 20/10/2023 11.07, Juan Quintela wrote:
+>> Otherwise qom-test fails.
+>> ok 4 /i386/qom/x-remote
+>> qemu-system-i386: savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=isa-ide, instance_id=0x0
+>> Broken pipe
+>> ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+>> Aborted (core dumped)
+>> $
+>> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+>> Signed-off-by: Juan Quintela <quintela@redhat.com>
+>> ---
+>>   hw/ide/isa.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>> diff --git a/hw/ide/isa.c b/hw/ide/isa.c
+>> index 95053e026f..ea60c08116 100644
+>> --- a/hw/ide/isa.c
+>> +++ b/hw/ide/isa.c
+>> @@ -73,7 +73,7 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
+>>       ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
+>>       ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
+>>       ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
+>> -    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
+>> +    vmstate_register_any(VMSTATE_IF(dev), &vmstate_ide_isa, s);
+>>       ide_bus_register_restart_cb(&s->bus);
+>>   }
+>
+> Would it make sense to use another unique ID of the device instead? E.g.:
+>
+> diff a/hw/ide/isa.c b/hw/ide/isa.c
+> --- a/hw/ide/isa.c
+> +++ b/hw/ide/isa.c
+> @@ -73,7 +73,9 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
+>      ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
+>      ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
+>      ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
+> -    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
+> +    vmstate_register(VMSTATE_IF(dev),
+> +                     object_property_get_int(OBJECT(dev), "irq", &error_abort),
+> +                     &vmstate_ide_isa, s);
+>      ide_bus_register_restart_cb(&s->bus);
+>  }
+>    Thomas
 
-In order for an external device to set the state of a pca9552
-pin, the pin must first be configured for high impedance (LED
-is off).  If the pca9552 pin is configured to drive the pin low
-(LED is on), then external input will be ignored.
+Ide is not my part of expertise.
+But anything that is different for each instantance is going to be good
+for me.
 
-Here is a table describing the logical state of a pca9552 pin
-given the state being driven by the pca9552 and an external device:
+The whole point of this series is to be able to test that there are no
+duplicates.  Duplicates are one error when we do real migration.  How we
+reach the goal of no duplicates doesn't matter to me.
 
-                   PCA9552
-                   Configured
-                   State
-
-                  | Hi-Z | Low |
-            ------+------+-----+
-  External   Hi-Z |  Hi  | Low |
-  Device    ------+------+-----+
-  State      Low  |  Low | Low |
-            ------+------+-----+
-
-Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
----
-
-No change from v1
-
- hw/misc/pca9552.c         | 41 ++++++++++++++++++++++++++++++++++-----
- include/hw/misc/pca9552.h |  3 ++-
- 2 files changed, 38 insertions(+), 6 deletions(-)
-
-diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-index 445f56a9e8..ed814d1f98 100644
---- a/hw/misc/pca9552.c
-+++ b/hw/misc/pca9552.c
-@@ -44,6 +44,8 @@ DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
- #define PCA9552_LED_OFF  0x1
- #define PCA9552_LED_PWM0 0x2
- #define PCA9552_LED_PWM1 0x3
-+#define PCA9552_PIN_LOW  0x0
-+#define PCA9552_PIN_HIZ  0x1
- 
- static const char *led_state[] = {"on", "off", "pwm0", "pwm1"};
- 
-@@ -116,16 +118,22 @@ static void pca955x_update_pin_input(PCA955xState *s)
-         switch (config) {
-         case PCA9552_LED_ON:
-             /* Pin is set to 0V to turn on LED */
--            qemu_set_irq(s->gpio[i], 0);
-+            qemu_set_irq(s->gpio_out[i], 0);
-             s->regs[input_reg] &= ~(1 << input_shift);
-             break;
-         case PCA9552_LED_OFF:
-             /*
-              * Pin is set to Hi-Z to turn off LED and
--             * pullup sets it to a logical 1.
-+             * pullup sets it to a logical 1 unless
-+             * external device drives it low.
-              */
--            qemu_set_irq(s->gpio[i], 1);
--            s->regs[input_reg] |= 1 << input_shift;
-+            if (s->ext_state[i] == PCA9552_PIN_LOW) {
-+                qemu_set_irq(s->gpio_out[i], 0);
-+                s->regs[input_reg] &= ~(1 << input_shift);
-+            } else {
-+                qemu_set_irq(s->gpio_out[i], 1);
-+                s->regs[input_reg] |= 1 << input_shift;
-+            }
-             break;
-         case PCA9552_LED_PWM0:
-         case PCA9552_LED_PWM1:
-@@ -340,6 +348,7 @@ static const VMStateDescription pca9552_vmstate = {
-         VMSTATE_UINT8(len, PCA955xState),
-         VMSTATE_UINT8(pointer, PCA955xState),
-         VMSTATE_UINT8_ARRAY(regs, PCA955xState, PCA955X_NR_REGS),
-+        VMSTATE_UINT8_ARRAY(ext_state, PCA955xState, PCA955X_PIN_COUNT_MAX),
-         VMSTATE_I2C_SLAVE(i2c, PCA955xState),
-         VMSTATE_END_OF_LIST()
-     }
-@@ -358,6 +367,7 @@ static void pca9552_reset(DeviceState *dev)
-     s->regs[PCA9552_LS2] = 0x55;
-     s->regs[PCA9552_LS3] = 0x55;
- 
-+    memset(s->ext_state, PCA9552_PIN_HIZ, PCA955X_PIN_COUNT_MAX);
-     pca955x_update_pin_input(s);
- 
-     s->pointer = 0xFF;
-@@ -380,6 +390,26 @@ static void pca955x_initfn(Object *obj)
-     }
- }
- 
-+static void pca955x_set_ext_state(PCA955xState *s, int pin, int level)
-+{
-+    if (s->ext_state[pin] != level) {
-+        uint16_t pins_status = pca955x_pins_get_status(s);
-+        s->ext_state[pin] = level;
-+        pca955x_update_pin_input(s);
-+        pca955x_display_pins_status(s, pins_status);
-+    }
-+}
-+
-+static void pca955x_gpio_in_handler(void *opaque, int pin, int level)
-+{
-+
-+    PCA955xState *s = PCA955X(opaque);
-+    PCA955xClass *k = PCA955X_GET_CLASS(s);
-+
-+    assert((pin >= 0) && (pin < k->pin_count));
-+    pca955x_set_ext_state(s, pin, level);
-+}
-+
- static void pca955x_realize(DeviceState *dev, Error **errp)
- {
-     PCA955xClass *k = PCA955X_GET_CLASS(dev);
-@@ -389,7 +419,8 @@ static void pca955x_realize(DeviceState *dev, Error **errp)
-         s->description = g_strdup("pca-unspecified");
-     }
- 
--    qdev_init_gpio_out(dev, s->gpio, k->pin_count);
-+    qdev_init_gpio_out(dev, s->gpio_out, k->pin_count);
-+    qdev_init_gpio_in(dev, pca955x_gpio_in_handler, k->pin_count);
- }
- 
- static Property pca955x_properties[] = {
-diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
-index b6f4e264fe..c36525f0c3 100644
---- a/include/hw/misc/pca9552.h
-+++ b/include/hw/misc/pca9552.h
-@@ -30,7 +30,8 @@ struct PCA955xState {
-     uint8_t pointer;
- 
-     uint8_t regs[PCA955X_NR_REGS];
--    qemu_irq gpio[PCA955X_PIN_COUNT_MAX];
-+    qemu_irq gpio_out[PCA955X_PIN_COUNT_MAX];
-+    uint8_t ext_state[PCA955X_PIN_COUNT_MAX];
-     char *description; /* For debugging purpose only */
- };
- 
--- 
-2.31.1
+Later, Juan.
 

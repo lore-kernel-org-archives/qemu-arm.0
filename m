@@ -1,172 +1,265 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1340065ejb;
-        Fri, 20 Oct 2023 09:08:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGUKrKZg8j3N1VtJZexktlbvyP3NR8kTheGl/QiVoM0b2OFJlJNxvk28ALifb6CG9Twanlv
-X-Received: by 2002:a05:620a:469f:b0:777:659d:7fcb with SMTP id bq31-20020a05620a469f00b00777659d7fcbmr2571803qkb.36.1697818093235;
-        Fri, 20 Oct 2023 09:08:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697818093; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1357359ejb;
+        Fri, 20 Oct 2023 09:32:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEsRhUHzWZipF/8ukAkTKCV/uGtH4wNirmq7TXkQ45yUVQRgTdTuexl46obj0jrnDWCFTfh
+X-Received: by 2002:a05:622a:411:b0:419:63ff:5ab2 with SMTP id n17-20020a05622a041100b0041963ff5ab2mr2415002qtx.24.1697819578033;
+        Fri, 20 Oct 2023 09:32:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697819578; cv=none;
         d=google.com; s=arc-20160816;
-        b=WJJtsbYCB3M1WalWwCGc7G697Hp2/z4fqVkieVYrqEJtrt1AYZbg5+RPoU40/N3aos
-         ESdEhP31+IKK/YN2GdYZHxbttiW992Twp013FLtiJxUVVzDuNiyjckYA04uPAuLAhenL
-         VGpQgWc8otlaJi5ooppLl08HbirgXqPOy7P/reX1UEN5fkHi1xRIg4K5lAncgVRye8TY
-         XnLjxnMGzAQE1fjXDFxCdwXV7T4Z++Bhz1muiRo8Dlppai7pHIxtlJ76gzMOVP2gxvqn
-         7PFcOqcVOnj8DBysGo7NBMy1z3rBdiT6azQozeyLsb/rb3IBUFeHZt79zPH8k0w5UkHe
-         bB9A==
+        b=mq5Z288Po/DWXphCsSTZHX400gxYePBLHpLWLDaOoQkS7S+hJiaT0jkhjEDv4gvlc/
+         8NYs45H3SUyYV5B0CRQvuEjBP559jt7GmkPNabHaJ6kyl+lnd5iYccGgUMtiLT4a33I0
+         1Cu/Giixc3qVxdr9bTDIYy9pDp467WquIHtJK5efLJsUM82tEtPVP2GXF67UERvfdlWP
+         FrprZu2J4Xbo+C3mD24VzS3SR2HF8KRsq/eghMx4BB+ave0ym90WoZFQw0NQDkz5QFqq
+         qdrDlekPrav6Z9XKrMnJlbSWrXn6GdXAj1OldVadnpfhw1GqSntXve4iTtwMdNgoWb9S
+         Ge5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=6sh2tTqqzt+fCS20R4EZXWMlcUrT2ew4eP3bmw4QvLU=;
-        fh=z46/IVP2/IS7320ELdCiDQeXUFOSh5QhHN2bZKEsqnk=;
-        b=QfAz/ysVUgYlhXmxLZnNPu61v0vTzxsyQEIh6iCsQyvN1UZsVQdLKctcijxyXPxwJV
-         KXASLYJyc55zHcFVqgjdL/RKgHZmbD/nyXgQiYzDnlDTf1gXUFQ0vx7eptcIz/fnEcMb
-         gQvqt8OiXm1U0KfhD3RD4GZtLjamVuQxRZ9/sB9xGQTaeY+Lx/VgSZVO00kd2GNhDFf4
-         mYA9NXRSSEztB/jdNyyYKsaMvHK611r5MEwYUOBUn0yHuXJUjCOBz1yrwhTBxSKuIcdf
-         h+q+nt4w2HQlP6/Am34uL/AG/Xt/VdxYYqZAuaQ7ff8TjZYuQzpzXwTZC5HqVt+LASOI
-         QG3w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:date:cc:to:from:subject
+         :message-id:dkim-signature;
+        bh=aTEWIniqsxNQl9kkNX1vfgGsunuySo1qaZrG+lN3pOc=;
+        fh=mgru9I8hWo8jcKRUx6wPki+ZCUiP9zuf3bP0pFPyIUo=;
+        b=F552dbSCuMxqy4uK15eQkrJtVxYlCImDVCYUfk2CXrVAYZ3vRPWUQ4JuHc1QgzkfeD
+         vy6liqn3MSUIJwDUyrStdbAW/2YZN02ghPehDzumXiH/hHSiX7ZUBgJlEUK6CeyNxvib
+         pw8cpyX+Ry+epOFunlliGqvcJokRlEEf3Cjn13AAcfO2/N24pfPhFZh/GZFFtR7C2K78
+         XsQ6xKEmWhETk8m8VKIyNtd+jAH9FpbRS3eiafpEsEU+jClGGIlhNoF6H9i5clmWnu9Q
+         wRd0uYi3u1xVeZICYkdpOo6xw/X7AoEXN4czX/YgiHT9maUTeUHdcFoy90qy13SisNmI
+         213g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LEyMBSBg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=A63o5gmR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qr5-20020a05620a390500b00773a83f33aasi1685758qkn.698.2023.10.20.09.08.13
+        by mx.google.com with ESMTPS id p6-20020a05622a13c600b00417eb3b1768si1463851qtk.224.2023.10.20.09.32.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 09:08:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 09:32:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LEyMBSBg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=A63o5gmR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qts2j-0007pF-Qe; Fri, 20 Oct 2023 12:08:10 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtsQY-0005mq-AQ; Fri, 20 Oct 2023 12:32:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qts2Q-0007H4-HF
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 12:07:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qtsQV-0005m7-Rd; Fri, 20 Oct 2023 12:32:43 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qts2O-0001d1-2H
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 12:07:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697818067;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=6sh2tTqqzt+fCS20R4EZXWMlcUrT2ew4eP3bmw4QvLU=;
- b=LEyMBSBg5LlbSwrsYPah2w8l9hA5MSjF4pqa5bt4Uo0og5jdCiSqhPqhw2+zGvY0TezpyW
- YuqOm+MTUc66WQZ6oAJBRZ5qO/+UMmGZRGABhKGMjrM3wthDDloqSMJD/s1yNTbLehZhJc
- CHf5wX6wBsoc2fHYQs7cpGf+Bj+RdCE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-609-fMKHpESBMAGMrj_ARGJK_A-1; Fri, 20 Oct 2023 12:07:45 -0400
-X-MC-Unique: fMKHpESBMAGMrj_ARGJK_A-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2B34A88B773;
- Fri, 20 Oct 2023 16:07:43 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.57])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ACFEF111D798;
- Fri, 20 Oct 2023 16:07:41 +0000 (UTC)
-Date: Fri, 20 Oct 2023 09:07:40 -0700
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Juan Quintela <quintela@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, "Denis V. Lunev" <den@openvz.org>,
- Juan Quintela <quintela@redhat.com>, Fam Zheng <fam@euphon.net>,
- kvm@vger.kernel.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Kevin Wolf <kwolf@redhat.com>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>, qemu-arm@nongnu.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Reinoud Zandijk <reinoud@netbsd.org>, Thomas Huth <thuth@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, qemu-ppc@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Stefan Weil <sw@weilnetz.de>, Peter Xu <peterx@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Jeff Cody <codyprime@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- Leonardo Bras <leobras@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
-Subject: Re: [PULL 00/17] Migration 20231020 patches
-Message-ID: <20231020160740.GA472217@fedora>
-References: <20231020065751.26047-1-quintela@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="dQl1U8CNCS9+/GUj"
-Content-Disposition: inline
-In-Reply-To: <20231020065751.26047-1-quintela@redhat.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qtsQT-0000Lb-IE; Fri, 20 Oct 2023 12:32:43 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39KGAYsc027709; Fri, 20 Oct 2023 16:32:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ mime-version : content-transfer-encoding; s=pp1;
+ bh=aTEWIniqsxNQl9kkNX1vfgGsunuySo1qaZrG+lN3pOc=;
+ b=A63o5gmR4eOkTpSeZi4wKHBI5EFirMnCmnz14lUFoHMT69PfdA7pi/SOyosgUJHutUZB
+ QSO9c/uWCcm9SnrV3io57w8B8Ciga+0MBdYSz7pDUl7JlXZYHQ5bwCKeh5DhCPAUHB3i
+ TpBGCVcecI0GyAFNRDeR7wdfSmv+aq4XxqvxlKbSDNsh/sg7Tw1r5GVzBERBZh/3jufF
+ JtfFGb+yYka0z2KNBu73egLOe/1jFNpwRW6ibL0LYl1IHX12sAtHn18ak+mvYjL8F0Zx
+ +ejgTLJE7F2gmXu7r1D73hLgQCZP98iyWshoKIfhLQKEF03CECWAeTOsi2WQeg4D5Bx0 1A== 
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tuvubgvs6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Oct 2023 16:32:21 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39KEwDuh002779; Fri, 20 Oct 2023 16:32:09 GMT
+Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc44dsbe-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Oct 2023 16:32:09 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39KGW8s820710010
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 20 Oct 2023 16:32:09 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8E55D58067;
+ Fri, 20 Oct 2023 16:32:08 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5545F58064;
+ Fri, 20 Oct 2023 16:32:08 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 20 Oct 2023 16:32:08 +0000 (GMT)
+Message-ID: <53fccc103ab72cfd93e98fd28bd0a869a43b6a83.camel@linux.vnet.ibm.com>
+Subject: Re: [PATCH 1/2] misc/pca9552: Fix inverted input status
+From: Miles Glenn <milesg@linux.vnet.ibm.com>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Andrew
+ Jeffery <andrew@codeconstruct.com.au>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, f4bug@amsat.org
+Date: Fri, 20 Oct 2023 11:32:08 -0500
+In-Reply-To: <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
+References: <20231019204011.3174115-1-milesg@linux.vnet.ibm.com>
+ <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
+ <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
+ <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: SrAi1bOEb5-NC0bUlzMDxGDbmJu1cRj-
+X-Proofpoint-ORIG-GUID: SrAi1bOEb5-NC0bUlzMDxGDbmJu1cRj-
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-20_10,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1011
+ malwarescore=0 phishscore=0 bulkscore=0 spamscore=0 lowpriorityscore=0
+ suspectscore=0 mlxlogscore=999 priorityscore=1501 mlxscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310200138
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gPfLmf4d5j/G
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xxZrPj0JkGEX
+
+On Fri, 2023-10-20 at 11:42 +0200, Philippe Mathieu-Daudé wrote:
+> On 20/10/23 04:51, Andrew Jeffery wrote:
+> > On Thu, 2023-10-19 at 15:40 -0500, Glenn Miles wrote:
+> > > > The pca9552 INPUT0 and INPUT1 registers are supposed to
+> > > > hold the logical values of the LED pins.  A logical 0
+> > > > should be seen in the INPUT0/1 registers for a pin when
+> > > > its corresponding LSn bits are set to 0, which is also
+> > > > the state needed for turning on an LED in a typical
+> > > > usage scenario.  Existing code was doing the opposite
+> > > > and setting INPUT0/1 bit to a 1 when the LSn bit was
+> > > > set to 0, so this commit fixes that.
+> > > > 
+> > > > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+> > > > ---
+> > > > 
+> > > > Changes from prior version:
+> > > >      - Added comment regarding pca953X
+> > > >      - Added cover letter
+> > > > 
+> > > >   hw/misc/pca9552.c          | 18 +++++++++++++-----
+> > > >   tests/qtest/pca9552-test.c |  6 +++---
+> > > >   2 files changed, 16 insertions(+), 8 deletions(-)
+> > > > 
+> > > > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> > > > index fff19e369a..445f56a9e8 100644
+> > > > --- a/hw/misc/pca9552.c
+> > > > +++ b/hw/misc/pca9552.c
+> > > > @@ -36,7 +36,10 @@ typedef struct PCA955xClass PCA955xClass;
+> > > >   
+> > > >   DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
+> > > >                          TYPE_PCA955X)
+> > > > -
+> > > > +/*
+> > > > + * Note:  The LED_ON and LED_OFF configuration values for the
+> > > > PCA955X
+> > > > + *        chips are the reverse of the PCA953X family of
+> > > > chips.
+> > > > + */
+> > > >   #define PCA9552_LED_ON   0x0
+> > > >   #define PCA9552_LED_OFF  0x1
+> > > >   #define PCA9552_LED_PWM0 0x2
+> > > > @@ -112,13 +115,18 @@ static void
+> > > > pca955x_update_pin_input(PCA955xState *s)
+> > > >   
+> > > >           switch (config) {
+> > > >           case PCA9552_LED_ON:
+> > > > -            qemu_set_irq(s->gpio[i], 1);
+> > > > -            s->regs[input_reg] |= 1 << input_shift;
+> > > > -            break;
+> > > > -        case PCA9552_LED_OFF:
+> > > > +            /* Pin is set to 0V to turn on LED */
+> > > >               qemu_set_irq(s->gpio[i], 0);
+> > > >               s->regs[input_reg] &= ~(1 << input_shift);
+> > > >               break;
+> > > > +        case PCA9552_LED_OFF:
+> > > > +            /*
+> > > > +             * Pin is set to Hi-Z to turn off LED and
+> > > > +             * pullup sets it to a logical 1.
+> > > > +             */
+> > > > +            qemu_set_irq(s->gpio[i], 1);
+> > > > +            s->regs[input_reg] |= 1 << input_shift;
+> > > > +            break;
+> > 
+> > So the witherspoon-bmc machine was a user of the PCA9552 outputs as
+> > LEDs. I guess its LEDs were in the wrong state the whole time? That
+> > looks like the only user though, and shouldn't be negatively
+> > affected.
+> 
+> Usually GPIO polarity is a machine/board property, not a device
+> one.
+> 
+> We could use the LED API (hw/misc/led.h) which initialize each
+> output with GpioPolarity.
+> 
+
+Thanks for your comments!   This piqued my curiosity so I decided to
+run a test with the witherspoon-bmc machine.  Without my changes, I ran
+the following command to turn off LED13 on the pca9552 which I had
+previously set to "on":
+
+  qom-set /machine/unattached/device[18] led13 off
+
+I had GDB connected at the time with a breakpoint set on
+led_set_state() so that I could see what was happening.  Due to the
+inversion bug, I expected the pca9552 code to set the pin low and also
+set the irq low, which it did.  The connected LED's on this pca9552
+were all configured as GPIO_POLARITY_ACTIVE_LOW, so I expected that
+setting the irq state low would actually turn on the LED.  Instead it
+turned off the LED.
+
+Reviewing the LED code, I believe the problem lies here:
+
+static void led_set_state_gpio_handler(void *opaque, int line, int
+new_state)
+{
+    LEDState *s = LED(opaque);
+
+    assert(line == 0);
+    led_set_state(s, !!new_state != s->gpio_active_high);
+}
 
 
---dQl1U8CNCS9+/GUj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+In my test, new_state was 0 and gpio_active_high was 0, resulting in
+the boolean expression of ( 0 != 0 ) which is false and results in
+turning off the LED.  So, this looks like a bug to me.
 
-Applied, thanks.
+For another simpler example, if the LED polarity was set to
+GPIO_POLARITY_ACTIVE_HIGH, then s->gpio_active_high would be 1.  Then,
+if we set the irq line to 1, wouldn't we expect the LED to turn on? 
+However, as the code stands, it would actually turn the LED off.  So, I
+think we can remove one of the "!"'s from in front of new_state.  Then,
+if the LED is active high and the irq line is set high, it would turn
+on the LED.  Correct?
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
+Thanks,
 
---dQl1U8CNCS9+/GUj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmUypcwACgkQnKSrs4Gr
-c8gs3Af/d/J1Qw1a6oSy8Cx1C9N0Ia4e908KPVp3OfXPjwqroYXoyb3RWPdqxY7B
-y3UUFgEr5C69ZOEbhb04N5tPc7QVvwcpmviB4DmcAtBycBl3sxCXWaejzvOmfm1w
-m/Q5NUJe0EoKX6sSqYxx/99cZA998qotK+jsZHtPnvrB03MV3k03lUl3uPBEs5un
-9G1GRWl/HFYFg11fdxJt9IozCzb5C+cirkU5SmEPHWGd7Ee6J/N7KPhSo0EqcKws
-LaMox+Ic/cJClzZJ1yXyKHKFtqcognYx9+ViktOVCVIRE0IYQvUgD0nV0qIAV9r6
-NKL/P6v8LUifcCk3eAoC8UarO0NVeg==
-=CToo
------END PGP SIGNATURE-----
-
---dQl1U8CNCS9+/GUj--
+Glenn
 

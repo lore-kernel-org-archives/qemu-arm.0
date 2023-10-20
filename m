@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1360921ejb;
-        Fri, 20 Oct 2023 09:38:05 -0700 (PDT)
-X-Received: by 2002:a17:906:794e:b0:9be:e90:5016 with SMTP id l14-20020a170906794e00b009be0e905016mr1800864ejo.24.1697819885723;
-        Fri, 20 Oct 2023 09:38:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697819885; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1360997ejb;
+        Fri, 20 Oct 2023 09:38:13 -0700 (PDT)
+X-Received: by 2002:a17:907:d19:b0:9bf:2f84:5de7 with SMTP id gn25-20020a1709070d1900b009bf2f845de7mr1639223ejc.4.1697819893651;
+        Fri, 20 Oct 2023 09:38:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697819893; cv=none;
         d=google.com; s=arc-20160816;
-        b=cw39cABNPojisvdvS7XXwWyOoJtjFh+kcGYohbJdymkpN4TuJJZwAiudIf3URcMu+r
-         wDjuruTrQ+RfXo1DJuI0RxoT1Nw/tLLIikT9BaF3pl45yjs6Ij9Llbk0WXdRK0/edZUg
-         AlitTYsbhxDJEz9LXg9FI8BVZ3kjBEiU6xUq94zo4hZWnGXfIXUnS05zD1xfi3jGoZyp
-         zB76JLA9uHz42WaPOI51dfUjn1/2RC0Oqd7Q0RyrtfwcGGr+iC1O1STs7pWkiqmtQPpq
-         TDs9+7VytYddIFtv9TJksennSss5UkdV50p/4A/ZYyEwS9rLPcu7OqjpoPDRohIGSXbL
-         YWMA==
+        b=C4rjNawzbz1+8AH4W6TFkPc+m+oHCsxs7pprxhNAXDCnG0m3b48y6dmP5DGqDvIwpD
+         3pmgsynQSzIc2IITz+/YoDMD9In2DClzakQQI9hsYVmay5kiBmdCCc7Pn0QCzjlNpS5B
+         SM2ma4BKQrJIYgXJ3eHFxpy67JGS/ktxoheAV8KijYAv/x91ewnIjA+wlMGe0flEZwMW
+         X1KgtUJ3ovyjOx2R7l4Z3Z4YyOCY8kdd5thz70YDhKcv+AYJk7NZ6tCAFneHdBB7DDtn
+         IK08T2Vc+QbrrRc1SlF0GLD/6AaA3Qt0lY39s8SKA+2pq8heYDg6ecY4DTHJVcfIUp51
+         lT5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tjEEqBquQG9Z9DNlaQ9SzOw2N7EVXn+JeOiCVrWLMU8=;
-        fh=SPcjYFonium3No4s8Rp03lYDnCWeZzR17WalTqjdJpg=;
-        b=AobsvIKhG9deCgMwsqEGjKL+uqHTs9fnZ6Y2gFJ5SOPe8dv9OKiJe9mzCGTeP+loBy
-         XkWtlwuKMVc+9hA6V9NJI9AbFtE+mSTEf/8vcPhtM6NO552IHgGQJk+pRWnzNO8vXo8g
-         yPa6GN6av2tIEv6KhhBSNHiAmsSfSa7V6o3vYHgiCZWG0hbIODZ9JReTfexavABfW5SV
-         0r4cezm+i6SOaExHCtyO/i/u3Z0QX/woEd0Eo1J3+QWwsbFnCYaoqoUK6LZDc6YHjGz+
-         nItM959RVDSahTmhiXS7nDZo7d6n2bctL21EX0UkUwIiHU6qCtdhG8G1hr2Y+8E9z8/3
-         Y3IA==
+        bh=sWVSb4kJOx4Py9xCdpLQSCowqDiVUo6mKEdRlRPdC3M=;
+        fh=DKFqlS81ToskO1Fhddh+qidiVb6DHRO0FpOqZOCvJlw=;
+        b=jd4OrI5SZjHqqTgi+PjNnPdW/UK+DbowIDoYAkAU+c6Xq73gyxuWhDVVNYdQwWfsyo
+         Yw5HyRpZFdIkazOboeGaKcWlhDCVPNUgZF6KbdJj4kQ7/ISprsq4PTrtruswHE2q7ama
+         jdRuEdTKJtVwmyIVb+nJ+GttdZ5BfwalI8BlDGMhzxZ2kikB6vLuEr+2jvJA1Lqgb44/
+         YqBlNYPxdQGf/4grlVAKVM0NSi2amA5HRyzq/tqmRIK2JyjF+CDFCQMWbXE9dVT5hucz
+         LMcA3oAhCufFxdcO/mOf0H9U1ozjq3SXab/iRyTDmM8Q8ca6iAyTv/m3xs2lsJv4XSrU
+         x1IQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mohJqM6a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HBIqM7Gc;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id og48-20020a1709071df000b009ae70814035sor723332ejc.8.2023.10.20.09.38.05
+        by mx.google.com with SMTPS id mm22-20020a170906cc5600b009b2cd1d2a18sor718414ejb.10.2023.10.20.09.38.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Oct 2023 09:38:05 -0700 (PDT)
+        Fri, 20 Oct 2023 09:38:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mohJqM6a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HBIqM7Gc;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697819885; x=1698424685; darn=linaro.org;
+        d=linaro.org; s=google; t=1697819893; x=1698424693; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=tjEEqBquQG9Z9DNlaQ9SzOw2N7EVXn+JeOiCVrWLMU8=;
-        b=mohJqM6aWwvvJRtBWYHRvIFZ8ZTFctubtsogRd3u8sN4vNmxiAeqtoIHmXdUDfNiRm
-         0Tv7HLKeTmf4OieFnTtlaCrBrQdrvtsNclZi7oRQKDwWM1ftCUf0hsR9Xv+nmIVWJ3p1
-         HNxh/ji37ebPihvtM5mVmwgpcFvpiks1bJm7faUw1TRFE1TGZ3bd6wNlCIjrGO6T68WY
-         JXyuOJIIQBICMOjM5or7GguO624IOzTQ+PCXTmT47S6TYVMtu/OvmDjp8kj5/XaCGdOv
-         NFivm20GwvpQzxscHrpeaGeOzJD4zk/SRyHMQMXsKl+UBva77jyVGWTxQogCWVDzsT4r
-         Jj9w==
+        bh=sWVSb4kJOx4Py9xCdpLQSCowqDiVUo6mKEdRlRPdC3M=;
+        b=HBIqM7GcpWRUBHWOl/VG6Yc5myTZ+JWHJDWnJ56c9uh+QYCjIeK1oeL0k4/Ouyy2On
+         bKvHYWzO/ER6Oi8ZMsCLC1kcAGALRUStMcAKEHBVcTfNZNf9HXBQr4Pg4W9G2kldpHcK
+         8421etkFzfHhLge6ZmuWzwZ7rWOD1NB1Rq2hPWFm1Gg068LPE06/tABPk+h+2nhnHizM
+         c0m2ytX7cD8qc3f+sRZIu0iHqWXsZQYGJYjuuguYLsVeofL0jdjqHTz9YKj2CTjcPqB1
+         c7XpZAyIo2VF0aXo2Sh5EOAA409SKFWk5JM9H47RFl8NrvPil0cjQeBMIUgkPlMiUeb7
+         PkGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697819885; x=1698424685;
+        d=1e100.net; s=20230601; t=1697819893; x=1698424693;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tjEEqBquQG9Z9DNlaQ9SzOw2N7EVXn+JeOiCVrWLMU8=;
-        b=No7ppKBGY3kkZ/QP7SEHT1CfV6ve9yts3UgaezQPdwBrvPte/iTW+ZxHa+vkYmmcxB
-         q2Q33vJa2akmzaRC/OjJDxB7qynP8CWDsye3txYcBuQx/9XT9XzOSMGWLeNqD5MJ/EKW
-         HL/wCYac3nIESwW/xDK9Qqs+a34re3x6nW20JsIa0Unzdpw7ojHbfQURNWY5dnhjaNLE
-         iy5qdj/oFhs8ZIbKqTTumc9Hz+CEOVFBn1FKdSX/4IyKv1JjW/2SJKlw71OgtSpL1gtO
-         cgpVwmtRPzHnMCR/mo0BNBNzWLbgyXfV1ya9fj6LYeZCS3t19e9dK3vOxe/0Joo28BV4
-         76Vw==
-X-Gm-Message-State: AOJu0YyWu38dowrI+skbj994cF3PdrH17YvZMTCo6GBYiK0mRmKonI1W
-	5oydCW3gyyRBi/GbKDFqXuFX8vDt
-X-Google-Smtp-Source: AGHT+IH1BrzvzSBXULb5Pinq/MRgXe3aitbx7Ej+tcC4IN3cXg4AnPGTjB6ty3nCHDDiMZGeA9k5VA==
-X-Received: by 2002:a17:907:720f:b0:9ae:6a60:81a2 with SMTP id dr15-20020a170907720f00b009ae6a6081a2mr1674744ejc.25.1697819885302;
-        Fri, 20 Oct 2023 09:38:05 -0700 (PDT)
+        bh=sWVSb4kJOx4Py9xCdpLQSCowqDiVUo6mKEdRlRPdC3M=;
+        b=Zn+I2wMPAkeAB8p2ffUanao1QKE0xirC4bDW0MKE9pPNZo8O+XiUWhY+zVsQxb6sSv
+         wvoblynrdmYgdum5NxjaNZczrcCwPyHoDX3g7yDKLFYn7x6R45XNAs3VJAJ8TIMomVEm
+         w3Ne7uMzFfG1I+Gqh5w/x7jzcuaVks/5TZ0axwcokb1za25zkexHLXW35UZOhoWVh+Vt
+         5zsoXfp3RZMpuPMq7Dbp30Tix6UciDYWMSo/WBgBZIqWM4acCFiU4S382w3M45nvI/KP
+         +2K3adcYX5pDKR8v5KrDUGPdeogg4gZQeYZj0HCiHJB+UeVb6LRbOBM96XYorTWBz+o/
+         EpGg==
+X-Gm-Message-State: AOJu0YznY47SNgKxAyb1aGpSsQ4NMiASj9hSv+8/uaeFEwdXOkt/eQCX
+	XsHoErbpcR0L7XSTHf50e00Z3UP0
+X-Google-Smtp-Source: AGHT+IEMqrtne6Pvcq15oEXxD3gxQ67/Vyyv98aCsGT08pg/OfAYRxDc6BbyAqJ31WIn3cQ2nejFNA==
+X-Received: by 2002:a17:907:948e:b0:9bf:9c58:e91e with SMTP id dm14-20020a170907948e00b009bf9c58e91emr1600709ejc.56.1697819892970;
+        Fri, 20 Oct 2023 09:38:12 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr. [176.171.212.97])
-        by smtp.gmail.com with ESMTPSA id m16-20020a1709066d1000b009a1a5a7ebacsm1763147ejr.201.2023.10.20.09.38.01
+        by smtp.gmail.com with ESMTPSA id w21-20020a170907271500b009ad81554c1bsm1780965ejk.55.2023.10.20.09.38.10
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Oct 2023 09:38:04 -0700 (PDT)
+        Fri, 20 Oct 2023 09:38:12 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -87,493 +87,247 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Zhao Liu <zhao1.liu@intel.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Felipe Balbi <balbi@kernel.org>,
-	Niek Linnenbank <nieklinnenbank@gmail.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>
-Subject: [PATCH 10/19] cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_ARM_CPU)
-Date: Fri, 20 Oct 2023 18:36:32 +0200
-Message-ID: <20231020163643.86105-11-philmd@linaro.org>
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Alexey Kardashevskiy <aik@ozlabs.ru>
+Subject: [PATCH 11/19] cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_POWERPC_CPU)
+Date: Fri, 20 Oct 2023 18:36:33 +0200
+Message-ID: <20231020163643.86105-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231020163643.86105-1-philmd@linaro.org>
 References: <20231020163643.86105-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EFXTLBrmGKHh
+X-TUID: o0TNNUDLUTX0
 
 Mechanical change using the following coccinelle script:
 
   @@ @@
   -   first_cpu
-  +   qemu_get_cpu(0, TYPE_ARM_CPU)
+  +   qemu_get_cpu(0, TYPE_POWERPC_CPU)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/aspeed.c            |  5 +++--
- hw/arm/bananapi_m2u.c      |  3 ++-
- hw/arm/boot.c              | 12 ++++++------
- hw/arm/exynos4_boards.c    |  6 ++++--
- hw/arm/highbank.c          |  3 ++-
- hw/arm/microbit.c          |  3 ++-
- hw/arm/mps2-tz.c           |  3 ++-
- hw/arm/mps2.c              |  3 ++-
- hw/arm/msf2-som.c          |  3 ++-
- hw/arm/musca.c             |  3 ++-
- hw/arm/netduino2.c         |  3 ++-
- hw/arm/netduinoplus2.c     |  2 +-
- hw/arm/olimex-stm32-h405.c |  2 +-
- hw/arm/orangepi.c          |  3 ++-
- hw/arm/realview.c          |  5 +++--
- hw/arm/sbsa-ref.c          |  3 ++-
- hw/arm/stellaris.c         |  3 ++-
- hw/arm/stm32vldiscovery.c  |  2 +-
- hw/arm/vexpress.c          |  3 ++-
- hw/arm/virt.c              | 17 ++++++++++-------
- hw/arm/xilinx_zynq.c       |  3 ++-
- target/arm/arch_dump.c     |  6 +++---
- 22 files changed, 58 insertions(+), 38 deletions(-)
+ hw/ppc/e500.c          |  2 +-
+ hw/ppc/ppc.c           |  4 ++--
+ hw/ppc/prep_systemio.c |  2 +-
+ hw/ppc/spapr.c         | 11 ++++++-----
+ hw/ppc/spapr_caps.c    | 10 +++++-----
+ hw/ppc/spapr_rtas.c    |  2 +-
+ hw/ppc/spapr_vof.c     |  2 +-
+ hw/ppc/vof.c           |  3 ++-
+ target/ppc/arch_dump.c |  4 ++--
+ 9 files changed, 21 insertions(+), 19 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index f8ba67531a..6a4d87bfe2 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -446,7 +446,8 @@ static void aspeed_machine_init(MachineState *machine)
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index c4bf3fef32..02d14404d9 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -373,7 +373,7 @@ static int ppce500_load_device_tree(PPCE500MachineState *pms,
+     MachineState *machine = MACHINE(pms);
+     unsigned int smp_cpus = machine->smp.cpus;
+     const PPCE500MachineClass *pmc = PPCE500_MACHINE_GET_CLASS(pms);
+-    CPUPPCState *env = cpu_env(first_cpu);
++    CPUPPCState *env = cpu_env(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     int ret = -1;
+     uint64_t mem_reg_property[] = { 0, cpu_to_be64(machine->ram_size) };
+     int fdt_size;
+diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+index be167710a3..be0b1536f5 100644
+--- a/hw/ppc/ppc.c
++++ b/hw/ppc/ppc.c
+@@ -970,7 +970,7 @@ void cpu_ppc_store_purr(CPUPPCState *env, uint64_t value)
+ static void timebase_save(PPCTimebase *tb)
+ {
+     uint64_t ticks = cpu_get_host_ticks();
+-    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+ 
+     if (!first_ppc_cpu->env.tb_env) {
+         error_report("No timebase object");
+@@ -998,7 +998,7 @@ static void timebase_save(PPCTimebase *tb)
+ static void timebase_load(PPCTimebase *tb)
+ {
+     CPUState *cpu;
+-    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     int64_t tb_off_adj, tb_off;
+     unsigned long freq;
+ 
+diff --git a/hw/ppc/prep_systemio.c b/hw/ppc/prep_systemio.c
+index c96cefb13d..0431cde91c 100644
+--- a/hw/ppc/prep_systemio.c
++++ b/hw/ppc/prep_systemio.c
+@@ -261,7 +261,7 @@ static void prep_systemio_realize(DeviceState *dev, Error **errp)
+     s->iomap_type = PORT0850_IOMAP_NONCONTIGUOUS;
+     qemu_set_irq(s->non_contiguous_io_map_irq,
+                  s->iomap_type & PORT0850_IOMAP_NONCONTIGUOUS);
+-    cpu = POWERPC_CPU(first_cpu);
++    cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     s->softreset_irq = qdev_get_gpio_in(DEVICE(cpu), PPC6xx_INPUT_HRESET);
+ 
+     isa_register_portio_list(isa, &s->portio, 0x0, ppc_io800_port_list, s,
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index cb840676d3..a5006eaa5e 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -981,7 +981,7 @@ static void spapr_dt_rtas(SpaprMachineState *spapr, void *fdt)
+ static void spapr_dt_ov5_platform_support(SpaprMachineState *spapr, void *fdt,
+                                           int chosen)
+ {
+-    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+ 
+     char val[2 * 4] = {
+         23, 0x00, /* XICS / XIVE mode */
+@@ -1125,7 +1125,7 @@ static void spapr_dt_hypervisor(SpaprMachineState *spapr, void *fdt)
+          * Older KVM versions with older guest kernels were broken
+          * with the magic page, don't allow the guest to map it.
+          */
+-        if (!kvmppc_get_hypercall(cpu_env(first_cpu), hypercall,
++        if (!kvmppc_get_hypercall(cpu_env(qemu_get_cpu(0, TYPE_POWERPC_CPU)), hypercall,
+                                   sizeof(hypercall))) {
+             _FDT(fdt_setprop(fdt, hypervisor, "hcall-instructions",
+                              hypercall, sizeof(hypercall)));
+@@ -1669,7 +1669,7 @@ static void spapr_machine_reset(MachineState *machine, ShutdownCause reason)
+     pef_kvm_reset(machine->cgs, &error_fatal);
+     spapr_caps_apply(spapr);
+ 
+-    first_ppc_cpu = POWERPC_CPU(first_cpu);
++    first_ppc_cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     if (kvm_enabled() && kvmppc_has_cap_mmu_radix() &&
+         ppc_type_check_compat(machine->cpu_type, CPU_POWERPC_LOGICAL_3_00, 0,
+                               spapr->max_compat_pvr)) {
+@@ -1845,7 +1845,7 @@ static int spapr_post_load(void *opaque, int version_id)
+     }
+ 
+     if (kvm_enabled() && spapr->patb_entry) {
+-        PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++        PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+         bool radix = !!(spapr->patb_entry & PATE1_GR);
+         bool gtse = !!(cpu->env.spr[SPR_LPCR] & LPCR_GTSE);
+ 
+@@ -4014,7 +4014,8 @@ static void spapr_core_plug(HotplugHandler *hotplug_dev, DeviceState *dev)
+      */
+     if (hotplugged) {
+         for (i = 0; i < cc->nr_threads; i++) {
+-            ppc_set_compat(core->threads[i], POWERPC_CPU(first_cpu)->compat_pvr,
++            ppc_set_compat(core->threads[i],
++                           POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU))->compat_pvr,
+                            &error_abort);
          }
      }
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index 5a0755d34f..0c1f00d869 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -194,7 +194,7 @@ static void cap_htm_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ static void cap_vsx_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ {
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     CPUPPCState *env = &cpu->env;
  
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &aspeed_board_binfo);
- }
+     if (!val) {
+@@ -213,7 +213,7 @@ static void cap_vsx_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ static void cap_dfp_apply(SpaprMachineState *spapr, uint8_t val, Error **errp)
+ {
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     CPUPPCState *env = &cpu->env;
  
- static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
-@@ -1553,7 +1554,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
-         amc->i2c_init(bmc);
-     }
+     if (!val) {
+@@ -440,7 +440,7 @@ static void cap_nested_kvm_hv_apply(SpaprMachineState *spapr,
+                                     uint8_t val, Error **errp)
+ {
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     CPUPPCState *env = &cpu->env;
  
--    armv7m_load_kernel(ARM_CPU(first_cpu),
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-                        machine->kernel_filename,
-                        0,
-                        AST1030_INTERNAL_FLASH_SIZE);
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 74121d8966..431b1c9bf9 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -127,7 +127,8 @@ static void bpim2u_init(MachineState *machine)
-     bpim2u_binfo.loader_start = r40->memmap[AW_R40_DEV_SDRAM];
-     bpim2u_binfo.ram_size = machine->ram_size;
-     bpim2u_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &bpim2u_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &bpim2u_binfo);
- }
+     if (!val) {
+@@ -494,7 +494,7 @@ static void cap_large_decr_apply(SpaprMachineState *spapr,
+                                  uint8_t val, Error **errp)
+ {
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
  
- static void bpim2u_machine_init(MachineClass *mc)
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index f7def3a60c..71c0775984 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -781,7 +781,7 @@ static void do_cpu_reset(void *opaque)
+     if (!val) {
+@@ -632,7 +632,7 @@ static void cap_ail_mode_3_apply(SpaprMachineState *spapr,
+                                      uint8_t val, Error **errp)
+ {
+     ERRP_GUARD();
+-    PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
  
-                 /* Set to non-secure if not a secure boot */
-                 if (!info->secure_boot &&
--                    (cs != first_cpu || !info->secure_board_setup)) {
-+                    (cs != qemu_get_cpu(0, TYPE_ARM_CPU) || !info->secure_board_setup)) {
-                     /* Linux expects non-secure state */
-                     env->cp15.scr_el3 |= SCR_NS;
-                     /* Set NSACR.{CP11,CP10} so NS can access the FPU */
-@@ -800,7 +800,7 @@ static void do_cpu_reset(void *opaque)
-                 cpsr_write(env, ARM_CPU_MODE_HYP, CPSR_M, CPSRWriteRaw);
+     if (!val) {
+diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+index 7df21581c2..3d4e93a188 100644
+--- a/hw/ppc/spapr_rtas.c
++++ b/hw/ppc/spapr_rtas.c
+@@ -539,7 +539,7 @@ uint64_t qtest_rtas_call(char *cmd, uint32_t nargs, uint64_t args,
+     for (token = 0; token < RTAS_TOKEN_MAX - RTAS_TOKEN_BASE; token++) {
+         if (strcmp(cmd, rtas_table[token].name) == 0) {
+             SpaprMachineState *spapr = SPAPR_MACHINE(qdev_get_machine());
+-            PowerPCCPU *cpu = POWERPC_CPU(first_cpu);
++            PowerPCCPU *cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+ 
+             rtas_table[token].fn(cpu, spapr, token + RTAS_TOKEN_BASE,
+                                  nargs, args, nret, rets);
+diff --git a/hw/ppc/spapr_vof.c b/hw/ppc/spapr_vof.c
+index 09f29be0b9..301b3cd433 100644
+--- a/hw/ppc/spapr_vof.c
++++ b/hw/ppc/spapr_vof.c
+@@ -58,7 +58,7 @@ void spapr_vof_reset(SpaprMachineState *spapr, void *fdt, Error **errp)
+ {
+     target_ulong stack_ptr;
+     Vof *vof = spapr->vof;
+-    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(first_cpu);
++    PowerPCCPU *first_ppc_cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
+ 
+     vof_init(vof, spapr->rma_size, errp);
+ 
+diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+index e3b430a81f..9fa1cd9e19 100644
+--- a/hw/ppc/vof.c
++++ b/hw/ppc/vof.c
+@@ -797,7 +797,8 @@ static uint32_t vof_call_method(MachineState *ms, Vof *vof, uint32_t methodaddr,
+                 VofMachineIfClass *vmc = VOF_MACHINE_GET_CLASS(vmo);
+ 
+                 g_assert(vmc->client_architecture_support);
+-                ret = (uint32_t)vmc->client_architecture_support(ms, first_cpu,
++                ret = (uint32_t)vmc->client_architecture_support(ms,
++                                                                 qemu_get_cpu(0, TYPE_POWERPC_CPU),
+                                                                  param1);
              }
  
--            if (cs == first_cpu) {
-+            if (cs == qemu_get_cpu(0, TYPE_ARM_CPU)) {
-                 AddressSpace *as = arm_boot_address_space(cpu, info);
- 
-                 cpu_set_pc(cs, info->loader_start);
-@@ -1187,7 +1187,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
-     }
-     info->is_linux = is_linux;
- 
--    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+    for (cs = qemu_get_cpu(0, TYPE_ARM_CPU); cs; cs = CPU_NEXT(cs)) {
-         ARM_CPU(cs)->env.boot_info = info;
-     }
- }
-@@ -1264,7 +1264,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-      * actually loading a kernel, the handler is also responsible for
-      * arranging that we start it correctly.
-      */
--    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+    for (cs = qemu_get_cpu(0, TYPE_ARM_CPU); cs; cs = CPU_NEXT(cs)) {
-         qemu_register_reset(do_cpu_reset, ARM_CPU(cs));
-         nb_cpus++;
-     }
-@@ -1325,7 +1325,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-     }
- 
-     if (info->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
--        for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+        for (cs = qemu_get_cpu(0, TYPE_ARM_CPU); cs; cs = CPU_NEXT(cs)) {
-             Object *cpuobj = OBJECT(cs);
- 
-             object_property_set_int(cpuobj, "psci-conduit", info->psci_conduit,
-@@ -1335,7 +1335,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
-              * code in do_cpu_reset(), we assume first_cpu is the primary
-              * CPU.
-              */
--            if (cs != first_cpu) {
-+            if (cs != qemu_get_cpu(0, TYPE_ARM_CPU)) {
-                 object_property_set_bool(cpuobj, "start-powered-off", true,
-                                          &error_abort);
-             }
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index ef5bcbc212..f8cf0588b4 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -136,7 +136,8 @@ static void nuri_init(MachineState *machine)
+diff --git a/target/ppc/arch_dump.c b/target/ppc/arch_dump.c
+index a8315659d9..be2a78d01f 100644
+--- a/target/ppc/arch_dump.c
++++ b/target/ppc/arch_dump.c
+@@ -228,11 +228,11 @@ int cpu_get_dump_info(ArchDumpInfo *info,
  {
-     exynos4_boards_init_common(machine, EXYNOS4_BOARD_NURI);
- 
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &exynos4_board_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &exynos4_board_binfo);
- }
- 
- static void smdkc210_init(MachineState *machine)
-@@ -146,7 +147,8 @@ static void smdkc210_init(MachineState *machine)
- 
-     lan9215_init(SMDK_LAN9118_BASE_ADDR,
-             qemu_irq_invert(s->soc.irq_table[exynos4210_get_irq(37, 1)]));
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &exynos4_board_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &exynos4_board_binfo);
- }
- 
- static void nuri_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index f12aacea6b..393fa8a468 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -328,7 +328,8 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-     highbank_binfo.board_setup_addr = BOARD_SETUP_ADDR;
-     highbank_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
- 
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &highbank_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &highbank_binfo);
- }
- 
- static void highbank_init(MachineState *machine)
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-index 50df362088..19c2fc3b8e 100644
---- a/hw/arm/microbit.c
-+++ b/hw/arm/microbit.c
-@@ -56,7 +56,8 @@ static void microbit_init(MachineState *machine)
-     memory_region_add_subregion_overlap(&s->nrf51.container, NRF51_TWI_BASE,
-                                         mr, -1);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       machine->kernel_filename,
-                        0, s->nrf51.flash_size);
- }
- 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index eae3639da2..0b26eab45d 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -1217,7 +1217,8 @@ static void mps2tz_common_init(MachineState *machine)
-                                     mms->remap_irq);
-     }
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       machine->kernel_filename,
-                        0, boot_ram_size(mms));
- }
- 
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index d92fd60684..86e5ca0ce6 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -462,7 +462,8 @@ static void mps2_common_init(MachineState *machine)
-                  qdev_get_gpio_in(armv7m,
-                                   mmc->fpga_type == FPGA_AN511 ? 47 : 13));
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       machine->kernel_filename,
-                        0, 0x400000);
- }
- 
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index 7b3106c790..42a3eb4905 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -100,7 +100,8 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
-     cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       machine->kernel_filename,
-                        0, soc->envm_size);
- }
- 
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index 6eeee57c9d..8d9b93d931 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -597,7 +597,8 @@ static void musca_init(MachineState *machine)
-                                                      "cfg_sec_resp", 0));
-     }
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       machine->kernel_filename,
-                        0, 0x2000000);
- }
- 
-diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-index 83753d53a3..61fe0346fe 100644
---- a/hw/arm/netduino2.c
-+++ b/hw/arm/netduino2.c
-@@ -48,7 +48,8 @@ static void netduino2_init(MachineState *machine)
-     qdev_connect_clock_in(dev, "sysclk", sysclk);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       machine->kernel_filename,
-                        0, FLASH_SIZE);
- }
- 
-diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-index 515c081605..ad68421b97 100644
---- a/hw/arm/netduinoplus2.c
-+++ b/hw/arm/netduinoplus2.c
-@@ -48,7 +48,7 @@ static void netduinoplus2_init(MachineState *machine)
-     qdev_connect_clock_in(dev, "sysclk", sysclk);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu),
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-                        machine->kernel_filename,
-                        0, FLASH_SIZE);
- }
-diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
-index 3aa61c91b7..a44c6188c4 100644
---- a/hw/arm/olimex-stm32-h405.c
-+++ b/hw/arm/olimex-stm32-h405.c
-@@ -51,7 +51,7 @@ static void olimex_stm32_h405_init(MachineState *machine)
-     qdev_connect_clock_in(dev, "sysclk", sysclk);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu),
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-                        machine->kernel_filename,
-                        0, FLASH_SIZE);
- }
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index 10653361ed..7d44715111 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -105,7 +105,8 @@ static void orangepi_init(MachineState *machine)
-     orangepi_binfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
-     orangepi_binfo.ram_size = machine->ram_size;
-     orangepi_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &orangepi_binfo);
- }
- 
- static void orangepi_machine_init(MachineClass *mc)
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 8f89526596..be709146c8 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -136,7 +136,7 @@ static void realview_init(MachineState *machine,
- 
-         cpu_irq[n] = qdev_get_gpio_in(DEVICE(cpuobj), ARM_CPU_IRQ);
-     }
--    cpu = ARM_CPU(first_cpu);
-+    cpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
-     env = &cpu->env;
-     if (arm_feature(env, ARM_FEATURE_V7)) {
-         if (is_mpcore) {
-@@ -384,7 +384,8 @@ static void realview_init(MachineState *machine,
-     realview_binfo.ram_size = ram_size;
-     realview_binfo.board_id = realview_board_id[board_type];
-     realview_binfo.loader_start = (board_type == BOARD_PB_A8 ? 0x70000000 : 0);
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &realview_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &realview_binfo);
- }
- 
- static void realview_eb_init(MachineState *machine)
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index a85004809f..01c948725c 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -844,7 +844,8 @@ static void sbsa_ref_init(MachineState *machine)
-     sms->bootinfo.loader_start = sbsa_ref_memmap[SBSA_MEM].base;
-     sms->bootinfo.get_dtb = sbsa_ref_dtb;
-     sms->bootinfo.firmware_loaded = firmware_loaded;
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &sms->bootinfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &sms->bootinfo);
- }
- 
- static const CPUArchIdList *sbsa_ref_possible_cpu_arch_ids(MachineState *ms)
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index aa5b0ddfaa..0920b9cb86 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1307,7 +1307,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
-     create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, flash_size);
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                       ms->kernel_filename, 0, flash_size);
- }
- 
- /* FIXME: Figure out how to generate these from stellaris_boards.  */
-diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
-index 67675e952f..2df943295b 100644
---- a/hw/arm/stm32vldiscovery.c
-+++ b/hw/arm/stm32vldiscovery.c
-@@ -51,7 +51,7 @@ static void stm32vldiscovery_init(MachineState *machine)
-     qdev_connect_clock_in(dev, "sysclk", sysclk);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu),
-+    armv7m_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)),
-                        machine->kernel_filename,
-                        0, FLASH_SIZE);
- }
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index e20d865d5a..8107a7057a 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -712,7 +712,8 @@ static void vexpress_common_init(MachineState *machine)
-     daughterboard->bootinfo.modify_dtb = vexpress_modify_dtb;
-     /* When booting Linux we should be in secure state if the CPU has one. */
-     daughterboard->bootinfo.secure_boot = vms->secure;
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &daughterboard->bootinfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &daughterboard->bootinfo);
- }
- 
- static bool vexpress_get_secure(Object *obj, Error **errp)
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index da5b738f0a..9f69be85ce 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -605,7 +605,7 @@ static void fdt_add_gic_node(VirtMachineState *vms)
- 
- static void fdt_add_pmu_nodes(const VirtMachineState *vms)
- {
--    ARMCPU *armcpu = ARM_CPU(first_cpu);
-+    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
-     uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
-     MachineState *ms = MACHINE(vms);
- 
-@@ -1652,7 +1652,7 @@ void virt_machine_done(Notifier *notifier, void *data)
-     VirtMachineState *vms = container_of(notifier, VirtMachineState,
-                                          machine_done);
-     MachineState *ms = MACHINE(vms);
--    ARMCPU *cpu = ARM_CPU(first_cpu);
-+    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
-     struct arm_boot_info *info = &vms->bootinfo;
-     AddressSpace *as = arm_boot_address_space(cpu, info);
- 
-@@ -1957,9 +1957,11 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-     bool aarch64, pmu, steal_time;
-     CPUState *cpu;
- 
--    aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
--    pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
--    steal_time = object_property_get_bool(OBJECT(first_cpu),
-+    aarch64 = object_property_get_bool(OBJECT(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                                       "aarch64", NULL);
-+    pmu = object_property_get_bool(OBJECT(qemu_get_cpu(0, TYPE_ARM_CPU)),
-+                                   "pmu", NULL);
-+    steal_time = object_property_get_bool(OBJECT(qemu_get_cpu(0, TYPE_ARM_CPU)),
-                                           "kvm-steal-time", NULL);
- 
-     if (kvm_enabled()) {
-@@ -2001,7 +2003,7 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-     } else {
-         if (aarch64 && vms->highmem) {
-             int requested_pa_size = 64 - clz64(vms->highest_gpa);
--            int pamax = arm_pamax(ARM_CPU(first_cpu));
-+            int pamax = arm_pamax(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)));
- 
-             if (pamax < requested_pa_size) {
-                 error_report("VCPU supports less PA bits (%d) than "
-@@ -2324,7 +2326,8 @@ static void machvirt_init(MachineState *machine)
-     vms->bootinfo.skip_dtb_autoload = true;
-     vms->bootinfo.firmware_loaded = firmware_loaded;
-     vms->bootinfo.psci_conduit = vms->psci_conduit;
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &vms->bootinfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &vms->bootinfo);
- 
-     vms->machine_done.notify = virt_machine_done;
-     qemu_add_machine_init_done_notifier(&vms->machine_done);
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 8dc2ea83a9..90a052b841 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -349,7 +349,8 @@ static void zynq_init(MachineState *machine)
-     zynq_binfo.board_setup_addr = BOARD_SETUP_ADDR;
-     zynq_binfo.write_board_setup = zynq_write_board_setup;
- 
--    arm_load_kernel(ARM_CPU(first_cpu), machine, &zynq_binfo);
-+    arm_load_kernel(ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU)), machine,
-+                    &zynq_binfo);
- }
- 
- static void zynq_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
-index 2d8e41ab8a..25dffccb99 100644
---- a/target/arm/arch_dump.c
-+++ b/target/arm/arch_dump.c
-@@ -395,11 +395,11 @@ int cpu_get_dump_info(ArchDumpInfo *info,
-     GuestPhysBlock *block;
-     hwaddr lowest_addr = ULLONG_MAX;
+     PowerPCCPU *cpu;
  
 -    if (first_cpu == NULL) {
-+    if (qemu_get_cpu(0, TYPE_ARM_CPU) == NULL) {
++    if (qemu_get_cpu(0, TYPE_POWERPC_CPU) == NULL) {
          return -1;
      }
  
--    cpu = ARM_CPU(first_cpu);
-+    cpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
-     env = &cpu->env;
+-    cpu = POWERPC_CPU(first_cpu);
++    cpu = POWERPC_CPU(qemu_get_cpu(0, TYPE_POWERPC_CPU));
  
-     /* Take a best guess at the phys_base. If we get it wrong then crash
-@@ -443,7 +443,7 @@ int cpu_get_dump_info(ArchDumpInfo *info,
- 
- ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
- {
--    ARMCPU *cpu = ARM_CPU(first_cpu);
-+    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
-     size_t note_size;
- 
-     if (class == ELFCLASS64) {
+     info->d_machine = PPC_ELF_MACHINE;
+     info->d_class = ELFCLASS;
 -- 
 2.41.0

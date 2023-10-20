@@ -1,295 +1,160 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1196418ejb;
-        Fri, 20 Oct 2023 05:52:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF9+PqHfKRx6jpjH0mO/jKXwUTQuARZDQ8bK3SJF4REhrE+MNLCYNSxM54tOhTpK8AP9fSD
-X-Received: by 2002:a05:620a:2954:b0:777:68cb:9bd4 with SMTP id n20-20020a05620a295400b0077768cb9bd4mr1974976qkp.12.1697806359257;
-        Fri, 20 Oct 2023 05:52:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697806359; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1196625ejb;
+        Fri, 20 Oct 2023 05:53:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHooWgakxJ9abL9v/lljsBZuHJrMAQKlE0hgyBsfi7t6QTmU3Qa/Wj58o6KEnNxk/+1k0xE
+X-Received: by 2002:a25:e653:0:b0:d9c:fa2e:3b33 with SMTP id d80-20020a25e653000000b00d9cfa2e3b33mr538515ybh.42.1697806382885;
+        Fri, 20 Oct 2023 05:53:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697806382; cv=none;
         d=google.com; s=arc-20160816;
-        b=IwOaibRQtd3vq0msqsev4BtbJmFEx3NaEl/FlRm/4jdm+r8608E2BzZ/sKdESLXZDu
-         2C2lSjsumwWnvmDyngYnS3tHbbm1TCsLIqmMZqgDONbqKXxT6+fHp9lWGL10E5eRPo1U
-         VKKIsNI/kjJ6+J48vnATkkIKKZhmdO1hiN85wZGgxE8luD6u/82iaKIpHEMr44T+d5VW
-         /dG1rVQn1zWBNgs/BwZh0IcZAhRQwW6CUydmEGZKwdthFr8LNsCapAihTF5BSslN+ldT
-         HSfJKU7/W6kq/RzGUcxBG+o43k7yuAupG4TBg/+Z0L6Wpmm2KZMp7p1Lk3CULVzdFTOn
-         qa5A==
+        b=HKvIbas5FTGfCHW+8WtN3wSTYjlMad6SHNDDxiLXxMsALmYBbeOvBj8t1TNHpqoVS/
+         A4+vyPJ43hnJ6RW4uNGzJgGeOm9jLYaaIUE3VQXEkDcEvVGR2gp9nquR4hvWfGFDrOmh
+         Kz+wUAYgAKwMWyYMJf0RbAKdPT2npRB2894IpQjbZz9pzfb+SNwRzSw34AdbnqIENpkk
+         Zhf+MhhCF6u+U5S6s5wiCAaUSkRkzwMnZ9S4MEt/SzZuu6+XTzUyqzV4+OAVTWF8fbQ5
+         UmcKo4SiA7gG+Egr9w46mJewLUZZunXYBw3jnaTMTm0DGoSkV5AHe/rMEju2Lz8gbdIZ
+         0ArA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gYmPpzQA1T4+jV1Iq/uP90fTMzDqIz3ufunNBzeO2wg=;
-        fh=4pe3guiFRMn/NLMia8z8VAitsBT8GnpzdI1z5EX6kPM=;
-        b=vMJpLTVJdY1Mct4lOSkCIMEhGPnIhgpRF3mBwjV10XitnHtWCrCtT+ondm4NePVZWb
-         FnS+CkGxqTCad5zHumv3uQRjJqlW+MMzF8LoQMDJIeJ931t4S/L22SbQjZrhIu3sioAM
-         mYvOtKqfEUTnKZNsKQnQkgW69quT0ZHJbG+5WIdrbaTcSJrHPE1c9J3eeHXO83RWA94y
-         8/dkftllrCZUJRDx92gvs7b8+RlA8+uCCuSSR8CjpBGjwzFaJhDqtDx1I2p0mzsOs+id
-         m9HYLDJEI8/VfKM5UlAsGuMGw87+jGn+Re/BDlMaYT3W2hKepGED34NfiWfJqA8qnrl7
-         8bUg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Ah3WKGt0I4J6MGqXZ6iDMJbohTp8VA+zrxGknDCvKfI=;
+        fh=0NfYp73tYY2LWBe1pufcxsZko2kMkmct2NAge7812Ro=;
+        b=mOK+27ZDJwjvqfXnga6Pjqg/jFR5HetKDICrrD6steMIPDOPUCCrHSmRUPwTFOBOiY
+         iOqEZf5akYoVs+zjy6Vi/RfIG63HppoBHHF5TPxRbZxYKIm+EN3cBkOyYn1gCwzKVnIa
+         JC+p1XgX394uOPu4zbyVP7AfoIu8mC7NFIHfaGdKtVISfsUn7IQGsoAxfcuIuzetRQlV
+         KG8UpYI53e4cGQDUttjdoKmy1LlAHw5MNAamh2YCKDrKpDanLjzozViZ5FsB64Bo+agg
+         ms38DDftUG+LAmPTYH1JTg+IC4F7dhLZaSWomVGOph5c4xwqX9Na+9ZbNItiSvYYm6rZ
+         114w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ci1LNt/g";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NR+bPCCM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7-20020a05620a214700b00775cab41eaasi1200924qkm.462.2023.10.20.05.52.39
+        by mx.google.com with ESMTPS id c5-20020a0cfb05000000b0065d067f07d6si1305991qvp.318.2023.10.20.05.53.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 05:52:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 05:53:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ci1LNt/g";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NR+bPCCM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtozB-0001SJ-PE; Fri, 20 Oct 2023 08:52:21 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtozN-0002GP-A9; Fri, 20 Oct 2023 08:52:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtoz9-0001EV-F9
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 08:52:15 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtozL-00027J-DA
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 08:52:27 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtoz7-0001F2-9q
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 08:52:15 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-32dbbf3c782so1154884f8f.1
- for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 05:52:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtozB-0001HA-CE
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 08:52:27 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-40651a726acso6437215e9.1
+ for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 05:52:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697806329; x=1698411129; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=gYmPpzQA1T4+jV1Iq/uP90fTMzDqIz3ufunNBzeO2wg=;
- b=ci1LNt/gTdNT1MjlVBktBs4S1NvNOAToCbM9FHWDZbuzqxOrHmSdGF0NVAqWAvAdcz
- nm1CDzlbm4R9in4cgSB+cgRKQEnuqKJpmRNUd9pL8AIR9VLJ5MAv6HPSB5xVuRGL7j1P
- SwtNNgUt4WQ1iA3ouMskT1Vtv1V9UrsCUiKzfqZxzrEz6ek4+8VK2cy3fE37ytiaDDsf
- WIHM5/fngi6GxL3+LWIFzOGHZEVKLo1j7UIXgHrxmJ3pEFis/oEg6UtYL3uec5x6Xycb
- JkOPU9XYo+tfNt3TGAsqmD11GIEWrmBuK7VQmEx55R9UwTwqvgW333NMKXwxewUDEglu
- io4Q==
+ d=linaro.org; s=google; t=1697806335; x=1698411135; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ah3WKGt0I4J6MGqXZ6iDMJbohTp8VA+zrxGknDCvKfI=;
+ b=NR+bPCCMYWTwF9Vok8laxpRi+UdJ0vcRZt4iHkPvlP+d8ywlKJ9M6zXXT1IBQ7h3km
+ g/3vXU1jstxs2nWHYAOU9JBDZhgIdEGnQ9IJzrXBo4zkop/kd8PTJ7/oUsz+Hslo057r
+ QzrIkfrFwHsf8JuopEgu0pP2W825kqhb3rm6SFQFr6Q0LWgnSDpxEFhvJiZEmJ0VnDgS
+ oKJ4DWeG+Xb5sgnH39wxJ+AJhGDKj/RYISdoNTXIvkoY3NgBsObFniroJHHv/SDN4zUP
+ DXnjLnyRcrl5fVrlW3Er4Evg1wDIREZgR5LPuOikyZbAryO5XPI2MNKj5dPhoX3pAkUR
+ Kn3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697806329; x=1698411129;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gYmPpzQA1T4+jV1Iq/uP90fTMzDqIz3ufunNBzeO2wg=;
- b=XWI2JZrMaYX/tvI2yAy8DKp0XRtFn5Iji+jUnCj2pd+Nf5A5iNSfI9ESc41bIQ7NcA
- FDG61yE3WBbLYy1wdg81fSr7BdV2BR29SsCGF0kI+NcpMacRuORQx9WRe3BlkOsLCkV7
- Ff6cfxvm37ST8EuNjeP2pdns8atT6Yqso+usXh0fG4pMSx+mHCiCDklUQjdjgklaO5Tj
- 4n+Jgl1D5x8sBKutDIzrS/03sxlLMo/iGRairT+PVmzm598ZpyFYFWbO4ZoCx3dyzjBM
- jwK0cdvC+rEH1vxQ0k3yoYq7V943Y50V6NVRiCUqUKGaxpaPOSd1YQrS5cLMWhKl7nsd
- 63MQ==
-X-Gm-Message-State: AOJu0Ywa5hvD6v/Bn2caJXYYDGx7lIS9BAxJPFKemctmQB/mV4en0Ibr
- DV3WCtuGIZi9ZBYJQtE0/zHk5w==
-X-Received: by 2002:a5d:46c9:0:b0:32d:de87:1085 with SMTP id
- g9-20020a5d46c9000000b0032dde871085mr4509571wrs.10.1697806329477; 
- Fri, 20 Oct 2023 05:52:09 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1697806335; x=1698411135;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Ah3WKGt0I4J6MGqXZ6iDMJbohTp8VA+zrxGknDCvKfI=;
+ b=gAfwSVxadFAxS/QX4+Qt4e00TPmwT77zsmKOUo0gi5YhIE5DJSxw5/H9bMgmp/tPUK
+ 8dOIPoVFVBMJWQC/XjmIrPhA4rT8Sb9QWBuZz+VCdk2VfPm0Nkay9r/htwdtbNy+CwD3
+ i4xyOWZzD0RAai28EauXK3gQpmVxLFVI355sjtd8iaoBZYv/dVj4DlAREFmGRO7qjXUm
+ wPbipFPsw4kzMnAUlX9bMsZ8tzfL31mHYHKjRIyLo7d1Hm8CCFzv0m61fO1jIsCIj6Zp
+ SOJPrVF5vUP/KBDvqZEqPS89imtW8TeEASHn2BZaI742+lbOHTmAzOAJhIiuBxNysMSk
+ ccBg==
+X-Gm-Message-State: AOJu0YzusXHWPDKVO9WGGw8zH0cVAe5uPuRs7T3SxfGA/scLCm2EIOfA
+ fJiyoE7yNZqi6LqfQ30drTrmLw==
+X-Received: by 2002:a05:600c:1c1c:b0:408:3c8a:65ec with SMTP id
+ j28-20020a05600c1c1c00b004083c8a65ecmr1408636wms.8.1697806335266; 
+ Fri, 20 Oct 2023 05:52:15 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
  [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
- h14-20020a05600c314e00b003fbe4cecc3bsm6968035wmo.16.2023.10.20.05.52.08
+ r6-20020a05600c458600b00406443c8b4fsm6989056wmo.19.2023.10.20.05.52.14
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 20 Oct 2023 05:52:09 -0700 (PDT)
+ Fri, 20 Oct 2023 05:52:14 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: 
 Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL v2 00/46] Misc HW/UI patches for 2023-10-19
-Date: Fri, 20 Oct 2023 14:51:47 +0200
-Message-ID: <20231020125201.49361-1-philmd@linaro.org>
+ qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Subject: [PULL v2 06/46] MAINTAINERS: Extend entry to cover
+ util/qemu-timer-common.c, too
+Date: Fri, 20 Oct 2023 14:51:48 +0200
+Message-ID: <20231020125201.49361-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231020125201.49361-1-philmd@linaro.org>
+References: <20231020125201.49361-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U94afUjdN0r6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AIOU4NeK+vS/
 
-The following changes since commit 0d239e513e0117e66fa739fb71a43b9383a108ff:
+From: Thomas Huth <thuth@redhat.com>
 
-  Merge tag 'pull-lu-20231018' of https://gitlab.com/rth7680/qemu into staging (2023-10-19 10:20:57 -0700)
+We already cover util/qemu-timer.c in MAINTAINERS - change this entry
+to util/qemu-timer*.c so that it covers util/qemu-timer-common.c, too.
 
-are available in the Git repository at:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20231020062142.525405-1-thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  https://github.com/philmd/qemu.git tags/hw-misc-20231020
-
-for you to fetch changes up to 9f1b100236223d073915b8eedac3089ec64f8a6e:
-
-  ui/input: Constify QemuInputHandler structure (2023-10-20 14:46:07 +0200)
-
-Since v1:
-- Dropped PC_SPEAKER patch
-- Added MAINTAINERS::util/qemu-timer-common.c patch
-
-----------------------------------------------------------------
-Misc hardware patch queue
-
-- MAINTAINERS updates (Zoltan, Thomas)
-- Fix cutils::get_relocated_path on Windows host (Akihiko)
-- Housekeeping in Memory APIs (Marc-André)
-- SDHCI fix for SDMA transfer (Lu, Jianxian)
-- Various QOM/QDev/SysBus cleanups (Philippe)
-- Constify QemuInputHandler structure (Philippe)
-
-----------------------------------------------------------------
-
-Akihiko Odaki (1):
-  cutils: Fix get_relocated_path on Windows
-
-BALATON Zoltan (1):
-  MAINTAINERS: Split vt82c686 out of fuloong2e
-
-Lu Gao (1):
-  hw/sd/sdhci: Block Size Register bits [14:12] is lost
-
-Luc Michel (1):
-  mailmap: update email addresses for Luc Michel
-
-Marc-André Lureau (2):
-  memory: drop needless argument
-  memory: follow Error API guidelines
-
-Philippe Mathieu-Daudé (36):
-  buildsys: Only display Objective-C information when Objective-C is
-    used
-  hw/mips/malta: Use sdram_type enum from 'hw/i2c/smbus_eeprom.h'
-  hw/mips: Merge 'hw/mips/cpudevs.h' with 'target/mips/cpu.h'
-  hw/misc/mips_itu: Declare itc_reconfigure() in 'hw/misc/mips_itu.h'
-  hw/misc/mips_itu: Make MIPSITUState target agnostic
-  hw/pci-host/sh_pcic: Declare CPU QOM types using DEFINE_TYPES() macro
-  hw/pci-host/sh_pcic: Correct PCI host / devfn#0 function names
-  hw/pci-host/sh_pcic: Replace magic value by proper definition
-  hw/sparc64/ebus: Access memory regions via pci_address_space_io()
-  hw/acpi/pcihp: Clean up global variable shadowing in acpi_pcihp_init()
-  hw/pci: Clean up global variable shadowing of address_space_io
-    variable
-  hw/s390x: Clean up global variable shadowing in
-    quiesce_powerdown_req()
-  hw/intc/apic: Use ERRP_GUARD() in apic_common_realize()
-  hw/ppc/spapr_vio: Realize SPAPR_VIO_BRIDGE device before accessing it
-  hw/ppc/pnv_xscom: Rename pnv_xscom_realize(Error **) ->
-    pnv_xscom_init()
-  hw/ppc/pnv_xscom: Move sysbus_mmio_map() call within pnv_xscom_init()
-  hw/ppc/pnv_xscom: Do not use SysBus API to map local MMIO region
-  hw/ppc/pnv: Do not use SysBus API to map local MMIO region
-  hw/intc/spapr_xive: Move sysbus_init_mmio() calls around
-  hw/intc/spapr_xive: Do not use SysBus API to map local MMIO region
-  hw/i386/amd_iommu: Do not use SysBus API to map local MMIO region
-  hw/i386/intel_iommu: Do not use SysBus API to map local MMIO region
-  hw/misc/allwinner-dramc: Move sysbus_mmio_map call from init ->
-    realize
-  hw/misc/allwinner-dramc: Do not use SysBus API to map local MMIO
-    region
-  hw/pci-host/bonito: Do not use SysBus API to map local MMIO region
-  hw/acpi: Realize ACPI_GED sysbus device before accessing it
-  hw/arm/virt: Realize ARM_GICV2M sysbus device before accessing it
-  hw/isa: Realize ISA bridge device before accessing it
-  hw/s390x/css-bridge: Realize sysbus device before accessing it
-  hw/virtio/virtio-pmem: Replace impossible check by assertion
-  hw/block/vhost-user-blk: Use DEVICE() / VIRTIO_DEVICE() macros
-  hw/display/virtio-gpu: Use VIRTIO_DEVICE() macro
-  hw/scsi/virtio-scsi: Use VIRTIO_SCSI_COMMON() macro
-  hw/dma: Declare link using static DEFINE_PROP_LINK() macro
-  hw/net: Declare link using static DEFINE_PROP_LINK() macro
-  ui/input: Constify QemuInputHandler structure
-
-Thomas Huth (4):
-  MAINTAINERS: Add hw/input/lasips2.c to the HPPA machine section
-  MAINTAINERS: Add include/hw/intc/loongson_liointc.h to the Loongson-3
-    virt section
-  MAINTAINERS: Add include/hw/openrisc/ to the OpenRISC section
-  MAINTAINERS: Extend entry to cover util/qemu-timer-common.c, too
-
- MAINTAINERS                         | 18 +++++++--
- meson.build                         |  6 ++-
- include/hw/acpi/pcihp.h             |  2 +-
- include/hw/core/cpu.h               |  4 +-
- include/hw/core/sysemu-cpu-ops.h    |  2 +-
- include/hw/mips/cpudevs.h           | 14 -------
- include/hw/misc/mips_itu.h          |  4 +-
- include/hw/pci/pci.h                |  9 ++---
- include/hw/ppc/pnv_xscom.h          |  2 +-
- include/hw/virtio/virtio-input.h    |  2 +-
- include/sysemu/memory_mapping.h     |  2 +-
- include/ui/input.h                  |  2 +-
- target/i386/cpu.h                   |  2 +-
- target/mips/cpu.h                   |  7 ++--
- chardev/msmouse.c                   |  2 +-
- chardev/wctablet.c                  |  2 +-
- hw/acpi/pcihp.c                     |  5 +--
- hw/arm/virt.c                       |  5 +--
- hw/block/vhost-user-blk.c           |  4 +-
- hw/char/escc.c                      |  2 +-
- hw/core/cpu-sysemu.c                |  6 +--
- hw/display/virtio-gpu.c             |  2 +-
- hw/display/xenfb.c                  |  6 +--
- hw/dma/xilinx_axidma.c              |  6 +--
- hw/dma/xlnx-zdma.c                  |  7 +---
- hw/dma/xlnx_csu_dma.c               | 13 ++-----
- hw/i386/amd_iommu.c                 |  5 +--
- hw/i386/intel_iommu.c               |  5 +--
- hw/i386/microvm.c                   |  2 +-
- hw/input/adb-kbd.c                  |  2 +-
- hw/input/hid.c                      |  6 +--
- hw/input/ps2.c                      |  4 +-
- hw/input/virtio-input-hid.c         |  8 ++--
- hw/intc/apic_common.c               |  4 ++
- hw/intc/spapr_xive.c                | 12 +++---
- hw/isa/isa-bus.c                    | 11 +++++-
- hw/loongarch/virt.c                 |  2 +-
- hw/mips/cps.c                       |  1 -
- hw/mips/fuloong2e.c                 |  1 -
- hw/mips/jazz.c                      |  1 -
- hw/mips/loongson3_virt.c            |  1 -
- hw/mips/malta.c                     |  3 +-
- hw/mips/mips_int.c                  |  1 -
- hw/mips/mipssim.c                   |  1 -
- hw/misc/allwinner-r40-dramc.c       | 20 +++++-----
- hw/misc/mips_itu.c                  |  4 +-
- hw/net/cadence_gem.c                |  7 +---
- hw/pci-host/bonito.c                | 30 +++++++--------
- hw/pci-host/sh_pci.c                | 57 +++++++++++++----------------
- hw/pci/pci.c                        | 25 +++++--------
- hw/ppc/pnv.c                        | 26 +++----------
- hw/ppc/pnv_xscom.c                  |  5 +--
- hw/ppc/spapr_vio.c                  |  3 +-
- hw/s390x/css-bridge.c               |  7 ++--
- hw/s390x/sclpquiesce.c              |  8 ++--
- hw/scsi/virtio-scsi.c               |  2 +-
- hw/sd/sdhci.c                       | 15 ++++++--
- hw/sparc64/sun4u.c                  |  8 ++--
- hw/virtio/virtio-pmem.c             |  5 +--
- system/memory_mapping.c             | 17 ++++-----
- target/i386/arch_memory_mapping.c   |  6 ++-
- target/mips/sysemu/cp0_timer.c      |  1 -
- target/mips/tcg/sysemu/cp0_helper.c |  1 +
- target/mips/tcg/sysemu/tlb_helper.c |  1 -
- ui/input-legacy.c                   |  2 +-
- ui/input.c                          |  4 +-
- ui/vdagent.c                        |  2 +-
- util/cutils.c                       | 18 +++++----
- .mailmap                            |  3 ++
- 69 files changed, 222 insertions(+), 261 deletions(-)
- delete mode 100644 include/hw/mips/cpudevs.h
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fe11c98669..1b2c5b9e76 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2937,7 +2937,7 @@ F: include/qemu/main-loop.h
+ F: include/sysemu/runstate.h
+ F: include/sysemu/runstate-action.h
+ F: util/main-loop.c
+-F: util/qemu-timer.c
++F: util/qemu-timer*.c
+ F: system/vl.c
+ F: system/main.c
+ F: system/cpus.c
 -- 
 2.41.0
 

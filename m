@@ -1,111 +1,144 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1036502ejb;
-        Fri, 20 Oct 2023 00:18:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFu00Q1NjajGTnHoam92bgXYutQFEsjhoey+UqTr1leC/XjsDc2fIw3rPwwMaDcrh06B6JI
-X-Received: by 2002:ad4:594d:0:b0:668:ecf4:d9b7 with SMTP id eo13-20020ad4594d000000b00668ecf4d9b7mr1014263qvb.8.1697786333209;
-        Fri, 20 Oct 2023 00:18:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697786333; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1041087ejb;
+        Fri, 20 Oct 2023 00:31:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGHNm++ytjD0xXt4uS7PVVUV1lB3HRM/M8jBUDasdhBLFe/qWz+qr9X8/xHR2GUZuB9PC49
+X-Received: by 2002:a05:620a:46a4:b0:76f:1eac:e726 with SMTP id bq36-20020a05620a46a400b0076f1eace726mr1225664qkb.15.1697787086760;
+        Fri, 20 Oct 2023 00:31:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697787086; cv=none;
         d=google.com; s=arc-20160816;
-        b=XOsertYssk6/rvfyjZuc/VFGRmRx9r4EJ6ynIVccuAnyrvkfBPO98pRSyxHd5cUTDK
-         0iqK9hRa9Qhe2agFMbfFvT5YzqtWliV7ggnvNuQ4ED+AkDNbN24ST1q5CJCHqR8lkLyI
-         rb4b/iwr+fR0cCTDPjKA1ir6unuvAeo4N6hBjawsqZBG05p2/mUY+0xjdUTYLInlx/EL
-         wQkx0+A3FIDXyI087AAnqr3cZmFSrH0RxGvjKOwzcV6eqQZSwNVKlazV7pA/izLztWd5
-         hOOLe/xiapyU0NDskoB0rmSI4wLCv95SfF0O76T5QHsQeci6lhvuYxXguvUhVzj96Bad
-         fuIQ==
+        b=b8yFIrZPeB72isV1aGcR6ge3Ym653GDMrOGF2nwoP8RVrUweELRiChuHI5LtgtLsYs
+         isM5h/UAPPPijNPoHZ53BzrcuzF2n7Fz+BlgbKUi/XdabeGQeV3XFPwFiL/124AY888f
+         +8pPbxlWbPc4OkSvOkzcWvjjAIzmsXsoz7L1PHPau+xmYa3geelou+Llj0HY7XIFTSkR
+         TIryue5DROldvxD0Y+NqhwFF0XtMAAgH3dt3LaBftFCycvnUJ6i3G7H9Rzv+jz7g299Q
+         mzRiteR38ISualsYjjuYKKvOeYNTWFRhSgwUPtQErrFuGM2y7iv494BtqO5dev4w69/h
+         G4og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=4BHNx2oGqo2h+C7htmK4wjJWDS9SWxiXaCc5HOS5trw=;
-        fh=Eif1UhQ/ge+ojaZc9fSrr+BwanGSyYKo3vtSay1rUBU=;
-        b=hQqabVlNYJM/mrv9pKEEvlenAxmb9cc/PRlxntWnpSnN+u0C9hh7BISMLpeZCiMCXc
-         Z+LHB1CfNP5aI/0I2ENiun/mh2nqQQwbK17hFIlZOcJI/D4Ji3WFczFRfWdQaV5auUHf
-         kfGHIwAJS8+0VWl8ryt6Dd5AQCCbhrKbOgV0Yyt4YA4CmS39GEJY8GaY9GZKCNkFk3Ai
-         aholAnfcwlnCyMA3BUzptx/jREfZrKUPUWhCeczfjPUtXM6KIJPJOopg30qzoILcEuGb
-         9qDRosKutbeC8/Hzp7geAVMLq4ETk1gwLME4UpUDpA/AvEsB00ZidPXzAupIozuKsO+W
-         wGFQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=amJOxqJ+raTBxywBm3QL8jBcO8MOp3+kljTW/J9MJh0=;
+        fh=38tbsy5dIgB7KIMLhzpYuIJbD6iFvOooSSD6dMI8z+o=;
+        b=jwRZOIzMvdooJdVGr/+XDm7LJLzkdnXJ7bo13gd56hdMAWF55jI+SaoRlriZ+3pGwS
+         lIg5vtwcIsbkWUVbCOcueQKYD38s0CyqNjl71/yHBaONIrYXV3ibevQWQKdvJYVF6HrQ
+         0ubxX/OBwEhlrqEqI6aVB0ost8ERUNfASrr+yNtzpph8XRu/w3c1//Fvsy0RZo8s4EJ+
+         5jmwSA5KjnHIGKrso+dPRmf6ziGka8mV1FLI2dHoVEepQ6CO6oI0TjOfzC7ZUXZm/T/b
+         L3/Qx+0sTMXxdP0hdTji/4PKgAYqKIv1nm/bxHMzSv8NjpXjjgttq36NDP3OgtnvCKf8
+         h4uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Akd2lOmT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iXyHoSq1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qh4-20020a0562144c0400b0066d130cbb98si942210qvb.19.2023.10.20.00.18.53
+        by mx.google.com with ESMTPS id bq34-20020a05620a46a200b0076d2a4328c6si905115qkb.298.2023.10.20.00.31.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 00:18:53 -0700 (PDT)
+        Fri, 20 Oct 2023 00:31:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Akd2lOmT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iXyHoSq1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtjmN-0003KS-Ol; Fri, 20 Oct 2023 03:18:47 -0400
+	id 1qtjyE-0000nz-KS; Fri, 20 Oct 2023 03:30:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtjm1-0002bo-5X
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:18:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtjyD-0000nh-Jl
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:30:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtjlz-0002ca-Cu
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:18:20 -0400
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtjyB-0006A0-5X
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:30:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697786297;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4BHNx2oGqo2h+C7htmK4wjJWDS9SWxiXaCc5HOS5trw=;
- b=Akd2lOmT3i5hmrG/g9pOEgqp3fj6EKO35TfzPkKxIvgBD/VbC6aQJrAtDEmCLiRxSPgWfM
- wG8JpJDwoaAGocesxCD4wLVO5jjQSI7zz15mVhXzw9nRZwL34sy1V3MUloTUVeYwE4ykEu
- UOAYv6o+tDPZ37EUkU4VRoyJwisXfJM=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-615-GENI1ZWbNtSEPUb0aXpq6w-1; Fri, 20 Oct 2023 03:18:12 -0400
-X-MC-Unique: GENI1ZWbNtSEPUb0aXpq6w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 279343806655;
- Fri, 20 Oct 2023 07:18:11 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 037FC10828;
- Fri, 20 Oct 2023 07:18:11 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C8B9821E6A1F; Fri, 20 Oct 2023 09:18:09 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  Thomas Huth
- <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Richard
- Henderson <richard.henderson@linaro.org>,  David Hildenbrand
- <david@redhat.com>,  Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: Re: [PATCH v2 07/22] qapi: Inline QERR_INVALID_PARAMETER_TYPE
- definition (constant param)
-References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-8-philmd@linaro.org>
-Date: Fri, 20 Oct 2023 09:18:09 +0200
-In-Reply-To: <20231005045041.52649-8-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:24
- +0200")
-Message-ID: <87mswd92z2.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ s=mimecast20190719; t=1697787054;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=amJOxqJ+raTBxywBm3QL8jBcO8MOp3+kljTW/J9MJh0=;
+ b=iXyHoSq14DU2deW2iNatdGwPY63GVoP/e/8CvzQcMK1sPSi2yKpnDJ3YRWsai5KYOZOTX7
+ G52iIeIhes2Sn+RSr7IlQDj3t1vLmp5G8cto3HFVloxNiYGBE8EBJDc05JT17E35R+eYqD
+ HN+DpGzd08BsRTeE7nB8xzIl5Y1DXnE=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-76-frXWk24JO3qBT7CququESg-1; Fri, 20 Oct 2023 03:30:47 -0400
+X-MC-Unique: frXWk24JO3qBT7CququESg-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3231fceb811so279224f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 00:30:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697787046; x=1698391846;
+ h=mime-version:message-id:date:reply-to:user-agent:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=amJOxqJ+raTBxywBm3QL8jBcO8MOp3+kljTW/J9MJh0=;
+ b=hezqo4mdOuv/FcD3z8nj/uA0TC92flqyJiEgj98bZjmi0HKEk/qzVKB+5drNm53Hj0
+ ldkqIQdWJwpOnv+RwHhypY60QH2bTJG2vQZP3IpaWU045alOTPi0U5+3DpL3XJcWR5iJ
+ T4e2zb7l98HH22ohhQok2U1wopBFPehei5cReVXgnwN4xYZA+uZCOaXc+PccVh8dtjEI
+ t5vbHOgyJfB14bKn501sTLiNo0l0auQAaRF/rDOQDzyWC0V01DtgKGM3S0qVkgGD6aqj
+ QDRPW9whbU0FGL7AV4RN4l2KKOfN7LtE9R/sF+Vy/Z/6lMQX7hly5PhKk/ve9BiZkaDs
+ eEjA==
+X-Gm-Message-State: AOJu0Yw6G7g92mySXwssjFGv6uRiRfmXliQd5zvmTFISWkPk4Z460pty
+ iU6FvhEylZN6CYr8h9dDhEwapKLRU+y0fOQzaOPadzJ3RBdaL54yf0Iluxu+DCZSKUOdoH29dPe
+ ElnNnyUu9HNoz
+X-Received: by 2002:adf:ea4a:0:b0:317:50b7:2ce3 with SMTP id
+ j10-20020adfea4a000000b0031750b72ce3mr631591wrn.51.1697787046218; 
+ Fri, 20 Oct 2023 00:30:46 -0700 (PDT)
+X-Received: by 2002:adf:ea4a:0:b0:317:50b7:2ce3 with SMTP id
+ j10-20020adfea4a000000b0031750b72ce3mr631565wrn.51.1697787045842; 
+ Fri, 20 Oct 2023 00:30:45 -0700 (PDT)
+Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
+ [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
+ r3-20020adff103000000b0032d9337e7d1sm1081841wro.11.2023.10.20.00.30.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Oct 2023 00:30:45 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Cc: <qemu-devel@nongnu.org>,  Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  <qemu-ppc@nongnu.org>,
+ Nicholas Piggin <npiggin@gmail.com>,  <qemu-s390x@nongnu.org>,  Gerd
+ Hoffmann <kraxel@redhat.com>,  Corey Minyard <cminyard@mvista.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  David Hildenbrand <david@redhat.com>,
+ "Ilya Leoshkevich" <iii@linux.ibm.com>,  Fabiano Rosas <farosas@suse.de>,
+ "Eric Farman" <farman@linux.ibm.com>,  Peter Xu <peterx@redhat.com>,
+ "Harsh Prateek Bora" <harshpb@linux.ibm.com>,  John Snow
+ <jsnow@redhat.com>,  <qemu-block@nongnu.org>,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Stefan Weil <sw@weilnetz.de>,
+ <qemu-arm@nongnu.org>,  Jason Wang <jasowang@redhat.com>,  Corey Minyard
+ <minyard@acm.org>,  Leonardo Bras <leobras@redhat.com>,  "Thomas Huth"
+ <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  "Michael
+ S. Tsirkin" <mst@redhat.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  David
+ Gibson <david@gibson.dropbear.id.au>,  Halil Pasic <pasic@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>
+Subject: Re: [PATCH 07/13] RFC migration: icp/server is a mess
+In-Reply-To: <20231019233958.17abb488@bahia> (Greg Kurz's message of "Thu, 19
+ Oct 2023 23:39:58 +0200")
+References: <20231019190831.20363-1-quintela@redhat.com>
+ <20231019190831.20363-8-quintela@redhat.com>
+ <20231019233958.17abb488@bahia>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
+Date: Fri, 20 Oct 2023 09:30:44 +0200
+Message-ID: <875y313g4b.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,91 +152,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U4EpkbtGJfP1
+X-TUID: cW3pgfXjZI86
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Greg Kurz <groug@kaod.org> wrote:
+> On Thu, 19 Oct 2023 21:08:25 +0200
+> Juan Quintela <quintela@redhat.com> wrote:
+>
+>> Current code does:
+>> - register pre_2_10_vmstate_dummy_icp with "icp/server" and instance
+>>   dependinfg on cpu number
+>> - for newer machines, it register vmstate_icp with "icp/server" name
+>>   and instance 0
+>> - now it unregisters "icp/server" for the 1st instance.
+>> 
+>> This is wrong at many levels:
+>> - we shouldn't have two VMSTATEDescriptions with the same name
+>> - In case this is the only solution that we can came with, it needs to
+>>   be:
+>>   * register pre_2_10_vmstate_dummy_icp
+>>   * unregister pre_2_10_vmstate_dummy_icp
+>>   * register real vmstate_icp
+>> 
+>> As the initialization of this machine is already complex enough, I
+>> need help from PPC maintainers to fix this.
+>> 
+>> Volunteers?
+>> 
+>> CC: Cedric Le Goater <clg@kaod.org>
+>> CC: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> CC: David Gibson <david@gibson.dropbear.id.au>
+>> CC: Greg Kurz <groug@kaod.org>
+>> 
+>> Signed-off-by: Juan Quintela <quintela@redhat.com>
+>> ---
+>>  hw/ppc/spapr.c | 7 ++++++-
+>>  1 file changed, 6 insertions(+), 1 deletion(-)
+>> 
+>> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+>> index cb840676d3..8531d13492 100644
+>> --- a/hw/ppc/spapr.c
+>> +++ b/hw/ppc/spapr.c
+>> @@ -143,7 +143,12 @@ static bool pre_2_10_vmstate_dummy_icp_needed(void *opaque)
+>>  }
+>>  
+>>  static const VMStateDescription pre_2_10_vmstate_dummy_icp = {
+>> -    .name = "icp/server",
+>> +    /*
+>> +     * Hack ahead.  We can't have two devices with the same name and
+>> +     * instance id.  So I rename this to pass make check.
+>> +     * Real help from people who knows the hardware is needed.
+>> +     */
+>> +    .name = "pre-2.10-icp/server",
+>>      .version_id = 1,
+>>      .minimum_version_id = 1,
+>>      .needed = pre_2_10_vmstate_dummy_icp_needed,
+>
+> I guess this fix is acceptable as well and a lot simpler than
+> reverting the hack actually. Outcome is the same : drop
+> compat with pseries-2.9 and older.
+>
+> Reviewed-by: Greg Kurz <groug@kaod.org>
 
-> Address the comment added in commit 4629ed1e98
-> ("qerror: Finally unused, clean up"), from 2015:
->
->   /*
->    * These macros will go away, please don't use
->    * in new code, and do not add new ones!
->    */
->
-> Mechanical transformation using the following
-> coccinelle semantic patch:
->
->     @match@
->     expression errp;
->     constant param;
->     constant value;
->     @@
->          error_setg(errp, QERR_INVALID_PARAMETER_TYPE, param, value);
->
->     @script:python strformat depends on match@
->     param << match.param;
->     value << match.value;
->     fixedfmt; // new var
->     @@
->     fixedfmt =3D f'"Invalid parameter type for \'{param[1:-1]}\', expecte=
-d: {value[1:-1]}"'
->     coccinelle.fixedfmt =3D cocci.make_ident(fixedfmt)
->
->     @replace@
->     expression match.errp;
->     constant match.param;
->     constant match.value;
->     identifier strformat.fixedfmt;
->     @@
->     -    error_setg(errp, QERR_INVALID_PARAMETER_TYPE, param, value);
->     +    error_setg(errp, fixedfmt);
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Acked-by: Thomas Huth <thuth@redhat.com>
-> ---
->  target/arm/arm-qmp-cmds.c        | 3 ++-
->  target/s390x/cpu_models_sysemu.c | 3 ++-
->  2 files changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-> index b53d5efe13..3c99fd8222 100644
-> --- a/target/arm/arm-qmp-cmds.c
-> +++ b/target/arm/arm-qmp-cmds.c
-> @@ -154,7 +154,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(=
-CpuModelExpansionType type,
->      if (model->props) {
->          qdict_in =3D qobject_to(QDict, model->props);
->          if (!qdict_in) {
-> -            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict=
-");
-> +            error_setg(errp,
-> +                       "Invalid parameter type for 'props', expected: di=
-ct");
->              return NULL;
->          }
->      }
-> diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_s=
-ysemu.c
-> index 63981bf36b..4507714493 100644
-> --- a/target/s390x/cpu_models_sysemu.c
-> +++ b/target/s390x/cpu_models_sysemu.c
-> @@ -111,7 +111,8 @@ static void cpu_model_from_info(S390CPUModel *model, =
-const CpuModelInfo *info,
->      if (info->props) {
->          qdict =3D qobject_to(QDict, info->props);
->          if (!qdict) {
-> -            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict=
-");
-> +            error_setg(errp,
-> +                       "Invalid parameter type for 'props', expected: di=
-ct");
->              return;
->          }
->      }
+I fully agree with you here.
+The other options given on this thread is deprecate that machines, but I
+would like to have this series sooner than 2 releases.  And what ppc is
+doing here is (and has always been) a hack and an abuse about how
+vmstate registrations is supposed to work.
 
-The error messages are awful.  Your patch makes their awfulness more
-visible.  Improvement of sorts ;)
+Thanks, Juan.
 

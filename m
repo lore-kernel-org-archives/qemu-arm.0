@@ -1,409 +1,305 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1191125ejb;
-        Fri, 20 Oct 2023 05:42:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFYeKJgbOo1hn6oEGrW9vmglb/gBZ0ePGeULHV92GMu2OdyYXwdhlUDjOHyLiBggRabGoij
-X-Received: by 2002:ac8:7dc8:0:b0:415:2623:d8df with SMTP id c8-20020ac87dc8000000b004152623d8dfmr1918149qte.7.1697805767371;
-        Fri, 20 Oct 2023 05:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697805767; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1359884ejb;
+        Fri, 20 Oct 2023 09:36:49 -0700 (PDT)
+X-Received: by 2002:a19:7509:0:b0:507:c763:27b7 with SMTP id y9-20020a197509000000b00507c76327b7mr1787304lfe.40.1697819808789;
+        Fri, 20 Oct 2023 09:36:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697819808; cv=none;
         d=google.com; s=arc-20160816;
-        b=iRsU7PkKruL5WpaNgMv6cK1QMZVr5WcRxcj+Acl+eTPOEY5Nwo1+9/N2SHyTlhc5he
-         ioUcds+tYLxa5LhIG6C/+xwNmzM5pqdnllFEoEaNGBy58vV7eBG9S5bDQ2GY+yW4SFrM
-         QJKRb229kh/dEKu6PqyMvngPvWUfR8HCBrBs0yNVW/eM3Ptbiap4JCXbCXBf8VUVuK3b
-         UJTvl+zGFYzXdWLB5241X9eOBX5lkVxE9I9HZLysZGBrOcegh6U+4k4IbkiO7t8UMNY2
-         /gcYcOczdB6d2HXoe05EQXVPfegDqOLUMXjKIxx+hoUl8ZrX19IaGD07AHKjU0sI+dg9
-         taOQ==
+        b=PwaFSMDNMuUyL8nG/x9PNc9jTk/+wARG6shH+y2uM1rYthNXaUBUPEKxRzRe0zNQg5
+         s+gSsAkjoMhXIbkxTDcoyI96/TtZN+VkruTmAQbyrJvTKNb63QpcBTfJV/MMORQyNo88
+         uBq3aXjopHyzaEvRWAiek4cnQ9yUle+sxc5gk650Jfl1JiZM7Qn9neysVFSPUyDfmePV
+         8/JMSwKPSZCr8tIiheXLKHgtprVgvBYmd9T2e547C6dF0daveL//uL619qIKYhkGRDIw
+         ksK13SdGbG4MvCpivOauzXk61s/YRaKq+lj9P78qszx72KTKpuUp3UeXzRYTS1hB5aIM
+         4FaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=uWxVZgE+Mx8LGqBqzleKmtV2pfMxP70GBwRM1li0jQU=;
-        fh=5vaoWvTnlKN+1FLcZ05RH9B5qe6WCTczG7jiRmckztE=;
-        b=BCrVk3qRzCCerCP7QrJRavvFMOtCBXdj2SpTiDzyd5KeZmJf0ozx3Q4y1Qnp3loR2U
-         SU2QuTXSbQn/RWCluflhssYmz/qCH5YDggLHxz9xIkL6h8ncL0E2LsXxBk1xsCADW2Ju
-         FtXkwLSIp00ylnXgG+yq+xRznhVi5gaPeFBHNYfTdAud6TK/y6h5ZmbO6PUpoDXwNanF
-         13Ln9Gz1h59fssNR8t56ESLvDyFC8qKIeiDcNRo5LHjW0OWqfvuDLMDzynEfVruPihxz
-         sJRzHb0/xYwcTBNlWkif7FKHxmNbVfgX+az2h6F/UJNfP+cgblbQFM5I17sMh7ov87ur
-         B8lA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=pI/ALohNTygjWYZJ4KNy3EfaYpASbA7YyWD5BbOrL9M=;
+        fh=oSlZfSRRWU8mSYQl0tamVh8RcW+kuw5yjdTq8DPQl+0=;
+        b=mZsNBs+xwSBw3hkxBdkJhqOIVXznUa44Z3R04f5DH6zx3djHfUdNLCTZOuYb+DnL2r
+         Nav2cQK8eN56hy/esOf5ydXwgbmrKubcjP1mSANmkdDlhP/Z5R2tEtEwfLkaipB6T2Xp
+         5dTPk7BbG53gxVBhFYryTC0+ekZo44UTo5dBfUaaBt9J85OMK+LO22DF3LnE4GqgirJ8
+         nJqRorislCAm4SsMLbKTaBRMKSBqWHcMLKm2Fyovc+S32N7ZbYA9CX9nVfTyrF085pj+
+         JJJkNqNru1RV+v2L6Rcg9KXfx7ZGuNGBEZcNfXu+ZyGuz3dBPYHZRas9T67dfAhTMliU
+         CmVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RcFjLilD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uCTtkDkN;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2-20020a05622a180200b0040362bf7530si1231407qtc.413.2023.10.20.05.42.47
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o4-20020a05651205c400b00502c8bc9ac9sor611478lfo.29.2023.10.20.09.36.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 05:42:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 20 Oct 2023 09:36:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RcFjLilD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uCTtkDkN;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtops-0000Qg-RP; Fri, 20 Oct 2023 08:42:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtopq-0000Pg-W5
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 08:42:39 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtopo-0006FS-HU
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 08:42:38 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-53db3811d8fso1703945a12.1
- for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 05:42:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697805754; x=1698410554; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uWxVZgE+Mx8LGqBqzleKmtV2pfMxP70GBwRM1li0jQU=;
- b=RcFjLilDzVDH4k6A/xB/6kzSMIwH9MuQYuNGHsGxV5QigYSzR2uMCqOJwQgGywLHWP
- ilJxdwZ5L17R4gyT+A+4D3eq4Ve63yJJ7VJdSHWEaxDt2+RYfwl+v4g2I9cfMbs2AwP1
- BGBPjlbME5BcJ3AvHDa1Z8hlsaIqxMyuROfLG4f+IRmRyxsGeO7UQ+bA0Kuv+JqQPCGE
- I0LgsATw27e0y718Pf30Jy4PuYJXun2yi0XM5zryEyOZcAoKTgF+7Kl7jH6cIHsKnFeo
- 0FFZfGU2iSjUbAxWsOXUbd69wTGhrZQDNuqFJGgjFlgdQN3KtafjFrk+/hPGg912rKo/
- YpxA==
+        d=linaro.org; s=google; t=1697819808; x=1698424608; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pI/ALohNTygjWYZJ4KNy3EfaYpASbA7YyWD5BbOrL9M=;
+        b=uCTtkDkNBNA9UBK55GdsrI35gugw9SvWAX8zeA7QKqRJuqPgQClNH/YwdEbMneG6Rc
+         hbyNfbIdmGrS7V2UmJMluIoGcOJHSpxeaIJ8i/ey5f+BwtKsqRjwuflCVKrbQmgEVl9U
+         VCXr/P2W903V2iCuPhFc34sXEqSaCBvQxr0QLZIX/D53hpTvXlzOgsp5dkX/q8hKoClA
+         WRmIfvoRN+xzXPKRWqotkcd09ICrhTLw29fTzfiIGypal428keD4JxwjgQ1T3pFXo4x7
+         Yg3AMFdk5grD0aYGpVHWa3D7SN8xdkIdwMNSx1EYCsG7kG+4QZRYlUA9k99FQuT+Fu0X
+         0aBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697805754; x=1698410554;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uWxVZgE+Mx8LGqBqzleKmtV2pfMxP70GBwRM1li0jQU=;
- b=O30CJd/YSO1fOnyiPB5gqxlZQkcroyI195n0sc4iFHLAoi6bdX95FnueAWwxAqK3Ac
- 0/XIJBQkM25Yi5uNA9NhOlIPkbENvUqm/RMaw230YRdH2wmae1fxmk2I/DGK5zah8QsD
- neTvTQtAACGTfnxAFyD8BYkGYBQep5/qS5DmJLUKC/NI63p0FJOid/RDyfgSdWIvfqde
- xsCz0V0oQrw1W9FtSpMF3yy5DEcVMvrN4GsidI029UvB6WPkkjXCmuGzSS+0IUBKNp42
- 2YU4UH6FKzUsPRWoi7I9WLo2ri+VXFq4UMmP+ydOUItlQ8reiEexnUdvvq/RwX1ZowCO
- KkXA==
-X-Gm-Message-State: AOJu0YxeRKFvlFAX0hkurm3X3ns0X4dhkrKCmyyWJ75ogg2UlvMtja+w
- cIXfdyDTNuXSvy4HAwQqCHrQGA==
-X-Received: by 2002:a50:a414:0:b0:52f:a763:aab4 with SMTP id
- u20-20020a50a414000000b0052fa763aab4mr1426587edb.5.1697805754411; 
- Fri, 20 Oct 2023 05:42:34 -0700 (PDT)
-Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
- [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
- h28-20020a50cddc000000b0053e589016a7sm1408013edj.16.2023.10.20.05.42.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Oct 2023 05:42:34 -0700 (PDT)
-Message-ID: <74d96828-dae9-64fe-5947-ba83ce54206d@linaro.org>
-Date: Fri, 20 Oct 2023 14:42:32 +0200
+        d=1e100.net; s=20230601; t=1697819808; x=1698424608;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pI/ALohNTygjWYZJ4KNy3EfaYpASbA7YyWD5BbOrL9M=;
+        b=NVTuihbVUK5pFXgIU7l996DF7s1kC7Wbr8pkt0Mf85SeZCVfMaqqeGXY49jbqRM2VC
+         Jz5PKHCpniYNgNe5S4w9JUwxyDYltSIJUmzHpWmbUuuEN3sMOAP9Gqna+v30COA8Eyfb
+         u96MiGhmgwOHgnZ0Tq1aqyALFnhPr57Amt4xBx48IyGN1w0lGnj2qUvyvFyran9pn5JA
+         nwb1glHbbiOXj+4gMwFGlsCGsOLIdFVAI6uKwpPdLDXfWZHCulVNtZCTRhwKwhuQMMdA
+         ZN1p1Yw89NYSH1WQiRQ6JCYxEJRdXBx4pk2HszaGpi5pBDXW6M8XNJHOflE/jUmbNgkG
+         cVfg==
+X-Gm-Message-State: AOJu0YwqH0PZN+nzPN8591TM0hvINvxdGJvYpz2ActigT/JxkAl8EAMk
+	sMES8eAFVc84n5IvK+qUTd2aXY4s
+X-Google-Smtp-Source: AGHT+IH0HRtoxlheJWXcmfBy89wfyR4Dsk5kkRuvmKyASg/Ju/Aq5DB8mWvv9dxFiHpTNX0LSxHRnw==
+X-Received: by 2002:a05:6512:78f:b0:507:bb8e:b644 with SMTP id x15-20020a056512078f00b00507bb8eb644mr1603987lfr.12.1697819808219;
+        Fri, 20 Oct 2023 09:36:48 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr. [176.171.212.97])
+        by smtp.gmail.com with ESMTPSA id p14-20020ac24ece000000b004fdde1db756sm429709lfr.26.2023.10.20.09.36.45
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Fri, 20 Oct 2023 09:36:47 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	qemu-ppc@nongnu.org,
+	Eduardo Habkost <eduardo@habkost.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/19] cpus: Step toward removing global 'first_cpu'
+Date: Fri, 20 Oct 2023 18:36:22 +0200
+Message-ID: <20231020163643.86105-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 1/1] stm32f2xx_usart: implement TX interrupts
-Content-Language: en-US
-To: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:STM32F205" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20231020111428.3260965-1-hans-erik.floryd@rt-labs.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231020111428.3260965-1-hans-erik.floryd@rt-labs.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i+dafFuIMzay
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: rCdAF+YXVnWi
 
-Hi Hans-Erik,
+Heterogeneous machines have different type of CPU.
+In that context, both 'first_cpu' and qemu_get_cpu(index)
+don't make much sense.
 
-On 20/10/23 13:14, Hans-Erik Floryd wrote:
-> Generate interrupt if either of the TXE, TC or RXNE bits are active
-> and the corresponding interrupt enable bit is set.
-> 
-> Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-> ---
->   hw/char/stm32f2xx_usart.c         | 29 +++++++++++++++++------------
->   include/hw/char/stm32f2xx_usart.h | 10 ++++++----
->   2 files changed, 23 insertions(+), 16 deletions(-)
-> 
-> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> index fde67f4f03..2947c3a260 100644
-> --- a/hw/char/stm32f2xx_usart.c
-> +++ b/hw/char/stm32f2xx_usart.c
-> @@ -53,6 +53,16 @@ static int stm32f2xx_usart_can_receive(void *opaque)
->       return 0;
->   }
->   
-> +static void stm32f2xx_update(STM32F2XXUsartState *s)
-> +{
-> +    uint32_t mask = s->usart_sr & s->usart_cr1;
-> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
-> +        qemu_set_irq(s->irq, 1);
-> +    } else {
-> +        qemu_set_irq(s->irq, 0);
-> +    }
-> +}
-> +
->   static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
->   {
->       STM32F2XXUsartState *s = opaque;
-> @@ -66,9 +76,7 @@ static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
->       s->usart_dr = *buf;
->       s->usart_sr |= USART_SR_RXNE;
->   
-> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
-> -        qemu_set_irq(s->irq, 1);
-> -    }
-> +    stm32f2xx_update(s);
->   
->       DB_PRINT("Receiving: %c\n", s->usart_dr);
->   }
-> @@ -85,7 +93,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
->       s->usart_cr3 = 0x00000000;
->       s->usart_gtpr = 0x00000000;
->   
-> -    qemu_set_irq(s->irq, 0);
-> +    stm32f2xx_update(s);
->   }
->   
->   static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
-> @@ -100,13 +108,14 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
->       case USART_SR:
->           retvalue = s->usart_sr;
->           qemu_chr_fe_accept_input(&s->chr);
-> +        stm32f2xx_update(s);
->           return retvalue;
->       case USART_DR:
->           DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->usart_dr);
->           retvalue = s->usart_dr & 0x3FF;
->           s->usart_sr &= ~USART_SR_RXNE;
->           qemu_chr_fe_accept_input(&s->chr);
-> -        qemu_set_irq(s->irq, 0);
-> +        stm32f2xx_update(s);
->           return retvalue;
->       case USART_BRR:
->           return s->usart_brr;
-> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
->           } else {
->               s->usart_sr &= value;
->           }
-> -        if (!(s->usart_sr & USART_SR_RXNE)) {
-> -            qemu_set_irq(s->irq, 0);
-> -        }
-> +        stm32f2xx_update(s);
->           return;
->       case USART_DR:
->           if (value < 0xF000) {
-> @@ -161,6 +168,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
->                  clear TC by writing 0 to the SR register, so set it again
->                  on each write. */
->               s->usart_sr |= USART_SR_TC;
-> +            stm32f2xx_update(s);
->           }
->           return;
->       case USART_BRR:
-> @@ -168,10 +176,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
->           return;
->       case USART_CR1:
->           s->usart_cr1 = value;
-> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
-> -                s->usart_sr & USART_SR_RXNE) {
-> -                qemu_set_irq(s->irq, 1);
-> -            }
-> +        stm32f2xx_update(s);
->           return;
->       case USART_CR2:
->           s->usart_cr2 = value;
-> diff --git a/include/hw/char/stm32f2xx_usart.h b/include/hw/char/stm32f2xx_usart.h
-> index 65bcc85470..fdfa7424a7 100644
-> --- a/include/hw/char/stm32f2xx_usart.h
-> +++ b/include/hw/char/stm32f2xx_usart.h
-> @@ -48,10 +48,12 @@
->   #define USART_SR_TC   (1 << 6)
->   #define USART_SR_RXNE (1 << 5)
->   
-> -#define USART_CR1_UE  (1 << 13)
-> -#define USART_CR1_RXNEIE  (1 << 5)
-> -#define USART_CR1_TE  (1 << 3)
-> -#define USART_CR1_RE  (1 << 2)
-> +#define USART_CR1_UE     (1 << 13)
-> +#define USART_CR1_TXEIE  (1 << 7)
-> +#define USART_CR1_TCEIE  (1 << 6)
-> +#define USART_CR1_RXNEIE (1 << 5)
-> +#define USART_CR1_TE     (1 << 3)
-> +#define USART_CR1_RE     (1 << 2)
->   
->   #define TYPE_STM32F2XX_USART "stm32f2xx-usart"
->   OBJECT_DECLARE_SIMPLE_TYPE(STM32F2XXUsartState, STM32F2XX_USART)
+This series first add a 'filter CPU type' argument to
+qemu_get_cpu(), so the behavior respects what we currently
+expect, then replace 'first_cpu' by a qemu_get_cpu(0) call.
 
-To keep your changes trivial to review, I split your patch in 4:
+Testing pass, but I'm still unsure about performance impact.
 
-1/ Extract stm32f2xx_update_irq()
+With this series applied, what is left is:
 
--- >8 --
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index fde67f4f03..519d3461a3 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -53,6 +53,17 @@ static int stm32f2xx_usart_can_receive(void *opaque)
-      return 0;
-  }
+[OK]
 
-+static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
-+{
-+    uint32_t mask = s->usart_sr & s->usart_cr1;
-+
-+    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
-+        qemu_set_irq(s->irq, 1);
-+    } else {
-+        qemu_set_irq(s->irq, 0);
-+    }
-+}
-+
-  static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, 
-int size)
-  {
-      STM32F2XXUsartState *s = opaque;
-@@ -66,9 +77,7 @@ static void stm32f2xx_usart_receive(void *opaque, 
-const uint8_t *buf, int size)
-      s->usart_dr = *buf;
-      s->usart_sr |= USART_SR_RXNE;
+ -  hw/core/generic-loader.c:127:        s->cpu = qemu_get_cpu(s->cpu_num, NULL);
+ -  linux-user/syscall.c:8990:        if (CPU_NEXT(first_cpu)) {
+ -  monitor/hmp-cmds-target.c:106:        cs = vcpu >= 0 ? qemu_get_cpu(vcpu, NULL) : mon_get_cpu(mon);
+ -  stats/stats-hmp-cmds.c:150:        CPUState *cpu = qemu_get_cpu(cpu_index, NULL);
+ -  system/cpus.c:754:    cpu = qemu_get_cpu(cpu_index, NULL);
 
--    if (s->usart_cr1 & USART_CR1_RXNEIE) {
--        qemu_set_irq(s->irq, 1);
--    }
-+    stm32f2xx_update_irq(s);
+[likely OK, we don't support heterogeneous accelerators]
 
-      DB_PRINT("Receiving: %c\n", s->usart_dr);
-  }
-@@ -85,7 +94,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
-      s->usart_cr3 = 0x00000000;
-      s->usart_gtpr = 0x00000000;
+ -  accel/kvm/kvm-all.c:3581:    kvm_arch_on_sigbus_vcpu(first_cpu, code, addr);
+ -  accel/kvm/kvm-all.c:4255:    if (first_cpu) {
+ -  accel/kvm/kvm-all.c:4258:        query_stats_schema_vcpu(first_cpu, &stats_args);
 
--    qemu_set_irq(s->irq, 0);
-+    stm32f2xx_update_irq(s);
-  }
+[need some toughts...]
 
-  static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
-@@ -106,7 +115,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque, 
-hwaddr addr,
-          retvalue = s->usart_dr & 0x3FF;
-          s->usart_sr &= ~USART_SR_RXNE;
-          qemu_chr_fe_accept_input(&s->chr);
--        qemu_set_irq(s->irq, 0);
-+        stm32f2xx_update_irq(s);
-          return retvalue;
-      case USART_BRR:
-          return s->usart_brr;
-@@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque, 
-hwaddr addr,
-          } else {
-              s->usart_sr &= value;
-          }
--        if (!(s->usart_sr & USART_SR_RXNE)) {
--            qemu_set_irq(s->irq, 0);
--        }
-+        stm32f2xx_update_irq(s);
-          return;
-      case USART_DR:
-          if (value < 0xF000) {
-@@ -168,10 +175,7 @@ static void stm32f2xx_usart_write(void *opaque, 
-hwaddr addr,
-          return;
-      case USART_CR1:
-          s->usart_cr1 = value;
--            if (s->usart_cr1 & USART_CR1_RXNEIE &&
--                s->usart_sr & USART_SR_RXNE) {
--                qemu_set_irq(s->irq, 1);
--            }
-+        stm32f2xx_update_irq(s);
-          return;
-      case USART_CR2:
-          s->usart_cr2 = value;
----
-
-2/ Update IRQ when SR is read
-
--- >8 --
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index 519d3461a3..46e29089bc 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -109,6 +109,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque, 
-hwaddr addr,
-      case USART_SR:
-          retvalue = s->usart_sr;
-          qemu_chr_fe_accept_input(&s->chr);
-+        stm32f2xx_update_irq(s);
-          return retvalue;
-      case USART_DR:
-          DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) 
-s->usart_dr);
----
-
-Why is this required?
-
-3/ Update IRQ when DR is written
-
--- >8 --
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index 46e29089bc..74f007591a 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -169,6 +169,7 @@ static void stm32f2xx_usart_write(void *opaque, 
-hwaddr addr,
-                 clear TC by writing 0 to the SR register, so set it again
-                 on each write. */
-              s->usart_sr |= USART_SR_TC;
-+            stm32f2xx_update_irq(s);
-          }
-          return;
-      case USART_BRR:
----
-
-This change makes sense
-
-4/ Add more CR1 bit definitions
-
--- >8 --
-diff --git a/include/hw/char/stm32f2xx_usart.h 
-b/include/hw/char/stm32f2xx_usart.h
-index 65bcc85470..fdfa7424a7 100644
---- a/include/hw/char/stm32f2xx_usart.h
-+++ b/include/hw/char/stm32f2xx_usart.h
-@@ -49,6 +49,8 @@
-  #define USART_SR_RXNE (1 << 5)
-
-  #define USART_CR1_UE     (1 << 13)
-+#define USART_CR1_TXEIE  (1 << 7)
-+#define USART_CR1_TCEIE  (1 << 6)
-  #define USART_CR1_RXNEIE (1 << 5)
-  #define USART_CR1_TE     (1 << 3)
-  #define USART_CR1_RE     (1 << 2)
----
-
-These are not used, why add them?
+ -  accel/tcg/tcg-accel-ops-rr.c:114:        qemu_cond_wait_iothread(first_cpu->halt_cond);
+ -  accel/tcg/tcg-accel-ops-rr.c:200:    while (first_cpu->stopped) {
+ -  accel/tcg/tcg-accel-ops-rr.c:201:        qemu_cond_wait_iothread(first_cpu->halt_cond);
+ -  accel/tcg/tcg-accel-ops-rr.c:212:    cpu = first_cpu;
+ -  accel/tcg/tcg-accel-ops-rr.c:242:            cpu = first_cpu;
+ -  accel/tcg/tcg-accel-ops-rr.c:336:        cpu->thread_id = first_cpu->thread_id;
+ -  accel/tcg/tcg-accel-ops-rr.c:92:    if (!rr_kick_vcpu_timer && CPU_NEXT(first_cpu)) {
+ -  dump/win_dump.c:115:    if (cpu_memory_rw_debug(first_cpu,
+ -  dump/win_dump.c:128:    if (cpu_read_ptr(x64, first_cpu,
+ -  dump/win_dump.c:135:    if (cpu_memory_rw_debug(first_cpu, KiBugcheckData,
+ -  dump/win_dump.c:210:    if (cpu_memory_rw_debug(first_cpu,
+ -  dump/win_dump.c:258:    if (cpu_read_ptr(x64, first_cpu,
+ -  dump/win_dump.c:265:    if (cpu_memory_rw_debug(first_cpu,
+ -  dump/win_dump.c:286:        if (cpu_read_ptr(x64, first_cpu,
+ -  dump/win_dump.c:294:        if (cpu_read_ptr(x64, first_cpu,
+ -  dump/win_dump.c:378:        if (cpu_memory_rw_debug(first_cpu, Context,
+ -  dump/win_dump.c:384:        if (cpu_memory_rw_debug(first_cpu, Context,
+ -  dump/win_dump.c:400:        if (cpu_memory_rw_debug(first_cpu, saved_ctx[i].addr,
+ -  dump/win_dump.c:410:    X86CPU *first_x86_cpu = X86_CPU(first_cpu);
+ -  gdbstub/gdbstub.c:1521:    cc = CPU_GET_CLASS(first_cpu);
+ -  gdbstub/gdbstub.c:298:    CPUState *cpu = first_cpu;
+ -  gdbstub/system.c:338:    if (!first_cpu) {
+ -  hw/acpi/cpu.c:138:            if (!cdev->cpu || cdev->cpu == first_cpu) {
+ -  hw/acpi/cpu.c:150:            if (!cdev->cpu || cdev->cpu == first_cpu) {
+ -  hw/acpi/cpu.c:671:            if (CPU(arch_ids->cpus[i].cpu) != first_cpu) {
+ -  hw/core/generic-loader.c:134:        s->cpu = first_cpu;
+ -  monitor/hmp-cmds-target.c:39:    cpu = qemu_get_cpu(cpu_index, NULL);
+ -  monitor/hmp-cmds-target.c:62:        if (!first_cpu) {
+ -  monitor/hmp-cmds-target.c:65:        monitor_set_cpu(mon, first_cpu->cpu_index);
+ -  monitor/hmp-cmds-target.c:66:        cpu = first_cpu;
+ -  replay/replay-events.c:130:    qemu_cpu_kick(first_cpu);
+ -  system/cpu-timers.c:254:    } else if (first_cpu) {
+ -  system/cpu-timers.c:263:        async_run_on_cpu(first_cpu, do_nothing, RUN_ON_CPU_NULL);
+ -  system/memory_mapping.c:315:    first_paging_enabled_cpu = find_paging_enabled_cpu(first_cpu);
+ -  system/qtest.c:548:            address_space_write(first_cpu->as, ...
+ -  system/qtest.c:553:            address_space_write(first_cpu->as, ...
+ -  system/qtest.c:558:            address_space_write(first_cpu->as, ...
+ -  system/qtest.c:563:            address_space_write(first_cpu->as, ...
+ -  system/qtest.c:582:            address_space_read(first_cpu->as, ...
+ -  system/qtest.c:587:            address_space_read(first_cpu->as, ...
+ -  system/qtest.c:592:            address_space_read(first_cpu->as, ...
+ -  system/qtest.c:596:            address_space_read(first_cpu->as, ...
+ -  system/qtest.c:617:        address_space_read(first_cpu->as, ...
+ -  system/qtest.c:643:        address_space_read(first_cpu->as, ...
+ -  system/qtest.c:678:        address_space_write(first_cpu->as, ...
+ -  system/qtest.c:701:            address_space_write(first_cpu->as, ...
+ -  system/qtest.c:735:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/generic_fuzz.c:241:        mr1 = address_space_translate(first_cpu->as,
+ -  tests/qtest/fuzz/qtest_wrappers.c:110:        address_space_read(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:122:        address_space_read(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:134:        address_space_read(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:146:        address_space_read(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:157:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:167:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:177:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:187:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:197:        address_space_read(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:207:        address_space_read(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:218:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:229:        address_space_write(first_cpu->as, ...
+ -  tests/qtest/fuzz/qtest_wrappers.c:242:        address_space_write(first_cpu->as, ...
 
 Regards,
 
 Phil.
 
+Based-on: <20231013140116.255-1-philmd@linaro.org>
+          "target: Make 'cpu-qom.h' really target agnostic" v2
 
+Philippe Mathieu-Daudé (19):
+  cpus: Add argument to qemu_get_cpu() to filter CPUs by QOM type
+  cpus: Filter for target specific CPU (generic)
+  cpus: Filter for target specific CPU (arm)
+  cpus: Filter for target specific CPU (loongarch)
+  cpus: Filter for target specific CPU (mips)
+  cpus: Filter for target specific CPU (s390x)
+  cpus: Filter for target specific CPU (riscv)
+  cpus: Filter for target specific CPU (ppc)
+  cpus: Filter for target specific CPU (x86)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_ARM_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_POWERPC_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_MIPS_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_M68K_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_S390X_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_RISCV_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_TRICORE_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_SUPERH_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_RX_CPU)
+  cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_X86_CPU)
+
+ include/hw/core/cpu.h               |  3 ++-
+ target/mips/internal.h              |  2 +-
+ cpu-common.c                        |  5 ++++-
+ hw/arm/aspeed.c                     |  5 +++--
+ hw/arm/bananapi_m2u.c               |  3 ++-
+ hw/arm/boot.c                       | 14 +++++++-------
+ hw/arm/exynos4_boards.c             |  6 ++++--
+ hw/arm/fsl-imx7.c                   |  2 +-
+ hw/arm/highbank.c                   |  3 ++-
+ hw/arm/microbit.c                   |  3 ++-
+ hw/arm/mps2-tz.c                    |  3 ++-
+ hw/arm/mps2.c                       |  3 ++-
+ hw/arm/msf2-som.c                   |  3 ++-
+ hw/arm/musca.c                      |  3 ++-
+ hw/arm/netduino2.c                  |  3 ++-
+ hw/arm/netduinoplus2.c              |  2 +-
+ hw/arm/olimex-stm32-h405.c          |  2 +-
+ hw/arm/orangepi.c                   |  3 ++-
+ hw/arm/pxa2xx_gpio.c                |  2 +-
+ hw/arm/realview.c                   |  5 +++--
+ hw/arm/sbsa-ref.c                   |  7 ++++---
+ hw/arm/stellaris.c                  |  3 ++-
+ hw/arm/stm32vldiscovery.c           |  2 +-
+ hw/arm/vexpress.c                   |  5 +++--
+ hw/arm/virt-acpi-build.c            |  2 +-
+ hw/arm/virt.c                       | 25 ++++++++++++++-----------
+ hw/arm/xilinx_zynq.c                |  3 ++-
+ hw/arm/xlnx-versal-virt.c           |  2 +-
+ hw/core/generic-loader.c            |  2 +-
+ hw/cpu/a15mpcore.c                  |  4 ++--
+ hw/cpu/a9mpcore.c                   |  2 +-
+ hw/hyperv/hyperv.c                  |  2 +-
+ hw/i386/kvm/clock.c                 |  4 ++--
+ hw/i386/kvm/xen_evtchn.c            |  8 ++++----
+ hw/i386/kvmvapic.c                  |  3 ++-
+ hw/i386/microvm.c                   |  2 +-
+ hw/i386/pc.c                        |  7 ++++---
+ hw/i386/pc_piix.c                   |  3 ++-
+ hw/i386/x86.c                       |  2 +-
+ hw/intc/arm_gicv3_common.c          |  3 ++-
+ hw/intc/arm_gicv3_cpuif.c           |  2 +-
+ hw/intc/arm_gicv3_kvm.c             |  2 +-
+ hw/intc/m68k_irqc.c                 |  2 +-
+ hw/intc/mips_gic.c                  |  2 +-
+ hw/intc/riscv_aclint.c              |  2 +-
+ hw/intc/sh_intc.c                   |  6 ++++--
+ hw/intc/sifive_plic.c               |  4 ++--
+ hw/isa/lpc_ich9.c                   |  2 +-
+ hw/loongarch/virt.c                 | 10 +++++-----
+ hw/m68k/mcf5206.c                   |  2 +-
+ hw/mips/bootloader.c                |  3 ++-
+ hw/mips/cps.c                       |  5 +++--
+ hw/mips/loongson3_bootp.c           |  2 +-
+ hw/mips/loongson3_virt.c            |  7 ++++---
+ hw/mips/malta.c                     |  2 +-
+ hw/misc/mips_cpc.c                  |  4 ++--
+ hw/ppc/e500.c                       |  4 ++--
+ hw/ppc/ppc.c                        |  4 ++--
+ hw/ppc/ppce500_spin.c               |  2 +-
+ hw/ppc/prep_systemio.c              |  2 +-
+ hw/ppc/spapr.c                      | 11 ++++++-----
+ hw/ppc/spapr_caps.c                 | 10 +++++-----
+ hw/ppc/spapr_rtas.c                 |  2 +-
+ hw/ppc/spapr_vof.c                  |  2 +-
+ hw/ppc/vof.c                        |  3 ++-
+ hw/riscv/boot.c                     |  4 ++--
+ hw/riscv/opentitan.c                |  4 ++--
+ hw/rx/rx-gdbsim.c                   |  4 ++--
+ hw/s390x/ipl.c                      |  4 ++--
+ hw/s390x/s390-virtio-ccw.c          |  2 +-
+ hw/tricore/triboard.c               |  2 +-
+ monitor/hmp-cmds-target.c           |  4 ++--
+ stats/stats-hmp-cmds.c              |  2 +-
+ system/cpus.c                       |  2 +-
+ target/arm/arch_dump.c              |  6 +++---
+ target/i386/arch_dump.c             |  6 +++---
+ target/i386/kvm/kvm.c               |  6 +++---
+ target/i386/kvm/xen-emu.c           | 15 ++++++++-------
+ target/i386/monitor.c               |  2 +-
+ target/i386/tcg/sysemu/fpu_helper.c |  4 ++--
+ target/mips/cpu.c                   |  2 +-
+ target/mips/tcg/sysemu/cp0_helper.c | 10 +++++-----
+ target/mips/tcg/sysemu/tlb_helper.c |  2 +-
+ target/ppc/arch_dump.c              |  4 ++--
+ target/riscv/arch_dump.c            |  4 ++--
+ target/s390x/cpu_models.c           | 10 +++++-----
+ 86 files changed, 199 insertions(+), 163 deletions(-)
+
+-- 
+2.41.0

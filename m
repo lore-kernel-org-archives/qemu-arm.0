@@ -1,265 +1,421 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1357359ejb;
-        Fri, 20 Oct 2023 09:32:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEsRhUHzWZipF/8ukAkTKCV/uGtH4wNirmq7TXkQ45yUVQRgTdTuexl46obj0jrnDWCFTfh
-X-Received: by 2002:a05:622a:411:b0:419:63ff:5ab2 with SMTP id n17-20020a05622a041100b0041963ff5ab2mr2415002qtx.24.1697819578033;
-        Fri, 20 Oct 2023 09:32:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697819578; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1360088ejb;
+        Fri, 20 Oct 2023 09:37:08 -0700 (PDT)
+X-Received: by 2002:a17:907:94c3:b0:9bf:4e0b:fb06 with SMTP id dn3-20020a17090794c300b009bf4e0bfb06mr1826054ejc.14.1697819827921;
+        Fri, 20 Oct 2023 09:37:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697819827; cv=none;
         d=google.com; s=arc-20160816;
-        b=mq5Z288Po/DWXphCsSTZHX400gxYePBLHpLWLDaOoQkS7S+hJiaT0jkhjEDv4gvlc/
-         8NYs45H3SUyYV5B0CRQvuEjBP559jt7GmkPNabHaJ6kyl+lnd5iYccGgUMtiLT4a33I0
-         1Cu/Giixc3qVxdr9bTDIYy9pDp467WquIHtJK5efLJsUM82tEtPVP2GXF67UERvfdlWP
-         FrprZu2J4Xbo+C3mD24VzS3SR2HF8KRsq/eghMx4BB+ave0ym90WoZFQw0NQDkz5QFqq
-         qdrDlekPrav6Z9XKrMnJlbSWrXn6GdXAj1OldVadnpfhw1GqSntXve4iTtwMdNgoWb9S
-         Ge5g==
+        b=QMm9EU13a9+0QqVeNcc5YzzY/ysN+zWESbzLIS2uEQB7kU42+yTz7ZbbV31GOaPq/G
+         +TFFEUo6x46BTk1OYOBIpVL2OlFktH68qkgzZMgseo7riKiM1kamm1nekNmRN0tM1Av3
+         E8gtc6Hi27mUQqxtyDZAv4l7MWhZ27vD+k6N/eY4RjI81JTE4rimpZAfxo94YWwDpQ4k
+         74g2BcG2ZbUzSB8kOcIf+5oX+Y79bM2sse3mbTMu6YHMePnkNhH0EyzBZR7QOcgnVmEn
+         rAhMB964oTMfmqQf3+pbzA3kZswqAXEnEsfTuOkeTaYbg/Z+q40709E5bhowOAo33xtF
+         wnwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:date:cc:to:from:subject
-         :message-id:dkim-signature;
-        bh=aTEWIniqsxNQl9kkNX1vfgGsunuySo1qaZrG+lN3pOc=;
-        fh=mgru9I8hWo8jcKRUx6wPki+ZCUiP9zuf3bP0pFPyIUo=;
-        b=F552dbSCuMxqy4uK15eQkrJtVxYlCImDVCYUfk2CXrVAYZ3vRPWUQ4JuHc1QgzkfeD
-         vy6liqn3MSUIJwDUyrStdbAW/2YZN02ghPehDzumXiH/hHSiX7ZUBgJlEUK6CeyNxvib
-         pw8cpyX+Ry+epOFunlliGqvcJokRlEEf3Cjn13AAcfO2/N24pfPhFZh/GZFFtR7C2K78
-         XsQ6xKEmWhETk8m8VKIyNtd+jAH9FpbRS3eiafpEsEU+jClGGIlhNoF6H9i5clmWnu9Q
-         wRd0uYi3u1xVeZICYkdpOo6xw/X7AoEXN4czX/YgiHT9maUTeUHdcFoy90qy13SisNmI
-         213g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=A7B1eCzypxeXFMF1kKBwY/8dmya6s2C6K0DgCBsTCTY=;
+        fh=ClZt7z+F0FQG25RpMh3h+SyMF2YTM2RWya3bFFelXcE=;
+        b=P8etEKnwU8VAJNLg/kCxuLfKm/HkGuFNW5/oNWWizNbxWR5qy8FgwCU/B7o2eEs+rA
+         SrA9Of3IJVm8ttaJaCS2HTjWiN+L8nlq0FK+q4fXAtS9l8MEadcqmLvtqV6FH5pB43aq
+         lpF2dXahdMaLVXz8/eQbnr+8VzHDFJ9kQUkE9N228nd8kPOlzNXaKrwM8HRm2+Dzm+BU
+         mc1sLxz2Uxrvqvc8e1qY0AuOtAr3LAZTyRCn7nCgDUc3sib5KTuPMxwb39kEl4uA8XqH
+         pfwoX0nAQrvrtFsoqShNHbYrMX6tDSRuOQyJV+ofQJ+bu5ybT/yw0oVeKzKdZ7s3cb++
+         DTqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=A63o5gmR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6-20020a05622a13c600b00417eb3b1768si1463851qtk.224.2023.10.20.09.32.57
+       dkim=pass header.i=@linaro.org header.s=google header.b=G0i5h9pk;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ze11-20020a170906ef8b00b009b2b16429b5sor701101ejb.6.2023.10.20.09.37.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 09:32:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 20 Oct 2023 09:37:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=A63o5gmR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtsQY-0005mq-AQ; Fri, 20 Oct 2023 12:32:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qtsQV-0005m7-Rd; Fri, 20 Oct 2023 12:32:43 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qtsQT-0000Lb-IE; Fri, 20 Oct 2023 12:32:43 -0400
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39KGAYsc027709; Fri, 20 Oct 2023 16:32:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=aTEWIniqsxNQl9kkNX1vfgGsunuySo1qaZrG+lN3pOc=;
- b=A63o5gmR4eOkTpSeZi4wKHBI5EFirMnCmnz14lUFoHMT69PfdA7pi/SOyosgUJHutUZB
- QSO9c/uWCcm9SnrV3io57w8B8Ciga+0MBdYSz7pDUl7JlXZYHQ5bwCKeh5DhCPAUHB3i
- TpBGCVcecI0GyAFNRDeR7wdfSmv+aq4XxqvxlKbSDNsh/sg7Tw1r5GVzBERBZh/3jufF
- JtfFGb+yYka0z2KNBu73egLOe/1jFNpwRW6ibL0LYl1IHX12sAtHn18ak+mvYjL8F0Zx
- +ejgTLJE7F2gmXu7r1D73hLgQCZP98iyWshoKIfhLQKEF03CECWAeTOsi2WQeg4D5Bx0 1A== 
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tuvubgvs6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 16:32:21 +0000
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39KEwDuh002779; Fri, 20 Oct 2023 16:32:09 GMT
-Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc44dsbe-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 16:32:09 +0000
-Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
- [10.241.53.100])
- by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39KGW8s820710010
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 20 Oct 2023 16:32:09 GMT
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8E55D58067;
- Fri, 20 Oct 2023 16:32:08 +0000 (GMT)
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5545F58064;
- Fri, 20 Oct 2023 16:32:08 +0000 (GMT)
-Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
- by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 20 Oct 2023 16:32:08 +0000 (GMT)
-Message-ID: <53fccc103ab72cfd93e98fd28bd0a869a43b6a83.camel@linux.vnet.ibm.com>
-Subject: Re: [PATCH 1/2] misc/pca9552: Fix inverted input status
-From: Miles Glenn <milesg@linux.vnet.ibm.com>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Andrew
- Jeffery <andrew@codeconstruct.com.au>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, f4bug@amsat.org
-Date: Fri, 20 Oct 2023 11:32:08 -0500
-In-Reply-To: <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
-References: <20231019204011.3174115-1-milesg@linux.vnet.ibm.com>
- <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
- <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
- <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-Mime-Version: 1.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=G0i5h9pk;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697819827; x=1698424627; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=A7B1eCzypxeXFMF1kKBwY/8dmya6s2C6K0DgCBsTCTY=;
+        b=G0i5h9pkwR+2jnZ+3BxEyaaYhEVhxqyfxbYrc74e3DFOAwQXMAJSeEz+xH9kbiXZK/
+         BZxGZjVt9D7Tv9Tj566nESHtQ2SpNExbZIo4defus2AueaMI2M1EiRGztAKyAA0+wOt7
+         9A2u2aRIEiILCwNzfFryd/Gj9cN/plgB9QvOGSdDt61MyvsWlx9BDl6XzR1uunqd7Gqt
+         Orul0i7vfIQAKLNK6QmUKZfgKlTmQdjK74EcH9DEJOy9EB0b4K9tA8BVX5lbX0XO6kqG
+         sBCLlEfNCTq0kvP5pWCKKdpYTmhqq6+ozaylLDX6ZU/Dc2Xv3/k8dbGOfiE00RMrg0FK
+         OocQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697819827; x=1698424627;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=A7B1eCzypxeXFMF1kKBwY/8dmya6s2C6K0DgCBsTCTY=;
+        b=dRYi7TCLIlvrt6pi/VRkc9cRXdRUOihEZT8QL37vcN98x0QQG1EVCT8ybf7/0ANgdy
+         +ksvZ4vHFPCT1IH4E72ZTi0rhqqmovfKAzUFaQre9Cus492OmD+VLcylcHiF5yQyXMWO
+         P2meJ7Ll1+cqbzFzva7WFvAR+CMSkKLfm+LZOeMAaJe4FSLEhRzaAPok3smDH1Jexc3v
+         hqh04EQ1b9BpPq4Uqb850SiqDnBLn+noBmW9h3orW3I7qNGN/KOQtKrGlGKcF0BgEiId
+         yq10mkgxu19bDXR2/7vpHy4aRrlU/c4SzDU+MxnwammMWULvEvN1mEzzp+FLfD6hZiyd
+         693w==
+X-Gm-Message-State: AOJu0YyLEz/VMQpQtnzLM0rtekITbquAR+BOLwSLYrzRAcrbNebcTWUz
+	wsMzVPmGWMcTdpaKOTWIiGD8upf7
+X-Google-Smtp-Source: AGHT+IH3OFQCcej8C1Nu7bwhV2sk2BKDbXDxoaNocUKf/fpQXvZKWrYv0TGnQ8hTizssIQURr7pQlQ==
+X-Received: by 2002:a17:907:9342:b0:9be:40ba:5f1 with SMTP id bv2-20020a170907934200b009be40ba05f1mr1910557ejc.60.1697819827449;
+        Fri, 20 Oct 2023 09:37:07 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr. [176.171.212.97])
+        by smtp.gmail.com with ESMTPSA id 25-20020a170906005900b009c65e13c33dsm1780502ejg.122.2023.10.20.09.37.03
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Fri, 20 Oct 2023 09:37:07 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	qemu-ppc@nongnu.org,
+	Eduardo Habkost <eduardo@habkost.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Song Gao <gaosong@loongson.cn>,
+	Thomas Huth <huth@tuxfamily.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	David Hildenbrand <david@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH 02/19] cpus: Filter for target specific CPU (generic)
+Date: Fri, 20 Oct 2023 18:36:24 +0200
+Message-ID: <20231020163643.86105-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231020163643.86105-1-philmd@linaro.org>
+References: <20231020163643.86105-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: SrAi1bOEb5-NC0bUlzMDxGDbmJu1cRj-
-X-Proofpoint-ORIG-GUID: SrAi1bOEb5-NC0bUlzMDxGDbmJu1cRj-
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-20_10,2023-10-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1011
- malwarescore=0 phishscore=0 bulkscore=0 spamscore=0 lowpriorityscore=0
- suspectscore=0 mlxlogscore=999 priorityscore=1501 mlxscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
- definitions=main-2310200138
-Received-SPF: none client-ip=148.163.158.5;
- envelope-from=milesg@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xxZrPj0JkGEX
+X-TUID: nhxKGz2UO15M
 
-On Fri, 2023-10-20 at 11:42 +0200, Philippe Mathieu-Daudé wrote:
-> On 20/10/23 04:51, Andrew Jeffery wrote:
-> > On Thu, 2023-10-19 at 15:40 -0500, Glenn Miles wrote:
-> > > > The pca9552 INPUT0 and INPUT1 registers are supposed to
-> > > > hold the logical values of the LED pins.  A logical 0
-> > > > should be seen in the INPUT0/1 registers for a pin when
-> > > > its corresponding LSn bits are set to 0, which is also
-> > > > the state needed for turning on an LED in a typical
-> > > > usage scenario.  Existing code was doing the opposite
-> > > > and setting INPUT0/1 bit to a 1 when the LSn bit was
-> > > > set to 0, so this commit fixes that.
-> > > > 
-> > > > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
-> > > > ---
-> > > > 
-> > > > Changes from prior version:
-> > > >      - Added comment regarding pca953X
-> > > >      - Added cover letter
-> > > > 
-> > > >   hw/misc/pca9552.c          | 18 +++++++++++++-----
-> > > >   tests/qtest/pca9552-test.c |  6 +++---
-> > > >   2 files changed, 16 insertions(+), 8 deletions(-)
-> > > > 
-> > > > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> > > > index fff19e369a..445f56a9e8 100644
-> > > > --- a/hw/misc/pca9552.c
-> > > > +++ b/hw/misc/pca9552.c
-> > > > @@ -36,7 +36,10 @@ typedef struct PCA955xClass PCA955xClass;
-> > > >   
-> > > >   DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
-> > > >                          TYPE_PCA955X)
-> > > > -
-> > > > +/*
-> > > > + * Note:  The LED_ON and LED_OFF configuration values for the
-> > > > PCA955X
-> > > > + *        chips are the reverse of the PCA953X family of
-> > > > chips.
-> > > > + */
-> > > >   #define PCA9552_LED_ON   0x0
-> > > >   #define PCA9552_LED_OFF  0x1
-> > > >   #define PCA9552_LED_PWM0 0x2
-> > > > @@ -112,13 +115,18 @@ static void
-> > > > pca955x_update_pin_input(PCA955xState *s)
-> > > >   
-> > > >           switch (config) {
-> > > >           case PCA9552_LED_ON:
-> > > > -            qemu_set_irq(s->gpio[i], 1);
-> > > > -            s->regs[input_reg] |= 1 << input_shift;
-> > > > -            break;
-> > > > -        case PCA9552_LED_OFF:
-> > > > +            /* Pin is set to 0V to turn on LED */
-> > > >               qemu_set_irq(s->gpio[i], 0);
-> > > >               s->regs[input_reg] &= ~(1 << input_shift);
-> > > >               break;
-> > > > +        case PCA9552_LED_OFF:
-> > > > +            /*
-> > > > +             * Pin is set to Hi-Z to turn off LED and
-> > > > +             * pullup sets it to a logical 1.
-> > > > +             */
-> > > > +            qemu_set_irq(s->gpio[i], 1);
-> > > > +            s->regs[input_reg] |= 1 << input_shift;
-> > > > +            break;
-> > 
-> > So the witherspoon-bmc machine was a user of the PCA9552 outputs as
-> > LEDs. I guess its LEDs were in the wrong state the whole time? That
-> > looks like the only user though, and shouldn't be negatively
-> > affected.
-> 
-> Usually GPIO polarity is a machine/board property, not a device
-> one.
-> 
-> We could use the LED API (hw/misc/led.h) which initialize each
-> output with GpioPolarity.
-> 
+When the CPUState is casted to a specific target, enforce
+that target CPU type as qemu_get_cpu() filter.
 
-Thanks for your comments!   This piqued my curiosity so I decided to
-run a test with the witherspoon-bmc machine.  Without my changes, I ran
-the following command to turn off LED13 on the pca9552 which I had
-previously set to "on":
+Mechanical change using the following coccinelle script:
 
-  qom-set /machine/unattached/device[18] led13 off
+  @@
+  expression index;
+  @@
+  (
+  -   ARM_CPU(qemu_get_cpu(index, NULL))
+  +   ARM_CPU(qemu_get_cpu(index, TYPE_ARM_CPU))
+  |
+  -   LOONGARCH_CPU(qemu_get_cpu(index, NULL))
+  +   LOONGARCH_CPU(qemu_get_cpu(index, TYPE_LOONGARCH_CPU))
+  |
+  -   M68K_CPU(qemu_get_cpu(index, NULL))
+  +   M68K_CPU(qemu_get_cpu(index, TYPE_M68K_CPU))
+  |
+  -   MIPS_CPU(qemu_get_cpu(index, NULL))
+  +   MIPS_CPU(qemu_get_cpu(index, TYPE_MIPS_CPU))
+  |
+  -   RISCV_CPU(qemu_get_cpu(index, NULL))
+  +   RISCV_CPU(qemu_get_cpu(index, TYPE_RISCV_CPU))
+  |
+  -   S390_CPU(qemu_get_cpu(index, NULL))
+  +   S390_CPU(qemu_get_cpu(index, TYPE_S390_CPU))
+  )
 
-I had GDB connected at the time with a breakpoint set on
-led_set_state() so that I could see what was happening.  Due to the
-inversion bug, I expected the pca9552 code to set the pin low and also
-set the irq low, which it did.  The connected LED's on this pca9552
-were all configured as GPIO_POLARITY_ACTIVE_LOW, so I expected that
-setting the irq state low would actually turn on the LED.  Instead it
-turned off the LED.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/boot.c             |  2 +-
+ hw/arm/pxa2xx_gpio.c      |  2 +-
+ hw/arm/sbsa-ref.c         |  2 +-
+ hw/arm/virt-acpi-build.c  |  2 +-
+ hw/arm/virt.c             |  6 +++---
+ hw/arm/xlnx-versal-virt.c |  2 +-
+ hw/intc/arm_gicv3_cpuif.c |  2 +-
+ hw/intc/arm_gicv3_kvm.c   |  2 +-
+ hw/intc/riscv_aclint.c    |  2 +-
+ hw/intc/sifive_plic.c     |  2 +-
+ hw/loongarch/virt.c       |  6 +++---
+ hw/m68k/mcf5206.c         |  2 +-
+ target/mips/cpu.c         |  2 +-
+ target/s390x/cpu_models.c | 10 +++++-----
+ 14 files changed, 22 insertions(+), 22 deletions(-)
 
-Reviewing the LED code, I believe the problem lies here:
-
-static void led_set_state_gpio_handler(void *opaque, int line, int
-new_state)
-{
-    LEDState *s = LED(opaque);
-
-    assert(line == 0);
-    led_set_state(s, !!new_state != s->gpio_active_high);
-}
-
-
-In my test, new_state was 0 and gpio_active_high was 0, resulting in
-the boolean expression of ( 0 != 0 ) which is false and results in
-turning off the LED.  So, this looks like a bug to me.
-
-For another simpler example, if the LED polarity was set to
-GPIO_POLARITY_ACTIVE_HIGH, then s->gpio_active_high would be 1.  Then,
-if we set the irq line to 1, wouldn't we expect the LED to turn on? 
-However, as the code stands, it would actually turn the LED off.  So, I
-think we can remove one of the "!"'s from in front of new_state.  Then,
-if the LED is active high and the irq line is set high, it would turn
-on the LED.  Correct?
-
-Thanks,
-
-Glenn
-
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index e260168cf5..f7def3a60c 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -438,7 +438,7 @@ static void fdt_add_psci_node(void *fdt)
+     uint32_t cpu_off_fn;
+     uint32_t cpu_on_fn;
+     uint32_t migrate_fn;
+-    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0, NULL));
++    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
+     const char *psci_method;
+     int64_t psci_conduit;
+     int rc;
+diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
+index 0a698171ab..9795451f19 100644
+--- a/hw/arm/pxa2xx_gpio.c
++++ b/hw/arm/pxa2xx_gpio.c
+@@ -303,7 +303,7 @@ static void pxa2xx_gpio_realize(DeviceState *dev, Error **errp)
+ {
+     PXA2xxGPIOInfo *s = PXA2XX_GPIO(dev);
+ 
+-    s->cpu = ARM_CPU(qemu_get_cpu(s->ncpu, NULL));
++    s->cpu = ARM_CPU(qemu_get_cpu(s->ncpu, TYPE_ARM_CPU));
+ 
+     qdev_init_gpio_in(dev, pxa2xx_gpio_set, s->lines);
+     qdev_init_gpio_out(dev, s->handler, s->lines);
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 3571d5038f..f6f64099c3 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -275,7 +275,7 @@ static void create_fdt(SBSAMachineState *sms)
+ 
+     for (cpu = sms->smp_cpus - 1; cpu >= 0; cpu--) {
+         char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu, NULL));
++        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu, TYPE_ARM_CPU));
+         CPUState *cs = CPU(armcpu);
+         uint64_t mpidr = sbsa_ref_cpu_mp_affinity(sms, cpu);
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index fd6c239c31..0d09007d9b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -727,7 +727,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0, 3);   /* Reserved */
+ 
+     for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i, NULL));
++        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i, TYPE_ARM_CPU));
+         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
+         uint32_t vgic_interrupt = vms->virt ? PPI(ARCH_GIC_MAINT_IRQ) : 0;
+         uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a8f9d88519..be31ef5718 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -355,7 +355,7 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
+ 
+     qemu_fdt_add_subnode(ms->fdt, "/timer");
+ 
+-    armcpu = ARM_CPU(qemu_get_cpu(0, NULL));
++    armcpu = ARM_CPU(qemu_get_cpu(0, TYPE_ARM_CPU));
+     if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+         const char compat[] = "arm,armv8-timer\0arm,armv7-timer";
+         qemu_fdt_setprop(ms->fdt, "/timer", "compatible",
+@@ -394,7 +394,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+      * at least one of them has Aff3 populated, we set #address-cells to 2.
+      */
+     for (cpu = 0; cpu < smp_cpus; cpu++) {
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu, NULL));
++        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu, TYPE_ARM_CPU));
+ 
+         if (armcpu->mp_affinity & ARM_AFF3_MASK) {
+             addr_cells = 2;
+@@ -408,7 +408,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+ 
+     for (cpu = smp_cpus - 1; cpu >= 0; cpu--) {
+         char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu, NULL));
++        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu, TYPE_ARM_CPU));
+         CPUState *cs = CPU(armcpu);
+ 
+         qemu_fdt_add_subnode(ms->fdt, nodename);
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index 419ee3b882..2646b63b79 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -103,7 +103,7 @@ static void fdt_add_cpu_nodes(VersalVirt *s, uint32_t psci_conduit)
+ 
+     for (i = XLNX_VERSAL_NR_ACPUS - 1; i >= 0; i--) {
+         char *name = g_strdup_printf("/cpus/cpu@%d", i);
+-        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i, NULL));
++        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i, TYPE_ARM_CPU));
+ 
+         qemu_fdt_add_subnode(s->fdt, name);
+         qemu_fdt_setprop_cell(s->fdt, name, "reg", armcpu->mp_affinity);
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index f765b3d4b5..3b11b33b3e 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -2795,7 +2795,7 @@ void gicv3_init_cpuif(GICv3State *s)
+     int i;
+ 
+     for (i = 0; i < s->num_cpu; i++) {
+-        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i, NULL));
++        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i, TYPE_ARM_CPU));
+         GICv3CPUState *cs = &s->cpu[i];
+ 
+         /*
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index d1ff9886aa..440a84f0fe 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -808,7 +808,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+     gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+ 
+     for (i = 0; i < s->num_cpu; i++) {
+-        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i, NULL));
++        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i, TYPE_ARM_CPU));
+ 
+         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
+     }
+diff --git a/hw/intc/riscv_aclint.c b/hw/intc/riscv_aclint.c
+index a97c0449ec..7e57c03ef7 100644
+--- a/hw/intc/riscv_aclint.c
++++ b/hw/intc/riscv_aclint.c
+@@ -483,7 +483,7 @@ static void riscv_aclint_swi_realize(DeviceState *dev, Error **errp)
+ 
+     /* Claim software interrupt bits */
+     for (i = 0; i < swi->num_harts; i++) {
+-        RISCVCPU *cpu = RISCV_CPU(qemu_get_cpu(swi->hartid_base + i, NULL));
++        RISCVCPU *cpu = RISCV_CPU(qemu_get_cpu(swi->hartid_base + i, TYPE_RISCV_CPU));
+         /* We don't claim mip.SSIP because it is writable by software */
+         if (riscv_cpu_claim_interrupts(cpu, swi->sswi ? 0 : MIP_MSIP) < 0) {
+             error_report("MSIP already claimed");
+diff --git a/hw/intc/sifive_plic.c b/hw/intc/sifive_plic.c
+index a32e7f1924..3e2534ac04 100644
+--- a/hw/intc/sifive_plic.c
++++ b/hw/intc/sifive_plic.c
+@@ -392,7 +392,7 @@ static void sifive_plic_realize(DeviceState *dev, Error **errp)
+      * hardware controlled when a PLIC is attached.
+      */
+     for (i = 0; i < s->num_harts; i++) {
+-        RISCVCPU *cpu = RISCV_CPU(qemu_get_cpu(s->hartid_base + i, NULL));
++        RISCVCPU *cpu = RISCV_CPU(qemu_get_cpu(s->hartid_base + i, TYPE_RISCV_CPU));
+         if (riscv_cpu_claim_interrupts(cpu, MIP_SEIP) < 0) {
+             error_setg(errp, "SEIP already claimed");
+             return;
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index e888aea892..902e32a3e3 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -170,7 +170,7 @@ static void fdt_add_cpu_nodes(const LoongArchMachineState *lams)
+     /* cpu nodes */
+     for (num = smp_cpus - 1; num >= 0; num--) {
+         char *nodename = g_strdup_printf("/cpus/cpu@%d", num);
+-        LoongArchCPU *cpu = LOONGARCH_CPU(qemu_get_cpu(num, NULL));
++        LoongArchCPU *cpu = LOONGARCH_CPU(qemu_get_cpu(num, TYPE_LOONGARCH_CPU));
+         CPUState *cs = CPU(cpu);
+ 
+         qemu_fdt_add_subnode(ms->fdt, nodename);
+@@ -726,7 +726,7 @@ static void loongarch_direct_kernel_boot(LoongArchMachineState *lams,
+     kernel_addr = load_kernel_info(loaderparams);
+     if (!machine->firmware) {
+         for (i = 0; i < machine->smp.cpus; i++) {
+-            lacpu = LOONGARCH_CPU(qemu_get_cpu(i, NULL));
++            lacpu = LOONGARCH_CPU(qemu_get_cpu(i, TYPE_LOONGARCH_CPU));
+             lacpu->env.load_elf = true;
+             lacpu->env.elf_address = kernel_addr;
+         }
+@@ -859,7 +859,7 @@ static void loongarch_init(MachineState *machine)
+     fdt_add_flash_node(lams);
+     /* register reset function */
+     for (i = 0; i < machine->smp.cpus; i++) {
+-        lacpu = LOONGARCH_CPU(qemu_get_cpu(i, NULL));
++        lacpu = LOONGARCH_CPU(qemu_get_cpu(i, TYPE_LOONGARCH_CPU));
+         qemu_register_reset(reset_load_elf, lacpu);
+     }
+     /* Initialize the IO interrupt subsystem */
+diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
+index a0851f58a9..d409c25ee6 100644
+--- a/hw/m68k/mcf5206.c
++++ b/hw/m68k/mcf5206.c
+@@ -601,7 +601,7 @@ static void mcf5206_mbar_realize(DeviceState *dev, Error **errp)
+     s->timer[1] = m5206_timer_init(s->pic[10]);
+     s->uart[0] = mcf_uart_init(s->pic[12], serial_hd(0));
+     s->uart[1] = mcf_uart_init(s->pic[13], serial_hd(1));
+-    s->cpu = M68K_CPU(qemu_get_cpu(0, NULL));
++    s->cpu = M68K_CPU(qemu_get_cpu(0, TYPE_M68K_CPU));
+ }
+ 
+ static void mcf5206_mbar_class_init(ObjectClass *oc, void *data)
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 17e9e06a15..3ba329fa61 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -117,7 +117,7 @@ static void mips_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+ 
+ void cpu_set_exception_base(int vp_index, target_ulong address)
+ {
+-    MIPSCPU *vp = MIPS_CPU(qemu_get_cpu(vp_index, NULL));
++    MIPSCPU *vp = MIPS_CPU(qemu_get_cpu(vp_index, TYPE_MIPS_CPU));
+     vp->env.exception_base = address;
+ }
+ 
+diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+index 4a44ee56a9..7d1f5df114 100644
+--- a/target/s390x/cpu_models.c
++++ b/target/s390x/cpu_models.c
+@@ -150,7 +150,7 @@ uint32_t s390_get_hmfai(void)
+     static S390CPU *cpu;
+ 
+     if (!cpu) {
+-        cpu = S390_CPU(qemu_get_cpu(0, NULL));
++        cpu = S390_CPU(qemu_get_cpu(0, TYPE_S390_CPU));
+     }
+ 
+     if (!cpu || !cpu->model) {
+@@ -164,7 +164,7 @@ uint8_t s390_get_mha_pow(void)
+     static S390CPU *cpu;
+ 
+     if (!cpu) {
+-        cpu = S390_CPU(qemu_get_cpu(0, NULL));
++        cpu = S390_CPU(qemu_get_cpu(0, TYPE_S390_CPU));
+     }
+ 
+     if (!cpu || !cpu->model) {
+@@ -179,7 +179,7 @@ uint32_t s390_get_ibc_val(void)
+     static S390CPU *cpu;
+ 
+     if (!cpu) {
+-        cpu = S390_CPU(qemu_get_cpu(0, NULL));
++        cpu = S390_CPU(qemu_get_cpu(0, TYPE_S390_CPU));
+     }
+ 
+     if (!cpu || !cpu->model) {
+@@ -199,7 +199,7 @@ void s390_get_feat_block(S390FeatType type, uint8_t *data)
+     static S390CPU *cpu;
+ 
+     if (!cpu) {
+-        cpu = S390_CPU(qemu_get_cpu(0, NULL));
++        cpu = S390_CPU(qemu_get_cpu(0, TYPE_S390_CPU));
+     }
+ 
+     if (!cpu || !cpu->model) {
+@@ -213,7 +213,7 @@ bool s390_has_feat(S390Feat feat)
+     static S390CPU *cpu;
+ 
+     if (!cpu) {
+-        cpu = S390_CPU(qemu_get_cpu(0, NULL));
++        cpu = S390_CPU(qemu_get_cpu(0, TYPE_S390_CPU));
+     }
+ 
+     if (!cpu || !cpu->model) {
+-- 
+2.41.0

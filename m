@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1028208ejb;
-        Fri, 20 Oct 2023 00:00:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFM6g7HqT7ZlJ3ShsF6Loe5gnLCHvVFV1In4KCutSU9CQZhCZaVwVOsVs5QWuJes6zLkrBB
-X-Received: by 2002:a05:6a20:e11e:b0:15d:607b:5a39 with SMTP id kr30-20020a056a20e11e00b0015d607b5a39mr1026414pzb.30.1697785250593;
-        Fri, 20 Oct 2023 00:00:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697785250; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1028272ejb;
+        Fri, 20 Oct 2023 00:00:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFYsBOyR+f8R0dJf3zFodCLVvM9uj9T5OHU8eA5LRHomn1dXR5k00zBpsB4wEpCqxwlsr1e
+X-Received: by 2002:a05:6e02:1b05:b0:34f:7e1b:a7a2 with SMTP id i5-20020a056e021b0500b0034f7e1ba7a2mr1240472ilv.13.1697785256629;
+        Fri, 20 Oct 2023 00:00:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697785256; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ibhwg4LDoiLVh6aOJceyX4qOEtTIN0PwQX7at088DF3c+RALl7LkbqpZWz7nvfaEfu
-         fcmQgJt4Is1ewR/F+L6jBwM04MeZA9f9lNRywigLFRKZOgD8xDIQw/8WHppAXIkxysOS
-         de9PbQYsNRb6Cduuhp360sqpv91DXAFFxJQfixsTVNGWMIFPbGmmKioCVBb5/ynYKeeA
-         iPKnfYcQC0AaUuKJrIccviROBm43OnxISq0Ez0+7hBFVjsrXej4bjo1JTHNKTaymjbks
-         nW4jGI0UASPS4+n0Q4BqF95JwbdfBw/2Rs1PrqwSxWmoWdSgaZw+CCAzjCD1ifX/pVyy
-         ilTA==
+        b=hVHGAG6uQA3/KF3Nq1abBef+gPn+hrvGm1Yo5qOIKyFDD7zS5D20R3ctHCM+j8oSwQ
+         q+BtsEdLyzQHUn6TTizMn8GU//+o4JSeq6kkN+JpabmwWXBN1ialgNLbKB8PNmD7sRPt
+         mC/+zovlNjzbK2Hw3xPhvjvEjFWTL0IIRv24vA95+Y0FFn2fyIbTM9XAEIU3Z5njkqdu
+         I8MmeP4ZXoD1Wc1dCEMCEVbWID/Vky1p1MFBoADRJZHxhR1cWlZj23DMFwjZQjt4dSuH
+         cbgiswkUNB2hiGDfZx1QhXBY+vMPPklmX8muX1KkossWQFXW8Exj23m01kBrVdJZk/0t
+         wJCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=pAJTnVpdSndHpJHcO4Q9CXE/YX/zGK2bRQ4iuRIKTlg=;
+        bh=sM/0UQ5xBCWfmnH5VTYXfvCTYeIJ1ZcbMPhmzQIzyg0=;
         fh=fTjRJWWf32rfQWm8ROIsswmsB54Y1g6a+adPg1wBxPA=;
-        b=rwbhdrYK69ux9xKLhV22+K3SzSurKglwZTkZRaXop2rd2Uc50/69mu0TMSwmx+bwRX
-         ZxwyTW3AiBqqn02pQVLGVR8I4kIdHCdI2HkME815TGX1prqM4NAyKc4nQXyNtgfJEFuG
-         VCIJk/Q1YXYi8kQb+y5ntS0O5Ejnj2OWHgH7hPu8tOeShlXQeE74+m79HvYRNuq3QtBE
-         Yg24HEoIpcUyJ+tpnghiJDzz2CfzJ2K8/fhN8yKZ48XxiUFKRDyKXzyBIKaQ00yZ6BJc
-         HBunbpmdeiK6rkJF0YwEomJKd0DduQ2d+B6DyZUrYITI+0ziqsFLpmaKXhSrOJSzM7F5
-         Ax4Q==
+        b=itvYC9+v2JkQxBmE2JaiIRFBKNKYTDdeO5qKwqdOtoC7xTm5f3redb5vV+NCHm/cOq
+         D8roAIhX4uiSB1+r7ZwF11OqmQhujUa9xbQTFvq0d2en0jfyKWVRQ7HQnF/ztpJdwcjX
+         6w5Oabv071jAoiF4FjqUbgy8ZOIVAoEQrJkzAniJc3NwMTnCt1UBiFLqaOoYZh4zAmsR
+         mCqDKo8AgdxySBrK7NkLylC4JUVyCZWXwNch2NP1mYJs+q/kOYDLqsV6BLYbBBQdNrNb
+         xCQQa4TeBcdXnhPB7QXf6sPRwg2b9JrvqMjnJs22C1CWUDmzrTpQ2l4oIiptQDPvebxj
+         XYQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HZEHbPMv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GAwJDTkE;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from snail.vger.email (snail.vger.email. [23.128.96.37])
-        by mx.google.com with ESMTPS id f10-20020a631f0a000000b005b804d972a2si1261091pgf.490.2023.10.20.00.00.50
+        by mx.google.com with ESMTPS id j190-20020a638bc7000000b005b7f3f3ecc5si1277408pge.735.2023.10.20.00.00.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Oct 2023 00:00:50 -0700 (PDT)
+        Fri, 20 Oct 2023 00:00:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) client-ip=23.128.96.37;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HZEHbPMv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GAwJDTkE;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
-	by snail.vger.email (Postfix) with ESMTP id CFF668051B6B;
-	Fri, 20 Oct 2023 00:00:49 -0700 (PDT)
+	by snail.vger.email (Postfix) with ESMTP id F09D48049229;
+	Fri, 20 Oct 2023 00:00:53 -0700 (PDT)
 X-Virus-Status: Clean
 X-Virus-Scanned: clamav-milter 0.103.10 at snail.vger.email
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1376402AbjJTHAt (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 20 Oct 2023 03:00:49 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36906 "EHLO
+        id S1376416AbjJTHAx (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 20 Oct 2023 03:00:53 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36836 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1376435AbjJTHAr (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 20 Oct 2023 03:00:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id C3E24D65
-        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:59:57 -0700 (PDT)
+        with ESMTP id S1376395AbjJTHAv (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 20 Oct 2023 03:00:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 0E81BD5D
+        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:59:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1697785196;
+        s=mimecast20190719; t=1697785199;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=pAJTnVpdSndHpJHcO4Q9CXE/YX/zGK2bRQ4iuRIKTlg=;
-        b=HZEHbPMvttU4IG7gMqLVPpuCd7lXaAcRrBVMeololpshIQw/B7BgT/Ui6tgQyNo0lUoXKG
-        AEkB6kFeAwrS02mI4MgUJU33Uf2Qri4zXQKki8jEwWWaA/Un9wcMWcvI/mJL1WWL69pGz5
-        3/h76eVjHKNu5HMqMPm1kIS1gYPnSsc=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-471-mraWogRDOOm_TQ1VtIgBmQ-1; Fri, 20 Oct 2023 02:59:48 -0400
-X-MC-Unique: mraWogRDOOm_TQ1VtIgBmQ-1
+        bh=sM/0UQ5xBCWfmnH5VTYXfvCTYeIJ1ZcbMPhmzQIzyg0=;
+        b=GAwJDTkEM8HFpEmAcxivaOKZDnhP9OF7DltHu2nElqy7zBYP1825Fotq8F04ciVMuzxWc3
+        FEKUvu4CNYQdonMjgeU5onD+swXc/kiJCplKJn0tz54lF9VWAmxDo7Vz7TQVGGdWYo1A46
+        mguW4LZqWSBLE4Nsy9Fp5t50a6puAS4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-554-bGAuUPiJO-ubat5-GAy0Gw-1; Fri, 20 Oct 2023 02:59:55 -0400
+X-MC-Unique: bGAuUPiJO-ubat5-GAy0Gw-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
         (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 94E9A1C05159;
-        Fri, 20 Oct 2023 06:59:46 +0000 (UTC)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A35D988B76E;
+        Fri, 20 Oct 2023 06:59:53 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id AE43025C1;
-        Fri, 20 Oct 2023 06:59:39 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id DEC5825C0;
+        Fri, 20 Oct 2023 06:59:46 +0000 (UTC)
 From:   Juan Quintela <quintela@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     qemu-s390x@nongnu.org,
@@ -117,9 +117,9 @@ Cc:     qemu-s390x@nongnu.org,
         Fabiano Rosas <farosas@suse.de>,
         Daniel Henrique Barboza <danielhb413@gmail.com>,
         Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
-Subject: [PULL 15/17] tests/qtest/migration: Support more than one QEMU binary
-Date:   Fri, 20 Oct 2023 08:57:49 +0200
-Message-ID: <20231020065751.26047-16-quintela@redhat.com>
+Subject: [PULL 16/17] tests/qtest/migration: Allow user to specify a machine type
+Date:   Fri, 20 Oct 2023 08:57:50 +0200
+Message-ID: <20231020065751.26047-17-quintela@redhat.com>
 In-Reply-To: <20231020065751.26047-1-quintela@redhat.com>
 References: <20231020065751.26047-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -127,139 +127,104 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
 X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
         DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE
+        RCVD_IN_MSPIKE_H3,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE
         autolearn=ham autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
         lindbergh.monkeyblade.net
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Fri, 20 Oct 2023 00:00:49 -0700 (PDT)
-X-TUID: H269tMiUq1ep
+X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Fri, 20 Oct 2023 00:00:54 -0700 (PDT)
+X-TUID: 4isXeeq4RUGf
 
 From: Fabiano Rosas <farosas@suse.de>
 
-We have strict rules around migration compatibility between different
-QEMU versions but no test to validate the migration state between
-different binaries.
+Accept the QTEST_QEMU_MACHINE_TYPE environment variable to take a
+machine type to use in the tests.
 
-Add infrastructure to allow running the migration tests with two
-different QEMU binaries as migration source and destination.
+The full machine type is recognized (e.g. pc-q35-8.2). Aliases
+(e.g. pc) are also allowed and resolve to the latest machine version
+for that alias, or, if using two QEMU binaries, to the latest common
+machine version between the two.
 
-The code now recognizes two new environment variables
-QTEST_QEMU_BINARY_SRC and QTEST_QEMU_BINARY_DST. In the absence of
-either of them, the test will use the QTEST_QEMU_BINARY variable. If
-both are missing then the tests are run with single binary as
-previously.
-
-The machine type is selected automatically as the latest machine type
-version that works with both binaries.
-
-Usage (only one of SRC|DST is allowed):
-
-QTEST_QEMU_BINARY_SRC=../build-8.2.0/qemu-system-x86_64 \
-QTEST_QEMU_BINARY=../build-8.1.0/qemu-system-x86_64 \
-./tests/qtest/migration-test
-
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018192741.25885-11-farosas@suse.de>
+Message-ID: <20231018192741.25885-12-farosas@suse.de>
 ---
- tests/qtest/migration-test.c | 28 ++++++++++++++++++++++++----
- 1 file changed, 24 insertions(+), 4 deletions(-)
+ tests/qtest/migration-helpers.h |  2 ++
+ tests/qtest/migration-helpers.c | 26 ++++++++++++++++++++++++++
+ tests/qtest/migration-test.c    |  5 +++--
+ 3 files changed, 31 insertions(+), 2 deletions(-)
 
+diff --git a/tests/qtest/migration-helpers.h b/tests/qtest/migration-helpers.h
+index d1c2351d33..e31dc85cc7 100644
+--- a/tests/qtest/migration-helpers.h
++++ b/tests/qtest/migration-helpers.h
+@@ -45,4 +45,6 @@ void wait_for_migration_fail(QTestState *from, bool allow_active);
+ 
+ char *find_common_machine_version(const char *mtype, const char *var1,
+                                   const char *var2);
++char *resolve_machine_version(const char *alias, const char *var1,
++                              const char *var2);
+ #endif /* MIGRATION_HELPERS_H */
+diff --git a/tests/qtest/migration-helpers.c b/tests/qtest/migration-helpers.c
+index 13449c1fe1..24fb7b3525 100644
+--- a/tests/qtest/migration-helpers.c
++++ b/tests/qtest/migration-helpers.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/ctype.h"
+ #include "qapi/qmp/qjson.h"
+ 
+ #include "migration-helpers.h"
+@@ -266,3 +267,28 @@ char *find_common_machine_version(const char *mtype, const char *var1,
+                    "binaries %s and %s", mtype, getenv(var1), getenv(var2));
+     g_assert_not_reached();
+ }
++
++char *resolve_machine_version(const char *alias, const char *var1,
++                              const char *var2)
++{
++    const char *mname = g_getenv("QTEST_QEMU_MACHINE_TYPE");
++    g_autofree char *machine_name = NULL;
++
++    if (mname) {
++        const char *dash = strrchr(mname, '-');
++        const char *dot = strrchr(mname, '.');
++
++        machine_name = g_strdup(mname);
++
++        if (dash && dot) {
++            assert(qtest_has_machine(machine_name));
++            return g_steal_pointer(&machine_name);
++        }
++        /* else: probably an alias, let it be resolved below */
++    } else {
++        /* use the hardcoded alias */
++        machine_name = g_strdup(alias);
++    }
++
++    return find_common_machine_version(machine_name, var1, var2);
++}
 diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index 03f3feac7b..4a5d37317a 100644
+index 4a5d37317a..bc70a14642 100644
 --- a/tests/qtest/migration-test.c
 +++ b/tests/qtest/migration-test.c
-@@ -71,6 +71,8 @@ static bool got_dst_resume;
- #define QEMU_VM_FILE_MAGIC 0x5145564d
- #define FILE_TEST_FILENAME "migfile"
- #define FILE_TEST_OFFSET 0x1000
-+#define QEMU_ENV_SRC "QTEST_QEMU_BINARY_SRC"
-+#define QEMU_ENV_DST "QTEST_QEMU_BINARY_DST"
- 
- #if defined(__linux__)
- #include <sys/syscall.h>
-@@ -744,6 +746,7 @@ static int test_migrate_start(QTestState **from, QTestState **to,
-     const char *arch = qtest_get_arch();
-     const char *memory_size;
-     const char *machine_alias, *machine_opts = "";
-+    g_autofree char *machine = NULL;
- 
-     if (args->use_shmem) {
-         if (!g_file_test("/dev/shm", G_FILE_TEST_IS_DIR)) {
-@@ -822,6 +825,10 @@ static int test_migrate_start(QTestState **from, QTestState **to,
+@@ -825,8 +825,9 @@ static int test_migrate_start(QTestState **from, QTestState **to,
          kvm_opts = ",dirty-ring-size=4096";
      }
  
-+    machine = find_common_machine_version(machine_alias, QEMU_ENV_SRC,
-+                                          QEMU_ENV_DST);
-+    g_test_message("Using machine type: %s", machine);
+-    machine = find_common_machine_version(machine_alias, QEMU_ENV_SRC,
+-                                          QEMU_ENV_DST);
++    machine = resolve_machine_version(machine_alias, QEMU_ENV_SRC,
++                                      QEMU_ENV_DST);
 +
+     g_test_message("Using machine type: %s", machine);
+ 
      cmd_source = g_strdup_printf("-accel kvm%s -accel tcg "
-                                  "-machine %s,%s "
-                                  "-name source,debug-threads=on "
-@@ -829,7 +836,7 @@ static int test_migrate_start(QTestState **from, QTestState **to,
-                                  "-serial file:%s/src_serial "
-                                  "%s %s %s %s %s",
-                                  kvm_opts ? kvm_opts : "",
--                                 machine_alias, machine_opts,
-+                                 machine, machine_opts,
-                                  memory_size, tmpfs,
-                                  arch_opts ? arch_opts : "",
-                                  arch_source ? arch_source : "",
-@@ -837,7 +844,7 @@ static int test_migrate_start(QTestState **from, QTestState **to,
-                                  args->opts_source ? args->opts_source : "",
-                                  ignore_stderr);
-     if (!args->only_target) {
--        *from = qtest_init(cmd_source);
-+        *from = qtest_init_with_env(QEMU_ENV_SRC, cmd_source);
-         qtest_qmp_set_event_callback(*from,
-                                      migrate_watch_for_stop,
-                                      &got_src_stop);
-@@ -851,14 +858,14 @@ static int test_migrate_start(QTestState **from, QTestState **to,
-                                  "-incoming %s "
-                                  "%s %s %s %s %s",
-                                  kvm_opts ? kvm_opts : "",
--                                 machine_alias, machine_opts,
-+                                 machine, machine_opts,
-                                  memory_size, tmpfs, uri,
-                                  arch_opts ? arch_opts : "",
-                                  arch_target ? arch_target : "",
-                                  shmem_opts ? shmem_opts : "",
-                                  args->opts_target ? args->opts_target : "",
-                                  ignore_stderr);
--    *to = qtest_init(cmd_target);
-+    *to = qtest_init_with_env(QEMU_ENV_DST, cmd_target);
-     qtest_qmp_set_event_callback(*to,
-                                  migrate_watch_for_resume,
-                                  &got_dst_resume);
-@@ -2989,10 +2996,23 @@ int main(int argc, char **argv)
-     bool has_uffd;
-     const char *arch;
-     g_autoptr(GError) err = NULL;
-+    const char *qemu_src = getenv(QEMU_ENV_SRC);
-+    const char *qemu_dst = getenv(QEMU_ENV_DST);
-     int ret;
- 
-     g_test_init(&argc, &argv, NULL);
- 
-+    /*
-+     * The default QTEST_QEMU_BINARY must always be provided because
-+     * that is what helpers use to query the accel type and
-+     * architecture.
-+     */
-+    if (qemu_src && qemu_dst) {
-+        g_test_message("Only one of %s, %s is allowed",
-+                       QEMU_ENV_SRC, QEMU_ENV_DST);
-+        exit(1);
-+    }
-+
-     has_kvm = qtest_has_accel("kvm");
-     has_tcg = qtest_has_accel("tcg");
- 
 -- 
 2.41.0

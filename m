@@ -1,102 +1,181 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1209518ejb;
-        Fri, 20 Oct 2023 06:09:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGpF24QIBL8bmkdNLq+sAmtNo+xDM9rmw6+qrJRFWu/JiDPyqYQuZ72+FdXiCGJ1peJqIL0
-X-Received: by 2002:a05:6122:992:b0:49a:3d72:fe7c with SMTP id g18-20020a056122099200b0049a3d72fe7cmr1676520vkd.15.1697807371033;
-        Fri, 20 Oct 2023 06:09:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697807371; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1211459ejb;
+        Fri, 20 Oct 2023 06:11:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHGsNcR60n7dZc43sdyMCVtEkf5HM229rxSH6+rGTmika9OuVRKOEOrZTJla1H8sG8AIXYm
+X-Received: by 2002:a81:6cd2:0:b0:5a8:874:bb3a with SMTP id h201-20020a816cd2000000b005a80874bb3amr1895051ywc.31.1697807507619;
+        Fri, 20 Oct 2023 06:11:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697807507; cv=none;
         d=google.com; s=arc-20160816;
-        b=FaBoli7J+HfUwlwy164vswuLwmawgs30hAcQoKKyLwhYLYLU8W5K0qr4jD86LYq2UP
-         SAheQAHDxP85USvDWrvrNjhYwDcuEqVCM27ozLQmm4KHEstC4QIifnclM71yA7frJac5
-         59UKTVDMlhHlzJEfGxqWRqrd1/Tt/SEGrCYyVUuLPQdl4Erw1KJB/g3APc6X2339pJkC
-         ZeGMlRceX9uBvGjHKysnjw3WyrLpm74lN6eQdpxmOJwjSHVO5AtpE6a3KVbSebNG51oS
-         8RzhTAsq3G13UFECmal3VK6bEN4K59QhJRQ8jUCfVImiJnkzdUoKChYJbXH8INHfFDCM
-         ViKQ==
+        b=hG5m4o8TDzc8bIYfusnUz/Ve4unCgNl7YXqtQ+sRGorg7JxKsLKlzFfAfxEX65WCbX
+         +9BnUy+fKhrXP+cBoC+WRpSpFV03UoRH11xAQy4oJcVQ9VaCnTrPu98/Z1J1WZ+a2Ebu
+         Y835Pn7pAf+vZqKsLA9l1t6D+LWHl+aBQnzhM1D9J8K3uGv8I0IHXcB4npHFi+eap60w
+         Zsxe3/O6q71/9jt/zx72QOIaUX/SjzbT+2O747oppPzxV/hb3zHoMCOwmzks6B+nt0CZ
+         PtXrNBfvqRUrbkA4m/W1TMFUldOfau0iTvebCegezCBNeMUgJepdwOMPfrAn9pL9bE+I
+         IBBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=Pmm/qcdzPjzGFWUI595QLQHPribdZbfyTCDh4Sg46gI=;
-        fh=qh6UU94NLPiQxbxu7zUo3YCrFdMXioP3a1N3NOq7g0U=;
-        b=LxVeZomCPEV/2/aHwa1/dV9Z+XJspjE7Yrx5mcprxOqxlHLr09AYeqL1UAPICLqIJk
-         cs15z2655zpOf+1vcaXpbsIvLbx4w577tfCxjJbN7CAA43Y7x3csXg9zVume1dznubbH
-         AXDbaV8f5YQMB2fEckB2S4FxRuiGu1MrMK8uHjC12Izvhr6Ry/VOH6SZFAL3qrDMdTR6
-         7Nh75skzpJNGGcLxtPi/NnB6YvlxcsOAG7nKJJDMutHNKpFYdculCzuoOiAVnHwtiEUn
-         5b2Hay88jGmiJQ54unhIumhqFrbQRK0U6IqqtV2LW2o76/3aVW0r7yN7kwrooq5Tx3s3
-         Xo4A==
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=GOysEka5jNdq7RZYbyF2klgLR8lfI6J7Iosb3cg8rng=;
+        fh=aaqPnSD6tstDYOi4iE3lVjgOjq/ySCPz+jgy9Piw17A=;
+        b=C8yvoMIx8ukeqfxGmwwyTkv99MeqOmzc7y/RjDqRdejkZvlwIItAfl+KhAOuKRtQAV
+         B7wG+Pt6XYAiac0yYDLfvZZK0JcpFR2UuZNMgCZinzbIyK5TW8alaYTvh6pD9Cafq+Zl
+         c6FDqoESTegeNmRFOqaj+PmDjeUAS6RRv7mdsf75mLOlzcECfhTi3NR9WfjLyotM/jiW
+         KaBoD+dfk2GdOjZPF7MlGPOMNFSyP20IsweVdSiV7DyJJ3xSdcacHyndvdQwcP8n97w5
+         +INUj2XihOtYC9V4aQY5OXV+vso7YYtAtCx0b5MoypcjEGiN+cM6Ba8X81mMdP4flbXO
+         DDnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adFBf1Js;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vo0NzvVp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u78-20020a1fab51000000b00490823523a1si154200vke.216.2023.10.20.06.09.30
+        by mx.google.com with ESMTPS id y23-20020a67e8d7000000b00450a5ca7e67si146985vsn.736.2023.10.20.06.11.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 06:09:31 -0700 (PDT)
+        Fri, 20 Oct 2023 06:11:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adFBf1Js;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vo0NzvVp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtpFa-0001kW-Ov; Fri, 20 Oct 2023 09:09:14 -0400
+	id 1qtpHl-0003CN-MK; Fri, 20 Oct 2023 09:11:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtpFW-0001jY-Lw
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 09:09:11 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtpHk-0003C4-Mz
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 09:11:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtpFU-0006Qz-Uz
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 09:09:10 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtpHj-0007ZC-3x
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 09:11:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697807348;
+ s=mimecast20190719; t=1697807486;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Pmm/qcdzPjzGFWUI595QLQHPribdZbfyTCDh4Sg46gI=;
- b=adFBf1JsU3tzyLEC/F84gAXDJiC0S0iMEoeDySt5uiNP2STBHY+tj2KmbTDiv0WUMUFR6z
- CtWEwd1xPnKkGuNhmg3PSS9F64jUDk5fVUssDGCGmikG9RRhDEYWRT1XGUhuxjnQk+cd+e
- fc0q5bLTMhr7/bzSJg2hbpDsdAZSVsY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-198-sWUXBc-_Mx-Mrc9BdmPafQ-1; Fri, 20 Oct 2023 09:08:55 -0400
-X-MC-Unique: sWUXBc-_Mx-Mrc9BdmPafQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D64588B76F;
- Fri, 20 Oct 2023 13:08:54 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4BEEE492BFB;
- Fri, 20 Oct 2023 13:08:54 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 175A521E6A1F; Fri, 20 Oct 2023 15:08:53 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH v2 19/22] qapi: Inline and remove
- QERR_PROPERTY_VALUE_OUT_OF_RANGE definition
-References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-20-philmd@linaro.org>
-Date: Fri, 20 Oct 2023 15:08:53 +0200
-In-Reply-To: <20231005045041.52649-20-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:36
- +0200")
-Message-ID: <8734y51lwa.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=GOysEka5jNdq7RZYbyF2klgLR8lfI6J7Iosb3cg8rng=;
+ b=Vo0NzvVpG/bkJPYbc9tgc7SgJf9A1sb4cLxcaiO8TxnQB5+2MXI7H+DKGKzeFwgnNYBZ0G
+ biKCM853jpG+h4PS2PfLkA5uLDdq9clmaclYnTcHbJlvYnWpRhBNBVpRQxXpmW8FPSkbwr
+ TN2Rh059cQ/gG1H0MvccsF5dvDdcQjI=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-14-i26S_IwDNVGH0826c3VARQ-1; Fri, 20 Oct 2023 09:11:25 -0400
+X-MC-Unique: i26S_IwDNVGH0826c3VARQ-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-41cba27f8b2so7856591cf.3
+ for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 06:11:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697807484; x=1698412284;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GOysEka5jNdq7RZYbyF2klgLR8lfI6J7Iosb3cg8rng=;
+ b=gYASEJjvpKH7Snet1XBpdrjWRzCvyf2r+Yq5oQTR6IWZ85FlAThHwHA2FOamT/Pvvj
+ offsJJ67N5nwiW99vwos3vK1+MGjWwgp7ULIdzyfKJF7Ir9eaTtbDa48VfZ1O6OnrgZQ
+ /lDBFkBY+6ftzat4SiE0ZPONIRkIArs55FCEgH0AWZT17rzL2hZx7ThwGNwEcIFKmWBV
+ PG7pmVYyRdbJd04n5WPVUIa9BRTVYAS1whx6BFkuIKdkYiAUG7Y1O/fhFraI9AdiFjxK
+ ch1bwU/S9CssNhlzYwgCLZGxrifiPCExCVD5QhEQ2+A0clmKeFhlfGs5gnURvfXwpJpz
+ tYDQ==
+X-Gm-Message-State: AOJu0YyAMq19VFrfW0x+eErRgnvkJME5ltd1hhKBp+Qrt4kw9h40QVFj
+ 4KjhZX80+QiWlyF559tAoWW4yh6k/HAyunWK3Mr0stCUG5K62kZHw62EYWvq7KlurkqJ2fmx6PI
+ UeXASd1JU8CBv
+X-Received: by 2002:ac8:5886:0:b0:412:2dd3:e108 with SMTP id
+ t6-20020ac85886000000b004122dd3e108mr1364517qta.9.1697807484481; 
+ Fri, 20 Oct 2023 06:11:24 -0700 (PDT)
+X-Received: by 2002:ac8:5886:0:b0:412:2dd3:e108 with SMTP id
+ t6-20020ac85886000000b004122dd3e108mr1364470qta.9.1697807484042; 
+ Fri, 20 Oct 2023 06:11:24 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
+ [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
+ g7-20020ac87d07000000b00417dd1dd0adsm577674qtb.87.2023.10.20.06.11.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Oct 2023 06:11:23 -0700 (PDT)
+Message-ID: <feadc57e-1587-4daa-9f2c-d8eba79125dd@redhat.com>
+Date: Fri, 20 Oct 2023 15:11:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 04/13] migration: Use vmstate_register_any() for
+ ipmi-bt*
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, David Gibson <david@gibson.dropbear.id.au>,
+ Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Leonardo Bras <leobras@redhat.com>,
+ John Snow <jsnow@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-block@nongnu.org, qemu-s390x@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goat?=
+ =?UTF-8?Q?er?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Stefan Weil
+ <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
+References: <20231020090731.28701-1-quintela@redhat.com>
+ <20231020090731.28701-5-quintela@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20231020090731.28701-5-quintela@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -104,7 +183,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,132 +198,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wa585b6/EU+Y
+X-TUID: 8xOHBT6HxN2D
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
-
-> Address the comment added in commit 4629ed1e98
-> ("qerror: Finally unused, clean up"), from 2015:
->
->   /*
->    * These macros will go away, please don't use
->    * in new code, and do not add new ones!
->    */
->
-> Mechanical transformation using sed, manually
-> removing the definition in include/qapi/qmp/qerror.h.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+On 20/10/2023 11.07, Juan Quintela wrote:
+> Otherwise device-introspection-test fails.
+> 
+> $ ./tests/qtest/device-introspect-test
+> ...
+> Broken pipe
+> ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+> Aborted (core dumped)
+> 
+> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+> Signed-off-by: Juan Quintela <quintela@redhat.com>
 > ---
->  include/qapi/qmp/qerror.h |  3 ---
->  hw/intc/openpic.c         |  3 ++-
->  target/i386/cpu.c         | 12 ++++++++----
->  util/block-helpers.c      |  3 ++-
->  4 files changed, 12 insertions(+), 9 deletions(-)
->
-> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-> index 7862ac55a1..e094f13114 100644
-> --- a/include/qapi/qmp/qerror.h
-> +++ b/include/qapi/qmp/qerror.h
-> @@ -17,9 +17,6 @@
->   * add new ones!
->   */
->=20=20
-> -#define QERR_PROPERTY_VALUE_OUT_OF_RANGE \
-> -    "Property %s.%s doesn't take value %" PRId64 " (minimum: %" PRId64 "=
-, maximum: %" PRId64 ")"
-> -
->  #define QERR_QGA_COMMAND_FAILED \
->      "Guest agent command failed, error was '%s'"
->=20=20
-> diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-> index a6f91d4bcd..4f6ee930e2 100644
-> --- a/hw/intc/openpic.c
-> +++ b/hw/intc/openpic.c
-> @@ -1535,7 +1535,8 @@ static void openpic_realize(DeviceState *dev, Error=
- **errp)
->      };
->=20=20
->      if (opp->nb_cpus > MAX_CPU) {
-> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE,
-> +        error_setg(errp, "Property %s.%s doesn't take value %" PRId64
-> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
->                     TYPE_OPENPIC, "nb_cpus", (uint64_t)opp->nb_cpus,
->                     (uint64_t)0, (uint64_t)MAX_CPU);
->          return;
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index e5a14885ed..273f865228 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -5086,7 +5086,8 @@ static void x86_cpuid_version_set_family(Object *ob=
-j, Visitor *v,
->          return;
->      }
->      if (value < min || value > max) {
-> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
-> +        error_setg(errp, "Property %s doesn't take value %" PRId64
-> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
->                     name ? name : "null", value, min, max);
->          return;
->      }
-> @@ -5126,7 +5127,8 @@ static void x86_cpuid_version_set_model(Object *obj=
-, Visitor *v,
->          return;
->      }
->      if (value < min || value > max) {
-> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
-> +        error_setg(errp, "Property %s doesn't take value %" PRId64
-> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
->                     name ? name : "null", value, min, max);
->          return;
->      }
-> @@ -5161,7 +5163,8 @@ static void x86_cpuid_version_set_stepping(Object *=
-obj, Visitor *v,
->          return;
->      }
->      if (value < min || value > max) {
-> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
-> +        error_setg(errp, "Property %s doesn't take value %" PRId64
-> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
->                     name ? name : "null", value, min, max);
->          return;
->      }
-> @@ -5263,7 +5266,8 @@ static void x86_cpuid_set_tsc_freq(Object *obj, Vis=
-itor *v, const char *name,
->          return;
->      }
->      if (value < min || value > max) {
-> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
-> +        error_setg(errp, "Property %s doesn't take value %" PRId64
-> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
->                     name ? name : "null", value, min, max);
->          return;
->      }
-> diff --git a/util/block-helpers.c b/util/block-helpers.c
-> index c4851432f5..de94909bc4 100644
-> --- a/util/block-helpers.c
-> +++ b/util/block-helpers.c
-> @@ -30,7 +30,8 @@ void check_block_size(const char *id, const char *name,=
- int64_t value,
->  {
->      /* value of 0 means "unset" */
->      if (value && (value < MIN_BLOCK_SIZE || value > MAX_BLOCK_SIZE)) {
-> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE,
+>   hw/ipmi/ipmi_bmc_extern.c | 2 +-
+>   hw/ipmi/ipmi_bmc_sim.c    | 2 +-
+>   hw/ipmi/isa_ipmi_bt.c     | 2 +-
+>   hw/ipmi/isa_ipmi_kcs.c    | 2 +-
+>   4 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
+> index e232d35ba2..324a2c8835 100644
+> --- a/hw/ipmi/ipmi_bmc_extern.c
+> +++ b/hw/ipmi/ipmi_bmc_extern.c
+> @@ -504,7 +504,7 @@ static void ipmi_bmc_extern_init(Object *obj)
+>       IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(obj);
+>   
+>       ibe->extern_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, extern_timeout, ibe);
+> -    vmstate_register(NULL, 0, &vmstate_ipmi_bmc_extern, ibe);
+> +    vmstate_register_any(NULL, &vmstate_ipmi_bmc_extern, ibe);
+>   }
 
-Three callers:
+This is an instance_init() function. We shouldn't register vmstate (and 
+timer) here, but do it in the realize() function instead.
 
-* set_blocksize()
+>   
+>   static void ipmi_bmc_extern_finalize(Object *obj)
+> diff --git a/hw/ipmi/ipmi_bmc_sim.c b/hw/ipmi/ipmi_bmc_sim.c
+> index 905e091094..404db5d5bc 100644
+> --- a/hw/ipmi/ipmi_bmc_sim.c
+> +++ b/hw/ipmi/ipmi_bmc_sim.c
+> @@ -2188,7 +2188,7 @@ static void ipmi_sim_realize(DeviceState *dev, Error **errp)
+>   
+>       ibs->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, ipmi_timeout, ibs);
+>   
+> -    vmstate_register(NULL, 0, &vmstate_ipmi_sim, ibs);
+> +    vmstate_register_any(NULL, &vmstate_ipmi_sim, ibs);
+>   }
 
-  Property setter.  Good.
+Now here it's been done in the realize() function already ... did this 
+really cause trouble for you?
+Anyway, I wonder why the first parameter is NULL here ... shouldn't this 
+point to dev instead?
 
-* vu_blk_exp_create() and vduse_blk_exp_create()
+>   static Property ipmi_sim_properties[] = {
+> diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
+> index a83e7243d6..afb76b548a 100644
+> --- a/hw/ipmi/isa_ipmi_bt.c
+> +++ b/hw/ipmi/isa_ipmi_bt.c
+> @@ -125,7 +125,7 @@ static void isa_ipmi_bt_init(Object *obj)
+>   
+>       ipmi_bmc_find_and_link(obj, (Object **) &iib->bt.bmc);
+>   
+> -    vmstate_register(NULL, 0, &vmstate_ISAIPMIBTDevice, iib);
+> +    vmstate_register_any(NULL, &vmstate_ISAIPMIBTDevice, iib);
+>   }
 
-  These check QMP arguments, i.e. *not* porperties.  Misuse of
-  QERR_PROPERTY_VALUE_OUT_OF_RANGE.
+It's an instance_init() function again. This should be done in the realize() 
+instead.
 
-> +        error_setg(errp, "Property %s.%s doesn't take value %" PRId64
-> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
->                     id, name, value, MIN_BLOCK_SIZE, MAX_BLOCK_SIZE);
->          return;
->      }
+>   static void *isa_ipmi_bt_get_backend_data(IPMIInterface *ii)
+> diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
+> index b2ed70b9da..5ab63b2fcf 100644
+> --- a/hw/ipmi/isa_ipmi_kcs.c
+> +++ b/hw/ipmi/isa_ipmi_kcs.c
+> @@ -132,7 +132,7 @@ static void isa_ipmi_kcs_init(Object *obj)
+>        * IPMI device, so receive it, but transmit a different
+>        * version.
+>        */
+> -    vmstate_register(NULL, 0, &vmstate_ISAIPMIKCSDevice, iik);
+> +    vmstate_register_any(NULL, &vmstate_ISAIPMIKCSDevice, iik);
+>   }
+
+Dito, this should be moved to realize().
+
+  Thomas
 

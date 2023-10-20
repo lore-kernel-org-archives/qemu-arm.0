@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027617ejb;
-        Thu, 19 Oct 2023 23:59:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGpygFLcueLGMogANy0p9OZQAy8AbFkS3XB9LTt6eqqsg+TNI7J864QIOnOP7q5UYD/icIQ
-X-Received: by 2002:a05:6a20:54a0:b0:13d:17cc:5bca with SMTP id i32-20020a056a2054a000b0013d17cc5bcamr1101591pzk.18.1697785194206;
-        Thu, 19 Oct 2023 23:59:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697785194; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027894ejb;
+        Fri, 20 Oct 2023 00:00:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG5gFO522SQ4L8tay80GjDfbRvEoWpsPYNqRksai8TQOyku2QeiZybzP8WLdBGLXxsGIGNw
+X-Received: by 2002:a17:902:e887:b0:1c6:3222:c67c with SMTP id w7-20020a170902e88700b001c63222c67cmr1181243plg.23.1697785220802;
+        Fri, 20 Oct 2023 00:00:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697785220; cv=none;
         d=google.com; s=arc-20160816;
-        b=DcsxbY9U8uGVTweDpwugChxxEVfbjF04ExUVMfiWYYJFj3qgPDjvo9TGBZwHICNKgp
-         QEiBBLmnl8AX0rtYlGD43/C8m10kLkguzSKPuCeBoMg5t6Bd12ko+z0Cy0RbcnEUx2eZ
-         R2LEuEREsI64Wt6/2dBsKEUURQ7pwY+BEiraBnDBcb8LORJhFz+dMHgAD20IuRTwk0tl
-         MVjq88V9zVb01MfF7J23Jt5ZNWzJuWRgBsUStEouoMTWreKz1i3IeccpJO1oILAT5k6D
-         Q5hP3aSknBpMOcEY5cf3RqSCYCcN/T7iB2iwlHZ8UYKjcLzd8O1eAebmmjrdQ0VIwcT6
-         P9tA==
+        b=dBMH38Uq8KnWslkTZaBSioEID32FFVasGfoxzVWhj6maZbtWNBs99Q7063QYZYSC5E
+         ABcxyfZ7gMIZHeef1vH6mL4LBe53MbJJWiltLeRjCxIH4NRubiTouUREV84e++rfMV59
+         QJw74IxqSdkhe9wufTX1C/q+j0T+SJHxlnRtpid7FeT9XWp7ErYJWEoRO7zMtwe9E/Tk
+         sjpqUauanDn+J4UhM6Ny6g51m7IkSi5EFu3JAzJ4ot17/8dcid44Z0oBbry1ySPG+UzE
+         +9tNzH6O+anvbDS7EHqwgJytzg1BfiDH38aaeSb5O/RWpEO6AsGhwaYYAfKuP8tcfOzt
+         +a4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=62Wx7d+hUDk5LG3UXJEzcN6iBAElK9cZPEKqQ1pd96A=;
+        bh=NSgHyHEZfPE9cd1uGtechBOjRxN9vNPYJYi2OtzuiQ0=;
         fh=fTjRJWWf32rfQWm8ROIsswmsB54Y1g6a+adPg1wBxPA=;
-        b=iEMxZfgtsh/YuxZ8aQ2zjKz5D0bdppjBurW8vCAEvAT5kGq03AjTV/2ejwsI7iUEu9
-         5/9DDjca1qZUWts05YSHEh6WJCHlEVR7A17B+jwhz7MdBZK2b+dfp/IuL4TtNt7qebdC
-         7Nvgjf8jg8zPn47qPC3CB18/s6P+sfMu/sfravhC54m4Q45D/0pE1n7Gz3PUGak6IJnA
-         rS8WGpRI4p68KATrdWbBp7Wmq9cztMxjIVMbt6noCR7sx3rlQW2v5JTJgam/fB2eXzK/
-         uCsuKNpavDb3YbvRcqhSD36fmWluQ1qscJKOXjbf+drgeCabh032JNLDRNhCdF9OD1fs
-         Tz8w==
+        b=fPpd39H65FmQ+KscIKpKJfUy094F1+IXo1vtV6xiV94e3T8uaeWq4l9Bdx9uxHOZwW
+         GeEtSEibWwoqxBelsy058zOcjqvwcQGjy+CrTb3GV4ttV892RIobrfgyuDkui4rvaTzo
+         AQn5kqCZ66v+daubz9foIf3PH2TB1XfZwNqFD67XdjGMWNIe3yWRicFfilbkCTJOId1W
+         EEfx0q66P5yuSMwbc+AaKY8u59nMjReZdJg5TM4UujRtbgFrBphlKeupbB8Z+5BeatBc
+         DMqL+U41AJ2rXo7dkD9+8vseS84qmmKaRNyPJHeEiCln5rHCyYwZgRfysXi5KPK8q0kS
+         J7oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZyvDEtv;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="EKXfj/P2";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
-Received: from snail.vger.email (snail.vger.email. [2620:137:e000::3:7])
-        by mx.google.com with ESMTPS id i13-20020a17090acf8d00b002791b62066csi3831436pju.38.2023.10.19.23.59.53
+Received: from snail.vger.email (snail.vger.email. [23.128.96.37])
+        by mx.google.com with ESMTPS id e1-20020a170902744100b001c62acfa473si1180191plt.62.2023.10.20.00.00.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Oct 2023 23:59:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) client-ip=2620:137:e000::3:7;
+        Fri, 20 Oct 2023 00:00:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) client-ip=23.128.96.37;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZyvDEtv;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="EKXfj/P2";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
-	by snail.vger.email (Postfix) with ESMTP id 6C73C809502C;
-	Thu, 19 Oct 2023 23:59:53 -0700 (PDT)
+	by snail.vger.email (Postfix) with ESMTP id 82645807C5EB;
+	Fri, 20 Oct 2023 00:00:19 -0700 (PDT)
 X-Virus-Status: Clean
 X-Virus-Scanned: clamav-milter 0.103.10 at snail.vger.email
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1376409AbjJTG7w (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 20 Oct 2023 02:59:52 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:49294 "EHLO
+        id S1376408AbjJTHAT (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 20 Oct 2023 03:00:19 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:46856 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1376381AbjJTG7v (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 20 Oct 2023 02:59:51 -0400
+        with ESMTP id S1376396AbjJTHAQ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 20 Oct 2023 03:00:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 31058D4C
-        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:59:08 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4FB1C1BF
+        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:59:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1697785147;
+        s=mimecast20190719; t=1697785167;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=62Wx7d+hUDk5LG3UXJEzcN6iBAElK9cZPEKqQ1pd96A=;
-        b=UZyvDEtvOY8ZtXLBU1imts2ScnPDbohc7d8tTD5xuTY3rBKxRaM/bXCD7uEL6d4hHtk4XO
-        LryGzwsk0zwVjh6TFRUDGpBcQVV0r4a9sD4H0KE4ZZzIh45lG46UVJpZNxDCUapR+9zGOb
-        iI6IEQThqFeppDLdUl0pbSiVMsA2sF8=
+        bh=NSgHyHEZfPE9cd1uGtechBOjRxN9vNPYJYi2OtzuiQ0=;
+        b=EKXfj/P24IleonGVrlwyaSRLhmjMjWg0gmYr1qP980ethvAnQSx4V2w7qBVWyQWn9F3m58
+        y4WvpWLrPVbJ3DJPQyAFf25cJjlXa+H7NrvyoMZljKQWs2B5ZVOnBglpBgsRQgTX3ZX+Gc
+        hdw4zN8m1Xp3Kmoa46Mxi4rl189O/u4=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-551-67LFWRorOMSgATgpK2Uo5A-1; Fri, 20 Oct 2023 02:58:59 -0400
-X-MC-Unique: 67LFWRorOMSgATgpK2Uo5A-1
+ us-mta-395-A4rH87AqMS-35XtixiB6ZQ-1; Fri, 20 Oct 2023 02:59:13 -0400
+X-MC-Unique: A4rH87AqMS-35XtixiB6ZQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
         (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3B20C2810D47;
-        Fri, 20 Oct 2023 06:58:57 +0000 (UTC)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9C07C29AA2C2;
+        Fri, 20 Oct 2023 06:59:11 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 9EA9425C0;
-        Fri, 20 Oct 2023 06:58:50 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 06B3725C0;
+        Fri, 20 Oct 2023 06:59:04 +0000 (UTC)
 From:   Juan Quintela <quintela@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     qemu-s390x@nongnu.org,
@@ -117,9 +117,9 @@ Cc:     qemu-s390x@nongnu.org,
         Fabiano Rosas <farosas@suse.de>,
         Daniel Henrique Barboza <danielhb413@gmail.com>,
         Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
-Subject: [PULL 08/17] tests/qtest: Allow qtest_get_machines to use an alternate QEMU binary
-Date:   Fri, 20 Oct 2023 08:57:42 +0200
-Message-ID: <20231020065751.26047-9-quintela@redhat.com>
+Subject: [PULL 10/17] tests/qtest: Introduce qtest_resolve_machine_alias
+Date:   Fri, 20 Oct 2023 08:57:44 +0200
+Message-ID: <20231020065751.26047-11-quintela@redhat.com>
 In-Reply-To: <20231020065751.26047-1-quintela@redhat.com>
 References: <20231020065751.26047-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -134,97 +134,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Thu, 19 Oct 2023 23:59:53 -0700 (PDT)
-X-TUID: 1HnddHeoUJwN
+X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Fri, 20 Oct 2023 00:00:19 -0700 (PDT)
+X-TUID: j1HJmwNcGq/h
 
 From: Fabiano Rosas <farosas@suse.de>
 
-We're adding support for using more than one QEMU binary in
-tests. Modify qtest_get_machines() to take an environment variable
-that contains the QEMU binary path.
+The migration tests are being enhanced to test migration between
+different QEMU versions. A requirement of migration is that the
+machine type between source and destination matches, including the
+version.
 
-Since the function keeps a cache of the machines list in the form of a
-static variable, refresh it any time the environment variable changes.
+We cannot hardcode machine types in the tests because those change
+with each release. QEMU provides a machine type alias that has a fixed
+name, but points to the latest machine type at each release.
+
+Add a helper to resolve the alias into the exact machine
+type. E.g. "-machine pc" resolves to "pc-i440fx-8.2"
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018192741.25885-4-farosas@suse.de>
+Message-ID: <20231018192741.25885-6-farosas@suse.de>
 ---
- tests/qtest/libqtest.c | 29 +++++++++++++++++++++++++----
- 1 file changed, 25 insertions(+), 4 deletions(-)
+ tests/qtest/libqtest.h | 10 ++++++++++
+ tests/qtest/libqtest.c | 16 ++++++++++++++++
+ 2 files changed, 26 insertions(+)
 
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index d16deb9891..6e3d3525bf 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -922,6 +922,16 @@ void qtest_qmp_fds_assert_success(QTestState *qts, int *fds, size_t nfds,
+ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
+                                 bool skip_old_versioned);
+ 
++/**
++ * qtest_resolve_machine_alias:
++ * @var: Environment variable from where to take the QEMU binary
++ * @alias: The alias to resolve
++ *
++ * Returns: the machine type corresponding to the alias if any,
++ * otherwise NULL.
++ */
++char *qtest_resolve_machine_alias(const char *var, const char *alias);
++
+ /**
+  * qtest_has_machine:
+  * @machine: The machine to look for
 diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 9eebba8767..3cc7bf3076 100644
+index 603d900e7d..c843c41188 100644
 --- a/tests/qtest/libqtest.c
 +++ b/tests/qtest/libqtest.c
-@@ -1468,13 +1468,26 @@ struct MachInfo {
-     char *alias;
- };
+@@ -1565,6 +1565,22 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
+     }
+ }
  
-+static void qtest_free_machine_list(struct MachInfo *machines)
++char *qtest_resolve_machine_alias(const char *var, const char *alias)
 +{
-+    if (machines) {
-+        for (int i = 0; machines[i].name != NULL; i++) {
-+            g_free(machines[i].name);
-+            g_free(machines[i].alias);
-+        }
++    struct MachInfo *machines;
++    int i;
 +
-+        g_free(machines);
++    machines = qtest_get_machines(var);
++
++    for (i = 0; machines[i].name != NULL; i++) {
++        if (machines[i].alias && g_str_equal(alias, machines[i].alias)) {
++            return g_strdup(machines[i].name);
++        }
 +    }
++
++    return NULL;
 +}
 +
- /*
-  * Returns an array with pointers to the available machine names.
-  * The terminating entry has the name set to NULL.
-  */
--static struct MachInfo *qtest_get_machines(void)
-+static struct MachInfo *qtest_get_machines(const char *var)
+ bool qtest_has_machine_with_env(const char *var, const char *machine)
  {
-     static struct MachInfo *machines;
-+    static char *qemu_var;
-     QDict *response, *minfo;
-     QList *list;
-     const QListEntry *p;
-@@ -1483,11 +1496,19 @@ static struct MachInfo *qtest_get_machines(void)
-     QTestState *qts;
-     int idx;
- 
-+    if (g_strcmp0(qemu_var, var)) {
-+        qemu_var = g_strdup(var);
-+
-+        /* new qemu, clear the cache */
-+        qtest_free_machine_list(machines);
-+        machines = NULL;
-+    }
-+
-     if (machines) {
-         return machines;
-     }
- 
--    qts = qtest_init("-machine none");
-+    qts = qtest_init_with_env(qemu_var, "-machine none");
-     response = qtest_qmp(qts, "{ 'execute': 'query-machines' }");
-     g_assert(response);
-     list = qdict_get_qlist(response, "return");
-@@ -1528,7 +1549,7 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
      struct MachInfo *machines;
-     int i;
- 
--    machines = qtest_get_machines();
-+    machines = qtest_get_machines(NULL);
- 
-     for (i = 0; machines[i].name != NULL; i++) {
-         /* Ignore machines that cannot be used for qtests */
-@@ -1549,7 +1570,7 @@ bool qtest_has_machine(const char *machine)
-     struct MachInfo *machines;
-     int i;
- 
--    machines = qtest_get_machines();
-+    machines = qtest_get_machines(NULL);
- 
-     for (i = 0; machines[i].name != NULL; i++) {
-         if (g_str_equal(machine, machines[i].name) ||
 -- 
 2.41.0

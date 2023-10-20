@@ -1,123 +1,106 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1332656ejb;
-        Fri, 20 Oct 2023 09:00:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGKlMKL5THu7CBskR6VyhrOKpvb6mal6ZV8CVdZM5TesJ1QVNyn89PWoVNroJJEG7XNV1J5
-X-Received: by 2002:a67:ca16:0:b0:457:82be:6782 with SMTP id z22-20020a67ca16000000b0045782be6782mr2645380vsk.9.1697817633898;
-        Fri, 20 Oct 2023 09:00:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697817633; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1339738ejb;
+        Fri, 20 Oct 2023 09:07:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFEyo5SnXyt7hhoJTtlqmdHFRm53zxBlks86xMQo21HiVqIWJknBXoSH4lWxwaWBjaSfWL6
+X-Received: by 2002:a05:622a:588:b0:41c:d36c:8efd with SMTP id c8-20020a05622a058800b0041cd36c8efdmr2134617qtb.64.1697818071830;
+        Fri, 20 Oct 2023 09:07:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697818071; cv=none;
         d=google.com; s=arc-20160816;
-        b=ESKKRmdqauzdYiSeGGdQhxlivgdvT1ZeqGNOfMRHRFEWuVKCC3FBnD9mxY0idFam9Y
-         NeZL9i+DBgTMj8/knOaVtKU/PQYZNtktcsUNs884lZCwEW7uejnKvd/Fk7xdyCN4397W
-         ucXOkcX5k+eSFP54JhDZnkzkyEcVOmYXWwWVGxf6yHRUCMIxOLZAUHRFXqVhdxx2+pe+
-         A6YJykVcJsbvNeDknK1v/cAbaKcybjwgJP8j/ynXyhTRVO2TOadeSyj7abdSb8ogf1gO
-         NT8vzedsrm6K95BU20IsGpATDzfaDhVLeE2oAZwkYFhVnjqiLdvk6oSWv0cGtL1q02cq
-         JJZQ==
+        b=oNHM9fd1bNv2LOxr4FukAvgJinAGSN1l7Ivos3KjpEjjN2qKCODaEYRV23hwrIrP5T
+         XUQhH/ypGN2v3Aijv/Ehz9kZnSgwZTvD8KitUBRFPhCrquZevYb0HMBzBkkqWC/FBcUN
+         10BZbwhKTE85bzuw3xnVGNOchW/JxYfvTMDygfaCTaRxp3G/lJC14LoNEf1eaBHrVC77
+         d7BbxvRUx4zwsNGaiG7cGrvKKXHgtA4iQxUZBnIsvqhxEP7yg4ieJ3RQ2ouzbOyhKdYT
+         PP6gWfOJh57yTdLat0Ohcg2wKkOXtuPFPYK3ZjljOaCgzRGNROYfLajKd2RT8mJVdcBS
+         sBFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=H3qRuG7BKbTEc6nrwgr7wiqKAoP/BVqIfN3IMumn/Uc=;
-        fh=5vaoWvTnlKN+1FLcZ05RH9B5qe6WCTczG7jiRmckztE=;
-        b=OFwqeE4AO0RNoLUae0QrNcZPtLVxDxSeBvIHnVEnbaPHl9QYHyBdNMWhYF7arpHcqz
-         UJ+Q6LHbM+KivqWX9CwuqHCNZtd+F4Z9O/YqB8ZVv8M4JIFU5ATUnneo6TYnX+6EosCw
-         lXwYEkoZxtTzqYKGTkdDv/+1dKEXzdYaHliAKHUGEnJ/eUkv0wjFP4SmFCon0sg4uMWB
-         KqCVkbTYcDQMuB3m2cwSGynjQf2bqHz1j85ChfDzFebZ4QagzQwEiLEN/l9HksSkszkj
-         iL5incbYgEPk8B8Jqifq9XDyGorCh1NRKj2VJtskW2+jo4se2exB+fNInVu0gGFpB9KI
-         /F3w==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Twctpit2m3fQk4UA4cWCieItlIyS4ytx+tY3taBG34s=;
+        fh=j+HHhX0dDEzFcFOvp26We8bMQEKVb82WrPF8ZDvX8V0=;
+        b=ZU1L1jgisjwDbalB6ZC6uHy8/25Ry4q2i+lOf8sipI5+FWFsVw0Kmy7q39S9cJbHHF
+         3I+uP6Ux3qTHQsrVUNQJ4i4bSSUMcfEh1u+Z9c4/ojolQGKkbPnChq5dv8Q/DvJ6C1iY
+         97mzxxgMwvxdEPDiLzq3bS2IvjBNhGdnRWKsfAUxKp4arA2Tjsyo8VJ4c7ztVWzqOCje
+         kDzVi0nL92Fp4tv+vwh+PaXGXO9hrTcmB/FWxU3iHmuEwgiL8MDhGgUotUpuiean5ZLg
+         lp8mzv5SMf/atdibssO5vRRrhwE+FcA+BD0dLQ6ckZrNN2y5+/xqYBiiuzOrquox4XKe
+         oXIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zWnSfleB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gLSDZTa8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs39-20020a056130102700b0078f65eeb73fsi97811uab.223.2023.10.20.09.00.33
+        by mx.google.com with ESMTPS id d10-20020a05622a100a00b0041b505bcef5si1532747qte.415.2023.10.20.09.07.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 09:00:33 -0700 (PDT)
+        Fri, 20 Oct 2023 09:07:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zWnSfleB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gLSDZTa8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtruq-0005If-I4; Fri, 20 Oct 2023 12:00:00 -0400
+	id 1qts1k-0006hj-Kq; Fri, 20 Oct 2023 12:07:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtruo-0005Es-RI
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 11:59:58 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtrum-0008UN-K0
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 11:59:58 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-40850b244beso6956085e9.2
- for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 08:59:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697817594; x=1698422394; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=H3qRuG7BKbTEc6nrwgr7wiqKAoP/BVqIfN3IMumn/Uc=;
- b=zWnSfleBqgh12fxx36OAtj6qAztVwTgxjtrmrR0ipSiYpqxezmtjiG2d0jL/WLtaC9
- hwiGFDqwSp91PmDEwahqpOlr19D6NpY9MeYqlJul+Uq9GCKJ49Yaa6aGrCzcHhlKbl8T
- TC8fuKhic4Be3NVE3kbpBoVv56d3D2qya1R/ZOcdYC+uFUYYfBpbQmCH2tActuEmtooI
- CDmu8LOwccb+xROt75+8349ZXf/pXi8T5TBMm8FlwsPOsXGASPavEL+an6N4PuCpjtlp
- NltqrTF2sDtCHyHT4od9Es00ZmRvW8ftlrquT8MNzNx+THtRjTL0yRibKKFldhwARo+H
- WPgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697817594; x=1698422394;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=H3qRuG7BKbTEc6nrwgr7wiqKAoP/BVqIfN3IMumn/Uc=;
- b=k+csoE2p+r1ssTB2S8f3eUJa7zq6q9qYFIBMWBiHCU0bXADx+TAWyKmx2/U+1D+kR4
- 8BJIXq2Aq00fDZse2QxQAuUlBonmhjWqNg5rUlodqjP9lzJp1YfC8E/hdILIRCO6xIeY
- TRhaR1GIN+Zx1SUXl1s3ecZpZPHSSD4OoxNAPf9/C563u1wtVcDyw1HIlWBOplOOlS3c
- ycDSZDdW8SL32nWFxPLrlIB4bPPyLiaym17O1//hqAY8XMgyMmAhvz3OyKrPNl0eCWXt
- lJ9fFI6rE/iMTFqIMWCRUN0oAYIUJAevmz7sQVDsa0BnbKRLL1Ihx6mVmY99Pll0QcvE
- P1zg==
-X-Gm-Message-State: AOJu0YybZMx0ndhGr4u/qal01mqCwQgl1aPJxhU7fjwwbY7aJppg9nkV
- w7qDUo/M9QgtFOxYBwYE3udpdQ==
-X-Received: by 2002:a5d:628f:0:b0:32d:9e4f:7190 with SMTP id
- k15-20020a5d628f000000b0032d9e4f7190mr1792781wru.60.1697817594422; 
- Fri, 20 Oct 2023 08:59:54 -0700 (PDT)
-Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
- [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
- n7-20020a5d6b87000000b003140f47224csm1953860wrx.15.2023.10.20.08.59.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Oct 2023 08:59:54 -0700 (PDT)
-Message-ID: <5563056c-0144-ee4b-bd99-e51f31369feb@linaro.org>
-Date: Fri, 20 Oct 2023 17:59:51 +0200
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qts1j-0006fJ-36
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 12:07:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qts1h-0001Xn-8a
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 12:07:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697818024;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Twctpit2m3fQk4UA4cWCieItlIyS4ytx+tY3taBG34s=;
+ b=gLSDZTa8dPnbk21E3DYXHtRmuB46WcS6iC7FMPnvSBEBZNUeTaNqSoC1hAB8Ag/uFamNpP
+ z+UjahBb3kUZPOFG8Ju8LEw+Pfw91bqnuCgnqvS99jUtKlNF9YIVgGjnPZZLLgbwxJlKjF
+ GQJvLgZVToXriDbNZTcssdjLR3xzoKg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-159-U0Jec5oHPL21Qj_JMMFtTQ-1; Fri, 20 Oct 2023 12:06:59 -0400
+X-MC-Unique: U0Jec5oHPL21Qj_JMMFtTQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 615A0857CE9;
+ Fri, 20 Oct 2023 16:06:58 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.57])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C22D7C15BB8;
+ Fri, 20 Oct 2023 16:06:57 +0000 (UTC)
+Date: Fri, 20 Oct 2023 09:06:55 -0700
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PULL 00/46] Misc HW/UI patches for 2023-10-19
+Message-ID: <20231020160655.GA472068@fedora>
+References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 1/1] stm32f2xx_usart: implement TX interrupts
-Content-Language: en-US
-To: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:STM32F205" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20231020111428.3260965-1-hans-erik.floryd@rt-labs.com>
- <74d96828-dae9-64fe-5947-ba83ce54206d@linaro.org>
- <CADS1RdQLmbdobcAsO+DM79N2TgaErCwrctATXNf6a7VYT6hBqA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CADS1RdQLmbdobcAsO+DM79N2TgaErCwrctATXNf6a7VYT6hBqA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="crETe2pNrNY4NXIX"
+Content-Disposition: inline
+In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,310 +115,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LQVCBNRYAx5/
+X-TUID: kxXr9GWjk10n
 
-On 20/10/23 16:40, Hans-Erik Floryd wrote:
-> Hi Phil,
-> 
-> On Fri, 20 Oct 2023 at 14:42, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi Hans-Erik,
->>
->> On 20/10/23 13:14, Hans-Erik Floryd wrote:
->>> Generate interrupt if either of the TXE, TC or RXNE bits are active
->>> and the corresponding interrupt enable bit is set.
->>>
->>> Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
->>> ---
->>>    hw/char/stm32f2xx_usart.c         | 29 +++++++++++++++++------------
->>>    include/hw/char/stm32f2xx_usart.h | 10 ++++++----
->>>    2 files changed, 23 insertions(+), 16 deletions(-)
->>>
->>> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
->>> index fde67f4f03..2947c3a260 100644
->>> --- a/hw/char/stm32f2xx_usart.c
->>> +++ b/hw/char/stm32f2xx_usart.c
->>> @@ -53,6 +53,16 @@ static int stm32f2xx_usart_can_receive(void *opaque)
->>>        return 0;
->>>    }
->>>
->>> +static void stm32f2xx_update(STM32F2XXUsartState *s)
->>> +{
->>> +    uint32_t mask = s->usart_sr & s->usart_cr1;
->>> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
->>> +        qemu_set_irq(s->irq, 1);
->>> +    } else {
->>> +        qemu_set_irq(s->irq, 0);
->>> +    }
->>> +}
->>> +
->>>    static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
->>>    {
->>>        STM32F2XXUsartState *s = opaque;
->>> @@ -66,9 +76,7 @@ static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
->>>        s->usart_dr = *buf;
->>>        s->usart_sr |= USART_SR_RXNE;
->>>
->>> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
->>> -        qemu_set_irq(s->irq, 1);
->>> -    }
->>> +    stm32f2xx_update(s);
->>>
->>>        DB_PRINT("Receiving: %c\n", s->usart_dr);
->>>    }
->>> @@ -85,7 +93,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
->>>        s->usart_cr3 = 0x00000000;
->>>        s->usart_gtpr = 0x00000000;
->>>
->>> -    qemu_set_irq(s->irq, 0);
->>> +    stm32f2xx_update(s);
->>>    }
->>>
->>>    static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
->>> @@ -100,13 +108,14 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
->>>        case USART_SR:
->>>            retvalue = s->usart_sr;
->>>            qemu_chr_fe_accept_input(&s->chr);
->>> +        stm32f2xx_update(s);
->>>            return retvalue;
->>>        case USART_DR:
->>>            DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->usart_dr);
->>>            retvalue = s->usart_dr & 0x3FF;
->>>            s->usart_sr &= ~USART_SR_RXNE;
->>>            qemu_chr_fe_accept_input(&s->chr);
->>> -        qemu_set_irq(s->irq, 0);
->>> +        stm32f2xx_update(s);
->>>            return retvalue;
->>>        case USART_BRR:
->>>            return s->usart_brr;
->>> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
->>>            } else {
->>>                s->usart_sr &= value;
->>>            }
->>> -        if (!(s->usart_sr & USART_SR_RXNE)) {
->>> -            qemu_set_irq(s->irq, 0);
->>> -        }
->>> +        stm32f2xx_update(s);
->>>            return;
->>>        case USART_DR:
->>>            if (value < 0xF000) {
->>> @@ -161,6 +168,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
->>>                   clear TC by writing 0 to the SR register, so set it again
->>>                   on each write. */
->>>                s->usart_sr |= USART_SR_TC;
->>> +            stm32f2xx_update(s);
->>>            }
->>>            return;
->>>        case USART_BRR:
->>> @@ -168,10 +176,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
->>>            return;
->>>        case USART_CR1:
->>>            s->usart_cr1 = value;
->>> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
->>> -                s->usart_sr & USART_SR_RXNE) {
->>> -                qemu_set_irq(s->irq, 1);
->>> -            }
->>> +        stm32f2xx_update(s);
->>>            return;
->>>        case USART_CR2:
->>>            s->usart_cr2 = value;
->>> diff --git a/include/hw/char/stm32f2xx_usart.h b/include/hw/char/stm32f2xx_usart.h
->>> index 65bcc85470..fdfa7424a7 100644
->>> --- a/include/hw/char/stm32f2xx_usart.h
->>> +++ b/include/hw/char/stm32f2xx_usart.h
->>> @@ -48,10 +48,12 @@
->>>    #define USART_SR_TC   (1 << 6)
->>>    #define USART_SR_RXNE (1 << 5)
->>>
->>> -#define USART_CR1_UE  (1 << 13)
->>> -#define USART_CR1_RXNEIE  (1 << 5)
->>> -#define USART_CR1_TE  (1 << 3)
->>> -#define USART_CR1_RE  (1 << 2)
->>> +#define USART_CR1_UE     (1 << 13)
->>> +#define USART_CR1_TXEIE  (1 << 7)
->>> +#define USART_CR1_TCEIE  (1 << 6)
->>> +#define USART_CR1_RXNEIE (1 << 5)
->>> +#define USART_CR1_TE     (1 << 3)
->>> +#define USART_CR1_RE     (1 << 2)
->>>
->>>    #define TYPE_STM32F2XX_USART "stm32f2xx-usart"
->>>    OBJECT_DECLARE_SIMPLE_TYPE(STM32F2XXUsartState, STM32F2XX_USART)
->>
->> To keep your changes trivial to review, I split your patch in 4:
-> 
-> Ok - do you also want me to split the patch in the next version?
 
-I had to do it because I found your patch including too many
-changes at once. Other might find the same (usually we ask for
-one atomical change per commit: easier to review, and also
-useful if there is a bug, you can revert the single offending
-commit). Since I did the split, I can post it and you can
-re-use the splitted patch series.
+--crETe2pNrNY4NXIX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->> 1/ Extract stm32f2xx_update_irq()
->>
->> -- >8 --
->> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
->> index fde67f4f03..519d3461a3 100644
->> --- a/hw/char/stm32f2xx_usart.c
->> +++ b/hw/char/stm32f2xx_usart.c
->> @@ -53,6 +53,17 @@ static int stm32f2xx_usart_can_receive(void *opaque)
->>        return 0;
->>    }
->>
->> +static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
->> +{
->> +    uint32_t mask = s->usart_sr & s->usart_cr1;
->> +
->> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
->> +        qemu_set_irq(s->irq, 1);
->> +    } else {
->> +        qemu_set_irq(s->irq, 0);
->> +    }
->> +}
->> +
->>    static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf,
->> int size)
->>    {
->>        STM32F2XXUsartState *s = opaque;
->> @@ -66,9 +77,7 @@ static void stm32f2xx_usart_receive(void *opaque,
->> const uint8_t *buf, int size)
->>        s->usart_dr = *buf;
->>        s->usart_sr |= USART_SR_RXNE;
->>
->> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
->> -        qemu_set_irq(s->irq, 1);
->> -    }
->> +    stm32f2xx_update_irq(s);
->>
->>        DB_PRINT("Receiving: %c\n", s->usart_dr);
->>    }
->> @@ -85,7 +94,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
->>        s->usart_cr3 = 0x00000000;
->>        s->usart_gtpr = 0x00000000;
->>
->> -    qemu_set_irq(s->irq, 0);
->> +    stm32f2xx_update_irq(s);
->>    }
->>
->>    static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
->> @@ -106,7 +115,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque,
->> hwaddr addr,
->>            retvalue = s->usart_dr & 0x3FF;
->>            s->usart_sr &= ~USART_SR_RXNE;
->>            qemu_chr_fe_accept_input(&s->chr);
->> -        qemu_set_irq(s->irq, 0);
->> +        stm32f2xx_update_irq(s);
->>            return retvalue;
->>        case USART_BRR:
->>            return s->usart_brr;
->> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque,
->> hwaddr addr,
->>            } else {
->>                s->usart_sr &= value;
->>            }
->> -        if (!(s->usart_sr & USART_SR_RXNE)) {
->> -            qemu_set_irq(s->irq, 0);
->> -        }
->> +        stm32f2xx_update_irq(s);
->>            return;
->>        case USART_DR:
->>            if (value < 0xF000) {
->> @@ -168,10 +175,7 @@ static void stm32f2xx_usart_write(void *opaque,
->> hwaddr addr,
->>            return;
->>        case USART_CR1:
->>            s->usart_cr1 = value;
->> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
->> -                s->usart_sr & USART_SR_RXNE) {
->> -                qemu_set_irq(s->irq, 1);
->> -            }
->> +        stm32f2xx_update_irq(s);
->>            return;
->>        case USART_CR2:
->>            s->usart_cr2 = value;
->> ---
->>
->> 2/ Update IRQ when SR is read
->>
->> -- >8 --
->> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
->> index 519d3461a3..46e29089bc 100644
->> --- a/hw/char/stm32f2xx_usart.c
->> +++ b/hw/char/stm32f2xx_usart.c
->> @@ -109,6 +109,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque,
->> hwaddr addr,
->>        case USART_SR:
->>            retvalue = s->usart_sr;
->>            qemu_chr_fe_accept_input(&s->chr);
->> +        stm32f2xx_update_irq(s);
->>            return retvalue;
->>        case USART_DR:
->>            DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char)
->> s->usart_dr);
->> ---
->>
->> Why is this required?
-> 
-> It's not required yet although it may be if support for more bits are
-> added (IDLE for instance). Although rereading the manual I'm not sure
-> that's how it would be implemented so I'll remove it.
-> 
->>
->> 3/ Update IRQ when DR is written
->>
->> -- >8 --
->> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
->> index 46e29089bc..74f007591a 100644
->> --- a/hw/char/stm32f2xx_usart.c
->> +++ b/hw/char/stm32f2xx_usart.c
->> @@ -169,6 +169,7 @@ static void stm32f2xx_usart_write(void *opaque,
->> hwaddr addr,
->>                   clear TC by writing 0 to the SR register, so set it again
->>                   on each write. */
->>                s->usart_sr |= USART_SR_TC;
->> +            stm32f2xx_update_irq(s);
->>            }
->>            return;
->>        case USART_BRR:
->> ---
->>
->> This change makes sense
->>
->> 4/ Add more CR1 bit definitions
->>
->> -- >8 --
->> diff --git a/include/hw/char/stm32f2xx_usart.h
->> b/include/hw/char/stm32f2xx_usart.h
->> index 65bcc85470..fdfa7424a7 100644
->> --- a/include/hw/char/stm32f2xx_usart.h
->> +++ b/include/hw/char/stm32f2xx_usart.h
->> @@ -49,6 +49,8 @@
->>    #define USART_SR_RXNE (1 << 5)
->>
->>    #define USART_CR1_UE     (1 << 13)
->> +#define USART_CR1_TXEIE  (1 << 7)
->> +#define USART_CR1_TCEIE  (1 << 6)
->>    #define USART_CR1_RXNEIE (1 << 5)
->>    #define USART_CR1_TE     (1 << 3)
->>    #define USART_CR1_RE     (1 << 2)
->> ---
->>
->> These are not used, why add them?
-> 
-> For completeness since RXNEIE was already defined. Also for
-> documentation, to show that SR_TX/CR_TXEIE etc share bit numbers,
-> which the implementation relies on.
-> 
-> I can remove it though. Should I also remove RXNEIE which is no longer needed?
+Applied, thanks.
 
-I'm not against adding the definitions, but better if they are used :)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
 
-My review reflex was "oh, definitions are added but not used, is that
-a bug or a left over?".
+--crETe2pNrNY4NXIX
+Content-Type: application/pgp-signature; name="signature.asc"
 
-I'll post your splitted patches shortly.
+-----BEGIN PGP SIGNATURE-----
 
-Regard,
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmUypZ8ACgkQnKSrs4Gr
+c8hHngf/V2Jb31T/m09jS4hRUyUUDodb+iY76QWm99qeXlrXbNG9kyYmJwoxfPPu
+5Mtxh+ciqvvXBVlnh2dIi3ALjSfFLyL63qv8vs+DJRIGMXGAz321D9Dp6ShlFtYo
+PrW9hyuiEVWV/Juo8oVFHhRNnEp8IhHYV9E2KOHYYnhWvSxmPDMlU07xvkeUrV1+
+PhEfCnzKvvTnFqjk/90186/yBv72Mwsa0duHi8h5CyhOzrZeqlt9D/xWzTUNlvTs
+gBEOzdmwwe7of6dZsB3mnG6Bhbz2JMm2T63ScaNO+MjNcn6EPYAtBwCAaVnvsF+L
+sHUuqm2SZutf+woNB+XdphhMuzj6Mg==
+=8QXE
+-----END PGP SIGNATURE-----
 
-Phil.
+--crETe2pNrNY4NXIX--
+

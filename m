@@ -1,106 +1,101 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1000743ejb;
-        Thu, 19 Oct 2023 22:49:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE0R6AlmMN4tp/BNXchcha+NOMk32RzA7ICyD4dHSm6arT6JpJx2HOCKqXeFIZqvdoyes5x
-X-Received: by 2002:a05:620a:1707:b0:777:2e8b:3446 with SMTP id az7-20020a05620a170700b007772e8b3446mr858412qkb.55.1697780985398;
-        Thu, 19 Oct 2023 22:49:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697780985; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1004991ejb;
+        Thu, 19 Oct 2023 23:01:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGuLA9Hhe10nZEgoIpdhNpX6xDImeSggVLwkrXpf6nbY1rtKmCxbln8qVNdLkz/zDX0LWtI
+X-Received: by 2002:a05:622a:646:b0:400:9896:b0fa with SMTP id a6-20020a05622a064600b004009896b0famr652310qtb.64.1697781675839;
+        Thu, 19 Oct 2023 23:01:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697781675; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZjRB67HgnfXF+/JIu3q2fB1iXoBwaKRClzIzwxzenuLE5LnBcWkslFbNUpsNvy0Bvu
-         xTplR7pO9Z7snCJtPGumltC3srOp09wYi7il2xmFYSGUCwN9aKLa4bwA7TxLGXNInULE
-         CkNkfxuE7ckq3PaHANqBl2ZEuxJZ72MiFlh3SVBvnKhBD1IHXO/b75uJ8PEU87HuxONl
-         xs6+B/SrO9jGK0Ri2U74S4cdy2uBabnJTBzJ46gQ5dkcR0RT87vWbCChCakiBYf0n9Kg
-         G6k5woZR2bKM/1C395C7nzV/fwSa3FKMD7T4nowI3U2dqao4NBuwgyDvBnGx0iWs1fdS
-         CRaA==
+        b=CPzHqlvauSDpoaDt0tLAYzH5XwJTAJK/8li0dIZ0bnnCSKCu9xcWC8Wj6YO+tBp4Rc
+         CyXUURahpfbgPqMKBgFa6rSBGFoUz2gCR6EJHTgAzaRX+HzKf86WmDat/sGiD1jPT7xE
+         4fp0IugVKfg5HTS+aMJEDERcr0TmhO8wlorBzzPchsu0U1l0crn4AacRg1tX/SO8nrTT
+         9p1/jWkrQj6mJqk51zqLDwW2Lc9fBBJxgRYwDHYxtIuReJLq/yW0fzcHJQ8nPrcrK3O5
+         EQJsKycBb+NuwLdGwF0ztOY+AU5+qvtJgPLmOBtoA/OAnnNozb5QQsVOq57APBE+KBuw
+         EERQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:user-agent:message-id:in-reply-to:date:references
          :subject:cc:to:from:dkim-signature;
-        bh=gMVfCtRDDnl+luLg+Cm8GHVP//AX3rsw5T+I9lQu0ZA=;
-        fh=9DAFZH4N6QCknGNONDw8nqqx2vm+7pP/ZvN/F8qS/d4=;
-        b=PC8YDMmNAOfDHTbcmEB/QZjHnVl37mo99BbIuYf/nNKBBLkHBFXqDULuEbkkCyGfP9
-         iYPU8hYEAzmnsQ2RuqnhLXjAn/zEauBv27raFhfNd8PkepQLJfBgLCbqidvgjb2Kkt87
-         IjvNHCcGA4idby4Uo5Sh7tqRjrQGBmFFXtmRIsETSLKjZXB9GC6w77kwsfI5US4030MR
-         RP975L4vqC4ltKXc8TexwfhXTyAPGmZ9wQBeTHHxGdDIf/+AGrTyksPa0YLn1k7RYstU
-         Ia4FcOKCl2CWhP4i7k5TjQg6OSNgfN3s/8sLIHRwBxYCt2FiqMlZniTW2RAsDtoISc2v
-         AYUw==
+        bh=By6fFvCIZ+y84oZD5B6R+3yCZKFuimvkYCCwwog58Ik=;
+        fh=beYvyTLMTzHVIUcktLXIIdaQpg47VUIrenr2Va6Wlwg=;
+        b=a7IAHS1CbpDCM4XCL5F7QN68BcOJgcBzI2oz4SJszzg6Dlg93UX28diw6vNwslfLGI
+         7AS8GgCSd4AgXdUOdDsuG4uIiWtnbAHlBagDUiRgWApYznsDeAK/H/u2+oLJrdU9gp02
+         c0rJWZOizVESztATyWyatdi9T3tEVpFNoyC+90HfF1NzDGulq3OXOkyyptANAvA8do4r
+         Ih6gomEJt5FYjZ8f9TXZPkcscn1iymc9W+vGmhYbkKqF5gNZ6cpxPREBDFDgM+s5eMaC
+         4YggkEjpuqvDaQGgP4VdCAgp/qEaQlub7j9jhJUa7NMrX1YaI5NXiLsVi6RyiJsjOk9p
+         eNrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fLTLrKfk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y8f2irpO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1-20020a05620a078100b00776fb0c6b42si761584qka.461.2023.10.19.22.49.45
+        by mx.google.com with ESMTPS id c2-20020ac85a82000000b00417d1246db4si815251qtc.537.2023.10.19.23.01.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 22:49:45 -0700 (PDT)
+        Thu, 19 Oct 2023 23:01:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fLTLrKfk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y8f2irpO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtiOC-0005XT-Ms; Fri, 20 Oct 2023 01:49:40 -0400
+	id 1qtiZ3-0008OH-Ok; Fri, 20 Oct 2023 02:00:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtiOA-0005Wk-7m
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 01:49:38 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtiYy-0008MI-GK
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 02:00:48 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtiO8-000654-K4
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 01:49:37 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtiYs-0000nI-Hd
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 02:00:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697780975;
+ s=mimecast20190719; t=1697781640;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gMVfCtRDDnl+luLg+Cm8GHVP//AX3rsw5T+I9lQu0ZA=;
- b=fLTLrKfk7/LA+GfyI1Wrt8PwHbMZvCTOWW1WG4ZG1pdcAbQOhZ0LxfzF8mPRWP+yN2a4X6
- A2GhSdgcDrGL2Cx8b0kpiJWzpUc0ewvvRY5JYWiFyaSf6DKlmBH8XCQuY9cAKPmqqEaj4H
- dxCppCQAH5S2vbbXRLFmnUhPlhEnu+w=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-237-PV9HZWHeP_-Qm5i5i3AXQQ-1; Fri, 20 Oct 2023 01:49:31 -0400
-X-MC-Unique: PV9HZWHeP_-Qm5i5i3AXQQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
+ bh=By6fFvCIZ+y84oZD5B6R+3yCZKFuimvkYCCwwog58Ik=;
+ b=Y8f2irpO/YY/GjqYy31yMuSUHZcZeYM1XnG4k+4+Bl9JKNXcnEyz2EGQwuIUB/T+ZYuBCQ
+ aHRlpfXRxe7WinOeHqkFmJHWqwHux3b1bo5IAR+PfbaqDQ5w2qAoPt9Yd8IlGkqaK8DZuT
+ kPbn/seEIDjkO7CTp+oRh/kBVJsDDf8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-651-XT1JhQtyMii97KXI78uJ1A-1; Fri, 20 Oct 2023 02:00:38 -0400
+X-MC-Unique: XT1JhQtyMii97KXI78uJ1A-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 488FF3C17089;
- Fri, 20 Oct 2023 05:49:31 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A436188B779;
+ Fri, 20 Oct 2023 06:00:37 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id F4145C15BB8;
- Fri, 20 Oct 2023 05:49:30 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8255B492BFC;
+ Fri, 20 Oct 2023 06:00:37 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D5FE421E6A1F; Fri, 20 Oct 2023 07:49:29 +0200 (CEST)
+ id 6C3B421E6A1F; Fri, 20 Oct 2023 08:00:36 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  Nicholas Piggin
- <npiggin@gmail.com>,  Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,  David Gibson
- <david@gibson.dropbear.id.au>,  Harsh Prateek Bora
- <harshpb@linux.ibm.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo Habkost
- <eduardo@habkost.net>
-Subject: Re: [PATCH v2 01/22] qapi: Inline and remove QERR_BUS_NO_HOTPLUG
- definition
+ qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  Kevin Wolf
+ <kwolf@redhat.com>,  Hanna Reitz <hreitz@redhat.com>
+Subject: Re: [PATCH v2 02/22] qapi: Inline and remove
+ QERR_DEVICE_HAS_NO_MEDIUM definition
 References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-2-philmd@linaro.org>
-Date: Fri, 20 Oct 2023 07:49:29 +0200
-In-Reply-To: <20231005045041.52649-2-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:18
+ <20231005045041.52649-3-philmd@linaro.org>
+Date: Fri, 20 Oct 2023 08:00:36 +0200
+In-Reply-To: <20231005045041.52649-3-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:19
  +0200")
-Message-ID: <87mswdc07q.fsf@pond.sub.org>
+Message-ID: <87h6mlbzp7.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -124,7 +119,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lNOlC3M1bOWT
+X-TUID: OcMYreyLTURT
 
 Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
@@ -142,107 +137,78 @@ Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
 >  include/qapi/qmp/qerror.h | 3 ---
->  hw/ppc/spapr_pci.c        | 4 ++--
->  softmmu/qdev-monitor.c    | 8 +++++---
->  3 files changed, 7 insertions(+), 8 deletions(-)
+>  block/snapshot.c          | 4 ++--
+>  blockdev.c                | 2 +-
+>  3 files changed, 3 insertions(+), 6 deletions(-)
 >
 > diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-> index 8dd9fcb071..1a9c2d3502 100644
+> index 1a9c2d3502..168177bcd7 100644
 > --- a/include/qapi/qmp/qerror.h
 > +++ b/include/qapi/qmp/qerror.h
 > @@ -17,9 +17,6 @@
 >   * add new ones!
 >   */
 >=20=20
-> -#define QERR_BUS_NO_HOTPLUG \
-> -    "Bus '%s' does not support hotplugging"
+> -#define QERR_DEVICE_HAS_NO_MEDIUM \
+> -    "Device '%s' has no medium"
 > -
->  #define QERR_DEVICE_HAS_NO_MEDIUM \
->      "Device '%s' has no medium"
+>  #define QERR_DEVICE_IN_USE \
+>      "Device '%s' is in use"
 >=20=20
-> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-> index 370c5a90f2..7f063f5852 100644
-> --- a/hw/ppc/spapr_pci.c
-> +++ b/hw/ppc/spapr_pci.c
-> @@ -1550,7 +1550,7 @@ static void spapr_pci_pre_plug(HotplugHandler *plug=
-_handler,
->           * we need to let them know it's not enabled
->           */
->          if (plugged_dev->hotplugged) {
-> -            error_setg(errp, QERR_BUS_NO_HOTPLUG,
-> +            error_setg(errp, "Bus '%s' does not support hotplugging",
->                         object_get_typename(OBJECT(phb)));
-
-@phb is a SpaprPhbState *, thereforce object_get_typename() returns
-"spapr-pci-host-bridge", which is not a bus.  It provides a bus: PCI bus
-phb->parent_obj.bus.
-
-Should be fixed on top, so this patch remains mechanical.
-
-Well outside this patch's scope, but here goes anyway: I wonder why we
-need this check.  Why is the generic check in
-qdev_device_add_from_qdict() not enough?
-
->              return;
->          }
-> @@ -1671,7 +1671,7 @@ static void spapr_pci_unplug_request(HotplugHandler=
- *plug_handler,
->      SpaprDrc *drc =3D drc_from_dev(phb, pdev);
+> diff --git a/block/snapshot.c b/block/snapshot.c
+> index b86b5b24ad..eb43e957e1 100644
+> --- a/block/snapshot.c
+> +++ b/block/snapshot.c
+> @@ -345,7 +345,7 @@ int bdrv_snapshot_delete(BlockDriverState *bs,
+>      GLOBAL_STATE_CODE();
 >=20=20
->      if (!phb->dr_enabled) {
-> -        error_setg(errp, QERR_BUS_NO_HOTPLUG,
-> +        error_setg(errp, "Bus '%s' does not support hotplugging",
+>      if (!drv) {
+> -        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, bdrv_get_device_name=
+(bs));
+> +        error_setg(errp, "Device '%s' has no medium", bdrv_get_device_na=
+me(bs));
+
+Break the line after the last comma, please.
+
+>          return -ENOMEDIUM;
+>      }
+>      if (!snapshot_id && !name) {
+> @@ -420,7 +420,7 @@ int bdrv_snapshot_load_tmp(BlockDriverState *bs,
+>      GLOBAL_STATE_CODE();
+>=20=20
+>      if (!drv) {
+> -        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, bdrv_get_device_name=
+(bs));
+> +        error_setg(errp, "Device '%s' has no medium", bdrv_get_device_na=
+me(bs));
 
 Likewise.
 
->                     object_get_typename(OBJECT(phb)));
->          return;
+>          return -ENOMEDIUM;
 >      }
-> diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-> index 74f4e41338..3a9740dcbd 100644
-> --- a/softmmu/qdev-monitor.c
-> +++ b/softmmu/qdev-monitor.c
-> @@ -656,7 +656,8 @@ DeviceState *qdev_device_add_from_qdict(const QDict *=
-opts,
+>      if (!snapshot_id && !name) {
+> diff --git a/blockdev.c b/blockdev.c
+> index 325b7a3bef..e5617faf0f 100644
+> --- a/blockdev.c
+> +++ b/blockdev.c
+> @@ -1422,7 +1422,7 @@ static void external_snapshot_action(TransactionAct=
+ion *action,
+>      bdrv_drained_begin(state->old_bs);
 >=20=20
->      if (qdev_should_hide_device(opts, from_json, errp)) {
->          if (bus && !qbus_is_hotpluggable(bus)) {
-> -            error_setg(errp, QERR_BUS_NO_HOTPLUG, bus->name);
-> +            error_setg(errp, "Bus '%s' does not support hotplugging",
-> +                       bus->name);
->          }
->          return NULL;
->      } else if (*errp) {
-> @@ -664,7 +665,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *=
-opts,
->      }
->=20=20
->      if (phase_check(PHASE_MACHINE_READY) && bus && !qbus_is_hotpluggable=
-(bus)) {
-> -        error_setg(errp, QERR_BUS_NO_HOTPLUG, bus->name);
-> +        error_setg(errp, "Bus '%s' does not support hotplugging", bus->n=
-ame);
->          return NULL;
->      }
->=20=20
-> @@ -904,7 +905,8 @@ void qdev_unplug(DeviceState *dev, Error **errp)
->      }
->=20=20
->      if (dev->parent_bus && !qbus_is_hotpluggable(dev->parent_bus)) {
-> -        error_setg(errp, QERR_BUS_NO_HOTPLUG, dev->parent_bus->name);
-> +        error_setg(errp, "Bus '%s' does not support hotplugging",
-> +                   dev->parent_bus->name);
->          return;
+>      if (!bdrv_is_inserted(state->old_bs)) {
+> -        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, device);
+> +        error_setg(errp, "Device '%s' has no medium", device);
+>          goto out;
 >      }
 
-Could factor out
+Outside this patch's scope, but here goes anyway...  Elsewhere in this
+file, we have two instances of
 
-    if (bus && !qbus_is_hotpluggable(bus)) {
-        error_setg(errp, "Bus '%s' does not support hotplugging", bus->name=
-);
-        return false;
-    }
-    return true;
+        error_setg(errp, "Device has no medium");
 
-Idea, not a demand.
+The user gets to guess which device.
+
+Looks like commit b6c1bae5df8 (block: Accept node-name for block-stream)
+and commit 7a9877a0263 (block: Accept device model name for
+block_set_io_throttle) sacrificed the '%s'.  Can we put it back?
 

@@ -1,104 +1,101 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1031913ejb;
-        Fri, 20 Oct 2023 00:07:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGd5GbvfKNNXP/ER47fk6f45aOySZeZIZSQ5JLz5BrcVdfqtUB3Ei11dUCg27cjs4n5xbqs
-X-Received: by 2002:a05:6214:2249:b0:66d:1b3c:ad6 with SMTP id c9-20020a056214224900b0066d1b3c0ad6mr1656271qvc.38.1697785668562;
-        Fri, 20 Oct 2023 00:07:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697785668; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1035846ejb;
+        Fri, 20 Oct 2023 00:17:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG1OFvxgKZY9JZOT/7u3IqDHW4kjB1AKBjed11wiCOAzD8FBq6pk3ncptxCVsXVX9ZFPjjs
+X-Received: by 2002:a05:6214:628:b0:66d:253c:9a80 with SMTP id a8-20020a056214062800b0066d253c9a80mr1222592qvx.54.1697786230473;
+        Fri, 20 Oct 2023 00:17:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697786230; cv=none;
         d=google.com; s=arc-20160816;
-        b=fgFvH2koVtw1DoC8dwGHqLwMm49ODqyaiMezxpwh1UdzKUAionqz0P/zEZ2rbEHDve
-         IqI00udcgOMUeCiBuXh4AUrpnGPKEa+9Fbiv+YcLJenbUmHtgzk2o7qZ9jfvxI1xKEKm
-         QKaQSLNZeNMcFXoXPulsGV40h8NfRWKITiMPdHOOlMApDTF516eFSNm+Kd5T0OTN9Jmt
-         ZCa4/JsN0apqPHJTCbpdwX0rXIjqd/JBaekJ1Id0p8+DMUswUedEzAXOXHSo0kOpjpeA
-         Vww62hXQtBSxMo68mOM49yKALqzif4NtuCRSHQrMREx9FhfJXBBjZMu6C/sWHZ33hm5l
-         T0UQ==
+        b=L1OWHTrlvM3FAAoH3hSvHMgGLdDR6UZtIr78pvr61f40lkGidXfZ6bpNQox38ijYJu
+         U+ap2REJNOCoK09uuWSxYxwZzxbCjjOGJfLrDaOlq9ZIwRGRaqdQ1ten5tqW2trYX3k6
+         Nc1qQEDrgIlWqtPduYy85rhPd56U3lnAPCzOkL75L3636vhIyOa0qq934xyfs8jzR8mr
+         7lXMG3zmgTjfZcC8wwSl+f30WwJaepCORb+U54uk2hsWtCC9UObR9bK4fGP2fH5FVU5n
+         mosMTa1L4uzGU54PIquV//ZVvxgIAerBw4bC8mTX6JYaBZXPRJnknhr+6N/z2u+njdtP
+         owcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:user-agent:message-id:in-reply-to:date:references
          :subject:cc:to:from:dkim-signature;
-        bh=A+X1X23/j5k8VGC3vFkIbGpmAoc7eq74NMIQkI8czSc=;
-        fh=Di+IsCTqRFqGw0lDjJu6S9HIqGoSo1dbJ7Chepcw9Cs=;
-        b=Fz8tRXZdZsbZUH6cLjTYRSRtatCKKvMYsEaB3NbSZNWPg86Z0cjkkcm7ovkCnjuCWm
-         WTYjk4rOZLRPmBPjnnRVv7+3lgTPlg0OACqzfByRuAH6QnFpwXyN8JUliW4nglo+PJjE
-         wpLyKZrqhiZJ8gnttM61P6Pfn+U5XNd9meL3JRX6AYAnq6wnq5beaWL06sWCSsokUwC/
-         g1KSlJiLeUOwAkWda02AnbhVLECCD6dUdeLA9YROP6VCXqvcSLX7ibI5xC8hwuMxYecj
-         Twqf5Jd1OSY+PUwgWkj9ln8iVzqRrNmjLUQSqKcHoJhBjBlw3owG/OIiNKtdwt2EGmD0
-         4r8g==
+        bh=gA9kSnR9GDB57XSmXZ5+TPxYkjZnexghC7rSOqfT2xI=;
+        fh=1Xm+9s5CE/31kpq2xLv0K+wA6DO61gtCDD9WDb5TAr0=;
+        b=saEUUAK9ED70FhYIl5MtPYVRjO7D8as6dbzWu79XFhGbL5tTgIAVKUgMtWHKkDzlYH
+         D7EZpCUfFA176myYssnTYUYIeJHV5VtkjAn+vnB0v5G5NjnhKnmkGy+om+q+CQeHLaGs
+         RijT6KsYdwtEKWto1ra75hPC/hB/G0aCeuCcwUuHDYfAbnMEgA4JwlaVQN0tk8Vf8wYQ
+         1VSBVbBtj4+IkCaei+bBoRzDte54VML/jWnVLqYf3qbHvgxg9B/n4yWLqYJoQTHVM5dz
+         JSIsOHqC8yDp4z3niUf6UwW1QY+Z1iPBtaCFrUHLT1uOEta9LZH3v6m1AM5tFLBNxudO
+         2S2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TVJQoH+y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Sp/AaPkx";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id of5-20020a056214434500b0065b2d89bd79si981176qvb.465.2023.10.20.00.07.48
+        by mx.google.com with ESMTPS id t11-20020a0cf98b000000b0066d20896c5csi930851qvn.409.2023.10.20.00.17.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 00:07:48 -0700 (PDT)
+        Fri, 20 Oct 2023 00:17:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TVJQoH+y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Sp/AaPkx";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtjbT-0005yn-Om; Fri, 20 Oct 2023 03:07:27 -0400
+	id 1qtjkU-0000kt-BO; Fri, 20 Oct 2023 03:16:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtjbR-0005qF-V9
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:07:25 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtjkG-0000P9-3D
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:16:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtjbQ-0007Pl-1v
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:07:25 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtjkC-0002RY-Lq
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 03:16:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697785643;
+ s=mimecast20190719; t=1697786188;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=A+X1X23/j5k8VGC3vFkIbGpmAoc7eq74NMIQkI8czSc=;
- b=TVJQoH+y31/1kuLDnNVxDbK5SNLWyeISxJiGbU3VITytaKsc3BxGFzNgkk0UKcfvTjjlre
- yDLPWn95rjoxnnjoYspfDuR657B73opNh7NrrLbfYae9GjmGPLEjM3T+ORlAiyqtl5om8z
- J92cpFim9jJ/ObTDyR/H/oNPh0Oki8I=
+ bh=gA9kSnR9GDB57XSmXZ5+TPxYkjZnexghC7rSOqfT2xI=;
+ b=Sp/AaPkxRcu41Igru8PjwMtLliVvU85/YGdl/c3Veft4/V58vRZ7KDHRvzCxaZtWfKMbEc
+ zdQ2stHxamoxam3dNDyuFmwRpWQ67avUUcHt3BoltklsCg43RlgiV/e4BEEr8iNKa0u7IW
+ bYX8Am0c18GqGs0A/KyCpCm/dDkw+AM=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-678-HLgIQa_6NtKFG9USj4-tkA-1; Fri, 20 Oct 2023 03:07:14 -0400
-X-MC-Unique: HLgIQa_6NtKFG9USj4-tkA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ us-mta-678-dZhrgmaFN5a7ZUa8iBhhgw-1; Fri, 20 Oct 2023 03:16:22 -0400
+X-MC-Unique: dZhrgmaFN5a7ZUa8iBhhgw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 93000185A78E;
- Fri, 20 Oct 2023 07:07:13 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AF6C010201F4;
+ Fri, 20 Oct 2023 07:16:21 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 53DD01C060AE;
- Fri, 20 Oct 2023 07:07:13 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6558F2026D4C;
+ Fri, 20 Oct 2023 07:16:21 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 482CA21E6A1F; Fri, 20 Oct 2023 09:07:12 +0200 (CEST)
+ id 657EF21E6A1F; Fri, 20 Oct 2023 09:16:20 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  =?utf-8?Q?Marc-Andr?=
- =?utf-8?Q?=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Michael Roth <michael.roth@amd.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>,  Gerd Hoffmann
- <kraxel@redhat.com>
-Subject: Re: [PATCH v2 05/22] qapi: Inline QERR_INVALID_PARAMETER definition
- (constant parameter)
+ qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  "Dr. David Alan Gilbert"
+ <dave@treblig.org>,  Michael Roth <michael.roth@amd.com>
+Subject: Re: [PATCH v2 06/22] qapi: Inline and remove QERR_INVALID_PARAMETER
+ definition
 References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-6-philmd@linaro.org>
-Date: Fri, 20 Oct 2023 09:07:12 +0200
-In-Reply-To: <20231005045041.52649-6-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:22
+ <20231005045041.52649-7-philmd@linaro.org>
+Date: Fri, 20 Oct 2023 09:16:20 +0200
+In-Reply-To: <20231005045041.52649-7-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:23
  +0200")
-Message-ID: <87y1fx93hb.fsf@pond.sub.org>
+Message-ID: <87r0lp9323.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -107,7 +104,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,7 +119,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: g3nkEksJBpDd
+X-TUID: TZCZqtM6UhDq
 
 Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
@@ -134,174 +131,121 @@ Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 >    * in new code, and do not add new ones!
 >    */
 >
-> Mechanical transformation using the following
-> coccinelle semantic patch:
+> Mechanical transformation using:
 >
->     @match@
->     expression errp;
->     constant param;
->     @@
->          error_setg(errp, QERR_INVALID_PARAMETER, param);
+>   $ sed -i -e "s/QERR_INVALID_PARAMETER,/\"Invalid parameter '%s'\",/" \
+>     $(git grep -lw QERR_INVALID_PARAMETER)
 >
->     @script:python strformat depends on match@
->     param << match.param;
->     fixedfmt; // new var
->     @@
->     fixedfmt =3D f'"Invalid parameter \'{param[1:-1]}\'"' # Format skippi=
-ng '"'.
->     coccinelle.fixedfmt =3D cocci.make_ident(fixedfmt)
->
->     @replace@
->     expression match.errp;
->     constant match.param;
->     identifier strformat.fixedfmt;
->     @@
->     -    error_setg(errp, QERR_INVALID_PARAMETER, param);
->     +    error_setg(errp, fixedfmt);
+> then manually removing the definition in include/qapi/qmp/qerror.h.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->  dump/dump.c        | 6 +++---
->  qga/commands.c     | 2 +-
->  ui/ui-qmp-cmds.c   | 2 +-
->  util/qemu-option.c | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
+>  include/qapi/qmp/qerror.h | 3 ---
+>  monitor/hmp-cmds.c        | 2 +-
+>  qapi/opts-visitor.c       | 2 +-
+>  util/qemu-option.c        | 8 ++++----
+>  4 files changed, 6 insertions(+), 9 deletions(-)
 >
-> diff --git a/dump/dump.c b/dump/dump.c
-> index d4ef713cd0..e173f1f14c 100644
-> --- a/dump/dump.c
-> +++ b/dump/dump.c
-> @@ -1810,7 +1810,7 @@ static void dump_init(DumpState *s, int fd, bool ha=
-s_format,
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index e93211085a..63ab775dc5 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -17,9 +17,6 @@
+>   * add new ones!
+>   */
 >=20=20
->      s->fd =3D fd;
->      if (has_filter && !length) {
-> -        error_setg(errp, QERR_INVALID_PARAMETER, "length");
-
-Incorrect use of QERR_INVALID_PARAMETER: the parameter is perfectly
-valid, the problem is its invalid value.  Better:
-
-           error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "a non-zero size"=
-);
-
-> +        error_setg(errp, "Invalid parameter 'length'");
-
-Applying PATCH 12's transformation then results in
-
-           error_setg(errp, "Parameter '%s' expects a non-zero size",
-                      "length");
-
-which you may want to contract to
-
-           error_setg(errp, "Parameter 'length' expects a non-zero size");
-
-But not in this patch.  Either before or after.  I'd pick before.
-
->          goto cleanup;
->      }
->      s->filter_area_begin =3D begin;
-> @@ -1841,7 +1841,7 @@ static void dump_init(DumpState *s, int fd, bool ha=
-s_format,
+> -#define QERR_INVALID_PARAMETER \
+> -    "Invalid parameter '%s'"
+> -
+>  #define QERR_INVALID_PARAMETER_TYPE \
+>      "Invalid parameter type for '%s', expected: %s"
 >=20=20
->      /* Is the filter filtering everything? */
->      if (validate_start_block(s) =3D=3D -1) {
-> -        error_setg(errp, QERR_INVALID_PARAMETER, "begin");
-> +        error_setg(errp, "Invalid parameter 'begin'");
->          goto cleanup;
->      }
->=20=20
-> @@ -2145,7 +2145,7 @@ void qmp_dump_guest_memory(bool paging, const char =
-*file,
-   #if !defined(WIN32)
-       if (strstart(file, "fd:", &p)) {
-           fd =3D monitor_get_fd(monitor_cur(), p, errp);
-           if (fd =3D=3D -1) {
-               return;
-           }
+> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+> index 6c559b48c8..9d6533643d 100644
+> --- a/monitor/hmp-cmds.c
+> +++ b/monitor/hmp-cmds.c
+> @@ -138,7 +138,7 @@ void hmp_sync_profile(Monitor *mon, const QDict *qdic=
+t)
+       const char *op =3D qdict_get_try_str(qdict, "op");
+
+       if (op =3D=3D NULL) {
+           bool on =3D qsp_is_enabled();
+
+           monitor_printf(mon, "sync-profile is %s\n", on ? "on" : "off");
+           return;
        }
-   #endif
-
-       if  (strstart(file, "file:", &p)) {
-           fd =3D qemu_open_old(p, O_WRONLY | O_CREAT | O_TRUNC | O_BINARY,=
- S_IRUSR);
-           if (fd < 0) {
-               error_setg_file_open(errp, errno, p);
-               return;
-           }
->      }
+       if (!strcmp(op, "on")) {
+           qsp_enable();
+       } else if (!strcmp(op, "off")) {
+           qsp_disable();
+       } else if (!strcmp(op, "reset")) {
+           qsp_reset();
+>      } else {
+>          Error *err =3D NULL;
 >=20=20
->      if (fd =3D=3D -1) {
-> -        error_setg(errp, QERR_INVALID_PARAMETER, "protocol");
+> -        error_setg(&err, QERR_INVALID_PARAMETER, op);
 
-This made me go "there is no parameter protocol", but then I
-double-checked the schema, and realized there is.  It's just named @file
-here.  We should rename it to match the schema.
-
-Again, the use of QERR_INVALID_PARAMETER is wrong: @protocol is valid,
-its value isn't.
-
-More: we should use qemu_create() instead of qemu_open_old(), to not
-throw away qemu_open_internal()'s error.
-
-
-> +        error_setg(errp, "Invalid parameter 'protocol'");
->          return;
->      }
->=20=20
-> diff --git a/qga/commands.c b/qga/commands.c
-> index 09c683e263..871210ab0b 100644
-> --- a/qga/commands.c
-> +++ b/qga/commands.c
-> @@ -154,7 +154,7 @@ GuestExecStatus *qmp_guest_exec_status(int64_t pid, E=
-rror **errp)
->=20=20
->      gei =3D guest_exec_info_find(pid);
->      if (gei =3D=3D NULL) {
-> -        error_setg(errp, QERR_INVALID_PARAMETER, "pid");
-
-Again, the use of QERR_INVALID_PARAMETER is wrong: @pid is valid, its
+The use of QERR_INVALID_PARAMETER is wrong: (1) it takes a parameter
+name, but we pass a parameter value, and (2) parameter @op is valid, its
 value isn't.
 
-> +        error_setg(errp, "Invalid parameter 'pid'");
->          return NULL;
+> +        error_setg(&err, "Invalid parameter '%s'", op);
+>          hmp_handle_error(mon, err);
 >      }
+>  }
+> diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
+> index 8f1efab8b9..3d1a28b419 100644
+> --- a/qapi/opts-visitor.c
+> +++ b/qapi/opts-visitor.c
+> @@ -184,7 +184,7 @@ opts_check_struct(Visitor *v, Error **errp)
+>          const QemuOpt *first;
 >=20=20
-> diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
-> index debc07d678..41ca0100e7 100644
-> --- a/ui/ui-qmp-cmds.c
-> +++ b/ui/ui-qmp-cmds.c
-> @@ -44,7 +44,7 @@ void qmp_set_password(SetPasswordOptions *opts, Error *=
-*errp)
->          assert(opts->protocol =3D=3D DISPLAY_PROTOCOL_VNC);
->          if (opts->connected !=3D SET_PASSWORD_ACTION_KEEP) {
->              /* vnc supports "connected=3Dkeep" only */
-> -            error_setg(errp, QERR_INVALID_PARAMETER, "connected");
-
-Same misuse of QERR_INVALID_PARAMETER.
-
-> +            error_setg(errp, "Invalid parameter 'connected'");
->              return;
->          }
->          /*
+>          first =3D g_queue_peek_head(any);
+> -        error_setg(errp, QERR_INVALID_PARAMETER, first->name);
+> +        error_setg(errp, "Invalid parameter '%s'", first->name);
+>          return false;
+>      }
+>      return true;
 > diff --git a/util/qemu-option.c b/util/qemu-option.c
-> index eedd08929b..fb391a7904 100644
+> index fb391a7904..201f7a87f3 100644
 > --- a/util/qemu-option.c
 > +++ b/util/qemu-option.c
-> @@ -612,7 +612,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const =
-char *id,
+> @@ -498,7 +498,7 @@ static bool opt_validate(QemuOpt *opt, Error **errp)
 >=20=20
->      if (list->merge_lists) {
->          if (id) {
-> -            error_setg(errp, QERR_INVALID_PARAMETER, "id");
-
-This one is correct.
-
-> +            error_setg(errp, "Invalid parameter 'id'");
->              return NULL;
+>      desc =3D find_desc_by_name(list->desc, opt->name);
+>      if (!desc && !opts_accepts_any(list)) {
+> -        error_setg(errp, QERR_INVALID_PARAMETER, opt->name);
+> +        error_setg(errp, "Invalid parameter '%s'", opt->name);
+>          return false;
+>      }
+>=20=20
+> @@ -531,7 +531,7 @@ bool qemu_opt_set_bool(QemuOpts *opts, const char *na=
+me, bool val,
+>=20=20
+>      desc =3D find_desc_by_name(list->desc, name);
+>      if (!desc && !opts_accepts_any(list)) {
+> -        error_setg(errp, QERR_INVALID_PARAMETER, name);
+> +        error_setg(errp, "Invalid parameter '%s'", name);
+>          return false;
+>      }
+>=20=20
+> @@ -554,7 +554,7 @@ bool qemu_opt_set_number(QemuOpts *opts, const char *=
+name, int64_t val,
+>=20=20
+>      desc =3D find_desc_by_name(list->desc, name);
+>      if (!desc && !opts_accepts_any(list)) {
+> -        error_setg(errp, QERR_INVALID_PARAMETER, name);
+> +        error_setg(errp, "Invalid parameter '%s'", name);
+>          return false;
+>      }
+>=20=20
+> @@ -1103,7 +1103,7 @@ bool qemu_opts_validate(QemuOpts *opts, const QemuO=
+ptDesc *desc, Error **errp)
+>      QTAILQ_FOREACH(opt, &opts->head, next) {
+>          opt->desc =3D find_desc_by_name(desc, opt->name);
+>          if (!opt->desc) {
+> -            error_setg(errp, QERR_INVALID_PARAMETER, opt->name);
+> +            error_setg(errp, "Invalid parameter '%s'", opt->name);
+>              return false;
 >          }
->          opts =3D qemu_opts_find(list, NULL);
-
-Score: 1 out of 6 points :)
-
-None of this is your patch's fault.
 

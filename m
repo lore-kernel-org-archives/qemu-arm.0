@@ -1,210 +1,230 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027591ejb;
-        Thu, 19 Oct 2023 23:59:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGJRF87J1Wyvdyu/i9rBn4Ky8HPwqIrqqSFxeWoVhRktz3fMX4A14I54Xf9WyspRLvAfzG4
-X-Received: by 2002:a05:622a:1701:b0:41c:c85e:a4ac with SMTP id h1-20020a05622a170100b0041cc85ea4acmr1224605qtk.61.1697785191161;
-        Thu, 19 Oct 2023 23:59:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697785191; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027617ejb;
+        Thu, 19 Oct 2023 23:59:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGpygFLcueLGMogANy0p9OZQAy8AbFkS3XB9LTt6eqqsg+TNI7J864QIOnOP7q5UYD/icIQ
+X-Received: by 2002:a05:6a20:54a0:b0:13d:17cc:5bca with SMTP id i32-20020a056a2054a000b0013d17cc5bcamr1101591pzk.18.1697785194206;
+        Thu, 19 Oct 2023 23:59:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697785194; cv=none;
         d=google.com; s=arc-20160816;
-        b=HHzZOYJu549n84gNfOiKQ+KSBDZM/zawz9k+ItLjeGXUWru8LGrA9CMVk5LqROkckl
-         4NeM2zgJ72YDPn/27o75kCigv0rYQd5kNtqyCHWYiwpNOpYPPSnmLhe5BOkwkWj1524q
-         I3KE6hW17TUWeI8Vti6Gou+dCGUmcBGPD8PjSHoTxgn7PM90dQDoK0OSh7lPXVcqVgb9
-         YiLhmt0L0rzD4JmjpXtGar42R3qOWlXsE8fgFxEyQTIciEru3+Tf8Mtcblb/yyunZmc4
-         Fuy1mkj7imBhzgXkUT8Io5+GZNM7eWVR1fqiiuamowdvOUIUtkfq0bIWGwIZvFvMLdpQ
-         w+VQ==
+        b=DcsxbY9U8uGVTweDpwugChxxEVfbjF04ExUVMfiWYYJFj3qgPDjvo9TGBZwHICNKgp
+         QEiBBLmnl8AX0rtYlGD43/C8m10kLkguzSKPuCeBoMg5t6Bd12ko+z0Cy0RbcnEUx2eZ
+         R2LEuEREsI64Wt6/2dBsKEUURQ7pwY+BEiraBnDBcb8LORJhFz+dMHgAD20IuRTwk0tl
+         MVjq88V9zVb01MfF7J23Jt5ZNWzJuWRgBsUStEouoMTWreKz1i3IeccpJO1oILAT5k6D
+         Q5hP3aSknBpMOcEY5cf3RqSCYCcN/T7iB2iwlHZ8UYKjcLzd8O1eAebmmjrdQ0VIwcT6
+         P9tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=s8q34WPeVwwWmtWZXJNkr41CpA/2YBdbzKgCn8LRZ9E=;
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=62Wx7d+hUDk5LG3UXJEzcN6iBAElK9cZPEKqQ1pd96A=;
         fh=fTjRJWWf32rfQWm8ROIsswmsB54Y1g6a+adPg1wBxPA=;
-        b=YB74z/LGaqn/+qndSP71oQrdGtFYGDceBF+vxmFlawP+nSwZZ9sW8CNJZpVmj6mJaN
-         0uv/Y+TU7MKGdAUFvodCefUyKCe3F4C7sNnPS+lHfyaDjkauo/XaQCgr7ERF8QilTpTa
-         Brp7dvPFxUEM5q3W3IWtPvghzHNTQ8T+Wpadx6/hh3djTV1ZMvrK9Q5KJdbE+CNuYpN6
-         xkbOz8bNpWDPTjeycvYeFjLCkSSag5OCmn3cPlZ6h2kiOJ2oz4zoBm7zNefUb9honxo3
-         6e3NDtuqMR+zD1miV8kmKwZgFYG9KLMn7qRKztexyIZtGA9Ut3KudYMPg3ola8CA58qe
-         ls1g==
+        b=iEMxZfgtsh/YuxZ8aQ2zjKz5D0bdppjBurW8vCAEvAT5kGq03AjTV/2ejwsI7iUEu9
+         5/9DDjca1qZUWts05YSHEh6WJCHlEVR7A17B+jwhz7MdBZK2b+dfp/IuL4TtNt7qebdC
+         7Nvgjf8jg8zPn47qPC3CB18/s6P+sfMu/sfravhC54m4Q45D/0pE1n7Gz3PUGak6IJnA
+         rS8WGpRI4p68KATrdWbBp7Wmq9cztMxjIVMbt6noCR7sx3rlQW2v5JTJgam/fB2eXzK/
+         uCsuKNpavDb3YbvRcqhSD36fmWluQ1qscJKOXjbf+drgeCabh032JNLDRNhCdF9OD1fs
+         Tz8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PzuxPmA5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZyvDEtv;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16-20020ac85810000000b0041964cad786si852598qtg.141.2023.10.19.23.59.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 23:59:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from snail.vger.email (snail.vger.email. [2620:137:e000::3:7])
+        by mx.google.com with ESMTPS id i13-20020a17090acf8d00b002791b62066csi3831436pju.38.2023.10.19.23.59.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Oct 2023 23:59:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) client-ip=2620:137:e000::3:7;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PzuxPmA5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UZyvDEtv;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtjTs-0004oe-5z; Fri, 20 Oct 2023 02:59:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtjTn-0004eM-B6
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 02:59:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtjTi-0003oX-25
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 02:59:27 -0400
+Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
+	by snail.vger.email (Postfix) with ESMTP id 6C73C809502C;
+	Thu, 19 Oct 2023 23:59:53 -0700 (PDT)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 0.103.10 at snail.vger.email
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1376409AbjJTG7w (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 20 Oct 2023 02:59:52 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:49294 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1376381AbjJTG7v (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 20 Oct 2023 02:59:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 31058D4C
+        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:59:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697785165;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=s8q34WPeVwwWmtWZXJNkr41CpA/2YBdbzKgCn8LRZ9E=;
- b=PzuxPmA5yct9tdlAoJorKWI7ZJ4rCxoagjl3WNxtuNsMdVWp7bRaRLi4i/WvhlZw70DwqX
- JkwZdZC2id6A2rHpeyy4yCq5N4wqmRdaemU+eHzgrjI6wXyfYl6wI3DxShlt4GpyCxpcl0
- pmi82GfNHV4vXiS6FQZ4kWWaEAWoh+A=
+        s=mimecast20190719; t=1697785147;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=62Wx7d+hUDk5LG3UXJEzcN6iBAElK9cZPEKqQ1pd96A=;
+        b=UZyvDEtvOY8ZtXLBU1imts2ScnPDbohc7d8tTD5xuTY3rBKxRaM/bXCD7uEL6d4hHtk4XO
+        LryGzwsk0zwVjh6TFRUDGpBcQVV0r4a9sD4H0KE4ZZzIh45lG46UVJpZNxDCUapR+9zGOb
+        iI6IEQThqFeppDLdUl0pbSiVMsA2sF8=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-78-GTfhQzdOOVuShxXLwSW9xA-1; Fri, 20 Oct 2023 02:59:20 -0400
-X-MC-Unique: GTfhQzdOOVuShxXLwSW9xA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 82BB238116F3;
- Fri, 20 Oct 2023 06:59:18 +0000 (UTC)
+ us-mta-551-67LFWRorOMSgATgpK2Uo5A-1; Fri, 20 Oct 2023 02:58:59 -0400
+X-MC-Unique: 67LFWRorOMSgATgpK2Uo5A-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3B20C2810D47;
+        Fri, 20 Oct 2023 06:58:57 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E5C8625C0;
- Fri, 20 Oct 2023 06:59:11 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, "Denis V. Lunev" <den@openvz.org>,
- Juan Quintela <quintela@redhat.com>, Fam Zheng <fam@euphon.net>,
- kvm@vger.kernel.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Kevin Wolf <kwolf@redhat.com>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Jagannathan Raman <jag.raman@oracle.com>, qemu-arm@nongnu.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Reinoud Zandijk <reinoud@netbsd.org>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>, qemu-ppc@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Stefan Weil <sw@weilnetz.de>,
- Peter Xu <peterx@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Jeff Cody <codyprime@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- Leonardo Bras <leobras@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
-Subject: [PULL 11/17] tests/qtest/migration: Introduce
- find_common_machine_version
-Date: Fri, 20 Oct 2023 08:57:45 +0200
-Message-ID: <20231020065751.26047-12-quintela@redhat.com>
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 9EA9425C0;
+        Fri, 20 Oct 2023 06:58:50 +0000 (UTC)
+From:   Juan Quintela <quintela@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     qemu-s390x@nongnu.org,
+        =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        "Denis V. Lunev" <den@openvz.org>,
+        Juan Quintela <quintela@redhat.com>,
+        Fam Zheng <fam@euphon.net>, kvm@vger.kernel.org,
+        Harsh Prateek Bora <harshpb@linux.ibm.com>,
+        Nicholas Piggin <npiggin@gmail.com>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Eric Farman <farman@linux.ibm.com>,
+        Kevin Wolf <kwolf@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Jason Wang <jasowang@redhat.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+        Stefan Hajnoczi <stefanha@redhat.com>,
+        Jagannathan Raman <jag.raman@oracle.com>, qemu-arm@nongnu.org,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Thomas Huth <thuth@redhat.com>,
+        =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+        qemu-ppc@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+        Stefan Berger <stefanb@linux.vnet.ibm.com>,
+        Stefan Weil <sw@weilnetz.de>, Peter Xu <peterx@redhat.com>,
+        Christian Schoenebeck <qemu_oss@crudebyte.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Jeff Cody <codyprime@gmail.com>,
+        Laurent Vivier <lvivier@redhat.com>,
+        Hanna Reitz <hreitz@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Leonardo Bras <leobras@redhat.com>,
+        Fabiano Rosas <farosas@suse.de>,
+        Daniel Henrique Barboza <danielhb413@gmail.com>,
+        Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
+Subject: [PULL 08/17] tests/qtest: Allow qtest_get_machines to use an alternate QEMU binary
+Date:   Fri, 20 Oct 2023 08:57:42 +0200
+Message-ID: <20231020065751.26047-9-quintela@redhat.com>
 In-Reply-To: <20231020065751.26047-1-quintela@redhat.com>
 References: <20231020065751.26047-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BN0Jn1yzuZqt
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Thu, 19 Oct 2023 23:59:53 -0700 (PDT)
+X-TUID: 1HnddHeoUJwN
 
 From: Fabiano Rosas <farosas@suse.de>
 
-When using two different QEMU binaries for migration testing, we'll
-need to find what is the machine version that will work with both
-binaries. Add a helper for that.
+We're adding support for using more than one QEMU binary in
+tests. Modify qtest_get_machines() to take an environment variable
+that contains the QEMU binary path.
+
+Since the function keeps a cache of the machines list in the form of a
+static variable, refresh it any time the environment variable changes.
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018192741.25885-7-farosas@suse.de>
+Message-ID: <20231018192741.25885-4-farosas@suse.de>
 ---
- tests/qtest/migration-helpers.h |  2 ++
- tests/qtest/migration-helpers.c | 26 ++++++++++++++++++++++++++
- 2 files changed, 28 insertions(+)
+ tests/qtest/libqtest.c | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/migration-helpers.h b/tests/qtest/migration-helpers.h
-index 4f51d0f8bc..d1c2351d33 100644
---- a/tests/qtest/migration-helpers.h
-+++ b/tests/qtest/migration-helpers.h
-@@ -43,4 +43,6 @@ void wait_for_migration_complete(QTestState *who);
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 9eebba8767..3cc7bf3076 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -1468,13 +1468,26 @@ struct MachInfo {
+     char *alias;
+ };
  
- void wait_for_migration_fail(QTestState *from, bool allow_active);
- 
-+char *find_common_machine_version(const char *mtype, const char *var1,
-+                                  const char *var2);
- #endif /* MIGRATION_HELPERS_H */
-diff --git a/tests/qtest/migration-helpers.c b/tests/qtest/migration-helpers.c
-index 0c185db450..13449c1fe1 100644
---- a/tests/qtest/migration-helpers.c
-+++ b/tests/qtest/migration-helpers.c
-@@ -240,3 +240,29 @@ void wait_for_migration_fail(QTestState *from, bool allow_active)
-     g_assert(qdict_get_bool(rsp_return, "running"));
-     qobject_unref(rsp_return);
- }
-+
-+char *find_common_machine_version(const char *mtype, const char *var1,
-+                                  const char *var2)
++static void qtest_free_machine_list(struct MachInfo *machines)
 +{
-+    g_autofree char *type1 = qtest_resolve_machine_alias(var1, mtype);
-+    g_autofree char *type2 = qtest_resolve_machine_alias(var2, mtype);
++    if (machines) {
++        for (int i = 0; machines[i].name != NULL; i++) {
++            g_free(machines[i].name);
++            g_free(machines[i].alias);
++        }
 +
-+    g_assert(type1 && type2);
-+
-+    if (g_str_equal(type1, type2)) {
-+        /* either can be used */
-+        return g_strdup(type1);
++        g_free(machines);
 +    }
-+
-+    if (qtest_has_machine_with_env(var2, type1)) {
-+        return g_strdup(type1);
-+    }
-+
-+    if (qtest_has_machine_with_env(var1, type2)) {
-+        return g_strdup(type2);
-+    }
-+
-+    g_test_message("No common machine version for machine type '%s' between "
-+                   "binaries %s and %s", mtype, getenv(var1), getenv(var2));
-+    g_assert_not_reached();
 +}
++
+ /*
+  * Returns an array with pointers to the available machine names.
+  * The terminating entry has the name set to NULL.
+  */
+-static struct MachInfo *qtest_get_machines(void)
++static struct MachInfo *qtest_get_machines(const char *var)
+ {
+     static struct MachInfo *machines;
++    static char *qemu_var;
+     QDict *response, *minfo;
+     QList *list;
+     const QListEntry *p;
+@@ -1483,11 +1496,19 @@ static struct MachInfo *qtest_get_machines(void)
+     QTestState *qts;
+     int idx;
+ 
++    if (g_strcmp0(qemu_var, var)) {
++        qemu_var = g_strdup(var);
++
++        /* new qemu, clear the cache */
++        qtest_free_machine_list(machines);
++        machines = NULL;
++    }
++
+     if (machines) {
+         return machines;
+     }
+ 
+-    qts = qtest_init("-machine none");
++    qts = qtest_init_with_env(qemu_var, "-machine none");
+     response = qtest_qmp(qts, "{ 'execute': 'query-machines' }");
+     g_assert(response);
+     list = qdict_get_qlist(response, "return");
+@@ -1528,7 +1549,7 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
+     struct MachInfo *machines;
+     int i;
+ 
+-    machines = qtest_get_machines();
++    machines = qtest_get_machines(NULL);
+ 
+     for (i = 0; machines[i].name != NULL; i++) {
+         /* Ignore machines that cannot be used for qtests */
+@@ -1549,7 +1570,7 @@ bool qtest_has_machine(const char *machine)
+     struct MachInfo *machines;
+     int i;
+ 
+-    machines = qtest_get_machines();
++    machines = qtest_get_machines(NULL);
+ 
+     for (i = 0; machines[i].name != NULL; i++) {
+         if (g_str_equal(machine, machines[i].name) ||
 -- 
 2.41.0
-

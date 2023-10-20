@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080494ejb;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080504ejb;
         Fri, 20 Oct 2023 02:09:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFewcQJOe3KutoEMSD6JHOC+FCxfLwwFKomyXw+qtPTiAcUb/Jr0W7kKMRThZJ/GmeH9d58
-X-Received: by 2002:a05:622a:450:b0:417:8d08:958d with SMTP id o16-20020a05622a045000b004178d08958dmr1020322qtx.2.1697792984263;
+X-Google-Smtp-Source: AGHT+IFGWbO8AINdKHcQKNFdXpP0+Kmw1eepw2FFsGfPDfUoihvhNxjf8BatFxcOt8kZd33A9jKv
+X-Received: by 2002:a05:620a:40d0:b0:775:7870:4a8f with SMTP id g16-20020a05620a40d000b0077578704a8fmr1211120qko.47.1697792984349;
         Fri, 20 Oct 2023 02:09:44 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1697792984; cv=none;
         d=google.com; s=arc-20160816;
-        b=fWN3FLCWlfv2QUASsUf8seHqj7dKuwfSoDoALnkT9zTUctfHgBzs/oKKzS2b8r4/OL
-         IX+V0bPZ8k91VR062XlnvL/2jcBqUlTpTkC7MLaE6Ev44LPVZPQLx5mfEd/W0A2qhMJ9
-         DRJT0Sgv2ml0/CBHs8ErF91TMVQHMmBkd+LWQzfOKLUXs0IaZeZL0BVfajZ3ELWxwPxR
-         83AkmSfdq6p0iSHdQlUVVedSwH0C3AWelDaA6YdEgdk5htHYXmA6Bmq2i6ASOoK8rBM9
-         T0rmdx/JzXWVA+yWIUhxqXJ5CU++ooq4Bk+ABpHnzoxyukheWJZvZBl3UQs4DG7AqAT9
-         2ONQ==
+        b=nRKTOq9e0QikBqMCxGGKEVWyFBfqjorHcXcSxysGzKZJuSM8B2Cs5R+ujpnwDZS01K
+         hAewL3zcsTv/PgTOP2NZJa2a2GJqFb9nOyaflxqbbB7EZNPIrYzwG2RwCOrAnMU4QOmm
+         BKHvbfSq40E+hVeHk3BYg8Lrth6u3EeqDw3nrMedN+o94J/IiZrtzFKnXplrfDfzu015
+         M/TEEneCrY6k2ukXBKnYyI/kmBAllU/Dc78Bk0arxGzEsBCxqaZBK+QQqO250BspJui4
+         sksLNvo0ThzS80drkb0VVz26MvJWf48VzMh9XkkzRrvvEMegyBtTPLpzV6Kp7Hh3QF6K
+         saeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tepxTd/hr2hYG2r+hVUPCLMjLaoLxcfQ8Km0xq5qjnw=;
+        bh=3xBo/mKNO9gsqJTQsAlkJDwZHHQKx0WUD9WZ+VD3gI4=;
         fh=rTkH9/wDYQMZLVlaH0neZTzbhrqu7oCVHTTGZPWdq9o=;
-        b=cAUSS9gQ3j16lWFuwjKcjvR8jx/Vo+r+zAYElxa3O+mmhTbKCmqkD/AttjwFS5mg75
-         MwJz33y09MVkd2dLY/uRCfRsFqQ+7X9KUs8OC1xCxNwKPcAkl63/AWhTxBymPSAvOfsB
-         nWTPds2DPD8gg29hizwWRiYZymZrhhbvF+4etZMidtUrXdJ6v6Z4+kVqlcqE7DG5Gz2T
-         KwHavHJMs4/snXF1eOujlj+Bl9raHj6S1JPf89QibdOHaIokf28NSAG0mp9JXL6Ew720
-         lDQXEEbgTqfTNHI3VZdU6otsexUlin/lprwdQRBV9cuVI1AT4KIPjHL0EoqIEFCC2s2j
-         iRvQ==
+        b=TfRe4mu5P0455cb76rbiyIkF1apJ51Zp7HCRh5o0Vpj3JA5zIgkSUKPc2npj61BKOS
+         Vvi0B459Ju3wWc9A5QLFdoCpEmnmzeHNTdQ7KG4eOG1pPX4vM7cyGUPFnOLrbN5gz92a
+         imXdy7lx1yAm8YrhGkodogVbxWjjqJRr4nx52d0xMlLRG5lUiyL9xiTiGpXKfJc1ikgF
+         OqUclUJ7lmX//NfaOShoE3UiP7eY8HlZMAAPqQ0h1VpShDwABbtGA7dplrF4YfrmPm8Q
+         4QngwBkz1YaPWM17W7f9Jq0qQ3M87Ct3Qr1QinstnvySD/lyt+KXn6rl+64ArLbjZB99
+         om+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SDu7dt2y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iTcOkvQh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d21-20020a05622a15d500b004198b50a2c1si945030qty.520.2023.10.20.02.09.44
+        by mx.google.com with ESMTPS id ts12-20020a05620a3d8c00b007742abceac8si897326qkn.665.2023.10.20.02.09.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 20 Oct 2023 02:09:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SDu7dt2y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iTcOkvQh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtlUv-0004s5-5i; Fri, 20 Oct 2023 05:08:49 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtlUl-0004Cz-P7; Fri, 20 Oct 2023 05:08:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlUt-0004js-Pj
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qtlUV-0003U9-CI
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 05:08:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlUs-0005V1-9w
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:47 -0400
+ id 1qtlUQ-0005G9-KP
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 05:08:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697792925;
+ s=mimecast20190719; t=1697792890;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tepxTd/hr2hYG2r+hVUPCLMjLaoLxcfQ8Km0xq5qjnw=;
- b=SDu7dt2yjdSC1+D2ZJvyFFijpligVCuSaszHoAck91MjYSY1QcnysVplWpCGKu7C1Gjo6R
- 96yM8jUv3pjYsudymnR/lJlAnYuzkux5YOhwBKrDGJrOEfyhs2HMM8+QtIMWOA046UPVeX
- nKJxK57op6XgOfeO7sQZLAnPgW4T8DE=
+ bh=3xBo/mKNO9gsqJTQsAlkJDwZHHQKx0WUD9WZ+VD3gI4=;
+ b=iTcOkvQhTNwoioqtyLkUX0jhx2WiEojOMWjBz/WzSDo6lcEUqcDaoUou/8QuRYIUOmrgzn
+ gFUA6FvPPNQQaf0J8O1CwmShhKm9PM3fNMbqLye//wfyUFMAAWZ02zNMo1YuhrBGt9VoPP
+ QCVTMsecrIu0vh8PYT3k5l2IQdja948=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-114-HvdrOnCQMoiohaUW5ttz_Q-1; Fri, 20 Oct 2023 05:08:38 -0400
-X-MC-Unique: HvdrOnCQMoiohaUW5ttz_Q-1
+ us-mta-331-mleJ7PrONoqy3ZRNbJYDdw-1; Fri, 20 Oct 2023 05:07:55 -0400
+X-MC-Unique: mleJ7PrONoqy3ZRNbJYDdw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 09421185A797;
- Fri, 20 Oct 2023 09:08:37 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 144A2185A790;
+ Fri, 20 Oct 2023 09:07:54 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EF6132166B28;
- Fri, 20 Oct 2023 09:08:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DBDCD2166B26;
+ Fri, 20 Oct 2023 09:07:48 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -103,69 +103,67 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  Stefan Weil <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PATCH v2 11/13] migration: Use vmstate_register_any() for audio
-Date: Fri, 20 Oct 2023 11:07:29 +0200
-Message-ID: <20231020090731.28701-12-quintela@redhat.com>
+Subject: [PATCH v2 03/13] migration: Use vmstate_register_any() for isa-ide
+Date: Fri, 20 Oct 2023 11:07:21 +0200
+Message-ID: <20231020090731.28701-4-quintela@redhat.com>
 In-Reply-To: <20231020090731.28701-1-quintela@redhat.com>
 References: <20231020090731.28701-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sEarftNAgUM6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TetGAg3wn63E
 
-We can have more than one audio card.
+Otherwise qom-test fails.
 
-void audio_init_audiodevs(void)
-{
-    AudiodevListEntry *e;
-
-    QSIMPLEQ_FOREACH(e, &audiodevs, next) {
-        audio_init(e->dev, &error_fatal);
-    }
-}
+ok 4 /i386/qom/x-remote
+qemu-system-i386: savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=isa-ide, instance_id=0x0
+Broken pipe
+../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+Aborted (core dumped)
+$
 
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- audio/audio.c | 2 +-
+ hw/ide/isa.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/audio/audio.c b/audio/audio.c
-index e9815d6812..f91e05b72c 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -1781,7 +1781,7 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
+diff --git a/hw/ide/isa.c b/hw/ide/isa.c
+index 95053e026f..ea60c08116 100644
+--- a/hw/ide/isa.c
++++ b/hw/ide/isa.c
+@@ -73,7 +73,7 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
+     ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
+     ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
+     ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
+-    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
++    vmstate_register_any(VMSTATE_IF(dev), &vmstate_ide_isa, s);
+     ide_bus_register_restart_cb(&s->bus);
+ }
  
-     QTAILQ_INSERT_TAIL(&audio_states, s, list);
-     QLIST_INIT (&s->card_head);
--    vmstate_register (NULL, 0, &vmstate_audio, s);
-+    vmstate_register_any(NULL, &vmstate_audio, s);
-     return s;
- 
- out:
 -- 
 2.41.0
 

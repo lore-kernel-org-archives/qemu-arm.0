@@ -1,237 +1,202 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1090854ejb;
-        Fri, 20 Oct 2023 02:32:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGkX88VdaYMCUoklB+oTl9mEjOJHN17jVmrsXBGD4iBpny3PB9fSK12Oiln0Au/6t+oiF43
-X-Received: by 2002:a81:4f92:0:b0:5a8:1812:a7ed with SMTP id d140-20020a814f92000000b005a81812a7edmr1360938ywb.15.1697794331063;
-        Fri, 20 Oct 2023 02:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697794331; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1095400ejb;
+        Fri, 20 Oct 2023 02:42:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG407989cwpocY9hdhoBsIz1mplzmRdOkjNa1FzsJ6BJ0XAvUrrDgQEdL2LtNj6FoqJ2jGZ
+X-Received: by 2002:a05:690c:d81:b0:5a7:bde8:51d5 with SMTP id da1-20020a05690c0d8100b005a7bde851d5mr1886047ywb.32.1697794958688;
+        Fri, 20 Oct 2023 02:42:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697794958; cv=none;
         d=google.com; s=arc-20160816;
-        b=FksbZ7PkfdqXHtjAro2xIXQaibOAAYAeI4SrLq7v4xM1uyM+kchHEWs3278g8CXY0I
-         aobmsjdgPIozwZXewgp6Wrt6IyUjh4FxORBpl457AOSDjMpwXRh2iGhdJDtbtTOgRgRl
-         8gYxXqBIYy3XKzcHsHsxYdYnQAOoPF82f2cmFx9zwapOe2asYiXc+dFk8FBEDw4+azQe
-         vz4VQ3Sos7shB8+73mOOWZvGpgrfjxBIL9m85mNe55VfyhBQZY8JkFR2Tbpal2vKZgUM
-         Yx87TkcKCa9zFg1jZZQKsuV1dI/m+ZdZ0DTsNjrX02fymYf/f9lI+tIwWQOE7kHWxreB
-         +8PA==
+        b=gIOIZhT1cUlazfoKWyrvJb2KGPOUun3mPEmuoZhgj+bC4RDas6X+BoFv5Ehpm1/vTC
+         vcgtMPhGlvO57dHdZ8BqpuZvuiuxGK9RtPKnAbwFKf8lyvnYltPm0SyM7V1G6uKa49K0
+         ZAoI5hXG0JklVuj9p0jmz8gfudLAb1kH1IYfVxPZ7Jqnf4b2pUWjNrNXV7B10EPl6Pom
+         Y8ib85KXyZinJu7E3WOUv4Ze70/2DSEmEu+fzkTDJ9sEOy3lHrIQmC1chFhWDux5aK96
+         PMn6ALlxnPuIlMq5HVhMf2fZhSWqmuY2Kt9GXsMso0JZeX8ZVv6t03vM2IYTESWj2lpH
+         js7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=rhdmphXT+qaQIUNTfEAde9/TRP8L8jw30EQetEWNgWQ=;
-        fh=z/pJoPKIVDBZqy3cegP6JCsPRsQsfATkCu3JkzVjRJg=;
-        b=YEa2Mu6NdwTkF8zjWj6okCCDorMjZJWfUjZw7QI0fpg8EVlbxhyJz8d2O2pfDKvtut
-         oCqmX+eHyD4SPncctsDyH70+4fVZzAc4mruq9sDR6/9WAy65/DJqHXXR+1cZ1/SlR0Ij
-         ceUXwLW4xSDhMk7FaqYhYk7a8lC5Q2hBL/QpTwo4YtUjA9w5xYY9IdV+OVAm8Zc9iV85
-         7vQTWBsDFFtWQw24ek8k1SZu7lGRkIfTH0OoKXtsPoFFiWP00CMca0tXjkookYC3ZKz0
-         vtQRvu570o9iY1ryaGq9yxfqhtSkOie5f5q/7bdxCw7r4LMgxEqokAdPVo5D4OWW9fXB
-         aQIQ==
+        bh=YMn2rh6OV3qGjuaQmaohJ4fHx7mahKsjDzRImXo7FVw=;
+        fh=epjZ0P8DnFBaCz1gInDFuxIDimcPVIoGdAxoXS3FBIE=;
+        b=MEcf7Xh7YCS//PokcUHzgUv6tfRZVIsNK/5LSV8mVqtKLZ98SBQWxPXrryGp0zvuxy
+         WpkzNOZ5II40A1MYVZsb4/HF6i9lTAEpDXHcQEWZePgJFKW+RIH9LbzHikWctxalQbKD
+         IQ9qz+5OKPRmDLDHRhs09m6Ws/GBDiFYqDZ38ZrehTMwiFYup+Yq9bUSTkfAwuuiRx/L
+         JnVrAZKSoaJLWz7MMWF73E6xl5MfkUhr1jDkPU6xfy9i3la6v4Hu2HWTNoGrOHXBnQQc
+         YkCb/GgaUCRd4Ksz5VBlNb9r9N+9p9/P2qsOVI7pADnoq8hIab2uY9fYOXUuxYDJRnMu
+         lzjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=d02Iwizi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=xzMO3u4P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j20-20020a05620a0a5400b007708bdf66f3si950607qka.766.2023.10.20.02.32.10
+        by mx.google.com with ESMTPS id m11-20020ad44d4b000000b0066d0153ff33si1067592qvm.587.2023.10.20.02.42.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 02:32:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 02:42:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=d02Iwizi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=xzMO3u4P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtlr8-0002rf-Qu; Fri, 20 Oct 2023 05:31:46 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtm1T-0000cg-0R; Fri, 20 Oct 2023 05:42:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <borntraeger@linux.ibm.com>)
- id 1qtlr6-0002lh-1i; Fri, 20 Oct 2023 05:31:44 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <borntraeger@linux.ibm.com>)
- id 1qtlr4-0004jN-8y; Fri, 20 Oct 2023 05:31:43 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39K9TuB9012798; Fri, 20 Oct 2023 09:31:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=rhdmphXT+qaQIUNTfEAde9/TRP8L8jw30EQetEWNgWQ=;
- b=d02Iwizi8Q9HMugGRUXjDvxyA/rWpQjDOeW4Dn0RHVK9urGYJBKDkd23YHxQbYJ1eB2K
- 3vt0MACndCjrN5P0iO07IxG4cB+aOz5bDhIvHGwU89Z8NRaOPafT/5RIewExK2g58pB0
- K2vHtLd3/LafIaZ7MCv8yGRvurEMKhHmHeOWVkl9yNPaiExQ/ItcXYHU5XN9wmgcDL1+
- 6b1OLyFUDAoCjZ9Hq0OaN2wGU/eQE/3AU6SBF/RuGcfuMpJCSGHUBz42E/ykuS0RPIZ1
- DPxEM++8KjH/AlQRs/faeCEB89nnHhcqY8FK0hPK3yxGFh21PA6WqpySFeFbA104f5V/ ew== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tupydg1uj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 09:31:19 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39K9TvPI012884;
- Fri, 20 Oct 2023 09:31:19 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tupydg1u1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 09:31:18 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39K8wNCq007096; Fri, 20 Oct 2023 09:26:18 GMT
-Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc27km84-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 20 Oct 2023 09:26:17 +0000
-Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com
- [10.20.54.104])
- by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39K9QFwF21496330
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 20 Oct 2023 09:26:15 GMT
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E28F020082;
- Fri, 20 Oct 2023 09:26:14 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 31E3F2004D;
- Fri, 20 Oct 2023 09:26:14 +0000 (GMT)
-Received: from [9.152.224.53] (unknown [9.152.224.53])
- by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 20 Oct 2023 09:26:14 +0000 (GMT)
-Message-ID: <b8b79cb0-1537-b0bb-5c30-1ac2582034cb@linux.ibm.com>
-Date: Fri, 20 Oct 2023 11:26:13 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtm1Q-0000Ps-Uh
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:42:24 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtm1O-0007H4-W7
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:42:24 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-9936b3d0286so95141766b.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 02:42:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697794940; x=1698399740; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YMn2rh6OV3qGjuaQmaohJ4fHx7mahKsjDzRImXo7FVw=;
+ b=xzMO3u4Pxk1EdGTRmmAntcmCl3R2dXHJ4nPLB2oGTo6bcbwu33KiunZtQJovx7v8dA
+ 7vfpc/8jLjTDuV6ug4YeP52Kiy+ICKUcSdsI7QaKrEQKo0JP52alvrsqgGyHizCLN97R
+ AbOOQ9svlKkwaW6+lA5BuMK1DaIXOcX4L9JGORnEWqNQ/+dq+PNV1/CpGlFDe+XmkEpt
+ uZmZKkUbXGID7HhHzxQOHz6mNJV1opYogq9+JLuQFrp4SVhYeA4L7pueHfBKeCokIAcV
+ 2gyrGSaEWzIf28oTcVFs1lPIimYLz/gcEsgTlK19oBRyEKzVtTr74+cvJZ58DbWMoNn6
+ FVDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697794940; x=1698399740;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YMn2rh6OV3qGjuaQmaohJ4fHx7mahKsjDzRImXo7FVw=;
+ b=fWR7XwLMLFr/gU+NADrd+U/1QcW9nki44WpoK1jrVEvUQ42yoWCOlnAjCz83o6hKyg
+ Yn/9GiVS+Ic5kGuVXq4UsoCyfVgMNQva4Eixj62iHuFxcAyC1UbvabPxJvsR8Y+1rlig
+ izSy3XGlLfQpYurepLfQAM9ljMakIhJfkkUugNfsMf9e+R5NQ50K3WXjuCJOrhVCXJfj
+ Tl8WPAcBMaayQZSUoGlAwjvAVtmD69yd+x39Y1im5WtFJGpp6WKcnTGz0jS/jZrj/8Ml
+ QkooyCc+CQTBLbPLhOu+IHhw4BLR/k2XKXS4AAQPZslrN2eCHOZl+jVFr7r1wTWLmqI1
+ wp+Q==
+X-Gm-Message-State: AOJu0YxGivzeLNsESin40zjod/HqXpYI53JgF+hKTYdzNXAAZ0j451DE
+ qVUi0qQ6+QlaN1gVW627uE3cDNiZ6afkNn4cSVE=
+X-Received: by 2002:a17:907:26c8:b0:9bf:4e0b:fb05 with SMTP id
+ bp8-20020a17090726c800b009bf4e0bfb05mr910404ejc.11.1697794940397; 
+ Fri, 20 Oct 2023 02:42:20 -0700 (PDT)
+Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
+ [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
+ s19-20020a170906bc5300b009b957d5237asm1130015ejv.80.2023.10.20.02.42.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Oct 2023 02:42:19 -0700 (PDT)
+Message-ID: <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
+Date: Fri, 20 Oct 2023 11:42:17 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v2 06/13] migration: Use VMSTATE_INSTANCE_ID_ANY for s390
- devices
-To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- David Gibson <david@gibson.dropbear.id.au>,
- Corey Minyard <cminyard@mvista.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
- Corey Minyard <minyard@acm.org>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Halil Pasic <pasic@linux.ibm.com>, Leonardo Bras <leobras@redhat.com>,
- John Snow <jsnow@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
- qemu-block@nongnu.org, qemu-s390x@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, Stefan Weil
- <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
-References: <20231020090731.28701-1-quintela@redhat.com>
- <20231020090731.28701-7-quintela@redhat.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 1/2] misc/pca9552: Fix inverted input status
 Content-Language: en-US
-From: Christian Borntraeger <borntraeger@linux.ibm.com>
-In-Reply-To: <20231020090731.28701-7-quintela@redhat.com>
+To: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, f4bug@amsat.org
+References: <20231019204011.3174115-1-milesg@linux.vnet.ibm.com>
+ <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
+ <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: V9XCoXXPTdxN3aNMKeYBIQhl1nHbxCy0
-X-Proofpoint-GUID: 0wIf8dn7SK5aUfwwVubvV3r0SFS8G_7R
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-20_07,2023-10-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- bulkscore=0 spamscore=0 clxscore=1011 mlxlogscore=999 phishscore=0
- priorityscore=1501 malwarescore=0 suspectscore=0 adultscore=0
- impostorscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310170001 definitions=main-2310200078
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=borntraeger@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -52
-X-Spam_score: -5.3
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
 X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kgdqS8Ef17T1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: C3bwcSNpZNKq
 
-Am 20.10.23 um 11:07 schrieb Juan Quintela:
-> Just with make check I can see that we can have more than one of this
-> devices, so use ANY.
+On 20/10/23 04:51, Andrew Jeffery wrote:
+> On Thu, 2023-10-19 at 15:40 -0500, Glenn Miles wrote:
+>>> The pca9552 INPUT0 and INPUT1 registers are supposed to
+>>> hold the logical values of the LED pins.  A logical 0
+>>> should be seen in the INPUT0/1 registers for a pin when
+>>> its corresponding LSn bits are set to 0, which is also
+>>> the state needed for turning on an LED in a typical
+>>> usage scenario.  Existing code was doing the opposite
+>>> and setting INPUT0/1 bit to a 1 when the LSn bit was
+>>> set to 0, so this commit fixes that.
+>>>
+>>> Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+>>> ---
+>>>
+>>> Changes from prior version:
+>>>      - Added comment regarding pca953X
+>>>      - Added cover letter
+>>>
+>>>   hw/misc/pca9552.c          | 18 +++++++++++++-----
+>>>   tests/qtest/pca9552-test.c |  6 +++---
+>>>   2 files changed, 16 insertions(+), 8 deletions(-)
+>>>
+>>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+>>> index fff19e369a..445f56a9e8 100644
+>>> --- a/hw/misc/pca9552.c
+>>> +++ b/hw/misc/pca9552.c
+>>> @@ -36,7 +36,10 @@ typedef struct PCA955xClass PCA955xClass;
+>>>   
+>>>   DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
+>>>                          TYPE_PCA955X)
+>>> -
+>>> +/*
+>>> + * Note:  The LED_ON and LED_OFF configuration values for the PCA955X
+>>> + *        chips are the reverse of the PCA953X family of chips.
+>>> + */
+>>>   #define PCA9552_LED_ON   0x0
+>>>   #define PCA9552_LED_OFF  0x1
+>>>   #define PCA9552_LED_PWM0 0x2
+>>> @@ -112,13 +115,18 @@ static void pca955x_update_pin_input(PCA955xState *s)
+>>>   
+>>>           switch (config) {
+>>>           case PCA9552_LED_ON:
+>>> -            qemu_set_irq(s->gpio[i], 1);
+>>> -            s->regs[input_reg] |= 1 << input_shift;
+>>> -            break;
+>>> -        case PCA9552_LED_OFF:
+>>> +            /* Pin is set to 0V to turn on LED */
+>>>               qemu_set_irq(s->gpio[i], 0);
+>>>               s->regs[input_reg] &= ~(1 << input_shift);
+>>>               break;
+>>> +        case PCA9552_LED_OFF:
+>>> +            /*
+>>> +             * Pin is set to Hi-Z to turn off LED and
+>>> +             * pullup sets it to a logical 1.
+>>> +             */
+>>> +            qemu_set_irq(s->gpio[i], 1);
+>>> +            s->regs[input_reg] |= 1 << input_shift;
+>>> +            break;
 > 
-> ok 5 /s390x/device/introspect/abstract-interfaces
-> ...
-> Broken pipe
-> ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
-> Aborted (core dumped)
-> 
-> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-> Signed-off-by: Juan Quintela <quintela@redhat.com>
-> ---
->   hw/s390x/s390-skeys.c    | 3 ++-
->   hw/s390x/s390-stattrib.c | 3 ++-
->   2 files changed, 4 insertions(+), 2 deletions(-)
+> So the witherspoon-bmc machine was a user of the PCA9552 outputs as
+> LEDs. I guess its LEDs were in the wrong state the whole time? That
+> looks like the only user though, and shouldn't be negatively affected.
 
-Actually both devices should be theŕe only once - I think.
+Usually GPIO polarity is a machine/board property, not a device
+one.
 
-> 
-> diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
-> index 5024faf411..ef089e1967 100644
-> --- a/hw/s390x/s390-skeys.c
-> +++ b/hw/s390x/s390-skeys.c
-> @@ -22,6 +22,7 @@
->   #include "sysemu/kvm.h"
->   #include "migration/qemu-file-types.h"
->   #include "migration/register.h"
-> +#include "migration/vmstate.h"
->   
->   #define S390_SKEYS_BUFFER_SIZE (128 * KiB)  /* Room for 128k storage keys */
->   #define S390_SKEYS_SAVE_FLAG_EOS 0x01
-> @@ -457,7 +458,7 @@ static inline void s390_skeys_set_migration_enabled(Object *obj, bool value,
->       ss->migration_enabled = value;
->   
->       if (ss->migration_enabled) {
-> -        register_savevm_live(TYPE_S390_SKEYS, 0, 1,
-> +        register_savevm_live(TYPE_S390_SKEYS, VMSTATE_INSTANCE_ID_ANY, 1,
->                                &savevm_s390_storage_keys, ss);
->       } else {
->           unregister_savevm(VMSTATE_IF(ss), TYPE_S390_SKEYS, ss);
-> diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
-> index 220e845d12..055d382c3c 100644
-> --- a/hw/s390x/s390-stattrib.c
-> +++ b/hw/s390x/s390-stattrib.c
-> @@ -13,6 +13,7 @@
->   #include "qemu/units.h"
->   #include "migration/qemu-file.h"
->   #include "migration/register.h"
-> +#include "migration/vmstate.h"
->   #include "hw/s390x/storage-attributes.h"
->   #include "qemu/error-report.h"
->   #include "exec/ram_addr.h"
-> @@ -380,7 +381,7 @@ static void s390_stattrib_instance_init(Object *obj)
->   {
->       S390StAttribState *sas = S390_STATTRIB(obj);
->   
-> -    register_savevm_live(TYPE_S390_STATTRIB, 0, 0,
-> +    register_savevm_live(TYPE_S390_STATTRIB, VMSTATE_INSTANCE_ID_ANY, 0,
->                            &savevm_s390_stattrib_handlers, sas);
->   
->       object_property_add_bool(obj, "migration-enabled",
+We could use the LED API (hw/misc/led.h) which initialize each
+output with GpioPolarity.
+

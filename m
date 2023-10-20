@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1361268ejb;
-        Fri, 20 Oct 2023 09:38:43 -0700 (PDT)
-X-Received: by 2002:a05:6512:1382:b0:507:a1dd:5a86 with SMTP id fc2-20020a056512138200b00507a1dd5a86mr1993310lfb.13.1697819923065;
-        Fri, 20 Oct 2023 09:38:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697819923; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1361338ejb;
+        Fri, 20 Oct 2023 09:38:50 -0700 (PDT)
+X-Received: by 2002:a17:907:8693:b0:9bd:dfaa:3f2 with SMTP id qa19-20020a170907869300b009bddfaa03f2mr2067658ejc.6.1697819929927;
+        Fri, 20 Oct 2023 09:38:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697819929; cv=none;
         d=google.com; s=arc-20160816;
-        b=WiniABxJnvuEy6QUWlSuq9YYQp1dFGicePZiKmhr183Bj7oSquO7abjD0MH+JUppLP
-         /UU4j51E+ui0YjSzfCBqKTEXWbmoa9LE7mXJiQ5Gno9Vu3tG/okLuABp5qBeTgFN2yED
-         JIgQd5V4mRm+RD5Bp9D01xIDff41wCzqceOUvD35/vaKPRbMKrvP8rlvH7wnfB6NAy5A
-         V5cIp+D80JzfMQHauluw4uleTzcqwBr1Qmr7bymvsii14TLQlqBYPqanxoQCTBiOYHO7
-         ZG2QsGLhRVW7IUI31K0AmPct/sCAYEaDMyzPuzC1qsottwCO8Z0K3FtQV9D8iwDg38pv
-         YhFQ==
+        b=VoCbWqKZYX33aIsCK73cSTPgbSPoClzRzbVPhYmYOKshQN1QZO0q9DaeKtSQ6+UE8I
+         JksWrdpxn/tZOdgYzmpQTx6dA1+LXwnDusBHcfJC5BUR4Ab0ZztcHGpRynWvgnEnkFVN
+         d4TEB+APrdfRPOTdp7o9UQfBOsIzSS/XHHwJ8I/6dbIV3tFKdihyq2skYLE9+uqPCCka
+         Y1rvZqrMeV8KjA1d24Q8h19K2OOZDkV2GXENSuA7I0q0o4KaNrytlMlAQre9cXHhHoUy
+         qt1SyKufe8YnnJTkzCTEQjoz0rptcZsAPdOMv/av+3KVR1urb/5rIC8Lf5JHaHV6IO/c
+         2aNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=glBeQZnUhkWGnfluElBv8to+WC3WDtUU/ZpHqLDizi4=;
-        fh=bHlQXYStbs05aY0EAyGaMfJbShY+ETfyh4guRCrz04Q=;
-        b=kbRlEM9sizPj/aGMOCBghxe9lwnMG8XUu6/Lhu8uITLb5xVUXFllRHgE2LLiOs4gUy
-         ll7vW3oXhzJJg4YWCCb1a4HqyhE7QTQNjm+No0Y4op7wZGeKO+I45TR9pWj/cIR2BtIg
-         1keJo+G85Q32z6UGDYYRc5x9Ttz2nq+Zn9y+d+zy6wVR18rwfr36xNKXVz4u+zAAw987
-         WYvXR1NFAyr/ygLxDbj2FMJRpDfa7ykA2tyDDSsL3AIYvz9Bu5ho+DhtgPSyw6EWrsg5
-         QiFtkCBTX9hpUOhqqs7tk9liGXIRfEqSyC9LcmX5fz46hqEfT/cDnj/IXxeY4tXBCNE8
-         NDUA==
+        bh=1BNA9y4zfVXlb8HVquuGsJAgjqtZlJA+2+vEQrqSYx0=;
+        fh=0+oAGzMSgE0nSXLTI/o4iFk9zal+DrpcgHB8fs9TnoY=;
+        b=zdEpklw5XV2cqWHO3O3kfHqDJhiDP7w9TL/p9r6F7P4FIpWCOm6Mxut08BClVdpEe3
+         IxGOI/YYJ2oykuPLf8n5rdt+6QDugvjFOqL45u91E2rQUxeW7Z4vZdFoHOHjWPdM9txh
+         HFynwUSNLgWeFsEJEgUNrHQGBoW2IqsBARCKQY3ZjlvkdEmWh5F2Kmuc4BqTW1OS9Zbn
+         +Nm7r7Gye8B4G41Ub8kHOGbl4r/MJOsXR4Ya3t3svsLCMS+C/C+C/VQ2XI2mjATWV3Xz
+         ukf0EUkYJQq3R8vxiCuV3Md3oUL447VQGUMmAv6l3GVY0mfP/tmeMKh/dcQetqphbqax
+         hZVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zUj3Kh+v;
+       dkim=pass header.i=@linaro.org header.s=google header.b="q6oOODm/";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f8-20020a056512360800b005046171d957sor609383lfs.4.2023.10.20.09.38.42
+        by mx.google.com with SMTPS id jz26-20020a17090775fa00b009b2b42978adsor705129ejc.7.2023.10.20.09.38.49
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 20 Oct 2023 09:38:43 -0700 (PDT)
+        Fri, 20 Oct 2023 09:38:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zUj3Kh+v;
+       dkim=pass header.i=@linaro.org header.s=google header.b="q6oOODm/";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697819922; x=1698424722; darn=linaro.org;
+        d=linaro.org; s=google; t=1697819929; x=1698424729; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=glBeQZnUhkWGnfluElBv8to+WC3WDtUU/ZpHqLDizi4=;
-        b=zUj3Kh+v08WmuRu0B9xDMnabIHd2wKm+AKHoIdIWXJ+RCXr47T+lbcjcoTZPUQiF0Q
-         WtXr5CIs0hdG3EiY9uoMZ4EMh03hd25zOLzyrA3nIQKSj+cK6gQwvI0Kyc8Y2/YZBNSb
-         Xva3H7JxuZC123WXK0YhWtBTPc6GN92+rVQoGqMWfFHsiJnBfee4cDcyLj7vJKwNyeh3
-         P8Ia3oJQsUHCToVTge8XYy1xocOiaWWFhHIrF3DhFPm2879tKxf4J70ROBE9n2Ap8mzH
-         FtlJhSt6pGxVlIRclBvgVVewazT3Gg+/CGdKaplVG296/2wxGEwmgmR/dtiEE0SKgcgR
-         5ENg==
+        bh=1BNA9y4zfVXlb8HVquuGsJAgjqtZlJA+2+vEQrqSYx0=;
+        b=q6oOODm/zKlhEpuyWXA9AWnRFOrJ06vLkEEyYHmVG/SOieDNMR7AlYldmbE7Awyoog
+         hafzYaDe0RYtlKesTbtCuf4wN/d5OcvsbbTHSYnekXJuBjep9VlAe4LMmy9Y5wOEllhJ
+         +1FC+4XDQN5g+c1jqW6hH5v92cOcIKCqbFOCQ9jbXJyLvwM/oiDApkJQ6gnspBbUHFmR
+         LL1cEeRbyGJBUmKPyyZDUs4mFcjIMpUiXzm/EHr3tn663gfWGuCh6lHH/w4cilCGmQZm
+         AtjP4yyjsKRBuGWn5wuW/n0CyhqTn5zwN1IcCfgDWx0x9AXGxIvkBuP8oXq3N5E8Wcc3
+         3lZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697819922; x=1698424722;
+        d=1e100.net; s=20230601; t=1697819929; x=1698424729;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=glBeQZnUhkWGnfluElBv8to+WC3WDtUU/ZpHqLDizi4=;
-        b=rtihJa0hdKbCkSaf6VGMZMTcxVPBMZDfm/Wky3wsj9NLK5zwdFauDnNbxr6hFO4qdO
-         sk/dX+N72qkYa0YOJ7dV8hfMXIM0RZSsvZNHlmcZSEVoga9ho7dLu+LCMh2BSzbs8/Zw
-         hSv+0FN7qiyjk5FWD+wstQz+KsE+rN3LXY/48aSTazL6GGXlU6c2P9Yg8rsMyX7xMZ83
-         jqMCdSEy2C43x4ZRhxOytZ/lzQZFNDrvAlZaFIcBdjwZ/cy0RJPeDC8k7hCFNCKl1yud
-         kN9VlNfbwgFQeiVy9XU1YGyLrlacNKQGyXn4I1EZ9ymf1ciD2cE7DNjZ+scRrx6IAknf
-         7Abw==
-X-Gm-Message-State: AOJu0YyMGqkOYYOLnLYUY2mYZ+fM0lCSXuQ7v4wcxU6rvs4Mpwc1CsGO
-	VOinty2sTbBI5VXaBhCz1U1Xfyat
-X-Google-Smtp-Source: AGHT+IG4AN5MeDxLeh5oiIFI1y2FX/rpR5Rx0eY0mrFrMBl/1N/Ujrv4xlmJWdziViHNemYMcOtoVg==
-X-Received: by 2002:ac2:4183:0:b0:507:9f51:acee with SMTP id z3-20020ac24183000000b005079f51aceemr1635568lfh.22.1697819922614;
-        Fri, 20 Oct 2023 09:38:42 -0700 (PDT)
+        bh=1BNA9y4zfVXlb8HVquuGsJAgjqtZlJA+2+vEQrqSYx0=;
+        b=kkdn3B4NloUevuoC4xMWubLO56F2bc9RaymoY0ZPsm/1E4Q6igKinTSAAnRBcMZT7T
+         jDMAaVeCysxA70pJJNN0fhWM/t19tTF3UNh8B97JSxpm2a1MVfqbVqMCL5QLOkTY98kN
+         pMp/xKAbIYbk78UtZbKuE4e7tp0hgkSa+fr08sZpsYLfSDolbWt5+zYCxTwTzODxnqZt
+         34lwnpFAesW3IsmzhLTFVbDHfe53KpCVlDRFISjq5Ahnus4kxggdHmP6gdNJulnQGijx
+         VshohJD024nVpLRcpY6xTiz6QzbHW9CdIeYe4NyyNKIO657XuCx//KjKysojscoWJBSw
+         3LCw==
+X-Gm-Message-State: AOJu0YwN+ubG/hJUupKa1YUCQXYTzY/61xIhaakBiGzDy66zlfdxEIFP
+	oY5N/dSRMcMhhBljKEaFGd3QZw6I
+X-Google-Smtp-Source: AGHT+IE8pTnTm8kExFSHgwFwuE2r5IXOklMrkIbsOtRt5M7b3C9wUv/hea60CxUNlZq2FBxMZ8uDBQ==
+X-Received: by 2002:a17:906:ee82:b0:9be:39a4:b440 with SMTP id wt2-20020a170906ee8200b009be39a4b440mr1971962ejb.76.1697819929604;
+        Fri, 20 Oct 2023 09:38:49 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr. [176.171.212.97])
-        by smtp.gmail.com with ESMTPSA id j12-20020a170906050c00b00977eec7b7e8sm1809552eja.68.2023.10.20.09.38.40
+        by smtp.gmail.com with ESMTPSA id m2-20020a17090607c200b009c6a4a5ac80sm1776806ejc.169.2023.10.20.09.38.47
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Oct 2023 09:38:42 -0700 (PDT)
+        Fri, 20 Oct 2023 09:38:49 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -87,63 +87,41 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Zhao Liu <zhao1.liu@intel.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: [PATCH 15/19] cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_RISCV_CPU)
-Date: Fri, 20 Oct 2023 18:36:37 +0200
-Message-ID: <20231020163643.86105-16-philmd@linaro.org>
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Subject: [PATCH 16/19] cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_TRICORE_CPU)
+Date: Fri, 20 Oct 2023 18:36:38 +0200
+Message-ID: <20231020163643.86105-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231020163643.86105-1-philmd@linaro.org>
 References: <20231020163643.86105-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BpyBVNCK9nBJ
+X-TUID: 09iVnCaGAvfa
 
 Mechanical change using the following coccinelle script:
 
   @@ @@
   -   first_cpu
-  +   qemu_get_cpu(0, TYPE_RISCV_CPU)
+  +   qemu_get_cpu(0, TYPE_TRICORE_CPU)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/riscv/boot.c          | 2 +-
- target/riscv/arch_dump.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ hw/tricore/triboard.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
-index 1d004660d4..5e979f7b6a 100644
---- a/hw/riscv/boot.c
-+++ b/hw/riscv/boot.c
-@@ -437,7 +437,7 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
- {
-     CPUState *cs;
- 
--    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+    for (cs = qemu_get_cpu(0, TYPE_RISCV_CPU); cs; cs = CPU_NEXT(cs)) {
-         RISCVCPU *riscv_cpu = RISCV_CPU(cs);
-         riscv_cpu->env.kernel_addr = kernel_addr;
-         riscv_cpu->env.fdt_addr = fdt_addr;
-diff --git a/target/riscv/arch_dump.c b/target/riscv/arch_dump.c
-index 434c8a3dbb..4813d1ac1f 100644
---- a/target/riscv/arch_dump.c
-+++ b/target/riscv/arch_dump.c
-@@ -167,10 +167,10 @@ int cpu_get_dump_info(ArchDumpInfo *info,
-     RISCVCPU *cpu;
-     CPURISCVState *env;
- 
--    if (first_cpu == NULL) {
-+    if (qemu_get_cpu(0, TYPE_RISCV_CPU) == NULL) {
-         return -1;
+diff --git a/hw/tricore/triboard.c b/hw/tricore/triboard.c
+index 4dba0259cd..1fe6692f97 100644
+--- a/hw/tricore/triboard.c
++++ b/hw/tricore/triboard.c
+@@ -46,7 +46,7 @@ static void tricore_load_kernel(const char *kernel_filename)
+         error_report("no kernel file '%s'", kernel_filename);
+         exit(1);
      }
--    cpu = RISCV_CPU(first_cpu);
-+    cpu = RISCV_CPU(qemu_get_cpu(0, TYPE_RISCV_CPU));
+-    cpu = TRICORE_CPU(first_cpu);
++    cpu = TRICORE_CPU(qemu_get_cpu(0, TYPE_TRICORE_CPU));
      env = &cpu->env;
- 
-     info->d_machine = EM_RISCV;
+     env->PC = entry;
+ }
 -- 
 2.41.0

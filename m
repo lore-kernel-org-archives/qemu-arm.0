@@ -1,129 +1,163 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1175971ejb;
-        Fri, 20 Oct 2023 05:17:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEG+kzBBaADKANPBpVjRVKO0nE5LIxYuXsTpxhFcNPUPWFyn59vFV6RPA6U+BD1drwuxBka
-X-Received: by 2002:a05:6214:501b:b0:66d:81bb:5234 with SMTP id jo27-20020a056214501b00b0066d81bb5234mr2395450qvb.11.1697804277947;
-        Fri, 20 Oct 2023 05:17:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697804277; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1179952ejb;
+        Fri, 20 Oct 2023 05:24:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGfL6V90QQyFCERZN+5/0rY36/Fn0Q0wqMnb1GoSgNZ24IEnlG6g9bg6wVVmCa0rg5012v6
+X-Received: by 2002:ac8:5746:0:b0:419:8ec7:cfc6 with SMTP id 6-20020ac85746000000b004198ec7cfc6mr1155506qtx.12.1697804660911;
+        Fri, 20 Oct 2023 05:24:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697804660; cv=none;
         d=google.com; s=arc-20160816;
-        b=f5uZGDr6jYs6weNDeHQAxEyjKjdVp3+ez6yyzvyCoOeb/vnllooD0FhsrQO3zMA1h0
-         Yo92bRzWBoa8VWC9iZFnY2T6+ERitz/fHZ5UQHKsrbsuTputz1IT/B+uZBznLYf4N6Bg
-         sA79INGJVDdypPb3fuE2QdWbmh4IkGtsJckssgWxiaZLFdikDJE04XLLBKw/aeJMsg+f
-         l+uUeQDGvIZS0IbQQBZaS95GnE9NXa8ntR5wqSvyDA4wyGqh2OiZWNqOuzFTeTSwz8KV
-         NsgY2D9Z51Mwr46yTDhVCDHv+TCm+yROzWreDVKBvdyDe4stQ8T99xOgTkTfFtIrkzxX
-         vZLw==
+        b=INO8VizeEmgNqeqNGLr4uk+o78n1KBIEcozfJ6fJ+PTVY81jB+o9NknWfECeLran64
+         Y0qdcPFWO8Cg3mocj5zrraZjE9Afr7TLST12iXniSCmOLACOwGfo1d7GLfp8kH0QOvHZ
+         +8KDaeVJG014g+5OxgPhCqvGmtnzvysxnEN4vXX0U1m1/63cEsb4gDfNI6k6jIQSPt3C
+         bnEop84OdQxu1AzRHZntKv5+sQHxrYh8h7Lb68ifSrqbTHx4OdHAyKYyE3hpg1U79MwO
+         4iv9vHaoh81HLFtNe2ffAvCBQojlekElBLDlStsArvVANHrF3jW6VNc6RL+6Hsz1W+A4
+         hVYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=RTaZB4aPx6HNBLmLCAMu5ymRKKq6c9/CTZq1K5Zepho=;
-        fh=uphRHM8ca2tcr1D4fBCDsXgV8KB96ulu0DhY74zLvJ4=;
-        b=t3aaluMJy7gUJTDaBvVU/pZ/hFXxMoun22bBE6E/r22VpQ5y7tT6Plbiq/NwpXccmB
-         6qMGR2hCkTN2ggc/iKeG25TzI4g6Rbym+f2fxa9KRBH8I0UUyZX9g3WtBO0uhNlDnoZg
-         KHZB+AIa3ROhVKK3U+O+NUSQBS3ItJLCIIWtosTmR6IvMqR/UY3ynQ8Uq5P0x4wjWf22
-         NY9doEn8xbDhrAJ0Z411yUMCtfxvb60ZNHKPPKlSEEpzAbKOkF0mIWufGu5WZbbzR+6d
-         fU2vIhc2jrCvPlO7LVkVXwsVNLaAoeV4LaAwzxJ59lE+DH6zUKg9cH3luBbrP4C8msp/
-         h5nA==
+        bh=zjDyuZC1ZuzAGuT/gza9xvDcqT79Mx7wDsEBQE0fS3w=;
+        fh=HnnsnCAzcutRJBtCWq7AY5qFhQFikDYkO89DShKVRRw=;
+        b=QLkDjdEznbIV39SgKhJVfUh9BQI6u/jdSB8bNh44Gq2q6MZOy6AQ2sUpqUVoNiqW1I
+         mr38mFDtCcY6GDvHrjWmW21VBYHysWT99zT1cewaeWMoFzf3nUGZwJIXbasgN0koLyia
+         egSUQqQ6Zw/ssNMLnFG/B3TX95+n4iHCi7SRnw6RdGHTlZAMQYEkqTBOEykpW/5v+QwY
+         8vCO7yq1a5kb/ii52ONab/6CMtZieVhPAUNrBp2LsgJFb/2wvY4ERNRJ+1lCFHBTcuV2
+         z6EnNyVgghsCLnLSwIYcUbjUKJuok9LLPpjlxlKo7MrclkYLg31yctQojGN3RhohuZqc
+         TbwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eZFtjR8d;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=nUQjXkL1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id es16-20020a056214193000b0065af6e81f13si1221995qvb.121.2023.10.20.05.17.57
+        by mx.google.com with ESMTPS id g18-20020ac87f52000000b00419ccbf006esi1211311qtk.337.2023.10.20.05.24.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 05:17:57 -0700 (PDT)
+        Fri, 20 Oct 2023 05:24:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eZFtjR8d;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=nUQjXkL1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtoRk-0005wc-6d; Fri, 20 Oct 2023 08:17:44 -0400
+	id 1qtoXw-0004GS-HY; Fri, 20 Oct 2023 08:24:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1qtoRg-0005nN-V4
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 08:17:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qtoXt-0004Eg-Vd; Fri, 20 Oct 2023 08:24:06 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1qtoRf-0007Cu-4I
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 08:17:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697804258;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RTaZB4aPx6HNBLmLCAMu5ymRKKq6c9/CTZq1K5Zepho=;
- b=eZFtjR8dqdalAXF0MgqYnqLUU8A21+rEz7ydM8n2eh5/zYXWCMic8u5c9HKTsnNss7Z/O9
- Q3NaQyKmu1hFB0JixHRUs3GSwRl9XWqEqoLQQ7rwVxHuAbuCksTWe7kPVpbPc90quWk6ra
- BgtRQ6kSu7uPjwei1zg0IJsJeeYxqUE=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-458-tUp8pVSHMYidlFxzwt2UbQ-1; Fri, 20 Oct 2023 08:17:20 -0400
-X-MC-Unique: tUp8pVSHMYidlFxzwt2UbQ-1
-Received: by mail-qv1-f71.google.com with SMTP id
- 6a1803df08f44-65b08994e15so12790346d6.0
- for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 05:17:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697804240; x=1698409040;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RTaZB4aPx6HNBLmLCAMu5ymRKKq6c9/CTZq1K5Zepho=;
- b=eN1CcivFRrYDeWf4vrpzQH0c5EufQPGkBmmvlPfySJ7xGJMogys9mlQ+wNC9jfT00h
- 9YGLszeQYagMhAfFbTgvA0PgMwmaG1+6e/y+WK0BG2CT7dVEOb1jXZuKr1R1tc02XvQu
- qU2g1eCLw/0U7Pjk2LZLhCF+/QIZydI0aUA+l/T6tJ+/rPywhujGvTB6L97/2k1/TGK7
- +/TpgC4riDT0MHKMad3LnXWCg55ZfFn5FeH4UieBw+I7HuUgKORcrBRPdwCtKitOpDrQ
- BqFfNQtwCilUZsDyW05OpUPVBIHFF5clGnR0NeyXtEpp1kMk4KMv06jX+pJtpPez6jh6
- xQFA==
-X-Gm-Message-State: AOJu0YwRXO4IhB7Tmag0/Q3lGD+xsMxWap2apd+wumF6CLHD5IW+q3ZG
- pb6wuW1WU1oLL4IIz6ffy1JdcBY6FFxt+L84TAZjQHvbMyhB1tlHK7KC4cC0bBtFpgq9M+kRx+5
- UOC/8xdYe4PqB
-X-Received: by 2002:ad4:4d43:0:b0:656:500e:7b64 with SMTP id
- m3-20020ad44d43000000b00656500e7b64mr6093827qvm.16.1697804240452; 
- Fri, 20 Oct 2023 05:17:20 -0700 (PDT)
-X-Received: by 2002:ad4:4d43:0:b0:656:500e:7b64 with SMTP id
- m3-20020ad44d43000000b00656500e7b64mr6093788qvm.16.1697804240081; 
- Fri, 20 Oct 2023 05:17:20 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- pm10-20020ad446ca000000b0066d1f118b7esm643053qvb.1.2023.10.20.05.17.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Oct 2023 05:17:18 -0700 (PDT)
-Message-ID: <50ddc7e8-e28a-428f-a2be-0e5a1d2f7038@redhat.com>
-Date: Fri, 20 Oct 2023 14:17:14 +0200
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qtoXr-0000dL-F8; Fri, 20 Oct 2023 08:24:05 -0400
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39KCCLVG023996; Fri, 20 Oct 2023 12:23:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=zjDyuZC1ZuzAGuT/gza9xvDcqT79Mx7wDsEBQE0fS3w=;
+ b=nUQjXkL1BMsal4up55i0zx/QT3Ov0JORcgwYSxz0Fq/MOOkIo67oePqkSec4pZ+SqDYJ
+ +gZfAu0Vui5LIQMuB25rjP3H1J1brlzWX9SB1qyWQvWA+5nIMTnc21QejxQbJ9wCZifw
+ erQ2324PC0xqcSdwl7ft3c0kNQ5b3UyRj8RtJUtDdq97VyFi9Iz0JZvh5bHxj79mt90y
+ oMaZdxFZMWLUUFIFTsORvQJG5w0/XoyYxjY53TBS5Dqck0wwfnKmqZUnBBuod6C0CsYE
+ ucTVREUyAsnRf9kfh1/sqz1CwgP1vJpqMVJgSeAAX3mP4CjikrXA0i8Fwv3qjal0cVu5 JQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tusbjgdfu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Oct 2023 12:23:37 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39KCCR40024627;
+ Fri, 20 Oct 2023 12:23:33 GMT
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tusbjgd9s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Oct 2023 12:23:33 +0000
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39KCEDGi019377; Fri, 20 Oct 2023 12:22:40 GMT
+Received: from smtprelay03.wdc07v.mail.ibm.com ([172.16.1.70])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc454enu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Oct 2023 12:22:40 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39KCMc8b24052434
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 20 Oct 2023 12:22:39 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C066658057;
+ Fri, 20 Oct 2023 12:22:38 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D47D358061;
+ Fri, 20 Oct 2023 12:22:36 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTPS;
+ Fri, 20 Oct 2023 12:22:36 +0000 (GMT)
+Message-ID: <3b898f46-cb88-15cb-43e6-06ccde6295c9@linux.ibm.com>
+Date: Fri, 20 Oct 2023 08:22:35 -0400
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.williamson@redhat.com,
- jean-philippe@linaro.org, mst@redhat.com, pbonzini@redhat.com
-Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
- philmd@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
- yanghliu@redhat.com
-References: <20231019134651.842175-1-eric.auger@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <20231019134651.842175-1-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 10/13] migration: Improve example and documentation of
+ vmstate_register()
 Content-Language: en-US
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Corey Minyard <cminyard@mvista.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Corey Minyard <minyard@acm.org>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Leonardo Bras <leobras@redhat.com>,
+ John Snow <jsnow@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-block@nongnu.org, qemu-s390x@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goat?= =?UTF-8?Q?er?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Stefan Weil <sw@weilnetz.de>
+References: <20231020090731.28701-1-quintela@redhat.com>
+ <20231020090731.28701-11-quintela@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20231020090731.28701-11-quintela@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: oOZL2AWOXPhZT7lT-gjxbXXS-v30HLMu
+X-Proofpoint-GUID: edyELfx3TsWmz_jtHwcjN9zNLisljS8n
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-20_10,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 lowpriorityscore=0
+ mlxlogscore=999 clxscore=1015 impostorscore=0 malwarescore=0 phishscore=0
+ spamscore=0 suspectscore=0 priorityscore=1501 bulkscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310200102
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -52
+X-Spam_score: -5.3
+X-Spam_bar: -----
+X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,112 +172,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SkV8fACMq2qp
-
-On 10/19/23 15:45, Eric Auger wrote:
-> On x86, when assigning VFIO-PCI devices protected with virtio-iommu
-> we encounter the case where the guest tries to map IOVAs beyond 48b
-> whereas the physical VTD IOMMU only supports 48b. This ends up with
-> VFIO_MAP_DMA failures at qemu level because at kernel level,
-> vfio_iommu_iova_dma_valid() check returns false on vfio_map_do_map().
-> 
-> This is due to the fact the virtio-iommu currently unconditionally
-> exposes an IOVA range of 64b through its config input range fields.
-> 
-> This series removes this assumption by retrieving the usable IOVA
-> regions through the VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE UAPI when
-> a VFIO device is attached. This info is communicated to the
-> virtio-iommu memory region, transformed into the inversed info, ie.
-> the host reserved IOVA regions. Then those latter are combined with the
-> reserved IOVA regions set though the virtio-iommu reserved-regions
-> property. That way, the guest virtio-iommu driver, unchanged, is
-> able to probe the whole set of reserved regions and prevent any IOVA
-> belonging to those ranges from beeing used, achieving the original goal.
-> 
-> Best Regards
-> 
-> Eric
-> 
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/iommu_geometry-v4
-
-Applied to vfio-next.
-
-Thanks,
-
-C.
+X-TUID: NJSOxD4Ry7MC
 
 
-> 
-> History:
-> v3 -> v4:
-> - removed nr_iovas (Alex) and droppped last patch (Alex)
-> - Collected Michael's R-b, Peter's R-b and Yanghang's T-b
-> 
-> v2 -> v3:
-> - rebase on top of vfio-next (including iommufd prereq)
-> - take into account IOVA range info capability may not be offered by
->    old kernel and use nr_iovas = -1 to encode that [Alex]
-> - use GList * everywhere instead of arrays (in the range_inverse_array)
->    with the benefice it sorts ranges retrieved from the kernel which are
->    not garanteed to be sorted. Rework the tests accordingly [Alex]
-> - Make sure resv_regions GList is build before the probe() [Jean]
->    per device list is first populated with prop resv regions on
->    IOMMUDevice creation and then rebuilt on set_iova()
-> - Add a warning if set_iova builds a valid list after probe was
->    called [Jean]
-> - Build host windows on top of IOVA valid ranges if this info can
->    be retrieved from the kernel. As many windows are created as
->    valid ranges
-> v1 -> v2:
-> - Remove "[PATCH 12/13] virtio-iommu: Resize memory region according
->    to the max iova info" which causes way too much trouble: trigger
->    a coredump in vhost, causes duplication of IOMMU notifiers causing
->    EEXIST vfio_dma_map errors, ... This looks like a bad usage of the
->    memory API so I prefer removing this from this series. So I was
->    also obliged to remove the vfio_find_hostwin() check in the case
->    of an IOMMU.
-> - Let range_inverse_array() take low/high args instead of hardcoding
->    0, UINT64_MAX which both complexifies the algo and the tests.
-> - Move range function description in header.
-> - Check that if set_iova_ranges is called several times, new resv
->    regions are included in previous ones
-> 
-> 
-> Eric Auger (12):
->    memory: Let ReservedRegion use Range
->    memory: Introduce memory_region_iommu_set_iova_ranges
->    vfio: Collect container iova range info
->    virtio-iommu: Rename reserved_regions into prop_resv_regions
->    range: Make range_compare() public
->    util/reserved-region: Add new ReservedRegion helpers
->    virtio-iommu: Introduce per IOMMUDevice reserved regions
->    range: Introduce range_inverse_array()
->    virtio-iommu: Record whether a probe request has been issued
->    virtio-iommu: Implement set_iova_ranges() callback
->    virtio-iommu: Consolidate host reserved regions and property set ones
->    test: Add some tests for range and resv-mem helpers
-> 
->   include/exec/memory.h            |  34 +++-
->   include/hw/vfio/vfio-common.h    |   1 +
->   include/hw/virtio/virtio-iommu.h |   7 +-
->   include/qemu/range.h             |  14 ++
->   include/qemu/reserved-region.h   |  32 ++++
->   hw/core/qdev-properties-system.c |   9 +-
->   hw/vfio/common.c                 |   9 +
->   hw/vfio/container.c              |  42 +++-
->   hw/virtio/virtio-iommu-pci.c     |   8 +-
->   hw/virtio/virtio-iommu.c         | 155 +++++++++++++--
->   system/memory.c                  |  13 ++
->   tests/unit/test-resv-mem.c       | 318 +++++++++++++++++++++++++++++++
->   util/range.c                     |  61 +++++-
->   util/reserved-region.c           |  91 +++++++++
->   hw/virtio/trace-events           |   1 +
->   tests/unit/meson.build           |   1 +
->   util/meson.build                 |   1 +
->   17 files changed, 764 insertions(+), 33 deletions(-)
->   create mode 100644 include/qemu/reserved-region.h
->   create mode 100644 tests/unit/test-resv-mem.c
->   create mode 100644 util/reserved-region.c
-> 
+On 10/20/23 05:07, Juan Quintela wrote:
+> Signed-off-by: Juan Quintela <quintela@redhat.com>
 
+
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+
+> ---
+>   docs/devel/migration.rst | 12 ++++++++----
+>   1 file changed, 8 insertions(+), 4 deletions(-)
+>
+> diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+> index c3e1400c0c..bfd8710c95 100644
+> --- a/docs/devel/migration.rst
+> +++ b/docs/devel/migration.rst
+> @@ -165,13 +165,17 @@ An example (from hw/input/pckbd.c)
+>         }
+>     };
+>
+> -We are declaring the state with name "pckbd".
+> -The ``version_id`` is 3, and the fields are 4 uint8_t in a KBDState structure.
+> -We registered this with:
+> +We are declaring the state with name "pckbd".  The ``version_id`` is
+> +3, and there are 4 uint8_t fields in the KBDState structure.  We
+> +registered this ``VMSTATEDescription`` with one of the following
+> +functions.  The first one will generate a device ``instance_id``
+> +different for each registration.  Use the second one if you already
+> +have an id that is different for each instance of the device:
+>
+>   .. code:: c
+>
+> -    vmstate_register(NULL, 0, &vmstate_kbd, s);
+> +    vmstate_register_any(NULL, &vmstate_kbd, s);
+> +    vmstate_register(NULL, instance_id, &vmstate_kbd, s);
+>
+>   For devices that are ``qdev`` based, we can register the device in the class
+>   init function:

@@ -1,134 +1,117 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1100316ejb;
-        Fri, 20 Oct 2023 02:56:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH4QIQ814qPydcPk8BEreR3w/tRD256z42J0YZXBr0uJhH/BMP/V0tlE4rIoUZreZQvqSGi
-X-Received: by 2002:ac8:5cc7:0:b0:412:1e4c:e858 with SMTP id s7-20020ac85cc7000000b004121e4ce858mr1320860qta.36.1697795778335;
-        Fri, 20 Oct 2023 02:56:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697795778; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1105150ejb;
+        Fri, 20 Oct 2023 03:05:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHSRB00KYCfGzBFoOkDpbIwdQ1ytDEKKKf+3HyFdhx3YVZM0BmgQ/dupS25U/PPfGFVf0Q2
+X-Received: by 2002:a25:db54:0:b0:d9a:c88e:e78a with SMTP id g81-20020a25db54000000b00d9ac88ee78amr1325018ybf.35.1697796334005;
+        Fri, 20 Oct 2023 03:05:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697796333; cv=none;
         d=google.com; s=arc-20160816;
-        b=A6U5LVXZe5dZ+G4bNgHiT9V8SfamVLtgIUCI4IXXacM3f51Nuof8WWuss/Hh2OzGQr
-         Fbf63Z1JhUR2UwLdmg39Z5ACg0FsPJF9ff70XUzvV83YO96dbyonf2minwtCGp3ReuGO
-         XfmbJqpXpYQJZB1sHoB3PcjD4goEin3ILhXBwIvcWqx4l9Eixd4+vDvnGC6C820FSz4i
-         6LsWA1nwrGdUlDkJtD0RT/fHRC2e9fEfoCQI3avkVW0RhSUzPrvG1Ue+V3mif9MkVL0C
-         bZWXHD9pQPZHTW0hN2C3trs5xQLO7pN1aV8Mo4ydei7jAr27xGjusZEA6OVUB61NZ/Pk
-         0TMg==
+        b=VcLZ0JmG4nZ9G65zaoC0OcDrFihK6uNltS14V3ENRSDXR3+4xm8rs7bgh3gd9C4rAk
+         5VhvP0R5oTNV7y5VEyN7ecg25jcoibVw/ukskqIgcuCOXBX0eVc5kZ4lsBLHl33/f779
+         tjZoroRZ9qUexdS7LDEg/wLqCTHEKVzxl2doBvZc4W6TkBKON2CA8uWM4w7BVFNkUUAu
+         HqG9xo0PVDJS5d5vUyRU3drVj0RNrovQxxCsce2pT3wa5BDMvO8T0UG9ligixJF3Y6BD
+         9yxhA1nwqIRY42xoWH18/fb9RCEKeLOCVQHSF1mft++skvMH9stkA6AWWHbPhCKEfG3w
+         6cSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=uyCQ3JOMjxpTB90xcLbkVwCMiUUrscp7/JhQytkXrCA=;
-        fh=qCRfnOedUTyKWvR944ye0PJpcd3Ea9dAM7CTk6O44Vw=;
-        b=bikcf343t5zerJiTt5oxoxLJumqHKr0ShyY7qrKKKY46KGAqRKlE7XXT/wAqlaHIig
-         4uU+kE+yUVYJtREAIUM2Vnm6164CA+rOM1RoAlgJWvHwcgC4T+kY94cmNUlUMTvcOz1G
-         4qHQykm5RtLsqkBoHp/ETmrs80CmkQB/T+D1xKuJeA34Igv7By6Bf4wj42ttHpucMxY8
-         26wR4VHDI++nuH0WlvIua7IKHFHJMcZCcwxkaDiqBvq8C01/f2f4ZRTytGMg2+kuYlG/
-         qsKRQdvOdzbTGVJnC7kqc4/hq9IDIJBqwUOIsYryktHCDFUbUB5u77WgLfHyTHnm1/91
-         nSsg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=FuXVKI/L2uGHl3E8LwcUCfAYOXQ/87vheSiGRI+GPPo=;
+        fh=3gtYWTD0QGwWLEU0THC/EPbNNftfJZpwTBSEN3e8kFQ=;
+        b=UqzhfVORGcRsrmqhXo+mZJ9BGnbv82wSvLUavRomnNE6lOpce4VXNG23uF1QfiWfVy
+         CE1666lSd37FMv7G1YJ67XMFUl9VXWw/0kpd1fAD7hCEsJcC/FBUlRyTvtZZvE8Zf1uw
+         S0kJX0pPUhn4eogTeeIjq4Qn8vWbeccYY5BT3yxjIjxTtit73HJBTI+PJSPBEF4XPPbA
+         Nl4hNeWai+ive4kP3RLcU9omieeoNn2ziwCq3ioovdz8q1PMdS6m5ltsfmmbL21VAXNv
+         ppI0jv4aaHfGLKfz+YOMmuEaxoH0Py2w0dPJMDbW9UW18qBRvaYHMTiTT2qMkwaWpdqs
+         vyNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MS5Zcvjc;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zk1/2W4C";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9-20020a05622a064900b00417af0ea0c6si988198qtb.358.2023.10.20.02.56.18
+        by mx.google.com with ESMTPS id lb7-20020a056214318700b006594b2aa680si1123459qvb.491.2023.10.20.03.05.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 02:56:18 -0700 (PDT)
+        Fri, 20 Oct 2023 03:05:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MS5Zcvjc;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zk1/2W4C";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtmEm-0005Jj-SY; Fri, 20 Oct 2023 05:56:13 -0400
+	id 1qtmNJ-0005AE-1z; Fri, 20 Oct 2023 06:05:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtmEV-0004yc-KJ
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:55:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtmEL-0003Rq-Kh
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:55:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697795741;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uyCQ3JOMjxpTB90xcLbkVwCMiUUrscp7/JhQytkXrCA=;
- b=MS5ZcvjcjAtdcbMUi77LyB9avsB12LdFKuGJoyLYJPGmYPpgxOLsvns7gMy4vBhesLAJ3R
- A19aJ31aIr41hwlFrPUyPN1KhGCufA0prr/fXz3TRaeJA+nPRLxmEcTghVop2KnT1flMXS
- A/peY8xlZESERTRFV5e9Svzg1WVSrs4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-635-30AnzSVBNs6WR3gU1_pBHw-1; Fri, 20 Oct 2023 05:55:40 -0400
-X-MC-Unique: 30AnzSVBNs6WR3gU1_pBHw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4083fec2c30so4009955e9.1
- for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 02:55:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtmNF-00056k-Mo
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 06:04:57 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtmMx-0006OD-EH
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 06:04:55 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-40839807e82so3823915e9.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 03:04:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697796275; x=1698401075; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FuXVKI/L2uGHl3E8LwcUCfAYOXQ/87vheSiGRI+GPPo=;
+ b=zk1/2W4C84goAmVkL9RcZP/S9xmJUKXvMMI9W5evPR5mhuHilMc3ZvYZ9NqKI7S4/H
+ RcHFZdyJJBQD/6ITM+IJZuaoVPZyunSZiOQDtVzYR+7MCFVXJsKeo8NS8noaf49tixqp
+ I2OLa61SHkwrDAaE1IHDa6mfFPW/DZ9hZqdiUqKeZNc19pzbQtvvk/WtLcdK0qyk47UG
+ Cat1B6/m52sUeJ11a9nXTK4r+/QNEOkWpWULgPgc/cz65adghuWgzlJKcSiI/Q2FE7j1
+ 9S9MJtBAlsehxfgMuoA33x+CLHuyQmBDxm5Y71eL3k8/LPLFfSX5fmvfqVN+2zPnE54J
+ 7aVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697795739; x=1698400539;
- h=content-transfer-encoding:mime-version:message-id:date:reply-to
- :user-agent:references:in-reply-to:subject:cc:to:from
+ d=1e100.net; s=20230601; t=1697796275; x=1698401075;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KLMU+I9osao7AtazXCWDbLO2o5vrv5iN8qcDoN2HNVU=;
- b=KMeK+9psR6WJuo7JtyueWPt5nRl43dBQFrHoq0s9zUOtoLf8m/pgX5VPfj+MvhnqRB
- 2ymk9WbR6AZFyhR2Icw54lTPBlEtWWYglrfNHXi2TxSxxyLHeFHDUN8QQ+8Mhq/LZHCJ
- 8GNGDb4fCGhv+PAZbbtZ5TNaXMjJB8K7tnP0m4r6ke48AxWc0XoH/xxHNeW9TEtk/+kl
- sm2VkqK0ogdJxYzTCJzuxX9X84KAYvfI8VhZl70yeWrOY4OT37sQm9mofcRygn6CVYfe
- IDuDiuj8sAqtljza96VOvpzxtD5oBJGWRS52Bu9TAgfgo5YJZVpL7WOzaCqmwNBEeTw9
- J3AQ==
-X-Gm-Message-State: AOJu0Ywftmk8gS4yawAVDVEfnfSSWGAMOnscnuQL436DGB1bL1au9iAk
- q0u/Vd9MNUXkyRL87fKcn0dz5Ta+D/Jv/J9Vsn3jltG8cGm7GwTsAO9h7o/ghDplDamIJoacBH1
- qkt/dStgQfd7R
-X-Received: by 2002:a05:600c:4593:b0:401:b504:b6a0 with SMTP id
- r19-20020a05600c459300b00401b504b6a0mr1097884wmo.3.1697795739076; 
- Fri, 20 Oct 2023 02:55:39 -0700 (PDT)
-X-Received: by 2002:a05:600c:4593:b0:401:b504:b6a0 with SMTP id
- r19-20020a05600c459300b00401b504b6a0mr1097874wmo.3.1697795738802; 
- Fri, 20 Oct 2023 02:55:38 -0700 (PDT)
-Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
- [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
- h14-20020a05600c314e00b003fbe4cecc3bsm6612838wmo.16.2023.10.20.02.55.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Oct 2023 02:55:38 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  qemu-block@nongnu.org,
- qemu-s390x@nongnu.org,  Peter Xu <peterx@redhat.com>,  Leonardo Bras
- <leobras@redhat.com>
-Subject: Re: [PATCH v2 10/22] qapi: Correct error message for
- 'vcpu_dirty_limit' parameter
-In-Reply-To: <875y318zgy.fsf@pond.sub.org> (Markus Armbruster's message of
- "Fri, 20 Oct 2023 10:33:49 +0200")
-References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-11-philmd@linaro.org>
- <875y318zgy.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
-Date: Fri, 20 Oct 2023 11:55:37 +0200
-Message-ID: <87edhpzkh2.fsf@secure.mitica>
+ bh=FuXVKI/L2uGHl3E8LwcUCfAYOXQ/87vheSiGRI+GPPo=;
+ b=EB3UN3lInslDlQ3ItTd8HrXagbLyuibGpj8qEQTBwETD/9CKJ6WITkTSadter1UGc8
+ +a7uSkNuFTBX7Iz/T9pwoEeawzBeNBoW+fMOedtOT+mEzZyMT14YRFiZgc91jSxn+VK0
+ OAawX5/uSe0j5W6zOjEDHARGW06wyskjpDJkKEQS2yURMmju94mH3Ck2pTcEWBcbFqXi
+ Lqxb5/Dc01r1mC3I5TQwWd2NNQ9S/PgDJUXF2K7N6rVBk1Z22dinG7feT967m/AWMh6m
+ 3k2CI/10rLM3yevo60v3ssdqXdwWICNQd6Ga1pjWJonDpjzGJ8WoJbCvXqUTW4HP2hy1
+ y2KQ==
+X-Gm-Message-State: AOJu0YxGKImfeJzeevcYF6CXMDZ4a40dJKeqvSMAS4WiEmw7N1toICzH
+ 7xVlJcxzWFIko/b7sRg78sqrjA==
+X-Received: by 2002:a05:600c:298:b0:405:3be0:c78d with SMTP id
+ 24-20020a05600c029800b004053be0c78dmr4203309wmk.3.1697796275135; 
+ Fri, 20 Oct 2023 03:04:35 -0700 (PDT)
+Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
+ [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
+ x5-20020adfdd85000000b0032dba85ea1bsm1338801wrl.75.2023.10.20.03.04.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Oct 2023 03:04:34 -0700 (PDT)
+Message-ID: <3a05d669-fbd7-6fc7-451d-edbbed20d7d5@linaro.org>
+Date: Fri, 20 Oct 2023 12:04:33 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PULL 00/46] Misc HW/UI patches for 2023-10-19
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20231019211814.30576-1-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ SPF_HELO_NONE=0.001, SUSPICIOUS_RECIPS=2.51,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,63 +124,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QYlnAFhyinYS
+X-TUID: ZymUGGnCfM7h
 
-Markus Armbruster <armbru@redhat.com> wrote:
-> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->
->> QERR_INVALID_PARAMETER_VALUE is defined as:
->>
->>   #define QERR_INVALID_PARAMETER_VALUE \
->>       "Parameter '%s' expects %s"
->>
->> The current error is formatted as:
->>
->>   "Parameter 'vcpu_dirty_limit' expects is invalid, it must greater then=
- 1 MB/s"
->>
->> Replace by:
->>
->>   "Parameter 'vcpu_dirty_limit' is invalid, it must greater then 1 MB/s"
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->> ---
->>  migration/options.c | 5 ++---
->>  1 file changed, 2 insertions(+), 3 deletions(-)
->>
->> diff --git a/migration/options.c b/migration/options.c
->> index 1d1e1321b0..79fce0c3a9 100644
->> --- a/migration/options.c
->> +++ b/migration/options.c
->> @@ -1163,9 +1163,8 @@ bool migrate_params_check(MigrationParameters *par=
-ams, Error **errp)
->> =20
->>      if (params->has_vcpu_dirty_limit &&
->>          (params->vcpu_dirty_limit < 1)) {
->> -        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
->> -                   "vcpu_dirty_limit",
->> -                   "is invalid, it must greater then 1 MB/s");
->> +        error_setg(errp, "Parameter 'vcpu_dirty_limit' is invalid,"
->> +                         " it must greater then 1 MB/s");
->>          return false;
->>      }
->
-> Make that "greater than", please.
->
-> Arrgh, the unit is MB/s even in QMP:
->
->     # @vcpu-dirty-limit: Dirtyrate limit (MB/s) during live migration.
->     #     Defaults to 1.  (Since 8.1)
->
-> Should be Bytes.  Escaped review, and now it's too late to fix.
+On 19/10/23 23:17, Philippe Mathieu-Daudé wrote:
+> The following changes since commit 0d239e513e0117e66fa739fb71a43b9383a108ff:
 
-I want a Time Machine.
-I want a Time Machine.
+> ----------------------------------------------------------------
+> Misc hardware patch queue
+> 
+> - MAINTAINERS updates (Zoltan, Thomas)
+> - Fix cutils::get_relocated_path on Windows host (Akihiko)
+> - Housekeeping in Memory APIs (Marc-André)
+> - SDHCI fix for SDMA transfer (Lu, Jianxian)
+> - Various QOM/QDev/SysBus cleanups (Philippe)
+> - Constify QemuInputHandler structure (Philippe)
+> 
+> ----------------------------------------------------------------
 
-Wait, if I had a Time Machine I would not be fixing old bugs O:-)
+Stefan, a change has been requested for #30 "hw/audio/pcspk: Inline
+pcspk_init()", so please drop this pull request.
 
-Later, Juan.
+Regards,
 
+Phil.

@@ -1,134 +1,144 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1113377ejb;
-        Fri, 20 Oct 2023 03:22:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHdCJvKzUMkVnDrdHWbfnDpdgm6cbSq1EVQXEKFfJsXDpUaPiHFFUa4IOWiWAp6yEOCa4cI
-X-Received: by 2002:a67:ae45:0:b0:452:5de9:d303 with SMTP id u5-20020a67ae45000000b004525de9d303mr1478986vsh.30.1697797328501;
-        Fri, 20 Oct 2023 03:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697797328; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1148232ejb;
+        Fri, 20 Oct 2023 04:31:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE1R03ix/JwtlQ1dRuTtiLE/D1KzV0eqDFn2BkZmsR3wupSrXekvaxgM5QskYzS01kHSn1S
+X-Received: by 2002:a05:620a:19a4:b0:775:ed1e:2b14 with SMTP id bm36-20020a05620a19a400b00775ed1e2b14mr1356419qkb.54.1697801512966;
+        Fri, 20 Oct 2023 04:31:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697801512; cv=none;
         d=google.com; s=arc-20160816;
-        b=anzOE+bX6OHK2Cdor/3V26onQY9AN+oNJwjMnCsJ9zXyQhZ2jmiTv6HcZQzsXnAHh1
-         nEKVeWf8h7YQoPbpKTo1IT5NjWdjmJ/ZUogIANuCYlq1IgbVJrHJAdXMXAR4TDGH9QLT
-         sU3vKIwDCRt0rv+JWnXvbVgs3EN2mmkZQQHAtias6GnfPTG4Q9FwW0opVvMIYN4z2Rm/
-         21ENPDJUujlUNRLo5V13lbW5fhtWxNV7zg7yKRhKOeo2L+4xkAKh8aJiSWXRclL1WT4x
-         y4HGUtv3Do3xguf80sNBs8Tlpi33NOQTX6Bzv9UP1jnKQjSq8gVWztscruomL3KAva61
-         6d9w==
+        b=VyVqSl0+5HbriWwCluJXkVOcSI4qx5Nhyt9s2tIuZOZeubBGKDInbL1DLFt+t6KOnw
+         v4S+vC0B0eyeuqlp+sL+8kpfjvYUsI5I6v9o0fWDBL/74fkvaQAjcgg7MNUigjG+AN2T
+         yt6EAqyktoQ8bJuTFS8v4CtcqpRWzrIux5OUhJb0hgqoSLDeGUNVpwIXinJcRzT4gfWP
+         H8YCSczPhoxBAdadyGqKFAqx2rfCfBXpq/cXTWhE6uZRwjHwHX64CSzQfz4wklXTpzpx
+         Y2TpaWoJD3V0n1uSKDPxdlBcTsUuInjrWtnBkPo05io9dOBAyZXqh7Lq/1xuf9/1clYm
+         4fCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:references:to:from
-         :subject:cc:message-id:date:content-transfer-encoding:mime-version
-         :dkim-signature;
-        bh=E6XpQDkV+ddExaFmcy6q/Y1PX3uCxd2m4rImMmrU/Ww=;
-        fh=7kKgjPXrQl0sSqTS8MWYb20Ru3Y8dZHapb2ohL03cts=;
-        b=Ij8N2J+EpFRIcvmMfgrZ/WECL1l7MkUv7g062nyCkFx6ESPu5tfEHAIiSxP/Mqg5QL
-         /rcpva/n4uLNsIPvBEoUG/uKlzOMxp9yBnnCXzx7PKcGOkm6il2bExYJjnW3cUlP/1ye
-         u860fKST9bk06bEWWg14ClAhsw5FvecsH0fRHUhDisD3ZUUOjzUESbDmS4n7t9rCKZnE
-         K5KyjjIV2OQkJrluCgDmXkulpGZpMS9bEAFWhjR2fcjCniIMdCGFeBnFuInY1cv8zhH4
-         FF/UNVxiq9Seuq1trr39Tg5+SKfMGKo15iI9w+WbVMuQtdplMSUKWhCdoGG+S1TyluCX
-         Lcyw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=x9PiLiKWZP0A15mhDUrEz3k+BPD7Zn+8gTlk+P9gEtg=;
+        fh=D9Zy3Zo6Ngtij0ADD13U6lCyN9zlgWdxS2svbWoLGjE=;
+        b=J226ScvTEBjI3+TJ1Q/v5u1KrOEcdWTg8MFLSHYitmakXwTA2OHAFEOamSv6PPNieU
+         AZuCqpjrUciFP/HGI3V42kPSlpvDCXWMp8ItlZn1UO3gdSq5X0oCauvXOqFhiWzO6DNv
+         x4xoy99xM9Z+cEr3BGIox2zeC7ttDmL+uwqA861X2Fq82S1T29U68m20Ateor1KyumGC
+         tLt3TZ3uX0TBcegurPBmT4LftbQ0mQIfcLk24Dkcf/HH2PtYNkN4NtEGGdxLJ5fcdVDG
+         VXgv+rnHVirvqgAXTUnD9rJSP9Dos89mKPdpCH4RTwg+oLYkZX39YW75w6wsjwpYVh/V
+         8wfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Q1n7gncz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A0Mm2MeE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020ac85acc000000b00418194af9ecsi1081512qtd.51.2023.10.20.03.22.08
+        by mx.google.com with ESMTPS id m20-20020a05620a24d400b0077894fa3885si1103305qkn.268.2023.10.20.04.31.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 03:22:08 -0700 (PDT)
+        Fri, 20 Oct 2023 04:31:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Q1n7gncz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A0Mm2MeE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtmdT-0002O1-0Z; Fri, 20 Oct 2023 06:21:43 -0400
+	id 1qtniZ-0007zl-QP; Fri, 20 Oct 2023 07:31:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qtmdN-0002HX-EO; Fri, 20 Oct 2023 06:21:37 -0400
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtniW-0007vI-2H
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 07:31:00 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qtmdL-0003Us-I1; Fri, 20 Oct 2023 06:21:37 -0400
-Received: by mail-ot1-x336.google.com with SMTP id
- 46e09a7af769-6ce2cf67be2so418789a34.2; 
- Fri, 20 Oct 2023 03:21:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtniT-0000P4-KN
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 07:30:59 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-40675f06f1fso10755755e9.1
+ for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 04:30:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1697797292; x=1698402092; darn=nongnu.org;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=E6XpQDkV+ddExaFmcy6q/Y1PX3uCxd2m4rImMmrU/Ww=;
- b=Q1n7gnczH6qm9bkWBR6735l389o/Gf3/9n3szJGPa92HMqF9xpGWk7PTIA2VUmzJ20
- yn3s5h8j2B4XAoSr/Sc8+gJv7fwel0sQ97WDvT8oqkySfTMqaCcVSzrp+2Q2Ry0jxeGp
- xaS6X/7DW9ZyC7LOzw9XeorrWfiVpF4jLdVl2riQnW3c2xlVwNaKIy3yZyMJkSaagrkp
- jkeaQhBjuP7Ex1M3pDcqZuENfAiduV4SXtklAsIYw72IWQRAJUEtd4HAZxkr5yeXD+p2
- msghrVlaAYqJEMdNyYeYFavcL4eOnnGI74z2hpXeo4J407xSxjbkmHUIaSiIlLuOzFH5
- V/mw==
+ d=linaro.org; s=google; t=1697801456; x=1698406256; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=x9PiLiKWZP0A15mhDUrEz3k+BPD7Zn+8gTlk+P9gEtg=;
+ b=A0Mm2MeE05OnxgW26pmiA8460GVfDK4ieEojg46x8XIyV7txPAh4t5QUNTfhurgdbr
+ 0f6b045MwYyh+JpOoOcCId2Cs2UBa2zV5HPo8TeXFUekT0tMc2/9TDsgVNginH4/vWMT
+ TeP1geisyNy+t7bn8p5WrlIKabnMcbhA6D9vTrOyYnKyh63h8zP5WxNG9KoFD4ThAGAS
+ B2sEDDFvULiT9I37E71S5CXrSABpng/DZhEkXR0kQd2a2eKGuU1mBG3OXP2f8/vCnzJ0
+ F8dBsqCr7VGn0vYxDtLd3sga+pEci6yJ2XeiXR/Mva1ihQc+kUNYAQRLJyR+TdqQdR9D
+ qs4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697797292; x=1698402092;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=E6XpQDkV+ddExaFmcy6q/Y1PX3uCxd2m4rImMmrU/Ww=;
- b=p0GAjy8SueHF5eyTzpqxi+fzz5GI8kZTC8XvcmJY+2FXZuf+HtoGmihAb0HjBhzD1w
- MgGSEY9BYaA2Yc6x5oEG5S9BGrEcOS1fwmO3/mXSg+XhwM2Hk+5FeN92KI6wjgftBlJn
- 1KoiUny8qrxieiDrDQgTN+r7b3ifPwgoA7tbKjVd9REDFhDkLsfayMFtcK8rbPrUxJhO
- k0zGAHvS/+U3v9yh0TAvaoPdu1lp3XUTlxt+6/0BktqyXus0D5ezW3qkAeUZ8qMSkDLI
- dNAQ70O0clerBeg2CocROueY4jwrd98hvNwUWoyN88uFlZO3gk0plCTXFZOKjVZho4Gc
- xidQ==
-X-Gm-Message-State: AOJu0YwB8orNvSWcpeMdbHezge+zqrKTR0WrhE7QlJMc7bRtkybiJhU4
- fcEfjglBCqzRb0xrGntDcXc=
-X-Received: by 2002:a05:6830:16c9:b0:6c4:8441:f90 with SMTP id
- l9-20020a05683016c900b006c484410f90mr1387547otr.24.1697797292661; 
- Fri, 20 Oct 2023 03:21:32 -0700 (PDT)
-Received: from localhost (61-68-209-245.tpgi.com.au. [61.68.209.245])
- by smtp.gmail.com with ESMTPSA id
- y21-20020aa79af5000000b0068be348e35fsm1190429pfp.166.2023.10.20.03.21.21
+ d=1e100.net; s=20230601; t=1697801456; x=1698406256;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=x9PiLiKWZP0A15mhDUrEz3k+BPD7Zn+8gTlk+P9gEtg=;
+ b=LNqWByumsPTRkgrQbZiwYngvu6071MGI7OmAg4Ib9WwKOsO3e0mjha29BMi8kqMp21
+ MnaU9I9tudVZ+J9HCOJU2CyMuo6iSlCuCCNxzWKeFiL8rYwQHTTyZQnlCCxrAVgO1bIC
+ pnyyQ79MorRfhBLC87qnLxOS6uCD3IEK2q5jVKjrYayU+Vo2xdll/Sr0TdeppmLq0uFe
+ 0OO5qZbyGtiKChmr+kBnTXz+zPCvhGSYHLjLh7OzJ/Wjy0jBymEoYuLAHukeqZ2hL7SU
+ nZtK/Zn6erNm2ikD16sdacTDpA7AXGQAC1fa1M0yykJAIZt4LDLs+U8xc/xWwMfsaCXM
+ ZB0Q==
+X-Gm-Message-State: AOJu0YwN0mvz6v7fMKToBGFMBQ61Hm9r8/n70PTKAbB6WfiypuPfZk0u
+ o0pYedUpGgszumFAN2YQrqvOgg==
+X-Received: by 2002:adf:eb87:0:b0:32d:dd68:e83 with SMTP id
+ t7-20020adfeb87000000b0032ddd680e83mr3922573wrn.21.1697801455790; 
+ Fri, 20 Oct 2023 04:30:55 -0700 (PDT)
+Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
+ [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
+ ay10-20020a05600c1e0a00b00405442edc69sm4133104wmb.14.2023.10.20.04.30.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Oct 2023 03:21:32 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 20 Oct 2023 20:21:19 +1000
-Message-Id: <CWD6WMVZLLFS.185IFJ3HZS0I0@wheely>
-Cc: "Juan Quintela" <quintela@redhat.com>, <qemu-devel@nongnu.org>, "Stefan
- Berger" <stefanb@linux.vnet.ibm.com>, "Marcel Apfelbaum"
- <marcel.apfelbaum@gmail.com>, <qemu-ppc@nongnu.org>,
- <qemu-s390x@nongnu.org>, "Gerd Hoffmann" <kraxel@redhat.com>, "Corey
- Minyard" <cminyard@mvista.com>, "Samuel Thibault"
- <samuel.thibault@ens-lyon.org>, "Richard Henderson"
- <richard.henderson@linaro.org>, "David Hildenbrand" <david@redhat.com>,
- "Ilya Leoshkevich" <iii@linux.ibm.com>, "Fabiano Rosas" <farosas@suse.de>,
- "Eric Farman" <farman@linux.ibm.com>, "Peter Xu" <peterx@redhat.com>,
- "Harsh Prateek Bora" <harshpb@linux.ibm.com>, "John Snow"
- <jsnow@redhat.com>, <qemu-block@nongnu.org>, "Mark Cave-Ayland"
- <mark.cave-ayland@ilande.co.uk>, "Christian Borntraeger"
- <borntraeger@linux.ibm.com>, =?utf-8?q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, "Stefan Weil" <sw@weilnetz.de>,
- <qemu-arm@nongnu.org>, "Jason Wang" <jasowang@redhat.com>, "Corey Minyard"
- <minyard@acm.org>, "Leonardo Bras" <leobras@redhat.com>, "Thomas Huth"
- <thuth@redhat.com>, "Peter Maydell" <peter.maydell@linaro.org>, "Michael S.
- Tsirkin" <mst@redhat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, "David Gibson" <david@gibson.dropbear.id.au>, "Halil Pasic"
- <pasic@linux.ibm.com>, "Daniel Henrique Barboza" <danielhb413@gmail.com>
-Subject: Re: [PATCH 07/13] RFC migration: icp/server is a mess
-From: "Nicholas Piggin" <npiggin@gmail.com>
-To: "Greg Kurz" <groug@kaod.org>
-X-Mailer: aerc 0.15.2
-References: <20231019190831.20363-1-quintela@redhat.com>
- <20231019190831.20363-8-quintela@redhat.com>
- <20231019233958.17abb488@bahia> <CWD3OHT178VU.3NF8B5Y5BOK1S@wheely>
- <20231020103344.34baea63@bahia>
-In-Reply-To: <20231020103344.34baea63@bahia>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
- envelope-from=npiggin@gmail.com; helo=mail-ot1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ Fri, 20 Oct 2023 04:30:55 -0700 (PDT)
+Message-ID: <94280b39-a331-003d-f227-38c3e1b94434@linaro.org>
+Date: Fri, 20 Oct 2023 13:30:50 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v2 00/16] target: Make 'cpu-qom.h' really target agnostic
+Content-Language: en-US
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-ppc@nongnu.org,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Song Gao <gaosong@loongson.cn>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-riscv@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Bin Meng <bin.meng@windriver.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-arm@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Marek Vasut <marex@denx.de>,
+ Laurent Vivier <laurent@vivier.eu>, Peter Maydell
+ <peter.maydell@linaro.org>, Brian Cain <bcain@quicinc.com>,
+ Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+ Sergio Lopez <slp@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
+References: <20231013140116.255-1-philmd@linaro.org>
+ <ZTIVQfTmkK05fln9@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <ZTIVQfTmkK05fln9@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -145,120 +155,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SgJm7YYSg15H
+X-TUID: BmHYOuhcogUJ
 
-On Fri Oct 20, 2023 at 6:33 PM AEST, Greg Kurz wrote:
-> On Fri, 20 Oct 2023 17:49:38 +1000
-> "Nicholas Piggin" <npiggin@gmail.com> wrote:
->
-> > On Fri Oct 20, 2023 at 7:39 AM AEST, Greg Kurz wrote:
-> > > On Thu, 19 Oct 2023 21:08:25 +0200
-> > > Juan Quintela <quintela@redhat.com> wrote:
-> > >
-> > > > Current code does:
-> > > > - register pre_2_10_vmstate_dummy_icp with "icp/server" and instanc=
-e
-> > > >   dependinfg on cpu number
-> > > > - for newer machines, it register vmstate_icp with "icp/server" nam=
-e
-> > > >   and instance 0
-> > > > - now it unregisters "icp/server" for the 1st instance.
-> > > >=20
-> > > > This is wrong at many levels:
-> > > > - we shouldn't have two VMSTATEDescriptions with the same name
-> > > > - In case this is the only solution that we can came with, it needs=
- to
-> > > >   be:
-> > > >   * register pre_2_10_vmstate_dummy_icp
-> > > >   * unregister pre_2_10_vmstate_dummy_icp
-> > > >   * register real vmstate_icp
-> > > >=20
-> > > > As the initialization of this machine is already complex enough, I
-> > > > need help from PPC maintainers to fix this.
-> > > >=20
-> > > > Volunteers?
-> > > >=20
-> > > > CC: Cedric Le Goater <clg@kaod.org>
-> > > > CC: Daniel Henrique Barboza <danielhb413@gmail.com>
-> > > > CC: David Gibson <david@gibson.dropbear.id.au>
-> > > > CC: Greg Kurz <groug@kaod.org>
-> > > >=20
-> > > > Signed-off-by: Juan Quintela <quintela@redhat.com>
-> > > > ---
-> > > >  hw/ppc/spapr.c | 7 ++++++-
-> > > >  1 file changed, 6 insertions(+), 1 deletion(-)
-> > > >=20
-> > > > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> > > > index cb840676d3..8531d13492 100644
-> > > > --- a/hw/ppc/spapr.c
-> > > > +++ b/hw/ppc/spapr.c
-> > > > @@ -143,7 +143,12 @@ static bool pre_2_10_vmstate_dummy_icp_needed(=
-void *opaque)
-> > > >  }
-> > > > =20
-> > > >  static const VMStateDescription pre_2_10_vmstate_dummy_icp =3D {
-> > > > -    .name =3D "icp/server",
-> > > > +    /*
-> > > > +     * Hack ahead.  We can't have two devices with the same name a=
-nd
-> > > > +     * instance id.  So I rename this to pass make check.
-> > > > +     * Real help from people who knows the hardware is needed.
-> > > > +     */
-> > > > +    .name =3D "pre-2.10-icp/server",
-> > > >      .version_id =3D 1,
-> > > >      .minimum_version_id =3D 1,
-> > > >      .needed =3D pre_2_10_vmstate_dummy_icp_needed,
-> > >
-> > > I guess this fix is acceptable as well and a lot simpler than
-> > > reverting the hack actually. Outcome is the same : drop
-> > > compat with pseries-2.9 and older.
-> > >
-> > > Reviewed-by: Greg Kurz <groug@kaod.org>
-> >=20
-> > So the reason we can't have duplicate names registered, aside from it
-> > surely going bad if we actually send or receive a stream at the point
-> > they are registered, is the duplcate check introduced in patch 9? But
-> > before that, this hack does seem to actually work because the duplicate
-> > is unregistered right away.
-> >=20
->
-> Correct.
->
-> > If I understand the workaround, there is an asymmetry in the migration
-> > sequence in that receiving an unexpected object would cause a failure,
-> > but going from newer to older would just skip some "expected" objects
-> > and that didn't cause a problem. So you only have to deal with ignoring
-> > the unexpected ones going form older to newer.
-> >=20
->
-> Correct.
->
-> > Side question, is it possible to flag the problem of *not* receiving
-> > an object that you did expect? That might be a source of bugs too.
-> >=20
->
-> AFAICR we try to only migrate state that differs from reset : the
-> destination cannot really assume it will receive anything for a
-> given device.
+Hi Zhao,
 
-That's true, I guess you could always add some flag yourself if
-you certainly need something.
+On 20/10/23 07:50, Zhao Liu wrote:
+> Hi Philippe,
+> 
+> On Fri, Oct 13, 2023 at 04:00:59PM +0200, Philippe Mathieu-Daudé wrote:
+>> Date: Fri, 13 Oct 2023 16:00:59 +0200
+>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Subject: [PATCH v2 00/16] target: Make 'cpu-qom.h' really target agnostic
+>> X-Mailer: git-send-email 2.41.0
+>>
+>> Since v1:
+>> - Added R-b tags
+>> - Addressed Richard comments
+>> - Postponed OBJECT_DECLARE_CPU_TYPE() changes
+>>
+>> A heterogeneous machine must be able to instantiate CPUs
+>> from different architectures.
+> 
+> Does this mean the different ISA cores in heterogeneous machine?
 
->
-> > Anyway, I wonder if we could fix this spapr problem by adding a special
-> > case wild card instance matcher to ignore it? It's still a bit hacky
-> > but maybe a bit nicer. I don't mind deprecating the machine soon if
-> > you want to clear the wildcard hack away soon, but it would be nice to
-> > separate the deprecation and removal from the fix, if possible.
-> >=20
-> > This patch is not tested but hopefully helps illustrate the idea.
-> >=20
->
-> I'm not sure this will fly with older QEMUs that don't know about
-> VMSTATE_INSTANCE_ID_WILD... but I'll let Juan comment on that.
+Yes. Currently the ARM target already allows you to do that
+(multiple ISA cores within the same architecture), see the
+xlnx-zcu102 and fby35 machines.
 
-You could be right about that. He gave a simpler solution now
-anyway.
+> And is this case for TCG?
 
-Thanks,
-Nick
+This is *only* for TCG. I expect hardware accel + TCG to be
+theoretically possible, but no interest has been shown for
+it. Anyhow this requires heterogeneous TCG as a first step.
+
+>> In order to do that, the
+>> common hw/ code has to access to the QOM CPU definitions
+>> from various architecture.
+> 
+> About this kind of heterogeneous machine with multiple CPUs, is there
+> any initial configuration command line example?
+
+I'm prototyping in plain C but our plan is to start with a
+QMP prototype. Command line configuration is not an option,
+we decided to ignore it. I'll describe that better in a RFC
+document I should post soon.
+
+Regards,
+
+Phil.
+
+> I'm not sure how to configure this case...The main unsure thing is
+> whether the configuration is based on the granularity of the CPU
+> (by "-cpu") or the granularity of the core device (by "-device
+> xxx-core").
+> 
+> -Zhao
+
+

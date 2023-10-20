@@ -1,201 +1,214 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027533ejb;
-        Thu, 19 Oct 2023 23:59:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE0VkzNovAUH6arucOrZFnlxZTVqADLRSnGOkJyTjVsGhHGV9FoZVV5TuwrHqdjBWEuUU0N
-X-Received: by 2002:a17:90a:f295:b0:27c:efcd:109a with SMTP id fs21-20020a17090af29500b0027cefcd109amr6362370pjb.18.1697785179827;
-        Thu, 19 Oct 2023 23:59:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697785179; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027562ejb;
+        Thu, 19 Oct 2023 23:59:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IElJTaanHz7r71gxCagPZKxRmOuCub2a5J/Nz5VmNu2t3v4wLCtv2PtwV8Bl7sKpIBKB9dI
+X-Received: by 2002:a05:620a:25c6:b0:774:193c:94bd with SMTP id y6-20020a05620a25c600b00774193c94bdmr1192298qko.4.1697785186740;
+        Thu, 19 Oct 2023 23:59:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697785186; cv=none;
         d=google.com; s=arc-20160816;
-        b=J+/Tbd682iBg01WdhaL7LEJMWfxkrf6oCbVQuzQAW2gzgp6LeMrd96jvSpc4fV2F1F
-         14gM9KF9pj2T0zUKzSPS/BBJFk5wTC334eo/uJzyF8UFJsyS/fDunNeCQqlJNVn9UxAv
-         0e9ofb4Ba4RkGQhy6AtNUq6KVRI8JIWYOek7aFXSghpAjkXTLjGgY+mQmF9qQV4bJnWu
-         3o8ydpMMgSB4wUtHukAg4dHI/MSCcM1JWxqiUurnBgxP3ZGHrakj8gGGwEw6An+9cPmI
-         JBRuSNAQmS3SHvC6jPIXQylDqQ1898i0M8pMno0g9ydG/oxvCfxc5jH7SPsP29Lj/LDu
-         gqOw==
+        b=D5W5FeuPCLwDXLYWnB5OPDdMPikoik1p1AcfHVMbvTnawZFOAdqUJMZc49Pa/fr/pO
+         HFwXJInTOg4yjPVCd6KplryD5QVqXrkaK8zLEsX3MnPBxvTG5qdRv7j22PmjWIMNaXdA
+         2UF5nh8fFbkIbBrVHJ9xAfW2SVIdpPfXdcNWX8WBv2g2CZhmx+P+bzbasbcM7wVGdIEA
+         hyR+uZ9LLtMrvveN1Y5/2NTyb0zQVGobrhhW+/c8aY4XRbGYf5wQt385e98X5u/V74P3
+         Jo1xRstsuyzuxkcyxWgkmFdiV+2tBgyIo4W9dGmuTIJ5UqXi28OCK8rB6eke9jvi0zaF
+         k3Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=DXWEVBlIcLBd6yDALjVLIhuAbVizKeUEyowRi41q+m0=;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=UvqeZdhYhfKzgLjBZRcYvls2Y57BmP1MiE49zKSMaRk=;
         fh=fTjRJWWf32rfQWm8ROIsswmsB54Y1g6a+adPg1wBxPA=;
-        b=QFIYVSoLz3Ok1HCz3AQdLpZjn0DxG9laSaA7JQVkLS8WNS4tZROUKbH2U9UH2XdVt8
-         mj6Gv/jdzHCitbeyErfnhzwivHqgeZ3OStDv5JsW4TV45cFGtAq8HQ17zL+nLGrPTgWP
-         LGQBnXoSSpKkVgF4uJi04xoMHgPcRKViiZs6ujQlRMxx/qSvvtYSBazJgG6d7G9a3+OD
-         XOQ/ILUL+NGoKDw9oIYKvEt87uGUilQYigQsdfW4MXUdQMH7QQ3NaDAhmc07dhIqZhwC
-         GVw71pr/vNdtMVojIEh3v6f9LlfxpOMPw/gm4QZWs7sGnhKUJ2RiBAnkvQLVsVeBIYM1
-         2ipA==
+        b=iLqfbxXkyzOj+i3Yhohc50vxK/H9cE2kC4m6GUzZxmlK99zX8OTQMkLR09cCnI2gff
+         fpoEICWHRL73qigXElwnvc6SPaHFP3nrp//0vSPsWYaFlnZBMrPAmPGIulVE20jUHU6C
+         cF/4agJUkN0fsHSL43T/jI36RHgXjyHMuk/5givNevuCA3wSdqGnX24CaNkFPMv94ckM
+         N1CfuVhET4xKg69D72CdDUn9d/R6Ty4E1GH+lunv6U6/BHi79SvsoIOlPniA1gO8nt11
+         nwujRxefvYcwWPmV2Uhwa9aoDultbIRZjxcAzpGwWC8LeCEiy9xfsT7HnDrfMTangDZz
+         ZoJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OuGdscBb;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S+fxP6yK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from snail.vger.email (snail.vger.email. [2620:137:e000::3:7])
-        by mx.google.com with ESMTPS id qe1-20020a17090b4f8100b0026816382fdbsi1339210pjb.40.2023.10.19.23.59.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Oct 2023 23:59:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) client-ip=2620:137:e000::3:7;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k25-20020a0cb259000000b00668da56152csi927006qve.506.2023.10.19.23.59.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Oct 2023 23:59:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OuGdscBb;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:7 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S+fxP6yK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
-	by snail.vger.email (Postfix) with ESMTP id DB97A8061B54;
-	Thu, 19 Oct 2023 23:59:38 -0700 (PDT)
-X-Virus-Status: Clean
-X-Virus-Scanned: clamav-milter 0.103.10 at snail.vger.email
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1376390AbjJTG7i (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 20 Oct 2023 02:59:38 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39730 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1376392AbjJTG7h (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 20 Oct 2023 02:59:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A62FC1A3
-        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:58:51 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtjTc-0003rj-Sa; Fri, 20 Oct 2023 02:59:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtjTa-0003aI-Sk
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 02:59:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qtjTX-0003fR-Qj
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 02:59:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1697785130;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=DXWEVBlIcLBd6yDALjVLIhuAbVizKeUEyowRi41q+m0=;
-        b=OuGdscBbP2k+sxev+I5zEqQdrm00c/ZicXqQSS4yQI/xluQHEjLiqk0t4p3b3tS/1x9a1W
-        w01voNbSmIJOxMyjLbBnrI+rBaWPFI3KpcwjVNlwOmSCJfLnoDyRniGqJgVpRiCyQ93KO8
-        1i5ssy6hmaEE45xlk7GclDILT/dtgPc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-246-zbzUsfckNCi7Kw-aqmSPxQ-1; Fri, 20 Oct 2023 02:58:45 -0400
-X-MC-Unique: zbzUsfckNCi7Kw-aqmSPxQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6FC6C869ECC;
-        Fri, 20 Oct 2023 06:58:43 +0000 (UTC)
+ s=mimecast20190719; t=1697785155;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UvqeZdhYhfKzgLjBZRcYvls2Y57BmP1MiE49zKSMaRk=;
+ b=S+fxP6yKP10RelqFLpAyH9u9C5tLCmU2llAmJLqbAaiwLejEsynxHF4G7AGTeJajHf8igv
+ sda5zvzQ2NC6sjOotSiWk00xQ18kcTki/BG7CF8ltXBn9kCsu4zrTUMKV4xG99zYTQAwIK
+ +TiTx5a1JQzRMtDqJq6kVrGCPvzTvjs=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-495-MNOE15wlNZmcK9X0buzJ3g-1; Fri, 20 Oct 2023 02:59:06 -0400
+X-MC-Unique: MNOE15wlNZmcK9X0buzJ3g-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B251E2810D45;
+ Fri, 20 Oct 2023 06:59:04 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 9EACA25C0;
-        Fri, 20 Oct 2023 06:58:36 +0000 (UTC)
-From:   Juan Quintela <quintela@redhat.com>
-To:     qemu-devel@nongnu.org
-Cc:     qemu-s390x@nongnu.org,
-        =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        "Denis V. Lunev" <den@openvz.org>,
-        Juan Quintela <quintela@redhat.com>,
-        Fam Zheng <fam@euphon.net>, kvm@vger.kernel.org,
-        Harsh Prateek Bora <harshpb@linux.ibm.com>,
-        Nicholas Piggin <npiggin@gmail.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Eric Farman <farman@linux.ibm.com>,
-        Kevin Wolf <kwolf@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Jason Wang <jasowang@redhat.com>,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-        Stefan Hajnoczi <stefanha@redhat.com>,
-        Jagannathan Raman <jag.raman@oracle.com>, qemu-arm@nongnu.org,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Reinoud Zandijk <reinoud@netbsd.org>,
-        Thomas Huth <thuth@redhat.com>,
-        =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-        qemu-ppc@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
-        Stefan Berger <stefanb@linux.vnet.ibm.com>,
-        Stefan Weil <sw@weilnetz.de>, Peter Xu <peterx@redhat.com>,
-        Christian Schoenebeck <qemu_oss@crudebyte.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Jeff Cody <codyprime@gmail.com>,
-        Laurent Vivier <lvivier@redhat.com>,
-        Hanna Reitz <hreitz@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Leonardo Bras <leobras@redhat.com>,
-        Fabiano Rosas <farosas@suse.de>,
-        Daniel Henrique Barboza <danielhb413@gmail.com>,
-        Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
-Subject: [PULL 06/17] tests/qtest: Allow qtest_qemu_binary to use a custom environment variable
-Date:   Fri, 20 Oct 2023 08:57:40 +0200
-Message-ID: <20231020065751.26047-7-quintela@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 84BE825C0;
+ Fri, 20 Oct 2023 06:58:57 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, "Denis V. Lunev" <den@openvz.org>,
+ Juan Quintela <quintela@redhat.com>, Fam Zheng <fam@euphon.net>,
+ kvm@vger.kernel.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Kevin Wolf <kwolf@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Jagannathan Raman <jag.raman@oracle.com>, qemu-arm@nongnu.org,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Reinoud Zandijk <reinoud@netbsd.org>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>, qemu-ppc@nongnu.org,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, Stefan Weil <sw@weilnetz.de>,
+ Peter Xu <peterx@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Jeff Cody <codyprime@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Leonardo Bras <leobras@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
+Subject: [PULL 09/17] tests/qtest: Introduce qtest_has_machine_with_env
+Date: Fri, 20 Oct 2023 08:57:43 +0200
+Message-ID: <20231020065751.26047-10-quintela@redhat.com>
 In-Reply-To: <20231020065751.26047-1-quintela@redhat.com>
 References: <20231020065751.26047-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        RCVD_IN_MSPIKE_H3,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Thu, 19 Oct 2023 23:59:38 -0700 (PDT)
-X-TUID: sdzLtyN0PRWF
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: i7cr77oHETAN
 
 From: Fabiano Rosas <farosas@suse.de>
 
-We're adding support for testing migration using two different QEMU
-binaries. We'll provide the second binary in a new environment
-variable.
-
-Allow qtest_qemu_binary() to receive the name of the new variable. If
-the new environment variable is not set, that's not an error, we use
-QTEST_QEMU_BINARY as a fallback.
+Add a variant of qtest_has_machine() that receives an environment
+variable containing an alternate QEMU binary path.
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018192741.25885-2-farosas@suse.de>
+Message-ID: <20231018192741.25885-5-farosas@suse.de>
 ---
- tests/qtest/libqtest.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ tests/qtest/libqtest.h | 9 +++++++++
+ tests/qtest/libqtest.c | 9 +++++++--
+ 2 files changed, 16 insertions(+), 2 deletions(-)
 
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index 76fc195f1c..d16deb9891 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -930,6 +930,15 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
+  */
+ bool qtest_has_machine(const char *machine);
+ 
++/**
++ * qtest_has_machine_with_env:
++ * @var: Environment variable from where to take the QEMU binary
++ * @machine: The machine to look for
++ *
++ * Returns: true if the machine is available in the specified binary.
++ */
++bool qtest_has_machine_with_env(const char *var, const char *machine);
++
+ /**
+  * qtest_has_device:
+  * @device: The device to look for
 diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index dc7a55634c..03fa644663 100644
+index 3cc7bf3076..603d900e7d 100644
 --- a/tests/qtest/libqtest.c
 +++ b/tests/qtest/libqtest.c
-@@ -336,10 +336,17 @@ void qtest_remove_abrt_handler(void *data)
+@@ -1565,12 +1565,12 @@ void qtest_cb_for_every_machine(void (*cb)(const char *machine),
      }
  }
  
--static const char *qtest_qemu_binary(void)
-+static const char *qtest_qemu_binary(const char *var)
+-bool qtest_has_machine(const char *machine)
++bool qtest_has_machine_with_env(const char *var, const char *machine)
  {
-     const char *qemu_bin;
+     struct MachInfo *machines;
+     int i;
  
-+    if (var) {
-+        qemu_bin = getenv(var);
-+        if (qemu_bin) {
-+            return qemu_bin;
-+        }
-+    }
+-    machines = qtest_get_machines(NULL);
++    machines = qtest_get_machines(var);
+ 
+     for (i = 0; machines[i].name != NULL; i++) {
+         if (g_str_equal(machine, machines[i].name) ||
+@@ -1582,6 +1582,11 @@ bool qtest_has_machine(const char *machine)
+     return false;
+ }
+ 
++bool qtest_has_machine(const char *machine)
++{
++    return qtest_has_machine_with_env(NULL, machine);
++}
 +
-     qemu_bin = getenv("QTEST_QEMU_BINARY");
-     if (!qemu_bin) {
-         fprintf(stderr, "Environment variable QTEST_QEMU_BINARY required\n");
-@@ -392,7 +399,7 @@ static QTestState *G_GNUC_PRINTF(1, 2) qtest_spawn_qemu(const char *fmt, ...)
- 
-     va_start(ap, fmt);
-     g_string_append_printf(command, CMD_EXEC "%s %s",
--                           qtest_qemu_binary(), tracearg);
-+                           qtest_qemu_binary(NULL), tracearg);
-     g_string_append_vprintf(command, fmt, ap);
-     va_end(ap);
- 
-@@ -905,7 +912,7 @@ char *qtest_hmp(QTestState *s, const char *fmt, ...)
- 
- const char *qtest_get_arch(void)
+ bool qtest_has_device(const char *device)
  {
--    const char *qemu = qtest_qemu_binary();
-+    const char *qemu = qtest_qemu_binary(NULL);
-     const char *end = strrchr(qemu, '-');
- 
-     if (!end) {
+     static QList *list;
 -- 
 2.41.0
+

@@ -1,80 +1,78 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027330ejb;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1027329ejb;
         Thu, 19 Oct 2023 23:59:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHG6I6S6FadjVjDVqKbQxrJm3wG0yPfpH9uyxf+/apck4uRY0lOcq78hsadewdhvnVTwT9+
-X-Received: by 2002:a17:90a:7066:b0:27d:2ecd:6a23 with SMTP id f93-20020a17090a706600b0027d2ecd6a23mr982902pjk.14.1697785147059;
+X-Google-Smtp-Source: AGHT+IEVq4PV78MqIiXEKaeT9iRC5tBRBnkeKW2k9HAbhoXM5AexIqy4TXOcxz93e5cvR6CDERhG
+X-Received: by 2002:a17:902:dac5:b0:1c0:cbaf:6954 with SMTP id q5-20020a170902dac500b001c0cbaf6954mr1747429plx.25.1697785147024;
         Thu, 19 Oct 2023 23:59:07 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1697785147; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vsu2ek9ZBkwTuFRR3w5685FdmFhdzsP+37h6IXtabIHiSDVCqrr2dr+55G0KFh9TxG
-         yW+J3mZhG2ZcCeXCsx0+95f/++9Sl/mRsISH1GklK7UWxU67J4t1XUF4tT3zIPX51iNJ
-         DDNMR5qA/20fusXQ/kWMGpxmSIcXjTHweTMTx0ipknT+JX2yGnbSncSktX+5HxLu1HCZ
-         MI74plBlMTjL6I5IYweLMNYrFgoGSd9WAbUpkxXnktRq7tlHaz540t+dQ0WhogGRP68G
-         tIClo8kVCnl9kafHNbCaflQMXpxTJcrISKcY3tDiQZ2nhk6XngiK9XTZ5DtnW4MJdp1+
-         +MTg==
+        b=RCekWzvRWhCFI0b55QRVvcRKtHG4SkYSNoD0iJ3Y907oED1MSXpZ3ipYUbtTprKKa6
+         LqROYibtbiH0gggcwjpgsX03sd0xvxNPgGKnM7BfXnmCeZztdpjx7mnDheUF1WLS13BQ
+         l9XjyscshfQ9Jdpv6oiZMBBtxHh4+e0yqIPxSVcjzuoOk+IiECNA5/vh/FzewC1c54oV
+         Nnrdw44bgKmtniUCgOXdDqqIl/p0HZIABQYOVqKc01Degw7mo5x9L8CT+bWyAATUEgU0
+         b/rAL0TIBf3TTr5A8qskV40B1sx4MW9mq2a3I+mpcB74m7X0RtMDQDVCGbkGTeFGZmWF
+         UTdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=ptt25UpSG4SGs9AzU+y2uMaUodSAfWpLkKmV1ixjEv4=;
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=nAfeS/vzyP7MoEpy1KQtU5AOFF+AJFXpcwzmlihebDM=;
         fh=fTjRJWWf32rfQWm8ROIsswmsB54Y1g6a+adPg1wBxPA=;
-        b=xfJDx5M+m2iFBWJLl4i4fvKtTtgr457SAjughLctfeTQHqlYrjGj6Pyk+HsrSolvjl
-         Nxkqryivz2n5SBqwnh6m53V8oSgw/V5vyNVRi5BAtI6YjMSlDpMOPtIYDptsJtwm31Jd
-         vJRnu5f3oyIKfEEp0trMeto4MbNwT0fDsnsUNYmfZgo+CSxxEd3w2rQMSG60PmtR6nKv
-         CbLUjXYY95vYCxzBt5N6LxB1gufkoOWzNTE6bTIS5orKqPmHczJnWVISCpCvH4aTqIei
-         07fl9WiFr+fheR6fRj+Vcr5r2TSHsTVmdVBE4DlnOJdAwoj6ppl7j6kNBYiIwDFoFuD7
-         BYPw==
+        b=cKnDnrnloW2tW0J33osHsIMAOpjOUoM/lGAGyx+TqmNF515WuqLrt9PHRs9kkaRQdB
+         +ISouh25+hzgtSo/QbEM0/44gbbeV/Y4yQymbdSpl6N9Efqj84rgfPjeHumGeRrcpCIb
+         8ZgJqORI3NQORquV3NWD3g1uqM5rt/Bzg1kglWYozYgigRmzVyD3oPmX+JO7SC0wSXaL
+         uonGCCpfHrJQ/Xw2H+DDdnoR82SA5+8gvJaiAIBqZ86Zoe3uMPx9FzeExg7Bmt/c9Jof
+         L8l3SaldL7QAHdGb85wwqrmaBB7lgYm3HcgNiTcy/A3mOvS9eKRsm8EXbyjlvsxDphih
+         1t0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SFSCUXMW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cxMWTAUS;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from snail.vger.email (snail.vger.email. [23.128.96.37])
-        by mx.google.com with ESMTPS id na10-20020a17090b4c0a00b0026cab818aa2si4078365pjb.100.2023.10.19.23.59.06
+        by mx.google.com with ESMTPS id j1-20020a170902da8100b001c470c5906bsi1230081plx.221.2023.10.19.23.59.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 19 Oct 2023 23:59:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) client-ip=23.128.96.37;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SFSCUXMW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cxMWTAUS;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.37 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
-	by snail.vger.email (Postfix) with ESMTP id 832DA805F0BB;
+	by snail.vger.email (Postfix) with ESMTP id 4688A8061B54;
 	Thu, 19 Oct 2023 23:59:06 -0700 (PDT)
 X-Virus-Status: Clean
 X-Virus-Scanned: clamav-milter 0.103.10 at snail.vger.email
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1376347AbjJTG6u (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 20 Oct 2023 02:58:50 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33930 "EHLO
+        id S1376365AbjJTG7G (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 20 Oct 2023 02:59:06 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:52564 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1376317AbjJTG6s (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 20 Oct 2023 02:58:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id CCF461A3
-        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:58:11 -0700 (PDT)
+        with ESMTP id S1376317AbjJTG7E (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 20 Oct 2023 02:59:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4D884D4C
+        for <kvm@vger.kernel.org>; Thu, 19 Oct 2023 23:58:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1697785091;
+        s=mimecast20190719; t=1697785095;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=ptt25UpSG4SGs9AzU+y2uMaUodSAfWpLkKmV1ixjEv4=;
-        b=SFSCUXMWVU32Vwokj4xrd9SqkXsWNYeStMqU7s/AQ1jov2/HE6XntRwbCSMymX8Cb5ra3u
-        72gbvmAPLpriz6t3V6UPQ0ZnVhkWXAknZ0Sajmf/r4cur7OfBcugw5BBP6bDOaSumSq+pO
-        NRrwMqNvWVZqqbtrxmNp4xLAcHLboV4=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-146-n1qWBceSOyyk8xMFkJd1-w-1; Fri, 20 Oct 2023 02:58:08 -0400
-X-MC-Unique: n1qWBceSOyyk8xMFkJd1-w-1
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=nAfeS/vzyP7MoEpy1KQtU5AOFF+AJFXpcwzmlihebDM=;
+        b=cxMWTAUSrMESIfL94BYQNNaSxVlw/saZZoZkg+q63T+OHSn3Zn/T3rhAw0jnv1IO9AUfB/
+        wwNQDJXzmKdev03XjAPys+XUooitij/D5peloiK54hOEg3GnIfCbYVBrJvSEHp4sm2RuTH
+        YnUPYyjgQxjncp0dHIbAOxQb+3eUhPE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-357-_q0KFm05Oie46LZjrXv01A-1; Fri, 20 Oct 2023 02:58:01 -0400
+X-MC-Unique: _q0KFm05Oie46LZjrXv01A-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
         (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 531E13C108CF;
-        Fri, 20 Oct 2023 06:58:07 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.194.127])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 63C3725C0;
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1BE9788B767;
         Fri, 20 Oct 2023 06:58:00 +0000 (UTC)
+Received: from secure.mitica (unknown [10.39.194.127])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id B30B925C0;
+        Fri, 20 Oct 2023 06:57:52 +0000 (UTC)
 From:   Juan Quintela <quintela@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     qemu-s390x@nongnu.org,
@@ -117,17 +115,16 @@ Cc:     qemu-s390x@nongnu.org,
         Fabiano Rosas <farosas@suse.de>,
         Daniel Henrique Barboza <danielhb413@gmail.com>,
         Greg Kurz <groug@kaod.org>, qemu-block@nongnu.org
-Subject: [PULL 01/17] tests/qtest/migration-test: Disable the analyze-migration.py test on s390x
-Date:   Fri, 20 Oct 2023 08:57:35 +0200
-Message-ID: <20231020065751.26047-2-quintela@redhat.com>
-In-Reply-To: <20231020065751.26047-1-quintela@redhat.com>
-References: <20231020065751.26047-1-quintela@redhat.com>
+Subject: [PULL 00/17] Migration 20231020 patches
+Date:   Fri, 20 Oct 2023 08:57:34 +0200
+Message-ID: <20231020065751.26047-1-quintela@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
 X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
         DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        RCVD_IN_MSPIKE_H3,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE
+        RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE
         autolearn=ham autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
         lindbergh.monkeyblade.net
@@ -135,44 +132,108 @@ Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
 X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (snail.vger.email [0.0.0.0]); Thu, 19 Oct 2023 23:59:06 -0700 (PDT)
-X-TUID: CBCtrIcmb/uF
+X-TUID: CWx2shmW94Zs
 
-From: Thomas Huth <thuth@redhat.com>
+The following changes since commit 0d239e513e0117e66fa739fb71a43b9383a108ff:
 
-The analyze-migration.py script fails on s390x hosts:
+  Merge tag 'pull-lu-20231018' of https://gitlab.com/rth7680/qemu into staging (2023-10-19 10:20:57 -0700)
 
- Traceback (most recent call last):
-   File "scripts/analyze-migration.py", line 662, in <module>
-     dump.read(dump_memory = args.memory)
-   File "scripts/analyze-migration.py", line 596, in read
-     classdesc = self.section_classes[section_key]
- KeyError: ('s390-storage_attributes', 0)
+are available in the Git repository at:
 
-It obviously never has been adapted to s390x yet, so until this
-has been done, disable this test on s390x.
+  https://gitlab.com/juan.quintela/qemu.git tags/migration-20231020-pull-request
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018091239.164452-1-thuth@redhat.com>
----
- tests/qtest/migration-test.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+for you to fetch changes up to 7789331b03ae3bffcb2de925a093796b3b9907ff:
 
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index e1c110537b..241b409857 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -3034,7 +3034,9 @@ int main(int argc, char **argv)
- 
-     qtest_add_func("/migration/bad_dest", test_baddest);
- #ifndef _WIN32
--    qtest_add_func("/migration/analyze-script", test_analyze_script);
-+    if (!g_str_equal(arch, "s390x")) {
-+        qtest_add_func("/migration/analyze-script", test_analyze_script);
-+    }
- #endif
-     qtest_add_func("/migration/precopy/unix/plain", test_precopy_unix_plain);
-     qtest_add_func("/migration/precopy/unix/xbzrle", test_precopy_unix_xbzrle);
+  tests/qtest: Don't print messages from query instances (2023-10-20 08:51:41 +0200)
+
+----------------------------------------------------------------
+Migration Pull request (20231020)
+
+In this pull request:
+- disable analyze-migration on s390x (thomas)
+- Fix parse_ramblock() (peter)
+- start merging live update (steve)
+- migration-test support for using several binaries (fabiano)
+- multifd cleanups (fabiano)
+
+CI: https://gitlab.com/juan.quintela/qemu/-/pipelines/1042492801
+
+Please apply.
+
+----------------------------------------------------------------
+
+Fabiano Rosas (13):
+  migration/multifd: Stop checking p->quit in multifd_send_thread
+  tests/qtest: Allow qtest_qemu_binary to use a custom environment
+    variable
+  tests/qtest: Introduce qtest_init_with_env
+  tests/qtest: Allow qtest_get_machines to use an alternate QEMU binary
+  tests/qtest: Introduce qtest_has_machine_with_env
+  tests/qtest: Introduce qtest_resolve_machine_alias
+  tests/qtest/migration: Introduce find_common_machine_version
+  tests/qtest/migration: Define a machine for all architectures
+  tests/qtest/migration: Specify the geometry of the bootsector
+  tests/qtest/migration: Set q35 as the default machine for x86_86
+  tests/qtest/migration: Support more than one QEMU binary
+  tests/qtest/migration: Allow user to specify a machine type
+  tests/qtest: Don't print messages from query instances
+
+Peter Xu (1):
+  migration: Fix parse_ramblock() on overwritten retvals
+
+Steve Sistare (2):
+  migration: simplify blockers
+  migration: simplify notifiers
+
+Thomas Huth (1):
+  tests/qtest/migration-test: Disable the analyze-migration.py test on
+    s390x
+
+ include/migration/blocker.h     | 24 +++++---
+ include/migration/misc.h        |  6 +-
+ tests/qtest/libqtest.h          | 32 +++++++++++
+ tests/qtest/migration-helpers.h |  4 ++
+ backends/tpm/tpm_emulator.c     | 10 +---
+ block/parallels.c               |  9 +--
+ block/qcow.c                    |  6 +-
+ block/vdi.c                     |  6 +-
+ block/vhdx.c                    |  6 +-
+ block/vmdk.c                    |  6 +-
+ block/vpc.c                     |  6 +-
+ block/vvfat.c                   |  6 +-
+ dump/dump.c                     |  4 +-
+ hw/9pfs/9p.c                    | 10 +---
+ hw/display/virtio-gpu-base.c    |  8 +--
+ hw/intc/arm_gic_kvm.c           |  3 +-
+ hw/intc/arm_gicv3_its_kvm.c     |  3 +-
+ hw/intc/arm_gicv3_kvm.c         |  3 +-
+ hw/misc/ivshmem.c               |  8 +--
+ hw/net/virtio-net.c             |  6 +-
+ hw/ppc/pef.c                    |  2 +-
+ hw/ppc/spapr.c                  |  9 +--
+ hw/ppc/spapr_events.c           |  6 +-
+ hw/ppc/spapr_rtas.c             |  2 +-
+ hw/remote/proxy.c               |  7 +--
+ hw/s390x/s390-virtio-ccw.c      |  9 +--
+ hw/scsi/vhost-scsi.c            |  8 +--
+ hw/vfio/common.c                | 10 +---
+ hw/vfio/migration.c             | 22 ++------
+ hw/virtio/vhost.c               |  8 +--
+ migration/migration.c           | 44 ++++++++++-----
+ migration/multifd.c             |  3 -
+ migration/ram.c                 |  5 +-
+ net/vhost-vdpa.c                |  7 ++-
+ stubs/migr-blocker.c            |  4 +-
+ target/i386/kvm/kvm.c           |  8 +--
+ target/i386/nvmm/nvmm-all.c     |  3 +-
+ target/i386/sev.c               |  2 +-
+ target/i386/whpx/whpx-all.c     |  3 +-
+ tests/qtest/libqtest.c          | 98 ++++++++++++++++++++++++++++-----
+ tests/qtest/migration-helpers.c | 52 +++++++++++++++++
+ tests/qtest/migration-test.c    | 54 +++++++++++++++---
+ ui/spice-core.c                 |  3 +-
+ ui/vdagent.c                    |  5 +-
+ 44 files changed, 344 insertions(+), 196 deletions(-)
+
 -- 
 2.41.0

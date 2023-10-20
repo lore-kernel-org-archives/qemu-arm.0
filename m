@@ -1,117 +1,111 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1205739ejb;
-        Fri, 20 Oct 2023 06:05:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFhjc8sXhq3KpfGbxNZHDZYoDqbdi2oIug8oXFGvnJV3IczZNdH+7fKlzmSCkme9nq90BdV
-X-Received: by 2002:a05:6214:404:b0:626:f3d:9e46 with SMTP id z4-20020a056214040400b006260f3d9e46mr1989571qvx.18.1697807113862;
-        Fri, 20 Oct 2023 06:05:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697807113; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1205947ejb;
+        Fri, 20 Oct 2023 06:05:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFpLit/jkQuMl8ARbjqrRQXmSqWy1G8NpNqVXQQOihJ8onrU/GiTOt8Zl/dYXzJUti9JLUb
+X-Received: by 2002:a05:620a:24cb:b0:777:2aeb:7dfa with SMTP id m11-20020a05620a24cb00b007772aeb7dfamr1565360qkn.38.1697807127223;
+        Fri, 20 Oct 2023 06:05:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697807127; cv=none;
         d=google.com; s=arc-20160816;
-        b=GRnwT33WZBouO/bDIsV9B7GkrjNPWC2J3Q6f1IQ4ZzhT2hagfMFdkHWRce1Gq/VAcb
-         f1NQZonAiaGC82UEeTGIC4O42TLJBur7DGWORPXywjAeqnYyY4yk+4aC8yg2azik/khD
-         mvSICmLlMj2qYW2cHhzSRN7ca8qgOxcXNlUbWij18Ba1PhQp7nCypG9AsMVok1xpFG6t
-         hmVPT8NWakpG9kYeCa21WmIOGSJpVjPHxp6onwxh2gtB5R/WVh5gN3VjPFaFMmUewmGE
-         WwhKFd1/AK6TsRvED43AuoWMCwvlPcwfT6BhjWzojhGnq/bBzsq7CQL51YT5zv2jf6po
-         anDw==
+        b=UfzumUVCmYBqlJfRLlfPD5VNe/IUE5NX2MX/diEG4nXwG53dH868uNT8cwcE6HShxG
+         4BM42M+kluJOyBtUwc+sqjraza16EtoC7BtljJTzw7k4gzTEwdP0onPNIYRTLpWNr5eF
+         1SuYL4Q8TkhdDklGdbdzWrvby7ibCf8bcg19U6RF8we5sBG7k+L8PXbL+j/gNK1JRveK
+         sYmOGw4Q012D1fdPkjMqDOP+1NONmEmPHxKK0OLIVcy0JUEnvhB201pEA0qk/KK+v1/t
+         +JV06G5xnObv7QGpmCGPaWwfxuaM6lM1iiLINnAsBh4D24dhKnvUQk/CQituyKuQmBkF
+         XPEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=VvkfRXdPjwZ/XLZmVrV6N6IqteNQI6rI35LT6QBMgTk=;
-        fh=QWGggua+3ufs1S3QlzhTWcDhlhc7bBCtXi/Y+/UuB8A=;
-        b=KJKpAZNoevfxQGmvAzifrfsBSBpd5ot/rapyiQHHyjwBFzcVzSxwufQNV7++dyXAln
-         TI5K6AxczPfoNgvDIOssmMB1uJ/YLfMsUOTEQ1cybBl5XLsCJ81PWcMwEVkqqFX6jDgK
-         KKECNQRZTmaEfMpiF7W2GxgQnyKNx84Tie6hfzn1XN19hajjwv2LP0Baxe3LNhMA6B8A
-         KVr+iya8JGL0sR7K1/QDUh7k+OVxaOLLfQ6ZOxMsDdIXbHv9VTWyxHmz6bp8Lk6xc2/l
-         IMYQVgAqwkk//L/rZzbWL71myyGB+kUFxb7DxW/+JDEER0mYVqgVs+nqi0C+xa3SevJL
-         4IcA==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=3JCM6hHA8vqMFLZhCMsVwBf3PmmmXEemNFWhJU6oiIs=;
+        fh=fp5CpMMNzVX5UH+tPgxMOeogtxCTKvDnx/njVAoRnKc=;
+        b=vN2WnZ+tTpJMR6eDVZeJjNeyXmK+KKELo0XyyuXBcgM1NWiys91Cbc/4fy1Mj0o2+D
+         w0VB/Bt34CGARRh5wfFiFogzDqFB2gYU6cF9/RAl+ZvV1Oiwpq24fpRl7n9kQwqbHa8J
+         G0hO0CGA+1ygeMygrUwVL95ALpncriVxA7ZY7YGo0FE3ANBn19CMZbP3bKqWjgOUUYQw
+         8XaAgVjKOTU4Cim4LeZmfSZNdCu+4clTQx/SYmQ2HmcA0rQuQ38YErpL2iYgm4+IBFPe
+         a2BqQTP1ZRRPgwcP7LYx9nqTEuqMjipx9N9eI2gAV7024Jv0Qb2eliEr0u8hav4+oqW+
+         amsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yDVvaO3D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PyXv+y9i;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2-20020a0cd682000000b0064c6b7d96e1si1361032qvi.372.2023.10.20.06.05.13
+        by mx.google.com with ESMTPS id k11-20020a05620a0b8b00b0077413e0f24bsi1236583qkh.415.2023.10.20.06.05.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 06:05:13 -0700 (PDT)
+        Fri, 20 Oct 2023 06:05:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yDVvaO3D;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PyXv+y9i;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtpAs-0000uQ-4K; Fri, 20 Oct 2023 09:04:22 -0400
+	id 1qtpAu-0001MZ-Q7; Fri, 20 Oct 2023 09:04:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtpAV-0000gr-Pv
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 09:04:05 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtpAP-0005Iw-MI
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 09:03:58 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-9be02fcf268so120804766b.3
- for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 06:03:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697807032; x=1698411832; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VvkfRXdPjwZ/XLZmVrV6N6IqteNQI6rI35LT6QBMgTk=;
- b=yDVvaO3DVY4OzZlGv3c9ePTIEw+jlkjRZBltkcoxAWrV3Lfl0jp9MYTk91cDFNww45
- a/vOljD97KW3biVxE1EHabSBZspZEO0ZT/2CzOpOs9JgUJAjrXnnwNiZpGFo7oWwowvG
- IO6oi49jYb39w6KfFlRS2Rodlr573boO3f453PYz6gFINSdfzCsXXl0ZGT2X5EYennmS
- pl6sGRAKVvDA1hY9YlsgQ3c7Uczu4h1fI+DbbtrprVvYoEE8Srp0DXjA3bwj8GkxC8mA
- XPOCsTbDBM3CUZ6+WASRi7n7z5PVt5rm6W52HkGgZ7V2pPHDTcdmn4qJvW+gn2SyZ8Ur
- mnqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697807032; x=1698411832;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=VvkfRXdPjwZ/XLZmVrV6N6IqteNQI6rI35LT6QBMgTk=;
- b=pE+7dGOQFIfiW3kimSDAM4t6y/yBbbMnSHM2gqcFEZeGcVZn4rzl/BYBCxSFkmDAyy
- 9sQjHLLOGZFQ8doZBcz2eYa86QIPDymK0dWSZwJRXP58d9fXUp+1PBAMUKroP3BOel56
- yOHheO/SyN8lnLJs2rtWKymBJgzeJrW/XqIjKuGc1lV9j7qjni2HpOelV7EobrzyPcr8
- I8ArldCkAXuSlxlKJ6OoHuAdRBSGjCNJ5QPk10YYvztP3VMyx9cCthPHzyGpdrDsQcLM
- IfA0OuUwlY/tuQ2WFgVuVdME9ifre0y8ja6mhvI6QC6syE9g2K85ctfs/VP9nx4uOzDP
- WS2A==
-X-Gm-Message-State: AOJu0YxazWkhPvkcjnPtyLvpDuWv6FAmTsAKA+rXYH3gCDjlU1tE94F0
- V4z4e1b4cXd9sCtQdZNfcM4PvvjZbTMQrD5BVLE=
-X-Received: by 2002:a17:907:d19:b0:9b6:550c:71cb with SMTP id
- gn25-20020a1709070d1900b009b6550c71cbmr1132082ejc.52.1697807031911; 
- Fri, 20 Oct 2023 06:03:51 -0700 (PDT)
-Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
- [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
- j12-20020a170906050c00b00977eec7b7e8sm1474283eja.68.2023.10.20.06.03.50
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 20 Oct 2023 06:03:51 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 3/9] hw/pcmcia/pxa2xx: Realize sysbus device before
- accessing it
-Date: Fri, 20 Oct 2023 15:03:24 +0200
-Message-ID: <20231020130331.50048-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231020130331.50048-1-philmd@linaro.org>
-References: <20231020130331.50048-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtpAr-00014Y-TD
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 09:04:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtpAq-0005NN-AW
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 09:04:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697807058;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3JCM6hHA8vqMFLZhCMsVwBf3PmmmXEemNFWhJU6oiIs=;
+ b=PyXv+y9i6qsqFGBDVsdtXsWTN58kH3ChjBOU5P4BmzU1zVjx3ZcAlMflVDsF9s8DbEu1O6
+ 5LfzV4ZOCOOzENzYpBea401jI5z9VzygdGqS2uC01CXUtEWeK1MsHocWkDjPZHHKAqXCRR
+ pTORxEbEaOjuabQakV0Rm+WlhJKgSB8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-590-Qjc4ONc0O1O8nYgaTd453w-1; Fri, 20 Oct 2023 09:03:50 -0400
+X-MC-Unique: Qjc4ONc0O1O8nYgaTd453w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 47E6510201E0;
+ Fri, 20 Oct 2023 13:03:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 22B1040C6F7B;
+ Fri, 20 Oct 2023 13:03:50 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 088A621E6A1F; Fri, 20 Oct 2023 15:03:49 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  qemu-block@nongnu.org,
+ qemu-s390x@nongnu.org,  Konstantin Kostiuk <kkostiuk@redhat.com>,
+ Michael Roth <michael.roth@amd.com>
+Subject: Re: [PATCH v2 20/22] qapi: Inline and remove
+ QERR_QGA_COMMAND_FAILED definition
+References: <20231005045041.52649-1-philmd@linaro.org>
+ <20231005045041.52649-21-philmd@linaro.org>
+Date: Fri, 20 Oct 2023 15:03:49 +0200
+In-Reply-To: <20231005045041.52649-21-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:37
+ +0200")
+Message-ID: <877cnh1m4q.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,38 +120,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 56m7Xr/NjHUB
+X-TUID: jpI7J8vjureY
 
-sysbus_mmio_map() should not be called on unrealized device.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- hw/pcmcia/pxa2xx.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+> Address the comment added in commit 4629ed1e98
+> ("qerror: Finally unused, clean up"), from 2015:
+>
+>   /*
+>    * These macros will go away, please don't use
+>    * in new code, and do not add new ones!
+>    */
+>
+> Mechanical transformation using the following
+> coccinelle semantic patch:
+>
+>     @match exists@
+>     expression errp;
+>     expression errmsg;
+>     @@
+>          error_setg(errp, QERR_QGA_COMMAND_FAILED, errmsg);
+>
+>     @script:python strformat depends on match@
+>     errmsg << match.errmsg;
+>     fixedfmt; // new var
+>     @@
+>     # Format skipping '"'.
+>     fixedfmt =3D f'"Guest agent command failed, error was \'{errmsg[1:-1]=
+}\'"'
+>     coccinelle.fixedfmt =3D cocci.make_ident(fixedfmt)
+>
+>     @replace@
+>     expression match.errp;
+>     expression match.errmsg;
+>     identifier strformat.fixedfmt;
+>     @@
+>     -    error_setg(errp, QERR_QGA_COMMAND_FAILED, errmsg);
+>     +    error_setg(errp, fixedfmt);
+>
+> then manually removing the definition in include/qapi/qmp/qerror.h.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  include/qapi/qmp/qerror.h |  3 ---
+>  qga/commands-win32.c      | 38 ++++++++++++++++++++------------------
+>  qga/commands.c            |  7 ++++---
+>  3 files changed, 24 insertions(+), 24 deletions(-)
+>
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index e094f13114..840831cc6a 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -17,9 +17,6 @@
+>   * add new ones!
+>   */
+>=20=20
+> -#define QERR_QGA_COMMAND_FAILED \
+> -    "Guest agent command failed, error was '%s'"
+> -
+>  #define QERR_UNSUPPORTED \
+>      "this feature or command is not currently supported"
+>=20=20
+> diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+> index 946dbafbb6..aa8c9770d4 100644
+> --- a/qga/commands-win32.c
+> +++ b/qga/commands-win32.c
+> @@ -245,7 +245,8 @@ int64_t qmp_guest_file_open(const char *path, const c=
+har *mode, Error **errp)
+>=20=20
+>  done:
+>      if (gerr) {
+> -        error_setg(errp, QERR_QGA_COMMAND_FAILED, gerr->message);
+> +        error_setg(errp,
+> +                   "Guest agent command failed, error was 'err -> messag=
+'");
 
-diff --git a/hw/pcmcia/pxa2xx.c b/hw/pcmcia/pxa2xx.c
-index fcca7e571b..e7264feb45 100644
---- a/hw/pcmcia/pxa2xx.c
-+++ b/hw/pcmcia/pxa2xx.c
-@@ -142,15 +142,12 @@ PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
-                                       hwaddr base)
+Oopsie :)
+
+Two more below.
+
+>          g_error_free(gerr);
+>      }
+>      g_free(w_path);
+> @@ -279,8 +280,8 @@ static void acquire_privilege(const char *name, Error=
+ **errp)
+>          TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &token))
+>      {
+>          if (!LookupPrivilegeValue(NULL, name, &priv.Privileges[0].Luid))=
  {
-     DeviceState *dev;
--    PXA2xxPCMCIAState *s;
- 
-     dev = qdev_new(TYPE_PXA2XX_PCMCIA);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
--    s = PXA2XX_PCMCIA(dev);
--
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
- 
--    return s;
-+    return PXA2XX_PCMCIA(dev);
- }
- 
- static void pxa2xx_pcmcia_initfn(Object *obj)
--- 
-2.41.0
+> -            error_setg(errp, QERR_QGA_COMMAND_FAILED,
+> -                       "no luid for requested privilege");
+> +            error_setg(errp,
+> +                       "Guest agent command failed, error was 'no luid f=
+or requested privilege'");
+>              goto out;
+>          }
+>=20=20
+
+I don't like this error message.  I'm going to pretend I didn't see it.
+
+[...]
 

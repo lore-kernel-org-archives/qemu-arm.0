@@ -1,388 +1,1379 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1047853ejb;
-        Fri, 20 Oct 2023 00:50:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHpuIExUzY2HBaegxDEdEMhA3+Rhj0F4atnI5SNH+x2yhpL9Sp1kHzZZW42buDgIAnDRU/U
-X-Received: by 2002:a05:6214:19ef:b0:66d:55d9:9522 with SMTP id q15-20020a05621419ef00b0066d55d99522mr1695773qvc.23.1697788237558;
-        Fri, 20 Oct 2023 00:50:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697788237; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1048549ejb;
+        Fri, 20 Oct 2023 00:52:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE5KU9w8qGWk+Gr9VayiurLQAE2RF24T1Hr2OGV5be9Ax++znnQh2aI8OMCnFC83dm3cCTH
+X-Received: by 2002:a05:6214:29c9:b0:647:4060:1074 with SMTP id gh9-20020a05621429c900b0064740601074mr1300493qvb.22.1697788365402;
+        Fri, 20 Oct 2023 00:52:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697788365; cv=none;
         d=google.com; s=arc-20160816;
-        b=xjvsj8rqP1nLZ7ANOhEr+32QN3O8GLX+QEcFuspaYT9QHUIoX3y9dgOgJce3qMS3rY
-         ydkdsOyrX0hsUhAVmfx17Jy98JwzwLWTBXWp/Ok2PPpFzWij+G/+N6obtH85l4kaNxEW
-         5e/WVxaFXN1IrpIYbOwMS2Q/tXR/HkEJD3k6V1YLPC8Ithei+N6TdXHszjue4VOErfVz
-         mVqFS46d4NHwzB6xkgdqXEmBbYL4BVQyfwoa/Agc3oI7AY6kxLiFnLJa+7E7s+OwLiD1
-         92VxD/2KAALprsljf3ovCm0dFnT/uh+f33lCoERN5WXbo4VmnduxvNa138/kOHWNsMOp
-         P/7g==
+        b=LGbzptyDo/O9c13FBJ2x9Td4NJOQ9a52d5x/S42bJkQiXJkubsmp4EZyDj9RWiGyxp
+         GWZFWYwanKxdJGAdfIMIYIWwaeJd8xQgHRiOLGvd5FgbfHGd9fswFyxUityd32Pc/imW
+         QdlNtiQEeKLgHDGJdPmY3+thBd2pkkc8QkI5Dbourccuw5/a4ZxKxUyRZ63CUKTYC06b
+         +JBt5rKTcEiD5omNbs1wJUmfSTUiSjDRx7MnvomR2esBzikulicAE5oGRej8sg8nP/Fh
+         h8NXUNB7E8vOX3atorPta7hnPXvmPMIh5WhqhGeg1XYqU59jAgesyMFZmfjfTq+/T4Dg
+         s85Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:references:cc:to
-         :from:subject:message-id:date:content-transfer-encoding:mime-version
-         :dkim-signature;
-        bh=eHs5vheDKVxWoucHAnJIKwlCbbGfzJ/voQUXMzBwong=;
-        fh=NMPELUbnJmqeZ1pc3nKQbhC0htsoYhWNWzkDKQqtgqY=;
-        b=DVovhSt1zUJ0Hjd56hwU1DIVtMi8AHqWzSqeqj9sOalJ/ZzX/0ezgHmV+Vb4pUmjZB
-         RAP7bHSekKRiqNDROxabBqvzz2TBZuaqsZ3VC/VzHVRgH94OB1GSaJyrbLKXF3bR4ib9
-         8aBe7cPQVoFF7AxgJlDHia+waSrFBEvGZhevf+wOLdXyktbleCMDaDwZH3xbzXJbTMRI
-         hikqrvGIk7ywNnlaXcFS+lgNKeBou31aNEbmBy8fI3P27YgFw6MnQMdoBhPsq8547u42
-         9iWxbgsFtyXml3PqLpCaaPP+mHIVkxJpf14XdKSsRJZ6CTgxN7LNN19EZi9VXG3THDxv
-         SUmA==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=jeJOEMQI9etjj4504MFjbHIhNQlAtlSoa9oxFj5oBhY=;
+        fh=6LIferDA4/z/iWTju/wr9elUK8av7rGIJzQfEXz5NGs=;
+        b=yVXYqD+4/iVrs7RjNYd8i+gwE/Sq7sPa4uAQabZM9kx4hvW5wHrCOKDwwyQ7Egk2Ln
+         LCeKoYxeeKoVF2wvSZCy7fUJcteUnHVvRE0pB1/XwkUXTyNKZl+ilKPy/xnl5/PRFhml
+         trbdsC/thcdg6c2KNOwisHQskh0bjmsyn+lpbN/eeglRDYle6xhdC+3aPFOM8TxRLB4a
+         ovXsu7TJTuEaMmLCO/yoFtDHEQOJLOziCxn+Qi4EMH+b+BPrtuKc1eMzYFBVAyFcGGNn
+         DuPKTTA1nl4E3/nLPD7ZjhFyDRUbJ/mhJvuEFoAoffcu05QsbRcpFnCtlKBYftouB07T
+         Eo5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=K24XRtfG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=UoW0dmoZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id md14-20020a056214588e00b0065b081ea068si997602qvb.185.2023.10.20.00.50.37
+        by mx.google.com with ESMTPS id e20-20020ad442b4000000b0066d0a15a304si1006348qvr.104.2023.10.20.00.52.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 00:50:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 00:52:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=K24XRtfG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=UoW0dmoZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtkGb-0005Np-V9; Fri, 20 Oct 2023 03:49:57 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtkIp-0001z1-R1; Fri, 20 Oct 2023 03:52:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qtkGa-0005Ad-RW; Fri, 20 Oct 2023 03:49:56 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qtkGY-0005OO-RC; Fri, 20 Oct 2023 03:49:56 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-6b87c1edfd5so478492b3a.1; 
- Fri, 20 Oct 2023 00:49:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1697788192; x=1698392992; darn=nongnu.org;
- h=in-reply-to:references:cc:to:from:subject:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eHs5vheDKVxWoucHAnJIKwlCbbGfzJ/voQUXMzBwong=;
- b=K24XRtfGcARdbw6cYUP73w3UU8f3y9RQwMkKfBg8Y4Ln6ojB5Rdmsvd7Ad0c9biTYx
- 003zGHNvAZoCULmx/QW5RjMVUv1c/HKSZxjJso8aVIOnSsDn0RQpwh4AgpVa/pFvTU8M
- jUcxmvs5w7uG6wpAeZcGa4RUGOfk08zzsz/5WdZ9aCaIO+2Wn1LMngX7vGam8bWVrGL0
- VazYI8T4SKO3FRUzeHJQrukTpJJq51Rbr0R6zZBoSOnIG7uTWIdi9rsp1nnmXzHfzPhF
- GoAFnJpj9+mXe0ebyqQHhhkIu1bXJdqCRM3iJtMb8CdleWLFDDpUyPSUKFG4f8/X3A+W
- EIqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697788192; x=1698392992;
- h=in-reply-to:references:cc:to:from:subject:message-id:date
- :content-transfer-encoding:mime-version:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=eHs5vheDKVxWoucHAnJIKwlCbbGfzJ/voQUXMzBwong=;
- b=noV8IUhnhPD+oINi/D28ANAZy+xaXByCM+c/sLVTvjL213wvjcjzp6IuBUwYx2TTn4
- cHrGN9+PS2fj/3skgKp5Fxci3hOlacXbS1ctoCk6D7OOrshYuz07w4GViZaM9KSZ6ywp
- RCzSFzXUdD2c/pzPTKJDFP7cCMKcYNZZa0w1KqS6X+XVjsIB1FXzBTS7H/V/iRqgjoa+
- 0JWYN/c0kH9noCfK0fxvurVETKzpYglPqlj49i3YX1j/5IBoYpjGteqa0XuDiz6inJ/i
- xzjTZPTndoE/PS0hoNi6bzdob7a4YorWr5bA2KDSQ3oS6OsWimaIbuf/b9mjdBsr4woQ
- bYCg==
-X-Gm-Message-State: AOJu0YyNvzVJ743D9TMYkpBkvbGHwOYThT3P1vZZphx4RTV2ikHdYSSz
- gtTdvKVjNvgjChB4JSGI7mw=
-X-Received: by 2002:a05:6a00:1514:b0:691:1eb:7dda with SMTP id
- q20-20020a056a00151400b0069101eb7ddamr1150624pfu.7.1697788191615; 
- Fri, 20 Oct 2023 00:49:51 -0700 (PDT)
-Received: from localhost (61-68-209-245.tpgi.com.au. [61.68.209.245])
- by smtp.gmail.com with ESMTPSA id
- b189-20020a62cfc6000000b0069029a3196dsm969512pfg.184.2023.10.20.00.49.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Oct 2023 00:49:51 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 20 Oct 2023 17:49:38 +1000
-Message-Id: <CWD3OHT178VU.3NF8B5Y5BOK1S@wheely>
-Subject: Re: [PATCH 07/13] RFC migration: icp/server is a mess
-From: "Nicholas Piggin" <npiggin@gmail.com>
-To: "Greg Kurz" <groug@kaod.org>, "Juan Quintela" <quintela@redhat.com>
-Cc: <qemu-devel@nongnu.org>, "Stefan Berger" <stefanb@linux.vnet.ibm.com>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>, <qemu-ppc@nongnu.org>,
- <qemu-s390x@nongnu.org>, "Gerd Hoffmann" <kraxel@redhat.com>, "Corey
- Minyard" <cminyard@mvista.com>, "Samuel Thibault"
- <samuel.thibault@ens-lyon.org>, "Richard Henderson"
- <richard.henderson@linaro.org>, "David Hildenbrand" <david@redhat.com>,
- "Ilya Leoshkevich" <iii@linux.ibm.com>, "Fabiano Rosas" <farosas@suse.de>,
- "Eric Farman" <farman@linux.ibm.com>, "Peter Xu" <peterx@redhat.com>,
- "Harsh Prateek Bora" <harshpb@linux.ibm.com>, "John Snow"
- <jsnow@redhat.com>, <qemu-block@nongnu.org>, "Mark Cave-Ayland"
- <mark.cave-ayland@ilande.co.uk>, "Christian Borntraeger"
- <borntraeger@linux.ibm.com>, =?utf-8?q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, "Stefan Weil" <sw@weilnetz.de>,
- <qemu-arm@nongnu.org>, "Jason Wang" <jasowang@redhat.com>, "Corey Minyard"
- <minyard@acm.org>, "Leonardo Bras" <leobras@redhat.com>, "Thomas Huth"
- <thuth@redhat.com>, "Peter Maydell" <peter.maydell@linaro.org>, "Michael S.
- Tsirkin" <mst@redhat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, "David Gibson" <david@gibson.dropbear.id.au>, "Halil Pasic"
- <pasic@linux.ibm.com>, "Daniel Henrique Barboza" <danielhb413@gmail.com>
-X-Mailer: aerc 0.15.2
-References: <20231019190831.20363-1-quintela@redhat.com>
- <20231019190831.20363-8-quintela@redhat.com>
- <20231019233958.17abb488@bahia>
-In-Reply-To: <20231019233958.17abb488@bahia>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=npiggin@gmail.com; helo=mail-pf1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1qtkIn-0001uD-NJ; Fri, 20 Oct 2023 03:52:13 -0400
+Received: from mgamail.intel.com ([192.55.52.120])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1qtkIi-00066J-PX; Fri, 20 Oct 2023 03:52:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1697788328; x=1729324328;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=vaKNyBFeTT0jV6xyprvSJs3hgfNw3c6070oU/8sbep4=;
+ b=UoW0dmoZ1NGhHXIu0GJUPwTCqah2+sGqwqETlXLH4nobXqeLH3Y6naWr
+ Q0OjrPL4yVuo2KzER9GEZrFidlDzysEBsM64N1WqTqJWbC6aFC31ylj4o
+ 1eqOHUuNs3Oi/JqjN41MLgKYfQYa0HRJ5vm8F4f7VGDJSkoURJ/DBFRMz
+ q59YE6jSRzk626TO/tv7KuxJ6RFSGJsnKTj2rKsGpNJ0hvJ4IBe8IAzjz
+ 7qmZwbbegBo2AjwsK6bq552ZCC2pXC3q08x3LlD+va85xz3Fe6N9TDuNP
+ 4Gw/KXpsU8a4ioEIsuEG040RI3zOB5bC5W/6WEGQgTOCRsXoyAGjWWIlm A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10868"; a="385326493"
+X-IronPort-AV: E=Sophos;i="6.03,238,1694761200"; d="scan'208";a="385326493"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Oct 2023 00:52:02 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10868"; a="733880379"
+X-IronPort-AV: E=Sophos;i="6.03,238,1694761200"; d="scan'208";a="733880379"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by orsmga006.jf.intel.com with ESMTP; 20 Oct 2023 00:51:50 -0700
+Date: Fri, 20 Oct 2023 16:03:27 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Song Gao <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stafford Horne <shorne@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-riscv@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Bin Meng <bin.meng@windriver.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-arm@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Marek Vasut <marex@denx.de>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Brian Cain <bcain@quicinc.com>, Thomas Huth <thuth@redhat.com>,
+ Chris Wulff <crwulff@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
+Subject: Re: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
+Message-ID: <ZTI0T98ruc3yWSsa@intel.com>
+References: <20231013140116.255-1-philmd@linaro.org>
+ <20231013140116.255-13-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231013140116.255-13-philmd@linaro.org>
+Received-SPF: pass client-ip=192.55.52.120; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GThIi64CHoLw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5wQ3P63xX/9X
 
-On Fri Oct 20, 2023 at 7:39 AM AEST, Greg Kurz wrote:
-> On Thu, 19 Oct 2023 21:08:25 +0200
-> Juan Quintela <quintela@redhat.com> wrote:
->
-> > Current code does:
-> > - register pre_2_10_vmstate_dummy_icp with "icp/server" and instance
-> >   dependinfg on cpu number
-> > - for newer machines, it register vmstate_icp with "icp/server" name
-> >   and instance 0
-> > - now it unregisters "icp/server" for the 1st instance.
-> >=20
-> > This is wrong at many levels:
-> > - we shouldn't have two VMSTATEDescriptions with the same name
-> > - In case this is the only solution that we can came with, it needs to
-> >   be:
-> >   * register pre_2_10_vmstate_dummy_icp
-> >   * unregister pre_2_10_vmstate_dummy_icp
-> >   * register real vmstate_icp
-> >=20
-> > As the initialization of this machine is already complex enough, I
-> > need help from PPC maintainers to fix this.
-> >=20
-> > Volunteers?
-> >=20
-> > CC: Cedric Le Goater <clg@kaod.org>
-> > CC: Daniel Henrique Barboza <danielhb413@gmail.com>
-> > CC: David Gibson <david@gibson.dropbear.id.au>
-> > CC: Greg Kurz <groug@kaod.org>
-> >=20
-> > Signed-off-by: Juan Quintela <quintela@redhat.com>
-> > ---
-> >  hw/ppc/spapr.c | 7 ++++++-
-> >  1 file changed, 6 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> > index cb840676d3..8531d13492 100644
-> > --- a/hw/ppc/spapr.c
-> > +++ b/hw/ppc/spapr.c
-> > @@ -143,7 +143,12 @@ static bool pre_2_10_vmstate_dummy_icp_needed(void=
- *opaque)
-> >  }
-> > =20
-> >  static const VMStateDescription pre_2_10_vmstate_dummy_icp =3D {
-> > -    .name =3D "icp/server",
-> > +    /*
-> > +     * Hack ahead.  We can't have two devices with the same name and
-> > +     * instance id.  So I rename this to pass make check.
-> > +     * Real help from people who knows the hardware is needed.
-> > +     */
-> > +    .name =3D "pre-2.10-icp/server",
-> >      .version_id =3D 1,
-> >      .minimum_version_id =3D 1,
-> >      .needed =3D pre_2_10_vmstate_dummy_icp_needed,
->
-> I guess this fix is acceptable as well and a lot simpler than
-> reverting the hack actually. Outcome is the same : drop
-> compat with pseries-2.9 and older.
->
-> Reviewed-by: Greg Kurz <groug@kaod.org>
+Hi Philippe,
 
-So the reason we can't have duplicate names registered, aside from it
-surely going bad if we actually send or receive a stream at the point
-they are registered, is the duplcate check introduced in patch 9? But
-before that, this hack does seem to actually work because the duplicate
-is unregistered right away.
+On Fri, Oct 13, 2023 at 04:01:11PM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Fri, 13 Oct 2023 16:01:11 +0200
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
+> X-Mailer: git-send-email 2.41.0
+> 
+> The OBJECT_DECLARE_CPU_TYPE() macro forward-declares each
+> ArchCPUClass type. These forward declarations are sufficient
+> for code in hw/ to use the QOM definitions. No need to expose
+> these structure definitions. Keep each local to their target/
+> by moving them to the corresponding "cpu.h" header.
+> 
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  target/alpha/cpu-qom.h      | 16 ---------------
+>  target/alpha/cpu.h          | 13 +++++++++++++
+>  target/arm/cpu-qom.h        | 27 -------------------------
+>  target/arm/cpu.h            | 25 ++++++++++++++++++++++++
+>  target/avr/cpu-qom.h        | 16 ---------------
+>  target/avr/cpu.h            | 14 +++++++++++++
+>  target/cris/cpu-qom.h       | 19 ------------------
+>  target/cris/cpu.h           | 16 +++++++++++++++
+>  target/hexagon/cpu-qom.h    |  1 -
+>  target/hppa/cpu-qom.h       | 16 ---------------
+>  target/hppa/cpu.h           | 14 +++++++++++++
+>  target/i386/cpu-qom.h       | 39 -------------------------------------
+>  target/i386/cpu.h           | 35 +++++++++++++++++++++++++++++++++
+>  target/loongarch/cpu-qom.h  |  1 -
+>  target/m68k/cpu-qom.h       | 16 ---------------
+>  target/m68k/cpu.h           | 13 +++++++++++++
+>  target/microblaze/cpu-qom.h | 16 ---------------
+>  target/microblaze/cpu.h     | 13 +++++++++++++
+>  target/mips/cpu-qom.h       | 20 -------------------
+>  target/mips/cpu.h           | 17 ++++++++++++++++
+>  target/nios2/cpu-qom.h      |  1 -
+>  target/openrisc/cpu-qom.h   |  1 -
+>  target/riscv/cpu-qom.h      | 16 +--------------
+>  target/riscv/cpu.h          | 14 +++++++++++++
+>  target/rx/cpu-qom.h         | 15 --------------
+>  target/rx/cpu.h             | 14 +++++++++++++
+>  target/s390x/cpu-qom.h      | 37 +----------------------------------
+>  target/s390x/cpu.h          | 30 ++++++++++++++++++++++++++++
+>  target/s390x/cpu_models.h   |  8 ++++----
+>  target/sh4/cpu-qom.h        | 23 ----------------------
+>  target/sh4/cpu.h            | 20 +++++++++++++++++++
+>  target/sparc/cpu-qom.h      | 18 -----------------
+>  target/sparc/cpu.h          | 18 +++++++++++++++--
+>  target/tricore/cpu-qom.h    | 10 ----------
+>  target/tricore/cpu.h        |  6 ++++++
+>  target/xtensa/cpu-qom.h     | 21 --------------------
+>  target/xtensa/cpu.h         | 20 +++++++++++++++++--
+>  37 files changed, 284 insertions(+), 335 deletions(-)
+> 
+> diff --git a/target/alpha/cpu-qom.h b/target/alpha/cpu-qom.h
+> index c4a4523993..1b32b18d34 100644
+> --- a/target/alpha/cpu-qom.h
+> +++ b/target/alpha/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_ALPHA_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_ALPHA_CPU "alpha-cpu"
+>  
+> @@ -30,19 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(AlphaCPU, AlphaCPUClass, ALPHA_CPU)
+>  #define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
+>  #define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
+>  
+> -/**
+> - * AlphaCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_reset: The parent class' reset handler.
+> - *
+> - * An Alpha CPU model.
+> - */
+> -struct AlphaCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    DeviceReset parent_reset;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+> index 3bff56c565..d672e911dd 100644
+> --- a/target/alpha/cpu.h
+> +++ b/target/alpha/cpu.h
+> @@ -267,6 +267,19 @@ struct ArchCPU {
+>      QEMUTimer *alarm_timer;
+>  };
+>  
+> +/**
+> + * AlphaCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_reset: The parent class' reset handler.
+> + *
+> + * An Alpha CPU model.
+> + */
+> +struct AlphaCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    DeviceReset parent_reset;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  extern const VMStateDescription vmstate_alpha_cpu;
+> diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+> index 35c3b0924e..02b914c876 100644
+> --- a/target/arm/cpu-qom.h
+> +++ b/target/arm/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_ARM_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_ARM_CPU "arm-cpu"
+>  
+> @@ -29,35 +28,9 @@ OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
+>  
+>  #define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
+>  
+> -typedef struct ARMCPUInfo {
+> -    const char *name;
+> -    void (*initfn)(Object *obj);
+> -    void (*class_init)(ObjectClass *oc, void *data);
+> -} ARMCPUInfo;
+> -
+> -/**
+> - * ARMCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * An ARM CPU model.
+> - */
+> -struct ARMCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    const ARMCPUInfo *info;
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+> -
+>  #define TYPE_AARCH64_CPU "aarch64-cpu"
+>  typedef struct AArch64CPUClass AArch64CPUClass;
+>  DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+>                         TYPE_AARCH64_CPU)
+>  
+> -struct AArch64CPUClass {
+> -    ARMCPUClass parent_class;
+> -};
+> -
+>  #endif
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 06f92dacb9..ad2f32efd5 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1116,6 +1116,31 @@ struct ArchCPU {
+>      uint64_t gt_cntfrq_hz;
+>  };
+>  
+> +typedef struct ARMCPUInfo {
+> +    const char *name;
+> +    void (*initfn)(Object *obj);
+> +    void (*class_init)(ObjectClass *oc, void *data);
+> +} ARMCPUInfo;
+> +
+> +/**
+> + * ARMCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * An ARM CPU model.
+> + */
+> +struct ARMCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    const ARMCPUInfo *info;
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+> +
+> +struct AArch64CPUClass {
+> +    ARMCPUClass parent_class;
+> +};
+> +
+>  /* Callback functions for the generic timer's timers. */
+>  void arm_gt_ptimer_cb(void *opaque);
+>  void arm_gt_vtimer_cb(void *opaque);
+> diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
+> index 75590cdd97..38dbcc0535 100644
+> --- a/target/avr/cpu-qom.h
+> +++ b/target/avr/cpu-qom.h
+> @@ -22,7 +22,6 @@
+>  #define TARGET_AVR_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_AVR_CPU "avr-cpu"
+>  
+> @@ -31,19 +30,4 @@ OBJECT_DECLARE_CPU_TYPE(AVRCPU, AVRCPUClass, AVR_CPU)
+>  #define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
+>  #define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
+>  
+> -/**
+> - *  AVRCPUClass:
+> - *  @parent_realize: The parent class' realize handler.
+> - *  @parent_phases: The parent class' reset phase handlers.
+> - *
+> - *  A AVR CPU model.
+> - */
+> -struct AVRCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+> -
+>  #endif /* TARGET_AVR_CPU_QOM_H */
+> diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+> index 0487399cb2..8a17862737 100644
+> --- a/target/avr/cpu.h
+> +++ b/target/avr/cpu.h
+> @@ -147,6 +147,20 @@ struct ArchCPU {
+>      CPUAVRState env;
+>  };
+>  
+> +/**
+> + *  AVRCPUClass:
+> + *  @parent_realize: The parent class' realize handler.
+> + *  @parent_phases: The parent class' reset phase handlers.
+> + *
+> + *  A AVR CPU model.
+> + */
+> +struct AVRCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+> +
+>  extern const struct VMStateDescription vms_avr_cpu;
+>  
+>  void avr_cpu_do_interrupt(CPUState *cpu);
+> diff --git a/target/cris/cpu-qom.h b/target/cris/cpu-qom.h
+> index d7e5f33e62..741ca97a1b 100644
+> --- a/target/cris/cpu-qom.h
+> +++ b/target/cris/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_CRIS_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_CRIS_CPU "cris-cpu"
+>  
+> @@ -30,22 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(CRISCPU, CRISCPUClass, CRIS_CPU)
+>  #define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
+>  #define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
+>  
+> -/**
+> - * CRISCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - * @vr: Version Register value.
+> - *
+> - * A CRIS CPU model.
+> - */
+> -struct CRISCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -
+> -    uint32_t vr;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+> index b821bb7983..1be7f90319 100644
+> --- a/target/cris/cpu.h
+> +++ b/target/cris/cpu.h
+> @@ -179,6 +179,22 @@ struct ArchCPU {
+>      CPUCRISState env;
+>  };
+>  
+> +/**
+> + * CRISCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + * @vr: Version Register value.
+> + *
+> + * A CRIS CPU model.
+> + */
+> +struct CRISCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +
+> +    uint32_t vr;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  extern const VMStateDescription vmstate_cris_cpu;
+> diff --git a/target/hexagon/cpu-qom.h b/target/hexagon/cpu-qom.h
+> index f02df7ee6f..da92fe7468 100644
+> --- a/target/hexagon/cpu-qom.h
+> +++ b/target/hexagon/cpu-qom.h
+> @@ -10,7 +10,6 @@
+>  #define QEMU_HEXAGON_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_HEXAGON_CPU "hexagon-cpu"
+>  
+> diff --git a/target/hppa/cpu-qom.h b/target/hppa/cpu-qom.h
+> index 4b1d48f7ca..7270e93e6b 100644
+> --- a/target/hppa/cpu-qom.h
+> +++ b/target/hppa/cpu-qom.h
+> @@ -21,25 +21,9 @@
+>  #define QEMU_HPPA_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_HPPA_CPU "hppa-cpu"
+>  
+>  OBJECT_DECLARE_CPU_TYPE(HPPACPU, HPPACPUClass, HPPA_CPU)
+>  
+> -/**
+> - * HPPACPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_reset: The parent class' reset handler.
+> - *
+> - * An HPPA CPU model.
+> - */
+> -struct HPPACPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    DeviceReset parent_reset;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+> index 518ea94f4f..0a0c7366c2 100644
+> --- a/target/hppa/cpu.h
+> +++ b/target/hppa/cpu.h
+> @@ -239,6 +239,20 @@ struct ArchCPU {
+>      QEMUTimer *alarm_timer;
+>  };
+>  
+> +/**
+> + * HPPACPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_reset: The parent class' reset handler.
+> + *
+> + * An HPPA CPU model.
+> + */
+> +struct HPPACPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    DeviceReset parent_reset;
+> +};
+> +
+>  #include "exec/cpu-all.h"
+>  
+>  static inline int cpu_mmu_index(CPUHPPAState *env, bool ifetch)
+> diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
+> index dffc74c1ce..d4e216d000 100644
+> --- a/target/i386/cpu-qom.h
+> +++ b/target/i386/cpu-qom.h
+> @@ -21,8 +21,6 @@
+>  #define QEMU_I386_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qemu/notify.h"
+> -#include "qom/object.h"
+>  
+>  #ifdef TARGET_X86_64
+>  #define TYPE_X86_CPU "x86_64-cpu"
+> @@ -35,41 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
+>  #define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
+>  #define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+>  
+> -typedef struct X86CPUModel X86CPUModel;
+> -
+> -/**
+> - * X86CPUClass:
+> - * @cpu_def: CPU model definition
+> - * @host_cpuid_required: Whether CPU model requires cpuid from host.
+> - * @ordering: Ordering on the "-cpu help" CPU model list.
+> - * @migration_safe: See CpuDefinitionInfo::migration_safe
+> - * @static_model: See CpuDefinitionInfo::static
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * An x86 CPU model or family.
+> - */
+> -struct X86CPUClass {
+> -    CPUClass parent_class;
+> -
+> -    /* CPU definition, automatically loaded by instance_init if not NULL.
+> -     * Should be eventually replaced by subclass-specific property defaults.
+> -     */
+> -    X86CPUModel *model;
+> -
+> -    bool host_cpuid_required;
+> -    int ordering;
+> -    bool migration_safe;
+> -    bool static_model;
+> -
+> -    /* Optional description of CPU model.
+> -     * If unavailable, cpu_def->model_id is used */
+> -    const char *model_description;
+> -
+> -    DeviceRealize parent_realize;
+> -    DeviceUnrealize parent_unrealize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index 2dea4df086..e21d293daa 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -2037,6 +2037,41 @@ struct ArchCPU {
+>      bool xen_vapic;
+>  };
+>  
+> +typedef struct X86CPUModel X86CPUModel;
 
-If I understand the workaround, there is an asymmetry in the migration
-sequence in that receiving an unexpected object would cause a failure,
-but going from newer to older would just skip some "expected" objects
-and that didn't cause a problem. So you only have to deal with ignoring
-the unexpected ones going form older to newer.
+Could we "typedef" this structure at its definition?
 
-Side question, is it possible to flag the problem of *not* receiving
-an object that you did expect? That might be a source of bugs too.
+Then this explicit "typedef" can also be omitted, just like you did
+elsewhere.
 
-Anyway, I wonder if we could fix this spapr problem by adding a special
-case wild card instance matcher to ignore it? It's still a bit hacky
-but maybe a bit nicer. I don't mind deprecating the machine soon if
-you want to clear the wildcard hack away soon, but it would be nice to
-separate the deprecation and removal from the fix, if possible.
+> +
+> +/**
+> + * X86CPUClass:
+> + * @cpu_def: CPU model definition
+> + * @host_cpuid_required: Whether CPU model requires cpuid from host.
+> + * @ordering: Ordering on the "-cpu help" CPU model list.
+> + * @migration_safe: See CpuDefinitionInfo::migration_safe
+> + * @static_model: See CpuDefinitionInfo::static
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * An x86 CPU model or family.
+> + */
+> +struct X86CPUClass {
+> +    CPUClass parent_class;
+> +
+> +    /* CPU definition, automatically loaded by instance_init if not NULL.
+> +     * Should be eventually replaced by subclass-specific property defaults.
+> +     */
+> +    X86CPUModel *model;
+> +
+> +    bool host_cpuid_required;
+> +    int ordering;
+> +    bool migration_safe;
+> +    bool static_model;
+> +
+> +    /* Optional description of CPU model.
+> +     * If unavailable, cpu_def->model_id is used */
+> +    const char *model_description;
+> +
+> +    DeviceRealize parent_realize;
+> +    DeviceUnrealize parent_unrealize;
+> +    ResettablePhases parent_phases;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  extern const VMStateDescription vmstate_x86_cpu;
+> diff --git a/target/loongarch/cpu-qom.h b/target/loongarch/cpu-qom.h
+> index 82c86d146d..fa3fcf7186 100644
+> --- a/target/loongarch/cpu-qom.h
+> +++ b/target/loongarch/cpu-qom.h
+> @@ -9,7 +9,6 @@
+>  #define LOONGARCH_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_LOONGARCH_CPU "loongarch-cpu"
+>  #define TYPE_LOONGARCH32_CPU "loongarch32-cpu"
+> diff --git a/target/m68k/cpu-qom.h b/target/m68k/cpu-qom.h
+> index df0cc8b7a3..273e8eae41 100644
+> --- a/target/m68k/cpu-qom.h
+> +++ b/target/m68k/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_M68K_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_M68K_CPU "m68k-cpu"
+>  
+> @@ -30,19 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(M68kCPU, M68kCPUClass, M68K_CPU)
+>  #define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
+>  #define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
+>  
+> -/*
+> - * M68kCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * A Motorola 68k CPU model.
+> - */
+> -struct M68kCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+> index 7f34686a6f..6cfc696d2b 100644
+> --- a/target/m68k/cpu.h
+> +++ b/target/m68k/cpu.h
+> @@ -169,6 +169,19 @@ struct ArchCPU {
+>      CPUM68KState env;
+>  };
+>  
+> +/*
+> + * M68kCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * A Motorola 68k CPU model.
+> + */
+> +struct M68kCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  void m68k_cpu_do_interrupt(CPUState *cpu);
+> diff --git a/target/microblaze/cpu-qom.h b/target/microblaze/cpu-qom.h
+> index 78f549b57d..92e539fb2f 100644
+> --- a/target/microblaze/cpu-qom.h
+> +++ b/target/microblaze/cpu-qom.h
+> @@ -21,25 +21,9 @@
+>  #define QEMU_MICROBLAZE_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_MICROBLAZE_CPU "microblaze-cpu"
+>  
+>  OBJECT_DECLARE_CPU_TYPE(MicroBlazeCPU, MicroBlazeCPUClass, MICROBLAZE_CPU)
+>  
+> -/**
+> - * MicroBlazeCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * A MicroBlaze CPU model.
+> - */
+> -struct MicroBlazeCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+> index e8000237d8..b5374365f5 100644
+> --- a/target/microblaze/cpu.h
+> +++ b/target/microblaze/cpu.h
+> @@ -355,6 +355,19 @@ struct ArchCPU {
+>      MicroBlazeCPUConfig cfg;
+>  };
+>  
+> +/**
+> + * MicroBlazeCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * A MicroBlaze CPU model.
+> + */
+> +struct MicroBlazeCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  void mb_cpu_do_interrupt(CPUState *cs);
+> diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
+> index 5822dfb1d2..0eea2a2598 100644
+> --- a/target/mips/cpu-qom.h
+> +++ b/target/mips/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_MIPS_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #ifdef TARGET_MIPS64
+>  #define TYPE_MIPS_CPU "mips64-cpu"
+> @@ -34,23 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
+>  #define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
+>  #define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
+>  
+> -/**
+> - * MIPSCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * A MIPS CPU model.
+> - */
+> -struct MIPSCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -    const struct mips_def_t *cpu_def;
+> -
+> -    /* Used for the jazz board to modify mips_cpu_do_transaction_failed. */
+> -    bool no_data_aborts;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+> index 12cc1bfafd..52f13f0363 100644
+> --- a/target/mips/cpu.h
+> +++ b/target/mips/cpu.h
+> @@ -1217,6 +1217,23 @@ struct ArchCPU {
+>      Clock *count_div; /* Divider for CP0_Count clock */
+>  };
+>  
+> +/**
+> + * MIPSCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * A MIPS CPU model.
+> + */
+> +struct MIPSCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +    const struct mips_def_t *cpu_def;
+> +
+> +    /* Used for the jazz board to modify mips_cpu_do_transaction_failed. */
+> +    bool no_data_aborts;
+> +};
+>  
+>  void mips_cpu_list(void);
+>  
+> diff --git a/target/nios2/cpu-qom.h b/target/nios2/cpu-qom.h
+> index 931bc69b10..2fd9121540 100644
+> --- a/target/nios2/cpu-qom.h
+> +++ b/target/nios2/cpu-qom.h
+> @@ -10,7 +10,6 @@
+>  #define QEMU_NIOS2_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_NIOS2_CPU "nios2-cpu"
+>  
+> diff --git a/target/openrisc/cpu-qom.h b/target/openrisc/cpu-qom.h
+> index 1ba9fb0a4c..14bac33312 100644
+> --- a/target/openrisc/cpu-qom.h
+> +++ b/target/openrisc/cpu-qom.h
+> @@ -10,7 +10,6 @@
+>  #define QEMU_OPENRISC_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_OPENRISC_CPU "or1k-cpu"
+>  
+> diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
+> index 76efb614a6..35ca5c4600 100644
+> --- a/target/riscv/cpu-qom.h
+> +++ b/target/riscv/cpu-qom.h
+> @@ -20,7 +20,6 @@
+>  #define RISCV_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_RISCV_CPU "riscv-cpu"
+>  #define TYPE_RISCV_DYNAMIC_CPU "riscv-dynamic-cpu"
+> @@ -44,21 +43,8 @@
+>  #define TYPE_RISCV_CPU_VEYRON_V1        RISCV_CPU_TYPE_NAME("veyron-v1")
+>  #define TYPE_RISCV_CPU_HOST             RISCV_CPU_TYPE_NAME("host")
+>  
+> -typedef struct CPUArchState CPURISCVState;
+> +typedef struct CPUArchState CPURISCVState; // XXX
 
-This patch is not tested but hopefully helps illustrate the idea.
+Is "// XXX" redundant?
 
-Thanks,
-Nick
+>  
+>  OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
+>  
+> -/**
+> - * RISCVCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * A RISCV CPU model.
+> - */
+> -struct RISCVCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+>  #endif /* RISCV_CPU_QOM_H */
+> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+> index d832696418..a7edf95213 100644
+> --- a/target/riscv/cpu.h
+> +++ b/target/riscv/cpu.h
+> @@ -414,6 +414,20 @@ struct ArchCPU {
+>      GHashTable *pmu_event_ctr_map;
+>  };
+>  
+> +/**
+> + * RISCVCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * A RISCV CPU model.
+> + */
+> +struct RISCVCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+> +
+>  static inline int riscv_has_ext(CPURISCVState *env, target_ulong ext)
+>  {
+>      return (env->misa_ext & ext) != 0;
+> diff --git a/target/rx/cpu-qom.h b/target/rx/cpu-qom.h
+> index 6213d877f7..ac2e5785ef 100644
+> --- a/target/rx/cpu-qom.h
+> +++ b/target/rx/cpu-qom.h
+> @@ -20,7 +20,6 @@
+>  #define RX_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_RX_CPU "rx-cpu"
+>  
+> @@ -31,18 +30,4 @@ OBJECT_DECLARE_CPU_TYPE(RXCPU, RXCPUClass, RX_CPU)
+>  #define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
+>  #define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
+>  
+> -/*
+> - * RXCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * A RX CPU model.
+> - */
+> -struct RXCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+>  #endif
+> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+> index c81613770c..e931e77e85 100644
+> --- a/target/rx/cpu.h
+> +++ b/target/rx/cpu.h
+> @@ -112,6 +112,20 @@ struct ArchCPU {
+>      CPURXState env;
+>  };
+>  
+> +/*
+> + * RXCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * A RX CPU model.
+> + */
+> +struct RXCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+> +
+>  #define CPU_RESOLVING_TYPE TYPE_RX_CPU
+>  
+>  const char *rx_crname(uint8_t cr);
+> diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
+> index fcd70daddf..4037e31f79 100644
+> --- a/target/s390x/cpu-qom.h
+> +++ b/target/s390x/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_S390_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_S390_CPU "s390x-cpu"
+>  
+> @@ -30,40 +29,6 @@ OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
+>  #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+>  #define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
+>  
+> -typedef struct S390CPUModel S390CPUModel;
+> -typedef struct S390CPUDef S390CPUDef;
+> -
+> -typedef struct CPUArchState CPUS390XState;
+> -
+> -typedef enum cpu_reset_type {
+> -    S390_CPU_RESET_NORMAL,
+> -    S390_CPU_RESET_INITIAL,
+> -    S390_CPU_RESET_CLEAR,
+> -} cpu_reset_type;
+> -
+> -/**
+> - * S390CPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_reset: The parent class' reset handler.
+> - * @load_normal: Performs a load normal.
+> - * @cpu_reset: Performs a CPU reset.
+> - * @initial_cpu_reset: Performs an initial CPU reset.
+> - *
+> - * An S/390 CPU model.
+> - */
+> -struct S390CPUClass {
+> -    CPUClass parent_class;
+> -
+> -    const S390CPUDef *cpu_def;
+> -    bool kvm_required;
+> -    bool is_static;
+> -    bool is_migration_safe;
+> -    const char *desc;
+> -
+> -    DeviceRealize parent_realize;
+> -    DeviceReset parent_reset;
+> -    void (*load_normal)(CPUState *cpu);
+> -    void (*reset)(CPUState *cpu, cpu_reset_type type);
+> -};
+> +typedef struct CPUArchState CPUS390XState; // XXX
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 1a31fb7293..8ce03edefa 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -1205,6 +1205,7 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDe=
-scription *vmsd,
- bool vmstate_save_needed(const VMStateDescription *vmsd, void *opaque);
-=20
- #define  VMSTATE_INSTANCE_ID_ANY  -1
-+#define  VMSTATE_INSTANCE_ID_WILD -2
-=20
- /* Returns: 0 on success, -1 on failure */
- int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index cb840676d3..2418899dd4 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -155,16 +155,10 @@ static const VMStateDescription pre_2_10_vmstate_dumm=
-y_icp =3D {
-     },
- };
-=20
--static void pre_2_10_vmstate_register_dummy_icp(int i)
-+static void pre_2_10_vmstate_register_dummy_icp(void)
- {
--    vmstate_register(NULL, i, &pre_2_10_vmstate_dummy_icp,
--                     (void *)(uintptr_t) i);
--}
--
--static void pre_2_10_vmstate_unregister_dummy_icp(int i)
--{
--    vmstate_unregister(NULL, &pre_2_10_vmstate_dummy_icp,
--                       (void *)(uintptr_t) i);
-+    vmstate_register(NULL, VMSTATE_INSTANCE_ID_WILD,
-+                     &pre_2_10_vmstate_dummy_icp, NULL);
- }
-=20
- int spapr_max_server_number(SpaprMachineState *spapr)
-@@ -2665,12 +2659,10 @@ static void spapr_init_cpus(SpaprMachineState *spap=
-r)
-     }
-=20
-     if (smc->pre_2_10_has_unused_icps) {
--        for (i =3D 0; i < spapr_max_server_number(spapr); i++) {
--            /* Dummy entries get deregistered when real ICPState objects
--             * are registered during CPU core hotplug.
--             */
--            pre_2_10_vmstate_register_dummy_icp(i);
--        }
-+        /* Dummy entries get deregistered when real ICPState objects
-+         * are registered during CPU core hotplug.
-+         */
-+        pre_2_10_vmstate_register_dummy_icp();
-     }
-=20
-     for (i =3D 0; i < possible_cpus->len; i++) {
-@@ -3873,21 +3865,9 @@ void spapr_core_release(DeviceState *dev)
- static void spapr_core_unplug(HotplugHandler *hotplug_dev, DeviceState *de=
-v)
- {
-     MachineState *ms =3D MACHINE(hotplug_dev);
--    SpaprMachineClass *smc =3D SPAPR_MACHINE_GET_CLASS(ms);
-     CPUCore *cc =3D CPU_CORE(dev);
-     CPUArchId *core_slot =3D spapr_find_cpu_slot(ms, cc->core_id, NULL);
-=20
--    if (smc->pre_2_10_has_unused_icps) {
--        SpaprCpuCore *sc =3D SPAPR_CPU_CORE(OBJECT(dev));
--        int i;
--
--        for (i =3D 0; i < cc->nr_threads; i++) {
--            CPUState *cs =3D CPU(sc->threads[i]);
--
--            pre_2_10_vmstate_register_dummy_icp(cs->cpu_index);
--        }
--    }
--
-     assert(core_slot);
-     core_slot->cpu =3D NULL;
-     qdev_unrealize(dev);
-@@ -3968,10 +3948,8 @@ static void spapr_core_plug(HotplugHandler *hotplug_=
-dev, DeviceState *dev)
- {
-     SpaprMachineState *spapr =3D SPAPR_MACHINE(OBJECT(hotplug_dev));
-     MachineClass *mc =3D MACHINE_GET_CLASS(spapr);
--    SpaprMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
-     SpaprCpuCore *core =3D SPAPR_CPU_CORE(OBJECT(dev));
-     CPUCore *cc =3D CPU_CORE(dev);
--    CPUState *cs;
-     SpaprDrc *drc;
-     CPUArchId *core_slot;
-     int index;
-@@ -4018,13 +3996,6 @@ static void spapr_core_plug(HotplugHandler *hotplug_=
-dev, DeviceState *dev)
-                            &error_abort);
-         }
-     }
--
--    if (smc->pre_2_10_has_unused_icps) {
--        for (i =3D 0; i < cc->nr_threads; i++) {
--            cs =3D CPU(core->threads[i]);
--            pre_2_10_vmstate_unregister_dummy_icp(cs->cpu_index);
--        }
--    }
- }
-=20
- static void spapr_core_pre_plug(HotplugHandler *hotplug_dev, DeviceState *=
-dev,
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 497ce02bd7..f33449e208 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -989,6 +989,10 @@ static int vmstate_save(QEMUFile *f, SaveStateEntry *s=
-e, JSONWriter *vmdesc)
-         trace_savevm_section_skip(se->idstr, se->section_id);
-         return 0;
-     }
-+    if (se->instance_id =3D=3D VMSTATE_INSTANCE_ID_WILD) {
-+        warn_report("Wildcard vmstate entry must set needed=3Dfalse");
-+        return 0;
-+    }
-=20
-     trace_savevm_section_start(se->idstr, se->section_id);
-     save_section_header(f, se, QEMU_VM_SECTION_FULL);
-@@ -1731,13 +1735,16 @@ int qemu_save_device_state(QEMUFile *f)
-=20
- static SaveStateEntry *find_se(const char *idstr, uint32_t instance_id)
- {
-+    SaveStateEntry *se_wild =3D NULL;
-     SaveStateEntry *se;
-=20
-     QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
--        if (!strcmp(se->idstr, idstr) &&
--            (instance_id =3D=3D se->instance_id ||
--             instance_id =3D=3D se->alias_id))
--            return se;
-+        if (!strcmp(se->idstr, idstr)) {
-+            if (instance_id =3D=3D se->instance_id || instance_id =3D=3D s=
-e->alias_id)
-+                return se;
-+            if (se->instance_id =3D=3D VMSTATE_INSTANCE_ID_WILD)
-+                se_wild =3D se;
-+        }
-         /* Migrating from an older version? */
-         if (strstr(se->idstr, idstr) && se->compat) {
-             if (!strcmp(se->compat->idstr, idstr) &&
-@@ -1746,7 +1753,7 @@ static SaveStateEntry *find_se(const char *idstr, uin=
-t32_t instance_id)
-                 return se;
-         }
-     }
--    return NULL;
-+    return se_wild;
- }
-=20
- enum LoadVMExitCodes {
+same here.
+
+Just the above nits. Otherwise,
+
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
+-Zhao
+
+>  
+>  #endif
+> diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+> index 988e2954a4..7e2cccec65 100644
+> --- a/target/s390x/cpu.h
+> +++ b/target/s390x/cpu.h
+> @@ -175,6 +175,36 @@ struct ArchCPU {
+>      uint32_t irqstate_saved_size;
+>  };
+>  
+> +typedef enum cpu_reset_type {
+> +    S390_CPU_RESET_NORMAL,
+> +    S390_CPU_RESET_INITIAL,
+> +    S390_CPU_RESET_CLEAR,
+> +} cpu_reset_type;
+> +
+> +/**
+> + * S390CPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_reset: The parent class' reset handler.
+> + * @load_normal: Performs a load normal.
+> + * @cpu_reset: Performs a CPU reset.
+> + * @initial_cpu_reset: Performs an initial CPU reset.
+> + *
+> + * An S/390 CPU model.
+> + */
+> +struct S390CPUClass {
+> +    CPUClass parent_class;
+> +
+> +    const S390CPUDef *cpu_def;
+> +    bool kvm_required;
+> +    bool is_static;
+> +    bool is_migration_safe;
+> +    const char *desc;
+> +
+> +    DeviceRealize parent_realize;
+> +    DeviceReset parent_reset;
+> +    void (*load_normal)(CPUState *cpu);
+> +    void (*reset)(CPUState *cpu, cpu_reset_type type);
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  extern const VMStateDescription vmstate_s390_cpu;
+> diff --git a/target/s390x/cpu_models.h b/target/s390x/cpu_models.h
+> index cc7305ec21..d7b8912989 100644
+> --- a/target/s390x/cpu_models.h
+> +++ b/target/s390x/cpu_models.h
+> @@ -18,7 +18,7 @@
+>  #include "hw/core/cpu.h"
+>  
+>  /* static CPU definition */
+> -struct S390CPUDef {
+> +typedef struct S390CPUDef {
+>      const char *name;       /* name exposed to the user */
+>      const char *desc;       /* description exposed to the user */
+>      uint8_t gen;            /* hw generation identification */
+> @@ -38,10 +38,10 @@ struct S390CPUDef {
+>      S390FeatBitmap full_feat;
+>      /* used to init full_feat from generated data */
+>      S390FeatInit full_init;
+> -};
+> +} S390CPUDef;
+>  
+>  /* CPU model based on a CPU definition */
+> -struct S390CPUModel {
+> +typedef struct S390CPUModel {
+>      const S390CPUDef *def;
+>      S390FeatBitmap features;
+>      /* values copied from the "host" model, can change during migration */
+> @@ -49,7 +49,7 @@ struct S390CPUModel {
+>      uint32_t cpu_id;        /* CPU id */
+>      uint8_t cpu_id_format;  /* CPU id format bit */
+>      uint8_t cpu_ver;        /* CPU version, usually "ff" for kvm */
+> -};
+> +} S390CPUModel;
+>  
+>  /*
+>   * CPU ID
+> diff --git a/target/sh4/cpu-qom.h b/target/sh4/cpu-qom.h
+> index bd0ef49fa1..6cf5fbb074 100644
+> --- a/target/sh4/cpu-qom.h
+> +++ b/target/sh4/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_SUPERH_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_SUPERH_CPU "superh-cpu"
+>  
+> @@ -34,26 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(SuperHCPU, SuperHCPUClass, SUPERH_CPU)
+>  #define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
+>  #define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
+>  
+> -/**
+> - * SuperHCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - * @pvr: Processor Version Register
+> - * @prr: Processor Revision Register
+> - * @cvr: Cache Version Register
+> - *
+> - * A SuperH CPU model.
+> - */
+> -struct SuperHCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -
+> -    uint32_t pvr;
+> -    uint32_t prr;
+> -    uint32_t cvr;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+> index dbe00e29c2..360eac1fbe 100644
+> --- a/target/sh4/cpu.h
+> +++ b/target/sh4/cpu.h
+> @@ -209,6 +209,26 @@ struct ArchCPU {
+>      CPUSH4State env;
+>  };
+>  
+> +/**
+> + * SuperHCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + * @pvr: Processor Version Register
+> + * @prr: Processor Revision Register
+> + * @cvr: Cache Version Register
+> + *
+> + * A SuperH CPU model.
+> + */
+> +struct SuperHCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +
+> +    uint32_t pvr;
+> +    uint32_t prr;
+> +    uint32_t cvr;
+> +};
+>  
+>  void superh_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>  int superh_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+> diff --git a/target/sparc/cpu-qom.h b/target/sparc/cpu-qom.h
+> index aca29415b4..a86331bd58 100644
+> --- a/target/sparc/cpu-qom.h
+> +++ b/target/sparc/cpu-qom.h
+> @@ -21,7 +21,6 @@
+>  #define QEMU_SPARC_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #ifdef TARGET_SPARC64
+>  #define TYPE_SPARC_CPU "sparc64-cpu"
+> @@ -34,21 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(SPARCCPU, SPARCCPUClass, SPARC_CPU)
+>  #define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
+>  #define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
+>  
+> -typedef struct sparc_def_t sparc_def_t;
+> -/**
+> - * SPARCCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - *
+> - * A SPARC CPU model.
+> - */
+> -struct SPARCCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -    sparc_def_t *cpu_def;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+> index 31772c9b73..9cee99d687 100644
+> --- a/target/sparc/cpu.h
+> +++ b/target/sparc/cpu.h
+> @@ -252,7 +252,7 @@ typedef struct trap_state {
+>  #endif
+>  #define TARGET_INSN_START_EXTRA_WORDS 1
+>  
+> -struct sparc_def_t {
+> +typedef struct sparc_def_t {
+>      const char *name;
+>      target_ulong iu_version;
+>      uint32_t fpu_version;
+> @@ -266,7 +266,7 @@ struct sparc_def_t {
+>      uint32_t features;
+>      uint32_t nwindows;
+>      uint32_t maxtl;
+> -};
+> +} sparc_def_t;
+>  
+>  #define CPU_FEATURE_FLOAT        (1 << 0)
+>  #define CPU_FEATURE_FLOAT128     (1 << 1)
+> @@ -562,6 +562,20 @@ struct ArchCPU {
+>      CPUSPARCState env;
+>  };
+>  
+> +/**
+> + * SPARCCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + *
+> + * A SPARC CPU model.
+> + */
+> +struct SPARCCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +    sparc_def_t *cpu_def;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  extern const VMStateDescription vmstate_sparc_cpu;
+> diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+> index 2598651008..e35dc1ad2d 100644
+> --- a/target/tricore/cpu-qom.h
+> +++ b/target/tricore/cpu-qom.h
+> @@ -21,8 +21,6 @@
+>  #define QEMU_TRICORE_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+> -
+>  
+>  #define TYPE_TRICORE_CPU "tricore-cpu"
+>  
+> @@ -31,12 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(TriCoreCPU, TriCoreCPUClass, TRICORE_CPU)
+>  #define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
+>  #define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
+>  
+> -struct TriCoreCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -};
+> -
+> -
+>  #endif /* QEMU_TRICORE_CPU_QOM_H */
+> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+> index c537a33ee8..de3ab53a83 100644
+> --- a/target/tricore/cpu.h
+> +++ b/target/tricore/cpu.h
+> @@ -68,6 +68,12 @@ struct ArchCPU {
+>      CPUTriCoreState env;
+>  };
+>  
+> +struct TriCoreCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +};
+>  
+>  hwaddr tricore_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>  void tricore_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+> diff --git a/target/xtensa/cpu-qom.h b/target/xtensa/cpu-qom.h
+> index 03873ea50b..d932346b5f 100644
+> --- a/target/xtensa/cpu-qom.h
+> +++ b/target/xtensa/cpu-qom.h
+> @@ -30,7 +30,6 @@
+>  #define QEMU_XTENSA_CPU_QOM_H
+>  
+>  #include "hw/core/cpu.h"
+> -#include "qom/object.h"
+>  
+>  #define TYPE_XTENSA_CPU "xtensa-cpu"
+>  
+> @@ -39,24 +38,4 @@ OBJECT_DECLARE_CPU_TYPE(XtensaCPU, XtensaCPUClass, XTENSA_CPU)
+>  #define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
+>  #define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
+>  
+> -typedef struct XtensaConfig XtensaConfig;
+> -
+> -/**
+> - * XtensaCPUClass:
+> - * @parent_realize: The parent class' realize handler.
+> - * @parent_phases: The parent class' reset phase handlers.
+> - * @config: The CPU core configuration.
+> - *
+> - * An Xtensa CPU model.
+> - */
+> -struct XtensaCPUClass {
+> -    CPUClass parent_class;
+> -
+> -    DeviceRealize parent_realize;
+> -    ResettablePhases parent_phases;
+> -
+> -    const XtensaConfig *config;
+> -};
+> -
+> -
+>  #endif
+> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+> index d6d2fb1f4e..dd81729306 100644
+> --- a/target/xtensa/cpu.h
+> +++ b/target/xtensa/cpu.h
+> @@ -426,7 +426,7 @@ extern const XtensaOpcodeTranslators xtensa_core_opcodes;
+>  extern const XtensaOpcodeTranslators xtensa_fpu2000_opcodes;
+>  extern const XtensaOpcodeTranslators xtensa_fpu_opcodes;
+>  
+> -struct XtensaConfig {
+> +typedef struct XtensaConfig {
+>      const char *name;
+>      uint64_t options;
+>      XtensaGdbRegmap gdb_regmap;
+> @@ -489,7 +489,7 @@ struct XtensaConfig {
+>      const xtensa_mpu_entry *mpu_bg;
+>  
+>      bool use_first_nan;
+> -};
+> +} XtensaConfig;
+>  
+>  typedef struct XtensaConfigList {
+>      const XtensaConfig *config;
+> @@ -562,6 +562,22 @@ struct ArchCPU {
+>      Clock *clock;
+>  };
+>  
+> +/**
+> + * XtensaCPUClass:
+> + * @parent_realize: The parent class' realize handler.
+> + * @parent_phases: The parent class' reset phase handlers.
+> + * @config: The CPU core configuration.
+> + *
+> + * An Xtensa CPU model.
+> + */
+> +struct XtensaCPUClass {
+> +    CPUClass parent_class;
+> +
+> +    DeviceRealize parent_realize;
+> +    ResettablePhases parent_phases;
+> +
+> +    const XtensaConfig *config;
+> +};
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+> -- 
+> 2.41.0
+> 
+> 
+> 

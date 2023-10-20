@@ -1,116 +1,189 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1277013ejb;
-        Fri, 20 Oct 2023 07:40:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF6XLnM3HKM6F9/4FQ1OsW8gpc/6vyGgz7GF6TIZX+KZUwWvwyHaFQDEjJSrtr1XKzFV6Vp
-X-Received: by 2002:a0d:c887:0:b0:5a8:5824:b952 with SMTP id k129-20020a0dc887000000b005a85824b952mr2031792ywd.44.1697812851132;
-        Fri, 20 Oct 2023 07:40:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697812851; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1288178ejb;
+        Fri, 20 Oct 2023 07:58:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGQRxRQeN//rT/ilO1Fsor7pBnQpq44WQu4SSFqJ0hOqiP2G5GImVhGYe1GhV5Ir3VGb43b
+X-Received: by 2002:a05:620a:bcb:b0:775:c335:1ee8 with SMTP id s11-20020a05620a0bcb00b00775c3351ee8mr2133729qki.54.1697813929888;
+        Fri, 20 Oct 2023 07:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697813929; cv=none;
         d=google.com; s=arc-20160816;
-        b=aWCaPXgtX7ahQJq7QSJu7NKJa/2xljSXnd0ksszoEJs3Godgew8vhr/UDurUv5pdIo
-         WgVl3cVMzstCzeGmA2wxp9aLYE4RR6GREH3Vrd2TPsKNFRmK8iF18dFsPPP9VKwc8AZS
-         1P8ktVWg5WVATD39kLGAldPVjAauuJQMDeC2+TWPxg2CaoI872Hc3rn1XsGLTpDRKPdX
-         12NSd2B/iER9GiNJ4212Cl0AACIuLXkKD3Pd+c1eFUOBH309TFha5PNagMQIO0dgytal
-         /AJ2U/DUeTLYnQSnee5frdI8H/cRuRm/M4SnQtGunqRzLIllZdl52bK7V2cQlKFNvcMg
-         QhRg==
+        b=PXlQznL/KfvUddBKXLs/8+gW7xFGExrWosG7szF4zy8mdTzmKU1DykaA9uUwHO2SmO
+         mvF3WwT8UkvXsG6CGBw7nMV6SR2sRuPce+J/WD2LD2yY7wxFRS9Gd7Ti9Nyp4cUFwYlA
+         5tjDw6RAXGGh8yThvNnuPmwWostBaVLMATmlowJA+RhZ9dKLWv/JgsDs9jtKok2ZjMSX
+         VKrjuDaGsLztfU6nXuXw9HX2IeLix62eGXgIe8DB3MXeTQ95VLdDA4mpvYAkjtEOHiRE
+         gdNvIkat6EjGQpg4d8uV85I090mqoO3Z7yIGFp1jMKKMMKXK/gnJLTDG3vxaAmTn6KNZ
+         Hq2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=vLdMsp4IR17GzRZo8LFd1OwbaTLZbt26ADSwqjO8BYs=;
-        fh=DuCf6c3xj4ZSkJBtqwY54tiwlZ6fEqeQb0eTb/LRlU0=;
-        b=zT61UrUIL0DWbC26ZWEqrUqQGE1/u8CH4lk9ADgiosAdaT9Ixl3wnAdhr9AeqjoBEa
-         gZ3uybSJa8q0Fov8WF1RRJ5HQTYd+BfLkrQujk8s8IEkG10pD0J8MVQ77SbPzYuGZs0F
-         GlWCjTBj4/XGFbqNgBseMUhlpOiafjjaTHxwL2H7WdlPav7n41PLc0M+yWRs0umRwjMH
-         QcTC1tawad0sto62fiPblBcs92QZq3Yh02rNOLKYiQWgbvCdXzHf8/Q6VEtfd5/y8UOe
-         8sd0UdUOLIvsxcZnLJBnjAaGHr23f6jICq/VovZS10o/VFXUUHrPVVNSVlG4DCYwmP2B
-         kPpQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=B1yKUqbJM73EfZsSbnTuf6HUC3/QV98Fjdab7FmzBEE=;
+        fh=aaqPnSD6tstDYOi4iE3lVjgOjq/ySCPz+jgy9Piw17A=;
+        b=x9Kzykcph1XATTNj/pmf1WQOxyl/AebvUGMMw9u5k2qkuAKIv8kWMCtvBehgTACpVV
+         dvTjWRICWzdiyizPjj8vPdxQI/wRS9oeAIAZeqPeS0NvXY2Sw/lOAEuhpUaJcpGO4Ji6
+         yHsYBmKs8lIVk2GewuDlFxjhezNqXLTAE5NFx0L2gJK/Ql+hrgrAf86x8vhfQpE6LdYd
+         ckc0uwYRCeIA2PRDNye2aTrZnma+dR/uklT9k6c6quSpUwM6CQktv4UHSxJyWprwSrb1
+         8mSq3Xr/DkLG30RygmaxrDgbasPEdndgyU2sKgyJY7IWnambzr2DDeJF+z8hre/bRwrz
+         7PNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rt-labs-com.20230601.gappssmtp.com header.s=20230601 header.b=JAAkxomN;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CzhI+qpF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rt-labs.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d20-20020ac85d94000000b00417981f0d4csi1424665qtx.575.2023.10.20.07.40.50
+        by mx.google.com with ESMTPS id br13-20020a05620a460d00b007757464e7c7si1405693qkb.633.2023.10.20.07.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 07:40:51 -0700 (PDT)
+        Fri, 20 Oct 2023 07:58:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rt-labs-com.20230601.gappssmtp.com header.s=20230601 header.b=JAAkxomN;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CzhI+qpF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rt-labs.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtqfw-0000Ue-PA; Fri, 20 Oct 2023 10:40:32 -0400
+	id 1qtqxP-00044V-VC; Fri, 20 Oct 2023 10:58:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hans-erik.floryd@rt-labs.com>)
- id 1qtqfv-0000UN-Oz
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 10:40:31 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hans-erik.floryd@rt-labs.com>)
- id 1qtqfs-0001t4-Ir
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 10:40:31 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-27d1373f631so709956a91.1
- for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 07:40:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=rt-labs-com.20230601.gappssmtp.com; s=20230601; t=1697812825; x=1698417625;
- darn=nongnu.org; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vLdMsp4IR17GzRZo8LFd1OwbaTLZbt26ADSwqjO8BYs=;
- b=JAAkxomNzikeTY4tASoXy5joiEpYEeivuQdDISpeULAd4hWZ+cHO6p4o3n1utcCc+a
- xkF5c4YAM2WVxOOdGFV1cajVsbeVbnZTG8lPT4MxxnZ3a6WjaUNMDDHM6ijN7cq8vYPx
- odwBFZQXolKbB8e11FFtZbQpRevPzU0EPzRtmD2wJTsOA+DKqRInVYQiPvXkfc5aPw+H
- fmJk0pP5MBSrdJbbdn6D0CH7+glJ6E4h76QkQYkOEZhZhHnW6ZCx9F+DDRz86o20Dcal
- E38q58xM7/cXAKuB93iODU2U1+oG9XplTAieXgOnLF/ijgYZFvtUD0IDsp4Llp7Hd0Oy
- vQpQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtqxO-00042t-G1
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 10:58:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtqxL-0007zG-Sv
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 10:58:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697813910;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=B1yKUqbJM73EfZsSbnTuf6HUC3/QV98Fjdab7FmzBEE=;
+ b=CzhI+qpFexZKaRs27HcNZxJhE65LQATHUbe199TYpy9DPpsu4RWhW6q/8AHv/FIHkZzYj+
+ cE1UuvlaHNQi5/FzovptgbSg2MTH5nXnmSWlSNHgDSRkTraz5/74r0eKiO9mT6YsisQRrc
+ QKe0kufj99ct6xV/P2cTvXdq3/n3N24=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-687-5oJ4EEvcNu2zKQmwN0ymyg-1; Fri, 20 Oct 2023 10:58:29 -0400
+X-MC-Unique: 5oJ4EEvcNu2zKQmwN0ymyg-1
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-66d412e2450so9865846d6.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Oct 2023 07:58:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697812825; x=1698417625;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vLdMsp4IR17GzRZo8LFd1OwbaTLZbt26ADSwqjO8BYs=;
- b=k0H4N6UKlw0aEafCGVshW7NHQGiCVYmdx1Opk4K8PAfcgONaivswBkz5ZwkBVm16zO
- nIdyeyH1ktWDtG3ZiTFH19UKbNnG6cYmxjCdZ1CNZ/pC2ie3WANbSIoh48v5Xb4ZPuIl
- Vix78lQx2upKwOAscK+x4+MvJjoITqtRLDJ5JAWfaDb2Nh+Uw1YhRg8xhgUYwGih/eIL
- rRBbpauS3EtmuOD2THEMzAfBHBX7992eX5c7BxyEvwDNGPq7jcmmsJI27/vZdx6D5EYT
- v+Fi81sr4Nci8xqwgnParXo75V00bk8sroIS0YrkNbwMwehuprFc0Z+gLVNZGLL+/f2P
- /L7w==
-X-Gm-Message-State: AOJu0Yyn5xALYqbfqlpOw4fuS1jgTyhr7NmckZjmB2p+3dgFD2GN87PH
- wnuTARLF9J0mQgSQG6l9IJh4lWU9XX0Ki+YIjogmqQ==
-X-Received: by 2002:a17:90b:3ec8:b0:27d:853:9109 with SMTP id
- rm8-20020a17090b3ec800b0027d08539109mr2068700pjb.20.1697812825274; Fri, 20
- Oct 2023 07:40:25 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1697813909; x=1698418709;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=B1yKUqbJM73EfZsSbnTuf6HUC3/QV98Fjdab7FmzBEE=;
+ b=krPtdb3xbZbSalHCBeTBk7QlITbhhAZc3XoTxwxccsMycKKXfm+Uabk0CHTQLyz22U
+ rlF5ztBGQAJjaCkaql6Fzgq6+57FlJVlLe+J87S1MVE6dsRwnxOFkbrkgxZxu49G3ESJ
+ 3/Q8ahWmg50PTH5d5MIwpNm+16K/V8XfMGXfehCNTt/qXmA/yx4AWWl77s2qBlc7wqX0
+ 56rLox4BzAwr846dxZ85VcotitSZtUAeFKrjTKZjICweb9AhoZkUpnZja6XuMvp/qEGX
+ 28EObk5lWnQIbChRcrdetDRMeaob+71w2JJYQeVeLQDlT19nHUug/l3VxRlSe3PMYP34
+ zmyg==
+X-Gm-Message-State: AOJu0YxIEM/GezSmyvGXqHvTDYpiV7zdBPwsiSvJ5TM7bLvGaNEXLWM8
+ dWlQ3sCZ6pBQ4IgKmEkfapOKwncVkVR8/pQi69Ho7QM42nz/6VSgZr9PRQgzAurz9m6O+xAkHAs
+ sAUrzAWVL9qmZ
+X-Received: by 2002:a05:6214:c8d:b0:66d:544d:8e68 with SMTP id
+ r13-20020a0562140c8d00b0066d544d8e68mr2249889qvr.3.1697813908760; 
+ Fri, 20 Oct 2023 07:58:28 -0700 (PDT)
+X-Received: by 2002:a05:6214:c8d:b0:66d:544d:8e68 with SMTP id
+ r13-20020a0562140c8d00b0066d544d8e68mr2249849qvr.3.1697813908463; 
+ Fri, 20 Oct 2023 07:58:28 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
+ [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
+ dc12-20020a056214174c00b0065b14fcfca6sm735725qvb.118.2023.10.20.07.58.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Oct 2023 07:58:28 -0700 (PDT)
+Message-ID: <62a45928-624b-4ec8-8168-fe2eb4ce4588@redhat.com>
+Date: Fri, 20 Oct 2023 16:58:22 +0200
 MIME-Version: 1.0
-References: <20231020111428.3260965-1-hans-erik.floryd@rt-labs.com>
- <74d96828-dae9-64fe-5947-ba83ce54206d@linaro.org>
-In-Reply-To: <74d96828-dae9-64fe-5947-ba83ce54206d@linaro.org>
-From: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-Date: Fri, 20 Oct 2023 16:40:14 +0200
-Message-ID: <CADS1RdQLmbdobcAsO+DM79N2TgaErCwrctATXNf6a7VYT6hBqA@mail.gmail.com>
-Subject: Re: [PATCH 1/1] stm32f2xx_usart: implement TX interrupts
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:STM32F205" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=hans-erik.floryd@rt-labs.com; helo=mail-pj1-x1035.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 04/13] migration: Use vmstate_register_any() for
+ ipmi-bt*
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, David Gibson <david@gibson.dropbear.id.au>,
+ Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Leonardo Bras <leobras@redhat.com>,
+ John Snow <jsnow@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-block@nongnu.org, qemu-s390x@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goat?=
+ =?UTF-8?Q?er?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Stefan Weil
+ <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
+References: <20231020090731.28701-1-quintela@redhat.com>
+ <20231020090731.28701-5-quintela@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20231020090731.28701-5-quintela@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,314 +198,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jn9i8p1xjFER
+X-TUID: Ez/A3XFZIvL9
 
-Hi Phil,
-
-On Fri, 20 Oct 2023 at 14:42, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Hi Hans-Erik,
->
-> On 20/10/23 13:14, Hans-Erik Floryd wrote:
-> > Generate interrupt if either of the TXE, TC or RXNE bits are active
-> > and the corresponding interrupt enable bit is set.
-> >
-> > Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-> > ---
-> >   hw/char/stm32f2xx_usart.c         | 29 +++++++++++++++++------------
-> >   include/hw/char/stm32f2xx_usart.h | 10 ++++++----
-> >   2 files changed, 23 insertions(+), 16 deletions(-)
-> >
-> > diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> > index fde67f4f03..2947c3a260 100644
-> > --- a/hw/char/stm32f2xx_usart.c
-> > +++ b/hw/char/stm32f2xx_usart.c
-> > @@ -53,6 +53,16 @@ static int stm32f2xx_usart_can_receive(void *opaque)
-> >       return 0;
-> >   }
-> >
-> > +static void stm32f2xx_update(STM32F2XXUsartState *s)
-> > +{
-> > +    uint32_t mask =3D s->usart_sr & s->usart_cr1;
-> > +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
-> > +        qemu_set_irq(s->irq, 1);
-> > +    } else {
-> > +        qemu_set_irq(s->irq, 0);
-> > +    }
-> > +}
-> > +
-> >   static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf,=
- int size)
-> >   {
-> >       STM32F2XXUsartState *s =3D opaque;
-> > @@ -66,9 +76,7 @@ static void stm32f2xx_usart_receive(void *opaque, con=
-st uint8_t *buf, int size)
-> >       s->usart_dr =3D *buf;
-> >       s->usart_sr |=3D USART_SR_RXNE;
-> >
-> > -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
-> > -        qemu_set_irq(s->irq, 1);
-> > -    }
-> > +    stm32f2xx_update(s);
-> >
-> >       DB_PRINT("Receiving: %c\n", s->usart_dr);
-> >   }
-> > @@ -85,7 +93,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
-> >       s->usart_cr3 =3D 0x00000000;
-> >       s->usart_gtpr =3D 0x00000000;
-> >
-> > -    qemu_set_irq(s->irq, 0);
-> > +    stm32f2xx_update(s);
-> >   }
-> >
-> >   static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
-> > @@ -100,13 +108,14 @@ static uint64_t stm32f2xx_usart_read(void *opaque=
-, hwaddr addr,
-> >       case USART_SR:
-> >           retvalue =3D s->usart_sr;
-> >           qemu_chr_fe_accept_input(&s->chr);
-> > +        stm32f2xx_update(s);
-> >           return retvalue;
-> >       case USART_DR:
-> >           DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s-=
->usart_dr);
-> >           retvalue =3D s->usart_dr & 0x3FF;
-> >           s->usart_sr &=3D ~USART_SR_RXNE;
-> >           qemu_chr_fe_accept_input(&s->chr);
-> > -        qemu_set_irq(s->irq, 0);
-> > +        stm32f2xx_update(s);
-> >           return retvalue;
-> >       case USART_BRR:
-> >           return s->usart_brr;
-> > @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque, hwa=
-ddr addr,
-> >           } else {
-> >               s->usart_sr &=3D value;
-> >           }
-> > -        if (!(s->usart_sr & USART_SR_RXNE)) {
-> > -            qemu_set_irq(s->irq, 0);
-> > -        }
-> > +        stm32f2xx_update(s);
-> >           return;
-> >       case USART_DR:
-> >           if (value < 0xF000) {
-> > @@ -161,6 +168,7 @@ static void stm32f2xx_usart_write(void *opaque, hwa=
-ddr addr,
-> >                  clear TC by writing 0 to the SR register, so set it ag=
-ain
-> >                  on each write. */
-> >               s->usart_sr |=3D USART_SR_TC;
-> > +            stm32f2xx_update(s);
-> >           }
-> >           return;
-> >       case USART_BRR:
-> > @@ -168,10 +176,7 @@ static void stm32f2xx_usart_write(void *opaque, hw=
-addr addr,
-> >           return;
-> >       case USART_CR1:
-> >           s->usart_cr1 =3D value;
-> > -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
-> > -                s->usart_sr & USART_SR_RXNE) {
-> > -                qemu_set_irq(s->irq, 1);
-> > -            }
-> > +        stm32f2xx_update(s);
-> >           return;
-> >       case USART_CR2:
-> >           s->usart_cr2 =3D value;
-> > diff --git a/include/hw/char/stm32f2xx_usart.h b/include/hw/char/stm32f=
-2xx_usart.h
-> > index 65bcc85470..fdfa7424a7 100644
-> > --- a/include/hw/char/stm32f2xx_usart.h
-> > +++ b/include/hw/char/stm32f2xx_usart.h
-> > @@ -48,10 +48,12 @@
-> >   #define USART_SR_TC   (1 << 6)
-> >   #define USART_SR_RXNE (1 << 5)
-> >
-> > -#define USART_CR1_UE  (1 << 13)
-> > -#define USART_CR1_RXNEIE  (1 << 5)
-> > -#define USART_CR1_TE  (1 << 3)
-> > -#define USART_CR1_RE  (1 << 2)
-> > +#define USART_CR1_UE     (1 << 13)
-> > +#define USART_CR1_TXEIE  (1 << 7)
-> > +#define USART_CR1_TCEIE  (1 << 6)
-> > +#define USART_CR1_RXNEIE (1 << 5)
-> > +#define USART_CR1_TE     (1 << 3)
-> > +#define USART_CR1_RE     (1 << 2)
-> >
-> >   #define TYPE_STM32F2XX_USART "stm32f2xx-usart"
-> >   OBJECT_DECLARE_SIMPLE_TYPE(STM32F2XXUsartState, STM32F2XX_USART)
->
-> To keep your changes trivial to review, I split your patch in 4:
-
-Ok - do you also want me to split the patch in the next version?
-
->
-> 1/ Extract stm32f2xx_update_irq()
->
-> -- >8 --
-> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> index fde67f4f03..519d3461a3 100644
-> --- a/hw/char/stm32f2xx_usart.c
-> +++ b/hw/char/stm32f2xx_usart.c
-> @@ -53,6 +53,17 @@ static int stm32f2xx_usart_can_receive(void *opaque)
->       return 0;
->   }
->
-> +static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
-> +{
-> +    uint32_t mask =3D s->usart_sr & s->usart_cr1;
-> +
-> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
-> +        qemu_set_irq(s->irq, 1);
-> +    } else {
-> +        qemu_set_irq(s->irq, 0);
-> +    }
-> +}
-> +
->   static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf,
-> int size)
->   {
->       STM32F2XXUsartState *s =3D opaque;
-> @@ -66,9 +77,7 @@ static void stm32f2xx_usart_receive(void *opaque,
-> const uint8_t *buf, int size)
->       s->usart_dr =3D *buf;
->       s->usart_sr |=3D USART_SR_RXNE;
->
-> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
-> -        qemu_set_irq(s->irq, 1);
-> -    }
-> +    stm32f2xx_update_irq(s);
->
->       DB_PRINT("Receiving: %c\n", s->usart_dr);
->   }
-> @@ -85,7 +94,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
->       s->usart_cr3 =3D 0x00000000;
->       s->usart_gtpr =3D 0x00000000;
->
-> -    qemu_set_irq(s->irq, 0);
-> +    stm32f2xx_update_irq(s);
->   }
->
->   static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
-> @@ -106,7 +115,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque,
-> hwaddr addr,
->           retvalue =3D s->usart_dr & 0x3FF;
->           s->usart_sr &=3D ~USART_SR_RXNE;
->           qemu_chr_fe_accept_input(&s->chr);
-> -        qemu_set_irq(s->irq, 0);
-> +        stm32f2xx_update_irq(s);
->           return retvalue;
->       case USART_BRR:
->           return s->usart_brr;
-> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque,
-> hwaddr addr,
->           } else {
->               s->usart_sr &=3D value;
->           }
-> -        if (!(s->usart_sr & USART_SR_RXNE)) {
-> -            qemu_set_irq(s->irq, 0);
-> -        }
-> +        stm32f2xx_update_irq(s);
->           return;
->       case USART_DR:
->           if (value < 0xF000) {
-> @@ -168,10 +175,7 @@ static void stm32f2xx_usart_write(void *opaque,
-> hwaddr addr,
->           return;
->       case USART_CR1:
->           s->usart_cr1 =3D value;
-> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
-> -                s->usart_sr & USART_SR_RXNE) {
-> -                qemu_set_irq(s->irq, 1);
-> -            }
-> +        stm32f2xx_update_irq(s);
->           return;
->       case USART_CR2:
->           s->usart_cr2 =3D value;
+On 20/10/2023 11.07, Juan Quintela wrote:
+> Otherwise device-introspection-test fails.
+> 
+> $ ./tests/qtest/device-introspect-test
+> ...
+> Broken pipe
+> ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+> Aborted (core dumped)
+> 
+> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+> Signed-off-by: Juan Quintela <quintela@redhat.com>
 > ---
->
-> 2/ Update IRQ when SR is read
->
-> -- >8 --
-> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> index 519d3461a3..46e29089bc 100644
-> --- a/hw/char/stm32f2xx_usart.c
-> +++ b/hw/char/stm32f2xx_usart.c
-> @@ -109,6 +109,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque,
-> hwaddr addr,
->       case USART_SR:
->           retvalue =3D s->usart_sr;
->           qemu_chr_fe_accept_input(&s->chr);
-> +        stm32f2xx_update_irq(s);
->           return retvalue;
->       case USART_DR:
->           DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char)
-> s->usart_dr);
-> ---
->
-> Why is this required?
+>   hw/ipmi/ipmi_bmc_extern.c | 2 +-
+>   hw/ipmi/ipmi_bmc_sim.c    | 2 +-
+>   hw/ipmi/isa_ipmi_bt.c     | 2 +-
+>   hw/ipmi/isa_ipmi_kcs.c    | 2 +-
+>   4 files changed, 4 insertions(+), 4 deletions(-)
 
-It's not required yet although it may be if support for more bits are
-added (IDLE for instance). Although rereading the manual I'm not sure
-that's how it would be implemented so I'll remove it.
+Please check whether you could replace this by this patch instead:
 
->
-> 3/ Update IRQ when DR is written
->
-> -- >8 --
-> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> index 46e29089bc..74f007591a 100644
-> --- a/hw/char/stm32f2xx_usart.c
-> +++ b/hw/char/stm32f2xx_usart.c
-> @@ -169,6 +169,7 @@ static void stm32f2xx_usart_write(void *opaque,
-> hwaddr addr,
->                  clear TC by writing 0 to the SR register, so set it agai=
-n
->                  on each write. */
->               s->usart_sr |=3D USART_SR_TC;
-> +            stm32f2xx_update_irq(s);
->           }
->           return;
->       case USART_BRR:
-> ---
->
-> This change makes sense
->
-> 4/ Add more CR1 bit definitions
->
-> -- >8 --
-> diff --git a/include/hw/char/stm32f2xx_usart.h
-> b/include/hw/char/stm32f2xx_usart.h
-> index 65bcc85470..fdfa7424a7 100644
-> --- a/include/hw/char/stm32f2xx_usart.h
-> +++ b/include/hw/char/stm32f2xx_usart.h
-> @@ -49,6 +49,8 @@
->   #define USART_SR_RXNE (1 << 5)
->
->   #define USART_CR1_UE     (1 << 13)
-> +#define USART_CR1_TXEIE  (1 << 7)
-> +#define USART_CR1_TCEIE  (1 << 6)
->   #define USART_CR1_RXNEIE (1 << 5)
->   #define USART_CR1_TE     (1 << 3)
->   #define USART_CR1_RE     (1 << 2)
-> ---
->
-> These are not used, why add them?
+  https://lore.kernel.org/qemu-devel/20231020145554.662751-1-thuth@redhat.com/
 
-For completeness since RXNEIE was already defined. Also for
-documentation, to show that SR_TX/CR_TXEIE etc share bit numbers,
-which the implementation relies on.
+  Thanks,
+   Thomas
 
-I can remove it though. Should I also remove RXNEIE which is no longer need=
-ed?
 
->
-> Regards,
->
-> Phil.
->
->
-
-Thanks for reviewing,
- Hans-Erik

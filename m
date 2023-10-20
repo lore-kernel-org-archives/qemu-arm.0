@@ -1,82 +1,80 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080117ejb;
-        Fri, 20 Oct 2023 02:09:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFt4IRTfhfayiawtSzbgZ/rSEivkDBR9Ilh1qQUZ1XKc0P7zC8C4zE55FVJddKAb+jD3cWN
-X-Received: by 2002:a05:6214:19e2:b0:66d:9caf:c054 with SMTP id q2-20020a05621419e200b0066d9cafc054mr158153qvc.4.1697792942950;
-        Fri, 20 Oct 2023 02:09:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697792942; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080132ejb;
+        Fri, 20 Oct 2023 02:09:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF7pQbsPokLs97rR6R3PxkKu6BToz5/PzBiYy7dl527rtsiFjUEX7F8w84FCo4e4MjXUtqa
+X-Received: by 2002:ac8:7e96:0:b0:419:82fa:7102 with SMTP id w22-20020ac87e96000000b0041982fa7102mr1197791qtj.38.1697792944934;
+        Fri, 20 Oct 2023 02:09:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697792944; cv=none;
         d=google.com; s=arc-20160816;
-        b=fiTHIWsPqvWPGmKfMkIUrVjNn278BtZW1vb5MDSuFEoFiVPCvzP7kwpy/8Gc7jMIO0
-         UxwBl3uvz3ieZbWEWkNDZGcS4QHTY+2XeE3w/c+yJUr/5vY716o2f0bFrVlj+ViI++zU
-         d98fiPvEzdOawIDYDfSshXmIBEWq3DkWS/DIFN6Ag5HwOwe43xWTMlolEG1NLhWVX6r1
-         1z7lMaIWYnkOHCvdzl7Y1cQ94bkoO1D2DXXKSHEdwSrc5/nUuWANHC2n1RsrK05E2R4i
-         xDkNVJ0vdVoKnVLDvRk4u5CTFw14mPGzdQb9UGQAJjb54q4PBlr6SgTji4h9Uo1j1o/N
-         vSvQ==
+        b=P44xYMn3X39HkgoLXZJfwmhDBPOc/dc6y4FRZBQfHBP4mSaNHPmDpyMKOEoe4PnWTL
+         b1se8KgwlWEDBR7z+f6Yiz9h0F02/uK2lwLFz8ZzCb6px4py0qFvv/o77/UPFtGX5aSY
+         uVgVkpVJ4oShcK+NzvT4wpOZWIf+D3f8EXQANAnCZGr50oMHDdCD6QAVTuuxI7wYUVMH
+         Ruy+ptZ8n/zpAO/bKI+tcq+ATvExJCwzrim4v0zf89xAK+pIWGjPe3IMh50k3N6mBF+W
+         vWjkLLKwsXoayugjp9W16h1JjGajtFdV1Ox16rCfYpQCGZRaf0PcewvksCCsGR9Ozo5n
+         2IqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=d9ROGmImGcNEhlqZIjyhd4kZVRhSXS7if8/sbCOuTpk=;
-        fh=rTkH9/wDYQMZLVlaH0neZTzbhrqu7oCVHTTGZPWdq9o=;
-        b=bpVb+WybOIu0D0TnQBSYgDsxz41xbClXWuOtw1BpgdsINSHnRSzPFfot7Tu2E44uQX
-         fAU9TvkjpoheY0Gumn8I4//mmrj9M0t8XA1KNdZ2Khxs9Gub52CVWLlymOo2m32C4w1b
-         tcUcsk16Pn7kTx5oLxeiVQKZjRnna6xeC3O1FWN2dWyhBiRjBwohDZzwVx51VXWZrwRp
-         VnqWuQLozG/JsbJyP+uSa5/1Ctrqc8i+g69iN9sGm5NKUVSS2w5kRU1ecmsuCotb7T+q
-         +1Gt3u0gA+qz/mbO/ZsVgdvuVEeVpgmDwNQpVKAVoEbSfeF4UxQR7yXFiwJfxKTxS4lS
-         3aww==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=YpSXkSExCLWND3UOS6rl5xmtJOtuXQPJE15D7cnE9HM=;
+        fh=Mwp3ThCAXh+AmQsC5dFDaw5TkorRX1d1xKXEPbQanFc=;
+        b=WhdSCrYH76SX4WU6qsKxepSA5syWEZgsxN1y/SQ6EFcdkoxDCTXfiI4h9iWVgQ7StM
+         chHq1Lo2qo7dtbwBChBAVXP0FbH2EGkRqJ+x5xsvyPfueWoMnBPV3uu/a+2eMMBeaphl
+         J+M8brCg+/qUMTYmwQ+S3q70s1vSQVyyysl774g1DvsO7Ch19CKCRZyS5+E61+8gtnW5
+         akjUDZh9rnkPbMP4tqRhcZjIvVI7JQANToN+MynL41P4ZGo20dn5fQP2rlF17l032AF7
+         BwC4KAvO7nQwKwy4ZC/4QG4prCb6QzYHgGY/g58RfkWiq1uiPArrNG/c8kYsAfmfMimU
+         EBKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Euyk82AG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U9sZNOax;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oo7-20020a056214450700b0065b231f117dsi1058836qvb.205.2023.10.20.02.09.02
+        by mx.google.com with ESMTPS id s14-20020ac85cce000000b004178c9cf90csi972119qta.21.2023.10.20.02.09.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 02:09:02 -0700 (PDT)
+        Fri, 20 Oct 2023 02:09:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Euyk82AG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U9sZNOax;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtlUk-00042h-6Z; Fri, 20 Oct 2023 05:08:38 -0400
+	id 1qtlTw-00037K-LF; Fri, 20 Oct 2023 05:07:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlUU-0003TC-61
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qtlTt-00032h-HJ
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:07:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlUP-0005G0-FA
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:21 -0400
+ id 1qtlTr-0005Al-Pe
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:07:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697792890;
+ s=mimecast20190719; t=1697792863;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=d9ROGmImGcNEhlqZIjyhd4kZVRhSXS7if8/sbCOuTpk=;
- b=Euyk82AG5mGgpox2rolKpDpfwKbw8zZ/zP6wTzTSYsXUg3Wm5Vol2r7QsYN5jhR3zkqIrq
- eUr1NlLjxzauO/gQ9DTi7udI1Omgap7bDXxSdM0kWmTLfROsTQ+vtlNTkH+fiNpcFT70eK
- v6PluY9Uf6NRH1QqMjX0mvg9tHzPaco=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=YpSXkSExCLWND3UOS6rl5xmtJOtuXQPJE15D7cnE9HM=;
+ b=U9sZNOaxbTIAoLsn/Uuo3NoU1qz708d0gKC5QlX0jC22F8ZECPggl3Y0WtWzmdwFik83kW
+ 0+lQDThCbgXwGD9yT54fbT2LLMsWdw117lYIsJR0oiCZSYpZdwdiWKXr9stlCCVs6FUZqy
+ pxKQw7d/9Y6UyuqY0xArKgX9L1QFvT4=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-522-szTGTDK9P6K8xKR6v5qjCg-1; Fri, 20 Oct 2023 05:08:06 -0400
-X-MC-Unique: szTGTDK9P6K8xKR6v5qjCg-1
+ us-mta-57-O_3ADSKhMgSdeuPCpJ9I8A-1; Fri, 20 Oct 2023 05:07:38 -0400
+X-MC-Unique: O_3ADSKhMgSdeuPCpJ9I8A-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B7365380664F;
- Fri, 20 Oct 2023 09:08:04 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B96483827977;
+ Fri, 20 Oct 2023 09:07:37 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B5A342166B26;
- Fri, 20 Oct 2023 09:07:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5417D2166B26;
+ Fri, 20 Oct 2023 09:07:32 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -102,23 +100,22 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Stefan Weil <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PATCH v2 05/13] migration: Use VMSTATE_INSTANCE_ID_ANY for slirp
-Date: Fri, 20 Oct 2023 11:07:23 +0200
-Message-ID: <20231020090731.28701-6-quintela@redhat.com>
-In-Reply-To: <20231020090731.28701-1-quintela@redhat.com>
-References: <20231020090731.28701-1-quintela@redhat.com>
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH v2 00/13] migration: Check for duplicates on vmstate_register()
+Date: Fri, 20 Oct 2023 11:07:18 +0200
+Message-ID: <20231020090731.28701-1-quintela@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,45 +131,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JnBCV9Gg47aa
+X-TUID: QfZLyCM0C2jH
 
-Each user network conection create a new slirp instance.  We register
-more than one slirp instance for number 0.
+Hi
 
-qemu-system-x86_64: -netdev user,id=hs1: savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=slirp, instance_id=0x0
-Broken pipe
-../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
-Aborted (core dumped)
+Hi
 
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
----
- net/slirp.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+on this v2:
+- rebased on top of master (no conflicts)
+- handled reviewed by
+- improved documentation
+- Changed the ppc hack to maintain backwards compatibility.
 
-diff --git a/net/slirp.c b/net/slirp.c
-index c33b3e02e7..25b49c4526 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -46,6 +46,7 @@
- #include "qapi/qmp/qdict.h"
- #include "util.h"
- #include "migration/register.h"
-+#include "migration/vmstate.h"
- #include "migration/qemu-file-types.h"
- 
- static int get_str_sep(char *buf, int buf_size, const char **pp, int sep)
-@@ -659,8 +660,8 @@ static int net_slirp_init(NetClientState *peer, const char *model,
-      * specific version?
-      */
-     g_assert(slirp_state_version() == 4);
--    register_savevm_live("slirp", 0, slirp_state_version(),
--                         &savevm_slirp_state, s->slirp);
-+    register_savevm_live("slirp", VMSTATE_INSTANCE_ID_ANY,
-+                         slirp_state_version(), &savevm_slirp_state, s->slirp);
- 
-     s->poll_notifier.notify = net_slirp_poll_notify;
-     main_loop_poll_add_notifier(&s->poll_notifier);
+Please review.
+
+[v1]
+This series are based in a patch from Peter than check if a we try to
+register the same device with the same instance_id more than once.  It
+was not merged when he sent it because it broke "make check".  So I
+fixed all devices to be able to merge it.
+
+- I create vmstate_register_any(), its the same that
+  vmstate_register(VMSTATE_INSTANCE_ID_ANY)
+- Later I check in vmstate_register() that they are not calling it
+  with VMSTATE_INSTANCE_ID_ANY
+- After that I change vmstate_register() to make sure that we don't
+  include a duplicate.
+
+And we get all the errors that I change in patches 3, 4, 5, 6, 7.
+After those patches: make check works again.
+And then I reviewed all the rest of vmstate_register() callers.
+
+There are the cases where they pass a device_id that is generated
+somehow, that ones are ok.
+
+Then we have the ones that pass always 0.  This ones are only valid
+when there is a maximum of one device instantiated for a given
+machine.
+
+- audio: you can choose more than one audio output.
+- eeprom93xx: you can have more than one e100 card.
+
+- vmware_vga: I am not completely sure here, it appears that you could
+  have more than one.  Notice that VMSTATE_INSTANCE_ID_ANY will give
+  us the value 0 if there is only one instance, so we are in no
+  trouble.  We can drop it if people think that we can't have more
+  than one vmware_vga.
+
+- for the rest of the devices, I can't see any that can be
+  instantiated more than once (testing it is easy, just starting the
+  machine will make it fail).  Notice that again, for the same
+  reasoning, we could change all the calls to _any().  And only left
+  the vmstate_register(... 0 ...) calls for devices that we know that
+  we only ever want one.
+
+What needs to be done:
+
+- icp/server: We need to rename the old icp server name.  Notice that
+  I doubt that anyone is migrating this, but I need help from PPC
+  experts.  As said in the commit message, it is "abusing" the interface:
+  - it register a new device
+  - it realizes that it is instantiting an old beard
+  - it unregister the new device
+  - it registers the old device
+
+- rest of devices:
+
+  * pxa2xx devices: I can't see how you can create more than one
+    device in a machine
+  * acpi_build: I can't see how to create more than once.
+  * replay: neither
+  * cpu timers: created in vl.c
+  * global_state: only once
+  * s390 css: not a way that I can think
+  * spapr: looks only one
+  * or1ktimer: I can only see one
+  * tsc*: I see only use in pxa2xx and one by board
+
+- And now, another abuser:
+
+vmstate_register(VMSTATE_IF(tcet), tcet->liobn, &vmstate_spapr_tce_table,
+
+tcet->liobn is an uint32_t, and instance_id is an int.  And it just happens that is value is < VMSTATE_INSTANCE_ID_ANY.
+
+Please, review.
+
+Juan Quintela (12):
+  migration: Create vmstate_register_any()
+  migration: Use vmstate_register_any()
+  migration: Use vmstate_register_any() for isa-ide
+  migration: Use vmstate_register_any() for ipmi-bt*
+  migration: Use VMSTATE_INSTANCE_ID_ANY for slirp
+  migration: Use VMSTATE_INSTANCE_ID_ANY for s390 devices
+  migration: Hack to maintain backwards compatibility for ppc
+  migration: vmstate_register() check that instance_id is valid
+  migration: Improve example and documentation of vmstate_register()
+  migration: Use vmstate_register_any() for audio
+  migration: Use vmstate_register_any() for eeprom93xx
+  migration: Use vmstate_register_any() for vmware_vga
+
+Peter Xu (1):
+  migration: Check in savevm_state_handler_insert for dups
+
+ docs/devel/migration.rst    | 12 ++++++++----
+ include/migration/vmstate.h | 34 ++++++++++++++++++++++++++++++++++
+ audio/audio.c               |  2 +-
+ backends/dbus-vmstate.c     |  3 +--
+ backends/tpm/tpm_emulator.c |  3 +--
+ hw/display/vmware_vga.c     |  2 +-
+ hw/i2c/core.c               |  2 +-
+ hw/ide/isa.c                |  2 +-
+ hw/input/adb.c              |  2 +-
+ hw/input/ads7846.c          |  2 +-
+ hw/input/stellaris_input.c  |  3 +--
+ hw/intc/xics.c              | 17 +++++++++++++++--
+ hw/ipmi/ipmi_bmc_extern.c   |  2 +-
+ hw/ipmi/ipmi_bmc_sim.c      |  2 +-
+ hw/ipmi/isa_ipmi_bt.c       |  2 +-
+ hw/ipmi/isa_ipmi_kcs.c      |  2 +-
+ hw/net/eepro100.c           |  3 +--
+ hw/nvram/eeprom93xx.c       |  2 +-
+ hw/pci/pci.c                |  2 +-
+ hw/ppc/spapr.c              | 25 +++++++++++++++++++++++--
+ hw/ppc/spapr_nvdimm.c       |  3 +--
+ hw/s390x/s390-skeys.c       |  3 ++-
+ hw/s390x/s390-stattrib.c    |  3 ++-
+ hw/timer/arm_timer.c        |  2 +-
+ hw/virtio/virtio-mem.c      |  4 ++--
+ migration/savevm.c          | 32 ++++++++++++++++++++++++++++++++
+ net/slirp.c                 |  5 +++--
+ 27 files changed, 139 insertions(+), 37 deletions(-)
+
 -- 
 2.41.0
 

@@ -1,227 +1,441 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1330912ejb;
-        Fri, 20 Oct 2023 08:58:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFUoy92HVdQH8m1K3Sra0JN0EU9+VhjgjwDCUYBnpgDJwv5ZwZ7p7LhDzJBcRUEQdk08qZ+
-X-Received: by 2002:a05:620a:8b83:b0:778:a940:70cb with SMTP id qx3-20020a05620a8b8300b00778a94070cbmr1966107qkn.19.1697817486008;
-        Fri, 20 Oct 2023 08:58:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697817485; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1332656ejb;
+        Fri, 20 Oct 2023 09:00:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGKlMKL5THu7CBskR6VyhrOKpvb6mal6ZV8CVdZM5TesJ1QVNyn89PWoVNroJJEG7XNV1J5
+X-Received: by 2002:a67:ca16:0:b0:457:82be:6782 with SMTP id z22-20020a67ca16000000b0045782be6782mr2645380vsk.9.1697817633898;
+        Fri, 20 Oct 2023 09:00:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697817633; cv=none;
         d=google.com; s=arc-20160816;
-        b=ewL4mQuzGRwRh2NsSl6ct0ryuSLTyFl6jm6H2kuOQP601YDtPB3N1KZfzYo/Y9M5w3
-         Xb65IBYJXKBOVdEQX1X+RE5QY4I1q+DxdfGHWTVmV0HM1Syzd/WPGsQ2cwk2HYVcJCyC
-         VwFmFUWaH/FFwDJhfxY2DF8vhxe3aNGB72Iqj20KXWAIi6vm3QHDQ1+NNOd9z6+yr5Pc
-         9X6zCDmB9yagYpT7beNFYS8yTW/LoVR9bpQwALNGNV8OgJihdsPTBGRfgF/1mPKzpB25
-         oTNnLfkU3Rq2Tl+wxzgKX4IwIfk7qFHXKy9sI9Rsk1gt/snC+9YiFuL/X4QdI/IYDjef
-         6psQ==
+        b=ESKKRmdqauzdYiSeGGdQhxlivgdvT1ZeqGNOfMRHRFEWuVKCC3FBnD9mxY0idFam9Y
+         NeZL9i+DBgTMj8/knOaVtKU/PQYZNtktcsUNs884lZCwEW7uejnKvd/Fk7xdyCN4397W
+         ucXOkcX5k+eSFP54JhDZnkzkyEcVOmYXWwWVGxf6yHRUCMIxOLZAUHRFXqVhdxx2+pe+
+         A6YJykVcJsbvNeDknK1v/cAbaKcybjwgJP8j/ynXyhTRVO2TOadeSyj7abdSb8ogf1gO
+         NT8vzedsrm6K95BU20IsGpATDzfaDhVLeE2oAZwkYFhVnjqiLdvk6oSWv0cGtL1q02cq
+         JJZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=cb9l3DF1d49PUwTFyqMsiU1TztquhzN5qGglvJ63ZSw=;
-        fh=6LIferDA4/z/iWTju/wr9elUK8av7rGIJzQfEXz5NGs=;
-        b=RwvAEqiw2j7NOhwWLx3LUpCbznpeEta3r0f7hxL/iTSZR/bUjBdbQIcK/H3KyGlnkc
-         /4uYapHbY677xNwYu8lUmAfVwR90I2GqwqjMZDmCg6dssIno9j3AFOlKTnhU3wyJWtgf
-         qmvnMJkDytZSSkhqoOx0ycZPEr+hveXvbKzS52vJdDwHtcynGEkSCqmim2T0C7whQFpw
-         qQnHAZOXhR6ojreL07B0tF47nPW9U20v6O/bjFtAmkhq8MuFO2lNwoLZkWmYtyEqRVl2
-         lqzJfDErcKbihfp19J8wumUhDwFps1kngIAa0NkD3BwnY2k6XGfhd4QBxkvXoWZf3UuQ
-         K4MQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=H3qRuG7BKbTEc6nrwgr7wiqKAoP/BVqIfN3IMumn/Uc=;
+        fh=5vaoWvTnlKN+1FLcZ05RH9B5qe6WCTczG7jiRmckztE=;
+        b=OFwqeE4AO0RNoLUae0QrNcZPtLVxDxSeBvIHnVEnbaPHl9QYHyBdNMWhYF7arpHcqz
+         UJ+Q6LHbM+KivqWX9CwuqHCNZtd+F4Z9O/YqB8ZVv8M4JIFU5ATUnneo6TYnX+6EosCw
+         lXwYEkoZxtTzqYKGTkdDv/+1dKEXzdYaHliAKHUGEnJ/eUkv0wjFP4SmFCon0sg4uMWB
+         KqCVkbTYcDQMuB3m2cwSGynjQf2bqHz1j85ChfDzFebZ4QagzQwEiLEN/l9HksSkszkj
+         iL5incbYgEPk8B8Jqifq9XDyGorCh1NRKj2VJtskW2+jo4se2exB+fNInVu0gGFpB9KI
+         /F3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HYIQoQC0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=zWnSfleB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay11-20020a05620a178b00b0077055f2ec4dsi1584801qkb.250.2023.10.20.08.58.05
+        by mx.google.com with ESMTPS id bs39-20020a056130102700b0078f65eeb73fsi97811uab.223.2023.10.20.09.00.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 08:58:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 09:00:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HYIQoQC0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=zWnSfleB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtrsD-00029T-Ou; Fri, 20 Oct 2023 11:57:17 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtruq-0005If-I4; Fri, 20 Oct 2023 12:00:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1qtrsA-00027S-9H; Fri, 20 Oct 2023 11:57:14 -0400
-Received: from mgamail.intel.com ([134.134.136.31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1qtrs5-0006z4-LT; Fri, 20 Oct 2023 11:57:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697817429; x=1729353429;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=eut9DQ0KH5sVbMUaQq3B4rhI7/svi7cLTVzz7f15sMY=;
- b=HYIQoQC0CwbJMNVqEPs7tVYUURi49hK+2jr4mxXURdMwYNNYNEJWhbSm
- Ogw2WbKlTNQAahHik+IfcSSHMynn01KCs4Cz6iRialyEA5xo9vYIpAecr
- WLvMDQMItsNVwHfZzZtQuDot5y2uua2Cr5oNqzxjrFxIN44YKJlHpJd7I
- I7HhEnI7FjXGE8qjb+ewsQiigLpd81Li4GTodOb3Y5jGSdxuflcaQzgJu
- /w0hQ+C40hdeC28gxkN81PzLXTMg4ZNDtp0UlBHIleWpLqA6acseO9ju2
- 24HVNzIulS0LZQt7uE9awX2MaYwV5Wy09fWLHxxF+T6dlAUaTBkb3qBjN w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10869"; a="450751456"
-X-IronPort-AV: E=Sophos;i="6.03,239,1694761200"; d="scan'208";a="450751456"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Oct 2023 08:57:04 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10869"; a="848117215"
-X-IronPort-AV: E=Sophos;i="6.03,239,1694761200"; d="scan'208";a="848117215"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by FMSMGA003.fm.intel.com with ESMTP; 20 Oct 2023 08:56:53 -0700
-Date: Sat, 21 Oct 2023 00:08:31 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Song Gao <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>,
- Stafford Horne <shorne@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Yanan Wang <wangyanan55@huawei.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Laurent Vivier <lvivier@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-riscv@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Bin Meng <bin.meng@windriver.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Nicholas Piggin <npiggin@gmail.com>, qemu-arm@nongnu.org,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Marek Vasut <marex@denx.de>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- Brian Cain <bcain@quicinc.com>, Thomas Huth <thuth@redhat.com>,
- Chris Wulff <crwulff@gmail.com>, Sergio Lopez <slp@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
-Subject: Re: [PATCH v2 00/16] target: Make 'cpu-qom.h' really target agnostic
-Message-ID: <ZTKl/y4yxkli1pqy@intel.com>
-References: <20231013140116.255-1-philmd@linaro.org>
- <ZTIVQfTmkK05fln9@intel.com>
- <94280b39-a331-003d-f227-38c3e1b94434@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtruo-0005Es-RI
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 11:59:58 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtrum-0008UN-K0
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 11:59:58 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-40850b244beso6956085e9.2
+ for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 08:59:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697817594; x=1698422394; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=H3qRuG7BKbTEc6nrwgr7wiqKAoP/BVqIfN3IMumn/Uc=;
+ b=zWnSfleBqgh12fxx36OAtj6qAztVwTgxjtrmrR0ipSiYpqxezmtjiG2d0jL/WLtaC9
+ hwiGFDqwSp91PmDEwahqpOlr19D6NpY9MeYqlJul+Uq9GCKJ49Yaa6aGrCzcHhlKbl8T
+ TC8fuKhic4Be3NVE3kbpBoVv56d3D2qya1R/ZOcdYC+uFUYYfBpbQmCH2tActuEmtooI
+ CDmu8LOwccb+xROt75+8349ZXf/pXi8T5TBMm8FlwsPOsXGASPavEL+an6N4PuCpjtlp
+ NltqrTF2sDtCHyHT4od9Es00ZmRvW8ftlrquT8MNzNx+THtRjTL0yRibKKFldhwARo+H
+ WPgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697817594; x=1698422394;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=H3qRuG7BKbTEc6nrwgr7wiqKAoP/BVqIfN3IMumn/Uc=;
+ b=k+csoE2p+r1ssTB2S8f3eUJa7zq6q9qYFIBMWBiHCU0bXADx+TAWyKmx2/U+1D+kR4
+ 8BJIXq2Aq00fDZse2QxQAuUlBonmhjWqNg5rUlodqjP9lzJp1YfC8E/hdILIRCO6xIeY
+ TRhaR1GIN+Zx1SUXl1s3ecZpZPHSSD4OoxNAPf9/C563u1wtVcDyw1HIlWBOplOOlS3c
+ ycDSZDdW8SL32nWFxPLrlIB4bPPyLiaym17O1//hqAY8XMgyMmAhvz3OyKrPNl0eCWXt
+ lJ9fFI6rE/iMTFqIMWCRUN0oAYIUJAevmz7sQVDsa0BnbKRLL1Ihx6mVmY99Pll0QcvE
+ P1zg==
+X-Gm-Message-State: AOJu0YybZMx0ndhGr4u/qal01mqCwQgl1aPJxhU7fjwwbY7aJppg9nkV
+ w7qDUo/M9QgtFOxYBwYE3udpdQ==
+X-Received: by 2002:a5d:628f:0:b0:32d:9e4f:7190 with SMTP id
+ k15-20020a5d628f000000b0032d9e4f7190mr1792781wru.60.1697817594422; 
+ Fri, 20 Oct 2023 08:59:54 -0700 (PDT)
+Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
+ [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
+ n7-20020a5d6b87000000b003140f47224csm1953860wrx.15.2023.10.20.08.59.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Oct 2023 08:59:54 -0700 (PDT)
+Message-ID: <5563056c-0144-ee4b-bd99-e51f31369feb@linaro.org>
+Date: Fri, 20 Oct 2023 17:59:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 1/1] stm32f2xx_usart: implement TX interrupts
+Content-Language: en-US
+To: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:STM32F205" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20231020111428.3260965-1-hans-erik.floryd@rt-labs.com>
+ <74d96828-dae9-64fe-5947-ba83ce54206d@linaro.org>
+ <CADS1RdQLmbdobcAsO+DM79N2TgaErCwrctATXNf6a7VYT6hBqA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CADS1RdQLmbdobcAsO+DM79N2TgaErCwrctATXNf6a7VYT6hBqA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <94280b39-a331-003d-f227-38c3e1b94434@linaro.org>
-Received-SPF: pass client-ip=134.134.136.31; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eTsv2oSNcGQI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LQVCBNRYAx5/
 
-Hi Philippe,
-
-On Fri, Oct 20, 2023 at 01:30:50PM +0200, Philippe Mathieu-Daudé wrote:
-> Date: Fri, 20 Oct 2023 13:30:50 +0200
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: Re: [PATCH v2 00/16] target: Make 'cpu-qom.h' really target
->  agnostic
+On 20/10/23 16:40, Hans-Erik Floryd wrote:
+> Hi Phil,
 > 
-> Hi Zhao,
+> On Fri, 20 Oct 2023 at 14:42, Philippe Mathieu-DaudÃ© <philmd@linaro.org> wrote:
+>>
+>> Hi Hans-Erik,
+>>
+>> On 20/10/23 13:14, Hans-Erik Floryd wrote:
+>>> Generate interrupt if either of the TXE, TC or RXNE bits are active
+>>> and the corresponding interrupt enable bit is set.
+>>>
+>>> Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
+>>> ---
+>>>    hw/char/stm32f2xx_usart.c         | 29 +++++++++++++++++------------
+>>>    include/hw/char/stm32f2xx_usart.h | 10 ++++++----
+>>>    2 files changed, 23 insertions(+), 16 deletions(-)
+>>>
+>>> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
+>>> index fde67f4f03..2947c3a260 100644
+>>> --- a/hw/char/stm32f2xx_usart.c
+>>> +++ b/hw/char/stm32f2xx_usart.c
+>>> @@ -53,6 +53,16 @@ static int stm32f2xx_usart_can_receive(void *opaque)
+>>>        return 0;
+>>>    }
+>>>
+>>> +static void stm32f2xx_update(STM32F2XXUsartState *s)
+>>> +{
+>>> +    uint32_t mask = s->usart_sr & s->usart_cr1;
+>>> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
+>>> +        qemu_set_irq(s->irq, 1);
+>>> +    } else {
+>>> +        qemu_set_irq(s->irq, 0);
+>>> +    }
+>>> +}
+>>> +
+>>>    static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
+>>>    {
+>>>        STM32F2XXUsartState *s = opaque;
+>>> @@ -66,9 +76,7 @@ static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
+>>>        s->usart_dr = *buf;
+>>>        s->usart_sr |= USART_SR_RXNE;
+>>>
+>>> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
+>>> -        qemu_set_irq(s->irq, 1);
+>>> -    }
+>>> +    stm32f2xx_update(s);
+>>>
+>>>        DB_PRINT("Receiving: %c\n", s->usart_dr);
+>>>    }
+>>> @@ -85,7 +93,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
+>>>        s->usart_cr3 = 0x00000000;
+>>>        s->usart_gtpr = 0x00000000;
+>>>
+>>> -    qemu_set_irq(s->irq, 0);
+>>> +    stm32f2xx_update(s);
+>>>    }
+>>>
+>>>    static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
+>>> @@ -100,13 +108,14 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
+>>>        case USART_SR:
+>>>            retvalue = s->usart_sr;
+>>>            qemu_chr_fe_accept_input(&s->chr);
+>>> +        stm32f2xx_update(s);
+>>>            return retvalue;
+>>>        case USART_DR:
+>>>            DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->usart_dr);
+>>>            retvalue = s->usart_dr & 0x3FF;
+>>>            s->usart_sr &= ~USART_SR_RXNE;
+>>>            qemu_chr_fe_accept_input(&s->chr);
+>>> -        qemu_set_irq(s->irq, 0);
+>>> +        stm32f2xx_update(s);
+>>>            return retvalue;
+>>>        case USART_BRR:
+>>>            return s->usart_brr;
+>>> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
+>>>            } else {
+>>>                s->usart_sr &= value;
+>>>            }
+>>> -        if (!(s->usart_sr & USART_SR_RXNE)) {
+>>> -            qemu_set_irq(s->irq, 0);
+>>> -        }
+>>> +        stm32f2xx_update(s);
+>>>            return;
+>>>        case USART_DR:
+>>>            if (value < 0xF000) {
+>>> @@ -161,6 +168,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
+>>>                   clear TC by writing 0 to the SR register, so set it again
+>>>                   on each write. */
+>>>                s->usart_sr |= USART_SR_TC;
+>>> +            stm32f2xx_update(s);
+>>>            }
+>>>            return;
+>>>        case USART_BRR:
+>>> @@ -168,10 +176,7 @@ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
+>>>            return;
+>>>        case USART_CR1:
+>>>            s->usart_cr1 = value;
+>>> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
+>>> -                s->usart_sr & USART_SR_RXNE) {
+>>> -                qemu_set_irq(s->irq, 1);
+>>> -            }
+>>> +        stm32f2xx_update(s);
+>>>            return;
+>>>        case USART_CR2:
+>>>            s->usart_cr2 = value;
+>>> diff --git a/include/hw/char/stm32f2xx_usart.h b/include/hw/char/stm32f2xx_usart.h
+>>> index 65bcc85470..fdfa7424a7 100644
+>>> --- a/include/hw/char/stm32f2xx_usart.h
+>>> +++ b/include/hw/char/stm32f2xx_usart.h
+>>> @@ -48,10 +48,12 @@
+>>>    #define USART_SR_TC   (1 << 6)
+>>>    #define USART_SR_RXNE (1 << 5)
+>>>
+>>> -#define USART_CR1_UE  (1 << 13)
+>>> -#define USART_CR1_RXNEIE  (1 << 5)
+>>> -#define USART_CR1_TE  (1 << 3)
+>>> -#define USART_CR1_RE  (1 << 2)
+>>> +#define USART_CR1_UE     (1 << 13)
+>>> +#define USART_CR1_TXEIE  (1 << 7)
+>>> +#define USART_CR1_TCEIE  (1 << 6)
+>>> +#define USART_CR1_RXNEIE (1 << 5)
+>>> +#define USART_CR1_TE     (1 << 3)
+>>> +#define USART_CR1_RE     (1 << 2)
+>>>
+>>>    #define TYPE_STM32F2XX_USART "stm32f2xx-usart"
+>>>    OBJECT_DECLARE_SIMPLE_TYPE(STM32F2XXUsartState, STM32F2XX_USART)
+>>
+>> To keep your changes trivial to review, I split your patch in 4:
 > 
-> On 20/10/23 07:50, Zhao Liu wrote:
-> > Hi Philippe,
-> > 
-> > On Fri, Oct 13, 2023 at 04:00:59PM +0200, Philippe Mathieu-Daudé wrote:
-> > > Date: Fri, 13 Oct 2023 16:00:59 +0200
-> > > From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > > Subject: [PATCH v2 00/16] target: Make 'cpu-qom.h' really target agnostic
-> > > X-Mailer: git-send-email 2.41.0
-> > > 
-> > > Since v1:
-> > > - Added R-b tags
-> > > - Addressed Richard comments
-> > > - Postponed OBJECT_DECLARE_CPU_TYPE() changes
-> > > 
-> > > A heterogeneous machine must be able to instantiate CPUs
-> > > from different architectures.
-> > 
-> > Does this mean the different ISA cores in heterogeneous machine?
+> Ok - do you also want me to split the patch in the next version?
+
+I had to do it because I found your patch including too many
+changes at once. Other might find the same (usually we ask for
+one atomical change per commit: easier to review, and also
+useful if there is a bug, you can revert the single offending
+commit). Since I did the split, I can post it and you can
+re-use the splitted patch series.
+
+>> 1/ Extract stm32f2xx_update_irq()
+>>
+>> -- >8 --
+>> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
+>> index fde67f4f03..519d3461a3 100644
+>> --- a/hw/char/stm32f2xx_usart.c
+>> +++ b/hw/char/stm32f2xx_usart.c
+>> @@ -53,6 +53,17 @@ static int stm32f2xx_usart_can_receive(void *opaque)
+>>        return 0;
+>>    }
+>>
+>> +static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
+>> +{
+>> +    uint32_t mask = s->usart_sr & s->usart_cr1;
+>> +
+>> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
+>> +        qemu_set_irq(s->irq, 1);
+>> +    } else {
+>> +        qemu_set_irq(s->irq, 0);
+>> +    }
+>> +}
+>> +
+>>    static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf,
+>> int size)
+>>    {
+>>        STM32F2XXUsartState *s = opaque;
+>> @@ -66,9 +77,7 @@ static void stm32f2xx_usart_receive(void *opaque,
+>> const uint8_t *buf, int size)
+>>        s->usart_dr = *buf;
+>>        s->usart_sr |= USART_SR_RXNE;
+>>
+>> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
+>> -        qemu_set_irq(s->irq, 1);
+>> -    }
+>> +    stm32f2xx_update_irq(s);
+>>
+>>        DB_PRINT("Receiving: %c\n", s->usart_dr);
+>>    }
+>> @@ -85,7 +94,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
+>>        s->usart_cr3 = 0x00000000;
+>>        s->usart_gtpr = 0x00000000;
+>>
+>> -    qemu_set_irq(s->irq, 0);
+>> +    stm32f2xx_update_irq(s);
+>>    }
+>>
+>>    static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
+>> @@ -106,7 +115,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque,
+>> hwaddr addr,
+>>            retvalue = s->usart_dr & 0x3FF;
+>>            s->usart_sr &= ~USART_SR_RXNE;
+>>            qemu_chr_fe_accept_input(&s->chr);
+>> -        qemu_set_irq(s->irq, 0);
+>> +        stm32f2xx_update_irq(s);
+>>            return retvalue;
+>>        case USART_BRR:
+>>            return s->usart_brr;
+>> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque,
+>> hwaddr addr,
+>>            } else {
+>>                s->usart_sr &= value;
+>>            }
+>> -        if (!(s->usart_sr & USART_SR_RXNE)) {
+>> -            qemu_set_irq(s->irq, 0);
+>> -        }
+>> +        stm32f2xx_update_irq(s);
+>>            return;
+>>        case USART_DR:
+>>            if (value < 0xF000) {
+>> @@ -168,10 +175,7 @@ static void stm32f2xx_usart_write(void *opaque,
+>> hwaddr addr,
+>>            return;
+>>        case USART_CR1:
+>>            s->usart_cr1 = value;
+>> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
+>> -                s->usart_sr & USART_SR_RXNE) {
+>> -                qemu_set_irq(s->irq, 1);
+>> -            }
+>> +        stm32f2xx_update_irq(s);
+>>            return;
+>>        case USART_CR2:
+>>            s->usart_cr2 = value;
+>> ---
+>>
+>> 2/ Update IRQ when SR is read
+>>
+>> -- >8 --
+>> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
+>> index 519d3461a3..46e29089bc 100644
+>> --- a/hw/char/stm32f2xx_usart.c
+>> +++ b/hw/char/stm32f2xx_usart.c
+>> @@ -109,6 +109,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque,
+>> hwaddr addr,
+>>        case USART_SR:
+>>            retvalue = s->usart_sr;
+>>            qemu_chr_fe_accept_input(&s->chr);
+>> +        stm32f2xx_update_irq(s);
+>>            return retvalue;
+>>        case USART_DR:
+>>            DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char)
+>> s->usart_dr);
+>> ---
+>>
+>> Why is this required?
 > 
-> Yes. Currently the ARM target already allows you to do that
-> (multiple ISA cores within the same architecture), see the
-> xlnx-zcu102 and fby35 machines.
-
-Okay, I'll have a look at it.
-
+> It's not required yet although it may be if support for more bits are
+> added (IDLE for instance). Although rereading the manual I'm not sure
+> that's how it would be implemented so I'll remove it.
 > 
-> > And is this case for TCG?
+>>
+>> 3/ Update IRQ when DR is written
+>>
+>> -- >8 --
+>> diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
+>> index 46e29089bc..74f007591a 100644
+>> --- a/hw/char/stm32f2xx_usart.c
+>> +++ b/hw/char/stm32f2xx_usart.c
+>> @@ -169,6 +169,7 @@ static void stm32f2xx_usart_write(void *opaque,
+>> hwaddr addr,
+>>                   clear TC by writing 0 to the SR register, so set it again
+>>                   on each write. */
+>>                s->usart_sr |= USART_SR_TC;
+>> +            stm32f2xx_update_irq(s);
+>>            }
+>>            return;
+>>        case USART_BRR:
+>> ---
+>>
+>> This change makes sense
+>>
+>> 4/ Add more CR1 bit definitions
+>>
+>> -- >8 --
+>> diff --git a/include/hw/char/stm32f2xx_usart.h
+>> b/include/hw/char/stm32f2xx_usart.h
+>> index 65bcc85470..fdfa7424a7 100644
+>> --- a/include/hw/char/stm32f2xx_usart.h
+>> +++ b/include/hw/char/stm32f2xx_usart.h
+>> @@ -49,6 +49,8 @@
+>>    #define USART_SR_RXNE (1 << 5)
+>>
+>>    #define USART_CR1_UE     (1 << 13)
+>> +#define USART_CR1_TXEIE  (1 << 7)
+>> +#define USART_CR1_TCEIE  (1 << 6)
+>>    #define USART_CR1_RXNEIE (1 << 5)
+>>    #define USART_CR1_TE     (1 << 3)
+>>    #define USART_CR1_RE     (1 << 2)
+>> ---
+>>
+>> These are not used, why add them?
 > 
-> This is *only* for TCG. I expect hardware accel + TCG to be
-> theoretically possible, but no interest has been shown for
-> it. Anyhow this requires heterogeneous TCG as a first step.
-
-Thanks, got it.
-
+> For completeness since RXNEIE was already defined. Also for
+> documentation, to show that SR_TX/CR_TXEIE etc share bit numbers,
+> which the implementation relies on.
 > 
-> > > In order to do that, the
-> > > common hw/ code has to access to the QOM CPU definitions
-> > > from various architecture.
-> > 
-> > About this kind of heterogeneous machine with multiple CPUs, is there
-> > any initial configuration command line example?
-> 
-> I'm prototyping in plain C but our plan is to start with a
-> QMP prototype. Command line configuration is not an option,
-> we decided to ignore it. I'll describe that better in a RFC
-> document I should post soon.
+> I can remove it though. Should I also remove RXNEIE which is no longer needed?
 
-Looking forward to your RFC!
+I'm not against adding the definitions, but better if they are used :)
 
-For accel, I am currently working in this direction (to convert all CPU
-topology levels to devices and to create heterogeneous topology via
-"-device") as the following:
+My review reflex was "oh, definitions are added but not used, is that
+a bug or a left over?".
 
--device cpu-socket,id=sock0 \
--device cpu-die,id=die0,parent=sock0 \
--device cpu-die,id=die1,parent=sock0 \
--device cpu-cluster,id=cluster0,parent=die0 \
--device cpu-cluster,id=cluster1,parent=die0 \
--device x86-intel-core,id=core0,parent=cluster0,threads=3 \
--device x86-intel-atom,id=core1,parent=cluster1,threads=2 \
--device x86-intel-core,id=core2,parent=cluster0,threads=3
+I'll post your splitted patches shortly.
 
-At present, I have a prototype and am sorting out the RFC.
+Regard,
 
-From your description, I understand that we have no conflict.
-Also welcome your thoughts and hope that I can go in the same
-direction with you. ;-)
-
-Regards,
-Zhao
-
+Phil.

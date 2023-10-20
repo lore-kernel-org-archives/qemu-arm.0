@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080354ejb;
-        Fri, 20 Oct 2023 02:09:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGuZQ6bjtTrKf/t8ZT93FeSuqJUTZ30h6F2GosMaWlpFCnKkACjXFJ+8yYfoF0e2bkpTAvD
-X-Received: by 2002:ac8:7f0b:0:b0:417:fe9c:6dce with SMTP id f11-20020ac87f0b000000b00417fe9c6dcemr1334562qtk.25.1697792973488;
-        Fri, 20 Oct 2023 02:09:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697792973; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080361ejb;
+        Fri, 20 Oct 2023 02:09:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFB+MoE5HVbJZtqN4e5Fi900UZZ9gd2PYuE1/puMNQcThb8obJUP2eCugjKS4oftfjL0E0/
+X-Received: by 2002:a05:622a:1819:b0:412:1df:9b25 with SMTP id t25-20020a05622a181900b0041201df9b25mr1177604qtc.18.1697792974283;
+        Fri, 20 Oct 2023 02:09:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697792974; cv=none;
         d=google.com; s=arc-20160816;
-        b=vnp0OKTdf/24/Sbaq0qqXkin+z0GF85Ifbs1FXak/+VdF2pYfMxSYvFWXkau+DDk66
-         Qjqddl6Opfv86pWkg99ZxmOUpEccnt+tcSbo0NfRFxA6PG3+ou78Fy8hRFFhCFAsTkHD
-         V435Hlu3nfDp8HX5B0MwZbQTaCgUzyWMliwz+780XR4xkh0cVeH3BvMnlz56HUYzNArm
-         +aqo2bF1f4VtSeULqDVBbpJ5KZ/rygLXXYF/eRMsd0rufBw4RqvRtLWBPoPP7rn7gFAp
-         EdhIlbv7pxKuF06bxUgPs25b+IBqVpgTIWZS+CLtdMScT4uY+75cxcNh79qaZG6ZGcXO
-         Ez8w==
+        b=tRvUBG7+8m84arrY2K2FtONKMH1U9iCqXM3rk7B2CKxSvDDYLpWNovZIdO8w3EMeAg
+         rGYgHP9vUqiyxiyUlTr8G39ZL+LDREVicEWre2wBdCsodESN4oFevV3zxD5MqDGCJzoL
+         Vd7oKGH1cH7y+OzM3uAniDKmbk/vemQ2oUkTKqzRCmdQV5kpTsKsYk8i6102+xGqRQRn
+         I8AxW7XxJsvUMI43nDmWt6F26mN95yHrdYUu8vwW49ijWArUygI8r/alLwN6Rm6ucQ8O
+         zzg8GAPVAqXV1KxOz1E7p2ogfavDHJ73c0yOr1HMxRWso22Itu6rhDLDN7X4gnhk6RMd
+         8N6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=q8Pq3OBjQlCOCOhJ16gPv1cYwMXL16YRNkaNXmzIlkk=;
-        fh=Mwp3ThCAXh+AmQsC5dFDaw5TkorRX1d1xKXEPbQanFc=;
-        b=IbWcYtX90jrdqQeL4GEg35T+van2x8KQbRKsI7KJ1C5TVHmZQif1yyc68RbsOORGlC
-         lY80v6bNt4ZylNYVhO+hLUJg9cdiNOcl8yzu8XZiLTMlWAuIQW77t+I17k/Tb3TW8QXb
-         9OKBeR9mMLt8vF29oHioGF+heFgCGE7WplIjRw2edKQSUWQWHiEdRFDeHAJU3rbx8xkY
-         RM90MAzKbLOx7YUcEryi68bTxsyUJy/OFS2wLMpyRezMYtn5Yfx3gchH8LKq586poxmg
-         7JEs6uAOIUYrumn/RoL5jCtaMrp+UDuia5PCBcwVZPP37hUYFpnhVqMfm/bwef50xY4o
-         if9w==
+        bh=ONi19ukrfLVEQNheMMhkhQmgHLo3FAgxA5+kb+4Y7a8=;
+        fh=rTkH9/wDYQMZLVlaH0neZTzbhrqu7oCVHTTGZPWdq9o=;
+        b=kRRTreADKVx83g9k9vmIF1ot8K874AVA9tg56aFEpUlkPXQ0aQTFMHvD/Bf1+OnN01
+         Si7G2Og4/umGfHs45aPY64Sd5fgL1mTyPZHw3QvPLq3l0ppLozbpJYJ7C72ILP11jSof
+         4K2Bl+/A/h6n1NsTzNVj+38gBTXsg55gcc0Ywf0HNp0PJnKHZVHjgoAPYOPDF4Fx/hzl
+         EOmPcIn9GCJagOIWvw1NqPxaVcrpuEDWdZU/IOb6Y19Gm88w///ffnZGQhj1yjOSzSBJ
+         Oo86tbGFlEIWnOZ68AnP6pp0f035eQUOqWWoy5Xp88t1EmtS2b+aCqGQCrV4o2p2e8d2
+         OX7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gasOB8GN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LL0j2eL2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22-20020ac87d56000000b0041cbcce90c1si981446qtb.531.2023.10.20.02.09.33
+        by mx.google.com with ESMTPS id v5-20020a05622a130500b004198efe8573si1036147qtk.139.2023.10.20.02.09.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 02:09:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 02:09:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gasOB8GN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LL0j2eL2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtlUo-0004SU-VP; Fri, 20 Oct 2023 05:08:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtlV9-0005NE-SH; Fri, 20 Oct 2023 05:09:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlUl-0004BR-FP
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qtlV8-0005Kf-31
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 05:09:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlUj-0005SX-U6
- for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:39 -0400
+ id 1qtlV6-0005XS-Nd
+ for qemu-devel@nongnu.org; Fri, 20 Oct 2023 05:09:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697792917;
+ s=mimecast20190719; t=1697792940;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=q8Pq3OBjQlCOCOhJ16gPv1cYwMXL16YRNkaNXmzIlkk=;
- b=gasOB8GN5qZkAyNCMFIfQCN7HbnoG/LLscn+SjzVwoUQVEpXiI5gdq1ZvF0UekqWuMUeMN
- FJtOPh2N/qf2kGdCRcOp+lMAbc8ddz+Zy4wMVGf32t0Nywo0gD7Vl8YLGtIguvbjQJbJHG
- J3kYYq2vwp0xNw5ytOsxrpI6tLdoEFI=
+ bh=ONi19ukrfLVEQNheMMhkhQmgHLo3FAgxA5+kb+4Y7a8=;
+ b=LL0j2eL2GYOd8o1QZbOZnfE879umibkluUAC40vZ36QwqZVmqxGJvOhtPYCbQdwmCGB3LH
+ 8C9DHCigKepMgYc74yVqrcafjM89IlY/AJIkL8P2lCnwmM7XAsXG4KoQ+ReHsiR0Fi6q71
+ WAyXZJwoIejafN+fKUJuPuN1S2IX1pc=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-390-R_h-bEmqP3eTdDMrbt7WVw-1; Fri, 20 Oct 2023 05:08:33 -0400
-X-MC-Unique: R_h-bEmqP3eTdDMrbt7WVw-1
+ us-mta-257-0SyCRSCYPCyV-wVxyDG2uA-1; Fri, 20 Oct 2023 05:08:49 -0400
+X-MC-Unique: 0SyCRSCYPCyV-wVxyDG2uA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A64D03C1014D;
- Fri, 20 Oct 2023 09:08:31 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2451C3813BD5;
+ Fri, 20 Oct 2023 09:08:48 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B91232166B26;
- Fri, 20 Oct 2023 09:08:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BDA442166B26;
+ Fri, 20 Oct 2023 09:08:42 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -102,72 +102,62 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH v2 10/13] migration: Improve example and documentation of
- vmstate_register()
-Date: Fri, 20 Oct 2023 11:07:28 +0200
-Message-ID: <20231020090731.28701-11-quintela@redhat.com>
+ Stefan Weil <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
+Subject: [PATCH v2 13/13] migration: Use vmstate_register_any() for vmware_vga
+Date: Fri, 20 Oct 2023 11:07:31 +0200
+Message-ID: <20231020090731.28701-14-quintela@redhat.com>
 In-Reply-To: <20231020090731.28701-1-quintela@redhat.com>
 References: <20231020090731.28701-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: H9H5FHta0tBI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kzFhrywpONJE
 
+I have no idea if we can have more than one vmware_vga device, so play
+it safe.
+
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- docs/devel/migration.rst | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ hw/display/vmware_vga.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index c3e1400c0c..bfd8710c95 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -165,13 +165,17 @@ An example (from hw/input/pckbd.c)
-       }
-   };
+diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+index 09591fbd39..7490d43881 100644
+--- a/hw/display/vmware_vga.c
++++ b/hw/display/vmware_vga.c
+@@ -1264,7 +1264,7 @@ static void vmsvga_init(DeviceState *dev, struct vmsvga_state_s *s,
  
--We are declaring the state with name "pckbd".
--The ``version_id`` is 3, and the fields are 4 uint8_t in a KBDState structure.
--We registered this with:
-+We are declaring the state with name "pckbd".  The ``version_id`` is
-+3, and there are 4 uint8_t fields in the KBDState structure.  We
-+registered this ``VMSTATEDescription`` with one of the following
-+functions.  The first one will generate a device ``instance_id``
-+different for each registration.  Use the second one if you already
-+have an id that is different for each instance of the device:
+     vga_common_init(&s->vga, OBJECT(dev), &error_fatal);
+     vga_init(&s->vga, OBJECT(dev), address_space, io, true);
+-    vmstate_register(NULL, 0, &vmstate_vga_common, &s->vga);
++    vmstate_register_any(NULL, &vmstate_vga_common, &s->vga);
+     s->new_depth = 32;
+ }
  
- .. code:: c
- 
--    vmstate_register(NULL, 0, &vmstate_kbd, s);
-+    vmstate_register_any(NULL, &vmstate_kbd, s);
-+    vmstate_register(NULL, instance_id, &vmstate_kbd, s);
- 
- For devices that are ``qdev`` based, we can register the device in the class
- init function:
 -- 
 2.41.0
 

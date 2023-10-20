@@ -1,139 +1,119 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp506479ejb;
-        Sat, 21 Oct 2023 14:24:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFcX2XQGlZxufCI0w+nvWYO5q6w+Bs7bi9Z95xCUy87NTBdMj5GsLzncgpzesYnOwKzhwBC
-X-Received: by 2002:a05:620a:444f:b0:76f:10ab:7c68 with SMTP id w15-20020a05620a444f00b0076f10ab7c68mr7844447qkp.40.1697923457950;
-        Sat, 21 Oct 2023 14:24:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697923457; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp567935ejb;
+        Sat, 21 Oct 2023 18:03:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFi9hnzD1+kILAgg8frJYzfx8xWZ4wt/vtClAUA/yy33WQ1eKycS+mpBtxgA/DXvIT8qpnh
+X-Received: by 2002:ac8:5886:0:b0:412:2c24:f497 with SMTP id t6-20020ac85886000000b004122c24f497mr8704264qta.26.1697936638950;
+        Sat, 21 Oct 2023 18:03:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697936638; cv=none;
         d=google.com; s=arc-20160816;
-        b=tH//s9UY/p0KsOMptEKrBZ8qfICXX7EBoGMTXrqkP1MtuDIy1Qvaprw1zIDRj16GUH
-         IZSqWc9tvKLauu5+9xr+38FJv9Bg+3nTuZZSfDaAYU2C8HzO4lysjXl6MWOn+npc580I
-         fcqYXJ+zrPfDnL9NWG0pkzKmsp5A2WuUIDC0aaAakAeaubQVkjhCiX6JkvYjdHx4Mr0L
-         ljZFCkDklUlHxQHd+t8oG61IbZAmChdoJdNjCrOUBiHHFOU+UIlEW97Aziaxr8X9AGbf
-         rhtJ9ZbxuqgRiF+t2C54w5dGUWhtMUyidvF+SPjdgmVxx0RdXss6dfSF7AtmCHrxXDfL
-         7eTQ==
+        b=yf2PxWcIRb/5FswY/yS2dJ8UNgT5QIxBcT49oY1tWY41v3DzgFw6PSdW84CplQ7C9i
+         kKncYkp4/xSHmXCHhQtirF1aFdLWP+0Fd78gOgiDuJD/T1YNKDVa2188cDSiWPi9ucD3
+         4r4C3VGZgp5/bKln/ICyGBiWNFSfTSkj+THwkBow3hDeb9bL9Ij16dLzrlX+LY4lYpGw
+         xO/AXK2LvPsdE9Is7mM4FlBdQTRnLMl403tO2ESv/LjAhNAahkG4k2Rtf/m7EnODZvXZ
+         VsOF1ONf3cu0Vymle6oZqhh91dV/MlcFsVxl9ppFZp2oE2Quv5hEKcM0xYln1oS5pofM
+         ZXtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=V4HY4+uFqszc+0bukWQz8lg/3mNlkeL14aU4g4D1ljg=;
-        fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
-        b=o1mP030lIRu0HWbEfZgBUVgZ+s86RY5J38iFq80tRS7rYoJ3k87F5P5T+3QKzV5InE
-         cfbTEsS8zyo8d2UbOtXw0KM3cHb13z6FDfkHnLMjJeW9V6hHrBWWp9fd4zPdjDvjx8tR
-         Xp6cRwC5iQblwBv16jxzz0zkJE7MYz9mWKhxicRian7urpBBF+RMre4BzwBP4VcqzunZ
-         V1YwNBufyw2sIGmyzv6W8ireVqCapkKNCBfGwFVlnuKToxLp6A3JirxyrA29WboNgI9D
-         CbnrtZVc5f+vovIKAbNvxtf3pvkibVC8+6GFhi37qXw9lujGmDSbcsa/b4+Hhw8wuQ27
-         u6SQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=y1WWu6RI/8kIYK8I70BRGyaj9oj5p14/0uTAY1l74vA=;
+        fh=LRx2/Aeoqqkpbkk/dzg0Gy+dhBij2dXnMd/OPRRQS88=;
+        b=o1YUdbroLQxkuwELir7AL3NENAbu5dS2ToQ+RV7DHki2827J5MfWnTxUblJGn8oZnK
+         GdxmvJVkFJwkHAuhvKASazUeEFq7sKBMk52izp4DRW/pJVEnRIviETTh18Vt/ofnIX22
+         nKgUb4KbhzTCqqLsu5aWTQemZck/Pk81wLlaYfXnkBgGPFSpkSF4xnfrfp48XuIQfh+y
+         /RT+d0npwMUDdEAJ0x/UV1JpZX+rzuFTGHWXNMIvmDI9mLx6Mq166CcAR7J4zn1ayH6X
+         IHRxrRLQ+CkUIFMbwD+loRelZgFlEeBzhs294qKioBnxDLaUnKAC6Sxxs9qtdikcVsJH
+         ZaYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=EyV9h6LR;
+       dkim=pass header.i=@linaro.org header.s=google header.b="O/kqINYZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17-20020a05620a057100b007758709cfefsi3341709qkp.215.2023.10.21.14.24.17
+        by mx.google.com with ESMTPS id 7-20020ac85947000000b0041cb4580d20si3559053qtz.352.2023.10.21.18.03.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Oct 2023 14:24:17 -0700 (PDT)
+        Sat, 21 Oct 2023 18:03:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=EyV9h6LR;
+       dkim=pass header.i=@linaro.org header.s=google header.b="O/kqINYZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quJR0-0007wK-Gq; Sat, 21 Oct 2023 17:23:02 -0400
+	id 1quMs9-0000eW-HO; Sat, 21 Oct 2023 21:03:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1quJQz-0007uW-0w; Sat, 21 Oct 2023 17:23:01 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1quJQt-0006Or-HS; Sat, 21 Oct 2023 17:23:00 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39LL9OXh022088; Sat, 21 Oct 2023 21:17:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=V4HY4+uFqszc+0bukWQz8lg/3mNlkeL14aU4g4D1ljg=;
- b=EyV9h6LRnr9CRr1jiLGvDeylfSdXgRXHVz79dPYKCf10TNxeFROfiLr6VCKhsUXY1w5f
- Xh2s30zW3zmQtbg4MPkV+gzjcKFpZdbmik70FuyXcpC7qN+nCvOv9bQDVZ1APg+nBXZr
- JATYZZkVR9BKpO82xNGcmZ65+G7O6WgafPzUY9+j0b92FD199jMf2PHI6GVGzH2IH5Mz
- h9CAhMIOKR8mZRmrErdNuziwEQtuGCRbOzZDXsQ7f/ugs0OEtXJ73hxBh+/nsjLPAPR1
- R/rBVaEjtlq/uqLj6Hm4Mg1TNhl7AQKaIeeBAmCIGKUgtuhT+DOhq679+64hb7wiAu7q VA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpab066u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 21:17:26 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39LL9scc023294;
- Sat, 21 Oct 2023 21:17:25 GMT
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpab066q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 21:17:25 +0000
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39LKPwUk002683; Sat, 21 Oct 2023 21:17:24 GMT
-Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc44ncub-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 21:17:24 +0000
-Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
- [10.241.53.104])
- by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39LLHNXB13632048
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 21 Oct 2023 21:17:24 GMT
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CCAF958067;
- Sat, 21 Oct 2023 21:17:23 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7316958056;
- Sat, 21 Oct 2023 21:17:23 +0000 (GMT)
-Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
- by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Sat, 21 Oct 2023 21:17:23 +0000 (GMT)
-From: Ninad Palsule <ninad@linux.ibm.com>
-To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
- andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
- philmd@linaro.org, lvivier@redhat.com
-Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>
-Subject: [PATCH v6 02/10] hw/fsi: Introduce IBM's scratchpad
-Date: Sat, 21 Oct 2023 16:17:11 -0500
-Message-Id: <20231021211720.3571082-3-ninad@linux.ibm.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231021211720.3571082-1-ninad@linux.ibm.com>
-References: <20231021211720.3571082-1-ninad@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1quMs7-0000UM-UW
+ for qemu-arm@nongnu.org; Sat, 21 Oct 2023 21:03:15 -0400
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1quMs6-0006lF-9J
+ for qemu-arm@nongnu.org; Sat, 21 Oct 2023 21:03:15 -0400
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-1c9e06f058bso23409385ad.0
+ for <qemu-arm@nongnu.org>; Sat, 21 Oct 2023 18:03:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697936593; x=1698541393; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=y1WWu6RI/8kIYK8I70BRGyaj9oj5p14/0uTAY1l74vA=;
+ b=O/kqINYZnIZDmZGuNfgMPkxK8tAXT5SfSYEgFgmU6rECS71WhrFBtTZ2aGAVGa5Zqa
+ +JctumXFucpueLbWEZvpL6N5voj1TMJ3gaPiAXzgsW3HkJD/ntaR6muo1JNyEwH9KncK
+ QVgGrli+Q9g2kxni99zxe2GdPtLY9krHfm2nVaFgx1A2NEunk0cgOBAT8lBRqYuqt3xi
+ ud31E1eo6HtBudckVkoPw83VgNlLHmYO/S+rTvgl7F0/+Ffwj6aXedjriFikrWgRO6I3
+ XtWFHA3VXoqFjBPts1POwGwYrGs5OH1rh7J8bc3vcuS/NmUXxrMwg3+5YAv7e+Vb7i4P
+ +xsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697936593; x=1698541393;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=y1WWu6RI/8kIYK8I70BRGyaj9oj5p14/0uTAY1l74vA=;
+ b=PdEzY6TU4RVt42CalSxHIwUGeDEJBneXR3ST+FjNU/ngoEzAwXKO0oHwl2sYSVADVN
+ 0oXmL7MKxOfKmK2DfnOd3TqjKToiM4xksz4+Yo2/HMjZ9oQ6hfp8HoNN3ydyDJ4wu0xC
+ 3leTeR3fKQgTGILpJkLxXykSX4mDc8RlEydr/XYCp4Zo+Gv/lVtW7tkti2vSwePoLIcT
+ gSXuR67GCUmIAYL0L/GUYOxHFcgPxAcOu7b1MweO+siAVWMV/jLnjAHHobFID2qfr5vw
+ hj7kZwrrCvjHeJ2kbJ8vz6lduSojCil1ZvBuOK/cTRLiUurrwKdYZ3EupQ7SbEudokfC
+ u9aQ==
+X-Gm-Message-State: AOJu0YyHkLYIPCu1bFYWSO+9ljalftxr/3Q3CR6S6C8xcV/nfw31bPpo
+ /4+toB5TuoiMCFSOEoUY1BJtFtmTDRzlqziSlHU=
+X-Received: by 2002:a17:902:e5cf:b0:1c9:dff1:6de7 with SMTP id
+ u15-20020a170902e5cf00b001c9dff16de7mr8383461plf.7.1697936592833; 
+ Sat, 21 Oct 2023 18:03:12 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.149.95])
+ by smtp.gmail.com with ESMTPSA id
+ jb14-20020a170903258e00b001bc21222e34sm3704336plb.285.2023.10.21.18.03.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 21 Oct 2023 18:03:12 -0700 (PDT)
+Message-ID: <af5539ab-ecb1-483f-b96e-1604239a4e6e@linaro.org>
+Date: Fri, 20 Oct 2023 14:31:43 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/9] hw/arm/pxa2xx: SysBus/QDev fixes
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+ qemu-arm@nongnu.org
+References: <20231020130331.50048-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20231020130331.50048-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 91ceCeBHaEBD7BGjfLyHrFHCxs4-GfNo
-X-Proofpoint-GUID: hn95Yw-SbPVJbuFXEC7N2A05igLPAfNt
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-21_13,2023-10-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- suspectscore=0 adultscore=0 mlxlogscore=901 lowpriorityscore=0 bulkscore=0
- phishscore=0 mlxscore=0 priorityscore=1501 clxscore=1015 spamscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310170001 definitions=main-2310210195
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_24_48=1.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,246 +128,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VQl6RPUD2wrb
+X-TUID: aCDGqu+dvuWM
 
-This is a part of patchset where scratchpad is introduced.
+On 10/20/23 06:03, Philippe Mathieu-Daudé wrote:
+> Missing review: 6-9
+> 
+> Hi,
+> 
+> Extracted from a bigger series which enforce QDev state machine
+> (qdev instance must be realized before external API is used on
+> it).
+> 
+> While here, pxa2xx i2c/intc devices received some qdev fondness.
+> 
+> Since v3:
+> - Added Thomas R-b tags
+> 
+> Since v2:
+> - Fixed i2c_init_bus() call in pxa2xx_i2c_init() (new patch)
+> 
+> Philippe Mathieu-Daudé (9):
+>    hw/sd/pxa2xx: Realize sysbus device before accessing it
+>    hw/sd/pxa2xx: Do not open-code sysbus_create_simple()
+>    hw/pcmcia/pxa2xx: Realize sysbus device before accessing it
+>    hw/pcmcia/pxa2xx: Do not open-code sysbus_create_simple()
+>    hw/pcmcia/pxa2xx: Inline pxa2xx_pcmcia_init()
+>    hw/intc/pxa2xx: Convert to Resettable interface
+>    hw/intc/pxa2xx: Pass CPU reference using QOM link property
+>    hw/intc/pxa2xx: Factor pxa2xx_pic_realize() out of pxa2xx_pic_init()
+>    hw/arm/pxa2xx: Realize PXA2XX_I2C device before accessing it
 
-The scratchpad provides a set of non-functional registers. The firmware
-is free to use them, hardware does not support any special management
-support. The scratchpad registers can be read or written from LBUS
-slave.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-In this model, The LBUS device is parent for the scratchpad.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
----
-v2:
-- Incorporated Joel's review comments.
-v5:
-- Incorporated review comments by Cedric.
-v6:
-- Incorporated review comments by Daniel.
----
- meson.build                        |  1 +
- hw/fsi/trace.h                     |  1 +
- include/hw/fsi/engine-scratchpad.h | 32 ++++++++++
- include/hw/fsi/fsi.h               | 16 +++++
- hw/fsi/engine-scratchpad.c         | 93 ++++++++++++++++++++++++++++++
- hw/fsi/Kconfig                     |  4 ++
- hw/fsi/meson.build                 |  1 +
- hw/fsi/trace-events                |  2 +
- 8 files changed, 150 insertions(+)
- create mode 100644 hw/fsi/trace.h
- create mode 100644 include/hw/fsi/engine-scratchpad.h
- create mode 100644 include/hw/fsi/fsi.h
- create mode 100644 hw/fsi/engine-scratchpad.c
- create mode 100644 hw/fsi/trace-events
-
-diff --git a/meson.build b/meson.build
-index 4961c82a6b..31078f0bb3 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3256,6 +3256,7 @@ if have_system
-     'hw/char',
-     'hw/display',
-     'hw/dma',
-+    'hw/fsi',
-     'hw/hyperv',
-     'hw/i2c',
-     'hw/i386',
-diff --git a/hw/fsi/trace.h b/hw/fsi/trace.h
-new file mode 100644
-index 0000000000..ee67c7fb04
---- /dev/null
-+++ b/hw/fsi/trace.h
-@@ -0,0 +1 @@
-+#include "trace/trace-hw_fsi.h"
-diff --git a/include/hw/fsi/engine-scratchpad.h b/include/hw/fsi/engine-scratchpad.h
-new file mode 100644
-index 0000000000..959a8a6677
---- /dev/null
-+++ b/include/hw/fsi/engine-scratchpad.h
-@@ -0,0 +1,32 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM scratchpad engne
-+ */
-+#ifndef FSI_ENGINE_SCRATCHPAD_H
-+#define FSI_ENGINE_SCRATCHPAD_H
-+
-+#include "hw/fsi/lbus.h"
-+#include "hw/fsi/fsi.h"
-+
-+#define ENGINE_CONFIG_NEXT              BE_BIT(0)
-+#define ENGINE_CONFIG_VPD               BE_BIT(1)
-+#define ENGINE_CONFIG_SLOTS             BE_GENMASK(8, 15)
-+#define ENGINE_CONFIG_VERSION           BE_GENMASK(16, 19)
-+#define ENGINE_CONFIG_TYPE              BE_GENMASK(20, 27)
-+#define   ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-+#define   ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-+#define   ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-+#define ENGINE_CONFIG_CRC              BE_GENMASK(28, 31)
-+
-+#define TYPE_FSI_SCRATCHPAD "fsi.scratchpad"
-+#define SCRATCHPAD(obj) OBJECT_CHECK(FSIScratchPad, (obj), TYPE_FSI_SCRATCHPAD)
-+
-+typedef struct FSIScratchPad {
-+        FSILBusDevice parent;
-+
-+        uint32_t reg;
-+} FSIScratchPad;
-+
-+#endif /* FSI_ENGINE_SCRATCHPAD_H */
-diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
-new file mode 100644
-index 0000000000..e65f26f17b
---- /dev/null
-+++ b/include/hw/fsi/fsi.h
-@@ -0,0 +1,16 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface
-+ */
-+#ifndef FSI_FSI_H
-+#define FSI_FSI_H
-+
-+/* Bitwise operations at the word level. */
-+#define BE_BIT(x)                          BIT(31 - (x))
-+#define GENMASK(t, b) \
-+    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
-+#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), BE_BIT(b))
-+
-+#endif
-diff --git a/hw/fsi/engine-scratchpad.c b/hw/fsi/engine-scratchpad.c
-new file mode 100644
-index 0000000000..a8887cd613
---- /dev/null
-+++ b/hw/fsi/engine-scratchpad.c
-@@ -0,0 +1,93 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM scratchpad engine
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+
-+#include "hw/fsi/engine-scratchpad.h"
-+
-+static uint64_t fsi_scratchpad_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSIScratchPad *s = SCRATCHPAD(opaque);
-+
-+    trace_fsi_scratchpad_read(addr, size);
-+
-+    if (addr) {
-+        return 0;
-+    }
-+
-+    return s->reg;
-+}
-+
-+static void fsi_scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
-+                                 unsigned size)
-+{
-+    FSIScratchPad *s = SCRATCHPAD(opaque);
-+
-+    trace_fsi_scratchpad_write(addr, size, data);
-+
-+    if (addr) {
-+        return;
-+    }
-+
-+    s->reg = data;
-+}
-+
-+static const struct MemoryRegionOps scratchpad_ops = {
-+    .read = fsi_scratchpad_read,
-+    .write = fsi_scratchpad_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsi_scratchpad_realize(DeviceState *dev, Error **errp)
-+{
-+    FSILBusDevice *ldev = FSI_LBUS_DEVICE(dev);
-+
-+    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
-+                          ldev, TYPE_FSI_SCRATCHPAD, 0x400);
-+}
-+
-+static void fsi_scratchpad_reset(DeviceState *dev)
-+{
-+    FSIScratchPad *s = SCRATCHPAD(dev);
-+
-+    s->reg = 0;
-+}
-+
-+static void fsi_scratchpad_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    FSILBusDeviceClass *ldc = FSI_LBUS_DEVICE_CLASS(klass);
-+
-+    dc->realize = fsi_scratchpad_realize;
-+    dc->reset = fsi_scratchpad_reset;
-+
-+    ldc->config =
-+          ENGINE_CONFIG_NEXT            | /* valid */
-+          0x00010000                    | /* slots */
-+          0x00001000                    | /* version */
-+          ENGINE_CONFIG_TYPE_SCRATCHPAD | /* type */
-+          0x00000007;                     /* crc */
-+}
-+
-+static const TypeInfo fsi_scratchpad_info = {
-+    .name = TYPE_FSI_SCRATCHPAD,
-+    .parent = TYPE_FSI_LBUS_DEVICE,
-+    .instance_size = sizeof(FSIScratchPad),
-+    .class_init = fsi_scratchpad_class_init,
-+    .class_size = sizeof(FSILBusDeviceClass),
-+};
-+
-+static void fsi_scratchpad_register_types(void)
-+{
-+    type_register_static(&fsi_scratchpad_info);
-+}
-+
-+type_init(fsi_scratchpad_register_types);
-diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-index e650c660f0..f7c7fd1b28 100644
---- a/hw/fsi/Kconfig
-+++ b/hw/fsi/Kconfig
-@@ -1,2 +1,6 @@
-+config FSI_SCRATCHPAD
-+    bool
-+    select FSI_LBUS
-+
- config FSI_LBUS
-     bool
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index 4074d3a7d2..d45a98c223 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -1 +1,2 @@
- system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
-+system_ss.add(when: 'CONFIG_FSI_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
-diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
-new file mode 100644
-index 0000000000..c5753e2791
---- /dev/null
-+++ b/hw/fsi/trace-events
-@@ -0,0 +1,2 @@
-+fsi_scratchpad_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_scratchpad_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
--- 
-2.39.2
-
+r~

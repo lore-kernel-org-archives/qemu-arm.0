@@ -1,208 +1,190 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp938453ejb;
-        Thu, 19 Oct 2023 19:52:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHQxv5bu69PykX8LCWw6KYRN+FJFzkNNJyp1LSd+JvvxHusua0A3NyC/6NhltWQcTk0HX8a
-X-Received: by 2002:a05:6214:5199:b0:657:d1d5:7c9 with SMTP id kl25-20020a056214519900b00657d1d507c9mr697615qvb.12.1697770354258;
-        Thu, 19 Oct 2023 19:52:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697770354; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp949401ejb;
+        Thu, 19 Oct 2023 20:22:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEsnxM+Yk6IzleqkD2SKvJpgPZjMzREUmpmM3g+/qVAf0jN1dlP+sYvS0DKCQ6hII5MkSoj
+X-Received: by 2002:a05:6214:e61:b0:66d:bb9:43d3 with SMTP id jz1-20020a0562140e6100b0066d0bb943d3mr780518qvb.50.1697772174246;
+        Thu, 19 Oct 2023 20:22:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697772174; cv=none;
         d=google.com; s=arc-20160816;
-        b=fcffj9UWTTc7Rg4XMOp84+2BGLHuKuIPFvyHQaAF/tPwOvwKbCiedIdRY1u5CmijA1
-         xlrHKm9hTncw6nvNR1WhXkIKyCFgmxcX8xVU6o4+dNbVxAqDZNqJDZgGpGmgm0ue2NWL
-         6arLwGvOxJsO1Bd2UF2aO9RtlmXnOqBMnM7dnffmboDsPzJSZhvO9HKwrrq6xODByvvX
-         LZfNh038RW9sZDl7BcstkQTWGpyjLxNypu12t2MouwDaMsasxRvhmyoXbXeXoTC/CmnF
-         OOyiIWw1sg80MszW7h2YAJYKl52/6w3hpUtAMlCvpFIDkeC5K4f05FVPUt++WaeDpUJP
-         vX9Q==
+        b=jScOCAjArV2mjNMuibbXRC3HKQxmUpLMC62L9Ei3y7gDDTplBmj3FU/hfQH3suJrMS
+         G0trNxAKQW7fAq4MN1s/1fq6DmdiKZ4XX0xXA/+YZRG7WWhoxtAVcTb3ipD3LnCBNPFy
+         4sU8h0jjMwsfWXfwpTsI3uBW6khjzzq6xRE7AZBAsgbs5QUnK03K6V2qCnPb1iFFDLKf
+         +VdSFZowOh84pY7WBloFoC1O//kZCiDhudQS0qYFK58hvQdv08g5I2DmiAMFXE9uZQsw
+         d/5XX6RruTTv9V8Y2UUqpqpM1KxclDVEWwSDWL8YRsp3Ss9i77lCNVGa65GrZ39u38Do
+         K62g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=Z2pgugpF/CIcSQgJJthKo3fKGouwMrYw7wApHyRvrZs=;
-        fh=i1FaxtMG8zVDI+hy3nqAeSOKwU/LtkKgGevhfTvVEGU=;
-        b=qaWAspej9MRlmoPQGrtnmvSgV4Fb5yulXslbBvpQbGTKv2UdDkI9ggKFIGDgU6YGzG
-         +Kl3x4bylxgojxg04BM3WzQuH1iWrlt53NeQJIxXQSuXoWj+46sOpNG/8WXKx6TGZg4S
-         0tAswelH3+ajTcksowU3fRowzVuyFE/8/4PORzT2Zbh9O3NPHreAtOR5YX892le5V0zo
-         qfzkCSmmjjBOKqWPt/tkZ96cTxmv37JZjNrL6hyLN3w3mYzm/DnKT8prgHdcD7Hf1hmJ
-         PDU1qFfFBLkBAHFOLJ8J08/xLu1eGN+0sS+YiuF7qIsjn6dSqab3JInXdI1PgE2ZMlY6
-         PRPw==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=sClLkZYeuSZzeO/iGwW3WNyilaSNboVexy4elVIx5Fs=;
+        fh=lIFekyh5jhXNIuP59RW+57yixc2d9vmoIQyd3mkTNVo=;
+        b=iGMXkRySmQtErIFEr47CIYMUSsktLkZ9zG81uO/KeCWfXCfJmEo2jLBX6eiQtpdGpz
+         tKVkzQpQH6t8Q3c1Ptr/7IJOgb2THdYRUzq2i2HXTmzAq21chKfkfey+Dm4V5fTOvg+M
+         5c36Ohxpbc/1rR7hsk0wedx3/RoG898u8YfbiFZrPEmu+e/6E1ps8xfw4Dk2mLgP6IAd
+         vu768g7TuO3ePONPmPw/KBonZqsgWXfufJHsOt01PK9lBFX/Hh0EskyozymDs8cEnBLj
+         qaO2MAkWH1CQhtVglRmI+v5/dN+pHu6HRgLicL/49VCp1BA0nxznqz54c1LZNFOI3dGz
+         hbdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=DOF5EGhi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=VCkMJUoI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w16-20020a0562140b3000b0066d130cbb9esi734007qvj.60.2023.10.19.19.52.34
+        by mx.google.com with ESMTPS id o8-20020a056214180800b0066d07dcdceasi745437qvw.220.2023.10.19.20.22.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 19:52:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 20:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=DOF5EGhi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       dkim=pass header.i=@intel.com header.s=Intel header.b=VCkMJUoI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtfcS-00015y-AF; Thu, 19 Oct 2023 22:52:12 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtg5M-0007s4-C8; Thu, 19 Oct 2023 23:22:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1qtfcQ-00015U-EZ; Thu, 19 Oct 2023 22:52:10 -0400
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1qtg5K-0007rk-MN; Thu, 19 Oct 2023 23:22:02 -0400
+Received: from mgamail.intel.com ([192.55.52.88])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1qtfcK-0004x1-PH; Thu, 19 Oct 2023 22:52:10 -0400
-Received: from [192.168.68.112]
- (ppp118-210-136-142.adl-adc-lon-bras33.tpg.internode.on.net
- [118.210.136.142])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 173DA20052;
- Fri, 20 Oct 2023 10:51:50 +0800 (AWST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1697770313;
- bh=Z2pgugpF/CIcSQgJJthKo3fKGouwMrYw7wApHyRvrZs=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=DOF5EGhiZVN3KfcIhKf/SKnVtWCroJW3LcPpIbOkJIe0kzA8tWX1f538vvGlKXPmK
- XOF7zsrKHaPd2CyO20I895aXjg4V25edQjMpidbAmyE2SbOSJlWYqCXSpgIc/9LTIn
- lQG65OmKmD0+n4Z7OOSawCzLo7PT4LGUK93qRKkki/2mJ+r6MBqX/jwNCpC7ke6FcQ
- KxvFJ4r//FXQYobVVhytiiO2vaNXNJvTKoHb4sw1M0qHgHAoS5YV3zYdmqkO6mt6WM
- pndbb5hfr0k27Mn1TZq6E7C4+xeCFPNblEPHPUowwPWixwS+SJrOsBEu1KvJrn9K7i
- h7fflYlZldhWQ==
-Message-ID: <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
-Subject: Re: [PATCH 1/2] misc/pca9552: Fix inverted input status
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, f4bug@amsat.org
-Date: Fri, 20 Oct 2023 13:21:48 +1030
-In-Reply-To: <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
-References: <20231019204011.3174115-1-milesg@linux.vnet.ibm.com>
- <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1qtg5F-0005Tz-6l; Thu, 19 Oct 2023 23:22:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1697772117; x=1729308117;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=FgdCXE8fYvNp8EnunnbdqUCUXCP+TzMOENOBvtKMGxM=;
+ b=VCkMJUoIK1kcgB2TEXvizDmXK64RYIm5xqbsKmzVylw8sAftomtJ4Avu
+ W30TJAM4dNgYapQ35uhfBsxRS/0ycgMelbRP3wQxbG5iz6fd4wTWXc7kY
+ 2g4eCjPncogq+sJVIU0dQKhQIOSRDp93D520o/bm0mcZd34wMBlTA4Y4E
+ htKHJNcCyLtXdzbEqLYYe5SBz8+1z7yrqHcT2fMhE6uMTKhTmYyqalr5d
+ +7Y+HmJ8s3Zl71ROExMFnTG87oSYjEn0G8EzxERzFjqMLFvbWhHXFcFL2
+ 5Un507y1LaUUbCfJrbnk/7JnDSrSTKp0tSvbTNpRDPTP3Em7BJt9Gz1g2 w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10868"; a="417552554"
+X-IronPort-AV: E=Sophos;i="6.03,238,1694761200"; d="scan'208";a="417552554"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Oct 2023 20:21:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10868"; a="847941950"
+X-IronPort-AV: E=Sophos;i="6.03,238,1694761200"; d="scan'208";a="847941950"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by FMSMGA003.fm.intel.com with ESMTP; 19 Oct 2023 20:21:45 -0700
+Date: Fri, 20 Oct 2023 11:33:23 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eric Farman <farman@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>,
+ Sergio Lopez <slp@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH v2 01/12] hw/i386/amd_iommu: Do not use SysBus API to map
+ local MMIO region
+Message-ID: <ZTH1AynH2fmL4Ntq@intel.com>
+References: <20231019071611.98885-1-philmd@linaro.org>
+ <20231019071611.98885-2-philmd@linaro.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231019071611.98885-2-philmd@linaro.org>
+Received-SPF: pass client-ip=192.55.52.88; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D2fajJDuV5fb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: v/+UOFFrdRRd
 
-On Thu, 2023-10-19 at 15:40 -0500, Glenn Miles wrote:
-> > The pca9552 INPUT0 and INPUT1 registers are supposed to
-> > hold the logical values of the LED pins.  A logical 0
-> > should be seen in the INPUT0/1 registers for a pin when
-> > its corresponding LSn bits are set to 0, which is also
-> > the state needed for turning on an LED in a typical
-> > usage scenario.  Existing code was doing the opposite
-> > and setting INPUT0/1 bit to a 1 when the LSn bit was
-> > set to 0, so this commit fixes that.
-> >=20
-> > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
-> > ---
-> >=20
-> > Changes from prior version:
-> >     - Added comment regarding pca953X
-> >     - Added cover letter
-> >=20
-> >  hw/misc/pca9552.c          | 18 +++++++++++++-----
-> >  tests/qtest/pca9552-test.c |  6 +++---
-> >  2 files changed, 16 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> > index fff19e369a..445f56a9e8 100644
-> > --- a/hw/misc/pca9552.c
-> > +++ b/hw/misc/pca9552.c
-> > @@ -36,7 +36,10 @@ typedef struct PCA955xClass PCA955xClass;
-> > =20
-> >  DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
-> >                         TYPE_PCA955X)
-> > -
-> > +/*
-> > + * Note:  The LED_ON and LED_OFF configuration values for the PCA955X
-> > + *        chips are the reverse of the PCA953X family of chips.
-> > + */
-> >  #define PCA9552_LED_ON   0x0
-> >  #define PCA9552_LED_OFF  0x1
-> >  #define PCA9552_LED_PWM0 0x2
-> > @@ -112,13 +115,18 @@ static void pca955x_update_pin_input(PCA955xState=
- *s)
-> > =20
-> >          switch (config) {
-> >          case PCA9552_LED_ON:
-> > -            qemu_set_irq(s->gpio[i], 1);
-> > -            s->regs[input_reg] |=3D 1 << input_shift;
-> > -            break;
-> > -        case PCA9552_LED_OFF:
-> > +            /* Pin is set to 0V to turn on LED */
-> >              qemu_set_irq(s->gpio[i], 0);
-> >              s->regs[input_reg] &=3D ~(1 << input_shift);
-> >              break;
-> > +        case PCA9552_LED_OFF:
-> > +            /*
-> > +             * Pin is set to Hi-Z to turn off LED and
-> > +             * pullup sets it to a logical 1.
-> > +             */
-> > +            qemu_set_irq(s->gpio[i], 1);
-> > +            s->regs[input_reg] |=3D 1 << input_shift;
-> > +            break;
+On Thu, Oct 19, 2023 at 09:15:59AM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Thu, 19 Oct 2023 09:15:59 +0200
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH v2 01/12] hw/i386/amd_iommu: Do not use SysBus API to map
+>  local MMIO region
+> X-Mailer: git-send-email 2.41.0
+> 
+> There is no point in exposing an internal MMIO region via
+> SysBus and directly mapping it in the very same device.
+> 
+> Just map it without using the SysBus API.
+> 
+> Transformation done using the following coccinelle script:
+> 
+>   @@
+>   expression sbdev;
+>   expression index;
+>   expression addr;
+>   expression subregion;
+>   @@
+>   -    sysbus_init_mmio(sbdev, subregion);
+>        ... when != sbdev
+>   -    sysbus_mmio_map(sbdev, index, addr);
+>   +    memory_region_add_subregion(get_system_memory(), addr, subregion);
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> ---
+>  hw/i386/amd_iommu.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 
-So the witherspoon-bmc machine was a user of the PCA9552 outputs as
-LEDs. I guess its LEDs were in the wrong state the whole time? That
-looks like the only user though, and shouldn't be negatively affected.
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+-Zhao
 
-> >          case PCA9552_LED_PWM0:
-> >          case PCA9552_LED_PWM1:
-> >              /* TODO */
-> > diff --git a/tests/qtest/pca9552-test.c b/tests/qtest/pca9552-test.c
-> > index d80ed93cd3..ccca2b3d91 100644
-> > --- a/tests/qtest/pca9552-test.c
-> > +++ b/tests/qtest/pca9552-test.c
-> > @@ -60,7 +60,7 @@ static void send_and_receive(void *obj, void *data, Q=
-GuestAllocator *alloc)
-> >      g_assert_cmphex(value, =3D=3D, 0x55);
-> > =20
-> >      value =3D i2c_get8(i2cdev, PCA9552_INPUT0);
-> > -    g_assert_cmphex(value, =3D=3D, 0x0);
-> > +    g_assert_cmphex(value, =3D=3D, 0xFF);
-> > =20
-> >      pca9552_init(i2cdev);
-> > =20
-> > @@ -68,13 +68,13 @@ static void send_and_receive(void *obj, void *data,=
- QGuestAllocator *alloc)
-> >      g_assert_cmphex(value, =3D=3D, 0x54);
-> > =20
-> >      value =3D i2c_get8(i2cdev, PCA9552_INPUT0);
-> > -    g_assert_cmphex(value, =3D=3D, 0x01);
-> > +    g_assert_cmphex(value, =3D=3D, 0xFE);
-> > =20
-> >      value =3D i2c_get8(i2cdev, PCA9552_LS3);
-> >      g_assert_cmphex(value, =3D=3D, 0x54);
-> > =20
-> >      value =3D i2c_get8(i2cdev, PCA9552_INPUT1);
-> > -    g_assert_cmphex(value, =3D=3D, 0x10);
-> > +    g_assert_cmphex(value, =3D=3D, 0xEF);
-> >  }
-> > =20
-> >  static void pca9552_register_nodes(void)
-
-
+> 
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 8d0f2f99dd..7965415b47 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -1579,9 +1579,8 @@ static void amdvi_sysbus_realize(DeviceState *dev, Error **errp)
+>      /* set up MMIO */
+>      memory_region_init_io(&s->mmio, OBJECT(s), &mmio_mem_ops, s, "amdvi-mmio",
+>                            AMDVI_MMIO_SIZE);
+> -
+> -    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->mmio);
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(s), 0, AMDVI_BASE_ADDR);
+> +    memory_region_add_subregion(get_system_memory(), AMDVI_BASE_ADDR,
+> +                                &s->mmio);
+>      pci_setup_iommu(bus, amdvi_host_dma_iommu, s);
+>      amdvi_init(s);
+>  }
+> -- 
+> 2.41.0
+> 
+> 
+> 

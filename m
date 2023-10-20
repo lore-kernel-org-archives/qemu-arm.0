@@ -1,154 +1,250 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1206619ejb;
-        Fri, 20 Oct 2023 06:06:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFIB7DyxeaNVKJJ0Prs3mAxua+vgrBrd53nbCH5Mx5g9GDpQ8skT5VoUA1f2iytw+/qCg0Y
-X-Received: by 2002:a05:620a:1328:b0:778:99a0:d105 with SMTP id p8-20020a05620a132800b0077899a0d105mr1742661qkj.23.1697807172683;
-        Fri, 20 Oct 2023 06:06:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697807172; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1209518ejb;
+        Fri, 20 Oct 2023 06:09:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGpF24QIBL8bmkdNLq+sAmtNo+xDM9rmw6+qrJRFWu/JiDPyqYQuZ72+FdXiCGJ1peJqIL0
+X-Received: by 2002:a05:6122:992:b0:49a:3d72:fe7c with SMTP id g18-20020a056122099200b0049a3d72fe7cmr1676520vkd.15.1697807371033;
+        Fri, 20 Oct 2023 06:09:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697807371; cv=none;
         d=google.com; s=arc-20160816;
-        b=giRDijonMmLJIDt8qxOyrio0TK+tVQhBxxyO7VBtTGgvKqYlf7peMMP4DKHwCLNmpI
-         na3lchzu6oxDQzoqk2AyyNTuE42PR7mheRe7beuqfMzX1vecPekE8dw3XslIX8H5xpAW
-         BX5jrL1kN+/cniP6JjXIGC/VT0fG8/vz0Ijohh6sbf7ugCd+qnAv509zdlFRmSgsDdMa
-         j1GSIdnNZ5p2FVK8r7COBzDLwb4eA67xCgcMjWJEZJJrzQyano6mnnVW9EEalbogCdwP
-         p+0u1fNV/LyKK/aP9qhBZGdj/Y7d+E/lclX+VzK/NPmksOyowy9VGiqcRUuuaIPbWHh+
-         6c8Q==
+        b=FaBoli7J+HfUwlwy164vswuLwmawgs30hAcQoKKyLwhYLYLU8W5K0qr4jD86LYq2UP
+         SAheQAHDxP85USvDWrvrNjhYwDcuEqVCM27ozLQmm4KHEstC4QIifnclM71yA7frJac5
+         59UKTVDMlhHlzJEfGxqWRqrd1/Tt/SEGrCYyVUuLPQdl4Erw1KJB/g3APc6X2339pJkC
+         ZeGMlRceX9uBvGjHKysnjw3WyrLpm74lN6eQdpxmOJwjSHVO5AtpE6a3KVbSebNG51oS
+         8RzhTAsq3G13UFECmal3VK6bEN4K59QhJRQ8jUCfVImiJnkzdUoKChYJbXH8INHfFDCM
+         ViKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=qVpVhfYsMArn5+3t2ZWXwVgzj4H5ByX4fZEF0dWkMj4=;
-        fh=QWGggua+3ufs1S3QlzhTWcDhlhc7bBCtXi/Y+/UuB8A=;
-        b=G02iWWP1kxy9dJfYDYXwJ0ulEoh8d3mzC0N7pMqDjN4x1dZdtOGT8AcTwm/Iddb6ZU
-         u+HumIA9h69w+vAp9fhRJVeJVUsxdVrzcqREDHZrfUSVBO3z3OWHkq/C0E81T4XEDpRW
-         3/FxY7TrVQ+3UH1meqv+/pzfdE2dZNjVlXWtPKT7mTafCrk84qoiwLFOYB+k+YzKmkni
-         aviHU1+010I6lET41RmV6AbGWd9P3wca3TC8ZyOAP75UGb7tdfsKXh2X0k8nU842rI0P
-         VrtRwtmfdNrMII0v5/6r6u09SBq4clWojP3ZsADcj7eKgPZg6EvLW0UrXIOpQXUN91bK
-         Yj1g==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=Pmm/qcdzPjzGFWUI595QLQHPribdZbfyTCDh4Sg46gI=;
+        fh=qh6UU94NLPiQxbxu7zUo3YCrFdMXioP3a1N3NOq7g0U=;
+        b=LxVeZomCPEV/2/aHwa1/dV9Z+XJspjE7Yrx5mcprxOqxlHLr09AYeqL1UAPICLqIJk
+         cs15z2655zpOf+1vcaXpbsIvLbx4w577tfCxjJbN7CAA43Y7x3csXg9zVume1dznubbH
+         AXDbaV8f5YQMB2fEckB2S4FxRuiGu1MrMK8uHjC12Izvhr6Ry/VOH6SZFAL3qrDMdTR6
+         7Nh75skzpJNGGcLxtPi/NnB6YvlxcsOAG7nKJJDMutHNKpFYdculCzuoOiAVnHwtiEUn
+         5b2Hay88jGmiJQ54unhIumhqFrbQRK0U6IqqtV2LW2o76/3aVW0r7yN7kwrooq5Tx3s3
+         Xo4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pDh492T0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adFBf1Js;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13-20020a37c40d000000b007770bfc26d8si1264062qki.39.2023.10.20.06.06.12
+        by mx.google.com with ESMTPS id u78-20020a1fab51000000b00490823523a1si154200vke.216.2023.10.20.06.09.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 06:06:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 06:09:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pDh492T0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=adFBf1Js;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtpAt-00019f-5p; Fri, 20 Oct 2023 09:04:23 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtpFa-0001kW-Ov; Fri, 20 Oct 2023 09:09:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtpAZ-0000hL-QR
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 09:04:10 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtpAX-0005K4-SB
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 09:04:03 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-9b96c3b4be4so121593266b.1
- for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 06:04:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697807038; x=1698411838; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qVpVhfYsMArn5+3t2ZWXwVgzj4H5ByX4fZEF0dWkMj4=;
- b=pDh492T0LIHfqyFWzMWdCkOe2e5VCyI6wjvYCJ1hnXWIQzVhBvHoi4OhSjtyO0NZXy
- xwi2tUgYe+PZETFDCKjCgKNIpRrdA528KnQqUKB3B0WDdi+fbIDuBjIQ68P7z1yxSKZR
- 51nUQpL0KwnZALAi3NStibBptq3T6L8jGXhN0cye6UIxDUq8T+KgjRWSstc7Tp/srljR
- kb+hr94b4xl4SkjuZtNIjK7VFzYYZXZwD3Y7KLELxnL6d2GU9D+nMhueThiiiIcCqWGH
- YaPBvSJ2oPYpTCkl3ILjXNPoU1+IOoGErLOupU1brNWw48kpzQ5EJPZbamxEb3CdYUvy
- 8BBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697807038; x=1698411838;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=qVpVhfYsMArn5+3t2ZWXwVgzj4H5ByX4fZEF0dWkMj4=;
- b=b6+qXp0l36ceJYXeeEdQPVnWQQXGXt5vgFmgp3xJVU9NFiDv/c+yY3Oem0kvWUqiqb
- JsLh7xTNz8pMBvaGvdymER4gJsrb/bHgrGK0zhlk1tARuFShgCp5g7mK2VizpJb7hodR
- lbwUla2MSRPlYcUZropJvVs/sWuhAsNWckZblZL7IoMnilHgsJa7zk1ROnOGKlsJg750
- jxc67m60Hd+Dg451iqyDT8WxtyMHZzCbFjBiYbCi9ElozKXHv916gYJRUctETGVAeIP9
- 6lQte6/pRO3zQHJcZod+9R0KEh9fJKwP3iaSXwByl99t+rJCGiK50iVp5G2/JwkZ8p6y
- b1iw==
-X-Gm-Message-State: AOJu0Yx5kw5pNZ0Dc0LtbywCR7v+FK6wKpvqbX7r01oPjmdhzrm11xN8
- rAhUzbMLQ9YiOzWaQUDukTJlObg979fzQbkHCSM=
-X-Received: by 2002:a17:906:d555:b0:9be:fc31:8cd4 with SMTP id
- cr21-20020a170906d55500b009befc318cd4mr1556257ejc.18.1697807037847; 
- Fri, 20 Oct 2023 06:03:57 -0700 (PDT)
-Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
- [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
- my18-20020a1709065a5200b009a9fbeb15f5sm1447874ejc.46.2023.10.20.06.03.56
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 20 Oct 2023 06:03:57 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 4/9] hw/pcmcia/pxa2xx: Do not open-code
- sysbus_create_simple()
-Date: Fri, 20 Oct 2023 15:03:25 +0200
-Message-ID: <20231020130331.50048-5-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231020130331.50048-1-philmd@linaro.org>
-References: <20231020130331.50048-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtpFW-0001jY-Lw
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 09:09:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qtpFU-0006Qz-Uz
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 09:09:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697807348;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Pmm/qcdzPjzGFWUI595QLQHPribdZbfyTCDh4Sg46gI=;
+ b=adFBf1JsU3tzyLEC/F84gAXDJiC0S0iMEoeDySt5uiNP2STBHY+tj2KmbTDiv0WUMUFR6z
+ CtWEwd1xPnKkGuNhmg3PSS9F64jUDk5fVUssDGCGmikG9RRhDEYWRT1XGUhuxjnQk+cd+e
+ fc0q5bLTMhr7/bzSJg2hbpDsdAZSVsY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-198-sWUXBc-_Mx-Mrc9BdmPafQ-1; Fri, 20 Oct 2023 09:08:55 -0400
+X-MC-Unique: sWUXBc-_Mx-Mrc9BdmPafQ-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D64588B76F;
+ Fri, 20 Oct 2023 13:08:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4BEEE492BFB;
+ Fri, 20 Oct 2023 13:08:54 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 175A521E6A1F; Fri, 20 Oct 2023 15:08:53 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
+ qemu-block@nongnu.org,  qemu-s390x@nongnu.org,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH v2 19/22] qapi: Inline and remove
+ QERR_PROPERTY_VALUE_OUT_OF_RANGE definition
+References: <20231005045041.52649-1-philmd@linaro.org>
+ <20231005045041.52649-20-philmd@linaro.org>
+Date: Fri, 20 Oct 2023 15:08:53 +0200
+In-Reply-To: <20231005045041.52649-20-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:36
+ +0200")
+Message-ID: <8734y51lwa.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Nl/0tDgFcTfr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Wa585b6/EU+Y
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/pcmcia/pxa2xx.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-diff --git a/hw/pcmcia/pxa2xx.c b/hw/pcmcia/pxa2xx.c
-index e7264feb45..3d512a292c 100644
---- a/hw/pcmcia/pxa2xx.c
-+++ b/hw/pcmcia/pxa2xx.c
-@@ -143,9 +143,7 @@ PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
- {
-     DeviceState *dev;
- 
--    dev = qdev_new(TYPE_PXA2XX_PCMCIA);
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-+    dev = sysbus_create_simple(TYPE_PXA2XX_PCMCIA, base, NULL);
- 
-     return PXA2XX_PCMCIA(dev);
- }
--- 
-2.41.0
+> Address the comment added in commit 4629ed1e98
+> ("qerror: Finally unused, clean up"), from 2015:
+>
+>   /*
+>    * These macros will go away, please don't use
+>    * in new code, and do not add new ones!
+>    */
+>
+> Mechanical transformation using sed, manually
+> removing the definition in include/qapi/qmp/qerror.h.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  include/qapi/qmp/qerror.h |  3 ---
+>  hw/intc/openpic.c         |  3 ++-
+>  target/i386/cpu.c         | 12 ++++++++----
+>  util/block-helpers.c      |  3 ++-
+>  4 files changed, 12 insertions(+), 9 deletions(-)
+>
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index 7862ac55a1..e094f13114 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -17,9 +17,6 @@
+>   * add new ones!
+>   */
+>=20=20
+> -#define QERR_PROPERTY_VALUE_OUT_OF_RANGE \
+> -    "Property %s.%s doesn't take value %" PRId64 " (minimum: %" PRId64 "=
+, maximum: %" PRId64 ")"
+> -
+>  #define QERR_QGA_COMMAND_FAILED \
+>      "Guest agent command failed, error was '%s'"
+>=20=20
+> diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
+> index a6f91d4bcd..4f6ee930e2 100644
+> --- a/hw/intc/openpic.c
+> +++ b/hw/intc/openpic.c
+> @@ -1535,7 +1535,8 @@ static void openpic_realize(DeviceState *dev, Error=
+ **errp)
+>      };
+>=20=20
+>      if (opp->nb_cpus > MAX_CPU) {
+> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE,
+> +        error_setg(errp, "Property %s.%s doesn't take value %" PRId64
+> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+>                     TYPE_OPENPIC, "nb_cpus", (uint64_t)opp->nb_cpus,
+>                     (uint64_t)0, (uint64_t)MAX_CPU);
+>          return;
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index e5a14885ed..273f865228 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -5086,7 +5086,8 @@ static void x86_cpuid_version_set_family(Object *ob=
+j, Visitor *v,
+>          return;
+>      }
+>      if (value < min || value > max) {
+> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
+> +        error_setg(errp, "Property %s doesn't take value %" PRId64
+> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+>                     name ? name : "null", value, min, max);
+>          return;
+>      }
+> @@ -5126,7 +5127,8 @@ static void x86_cpuid_version_set_model(Object *obj=
+, Visitor *v,
+>          return;
+>      }
+>      if (value < min || value > max) {
+> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
+> +        error_setg(errp, "Property %s doesn't take value %" PRId64
+> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+>                     name ? name : "null", value, min, max);
+>          return;
+>      }
+> @@ -5161,7 +5163,8 @@ static void x86_cpuid_version_set_stepping(Object *=
+obj, Visitor *v,
+>          return;
+>      }
+>      if (value < min || value > max) {
+> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
+> +        error_setg(errp, "Property %s doesn't take value %" PRId64
+> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+>                     name ? name : "null", value, min, max);
+>          return;
+>      }
+> @@ -5263,7 +5266,8 @@ static void x86_cpuid_set_tsc_freq(Object *obj, Vis=
+itor *v, const char *name,
+>          return;
+>      }
+>      if (value < min || value > max) {
+> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
+> +        error_setg(errp, "Property %s doesn't take value %" PRId64
+> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+>                     name ? name : "null", value, min, max);
+>          return;
+>      }
+> diff --git a/util/block-helpers.c b/util/block-helpers.c
+> index c4851432f5..de94909bc4 100644
+> --- a/util/block-helpers.c
+> +++ b/util/block-helpers.c
+> @@ -30,7 +30,8 @@ void check_block_size(const char *id, const char *name,=
+ int64_t value,
+>  {
+>      /* value of 0 means "unset" */
+>      if (value && (value < MIN_BLOCK_SIZE || value > MAX_BLOCK_SIZE)) {
+> -        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE,
+
+Three callers:
+
+* set_blocksize()
+
+  Property setter.  Good.
+
+* vu_blk_exp_create() and vduse_blk_exp_create()
+
+  These check QMP arguments, i.e. *not* porperties.  Misuse of
+  QERR_PROPERTY_VALUE_OUT_OF_RANGE.
+
+> +        error_setg(errp, "Property %s.%s doesn't take value %" PRId64
+> +                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+>                     id, name, value, MIN_BLOCK_SIZE, MAX_BLOCK_SIZE);
+>          return;
+>      }
 

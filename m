@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080361ejb;
-        Fri, 20 Oct 2023 02:09:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFB+MoE5HVbJZtqN4e5Fi900UZZ9gd2PYuE1/puMNQcThb8obJUP2eCugjKS4oftfjL0E0/
-X-Received: by 2002:a05:622a:1819:b0:412:1df:9b25 with SMTP id t25-20020a05622a181900b0041201df9b25mr1177604qtc.18.1697792974283;
-        Fri, 20 Oct 2023 02:09:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697792974; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1080494ejb;
+        Fri, 20 Oct 2023 02:09:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFewcQJOe3KutoEMSD6JHOC+FCxfLwwFKomyXw+qtPTiAcUb/Jr0W7kKMRThZJ/GmeH9d58
+X-Received: by 2002:a05:622a:450:b0:417:8d08:958d with SMTP id o16-20020a05622a045000b004178d08958dmr1020322qtx.2.1697792984263;
+        Fri, 20 Oct 2023 02:09:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697792984; cv=none;
         d=google.com; s=arc-20160816;
-        b=tRvUBG7+8m84arrY2K2FtONKMH1U9iCqXM3rk7B2CKxSvDDYLpWNovZIdO8w3EMeAg
-         rGYgHP9vUqiyxiyUlTr8G39ZL+LDREVicEWre2wBdCsodESN4oFevV3zxD5MqDGCJzoL
-         Vd7oKGH1cH7y+OzM3uAniDKmbk/vemQ2oUkTKqzRCmdQV5kpTsKsYk8i6102+xGqRQRn
-         I8AxW7XxJsvUMI43nDmWt6F26mN95yHrdYUu8vwW49ijWArUygI8r/alLwN6Rm6ucQ8O
-         zzg8GAPVAqXV1KxOz1E7p2ogfavDHJ73c0yOr1HMxRWso22Itu6rhDLDN7X4gnhk6RMd
-         8N6Q==
+        b=fWN3FLCWlfv2QUASsUf8seHqj7dKuwfSoDoALnkT9zTUctfHgBzs/oKKzS2b8r4/OL
+         IX+V0bPZ8k91VR062XlnvL/2jcBqUlTpTkC7MLaE6Ev44LPVZPQLx5mfEd/W0A2qhMJ9
+         DRJT0Sgv2ml0/CBHs8ErF91TMVQHMmBkd+LWQzfOKLUXs0IaZeZL0BVfajZ3ELWxwPxR
+         83AkmSfdq6p0iSHdQlUVVedSwH0C3AWelDaA6YdEgdk5htHYXmA6Bmq2i6ASOoK8rBM9
+         T0rmdx/JzXWVA+yWIUhxqXJ5CU++ooq4Bk+ABpHnzoxyukheWJZvZBl3UQs4DG7AqAT9
+         2ONQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ONi19ukrfLVEQNheMMhkhQmgHLo3FAgxA5+kb+4Y7a8=;
+        bh=tepxTd/hr2hYG2r+hVUPCLMjLaoLxcfQ8Km0xq5qjnw=;
         fh=rTkH9/wDYQMZLVlaH0neZTzbhrqu7oCVHTTGZPWdq9o=;
-        b=kRRTreADKVx83g9k9vmIF1ot8K874AVA9tg56aFEpUlkPXQ0aQTFMHvD/Bf1+OnN01
-         Si7G2Og4/umGfHs45aPY64Sd5fgL1mTyPZHw3QvPLq3l0ppLozbpJYJ7C72ILP11jSof
-         4K2Bl+/A/h6n1NsTzNVj+38gBTXsg55gcc0Ywf0HNp0PJnKHZVHjgoAPYOPDF4Fx/hzl
-         EOmPcIn9GCJagOIWvw1NqPxaVcrpuEDWdZU/IOb6Y19Gm88w///ffnZGQhj1yjOSzSBJ
-         Oo86tbGFlEIWnOZ68AnP6pp0f035eQUOqWWoy5Xp88t1EmtS2b+aCqGQCrV4o2p2e8d2
-         OX7g==
+        b=cAUSS9gQ3j16lWFuwjKcjvR8jx/Vo+r+zAYElxa3O+mmhTbKCmqkD/AttjwFS5mg75
+         MwJz33y09MVkd2dLY/uRCfRsFqQ+7X9KUs8OC1xCxNwKPcAkl63/AWhTxBymPSAvOfsB
+         nWTPds2DPD8gg29hizwWRiYZymZrhhbvF+4etZMidtUrXdJ6v6Z4+kVqlcqE7DG5Gz2T
+         KwHavHJMs4/snXF1eOujlj+Bl9raHj6S1JPf89QibdOHaIokf28NSAG0mp9JXL6Ew720
+         lDQXEEbgTqfTNHI3VZdU6otsexUlin/lprwdQRBV9cuVI1AT4KIPjHL0EoqIEFCC2s2j
+         iRvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LL0j2eL2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SDu7dt2y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5-20020a05622a130500b004198efe8573si1036147qtk.139.2023.10.20.02.09.34
+        by mx.google.com with ESMTPS id d21-20020a05622a15d500b004198b50a2c1si945030qty.520.2023.10.20.02.09.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 02:09:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Oct 2023 02:09:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LL0j2eL2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SDu7dt2y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtlV9-0005NE-SH; Fri, 20 Oct 2023 05:09:03 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtlUv-0004s5-5i; Fri, 20 Oct 2023 05:08:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlV8-0005Kf-31
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 05:09:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qtlUt-0004js-Pj
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtlV6-0005XS-Nd
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 05:09:01 -0400
+ id 1qtlUs-0005V1-9w
+ for qemu-arm@nongnu.org; Fri, 20 Oct 2023 05:08:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697792940;
+ s=mimecast20190719; t=1697792925;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ONi19ukrfLVEQNheMMhkhQmgHLo3FAgxA5+kb+4Y7a8=;
- b=LL0j2eL2GYOd8o1QZbOZnfE879umibkluUAC40vZ36QwqZVmqxGJvOhtPYCbQdwmCGB3LH
- 8C9DHCigKepMgYc74yVqrcafjM89IlY/AJIkL8P2lCnwmM7XAsXG4KoQ+ReHsiR0Fi6q71
- WAyXZJwoIejafN+fKUJuPuN1S2IX1pc=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-257-0SyCRSCYPCyV-wVxyDG2uA-1; Fri, 20 Oct 2023 05:08:49 -0400
-X-MC-Unique: 0SyCRSCYPCyV-wVxyDG2uA-1
+ bh=tepxTd/hr2hYG2r+hVUPCLMjLaoLxcfQ8Km0xq5qjnw=;
+ b=SDu7dt2yjdSC1+D2ZJvyFFijpligVCuSaszHoAck91MjYSY1QcnysVplWpCGKu7C1Gjo6R
+ 96yM8jUv3pjYsudymnR/lJlAnYuzkux5YOhwBKrDGJrOEfyhs2HMM8+QtIMWOA046UPVeX
+ nKJxK57op6XgOfeO7sQZLAnPgW4T8DE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-114-HvdrOnCQMoiohaUW5ttz_Q-1; Fri, 20 Oct 2023 05:08:38 -0400
+X-MC-Unique: HvdrOnCQMoiohaUW5ttz_Q-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2451C3813BD5;
- Fri, 20 Oct 2023 09:08:48 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 09421185A797;
+ Fri, 20 Oct 2023 09:08:37 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BDA442166B26;
- Fri, 20 Oct 2023 09:08:42 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EF6132166B28;
+ Fri, 20 Oct 2023 09:08:31 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -103,61 +103,69 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  Stefan Weil <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PATCH v2 13/13] migration: Use vmstate_register_any() for vmware_vga
-Date: Fri, 20 Oct 2023 11:07:31 +0200
-Message-ID: <20231020090731.28701-14-quintela@redhat.com>
+Subject: [PATCH v2 11/13] migration: Use vmstate_register_any() for audio
+Date: Fri, 20 Oct 2023 11:07:29 +0200
+Message-ID: <20231020090731.28701-12-quintela@redhat.com>
 In-Reply-To: <20231020090731.28701-1-quintela@redhat.com>
 References: <20231020090731.28701-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kzFhrywpONJE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sEarftNAgUM6
 
-I have no idea if we can have more than one vmware_vga device, so play
-it safe.
+We can have more than one audio card.
+
+void audio_init_audiodevs(void)
+{
+    AudiodevListEntry *e;
+
+    QSIMPLEQ_FOREACH(e, &audiodevs, next) {
+        audio_init(e->dev, &error_fatal);
+    }
+}
 
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- hw/display/vmware_vga.c | 2 +-
+ audio/audio.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 09591fbd39..7490d43881 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -1264,7 +1264,7 @@ static void vmsvga_init(DeviceState *dev, struct vmsvga_state_s *s,
+diff --git a/audio/audio.c b/audio/audio.c
+index e9815d6812..f91e05b72c 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -1781,7 +1781,7 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
  
-     vga_common_init(&s->vga, OBJECT(dev), &error_fatal);
-     vga_init(&s->vga, OBJECT(dev), address_space, io, true);
--    vmstate_register(NULL, 0, &vmstate_vga_common, &s->vga);
-+    vmstate_register_any(NULL, &vmstate_vga_common, &s->vga);
-     s->new_depth = 32;
- }
+     QTAILQ_INSERT_TAIL(&audio_states, s, list);
+     QLIST_INIT (&s->card_head);
+-    vmstate_register (NULL, 0, &vmstate_audio, s);
++    vmstate_register_any(NULL, &vmstate_audio, s);
+     return s;
  
+ out:
 -- 
 2.41.0
 

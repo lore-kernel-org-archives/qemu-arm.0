@@ -1,143 +1,163 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1472000ejb;
-        Fri, 20 Oct 2023 12:42:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHZp9WcVIfnQWZZkpKUp5BdsDOEfsskh+HmEx+Dj6WxGJMYK6FXyllKOBqbocoQ12lL1tz6
-X-Received: by 2002:a05:6214:e85:b0:66d:25f7:de15 with SMTP id hf5-20020a0562140e8500b0066d25f7de15mr3876421qvb.31.1697830967582;
-        Fri, 20 Oct 2023 12:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697830967; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp183300ejb;
+        Sat, 21 Oct 2023 01:00:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IExsQL4+yFUsrkVhFygXvoUt4AiQjfXEhuaTBU5zUgl51PVWkde1TNBdQfDWXnhYoAlBUQ2
+X-Received: by 2002:ac8:4b73:0:b0:419:6391:6bef with SMTP id g19-20020ac84b73000000b0041963916befmr3715009qts.0.1697875218963;
+        Sat, 21 Oct 2023 01:00:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697875218; cv=none;
         d=google.com; s=arc-20160816;
-        b=j7iKwcjwHwCRh90OsOyUFU/M8jwxThfR/9DK+/a4gDvK5GQKZRBRFT5GEnu1A6zPcy
-         R2DaB6/Z6jYM/mOs5Wucwnjb0+SL3xzQhdc2Cebd8rPQ6w5siOBmKjNIL4jhoV4P1k6L
-         yveTl6FvJe9diMwqXetnC5kSO09Ki6aaNhM9Zsx41+g3MsR1k+95bzq4rzmyJr6yK1RX
-         c5wuNymHpbaGAIJ/ZrTXhq6kdOd1FSgj8zq+QaqVPyxeJkGR2ysyx9jvCvbp4QY46uKR
-         Qe6xOl6cxecueyj1NmQHd5gXmHIXALa4oEnlALW4kaJg2c9V6KUzW4Qd4w+Y6zJEl3cF
-         Mhuw==
+        b=zGH5O+PjmOdrm8xII1uHBwYiyoCSkIJpx2Hm1H96GwLn8Sad1NA3TzUwDufhgtStwJ
+         2P2wRcVZY0UJg2Agwfo/u02EO6U3J1T1xTdQ02TD91poqB4snWlyxaTo6vqGE1OJUhQ4
+         rNHDWm2wnENMsThKQOZFu5rigrcilcAALWDtgIzuL1RlKs+e+1meqiBFT5MCwvQSPRoR
+         q3BpnGpoPVIYJOnx9BsTKLYxfh8uuoRTDTtTwZDaEWO5Ul7gjcDPOYGqBHtwwZIzWgf4
+         XkOd6Uw+VZXmVjE17A+T5zJBcufgpIEJq3PuGdIYEqpWDLeR/bACBBYUpSyw9I0mGpki
+         p4JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=v48IUSneCiRncr9ecoZFXzb9Et9iUGjrOJ+H4dvshHg=;
-        fh=2EDaoL4FdFbptH2DhUt+Z/CEAFIVzTSk1KAKo7J8cTg=;
-        b=EEzvctw+u/u8g5BnU7349m4akAIbAoG29IW0I/ia/FotIs+qoDKYIKahWoQxxbh839
-         a5XIci5Y4QOo+ZKrHKp50N61K1V4l2R9jhlAGPbW4DgIOoDjynuk3fQc7sKgQxVV8NG8
-         c234+NuvBY1MYKOPN1SwGgPQA3IXer3y5Chun+Rnoef7eN66C1Pj9dZGFS0KT/FnOHbD
-         20oWFEgjJcSMK3BUqLir8ZsMx6NRX2ivHjjqL8CGzcFinNCoIeaVVa6wovDi9jGkMrT/
-         rxtv+smmxc+us4rqZvj5jzyt/lJDxt9ufSMj0b2xXx7adGscfI0xClDmZcmj205YaoPl
-         CJvw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=UFfh7Mym3N1f59nnB/Tc9AbogyzZF0uImQqbCQhOZA8=;
+        fh=2muefas2CFJUzEp7G24u2ks+M0neY27uPGSKXdEfmq0=;
+        b=ZQgbaD9unyHApZGCelHgX8rp2ZbS2JNNs0bVlCFX42OL8XlOCGGMljEITq/+S2YpKQ
+         o/1OLG53ehmVrUOhwwQB+NxNXrBGdjPqDrCQsO/dkto1QMPfV3BDR0y+bBontws0BvNh
+         vEEJSxeX7r61OcFRc5MUmdOdVTOSI4Z3UX+UZmE0pgc25FURQ4ZH+dTgCaQz7o/jY/MM
+         0U6VWzyfUExC3Y2QHoFwSzMb7G5tfzXPzoC8TkFQjfT5thjkLLRD09+t+ZaNRWa+f0M9
+         RP4KlfNTJpzQQAd6aLyysdy3F6Y09jMEBDN+xHvZyr3dbiNvb7R31ZeNtSk5iF5FR82N
+         L7Nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f269nDCw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D56cz/Tf";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c15-20020a05622a024f00b0041817f70871si1789637qtx.510.2023.10.20.12.42.47
+        by mx.google.com with ESMTPS id d16-20020ac85d90000000b0041961b33c4fsi2384326qtx.808.2023.10.21.01.00.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Oct 2023 12:42:47 -0700 (PDT)
+        Sat, 21 Oct 2023 01:00:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f269nDCw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D56cz/Tf";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtvOL-0000xa-8P; Fri, 20 Oct 2023 15:42:41 -0400
+	id 1qu6tM-0004Iu-Q2; Sat, 21 Oct 2023 03:59:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtvOJ-0000wx-8j
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 15:42:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qu6tL-0004Gw-6U
+ for qemu-devel@nongnu.org; Sat, 21 Oct 2023 03:59:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtvOH-0008Ia-MV
- for qemu-devel@nongnu.org; Fri, 20 Oct 2023 15:42:39 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qu6tJ-0000mW-Qp
+ for qemu-devel@nongnu.org; Sat, 21 Oct 2023 03:59:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697830957;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=v48IUSneCiRncr9ecoZFXzb9Et9iUGjrOJ+H4dvshHg=;
- b=f269nDCwpePKctXydBDwVq+ddyk4EdqSXnRoryVzTW8h/JOWYZeaPExQiq/KixNZyQ0pmf
- dzhxHhh8guatCLq2mFJKrdIsng0nUcXcljS/4IoYXp5J5zlPilKGpnKDpVtLWtBzlfMQQL
- +DY/6ITtk4nDs5wnp6yjc/8vyBTzVeo=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1697875164;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=UFfh7Mym3N1f59nnB/Tc9AbogyzZF0uImQqbCQhOZA8=;
+ b=D56cz/TfmZOBV/3b3Bk9dwpmub6lJs5At4rL1d+utKb0OX6SQmoWWFEVcmuYjrMioTLMvb
+ hCLv2MR7ZDq6bPBDLOwd7xIFmot3b+V9FL43Dvod0EupzAzAdh+DZ299Es8L1D6XOg5kde
+ llYSrML6SbxRhF9Jw1+jRmq9x4mOjkM=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-198-N4vlMGlBPNCN3zYVx6S0jQ-1; Fri, 20 Oct 2023 15:42:35 -0400
-X-MC-Unique: N4vlMGlBPNCN3zYVx6S0jQ-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-407d3e55927so7147935e9.1
- for <qemu-devel@nongnu.org>; Fri, 20 Oct 2023 12:42:35 -0700 (PDT)
+ us-mta-373-mSax1mIUNtuWD9QJKr59jQ-1; Sat, 21 Oct 2023 03:59:22 -0400
+X-MC-Unique: mSax1mIUNtuWD9QJKr59jQ-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-9c778321afdso63130666b.1
+ for <qemu-devel@nongnu.org>; Sat, 21 Oct 2023 00:59:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697830954; x=1698435754;
- h=mime-version:message-id:date:reply-to:user-agent:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=v48IUSneCiRncr9ecoZFXzb9Et9iUGjrOJ+H4dvshHg=;
- b=UP4rWNeLD/I2uZAfVXWxPHj4ZveeZgFadXkJ8v6q76I+6t3ulFJFrAXNePeOX9YxKP
- BhDev01yv5LgayjiLFOrig2qi6cDE3H/mtpcEeYkMDo6Jo4KpcIvvnxFrSeOXpnOErK3
- xuzqWQVbRDsYl4chQ7r3UiyeyjEY+/dYeC5PTuC2you8zsLK74CTDpoPS4EB680Ho9xt
- YQt1zkJNvM92dun2BUOF5UgOyQVcOAig1l2ZeOrFq9qOyPiqI8G6nlC3Xl5wOmn9YPvc
- Lxl3P0YA4uE3h2jpnt484J+Fxn8Zzcf5KFjD1PY7M4xvAqTUUlpuloHI7lZsuiDBURZj
- Gfww==
-X-Gm-Message-State: AOJu0YwqVgy6/ymIAGMrk6hPaJv2lklGPdpqbNpY7V2su3DHrPX0DhCQ
- VOvgT4uqSVWcSDlWeQ3lsfvWFseJVSpNzrcEKyy7qc9qAGD5q8r8br/IMw1FxhLDVdH4Jr/jqyC
- ijSVUt0tkAq0eaaM=
-X-Received: by 2002:a05:600c:4f12:b0:405:36d7:4582 with SMTP id
- l18-20020a05600c4f1200b0040536d74582mr2070951wmq.15.1697830954312; 
- Fri, 20 Oct 2023 12:42:34 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f12:b0:405:36d7:4582 with SMTP id
- l18-20020a05600c4f1200b0040536d74582mr2070918wmq.15.1697830953954; 
- Fri, 20 Oct 2023 12:42:33 -0700 (PDT)
-Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
- [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
- m16-20020a7bca50000000b00405d9a950a2sm7546702wml.28.2023.10.20.12.42.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Oct 2023 12:42:33 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Harsh
- Prateek Bora <harshpb@linux.ibm.com>,  David Hildenbrand
- <david@redhat.com>,  Samuel Thibault <samuel.thibault@ens-lyon.org>,  Eric
- Farman <farman@linux.ibm.com>,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
- David Gibson <david@gibson.dropbear.id.au>,  Corey Minyard
- <cminyard@mvista.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Peter Xu
- <peterx@redhat.com>,  Corey Minyard <minyard@acm.org>,  Stefan Berger
- <stefanb@linux.vnet.ibm.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Halil Pasic <pasic@linux.ibm.com>,
- Leonardo Bras <leobras@redhat.com>,  John Snow <jsnow@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,  Christian Borntraeger
- <borntraeger@linux.ibm.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Jason
- Wang <jasowang@redhat.com>,  qemu-block@nongnu.org,
- qemu-s390x@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Daniel Henrique
- Barboza <danielhb413@gmail.com>,  Stefan Weil <sw@weilnetz.de>,  Stefan
- Berger <stefanb@linux.ibm.com>
-Subject: Re: [PATCH v2 03/13] migration: Use vmstate_register_any() for isa-ide
-In-Reply-To: <efef6d37-925c-415e-9a59-85e528eacb7b@redhat.com> (Thomas Huth's
- message of "Fri, 20 Oct 2023 16:12:44 +0200")
-References: <20231020090731.28701-1-quintela@redhat.com>
- <20231020090731.28701-4-quintela@redhat.com>
- <efef6d37-925c-415e-9a59-85e528eacb7b@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
-Date: Fri, 20 Oct 2023 21:42:33 +0200
-Message-ID: <871qdpytau.fsf@secure.mitica>
+ d=1e100.net; s=20230601; t=1697875160; x=1698479960;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=UFfh7Mym3N1f59nnB/Tc9AbogyzZF0uImQqbCQhOZA8=;
+ b=JHqQQhXmJzaHEWJFOT0jhA6yckDuYpf4iZNsDaO1ieO+lVpQfNkZFgzHGt6NLC3Qgu
+ hH3fPdSl10mzDZGCaUzbO2fZ4pJTO59jttfnVnNslitItM3cpSBPeb2fhtmBa/Bkvobi
+ HUMIQ2rAW6tXNDDlxn5QT/1qQWOqa/z6ttB9k3GUPvQFKzM+XEFXJ3v5AAst31/dJzxv
+ sc30zh+wP9W/ldXZd5X37p9hIzWzDR6yUL4i5VZ2DdwxvkRMaZQT0NVB5cYwJaPinKPI
+ Ihz7K+RN1QHk99wn8BcwsmEIwwceL2ED2/sH8WHGBV9zd0Zu9jPdxWxcDZM90hgVM90D
+ R6Ag==
+X-Gm-Message-State: AOJu0Yzcz5+LXjBeVJGsAi1YKtd4Elz07gmjhvNBPHvpQBR5vr7FVYnl
+ 4LZbYJr6NY7/svQzEsrBJNV9gopSis646DzlUFJS+YgLM/Gmjncg+hr9kVdTIcUIjcx1hI8KHuG
+ ZaznBkvH+QiNa8SU=
+X-Received: by 2002:a17:906:dc8b:b0:9bf:f20:8772 with SMTP id
+ cs11-20020a170906dc8b00b009bf0f208772mr3492553ejc.26.1697875160682; 
+ Sat, 21 Oct 2023 00:59:20 -0700 (PDT)
+X-Received: by 2002:a17:906:dc8b:b0:9bf:f20:8772 with SMTP id
+ cs11-20020a170906dc8b00b009bf0f208772mr3492546ejc.26.1697875160359; 
+ Sat, 21 Oct 2023 00:59:20 -0700 (PDT)
+Received: from ?IPV6:2001:b07:6468:f312:48f9:bea:a04c:3dfe?
+ ([2001:b07:6468:f312:48f9:bea:a04c:3dfe])
+ by smtp.googlemail.com with ESMTPSA id
+ k2-20020a1709067ac200b0099bcf1c07c6sm3114093ejo.138.2023.10.21.00.59.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 21 Oct 2023 00:59:19 -0700 (PDT)
+Message-ID: <03ba02fd-fade-4409-be16-2f81a5690b4c@redhat.com>
+Date: Sat, 21 Oct 2023 09:59:18 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/7] target/i386: Use tcg_gen_ext_tl
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, laurent@vivier.eu, ysato@users.sourceforge.jp,
+ kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com
+References: <20231019182921.1772928-1-richard.henderson@linaro.org>
+ <20231019182921.1772928-4-richard.henderson@linaro.org>
+ <5f54e3e1-1c90-0249-04f4-df522e292abe@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <5f54e3e1-1c90-0249-04f4-df522e292abe@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -151,62 +171,74 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WtroXy1QHAvK
+X-TUID: PRI0xAX2y3FA
 
-Thomas Huth <thuth@redhat.com> wrote:
-> On 20/10/2023 11.07, Juan Quintela wrote:
->> Otherwise qom-test fails.
->> ok 4 /i386/qom/x-remote
->> qemu-system-i386: savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=isa-ide, instance_id=0x0
->> Broken pipe
->> ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
->> Aborted (core dumped)
->> $
->> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
->> Signed-off-by: Juan Quintela <quintela@redhat.com>
->> ---
->>   hw/ide/isa.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->> diff --git a/hw/ide/isa.c b/hw/ide/isa.c
->> index 95053e026f..ea60c08116 100644
->> --- a/hw/ide/isa.c
->> +++ b/hw/ide/isa.c
->> @@ -73,7 +73,7 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
->>       ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
->>       ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
->>       ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
->> -    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
->> +    vmstate_register_any(VMSTATE_IF(dev), &vmstate_ide_isa, s);
->>       ide_bus_register_restart_cb(&s->bus);
->>   }
->
-> Would it make sense to use another unique ID of the device instead? E.g.:
->
-> diff a/hw/ide/isa.c b/hw/ide/isa.c
-> --- a/hw/ide/isa.c
-> +++ b/hw/ide/isa.c
-> @@ -73,7 +73,9 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
->      ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
->      ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
->      ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
-> -    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
-> +    vmstate_register(VMSTATE_IF(dev),
-> +                     object_property_get_int(OBJECT(dev), "irq", &error_abort),
-> +                     &vmstate_ide_isa, s);
->      ide_bus_register_restart_cb(&s->bus);
->  }
->    Thomas
+On 10/19/23 23:57, Philippe Mathieu-Daudé wrote:
+> On 19/10/23 20:29, Richard Henderson wrote:
+>> -    default:
+>> +    if (memop_size(size) == TARGET_LONG_BITS) {
+>>           return src;
+>>       }
 
-Ide is not my part of expertise.
-But anything that is different for each instantance is going to be good
-for me.
+Any opinions about adding something like this on top?
 
-The whole point of this series is to be able to test that there are no
-duplicates.  Duplicates are one error when we do real migration.  How we
-reach the goal of no duplicates doesn't matter to me.
+------------------------- 8< -------------------------------
+From: Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] include, target/i386: define and use MO_TL
 
-Later, Juan.
+This will also come in handy later for "less than" comparisons.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+
+diff --git a/include/exec/target_long.h b/include/exec/target_long.h
+index 93c9472971f..3cd8e26a23f 100644
+--- a/include/exec/target_long.h
++++ b/include/exec/target_long.h
+@@ -29,12 +29,14 @@ typedef uint32_t target_ulong;
+  #define TARGET_FMT_lx "%08x"
+  #define TARGET_FMT_ld "%d"
+  #define TARGET_FMT_lu "%u"
++#define MO_TL MO_32
+  #elif TARGET_LONG_SIZE == 8
+  typedef int64_t target_long;
+  typedef uint64_t target_ulong;
+  #define TARGET_FMT_lx "%016" PRIx64
+  #define TARGET_FMT_ld "%" PRId64
+  #define TARGET_FMT_lu "%" PRIu64
++#define MO_TL MO_64
+  #else
+  #error TARGET_LONG_SIZE undefined
+  #endif
+diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+index b0d62e83445..7bf7406dd8e 100644
+--- a/target/i386/tcg/translate.c
++++ b/target/i386/tcg/translate.c
+@@ -701,7 +701,7 @@ static inline void 
+gen_op_movl_T0_Dshift(DisasContext *s, MemOp ot)
+
+  static TCGv gen_ext_tl(TCGv dst, TCGv src, MemOp size, bool sign)
+  {
+-    if (memop_size(size) == TARGET_LONG_BITS) {
++    if (size == MO_TL) {
+          return src;
+      }
+      tcg_gen_ext_tl(dst, src, size | (sign ? MO_SIGN : 0));
+-----------------------------------------------------------
+
+I can add it in my x86 series if desirable (I also have an
+occurrence of memop_size(ot) < TARGET_LONG_BITS there, and it
+can become just "ot < MO_TL").
+
+>> +    tcg_gen_ext_tl(dst, src, size | (sign ? MO_SIGN : 0));
+>> +    return dst;
+>>   }
+> 
+> While here, I'd rename 'size' -> 'mop'. Regardless,
+
+Not sure about that, because "size" should be just the low bits of MemOp 
+(the MO_SIGN bit is passed separately).
+
+Paolo
 

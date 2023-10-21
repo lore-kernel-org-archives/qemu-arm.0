@@ -1,79 +1,134 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp285216ejb;
-        Sat, 21 Oct 2023 05:30:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEIPKD4xdCHhsQLhX+R2sfWLTPPz5cRbUI+alol00CD0GyGFaJRYKMLKFKvXzhDVp83Cjbx
-X-Received: by 2002:a0c:cb14:0:b0:66d:968b:40ed with SMTP id o20-20020a0ccb14000000b0066d968b40edmr3899663qvk.41.1697891452611;
-        Sat, 21 Oct 2023 05:30:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697891452; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp506323ejb;
+        Sat, 21 Oct 2023 14:23:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGNxersUqwBdODEnjbe3MBUubiFINPRoHDrPyz0yz8B9mXSenMCE5BGaFf+CGoAGR16qFIB
+X-Received: by 2002:a05:620a:4155:b0:778:9be8:274e with SMTP id k21-20020a05620a415500b007789be8274emr6485964qko.1.1697923423502;
+        Sat, 21 Oct 2023 14:23:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697923423; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mgkw8xof2fU81k9lpBPB45AUPPSf7Io+bxgWGTF7ebT7nVJM5Pt0G/T0i7EZKFvIvy
-         OA6o5K/bS7Nkdt/BZC8igN2tRKoDuMMcmZUjmOZGNfxKj6UF+H/KI5rIal6zryzFfkx1
-         IubN+4BDlVpaCIT18Wi/9TDpDxFPQuWqYQi8x6+PmcGi3YKy/3EUEmOBjxu0j6QHtwGL
-         0sB8pxCtgqu1+pk2/1kCpTnlD14NKVfW44TPUQWhiXtYr71bp2FYvQRsiXLY52+CjJUW
-         ZY1hutwLPzdnysDagxl/nnS6srLKjQX+kAdkI6uVVV88jzRj9pREkr6nGu9a/pWCXZMU
-         poEg==
+        b=XcosanJK8qUHbaVGaHFZdz8MSqfn6gUKpxHQmYMi8aNN6Ywsn8e9w5CLmO17kcn9OY
+         3N74jKpLarWwpwRJSMII1a25I5ToFiBHD7AyzDeOx+kaILdIvM2ipN/ls6PMfmCJcvL+
+         JQMyxuf2zIiW4mOTsl06vzklFezhlYe5HLUM8wqi+4Xl26w7RUmF4aS9nkw5vxh8Uu9D
+         X24+wyS2cpExNb2+S4pRodTPdzgjoLyGWaMEJ/bFX8ubUwimJYuKMsdl0qyLXY9UYzzV
+         qTCEPftddgGkrI3LTdGscTSF2sT1vMkMxrJ2MLe4+s1vEvejKMG1CgTilm8QjYpF7vDe
+         g51w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ZNKXtdfbsCqHLvA+TddCHHDSAicrNyJhlhEBPtCNk2A=;
-        fh=sAQJpGVJG1mLXWPrSbdanoBjyOFHDL8L0t7SqPoHAT4=;
-        b=tiO3uXvfxejysCrevuitaUT0f7BS8XdPvm2Ltlbkb/x+wSMvdu4i0BpCohSKmwU8VH
-         PLHehRF9mrsAIo1/VwjRh04MiTVrbz9VFxhV/DeNxoYPe1f7pQy23cM2tN7D7sX859s7
-         GT0KnZY+k71v5pZxjAW9/AVlY96iutCHkyNGmfTHRt4AlHTrDNvL0dZNe4I7T14TJ4PZ
-         yPP9ULLCumS8U31EUNuObHVBW3DEFSkeKb0wLO/2Tk1j4IwP+ejVbq/YC/yg3LKpKnBs
-         wB2UCQQUwPUx4CXHditKCqawGKcOGQB4rOD2NCVgLtyaUM4ghIhwmvHoj+obvAp5xnfb
-         nYeQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ibFKsK6fv6tw1i66Pmc2TVaCO/dIW0R8LkK7kZwDT0w=;
+        fh=xrfrdnXt6yALLaQWR1WAebrnD81q5WGqWzq5w17UyxQ=;
+        b=ahzReTE0e4GduBgpaa1yOvNzgiiRnmNGOssjd2VN1f1jB0WD2+KmTpV4MtaGvtww6n
+         5Vk4WXbj0Sad+EliHm9c3dOkGv3+Iri5iBVY1EHcNEcHL7XlxS0SEW0U7TIqMIQN+tg8
+         tMC0zIGuAC4RfBKHZ1XyMplYdQ1l488u4e9EaIwrjzhYFBuh6Tj84Fp4/6x8bsUy9hbT
+         2JJVYVw39d6nJq9TpvZOehv7aAzwiRwg3qb15TXkutYr6JKqVBLX74b3+FNkS1BfHlIG
+         0tt9rzmj4pxuVjSo+Mi4alfxTCozSjWO54oMVSC6VKUyQMY9Q0lT6psE/DGQOEMGpcNf
+         km/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="Akr2nU/C";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oj13-20020a056214440d00b0065d07ee1d00si3011683qvb.54.2023.10.21.05.30.52
+        by mx.google.com with ESMTPS id c5-20020a05620a268500b0076ef736e804si3348378qkp.726.2023.10.21.14.23.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Oct 2023 05:30:52 -0700 (PDT)
+        Sat, 21 Oct 2023 14:23:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="Akr2nU/C";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quB7Z-0001nu-OV; Sat, 21 Oct 2023 08:30:26 -0400
+	id 1quJR0-0007vl-0i; Sat, 21 Oct 2023 17:23:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quB7X-0001gP-Uz; Sat, 21 Oct 2023 08:30:23 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1quJQy-0007uK-Ta; Sat, 21 Oct 2023 17:23:00 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quB7U-0007Ol-Vv; Sat, 21 Oct 2023 08:30:23 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 444982C369;
- Sat, 21 Oct 2023 15:30:40 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2F4E930693;
- Sat, 21 Oct 2023 15:30:15 +0300 (MSK)
-Message-ID: <779fbc42-c397-44e0-8682-9a330cd1ec4f@tls.msk.ru>
-Date: Sat, 21 Oct 2023 15:30:15 +0300
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1quJQt-0006Om-G9; Sat, 21 Oct 2023 17:23:00 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39LL9xAf005301; Sat, 21 Oct 2023 21:17:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=ibFKsK6fv6tw1i66Pmc2TVaCO/dIW0R8LkK7kZwDT0w=;
+ b=Akr2nU/CrQDftx5ZkJwdWYCFO/lxSEwSTTdlRFKgSxvRCi1ANyCleW4IoJGHZ7GFbpW2
+ /sAvInLpQ/T969v9zpBbjlEQKlZhT3OP60AXjHB+HSqkU93JMqJeWN8fHjJZbYM49icV
+ 8FneWmltQC8Gh05gtBYvQPdNemg4YyyzCRjgYK885HM8McxqHn+QzUxO2/DOgPyQpTAX
+ B99tmbZVtUbH460gzuwq+9AQBafhGrE5ASf/NcaQalNSdqABNxVchy5cI0DndYhT2GGu
+ uQuI6yajaw0QKrCBSNBQl5jNTdNktvEHUOEgfmVvxvvvdtG9Vo43vr6HU/nlXi4Z3dq0 jg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpadg5q8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 21 Oct 2023 21:17:25 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39LLBoj4008536;
+ Sat, 21 Oct 2023 21:17:25 GMT
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpadg5pw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 21 Oct 2023 21:17:24 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39LKaU71007090; Sat, 21 Oct 2023 21:17:24 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc27wcag-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 21 Oct 2023 21:17:24 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39LLHNKN65470894
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 21 Oct 2023 21:17:23 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F2DD958052;
+ Sat, 21 Oct 2023 21:17:22 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9C32258056;
+ Sat, 21 Oct 2023 21:17:22 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Sat, 21 Oct 2023 21:17:22 +0000 (GMT)
+From: Ninad Palsule <ninad@linux.ibm.com>
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
+Subject: [PATCH v6 00/10] Introduce model for IBM's FSI
+Date: Sat, 21 Oct 2023 16:17:09 -0500
+Message-Id: <20231021211720.3571082-1-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/boot: Set SCR_EL3.FGTEn when booting kernel
-Content-Language: en-US
-To: Fabian Vogt <fvogt@suse.de>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- qemu-stable <qemu-stable@nongnu.org>
-References: <4831384.GXAFRqVoOG@linux-e202.suse.de>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <4831384.GXAFRqVoOG@linux-e202.suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: USGtHlZC56hICitKYwgk_i8fnjeA0EXl
+X-Proofpoint-GUID: uVFi5TxYHTdj8Gphz6ytK3D0VPRJp7hz
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-21_13,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=1
+ lowpriorityscore=0
+ malwarescore=0 phishscore=0 priorityscore=1501 spamscore=1 mlxscore=1
+ impostorscore=0 bulkscore=0 suspectscore=0 mlxlogscore=213 adultscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2310170001 definitions=main-2310210195
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,29 +143,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: npjJj56CO7+E
+X-TUID: wto6oZXJv28v
 
-13.09.2023 14:57, Fabian Vogt :
-> Just like d7ef5e16a17c sets SCR_EL3.HXEn for FEAT_HCX, this commit
-> handles SCR_EL3.FGTEn for FEAT_FGT:
-> 
-> When we direct boot a kernel on a CPU which emulates EL3, we need to
-> set up the EL3 system registers as the Linux kernel documentation
-> specifies:
->      https://www.kernel.org/doc/Documentation/arm64/booting.rst
-> 
->> For CPUs with the Fine Grained Traps (FEAT_FGT) extension present:
->> - If EL3 is present and the kernel is entered at EL2:
->>    - SCR_EL3.FGTEn (bit 27) must be initialised to 0b1.
+Hello,
 
-Am I right assuming this makes no sense to pick up for stable-7.2 since
-it doesn't even have aa64_fgt definitions (commit 15126d9ce2
-"target/arm: Define the FEAT_FGT registers"), or should this commit
-be picked up too?
+Please review the patch-set version 6.
+I have incorporated review comments from Cedric, Daniel and Thomas.
 
-This and subsequent change in this area, "target/arm: Fix CNTPCT_EL0
-trapping from EL0 when HCR_EL2.E2H is 0"
+Ninad Palsule (10):
+  hw/fsi: Introduce IBM's Local bus
+  hw/fsi: Introduce IBM's scratchpad
+  hw/fsi: Introduce IBM's cfam,fsi-slave
+  hw/fsi: Introduce IBM's FSI
+  hw/fsi: IBM's On-chip Peripheral Bus
+  hw/fsi: Aspeed APB2OPB interface
+  hw/arm: Hook up FSI module in AST2600
+  hw/fsi: Added qtest
+  hw/fsi: Added FSI documentation
+  hw/fsi: Update MAINTAINER list
 
-Thanks,
+ MAINTAINERS                        |   8 +
+ docs/specs/fsi.rst                 | 141 +++++++++++++++
+ meson.build                        |   1 +
+ hw/fsi/trace.h                     |   1 +
+ include/hw/arm/aspeed_soc.h        |   4 +
+ include/hw/fsi/aspeed-apb2opb.h    |  33 ++++
+ include/hw/fsi/cfam.h              |  34 ++++
+ include/hw/fsi/engine-scratchpad.h |  32 ++++
+ include/hw/fsi/fsi-master.h        |  30 ++++
+ include/hw/fsi/fsi-slave.h         |  29 +++
+ include/hw/fsi/fsi.h               |  37 ++++
+ include/hw/fsi/lbus.h              |  43 +++++
+ include/hw/fsi/opb.h               |  43 +++++
+ hw/arm/aspeed_ast2600.c            |  19 ++
+ hw/fsi/aspeed-apb2opb.c            | 280 +++++++++++++++++++++++++++++
+ hw/fsi/cfam.c                      | 173 ++++++++++++++++++
+ hw/fsi/engine-scratchpad.c         |  93 ++++++++++
+ hw/fsi/fsi-master.c                | 201 +++++++++++++++++++++
+ hw/fsi/fsi-slave.c                 |  96 ++++++++++
+ hw/fsi/fsi.c                       |  25 +++
+ hw/fsi/lbus.c                      |  76 ++++++++
+ hw/fsi/opb.c                       | 164 +++++++++++++++++
+ tests/qtest/fsi-test.c             | 207 +++++++++++++++++++++
+ hw/Kconfig                         |   1 +
+ hw/arm/Kconfig                     |   1 +
+ hw/fsi/Kconfig                     |  23 +++
+ hw/fsi/meson.build                 |   6 +
+ hw/fsi/trace-events                |  21 +++
+ hw/meson.build                     |   1 +
+ tests/qtest/meson.build            |   1 +
+ 30 files changed, 1824 insertions(+)
+ create mode 100644 docs/specs/fsi.rst
+ create mode 100644 hw/fsi/trace.h
+ create mode 100644 include/hw/fsi/aspeed-apb2opb.h
+ create mode 100644 include/hw/fsi/cfam.h
+ create mode 100644 include/hw/fsi/engine-scratchpad.h
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 include/hw/fsi/fsi-slave.h
+ create mode 100644 include/hw/fsi/fsi.h
+ create mode 100644 include/hw/fsi/lbus.h
+ create mode 100644 include/hw/fsi/opb.h
+ create mode 100644 hw/fsi/aspeed-apb2opb.c
+ create mode 100644 hw/fsi/cfam.c
+ create mode 100644 hw/fsi/engine-scratchpad.c
+ create mode 100644 hw/fsi/fsi-master.c
+ create mode 100644 hw/fsi/fsi-slave.c
+ create mode 100644 hw/fsi/fsi.c
+ create mode 100644 hw/fsi/lbus.c
+ create mode 100644 hw/fsi/opb.c
+ create mode 100644 tests/qtest/fsi-test.c
+ create mode 100644 hw/fsi/Kconfig
+ create mode 100644 hw/fsi/meson.build
+ create mode 100644 hw/fsi/trace-events
 
-/mjt
+-- 
+2.39.2
+

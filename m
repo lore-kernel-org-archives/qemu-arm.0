@@ -1,139 +1,116 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1401153ejb;
-        Fri, 20 Oct 2023 10:40:21 -0700 (PDT)
-X-Received: by 2002:a05:6402:278c:b0:533:520:a5a8 with SMTP id b12-20020a056402278c00b005330520a5a8mr2231185ede.29.1697823620996;
-        Fri, 20 Oct 2023 10:40:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697823620; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp285216ejb;
+        Sat, 21 Oct 2023 05:30:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEIPKD4xdCHhsQLhX+R2sfWLTPPz5cRbUI+alol00CD0GyGFaJRYKMLKFKvXzhDVp83Cjbx
+X-Received: by 2002:a0c:cb14:0:b0:66d:968b:40ed with SMTP id o20-20020a0ccb14000000b0066d968b40edmr3899663qvk.41.1697891452611;
+        Sat, 21 Oct 2023 05:30:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697891452; cv=none;
         d=google.com; s=arc-20160816;
-        b=rjPm6SUPU3sbxGr52qVXA9KWwREBNjDFOT0hHdiXji/5OvKYGtkJt0w1+odsK0T8Tu
-         GjREmsz0a5RLNR4KlmzgiOvOupZx1T+mfg5n/fgub34aoGtmMsaL8O451lvpe5vmwBp/
-         Djmt3d4OwCzynam4YTf7Xyj4Wjt9sKnqtAFOvYllfWC6FxqECvCBFGIQTFOxtqQ9Nytp
-         iFQeud+Q824cnDZNcbQvczMNss5ngqmCA+cYk1UDyBJCMaVFnE+zkH6KxZ45zRHtoVgc
-         g7GVnJoe7diBK+Sug68RDV7trAzVxC0LiOcFCFAg8da3/7hO8bRTY5pPopQoq5QFNHeJ
-         9x1g==
+        b=Mgkw8xof2fU81k9lpBPB45AUPPSf7Io+bxgWGTF7ebT7nVJM5Pt0G/T0i7EZKFvIvy
+         OA6o5K/bS7Nkdt/BZC8igN2tRKoDuMMcmZUjmOZGNfxKj6UF+H/KI5rIal6zryzFfkx1
+         IubN+4BDlVpaCIT18Wi/9TDpDxFPQuWqYQi8x6+PmcGi3YKy/3EUEmOBjxu0j6QHtwGL
+         0sB8pxCtgqu1+pk2/1kCpTnlD14NKVfW44TPUQWhiXtYr71bp2FYvQRsiXLY52+CjJUW
+         ZY1hutwLPzdnysDagxl/nnS6srLKjQX+kAdkI6uVVV88jzRj9pREkr6nGu9a/pWCXZMU
+         poEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=5ecj4k7fUCeUFhk806jIEjdUHq1mY981ro5iqfcu8WI=;
-        fh=ySz4uvZLyDObz85uR5NBqz/U6sAUw4opTKEeeWadcys=;
-        b=wJqI4xxinhBH79vkLW0yIZ0PjCkmXnTpf5klF3fi9xiFN43cJCVFyGO0vCNeItsuRD
-         E5cy3KZc95Hne68wtY7CZLb7VOZQvsXRLRu103IRRb2T2BXNF5qllIEJ7yGDqj4ryHJP
-         m3NQiEvLZn0b6Z2mS2z3y8n+GSG86qUstrL5OFfT4b98d4nN6Wuf5HyvkkPjiOBfCvfj
-         pa+T6cObFf7mGlp+l7Fzfltz8KLNRNpE8Xmq63fJWFTp3QTX+Q1gxHJGP1mNdNeaSxHZ
-         Am2WtvnjzKEAYx6282ddB8tTic15beUxUA6Tml+mChO8JVw+1lvjhARM2zt4mWrMzEII
-         +y+g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=ZNKXtdfbsCqHLvA+TddCHHDSAicrNyJhlhEBPtCNk2A=;
+        fh=sAQJpGVJG1mLXWPrSbdanoBjyOFHDL8L0t7SqPoHAT4=;
+        b=tiO3uXvfxejysCrevuitaUT0f7BS8XdPvm2Ltlbkb/x+wSMvdu4i0BpCohSKmwU8VH
+         PLHehRF9mrsAIo1/VwjRh04MiTVrbz9VFxhV/DeNxoYPe1f7pQy23cM2tN7D7sX859s7
+         GT0KnZY+k71v5pZxjAW9/AVlY96iutCHkyNGmfTHRt4AlHTrDNvL0dZNe4I7T14TJ4PZ
+         yPP9ULLCumS8U31EUNuObHVBW3DEFSkeKb0wLO/2Tk1j4IwP+ejVbq/YC/yg3LKpKnBs
+         wB2UCQQUwPUx4CXHditKCqawGKcOGQB4rOD2NCVgLtyaUM4ghIhwmvHoj+obvAp5xnfb
+         nYeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wm+h9f5G;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id cf28-20020a0564020b9c00b0053fc3d654f4sor747562edb.0.2023.10.20.10.40.20
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id oj13-20020a056214440d00b0065d07ee1d00si3011683qvb.54.2023.10.21.05.30.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 20 Oct 2023 10:40:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 21 Oct 2023 05:30:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wm+h9f5G;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697823620; x=1698428420; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5ecj4k7fUCeUFhk806jIEjdUHq1mY981ro5iqfcu8WI=;
-        b=wm+h9f5GqpbbrdzbVl2tXLb7yBLsNwsgLwzQ1L7D354hPozxiPG2lH6hMpxk2ricxV
-         t92K3XbiiQXMUL+NTgz8yNKaCNVg4RodcAdUAo1qFxhdwSL1KLvhvcYywhzTFnRAj+iT
-         MbpOkNPuIuWlltghYgsfhwsP+yRtoNn3PzcxrQHiHoEp43v/jDcWcC9UFKYKVDp9pu52
-         /bJm0EX+lrQODDOCQ9Ri3CRS6Esuw/9TmrkIlo+ohoY9RW9Bfo/jT74507xyQxvUdMs+
-         jc9YskWZDfyPT8VF89chy20t1vjMd2jvd519l8H/VNJQGHhvrMHL+LZe8VnNS1qhvEI9
-         b3Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697823620; x=1698428420;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5ecj4k7fUCeUFhk806jIEjdUHq1mY981ro5iqfcu8WI=;
-        b=IKrfL5g3SWTZ2jG3ARvy292JXHqYZvx2o9AVkY/jQY34HUqqdmG4oQhCRf1ICtrK6w
-         +bWKssDKef6gH69OUNIOrTatCHiqrHseIu+yxmbAsLh6ruEVPw6PhNGyI1Xhtg34O68P
-         79gMnl/b74aqL+H8Gk1jFJqzNfdXhOsujq3temWSLe/R8GbBx6mInhjfdLtMU2FEjFS0
-         ki27usF1V+TQ2RN5/qYVCk9PmpRNg5i+AcBs/IbgOdfZZbgpEhbOaU0wDjxikQDicIQE
-         lcjNfUWR7riqRqC7mT7FIObjn0loGZH8EBtg2Bjqpytx/aoJRudEIb/8Smh4DL7Pu19r
-         LwTw==
-X-Gm-Message-State: AOJu0YxYgq+nt4PIoYcqDxAqppPHTedBGkFelsvkxQK2VDyOnDJha/R3
-	5n0MtXieU5K2J79kX3Zm7ESKGu9+rp4R/7sTy+kHvVvg
-X-Google-Smtp-Source: AGHT+IG5XeIAflMpcqUls1q2bcmzj8M2720/NorBsJ559jux9veJWCY8EgwkFHN3rl7l1ptkNMF9o7lWjVanb/aRjds=
-X-Received: by 2002:a05:6402:26cd:b0:53d:d913:d3cb with SMTP id
- x13-20020a05640226cd00b0053dd913d3cbmr2077965edd.28.1697823620612; Fri, 20
- Oct 2023 10:40:20 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1quB7Z-0001nu-OV; Sat, 21 Oct 2023 08:30:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1quB7X-0001gP-Uz; Sat, 21 Oct 2023 08:30:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1quB7U-0007Ol-Vv; Sat, 21 Oct 2023 08:30:23 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 444982C369;
+ Sat, 21 Oct 2023 15:30:40 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 2F4E930693;
+ Sat, 21 Oct 2023 15:30:15 +0300 (MSK)
+Message-ID: <779fbc42-c397-44e0-8682-9a330cd1ec4f@tls.msk.ru>
+Date: Sat, 21 Oct 2023 15:30:15 +0300
 MIME-Version: 1.0
-References: <20231020163643.86105-1-philmd@linaro.org> <20231020163643.86105-2-philmd@linaro.org>
- <CAFEAcA9FT+QMyQSLCeLjd7tEfaoS9JazmkYWQE++s1AmF7Nfvw@mail.gmail.com> <56646980-d38c-d844-1ee6-80453d092172@linaro.org>
-In-Reply-To: <56646980-d38c-d844-1ee6-80453d092172@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Oct 2023 18:40:09 +0100
-Message-ID: <CAFEAcA-SwdO9qo=dFpbwOuEo2fu_WFxD7L5BipVnuvk99cz=Hg@mail.gmail.com>
-Subject: Re: [RFC PATCH 01/19] cpus: Add argument to qemu_get_cpu() to filter
- CPUs by QOM type
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org, 
-	Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>, qemu-s390x@nongnu.org, 
-	Zhao Liu <zhao1.liu@intel.com>, Andrey Smirnov <andrew.smirnov@gmail.com>, 
-	Radoslaw Biernacki <rad@semihalf.com>, Leif Lindholm <quic_llindhol@quicinc.com>, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
-	Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
-	Alistair Francis <alistair@alistair23.me>, David Woodhouse <dwmw2@infradead.org>, 
-	Paul Durrant <paul@xen.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>, 
-	Weiwei Li <liweiwei@iscas.ac.cn>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Song Gao <gaosong@loongson.cn>, 
-	Thomas Huth <huth@tuxfamily.org>, Christian Borntraeger <borntraeger@linux.ibm.com>, 
-	Halil Pasic <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>, 
-	David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
-	Yanan Wang <wangyanan55@huawei.com>, "Dr. David Alan Gilbert" <dave@treblig.org>, 
-	Marcelo Tosatti <mtosatti@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
-	kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: RFNTf8mAXHnx
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/boot: Set SCR_EL3.FGTEn when booting kernel
+Content-Language: en-US
+To: Fabian Vogt <fvogt@suse.de>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-stable <qemu-stable@nongnu.org>
+References: <4831384.GXAFRqVoOG@linux-e202.suse.de>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <4831384.GXAFRqVoOG@linux-e202.suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: npjJj56CO7+E
 
-On Fri, 20 Oct 2023 at 18:29, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Hi Peter,
->
-> On 20/10/23 19:14, Peter Maydell wrote:
-> > So overall there are some places where figuring out the right
-> > replacement for qemu_get_cpu() is tricky, and some places where
-> > it's probably fairly straightforward but just an annoying
-> > amount of extra code to write, and some places where we don't
-> > care because we know the board model is not heterogenous.
-> > But I don't think "filter by CPU architecture type" is usually
-> > going to be what we want.
->
-> Thank for these feedbacks. I agree the correct way to fix that
-> is a tedious case by case audit, most often using link properties.
->
-> "we know the board model is not heterogeneous" but we want to
-> link such board/model altogether in a single binary, using common
-> APIs.
+13.09.2023 14:57, Fabian Vogt :
+> Just like d7ef5e16a17c sets SCR_EL3.HXEn for FEAT_HCX, this commit
+> handles SCR_EL3.FGTEn for FEAT_FGT:
+> 
+> When we direct boot a kernel on a CPU which emulates EL3, we need to
+> set up the EL3 system registers as the Linux kernel documentation
+> specifies:
+>      https://www.kernel.org/doc/Documentation/arm64/booting.rst
+> 
+>> For CPUs with the Fine Grained Traps (FEAT_FGT) extension present:
+>> - If EL3 is present and the kernel is entered at EL2:
+>>    - SCR_EL3.FGTEn (bit 27) must be initialised to 0b1.
 
-This seems to me like a different thing -- just compiling
-the different boards into one binary. That should be fine:
-in this single-binary qemu, if you tell it -M foo that's an arm
-board then qemu_get_cpu() returns the CPUs that are created,
-and those will all be Arm. If you tell it -M bar that's a PPC
-board, then qemu_get_cpu() will return the CPUs that are
-created, and those will all be PPC. The assumptions of the
-code that's currently calling qemu_get_cpu() or using the
-first_cpu global won't be broken. It shouldn't need us to
-change a lot of code that we don't intend to try to use in a
-heterogenous-at-runtime setup.
+Am I right assuming this makes no sense to pick up for stable-7.2 since
+it doesn't even have aa64_fgt definitions (commit 15126d9ce2
+"target/arm: Define the FEAT_FGT registers"), or should this commit
+be picked up too?
 
-thanks
--- PMM
+This and subsequent change in this area, "target/arm: Fix CNTPCT_EL0
+trapping from EL0 when HCR_EL2.E2H is 0"
+
+Thanks,
+
+/mjt

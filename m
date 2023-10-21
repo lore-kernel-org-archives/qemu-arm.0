@@ -1,108 +1,109 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp487762ejb;
-        Sat, 21 Oct 2023 13:21:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEGPA1nzOQiwoHs4uK8wH2WOToO4h/+Q9k0f5H7XL10pKt31SczzpVYewVqwvkdgP4qQmWy
-X-Received: by 2002:a05:622a:356:b0:410:99df:688f with SMTP id r22-20020a05622a035600b0041099df688fmr6432138qtw.12.1697919703761;
-        Sat, 21 Oct 2023 13:21:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697919703; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp487954ejb;
+        Sat, 21 Oct 2023 13:22:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHh4VNsrSW403R2hedQjqS2u71nm0Xmj4PaJsF6cJIIsjwM+AgSUFFCJ7vPXXyoRHJkWoan
+X-Received: by 2002:a05:622a:14c6:b0:412:c81:eff3 with SMTP id u6-20020a05622a14c600b004120c81eff3mr11530232qtx.15.1697919745315;
+        Sat, 21 Oct 2023 13:22:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697919745; cv=none;
         d=google.com; s=arc-20160816;
-        b=zblv3ww7X2qpScKRVf+ZT45Wd/tpiKH7KScwgP3rvFvhrAKNrJbggIeyIpjCVnnsB+
-         /GBvG8IC4oMOq/hLylU72VPxDQfmoO6xTxzANjNw3+7MaDOJxs0zH5F2Vy3qJaEqqytT
-         4KUAGOsxjTclEpZD1jGth0VXS8efhNWnBN1dOSHuya3RKwdE/FSOJ2HnCUb2aTwqZ7pF
-         WnZJ3SmOVz2V5FTtzAt5SwLJGr6WlT5jK8+JgFxZbTchKId3Ah6bku6Ajg3UhdHR7pNE
-         0SvTmHDK8Qii/NeiRx/qDH711lNBy3B79Uwaw/ijOd9MULTdMEZ+ib1cDtg0NfdHMBcB
-         U5Dw==
+        b=YGbGg4YW5FkRTK5N2dp9bclJUm53qtQPF1GNXuDdzo5MZ3/Fk9rvt6MivOkszXFzwu
+         wDIVS6/pocd0t6CSB055ZXSnbN2AahzAxBQPpu555tfeJFIm1oeQAUwzN7oj4+dnCKwT
+         iMypxxWSTa4tqla1k8NtmKXeZ2EN4x4gqq0oFJfxuIFCOCxWNGPTvT4QkmOgGIpVuG31
+         Ms0cqndMeWxEo57aAhaCtN3qyefC2quiEIgmSazJjHu98PlNm6NdWlQM+gCypMr2MViU
+         JWwTrKqKKUBaRoiGrl5CWTjBD0CQ6TbRseWVMPUVou41aS1h4JZtmWTuGYmwYWfKAEdN
+         Dwyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4sAvrTAaASQA0LbzEoJt67TBdrmhShrMCin2Y88ziZ4=;
+        bh=CqtXiDDtt8oM/cOp66bvjvmLFD/Jwosmj4GO5XQTP7c=;
         fh=qShmx9hl1ph34ulEBOCe1Wl+bd1jf8hIEJWbXZnp4xc=;
-        b=qZfTbzzmUcA2sifFmHSJY/1rC4Es0XqGnuOB67awNnVRKcKjEkzI/jyWjGlc9BAKI9
-         t1TyaZmr4DeBFeLGuLN86ENPAIjPOpTKl8LKOz4EUO4FYqLPhYKrl0l43oE4N2HZnSTS
-         ZWru7aA5lxcNjT2bOoZylgv+nnUfSZCIc+8VO8PeVPp69rIG5RrcNbuaVQc5w9mDOgQE
-         Up/eKTAsryo8EQ6Q9s2afdZ22e+XHEL1skWTnqVjwlYBCt8veAPvPCar/5qiGeGElPoh
-         svShIPocU17L68zbpN5Gtt/225zovA5ujtu1NFU5pVLne2lsO+Z6vz48QP0y/DHSlbUs
-         hQFw==
+        b=Z34Ay8L0KRJguK41b/2rU9OQRmJpbTNwU+pt9IelAtVNNdDwONxjaIRso196jZQjQ3
+         4NHR10iUEbTwqtBfhUh/eVOPJjZZ1VOOvNalZrQ8nyEESbzLSTIONID0gImAWvtcoQRl
+         oUDyrS6dmU/b4Astgqaxlk/JD9pUPCUhKoDFbQujq3xNBi6O33Ev3RgGY+tePwNq05Qx
+         6pyu82Jk85i5OVVNQYzOESzG5E+BnX3LzeVsHQjdnzYVvyODoamPFj1rboENdPsxF62/
+         /N3zd9GmHSggWjRaAZmMmI0fIp86cvmEzyr3XXP4sbF5L/U29mr1oHbQzHubegyN7wY8
+         mrbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ElzDufhO;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=mFRJtEAY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b21-20020ac87fd5000000b0041bff4fa396si3305009qtk.60.2023.10.21.13.21.43
+        by mx.google.com with ESMTPS id n13-20020a05622a11cd00b004165130b594si3388595qtk.530.2023.10.21.13.22.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Oct 2023 13:21:43 -0700 (PDT)
+        Sat, 21 Oct 2023 13:22:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ElzDufhO;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=mFRJtEAY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quITF-0003A9-Fx; Sat, 21 Oct 2023 16:21:18 -0400
+	id 1quIU9-0003Tt-NE; Sat, 21 Oct 2023 16:22:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1quITE-00039p-95; Sat, 21 Oct 2023 16:21:16 -0400
+ id 1quIU8-0003Sn-ER; Sat, 21 Oct 2023 16:22:12 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1quITA-0001Xx-3d; Sat, 21 Oct 2023 16:21:16 -0400
-Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+ id 1quIU4-0001dn-AI; Sat, 21 Oct 2023 16:22:12 -0400
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39LKEChQ032124; Sat, 21 Oct 2023 20:20:55 GMT
+ 39LKA6uS023736; Sat, 21 Oct 2023 20:21:55 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=pp1;
- bh=4sAvrTAaASQA0LbzEoJt67TBdrmhShrMCin2Y88ziZ4=;
- b=ElzDufhOulyQZJrs61g0k/CvYsLnIMJv3wyPsPac9lnSH2OsGz9iU+Pw0rMe2/UsebTW
- uAL9ALjH/VlTh8uIR5s7y6N7sCS/7FxyIsB7puG11JPqS/n24uw1I/9Onr4jf8LE+6CF
- 8jn+9aEPKJbe+jEnPwYFCd/ne6MciqHtcDJcjqeHUdj3cQTurVttFk6XW1C+aoJ/Fxl4
- 7wChly8Q2+AhRn2iu6aiVlQUrzGHQytr+4QndjbQowYhxtws3wKD86Gw5CBqdxSWLvBf
- zz0dNh2eosW14JA1LXAoUYdQYjR19CJ1D3yJ2nxvyfaHz38v1Cgzwuiik6LQinskuaGq fw== 
+ bh=CqtXiDDtt8oM/cOp66bvjvmLFD/Jwosmj4GO5XQTP7c=;
+ b=mFRJtEAYvqao0XtOSQFO0ybs9Iu9QY6+SRm/fzqBTaksf04XvyRwZ5w6eDGX8Os1+6Hq
+ 5aaDl25FY4oWqzAPL/l9kSI7P6u+SQBBSusZ/jIoOTgNw67pgng0MKqApmjZe8jTCa/Q
+ D/+LKe0MxZwC8igzWYBsOFhHFGVnI6gE2uM0dfM9YVMNRb0OhoBxuCZAbVaOcXp0c+G0
+ cSQQIQjpBxp5GTQAUuzoHILwonRIg0DlCRaKDkb4p2od7P/2Ai02UfBWjPf8LIqr6xI9
+ uLA9m0O/SwyVsb4shVk9WleQz62BNURIr1cAZU/IrWcIUHcQOU8BPMvBAkfUkasIEzUg wg== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvngfr3jh-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvneh871g-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 20:20:54 +0000
-Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39LKHpV2006925;
- Sat, 21 Oct 2023 20:20:54 GMT
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvngfr3hx-1
+ Sat, 21 Oct 2023 20:21:54 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39LKAg4Q024386;
+ Sat, 21 Oct 2023 20:21:54 GMT
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvneh8716-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 20:20:54 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39LH3dON029802; Sat, 21 Oct 2023 20:20:53 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tuc47w54a-1
+ Sat, 21 Oct 2023 20:21:54 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39LKFqeW007102; Sat, 21 Oct 2023 20:21:53 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc27w5df-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 20:20:53 +0000
+ Sat, 21 Oct 2023 20:21:53 +0000
 Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
  [10.241.53.105])
- by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39LKKquK25232104
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39LKLqLH50790826
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 21 Oct 2023 20:20:52 GMT
+ Sat, 21 Oct 2023 20:21:52 GMT
 Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8CC9258055;
- Sat, 21 Oct 2023 20:20:52 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 66B0458055;
+ Sat, 21 Oct 2023 20:21:52 +0000 (GMT)
 Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2061A58043;
- Sat, 21 Oct 2023 20:20:51 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 0182D58043;
+ Sat, 21 Oct 2023 20:21:51 +0000 (GMT)
 Received: from [9.67.95.215] (unknown [9.67.95.215])
  by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Sat, 21 Oct 2023 20:20:51 +0000 (GMT)
-Message-ID: <24becaf5-b34f-4cf1-acf4-33a9405c1c5e@linux.ibm.com>
-Date: Sat, 21 Oct 2023 15:20:50 -0500
+ Sat, 21 Oct 2023 20:21:50 +0000 (GMT)
+Message-ID: <6eb57aea-edee-41a5-874b-e2f3d413aa71@linux.ibm.com>
+Date: Sat, 21 Oct 2023 15:21:50 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 01/10] hw/fsi: Introduce IBM's Local bus
+Content-Language: en-US
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
  peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
  pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
@@ -110,24 +111,23 @@ To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
 Cc: qemu-arm@nongnu.org
 References: <20231011151339.2782132-1-ninad@linux.ibm.com>
  <20231011151339.2782132-2-ninad@linux.ibm.com>
- <99d8e47e-ef22-4f0b-bae5-750a2d1b6970@kaod.org>
-Content-Language: en-US
+ <78725dd0-53c3-4b6f-a632-2fed0d383b79@kaod.org>
 From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <99d8e47e-ef22-4f0b-bae5-750a2d1b6970@kaod.org>
+In-Reply-To: <78725dd0-53c3-4b6f-a632-2fed0d383b79@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: nwKQ4Y50qEqqN_VsQVxCIKUERnlaTjg3
-X-Proofpoint-ORIG-GUID: MCxmEBumYUrEGFuR6TUYqKXIRUEa_aay
+X-Proofpoint-ORIG-GUID: KIbUYetNat40r8eoMmNaGaynV6Z6pGTn
+X-Proofpoint-GUID: kKSukZm5LiW11c_sGJQEG9SOuYnR4BZQ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-21_12,2023-10-19_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 adultscore=0
- mlxlogscore=999 phishscore=0 lowpriorityscore=0 priorityscore=1501
- malwarescore=0 suspectscore=0 spamscore=0 clxscore=1015 mlxscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310170001 definitions=main-2310210186
+ adultscore=0 impostorscore=0
+ suspectscore=0 mlxlogscore=999 phishscore=0 bulkscore=0 lowpriorityscore=0
+ malwarescore=0 priorityscore=1501 spamscore=0 mlxscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310210186
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -19
@@ -151,11 +151,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NI2oizPLj/U9
+X-TUID: ohgNBnn0OJnK
 
 Hello Cedric,
 
-On 10/19/23 03:03, Cédric Le Goater wrote:
+On 10/19/23 03:08, Cédric Le Goater wrote:
 > On 10/11/23 17:13, Ninad Palsule wrote:
 >> This is a part of patchset where IBM's Flexible Service Interface is
 >> introduced.
@@ -262,6 +262,21 @@ On 10/19/23 03:03, Cédric Le Goater wrote:
 >> BE_BIT(b))
 >> +
 >>   #endif
+>
+> Oh I forgot. please remove this change above.
+
+Fixed. Sorry I should have fixed it last patch.
+
+Thanks for the review.
+
+~Ninad
+
+>
+> Thanks,
+>
+> C.
+>
+>
 >> diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
 >> new file mode 100644
 >> index 0000000000..d7117d1299
@@ -289,31 +304,10 @@ On 10/19/23 03:03, Cédric Le Goater wrote:
 >> +    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_FSI_LBUS,
 >> +                       FSI_LBUS_MEM_REGION_SIZE - 
 >> FSI_LBUSDEV_IOMEM_SIZE);
->
-> the region init should be done in an init handler (this to avoid the 
-> realize
-> of the bus)
-Fixed.
->
 >> +
 >> +    QLIST_FOREACH(node, &lbus->devices, next) {
 >> +        memory_region_add_subregion(&lbus->mr, node->ldev->address,
 >> + &node->ldev->iomem);
->
-> This is redudant with what is done in cfam_realize() and please
-> remove this list, also redudant with the bus list.
-
-Removed the list and used the children. Removed the lbus_realize() function.
-
-Thanks for the review.
-
-~Ninad
-
->
-> Thanks,
->
-> C.
->
 >> +    }
 >> +}
 >> +

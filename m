@@ -1,145 +1,158 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp324425ejb;
-        Sat, 21 Oct 2023 06:51:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH9A52G84FKRnD2AMn4AzNWau6PthtA8caiyBrad8xQBUIVbmc9ONvSAB/IlBaSHU0MhAY9
-X-Received: by 2002:aca:1317:0:b0:3b2:c242:aaee with SMTP id e23-20020aca1317000000b003b2c242aaeemr4312561oii.42.1697896299094;
-        Sat, 21 Oct 2023 06:51:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697896299; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp356902ejb;
+        Sat, 21 Oct 2023 07:57:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFAzftcHau7T3h77eCWnAluTQUdM7HvBBTHH+bOzHsPzHnZquGVMAX5VcHJRp5JZscYCOk+
+X-Received: by 2002:a05:6122:a03:b0:49a:c339:11b9 with SMTP id 3-20020a0561220a0300b0049ac33911b9mr4819878vkn.11.1697900247958;
+        Sat, 21 Oct 2023 07:57:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697900247; cv=none;
         d=google.com; s=arc-20160816;
-        b=yDfDTK2N4Ggj8R6gQNz9iBeIv1P9Vt7RoQidvrdDWJ2bk+bKVCDtp7eki+/NgeHaB0
-         kiUqL59r0ZHgaVzDWv2PQIcWo/cNzMDrK4UAjUH/nxgBkiBAtRY80gDEPMfGHGZAEMj3
-         wg3moDzjK7Ot3PuXV1Gx+GjQ0pMg4sLv3R0D+mN35W4XKgZJPr1+8DQ0GFsQwkrrTg64
-         hMtdY7+XPnJtWZUUDVyb1S6OqzT0K+HOsyT2zxoH1IXLnaDMBPUH78MS8EetzbgLav8q
-         sHatkgsLlIUYqI73wD/HvYauYg3Ia+3N6LZwWJi057TCP2sw+GH550Mox86BxLF92vkX
-         LQHQ==
+        b=waj/ltUb2X4MFEkiHTVlSxoWSt9XTlNGO/YV1Ml2VGIhj90SskAs7VCdWpSzfkwrIR
+         KSIm7NK0uPYdX81QqZqmFgPys7fZ/ZMa6eXnX2U9APKF8idU5wbDJ9cnQ+w1lzfG9lW3
+         3zz2ApUejvCGptw2xJaunSRy8eHDF5MnDt0obA6Lg5O73GPXXRu3Q9qLSFzqAhf36Sa0
+         V52UG/mMfcE62EbzKyO3NemE6lI1a64YzioNsbThg+4y6bkCmIpNzLLunnQ2tqIYSrze
+         65G8AOd6U0VJjfLDm9nf1TtrWmcCKIWFDgJFKJxOs4tA6v89cejZIIzBz+rVMpZ3bWXr
+         Xm7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:cc:to:from:message-id:date;
-        bh=xVnS3Lg0RlkjqseFPdnp6Z+tOPYP7GmV2z6RPH1lAqQ=;
-        fh=P+dSlXUO3MpAGCB2t3cKgjMN9xuNVeGeixONW/hvUks=;
-        b=0epVOGjoefUb+7b1i4BZBlRbIVWXoaWdnUp237i2P0BTunmhEXr/FIqKeKUlYD+IqC
-         vlLZfyHAVSnNwy3SHZj5dl9ryEV5HNsDQO8wXTGBUUnV+VYea2N4O3p4aE6zV1HugMb6
-         8fLKZdA3NbsOetp2UuwRJU5bo3XMWflGD3DFItPovSBSyeG5HHMxXQcizKz7UADktgBT
-         Ng7eNSTydD06fXupmM2hJsPi+RuB6+C6VoDlNos/ST3pcpDVNQkTsaixtOlOsBfLbaqB
-         j4VhelYisnfv+E5jOHb8XEfHQQbyNB3bvcm/lhFNw0I1geRCB4Yv5b40jHwDL7JtBwW1
-         bCmA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=cv8y8BSeR3cDAPiJ1eGlaFjU36+RorcttIEYDwiVWyc=;
+        fh=Q33VWDre5RMfqSbFI+qXa/jPkeJtPHqxjnwtqxUBcqU=;
+        b=Q76KRnqYquvnJmGjhD1OoHyNGwdJszfTGwZ5juPRwQbcLyRWVLSf8ibX7kUQTs5pLW
+         kIlAhdP10YQH3wtyQfyZL8EEoXyfGb9lmAiZ32O7zHXmH8srWOfDqDCRMn+XOIB7oTgZ
+         mhMrpVBZr3dsT9CyxypM72rGwFjyDnUHbEJPStCH1f3Sg/97dh9tFacrDXyA07khMZgr
+         g9gPL3fCQwPUrMk1NTQmKxNM1/uTwQxshIllWG4HrBibvblLenIsQZazyttjK6M4oOb+
+         WbUgTELQKtTnKxSr4JNk2FeqqgEfWnZXGTpRJ4jf73f8c3N0f7sykITWGyobreDJoZMd
+         fVPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15-20020a05620a070f00b0076555ae53d8si2650708qkc.327.2023.10.21.06.51.38
+        by mx.google.com with ESMTPS id g14-20020ac87f4e000000b0041cb4580e9asi2929940qtk.674.2023.10.21.07.57.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Oct 2023 06:51:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 21 Oct 2023 07:57:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quCNs-0006xo-9E; Sat, 21 Oct 2023 09:51:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1quDOm-0004Jv-3z; Sat, 21 Oct 2023 10:56:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ysato@users.sourceforge.jp>)
- id 1quCNq-0006ws-HU
- for qemu-arm@nongnu.org; Sat, 21 Oct 2023 09:51:18 -0400
-Received: from hsmtpd-def.xspmail.jp ([2001:240:bb81:94:202:238:198:239])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ysato@users.sourceforge.jp>)
- id 1quCNn-0001a1-W1
- for qemu-arm@nongnu.org; Sat, 21 Oct 2023 09:51:18 -0400
-X-Country-Code: JP
-Received: from sakura.ysato.name (ik1-413-38519.vs.sakura.ne.jp
- [153.127.30.23])
- by hsmtpd-out-1.asahinet.cluster.xspmail.jp (Halon) with ESMTPA
- id bcb3e5f7-3bf7-49ea-b269-27608859e719;
- Sat, 21 Oct 2023 22:45:08 +0900 (JST)
-Received: from SIOS1075.ysato.ml (ZM005235.ppp.dion.ne.jp [222.8.5.235])
- by sakura.ysato.name (Postfix) with ESMTPSA id 33D3A1C005D;
- Sat, 21 Oct 2023 22:45:05 +0900 (JST)
-Date: Sat, 21 Oct 2023 22:45:04 +0900
-Message-ID: <8734y484yn.wl-ysato@users.sourceforge.jp>
-From: Yoshinori Sato <ysato@users.sourceforge.jp>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, qemu-arm@nongnu.org,
- laurent@vivier.eu, kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com
-Subject: Re: [PATCH 5/7] target/rx: Use tcg_gen_ext_i32
-In-Reply-To: <20231019182921.1772928-6-richard.henderson@linaro.org>
-References: <20231019182921.1772928-1-richard.henderson@linaro.org>
- <20231019182921.1772928-6-richard.henderson@linaro.org>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
- Emacs/28.2 (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: softfail client-ip=2001:240:bb81:94:202:238:198:239;
- envelope-from=ysato@users.sourceforge.jp; helo=hsmtpd-def.xspmail.jp
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1quDOh-0004Ib-Uw; Sat, 21 Oct 2023 10:56:15 -0400
+Received: from mailout06.t-online.de ([194.25.134.19])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1quDOc-0003Lm-Fq; Sat, 21 Oct 2023 10:56:15 -0400
+Received: from fwd89.aul.t-online.de (fwd89.aul.t-online.de [10.223.144.115])
+ by mailout06.t-online.de (Postfix) with SMTP id B94528F25;
+ Sat, 21 Oct 2023 16:56:01 +0200 (CEST)
+Received: from [192.168.211.200] ([79.208.16.231]) by fwd89.t-online.de
+ with (TLSv1.3:TLS_AES_256_GCM_SHA384 encrypted)
+ esmtp id 1quDOS-0Wph3p0; Sat, 21 Oct 2023 16:56:01 +0200
+Message-ID: <3217207d-7b75-4354-8923-c637b19700fa@t-online.de>
+Date: Sat, 21 Oct 2023 16:55:59 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 11/13] migration: Use vmstate_register_any() for audio
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Eric Farman <farman@linux.ibm.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Corey Minyard <cminyard@mvista.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Leonardo Bras <leobras@redhat.com>,
+ John Snow <jsnow@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-block@nongnu.org, qemu-s390x@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goat?=
+ =?UTF-8?Q?er?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Stefan Weil
+ <sw@weilnetz.de>, Stefan Berger <stefanb@linux.ibm.com>
+References: <20231020090731.28701-1-quintela@redhat.com>
+ <20231020090731.28701-12-quintela@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>
+In-Reply-To: <20231020090731.28701-12-quintela@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TOI-EXPURGATEID: 150726::1697900161-EFFFCD63-7E963AA8/0/0 CLEAN NORMAL
+X-TOI-MSGID: cf83e3da-6fa2-4273-bb2a-6a3fc8781b9c
+Received-SPF: pass client-ip=194.25.134.19; envelope-from=vr_qemu@t-online.de;
+ helo=mailout06.t-online.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eO+b0Uk+3tiH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mgK4kelaIo4A
 
-On Fri, 20 Oct 2023 03:29:19 +0900,
-Richard Henderson wrote:
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+Am 20.10.23 um 11:07 schrieb Juan Quintela:
+> We can have more than one audio card.
 
+Hi Juan,
+
+I wouldn't use the term "audio card" here. In QEMU speak, Audiodev is an
+"audio backend".
+
+With best regards,
+Volker
+
+>
+> void audio_init_audiodevs(void)
+> {
+>     AudiodevListEntry *e;
+>
+>     QSIMPLEQ_FOREACH(e, &audiodevs, next) {
+>         audio_init(e->dev, &error_fatal);
+>     }
+> }
+>
+> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+> Signed-off-by: Juan Quintela <quintela@redhat.com>
 > ---
->  target/rx/translate.c | 11 +++--------
->  1 file changed, 3 insertions(+), 8 deletions(-)
-> 
-> diff --git a/target/rx/translate.c b/target/rx/translate.c
-> index f8860830ae..c6ce717a95 100644
-> --- a/target/rx/translate.c
-> +++ b/target/rx/translate.c
-> @@ -492,13 +492,11 @@ static bool trans_MOV_ra(DisasContext *ctx, arg_MOV_ra *a)
->  /* mov.<bwl> rs,rd */
->  static bool trans_MOV_mm(DisasContext *ctx, arg_MOV_mm *a)
->  {
-> -    static void (* const mov[])(TCGv ret, TCGv arg) = {
-> -        tcg_gen_ext8s_i32, tcg_gen_ext16s_i32, tcg_gen_mov_i32,
-> -    };
->      TCGv tmp, mem, addr;
-> +
->      if (a->lds == 3 && a->ldd == 3) {
->          /* mov.<bwl> rs,rd */
-> -        mov[a->sz](cpu_regs[a->rd], cpu_regs[a->rs]);
-> +        tcg_gen_ext_i32(cpu_regs[a->rd], cpu_regs[a->rs], a->sz | MO_SIGN);
->          return true;
->      }
+>  audio/audio.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/audio/audio.c b/audio/audio.c
+> index e9815d6812..f91e05b72c 100644
+> --- a/audio/audio.c
+> +++ b/audio/audio.c
+> @@ -1781,7 +1781,7 @@ static AudioState *audio_init(Audiodev *dev, Error **errp)
 >  
-> @@ -570,10 +568,7 @@ static bool trans_MOVU_mr(DisasContext *ctx, arg_MOVU_mr *a)
->  /* movu.<bw> rs,rd */
->  static bool trans_MOVU_rr(DisasContext *ctx, arg_MOVU_rr *a)
->  {
-> -    static void (* const ext[])(TCGv ret, TCGv arg) = {
-> -        tcg_gen_ext8u_i32, tcg_gen_ext16u_i32,
-> -    };
-> -    ext[a->sz](cpu_regs[a->rd], cpu_regs[a->rs]);
-> +    tcg_gen_ext_i32(cpu_regs[a->rd], cpu_regs[a->rs], a->sz);
->      return true;
->  }
+>      QTAILQ_INSERT_TAIL(&audio_states, s, list);
+>      QLIST_INIT (&s->card_head);
+> -    vmstate_register (NULL, 0, &vmstate_audio, s);
+> +    vmstate_register_any(NULL, &vmstate_audio, s);
+>      return s;
 >  
-> -- 
-> 2.34.1
-> 
+>  out:
 
--- 
-Yosinori Sato

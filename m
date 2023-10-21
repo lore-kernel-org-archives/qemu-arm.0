@@ -1,127 +1,128 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp506436ejb;
-        Sat, 21 Oct 2023 14:24:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH0mO3eB9wGgQlEIcuBHcUE6afqkAopCMF7tb2fYzkebqk99IoL/J+yBrL+s28fAxWNMRUL
-X-Received: by 2002:a05:620a:2620:b0:777:74b9:219f with SMTP id z32-20020a05620a262000b0077774b9219fmr5730928qko.8.1697923450142;
-        Sat, 21 Oct 2023 14:24:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697923450; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp506479ejb;
+        Sat, 21 Oct 2023 14:24:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFcX2XQGlZxufCI0w+nvWYO5q6w+Bs7bi9Z95xCUy87NTBdMj5GsLzncgpzesYnOwKzhwBC
+X-Received: by 2002:a05:620a:444f:b0:76f:10ab:7c68 with SMTP id w15-20020a05620a444f00b0076f10ab7c68mr7844447qkp.40.1697923457950;
+        Sat, 21 Oct 2023 14:24:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697923457; cv=none;
         d=google.com; s=arc-20160816;
-        b=PlYFCuD5zrmBmeZVoDu50VDJt/2lNWaOc9zc6snHu/wBGAy0uMOetxsdmTA9sZBlWS
-         m1dZGfyildYJnfbpR9FHOF6bb4PnSGXJEzVo4K0GC0IhSf8oPNR8za2bT6Y2uW4uFljx
-         NeSgdqklkXaqGLoA4ZHvXNehnIsuNvat/UjG3j8WEmIZmdVBh2e6AdRtRIG2cllUpnia
-         +8yZ7uifBdM52qO2k1TU7gN2e5mgpmuujRoC7ZMMWZ5ORwRFJTusqVurS0FAEmHhQAnp
-         S9viQidYVruhvdQG77KV8cZ3LCxsALn60cNGyWLTT7K7WyLm8wQ/jK9iio1m4sICeEDL
-         fEtg==
+        b=tH//s9UY/p0KsOMptEKrBZ8qfICXX7EBoGMTXrqkP1MtuDIy1Qvaprw1zIDRj16GUH
+         IZSqWc9tvKLauu5+9xr+38FJv9Bg+3nTuZZSfDaAYU2C8HzO4lysjXl6MWOn+npc580I
+         fcqYXJ+zrPfDnL9NWG0pkzKmsp5A2WuUIDC0aaAakAeaubQVkjhCiX6JkvYjdHx4Mr0L
+         ljZFCkDklUlHxQHd+t8oG61IbZAmChdoJdNjCrOUBiHHFOU+UIlEW97Aziaxr8X9AGbf
+         rhtJ9ZbxuqgRiF+t2C54w5dGUWhtMUyidvF+SPjdgmVxx0RdXss6dfSF7AtmCHrxXDfL
+         7eTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=hAjwEIxXNBeoluCkcby3apYyjJuPhjYhwiWQ4+n9xfk=;
-        fh=xrfrdnXt6yALLaQWR1WAebrnD81q5WGqWzq5w17UyxQ=;
-        b=tCUORXdJhEVlf2UWp36b3CbRSgLrpFDyeOnxTI6fkmd5AcYzjMK+vBeXRnGq51sao3
-         M4QyMU7SPikBBN5CbNZ4hlVW45d0EE8ibfYt5z9nERVIsTTKt1lFXUCm4p3+ck3XVY67
-         D0dNBoiPxZTx82lfynJQR+xaz9Gov7ce69G0NfOtnZPVR4TnGx4mFQ+VzZyeJPHPVloK
-         6i8L9Mc9CY3qCuDCbm5fYI8es0N60bB9s/aYn1fNsS1vfeIl36KRMI0RIxNOSQOs2Joz
-         G36TiaUCGko57RJ5Na3E16WM4YumcMk8m3CzxmqDgTDygFUrPuJLaDAYb00GazA8tkqE
-         r4hQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=V4HY4+uFqszc+0bukWQz8lg/3mNlkeL14aU4g4D1ljg=;
+        fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
+        b=o1mP030lIRu0HWbEfZgBUVgZ+s86RY5J38iFq80tRS7rYoJ3k87F5P5T+3QKzV5InE
+         cfbTEsS8zyo8d2UbOtXw0KM3cHb13z6FDfkHnLMjJeW9V6hHrBWWp9fd4zPdjDvjx8tR
+         Xp6cRwC5iQblwBv16jxzz0zkJE7MYz9mWKhxicRian7urpBBF+RMre4BzwBP4VcqzunZ
+         V1YwNBufyw2sIGmyzv6W8ireVqCapkKNCBfGwFVlnuKToxLp6A3JirxyrA29WboNgI9D
+         CbnrtZVc5f+vovIKAbNvxtf3pvkibVC8+6GFhi37qXw9lujGmDSbcsa/b4+Hhw8wuQ27
+         u6SQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=tuJVQRIE;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=EyV9h6LR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d20-20020a05620a137400b007742898bb24si3340125qkl.776.2023.10.21.14.24.09
+        by mx.google.com with ESMTPS id p17-20020a05620a057100b007758709cfefsi3341709qkp.215.2023.10.21.14.24.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Oct 2023 14:24:10 -0700 (PDT)
+        Sat, 21 Oct 2023 14:24:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=tuJVQRIE;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=EyV9h6LR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quJR0-0007wy-Tb; Sat, 21 Oct 2023 17:23:02 -0400
+	id 1quJR0-0007wK-Gq; Sat, 21 Oct 2023 17:23:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1quJQz-0007vA-Cz; Sat, 21 Oct 2023 17:23:01 -0400
+ id 1quJQz-0007uW-0w; Sat, 21 Oct 2023 17:23:01 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1quJQt-0006Os-FB; Sat, 21 Oct 2023 17:23:01 -0400
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+ id 1quJQt-0006Or-HS; Sat, 21 Oct 2023 17:23:00 -0400
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39LLEsK1025310; Sat, 21 Oct 2023 21:17:29 GMT
+ 39LL9OXh022088; Sat, 21 Oct 2023 21:17:26 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
- : date : message-id : in-reply-to : references : content-transfer-encoding
- : mime-version; s=pp1; bh=hAjwEIxXNBeoluCkcby3apYyjJuPhjYhwiWQ4+n9xfk=;
- b=tuJVQRIEwpPd3DjxX+Ud/Z5jbYf7qBVBC9bNTf/DS1QT+jo2XRYipt4f0tyOPAHX/hZb
- c7bdoTyymy0N1FnOUF9Z+pq12pU5cjNRwYjapAEP8ZYa98MlkIk+QybXe7wCoyPMzEdn
- BURJYXwwU0Q2tlGn4q+cmEf9CELpXSxSLD7H+Yw+VfRum3Li/LnNlMf1FrdFBHp7am6a
- An65w73s4tT6wNeHCnnwBPF8X73Eahj+wkxpyyllqYPFiNWvO6se162/t/TNYMuL8dvv
- dum4jCgNt/R/5MF8uSuvLvT5x1fYdCevGKvVXza/8xYArk8x/TIsd5xp6NebaY7i1ZHk hQ== 
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=pp1;
+ bh=V4HY4+uFqszc+0bukWQz8lg/3mNlkeL14aU4g4D1ljg=;
+ b=EyV9h6LRnr9CRr1jiLGvDeylfSdXgRXHVz79dPYKCf10TNxeFROfiLr6VCKhsUXY1w5f
+ Xh2s30zW3zmQtbg4MPkV+gzjcKFpZdbmik70FuyXcpC7qN+nCvOv9bQDVZ1APg+nBXZr
+ JATYZZkVR9BKpO82xNGcmZ65+G7O6WgafPzUY9+j0b92FD199jMf2PHI6GVGzH2IH5Mz
+ h9CAhMIOKR8mZRmrErdNuziwEQtuGCRbOzZDXsQ7f/ugs0OEtXJ73hxBh+/nsjLPAPR1
+ R/rBVaEjtlq/uqLj6Hm4Mg1TNhl7AQKaIeeBAmCIGKUgtuhT+DOhq679+64hb7wiAu7q VA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpcq81ru-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpab066u-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 21:17:28 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39LLF4V2026031;
- Sat, 21 Oct 2023 21:17:28 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpcq81rf-1
+ Sat, 21 Oct 2023 21:17:26 +0000
+Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39LL9scc023294;
+ Sat, 21 Oct 2023 21:17:25 GMT
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tvpab066q-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 21:17:28 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39LKPVmv007095; Sat, 21 Oct 2023 21:17:27 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc27wcar-1
+ Sat, 21 Oct 2023 21:17:25 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39LKPwUk002683; Sat, 21 Oct 2023 21:17:24 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tuc44ncub-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Sat, 21 Oct 2023 21:17:27 +0000
+ Sat, 21 Oct 2023 21:17:24 +0000
 Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
  [10.241.53.104])
- by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39LLHRmv26018530
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39LLHNXB13632048
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 21 Oct 2023 21:17:27 GMT
+ Sat, 21 Oct 2023 21:17:24 GMT
 Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E1E9958056;
- Sat, 21 Oct 2023 21:17:26 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id CCAF958067;
+ Sat, 21 Oct 2023 21:17:23 +0000 (GMT)
 Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8C8865805D;
- Sat, 21 Oct 2023 21:17:26 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 7316958056;
+ Sat, 21 Oct 2023 21:17:23 +0000 (GMT)
 Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
  by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Sat, 21 Oct 2023 21:17:26 +0000 (GMT)
+ Sat, 21 Oct 2023 21:17:23 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
 To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
  andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
  marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
  philmd@linaro.org, lvivier@redhat.com
-Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
-Subject: [PATCH v6 09/10] hw/fsi: Added FSI documentation
-Date: Sat, 21 Oct 2023 16:17:18 -0500
-Message-Id: <20231021211720.3571082-10-ninad@linux.ibm.com>
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>
+Subject: [PATCH v6 02/10] hw/fsi: Introduce IBM's scratchpad
+Date: Sat, 21 Oct 2023 16:17:11 -0500
+Message-Id: <20231021211720.3571082-3-ninad@linux.ibm.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231021211720.3571082-1-ninad@linux.ibm.com>
 References: <20231021211720.3571082-1-ninad@linux.ibm.com>
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: t_asbI78xFcuuUlrYvROKYYcRZINeWWE
-X-Proofpoint-GUID: j8VfyAWEe1s81r3b23WwRpG1jY_IMS7r
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 91ceCeBHaEBD7BGjfLyHrFHCxs4-GfNo
+X-Proofpoint-GUID: hn95Yw-SbPVJbuFXEC7N2A05igLPAfNt
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-21_13,2023-10-19_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 bulkscore=0
- mlxlogscore=800 lowpriorityscore=0 adultscore=0 mlxscore=0 spamscore=0
- clxscore=1015 priorityscore=1501 phishscore=0 impostorscore=0
+ impostorscore=0
+ suspectscore=0 adultscore=0 mlxlogscore=901 lowpriorityscore=0 bulkscore=0
+ phishscore=0 mlxscore=0 priorityscore=1501 clxscore=1015 spamscore=0
  malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2310170001 definitions=main-2310210195
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
@@ -147,166 +148,246 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XFqBNVDOU29i
+X-TUID: VQl6RPUD2wrb
 
-Documentation for IBM FSI model.
+This is a part of patchset where scratchpad is introduced.
 
+The scratchpad provides a set of non-functional registers. The firmware
+is free to use them, hardware does not support any special management
+support. The scratchpad registers can be read or written from LBUS
+slave.
+
+In this model, The LBUS device is parent for the scratchpad.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 ---
-v4:
-  - Added separate commit for documentation
+v2:
+- Incorporated Joel's review comments.
+v5:
+- Incorporated review comments by Cedric.
+v6:
+- Incorporated review comments by Daniel.
 ---
- docs/specs/fsi.rst | 141 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 141 insertions(+)
- create mode 100644 docs/specs/fsi.rst
+ meson.build                        |  1 +
+ hw/fsi/trace.h                     |  1 +
+ include/hw/fsi/engine-scratchpad.h | 32 ++++++++++
+ include/hw/fsi/fsi.h               | 16 +++++
+ hw/fsi/engine-scratchpad.c         | 93 ++++++++++++++++++++++++++++++
+ hw/fsi/Kconfig                     |  4 ++
+ hw/fsi/meson.build                 |  1 +
+ hw/fsi/trace-events                |  2 +
+ 8 files changed, 150 insertions(+)
+ create mode 100644 hw/fsi/trace.h
+ create mode 100644 include/hw/fsi/engine-scratchpad.h
+ create mode 100644 include/hw/fsi/fsi.h
+ create mode 100644 hw/fsi/engine-scratchpad.c
+ create mode 100644 hw/fsi/trace-events
 
-diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
+diff --git a/meson.build b/meson.build
+index 4961c82a6b..31078f0bb3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3256,6 +3256,7 @@ if have_system
+     'hw/char',
+     'hw/display',
+     'hw/dma',
++    'hw/fsi',
+     'hw/hyperv',
+     'hw/i2c',
+     'hw/i386',
+diff --git a/hw/fsi/trace.h b/hw/fsi/trace.h
 new file mode 100644
-index 0000000000..73b082afe1
+index 0000000000..ee67c7fb04
 --- /dev/null
-+++ b/docs/specs/fsi.rst
-@@ -0,0 +1,141 @@
-+======================================
-+IBM's Flexible Service Interface (FSI)
-+======================================
++++ b/hw/fsi/trace.h
+@@ -0,0 +1 @@
++#include "trace/trace-hw_fsi.h"
+diff --git a/include/hw/fsi/engine-scratchpad.h b/include/hw/fsi/engine-scratchpad.h
+new file mode 100644
+index 0000000000..959a8a6677
+--- /dev/null
++++ b/include/hw/fsi/engine-scratchpad.h
+@@ -0,0 +1,32 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM scratchpad engne
++ */
++#ifndef FSI_ENGINE_SCRATCHPAD_H
++#define FSI_ENGINE_SCRATCHPAD_H
 +
-+The QEMU FSI emulation implements hardware interfaces between ASPEED SOC, FSI
-+master/slave and the end engine.
++#include "hw/fsi/lbus.h"
++#include "hw/fsi/fsi.h"
 +
-+FSI is a point-to-point two wire interface which is capable of supporting
-+distances of up to 4 meters. FSI interfaces have been used successfully for
-+many years in IBM servers to attach IBM Flexible Support Processors(FSP) to
-+CPUs and IBM ASICs.
++#define ENGINE_CONFIG_NEXT              BE_BIT(0)
++#define ENGINE_CONFIG_VPD               BE_BIT(1)
++#define ENGINE_CONFIG_SLOTS             BE_GENMASK(8, 15)
++#define ENGINE_CONFIG_VERSION           BE_GENMASK(16, 19)
++#define ENGINE_CONFIG_TYPE              BE_GENMASK(20, 27)
++#define   ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
++#define   ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
++#define   ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
++#define ENGINE_CONFIG_CRC              BE_GENMASK(28, 31)
 +
-+FSI allows a service processor access to the internal buses of a host POWER
-+processor to perform configuration or debugging. FSI has long existed in POWER
-+processes and so comes with some baggage, including how it has been integrated
-+into the ASPEED SoC.
++#define TYPE_FSI_SCRATCHPAD "fsi.scratchpad"
++#define SCRATCHPAD(obj) OBJECT_CHECK(FSIScratchPad, (obj), TYPE_FSI_SCRATCHPAD)
 +
-+Working backwards from the POWER processor, the fundamental pieces of interest
-+for the implementation are:
++typedef struct FSIScratchPad {
++        FSILBusDevice parent;
 +
-+1. The Common FRU Access Macro (CFAM), an address space containing various
-+   "engines" that drive accesses on buses internal and external to the POWER
-+   chip. Examples include the SBEFIFO and I2C masters. The engines hang off of
-+   an internal Local Bus (LBUS) which is described by the CFAM configuration
-+   block.
++        uint32_t reg;
++} FSIScratchPad;
 +
-+2. The FSI slave: The slave is the terminal point of the FSI bus for FSI
-+   symbols addressed to it. Slaves can be cascaded off of one another. The
-+   slave's configuration registers appear in address space of the CFAM to
-+   which it is attached.
++#endif /* FSI_ENGINE_SCRATCHPAD_H */
+diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
+new file mode 100644
+index 0000000000..e65f26f17b
+--- /dev/null
++++ b/include/hw/fsi/fsi.h
+@@ -0,0 +1,16 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM Flexible Service Interface
++ */
++#ifndef FSI_FSI_H
++#define FSI_FSI_H
 +
-+3. The FSI master: A controller in the platform service processor (e.g. BMC)
-+   driving CFAM engine accesses into the POWER chip. At the hardware level
-+   FSI is a bit-based protocol supporting synchronous and DMA-driven accesses
-+   of engines in a CFAM.
++/* Bitwise operations at the word level. */
++#define BE_BIT(x)                          BIT(31 - (x))
++#define GENMASK(t, b) \
++    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
++#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), BE_BIT(b))
 +
-+4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in POWER
-+   processors. This now makes an appearance in the ASPEED SoC due to tight
-+   integration of the FSI master IP with the OPB, mainly the existence of an
-+   MMIO-mapping of the CFAM address straight onto a sub-region of the OPB
-+   address space.
++#endif
+diff --git a/hw/fsi/engine-scratchpad.c b/hw/fsi/engine-scratchpad.c
+new file mode 100644
+index 0000000000..a8887cd613
+--- /dev/null
++++ b/hw/fsi/engine-scratchpad.c
+@@ -0,0 +1,93 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM scratchpad engine
++ */
 +
-+5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in the
-+   AST2600. Hardware limitations prevent the OPB from being directly mapped
-+   into APB, so all accesses are indirect through the bridge.
++#include "qemu/osdep.h"
 +
-+The LBUS is modelled to maintain the qdev bus hierarchy and to take advantages
-+of the object model to automatically generate the CFAM configuration block.
-+The configuration block presents engines in the order they are attached to the
-+CFAM's LBUS. Engine implementations should subclass the LBusDevice and set the
-+'config' member of LBusDeviceClass to match the engine's type.
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "trace.h"
 +
-+CFAM designs offer a lot of flexibility, for instance it is possible for a
-+CFAM to be simultaneously driven from multiple FSI links. The modeling is not
-+so complete; it's assumed that each CFAM is attached to a single FSI slave (as
-+a consequence the CFAM subclasses the FSI slave).
++#include "hw/fsi/engine-scratchpad.h"
 +
-+As for FSI, its symbols and wire-protocol are not modelled at all. This is not
-+necessary to get FSI off the ground thanks to the mapping of the CFAM address
-+space onto the OPB address space - the models follow this directly and map the
-+CFAM memory region into the OPB's memory region.
++static uint64_t fsi_scratchpad_read(void *opaque, hwaddr addr, unsigned size)
++{
++    FSIScratchPad *s = SCRATCHPAD(opaque);
 +
-+QEMU files related to FSI interface:
-+ - ``hw/fsi/aspeed-apb2opb.c``
-+ - ``include/hw/fsi/aspeed-apb2opb.h``
-+ - ``hw/fsi/opb.c``
-+ - ``include/hw/fsi/opb.h``
-+ - ``hw/fsi/fsi.c``
-+ - ``include/hw/fsi/fsi.h``
-+ - ``hw/fsi/fsi-master.c``
-+ - ``include/hw/fsi/fsi-master.h``
-+ - ``hw/fsi/fsi-slave.c``
-+ - ``include/hw/fsi/fsi-slave.h``
-+ - ``hw/fsi/cfam.c``
-+ - ``include/hw/fsi/cfam.h``
-+ - ``hw/fsi/engine-scratchpad.c``
-+ - ``include/hw/fsi/engine-scratchpad.h``
-+ - ``include/hw/fsi/lbus.h``
++    trace_fsi_scratchpad_read(addr, size);
 +
-+The following commands start the rainier machine with built-in FSI model.
-+There are no model specific arguments.
++    if (addr) {
++        return 0;
++    }
 +
-+.. code-block:: console
++    return s->reg;
++}
 +
-+  qemu-system-arm -M rainier-bmc -nographic \
-+  -kernel fitImage-linux.bin \
-+  -dtb aspeed-bmc-ibm-rainier.dtb \
-+  -initrd obmc-phosphor-initramfs.rootfs.cpio.xz \
-+  -drive file=obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 \
-+  -append "rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a"
++static void fsi_scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
++                                 unsigned size)
++{
++    FSIScratchPad *s = SCRATCHPAD(opaque);
 +
-+The implementation appears as following in the qemu device tree:
++    trace_fsi_scratchpad_write(addr, size, data);
 +
-+.. code-block:: console
++    if (addr) {
++        return;
++    }
 +
-+  (qemu) info qtree
-+  bus: main-system-bus
-+    type System
-+    ...
-+    dev: aspeed.apb2opb, id ""
-+      gpio-out "sysbus-irq" 1
-+      mmio 000000001e79b000/0000000000001000
-+      bus: opb.1
-+        type opb
-+        dev: fsi.master, id ""
-+          bus: fsi.bus.1
-+            type fsi.bus
-+            dev: cfam.config, id ""
-+            dev: cfam, id ""
-+              bus: lbus.1
-+                type lbus
-+                dev: scratchpad, id ""
-+                  address = 0 (0x0)
-+      bus: opb.0
-+        type opb
-+        dev: fsi.master, id ""
-+          bus: fsi.bus.0
-+            type fsi.bus
-+            dev: cfam.config, id ""
-+            dev: cfam, id ""
-+              bus: lbus.0
-+                type lbus
-+                dev: scratchpad, id ""
-+                  address = 0 (0x0)
++    s->reg = data;
++}
 +
-+pdbg is a simple application to allow debugging of the host POWER processors
-+from the BMC. (see the `pdbg source repository` for more details)
++static const struct MemoryRegionOps scratchpad_ops = {
++    .read = fsi_scratchpad_read,
++    .write = fsi_scratchpad_write,
++    .endianness = DEVICE_BIG_ENDIAN,
++};
 +
-+.. code-block:: console
++static void fsi_scratchpad_realize(DeviceState *dev, Error **errp)
++{
++    FSILBusDevice *ldev = FSI_LBUS_DEVICE(dev);
 +
-+  root@p10bmc:~# pdbg -a getcfam 0x0
-+  p0: 0x0 = 0xc0022d15
++    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
++                          ldev, TYPE_FSI_SCRATCHPAD, 0x400);
++}
 +
-+Refer following documents for more details.
++static void fsi_scratchpad_reset(DeviceState *dev)
++{
++    FSIScratchPad *s = SCRATCHPAD(dev);
 +
-+.. _FSI specification:
-+   https://openpowerfoundation.org/specifications/fsi/
-+   https://wiki.raptorcs.com/w/images/9/97/OpenFSI-spec-20161212.pdf
++    s->reg = 0;
++}
 +
-+.. _pdbg source repository:
-+   https://github.com/open-power/pdbg
++static void fsi_scratchpad_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    FSILBusDeviceClass *ldc = FSI_LBUS_DEVICE_CLASS(klass);
++
++    dc->realize = fsi_scratchpad_realize;
++    dc->reset = fsi_scratchpad_reset;
++
++    ldc->config =
++          ENGINE_CONFIG_NEXT            | /* valid */
++          0x00010000                    | /* slots */
++          0x00001000                    | /* version */
++          ENGINE_CONFIG_TYPE_SCRATCHPAD | /* type */
++          0x00000007;                     /* crc */
++}
++
++static const TypeInfo fsi_scratchpad_info = {
++    .name = TYPE_FSI_SCRATCHPAD,
++    .parent = TYPE_FSI_LBUS_DEVICE,
++    .instance_size = sizeof(FSIScratchPad),
++    .class_init = fsi_scratchpad_class_init,
++    .class_size = sizeof(FSILBusDeviceClass),
++};
++
++static void fsi_scratchpad_register_types(void)
++{
++    type_register_static(&fsi_scratchpad_info);
++}
++
++type_init(fsi_scratchpad_register_types);
+diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+index e650c660f0..f7c7fd1b28 100644
+--- a/hw/fsi/Kconfig
++++ b/hw/fsi/Kconfig
+@@ -1,2 +1,6 @@
++config FSI_SCRATCHPAD
++    bool
++    select FSI_LBUS
++
+ config FSI_LBUS
+     bool
+diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+index 4074d3a7d2..d45a98c223 100644
+--- a/hw/fsi/meson.build
++++ b/hw/fsi/meson.build
+@@ -1 +1,2 @@
+ system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
++system_ss.add(when: 'CONFIG_FSI_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
+diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+new file mode 100644
+index 0000000000..c5753e2791
+--- /dev/null
++++ b/hw/fsi/trace-events
+@@ -0,0 +1,2 @@
++fsi_scratchpad_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
++fsi_scratchpad_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
 -- 
 2.39.2
 

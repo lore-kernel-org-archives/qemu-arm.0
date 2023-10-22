@@ -1,131 +1,230 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2453678ejb;
-        Tue, 30 May 2023 14:30:33 -0700 (PDT)
-X-Received: by 2002:a05:6000:371:b0:307:9d2a:fd35 with SMTP id f17-20020a056000037100b003079d2afd35mr2669530wrf.53.1685482233483;
-        Tue, 30 May 2023 14:30:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685482233; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864274ejb;
+        Sun, 22 Oct 2023 08:53:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF4GlV/FQQgGzLz1Zv0hKHGUz23Kfqsd/BhnJY8lcWMTcj+LWkQfHrBB2kjUKsp6LGVMdFi
+X-Received: by 2002:a05:622a:14c7:b0:418:1059:dfb9 with SMTP id u7-20020a05622a14c700b004181059dfb9mr7323599qtx.1.1697990001429;
+        Sun, 22 Oct 2023 08:53:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697990001; cv=none;
         d=google.com; s=arc-20160816;
-        b=izoot9ovDhblchJWBOO+ziFiW/8il7gJlw9wiImbet5x8UzRnQA1NKJIBbcQGRmjgC
-         SEIm/un/lB7jvr6cDmes9f090QnPbp4Z3+COtjcIDz1rDVRuttFtYt+QCMc/rpaSqiY/
-         FJXyfJz5YSVPmWUFJbdFqfCBaQzq67QywiUUTLaLbulyqVxigkFvD7MWfGDpHbjIOy+p
-         MrMDloYAFOWHaxhd6YJeVb5if2FiWqowoClmp7XAdFuPJOr67GbGoLELvcE2fRE/Vid+
-         NCWf8KifN0WpB73MVaH/Mbj8k50ex67PtwwbLJC+zMq25KQxQfJ1GmtT9U/PPMCld3IR
-         jQ4A==
+        b=HhdsNEjSFUr3E5k+MNQaw+/I2MfBmfH0y3QpTBwIoIxqENW2i4ZJoK4jj3r34yoZWo
+         8Lq1Mg+pitnypN6vO7ic9osQ37oWTc4l4ymOseffK14sA8LaDudQYYjU7Ni76Bqn78zT
+         rLQWaccncfibNSddIrhPNX0mfGBzAIf4gT8k6GgWTDktrqiKliMZLxn9KY1KCWztTxYL
+         I0SFH21y0JAwBqI4+a3FrA7GRQa2Y8fOGGG0aEZrLQMT9VyhQyJRx2QgRrDc/aAS/K1k
+         jFCHuGC3No5sMIVN6tIC90EckvTwzNospsftyWJT1k1aI/yVF/GBZOhighqJj2b8Papl
+         nPjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6ImSubkbjbUjNZwF69C2rLByaMdghdLHpgc9tkxHRmc=;
-        b=u8NN9+AHgMEuDZk5kU0Z8PEpuxx0VUd1DcGotuu0f6/v5iGMmA/tQlZrxGQY8YE86a
-         vBfKleYjSmpb0Vn/gjnkAnz8+Voj3Bx16b4n6VgeCcUJ+F6AfdvMQQ7u08o77x2y/Uko
-         0ooJdGoO2dVWKXtj9N2vV2bDDOLdKcmBg6EZBk5mOnayparY1HOotuU42E2eQjX/r5Od
-         jPYb2rVL2hYRiCgg/gugStIBnNmlEmZ1my5PfSlhmsr665adop0oYnWEz7dFV05AvmuS
-         FdDXTMiNYpqHFn+e3Zm0Ko3jxxwtPRRVBytdZW9+Dvq5o9FMibnyYhjAiYZOvRThGs8e
-         L8SQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=khyoXveG/BzHXWd28g0ECVTdEF2TXXqaXCqlRIzwomY=;
+        fh=fR25DIKCexhPQAp6aUdYi3uFJxEhZaxhhcNQofNVQl0=;
+        b=D4yi+cndXE47tJuoXKx9z5ghu96RfxGd8p31HETS3wPnOkQ2yzbq2zep02SEeBVicN
+         1xbq49PlA/YuJPoBkct3B1rsMTPHD1HK2OGqtlNNOaZuie6O5j95CrBhWSDqvnydMmOG
+         loTCzxVFXEK9irunIikDlkpa9I92maVyiYw0tSpGrOxWqbuilpnpLgNK6TOIFCTMEhvZ
+         GEjpw7SV0Jju4o5/ylcpivlvDAAY2xKfZplqbqv8XKuZlc1xRrRH7IMx3gqL9rGJtn9H
+         2hcE0yov7jXMwrq1zQjz7YK84LPABukMZI7F2pyuz2zz36kX74iGt4/Td9Oz826lhg+B
+         UPQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RaMmFTRR;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e10-20020adfef0a000000b0030ae648a56csor1258408wro.6.2023.05.30.14.30.33
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=pddXftyc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s19-20020a05622a019300b00417dc02ee2fsi4301300qtw.462.2023.10.22.08.53.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 30 May 2023 14:30:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 22 Oct 2023 08:53:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RaMmFTRR;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685482233; x=1688074233;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6ImSubkbjbUjNZwF69C2rLByaMdghdLHpgc9tkxHRmc=;
-        b=RaMmFTRRCIJ2kdIefaOIxrMB0Kn0KWTHL86uFej1S5OT9S3xrRbtdk6OwLtC3C57RL
-         uKth3pDID2OFbjLUNhgjZeG6AZCKReeOrXn7j60GTIDp0GXlBFtSrF9O8/UnfJmOnnlU
-         KY6XJLwhxKvmTj0w6GYUmyWfCZVrYtQCxjHLmmu2e0qJb6kvp2zjZZlz2zmIFrEXDEFq
-         LbZJdbjnBOqT/9mE9TzdG1clnqeE2oSXyb8JWXC2MFOxExozgZJmIivXAF5RI3Iu8lOC
-         et80wgsZaSYndKIDwdm252HkAgQ4PiadE6+Y45XFtzHPaLp5Qq8OZHFPgrGGGhsayXYE
-         RDAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685482233; x=1688074233;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6ImSubkbjbUjNZwF69C2rLByaMdghdLHpgc9tkxHRmc=;
-        b=KoqwSTEzYSWmxJrgfTD6QVMagX6pivoIsuMXZNvh5YMtH1QvzwPmaWuYmZf8WC4K74
-         BuOvPpu8yX6ObCrhUQGQtColawUyUGMYKro8BZU/ZIOsxV3hIJDISmzhpsNK6dAmhL/B
-         rLg16Zwzasvc8ih8tfGDpEr+J0EB1OOJamI/QU1ss/JVrGwOARIc4UdkaXVGg7LSWOMC
-         I2+KJfZo8ZHxqn+J1w75dUcV6g+2+5C14TyRJN9LGlCAWhM8B/kLiggeqwj2Bus8LN9P
-         CVvho/jow3t+/gt9vuEtb1Cw14SvSETNiNC8t6eWlWAPmp8/vR4fAYdhNt5DIDZiGMoy
-         mMow==
-X-Gm-Message-State: AC+VfDyeWezIXwVoPRjh7V9cv1VjSgc2cVIC6tqi2memA+NWLQN5WoUD
-	vbBnw2JCxtMRhPsUAwsig9+kvKWY
-X-Google-Smtp-Source: ACHHUZ6Q6oXBqbNcPrJz6Is318zgTHrJJfNvzs9a+YrOpSAfPdV/KJrImY6rnmHSMJmcZ/sS5csanQ==
-X-Received: by 2002:a5d:610e:0:b0:306:28fa:16a7 with SMTP id v14-20020a5d610e000000b0030628fa16a7mr2643895wrt.43.1685482233172;
-        Tue, 30 May 2023 14:30:33 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] ([176.176.180.1])
-        by smtp.gmail.com with ESMTPSA id f15-20020adff58f000000b002fae7408544sm4388866wro.108.2023.05.30.14.30.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 May 2023 14:30:32 -0700 (PDT)
-Message-ID: <515e97c8-eb14-9d74-8942-10808bdad4af@linaro.org>
-Date: Tue, 30 May 2023 23:30:31 +0200
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=pddXftyc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1quaku-0004mg-GF; Sun, 22 Oct 2023 11:52:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1quakn-0004jm-Ch; Sun, 22 Oct 2023 11:52:40 -0400
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1quakj-0008WK-FW; Sun, 22 Oct 2023 11:52:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=khyoXveG/BzHXWd28g0ECVTdEF2TXXqaXCqlRIzwomY=; b=pddXftyc1ckCsPadnXZvUQT0bW
+ M5Ptl/u0mEOZM6a8arO++FndlfmK/9In3Y97NEiNvV6S/gnoMc4rPMktdQsqrpE8ITBGZJbN9YP+h
+ 7WXXezLpKgcUU6qsBUYt55PTO8nrIX1XqBdlBWxj+18Iu4HEasNRQpUygH0u4uQXNqaYtF60lY4tL
+ 2m5FzcX/XbiRWZ/oyNZkKLHejWh2LoySZb1SG5qDHBrUfq3SzhLhWqh128Iuw4s8tFqGtH7/LW26M
+ dH0EP2RhBj/PoLPN9AezB/IU1DfNzJ769NI+o+uIhQ8Ac7QVnflEBlQ/DmyiYcCPxCUv9Jyt8FKH2
+ ON7Jh9Sw==;
+Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1quakK-008TGm-Ep; Sun, 22 Oct 2023 15:52:08 +0000
+Received: from dwoodhou by i7.infradead.org with local (Exim 4.96 #2 (Red Hat
+ Linux)) id 1quakJ-001qaY-36; Sun, 22 Oct 2023 16:52:07 +0100
+From: David Woodhouse <dwmw2@infradead.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
+ Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
+ Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ xen-devel@lists.xenproject.org
+Subject: [PATCH 33/45] hw/m68k/q800: use qemu_configure_nic_device()
+Date: Sun, 22 Oct 2023 16:51:48 +0100
+Message-Id: <20231022155200.436340-34-dwmw2@infradead.org>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20231022155200.436340-1-dwmw2@infradead.org>
+References: <20231022155200.436340-1-dwmw2@infradead.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 01/12] aspeed/hace: Initialize g_autofree pointer
-Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Steven Lee <steven_lee@aspeedtech.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-stable <qemu-stable@nongnu.org>
-References: <20230508075859.3326566-1-clg@kaod.org>
- <20230508075859.3326566-2-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230508075859.3326566-2-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: SXd8f4+JixRD
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
+ envelope-from=BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org;
+ helo=casper.infradead.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4r2fHFJggiil
 
-On 8/5/23 09:58, Cédric Le Goater wrote:
-> As mentioned in docs/devel/style.rst "Automatic memory deallocation":
-> 
-> * Variables declared with g_auto* MUST always be initialized,
->    otherwise the cleanup function will use uninitialized stack memory
-> 
-> This avoids QEMU to coredump when running the "hash test" command
-> under Zephyr.
-> 
-> Cc: Steven Lee <steven_lee@aspeedtech.com>
-> Cc: Joel Stanley <joel@jms.id.au>
+From: David Woodhouse <dwmw@amazon.co.uk>
 
-Cc: qemu-stable@nongnu.org
+Then fetch the MAC that was assigned, if any. And assign one if not,
+ensuring that it uses the Apple OUI.
 
-> Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Message-Id: <20230421131547.2177449-1-clg@kaod.org>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->   hw/misc/aspeed_hace.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-> index 12a761f1f5..b07506ec04 100644
-> --- a/hw/misc/aspeed_hace.c
-> +++ b/hw/misc/aspeed_hace.c
-> @@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
->                                 bool acc_mode)
->   {
->       struct iovec iov[ASPEED_HACE_MAX_SG];
-> -    g_autofree uint8_t *digest_buf;
-> +    g_autofree uint8_t *digest_buf = NULL;
->       size_t digest_len = 0;
->       int niov = 0;
->       int i;
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+---
+ hw/m68k/q800.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
+index 1d7cd5ff1c..94e7c0dd60 100644
+--- a/hw/m68k/q800.c
++++ b/hw/m68k/q800.c
+@@ -271,6 +271,7 @@ static void q800_machine_init(MachineState *machine)
+     BusState *adb_bus;
+     NubusBus *nubus;
+     DriveInfo *dinfo;
++    MACAddr mac;
+     uint8_t rng_seed[32];
+ 
+     linux_boot = (kernel_filename != NULL);
+@@ -371,13 +372,6 @@ static void q800_machine_init(MachineState *machine)
+ 
+     /* MACSONIC */
+ 
+-    if (nb_nics > 1) {
+-        error_report("q800 can only have one ethernet interface");
+-        exit(1);
+-    }
+-
+-    qemu_check_nic_model(&nd_table[0], "dp83932");
+-
+     /*
+      * MacSonic driver needs an Apple MAC address
+      * Valid prefix are:
+@@ -387,14 +381,22 @@ static void q800_machine_init(MachineState *machine)
+      * 08:00:07 Apple
+      * (Q800 use the last one)
+      */
+-    nd_table[0].macaddr.a[0] = 0x08;
+-    nd_table[0].macaddr.a[1] = 0x00;
+-    nd_table[0].macaddr.a[2] = 0x07;
+-
+     object_initialize_child(OBJECT(machine), "dp8393x", &m->dp8393x,
+                             TYPE_DP8393X);
+     dev = DEVICE(&m->dp8393x);
+-    qdev_set_nic_properties(dev, &nd_table[0]);
++    if (qemu_configure_nic_device(dev, TYPE_DP8393X, true, "dp83932")) {
++        gchar *macstr = object_property_get_str(OBJECT(dev));
++        if (macstr) {
++            net_parse_macaddr(mac.a, macstr);
++            g_free(macstr);
++        }
++    }
++    qemu_macaddr_default_if_unset(&mac);
++    mac.a[0] = 0x08;
++    mac.a[1] = 0x00;
++    mac.a[2] = 0x07;
++    qemu_prop_set_macaddr(dev, "mac", &mac.a);
++
+     qdev_prop_set_uint8(dev, "it_shift", 2);
+     qdev_prop_set_bit(dev, "big_endian", true);
+     object_property_set_link(OBJECT(dev), "dma_mr",
+@@ -415,7 +417,7 @@ static void q800_machine_init(MachineState *machine)
+     prom = memory_region_get_ram_ptr(dp8393x_prom);
+     checksum = 0;
+     for (i = 0; i < 6; i++) {
+-        prom[i] = revbit8(nd_table[0].macaddr.a[i]);
++        prom[i] = revbit8(mac.a[i]);
+         checksum ^= prom[i];
+     }
+     prom[7] = 0xff - checksum;
+-- 
+2.40.1
+

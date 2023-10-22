@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp865029ejb;
-        Sun, 22 Oct 2023 08:55:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFv0x6Kop3glE/U3XuU+/bwAdBtj6Ij9TL+RraSw3SRmirj07GSUoq7umWE4aVTcOr0zYB6
-X-Received: by 2002:a25:e08b:0:b0:d9c:ae73:2ac3 with SMTP id x133-20020a25e08b000000b00d9cae732ac3mr5821400ybg.4.1697990108972;
-        Sun, 22 Oct 2023 08:55:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697990108; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp865042ejb;
+        Sun, 22 Oct 2023 08:55:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF6WVFlJeZqLVAGFbJ/eqFfdCh4z5pUGxhrCXRPq448ag8Kj1FKS+FmHsUm6feDZw4AtvkF
+X-Received: by 2002:a25:4249:0:b0:d9c:e719:1e77 with SMTP id p70-20020a254249000000b00d9ce7191e77mr5378357yba.1.1697990111571;
+        Sun, 22 Oct 2023 08:55:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697990111; cv=none;
         d=google.com; s=arc-20160816;
-        b=TkGorcIrwPMTP4GQdUgEh8tLBDc29Pmdp+MD7zRvd84cD+UUNr4mBJfbS2j59M3lCM
-         R52FkFHhlhyErKLbl6/WDOb6crHvO+aHCO/VXlYN4o2lYvUjTDqoZU4L/GrRzj70nfjd
-         zBU6KrkSOGWv4gMKZzgFkI2GQqn+2aMI8qQUb+npcbzyLQrYzLl2VpdOjzxppsrHeZJ8
-         KA1uba5OFRemii9P0lod8jDZZaw+rL6EfB/kpd6kPkw4j5WFVWlFjSbT4jtNQtPz/Dw+
-         1weW2MLQuIYWtgAibR9QhbY776l+eeU1aCishMtdPvWQMyAmIeIobA7jBpXhEbGHcyNs
-         kJ2w==
+        b=s3IRRDs3u6Askw3cu+KhDNHJPkL5ZSuKsmJXveBYuUUfgZCbH5KosR7qAu4NBx+aYs
+         yAalLkhFaXFhSFUQqsk2ZFgsww/SGhw3k5K0eLFbj0BL1uOfi3FrLsP8BCyuGIyTvPcw
+         7fCjpKX6p60kMcur+XE35K1aPOJlxEYsduNex6Ng74Znl2N8DR3UbW0HZRBCb0kvkui6
+         1XTdyZrlgrGJgt8gntM+sZ30GI8F8tMnyq0WPMuZpZBPQ/lTtb2E+6xuH/hivsUxeLQ7
+         3zkNZ/x8YN31mmpzAjJLMRdTuG27znR9/jL4qSB9OwOLKQVZlBb9u4LzBU3rWrqVhSfp
+         DZ8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=0g2a82VH4gMCB3QhQoMvbFi3kUWOmKpYhQ7p6DKI8gg=;
+        bh=EEprMiQFf2yiszoqkaPkPmN8nomXIq9mKJSWnsahnUg=;
         fh=fR25DIKCexhPQAp6aUdYi3uFJxEhZaxhhcNQofNVQl0=;
-        b=XLBJ2ysgAQEEbIMwJ0LOOJMqgRdFnObprUl4CPnGXcsD3sDMWEjPErlZVhy0JPA7Cj
-         +YFFng7fOQrbjAlAVuzJ7pYERqQ7zWp0lGmrge2VwX9jyIEzpgjmUKvVONRzxYmKzYTr
-         R16l+4V82VvGofcUzlOkOH2e6x6rat7ZyWZpIfob7lrj5wSr/dWvlpFZLgMR5Bi6S4HR
-         gbCFkIQr8rLBF7kjlo4Y3EdGuWGHkynhImPHChWZLHsfOVDS7+3Rf51RGRZJAV/QDUv0
-         LxShhDj/A+Uqo0O/vs2/1607smA0SoDMAR4tY/wciAA/jpnC1QBSleR6t8ArYdmnGaS1
-         CXng==
+        b=sO/bYmkAGaYjYpxOxIjaWuSS9N20aQgNG2CeEeTnOyce6wXgHowYKDP0inYQNHW633
+         3t8M2kINHDwdQ1AYN8zP4ARDdD+0k7dnWAcyrs0Unwn+UOGYvBUHS3KItiNEGLEj2T+c
+         C8DpCgFgYrL0pUdc3HnujNKsLH1cB9gKy/dSfnhxDLkE7eywspWH2ZjW64zWUHo9sOaF
+         wZaLpdjuIVGTo0cajnpuZLEICnUR73kekOJf2hFITmMTjEWRd8+dsrO0nD+xs5CYhzsA
+         PaJot5ZJ3cEQUNjK5LVqblA17Fvk/FioWFFxhWqtv94HXNpL+Hi9Ah7sUEuRE7oW+XpZ
+         qKDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=boPXLVBX;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=nPbfsthL;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id h197-20020a25d0ce000000b00d9a5f4f030asi4231527ybg.270.2023.10.22.08.55.08
+        by mx.google.com with ESMTPS id h5-20020a256c05000000b00d71924c5da5si4267658ybc.37.2023.10.22.08.55.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Oct 2023 08:55:08 -0700 (PDT)
+        Sun, 22 Oct 2023 08:55:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=boPXLVBX;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=nPbfsthL;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.620670.966306 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.620673.966330 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1quam0-0000BH-P8; Sun, 22 Oct 2023 15:53:52 +0000
+	id 1quam3-0000qa-B6; Sun, 22 Oct 2023 15:53:55 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 620670.966306; Sun, 22 Oct 2023 15:53:52 +0000
+Received: by outflank-mailman (output) from mailman id 620673.966330; Sun, 22 Oct 2023 15:53:55 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1quam0-00008J-Cp; Sun, 22 Oct 2023 15:53:52 +0000
-Received: by outflank-mailman (input) for mailman id 620670;
- Sun, 22 Oct 2023 15:53:50 +0000
-Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
- helo=se1-gles-sth1.inumbo.com)
+	id 1quam2-0000iz-TG; Sun, 22 Oct 2023 15:53:54 +0000
+Received: by outflank-mailman (input) for mailman id 620673;
+ Sun, 22 Oct 2023 15:53:52 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=zZR7=GE=casper.srs.infradead.org=BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1qualy-0006wY-Jp
- for xen-devel@lists.xenproject.org; Sun, 22 Oct 2023 15:53:50 +0000
+ id 1qualz-0007Cq-Si
+ for xen-devel@lists.xenproject.org; Sun, 22 Oct 2023 15:53:51 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
- by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id 3040695c-70f3-11ee-98d5-6d05b1d4d9a1;
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id 304aabf9-70f3-11ee-9b0e-b553b5be7939;
  Sun, 22 Oct 2023 17:53:48 +0200 (CEST)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1quakK-008TGp-Mm; Sun, 22 Oct 2023 15:52:08 +0000
+ id 1quakI-008TGN-Fa; Sun, 22 Oct 2023 15:52:06 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96 #2 (Red Hat
- Linux)) id 1quakK-001qal-0u; Sun, 22 Oct 2023 16:52:08 +0100
+ Linux)) id 1quakI-001qZ9-0E; Sun, 22 Oct 2023 16:52:06 +0100
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: 3040695c-70f3-11ee-98d5-6d05b1d4d9a1
+X-Inumbo-ID: 304aabf9-70f3-11ee-9b0e-b553b5be7939
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=0g2a82VH4gMCB3QhQoMvbFi3kUWOmKpYhQ7p6DKI8gg=; b=boPXLVBXAzKUUr3G7Cyr0GsWcS
-	eOWRpIEQqHcHJY5/+NZZjC8fqSH+EgmnOi0vBRmd0JVDOJ/UAwgySC6UkwBxHvU3RO1CBTnw3OGEa
-	+uc+n5Opp7OmB4oRg+weNpxoYJHRURIdzekYQtQt3Lp9ZTxhwKgmHr4tHvr2rlKqKIvvIlx5aC/wA
-	F6F/8WQt2IQ+F0ruD3fhDr7Mx8sQAmnBQRnKoK6tjXNRVThrjttCviFsi2XYL6Vkyps3P/wBNZZGE
-	igNHrC/s0hAXaE8nUF0mlcDcMvdMSulhSof8Uztem7KoyOjytCs6GDQBYRRCgOlWuTVyM/hO4fPx2
-	QDwZA5cw==;
+	bh=EEprMiQFf2yiszoqkaPkPmN8nomXIq9mKJSWnsahnUg=; b=nPbfsthL1v3JooATXcEUeGqX7g
+	FTNYixJKg9bIDNABcPWLl8tIAscTUp9MfnVQwM46fBG6noyfrICfQqoc1SCGA7lQbbf/CzrbVgWLw
+	YC3WoWqxYe9HtzTYJUTvI2dniCFeBTBUTb9EalB2MNebFRo8MuDUhvekvDKahDhIlT3r/q/S7XRv2
+	mFJbSZJoaq2rNrztifBSX5IpjJkA2PMFSqqqU5Mjsh+Dl27reNGJoizxFPLXQ53aJMAu0BL1Da2eE
+	amYzb/nghkxUMuB7f5y/lRZzP4HUycIIeX0AwX+ky16lcEo6gsWSO3s85pn/iMT73Qh0IE90XRnEX
+	ePABIhpw==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -150,9 +150,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH 36/45] hw/net/lasi_i82596: use qemu_configure_nic_device()
-Date: Sun, 22 Oct 2023 16:51:51 +0100
-Message-Id: <20231022155200.436340-37-dwmw2@infradead.org>
+Subject: [PATCH 14/45] hw/mips/loongson3_virt: use pci_init_nic_devices()
+Date: Sun, 22 Oct 2023 16:51:29 +0100
+Message-Id: <20231022155200.436340-15-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231022155200.436340-1-dwmw2@infradead.org>
 References: <20231022155200.436340-1-dwmw2@infradead.org>
@@ -160,32 +160,30 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: d+Ib3ipFPwOb
+X-TUID: CCzoH03jz0+0
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/net/lasi_i82596.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/mips/loongson3_virt.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/net/lasi_i82596.c b/hw/net/lasi_i82596.c
-index e37f7fabe9..c4c197aaa8 100644
---- a/hw/net/lasi_i82596.c
-+++ b/hw/net/lasi_i82596.c
-@@ -125,11 +125,10 @@ SysBusI82596State *lasi_82596_init(MemoryRegion *addr_space,
-     static const MACAddr HP_MAC = {
-         .a = { 0x08, 0x00, 0x09, 0xef, 0x34, 0xf6 } };
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index b74b358874..d9d6d4f5b6 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -452,9 +452,7 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+         usb_create_simple(usb_bus_find(-1), "usb-tablet");
+     }
  
--    qemu_check_nic_model(&nd_table[0], TYPE_LASI_82596);
-     dev = qdev_new(TYPE_LASI_82596);
-     s = SYSBUS_I82596(dev);
-     s->state.irq = lan_irq;
--    qdev_set_nic_properties(dev, &nd_table[0]);
-+    qemu_configure_nic_device(dev, true, NULL);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     s->state.conf.macaddr = HP_MAC; /* set HP MAC prefix */
+-    for (i = 0; i < nb_nics; i++) {
+-        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
+-    }
++    pci_init_nic_devices(pci_bus, mc->default_nic);
+ }
  
+ static void mips_loongson3_virt_init(MachineState *machine)
 -- 
 2.40.1
 

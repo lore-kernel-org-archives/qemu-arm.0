@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864274ejb;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864275ejb;
         Sun, 22 Oct 2023 08:53:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF4GlV/FQQgGzLz1Zv0hKHGUz23Kfqsd/BhnJY8lcWMTcj+LWkQfHrBB2kjUKsp6LGVMdFi
-X-Received: by 2002:a05:622a:14c7:b0:418:1059:dfb9 with SMTP id u7-20020a05622a14c700b004181059dfb9mr7323599qtx.1.1697990001429;
+X-Google-Smtp-Source: AGHT+IHhORI69JJAFGKZMD1yQ7AU2hBphLRCJInNG/jDDM9IL6z6us0Xk88OZqIoEmJjtG4STaqJ
+X-Received: by 2002:a05:622a:15cd:b0:403:a9aa:571f with SMTP id d13-20020a05622a15cd00b00403a9aa571fmr8240427qty.16.1697990001438;
         Sun, 22 Oct 2023 08:53:21 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1697990001; cv=none;
         d=google.com; s=arc-20160816;
-        b=HhdsNEjSFUr3E5k+MNQaw+/I2MfBmfH0y3QpTBwIoIxqENW2i4ZJoK4jj3r34yoZWo
-         8Lq1Mg+pitnypN6vO7ic9osQ37oWTc4l4ymOseffK14sA8LaDudQYYjU7Ni76Bqn78zT
-         rLQWaccncfibNSddIrhPNX0mfGBzAIf4gT8k6GgWTDktrqiKliMZLxn9KY1KCWztTxYL
-         I0SFH21y0JAwBqI4+a3FrA7GRQa2Y8fOGGG0aEZrLQMT9VyhQyJRx2QgRrDc/aAS/K1k
-         jFCHuGC3No5sMIVN6tIC90EckvTwzNospsftyWJT1k1aI/yVF/GBZOhighqJj2b8Papl
-         nPjw==
+        b=wVPSgdXR4QKJaIXcP0nbWnu52EDA36gwryl0JjECDm/ORPEzpt1rA8u3OfIe9FKfPg
+         LL0ow7+PW1ZR8SnKeLC6H+x8QGvgRIv861o9k0/WGjUEfgiVXrzVCuvb2LVnIWlkxgF5
+         iJBK+TG04oZyqdMPeFEGGiybh0fUk/TNyrnZSEWPR0xzsZfQ9I+bpndN401VVlczjkT1
+         wZPdQu38OxcAd+VYu3NjbDnaIpxXvjtoMpDBYqfXgR1vmM8Ej7+xxPEmiG8yxiQpNLxi
+         BWYBWGSesbQE5Qa0ck9++gZIrkuj6irtxOOQBpY7ipd/ATglNjTSmn1mtHiX/Ewcw8Qs
+         oJog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=khyoXveG/BzHXWd28g0ECVTdEF2TXXqaXCqlRIzwomY=;
+        bh=jiJokkAd+xFdnQ5u2oAofZ5wGwg1JXjEJQz9TEy2l7Q=;
         fh=fR25DIKCexhPQAp6aUdYi3uFJxEhZaxhhcNQofNVQl0=;
-        b=D4yi+cndXE47tJuoXKx9z5ghu96RfxGd8p31HETS3wPnOkQ2yzbq2zep02SEeBVicN
-         1xbq49PlA/YuJPoBkct3B1rsMTPHD1HK2OGqtlNNOaZuie6O5j95CrBhWSDqvnydMmOG
-         loTCzxVFXEK9irunIikDlkpa9I92maVyiYw0tSpGrOxWqbuilpnpLgNK6TOIFCTMEhvZ
-         GEjpw7SV0Jju4o5/ylcpivlvDAAY2xKfZplqbqv8XKuZlc1xRrRH7IMx3gqL9rGJtn9H
-         2hcE0yov7jXMwrq1zQjz7YK84LPABukMZI7F2pyuz2zz36kX74iGt4/Td9Oz826lhg+B
-         UPQw==
+        b=ODoKNd4f5VkvRNLxtItnwoaoQitS/NoJGlqXDoyDMBkceNt8TUjmcrvcw+4uLGGwnR
+         SmBAN8FyOf4zjP3A/v1pRAAniyN1V8bVi6YUMRYN1f4kWfd5scBdi9LMggZmTJ2YJgmk
+         Y4idDF/INiNlDJCfl+4G10VVBbEpfoCkcEo+r09MyJi1TLLUqoETOt3gmXN++qOH12IH
+         g4Fx/uiqypV+BuQ6nCS2eF0dUHxUyO3Jpsq0VNHe9/k1HByghBy8C7khvMMlW/1hMQTy
+         8dOvWVChrS0jeD50UozlZgvIm0ruyZDxnHzmFa1v8ATiiLW2H+imDg/oZ9bOVdKVINfg
+         /90Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=pddXftyc;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=fnKS23KV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19-20020a05622a019300b00417dc02ee2fsi4301300qtw.462.2023.10.22.08.53.21
+        by mx.google.com with ESMTPS id i11-20020ac85e4b000000b0041962bf1693si4168891qtx.762.2023.10.22.08.53.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 22 Oct 2023 08:53:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=pddXftyc;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=fnKS23KV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1quaku-0004mg-GF; Sun, 22 Oct 2023 11:52:44 -0400
+	id 1quakw-0004nt-7W; Sun, 22 Oct 2023 11:52:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1quakn-0004jm-Ch; Sun, 22 Oct 2023 11:52:40 -0400
+ id 1quakr-0004lc-HQ; Sun, 22 Oct 2023 11:52:42 -0400
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1quakj-0008WK-FW; Sun, 22 Oct 2023 11:52:36 -0400
+ id 1quako-0008WQ-H5; Sun, 22 Oct 2023 11:52:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=khyoXveG/BzHXWd28g0ECVTdEF2TXXqaXCqlRIzwomY=; b=pddXftyc1ckCsPadnXZvUQT0bW
- M5Ptl/u0mEOZM6a8arO++FndlfmK/9In3Y97NEiNvV6S/gnoMc4rPMktdQsqrpE8ITBGZJbN9YP+h
- 7WXXezLpKgcUU6qsBUYt55PTO8nrIX1XqBdlBWxj+18Iu4HEasNRQpUygH0u4uQXNqaYtF60lY4tL
- 2m5FzcX/XbiRWZ/oyNZkKLHejWh2LoySZb1SG5qDHBrUfq3SzhLhWqh128Iuw4s8tFqGtH7/LW26M
- dH0EP2RhBj/PoLPN9AezB/IU1DfNzJ769NI+o+uIhQ8Ac7QVnflEBlQ/DmyiYcCPxCUv9Jyt8FKH2
- ON7Jh9Sw==;
+ bh=jiJokkAd+xFdnQ5u2oAofZ5wGwg1JXjEJQz9TEy2l7Q=; b=fnKS23KVp+Jq2Us1+mVC4C7LWL
+ 9TTKXsX/mF6OW9aMxjPdN8+8QgpNwBOYNiYFv7Npnyv9hTrJqnwnWlP56lTrGNkm4PAeXyLg9wc7j
+ wjo6qfGtVVFdhLQEMVbUfXTaVlMvXVeIJM9FuPSXahJw2JdhiARnBGsmBtyxaPgiYjNDdSEbmDQA6
+ Wi2mTu4FfszMUQDsybU9Iuuzfp23oThWzCRzGBKaMAag0YT3a/oMrz9gbNq0BCkJYP6YqG0wz2ssi
+ UWSyOGQK79+yF+C2h03XsEzHER1t/zSjKOPruuHqSAt/JJgrHz+3K9MSDb0KIe0qHFjlp4984OPdN
+ LJTUIo1A==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1quakK-008TGm-Ep; Sun, 22 Oct 2023 15:52:08 +0000
+ id 1quakH-008TGE-6H; Sun, 22 Oct 2023 15:52:05 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96 #2 (Red Hat
- Linux)) id 1quakJ-001qaY-36; Sun, 22 Oct 2023 16:52:07 +0100
+ Linux)) id 1quakG-001qYJ-2G; Sun, 22 Oct 2023 16:52:04 +0100
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,9 +116,10 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH 33/45] hw/m68k/q800: use qemu_configure_nic_device()
-Date: Sun, 22 Oct 2023 16:51:48 +0100
-Message-Id: <20231022155200.436340-34-dwmw2@infradead.org>
+Subject: [PATCH 02/45] net: report list of available models according to
+ platform
+Date: Sun, 22 Oct 2023 16:51:17 +0100
+Message-Id: <20231022155200.436340-3-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231022155200.436340-1-dwmw2@infradead.org>
 References: <20231022155200.436340-1-dwmw2@infradead.org>
@@ -150,81 +151,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4r2fHFJggiil
+X-TUID: v4c/TexKJtsn
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Then fetch the MAC that was assigned, if any. And assign one if not,
-ensuring that it uses the Apple OUI.
+By noting the models for which a configuration was requested, we can give
+the user an accurate list of which NIC models were actually available on
+the platform/configuration that was otherwise chosen.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/m68k/q800.c | 28 +++++++++++++++-------------
- 1 file changed, 15 insertions(+), 13 deletions(-)
+ net/net.c | 94 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 94 insertions(+)
 
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index 1d7cd5ff1c..94e7c0dd60 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -271,6 +271,7 @@ static void q800_machine_init(MachineState *machine)
-     BusState *adb_bus;
-     NubusBus *nubus;
-     DriveInfo *dinfo;
-+    MACAddr mac;
-     uint8_t rng_seed[32];
+diff --git a/net/net.c b/net/net.c
+index 606816a3b3..6e20f9d2e9 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -75,6 +75,8 @@ typedef QSIMPLEQ_HEAD(, NetdevQueueEntry) NetdevQueue;
  
-     linux_boot = (kernel_filename != NULL);
-@@ -371,13 +372,6 @@ static void q800_machine_init(MachineState *machine)
+ static NetdevQueue nd_queue = QSIMPLEQ_HEAD_INITIALIZER(nd_queue);
  
-     /* MACSONIC */
++static GHashTable *nic_model_help;
++
+ /***********************************************************/
+ /* network device redirectors */
  
--    if (nb_nics > 1) {
--        error_report("q800 can only have one ethernet interface");
--        exit(1);
--    }
--
--    qemu_check_nic_model(&nd_table[0], "dp83932");
--
-     /*
-      * MacSonic driver needs an Apple MAC address
-      * Valid prefix are:
-@@ -387,14 +381,22 @@ static void q800_machine_init(MachineState *machine)
-      * 08:00:07 Apple
-      * (Q800 use the last one)
-      */
--    nd_table[0].macaddr.a[0] = 0x08;
--    nd_table[0].macaddr.a[1] = 0x00;
--    nd_table[0].macaddr.a[2] = 0x07;
--
-     object_initialize_child(OBJECT(machine), "dp8393x", &m->dp8393x,
-                             TYPE_DP8393X);
-     dev = DEVICE(&m->dp8393x);
--    qdev_set_nic_properties(dev, &nd_table[0]);
-+    if (qemu_configure_nic_device(dev, TYPE_DP8393X, true, "dp83932")) {
-+        gchar *macstr = object_property_get_str(OBJECT(dev));
-+        if (macstr) {
-+            net_parse_macaddr(mac.a, macstr);
-+            g_free(macstr);
+@@ -1072,12 +1074,94 @@ static int net_init_nic(const Netdev *netdev, const char *name,
+     return idx;
+ }
+ 
++static gboolean add_nic_result(gpointer key, gpointer value, gpointer user_data)
++{
++    GPtrArray *results = user_data;
++    GPtrArray *alias_list = value;
++    const char *model = key;
++    char *result;
++
++    if (!alias_list) {
++        result = g_strdup(model);
++    } else {
++        GString *result_str = g_string_new(model);
++        int i;
++
++        g_string_append(result_str, " (aka ");
++        for (i = 0; i < alias_list->len; i++) {
++            if (i) {
++                g_string_append(result_str, ", ");
++            }
++            g_string_append(result_str, alias_list->pdata[i]);
++        }
++        g_string_append(result_str, ")");
++        result = result_str->str;
++        g_string_free(result_str, false);
++        g_ptr_array_unref(alias_list);
++    }
++    g_ptr_array_add(results, result);
++    return true;
++}
++
++static int model_cmp(char **a, char **b)
++{
++    return strcmp(*a, *b);
++}
++
++static void show_nic_models(void)
++{
++    GPtrArray *results = g_ptr_array_new();
++    int i;
++
++    g_hash_table_foreach_remove(nic_model_help, add_nic_result, results);
++    g_ptr_array_sort(results, (GCompareFunc)model_cmp);
++
++    printf("Available NIC models for this configuration:\n");
++    for (i = 0 ; i < results->len; i++) {
++        printf("%s\n", (char *)results->pdata[i]);
++    }
++    g_hash_table_unref(nic_model_help);
++    nic_model_help = NULL;
++}
++
++static void add_nic_model_help(const char *model, const char *alias)
++{
++    GPtrArray *alias_list = NULL;
++
++    if (g_hash_table_lookup_extended(nic_model_help, model, NULL,
++                                     (gpointer *)&alias_list)) {
++        /* Already exists, no alias to add: return */
++        if (!alias) {
++            return;
++        }
++        if (alias_list) {
++            /* Check if this alias is already in the list. Add if not. */
++            if (!g_ptr_array_find_with_equal_func(alias_list, alias,
++                                                  g_str_equal, NULL)) {
++                g_ptr_array_add(alias_list, g_strdup(alias));
++            }
++            return;
 +        }
 +    }
-+    qemu_macaddr_default_if_unset(&mac);
-+    mac.a[0] = 0x08;
-+    mac.a[1] = 0x00;
-+    mac.a[2] = 0x07;
-+    qemu_prop_set_macaddr(dev, "mac", &mac.a);
++    /* Either this model wasn't in the list already, or a first alias added */
++    if (alias) {
++        alias_list = g_ptr_array_new();
++        g_ptr_array_set_free_func(alias_list, g_free);
++        g_ptr_array_add(alias_list, g_strdup(alias));
++    }
++    g_hash_table_replace(nic_model_help, g_strdup(model), alias_list);
++}
 +
-     qdev_prop_set_uint8(dev, "it_shift", 2);
-     qdev_prop_set_bit(dev, "big_endian", true);
-     object_property_set_link(OBJECT(dev), "dma_mr",
-@@ -415,7 +417,7 @@ static void q800_machine_init(MachineState *machine)
-     prom = memory_region_get_ram_ptr(dp8393x_prom);
-     checksum = 0;
-     for (i = 0; i < 6; i++) {
--        prom[i] = revbit8(nd_table[0].macaddr.a[i]);
-+        prom[i] = revbit8(mac.a[i]);
-         checksum ^= prom[i];
-     }
-     prom[7] = 0xff - checksum;
+ NICInfo *qemu_find_nic_info(const char *typename, bool match_default,
+                             const char *alias)
+ {
+     NICInfo *nd;
+     int i;
+ 
++    if (nic_model_help) {
++        add_nic_model_help(typename, alias);
++    }
++
+     for (i = 0; i < nb_nics; i++) {
+         nd = &nd_table[i];
+ 
+@@ -1590,6 +1674,10 @@ void net_check_clients(void)
+     NetClientState *nc;
+     int i;
+ 
++    if (nic_model_help) {
++        show_nic_models();
++        exit(0);
++    }
+     net_hub_check_clients();
+ 
+     QTAILQ_FOREACH(nc, &net_clients, next) {
+@@ -1669,6 +1757,12 @@ static int net_param_nic(void *dummy, QemuOpts *opts, Error **errp)
+     memset(ni, 0, sizeof(*ni));
+     ni->model = qemu_opt_get_del(opts, "model");
+ 
++    if (!nic_model_help && !g_strcmp0(ni->model, "help")) {
++        nic_model_help = g_hash_table_new_full(g_str_hash, g_str_equal,
++                                               g_free, NULL);
++        return 0;
++    }
++
+     /* Create an ID if the user did not specify one */
+     nd_id = g_strdup(qemu_opts_id(opts));
+     if (!nd_id) {
 -- 
 2.40.1
 

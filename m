@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864495ejb;
-        Sun, 22 Oct 2023 08:53:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEDLwGUEDEDy3Pg5HFqTei5HktjY74Ks5WNKY9N7Kcog1s5J5gMU67Ve+2TC6uXlzj+utII
-X-Received: by 2002:aca:130a:0:b0:3a7:5a6:e0b1 with SMTP id e10-20020aca130a000000b003a705a6e0b1mr6708002oii.10.1697990033079;
-        Sun, 22 Oct 2023 08:53:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697990033; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864635ejb;
+        Sun, 22 Oct 2023 08:54:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHBzA6/4snljVpfJxrjREBvCdRoLh0z+LGctLPw6uePs4Bi8CkdysRSgx+P41P346q7MYYk
+X-Received: by 2002:a05:620a:4002:b0:777:7240:8de with SMTP id h2-20020a05620a400200b00777724008demr9176844qko.8.1697990053835;
+        Sun, 22 Oct 2023 08:54:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697990053; cv=none;
         d=google.com; s=arc-20160816;
-        b=q5gDhafDa9kZkHbAAfhWJDVHe0yTf3yJc1XWGa4uZqXi1yPl4qoJFKSEvdpDHhhllp
-         yf2xCf65vzSl5e1wHiGy1fAYxjGhs1ZMpxBM4TUOix7rIYY/mBHlivqh4TVHQ3Edt63U
-         0ZT+SAh/ELiwmIwJGkTr98ZhPesoqWFDL/Bxy+BkJwp3UjvY7CrT9QkUYjQgNHa6H1zk
-         YKu7CnPhKkikT4N24sabDWk5VrmQddyE+Kl5/1FkK8ueMZ4X6jHxFc6IBHywlnTJRexk
-         DtX5I/m21RcQBlfjSl+UUdOivB23/zvAk5islClFIDArQ4fKOqURcrYlZQzwigwwo+vc
-         tHwg==
+        b=0QJxPoWrP/LEJteOURvW/yX+DNIogdtU0z0EarHYJbY008WX3ZVTklpZniC3iOiKyI
+         Xp9SUUIsxPBo3AqgDjQ8ktjsz0qqYibpQXQw32CAdOMkDT6Lej+kue/hFnhB3h389+X7
+         BMRQnwfk4+/oLixXiaa1OlYXrKUl964BKhcBGC+tw8VVY1xfgubG34TCOwq5OJrHE9Da
+         LI/t+ZlcGSz+gRdPhRHCEaY9hw8a1XCGeJ8lydCiZhDfEaibOnQWQv1Mo/hvQ6QleLUR
+         szA45kzHjyEMzfcyemes1lkOzsrJOHk+P9WAxesq4fkpnC7YstfoHNRk/hEK5TmmCKwq
+         C73w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Ej3LKCNGH6R7gA1YUwsQNgVAJx3y6GAdEng2TtdyRY8=;
+        bh=hC+8OBLQ6TWPZEybs0lVPrKizh4726sFY9u4hhRhbIY=;
         fh=fR25DIKCexhPQAp6aUdYi3uFJxEhZaxhhcNQofNVQl0=;
-        b=zdrN/rjb14ql45vzr2zbhMD5wJBhEJ21EeaoqGAy+8GHEZ7rYorugvglj8GQWeuSTA
-         34RUo0zS3mHRpcJqNGc5NhSdVa6JqZX7VbXYJd000ZgIK2IgAyr3Jvzh8Ulgj/6x7/QB
-         qZ9efz+no0vvMwpqeC/kdn28VpOH3xS7l5ad5Du9AFVEOOx9qxbgRK7i50z2FKMwzzfu
-         YS73t0ZU4Et7O8vfcOGhzajt3RCtYwjOhv3Tf8b1AeQth0Upis8UTCaewix0f9mLZNvh
-         lJzyK6NOKZdgwc4HeGurdmxWwFlaUzi8YYKhVxyDffzvhRu/bi34Ifjzyab14lsoogbx
-         wP+w==
+        b=uqFJ/8sEFmcl2QMQ91iULl3pV76OTpGsXYLKXbLIz4IRSCLt7iHqeYviElL10WvB8P
+         KUeG6Zn2MYUN5eJB4jRHqltwlhzR6XS9d3h/JlEG9tizgJZGdm6JDsmRL+CjtS+E8wlq
+         OP3TnHeMxBwgFz60DQjoX9XOpJfim7dIJy+y2XDkXrxbjJSC2hABugjrcqQvxNr8HkaC
+         IuoU7VIPUJiHR5/3rxYgbmDfsSuTskVA1SUhskZpUGe4Wn6BFoaT70tw4Mxu9rKr1/Or
+         7jnRE9b9a+sIUkIK760hoXuy5XS7sVvWdIjUAA1unScrZwPN2GSnMU2rRO6QEhShfN+5
+         5UtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=YRrUXHCF;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=fDPPVNgK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8-20020a05620a430800b007788ccf40f3si4367220qko.510.2023.10.22.08.53.52
+        by mx.google.com with ESMTPS id k6-20020a05620a0b8600b00775743d508bsi4044064qkh.441.2023.10.22.08.54.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Oct 2023 08:53:53 -0700 (PDT)
+        Sun, 22 Oct 2023 08:54:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=YRrUXHCF;
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=fDPPVNgK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qualC-0004uQ-Gn; Sun, 22 Oct 2023 11:53:02 -0400
+	id 1qualC-0004tv-DK; Sun, 22 Oct 2023 11:53:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1quakn-0004jn-D3; Sun, 22 Oct 2023 11:52:40 -0400
+ id 1quaks-0004lr-G5; Sun, 22 Oct 2023 11:52:43 -0400
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1quakj-0008WO-FL; Sun, 22 Oct 2023 11:52:36 -0400
+ id 1quako-00004w-ID; Sun, 22 Oct 2023 11:52:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=Ej3LKCNGH6R7gA1YUwsQNgVAJx3y6GAdEng2TtdyRY8=; b=YRrUXHCFp/2EjyZhhg74ig3d9C
- VAklLPOmMqY1AU+lDxqrSZTVBKGUJq2TG/BsOhy5Mn9XbOPcVYAiatMRLrVQjGSN/Gt+07BnrKXQO
- j7CwSZi/mhHFAiWSOSq6/j9m5DOSQ7ktt3tauggh/4Jy26HTYVGZaCEZC28LEcgjeU0QVSr3x42UP
- awJVA5TRKzvTrvUm3WhXMoUgMHIelOzFLk4H9vCAMOcm58pmlEOz6naKekM6xSFMQc0lpOSlbnUhD
- oeH4GaaPLjCquXs9sZfwjgGow/7iyFJHYe7fLTBAUDR82UOQXNFjE32U16Q4LOERmXlswbGhZ/+5G
- tQn9ORvQ==;
+ bh=hC+8OBLQ6TWPZEybs0lVPrKizh4726sFY9u4hhRhbIY=; b=fDPPVNgKahIXw2sWosyOS59B6U
+ aezjPTyZg5+fu5TplWvw6F75WoG6fhRhbhZo1tvgknB8gYmGw4BH5gqwZ1FSJ7xGNQXfgAjX5RMNw
+ nbosUg8Rp1mLUvZjTqpkM0EHKwUy0mSfSCGcRoVYyA6oNfZCv04l1UV+mFHxifHvTDhQJYWVvGWIO
+ oTo5iVr7igGWHO9HWPwDPaWGbIcqeJ9840vpOlZWiSZ7cKqSqf8KOHheAaApZbRaKU/6H8GE28ddR
+ oGEUu/qQNaOhxyiIUnoJX1LNpVrHVx982edPVIFgPPedlOSJRvLFg2MWaIiVfudXKxHk1X055MMhl
+ HKli6jRg==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1quakL-008TGt-DF; Sun, 22 Oct 2023 15:52:09 +0000
+ id 1quakL-008TGq-DL; Sun, 22 Oct 2023 15:52:09 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96 #2 (Red Hat
- Linux)) id 1quakK-001qau-1b; Sun, 22 Oct 2023 16:52:08 +0100
+ Linux)) id 1quakK-001qap-1B; Sun, 22 Oct 2023 16:52:08 +0100
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,9 +116,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH 38/45] hw/riscv: use qemu_configure_nic_device()
-Date: Sun, 22 Oct 2023 16:51:53 +0100
-Message-Id: <20231022155200.436340-39-dwmw2@infradead.org>
+Subject: [PATCH 37/45] hw/openrisc/openrisc_sim: use qemu_create_nic_device()
+Date: Sun, 22 Oct 2023 16:51:52 +0100
+Message-Id: <20231022155200.436340-38-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231022155200.436340-1-dwmw2@infradead.org>
 References: <20231022155200.436340-1-dwmw2@infradead.org>
@@ -150,65 +150,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JLAC9w9VgDkG
+X-TUID: QhpMtqbYwSB9
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/riscv/microchip_pfsoc.c | 13 ++-----------
- hw/riscv/sifive_u.c        |  7 +------
- 2 files changed, 3 insertions(+), 17 deletions(-)
+ hw/openrisc/openrisc_sim.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-index b775aa8946..8e0e3aa20c 100644
---- a/hw/riscv/microchip_pfsoc.c
-+++ b/hw/riscv/microchip_pfsoc.c
-@@ -411,17 +411,8 @@ static void microchip_pfsoc_soc_realize(DeviceState *dev, Error **errp)
-         memmap[MICROCHIP_PFSOC_USB].size);
+diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
+index 35da123aef..bffd6f721f 100644
+--- a/hw/openrisc/openrisc_sim.c
++++ b/hw/openrisc/openrisc_sim.c
+@@ -170,7 +170,7 @@ static void openrisc_create_fdt(Or1ksimState *state,
  
-     /* GEMs */
--
--    nd = &nd_table[0];
--    if (nd->used) {
--        qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
--        qdev_set_nic_properties(DEVICE(&s->gem0), nd);
+ static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
+                                   int num_cpus, OpenRISCCPU *cpus[],
+-                                  int irq_pin, NICInfo *nd)
++                                  int irq_pin)
+ {
+     void *fdt = state->fdt;
+     DeviceState *dev;
+@@ -178,8 +178,10 @@ static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
+     char *nodename;
+     int i;
+ 
+-    dev = qdev_new("open_eth");
+-    qdev_set_nic_properties(dev, nd);
++    dev = qemu_create_nic_device("open_eth", true, NULL);
++    if (!dev) {
++        return;
++    }
+ 
+     s = SYS_BUS_DEVICE(dev);
+     sysbus_realize_and_unref(s, &error_fatal);
+@@ -313,12 +315,10 @@ static void openrisc_sim_init(MachineState *machine)
+     openrisc_create_fdt(state, or1ksim_memmap, smp_cpus, machine->ram_size,
+                         machine->kernel_cmdline);
+ 
+-    if (nd_table[0].used) {
+-        openrisc_sim_net_init(state, or1ksim_memmap[OR1KSIM_ETHOC].base,
+-                              or1ksim_memmap[OR1KSIM_ETHOC].size,
+-                              smp_cpus, cpus,
+-                              OR1KSIM_ETHOC_IRQ, nd_table);
 -    }
--    nd = &nd_table[1];
--    if (nd->used) {
--        qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
--        qdev_set_nic_properties(DEVICE(&s->gem1), nd);
--    }
-+    qemu_configure_nic_device(DEVICE(&s->gem0), true, NULL);
-+    qemu_configure_nic_device(DEVICE(&s->gem1), true, NULL);
++    openrisc_sim_net_init(state, or1ksim_memmap[OR1KSIM_ETHOC].base,
++                          or1ksim_memmap[OR1KSIM_ETHOC].size,
++                          smp_cpus, cpus,
++                          OR1KSIM_ETHOC_IRQ);
  
-     object_property_set_int(OBJECT(&s->gem0), "revision", GEM_REVISION, errp);
-     object_property_set_int(OBJECT(&s->gem0), "phy-addr", 8, errp);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index ec76dce6c9..5207ec1fa5 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -789,7 +789,6 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-     MemoryRegion *l2lim_mem = g_new(MemoryRegion, 1);
-     char *plic_hart_config;
-     int i, j;
--    NICInfo *nd = &nd_table[0];
- 
-     qdev_prop_set_uint32(DEVICE(&s->u_cpus), "num-harts", ms->smp.cpus - 1);
-     qdev_prop_set_uint32(DEVICE(&s->u_cpus), "hartid-base", 1);
-@@ -893,11 +892,7 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->otp), 0, memmap[SIFIVE_U_DEV_OTP].base);
- 
--    /* FIXME use qdev NIC properties instead of nd_table[] */
--    if (nd->used) {
--        qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
--        qdev_set_nic_properties(DEVICE(&s->gem), nd);
--    }
-+    qemu_configure_nic_device(DEVICE(&s->gem), true, NULL);
-     object_property_set_int(OBJECT(&s->gem), "revision", GEM_REVISION,
-                             &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gem), errp)) {
+     if (smp_cpus > 1) {
+         openrisc_sim_ompic_init(state, or1ksim_memmap[OR1KSIM_OMPIC].base,
 -- 
 2.40.1
 

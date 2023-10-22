@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp865094ejb;
-        Sun, 22 Oct 2023 08:55:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEQDysqy6MZaOGhYDtmwYnuBYFQeadkHe0u2iaENTtC8zQ8DhFZJsYQo5trvoJ0PPvd9mQH
-X-Received: by 2002:a25:3244:0:b0:d9c:e7ef:39fc with SMTP id y65-20020a253244000000b00d9ce7ef39fcmr4940925yby.2.1697990119237;
-        Sun, 22 Oct 2023 08:55:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697990119; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp865108ejb;
+        Sun, 22 Oct 2023 08:55:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG69QoKwlJBfya8bpbUSkkEs1Emvm0S9ZyfzQ90F518K9wtwf9tmtFZLvSAfdI+rElGzmHf
+X-Received: by 2002:a05:6808:1a1d:b0:3a8:458d:e1cc with SMTP id bk29-20020a0568081a1d00b003a8458de1ccmr8406217oib.1.1697990122125;
+        Sun, 22 Oct 2023 08:55:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697990122; cv=none;
         d=google.com; s=arc-20160816;
-        b=0SbFDs66mqM2JoZoJYDF41Ns/4koZ+Kw/p0Y29JIkCm/4VvqpNVI2NZbv2yc4zfmM0
-         rmLUUnKsCj0FNtYlrfpzSLxu73NqmeaFdkFIEUV6rEjvylnXsdUS32R9C5Qs0cSsZTtm
-         W0S1BcQTJMVtHIyISo13sg/jeJKE/PbQxd2NLYDonQu2oGSca4G4tWUtB4uIM+bsTEmK
-         vf9f+9guDxpu9Hlv8yypA/jT5/fPi3Hwycj590UxxCY2mUcXYj/3Gf9ZP8q5ipVol67K
-         fK2dAhwCBFn+vNmtPN84gDFYxx7gmkqzeXQxKDOOCl6vVtxcY/XCIAkzr148RVxrVaBv
-         uzgg==
+        b=HZCWtI2cxo2jA8n+ztVUx4XNveiIFvVMdm1aO0pwl2f8TA8DftKfj+1kQeRZGUNeX/
+         Rl+pKWJAtyqZL9PcJEVpOrgaDMH+a9L3ndaIvBwkAr0n2dxXF8WyyRoq6iW5VO/+AR1F
+         mFhvb86DCrr/4xcf2N6JsQsvyklUlEURtfBnA+WMwIVJqH+Nf0hkzW15+sDOuJKHE2zT
+         xNAs9kqKglrtpZ2hlmqWmh4iGk3Cx2CIHa/HMNXumkBOumtCQHCah2gdb2DNREthhpg+
+         k1q1MNdnDJp6SETwruUjiO/YFBa/TH34RloeAtq69efCK0SO1yK8oIoVunPoN9LpVu9k
+         k62A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=cDe39DUQ85zReKLUErmTIqxRmXQD1aFZCXjsrH+LZ3s=;
+        bh=FMouo7QQ2KXBuiMSmFA+4AfL0Ua1HAyBapVBTrY+ccg=;
         fh=fR25DIKCexhPQAp6aUdYi3uFJxEhZaxhhcNQofNVQl0=;
-        b=ChbJnJ5XeI2x3ECDu90qZMZXbOn4uT/Si06jbXuu2s7fsH3mBE/7XlUgmW8QVoRK0c
-         DgPjuA/BV/0TsaTfvzffQLw+mr95yg65RrlSJrNed2ZcoAoCev8ptWvA+Rt7OB+NbvX3
-         aUIF7ZVzOCYlFKkj9LlgiGjEnhi6mTUfTeS1qQmvmztouGypGrqDk9r5tMakDtpB+gp9
-         QnkU378DaILWYaEYDCHKWiHZLibg6IbGRBB4lpQpIvn1tWWZ9eMCn/W7+ZalTjG5613Q
-         /AXJPaqQh6+FIMtWR1GyLfu0hPNRQU6cp7AR3ciX530BcyUoVR669/eLO/YcVMug5iN8
-         m93Q==
+        b=veFDK4e7r03A3d7ff+gKHdL/WA9Be2u6H6CfJRJ8liIM4iG6qvRcYOJd0OHQRnuC7S
+         ke/OkmKl/JA5PMIobIYgsY1H1/BYEYAZw2qB/3AA+KVxIFf+715f0M0HI5sDIyXadkJs
+         6Xt3cVyOntJCLFkfUBpcg0HV/1uLTws8Z7yqn3yahsuwllII1T3qG7FXO4uJ1xvWhK+Q
+         SSqBRX5tMOLbhNNcQhE5arKWJFv9tO5T+K2dXNbnugREAMKmMlW7+9pEZVwZlNJ5F0g8
+         8yVncLE+OTso9Ku7zdCHPQaS2q6dkTSSoI7WripgvZ4LZtHd+wxGEZAP59GOHTa0KnKG
+         r0Og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=wYlHB7MJ;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=E0MEqNTV;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 72-20020a25044b000000b00d9c2b724fbfsi4017639ybe.396.2023.10.22.08.55.18
+        by mx.google.com with ESMTPS id m3-20020a81d243000000b005a7b2085d14si4893732ywl.331.2023.10.22.08.55.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Oct 2023 08:55:19 -0700 (PDT)
+        Sun, 22 Oct 2023 08:55:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=wYlHB7MJ;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=E0MEqNTV;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.620676.966363 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.620675.966350 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1quam7-0001yH-Cw; Sun, 22 Oct 2023 15:53:59 +0000
+	id 1quam5-0001NP-HT; Sun, 22 Oct 2023 15:53:57 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 620676.966363; Sun, 22 Oct 2023 15:53:59 +0000
+Received: by outflank-mailman (output) from mailman id 620675.966350; Sun, 22 Oct 2023 15:53:57 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1quam6-0001pa-OK; Sun, 22 Oct 2023 15:53:58 +0000
-Received: by outflank-mailman (input) for mailman id 620676;
- Sun, 22 Oct 2023 15:53:54 +0000
-Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
- helo=se1-gles-sth1.inumbo.com)
+	id 1quam4-0001GY-UD; Sun, 22 Oct 2023 15:53:56 +0000
+Received: by outflank-mailman (input) for mailman id 620675;
+ Sun, 22 Oct 2023 15:53:53 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=zZR7=GE=casper.srs.infradead.org=BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1quam1-0006wY-KP
- for xen-devel@lists.xenproject.org; Sun, 22 Oct 2023 15:53:53 +0000
+ id 1quam0-0007Cq-Sm
+ for xen-devel@lists.xenproject.org; Sun, 22 Oct 2023 15:53:52 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
- by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id 3255d32c-70f3-11ee-98d5-6d05b1d4d9a1;
- Sun, 22 Oct 2023 17:53:52 +0200 (CEST)
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id 30cade49-70f3-11ee-9b0e-b553b5be7939;
+ Sun, 22 Oct 2023 17:53:49 +0200 (CEST)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1quakJ-008TGd-WA; Sun, 22 Oct 2023 15:52:08 +0000
+ id 1quakH-008TGH-DY; Sun, 22 Oct 2023 15:52:05 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96 #2 (Red Hat
- Linux)) id 1quakJ-001qaD-1v; Sun, 22 Oct 2023 16:52:07 +0100
+ Linux)) id 1quakH-001qYV-01; Sun, 22 Oct 2023 16:52:05 +0100
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: 3255d32c-70f3-11ee-98d5-6d05b1d4d9a1
+X-Inumbo-ID: 30cade49-70f3-11ee-9b0e-b553b5be7939
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=cDe39DUQ85zReKLUErmTIqxRmXQD1aFZCXjsrH+LZ3s=; b=wYlHB7MJR3qNQm673tJ6ylQwiG
-	Q4w+wdhYCdAZUH/BSQXjPoKmOmQH8VIR1ApYlF6SbYjU3nPhXVX5v9WVfwe0Hw3vR5HVqKer14Ic0
-	upRmCB8gD1y0SNLX4JlW79DJoNu0ryKdzFIaW24UiHxH5MFibLvPH5bnh3GFI7mJVd8trcpFy/qn3
-	gRFzd4OBA1qLgVVjhXcy/WN+TAiiJxNTtV6PRmseWqaw6LJsuuFh4Zpjo4T9IS3oU9W2GS2veJHCF
-	6BbaK5WbTGgjXIu+V/KNB3DyniptnKAaSTMPnixjVArh1n7rmDwzaovXV4xmepF471piCTbELCmYh
-	JjKAF+Mw==;
+	bh=FMouo7QQ2KXBuiMSmFA+4AfL0Ua1HAyBapVBTrY+ccg=; b=E0MEqNTVEqlo96r8WBTGAVzqqM
+	WOKcOlQeHsyeBbKjvLocphxD2lv+IUnbo81qo4Gi8Ktprvj7QIsyonsqWnzpb6OOPkO6/ISjmBAUT
+	3cOR4aeWvSKwvGx1bye1Sj1ciosiHzjrp3Uw4rmtGQzaE3FyA3smV1/12tjUNgzq7XqBPVZWalOVt
+	zBBQ1o1LCIK5OLWeBP+Gg+KhKs+xHPxXY5rvoK8+6ZPH+Fgf0LmxVxU5NvjwvXiYbRqF/dSoVrff7
+	J74lSXT7XFrvvrI1CNgBtAVzSR4Re5OKPzgXMgsJdWI1d9DTkWHZUlToq6Yq1BeKTuuVpT9FIp0qK
+	5C/gpQSg==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -150,9 +150,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH 29/45] hw/arm/stellaris: use qemu_find_nic_info()
-Date: Sun, 22 Oct 2023 16:51:44 +0100
-Message-Id: <20231022155200.436340-30-dwmw2@infradead.org>
+Subject: [PATCH 05/45] hw/i386/pc: use qemu_get_nic_info() and pci_init_nic_devices()
+Date: Sun, 22 Oct 2023 16:51:20 +0100
+Message-Id: <20231022155200.436340-6-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231022155200.436340-1-dwmw2@infradead.org>
 References: <20231022155200.436340-1-dwmw2@infradead.org>
@@ -160,81 +160,79 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: VmtGQB0wCU1V
+X-TUID: oxS2uBjAZi8n
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Rather than just using qemu_configure_nic_device(), populate the MAC
-address in the system-registers device by peeking at the NICInfo before
-it's assigned to the device.
+Eliminate direct access to nd_table[] and nb_nics by processing the the
+ISA NICs first and then calling pci_init_nic_devices() for the test.
 
-Generate the MAC address early, if there is no matching -nic option.
-Otherwise the MAC address wouldn't be generated until net_client_init1()
-runs.
+It's important to do this *before* the subsequent patch which registers
+the Xen PV network devices, because the code being remove here didn't
+check whether nd->instantiated was already set before using each entry.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/arm/stellaris.c | 30 ++++++++++++++++++++++--------
- 1 file changed, 22 insertions(+), 8 deletions(-)
+ hw/i386/pc.c                | 20 ++++++++++----------
+ include/hw/net/ne2000-isa.h |  2 --
+ 2 files changed, 10 insertions(+), 12 deletions(-)
 
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index aa5b0ddfaa..9385ccaafb 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1025,7 +1025,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     DeviceState *ssys_dev;
-     int i;
-     int j;
--    const uint8_t *macaddr;
-+    NICInfo *nd;
-+    MACAddr mac;
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index bb3854d1d0..e08600cbb3 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -652,8 +652,10 @@ static void pc_init_ne2k_isa(ISABus *bus, NICInfo *nd)
+ {
+     static int nb_ne2k = 0;
  
-     MemoryRegion *sram = g_new(MemoryRegion, 1);
-     MemoryRegion *flash = g_new(MemoryRegion, 1);
-@@ -1048,12 +1049,22 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-      * need its sysclk output.
-      */
-     ssys_dev = qdev_new(TYPE_STELLARIS_SYS);
--    /* Most devices come preprogrammed with a MAC address in the user data. */
--    macaddr = nd_table[0].macaddr.a;
-+
-+    /*
-+     * Most devices come preprogrammed with a MAC address in the user data.
-+     * Generate a MAC address now, if there isn't a matching -nic for it.
-+     */
-+    nd = qemu_find_nic_info("stellaris_enet", true, "stellaris");
-+    if (nd) {
-+        memcpy(mac.a, nd->macaddr.a, sizeof(mac.a));
-+    } else {
-+        qemu_macaddr_default_if_unset(&mac);
+-    if (nb_ne2k == NE2000_NB_MAX)
++    if (nb_ne2k == NE2000_NB_MAX) {
++        error_setg(&error_fatal, "maximum number of ISA NE2000 devices exceeded");
+         return;
 +    }
-+
-     qdev_prop_set_uint32(ssys_dev, "user0",
--                         macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16));
-+                         mac.a[0] | (mac.a[1] << 8) | (mac.a[2] << 16));
-     qdev_prop_set_uint32(ssys_dev, "user1",
--                         macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16));
-+                         mac.a[3] | (mac.a[4] << 8) | (mac.a[5] << 16));
-     qdev_prop_set_uint32(ssys_dev, "did0", board->did0);
-     qdev_prop_set_uint32(ssys_dev, "did1", board->did1);
-     qdev_prop_set_uint32(ssys_dev, "dc0", board->dc0);
-@@ -1265,10 +1276,13 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     if (board->dc4 & (1 << 28)) {
-         DeviceState *enet;
+     isa_ne2000_init(bus, ne2000_io[nb_ne2k],
+                     ne2000_irq[nb_ne2k], nd);
+     nb_ne2k++;
+@@ -1294,19 +1296,17 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus)
+ {
+     MachineClass *mc = MACHINE_CLASS(pcmc);
+-    int i;
++    bool default_is_ne2k = g_str_equal(mc->default_nic, TYPE_ISA_NE2000);
++    NICInfo *nd;
  
--        qemu_check_nic_model(&nd_table[0], "stellaris");
--
-         enet = qdev_new("stellaris_enet");
--        qdev_set_nic_properties(enet, &nd_table[0]);
-+        if (nd) {
-+            qdev_set_nic_properties(enet, nd);
-+        } else {
-+            qdev_prop_set_macaddr(enet, "mac", mac.a);
-+        }
+     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_NIC);
+-    for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
+-        const char *model = nd->model ? nd->model : mc->default_nic;
+ 
+-        if (g_str_equal(model, "ne2k_isa")) {
+-            pc_init_ne2k_isa(isa_bus, nd);
+-        } else {
+-            pci_nic_init_nofail(nd, pci_bus, model, NULL);
+-        }
++    while ((nd = qemu_find_nic_info(TYPE_ISA_NE2000, default_is_ne2k, NULL))) {
++        pc_init_ne2k_isa(isa_bus, nd);
+     }
 +
-         sysbus_realize_and_unref(SYS_BUS_DEVICE(enet), &error_fatal);
-         sysbus_mmio_map(SYS_BUS_DEVICE(enet), 0, 0x40048000);
-         sysbus_connect_irq(SYS_BUS_DEVICE(enet), 0, qdev_get_gpio_in(nvic, 42));
++    pci_init_nic_devices(pci_bus, mc->default_nic);
++
+     rom_reset_order_override();
+ }
+ 
+diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
+index af59ee0b02..73bae10ad1 100644
+--- a/include/hw/net/ne2000-isa.h
++++ b/include/hw/net/ne2000-isa.h
+@@ -22,8 +22,6 @@ static inline ISADevice *isa_ne2000_init(ISABus *bus, int base, int irq,
+ {
+     ISADevice *d;
+ 
+-    qemu_check_nic_model(nd, "ne2k_isa");
+-
+     d = isa_try_new(TYPE_ISA_NE2000);
+     if (d) {
+         DeviceState *dev = DEVICE(d);
 -- 
 2.40.1
 

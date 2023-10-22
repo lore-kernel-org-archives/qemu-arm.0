@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864635ejb;
-        Sun, 22 Oct 2023 08:54:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHBzA6/4snljVpfJxrjREBvCdRoLh0z+LGctLPw6uePs4Bi8CkdysRSgx+P41P346q7MYYk
-X-Received: by 2002:a05:620a:4002:b0:777:7240:8de with SMTP id h2-20020a05620a400200b00777724008demr9176844qko.8.1697990053835;
-        Sun, 22 Oct 2023 08:54:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697990053; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp864939ejb;
+        Sun, 22 Oct 2023 08:54:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/MEqPMGm9ZvO3A2qWyRBaAMsH3YioP42eKd3m+f1hWlcDPR8e47CjT+WWc302N8+gKKDY
+X-Received: by 2002:ac8:7d96:0:b0:417:9c40:c5fb with SMTP id c22-20020ac87d96000000b004179c40c5fbmr8273327qtd.44.1697990098675;
+        Sun, 22 Oct 2023 08:54:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697990098; cv=none;
         d=google.com; s=arc-20160816;
-        b=0QJxPoWrP/LEJteOURvW/yX+DNIogdtU0z0EarHYJbY008WX3ZVTklpZniC3iOiKyI
-         Xp9SUUIsxPBo3AqgDjQ8ktjsz0qqYibpQXQw32CAdOMkDT6Lej+kue/hFnhB3h389+X7
-         BMRQnwfk4+/oLixXiaa1OlYXrKUl964BKhcBGC+tw8VVY1xfgubG34TCOwq5OJrHE9Da
-         LI/t+ZlcGSz+gRdPhRHCEaY9hw8a1XCGeJ8lydCiZhDfEaibOnQWQv1Mo/hvQ6QleLUR
-         szA45kzHjyEMzfcyemes1lkOzsrJOHk+P9WAxesq4fkpnC7YstfoHNRk/hEK5TmmCKwq
-         C73w==
+        b=phpFmg4+eokRHbWhscNAHrd/14WOR7OT722QUz+yieLi+dX9zMeg3iRVbXhf+/iibD
+         yT64j0Ue6HryCmls+UWlATGjH0gJKD+4evSfSZGP1x44lPuO3r11KE2o7bHFqLd87Uw+
+         IHL7tWDhtT3GKlI1KB3EEiexFl/jD2jQy6JsqGvRWK5iBUvRm8JwwtEF6HLsU0B4wiT0
+         XB2ID+dW4Qwcf3hfJMqidIS61+pRtcOF4XOMWLf/tjtBgx3RGExGUKtnCiI1/mRZGd/W
+         kmXUw2deCl/hmjXIw1S4bQCuOgEeU6ssEa1AsdWy5ywzEHlwXrlzulzAUBZKYaAYJ1ec
+         LK5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hC+8OBLQ6TWPZEybs0lVPrKizh4726sFY9u4hhRhbIY=;
+        bh=gAqi4IHvyxyTJg+N0Ik5PY/rM2q46ZCGuyPvahYwG5k=;
         fh=fR25DIKCexhPQAp6aUdYi3uFJxEhZaxhhcNQofNVQl0=;
-        b=uqFJ/8sEFmcl2QMQ91iULl3pV76OTpGsXYLKXbLIz4IRSCLt7iHqeYviElL10WvB8P
-         KUeG6Zn2MYUN5eJB4jRHqltwlhzR6XS9d3h/JlEG9tizgJZGdm6JDsmRL+CjtS+E8wlq
-         OP3TnHeMxBwgFz60DQjoX9XOpJfim7dIJy+y2XDkXrxbjJSC2hABugjrcqQvxNr8HkaC
-         IuoU7VIPUJiHR5/3rxYgbmDfsSuTskVA1SUhskZpUGe4Wn6BFoaT70tw4Mxu9rKr1/Or
-         7jnRE9b9a+sIUkIK760hoXuy5XS7sVvWdIjUAA1unScrZwPN2GSnMU2rRO6QEhShfN+5
-         5UtA==
+        b=ZDmULWtp1gtKwhHtoPTb9KVTt2LxwqroZ0Vtz5Fl6IenNKQJVS8FQfq/ANc1B+83O/
+         ke/Y9Ju1l8c79LxZyg5soneHOlQbUWQJvYew/AAtr8azHPStvyCo1v5Bb01um5tau54a
+         /IosKK5yA2FBEB15IzSTyBSjJfuCfTs07uRuzdPBkI1c+7rRKBz6uIu6xYxFHjHuRVKz
+         Krq3lHcrv09TVWonQPGSGSSKxVJM63FDi55tJKsEhFvQwtUyG2m1wcWc6xL5ZWCFPq4h
+         ISHzE9FVf67s/3PSmf65v15h8HMN+dpPI6/juOZZdGzan9y39iQZ4mEO34Ycqg9bPxK1
+         UPvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=fDPPVNgK;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=cRbRpczY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6-20020a05620a0b8600b00775743d508bsi4044064qkh.441.2023.10.22.08.54.13
+        by mx.google.com with ESMTPS id w14-20020a05622a190e00b0041989dab884si4067271qtc.77.2023.10.22.08.54.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Oct 2023 08:54:13 -0700 (PDT)
+        Sun, 22 Oct 2023 08:54:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=fDPPVNgK;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=cRbRpczY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qualC-0004tv-DK; Sun, 22 Oct 2023 11:53:02 -0400
+	id 1quam9-0007TH-Ka; Sun, 22 Oct 2023 11:54:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1quaks-0004lr-G5; Sun, 22 Oct 2023 11:52:43 -0400
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+fd6248c3715d1825373b+7364+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1quam8-0007QS-2W; Sun, 22 Oct 2023 11:54:00 -0400
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1quako-00004w-ID; Sun, 22 Oct 2023 11:52:42 -0400
+ <BATV+fd6248c3715d1825373b+7364+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1quam6-0000Lw-6b; Sun, 22 Oct 2023 11:53:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
- Reply-To:Content-Type:Content-ID:Content-Description;
- bh=hC+8OBLQ6TWPZEybs0lVPrKizh4726sFY9u4hhRhbIY=; b=fDPPVNgKahIXw2sWosyOS59B6U
- aezjPTyZg5+fu5TplWvw6F75WoG6fhRhbhZo1tvgknB8gYmGw4BH5gqwZ1FSJ7xGNQXfgAjX5RMNw
- nbosUg8Rp1mLUvZjTqpkM0EHKwUy0mSfSCGcRoVYyA6oNfZCv04l1UV+mFHxifHvTDhQJYWVvGWIO
- oTo5iVr7igGWHO9HWPwDPaWGbIcqeJ9840vpOlZWiSZ7cKqSqf8KOHheAaApZbRaKU/6H8GE28ddR
- oGEUu/qQNaOhxyiIUnoJX1LNpVrHVx982edPVIFgPPedlOSJRvLFg2MWaIiVfudXKxHk1X055MMhl
- HKli6jRg==;
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+ To:From:Reply-To:Content-ID:Content-Description;
+ bh=gAqi4IHvyxyTJg+N0Ik5PY/rM2q46ZCGuyPvahYwG5k=; b=cRbRpczYlxtrJ0EMdutYGeIBIl
+ 3V4CpMaDhfBqINOapf2F/gKHf+PgU3iwVQeTm5lVX9xNdGoH8TYMteH/nQcGNcNI3BcKh+CWUiWpL
+ LbtNiAJsgwEHdMVmuNmfyuyVAP7f0W7JkbsxhMiWqH4q+bbsarvrWtE9jVRGnI/EHRbx/G70Etxbw
+ CZ30nG0gPXyVMUtzmvYFCv0b3+Z/+jCGDk7YmUkeRkcus/I/rRzABdQ4ucyfQQTqz6/rNkXeSHqbM
+ Nlndu5rdkCTQv6mErcA0WRVLKeTqjLVQkMDovzpLxKNVo2R0CpNPRyZH7ke5ogJ7cesaOLN3L/iWq
+ 6Ar0Y1oA==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1quakL-008TGq-DL; Sun, 22 Oct 2023 15:52:09 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1quakI-00DCmh-0V; Sun, 22 Oct 2023 15:52:51 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96 #2 (Red Hat
- Linux)) id 1quakK-001qap-1B; Sun, 22 Oct 2023 16:52:08 +0100
+ Linux)) id 1quakG-001qYN-2W; Sun, 22 Oct 2023 16:52:04 +0100
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,19 +116,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH 37/45] hw/openrisc/openrisc_sim: use qemu_create_nic_device()
-Date: Sun, 22 Oct 2023 16:51:52 +0100
-Message-Id: <20231022155200.436340-38-dwmw2@infradead.org>
+Subject: [PATCH 03/45] net: add qemu_create_nic_bus_devices()
+Date: Sun, 22 Oct 2023 16:51:18 +0100
+Message-Id: <20231022155200.436340-4-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231022155200.436340-1-dwmw2@infradead.org>
 References: <20231022155200.436340-1-dwmw2@infradead.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+88d8721f4af1339c2fab+7364+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+fd6248c3715d1825373b+7364+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -150,58 +151,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QhpMtqbYwSB9
+X-TUID: 09VEEVEMQmm/
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
+This will instantiate any NICs which live on a given bus type. Each bus
+is allowed *one* substitution (for PCI it's virtio → virtio-net-pci, for
+Xen it's xen → xen-net-device; no point in overengineering it unless we
+actually want more).
+
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/openrisc/openrisc_sim.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ include/net/net.h |  3 +++
+ net/net.c         | 53 +++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 56 insertions(+)
 
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index 35da123aef..bffd6f721f 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -170,7 +170,7 @@ static void openrisc_create_fdt(Or1ksimState *state,
+diff --git a/include/net/net.h b/include/net/net.h
+index 56be694c75..ce830a47d0 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -211,6 +211,9 @@ bool qemu_configure_nic_device(DeviceState *dev, bool match_default,
+                                const char *alias);
+ DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
+                                     const char *alias);
++void qemu_create_nic_bus_devices(BusState *bus, const char *parent_type,
++                                 const char *default_model,
++                                 const char *alias, const char *alias_target);
+ void print_net_client(Monitor *mon, NetClientState *nc);
+ void net_socket_rs_init(SocketReadState *rs,
+                         SocketReadStateFinalize *finalize,
+diff --git a/net/net.c b/net/net.c
+index 6e20f9d2e9..23fd716b98 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -1207,6 +1207,59 @@ DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
+     return dev;
+ }
  
- static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
-                                   int num_cpus, OpenRISCCPU *cpus[],
--                                  int irq_pin, NICInfo *nd)
-+                                  int irq_pin)
- {
-     void *fdt = state->fdt;
-     DeviceState *dev;
-@@ -178,8 +178,10 @@ static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
-     char *nodename;
-     int i;
- 
--    dev = qdev_new("open_eth");
--    qdev_set_nic_properties(dev, nd);
-+    dev = qemu_create_nic_device("open_eth", true, NULL);
-+    if (!dev) {
-+        return;
++void qemu_create_nic_bus_devices(BusState *bus, const char *parent_type,
++                                 const char *default_model,
++                                 const char *alias, const char *alias_target)
++{
++    GPtrArray *nic_models = qemu_get_nic_models(parent_type);
++    const char *model;
++    DeviceState *dev;
++    NICInfo *nd;
++    int i;
++
++    if (nic_model_help) {
++        if (alias_target) {
++            add_nic_model_help(alias_target, alias);
++        }
++        for (i = 0; i < nic_models->len - 1; i++) {
++            add_nic_model_help(nic_models->pdata[i], NULL);
++        }
 +    }
- 
-     s = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-@@ -313,12 +315,10 @@ static void openrisc_sim_init(MachineState *machine)
-     openrisc_create_fdt(state, or1ksim_memmap, smp_cpus, machine->ram_size,
-                         machine->kernel_cmdline);
- 
--    if (nd_table[0].used) {
--        openrisc_sim_net_init(state, or1ksim_memmap[OR1KSIM_ETHOC].base,
--                              or1ksim_memmap[OR1KSIM_ETHOC].size,
--                              smp_cpus, cpus,
--                              OR1KSIM_ETHOC_IRQ, nd_table);
--    }
-+    openrisc_sim_net_init(state, or1ksim_memmap[OR1KSIM_ETHOC].base,
-+                          or1ksim_memmap[OR1KSIM_ETHOC].size,
-+                          smp_cpus, cpus,
-+                          OR1KSIM_ETHOC_IRQ);
- 
-     if (smp_cpus > 1) {
-         openrisc_sim_ompic_init(state, or1ksim_memmap[OR1KSIM_OMPIC].base,
++
++    /* Drop the NULL terminator which would make g_str_equal() unhappy */
++    nic_models->len--;
++
++    for (i = 0; i < nb_nics; i++) {
++        nd = &nd_table[i];
++
++        if (!nd->used || nd->instantiated) {
++            continue;
++        }
++
++        model = nd->model ? nd->model : default_model;
++        if (!model) {
++            continue;
++        }
++
++        /* Each bus type is allowed *one* substitution */
++        if (g_str_equal(model, alias)) {
++            model = alias_target;
++        }
++
++        if (!g_ptr_array_find_with_equal_func(nic_models, model,
++                                              g_str_equal, NULL)) {
++            /* This NIC does not live on this bus. */
++            continue;
++        }
++
++        dev = qdev_new(model);
++        qdev_set_nic_properties(dev, nd);
++        qdev_realize_and_unref(dev, bus, &error_fatal);
++    }
++
++    g_ptr_array_free(nic_models, true);
++}
++
+ static int (* const net_client_init_fun[NET_CLIENT_DRIVER__MAX])(
+     const Netdev *netdev,
+     const char *name,
 -- 
 2.40.1
 

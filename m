@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1293613ejb;
-        Mon, 23 Oct 2023 04:36:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFjNyd5gCAw2IqmOJzZ5t84uIQWgTCL1s3MqHgZZtkGobrlLzGH3DECINZb7F5jcBX939yU
-X-Received: by 2002:ac8:7f0b:0:b0:417:fe9c:6dce with SMTP id f11-20020ac87f0b000000b00417fe9c6dcemr11750350qtk.25.1698060960130;
-        Mon, 23 Oct 2023 04:36:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698060960; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1293960ejb;
+        Mon, 23 Oct 2023 04:36:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGVh+Hsc7APvjxM3Ia57dmXlWS86pjcnYf6HwMfNdwXO+UNzbzFLPrvCcSEeZhStPlOUln7
+X-Received: by 2002:a05:620a:c4f:b0:777:f6ad:783e with SMTP id u15-20020a05620a0c4f00b00777f6ad783emr11919284qki.20.1698061001199;
+        Mon, 23 Oct 2023 04:36:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698061001; cv=none;
         d=google.com; s=arc-20160816;
-        b=NDRiTqyA1/gcwQyW9W82gle7oN1eZvZCq7JzgGNhlnqTWd1ohpWifiAwR2OM+ehevS
-         yNO8Qb/myK+dxa1+2eqFSkbabyowH0Y+yPe9apEgO7m7cJ3cCy52MUQLUfi2bT8/3N+P
-         2wqB784uW1b6y2REnUzEDodXzMM6AWaH47eBgw4OY/OIFLph7fJQSfQTCIUK46hpu/2i
-         R/WKFllrs3TLgKkgjl2Nt/tXbmCTl+s+LxNB0HuSJfqvs10Gwergpfl61r3Xxo+Ob8KM
-         91tk4C9zKa42h68fEOzuukuktzb0k4k9uHISuUDPrLm6JdxYatjawYtqQVERDztD2VtG
-         BSeg==
+        b=P0hr6v68JEbNEATv3rc9PxbxjIhWlaloERcDP6Dc1NIltBoG/3iaZVNTWYXop7yfK2
+         aGHgUIl7ZH23YrGzI6X3jpfw9AfoKrjqiaeFu8U1HK3KgDcIAIdAs/V97V2xRwzEupPz
+         7ug8xsY06MvMDAUk+f01t+kHECsraRhVqcR/+W0PYX6LTyDxdv+N6p39atbSTKw8T/lw
+         FKAzd3jG4iwzlfBDVazO8vF7cNh8wBXKhZirzWhRtdLhcthTzDrqYOqk9mgeXf1oS2TG
+         rGLKX163db8UITU8iQ8rOUhmACyDUVvyTA8tyz+4YoP+h4G7650WxN2Ez3NfgUKPgLMc
+         eFIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=f0HzqAQ1P5NNTTVI4u8y3v+MUFoH5e6j2UROrrepkLE=;
+        bh=tTb3ro698lsOlZyEs7jHhQMOK97qw741KUptFZekI7c=;
         fh=r4fz3Foqx0ggjO5oI8v2vjNw5kzcdWLA6oCTkzfSTUk=;
-        b=YsTjOV0Dth8jzqYn8lgCQ3P/9f3k0+wFYzLbIBv70VY9w/RwR2snIAfortp+4QhnPc
-         3G6ug5dqQD+ggg2NPjvtS7wJBz2lAyWJi+37pkob3UHZXKP4rrJzNHe17PGNSfaU90I2
-         v/JnY6Eb1sjroU+ylHHAlSmM9tMm7vxTziQxLa0Ctc+klsMQ0mmwSEc/ulcymXLhva/k
-         rpI07xgaS2XCU6EJBR8mwLN/yfc7XO6bTf5HOpUvjCsFTbm9dwbhvtKHV1vnThFosCnC
-         15dq5VRnxeTGNzIKIfwVXxiU4sN5cmpz/JTCExf6ZfY8kqmNjIWggcR9UWWJprF5cMk5
-         tVNA==
+        b=xqbJi/+82KSFVPtlnf52zxwDBdY8Ycesf98K2KZ5+q4swdZ/U95qzBuL0nXMg1HTDf
+         RS8tddpJd0VlFaApZ9OhLsmkVwSj/jZYIq9s1JkhGZqHVFmUEdVE+BhQ5UU6HFwdBqy7
+         /TPxIGV0shNHXmKfU4eoR1uEjwGx2WdkVd+st4+aNLd9ZXNf/xuxSdVKpzOxC66d00U5
+         Ymm3gGXn0hPtWT/E2FnU+fD6JZxagvU5sbYchvZTQuPtQbSXL6zeIR52iQ8KErcaCXFm
+         UZuXu8g9/QNUolnBGtOWW/oQeFLUMFRfPcsE7MVxoqXyQEShAWaguuYXKx7DaTmCZYhK
+         HbXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VB/HOHOQ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TviV1Ly3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1-20020a05622a018100b0041773edb414si5346754qtw.655.2023.10.23.04.35.59
+        by mx.google.com with ESMTPS id u23-20020a05620a023700b00767d5b81886si5445392qkm.458.2023.10.23.04.36.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 04:36:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Oct 2023 04:36:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VB/HOHOQ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TviV1Ly3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qutAF-0000Fb-5S; Mon, 23 Oct 2023 07:32:07 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qut9Z-0007i1-9N; Mon, 23 Oct 2023 07:31:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qut9r-0007rh-DT
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:31:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qut9T-0007Wb-81
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 07:31:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qut9n-0003bf-TS
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:31:43 -0400
+ id 1qut9O-0003UT-Jw
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 07:31:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698060699;
+ s=mimecast20190719; t=1698060674;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=f0HzqAQ1P5NNTTVI4u8y3v+MUFoH5e6j2UROrrepkLE=;
- b=VB/HOHOQItc6wD2oT/AlTDC8Kj9Vy26y5uyZbN/to7ZSBi1pDeyh1vt54OtG1Oanrbm2xh
- 4dd+WWhu6RApshZn9maMxKo7dICYTUzfWg1bG5vD0YiLRcLgJk3x6uauMVchYOCnhXdMG/
- O+/ZyAhMdSrtqtDUqLtz2gObATGYNl8=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-447-eCeDosG9Of2SNriXHV5ctQ-1; Mon,
- 23 Oct 2023 07:31:29 -0400
-X-MC-Unique: eCeDosG9Of2SNriXHV5ctQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ bh=tTb3ro698lsOlZyEs7jHhQMOK97qw741KUptFZekI7c=;
+ b=TviV1Ly3rR3x4DobG7CTuu2PKqbuLcXxpriv1V4kr8f+mtYHa3kjfgBvqbq1h1Lac8MZ8L
+ 60JZfdNaCzz8hrcBOuWUzw8RG5sL6vQEewN0s5zDfgquUY5fwd47EgfEsJMjXiRv9N40mK
+ UcdkZ9bI+eD6laDJ2H812sWbm2qtFVw=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-516-05t5Ry0LPLyxWCrJxgx-6g-1; Mon, 23 Oct 2023 07:31:10 -0400
+X-MC-Unique: 05t5Ry0LPLyxWCrJxgx-6g-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A8E842806052;
- Mon, 23 Oct 2023 11:31:28 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 72167811E96;
+ Mon, 23 Oct 2023 11:31:10 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3A8CB503B;
- Mon, 23 Oct 2023 11:31:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 51AB225C0;
+ Mon, 23 Oct 2023 11:31:09 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
@@ -90,16 +90,16 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Dr. David Alan Gilbert" <dave@treblig.org>,
  Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v5 08/19] virtio-gpu: replace PIXMAN for region/rect test
-Date: Mon, 23 Oct 2023 15:30:35 +0400
-Message-ID: <20231023113047.2572137-9-marcandre.lureau@redhat.com>
+Subject: [PATCH v5 04/19] vl: move display early init before default devices
+Date: Mon, 23 Oct 2023 15:30:31 +0400
+Message-ID: <20231023113047.2572137-5-marcandre.lureau@redhat.com>
 In-Reply-To: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
 References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -107,166 +107,108 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mvBvjdZoRz3b
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yON8/mZBgEyX
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Use a simpler implementation for rectangle geometry & intersect, drop
-the need for (more complex) PIXMAN functions.
+The next commit needs to have the display registered itself before
+creating the default VCs.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/ui/rect.h       | 59 +++++++++++++++++++++++++++++++++++++++++
- hw/display/virtio-gpu.c | 30 ++++++++-------------
- 2 files changed, 70 insertions(+), 19 deletions(-)
- create mode 100644 include/ui/rect.h
+ system/vl.c | 41 +++++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 18 deletions(-)
 
-diff --git a/include/ui/rect.h b/include/ui/rect.h
-new file mode 100644
-index 0000000000..94898f92d0
---- /dev/null
-+++ b/include/ui/rect.h
-@@ -0,0 +1,59 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef QEMU_RECT_H
-+#define QEMU_RECT_H
-+
-+#include <stdint.h>
-+#include <stdbool.h>
-+
-+typedef struct QemuRect {
-+    int16_t x;
-+    int16_t y;
-+    uint16_t width;
-+    uint16_t height;
-+} QemuRect;
-+
-+static inline void qemu_rect_init(QemuRect *rect,
-+                                  int16_t x, int16_t y,
-+                                  uint16_t width, uint16_t height)
-+{
-+    rect->x = x;
-+    rect->y = x;
-+    rect->width = width;
-+    rect->height = height;
-+}
-+
-+static inline void qemu_rect_translate(QemuRect *rect,
-+                                       int16_t dx, int16_t dy)
-+{
-+    rect->x += dx;
-+    rect->y += dy;
-+}
-+
-+static inline bool qemu_rect_intersect(const QemuRect *a, const QemuRect *b,
-+                                       QemuRect *res)
-+{
-+    int16_t x1, x2, y1, y2;
-+
-+    x1 = MAX(a->x, b->x);
-+    y1 = MAX(a->y, b->y);
-+    x2 = MIN(a->x + a->width, b->x + b->width);
-+    y2 = MIN(a->y + a->height, b->y + b->height);
-+
-+    if (x1 >= x2 || y1 >= y2) {
-+        if (res) {
-+            qemu_rect_init(res, 0, 0, 0, 0);
-+        }
-+
-+        return false;
-+    }
-+
-+    if (res) {
-+        qemu_rect_init(res, x1, y1, x2 - x1, y2 - y1);
-+    }
-+
-+    return true;
-+}
-+
-+#endif
-diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-index 4265316cbb..a8e767245f 100644
---- a/hw/display/virtio-gpu.c
-+++ b/hw/display/virtio-gpu.c
-@@ -16,6 +16,7 @@
- #include "qemu/iov.h"
- #include "sysemu/cpus.h"
- #include "ui/console.h"
-+#include "ui/rect.h"
- #include "trace.h"
- #include "sysemu/dma.h"
- #include "sysemu/sysemu.h"
-@@ -503,7 +504,7 @@ static void virtio_gpu_resource_flush(VirtIOGPU *g,
-     struct virtio_gpu_simple_resource *res;
-     struct virtio_gpu_resource_flush rf;
-     struct virtio_gpu_scanout *scanout;
--    pixman_region16_t flush_region;
-+    QemuRect flush_rect;
-     bool within_bounds = false;
-     bool update_submitted = false;
-     int i;
-@@ -565,34 +566,25 @@ static void virtio_gpu_resource_flush(VirtIOGPU *g,
-         return;
+diff --git a/system/vl.c b/system/vl.c
+index 92d29bf521..2cecb3d884 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1349,6 +1349,28 @@ static void qemu_disable_default_devices(void)
      }
- 
--    pixman_region_init_rect(&flush_region,
--                            rf.r.x, rf.r.y, rf.r.width, rf.r.height);
-+    qemu_rect_init(&flush_rect, rf.r.x, rf.r.y, rf.r.width, rf.r.height);
-     for (i = 0; i < g->parent_obj.conf.max_outputs; i++) {
--        pixman_region16_t region, finalregion;
--        pixman_box16_t *extents;
-+        QemuRect rect;
- 
-         if (!(res->scanout_bitmask & (1 << i))) {
-             continue;
-         }
-         scanout = &g->parent_obj.scanout[i];
- 
--        pixman_region_init(&finalregion);
--        pixman_region_init_rect(&region, scanout->x, scanout->y,
--                                scanout->width, scanout->height);
-+        qemu_rect_init(&rect, scanout->x, scanout->y,
-+                       scanout->width, scanout->height);
- 
--        pixman_region_intersect(&finalregion, &flush_region, &region);
--        pixman_region_translate(&finalregion, -scanout->x, -scanout->y);
--        extents = pixman_region_extents(&finalregion);
-         /* work out the area we need to update for each console */
--        dpy_gfx_update(g->parent_obj.scanout[i].con,
--                       extents->x1, extents->y1,
--                       extents->x2 - extents->x1,
--                       extents->y2 - extents->y1);
--
--        pixman_region_fini(&region);
--        pixman_region_fini(&finalregion);
-+        if (qemu_rect_intersect(&flush_rect, &rect, &rect)) {
-+            qemu_rect_translate(&rect, -scanout->x, -scanout->y);
-+            dpy_gfx_update(g->parent_obj.scanout[i].con,
-+                           rect.x, rect.y, rect.width, rect.height);
-+        }
-     }
--    pixman_region_fini(&flush_region);
  }
  
- static void virtio_unref_resource(pixman_image_t *image, void *data)
++static void qemu_early_display_init(void)
++{
++#if defined(CONFIG_VNC)
++    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
++        display_remote++;
++    }
++#endif
++    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
++        if (!qemu_display_find_default(&dpy)) {
++            dpy.type = DISPLAY_TYPE_NONE;
++#if defined(CONFIG_VNC)
++            vnc_parse("localhost:0,to=99,id=default");
++#endif
++        }
++    }
++    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
++        dpy.type = DISPLAY_TYPE_NONE;
++    }
++
++    qemu_display_early_init(&dpy);
++}
++
+ static void qemu_create_default_devices(void)
+ {
+     MachineClass *machine_class = MACHINE_GET_CLASS(current_machine);
+@@ -1398,23 +1420,6 @@ static void qemu_create_default_devices(void)
+ #endif
+     }
+ 
+-#if defined(CONFIG_VNC)
+-    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
+-        display_remote++;
+-    }
+-#endif
+-    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
+-        if (!qemu_display_find_default(&dpy)) {
+-            dpy.type = DISPLAY_TYPE_NONE;
+-#if defined(CONFIG_VNC)
+-            vnc_parse("localhost:0,to=99,id=default");
+-#endif
+-        }
+-    }
+-    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
+-        dpy.type = DISPLAY_TYPE_NONE;
+-    }
+-
+     /* If no default VGA is requested, the default is "none".  */
+     if (default_vga) {
+         vga_model = get_default_vga_model(machine_class);
+@@ -1939,7 +1944,6 @@ static void qemu_create_early_backends(void)
+                      "ignoring option");
+     }
+ 
+-    qemu_display_early_init(&dpy);
+     qemu_console_early_init();
+ 
+     if (dpy.has_gl && dpy.gl != DISPLAYGL_MODE_OFF && display_opengl == 0) {
+@@ -3670,6 +3674,7 @@ void qemu_init(int argc, char **argv)
+     suspend_mux_open();
+ 
+     qemu_disable_default_devices();
++    qemu_early_display_init();
+     qemu_create_default_devices();
+     qemu_create_early_backends();
+ 
 -- 
 2.41.0
 

@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1291845ejb;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1291849ejb;
         Mon, 23 Oct 2023 04:32:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFCft2mXe6+NVrIATcBPMxOZD5e1QTmKJoJYzfzYlp5+H9UQwq2Zu0aBnsAVvTuQRiBZ22H
-X-Received: by 2002:a0c:e98b:0:b0:65b:1097:760 with SMTP id z11-20020a0ce98b000000b0065b10970760mr17795872qvn.15.1698060762906;
+X-Google-Smtp-Source: AGHT+IH/UVe4QcDl/x9fmwJDPTDIF84zbNpfLDVKTzfWaeT4inAZ+9NB+JqcE3eD6RckK1tRR7GF
+X-Received: by 2002:a05:6830:719d:b0:6b8:9483:35ba with SMTP id el29-20020a056830719d00b006b8948335bamr12974907otb.24.1698060762332;
         Mon, 23 Oct 2023 04:32:42 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1698060762; cv=none;
         d=google.com; s=arc-20160816;
-        b=O6EXYxt0kmjSVYbO18p4dpDKjq6/HDknr3Y7Dy563cd6BwWWOx+920z3lEumUEEu20
-         cdbeXTOEtDYNLGHvcriIXMolYMd3KHWuDdSee3B9rzBzCF/zxLblFtapzU/fV4RP5eQV
-         GMaXxTLWsQ2Je5kVBZNXiTCNleeC1AEMxPjZkp5P5f3cG50Lnils4XUKG8Ya+Vb9+zQq
-         TrPIrROHGHuogdbSuwF/mH2WoVDrmF4Q408gTuJ+HT23PF05+UMQ0Q/KqOzhh26a51a6
-         urb7hJ/rGzkI93+6y/2rChvfTd0Io4vdMXW5wpLSlH8qWt5VQxqiEK7FiAKz1nxfOKgC
-         7kIQ==
+        b=VfTF1PiUI4z2jAtlyOhi4lfOnSTwgFtZrygt2bUz2x4IVlLOumyIkgV56edJTb9TMk
+         KJH/i1d/61pQuCxQwiz6bOAnefw+XCyObZJS2AVWfoPj0hdHOIolSFemww0JLxNu5M+3
+         TrYIMyGczJCCd3HS1+xY9e6Tyz86F2SgpQ3iGO2IBRxepelmqSb4HSLuyvvG1WDkI9rh
+         gcNf3ecF3eU9JKKTMY7yWnlPOu1zQC/yKB8CqwPmQSQUIles33kue3+T1WQkmHm6cyYR
+         DpPTQR4SvYp2C18t7xqDkNl1b96kd7m/82ii/ZlFmqbsXNnEHY6p0XYsdjwOEDtyj08t
+         kIXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=l+IZUKD09t3G6wmp5MMdis6/O6ier4TPRlMSI55FW6I=;
+        bh=kJiPpvjKWBAnBlGP3KkhDI2+e8BdQyJQjN7KhYL75jw=;
         fh=r4fz3Foqx0ggjO5oI8v2vjNw5kzcdWLA6oCTkzfSTUk=;
-        b=LQJvPwa8MvDaLu46sPfwhJyp7LRHMhfMdV1aLW4BGqsnzxTIRGSJC8N/8zhqjhYhpQ
-         nD12pwXno4aiwRVzJ29601X7vqm5f4skh8VntvNb7U0WKBtiJqyALS0bEH61CnKrs90z
-         w1CMCLI8XmTIkz1q6oE5PUuRgUWLDqodPkmwDNRKKuRGPl1zYXAdKXSnFqXI1kXIDf8p
-         5QivlvqX0IkSholaUksq975R1Dse5uIZCISppcZQJH/CLOxqKU0G219/O4kgV0ltq4aU
-         nesHi+pKUdHcd6DvHRrBgWkxIJF/3SEpTFB3BM/G/mYmk42rrrV+OUekvGLMOk41VbY8
-         +E+A==
+        b=Mp9dp9X8ez2/1cs4BqI9j9LRcaqM36Fgv+i9IpSZRE6Mf5kZlH76BLXPzJSPQlkvFx
+         AC5V/CAuDEOS0i06tsTyBg0XT9LAJ9SSHxQu0EGKFfsqfAuqqrrr/xCMxq4omLyYFUF9
+         l5Lw2wSqDisu8otGsdC1EclwKU422YuTbvOjSGO+NYxQk2+PjRW15SIAFIcj5tHhVALp
+         vSkVVVs5KXuiwIRd3vu5J/3AuuPQADRTFPrJOp4fLP/bnuj0yvDukGxE8dLT+HHSEThK
+         yKhW+LL6AVfVJ29ZUyrezVic4GtpyKz/v7DqzlV0xGQ3YPvJH1OXTVKEC58g/UfmhGAe
+         B3Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SRvCZPeR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQ9AtFAj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dp5-20020a05621409c500b00657b96cbcd9si5288108qvb.278.2023.10.23.04.32.42
+        by mx.google.com with ESMTPS id mf9-20020a0562145d8900b0065cffe26762si5497352qvb.319.2023.10.23.04.32.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 23 Oct 2023 04:32:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SRvCZPeR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YQ9AtFAj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qut9s-0007s2-3M; Mon, 23 Oct 2023 07:31:44 -0400
+	id 1qutAM-0000k1-4b; Mon, 23 Oct 2023 07:32:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qut9T-0007WB-5Q
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:31:19 -0400
+ id 1qut9w-0008Fy-0g
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:31:48 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qut9Q-0003Us-PH
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:31:18 -0400
+ id 1qut9u-0003eP-Eg
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:31:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698060676;
+ s=mimecast20190719; t=1698060705;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=l+IZUKD09t3G6wmp5MMdis6/O6ier4TPRlMSI55FW6I=;
- b=SRvCZPeRY1B3oUgyEgxLXiyzJT7ChDWi0183psKIlhOBC1VRAHNlxQH+Kxj2TFqV9sy3Z2
- uAieqL31aD4h4LuXhYhdF9VS+L8f3cQrgx7XicbIJNMVwlMIkgVc+PVLNX+uwZahdesqIb
- GfpBSuszEc60dkuW+TVNqO7mSUcVNCI=
+ bh=kJiPpvjKWBAnBlGP3KkhDI2+e8BdQyJQjN7KhYL75jw=;
+ b=YQ9AtFAjAJ9KVnYVGbDSBo6s8e0KDdROe64JvwmC7SIl9zCOgPkib1F5UD1R632hjulG9k
+ QPiX08M1aKZw0Ve0BjtQFjfJrIWdBVO6+GY6ndMoxDUrGUww1MRseKDe49xFXrb2VD7oD0
+ 8enjGYLU89R4kOrlOm66tjq4oAxrxNs=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-395-xdFvKZLFPqOBv1l2N1xoTQ-1; Mon, 23 Oct 2023 07:31:02 -0400
-X-MC-Unique: xdFvKZLFPqOBv1l2N1xoTQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ us-mta-257-7ZxFKvUtNsqGt3yKOBWORA-1; Mon, 23 Oct 2023 07:31:37 -0400
+X-MC-Unique: 7ZxFKvUtNsqGt3yKOBWORA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A02953C14912;
- Mon, 23 Oct 2023 11:31:01 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 196353C14912;
+ Mon, 23 Oct 2023 11:31:37 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 324C38C0A;
- Mon, 23 Oct 2023 11:30:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5563240C6F79;
+ Mon, 23 Oct 2023 11:31:36 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
@@ -89,16 +89,16 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Dr. David Alan Gilbert" <dave@treblig.org>,
  Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v5 02/19] ui: compile out some qemu-pixman functions when
+Subject: [PATCH v5 10/19] vhost-user-gpu: skip VHOST_USER_GPU_UPDATE when
  !PIXMAN
-Date: Mon, 23 Oct 2023 15:30:29 +0400
-Message-ID: <20231023113047.2572137-3-marcandre.lureau@redhat.com>
+Date: Mon, 23 Oct 2023 15:30:37 +0400
+Message-ID: <20231023113047.2572137-11-marcandre.lureau@redhat.com>
 In-Reply-To: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
 References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -123,101 +123,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UG3p+GDedCra
+X-TUID: ZLnzOqZBYHo+
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Those functions require the PIXMAN library.
+This simply means that 2d drawing updates won't be handled, but 3d
+should work.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/ui/qemu-pixman.h | 7 +++++--
- ui/qemu-pixman.c         | 6 ++++++
- 2 files changed, 11 insertions(+), 2 deletions(-)
+ hw/display/vhost-user-gpu.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
-index d37feb5e3c..2ff6c4a656 100644
---- a/include/ui/qemu-pixman.h
-+++ b/include/ui/qemu-pixman.h
-@@ -76,17 +76,17 @@ pixman_format_code_t qemu_default_pixman_format(int bpp, bool native_endian);
- pixman_format_code_t qemu_drm_format_to_pixman(uint32_t drm_format);
- uint32_t qemu_pixman_to_drm_format(pixman_format_code_t pixman);
- int qemu_pixman_get_type(int rshift, int gshift, int bshift);
--pixman_format_code_t qemu_pixman_get_format(PixelFormat *pf);
- bool qemu_pixman_check_format(DisplayChangeListener *dcl,
-                               pixman_format_code_t format);
- 
-+#ifdef CONFIG_PIXMAN
-+pixman_format_code_t qemu_pixman_get_format(PixelFormat *pf);
- pixman_image_t *qemu_pixman_linebuf_create(pixman_format_code_t format,
-                                            int width);
- void qemu_pixman_linebuf_fill(pixman_image_t *linebuf, pixman_image_t *fb,
-                               int width, int x, int y);
- pixman_image_t *qemu_pixman_mirror_create(pixman_format_code_t format,
-                                           pixman_image_t *image);
--void qemu_pixman_image_unref(pixman_image_t *image);
- 
- pixman_image_t *qemu_pixman_glyph_from_vgafont(int height, const uint8_t *font,
-                                                unsigned int ch);
-@@ -95,6 +95,9 @@ void qemu_pixman_glyph_render(pixman_image_t *glyph,
-                               pixman_color_t *fgcol,
-                               pixman_color_t *bgcol,
-                               int x, int y, int cw, int ch);
-+#endif
-+
-+void qemu_pixman_image_unref(pixman_image_t *image);
- 
- G_DEFINE_AUTOPTR_CLEANUP_FUNC(pixman_image_t, qemu_pixman_image_unref)
- 
-diff --git a/ui/qemu-pixman.c b/ui/qemu-pixman.c
-index b43ec38bf0..5ca55dd199 100644
---- a/ui/qemu-pixman.c
-+++ b/ui/qemu-pixman.c
-@@ -145,6 +145,7 @@ int qemu_pixman_get_type(int rshift, int gshift, int bshift)
-     return type;
- }
- 
-+#ifdef CONFIG_PIXMAN
- pixman_format_code_t qemu_pixman_get_format(PixelFormat *pf)
- {
-     pixman_format_code_t format;
-@@ -158,6 +159,7 @@ pixman_format_code_t qemu_pixman_get_format(PixelFormat *pf)
+diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
+index 1150521d9d..709c8a02a1 100644
+--- a/hw/display/vhost-user-gpu.c
++++ b/hw/display/vhost-user-gpu.c
+@@ -307,6 +307,7 @@ vhost_user_gpu_handle_display(VhostUserGPU *g, VhostUserGpuMsg *msg)
+         dpy_gl_update(con, m->x, m->y, m->width, m->height);
+         break;
      }
-     return format;
- }
-+#endif
++#ifdef CONFIG_PIXMAN
+     case VHOST_USER_GPU_UPDATE: {
+         VhostUserGpuUpdate *m = &msg->payload.update;
  
- /*
-  * Return true for known-good pixman conversions.
-@@ -186,6 +188,7 @@ bool qemu_pixman_check_format(DisplayChangeListener *dcl,
+@@ -334,6 +335,7 @@ vhost_user_gpu_handle_display(VhostUserGPU *g, VhostUserGpuMsg *msg)
+         }
+         break;
      }
- }
- 
-+#ifdef CONFIG_PIXMAN
- pixman_image_t *qemu_pixman_linebuf_create(pixman_format_code_t format,
-                                            int width)
- {
-@@ -211,6 +214,7 @@ pixman_image_t *qemu_pixman_mirror_create(pixman_format_code_t format,
-                                     NULL,
-                                     pixman_image_get_stride(image));
- }
 +#endif
- 
- void qemu_pixman_image_unref(pixman_image_t *image)
- {
-@@ -220,6 +224,7 @@ void qemu_pixman_image_unref(pixman_image_t *image)
-     pixman_image_unref(image);
- }
- 
-+#ifdef CONFIG_PIXMAN
- pixman_image_t *qemu_pixman_glyph_from_vgafont(int height, const uint8_t *font,
-                                                unsigned int ch)
- {
-@@ -262,3 +267,4 @@ void qemu_pixman_glyph_render(pixman_image_t *glyph,
-     pixman_image_unref(ifg);
-     pixman_image_unref(ibg);
- }
-+#endif /* CONFIG_PIXMAN */
+     default:
+         g_warning("unhandled message %d %d", msg->request, msg->size);
+     }
 -- 
 2.41.0
 

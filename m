@@ -1,230 +1,247 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4360936eje;
-        Fri, 14 Jul 2023 16:29:00 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGvgpCSC+wLYHKyjzcduoraiuuuX63XxHHJ22mxP246lsXBIBQ51r5DC+9YaeW7FzoXKesE
-X-Received: by 2002:a05:620a:40d0:b0:767:e73b:d051 with SMTP id g16-20020a05620a40d000b00767e73bd051mr7551807qko.32.1689377339909;
-        Fri, 14 Jul 2023 16:28:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689377339; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1235997ejb;
+        Mon, 23 Oct 2023 02:31:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEyPtl05M5+u0MzVUdmK3x1vVfEGF0EhHDOmo7b9v6gv55Le+6luliecvuOAdVgZcYCMUpC
+X-Received: by 2002:a05:622a:144c:b0:419:5721:de43 with SMTP id v12-20020a05622a144c00b004195721de43mr10320271qtx.54.1698053518877;
+        Mon, 23 Oct 2023 02:31:58 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1698053518; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QY2k1kCBnhID1DorywJHlK0pFpLjGawhkLHc4n2cZJTblCvQ+jToa9MF6C1LR+dhCL
-         Jqw82Hl/0fqY0ra+N2k+qehu/NmbThbqmtPTFQs5Yb6LSqTqnhYkx9MkGAadH/0vDm8o
-         vEIXAM/FCFTYCtcUU4vnlF0fPdXMaXVtSNmiSEKgs1cVOceUbohGamKYFMvNeAT2+jUf
-         yX805RLYSv+/DfvOOZxLO4hRoL9goQINHsdrQwm+Db8A3bR/YGLjtLW+wc3mc7w8dg24
-         IRJWC2P3PoVpeE92KvvwhHWKGKL6yeNrTY0nGRgmY++VuAeUKhbzIFI36bF3vK9igtXb
-         tGPw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=L81GHH5qdREQeAwHNAnVJcdnC5gyY3YQ7Gv6tHbO35FuIU/1CcoAyphmpS+4boPOqR
+         LQuX2goFJb2asorWnmA2REoK1PQbDEuXna1V1O64b2CWvHlOO/uSRe5u3ismv1HibtkT
+         9VjaqQesnFL6vDLZRl5dSqb79JFRoI4azg8uJDL7sFCFCIYattkmVWDURAH6onbbYDGH
+         i6aIrjNT2iImvfqvp2btsEKugr6e/5S6Yv1AE1/LMw6MY8SRX1suTSWB3L4H00zXqMej
+         mkNZpDU+v6uEeaeJnRhGThxTHaXsun7hZnvoi2e0vMyYf3hqTAKVyzyberP7d8TSkltR
+         e6Lg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:feedback-id:references:in-reply-to:message-id:subject
-         :cc:from:to:dkim-signature:date;
-        bh=NYu5jlkZSkIqIRSOGkwaCvk5BdLhtCKzeYg2plVUhzo=;
-        fh=51RBXPp2dGsIxW/A/2XX6J9OY4lNIg77Uvb7eAIehHk=;
-        b=zG+1gg0aty95b8VjrOZAvQPJmMPZGOZjZgZx+8yRgPuX/0c5LiLs3SFSDR7GP4s4H+
-         SFfON5pAkJIesknkKb53oWa/mvYsv7RqZoU6vmr2KxDR6pkY+1/ST/xdOnGsSqC8wu72
-         bDHkUWjRMzR6tzDfV0wgOpebhI3Ve6QWhU0NI5sPtOsxBlZO4wACtwLQt9rP0FXtXPYu
-         sujFHPm8AR79XngKNZ9vlbsp3kxK0PnZTn6ryg29W7LK/jSKWHvkd8vj/DcIfgXXia5Y
-         9vHl+G/CZqCFgTeryd7HQLTiVRt8cJDXRTt9ReOA9381T2bYVahW/C4C1cqBdGjQjDKP
-         BVMw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=1wkHJuE7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=NVSth2NMmkh+CGzWO60K104GyETlS8BzVTqdyGdCcTI=;
+        fh=GWzuGLcVgo5tBT/mAj9FHzFWzHOk2G/weji4JF1oJ5g=;
+        b=BukBmgknz4rG3mWnGA50amaNtEomDijpJpsSHxVNooNkCO3qw4+HeHt1DTDFV15Dkx
+         59LdI2HrsH4714/WT7NISIeMJ1n0Dr5lVsXZvCJofxHeb5wftontyJ8/lgUWJBIwKna6
+         Z+u+8Tt5FGXTwN813hHpBhpqWEcimOLSKnA7JOWXnLXavOcB1/r5AutiNa9F3seQ4XX2
+         B6MKKipjxWPwHIzaWfpRGT9L+ohVSngrtxrAHqlFRCAOrEkLExd07ITuPSdyOfMJwdLK
+         t4LruWKTRIXsQVL/qY/uayMK1e6nfTJmD9t+OW0cTx9zblJCgELEiR4dOhEvBO+jM7IB
+         ov1g==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@nutanix.com header.s=proofpoint20171006 header.b=gPWmuMCz;
+       dkim=pass header.i=@nutanix.com header.s=selector1 header.b=Vm8QjLNu;
+       arc=pass (i=1 spf=pass spfdomain=nutanix.com dkim=pass dkdomain=nutanix.com dmarc=pass fromdomain=nutanix.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nutanix.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12-20020a37e10c000000b0076781e2a202si4986355qkm.779.2023.07.14.16.28.59
+        by mx.google.com with ESMTPS id u24-20020a05622a199800b0040538e3e2e4si5017473qtc.266.2023.10.23.02.31.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 16:28:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Oct 2023 02:31:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=1wkHJuE7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
+       dkim=pass header.i=@nutanix.com header.s=proofpoint20171006 header.b=gPWmuMCz;
+       dkim=pass header.i=@nutanix.com header.s=selector1 header.b=Vm8QjLNu;
+       arc=pass (i=1 spf=pass spfdomain=nutanix.com dkim=pass dkdomain=nutanix.com dmarc=pass fromdomain=nutanix.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nutanix.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qKSCR-0000lC-G4; Fri, 14 Jul 2023 19:27:47 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qurHk-0001sI-24; Mon, 23 Oct 2023 05:31:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chris@laplante.io>) id 1qKSCQ-0000kv-91
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 19:27:46 -0400
-Received: from mail-4317.proton.ch ([185.70.43.17])
+ (Exim 4.90_1) (envelope-from <raphael.norwitz@nutanix.com>)
+ id 1qurHh-0001qd-Pw; Mon, 23 Oct 2023 05:31:41 -0400
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chris@laplante.io>) id 1qKSCO-0003zd-Mx
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 19:27:46 -0400
-Date: Fri, 14 Jul 2023 23:27:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=laplante.io;
- s=protonmail3; t=1689377257; x=1689636457;
- bh=NYu5jlkZSkIqIRSOGkwaCvk5BdLhtCKzeYg2plVUhzo=;
- h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
- Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID:BIMI-Selector;
- b=1wkHJuE7qt14zGF0B5UL2CPBWUL5g3cOcOMTpWUdPgAQg/SIPLL5cmX2XvokKsOL5
- 1sZ39sJxkO8IZ3KRDZJ+s7U1Pv3sPTrQhNO50zP3x4+hFELdsGsV3r9iRZPzivLx+u
- 3oKdZq7zvZXaafV5GjDFzVH38FLJTZAAZLasiVQP3TliimkaR98PgjXVi9gRI/N0H0
- CqLX7YE16Pa4TirhlCrNvZj2LVjN2cqpbgEIZqMy0uPqU0AxghnSWyO5efOUxGlNuw
- baku2PwG9BBouNqFN/EuOtR40k1Xaq6CSwIZNDXBkW8KNk1MOA6NZCvojwem2GFDmJ
- 8wgjiilslAUpw==
-To: qemu-devel@nongnu.org
-From: Chris Laplante <chris@laplante.io>
-Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Chris Laplante <chris@laplante.io>
-Subject: [PATCH 2/6] qtest: implement named interception of out-GPIO
-Message-ID: <20230714232659.76434-3-chris@laplante.io>
-In-Reply-To: <20230714232659.76434-1-chris@laplante.io>
-References: <20230714232659.76434-1-chris@laplante.io>
-Feedback-ID: 43500449:user:proton
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.90_1) (envelope-from <raphael.norwitz@nutanix.com>)
+ id 1qurHf-0004UU-8n; Mon, 23 Oct 2023 05:31:41 -0400
+Received: from pps.filterd (m0127843.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id
+ 39N8QgK4018728; Mon, 23 Oct 2023 02:31:36 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ from:to:cc:subject:date:message-id:references:in-reply-to
+ :content-type:content-id:content-transfer-encoding:mime-version;
+ s=proofpoint20171006; bh=NVSth2NMmkh+CGzWO60K104GyETlS8BzVTqdyG
+ dCcTI=; b=gPWmuMCzVlMdOzk97MuQS4G8bVD6U3G2x+r1HdJELjjR6sVSm3kn0V
+ 0B657Izu5PFvEQ7PMNg+kVYZWJHsw+Kt0H60bV7wLBgUJH4OLyI4kecdUy29AlR4
+ ZMrvC2VtSKc5AS8H0K4f5NDHXARqvLGabMzMjCmnWyWyeRu7al6TOdvm91T8UVRv
+ BmTxQKlALF9BlVpsok5MxPXOnrX3jIqsJNtiqfrXhnsynK83XAJoYOcRR+yhOWhl
+ CNsyKhhRbUVtt0ID0mkvSoHe2M8w1t2NIV8Fd8j3HIb8Y6UGAtqEi0VohCMjUsb7
+ lZWOTJ2Qje/lAAB4HbnF5KUfxecF6jMw==
+Received: from nam12-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12lp2168.outbound.protection.outlook.com [104.47.59.168])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 3tvcrejty4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 23 Oct 2023 02:31:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WBmvqmyyTFXtC02JwFZVkHpqHBN6QUhDN25pJDTg6cUCpkH9IcZMATC+OhkCHqosWEmWGFPlO1bZ/rG78Ku/1KPfP5M9cyWhYDxXixvNSilx6ljMxYaXQ1VEAo6X9rHCRmE363rSNiqG6e0BqrdUDNqU8uK4UmNDfx5lU1pOzBx02pQiw9orJd3/8bsDLPZhJ4srwQdRgsgD3yRL5bexhA/TNXfbbHAKqtJrqPygQZ5wEQIiPrIeLjYh6KBR0NLzLqMYpn8+M7hR8N4h2oxsqXHPKQl9wlYEKQ+eLfJPXkJqmQKZVkLJ6OByD0wOMr/oQ9uGVNsoDM+RUQg2JKlPeA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=NVSth2NMmkh+CGzWO60K104GyETlS8BzVTqdyGdCcTI=;
+ b=THnfVxEz6YeRLBUudk06HH65/AfpaND81N0xjvhB/RqwIBaKo1hfEuxUYVbZu7q0wwDSuaCwxCwtbW5erYOLPcnm5sydBUslGNuOxNkHtN20XzMjvE09AdOAyNpYNJeARLWqPTvKKCmqIATRRTYiyD67mQ6JAvLLzKtPk23rROLc9yt3Acx8XobBYXU7ajTy/+pR5+E3PbybQ+ZElbjp7xPNVb43k+tHNhsyWSRw957rE7WBrQi+NviWeoWMBT2vWHBaYVIF96D4JHQ1E1aHmpL8NoHNrVqMY+A6LzCeyCmEOJ/3IdvXJRDCm2Pi0pcJxtzpCE8eFAnz3NsFSrr/WA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=NVSth2NMmkh+CGzWO60K104GyETlS8BzVTqdyGdCcTI=;
+ b=Vm8QjLNuRuLvY2kC/0xeTIwCa3g071465wqs+6qzaH55ZX6RL3awzBMPoJm6U/GCt79AGOjhjyiKTrkGgvlE5ApUo+bBO7xWEH1TE3krQV0516NsjqsV1yfXM9HH+lJ2bjcnZ2fWyiKpT0vj8r+BsGnPx51S7LAHOWtMhhtb9cZgp3SLzi7vi5EifnfPXYJJiHP8CkhUfrtEyd39bzYUSQa22Ef4l2iVToDEXTwDIyxDp/Bg64q45jAZmjvjJFjSaTY9u/tmOn/EeUihh2jCynAkxswI8XlfR26QOa34H1QvklMbYjj8IT2VD8o1xaT4a85mwvulPU6m6D0n1Q4kpg==
+Received: from BL3PR02MB7938.namprd02.prod.outlook.com (2603:10b6:208:355::20)
+ by CO6PR02MB7572.namprd02.prod.outlook.com (2603:10b6:303:a9::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.31; Mon, 23 Oct
+ 2023 09:31:34 +0000
+Received: from BL3PR02MB7938.namprd02.prod.outlook.com
+ ([fe80::69bc:f889:2ed:d7fd]) by BL3PR02MB7938.namprd02.prod.outlook.com
+ ([fe80::69bc:f889:2ed:d7fd%6]) with mapi id 15.20.6907.032; Mon, 23 Oct 2023
+ 09:31:34 +0000
+From: Raphael Norwitz <raphael.norwitz@nutanix.com>
+To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+CC: "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [RFC PATCH 47/75] contrib/vhost-user-scsi: add fallthrough
+ pseudo-keyword
+Thread-Topic: [RFC PATCH 47/75] contrib/vhost-user-scsi: add fallthrough
+ pseudo-keyword
+Thread-Index: AQHZ/aocB7fmaSDSMUmZEeezEtcwFLBXLBeA
+Date: Mon, 23 Oct 2023 09:31:34 +0000
+Message-ID: <D40F00D9-DDA6-4577-A8BD-96F08F8DE034@nutanix.com>
+References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
+ <b9b8043e46c25e0c209c2f96e9b8b44f40133fc1.1697034504.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <b9b8043e46c25e0c209c2f96e9b8b44f40133fc1.1697034504.git.manos.pitsidianakis@linaro.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Apple Mail (2.3696.120.41.1.1)
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL3PR02MB7938:EE_|CO6PR02MB7572:EE_
+x-ms-office365-filtering-correlation-id: 08ac9f53-36f4-4fa4-03ff-08dbd3aad915
+x-proofpoint-crosstenant: true
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ZIQDDSkR6Nb7fFt0sroJxHpLMz3CSSoVcN9n3K2G8wsWdYIwtd6mwh0K6/ZMoF2/QG3oy+jewNFRtspGrYOValOxYfwxqXBQ2wm1XkTSra5X8UMqWVoWfqwtK+5DE6mbfV90rJWgDNMjhc6GsIKS4DMGwg3RMdMCCZLqHipwie2UKVCF+aa+bPeoV77hjWefYNISiARu0QxtAmkC09PsSBH4ffvqv/Ze2x4Q/YXVpVuUV/GPqvOsUGctX09Vnqk3uOahwohel2qRvj7rOH+Z6VtSEhmwMEkGZuyFnw8B2BuXy3c994RZ+lLpp7JRLJYCAqxEauyaS5niMk2+fNaPMxvwp3UbELy6ttbn7RUuzFneSFkZqmIPcZccEaMSJgHpdIeu55peoZs541kBneb3U+LIAa0zu+oQEdDcxCmfrNDTCT+WijVx/wULzhaMCrC1L+iq0YpfLlkx9krqt5RlKiI7dHx0Si1qiMx1Yspd0RG/m0t1IaVVcgldAcAMI7srKix82/NLhcgfhM7S47VLdTeube0kPWG7wvRjPOBvUix61qOIVbKbReJi0ZJ2j9JWrmdu57htFAYVxcvLogG6zbhbcxDAhz/aalFGZ2siSmkeQm5gjfJHe+j/X3PqHeSYIYrsg5pJhbiMNvj6vqQ2jQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR02MB7938.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(136003)(396003)(376002)(39860400002)(346002)(230922051799003)(186009)(451199024)(64100799003)(1800799009)(38070700009)(38100700002)(2906002)(4744005)(41300700001)(44832011)(86362001)(5660300002)(36756003)(8676002)(8936002)(4326008)(33656002)(2616005)(6506007)(478600001)(71200400001)(91956017)(122000001)(66946007)(76116006)(316002)(54906003)(64756008)(66446008)(66476007)(66556008)(6916009)(83380400001)(6486002)(53546011)(6512007)(45980500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?So+63OKCrAc7Y41I7/7OXqOLTNo443YIbLJitJyt03XrYkch4KQx5HbHYa0S?=
+ =?us-ascii?Q?zPNJqOewVBuV3rlCyonynkkKccNYgqy5CRHr1oU0jjyNJ82EhS9BZ5gkYlIY?=
+ =?us-ascii?Q?VXQW7I2wlkbVbLpEwjfNtrjNyP+fADeCk1IeTFV02/y/6Fljw3AFfvu1Lu2G?=
+ =?us-ascii?Q?fPLSfqXsdU1LaB3FhG6pZYcXbKgty0gIiCqKsfgVvTcLKuYatkim+0sKKFII?=
+ =?us-ascii?Q?NRuzNSyYSMrXhqZzs5L9lDEI6ladU4mbyMtJCLyXzJPs9hzjsPO6h2E4bi02?=
+ =?us-ascii?Q?S/lJp3cvF3XUAZ2cmuiU/DfxDZpAAq+9vltD6MsCA9wO5v2SKlofd/0j/0ZX?=
+ =?us-ascii?Q?AcMupVDTgl5bxT/0+YGi/z4eUBkye2ijb5coBz75W5Xu0nI1lTLxvvd0CZzN?=
+ =?us-ascii?Q?QYwB28xRp4jZ1duRfXsrz2xaow7HGCeQTDY8kJqa4/i+GHYCpPuEyGAUo80x?=
+ =?us-ascii?Q?SA5NX2SIcXO0W5ocSvIEOJWHDtVTJ6bYkddIqrqfHwG1unazgW7VbnGLi37B?=
+ =?us-ascii?Q?8NjOzGAvUJY4Y9jXHEAdD5jN+UWERbe81MyY8sX2x5JxoyKsDxHBm5bwTqM1?=
+ =?us-ascii?Q?q+NxAANyNLEVCShA4+U7rj0DYxYtOwLpT8N+t5rQ62TbgRQQqnHs/3fZJokz?=
+ =?us-ascii?Q?iDjV85DCZR5boCjIsJEc3z+Fdw4Ic9PBJlWScAuLkM8+LuPTjEKp8RXAKHaj?=
+ =?us-ascii?Q?k6zhv/ptjOJHIlDti9iuTcMIxFBshfVAt8jjeVdjGFF+21YtyTAWHeTmdiGn?=
+ =?us-ascii?Q?LJptiRwrcInHwxHwFhq6pxQiICbrPObz8lSN14izbJxVjDMZsgWtJYJjbw6j?=
+ =?us-ascii?Q?BwwGkyHnkPdiNeZHRobmZaGdcfcI2woBWcYiQa8DTopJVBInjrM0YO1iC457?=
+ =?us-ascii?Q?B5VeqaVV9yr29z5RmZGNJZMq+fpp+l/UDf+slute8CMyIcYvdmjGVZ8K59c+?=
+ =?us-ascii?Q?iaMHqGv/quEvPz19sFcEtBCAapk74eKkY8QbIxmMJfzvtOmasHsKKHumJLzb?=
+ =?us-ascii?Q?sCceFRQxSVKoAw+SSxn2EWKyeX2C+j6bwvB1RGd80j4AKd4nMjNcoR8ZQmQh?=
+ =?us-ascii?Q?3LnJ0+M1pvP5cGoiv3MNL9XhJGqrsiSJlajfbO4mXcloQs+yOL5PMHVozxUT?=
+ =?us-ascii?Q?1vVq7B/3+CuIoP2YC62Ue7u43ZFgAU6bYVCq+XkHFye1Ae5sBYn28I/ae2Gb?=
+ =?us-ascii?Q?l7h0oIoWnqAjCMlGcRm/lAgFoc/9t7rKMuRSUjHizwerFtT1u3KKr7JT5xHH?=
+ =?us-ascii?Q?bj+B22YQg40yQBDduRF49ECGIlfLznE+7erZIfi8zQl3+2J5FuAFLUYobiFD?=
+ =?us-ascii?Q?1+HMpc3uS1Q3jDr1HR4hxtmdpmgqZCHMJdlXWlNV1O9CJvM+aaOefPM7J13R?=
+ =?us-ascii?Q?qEVoBlG1zQ/YubnarEsBLv0Tv0oUnzMYWHg0a2nacZvW2aRL1ORZR0Azy2UB?=
+ =?us-ascii?Q?aow8XUQrkp48noNwN7FsgZbHaF1Q0X7LxCEFL64MLLMeBYn174FB8asb46ul?=
+ =?us-ascii?Q?yQhxmTRVLbw4CKzUMl0OxMgEpAlcKaKzQUrNy/j5WtBFKbt7vEO2cTf64hs0?=
+ =?us-ascii?Q?fopbYey1qD0IG8SUeJtdjcx8XbsrmfhWYODQ16CjYlwhMqgVThjHBuI+Wygp?=
+ =?us-ascii?Q?YJZCTS0Baks1AKpzsi6MVgL7oMQRWHBo+WNILcr9dmu5mmgxDCCDO0+0jm7a?=
+ =?us-ascii?Q?ak7lR6CdIKUn8ZZkc4XPdRPR9QY=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <9446855C6257344D97151CB92A4AF741@namprd02.prod.outlook.com>
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=185.70.43.17; envelope-from=chris@laplante.io;
- helo=mail-4317.proton.ch
+MIME-Version: 1.0
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR02MB7938.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 08ac9f53-36f4-4fa4-03ff-08dbd3aad915
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Oct 2023 09:31:34.2742 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qznSuzRwo8dJCWsOf+X1cMKeHjcqFiiYQdWu7+3ZFr/9tEe3Ww6Hetg6XKe49RKUJyX9O7e3p+X7I2vq7pllsbKJtOOt6s0lfLsgdLmZ41M=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR02MB7572
+X-Proofpoint-ORIG-GUID: ebOQb08-OxWpsyp3_Yf_EQww5RHzKKIF
+X-Proofpoint-GUID: ebOQb08-OxWpsyp3_Yf_EQww5RHzKKIF
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-23_07,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=raphael.norwitz@nutanix.com; helo=mx0b-002c1b01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jkdqJNwvc/2j
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gWWY1JQ2jN3T
 
-Adds qtest_irq_intercept_out_named method, which utilizes a new optional
-name parameter to the irq_intercept_out qtest command.
 
-Signed-off-by: Chris Laplante <chris@laplante.io>
----
- softmmu/qtest.c        | 39 ++++++++++++++++++++++++++-------------
- tests/qtest/libqtest.c |  6 ++++++
- tests/qtest/libqtest.h | 11 +++++++++++
- 3 files changed, 43 insertions(+), 13 deletions(-)
 
-diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index f8d764b719..7c3dea5760 100644
---- a/softmmu/qtest.c
-+++ b/softmmu/qtest.c
-@@ -388,8 +388,12 @@ static void qtest_process_command(CharBackend *chr, gc=
-har **words)
-         || strcmp(words[0], "irq_intercept_in") =3D=3D 0) {
-         DeviceState *dev;
-         NamedGPIOList *ngl;
-+        bool is_named;
-+        bool is_outbound;
-=20
-         g_assert(words[1]);
-+        is_named =3D words[2] !=3D NULL;
-+        is_outbound =3D words[0][14] =3D=3D 'o';
-         dev =3D DEVICE(object_resolve_path(words[1], NULL));
-         if (!dev) {
-             qtest_send_prefix(chr);
-@@ -408,19 +412,28 @@ static void qtest_process_command(CharBackend *chr, g=
-char **words)
-         }
-=20
-         QLIST_FOREACH(ngl, &dev->gpios, node) {
--            /* We don't support intercept of named GPIOs yet */
--            if (ngl->name) {
--                continue;
--            }
--            if (words[0][14] =3D=3D 'o') {
--                int i;
--                for (i =3D 0; i < ngl->num_out; ++i) {
--                    qemu_irq *disconnected =3D g_new0(qemu_irq, 1);
--                    qemu_irq icpt =3D qemu_allocate_irq(qtest_irq_handler,
--                                                      disconnected, i);
--
--                    *disconnected =3D qdev_intercept_gpio_out(dev, icpt,
--                                                            ngl->name, i);
-+            /* We don't support inbound interception of named GPIOs yet */
-+            if (is_outbound) {
-+                if (is_named) {
-+                    if (ngl->name && strcmp(ngl->name, words[2]) =3D=3D 0)=
- {
-+                        qemu_irq *disconnected =3D g_new0(qemu_irq, 1);
-+                        qemu_irq icpt =3D qemu_allocate_irq(qtest_irq_hand=
-ler,
-+                                                          disconnected, 0)=
-;
-+
-+                        *disconnected =3D qdev_intercept_gpio_out(dev, icp=
-t,
-+                                                                ngl->name,=
- 0);
-+                        break;
-+                    }
-+                } else if (!ngl->name) {
-+                    int i;
-+                    for (i =3D 0; i < ngl->num_out; ++i) {
-+                        qemu_irq *disconnected =3D g_new0(qemu_irq, 1);
-+                        qemu_irq icpt =3D qemu_allocate_irq(qtest_irq_hand=
-ler,
-+                                                          disconnected, i)=
-;
-+
-+                        *disconnected =3D qdev_intercept_gpio_out(dev, icp=
-t,
-+                                                                ngl->name,=
- i);
-+                    }
-                 }
-             } else {
-                 qemu_irq_intercept_in(ngl->in, qtest_irq_handler,
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index c22dfc30d3..471529e6cc 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -993,6 +993,12 @@ void qtest_irq_intercept_out(QTestState *s, const char=
- *qom_path)
-     qtest_rsp(s);
- }
-=20
-+void qtest_irq_intercept_out_named(QTestState *s, const char *qom_path, co=
-nst char *name)
-+{
-+    qtest_sendf(s, "irq_intercept_out %s %s\n", qom_path, name);
-+    qtest_rsp(s);
-+}
-+
- void qtest_irq_intercept_in(QTestState *s, const char *qom_path)
- {
-     qtest_sendf(s, "irq_intercept_in %s\n", qom_path);
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index 3a71bc45fc..e53e350e3a 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -371,6 +371,17 @@ void qtest_irq_intercept_in(QTestState *s, const char =
-*string);
-  */
- void qtest_irq_intercept_out(QTestState *s, const char *string);
-=20
-+/**
-+ * qtest_irq_intercept_out_named:
-+ * @s: #QTestState instance to operate on.
-+ * @qom_path: QOM path of a device.
-+ * @name: Name of the GPIO out pin
-+ *
-+ * Associate a qtest irq with the named GPIO-out pin of the device
-+ * whose path is specified by @string and whose name is @name.
-+ */
-+void qtest_irq_intercept_out_named(QTestState *s, const char *qom_path, co=
-nst char *name);
-+
- /**
-  * qtest_set_irq_in:
-  * @s: QTestState instance to operate on.
---=20
-2.39.2
+> On Oct 13, 2023, at 3:48 AM, Emmanouil Pitsidianakis <manos.pitsidianakis=
+@linaro.org> wrote:
+>=20
+> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 
+Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+
+> ---
+> contrib/vhost-user-scsi/vhost-user-scsi.c | 3 ++-
+> 1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/contrib/vhost-user-scsi/vhost-user-scsi.c b/contrib/vhost-us=
+er-scsi/vhost-user-scsi.c
+> index 9ef61cf5a7..71076f579b 100644
+> --- a/contrib/vhost-user-scsi/vhost-user-scsi.c
+> +++ b/contrib/vhost-user-scsi/vhost-user-scsi.c
+> @@ -109,14 +109,15 @@ static struct scsi_task *scsi_task_new(int cdb_len,=
+ uint8_t *cdb, int dir,
+> static int get_cdb_len(uint8_t *cdb)
+> {
+>     assert(cdb);
+>=20
+>     switch (cdb[0] >> 5) {
+>     case 0: return 6;
+> -    case 1: /* fall through */
+> +    case 1:
+> +            fallthrough;
+>     case 2: return 10;
+>     case 4: return 16;
+>     case 5: return 12;
+>     }
+>     g_warning("Unable to determine cdb len (0x%02hhX)", (uint8_t)(cdb[0] =
+>> 5));
+>     return -1;
+> }
+> --=20
+> 2.39.2
+>=20
 

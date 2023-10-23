@@ -1,141 +1,247 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp72155ejt;
-        Mon, 19 Jun 2023 22:09:49 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7U6M9oWHsHrd3tCGAhcq1FRRpOrTdYhdelPEjQmKZ4o1tha4m4V2ovC9s2z7B+P4Ykj3It
-X-Received: by 2002:a05:6214:248c:b0:630:5fb:e9ff with SMTP id gi12-20020a056214248c00b0063005fbe9ffmr12161701qvb.65.1687237789066;
-        Mon, 19 Jun 2023 22:09:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687237789; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1291224ejb;
+        Mon, 23 Oct 2023 04:31:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGymz+79nQ2ncjcrPn1sF9mcJUbatpGyEcUDi02szVBIZCWQJgBu6DWhCGDw70gq8fhaop5
+X-Received: by 2002:a05:620a:c52:b0:778:b0f5:d4ef with SMTP id u18-20020a05620a0c5200b00778b0f5d4efmr8392673qki.30.1698060696827;
+        Mon, 23 Oct 2023 04:31:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698060696; cv=none;
         d=google.com; s=arc-20160816;
-        b=usKFQr3xv+fCmQ0ZuIWLj5YewQjVjMx5bMxZhhG1aFc/BkH+se3V3ZcoRX3uPmSIQl
-         J7jlxk9BTiYingeLVFvGRTKWH+mVUfrYaerNymQm65b5u+pb/QzQVN6qPVlxwjzbsR4c
-         DP4asVkzDRykp5lFNg9a0MXv0A4KOBpQs3n6tug+hZUbUmdDtd22biWqjyASqHSYB8av
-         he+TJqYwpDzf1ofIHlwr66BkM/4RpemLvp2TZfxNclXWgIym1Hr2qniQDBl3Ut1Krqw4
-         Mnu6/h75o6TDZxaut8UIgm7q5aaOlB97zwMsYdirSsMIM9DyubgWnV+OOM+8in8EK7bs
-         5zkQ==
+        b=nyibVdFUWcanVYg1WviHcBKSHY+xpOXYNrwDpoZtjQMcxqOTjiyavUyAvytgBa/Br/
+         hu6ZUShXdnSbvXPBH2kdTxwBS6BTcZ1HNd2A4ZXGVb9p0aILAFr6k9K0QAbvwv5Etjun
+         thEJQB3GizROCp2oLTS6qBpD8wGXmmIH2u83kW49i8rLbCGmjJJiqyZLplAViNjs9czZ
+         csu2CZyY6CjN6JDJUTKArf/wbYZFa6cFXy3g4SnsWAXNYgJhiAYMlFGAyYsTZIPTTwFp
+         qA76Rt6WcBdNL7wBopzJX2rna4ivLJMXSLztU214aMNJovAH7gBSYFDk3LlkE7bkhsGe
+         sNTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=tO9RhSBgd5mDrWMLbAqZqZxnLiz+ksyFVZEevX5A3ys=;
-        b=Fhm5hdynvHTWVGbpb72IXEjal0r8mf+VvKMwQQZ51k2uikNckmAyIXqrZLneO7WhVc
-         l0VfhMTlOBFRovtYZw9Yf5/wGQKUfOhgbSXlMQHleJq3TPn6zgw3uXqgBkIvkO3Gv/BH
-         L1hJFCYsQpmURcJdopjq+Hj77h3uzWBhq1vPLo1Xj6JfzXdlcOT+q/WaV3D1t4ZUrcCU
-         MfDXELUHimU8j4nucmFfUFwMTbqby3iGsePFPYiE5KHzgkPrSm9NDpzZeeYpfr6Eo25q
-         weDqYTJhOGk9dtwNwRiN2MemDvUUS+/LHja5u8q49idvODV5bLgtLGWVVkyzPvl8jf6O
-         hFew==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=KOjulUy82DdH6F0r2HJkH6V+VZZ7jLswAfXWTlKYOx4=;
+        fh=r4fz3Foqx0ggjO5oI8v2vjNw5kzcdWLA6oCTkzfSTUk=;
+        b=FglNQURE6vVvb8d/KmlMprPtUgeJTsm0AjhMz0XeWS6jqqgG53E+HuVhfVLxUgu4+F
+         L8EVLMvP9nUeijLSsZcvPDtLZdeItHN/In1Un72MoaIK9i9ajstZKD1soTZC4Vlc4umT
+         7nucs5dfPI4QqWtqx/UdOdPIqFCFm8upz9e1Fa/bjnCZt2o5x3t/7/Mic1wEyKljYxtg
+         oBmDsgO6saWljf2L1/lDWDeorB29KXjyJtzplwcMMrpJCrgzJWXIXjph/JLGN9rVzzdt
+         iu66oFDQj+TfCwdBV/NJLsOedry1f4vGPOvM5AM19WtGxqfu3ZibXfJcCYVLBnPauQ8m
+         vgRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xVg4xUaN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TwZknux9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a0562141c0700b006262e4d428asi538556qvc.191.2023.06.19.22.09.48
+        by mx.google.com with ESMTPS id q13-20020a05620a0d8d00b00775762f28c2si5212475qkl.81.2023.10.23.04.31.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jun 2023 22:09:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Oct 2023 04:31:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xVg4xUaN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TwZknux9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qBTc8-0004jw-0o; Tue, 20 Jun 2023 01:09:12 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qut9F-0007Dx-TD; Mon, 23 Oct 2023 07:31:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBTc6-0004if-3v
- for qemu-devel@nongnu.org; Tue, 20 Jun 2023 01:09:10 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBTc3-0002gH-FR
- for qemu-devel@nongnu.org; Tue, 20 Jun 2023 01:09:09 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-987341238aeso500121866b.3
- for <qemu-devel@nongnu.org>; Mon, 19 Jun 2023 22:09:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687237745; x=1689829745;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tO9RhSBgd5mDrWMLbAqZqZxnLiz+ksyFVZEevX5A3ys=;
- b=xVg4xUaNN1nMMLVtn8EjhqQiCDSZyZP1wqomZjwdAib8gt5BcXjXLM7P0OlI9eD9xt
- I+dgAbnmrOZ155QBIlvDkfd0dbHBKmSL35UGVCDk7YePA3+xQ/ffnTnQFXM8di4pZxPy
- VahqJAtEPTlg7CoXW5tdf7M4LBMd46rvOwX74bq9ubDveKaCZ1P1YmgrOag8iyrT6Izs
- SXmZ5vEvdHBuqna8UnPgtLW8O+rc+NoELbDVwxXCYrvPAAJ5B0yuFR31q8yflz+M89Wg
- s/dFvt3GgNMdneswn2/9Hm2LMc3l8VsrV1W44OsC2R9eNn46bkViaQMKLvlNkYP2ezE+
- FZ0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687237745; x=1689829745;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tO9RhSBgd5mDrWMLbAqZqZxnLiz+ksyFVZEevX5A3ys=;
- b=L5R8mTGGSWTDB+I7hIo3npQl/s5PZkuhEwjtegMUhhp7w4gnUbjYoSciY0fk6kMkua
- NHE1DXF1PNWubvbXFj58xnmV2R1C4hEy1GqRcLOQG/bUvHdyd2szsvYMoZRJLnuMtYp3
- ojBA/LH/CswhuxB3LSAgdN3LGxzZA9nz4XZiymKlK5ib3S2HjBm7/+DVB4aj5SytYuy7
- Kf34i3sycAvnklYkeOGflFJRRlloXsQ7UGYee8coHuDvqfVddM9ofkB2hRcVMEqmdKH6
- 6mpNAHelUy0T3YreQ5+HYEVbEwd9NvHnP8Pqizv1kOiaL0EYg94lJ8kCfQf6rILjCmEO
- JNVg==
-X-Gm-Message-State: AC+VfDxfOjHDskl+zB8BSlPyyOUrew/pTFfxebgUQgrN/rJlPVvh9gL0
- CK8gNGfhj5B3O4lVcy7n/V+s8A==
-X-Received: by 2002:a17:907:3685:b0:973:c070:1b5f with SMTP id
- bi5-20020a170907368500b00973c0701b5fmr9812828ejc.44.1687237745513; 
- Mon, 19 Jun 2023 22:09:05 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.183.29])
- by smtp.gmail.com with ESMTPSA id
- a4-20020a17090640c400b009788dfde0b2sm659743ejk.12.2023.06.19.22.09.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jun 2023 22:09:05 -0700 (PDT)
-Message-ID: <605d50ee-071c-2a38-60a3-8e3e296e32c9@linaro.org>
-Date: Tue, 20 Jun 2023 07:09:03 +0200
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1qut9B-0007C6-6g
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 07:31:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1qut99-0003R8-IE
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 07:31:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698060658;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KOjulUy82DdH6F0r2HJkH6V+VZZ7jLswAfXWTlKYOx4=;
+ b=TwZknux9Mpf+/IBCuBiSNjdq4FfZk6xkDcYmLtvBy3f+OyutfxpVnwpLtyfN97koJzBvqG
+ Eg0UXyoQdCJFkGGU7A8MdIvJziPWwwUVGJ0SaEkQnVLOBEI3bVFSIQJpp6Uh7ypxrI0akU
+ ND/AjR1L7V4obTjLDRAzOmwsJuVeQDM=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-583-2P5UYhB5NDW7HUYRcMz6Kg-1; Mon,
+ 23 Oct 2023 07:30:57 -0400
+X-MC-Unique: 2P5UYhB5NDW7HUYRcMz6Kg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E7D9C1C29EB3;
+ Mon, 23 Oct 2023 11:30:56 +0000 (UTC)
+Received: from localhost (unknown [10.39.208.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7D6112166B26;
+ Mon, 23 Oct 2023 11:30:55 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v5 01/19] build-sys: add a "pixman" feature
+Date: Mon, 23 Oct 2023 15:30:28 +0400
+Message-ID: <20231023113047.2572137-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
+References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH v2 33/38] crypto: Implement aesdec_IMC with AES_imc_rot
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com
-References: <20230609022401.684157-1-richard.henderson@linaro.org>
- <20230609022401.684157-34-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230609022401.684157-34-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4j7uH6dpzTF2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3vhlkNhHIjMC
 
-On 9/6/23 04:23, Richard Henderson wrote:
-> This method uses one uint32_t * 256 table instead of 4,
-> which means its data cache overhead is less.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   crypto/aes.c | 42 +++++++++++++++++++++---------------------
->   1 file changed, 21 insertions(+), 21 deletions(-)
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+For now, pixman is mandatory, but we set config_host.h and Kconfig.
+Once compilation is fixed, "pixman" will become actually optional.
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ meson.build                   | 10 ++++++++--
+ include/ui/qemu-pixman.h      |  2 ++
+ Kconfig.host                  |  3 +++
+ meson_options.txt             |  2 ++
+ scripts/meson-buildoptions.sh |  3 +++
+ 5 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 4961c82a6b..395d7155f6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -813,10 +813,14 @@ if 'ust' in get_option('trace_backends')
+                      method: 'pkg-config')
+ endif
+ pixman = not_found
+-if have_system or have_tools
+-  pixman = dependency('pixman-1', required: have_system, version:'>=0.21.8',
++if not get_option('pixman').auto() or have_system or have_tools
++  pixman = dependency('pixman-1', required: get_option('pixman'), version:'>=0.21.8',
+                       method: 'pkg-config')
+ endif
++if not pixman.found() and (have_system or have_tools)
++  error('FIXME: pixman is currently required')
++endif
++
+ zlib = dependency('zlib', required: true)
+ 
+ libaio = not_found
+@@ -2125,6 +2129,7 @@ config_host_data.set('CONFIG_SECCOMP', seccomp.found())
+ if seccomp.found()
+   config_host_data.set('CONFIG_SECCOMP_SYSRAWRC', seccomp_has_sysrawrc)
+ endif
++config_host_data.set('CONFIG_PIXMAN', pixman.found())
+ config_host_data.set('CONFIG_SNAPPY', snappy.found())
+ config_host_data.set('CONFIG_SOLARIS', targetos == 'sunos')
+ if get_option('tcg').allowed()
+@@ -2843,6 +2848,7 @@ have_ivshmem = config_host_data.get('CONFIG_EVENTFD')
+ host_kconfig = \
+   (get_option('fuzzing') ? ['CONFIG_FUZZ=y'] : []) + \
+   (have_tpm ? ['CONFIG_TPM=y'] : []) + \
++  (pixman.found() ? ['CONFIG_PIXMAN=y'] : []) + \
+   (spice.found() ? ['CONFIG_SPICE=y'] : []) + \
+   (have_ivshmem ? ['CONFIG_IVSHMEM=y'] : []) + \
+   (opengl.found() ? ['CONFIG_OPENGL=y'] : []) + \
+diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
+index e587c48b1f..d37feb5e3c 100644
+--- a/include/ui/qemu-pixman.h
++++ b/include/ui/qemu-pixman.h
+@@ -6,11 +6,13 @@
+ #ifndef QEMU_PIXMAN_H
+ #define QEMU_PIXMAN_H
+ 
++#ifdef CONFIG_PIXMAN
+ /* pixman-0.16.0 headers have a redundant declaration */
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wredundant-decls"
+ #include <pixman.h>
+ #pragma GCC diagnostic pop
++#endif
+ 
+ /*
+  * pixman image formats are defined to be native endian,
+diff --git a/Kconfig.host b/Kconfig.host
+index d763d89269..b6ac2b9316 100644
+--- a/Kconfig.host
++++ b/Kconfig.host
+@@ -11,6 +11,9 @@ config OPENGL
+ config X11
+     bool
+ 
++config PIXMAN
++    bool
++
+ config SPICE
+     bool
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 3c7398f3c6..de0e616e76 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -224,6 +224,8 @@ option('l2tpv3', type : 'feature', value : 'auto',
+        description: 'l2tpv3 network backend support')
+ option('netmap', type : 'feature', value : 'auto',
+        description: 'netmap network backend support')
++option('pixman', type : 'feature', value : 'auto',
++       description: 'pixman support')
+ option('slirp', type: 'feature', value: 'auto',
+        description: 'libslirp user mode network backend support')
+ option('vde', type : 'feature', value : 'auto',
+diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+index 7ca4b77eae..8a75796c04 100644
+--- a/scripts/meson-buildoptions.sh
++++ b/scripts/meson-buildoptions.sh
+@@ -159,6 +159,7 @@ meson_options_help() {
+   printf "%s\n" '  pa              PulseAudio sound support'
+   printf "%s\n" '  parallels       parallels image format support'
+   printf "%s\n" '  pipewire        PipeWire sound support'
++  printf "%s\n" '  pixman          pixman support'
+   printf "%s\n" '  plugins         TCG plugins via shared library loading'
+   printf "%s\n" '  png             PNG support with libpng'
+   printf "%s\n" '  pvrdma          Enable PVRDMA support'
+@@ -416,6 +417,8 @@ _meson_option_parse() {
+     --disable-parallels) printf "%s" -Dparallels=disabled ;;
+     --enable-pipewire) printf "%s" -Dpipewire=enabled ;;
+     --disable-pipewire) printf "%s" -Dpipewire=disabled ;;
++    --enable-pixman) printf "%s" -Dpixman=enabled ;;
++    --disable-pixman) printf "%s" -Dpixman=disabled ;;
+     --with-pkgversion=*) quote_sh "-Dpkgversion=$2" ;;
+     --enable-plugins) printf "%s" -Dplugins=true ;;
+     --disable-plugins) printf "%s" -Dplugins=false ;;
+-- 
+2.41.0
 

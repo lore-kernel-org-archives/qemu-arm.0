@@ -1,94 +1,94 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1332118ejb;
-        Mon, 23 Oct 2023 05:42:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGnVhTn+8pS9v1euDDWbmGltdzAXYdezuGuZNP0+N5WxBpeiJZreyV8uF/DnMs6IGuyVW+N
-X-Received: by 2002:a05:6214:21e8:b0:66d:237d:8f75 with SMTP id p8-20020a05621421e800b0066d237d8f75mr10785572qvj.35.1698064953596;
-        Mon, 23 Oct 2023 05:42:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698064953; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1334427ejb;
+        Mon, 23 Oct 2023 05:46:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHjYDcLVV0TBfjKkDfTvUFIfpaCzEvUHK3R9jv7i7OypWT+FDBIwY2S8Y73NRiF7e0UahQO
+X-Received: by 2002:a05:620a:2991:b0:773:e1e7:bb2d with SMTP id r17-20020a05620a299100b00773e1e7bb2dmr11131397qkp.60.1698065193028;
+        Mon, 23 Oct 2023 05:46:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698065193; cv=none;
         d=google.com; s=arc-20160816;
-        b=QhxW2TAOUtXv81+gUo5R058IBnJ9jdn1LTMb4cKXlRVNLbFYPHRpAGInKoPYYcDXNK
-         /kbu091Dh6XS4IrnL7RvceiPLBgKjuAZl0G+tvotETXidQKAuu82geiI8tgHCDO5gFyV
-         mN8P9BC7XNz4AjeWoe87qQtapDz1c3r1DW2U6CquFF2ThmcTJalv9r8lgO25QHBcS3iJ
-         Va7tmMSX1MAEEbImyLj69bkXDVwJ7beDy4G5aX1mnYXqB8djGKyupRuG9cleqZoCPHWz
-         I3SGi7YBJovcxVhmItHXVVUpR92STrlb9QrEyj63khRnWXKJGWrB4vl5k/ftu0C4H65g
-         DI1Q==
+        b=fKl5wHvXxEi4Aww0g07Ms6+EhUX9uoWMBTkaIidZ+Jm8/vgrdWwEeC0tlVxnzUPlwg
+         EbI/HnYjqpS9Juf/IwNHRoAg7hoYW69d16epP5Ny9jFhGRFk3fazHJVn1uZsYxI+yy4v
+         brFdDzMp8sl3GJ8g82AhWaR5B+pWguKc137PCzasuRhRFDQPYM6stGFmDe2N9xXl6DEV
+         E3VQ6hwix0mtp2mJObhANOnL1sOsTBGFnTFbVFFWBZ8CHRBXkjP8bXvAlppFy9nRQQ/f
+         hWFLRrRndmmOnCp8RVtLvRfcCNa9cYPDxF496QBgRWSveTJ5KN3EhagpwYozhBo3PqVF
+         4eSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=sL86v2mc3VZ99aedO1TusOCiA+FWuj8pby0T4XoGr0Y=;
+        bh=4Y8gRXqzBvG7en2Q5FTVRQQitTaWlXEyuhthyILtZpg=;
         fh=Golw2Ah+zEhVCJQSdsZol3fNc1i7gYTinsck+6ubahE=;
-        b=oRhv36hFsZDtEiEXv5SxabNa/nMgPMmL8crFljpAtN2Ll+jtssha4Tpiii//z/BRfd
-         olutyvq26lzmi8ujj1m0j0QkRb44+p7loJ4IjOiJriOpeii+9t/YHWQhvb8Ffb5+Wgaw
-         eEyjGiGnQuYU+KeoMWFGBv3fnY7WbOCAUhDtuVpEyKJeR/60prDzLooQoltaxpQEh7JZ
-         3oe4cxxYD9oeesYoCBhe3fpOiK5Lu0eHDJm+l6AcOfYWFm7FWo2YGSMy8KZJ79oImfvi
-         t7/7johMyLOenUssgQTLP/I8L2B0i7yUhoUfNknn5TUTfHVrpEIbaUj2sdnbES/mvQac
-         f34g==
+        b=O30SINlrmzO2K6kU/vXKU64yrccMs+VnICkv0B9P6ETDJY/iqG/YoQA43AbgIcphKy
+         7UNDi5Gw9jZRDY2AXdTVSFp64YbcA3MDXAGI8mY0TrjiQCYGCPM4pjqz48TAXzzayvHC
+         NanVr1wWySMMgsMHbte8YWOhanMIPsbvleQm0cXuagA178sPsnby3fxXVNgYRGX+QIFG
+         d5x24dt9r/iHS48zLkeAXBri6u0Ubt3RHl0AMzfgiJznekovdn9Op8ozO5h4hCO2sFFz
+         blRkYAuaMn5sszH3q+fr4NKiNFB69/HiINiOCKTGPb420+PDh8QMKQP2mO9uO0o52ojO
+         s/Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jq9WC2gM;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=WcibctH1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id nh19-20020a056214391300b0066d20f29e50si5463020qvb.46.2023.10.23.05.42.33
+        by mx.google.com with ESMTPS id w8-20020a05620a148800b007742b030641si5230703qkj.753.2023.10.23.05.46.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 05:42:33 -0700 (PDT)
+        Mon, 23 Oct 2023 05:46:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=jq9WC2gM;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=WcibctH1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quuGC-0004lQ-K7; Mon, 23 Oct 2023 08:42:20 -0400
+	id 1quuKC-0000gh-PP; Mon, 23 Oct 2023 08:46:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1quuGA-0004kR-PA
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 08:42:18 -0400
+ id 1quuK2-0000DW-4A
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 08:46:19 -0400
 Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1quuG7-00029Z-RS
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 08:42:18 -0400
+ id 1quuK0-0003Jo-BI
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 08:46:17 -0400
 Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-9be7e3fa1daso481807466b.3
- for <qemu-arm@nongnu.org>; Mon, 23 Oct 2023 05:42:15 -0700 (PDT)
+ a640c23a62f3a-9c2a0725825so479628366b.2
+ for <qemu-arm@nongnu.org>; Mon, 23 Oct 2023 05:46:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1698064934; x=1698669734; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1698065173; x=1698669973; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=sL86v2mc3VZ99aedO1TusOCiA+FWuj8pby0T4XoGr0Y=;
- b=jq9WC2gMgVzCQp/Zz9XOZpEN9B3KvMWJQ9SLKbeoHJB+hexk5vta47BzgdZsWDo03w
- EloCUslrtC+kTZxtVobLvtqb9Zi+jVQhGUhgONuK6pEu3e7MpOOveaOakYjvIpWUa29B
- muvhogCkV8LkyKh3yd24E2k7bdct3XBMV/xk1C2QytOW5BOVAocv5EdIr5xwfXEbJjKH
- C9KhItWjBvKSxdqsdL2R+nyxMqcmerF4IVY4emJhMN2TRsKsTmrxQ5H5U5G5FjQEw4Cq
- eU4dgSWTzAe+8Gf5V5t0uz5KWNpVXAEnzsXuinE+Ca6m8V6ZflH6w1+amNJRKVQzxRcB
- 6xDA==
+ bh=4Y8gRXqzBvG7en2Q5FTVRQQitTaWlXEyuhthyILtZpg=;
+ b=WcibctH1PFxSjc6uhY3aR2OuMb8QdU0fR2dx13dPuIzAT9YkBXg1sBuGEL+VzUqUVI
+ ydr8bYcHhyjzpA0GuIQIT8zk1jM5ZITJHbcoXQ43PvYC32N1wp33rfrRqrsxKPudK838
+ KNRgZxZtWY9sa2U6Y4kF4Oza+G2ntQR5welAJ3AUp9vgDQTUWnmhZ0UF0ycJoWiTkO7v
+ m9aW8CLVb+GNfVTO2Y/C2Gt4cG6nFv9lF719VMxuI3sDCV9bYXq6IHmRxrTHGUO+GjI7
+ /wohdTenibgEwvGwffT1bs7++MDG5c3PjS8XhjPTdDJoQmP7YnV8DSvvKFtbQQXuCMw1
+ 13EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698064934; x=1698669734;
+ d=1e100.net; s=20230601; t=1698065173; x=1698669973;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sL86v2mc3VZ99aedO1TusOCiA+FWuj8pby0T4XoGr0Y=;
- b=TDAFdRfHd6OnQ7G0cvrv4KRYwu8AGmHZpTAmPvitL6aUVR20tMvOQ2xvOnJJ+BOJx1
- akOuyEQZj5I26QRtYJCcXk9hhzBgaMCgv07nzKSYyr45J31RsDedhlxMr6BbzNJ+nR26
- jZDYTgaKe94qDCjj1ECi+WiV1LwerfbxweprnefSA7hv6r7quhjOvO9niWmTcR7z8nnl
- LS7ttNQ3JroYy8ZGAXXebN91sCi44y9teI6iqDJJtMqdyHhBq14+DMWk5nrcp+s/4Ucn
- naE6Hj4eXrmROPePxdV3r5JN1Y5aWKDjoZNg6KxFNXqCKfg/0BVLQnpKmTIXc+IeWXMc
- Xrqg==
-X-Gm-Message-State: AOJu0YwQ1BmWx1kfPUwoXpCN6ZVKhEJI1rHD/ctnPP/FoKbZJp4UpwOb
- 7C7E6JEJ3FXaurx5W+7J3QYIAw==
-X-Received: by 2002:a17:907:720f:b0:9be:fc60:32d9 with SMTP id
- dr15-20020a170907720f00b009befc6032d9mr6260145ejc.47.1698064934248; 
- Mon, 23 Oct 2023 05:42:14 -0700 (PDT)
+ bh=4Y8gRXqzBvG7en2Q5FTVRQQitTaWlXEyuhthyILtZpg=;
+ b=A2i+QMOUq2Hzkhabw7MO+GeytsAbKvlhycIDGrMOev8CjEHoCuMI9uqqXYTRYymiKd
+ fM2Df+YMPtS67Y2agk3Pe8PKEEwbKaf4u3PQvTI8n716O7orUgLKHrmmq3JgLx+pXlUa
+ GK6yCQvSm0jRsdVBZFQE3XPL1nr+ZyKeADX0Nvhl3iL19txuzAN3rrdla2orzYD8yOnD
+ y7G1hS7OJmwOA1RA9rcpeP2RgmsPa1vgmV/OsW2cGGeNOFE0kedDJ0HHQTmSERQo2XvL
+ /RJw0+PnSIH1ZxkJ1l0OGWfwoAcK9771Lhigf0qPYz/M13TW11e9S+03ChRLuki6W+da
+ MRBw==
+X-Gm-Message-State: AOJu0Ywo9+CJwFORsG0DG9QxRSyN0MXnlQcb6CZ9XyI2do+Mb91C5Dqv
+ JO3HtgbPmWAnt/p2wbGrs50yQA==
+X-Received: by 2002:a17:907:7ea3:b0:9c7:59d1:b2c4 with SMTP id
+ qb35-20020a1709077ea300b009c759d1b2c4mr7134103ejc.64.1698065173443; 
+ Mon, 23 Oct 2023 05:46:13 -0700 (PDT)
 Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz.
  [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
  by smtp.gmail.com with ESMTPSA id
- x13-20020a170906710d00b009ad87fd4e65sm6580095ejj.108.2023.10.23.05.42.13
+ lt13-20020a170906fa8d00b009c4cb1553edsm6615814ejb.95.2023.10.23.05.46.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Oct 2023 05:42:13 -0700 (PDT)
-Date: Mon, 23 Oct 2023 14:42:13 +0200
+ Mon, 23 Oct 2023 05:46:12 -0700 (PDT)
+Date: Mon, 23 Oct 2023 14:46:12 +0200
 From: Andrew Jones <ajones@ventanamicro.com>
 To: Sunil V L <sunilvl@ventanamicro.com>
 Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
@@ -105,14 +105,14 @@ Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
  Anup Patel <apatel@ventanamicro.com>, Atish Kumar Patra <atishp@rivosinc.com>, 
  Haibo Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH v3 05/12] hw/riscv/virt-acpi-build.c: Add IMSIC in the MADT
-Message-ID: <20231023-3326c09cb09cc345378a4420@orel>
+Subject: Re: [PATCH v3 06/12] hw/riscv/virt-acpi-build.c: Add APLIC in the MADT
+Message-ID: <20231023-438ea22b474fbb561a1cf492@orel>
 References: <20231019132648.23703-1-sunilvl@ventanamicro.com>
- <20231019132648.23703-6-sunilvl@ventanamicro.com>
+ <20231019132648.23703-7-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231019132648.23703-6-sunilvl@ventanamicro.com>
+In-Reply-To: <20231019132648.23703-7-sunilvl@ventanamicro.com>
 Received-SPF: pass client-ip=2a00:1450:4864:20::632;
  envelope-from=ajones@ventanamicro.com; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
@@ -136,16 +136,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XiZhwdRkZppE
+X-TUID: URehszyzsyEt
 
-On Thu, Oct 19, 2023 at 06:56:41PM +0530, Sunil V L wrote:
-> Add IMSIC structure in MADT when IMSIC is configured.
+On Thu, Oct 19, 2023 at 06:56:42PM +0530, Sunil V L wrote:
+> Add APLIC structures for each socket in the MADT when system is configured
+> with APLIC as the external wired interrupt controller.
 > 
 > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 > Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 > ---
->  hw/riscv/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
->  1 file changed, 34 insertions(+)
+>  hw/riscv/virt-acpi-build.c | 36 ++++++++++++++++++++++++++++++++++--
+>  1 file changed, 34 insertions(+), 2 deletions(-)
 >
 
 Reviewed-by: Andrew Jones <ajones@ventanamicro.com>

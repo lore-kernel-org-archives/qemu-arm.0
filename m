@@ -1,97 +1,96 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1070156ejb;
-        Sun, 22 Oct 2023 18:35:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEBiowqQn+mHVnpYV8BCaOkxeAX2fWAYCks+J+dQ783tYJpVxdcGnCVALmtEi/LoO3cURS6
-X-Received: by 2002:ac8:7d8c:0:b0:412:395c:e794 with SMTP id c12-20020ac87d8c000000b00412395ce794mr10235037qtd.50.1698024945753;
-        Sun, 22 Oct 2023 18:35:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698024945; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1070639ejb;
+        Sun, 22 Oct 2023 18:37:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEL+Isk8OCDbtjCENd1iYzmE/C6nE6HN4r6CW21F0Ms0LZstI0rqyv4/nc6tyENZC8vBxZP
+X-Received: by 2002:ac8:5ad5:0:b0:41c:d846:4eb with SMTP id d21-20020ac85ad5000000b0041cd84604ebmr10919101qtd.49.1698025041209;
+        Sun, 22 Oct 2023 18:37:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698025041; cv=none;
         d=google.com; s=arc-20160816;
-        b=pGlBph8xZDLLdfSrwZcHcCRevx/xEd9TtOXtOcBwr24/NzmDXSYTxlRn2KokJSHJDT
-         apqWhc1PaXdB/fkq9/TTkpja5CVlouR1MxdOptMbpplJOBVGclasT7MeWFpctE+frgbI
-         3OdNUb9z8ZLKgn+nKiHX1fQvt9VZN+ZXJpNqIEsQFhLQcK95YBvLiwWX+J1IqW2VIeoZ
-         eOWmT8VDW2DYAT4HmPgjeHD76pIEIzcUVfsdhBlH0BRpoUU0GbiIlkamslOU2B311eIg
-         QfNB5ppRuGjqPyCu/vQHOGq8E4qqoZ8mCnOvrv4zc6L3IKzfx86Dq5aEtBvbMsrkJpGd
-         slYA==
+        b=eMundkkDq6Eay6/AOyR3IP5U0yJG6vnZJ+i8N/N2G17c1m77RNuBZTYdM3F3aziShe
+         Vux9HmqhGVb/34WB+9whrLdTdfrIVxmOHs246R9ffYwDvyvDULePlPfyRzZL2wxetJWI
+         zko7VelzhrhAg+frmZTFOf16srcoeCcHfgCZpKFZEB9RdLPijZ2QyHquZHk61hildu4+
+         8UjVFar4U8KW8SLAO1lMERoUgn1ohJa/7w+tsLC6hedC6fE2NPaKq3EJjGpsLLzZA07a
+         Si/oWzBSPLy3fDI5ixjvQTa3IGsBMymwg9CxzmLwtyy9idVT2bi7ld9ouzyK2mZRzhMv
+         /fGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=9jFT7RT7/jwMRXUcnlJlAXnQ6WZxK2zqDoUqTOO/Ut4=;
+        bh=kKCog19UpRbCVEHNVCgHNEUYu8Mhg2C8RE/Hafk9Tqo=;
         fh=iY95LQ2EZGL5gum0JNZHT+G5f2E2xCqAEJaN82odp0I=;
-        b=s0nv9yRdafYkjiFf4st6clJSBLRL19cPlo/MJSggez5Qt3WS4KI4sZGtq14ZVQgx7x
-         c7NB8qIBj+5qyq0Dl9lPzJO5lx2pLjy5SzKYEwuTxQTccKRlzP/6bsczsh1K3CR8Ezhf
-         BECzN+iKMUd62ojr2nYb30C3MUjo8shvXO3PF/rDATU0pOs29X1/x0cBxKEjJEMHLoYJ
-         F7GQ3z2ky3RtxbEZtMLVpGbCc1cqaLB8c5AzVNJV5BLOJckOrvR65ljYomKsqWE6f10z
-         kWNJTA9OthA3/zot2owBkXBeldJwc598iOL3A3SKYgszim47aYH4TXuro2ZS1nZmCL8L
-         QKmQ==
+        b=nuHVLuDAG21ZERRWgOncVUlxs17+Tf4xSICtisy0d2sbhKaEX/ykc9jA3ngkat97Y7
+         M4O+Riom5js3fropsjOl/gkCa5v8yljJCHjWfKGeN9Kq4LfbypenJBetsLGPm7bJ172g
+         VBM//KgBUUaxaXfFSdWpKqg4Zuo6d5cQu1fZMgHv0YrFXUpbKJBjZT+pG1jWfORHMEg9
+         BlG5k+UjMeV7jnJ/+Uhk+l+E9HnvMVPziWpKUS0ZaR2ors0yS98D0CzpoplYd69R7Biw
+         a9MkFKFFGxtpvWsfORExy/bnWenf+p9R3LzuOIPHV78Sbp5t8sXhD508R6xI6VXSOUL4
+         m+ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BAC8syW6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=J5dHGEwP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l13-20020a05622a050d00b0041b826198bdsi4724779qtx.270.2023.10.22.18.35.45
+        by mx.google.com with ESMTPS id d11-20020ac85acb000000b0040eb9b330d5si4987368qtd.492.2023.10.22.18.37.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Oct 2023 18:35:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 22 Oct 2023 18:37:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BAC8syW6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=J5dHGEwP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qujql-0000s8-Ht; Sun, 22 Oct 2023 21:35:23 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qujsO-0001g8-U7; Sun, 22 Oct 2023 21:37:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qujqi-0000rO-J5; Sun, 22 Oct 2023 21:35:20 -0400
-Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
+ id 1qujsN-0001fL-6f; Sun, 22 Oct 2023 21:37:03 -0400
+Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qujqg-0002Gx-VO; Sun, 22 Oct 2023 21:35:20 -0400
-Received: by mail-ua1-x92f.google.com with SMTP id
- a1e0cc1a2514c-7b6b4c2f1a0so927059241.1; 
- Sun, 22 Oct 2023 18:35:18 -0700 (PDT)
+ id 1qujsL-0002ob-P7; Sun, 22 Oct 2023 21:37:02 -0400
+Received: by mail-ua1-x92e.google.com with SMTP id
+ a1e0cc1a2514c-7b652e785dbso1040031241.0; 
+ Sun, 22 Oct 2023 18:37:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698024917; x=1698629717; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1698025020; x=1698629820; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9jFT7RT7/jwMRXUcnlJlAXnQ6WZxK2zqDoUqTOO/Ut4=;
- b=BAC8syW6+QZ1DgP+4UJE54n+ImsAY/1urojMyxplx8JUiydZmaWm+Mxgdx1ZEunvkX
- aW6mz8Dzil8mx4477lgDFTY7StaC/NZRy4irrHYTrezNxXqvXBZaz5+CyDiZVJxtOCeM
- QPOLs6HbXvhYwO6pMASM7EEYPs3EhbTFQDWzV1or3bpjsvSlR5vsw00nMefF7qorgSWa
- 5zuZSOEdJ+Hd/rr14Hs0UX0V24Rly/OYY/Iy9tVntbfBosWMpdDBuBn76Thr6Rmq/pCI
- 3uPpD1TSQK7WJeLtEcHXBFJSsFNUcsDL9T24jHKK4ZQXBiQdtEwG65HacCOZaNEDYO+X
- mXRw==
+ bh=kKCog19UpRbCVEHNVCgHNEUYu8Mhg2C8RE/Hafk9Tqo=;
+ b=J5dHGEwPUo6aRiWGGjLvQiw/mxqUIMU24uktFfP9z9xvyFk/1uwe5UtslQ5BM87sxA
+ g8f8qvGIhC70Xly+Pv1OT2Gp1o7Q/OgYWYMZIIb2PyCmWjYF2ZW3oGxm2SDOoIPvk18E
+ i6fsCuXuZTQg48HBy4mQzkBqpxKs+UE6PbO7V4Yx2lcAVVYGhUR3NtD2xdYlO1voA3oH
+ 2EL7Sc57hYBZl4quqoxW/aYt3lFEj++Y+yQD3m9hpSjJzImK07RII53LimRgP2Bv4OTI
+ LBmjw3NtlpEtcxyAhjd+nQxESRjXLalvUcgqru0rarFJLunu9LLoyiERA1toRyNk3/DI
+ MGaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698024917; x=1698629717;
+ d=1e100.net; s=20230601; t=1698025020; x=1698629820;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9jFT7RT7/jwMRXUcnlJlAXnQ6WZxK2zqDoUqTOO/Ut4=;
- b=gWj7KEKtccsmZTyXhxJxOquu4QxCjxV0iEY4gbBsMwnDstJRWSydo7EYKopOFps37W
- Zc02G3RHQuUCZ5y/xJ+qCTqaS3ZJ4GcysjD/jUSrxDYeFSIKw2ge6igRLxhzB73R8OrA
- 2Ud+M3+li/lYHAPcTkfTG10MQwRDkPX4/EiGmN5oVygS6AMnOtVzWdpGDvdgRxnrRmFD
- eKADUMsojHJo7Tvjr6U74RqPN0VcpPtKezkO797NxPhP7IZroBn97GppjUF1ViTDKQmn
- 8B+o3M13SA+MieThhJBHamQbknMhaol8U6qAJ04+45W0ANOx1osblTAU6i5LMzSvY55+
- PJJA==
-X-Gm-Message-State: AOJu0YwE7sMRWguGCFqAN0C/R4O5bPXmgf97KuNKi6sEmqPl51DWkkmM
- ym5sY2d/6QMmJd+uWtX9xxxTyvrKEPc7xYo9MYU=
-X-Received: by 2002:a05:6102:4715:b0:457:b01c:4a8e with SMTP id
- ei21-20020a056102471500b00457b01c4a8emr7547206vsb.7.1698024917455; Sun, 22
- Oct 2023 18:35:17 -0700 (PDT)
+ bh=kKCog19UpRbCVEHNVCgHNEUYu8Mhg2C8RE/Hafk9Tqo=;
+ b=ulSXrskIaHZATFGGYrDC5Md9KTMmq0n7HYUkSKYahj1KFeBdfA7y3VzbAzxpj+49yw
+ PNc3B35IXjtX8LEferxxnx52QE3BEL6OKsjpL5++C0V+lIK5QmbdSPS3uWhws0CxXZyR
+ TwXGrfZxduhzlz2H4zC8pu47tPG4wwxIAaDAifp8evjT+NE6+7J3lAsDFFjzv3nEKcig
+ i14efqBsOkWaRo8WKSnLLTpT2iZLmy0P5E8S3srt/N6CENooTZTdWyeknUtm7erIQZdJ
+ lsja+HzRl9rDyqEZD9gO7zQNf9NX/93G64w6O6RMFX3FzALbWtBtZ0Uk1q055yrVoUvf
+ v9Tg==
+X-Gm-Message-State: AOJu0YxnVbVsynrp+Dk2C8I4TcFL059Au5lSMCiur3s3qRnXdrlI/hEU
+ R8dkqJl2QyY5bYYMfUf2IWPpVfODjyz0PRMKoY4=
+X-Received: by 2002:a67:e192:0:b0:457:e881:32c6 with SMTP id
+ e18-20020a67e192000000b00457e88132c6mr6575076vsl.11.1698025020238; Sun, 22
+ Oct 2023 18:37:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20231020170009.86870-1-philmd@linaro.org>
- <20231020170009.86870-2-philmd@linaro.org>
-In-Reply-To: <20231020170009.86870-2-philmd@linaro.org>
+ <20231020170009.86870-3-philmd@linaro.org>
+In-Reply-To: <20231020170009.86870-3-philmd@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 23 Oct 2023 11:34:50 +1000
-Message-ID: <CAKmqyKM0uu_0WdteAQLxPA3L=dDnHGtM9o8M8T4SNN8rjoHAKw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/4] hw/char/stm32f2xx_usart: Extract common IRQ update
- code to update_irq()
+Date: Mon, 23 Oct 2023 11:36:33 +1000
+Message-ID: <CAKmqyKPJoyMmoNAX9JrHz6_SSphqRkEJPy3AUaV0eu+701Ow9g@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] hw/char/stm32f2xx_usart: Update IRQ when SR is read
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>, qemu-devel@nongnu.org, 
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
@@ -99,8 +98,8 @@ Cc: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92e;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92e.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -110,22 +109,22 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XJhfYk3FI7s1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 33u7dCltoZKo
 
-On Sat, Oct 21, 2023 at 4:14=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+On Sat, Oct 21, 2023 at 4:12=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
 > From: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
@@ -133,94 +132,31 @@ On Sat, Oct 21, 2023 at 4:14=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
 > Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
 > [PMD: Split from bigger patch]
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+> Is this required?
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+I don't think this is required
 
 Alistair
 
 > ---
->  hw/char/stm32f2xx_usart.c | 28 ++++++++++++++++------------
->  1 file changed, 16 insertions(+), 12 deletions(-)
+>  hw/char/stm32f2xx_usart.c | 1 +
+>  1 file changed, 1 insertion(+)
 >
 > diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-> index fde67f4f03..519d3461a3 100644
+> index 519d3461a3..46e29089bc 100644
 > --- a/hw/char/stm32f2xx_usart.c
 > +++ b/hw/char/stm32f2xx_usart.c
-> @@ -53,6 +53,17 @@ static int stm32f2xx_usart_can_receive(void *opaque)
->      return 0;
->  }
->
-> +static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
-> +{
-> +    uint32_t mask =3D s->usart_sr & s->usart_cr1;
-> +
-> +    if (mask & (USART_SR_TXE | USART_SR_TC | USART_SR_RXNE)) {
-> +        qemu_set_irq(s->irq, 1);
-> +    } else {
-> +        qemu_set_irq(s->irq, 0);
-> +    }
-> +}
-> +
->  static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, in=
-t size)
->  {
->      STM32F2XXUsartState *s =3D opaque;
-> @@ -66,9 +77,7 @@ static void stm32f2xx_usart_receive(void *opaque, const=
- uint8_t *buf, int size)
->      s->usart_dr =3D *buf;
->      s->usart_sr |=3D USART_SR_RXNE;
->
-> -    if (s->usart_cr1 & USART_CR1_RXNEIE) {
-> -        qemu_set_irq(s->irq, 1);
-> -    }
-> +    stm32f2xx_update_irq(s);
->
->      DB_PRINT("Receiving: %c\n", s->usart_dr);
->  }
-> @@ -85,7 +94,7 @@ static void stm32f2xx_usart_reset(DeviceState *dev)
->      s->usart_cr3 =3D 0x00000000;
->      s->usart_gtpr =3D 0x00000000;
->
-> -    qemu_set_irq(s->irq, 0);
-> +    stm32f2xx_update_irq(s);
->  }
->
->  static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
-> @@ -106,7 +115,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hw=
+> @@ -109,6 +109,7 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hw=
 addr addr,
->          retvalue =3D s->usart_dr & 0x3FF;
->          s->usart_sr &=3D ~USART_SR_RXNE;
+>      case USART_SR:
+>          retvalue =3D s->usart_sr;
 >          qemu_chr_fe_accept_input(&s->chr);
-> -        qemu_set_irq(s->irq, 0);
 > +        stm32f2xx_update_irq(s);
 >          return retvalue;
->      case USART_BRR:
->          return s->usart_brr;
-> @@ -145,9 +154,7 @@ static void stm32f2xx_usart_write(void *opaque, hwadd=
-r addr,
->          } else {
->              s->usart_sr &=3D value;
->          }
-> -        if (!(s->usart_sr & USART_SR_RXNE)) {
-> -            qemu_set_irq(s->irq, 0);
-> -        }
-> +        stm32f2xx_update_irq(s);
->          return;
 >      case USART_DR:
->          if (value < 0xF000) {
-> @@ -168,10 +175,7 @@ static void stm32f2xx_usart_write(void *opaque, hwad=
-dr addr,
->          return;
->      case USART_CR1:
->          s->usart_cr1 =3D value;
-> -            if (s->usart_cr1 & USART_CR1_RXNEIE &&
-> -                s->usart_sr & USART_SR_RXNE) {
-> -                qemu_set_irq(s->irq, 1);
-> -            }
-> +        stm32f2xx_update_irq(s);
->          return;
->      case USART_CR2:
->          s->usart_cr2 =3D value;
+>          DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->us=
+art_dr);
 > --
 > 2.41.0
 >

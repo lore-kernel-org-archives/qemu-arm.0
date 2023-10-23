@@ -1,150 +1,143 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1483689ejb;
-        Mon, 23 Oct 2023 09:29:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHJqh8a4xjQXXdawbycR7bctAuW0gzw6ATa7Pu3HbNS4Igo23jf6/1UE+Bf/bHFrqS2e0m4
-X-Received: by 2002:a05:6214:e6c:b0:66c:fc76:7936 with SMTP id jz12-20020a0562140e6c00b0066cfc767936mr8434181qvb.48.1698078589583;
-        Mon, 23 Oct 2023 09:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698078589; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1509380ejb;
+        Mon, 23 Oct 2023 10:09:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEUmwhbNctk7geplfd88yIPOZK4IiBDWZnsAhG0QejFDcPK6NOYG16jI6wBTOi5N/bCy5zV
+X-Received: by 2002:a05:6808:3c2:b0:3b2:e649:a830 with SMTP id o2-20020a05680803c200b003b2e649a830mr10554649oie.23.1698080979289;
+        Mon, 23 Oct 2023 10:09:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698080979; cv=none;
         d=google.com; s=arc-20160816;
-        b=kIZtfpR8l9yvdPcGYjuuvwAzMd1b99I4cS05rCGP+kD7rhn3GRYCL1LqtdpqzvBg9N
-         k67IHpzaQLRg31v9s1A9qERcs1FNnPsZf3wZ+pG5t4P4gs3TmffqewqOjc8zRyoIZYDA
-         ynyBxdzAtW/xkHNgrSyb5Yjt4Dcibvg8Y1ej7lbtIWNAoewTfb/mHZopCrogloxgxNZ0
-         0p+xgo7CxYeGC/NirxTNgxt9qvgNTb8ZEJZy++xL6a8NAF6cMnLuRHqshmA6v/JnN/5K
-         Nh3TYldYq6KMrowBH9j6kIQYjAj2vGL7ke0/4zkmMaBeSCLzLQ2g+6v1He2WLkqJk6Xl
-         S3mw==
+        b=FuBi1dNPueOzb24z9c7/mu3hrVsMQIShuZQXilnvrWqvFZ7C8hKNYehLcvEW8AMCdr
+         Fx16oZDf+E4GXmELcPbBOQh4hsS0KfigdrDuRgSuRkZPlPzRCq5/y2DN6Nb879a/lLhu
+         Yk8duI6SpNq1u7uuO6EmPIneRx6EbxSlNrDeI9/imsofBGq6kYOVaX4iFObZGXY+nA0g
+         pWT6N0l84mvaWAjFsNdV+kWPRia82qdDw6gMEJ12s3tgtF4kJ0KtYhCDKGXEc+KOui3B
+         LunPHD0CTu0NryexktaC4Xes4DGYbYQqLSROVrlr1jp3z13QloCPiCllrK9bna8Bc1lx
+         NyBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=j+S1oe8c6aSHirMXsKWZVm5ZrHQzDWrrjasdjCRlJQw=;
-        fh=IbhD48sRtcT7MOugQFxwMYTU4DGWpwWoUnUetW2XHBY=;
-        b=volcJHGABwYrDaglfHfnEYVCuaRqU47cAlMkHWzy5AGQIGh5xr+M775G9NfAlP7XwL
-         EV4QbtAhOlYmPn8SDsm5d+VVRfQ2ZlUI/xNvEx7oVvHwCTvY1u4725ZpG8TROlIlRMZP
-         lDH6uaXJYdGiilFr2Hx/O3J4oO5qePbT5yWLKPBJCyX/GG+Uk9xhRlFnFwrPh7Vjc6vf
-         r3FUvCV4ONoB3gX9cP69fUswomhUdGHd03YebfIFKmipGE70RQ060MFCK8YjkI9XRW6O
-         97InL67LoX+aIkK939MxOcTlVHkW1bGzWp9Ftyo6v8ZI+iCVEph0BE2DcrNjWN7g/zMl
-         BTZg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=56TAYe4jMsA2K9CSB96fKcnyNqTUMT7iqIFk15jeCHM=;
+        fh=ocxrNli2/ARJYmnmna17Dir4bT/pGRu/zmEBoN1+sVg=;
+        b=Rtw/E7wky3Z+bsIG8KXJiUlshjwK0cFUfRZVWlWBNWtwyoJ+iDlq5D4oPo0J4Q490m
+         55ukTNPbXa6o4X8+GjxsDEJZxsXCOEtuN+72OXTXHJvCa5i2LQKsjXkOmADdGdx0gGi7
+         UQOOUlxjI5/5RWPNLi3hI2gFua3quRoxbdJsPFfdl2fNbexT9vVT2gQojiinfFVrSNIc
+         s3Gu/y594erzsgodnLCE8vj4hPJsRkNxT9hnM0trpImgbhMY/ASbVpCMDeOPB4T/FJ3v
+         iLFfJ0vvgevFWv8kRQh76+Emm3Gkysb+2l0/jqMaSfpMgufiCTIzo7Ey4VDVZKY37gdy
+         tEuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A07089uZ;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=QkkcnwFf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dj18-20020a056214091200b0066d14dca029si5772434qvb.555.2023.10.23.09.29.49
+        by mx.google.com with ESMTPS id e13-20020ad4418d000000b0064711f7b6cesi5577793qvp.603.2023.10.23.10.09.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 09:29:49 -0700 (PDT)
+        Mon, 23 Oct 2023 10:09:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A07089uZ;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=QkkcnwFf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quxo3-00071J-8u; Mon, 23 Oct 2023 12:29:31 -0400
+	id 1quyQV-0004S8-RW; Mon, 23 Oct 2023 13:09:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1quxo1-00070T-Pn
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 12:29:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1quyQS-0004RA-Us; Mon, 23 Oct 2023 13:09:13 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1quxny-00052y-TS
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 12:29:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698078565;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=j+S1oe8c6aSHirMXsKWZVm5ZrHQzDWrrjasdjCRlJQw=;
- b=A07089uZwGNSfZ9Vu4H0P7o7192nsgjdJTpZW43bc87nsrVEFgAqL8hBhAMhAc2LS7DhRG
- lzdhtgzEoZhSW1lrQzDGryvLna3iZpSjuuxWg6YF82Bo+mj6RE8n7Ggm233Tz7iJgKTqLK
- fBTPoc9XjBg5P9efuLtiB/o49JKkjoY=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-451-iYi-bJlhMUiAkaP-TFynvw-1; Mon, 23 Oct 2023 12:29:24 -0400
-X-MC-Unique: iYi-bJlhMUiAkaP-TFynvw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-3f41a04a297so22057715e9.3
- for <qemu-arm@nongnu.org>; Mon, 23 Oct 2023 09:29:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698078563; x=1698683363;
- h=content-transfer-encoding:mime-version:message-id:date:reply-to
- :user-agent:references:in-reply-to:subject:cc:to:from
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YUODFSYjipcgmzOC15MVxjEsAVqcfyFfniq3Ax+2nEQ=;
- b=cD70nKPDzpvSYN6yOqdK4hplpOlfXTq4su27nvuGO6FTSBEADpy28uFn33K5X0z/U5
- aVEMjNAMSvVoYGnTxXI+aFNoeu9ssHKhu39ak0lo8aIHZuA1Lm/Ia4Vc6bEPnsfK3kjK
- XQ7MNIoThW3+r0aj8xPV2jjSEg2Xpsw62KlwlNdM0oruxIvWl9ajsvvW8CEoeXkpi2fT
- Dq608n//VO2JYMJNSY8t8RSOa7R2B3A8frZ/DKaVkXm1cKY3SHUhK3X4Z2KL6oE78oqn
- Y8+3OLpU+RByhMwWlEacat7CI5YTWJJUSH0MtPK1uaWqsYWc7dcQtmZedgIFh4f2FHaj
- 6ozw==
-X-Gm-Message-State: AOJu0YwgngT/0S7Ns9k305/t0quSbeA+zToc9vXlzZx7zrnaVgnmYDha
- 770dViClw80Rm6DyTzAmPu76IQCv1dYKwzLPdLz26CYedZg7e2G/+53FT/GUJVGy9pFOsy4zzPq
- SYXSTpVRIHZ8uVSRqqLKR
-X-Received: by 2002:a05:600c:1c8d:b0:402:ea83:45cf with SMTP id
- k13-20020a05600c1c8d00b00402ea8345cfmr8228575wms.2.1698078563116; 
- Mon, 23 Oct 2023 09:29:23 -0700 (PDT)
-X-Received: by 2002:a05:600c:1c8d:b0:402:ea83:45cf with SMTP id
- k13-20020a05600c1c8d00b00402ea8345cfmr8228534wms.2.1698078562660; 
- Mon, 23 Oct 2023 09:29:22 -0700 (PDT)
-Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
- [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
- j20-20020a05600c1c1400b004065daba6casm14798055wms.46.2023.10.23.09.29.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Oct 2023 09:29:22 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Volker =?utf-8?Q?R=C3=BCmelin?= <vr_qemu@t-online.de>
-Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Harsh
- Prateek Bora <harshpb@linux.ibm.com>,  David Hildenbrand
- <david@redhat.com>,  Samuel Thibault <samuel.thibault@ens-lyon.org>,  Eric
- Farman <farman@linux.ibm.com>,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- Thomas Huth <thuth@redhat.com>,  Gerd Hoffmann <kraxel@redhat.com>,
- Fabiano Rosas <farosas@suse.de>,  David Gibson
- <david@gibson.dropbear.id.au>,  Corey Minyard <cminyard@mvista.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,  Peter Xu <peterx@redhat.com>,
- Corey Minyard <minyard@acm.org>,  Stefan Berger
- <stefanb@linux.vnet.ibm.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Halil Pasic <pasic@linux.ibm.com>,
- Leonardo Bras <leobras@redhat.com>,  John Snow <jsnow@redhat.com>,
- Nicholas Piggin <npiggin@gmail.com>,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,  Christian Borntraeger
- <borntraeger@linux.ibm.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Jason
- Wang <jasowang@redhat.com>,  qemu-block@nongnu.org,
- qemu-s390x@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Daniel Henrique
- Barboza <danielhb413@gmail.com>,  Stefan Weil <sw@weilnetz.de>,  Stefan
- Berger <stefanb@linux.ibm.com>
-Subject: Re: [PATCH v2 11/13] migration: Use vmstate_register_any() for audio
-In-Reply-To: <3217207d-7b75-4354-8923-c637b19700fa@t-online.de> ("Volker
- =?utf-8?Q?R=C3=BCmelin=22's?= message of "Sat, 21 Oct 2023 16:55:59 +0200")
-References: <20231020090731.28701-1-quintela@redhat.com>
- <20231020090731.28701-12-quintela@redhat.com>
- <3217207d-7b75-4354-8923-c637b19700fa@t-online.de>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
-Date: Mon, 23 Oct 2023 18:29:21 +0200
-Message-ID: <87o7gpb8v2.fsf@secure.mitica>
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1quyQR-0004Ju-7A; Mon, 23 Oct 2023 13:09:12 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39NGjXu1020498; Mon, 23 Oct 2023 17:08:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=56TAYe4jMsA2K9CSB96fKcnyNqTUMT7iqIFk15jeCHM=;
+ b=QkkcnwFf/Fd9L/ifad7PSszBPopRHkgX4wAs16bCtepkjir7Ed1DtpyiCuwnLzrvgLHo
+ Wl6TDA/G7S0YQahyizBSSsLqUVOspDnw80YhJQGxMK7IaF+1QkanOU4gz9Ua+zb/Er/n
+ bZfWX9oOIKcO6uMvuZjlldZubO9e3NgAwLWlgoWoSoTQg6LHw9kuC/npNHMPoqweD5C9
+ gZVOFkZ1t67JFRnmJgFH1PXtZhKdzQCrifK8Sm7fFqFASkfXWp6B1mcjT9dBsv/dXdLP
+ jIbrRFW/t9vNC360hYVtZ3jrf+J+gAA9IYOh0FmKTEQNQEfSAa+rGe6S2KBF1CVWJQWy gQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3twvmsrvnt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 23 Oct 2023 17:08:51 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39NGjgSE021558;
+ Mon, 23 Oct 2023 17:08:51 GMT
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3twvmsrvnc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 23 Oct 2023 17:08:51 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39NEUCCs024392; Mon, 23 Oct 2023 17:08:50 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvu6jsksk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 23 Oct 2023 17:08:50 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39NH8oHq45220166
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 23 Oct 2023 17:08:50 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 145DE58065;
+ Mon, 23 Oct 2023 17:08:50 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7BB3358056;
+ Mon, 23 Oct 2023 17:08:48 +0000 (GMT)
+Received: from [9.67.93.191] (unknown [9.67.93.191])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Mon, 23 Oct 2023 17:08:48 +0000 (GMT)
+Message-ID: <f2a50afd-3fa1-47d2-960e-0aaaf57c7cd2@linux.ibm.com>
+Date: Mon, 23 Oct 2023 12:08:47 -0500
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 02/10] hw/fsi: Introduce IBM's scratchpad
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ lvivier@redhat.com
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
+References: <20231021211720.3571082-1-ninad@linux.ibm.com>
+ <20231021211720.3571082-3-ninad@linux.ibm.com>
+ <957bc5db-53aa-6946-edf3-3b728a52b660@linaro.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <957bc5db-53aa-6946-edf3-3b728a52b660@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: kkUTwDcct006zzG7tzwcrBnQ0dcxA0nI
+X-Proofpoint-GUID: sCuTPTX_VXjUOZp9ZTXFASWJrD2ZylzE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-23_15,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 adultscore=0
+ mlxlogscore=794 clxscore=1015 impostorscore=0 malwarescore=0 phishscore=0
+ priorityscore=1501 lowpriorityscore=0 mlxscore=0 bulkscore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310230148
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,53 +150,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wCoORr6mdWfc
+X-TUID: Tf1qTLFMGhyj
 
-Volker R=C3=BCmelin <vr_qemu@t-online.de> wrote:
-> Am 20.10.23 um 11:07 schrieb Juan Quintela:
->> We can have more than one audio card.
->
-> Hi Juan,
->
-> I wouldn't use the term "audio card" here. In QEMU speak, Audiodev is an
-> "audio backend".
+Hello Philippe,
 
-Thanks.  Changed that.
-
-> With best regards,
-> Volker
->
+On 10/23/23 10:00, Philippe Mathieu-Daudé wrote:
+> On 21/10/23 23:17, Ninad Palsule wrote:
+>> This is a part of patchset where scratchpad is introduced.
 >>
->> void audio_init_audiodevs(void)
->> {
->>     AudiodevListEntry *e;
+>> The scratchpad provides a set of non-functional registers. The firmware
+>> is free to use them, hardware does not support any special management
+>> support. The scratchpad registers can be read or written from LBUS
+>> slave.
 >>
->>     QSIMPLEQ_FOREACH(e, &audiodevs, next) {
->>         audio_init(e->dev, &error_fatal);
->>     }
->> }
+>> In this model, The LBUS device is parent for the scratchpad.
 >>
->> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
->> Signed-off-by: Juan Quintela <quintela@redhat.com>
+>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 >> ---
->>  audio/audio.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/audio/audio.c b/audio/audio.c
->> index e9815d6812..f91e05b72c 100644
->> --- a/audio/audio.c
->> +++ b/audio/audio.c
->> @@ -1781,7 +1781,7 @@ static AudioState *audio_init(Audiodev *dev, Error=
- **errp)
->> =20
->>      QTAILQ_INSERT_TAIL(&audio_states, s, list);
->>      QLIST_INIT (&s->card_head);
->> -    vmstate_register (NULL, 0, &vmstate_audio, s);
->> +    vmstate_register_any(NULL, &vmstate_audio, s);
->>      return s;
->> =20
->>  out:
+>> v2:
+>> - Incorporated Joel's review comments.
+>> v5:
+>> - Incorporated review comments by Cedric.
+>> v6:
+>> - Incorporated review comments by Daniel.
+>> ---
+>>   meson.build                        |  1 +
+>>   hw/fsi/trace.h                     |  1 +
+>>   include/hw/fsi/engine-scratchpad.h | 32 ++++++++++
+>>   include/hw/fsi/fsi.h               | 16 +++++
+>>   hw/fsi/engine-scratchpad.c         | 93 ++++++++++++++++++++++++++++++
+>>   hw/fsi/Kconfig                     |  4 ++
+>>   hw/fsi/meson.build                 |  1 +
+>>   hw/fsi/trace-events                |  2 +
+>>   8 files changed, 150 insertions(+)
+>>   create mode 100644 hw/fsi/trace.h
+>>   create mode 100644 include/hw/fsi/engine-scratchpad.h
+>>   create mode 100644 include/hw/fsi/fsi.h
+>>   create mode 100644 hw/fsi/engine-scratchpad.c
+>>   create mode 100644 hw/fsi/trace-events
+>
+>
+>> diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
+>> new file mode 100644
+>> index 0000000000..e65f26f17b
+>> --- /dev/null
+>> +++ b/include/hw/fsi/fsi.h
+>> @@ -0,0 +1,16 @@
+>> +/*
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + * Copyright (C) 2023 IBM Corp.
+>> + *
+>> + * IBM Flexible Service Interface
+>> + */
+>> +#ifndef FSI_FSI_H
+>> +#define FSI_FSI_H
+>> +
+>> +/* Bitwise operations at the word level. */
+>> +#define BE_BIT(x)                          BIT(31 - (x))
+>> +#define GENMASK(t, b) \
+>> +    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
+>
+> Please use MAKE_64BIT_MASK() from "qemu/bitops.h".
 
+The GENMASK and MAKE_64BIT_MASK macros are invoke differently.
+
+GENMASK is invoked with bit t and bit b (t:b) and it provides the mask and
+
+MAKE_64BIT_MASK uses shift and length.
+
+Thanks for the review.
+
+Regards,
+
+Ninad
+
+
+>> +#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), 
+>> BE_BIT(b))
+>> +
+>> +#endif
+>

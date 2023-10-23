@@ -1,114 +1,128 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1294241ejb;
-        Mon, 23 Oct 2023 04:37:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFYokCgHo0ocj8IlRGLF4xOvkzqI98bQoVIiQmBCSf5qtCpsmdKpElkNPQgPweaczoxlpHd
-X-Received: by 2002:ac8:5886:0:b0:412:2c24:f497 with SMTP id t6-20020ac85886000000b004122c24f497mr13148079qta.26.1698061036633;
-        Mon, 23 Oct 2023 04:37:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698061036; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1321051ejb;
+        Mon, 23 Oct 2023 05:23:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHPPqQhE7QPY7r7n0zpLdLzS6QuPpMaTnsyWJ9FHcVvR9H2McGonGVI9ARIPnGFa4pDWOIs
+X-Received: by 2002:a05:6830:34a4:b0:6b9:a6ef:2709 with SMTP id c36-20020a05683034a400b006b9a6ef2709mr11486381otu.8.1698063806227;
+        Mon, 23 Oct 2023 05:23:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698063806; cv=none;
         d=google.com; s=arc-20160816;
-        b=xJ7zFAUCp7+FY9nibOQf12Czsy8ksPswohbI22dvDwCJb0jTXO7ehEU5CqD7VkZIeZ
-         cpLUQTHwuifFHtqJhO+w6ae+9D85V52BczG2L1/PMgHTNKZJ1CHLEL0fh7ewZEYJvOJ9
-         9OHIwWN/w8vZqPCbUxaPqm9DI+Zt/zVS2mcbnc34i+Zts3qRlKwQDyoUXz8HgTvQjCUZ
-         q7GxAoA/ALoLNGdDUEduuWAWzRyUpzu5Yyp7aF7fS2VIhs0fDyDUhixQ7ujPNKVY7IKq
-         +tg0f5ASN92ws7cDgdTOHUsRv2n0DtwIGioIS1iRwBKAPQQ1BlZK5Bj0f3zIocFplauD
-         mL8Q==
+        b=hLh5JJGbssasqMxRejweFMPhf3EamFusqDVUX3fkWvehelnj0UqLZrOcE+NcPYgcCY
+         xlWLmcFo/Mc1kYsl1Y3c6dMsaimdwyZi6mpPf73f4dpckqUbTbrozNmeTh17tr1ndJbK
+         5HExybaIxsI8AGoTytDvgXsyla7w7p1NLRFDqsPgoLjbNfo5sawSDacsD+WqLJSCTRcQ
+         CBMbCLvdApC8Uqzht2BvSJQTW/P+hfIbV48k3HFlvWIQwIOTYw7hyQoWKKuRyqCMrxeu
+         VO3RpItHQprgNJsimZHb73OTVMJ0WUGUTRR1Osq6A5iCoC2f0Qaq6WaYzf9VcbyCByx+
+         cbRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Jm7z9T8PI3TaN5Ibcu8ZAR34M0vHVjaqargdypAD7v0=;
-        fh=r4fz3Foqx0ggjO5oI8v2vjNw5kzcdWLA6oCTkzfSTUk=;
-        b=aiCeIRX1Rj/iENavL/BVCBCBz1yLrpmVgELVIxfKG7LzyfMVMRiaOH08a48I3Fy5Nu
-         GEYMSj/hvfsMAbC0H7vSepRm3oCrVYbTk9dZ/3425XCsV99gxCE0qXlSZ/mt3eSa4ND3
-         RsYRkzv1MmZLy7kpHEMn0Vo9oNm9iD1Tm5Ncm7f84MGKuj4bsmAbpEACkWzOirA6fbT0
-         J0dY56m0zbzHtb0EBKAADoMwFqqLfYNeOYHu8kXBbPt7fvDqdZ0armr8eHq8w8nOAanN
-         TX91E9aw4KHCvDPFsIAYjI5+/PJ/8XFicxZVGK3UVwP2Gu4kBy1wqmmsECXpCXekuC7W
-         Z5wQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=puFxVh/ZtdcJ4sXYQ8EaSuqCmvBIGtW72pjs81TIQ2U=;
+        fh=Golw2Ah+zEhVCJQSdsZol3fNc1i7gYTinsck+6ubahE=;
+        b=JttDs2ZZPIk+A7gh2ZBUpt8NbJp93xsnM/cA32WhNBzUZtf/zw6G2pq/LsntALBNAq
+         KZ7h9WaIG8Pnrqqg3ebJ/P5y0sTVZZO0mJkN6OnL5eNoCYQ8ni+TvfWFN3VBYPsVqrY/
+         Sd9ZArf8H/PFHr1UhO+BqdZm0Fni62LoxSroQnnL5tp56Wm+2RRtJBBZ/ilLV4l28BIh
+         NZ3j0obuPzW+OKcGyv4zw3pMoZc/NhOzCGvFGHOeeaCr4X8uQjcma+YXLpWW9VBFFGJI
+         V4qnVTYNxr2lk+7Pl71V0DIdPLd0JAKe1txLvSTRSkFZp+ZRRPTF2m6ZLgXdcMER4But
+         /xMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="i4b/cP85";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="k/9YShkI";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19-20020a05622a019300b00417dc02ee2fsi5345742qtw.462.2023.10.23.04.37.16
+        by mx.google.com with ESMTPS id u5-20020a0cb405000000b0065b10fcfba6si5524016qve.370.2023.10.23.05.23.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 04:37:16 -0700 (PDT)
+        Mon, 23 Oct 2023 05:23:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="i4b/cP85";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="k/9YShkI";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qutAg-0001PM-6j; Mon, 23 Oct 2023 07:32:34 -0400
+	id 1qutxS-0000hP-Lj; Mon, 23 Oct 2023 08:22:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qutAQ-00011m-SQ
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:32:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qutAO-0003kT-O6
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 07:32:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698060734;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Jm7z9T8PI3TaN5Ibcu8ZAR34M0vHVjaqargdypAD7v0=;
- b=i4b/cP85pjMf9xQQ0DrcCSQAZqWDZO2z1gUNdZ9mxO1zPqFm+wvsnw7p/AOFScW/y2cFPw
- xliQV72oLJA4vnGNGRxFeMJXToPicn0XV53hA6JA504102MNYkTB1HTOPtO3qof7AIaNUm
- HV291ahX08dtGGWkAuL6/nTWQQN1p+c=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-412-i4dTLrFOO4ujsBGWEBIO3g-1; Mon,
- 23 Oct 2023 07:32:12 -0400
-X-MC-Unique: i4dTLrFOO4ujsBGWEBIO3g-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B2889280604C;
- Mon, 23 Oct 2023 11:32:11 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3C5581C060AE;
- Mon, 23 Oct 2023 11:32:10 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v5 18/19] hw/display: make ATI_VGA depend on PIXMAN
-Date: Mon, 23 Oct 2023 15:30:45 +0400
-Message-ID: <20231023113047.2572137-19-marcandre.lureau@redhat.com>
-In-Reply-To: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
-References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
+ id 1qutxP-0000fn-2A
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 08:22:55 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
+ id 1qutxM-0006LF-Sf
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 08:22:54 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-9b1ebc80d0aso473939166b.0
+ for <qemu-devel@nongnu.org>; Mon, 23 Oct 2023 05:22:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1698063771; x=1698668571; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=puFxVh/ZtdcJ4sXYQ8EaSuqCmvBIGtW72pjs81TIQ2U=;
+ b=k/9YShkIOSRQxLk3rMvRciL/hIyRsVzLfEWe86ctZj25i+W1zXbJCfOxnE6ca9IJO/
+ QAWdgeJDJrvEhui3HTGOhJtdctE3mNyrWeFLnJHRBDYBIM4VM1kr3vZEqEEyu0AK86vi
+ L4DcVzEXYKiQRR5dFBbuGTt1MyRIn1nQ8Dp1p8CDKA0gnliXay/e34ALsoSvcmpDdxoi
+ 4kGr0NABF47kqvKQqzSsotD/pmpgPUYhT2QnjcKYdm/66pQIbuIvXeSLoMdXw38/NLXo
+ kMe4kf5bhsXdrQm8slTiFRRW1vPqWi5ftYTpnVvZWOwl4Y+QBqhdgu//BS5lfrjPzl7Y
+ Zk1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698063771; x=1698668571;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=puFxVh/ZtdcJ4sXYQ8EaSuqCmvBIGtW72pjs81TIQ2U=;
+ b=liho0iu58EukWLk90fbrHD4z8REtuEowsiyoaa5AHX9jwK9IC3Ean91R0NSgr8gqSD
+ eD1dbFEFIom0beSdsj2Y9lL76pg7V8gcIW1GH9H/AkAytqHITwoWtlWQjnpXg3Zq64eY
+ lhswja1KICEPPZwVahzGwUP5nA+ayXvGp50t44Gyq+iFUwS0O9y7SOIH9+i2Yi+QXQmg
+ Sp8g+1e9ogi+Hr4BgOVkf3F98UzwejxQhJQ3I6r3EkRsBOMgfbBN1dyQfM19SmaaQK2m
+ BNDpjTqNd7L1jgbyHhPGbPcJ6rstPbfSYr1EybB49VE+aDdvasFhwMzYWQX2zFkkO5Sz
+ QgLQ==
+X-Gm-Message-State: AOJu0YwqHMab3PJXznCf6iVksTy7Ms5BGU5siQdD+fE8ngSsr4tZ/ptT
+ Eo+9oedDV1Ue7grRXEoB/Sl1uw==
+X-Received: by 2002:a17:907:980c:b0:9bd:a75a:5644 with SMTP id
+ ji12-20020a170907980c00b009bda75a5644mr8085753ejc.16.1698063771041; 
+ Mon, 23 Oct 2023 05:22:51 -0700 (PDT)
+Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz.
+ [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
+ by smtp.gmail.com with ESMTPSA id
+ fx4-20020a170906b74400b009b9a1714524sm6658794ejb.12.2023.10.23.05.22.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Oct 2023 05:22:50 -0700 (PDT)
+Date: Mon, 23 Oct 2023 14:22:49 +0200
+From: Andrew Jones <ajones@ventanamicro.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
+ Ani Sinha <anisinha@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Anup Patel <apatel@ventanamicro.com>, Atish Kumar Patra <atishp@rivosinc.com>, 
+ Haibo Xu <haibo1.xu@intel.com>
+Subject: Re: [PATCH v3 01/12] hw/arm/virt-acpi-build.c: Migrate fw_cfg
+ creation to common location
+Message-ID: <20231023-5fcf9635262134fc5b1847cc@orel>
+References: <20231019132648.23703-1-sunilvl@ventanamicro.com>
+ <20231019132648.23703-2-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231019132648.23703-2-sunilvl@ventanamicro.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=ajones@ventanamicro.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,57 +137,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xnlpCaihfoxX
+X-TUID: Kvk2RcDlgnkY
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+On Thu, Oct 19, 2023 at 06:56:37PM +0530, Sunil V L wrote:
+> RISC-V also needs to use the same code to create fw_cfg in DSDT. So, avoid
+> code duplication by moving the code in arm and riscv to a device specific
+> file.
+> 
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+>  hw/arm/virt-acpi-build.c       | 19 ++-----------------
+>  hw/nvram/fw_cfg-acpi.c         | 17 +++++++++++++++++
+>  hw/nvram/meson.build           |  1 +
+>  hw/riscv/virt-acpi-build.c     | 19 ++-----------------
+>  include/hw/nvram/fw_cfg_acpi.h |  9 +++++++++
+>  5 files changed, 31 insertions(+), 34 deletions(-)
+>  create mode 100644 hw/nvram/fw_cfg-acpi.c
+>  create mode 100644 include/hw/nvram/fw_cfg_acpi.h
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 6b674231c2..b8e725d953 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -35,7 +35,7 @@
+>  #include "target/arm/cpu.h"
+>  #include "hw/acpi/acpi-defs.h"
+>  #include "hw/acpi/acpi.h"
+> -#include "hw/nvram/fw_cfg.h"
+> +#include "hw/nvram/fw_cfg_acpi.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/acpi/utils.h"
+> @@ -94,21 +94,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+>      aml_append(scope, dev);
+>  }
+>  
+> -static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+> -{
+> -    Aml *dev = aml_device("FWCF");
+> -    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> -    /* device present, functioning, decoding, not shown in UI */
+> -    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> -    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> -
+> -    Aml *crs = aml_resource_template();
+> -    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+> -                                       fw_cfg_memmap->size, AML_READ_WRITE));
+> -    aml_append(dev, aml_name_decl("_CRS", crs));
+> -    aml_append(scope, dev);
+> -}
+> -
+>  static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+>  {
+>      Aml *dev, *crs;
+> @@ -864,7 +849,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      if (vmc->acpi_expose_flash) {
+>          acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+>      }
+> -    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+> +    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+>      acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
+> diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+> new file mode 100644
+> index 0000000000..4eeb81bc36
+> --- /dev/null
+> +++ b/hw/nvram/fw_cfg-acpi.c
+> @@ -0,0 +1,17 @@
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Acked-by: BALATON Zoltan <balaton@eik.bme.hu>
----
- configs/devices/mips64el-softmmu/default.mak | 2 +-
- hw/display/Kconfig                           | 2 +-
- hw/display/meson.build                       | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+Should add an SPDX.
 
-diff --git a/configs/devices/mips64el-softmmu/default.mak b/configs/devices/mips64el-softmmu/default.mak
-index d5188f7ea5..8d85607571 100644
---- a/configs/devices/mips64el-softmmu/default.mak
-+++ b/configs/devices/mips64el-softmmu/default.mak
-@@ -3,7 +3,7 @@
- include ../mips-softmmu/common.mak
- CONFIG_FULOONG=y
- CONFIG_LOONGSON3V=y
--CONFIG_ATI_VGA=y
-+# CONFIG_ATI_VGA=n
- CONFIG_RTL8139_PCI=y
- CONFIG_JAZZ=y
- CONFIG_VT82C686=y
-diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-index 1aafe1923d..4d8a6c4af8 100644
---- a/hw/display/Kconfig
-+++ b/hw/display/Kconfig
-@@ -125,7 +125,7 @@ config DPCD
- config ATI_VGA
-     bool
-     default y if PCI_DEVICES
--    depends on PCI
-+    depends on PCI && PIXMAN
-     select VGA
-     select BITBANG_I2C
-     select DDC
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 9c06aaee20..344dfe3d8c 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -62,7 +62,7 @@ system_ss.add(when: 'CONFIG_XLNX_DISPLAYPORT', if_true: files('xlnx_dp.c'))
- 
- system_ss.add(when: 'CONFIG_ARTIST', if_true: files('artist.c'))
- 
--system_ss.add(when: [pixman, 'CONFIG_ATI_VGA'], if_true: files('ati.c', 'ati_2d.c', 'ati_dbg.c'))
-+system_ss.add(when: 'CONFIG_ATI_VGA', if_true: [files('ati.c', 'ati_2d.c', 'ati_dbg.c'), pixman])
- 
- 
- if config_all_devices.has_key('CONFIG_VIRTIO_GPU')
--- 
-2.41.0
+> +#include "hw/nvram/fw_cfg_acpi.h"
+> +#include "hw/acpi/aml-build.h"
+> +
+> +void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+> +{
+> +    Aml *dev = aml_device("FWCF");
+> +    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> +    /* device present, functioning, decoding, not shown in UI */
+> +    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> +
+> +    Aml *crs = aml_resource_template();
+> +    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+> +                                       fw_cfg_memmap->size, AML_READ_WRITE));
+> +    aml_append(dev, aml_name_decl("_CRS", crs));
+> +    aml_append(scope, dev);
+> +}
+> diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
+> index 75e415b1a0..4996c72456 100644
+> --- a/hw/nvram/meson.build
+> +++ b/hw/nvram/meson.build
+> @@ -17,3 +17,4 @@ system_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true: files(
+>  system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+>  
+>  specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
+> +specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+> index 7331248f59..d8772c2821 100644
+> --- a/hw/riscv/virt-acpi-build.c
+> +++ b/hw/riscv/virt-acpi-build.c
+> @@ -28,6 +28,7 @@
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/acpi/utils.h"
+> +#include "hw/nvram/fw_cfg_acpi.h"
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/reset.h"
+> @@ -97,22 +98,6 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
+>      }
+>  }
+>  
+> -static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+> -{
+> -    Aml *dev = aml_device("FWCF");
+> -    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> -
+> -    /* device present, functioning, decoding, not shown in UI */
+> -    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> -    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> -
+> -    Aml *crs = aml_resource_template();
+> -    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+> -                                       fw_cfg_memmap->size, AML_READ_WRITE));
+> -    aml_append(dev, aml_name_decl("_CRS", crs));
+> -    aml_append(scope, dev);
+> -}
+> -
+>  /* RHCT Node[N] starts at offset 56 */
+>  #define RHCT_NODE_ARRAY_OFFSET 56
+>  
+> @@ -226,7 +211,7 @@ static void build_dsdt(GArray *table_data,
+>      scope = aml_scope("\\_SB");
+>      acpi_dsdt_add_cpus(scope, s);
+>  
+> -    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+> +    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+>  
+>      aml_append(dsdt, scope);
+>  
+> diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
+> new file mode 100644
+> index 0000000000..6e2c5f04b7
+> --- /dev/null
+> +++ b/include/hw/nvram/fw_cfg_acpi.h
+> @@ -0,0 +1,9 @@
 
+And an SPDX here too.
+
+> +#ifndef FW_CFG_ACPI_H
+> +#define FW_CFG_ACPI_H
+> +
+> +#include "qemu/osdep.h"
+> +#include "exec/hwaddr.h"
+> +
+> +void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
+> +
+> +#endif
+> -- 
+> 2.34.1
+>
+
+Otherwise,
+
+Reviewed-by: Andrew Jones <ajones@ventanamicro.com>

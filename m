@@ -1,118 +1,119 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1704929ejb;
-        Mon, 23 Oct 2023 16:48:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG5n88S41VWcmgBMt7JZULf1L25SXQjYOJvepCkUu73UWcf33M3YSK3UTB4IZbiQm/LY5hh
-X-Received: by 2002:a05:6214:29c9:b0:66d:9f6e:ab4d with SMTP id gh9-20020a05621429c900b0066d9f6eab4dmr10728723qvb.14.1698104881473;
-        Mon, 23 Oct 2023 16:48:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698104881; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1705058ejb;
+        Mon, 23 Oct 2023 16:48:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEEE1h6tKnMTBGNTSo+KLVKFrCW4U/umkZO7yo8hr5gemMXAhdB/co1XdIWTiNLiCauW1fH
+X-Received: by 2002:a05:622a:3d3:b0:418:b8c:1a0a with SMTP id k19-20020a05622a03d300b004180b8c1a0amr14590192qtx.25.1698104903630;
+        Mon, 23 Oct 2023 16:48:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698104903; cv=none;
         d=google.com; s=arc-20160816;
-        b=tp0MrAUiEET4NNZtnqrQ+UbStp5gAD6YkT6Yy8Yqwyercp4jPCqYBGPKFiFkLz3t9Z
-         e4a7zAEW9vtJiN8kU7BXA8vezI4opt/kWKySgKcS4OjkwUfVYx+NgQ9SxJ+ZeQdMNNad
-         V216B2G4mpeM9x5A5Uj5QaHC2bTPjGi46OwPmNNVettIE99TnaxivH/DYQIoT0kHFZGt
-         yfvJ9qJM/FR3kbrjbfsVgvYned9ANHDBqHvCkvybQ5Pu7/YnlDi0En/0QLy9W32mp5mV
-         qSIiCXs7oWqAQdReyT/CQewt1oSrzWH15fnkaZnsh3ZWKH8MSK9ZwJQlujQQWL21mPH7
-         eWDQ==
+        b=kde0MwsewyBD7Os7DOBbY03n9LWZQZcIULAuHdY5ugR1ebI21MWgME9+FlF8ceBlXe
+         AzWF9PnF3XA4gsslQXhcqjnjwmQpyG9wCrwOLXs96S42DMtpDHnMM+qJpOUpHZZuvPCF
+         IeVyzCcmxWSznBoPsAQmfLurnOF3SW+hRgzBaea4zoyFZ955YZes0LqU0m/dLyyqLoBQ
+         pHRX7ESsHSmDquAe1t0MwTW7N/5+OQJGauj92p5quoJr47GZk9k8pafiJ8grBfEIvunE
+         DdTCeqsuLbnB4n4+pbqpG9FAOGONErUBLzkK+Ey1AZ9WgRU03PQoiF/x/PjRhCoit9cC
+         eSdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=i3S/ucLUb2EnGxNEuiqhEsJ4HDduUunH8ndOA8IP8mU=;
-        fh=qxi5+ERGt2rtfdIuwivhWXSnjn4OAApmB1wsy27Klq0=;
-        b=g41EDlhZ85wcQL1pC/mXHxmJ+xe80pBze/c1qw4sXt2K61qkqu517i1+niXEFGj5iL
-         /RBMtDfor8aAm6Y2yvR4NoiLXAA+jN7JMpybEAJnFi0UJqQbRtp8UnwFvaL3JVwgSvLQ
-         vncMIT4Zuehrz/rQIoCsFovcDJf16jF5FubCr2TpT8VvdrGRXS7goOfQhIQi00+gv+ht
-         2OHBDCrEYFDeS23UUUo4wFdhGWXzZVzkGQxLrQKhUe/TKb20U/dfz/cE64sZBXJVlTiu
-         DRpMvEqBqYn5qwgcog+1ifi/vz73a1x1e8Y0wptB5IoyMVuNRLKwnmyEo/Y+B1kyRx+U
-         nQRw==
+        bh=57kge/OAmHbKAwBdnvGQrFdCdcxs8q+3+0ck+IJJcuA=;
+        fh=Mz0v6aCc/GPSuGOAcNmOuoiwEqcNHc5EwzP8i2J+/2g=;
+        b=xkbFhNcx+lvQGuRKhaAL+T1I0F6/Ewwqbg4WYsfZGxvX6yfBt/4zW9RGx14qkXR0YB
+         gxPukBihO+/YeJ+bB1c75QKRqIyoMnasN1oh2EdwAuJFYZE/UB969iBdyVdTrYGtjdJI
+         bhQkVLLgyzaPINbKfH3rq2VZaGzwEwNPjAQOZw1lxy2ngioh4lUPLa3PUxC3Sneyjaqn
+         +8odBiWd2F+u3X6CX4KbOBimZKxWBJ9XDHgEDw2zXgm+rGCbVtH8SyVB19eDUC4b247F
+         IJYXJxWTHb8lrh4j7AUT6wPHM/GFpUtYkceQbKADaNFwQH6t+ULWeaT7PKLtsXqv6Ovk
+         oV2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=zh2wS9vo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=gtvZ5onV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020a056214184c00b0066d6afd0beesi6256467qvy.45.2023.10.23.16.48.01
+        by mx.google.com with ESMTPS id g3-20020ac85d43000000b004180f881364si6561286qtx.111.2023.10.23.16.48.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 16:48:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Oct 2023 16:48:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=zh2wS9vo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=gtvZ5onV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qv4dZ-0002ti-5r; Mon, 23 Oct 2023 19:47:09 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qv4dY-0002tB-EN; Mon, 23 Oct 2023 19:47:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3-AU3ZQYKCBEAzAB98x55x2v.t537v3B-r83454x4B.58x@flex--titusr.bounces.google.com>)
- id 1qv4dY-0002t0-9H
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 19:47:08 -0400
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <39wU3ZQYKChA9y9A87w44w1u.s426u2A-tuBu1343w3A.47w@flex--titusr.bounces.google.com>)
+ id 1qv4dX-0002sU-2L
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 19:47:07 -0400
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3-AU3ZQYKCBEAzAB98x55x2v.t537v3B-r83454x4B.58x@flex--titusr.bounces.google.com>)
- id 1qv4dV-0002p4-VN
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 19:47:08 -0400
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-5a7fb3f311bso52307107b3.2
- for <qemu-arm@nongnu.org>; Mon, 23 Oct 2023 16:47:05 -0700 (PDT)
+ <39wU3ZQYKChA9y9A87w44w1u.s426u2A-tuBu1343w3A.47w@flex--titusr.bounces.google.com>)
+ id 1qv4dV-0002ob-9Z
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 19:47:06 -0400
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-5abfa4c10c4so18806587b3.0
+ for <qemu-devel@nongnu.org>; Mon, 23 Oct 2023 16:47:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1698104825; x=1698709625; darn=nongnu.org;
+ d=google.com; s=20230601; t=1698104823; x=1698709623; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=i3S/ucLUb2EnGxNEuiqhEsJ4HDduUunH8ndOA8IP8mU=;
- b=zh2wS9vog9psef1WyMHgQ5/kFub43Bg4nWpN6UCjbPqcdY7g1p1JOVX0wx391NxLEG
- TATTcx7OAVbpxzq3zdPMb5Kf7IIYE1AZ/+oowpXMVFwzlEWmpe4zrSUA+fXbev6duEwd
- 5+Zx/UXQcpaZIleBnN7v9zqsNEc4WeNhKwAGLcPIXHyvzs98D5g3s+t3RCb1T3TXxl+d
- t/XGaStB7ckh8TunNIWFH5StdncPi9geRRBDFYRGWQZcyCoVYeO52qoWLDCpFGzcrymT
- ewyUnrxgiPqI11o3a4m/tRRTS/NoGQzJeYdBIff7vX9PY2KD6sEj99DR6hAjsqwdnQqd
- oHcQ==
+ bh=57kge/OAmHbKAwBdnvGQrFdCdcxs8q+3+0ck+IJJcuA=;
+ b=gtvZ5onV9KpTHCG6lVIo0/lmHP2pa7FtBir0RUHjuJyNuh6Y+CDdo5KoUSVib1UWHo
+ nFLLMlWccnKwvfx0Xpz2ftBh5O0HkelauiMulmT1YsxjGpM7MVwAPyJrxPeUTTrwDDwN
+ 7mm86OJ86CLRzKPCkLr/m4fcR+lixTsuPnAt+F6Q3zTkyA8CEDcZuePwOnXM4zNnuVIy
+ B2M9bgs03p3/NOpLyJzLOt9OVE0Ds7RIsrtIYFfoEMPs4+8cLk089Vhd33+gVPi8nOSJ
+ FzdgcJBrNAsU9gyj+SJZWhyK3w3PRCoEnApfVDljXS1k22L9mzhM6f26UvtFmPgPXpNU
+ v6Mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698104825; x=1698709625;
+ d=1e100.net; s=20230601; t=1698104823; x=1698709623;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=i3S/ucLUb2EnGxNEuiqhEsJ4HDduUunH8ndOA8IP8mU=;
- b=OXExwCdc7ZmkvFFpsLNDVFLkT/2TK+f34zJr+/nNIxi17D5TVI2DPtYT4drLwVhp4G
- E0vuWmToGSHOuQ2tZSp00u5jitWvPRwgYgxC5zIfP/FF0OR+WFm25E7NUe56CpWaX2Vt
- 1JLCvGHJupoX5C+YdgL+MWtk9zmP4wXNS32JRmO190UWjE3EAWvrbF1VHDlIEZMtrToZ
- S7daOpTsMJrmlflNyKbOFmDh0n62nccRyPv01oIJLQku1KtACE7sZHUxFPIzXVVVFRy3
- Ih9r2RKJCdkQavSIHdNAdFbkRwl52cGlcAkuTR9q+BWhFLxWH9B/R6GwlxvFQe40Jvn2
- 3IKg==
-X-Gm-Message-State: AOJu0YyskZs3C0dgZOzXo8wjOVmq6zJqVGm4eJ5s3dVBEhIHUt+oY3Vm
- 15d207kMPKgibZVfxF9vjzhToqZjwS4=
+ bh=57kge/OAmHbKAwBdnvGQrFdCdcxs8q+3+0ck+IJJcuA=;
+ b=SA8DJ7ZUWa6bBYKL1Up5xUFDTXirCdIW7rG3Gmr8UWKmpk5298Ghiv0P0wND7vzL6d
+ 9cHIk7jptiOup4HwHdYDLpb0wOfVRdG7v1ZLuv3wbm1lm9fwRdCFQ+DDdgNwWr+uMqLO
+ fSCkyXKQAcAFbKYLKT2BtfsaKXkK8nvDUiHJTF/dfRrty2thEMteUXk6IV+w+t//pm1J
+ X3AmMa02J6wGWAJD/VvCOe4bJIFgZ1bWAIbKVp0LlNw2gu2DhAd/lvQrXdYh+cvslJrs
+ KvGhBjEHFUNGvt+KBaxmBQ6Xp/mgcv+N1fs7aI1mxq8YOO7C1izWgMXuMenHK9XrOEx+
+ KkaA==
+X-Gm-Message-State: AOJu0YzalBDzjzqzw2wA+c2If0M5o5620db7nQiGO+p2rs1RmG7go4IZ
+ mJI0XG5vWU+pBWHi+5oJBNwgB1rpdC4=
 X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:22b8])
- (user=titusr job=sendgmr) by 2002:a81:9150:0:b0:592:7bc7:b304 with SMTP id
- i77-20020a819150000000b005927bc7b304mr229293ywg.8.1698104824868; Mon, 23 Oct
- 2023 16:47:04 -0700 (PDT)
-Date: Mon, 23 Oct 2023 23:46:46 +0000
+ (user=titusr job=sendgmr) by 2002:a0d:d486:0:b0:5a8:6162:b69 with SMTP id
+ w128-20020a0dd486000000b005a861620b69mr239049ywd.3.1698104823542; Mon, 23 Oct
+ 2023 16:47:03 -0700 (PDT)
+Date: Mon, 23 Oct 2023 23:46:45 +0000
 In-Reply-To: <20231023-staging-pmbus-v3-v4-0-07a8cb7cd20a@google.com>
 Mime-Version: 1.0
 References: <20231023-staging-pmbus-v3-v4-0-07a8cb7cd20a@google.com>
 X-Developer-Key: i=titusr@google.com; a=openpgp;
  fpr=228BD42BAD6A2BCD3865AEA6C41200175CD21E30
-X-Developer-Signature: v=1; a=openpgp-sha256; l=923; i=titusr@google.com;
- h=from:subject:message-id; bh=F4m2MZ4pwdghWvz/7slFyNSaLFtYH8k3ZV6OH4454yM=;
- b=owEB7QES/pANAwAKAcQSABdc0h4wAcsmYgBlNwXv+QWP7q7WWM4S6eFZaUTPqOaKKAKE2UGBE
- SztF6QPQBSJAbMEAAEKAB0WIQQii9QrrWorzThlrqbEEgAXXNIeMAUCZTcF7wAKCRDEEgAXXNIe
- MFQTC/0dgaa2odAP+quGOBcpc+CEWqAuKpIrSJLIQP+EA7A1y6Wuz99yLdB/FKUgxHMV3570IMB
- P3u2YEq567vNdD331VzjhzYvtNbXVZWnRMqmw+nmZPvyrPK9CiTfnW9cLp0CgoSMIM2SAs6mLLp
- tSOXYD//4cM4IMvjzv3ckwU98S/51ig1ZOdC4nkPE93tNvmhJNLo6+bLpzPOnLiJ768fMFNxFl/
- yw7bdU20JFCQcMA1TEu51fQfaKl/veD9KSYf/QnVfkHOCEP5lkzuDGd+thhmLC7zFIu1x1kLt65
- DjDDgpMn3b254F2zjoUa5qhYE6Uz2UCprIc0tVN1pxKw7BOPm/CM/oJiT5QUsfP8llGenZMJVQI
- ZodC7DmgxcNAmOW29Z6L6siS1Z1O5WoBJAUR68Uyb65OvTGvLuy6mN1eBr3NUsOwinCEZV3mQU/
- wA43Lo+2P4hWrcskGvMyQc+8Yv8DHQhh/8QCRP/46M6+DcRbronmVM50M+WcWXvYLg0+Y=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5481; i=titusr@google.com;
+ h=from:subject:message-id; bh=BnRnug81IWlhfXo1CDxHzzk6FRAPzK5+qz/WkzSPoe0=;
+ b=owEB7QES/pANAwAKAcQSABdc0h4wAcsmYgBlNwXvuSFuqGcnlaTaTfBFDvySr3LmDWMp115W4
+ fdzK3mqpYmJAbMEAAEKAB0WIQQii9QrrWorzThlrqbEEgAXXNIeMAUCZTcF7wAKCRDEEgAXXNIe
+ MA+4C/kBS8SL7b7POdCA5lf94RC4aejgVt9daAZoEIGtuljrmRfswoT2yxlog3olz6AlVqAK7dl
+ woeJxMwm0noxEp+t+4kcUWG4g4wakzPFxQ+s9xTdY9Y7LAXZQjTON4Y56N2kkY9zc2nAh9pr+Bt
+ 2RVIKRtFYvS030wfGyc7tTqtY6qg5hRJaejJx8RqG/PnFCIb6Q68xIQjek1S30eqVI2AYpRWRvU
+ CQ8+xilT85sbrysCFGs38C6uw/aXugwtq2eVMmR1LMKYV/BMAHQkMhrOEauytakNS+jvnwSPT6m
+ euYwdBY7LW8DRq3PysT6DaaMVHhpqO+eouqZBNqVl5kgpIsom8nGaM/i+cmn0Ar/XVCOwa0v4TJ
+ XtLvwAVI06pOLgyT5tOi36XncrEPlew+eRKEJyo5vhUKK7EoF1uZnmDP6BGgOjDZWsv1kGZp2XL
+ Sug3G+NwJ5TXGcb+UO7viHPqPVMdaPhhPIliKaVwzjinm1Gkcb/xDETXhN0uR6LQDZNPA=
 X-Mailer: b4 0.12.2
-Message-ID: <20231023-staging-pmbus-v3-v4-7-07a8cb7cd20a@google.com>
-Subject: [PATCH v4 7/8] hw/i2c: pmbus: immediately clear faults on request
+Message-ID: <20231023-staging-pmbus-v3-v4-6-07a8cb7cd20a@google.com>
+Subject: [PATCH v4 6/8] tests/qtest: add tests for ADM1266
 From: titusr@google.com
 To: philmd@linaro.org, minyard@acm.org
 Cc: Titus Rwantare <titusr@google.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Patrick Venture <venture@google.com>
+ qemu-devel@nongnu.org, 
+ Hao Wu <wuhaotsh@google.com>, Corey Minyard <cminyard@mvista.com>
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3-AU3ZQYKCBEAzAB98x55x2v.t537v3B-r83454x4B.58x@flex--titusr.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=39wU3ZQYKChA9y9A87w44w1u.s426u2A-tuBu1343w3A.47w@flex--titusr.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -121,47 +122,173 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h+CDKHCYfq6M
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 66To1OIU54wz
 
-The probing process of the generic pmbus driver generates
-faults to determine if functions are available. These faults
-were not always cleared resulting in probe failures.
+  The ADM1266 can have string fields written by the driver, so
+  it's worth specifically testing.
 
-Reviewed-by: Patrick Venture <venture@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Titus Rwantare <titusr@google.com>
 ---
- hw/i2c/pmbus_device.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ tests/qtest/adm1266-test.c | 123 +++++++++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build    |   1 +
+ 2 files changed, 124 insertions(+)
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index 3bce39e84e..481e158380 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -1244,6 +1244,11 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-     pmdev->in_buf = buf;
- 
-     pmdev->code = buf[0]; /* PMBus command code */
+diff --git a/tests/qtest/adm1266-test.c b/tests/qtest/adm1266-test.c
+new file mode 100644
+index 0000000000..6431a21de6
+--- /dev/null
++++ b/tests/qtest/adm1266-test.c
+@@ -0,0 +1,123 @@
++/*
++ * Analog Devices ADM1266 Cascadable Super Sequencer with Margin Control and
++ * Fault Recording with PMBus
++ *
++ * Copyright 2022 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+    if (pmdev->code == PMBUS_CLEAR_FAULTS) {
-+        pmbus_clear_faults(pmdev);
-+    }
++#include "qemu/osdep.h"
++#include <math.h>
++#include "hw/i2c/pmbus_device.h"
++#include "libqtest-single.h"
++#include "libqos/qgraph.h"
++#include "libqos/i2c.h"
++#include "qapi/qmp/qdict.h"
++#include "qapi/qmp/qnum.h"
++#include "qemu/bitops.h"
 +
-     if (len == 1) { /* Single length writes are command codes only */
-         return 0;
-     }
++#define TEST_ID "adm1266-test"
++#define TEST_ADDR (0x12)
++
++#define ADM1266_BLACKBOX_CONFIG                 0xD3
++#define ADM1266_PDIO_CONFIG                     0xD4
++#define ADM1266_READ_STATE                      0xD9
++#define ADM1266_READ_BLACKBOX                   0xDE
++#define ADM1266_SET_RTC                         0xDF
++#define ADM1266_GPIO_SYNC_CONFIGURATION         0xE1
++#define ADM1266_BLACKBOX_INFORMATION            0xE6
++#define ADM1266_PDIO_STATUS                     0xE9
++#define ADM1266_GPIO_STATUS                     0xEA
++
++/* Defaults */
++#define ADM1266_OPERATION_DEFAULT               0x80
++#define ADM1266_CAPABILITY_DEFAULT              0xA0
++#define ADM1266_CAPABILITY_NO_PEC               0x20
++#define ADM1266_PMBUS_REVISION_DEFAULT          0x22
++#define ADM1266_MFR_ID_DEFAULT                  "ADI"
++#define ADM1266_MFR_ID_DEFAULT_LEN              32
++#define ADM1266_MFR_MODEL_DEFAULT               "ADM1266-A1"
++#define ADM1266_MFR_MODEL_DEFAULT_LEN           32
++#define ADM1266_MFR_REVISION_DEFAULT            "25"
++#define ADM1266_MFR_REVISION_DEFAULT_LEN        8
++#define TEST_STRING_A                           "a sample"
++#define TEST_STRING_B                           "b sample"
++#define TEST_STRING_C                           "rev c"
++
++static void compare_string(QI2CDevice *i2cdev, uint8_t reg,
++                           const char *test_str)
++{
++    uint8_t len = i2c_get8(i2cdev, reg);
++    char i2c_str[SMBUS_DATA_MAX_LEN] = {0};
++
++    i2c_read_block(i2cdev, reg, (uint8_t *)i2c_str, len);
++    g_assert_cmpstr(i2c_str, ==, test_str);
++}
++
++static void write_and_compare_string(QI2CDevice *i2cdev, uint8_t reg,
++                                     const char *test_str, uint8_t len)
++{
++    char buf[SMBUS_DATA_MAX_LEN] = {0};
++    buf[0] = len;
++    strncpy(buf + 1, test_str, len);
++    i2c_write_block(i2cdev, reg, (uint8_t *)buf, len + 1);
++    compare_string(i2cdev, reg, test_str);
++}
++
++static void test_defaults(void *obj, void *data, QGuestAllocator *alloc)
++{
++    uint16_t i2c_value;
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_OPERATION);
++    g_assert_cmphex(i2c_value, ==, ADM1266_OPERATION_DEFAULT);
++
++    i2c_value = i2c_get8(i2cdev, PMBUS_REVISION);
++    g_assert_cmphex(i2c_value, ==, ADM1266_PMBUS_REVISION_DEFAULT);
++
++    compare_string(i2cdev, PMBUS_MFR_ID, ADM1266_MFR_ID_DEFAULT);
++    compare_string(i2cdev, PMBUS_MFR_MODEL, ADM1266_MFR_MODEL_DEFAULT);
++    compare_string(i2cdev, PMBUS_MFR_REVISION, ADM1266_MFR_REVISION_DEFAULT);
++}
++
++/* test r/w registers */
++static void test_rw_regs(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    /* empty strings */
++    i2c_set8(i2cdev, PMBUS_MFR_ID, 0);
++    compare_string(i2cdev, PMBUS_MFR_ID, "");
++
++    i2c_set8(i2cdev, PMBUS_MFR_MODEL, 0);
++    compare_string(i2cdev, PMBUS_MFR_MODEL, "");
++
++    i2c_set8(i2cdev, PMBUS_MFR_REVISION, 0);
++    compare_string(i2cdev, PMBUS_MFR_REVISION, "");
++
++    /* test strings */
++    write_and_compare_string(i2cdev, PMBUS_MFR_ID, TEST_STRING_A,
++                             sizeof(TEST_STRING_A));
++    write_and_compare_string(i2cdev, PMBUS_MFR_ID, TEST_STRING_B,
++                             sizeof(TEST_STRING_B));
++    write_and_compare_string(i2cdev, PMBUS_MFR_ID, TEST_STRING_C,
++                             sizeof(TEST_STRING_C));
++}
++
++static void adm1266_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "id=" TEST_ID ",address=0x12"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { TEST_ADDR });
++
++    qos_node_create_driver("adm1266", i2c_device_create);
++    qos_node_consumes("adm1266", "i2c-bus", &opts);
++
++    qos_add_test("test_defaults", "adm1266", test_defaults, NULL);
++    qos_add_test("test_rw_regs", "adm1266", test_rw_regs, NULL);
++}
++
++libqos_init(adm1266_register_nodes);
++
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index d6022ebd64..7899537e78 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -241,6 +241,7 @@ qos_test_ss = ss.source_set()
+ qos_test_ss.add(
+   'ac97-test.c',
+   'adm1272-test.c',
++  'adm1266-test.c',
+   'ds1338-test.c',
+   'e1000-test.c',
+   'eepro100-test.c',
 
 -- 
 2.42.0.758.gaed0368e0e-goog

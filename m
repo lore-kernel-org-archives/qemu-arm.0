@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1544500ejb;
-        Mon, 23 Oct 2023 11:10:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFRCbUZ6bmPj/b5UI+V7gU5kvhjRDdYgXtXZlZO6sSt9usov9ghOXJ7Bq5lq80ZDykBCeqO
-X-Received: by 2002:a05:6214:4115:b0:66d:33d:147d with SMTP id kc21-20020a056214411500b0066d033d147dmr12929329qvb.20.1698084639458;
-        Mon, 23 Oct 2023 11:10:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698084639; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1544867ejb;
+        Mon, 23 Oct 2023 11:11:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFg2Kb4xhafZpxdm/gimZMyqqxes/3spqED/rRMqryrOOKNmJJgKeseD3fIy5UFNHB6jVKT
+X-Received: by 2002:ad4:4b6b:0:b0:66d:7f65:71c9 with SMTP id m11-20020ad44b6b000000b0066d7f6571c9mr17732845qvx.9.1698084675601;
+        Mon, 23 Oct 2023 11:11:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698084675; cv=none;
         d=google.com; s=arc-20160816;
-        b=HIOsGpFiaOFW3kJi0SjPCNf8IKPyJKF4hjiiyL6rd0Ai0oVmJvttDSu1/zn4CqL+cg
-         v8BUX12FyZpY1Rb72jiugM85emlM4POhqCGWUdYR9OlmDHe68JkcKFaRvTFgpW0RK4Zh
-         bKEskmoja+Nj562z3pb4LksLSOZR+oUwT7Zze/BCOT+k3KyMMCk83Ww5uET1J9t8gERo
-         PWZ6i2gMSgXAmL/y0h6fMNbHpqT6ElwqJy1H4fd06SIYuoGTQxE/o/fTHOAsw9zKxStK
-         CpDAVIUkfsO0TXIlglhfaR1HhGxooP5LsyUryyavwyRJN2pvNNnY+mumqM2bNHQk0sD5
-         388g==
+        b=nu8mDUe9MMEEZ23/bnXdzUDlSkigBenH1uV9zZGMbozlbe8xdTFJB+BHUFo7fOHA5h
+         rC/zlHwqrM1S/fdCkno5tO5sFOPqF+3p0SC4t4GxAaNtJAdXkV4WkjLSSOXxhZEkjGKh
+         MT6kKMMIj19oeCC25PkS6+QP8u5pnWWgibDazXb6FxXjFcnr+uISMKNYrscyoTtKXU6p
+         irOH4XfuYa4doXJZgVSHKrZnx1PwworM0V5q/OXIy/c8m1e0Kz59f+Bu2KkOKJBFsbD8
+         mCyqmfOP2YImkybcZl6iLDqjqKiqT0MrZexxgwcPOOOOaZ8pMpV6fOGrZ77+TkPj1Bza
+         gqJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=IVqYj4it6Gbk8q7NLywy+QqsqPeqJ6ajVaN0kVt6mXo=;
-        fh=EilGs8uvd9jgB0HYK+IcdsOOeBoh57jMIohFs2ZFCM8=;
-        b=YChyMIZxwMoHdwXByr+lBozNiUHV8u6OywhxvNHeZVpPg+gxbSE7YzobBt4qcIcDy2
-         GDvRX0Je61IG57ngcdPsndf+h7EQAS+ZdyUg1Zejmzg+BzphT4MIXjlIF/RIVqPfy+67
-         L62547ztVzJhIjSCO0AMDavBZUp7CywAWxUWCd9CmS5FsRnRyAgXLkgizE4z+G04IDEx
-         Lm09n5SIVQTlNMk//16cHnAjTOrfQKdQUIvCSVOJKQ6BBwN6D+KENK7pKLxIHhUkbrmC
-         1dOfEHtpF+ZaZHR/Fk7yRAc8OWLzQUFZaHUfKa6gOQpy6ZTpEPqBWgyJ7iLwRICO7F4S
-         VmNA==
+        bh=pMUhOWgIv4TqxALDqvCHn+orcFHtyhFj1Pqo7bh95SQ=;
+        fh=q4lL/uJQlrYuciyVDC1dM88wZO52S7lbF1hOqFxq0Bk=;
+        b=07OAwyGq+XU4VRlNK9qdtqmxhvnJbC6H/laW1msx9kduNjMPCU8jtebUZ5NoMpbA4S
+         3wLMAIaFw6P89XlnaAKOuqa1H2MIqV/a4Q3UB5CJnyXFvw8WMp0t6pvutZ1ElPIoANw1
+         w/axSf73CzRaHdxi/Rk41ss0boPFZEJjwtyRa+6Vpu4Cvz1sR2lGOK8RFQP1549FmBBZ
+         Tq/4UK+hhcmX1O7kQY2y4qMCLsGEpNPOMW6fM2b9TBzr2SGbzTGhRzw8cX7Rb1FvtMnD
+         1rWSMQWaU/SRjnG/Ijzy3LEWkIt8cQFJHY8tgElfgk/R0kx+/8wHdNxWEvjn7MPL5pqD
+         zxkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=t4HIHBOg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=bkpgKwKf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pc19-20020a056214489300b0066cf6a75891si6278429qvb.601.2023.10.23.11.10.39
+        by mx.google.com with ESMTPS id fc14-20020ad44f2e000000b0066cffc19388si5819133qvb.321.2023.10.23.11.11.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 11:10:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Oct 2023 11:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=t4HIHBOg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=bkpgKwKf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1quzMY-0005SM-4s; Mon, 23 Oct 2023 14:09:14 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1quzMX-0005RA-LZ; Mon, 23 Oct 2023 14:09:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3wbY2ZQYKCjopepqonckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--titusr.bounces.google.com>)
- id 1quzMS-0005NP-IF
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 14:09:08 -0400
+ <3wrY2ZQYKCDsqfqrpodlldib.Zljnbjr-Xojklkdkr.lod@flex--titusr.bounces.google.com>)
+ id 1quzMW-0005Q3-7V
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 14:09:12 -0400
 Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3wbY2ZQYKCjopepqonckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--titusr.bounces.google.com>)
- id 1quzMQ-0006xN-EX
- for qemu-devel@nongnu.org; Mon, 23 Oct 2023 14:09:08 -0400
+ <3wrY2ZQYKCDsqfqrpodlldib.Zljnbjr-Xojklkdkr.lod@flex--titusr.bounces.google.com>)
+ id 1quzMR-0006yw-PT
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 14:09:11 -0400
 Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-5a7af53bde4so50094757b3.0
- for <qemu-devel@nongnu.org>; Mon, 23 Oct 2023 11:09:05 -0700 (PDT)
+ 00721157ae682-5abfa4c10c4so15426287b3.0
+ for <qemu-arm@nongnu.org>; Mon, 23 Oct 2023 11:09:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1698084545; x=1698689345; darn=nongnu.org;
+ d=google.com; s=20230601; t=1698084547; x=1698689347; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=IVqYj4it6Gbk8q7NLywy+QqsqPeqJ6ajVaN0kVt6mXo=;
- b=t4HIHBOgxVukwK2htMr7/vZrKbqTKGDUmF3dSKGV7V9Px8xBjvSzW7XF8d3kzIbagu
- ph5ifXVNlZPH3jz0qGtDx2tGn0KJXh7i1jJDBPOzQXTiI7+0rN2Da5LSx9r2Ze4CzJZO
- T2t0YGLOuvhoSN0aCX42hK+IgoGdBITv/Opr4q/X5VUmSmHGfU1q3lYmgKFvXDvVVDun
- ohA5zYeKE0D6MQcRYcsqqz0Xz/Hz7iA+Z7lUqYFkQ0DvZkfk9S7oC3NXHBSZr/tHlHmX
- mTRbe2n2i++M6/RPBd+uiEYKGGC4c6JwTVvbTnF7xTymGfRq3/idT/nZRfClp74qLRaV
- 1ldw==
+ bh=pMUhOWgIv4TqxALDqvCHn+orcFHtyhFj1Pqo7bh95SQ=;
+ b=bkpgKwKfIKTptYeWzam4PN1XgALNFwz5i4rRkGWaL1qnV+ZeO2Mc/Vot6wOGGgnFMH
+ tQ5g0fh6heLyfclpl+zV27irgkTRQZbZ8lW++7vfbCtruX6GYe2AlzugSm+Y2XKEcxAo
+ Dz+/c1Z6gv7/YrHJpSUcxfZU6kdWeh/QMAQlo4CCRIW/jWZugJhr3BrRUyDmLupNoZF7
+ OKeIrpee18MfwWW/DTxeMfa8UEnpp7gV7qquDpaeCPpKg22Rjt3z3KjBE6ur8Shk/gza
+ vm2KIdPqCyFbe+/grOLxsln2mccAU4B6ryHLUh2YKXT6HrtDJHOc78VKCnKLUSwTbOvP
+ pPbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698084545; x=1698689345;
+ d=1e100.net; s=20230601; t=1698084547; x=1698689347;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IVqYj4it6Gbk8q7NLywy+QqsqPeqJ6ajVaN0kVt6mXo=;
- b=oKWFMKfhLIYnGMD4/sSt4PDWFQi9Nnz6QUAIwqcvdj+eY8Mo2PNV+8WeNH13dehjNF
- FotXKOnneS4fLF9/hJHmQdcSyCRCZ3ZgrfbTdz/D2RiUd3k78JfIq2Ay+cxMoTBrtQK4
- aIBbYXhLt7Kr1PJeX5SKGeau6OTIA/a3pGUBRyaZebdvq0Hhbh9JL2HMxShA5B8hA1L9
- jEin3IpiKTw7IdTI7HiVKjOLfzrS+W3e4YE3DzvdtfDGjKmBs9YlwMhdaYDELgydiU4k
- VvhHfJ10KnVJb2L7mKW62IpaKC8Y6iW+nEGfK5PUhRRcvCcqqDRKEguwqcwOUYOTlG04
- QLuA==
-X-Gm-Message-State: AOJu0YxjlpBp/6Xeq3KF/EFSmbnOq6Z/2D34Ylh80YHkB0xqfTZnxevd
- NXJHuF4SNZADJvzS9HMTdLykipKMiqw=
+ bh=pMUhOWgIv4TqxALDqvCHn+orcFHtyhFj1Pqo7bh95SQ=;
+ b=QGkr4gPbNp38gtlAmyKNua/5H5Fpnjvp2p49IJt22VbgKD3tgoZnRnsZjNAnA5kWgu
+ pN1kBu7mc5b6Mu4hmGdLURokmLCbRWmfIwcAr4D5oNS/zcLbvY5u/Q3qTSaHi2bsQNP0
+ JaWgon87tbkjxm2wje34My6jGl8WQA9G7p3y/1AssaBl4/7qKNN0xLkboYvIwWcZWHr4
+ ALQZ1Exqd5DCAnDizFV5kQjxFYhDc9NvT8oH2rRzY6DHer/dIaxtZXft2XjPKralFcs/
+ chqLKI5yDV6zBDbhwOy/mIJe0+2qrw6wxrH90VSGKtT9Xj8duax+P0bysL3uAh/8s+K/
+ 4rxw==
+X-Gm-Message-State: AOJu0YzY1RkmEkLvnjzMBpeRbr0c0fclPvWYl/5fBuB6GdtdCydmitpn
+ TwuYamxLMZNwgO3CAxRbnP4DWvf0ibdAiAxjAZssbPoOq62muYl/IPDaaSb28zo8US0MpMgH+LN
+ nd1gk0kWamc4+9HpOYJ7gxr/5fNKusOoScAAwRBVCkdBS2Pyh7SdN9AQMEw==
 X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:22b8])
- (user=titusr job=sendgmr) by 2002:a25:d601:0:b0:d9b:e3f6:c8c6 with SMTP id
- n1-20020a25d601000000b00d9be3f6c8c6mr205230ybg.4.1698084545044; Mon, 23 Oct
- 2023 11:09:05 -0700 (PDT)
-Date: Mon, 23 Oct 2023 18:08:32 +0000
+ (user=titusr job=sendgmr) by 2002:a0d:d685:0:b0:5a1:d0cf:b65d with SMTP id
+ y127-20020a0dd685000000b005a1d0cfb65dmr243883ywd.5.1698084546945; Mon, 23 Oct
+ 2023 11:09:06 -0700 (PDT)
+Date: Mon, 23 Oct 2023 18:08:34 +0000
 In-Reply-To: <20231023180837.91785-1-titusr@google.com>
 Mime-Version: 1.0
 References: <20231023180837.91785-1-titusr@google.com>
 X-Mailer: git-send-email 2.42.0.758.gaed0368e0e-goog
-Message-ID: <20231023180837.91785-4-titusr@google.com>
-Subject: [PATCH v3 3/8] hw/i2c: pmbus: add fan support
+Message-ID: <20231023180837.91785-6-titusr@google.com>
+Subject: [PATCH v3 5/8] hw/sensor: add ADM1266 device model
 From: Titus Rwantare <titusr@google.com>
 To: qemu-arm@nongnu.org, qemu-devel@nongnu.org, minyard@acm.org, 
  philmd@linaro.org
-Cc: Titus Rwantare <titusr@google.com>,
- Stephen Longfield <slongfield@google.com>
+Cc: Titus Rwantare <titusr@google.com>, Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3wbY2ZQYKCjopepqonckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--titusr.bounces.google.com;
+ envelope-from=3wrY2ZQYKCDsqfqrpodlldib.Zljnbjr-Xojklkdkr.lod@flex--titusr.bounces.google.com;
  helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
@@ -109,259 +109,337 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /dig4pWLRq7u
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aoBocqPyhCru
 
-PMBus devices may integrate fans whose operation is configurable
-over PMBus. This commit allows the driver to read and write the
-fan control registers but does not model the operation of fans.
+  The ADM1266 is a cascadable super sequencer with margin control and
+  fault recording.
+  This commit adds basic support for its PMBus commands and models
+  the identification registers that can be modified in a firmware
+  update.
 
-Reviewed-by: Stephen Longfield <slongfield@google.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 Signed-off-by: Titus Rwantare <titusr@google.com>
 ---
- hw/i2c/pmbus_device.c         | 176 ++++++++++++++++++++++++++++++++++
- include/hw/i2c/pmbus_device.h |   1 +
- 2 files changed, 177 insertions(+)
+ hw/arm/Kconfig        |   1 +
+ hw/sensor/Kconfig     |   5 +
+ hw/sensor/adm1266.c   | 254 ++++++++++++++++++++++++++++++++++++++++++
+ hw/sensor/meson.build |   1 +
+ 4 files changed, 261 insertions(+)
+ create mode 100644 hw/sensor/adm1266.c
 
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index ea15490720..c1d8c93056 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -500,6 +500,54 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         }
-         break;
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7e68348440..b1e8c0e2ac 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -488,6 +488,7 @@ config NPCM7XX
+     default y
+     depends on TCG && ARM
+     select A9MPCORE
++    select ADM1266
+     select ADM1272
+     select ARM_GIC
+     select SMBUS
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index e03bd09b50..bc6331b4ab 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -22,6 +22,11 @@ config ADM1272
+     bool
+     depends on I2C
  
-+    case PMBUS_FAN_CONFIG_1_2:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].fan_config_1_2);
-+        } else {
-+            goto passthough;
-+        }
++config ADM1266
++    bool
++    depends on PMBUS
++    default y if PMBUS
++
+ config MAX34451
+     bool
+     depends on I2C
+diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
+new file mode 100644
+index 0000000000..5ae4f82ba1
+--- /dev/null
++++ b/hw/sensor/adm1266.c
+@@ -0,0 +1,254 @@
++/*
++ * Analog Devices ADM1266 Cascadable Super Sequencer with Margin Control and
++ * Fault Recording with PMBus
++ *
++ * https://www.analog.com/media/en/technical-documentation/data-sheets/adm1266.pdf
++ *
++ * Copyright 2023 Google LLC
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/i2c/pmbus_device.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++
++#define TYPE_ADM1266 "adm1266"
++OBJECT_DECLARE_SIMPLE_TYPE(ADM1266State, ADM1266)
++
++#define ADM1266_BLACKBOX_CONFIG                 0xD3
++#define ADM1266_PDIO_CONFIG                     0xD4
++#define ADM1266_READ_STATE                      0xD9
++#define ADM1266_READ_BLACKBOX                   0xDE
++#define ADM1266_SET_RTC                         0xDF
++#define ADM1266_GPIO_SYNC_CONFIGURATION         0xE1
++#define ADM1266_BLACKBOX_INFORMATION            0xE6
++#define ADM1266_PDIO_STATUS                     0xE9
++#define ADM1266_GPIO_STATUS                     0xEA
++
++/* Defaults */
++#define ADM1266_OPERATION_DEFAULT               0x80
++#define ADM1266_CAPABILITY_DEFAULT              0xA0
++#define ADM1266_CAPABILITY_NO_PEC               0x20
++#define ADM1266_PMBUS_REVISION_DEFAULT          0x22
++#define ADM1266_MFR_ID_DEFAULT                  "ADI"
++#define ADM1266_MFR_ID_DEFAULT_LEN              32
++#define ADM1266_MFR_MODEL_DEFAULT               "ADM1266-A1"
++#define ADM1266_MFR_MODEL_DEFAULT_LEN           32
++#define ADM1266_MFR_REVISION_DEFAULT            "25"
++#define ADM1266_MFR_REVISION_DEFAULT_LEN        8
++
++#define ADM1266_NUM_PAGES               17
++/**
++ * PAGE Index
++ * Page 0 VH1.
++ * Page 1 VH2.
++ * Page 2 VH3.
++ * Page 3 VH4.
++ * Page 4 VP1.
++ * Page 5 VP2.
++ * Page 6 VP3.
++ * Page 7 VP4.
++ * Page 8 VP5.
++ * Page 9 VP6.
++ * Page 10 VP7.
++ * Page 11 VP8.
++ * Page 12 VP9.
++ * Page 13 VP10.
++ * Page 14 VP11.
++ * Page 15 VP12.
++ * Page 16 VP13.
++ */
++typedef struct ADM1266State {
++    PMBusDevice parent;
++
++    char mfr_id[32];
++    char mfr_model[32];
++    char mfr_rev[8];
++} ADM1266State;
++
++static const uint8_t adm1266_ic_device_id[] = {0x03, 0x41, 0x12, 0x66};
++static const uint8_t adm1266_ic_device_rev[] = {0x08, 0x01, 0x08, 0x07, 0x0,
++                                                0x0, 0x07, 0x41, 0x30};
++
++static void adm1266_exit_reset(Object *obj)
++{
++    ADM1266State *s = ADM1266(obj);
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++
++    pmdev->page = 0;
++    pmdev->capability = ADM1266_CAPABILITY_NO_PEC;
++
++    for (int i = 0; i < ADM1266_NUM_PAGES; i++) {
++        pmdev->pages[i].operation = ADM1266_OPERATION_DEFAULT;
++        pmdev->pages[i].revision = ADM1266_PMBUS_REVISION_DEFAULT;
++        pmdev->pages[i].vout_mode = 0;
++        pmdev->pages[i].read_vout = pmbus_data2linear_mode(12, 0);
++        pmdev->pages[i].vout_margin_high = pmbus_data2linear_mode(15, 0);
++        pmdev->pages[i].vout_margin_low = pmbus_data2linear_mode(3, 0);
++        pmdev->pages[i].vout_ov_fault_limit = pmbus_data2linear_mode(16, 0);
++        pmdev->pages[i].revision = ADM1266_PMBUS_REVISION_DEFAULT;
++    }
++
++    strncpy(s->mfr_id, ADM1266_MFR_ID_DEFAULT, 4);
++    strncpy(s->mfr_model, ADM1266_MFR_MODEL_DEFAULT, 11);
++    strncpy(s->mfr_rev, ADM1266_MFR_REVISION_DEFAULT, 3);
++}
++
++static uint8_t adm1266_read_byte(PMBusDevice *pmdev)
++{
++    ADM1266State *s = ADM1266(pmdev);
++
++    switch (pmdev->code) {
++    case PMBUS_MFR_ID:                    /* R/W block */
++        pmbus_send_string(pmdev, s->mfr_id);
 +        break;
 +
-+    case PMBUS_FAN_COMMAND_1:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_1);
-+        } else {
-+            goto passthough;
-+        }
++    case PMBUS_MFR_MODEL:                 /* R/W block */
++        pmbus_send_string(pmdev, s->mfr_model);
 +        break;
 +
-+    case PMBUS_FAN_COMMAND_2:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_2);
-+        } else {
-+            goto passthough;
-+        }
++    case PMBUS_MFR_REVISION:              /* R/W block */
++        pmbus_send_string(pmdev, s->mfr_rev);
 +        break;
 +
-+    case PMBUS_FAN_CONFIG_3_4:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].fan_config_3_4);
-+        } else {
-+            goto passthough;
-+        }
++    case PMBUS_IC_DEVICE_ID:
++        pmbus_send(pmdev, adm1266_ic_device_id, sizeof(adm1266_ic_device_id));
 +        break;
 +
-+    case PMBUS_FAN_COMMAND_3:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_3);
-+        } else {
-+            goto passthough;
-+        }
++    case PMBUS_IC_DEVICE_REV:
++        pmbus_send(pmdev, adm1266_ic_device_rev, sizeof(adm1266_ic_device_rev));
 +        break;
 +
-+    case PMBUS_FAN_COMMAND_4:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_4);
-+        } else {
-+            goto passthough;
-+        }
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: reading from unimplemented register: 0x%02x\n",
++                      __func__, pmdev->code);
++        return 0xFF;
++    }
++
++    return 0;
++}
++
++static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
++                              uint8_t len)
++{
++    ADM1266State *s = ADM1266(pmdev);
++
++    switch (pmdev->code) {
++    case PMBUS_MFR_ID:                    /* R/W block */
++        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_id, sizeof(s->mfr_id));
 +        break;
 +
-     case PMBUS_VOUT_OV_FAULT_LIMIT:       /* R/W word */
-         if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
-             pmbus_send16(pmdev, pmdev->pages[index].vout_ov_fault_limit);
-@@ -810,6 +858,22 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         pmbus_send8(pmdev, pmdev->pages[index].status_mfr_specific);
-         break;
- 
-+    case PMBUS_STATUS_FANS_1_2:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_1_2);
-+        } else {
-+            goto passthough;
-+        }
++    case PMBUS_MFR_MODEL:                 /* R/W block */
++        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_model,
++                            sizeof(s->mfr_model));
 +        break;
 +
-+    case PMBUS_STATUS_FANS_3_4:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_3_4);
-+        } else {
-+            goto passthough;
-+        }
++    case PMBUS_MFR_REVISION:               /* R/W block*/
++        pmbus_receive_block(pmdev, (uint8_t *)s->mfr_rev, sizeof(s->mfr_rev));
 +        break;
 +
-     case PMBUS_READ_EIN:                  /* Read-Only block 5 bytes */
-         if (pmdev->pages[index].page_flags & PB_HAS_EIN) {
-             pmbus_send(pmdev, pmdev->pages[index].read_ein, 5);
-@@ -882,6 +946,54 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         }
-         break;
- 
-+    case PMBUS_READ_FAN_SPEED_1:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_1);
-+        } else {
-+            goto passthough;
-+        }
++    case ADM1266_SET_RTC:   /* do nothing */
 +        break;
 +
-+    case PMBUS_READ_FAN_SPEED_2:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_2);
-+        } else {
-+            goto passthough;
-+        }
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: writing to unimplemented register: 0x%02x\n",
++                      __func__, pmdev->code);
 +        break;
++    }
++    return 0;
++}
 +
-+    case PMBUS_READ_FAN_SPEED_3:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_3);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
++static void adm1266_get(Object *obj, Visitor *v, const char *name, void *opaque,
++                        Error **errp)
++{
++    uint16_t value;
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    PMBusVoutMode *mode = (PMBusVoutMode *)&pmdev->pages[0].vout_mode;
 +
-+    case PMBUS_READ_FAN_SPEED_4:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_4);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
++    if (strcmp(name, "vout") == 0) {
++        value = pmbus_linear_mode2data(*(uint16_t *)opaque, mode->exp);
++    } else {
++        value = *(uint16_t *)opaque;
++    }
 +
-+    case PMBUS_READ_DUTY_CYCLE:           /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_duty_cycle);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
++    visit_type_uint16(v, name, &value, errp);
++}
 +
-+    case PMBUS_READ_FREQUENCY:            /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_frequency);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
++static void adm1266_set(Object *obj, Visitor *v, const char *name, void *opaque,
++                        Error **errp)
++{
++    uint16_t *internal = opaque;
++    uint16_t value;
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    PMBusVoutMode *mode = (PMBusVoutMode *)&pmdev->pages[0].vout_mode;
 +
-     case PMBUS_READ_POUT:                 /* Read-Only word */
-         if (pmdev->pages[index].page_flags & PB_HAS_POUT) {
-             pmbus_send16(pmdev, pmdev->pages[index].read_pout);
-@@ -1305,6 +1417,54 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         }
-         break;
- 
-+    case PMBUS_FAN_CONFIG_1_2:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_config_1_2 = pmbus_receive8(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++    if (!visit_type_uint16(v, name, &value, errp)) {
++        return;
++    }
 +
-+    case PMBUS_FAN_COMMAND_1:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_1 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++    *internal = pmbus_data2linear_mode(value, mode->exp);
++    pmbus_check_limits(pmdev);
++}
 +
-+    case PMBUS_FAN_COMMAND_2:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_2 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++static const VMStateDescription vmstate_adm1266 = {
++    .name = "ADM1266",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]){
++        VMSTATE_PMBUS_DEVICE(parent, ADM1266State),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
-+    case PMBUS_FAN_CONFIG_3_4:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_config_3_4 = pmbus_receive8(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++static void adm1266_init(Object *obj)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    uint64_t flags = PB_HAS_VOUT_MODE | PB_HAS_VOUT | PB_HAS_VOUT_MARGIN |
++                     PB_HAS_VOUT_RATING | PB_HAS_STATUS_MFR_SPECIFIC;
 +
-+    case PMBUS_FAN_COMMAND_3:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_3 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++    for (int i = 0; i < ADM1266_NUM_PAGES; i++) {
++        pmbus_page_config(pmdev, i, flags);
 +
-+    case PMBUS_FAN_COMMAND_4:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_4 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++        object_property_add(obj, "vout[*]", "uint16",
++                            adm1266_get,
++                            adm1266_set, NULL, &pmdev->pages[i].read_vout);
++    }
++}
 +
-     case PMBUS_VOUT_OV_FAULT_LIMIT:       /* R/W word */
-         if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
-             pmdev->pages[index].vout_ov_fault_limit = pmbus_receive16(pmdev);
-@@ -1610,6 +1770,22 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         pmdev->pages[index].status_mfr_specific = pmbus_receive8(pmdev);
-         break;
- 
-+    case PMBUS_STATUS_FANS_1_2:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_1_2);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++static void adm1266_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
 +
-+    case PMBUS_STATUS_FANS_3_4:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_3_4);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
++    dc->desc = "Analog Devices ADM1266 Hot Swap controller";
++    dc->vmsd = &vmstate_adm1266;
++    k->write_data = adm1266_write_data;
++    k->receive_byte = adm1266_read_byte;
++    k->device_num_pages = 17;
 +
-     case PMBUS_PAGE_PLUS_READ:            /* Block Read-only */
-     case PMBUS_CAPABILITY:                /* Read-Only byte */
-     case PMBUS_COEFFICIENTS:              /* Read-only block 5 bytes */
-diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 2e95164aa1..ad431bdc7c 100644
---- a/include/hw/i2c/pmbus_device.h
-+++ b/include/hw/i2c/pmbus_device.h
-@@ -258,6 +258,7 @@ OBJECT_DECLARE_TYPE(PMBusDevice, PMBusDeviceClass,
- #define PB_HAS_TEMP2               BIT_ULL(41)
- #define PB_HAS_TEMP3               BIT_ULL(42)
- #define PB_HAS_TEMP_RATING         BIT_ULL(43)
-+#define PB_HAS_FAN                 BIT_ULL(44)
- #define PB_HAS_MFR_INFO            BIT_ULL(50)
- #define PB_HAS_STATUS_MFR_SPECIFIC BIT_ULL(51)
- 
++    rc->phases.exit = adm1266_exit_reset;
++}
++
++static const TypeInfo adm1266_info = {
++    .name = TYPE_ADM1266,
++    .parent = TYPE_PMBUS_DEVICE,
++    .instance_size = sizeof(ADM1266State),
++    .instance_init = adm1266_init,
++    .class_init = adm1266_class_init,
++};
++
++static void adm1266_register_types(void)
++{
++    type_register_static(&adm1266_info);
++}
++
++type_init(adm1266_register_types)
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index 30e20e27b8..420fdc3359 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -2,6 +2,7 @@ system_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+ system_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+ system_ss.add(when: 'CONFIG_DPS310', if_true: files('dps310.c'))
+ system_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
++system_ss.add(when: 'CONFIG_ADM1266', if_true: files('adm1266.c'))
+ system_ss.add(when: 'CONFIG_ADM1272', if_true: files('adm1272.c'))
+ system_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
+ system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
 -- 
 2.42.0.758.gaed0368e0e-goog
 

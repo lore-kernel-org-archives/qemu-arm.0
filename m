@@ -1,277 +1,270 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1432826ejb;
-        Mon, 23 Oct 2023 08:13:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH6py2PMG+zKTZzcJv+Z453r+xGwFaxIykGU+WrlS8Is+6qe4e3x5zZKrdi+Q8CQSeqJt5G
-X-Received: by 2002:a05:600c:4e91:b0:406:51a0:17fd with SMTP id f17-20020a05600c4e9100b0040651a017fdmr7921201wmq.18.1698073992150;
-        Mon, 23 Oct 2023 08:13:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698073992; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1474813ejb;
+        Mon, 23 Oct 2023 09:15:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG9+8zmYJEmb3W8HnLrUxKyhhtnCcWwwzjVpBZwMLYkKP3YCypZN2FsElXs2xkmH7LEwdAg
+X-Received: by 2002:a05:6870:1050:b0:1ba:ddf2:417f with SMTP id 16-20020a056870105000b001baddf2417fmr9409687oaj.2.1698077754115;
+        Mon, 23 Oct 2023 09:15:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698077754; cv=none;
         d=google.com; s=arc-20160816;
-        b=TZjKnTmfrZiAXS+9cf4awT8xtcpYmLGNyWuGHXBhxrNz8ODLj+/tUA7dxM3H+2MsFK
-         tX+SwNxo9tOZ2SsBUgg1iS2FlVt3K3nZeogmR9hQ5xHO5NNx305ATofj2S9NN527vc0T
-         UPs8Zpha8A4JKiN9n/4GNapN5gv87Rnv1WzlzDb/M+IjzvB9LH9BMXCogplxfUKky0P2
-         wex1XGl8QwlcxybYPeXTbmpapNegugmYO8CIfqpYg1ztGnOVj/lU17AhN4AbS7bRUuAR
-         YaZ8MvVM10SO5E2mDbW5n+t5aMP00JbipGodusoyuL74mOUu5FAfhnZF2k5DOCyUh4mO
-         ZskQ==
+        b=mNfdeqH0s+qSpvAWB+Z0/jqDwQBzK2qy8skFeOdMryL5j9CE7tGY+cSYAbF/eRcVok
+         td3r73j+zwhzLnK+NdxRCImeTZtyal36HC5BHU91bmAbOjQ8xbIF2GquOkpzMT1CnE3z
+         xtTBNDOC0BQSnC2ietIyYUAdF8+7DZPU33kAiCLkAWfgOQA6O19ix46xPjxKkITlU/+D
+         yOQynqmJ+ZkA0ZMm+lZCRq3BM9IG+c5TjFQjzTZZitn2PRJwe1sdh7nCMt3pBhsV9Rpg
+         7M26WC2eTbJ1Hs8CXx7PABP+X1Yd0d/eXFLABafq+iHMLF2oXtGctz8TIzsvf11e9mCj
+         S5gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=a7KCwc6kpWICvbr3wDa3gXSFSI8zZxkI0fbSpfd2dW0=;
-        fh=ls90rDA0uDlm7+UKZN8zKw8Qk1fUjbzvfJZx2B9T1BM=;
-        b=TemTDx/7VzbrkxNSL++FVSUeu310d2GWl5nSeKOVN/CZ3Nrm29rw3soRAXmRRzhdv1
-         v+gswBQVHSeUk9ESjJmdH/XNi2ONewxCkhaU1cbMxMcYjwBh878LKQuVZss1Mgux63ro
-         Fez/+Aq/MQxxIyoqlAbiKArO5jhcYddaLGhpV9+5b9zqX8yftWO8YpiAxg3/ctRqqIM/
-         uKt2gFMiNxKDvSoFF0csGdzZqa87QyRHZAQRY12v4nScoXH16EL1XpRyEsSmQoFSeVSF
-         WpJMiIcFHWv8a0xnvMiVx0RJ+Xi1BTi5cY4Z7zhMMkqBFF5xZLUOrKsljKl0FrkhswG4
-         VeBA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=m34DNNtpMvzZtPYxZvH42oGWZoTO6oa4Hph6YDxvg6A=;
+        fh=55V10LP5MT2YC3CMmeD8ox5TQv4iI1rYZzQqEc55Dnw=;
+        b=r9dXkx7HAQfh7ukHk4FAfXwGUsxpB+0A2w9gzT/H1ZF/TvrIxSrdh6utO8R70xyxQx
+         VOy+kzVuGe2wPqST6qza6VNX9zBa5CYBVjwSztUADDp2UD716DxNlEufwY6EQa+99mig
+         R9Z3obbtlpx1XCbWp0NWFy7zSDfwmXmlP/Rar89NwOZdsP0D4sQeNXMLTy6q+tdTrrL0
+         WIstQfxDfBcP5lUQ+dwMrl/dPFxdGXWgJDuQ1vtvS7suc0YjXszgxMw4MyDEipfysv7Y
+         zAqHd5l5mAg1aqr7+vWch3gyecIqi/zrf1kKTEp+ZH/d0d0lOpa5+UmrajSctQ3CAc9h
+         2k/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ZWTRKa4H;
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+91fa634947ba19782c4e+7365+infradead.org+dwmw2@casper.srs.infradead.org
-Return-Path: <BATV+91fa634947ba19782c4e+7365+infradead.org+dwmw2@casper.srs.infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id u21-20020a05600c139500b004065590ff33si5408719wmf.19.2023.10.23.08.13.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 08:13:12 -0700 (PDT)
-Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MUt1n+Fz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f2-20020a05620a12e200b0076daa46b2a0si5295758qkl.87.2023.10.23.09.15.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 23 Oct 2023 09:15:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ZWTRKa4H;
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+91fa634947ba19782c4e+7365+infradead.org+dwmw2@casper.srs.infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=a7KCwc6kpWICvbr3wDa3gXSFSI8zZxkI0fbSpfd2dW0=; b=ZWTRKa4H264HFM+Wbyam6/OMfC
-	hw9IbWnFhI07e3rr6k9Kh9yBgFkm2K3Fdc3pgF6V0ZCrzNuBv9q5PVUNJGOZzEjI/n0TD5mnlo4Y5
-	/Ot3JFYMvfQDtXzlZ5y+PsmwwPMV0U0osA/zoVbcmW3fw84V0xtE086Mwrk6xahzQfg+uEpBFP9ND
-	7Lw5wu4d294DnDdYyqqE2yNHMLorW7HyGoBM5I53ejKso1PwONfdcYmxVzfk0mFyQr2ZwKY9BRKYr
-	EZd2OBEl/49j+M3SfhKDgszJMUDrjIRsfsQTxh3h1K/moa7bYPXljdGDiTTLv29DlTFuXSONgHqOI
-	0FYo6V7w==;
-Received: from [2001:8b0:10b:5:545e:5208:5de0:9d33] (helo=u3832b3a9db3152.ant.amazon.com)
-	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1quwbt-00EUbh-SS; Mon, 23 Oct 2023 15:12:53 +0000
-Message-ID: <c6e43893a5c8661aced1685fb97adf63ab224689.camel@infradead.org>
-Subject: Re: [RFC PATCH 01/19] cpus: Add argument to qemu_get_cpu() to
- filter CPUs by QOM type
-From: David Woodhouse <dwmw2@infradead.org>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
+       dkim=pass header.i=@linaro.org header.s=google header.b=MUt1n+Fz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1quxan-0005We-Uj; Mon, 23 Oct 2023 12:15:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1quxad-0005Ix-V2
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 12:15:40 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1quxac-0002ev-3Q
+ for qemu-devel@nongnu.org; Mon, 23 Oct 2023 12:15:39 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4083740f92dso29031005e9.3
+ for <qemu-devel@nongnu.org>; Mon, 23 Oct 2023 09:15:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698077737; x=1698682537; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=m34DNNtpMvzZtPYxZvH42oGWZoTO6oa4Hph6YDxvg6A=;
+ b=MUt1n+Fzx6DYkIDm/jkkYQ01mBRkce4JXlXBWWRSExz+NSkEtimwhAvLDvhPTVAkNU
+ eYg5IsMJTJaLqdzmGhc25qPMtWDe/a54NyTA5WY/eXyrkB68mVhBaFscc/JIC1lo1XfU
+ SKImP1ywpyMQpEwcxtB1d0HMvQFY8SjbeO7h+Mxy3FMe94w0aQDqx9mV6fHgNbu0RmIR
+ EMlI71u0b05mqnJwVsjpJkQcJMw5TgeTSGpQ4GLY9j8HvlIMN0yv/gxAXeSG3Ur47YAv
+ 9tvGn5JgHA27coN5c++K3JoOBLO9lKNxff9tj7W8abiPCZUzV1UTBtxXJv1KSnwBW6G3
+ KwkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698077737; x=1698682537;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=m34DNNtpMvzZtPYxZvH42oGWZoTO6oa4Hph6YDxvg6A=;
+ b=ZsHsLcKjz6+LFZMmNzRtZBWeuP5XdiYcSnM0RG5c8RN5TDjvNWaUAhc0+lYqruRVGF
+ uikL699OfvzzadbyVP0+qLKmcAzXS25pCZWo9A4lSwwYDyGpLB6Nux25tvEPfCr0EeI4
+ o2CfMK3a0w9invHlcSl3d+PMZoZSqjetvpp172T5X6blGxCeNfjaQ8vNRg3cEOhV2tOD
+ 2mWCRvuy+ay3Rk+UpwQXPq0eq+XHqGokEL0lubo1WUnrvlikSv00UFCSUzb7AlK0Gsum
+ Un7x54wFGdwnVMSfWGgE40W7M9EL7+mfGIcju2hhkncJiQn9SSHerY0YcIYEyRTk4yYy
+ EohA==
+X-Gm-Message-State: AOJu0YzN34rbLDWIdwZX8S2K4pYQuS+V5wdnXvtDnEWpO/a49JlXkDLi
+ 3h5bgHtH7bPiDBJyijd5avhkjA==
+X-Received: by 2002:a05:600c:a07:b0:405:3251:47a1 with SMTP id
+ z7-20020a05600c0a0700b00405325147a1mr7033052wmp.40.1698077736662; 
+ Mon, 23 Oct 2023 09:15:36 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ q12-20020a05600c2e4c00b0040648217f4fsm14460597wmf.39.2023.10.23.09.15.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Oct 2023 09:15:35 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-ppc@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, "Michael S.
- Tsirkin" <mst@redhat.com>,  qemu-s390x@nongnu.org, Peter Maydell
- <peter.maydell@linaro.org>, Alex =?ISO-8859-1?Q?Benn=E9e?=
- <alex.bennee@linaro.org>, Zhao Liu <zhao1.liu@intel.com>, Andrey Smirnov
- <andrew.smirnov@gmail.com>, Radoslaw Biernacki <rad@semihalf.com>, Leif
- Lindholm <quic_llindhol@quicinc.com>, Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>,  Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Palmer Dabbelt
- <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>, Weiwei Li
- <liweiwei@iscas.ac.cn>,  Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Song Gao <gaosong@loongson.cn>,  Thomas Huth <huth@tuxfamily.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, Halil Pasic
- <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>, David
- Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, Yanan
- Wang <wangyanan55@huawei.com>, "Dr. David Alan Gilbert" <dave@treblig.org>,
-  Marcelo Tosatti <mtosatti@redhat.com>, Aurelien Jarno
- <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>,  Aleksandar
- Rikalo <aleksandar.rikalo@syrmia.com>, kvm@vger.kernel.org
-Date: Mon, 23 Oct 2023 16:12:52 +0100
-In-Reply-To: <20231020163643.86105-2-philmd@linaro.org>
-References: <20231020163643.86105-1-philmd@linaro.org>
-	 <20231020163643.86105-2-philmd@linaro.org>
-Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
-	boundary="=-FWRpaywbbUZVahT/LGYI"
-User-Agent: Evolution 3.44.4-0ubuntu2 
+Cc: Axel Heider <axel.heider@hensoldt.net>, Laszlo Ersek <lersek@redhat.com>,
+ Ard Biesheuvel <ardb@kernel.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH 2/3] hw/arm/virt: Rename VIRT_UART and VIRT_SECURE_UART to
+ VIRT_UART[01]
+Date: Mon, 23 Oct 2023 17:15:31 +0100
+Message-Id: <20231023161532.2729084-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231023161532.2729084-1-peter.maydell@linaro.org>
+References: <20231023161532.2729084-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: +3kRbp01oUtT
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 60wd9o8Xxoki
 
+We're going to make the second UART not always a secure-only device.
+Rename the constants VIRT_UART and VIRT_SECURE_UART to VIRT_UART0
+and VIRT_UART1 accordingly.
 
---=-FWRpaywbbUZVahT/LGYI
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/virt.h    |  4 ++--
+ hw/arm/virt-acpi-build.c | 12 ++++++------
+ hw/arm/virt.c            | 14 +++++++-------
+ 3 files changed, 15 insertions(+), 15 deletions(-)
 
-On Fri, 2023-10-20 at 18:36 +0200, Philippe Mathieu-Daud=C3=A9 wrote:
-> Heterogeneous machines have different type of CPU.
-> qemu_get_cpu() returning unfiltered CPUs doesn't make
-> sense anymore. Add a 'type' argument to filter CPU by
-> QOM type.
->=20
-> Type in "hw/core/cpu.h" and implementation in cpu-common.c
-> modified manually, then convert all call sites by passing
-> a NULL argument using the following coccinelle script:
->=20
-> =C2=A0 @@
-> =C2=A0 expression index;
-> =C2=A0 @@
-> =C2=A0 -=C2=A0=C2=A0 qemu_get_cpu(index)
-> =C2=A0 +=C2=A0=C2=A0 qemu_get_cpu(index, NULL)
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
-> RFC: Is this hot path code? What is the cost of this QOM cast check?
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index f69239850e6..0de58328b2f 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -59,7 +59,7 @@ enum {
+     VIRT_GIC_ITS,
+     VIRT_GIC_REDIST,
+     VIRT_SMMU,
+-    VIRT_UART,
++    VIRT_UART0,
+     VIRT_MMIO,
+     VIRT_RTC,
+     VIRT_FW_CFG,
+@@ -69,7 +69,7 @@ enum {
+     VIRT_PCIE_ECAM,
+     VIRT_PLATFORM_BUS,
+     VIRT_GPIO,
+-    VIRT_SECURE_UART,
++    VIRT_UART1,
+     VIRT_SECURE_MEM,
+     VIRT_SECURE_GPIO,
+     VIRT_PCDIMM_ACPI,
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 9ce136cd88c..54f26640982 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -483,14 +483,14 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0, 3); /* Reserved */
+     /* Base Address */
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
+-                     vms->memmap[VIRT_UART].base);
++                     vms->memmap[VIRT_UART0].base);
+     /* Interrupt Type */
+     build_append_int_noprefix(table_data,
+         (1 << 3) /* Bit[3] ARMH GIC interrupt */, 1);
+     build_append_int_noprefix(table_data, 0, 1); /* IRQ */
+     /* Global System Interrupt */
+     build_append_int_noprefix(table_data,
+-                              vms->irqmap[VIRT_UART] + ARM_SPI_BASE, 4);
++                              vms->irqmap[VIRT_UART0] + ARM_SPI_BASE, 4);
+     build_append_int_noprefix(table_data, 3 /* 9600 */, 1); /* Baud Rate */
+     build_append_int_noprefix(table_data, 0 /* No Parity */, 1); /* Parity */
+     /* Stop Bits */
+@@ -674,11 +674,11 @@ build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ 
+     /* BaseAddressRegister[] */
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 8, 0, 1,
+-                     vms->memmap[VIRT_UART].base);
++                     vms->memmap[VIRT_UART0].base);
+ 
+     /* AddressSize[] */
+     build_append_int_noprefix(table_data,
+-                              vms->memmap[VIRT_UART].size, 4);
++                              vms->memmap[VIRT_UART0].size, 4);
+ 
+     /* NamespaceString[] */
+     g_array_append_vals(table_data, name, namespace_length);
+@@ -859,8 +859,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+      */
+     scope = aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, vms);
+-    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+-                       (irqmap[VIRT_UART] + ARM_SPI_BASE));
++    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
++                       (irqmap[VIRT_UART0] + ARM_SPI_BASE));
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b714ff1c03d..fd524aed6b6 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -144,11 +144,11 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
+     /* This redistributor space allows up to 2*64kB*123 CPUs */
+     [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
+-    [VIRT_UART] =               { 0x09000000, 0x00001000 },
++    [VIRT_UART0] =              { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+-    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
++    [VIRT_UART1] =              { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+@@ -191,11 +191,11 @@ static MemMapEntry extended_memmap[] = {
+ };
+ 
+ static const int a15irqmap[] = {
+-    [VIRT_UART] = 1,
++    [VIRT_UART0] = 1,
+     [VIRT_RTC] = 2,
+     [VIRT_PCIE] = 3, /* ... to 6 */
+     [VIRT_GPIO] = 7,
+-    [VIRT_SECURE_UART] = 8,
++    [VIRT_UART1] = 8,
+     [VIRT_ACPI_GED] = 9,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+@@ -889,7 +889,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
+     qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
+                          clocknames, sizeof(clocknames));
+ 
+-    if (uart == VIRT_UART) {
++    if (uart == VIRT_UART0) {
+         qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+         qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial0", nodename);
+     } else {
+@@ -2269,11 +2269,11 @@ static void machvirt_init(MachineState *machine)
+ 
+     fdt_add_pmu_nodes(vms);
+ 
+-    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
++    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
+ 
+     if (vms->secure) {
+         create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
+-        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
++        create_uart(vms, VIRT_UART1, secure_sysmem, serial_hd(1));
+     }
+ 
+     if (tag_sysmem) {
+-- 
+2.34.1
 
-A bunch of them in the Xen emulation code are during interrupt
-delivery. So yes, kind of hot path :)
-
-In hw/i386/kvm/xen_evtchn.c I they're almost all just looking up a CPU
-with qemu_get_cpu() so that they can call kvm_arch_vcpu_id() to get its
-APIC ID. Mostly to send an MSI there or otherwise talk to the kernel
-about it.
-
-Perhaps it could keep a simple array of { vCPU ID, APIC ID } instead.
-
-There's one case in valid_vcpu() where it's checking that a given vCPU
-does exist, which could use that same array.
-
-In target/i386/kvm/xen-emu.c there are some slow paths which are less
-interesting (xen_set_shared_info(), kvm_xen_has_vcpu_callback_vector(),
-kvm_xen_set_vcpu_virq(), kvm_xen_hcall_evtchn_upcall_vector()
-
-kvm_xen_hcall_vcpu_op() does have a fast path (the singleshot timer
-handling, although most guests seem to use a different hypercall for
-that). But it doesn't actually call qemu_get_cpu() for that fast path
-anyway, since it'll use the CPU it was *called* on.
-
-kvm_xen_get_vcpu_info_hva() wants a pointer stored in cpu->env, and is
-called in *one* fast path in xen_evtchn.c, again interrupt delivery (in
-set_port_pending). But only in the case where we're running on an old
-kernel and don't just ask the kernel to deliver the event. So I can
-live with not optimising that.
-
-kvm_xen_set_callback_asserted() is only for the case where event
-channels are being delivered to the guest via emulated GSI, so not the
-high-performance case. And I still do want to hook that up properly to
-the ack on the *interrupt controllers* anyway (qv=C2=B9).
-
-Finally, kvm_xen_injecft_vcpu_callback_vector() is also only for older
-kernels where we don't ask the kernel to deliver the event.=20
-
-tl;dr: we don't care about anything in xen.emu.c. So I think we could
-live with just a fast lookup from vCPU# =E2=86=92 APIC ID for the cases in
-xen_evtchn.c.
-
-
-
-=C2=B9 https://lore.kernel.org/all/70eb35a08a7c48993812b7f088fa9ae3f2c8b925=
-.camel@infradead.org/T/
-
-
-
-
---=-FWRpaywbbUZVahT/LGYI
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
-ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
-EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
-FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
-aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
-EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
-VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
-aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
-AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
-ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
-QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
-rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
-ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
-U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
-DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
-BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
-dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
-BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
-QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
-CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
-xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
-IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
-kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
-eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
-KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
-1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
-OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
-x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
-5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
-DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
-VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
-UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
-MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
-ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
-oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
-SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
-xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
-RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
-bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
-NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
-KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
-5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
-C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
-gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
-VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
-MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
-by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
-b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
-BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
-QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
-c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
-AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
-qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
-v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
-Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
-tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
-Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
-YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
-ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
-IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
-ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
-GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
-h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
-9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
-P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
-2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
-BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
-7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
-lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
-lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
-AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
-Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
-FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
-BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
-cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
-aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
-LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
-BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
-cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
-Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
-lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
-WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
-hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
-IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
-dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
-NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
-xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMDIzMTUxMjUyWjAvBgkqhkiG9w0BCQQxIgQgIv3CZ76u
-2/r9mAoYBtfKA6O0vaPiFLcbhh7sJPQJ+Zswgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
-A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
-dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
-DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
-MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
-Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBKCfm5iQxlcFVw4K4ywllFvuy+f+wRIjBc
-c+9bPah35+tZrLAOsAWSbx8Fs5eqWhfYH+uLDlsguHvrT54cEN6/PShl+ktiL/dVRrpFkS5XF266
-U1MUA/pxxunsx7UOAkSyjipqVqnWRWvole2ABcSxOyTtLer1ucTGIFeIXrdQ02JmuM71b0v62Cul
-HPquYwp3JJnyf0XDqZOGignvJiI4Uip+Mx11VsOge6xrKKqSWUlIro9QD82LPZtS3OQfeecn/evi
-ntVQgVIqPdQklCEQHE22r25K0ak7my6SXhtWu7W4XonWc8H/i5cOVb1hbQy1oABYTOCwHmLEE5N8
-72ZRhTxxcVl5Puu30ul2P1SsX/6vxU/oFNm4kzyWPauEbPkjettJtOJS6d36W1bC8K3+Q/I3kCCk
-fZ4M5Tw1qo4eFUNVOtMeRIfPu9+y3FqFWU520sKTXnRj8nhTeWc3mXvfYsOFuK4/JRvwOCXM2uhW
-VVr8tP62iO6F1pgJ1gWB0QyYuFPG+hgBf+ocuxj9gV2ick4lyGcE0J/2s3XQ9sztfKz+Ir0QdJcV
-rJZksLKF4eVIfom395rS6pH6qxMbYsoWPEmQ3tmn1AXbgU3U5ycSeL9UegkOo3q/KE0JANs6S/rB
-wXj0hayuC1q2laDYL1vSwEnXwr6LrkjSbwYPICyxMQAAAAAAAA==
-
-
---=-FWRpaywbbUZVahT/LGYI--

@@ -1,111 +1,111 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1170853ejb;
-        Sun, 22 Oct 2023 23:46:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGRiEF12NJtmPHe/P2ISlEK/2lrPM256dVBfLV4JzOjY48YPpHtNx9L2dHw6jiTXNHhwP/o
-X-Received: by 2002:a05:620a:d88:b0:778:8ebc:129e with SMTP id q8-20020a05620a0d8800b007788ebc129emr12570169qkl.15.1698043577013;
-        Sun, 22 Oct 2023 23:46:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698043576; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1171124ejb;
+        Sun, 22 Oct 2023 23:47:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF2gtROpK8zkdLYTyNMpnGzfSgODcJjNqnIeUESMNVLhAtxmDOhUmc4ucS9HcyqeWArNMce
+X-Received: by 2002:a05:620a:c4d:b0:773:b50f:c6f3 with SMTP id u13-20020a05620a0c4d00b00773b50fc6f3mr9165030qki.52.1698043623362;
+        Sun, 22 Oct 2023 23:47:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698043623; cv=none;
         d=google.com; s=arc-20160816;
-        b=n2ZdHEtlmoB3TiBLPXcSRp6mrZIGB+xOsaGNL5fFzrQCrOpzFgA5Cf8YHRVbNjHOIb
-         +6YScBGIBm41TrP4aNE3D++SQINkALCojPQYNVa1Y53azDihjbqC7xvid8LrFbMhejse
-         vsessQZkx2BP/7xEeX7CM6fD+XSOV/CX5gPQjfuU7YsGp2DYPRKuCpkx/2Dgv8pqtHI0
-         lDcmBThgSZyMsJ+92qj+fcoP/qVp1i0aZGRLwrZj91oMue3ZNYJPvns4ztPdU1NSzLUX
-         EWPLJVqyPa7EtzeD/1HV1Uyf51WdZ2yNQ6NOV0er2xe29CgH+OW92xUC5odgTaeKRag9
-         A3hQ==
+        b=I7X/or7iuUcltWHvMYMmKbMkdCzZlVFA9Cznm7ApoGQNz4o3TebLhpOhxJ93jlNjrc
+         Ail6k5vgWO95UFmEGvOjQAvDun/MryAlk0JR7Ajvasv7zcpgBPHsilSHCz68gOL/bgx0
+         63OzuAjyoGZHjoI4rW/78RbP72iKVjxEb994PQJIM77MME+u55RyIkpmm2QdsmMvWggY
+         2L3AH/VJORFo/eGGUbRQ5uiSW0+fHCFEwUFYyF+LXHuseZBYe30PKWTgmZK/RzqPlK57
+         I8OIKP8NCT+dO2Ax3Rutmn2N5BmRAoj+MJvq5d/opYM6HoZa54C44uWQHhIj0ws9lynU
+         lhnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cBr/NphSnwu114X5q6Jlit06K0k4qu9oIeQu9l2CWDw=;
+        bh=5CC1c5P4CeNm/9XLiFqn4P/uGJBD0H9R+xNEi4Iddz4=;
         fh=DpkbP7dEedV4PMQm4eXqOJbSESG+s5DDiq4o/Hms8vM=;
-        b=Q4pAxKISjph6L4Wp5+TO3PbAN17mJCdyP1MRkA8S+gfNuzPGLxuRl14PjHbLe6NI9m
-         PzSIGtXB+ZtWl7ylI3jx58hDmgSOxW9WzjRTLAZ9FmSInb14rPDlxIUEFA7Enz5mS8cY
-         1DnfIJgfnH901RE8NcHfTRp/yGVq+f2Cfth4JM6VBOafzwbcS2VaULMAlijavo88hhuD
-         rgqT/UXTS7PZv+mm1Cg083SruvmNW8Xky94ZyaXUY7XKVOcww/gaQz2gvdVSHsw7YpfM
-         B71kFw8hnojWabOP8ZqlVHLVk3UOg9O+neMum99E3pxhBTxu/NTeyJKcWxUYiwn8irFZ
-         Qv7Q==
+        b=IVczIYWNjBq3lEqjbK1pheW4sjAdnO4bWBs4Ah2BVzKL+x+Q5W2xqIRTm06aOhgV4+
+         cSkzeZEjreoZhr8lZSqc6w8XIfD5e+lRTDxW+EpsNekLKQ/9d0KVt6pNtMSa4HlnC3lm
+         jrq7IbVF8quUBJ20Kqls7oehS/cSHoUJvQCxEDy/leHHLNb7go3jWiID0ct24501CAqP
+         cudWsRqSb2s7i2oDUau8Zlgnw/NgOKZHU0FFp/RL7wWQs36KiPtZLdAA3op1m0HJoxjX
+         yqeg50WtTAnfBWDBJMJA9KTv2P/79QZOe3ubW9kbUzXxah8Z07PJ/Zg01j8vK0cryWeL
+         wkYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MYbean6l;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WfVZfyO1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6-20020ae9e646000000b007789724e9ecsi4843791qkl.597.2023.10.22.23.46.16
+        by mx.google.com with ESMTPS id b23-20020a05620a119700b00775cbd321a2si4807986qkk.586.2023.10.22.23.47.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Oct 2023 23:46:16 -0700 (PDT)
+        Sun, 22 Oct 2023 23:47:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MYbean6l;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WfVZfyO1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1quoh9-0003RK-GB; Mon, 23 Oct 2023 02:45:47 -0400
+	id 1quoiK-00040d-Nw; Mon, 23 Oct 2023 02:47:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1quoh6-0003Qe-GQ
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 02:45:45 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1quoiI-0003xc-Ky
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 02:46:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1quoh4-0001Gm-UY
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 02:45:44 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1quoiG-0001SA-RL
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 02:46:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698043541;
+ s=mimecast20190719; t=1698043616;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=cBr/NphSnwu114X5q6Jlit06K0k4qu9oIeQu9l2CWDw=;
- b=MYbean6l/JUwE9QMbOboBFoWLfxjHbf+ALv/AqK9NHh6Waegxy+S2b1qN6yQeqEMS1vNmt
- iOT7d78/1rlJ5TlG60HGMd7QGXgUbOy5aZUpFbIV1O1a0RVeaBZ2w5ZUNjMRAvo2TIrjFO
- K3LV9SdmOiSuW0lZSehfBorwvCoXLV8=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=5CC1c5P4CeNm/9XLiFqn4P/uGJBD0H9R+xNEi4Iddz4=;
+ b=WfVZfyO192p4Xm+OwS4hl6HXMrHoreyAhRz9BUd3K37zJPNGXwD9w8Goohsf+tH4Ou9GP3
+ NFGlOgU90l83KEZKGl2FPU7SIZOvpmxJRINLcy/hOLPInL7lShNY41B9AxrFWdyLP7k8zi
+ V6IcUggNvsiPNR6z6nsm71aG9+moE+0=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-655-_5vRayf8PXSoERvWfFHV1Q-1; Mon, 23 Oct 2023 02:45:40 -0400
-X-MC-Unique: _5vRayf8PXSoERvWfFHV1Q-1
-Received: by mail-ed1-f69.google.com with SMTP id
- 4fb4d7f45d1cf-53db0df5b7cso1995188a12.1
- for <qemu-arm@nongnu.org>; Sun, 22 Oct 2023 23:45:39 -0700 (PDT)
+ us-mta-149-Xrd5GyX3PuaApfc3cGEA6Q-1; Mon, 23 Oct 2023 02:46:54 -0400
+X-MC-Unique: Xrd5GyX3PuaApfc3cGEA6Q-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-9c7558b838aso178228966b.2
+ for <qemu-arm@nongnu.org>; Sun, 22 Oct 2023 23:46:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698043539; x=1698648339;
+ d=1e100.net; s=20230601; t=1698043613; x=1698648413;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cBr/NphSnwu114X5q6Jlit06K0k4qu9oIeQu9l2CWDw=;
- b=w36jQXVNognWYL32UyMzz52NDrXmfN8fhtF3S8DV7Q1G04kFfTbIMc1TXOa3GVxWjM
- bU0v1N1Pitk/A7ipCE/eURa+HXrmUgAsLEVImWVo+Hbzdnk5Ke+/mAXtkZpeX83dAUUI
- GrVQeJgPPbBscoZLmw8/KCd/cMfnCkPa+tsjW1vtiyhVZGfG9fB7s7FLDT3xrULD5qY7
- OsowtULIAg32lIrWLEvRjDeVNcH/VIO3MCx3jWXDu4HJGojq25hVLnJBbJ+koYOfeOXI
- /ZFNFg3ZkP3xlkSybX4Mx6QmEOZ2zOkz9VU3K0wC6Z7//kMHLdXOcmFxUW7jLCmbKyoQ
- Qq+g==
-X-Gm-Message-State: AOJu0Yx2XVmqojxUuiylGjG30EEV5Lv8VhjTovgQW8lIcggxEsRXvq5J
- A2izaLt7VJwOUi9+aaHq9BI8H7+F3tXF+pjVlq7vm9tw5+xZrJMoz85V858LF+US+1JdEHdl3sA
- LSvnA7qPpryG/
-X-Received: by 2002:a17:907:60d4:b0:9ad:ef31:6efc with SMTP id
- hv20-20020a17090760d400b009adef316efcmr7473670ejc.21.1698043539056; 
- Sun, 22 Oct 2023 23:45:39 -0700 (PDT)
-X-Received: by 2002:a17:907:60d4:b0:9ad:ef31:6efc with SMTP id
- hv20-20020a17090760d400b009adef316efcmr7473662ejc.21.1698043538789; 
- Sun, 22 Oct 2023 23:45:38 -0700 (PDT)
+ bh=5CC1c5P4CeNm/9XLiFqn4P/uGJBD0H9R+xNEi4Iddz4=;
+ b=ZLEdaMqYyVjhbfV5Lng3/6CEod7j2cYJm/+v7oxW9w5OxY59mXvR8bV5OKZ5hNv92D
+ g6RuK+1u04X4pjfF4Kgm9zc0+VENVtUGhpTEYUzfJJPwS6pm4Rqi3H9jfiygYpmAhMU9
+ fcFk/xwIW1ZNbPeDy119olv8z9zH8CBoPJX6qJEBYNqcQkv8eA7gPS2iqT7F09k806wr
+ Fchf+ZDj4omINCDyuA+80S7kslA55JyXRfC7VouaNNNC8G98Bp/68MIX18ZCBAf6woN7
+ LIQ8zLUJ7MEsInHW6u8cVxsO5JcMm4cietmsb3nocpdFTGRiXuXfA7pjyO2AXhqcwL+/
+ lluA==
+X-Gm-Message-State: AOJu0YwvlC8A6W0EcevCfS0oO5Q0mEjyYf+Ouz4tBAhO0CwBo7RWaWC7
+ 3vYGYiIqpbo6Nv3tQd3Al/9NJMzqGI24FIX9UmQpkg6BqSR/FPSVSB3QPGh59TttQhhKeWhBttf
+ avSaIa0LCAdxL
+X-Received: by 2002:a17:907:608b:b0:9b2:9e44:222e with SMTP id
+ ht11-20020a170907608b00b009b29e44222emr8254424ejc.19.1698043613705; 
+ Sun, 22 Oct 2023 23:46:53 -0700 (PDT)
+X-Received: by 2002:a17:907:608b:b0:9b2:9e44:222e with SMTP id
+ ht11-20020a170907608b00b009b29e44222emr8254414ejc.19.1698043613443; 
+ Sun, 22 Oct 2023 23:46:53 -0700 (PDT)
 Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
  [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
- u16-20020a170906655000b009c3f1b3e988sm6062764ejn.90.2023.10.22.23.45.38
+ u16-20020a170906655000b009c3f1b3e988sm6062764ejn.90.2023.10.22.23.46.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 22 Oct 2023 23:45:38 -0700 (PDT)
-Message-ID: <4a55f2d1-1666-4e05-8680-213d98aed6a2@redhat.com>
-Date: Mon, 23 Oct 2023 08:45:37 +0200
+ Sun, 22 Oct 2023 23:46:52 -0700 (PDT)
+Message-ID: <6f06be57-f065-4a40-bcce-b73740f87e36@redhat.com>
+Date: Mon, 23 Oct 2023 08:46:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 7/9] hw/intc/pxa2xx: Pass CPU reference using QOM link
- property
+Subject: Re: [PATCH v3 8/9] hw/intc/pxa2xx: Factor pxa2xx_pic_realize() out of
+ pxa2xx_pic_init()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20231020130331.50048-1-philmd@linaro.org>
- <20231020130331.50048-8-philmd@linaro.org>
+ <20231020130331.50048-9-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -149,7 +149,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231020130331.50048-8-philmd@linaro.org>
+In-Reply-To: <20231020130331.50048-9-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -178,16 +178,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P0meJ0t1bCVn
+X-TUID: VG8Z09MHSFCC
 
 On 20/10/2023 15.03, Philippe Mathieu-Daudé wrote:
-> QOM objects shouldn't access each other internals fields
-> except using the QOM API.
-> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/pxa2xx_pic.c | 11 ++++++++++-
->   1 file changed, 10 insertions(+), 1 deletion(-)
+>   hw/arm/pxa2xx_pic.c | 16 ++++++++++------
+>   1 file changed, 10 insertions(+), 6 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 

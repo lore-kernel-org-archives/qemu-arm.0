@@ -1,83 +1,82 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2039340ejb;
-        Tue, 24 Oct 2023 06:16:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF4GFoFz6nBTnY1O8TEQ+4Od/Q3Vw59KMmR93GaBmDgh5Ve4m7737lY6i7H5gA5TtsKPGNI
-X-Received: by 2002:a05:620a:4046:b0:775:9bc3:c492 with SMTP id i6-20020a05620a404600b007759bc3c492mr12972422qko.7.1698153372506;
-        Tue, 24 Oct 2023 06:16:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153372; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2039455ejb;
+        Tue, 24 Oct 2023 06:16:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFXyYYGtwNRnqC25zHVlFva9p4eL+p0H1/dJp924+LhXGZqR9v4Q9A6LDcrgghqR3py7yRN
+X-Received: by 2002:a05:620a:19a4:b0:775:ed1e:2b14 with SMTP id bm36-20020a05620a19a400b00775ed1e2b14mr13213392qkb.54.1698153384869;
+        Tue, 24 Oct 2023 06:16:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153384; cv=none;
         d=google.com; s=arc-20160816;
-        b=nEzjYR4Ukp6RKUPYEX7ysqsXP4Zpqk17unx89tKIJeXYFYKZLeP6u5AAWjeCM5fQdk
-         GR31dVY6/BtYqtxja6HrV+CqrnbyA6LBYztNu0nv0diXKSmRZcUv066vpAe/Kc2cvZX7
-         zUrHu2cWha27XFxYZAT1Ba93BdGWxFeYxLG7dJ8Oa7yg90qvzzseR7g0PSBWH+r53U2f
-         zVYYsCksqUZm8k1rhhmc2o9NYWVb+1I4ZxLoy4o72FZFjNymzNXuomwAxPeiRBUeyDfA
-         /iUqaBwEEkzIwh6czJXuvHloxQeSOxQNSpnhCOepg/O4ag/aVwxlKz4wAYM/0on+/HHf
-         sVxQ==
+        b=i+V3VH8S30aWr1PsFrt4L5z06lIvRxNgx5DRA3V8Rozmws6NMVjF8eBy1BsUHn59fk
+         Hrd7jFQAzkaMFzp6BXMjZQjL0dv+ZJw0WYljiPLeN13Ec7bKLNwZjILR3f75iL7kKNrk
+         YU1lCyCCc3J0cfm33PIgh6+ZBeCidzBRBlEU8KCZ/Y0i/VvgdW36iAo0tkeHiEukjb/z
+         gSJDZxkhaXCv5Au9N2ithzRtZlTAVpFL/aLaIKgbamrHJcPWXC0QhQ+6FbC/2UnngK2A
+         V2VNKaklWmNyQ+4JTWmRK/rn3RPEJ/ggk9jQPfN2ygXOg0KlLjGVEqCthypC4ucgvUid
+         kH2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8N9eMhXSGAX5ioZRsrn869KMrCb4AUfc/pU+hNfVZPk=;
+        bh=kRcRfbT2KHPh4dyaHnHj8XBSylrBtYcV1bXrHlUD1tA=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=oonHI8m9rSZgNJuJ8Ql1VsbbRP0kqhxKUa9hyR1hqe0wLsn36PdZknHzz4BJEF0LAe
-         YF8ygxLP/ruY/ppV4Rf5g72ZUMIg3uAv+Il3CqMECganWAQQzdXKi97JqMXdw7bP2EjA
-         0+6e5xx8wbE4WgPPIPAvepxHl6LFY0eipPiS9uiSlxd458maDVg2h2rtzosEarhjcHwN
-         UzscEaYLA2BjxTEJNITLY+z3O56K3hlxgL7g4r4DOv1aCk2GoPf2K0J1TJJIUMH7cnyi
-         UN1z4Ki1z182IRGWFJjbgKG28deEW300+SVe3Ei2VQInzAR+5BkUAD0emew2CJtoCN2V
-         7+Cg==
+        b=zYiIRghHkoz6bnijQzOvvlsLVr8vP/qEdRzKxfed0KiSC7fjZTtw2QoCEYVvxA9uko
+         1+ebWu6Jt0fZxeyyLmE9LdfNkonwxCOjMgNfsnSgAi61xtyh/KG7OkIFjLg0XcNcw+18
+         lT+iTapN2kW6hwd+gzTVd0mgyApi8rMjlynbIHQFqI9FTKnglX0aLCFlQomo2MCSNjPH
+         mo10dCL44MkKawcPL5fkbGlSYMaAXcCc47nqXz/i6j9EAGAGC4x6Oa8A4Bu+M5Q5UoUs
+         ZQ0zhDsK4DSUhY3DGhfkl8GjAhZOSXPdA9xkIaOkhXAyLiOwKMI0atq7ZHC2RYkEDfos
+         OGbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SARNNG+9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G1MbACUO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12-20020ae9e40c000000b007756fe9b8desi6769081qkc.588.2023.10.24.06.16.12
+        by mx.google.com with ESMTPS id v26-20020a05620a091a00b007788b164320si6982599qkv.624.2023.10.24.06.16.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:16:12 -0700 (PDT)
+        Tue, 24 Oct 2023 06:16:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SARNNG+9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G1MbACUO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHFk-0007mx-6j; Tue, 24 Oct 2023 09:15:24 -0400
+	id 1qvHFr-0000SG-QQ; Tue, 24 Oct 2023 09:15:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFH-000673-W8
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:14:56 -0400
+ id 1qvHFp-00008g-Gf
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFG-0001Ku-2L
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:14:55 -0400
+ id 1qvHFn-0001iU-LZ
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153293;
+ s=mimecast20190719; t=1698153327;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8N9eMhXSGAX5ioZRsrn869KMrCb4AUfc/pU+hNfVZPk=;
- b=SARNNG+9ijBuvVTUpV+7bToBAfEwgj4UkkK46A6Q6cbyOitpRn4ms9mueD+9FE/HFBwSQJ
- 6uUYyq/KaZ7K4aojErab2Kf4a1K9V/6wViLOBFFHDNoEX3OdoQbQXmn8QoZ60bTK2tjH7u
- y0ipnDZqruqDnOj4nBeCKQNF4tt3Wc8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460-Nh3vXhWVMNuzndu7l_iUGQ-1; Tue, 24 Oct 2023 09:14:49 -0400
-X-MC-Unique: Nh3vXhWVMNuzndu7l_iUGQ-1
+ bh=kRcRfbT2KHPh4dyaHnHj8XBSylrBtYcV1bXrHlUD1tA=;
+ b=G1MbACUOCA0P2A9zvF50C2or1ygacvfggMRZbE9dWaYIy+5l2LmLgswG2wRUyFbpGAJfgS
+ P1VGFV+vMwSLAs8v0Rlc+60RMr6eHbmyJs/iwl3KGv/lwcuvWoEyUAThILX4eiDpdPwiJw
+ XTizkRCMGZ9rJzLKR8FdSpSx3Ec3stw=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-522-wpyuCAPcN36idt4x8noRmw-1; Tue, 24 Oct 2023 09:15:23 -0400
+X-MC-Unique: wpyuCAPcN36idt4x8noRmw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EC950811E92;
- Tue, 24 Oct 2023 13:14:47 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D09373C1E9CC;
+ Tue, 24 Oct 2023 13:15:20 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BF3131C060AE;
- Tue, 24 Oct 2023 13:14:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 837E01C060AE;
+ Tue, 24 Oct 2023 13:15:14 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -108,9 +107,10 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 14/39] migration: Export send_queued_data()
-Date: Tue, 24 Oct 2023 15:12:40 +0200
-Message-ID: <20231024131305.87468-15-quintela@redhat.com>
+Subject: [PULL 19/39] hw/s390x/s390-skeys: Don't call register_savevm_live()
+ during instance_init()
+Date: Tue, 24 Oct 2023 15:12:45 +0200
+Message-ID: <20231024131305.87468-20-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -124,7 +124,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,62 +139,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IWiYEMmPl9Ib
+X-TUID: TetlluQlRSJk
 
-This function is only used for compression.  So we rename it as
-compress_send_queued_data().  We put it on ram-compress.h because we
-are moving it later to ram-compress.c.
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Since the instance_init() function immediately tries to set the
+property to "true", the s390_skeys_set_migration_enabled() tries
+to register a savevm handler during instance_init(). However,
+instance_init() functions can be called multiple times, e.g. for
+introspection of devices. That means multiple instances of devices
+can be created during runtime (which is fine as long as they all
+don't get realized, too), so the "Prevent double registration of
+savevm handler" check in the s390_skeys_set_migration_enabled()
+function does not work at all as expected (since there could be
+more than one instance).
+
+Thus we must not call register_savevm_live() from an instance_init()
+function at all. Move this to the realize() function instead. This
+way we can also get rid of the property getter and setter functions
+completely, simplifying the code along the way quite a bit.
+
+Acked-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
+Acked-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231019110724.15324-9-quintela@redhat.com>
+Message-ID: <20231020150554.664422-2-thuth@redhat.com>
 ---
- migration/ram-compress.h | 1 +
- migration/ram.c          | 6 +++---
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ hw/s390x/s390-skeys.c | 35 ++++++++---------------------------
+ 1 file changed, 8 insertions(+), 27 deletions(-)
 
-diff --git a/migration/ram-compress.h b/migration/ram-compress.h
-index 76dacd3ec7..636281ed97 100644
---- a/migration/ram-compress.h
-+++ b/migration/ram-compress.h
-@@ -72,5 +72,6 @@ void populate_compress(MigrationInfo *info);
- uint64_t ram_compressed_pages(void);
- void update_compress_thread_counts(const CompressParam *param, int bytes_xmit);
- void compress_update_rates(uint64_t page_count);
-+int compress_send_queued_data(CompressParam *param);
- 
- #endif
-diff --git a/migration/ram.c b/migration/ram.c
-index f7daf2226e..b6d485358e 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1264,7 +1264,7 @@ static int ram_save_multifd_page(QEMUFile *file, RAMBlock *block,
-     return 1;
+diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
+index 5024faf411..8e9d9e41e8 100644
+--- a/hw/s390x/s390-skeys.c
++++ b/hw/s390x/s390-skeys.c
+@@ -12,6 +12,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "hw/boards.h"
++#include "hw/qdev-properties.h"
+ #include "hw/s390x/storage-keys.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-misc-target.h"
+@@ -432,58 +433,38 @@ static int s390_storage_keys_load(QEMUFile *f, void *opaque, int version_id)
+     return ret;
  }
  
--static int send_queued_data(CompressParam *param)
-+int compress_send_queued_data(CompressParam *param)
+-static inline bool s390_skeys_get_migration_enabled(Object *obj, Error **errp)
+-{
+-    S390SKeysState *ss = S390_SKEYS(obj);
+-
+-    return ss->migration_enabled;
+-}
+-
+ static SaveVMHandlers savevm_s390_storage_keys = {
+     .save_state = s390_storage_keys_save,
+     .load_state = s390_storage_keys_load,
+ };
+ 
+-static inline void s390_skeys_set_migration_enabled(Object *obj, bool value,
+-                                            Error **errp)
++static void s390_skeys_realize(DeviceState *dev, Error **errp)
  {
-     PageSearchStatus *pss = &ram_state->pss[RAM_CHANNEL_PRECOPY];
-     MigrationState *ms = migrate_get_current();
-@@ -1306,7 +1306,7 @@ static void ram_flush_compressed_data(void)
-         return;
-     }
+-    S390SKeysState *ss = S390_SKEYS(obj);
+-
+-    /* Prevent double registration of savevm handler */
+-    if (ss->migration_enabled == value) {
+-        return;
+-    }
+-
+-    ss->migration_enabled = value;
++    S390SKeysState *ss = S390_SKEYS(dev);
  
--    flush_compressed_data(send_queued_data);
-+    flush_compressed_data(compress_send_queued_data);
+     if (ss->migration_enabled) {
+         register_savevm_live(TYPE_S390_SKEYS, 0, 1,
+                              &savevm_s390_storage_keys, ss);
+-    } else {
+-        unregister_savevm(VMSTATE_IF(ss), TYPE_S390_SKEYS, ss);
+     }
  }
  
- #define PAGE_ALL_CLEAN 0
-@@ -2041,7 +2041,7 @@ static bool save_compress_page(RAMState *rs, PageSearchStatus *pss,
-     }
+-static void s390_skeys_instance_init(Object *obj)
+-{
+-    object_property_add_bool(obj, "migration-enabled",
+-                             s390_skeys_get_migration_enabled,
+-                             s390_skeys_set_migration_enabled);
+-    object_property_set_bool(obj, "migration-enabled", true, NULL);
+-}
++static Property s390_skeys_props[] = {
++    DEFINE_PROP_BOOL("migration-enabled", S390SKeysState, migration_enabled, true),
++};
  
-     return compress_page_with_multi_thread(pss->block, offset,
--                                           send_queued_data);
-+                                           compress_send_queued_data);
+ static void s390_skeys_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+ 
+     dc->hotpluggable = false;
++    dc->realize = s390_skeys_realize;
++    device_class_set_props(dc, s390_skeys_props);
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
  }
  
- /**
+ static const TypeInfo s390_skeys_info = {
+     .name          = TYPE_S390_SKEYS,
+     .parent        = TYPE_DEVICE,
+-    .instance_init = s390_skeys_instance_init,
+     .instance_size = sizeof(S390SKeysState),
+     .class_init    = s390_skeys_class_init,
+     .class_size    = sizeof(S390SKeysClass),
 -- 
 2.41.0
 

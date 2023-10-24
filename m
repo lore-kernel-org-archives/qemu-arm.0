@@ -1,110 +1,115 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2174176ejb;
-        Tue, 24 Oct 2023 09:35:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHJTD+8yhX2/ID5dXrti8XRWRGYA2BZGpPms1uWAyUFzGSBJ09MlGVKU2is5PU2Wzk1ZsyN
-X-Received: by 2002:a05:620a:1786:b0:774:3497:a7a3 with SMTP id ay6-20020a05620a178600b007743497a7a3mr13738041qkb.17.1698165334927;
-        Tue, 24 Oct 2023 09:35:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698165334; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2174320ejb;
+        Tue, 24 Oct 2023 09:35:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHGib9QplsDcUVfLsFnv7yDDpbjx3E35WvRoc6NSRJSsm10P4/k++4rbcthMHbnbQmmH6SR
+X-Received: by 2002:ad4:576e:0:b0:66d:1f11:8b85 with SMTP id r14-20020ad4576e000000b0066d1f118b85mr16395508qvx.13.1698165350572;
+        Tue, 24 Oct 2023 09:35:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698165350; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yi7brF5iQsCYYAx0AsUyWQkpzJNPkjNjffKdlao7VBb4RJLpKeK1o+fN2VsVdjmDxz
-         Et8gt9/FVKtpPa1INmozD0CnwwZMqNMhWmj1vgZ7qnsG5suenZ70IPdv7ooSU6A6mIq5
-         Le0Ypnyu7VnizuYb7fuVa72jSYgnW01dyKHC2rBJF+cuRhm0m7Z09GQqk/st8UphNkOz
-         ooFXttDXuqXkzY8DUi7b5rdaZ0IrLwmi1ZABo5WHrAsHfPdadyT2yAfe0LHLl47yhyQN
-         bE+dNNjxdUH89rAil4K+0FLiMKYwSU3ci8bUsi+6szk0Bo+gTWc8yvUhjRA/qxy4Nik2
-         ZP1g==
+        b=fFG6Vw/AR9MQKwxW5ekXaEAy515oNSbHUiT4Bp68xBeS7RVgLexs7uDucgrelT/4T3
+         bBpye83rCfRN4ltqdV5nex2SGkLEIG7mcg/1S3R2y0Cz1vqMQE9cG8M5OhSkDmwgANle
+         O/2R1FsLoHA08eV3oT7OWecG0YtJ7IBd8jYXNCwXo255qmUAGsyOR426jnEnJWWLuWCk
+         UxPEbBbFH8kTNoNdLzriL2Rt0SxawXH40Gmh/Vjv+UkCaC4ZEfBZ9SxMeqX+JHcG8kUK
+         gdEBJgrxROVIDSPyIODkIc0WcQ5ni5+Pporrbu0s/ubz+iCyB/lT6JmkcEArfEx4GPjQ
+         ZFaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=36Ak5eB0m5J1zM/IZMmGa4L9AvRMMkX41INBVpt2JKw=;
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=V1oMrg7qxzgr5UV6tTr5kRpEnk47K095nUSDvFl0pXU=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=WV6VJq9bmT85YrQCncTdTmx34T8RUUa+29zjnXxz0Yuc9N2yRytKeC4cxEL+0ggBhr
-         Qc6iKQAdZqkc3LeY4Iy8v8SPCt4kx6V0CQFJrLKjcg3i4MOKN0y/2BZ86cNTppQK2CLo
-         4G3Xc7j65KsZbw2xqexENXbbPuCnQ2iQnW0nMmo1vSlRQRjzB9Q5gUOtxurOgopMuqXb
-         JGw+gnlggsGUvjDvrXEy9qPzg0ydHWbtvSJj49L5DsJlVRxJEqT+9h75MlERxEczSTUl
-         G/g2sVdoEEr9w7UErxcelafZ7Jm0viw4Lhx7EZ5Lsd0Nl9ldegKFyhuz1Zk7bNrJEIvz
-         ZgyA==
+        b=q14661z8V2ksG8BPj6qt4nY+uEEOqhVNaNCAGJyiFSVP9xc0330tMf94c5LM1qLmSX
+         aXUj25cNR7WcxrZZzAuFNvffOyhx9KDjtm4I8KR+TH2RW6gbmjnIUPfJY4glV2PAKt2M
+         KVij84cj++MAqECPanmtoN/f2Awwo1fAxsHnUrxKLl73xnwS22J9yWrEb49+bXLxVNHS
+         vZ6rcSKqrwqGkEzMqifdeKMz+ern/3zujSidgsoqWO69feLhlMJR4czsaLSTWCaPVGx+
+         ErhQEteT7Vmg20k1grgcHjzn0v5oqO713LvtLObB5GpP1H0A+KdnsUZEd+D0h7RWzqdV
+         5/fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CKCuGyDI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n9zfBuLW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14-20020a05620a290e00b007756fe9b8f6si7882592qkp.447.2023.10.24.09.35.34
+        by mx.google.com with ESMTPS id cr13-20020ad456ed000000b0066d17b7adabsi7293006qvb.153.2023.10.24.09.35.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 09:35:34 -0700 (PDT)
+        Tue, 24 Oct 2023 09:35:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CKCuGyDI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n9zfBuLW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvKNJ-00022F-NM; Tue, 24 Oct 2023 12:35:25 -0400
+	id 1qvKNW-0002Bi-SR; Tue, 24 Oct 2023 12:35:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qvKND-0001xc-Rh
+ id 1qvKNE-0001xr-Rq
  for qemu-arm@nongnu.org; Tue, 24 Oct 2023 12:35:22 -0400
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qvKN9-0004Lj-0I
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 12:35:17 -0400
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2c4fe37f166so67330831fa.1
- for <qemu-arm@nongnu.org>; Tue, 24 Oct 2023 09:35:13 -0700 (PDT)
+ id 1qvKNA-0004MK-2Y
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 12:35:20 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4083740f92dso38745695e9.3
+ for <qemu-arm@nongnu.org>; Tue, 24 Oct 2023 09:35:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698165312; x=1698770112; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=36Ak5eB0m5J1zM/IZMmGa4L9AvRMMkX41INBVpt2JKw=;
- b=CKCuGyDINItWz4//nOLfZBzZp70mE2hlvjm06u3ZSWRB6OBYnMgzQjcpLPk+hi5myu
- GtvKP0UHVBRuNhObgpHL6f77SR8SZhSPwu2zf+DT+GkctDjPTcuCifyXA1SiOVKp2KVk
- tGQV1r6XundjhJPzjE+PvRTN6pTZQtUNS18FcTAPRvq1ZPjwBV+Re9Xe5VAS4Js4XPKR
- TGSiRAvpznimgjHoQj4uYZRMrh9eYvGWyANaVunGeJz5Cf8rz0fcrFH9JUtlRdufPhsH
- NEWDDSGvlzEANNjAIVmbOEsZAVm0fR99cIzpWxA83PWkoxytTlPKSWwki1vFyJ7jcPzm
- Pjhg==
+ d=linaro.org; s=google; t=1698165314; x=1698770114; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=V1oMrg7qxzgr5UV6tTr5kRpEnk47K095nUSDvFl0pXU=;
+ b=n9zfBuLWF2ALn0GZWk+bmaQeH5miYkvUZ5pZWv9jQswZwQynEiZt7VfBMNWTDnUW74
+ 2h9Mx0g2Bqkza5krLq+6rADjzDgoI06a70/KkUBjoC0gy59TcY629grKxNKRdIxptNxg
+ WGoINd8mYZVr8xNX320yrqg/AU7lkvg1CbSuw05GftYI9t2PkTC1VWguSbIpY0v/WKJx
+ wmOe3nKJieDVa8KNyqNUJTPVBiRgvt5d3vIN2pw6lJNGaWQUYhOez+0DKdasWe7nhKVM
+ 31iSsOMkjwXR08SRA9nGmnnY4FBmn+19NsjvbXKk1cPOmaNgvF85KoEX0dsXhGF7pNc5
+ fdRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698165312; x=1698770112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=36Ak5eB0m5J1zM/IZMmGa4L9AvRMMkX41INBVpt2JKw=;
- b=F4QeixtPVxL8j+Nmne4ZrE9btsEv6V3+01379GOILFZkGR6i0DZU8oN7aaqCQ1NkVh
- jLpf2zRs5hjxTIhGqtQtw63Fhh+mmc9uOw7ey4n9ZvLN9vewEHxJylzgfjYUZ3BEyL8I
- icnlkD4mYAsR4Lp3dHNsvklsejCSpZByJPc565Eut5NXxdGyMsBo9wxa00vgsuI4D8K2
- oiMekqCBmX1hLW4rOLP5RygA+UacaqVarBntXjebkbiolSLIHrAlMNGB4J5DTHK0dkGr
- +5qfB+WTwXLBHtL/1YS54/nkxQEbRkyMXyuig2wK010mU5INhOp83yhmnCyB776uC2Jt
- wHRw==
-X-Gm-Message-State: AOJu0Ywug9AcXWKhcJf6mzHOGBS2hml76C8T9pxkabMpoKFA0ncnMiSi
- wddD2G6XmxiHwfiavhDYVlKIVg+0wR5TKw6atiA=
-X-Received: by 2002:a2e:b0c3:0:b0:2c5:1702:a434 with SMTP id
- g3-20020a2eb0c3000000b002c51702a434mr9211381ljl.52.1698165312038; 
- Tue, 24 Oct 2023 09:35:12 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1698165314; x=1698770114;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=V1oMrg7qxzgr5UV6tTr5kRpEnk47K095nUSDvFl0pXU=;
+ b=uCgopc+zisevwrj6ngH5u/h9zMLPczRQaz0qJcml3GykmIVp4x1Q2UMugoUKmcmK8X
+ 8/zMJeHfKduey0dduaZvh460XMYJq6+9ZCA2sd4UIu8bBbgzSjq8ai1Lc24iQoeCvNtl
+ 2OEcDOEMG14DyiL1nlvxaEkoUwRSwVYZaYYzWSyx+BpHge/B3ozcAE7xzHHSMx9bZToF
+ hV4XTbTZ5DU7TIGX0YSorN7PXWuF962zKT8sIQk4Vpeu4XGOGN8T4x4JRirYtmIW7lr/
+ Pl6QwVuj3tFhfCLU2P9UKl9mvk6jHW13SvBHs7zTsf7Xp9RQByrMIJLNQefrx6XonLF/
+ iutQ==
+X-Gm-Message-State: AOJu0YwcGywFatlZzLWwNOHCJb9zilW16x8wfxzyAr9F/8jPMddbbc/D
+ KDt59l8lqz4eiinX5pVdv0F/qTDUx1juI6/lFuU=
+X-Received: by 2002:a05:600c:3508:b0:409:c1e:7fe8 with SMTP id
+ h8-20020a05600c350800b004090c1e7fe8mr2315214wmq.19.1698165314249; 
+ Tue, 24 Oct 2023 09:35:14 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p12-20020a05600c418c00b0040773c69fc0sm16860101wmh.11.2023.10.24.09.35.11
+ p12-20020a05600c418c00b0040773c69fc0sm16860101wmh.11.2023.10.24.09.35.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Oct 2023 09:35:11 -0700 (PDT)
+ Tue, 24 Oct 2023 09:35:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/6] target/arm: Move feature tests to their own header
-Date: Tue, 24 Oct 2023 17:35:04 +0100
-Message-Id: <20231024163510.2972081-1-peter.maydell@linaro.org>
+Subject: [PATCH 2/6] target/arm: Move ID_AA64MMFR1 and ID_AA64MMFR2 tests
+ together
+Date: Tue, 24 Oct 2023 17:35:06 +0100
+Message-Id: <20231024163510.2972081-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231024163510.2972081-1-peter.maydell@linaro.org>
+References: <20231024163510.2972081-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,68 +124,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GEasgRNQ7VBm
+X-TUID: t3Dw1yxhFTL4
 
-The main aim of this patchset is patch 1: there are a lot of
-feature test functions in target/arm/cpu.h now (~1000 lines,
-nearly a quarter of the file), and most of the source files that
-pull in the target cpu.h do not care about them. So we can move
-them out to a new cpu-features.h, hopefully reducing compile
-time and avoiding having to recompile so many files when adding
-a new feature test function.
+Our list of isar_feature functions is not in any particular order,
+but tests on fields of the same ID register tend to be grouped
+together.  A few functions that are tests of fields in ID_AA64MMFR1
+and ID_AA64MMFR2 are not in the same place as the rest; move them
+into their groups.
 
-Patches 2-5 are followup cleanup, which I don't feel so strongly
-about. They try to impose a little order on the AArch64 test
-functions by sorting them so that feature tests on the same
-ID register are grouped together. This is pretty much how the
-file started, except that as we added new features sometimes
-we put them at the bottom of the list rather than in their
-right place. But if this feels like unnecessary churn I'm
-happy to drop these.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu-features.h | 60 +++++++++++++++++++--------------------
+ 1 file changed, 30 insertions(+), 30 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (6):
-  target/arm: Move feature test functions to their own header
-  target/arm: Move ID_AA64MMFR1 and ID_AA64MMFR2 tests together
-  target/arm: Move ID_AA64MMFR0 tests up to before MMFR1 and MMFR2
-  target/arm: Move ID_AA64ISAR* test functions together
-  target/arm: Move ID_AA64PFR* tests together
-  target/arm: Move ID_AA64DFR* feature tests together
-
- bsd-user/arm/target_arch.h        |   1 +
- linux-user/aarch64/target_prctl.h |   2 +
- target/arm/cpu-features.h         | 994 ++++++++++++++++++++++++++++++
- target/arm/cpu.h                  | 971 -----------------------------
- target/arm/internals.h            |   1 +
- target/arm/tcg/translate.h        |   2 +-
- hw/arm/armv7m.c                   |   1 +
- hw/intc/armv7m_nvic.c             |   1 +
- linux-user/aarch64/cpu_loop.c     |   1 +
- linux-user/aarch64/signal.c       |   1 +
- linux-user/arm/signal.c           |   1 +
- linux-user/elfload.c              |   4 +
- linux-user/mmap.c                 |   4 +
- target/arm/arch_dump.c            |   1 +
- target/arm/cpu.c                  |   1 +
- target/arm/cpu64.c                |   1 +
- target/arm/debug_helper.c         |   1 +
- target/arm/gdbstub.c              |   1 +
- target/arm/helper.c               |   1 +
- target/arm/kvm64.c                |   1 +
- target/arm/machine.c              |   1 +
- target/arm/ptw.c                  |   1 +
- target/arm/tcg/cpu64.c            |   1 +
- target/arm/tcg/hflags.c           |   1 +
- target/arm/tcg/m_helper.c         |   1 +
- target/arm/tcg/op_helper.c        |   1 +
- target/arm/tcg/pauth_helper.c     |   1 +
- target/arm/tcg/tlb_helper.c       |   1 +
- target/arm/vfp_helper.c           |   1 +
- 29 files changed, 1028 insertions(+), 972 deletions(-)
- create mode 100644 target/arm/cpu-features.h
-
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index bfc9bfafe70..fc85a8fe130 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -641,6 +641,21 @@ static inline bool isar_feature_aa64_tidcp1(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR1, TIDCP1) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_hafs(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) != 0;
++}
++
++static inline bool isar_feature_aa64_hdbs(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) >= 2;
++}
++
++static inline bool isar_feature_aa64_tts2uxn(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, XNX) != 0;
++}
++
+ static inline bool isar_feature_aa64_uao(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, UAO) != 0;
+@@ -676,6 +691,21 @@ static inline bool isar_feature_aa64_evt(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, EVT) >= 2;
+ }
+ 
++static inline bool isar_feature_aa64_ccidx(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, CCIDX) != 0;
++}
++
++static inline bool isar_feature_aa64_lva(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, VARANGE) != 0;
++}
++
++static inline bool isar_feature_aa64_e0pd(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, E0PD) != 0;
++}
++
+ static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
+@@ -794,36 +824,6 @@ static inline bool isar_feature_aa64_fgt(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr0, ID_AA64MMFR0, FGT) != 0;
+ }
+ 
+-static inline bool isar_feature_aa64_ccidx(const ARMISARegisters *id)
+-{
+-    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, CCIDX) != 0;
+-}
+-
+-static inline bool isar_feature_aa64_lva(const ARMISARegisters *id)
+-{
+-    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, VARANGE) != 0;
+-}
+-
+-static inline bool isar_feature_aa64_e0pd(const ARMISARegisters *id)
+-{
+-    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, E0PD) != 0;
+-}
+-
+-static inline bool isar_feature_aa64_hafs(const ARMISARegisters *id)
+-{
+-    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) != 0;
+-}
+-
+-static inline bool isar_feature_aa64_hdbs(const ARMISARegisters *id)
+-{
+-    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) >= 2;
+-}
+-
+-static inline bool isar_feature_aa64_tts2uxn(const ARMISARegisters *id)
+-{
+-    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, XNX) != 0;
+-}
+-
+ static inline bool isar_feature_aa64_dit(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, DIT) != 0;
 -- 
 2.34.1
 

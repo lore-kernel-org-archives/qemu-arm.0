@@ -1,133 +1,321 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1987612ejb;
-        Tue, 24 Oct 2023 04:50:23 -0700 (PDT)
-X-Received: by 2002:a17:907:360a:b0:9b9:faee:4228 with SMTP id bk10-20020a170907360a00b009b9faee4228mr8939784ejc.56.1698148223740;
-        Tue, 24 Oct 2023 04:50:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698148223; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2060965ejb;
+        Tue, 24 Oct 2023 06:50:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFIM3Qo/y9vJIjivQSxf2VBDI4LsAqytrbGPzOtaXjtTFDAAthYJ5cLQT8kXPHLpkSccBWv
+X-Received: by 2002:a05:6808:2201:b0:3a4:ccf:6a63 with SMTP id bd1-20020a056808220100b003a40ccf6a63mr18237470oib.55.1698155417626;
+        Tue, 24 Oct 2023 06:50:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698155417; cv=none;
         d=google.com; s=arc-20160816;
-        b=GSog8/m3J1eguwJ8yox/TvmUlED0P8NuzMQ9SA8SGk1/K1e592aJsj6d3HsqvRzJ66
-         twG6wwGEomXlhP2/OlJHiCuQ0M0dPPD8sHka+o7i+QQXezwbpRZC96cIlD6IZqjlCv+3
-         54Ceg6hKGtFolI7rCDGc4GmVy1GKeLYSwoG72BrtVLThcU+8anj/ZqR7Epeb8D7QuaKO
-         K3U4Lu7+sqqxexOdNfeRygiLzKdFiaJaZi55Pp0lF3muCBYZBYedML+fU+H0AfNaiWXX
-         Ie27PB+9gcD+0yBnJtpg2/L8jGgZEUw8EJEj4ee9/0tkR6i4MbSyiesA9tRcqqTV3T/+
-         FrtQ==
+        b=CBEmQxwCguz5s9p3zxDdwcRf+LeqLNt9IB+J4sPv41To2ay4DrTzHz09UIziUbRKVG
+         fDeZTtli6ch2Bd6A2QfgFppp9qMzebd1LARX30LfCNHXMaU+SRSVywlIdZFBUF57dXi2
+         hIt0n4vYrPrvl5kzvw8pbYFrFoe8tGC2Cr1xEXGkNM7Iz3qN4m98h/HbEMB3fiYOD5H3
+         Cfmch+x7QyiFQEvi5lTBAlLs+mFlfhy3YDIdYPBIm4qXQabWrS7xhS0z2+Y/lahaf9Uv
+         kJl8qEtyn0nCbUF40YlPVoDtPFSmjSTlFMZPEmkDu2NK9GEA7QdHTAP7IXXCCCSyM63g
+         ay6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=tFNkksxJIeSv3+7doL2YjUOz2Bf6puKbX7Oo6QSRG2I=;
-        fh=YTc/AN8qFiKc1d4F7AaCUK6jkXNDPYZjLVkVxSSdJ+g=;
-        b=04/qsz1aqHsCl/z04ChIAWjjxdKCE0pj9xVIZMA3IxsZMY/RY8chuuIw5YtDy5d6YL
-         g/Ly9ev3D9l8BVdYYdlSRFfaaJmUm9ShZhSW3ILCVg8GTDpOUABe/H3N4nlYnZGmO8TA
-         jHdADkLlAOkXwiMRR786K/k6+T4K88/TvfTM3bmdr5XtbWNosJYgXF5OAr7MtLhQx803
-         zGpCv44Pt7H7VOystH/GiLNdzVqBQBudDuL9YMyRbcAMWRiOYEmrpUxy8wAmSVm0VEd5
-         GZOlxp+FavQPXYD9dvIq6FAIhB9K+7tACbSYlct8NRrz8aSPanEK0ps3bripIV3T2Iye
-         u9ZA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :mime-version:date:message-id:dkim-signature;
+        bh=Uz79ENvKJy3IcFQoj7GTONP9olciBa4kGEF7DUaeOE0=;
+        fh=Xo1XPZQQzSB45Oupu1A203AX4LIIojlvuH57r3njyGo=;
+        b=wf2+sEdvKgBSfFnyROBZX5WObO8nrFiDbM+gN55UwPTt9Pc7dhImwTCqa1i9qvMWKp
+         0ss9whnEw3V0T7I50X7efbBKqG6I2xCBwIjls7wJSvLP6TckbUYMoId6b01k6/WQKP89
+         msldMAsNuPa8JpRyj3AeUPHW9DHx60RMQ6FWklIKx4j0Hb/0If5tCVVEeURmg8Yh6ll9
+         pAC0ALtoqpnlP46tEXAKteOdmZ47+MbehvYP+ngVd8g/xV7RwcZcXTrvZvoVAILTog1X
+         BuX7ASsLXnhuby/WjouF/LI+8sXJVtJJUOR97rK/g+0+Hyj/xv1m5SXqpmbYF9ynuNvy
+         JhfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rFdnUE2O;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x23-20020a170906149700b009c3c4b15e88sor2593795ejc.16.2023.10.24.04.50.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UqpAYFVM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p9-20020a05622a048900b004198a46d6d9si7115260qtx.30.2023.10.24.06.50.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 24 Oct 2023 04:50:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 24 Oct 2023 06:50:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rFdnUE2O;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1698148223; x=1698753023; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tFNkksxJIeSv3+7doL2YjUOz2Bf6puKbX7Oo6QSRG2I=;
-        b=rFdnUE2Ov4eP7wr57Cc9/ZvKHUn/rCjgSPErJGKqhym4aKFIrjtAG3h/8Q+T8hXyls
-         nYV3hju6S02S+l8Hiau/MXTLpMvqacgJItVrMHKct7Vo+rtHSC7LvfRT70w7ZuAe10JE
-         o82XDT/vaMvuhCNVIArxi0G546oUNSCrOKxF8yiTYtHFemppApIxqvd1z3jFp6IT7tMA
-         P3cEFJzwveasabKkxL/2fYOTo+Wflc1JTkyXu2RpZHrmGfofuWlSkXhe6/RSBuThyQ0l
-         nNqs+9hvDlfQ5Kl80rnfwrxYDf3b54/kq+5kC8xFc9wYHvZ0UvKI6+8u+pw/xmw+xuVO
-         b9ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698148223; x=1698753023;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tFNkksxJIeSv3+7doL2YjUOz2Bf6puKbX7Oo6QSRG2I=;
-        b=jUkakohsl95kl5EqWFKhTN9/OFPjgOn2FQO9hwHIFmmkT1XeZliF4MaN4Rhl2XmUKR
-         dJqad81aKoH86ycWi3ckl/BJQDFhAAAiI/5g/5ozKdgOhpqSNQDTui7i4tqmRuTc/P8K
-         ea/Bvxk75urVZwCG9n5hd3aN2Irr0envzveL0Gvy1xIQK7id/bVYXbIm1/4jaLWyRr3W
-         Wt6E8GTKg298hyTq4HfSo7ro7o8OzjXQYQFB5dLLkRjDpBweAQHTJdvtPQNsZcXsfG2T
-         8B1gjPmkF5qoDnuZ5x2DHNeSJSFAE7ybkobNIVwY0mqhjzvqyEmFRcYOJDQmZMDSFivK
-         Lfkg==
-X-Gm-Message-State: AOJu0YzchW2Fhsdu6jSCGj3RDMs2Q6AsPTCOjtS3rfsZA274nTxgUKiR
-	jkjgct9tHpYkLdh4PsrZKr2btEXSkDy5M1du7IvrDQ==
-X-Google-Smtp-Source: AGHT+IE8+GJzhB/+IeuU/XMieiqGpVYgjT3uKYrPexPExMx3tqZVNcwzWh5ToHzG1MrXuDrnlViF6Q==
-X-Received: by 2002:a17:907:749:b0:9b9:325f:9be7 with SMTP id xc9-20020a170907074900b009b9325f9be7mr9643028ejb.42.1698148223054;
-        Tue, 24 Oct 2023 04:50:23 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] (sem44-h01-176-172-55-165.dsl.sta.abo.bbox.fr. [176.172.55.165])
-        by smtp.gmail.com with ESMTPSA id 25-20020a170906005900b009c65e13c33dsm8081879ejg.122.2023.10.24.04.50.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Oct 2023 04:50:22 -0700 (PDT)
-Message-ID: <c87866ad-568b-1917-7617-c63b137a196a@linaro.org>
-Date: Tue, 24 Oct 2023 13:50:20 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UqpAYFVM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvHnK-0001vb-N6; Tue, 24 Oct 2023 09:50:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1qvHnI-0001uS-61
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:50:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1qvHnF-0000i2-Jc
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:50:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698155399;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Uz79ENvKJy3IcFQoj7GTONP9olciBa4kGEF7DUaeOE0=;
+ b=UqpAYFVMiO9qEYdnGKa+J3HVGYWRT3fbByp9YwMu8jFijDucyt7ycROe7poPRUmzIVdEDH
+ 1zUcSbSQjI8tP4eIPe3bw1PRhXx8PPRpaBavuXME6bCMvxDphTUj+cII0V9fsZhmi1hLu4
+ O9TzIPCnLsjJL6bQDme+wfaTcsyocoM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-292-ZuQlgaePMzqtBaIllCiwQA-1; Tue, 24 Oct 2023 09:49:57 -0400
+X-MC-Unique: ZuQlgaePMzqtBaIllCiwQA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A5C63802891;
+ Tue, 24 Oct 2023 13:49:56 +0000 (UTC)
+Received: from [10.39.195.39] (unknown [10.39.195.39])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 15BE0492BD9;
+ Tue, 24 Oct 2023 13:49:52 +0000 (UTC)
+Message-ID: <a6cda7bb-ccf0-b701-eed6-90f1826beba3@redhat.com>
+Date: Tue, 24 Oct 2023 15:49:49 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH v3 0/8] PMBus fixes and new functions
+Subject: Re: [PATCH 3/3] hw/arm/virt: allow creation of a second NonSecure UART
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Titus Rwantare <titusr@google.com>
-Cc: qemu-arm@nongnu.org, minyard@acm.org, qemu-devel@nongnu.org
-References: <20231023180837.91785-1-titusr@google.com>
- <874jih40a3.fsf@linaro.org>
- <CAMvPwGpXZxyoX1WNypgNCW+Uj+bcVPn99vF71Myx7jn_c2Fjdg@mail.gmail.com>
- <87zg082twp.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <87zg082twp.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: +fJvt26rjlBz
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Axel Heider <axel.heider@hensoldt.net>, Ard Biesheuvel <ardb@kernel.org>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov
+ <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20231023161532.2729084-1-peter.maydell@linaro.org>
+ <20231023161532.2729084-4-peter.maydell@linaro.org>
+From: Laszlo Ersek <lersek@redhat.com>
+In-Reply-To: <20231023161532.2729084-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RZ8jZR3fb6II
 
-On 24/10/23 12:06, Alex Bennée wrote:
-
-> A pull request is really just a GPG signed tag that you push to a repo.
-> You can use the existing git tooling to create the cover letter for it.
+On 10/23/23 18:15, Peter Maydell wrote:
+> For some use-cases, it is helpful to have more than one UART
+> available to the guest. If the second UART slot is not already
+> used for a TrustZone Secure-World-only UART, create it as a
+> NonSecure UART only when the user provides a serial backend
+> (e.g. via a second -serial command line option).
 > 
-> I've included my exact steps at the end of the email but really it comes
-> down to:
+> This avoids problems where existing guest software only expects
+> a single UART, and gets confused by the second UART in the DTB.
+> The major example of this is older EDK2 firmware, which will
+> send the GRUB bootloader output to UART1 and the guest
+> serial output to UART0. Users who want to use both UARTs
+> with a guest setup including EDK2 are advised to update
+> to a newer EDK2.
 > 
->    git tag --sign your-pr-tag
->    git push your-pr-tag
->    git format-patch <series details>
->    git request-pull origin/master your_repo_details your-pr-tag
+> TODO: give specifics of which EDK2 version has this fix,
+> once the patches which fix EDK2 are upstream.
+
+The patches should hopefully land in edk2-stable202311 (i.e., in the
+November release).
+
+The new ArmVirtQemu behavior is as follows:
+
+- just one UART: same as before
+
+- two UARTs: the UEFI console is on the "chosen" UART, and the edk2
+DEBUG log is on the "first non-chosen" UART (i.e., on the "other" UART,
+in practice).
+
+series
+Tested-by: Laszlo Ersek <lersek@redhat.com>
+
+Thanks
+Laszlo
+
+
 > 
-> and finally
+> Inspired-by: Axel Heider <axel.heider@hensoldt.net>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This patch was originally based on the one from Axel Heider
+> that aimed to do the same thing:
+> https://lore.kernel.org/qemu-devel/166990501232.22022.16582561244534011083-1@git.sr.ht/
+> but by the time I had added the ACPI support and dealt with
+> the EDK2 compatibility awkwardness, I found I had pretty
+> much rewritten it. So this combination of author and tags
+> seemed to me the most appropriate, but I'm happy to adjust
+> if people (esp. Axel!) would prefer otherwise.
 > 
->    git send-email
+> It is in theory possible to slightly work around the
+> incorrect behaviour of old EDK2 binaries by listing the
+> two UARTs in the opposite order in the DTB. However since
+> old EDK2 ends up using the two UARTs in different orders
+> depending on which phase of boot it is in (and in particular
+> with EDK2 debug builds debug messages go to a mix of both
+> UARTs) this doesn't seem worthwhile. I think most users
+> who are interested in the second UART are likely to be
+> using a bare-metal or direct Linux boot anyway.
+> ---
+>  docs/system/arm/virt.rst |  6 +++++-
+>  include/hw/arm/virt.h    |  1 +
+>  hw/arm/virt-acpi-build.c | 12 ++++++++----
+>  hw/arm/virt.c            | 38 +++++++++++++++++++++++++++++++++++---
+>  4 files changed, 49 insertions(+), 8 deletions(-)
 > 
-> My personal exact steps are integrated with my editor but are:
+> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+> index e1697ac8f48..028d2416d5b 100644
+> --- a/docs/system/arm/virt.rst
+> +++ b/docs/system/arm/virt.rst
+> @@ -26,7 +26,7 @@ The virt board supports:
+>  
+>  - PCI/PCIe devices
+>  - Flash memory
+> -- One PL011 UART
+> +- Either one or two PL011 UARTs for the NonSecure World
+>  - An RTC
+>  - The fw_cfg device that allows a guest to obtain data from QEMU
+>  - A PL061 GPIO controller
+> @@ -48,6 +48,10 @@ The virt board supports:
+>    - A secure flash memory
+>    - 16MB of secure RAM
+>  
+> +The second NonSecure UART only exists if a backend is configured
+> +explicitly (e.g. with a second -serial command line option) and
+> +TrustZone emulation is not enabled.
+> +
+>  Supported guest CPU types:
+>  
+>  - ``cortex-a7`` (32-bit)
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 0de58328b2f..da15eb342bd 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -150,6 +150,7 @@ struct VirtMachineState {
+>      bool ras;
+>      bool mte;
+>      bool dtb_randomness;
+> +    bool second_ns_uart_present;
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 54f26640982..b812f33c929 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -77,11 +77,11 @@ static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
+>  }
+>  
+>  static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+> -                                           uint32_t uart_irq)
+> +                               uint32_t uart_irq, int uartidx)
+>  {
+> -    Aml *dev = aml_device("COM0");
+> +    Aml *dev = aml_device("COM%d", uartidx);
+>      aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0011")));
+> -    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> +    aml_append(dev, aml_name_decl("_UID", aml_int(uartidx)));
+>  
+>      Aml *crs = aml_resource_template();
+>      aml_append(crs, aml_memory32_fixed(uart_memmap->base,
+> @@ -860,7 +860,11 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      scope = aml_scope("\\_SB");
+>      acpi_dsdt_add_cpus(scope, vms);
+>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
+> -                       (irqmap[VIRT_UART0] + ARM_SPI_BASE));
+> +                       (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
+> +    if (vms->second_ns_uart_present) {
+> +        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
+> +                           (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
+> +    }
+>      if (vmc->acpi_expose_flash) {
+>          acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+>      }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index fd524aed6b6..7f60df7d7b2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -856,7 +856,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+>  }
+>  
+>  static void create_uart(const VirtMachineState *vms, int uart,
+> -                        MemoryRegion *mem, Chardev *chr)
+> +                        MemoryRegion *mem, Chardev *chr, bool secure)
+>  {
+>      char *nodename;
+>      hwaddr base = vms->memmap[uart].base;
+> @@ -894,6 +894,8 @@ static void create_uart(const VirtMachineState *vms, int uart,
+>          qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial0", nodename);
+>      } else {
+>          qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial1", nodename);
+> +    }
+> +    if (secure) {
+>          /* Mark as not usable by the normal world */
+>          qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
+>          qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+> @@ -2269,11 +2271,41 @@ static void machvirt_init(MachineState *machine)
+>  
+>      fdt_add_pmu_nodes(vms);
+>  
+> -    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
+> +    /*
+> +     * The first UART always exists. If the security extensions are
+> +     * enabled, the second UART also always exists. Otherwise, it only exists
+> +     * if a backend is configured explicitly via '-serial <backend>'.
+> +     * This avoids potentially breaking existing user setups that expect
+> +     * only one NonSecure UART to be present (for instance, older EDK2
+> +     * binaries).
+> +     *
+> +     * The nodes end up in the DTB in reverse order of creation, so we must
+> +     * create UART0 last to ensure it appears as the first node in the DTB,
+> +     * for compatibility with guest software that just iterates through the
+> +     * DTB to find the first UART, as older versions of EDK2 do.
+> +     * DTB readers that follow the spec, as Linux does, should honour the
+> +     * aliases node information and /chosen/stdout-path regardless of
+> +     * the order that nodes appear in the DTB.
+> +     *
+> +     * For similar back-compatibility reasons, if UART1 is the secure UART
+> +     * we create it second (and so it appears first in the DTB), because
+> +     * that's what QEMU has always done.
+> +     */
+> +    if (!vms->secure) {
+> +        Chardev *serial1 = serial_hd(1);
+> +
+> +        if (serial1) {
+> +            vms->second_ns_uart_present = true;
+> +            create_uart(vms, VIRT_UART1, sysmem, serial1, false);
+> +        }
+> +    }
+> +    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0), false);
+> +    if (vms->secure) {
+> +        create_uart(vms, VIRT_UART1, secure_sysmem, serial_hd(1), true);
+> +    }
+>  
+>      if (vms->secure) {
+>          create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
+> -        create_uart(vms, VIRT_UART1, secure_sysmem, serial_hd(1));
+>      }
+>  
+>      if (tag_sysmem) {
 
-
-> 8 Preparing a QEMU Pull Request
-> ═══════════════════════════════
-
-> 9 And send the pull request
-> ═══════════════════════════
-
-For these steps I just do:
-
-$ git publish -b origin/master \
-     --pull-request --sign-pull --keyid=0xMYKEY
-
-which uses .gitpublish from commit 08bb160e02,
-calling get_maintainer.pl for each patch.
-
-Using GSuite, I also have in ~/.gitconfig:
-
-[sendemail]
-     smtpServer = smtp.gmail.com
-     smtpBatchSize = 1
-     smtpReloginDelay = 3

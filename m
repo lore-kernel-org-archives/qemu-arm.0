@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2045768ejb;
-        Tue, 24 Oct 2023 06:26:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFSgVbDpBidYmFW1/NFMFWqyWHXESEb+DxECvWF7HRWiHGGAVBjET1HLMLhT5LQxuO0vlYY
-X-Received: by 2002:a67:c313:0:b0:457:66e0:2c6a with SMTP id r19-20020a67c313000000b0045766e02c6amr11428876vsj.14.1698153977278;
-        Tue, 24 Oct 2023 06:26:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153977; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2047721ejb;
+        Tue, 24 Oct 2023 06:29:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFRKM7rkSaBT6VoZelfaFoNdD7XKkj5KBgyLe3xbXK4mem6Wi6gYONSEg3wWG0BZVAiGmL/
+X-Received: by 2002:a05:6214:1d27:b0:66d:9b75:750b with SMTP id f7-20020a0562141d2700b0066d9b75750bmr18400997qvd.8.1698154189967;
+        Tue, 24 Oct 2023 06:29:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698154189; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZwNaCUQCraK9/iQzp1ztSs42FwEuwr+lqjH1/sP6qIEyp7heXJIob9sUWe09JkZ9HD
-         qVsC60RLzEz3UYsOCQ8sxnX5n+z3E7i8AZojj/bjFXczFnoU8uq+8VVj++a6ZBbklala
-         xOexoChEu3PIG61aDtteBfqHexx3BUsPmhPe4GeEpiFgigkcjS8gU6GpxxibpJqvQpPB
-         Od31scZ/IWuiYSS9jM3uTl1zrzqdiVNYMvuJUTq7CLjZkIylaf2iG6J1ffwHcOVi3Vda
-         4I8rof4lsXeDQfwpuEDItwac4VMrRzuwNGXobwogB/Nst0jTfbYnlX5VVfvFFUdJ/WFT
-         Miew==
+        b=fIt7jHV6hqqrSspwa5O2vse6iOx2rXctHmiUFoBvtXfC3ngVqMwlJLtLX6prHWdKZ5
+         +c+246Bj+gTIK2YP+wgOugdwHUchytb0/4PpxkDNSyu6UFTcsRkPODriBqpVNF8Cg9rT
+         qFz5erqj2yPsBgNC7ufps/0afoX3G0XKVNIV6JBebnqn1wqJ/aRYNZqNleWPaWUo9PBO
+         P+EEPEjc8FgHDa0BEnLTpIzrzjRG2/9AfAV3dLfKPZ7RxAzOCFx0nGRsD/HLiXNAvPM/
+         fgzWmIAI+iMBxidWCzhawV+yt6RJ7zXXtOrsh2JzMAGTCOl/CEAEG3KTgUCzAZ/i/t+H
+         lSOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/NRSpUIijsQTQV6/Ab+Fo4l/3wg2rU3H4n9wtIAj/fI=;
+        bh=9flXVe+nAicFS1/rxc83MM5ytGZ1iM573z7gK+kmgFU=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=Wqritvgjb/xhnsAOE2pTswHpe47vYQBB5mvlBuS9LPPNUFYjgOISuP+UsPvD47KcAO
-         CJFVtk37kim2MnGaTiGf/+LVyEszDwjEhhkX++imM1hw0P2yvUmLsNOtnPH0agGwylUu
-         Gn2kVdJmss/5mr0S+JQ0FXGarVP3KA36AijBauZIOyt/tLEHYquYoNn3FJrL6UsL8RhP
-         tP3Of9od7+CPy+eqcndYkzb1VIuNkHOekaPfLlVxA6kY7YfqbfPJzdClRlf9DKPRyET0
-         FFm78UhfWScFKs0ZWz25jgT/abjrvmyr28qnT238A6OfWeiqBEOkfD+gd+1XvBylbgNc
-         V83g==
+        b=LxxHTWhQ88aihIR8MAbVhAnoJVvKTJkzESEi06vMBe2XX/WT3IQlXYCLqqAjk3QEQa
+         Qeh1jIEsh+aYBf42kWz+IJwREfKSG7uOFQ8R6SrhxEJtIIYmiWvy1i4x5CblRcGNwrEq
+         q+BMwJ06ZeIv7tkDlGc1wHXlfjTXVZKFhqlpnhMs3b9I1+DkXz+mioO2ZdD8Itzf6Nm+
+         P0FK9niZOLsLLC4WT7dhRBOd+YRfFPd4MpmJFGLKVCwD6MGczcesi6pUxbC2uR5wmGvK
+         0MOaoMKZeiXMWg2zXxhf4V9xoxHJmtSrLcQl+BN0Mplr36hSLJy2LKHCNtH+LfAcoE7g
+         AO6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OSrjmtwd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D7DDbXA/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g21-20020ac85d55000000b0041983479612si7250391qtx.628.2023.10.24.06.26.17
+        by mx.google.com with ESMTPS id et19-20020a056214177300b0065b05790428si7125595qvb.390.2023.10.24.06.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:26:17 -0700 (PDT)
+        Tue, 24 Oct 2023 06:29:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OSrjmtwd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D7DDbXA/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHGg-00031P-0p; Tue, 24 Oct 2023 09:16:22 -0400
+	id 1qvHK7-0001XB-3I; Tue, 24 Oct 2023 09:19:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHGI-0001r8-Px
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:16:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qvHHs-0005kE-1n
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHGG-0001qj-IP
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:58 -0400
+ id 1qvHHp-0002GL-VP
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153354;
+ s=mimecast20190719; t=1698153452;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/NRSpUIijsQTQV6/Ab+Fo4l/3wg2rU3H4n9wtIAj/fI=;
- b=OSrjmtwd9NEoBJX3Kec12NnrEPz6de0hbWjRXNCXaOJRXJSYrBOLe5ZZP02N4RLV4Xbo9I
- 745J/6wpbOnn7BPicD8e5Vt7ajCd/28vjXczRy1H43nd9pwwMEoMF0Nb+boVLv+iXfsW/q
- Jn71pOo+As3RNl+sS9mb4Z2XTdNzQDY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-385-8sbA3mZJPjK-NrBMu38aGQ-1; Tue, 24 Oct 2023 09:15:48 -0400
-X-MC-Unique: 8sbA3mZJPjK-NrBMu38aGQ-1
+ bh=9flXVe+nAicFS1/rxc83MM5ytGZ1iM573z7gK+kmgFU=;
+ b=D7DDbXA/Fe5eU1+qZVnNoklu1rEJSAKugx4HpAPFl3+RMXAW7tZiWvIn/rgugESi0+nla6
+ 3IDnafshMtMkMPwpwtRwar00gUD61oUZ3+AX7aO4HYG3/B5P5ntXCXV0iDteiuH/NZVkw0
+ Zhl/Nbol/hBivaAGQCXqEklZMfMHx7Q=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-446--s9KxhzPPt2PbTvJ1EhwKQ-1; Tue,
+ 24 Oct 2023 09:17:24 -0400
+X-MC-Unique: -s9KxhzPPt2PbTvJ1EhwKQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2D1EF88CDC0;
- Tue, 24 Oct 2023 13:15:47 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B19D53816C80;
+ Tue, 24 Oct 2023 13:17:22 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 011211C060AE;
- Tue, 24 Oct 2023 13:15:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2F2211C060AE;
+ Tue, 24 Oct 2023 13:17:16 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -108,24 +108,22 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 23/39] migration: rename
- vmstate_save_needed->vmstate_section_needed
-Date: Tue, 24 Oct 2023 15:12:49 +0200
-Message-ID: <20231024131305.87468-24-quintela@redhat.com>
+Subject: [PULL 37/39] migration: migrate 'blk' command option is deprecated.
+Date: Tue, 24 Oct 2023 15:13:03 +0200
+Message-ID: <20231024131305.87468-38-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,71 +139,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jz4wC9RiW/+T
+X-TUID: 5idYHb73ld2v
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+Use blocked-mirror with NBD instead.
 
-The function is used on save at this point. The following commits will
-use it on load.
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231024084043.2926316-5-marcandre.lureau@redhat.com>
+Message-ID: <20231018115513.2163-4-quintela@redhat.com>
 ---
- include/migration/vmstate.h | 2 +-
- migration/savevm.c          | 2 +-
- migration/vmstate.c         | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ docs/about/deprecated.rst      | 9 +++++++++
+ qapi/migration.json            | 7 ++++---
+ migration/migration-hmp-cmds.c | 5 +++++
+ migration/migration.c          | 5 +++++
+ 4 files changed, 23 insertions(+), 3 deletions(-)
 
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 1a31fb7293..1af181877c 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -1202,7 +1202,7 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
-                          void *opaque, JSONWriter *vmdesc,
-                          int version_id, Error **errp);
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index fc6adf1dea..98b0f14e69 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -469,3 +469,12 @@ Use blockdev-mirror with NBD instead.
+ As an intermediate step the ``inc`` functionality can be achieved by
+ setting the ``block-incremental`` migration parameter to ``true``.
+ But this parameter is also deprecated.
++
++``blk`` migrate command option (since 8.2)
++''''''''''''''''''''''''''''''''''''''''''
++
++Use blockdev-mirror with NBD instead.
++
++As an intermediate step the ``blk`` functionality can be achieved by
++setting the ``block`` migration capability to ``true``.  But this
++capability is also deprecated.
+diff --git a/qapi/migration.json b/qapi/migration.json
+index fa7f4f2575..3765c2b662 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -1526,8 +1526,8 @@
+ #
+ # Features:
+ #
+-# @deprecated: Member @inc is deprecated.  Use blockdev-mirror with
+-#     NBD instead.
++# @deprecated: Members @inc and @blk are deprecated.  Use
++#     blockdev-mirror with NBD instead.
+ #
+ # Returns: nothing on success
+ #
+@@ -1550,7 +1550,8 @@
+ # <- { "return": {} }
+ ##
+ { 'command': 'migrate',
+-  'data': {'uri': 'str', '*blk': 'bool',
++  'data': {'uri': 'str',
++           '*blk': { 'type': 'bool', 'features': [ 'deprecated' ] },
+            '*inc': { 'type': 'bool', 'features': [ 'deprecated' ] },
+            '*detach': 'bool', '*resume': 'bool' } }
  
--bool vmstate_save_needed(const VMStateDescription *vmsd, void *opaque);
-+bool vmstate_section_needed(const VMStateDescription *vmsd, void *opaque);
- 
- #define  VMSTATE_INSTANCE_ID_ANY  -1
- 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 8622f229e5..ca5c7cebe0 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -985,7 +985,7 @@ static int vmstate_save(QEMUFile *f, SaveStateEntry *se, JSONWriter *vmdesc)
-     if ((!se->ops || !se->ops->save_state) && !se->vmsd) {
-         return 0;
+diff --git a/migration/migration-hmp-cmds.c b/migration/migration-hmp-cmds.c
+index 83176f5bae..dfe98da355 100644
+--- a/migration/migration-hmp-cmds.c
++++ b/migration/migration-hmp-cmds.c
+@@ -750,6 +750,11 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
+                     " use blockdev-mirror with NBD instead");
      }
--    if (se->vmsd && !vmstate_save_needed(se->vmsd, se->opaque)) {
-+    if (se->vmsd && !vmstate_section_needed(se->vmsd, se->opaque)) {
-         trace_savevm_section_skip(se->idstr, se->section_id);
-         return 0;
+ 
++    if (blk) {
++        warn_report("option '-b' is deprecated;"
++                    " use blockdev-mirror with NBD instead");
++    }
++
+     qmp_migrate(uri, !!blk, blk, !!inc, inc,
+                 false, false, true, resume, &err);
+     if (hmp_handle_error(mon, err)) {
+diff --git a/migration/migration.c b/migration/migration.c
+index 06a706ad90..cb2d7161b5 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1625,6 +1625,11 @@ static bool migrate_prepare(MigrationState *s, bool blk, bool blk_inc,
+                     " use blockdev-mirror with NBD instead");
      }
-diff --git a/migration/vmstate.c b/migration/vmstate.c
-index 1cf9e45b85..16e33a5d34 100644
---- a/migration/vmstate.c
-+++ b/migration/vmstate.c
-@@ -324,7 +324,7 @@ static void vmsd_desc_field_end(const VMStateDescription *vmsd,
- }
  
- 
--bool vmstate_save_needed(const VMStateDescription *vmsd, void *opaque)
-+bool vmstate_section_needed(const VMStateDescription *vmsd, void *opaque)
- {
-     if (vmsd->needed && !vmsd->needed(opaque)) {
-         /* optional section not needed */
-@@ -522,7 +522,7 @@ static int vmstate_subsection_save(QEMUFile *f, const VMStateDescription *vmsd,
- 
-     trace_vmstate_subsection_save_top(vmsd->name);
-     while (sub && *sub) {
--        if (vmstate_save_needed(*sub, opaque)) {
-+        if (vmstate_section_needed(*sub, opaque)) {
-             const VMStateDescription *vmsdsub = *sub;
-             uint8_t len;
- 
++    if (blk) {
++        warn_report("parameter 'blk' is deprecated;"
++                    " use blockdev-mirror with NBD instead");
++    }
++
+     if (resume) {
+         if (s->state != MIGRATION_STATUS_POSTCOPY_PAUSED) {
+             error_setg(errp, "Cannot resume if there is no "
 -- 
 2.41.0
 

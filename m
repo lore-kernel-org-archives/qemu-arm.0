@@ -1,82 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2041421ejb;
-        Tue, 24 Oct 2023 06:19:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEWD15U2+oqXqHFlku+I8Avl9+FfpEqy7BpvoGBaZvWBpB5zalv0VEoqRXvt+6AVMq/1vWK
-X-Received: by 2002:a05:620a:1913:b0:777:3bd:9774 with SMTP id bj19-20020a05620a191300b0077703bd9774mr14780257qkb.27.1698153550728;
-        Tue, 24 Oct 2023 06:19:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153550; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2041524ejb;
+        Tue, 24 Oct 2023 06:19:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IERMtPhxNCkWlcLnzQkaD3KkvTJn26rBcNur1DmU/aG6tCiY2lXAEpt03ZOE68Ue+BwnqRy
+X-Received: by 2002:a05:622a:104d:b0:418:1aed:ad5f with SMTP id f13-20020a05622a104d00b004181aedad5fmr15497488qte.7.1698153562188;
+        Tue, 24 Oct 2023 06:19:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153562; cv=none;
         d=google.com; s=arc-20160816;
-        b=KqEUsQFVV3w4BWXeXcOViwBm/joYMeqm75QdaFTB4kJg8Rmw7Ew5bbcQYq8NvQStTP
-         gxjzvDCIab/KUU6Z0tCcCkyK5hPejlKi7nCn5Hu6Z+eF2EGvLXkAW0se/nNt4/VSrJUx
-         22gvunMqlhaxSg/OwM64Gkot6YdKyCkDU/rYgTVd7EvL4riOhEqdNzu/nbY3L39g9RB+
-         y8mouI6pX7GtDayDC2c1z9rp41gX3qTsiZB6yFbxVkewiRBIxqrv/4yHneRrRS/MHiHj
-         TX+1Wp06WXuDyMvt344mrdwRKAS7zV4fuRcMsT3IM2jIbPdOM9Mk1YG747WITBjltzo6
-         Prng==
+        b=eHZzGmMS8uvewcHwhDgjZiHpvlJ/xd7jh5XI+pfgq3gAh5Ol0zwMOUMmzqMBTC++90
+         M+mvSC9wbgV8/HxUWb8VMHnhn7iPKYFhEYN6Kw+Oy96vVGTp6yxyCiDOzh9Q2rpvErQB
+         5pn7bhVAeaIQnsSFXsxj+2JNqpVTn1FSoSduCKm3BWIQQvqq7KdhFbg/gD9u477cp1h0
+         dsHTrE7V1lTTmLPNhcF0KB5uXG4TpUNCcAXbh3Mg6OSojyHQcqWLmNn7Nw9hL2ND56FK
+         WoBcNZpvlxOQ6G66d8mKeENRttFse12jmIagnhSihHDD9CGQFNrDAxRUx0L4b8aV9tOh
+         8nCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MAvCgT0ohAvu13qO9O2qXDeVppbBAyGNHtVWe+19H/o=;
-        fh=0DRGwfQymzNSinv+CnmU35FvXClR1k5Tnpw/bIUVe6k=;
-        b=NgjQpPY1ayYNubVrFkI0Cf/oXY5/nSkTLrF9dHmVXAhFmmtL4Dy6OpA+hZyRgcpmRC
-         j9/Yu/Pg6hupHXUwaPM0gmpGpb6zUawOQuvlSmtLQQgLeSejts32lC7bTnxLTonVkSlP
-         qQuA7neaLZx17Z25tD6HPOVqy+XAxOGJnfq4APUtNf/RWesf4b5EmeymKFUxPHnCSN3B
-         hgPnrowBR/N/qldG+8s8irmRVf5NG7zCgSEGn0PoB90rRCn18Pm6lItDWtc4hjiIzxPL
-         wyjl5CF/E1fYfY5hzuA6//V5rlNNJyEI8DMzPbIQbOIaeptA1lhi2iS184ggDXr8i0hN
-         dQGw==
+        bh=rLdOgQORj/Nl035a1TnFgLX0gwiYcob+wD6YkWCXdyk=;
+        fh=7GPwc/Cq6qUOnLC7zQvLvxIFPFaucAOJI8pJ20UVdeA=;
+        b=UfXULvx2KLVUpKiQyquXdzLAbFX3T0eo6gNCbLV7nVVP2s9wKzUMh1OGPr0Wvs2pvg
+         zzvI2XzOqFwlhBCHFi1kNWRHWu51HqsbDjrahoI6q/MGnuzSUbHcsmTN2I2ejba2G0O0
+         dqLX9SSBsUfiwzEHu7OVm3W994WtiuZu0/zV2WtGI3fTxY3rmq9x8BZ+18BxBGOr6VrW
+         NCMmB5h45qPcOLV2c3N3Ss31+F0M3C43ZLwq2V1SfXZUKt8ETBcWFEDe0aMhasAet6da
+         FDXLirppUxhb3CJx7Bt1MreAdJ/L92subNcEbbLHQyZzh84QIIA8kdxxW9NK8jhnixPk
+         28XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bPC/BJai";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cerDgN2M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 13-20020a05620a040d00b00772638f486fsi6964880qkp.305.2023.10.24.06.19.10
+        by mx.google.com with ESMTPS id y13-20020ac85f4d000000b00419576c2d0bsi6853157qta.548.2023.10.24.06.19.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:19:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:19:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bPC/BJai";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cerDgN2M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvHFm-000887-8j; Tue, 24 Oct 2023 09:15:26 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvHJS-0007q8-As; Tue, 24 Oct 2023 09:19:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHF6-0005IH-PW
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:46 -0400
+ id 1qvHH3-000497-At
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:16:45 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHF4-0001HR-1E
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:44 -0400
+ id 1qvHGu-00020e-U8
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:16:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153281;
+ s=mimecast20190719; t=1698153394;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MAvCgT0ohAvu13qO9O2qXDeVppbBAyGNHtVWe+19H/o=;
- b=bPC/BJaiv9TnWiSKqazULGpPjGRJ5zMzJ6lrkY4uPyL5pNMH4BuFM5R1nAp8kE6nUlntkx
- 9NlLaGKf/0DBwm1Dkt2/5I+1q6lMJhD8qWKvuAbtWNa0nsOw61dvhPqPdcHg7Br7fFfeWr
- WuEiHM1eb5VTdIt/g1gmvClZgYfTfCA=
+ bh=rLdOgQORj/Nl035a1TnFgLX0gwiYcob+wD6YkWCXdyk=;
+ b=cerDgN2MK4OZzqb0gxMreJRQW+4DBYp0MwK3m6Hx0mfRr5JJ/YTFtOyvPAaHyrr6wVy882
+ r4LSBe9xDXUrB+vBQ4W6ZILe0/MmAN42SxYQ4/TDUtX/k8+aP/WyK3HDYd0Cs90ej9v9kh
+ T6KvO5oeud/M+HoXQ0/3URAcpYTBD6U=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-674-LK7K9INCObKsJh8txW0J3w-1; Tue, 24 Oct 2023 09:14:37 -0400
-X-MC-Unique: LK7K9INCObKsJh8txW0J3w-1
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-262-C8EIR1PuO1-9ncAmgaL3Hg-1; Tue,
+ 24 Oct 2023 09:16:30 -0400
+X-MC-Unique: C8EIR1PuO1-9ncAmgaL3Hg-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B48793C1E9DF;
- Tue, 24 Oct 2023 13:14:34 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5190F3813F34;
+ Tue, 24 Oct 2023 13:16:28 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F21D01C060AE;
- Tue, 24 Oct 2023 13:14:27 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 95BF81C060AE;
+ Tue, 24 Oct 2023 13:16:21 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -107,10 +108,11 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
- Lukas Straub <lukasstraub2@web.de>
-Subject: [PULL 12/39] migration: Move busy++ to migrate_with_multithread
-Date: Tue, 24 Oct 2023 15:12:38 +0200
-Message-ID: <20231024131305.87468-13-quintela@redhat.com>
+ Greg Kurz <groug@kaod.org>
+Subject: [PULL 29/39] migration: Hack to maintain backwards compatibility for
+ ppc
+Date: Tue, 24 Oct 2023 15:12:55 +0200
+Message-ID: <20231024131305.87468-30-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -126,63 +128,185 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z183/4RWh3ue
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qG+2hMxVHxiI
 
-And now we can simplify save_compress_page().
+Current code does:
+- register pre_2_10_vmstate_dummy_icp with "icp/server" and instance
+  dependinfg on cpu number
+- for newer machines, it register vmstate_icp with "icp/server" name
+  and instance 0
+- now it unregisters "icp/server" for the 1st instance.
 
-Reviewed-by: Lukas Straub <lukasstraub2@web.de>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+This is wrong at many levels:
+- we shouldn't have two VMSTATEDescriptions with the same name
+- In case this is the only solution that we can came with, it needs to
+  be:
+  * register pre_2_10_vmstate_dummy_icp
+  * unregister pre_2_10_vmstate_dummy_icp
+  * register real vmstate_icp
+
+Created vmstate_replace_hack_for_ppc() with warnings left and right
+that it is a hack.
+
+CC: Cedric Le Goater <clg@kaod.org>
+CC: Daniel Henrique Barboza <danielhb413@gmail.com>
+CC: David Gibson <david@gibson.dropbear.id.au>
+CC: Greg Kurz <groug@kaod.org>
+
+Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231019110724.15324-7-quintela@redhat.com>
+Message-ID: <20231020090731.28701-8-quintela@redhat.com>
 ---
- migration/ram-compress.c | 1 +
- migration/ram.c          | 8 ++------
- 2 files changed, 3 insertions(+), 6 deletions(-)
+ include/migration/vmstate.h | 11 +++++++++++
+ hw/intc/xics.c              | 18 ++++++++++++++++--
+ hw/ppc/spapr.c              | 25 +++++++++++++++++++++++--
+ migration/savevm.c          | 18 ++++++++++++++++++
+ 4 files changed, 68 insertions(+), 4 deletions(-)
 
-diff --git a/migration/ram-compress.c b/migration/ram-compress.c
-index a991b15b7a..f56e1f8e69 100644
---- a/migration/ram-compress.c
-+++ b/migration/ram-compress.c
-@@ -291,6 +291,7 @@ bool compress_page_with_multi_thread(RAMBlock *block, ram_addr_t offset,
-         }
-         if (!wait) {
-             qemu_mutex_unlock(&comp_done_lock);
-+            compression_counters.busy++;
-             return false;
-         }
-         /*
-diff --git a/migration/ram.c b/migration/ram.c
-index 63a575ae90..46209388ec 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -2067,12 +2067,8 @@ static bool save_compress_page(RAMState *rs, PageSearchStatus *pss,
-         return false;
-     }
- 
--    if (compress_page_with_multi_thread(pss->block, offset, send_queued_data)) {
--        return true;
--    }
--
--    compression_counters.busy++;
--    return false;
-+    return compress_page_with_multi_thread(pss->block, offset,
-+                                           send_queued_data);
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 1ea97ccf2d..9821918631 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -1230,6 +1230,17 @@ static inline int vmstate_register(VMStateIf *obj, int instance_id,
+                                           opaque, -1, 0, NULL);
  }
  
++/**
++ * vmstate_replace_hack_for_ppc() - ppc used to abuse vmstate_register
++ *
++ * Don't even think about using this function in new code.
++ *
++ * Returns: 0 on success, -1 on failure
++ */
++int vmstate_replace_hack_for_ppc(VMStateIf *obj, int instance_id,
++                                 const VMStateDescription *vmsd,
++                                 void *opaque);
++
  /**
+  * vmstate_register_any() - legacy function to register state
+  * serialisation description and let the function choose the id
+diff --git a/hw/intc/xics.c b/hw/intc/xics.c
+index c7f8abd71e..c77e986136 100644
+--- a/hw/intc/xics.c
++++ b/hw/intc/xics.c
+@@ -335,8 +335,22 @@ static void icp_realize(DeviceState *dev, Error **errp)
+             return;
+         }
+     }
+-
+-    vmstate_register(NULL, icp->cs->cpu_index, &vmstate_icp_server, icp);
++    /*
++     * The way that pre_2_10_icp is handling is really, really hacky.
++     * We used to have here this call:
++     *
++     * vmstate_register(NULL, icp->cs->cpu_index, &vmstate_icp_server, icp);
++     *
++     * But we were doing:
++     *     pre_2_10_vmstate_register_dummy_icp()
++     *     this vmstate_register()
++     *     pre_2_10_vmstate_unregister_dummy_icp()
++     *
++     * So for a short amount of time we had to vmstate entries with
++     * the same name.  This fixes it.
++     */
++    vmstate_replace_hack_for_ppc(NULL, icp->cs->cpu_index,
++                                 &vmstate_icp_server, icp);
+ }
+ 
+ static void icp_unrealize(DeviceState *dev)
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index b25093be28..df09aa9d6a 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -143,6 +143,11 @@ static bool pre_2_10_vmstate_dummy_icp_needed(void *opaque)
+ }
+ 
+ static const VMStateDescription pre_2_10_vmstate_dummy_icp = {
++    /*
++     * Hack ahead.  We can't have two devices with the same name and
++     * instance id.  So I rename this to pass make check.
++     * Real help from people who knows the hardware is needed.
++     */
+     .name = "icp/server",
+     .version_id = 1,
+     .minimum_version_id = 1,
+@@ -155,16 +160,32 @@ static const VMStateDescription pre_2_10_vmstate_dummy_icp = {
+     },
+ };
+ 
++/*
++ * See comment in hw/intc/xics.c:icp_realize()
++ *
++ * You have to remove vmstate_replace_hack_for_ppc() when you remove
++ * the machine types that need the following function.
++ */
+ static void pre_2_10_vmstate_register_dummy_icp(int i)
+ {
+     vmstate_register(NULL, i, &pre_2_10_vmstate_dummy_icp,
+                      (void *)(uintptr_t) i);
+ }
+ 
++/*
++ * See comment in hw/intc/xics.c:icp_realize()
++ *
++ * You have to remove vmstate_replace_hack_for_ppc() when you remove
++ * the machine types that need the following function.
++ */
+ static void pre_2_10_vmstate_unregister_dummy_icp(int i)
+ {
+-    vmstate_unregister(NULL, &pre_2_10_vmstate_dummy_icp,
+-                       (void *)(uintptr_t) i);
++    /*
++     * This used to be:
++     *
++     *    vmstate_unregister(NULL, &pre_2_10_vmstate_dummy_icp,
++     *                      (void *)(uintptr_t) i);
++     */
+ }
+ 
+ int spapr_max_server_number(SpaprMachineState *spapr)
+diff --git a/migration/savevm.c b/migration/savevm.c
+index ca5c7cebe0..1d1639c4b6 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -846,6 +846,24 @@ static void vmstate_check(const VMStateDescription *vmsd)
+     }
+ }
+ 
++/*
++ * See comment in hw/intc/xics.c:icp_realize()
++ *
++ * This function can be removed when
++ * pre_2_10_vmstate_register_dummy_icp() is removed.
++ */
++int vmstate_replace_hack_for_ppc(VMStateIf *obj, int instance_id,
++                                 const VMStateDescription *vmsd,
++                                 void *opaque)
++{
++    SaveStateEntry *se = find_se(vmsd->name, instance_id);
++
++    if (se) {
++        savevm_state_handler_remove(se);
++    }
++    return vmstate_register(obj, instance_id, vmsd, opaque);
++}
++
+ int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
+                                    const VMStateDescription *vmsd,
+                                    void *opaque, int alias_id,
 -- 
 2.41.0
 

@@ -1,66 +1,67 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1876545ejb;
-        Tue, 24 Oct 2023 00:35:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGnlsNYte5fpsozRT1BPOU8U6CosQICgfD878orNPXqbGCXqrUpmws1N8Awq5jKr6UagayR
-X-Received: by 2002:ad4:5be8:0:b0:66d:15de:329c with SMTP id k8-20020ad45be8000000b0066d15de329cmr14439433qvc.43.1698132902732;
-        Tue, 24 Oct 2023 00:35:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698132902; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1877412ejb;
+        Tue, 24 Oct 2023 00:37:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFC2SVIXbEMOC8vlMgHlvZChuhr/ggEm0IgKqGIUOks3iOnTA4Wueyyds2cZkBRjl+bQJKb
+X-Received: by 2002:a05:6214:e88:b0:66d:1219:f2ab with SMTP id hf8-20020a0562140e8800b0066d1219f2abmr12473164qvb.8.1698133046784;
+        Tue, 24 Oct 2023 00:37:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698133046; cv=none;
         d=google.com; s=arc-20160816;
-        b=L1TVBeCiJUmuUUloSx7LYdJW/yeYB39CCtbQ4lkWqI+gW70GiHp5y7RaefGC5vTJPs
-         +HI993xnX397eyfBZWzo23DUT9N2fZoOU4zfE5F7wX1FCRO8ZGaFBjkfqz3MmgXNhfm1
-         EZ2UycenGHtCe9vS9BXnmDeFbJg0U4FF7XlhVDA1uqifCU8AZHZ3q426h+NZSf4hJIOb
-         mxRUuB9+op77eC76a2ZYsaSnCQXV8ogY+usSGONZMiomsejWxH5JNM5gOkVo9NLV++kW
-         ycLvn0ULitl/pKAoDTXmWfV4dG2UjVVHdw4aBNDN1mV5BOJOoQT1jfkfKbc3W6Vu3FM2
-         AXxg==
+        b=mvIdoNcA0Eelr/TiRE1pB42obuwkk6j5Krb2AkIZnuqgNAKYykbHBoHz90l8SefHm+
+         OhON5dopPPyoPdyv3lh0Ap6txvkaFemE/9kPewkaQaxUhASkIqSmG7JIhEOrR2wCi0Sh
+         PfuXkIGjyLwJRmbDNL2OGRi2mLwH3H7pkp4cDD6Y+7/XbWWgirQISqtybmEH7c51kQmf
+         quHWqHt4ORh2IynX3lehR/OCoAiNUvVMa428SNjLYSO7mGuageNvZ2xKyjPDPlitFe8o
+         vUMzPfCg7uK5Y1/DuqI7lyVwuT+VH8+xHVrAZtyRlW4JwWk2EIb/JeQjrzEQXPyBb+hd
+         GeYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=0wgpEsGLVG/vxLvaCeU3Q3Ensl4IwMDMcCduxzq+KOc=;
+        bh=JR90RRRSka0kWAG3H6y0qxsM2lf9kPU/7/WzDn5F03w=;
         fh=JKTnjfgLebdI6Uppdd2zUuo3nA3KHnzgaaV6K84+8TY=;
-        b=IvC6SGfPnhn88YU8WlRMF8jKj2ic41nxcpsLTlGJ+LtI23k5+C9qRxZhXXD8WDew4H
-         fAjbmkHIBhORhfdQdc757Y5prABsTUmaf7LEzghHZOsoYVcb+N/lj/tnnavWt8OM8OVH
-         rauJLVGRrohRrc3SgEycaFcIXRho5znsgVEPudHJI/qDhmzkb2/DkXD8yoq9yTXiqSog
-         LlDVpT/gHYDp8VXvfWxPAaUHIxKTxTDouexFJKpFUDSaTqL8efv4LzA3tNykL3C40mUc
-         HTJ+fNMyk5h7ulcjNuUUPHAFtr17Oqq+BmlPD7qWu7CyXwJoLlBZd0DzmxSO2MEZZJf3
-         S3HQ==
+        b=H/v74PanvVuQ5C9HJeQRUQ6NNgN6zzk8m+Gusx/FOPOm1/SYz6OdVSahmyKemR8a54
+         AEp7ydYgZ24ku7n2jgH8pCFPgpoU+Pd+flZGwYbbBxlXmpDFcxk7wdGlSNCU3flh1xCP
+         YvPiEiFOfXYJeJv1ZZ8EWjob6p3ne9OkXW4i3N8kTeeW1VQzDnE1HT5h+1zxegzW88Zc
+         jlzIttIXuqw2CRoHmyFCMhnCo1RnxNtACHO88RBuwDK/AwBtHxHQWTAfARLdrJLaBvU5
+         kcWlfyizGhFGOsa0h7MNdzljfmQJ77NEwOyAGFwyQBtd/z1K6ahhxM3OKM6lTTjrWpHi
+         rKgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3-20020a05622a030300b004178b478447si6595119qtw.429.2023.10.24.00.35.02
+        by mx.google.com with ESMTPS id pi17-20020a0562144a9100b00658900baafasi6986952qvb.609.2023.10.24.00.37.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 00:35:02 -0700 (PDT)
+        Tue, 24 Oct 2023 00:37:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvBvn-0003k1-JJ; Tue, 24 Oct 2023 03:34:27 -0400
+	id 1qvByd-0004dA-Cr; Tue, 24 Oct 2023 03:37:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
- id 1qvBvm-0003ee-7z; Tue, 24 Oct 2023 03:34:26 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1qvByb-0004cq-T7; Tue, 24 Oct 2023 03:37:21 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
- id 1qvBvj-0007Es-H3; Tue, 24 Oct 2023 03:34:25 -0400
+ id 1qvByZ-0007iA-8d; Tue, 24 Oct 2023 03:37:21 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SF3j55JSBz4x1x;
- Tue, 24 Oct 2023 18:34:17 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SF3mW2Nx8z4x5k;
+ Tue, 24 Oct 2023 18:37:15 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SF3j16kbCz4wcf;
- Tue, 24 Oct 2023 18:34:13 +1100 (AEDT)
-Message-ID: <3d1fc354-0daf-4bf4-bf33-d737e180a14c@kaod.org>
-Date: Tue, 24 Oct 2023 09:34:10 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SF3mR6TKrz4x5h;
+ Tue, 24 Oct 2023 18:37:11 +1100 (AEDT)
+Message-ID: <ee85f3d0-7ec8-47d5-b157-60d103553502@kaod.org>
+Date: Tue, 24 Oct 2023 09:37:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 08/10] hw/fsi: Added qtest
+Subject: Re: [PATCH v6 09/10] hw/fsi: Added FSI documentation
 Content-Language: en-US
 To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
  peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
@@ -68,19 +69,19 @@ To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
  thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
 Cc: qemu-arm@nongnu.org
 References: <20231021211720.3571082-1-ninad@linux.ibm.com>
- <20231021211720.3571082-9-ninad@linux.ibm.com>
+ <20231021211720.3571082-10-ninad@linux.ibm.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231021211720.3571082-9-ninad@linux.ibm.com>
+In-Reply-To: <20231021211720.3571082-10-ninad@linux.ibm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=1ohf=GG=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,256 +96,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JqR/MmY7l232
+X-TUID: x6GLF/q6SmLU
 
 On 10/21/23 23:17, Ninad Palsule wrote:
-> Added basic qtests for FSI model.
+> Documentation for IBM FSI model.
 > 
 > Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 > ---
-> v3:
->   - Added new qtest as per Cedric's comment.
-> V4:
->   - Remove MAINTAINER and documentation changes from this commit
-> v6:
->   - Incorporated review comments by Thomas Huth.
+> v4:
+>    - Added separate commit for documentation
 > ---
->   tests/qtest/fsi-test.c  | 207 ++++++++++++++++++++++++++++++++++++++++
+>   docs/specs/fsi.rst | 141 +++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 141 insertions(+)
+>   create mode 100644 docs/specs/fsi.rst
 
-please rename the file to aspeed-fsi-test.c
+
+Documentation build is broken.
+
+a 'fsi" entry should be added in docs/specs/index.rst. More below.
+
+
+
+> diff --git a/docs/specs/fsi.rst b/docs/specs/fsi.rst
+> new file mode 100644
+> index 0000000000..73b082afe1
+> --- /dev/null
+> +++ b/docs/specs/fsi.rst
+> @@ -0,0 +1,141 @@
+> +======================================
+> +IBM's Flexible Service Interface (FSI)
+> +======================================
+> +
+> +The QEMU FSI emulation implements hardware interfaces between ASPEED SOC, FSI
+> +master/slave and the end engine.
+> +
+> +FSI is a point-to-point two wire interface which is capable of supporting
+> +distances of up to 4 meters. FSI interfaces have been used successfully for
+> +many years in IBM servers to attach IBM Flexible Support Processors(FSP) to
+> +CPUs and IBM ASICs.
+> +
+> +FSI allows a service processor access to the internal buses of a host POWER
+> +processor to perform configuration or debugging. FSI has long existed in POWER
+> +processes and so comes with some baggage, including how it has been integrated
+> +into the ASPEED SoC.
+> +
+> +Working backwards from the POWER processor, the fundamental pieces of interest
+> +for the implementation are:
+> +
+> +1. The Common FRU Access Macro (CFAM), an address space containing various
+> +   "engines" that drive accesses on buses internal and external to the POWER
+> +   chip. Examples include the SBEFIFO and I2C masters. The engines hang off of
+> +   an internal Local Bus (LBUS) which is described by the CFAM configuration
+> +   block.
+> +
+> +2. The FSI slave: The slave is the terminal point of the FSI bus for FSI
+> +   symbols addressed to it. Slaves can be cascaded off of one another. The
+> +   slave's configuration registers appear in address space of the CFAM to
+> +   which it is attached.
+> +
+> +3. The FSI master: A controller in the platform service processor (e.g. BMC)
+> +   driving CFAM engine accesses into the POWER chip. At the hardware level
+> +   FSI is a bit-based protocol supporting synchronous and DMA-driven accesses
+> +   of engines in a CFAM.
+> +
+> +4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in POWER
+> +   processors. This now makes an appearance in the ASPEED SoC due to tight
+> +   integration of the FSI master IP with the OPB, mainly the existence of an
+> +   MMIO-mapping of the CFAM address straight onto a sub-region of the OPB
+> +   address space.
+> +
+> +5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in the
+> +   AST2600. Hardware limitations prevent the OPB from being directly mapped
+> +   into APB, so all accesses are indirect through the bridge.
+> +
+> +The LBUS is modelled to maintain the qdev bus hierarchy and to take advantages
+> +of the object model to automatically generate the CFAM configuration block.
+> +The configuration block presents engines in the order they are attached to the
+> +CFAM's LBUS. Engine implementations should subclass the LBusDevice and set the
+> +'config' member of LBusDeviceClass to match the engine's type.
+> +
+> +CFAM designs offer a lot of flexibility, for instance it is possible for a
+> +CFAM to be simultaneously driven from multiple FSI links. The modeling is not
+> +so complete; it's assumed that each CFAM is attached to a single FSI slave (as
+> +a consequence the CFAM subclasses the FSI slave).
+> +
+> +As for FSI, its symbols and wire-protocol are not modelled at all. This is not
+> +necessary to get FSI off the ground thanks to the mapping of the CFAM address
+> +space onto the OPB address space - the models follow this directly and map the
+> +CFAM memory region into the OPB's memory region.
+> +
+> +QEMU files related to FSI interface:
+> + - ``hw/fsi/aspeed-apb2opb.c``
+> + - ``include/hw/fsi/aspeed-apb2opb.h``
+> + - ``hw/fsi/opb.c``
+> + - ``include/hw/fsi/opb.h``
+> + - ``hw/fsi/fsi.c``
+> + - ``include/hw/fsi/fsi.h``
+> + - ``hw/fsi/fsi-master.c``
+> + - ``include/hw/fsi/fsi-master.h``
+> + - ``hw/fsi/fsi-slave.c``
+> + - ``include/hw/fsi/fsi-slave.h``
+> + - ``hw/fsi/cfam.c``
+> + - ``include/hw/fsi/cfam.h``
+> + - ``hw/fsi/engine-scratchpad.c``
+> + - ``include/hw/fsi/engine-scratchpad.h``
+> + - ``include/hw/fsi/lbus.h``
+> +
+> +The following commands start the rainier machine with built-in FSI model.
+> +There are no model specific arguments.
+> +
+> +.. code-block:: console
+> +
+> +  qemu-system-arm -M rainier-bmc -nographic \
+> +  -kernel fitImage-linux.bin \
+> +  -dtb aspeed-bmc-ibm-rainier.dtb \
+> +  -initrd obmc-phosphor-initramfs.rootfs.cpio.xz \
+> +  -drive file=obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 \
+> +  -append "rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a"
+> +
+> +The implementation appears as following in the qemu device tree:
+> +
+> +.. code-block:: console
+> +
+> +  (qemu) info qtree
+> +  bus: main-system-bus
+> +    type System
+> +    ...
+> +    dev: aspeed.apb2opb, id ""
+> +      gpio-out "sysbus-irq" 1
+> +      mmio 000000001e79b000/0000000000001000
+> +      bus: opb.1
+> +        type opb
+> +        dev: fsi.master, id ""
+> +          bus: fsi.bus.1
+> +            type fsi.bus
+> +            dev: cfam.config, id ""
+> +            dev: cfam, id ""
+> +              bus: lbus.1
+> +                type lbus
+> +                dev: scratchpad, id ""
+> +                  address = 0 (0x0)
+> +      bus: opb.0
+> +        type opb
+> +        dev: fsi.master, id ""
+> +          bus: fsi.bus.0
+> +            type fsi.bus
+> +            dev: cfam.config, id ""
+> +            dev: cfam, id ""
+> +              bus: lbus.0
+> +                type lbus
+> +                dev: scratchpad, id ""
+> +                  address = 0 (0x0)
+> +
+> +pdbg is a simple application to allow debugging of the host POWER processors
+> +from the BMC. (see the `pdbg source repository` for more details)
+
++ from the BMC. (see the  ``pdbg source repository`` for more details)
+
+Please check before sending.
 
 Thanks,
 
 C.
 
 
->   tests/qtest/meson.build |   1 +
->   2 files changed, 208 insertions(+)
->   create mode 100644 tests/qtest/fsi-test.c
-> 
-> diff --git a/tests/qtest/fsi-test.c b/tests/qtest/fsi-test.c
-> new file mode 100644
-> index 0000000000..01a0739092
-> --- /dev/null
-> +++ b/tests/qtest/fsi-test.c
-> @@ -0,0 +1,207 @@
-> +/*
-> + * QTest testcases for IBM's Flexible Service Interface (FSI)
-> + *
-> + * Copyright (c) 2023 IBM Corporation
-> + *
-> + * Authors:
-> + *   Ninad Palsule <ninad@linux.ibm.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
 > +
-> +#include "qemu/osdep.h"
-> +#include <glib/gstdio.h>
+> +.. code-block:: console
 > +
-> +#include "qemu/module.h"
-> +#include "libqtest-single.h"
+> +  root@p10bmc:~# pdbg -a getcfam 0x0
+> +  p0: 0x0 = 0xc0022d15
 > +
-> +/* Registers from ast2600 specifications */
-> +#define ASPEED_FSI_ENGINER_TRIGGER   0x04
-> +#define ASPEED_FSI_OPB0_BUS_SELECT   0x10
-> +#define ASPEED_FSI_OPB1_BUS_SELECT   0x28
-> +#define ASPEED_FSI_OPB0_RW_DIRECTION 0x14
-> +#define ASPEED_FSI_OPB1_RW_DIRECTION 0x2c
-> +#define ASPEED_FSI_OPB0_XFER_SIZE    0x18
-> +#define ASPEED_FSI_OPB1_XFER_SIZE    0x30
-> +#define ASPEED_FSI_OPB0_BUS_ADDR     0x1c
-> +#define ASPEED_FSI_OPB1_BUS_ADDR     0x34
-> +#define ASPEED_FSI_INTRRUPT_CLEAR    0x40
-> +#define ASPEED_FSI_INTRRUPT_STATUS   0x48
-> +#define ASPEED_FSI_OPB0_BUS_STATUS   0x80
-> +#define ASPEED_FSI_OPB1_BUS_STATUS   0x8c
-> +#define ASPEED_FSI_OPB0_READ_DATA    0x84
-> +#define ASPEED_FSI_OPB1_READ_DATA    0x90
+> +Refer following documents for more details.
 > +
-> +/*
-> + * FSI Base addresses from the ast2600 specifications.
-> + */
-> +#define AST2600_OPB_FSI0_BASE_ADDR 0x1e79b000
-> +#define AST2600_OPB_FSI1_BASE_ADDR 0x1e79b100
+> +.. _FSI specification:
+> +   https://openpowerfoundation.org/specifications/fsi/
+> +   https://wiki.raptorcs.com/w/images/9/97/OpenFSI-spec-20161212.pdf
 > +
-> +static uint32_t aspeed_fsi_base_addr;
-> +
-> +static uint32_t aspeed_fsi_readl(QTestState *s, uint32_t reg)
-> +{
-> +    return qtest_readl(s, aspeed_fsi_base_addr + reg);
-> +}
-> +
-> +static void aspeed_fsi_writel(QTestState *s, uint32_t reg, uint32_t val)
-> +{
-> +    qtest_writel(s, aspeed_fsi_base_addr + reg, val);
-> +}
-> +
-> +/* Setup base address and select register */
-> +static void test_fsi_setup(QTestState *s, uint32_t base_addr)
-> +{
-> +    uint32_t curval;
-> +
-> +    /* Set the base select register */
-> +    if (base_addr == AST2600_OPB_FSI0_BASE_ADDR) {
-> +        aspeed_fsi_base_addr = base_addr;
-> +
-> +        /* Unselect FSI1 */
-> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x0);
-> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
-> +        g_assert_cmpuint(curval, ==, 0x0);
-> +
-> +        /* Select FSI0 */
-> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x1);
-> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
-> +        g_assert_cmpuint(curval, ==, 0x1);
-> +    } else if (base_addr == AST2600_OPB_FSI1_BASE_ADDR) {
-> +        aspeed_fsi_base_addr = base_addr;
-> +
-> +        /* Unselect FSI0 */
-> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x0);
-> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
-> +        g_assert_cmpuint(curval, ==, 0x0);
-> +
-> +        /* Select FSI1 */
-> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x1);
-> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
-> +        g_assert_cmpuint(curval, ==, 0x1);
-> +    } else {
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
-> +static void test_fsi_reg_change(QTestState *s, uint32_t reg, uint32_t newval)
-> +{
-> +    uint32_t base;
-> +    uint32_t curval;
-> +
-> +    base = aspeed_fsi_readl(s, reg);
-> +    aspeed_fsi_writel(s, reg, newval);
-> +    curval = aspeed_fsi_readl(s, reg);
-> +    g_assert_cmpuint(curval, ==, newval);
-> +    aspeed_fsi_writel(s, reg, base);
-> +    curval = aspeed_fsi_readl(s, reg);
-> +    g_assert_cmpuint(curval, ==, base);
-> +}
-> +
-> +static void test_fsi0_master_regs(const void *data)
-> +{
-> +    QTestState *s = (QTestState *)data;
-> +
-> +    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
-> +
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0xF3F4F514);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_XFER_SIZE, 0xF3F4F518);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xF3F4F51c);
-> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
-> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_STATUS, 0xF3F4F580);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_READ_DATA, 0xF3F4F584);
-> +}
-> +
-> +static void test_fsi1_master_regs(const void *data)
-> +{
-> +    QTestState *s = (QTestState *)data;
-> +
-> +    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
-> +
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0xF3F4F514);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_XFER_SIZE, 0xF3F4F518);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xF3F4F51c);
-> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
-> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_STATUS, 0xF3F4F580);
-> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_READ_DATA, 0xF3F4F584);
-> +}
-> +
-> +static void test_fsi0_getcfam_addr0(const void *data)
-> +{
-> +    QTestState *s = (QTestState *)data;
-> +    uint32_t curval;
-> +
-> +    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
-> +
-> +    /* Master access direction read */
-> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0x1);
-> +    /* word */
-> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_XFER_SIZE, 0x3);
-> +    /* Address */
-> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xa0000000);
-> +    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
-> +    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
-> +
-> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
-> +    g_assert_cmpuint(curval, ==, 0x10000);
-> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_STATUS);
-> +    g_assert_cmpuint(curval, ==, 0x0);
-> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_READ_DATA);
-> +    g_assert_cmpuint(curval, ==, 0x152d02c0);
-> +}
-> +
-> +static void test_fsi1_getcfam_addr0(const void *data)
-> +{
-> +    QTestState *s = (QTestState *)data;
-> +    uint32_t curval;
-> +
-> +    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
-> +
-> +    /* Master access direction read */
-> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0x1);
-> +
-> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_XFER_SIZE, 0x3);
-> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xa0000000);
-> +    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
-> +    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
-> +
-> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
-> +    g_assert_cmpuint(curval, ==, 0x20000);
-> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_STATUS);
-> +    g_assert_cmpuint(curval, ==, 0x0);
-> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_READ_DATA);
-> +    g_assert_cmpuint(curval, ==, 0x152d02c0);
-> +}
-> +
-> +int main(int argc, char **argv)
-> +{
-> +    int ret = -1;
-> +    QTestState *s;
-> +
-> +    g_test_init(&argc, &argv, NULL);
-> +
-> +    s = qtest_init("-machine ast2600-evb ");
-> +
-> +    /* Tests for OPB/FSI0 */
-> +    qtest_add_data_func("/fsi-test/test_fsi0_master_regs", s,
-> +                        test_fsi0_master_regs);
-> +
-> +    qtest_add_data_func("/fsi-test/test_fsi0_getcfam_addr0", s,
-> +                        test_fsi0_getcfam_addr0);
-> +
-> +    /* Tests for OPB/FSI1 */
-> +    qtest_add_data_func("/fsi-test/test_fsi1_master_regs", s,
-> +                        test_fsi1_master_regs);
-> +
-> +    qtest_add_data_func("/fsi-test/test_fsi1_getcfam_addr0", s,
-> +                        test_fsi1_getcfam_addr0);
-> +
-> +    ret = g_test_run();
-> +    qtest_quit(s);
-> +
-> +    return ret;
-> +}
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index d6022ebd64..74228a4aed 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -207,6 +207,7 @@ qtests_arm = \
->     (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
->     (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
->     (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
-> +  (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['fsi-test'] : []) + \
->     ['arm-cpu-features',
->      'boot-serial-test']
->   
+> +.. _pdbg source repository:
+> +   https://github.com/open-power/pdbg
 

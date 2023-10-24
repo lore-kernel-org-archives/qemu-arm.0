@@ -1,82 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2039477ejb;
-        Tue, 24 Oct 2023 06:16:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGXMXphXqxJJ6mTbTFOfpbkn15xCIxeKYLLaLVmWzc8JcrahOPSdAZdZENLraS+hU3+sQEN
-X-Received: by 2002:a05:6214:e84:b0:66c:eeb8:4226 with SMTP id hf4-20020a0562140e8400b0066ceeb84226mr17378038qvb.12.1698153387072;
-        Tue, 24 Oct 2023 06:16:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153387; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2039522ejb;
+        Tue, 24 Oct 2023 06:16:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEVQ3yWa9jjqV107KiXNRXyh/hQpvzlIhiLEbVh+fsem88RYhwwYiywBCZsux7Mz6TLi0JX
+X-Received: by 2002:a05:620a:240e:b0:775:c2a1:4093 with SMTP id d14-20020a05620a240e00b00775c2a14093mr13629413qkn.36.1698153390620;
+        Tue, 24 Oct 2023 06:16:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153390; cv=none;
         d=google.com; s=arc-20160816;
-        b=REg0hjQgtBnVx9/2oT4/yydaz7+D2DY62FzPMSqmzO0xRi9rvAKTKj4nvwAOO1p+rz
-         MB2E80N/4PszDfYXeqlgMLQdJQzuOaU4DvxKTDjmgEGL5Swp9+sZBpl/auvXj9a3wfgt
-         Q073IjCPjBnbXfw0Q+mRk4ws0UU7cWp9fnWiRNh1GIXxAuGiqAT2Xs9VB4LjnaIg3dz7
-         FLrAYmFsrxmLCeOJYb4gc4TC5XT2dHxSlc/akFS1y2JpNYzgCaj+V1x+TFVxaQalCFlp
-         cdLUVMFaD+TnbkgAzM/WQcnxWGWd2fjZ9ukjORm1RySHousqImhrTHdQRRf+2D9elOqx
-         fKpQ==
+        b=S7F6ZRjlRezSh9k6cAFgNUMg4d+tS4w5eZfNXkgH6F9FfZEIjj8pSi00QnXBOxNh4Q
+         gBrqSeuSamFFLTZMZOHIIiS8GPlbeFAzFuyycfevy3eJtpLooRd5CsTYBmzS8ScrlcWg
+         dKH7CRIt1xoXaSnXRyzT3KIbi24Tyj0dMdacmC+zvblVV49eU/4sK3+8EVyParE0AsIZ
+         QpjN3zbmQZwziIKMx6IOomPEx7OvDwxHsP6FdBapny8J14i+yQFjjvnQX5ZBQlGIgBRf
+         IPEnV/mmJCApgAuegeSZhYUMITsTE/uAl5KxSVbj9ghWIqI2EhTvYDkV48CaAVBl7eSw
+         77Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=bzn6XgU4nv/l3ZtGp4EWYxpwxg6jKvAv8cH4Fj755pE=;
+        bh=UCKjJA4W78PJZMYf4U2CLeARXWY7OhYhyDrkh0cEZKU=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=ZdY9OmUXmzO+kRsedojPLFaVjsxtTi6HePVBTSjnxatTv1C4PMbpAdNMnvC6525h6J
-         6Fw7Vp3igjMPsIi3cttwt7zn08LyDD7kKh4x2Krt6LfJ94XcE0XCHqSOfMaod7qTGDpJ
-         PQnxDwSiPQMSjI4gBWt3Suw1hzpoe4rZTmHkbgFDev3d4iNPtrhJ39nKLjs3vkapwpjQ
-         p6chV35ug0WeW0GjP6ys9A1X1zoN/GQQPTOxQWIp2cC8IejNJFESuO3hXWjJBbOrWwjV
-         xeolTRt58vltkrnpcETqA/yR5uUeOdv0hqjhk8UWZM/VTyRKJrSicUO2rQ375H1mwSUa
-         suxQ==
+        b=WPra7HPKwn5p9ihgn8ZUkMQGpw1TOwaK+Gn+sQU210gZkzMOwTMYK3EgAFyGjiLMkf
+         mEuuV6xAHMTnkM5ZmDzEczZ11O/YjhlvSytrX7C4M6749BagLxZlMnLI5PXZWJwbx4AI
+         sRQvAkedEo3YqRBpytgV2gQgFIBmOqq4iMAeex+fpEkPzCICQQNmduZYFCK/ZlyQGbLK
+         Gpz+KuLxAwDE+wae55+nb1fOrlFtD8FsoV002lxTsuolpuXc0Xm87WlvAdj2G+Jb7Xb9
+         fpQlb/8LdRYpOI5c1DYwtgFP12uIqzI8+K9Zs5nqM3en4lM5AkW00ZfLXzwVVKH5Z2Ba
+         1qRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XMq35taG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="h4T/hlES";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11-20020a056214162b00b0066d7ec3340bsi7172233qvw.616.2023.10.24.06.16.26
+        by mx.google.com with ESMTPS id a17-20020a05620a103100b0076d9876dff0si6746450qkk.140.2023.10.24.06.16.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:16:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:16:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XMq35taG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="h4T/hlES";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvHFC-0005Pv-MM; Tue, 24 Oct 2023 09:14:50 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvHFn-0008N5-NV; Tue, 24 Oct 2023 09:15:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHEg-0004gi-Lf
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qvHFT-00075f-7H
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHEd-00016r-BS
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:17 -0400
+ id 1qvHFP-0001N8-JF
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153254;
+ s=mimecast20190719; t=1698153302;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bzn6XgU4nv/l3ZtGp4EWYxpwxg6jKvAv8cH4Fj755pE=;
- b=XMq35taG/u/8q96vbSkBrHfsH7lfLWWh6npr+innWgNdYRenRUGcW6ywpc92tyYREWl1z5
- NSSm4PE5ssz70vcNdIRVb9Uu3KPnGEKd49j8jXeIdfL4YcDeU4eI7TE0zzcc/1Fdl3rEwd
- g/r0/v8ChCkmny1COYCrFjWkgUC2TFM=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-531-kGGLFIURM8S24X_TsICbTw-1; Tue, 24 Oct 2023 09:14:09 -0400
-X-MC-Unique: kGGLFIURM8S24X_TsICbTw-1
+ bh=UCKjJA4W78PJZMYf4U2CLeARXWY7OhYhyDrkh0cEZKU=;
+ b=h4T/hlESeLNJOZqGpnzDyZRQjdlHIZgeDQ2Z3Ba4ABA+Ckc2TQdCHCkdH3F7u3wjOLh+yO
+ q6exKK9nY77dLpA8bCGoPychuFcEuXK6Zkd+Uok4Ba8US5jcp05ZwxFiV2DWpDrJIiTvjA
+ Ic1KJPmG2oazBO0bv8pNQ2Au77dUCBs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-640-9DU_Fo-cNyKkTpKB7gK9-w-1; Tue, 24 Oct 2023 09:14:56 -0400
+X-MC-Unique: 9DU_Fo-cNyKkTpKB7gK9-w-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DC82E3C1ACE0;
- Tue, 24 Oct 2023 13:14:07 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 99ADC88CDCC;
+ Tue, 24 Oct 2023 13:14:54 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0FA0C1C060AE;
- Tue, 24 Oct 2023 13:14:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 42AA41C060AE;
+ Tue, 24 Oct 2023 13:14:48 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -107,65 +108,135 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 08/39] migration: Give one error if trying to set COMPRESSION
- and XBZRLE
-Date: Tue, 24 Oct 2023 15:12:34 +0200
-Message-ID: <20231024131305.87468-9-quintela@redhat.com>
+Subject: [PULL 15/39] migration: Move ram_flush_compressed_data() to
+ ram-compress.c
+Date: Tue, 24 Oct 2023 15:12:41 +0200
+Message-ID: <20231024131305.87468-16-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eZWUxKZhO4El
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: e3fGIXSfGy1y
+
+As we export it, rename it compress_flush_data().
 
 Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231019110724.15324-3-quintela@redhat.com>
+Message-ID: <20231019110724.15324-10-quintela@redhat.com>
 ---
- migration/options.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ migration/ram-compress.h |  1 +
+ migration/ram-compress.c |  9 +++++++++
+ migration/ram.c          | 17 ++++-------------
+ 3 files changed, 14 insertions(+), 13 deletions(-)
 
-diff --git a/migration/options.c b/migration/options.c
-index b8c3c3218d..37fa1cfe74 100644
---- a/migration/options.c
-+++ b/migration/options.c
-@@ -625,6 +625,13 @@ bool migrate_caps_check(bool *old_caps, bool *new_caps, Error **errp)
-         }
-     }
+diff --git a/migration/ram-compress.h b/migration/ram-compress.h
+index 636281ed97..7ba01e2882 100644
+--- a/migration/ram-compress.h
++++ b/migration/ram-compress.h
+@@ -73,5 +73,6 @@ uint64_t ram_compressed_pages(void);
+ void update_compress_thread_counts(const CompressParam *param, int bytes_xmit);
+ void compress_update_rates(uint64_t page_count);
+ int compress_send_queued_data(CompressParam *param);
++void compress_flush_data(void);
  
-+    if (new_caps[MIGRATION_CAPABILITY_COMPRESS]) {
-+        if (new_caps[MIGRATION_CAPABILITY_XBZRLE]) {
-+            error_setg(errp, "Compression is not compatible with xbzrle");
-+            return false;
-+        }
+ #endif
+diff --git a/migration/ram-compress.c b/migration/ram-compress.c
+index af42cab0fe..1443a1cb45 100644
+--- a/migration/ram-compress.c
++++ b/migration/ram-compress.c
+@@ -558,3 +558,12 @@ void compress_update_rates(uint64_t page_count)
+             compression_counters.compressed_size;
+     }
+ }
++
++void compress_flush_data(void)
++{
++    if (!migrate_compress()) {
++        return;
 +    }
 +
-     return true;
++    flush_compressed_data(compress_send_queued_data);
++}
+diff --git a/migration/ram.c b/migration/ram.c
+index b6d485358e..849752ef29 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -1300,15 +1300,6 @@ int compress_send_queued_data(CompressParam *param)
+     return len;
  }
  
+-static void ram_flush_compressed_data(void)
+-{
+-    if (!migrate_compress()) {
+-        return;
+-    }
+-
+-    flush_compressed_data(compress_send_queued_data);
+-}
+-
+ #define PAGE_ALL_CLEAN 0
+ #define PAGE_TRY_AGAIN 1
+ #define PAGE_DIRTY_FOUND 2
+@@ -1364,7 +1355,7 @@ static int find_dirty_block(RAMState *rs, PageSearchStatus *pss)
+              * Also If xbzrle is on, stop using the data compression at this
+              * point. In theory, xbzrle can do better than compression.
+              */
+-            ram_flush_compressed_data();
++            compress_flush_data();
+ 
+             /* Hit the end of the list */
+             pss->block = QLIST_FIRST_RCU(&ram_list.blocks);
+@@ -2036,7 +2027,7 @@ static bool save_compress_page(RAMState *rs, PageSearchStatus *pss,
+      * much CPU resource.
+      */
+     if (pss->block != pss->last_sent_block) {
+-        ram_flush_compressed_data();
++        compress_flush_data();
+         return false;
+     }
+ 
+@@ -3083,7 +3074,7 @@ static int ram_save_iterate(QEMUFile *f, void *opaque)
+              * page is sent in one chunk.
+              */
+             if (migrate_postcopy_ram()) {
+-                ram_flush_compressed_data();
++                compress_flush_data();
+             }
+ 
+             /*
+@@ -3184,7 +3175,7 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
+         }
+         qemu_mutex_unlock(&rs->bitmap_mutex);
+ 
+-        ram_flush_compressed_data();
++        compress_flush_data();
+ 
+         int ret = rdma_registration_stop(f, RAM_CONTROL_FINISH);
+         if (ret < 0) {
 -- 
 2.41.0
 

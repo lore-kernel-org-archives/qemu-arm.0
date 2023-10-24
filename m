@@ -1,114 +1,136 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2175261ejb;
-        Tue, 24 Oct 2023 09:37:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEk3uG20MHj4RdQYkqJqs/RF+b9FxVGkjEOfR2a/hf1r8ttbtcQFcvz5fDEUvuklS9zlugW
-X-Received: by 2002:a05:620a:2496:b0:775:cf5f:8a57 with SMTP id i22-20020a05620a249600b00775cf5f8a57mr14457811qkn.7.1698165439819;
-        Tue, 24 Oct 2023 09:37:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698165439; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2180859ejb;
+        Tue, 24 Oct 2023 09:47:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/aNAkYnHKTNGppq/sutLvw31d1YgJwLHHJmdTcg43/BMLmSejYZWewYCL3p5bAY8L8xwR
+X-Received: by 2002:a05:622a:141:b0:417:b45b:84c7 with SMTP id v1-20020a05622a014100b00417b45b84c7mr15658540qtw.19.1698166063850;
+        Tue, 24 Oct 2023 09:47:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698166063; cv=none;
         d=google.com; s=arc-20160816;
-        b=mW/wZCh3+HonGBWIgEx9WTqRVIFCINV2ADe4ERfb1sfGZV4UfwZEJd2CwciMYmxKp6
-         611wTSTe1bnEnNx8e/TDc7D1RWgH4oA6Vjw6O3KuIODDEiG5jx4+wkvgGDdoSqQ16Nk8
-         thqhOgPEziGwyjJNWYnrfCKvUZg++yGle13e2UAkKabgmUxBx7BTB3fIqzTNzi2Q6YC2
-         TLXQzJ5TxoDdsn+NKGHzlIfYjN2QaEhn8buUbqPOAdyI9QmQOwbyCU4JPY1e8e+p0/5C
-         y/nAyqPIRBOpxRAQtdzDmhRigiCvliCe6nHFgK8eAaTvFhBEazfY4D3yYN4huIQ50ROH
-         /0Pw==
+        b=ZMqB0ykMsQ7UUaiLcc9ebqyIhaoEKv1u1OdwoeQ0jL96LewalJUrCyOhphRopizb76
+         H+/ZO2n777TONFPyD2SCLVKs3Ugff10/0J8svONnnAcfK9DuZ2+39HyPSG66tHkYlwoH
+         cDHetotUenCoAeRciAp3yhZIfhpaMXCtiHbDzFcAbLZWdHAibicY9trl0qeI765akXHv
+         sQOsIG0QkTV4M34ZIWNeKegrUAeBkBiVheJRDl7JuQa/1j4iHEJ5mxYxbq7AtfF/zwbB
+         brxTkPn+/JmpJZ10Vt+pxWPalTVX13pOcnTbLgILy4UKiC03dBmXqv7EHgtUgS6dX3Gh
+         fP5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=5WGh0voIbBHj+DcvsvmqoPjrnRTVY8rj8gNN9HFZqcE=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=z9axe8yE8zUyL1TmnXdpp4LreeN5btqrN2GhDZkUADez5F4V7migZ2I6Iu3VEIBUf7
-         4yQoMtz2KkZ4hPRW59zvTf+/jXPYaDG0RY1rmF7Pq62AAxujdqbvMQBatlL2nf22CMr1
-         EoPVhqGIxHNsdXMNrcm8p/imC2GxQxXN/CPMF1dR4TBQtlX/vxxIZ031x0DbbI1FXHku
-         azw3SeYm/r9fcEDANaiQ8+huGAcn6PATSZsRBTU/8YdX4ErwRvC1QQD8X23rHR3wVMZ6
-         wXSfzngUifmh1kIu/qF4mIrzKGOh1jGG90Uvr0fNHDuaJ/H3C5CtL3uQF+HL3Dfc7L5g
-         XjmQ==
+         :mime-version:references:in-reply-to:date:cc:to:from:subject
+         :message-id:dkim-signature;
+        bh=NSj/QeiNo4qnjm2oE/QWi0dd3BcRGz/97G7DCdUR5fg=;
+        fh=5Ri7fpHY1L6XYi8Kg5LlkKUqFQOKiHTAaE+89lb7pLA=;
+        b=sqCp2brAQfIBcaQxmVtFEvmR/UNfP7ZviHCcfuDt2EkQmXBmkujtG2ZVSxnTQHURKB
+         t0A4C4zoplpyZnTeB4HDNuNp8mSb0lw9BAY4r7b5En3oMINg3sZgNsftcPbVWqmrNgGm
+         fupD7ed9JrG6KT7I24er6bWtU3qvbp8CzrSEjwTg8+Ss1W0F13K3uP8FMXcp5lwnkREz
+         jH2Skoy/Oh0S2hAdg6mD8qbXAwvNeQv5UwROYrjT6XbG3w0ibJxC2RD0km1tlbKeItW8
+         SVwJHYVxMO3EZa0oB9E9avTKECKBRnWPdYWAQoeSSa9728+srK+LDBytvutnk9jZV/pt
+         /fUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mi9u3QQn;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="A0U061/Y";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j25-20020a05620a0a5900b0077891b22bdfsi7273963qka.494.2023.10.24.09.37.19
+        by mx.google.com with ESMTPS id d12-20020ac85acc000000b0041980b7e72dsi7036147qtd.360.2023.10.24.09.47.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 09:37:19 -0700 (PDT)
+        Tue, 24 Oct 2023 09:47:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mi9u3QQn;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="A0U061/Y";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvKNU-000291-6i; Tue, 24 Oct 2023 12:35:36 -0400
+	id 1qvKYu-0006q3-Sf; Tue, 24 Oct 2023 12:47:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qvKNJ-000205-1K
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 12:35:25 -0400
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qvKNB-0004NA-Sz
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 12:35:23 -0400
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2c59a4dd14cso5566001fa.2
- for <qemu-devel@nongnu.org>; Tue, 24 Oct 2023 09:35:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698165316; x=1698770116; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=5WGh0voIbBHj+DcvsvmqoPjrnRTVY8rj8gNN9HFZqcE=;
- b=mi9u3QQnYDNQUTp4jQvIC3ZBhR3jJ4Uri3RpFVVP97cyYAL6gzzK3OAL68FtqBpDO3
- +KmOIsiEhTvPR1TqvhvOS14zfYFFueW1glHS0iw1ygPMR/auRZv3+9LW96mE3cei7DFX
- T+Gp6ufQkwQVU+N6JYMfDePpTTDX0rSQkUNlr9O6ToWnufGIDEaVnx4KhP6UXB6CO7LM
- jwog8Jy8PhkXsH00KOU17HcGelukzF5TvEjvVgwikQjBLxuSVyt9KBSZz9GvPMJAAmUX
- rZ/e2HhYY+sTvMlypK/tbAUh4alZ+ZZcAVqUbsgQ3cDotJq64//pGJWmsmerOaQ+lsIS
- ev1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698165316; x=1698770116;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=5WGh0voIbBHj+DcvsvmqoPjrnRTVY8rj8gNN9HFZqcE=;
- b=YRo+wNYm/J7mjxIxcc75jfxuJk799LInm2ZBQDLn9aAqIfxbx6cE6wRnsJX3MS1y3E
- wHx7zYoB0OviXR2rUNtQvk0zTAR/5HBzcYvrrSn5c/eFxx0eSXzMfG2Zat6vMgNBopTB
- jecrx8qB+PIjmodGhGghcAClVTU1CGTUCRtZBLaqaVawWmLLMBFyiPRzaizcY8Jz869T
- VaUR3yRmFYqp+5ndiT6AC+z2JHUgOKtF+ByxquREcg7VhPwhQfO7c3eAhgDlNB45swok
- cfoxQJQx+l3aDATJi4jxbQtO5NKKRPOO3O/PYrwNVCLC8lkagXuKxG7c6NVPGg96ih6Q
- TLCg==
-X-Gm-Message-State: AOJu0Yx6Wx2PD6CM7TU7ryhjZ8jMZZ90MXeAYeEn3OtdkZvv+wVlShmU
- C+yTdMPU2Vji74Xx5TecYencEg==
-X-Received: by 2002:a2e:9dd9:0:b0:2b9:412a:111d with SMTP id
- x25-20020a2e9dd9000000b002b9412a111dmr8826198ljj.42.1698165315998; 
- Tue, 24 Oct 2023 09:35:15 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- p12-20020a05600c418c00b0040773c69fc0sm16860101wmh.11.2023.10.24.09.35.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Oct 2023 09:35:15 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 5/6] target/arm: Move ID_AA64PFR* tests together
-Date: Tue, 24 Oct 2023 17:35:09 +0100
-Message-Id: <20231024163510.2972081-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231024163510.2972081-1-peter.maydell@linaro.org>
-References: <20231024163510.2972081-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qvKYj-0006nO-2U; Tue, 24 Oct 2023 12:47:13 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qvKYg-00080D-4L; Tue, 24 Oct 2023 12:47:12 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OGeMU3022688; Tue, 24 Oct 2023 16:46:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ mime-version : content-transfer-encoding; s=pp1;
+ bh=NSj/QeiNo4qnjm2oE/QWi0dd3BcRGz/97G7DCdUR5fg=;
+ b=A0U061/YwkxU051ohkS7GDY3kDil+BjZ22fHtSjl951s0UY1AgxhWFJyl0lqCLR7dSRq
+ C1n497yTFPhlNtjAsYB7vTNmw1HwQaSl61SRQDQmYqljXGCyPvQwXp2GdxKal9ZPVVS0
+ GdvhtN/q6Y4xkEhPnToKgICq7bzbXlROvROhKDLbXvV0fBEejVsBrXmid6VGfWaF1dXh
+ bLiw+SsvyQaWnG4w4hBiEGTVJTk0D76ZSDyFDYNQJ9SJtsPyMQ/dQP4IoGaXLAk6Ig8Y
+ 7g69IZrVR5zEOxHOND9ugGCAz5shDsPGPdp5kuLPBVNZN4jceec/DdjnH1RXsVPCg5Yw XA== 
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3txhn3r955-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 16:46:47 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OFq10t023782; Tue, 24 Oct 2023 16:46:41 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvryt14ts-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 16:46:40 +0000
+Received: from smtpav01.wdc07v.mail.ibm.com (smtpav01.wdc07v.mail.ibm.com
+ [10.39.53.228])
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39OGke5A27591416
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 24 Oct 2023 16:46:40 GMT
+Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 417C65805B;
+ Tue, 24 Oct 2023 16:46:40 +0000 (GMT)
+Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id BA89358055;
+ Tue, 24 Oct 2023 16:46:39 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav01.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 24 Oct 2023 16:46:39 +0000 (GMT)
+Message-ID: <9175c6f7b980ec1790f297a1f81a8c184c70b1aa.camel@linux.vnet.ibm.com>
+Subject: Re: [PATCH 1/2] misc/pca9552: Fix inverted input status
+From: Miles Glenn <milesg@linux.vnet.ibm.com>
+To: Andrew Jeffery <andrew@codeconstruct.com.au>, Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, f4bug@amsat.org
+Date: Tue, 24 Oct 2023 11:46:39 -0500
+In-Reply-To: <47ec73eb44a8b5f5cd894f97d1e88677845cbd7a.camel@codeconstruct.com.au>
+References: <20231019204011.3174115-1-milesg@linux.vnet.ibm.com>
+ <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
+ <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
+ <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
+ <53fccc103ab72cfd93e98fd28bd0a869a43b6a83.camel@linux.vnet.ibm.com>
+ <47ec73eb44a8b5f5cd894f97d1e88677845cbd7a.camel@codeconstruct.com.au>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: KDgOv5s4gu3YxqVuIMcDrUROpx15kNi9
+X-Proofpoint-GUID: KDgOv5s4gu3YxqVuIMcDrUROpx15kNi9
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-24_16,2023-10-24_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0
+ suspectscore=0 spamscore=0 clxscore=1015 adultscore=0 mlxscore=0
+ malwarescore=0 phishscore=0 bulkscore=0 mlxlogscore=999 priorityscore=1501
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2310170001 definitions=main-2310240144
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,126 +145,146 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: INgbaumqtFpj
+X-TUID: vHrVcJNBZQmN
 
-Move all the ID_AA64PFR* feature test functions together.
+On Tue, 2023-10-24 at 10:04 +1030, Andrew Jeffery wrote:
+> On Fri, 2023-10-20 at 11:32 -0500, Miles Glenn wrote:
+> > On Fri, 2023-10-20 at 11:42 +0200, Philippe Mathieu-Daudé wrote:
+> > > On 20/10/23 04:51, Andrew Jeffery wrote:
+> > > > On Thu, 2023-10-19 at 15:40 -0500, Glenn Miles wrote:
+> > > > > > The pca9552 INPUT0 and INPUT1 registers are supposed to
+> > > > > > hold the logical values of the LED pins.  A logical 0
+> > > > > > should be seen in the INPUT0/1 registers for a pin when
+> > > > > > its corresponding LSn bits are set to 0, which is also
+> > > > > > the state needed for turning on an LED in a typical
+> > > > > > usage scenario.  Existing code was doing the opposite
+> > > > > > and setting INPUT0/1 bit to a 1 when the LSn bit was
+> > > > > > set to 0, so this commit fixes that.
+> > > > > > 
+> > > > > > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+> > > > > > ---
+> > > > > > 
+> > > > > > Changes from prior version:
+> > > > > >      - Added comment regarding pca953X
+> > > > > >      - Added cover letter
+> > > > > > 
+> > > > > >   hw/misc/pca9552.c          | 18 +++++++++++++-----
+> > > > > >   tests/qtest/pca9552-test.c |  6 +++---
+> > > > > >   2 files changed, 16 insertions(+), 8 deletions(-)
+> > > > > > 
+> > > > > > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> > > > > > index fff19e369a..445f56a9e8 100644
+> > > > > > --- a/hw/misc/pca9552.c
+> > > > > > +++ b/hw/misc/pca9552.c
+> > > > > > @@ -36,7 +36,10 @@ typedef struct PCA955xClass
+> > > > > > PCA955xClass;
+> > > > > >   
+> > > > > >   DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
+> > > > > >                          TYPE_PCA955X)
+> > > > > > -
+> > > > > > +/*
+> > > > > > + * Note:  The LED_ON and LED_OFF configuration values for
+> > > > > > the
+> > > > > > PCA955X
+> > > > > > + *        chips are the reverse of the PCA953X family of
+> > > > > > chips.
+> > > > > > + */
+> > > > > >   #define PCA9552_LED_ON   0x0
+> > > > > >   #define PCA9552_LED_OFF  0x1
+> > > > > >   #define PCA9552_LED_PWM0 0x2
+> > > > > > @@ -112,13 +115,18 @@ static void
+> > > > > > pca955x_update_pin_input(PCA955xState *s)
+> > > > > >   
+> > > > > >           switch (config) {
+> > > > > >           case PCA9552_LED_ON:
+> > > > > > -            qemu_set_irq(s->gpio[i], 1);
+> > > > > > -            s->regs[input_reg] |= 1 << input_shift;
+> > > > > > -            break;
+> > > > > > -        case PCA9552_LED_OFF:
+> > > > > > +            /* Pin is set to 0V to turn on LED */
+> > > > > >               qemu_set_irq(s->gpio[i], 0);
+> > > > > >               s->regs[input_reg] &= ~(1 << input_shift);
+> > > > > >               break;
+> > > > > > +        case PCA9552_LED_OFF:
+> > > > > > +            /*
+> > > > > > +             * Pin is set to Hi-Z to turn off LED and
+> > > > > > +             * pullup sets it to a logical 1.
+> > > > > > +             */
+> > > > > > +            qemu_set_irq(s->gpio[i], 1);
+> > > > > > +            s->regs[input_reg] |= 1 << input_shift;
+> > > > > > +            break;
+> > > > 
+> > > > So the witherspoon-bmc machine was a user of the PCA9552
+> > > > outputs as
+> > > > LEDs. I guess its LEDs were in the wrong state the whole time?
+> > > > That
+> > > > looks like the only user though, and shouldn't be negatively
+> > > > affected.
+> > > 
+> > > Usually GPIO polarity is a machine/board property, not a device
+> > > one.
+> > > 
+> > > We could use the LED API (hw/misc/led.h) which initialize each
+> > > output with GpioPolarity.
+> > > 
+> > 
+> > Thanks for your comments!   This piqued my curiosity so I decided
+> > to
+> > run a test with the witherspoon-bmc machine.  Without my changes, I
+> > ran
+> > the following command to turn off LED13 on the pca9552 which I had
+> > previously set to "on":
+> > 
+> >   qom-set /machine/unattached/device[18] led13 off
+> > 
+> > I had GDB connected at the time with a breakpoint set on
+> > led_set_state() so that I could see what was happening.  Due to the
+> > inversion bug, I expected the pca9552 code to set the pin low and
+> > also
+> > set the irq low, which it did.  The connected LED's on this pca9552
+> > were all configured as GPIO_POLARITY_ACTIVE_LOW, so I expected that
+> > setting the irq state low would actually turn on the LED.  Instead
+> > it
+> > turned off the LED.
+> > 
+> > Reviewing the LED code, I believe the problem lies here:
+> > 
+> > static void led_set_state_gpio_handler(void *opaque, int line, int
+> > new_state)
+> > {
+> >     LEDState *s = LED(opaque);
+> > 
+> >     assert(line == 0);
+> >     led_set_state(s, !!new_state != s->gpio_active_high);
+> > }
+> > 
+> > 
+> > In my test, new_state was 0 and gpio_active_high was 0, resulting
+> > in
+> > the boolean expression of ( 0 != 0 ) which is false and results in
+> > turning off the LED.  So, this looks like a bug to me.
+> > 
+> > For another simpler example, if the LED polarity was set to
+> > GPIO_POLARITY_ACTIVE_HIGH, then s->gpio_active_high would be
+> > 1.  Then,
+> > if we set the irq line to 1, wouldn't we expect the LED to turn
+> > on? 
+> > However, as the code stands, it would actually turn the LED
+> > off.  So, I
+> > think we can remove one of the "!"'s from in front of
+> > new_state.  Then,
+> > if the LED is active high and the irq line is set high, it would
+> > turn
+> > on the LED.  Correct?
+> 
+> Seems reasonable to me. Looks like Philippe added the LED behaviour
+> in
+> Fddb67f6402b8 ("hw/misc/led: Allow connecting from GPIO output"), so
+> his input would be helpful. Perhaps send a fix for review?
+> 
+> Andrew
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu-features.h | 86 +++++++++++++++++++--------------------
- 1 file changed, 43 insertions(+), 43 deletions(-)
+Sounds good.  I'll do that.
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index e73120ef974..0ed05b8b19e 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -631,6 +631,49 @@ static inline bool isar_feature_aa64_rme(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RME) != 0;
- }
- 
-+static inline bool isar_feature_aa64_dit(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, DIT) != 0;
-+}
-+
-+static inline bool isar_feature_aa64_scxtnum(const ARMISARegisters *id)
-+{
-+    int key = FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, CSV2);
-+    if (key >= 2) {
-+        return true;      /* FEAT_CSV2_2 */
-+    }
-+    if (key == 1) {
-+        key = FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, CSV2_FRAC);
-+        return key >= 2;  /* FEAT_CSV2_1p2 */
-+    }
-+    return false;
-+}
-+
-+static inline bool isar_feature_aa64_ssbs(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SSBS) != 0;
-+}
-+
-+static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
-+}
-+
-+static inline bool isar_feature_aa64_mte_insn_reg(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) != 0;
-+}
-+
-+static inline bool isar_feature_aa64_mte(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 2;
-+}
-+
-+static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
-+}
-+
- static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
- {
-     return FIELD_SEX64(id->id_aa64mmfr0, ID_AA64MMFR0, TGRAN4) >= 1;
-@@ -791,26 +834,6 @@ static inline bool isar_feature_aa64_e0pd(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, E0PD) != 0;
- }
- 
--static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
--{
--    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
--}
--
--static inline bool isar_feature_aa64_mte_insn_reg(const ARMISARegisters *id)
--{
--    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) != 0;
--}
--
--static inline bool isar_feature_aa64_mte(const ARMISARegisters *id)
--{
--    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 2;
--}
--
--static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
--{
--    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
--}
--
- static inline bool isar_feature_aa64_pmuv3p1(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) >= 4 &&
-@@ -829,29 +852,6 @@ static inline bool isar_feature_aa64_pmuv3p5(const ARMISARegisters *id)
-         FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) != 0xf;
- }
- 
--static inline bool isar_feature_aa64_dit(const ARMISARegisters *id)
--{
--    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, DIT) != 0;
--}
--
--static inline bool isar_feature_aa64_scxtnum(const ARMISARegisters *id)
--{
--    int key = FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, CSV2);
--    if (key >= 2) {
--        return true;      /* FEAT_CSV2_2 */
--    }
--    if (key == 1) {
--        key = FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, CSV2_FRAC);
--        return key >= 2;  /* FEAT_CSV2_1p2 */
--    }
--    return false;
--}
--
--static inline bool isar_feature_aa64_ssbs(const ARMISARegisters *id)
--{
--    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SSBS) != 0;
--}
--
- static inline bool isar_feature_aa64_debugv8p2(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, DEBUGVER) >= 8;
--- 
-2.34.1
+Glenn
 

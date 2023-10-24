@@ -1,105 +1,122 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1746681ejb;
-        Mon, 23 Oct 2023 18:29:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEb65s9JHo700NELYzq1BN5/GnKodBAwclp6kaUwgariZKHppgkK8Zwc6hz/4G2gxem0PSc
-X-Received: by 2002:a05:620a:1434:b0:778:916b:c244 with SMTP id k20-20020a05620a143400b00778916bc244mr11158591qkj.76.1698110989200;
-        Mon, 23 Oct 2023 18:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698110989; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1866033ejb;
+        Tue, 24 Oct 2023 00:08:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH4aP5RU2d8wTUg4LNMr/88zaHzxxnWV+ydsgnMQlP6KmzdywpabpwPNvNBlED1kP36iyv9
+X-Received: by 2002:ac8:7f52:0:b0:40c:58a1:cb40 with SMTP id g18-20020ac87f52000000b0040c58a1cb40mr12736925qtk.15.1698131324812;
+        Tue, 24 Oct 2023 00:08:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698131324; cv=none;
         d=google.com; s=arc-20160816;
-        b=I6ebzxmxJFRAI/SxGKxlVvItc62amiVLTIl7//RZB3UrZJ0UZm3cOm5rDXVtESYj5J
-         5NFsCqQcn3DkOea56cqIiiZeATIJDqKrDA2ksgGb5fuJq9kH8104bFl5NskC09YLMUvu
-         a74uIDzsPRsdm4YZiZHt6o1nGp6QFCOF2oyr23J/Js0ZxdW4H25rwApKp7svzzPe16Fw
-         oAvjJuhIfnEGia9jgHEQ/WbtFXhDuICwbowgQfDHwRde15eXVZeZ/49YC3xHek/Wldaj
-         dVM+VAKhgfsRpK86EN6UwDRCi97LejHzhukfY3Unu61AK64KMbH3WP6/4929d82S8KQo
-         fvPg==
+        b=tsRiGwBWl4lJHxSI/Erq5ulax53X2x1PPvtKHjSI3wiT61dQJTWbCNYyNU2pwtHEMk
+         NQy3q+hHMU5gJq6VRLhejYZ4iEmowzS/Sd7y+KXr6kGXk3nmjVQ6DG+Ov9uvnN5Qp66n
+         qSavrjaz30CHJqhJ073p1WcdvFN8mZZG+8gJnbSXKcnypqc2+XO5fKA76Wgam8Z1Gw+n
+         /AShoOyGnmPnCOusCe6ooAq3Oj8rd0tJHjUw9YjcU7Kn5eILP4xwJXgRMr92DFojci+e
+         +/z5BHmgLiVLyfuzRj2Dnq7kG1Ci8HwMAWpKtWC5rqDFHmHo58+ZTPyOKch63aAFzXDu
+         nSkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=D8iL3tyFSc+qRvYdSafLlNXBRhoP/RIR/qy0JaInJUY=;
-        fh=LP3Hre7FgviHYRbAilnaffEP07lMnI51h3zmItv90Gc=;
-        b=tlRSoquTTrU8llea33G8cgRDQp9c4bZ56QqaPsl7ohCnYnv8h53pb5sAMxu/r9dT/X
-         UHB8uw8dGVYjR+i8aCd9QfnE6SK89lMLUrlViDbbjnnRISJ3/ybLRRwT4f10zffHALNm
-         0otP5Em3kJYJFSMOGAwvZ4rKQ1UEn+van4r4Bx5aYiF4mqpIlrLk4V37rh+P1MpA9Se+
-         rJ+cZt6fDXtyklFaRXPePz7gFnSPSAgiZLmg1emVDmAm7IsHXHpECThZGKsM0jMvHQAj
-         tQqA5iKDXfRAk9iKySFft+p1cl4+FURWDvYzQmpdvCsJHdsRwtZqNnL1aY2VLc9DerBY
-         yLSQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=XmK+RTj/FRggQksmsLuZAYu+Xr+N+hyD+GxtAcrimlc=;
+        fh=9WmGAGvZHvN/ngkP6/TXeGu0FopLji5+/Z1hIZ3SICY=;
+        b=O9ew1km6H95L9iQRzWWkLs4p1lwfIMHTMKnUaiOCkvDTGJst7Pjr4wo8UNGkX8APkk
+         ltsElIVzfpUP7iEc+2I/BsW587jNu8Pm41ArelOCcneR22N45J9M2AZn2XcwNLOP8Jbs
+         oJOmJq2F/Zl6NdXkkdHi63EYoX2e2E1976AFigc7p0Kr2NNQYp8GAV5ZK69QI2NoFpw8
+         WuQBqHG97z1EvPa5sp6vY5V/2/3Ve0ZvgcOmx7OQs0lhuxmOQ6ymi0ZQxzPJtoxEvGhG
+         NdZ2+KM8QPw7c7/iDc68UTItO28WhYKN4BbrHI9knCQPJ37UGA8m0sbD2fkKo/Sg0g6f
+         eKvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A7XrxePe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lyFSb7uI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk12-20020a05620a1a0c00b0077419b27782si6799111qkb.339.2023.10.23.18.29.49
+        by mx.google.com with ESMTPS id x14-20020a05622a000e00b004122bb38ef3si6608352qtw.701.2023.10.24.00.08.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 18:29:49 -0700 (PDT)
+        Tue, 24 Oct 2023 00:08:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A7XrxePe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lyFSb7uI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qv6EE-0002wK-PY; Mon, 23 Oct 2023 21:29:06 -0400
+	id 1qvBWO-0000Lg-Pr; Tue, 24 Oct 2023 03:08:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qv6EC-0002tO-RK
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 21:29:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qv6EB-0006m4-Er
- for qemu-arm@nongnu.org; Mon, 23 Oct 2023 21:29:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698110942;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=D8iL3tyFSc+qRvYdSafLlNXBRhoP/RIR/qy0JaInJUY=;
- b=A7XrxePeVKbYvkxtjKU39H6Ke4GUgxvqQTi2kxmex8anNGQ77MZqIFrzj1oJfXVCOLeVjC
- Ah3H75PuYwtGYi+aWAJ2PLJbwxRRm+Ynyg1anQ/s+n62HKb9DhfVHHZo2442XwkcyyJDcn
- kU+QZS2LHqjSfGADd63N+fVoEaZ3vJ4=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-360-En7_qKuiNTKD7cF2KQEXXg-1; Mon, 23 Oct 2023 21:28:57 -0400
-X-MC-Unique: En7_qKuiNTKD7cF2KQEXXg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D18E8185A795;
- Tue, 24 Oct 2023 01:28:56 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.42])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 19CF11C060B6;
- Tue, 24 Oct 2023 01:28:55 +0000 (UTC)
-Date: Tue, 24 Oct 2023 09:15:12 +0800
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: Re: [PULL v3 00/46] Misc HW/UI patches for 2023-10-19
-Message-ID: <20231024011512.GA499194@fedora>
-References: <20231020125509.49440-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvBWN-0000Kr-Bq
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 03:08:11 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvBWL-0002Gv-Je
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 03:08:11 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-408002b5b9fso34002495e9.3
+ for <qemu-arm@nongnu.org>; Tue, 24 Oct 2023 00:08:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698131288; x=1698736088; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=XmK+RTj/FRggQksmsLuZAYu+Xr+N+hyD+GxtAcrimlc=;
+ b=lyFSb7uI67QCUlV8rpdGWv2r0x1asgUqWtP3uXbaDwEbJifqoD5Mx068YE2e2ealfS
+ fSRcr9Cts0RDsNpH6qja/8htl9xi/RlUAIzambzpUlhvH8AReSxoqsn0Qz3/K2DK3RBC
+ //rTTz3CGoB3x/lJqBRZe/+JiR0WNLnnWfB7gxjLu8TGeCWMlNjIpOQbZ2Y1R+cW11tj
+ vGLdhHh8f+El3HoXc79NgsCLxVDFZ/LHwjTMjAnXOn+lCv3Qu0UBRW9WdFbEaQkQh11U
+ UcV1I4CULiarGhyawSrgV95Cqvg0dLKO76oeNpwYSp/44XhbmfK+f8q4YU/3tHHycyPe
+ Q5NA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698131288; x=1698736088;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=XmK+RTj/FRggQksmsLuZAYu+Xr+N+hyD+GxtAcrimlc=;
+ b=KoiNbMkyHNMAtdMWEdEAo7RDY5kwchAgVcN2EpZDOelqaX2e0Znu2SltPkDuvZQuGm
+ +dhsK2XPlyft8LmOO26MLvlIa7pJcWwD94CynOV2SZ3jiyHBIQqFtzt0Pc8SSMFUTbbt
+ /8uXSOhvdXVWRvm/t/mYevIwv+5V3t/1r6MVHIZANbhEc6zZsdscia8B6Flc2KURg1hT
+ +Huhli1O6id3GbbzbRioIL4ASpL1IqruTPwq54ngWhtN+dTqFvWD2+6+/lMsYKwUb93g
+ 2dwWA7Pv4AuKFX2hQrci20PgPqhY/y6OOHHWYBozgLJPJvBTiaRZvzdmIXj1fAxBIc3t
+ Ztgw==
+X-Gm-Message-State: AOJu0Yw23K9sP0ViN+lukLUQYVyD8BvABtskHjpoheDakqL1C5Ehx+L0
+ 2bn1CQUj04O4j9E/7ACZgbcOdQ==
+X-Received: by 2002:a05:600c:3583:b0:408:59d4:f3c4 with SMTP id
+ p3-20020a05600c358300b0040859d4f3c4mr6681690wmq.10.1698131287756; 
+ Tue, 24 Oct 2023 00:08:07 -0700 (PDT)
+Received: from [192.168.69.115] (sem44-h01-176-172-55-165.dsl.sta.abo.bbox.fr.
+ [176.172.55.165]) by smtp.gmail.com with ESMTPSA id
+ p5-20020a05600c358500b004053a6b8c41sm11195398wmq.12.2023.10.24.00.08.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Oct 2023 00:08:07 -0700 (PDT)
+Message-ID: <4b2e68dd-db49-4041-ee5a-ae2b836bd255@linaro.org>
+Date: Tue, 24 Oct 2023 09:08:05 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="CEjV+3AxN1yEQh2s"
-Content-Disposition: inline
-In-Reply-To: <20231020125509.49440-1-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v6 02/10] hw/fsi: Introduce IBM's scratchpad
+Content-Language: en-US
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org, clg@kaod.org, 
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
+References: <20231021211720.3571082-1-ninad@linux.ibm.com>
+ <20231021211720.3571082-3-ninad@linux.ibm.com>
+ <957bc5db-53aa-6946-edf3-3b728a52b660@linaro.org>
+ <f2a50afd-3fa1-47d2-960e-0aaaf57c7cd2@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <f2a50afd-3fa1-47d2-960e-0aaaf57c7cd2@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,31 +131,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LWtqdjIFi7ZZ
+X-TUID: el7UjG1G4i3b
 
+On 23/10/23 19:08, Ninad Palsule wrote:
+> Hello Philippe,
+> 
+> On 10/23/23 10:00, Philippe Mathieu-Daudé wrote:
+>> On 21/10/23 23:17, Ninad Palsule wrote:
+>>> This is a part of patchset where scratchpad is introduced.
+>>>
+>>> The scratchpad provides a set of non-functional registers. The firmware
+>>> is free to use them, hardware does not support any special management
+>>> support. The scratchpad registers can be read or written from LBUS
+>>> slave.
+>>>
+>>> In this model, The LBUS device is parent for the scratchpad.
+>>>
+>>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>>> ---
+>>> v2:
+>>> - Incorporated Joel's review comments.
+>>> v5:
+>>> - Incorporated review comments by Cedric.
+>>> v6:
+>>> - Incorporated review comments by Daniel.
+>>> ---
+>>>   meson.build                        |  1 +
+>>>   hw/fsi/trace.h                     |  1 +
+>>>   include/hw/fsi/engine-scratchpad.h | 32 ++++++++++
+>>>   include/hw/fsi/fsi.h               | 16 +++++
+>>>   hw/fsi/engine-scratchpad.c         | 93 ++++++++++++++++++++++++++++++
+>>>   hw/fsi/Kconfig                     |  4 ++
+>>>   hw/fsi/meson.build                 |  1 +
+>>>   hw/fsi/trace-events                |  2 +
+>>>   8 files changed, 150 insertions(+)
+>>>   create mode 100644 hw/fsi/trace.h
+>>>   create mode 100644 include/hw/fsi/engine-scratchpad.h
+>>>   create mode 100644 include/hw/fsi/fsi.h
+>>>   create mode 100644 hw/fsi/engine-scratchpad.c
+>>>   create mode 100644 hw/fsi/trace-events
+>>
+>>
+>>> diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
+>>> new file mode 100644
+>>> index 0000000000..e65f26f17b
+>>> --- /dev/null
+>>> +++ b/include/hw/fsi/fsi.h
+>>> @@ -0,0 +1,16 @@
+>>> +/*
+>>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>>> + * Copyright (C) 2023 IBM Corp.
+>>> + *
+>>> + * IBM Flexible Service Interface
+>>> + */
+>>> +#ifndef FSI_FSI_H
+>>> +#define FSI_FSI_H
+>>> +
+>>> +/* Bitwise operations at the word level. */
+>>> +#define BE_BIT(x)                          BIT(31 - (x))
+>>> +#define GENMASK(t, b) \
+>>> +    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
+>>
+>> Please use MAKE_64BIT_MASK() from "qemu/bitops.h".
+> 
+> The GENMASK and MAKE_64BIT_MASK macros are invoke differently.
+> 
+> GENMASK is invoked with bit t and bit b (t:b) and it provides the mask and
+> 
+> MAKE_64BIT_MASK uses shift and length.
 
---CEjV+3AxN1yEQh2s
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Don't we have:
 
-Applied, thanks.
+#define GENMASK(t, b) MAKE_64BIT_MASK(t, b - t + 1)
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
+?
 
---CEjV+3AxN1yEQh2s
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmU3GqAACgkQnKSrs4Gr
-c8jDxQf/UUCwj+Iha/MYEj67Ms/3cJWm9xsbs0fe0K03sF9bfKe6Nvj/gbEu1r86
-l0FqbXxBnibOFc0tgP15+I/R2TYuVVLrh6r+pNF8XvG1MpdmbcGaRVBFDPfAiT+L
-VS1ECe9xuSlrsCvH3Ymx/4FVCb21s1xQll0dfKqQmT4ng6UGXnzPZKKRJALfRWEb
-G289jgFNjNQA4ZS7svYHPfqPbbtrkTI2+jo+qfCpfjf5EcU0Y5XHqDrMKFKKg9Ck
-msm3l8STJ36+UCn2a4NjkFUc+pE7Bh73hg6K7QWcDYxr/mEiOWTYeGdiP3AkylPk
-dH3nqA1YDP4vQzrukkb2hhibJFTheg==
-=DMpf
------END PGP SIGNATURE-----
-
---CEjV+3AxN1yEQh2s--
+> Thanks for the review.
+> 
+> Regards,
+> 
+> Ninad
+> 
+> 
+>>> +#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), 
+>>> BE_BIT(b))
+>>> +
+>>> +#endif
+>>
 

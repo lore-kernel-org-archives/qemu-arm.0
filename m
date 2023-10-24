@@ -1,82 +1,81 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2037849ejb;
-        Tue, 24 Oct 2023 06:14:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IENmiu+ADOdb1KFRfQmv8y4C7mhhTk0jcB43cDmn6FXhoAgsVv3A5cmexcsabVagTLavzFR
-X-Received: by 2002:a05:6808:149:b0:3ae:5e6a:46d4 with SMTP id h9-20020a056808014900b003ae5e6a46d4mr10164789oie.37.1698153256103;
-        Tue, 24 Oct 2023 06:14:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153256; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2037913ejb;
+        Tue, 24 Oct 2023 06:14:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHN9GKPij0Ipv3HE/2aHXVgUVCcMi8u7tcbgdlQ2nqMMBbPnV0unbOb6WwHZC9f8JHLHUYe
+X-Received: by 2002:a05:622a:118e:b0:41c:b6cf:a49e with SMTP id m14-20020a05622a118e00b0041cb6cfa49emr14380606qtk.10.1698153262832;
+        Tue, 24 Oct 2023 06:14:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153262; cv=none;
         d=google.com; s=arc-20160816;
-        b=LPcAbCK2htxUScYpksOO84NfMR6P2jWSp4Qo/qH+ldD94Q/etPf5HdUsnIqSuoUFha
-         wJyOqZl+XDocu/f7yCL7X0JlC32MAxJQAWdAZmE9Qm2Wufg52tsTmhxf00lG1w6ZNBkq
-         82H5flugBX0WcCopIcF65B7ZGAKlLM3bUdp3KVW7fjDU9HSwn4E0VetZInll5vnkVfCw
-         qbwdPzp1mjy1SoxU6bvpNKWZ2qFNGr7alnIbN5EIjeuRi7hLXrRbI7uxPEkcrj+Ansp+
-         Jd+kmSte1KFEOftyxq0ovp/bxrhW/V1tJ1BbwwuErFJavZe82VMhdovBBhzG9UvaTJpk
-         38Vg==
+        b=eqPVDoxZ3LMYSyBlte3nS8n33bX0jHqy9OGT4Nj0z+nEXCGOFJX7tHjIZICW3VLmEZ
+         2iIAzC/cQabxWMsDIV3V/nUByVz1IjPlst8ocqJ6Ai1YCFVk/5qgo0fPCQRnwjsXOW+f
+         Dif+HnM3ZNIAz6oIjp1DMSfrv3a4bfvxRisf1W4PerjJ0Jx4Xn1G6IsWajoLRZYTzjpl
+         JbQCMIARFOhUALdL9HehQjIUXI4Myxeo/K3864S4mugng6aV2vJr+pYgFDHC5E/DbKb6
+         OAbXCEIQNiqM34S+wGVF7kAWT3JMKJJ+HEKzmsyKKi5YDpPClkCEPPqDV7Tb6+Q0luM9
+         REpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=l9wUW2OQfxfDQsGzuQG2LFoAYA/fNyU0RqVbl7N/h3E=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vVStn45zlI2oCjFE2/vsf7UCgmC3FjJotEBpdVmEU6U=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=MkSoQwDje/yPpQpJg0BifdQ1xw2zdQbktoncAcTyAs9vX34KXayyHrkIPRohs/ucA+
-         Pn/J3aGYC86KtRiWpNziKzPn4SYaeyUJEvMYlhr1ju4gl281x8aJOTRv18b3PC1L8aSE
-         zw4AxRLyhPTmBcCcU9t918oxfOmpGN3GegSMarxQyxysdMuTY/7b/Qxl4iJeObOKO06z
-         QEFXDT37fz+rp3f9wyQ3hCFDEex81Beu7Kc+gsLtagYmbpMKE/hioa1CeCVBJLZBKkjT
-         o74neloHOMn0gWqI0z3CgbrVNrTlt323/UspZvJgkw9y7A1JEvl+5re7pOOSj9nicMI+
-         sHfQ==
+        b=WSUel/lAZfkg7nicBsVLf5Bnj9hu9gpKhoW63xc2W3XaOuTYBMYTtD8Ib80HXgb98/
+         LbfBKnuCg4KGcUfcFmHSFP16hMNZ3MW/iBH7RK6sTsn9Ij24OxszOXbs/AwPTJcNbOLX
+         3v1M/1WQZsIJnz6gX/0z4xnm+F3lHxM668xyga/0vY5RJyqvHIF43Jm9EUp3CMFVPfir
+         hCz39/Uyk+iPYYnZLR7DrO+M3IFOvFKzL4LTm4vNS2GRij797UtCswTrm01OxLLOsxcG
+         frGqP0WLh0AUJuKxgfF97Z/SAmX0i0B4d4EKByFdIxCfjfpYxhsGdFWfRVzl4TPPdRYt
+         LBjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KTXq63eq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b48EEVBI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l9-20020a0cd6c9000000b006581f5f151csi7140791qvi.77.2023.10.24.06.14.15
+        by mx.google.com with ESMTPS id n14-20020a05622a040e00b00419856ea1casi7061549qtx.123.2023.10.24.06.14.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:14:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:14:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KTXq63eq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b48EEVBI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvHES-0004Fn-OT; Tue, 24 Oct 2023 09:14:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvHDw-0003bi-8e; Tue, 24 Oct 2023 09:13:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHEQ-0004AM-6L
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qvHDv-0003aa-9x
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:13:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHEO-00014r-Mr
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:01 -0400
+ id 1qvHDt-0000yR-KP
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:13:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153240;
+ s=mimecast20190719; t=1698153208;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=l9wUW2OQfxfDQsGzuQG2LFoAYA/fNyU0RqVbl7N/h3E=;
- b=KTXq63eqav1UqGZMGC5t2/EnJ+Nzq2RrQzh7gZ1Wmleo53sJczc6/2L3XltiLUKBpS0NY4
- +iuLza9TRDCgoTeUF06KtnnqSNProSMgnHRgOlwZEzbeetPpxMvoU8190oUvRfG5iDU89S
- W8ZhXHfrDFvsubIQdReiGv9SMfE0j2A=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vVStn45zlI2oCjFE2/vsf7UCgmC3FjJotEBpdVmEU6U=;
+ b=b48EEVBIUMTtWFDCsZ91rwPcurOKllhw0AzzIaYrVAXetQyiSJcqylzi0+anfXIZFs929I
+ 0P+cUOAKP1vxUJrEvlLbgACkQqzRrhuxPz+mmRWHIRz+3XPjWLxaLPgYe8TMBXeXxELLwH
+ /EiqoNyjEJuZbMaSTV5QVf5G0zhYn20=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-48-tsFkJ0nwNl-9O3EU9lhotg-1; Tue, 24 Oct 2023 09:13:56 -0400
-X-MC-Unique: tsFkJ0nwNl-9O3EU9lhotg-1
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-561-L8pqZkEkMdOA9vCoRWnNIw-1; Tue, 24 Oct 2023 09:13:15 -0400
+X-MC-Unique: L8pqZkEkMdOA9vCoRWnNIw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5998C185A795;
- Tue, 24 Oct 2023 13:13:54 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 09556857C23;
+ Tue, 24 Oct 2023 13:13:14 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AB3BA1C060AE;
- Tue, 24 Oct 2023 13:13:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AB3A71C060B6;
+ Tue, 24 Oct 2023 13:13:06 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -107,114 +106,157 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 06/39] migration: Rename ram_handle_compressed() to
- ram_handle_zero()
-Date: Tue, 24 Oct 2023 15:12:32 +0200
-Message-ID: <20231024131305.87468-7-quintela@redhat.com>
-In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
-References: <20231024131305.87468-1-quintela@redhat.com>
+Subject: [PULL 00/39] Migration 20231024 patches
+Date: Tue, 24 Oct 2023 15:12:26 +0200
+Message-ID: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VOI+Fws+u0IN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2BZShwaaZeVz
 
-Now that we know it only handles zero, we can remove the ch parameter.
+The following changes since commit a95260486aa7e78d7c7194eba65cf03311ad94ad:
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Peter Xu <peterx@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231019085259.13307-3-quintela@redhat.com>
----
- migration/ram.h  |  2 +-
- migration/ram.c  | 10 +++++-----
- migration/rdma.c |  2 +-
- 3 files changed, 7 insertions(+), 7 deletions(-)
+  Merge tag 'pull-tcg-20231023' of https://gitlab.com/rth7680/qemu into staging (2023-10-23 14:45:46 -0700)
 
-diff --git a/migration/ram.h b/migration/ram.h
-index 145c915ca7..3f724b2f02 100644
---- a/migration/ram.h
-+++ b/migration/ram.h
-@@ -60,7 +60,7 @@ int ram_discard_range(const char *block_name, uint64_t start, size_t length);
- int ram_postcopy_incoming_init(MigrationIncomingState *mis);
- int ram_load_postcopy(QEMUFile *f, int channel);
- 
--void ram_handle_compressed(void *host, uint8_t ch, uint64_t size);
-+void ram_handle_zero(void *host, uint64_t size);
- 
- void ram_transferred_add(uint64_t bytes);
- void ram_release_page(const char *rbname, uint64_t offset);
-diff --git a/migration/ram.c b/migration/ram.c
-index 4bfb20c94a..e0ad732ee8 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -3446,7 +3446,7 @@ static inline void *colo_cache_from_block_offset(RAMBlock *block,
- }
- 
- /**
-- * ram_handle_compressed: handle the zero page case
-+ * ram_handle_zero: handle the zero page case
-  *
-  * If a page (or a whole RDMA chunk) has been
-  * determined to be zero, then zap it.
-@@ -3455,10 +3455,10 @@ static inline void *colo_cache_from_block_offset(RAMBlock *block,
-  * @ch: what the page is filled from.  We only support zero
-  * @size: size of the zero page
-  */
--void ram_handle_compressed(void *host, uint8_t ch, uint64_t size)
-+void ram_handle_zero(void *host, uint64_t size)
- {
--    if (ch != 0 || !buffer_is_zero(host, size)) {
--        memset(host, ch, size);
-+    if (!buffer_is_zero(host, size)) {
-+        memset(host, 0, size);
-     }
- }
- 
-@@ -4037,7 +4037,7 @@ static int ram_load_precopy(QEMUFile *f)
-                 ret = -EINVAL;
-                 break;
-             }
--            ram_handle_compressed(host, ch, TARGET_PAGE_SIZE);
-+            ram_handle_zero(host, TARGET_PAGE_SIZE);
-             break;
- 
-         case RAM_SAVE_FLAG_PAGE:
-diff --git a/migration/rdma.c b/migration/rdma.c
-index 2d963fd147..e3493e3b3e 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -3597,7 +3597,7 @@ int rdma_registration_handle(QEMUFile *f)
-                              comp->value);
-                 goto err;
-             }
--            ram_handle_compressed(host_addr, comp->value, comp->length);
-+            ram_handle_zero(host_addr, comp->length);
-             break;
- 
-         case RDMA_CONTROL_REGISTER_FINISHED:
+are available in the Git repository at:
+
+  https://gitlab.com/juan.quintela/qemu.git tags/migration-20231024-pull-request
+
+for you to fetch changes up to 088f7f03da3f5b3487091302b795c22b1bfe56fb:
+
+  migration: Deprecate old compression method (2023-10-24 13:48:24 +0200)
+
+----------------------------------------------------------------
+Migration Pull request (20231024)
+
+Hi
+
+In this PULL:
+- vmstate registration fixes (thomas, juan)
+- start merging vmstate_section_needed changes (marc)
+- migration depreactions (juan)
+- migration documentation for backwards compatibility (juan)
+
+Please apply.
+
+----------------------------------------------------------------
+
+Juan Quintela (31):
+  migration/doc: Add contents
+  migration/doc: Add documentation for backwards compatiblity
+  migration/doc: How to migrate when hosts have different features
+  migration/doc: We broke backwards compatibility
+  migration: Receiving a zero page non zero is an error
+  migration: Rename ram_handle_compressed() to ram_handle_zero()
+  migration: Give one error if trying to set MULTIFD and XBZRLE
+  migration: Give one error if trying to set COMPRESSION and XBZRLE
+  migration: Remove save_page_use_compression()
+  migration: Make compress_data_with_multithreads return bool
+  migration: Simplify compress_page_with_multithread()
+  migration: Move busy++ to migrate_with_multithread
+  migration: Create compress_update_rates()
+  migration: Export send_queued_data()
+  migration: Move ram_flush_compressed_data() to ram-compress.c
+  migration: Merge flush_compressed_data() and compress_flush_data()
+  migration: Rename ram_compressed_pages() to compress_ram_pages()
+  migration: Create vmstate_register_any()
+  migration: Use vmstate_register_any()
+  migration: Use vmstate_register_any() for isa-ide
+  migration: Use VMSTATE_INSTANCE_ID_ANY for slirp
+  migration: Hack to maintain backwards compatibility for ppc
+  migration: Improve example and documentation of vmstate_register()
+  migration: Use vmstate_register_any() for audio
+  migration: Use vmstate_register_any() for eeprom93xx
+  migration: Use vmstate_register_any() for vmware_vga
+  qemu-iotests: Filter warnings about block migration being deprecated
+  migration: migrate 'inc' command option is deprecated.
+  migration: migrate 'blk' command option is deprecated.
+  migration: Deprecate block migration
+  migration: Deprecate old compression method
+
+Marc-André Lureau (2):
+  migration: rename vmstate_save_needed->vmstate_section_needed
+  migration: set file error on subsection loading
+
+Peter Xu (1):
+  migration: Check in savevm_state_handler_insert for dups
+
+Thomas Huth (5):
+  hw/ipmi: Don't call vmstate_register() from instance_init() functions
+  hw/s390x/s390-skeys: Don't call register_savevm_live() during
+    instance_init()
+  hw/s390x/s390-stattrib: Simplify handling of the "migration-enabled"
+    property
+  hw/s390x/s390-stattrib: Don't call register_savevm_live() during
+    instance_init()
+  migration/ram: Fix compilation with -Wshadow=local
+
+ docs/about/deprecated.rst        |  35 ++
+ docs/devel/migration.rst         | 532 ++++++++++++++++++++++++++++++-
+ qapi/migration.json              |  93 ++++--
+ include/migration/vmstate.h      |  30 +-
+ migration/ram-compress.h         |  10 +-
+ migration/ram.h                  |   3 +-
+ audio/audio.c                    |   2 +-
+ backends/dbus-vmstate.c          |   3 +-
+ backends/tpm/tpm_emulator.c      |   3 +-
+ hw/display/vmware_vga.c          |   2 +-
+ hw/i2c/core.c                    |   2 +-
+ hw/ide/isa.c                     |   2 +-
+ hw/input/adb.c                   |   2 +-
+ hw/input/ads7846.c               |   2 +-
+ hw/input/stellaris_input.c       |   3 +-
+ hw/intc/xics.c                   |  18 +-
+ hw/ipmi/ipmi_bmc_extern.c        |  29 +-
+ hw/ipmi/isa_ipmi_bt.c            |  34 +-
+ hw/ipmi/isa_ipmi_kcs.c           |  50 +--
+ hw/net/eepro100.c                |   3 +-
+ hw/nvram/eeprom93xx.c            |   2 +-
+ hw/pci/pci.c                     |   2 +-
+ hw/ppc/spapr.c                   |  25 +-
+ hw/ppc/spapr_nvdimm.c            |   3 +-
+ hw/s390x/s390-skeys.c            |  35 +-
+ hw/s390x/s390-stattrib.c         |  71 ++---
+ hw/timer/arm_timer.c             |   2 +-
+ hw/virtio/virtio-mem.c           |   4 +-
+ migration/block.c                |   3 +
+ migration/migration-hmp-cmds.c   |  10 +
+ migration/migration.c            |  10 +
+ migration/options.c              |  36 ++-
+ migration/ram-compress.c         | 112 +++++--
+ migration/ram.c                  | 114 ++-----
+ migration/rdma.c                 |   8 +-
+ migration/savevm.c               |  34 +-
+ migration/vmstate.c              |   5 +-
+ net/slirp.c                      |   5 +-
+ tests/qemu-iotests/183           |   2 +-
+ tests/qemu-iotests/common.filter |   7 +
+ 40 files changed, 1041 insertions(+), 307 deletions(-)
+
 -- 
 2.41.0
 

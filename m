@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2044907ejb;
-        Tue, 24 Oct 2023 06:24:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHpyxviX2EMoyYHYLviEVS0UBIb+AGewUhEV67wQ5dmKDXs8Yt6nRqLPgyLLlSxjLSSKXgd
-X-Received: by 2002:a05:620a:24cb:b0:777:2aeb:7dfa with SMTP id m11-20020a05620a24cb00b007772aeb7dfamr12432475qkn.38.1698153889457;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2044913ejb;
+        Tue, 24 Oct 2023 06:24:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFbLS+bZGzJLIjob/9rkl7Exvg0ryTiMTo8KcSGkx/ac6cScpUTbWX22KNU7uXrwLFoRtMc
+X-Received: by 2002:a05:622a:649:b0:417:b975:6d85 with SMTP id a9-20020a05622a064900b00417b9756d85mr22191392qtb.5.1698153889775;
         Tue, 24 Oct 2023 06:24:49 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1698153889; cv=none;
         d=google.com; s=arc-20160816;
-        b=cFhH7A0y+cVfeqSrZmlNiZ7EjlrBkDGS2pPczpv9T6apvABak0LALNV0xtL8P0e18O
-         bExlE2X0+m1XYGLtxeTQceaUmJQUfWeYT/f53DEUj4B9N2sx9BqtUqhy16VXUHRwEqVx
-         +kNilkJMcw9rI4Le485KOt6Lx+Ym2Kqgw93LlzgQji9Bq7Vdl36fDW194UAjQgXMP+Wm
-         jWl0Gyj9Qz2BoMDPV1pMTj+xvEcY8+XZi2SBELtBLuzs+kWVHyqPfq6sa4OXFKXm/OMV
-         YyFfv1stXf6Q8NbpKhSLzd9jD6Ezmgq2Z+U+i/QNwfqOqaeTvvR92eXdF0i9udx1xY+4
-         Elog==
+        b=Qh9TSQxoX2AmWCRvFBmrLiKzn51tmSN9NfbYOjIaoaLwg1KF/Ldc9V09rnLMA/Z08X
+         XmNbd1cSlIFIxLk0bJLfMEVfbaUA21UhfaliDF80kZueQ5Mslyu333jCS5iu/Yq1jH2r
+         6iJvEd5DJExN6LfS++6pQFcPPUcfrSG0W0UiQLcqFGM3Vl37hzlaQpacEBUfqehT+uY7
+         7316MMIML/Ha95POpxofL+MtbXPjJWvFBMX9+zXtSYmvWtmT6EugmyCc3fvYwmmodSxV
+         LeazDEWnmVStU4V616yadkcuGmC+4qhs5g7wtuyDzzfnwa2EetG1zhuPsVp/rlLYIl22
+         r7zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=9e5RYP7kkCgfv8VdNgjAc4n9NlOa/o8OZpIjS60zpqs=;
-        fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=IzOhEYYYNgj3pKzl4zB7X44pqaszDwWYdZ4z+POytpnyDpkljoDtgg3/YBjDogKrnG
-         78voaHJ3Vn4w9ItuFOtbsLTuzPJOcOXOi8GuDZ2lHLaAso5ekaAFp3sirgYBoOKIMlLf
-         +NAlzEpEQkOUZdUsAueXg8cQ78SupvRRGKJMc1FdgN6eldGJWI4BsZ3zXljBrOp3kyCY
-         GqrAhzm0nLNy4uc++kA9meROJtgO5me1UerfqAtdRN+wEWUh6MGtU4VJ4vDPvFfk2jR2
-         x60Z2dDHDsPOUEL0aJ4zpclF/N39FsW+V4ePWffIp2T29jHeJiQ42l/XhYIj4KE9iCKW
-         4KBg==
+        bh=OfUpo2AlMCZ8lLl/mdLjVK6hSMfAy8f8E2BfyQcLdTk=;
+        fh=opDjDdl13S8XzsjQawtiYU7uNvQllAuUSK4RvD1fxCk=;
+        b=dVGm1xIc3lZwQJuCRkytGQXlOY7JNQiZ0te5P1CkBckYyK+ue+xEQT7TykRIDfuycy
+         7pVX3noVyw8biZyTUJoSYQpP2At3qO+8Y/8dgIZcRra48f9Q0Js+WOtlRVXmpHpWL60U
+         4P1Thvt+/p6QCbLY1/rKpk+VoD6X9tNSlrZJgZQZhCPgaIKGa8ItaM4dLBYwQSJMqvHj
+         zn+bbqw7+vYA/mkmLj/kYTGqGxzjf1kHGOOT6dbL+dzhXEWqkbFH7kFD8DtGAfLGAGbE
+         UZZXU5+0GN5APOXUhw0Td0MqH+8r7uvBxyhLWNGmoKh4XByp3BpRiDRPzYvUDuznzaMd
+         4Biw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RB4px0r+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h6BxhuuM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br7-20020a05620a460700b00773cb326234si7755286qkb.413.2023.10.24.06.24.49
+        by mx.google.com with ESMTPS id 3-20020ac85903000000b0041cc4461df2si7107185qty.691.2023.10.24.06.24.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 24 Oct 2023 06:24:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RB4px0r+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h6BxhuuM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHK6-0001Ux-Dp; Tue, 24 Oct 2023 09:19:54 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qvHJm-0000QH-1r; Tue, 24 Oct 2023 09:19:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHI0-0005wU-Ub
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qvHHa-0004tc-UB
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:17:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHy-0002Hs-9o
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:44 -0400
+ id 1qvHHU-00027c-De
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:17:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153461;
+ s=mimecast20190719; t=1698153428;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9e5RYP7kkCgfv8VdNgjAc4n9NlOa/o8OZpIjS60zpqs=;
- b=RB4px0r+QVNlGKVJaykPISOhIRr+6XBBPNCgTRbfnn80uwmTovC3Tz+pliF9LxV+iqY0Vo
- mCwFbmyfqZlfkqj5GnS3g3cZaeodKvHT2nkJYspbAfDSFkWsz02SXyWmECf5SY4mFKrXks
- DLADrpJwI8kSeYNXEMJvfRb+azJsea0=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-362-bfYjJ8jIMZONxkzmN1pU4w-1; Tue,
- 24 Oct 2023 09:17:37 -0400
-X-MC-Unique: bfYjJ8jIMZONxkzmN1pU4w-1
+ bh=OfUpo2AlMCZ8lLl/mdLjVK6hSMfAy8f8E2BfyQcLdTk=;
+ b=h6BxhuuMKXPcwV430EXhxr2U4+qzuNq9f3mCu9RGg0j83zQSAnZZD87EyXR3BBjTVEAwnT
+ R+1PW7rSnboArtlmtjVAhEWCvxjYODt7ulVCrxcigsB3ay92YWIuzeyi1yvA5N3N2A+8uH
+ F+w/Xf8Nh33jTQWuiBwzkY3RI2+YQQI=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-447-PNGnpqcgNWONunfhct8bog-1; Tue, 24 Oct 2023 09:16:09 -0400
+X-MC-Unique: PNGnpqcgNWONunfhct8bog-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CAAD6381C161;
- Tue, 24 Oct 2023 13:17:35 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EAE1488CDC1;
+ Tue, 24 Oct 2023 13:16:07 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 72B781C060AE;
- Tue, 24 Oct 2023 13:17:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 74A2F1C060AE;
+ Tue, 24 Oct 2023 13:16:01 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -107,261 +107,208 @@ Cc: Eric Blake <eblake@redhat.com>,
  Eric Farman <farman@linux.ibm.com>, Juan Quintela <quintela@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 39/39] migration: Deprecate old compression method
-Date: Tue, 24 Oct 2023 15:13:05 +0200
-Message-ID: <20231024131305.87468-40-quintela@redhat.com>
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
+ Stefan Berger <stefanb@linux.ibm.com>
+Subject: [PULL 26/39] migration: Use vmstate_register_any()
+Date: Tue, 24 Oct 2023 15:12:52 +0200
+Message-ID: <20231024131305.87468-27-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /fPmByIIq6Cl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /C8s1w8tv3A0
 
-Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
-Acked-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+This are the easiest cases, where we were already using
+VMSTATE_INSTANCE_ID_ANY.
+
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018115513.2163-6-quintela@redhat.com>
+Message-ID: <20231020090731.28701-3-quintela@redhat.com>
 ---
- docs/about/deprecated.rst |  8 +++++
- qapi/migration.json       | 63 ++++++++++++++++++++++++++-------------
- migration/options.c       | 13 ++++++++
- 3 files changed, 64 insertions(+), 20 deletions(-)
+ backends/dbus-vmstate.c     | 3 +--
+ backends/tpm/tpm_emulator.c | 3 +--
+ hw/i2c/core.c               | 2 +-
+ hw/input/adb.c              | 2 +-
+ hw/input/ads7846.c          | 2 +-
+ hw/input/stellaris_input.c  | 3 +--
+ hw/net/eepro100.c           | 3 +--
+ hw/pci/pci.c                | 2 +-
+ hw/ppc/spapr_nvdimm.c       | 3 +--
+ hw/timer/arm_timer.c        | 2 +-
+ hw/virtio/virtio-mem.c      | 4 ++--
+ 11 files changed, 12 insertions(+), 17 deletions(-)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 7ae872162d..e7f17827d3 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -488,3 +488,11 @@ devices or none.
- Please see "QMP invocation for live storage migration with
- ``blockdev-mirror`` + NBD" in docs/interop/live-block-operations.rst
- for a detailed explanation.
-+
-+old compression method (since 8.2)
-+''''''''''''''''''''''''''''''''''
-+
-+Compression method fails too much.  Too many races.  We are going to
-+remove it if nobody fixes it.  For starters, migration-test
-+compression tests are disabled becase they fail randomly.  If you need
-+compression, use multifd compression methods.
-diff --git a/qapi/migration.json b/qapi/migration.json
-index e3b00a215b..e6610af428 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -272,6 +272,10 @@
- # Features:
- #
- # @deprecated: Member @disk is deprecated because block migration is.
-+#     Member @compression is deprecated because it is unreliable and
-+#     untested.  It is recommended to use multifd migration, which
-+#     offers an alternative compression implementation that is
-+#     reliable and tested.
- #
- # Since: 0.14
- ##
-@@ -289,7 +293,7 @@
-            '*blocked-reasons': ['str'],
-            '*postcopy-blocktime': 'uint32',
-            '*postcopy-vcpu-blocktime': ['uint32'],
--           '*compression': 'CompressionStats',
-+           '*compression': { 'type': 'CompressionStats', 'features': [ 'deprecated' ] },
-            '*socket-address': ['SocketAddress'],
-            '*dirty-limit-throttle-time-per-round': 'uint64',
-            '*dirty-limit-ring-full-time': 'uint64'} }
-@@ -530,7 +534,10 @@
- # Features:
- #
- # @deprecated: Member @block is deprecated.  Use blockdev-mirror with
--#     NBD instead.
-+#     NBD instead.  Member @compression is deprecated because it is
-+#     unreliable and untested.  It is recommended to use multifd
-+#     migration, which offers an alternative compression
-+#     implementation that is reliable and tested.
- #
- # @unstable: Members @x-colo and @x-ignore-shared are experimental.
- #
-@@ -538,7 +545,8 @@
- ##
- { 'enum': 'MigrationCapability',
-   'data': ['xbzrle', 'rdma-pin-all', 'auto-converge', 'zero-blocks',
--           'compress', 'events', 'postcopy-ram',
-+           { 'name': 'compress', 'features': [ 'deprecated' ] },
-+           'events', 'postcopy-ram',
-            { 'name': 'x-colo', 'features': [ 'unstable' ] },
-            'release-ram',
-            { 'name': 'block', 'features': [ 'deprecated' ] },
-@@ -844,7 +852,9 @@
- # Features:
- #
- # @deprecated: Member @block-incremental is deprecated.  Use
--#     blockdev-mirror with NBD instead.
-+#     blockdev-mirror with NBD instead.  Members @compress-level,
-+#     @compress-threads, @decompress-threads and @compress-wait-thread
-+#     are deprecated because @compression is deprecated.
- #
- # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
- #     are experimental.
-@@ -854,8 +864,11 @@
- { 'enum': 'MigrationParameter',
-   'data': ['announce-initial', 'announce-max',
-            'announce-rounds', 'announce-step',
--           'compress-level', 'compress-threads', 'decompress-threads',
--           'compress-wait-thread', 'throttle-trigger-threshold',
-+           { 'name': 'compress-level', 'features': [ 'deprecated' ] },
-+           { 'name': 'compress-threads', 'features': [ 'deprecated' ] },
-+           { 'name': 'decompress-threads', 'features': [ 'deprecated' ] },
-+           { 'name': 'compress-wait-thread', 'features': [ 'deprecated' ] },
-+           'throttle-trigger-threshold',
-            'cpu-throttle-initial', 'cpu-throttle-increment',
-            'cpu-throttle-tailslow',
-            'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
-@@ -1023,7 +1036,9 @@
- # Features:
- #
- # @deprecated: Member @block-incremental is deprecated.  Use
--#     blockdev-mirror with NBD instead.
-+#     blockdev-mirror with NBD instead.  Members @compress-level,
-+#     @compress-threads, @decompress-threads and @compress-wait-thread
-+#     are deprecated because @compression is deprecated.
- #
- # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
- #     are experimental.
-@@ -1038,10 +1053,14 @@
-             '*announce-max': 'size',
-             '*announce-rounds': 'size',
-             '*announce-step': 'size',
--            '*compress-level': 'uint8',
--            '*compress-threads': 'uint8',
--            '*compress-wait-thread': 'bool',
--            '*decompress-threads': 'uint8',
-+            '*compress-level': { 'type': 'uint8',
-+                                 'features': [ 'deprecated' ] },
-+            '*compress-threads':  { 'type': 'uint8',
-+                                    'features': [ 'deprecated' ] },
-+            '*compress-wait-thread':  { 'type': 'bool',
-+                                        'features': [ 'deprecated' ] },
-+            '*decompress-threads':  { 'type': 'uint8',
-+                                      'features': [ 'deprecated' ] },
-             '*throttle-trigger-threshold': 'uint8',
-             '*cpu-throttle-initial': 'uint8',
-             '*cpu-throttle-increment': 'uint8',
-@@ -1078,7 +1097,7 @@
- # Example:
- #
- # -> { "execute": "migrate-set-parameters" ,
--#      "arguments": { "compress-level": 1 } }
-+#      "arguments": { "multifd-channels": 5 } }
- # <- { "return": {} }
- ##
- { 'command': 'migrate-set-parameters', 'boxed': true,
-@@ -1241,7 +1260,9 @@
- # Features:
- #
- # @deprecated: Member @block-incremental is deprecated.  Use
--#     blockdev-mirror with NBD instead.
-+#     blockdev-mirror with NBD instead.  Members @compress-level,
-+#     @compress-threads, @decompress-threads and @compress-wait-thread
-+#     are deprecated because @compression is deprecated.
- #
- # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
- #     are experimental.
-@@ -1253,10 +1274,14 @@
-             '*announce-max': 'size',
-             '*announce-rounds': 'size',
-             '*announce-step': 'size',
--            '*compress-level': 'uint8',
--            '*compress-threads': 'uint8',
--            '*compress-wait-thread': 'bool',
--            '*decompress-threads': 'uint8',
-+            '*compress-level': { 'type': 'uint8',
-+                                 'features': [ 'deprecated' ] },
-+            '*compress-threads': { 'type': 'uint8',
-+                                   'features': [ 'deprecated' ] },
-+            '*compress-wait-thread': { 'type': 'bool',
-+                                       'features': [ 'deprecated' ] },
-+            '*decompress-threads': { 'type': 'uint8',
-+                                     'features': [ 'deprecated' ] },
-             '*throttle-trigger-threshold': 'uint8',
-             '*cpu-throttle-initial': 'uint8',
-             '*cpu-throttle-increment': 'uint8',
-@@ -1296,10 +1321,8 @@
- #
- # -> { "execute": "query-migrate-parameters" }
- # <- { "return": {
--#          "decompress-threads": 2,
-+#          "multifd-channels": 2,
- #          "cpu-throttle-increment": 10,
--#          "compress-threads": 8,
--#          "compress-level": 1,
- #          "cpu-throttle-initial": 20,
- #          "max-bandwidth": 33554432,
- #          "downtime-limit": 300
-diff --git a/migration/options.c b/migration/options.c
-index ae8ab47e32..9a39826ca5 100644
---- a/migration/options.c
-+++ b/migration/options.c
-@@ -483,6 +483,11 @@ bool migrate_caps_check(bool *old_caps, bool *new_caps, Error **errp)
-                     " use blockdev-mirror with NBD instead");
+diff --git a/backends/dbus-vmstate.c b/backends/dbus-vmstate.c
+index 57369ec0f2..a9d8cb0acd 100644
+--- a/backends/dbus-vmstate.c
++++ b/backends/dbus-vmstate.c
+@@ -426,8 +426,7 @@ dbus_vmstate_complete(UserCreatable *uc, Error **errp)
+         return;
      }
  
-+    if (new_caps[MIGRATION_CAPABILITY_COMPRESS]) {
-+        warn_report("old compression method is deprecated;"
-+                    " use multifd compression methods instead");
-+    }
-+
- #ifndef CONFIG_REPLICATION
-     if (new_caps[MIGRATION_CAPABILITY_X_COLO]) {
-         error_setg(errp, "QEMU compiled without replication module"
-@@ -1335,18 +1340,26 @@ static void migrate_params_apply(MigrateSetParameters *params, Error **errp)
-     /* TODO use QAPI_CLONE() instead of duplicating it inline */
+-    if (vmstate_register(VMSTATE_IF(self), VMSTATE_INSTANCE_ID_ANY,
+-                         &dbus_vmstate, self) < 0) {
++    if (vmstate_register_any(VMSTATE_IF(self), &dbus_vmstate, self) < 0) {
+         error_setg(errp, "Failed to register vmstate");
+     }
+ }
+diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
+index bf1a90f5d7..f7f1b4ad7a 100644
+--- a/backends/tpm/tpm_emulator.c
++++ b/backends/tpm/tpm_emulator.c
+@@ -975,8 +975,7 @@ static void tpm_emulator_inst_init(Object *obj)
+         qemu_add_vm_change_state_handler(tpm_emulator_vm_state_change,
+                                          tpm_emu);
  
-     if (params->has_compress_level) {
-+        warn_report("old compression is deprecated;"
-+                    " use multifd compression methods instead");
-         s->parameters.compress_level = params->compress_level;
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+-                     &vmstate_tpm_emulator, obj);
++    vmstate_register_any(NULL, &vmstate_tpm_emulator, obj);
+ }
+ 
+ /*
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index bed594fe59..879a1d45cb 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -64,7 +64,7 @@ I2CBus *i2c_init_bus(DeviceState *parent, const char *name)
+     bus = I2C_BUS(qbus_new(TYPE_I2C_BUS, parent, name));
+     QLIST_INIT(&bus->current_devs);
+     QSIMPLEQ_INIT(&bus->pending_masters);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_i2c_bus, bus);
++    vmstate_register_any(NULL, &vmstate_i2c_bus, bus);
+     return bus;
+ }
+ 
+diff --git a/hw/input/adb.c b/hw/input/adb.c
+index 214ae6f42b..8aed0da2cd 100644
+--- a/hw/input/adb.c
++++ b/hw/input/adb.c
+@@ -247,7 +247,7 @@ static void adb_bus_realize(BusState *qbus, Error **errp)
+     adb_bus->autopoll_timer = timer_new_ms(QEMU_CLOCK_VIRTUAL, adb_autopoll,
+                                            adb_bus);
+ 
+-    vmstate_register(NULL, -1, &vmstate_adb_bus, adb_bus);
++    vmstate_register_any(NULL, &vmstate_adb_bus, adb_bus);
+ }
+ 
+ static void adb_bus_unrealize(BusState *qbus)
+diff --git a/hw/input/ads7846.c b/hw/input/ads7846.c
+index dc0998ac79..91116c6bdb 100644
+--- a/hw/input/ads7846.c
++++ b/hw/input/ads7846.c
+@@ -158,7 +158,7 @@ static void ads7846_realize(SSIPeripheral *d, Error **errp)
+ 
+     ads7846_int_update(s);
+ 
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_ads7846, s);
++    vmstate_register_any(NULL, &vmstate_ads7846, s);
+ }
+ 
+ static void ads7846_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/input/stellaris_input.c b/hw/input/stellaris_input.c
+index e6ee5e11f1..a58721c8cd 100644
+--- a/hw/input/stellaris_input.c
++++ b/hw/input/stellaris_input.c
+@@ -88,6 +88,5 @@ void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode)
+     }
+     s->num_buttons = n;
+     qemu_add_kbd_event_handler(stellaris_gamepad_put_key, s);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+-                     &vmstate_stellaris_gamepad, s);
++    vmstate_register_any(NULL, &vmstate_stellaris_gamepad, s);
+ }
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index dc07984ae9..94ce9e18ff 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1883,8 +1883,7 @@ static void e100_nic_realize(PCIDevice *pci_dev, Error **errp)
+ 
+     s->vmstate = g_memdup(&vmstate_eepro100, sizeof(vmstate_eepro100));
+     s->vmstate->name = qemu_get_queue(s->nic)->model;
+-    vmstate_register(VMSTATE_IF(&pci_dev->qdev), VMSTATE_INSTANCE_ID_ANY,
+-                     s->vmstate, s);
++    vmstate_register_any(VMSTATE_IF(&pci_dev->qdev), s->vmstate, s);
+ }
+ 
+ static void eepro100_instance_init(Object *obj)
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 7d09e1a39d..885c04b6f5 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -147,7 +147,7 @@ static void pci_bus_realize(BusState *qbus, Error **errp)
+     bus->machine_done.notify = pcibus_machine_done;
+     qemu_add_machine_init_done_notifier(&bus->machine_done);
+ 
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_pcibus, bus);
++    vmstate_register_any(NULL, &vmstate_pcibus, bus);
+ }
+ 
+ static void pcie_bus_realize(BusState *qbus, Error **errp)
+diff --git a/hw/ppc/spapr_nvdimm.c b/hw/ppc/spapr_nvdimm.c
+index b2f009c816..ad7afe7544 100644
+--- a/hw/ppc/spapr_nvdimm.c
++++ b/hw/ppc/spapr_nvdimm.c
+@@ -876,8 +876,7 @@ static void spapr_nvdimm_realize(NVDIMMDevice *dimm, Error **errp)
+         s_nvdimm->hcall_flush_required = true;
      }
  
-     if (params->has_compress_threads) {
-+        warn_report("old compression is deprecated;"
-+                    " use multifd compression methods instead");
-         s->parameters.compress_threads = params->compress_threads;
-     }
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+-                     &vmstate_spapr_nvdimm_states, dimm);
++    vmstate_register_any(NULL, &vmstate_spapr_nvdimm_states, dimm);
+ }
  
-     if (params->has_compress_wait_thread) {
-+        warn_report("old compression is deprecated;"
-+                    " use multifd compression methods instead");
-         s->parameters.compress_wait_thread = params->compress_wait_thread;
-     }
+ static void spapr_nvdimm_unrealize(NVDIMMDevice *dimm)
+diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+index 69c8863472..9afe8da831 100644
+--- a/hw/timer/arm_timer.c
++++ b/hw/timer/arm_timer.c
+@@ -181,7 +181,7 @@ static arm_timer_state *arm_timer_init(uint32_t freq)
+     s->control = TIMER_CTRL_IE;
  
-     if (params->has_decompress_threads) {
-+        warn_report("old compression is deprecated;"
-+                    " use multifd compression methods instead");
-         s->parameters.decompress_threads = params->decompress_threads;
+     s->timer = ptimer_init(arm_timer_tick, s, PTIMER_POLICY_LEGACY);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_arm_timer, s);
++    vmstate_register_any(NULL, &vmstate_arm_timer, s);
+     return s;
+ }
+ 
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index 9dc3c61b5a..a5ea3be414 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -1119,8 +1119,8 @@ static void virtio_mem_device_realize(DeviceState *dev, Error **errp)
+     host_memory_backend_set_mapped(vmem->memdev, true);
+     vmstate_register_ram(&vmem->memdev->mr, DEVICE(vmem));
+     if (vmem->early_migration) {
+-        vmstate_register(VMSTATE_IF(vmem), VMSTATE_INSTANCE_ID_ANY,
+-                         &vmstate_virtio_mem_device_early, vmem);
++        vmstate_register_any(VMSTATE_IF(vmem),
++                             &vmstate_virtio_mem_device_early, vmem);
      }
+     qemu_register_reset(virtio_mem_system_reset, vmem);
  
 -- 
 2.41.0

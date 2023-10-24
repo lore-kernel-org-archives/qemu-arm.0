@@ -1,125 +1,122 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2180859ejb;
-        Tue, 24 Oct 2023 09:47:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG/aNAkYnHKTNGppq/sutLvw31d1YgJwLHHJmdTcg43/BMLmSejYZWewYCL3p5bAY8L8xwR
-X-Received: by 2002:a05:622a:141:b0:417:b45b:84c7 with SMTP id v1-20020a05622a014100b00417b45b84c7mr15658540qtw.19.1698166063850;
-        Tue, 24 Oct 2023 09:47:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698166063; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2181341ejb;
+        Tue, 24 Oct 2023 09:48:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFgVNyZf48ERFCJmDVJI0m1qIfclNdQ4ZWMuWqjMIj1m9Te3JB6FjfsOYV58nYxfF0JFEFV
+X-Received: by 2002:a05:620a:450a:b0:778:aea6:55a2 with SMTP id t10-20020a05620a450a00b00778aea655a2mr11308253qkp.5.1698166122173;
+        Tue, 24 Oct 2023 09:48:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698166122; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZMqB0ykMsQ7UUaiLcc9ebqyIhaoEKv1u1OdwoeQ0jL96LewalJUrCyOhphRopizb76
-         H+/ZO2n777TONFPyD2SCLVKs3Ugff10/0J8svONnnAcfK9DuZ2+39HyPSG66tHkYlwoH
-         cDHetotUenCoAeRciAp3yhZIfhpaMXCtiHbDzFcAbLZWdHAibicY9trl0qeI765akXHv
-         sQOsIG0QkTV4M34ZIWNeKegrUAeBkBiVheJRDl7JuQa/1j4iHEJ5mxYxbq7AtfF/zwbB
-         brxTkPn+/JmpJZ10Vt+pxWPalTVX13pOcnTbLgILy4UKiC03dBmXqv7EHgtUgS6dX3Gh
-         fP5g==
+        b=nRX2T1M71n0k33bPC9U+IV9V7Uqz+kH5wsYcgoS/Tj7v7Mr8OoRQXgMpBPkUaoA69G
+         Kv54wLTWG33RGNHhk5WzOB6Tdf0rIgjlHZ/v33QHpmeRWGtGGTdRDUWZjK9mWhWiDYaI
+         0q40Z3r5+n9P3I4U7PYyxmEbuHzZJF3a6YyeT8m/YY+LH250fznmBVTr4Vqk31vqbfot
+         bdrJYNdc15gmKtvgYJ1TB7tiv50sbDQHWuHwSAPLRrsqg9Ibqzddq0r1tOzHGouMK62a
+         lsNU1KZ1GjH+PmtbKxpWEpx5Z6KJ9hBQYTGfftU5n0q1pDlK/AWBpMLIekIPdQ6XltNp
+         fPHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:date:cc:to:from:subject
          :message-id:dkim-signature;
-        bh=NSj/QeiNo4qnjm2oE/QWi0dd3BcRGz/97G7DCdUR5fg=;
-        fh=5Ri7fpHY1L6XYi8Kg5LlkKUqFQOKiHTAaE+89lb7pLA=;
-        b=sqCp2brAQfIBcaQxmVtFEvmR/UNfP7ZviHCcfuDt2EkQmXBmkujtG2ZVSxnTQHURKB
-         t0A4C4zoplpyZnTeB4HDNuNp8mSb0lw9BAY4r7b5En3oMINg3sZgNsftcPbVWqmrNgGm
-         fupD7ed9JrG6KT7I24er6bWtU3qvbp8CzrSEjwTg8+Ss1W0F13K3uP8FMXcp5lwnkREz
-         jH2Skoy/Oh0S2hAdg6mD8qbXAwvNeQv5UwROYrjT6XbG3w0ibJxC2RD0km1tlbKeItW8
-         SVwJHYVxMO3EZa0oB9E9avTKECKBRnWPdYWAQoeSSa9728+srK+LDBytvutnk9jZV/pt
-         /fUw==
+        bh=gN3K+XCQl2fI8uXwENAhWbhUMg0JJzfzVmdUmWnYSYs=;
+        fh=jzcARzHNbGpxEg+q0SPYJHtbgbJlh53yEEaSd0YDiUQ=;
+        b=Mh15i9Zj9KY8yc0JPlp4QKRNI80ADQVEQsxV/iGjpgtIqxtHDHHVI2kEh5RKUE4hd0
+         uMjU44ndpWRQ/Lacp82Ll1w6u0wnKDggflVojBjizyP2SsMx26nJ0Rnym/KPfhjDZMqS
+         cvZEDRZfIEt5+t2UCkWstUWhpYt+G+FUpexuotlFx+zAIGLuTFRdL5UasgbzE40bIhsU
+         MzwtgEmtIhAIp6coDmEIrzT9pH1IJHh2cjO7DiG4971Yh8z0zCFOZ8i7idmsR0Ycw0NW
+         MX425/Ito9FJOq7EShWZ8kMGixVTNcfy178uhGaEd8Oko4IR4aJjTKJUjfBxbvKvWVwc
+         NxqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="A0U061/Y";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=sRX0WNDN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020ac85acc000000b0041980b7e72dsi7036147qtd.360.2023.10.24.09.47.43
+        by mx.google.com with ESMTPS id z19-20020a05620a101300b007788dad4333si6994715qkj.565.2023.10.24.09.48.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 09:47:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 09:48:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="A0U061/Y";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=sRX0WNDN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvKYu-0006q3-Sf; Tue, 24 Oct 2023 12:47:24 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvKa5-0000Zf-4e; Tue, 24 Oct 2023 12:48:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qvKYj-0006nO-2U; Tue, 24 Oct 2023 12:47:13 -0400
+ id 1qvKa1-0000YV-Ru; Tue, 24 Oct 2023 12:48:33 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qvKYg-00080D-4L; Tue, 24 Oct 2023 12:47:12 -0400
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ id 1qvKZy-0008TB-Gh; Tue, 24 Oct 2023 12:48:31 -0400
+Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39OGeMU3022688; Tue, 24 Oct 2023 16:46:52 GMT
+ 39OGKJZH011342; Tue, 24 Oct 2023 16:48:14 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : subject :
  from : to : cc : date : in-reply-to : references : content-type :
  mime-version : content-transfer-encoding; s=pp1;
- bh=NSj/QeiNo4qnjm2oE/QWi0dd3BcRGz/97G7DCdUR5fg=;
- b=A0U061/YwkxU051ohkS7GDY3kDil+BjZ22fHtSjl951s0UY1AgxhWFJyl0lqCLR7dSRq
- C1n497yTFPhlNtjAsYB7vTNmw1HwQaSl61SRQDQmYqljXGCyPvQwXp2GdxKal9ZPVVS0
- GdvhtN/q6Y4xkEhPnToKgICq7bzbXlROvROhKDLbXvV0fBEejVsBrXmid6VGfWaF1dXh
- bLiw+SsvyQaWnG4w4hBiEGTVJTk0D76ZSDyFDYNQJ9SJtsPyMQ/dQP4IoGaXLAk6Ig8Y
- 7g69IZrVR5zEOxHOND9ugGCAz5shDsPGPdp5kuLPBVNZN4jceec/DdjnH1RXsVPCg5Yw XA== 
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3txhn3r955-1
+ bh=gN3K+XCQl2fI8uXwENAhWbhUMg0JJzfzVmdUmWnYSYs=;
+ b=sRX0WNDNTzMCh96ZzWMFB/ncgBckRUSses1NQ6lOIq1JxWloRt5u3Iz4fbrOT4pQDv+3
+ M+GPa20K8eJZ/BUcqDjTd9m9wUgtVoKFQanWwJpKeonKUK828JYcOvg1AfQ7GGWsAEN8
+ xRVHFmJ0ItLdQFY1Qn1ERfDXEqHflParigBnV7HJY0VcVfneFTgVNyKr5P+fwwhL8z3/
+ y0j5Mx1Dl3bKRKAYKJRsFVYfgjMeCHeuYQ1Y4aS+W6HhYN8f31rDpZx4DgTd+8yEF7sP
+ rHY5BG5qa0a42B2rwfmSZpJU1pHaR5peT4+pWpvY3puI6RflZb68thxEDuBiNGXTicgu 3w== 
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3txhbs15da-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 24 Oct 2023 16:46:47 +0000
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39OFq10t023782; Tue, 24 Oct 2023 16:46:41 GMT
-Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvryt14ts-1
+ Tue, 24 Oct 2023 16:48:14 +0000
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OFLljS012387; Tue, 24 Oct 2023 16:48:13 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvup1rd0a-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 24 Oct 2023 16:46:40 +0000
-Received: from smtpav01.wdc07v.mail.ibm.com (smtpav01.wdc07v.mail.ibm.com
- [10.39.53.228])
- by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39OGke5A27591416
+ Tue, 24 Oct 2023 16:48:13 +0000
+Received: from smtpav03.wdc07v.mail.ibm.com (smtpav03.wdc07v.mail.ibm.com
+ [10.39.53.230])
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39OGmCeo33489424
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 24 Oct 2023 16:46:40 GMT
-Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 417C65805B;
- Tue, 24 Oct 2023 16:46:40 +0000 (GMT)
-Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BA89358055;
- Tue, 24 Oct 2023 16:46:39 +0000 (GMT)
+ Tue, 24 Oct 2023 16:48:13 GMT
+Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 91D9F58054;
+ Tue, 24 Oct 2023 16:48:12 +0000 (GMT)
+Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2B7A45805D;
+ Tue, 24 Oct 2023 16:48:12 +0000 (GMT)
 Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
- by smtpav01.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 24 Oct 2023 16:46:39 +0000 (GMT)
-Message-ID: <9175c6f7b980ec1790f297a1f81a8c184c70b1aa.camel@linux.vnet.ibm.com>
-Subject: Re: [PATCH 1/2] misc/pca9552: Fix inverted input status
+ by smtpav03.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 24 Oct 2023 16:48:12 +0000 (GMT)
+Message-ID: <84497c0ac05f830879745ab4916cb5357a31a09d.camel@linux.vnet.ibm.com>
+Subject: Re: [PATCH v2 3/3] misc/pca9552: Only update output GPIOs if state
+ changed
 From: Miles Glenn <milesg@linux.vnet.ibm.com>
-To: Andrew Jeffery <andrew@codeconstruct.com.au>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, qemu-devel@nongnu.org
+To: Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>, f4bug@amsat.org
-Date: Tue, 24 Oct 2023 11:46:39 -0500
-In-Reply-To: <47ec73eb44a8b5f5cd894f97d1e88677845cbd7a.camel@codeconstruct.com.au>
-References: <20231019204011.3174115-1-milesg@linux.vnet.ibm.com>
- <20231019204011.3174115-2-milesg@linux.vnet.ibm.com>
- <e0f36ef6336df26d5c123c5861d6a779c94e3eb9.camel@codeconstruct.com.au>
- <01edf713-6bec-adec-5fa5-5195b5dd4273@linaro.org>
- <53fccc103ab72cfd93e98fd28bd0a869a43b6a83.camel@linux.vnet.ibm.com>
- <47ec73eb44a8b5f5cd894f97d1e88677845cbd7a.camel@codeconstruct.com.au>
+ Joel Stanley <joel@jms.id.au>, philmd@linaro.org
+Date: Tue, 24 Oct 2023 11:48:11 -0500
+In-Reply-To: <7ba3d0298be8edbfbbc16882aa17fa38e70662be.camel@codeconstruct.com.au>
+References: <20231020182321.163109-1-milesg@linux.vnet.ibm.com>
+ <20231020182321.163109-4-milesg@linux.vnet.ibm.com>
+ <7ba3d0298be8edbfbbc16882aa17fa38e70662be.camel@codeconstruct.com.au>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: KDgOv5s4gu3YxqVuIMcDrUROpx15kNi9
-X-Proofpoint-GUID: KDgOv5s4gu3YxqVuIMcDrUROpx15kNi9
+X-Proofpoint-ORIG-GUID: nTOuCaBGCp7zXXFL3GhYJKdtVB8AZpIM
+X-Proofpoint-GUID: nTOuCaBGCp7zXXFL3GhYJKdtVB8AZpIM
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-24_16,2023-10-24_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- suspectscore=0 spamscore=0 clxscore=1015 adultscore=0 mlxscore=0
- malwarescore=0 phishscore=0 bulkscore=0 mlxlogscore=999 priorityscore=1501
+ mlxlogscore=999 mlxscore=0
+ suspectscore=0 impostorscore=0 malwarescore=0 clxscore=1015
+ priorityscore=1501 adultscore=0 bulkscore=0 spamscore=0 phishscore=0
  lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2310170001 definitions=main-2310240144
 Received-SPF: none client-ip=148.163.158.5;
@@ -132,159 +129,106 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vHrVcJNBZQmN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aSVxn01IZwYi
 
-On Tue, 2023-10-24 at 10:04 +1030, Andrew Jeffery wrote:
-> On Fri, 2023-10-20 at 11:32 -0500, Miles Glenn wrote:
-> > On Fri, 2023-10-20 at 11:42 +0200, Philippe Mathieu-Daudé wrote:
-> > > On 20/10/23 04:51, Andrew Jeffery wrote:
-> > > > On Thu, 2023-10-19 at 15:40 -0500, Glenn Miles wrote:
-> > > > > > The pca9552 INPUT0 and INPUT1 registers are supposed to
-> > > > > > hold the logical values of the LED pins.  A logical 0
-> > > > > > should be seen in the INPUT0/1 registers for a pin when
-> > > > > > its corresponding LSn bits are set to 0, which is also
-> > > > > > the state needed for turning on an LED in a typical
-> > > > > > usage scenario.  Existing code was doing the opposite
-> > > > > > and setting INPUT0/1 bit to a 1 when the LSn bit was
-> > > > > > set to 0, so this commit fixes that.
-> > > > > > 
-> > > > > > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
-> > > > > > ---
-> > > > > > 
-> > > > > > Changes from prior version:
-> > > > > >      - Added comment regarding pca953X
-> > > > > >      - Added cover letter
-> > > > > > 
-> > > > > >   hw/misc/pca9552.c          | 18 +++++++++++++-----
-> > > > > >   tests/qtest/pca9552-test.c |  6 +++---
-> > > > > >   2 files changed, 16 insertions(+), 8 deletions(-)
-> > > > > > 
-> > > > > > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> > > > > > index fff19e369a..445f56a9e8 100644
-> > > > > > --- a/hw/misc/pca9552.c
-> > > > > > +++ b/hw/misc/pca9552.c
-> > > > > > @@ -36,7 +36,10 @@ typedef struct PCA955xClass
-> > > > > > PCA955xClass;
-> > > > > >   
-> > > > > >   DECLARE_CLASS_CHECKERS(PCA955xClass, PCA955X,
-> > > > > >                          TYPE_PCA955X)
-> > > > > > -
-> > > > > > +/*
-> > > > > > + * Note:  The LED_ON and LED_OFF configuration values for
-> > > > > > the
-> > > > > > PCA955X
-> > > > > > + *        chips are the reverse of the PCA953X family of
-> > > > > > chips.
-> > > > > > + */
-> > > > > >   #define PCA9552_LED_ON   0x0
-> > > > > >   #define PCA9552_LED_OFF  0x1
-> > > > > >   #define PCA9552_LED_PWM0 0x2
-> > > > > > @@ -112,13 +115,18 @@ static void
-> > > > > > pca955x_update_pin_input(PCA955xState *s)
-> > > > > >   
-> > > > > >           switch (config) {
-> > > > > >           case PCA9552_LED_ON:
-> > > > > > -            qemu_set_irq(s->gpio[i], 1);
-> > > > > > -            s->regs[input_reg] |= 1 << input_shift;
-> > > > > > -            break;
-> > > > > > -        case PCA9552_LED_OFF:
-> > > > > > +            /* Pin is set to 0V to turn on LED */
-> > > > > >               qemu_set_irq(s->gpio[i], 0);
-> > > > > >               s->regs[input_reg] &= ~(1 << input_shift);
-> > > > > >               break;
-> > > > > > +        case PCA9552_LED_OFF:
-> > > > > > +            /*
-> > > > > > +             * Pin is set to Hi-Z to turn off LED and
-> > > > > > +             * pullup sets it to a logical 1.
-> > > > > > +             */
-> > > > > > +            qemu_set_irq(s->gpio[i], 1);
-> > > > > > +            s->regs[input_reg] |= 1 << input_shift;
-> > > > > > +            break;
-> > > > 
-> > > > So the witherspoon-bmc machine was a user of the PCA9552
-> > > > outputs as
-> > > > LEDs. I guess its LEDs were in the wrong state the whole time?
-> > > > That
-> > > > looks like the only user though, and shouldn't be negatively
-> > > > affected.
-> > > 
-> > > Usually GPIO polarity is a machine/board property, not a device
-> > > one.
-> > > 
-> > > We could use the LED API (hw/misc/led.h) which initialize each
-> > > output with GpioPolarity.
-> > > 
-> > 
-> > Thanks for your comments!   This piqued my curiosity so I decided
-> > to
-> > run a test with the witherspoon-bmc machine.  Without my changes, I
-> > ran
-> > the following command to turn off LED13 on the pca9552 which I had
-> > previously set to "on":
-> > 
-> >   qom-set /machine/unattached/device[18] led13 off
-> > 
-> > I had GDB connected at the time with a breakpoint set on
-> > led_set_state() so that I could see what was happening.  Due to the
-> > inversion bug, I expected the pca9552 code to set the pin low and
-> > also
-> > set the irq low, which it did.  The connected LED's on this pca9552
-> > were all configured as GPIO_POLARITY_ACTIVE_LOW, so I expected that
-> > setting the irq state low would actually turn on the LED.  Instead
-> > it
-> > turned off the LED.
-> > 
-> > Reviewing the LED code, I believe the problem lies here:
-> > 
-> > static void led_set_state_gpio_handler(void *opaque, int line, int
-> > new_state)
-> > {
-> >     LEDState *s = LED(opaque);
-> > 
-> >     assert(line == 0);
-> >     led_set_state(s, !!new_state != s->gpio_active_high);
-> > }
-> > 
-> > 
-> > In my test, new_state was 0 and gpio_active_high was 0, resulting
-> > in
-> > the boolean expression of ( 0 != 0 ) which is false and results in
-> > turning off the LED.  So, this looks like a bug to me.
-> > 
-> > For another simpler example, if the LED polarity was set to
-> > GPIO_POLARITY_ACTIVE_HIGH, then s->gpio_active_high would be
-> > 1.  Then,
-> > if we set the irq line to 1, wouldn't we expect the LED to turn
-> > on? 
-> > However, as the code stands, it would actually turn the LED
-> > off.  So, I
-> > think we can remove one of the "!"'s from in front of
-> > new_state.  Then,
-> > if the LED is active high and the irq line is set high, it would
-> > turn
-> > on the LED.  Correct?
+On Tue, 2023-10-24 at 10:13 +1030, Andrew Jeffery wrote:
+> On Fri, 2023-10-20 at 13:23 -0500, Glenn Miles wrote:
+> > The pca9552 code was updating output GPIO states whenever
+> > the pin state was updated even if the state did not change.
+> > This commit adds a check so that we only update the GPIO
+> > output when the pin state actually changes.
 > 
-> Seems reasonable to me. Looks like Philippe added the LED behaviour
-> in
-> Fddb67f6402b8 ("hw/misc/led: Allow connecting from GPIO output"), so
-> his input would be helpful. Perhaps send a fix for review?
+> Given this is intertwined with patch 2/3 that adds the input mode
+> capability, I think they should be squashed together?
+> 
+
+Sure, no problem.
+
+> > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+> > ---
+> > 
+> > New commit in v2
+> > 
+> >  hw/misc/pca9552.c | 25 ++++++++++++++++++-------
+> >  1 file changed, 18 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> > index ed814d1f98..4ed6903404 100644
+> > --- a/hw/misc/pca9552.c
+> > +++ b/hw/misc/pca9552.c
+> > @@ -112,14 +112,15 @@ static void
+> > pca955x_update_pin_input(PCA955xState *s)
+> >  
+> >      for (i = 0; i < k->pin_count; i++) {
+> >          uint8_t input_reg = PCA9552_INPUT0 + (i / 8);
+> > -        uint8_t input_shift = (i % 8);
+> > +        uint8_t bit_mask = 1 << (i % 8);
+> >          uint8_t config = pca955x_pin_get_config(s, i);
+> > +        uint8_t old_value = s->regs[input_reg] & bit_mask;
+> > +        uint8_t new_value;
+> >  
+> >          switch (config) {
+> >          case PCA9552_LED_ON:
+> >              /* Pin is set to 0V to turn on LED */
+> > -            qemu_set_irq(s->gpio_out[i], 0);
+> > -            s->regs[input_reg] &= ~(1 << input_shift);
+> > +            s->regs[input_reg] &= ~bit_mask;
+> >              break;
+> >          case PCA9552_LED_OFF:
+> >              /*
+> > @@ -128,11 +129,9 @@ static void
+> > pca955x_update_pin_input(PCA955xState *s)
+> >               * external device drives it low.
+> >               */
+> >              if (s->ext_state[i] == PCA9552_PIN_LOW) {
+> > -                qemu_set_irq(s->gpio_out[i], 0);
+> > -                s->regs[input_reg] &= ~(1 << input_shift);
+> > +                s->regs[input_reg] &= ~bit_mask;
+> >              } else {
+> > -                qemu_set_irq(s->gpio_out[i], 1);
+> > -                s->regs[input_reg] |= 1 << input_shift;
+> > +                s->regs[input_reg] |=  bit_mask;
+> >              }
+> >              break;
+> >          case PCA9552_LED_PWM0:
+> > @@ -141,6 +140,18 @@ static void
+> > pca955x_update_pin_input(PCA955xState *s)
+> >          default:
+> >              break;
+> >          }
+> > +
+> > +        /* update irq state only if pin state changed */
+> > +        new_value = s->regs[input_reg] & bit_mask;
+> > +        if (new_value != old_value) {
+> > +            if (new_value) {
+> > +                /* changed from 0 to 1 */
+> > +                qemu_set_irq(s->gpio_out[i], 1);
+> > +            } else {
+> > +                /* changed from 1 to 0 */
+> > +                qemu_set_irq(s->gpio_out[i], 0);
+> > +            }
+> 
+> Slightly code-golf-y, but the inner if-else here may be compressed
+> to:
+> 
+>     qemu_set_irq(s->gpio_out[i], !!new_value);
 > 
 > Andrew
 
-Sounds good.  I'll do that.
+I like it!
 
 Glenn
 

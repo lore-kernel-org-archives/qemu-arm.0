@@ -1,112 +1,125 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2204589ejb;
-        Tue, 24 Oct 2023 10:25:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFfMvNf9NiZePaQwRshDVtN7/dOPHy3aLUaIYl1/IplAAqh+fwj8U/gkl59nAIn4DqnkYXq
-X-Received: by 2002:a05:620a:8786:b0:76f:f0b:a1b8 with SMTP id py6-20020a05620a878600b0076f0f0ba1b8mr11062582qkn.25.1698168300752;
-        Tue, 24 Oct 2023 10:25:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698168300; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2212573ejb;
+        Tue, 24 Oct 2023 10:40:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEJkkEfMB40ZaoJ3haVbjUpHE/jtX1YiRIA6CSn9+TqmCW7RfOcA6VuT1EPxOR1Ru+GEA+l
+X-Received: by 2002:a05:622a:1303:b0:417:dc9c:4207 with SMTP id v3-20020a05622a130300b00417dc9c4207mr21364969qtk.0.1698169214730;
+        Tue, 24 Oct 2023 10:40:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698169214; cv=none;
         d=google.com; s=arc-20160816;
-        b=lVVXcN99P6SPLSR9p7R7WLCQDTTSPx7Rp+5fAa3HckpKT7I3ykdGQ3jc/eKZKGTNVw
-         Dp3sR7mRnAbQ5Arjy4pUU4J94eBjkbR3m0ZOdsoBlfTlN5Z57dQMWsjQs+yQmhkx9+Vq
-         f8fuy6GlfeJ1Q+cV85Ijw7P1a69XFFrTqD9xoLU91NIRIAVav8jVLETS3vCWexZxmODq
-         CguxljctPMYj0T1eThzTxJ7EyAm1xUlaNMVEWxkxMvLRU/EGjeBxhgUUfAmjJLqQJhes
-         vq4a+3XkZiTKHF8VsGxZA4TWimwGVA6dIQtRsoOf+2BI2qevX3gIt+lWDts7RWykuYa4
-         xCAQ==
+        b=RdcGt/Gck0D+OZ5PLCivYBkjqyfXCpta8UJDe2Ma3SpA3z0ixrVHv3bQNADNO9Mo8b
+         LDjNKlJlDItJs1/bfwAG0e7Z/MtoTUpEKltM5YeV1YGoTwEdOfAno/OC9Av4NZ1PM6dO
+         5gIF6XfNzpazbv/j/3abToYfvnzQJGp1S0dBdsQRtXE1vt5Ddqbkeue6ctukVmYNwAF3
+         nVLjcEHwqpWvwMzuBY6sgMC44/spFoILjCnHBZiqBsNgHtA6X4oGAi7so2EUmiHGf1Vl
+         JMwl+w6X4ykjJ7ghv8CuyWRIwG82qH9Puw29jZKiMJmLRUF+IqirpYJObZKv0XFFUBgv
+         VhJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=whe7VhM1QRrMglSRu5qWCi/P7ekDVJP9PS80iqT8NDE=;
-        fh=spbD1uAOw2hCQBb83uSlqZAKTOl6wvNX+k1rxl9UBCg=;
-        b=ENOOJS44mVkM0LazSbs70wXmE9hCWpzAmaNPIao12tvTLoc+jqwkTq79eHyEmEcwdR
-         lLgo4vsqDNeQNvJy8DGRsH0cRtpdNBb2n1XCIpE95+Ibs3WXb0QTr6OjM/r8/RGXSly7
-         FUii2Mjpm+3bZLdUu3aHHm+zvrWtcy2T5tODoVMVlGBqzs85NalIAsFdgMV9pEHq4y8L
-         7Nazzfm+PJHGWxo9SBQmiwPiDZU+d+HyyfU0/HoPvPhRV0oDRvmO6OH3y6Lpn780wDcK
-         V7iqFhMpFUq3+8aOf0adgxhbUl9xDeOxGIQSlZcuS/0TApdVhr0p/DSO/WVAHHCigkSP
-         GnjQ==
+        bh=vfMZwdIrm35c0dizZryvOdf9dD6bvfFlsxR0QCA1KVo=;
+        fh=NAal76Z/q7FBYhiEiWbymNk3zrFoOu+wgUVBjeRKdu0=;
+        b=Cp9Sb9jcin8/B/TxerkgEUQv3hFj92FQ3LwCsukPOHH0Yx3rWAjbQn45BTfFEnVpir
+         ZYRgdE3jclz4OD1s17eB1j7XqXw1HiYj4ibsdL6glRiwedknMXlbb7nAL62HxBb2kGlv
+         vLFi5b1TTlR6piOYybulKAAwBsrA0Q6TlCD0vNmrDVJPiHFnXtdsivnVBoTHk2LVVzVo
+         cqiPVlxnRG2WqfY77T86d8KUMXBUb1oHVPmZpDiOmH9jcz5X9QiOsLf6erjnxP+QzmCO
+         D7Pb+QAgq0HhwQFJfBTNiittVONAjDptvT8L7lez8v4TQm7Vp9uScvX3cSqRpN8IdEdY
+         Q/9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b0AWU7Lx;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=tgkru3ki;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l21-20020a05620a211500b0077437859066si6892476qkl.7.2023.10.24.10.25.00
+        by mx.google.com with ESMTPS id j12-20020ac85f8c000000b0041954258c3fsi7122877qta.557.2023.10.24.10.40.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 10:25:00 -0700 (PDT)
+        Tue, 24 Oct 2023 10:40:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b0AWU7Lx;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=tgkru3ki;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvL96-0001Uz-Qt; Tue, 24 Oct 2023 13:24:49 -0400
+	id 1qvLNg-0002Il-Ml; Tue, 24 Oct 2023 13:39:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qvL91-0001Kd-KR
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 13:24:46 -0400
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qvL8z-0000qp-Vy
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 13:24:43 -0400
-Received: by mail-lj1-x233.google.com with SMTP id
- 38308e7fff4ca-2c50305c5c4so72015631fa.1
- for <qemu-arm@nongnu.org>; Tue, 24 Oct 2023 10:24:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698168279; x=1698773079; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=whe7VhM1QRrMglSRu5qWCi/P7ekDVJP9PS80iqT8NDE=;
- b=b0AWU7Lx+v1uKY2jJZfnEibzv3pFNvWCeAE2zb6tv5j/aUUhF6H9owLzTMKFpnfX5X
- maoZKqxG4Rjd9AHNI88n1Wq1jLk6FmsSQjHIFBcDBoQa0guDbIWWx7gx1V0QIGpB9G3V
- rGpu2pbCqE7UyjEJqdwEyMSa5y3dfmLUijAIvoPvcX3R9Y0Rrbv4SVmMbjaDPKOeyGth
- C/66xitKeZWLpfkvyJ5Jm2KcXU0DKJxiYtG551rdMgc1szNk6g9VoCg7tpZezcWQ/ymD
- ZROgLOmAuiuph3UgygkdMCconTNXTSdt0t104JH4gaXV3up3qQoWYrQBuQRtVQcjJvtK
- QvMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698168279; x=1698773079;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=whe7VhM1QRrMglSRu5qWCi/P7ekDVJP9PS80iqT8NDE=;
- b=G5MH7NONDzEHA4EXHvrd/NOYuyG/7GIL8QMZy9yKkhT58C6f69yuJ448bpM24dKocF
- bOAbYaIUDMn2YMzstKhY7IC6WbL1/xydb17+0N0mqJolTQN8ZauRTufDLjydfR6AGQtp
- N5rAYVjevJhJyGEz4JSMEklTIVX8IHBuasFo4KOhWC0FQVH02wNJJunZBzTyEeIGr9mQ
- aZaY1Vwg2eg8XbUG3dk15qXbhdvrPMJHdF+a+oL8nrP+s3KrGrMpjJpjnVWo2U7nqWMC
- yGuG5gqBI/E0bHK6pTi2ZbVj4IQKVYqnxDFrlELOwlL+Hx9aFR+4uyNgX0n4KJy07x8x
- eV0w==
-X-Gm-Message-State: AOJu0YxFXZzSVcAbB6Zwzo+0SWrZngfbFpwTbLx8JMxi9b9GCdaPbNOs
- VL3i5aNzSkOAvNF7q4BtUfySO8lQPLBUtsOBlQc=
-X-Received: by 2002:a05:651c:447:b0:2c5:18a9:620b with SMTP id
- g7-20020a05651c044700b002c518a9620bmr9223152ljg.23.1698168279521; 
- Tue, 24 Oct 2023 10:24:39 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- h14-20020a05600c314e00b003fbe4cecc3bsm17371755wmo.16.2023.10.24.10.24.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Oct 2023 10:24:39 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-Subject: [PATCH] target/arm: Fix syndrome for FGT traps on ERET
-Date: Tue, 24 Oct 2023 18:24:38 +0100
-Message-Id: <20231024172438.2990945-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qvLNf-0002IL-0q; Tue, 24 Oct 2023 13:39:51 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qvLNc-0004RS-QI; Tue, 24 Oct 2023 13:39:50 -0400
+Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OHbSFD014745; Tue, 24 Oct 2023 17:39:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=vfMZwdIrm35c0dizZryvOdf9dD6bvfFlsxR0QCA1KVo=;
+ b=tgkru3kijdnREJ0aUl++dj5ZjW+KVsEd/acuRnjZ+Zq+bV46zR8/i5bUTuxGPYvJYjX3
+ K6MdwTZFvEKPOkzTN4aLcmtXegYbR81Bchb6Qozmrn32Tf58imFQHA+WmApSRbzKc3HR
+ tmPY0Lg0ca8NJDehvK+lK9a7DvQkT7bXrX+Rj6PsJk0CqSN75YOX8iESP9nie5XsPnFN
+ 5bnljhW2x+SE9PPt4LEFtQDaKAzT/os4FgWHbzCzx36ax9aq1SDCAKmhWkt0y4JgP8ow
+ nQ9LtmaOuseN1kOe7gHAWAUktLf0ktF04lMQQPfw9tNLzlbx6XiAusws1aSVQwnYT+a0 wA== 
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3txjg0r338-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 17:39:38 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OFq1MO023782; Tue, 24 Oct 2023 17:39:37 GMT
+Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvryt1eav-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 17:39:37 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39OHda2K11207198
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 24 Oct 2023 17:39:36 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7511158059;
+ Tue, 24 Oct 2023 17:39:36 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DD6D858053;
+ Tue, 24 Oct 2023 17:39:35 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 24 Oct 2023 17:39:35 +0000 (GMT)
+From: Glenn Miles <milesg@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-arm@nongnu.org, clg@kaod.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, philmd@linaro.org
+Subject: [PATCH] misc/led: LED state is set opposite of what is expected
+Date: Tue, 24 Oct 2023 12:39:23 -0500
+Message-Id: <20231024173923.4041874-1-milesg@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::233;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x233.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 2_n11z5Fv_TkGiq8EJlvZWS8WC70wMQD
+X-Proofpoint-GUID: 2_n11z5Fv_TkGiq8EJlvZWS8WC70wMQD
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-24_17,2023-10-24_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 adultscore=0
+ priorityscore=1501 phishscore=0 mlxscore=0 spamscore=0 malwarescore=0
+ impostorscore=0 mlxlogscore=658 bulkscore=0 lowpriorityscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2310170001 definitions=main-2310240151
+Received-SPF: none client-ip=148.163.156.1;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,51 +134,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5hXuNbAcpfoD
+X-TUID: 1Exk2l60jF8a
 
-In commit 442c9d682c94fc2 when we converted the ERET, ERETAA, ERETAB
-instructions to decodetree, the conversion accidentally lost the
-correct setting of the syndrome register when taking a trap because
-of the FEAT_FGT HFGITR_EL1.ERET bit.  Instead of reporting a correct
-full syndrome value with the EC and IL bits, we only reported the low
-two bits of the syndrome, because the call to syn_erettrap() got
-dropped.
+Testing of the LED state showed that when the LED polarity was
+set to GPIO_POLARITY_ACTIVE_LOW and a low logic value was set on
+the input GPIO of the LED, the LED was being turned off when it was
+expected to be turned on.
 
-Fix the syndrome values for these traps by reinstating the
-syn_erettrap() calls.
-
-Fixes: 442c9d682c94fc2 ("target/arm: Convert ERET, ERETAA, ERETAB to decodetree")
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
 ---
-Spotted by code inspection when I was looking at putting in
-the ERET trap for FEAT_NV...
----
- target/arm/tcg/translate-a64.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/misc/led.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index ad78b8b1202..41484d8ae54 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -1606,7 +1606,7 @@ static bool trans_ERET(DisasContext *s, arg_ERET *a)
-         return false;
-     }
-     if (s->fgt_eret) {
--        gen_exception_insn_el(s, 0, EXCP_UDEF, 0, 2);
-+        gen_exception_insn_el(s, 0, EXCP_UDEF, syn_erettrap(0), 2);
-         return true;
-     }
-     dst = tcg_temp_new_i64();
-@@ -1633,7 +1633,7 @@ static bool trans_ERETA(DisasContext *s, arg_reta *a)
-     }
-     /* The FGT trap takes precedence over an auth trap. */
-     if (s->fgt_eret) {
--        gen_exception_insn_el(s, 0, EXCP_UDEF, a->m ? 3 : 2, 2);
-+        gen_exception_insn_el(s, 0, EXCP_UDEF, syn_erettrap(a->m ? 3 : 2), 2);
-         return true;
-     }
-     dst = tcg_temp_new_i64();
+diff --git a/hw/misc/led.c b/hw/misc/led.c
+index f6d6d68bce..96cad7578e 100644
+--- a/hw/misc/led.c
++++ b/hw/misc/led.c
+@@ -63,7 +63,7 @@ static void led_set_state_gpio_handler(void *opaque, int line, int new_state)
+     LEDState *s = LED(opaque);
+ 
+     assert(line == 0);
+-    led_set_state(s, !!new_state != s->gpio_active_high);
++    led_set_state(s, !new_state != s->gpio_active_high);
+ }
+ 
+ static void led_reset(DeviceState *dev)
 -- 
-2.34.1
+2.31.1
 

@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2044773ejb;
-        Tue, 24 Oct 2023 06:24:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGiXMIvILzzasjTE3LMEulKuy6048yPIN14lV0ZUG5ZUW42lHCpQR6MD2PV2OLYL1wZSeB4
-X-Received: by 2002:a05:622a:2d2:b0:418:152d:bf4 with SMTP id a18-20020a05622a02d200b00418152d0bf4mr13644659qtx.51.1698153875545;
-        Tue, 24 Oct 2023 06:24:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153875; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2044907ejb;
+        Tue, 24 Oct 2023 06:24:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHpyxviX2EMoyYHYLviEVS0UBIb+AGewUhEV67wQ5dmKDXs8Yt6nRqLPgyLLlSxjLSSKXgd
+X-Received: by 2002:a05:620a:24cb:b0:777:2aeb:7dfa with SMTP id m11-20020a05620a24cb00b007772aeb7dfamr12432475qkn.38.1698153889457;
+        Tue, 24 Oct 2023 06:24:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153889; cv=none;
         d=google.com; s=arc-20160816;
-        b=teTE9ryGmss7qvtQWnsLS2eJFtAB/l8phDJk1RNw3NXD1JEYUJMQ1yyb7AF8vNkttI
-         zAqpS8JL+2HpmUymf7GAK5qwyGZSO1FlhWHo20VArDUGd8SUvR8Weub2YuQ++uOr9s8b
-         dpT3j+2Zjv8rkqM1AGrvaI2CUEmpywKmIlDo6VJXk70HLlLFxPIKMUZ8sOe0LLG8yJi5
-         ceWPDYcBMELLADFTEm7rzHPurYBGCih9d6cbMd1Iv5beW/b7gMBcWHeuZo0JwzCLTNTn
-         tnwZ9TXbgorcwnBRh/V4J8mCEjFlezaVJMsXtXcDbLdXCzljEYa8ZT0hs+VwrjZqI0jP
-         mYuA==
+        b=cFhH7A0y+cVfeqSrZmlNiZ7EjlrBkDGS2pPczpv9T6apvABak0LALNV0xtL8P0e18O
+         bExlE2X0+m1XYGLtxeTQceaUmJQUfWeYT/f53DEUj4B9N2sx9BqtUqhy16VXUHRwEqVx
+         +kNilkJMcw9rI4Le485KOt6Lx+Ym2Kqgw93LlzgQji9Bq7Vdl36fDW194UAjQgXMP+Wm
+         jWl0Gyj9Qz2BoMDPV1pMTj+xvEcY8+XZi2SBELtBLuzs+kWVHyqPfq6sa4OXFKXm/OMV
+         YyFfv1stXf6Q8NbpKhSLzd9jD6Ezmgq2Z+U+i/QNwfqOqaeTvvR92eXdF0i9udx1xY+4
+         Elog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RSYc/dqzkS2tFdLQ8nQJGqSs5SG3NKuDB832n+HnggA=;
+        bh=9e5RYP7kkCgfv8VdNgjAc4n9NlOa/o8OZpIjS60zpqs=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=lnswb2DfYnXEtYgIwhXECU+rR38sy/6Ep4D7wnqC/U36d8/ybKe+L6jY/ZQ2EZUbed
-         17LAdLHvjux8neAEnLMo7FsT7OZr2D0fyYPiPa30RQnfl1Hn6qwa2TPjEcIsburp7a4i
-         JpRcbij7f7GbA6+ZvENr2LN3umcjwgpUqkrvrRnem/pZOMdeyktFakAghFPazD9MQ6xW
-         I0VmtDgq/x48A0hgi5liB4PKJTM73RIZFzzrW/hsMi1QvKAts074CuDap9/k6MCEPiKr
-         h42Gs08VSTI/R1zwP21+RdmO8NoWOmnMJxryZ2Kzcdiur0kEA4DzQQOY2y93r7rCW2K6
-         32pQ==
+        b=IzOhEYYYNgj3pKzl4zB7X44pqaszDwWYdZ4z+POytpnyDpkljoDtgg3/YBjDogKrnG
+         78voaHJ3Vn4w9ItuFOtbsLTuzPJOcOXOi8GuDZ2lHLaAso5ekaAFp3sirgYBoOKIMlLf
+         +NAlzEpEQkOUZdUsAueXg8cQ78SupvRRGKJMc1FdgN6eldGJWI4BsZ3zXljBrOp3kyCY
+         GqrAhzm0nLNy4uc++kA9meROJtgO5me1UerfqAtdRN+wEWUh6MGtU4VJ4vDPvFfk2jR2
+         x60Z2dDHDsPOUEL0aJ4zpclF/N39FsW+V4ePWffIp2T29jHeJiQ42l/XhYIj4KE9iCKW
+         4KBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WZL2vxbc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RB4px0r+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5-20020a05622a01c500b004199153c1d6si7150595qtw.467.2023.10.24.06.24.35
+        by mx.google.com with ESMTPS id br7-20020a05620a460700b00773cb326234si7755286qkb.413.2023.10.24.06.24.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:24:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:24:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WZL2vxbc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RB4px0r+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvHGf-0002pv-6h; Tue, 24 Oct 2023 09:16:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvHK6-0001Ux-Dp; Tue, 24 Oct 2023 09:19:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHG3-0001Jr-R9
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:15:46 -0400
+ id 1qvHI0-0005wU-Ub
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:45 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFz-0001nK-CP
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:15:43 -0400
+ id 1qvHHy-0002Hs-9o
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153338;
+ s=mimecast20190719; t=1698153461;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RSYc/dqzkS2tFdLQ8nQJGqSs5SG3NKuDB832n+HnggA=;
- b=WZL2vxbcfn1XP6A1VAbknRpdbNbvJQ4fqrYj3D2bYw3xT4jQyIyC1FXMyoFGgn3ZESGQLA
- c3Le9l5r2ZCicEgFf8OHHbRRSXAMrd3RoJaeUIOJJEysvAEx4W+3aMsxAjVxoDZ8vJpKjj
- 2xctiQw/ldqMldM8ZywMLY66NE2bdXE=
+ bh=9e5RYP7kkCgfv8VdNgjAc4n9NlOa/o8OZpIjS60zpqs=;
+ b=RB4px0r+QVNlGKVJaykPISOhIRr+6XBBPNCgTRbfnn80uwmTovC3Tz+pliF9LxV+iqY0Vo
+ mCwFbmyfqZlfkqj5GnS3g3cZaeodKvHT2nkJYspbAfDSFkWsz02SXyWmECf5SY4mFKrXks
+ DLADrpJwI8kSeYNXEMJvfRb+azJsea0=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-436-MQj-coVGO7GzkH6hQvNYbA-1; Tue,
- 24 Oct 2023 09:15:35 -0400
-X-MC-Unique: MQj-coVGO7GzkH6hQvNYbA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-362-bfYjJ8jIMZONxkzmN1pU4w-1; Tue,
+ 24 Oct 2023 09:17:37 -0400
+X-MC-Unique: bfYjJ8jIMZONxkzmN1pU4w-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F10E43813F2A;
- Tue, 24 Oct 2023 13:15:33 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CAAD6381C161;
+ Tue, 24 Oct 2023 13:17:35 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9F92C1C060AE;
- Tue, 24 Oct 2023 13:15:27 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 72B781C060AE;
+ Tue, 24 Oct 2023 13:17:29 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -108,10 +108,9 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 21/39] hw/s390x/s390-stattrib: Don't call
- register_savevm_live() during instance_init()
-Date: Tue, 24 Oct 2023 15:12:47 +0200
-Message-ID: <20231024131305.87468-22-quintela@redhat.com>
+Subject: [PULL 39/39] migration: Deprecate old compression method
+Date: Tue, 24 Oct 2023 15:13:05 +0200
+Message-ID: <20231024131305.87468-40-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -127,95 +126,242 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XvEUG4U5S66g
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /fPmByIIq6Cl
 
-From: Thomas Huth <thuth@redhat.com>
-
-We must not call register_savevm_live() from an instance_init() function
-(since this could be called multiple times during device introspection).
-Move this to the realize() function instead.
-
-Acked-by: David Hildenbrand <david@redhat.com>
-Reviewed-by: Eric Farman <farman@linux.ibm.com>
+Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Acked-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231020150554.664422-4-thuth@redhat.com>
+Message-ID: <20231018115513.2163-6-quintela@redhat.com>
 ---
- hw/s390x/s390-stattrib.c | 29 +++++++++++++++--------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
+ docs/about/deprecated.rst |  8 +++++
+ qapi/migration.json       | 63 ++++++++++++++++++++++++++-------------
+ migration/options.c       | 13 ++++++++
+ 3 files changed, 64 insertions(+), 20 deletions(-)
 
-diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
-index 52f9fc036e..54a138011c 100644
---- a/hw/s390x/s390-stattrib.c
-+++ b/hw/s390x/s390-stattrib.c
-@@ -331,6 +331,17 @@ static const TypeInfo qemu_s390_stattrib_info = {
- 
- /* Generic abstract object: */
- 
-+static SaveVMHandlers savevm_s390_stattrib_handlers = {
-+    .save_setup = cmma_save_setup,
-+    .save_live_iterate = cmma_save_iterate,
-+    .save_live_complete_precopy = cmma_save_complete,
-+    .state_pending_exact = cmma_state_pending,
-+    .state_pending_estimate = cmma_state_pending,
-+    .save_cleanup = cmma_save_cleanup,
-+    .load_state = cmma_load,
-+    .is_active = cmma_active,
-+};
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 7ae872162d..e7f17827d3 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -488,3 +488,11 @@ devices or none.
+ Please see "QMP invocation for live storage migration with
+ ``blockdev-mirror`` + NBD" in docs/interop/live-block-operations.rst
+ for a detailed explanation.
 +
- static void s390_stattrib_realize(DeviceState *dev, Error **errp)
- {
-     bool ambiguous = false;
-@@ -338,7 +349,11 @@ static void s390_stattrib_realize(DeviceState *dev, Error **errp)
-     object_resolve_path_type("", TYPE_S390_STATTRIB, &ambiguous);
-     if (ambiguous) {
-         error_setg(errp, "storage_attributes device already exists");
-+        return;
++old compression method (since 8.2)
++''''''''''''''''''''''''''''''''''
++
++Compression method fails too much.  Too many races.  We are going to
++remove it if nobody fixes it.  For starters, migration-test
++compression tests are disabled becase they fail randomly.  If you need
++compression, use multifd compression methods.
+diff --git a/qapi/migration.json b/qapi/migration.json
+index e3b00a215b..e6610af428 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -272,6 +272,10 @@
+ # Features:
+ #
+ # @deprecated: Member @disk is deprecated because block migration is.
++#     Member @compression is deprecated because it is unreliable and
++#     untested.  It is recommended to use multifd migration, which
++#     offers an alternative compression implementation that is
++#     reliable and tested.
+ #
+ # Since: 0.14
+ ##
+@@ -289,7 +293,7 @@
+            '*blocked-reasons': ['str'],
+            '*postcopy-blocktime': 'uint32',
+            '*postcopy-vcpu-blocktime': ['uint32'],
+-           '*compression': 'CompressionStats',
++           '*compression': { 'type': 'CompressionStats', 'features': [ 'deprecated' ] },
+            '*socket-address': ['SocketAddress'],
+            '*dirty-limit-throttle-time-per-round': 'uint64',
+            '*dirty-limit-ring-full-time': 'uint64'} }
+@@ -530,7 +534,10 @@
+ # Features:
+ #
+ # @deprecated: Member @block is deprecated.  Use blockdev-mirror with
+-#     NBD instead.
++#     NBD instead.  Member @compression is deprecated because it is
++#     unreliable and untested.  It is recommended to use multifd
++#     migration, which offers an alternative compression
++#     implementation that is reliable and tested.
+ #
+ # @unstable: Members @x-colo and @x-ignore-shared are experimental.
+ #
+@@ -538,7 +545,8 @@
+ ##
+ { 'enum': 'MigrationCapability',
+   'data': ['xbzrle', 'rdma-pin-all', 'auto-converge', 'zero-blocks',
+-           'compress', 'events', 'postcopy-ram',
++           { 'name': 'compress', 'features': [ 'deprecated' ] },
++           'events', 'postcopy-ram',
+            { 'name': 'x-colo', 'features': [ 'unstable' ] },
+            'release-ram',
+            { 'name': 'block', 'features': [ 'deprecated' ] },
+@@ -844,7 +852,9 @@
+ # Features:
+ #
+ # @deprecated: Member @block-incremental is deprecated.  Use
+-#     blockdev-mirror with NBD instead.
++#     blockdev-mirror with NBD instead.  Members @compress-level,
++#     @compress-threads, @decompress-threads and @compress-wait-thread
++#     are deprecated because @compression is deprecated.
+ #
+ # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
+ #     are experimental.
+@@ -854,8 +864,11 @@
+ { 'enum': 'MigrationParameter',
+   'data': ['announce-initial', 'announce-max',
+            'announce-rounds', 'announce-step',
+-           'compress-level', 'compress-threads', 'decompress-threads',
+-           'compress-wait-thread', 'throttle-trigger-threshold',
++           { 'name': 'compress-level', 'features': [ 'deprecated' ] },
++           { 'name': 'compress-threads', 'features': [ 'deprecated' ] },
++           { 'name': 'decompress-threads', 'features': [ 'deprecated' ] },
++           { 'name': 'compress-wait-thread', 'features': [ 'deprecated' ] },
++           'throttle-trigger-threshold',
+            'cpu-throttle-initial', 'cpu-throttle-increment',
+            'cpu-throttle-tailslow',
+            'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
+@@ -1023,7 +1036,9 @@
+ # Features:
+ #
+ # @deprecated: Member @block-incremental is deprecated.  Use
+-#     blockdev-mirror with NBD instead.
++#     blockdev-mirror with NBD instead.  Members @compress-level,
++#     @compress-threads, @decompress-threads and @compress-wait-thread
++#     are deprecated because @compression is deprecated.
+ #
+ # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
+ #     are experimental.
+@@ -1038,10 +1053,14 @@
+             '*announce-max': 'size',
+             '*announce-rounds': 'size',
+             '*announce-step': 'size',
+-            '*compress-level': 'uint8',
+-            '*compress-threads': 'uint8',
+-            '*compress-wait-thread': 'bool',
+-            '*decompress-threads': 'uint8',
++            '*compress-level': { 'type': 'uint8',
++                                 'features': [ 'deprecated' ] },
++            '*compress-threads':  { 'type': 'uint8',
++                                    'features': [ 'deprecated' ] },
++            '*compress-wait-thread':  { 'type': 'bool',
++                                        'features': [ 'deprecated' ] },
++            '*decompress-threads':  { 'type': 'uint8',
++                                      'features': [ 'deprecated' ] },
+             '*throttle-trigger-threshold': 'uint8',
+             '*cpu-throttle-initial': 'uint8',
+             '*cpu-throttle-increment': 'uint8',
+@@ -1078,7 +1097,7 @@
+ # Example:
+ #
+ # -> { "execute": "migrate-set-parameters" ,
+-#      "arguments": { "compress-level": 1 } }
++#      "arguments": { "multifd-channels": 5 } }
+ # <- { "return": {} }
+ ##
+ { 'command': 'migrate-set-parameters', 'boxed': true,
+@@ -1241,7 +1260,9 @@
+ # Features:
+ #
+ # @deprecated: Member @block-incremental is deprecated.  Use
+-#     blockdev-mirror with NBD instead.
++#     blockdev-mirror with NBD instead.  Members @compress-level,
++#     @compress-threads, @decompress-threads and @compress-wait-thread
++#     are deprecated because @compression is deprecated.
+ #
+ # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
+ #     are experimental.
+@@ -1253,10 +1274,14 @@
+             '*announce-max': 'size',
+             '*announce-rounds': 'size',
+             '*announce-step': 'size',
+-            '*compress-level': 'uint8',
+-            '*compress-threads': 'uint8',
+-            '*compress-wait-thread': 'bool',
+-            '*decompress-threads': 'uint8',
++            '*compress-level': { 'type': 'uint8',
++                                 'features': [ 'deprecated' ] },
++            '*compress-threads': { 'type': 'uint8',
++                                   'features': [ 'deprecated' ] },
++            '*compress-wait-thread': { 'type': 'bool',
++                                       'features': [ 'deprecated' ] },
++            '*decompress-threads': { 'type': 'uint8',
++                                     'features': [ 'deprecated' ] },
+             '*throttle-trigger-threshold': 'uint8',
+             '*cpu-throttle-initial': 'uint8',
+             '*cpu-throttle-increment': 'uint8',
+@@ -1296,10 +1321,8 @@
+ #
+ # -> { "execute": "query-migrate-parameters" }
+ # <- { "return": {
+-#          "decompress-threads": 2,
++#          "multifd-channels": 2,
+ #          "cpu-throttle-increment": 10,
+-#          "compress-threads": 8,
+-#          "compress-level": 1,
+ #          "cpu-throttle-initial": 20,
+ #          "max-bandwidth": 33554432,
+ #          "downtime-limit": 300
+diff --git a/migration/options.c b/migration/options.c
+index ae8ab47e32..9a39826ca5 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -483,6 +483,11 @@ bool migrate_caps_check(bool *old_caps, bool *new_caps, Error **errp)
+                     " use blockdev-mirror with NBD instead");
      }
+ 
++    if (new_caps[MIGRATION_CAPABILITY_COMPRESS]) {
++        warn_report("old compression method is deprecated;"
++                    " use multifd compression methods instead");
++    }
 +
-+    register_savevm_live(TYPE_S390_STATTRIB, 0, 0,
-+                         &savevm_s390_stattrib_handlers, dev);
- }
+ #ifndef CONFIG_REPLICATION
+     if (new_caps[MIGRATION_CAPABILITY_X_COLO]) {
+         error_setg(errp, "QEMU compiled without replication module"
+@@ -1335,18 +1340,26 @@ static void migrate_params_apply(MigrateSetParameters *params, Error **errp)
+     /* TODO use QAPI_CLONE() instead of duplicating it inline */
  
- static Property s390_stattrib_props[] = {
-@@ -355,24 +370,10 @@ static void s390_stattrib_class_init(ObjectClass *oc, void *data)
-     device_class_set_props(dc, s390_stattrib_props);
- }
+     if (params->has_compress_level) {
++        warn_report("old compression is deprecated;"
++                    " use multifd compression methods instead");
+         s->parameters.compress_level = params->compress_level;
+     }
  
--static SaveVMHandlers savevm_s390_stattrib_handlers = {
--    .save_setup = cmma_save_setup,
--    .save_live_iterate = cmma_save_iterate,
--    .save_live_complete_precopy = cmma_save_complete,
--    .state_pending_exact = cmma_state_pending,
--    .state_pending_estimate = cmma_state_pending,
--    .save_cleanup = cmma_save_cleanup,
--    .load_state = cmma_load,
--    .is_active = cmma_active,
--};
--
- static void s390_stattrib_instance_init(Object *obj)
- {
-     S390StAttribState *sas = S390_STATTRIB(obj);
+     if (params->has_compress_threads) {
++        warn_report("old compression is deprecated;"
++                    " use multifd compression methods instead");
+         s->parameters.compress_threads = params->compress_threads;
+     }
  
--    register_savevm_live(TYPE_S390_STATTRIB, 0, 0,
--                         &savevm_s390_stattrib_handlers, sas);
--
-     sas->migration_cur_gfn = 0;
- }
+     if (params->has_compress_wait_thread) {
++        warn_report("old compression is deprecated;"
++                    " use multifd compression methods instead");
+         s->parameters.compress_wait_thread = params->compress_wait_thread;
+     }
+ 
+     if (params->has_decompress_threads) {
++        warn_report("old compression is deprecated;"
++                    " use multifd compression methods instead");
+         s->parameters.decompress_threads = params->decompress_threads;
+     }
  
 -- 
 2.41.0

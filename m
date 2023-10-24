@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2040361ejb;
-        Tue, 24 Oct 2023 06:17:36 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGbXWxDJJ7LK+U4R6b9YaedZ5OU83avGAV8lB72Zm3Ro2DV428sMb3u3nr7h+w7PjisgI3a
-X-Received: by 2002:a05:6214:29e5:b0:66d:4766:5a83 with SMTP id jv5-20020a05621429e500b0066d47665a83mr12798028qvb.16.1698153456575;
-        Tue, 24 Oct 2023 06:17:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153456; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2040636ejb;
+        Tue, 24 Oct 2023 06:18:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF9iLLKrvv5AHrA0V0HZ7nB8D4VSsWsSVhBO5EGwVfqWyrV6U1z+6YREQpQ/i7BsCsarOcQ
+X-Received: by 2002:a05:620a:f0b:b0:773:bf62:b274 with SMTP id v11-20020a05620a0f0b00b00773bf62b274mr13106356qkl.61.1698153481546;
+        Tue, 24 Oct 2023 06:18:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153481; cv=none;
         d=google.com; s=arc-20160816;
-        b=KhD5gqALhVDEs6AO3F3f5kMj/4QCveNpyGgHEPzaZ2C1OwGAseqA13lWRjN9L1ZrEB
-         YgSePP1/RR50ds9InhmvPjfmTqoPxMbNs8R2j/IqJLW7pUT4nT4c6pDQXA7yBWe4b+j0
-         jxQyiG33dR0YvpyshPu0ZpHSyua/A5S/APDyCK1AiNGVJ697QGN8ISebQaw4vdUc1G09
-         vZy15RbqVjimrvP95LVS9i/vLA2akMnpO1eIzL8QbWWnQxz7RQX1DLbI9CmX0x2DmprT
-         aG9PBl7UbAtjTuZ1EjPqP0Zyr7yf7oYe7J4Dk2TYc005O3DTCTlvMV9C2K6hW2H5DKIe
-         hHnw==
+        b=rBh7xMF3JU58cJHLI+1O6ilDGz+DfljO2AWbs+3Tu//2bex4XyMzK6BxHRw6oEa3Qk
+         tGBPqiCWTYnKhf6LShcntJl3F2eT9H4cg/J6nZ4/uH0e/6Nfis5PC5Msqp9gfP3/yuWl
+         2DJtx87y1zrTub6N/kL4fo+3AGekP3b3j5uOxWywpkzJHbyFifXPx9uzB7AgjfutrjzW
+         qa5Av5utscgnNM9eflguWP5Y8kxh3WuEqdC+J9ABBAIPaqzYZ+c5ZLJIpRcW61I1vkRE
+         MfRNgLDETuQ8X2QUAo6/svL1wq6v7f4VfspkS4124Gu6aRGnlpkXBFlWsU9XA1AH4Wo9
+         CkVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RMR6mJo/CLl8hImKJ4c1ZpzowhtiyyFY45f46tcOvT0=;
+        bh=12UW4S7DwReY5i7WbgLvv6myQHnsED050vB3pRolHAs=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=n/kIgo//4yfe9bJs0SDH5bd0OPnqKSfUQektY0RrWKB21MBr2fBQUrp+WGdSAOAUIw
-         U1aIdgOoDF6LeYy0dpfIo2c7GogUbZYPsuDRsCe5fw1Jos5NPiKcJvUYQS1eHw6YUB/S
-         yQ/teuHuLUBP2lAwvtt+W64NGbahQsFyf+t5xToYHuucipL1bRPawm/hvQe3aVUQfTqp
-         mfJFHak9cOqNiEMAw8+FaXQrrkdUZ5Pn4AJtGV5BZLsstgkFzYJRoYLHyn89AFosgI3D
-         cBd3OFbghIn2ZZLRc/Amq4XtlN41cWyLHoWE95tSScEHl0FHZL+2jfzUhcdlf5oWPVOu
-         rsXg==
+        b=J8S2IdigWAGeWBntr11u1c/ez1wvXkthRgsiDKUIfccDfTO6EV4E4TVqISlBNY1rAX
+         Ftfv63rF71p8Q+emz15njEzmnyFoz/D196m96kShIcEIkGedi0HeCDZ0TB9wZ+K7Z+/z
+         VJ21Iz6IPXqf+chs2JLndk4tlGlEzzw1e4YDeajlcEWrQwbNHcS+dzRgot4bB/1O5dnN
+         PdpBzsUuXA07uesXPftyPAyfTsd0m4ABmoPW8iXngXrY7OKV//GrpdHH7Gk+YYfEqhWM
+         RHVkbXbsCofppPHYro/UXHXoLh5lj/XFNUn2Dkea3b/j9iVXlz2AT80C9R81PvwSapbg
+         z5Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQ7jWH04;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dV0KKvIy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id om29-20020a0562143d9d00b0065b31ba68acsi7561469qvb.339.2023.10.24.06.17.36
+        by mx.google.com with ESMTPS id e1-20020a05620a014100b007740f66ad68si6634752qkn.314.2023.10.24.06.18.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:17:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:18:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GQ7jWH04;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dV0KKvIy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvHFy-0000zS-11; Tue, 24 Oct 2023 09:15:38 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvHGk-0003WS-CZ; Tue, 24 Oct 2023 09:16:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFv-0000kO-6t
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:15:35 -0400
+ id 1qvHGQ-0002N4-1m
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:16:08 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFt-0001kf-4a
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:15:34 -0400
+ id 1qvHGM-0001sn-5x
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:16:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153332;
+ s=mimecast20190719; t=1698153361;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RMR6mJo/CLl8hImKJ4c1ZpzowhtiyyFY45f46tcOvT0=;
- b=GQ7jWH04dkK8V5+rNPh1W5lLf3tP5xmk40T5wM5yK9FB7vPxS7cHkLi+ShBzZ37XPlaoog
- DDUAhnmrpNYK33HiVUy7CM27a0Z0dHlev8l1ITPUKQkX4Bq05q0fgcZeitPuYFHqKSZtjo
- Dk69a1f35nuGKqb1OH/N6mAnoLxGCFM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-145-yMmmnlQ3NROU6he0AvR6_g-1; Tue, 24 Oct 2023 09:15:28 -0400
-X-MC-Unique: yMmmnlQ3NROU6he0AvR6_g-1
+ bh=12UW4S7DwReY5i7WbgLvv6myQHnsED050vB3pRolHAs=;
+ b=dV0KKvIyuKjflh68vdwWTIvXjvOGvyuEnYQzNjG5EMrfK+vIqmI4C/8ryBYXrIADaNgWhy
+ 29P6yj/o/jTqsSEU/5s53UqhuCKdRpCes4qLyabsTwiSH7LZ+wn+Kxy2yu6DGSaXjoegzZ
+ 2/5LCDmRs3W1CUOyetj8uQyOpiInUIo=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-541-YRUdb2dENQ6nkuSypCmt8g-1; Tue,
+ 24 Oct 2023 09:15:55 -0400
+X-MC-Unique: YRUdb2dENQ6nkuSypCmt8g-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 545FE86790A;
- Tue, 24 Oct 2023 13:15:27 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 287423813F2E;
+ Tue, 24 Oct 2023 13:15:54 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 267111C060AE;
- Tue, 24 Oct 2023 13:15:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 763D11C060AE;
+ Tue, 24 Oct 2023 13:15:47 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -108,13 +108,13 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 20/39] hw/s390x/s390-stattrib: Simplify handling of the
- "migration-enabled" property
-Date: Tue, 24 Oct 2023 15:12:46 +0200
-Message-ID: <20231024131305.87468-21-quintela@redhat.com>
+Subject: [PULL 24/39] migration: set file error on subsection loading
+Date: Tue, 24 Oct 2023 15:12:50 +0200
+Message-ID: <20231024131305.87468-25-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
@@ -125,96 +125,49 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BMJJ8iJ1uzHy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: I5N+FDYgTPdc
 
-From: Thomas Huth <thuth@redhat.com>
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-There's no need for dedicated handlers here if they don't do anything
-special.
+commit 13cde50889237 ("vmstate: Return error in case of error") sets
+QemuFile error to stop reading from it and report to the caller (checked
+by unit tests). We should do the same on subsection loading error.
 
-Acked-by: David Hildenbrand <david@redhat.com>
-Reviewed-by: Eric Farman <farman@linux.ibm.com>
-Acked-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231020150554.664422-3-thuth@redhat.com>
+Message-ID: <20231024084043.2926316-8-marcandre.lureau@redhat.com>
 ---
- hw/s390x/s390-stattrib.c | 26 ++++++--------------------
- 1 file changed, 6 insertions(+), 20 deletions(-)
+ migration/vmstate.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
-index 220e845d12..52f9fc036e 100644
---- a/hw/s390x/s390-stattrib.c
-+++ b/hw/s390x/s390-stattrib.c
-@@ -13,6 +13,7 @@
- #include "qemu/units.h"
- #include "migration/qemu-file.h"
- #include "migration/register.h"
-+#include "hw/qdev-properties.h"
- #include "hw/s390x/storage-attributes.h"
- #include "qemu/error-report.h"
- #include "exec/ram_addr.h"
-@@ -340,6 +341,10 @@ static void s390_stattrib_realize(DeviceState *dev, Error **errp)
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index 16e33a5d34..9c36803c8a 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -179,6 +179,7 @@ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
+     assert(field->flags == VMS_END);
+     ret = vmstate_subsection_load(f, vmsd, opaque);
+     if (ret != 0) {
++        qemu_file_set_error(f, ret);
+         return ret;
      }
- }
- 
-+static Property s390_stattrib_props[] = {
-+    DEFINE_PROP_BOOL("migration-enabled", S390StAttribState, migration_enabled, true),
-+};
-+
- static void s390_stattrib_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
-@@ -347,22 +352,7 @@ static void s390_stattrib_class_init(ObjectClass *oc, void *data)
-     dc->hotpluggable = false;
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-     dc->realize = s390_stattrib_realize;
--}
--
--static inline bool s390_stattrib_get_migration_enabled(Object *obj,
--                                                       Error **errp)
--{
--    S390StAttribState *s = S390_STATTRIB(obj);
--
--    return s->migration_enabled;
--}
--
--static inline void s390_stattrib_set_migration_enabled(Object *obj, bool value,
--                                            Error **errp)
--{
--    S390StAttribState *s = S390_STATTRIB(obj);
--
--    s->migration_enabled = value;
-+    device_class_set_props(dc, s390_stattrib_props);
- }
- 
- static SaveVMHandlers savevm_s390_stattrib_handlers = {
-@@ -383,10 +373,6 @@ static void s390_stattrib_instance_init(Object *obj)
-     register_savevm_live(TYPE_S390_STATTRIB, 0, 0,
-                          &savevm_s390_stattrib_handlers, sas);
- 
--    object_property_add_bool(obj, "migration-enabled",
--                             s390_stattrib_get_migration_enabled,
--                             s390_stattrib_set_migration_enabled);
--    object_property_set_bool(obj, "migration-enabled", true, NULL);
-     sas->migration_cur_gfn = 0;
- }
- 
+     if (vmsd->post_load) {
 -- 
 2.41.0
 

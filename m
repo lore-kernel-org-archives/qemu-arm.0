@@ -1,124 +1,105 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1715425ejb;
-        Mon, 23 Oct 2023 17:13:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF8HQJBC0mftK5vZJBFd2Lyaqewdn1JqeLQb6L2mDCip87ABKmWU+gHk0cp9He15ZKPm+BY
-X-Received: by 2002:a05:6214:2262:b0:65b:ed3:9a02 with SMTP id gs2-20020a056214226200b0065b0ed39a02mr14516211qvb.17.1698106386593;
-        Mon, 23 Oct 2023 17:13:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698106386; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1746681ejb;
+        Mon, 23 Oct 2023 18:29:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEb65s9JHo700NELYzq1BN5/GnKodBAwclp6kaUwgariZKHppgkK8Zwc6hz/4G2gxem0PSc
+X-Received: by 2002:a05:620a:1434:b0:778:916b:c244 with SMTP id k20-20020a05620a143400b00778916bc244mr11158591qkj.76.1698110989200;
+        Mon, 23 Oct 2023 18:29:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698110989; cv=none;
         d=google.com; s=arc-20160816;
-        b=G/F3UkjX9sB5/HS+bY3Iv7ctF0Er6yNNzPNkyXXnnlT2wKtk2ZtIeVMscOS55UnHUe
-         qYNv7N3VJ8+SoOTOJTVY/YgJlv2A4gWQRM/sXdQy9vYNqu5wDzJQ/yT/9vAuVEwlfO6R
-         Ub1lgQk4N0gSoKh7BAPEfJOUWSKSANEsgsaapv/C7VJu69i1IG9X8f/w6AtJS9s2utLX
-         FirGdlO6Q6wDuH+Q3s1fmNOrWUoPbvU3rpAW8XUq9OI440F6koYUCtmUOBZ6mnt6J65y
-         ee30psa+KicfiJwVK3eVyNIYnp1NH/ZtNxbQhimg9J5aeInKNvu+iCdGKZvQG1vda7RL
-         yZqg==
+        b=I6ebzxmxJFRAI/SxGKxlVvItc62amiVLTIl7//RZB3UrZJ0UZm3cOm5rDXVtESYj5J
+         5NFsCqQcn3DkOea56cqIiiZeATIJDqKrDA2ksgGb5fuJq9kH8104bFl5NskC09YLMUvu
+         a74uIDzsPRsdm4YZiZHt6o1nGp6QFCOF2oyr23J/Js0ZxdW4H25rwApKp7svzzPe16Fw
+         oAvjJuhIfnEGia9jgHEQ/WbtFXhDuICwbowgQfDHwRde15eXVZeZ/49YC3xHek/Wldaj
+         dVM+VAKhgfsRpK86EN6UwDRCi97LejHzhukfY3Unu61AK64KMbH3WP6/4929d82S8KQo
+         fvPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=Dq0WIJgUgw+AJJ0NDHFBFh3Oog2PprBc6pcuCZtSqFQ=;
-        fh=s+fDW8c5BHnNqsLbDSxABoDuumyLntKlJVceGns5WYs=;
-        b=lOrtvc1X5kR9uHenkl/XCu7R16cOFe7BR2pDbKwbMwf/Rjggv2n0DxGpnaPhjXT1i+
-         sYDu/s7/FG4QqRwdTeFuOwOucmtpAKe/XE+Q7YXsUZZSWFoRMtnVTBoxAIm8mbNi67HC
-         yUg8vrlPTPsDSqpxri8KU2XffNCbYNl8xyBAAnxqGEmll2+i/PE1QYaXfnu4IdLgBkgA
-         /UQKFihreQM38q9LUy49XW4hNYvHuBDj181MqE1Td117F8X4X/UXYXS/3hVpuz99D8zU
-         vfqr7p0dk3k2Hf1ZABikxrapwlNsKyvdadDD3IJdM8iZl1rYNSqc7shzdOPNafusf/Xu
-         wwOQ==
+        bh=D8iL3tyFSc+qRvYdSafLlNXBRhoP/RIR/qy0JaInJUY=;
+        fh=LP3Hre7FgviHYRbAilnaffEP07lMnI51h3zmItv90Gc=;
+        b=tlRSoquTTrU8llea33G8cgRDQp9c4bZ56QqaPsl7ohCnYnv8h53pb5sAMxu/r9dT/X
+         UHB8uw8dGVYjR+i8aCd9QfnE6SK89lMLUrlViDbbjnnRISJ3/ybLRRwT4f10zffHALNm
+         0otP5Em3kJYJFSMOGAwvZ4rKQ1UEn+van4r4Bx5aYiF4mqpIlrLk4V37rh+P1MpA9Se+
+         rJ+cZt6fDXtyklFaRXPePz7gFnSPSAgiZLmg1emVDmAm7IsHXHpECThZGKsM0jMvHQAj
+         tQqA5iKDXfRAk9iKySFft+p1cl4+FURWDvYzQmpdvCsJHdsRwtZqNnL1aY2VLc9DerBY
+         yLSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DYnh6IPt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A7XrxePe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l15-20020a0ce84f000000b0066d1f749b1fsi6405158qvo.574.2023.10.23.17.13.06
+        by mx.google.com with ESMTPS id bk12-20020a05620a1a0c00b0077419b27782si6799111qkb.339.2023.10.23.18.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 17:13:06 -0700 (PDT)
+        Mon, 23 Oct 2023 18:29:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DYnh6IPt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A7XrxePe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qv52H-0000Ra-L6; Mon, 23 Oct 2023 20:12:41 -0400
+	id 1qv6EE-0002wK-PY; Mon, 23 Oct 2023 21:29:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qv52G-0000RH-Jn; Mon, 23 Oct 2023 20:12:40 -0400
-Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qv52E-00080S-EA; Mon, 23 Oct 2023 20:12:40 -0400
-Received: by mail-vk1-xa2a.google.com with SMTP id
- 71dfb90a1353d-49ab0641e77so1691340e0c.0; 
- Mon, 23 Oct 2023 17:12:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698106356; x=1698711156; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Dq0WIJgUgw+AJJ0NDHFBFh3Oog2PprBc6pcuCZtSqFQ=;
- b=DYnh6IPtnIkWos7tdei1V2qCnJ9bZmDFaFl0wH4VlUi2HXt6swdpGNm7jmK6dh4VZg
- 80xPDe/foMdpZdj8LSLZnIGEJu/vazDYPLhRfayChfgEfHmDayiORowvV1ULlH7RsNLh
- /Y7DZyjuwPyOD3J3cbZWDO2BD02ckiJ7EK1MHugTpRXoXXEtrTEpdFnxV/jM7nYn1MyP
- GqmvC6Z3isvsBFn1qGLJrf2iFmpZKwB3OP6P6U9BlpiUbqeIPt+81pk5hWZJs7KWkFvk
- FDiZ38OuytEpoQAGQKLeQXhmJWG9jx60x15jqSlOE7YFYLVVY1F+WMWpT4qLT7X84Eet
- txRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698106356; x=1698711156;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Dq0WIJgUgw+AJJ0NDHFBFh3Oog2PprBc6pcuCZtSqFQ=;
- b=IIFV9xtC62C2/Fba8LDFBYAs4dWskSg1ySVaFxlSabHuXKEn6nTBvkrewhQc64uVXo
- Bn3nTtU6ou3NPrECInpgJmjA/OntC5f/mB0Xkgw8msCwPArG7vJTNko6GbbV3EpFURQc
- TUU/nYsYH6QuQflo2afK4cfVVTbz2b7yRQW6z8okOMt+WlVo+O0uQy6c9NQMnc6HgjGz
- lTTHOU5LVPvFe9tj23POe/QrEImwk/wjXbZ/40w9UvUsDkWXLW0pa5Lo/UtEqh0T862O
- LAQUifLkVHqHQ+MY7jh1k9g7izoOsGvIjGja0/6mzrlqouYRwmdMVxcDzeVxt9hA4Skz
- w/ZA==
-X-Gm-Message-State: AOJu0Yww/ZgRuyQYjUhwJmfPzhYo9CrTl/MfmJ7rkUf2XAh8W2XKNpV3
- EDO8pnh/O6/0uY3dirrdBIq+ufj9O/ekm2aHEAU=
-X-Received: by 2002:a05:6122:5bb:b0:49d:c216:8736 with SMTP id
- w27-20020a05612205bb00b0049dc2168736mr8569285vko.3.1698106355705; Mon, 23 Oct
- 2023 17:12:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qv6EC-0002tO-RK
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 21:29:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qv6EB-0006m4-Er
+ for qemu-arm@nongnu.org; Mon, 23 Oct 2023 21:29:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698110942;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=D8iL3tyFSc+qRvYdSafLlNXBRhoP/RIR/qy0JaInJUY=;
+ b=A7XrxePeVKbYvkxtjKU39H6Ke4GUgxvqQTi2kxmex8anNGQ77MZqIFrzj1oJfXVCOLeVjC
+ Ah3H75PuYwtGYi+aWAJ2PLJbwxRRm+Ynyg1anQ/s+n62HKb9DhfVHHZo2442XwkcyyJDcn
+ kU+QZS2LHqjSfGADd63N+fVoEaZ3vJ4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-360-En7_qKuiNTKD7cF2KQEXXg-1; Mon, 23 Oct 2023 21:28:57 -0400
+X-MC-Unique: En7_qKuiNTKD7cF2KQEXXg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D18E8185A795;
+ Tue, 24 Oct 2023 01:28:56 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.42])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 19CF11C060B6;
+ Tue, 24 Oct 2023 01:28:55 +0000 (UTC)
+Date: Tue, 24 Oct 2023 09:15:12 +0800
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PULL v3 00/46] Misc HW/UI patches for 2023-10-19
+Message-ID: <20231024011512.GA499194@fedora>
+References: <20231020125509.49440-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20231019132648.23703-1-sunilvl@ventanamicro.com>
- <20231019132648.23703-8-sunilvl@ventanamicro.com>
-In-Reply-To: <20231019132648.23703-8-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 24 Oct 2023 10:12:09 +1000
-Message-ID: <CAKmqyKPwwKVebSNzVhQjkdNhdYAnW_bJYSERnJ8rkkX28pagng@mail.gmail.com>
-Subject: Re: [PATCH v3 07/12] hw/riscv/virt-acpi-build.c: Add CMO information
- in RHCT
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Anup Patel <apatel@ventanamicro.com>, Andrew Jones <ajones@ventanamicro.com>, 
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2a;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa2a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="CEjV+3AxN1yEQh2s"
+Content-Disposition: inline
+In-Reply-To: <20231020125509.49440-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,147 +114,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d5uOHn+NjSWd
+X-TUID: LWtqdjIFi7ZZ
 
-On Fri, Oct 20, 2023 at 12:59=E2=80=AFAM Sunil V L <sunilvl@ventanamicro.co=
-m> wrote:
->
-> When CMO related extensions like Zicboz, Zicbom and Zicbop are enabled, t=
-he
-> block size for those extensions need to be communicated via CMO node in
-> RHCT. Add CMO node in RHCT if any of those CMO extensions are detected.
->
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+--CEjV+3AxN1yEQh2s
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Alistair
+Applied, thanks.
 
-> ---
->  hw/riscv/virt-acpi-build.c | 64 +++++++++++++++++++++++++++++++++-----
->  1 file changed, 56 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-> index 8fa358d034..bf47eef792 100644
-> --- a/hw/riscv/virt-acpi-build.c
-> +++ b/hw/riscv/virt-acpi-build.c
-> @@ -147,6 +147,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtS=
-tate *s)
->   * 5.2.36 RISC-V Hart Capabilities Table (RHCT)
->   * REF: https://github.com/riscv-non-isa/riscv-acpi/issues/16
->   *      https://drive.google.com/file/d/1nP3nFiH4jkPMp6COOxP6123DCZKR-ti=
-a/view
-> + *      https://drive.google.com/file/d/1sKbOa8m1UZw1JkquZYe3F1zQBN1xXsa=
-f/view
->   */
->  static void build_rhct(GArray *table_data,
->                         BIOSLinker *linker,
-> @@ -156,8 +157,8 @@ static void build_rhct(GArray *table_data,
->      MachineState *ms =3D MACHINE(s);
->      const CPUArchIdList *arch_ids =3D mc->possible_cpu_arch_ids(ms);
->      size_t len, aligned_len;
-> -    uint32_t isa_offset, num_rhct_nodes;
-> -    RISCVCPU *cpu;
-> +    uint32_t isa_offset, num_rhct_nodes, cmo_offset =3D 0;
-> +    RISCVCPU *cpu =3D &s->soc[0].harts[0];
->      char *isa;
->
->      AcpiTable table =3D { .sig =3D "RHCT", .rev =3D 1, .oem_id =3D s->oe=
-m_id,
-> @@ -173,6 +174,9 @@ static void build_rhct(GArray *table_data,
->
->      /* ISA + N hart info */
->      num_rhct_nodes =3D 1 + ms->smp.cpus;
-> +    if (cpu->cfg.ext_zicbom || cpu->cfg.ext_zicboz) {
-> +        num_rhct_nodes++;
-> +    }
->
->      /* Number of RHCT nodes*/
->      build_append_int_noprefix(table_data, num_rhct_nodes, 4);
-> @@ -184,7 +188,6 @@ static void build_rhct(GArray *table_data,
->      isa_offset =3D table_data->len - table.table_offset;
->      build_append_int_noprefix(table_data, 0, 2);   /* Type 0 */
->
-> -    cpu =3D &s->soc[0].harts[0];
->      isa =3D riscv_isa_string(cpu);
->      len =3D 8 + strlen(isa) + 1;
->      aligned_len =3D (len % 2) ? (len + 1) : len;
-> @@ -200,14 +203,59 @@ static void build_rhct(GArray *table_data,
->          build_append_int_noprefix(table_data, 0x0, 1);   /* Optional Pad=
-ding */
->      }
->
-> +    /* CMO node */
-> +    if (cpu->cfg.ext_zicbom || cpu->cfg.ext_zicboz) {
-> +        cmo_offset =3D table_data->len - table.table_offset;
-> +        build_append_int_noprefix(table_data, 1, 2);    /* Type */
-> +        build_append_int_noprefix(table_data, 10, 2);   /* Total Length =
-*/
-> +        build_append_int_noprefix(table_data, 0x1, 2);  /* Revision */
-> +        build_append_int_noprefix(table_data, 0, 1);    /* Reserved */
-> +
-> +        /* CBOM block size */
-> +        if (cpu->cfg.cbom_blocksize) {
-> +            build_append_int_noprefix(table_data,
-> +                                      __builtin_ctz(cpu->cfg.cbom_blocks=
-ize),
-> +                                      1);
-> +        } else {
-> +            build_append_int_noprefix(table_data, 0, 1);
-> +        }
-> +
-> +        /* CBOP block size */
-> +        build_append_int_noprefix(table_data, 0, 1);
-> +
-> +        /* CBOZ block size */
-> +        if (cpu->cfg.cboz_blocksize) {
-> +            build_append_int_noprefix(table_data,
-> +                                      __builtin_ctz(cpu->cfg.cboz_blocks=
-ize),
-> +                                      1);
-> +        } else {
-> +            build_append_int_noprefix(table_data, 0, 1);
-> +        }
-> +    }
-> +
->      /* Hart Info Node */
->      for (int i =3D 0; i < arch_ids->len; i++) {
-> +        len =3D 16;
-> +        int num_offsets =3D 1;
->          build_append_int_noprefix(table_data, 0xFFFF, 2);  /* Type */
-> -        build_append_int_noprefix(table_data, 16, 2);      /* Length */
-> -        build_append_int_noprefix(table_data, 0x1, 2);     /* Revision *=
-/
-> -        build_append_int_noprefix(table_data, 1, 2);    /* Number of off=
-sets */
-> -        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processo=
-r UID */
-> -        build_append_int_noprefix(table_data, isa_offset, 4); /* Offsets=
-[0] */
-> +
-> +        /* Length */
-> +        if (cmo_offset) {
-> +            len +=3D 4;
-> +            num_offsets++;
-> +        }
-> +
-> +        build_append_int_noprefix(table_data, len, 2);
-> +        build_append_int_noprefix(table_data, 0x1, 2); /* Revision */
-> +        /* Number of offsets */
-> +        build_append_int_noprefix(table_data, num_offsets, 2);
-> +        build_append_int_noprefix(table_data, i, 4);   /* ACPI Processor=
- UID */
-> +
-> +        /* Offsets */
-> +        build_append_int_noprefix(table_data, isa_offset, 4);
-> +        if (cmo_offset) {
-> +            build_append_int_noprefix(table_data, cmo_offset, 4);
-> +        }
->      }
->
->      acpi_table_end(linker, &table);
-> --
-> 2.34.1
->
->
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
+
+--CEjV+3AxN1yEQh2s
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmU3GqAACgkQnKSrs4Gr
+c8jDxQf/UUCwj+Iha/MYEj67Ms/3cJWm9xsbs0fe0K03sF9bfKe6Nvj/gbEu1r86
+l0FqbXxBnibOFc0tgP15+I/R2TYuVVLrh6r+pNF8XvG1MpdmbcGaRVBFDPfAiT+L
+VS1ECe9xuSlrsCvH3Ymx/4FVCb21s1xQll0dfKqQmT4ng6UGXnzPZKKRJALfRWEb
+G289jgFNjNQA4ZS7svYHPfqPbbtrkTI2+jo+qfCpfjf5EcU0Y5XHqDrMKFKKg9Ck
+msm3l8STJ36+UCn2a4NjkFUc+pE7Bh73hg6K7QWcDYxr/mEiOWTYeGdiP3AkylPk
+dH3nqA1YDP4vQzrukkb2hhibJFTheg==
+=DMpf
+-----END PGP SIGNATURE-----
+
+--CEjV+3AxN1yEQh2s--
+

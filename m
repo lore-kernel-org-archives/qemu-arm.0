@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2039455ejb;
-        Tue, 24 Oct 2023 06:16:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFXyYYGtwNRnqC25zHVlFva9p4eL+p0H1/dJp924+LhXGZqR9v4Q9A6LDcrgghqR3py7yRN
-X-Received: by 2002:a05:620a:19a4:b0:775:ed1e:2b14 with SMTP id bm36-20020a05620a19a400b00775ed1e2b14mr13213392qkb.54.1698153384869;
-        Tue, 24 Oct 2023 06:16:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153384; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2039477ejb;
+        Tue, 24 Oct 2023 06:16:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGXMXphXqxJJ6mTbTFOfpbkn15xCIxeKYLLaLVmWzc8JcrahOPSdAZdZENLraS+hU3+sQEN
+X-Received: by 2002:a05:6214:e84:b0:66c:eeb8:4226 with SMTP id hf4-20020a0562140e8400b0066ceeb84226mr17378038qvb.12.1698153387072;
+        Tue, 24 Oct 2023 06:16:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153387; cv=none;
         d=google.com; s=arc-20160816;
-        b=i+V3VH8S30aWr1PsFrt4L5z06lIvRxNgx5DRA3V8Rozmws6NMVjF8eBy1BsUHn59fk
-         Hrd7jFQAzkaMFzp6BXMjZQjL0dv+ZJw0WYljiPLeN13Ec7bKLNwZjILR3f75iL7kKNrk
-         YU1lCyCCc3J0cfm33PIgh6+ZBeCidzBRBlEU8KCZ/Y0i/VvgdW36iAo0tkeHiEukjb/z
-         gSJDZxkhaXCv5Au9N2ithzRtZlTAVpFL/aLaIKgbamrHJcPWXC0QhQ+6FbC/2UnngK2A
-         V2VNKaklWmNyQ+4JTWmRK/rn3RPEJ/ggk9jQPfN2ygXOg0KlLjGVEqCthypC4ucgvUid
-         kH2Q==
+        b=REg0hjQgtBnVx9/2oT4/yydaz7+D2DY62FzPMSqmzO0xRi9rvAKTKj4nvwAOO1p+rz
+         MB2E80N/4PszDfYXeqlgMLQdJQzuOaU4DvxKTDjmgEGL5Swp9+sZBpl/auvXj9a3wfgt
+         Q073IjCPjBnbXfw0Q+mRk4ws0UU7cWp9fnWiRNh1GIXxAuGiqAT2Xs9VB4LjnaIg3dz7
+         FLrAYmFsrxmLCeOJYb4gc4TC5XT2dHxSlc/akFS1y2JpNYzgCaj+V1x+TFVxaQalCFlp
+         cdLUVMFaD+TnbkgAzM/WQcnxWGWd2fjZ9ukjORm1RySHousqImhrTHdQRRf+2D9elOqx
+         fKpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kRcRfbT2KHPh4dyaHnHj8XBSylrBtYcV1bXrHlUD1tA=;
+        bh=bzn6XgU4nv/l3ZtGp4EWYxpwxg6jKvAv8cH4Fj755pE=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=zYiIRghHkoz6bnijQzOvvlsLVr8vP/qEdRzKxfed0KiSC7fjZTtw2QoCEYVvxA9uko
-         1+ebWu6Jt0fZxeyyLmE9LdfNkonwxCOjMgNfsnSgAi61xtyh/KG7OkIFjLg0XcNcw+18
-         lT+iTapN2kW6hwd+gzTVd0mgyApi8rMjlynbIHQFqI9FTKnglX0aLCFlQomo2MCSNjPH
-         mo10dCL44MkKawcPL5fkbGlSYMaAXcCc47nqXz/i6j9EAGAGC4x6Oa8A4Bu+M5Q5UoUs
-         ZQ0zhDsK4DSUhY3DGhfkl8GjAhZOSXPdA9xkIaOkhXAyLiOwKMI0atq7ZHC2RYkEDfos
-         OGbA==
+        b=ZdY9OmUXmzO+kRsedojPLFaVjsxtTi6HePVBTSjnxatTv1C4PMbpAdNMnvC6525h6J
+         6Fw7Vp3igjMPsIi3cttwt7zn08LyDD7kKh4x2Krt6LfJ94XcE0XCHqSOfMaod7qTGDpJ
+         PQnxDwSiPQMSjI4gBWt3Suw1hzpoe4rZTmHkbgFDev3d4iNPtrhJ39nKLjs3vkapwpjQ
+         p6chV35ug0WeW0GjP6ys9A1X1zoN/GQQPTOxQWIp2cC8IejNJFESuO3hXWjJBbOrWwjV
+         xeolTRt58vltkrnpcETqA/yR5uUeOdv0hqjhk8UWZM/VTyRKJrSicUO2rQ375H1mwSUa
+         suxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G1MbACUO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XMq35taG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v26-20020a05620a091a00b007788b164320si6982599qkv.624.2023.10.24.06.16.24
+        by mx.google.com with ESMTPS id e11-20020a056214162b00b0066d7ec3340bsi7172233qvw.616.2023.10.24.06.16.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:16:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:16:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G1MbACUO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XMq35taG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHFr-0000SG-QQ; Tue, 24 Oct 2023 09:15:31 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qvHFC-0005Pv-MM; Tue, 24 Oct 2023 09:14:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFp-00008g-Gf
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qvHEg-0004gi-Lf
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHFn-0001iU-LZ
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:15:29 -0400
+ id 1qvHEd-00016r-BS
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:14:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153327;
+ s=mimecast20190719; t=1698153254;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kRcRfbT2KHPh4dyaHnHj8XBSylrBtYcV1bXrHlUD1tA=;
- b=G1MbACUOCA0P2A9zvF50C2or1ygacvfggMRZbE9dWaYIy+5l2LmLgswG2wRUyFbpGAJfgS
- P1VGFV+vMwSLAs8v0Rlc+60RMr6eHbmyJs/iwl3KGv/lwcuvWoEyUAThILX4eiDpdPwiJw
- XTizkRCMGZ9rJzLKR8FdSpSx3Ec3stw=
+ bh=bzn6XgU4nv/l3ZtGp4EWYxpwxg6jKvAv8cH4Fj755pE=;
+ b=XMq35taG/u/8q96vbSkBrHfsH7lfLWWh6npr+innWgNdYRenRUGcW6ywpc92tyYREWl1z5
+ NSSm4PE5ssz70vcNdIRVb9Uu3KPnGEKd49j8jXeIdfL4YcDeU4eI7TE0zzcc/1Fdl3rEwd
+ g/r0/v8ChCkmny1COYCrFjWkgUC2TFM=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-522-wpyuCAPcN36idt4x8noRmw-1; Tue, 24 Oct 2023 09:15:23 -0400
-X-MC-Unique: wpyuCAPcN36idt4x8noRmw-1
+ us-mta-531-kGGLFIURM8S24X_TsICbTw-1; Tue, 24 Oct 2023 09:14:09 -0400
+X-MC-Unique: kGGLFIURM8S24X_TsICbTw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D09373C1E9CC;
- Tue, 24 Oct 2023 13:15:20 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DC82E3C1ACE0;
+ Tue, 24 Oct 2023 13:14:07 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 837E01C060AE;
- Tue, 24 Oct 2023 13:15:14 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0FA0C1C060AE;
+ Tue, 24 Oct 2023 13:14:00 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -107,146 +107,65 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 19/39] hw/s390x/s390-skeys: Don't call register_savevm_live()
- during instance_init()
-Date: Tue, 24 Oct 2023 15:12:45 +0200
-Message-ID: <20231024131305.87468-20-quintela@redhat.com>
+Subject: [PULL 08/39] migration: Give one error if trying to set COMPRESSION
+ and XBZRLE
+Date: Tue, 24 Oct 2023 15:12:34 +0200
+Message-ID: <20231024131305.87468-9-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TetlluQlRSJk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eZWUxKZhO4El
 
-From: Thomas Huth <thuth@redhat.com>
-
-Since the instance_init() function immediately tries to set the
-property to "true", the s390_skeys_set_migration_enabled() tries
-to register a savevm handler during instance_init(). However,
-instance_init() functions can be called multiple times, e.g. for
-introspection of devices. That means multiple instances of devices
-can be created during runtime (which is fine as long as they all
-don't get realized, too), so the "Prevent double registration of
-savevm handler" check in the s390_skeys_set_migration_enabled()
-function does not work at all as expected (since there could be
-more than one instance).
-
-Thus we must not call register_savevm_live() from an instance_init()
-function at all. Move this to the realize() function instead. This
-way we can also get rid of the property getter and setter functions
-completely, simplifying the code along the way quite a bit.
-
-Acked-by: David Hildenbrand <david@redhat.com>
-Reviewed-by: Eric Farman <farman@linux.ibm.com>
-Acked-by: Juan Quintela <quintela@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231020150554.664422-2-thuth@redhat.com>
+Message-ID: <20231019110724.15324-3-quintela@redhat.com>
 ---
- hw/s390x/s390-skeys.c | 35 ++++++++---------------------------
- 1 file changed, 8 insertions(+), 27 deletions(-)
+ migration/options.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
-index 5024faf411..8e9d9e41e8 100644
---- a/hw/s390x/s390-skeys.c
-+++ b/hw/s390x/s390-skeys.c
-@@ -12,6 +12,7 @@
- #include "qemu/osdep.h"
- #include "qemu/units.h"
- #include "hw/boards.h"
-+#include "hw/qdev-properties.h"
- #include "hw/s390x/storage-keys.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-misc-target.h"
-@@ -432,58 +433,38 @@ static int s390_storage_keys_load(QEMUFile *f, void *opaque, int version_id)
-     return ret;
- }
- 
--static inline bool s390_skeys_get_migration_enabled(Object *obj, Error **errp)
--{
--    S390SKeysState *ss = S390_SKEYS(obj);
--
--    return ss->migration_enabled;
--}
--
- static SaveVMHandlers savevm_s390_storage_keys = {
-     .save_state = s390_storage_keys_save,
-     .load_state = s390_storage_keys_load,
- };
- 
--static inline void s390_skeys_set_migration_enabled(Object *obj, bool value,
--                                            Error **errp)
-+static void s390_skeys_realize(DeviceState *dev, Error **errp)
- {
--    S390SKeysState *ss = S390_SKEYS(obj);
--
--    /* Prevent double registration of savevm handler */
--    if (ss->migration_enabled == value) {
--        return;
--    }
--
--    ss->migration_enabled = value;
-+    S390SKeysState *ss = S390_SKEYS(dev);
- 
-     if (ss->migration_enabled) {
-         register_savevm_live(TYPE_S390_SKEYS, 0, 1,
-                              &savevm_s390_storage_keys, ss);
--    } else {
--        unregister_savevm(VMSTATE_IF(ss), TYPE_S390_SKEYS, ss);
+diff --git a/migration/options.c b/migration/options.c
+index b8c3c3218d..37fa1cfe74 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -625,6 +625,13 @@ bool migrate_caps_check(bool *old_caps, bool *new_caps, Error **errp)
+         }
      }
+ 
++    if (new_caps[MIGRATION_CAPABILITY_COMPRESS]) {
++        if (new_caps[MIGRATION_CAPABILITY_XBZRLE]) {
++            error_setg(errp, "Compression is not compatible with xbzrle");
++            return false;
++        }
++    }
++
+     return true;
  }
  
--static void s390_skeys_instance_init(Object *obj)
--{
--    object_property_add_bool(obj, "migration-enabled",
--                             s390_skeys_get_migration_enabled,
--                             s390_skeys_set_migration_enabled);
--    object_property_set_bool(obj, "migration-enabled", true, NULL);
--}
-+static Property s390_skeys_props[] = {
-+    DEFINE_PROP_BOOL("migration-enabled", S390SKeysState, migration_enabled, true),
-+};
- 
- static void s390_skeys_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-     dc->hotpluggable = false;
-+    dc->realize = s390_skeys_realize;
-+    device_class_set_props(dc, s390_skeys_props);
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static const TypeInfo s390_skeys_info = {
-     .name          = TYPE_S390_SKEYS,
-     .parent        = TYPE_DEVICE,
--    .instance_init = s390_skeys_instance_init,
-     .instance_size = sizeof(S390SKeysState),
-     .class_init    = s390_skeys_class_init,
-     .class_size    = sizeof(S390SKeysClass),
 -- 
 2.41.0
 

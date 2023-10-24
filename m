@@ -1,130 +1,125 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2047721ejb;
-        Tue, 24 Oct 2023 06:29:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFRKM7rkSaBT6VoZelfaFoNdD7XKkj5KBgyLe3xbXK4mem6Wi6gYONSEg3wWG0BZVAiGmL/
-X-Received: by 2002:a05:6214:1d27:b0:66d:9b75:750b with SMTP id f7-20020a0562141d2700b0066d9b75750bmr18400997qvd.8.1698154189967;
-        Tue, 24 Oct 2023 06:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698154189; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2262708ejb;
+        Tue, 24 Oct 2023 12:12:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE+gHb/hv4giBlKROoSPAGuvXbEjE7nEjtrydjfVR/KiSKf9KxZBUoIlNqTpER6FlJk/IEM
+X-Received: by 2002:a05:6214:d4b:b0:66d:65ae:18f6 with SMTP id 11-20020a0562140d4b00b0066d65ae18f6mr16775752qvr.50.1698174748618;
+        Tue, 24 Oct 2023 12:12:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698174748; cv=none;
         d=google.com; s=arc-20160816;
-        b=fIt7jHV6hqqrSspwa5O2vse6iOx2rXctHmiUFoBvtXfC3ngVqMwlJLtLX6prHWdKZ5
-         +c+246Bj+gTIK2YP+wgOugdwHUchytb0/4PpxkDNSyu6UFTcsRkPODriBqpVNF8Cg9rT
-         qFz5erqj2yPsBgNC7ufps/0afoX3G0XKVNIV6JBebnqn1wqJ/aRYNZqNleWPaWUo9PBO
-         P+EEPEjc8FgHDa0BEnLTpIzrzjRG2/9AfAV3dLfKPZ7RxAzOCFx0nGRsD/HLiXNAvPM/
-         fgzWmIAI+iMBxidWCzhawV+yt6RJ7zXXtOrsh2JzMAGTCOl/CEAEG3KTgUCzAZ/i/t+H
-         lSOA==
+        b=x1ln/c7sW3DNXtYciN+HOohw6tewP4dDJktMz4YYkVKpv/f3+L4NTlR7WGCtL2wNSU
+         mMl+/f+Y2i/ghcOLnAIK6t64Br7J2V79fLuyuugAY54N+MNDgDrKOaehEe9Ea76d0UlR
+         YNkSZ3fqGF5ZY16oss8xErZB4Qxz2OIgJicZxMU9LgH/Aw/fV3ejdLudcII3HglCkpV6
+         vuHB+C2Qlf3Z7uO1gw1otGCIhQbHS7bSRGrg2H1frYTqRN+t+6iOVW4EUGYDU4z6U7sB
+         LZH63sLYP9fsFhKdrijdlisD36B9mV7Pl763xAjmnvH5pzd3e5a/vUQhkG6iFkxd41SW
+         jF2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=9flXVe+nAicFS1/rxc83MM5ytGZ1iM573z7gK+kmgFU=;
-        fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=LxxHTWhQ88aihIR8MAbVhAnoJVvKTJkzESEi06vMBe2XX/WT3IQlXYCLqqAjk3QEQa
-         Qeh1jIEsh+aYBf42kWz+IJwREfKSG7uOFQ8R6SrhxEJtIIYmiWvy1i4x5CblRcGNwrEq
-         q+BMwJ06ZeIv7tkDlGc1wHXlfjTXVZKFhqlpnhMs3b9I1+DkXz+mioO2ZdD8Itzf6Nm+
-         P0FK9niZOLsLLC4WT7dhRBOd+YRfFPd4MpmJFGLKVCwD6MGczcesi6pUxbC2uR5wmGvK
-         0MOaoMKZeiXMWg2zXxhf4V9xoxHJmtSrLcQl+BN0Mplr36hSLJy2LKHCNtH+LfAcoE7g
-         AO6Q==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=nI+Cx2vV5POG5zmT7lpf7JazqjGek1jJQe3+LwKtRFs=;
+        fh=NAal76Z/q7FBYhiEiWbymNk3zrFoOu+wgUVBjeRKdu0=;
+        b=U9P47agB4RfmlnQtbeVUQayHljP6l6BTS43ezTnx+mUZ6jPYnf5S86GNMZV+fmqtXC
+         R2tHaJGJ1grcwQj6gKyBy8O+2MKr1tTE8gb1vR7zDauaw8+nlMBWDiSHahv4ERZcneVo
+         Y+XCt7rLaNfptg+NURVqIBYYBBVUusNBgQVXBLp44HkwJhpZNqxMP4oe32yw1GxY0jRF
+         gxqUhiwRJwFkfJyJncETGq9FKbALkhzpZI4BGpYg4CZylWJ4MFW11SyLdG2C4bYraJZG
+         6tOWywqVFid49E629vum5auloYnr/yjL4et+219rIF64OVHPlHH+BpcP2phkI8ZfC0mC
+         qr2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D7DDbXA/";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="D/QfI6Lk";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id et19-20020a056214177300b0065b05790428si7125595qvb.390.2023.10.24.06.29.49
+        by mx.google.com with ESMTPS id pi11-20020a0562144a8b00b0065b034d681asi7795666qvb.528.2023.10.24.12.12.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:29:49 -0700 (PDT)
+        Tue, 24 Oct 2023 12:12:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D7DDbXA/";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="D/QfI6Lk";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHK7-0001XB-3I; Tue, 24 Oct 2023 09:19:55 -0400
+	id 1qvMoe-000137-AQ; Tue, 24 Oct 2023 15:11:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHs-0005kE-1n
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qvMoa-00012F-PU; Tue, 24 Oct 2023 15:11:44 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHp-0002GL-VP
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153452;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9flXVe+nAicFS1/rxc83MM5ytGZ1iM573z7gK+kmgFU=;
- b=D7DDbXA/Fe5eU1+qZVnNoklu1rEJSAKugx4HpAPFl3+RMXAW7tZiWvIn/rgugESi0+nla6
- 3IDnafshMtMkMPwpwtRwar00gUD61oUZ3+AX7aO4HYG3/B5P5ntXCXV0iDteiuH/NZVkw0
- Zhl/Nbol/hBivaAGQCXqEklZMfMHx7Q=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-446--s9KxhzPPt2PbTvJ1EhwKQ-1; Tue,
- 24 Oct 2023 09:17:24 -0400
-X-MC-Unique: -s9KxhzPPt2PbTvJ1EhwKQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B19D53816C80;
- Tue, 24 Oct 2023 13:17:22 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2F2211C060AE;
- Tue, 24 Oct 2023 13:17:16 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qvMoZ-0008EU-7U; Tue, 24 Oct 2023 15:11:44 -0400
+Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OJA3Lq003728; Tue, 24 Oct 2023 19:11:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=nI+Cx2vV5POG5zmT7lpf7JazqjGek1jJQe3+LwKtRFs=;
+ b=D/QfI6LkVjy3xj+9H9f5GECGZfoXTG0j1ch2uDzZQT38K5qXq6UWHy9fcv/s9zv6MIkq
+ fdGG4//22Jra4s706AxWyaBXP7gwottSgMNHKkW2M2Q/3YZUFUM2lJJNaXCZWTGgPHj3
+ oI/goa7OxJ4plVB8P6Sd/6DlKizQZ/g35DUBC9i3hpb4JhUfMOGxOBmhe62FTZv0Be2h
+ 4m0YyK1agtJng/6wqSSVeFm/4kcs3F31mnyQIRyB/HIPcfNzS7+zIYqsEaVPT8No2lvR
+ QQIYMY2InrZniXAB7uPSXXrIG66TWDj8U2Uqbk+7ifbO0zSO37ojUJ4DFqTd8OKcIYsr sw== 
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3txkuf826s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 19:11:27 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OHmZ9n023786; Tue, 24 Oct 2023 19:11:20 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvryt1xyx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 19:11:20 +0000
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
+ [10.39.53.231])
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39OJBJvm20447996
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 24 Oct 2023 19:11:19 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6622158052;
+ Tue, 24 Oct 2023 19:11:19 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DA92358050;
+ Tue, 24 Oct 2023 19:11:18 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 24 Oct 2023 19:11:18 +0000 (GMT)
+From: Glenn Miles <milesg@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Corey Minyard <minyard@acm.org>, Li Zhijian <lizhijian@fujitsu.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Hanna Reitz <hreitz@redhat.com>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Kevin Wolf <kwolf@redhat.com>, qemu-s390x@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- libvir-list@redhat.com, Stefan Weil <sw@weilnetz.de>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Fam Zheng <fam@euphon.net>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Eric Farman <farman@linux.ibm.com>, Juan Quintela <quintela@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 37/39] migration: migrate 'blk' command option is deprecated.
-Date: Tue, 24 Oct 2023 15:13:03 +0200
-Message-ID: <20231024131305.87468-38-quintela@redhat.com>
-In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
-References: <20231024131305.87468-1-quintela@redhat.com>
+Cc: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-arm@nongnu.org, clg@kaod.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, philmd@linaro.org
+Subject: [PATCH v2] misc/led: LED state is set opposite of what is expected
+Date: Tue, 24 Oct 2023 14:11:15 -0500
+Message-Id: <20231024191115.4134426-1-milesg@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: FndO5qW3hPoV9tRK8OaGLAMbzFsS4ALv
+X-Proofpoint-ORIG-GUID: FndO5qW3hPoV9tRK8OaGLAMbzFsS4ALv
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-24_19,2023-10-24_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 spamscore=0
+ priorityscore=1501 phishscore=0 malwarescore=0 clxscore=1015 bulkscore=0
+ mlxlogscore=745 adultscore=0 mlxscore=0 impostorscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310240165
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,96 +134,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5idYHb73ld2v
+X-TUID: dVao/Gs2P1CD
 
-Use blocked-mirror with NBD instead.
+Testing of the LED state showed that when the LED polarity was
+set to GPIO_POLARITY_ACTIVE_LOW and a low logic value was set on
+the input GPIO of the LED, the LED was being turn off when it was
+expected to be turned on.
 
-Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018115513.2163-4-quintela@redhat.com>
+Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
 ---
- docs/about/deprecated.rst      | 9 +++++++++
- qapi/migration.json            | 7 ++++---
- migration/migration-hmp-cmds.c | 5 +++++
- migration/migration.c          | 5 +++++
- 4 files changed, 23 insertions(+), 3 deletions(-)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index fc6adf1dea..98b0f14e69 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -469,3 +469,12 @@ Use blockdev-mirror with NBD instead.
- As an intermediate step the ``inc`` functionality can be achieved by
- setting the ``block-incremental`` migration parameter to ``true``.
- But this parameter is also deprecated.
-+
-+``blk`` migrate command option (since 8.2)
-+''''''''''''''''''''''''''''''''''''''''''
-+
-+Use blockdev-mirror with NBD instead.
-+
-+As an intermediate step the ``blk`` functionality can be achieved by
-+setting the ``block`` migration capability to ``true``.  But this
-+capability is also deprecated.
-diff --git a/qapi/migration.json b/qapi/migration.json
-index fa7f4f2575..3765c2b662 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -1526,8 +1526,8 @@
- #
- # Features:
- #
--# @deprecated: Member @inc is deprecated.  Use blockdev-mirror with
--#     NBD instead.
-+# @deprecated: Members @inc and @blk are deprecated.  Use
-+#     blockdev-mirror with NBD instead.
- #
- # Returns: nothing on success
- #
-@@ -1550,7 +1550,8 @@
- # <- { "return": {} }
- ##
- { 'command': 'migrate',
--  'data': {'uri': 'str', '*blk': 'bool',
-+  'data': {'uri': 'str',
-+           '*blk': { 'type': 'bool', 'features': [ 'deprecated' ] },
-            '*inc': { 'type': 'bool', 'features': [ 'deprecated' ] },
-            '*detach': 'bool', '*resume': 'bool' } }
+Changes from v1:
+    - Changed logic for readability
+
+ hw/misc/led.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/misc/led.c b/hw/misc/led.c
+index f6d6d68bce..42bb43a39a 100644
+--- a/hw/misc/led.c
++++ b/hw/misc/led.c
+@@ -63,7 +63,7 @@ static void led_set_state_gpio_handler(void *opaque, int line, int new_state)
+     LEDState *s = LED(opaque);
  
-diff --git a/migration/migration-hmp-cmds.c b/migration/migration-hmp-cmds.c
-index 83176f5bae..dfe98da355 100644
---- a/migration/migration-hmp-cmds.c
-+++ b/migration/migration-hmp-cmds.c
-@@ -750,6 +750,11 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
-                     " use blockdev-mirror with NBD instead");
-     }
+     assert(line == 0);
+-    led_set_state(s, !!new_state != s->gpio_active_high);
++    led_set_state(s, !!new_state == s->gpio_active_high);
+ }
  
-+    if (blk) {
-+        warn_report("option '-b' is deprecated;"
-+                    " use blockdev-mirror with NBD instead");
-+    }
-+
-     qmp_migrate(uri, !!blk, blk, !!inc, inc,
-                 false, false, true, resume, &err);
-     if (hmp_handle_error(mon, err)) {
-diff --git a/migration/migration.c b/migration/migration.c
-index 06a706ad90..cb2d7161b5 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1625,6 +1625,11 @@ static bool migrate_prepare(MigrationState *s, bool blk, bool blk_inc,
-                     " use blockdev-mirror with NBD instead");
-     }
- 
-+    if (blk) {
-+        warn_report("parameter 'blk' is deprecated;"
-+                    " use blockdev-mirror with NBD instead");
-+    }
-+
-     if (resume) {
-         if (s->state != MIGRATION_STATUS_POSTCOPY_PAUSED) {
-             error_setg(errp, "Cannot resume if there is no "
+ static void led_reset(DeviceState *dev)
 -- 
-2.41.0
+2.31.1
 

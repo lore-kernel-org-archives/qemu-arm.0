@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2045045ejb;
-        Tue, 24 Oct 2023 06:25:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGkTDGmdKMNX3qn+iQQUgtFfqLgdTW2re7bVuA+Gez1BogR4h2gklmIIGKJCzMASuGJe+7t
-X-Received: by 2002:a05:6214:27c5:b0:65b:21bf:8fc1 with SMTP id ge5-20020a05621427c500b0065b21bf8fc1mr14945769qvb.42.1698153905140;
-        Tue, 24 Oct 2023 06:25:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153905; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2045143ejb;
+        Tue, 24 Oct 2023 06:25:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEVZTHzkgE7oIwtAcW06+AwtxJmEa3S89A04ZhzgkEOp3iCWcfZJB9r9wwQSs+enmgtson+
+X-Received: by 2002:a05:6214:1d21:b0:66d:19b5:9a3 with SMTP id f1-20020a0562141d2100b0066d19b509a3mr15912430qvd.29.1698153915972;
+        Tue, 24 Oct 2023 06:25:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153915; cv=none;
         d=google.com; s=arc-20160816;
-        b=vamI18bZV7ks8aW2lIKs82ke5rZLpIciK8tBFL6hGni0iNSkLjH6Dm7dOz2Ittk+tf
-         G57KQmB1jItRQbLFpK8EkcySKIn0WaP2JKi1h13ffvEeqPy/R7aJ/UuUupYxceNxExIm
-         NN9UhEHVd5xJVkl8qTtUtmv4lNpTn9XKZ2ahuvYxR9yWW2MYagYG+GUb97wSCjolAT7E
-         KDZL7cesKwIXr2E8X+6lxwIlB4aQW9adig/wC1XUk27cUjJMI8+V96kSCFRZrtf8+IJL
-         4yu3eMDeXw4XQaIB+xhb09ioMTV/TMFzztucOOyc0hu752uRkno3vZ2RbxvWtEzc/H2F
-         CCIQ==
+        b=qjAIW6Ewt2Nk8ZhVhjYsPE7R46hUHnXwFtfBNtKMOODOv2Hj1b9YFj96s6SSfH7M7U
+         CM8OuHjOOGwoSKJZ5NUgv3CwvjdqNCvLVjXnl+//twRTQgn4DLayjCTI6CcZmJ1NqRkb
+         ryvtg+zaLsJTaJl46EIjWvL29wToO02JqjvRGbHGvSRSUPZnjratTbXnwhNo97kf0JMo
+         8TbTXOeCyDNu/5b3kUpXSucQp3ZOyeePXbihPIaakKB7PsQEWqisSFUfR462YWrAtZ4E
+         f0kn98laDzMpfALFowReqy2KNWC00zgKHrfrfIg0v9KXPW7I5ECRA84WLxBLIrWpgrVB
+         UyCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=w5jcWCJuarmvQpIJ2dG0VPWVcQ2F1rKSx6Uy0+MjrJ4=;
+        bh=1+EbuttmIOi5iBrURpBTFtwpqY4W81ZSuwyWaEIR6y4=;
         fh=e9feSw8SSOtT/dgZZLe6uilVOFwjb0itHlOwuVUfZns=;
-        b=XnRsi42QwSZj3o/5nMppgCeSiqPLeUBQroHhWLDhpFmwRIn6//1kIM3eRCkcmkDIjb
-         yl5IGcbVn1XCBe5xOeTz/D023iaRq4JFts6yAtMpxEeefsKL1hYNNjUfEWLNhwAySQzg
-         YX2Gx6BVBFTeRAc7Q3QyObDjN6SN+DvENdaJxU+GO0/uV75pRAGX31XqSH47RFnnl564
-         T5hX2BMozxHe4RFMhfRRgd1E3Txcr3engddFz2WHC/gKnl1KVCvSlyOmk9ZUQD7TQjB2
-         S/ZnSUNRDSoosMG23gCkO+lhfvLuj54FzgwELBONN05Bcl65dBanfUhGHMwYfvsRNkcr
-         rXwQ==
+        b=T1igsAdST4NDpGqHkDnMoLtDTykC2TlKu/mtIreYYszVVC+9gcOFzTf2Z1vFxrYL8Q
+         MWqRPrf9w7OhI4UUbV0H8GIW5JjUFTJcHmaQPVppmfvJco/ZH6L48Uj93E+towd9QXyx
+         yr10Yix3fO2PCHCKoPLkbD/voqI5+dvnMwPdGX1bsvHpBRGf20PfpoORUUuW9yTEqAHR
+         CdJnXVUTKyuqfM7r7dgCXY1s/Rh2qcK6I4CuxExSNtoANqmNPJrylodqtbroSNkRUV05
+         cHrVn6AghfXYbbunyVQvznHwGnj+w49eSvGKy4JhIEsqOEeX0zRM1caj1LAgL6U3iyXv
+         5fAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i2MBuw7g;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZZj0SWt1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18-20020a05622a165200b0041cbfc5dc6bsi6953000qtj.226.2023.10.24.06.25.04
+        by mx.google.com with ESMTPS id d4-20020a05621421c400b0065d05afb84esi7943141qvh.350.2023.10.24.06.25.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:25:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Oct 2023 06:25:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i2MBuw7g;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZZj0SWt1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHJx-000115-St; Tue, 24 Oct 2023 09:19:45 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qvHLX-0002ve-CH; Tue, 24 Oct 2023 09:21:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHd-00057z-Dr
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:21 -0400
+ id 1qvHIF-0006aX-9A
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:18:01 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHa-00029i-Er
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:17:21 -0400
+ id 1qvHI0-0002IW-64
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:17:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153436;
+ s=mimecast20190719; t=1698153463;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=w5jcWCJuarmvQpIJ2dG0VPWVcQ2F1rKSx6Uy0+MjrJ4=;
- b=i2MBuw7gHtfjd9sRsBNuTxRy/0HY+bgoQISG+FKuJGUvjeASfaQCC7scQoO6NYXx++SerM
- LDY2N5PEplpt2oK7hOZjOP9OJiEQ9osIL1eV8m3Z3osleeidqSXcPUlRUO9TtYTjGMEVX3
- xYkkxdwHLMNDCOuNYT0+TAawbtnqsD0=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-688-kCBjJNUDPSOa9PcB5N6DxQ-1; Tue,
- 24 Oct 2023 09:17:12 -0400
-X-MC-Unique: kCBjJNUDPSOa9PcB5N6DxQ-1
+ bh=1+EbuttmIOi5iBrURpBTFtwpqY4W81ZSuwyWaEIR6y4=;
+ b=ZZj0SWt1ehlIWFRmS8hlvRp2BkkUVwrfy3ka2Q3VxN+jZG0IzPh9S9AnU4r9GsTBQ1JDZ6
+ n0pN7wP/0OZWOa2Ao0xuB++2D6yKUUv67aMXu+d7bgR74dSqptjcpSB+6xPAFoG0plGJwk
+ /UT15VaByDiRKMrcRfMH5pYkvbvyzHI=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-646-883loqTMPVKJi6tmEs7kdg-1; Tue, 24 Oct 2023 09:17:31 -0400
+X-MC-Unique: 883loqTMPVKJi6tmEs7kdg-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4CAD5282380E;
- Tue, 24 Oct 2023 13:17:09 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 31BB6881C8E;
+ Tue, 24 Oct 2023 13:17:29 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 13C2A1C060AE;
- Tue, 24 Oct 2023 13:17:02 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F2DD11C060B9;
+ Tue, 24 Oct 2023 13:17:22 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -108,10 +108,9 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Subject: [PULL 35/39] qemu-iotests: Filter warnings about block migration
- being deprecated
-Date: Tue, 24 Oct 2023 15:13:01 +0200
-Message-ID: <20231024131305.87468-36-quintela@redhat.com>
+Subject: [PULL 38/39] migration: Deprecate block migration
+Date: Tue, 24 Oct 2023 15:13:04 +0200
+Message-ID: <20231024131305.87468-39-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -127,61 +126,208 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KbxpA90iHf6z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: h0ZX0/Hgme7i
 
-Create a new filter that removes the two warnings for test 183.
+It is obsolete.  It is better to use driver-mirror with NBD instead.
 
-Reviewed-by: Hanna Czenczek <hreitz@redhat.com>
+CC: Kevin Wolf <kwolf@redhat.com>
+CC: Eric Blake <eblake@redhat.com>
+CC: Stefan Hajnoczi <stefanha@redhat.com>
+CC: Hanna Czenczek <hreitz@redhat.com>
+
+Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231018115513.2163-2-quintela@redhat.com>
+Message-ID: <20231018115513.2163-5-quintela@redhat.com>
 ---
- tests/qemu-iotests/183           | 2 +-
- tests/qemu-iotests/common.filter | 7 +++++++
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ docs/about/deprecated.rst | 10 ++++++++++
+ qapi/migration.json       | 29 ++++++++++++++++++++++++-----
+ migration/block.c         |  3 +++
+ migration/options.c       |  9 ++++++++-
+ 4 files changed, 45 insertions(+), 6 deletions(-)
 
-diff --git a/tests/qemu-iotests/183 b/tests/qemu-iotests/183
-index ee62939e72..b85770458e 100755
---- a/tests/qemu-iotests/183
-+++ b/tests/qemu-iotests/183
-@@ -90,7 +90,7 @@ echo
- reply="$(_send_qemu_cmd $src \
-     "{ 'execute': 'migrate',
-        'arguments': { 'uri': 'unix:${MIG_SOCKET}', 'blk': true } }" \
--    'return\|error')"
-+    'return\|error' | _filter_migration_block_deprecated)"
- echo "$reply"
- if echo "$reply" | grep "compiled without old-style" > /dev/null; then
-     _notrun "migrate -b support not compiled in"
-diff --git a/tests/qemu-iotests/common.filter b/tests/qemu-iotests/common.filter
-index fc3c64bcb8..2846c83808 100644
---- a/tests/qemu-iotests/common.filter
-+++ b/tests/qemu-iotests/common.filter
-@@ -359,5 +359,12 @@ _filter_qcow2_compression_type_bit()
-         -e 's/\(incompatible_features.*\), 3\(,.*\)/\1\2/'
- }
- 
-+# filter warnings caused for block migration deprecation
-+_filter_migration_block_deprecated()
-+{
-+    gsed -e '/warning: parameter .blk. is deprecated; use blockdev-mirror with NBD instead/d' \
-+         -e '/warning: block migration is deprecated; use blockdev-mirror with NBD instead/d'
-+}
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 98b0f14e69..7ae872162d 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -478,3 +478,13 @@ Use blockdev-mirror with NBD instead.
+ As an intermediate step the ``blk`` functionality can be achieved by
+ setting the ``block`` migration capability to ``true``.  But this
+ capability is also deprecated.
 +
- # make sure this script returns success
- true
++block migration (since 8.2)
++'''''''''''''''''''''''''''
++
++Block migration is too inflexible.  It needs to migrate all block
++devices or none.
++
++Please see "QMP invocation for live storage migration with
++``blockdev-mirror`` + NBD" in docs/interop/live-block-operations.rst
++for a detailed explanation.
+diff --git a/qapi/migration.json b/qapi/migration.json
+index 3765c2b662..e3b00a215b 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -269,11 +269,15 @@
+ #     average memory load of the virtual CPU indirectly.  Note that
+ #     zero means guest doesn't dirty memory.  (Since 8.1)
+ #
++# Features:
++#
++# @deprecated: Member @disk is deprecated because block migration is.
++#
+ # Since: 0.14
+ ##
+ { 'struct': 'MigrationInfo',
+   'data': {'*status': 'MigrationStatus', '*ram': 'MigrationStats',
+-           '*disk': 'MigrationStats',
++           '*disk': { 'type': 'MigrationStats', 'features': [ 'deprecated' ] },
+            '*vfio': 'VfioStats',
+            '*xbzrle-cache': 'XBZRLECacheStats',
+            '*total-time': 'int',
+@@ -525,6 +529,9 @@
+ #
+ # Features:
+ #
++# @deprecated: Member @block is deprecated.  Use blockdev-mirror with
++#     NBD instead.
++#
+ # @unstable: Members @x-colo and @x-ignore-shared are experimental.
+ #
+ # Since: 1.2
+@@ -534,7 +541,8 @@
+            'compress', 'events', 'postcopy-ram',
+            { 'name': 'x-colo', 'features': [ 'unstable' ] },
+            'release-ram',
+-           'block', 'return-path', 'pause-before-switchover', 'multifd',
++           { 'name': 'block', 'features': [ 'deprecated' ] },
++           'return-path', 'pause-before-switchover', 'multifd',
+            'dirty-bitmaps', 'postcopy-blocktime', 'late-block-activate',
+            { 'name': 'x-ignore-shared', 'features': [ 'unstable' ] },
+            'validate-uuid', 'background-snapshot',
+@@ -835,6 +843,9 @@
+ #
+ # Features:
+ #
++# @deprecated: Member @block-incremental is deprecated.  Use
++#     blockdev-mirror with NBD instead.
++#
+ # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
+ #     are experimental.
+ #
+@@ -850,7 +861,7 @@
+            'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
+            'avail-switchover-bandwidth', 'downtime-limit',
+            { 'name': 'x-checkpoint-delay', 'features': [ 'unstable' ] },
+-           'block-incremental',
++           { 'name': 'block-incremental', 'features': [ 'deprecated' ] },
+            'multifd-channels',
+            'xbzrle-cache-size', 'max-postcopy-bandwidth',
+            'max-cpu-throttle', 'multifd-compression',
+@@ -1011,6 +1022,9 @@
+ #
+ # Features:
+ #
++# @deprecated: Member @block-incremental is deprecated.  Use
++#     blockdev-mirror with NBD instead.
++#
+ # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
+ #     are experimental.
+ #
+@@ -1040,7 +1054,8 @@
+             '*downtime-limit': 'uint64',
+             '*x-checkpoint-delay': { 'type': 'uint32',
+                                      'features': [ 'unstable' ] },
+-            '*block-incremental': 'bool',
++            '*block-incremental': { 'type': 'bool',
++                                    'features': [ 'deprecated' ] },
+             '*multifd-channels': 'uint8',
+             '*xbzrle-cache-size': 'size',
+             '*max-postcopy-bandwidth': 'size',
+@@ -1225,6 +1240,9 @@
+ #
+ # Features:
+ #
++# @deprecated: Member @block-incremental is deprecated.  Use
++#     blockdev-mirror with NBD instead.
++#
+ # @unstable: Members @x-checkpoint-delay and @x-vcpu-dirty-limit-period
+ #     are experimental.
+ #
+@@ -1251,7 +1269,8 @@
+             '*downtime-limit': 'uint64',
+             '*x-checkpoint-delay': { 'type': 'uint32',
+                                      'features': [ 'unstable' ] },
+-            '*block-incremental': 'bool',
++            '*block-incremental': { 'type': 'bool',
++                                    'features': [ 'deprecated' ] },
+             '*multifd-channels': 'uint8',
+             '*xbzrle-cache-size': 'size',
+             '*max-postcopy-bandwidth': 'size',
+diff --git a/migration/block.c b/migration/block.c
+index b60698d6e2..acffe88f84 100644
+--- a/migration/block.c
++++ b/migration/block.c
+@@ -731,6 +731,9 @@ static int block_save_setup(QEMUFile *f, void *opaque)
+     trace_migration_block_save("setup", block_mig_state.submitted,
+                                block_mig_state.transferred);
+ 
++    warn_report("block migration is deprecated;"
++                " use blockdev-mirror with NBD instead");
++
+     ret = init_blk_migration(f);
+     if (ret < 0) {
+         return ret;
+diff --git a/migration/options.c b/migration/options.c
+index 37fa1cfe74..ae8ab47e32 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -12,6 +12,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "exec/target_page.h"
+ #include "qapi/clone-visitor.h"
+ #include "qapi/error.h"
+@@ -473,10 +474,14 @@ bool migrate_caps_check(bool *old_caps, bool *new_caps, Error **errp)
+     if (new_caps[MIGRATION_CAPABILITY_BLOCK]) {
+         error_setg(errp, "QEMU compiled without old-style (blk/-b, inc/-i) "
+                    "block migration");
+-        error_append_hint(errp, "Use drive_mirror+NBD instead.\n");
++        error_append_hint(errp, "Use blockdev-mirror with NBD instead.\n");
+         return false;
+     }
+ #endif
++    if (new_caps[MIGRATION_CAPABILITY_BLOCK]) {
++        warn_report("block migration is deprecated;"
++                    " use blockdev-mirror with NBD instead");
++    }
+ 
+ #ifndef CONFIG_REPLICATION
+     if (new_caps[MIGRATION_CAPABILITY_X_COLO]) {
+@@ -1400,6 +1405,8 @@ static void migrate_params_apply(MigrateSetParameters *params, Error **errp)
+     }
+ 
+     if (params->has_block_incremental) {
++        warn_report("block migration is deprecated;"
++                    " use blockdev-mirror with NBD instead");
+         s->parameters.block_incremental = params->block_incremental;
+     }
+     if (params->has_multifd_channels) {
 -- 
 2.41.0
 

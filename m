@@ -1,121 +1,84 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1861608ejb;
-        Mon, 23 Oct 2023 23:59:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHVzB5pAncXOdvhiw5ylhUMlkDISSWyBYrO/WIchtZXm9y3pPezMlxtHkhnH/peLQuOZDt8
-X-Received: by 2002:a05:6214:c81:b0:66d:9e52:a431 with SMTP id r1-20020a0562140c8100b0066d9e52a431mr10446016qvr.3.1698130788650;
-        Mon, 23 Oct 2023 23:59:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698130788; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1926641ejb;
+        Tue, 24 Oct 2023 02:37:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFStyjSbhSxWZAbKhdqHuru0PpSE7lmsfFRuoB1FDCvR5RyTT1LU9y12ciDEDSz2ptl7YNQ
+X-Received: by 2002:a05:620a:1a9f:b0:775:cf5f:8a77 with SMTP id bl31-20020a05620a1a9f00b00775cf5f8a77mr14062968qkb.34.1698140255631;
+        Tue, 24 Oct 2023 02:37:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698140255; cv=none;
         d=google.com; s=arc-20160816;
-        b=pCezbkZrbTkMQJJ6PMq+pz1Xy5CwR4QZNioCFBXjpV/E+/K4JyXthFsbb3bTRHVVPV
-         XBNe8GbI56p9ocv/bneI3rP66jXqae8HC6oxU3h0N7rq4HEl5WaOOcFnFP5RF4Iv0mLz
-         gEBBtI/ZfWKS3r3Te6C8CHL86CU4FmXDtmc9wDvQ4LZwqxl90NSHIQSYvofcVonFUWJE
-         irZCseMr8TjneJsCuojsjx9MuRlukZnvxZeGBBhdaNLMlXDyS5W0rZeqjEzXzGRPoxZU
-         alZfbiI8A6HVa699kmWydegk8cvHLdZgOVAQQ+zL4J6bZIuS6Q8bghmhi3mqBmvL11Us
-         NzDw==
+        b=KduANUuAJrqFhfYPfIP29LBv0Mbpw/zxna3FsT5OGPDerzLMqdW0QSNdFzxZtKCQSY
+         Eo++FzdPDn3E+AIihI/zOvOCSE02NAtxjTG2MluJEs2kFa9tjbsZQeMVgrgSdG+1fZG2
+         xjngni1yNz8OQHzIXwWtm9PLh1zDY7qS3g8LOKZHAbFP0ofUIbH5djEJdBBG84X5Psho
+         TXVpygjedNXeQOVkRqM9KwRlANM37olYKsNGD9tF+hVLQ/vAYbCL/QRZq6iBFFLgVEjg
+         plKcvlaqVeELhf/eN8uJB/8ccSgXvFH/AF7xtclSvRBgDAdYryqMFrT0xEBIFmR62z6v
+         rc1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3LKoaw12Kegy/5Wwnu5bK7CWabfG8BwbA9wvMxlQdZI=;
-        fh=EYaqcWeXxA8eS+WQrRVx+pYP+z06BK0zR/WQAthJTVk=;
-        b=CqgjU4rSsmyFkCJPChWJgtCa8v68aZo78ejlCzHMsv0stEhZjPVWct5q6u6HP29CNi
-         UEvGCm5vSQ9M6/9QiPHm5eQoQy8B3UW4B481ep/pkWS2SW8X5uaRDQgZJlafL5D9Fue1
-         ddxhXWr4exXprXr3iZ5VkIW/dWMhi29wSAIxFffubeLQk5aJLiZ8vX8wslSrwS4WK9lx
-         5m1Dh/qiY/jvteTMUX5SW9aeRxDvFFX3+zcmLwoRqmw3W6COVvYMqNbSHtiMOMSimhtf
-         ymqwWNsCJ8pwmENV7HVEc7Bz+O+wvXV6P++th+nAXSN1KWyNbLTWD50ryauSkBvwmgJd
-         mEEg==
+         :user-agent:mime-version:date:message-id;
+        bh=KHIgQspkOek2SAsOccdbUd9/p371slSfrctX3flIw4E=;
+        fh=IBEMdZSCUz2uu5kRekkZv6sX69at44dLvDZEK0mMKb8=;
+        b=HWJimYpF+EOeOjv/sg5ppCB4FTpSElUtcZyA2JQ5ZUVlAz9VyBSd89IQIf1rpoEdOj
+         QeqizoZsdJ2vr1LG9pOoy8H+X4/tPUndUCi6B01WdSuOmoklM21hE97imdLxWE+ZtSmy
+         24O6gvMBQLLRafHNBveJu+P6PQnRSQlNIS7surUYR42OdA6cdQhRJQgaQszIBMGwe0pA
+         CjmAEw6z5kNmofLGqA2m2QiEYZsmOg3RlMndbAy8EvWi8/1zX2+96GyUmeH1moDUYOCG
+         n3FbFKmjZidGgsCMB2uTrinpC74Zzzw8wr7MSjYEPrBjhVDFjdJXcY6NnQEP35XPfLEP
+         Sufg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RgiIgt75;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s3-20020a05620a29c300b00765aafce58csi4347970qkp.120.2023.10.23.23.59.48
+        by mx.google.com with ESMTPS id d30-20020a05620a205e00b0076eefa391ebsi6501140qka.208.2023.10.24.02.37.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Oct 2023 23:59:48 -0700 (PDT)
+        Tue, 24 Oct 2023 02:37:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RgiIgt75;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvBNy-0006QC-Mn; Tue, 24 Oct 2023 02:59:30 -0400
+	id 1qvDqe-0001tp-Kw; Tue, 24 Oct 2023 05:37:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvBNx-0006PR-Br
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 02:59:29 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvBNv-0000ks-OT
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 02:59:29 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4084de32db5so35484875e9.0
- for <qemu-arm@nongnu.org>; Mon, 23 Oct 2023 23:59:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698130766; x=1698735566; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=3LKoaw12Kegy/5Wwnu5bK7CWabfG8BwbA9wvMxlQdZI=;
- b=RgiIgt75xS1g81WSUjRKC7povlAyiTKzMrFW8j2EIwgYs9e5ASELiKbDSWa7lCCErB
- FSBYPHS9ch5qy1sQZGBrOIpJW7hfPg+rX8hpWdbuEaoz9w8LdKwQYY0EAfzFHYp5CsKh
- 1Oqh7IBmOj7pM4GDX7iw06ZZULSJPOkuGUFVQ+bpuxMeLwlecUaiBzuzIRM3zhqyf05I
- 64qp6RMqSHBsdF4keTtA+XS1+yvbCvQSg5+8bJpzBDef6StWbzYf/UJcPcRJqNm6lgeG
- Av+miEmYv5QVYOKoaU9a5Kvm3OGaaet/La80FjZkmqEGkjBvbd7lhmYheGYGwNqQAQJt
- +EVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698130766; x=1698735566;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3LKoaw12Kegy/5Wwnu5bK7CWabfG8BwbA9wvMxlQdZI=;
- b=RK8bDWSKkzkZs1bIDSWbWfQQsm1Fbiy1IbvyNWt4mK9f8skbGK5kOcf3Lr7ewwGbvN
- dBP8qSxKkonHbfYmUScTLLYaxZEGUdrJKJNpV2HI43PAptE24k8bUWPexvIpuyR6oR6Q
- eoyHkjFIAo5BpJBOAU75qwtOkqJKfJKswhLPXWCxOKkEA2QzUV2UIR4BTqY3HLBYPLxS
- AgP3iE2nRldsd3mTfr6XfAFkuiA+67RnsKnZ1o8E1rdl20vxPzrQHzLuaKOj6va/sydG
- IIyzrrPcLpI47NjrJHQwR3iDcN0DAYVNvR665+EQ60F4HDpbfBY1d47dHW/7dWCsCQln
- VZsA==
-X-Gm-Message-State: AOJu0YzuP+j2CQ/a6SJ71o0xyo2m6aUVb5/aEuvs09CLGHhkB0fTxIGI
- kkHC5DGkVGb3QvX4EsCydRwoiQ==
-X-Received: by 2002:a05:600c:4f01:b0:405:3cc5:1105 with SMTP id
- l1-20020a05600c4f0100b004053cc51105mr9013389wmq.8.1698130766190; 
- Mon, 23 Oct 2023 23:59:26 -0700 (PDT)
-Received: from [192.168.69.115] (sem44-h01-176-172-55-165.dsl.sta.abo.bbox.fr.
- [176.172.55.165]) by smtp.gmail.com with ESMTPSA id
- l23-20020a1c7917000000b004063cced50bsm11027118wme.23.2023.10.23.23.59.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Oct 2023 23:59:25 -0700 (PDT)
-Message-ID: <bdaf1998-7870-ade6-a611-ed4bd793cf54@linaro.org>
-Date: Tue, 24 Oct 2023 08:59:23 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
+ id 1qvDqd-0001r7-4c; Tue, 24 Oct 2023 05:37:15 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
+ id 1qvDqb-00082R-4N; Tue, 24 Oct 2023 05:37:14 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SF6Qp74F5z4xF4;
+ Tue, 24 Oct 2023 20:37:06 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SF6Ql3NZkz4x7V;
+ Tue, 24 Oct 2023 20:37:03 +1100 (AEDT)
+Message-ID: <aaa71ccc-e7d4-46f4-b902-22a422ff895a@kaod.org>
+Date: Tue, 24 Oct 2023 11:36:59 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 1/3] hw/arm/virt: Add serial aliases in DTB
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] MAINTAINERS: aspeed: Update Andrew's email address
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Axel Heider <axel.heider@hensoldt.net>, Laszlo Ersek <lersek@redhat.com>, 
- Ard Biesheuvel <ardb@kernel.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <20231023161532.2729084-1-peter.maydell@linaro.org>
- <20231023161532.2729084-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231023161532.2729084-2-peter.maydell@linaro.org>
+To: Andrew Jeffery <andrew@codeconstruct.com.au>, andrew@aj.id.au
+Cc: joel@jms.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20230925062212.66112-1-andrew@codeconstruct.com.au>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230925062212.66112-1-andrew@codeconstruct.com.au>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=1ohf=GG=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,38 +93,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jQfuIIihcurc
+X-TUID: AeRoDHlGT+Kg
 
-On 23/10/23 18:15, Peter Maydell wrote:
-> If there is more than one UART in the DTB, then there is no guarantee
-> on which order a guest is supposed to initialise them.  The standard
-> solution to this is "serialN" entries in the "/aliases" node of the
-> dtb which give the nodename of the UARTs.
+On 9/25/23 08:22, Andrew Jeffery wrote:
+> I've changed employers, have company email that deals with patch-based
+> workflows without too much of a headache, and am trying to steer some
+> content out of my personal mail.
 > 
-> At the moment we only have two UARTs in the DTB when one is for
-> the Secure world and one for the Non-Secure world, so this isn't
-> really a problem. However if we want to add a second NS UART we'll
-> need the aliases to ensure guests pick the right one.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 > ---
->   hw/arm/virt.c | 4 ++++
->   1 file changed, 4 insertions(+)
+> 
+> Hi Cédric, do you mind including this in your Aspeed queue?
 
 
-> @@ -889,7 +891,9 @@ static void create_uart(const VirtMachineState *vms, int uart,
->   
->       if (uart == VIRT_UART) {
+I am not sure to send an Aspeed PR. May be this change could go
+through qemu-trivial ?
 
-I'd have put this patch after the rename (#2 <-> #1). Anyhow,
+Thanks,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+C.
 
->           qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
-> +        qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial0", nodename);
->       } else {
-> +        qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial1", nodename);
->           /* Mark as not usable by the normal world */
->           qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
->           qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+
+> 
+>   MAINTAINERS | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 355b1960ce46..b142c09628b9 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1108,7 +1108,7 @@ F: docs/system/arm/emcraft-sf2.rst
+>   ASPEED BMCs
+>   M: Cédric Le Goater <clg@kaod.org>
+>   M: Peter Maydell <peter.maydell@linaro.org>
+> -R: Andrew Jeffery <andrew@aj.id.au>
+> +R: Andrew Jeffery <andrew@codeconstruct.com.au>
+>   R: Joel Stanley <joel@jms.id.au>
+>   L: qemu-arm@nongnu.org
+>   S: Maintained
 

@@ -1,82 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2038681ejb;
-        Tue, 24 Oct 2023 06:15:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFNiFPD3PUVdMaxdlgSSH50rXAtc/bmV0BeumbTjYPOQLc+Yh4HwcyF5zEVPjJ8bqZW2B0D
-X-Received: by 2002:a05:6102:51:b0:450:c666:fe14 with SMTP id k17-20020a056102005100b00450c666fe14mr10593492vsp.30.1698153326341;
-        Tue, 24 Oct 2023 06:15:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153326; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2038702ejb;
+        Tue, 24 Oct 2023 06:15:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEE0aj4ScCGuoe4hPmdlq69ZtC1Nmxo4wTW7hw3J977ERxzLxl46ZR6TYqfxxCN2YYept/Y
+X-Received: by 2002:ac8:58c2:0:b0:418:cd5:ac97 with SMTP id u2-20020ac858c2000000b004180cd5ac97mr15098512qta.65.1698153327675;
+        Tue, 24 Oct 2023 06:15:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153327; cv=none;
         d=google.com; s=arc-20160816;
-        b=vsJcv74DydNVmAiz0CUDUo7lSGWh9kycskdPsUqDqabUSVk+PrzIL8u9R56wqTQqgl
-         88G0Kr+XEYGQY04pQlwFw/BZqoEKuHn0vKADxBIthLFcgyS6SPv5L3Fx2szKZ76leBXT
-         Yv38iIJsowdAZYq7z/yArK9l7p+Y/bgmC0ib7ZoMHPRLokP+MfLqhioJrG8HS8rBA/Df
-         V9Bl6fHxWqJJMFLnHUEve/G9j1YzYpN4Rc4Bf6B8RPKsIahubCnOvhgDqkaYfkyRquDO
-         wDJLMr4BVuLttREZ4LIZqL8fanAk6FKs2fwZO0395Ss7IO6gV3f2LTL4YMxYfDYXGmkv
-         dyyw==
+        b=EENf+fZjdc7C2vI+P9r5AuYGzH/PrQ/X2zaJVmqnmrQAwaGcUFFDGKl1eDo4hONA6C
+         J3PHJXC7gMyxWP02Q+DljhvhTCpxkI8xBxMxlyDAdPB8GoTAcr9fUSC4MwDQJPNVKNCI
+         v0GMkGOVyLxQJHMHLdNldzd3NJkVhOQVWtRf2WhClLYgZZyUzJmIkrLAQM9UM0ikkMoq
+         EcPJqBiptnfBWFMkwSAKsjsxr0mF7PVo8WZqaRK7sgWXZvfrMHJwG+bNDq/iG+FziycC
+         nARHdXgqcX1M216mdHT0up4Sf3nOtrGnqu3gL84aM8zhxGcy3cIBbFUH+Y8U+zcooewj
+         yCfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=v07XEObK+8HRkY6PIJKRF8OCoGMMogRwRKEZtGkEDCc=;
-        fh=0DRGwfQymzNSinv+CnmU35FvXClR1k5Tnpw/bIUVe6k=;
-        b=fbV9OzWiWSzGtddYV349bBm3QTklhmnPmz8FCHUHtURExFdjdap4U3H+fup10TTQyK
-         bmtzhvVSPkzjltGAuu1y+nAtLj8bCF9cxGlAPC2ZivaEcajZVbGeGHnx4IRpQfNTdxJC
-         HMjL4/nydkCZy9C5yeVmjORVLrBb0aQ/4G/fEGYQrEi9avnLlcBca8jszn+hVdaU8T/K
-         ywMOT3MwCb25mPLqi+psaHHC1MSS08EDDAnb/pX6wJGEk4olzgy6mWkjGheL4q3V4BUy
-         XNqqS6zovJ/dFguGPRJlCbjJ5boRsr902JqeFZ5EEzIm51haCmEv8hOAE/cIn/I1N3H3
-         AzHg==
+        bh=wCFHcvyVWdab+kL4xChxY/YWGrNKy4P/u8/VAcJabY0=;
+        fh=B0V5LsBeRVJoFVJQQux5Rr3HqexndYg4APr6AmgfhJQ=;
+        b=BBvcNlg6g6k9EMqjxO/6fKFY96HXmeujGS0hI63CRGp/lFtHh7HaEgiREbQci9ANCO
+         UUXzrHWKiWtOrbOfi4KGjn5R0mLwLpMlg0AgSlwmiVsxFAPWI+TtZlfPbMQ7I/6n14Ip
+         Hqs0Xq4x0B8t69Tiewm7hXNoE05F2nKOossiLVRty5B8QnP7w1F8N4rZKO8fNjjgZOFB
+         nWUcYAmtehmIq80ro8J4rkGV0l6Csre73zIA80ZbCEbA5j0cG3HQvG8i8qv4+Sc3eLUw
+         6V/rSR3vmBFAnp+NNYr4eHSg60TNzHVL4FSVWWaIwgT0X/woPM2a1138sk/WEcnPtmNq
+         1NXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bCLaDOJ8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ky4cnKPv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11-20020a056102302b00b00450a77583f2si899953vsa.126.2023.10.24.06.15.26
+        by mx.google.com with ESMTPS id c17-20020a05622a025100b0041978cbdcc3si7328723qtx.498.2023.10.24.06.15.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:15:26 -0700 (PDT)
+        Tue, 24 Oct 2023 06:15:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bCLaDOJ8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ky4cnKPv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvHFG-0005xG-5c; Tue, 24 Oct 2023 09:14:54 -0400
+	id 1qvHDz-0003eJ-G1; Tue, 24 Oct 2023 09:13:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHF2-0005Eg-B7
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:14:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qvHDx-0003d3-NE
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:13:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHF0-0001Gs-Bw
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:14:40 -0400
+ id 1qvHDv-0000z2-Mi
+ for qemu-arm@nongnu.org; Tue, 24 Oct 2023 09:13:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153277;
+ s=mimecast20190719; t=1698153210;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=v07XEObK+8HRkY6PIJKRF8OCoGMMogRwRKEZtGkEDCc=;
- b=bCLaDOJ846pc0RDTcMOHXi1E2DJueODLRciH5m98rLSAVqgE/ipoDfAYxuxAAQIvUQuPdN
- J8xtceKJgVcUp2gLsflgH+LiT7+Lrs9uQlK+Bw+aXdQdS0kAGkPD2TyU8ApC1QYPDfqjMI
- DEiTdl8aOBrBgUIvt7W3TNmYyr/pu5M=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-363-nZAzMYCaPfWnk0UUY_Q8AQ-1; Tue, 24 Oct 2023 09:14:29 -0400
-X-MC-Unique: nZAzMYCaPfWnk0UUY_Q8AQ-1
+ bh=wCFHcvyVWdab+kL4xChxY/YWGrNKy4P/u8/VAcJabY0=;
+ b=Ky4cnKPvEm6ucmd7bu1WTOXY1KjV9S76/3yx9jwHqYdwDznBsu+jCmNDvraZ93M4+fBMny
+ WdX+O5Iq5KTYwZgCMxDh4eIM6EMc0WjX67Mvs3eF+SEso0UScnblJhjoFaovwudLG1/YV3
+ hlkyoUm9SV13k46hREfxuy7lEFMpj4Y=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-322-vpsF8X76Oqqf_9-u1ZTT0A-1; Tue, 24 Oct 2023 09:13:29 -0400
+X-MC-Unique: vpsF8X76Oqqf_9-u1ZTT0A-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B0E983C1ACD6;
- Tue, 24 Oct 2023 13:14:27 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 60A8F857C25;
+ Tue, 24 Oct 2023 13:13:27 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 653D31C060AE;
- Tue, 24 Oct 2023 13:14:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CC7451C060AE;
+ Tue, 24 Oct 2023 13:13:20 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -107,24 +108,25 @@ Cc: Eric Blake <eblake@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
- Lukas Straub <lukasstraub2@web.de>
-Subject: [PULL 11/39] migration: Simplify compress_page_with_multithread()
-Date: Tue, 24 Oct 2023 15:12:37 +0200
-Message-ID: <20231024131305.87468-12-quintela@redhat.com>
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Subject: [PULL 02/39] migration/doc: Add documentation for backwards
+ compatiblity
+Date: Tue, 24 Oct 2023 15:12:28 +0200
+Message-ID: <20231024131305.87468-3-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,82 +141,247 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +VuuTvPCW9lc
+X-TUID: BRSxK2/Gs7yW
 
-Move the goto to a while true.
+State what are the requeriments to get migration working between qemu
+versions.  And once there explain how one is supposed to implement a
+new feature/default value and not break migration.
 
-Reviewed-by: Lukas Straub <lukasstraub2@web.de>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Acked-by: Peter Xu <peterx@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231019110724.15324-6-quintela@redhat.com>
+Message-ID: <20231018112827.1325-3-quintela@redhat.com>
 ---
- migration/ram-compress.c | 48 ++++++++++++++++++++--------------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+ docs/devel/migration.rst | 219 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 219 insertions(+)
 
-diff --git a/migration/ram-compress.c b/migration/ram-compress.c
-index ef03d60a6d..a991b15b7a 100644
---- a/migration/ram-compress.c
-+++ b/migration/ram-compress.c
-@@ -271,35 +271,35 @@ bool compress_page_with_multi_thread(RAMBlock *block, ram_addr_t offset,
+diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+index 4d6a98ae58..6fe275b1ec 100644
+--- a/docs/devel/migration.rst
++++ b/docs/devel/migration.rst
+@@ -919,3 +919,222 @@ versioned machine types to cut down on the combinations that will need
+ support.  This is also useful when newer versions of firmware outgrow
+ the padding.
  
-     thread_count = migrate_compress_threads();
-     qemu_mutex_lock(&comp_done_lock);
--retry:
--    for (int i = 0; i < thread_count; i++) {
--        if (comp_param[i].done) {
--            CompressParam *param = &comp_param[i];
--            qemu_mutex_lock(&param->mutex);
--            param->done = false;
--            send_queued_data(param);
--            assert(qemu_file_buffer_empty(param->file));
--            compress_reset_result(param);
--            set_compress_params(param, block, offset);
- 
--            qemu_cond_signal(&param->cond);
--            qemu_mutex_unlock(&param->mutex);
-+    while (true) {
-+        for (int i = 0; i < thread_count; i++) {
-+            if (comp_param[i].done) {
-+                CompressParam *param = &comp_param[i];
-+                qemu_mutex_lock(&param->mutex);
-+                param->done = false;
-+                send_queued_data(param);
-+                assert(qemu_file_buffer_empty(param->file));
-+                compress_reset_result(param);
-+                set_compress_params(param, block, offset);
 +
-+                qemu_cond_signal(&param->cond);
-+                qemu_mutex_unlock(&param->mutex);
-+                qemu_mutex_unlock(&comp_done_lock);
-+                return true;
-+            }
-+        }
-+        if (!wait) {
-             qemu_mutex_unlock(&comp_done_lock);
--            return true;
-+            return false;
-         }
--    }
--
--    /*
--     * wait for the free thread if the user specifies 'compress-wait-thread',
--     * otherwise we will post the page out in the main thread as normal page.
--     */
--    if (wait) {
-+        /*
-+         * wait for a free thread if the user specifies
-+         * 'compress-wait-thread', otherwise we will post the page out
-+         * in the main thread as normal page.
-+         */
-         qemu_cond_wait(&comp_done_cond, &comp_done_lock);
--        goto retry;
-     }
--    qemu_mutex_unlock(&comp_done_lock);
--
--    return false;
- }
- 
- /* return the size after decompression, or negative value on error */
++Backwards compatibility
++=======================
++
++How backwards compatibility works
++---------------------------------
++
++When we do migration, we have two QEMU processes: the source and the
++target.  There are two cases, they are the same version or they are
++different versions.  The easy case is when they are the same version.
++The difficult one is when they are different versions.
++
++There are two things that are different, but they have very similar
++names and sometimes get confused:
++
++- QEMU version
++- machine type version
++
++Let's start with a practical example, we start with:
++
++- qemu-system-x86_64 (v5.2), from now on qemu-5.2.
++- qemu-system-x86_64 (v5.1), from now on qemu-5.1.
++
++Related to this are the "latest" machine types defined on each of
++them:
++
++- pc-q35-5.2 (newer one in qemu-5.2) from now on pc-5.2
++- pc-q35-5.1 (newer one in qemu-5.1) from now on pc-5.1
++
++First of all, migration is only supposed to work if you use the same
++machine type in both source and destination. The QEMU hardware
++configuration needs to be the same also on source and destination.
++Most aspects of the backend configuration can be changed at will,
++except for a few cases where the backend features influence frontend
++device feature exposure.  But that is not relevant for this section.
++
++I am going to list the number of combinations that we can have.  Let's
++start with the trivial ones, QEMU is the same on source and
++destination:
++
++1 - qemu-5.2 -M pc-5.2  -> migrates to -> qemu-5.2 -M pc-5.2
++
++  This is the latest QEMU with the latest machine type.
++  This have to work, and if it doesn't work it is a bug.
++
++2 - qemu-5.1 -M pc-5.1  -> migrates to -> qemu-5.1 -M pc-5.1
++
++  Exactly the same case than the previous one, but for 5.1.
++  Nothing to see here either.
++
++This are the easiest ones, we will not talk more about them in this
++section.
++
++Now we start with the more interesting cases.  Consider the case where
++we have the same QEMU version in both sides (qemu-5.2) but we are using
++the latest machine type for that version (pc-5.2) but one of an older
++QEMU version, in this case pc-5.1.
++
++3 - qemu-5.2 -M pc-5.1  -> migrates to -> qemu-5.2 -M pc-5.1
++
++  It needs to use the definition of pc-5.1 and the devices as they
++  were configured on 5.1, but this should be easy in the sense that
++  both sides are the same QEMU and both sides have exactly the same
++  idea of what the pc-5.1 machine is.
++
++4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
++
++  This combination is not possible as the qemu-5.1 doen't understand
++  pc-5.2 machine type.  So nothing to worry here.
++
++Now it comes the interesting ones, when both QEMU processes are
++different.  Notice also that the machine type needs to be pc-5.1,
++because we have the limitation than qemu-5.1 doesn't know pc-5.2.  So
++the possible cases are:
++
++5 - qemu-5.2 -M pc-5.1  -> migrates to -> qemu-5.1 -M pc-5.1
++
++  This migration is known as newer to older.  We need to make sure
++  when we are developing 5.2 we need to take care about not to break
++  migration to qemu-5.1.  Notice that we can't make updates to
++  qemu-5.1 to understand whatever qemu-5.2 decides to change, so it is
++  in qemu-5.2 side to make the relevant changes.
++
++6 - qemu-5.1 -M pc-5.1  -> migrates to -> qemu-5.2 -M pc-5.1
++
++  This migration is known as older to newer.  We need to make sure
++  than we are able to receive migrations from qemu-5.1. The problem is
++  similar to the previous one.
++
++If qemu-5.1 and qemu-5.2 were the same, there will not be any
++compatibility problems.  But the reason that we create qemu-5.2 is to
++get new features, devices, defaults, etc.
++
++If we get a device that has a new feature, or change a default value,
++we have a problem when we try to migrate between different QEMU
++versions.
++
++So we need a way to tell qemu-5.2 that when we are using machine type
++pc-5.1, it needs to **not** use the feature, to be able to migrate to
++real qemu-5.1.
++
++And the equivalent part when migrating from qemu-5.1 to qemu-5.2.
++qemu-5.2 has to expect that it is not going to get data for the new
++feature, because qemu-5.1 doesn't know about it.
++
++How do we tell QEMU about these device feature changes?  In
++hw/core/machine.c:hw_compat_X_Y arrays.
++
++If we change a default value, we need to put back the old value on
++that array.  And the device, during initialization needs to look at
++that array to see what value it needs to get for that feature.  And
++what are we going to put in that array, the value of a property.
++
++To create a property for a device, we need to use one of the
++DEFINE_PROP_*() macros. See include/hw/qdev-properties.h to find the
++macros that exist.  With it, we set the default value for that
++property, and that is what it is going to get in the latest released
++version.  But if we want a different value for a previous version, we
++can change that in the hw_compat_X_Y arrays.
++
++hw_compat_X_Y is an array of registers that have the format:
++
++- name_device
++- name_property
++- value
++
++Let's see a practical example.
++
++In qemu-5.2 virtio-blk-device got multi queue support.  This is a
++change that is not backward compatible.  In qemu-5.1 it has one
++queue. In qemu-5.2 it has the same number of queues as the number of
++cpus in the system.
++
++When we are doing migration, if we migrate from a device that has 4
++queues to a device that have only one queue, we don't know where to
++put the extra information for the other 3 queues, and we fail
++migration.
++
++Similar problem when we migrate from qemu-5.1 that has only one queue
++to qemu-5.2, we only sent information for one queue, but destination
++has 4, and we have 3 queues that are not properly initialized and
++anything can happen.
++
++So, how can we address this problem.  Easy, just convince qemu-5.2
++that when it is running pc-5.1, it needs to set the number of queues
++for virtio-blk-devices to 1.
++
++That way we fix the cases 5 and 6.
++
++5 - qemu-5.2 -M pc-5.1  -> migrates to -> qemu-5.1 -M pc-5.1
++
++    qemu-5.2 -M pc-5.1 sets number of queues to be 1.
++    qemu-5.1 -M pc-5.1 expects number of queues to be 1.
++
++    correct.  migration works.
++
++6 - qemu-5.1 -M pc-5.1  -> migrates to -> qemu-5.2 -M pc-5.1
++
++    qemu-5.1 -M pc-5.1 sets number of queues to be 1.
++    qemu-5.2 -M pc-5.1 expects number of queues to be 1.
++
++    correct.  migration works.
++
++And now the other interesting case, case 3.  In this case we have:
++
++3 - qemu-5.2 -M pc-5.1  -> migrates to -> qemu-5.2 -M pc-5.1
++
++    Here we have the same QEMU in both sides.  So it doesn't matter a
++    lot if we have set the number of queues to 1 or not, because
++    they are the same.
++
++    WRONG!
++
++    Think what happens if we do one of this double migrations:
++
++    A -> migrates -> B -> migrates -> C
++
++    where:
++
++    A: qemu-5.1 -M pc-5.1
++    B: qemu-5.2 -M pc-5.1
++    C: qemu-5.2 -M pc-5.1
++
++    migration A -> B is case 6, so number of queues needs to be 1.
++
++    migration B -> C is case 3, so we don't care.  But actually we
++    care because we haven't started the guest in qemu-5.2, it came
++    migrated from qemu-5.1.  So to be in the safe place, we need to
++    always use number of queues 1 when we are using pc-5.1.
++
++Now, how was this done in reality?  The following commit shows how it
++was done::
++
++  commit 9445e1e15e66c19e42bea942ba810db28052cd05
++  Author: Stefan Hajnoczi <stefanha@redhat.com>
++  Date:   Tue Aug 18 15:33:47 2020 +0100
++
++  virtio-blk-pci: default num_queues to -smp N
++
++The relevant parts for migration are::
++
++    @@ -1281,7 +1284,8 @@ static Property virtio_blk_properties[] = {
++     #endif
++         DEFINE_PROP_BIT("request-merging", VirtIOBlock, conf.request_merging, 0,
++                         true),
++    -    DEFINE_PROP_UINT16("num-queues", VirtIOBlock, conf.num_queues, 1),
++    +    DEFINE_PROP_UINT16("num-queues", VirtIOBlock, conf.num_queues,
++    +                       VIRTIO_BLK_AUTO_NUM_QUEUES),
++         DEFINE_PROP_UINT16("queue-size", VirtIOBlock, conf.queue_size, 256),
++
++It changes the default value of num_queues.  But it fishes it for old
++machine types to have the right value::
++
++    @@ -31,6 +31,7 @@
++     GlobalProperty hw_compat_5_1[] = {
++         ...
++    +    { "virtio-blk-device", "num-queues", "1"},
++         ...
++     };
 -- 
 2.41.0
 

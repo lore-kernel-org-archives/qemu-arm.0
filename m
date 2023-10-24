@@ -1,148 +1,158 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1960367ejb;
-        Tue, 24 Oct 2023 03:56:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEX/U/hkAwtumQYGkBQ4R11dn59X/VlVvdER+ZRHQk/sfqIkDPrjgq5ja49NbflGdahQz21
-X-Received: by 2002:a05:622a:551:b0:41c:c5bd:712 with SMTP id m17-20020a05622a055100b0041cc5bd0712mr16790559qtx.62.1698144981882;
-        Tue, 24 Oct 2023 03:56:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698144981; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp1980104ejb;
+        Tue, 24 Oct 2023 04:34:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFB2l+OFPhDvL673VtxBmD+UbiWL83PJsZRPLF39H5X93C7JVhgvs8VuAggqJr4N6dtwpBY
+X-Received: by 2002:ac8:4e81:0:b0:411:5528:64f6 with SMTP id 1-20020ac84e81000000b00411552864f6mr14277897qtp.27.1698147274353;
+        Tue, 24 Oct 2023 04:34:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698147274; cv=none;
         d=google.com; s=arc-20160816;
-        b=wFvkbjbY7INRjHVnY6cOl0aS2juDPgSzEqcKSJlmc7mGAr2pQYZBVxBh4mHfHU+nA2
-         4El1LlvVIIEepsL4qKnlzz6IN06SHFbEr1FlE+YDNJ5F+eHBxhFPfZC8paqr4AP7qZbE
-         5mKRlioIUknoV4zy1bHLGz00fUGGvhSFInZ6qOph8gUvQFxVPuCZJnoiyjZvLkbwjQ26
-         63cpprIQtGnAzXuyLVOL2sanERsgns0b8LDFhUIFDRS4tcb5F8stFAmB0GnLSunoaIHD
-         uMPaiDkES8yGks+Q82zv06Rbi+X7RPmFn2VMiUJOQrq3sMfrRhuvGxJoeNywylYpjTuO
-         SQlQ==
+        b=JMPjLWtvq6hm+d/U5DF69SEsoTQvYyg6oeXShk/h+i2jtSlwO2+gbrdCVih9EdysCC
+         bD68xBZU0wt801W6x/Ipq8yOku6TeA2FtkIliG5jMOAJNPUcS+ab9uIBa+JRoBDreYOC
+         GJo3QVhgVuMalh+5M61kNP2v2CxJG0sgFmplZe0iGaykuwfGLb/WYlTmWh0qvtjPpsX8
+         0PgzdTCeLSJ7EwJvlDSdb7+8WYUQRz8Llf/NFSHP1zIJHhrHgI2sCULyGgGoPSCZxDbK
+         2DJnvccAxolTd2ffIOQlLIBZNyupBy/biQYwVVeETUD5a2iC2xOCnRyYZsmRBfWAaOhn
+         JjVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=WYEN7FH7IqZtZ+7M6b7K6o0KxuZIzcblLf/uIxLwAcE=;
-        fh=IrnuumROS5lymupKr9JRiPyOh/kUaoKeQIFpoRSlvXY=;
-        b=ZeCU4idklQ2/e8LSxInrwLYBwJ0riX+SGTuaBpkIKsgIzOq8HhsjG0hm0E97K5iouu
-         F7x039YRFxX2ZsXpshn5Qp23OdVSllfzkWBSaLuP3EiBPy6nuuOKQBwbpj7zhAROo8xS
-         Y1hA5Ah8phfUST5HiB0dsRlKfAYEIKL5qpciEA+J5G4ygTFWmyriYDzq/oxZOvVqO7bK
-         dKg4kNL9bN/2J74DUSFe13/rrkvmvvExJoAtia6BQXPTwqbUa9qT422QCqlnFksV/Z/N
-         Mv4xgWAl6t64QeTEIrg8mJ14ZSuPVzEbdnJpxjnnigER8YQICJW8RnXtn+yqp5gD/B/v
-         grLQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=SDdDuTaN4SoAWEpM2HKbvwWC/AnVWG6bKPnln/BNFPM=;
+        fh=C8p6wC/fCaHRHIfgiJjtLgYEof4GUxz85Lbf9UGgIR8=;
+        b=ylZggzvn7RvV+mzhXmkIcjwi3uRJ2xj4t38BYxeSKWIgtF8M89e2wqQlmn+Pkf8Y5u
+         Qe5t2LeAE9zzaW65LZ5NZPoGNKKGMLc5GtY/3HP8nA1gUF9EAJZ8DNOrBObMlTX1uqJW
+         nNU3kodRjrxlPRXaBpJl8HrFA3iBssvvNlQNLwyUBe3v6MkbfaXdVbP1vukvsG4Yns/b
+         fsTy63Q7LDg4kF+wv02x4Pq1pou8B6SquCGUJ35QOnRDNd3wMqy7FVpdf595LRGnFSf/
+         TAa9aE0SkN51wIUWJuT4n3tJJUGrewa1gOA7TlmBi4IxW+98vaRIf7SEQKRLXmYxbG8t
+         2CBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ddApUUZY;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=Nbu7HyH4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13-20020a05622a040d00b0041cbafcc5adsi6777150qtx.109.2023.10.24.03.56.21
+        by mx.google.com with ESMTPS id h14-20020a05622a170e00b0041b77382a1fsi6840365qtk.598.2023.10.24.04.34.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 03:56:21 -0700 (PDT)
+        Tue, 24 Oct 2023 04:34:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ddApUUZY;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=Nbu7HyH4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvF4q-00075y-BX; Tue, 24 Oct 2023 06:56:00 -0400
+	id 1qvFfr-0002Iw-Ci; Tue, 24 Oct 2023 07:34:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvF4o-00074u-3m
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 06:55:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qvFff-0002Fh-05; Tue, 24 Oct 2023 07:34:04 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvF4i-0002mm-QT
- for qemu-arm@nongnu.org; Tue, 24 Oct 2023 06:55:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698144951;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=WYEN7FH7IqZtZ+7M6b7K6o0KxuZIzcblLf/uIxLwAcE=;
- b=ddApUUZYa6TX5D0L7R95GDY/X385IqxhGYaakgaOdlNQEIvoQUGo0Brh6/GNiOqP4XsmmB
- SYwjr2tR8ZV0bplYw9vbXNBJ4TawPGEAUtATDkJJ7puiYwBdBziqflNJjDnrtifKB2djys
- HFAVD42NPspE/Kg0vSk4cOPSSXV5Xp0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-122-XHpzpVm-Ox2zJRMeIcYXJg-1; Tue, 24 Oct 2023 06:55:50 -0400
-X-MC-Unique: XHpzpVm-Ox2zJRMeIcYXJg-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-40853e14f16so24139285e9.1
- for <qemu-arm@nongnu.org>; Tue, 24 Oct 2023 03:55:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698144949; x=1698749749;
- h=mime-version:message-id:date:reply-to:user-agent:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=WYEN7FH7IqZtZ+7M6b7K6o0KxuZIzcblLf/uIxLwAcE=;
- b=XGW7zoWXpnVxnkGlV9ocFk4WwZpPSuK8iFbMb2MrPZokczGtXBg34m9/01YfgQrmQr
- Ax9B7jBWj+XAJrkY70rGS8A+NJRRLstl2KqSuqmsVkdflk08Uvbks6iPI5Yp8bfw17r/
- oS/8TJDHqTSWnBIzACFpTcQP8HGcnBqJLrV83Rn8npgxh7YoBmN73vCgnUp/fyQKnKY9
- L++5FtF0Lde8zgexH/B6DoBY482rEAb96kUIjf1PJ8TVCOroU5zuNm8wu+Z4Q/5UXHT7
- IsEfdkdCnjnoBhCPvuFKGktVQtsuIxQSufT5sA0zggoJH+yf12f4dh2zvdw/dkiqkcEd
- 1ZWw==
-X-Gm-Message-State: AOJu0YxXUS918Nfgw941aBpgeEq20AYBM0Of3FyhKksJY7Z8XgNGMZy0
- bWZRGRnRewZyXvDXjzMk3ca1XzVHU3kfWzW46LkcXi7tH2yHZqWKoObJYO5F5qqVyAaUnE+0Bll
- MDMhHKRS+09tx
-X-Received: by 2002:a05:600c:1992:b0:406:872d:7725 with SMTP id
- t18-20020a05600c199200b00406872d7725mr9307813wmq.1.1698144949643; 
- Tue, 24 Oct 2023 03:55:49 -0700 (PDT)
-X-Received: by 2002:a05:600c:1992:b0:406:872d:7725 with SMTP id
- t18-20020a05600c199200b00406872d7725mr9307790wmq.1.1698144949253; 
- Tue, 24 Oct 2023 03:55:49 -0700 (PDT)
-Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
- [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
- dk18-20020a0560000b5200b0032dbf6bf7a2sm9729097wrb.97.2023.10.24.03.55.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Oct 2023 03:55:47 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: John Snow <jsnow@redhat.com>,  qemu-devel@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>,  Samuel Thibault
- <samuel.thibault@ens-lyon.org>,  Eric Farman <farman@linux.ibm.com>,
- qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  Gerd Hoffmann
- <kraxel@redhat.com>,  Fabiano Rosas <farosas@suse.de>,  David Gibson
- <david@gibson.dropbear.id.au>,  Corey Minyard <cminyard@mvista.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,  Peter Xu <peterx@redhat.com>,
- Corey Minyard <minyard@acm.org>,  Stefan Berger
- <stefanb@linux.vnet.ibm.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Halil Pasic <pasic@linux.ibm.com>,
- Leonardo Bras <leobras@redhat.com>,  Nicholas Piggin <npiggin@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Christian Borntraeger
- <borntraeger@linux.ibm.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Jason
- Wang <jasowang@redhat.com>,  qemu-block@nongnu.org,
- qemu-s390x@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Daniel Henrique
- Barboza <danielhb413@gmail.com>,  Stefan Weil <sw@weilnetz.de>,  Stefan
- Berger <stefanb@linux.ibm.com>
-Subject: Re: [PATCH v2 03/13] migration: Use vmstate_register_any() for isa-ide
-In-Reply-To: <76272c6c-f7b6-4fbd-a457-8cf14048ddca@redhat.com> (Thomas Huth's
- message of "Mon, 23 Oct 2023 08:02:05 +0200")
-References: <20231020090731.28701-1-quintela@redhat.com>
- <20231020090731.28701-4-quintela@redhat.com>
- <efef6d37-925c-415e-9a59-85e528eacb7b@redhat.com>
- <871qdpytau.fsf@secure.mitica>
- <76272c6c-f7b6-4fbd-a457-8cf14048ddca@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
-Date: Tue, 24 Oct 2023 12:55:47 +0200
-Message-ID: <87o7goz3v0.fsf@secure.mitica>
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qvFfb-0003XM-SE; Tue, 24 Oct 2023 07:34:02 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39OBFruY030894; Tue, 24 Oct 2023 11:32:26 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=qcppdkim1; bh=SDdDuTaN4SoAWEpM2HKbvwWC/AnVWG6bKPnln/BNFPM=;
+ b=Nbu7HyH4d39Kp0iB+z//t5OAGEFCvePvI+VCVMlCc+A7pp3g8W6L2lEyt7AwENfe6nHN
+ BrYi2YgU5WbLlrm6dE8GwNVxLUxPgxkTC7gWf3vqjhSe210N6jeS+HZjP5aN9yKaMW+0
+ gE7Els2Ns4ZmsjMkSSrnufM4WwKkLJlV1QSsCJuYhmoMNj4MbZNivxoc4gFAB9nVe/RY
+ /mgRqddLohVGW71+h2kfx/u2OWkX3hK3IyGkqFd8guImMqyUoOGknoNDjFSKRrtaN84p
+ j3u7VrYEz5a6kTH7TL3iJQlF8qKQqVWyxADB7qLLYF6pAU1a3icvvfco/5ptP25ft3eO Rg== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3twxw5hgfg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 11:32:26 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39OBWP59014241
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 24 Oct 2023 11:32:25 GMT
+Received: from qc-i7.hemma.eciton.net (10.80.80.8) by
+ nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.39; Tue, 24 Oct 2023 04:32:11 -0700
+Date: Tue, 24 Oct 2023 12:32:08 +0100
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+To: David Woodhouse <dwmw2@infradead.org>
+CC: <qemu-devel@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
+ Beniamino Galvani <b.galvani@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Strahinja Jankovic
+ <strahinja.p.jankovic@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, Igor Mitsyanko
+ <i.mitsyanko@gmail.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Alistair Francis
+ <alistair@alistair23.me>, Helge Deller <deller@gmx.de>, Paolo Bonzini
+ <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>, Laurent
+ Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, =?iso-8859-1?Q?Herv=E9?= Poussineau
+ <hpoussin@reactos.org>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jason Wang <jasowang@redhat.com>, Jia Liu <proljc@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>, Yoshinori
+ Sato <ysato@users.sourceforge.jp>, Magnus Damm <magnus.damm@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Stefano Stabellini
+ <sstabellini@kernel.org>, Anthony Perard <anthony.perard@citrix.com>, Paul
+ Durrant <paul@xen.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <qemu-riscv@nongnu.org>,
+ <qemu-s390x@nongnu.org>, <xen-devel@lists.xenproject.org>
+Subject: Re: [PATCH 08/45] hw/arm/sbsa-ref: use pci_init_nic_devices()
+Message-ID: <ZTerOM9bc5B8v/cc@qc-i7.hemma.eciton.net>
+References: <20231022155200.436340-1-dwmw2@infradead.org>
+ <20231022155200.436340-9-dwmw2@infradead.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20231022155200.436340-9-dwmw2@infradead.org>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: dizOLerF3W9Ktgo_lllh00WJGa4VFPrs
+X-Proofpoint-GUID: dizOLerF3W9Ktgo_lllh00WJGa4VFPrs
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-24_11,2023-10-24_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ spamscore=0 mlxscore=0 bulkscore=0 impostorscore=0 phishscore=0
+ mlxlogscore=781 priorityscore=1501 suspectscore=0 clxscore=1011
+ adultscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2310170001 definitions=main-2310240097
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,67 +165,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /HdO3MPcftDa
+X-TUID: BTxf7a0J8LZt
 
-Thomas Huth <thuth@redhat.com> wrote:
-> On 20/10/2023 21.42, Juan Quintela wrote:
->> Thomas Huth <thuth@redhat.com> wrote:
->>> On 20/10/2023 11.07, Juan Quintela wrote:
->>>> Otherwise qom-test fails.
->>>> ok 4 /i386/qom/x-remote
->>>> qemu-system-i386: savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=isa-ide, instance_id=0x0
->>>> Broken pipe
->>>> ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
->>>> Aborted (core dumped)
->>>> $
->>>> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
->>>> Signed-off-by: Juan Quintela <quintela@redhat.com>
->>>> ---
->>>>    hw/ide/isa.c | 2 +-
->>>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>> diff --git a/hw/ide/isa.c b/hw/ide/isa.c
->>>> index 95053e026f..ea60c08116 100644
->>>> --- a/hw/ide/isa.c
->>>> +++ b/hw/ide/isa.c
->>>> @@ -73,7 +73,7 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
->>>>        ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
->>>>        ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
->>>>        ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
->>>> -    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
->>>> +    vmstate_register_any(VMSTATE_IF(dev), &vmstate_ide_isa, s);
->>>>        ide_bus_register_restart_cb(&s->bus);
->>>>    }
->>>
->>> Would it make sense to use another unique ID of the device instead? E.g.:
->>>
->>> diff a/hw/ide/isa.c b/hw/ide/isa.c
->>> --- a/hw/ide/isa.c
->>> +++ b/hw/ide/isa.c
->>> @@ -73,7 +73,9 @@ static void isa_ide_realizefn(DeviceState *dev, Error **errp)
->>>       ide_bus_init(&s->bus, sizeof(s->bus), dev, 0, 2);
->>>       ide_init_ioport(&s->bus, isadev, s->iobase, s->iobase2);
->>>       ide_bus_init_output_irq(&s->bus, isa_get_irq(isadev, s->irqnum));
->>> -    vmstate_register(VMSTATE_IF(dev), 0, &vmstate_ide_isa, s);
->>> +    vmstate_register(VMSTATE_IF(dev),
->>> +                     object_property_get_int(OBJECT(dev), "irq", &error_abort),
->>> +                     &vmstate_ide_isa, s);
->>>       ide_bus_register_restart_cb(&s->bus);
->>>   }
->>>     Thomas
->> Ide is not my part of expertise.
->> But anything that is different for each instantance is going to be good
->> for me.
->
-> It's not really my turf either ... ok, so unless the IDE maintainer
-> speaks up, I think it's maybe best if you continue with your "_any"
-> patch.
+On Sun, Oct 22, 2023 at 16:51:23 +0100, David Woodhouse wrote:
+> From: David Woodhouse <dwmw@amazon.co.uk>
+> 
+> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 
-Ide maintainer can do your change if he likes it.  It is outside of my
-understanding to accept it or not (and furthermore, it breaks migration
-if you have only one device, with more than one it is already broken).
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
 
-Later, Juan.
-
+> ---
+>  hw/arm/sbsa-ref.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 3c7dfcd6dc..582a28ce92 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -691,9 +691,7 @@ static void create_pcie(SBSAMachineState *sms)
+>  
+>      pci = PCI_HOST_BRIDGE(dev);
+>      if (pci->bus) {
+> -        for (i = 0; i < nb_nics; i++) {
+> -            pci_nic_init_nofail(&nd_table[i], pci->bus, mc->default_nic, NULL);
+> -        }
+> +        pci_init_nic_devices(pci->bus, mc->default_nic);
+>      }
+>  
+>      pci_create_simple(pci->bus, -1, "bochs-display");
+> -- 
+> 2.40.1
+> 

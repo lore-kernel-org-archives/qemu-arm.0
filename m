@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2043220ejb;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2043222ejb;
         Tue, 24 Oct 2023 06:22:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGl5tSterGzcZkKBctefJKuDSG27jNkUjvERrafwdibvu0zPHwriXMcI4kdSoeQOtoZW9Ar
-X-Received: by 2002:ad4:5e8c:0:b0:66d:91f6:282d with SMTP id jl12-20020ad45e8c000000b0066d91f6282dmr16148884qvb.6.1698153720893;
-        Tue, 24 Oct 2023 06:22:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698153720; cv=none;
+X-Google-Smtp-Source: AGHT+IE0OElhzuBagCZY3MOnuIEO3MlWzU38jOdR68nLCr1NRH06bOxpqTei/oWkVHhm9vqbNqWG
+X-Received: by 2002:a05:620a:178e:b0:76d:a27c:245 with SMTP id ay14-20020a05620a178e00b0076da27c0245mr16243564qkb.7.1698153721351;
+        Tue, 24 Oct 2023 06:22:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698153721; cv=none;
         d=google.com; s=arc-20160816;
-        b=EVeLCpyXtnJ4tDyKY4k8Tp2W8yfO4kpnT8NK6cGpkv1+U4fO1D/aWulq3+CbFDgYL2
-         SyeP6rBzZmY4UyPyltk7UcA3xQi2nPE1MN8awisLqitM+CzkD0r/pIhxxF2nttTF5TLX
-         n6HgdhCr3r1rN8RWfMRM94JTKmy7ODFCw1qz+d2U/dKL8h6yecjjksL8JY8YmYDaxtJe
-         37SV8kRE/zZrcnHohJEwlwuDkxnWs+fG1EMIEfXsj+b2SGn4lOLZg0dXPAaCYY0Q8ukT
-         xFx1n2wr/cHmWlsuBlSYgRwZeVw9snLwUNUEAsE6D8MXQruri4+gaAT0TIpVv0h7cpwX
-         se7g==
+        b=hoJVRMy35c+NoGJvvAQ7qiHjawgmCC2PzbscGrLTKUfnXsX6/5QWQUC6clsVCI8AJ9
+         U0tWds+Viomq2r6m/udBgc3rbRfYJr1sl12JmUQlU8xQ3wQqJcZvtI8Aatkv4+jhh9Hk
+         ab90GMXrDw2k2wzt089CYqCYeI+tolX0u59Nc2MlS5TEkZGnFzbsZI9xpryIyT6DWtHG
+         NQdiPV9w0BMi1E/8RPDcX0sH55AOzExJATU/iPw0c+IRvlj6VNIvdU7lBiPj3r0/4LaL
+         5VeDEKuVVsPzIlx2YPPKDDywXxWSMkVrEqIL+n4mOegM4bVWC1MBmNU35F2W2XVzxftE
+         DAqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=HJTb+LTNQd3/dJXBX14vBzyMQV1D1vyynb/zu6zV1RM=;
+        bh=XdFHJUBuMGnAWFqd7hEgg2x2gUonHhaiV5RCE6MlQuA=;
         fh=opDjDdl13S8XzsjQawtiYU7uNvQllAuUSK4RvD1fxCk=;
-        b=d4x/l0jBstbjSIiRXVLnUwxtlw/IQkOkj6D9BIsHRWyiUbg+dvKUOEXH+vB5p0b7al
-         pIDA5hfSfFWjUnfRaY2YeyZ7yL/UZ8tv/6eArKuzTnDQF67oz8ey0KxgcjP13GGUQYJi
-         drIFhFbsJL9o02HyT/gx1GP8S24rZknztcAGl5ulFKdlR3F9Hs6NtDjkAgJkA4WXoall
-         U8NMUJipbb5ATn+U18BtBfql44hVr14+Z3i+/VvyI/5Tda+ZFRhvnG1L+aC0WCbbJk4g
-         Ec2ypFrhMQ/SLZTF7IR7NOgWJMTdTbmzE+RlCIHBMZ8wGg1COYRuLoG8YQXb1DQPJFVS
-         dmMw==
+        b=Ur54Uh+7RN2CSYvKGIpXhOcspS1dFAE65BzX07/vmFu+a9BFP/ARQ6ch9CXp+RQTrJ
+         17ffioofrsGb+7hrk5QK5+Wzgn3aH5vV4ZdiR2MTPomJLMARYR12RohzVQjnjyMK9fns
+         VK6WTgv3IRu94ANYSbYT0bI8uros/qooXu6IQzIDw7Af2uiYVq1uvYHdS5K9YRJU+fdO
+         Qdp5amppB+nw3EwktOi7G/TGIFM14/o7en+dFfXFuwIR5yHsUglyx39p95BAj2uIJDs4
+         Hv3NY+q9TtpzpDmB1oA1J5BuaNpMUp51HDuwWMmXlbQjZHZPq+qaQtUM440I5JcC3mX7
+         v8zA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Da4F4Z85;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmRElxcK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fn1-20020ad45d61000000b00646f2d31709si7469127qvb.178.2023.10.24.06.22.00
+        by mx.google.com with ESMTPS id y11-20020a05620a25cb00b00774309cdab0si7733670qko.210.2023.10.24.06.22.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 06:22:00 -0700 (PDT)
+        Tue, 24 Oct 2023 06:22:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Da4F4Z85;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmRElxcK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvHJu-0000fc-KA; Tue, 24 Oct 2023 09:19:42 -0400
+	id 1qvHI3-0005zZ-Kr; Tue, 24 Oct 2023 09:17:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHJ-0004bi-LN
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:17:06 -0400
+ id 1qvHGf-0002wB-F7
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:16:21 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qvHHG-00025R-Tg
- for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:17:00 -0400
+ id 1qvHGb-0001wH-Pd
+ for qemu-devel@nongnu.org; Tue, 24 Oct 2023 09:16:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698153416;
+ s=mimecast20190719; t=1698153377;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HJTb+LTNQd3/dJXBX14vBzyMQV1D1vyynb/zu6zV1RM=;
- b=Da4F4Z85PPLh+/PD0m6vyalPmGFuBWFxWXqb4N5OgmX0g9Wn+MSgELF1uBJwpZwvr2DO/V
- KDr+xeiVRCBj7p+hi7STT7n7A7L3C1Sd03z3tnye9Xn6VHiz417z5syD1lzFgRksbwk+I1
- 0pEFHHhTH94EF85Hh44Cj9qyVCIV5sU=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-608-uD2IutuNOauDNLG8kHoh3g-1; Tue,
- 24 Oct 2023 09:16:43 -0400
-X-MC-Unique: uD2IutuNOauDNLG8kHoh3g-1
+ bh=XdFHJUBuMGnAWFqd7hEgg2x2gUonHhaiV5RCE6MlQuA=;
+ b=hmRElxcKjQGAbKq0+QZkjLKhZHsUFTXPUucsGXmW4aoqdJVbJQB8ej/Sj4GsH6fkCUH/Fl
+ OVyzJRepDzg4ulRV0nZAmVlHatncyEOnRUYnuw+2LV5xeCVITgq5JDie6QEYDtW7uxVzU+
+ YdLLbKRMKGEf/sEZhtUNToMwASTC9CQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-342-zK0mN5RGOHOy7FeMXq-BIQ-1; Tue, 24 Oct 2023 09:16:03 -0400
+X-MC-Unique: zK0mN5RGOHOy7FeMXq-BIQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BF11D1C2B666;
- Tue, 24 Oct 2023 13:16:41 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 319E08164E8;
+ Tue, 24 Oct 2023 13:16:01 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 758A91C060AE;
- Tue, 24 Oct 2023 13:16:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 71E1A1C060AE;
+ Tue, 24 Oct 2023 13:15:54 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>,
@@ -109,10 +109,9 @@ Cc: Eric Blake <eblake@redhat.com>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
  Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PULL 31/39] migration: Improve example and documentation of
- vmstate_register()
-Date: Tue, 24 Oct 2023 15:12:57 +0200
-Message-ID: <20231024131305.87468-32-quintela@redhat.com>
+Subject: [PULL 25/39] migration: Create vmstate_register_any()
+Date: Tue, 24 Oct 2023 15:12:51 +0200
+Message-ID: <20231024131305.87468-26-quintela@redhat.com>
 In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
 References: <20231024131305.87468-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -141,41 +140,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4aDRWVE5RBBs
+X-TUID: ADlggOYCqZZO
+
+We have lots of cases where we are using an instance_id==0 when we
+should be using VMSTATE_INSTANCE_ID_ANY (-1).  Basically everything
+that can have more than one needs to have a proper instance_id or -1
+and the system will take one for it.
+
+vmstate_register_any(): We register with -1.
 
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231020090731.28701-11-quintela@redhat.com>
+Message-ID: <20231020090731.28701-2-quintela@redhat.com>
 ---
- docs/devel/migration.rst | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ include/migration/vmstate.h | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index be913630c3..240eb16d90 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -167,13 +167,17 @@ An example (from hw/input/pckbd.c)
-       }
-   };
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 1af181877c..1ea97ccf2d 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -1230,6 +1230,23 @@ static inline int vmstate_register(VMStateIf *obj, int instance_id,
+                                           opaque, -1, 0, NULL);
+ }
  
--We are declaring the state with name "pckbd".
--The ``version_id`` is 3, and the fields are 4 uint8_t in a KBDState structure.
--We registered this with:
-+We are declaring the state with name "pckbd".  The ``version_id`` is
-+3, and there are 4 uint8_t fields in the KBDState structure.  We
-+registered this ``VMSTATEDescription`` with one of the following
-+functions.  The first one will generate a device ``instance_id``
-+different for each registration.  Use the second one if you already
-+have an id that is different for each instance of the device:
++/**
++ * vmstate_register_any() - legacy function to register state
++ * serialisation description and let the function choose the id
++ *
++ * New code shouldn't be using this function as QOM-ified devices have
++ * dc->vmsd to store the serialisation description.
++ *
++ * Returns: 0 on success, -1 on failure
++ */
++static inline int vmstate_register_any(VMStateIf *obj,
++                                       const VMStateDescription *vmsd,
++                                       void *opaque)
++{
++    return vmstate_register_with_alias_id(obj, VMSTATE_INSTANCE_ID_ANY, vmsd,
++                                          opaque, -1, 0, NULL);
++}
++
+ void vmstate_unregister(VMStateIf *obj, const VMStateDescription *vmsd,
+                         void *opaque);
  
- .. code:: c
- 
--    vmstate_register(NULL, 0, &vmstate_kbd, s);
-+    vmstate_register_any(NULL, &vmstate_kbd, s);
-+    vmstate_register(NULL, instance_id, &vmstate_kbd, s);
- 
- For devices that are ``qdev`` based, we can register the device in the class
- init function:
 -- 
 2.41.0
 

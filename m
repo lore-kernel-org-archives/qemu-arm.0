@@ -1,67 +1,67 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2545936ejb;
-        Wed, 25 Oct 2023 00:07:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IERWM2TePyNlA14RSKKJBM4/mFZaWN/hEnl0c+ECmZH24tCIFAtScERWw/3hWfm6VfIEj6S
-X-Received: by 2002:a5d:4042:0:b0:32d:a210:d90a with SMTP id w2-20020a5d4042000000b0032da210d90amr8494344wrp.71.1698217648803;
-        Wed, 25 Oct 2023 00:07:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698217648; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2546040ejb;
+        Wed, 25 Oct 2023 00:07:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGbh3sz5HTcV3y2J4htSx8rP0pSh5De92gQFwjDW2RMK3eP/xiVpe5izWoSX4gukHvqY7XE
+X-Received: by 2002:a05:600c:1c97:b0:401:d803:6243 with SMTP id k23-20020a05600c1c9700b00401d8036243mr11032863wms.32.1698217663012;
+        Wed, 25 Oct 2023 00:07:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698217663; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ri+5OaK0vNdn7aagD4C7PSoN9DQAHbqhiTAeCdtxWjZBIZZdWhxseR8aLJHvweGMKK
-         1zP1rsuPeMAascTIRHKOLUZZNrsCMVAZjqkhRUA/sb0tNGylWlpEMOLq6/iUq2bftlNy
-         KvlEIq7ZEIsOsh2C/GNEQUVRhJh9vUX6gRivaXH9RdumKy0Nd/+Aanp5RvCR9cq3HjQj
-         Mnduu+O+sK4J1VgPsitid04E8WPWT0AvAFmkhWUSe16Nq5u3s6PVulah4uVtqjJoK3yG
-         270xF5jMSJ/dfY48wtFPITNpE48SQZ+uuW6FoZWiCg0n585C+53cpmBqyjf+gcYyYYg6
-         3O7Q==
+        b=utYJaJLFPyAx/unj4HYdINxiHMYr7qANisom0tTSWbSHfe4sWMU30yPiHw+4EluwvL
+         ckJCDlc8bl8BCrS2JTub4xKr1whUXab4uuJejmglvuwc5YaQMxxIAFyNTl1w15pnhmNf
+         JvJKCDVudUzzpf5b3a7DDunBL13GBgNPqd7GHXL3TjyjfOuSjEL8tYjrLClngh57x4Sy
+         ijwYFF9tM+9jurIgXu0tS3QreHM6WEoUUq8EUe5lu6ySU3d9/i/7UGqKTRVk88Zk/H8Y
+         8si7w7CMos5s1tSH+73tMB1vZbTaT932HLrZHnQ6hGwt70Cay185Pn0rlpUQNdmYzDPY
+         yKgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=UTZ73Xcn9fh2kel77vGEXPhB3oOXTW2462lF76nBHD0=;
+        bh=vG6w4xxGA2Z8kLBORyUWKbgtL7fuYWaYBz9cdH4QjQE=;
         fh=keE2KatKG8lbgXGZXmt3WBgtkhQ6uEw33ggpupitLEY=;
-        b=hMtnurVPH27aY7ioNA5En/bCE2fzCaXialAGcLLPkowSaGZNhoyTfV3PUNfPlgF1sY
-         vj6bqV8SLMLnUwWu9ddEsxOvuk9/GdPDnyC3zNSPjlyBsQlHPm95lk1Y5ZWW4klzpbwt
-         RSQiEYxVM9iIRY8L4mVHQGiHO54WSoBZ3cZO9irHJzzudcG/dGYQohpaMmMTJWZgfSeI
-         RgqK/9DhkcPkoOv0CqBMUxvZR9ncdMhZYCdCvTiR73VkhhWBApKJURiLa7CWpsLcoKGr
-         9hC2jvZ1UimGJJmHbFBf0KnlPAxdXHq3gYr+8SFZsU+55asnL6bERBb7PfR/Pjxm3G/Q
-         tYSA==
+        b=nMT+tU/hltLYuyzZAab5c1YQruYJl9R9gM6dS/3s6fno9gGRolgnYYQqhn9uwjI92/
+         pR+60KaOBNJRcIaZ9QSwEr3pcafy9zaGmkUx3sZsG1r/YDHUOVuHehpdI9EBidVS5aCy
+         ra6xH4utW5MaKrTgBPus0Drr+nuomy8+dfTx48pS0rxSB4ezpXECAqlDowxF2gwSX4hu
+         eSgnrhP7nYbaFb+nxpZBTWs5Kn3iKAGz1Ui7Q3GJgwLckYQJqRnHyMuH5JueDvbQ4QQN
+         +vWhr3Ik+hZq2AYPU6dXSmJ4sux2+3AnJA5qlmemOOVwjT3BsMGkraUF/ltI69sgira6
+         yxZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7-20020adf9cc7000000b00317752a13besi7055341wre.408.2023.10.25.00.07.28
+        by mx.google.com with ESMTPS id w11-20020a05600c474b00b004084d8e163fsi7167340wmo.52.2023.10.25.00.07.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 00:07:28 -0700 (PDT)
+        Wed, 25 Oct 2023 00:07:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvXyw-0002E4-Pm; Wed, 25 Oct 2023 03:07:11 -0400
+	id 1qvXzL-0002Xt-Iq; Wed, 25 Oct 2023 03:07:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
- id 1qvXyv-0002DU-Ip; Wed, 25 Oct 2023 03:07:09 -0400
+ id 1qvXzF-0002P8-Io; Wed, 25 Oct 2023 03:07:30 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
- id 1qvXym-0000oa-BR; Wed, 25 Oct 2023 03:07:09 -0400
+ id 1qvXzB-0000s2-Qr; Wed, 25 Oct 2023 03:07:27 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SFg350C7pz4wx5;
- Wed, 25 Oct 2023 18:06:57 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SFg3b4Dh8z4wx7;
+ Wed, 25 Oct 2023 18:07:23 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SFg331g3lz4wd2;
- Wed, 25 Oct 2023 18:06:54 +1100 (AEDT)
-Message-ID: <23abf111-873c-42f3-b953-f462287cf4db@kaod.org>
-Date: Wed, 25 Oct 2023 09:06:54 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SFg3Y2GYYz4wx5;
+ Wed, 25 Oct 2023 18:07:21 +1100 (AEDT)
+Message-ID: <e43f1bb7-acc4-471d-afb9-7ccedb811e4a@kaod.org>
+Date: Wed, 25 Oct 2023 09:07:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/11] hw/arm/aspeed: Rename aspeed_soc_init() as
+Subject: Re: [PATCH 03/11] hw/arm/aspeed: Rename aspeed_soc_realize() as
  AST2400/2500 specific
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -69,9 +69,9 @@ To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
 References: <20231024162423.40206-1-philmd@linaro.org>
- <20231024162423.40206-3-philmd@linaro.org>
+ <20231024162423.40206-4-philmd@linaro.org>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231024162423.40206-3-philmd@linaro.org>
+In-Reply-To: <20231024162423.40206-4-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -96,9 +96,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6mR4POxTJgnL
+X-TUID: g7Eh+9vlv6Wk
 
 On 10/24/23 18:24, Philippe Mathieu-Daudé wrote:
+> Keep aspeed_soc_class_init() generic, set the realize handler
+> to aspeed_ast2400_soc_realize() in each 2400/2500 class_init.
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
@@ -110,38 +113,54 @@ C.
 
 
 > ---
->   hw/arm/aspeed_soc.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+>   hw/arm/aspeed_soc.c | 15 +++++++++++----
+>   1 file changed, 11 insertions(+), 4 deletions(-)
 > 
 > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index f6c2ead4ac..bb377e9e6e 100644
+> index bb377e9e6e..191276a320 100644
 > --- a/hw/arm/aspeed_soc.c
 > +++ b/hw/arm/aspeed_soc.c
-> @@ -140,7 +140,7 @@ static qemu_irq aspeed_soc_ast2400_get_irq(AspeedSoCState *s, int dev)
->       return qdev_get_gpio_in(DEVICE(&s->vic), sc->irqmap[dev]);
+> @@ -239,7 +239,7 @@ static void aspeed_ast2400_soc_init(Object *obj)
+>       object_initialize_child(obj, "video", &s->video, TYPE_UNIMPLEMENTED_DEVICE);
 >   }
 >   
-> -static void aspeed_soc_init(Object *obj)
-> +static void aspeed_ast2400_soc_init(Object *obj)
+> -static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+> +static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
 >   {
->       AspeedSoCState *s = ASPEED_SOC(obj);
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> @@ -546,7 +546,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
->   static const TypeInfo aspeed_soc_ast2400_type_info = {
->       .name           = "ast2400-a1",
->       .parent         = TYPE_ASPEED_SOC,
-> -    .instance_init  = aspeed_soc_init,
-> +    .instance_init  = aspeed_ast2400_soc_init,
->       .instance_size  = sizeof(AspeedSoCState),
->       .class_init     = aspeed_soc_ast2400_class_init,
->   };
-> @@ -573,7 +573,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
->   static const TypeInfo aspeed_soc_ast2500_type_info = {
->       .name           = "ast2500-a1",
->       .parent         = TYPE_ASPEED_SOC,
-> -    .instance_init  = aspeed_soc_init,
-> +    .instance_init  = aspeed_ast2400_soc_init,
->       .instance_size  = sizeof(AspeedSoCState),
->       .class_init     = aspeed_soc_ast2500_class_init,
->   };
+>       int i;
+>       AspeedSoCState *s = ASPEED_SOC(dev);
+> @@ -509,9 +509,6 @@ static void aspeed_soc_class_init(ObjectClass *oc, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(oc);
+>   
+> -    dc->realize = aspeed_soc_realize;
+> -    /* Reason: Uses serial_hds and nd_table in realize() directly */
+> -    dc->user_creatable = false;
+>       device_class_set_props(dc, aspeed_soc_properties);
+>   }
+>   
+> @@ -527,6 +524,11 @@ static const TypeInfo aspeed_soc_type_info = {
+>   static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
+>   {
+>       AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +
+> +    dc->realize = aspeed_ast2400_soc_realize;
+> +    /* Reason: Uses serial_hds and nd_table in realize() directly */
+> +    dc->user_creatable = false;
+>   
+>       sc->name         = "ast2400-a1";
+>       sc->cpu_type     = ARM_CPU_TYPE_NAME("arm926");
+> @@ -554,6 +556,11 @@ static const TypeInfo aspeed_soc_ast2400_type_info = {
+>   static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
+>   {
+>       AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +
+> +    dc->realize = aspeed_ast2400_soc_realize;
+> +    /* Reason: Uses serial_hds and nd_table in realize() directly */
+> +    dc->user_creatable = false;
+>   
+>       sc->name         = "ast2500-a1";
+>       sc->cpu_type     = ARM_CPU_TYPE_NAME("arm1176");
 

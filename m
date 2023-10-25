@@ -1,198 +1,245 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2740348ejb;
-        Wed, 25 Oct 2023 06:27:42 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFS1hYEprs/Zc6cQ5CF1EBVvVGgiZCUVdggDpgxIa2bzclaLYcBQgKq/eGze6J1UFEJwVPZ
-X-Received: by 2002:a05:620a:2890:b0:775:446b:860c with SMTP id j16-20020a05620a289000b00775446b860cmr16518987qkp.70.1698240461899;
-        Wed, 25 Oct 2023 06:27:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698240461; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2748132ejb;
+        Wed, 25 Oct 2023 06:39:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IERlrjQ0Sxh9s6sQ1Z8vk5Kazg+RUfAfBqNGfvnpIJ63Uk1S46R2XYiRV2d3w6yjnQCb4DK
+X-Received: by 2002:a5d:408c:0:b0:323:2563:be13 with SMTP id o12-20020a5d408c000000b003232563be13mr12884311wrp.52.1698241148719;
+        Wed, 25 Oct 2023 06:39:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698241148; cv=none;
         d=google.com; s=arc-20160816;
-        b=VJ0iJUAc2YIRA466ajVqw+PyyLVRy8/mfnKz9aO4qjYRrnlyhry1Ps9z6e3jeu+KwJ
-         3a/c8lXIMGkcCtjELd4UMySD8MedcHlVxOS3nYfCZf9IGBixO+jUcYwCMDE3TNAZvSaa
-         dsteI4xaGznoVsz5ra0Rs0X1b+ALzVBUF+yfGgDNVLXdnvXqGLC98+XLO5Glgp4bzAyx
-         LBZIqVVkdbzs8uECZiKmYQk2DEKalaVuyq/69xZI5fFqXp2qNhyHF0YX1PsJLEPgJIOB
-         yTEz7GvSGCJYpSJ4wjguBK3SeoOe2SOCdCq4Ibb1dpPapHbaEb4HufJTp6118ubj+lRI
-         of6A==
+        b=UUC2yq6wFZ7cJLz37bqZGygNb1CUzuRO580lVif9pH6jwqdRHsWGGosfIVga0vY/7z
+         gMpKm1CAoC6/OMpu1kT3E224NYF1jCEZf5YeehxW6BPx2lMuU6pBxtFYOIFZIv2TvlwP
+         csbwGwgvZXW9TREG/2Sd3W4/oQepCZIF9x/xGNDPC3vgp/gcgHJHEdI/OrWIgTlCkOTY
+         ip//1AAv25j9eoJqHGBFaPyCMBBD6kIJkI9xNGsn91AYCGuG8j66zMk35DmpAa4xWZ3Q
+         2lqczqGDezsgVhK4bgbAAGOCZdWIkMNecJvEJacZVxmSNaI/8lEIEQxUTZ5G5iiDydeA
+         ERsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=pilNiS4pU0CfC0m1XhMSR+2CsdHHab2yVxcsy7Ctxt8=;
-        fh=PtJCBIvinW7B3gtAF+8dZxmQhnbsxbmF3dE5/qOdwzk=;
-        b=Ewdh9OUikCzJJRu+Ihmv4TGl546WGJAOByMMrvJ8ULAzpmzqwJAXYBb+MlnYoUKzle
-         Hlvgn2g/Aq0OfNhwhfKSbykeBdpwhZfvNQTAADnEbkgVGbwytQEJA/PZMQ8Y7F1GwNnM
-         CwEjFSlxoPSwN2MTuYnwUTvibJ7edji39YWz5mBfjCo+gVZmbmlsg+1oXrdWsNkJ1bNa
-         Ucj7YmeiAgEB6aDr5slZdO11R79qz+F5tFm3QNlRH8mwr1klT/rtBvxvJGhvY73e+au4
-         ERVPYXqQmfb+eUFek5GyDnqw55gh9P+rD75DCm8yCEwPpks2JSg13/FC7DgsVjsF6gpa
-         VxLA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ncZI0WEgzk1jNal+b7ZIMwkCI8K890H4TnMBmwtu+q4=;
+        fh=gIxOXiZGt50H4cyulC8pJeW3c2AK2+SQegxQxO2IctU=;
+        b=NGwCUOwEwMp8TEu9aUKZPC8/gV1GVAKEP5l2ykk66P5gvIYe9Un6+osARBZGxXNX++
+         ZtV7o+WFXZ/keepUA5813R6gErrcPBNFCI5+3XdZyQJ6uSkpUwBskSbMNy/jXrmLLPq3
+         0HyhruHht2p8mzvYtW1LI4eXdUX5/egMVFMovV2v5BBql3VY37NhiaVJoEs5M/Boluau
+         5ZmAXdud7A7xr/XwkF5ix/0iBWcsXa1wMJVex4Q+AIG+eS1M2PbaAy235boB9weMFN6f
+         cK+4I8McbHCr1+/K+0kkLQPR1+dpKSga8T5jLseaTQwymhsBHVqHpM0hn8XiArDwdmDO
+         A/qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PZvJXYA2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bi2pYYe5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de42-20020a05620a372a00b00779d8250e92si4885762qkb.657.2023.10.25.06.27.41
+        by mx.google.com with ESMTPS id t12-20020adfe44c000000b003175a67a3aasi7150009wrm.844.2023.10.25.06.39.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 06:27:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Oct 2023 06:39:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PZvJXYA2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bi2pYYe5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvduo-0006EZ-2N; Wed, 25 Oct 2023 09:27:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qve5r-0002qW-NY; Wed, 25 Oct 2023 09:38:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1qvdun-0006E6-9q
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 09:27:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qve5o-0002mn-Jg
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 09:38:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1qvdul-0007E0-Ne
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 09:27:17 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qve5l-0000ef-Ro
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 09:38:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698240435;
+ s=mimecast20190719; t=1698241116;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pilNiS4pU0CfC0m1XhMSR+2CsdHHab2yVxcsy7Ctxt8=;
- b=PZvJXYA20N0PEgyXJc9PyTQAFo5jcIucRoDApIqBy7RjZPoJf/G9Wo+83OvaAtsok5pFKR
- ITv2rOCyA6RBj2Vrm7DL7DJUD2TZQOPNqG4BXpJ82q+m81PbbK3UFD83aaRfitWjRXfNYs
- EYo82rew4JAcoC3u3nDluXlVPotglDA=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ncZI0WEgzk1jNal+b7ZIMwkCI8K890H4TnMBmwtu+q4=;
+ b=bi2pYYe5OmqHVr0YDIJjtqHDg+ERbkcaGBjCzy6BUFiTX/RwzZk7SpSMXIeyEXen55gEv2
+ pjmEsY+c2iQxQp60vDlRTt4QS1M5viBOXAhnRL8RUbw+T5p+9f+eibF8U4DZ+xf7Np8D64
+ LzurHSu/J9A4r3Ul10LtvmyaTzB0cjw=
+Received: from mail-vk1-f199.google.com (mail-vk1-f199.google.com
+ [209.85.221.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-190-vUlUXXdSO_mIpGM1RZvaLA-1; Wed, 25 Oct 2023 09:27:11 -0400
-X-MC-Unique: vUlUXXdSO_mIpGM1RZvaLA-1
-Received: by mail-ed1-f69.google.com with SMTP id
- 4fb4d7f45d1cf-53e2acda9d6so3709241a12.2
- for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 06:27:11 -0700 (PDT)
+ us-mta-211-ARs-XfdEO_CCcjA5o97DHg-1; Wed, 25 Oct 2023 09:38:35 -0400
+X-MC-Unique: ARs-XfdEO_CCcjA5o97DHg-1
+Received: by mail-vk1-f199.google.com with SMTP id
+ 71dfb90a1353d-49dcd41cefdso2985335e0c.1
+ for <qemu-devel@nongnu.org>; Wed, 25 Oct 2023 06:38:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698240430; x=1698845230;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=pilNiS4pU0CfC0m1XhMSR+2CsdHHab2yVxcsy7Ctxt8=;
- b=lXrIbI5iSGi7wOKJu1EAx3TBAjq4cO80mZb9NZgN1bAtDp8Z0OWypBnIDf6tDv2ipl
- G/PzKEfCvPm2ElkGBlzEHj3t0qa+AVqYPfRLTXqwhDtuGLWRxU+BWF16BFCOGoRi7bGV
- tZ2NQHdSknw3uaIql5xVZ9gYlz8KPnd1sKP4tbovqTLN7XPMUjJfDdp63E1ZuPJr/OpA
- 6h77bJq6cyH7HWl8yXye1VKIfALZ3BAb6vlUwLWU2RE/6SoQJuyEj7MK9WUOAJQPuUWO
- NxIpqDNqSinQ43u0eKlzmqQu3TCmjMEYU+WyTUXqEkk41aS9ol/wZgG6L4MsgEgz+OE5
- uQuw==
-X-Gm-Message-State: AOJu0Yy5oUUTkMnGDsk9qaa1TLs0fMSVV/riqEsmCxRxV4qkupOxq5dD
- BBKoYNVWrm84LKl3lXtJXOEYQsuZ+Q/1oQ4eRcADHQpAXaAZAcQngjWQTaJC1DStizhJuKCj5Nl
- P0xIGxTmzPznMZwuDtyQO84uHWm+T
-X-Received: by 2002:a50:cd59:0:b0:540:16d0:cd4 with SMTP id
- d25-20020a50cd59000000b0054016d00cd4mr7766623edj.41.1698240430425; 
- Wed, 25 Oct 2023 06:27:10 -0700 (PDT)
-X-Received: by 2002:a50:cd59:0:b0:540:16d0:cd4 with SMTP id
- d25-20020a50cd59000000b0054016d00cd4mr7766608edj.41.1698240430149; Wed, 25
- Oct 2023 06:27:10 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1698241114; x=1698845914;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ncZI0WEgzk1jNal+b7ZIMwkCI8K890H4TnMBmwtu+q4=;
+ b=fCnosqWJGZqbs4AyFyC5Ya+OPmvKS1AdasOJpUyiDUAgaTtRqu4Tyaimu6bn5KkROR
+ PIRN1e62f+0ZWMbHY2L7OCatTYWpR5ZuVaRN+ZTz1n8QwQOIaH2RI4VG2ST/qkR/M2cr
+ sCyFvGuD1uUiTIH7wR8UAFJgv40+GLnPjcn2hJD2+O3ptztbgw701NRZzV08114PEQTf
+ 7U0KSnXrlNpGXMOTHTwdntbyao0jFtRdjjuJyKQSzNo+1BNUvPFps5HMXbqXO6AQ+Vof
+ gqAddKSkF2TxPw8vnmwJ1X52bPrp4ZvAXHbJcSd5cZ3kU9mBBAVlthsl4UFKl8ZQRNj7
+ Ig4A==
+X-Gm-Message-State: AOJu0YzKaJAnRxaRLWKXcePPSGSppDuL4192TqRWbAi8c3t3Spakj8s7
+ EfrwZK8mOjWt6scnors3VflH4MymgPMDOk1PvOlU0RoHSWxiHd3v60NWNw3mkZrH2mLNJnVDugo
+ H59HvMTe3ItTZFLE=
+X-Received: by 2002:a1f:24c5:0:b0:49e:1be5:de9b with SMTP id
+ k188-20020a1f24c5000000b0049e1be5de9bmr13154473vkk.5.1698241114587; 
+ Wed, 25 Oct 2023 06:38:34 -0700 (PDT)
+X-Received: by 2002:a1f:24c5:0:b0:49e:1be5:de9b with SMTP id
+ k188-20020a1f24c5000000b0049e1be5de9bmr13154458vkk.5.1698241114286; 
+ Wed, 25 Oct 2023 06:38:34 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-176-238.web.vodafone.de.
+ [109.43.176.238]) by smtp.gmail.com with ESMTPSA id
+ g3-20020ac870c3000000b0041b3a1462fbsm4203129qtp.37.2023.10.25.06.38.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Oct 2023 06:38:32 -0700 (PDT)
+Message-ID: <9c1c9947-fb66-4f58-9a72-d3a69182283a@redhat.com>
+Date: Wed, 25 Oct 2023 15:38:27 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 04/19] vl: move display early init before default
+ devices
+Content-Language: en-US
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
  <20231023113047.2572137-5-marcandre.lureau@redhat.com>
  <4af29498-c70f-4969-ba71-2b30ed281ea6@redhat.com>
-In-Reply-To: <4af29498-c70f-4969-ba71-2b30ed281ea6@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Wed, 25 Oct 2023 17:26:58 +0400
-Message-ID: <CAMxuvayE4YQk2HsEVQxVNkVP+GFL1wrw683s7jDr5c_Moq=9Cw@mail.gmail.com>
-Subject: Re: [PATCH v5 04/19] vl: move display early init before default
- devices
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-ppc@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Markus Armbruster <armbru@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mlureau@redhat.com;
+ <CAMxuvayE4YQk2HsEVQxVNkVP+GFL1wrw683s7jDr5c_Moq=9Cw@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAMxuvayE4YQk2HsEVQxVNkVP+GFL1wrw683s7jDr5c_Moq=9Cw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T92I4C1E7n7c
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 34MRVdQjD1Vl
 
-Hi
+On 25/10/2023 15.26, Marc-André Lureau wrote:
+> Hi
+> 
+> On Wed, Oct 25, 2023 at 1:56 PM Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> On 23/10/2023 13.30, marcandre.lureau@redhat.com wrote:
+>>> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>>
+>>> The next commit needs to have the display registered itself before
+>>> creating the default VCs.
+>>>
+>>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>> ---
+>>>    system/vl.c | 41 +++++++++++++++++++++++------------------
+>>>    1 file changed, 23 insertions(+), 18 deletions(-)
+>>>
+>>> diff --git a/system/vl.c b/system/vl.c
+>>> index 92d29bf521..2cecb3d884 100644
+>>> --- a/system/vl.c
+>>> +++ b/system/vl.c
+>>> @@ -1349,6 +1349,28 @@ static void qemu_disable_default_devices(void)
+>>>        }
+>>>    }
+>>>
+>>> +static void qemu_early_display_init(void)
+>>> +{
+>>> +#if defined(CONFIG_VNC)
+>>> +    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
+>>> +        display_remote++;
+>>> +    }
+>>> +#endif
+>>> +    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
+>>> +        if (!qemu_display_find_default(&dpy)) {
+>>> +            dpy.type = DISPLAY_TYPE_NONE;
+>>> +#if defined(CONFIG_VNC)
+>>> +            vnc_parse("localhost:0,to=99,id=default");
+>>> +#endif
+>>> +        }
+>>> +    }
+>>> +    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
+>>> +        dpy.type = DISPLAY_TYPE_NONE;
+>>> +    }
+>>> +
+>>> +    qemu_display_early_init(&dpy);
+>>> +}
+>>
+>> So we now have qemu_early_display_init() and qemu_display_early_init() ... ?
+>> That's very confusing, could you maybe come up with a different name for the
+>> new function?
+> 
+> Ok, what about qemu_setup_display() ? I'll also simplify a bit the logic there.
 
-On Wed, Oct 25, 2023 at 1:56=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
-e:
->
-> On 23/10/2023 13.30, marcandre.lureau@redhat.com wrote:
-> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >
-> > The next commit needs to have the display registered itself before
-> > creating the default VCs.
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > ---
-> >   system/vl.c | 41 +++++++++++++++++++++++------------------
-> >   1 file changed, 23 insertions(+), 18 deletions(-)
-> >
-> > diff --git a/system/vl.c b/system/vl.c
-> > index 92d29bf521..2cecb3d884 100644
-> > --- a/system/vl.c
-> > +++ b/system/vl.c
-> > @@ -1349,6 +1349,28 @@ static void qemu_disable_default_devices(void)
-> >       }
-> >   }
-> >
-> > +static void qemu_early_display_init(void)
-> > +{
-> > +#if defined(CONFIG_VNC)
-> > +    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
-> > +        display_remote++;
-> > +    }
-> > +#endif
-> > +    if (dpy.type =3D=3D DISPLAY_TYPE_DEFAULT && !display_remote) {
-> > +        if (!qemu_display_find_default(&dpy)) {
-> > +            dpy.type =3D DISPLAY_TYPE_NONE;
-> > +#if defined(CONFIG_VNC)
-> > +            vnc_parse("localhost:0,to=3D99,id=3Ddefault");
-> > +#endif
-> > +        }
-> > +    }
-> > +    if (dpy.type =3D=3D DISPLAY_TYPE_DEFAULT) {
-> > +        dpy.type =3D DISPLAY_TYPE_NONE;
-> > +    }
-> > +
-> > +    qemu_display_early_init(&dpy);
-> > +}
->
-> So we now have qemu_early_display_init() and qemu_display_early_init() ..=
-. ?
-> That's very confusing, could you maybe come up with a different name for =
-the
-> new function?
+Fine for me.
 
-Ok, what about qemu_setup_display() ? I'll also simplify a bit the logic th=
-ere.
+  Thomas
+
 

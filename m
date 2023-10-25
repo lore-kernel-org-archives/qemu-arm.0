@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2967345ejb;
-        Wed, 25 Oct 2023 12:09:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFSqgXAY/VMaHsTt/oi7JI3TuY0zFJoXhBUJPL1SJlnUbADt2vieoPFLXVK4EZ4wphDt01x
-X-Received: by 2002:a05:651c:2220:b0:2c5:462:3048 with SMTP id y32-20020a05651c222000b002c504623048mr14106833ljq.1.1698260971400;
-        Wed, 25 Oct 2023 12:09:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698260971; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2967399ejb;
+        Wed, 25 Oct 2023 12:09:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGevGDekX21flv44VtyeYSUw3HILQNVHxErYlOK5QrPT/k75qKJxlaZDMpfG0KuJ0vuU/OO
+X-Received: by 2002:a05:600c:1992:b0:406:872d:7725 with SMTP id t18-20020a05600c199200b00406872d7725mr12784475wmq.1.1698260976200;
+        Wed, 25 Oct 2023 12:09:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698260976; cv=none;
         d=google.com; s=arc-20160816;
-        b=eHNATksbyA+rdsuDcBUZrQeesCEdtaNqXgUmYbs+eX1b0nQDF2e/tuS53r5RsaeQNo
-         BhKvb2ALtoTcwKng+l+Pvn9iV8MS9IUf+TGbGklbSI5tnza5LgkNzjvOeNaERkNdTmfZ
-         kyyR0KuP81NcpZMPfyeuADLrqSD+dOUlkmdQSf0EY6bql7lgY6lxu0DpjUjLEPVR/y0t
-         z/Wa1CvDN1gkGPgq43lbJAkg5YYdJHy+5etncLEq9LVESf9MjMDp105d3cUrLDZbhXvW
-         LGkmuYXU1pUEZ8aQBNG2nAyfD4wtxjBCdJmRc2PzN42m3ckQVNZfPkF1Bw4fErENHRyu
-         tssA==
+        b=IAFDaAuWqvnUuHGbC0K2gZmN5yvMNVjqKvCV/H/Knf15zm632jEk9tq0Hnosh6tD+F
+         xIaTMYTgKj/RtyoeGHfP5EpuqIncHPGyjEAC8vAR9q7SGjEFqCkZkMxu2I6ocXqjncoc
+         IKLoc8rhxoGIjIdE1YUtA7iavBvdNoy2s8j7vLwnGLuxn1b6mIRg+sCdD4OdU9mY5Qc3
+         ZE4J0LTwwo3gl/rH0bufHLSTzroc4hjq4xnBLRKZFGeczFhSt9LQjdh2un+WcSL8Yt8J
+         8bWxIT6ArDSlOqtJDmokXyWzfqafftkThARJLBkdiznKrkXTCTA5W7/hczZBqjA1zocn
+         dd/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YP87HK9J12wuCuTUJQzAESNv0IT7Xi6Ydvww2HjOm3s=;
+        bh=523l5CFDQhMe/8iz9cuQcGu7DmK05F4Kg7km6pZrlLc=;
         fh=xhblChOHn/9ohxmBdExAv8vV4InD5nB0dX6yBSUq53Q=;
-        b=mxOX6pDyz31EqWnW4n09XBcSv3DidaEpuNz2CsZEIAxqdNt9WN1nA7qgdCIjsL750i
-         IEySacAYQlONafwY5wBc7S9cO8WMwBMIW4RUPeD2/5ga9VWfjxJlWcl5G1kbCdtTUyQn
-         0M52Eu0vp0584GQNVqx/xtdRd68ZP1b10SKQgMZUIYui/WGrgxXdSTOUlXYTwG4b9MOv
-         otPS1X1fk80gIOvimKYT3BCg+LCRK76L44EFVGUi0afTVBketeWUd0qoELKbxH7VbozL
-         Cs5QAKIlZ/OsqQPiadoj3UgMu4oo5GlDvhuApY+di0z1MnBk9ZlcP4jS5pnNkwAXellv
-         ULYw==
+        b=MeMzyfVbamYzBzskstb+/Hi5RW21LGxL7G4Ud1aP2j33xS361ohp0pj5nDom3uNNeb
+         lPuLm5zeOvLUsYwnp02mkdyVhxM/luNfXrUAhAVIu+JJ+ggtWjaqloq1IIBS4mbbMZfS
+         eUZGjVi3ZlFPo1C4XysXAQTKTHd6/0wVQe/I7TtRF2msp6Pm/V56NVPi1EgXwIpIHrF3
+         2j06EqBuGbWs5rRtVAnR9cIg+63hEhUD0+XZahWbUBb6kRXpKvF9j1VOCTHjYVEan1nA
+         vzCwCOjgqCk1dbDr3RKapkIznZiMNtAMRgAVsq9HJ5YEgeJMOu7Aot/Ib0UYRqe9xroh
+         Tndg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMmlkF+y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KSbRVw5a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id je9-20020a05600c1f8900b004074ed8796bsi385136wmb.197.2023.10.25.12.09.31
+        by mx.google.com with ESMTPS id v13-20020a5d610d000000b0032d931fe36dsi8249633wrt.582.2023.10.25.12.09.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 12:09:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Oct 2023 12:09:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMmlkF+y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KSbRVw5a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvjFv-0005Ff-U9; Wed, 25 Oct 2023 15:09:29 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qvjFU-0004lY-MN; Wed, 25 Oct 2023 15:09:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjFo-00051L-Ji
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:09:20 -0400
+ id 1qvjFS-0004kA-35
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:08:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjFm-0000Tv-8L
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:09:20 -0400
+ id 1qvjFQ-0000LK-3x
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:08:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698260957;
+ s=mimecast20190719; t=1698260935;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YP87HK9J12wuCuTUJQzAESNv0IT7Xi6Ydvww2HjOm3s=;
- b=MMmlkF+yw9YWROOmelCciE/W6KZtKAv9D0DlEPFwRyUiQpgZtjnwdJL39LBIRUL9I9ZcmM
- sYqlkdkahZCX4FLryH/6dsl4BWuR6C9DSqHpEIXjRyn7gcfYsMy87KcMeoFTLX8Qd96hEq
- 4BAr3WGrGvCgMzkRxvrSDR6BkpEXK8s=
+ bh=523l5CFDQhMe/8iz9cuQcGu7DmK05F4Kg7km6pZrlLc=;
+ b=KSbRVw5aAwNoQyPP91dCH1tEzDx8LnWtc646xV6WJk0IMCZfetis8aBojOX+Je/cEr4g6Q
+ LNlUpZMgIzV01Pu4Nh1CtnXWNE5oXk+PunaupPaqUdjH5sgWVHccxLdof/tjENFOuGxKXD
+ DiQXVqhs4p0vEnST9HFYxaCe/9SU9tU=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-402-SQO9E2R6ONqRugeY8ylHWg-1; Wed,
- 25 Oct 2023 15:09:01 -0400
-X-MC-Unique: SQO9E2R6ONqRugeY8ylHWg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-346-rPE0f_bOMY61CP-97BgJKg-1; Wed,
+ 25 Oct 2023 15:08:49 -0400
+X-MC-Unique: rPE0f_bOMY61CP-97BgJKg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 168DD3C01B96;
- Wed, 25 Oct 2023 19:09:01 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DEBA738062AC;
+ Wed, 25 Oct 2023 19:08:48 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E99AF40C6F7B;
- Wed, 25 Oct 2023 19:08:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 84E552166B26;
+ Wed, 25 Oct 2023 19:08:47 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -90,15 +90,15 @@ Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v6 09/23] ui/console: allow to override the default VC
-Date: Wed, 25 Oct 2023 23:08:03 +0400
-Message-ID: <20231025190818.3278423-10-marcandre.lureau@redhat.com>
+Subject: [PATCH v6 06/23] qemu-options: define -vnc only #ifdef CONFIG_VNC
+Date: Wed, 25 Oct 2023 23:08:00 +0400
+Message-ID: <20231025190818.3278423-7-marcandre.lureau@redhat.com>
 In-Reply-To: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -110,137 +110,112 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wTYMirTHTy8J
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wGPp2/j8W4t7
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-If a display is backed by a specialized VC, allow to override the
-default "vc:80Cx24C". For that, set the dpy.type just before creating
-the default serial/parallel/monitor.
-
-As suggested by Paolo, if the display doesn't implement a VC (get_vc()
-returns NULL), use a fallback that will use a muxed console on stdio.
-
-This changes the behaviour of "qemu -display none", to create a muxed
-serial/monitor by default.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/ui/console.h |  2 ++
- system/vl.c          | 27 +++++++++++++++++----------
- ui/console.c         | 14 ++++++++++++++
- 3 files changed, 33 insertions(+), 10 deletions(-)
+ system/vl.c     | 13 +++++++++----
+ ui/vnc-stubs.c  | 12 ------------
+ qemu-options.hx |  2 ++
+ 3 files changed, 11 insertions(+), 16 deletions(-)
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index acb61a7f15..a4a49ffc64 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -462,12 +462,14 @@ struct QemuDisplay {
-     DisplayType type;
-     void (*early_init)(DisplayOptions *opts);
-     void (*init)(DisplayState *ds, DisplayOptions *opts);
-+    const char *vc;
- };
- 
- void qemu_display_register(QemuDisplay *ui);
- bool qemu_display_find_default(DisplayOptions *opts);
- void qemu_display_early_init(DisplayOptions *opts);
- void qemu_display_init(DisplayState *ds, DisplayOptions *opts);
-+const char *qemu_display_get_vc(DisplayOptions *opts);
- void qemu_display_help(void);
- 
- /* vnc.c */
 diff --git a/system/vl.c b/system/vl.c
-index db4d5ee79a..86dd2dce28 100644
+index 3be1a78a9d..de6df188da 100644
 --- a/system/vl.c
 +++ b/system/vl.c
-@@ -1372,6 +1372,7 @@ static void qemu_setup_display(void)
- static void qemu_create_default_devices(void)
+@@ -1095,13 +1095,14 @@ DisplayOptions *qmp_query_display_options(Error **errp)
+ 
+ static void parse_display(const char *p)
  {
-     MachineClass *machine_class = MACHINE_GET_CLASS(current_machine);
-+    const char *vc = qemu_display_get_vc(&dpy);
- 
-     if (is_daemonized()) {
-         /* According to documentation and historically, -nographic redirects
-@@ -1390,24 +1391,30 @@ static void qemu_create_default_devices(void)
-         }
+-    const char *opts;
+-
+     if (is_help_option(p)) {
+         qemu_display_help();
+         exit(0);
      }
  
--    if (nographic) {
--        if (default_parallel)
-+    if (nographic || (!vc && !is_daemonized() && isatty(STDOUT_FILENO))) {
-+        if (default_parallel) {
-             add_device_config(DEV_PARALLEL, "null");
-+        }
-         if (default_serial && default_monitor) {
-             add_device_config(DEV_SERIAL, "mon:stdio");
-         } else {
--            if (default_serial)
-+            if (default_serial) {
-                 add_device_config(DEV_SERIAL, "stdio");
--            if (default_monitor)
-+            }
-+            if (default_monitor) {
-                 monitor_parse("stdio", "readline", false);
-+            }
++#ifdef CONFIG_VNC
++    const char *opts;
++
+     if (strstart(p, "vnc", &opts)) {
+         /*
+          * vnc isn't a (local) DisplayType but a protocol for remote
+@@ -1113,9 +1114,11 @@ static void parse_display(const char *p)
+             error_report("VNC requires a display argument vnc=<display>");
+             exit(1);
          }
-     } else {
--        if (default_serial)
--            add_device_config(DEV_SERIAL, "vc:80Cx24C");
--        if (default_parallel)
--            add_device_config(DEV_PARALLEL, "vc:80Cx24C");
--        if (default_monitor)
--            monitor_parse("vc:80Cx24C", "readline", false);
-+        if (default_serial) {
-+            add_device_config(DEV_SERIAL, vc ?: "null");
-+        }
-+        if (default_parallel) {
-+            add_device_config(DEV_PARALLEL, vc ?: "null");
-+        }
-+        if (default_monitor && vc) {
-+            monitor_parse(vc, "readline", false);
-+        }
+-    } else {
+-        parse_display_qapi(p);
++        return;
      }
- 
-     if (default_net) {
-diff --git a/ui/console.c b/ui/console.c
-index 8ee66d10c5..a758ed62ad 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -1675,6 +1675,20 @@ void qemu_display_init(DisplayState *ds, DisplayOptions *opts)
-     dpys[opts->type]->init(ds, opts);
++#endif
++
++    parse_display_qapi(p);
  }
  
-+const char *qemu_display_get_vc(DisplayOptions *opts)
-+{
-+    assert(opts->type < DISPLAY_TYPE__MAX);
-+    if (opts->type == DISPLAY_TYPE_NONE) {
-+        return NULL;
-+    }
-+    assert(dpys[opts->type] != NULL);
-+    if (dpys[opts->type]->vc) {
-+        return dpys[opts->type]->vc;
-+    } else {
-+        return "vc:80Cx24C";
-+    }
-+}
-+
- void qemu_display_help(void)
+ static inline bool nonempty_str(const char *str)
+@@ -3344,9 +3347,11 @@ void qemu_init(int argc, char **argv)
+                 machine_parse_property_opt(qemu_find_opts("smp-opts"),
+                                            "smp", optarg);
+                 break;
++#ifdef CONFIG_VNC
+             case QEMU_OPTION_vnc:
+                 vnc_parse(optarg);
+                 break;
++#endif
+             case QEMU_OPTION_no_acpi:
+                 warn_report("-no-acpi is deprecated, use '-machine acpi=off' instead");
+                 qdict_put_str(machine_opts_dict, "acpi", "off");
+diff --git a/ui/vnc-stubs.c b/ui/vnc-stubs.c
+index b4eb3ce718..a96bc86236 100644
+--- a/ui/vnc-stubs.c
++++ b/ui/vnc-stubs.c
+@@ -10,15 +10,3 @@ int vnc_display_pw_expire(const char *id, time_t expires)
  {
-     int idx;
+     return -ENODEV;
+ };
+-void vnc_parse(const char *str)
+-{
+-    if (strcmp(str, "none") == 0) {
+-        return;
+-    }
+-    error_setg(&error_fatal, "VNC support is disabled");
+-}
+-int vnc_init_func(void *opaque, QemuOpts *opts, Error **errp)
+-{
+-    error_setg(errp, "VNC support is disabled");
+-    return -1;
+-}
+diff --git a/qemu-options.hx b/qemu-options.hx
+index e26230bac5..edc8ca6e30 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2424,8 +2424,10 @@ SRST
+     OBP.
+ ERST
+ 
++#ifdef CONFIG_VNC
+ DEF("vnc", HAS_ARG, QEMU_OPTION_vnc ,
+     "-vnc <display>  shorthand for -display vnc=<display>\n", QEMU_ARCH_ALL)
++#endif
+ SRST
+ ``-vnc display[,option[,option[,...]]]``
+     Normally, if QEMU is compiled with graphical window support, it
 -- 
 2.41.0
 

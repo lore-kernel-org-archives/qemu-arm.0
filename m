@@ -1,118 +1,110 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2953622ejb;
-        Wed, 25 Oct 2023 11:45:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG/5NmY/UMFv8OxN3fKbNwY9J51YZAEme2gOh8Zvtq6PtarRObbXFLZ5esFBjUGFyhyH+Tl
-X-Received: by 2002:a05:600c:3145:b0:406:849f:f3cd with SMTP id h5-20020a05600c314500b00406849ff3cdmr13599430wmo.29.1698259521402;
-        Wed, 25 Oct 2023 11:45:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698259521; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2966926ejb;
+        Wed, 25 Oct 2023 12:08:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHy/C6So6VOvK5cdLVxh+BkkoWekej+nogT2LnJYjHUIiS1QLbCi+8mKqgfIjTh96PbmZu2
+X-Received: by 2002:a05:600c:358c:b0:406:44fc:65c9 with SMTP id p12-20020a05600c358c00b0040644fc65c9mr701851wmq.8.1698260930421;
+        Wed, 25 Oct 2023 12:08:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698260930; cv=none;
         d=google.com; s=arc-20160816;
-        b=GBCfP6+8XvL/2v85hruuZjZb7mQE3mTOhkFG5tXUsMTZAafbbonPTGH3kl3EylmDNl
-         UH0XKCqR2NmWyRhWf8kAANlZxXHTRsuoormKcIT9CXp0fZsuTbXYQkSZv2NOm3vuI6W+
-         lzNnjc+HxcyKlI5dxwpL8QDysKlQIibVEgbt9b72a8wrjdvsRqIBMmbdfMWrITyUW+HL
-         JBwpiScKgcUNHKCzm1cbULCCalad+r2kN+6PRBF6e1+F0ci4MHrLX76LOra3tz9raDNK
-         80uOxXuPDQf2Xfj3eAhJeO6JX3WGReokHaDM57hH9CSc0Ko993Am0mGY+mVNN+CR5BWf
-         rnrQ==
+        b=TKTBYhg52fpN5aRU5su+hrjKE+pWHVhDDxW8yax4H56gqv0/uYoRoaTNPbT6ATiBlX
+         GZRLP0OCDpp5IP29YwFIsYKOvOornoVy/wpHt53b7L5/3tRylPXZAvEj2Qewd99I0Ik9
+         GfUm2W6SLYF0C6tCXq2pH306TpjDBalDMInN+rA8yHc6azH+dbfvuG6V+b4dPCZxRycC
+         BCyItCi2trz3twsXtUbVMJPk9rFrLkprn/PyEnqKOCJ4ZTU37pT4hT5QQeKcEYgrOpSW
+         gEdRBBTUvtlwWsg6+SwqIHaBh64bj0NNa10/STRIjCzcy4wBzcT3K+smAqSXBy65fHlQ
+         dilQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=x8tcDalo98Jqvuxyk5/hMSLaaPuSGrJqcNmoOeLVX9Q=;
-        fh=PtJCBIvinW7B3gtAF+8dZxmQhnbsxbmF3dE5/qOdwzk=;
-        b=DUvh7Hpm/stabhqZjNfLp5ZKxET7qaxqSFOlp55wyhMbfjH81uerpBIpduwIaZ49pP
-         3N48I6XnGoHXahMEU1Z2C9sibpuCLvkgMuw11tJp5+a9oORWVx34kNJ7SU9sJj9sCJzJ
-         sOOvT6ubW52UGYmFcwQjmY6iA9n+iEH7frhUo8FyCGMejWOzQNunY2KUCAyej56ZrhMe
-         ReRcR1g2OqDT/eFtwXADWZWz1nQHOlIoP6BBLOMbNbXspN1LwkeRtDl3ArOUe5ekMFZ7
-         dyNqkipW0ytnZm4Qqg/oV7UADxyUjKGSBjV/Qj8fyjy8owLccV/fDKclSs0Ku7Ftc3Te
-         5Ycw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=QqyxiUTZ+G6FoOyUMECgfwkhmPDpbQpdWr8HVHcua/c=;
+        fh=xhblChOHn/9ohxmBdExAv8vV4InD5nB0dX6yBSUq53Q=;
+        b=S52Ipp8l5WRpliGHZGgh/MGz3DYVSH9Xi+Z753Ykca8ZVGK9UrWZNdHpEZjf4rq8IL
+         x52LKgGMBno3sDNFboEqSyrPOhjicFmdfbKky2em6VJEKwqfmOQzuiJlKrtZsjMSk1aw
+         nIZ6/tWefTX4jf8wyHCadvi1I8jcP4ZJzugLcPk8v4J/O2BfXGqQhlcnVpSaOjNy66XF
+         QIM9H7O1gns9MwCtPj2co13tCzHjYkVzAFKP295MgN1IXJIJmKqimHk51nladK+XIOuo
+         1aVKf7A+spyR4GRUv2ajLABXkCx8SE1dWCo1wn8oaaG7M+nkZrvdUHVVUH2ARHIF82NJ
+         NZ6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gyajNDpU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HJLj6NUI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3-20020a05600c3b0300b0040500898f26si353150wms.102.2023.10.25.11.45.21
+        by mx.google.com with ESMTPS id k35-20020a05600c1ca300b004063af37ef3si393289wms.137.2023.10.25.12.08.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 11:45:21 -0700 (PDT)
+        Wed, 25 Oct 2023 12:08:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gyajNDpU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HJLj6NUI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvisA-00088k-TV; Wed, 25 Oct 2023 14:44:54 -0400
+	id 1qvjF4-0004Sn-8n; Wed, 25 Oct 2023 15:08:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1qvis9-00087Y-7c; Wed, 25 Oct 2023 14:44:53 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1qvis4-0001Vh-5s; Wed, 25 Oct 2023 14:44:52 -0400
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-9c2a0725825so14501866b.2; 
- Wed, 25 Oct 2023 11:44:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698259483; x=1698864283; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=x8tcDalo98Jqvuxyk5/hMSLaaPuSGrJqcNmoOeLVX9Q=;
- b=gyajNDpUePvsJA77H/hNgF0G172CZA7kGm2+xkj0537lupXCOZTuWyCzQbMX9pl/+7
- VIW/bo5A/+q1Ackb0jvhEr+brWWmugwWKmGz3zH60teP4vWRW1FxmkBB+DUyuo5TpYxY
- cVmXMMYV4g2XyMSTPmCPvgyuA0ZtE0RiHlOS6TwNOZYc3M0xjz/RP9QhL7wOGSC45cwJ
- h3g9b3H4DjyMz/DOENyZ8n8GZk+mAeWG65sg71XKUlQZu7T/7TWHTR0CdfdakJp+z2J1
- uxH7FROc6ZjWElqwt7484FBgprY2GjhAi2tw55MKnenyLW9wb5inxcWR3gO6tUeqVygb
- RrZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698259483; x=1698864283;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=x8tcDalo98Jqvuxyk5/hMSLaaPuSGrJqcNmoOeLVX9Q=;
- b=NTE/jNRgQZUOTRgVx3Hu6jasgtn0vQQ4pZcy30lRIoVvUvZbhs/ib34sWi/UJlgTHs
- dGLtoIziozBN6VrJ2/oxyWRCjNBZROfkZQ48Q4soAVrtDxapab7KSIwlGjqYlYYVrc7w
- KtyuCKkCEUVdq09FK5hQpDFLNMjCrbUlcwgrZlR08Ex0cFQ1AXHU5EDO0JdViF3V3x9Z
- OpCydYNfeCC7qKFuDLogtO+anySoP36KYFpAad0z2qyQrXf4CE5TABXBme+NdlhSgewL
- ru5craM2Y5R9MO2X7NU7nqQgnrRfZxkH0HiHR239p+4ZwwlpNnQeiIBQnTM21G37RSwm
- vIyw==
-X-Gm-Message-State: AOJu0YzF73dcH0u7poV2qvpCa0+GzcxHbkTp/dthNnPbIV+IQFVUPaK0
- vpSr7DFnBfbFDpkrw3d1GXiw8tND7v2J27s/2is=
-X-Received: by 2002:a17:907:9618:b0:9a2:139:f45d with SMTP id
- gb24-20020a170907961800b009a20139f45dmr11764020ejc.43.1698259483133; Wed, 25
- Oct 2023 11:44:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1qvjF3-0004SP-0q
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:08:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1qvjF0-0000Ci-IO
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:08:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698260906;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=QqyxiUTZ+G6FoOyUMECgfwkhmPDpbQpdWr8HVHcua/c=;
+ b=HJLj6NUIKcrgoUaeUZJ2rc7qHnfRZ7UacacSq5tx66vRdy8ZiBjHPBHm6vkvp1amwME7UQ
+ G5ovW81/0Y/QIq8fk+H9sKk9qC/Q9hQuVUWmDn/FseF03Bmf4OQzSbEZ+PTf3qODO0f5EG
+ V7sKPwCAXV/CSt92Sj3Pg+MOrMzF/6U=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-93-_EsrvhkdO6SxJfHLE0yrzQ-1; Wed, 25 Oct 2023 15:08:23 -0400
+X-MC-Unique: _EsrvhkdO6SxJfHLE0yrzQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E510E185A781;
+ Wed, 25 Oct 2023 19:08:22 +0000 (UTC)
+Received: from localhost (unknown [10.39.208.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 36430502C;
+ Wed, 25 Oct 2023 19:08:20 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Eric Blake <eblake@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v6 00/23] Make Pixman an optional dependency
+Date: Wed, 25 Oct 2023 23:07:54 +0400
+Message-ID: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
- <20231023113047.2572137-13-marcandre.lureau@redhat.com>
- <52338f56-cf2d-4eba-a6a4-5ca517f9fea6@redhat.com>
-In-Reply-To: <52338f56-cf2d-4eba-a6a4-5ca517f9fea6@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Wed, 25 Oct 2023 22:44:30 +0400
-Message-ID: <CAJ+F1C+Z2dVskKx=xAAXScoBuwKdZ17F3p+ULwSxs_pnM58XPw@mail.gmail.com>
-Subject: Re: [PATCH v5 12/19] ui/vnc: VNC requires PIXMAN
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-ppc@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Markus Armbruster <armbru@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x632.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,61 +119,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NK233iWhywx2
+X-TUID: LrEb2Xc1Lm/h
 
-Hi
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-On Wed, Oct 25, 2023 at 3:53=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
-e:
->
-> On 23/10/2023 13.30, marcandre.lureau@redhat.com wrote:
-> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > ---
-> >   meson.build    | 6 +++++-
-> >   ui/meson.build | 4 ++--
-> >   2 files changed, 7 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/meson.build b/meson.build
-> > index 395d7155f6..c4dd9e01ea 100644
-> > --- a/meson.build
-> > +++ b/meson.build
-> > @@ -1536,7 +1536,11 @@ endif
-> >   vnc =3D not_found
-> >   jpeg =3D not_found
-> >   sasl =3D not_found
-> > -if get_option('vnc').allowed() and have_system
-> > +if get_option('vnc') \
-> > +             .disable_auto_if(not have_system) \
-> > +             .require(pixman.found(),
-> > +                      error_message: 'cannot enable VNC if pixman is n=
-ot available') \
-> > +             .allowed()
-> >     vnc =3D declare_dependency() # dummy dependency
-> >     jpeg =3D dependency('libjpeg', required: get_option('vnc_jpeg'),
-> >                       method: 'pkg-config')
-> > diff --git a/ui/meson.build b/ui/meson.build
-> > index 7c99613950..b3525ef064 100644
-> > --- a/ui/meson.build
-> > +++ b/ui/meson.build
-> > @@ -46,8 +46,8 @@ vnc_ss.add(files(
-> >   ))
-> >   vnc_ss.add(zlib, jpeg, gnutls)
-> >   vnc_ss.add(when: sasl, if_true: files('vnc-auth-sasl.c'))
-> > -system_ss.add_all(when: vnc, if_true: vnc_ss)
-> > -system_ss.add(when: vnc, if_false: files('vnc-stubs.c'))
-> > +system_ss.add_all(when: [vnc, pixman], if_true: vnc_ss)
-> > +system_ss.add(when: [vnc, pixman], if_false: files('vnc-stubs.c'))
->
-> Is the change to ui/meson.build required at all? ... if I get the first h=
-unk
-> right, if "vnc" is enabled, that means that pixman has been found, too?
+Hi,
 
-Well, this is a bit more explicit, to get the dependencies correct
-(flags and such) without relying on other system_ss units
-dependencies.. I'd keep it.
+QEMU system emulators can be made to compile and work without Pixman.
 
+Only a few devices and options actually require it (VNC, Gtk, Spice for ex) and
+will have to be compiled out.
 
---=20
-Marc-Andr=C3=A9 Lureau
+However, most of QEMU graphics-related code is based on pixman_image_t and
+format. If we want to provide mostly compatible QEMU machines with or without
+Pixman, all we need to do is to have a small compatibility header with just the
+bare minimum for those types (see "ui: add pixman-compat.h"). There are a
+limited number of operations related to geometry that are slightly better
+implemented in QEMU (without Pixman, see "virtio-gpu: replace PIXMAN for
+region/rect test").
+
+Without this simple compatibility header approach, QEMU at runtime becomes a
+very different emulator (without graphics device/board, display etc) and full of
+"if PIXMAN" conditions in the code. This is a much worse outcome imho, compared
+to this small header maintainance and compatibility story.
+
+Fixes:
+https://gitlab.com/qemu-project/qemu/-/issues/1172
+
+v6:
+- add "build-sys: drop needless warning pragmas for old pixman"
+- rename pixman-compat.h -> pixman-minimal.h
+- add "vl: drop needless -spice checks"
+- add "qemu-options: define -vnc only #ifdef CONFIG_VNC"
+- add "vl: simplify display_remote logic"
+- in "vl: move display early init before default devices", rename the introduced
+  function qemu_setup_display()
+- adapt "hw/sm501: allow compiling without PIXMAN" following Zoltan review,
+  using warn_report(), droping Error argument
+- various r-b/a-b
+
+v5:
+- fixed "vl: move display early init before default devices" patch
+
+v4:
+- added "vl: move display early init before default devices" patch
+- code style fixes
+- a-b from Zoltan
+
+v3:
+- improve transient meson condition in first patch (Paolo)
+- use muxed console as fallback by default (Paolo)
+- make pixman-compat.h closer to original API
+- keep "x-pixman" property for sm501 (Zoltan)
+
+Marc-André Lureau (23):
+  build-sys: add a "pixman" feature
+  build-sys: drop needless warning pragmas for old pixman
+  ui: compile out some qemu-pixman functions when !PIXMAN
+  ui: add pixman-minimal.h
+  vl: drop needless -spice checks
+  qemu-options: define -vnc only #ifdef CONFIG_VNC
+  vl: simplify display_remote logic
+  vl: move display early init before default devices
+  ui/console: allow to override the default VC
+  ui/vc: console-vc requires PIXMAN
+  qmp/hmp: disable screendump if PIXMAN is missing
+  virtio-gpu: replace PIXMAN for region/rect test
+  ui/console: when PIXMAN is unavailable, don't draw placeholder msg
+  vhost-user-gpu: skip VHOST_USER_GPU_UPDATE when !PIXMAN
+  ui/gl: opengl doesn't require PIXMAN
+  ui/vnc: VNC requires PIXMAN
+  ui/spice: SPICE/QXL requires PIXMAN
+  ui/gtk: -display gtk requires PIXMAN
+  ui/dbus: do not require PIXMAN
+  arm/kconfig: XLNX_ZYNQMP_ARM depends on PIXMAN
+  hw/sm501: allow compiling without PIXMAN
+  hw/display: make ATI_VGA depend on PIXMAN
+  build-sys: make pixman actually optional
+
+ configs/devices/mips64el-softmmu/default.mak |   2 +-
+ meson.build                                  |  25 ++-
+ qapi/ui.json                                 |   3 +-
+ include/ui/console.h                         |   2 +
+ include/ui/pixman-minimal.h                  | 195 +++++++++++++++++++
+ include/ui/qemu-pixman.h                     |  15 +-
+ include/ui/rect.h                            |  59 ++++++
+ hw/display/sm501.c                           |  46 +++--
+ hw/display/vhost-user-gpu.c                  |   2 +
+ hw/display/virtio-gpu.c                      |  30 ++-
+ system/vl.c                                  |  84 ++++----
+ ui/console-vc-stubs.c                        |  33 ++++
+ ui/console.c                                 |  19 ++
+ ui/dbus-listener.c                           |  90 ++++++---
+ ui/qemu-pixman.c                             |   6 +
+ ui/ui-hmp-cmds.c                             |   2 +
+ ui/ui-qmp-cmds.c                             |   2 +
+ ui/vnc-stubs.c                               |  12 --
+ Kconfig.host                                 |   3 +
+ hmp-commands.hx                              |   2 +
+ hw/arm/Kconfig                               |   3 +-
+ hw/display/Kconfig                           |   9 +-
+ hw/display/meson.build                       |   4 +-
+ meson_options.txt                            |   2 +
+ qemu-options.hx                              |   2 +
+ scripts/meson-buildoptions.sh                |   3 +
+ ui/meson.build                               |  22 +--
+ 27 files changed, 539 insertions(+), 138 deletions(-)
+ create mode 100644 include/ui/pixman-minimal.h
+ create mode 100644 include/ui/rect.h
+ create mode 100644 ui/console-vc-stubs.c
+
+-- 
+2.41.0
+

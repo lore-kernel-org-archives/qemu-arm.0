@@ -1,1059 +1,236 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2608749ejb;
-        Wed, 25 Oct 2023 02:32:28 -0700 (PDT)
-X-Received: by 2002:a05:6a21:99a9:b0:166:6582:a7d5 with SMTP id ve41-20020a056a2199a900b001666582a7d5mr5125782pzb.3.1698226348660;
-        Wed, 25 Oct 2023 02:32:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698226348; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2619017ejb;
+        Wed, 25 Oct 2023 02:56:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGupNijJGyLmgntafuNZS0ZLweNOtVnp8Q2pDU5G4IwYZjsolhyAKJ0xw//OdwF1Fmzo5qe
+X-Received: by 2002:a05:6214:2265:b0:66d:6439:4383 with SMTP id gs5-20020a056214226500b0066d64394383mr20665853qvb.58.1698227793097;
+        Wed, 25 Oct 2023 02:56:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698227793; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHeNuSRpIKgk4IP4X2Vr+1poDqJUdvneGsoWN6LVyVdsNzNM3wSkhBioD/i80g2OWG
-         GZgRb8tAPgGsdiOVkm+Tr1yIcZIl5VK5Qz7+9a/KBsc4BQ3ZcoLh5ntCiA0+wC8QjYEr
-         wb0Y3LdI0E+Wfn3wVXwOERTkdPGpS0sns92s5JZf34IOOoIuztzttaD0GbHrUBi41Nen
-         pqb3drGb0RxG1XTi+1BTxq78lr6RTdi6QtGINccRpbgKaseS/5uSdki9OtpyHnb2lUYu
-         sGgVHwAmc4y4viyriOs9eQhPmWgG/P55f/KSkxAjEZ44TtXq4MiSIa3Jj+O7tETCmzGD
-         kVzA==
+        b=I5PvZk2slufZIT7CZ9dLKUUqOKLUFsjW+FVu/TWYDEX5jM9nwlfqOn+OmgipC32xu6
+         gSoOuZ123GRWuxWSrU7pukWSDs2FrOA+6EyYFajBQpAwitMAiCDac6L6kHmKsulp+t4V
+         GwcCUkfAq5GD95ZsaSxwgEMefzRYtwb4B3piyHzd86GawVttTlV77ua8gEWRZxxPYtkN
+         KCWwziV0Ijmubw7QXSEwFqcC2WbhfQIIP4jKxBKQk+jDUhMywz+TL9Ng5rxMbw2lzOYl
+         2CAtWMxCcpfooSoPmsKelSJ0yfs7pCe9er3EhCsGi+NTzHQiDTRJgPSYuPZ/5Hb8ch7X
+         flMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=k5xD5Yl58XJJvVwH7ft3pNEwY2e2tTOO+14Vc8f1nTk=;
-        fh=vSb3P3kekzWV5kPDYU0s8lzS/F1438eAfjBZJURkM0w=;
-        b=vvypdsMuAe9rMV6eBodHvj9t6l1hJcMun2UzrKRwJNOtcPu5S2fCkkcYR+BsIicH3R
-         Qfl47PrYENsvoYUrk51d61GxsxY/FAkX6pXNBXVnVpiuro11StHVNfJwxj1mDZPOWakz
-         h6RlpmI6BxWB9EXOFAxTnF5BRmbF3ACnNwPuvZXFKxxufjq5ZJbxShNyh3nbOO73/Wog
-         UmCrWEEdnZzIOtv1pJGnFJSEuYZbfNXo0gj/vcGwQ0oxaNylDXA4u9cWjuO4JUBijYhR
-         x0eFpixFDv+NC12OZLukjXDaVsozzb5oh3r9+U2QXPu1X0+/wb/tmvK6ccPxyqE2jYzo
-         FefQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=QVmD8zqZydoV3shRVykzUUzCW6h5w8chMX44XbLS5tc=;
+        fh=0SwnxTk/kH/eCu4S7mbtHkWoZOqjr8yjdh6t+AwknJ0=;
+        b=ypyVVvqpxIc8p+C+T6y2kmSplQqzfMqNFqn0F20oOy8jFum9f2Kcrz0paN/Id7TVbL
+         dwAMmZ0EzslrJCszDNTooJDJ9PHgUa1WANMoRUwf8QLB5T1k9YnHbOGmzihi3Qs5lkYV
+         Za8hr/yNJaj8+kFa1mDiQdHekjgJWHU0HDzNx3GbEYgrM8RPao1zbastYfNFEcnltqL3
+         XKOFrfkP7zKyVpTmZQ42VzcF5lAXey64dhs/xm5YxfgSmpdXLqQZBcVQpsd7drEEaA2r
+         +kcfdpuP7Vcjk3EtOM761GSrhVwtEk0qsZWmzkzIgvnEuump/aPJk7XvH2Bzk+qAkCZ1
+         g7/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=0GfKSGls;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 78-20020a630151000000b005aa5de61852sor4020618pgb.4.2023.10.25.02.32.28
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RUHSqHEj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s19-20020a05620a16b300b007742059b2c9si7835229qkj.482.2023.10.25.02.56.32
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 25 Oct 2023 02:32:28 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 25 Oct 2023 02:56:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=0GfKSGls;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1698226348; x=1698831148; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k5xD5Yl58XJJvVwH7ft3pNEwY2e2tTOO+14Vc8f1nTk=;
-        b=0GfKSGlsDYlblKaI0odG/or6/UgdQU9b6FDBkZnYITYLTLdpCvauNuc/mjKYOENVF5
-         GPA1V+mSH/pvi2MMTfD6PHt7mVKa7i5EYEs04xfPpnJjtSUrgG5JHQ85gMYvpIKSqTPU
-         MnvIngwh3re7szfPwyvR8Z7EiYQYkKhFQ0sEGXhliO+BzV1Fwy+UagfHFKmL208Je7Yd
-         9yfoxadzlYM8NC+d74FV8ZpQVU8sd+sL6paWcpJ1vpOoc6tAnEaNekQg3Yv1iXIKFXZJ
-         eapXsxxZc9rZboQSz0ec8K+aWLCl7AANM16/ImayCdAuz9WaWmtjag0pCiE4N7nZqoKJ
-         4UPA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RUHSqHEj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvace-0000xr-4Z; Wed, 25 Oct 2023 05:56:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvacd-0000wv-8y
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 05:56:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvacV-0007Yf-OJ
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 05:56:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698227768;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=QVmD8zqZydoV3shRVykzUUzCW6h5w8chMX44XbLS5tc=;
+ b=RUHSqHEjQ97Qp6hMFT1PjQpQTvEZfF8B39t3MuYeiVX5n+n7VoO8q2V1bt/G6ReU3kPB8S
+ HT9peFzECI7boGe1jrM4QNMHv7TUR4cKGBo4loHRsS+xR5W9mxJIV2aJcc3lCqRM6EFj8p
+ dFfB92cvNn1FIkeqG1EBBnRZNa+Gh8o=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-562-RANHXc4oPI6G01FgvxwSAw-1; Wed, 25 Oct 2023 05:56:07 -0400
+X-MC-Unique: RANHXc4oPI6G01FgvxwSAw-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-77892f2ee51so725061285a.1
+ for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 02:56:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698226348; x=1698831148;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=k5xD5Yl58XJJvVwH7ft3pNEwY2e2tTOO+14Vc8f1nTk=;
-        b=nCLCmkjB9E2gnHhQim/WyuWFj20AphfLA7QoRKlq8aklDiAyAKeiMg8pABg4s5Emo+
-         foT59blwLXCm7JkNaAvl7MuvBqNGHgIWmwySKLT8kgD8B+Q82ig8ppQWwrw+ssfp1DQ/
-         cQmPFRl9899P/2u+A4QEzGzrw5FYhL2yQb4kgHxpXG+ifXOIAIuo/XPAfagOpEI1yYu6
-         UNCe0KXYv5T2Ee2PDadj27A1YwNQ83AcmR74x8GaKvALtLLBkVlideahOJgjS26CaRES
-         v1ZR73ptny76IMoSu2qHAIzSfxZaSMd/I1OjaaNvDDYMd6U47i8KLB7KC5cwHJfLb7rl
-         /Hfw==
-X-Gm-Message-State: AOJu0YxS3qJIbVsUtNx4O2LiZihOSl0IgJToEgAnvl+s9TF+ZuDuMKY1
-	Huzv9TGpOmQh/tVLkaojGCw5CGzM18NjWclRyE4=
-X-Google-Smtp-Source: AGHT+IHbIufZ3jF3grGZos9h143hopEtqHwMJOVFbNQzBFBbYJ9zMmy5QgB+34y/geloiCdQSj2gMw==
-X-Received: by 2002:a17:90a:c297:b0:27c:f483:e2da with SMTP id f23-20020a17090ac29700b0027cf483e2damr12918648pjt.5.1698226347687;
-        Wed, 25 Oct 2023 02:32:27 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([157.82.205.15])
-        by smtp.gmail.com with UTF8SMTPSA id a6-20020a170902ecc600b001c61bde04a7sm8726777plh.276.2023.10.25.02.32.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Oct 2023 02:32:26 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Brian Cain <bcain@quicinc.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Laurent Vivier <laurent@vivier.eu>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org
-Subject: [PATCH v16 09/18] gdbstub: Change gdb_get_reg_cb and gdb_set_reg_cb
-Date: Wed, 25 Oct 2023 18:31:09 +0900
-Message-ID: <20231025093128.33116-10-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231025093128.33116-1-akihiko.odaki@daynix.com>
-References: <20231025093128.33116-1-akihiko.odaki@daynix.com>
+ d=1e100.net; s=20230601; t=1698227767; x=1698832567;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=QVmD8zqZydoV3shRVykzUUzCW6h5w8chMX44XbLS5tc=;
+ b=f+0KGMV7c99oijm09zs9S35oWhw3ylU6PimU8ahDi69/F0an0xDOQZ385b0TcJQ9qe
+ LhsHRT2DFg3S3xokA5boSC/CDtmUfGofgEL5G/JV+Fd8NfuDKYimWT5OBSfF+c9C23mW
+ Tfrz44Y4rXImb9ThYEIuvLHCjRjhzDzRyfYKkPxgcU4x3RWXiBZEXf3vGzpC5fjcuovo
+ 90UwVmTPH/DXBuwFUnRsUWDz/etoyiQujP7XRjBDnRwNQzAGCQl8qFZd5wxYExBTr7k2
+ iSDIuHInqBp6HyIjUzVi4Bar3PdzerB4AXrXw7s/+GG/iRWittCghMPiDLs08bG1Qb+b
+ 4ugg==
+X-Gm-Message-State: AOJu0YyLVhy2n63OZ36LpV22nj4CcdZ+tMqHeRmX1abuotV2wZbcqozz
+ Jk6Ut9/s8M14uSuGCVJy0/CQ3qKzS3gkzyOnAiNOu7jL0dEX04/JG5fPo7lh/pMtFY3VA9E1RYC
+ waqIJ+X3nIQ+9
+X-Received: by 2002:a05:620a:3193:b0:778:b3fa:e0cf with SMTP id
+ bi19-20020a05620a319300b00778b3fae0cfmr15624329qkb.40.1698227767294; 
+ Wed, 25 Oct 2023 02:56:07 -0700 (PDT)
+X-Received: by 2002:a05:620a:3193:b0:778:b3fa:e0cf with SMTP id
+ bi19-20020a05620a319300b00778b3fae0cfmr15624316qkb.40.1698227767068; 
+ Wed, 25 Oct 2023 02:56:07 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-176-238.web.vodafone.de.
+ [109.43.176.238]) by smtp.gmail.com with ESMTPSA id
+ ay7-20020a05620a178700b007758d87524esm4075930qkb.3.2023.10.25.02.56.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Oct 2023 02:56:05 -0700 (PDT)
+Message-ID: <4af29498-c70f-4969-ba71-2b30ed281ea6@redhat.com>
+Date: Wed, 25 Oct 2023 11:56:00 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 04/19] vl: move display early init before default
+ devices
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, qemu-ppc@nongnu.org, Gerd Hoffmann
+ <kraxel@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
+ <20231023113047.2572137-5-marcandre.lureau@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20231023113047.2572137-5-marcandre.lureau@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Gnfn34xgHQU5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ODJFzW3cLDfh
 
-Align the parameters of gdb_get_reg_cb and gdb_set_reg_cb with the
-gdb_read_register and gdb_write_register members of CPUClass to allow
-to unify the logic to access registers of the core and coprocessors
-in the future.
+On 23/10/2023 13.30, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+> The next commit needs to have the display registered itself before
+> creating the default VCs.
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   system/vl.c | 41 +++++++++++++++++++++++------------------
+>   1 file changed, 23 insertions(+), 18 deletions(-)
+> 
+> diff --git a/system/vl.c b/system/vl.c
+> index 92d29bf521..2cecb3d884 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -1349,6 +1349,28 @@ static void qemu_disable_default_devices(void)
+>       }
+>   }
+>   
+> +static void qemu_early_display_init(void)
+> +{
+> +#if defined(CONFIG_VNC)
+> +    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
+> +        display_remote++;
+> +    }
+> +#endif
+> +    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
+> +        if (!qemu_display_find_default(&dpy)) {
+> +            dpy.type = DISPLAY_TYPE_NONE;
+> +#if defined(CONFIG_VNC)
+> +            vnc_parse("localhost:0,to=99,id=default");
+> +#endif
+> +        }
+> +    }
+> +    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
+> +        dpy.type = DISPLAY_TYPE_NONE;
+> +    }
+> +
+> +    qemu_display_early_init(&dpy);
+> +}
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/exec/gdbstub.h      |  4 +-
- target/arm/internals.h      | 12 +++---
- target/hexagon/internal.h   |  4 +-
- target/microblaze/cpu.h     |  4 +-
- gdbstub/gdbstub.c           |  6 +--
- target/arm/gdbstub.c        | 51 ++++++++++++++++--------
- target/arm/gdbstub64.c      | 27 +++++++++----
- target/hexagon/gdbstub.c    | 10 ++++-
- target/loongarch/gdbstub.c  | 11 ++++--
- target/m68k/helper.c        | 20 ++++++++--
- target/microblaze/gdbstub.c |  9 ++++-
- target/ppc/gdbstub.c        | 46 +++++++++++++++++-----
- target/riscv/gdbstub.c      | 46 ++++++++++++++++------
- target/s390x/gdbstub.c      | 77 ++++++++++++++++++++++++++++---------
- 14 files changed, 236 insertions(+), 91 deletions(-)
+So we now have qemu_early_display_init() and qemu_display_early_init() ... ? 
+That's very confusing, could you maybe come up with a different name for the 
+new function?
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index ac6fce99a6..bcaab1bc75 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -24,8 +24,8 @@ typedef struct GDBFeatureBuilder {
- 
- 
- /* Get or set a register.  Returns the size of the register.  */
--typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
--typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
-+typedef int (*gdb_get_reg_cb)(CPUState *cpu, GByteArray *buf, int reg);
-+typedef int (*gdb_set_reg_cb)(CPUState *cpu, uint8_t *buf, int reg);
- 
- /**
-  * gdb_register_coprocessor() - register a supplemental set of registers
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 99136985ad..e597b77be3 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1441,12 +1441,12 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
- 
- #ifdef TARGET_AARCH64
- GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
--int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg);
--int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg);
--int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg);
--int aarch64_gdb_set_fpu_reg(CPUARMState *env, uint8_t *buf, int reg);
--int aarch64_gdb_get_pauth_reg(CPUARMState *env, GByteArray *buf, int reg);
--int aarch64_gdb_set_pauth_reg(CPUARMState *env, uint8_t *buf, int reg);
-+int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg);
-+int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg);
-+int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg);
-+int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg);
-+int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg);
-+int aarch64_gdb_set_pauth_reg(CPUState *cs, uint8_t *buf, int reg);
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
- void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
-diff --git a/target/hexagon/internal.h b/target/hexagon/internal.h
-index d732b6bb3c..beb08cb7e3 100644
---- a/target/hexagon/internal.h
-+++ b/target/hexagon/internal.h
-@@ -33,8 +33,8 @@
- 
- int hexagon_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int hexagon_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
--int hexagon_hvx_gdb_read_register(CPUHexagonState *env, GByteArray *mem_buf, int n);
--int hexagon_hvx_gdb_write_register(CPUHexagonState *env, uint8_t *mem_buf, int n);
-+int hexagon_hvx_gdb_read_register(CPUState *env, GByteArray *mem_buf, int n);
-+int hexagon_hvx_gdb_write_register(CPUState *env, uint8_t *mem_buf, int n);
- 
- void hexagon_debug_vreg(CPUHexagonState *env, int regnum);
- void hexagon_debug_qreg(CPUHexagonState *env, int regnum);
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index e43c49d4af..c14b3357b7 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -370,8 +370,8 @@ G_NORETURN void mb_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
- void mb_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
- int mb_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int mb_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
--int mb_cpu_gdb_read_stack_protect(CPUArchState *cpu, GByteArray *buf, int reg);
--int mb_cpu_gdb_write_stack_protect(CPUArchState *cpu, uint8_t *buf, int reg);
-+int mb_cpu_gdb_read_stack_protect(CPUState *cs, GByteArray *buf, int reg);
-+int mb_cpu_gdb_write_stack_protect(CPUState *cs, uint8_t *buf, int reg);
- 
- static inline uint32_t mb_cpu_read_msr(const CPUMBState *env)
- {
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index ebabbc00f6..4809c90c4a 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -502,7 +502,6 @@ const GDBFeature *gdb_find_static_feature(const char *xmlname)
- static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
--    CPUArchState *env = cpu_env(cpu);
-     GDBRegisterState *r;
- 
-     if (reg < cc->gdb_num_core_regs) {
-@@ -513,7 +512,7 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-         for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-             r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-             if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
--                return r->get_reg(env, buf, reg - r->base_reg);
-+                return r->get_reg(cpu, buf, reg - r->base_reg);
-             }
-         }
-     }
-@@ -523,7 +522,6 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
- static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
--    CPUArchState *env = cpu_env(cpu);
-     GDBRegisterState *r;
- 
-     if (reg < cc->gdb_num_core_regs) {
-@@ -534,7 +532,7 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
-         for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-             r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-             if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
--                return r->set_reg(env, mem_buf, reg - r->base_reg);
-+                return r->set_reg(cpu, mem_buf, reg - r->base_reg);
-             }
-         }
-     }
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index df98ce7462..8d771c5d46 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -105,9 +105,10 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
-+static int vfp_gdb_get_reg(CPUState *cs, GByteArray *buf, int reg)
- {
--    ARMCPU *cpu = env_archcpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     int nregs = cpu_isar_feature(aa32_simd_r32, cpu) ? 32 : 16;
- 
-     /* VFP data registers are always little-endian.  */
-@@ -129,9 +130,10 @@ static int vfp_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
-     return 0;
- }
- 
--static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-+static int vfp_gdb_set_reg(CPUState *cs, uint8_t *buf, int reg)
- {
--    ARMCPU *cpu = env_archcpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     int nregs = cpu_isar_feature(aa32_simd_r32, cpu) ? 32 : 16;
- 
-     if (reg < nregs) {
-@@ -155,8 +157,11 @@ static int vfp_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
- 
--static int vfp_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
-+static int vfp_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0:
-         return gdb_get_reg32(buf, env->vfp.xregs[ARM_VFP_FPSID]);
-@@ -166,8 +171,11 @@ static int vfp_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
-     return 0;
- }
- 
--static int vfp_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-+static int vfp_gdb_set_sysreg(CPUState *cs, uint8_t *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0:
-         env->vfp.xregs[ARM_VFP_FPSID] = ldl_p(buf);
-@@ -179,8 +187,11 @@ static int vfp_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
- 
--static int mve_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
-+static int mve_gdb_get_reg(CPUState *cs, GByteArray *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0:
-         return gdb_get_reg32(buf, env->v7m.vpr);
-@@ -189,8 +200,11 @@ static int mve_gdb_get_reg(CPUARMState *env, GByteArray *buf, int reg)
-     }
- }
- 
--static int mve_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-+static int mve_gdb_set_reg(CPUState *cs, uint8_t *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0:
-         env->v7m.vpr = ldl_p(buf);
-@@ -209,9 +223,10 @@ static int mve_gdb_set_reg(CPUARMState *env, uint8_t *buf, int reg)
-  * We return the number of bytes copied
-  */
- 
--static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
-+static int arm_gdb_get_sysreg(CPUState *cs, GByteArray *buf, int reg)
- {
--    ARMCPU *cpu = env_archcpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     const ARMCPRegInfo *ri;
-     uint32_t key;
- 
-@@ -227,7 +242,7 @@ static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
-     return 0;
- }
- 
--static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-+static int arm_gdb_set_sysreg(CPUState *cs, uint8_t *buf, int reg)
- {
-     return 0;
- }
-@@ -366,8 +381,11 @@ static int m_sysreg_get(CPUARMState *env, GByteArray *buf,
-     return gdb_get_reg32(buf, *ptr);
- }
- 
--static int arm_gdb_get_m_systemreg(CPUARMState *env, GByteArray *buf, int reg)
-+static int arm_gdb_get_m_systemreg(CPUState *cs, GByteArray *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     /*
-      * Here, we emulate MRS instruction, where CONTROL has a mix of
-      * banked and non-banked bits.
-@@ -378,7 +396,7 @@ static int arm_gdb_get_m_systemreg(CPUARMState *env, GByteArray *buf, int reg)
-     return m_sysreg_get(env, buf, reg, env->v7m.secure);
- }
- 
--static int arm_gdb_set_m_systemreg(CPUARMState *env, uint8_t *buf, int reg)
-+static int arm_gdb_set_m_systemreg(CPUState *cs, uint8_t *buf, int reg)
- {
-     return 0; /* TODO */
- }
-@@ -413,12 +431,15 @@ static GDBFeature *arm_gen_dynamic_m_systemreg_feature(CPUState *cs,
-  * For user-only, we see the non-secure registers via m_systemreg above.
-  * For secext, encode the non-secure view as even and secure view as odd.
-  */
--static int arm_gdb_get_m_secextreg(CPUARMState *env, GByteArray *buf, int reg)
-+static int arm_gdb_get_m_secextreg(CPUState *cs, GByteArray *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     return m_sysreg_get(env, buf, reg >> 1, reg & 1);
- }
- 
--static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
-+static int arm_gdb_set_m_secextreg(CPUState *cs, uint8_t *buf, int reg)
- {
-     return 0; /* TODO */
- }
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 5286d5c604..caa31ff3fa 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -72,8 +72,11 @@ int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg)
-+int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0 ... 31:
-     {
-@@ -92,8 +95,11 @@ int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg)
-     }
- }
- 
--int aarch64_gdb_set_fpu_reg(CPUARMState *env, uint8_t *buf, int reg)
-+int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0 ... 31:
-         /* 128 bit FP register */
-@@ -116,9 +122,10 @@ int aarch64_gdb_set_fpu_reg(CPUARMState *env, uint8_t *buf, int reg)
-     }
- }
- 
--int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg)
-+int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
- {
--    ARMCPU *cpu = env_archcpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
- 
-     switch (reg) {
-     /* The first 32 registers are the zregs */
-@@ -164,9 +171,10 @@ int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg)
-     return 0;
- }
- 
--int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
-+int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
- {
--    ARMCPU *cpu = env_archcpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
- 
-     /* The first 32 registers are the zregs */
-     switch (reg) {
-@@ -210,8 +218,11 @@ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
- 
--int aarch64_gdb_get_pauth_reg(CPUARMState *env, GByteArray *buf, int reg)
-+int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-     switch (reg) {
-     case 0: /* pauth_dmask */
-     case 1: /* pauth_cmask */
-@@ -241,7 +252,7 @@ int aarch64_gdb_get_pauth_reg(CPUARMState *env, GByteArray *buf, int reg)
-     }
- }
- 
--int aarch64_gdb_set_pauth_reg(CPUARMState *env, uint8_t *buf, int reg)
-+int aarch64_gdb_set_pauth_reg(CPUState *cs, uint8_t *buf, int reg)
- {
-     /* All pseudo registers are read-only. */
-     return 0;
-diff --git a/target/hexagon/gdbstub.c b/target/hexagon/gdbstub.c
-index 54d37e006e..6007e6462b 100644
---- a/target/hexagon/gdbstub.c
-+++ b/target/hexagon/gdbstub.c
-@@ -81,8 +81,11 @@ static int gdb_get_qreg(CPUHexagonState *env, GByteArray *mem_buf, int n)
-     return total;
- }
- 
--int hexagon_hvx_gdb_read_register(CPUHexagonState *env, GByteArray *mem_buf, int n)
-+int hexagon_hvx_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    HexagonCPU *cpu = HEXAGON_CPU(cs);
-+    CPUHexagonState *env = &cpu->env;
-+
-     if (n < NUM_VREGS) {
-         return gdb_get_vreg(env, mem_buf, n);
-     }
-@@ -115,8 +118,11 @@ static int gdb_put_qreg(CPUHexagonState *env, uint8_t *mem_buf, int n)
-     return MAX_VEC_SIZE_BYTES / 8;
- }
- 
--int hexagon_hvx_gdb_write_register(CPUHexagonState *env, uint8_t *mem_buf, int n)
-+int hexagon_hvx_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    HexagonCPU *cpu = HEXAGON_CPU(cs);
-+    CPUHexagonState *env = &cpu->env;
-+
-    if (n < NUM_VREGS) {
-         return gdb_put_vreg(env, mem_buf, n);
-     }
-diff --git a/target/loongarch/gdbstub.c b/target/loongarch/gdbstub.c
-index 843a869450..22c6889011 100644
---- a/target/loongarch/gdbstub.c
-+++ b/target/loongarch/gdbstub.c
-@@ -84,9 +84,11 @@ int loongarch_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     return length;
- }
- 
--static int loongarch_gdb_get_fpu(CPULoongArchState *env,
--                                 GByteArray *mem_buf, int n)
-+static int loongarch_gdb_get_fpu(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    LoongArchCPU *cpu = LOONGARCH_CPU(cs);
-+    CPULoongArchState *env = &cpu->env;
-+
-     if (0 <= n && n < 32) {
-         return gdb_get_reg64(mem_buf, env->fpr[n].vreg.D(0));
-     } else if (32 <= n && n < 40) {
-@@ -97,9 +99,10 @@ static int loongarch_gdb_get_fpu(CPULoongArchState *env,
-     return 0;
- }
- 
--static int loongarch_gdb_set_fpu(CPULoongArchState *env,
--                                 uint8_t *mem_buf, int n)
-+static int loongarch_gdb_set_fpu(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    LoongArchCPU *cpu = LOONGARCH_CPU(cs);
-+    CPULoongArchState *env = &cpu->env;
-     int length = 0;
- 
-     if (0 <= n && n < 32) {
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 675f2dcd5a..a5ee4d87e3 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -69,8 +69,11 @@ void m68k_cpu_list(void)
-     g_slist_free(list);
- }
- 
--static int cf_fpu_gdb_get_reg(CPUM68KState *env, GByteArray *mem_buf, int n)
-+static int cf_fpu_gdb_get_reg(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    M68kCPU *cpu = M68K_CPU(cs);
-+    CPUM68KState *env = &cpu->env;
-+
-     if (n < 8) {
-         float_status s;
-         return gdb_get_reg64(mem_buf, floatx80_to_float64(env->fregs[n].d, &s));
-@@ -86,8 +89,11 @@ static int cf_fpu_gdb_get_reg(CPUM68KState *env, GByteArray *mem_buf, int n)
-     return 0;
- }
- 
--static int cf_fpu_gdb_set_reg(CPUM68KState *env, uint8_t *mem_buf, int n)
-+static int cf_fpu_gdb_set_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    M68kCPU *cpu = M68K_CPU(cs);
-+    CPUM68KState *env = &cpu->env;
-+
-     if (n < 8) {
-         float_status s;
-         env->fregs[n].d = float64_to_floatx80(ldq_p(mem_buf), &s);
-@@ -106,8 +112,11 @@ static int cf_fpu_gdb_set_reg(CPUM68KState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int m68k_fpu_gdb_get_reg(CPUM68KState *env, GByteArray *mem_buf, int n)
-+static int m68k_fpu_gdb_get_reg(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    M68kCPU *cpu = M68K_CPU(cs);
-+    CPUM68KState *env = &cpu->env;
-+
-     if (n < 8) {
-         int len = gdb_get_reg16(mem_buf, env->fregs[n].l.upper);
-         len += gdb_get_reg16(mem_buf, 0);
-@@ -125,8 +134,11 @@ static int m68k_fpu_gdb_get_reg(CPUM68KState *env, GByteArray *mem_buf, int n)
-     return 0;
- }
- 
--static int m68k_fpu_gdb_set_reg(CPUM68KState *env, uint8_t *mem_buf, int n)
-+static int m68k_fpu_gdb_set_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    M68kCPU *cpu = M68K_CPU(cs);
-+    CPUM68KState *env = &cpu->env;
-+
-     if (n < 8) {
-         env->fregs[n].l.upper = lduw_be_p(mem_buf);
-         env->fregs[n].l.lower = ldq_be_p(mem_buf + 4);
-diff --git a/target/microblaze/gdbstub.c b/target/microblaze/gdbstub.c
-index 29ac6e9c0f..6ffc5ad075 100644
---- a/target/microblaze/gdbstub.c
-+++ b/target/microblaze/gdbstub.c
-@@ -94,8 +94,10 @@ int mb_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-     return gdb_get_reg32(mem_buf, val);
- }
- 
--int mb_cpu_gdb_read_stack_protect(CPUMBState *env, GByteArray *mem_buf, int n)
-+int mb_cpu_gdb_read_stack_protect(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
-+    CPUMBState *env = &cpu->env;
-     uint32_t val;
- 
-     switch (n) {
-@@ -153,8 +155,11 @@ int mb_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     return 4;
- }
- 
--int mb_cpu_gdb_write_stack_protect(CPUMBState *env, uint8_t *mem_buf, int n)
-+int mb_cpu_gdb_write_stack_protect(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
-+    CPUMBState *env = &cpu->env;
-+
-     switch (n) {
-     case GDB_SP_SHL:
-         env->slr = ldl_p(mem_buf);
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 09b852464f..8ca37b6bf9 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -369,8 +369,10 @@ static int gdb_find_spr_idx(CPUPPCState *env, int n)
-     return -1;
- }
- 
--static int gdb_get_spr_reg(CPUPPCState *env, GByteArray *buf, int n)
-+static int gdb_get_spr_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-     int reg;
-     int len;
- 
-@@ -385,8 +387,10 @@ static int gdb_get_spr_reg(CPUPPCState *env, GByteArray *buf, int n)
-     return len;
- }
- 
--static int gdb_set_spr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-+static int gdb_set_spr_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-     int reg;
-     int len;
- 
-@@ -403,8 +407,10 @@ static int gdb_set_spr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
- }
- #endif
- 
--static int gdb_get_float_reg(CPUPPCState *env, GByteArray *buf, int n)
-+static int gdb_get_float_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-     uint8_t *mem_buf;
-     if (n < 32) {
-         gdb_get_reg64(buf, *cpu_fpr_ptr(env, n));
-@@ -421,8 +427,11 @@ static int gdb_get_float_reg(CPUPPCState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int gdb_set_float_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-+static int gdb_set_float_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-+
-     if (n < 32) {
-         ppc_maybe_bswap_register(env, mem_buf, 8);
-         *cpu_fpr_ptr(env, n) = ldq_p(mem_buf);
-@@ -436,8 +445,10 @@ static int gdb_set_float_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int gdb_get_avr_reg(CPUPPCState *env, GByteArray *buf, int n)
-+static int gdb_get_avr_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-     uint8_t *mem_buf;
- 
-     if (n < 32) {
-@@ -462,8 +473,11 @@ static int gdb_get_avr_reg(CPUPPCState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int gdb_set_avr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-+static int gdb_set_avr_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-+
-     if (n < 32) {
-         ppc_avr_t *avr = cpu_avr_ptr(env, n);
-         ppc_maybe_bswap_register(env, mem_buf, 16);
-@@ -484,8 +498,11 @@ static int gdb_set_avr_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int gdb_get_spe_reg(CPUPPCState *env, GByteArray *buf, int n)
-+static int gdb_get_spe_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-+
-     if (n < 32) {
- #if defined(TARGET_PPC64)
-         gdb_get_reg32(buf, env->gpr[n] >> 32);
-@@ -508,8 +525,11 @@ static int gdb_get_spe_reg(CPUPPCState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int gdb_set_spe_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-+static int gdb_set_spe_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-+
-     if (n < 32) {
- #if defined(TARGET_PPC64)
-         target_ulong lo = (uint32_t)env->gpr[n];
-@@ -537,8 +557,11 @@ static int gdb_set_spe_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int gdb_get_vsx_reg(CPUPPCState *env, GByteArray *buf, int n)
-+static int gdb_get_vsx_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-+
-     if (n < 32) {
-         gdb_get_reg64(buf, *cpu_vsrl_ptr(env, n));
-         ppc_maybe_bswap_register(env, gdb_get_reg_ptr(buf, 8), 8);
-@@ -547,8 +570,11 @@ static int gdb_get_vsx_reg(CPUPPCState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int gdb_set_vsx_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-+static int gdb_set_vsx_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    CPUPPCState *env = &cpu->env;
-+
-     if (n < 32) {
-         ppc_maybe_bswap_register(env, mem_buf, 8);
-         *cpu_vsrl_ptr(env, n) = ldq_p(mem_buf);
-diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-index f222d5050e..5cb550761e 100644
---- a/target/riscv/gdbstub.c
-+++ b/target/riscv/gdbstub.c
-@@ -108,8 +108,11 @@ int riscv_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     return length;
- }
- 
--static int riscv_gdb_get_fpu(CPURISCVState *env, GByteArray *buf, int n)
-+static int riscv_gdb_get_fpu(CPUState *cs, GByteArray *buf, int n)
- {
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+
-     if (n < 32) {
-         if (env->misa_ext & RVD) {
-             return gdb_get_reg64(buf, env->fpr[n]);
-@@ -121,8 +124,11 @@ static int riscv_gdb_get_fpu(CPURISCVState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int riscv_gdb_set_fpu(CPURISCVState *env, uint8_t *mem_buf, int n)
-+static int riscv_gdb_set_fpu(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+
-     if (n < 32) {
-         env->fpr[n] = ldq_p(mem_buf); /* always 64-bit */
-         return sizeof(uint64_t);
-@@ -130,8 +136,10 @@ static int riscv_gdb_set_fpu(CPURISCVState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int riscv_gdb_get_vector(CPURISCVState *env, GByteArray *buf, int n)
-+static int riscv_gdb_get_vector(CPUState *cs, GByteArray *buf, int n)
- {
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-     uint16_t vlenb = riscv_cpu_cfg(env)->vlen >> 3;
-     if (n < 32) {
-         int i;
-@@ -146,8 +154,10 @@ static int riscv_gdb_get_vector(CPURISCVState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int riscv_gdb_set_vector(CPURISCVState *env, uint8_t *mem_buf, int n)
-+static int riscv_gdb_set_vector(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-     uint16_t vlenb = riscv_cpu_cfg(env)->vlen >> 3;
-     if (n < 32) {
-         int i;
-@@ -160,8 +170,11 @@ static int riscv_gdb_set_vector(CPURISCVState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int riscv_gdb_get_csr(CPURISCVState *env, GByteArray *buf, int n)
-+static int riscv_gdb_get_csr(CPUState *cs, GByteArray *buf, int n)
- {
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+
-     if (n < CSR_TABLE_SIZE) {
-         target_ulong val = 0;
-         int result;
-@@ -174,8 +187,11 @@ static int riscv_gdb_get_csr(CPURISCVState *env, GByteArray *buf, int n)
-     return 0;
- }
- 
--static int riscv_gdb_set_csr(CPURISCVState *env, uint8_t *mem_buf, int n)
-+static int riscv_gdb_set_csr(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+
-     if (n < CSR_TABLE_SIZE) {
-         target_ulong val = ldtul_p(mem_buf);
-         int result;
-@@ -188,25 +204,31 @@ static int riscv_gdb_set_csr(CPURISCVState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--static int riscv_gdb_get_virtual(CPURISCVState *cs, GByteArray *buf, int n)
-+static int riscv_gdb_get_virtual(CPUState *cs, GByteArray *buf, int n)
- {
-     if (n == 0) {
- #ifdef CONFIG_USER_ONLY
-         return gdb_get_regl(buf, 0);
- #else
--        return gdb_get_regl(buf, cs->priv);
-+        RISCVCPU *cpu = RISCV_CPU(cs);
-+        CPURISCVState *env = &cpu->env;
-+
-+        return gdb_get_regl(buf, env->priv);
- #endif
-     }
-     return 0;
- }
- 
--static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
-+static int riscv_gdb_set_virtual(CPUState *cs, uint8_t *mem_buf, int n)
- {
-     if (n == 0) {
- #ifndef CONFIG_USER_ONLY
--        cs->priv = ldtul_p(mem_buf) & 0x3;
--        if (cs->priv == PRV_RESERVED) {
--            cs->priv = PRV_S;
-+        RISCVCPU *cpu = RISCV_CPU(cs);
-+        CPURISCVState *env = &cpu->env;
-+
-+        env->priv = ldtul_p(mem_buf) & 0x3;
-+        if (env->priv == PRV_RESERVED) {
-+            env->priv = PRV_S;
-         }
- #endif
-         return sizeof(target_ulong);
-diff --git a/target/s390x/gdbstub.c b/target/s390x/gdbstub.c
-index 02c388dc32..c1e7c59b82 100644
---- a/target/s390x/gdbstub.c
-+++ b/target/s390x/gdbstub.c
-@@ -70,8 +70,11 @@ int s390_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- #define S390_A0_REGNUM 0
- #define S390_A15_REGNUM 15
- 
--static int cpu_read_ac_reg(CPUS390XState *env, GByteArray *buf, int n)
-+static int cpu_read_ac_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_A0_REGNUM ... S390_A15_REGNUM:
-         return gdb_get_reg32(buf, env->aregs[n]);
-@@ -80,8 +83,11 @@ static int cpu_read_ac_reg(CPUS390XState *env, GByteArray *buf, int n)
-     }
- }
- 
--static int cpu_write_ac_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_ac_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_A0_REGNUM ... S390_A15_REGNUM:
-         env->aregs[n] = ldl_p(mem_buf);
-@@ -97,8 +103,11 @@ static int cpu_write_ac_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
- #define S390_F0_REGNUM 1
- #define S390_F15_REGNUM 16
- 
--static int cpu_read_fp_reg(CPUS390XState *env, GByteArray *buf, int n)
-+static int cpu_read_fp_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_FPC_REGNUM:
-         return gdb_get_reg32(buf, env->fpc);
-@@ -109,8 +118,11 @@ static int cpu_read_fp_reg(CPUS390XState *env, GByteArray *buf, int n)
-     }
- }
- 
--static int cpu_write_fp_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_fp_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_FPC_REGNUM:
-         env->fpc = ldl_p(mem_buf);
-@@ -129,8 +141,10 @@ static int cpu_write_fp_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
- #define S390_V16_REGNUM 16
- #define S390_V31_REGNUM 31
- 
--static int cpu_read_vreg(CPUS390XState *env, GByteArray *buf, int n)
-+static int cpu_read_vreg(CPUState *cs, GByteArray *buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-     int ret;
- 
-     switch (n) {
-@@ -148,8 +162,11 @@ static int cpu_read_vreg(CPUS390XState *env, GByteArray *buf, int n)
-     return ret;
- }
- 
--static int cpu_write_vreg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_vreg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_V0L_REGNUM ... S390_V15L_REGNUM:
-         env->vregs[n][1] = ldtul_p(mem_buf + 8);
-@@ -168,8 +185,11 @@ static int cpu_write_vreg(CPUS390XState *env, uint8_t *mem_buf, int n)
- #define S390_C15_REGNUM 15
- 
- #ifndef CONFIG_USER_ONLY
--static int cpu_read_c_reg(CPUS390XState *env, GByteArray *buf, int n)
-+static int cpu_read_c_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_C0_REGNUM ... S390_C15_REGNUM:
-         return gdb_get_regl(buf, env->cregs[n]);
-@@ -178,8 +198,11 @@ static int cpu_read_c_reg(CPUS390XState *env, GByteArray *buf, int n)
-     }
- }
- 
--static int cpu_write_c_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_c_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_C0_REGNUM ... S390_C15_REGNUM:
-         env->cregs[n] = ldtul_p(mem_buf);
-@@ -199,8 +222,11 @@ static int cpu_write_c_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
- #define S390_VIRT_BEA_REGNUM    2
- #define S390_VIRT_PREFIX_REGNUM 3
- 
--static int cpu_read_virt_reg(CPUS390XState *env, GByteArray *mem_buf, int n)
-+static int cpu_read_virt_reg(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_VIRT_CKC_REGNUM:
-         return gdb_get_regl(mem_buf, env->ckc);
-@@ -215,24 +241,27 @@ static int cpu_read_virt_reg(CPUS390XState *env, GByteArray *mem_buf, int n)
-     }
- }
- 
--static int cpu_write_virt_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_virt_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_VIRT_CKC_REGNUM:
-         env->ckc = ldtul_p(mem_buf);
--        cpu_synchronize_post_init(env_cpu(env));
-+        cpu_synchronize_post_init(cs);
-         return 8;
-     case S390_VIRT_CPUTM_REGNUM:
-         env->cputm = ldtul_p(mem_buf);
--        cpu_synchronize_post_init(env_cpu(env));
-+        cpu_synchronize_post_init(cs);
-         return 8;
-     case S390_VIRT_BEA_REGNUM:
-         env->gbea = ldtul_p(mem_buf);
--        cpu_synchronize_post_init(env_cpu(env));
-+        cpu_synchronize_post_init(cs);
-         return 8;
-     case S390_VIRT_PREFIX_REGNUM:
-         env->psa = ldtul_p(mem_buf);
--        cpu_synchronize_post_init(env_cpu(env));
-+        cpu_synchronize_post_init(cs);
-         return 8;
-     default:
-         return 0;
-@@ -245,8 +274,11 @@ static int cpu_write_virt_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
- #define S390_VIRT_KVM_PFS_REGNUM    2
- #define S390_VIRT_KVM_PFC_REGNUM    3
- 
--static int cpu_read_virt_kvm_reg(CPUS390XState *env, GByteArray *mem_buf, int n)
-+static int cpu_read_virt_kvm_reg(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_VIRT_KVM_PP_REGNUM:
-         return gdb_get_regl(mem_buf, env->pp);
-@@ -261,8 +293,11 @@ static int cpu_read_virt_kvm_reg(CPUS390XState *env, GByteArray *mem_buf, int n)
-     }
- }
- 
--static int cpu_write_virt_kvm_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_virt_kvm_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     switch (n) {
-     case S390_VIRT_KVM_PP_REGNUM:
-         env->pp = ldtul_p(mem_buf);
-@@ -292,13 +327,19 @@ static int cpu_write_virt_kvm_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
- #define S390_GS_GSSM_REGNUM     2
- #define S390_GS_GSEPLA_REGNUM   3
- 
--static int cpu_read_gs_reg(CPUS390XState *env, GByteArray *buf, int n)
-+static int cpu_read_gs_reg(CPUState *cs, GByteArray *buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     return gdb_get_regl(buf, env->gscb[n]);
- }
- 
--static int cpu_write_gs_reg(CPUS390XState *env, uint8_t *mem_buf, int n)
-+static int cpu_write_gs_reg(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    S390CPU *cpu = S390_CPU(cs);
-+    CPUS390XState *env = &cpu->env;
-+
-     env->gscb[n] = ldtul_p(mem_buf);
-     cpu_synchronize_post_init(env_cpu(env));
-     return 8;
--- 
-2.42.0
+  Thomas
+
+

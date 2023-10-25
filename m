@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2999689ejb;
-        Wed, 25 Oct 2023 13:09:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG8I/9Gkq2VVo5ouQXFt6NaLtEzqfUhFOZK+6OVUzOlhbI4tUYWorBJ0PP9WzzQO7br/nIX
-X-Received: by 2002:a05:6214:c4b:b0:66d:66bd:e60a with SMTP id r11-20020a0562140c4b00b0066d66bde60amr13620747qvj.64.1698264583455;
-        Wed, 25 Oct 2023 13:09:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698264583; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2999744ejb;
+        Wed, 25 Oct 2023 13:09:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH+t+IKbV2qYkaaMXEG+uIjutmhA4g3QRM7z0U1ZLnuVwDC5bY1Dd1Y3VKDNKlrLT9yH+3P
+X-Received: by 2002:a05:600c:3112:b0:401:bdf9:c336 with SMTP id g18-20020a05600c311200b00401bdf9c336mr13656378wmo.27.1698264589335;
+        Wed, 25 Oct 2023 13:09:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698264589; cv=none;
         d=google.com; s=arc-20160816;
-        b=ShNXY5bTPt7Ga2bXQnQuyl3c2DkrKH4pdVq/8q2b/Tmi8Qe5qctAb8wU4vnS/4wOoh
-         oLr3/H97y1dseouAwRLLMiWHMJDqXZOM658DMOSRGodSwFt0eJXL5X3Y8W1Uu/FlHVq3
-         PiHDVOCx+S8+r+Fo3YhXx4fWEyx8OxisIliaKUwuzvN7WzRauaJvL6fYiv+DQ/mh1H59
-         nIiD5aRGiY+lYxcpgwXZJUsNjnkNrZf71Q+a6MqlseBRx526wDnIzYk4V+gPNEPrTc7t
-         8tIq5D9VGOje88aT+wrx8FQe+4YnjwaNXmdWxEuCmflGCEyzf2fqLgXHcNKv6YKxyamg
-         Kk0A==
+        b=fpm9pDu3+c96Qz0skWfv5ikwUMlumKZMfQ3rk36vLJ2+CWinURHF54FV1QR5vhVYmt
+         yZRDCaAdRMHI/Kak5DHtSzn/yJiDKYmpKRWSXL2EnFKq7FIQKIrYwOQJm69SVKt6O/T8
+         QYJXXXv8A+vum4cOMX2fmpBLttaEBCWN1jKF4RnlXuhpnMP8DwnUoieg3SRTpLSEalsW
+         bsK/ZBm4DP7YvQmFadmyUra1Q2DK2P74JKqe+iT+nN5MlwR/Gk5NGz7yoGDqblcuXhr/
+         gi/mD8ZUc+lLgsf1VYiS8oCg9ZHnEeexg9svw6slq61S4qGIRXdYddcFm0OQhYh37HJd
+         H0JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=DrWB82mqgCwm3/T6+kc4cAacBf2kjxAiorZyTleLxk8=;
+        bh=3MxEnwCcrzZXPmJ6j2nD9uSFRJXenxo4trg/FCDg9Lw=;
         fh=67Hov/BsT8RxH3/kFZB7fU49Uoc12n1VmFCLNpavJ9k=;
-        b=OUbMl8sxQ6bC7W5ESahHqZ8UQD0yHtp0m3g65xGvF6d7nJi4JBBZ3JQagCA3OwDQf/
-         pxPiO+dgtskdG27ntyl3DxViZsdg6ttCS8ztQRL3Cj71oGJxV2A6vmSpTPy3X3duhwyr
-         Bha5tKnkXcnDjZ+SSIyOVaIKGu/dSKyS/2+KiKk+bxxwmqk2QnbhYA4AyfQdpq1eoTz4
-         pLH3O1BV02Z8RXftv5IW80VpC2wHLnsO5qcBs5vpRiAcsQSQ91d7B929RSWzPilge3cc
-         vP511DF6gFIaDWxWJlyF+JDVhohVNVPmtYQxSsDnQFjQVS+f6uAJmDgl8F3APhiS7VHR
-         TBHw==
+        b=P3qZiMu22Lvopom4EW9RXJC6hdhIbHEGs16uCVOj4Sg5BUTtxNrCGlQp+uAoRAw98m
+         pC6tRn4lwlw2SvfwvU5XcRAD4Vwa4RD6TRH6g0ax1wKq+qRIeG8b26vqi2vKi3pagkVj
+         /o0+jWrIssVmNhd3tnPyTFN9LB8H6u2ctBaVWWRFsuuSYoC8tFbfdGQXxaMQxaLm2s0o
+         sD/Z2FYxRaSx9bq7YRhe99UVrdsFCQpWWS7alWTiGRXwjdAL4SWn55NuU5ODaBFUuUmO
+         s1+NCHfZktiU1WnwwdErKbh9tNNjAwMGf23GqNACoaAr7t2f9hld8DMmYIw0IP7qyfgU
+         9e9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=I5MG31jX;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=O1juFMM7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bu12-20020ad455ec000000b0066d14c995e7si8983444qvb.359.2023.10.25.13.09.43
+        by mx.google.com with ESMTPS id g21-20020a7bc4d5000000b004050d0cc95bsi460821wmk.168.2023.10.25.13.09.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 13:09:43 -0700 (PDT)
+        Wed, 25 Oct 2023 13:09:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=I5MG31jX;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=O1juFMM7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvkAP-0007Ij-Fw; Wed, 25 Oct 2023 16:07:49 -0400
+	id 1qvkAU-0007NA-Oh; Wed, 25 Oct 2023 16:07:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qvkAN-0007HV-Ky
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 16:07:47 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ id 1qvkAQ-0007JV-NU
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 16:07:50 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qvkAI-0003Qb-Tj
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 16:07:47 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-6b1d1099a84so119526b3a.1
- for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 13:07:42 -0700 (PDT)
+ id 1qvkAP-0003SF-3F
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 16:07:50 -0400
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-6bb4abb8100so116729b3a.2
+ for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 13:07:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1698264461; x=1698869261; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1698264467; x=1698869267; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DrWB82mqgCwm3/T6+kc4cAacBf2kjxAiorZyTleLxk8=;
- b=I5MG31jXNjqA5oUTMvev5z+nW7ggzn2sP0luRadkhcU3vibUlVKRKrVvFLZE24uVO1
- yGzxWIgi94A6x2XudqLS6un+OAHJi8BWymHPTy9x67izmUrdCDKItg+PX3hc1NMrPrs5
- QerOuwpzEgeNHCgFsM/ayaOjBLSDh2R+Wt5vzbMVwv6P5jx2IyWmEIAJmlxZBJGv5E6G
- PNNvJJceCDaMbojYw3Q0YgIm0wJ8P2rPfFT/vNCaNH29xGFAZtCU+nk/QDr/957y0vsB
- Tw59SmJRQZUAdEee/Ew68mTtEFTB2VMgfIwvHUuwcO8XEk/tZlx6BYq62EEefptFFmS6
- QqCg==
+ bh=3MxEnwCcrzZXPmJ6j2nD9uSFRJXenxo4trg/FCDg9Lw=;
+ b=O1juFMM72URwvVsQG+NcVcc9o61Cy1Dke1/9xpH1++vmEsCqZqdij7FrHDyKuazG9N
+ iOskPqLwmSqy8D70llYNMIQLk8OPxsxpxZdWSndxZ/ZN9O8bs83mh2rEIeG/rIr+0D2n
+ Yg3Qy8ygIv9hTw/3et+ik0CUJJYdgqlQlkz6myRxKDps4KMUe+/LSyL/eeS2iUjDY0ge
+ pTZX9XC4Kd3azNFwyTAjuGEfjGWYJ/ql7uBiYuhs9AQl8lROCAEMoyN/Hj66wQ6BqPUT
+ bPbqWiYehyZxJKgUF8MFsVP+e3kGCffjUjPW70kvP6ir2nt/wUPqA/96eoTosv4vIqLt
+ G4pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698264461; x=1698869261;
+ d=1e100.net; s=20230601; t=1698264467; x=1698869267;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DrWB82mqgCwm3/T6+kc4cAacBf2kjxAiorZyTleLxk8=;
- b=LRLdHNYpZGPUF1I6oOIwZvHVSV7j79KT80kYLovtrCGil7mRndfIn0WWd3iZro8ujk
- 004mYQDLqH/CE9Y4tw3r/FBIJ/WqbwoHO26xGCSivqWDH98r6RrlDYbOsoS3UtI6n9hy
- RGWrbRfOp07oddPzXsAMjICUpoNeQgXeZyuzKIlIUoIG3iQEUrAidftcqcFmuwj8zIpt
- 77Q4LR0+EBpagsm6Z1tRKjKMcgScTD+bSeCoFwk/Hc4MHtIMBoWitALMuS16oA5L9zPq
- 3EFXlgFKO4du+38tulFK7zkvY//p9vnVxWWuSHf+b1PxzuGppIMEcE6NEgy2957m/q0/
- 9d1Q==
-X-Gm-Message-State: AOJu0YwuAsP7xfgLCmJvG2y6B15y3kfEAiR/PgLoMLym5+8tdKAY8Y4e
- DZcXmF1SGOsomoIYx3KAXC0dpsyVL0hZ3n3By52wWQ==
-X-Received: by 2002:a05:6a00:939a:b0:68c:638b:e2c6 with SMTP id
- ka26-20020a056a00939a00b0068c638be2c6mr18880464pfb.9.1698264461302; 
- Wed, 25 Oct 2023 13:07:41 -0700 (PDT)
+ bh=3MxEnwCcrzZXPmJ6j2nD9uSFRJXenxo4trg/FCDg9Lw=;
+ b=wPaQadlStTVLwXMIvFpbhG3B6HWOAc/5MxN+zqMjYsqhnkUSSzp/Ecc0NfUEF4ZHJn
+ liM6aVMooCmp1hah9fHZ6LXu95C3At1n6GlqD891/gtJlhYITFjiuyPlJ6QJhhiy0PrT
+ DsHrhP7GxkNuebd2fKFaO9uNxMbAEOJTyMJTtLIe+JMRSP4/i+XFyZ6Z36qtzF0rpBYm
+ bqKO7ettkSSBRRPJswAf7fZZVWc+8jhNKbe+Gu++WghtA5+3iQvDVsg8WIp1mmI3bR9V
+ Ug/fDmzlOfd8W4fMU/IQtXXmgrNU7VWbBWGgeyq7qfE6YQp2KX1jCxjQpPoE8hN6UjB/
+ zx4g==
+X-Gm-Message-State: AOJu0YwpYwRlvNnyITpvvu4rEb/MEFAZ6ZpVwk/VYb8M4LWLnea2HmEJ
+ om/OTbt23URHHdmh87wWgtbtcIuHKA+IuwaCLIUWCQ==
+X-Received: by 2002:a05:6a00:1ad4:b0:68f:cc47:fcc8 with SMTP id
+ f20-20020a056a001ad400b0068fcc47fcc8mr14508502pfv.14.1698264467440; 
+ Wed, 25 Oct 2023 13:07:47 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.188.78])
  by smtp.gmail.com with ESMTPSA id
- f1-20020aa79681000000b0068fe7c4148fsm9696768pfk.57.2023.10.25.13.07.35
+ f1-20020aa79681000000b0068fe7c4148fsm9696768pfk.57.2023.10.25.13.07.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Oct 2023 13:07:40 -0700 (PDT)
+ Wed, 25 Oct 2023 13:07:47 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
@@ -110,17 +110,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>,
  Andrew Jones <ajones@ventanamicro.com>
-Subject: [PATCH v4 03/13] hw/i386/acpi-microvm.c: Use common function to add
- virtio in DSDT
-Date: Thu, 26 Oct 2023 01:37:03 +0530
-Message-Id: <20231025200713.580814-4-sunilvl@ventanamicro.com>
+Subject: [PATCH v4 04/13] hw/riscv: virt: Make few IMSIC macros and functions
+ public
+Date: Thu, 26 Oct 2023 01:37:04 +0530
+Message-Id: <20231025200713.580814-5-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231025200713.580814-1-sunilvl@ventanamicro.com>
 References: <20231025200713.580814-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x431.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -142,50 +142,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n8Cf9HNUpaw+
+X-TUID: HG9WlOhTEmQM
 
-With common function to add virtio in DSDT created now, update microvm
-code also to use it instead of duplicate code.
+Some macros and static function related to IMSIC are defined in virt.c.
+They are required in virt-acpi-build.c. So, make them public.
 
-Suggested-by: Andrew Jones <ajones@ventanamicro.com>
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
 ---
- hw/i386/acpi-microvm.c | 15 ++-------------
- 1 file changed, 2 insertions(+), 13 deletions(-)
+ hw/riscv/virt.c         | 25 +------------------------
+ include/hw/riscv/virt.h | 25 +++++++++++++++++++++++++
+ 2 files changed, 26 insertions(+), 24 deletions(-)
 
-diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-index 2909a73933..279da6b4aa 100644
---- a/hw/i386/acpi-microvm.c
-+++ b/hw/i386/acpi-microvm.c
-@@ -37,6 +37,7 @@
- #include "hw/pci/pci.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/usb/xhci.h"
-+#include "hw/virtio/virtio-acpi.h"
- #include "hw/virtio/virtio-mmio.h"
- #include "hw/input/i8042.h"
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 1732c42915..085654ab2f 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -38,7 +38,6 @@
+ #include "kvm/kvm_riscv.h"
+ #include "hw/intc/riscv_aclint.h"
+ #include "hw/intc/riscv_aplic.h"
+-#include "hw/intc/riscv_imsic.h"
+ #include "hw/intc/sifive_plic.h"
+ #include "hw/misc/sifive_test.h"
+ #include "hw/platform-bus.h"
+@@ -54,28 +53,6 @@
+ #include "hw/acpi/aml-build.h"
+ #include "qapi/qapi-visit-common.h"
  
-@@ -77,19 +78,7 @@ static void acpi_dsdt_add_virtio(Aml *scope,
-             uint32_t irq = mms->virtio_irq_base + index;
-             hwaddr base = VIRTIO_MMIO_BASE + index * 512;
-             hwaddr size = 512;
+-/*
+- * The virt machine physical address space used by some of the devices
+- * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
+- * number of CPUs, and number of IMSIC guest files.
+- *
+- * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
+- * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
+- * of virt machine physical address space.
+- */
 -
--            Aml *dev = aml_device("VR%02u", (unsigned)index);
--            aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0005")));
--            aml_append(dev, aml_name_decl("_UID", aml_int(index)));
--            aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
+-#if VIRT_IMSIC_GROUP_MAX_SIZE < \
+-    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+-#error "Can't accommodate single IMSIC group in address space"
+-#endif
 -
--            Aml *crs = aml_resource_template();
--            aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
--            aml_append(crs,
--                       aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                     AML_EXCLUSIVE, &irq, 1));
--            aml_append(dev, aml_name_decl("_CRS", crs));
--            aml_append(scope, dev);
-+            virtio_acpi_dsdt_add(scope, base, size, irq, index, 1);
-         }
-     }
+-#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
+-                                        VIRT_IMSIC_GROUP_MAX_SIZE)
+-#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+-#error "Can't accommodate all IMSIC groups in address space"
+-#endif
+-
+ /* KVM AIA only supports APLIC MSI. APLIC Wired is always emulated by QEMU. */
+ static bool virt_use_kvm_aia(RISCVVirtState *s)
+ {
+@@ -512,7 +489,7 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
+     g_free(plic_cells);
  }
+ 
+-static uint32_t imsic_num_bits(uint32_t count)
++uint32_t imsic_num_bits(uint32_t count)
+ {
+     uint32_t ret = 0;
+ 
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index e5c474b26e..5b03575ed3 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -23,6 +23,7 @@
+ #include "hw/riscv/riscv_hart.h"
+ #include "hw/sysbus.h"
+ #include "hw/block/flash.h"
++#include "hw/intc/riscv_imsic.h"
+ 
+ #define VIRT_CPUS_MAX_BITS             9
+ #define VIRT_CPUS_MAX                  (1 << VIRT_CPUS_MAX_BITS)
+@@ -127,4 +128,28 @@ enum {
+ 
+ bool virt_is_acpi_enabled(RISCVVirtState *s);
+ void virt_acpi_setup(RISCVVirtState *vms);
++uint32_t imsic_num_bits(uint32_t count);
++
++/*
++ * The virt machine physical address space used by some of the devices
++ * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
++ * number of CPUs, and number of IMSIC guest files.
++ *
++ * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
++ * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
++ * of virt machine physical address space.
++ */
++
++#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
++#if VIRT_IMSIC_GROUP_MAX_SIZE < \
++    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
++#error "Can't accomodate single IMSIC group in address space"
++#endif
++
++#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
++                                        VIRT_IMSIC_GROUP_MAX_SIZE)
++#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
++#error "Can't accomodate all IMSIC groups in address space"
++#endif
++
+ #endif
 -- 
 2.39.2
 

@@ -1,71 +1,70 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2593270ejb;
-        Wed, 25 Oct 2023 02:01:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG4mRrBMc6VyzngLEcZvCp9hB67wFTRLw1e/xqAZLjufS9LHFF5ZpWHb8Cg0vi5ClIcf0R0
-X-Received: by 2002:ad4:5cc2:0:b0:66d:169a:d41c with SMTP id iu2-20020ad45cc2000000b0066d169ad41cmr15934612qvb.19.1698224510300;
-        Wed, 25 Oct 2023 02:01:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698224510; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2593440ejb;
+        Wed, 25 Oct 2023 02:02:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNM2NGjNQULOFj4rg4OVLmU5rT1HM/UET5tJUOIu3n7g0yqjcvfosXoIoF1wd58YAzcMVV
+X-Received: by 2002:a05:622a:1a08:b0:410:842d:fc2f with SMTP id f8-20020a05622a1a0800b00410842dfc2fmr24830982qtb.7.1698224524790;
+        Wed, 25 Oct 2023 02:02:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698224524; cv=none;
         d=google.com; s=arc-20160816;
-        b=xfU7lntCebXVdT8n+KdfEyqzCFvP/lZuc3fdc6Q7SPrUEkZrzT6hPE3Bj384imViaE
-         VAfJPWVo1+VgOjDg1T4Tksr8p05CacT49jZZhs4EKVNZY0vTerYviL9XGIT5eRXUaVSq
-         G+xzuZJgBR87y8h6p5Qwg8MzlVEEoRSohzXoO5pn8vUDEQbGqgT4c3LMDClLLW5dL5Vn
-         Nr8FKQQNMQpZ2w5Bxw3CBujnoUumP96grmMvjCwzdZM95hhYkAowENp7SRGS7tcUsoQX
-         Jn09mbLXumcvLtQGW7NdhD5jfH08u7IObBlStyErUKOtQ9mdfI2suKf5gqiuKZ3gEsk9
-         1yyw==
+        b=yuZ1jdJ4MiXzhvpBN1/3bDThsHCFlZWNL8iZIi5jWRZDruu2Uhs/GNPSgcNbubr7n+
+         NpNcWHmY16L1IYOvZubzGlcZyz+1flDuAlWj9EOD6iSDmRYCS8VxYOBU2MOKe5eK+74k
+         U+HDPg9cDMui5PDUCKHJY/HzzF/lA5VfXqVSnArLvRW34GErQoAxKDqlwz5F7RAlTBlm
+         xJCdr9DK044ZyhXjnL5JbH6KRR5bnENEgEpyHT8HrqQtPyI7iD2MW6QLvymi1qLUNyvl
+         uFgm1d7/effGa5dpGyL3uaO5lXiNeM3SimpP9f2cRdoNM+y/EF6NSQjtcGBEfFZdBd6z
+         ZQHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=5iytxJY0+gc6JQuRva97NBb2EzrLjsa0opuVkaeyaQU=;
+        bh=qJZighkLgUqncCbAZvUDBPEw9qxOyQBB3FH4jLLhMxE=;
         fh=2AKgK1B3EYiX6882ovZW+CwIStVbar5zReCRX1lYnfY=;
-        b=0lHID46FBZBPuF96vJ5GteZDyVwsTEDgWgxhRbBIjK1JTQF58bSSqZNDQWPV5N+0TD
-         fBqYv5XtE/WgZAtJXNPM1/j2ViCUaJ6U/acwLWdhfj31/zrXEJhP0ZwVddRYMWtak6v/
-         /ZVf4KsLCXJAkB4gJc11vcBnvAGmX1RMtU5gQBQhHLgfrrjFxMONIdgG2KswLgb14V84
-         ppfrWSH5hEF0A0tg/J3rJ3QCaVp+KbSxamUBZd78q+ks3Iya/6id0rtpUImQ4dfAjCLM
-         ofXfsTr69rquXLCgLCQbAi0BFBxx6kf9lkR91XA3BsOx8ub5MZ1HoNk+Fjeq0wS3g6QI
-         tSgA==
+        b=e5sgMg3QNSI9GnvMOgqx16fu5Di1ahoi+iiZZ+HiJaHF5VmJadl4rLGwUr6IQg3mH/
+         MpnMlCgEcq5aFRyKBNjEjmBANrQox/SYL4PVZ7dXdb1CLbcvWxXjQbJRTXMnubPYvAqE
+         tr/1HZ+GKB7Gool+r1ItiFxf007i76C1lM/sJoRCsk81hSW+yqlDJAVNPfPQxjAUjWRx
+         nte6ILBdkePKSaRKNLJkPo8fHzrEqydyJGgwbBW0dJL3SltBx/17uffy3OOc20nGhhjz
+         Gz539kTJP3n9IQ8tm3/CoIuchWggOY/Jj1OIBPFIa+eL6fDSa084uSm/AFGqV9ErloaH
+         MhyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y13-20020a05620a25cd00b007757f5ed91dsi8770220qko.691.2023.10.25.02.01.50
+        by mx.google.com with ESMTPS id i11-20020ac85e4b000000b0041962bf1693si8083448qtx.762.2023.10.25.02.02.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 02:01:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Oct 2023 02:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvZjn-00082f-CQ; Wed, 25 Oct 2023 04:59:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvZjq-00083y-Pr; Wed, 25 Oct 2023 04:59:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
- id 1qvZjm-00081z-3C; Wed, 25 Oct 2023 04:59:38 -0400
+ id 1qvZjp-00082x-JH; Wed, 25 Oct 2023 04:59:41 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
- id 1qvZjj-0004OR-Mk; Wed, 25 Oct 2023 04:59:37 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SFjY00553z4wx7;
- Wed, 25 Oct 2023 19:59:32 +1100 (AEDT)
+ id 1qvZjn-0004OR-3D; Wed, 25 Oct 2023 04:59:41 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SFjY61H8bz4wx8;
+ Wed, 25 Oct 2023 19:59:38 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SFjXy3Qcxz4wnw;
- Wed, 25 Oct 2023 19:59:30 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SFjY44bYnz4wnw;
+ Wed, 25 Oct 2023 19:59:36 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 02/12] hw/arm/aspeed: Extract code common to all boards to a
- common file
-Date: Wed, 25 Oct 2023 10:59:11 +0200
-Message-ID: <20231025085921.733686-3-clg@kaod.org>
+Subject: [PULL 05/12] hw/arm/aspeed: Dynamically allocate
+ AspeedMachineState::soc field
+Date: Wed, 25 Oct 2023 10:59:14 +0200
+Message-ID: <20231025085921.733686-6-clg@kaod.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231025085921.733686-1-clg@kaod.org>
 References: <20231025085921.733686-1-clg@kaod.org>
@@ -81,273 +80,364 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Vy50J2At8d1o
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mLvJUgLjCCXw
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-aspeed_soc.c contains definitions specific to the AST2400
-and AST2500 SoCs, but also some definitions for other AST
-SoCs: move them to a common file.
+We want to derivate the big AspeedSoCState object in some more
+SoC-specific ones. Since the object size will vary, allocate it
+dynamically.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_soc.c        |  96 -------------------------------
- hw/arm/aspeed_soc_common.c | 114 +++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build         |   1 +
- 3 files changed, 115 insertions(+), 96 deletions(-)
- create mode 100644 hw/arm/aspeed_soc_common.c
+ hw/arm/aspeed.c | 101 +++++++++++++++++++++++++-----------------------
+ 1 file changed, 52 insertions(+), 49 deletions(-)
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index bf22258de958..f6c2ead4ace0 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -585,99 +585,3 @@ static void aspeed_soc_register_types(void)
- };
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index f8ba67531a00..cc59176563a8 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -40,7 +40,7 @@ struct AspeedMachineState {
+     MachineState parent_obj;
+     /* Public */
  
- type_init(aspeed_soc_register_types);
+-    AspeedSoCState soc;
++    AspeedSoCState *soc;
+     MemoryRegion boot_rom;
+     bool mmio_exec;
+     uint32_t uart_chosen;
+@@ -288,7 +288,7 @@ static void write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
+ static void aspeed_install_boot_rom(AspeedMachineState *bmc, BlockBackend *blk,
+                                     uint64_t rom_size)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     memory_region_init_rom(&bmc->boot_rom, NULL, "aspeed.boot_rom", rom_size,
+                            &error_abort);
+@@ -337,7 +337,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
+ static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
+ {
+     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+-    AspeedSoCState *s = &bmc->soc;
++    AspeedSoCState *s = bmc->soc;
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
+ 
+@@ -358,32 +358,33 @@ static void aspeed_machine_init(MachineState *machine)
+     int i;
+     NICInfo *nd = &nd_table[0];
+ 
+-    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
 -
--qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
--{
--    return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
--}
--
--bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
--{
--    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    SerialMM *smm;
--
--    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
--        smm = &s->uart[i];
--
--        /* Chardev property is set by the machine. */
--        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
--        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
--        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
--        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
--        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
--            return false;
--        }
--
--        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
--        aspeed_mmio_map(s, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
--    }
--
--    return true;
--}
--
--void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
--{
--    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    int i = dev - ASPEED_DEV_UART1;
--
--    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
--    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
--}
--
--/*
-- * SDMC should be realized first to get correct RAM size and max size
-- * values
-- */
--bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
--{
--    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    ram_addr_t ram_size, max_ram_size;
--
--    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
--                                        &error_abort);
--    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
--                                            &error_abort);
--
--    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
--                       max_ram_size);
--    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
--
--    /*
--     * Add a memory region beyond the RAM region to let firmwares scan
--     * the address space with load/store and guess how much RAM the
--     * SoC has.
--     */
--    if (ram_size < max_ram_size) {
--        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
--
--        qdev_prop_set_string(dev, "name", "ram-empty");
--        qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
--        if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
--            return false;
--        }
--
--        memory_region_add_subregion_overlap(&s->dram_container, ram_size,
--                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
--    }
--
--    memory_region_add_subregion(s->memory,
--                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
--    return true;
--}
--
--void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr)
--{
--    memory_region_add_subregion(s->memory, addr,
--                                sysbus_mmio_get_region(dev, n));
--}
--
--void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
--                                   const char *name, hwaddr addr, uint64_t size)
--{
--    qdev_prop_set_string(DEVICE(dev), "name", name);
--    qdev_prop_set_uint64(DEVICE(dev), "size", size);
--    sysbus_realize(dev, &error_abort);
--
--    memory_region_add_subregion_overlap(s->memory, addr,
--                                        sysbus_mmio_get_region(dev, 0), -1000);
--}
-diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-new file mode 100644
-index 000000000000..a43f5d2a6f21
---- /dev/null
-+++ b/hw/arm/aspeed_soc_common.c
-@@ -0,0 +1,114 @@
-+/*
-+ * ASPEED SoC family
-+ *
-+ * Andrew Jeffery <andrew@aj.id.au>
-+ * Jeremy Kerr <jk@ozlabs.org>
-+ *
-+ * Copyright 2016 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/char/serial.h"
-+
-+
-+qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
-+{
-+    return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
-+}
-+
-+bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
-+{
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    SerialMM *smm;
-+
-+    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-+        smm = &s->uart[i];
-+
-+        /* Chardev property is set by the machine. */
-+        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
-+        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
-+        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
-+        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
-+        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
-+            return false;
-+        }
-+
-+        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
-+        aspeed_mmio_map(s, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
-+    }
-+
-+    return true;
-+}
-+
-+void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
-+{
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    int i = dev - ASPEED_DEV_UART1;
-+
-+    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
-+    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-+}
-+
-+/*
-+ * SDMC should be realized first to get correct RAM size and max size
-+ * values
-+ */
-+bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
-+{
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+    ram_addr_t ram_size, max_ram_size;
-+
-+    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
-+                                        &error_abort);
-+    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
-+                                            &error_abort);
-+
-+    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
-+                       max_ram_size);
-+    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
-+
-+    /*
-+     * Add a memory region beyond the RAM region to let firmwares scan
-+     * the address space with load/store and guess how much RAM the
-+     * SoC has.
-+     */
-+    if (ram_size < max_ram_size) {
-+        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
-+
-+        qdev_prop_set_string(dev, "name", "ram-empty");
-+        qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
-+        if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
-+            return false;
-+        }
-+
-+        memory_region_add_subregion_overlap(&s->dram_container, ram_size,
-+                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
-+    }
-+
-+    memory_region_add_subregion(s->memory,
-+                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
-+    return true;
-+}
-+
-+void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr)
-+{
-+    memory_region_add_subregion(s->memory, addr,
-+                                sysbus_mmio_get_region(dev, n));
-+}
-+
-+void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
-+                                   const char *name, hwaddr addr, uint64_t size)
-+{
-+    qdev_prop_set_string(DEVICE(dev), "name", name);
-+    qdev_prop_set_uint64(DEVICE(dev), "size", size);
-+    sysbus_realize(dev, &error_abort);
-+
-+    memory_region_add_subregion_overlap(s->memory, addr,
-+                                        sysbus_mmio_get_region(dev, 0), -1000);
-+}
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index a6feaf1af957..42e7aa36f39a 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -50,6 +50,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX6', if_true: files('fsl-imx6.c'))
- arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc.c',
-   'aspeed.c',
-+  'aspeed_soc_common.c',
-   'aspeed_ast2600.c',
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
+-    sc = ASPEED_SOC_GET_CLASS(&bmc->soc);
++    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
++    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
++    object_unref(OBJECT(bmc->soc));
++    sc = ASPEED_SOC_GET_CLASS(bmc->soc);
+ 
+     /*
+      * This will error out if the RAM size is not supported by the
+      * memory controller of the SoC.
+      */
+-    object_property_set_uint(OBJECT(&bmc->soc), "ram-size", machine->ram_size,
++    object_property_set_uint(OBJECT(bmc->soc), "ram-size", machine->ram_size,
+                              &error_fatal);
+ 
+     for (i = 0; i < sc->macs_num; i++) {
+         if ((amc->macs_mask & (1 << i)) && nd->used) {
+             qemu_check_nic_model(nd, TYPE_FTGMAC100);
+-            qdev_set_nic_properties(DEVICE(&bmc->soc.ftgmac100[i]), nd);
++            qdev_set_nic_properties(DEVICE(&bmc->soc->ftgmac100[i]), nd);
+             nd++;
+         }
+     }
+ 
+-    object_property_set_int(OBJECT(&bmc->soc), "hw-strap1", amc->hw_strap1,
++    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", amc->hw_strap1,
+                             &error_abort);
+-    object_property_set_int(OBJECT(&bmc->soc), "hw-strap2", amc->hw_strap2,
++    object_property_set_int(OBJECT(bmc->soc), "hw-strap2", amc->hw_strap2,
+                             &error_abort);
+-    object_property_set_link(OBJECT(&bmc->soc), "memory",
++    object_property_set_link(OBJECT(bmc->soc), "memory",
+                              OBJECT(get_system_memory()), &error_abort);
+-    object_property_set_link(OBJECT(&bmc->soc), "dram",
++    object_property_set_link(OBJECT(bmc->soc), "dram",
+                              OBJECT(machine->ram), &error_abort);
+     if (machine->kernel_filename) {
+         /*
+@@ -391,17 +392,17 @@ static void aspeed_machine_init(MachineState *machine)
+          * that runs to unlock the SCU. In this case set the default to
+          * be unlocked as the kernel expects
+          */
+-        object_property_set_int(OBJECT(&bmc->soc), "hw-prot-key",
++        object_property_set_int(OBJECT(bmc->soc), "hw-prot-key",
+                                 ASPEED_SCU_PROT_KEY, &error_abort);
+     }
+     connect_serial_hds_to_uarts(bmc);
+-    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
++    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
+ 
+     if (defaults_enabled()) {
+-        aspeed_board_init_flashes(&bmc->soc.fmc,
++        aspeed_board_init_flashes(&bmc->soc->fmc,
+                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+                               amc->num_cs, 0);
+-        aspeed_board_init_flashes(&bmc->soc.spi[0],
++        aspeed_board_init_flashes(&bmc->soc->spi[0],
+                               bmc->spi_model ? bmc->spi_model : amc->spi_model,
+                               1, amc->num_cs);
+     }
+@@ -426,22 +427,22 @@ static void aspeed_machine_init(MachineState *machine)
+         amc->i2c_init(bmc);
+     }
+ 
+-    for (i = 0; i < bmc->soc.sdhci.num_slots; i++) {
+-        sdhci_attach_drive(&bmc->soc.sdhci.slots[i],
++    for (i = 0; i < bmc->soc->sdhci.num_slots; i++) {
++        sdhci_attach_drive(&bmc->soc->sdhci.slots[i],
+                            drive_get(IF_SD, 0, i));
+     }
+ 
+-    if (bmc->soc.emmc.num_slots) {
+-        sdhci_attach_drive(&bmc->soc.emmc.slots[0],
+-                           drive_get(IF_SD, 0, bmc->soc.sdhci.num_slots));
++    if (bmc->soc->emmc.num_slots) {
++        sdhci_attach_drive(&bmc->soc->emmc.slots[0],
++                           drive_get(IF_SD, 0, bmc->soc->sdhci.num_slots));
+     }
+ 
+     if (!bmc->mmio_exec) {
+-        DeviceState *dev = ssi_get_cs(bmc->soc.fmc.spi, 0);
++        DeviceState *dev = ssi_get_cs(bmc->soc->fmc.spi, 0);
+         BlockBackend *fmc0 = dev ? m25p80_get_blk(dev) : NULL;
+ 
+         if (fmc0) {
+-            uint64_t rom_size = memory_region_size(&bmc->soc.spi_boot);
++            uint64_t rom_size = memory_region_size(&bmc->soc->spi_boot);
+             aspeed_install_boot_rom(bmc, fmc0, rom_size);
+         }
+     }
+@@ -451,7 +452,7 @@ static void aspeed_machine_init(MachineState *machine)
+ 
+ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     DeviceState *dev;
+     uint8_t *eeprom_buf = g_malloc0(32 * 1024);
+ 
+@@ -473,7 +474,7 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     /*
+      * The quanta-q71l platform expects tmp75s which are compatible with
+@@ -505,7 +506,7 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 0x50,
+@@ -518,7 +519,7 @@ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+ 
+ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
+@@ -531,7 +532,7 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+ 
+ static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x51, 128 * KiB);
+     at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
+@@ -545,7 +546,7 @@ static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     /* The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
+      * good enough */
+@@ -554,7 +555,7 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54, 128 * KiB);
+     at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 * KiB,
+@@ -573,7 +574,7 @@ static void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+ 
+ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     /* bus 2 : */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
+@@ -627,7 +628,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+         {14, LED_COLOR_GREEN, "front-power-3",  GPIO_POLARITY_ACTIVE_LOW},
+         {15, LED_COLOR_GREEN, "front-id-5",     GPIO_POLARITY_ACTIVE_LOW},
+     };
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+     DeviceState *dev;
+     LEDState *led;
+@@ -672,7 +673,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     DeviceState *dev;
+ 
+     dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
+@@ -708,7 +709,7 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     I2CSlave *i2c_mux;
+ 
+     /* The at24c256 */
+@@ -735,7 +736,7 @@ static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     I2CSlave *i2c_mux;
+ 
+     at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
+@@ -852,7 +853,7 @@ static void get_pca9548_channels(I2CBus *bus, uint8_t mux_addr,
+ 
+ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     I2CBus *i2c[144] = {};
+ 
+     for (int i = 0; i < 16; i++) {
+@@ -930,7 +931,7 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     I2CBus *i2c[13] = {};
+     for (int i = 0; i < 13; i++) {
+         if ((i == 8) || (i == 11)) {
+@@ -976,7 +977,7 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+ static void fby35_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     I2CBus *i2c[16];
+ 
+     for (int i = 0; i < 16; i++) {
+@@ -1008,14 +1009,14 @@ static void fby35_i2c_init(AspeedMachineState *bmc)
+ 
+ static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
+ }
+ 
+ static void qcom_dc_scm_firework_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+     I2CSlave *therm_mux, *cpuvr_mux;
+ 
+     /* Create the generic DC-SCM hardware */
+@@ -1477,7 +1478,7 @@ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+ static void fby35_reset(MachineState *state, ShutdownCause reason)
+ {
+     AspeedMachineState *bmc = ASPEED_MACHINE(state);
+-    AspeedGPIOState *gpio = &bmc->soc.gpio;
++    AspeedGPIOState *gpio = &bmc->soc->gpio;
+ 
+     qemu_devices_reset(reason);
+ 
+@@ -1528,24 +1529,26 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
+     sysclk = clock_new(OBJECT(machine), "SYSCLK");
+     clock_set_hz(sysclk, SYSCLK_FRQ);
+ 
+-    object_initialize_child(OBJECT(machine), "soc", &bmc->soc, amc->soc_name);
+-    qdev_connect_clock_in(DEVICE(&bmc->soc), "sysclk", sysclk);
++    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
++    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
++    object_unref(OBJECT(bmc->soc));
++    qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
+ 
+-    object_property_set_link(OBJECT(&bmc->soc), "memory",
++    object_property_set_link(OBJECT(bmc->soc), "memory",
+                              OBJECT(get_system_memory()), &error_abort);
+     connect_serial_hds_to_uarts(bmc);
+-    qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
++    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
+ 
+-    aspeed_board_init_flashes(&bmc->soc.fmc,
++    aspeed_board_init_flashes(&bmc->soc->fmc,
+                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+                               amc->num_cs,
+                               0);
+ 
+-    aspeed_board_init_flashes(&bmc->soc.spi[0],
++    aspeed_board_init_flashes(&bmc->soc->spi[0],
+                               bmc->spi_model ? bmc->spi_model : amc->spi_model,
+                               amc->num_cs, amc->num_cs);
+ 
+-    aspeed_board_init_flashes(&bmc->soc.spi[1],
++    aspeed_board_init_flashes(&bmc->soc->spi[1],
+                               bmc->spi_model ? bmc->spi_model : amc->spi_model,
+                               amc->num_cs, (amc->num_cs * 2));
+ 
+@@ -1561,7 +1564,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
+ 
+ static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
+ {
+-    AspeedSoCState *soc = &bmc->soc;
++    AspeedSoCState *soc = bmc->soc;
+ 
+     /* U10 24C08 connects to SDA/SCL Group 1 by default */
+     uint8_t *eeprom_buf = g_malloc0(32 * 1024);
 -- 
 2.41.0
 

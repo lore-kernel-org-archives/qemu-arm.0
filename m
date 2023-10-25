@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2970409ejb;
-        Wed, 25 Oct 2023 12:14:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHhLTRKU3o5pIJo83ZFuKmEOo0AuqXPOVpqs+Cj/KkTkeTQL4fyJ7f2mx6MokK5i+6GKyHq
-X-Received: by 2002:a05:620a:284a:b0:775:6e8d:de4f with SMTP id h10-20020a05620a284a00b007756e8dde4fmr16825716qkp.60.1698261283864;
-        Wed, 25 Oct 2023 12:14:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698261283; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2970948ejb;
+        Wed, 25 Oct 2023 12:15:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFH4MR7eb0ure3slo2OJlT6gLf6IJlfNA/rTq0Zj1lEyKqwhwHwrj1PS5vVgGS/d9Ih8dpN
+X-Received: by 2002:a05:6214:301b:b0:66d:28fa:f4 with SMTP id ke27-20020a056214301b00b0066d28fa00f4mr19244398qvb.2.1698261336896;
+        Wed, 25 Oct 2023 12:15:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698261336; cv=none;
         d=google.com; s=arc-20160816;
-        b=fhMXpRmp1u5KdfB2E/QB0d5mLH551U10e3UaJNIVV0HfXXQ7+rQSht64IfpJ8VXB/p
-         zKFzAyrmhuT8AbECDOo9Q3/O9mGCAJz/Ld05BXound6yQ+MLjdAEfvbo+L37POTeHjgA
-         OOm3Sc/pVrCuKaE5tcU2Yh5w1qoEn48AHF3oj6QgAqHQnK8LctcqKLQeKHCaxpJtlzSk
-         0QaU0Z8+9eGFryd5DgnaqQ84TSuGMNtOGRbzsKH8UD04dGoVktNQTF0h5bfZ/BBNL4z8
-         0T75SgQWoWKMVJhHJfe2rRCsHpepX0XK1r1FfyQFqFypKUR7EqwcKtGwr/P9MdNNS6AB
-         R+wg==
+        b=pCH/7lbsi7qb4wsG0T2eASrZtcCeXL64ElK/EYfuDL42UJ0MyZLG20scWIx7nX5hjf
+         Ix6tf9TWEcDiMyjiDR27EggZxkWDqDi1YDn3sjfUbj15JYSoJ4+kHI6nXK3J1wz37xbd
+         lif1U33zFp4bMGqIEf0djZVSgQTKXVsuhi+3yqbqtehTf+OzGnr1CBsPGB3siG09Xtg0
+         suwBR9brnQ6XyLDUwC/euuiH7NdyOMtGYTtMzbdCnhSip4HSBzm4WXMqeAs8cxaf7OLI
+         M/0YwAeLEppUkwwN8qEkV9oxDYIJFuzPj8Apf0HS4vIGAA4Xvhhm7FxjH75n69QK1mKT
+         WRWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mfXKMCeYe8g3dryXyoJRMWwSmVVGEZLiRQxMMYjBaVc=;
+        bh=laHjWLzCritiBmm3tfQnxZN8308Nvvp2FONGgcUqOYE=;
         fh=xhblChOHn/9ohxmBdExAv8vV4InD5nB0dX6yBSUq53Q=;
-        b=TFxnVkydKCpYE0r5HK/b6CzrKikDyZL37R8sVTw/6UeQCd97WprGxQLqeEhK6A0aCi
-         iL5CFkDz78+UaXRuAsjwez3XD1aLRo/WQE5sGbkFFSNJZOYV59240FE7XJL+QvvuH4Xy
-         9hlHcE90kMCZ2GnlCiE9S+D4hvQBA+yArDpw27CzwihM11GKBldIehtXVZVvkng+gB+O
-         JlqUi6M8zN7T9WNMqI8G/xWMyfKAdqU/mXjdL/4aWVx1KVIAcvGTBPWB0CDOpEL0zkmi
-         ejDIdDChjutsZauZeZoW+4Wm7XIz4g9AQzhuayr/mqe+/AwHY7+Iv+FgCNDApYNus2U8
-         bY3A==
+        b=HS79unnQWG2hRTds01yWsQCsl3zI7MEKGwdvX7/nN3PI7prxVd0AZgi4Cre+c2G70A
+         cVLKVyudDp4qBkENCn2hWDk14BvLXV0YGVMPYn09fnB26my3LNuCAhfBfs3fGMLTlvKH
+         bJLTLvyG64YlkxBR8YN5epnpzfMSZzc2IhsBQWWkO9zIRUAbhf6MKaIRClG0+1BgPOt1
+         h0AmEGgJNPctxUcBz8AJkbvls/nI4EtTJTIXsK0Lz9l3FS+XAnSCtYV+m0E7YL9a5kfB
+         qU5coWDAi8iZXv1PBPPQVA1/tMROgTKsq5dDpLDihdnF15XkVzdDhwzRvJrhwFrOGy8Y
+         8DcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i47db8jt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="PjB/QSd/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10-20020a05620a28ca00b00773c9d788f2si9222824qkp.351.2023.10.25.12.14.43
+        by mx.google.com with ESMTPS id nf2-20020a0562143b8200b0066d23395d24si8989717qvb.360.2023.10.25.12.15.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 12:14:43 -0700 (PDT)
+        Wed, 25 Oct 2023 12:15:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i47db8jt;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="PjB/QSd/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvjGT-0006rf-0n; Wed, 25 Oct 2023 15:10:01 -0400
+	id 1qvjG0-0005az-V2; Wed, 25 Oct 2023 15:09:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjGQ-0006fY-Qy
- for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:09:58 -0400
+ id 1qvjFv-0005FT-Ua
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:09:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjGO-0000gW-V6
- for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:09:58 -0400
+ id 1qvjFu-0000XR-9n
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:09:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698260995;
+ s=mimecast20190719; t=1698260965;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mfXKMCeYe8g3dryXyoJRMWwSmVVGEZLiRQxMMYjBaVc=;
- b=i47db8jtlCpFGKEx9XvQqcVm331SJh+KsaOpXCkLrK1ZnNCTagLPXj+c1R7R6B+NIYP+gk
- FCofIm+aLPCSEuQCkjpzktUqjaYZ9v5UeyYjBxnPrkvCIuPFTQcppkLEChhxnPfY8Rdj5h
- 2TlYa3U95JqV3tZ4cAqQTY+jmkE4LBA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-563-eZyFmnaVP5uUYk05AdoLqA-1; Wed, 25 Oct 2023 15:09:53 -0400
-X-MC-Unique: eZyFmnaVP5uUYk05AdoLqA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
+ bh=laHjWLzCritiBmm3tfQnxZN8308Nvvp2FONGgcUqOYE=;
+ b=PjB/QSd/KQBSmQysGJ9UoOlywFt5MtSLc9LnBhKIm4GDiiOPhmLgEY5CijXvXg9X4r+TIV
+ y0rVmQU6svhC3sl4REcxGCvqQHlE3Dj4vW+YLIdGZeNT8gQiJ3E0Nqflck7LjnFQCuCvvW
+ sxLPv+fBcKFB6PSmZWo8+IKWtk16NBg=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-399-JFKC8FFjMpuD-LFIYM8IVw-1; Wed,
+ 25 Oct 2023 15:09:13 -0400
+X-MC-Unique: JFKC8FFjMpuD-LFIYM8IVw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7DF1085D522;
- Wed, 25 Oct 2023 19:09:52 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 773411C06901;
+ Wed, 25 Oct 2023 19:09:13 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5D4B3C1596D;
- Wed, 25 Oct 2023 19:09:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3BAB32166B27;
+ Wed, 25 Oct 2023 19:09:11 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -90,15 +90,15 @@ Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v6 21/23] hw/sm501: allow compiling without PIXMAN
-Date: Wed, 25 Oct 2023 23:08:15 +0400
-Message-ID: <20231025190818.3278423-22-marcandre.lureau@redhat.com>
+Subject: [PATCH v6 12/23] virtio-gpu: replace PIXMAN for region/rect test
+Date: Wed, 25 Oct 2023 23:08:06 +0400
+Message-ID: <20231025190818.3278423-13-marcandre.lureau@redhat.com>
 In-Reply-To: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -108,7 +108,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,134 +123,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jlzxv6JMH1Eb
+X-TUID: yOA5yIhcZR5z
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Change the "x-pixman" property default value and use the fallback path
-when PIXMAN support is disabled.
+Use a simpler implementation for rectangle geometry & intersect, drop
+the need for (more complex) PIXMAN functions.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/display/sm501.c | 46 +++++++++++++++++++++++++++++++++-------------
- 1 file changed, 33 insertions(+), 13 deletions(-)
+ include/ui/rect.h       | 59 +++++++++++++++++++++++++++++++++++++++++
+ hw/display/virtio-gpu.c | 30 ++++++++-------------
+ 2 files changed, 70 insertions(+), 19 deletions(-)
+ create mode 100644 include/ui/rect.h
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 0eecd00701..33fd08955d 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -438,6 +438,12 @@
- #define SM501_HWC_WIDTH                 64
- #define SM501_HWC_HEIGHT                64
- 
-+#ifdef CONFIG_PIXMAN
-+#define DEFAULT_X_PIXMAN 7
-+#else
-+#define DEFAULT_X_PIXMAN 0
-+#endif
+diff --git a/include/ui/rect.h b/include/ui/rect.h
+new file mode 100644
+index 0000000000..94898f92d0
+--- /dev/null
++++ b/include/ui/rect.h
+@@ -0,0 +1,59 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef QEMU_RECT_H
++#define QEMU_RECT_H
 +
- /* SM501 local memory size taken from "linux/drivers/mfd/sm501.c" */
- static const uint32_t sm501_mem_local_size[] = {
-     [0] = 4 * MiB,
-@@ -730,7 +736,6 @@ static void sm501_2d_operation(SM501State *s)
-     switch (cmd) {
-     case 0: /* BitBlt */
-     {
--        static uint32_t tmp_buf[16384];
-         unsigned int src_x = (s->twoD_source >> 16) & 0x01FFF;
-         unsigned int src_y = s->twoD_source & 0xFFFF;
-         uint32_t src_base = s->twoD_source_base & 0x03FFFFFF;
-@@ -828,9 +833,11 @@ static void sm501_2d_operation(SM501State *s)
-                 de = db + (width + (height - 1) * dst_pitch) * bypp;
-                 overlap = (db < se && sb < de);
-             }
-+#ifdef CONFIG_PIXMAN
-             if (overlap && (s->use_pixman & BIT(2))) {
-                 /* pixman can't do reverse blit: copy via temporary */
-                 int tmp_stride = DIV_ROUND_UP(width * bypp, sizeof(uint32_t));
-+                static uint32_t tmp_buf[16384];
-                 uint32_t *tmp = tmp_buf;
- 
-                 if (tmp_stride * sizeof(uint32_t) * height > sizeof(tmp_buf)) {
-@@ -860,9 +867,12 @@ static void sm501_2d_operation(SM501State *s)
-                                        dst_pitch * bypp / sizeof(uint32_t),
-                                        8 * bypp, 8 * bypp, src_x, src_y,
-                                        dst_x, dst_y, width, height);
--            } else {
-+            } else
-+#else
-+            {
-                 fallback = true;
-             }
-+#endif
-             if (fallback) {
-                 uint8_t *sp = s->local_mem + src_base;
-                 uint8_t *d = s->local_mem + dst_base;
-@@ -894,20 +904,23 @@ static void sm501_2d_operation(SM501State *s)
-             color = cpu_to_le16(color);
-         }
- 
-+#ifdef CONFIG_PIXMAN
-         if (!(s->use_pixman & BIT(0)) || (width == 1 && height == 1) ||
-             !pixman_fill((uint32_t *)&s->local_mem[dst_base],
-                          dst_pitch * bypp / sizeof(uint32_t), 8 * bypp,
--                         dst_x, dst_y, width, height, color)) {
--            /* fallback when pixman failed or we don't want to call it */
--            uint8_t *d = s->local_mem + dst_base;
--            unsigned int x, y, i;
--            for (y = 0; y < height; y++) {
--                i = (dst_x + (dst_y + y) * dst_pitch) * bypp;
--                for (x = 0; x < width; x++, i += bypp) {
--                    stn_he_p(&d[i], bypp, color);
-+                         dst_x, dst_y, width, height, color))
-+#endif
-+            {
-+                /* fallback when pixman failed or we don't want to call it */
-+                uint8_t *d = s->local_mem + dst_base;
-+                unsigned int x, y, i;
-+                for (y = 0; y < height; y++) {
-+                    i = (dst_x + (dst_y + y) * dst_pitch) * bypp;
-+                    for (x = 0; x < width; x++, i += bypp) {
-+                        stn_he_p(&d[i], bypp, color);
-+                    }
-                 }
-             }
--        }
-         break;
-     }
-     default:
-@@ -1878,6 +1891,12 @@ static void sm501_reset(SM501State *s)
- static void sm501_init(SM501State *s, DeviceState *dev,
-                        uint32_t local_mem_bytes)
- {
-+#ifndef CONFIG_PIXMAN
-+    if (s->use_pixman != 0) {
-+        warn_report("x-pixman != 0, not effective without PIXMAN");
++#include <stdint.h>
++#include <stdbool.h>
++
++typedef struct QemuRect {
++    int16_t x;
++    int16_t y;
++    uint16_t width;
++    uint16_t height;
++} QemuRect;
++
++static inline void qemu_rect_init(QemuRect *rect,
++                                  int16_t x, int16_t y,
++                                  uint16_t width, uint16_t height)
++{
++    rect->x = x;
++    rect->y = x;
++    rect->width = width;
++    rect->height = height;
++}
++
++static inline void qemu_rect_translate(QemuRect *rect,
++                                       int16_t dx, int16_t dy)
++{
++    rect->x += dx;
++    rect->y += dy;
++}
++
++static inline bool qemu_rect_intersect(const QemuRect *a, const QemuRect *b,
++                                       QemuRect *res)
++{
++    int16_t x1, x2, y1, y2;
++
++    x1 = MAX(a->x, b->x);
++    y1 = MAX(a->y, b->y);
++    x2 = MIN(a->x + a->width, b->x + b->width);
++    y2 = MIN(a->y + a->height, b->y + b->height);
++
++    if (x1 >= x2 || y1 >= y2) {
++        if (res) {
++            qemu_rect_init(res, 0, 0, 0, 0);
++        }
++
++        return false;
 +    }
-+#endif
 +
-     s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
++    if (res) {
++        qemu_rect_init(res, x1, y1, x2 - x1, y2 - y1);
++    }
++
++    return true;
++}
++
++#endif
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index 4265316cbb..a8e767245f 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -16,6 +16,7 @@
+ #include "qemu/iov.h"
+ #include "sysemu/cpus.h"
+ #include "ui/console.h"
++#include "ui/rect.h"
+ #include "trace.h"
+ #include "sysemu/dma.h"
+ #include "sysemu/sysemu.h"
+@@ -503,7 +504,7 @@ static void virtio_gpu_resource_flush(VirtIOGPU *g,
+     struct virtio_gpu_simple_resource *res;
+     struct virtio_gpu_resource_flush rf;
+     struct virtio_gpu_scanout *scanout;
+-    pixman_region16_t flush_region;
++    QemuRect flush_rect;
+     bool within_bounds = false;
+     bool update_submitted = false;
+     int i;
+@@ -565,34 +566,25 @@ static void virtio_gpu_resource_flush(VirtIOGPU *g,
+         return;
+     }
  
-     /* local memory */
-@@ -2038,7 +2057,8 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+-    pixman_region_init_rect(&flush_region,
+-                            rf.r.x, rf.r.y, rf.r.width, rf.r.height);
++    qemu_rect_init(&flush_rect, rf.r.x, rf.r.y, rf.r.width, rf.r.height);
+     for (i = 0; i < g->parent_obj.conf.max_outputs; i++) {
+-        pixman_region16_t region, finalregion;
+-        pixman_box16_t *extents;
++        QemuRect rect;
  
- static Property sm501_sysbus_properties[] = {
-     DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
--    DEFINE_PROP_UINT8("x-pixman", SM501SysBusState, state.use_pixman, 7),
-+    /* this a debug option, prefer PROP_UINT over PROP_BIT for simplicity */
-+    DEFINE_PROP_UINT8("x-pixman", SM501SysBusState, state.use_pixman, DEFAULT_X_PIXMAN),
-     DEFINE_PROP_END_OF_LIST(),
- };
+         if (!(res->scanout_bitmask & (1 << i))) {
+             continue;
+         }
+         scanout = &g->parent_obj.scanout[i];
  
-@@ -2126,7 +2146,7 @@ static void sm501_realize_pci(PCIDevice *dev, Error **errp)
+-        pixman_region_init(&finalregion);
+-        pixman_region_init_rect(&region, scanout->x, scanout->y,
+-                                scanout->width, scanout->height);
++        qemu_rect_init(&rect, scanout->x, scanout->y,
++                       scanout->width, scanout->height);
  
- static Property sm501_pci_properties[] = {
-     DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * MiB),
--    DEFINE_PROP_UINT8("x-pixman", SM501PCIState, state.use_pixman, 7),
-+    DEFINE_PROP_UINT8("x-pixman", SM501PCIState, state.use_pixman, DEFAULT_X_PIXMAN),
-     DEFINE_PROP_END_OF_LIST(),
- };
+-        pixman_region_intersect(&finalregion, &flush_region, &region);
+-        pixman_region_translate(&finalregion, -scanout->x, -scanout->y);
+-        extents = pixman_region_extents(&finalregion);
+         /* work out the area we need to update for each console */
+-        dpy_gfx_update(g->parent_obj.scanout[i].con,
+-                       extents->x1, extents->y1,
+-                       extents->x2 - extents->x1,
+-                       extents->y2 - extents->y1);
+-
+-        pixman_region_fini(&region);
+-        pixman_region_fini(&finalregion);
++        if (qemu_rect_intersect(&flush_rect, &rect, &rect)) {
++            qemu_rect_translate(&rect, -scanout->x, -scanout->y);
++            dpy_gfx_update(g->parent_obj.scanout[i].con,
++                           rect.x, rect.y, rect.width, rect.height);
++        }
+     }
+-    pixman_region_fini(&flush_region);
+ }
  
+ static void virtio_unref_resource(pixman_image_t *image, void *data)
 -- 
 2.41.0
 

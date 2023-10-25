@@ -1,166 +1,359 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2540833ejb;
-        Tue, 24 Oct 2023 23:55:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHqLqJT8eZ/iUm3QBcwU13BEn6h14gMhrYPVj3CfckqaUUPZSEXqkYlSaMN2V/60hHSsiYm
-X-Received: by 2002:a5d:4108:0:b0:32d:8185:9526 with SMTP id l8-20020a5d4108000000b0032d81859526mr9289955wrp.55.1698216953117;
-        Tue, 24 Oct 2023 23:55:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698216953; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2545840ejb;
+        Wed, 25 Oct 2023 00:07:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IExIl45Glrem0bRYjLE+7/h+nLdhrzRrtz+cSkfUxG6fH8yOhHUOSBl+ni6s1ShUzGb7OG3
+X-Received: by 2002:a5d:4b07:0:b0:309:1532:8287 with SMTP id v7-20020a5d4b07000000b0030915328287mr9677146wrq.19.1698217637793;
+        Wed, 25 Oct 2023 00:07:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698217637; cv=none;
         d=google.com; s=arc-20160816;
-        b=hUCuvqaVk/olRm/CF6MKspwlVT2JwHqStSdCivkOZwLeQPola16bNflOCMm2/euiLd
-         u+lnWozgnPnPCHWE/mFrrjZd4D1B3eULNP3X46gOZGTYqPlDZ2v/CCF/ripHMYXAoIzr
-         ADl8ERmXw9LBtq5NkjCadQ2GWRMP42Hsn7QQeSPsy+8bJgK6pmf2hIwL618tRfJSu9Yl
-         dITqn6uVdpeqxX3MqG8E8kyc0aBoNTcUWQjyo25nIT7rMAKJYtbxaEzfX/TbTGxvtY1J
-         ah5+e/kJPHaAMTndjRczxZMEUu43Ze6nW1EvtYHRBlhhUDjJg77f3z9dc5QmeDCxepfj
-         VhyA==
+        b=REwXG7l6K65ZqCvc3UOtYEFgt9QGIuzyu/Miy0IwdXdi3psf31PAu8gHm2Nopm1+sS
+         lg6xJIAZycBXNvbkLZqBMrOAzAxtmxMus4ojJ6FZxQE8InrP8qfhwxGGY5FDxmNHrTuu
+         JAkpntqOoxVP2gxa+QNrJIOxpP8I2WA8GO9Y3DTYe17pn7VRne4czZUjxpK4iKm7e+XO
+         uQ+2ooqc03++SdrPWDqmbhywR7Rm0QK9qV0lonWsu8RbDCUrXWuCSiT9S6WvdzlskwPy
+         uQQacyee+btLHKPTCu4dDkux7BtSFr4Vp/rzmcExcZu7wL91RUZc2YO2zoje7YpvsaW+
+         CDJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=u1N4iB5qyuXhYbGZOImwLflm5tVzhud2jN7eFf2rhmk=;
-        fh=CtzI2pkgytRcYhpGzM67m6gnAwNIi1NtjpQyBuo6/eI=;
-        b=oj5iCTmex+PMQf+tCbDgSAUPgvpjVSbKzNEUTfd2iTOR22UJq+vsiTMy4fWa0s965y
-         58vAiIq3LWiKBJ2H5LkHagQt2myqEmxTrrZTNKfnEo8uk0ZkJu8+twNGKgL0vGQFe2IY
-         IJzjyOkfiFpPCNGBQ7q7UPo6M5+Mui1NWKTVdvLrUVgQ4q88jQrtNWjX6gB/s8XLVfKK
-         FKto/UAKy7SLa0N/NY/VURurngDgN+p2lQDxZdDcHtQyxHj0VDQe7OfSoMGwcKytIZVg
-         41WXMWiX5uZaOoD5BQ9Ibm+pko8Gv/QFcb0pkBkBWXIYoK+S+/QSD7RE4t7sZvnxWzIs
-         5uFg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=9fgFxkOicyjBj+5/spuDBqJnt+CCzzxelr1prK1eLxo=;
+        fh=keE2KatKG8lbgXGZXmt3WBgtkhQ6uEw33ggpupitLEY=;
+        b=TQjtS50itniwAke6XJ97dVtiyaLx5gSZrLFSHQLdXcmK1FEWhAMTp5FQJtic0kpg9h
+         jOQfDPF3T+EOtW+ePCMQvdLa02r3pgurZi0gI6AV9esUPoZNk6l21GEExgTzV4+b0Aci
+         SBo6xImLR8O06ub5kT2nQusaDg5GP6z5tZj8CfBL5omad8WEPsA+rZbjk5arhzL+MXh+
+         AyWizJeCw/Png9CtF08fyr/4qoED3WSxtUadn30ExZQjAtdm9ZHEslnFGBGVSW8Nc91B
+         1FQWT2U+JdkzYHXmw3azzsG4Hsjr1DVkNAoSlGkeaArPRMMNLgGfTORgGbfzIYsQGedT
+         Iljw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ui4hp91l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020a5d4247000000b0032da31b9739si6962407wrr.516.2023.10.24.23.55.53
+        by mx.google.com with ESMTPS id bj25-20020a0560001e1900b0032da35baf7asi7316324wrb.493.2023.10.25.00.07.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Oct 2023 23:55:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Oct 2023 00:07:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ui4hp91l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvXmI-0008Tb-10; Wed, 25 Oct 2023 02:54:06 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvXyV-00029P-EQ; Wed, 25 Oct 2023 03:06:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXmF-0008Sd-UF
- for qemu-devel@nongnu.org; Wed, 25 Oct 2023 02:54:05 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXmB-000711-Td
- for qemu-devel@nongnu.org; Wed, 25 Oct 2023 02:54:03 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-307d58b3efbso3570453f8f.0
- for <qemu-devel@nongnu.org>; Tue, 24 Oct 2023 23:53:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698216837; x=1698821637; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=u1N4iB5qyuXhYbGZOImwLflm5tVzhud2jN7eFf2rhmk=;
- b=Ui4hp91lNnDoUXWXHbqYRg6PgF1X3kgL2rhzJa88iNQxuFV8dEqP5W9W8oFdlNkg0N
- Wdam1VmOyCDQmbAkkoKRogdEOk5crjMsmCuSRso7A9bZVyM56b019AXxSqwtCd3GOlQs
- TUjoUMQbmXovq8bHmQSoSu5Ele67O4nXG+XVS7G0ka2MO04/VtL4iud9IUriAzHQIwaH
- 7s9ESw5+26VhfWRFDccEhprooTF4Nobw9Cf+aWI7HMS0gS5qSeStVy4gyTPp0OSeZzYe
- mzO5H81V/JKVZ2+Gn+XnjT1FjQKOlGOI/yl2P/YGfc+1XM+hLL1DwDO0kgZPzNWjg9Va
- k1rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698216837; x=1698821637;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=u1N4iB5qyuXhYbGZOImwLflm5tVzhud2jN7eFf2rhmk=;
- b=OmLJl+P4qFfAg5pJmtdzll+rEB2FG6VTlf7XqoeMjnzV7y/UhOCTmYfHWDOcjQGYBT
- UiEDT3AveTuPB3oRttSJIbXhv8vvMI5/COqtpRGTACHIRK8v/m+nh1k1K2h39LugU1Mh
- 2worp7uSDA3hfL+hVnFeQPIn+CMG0uTKxS0C05mM9P1JHGwVHlXBFXUZVC1Lp3iiaJZ3
- Wp/X3G4BK5hRA7CyHcImIDAQYBk6jq2oxMVujfTX6jwwJ+Wu3Vfw7QSeiJCZcjen8JOb
- 78wwbVvix2SRDQIIjoDD9R5Xg1B82BWEhdaUPcAuazHex1ECUYBWQy3nW5MNvy5i+dn9
- 1NAg==
-X-Gm-Message-State: AOJu0Yy821djE93WMp6h8+sKPBW7UJ9n5mWGZe1gNnkAYZxOxS6ZUA1S
- s+SpG2bJh37EBTaoXeylsu9bLMIy2p2nQxujrkE=
-X-Received: by 2002:adf:ed8e:0:b0:32d:9d99:d0a5 with SMTP id
- c14-20020adfed8e000000b0032d9d99d0a5mr11157008wro.5.1698216836919; 
- Tue, 24 Oct 2023 23:53:56 -0700 (PDT)
-Received: from m1x-phil.lan (ghy59-h01-176-171-219-76.dsl.sta.abo.bbox.fr.
- [176.171.219.76]) by smtp.gmail.com with ESMTPSA id
- r6-20020a5d6946000000b00318147fd2d3sm11326018wrw.41.2023.10.24.23.53.55
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 24 Oct 2023 23:53:56 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
-Subject: [PATCH 06/10] hw/arm/fsl-imx6: Remove 'hw/arm/boot.h' from header
-Date: Wed, 25 Oct 2023 08:53:12 +0200
-Message-ID: <20231025065316.56817-7-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231025065316.56817-1-philmd@linaro.org>
-References: <20231025065316.56817-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
+ id 1qvXyT-00029B-NV; Wed, 25 Oct 2023 03:06:41 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
+ id 1qvXyR-0000nc-7K; Wed, 25 Oct 2023 03:06:41 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SFg2d3CKXz4wx5;
+ Wed, 25 Oct 2023 18:06:33 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SFg2W07rWz4wd2;
+ Wed, 25 Oct 2023 18:06:26 +1100 (AEDT)
+Message-ID: <658fbd73-51b1-4f10-8219-f771525cbd8f@kaod.org>
+Date: Wed, 25 Oct 2023 09:06:25 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/11] hw/arm/aspeed: Extract code common to all boards to
+ a common file
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
+References: <20231024162423.40206-1-philmd@linaro.org>
+ <20231024162423.40206-2-philmd@linaro.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20231024162423.40206-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=4l40=GH=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qpK865cT41AD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KI7W4KOjmmmj
 
-"hw/arm/boot.h" is only required on the source file.
+On 10/24/23 18:24, Philippe Mathieu-Daudé wrote:
+> aspeed_soc.c contains definitions specific to the AST2400
+> and AST2500 SoCs, but also some definitions for other AST
+> SoCs: move them to a common file.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/arm/fsl-imx6.h | 1 -
- hw/arm/sabrelite.c        | 1 +
- 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 5b4d48da08..519b871014 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -17,7 +17,6 @@
- #ifndef FSL_IMX6_H
- #define FSL_IMX6_H
- 
--#include "hw/arm/boot.h"
- #include "hw/cpu/a9mpcore.h"
- #include "hw/misc/imx6_ccm.h"
- #include "hw/misc/imx6_src.h"
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 41191245b8..56f184b9ae 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -13,6 +13,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/arm/fsl-imx6.h"
-+#include "hw/arm/boot.h"
- #include "hw/boards.h"
- #include "hw/qdev-properties.h"
- #include "qemu/error-report.h"
--- 
-2.41.0
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/arm/aspeed_soc.c        |  96 -------------------------------
+>   hw/arm/aspeed_soc_common.c | 114 +++++++++++++++++++++++++++++++++++++
+>   hw/arm/meson.build         |   1 +
+>   3 files changed, 115 insertions(+), 96 deletions(-)
+>   create mode 100644 hw/arm/aspeed_soc_common.c
+> 
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index bf22258de9..f6c2ead4ac 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -585,99 +585,3 @@ static void aspeed_soc_register_types(void)
+>   };
+>   
+>   type_init(aspeed_soc_register_types);
+> -
+> -qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+> -{
+> -    return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
+> -}
+> -
+> -bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
+> -{
+> -    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> -    SerialMM *smm;
+> -
+> -    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> -        smm = &s->uart[i];
+> -
+> -        /* Chardev property is set by the machine. */
+> -        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+> -        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
+> -        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
+> -        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+> -        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
+> -            return false;
+> -        }
+> -
+> -        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
+> -        aspeed_mmio_map(s, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
+> -    }
+> -
+> -    return true;
+> -}
+> -
+> -void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
+> -{
+> -    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> -    int i = dev - ASPEED_DEV_UART1;
+> -
+> -    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
+> -    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
+> -}
+> -
+> -/*
+> - * SDMC should be realized first to get correct RAM size and max size
+> - * values
+> - */
+> -bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
+> -{
+> -    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> -    ram_addr_t ram_size, max_ram_size;
+> -
+> -    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
+> -                                        &error_abort);
+> -    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
+> -                                            &error_abort);
+> -
+> -    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
+> -                       max_ram_size);
+> -    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
+> -
+> -    /*
+> -     * Add a memory region beyond the RAM region to let firmwares scan
+> -     * the address space with load/store and guess how much RAM the
+> -     * SoC has.
+> -     */
+> -    if (ram_size < max_ram_size) {
+> -        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
+> -
+> -        qdev_prop_set_string(dev, "name", "ram-empty");
+> -        qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
+> -        if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
+> -            return false;
+> -        }
+> -
+> -        memory_region_add_subregion_overlap(&s->dram_container, ram_size,
+> -                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
+> -    }
+> -
+> -    memory_region_add_subregion(s->memory,
+> -                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
+> -    return true;
+> -}
+> -
+> -void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr)
+> -{
+> -    memory_region_add_subregion(s->memory, addr,
+> -                                sysbus_mmio_get_region(dev, n));
+> -}
+> -
+> -void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+> -                                   const char *name, hwaddr addr, uint64_t size)
+> -{
+> -    qdev_prop_set_string(DEVICE(dev), "name", name);
+> -    qdev_prop_set_uint64(DEVICE(dev), "size", size);
+> -    sysbus_realize(dev, &error_abort);
+> -
+> -    memory_region_add_subregion_overlap(s->memory, addr,
+> -                                        sysbus_mmio_get_region(dev, 0), -1000);
+> -}
+> diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
+> new file mode 100644
+> index 0000000000..a43f5d2a6f
+> --- /dev/null
+> +++ b/hw/arm/aspeed_soc_common.c
+> @@ -0,0 +1,114 @@
+> +/*
+> + * ASPEED SoC family
+> + *
+> + * Andrew Jeffery <andrew@aj.id.au>
+> + * Jeremy Kerr <jk@ozlabs.org>
+> + *
+> + * Copyright 2016 IBM Corp.
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/misc/unimp.h"
+> +#include "hw/arm/aspeed_soc.h"
+> +#include "hw/char/serial.h"
+> +
+> +
+> +qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev)
+> +{
+> +    return ASPEED_SOC_GET_CLASS(s)->get_irq(s, dev);
+> +}
+> +
+> +bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
+> +{
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    SerialMM *smm;
+> +
+> +    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
+> +        smm = &s->uart[i];
+> +
+> +        /* Chardev property is set by the machine. */
+> +        qdev_prop_set_uint8(DEVICE(smm), "regshift", 2);
+> +        qdev_prop_set_uint32(DEVICE(smm), "baudbase", 38400);
+> +        qdev_set_legacy_instance_id(DEVICE(smm), sc->memmap[uart], 2);
+> +        qdev_prop_set_uint8(DEVICE(smm), "endianness", DEVICE_LITTLE_ENDIAN);
+> +        if (!sysbus_realize(SYS_BUS_DEVICE(smm), errp)) {
+> +            return false;
+> +        }
+> +
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(smm), 0, aspeed_soc_get_irq(s, uart));
+> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(smm), 0, sc->memmap[uart]);
+> +    }
+> +
+> +    return true;
+> +}
+> +
+> +void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
+> +{
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    int i = dev - ASPEED_DEV_UART1;
+> +
+> +    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
+> +    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
+> +}
+> +
+> +/*
+> + * SDMC should be realized first to get correct RAM size and max size
+> + * values
+> + */
+> +bool aspeed_soc_dram_init(AspeedSoCState *s, Error **errp)
+> +{
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +    ram_addr_t ram_size, max_ram_size;
+> +
+> +    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
+> +                                        &error_abort);
+> +    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
+> +                                            &error_abort);
+> +
+> +    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
+> +                       max_ram_size);
+> +    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
+> +
+> +    /*
+> +     * Add a memory region beyond the RAM region to let firmwares scan
+> +     * the address space with load/store and guess how much RAM the
+> +     * SoC has.
+> +     */
+> +    if (ram_size < max_ram_size) {
+> +        DeviceState *dev = qdev_new(TYPE_UNIMPLEMENTED_DEVICE);
+> +
+> +        qdev_prop_set_string(dev, "name", "ram-empty");
+> +        qdev_prop_set_uint64(dev, "size", max_ram_size  - ram_size);
+> +        if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), errp)) {
+> +            return false;
+> +        }
+> +
+> +        memory_region_add_subregion_overlap(&s->dram_container, ram_size,
+> +                      sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0), -1000);
+> +    }
+> +
+> +    memory_region_add_subregion(s->memory,
+> +                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
+> +    return true;
+> +}
+> +
+> +void aspeed_mmio_map(AspeedSoCState *s, SysBusDevice *dev, int n, hwaddr addr)
+> +{
+> +    memory_region_add_subregion(s->memory, addr,
+> +                                sysbus_mmio_get_region(dev, n));
+> +}
+> +
+> +void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
+> +                                   const char *name, hwaddr addr, uint64_t size)
+> +{
+> +    qdev_prop_set_string(DEVICE(dev), "name", name);
+> +    qdev_prop_set_uint64(DEVICE(dev), "size", size);
+> +    sysbus_realize(dev, &error_abort);
+> +
+> +    memory_region_add_subregion_overlap(s->memory, addr,
+> +                                        sysbus_mmio_get_region(dev, 0), -1000);
+> +}
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index a6feaf1af9..42e7aa36f3 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -50,6 +50,7 @@ arm_ss.add(when: 'CONFIG_FSL_IMX6', if_true: files('fsl-imx6.c'))
+>   arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+>     'aspeed_soc.c',
+>     'aspeed.c',
+> +  'aspeed_soc_common.c',
+>     'aspeed_ast2600.c',
+>     'aspeed_ast10x0.c',
+>     'aspeed_eeprom.c',
 

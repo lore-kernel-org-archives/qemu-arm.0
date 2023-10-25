@@ -1,280 +1,263 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2509108ejb;
-        Tue, 24 Oct 2023 22:28:54 -0700 (PDT)
-X-Received: by 2002:a05:6808:198a:b0:3b2:ec06:7061 with SMTP id bj10-20020a056808198a00b003b2ec067061mr18048152oib.14.1698211734454;
-        Tue, 24 Oct 2023 22:28:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698211734; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2533957ejb;
+        Tue, 24 Oct 2023 23:35:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGRp7LUwXiFHzNDsuNDe+ln3eGdrxxXY62ntCP9Hkn0QU42lRU4lIuzcZ9WLP74fT86Zbk7
+X-Received: by 2002:a05:6000:12cb:b0:32d:d2ef:b0b6 with SMTP id l11-20020a05600012cb00b0032dd2efb0b6mr9420522wrx.23.1698215753778;
+        Tue, 24 Oct 2023 23:35:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698215753; cv=none;
         d=google.com; s=arc-20160816;
-        b=yX6BZI/4qSibrc7UqZkcR8hnrAY6imOXthVIB2Cy2XmW+BBRy0luvEma/eArS3mkyc
-         nLPBqVdTPEfjyE64SF0+WZEVK0ic1SlHAaEj7Gn0VCeGdvj/o6aCUSnjZR3+OVMlHJq2
-         jMDilF/mF2Un9s/FCy9p9WfhNeiAR9H8tzL1xgS3qiIz4GEhS5KkDHmUbwlxLy64ZPLk
-         /pcYiFX4h3ZXF7ZULMv7jntPSeR+qUtI30wUkpQXbVwQm/nqE4C9kXVH8w2RaLOjk0SE
-         7qXmemYgd3ASBoqYlRf0WRa63pFUDDrOqzFO1Cq57Usyl1ALDSVVYQQkrip8e5S/NBHf
-         FnAA==
+        b=bg3w4CbVDdso5ZGZDe36w59D3w/WmLzTQPCJh6ztrYyDHuAMlEQ5nyeJE8X3VQTu2X
+         H98Y1OsScAlHEVf15yUToWfaRBJ8YAdQZW5NQZCWBuc3mUt3hqEvjETSlD/zj66/T5nl
+         2C+ZFfN93QtWOFG+F1l6xr+ymy1+3VEXpxr7xugdH+VdNSk01ueLXA9jbdo4TLJEs52M
+         LR+o2Rwi7hlb60sViShyPkWSl+bPMo9ifii5vJTYe/sSILQYBU4KtSDdIFD5CR+eZ0cH
+         sEO/5UZ97oPHc4VdYbRGqEbRCGVTEZQqd9NGGS5VRYTOWPiKrZElsSpSin2Qm+6717n4
+         R7Xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xS/23XQTZSBycxyMSA8/+0KJZ6Uf9fRlK5j+e680Bxo=;
-        fh=WA5Ih+z6Ze7tQYrjkp5FJyvVwB6osmNafM1nTpBVX90=;
-        b=OxWrEr+OeEkUav1NT8wfPogcTcm8q55NeNS8ulKQ+9aVTqH8l4Hnv6waumafu/iArB
-         VyvBUn5k4REoRxiaey3g4VvhG3eSiLjY8zIq4mynq8iCM2Q7kR/V5BKqSWutYE2jaQi0
-         wuL0w8ubuIyEXWJ00d9AsFocJ0xWP7jtt46gvMiFCECD+Gi8jEnKs03M3BmHxMZhoWj0
-         pB9TcLYEmjSkHldfNAdcVXTLxhloTrzA6Fhsqyi44E0oA7g56t41irM8ODebaoeyQdfH
-         hLFi5Zz5AtpQ1YYVPkSIz1SIXQGarXqNkS5zURGns3dubaGTNasUnJSO3NPQRY//G8lM
-         IG4g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=THnpO1jltEkUe0+XHN2M3L1CnQJSmQxbjXJrKUtUHEI=;
+        fh=0SwnxTk/kH/eCu4S7mbtHkWoZOqjr8yjdh6t+AwknJ0=;
+        b=jLFgQZPcMFgvEw8WyYVHFtMAGmvDVRVI+cYKQ56pmWShKIKyL/Lk0kNHtR6O3b7c93
+         F4zuM6vlQFoIn3AsLLrrTPcFD8907oowi4SspRXPYpO9faf+XSbYJ/0YY2kVcb0l/SV5
+         wa1Yj8SVB2iRXUOE4m/AvW4Qh81CcxBjIa4ygLA8mfhhs8AG78dNJe/BvAohVHSolzAF
+         GTa7Uh9tYiMgYJT4mOW17qGvHa5Ce/P5hjdFJMs/zI8IkucwQM0HEEPvjYNWITUnkcti
+         MQFKZI7Zg1AMqRXmGaxdDhdlNTTl4NoDAk2PbP9kuPtygvbyDCdcb5Cpwec1S96IF5/k
+         WyQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=NGuFTNBq;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z8-20020a544588000000b003afb1c8fe61sor6473544oib.17.2023.10.24.22.28.54
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VO6sA80D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o1-20020adfcf01000000b0032d8894feeasi6843511wrj.1041.2023.10.24.23.35.53
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 24 Oct 2023 22:28:54 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 24 Oct 2023 23:35:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=NGuFTNBq;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1698211734; x=1698816534; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xS/23XQTZSBycxyMSA8/+0KJZ6Uf9fRlK5j+e680Bxo=;
-        b=NGuFTNBqv83qBCXSvsrBDyFFklMBq+kXMKyeP0qs+X7DoKsaPulyGDoV1r+Rd6J6Os
-         okW/maUp8EEwLT4pDjqieudmp5dL3EGyLm090jSa9KeqCo+6/pPKPQi9J38aUhBo4Pdr
-         RIVhUYolSJi+A4SfjULTF6IKD5GST7+R3KhCvbH23x9qWbQqSTSpU1fm2A8ORAnPtRku
-         9yxuozDHNvo4de48CZY5Uu34RImN6Myx59ZH2MAZl4Jn39DFgTLrvOxJKLj6My44ooUK
-         +EJYrvanauL+o3mT69k31OlnTotZKUfrDujvWaLRi60me81XUkooC4M++jHJfoLapwjw
-         K7ow==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VO6sA80D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qvXUM-0006kC-6d; Wed, 25 Oct 2023 02:35:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvXUH-0006f5-ES
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 02:35:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvXUA-0003L1-78
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 02:35:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698215720;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=THnpO1jltEkUe0+XHN2M3L1CnQJSmQxbjXJrKUtUHEI=;
+ b=VO6sA80Dbh1utmMOx8k5ovaZx33qd+QYZF1ys5HUZftStHI7jCfYfvWpAWzjiu7a2IpY6j
+ UH39gLBSdOzR73ziyNUg/GxhRdW53fXEZ9wVTLEffP44Z6Gyb8HOTmELbTErt60mcq7lns
+ uVaYmbS4FkEBPZh2jgcaHwtHqaqFGWM=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-373-0Yg0j8vNPeurs0piXmMx-g-1; Wed, 25 Oct 2023 02:35:18 -0400
+X-MC-Unique: 0Yg0j8vNPeurs0piXmMx-g-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-9ae57d8b502so323015466b.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Oct 2023 23:35:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698211734; x=1698816534;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xS/23XQTZSBycxyMSA8/+0KJZ6Uf9fRlK5j+e680Bxo=;
-        b=tnAyGxXrBdmfQrAkQZ52WZDiGCQRFz3K1fwx8psBacshoXTJzeytWPcLIwaYcFDqnb
-         G15t5Mfy9dvZUHdSpOLGCKEEbvsrwm3aLkJzR2b9IKgKDtowNs5hNKuaZWm3qch7Dats
-         DKO1mzRSwazxH6WKvcbsWi5fijmtAjY2xYv1U3d+Ni/QbuvNaD8QtGi052le7vX0V4sY
-         N6bWO24AEc09NVr1P5rGUeXP75oeGDqqTgneYSAuhX0Shwb7xCzDLQL4z6LXv4KeSjy+
-         YfjczVKf2oNMWgbWt6mVFvf2nW3YZHBiEPqVexSCVUTanO1cLCZWDNlfzNt6paUZhGRA
-         D01w==
-X-Gm-Message-State: AOJu0YxLe+cnw4H5xRwV+vG8gBed/hzaomFHnyHjrO/GDPIGikgfHKwi
-	UErKpGuAOpSw6OChcHuJpYVQQMVzerEwVqbJjHSONA==
-X-Google-Smtp-Source: AGHT+IGa1jtVd3Tn8PHuDYL6+xmFOLPqTHl0+jcjywodVQREtPhA1eajOU8CJ8tYZIRolMe0WKnSeA==
-X-Received: by 2002:a05:6359:6006:b0:168:e04f:3e0c with SMTP id rw6-20020a056359600600b00168e04f3e0cmr6660432rwb.11.1698211733788;
-        Tue, 24 Oct 2023 22:28:53 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([157.82.204.207])
-        by smtp.gmail.com with UTF8SMTPSA id 22-20020a631256000000b00528db73ed70sm8121439pgs.3.2023.10.24.22.28.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Oct 2023 22:28:52 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org
-Subject: [PATCH v15 12/19] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Wed, 25 Oct 2023 14:27:34 +0900
-Message-ID: <20231025052744.20697-13-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231025052744.20697-1-akihiko.odaki@daynix.com>
-References: <20231025052744.20697-1-akihiko.odaki@daynix.com>
+ d=1e100.net; s=20230601; t=1698215717; x=1698820517;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=THnpO1jltEkUe0+XHN2M3L1CnQJSmQxbjXJrKUtUHEI=;
+ b=t6SwTQ2de98V1LsXAms+ncP65MzVUUM1M8adJbGbO7g9h4B0+8xqSbrOvCI6IsulXt
+ wbz+gd/39F1i57AL7OXzHqWXEmEnHxIjcY5HRQV2ZO1O32w2bGgyHrR/m7S0XY7Fj55Q
+ zotS8ArbX4YvZ9k7OhpuVSf4fVsAEGJ70Righy8/s5DaluJVzGscO6+xOvJh4y9wIncz
+ GhisjSnPyaoPMqDkf4g7JYcQvxfFs0ww50r2tC52A2LjaLh3OYDl5sXkH+st9F/4dLn6
+ plDZd6tmRBlPVDhRKUWbwroHmibmO20veCQ7QQIiczHIBh2Dev+Q/wHfcQo5/J2LyTN3
+ CuFw==
+X-Gm-Message-State: AOJu0YxO8wh9e1kVrMxnxsdbQRNVcUKjvqNyZHWqj47RA0zQeajgxQm5
+ wopsYhBogKv618ckgoiLYhURdETNmVV1i4THLBhKENDBpWM6hcmmmDTXoW3mbkqEQAfGF5W64mq
+ cgoOzAJN137tx
+X-Received: by 2002:a17:907:724d:b0:9bd:b8d0:c099 with SMTP id
+ ds13-20020a170907724d00b009bdb8d0c099mr9866705ejc.6.1698215717775; 
+ Tue, 24 Oct 2023 23:35:17 -0700 (PDT)
+X-Received: by 2002:a17:907:724d:b0:9bd:b8d0:c099 with SMTP id
+ ds13-20020a170907724d00b009bdb8d0c099mr9866683ejc.6.1698215717472; 
+ Tue, 24 Oct 2023 23:35:17 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-176-238.web.vodafone.de.
+ [109.43.176.238]) by smtp.gmail.com with ESMTPSA id
+ hv6-20020a17090760c600b00992f2befcbcsm9360510ejc.180.2023.10.24.23.35.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Oct 2023 23:35:16 -0700 (PDT)
+Message-ID: <63a485f6-5a5a-46a6-9b19-4b32468a94cb@redhat.com>
+Date: Wed, 25 Oct 2023 08:35:13 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 01/19] build-sys: add a "pixman" feature
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, qemu-ppc@nongnu.org, Gerd Hoffmann
+ <kraxel@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20231023113047.2572137-1-marcandre.lureau@redhat.com>
+ <20231023113047.2572137-2-marcandre.lureau@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20231023113047.2572137-2-marcandre.lureau@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 2wwOt8Z1oqFg
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 31lpaMxl/FCf
 
-This function is no longer used.
+On 23/10/2023 13.30, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+> For now, pixman is mandatory, but we set config_host.h and Kconfig.
+> Once compilation is fixed, "pixman" will become actually optional.
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   meson.build                   | 10 ++++++++--
+>   include/ui/qemu-pixman.h      |  2 ++
+>   Kconfig.host                  |  3 +++
+>   meson_options.txt             |  2 ++
+>   scripts/meson-buildoptions.sh |  3 +++
+>   5 files changed, 18 insertions(+), 2 deletions(-)
+> 
+> diff --git a/meson.build b/meson.build
+> index 4961c82a6b..395d7155f6 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -813,10 +813,14 @@ if 'ust' in get_option('trace_backends')
+>                        method: 'pkg-config')
+>   endif
+>   pixman = not_found
+> -if have_system or have_tools
+> -  pixman = dependency('pixman-1', required: have_system, version:'>=0.21.8',
+> +if not get_option('pixman').auto() or have_system or have_tools
+> +  pixman = dependency('pixman-1', required: get_option('pixman'), version:'>=0.21.8',
+>                         method: 'pkg-config')
+>   endif
+> +if not pixman.found() and (have_system or have_tools)
+> +  error('FIXME: pixman is currently required')
+> +endif
+> +
+>   zlib = dependency('zlib', required: true)
+>   
+>   libaio = not_found
+> @@ -2125,6 +2129,7 @@ config_host_data.set('CONFIG_SECCOMP', seccomp.found())
+>   if seccomp.found()
+>     config_host_data.set('CONFIG_SECCOMP_SYSRAWRC', seccomp_has_sysrawrc)
+>   endif
+> +config_host_data.set('CONFIG_PIXMAN', pixman.found())
+>   config_host_data.set('CONFIG_SNAPPY', snappy.found())
+>   config_host_data.set('CONFIG_SOLARIS', targetos == 'sunos')
+>   if get_option('tcg').allowed()
+> @@ -2843,6 +2848,7 @@ have_ivshmem = config_host_data.get('CONFIG_EVENTFD')
+>   host_kconfig = \
+>     (get_option('fuzzing') ? ['CONFIG_FUZZ=y'] : []) + \
+>     (have_tpm ? ['CONFIG_TPM=y'] : []) + \
+> +  (pixman.found() ? ['CONFIG_PIXMAN=y'] : []) + \
+>     (spice.found() ? ['CONFIG_SPICE=y'] : []) + \
+>     (have_ivshmem ? ['CONFIG_IVSHMEM=y'] : []) + \
+>     (opengl.found() ? ['CONFIG_OPENGL=y'] : []) + \
+> diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
+> index e587c48b1f..d37feb5e3c 100644
+> --- a/include/ui/qemu-pixman.h
+> +++ b/include/ui/qemu-pixman.h
+> @@ -6,11 +6,13 @@
+>   #ifndef QEMU_PIXMAN_H
+>   #define QEMU_PIXMAN_H
+>   
+> +#ifdef CONFIG_PIXMAN
+>   /* pixman-0.16.0 headers have a redundant declaration */
+>   #pragma GCC diagnostic push
+>   #pragma GCC diagnostic ignored "-Wredundant-decls"
+>   #include <pixman.h>
+>   #pragma GCC diagnostic pop
+> +#endif
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
+Since we already require pixman 0.21, I wonder whether we still need these 
+pragmas .... anyway, removing it would be something for another patch, so 
+for this one:
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 11d4b5cd0c..d2e70643f2 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -134,9 +134,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -167,7 +164,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 3702ddaab8..0e4f1d7d0c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1137,12 +1137,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 848062bc9f..650e6ece70 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1384,7 +1384,6 @@ int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 6d9bf6a14e..e7fe11339b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2392,7 +2392,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 8d771c5d46..3de9d23079 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -473,24 +473,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index a0178c3ce8..909d753b02 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7380,9 +7380,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 8ca37b6bf9..f47878a67b 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -342,16 +342,6 @@ static void gdb_gen_spr_feature(CPUState *cs)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 3ee1e6ae03..ace400db1c 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1427,19 +1427,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -1593,7 +1580,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
-                               cpu_set_mvendorid, NULL, NULL);
--- 
-2.42.0
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+

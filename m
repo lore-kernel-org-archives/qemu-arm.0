@@ -1,138 +1,138 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2593497ejb;
-        Wed, 25 Oct 2023 02:02:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFdP/Lt4VchTYFShTtAyGW1tsaY2UVDlXv1iMA4Bz0qAZeWOaado6HiCbwQQ/LaQdCsU7VM
-X-Received: by 2002:adf:f68f:0:b0:32d:9e13:1bca with SMTP id v15-20020adff68f000000b0032d9e131bcamr10640089wrp.27.1698224529590;
-        Wed, 25 Oct 2023 02:02:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698224529; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2601988ejb;
+        Wed, 25 Oct 2023 02:17:31 -0700 (PDT)
+X-Received: by 2002:a05:651c:1c4:b0:2c4:f768:c6ee with SMTP id d4-20020a05651c01c400b002c4f768c6eemr10187903ljn.19.1698225451469;
+        Wed, 25 Oct 2023 02:17:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698225451; cv=none;
         d=google.com; s=arc-20160816;
-        b=s3DJYDE/9Lf+xvfjav8myX5dqqW8TCRBj4NYkO7Eiadvd6Cs6dI+ONPt7CupUjz6DS
-         cb6g+VEb+0qLRWXyVDBqWi8Y023qXifoLVcEMSpw+Ui7nnIQGfsSGz155t91OFVenYID
-         tED48QROjaMjP08n0g74cEjdaHC317Bu/jlK5x0P0t6PldTtVeRP0c1FZwOFmUMX1fu9
-         m70/HCg6I1HUeuzDveykOVNDr7kGSZMAzkvTUh9KJ9i8yZZGwSQ9eU3eaplEyawvYuvF
-         zA8PmCAOrh83gpq7LxsFAQojsT1CqwVwb37vJ2vG+0ntFLA1HwKRWCe+DuRREQTVfElg
-         ZfCQ==
+        b=E986WJrO7yR4wpvDC/hC60qHP7S68NFAqLl/2A8SP9Xxz97sT5O4Br0YLIEx8rpzJD
+         m+1eo3trdQ9xa5CMWOoSVFFy/yWyydXzY2ErZcmGoV/tksg/O7I5nXeplctB4iS9NMKh
+         CJold5fmAPpe9ztWewpsZVCwHhs5+RH267b9rIpoynmYCmq2v7klCfcrh/g7pWlX+ZE9
+         f6NC79SNW37GWi3kIYfMYfv1Z/rFSHYaiIMPdyx7yOtLVmgw0NZcw6nLN2+bJxIj0ERL
+         zjOYxVNVd8RBbbFnjpRMOz/5f++DHaBA+zPsfMn6EJHcgnZvWwMKVoSek0pehxZvn3qK
+         q2WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=0uD0KVJq+dJcbbQ8RmRBgAFk1waL97XSi4IS4aQx+HE=;
-        fh=2AKgK1B3EYiX6882ovZW+CwIStVbar5zReCRX1lYnfY=;
-        b=uhzOyHAhRygIHPnAJutkkHIr0KD3hH2MY01xdeV79EdPnffTpRmueOQbKV6rI/Eykv
-         Zzeyl6iDxXm8sUHiZ6uXsZt7+ynm9T+iuVW4vJVK8uxD2U2UG1+9M2ry2Qmon/Sj9opf
-         et+2h+oMj9gDDw+Oe6ars9xPxkP7SAe/8PafAe5GOuEpq3sDzJAmyXHzT94gto8UYCb4
-         rSuIsFaD/BP9Zy0EVzB6jPK3lN1wAMNsa5Ey9IV/1FfIOOXLNQpQCLaOwvEUIdrqJBc0
-         FRsvqJBgcAZSxOtGBc3GFHDo2Guq2HEy9TgfY1niWcUxzNc1EMcPMzG6kTRCqzgvORUb
-         FLIA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=zT/r30Ujd+ELUU/7Pv792UL3pTWDRgtNZUNpUq2d2eU=;
+        fh=h4APDBVmkEuJk0kArkckqp42lnCJbzubsNpkppVKQbg=;
+        b=ldNB6MV46EsUWlM5zgWYPelmBkbxPczSuMOzNSaI9eGzLxl7aHlqIbcwj46FhoEtdU
+         7Y/fTH+vaBex+zu6v3h0nWAY63obloCBhnJUOZLGMYmQZ4ndZO1NRb0Zztd/a8738fIz
+         pHhtn1CcYaaysT3ol+7Dkqma6YwudbHqjNiejtS3SOqi88UG76bKpCtpDlFnOVNfDP5E
+         DE5J/VOo97p1f4S/Rf1tk+b4nnpC4jDy/Xt4VI8OtF0IWEe0Dp5DAZMXtLzdQEGMXRvf
+         C6WCPm4gXcjz7hCPJxVBbNZrVC9XnhWsEMwSaflOWOPnlPa4jUNJUnzR0G4e38C9EBWy
+         R92w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs4-20020a056000070400b0032d9df9acd3si7287178wrb.633.2023.10.25.02.02.09
+       dkim=pass header.i=@linaro.org header.s=google header.b=wnlvkJRu;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x6-20020a05651c104600b002c187b3843csor3300324ljm.8.2023.10.25.02.17.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 02:02:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 25 Oct 2023 02:17:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qvZkT-00007r-Co; Wed, 25 Oct 2023 05:00:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
- id 1qvZk9-0008Eg-83; Wed, 25 Oct 2023 05:00:05 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=4l40=GH=kaod.org=clg@ozlabs.org>)
- id 1qvZjv-0004U0-AQ; Wed, 25 Oct 2023 05:00:00 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SFjYG2Vjzz4wd0;
- Wed, 25 Oct 2023 19:59:46 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SFjYD5j1cz4wnw;
- Wed, 25 Oct 2023 19:59:44 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 09/12] hw/arm/aspeed: Check 'memory' link is set in common
- aspeed_soc_realize
-Date: Wed, 25 Oct 2023 10:59:18 +0200
-Message-ID: <20231025085921.733686-10-clg@kaod.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231025085921.733686-1-clg@kaod.org>
-References: <20231025085921.733686-1-clg@kaod.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=wnlvkJRu;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1698225451; x=1698830251; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=zT/r30Ujd+ELUU/7Pv792UL3pTWDRgtNZUNpUq2d2eU=;
+        b=wnlvkJRuKT8KkTyg1/WzpMMG4VKtqP88jdTUVcy6syVbF54nQ9+JDn39XZdglnJoCc
+         k1IVhL2dLFA5RA7fxp20SM3DE7k2k73kZRFz3//URkFnjc0TCXr4fG2tvP+8nB0x9nCj
+         jayI7bCyTu0miUL5C6N/eCOC3/TgzngQv9zXNR/uuC+6ylvQeNTIYanl8CNdvdM4boT5
+         cldtRPGYvprKzbdxmKGskoAxYhLMsbCfxEVNjsCdJWELrujkCU28KXSFF8vK7c4f0dqR
+         OGUCv5USZALPj3JjqL4QpDH1JnwdT8AbbkILm5oco5+wcJLApfZUbn5VV9nXdS3iL6g3
+         NIRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698225451; x=1698830251;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zT/r30Ujd+ELUU/7Pv792UL3pTWDRgtNZUNpUq2d2eU=;
+        b=eJqCHiqeMFEOHVHczfWnnJgXM/x8HJpdI9T8pRwB3xBB4KPzq2BmurWJ0WpxvQ/wo8
+         FOshtz6AQmwNOqxfY5/k5i4kjAnrGYcziJMtJ3XbarWrrHZcAr0hMF3bVYRo3v6ClJA6
+         mRdVjjyYg3kAImh/mzR0wi46xI24LnKIUKTle33Anu12V82UOgsZtlzdETpBu276Sm5q
+         9IpdMa7vID2HqYnPN2EnqlRfeToLFJCZp0goJoOVmF55EIACkUHjKWDU5hSMiypnsqTE
+         ePwG2g9zACLQYFSRoiEhPihK8/CopfuwLTYBUw5E5De51XKtzBEhqoGSES8YiC/FoqIZ
+         vEFg==
+X-Gm-Message-State: AOJu0YxPbroxcc2JyWWLiqicRrQKiahB0rajZGLu0e1XZK8hmX51jUDB
+	wH7VCgSXM5c3aDfTJapUgIP9GokJXDPZPoCj+IQ26A==
+X-Google-Smtp-Source: AGHT+IHmcrJudfTqlFcNpOS3NR61cAh/+K78fSCeUf+dvBCZcULQX1AuDWNl+PnpMAeGkv3BpycrAQ==
+X-Received: by 2002:a2e:9f45:0:b0:2c5:f8e:35cf with SMTP id v5-20020a2e9f45000000b002c50f8e35cfmr10656674ljk.20.1698225451032;
+        Wed, 25 Oct 2023 02:17:31 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (ghy59-h01-176-171-219-76.dsl.sta.abo.bbox.fr. [176.171.219.76])
+        by smtp.gmail.com with ESMTPSA id dl11-20020a0560000b8b00b0032da4f70756sm11649942wrb.5.2023.10.25.02.17.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Oct 2023 02:17:30 -0700 (PDT)
+Message-ID: <608d8f04-5458-125c-3fa0-9296dfecc9fc@linaro.org>
+Date: Wed, 25 Oct 2023 11:17:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 00/11] hw/arm/aspeed: Split AspeedSoCState per
+ 2400/2600/10x0
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20231024162423.40206-1-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231024162423.40206-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=4l40=GH=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cqJulfOxHxw0
+X-TUID: ruKg/MunQUbp
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On 24/10/23 18:24, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> This series is extracted for a bigger work.
+> 
+> Cortex-A MP clusters (TYPE_A15MPCORE_PRIV) should create
+> the ARM cores in its own state. Unfortunately we don't do
+> it that way, and this model calls qemu_get_cpu().
+> 
+> In order to remove the qemu_get_cpu() call there, we first
+> need to rework some SoC users.
+> 
+> This series rework the Aspeed SoC state, so it is clear
+> what fields are really used by a SoC type (2400 / 2600 /
+> 10x0). It will then be easier to have the MP cluster create
+> the core instances.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed_soc_common.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Being a bit more verbose, as I was trying to explain to Cédric
+on IRC.
 
-diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-index b66f769d1807..828f61093bfa 100644
---- a/hw/arm/aspeed_soc_common.c
-+++ b/hw/arm/aspeed_soc_common.c
-@@ -114,6 +114,16 @@ void aspeed_mmio_map_unimplemented(AspeedSoCState *s, SysBusDevice *dev,
-                                         sysbus_mmio_get_region(dev, 0), -1000);
- }
- 
-+static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedSoCState *s = ASPEED_SOC(dev);
-+
-+    if (!s->memory) {
-+        error_setg(errp, "'memory' link is not set");
-+        return;
-+    }
-+}
-+
- static Property aspeed_soc_properties[] = {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-@@ -126,6 +136,7 @@ static void aspeed_soc_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-+    dc->realize = aspeed_soc_realize;
-     device_class_set_props(dc, aspeed_soc_properties);
- }
- 
--- 
-2.41.0
+The fby35 machine creates 2 SoCs:
 
+static void fby35_init(MachineState *machine)
+{
+     Fby35State *s = FBY35(machine);
+
+     fby35_bmc_init(s);
+     fby35_bic_init(s);
+}
+
+- bmc is Aspeed2600 (A7 MPCORE)
+- bic is Aspeed10x0 (M7)
+
+If we were to create the bic before the bmc, as:
+
+static void fby35_init(MachineState *machine)
+{
+     Fby35State *s = FBY35(machine);
+
+     fby35_bic_init(s);
+     fby35_bmc_init(s);
+}
+
+then the MPCORE misbehave as it calls qemu_get_cpu(0) which
+returns the M7 from the bic.

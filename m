@@ -1,145 +1,119 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp3037949ejb;
-        Wed, 25 Oct 2023 14:25:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEXMzHRC4YXCYl2TI0kz7WgeTqdTfC918igSS9dMd8BY1YV6StTQbm9dvgpROHHgvl6qne9
-X-Received: by 2002:a50:9e64:0:b0:53e:29ac:b124 with SMTP id z91-20020a509e64000000b0053e29acb124mr11360510ede.39.1698269157230;
-        Wed, 25 Oct 2023 14:25:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1698269157; cv=pass;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp2629ejb;
+        Wed, 25 Oct 2023 16:24:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE693f09wSTNzXRLYS9sr9xNHcCLtprJTyn+03BwGeuawl5SaB4IwQV24Q3TpNaVyPNxgF1
+X-Received: by 2002:a05:620a:4bcc:b0:76f:1808:997c with SMTP id sw12-20020a05620a4bcc00b0076f1808997cmr14380949qkn.20.1698276265314;
+        Wed, 25 Oct 2023 16:24:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698276265; cv=none;
         d=google.com; s=arc-20160816;
-        b=kZbipHu48wX3wG1/gkj7k4tyYh6fDM8KWVjV5IdNLrbCKayoNHHx4NchBEcSk/ewA4
-         SVFB+9NN6y+G3INaWhwc8IDBL4ckDuclgksLj/0zSs2vaBXXNlJvlPeMULKO7jsXV7li
-         /jqoFUqtMZubgWBOh6AjTBWAu7IbO/wNF0/tO/7/jS5XjbuSonLdbaSvXg0JDcJt44pb
-         Dq6lhWRIlEBjzrC5/CJS1HQo/QpRjLD8VoPr7Sd1v5nMN08zYB4MEGAAhzoHrezel+4+
-         DHVRdg3EOa24NtiscGyPMxT6LQhkwoB6I04h03AJH1z1+kaxzbmKcEsbb+39iv2wOuIb
-         sCag==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ABtyeBMmMmXB2zhNhS8QVHnmIa0TbS16uyBVhQVccAbpssf4F7jHw7WUB8DHbRp9d7
+         RiAaQRHKyaJuGdZflEGUJhhGdU9ZHabJs9sdiiIPUccwsj85u4o3M5EMrG/u03Vs41oG
+         FoG+JMi6ISVLwgCh6/qEwlyLC+P1Pq89mHPHUMh29eCC8BVmHI+0lCYLizH1aLQCaJX3
+         nDBJfVusvxYgeFWPNooyFmqjDadijyXkbUjeQ77lsm4S7JQ9zzpfec+oXofdCsBhOBRB
+         aS98DkzKh2L1T8hIySBnlVph4i2SU9M6DukFm0ztx259ao8ribdAqkHdiMg+ofWfYNZA
+         hdcw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=o0vRH12HvDrrWbRTurt84ajWGVWm4j5M7aGxWb5eoY0=;
-        fh=9rZIbyARfJM4Md62O2JpaTklj+KcYSeSy8U9e9Oh0ec=;
-        b=aVTqHfqAw0AmOwQUPsuF+MbjYBhQwHv6AizW64/YxDF+mA+wdlweXG3xuSE8/lXnc/
-         MMtWAA0z+B5xSXj0nbAyXCYnMjrAZRzrjou26P74p0uruEzMOE4Wwat5KCrtTy3dPDOc
-         NmfLx1pCmjYp6ySwHvbIHlijX9EI2IgklVX8/R4qBwJd69v7jL5X3OFznb1y0S8HD5sE
-         3/4Yqh3i84gVqvmM265M3OXgzNhcyJI6NkOcg3sgXxpPgXD7o1KOp6PaXWK2NNMeUUse
-         Z9RxeaPIvBj7hKhrLks1vEdx5N6/n+w3fQYXBQgeVDYRoByN5PLW6K6yY5Ct18v4ZdrY
-         2d/Q==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=JucI7+OD;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=YzUOicqAHZtKpGRgbqgDSyXm04r78JXVYAf/cY5pEuk=;
+        fh=Yotxlv7i9DhHFBkiLZVQ32wCHU8YRC4EwVYmglY2ej8=;
+        b=SPn1bFrHMGvtHGWRnB6EZsZHhboSWYwxEWNorfIcBfZnVshBzqX2O5HoPVY4gPQkkJ
+         PgId7+MOkcfm1NdKrTupIgQRi0ewX4azg2FFqCS3eSVBu+nMW+JHx5Yu4lJxhmfHNuTP
+         +m1ivubcA1JlW0XTpCWDcVkQ5NbttoI1+/kKPlgjTaB8lBz3bueeEQVzTfxuwDtt9VLK
+         I81PqnUuafzDJU4+Kqmkfn+QlP1ZMZtv5xzjFOwhIqrX8KeFsTHiem6Hpzn6wVljUzgY
+         ApPeDGgKdYxUH2+qlEGRI0J5E485bGnFX+4gLkK2RC9leswk/VL13CXRr7wkN7W6mFID
+         P5Cw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KHLywVn8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j6-20020a05640211c600b0053ebe7dbdfbsi5849906edw.412.2023.10.25.14.25.57
+        by mx.google.com with ESMTPS id l4-20020a05620a28c400b0076801d54d1csi7970617qkp.642.2023.10.25.16.24.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 14:25:57 -0700 (PDT)
+        Wed, 25 Oct 2023 16:24:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=JucI7+OD;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=KHLywVn8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvlNV-0007Fu-91; Wed, 25 Oct 2023 17:25:27 -0400
+	id 1qvnE9-0000AO-L0; Wed, 25 Oct 2023 19:23:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1qvlMx-00073w-HW; Wed, 25 Oct 2023 17:24:55 -0400
-Received: from mail-dm3nam02on20628.outbound.protection.outlook.com
- ([2a01:111:f400:7e83::628]
- helo=NAM02-DM3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1qvlMu-0006Ti-9V; Wed, 25 Oct 2023 17:24:51 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fX0OzAFIpG0LQO6E7c4KIS16lzEJpGECwMWUl6WL86A5d3pcvK7plGZfUQKzoW8E//zurgASvwIlqn+fhnNyl9CP3WvDRyKh5sQ/5db1ZQ2SCEnQIskw4UldVKMvM7A2sLMYIjq9vwTXraLfbbDpBsBjULwJiVd0n53szjKD2PP4G7tZxanpvMNriAzf+5VsiZCLBtMHQkc0P8Kdz+Ib1dGImy4h8/0gKz6EW+J4FrIjTgip7JBxnHhOVOWOzcZo9W4AvUDj85iHrHHkMxLws3S6KN5h7yyotOwaa9jPlC0VvdDPOaTiTlIsIiSEc94NB1ujvImanXgw+u/N7+TGog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=o0vRH12HvDrrWbRTurt84ajWGVWm4j5M7aGxWb5eoY0=;
- b=fqOn+QDqpvNZvbevVs4CcwyqNqMWBsPxv+5A2c30w1uIZt6hh74dhYHgYRcKXaf3OqRslxJ2ipR7uoAPAqcqaDGUaErKBQaUBj3ZiNAGe6mMbQLaFkUG9PKHH4gZ9eX2RtySn/MLEn1VwrhMUqunzzN/5QbWfTQLeLCOyK2XUXascL69CQVFjFvT3YCNreL3wF+Kxy4F3er7xrPmY1rmx54jlVerF7UqCbgVzq+YNV1gQSKiCcLdBBeulvh4Y78xuWRDsCVa5W6EICFN/aATNJC0QF6ceJAmF08ZdW7cPZdM7fwlhq1aEv8B2+i/llSvtjuHwjb6UIgkpnD/4R3oYQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=o0vRH12HvDrrWbRTurt84ajWGVWm4j5M7aGxWb5eoY0=;
- b=JucI7+ODdh4amrklPfyIMOiR2G9B/eTBD2o595ymQudLanOy4bhsovNmRlAndD2wuHW1G5nXbW9yjA24AOEmcIyznMjA2zIBxHp3qveXaVCGIigC97bLmMqD16hHtidJ2LpZMtRzrjn3hrQjgEdth1qIZAyvx9vCDua4LWT1g+I=
-Received: from SN6PR04CA0093.namprd04.prod.outlook.com (2603:10b6:805:f2::34)
- by CH3PR12MB7593.namprd12.prod.outlook.com (2603:10b6:610:141::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Wed, 25 Oct
- 2023 21:24:44 +0000
-Received: from SN1PEPF0002BA50.namprd03.prod.outlook.com
- (2603:10b6:805:f2:cafe::3) by SN6PR04CA0093.outlook.office365.com
- (2603:10b6:805:f2::34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.19 via Frontend
- Transport; Wed, 25 Oct 2023 21:24:44 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- SN1PEPF0002BA50.mail.protection.outlook.com (10.167.242.73) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6933.15 via Frontend Transport; Wed, 25 Oct 2023 21:24:43 +0000
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Wed, 25 Oct
- 2023 16:24:40 -0500
-Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.32 via Frontend
- Transport; Wed, 25 Oct 2023 16:24:40 -0500
-From: Vikram Garhwal <vikram.garhwal@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: <sstabellini@kernel.org>, <vikram.garhwal@amd.com>, <jgross@suse.com>,
- Peter Maydell <peter.maydell@linaro.org>, "open list:ARM TCG CPUs"
- <qemu-arm@nongnu.org>
-Subject: [QEMU][PATCHv2 8/8] hw: arm: Add grant mapping.
-Date: Wed, 25 Oct 2023 14:24:21 -0700
-Message-ID: <20231025212422.30371-9-vikram.garhwal@amd.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20231025212422.30371-1-vikram.garhwal@amd.com>
-References: <20231025212422.30371-1-vikram.garhwal@amd.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qvnE7-00008D-MT
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 19:23:51 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qvnE4-0002oo-Jx
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 19:23:51 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-1ca72f8ff3aso2060305ad.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 16:23:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698276227; x=1698881027; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YzUOicqAHZtKpGRgbqgDSyXm04r78JXVYAf/cY5pEuk=;
+ b=KHLywVn8XWKE0rflxDh+I26tlshcJHJAwlpVtcUKynni6PmUOfPyhzsF+aH8JDu3dJ
+ 5RtwNqHhs1DSf8ehnajQR1z0ymI9314AvnusDbBcCFpCMAG6SG1d8XKOS7ntIVy2cCl9
+ r3mC56p07NvgrKq/ScIMwU5Pl/iGf7aOmDb2vuNjiLZ+JioslF/x4qxPLQx1V3MMCD6l
+ b3WGRSBHnt26M8HC/jY4FKfooSFhdgDl1KXJCqJqzLfaOj+jPksjoLtzsKgupH1BByvo
+ +gy7jtWTPbTGnZ/Vg9PYWg70qJhVIreOB6Rbjn8XYzvTXavJjjZYgaf1DenvFKHCCAOp
+ un6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698276227; x=1698881027;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YzUOicqAHZtKpGRgbqgDSyXm04r78JXVYAf/cY5pEuk=;
+ b=dirDTgVhThdP1nMZJ0uNozDtKEWDs8UzmM+r78xBw02kOb07uuwwjtZifzH2VRILDy
+ /NLj6IMkbH0d2Em6Csa3zDj+3+VkSub9mlYf4NppKxmjE8GamygR6vlUa7ipNWdzTX/c
+ qH03lLZ4RJjp3078C1/8giz7pVQvMEx4KP9pxieqE0Ds+BUaub2YTL/ttJZS5lYRcsXM
+ +p//wUk7yI+/Vbs9If70hu6tZNI3SuTCbpl+CjVws7NhKDrbPZkcJB2CvoLoYO++kwr8
+ XrP6gRD8xq/l5EAGy5uVsDlZvZQkd2RiYf0k2BVYR5DL5gs0fKRdVlEKzdjhlwUBa3f+
+ XuaQ==
+X-Gm-Message-State: AOJu0YwQQk4ZxYiGYQO7W5IRcD6vZM3cueBQt+OC/KEwxM/Dr1C/NoTo
+ IiW2650lnhDQQWHxJ9Vx4AupTf6qnyxidYrsBmI=
+X-Received: by 2002:a17:902:f988:b0:1c3:2df4:8791 with SMTP id
+ ky8-20020a170902f98800b001c32df48791mr13293281plb.27.1698276226918; 
+ Wed, 25 Oct 2023 16:23:46 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.149.95])
+ by smtp.gmail.com with ESMTPSA id
+ h13-20020a170902680d00b001c0de73564dsm9926456plk.205.2023.10.25.16.23.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Oct 2023 16:23:46 -0700 (PDT)
+Message-ID: <f4c07e08-fa8c-4876-9867-1ae661e290e2@linaro.org>
+Date: Wed, 25 Oct 2023 16:23:44 -0700
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN1PEPF0002BA50:EE_|CH3PR12MB7593:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0a47e5bb-babc-4206-b625-08dbd5a0cea5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: RZSRtCUwTGmXG/i5t1WRCeQnbNIZizMwaVFaGXD2Gdi8NtE3ugLOo6e+hdiAffJsMZvvO2ezdC7uF6lvUIeJDatt64sOWCaCCjrihkEjxb+4iTOKFX0VJprRQpIBz73Y86lJnSns4mG/GjlbNwc10kSo0mGGCAl1DRCttnEo1621ZBL0yK9q5e9rVJT/9o66lJOn7znU0QNWbSjplGOyfU0xdwOlEwi6ZBAkO9JqrPdRzpPxZTmPdmjLZqALP3vaEwrH7v6hxserYuihHKp/h36HexsPLEu8TwvU8yXswc+q/kYaajHRpb708xNbo7YKDjMCHxXsHS4Z+0AaevBKaDGyucOLhwDiqydBhyNu1cf0yYADw5kbiALzPOJ9GwJnXKjN1xes9jNCKbG4UFdKefuaRIlQ+wseUTS55qJ+zp78gaOLC3iO/AJrm5J3FUFh+bIImFvqjwm/uF82EaAqzBzrrz8iTE1IZSAB1QANtQpf76IUvlfYcCzAPbK+/5xTf/AIjfPFAgQJsWGzIpqhvTNQINDJr+d53iEhWgXfjmFN9JE+OZwSGgNg56Gu7sYwrGcxOZULn5DnpwyQNP6eEk+S/M9gwBsq9WCtC2YIgcsW3vBXn/4BPjhqfEO9O0Bec55BYb7US0iIFRoQ3H8dJTLEkKTKkZHd5qOLUNNJ/KzXiEDjeVIBEdw9VuIDBAvWpTo8QpRlueGhJb6QSsWDOYH0B4CD2c/En0F/+rC0skRPv6Kb4rmtHhZk+W/RGI8/P6CCtBMSbKdE5/QoIOhrRw==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(136003)(396003)(376002)(346002)(39860400002)(230922051799003)(186009)(451199024)(82310400011)(64100799003)(1800799009)(46966006)(36840700001)(40470700004)(26005)(36860700001)(82740400003)(2906002)(4744005)(41300700001)(40460700003)(44832011)(5660300002)(86362001)(36756003)(8936002)(8676002)(4326008)(6916009)(54906003)(81166007)(478600001)(1076003)(316002)(70586007)(356005)(70206006)(40480700001)(47076005)(2616005)(426003)(336012)(6666004)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Oct 2023 21:24:43.9632 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0a47e5bb-babc-4206-b625-08dbd5a0cea5
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002BA50.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7593
-Received-SPF: softfail client-ip=2a01:111:f400:7e83::628;
- envelope-from=vikram.garhwal@amd.com;
- helo=NAM02-DM3-obe.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/10] hw/arm: Move 'hw/arm/boot.h' from header to source
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20231025065316.56817-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20231025065316.56817-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,30 +128,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 59DFyEL94Ucd
+X-TUID: yH6znYLgaWqG
 
-Enable grant ram mapping support for Xenpvh machine on ARM.
+On 10/24/23 23:53, Philippe Mathieu-Daudé wrote:
+> Almost no ARM board header requires "hw/arm/boot.h".
+> Move this header inclusion to the source.
+> 
+> Philippe Mathieu-Daudé (10):
+>    hw/arm/allwinner-a10: Remove 'hw/arm/boot.h' from header
+>    hw/arm/allwinner-h3: Remove 'hw/arm/boot.h' from header
+>    hw/arm/allwinner-r40: Remove 'hw/arm/boot.h' from header
+>    hw/arm/fsl-imx25: Remove 'hw/arm/boot.h' from header
+>    hw/arm/fsl-imx31: Remove 'hw/arm/boot.h' from header
+>    hw/arm/fsl-imx6: Remove 'hw/arm/boot.h' from header
+>    hw/arm/fsl-imx6ul: Remove 'hw/arm/boot.h' from header
+>    hw/arm/fsl-imx7: Remove 'hw/arm/boot.h' from header
+>    hw/arm/xlnx-versal: Remove 'hw/arm/boot.h' from header
+>    hw/arm/xlnx-zynqmp: Remove 'hw/arm/boot.h' from header
 
-Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
-Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
----
- hw/arm/xen_arm.c | 3 +++
- 1 file changed, 3 insertions(+)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index f83b983ec5..553c289720 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -125,6 +125,9 @@ static void xen_init_ram(MachineState *machine)
-         DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n",
-                 GUEST_RAM1_BASE, ram_size[1]);
-     }
-+
-+    DPRINTF("init grant ram mapping for XEN\n");
-+    ram_grants = *xen_init_grant_ram();
- }
- 
- void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
--- 
-2.17.1
 
+r~

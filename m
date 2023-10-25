@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2969893ejb;
-        Wed, 25 Oct 2023 12:13:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG3uPUowYdZmIP3vK3qXRTPBQnPkYj4d/szpbGgHBidO9STt8zxPU93cfoFQA73QvqSCMIq
-X-Received: by 2002:a05:620a:460b:b0:778:ba73:1650 with SMTP id br11-20020a05620a460b00b00778ba731650mr13507793qkb.30.1698261231016;
-        Wed, 25 Oct 2023 12:13:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698261231; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2969916ejb;
+        Wed, 25 Oct 2023 12:13:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEXVe0J23350tgNtesyzCITgZgDKOSFf5e0NeuOG4JTpey6N8QUg+b84F5996AJ1GtQohQl
+X-Received: by 2002:ac2:42cf:0:b0:507:97ca:ec60 with SMTP id n15-20020ac242cf000000b0050797caec60mr11343635lfl.3.1698261233386;
+        Wed, 25 Oct 2023 12:13:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698261233; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBldWYHCzpPhp+CCRTvFFMMiW8yrX+rq76XtrQVB7yUFN+sBPCWGxzkvgB1s5J4e93
-         huPuQffJT4AEKkRI9Z9NI1ZOgrwlohQOLBqztQsTIt9l+FGLxgX8rrdbvVTitoZmWk33
-         Yt64HY2WecOAd2Oe2XV4u+fkXAxQ/4pEvDFV9ZaRFHRJwqCLwMolEHRWv6reL6mwShWZ
-         iDZAjWLoO8BW/F4hsn6Mf+6/zk0v0puWuufVK8wUrjZLbzAK/tiXgAQoA513pdV+WYgl
-         KJrdE/PRGLHQYU/LPKvL9Z0kC/DlNAnkOANZFVMm8Tsln5+C3TJ4TYIixciwG0xNAtXN
-         K53w==
+        b=G8SBhiiaSA2q4v/EisPU9spParDDDt4wH+IeSEVHUeEtTRbOwAcrIUEZI5gmCVEM0I
+         Z5CKCAAuXhBhU9OksxyBHcgjCfGfn8SC47wfBJVdqKTbEAjPbBXK0qca+K2+q25K/rwL
+         ET5rgedybDUER3UY9KZcLxoP/JHPdULSy586JDOVhlWWgoB9SfMx7KJ1mBAE37rnOON8
+         6BzIMDxUO5ZgqTS21tV6zgqYKxm24jBgYnrHfVVdi1QlM14UBghk3t4GEnd25ClURtlk
+         IhRXsJaSRVoQYVlO9qxDrIVYQBQ6c2KWICXKrd90nX9fmp3TqhW5Wro/R7DFGwMUlxdk
+         FUjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gjhKYVrmUXMpGz2SjWJ5wmLkXqZYNQfoSw4IEKXRdY0=;
+        bh=OF57uTjyyH4Nb4VhTNI4KzssnPCjcAVOb7bSOaBnuvo=;
         fh=xhblChOHn/9ohxmBdExAv8vV4InD5nB0dX6yBSUq53Q=;
-        b=I93QsvY0cVCE2kGRfIpShZEeVH/EjsK5zmi6394Hob5ZWwdSWizG1Wfsurs266rZyw
-         pRgCdHzBLtNmSsuaXSqY6K3pXkJ0x2GbeKmRxsj+oUdEu+JYvMagjTvuDZEn4s3hYCRz
-         5BUxgn7Q+XI4h8CHcD5EMTcp05VCx5bvdUjik37ZCThrd69SYhiANZv5jrr7nwFBCP+Y
-         5raGmNoddirk/jhZiOfNH+JQF+a1YGsTJqzTlS3DFEpOLnGtrAOuR3bYtYcoeDl3FaEH
-         o3mxCMx46qTJWZFnzGXQDYkdKdqYL06r+FlDwIehPHbhYNVKb34NvmsvIoJhoovNtl86
-         B3nw==
+        b=cxbgXjshWSJziIfZSYb6vGNITaDPVyis2BL0ATIiwLpHpUufeufm69loxg5JxabhfC
+         PneBT6zvGGyuf9S6RPphDtc2IvXkUMJmtioKu0TNoECWo+MIDoU1CHbhAFeAqJRi3b3w
+         kBYlHq4wjyy7Cg93uO9cFYc7f1MsGqGjRtmjNkWOx2kJrkYI7IwejA9MRdCHtpsAVgTx
+         VDESDWVGpsWGbTvQeW92nggrX5aNJV3jQ0WChl7BGrCXh4F85aIn38CQlo4973YG9HgS
+         sqlosfzrar/umPQNShHcc51Gdeo2TuYqnDHHOMSPA93BW61zkd0Fj24QzC96ejJXyqsD
+         waMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CtzZm9s8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RUbMiCTJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l6-20020a05620a28c600b0076f17d9dc1asi5754371qkp.493.2023.10.25.12.13.50
+        by mx.google.com with ESMTPS id q15-20020a5d574f000000b003197b6f2f49si7570967wrw.444.2023.10.25.12.13.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 12:13:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Oct 2023 12:13:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CtzZm9s8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RUbMiCTJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvjFo-00051d-TA; Wed, 25 Oct 2023 15:09:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qvjFq-00053D-1L; Wed, 25 Oct 2023 15:09:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjFi-0004s7-Su
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:09:16 -0400
+ id 1qvjFn-0004zW-QD
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:09:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjFg-0000Rm-CD
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:09:13 -0400
+ id 1qvjFk-0000TF-Iv
+ for qemu-devel@nongnu.org; Wed, 25 Oct 2023 15:09:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698260950;
+ s=mimecast20190719; t=1698260956;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gjhKYVrmUXMpGz2SjWJ5wmLkXqZYNQfoSw4IEKXRdY0=;
- b=CtzZm9s8/tYCGrYSojRSQ/ugpe07fidv9EFTjHTkjOJlc3vOrF6wVzPXoCRPS17rY/L0u0
- faDnFGxQzeVFIAmnG7wr2IcNcIL5cy89ULBbF0S76He85m7i/ybtWRJMklR4ocoIiacxJd
- xxFPMNVD91rvpAJp56UiiAisTbjShzw=
+ bh=OF57uTjyyH4Nb4VhTNI4KzssnPCjcAVOb7bSOaBnuvo=;
+ b=RUbMiCTJ8hL6pZ3g45/E4XdxU0IJDma38S5pNfk/BLV3papbl5smHyXJRVH/oIarHyjWYK
+ LoFmUPpI7SQbAddp9MQqLn0TxACUOJLy+OMhjLHnp40luR/H3QdUIwj/0HepWTlHYu+4fy
+ jck6CKR7PWPvC3m75xExv4dqFNilFLQ=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-683-cgpSNhauP1KGXVbFJQNbTA-1; Wed, 25 Oct 2023 15:08:57 -0400
-X-MC-Unique: cgpSNhauP1KGXVbFJQNbTA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ us-mta-407-ZGOw4F-zMJCPu3QOlik3sA-1; Wed, 25 Oct 2023 15:09:09 -0400
+X-MC-Unique: ZGOw4F-zMJCPu3QOlik3sA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BA209101A590;
- Wed, 25 Oct 2023 19:08:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 42EBF837220;
+ Wed, 25 Oct 2023 19:09:09 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B2438502B;
- Wed, 25 Oct 2023 19:08:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 555C1492BE7;
+ Wed, 25 Oct 2023 19:09:08 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -90,15 +90,15 @@ Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v6 08/23] vl: move display early init before default devices
-Date: Wed, 25 Oct 2023 23:08:02 +0400
-Message-ID: <20231025190818.3278423-9-marcandre.lureau@redhat.com>
+Subject: [PATCH v6 11/23] qmp/hmp: disable screendump if PIXMAN is missing
+Date: Wed, 25 Oct 2023 23:08:05 +0400
+Message-ID: <20231025190818.3278423-12-marcandre.lureau@redhat.com>
 In-Reply-To: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -110,94 +110,107 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1/ZfuHFUnoUB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2TKIf62iEe9o
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-The next commit needs to have the display registered itself before
-creating the default VCs.
+The command requires color conversion and line-by-line feeding. We could
+have a simple fallback for simple formats though.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- system/vl.c | 31 ++++++++++++++++++-------------
- 1 file changed, 18 insertions(+), 13 deletions(-)
+ qapi/ui.json     | 3 ++-
+ ui/ui-hmp-cmds.c | 2 ++
+ ui/ui-qmp-cmds.c | 2 ++
+ hmp-commands.hx  | 2 ++
+ 4 files changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/system/vl.c b/system/vl.c
-index b07805d476..db4d5ee79a 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1352,6 +1352,23 @@ static void qemu_disable_default_devices(void)
+diff --git a/qapi/ui.json b/qapi/ui.json
+index 006616aa77..e74cc3efb6 100644
+--- a/qapi/ui.json
++++ b/qapi/ui.json
+@@ -200,7 +200,8 @@
+ { 'command': 'screendump',
+   'data': {'filename': 'str', '*device': 'str', '*head': 'int',
+            '*format': 'ImageFormat'},
+-  'coroutine': true }
++  'coroutine': true,
++  'if': 'CONFIG_PIXMAN' }
+ 
+ ##
+ # == Spice
+diff --git a/ui/ui-hmp-cmds.c b/ui/ui-hmp-cmds.c
+index c671389473..26c8ced1f2 100644
+--- a/ui/ui-hmp-cmds.c
++++ b/ui/ui-hmp-cmds.c
+@@ -437,6 +437,7 @@ void sendkey_completion(ReadLineState *rs, int nb_args, const char *str)
      }
  }
  
-+static void qemu_setup_display(void)
-+{
-+    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
-+        if (!qemu_display_find_default(&dpy)) {
-+            dpy.type = DISPLAY_TYPE_NONE;
-+#if defined(CONFIG_VNC)
-+            vnc_parse("localhost:0,to=99,id=default");
-+#endif
-+        }
-+    }
-+    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
-+        dpy.type = DISPLAY_TYPE_NONE;
-+    }
-+
-+    qemu_display_early_init(&dpy);
-+}
-+
- static void qemu_create_default_devices(void)
++#ifdef CONFIG_PIXMAN
+ void coroutine_fn
+ hmp_screendump(Monitor *mon, const QDict *qdict)
  {
-     MachineClass *machine_class = MACHINE_GET_CLASS(current_machine);
-@@ -1401,18 +1418,6 @@ static void qemu_create_default_devices(void)
- #endif
+@@ -458,6 +459,7 @@ hmp_screendump(Monitor *mon, const QDict *qdict)
+ end:
+     hmp_handle_error(mon, err);
+ }
++#endif
+ 
+ void hmp_client_migrate_info(Monitor *mon, const QDict *qdict)
+ {
+diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
+index debc07d678..d772e1cb7f 100644
+--- a/ui/ui-qmp-cmds.c
++++ b/ui/ui-qmp-cmds.c
+@@ -212,6 +212,7 @@ void qmp_client_migrate_info(const char *protocol, const char *hostname,
+     error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "protocol", "'spice'");
+ }
+ 
++#ifdef CONFIG_PIXMAN
+ #ifdef CONFIG_PNG
+ /**
+  * png_save: Take a screenshot as PNG
+@@ -391,3 +392,4 @@ qmp_screendump(const char *filename, const char *device,
+         }
      }
+ }
++#endif /* CONFIG_PIXMAN */
+diff --git a/hmp-commands.hx b/hmp-commands.hx
+index 63eac22734..c343d82fbc 100644
+--- a/hmp-commands.hx
++++ b/hmp-commands.hx
+@@ -252,6 +252,7 @@ SRST
  
--    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
--        if (!qemu_display_find_default(&dpy)) {
--            dpy.type = DISPLAY_TYPE_NONE;
--#if defined(CONFIG_VNC)
--            vnc_parse("localhost:0,to=99,id=default");
--#endif
--        }
--    }
--    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
--        dpy.type = DISPLAY_TYPE_NONE;
--    }
--
-     /* If no default VGA is requested, the default is "none".  */
-     if (default_vga) {
-         vga_model = get_default_vga_model(machine_class);
-@@ -1937,7 +1942,6 @@ static void qemu_create_early_backends(void)
-                      "ignoring option");
-     }
+ ERST
  
--    qemu_display_early_init(&dpy);
-     qemu_console_early_init();
++#ifdef CONFIG_PIXMAN
+     {
+         .name       = "screendump",
+         .args_type  = "filename:F,format:-fs,device:s?,head:i?",
+@@ -267,6 +268,7 @@ SRST
+ ``screendump`` *filename*
+   Save screen into PPM image *filename*.
+ ERST
++#endif
  
-     if (dpy.has_gl && dpy.gl != DISPLAYGL_MODE_OFF && display_opengl == 0) {
-@@ -3666,6 +3670,7 @@ void qemu_init(int argc, char **argv)
-     suspend_mux_open();
- 
-     qemu_disable_default_devices();
-+    qemu_setup_display();
-     qemu_create_default_devices();
-     qemu_create_early_backends();
- 
+     {
+         .name       = "logfile",
 -- 
 2.41.0
 

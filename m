@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2969983ejb;
-        Wed, 25 Oct 2023 12:14:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF5x+zHSZG7vGQds57BLJe+gvILKEo9sIfXaKkHg9r5dTTEg32EzjrbHHVisZ1U2rkuaS46
-X-Received: by 2002:a05:600c:4f91:b0:3f6:58ad:ed85 with SMTP id n17-20020a05600c4f9100b003f658aded85mr13262475wmq.10.1698261240755;
-        Wed, 25 Oct 2023 12:14:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698261240; cv=none;
+Received: by 2002:a17:906:fc07:b0:9bd:85f7:2662 with SMTP id ov7csp2970354ejb;
+        Wed, 25 Oct 2023 12:14:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGJR3fWSj/ntTlgWgMw79TWLstXdbAkKB7ar6e10q9tkg6hSMgD5Nt9Fpq3KoUJU459Fl4Q
+X-Received: by 2002:a05:6214:5089:b0:656:3fbd:d1f3 with SMTP id kk9-20020a056214508900b006563fbdd1f3mr19428223qvb.11.1698261279782;
+        Wed, 25 Oct 2023 12:14:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698261279; cv=none;
         d=google.com; s=arc-20160816;
-        b=FTp07cdDUW2mqqqeATeJftPuBkErBE6JmA9g75ZXwwPtuTsBombMsFj3F8xS71mcFQ
-         C7h5PO4gHr4KkzJMJMVWcKmsp2nQnzcOgnsW0tqsqWkXfw2svJLd4I/eaKv+2iZaulMU
-         1NkkuWzOM0L23hNe0Fjya28nvqVI787LlEL1XMQA+/htXZr0PBYpyqUJVWMw58LA6obd
-         dE9ARYEE/bVTGxzuHoSXzBk1ingmeme239Qle0DDS1+ubgXYps7W7ii+O3wbFuPADeu0
-         qlQQad7l0bl7XPFhaG13b6K+Uoq14o82airUJ7qnWm2oJk/SaKO/Nfv0RW3FSiIN2bGJ
-         CBjQ==
+        b=CsMQOJ5c5xfzSU/U6VKLI1xOUN5iXjE+OMcJXjrdamiC6PKmmWPkE+U4ZrBPtZ7Yn9
+         5t6v1776IgsaRLOyrzDg1MD+BNr8Vx2f22wPyTNqRUnqA5XstdHjWL3RwULaT98kGpbP
+         C3HyEFGxMfehLPAs5xYhKxovhL4Cn1+lvdFWduOJ493iLjOraYS+3TL3sVXeI9Sq7UY5
+         Y+wgD6pfkEWxndtGV2HxvtSFGECbXzCRLTY5EShbhBkxGm3NANuSA+mUlqcRYsL11kxm
+         N+RKmcUr8wWMTvA770UdSlQckdIBjFLTXkLDOZJf72zDR1Vpw5xz9IFJHYNAbxE4H6YO
+         Kbbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GY/S0Y6pm4Vuz6O3HkLMdUB1oHQytXfPu9o7AueA4S0=;
+        bh=snDzsaIt7Lr9u4SfhZnMzqFdbfsgIPQia8N60hmDNiM=;
         fh=xhblChOHn/9ohxmBdExAv8vV4InD5nB0dX6yBSUq53Q=;
-        b=RhYAOqOViU8YQ8kbNkVADtq8gmIYlk+X7DJ5ipw/sML9639b6kXIY/8CGbLqZkzpf/
-         nk93vVj6BQl4MMBJRUWW5O8uIOczQHZRpdI5YqplbqY7zWILtxbIox7nj/7r5rCstvOM
-         mNnPj1PYXAm60PCsOeF3IgBLscrAYBJgAC9BDOh+cLubp6GLrKpRnPaOYejQuYDZmWIA
-         iQHfC7RbS7eKPR4y/7wfhk8Jmk92vVE6xll20xbq+stOTZNw7EdZVcXNM4U5/rUZ9YxI
-         f133ORTvY4Cl7cTi/jS6GYVcZDvMkJfAu3IjkjIZPNXasQ25jlZkXnATbUAjDuKsMBfh
-         +BtQ==
+        b=MtDXsV9usMJobheS5vevwfCNZQMkdHKvH2y5MHTgjdPLC1AdHgSllV1CjNUaaPwc95
+         4ovxEh322vP+1dEnMtNrJXK9cqN6GzN39bdKGUk9OKSZlBD5eozY4SnlZdxE8wDm3sZr
+         UJC/vAYdDPOoQO4e7FJ5HsUNaC8dvCF6Ve5P++BPjTrpqDvczTA0KBqCxVUWDKTUx9IZ
+         LVk/KF1KPWwDL0lv1GuZ69Sk2cRAVp8T5JmY2AvQvSFWy3a6xDuck9/Q0laRS2H2sft8
+         2R0v1/x1RJ/IV6nkFnFx2ecMoG9Arv3znW0W4y5qY3vLG8IomlG/B9spmzRhdv6BMK0R
+         5tww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="JzbU6/x1";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GtzSSkcT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17-20020a05600c481100b004052f153921si376430wmo.165.2023.10.25.12.14.00
+        by mx.google.com with ESMTPS id fc17-20020ad44f31000000b0065892c14203si8691417qvb.412.2023.10.25.12.14.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 12:14:00 -0700 (PDT)
+        Wed, 25 Oct 2023 12:14:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="JzbU6/x1";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GtzSSkcT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvjFd-0004oO-OS; Wed, 25 Oct 2023 15:09:09 -0400
+	id 1qvjGI-0006RG-B9; Wed, 25 Oct 2023 15:09:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjFT-0004kg-21
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:08:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qvjGE-0006Nu-Q1
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:09:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qvjFQ-0000LX-TP
- for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:08:58 -0400
+ id 1qvjGD-0000dy-BW
+ for qemu-arm@nongnu.org; Wed, 25 Oct 2023 15:09:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698260936;
+ s=mimecast20190719; t=1698260984;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GY/S0Y6pm4Vuz6O3HkLMdUB1oHQytXfPu9o7AueA4S0=;
- b=JzbU6/x1Bqc4Lc9y0RnqTBs417buQIPuTxdmxSRKS4Ac/bzUBxCKZT/bkxGgqCDkeVeX1l
- /+tNjrroHD/CmjYmt7zmMIudHu2siIJs1yhyvI2y+1pM2EIxcLsnqjBsxmmiLazApCDPjy
- eiN2qNYyEn7Rj647v1V4oZjQZrYjJ0A=
+ bh=snDzsaIt7Lr9u4SfhZnMzqFdbfsgIPQia8N60hmDNiM=;
+ b=GtzSSkcTL849jrG3Bjtz0eKgbVYuo8+6WYtSa0It85TZc3Pfh/Vy0lg/xGp31hAcPhK5CE
+ +hnXi/5mXta2nOK5WMQ5lINsL9qKs7Vwu5wLuTOJsbUpKytufo/VN4lgYev08yZJjwl/m5
+ bTWLVq6uLLEp5QgSR26AVUs6xAM70uE=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-412-H_PdAQmePbazhwhEXctYKw-1; Wed, 25 Oct 2023 15:08:53 -0400
-X-MC-Unique: H_PdAQmePbazhwhEXctYKw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ us-mta-335-HJu8LzlzPjSC3-MfhqqAdA-1; Wed, 25 Oct 2023 15:09:41 -0400
+X-MC-Unique: HJu8LzlzPjSC3-MfhqqAdA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 890BE857CF1;
- Wed, 25 Oct 2023 19:08:52 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A1201185A784;
+ Wed, 25 Oct 2023 19:09:40 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AD2DD492BE8;
- Wed, 25 Oct 2023 19:08:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B7B8E2026D4C;
+ Wed, 25 Oct 2023 19:09:39 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -90,16 +90,16 @@ Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v6 07/23] vl: simplify display_remote logic
-Date: Wed, 25 Oct 2023 23:08:01 +0400
-Message-ID: <20231025190818.3278423-8-marcandre.lureau@redhat.com>
+Subject: [PATCH v6 18/23] ui/gtk: -display gtk requires PIXMAN
+Date: Wed, 25 Oct 2023 23:08:12 +0400
+Message-ID: <20231025190818.3278423-19-marcandre.lureau@redhat.com>
 In-Reply-To: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -107,8 +107,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,42 +123,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S5i/AV5FJy1F
+X-TUID: MqK57FI8fka6
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Bump the display_remote variable when the -vnc option is parsed, just
-like -spice.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- system/vl.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ meson.build | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/system/vl.c b/system/vl.c
-index de6df188da..b07805d476 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1401,11 +1401,6 @@ static void qemu_create_default_devices(void)
- #endif
-     }
+diff --git a/meson.build b/meson.build
+index 0dbad80fcc..ad1e0155ee 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1507,7 +1507,11 @@ gtkx11 = not_found
+ vte = not_found
+ have_gtk_clipboard = get_option('gtk_clipboard').enabled()
  
--#if defined(CONFIG_VNC)
--    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
--        display_remote++;
--    }
--#endif
-     if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
-         if (!qemu_display_find_default(&dpy)) {
-             dpy.type = DISPLAY_TYPE_NONE;
-@@ -3350,6 +3345,7 @@ void qemu_init(int argc, char **argv)
- #ifdef CONFIG_VNC
-             case QEMU_OPTION_vnc:
-                 vnc_parse(optarg);
-+                display_remote++;
-                 break;
- #endif
-             case QEMU_OPTION_no_acpi:
+-if not get_option('gtk').auto() or have_system
++if get_option('gtk') \
++             .disable_auto_if(not have_system) \
++             .require(pixman.found(),
++                      error_message: 'cannot enable GTK if pixman is not available') \
++             .allowed()
+   gtk = dependency('gtk+-3.0', version: '>=3.22.0',
+                    method: 'pkg-config',
+                    required: get_option('gtk'))
 -- 
 2.41.0
 

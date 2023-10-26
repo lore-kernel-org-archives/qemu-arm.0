@@ -1,174 +1,118 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp143275ejb;
-        Wed, 25 Oct 2023 22:43:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH7ZYUfZWPoPEESJSGXl+0Z2LhYpib7x+ZERY2eHx4jev90bAlml6fCB3+9Ys5eqEvuKJWX
-X-Received: by 2002:ac8:578f:0:b0:40f:f9c8:1b98 with SMTP id v15-20020ac8578f000000b0040ff9c81b98mr25036658qta.10.1698298982495;
-        Wed, 25 Oct 2023 22:43:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698298982; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp184523ejb;
+        Thu, 26 Oct 2023 00:25:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG4J9U+dV/QRka3ilLEqYkJd1rEzkVwpJhvh+OkgrUkOvLpWLlVMSbj/aamV6NAKgSK1p7d
+X-Received: by 2002:a05:600c:1396:b0:404:7659:ba39 with SMTP id u22-20020a05600c139600b004047659ba39mr13352592wmf.16.1698305109456;
+        Thu, 26 Oct 2023 00:25:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698305109; cv=none;
         d=google.com; s=arc-20160816;
-        b=GQA0dxFltk8nB1PTw+oOgM0+RShERHRF2zE9cVpOrP6NHV086eFb1sz/E940seU0tH
-         XPBkHRjL/aCJwMXmDpVapLT86upCNEEZ0ohGZi7KZOBdL1w8/kW6KAzVp6D90TiKBicF
-         KNTiqsLjIZKU0kj6AmVYveAWWnpOnWF+ddNbC7ABEKTpm78aQq5fvmT/wCCPrLs/I0Gv
-         HmzhDkMJbBoWNOz/kWlhXx7ZHvXbW5fnApblOBcTRUGgfG9AUNWOUJaBRbmlU70yU8U7
-         +X95aAnTopOP/Zk3KkfL+b2d0QJzNFzGdX/y5jszyoNk9EZxHgEazpGLk5HFPr7KaK8+
-         mjFA==
+        b=PJqDpcr2jyxtLbXFVvK+6nRQPjBobILIDx1mA+3nbt2T+hO0k+WqEQAQVCmzbU/doS
+         ChOWl02y5c6t90tBgLLE+qL0rG6r9TS/gegxQ+/W/zDHpsXpHD5JPG3bbUHrHBphYYvs
+         8gNBr7TDHuiQT4tuGjIcNuuKy8ZL/3YFlQi40mXySW5V9aY2ti75MuKVrZMBlaDuMkOt
+         AsiHBosa/lewln2vyndVFrLDUNSeZld9TMOG/EoA0QhMzn5O5vNwk85BIF8sYsQUX55z
+         wa+MfijjfT1hSrmgiM4DIzbEs/iry0lVlU8zUCOJSN1pVfeTw/y+9+0X0CC9e437QwtQ
+         ZMuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=M62oP6RMWxo24vYvkkGivV8c/vOdV9qNohO+nUDSQtg=;
-        fh=0zTg7JqpEkRv6PpnFgWax7BLxT45hIRqZHSy67B+2mI=;
-        b=LV3vp4P7sEj9zJ+BjMPuaeOBcl3uARuvX37jBJR6xeFoW5ZrhgWo7FNvHyZ3Ei+8tu
-         3Al3ki4iSJtROy/6nwjSYGjOsw9pz5OjqBCGCE4VhQ2Vmv6RJ7uJL4KamVifdsIjyvrn
-         FAmpw55zS2+kWwFg20P0aOlu+xfanL9xq42viSHHjr7nmK/MM0oFIjsJSpdGej+fPyMe
-         SQJW418eHw290qI5yEPtwormHxAwMPHbkAqJLIdeWsiquTjzyrYhr9Oqs6ctv9yuS3qm
-         l+00T/AFpXrUcU7Hob4fGULOZkL+p0od13vaHMkPnJNgqTzKMScFZqnUgUsIAHphIIYG
-         Zvcg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=g4IKgkow9KV1QDgpIYwoApam0Yih1r6UaSRebEEpnqI=;
+        fh=iGoGqllGYCJbYxB6ePgIZ0uzjrQZ4vLJ9hsEMuP90HE=;
+        b=E8BZBN1DoXz8trYQMfHw2XToKz8H4x+naKpFTBSCAPpp9+M3N3x0O9fKFwj4pyNbtD
+         VeGev3bSq8+VMcjKDtVHQqYZrN5lB7a4lA4+xxPfkhJjHaVhHOk9K4E79nJ/3wbPSl7a
+         HxD81zN3S7EssCB9q658HsWpu8mSYFJ4v2vLAYHjXJsTskR46Itshfv4/5cfEI9LefUL
+         sBsTlmEhSB+AsfiqlCMnNKLYMXWYyxYBlr1UadaoyDzSBjaCfaDHpoVKuMGf/ZdQTqmn
+         cK8Kt2w1noYtCYqUgHAcsQ/HEunDw+DKyLWJvN6V1smXr4GpmDmUREgGQDuXBWK1l08k
+         YFAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xkp81zex;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dYGSuqgH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u16-20020a05622a14d000b00419785380efsi9158945qtx.115.2023.10.25.22.43.02
+        by mx.google.com with ESMTPS id v9-20020a05600c470900b004064384bcecsi1230785wmo.57.2023.10.26.00.25.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 22:43:02 -0700 (PDT)
+        Thu, 26 Oct 2023 00:25:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xkp81zex;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dYGSuqgH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvt8s-00015G-Vm; Thu, 26 Oct 2023 01:42:51 -0400
+	id 1qvujL-0005UN-K2; Thu, 26 Oct 2023 03:24:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvt8r-00011g-Of
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 01:42:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvt8q-0006Dm-9X
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 01:42:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698298967;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=M62oP6RMWxo24vYvkkGivV8c/vOdV9qNohO+nUDSQtg=;
- b=Xkp81zexVVL+DfxwrDLbG+W1RQ49REct3vsFfDd7oGbNIWBBB1WuSmu3Ruw/PH8pYDOq4H
- kBKyhzyQfCKYds7bLI6mEqO9BzTj3XjsVeCehygoTatpfMksVp5cb/tj013/P70Al89XrK
- vBwDkE3oIPgOdXvz7yPbuRJk8G53TbI=
-Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
- [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-594-owcgf2U8OAyxvCYEBnRNqA-1; Thu, 26 Oct 2023 01:42:46 -0400
-X-MC-Unique: owcgf2U8OAyxvCYEBnRNqA-1
-Received: by mail-lf1-f72.google.com with SMTP id
- 2adb3069b0e04-5079fd97838so459712e87.1
- for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 22:42:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1qvujI-0005TU-2f; Thu, 26 Oct 2023 03:24:32 -0400
+Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1qvujF-0007Ay-FH; Thu, 26 Oct 2023 03:24:31 -0400
+Received: by mail-qt1-x829.google.com with SMTP id
+ d75a77b69052e-4197fa36b6aso4500251cf.3; 
+ Thu, 26 Oct 2023 00:24:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1698305067; x=1698909867; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=g4IKgkow9KV1QDgpIYwoApam0Yih1r6UaSRebEEpnqI=;
+ b=dYGSuqgHST0E5Mj/aKckPfF/rCkN/9yUNRsUJFfodRS4vYVZHxdIniM5UfqpP89xBc
+ 7ncLoGhjda0SkBa/sd/YuR2+xkweAYXUw24oh0XvoADaMbQc1OWMrmtkZU3pfuPfaGJ8
+ wyhqcajtV2wZpIpdBEWsqrVfGQeIvLUHpf/a/N1eiyLf8Gl+mrA2iTTXZlt5fLuHrvij
+ gPM4cOF40e8yTTQpHyq+OyjaM1a2wtuZvGWOPW2Iti2tfEEvWnNTcI1UikC+jaLPPYnm
+ E2WGiO+brnaoJrwyBxPhsJQSFsj8kKB6jifEWnV3Fd8YTba3pFpwhhhtLnPA6nV1+AhZ
+ kM3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698298965; x=1698903765;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=M62oP6RMWxo24vYvkkGivV8c/vOdV9qNohO+nUDSQtg=;
- b=dzF2J4s++SgXkhiDKBEU2/LpQjokH4gxz0oLtASwXgc/MrtVvHH9vjnzRINN7ld3FU
- JHKQ/RjPqiditiMwObTX/STS2+fPUjpjm0eSNL0Y5yDKYAh5s1WQXK1XDbVNx9v2Hk6h
- qvjjgNQj+AELYHSBOrOpbBlZrLQpt3lB70J1Ax6lCRDLfDSEudafgQR6KmxqDucL1W0g
- kauuubSfVqKZ+vw/neb5P0Lgk5YryPZbwFGaMrsjjoRUxejjE5cmlJJljD2LvQmwV4fz
- p9jzXTXnHBYwoSr+BRkQdOYMWzK/M68IBCcUWbiWWc004s90RiOQxqmZDpQd8BIOG7GQ
- +6pQ==
-X-Gm-Message-State: AOJu0YwGIiUQddq5lM3jXDtl7e2CXrffEKqJgAfxyLxVhly5tfkUGJD5
- TmRE04fZKcXa929CyGnq/UPT5KahffqHyh1LHq4OE+K0tcRhxmtpXJCSgT+5e9LfcpZbOXR6nXK
- 8T4E2WrnNth0d
-X-Received: by 2002:a05:6512:401d:b0:508:1a25:a194 with SMTP id
- br29-20020a056512401d00b005081a25a194mr2943361lfb.21.1698298964859; 
- Wed, 25 Oct 2023 22:42:44 -0700 (PDT)
-X-Received: by 2002:a05:6512:401d:b0:508:1a25:a194 with SMTP id
- br29-20020a056512401d00b005081a25a194mr2943343lfb.21.1698298964556; 
- Wed, 25 Oct 2023 22:42:44 -0700 (PDT)
-Received: from [192.168.0.6] (ip-109-43-176-238.web.vodafone.de.
- [109.43.176.238]) by smtp.gmail.com with ESMTPSA id
- if5-20020a0564025d8500b0053f10da1105sm10675390edb.87.2023.10.25.22.42.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Oct 2023 22:42:44 -0700 (PDT)
-Message-ID: <f9849959-1b64-4d3c-9987-3b035949d9b1@redhat.com>
-Date: Thu, 26 Oct 2023 07:42:42 +0200
+ d=1e100.net; s=20230601; t=1698305067; x=1698909867;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=g4IKgkow9KV1QDgpIYwoApam0Yih1r6UaSRebEEpnqI=;
+ b=fdDQIX/RHHBXTiHg56+dEI+rVVQnwpTuStE9kBnQi6YeFRQU6DoOtvsGThsrYmomSU
+ vTk3ynfqOrl7YLA/6vMLxG+CZMtGRcgPNdzoIm/lseW6wwacQaeMercfPMg7JF0VrH+m
+ KsxC27vqJ9WT2+sN+79d0jNQemm75a/XyFABzd/txIM2abJWF1AmrpMGDu2ItulkEzn4
+ tX61TOqp2aHtlXY0b1XKSc2C9YuiF5sz6tHD0b8keSGm8vElzgrIHvZx/fE8OhCARhcg
+ NIfzRZZ0hDw9zfgoJIsyCVf9ALP9FLHR6Cnn8+SMsXWPrYdYc0fPxu4lxPr6pubTTn8T
+ FE1g==
+X-Gm-Message-State: AOJu0Yz4Llg/HPmOQ3AzpGXOXtWGooJJ7wr16ltn0JAe9LnVHddTYVv2
+ SrEsuVwZ1xoelv6cYMZNaIFoFJ8CyvsQWr/6ycw=
+X-Received: by 2002:a05:622a:1305:b0:412:1fd7:dfa1 with SMTP id
+ v5-20020a05622a130500b004121fd7dfa1mr18249402qtk.8.1698305067564; Thu, 26 Oct
+ 2023 00:24:27 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 23/23] build-sys: make pixman actually optional
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
 References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
- <20231025190818.3278423-24-marcandre.lureau@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20231025190818.3278423-24-marcandre.lureau@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ <20231025190818.3278423-13-marcandre.lureau@redhat.com>
+ <151fc11c-df21-51e6-f12c-e926e8764dc4@eik.bme.hu>
+In-Reply-To: <151fc11c-df21-51e6-f12c-e926e8764dc4@eik.bme.hu>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 26 Oct 2023 11:24:15 +0400
+Message-ID: <CAJ+F1CLGsqapfed+Mnk2bYzWRqraUMBCAdRRkZTqKg2P9sLpGQ@mail.gmail.com>
+Subject: Re: [PATCH v6 12/23] virtio-gpu: replace PIXMAN for region/rect test
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>, 
+ Eric Blake <eblake@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::829;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x829.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,30 +127,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yjywsDy75wv1
+X-TUID: Z0aoXtQYbn9o
 
-On 25/10/2023 21.08, marcandre.lureau@redhat.com wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->   meson.build | 3 ---
->   1 file changed, 3 deletions(-)
-> 
-> diff --git a/meson.build b/meson.build
-> index ad1e0155ee..a35cd860aa 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -817,9 +817,6 @@ if not get_option('pixman').auto() or have_system or have_tools
->     pixman = dependency('pixman-1', required: get_option('pixman'), version:'>=0.21.8',
->                         method: 'pkg-config')
->   endif
-> -if not pixman.found() and (have_system or have_tools)
-> -  error('FIXME: pixman is currently required')
-> -endif
->   
->   zlib = dependency('zlib', required: true)
->   
+Hi
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+On Thu, Oct 26, 2023 at 12:55=E2=80=AFAM BALATON Zoltan <balaton@eik.bme.hu=
+> wrote:
+>
+> On Wed, 25 Oct 2023, marcandre.lureau@redhat.com wrote:
+> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> >
+> > Use a simpler implementation for rectangle geometry & intersect, drop
+> > the need for (more complex) PIXMAN functions.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > Acked-by: Michael S. Tsirkin <mst@redhat.com>
+> > ---
+> > include/ui/rect.h       | 59 +++++++++++++++++++++++++++++++++++++++++
+> > hw/display/virtio-gpu.c | 30 ++++++++-------------
+> > 2 files changed, 70 insertions(+), 19 deletions(-)
+> > create mode 100644 include/ui/rect.h
+> >
+> > diff --git a/include/ui/rect.h b/include/ui/rect.h
+> > new file mode 100644
+> > index 0000000000..94898f92d0
+> > --- /dev/null
+> > +++ b/include/ui/rect.h
+> > @@ -0,0 +1,59 @@
+> > +/*
+> > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > + */
+> > +#ifndef QEMU_RECT_H
+> > +#define QEMU_RECT_H
+> > +
+> > +#include <stdint.h>
+> > +#include <stdbool.h>
+> > +
+> > +typedef struct QemuRect {
+> > +    int16_t x;
+> > +    int16_t y;
+> > +    uint16_t width;
+> > +    uint16_t height;
+> > +} QemuRect;
+> > +
+> > +static inline void qemu_rect_init(QemuRect *rect,
+> > +                                  int16_t x, int16_t y,
+> > +                                  uint16_t width, uint16_t height)
+> > +{
+> > +    rect->x =3D x;
+> > +    rect->y =3D x;
+> > +    rect->width =3D width;
+> > +    rect->height =3D height;
+> > +}
+> > +
+> > +static inline void qemu_rect_translate(QemuRect *rect,
+> > +                                       int16_t dx, int16_t dy)
+> > +{
+> > +    rect->x +=3D dx;
+> > +    rect->y +=3D dy;
+> > +}
+> > +
+> > +static inline bool qemu_rect_intersect(const QemuRect *a, const QemuRe=
+ct *b,
+> > +                                       QemuRect *res)
+> > +{
+> > +    int16_t x1, x2, y1, y2;
+> > +
+> > +    x1 =3D MAX(a->x, b->x);
+> > +    y1 =3D MAX(a->y, b->y);
+> > +    x2 =3D MIN(a->x + a->width, b->x + b->width);
+> > +    y2 =3D MIN(a->y + a->height, b->y + b->height);
+> > +
+> > +    if (x1 >=3D x2 || y1 >=3D y2) {
+> > +        if (res) {
+> > +            qemu_rect_init(res, 0, 0, 0, 0);
+> > +        }
+> > +
+> > +        return false;
+> > +    }
+> > +
+> > +    if (res) {
+> > +        qemu_rect_init(res, x1, y1, x2 - x1, y2 - y1);
+> > +    }
+> > +
+> > +    return true;
+> > +}
+> > +
+> > +#endif
+>
+> Maybe you could move these to pixman-minimal.h as well implementing the
+> missing pixman_region funcs so no need to change the callers? But I don't
+> mind either way.
+>
 
+The pixman region functions are more complex than what we actually
+need in QEMU (simple rectangle geometry).
+
+> Regards,
+> BALATON Zoltan
+>
+> > diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+> > index 4265316cbb..a8e767245f 100644
+> > --- a/hw/display/virtio-gpu.c
+> > +++ b/hw/display/virtio-gpu.c
+> > @@ -16,6 +16,7 @@
+> > #include "qemu/iov.h"
+> > #include "sysemu/cpus.h"
+> > #include "ui/console.h"
+> > +#include "ui/rect.h"
+> > #include "trace.h"
+> > #include "sysemu/dma.h"
+> > #include "sysemu/sysemu.h"
+> > @@ -503,7 +504,7 @@ static void virtio_gpu_resource_flush(VirtIOGPU *g,
+> >     struct virtio_gpu_simple_resource *res;
+> >     struct virtio_gpu_resource_flush rf;
+> >     struct virtio_gpu_scanout *scanout;
+> > -    pixman_region16_t flush_region;
+> > +    QemuRect flush_rect;
+> >     bool within_bounds =3D false;
+> >     bool update_submitted =3D false;
+> >     int i;
+> > @@ -565,34 +566,25 @@ static void virtio_gpu_resource_flush(VirtIOGPU *=
+g,
+> >         return;
+> >     }
+> >
+> > -    pixman_region_init_rect(&flush_region,
+> > -                            rf.r.x, rf.r.y, rf.r.width, rf.r.height);
+> > +    qemu_rect_init(&flush_rect, rf.r.x, rf.r.y, rf.r.width, rf.r.heigh=
+t);
+> >     for (i =3D 0; i < g->parent_obj.conf.max_outputs; i++) {
+> > -        pixman_region16_t region, finalregion;
+> > -        pixman_box16_t *extents;
+> > +        QemuRect rect;
+> >
+> >         if (!(res->scanout_bitmask & (1 << i))) {
+> >             continue;
+> >         }
+> >         scanout =3D &g->parent_obj.scanout[i];
+> >
+> > -        pixman_region_init(&finalregion);
+> > -        pixman_region_init_rect(&region, scanout->x, scanout->y,
+> > -                                scanout->width, scanout->height);
+> > +        qemu_rect_init(&rect, scanout->x, scanout->y,
+> > +                       scanout->width, scanout->height);
+> >
+> > -        pixman_region_intersect(&finalregion, &flush_region, &region);
+> > -        pixman_region_translate(&finalregion, -scanout->x, -scanout->y=
+);
+> > -        extents =3D pixman_region_extents(&finalregion);
+> >         /* work out the area we need to update for each console */
+> > -        dpy_gfx_update(g->parent_obj.scanout[i].con,
+> > -                       extents->x1, extents->y1,
+> > -                       extents->x2 - extents->x1,
+> > -                       extents->y2 - extents->y1);
+> > -
+> > -        pixman_region_fini(&region);
+> > -        pixman_region_fini(&finalregion);
+> > +        if (qemu_rect_intersect(&flush_rect, &rect, &rect)) {
+> > +            qemu_rect_translate(&rect, -scanout->x, -scanout->y);
+> > +            dpy_gfx_update(g->parent_obj.scanout[i].con,
+> > +                           rect.x, rect.y, rect.width, rect.height);
+> > +        }
+> >     }
+> > -    pixman_region_fini(&flush_region);
+> > }
+> >
+> > static void virtio_unref_resource(pixman_image_t *image, void *data)
+> >
+
+
+
+--=20
+Marc-Andr=C3=A9 Lureau

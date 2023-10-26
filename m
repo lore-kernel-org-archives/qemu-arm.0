@@ -1,107 +1,256 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1776047ejb;
-        Sat, 16 Sep 2023 02:27:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF7kzpfvlOfn0wPMCRUYG6sPy6OKUR7wpDHekCieq2qcvhsGn3lKK5IDIEgZooSPKqoXgcA
-X-Received: by 2002:a05:620a:29cf:b0:773:b2b1:6f62 with SMTP id s15-20020a05620a29cf00b00773b2b16f62mr4796516qkp.34.1694856420041;
-        Sat, 16 Sep 2023 02:27:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694856420; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp597479ejb;
+        Thu, 26 Oct 2023 12:14:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG5PS+eOlKEDCgwyQmabyC7fXjEM+dXntNAH+1TpMYKtbJqIugYWJ6DqyFmrDrH/9CS/Cof
+X-Received: by 2002:a25:2654:0:b0:d9d:116a:89c8 with SMTP id m81-20020a252654000000b00d9d116a89c8mr251357ybm.54.1698347652518;
+        Thu, 26 Oct 2023 12:14:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1698347652; cv=pass;
         d=google.com; s=arc-20160816;
-        b=VTLvFM8xmjoaB3cOnzrpuIzauN0X25IRxTxm15cjQNA34q1NjnmlnSMK706QQxJCAK
-         OUbp3ae8xGlj3gad6hsiZ4g4RhYye+P4EVjJe35Gn/04VUJQhgNoGIGh+icrxhEcJJcr
-         xLHQ94Qn80XLI8lUKM3+fsI3WoRGLtWNMDAZdfedgMEY66Bib4RkSO9PNmOF6QRrOWyo
-         79ueaBkiRiyrqNtoEpz0t1vDhI60i65CM9oAZfkbgPIWN2Nx39TqqRDVpyplOhtjXUDv
-         lz00LnBazpa8RiXR0XtEOUm1xDk0qOCDxNAolubEqTSmiYBZldUe3oJKnOtSX1hYegN6
-         ibAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Np/n1rnCiUdez0gc8TjxLoZ5CMFD9a8Hp3oNWLujvMsJIs82OHnqFIA6K19jxqNIPm
+         nQXSDygkxPzi9B0oIjL+ZlEqQTkCbOhKweM8vfbCjQ98l4SZ9F/qMAm0yaKf4VGfPvaa
+         Wh5OFg29BcInvUV6wpVHiA0DH2UB+LdSIbcOg8EwoX8JlbDati0WOYSd17tA+wI2vs+7
+         kCtS974W/OiG1vCxvUDjYqDfaD6RtuVblL37E7bALLqlGSNUogSA13HbCDNgTcdO6STP
+         wiDL6hgL9xtf3jL7Gt3SHFo/6Uw995gTQW1ODm6V3+8fMi54e/H0fkA2MWxILaAY7UJs
+         vTgQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=KRQfI5qQvvUoDhheHKWnDUAK2fiyxZ85hutxnpZHL9s=;
-        fh=Opj6zNUL9iVY7aS88912KGmtMv5tw1K0QuP7ETXYtDw=;
-        b=jfb4r6p6knbQTfFHxNmuDtFAdDkpM7ImZuhFUlwjv2T9CUAkJO10yt5ViLKcv/+/UE
-         2zdoW3Yo9C34++JqmkBLGjZ5tHidj1V9dRMow0PeXDjFJKlOCN2NJpndFr9sUD32gHic
-         rhZ0+7kwzHslEJ5EH2bxc8AXvP+0iXV2S1wvP4UcZxYIRrfIch3J43HAx7s5RHtMaQxs
-         iHL0s7+QDNeuz2kzD3FGqaymM3/3Uu5vxIdE1x0xouHDMCaJ7TrfQlHTjC99M1EvATuG
-         6dg13+hD/9EIci7gJr4ufgEhzGDv2h2J36ymvHqsjDFF+HiJQmCINFcZ3lVQ9iDX/acG
-         Y0oA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cbmWT65Z;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=R/03CGGxvxDKjMA9ua9arAkhkEtiln8qpbJBfUPllT0=;
+        fh=9ClbnsNZDyLOnHhDnxzkTZHfGKRvuGQvRXQMDkcm5A0=;
+        b=TVQI15PWwADDuOISBvDQDvAAlhDfgNxmswQrIvQ9mu2drz+ZwFyfi1k/r3PEdGNmVO
+         oLKpM8srif9uPl4pjnwVgf64jiIXr6CWyQNn0E4ZFcPnk2oB/kRX3g+Bp/L5fmYtjbU9
+         A4X88ZT4IqtfLqAE0vf47BcOkG/fxf+v93bacYdfpkilxeMMROdr68hHrBnRIRAV+FrC
+         jW662p+eWdytlFk1Jp96oy3I6aHWdDmjQN6JWGH5tceyayLvW3gXeY0mJIF5qh13gVng
+         hrCxnthfrQuQ3N5Dy4AG1pf71/ZmMeSamFPW3NMeUBtih7fl5iuukVhMrLN1P1CCCYfZ
+         lSsA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=hzp5PurJ;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id sn20-20020a05620a949400b0077074ac99besi3318275qkn.763.2023.09.16.02.26.59
+        by mx.google.com with ESMTPS id i63-20020a256d42000000b00da10f6bbf50si35358ybc.453.2023.10.26.12.14.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Sep 2023 02:27:00 -0700 (PDT)
+        Thu, 26 Oct 2023 12:14:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cbmWT65Z;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=hzp5PurJ;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qhRZC-0007bt-Vg; Sat, 16 Sep 2023 05:26:19 -0400
+	id 1qw5np-0008Fj-L7; Thu, 26 Oct 2023 15:13:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1qhRZB-0007bb-2L; Sat, 16 Sep 2023 05:26:17 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1qhRZ8-0006Br-Cn; Sat, 16 Sep 2023 05:26:16 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-52a4737a08fso3373712a12.3; 
- Sat, 16 Sep 2023 02:26:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1694856372; x=1695461172; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=KRQfI5qQvvUoDhheHKWnDUAK2fiyxZ85hutxnpZHL9s=;
- b=cbmWT65ZxTRkdwGqYavW8CFlYLAA98rvhXGo4ghcauj0r/J4JO/ZUQV6s5Vb+pjcgX
- NBbSdoW45oWAOS0tGVbp8+vi6XXoC38L6ntaso8jMy8ED1m3d8WmHWoPtv3yDl1DJ/7M
- 5n29QKC8wredhUs0obgOsQEvc/+KQSCgOeX7umBr6v1jR9sMFWoJ9y/lk/rKXnMAcC1x
- E/kQ5HAMJwe5L8hypcHOuAI3P+yg/bTFKsrWOPQw8YuncbyLyxwUhRlxiIaRTwrdnbHR
- Fb1UXP3QtF2Gdrm0Y/+SqkowKfkKvXVCDqkVrC1kvYYyL9kpTjmBzqm9uO/uAtUXSpjL
- IkpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694856372; x=1695461172;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KRQfI5qQvvUoDhheHKWnDUAK2fiyxZ85hutxnpZHL9s=;
- b=bvY3xkyrf2I/C+LrvcQQhjAT3MztjtUIDGuKRxgv3FJ1Au3cbXf//CqVh8gFl0ECDR
- Vzijmhi1gV3K3SR+GoujZMAiTWQINHHgfNFLLu1ncvx3eVVKkkjINR8iN8M8xoloJghZ
- KRnCa30yix4ma0Mc8PwS5VXlrIjchM0qy26a3n4edNuXh7/H2+K8O1kOsGm/NL/3tl8/
- k3aP5li8hRc3H5D1TEtmaGkZJIsG4guFHn2JD1JwSL7euFINRj4F2JoFS2AGQLfXj1O4
- 0Uw2ZUQ5UE7bvGor2bjMzRmysFhM10sz6d4hGglkFMWPDS4C8yIOo1ulZEf3C8nJh0HZ
- iDZQ==
-X-Gm-Message-State: AOJu0YxcCFucyVZxDH1o5j0+p+4xTf8TmPuqJhmvIiSK6UjKkrzdLnPo
- prvvO7asidECLHmGmAwdHXrdgj0rJZ9FGm//Zzw=
-X-Received: by 2002:a05:6402:b32:b0:522:2782:537 with SMTP id
- bo18-20020a0564020b3200b0052227820537mr3131420edb.15.1694856371793; Sat, 16
- Sep 2023 02:26:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bcain@quicinc.com>)
+ id 1qw5nj-0008CT-5O; Thu, 26 Oct 2023 15:13:52 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bcain@quicinc.com>)
+ id 1qw5nf-0005XJ-Ec; Thu, 26 Oct 2023 15:13:50 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39QIJaKg019345; Thu, 26 Oct 2023 19:11:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=qcppdkim1;
+ bh=R/03CGGxvxDKjMA9ua9arAkhkEtiln8qpbJBfUPllT0=;
+ b=hzp5PurJXe/PaARO44WALQpTkLjwzZarcXV6F/NzccqdJvE+osqOAtgCNZ/59zocXH5U
+ D+fBkAjjEW/82IAmGbsgZTdePoEGbJKKpu8vZfL1IhsjFoZeymvikdELNfWxetAmEUH5
+ smxVT5JGQ46sYMBDARC3q309W490nDeBJMYvPVhJLqedIoHIrw24dkNBdrAqvpMo4ebc
+ JnlUAH+MnYRj7njVNuKhHtQpN5aour1DMWzRK+4EjuBriaG2s9om8nREWrYH9+U8equW
+ R/Zks0gHQ4owAEUQ3g6x/kQZ3o+VD2VnLEKsp5l0aN1CYNN4H0+wk/353zq5oq5mKdmR 8g== 
+Received: from nam04-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam04lp2168.outbound.protection.outlook.com [104.47.73.168])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tyq8ts4g1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 19:11:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UTXv0svH+ItXRp6gyl4cA8ScwtV7mEJpXWDf4cZtg+jIyHKt6INd9/FXaffiJgSV124TmHdEciKBnEFSKnXEh05Hr+j/XLGfqLLg0p/7St2rMWxbLF62Zyk6eVWGg31eo7FNlEqoztMqclpEKgA+uV9gNaxCadvwSsjhXZLy/BlqKvGisl3Ac3tVaFTmYGoTHc5uiLTZMkC8F5G50qPNigXbYGt1VakCoCJMYHqqGVi3r9lnnzzuLfr7TPIpHRP7+e7TilSoDDYVTrDgAisLp5Ol8w2I69asNgR2GZmR4zeW2npnjJLiLwpVoSYMCghPyuYcF6XNxtDKnhpztigxmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=R/03CGGxvxDKjMA9ua9arAkhkEtiln8qpbJBfUPllT0=;
+ b=QNb/uZXUMODY3cgeNDr7a41Lez3Dcl+ABY9/2JqA85VlrTjFRvZSRRVQntUftPWyTg9OD7dvz/AtrfoDSdV//KTOAXDfgTyKhGpYPz6DEPspLGwlPMN41e+F3bGBe4DfkEj3+HAks45SxWaTIPPW2MG4c8HV8sbI1mCc/ZBLkZ42ViVJbenn7hGJJiP7TaIXLub8KyNXQZ4Z9iVCsP1OFvsN91oOviczFgZbedLP7eneGlrSJXudNIXg+pYaQ7qJrhgwhDRD5A8wcYwrOS8uJae7rUxB6wm2jWEj2HGSvsEBiGh95idbvTdXmc6ESsIBXET3SeftZ9jtw+agmukM7g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+Received: from SN6PR02MB4205.namprd02.prod.outlook.com (2603:10b6:805:35::17)
+ by DS7PR02MB9528.namprd02.prod.outlook.com (2603:10b6:8:ee::8) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6907.33; Thu, 26 Oct 2023 19:11:48 +0000
+Received: from SN6PR02MB4205.namprd02.prod.outlook.com
+ ([fe80::546b:93ec:1242:265c]) by SN6PR02MB4205.namprd02.prod.outlook.com
+ ([fe80::546b:93ec:1242:265c%6]) with mapi id 15.20.6907.032; Thu, 26 Oct 2023
+ 19:11:47 +0000
+From: Brian Cain <bcain@quicinc.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Eduardo Habkost <eduardo@habkost.net>, Xiaojuan Yang
+ <yangxiaojuan@loongson.cn>, "Michael S. Tsirkin" <mst@redhat.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, David Hildenbrand <david@redhat.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Song Gao
+ <gaosong@loongson.cn>, Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne
+ <shorne@gmail.com>, Alistair Francis <alistair.francis@wdc.com>, Yanan Wang
+ <wangyanan55@huawei.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Laurent Vivier
+ <lvivier@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Bastian
+ Koppelmann <kbastian@mail.uni-paderborn.de>, Bin Meng
+ <bin.meng@windriver.com>, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Weiwei Li
+ <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Nicholas Piggin <npiggin@gmail.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Marek Vasut <marex@denx.de>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+ Sergio Lopez <slp@redhat.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Michael Rolnik <mrolnik@gmail.com>
+Subject: RE: [PATCH v2 07/16] target/hexagon: Declare QOM definitions in
+ 'cpu-qom.h'
+Thread-Topic: [PATCH v2 07/16] target/hexagon: Declare QOM definitions in
+ 'cpu-qom.h'
+Thread-Index: AQHZ/d3yRByVIjD2sE+oaNdjskhp+rBchJ1g
+Date: Thu, 26 Oct 2023 19:11:47 +0000
+Message-ID: <SN6PR02MB4205FD8EFF7EC0665C508297B8DDA@SN6PR02MB4205.namprd02.prod.outlook.com>
+References: <20231013140116.255-1-philmd@linaro.org>
+ <20231013140116.255-8-philmd@linaro.org>
+In-Reply-To: <20231013140116.255-8-philmd@linaro.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SN6PR02MB4205:EE_|DS7PR02MB9528:EE_
+x-ms-office365-filtering-correlation-id: c864c48c-88a6-48d6-93e4-08dbd65766a6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ngYU6eXDpKtlHxHmfSnNbPkdluVyzPosMZWTQskDZ/SFuV0D8Ych5EAiMO7YnKCHFf8fZugr9Ke9oFzzyLDRLmhBTMNdSwHPo96XWGfC37tB3I0a3f3tOhDRbSh94pGNa3lNse2rWX/CD+5DwO8D8dfKUVDq5X5HXEJON13srA9AOmP2NbGwrsEP7dbIi3M4JXKT1ltPsA/k3kQ/S2SBTlwjy27q60Nj8CjU2P24YFapqEb+Th60T4e1Cz/Rt1pdQcuwV71h5swwtYPiliyVWvNenoMSIFw8fwudMorUPxZcRK4zsPRfyAUp5rZInu4BVcCsHfCD9GkVbRvNhy+wmBkJHzEYi65MhQ4VdWmRU4Iw1L4e4uyFJP5S+i5qyq98FIpUU4ZYjju/1KW8siepwa6eubU+hW3eJgW3NKNcqF3KeMIMjJbJCb+z6vfqyUsSpDZoVIoDfyPVsQ8HgeyK3LA3B+WEme+yXu0c/3bzgBAnrOZ7jcjcdpgcgyDUA1v/AG2Ei2PDEH9AEuasWz+gBINKh9pjmavmDJ6ePT50HCipoPBtWU98c+0a5hBUnsjNmLT+sCe5REHtCH/NMzD4e407e9bliU4+hRBe6UYD2zYgmHsgHNID0ripQrNlytgU
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR02MB4205.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(346002)(396003)(376002)(366004)(136003)(39860400002)(230922051799003)(451199024)(1800799009)(64100799003)(186009)(52536014)(5660300002)(4326008)(8936002)(83380400001)(122000001)(7696005)(38070700009)(41300700001)(6506007)(8676002)(26005)(66574015)(316002)(66476007)(66446008)(9686003)(55016003)(54906003)(64756008)(66946007)(110136005)(76116006)(38100700002)(66556008)(53546011)(71200400001)(478600001)(86362001)(7406005)(7416002)(33656002)(2906002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bXI2eUZmN2xWOU4reWEycHhsWFBwZklUOU9tckJweDBOdUV6dEJ1bUlaN2VV?=
+ =?utf-8?B?NmZ5bnhVeWF2aW93dk1LZWhjck5vWWhpaExXV2w0VFAzcVczNm90UWhvU0xH?=
+ =?utf-8?B?NFMyZVp1RXNFWHZ4eEZxK3RWaHlGaDNyZUNIYTZ5dGlJcE5NQTlRNHViQ2dL?=
+ =?utf-8?B?SHdKaG5nTnlqcDltTFpIRzlyTzdUZVlIZDdkeERQWFI2Z294a1QrZlBnaHZW?=
+ =?utf-8?B?YjJSdWNxQ3hhTWNLcXI5WHR4ZkZJNk1sWm1kd0dyS0JmaXlJQWFxdUVmaW1v?=
+ =?utf-8?B?OEhyU2RmOG03VXhwUnprVWNWMTFENGJreXJiVGhrVFNFQW1JUE9ac0tVbVlQ?=
+ =?utf-8?B?MndHaVBnR2UxZGVvMm1GNmxEaS9RaDlkMHlYNGwyQmVDR3k0d2JJS0ZmS0o2?=
+ =?utf-8?B?TWlNOHRuclJGNURWM3ljcUN4T3RsWlc3U2EwL3VXRThkOUc4K0dkYk83RUpr?=
+ =?utf-8?B?ZVhKREFkYzZWNk9UVkRhOVhIcCtKY3RsQnp5RDlXeDgyMDVxRGg0ZnNnaW5o?=
+ =?utf-8?B?R09EYWgzNVlZYXJBdy8yL3NDcnd3NDV3c0xRNk9MdHBUZlk1Zmo4dWQ0S3ds?=
+ =?utf-8?B?bDF1MjFINFBOcENwdnNmRHh2NW13dUdYd1BVSVZZRHZhWWFmd3FPb1paYkpr?=
+ =?utf-8?B?enVNUzRlS3gyZldGT09NVDM0WG1VNmlBYUQ4Vi9OSDVPZzFyaHUvdUJiRk9T?=
+ =?utf-8?B?cTg3RmhlUGN0Y0xJT1dSWmhVT2lHL3JCenErdE5qdlpQVU03Qkl3cVRabVpO?=
+ =?utf-8?B?RW5idGdSQTg3TThTb0dpRWZYZkIxRGFmenlOU3lNZE5uVVRqR09GK1RkL3Rn?=
+ =?utf-8?B?eXJzUlFLcE1tYmdIQzRWZGRkdHIwOUxkeEZiUTJvSS9MeHpQeDJkWFMyNmR3?=
+ =?utf-8?B?bzgxUGt2ejJkaGZJdVA1NmJkRWpCNDRLMlZoeTRMblN0TFF1elZEMHA5L3R2?=
+ =?utf-8?B?RG1VTmhoWE56L2Zlc2ordUJiOE5wZ295bzR2TjI2WkErNzZ6ZEtNL3Q5WDhY?=
+ =?utf-8?B?TFRmTGROQXZ2b1ZEbnNwYjRoc1NCUUJSQlliWEhDM0ZMUFNGazR2dDB5YWFV?=
+ =?utf-8?B?YktvRVRYTTlnV25aclBzdTJMZlk5Q2ZtUHRhLytDZGYyYmw0NCt0eCs1NWJQ?=
+ =?utf-8?B?QTg1VVFNdWpLcUx3d3FyOVAyZndQM3NNdDhWd0ZUOU84RHMxWmJzK1lBOFoz?=
+ =?utf-8?B?SW80NXAxMkZHelFITGdoemtDelVORSthd01ZVE40MjRKNlMzNTZNaW8vc3hV?=
+ =?utf-8?B?QmJ1dWJ3Wm5DUytmb0ZzUlBpSnVnallJbXo1c3lmVmN0QmZZVmJOY1dCbG53?=
+ =?utf-8?B?T1RrbWRsR3VINjZzSE9IbW5SaGYyek5XVlA1WlRvYW9ORGlMNC84aTMrNlhk?=
+ =?utf-8?B?YVJrbmp5QkNlS2dWZjcwUnJCRVk3THVlWWJnaVhOQkp0V2pQd3ZrQUhMam41?=
+ =?utf-8?B?SUZBaFFnM1pZeVB2Q2xubnJCZzFwU2FsdVBRTWFOd09tV094Sm9vR0pndlg2?=
+ =?utf-8?B?RnVqeUhBV3hNcG9LTnVUYWhOWjhiM0pSa3h0MDJBMnBZUlZNL3RzNnVwS3BJ?=
+ =?utf-8?B?bjZyZ0hSc1R2YTIrbktCNXZSYXhqVnFJNHA1UnJsTnBqZ1lONnRuVmZlT09N?=
+ =?utf-8?B?eGIxUlBUdU16NjM4aEZlY1Q5ZklWcmJDNTFMcmlSSFkwOHZTOVRWUUJ1eXZG?=
+ =?utf-8?B?akVsZGY3ZHBlNGNtY1pIeTROMXdraS94UTVPRllIUTFIR05VV0VuQzZtK051?=
+ =?utf-8?B?YXpUWUZXL2xWb3UrV1BaS1lySThyUnh6czNpa2RkQUdSSlpZWDkra2UrN3pO?=
+ =?utf-8?B?dnBqcUNwWXlvckpjN0Rhck5aL2o3d3VvM1d0NTRRTXAvOEZtcHVlUWlZSlFw?=
+ =?utf-8?B?MVljdFYyUGhnRE5UenBRL0tQaDVQUWhlTHpya3ROUkpMaGVkVzRQTi9HbGNl?=
+ =?utf-8?B?ZkFKSVB4eVk0YkpMeTlpeCtiN0NMTkJaa3hDZjFyVU9XVWtzTTJmbU5hVHNJ?=
+ =?utf-8?B?ZVd5TVp2Y0U4bGlFTjVQdjFhQ1ZHYjNzb3paU2FMbGUzVi9ETVpPdWQ4V09G?=
+ =?utf-8?B?dTZ4TG9idU1RaklFVGZKZHBIL3BFajR3TVdwUXJ3MlJEUzVTZU41Q1RuaElk?=
+ =?utf-8?Q?yaA0=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20230905201425.118918-1-strahinja.p.jankovic@gmail.com>
- <20230905201425.118918-6-strahinja.p.jankovic@gmail.com>
- <CAFEAcA-601OV-RDDy4V+b7+2Ciyer8LSRiz+tfLHMWBTgwXvPg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-601OV-RDDy4V+b7+2Ciyer8LSRiz+tfLHMWBTgwXvPg@mail.gmail.com>
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Sat, 16 Sep 2023 11:26:00 +0200
-Message-ID: <CABtshVTOAwtSZKyNQtmM+=5NG8d5RLQ8=ef9MB=4qkF62aw2BA@mail.gmail.com>
-Subject: Re: [RFC Patch 5/5] hw/input: Add Allwinner-A10 PS2 emulation
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Beniamino Galvani <b.galvani@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000fc72760605767fae"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x529.google.com
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?utf-8?B?M3daL1YwcjBlc25RdTl1Q1lDclBWV2REYXkybUhvYWpqVWdYcmpmbEM2VGND?=
+ =?utf-8?B?U2tmYmJaKzRCY2xvVWo4VGxBZ1hycnB1Q1NFOFFYTU9IQ21qUjkxVTEycG8w?=
+ =?utf-8?B?cENNWlFPRkUwMUVnV3RDV1ZkWGdPWHppTmdxZXRZVzI4SXhWRjFwNlp6QXI4?=
+ =?utf-8?B?WWpDN0hQOEVNTCt5NmtiNE1yVkZqOU1FWEh2YTloZUk1ZzNBbXdsVGx3aGdV?=
+ =?utf-8?B?TGJKbDkxa3lLQllRemRPYmxMbWtzRmRWckJwdGRreGtkMWRVTXJKb3lieFNB?=
+ =?utf-8?B?dWlQV1pSYXZRQjh5ZEFlN1VPbUNRS2wzd1ptUTZtK3pXVVR1M2t0SitzbVhZ?=
+ =?utf-8?B?R1lRaFRIZ3piZzJMM3FjeWcvQy9penFoVFc2djJuYU15bFlya2R0UW1HWkh0?=
+ =?utf-8?B?UlNKQUlUQk1CMEIzeTh0b1R5SjhQbUZPV2VlaUZPa25taVZKU0gwNHV6d01P?=
+ =?utf-8?B?SCtkNEhWdDBNOFJBWlRmWHlkeFZ6eUp4cEVwS1NibFM1QWwzVHJNU0x4WDZO?=
+ =?utf-8?B?WjIraXhhdjFMR3M2bXpwSG1FUDJSTitjSmZoQVp2R3IyZXpvL2M0cnhNSmpE?=
+ =?utf-8?B?ZG14WEtSaXk2MHNESGxNOFJCdWdpREp6Yk1Ra0pseU9SUjRPSTdwakZWVEhk?=
+ =?utf-8?B?blRuUlFMR2hGWllyb1I1YXE3Y01YNk5yU1YxNEpNdW4yRzJOVzhXS3lvT1U5?=
+ =?utf-8?B?bTlCSmIxdXlwNHRBZFI5SjlLaXBUdGoyY2hybC8yaWdOQWlFcFNiOGoxOWtv?=
+ =?utf-8?B?UHg2ZVBLbkpUYzkyUmt5ZitjTHZXMXZOd3NlRWxNcGlGZE42dWg0N28wcmZ1?=
+ =?utf-8?B?SlJTNmUzaDdPNHMwQlRYTzIrcTc4SkUrUW1RMXJFTVl3anU2Vlc2aXkzWEor?=
+ =?utf-8?B?MWd2Ni9DSWJIZ0dDcXdmZzRIZ0prWTNzd0M1QzQyaEN0QVlJbE1YU1ZvWVFh?=
+ =?utf-8?B?a0Vra1B1VFVaOG04V0pHSGRZbjUzandNWWhLanIvUjFRcGhZWnhtWWkrZEJB?=
+ =?utf-8?B?VHI5S2x2M2tkYzZWRUpDcXo0ZWVxbUdFdFNHbVYwNnh4SDdaWk9Db01wa3VR?=
+ =?utf-8?B?SzVPQU5CZTRXZ0owaUpoUXdnU0UycEMrTUV3dElHQjNOTEFhNVhqa05QaVdQ?=
+ =?utf-8?B?QU44anJtQ1VMbTJLVUNSNURVZlB0NHI2RjEzcHNGTG0rUVBpZDcwMVNlaHJZ?=
+ =?utf-8?B?MFVmZjdHYjRuRkFhallNTlp1REQ2cG13S2o4SWlCZ2h2VUN3K1M5S09GY1Q1?=
+ =?utf-8?B?K2xVUEdMYzArTnpkOTUxN2Q5WkViKzNmRTVaQVN4MUVOTXhNa3paRHhwOFRF?=
+ =?utf-8?B?MzVZWk9mbFJTaElCWkFIQituWFNERUxrZHpGdml5SEp1MjNJcVQraFhuSXFJ?=
+ =?utf-8?B?dDBiWFBDUWpvWTBucWlqOERwUHRFc1Znd2J4WDQ5eis5cyt4ZGo5d3dOb2xH?=
+ =?utf-8?B?VlVJWFNMazhxZXB5TlpRZzljYVBKc0ZmRllRTFpQVHA2KzVHbDVPU25vZW5M?=
+ =?utf-8?B?OGtNV0VYSnJkak0ybmFya3VJdjVGak1xMU1sc0dCbXNZeml6c0dQcVhpdEZ5?=
+ =?utf-8?B?ZXpmS3phYVdseEJTVFFjT2VOR3lXWEZzQjdFN3dxQlZtUWRGSWt0dlZIazhE?=
+ =?utf-8?B?bVVDNm04RTh5eTFxQnV0dWlKVitGRmY2MGxWSEpueVVMVXNqN3EyNHUxaTZP?=
+ =?utf-8?B?N1N2bWg1aElXZ1dVSndueG4ySitQbXJvVXQvakdjdlM1NWtrb0hlYTRja0Rs?=
+ =?utf-8?B?bTBOTTcvV0VFSTZQVFlZQXVnMk13NVFkVHRYdjdmTDZ5ZGVCbzZudlpKRmNQ?=
+ =?utf-8?B?WkFOUkF2dFJyNG1lbFloU2tyRHFDTWF2UXBoMWJKcGs4ekcxTm9GQ256cU80?=
+ =?utf-8?B?MDdLc1RGYlZ2djZKRFJIdklQcGN0d1B2cWVCTnNWQUZDUk9Xd295aEE5MjQr?=
+ =?utf-8?B?OUFqei9BRkZaNFlidEdoNlRyR2FiYTlaRExndVQwamZlVWxxSXZ3RzV5VSs3?=
+ =?utf-8?B?QjVadUl2REZ0MHdrNUcvTkFhbVcyOGxENHM2Yk5xSDBCcjhhMWh2akU4QWph?=
+ =?utf-8?Q?gJHOEp?=
+X-OriginatorOrg: quicinc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR02MB4205.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c864c48c-88a6-48d6-93e4-08dbd65766a6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Oct 2023 19:11:47.5667 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IdqFYfIVimsv7pb+i9X8SLO3NcfH+1RcovxxSXpX9kPRMm81En2qglxqp5MXfD+usn6E7uD/6GANYrMuneHfig==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR02MB9528
+X-Proofpoint-ORIG-GUID: ShMcHET2xLWCrCdEJVHwXVReaRnFfdA1
+X-Proofpoint-GUID: ShMcHET2xLWCrCdEJVHwXVReaRnFfdA1
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-26_17,2023-10-26_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 spamscore=0
+ malwarescore=0 bulkscore=0 phishscore=0 lowpriorityscore=0 mlxlogscore=484
+ impostorscore=0 suspectscore=0 adultscore=0 priorityscore=1501 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310170001
+ definitions=main-2310260165
+Received-SPF: pass client-ip=205.220.180.131; envelope-from=bcain@quicinc.com;
+ helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,410 +266,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1P3+VMmSj0cd
+X-TUID: 2xnnR9ePgMYG
 
---000000000000fc72760605767fae
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Peter,
-
-Thank you for your comments.
-
-I used the PL050 component as a starting point, but I did not clean things
-up well after I saw it working. I will clean it up before sending the new
-patch version.
-
-On Fri, Sep 15, 2023 at 4:23=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
-
-> On Tue, 5 Sept 2023 at 21:14, Strahinja Jankovic
-> <strahinjapjankovic@gmail.com> wrote:
-> >
-> > Add emulation for PS2-0 and PS2-1 for keyboard/mouse.
-> >
-> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
->
->
->
-> > +static int allwinner_a10_ps2_fctl_is_irq(AwA10PS2State *s)
-> > +{
-> > +    return (s->regs[REG_INDEX(REG_FCTL)] & FIELD_REG_FCTL_TXRDY_IEN) |=
-|
-> > +        (s->pending &&
-> > +         (s->regs[REG_INDEX(REG_FCTL)] & FIELD_REG_FCTL_RXRDY_IEN));
->
-> It looks a little odd that you need a separate s->pending bool here.
-> Sometimes hardware does odd things, but the most usual situation
-> is that the pending status of an interrupt is directly reflected
-> in a register bit somewhere, and "is the interrupt high" logic
-> is then just "is the pending bit set and is the enable bit set".
-> Often the bit positions are deliberately the same in the two
-> registers and then "is an interrupt set" is something like
->   if (s->regs[REG_INDEX(REG_FCTL)] & s->regs[REG_INDEX(REG_FSTS)] &
->       (TXRDY_IEN | RXRDY_IEN))
->
->
-Yes, that makes sense. I will try to improve this.
-
-
->
-> > +}
-> > +
-> > +static void allwinner_a10_ps2_update_irq(AwA10PS2State *s)
-> > +{
-> > +    int level =3D (s->regs[REG_INDEX(REG_GCTL)] & FIELD_REG_GCTL_INT_E=
-N)
-> &&
-> > +        allwinner_a10_ps2_fctl_is_irq(s);
-> > +
-> > +    qemu_set_irq(s->irq, level);
-> > +}
-> > +
-> > +static void allwinner_a10_ps2_set_irq(void *opaque, int n, int level)
-> > +{
-> > +    AwA10PS2State *s =3D (AwA10PS2State *)opaque;
-> > +
-> > +    s->pending =3D level;
-> > +    allwinner_a10_ps2_update_irq(s);
-> > +}
-> > +
-> > +static uint64_t allwinner_a10_ps2_read(void *opaque, hwaddr offset,
-> > +                                       unsigned size)
-> > +{
-> > +    AwA10PS2State *s =3D AW_A10_PS2(opaque);
-> > +    const uint32_t idx =3D REG_INDEX(offset);
-> > +
-> > +    switch (offset) {
-> > +    case REG_FSTS:
-> > +        {
-> > +            uint32_t stat =3D FIELD_REG_FSTS_TX_RDY;
-> > +            if (s->pending) {
-> > +                stat |=3D FIELD_REG_FSTS_RX_LEVEL1 |
-> FIELD_REG_FSTS_RX_RDY;
-> > +            }
-> > +            return stat;
->
-> The logic here also suggests that the code would be simpler if you
-> keep the TX_RDY and RX_RDY state directly in this register value,
-> rather than hardcoding TX_RDY to always-set and keeping RX_RDY
-> in a separate pending field.
->
->
-That makes sense, I'll fix it.
-
-
-> > +        }
-> > +        break;
-> > +    case REG_DATA:
-> > +        if (s->pending) {
-> > +            s->last =3D ps2_read_data(s->ps2dev);
-> > +        }
-> > +        return s->last;
->
-> You could keep the last returned data in s->regs[REG_IDX(REG_DATA)]
-> and avoid having to have an extra s->last field in the state struct.
->
->
-Ok.
-
-
-> > +    case REG_GCTL:
-> > +        {
-> > +            if (allwinner_a10_ps2_fctl_is_irq(s)) {
-> > +                s->regs[idx] |=3D FIELD_REG_GCTL_INT_FLAG;
-> > +            } else {
-> > +                s->regs[idx] &=3D FIELD_REG_GCTL_INT_FLAG;
-> > +            }
-> > +        }
-> > +        break;
-> > +    case REG_LCTL:
-> > +    case REG_LSTS:
-> > +    case REG_FCTL:
-> > +    case REG_CLKDR:
-> > +        break;
-> > +    case 0x1C ... AW_A10_PS2_IOSIZE:
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset
-> 0x%04x\n",
-> > +                      __func__, (uint32_t)offset);
-> > +        return 0;
-> > +    default:
-> > +        qemu_log_mask(LOG_UNIMP, "%s: unimplemented read offset
-> 0x%04x\n",
-> > +                      __func__, (uint32_t)offset);
-> > +        return 0;
-> > +    }
-> > +
-> > +    return s->regs[idx];
-> > +}
-> > +
-> > +static void allwinner_a10_ps2_write(void *opaque, hwaddr offset,
-> > +                                   uint64_t val, unsigned size)
-> > +{
-> > +    AwA10PS2State *s =3D AW_A10_PS2(opaque);
-> > +    const uint32_t idx =3D REG_INDEX(offset);
-> > +
-> > +    s->regs[idx] =3D (uint32_t) val;
-> > +
-> > +    switch (offset) {
-> > +    case REG_GCTL:
-> > +        allwinner_a10_ps2_update_irq(s);
-> > +        s->regs[idx] &=3D ~FIELD_REG_GCTL_SOFT_RST;
-> > +        break;
-> > +    case REG_DATA:
-> > +        /* ??? This should toggle the TX interrupt line.  */
-> > +        /* ??? This means kbd/mouse can block each other.  */
->
-> I don't understand this comment. It looks like it was cut-and-pasted
-> from another device where it was originally written in 2005 (and
-> I don't understand it there either). We should either understand
-> what we mean here, or else not have the comment at all...
->
->
-Yes, unfortunately I missed this one before sending it out...
-
-
-> > +        if (s->is_mouse) {
-> > +            ps2_write_mouse(PS2_MOUSE_DEVICE(s->ps2dev), val);
-> > +        } else {
-> > +            ps2_write_keyboard(PS2_KBD_DEVICE(s->ps2dev), val);
-> > +        }
-> > +        break;
-> > +    case REG_LCTL:
-> > +    case REG_LSTS:
-> > +    case REG_FCTL:
-> > +    case REG_FSTS:
-> > +    case REG_CLKDR:
-> > +        break;
-> > +    case 0x1C ... AW_A10_PS2_IOSIZE:
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset
-> 0x%04x\n",
-> > +                      __func__, (uint32_t)offset);
-> > +        break;
-> > +    default:
-> > +        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset
-> 0x%04x\n",
-> > +                      __func__, (uint32_t)offset);
-> > +        break;
-> > +    }
-> > +}
->
-> thanks
-> -- PMM
->
-
-Thanks!
-
-Best regards,
-Strahinja
-
---000000000000fc72760605767fae
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Peter,</div><div><br></div><div>Thank you for your=
- comments.</div><div><br></div><div>I used the PL050 component as a startin=
-g point, but I did not clean things up well after I saw it working. I will =
-clean it up before sending the new patch version.</div><br><div class=3D"gm=
-ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Sep 15, 2023 at 4:=
-23=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org"=
->peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">On Tue, 5 Sept 2023 at 21:14, Strahinja Jankovic<b=
-r>
-&lt;<a href=3D"mailto:strahinjapjankovic@gmail.com" target=3D"_blank">strah=
-injapjankovic@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Add emulation for PS2-0 and PS2-1 for keyboard/mouse.<br>
-&gt;<br>
-&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
-nkovic@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<=
-br>
-<br>
-<br>
-<br>
-&gt; +static int allwinner_a10_ps2_fctl_is_irq(AwA10PS2State *s)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 return (s-&gt;regs[REG_INDEX(REG_FCTL)] &amp; FIELD_REG=
-_FCTL_TXRDY_IEN) ||<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (s-&gt;pending &amp;&amp;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;regs[REG_INDEX(REG_FCTL)] &a=
-mp; FIELD_REG_FCTL_RXRDY_IEN));<br>
-<br>
-It looks a little odd that you need a separate s-&gt;pending bool here.<br>
-Sometimes hardware does odd things, but the most usual situation<br>
-is that the pending status of an interrupt is directly reflected<br>
-in a register bit somewhere, and &quot;is the interrupt high&quot; logic<br=
->
-is then just &quot;is the pending bit set and is the enable bit set&quot;.<=
-br>
-Often the bit positions are deliberately the same in the two<br>
-registers and then &quot;is an interrupt set&quot; is something like<br>
-=C2=A0 if (s-&gt;regs[REG_INDEX(REG_FCTL)] &amp; s-&gt;regs[REG_INDEX(REG_F=
-STS)] &amp;<br>
-=C2=A0 =C2=A0 =C2=A0 (TXRDY_IEN | RXRDY_IEN))<br><br></blockquote><div><br>=
-</div><div>Yes, that makes sense. I will try to improve this.</div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void allwinner_a10_ps2_update_irq(AwA10PS2State *s)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 int level =3D (s-&gt;regs[REG_INDEX(REG_GCTL)] &amp; FI=
-ELD_REG_GCTL_INT_EN) &amp;&amp;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_ps2_fctl_is_irq(s);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 qemu_set_irq(s-&gt;irq, level);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void allwinner_a10_ps2_set_irq(void *opaque, int n, int level)=
-<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 AwA10PS2State *s =3D (AwA10PS2State *)opaque;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;pending =3D level;<br>
-&gt; +=C2=A0 =C2=A0 allwinner_a10_ps2_update_irq(s);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static uint64_t allwinner_a10_ps2_read(void *opaque, hwaddr offset,<b=
-r>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsig=
-ned size)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 AwA10PS2State *s =3D AW_A10_PS2(opaque);<br>
-&gt; +=C2=A0 =C2=A0 const uint32_t idx =3D REG_INDEX(offset);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 case REG_FSTS:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t stat =3D FIELD_REG=
-_FSTS_TX_RDY;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;pending) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 stat |=3D FIE=
-LD_REG_FSTS_RX_LEVEL1 | FIELD_REG_FSTS_RX_RDY;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return stat;<br>
-<br>
-The logic here also suggests that the code would be simpler if you<br>
-keep the TX_RDY and RX_RDY state directly in this register value,<br>
-rather than hardcoding TX_RDY to always-set and keeping RX_RDY<br>
-in a separate pending field.<br>
-<br></blockquote><div><br></div><div>That makes sense, I&#39;ll fix it.</di=
-v><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
-x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case REG_DATA:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;pending) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;last =3D ps2_read_dat=
-a(s-&gt;ps2dev);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return s-&gt;last;<br>
-<br>
-You could keep the last returned data in s-&gt;regs[REG_IDX(REG_DATA)]<br>
-and avoid having to have an extra s-&gt;last field in the state struct.<br>
-<br></blockquote><div><br></div><div>Ok.</div><div>=C2=A0</div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">
-&gt; +=C2=A0 =C2=A0 case REG_GCTL:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (allwinner_a10_ps2_fctl_=
-is_irq(s)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[id=
-x] |=3D FIELD_REG_GCTL_INT_FLAG;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[id=
-x] &amp;=3D FIELD_REG_GCTL_INT_FLAG;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case REG_LCTL:<br>
-&gt; +=C2=A0 =C2=A0 case REG_LSTS:<br>
-&gt; +=C2=A0 =C2=A0 case REG_FCTL:<br>
-&gt; +=C2=A0 =C2=A0 case REG_CLKDR:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case 0x1C ... AW_A10_PS2_IOSIZE:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
-out-of-bounds offset 0x%04x\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unimpl=
-emented read offset 0x%04x\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return s-&gt;regs[idx];<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void allwinner_a10_ps2_write(void *opaque, hwaddr offset,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint64_t val, unsig=
-ned size)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 AwA10PS2State *s =3D AW_A10_PS2(opaque);<br>
-&gt; +=C2=A0 =C2=A0 const uint32_t idx =3D REG_INDEX(offset);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 s-&gt;regs[idx] =3D (uint32_t) val;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 case REG_GCTL:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_ps2_update_irq(s);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[idx] &amp;=3D ~FIELD_REG_GCTL_=
-SOFT_RST;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case REG_DATA:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* ??? This should toggle the TX interrup=
-t line.=C2=A0 */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* ??? This means kbd/mouse can block eac=
-h other.=C2=A0 */<br>
-<br>
-I don&#39;t understand this comment. It looks like it was cut-and-pasted<br=
->
-from another device where it was originally written in 2005 (and<br>
-I don&#39;t understand it there either). We should either understand<br>
-what we mean here, or else not have the comment at all...<br>
-<br></blockquote><div><br></div><div>Yes, unfortunately I missed this one b=
-efore sending it out...</div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;is_mouse) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ps2_write_mouse(PS2_MOUSE_D=
-EVICE(s-&gt;ps2dev), val);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ps2_write_keyboard(PS2_KBD_=
-DEVICE(s-&gt;ps2dev), val);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case REG_LCTL:<br>
-&gt; +=C2=A0 =C2=A0 case REG_LSTS:<br>
-&gt; +=C2=A0 =C2=A0 case REG_FCTL:<br>
-&gt; +=C2=A0 =C2=A0 case REG_FSTS:<br>
-&gt; +=C2=A0 =C2=A0 case REG_CLKDR:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case 0x1C ... AW_A10_PS2_IOSIZE:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
-out-of-bounds offset 0x%04x\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unimpl=
-emented write offset 0x%04x\n&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 __func__, (uint32_t)offset);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-<br>
-thanks<br>
--- PMM<br></blockquote><div><br></div><div>Thanks!</div><div><br></div><div=
->Best regards,</div><div>Strahinja</div><div>=C2=A0</div></div></div>
-
---000000000000fc72760605767fae--
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGhpbGlwcGUgTWF0aGll
+dS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPg0KPiBTZW50OiBGcmlkYXksIE9jdG9iZXIgMTMs
+IDIwMjMgOTowMSBBTQ0KPiBUbzogcWVtdS1kZXZlbEBub25nbnUub3JnDQo+IENjOiBFZHVhcmRv
+IEhhYmtvc3QgPGVkdWFyZG9AaGFia29zdC5uZXQ+OyBYaWFvanVhbiBZYW5nDQo+IDx5YW5neGlh
+b2p1YW5AbG9vbmdzb24uY24+OyBNaWNoYWVsIFMuIFRzaXJraW4gPG1zdEByZWRoYXQuY29tPjsg
+cWVtdS0NCj4gcHBjQG5vbmdudS5vcmc7IEFsZWtzYW5kYXIgUmlrYWxvIDxhbGVrc2FuZGFyLnJp
+a2Fsb0BzeXJtaWEuY29tPjsgRGF2aWQNCj4gSGlsZGVuYnJhbmQgPGRhdmlkQHJlZGhhdC5jb20+
+OyBxZW11LXMzOTB4QG5vbmdudS5vcmc7IEVkZ2FyIEUuIElnbGVzaWFzDQo+IDxlZGdhci5pZ2xl
+c2lhc0BnbWFpbC5jb20+OyBKaWF4dW4gWWFuZyA8amlheHVuLnlhbmdAZmx5Z29hdC5jb20+OyBT
+b25nDQo+IEdhbyA8Z2Fvc29uZ0Bsb29uZ3Nvbi5jbj47IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOp
+IDxwaGlsbWRAbGluYXJvLm9yZz47DQo+IFBhb2xvIEJvbnppbmkgPHBib256aW5pQHJlZGhhdC5j
+b20+OyBTdGFmZm9yZCBIb3JuZSA8c2hvcm5lQGdtYWlsLmNvbT47DQo+IEFsaXN0YWlyIEZyYW5j
+aXMgPGFsaXN0YWlyLmZyYW5jaXNAd2RjLmNvbT47IFlhbmFuIFdhbmcNCj4gPHdhbmd5YW5hbjU1
+QGh1YXdlaS5jb20+OyBNYXggRmlsaXBwb3YgPGpjbXZia2JjQGdtYWlsLmNvbT47IEFydHlvbQ0K
+PiBUYXJhc2Vua28gPGF0YXI0cWVtdUBnbWFpbC5jb20+OyBNYXJjZWwgQXBmZWxiYXVtDQo+IDxt
+YXJjZWwuYXBmZWxiYXVtQGdtYWlsLmNvbT47IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAa2FvZC5v
+cmc+OyBMYXVyZW50DQo+IFZpdmllciA8bHZpdmllckByZWRoYXQuY29tPjsgQXVyZWxpZW4gSmFy
+bm8gPGF1cmVsaWVuQGF1cmVsMzIubmV0PjsgcWVtdS0NCj4gcmlzY3ZAbm9uZ251Lm9yZzsgUGFs
+bWVyIERhYmJlbHQgPHBhbG1lckBkYWJiZWx0LmNvbT47IFlvc2hpbm9yaSBTYXRvDQo+IDx5c2F0
+b0B1c2Vycy5zb3VyY2Vmb3JnZS5qcD47IEJhc3RpYW4gS29wcGVsbWFubiA8a2Jhc3RpYW5AbWFp
+bC51bmktDQo+IHBhZGVyYm9ybi5kZT47IEJpbiBNZW5nIDxiaW4ubWVuZ0B3aW5kcml2ZXIuY29t
+PjsgRGFuaWVsIEhlbnJpcXVlDQo+IEJhcmJvemEgPGRhbmllbGhiNDEzQGdtYWlsLmNvbT47IE1h
+cmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS0NCj4gYXlsYW5kQGlsYW5kZS5jby51az47IFdlaXdl
+aSBMaSA8bGl3ZWl3ZWlAaXNjYXMuYWMuY24+OyBEYW5pZWwgSGVucmlxdWUNCj4gQmFyYm96YSA8
+ZGJhcmJvemFAdmVudGFuYW1pY3JvLmNvbT47IE5pY2hvbGFzIFBpZ2dpbg0KPiA8bnBpZ2dpbkBn
+bWFpbC5jb20+OyBxZW11LWFybUBub25nbnUub3JnOyBMaXUgWmhpd2VpDQo+IDx6aGl3ZWlfbGl1
+QGxpbnV4LmFsaWJhYmEuY29tPjsgTWFyZWsgVmFzdXQgPG1hcmV4QGRlbnguZGU+OyBMYXVyZW50
+DQo+IFZpdmllciA8bGF1cmVudEB2aXZpZXIuZXU+OyBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlk
+ZWxsQGxpbmFyby5vcmc+OyBCcmlhbg0KPiBDYWluIDxiY2FpbkBxdWljaW5jLmNvbT47IFRob21h
+cyBIdXRoIDx0aHV0aEByZWRoYXQuY29tPjsgQ2hyaXMgV3VsZmYNCj4gPGNyd3VsZmZAZ21haWwu
+Y29tPjsgU2VyZ2lvIExvcGV6IDxzbHBAcmVkaGF0LmNvbT47IFJpY2hhcmQgSGVuZGVyc29uDQo+
+IDxyaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnPjsgSWx5YSBMZW9zaGtldmljaCA8aWlpQGxp
+bnV4LmlibS5jb20+Ow0KPiBNaWNoYWVsIFJvbG5payA8bXJvbG5pa0BnbWFpbC5jb20+DQo+IFN1
+YmplY3Q6IFtQQVRDSCB2MiAwNy8xNl0gdGFyZ2V0L2hleGFnb246IERlY2xhcmUgUU9NIGRlZmlu
+aXRpb25zIGluICdjcHUtDQo+IHFvbS5oJw0KPiANCj4gV0FSTklORzogVGhpcyBlbWFpbCBvcmln
+aW5hdGVkIGZyb20gb3V0c2lkZSBvZiBRdWFsY29tbS4gUGxlYXNlIGJlIHdhcnkgb2YNCj4gYW55
+IGxpbmtzIG9yIGF0dGFjaG1lbnRzLCBhbmQgZG8gbm90IGVuYWJsZSBtYWNyb3MuDQo+IA0KPiAi
+dGFyZ2V0L2Zvby9jcHUuaCIgY29udGFpbnMgdGhlIHRhcmdldCBzcGVjaWZpYyBkZWNsYXJhdGlv
+bnMuDQo+IA0KPiBBIGhldGVyb2dlbmVvdXMgc2V0dXAgbmVlZCB0byBhY2Nlc3MgdGFyZ2V0IGFn
+bm9zdGljIGRlY2xhcmF0aW9ucw0KPiAoYXQgbGVhc3QgdGhlIFFPTSBvbmVzLCB0byBpbnN0YW50
+aWF0ZSB0aGUgb2JqZWN0cykuDQo+IA0KPiBPdXIgY29udmVudGlvbiBpcyB0byBhZGQgc3VjaCB0
+YXJnZXQgYWdub3N0aWMgUU9NIGRlY2xhcmF0aW9ucyBpbg0KPiB0aGUgInRhcmdldC9mb28vY3B1
+LXFvbS5oIiBoZWFkZXIuDQo+IA0KPiBFeHRyYWN0IFFPTSBkZWZpbml0aW9ucyBmcm9tICJjcHUu
+aCIgdG8gImNwdS1xb20uaCIuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBNYXRoaWV1
+LURhdWTDqSA8cGhpbG1kQGxpbmFyby5vcmc+DQo+IC0tLQ0KPiAgdGFyZ2V0L2hleGFnb24vY3B1
+LXFvbS5oIHwgMjggKysrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPiAgdGFyZ2V0L2hleGFn
+b24vY3B1LmggICAgIHwgMTUgKy0tLS0tLS0tLS0tLS0tDQo+ICAyIGZpbGVzIGNoYW5nZWQsIDI5
+IGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygtKQ0KPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IHRh
+cmdldC9oZXhhZ29uL2NwdS1xb20uaA0KPiANCj4gZGlmZiAtLWdpdCBhL3RhcmdldC9oZXhhZ29u
+L2NwdS1xb20uaCBiL3RhcmdldC9oZXhhZ29uL2NwdS1xb20uaA0KPiBuZXcgZmlsZSBtb2RlIDEw
+MDY0NA0KPiBpbmRleCAwMDAwMDAwMDAwLi5mMDJkZjdlZTZmDQo+IC0tLSAvZGV2L251bGwNCj4g
+KysrIGIvdGFyZ2V0L2hleGFnb24vY3B1LXFvbS5oDQo+IEBAIC0wLDAgKzEsMjggQEANCj4gKy8q
+DQo+ICsgKiBRRU1VIEhleGFnb24gQ1BVIFFPTSBoZWFkZXIgKHRhcmdldCBhZ25vc3RpYykNCj4g
+KyAqDQo+ICsgKiBDb3B5cmlnaHQoYykgMjAxOS0yMDIzIFF1YWxjb21tIElubm92YXRpb24gQ2Vu
+dGVyLCBJbmMuIEFsbCBSaWdodHMNCj4gUmVzZXJ2ZWQuDQo+ICsgKg0KPiArICogU1BEWC1MaWNl
+bnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb3ItbGF0ZXINCj4gKyAqLw0KPiArDQo+ICsjaWZuZGVm
+IFFFTVVfSEVYQUdPTl9DUFVfUU9NX0gNCj4gKyNkZWZpbmUgUUVNVV9IRVhBR09OX0NQVV9RT01f
+SA0KPiArDQo+ICsjaW5jbHVkZSAiaHcvY29yZS9jcHUuaCINCj4gKyNpbmNsdWRlICJxb20vb2Jq
+ZWN0LmgiDQo+ICsNCj4gKyNkZWZpbmUgVFlQRV9IRVhBR09OX0NQVSAiaGV4YWdvbi1jcHUiDQo+
+ICsNCj4gKyNkZWZpbmUgSEVYQUdPTl9DUFVfVFlQRV9TVUZGSVggIi0iIFRZUEVfSEVYQUdPTl9D
+UFUNCj4gKyNkZWZpbmUgSEVYQUdPTl9DUFVfVFlQRV9OQU1FKG5hbWUpIChuYW1lDQo+IEhFWEFH
+T05fQ1BVX1RZUEVfU1VGRklYKQ0KPiArDQo+ICsjZGVmaW5lIFRZUEVfSEVYQUdPTl9DUFVfVjY3
+IEhFWEFHT05fQ1BVX1RZUEVfTkFNRSgidjY3IikNCj4gKyNkZWZpbmUgVFlQRV9IRVhBR09OX0NQ
+VV9WNjggSEVYQUdPTl9DUFVfVFlQRV9OQU1FKCJ2NjgiKQ0KPiArI2RlZmluZSBUWVBFX0hFWEFH
+T05fQ1BVX1Y2OSBIRVhBR09OX0NQVV9UWVBFX05BTUUoInY2OSIpDQo+ICsjZGVmaW5lIFRZUEVf
+SEVYQUdPTl9DUFVfVjcxIEhFWEFHT05fQ1BVX1RZUEVfTkFNRSgidjcxIikNCj4gKyNkZWZpbmUg
+VFlQRV9IRVhBR09OX0NQVV9WNzMgSEVYQUdPTl9DUFVfVFlQRV9OQU1FKCJ2NzMiKQ0KPiArDQo+
+ICtPQkpFQ1RfREVDTEFSRV9DUFVfVFlQRShIZXhhZ29uQ1BVLCBIZXhhZ29uQ1BVQ2xhc3MsDQo+
+IEhFWEFHT05fQ1BVKQ0KPiArDQo+ICsjZW5kaWYNCj4gZGlmZiAtLWdpdCBhL3RhcmdldC9oZXhh
+Z29uL2NwdS5oIGIvdGFyZ2V0L2hleGFnb24vY3B1LmgNCj4gaW5kZXggMDM1YWM0ZmI2ZC4uN2Qx
+NjA4M2M2YSAxMDA2NDQNCj4gLS0tIGEvdGFyZ2V0L2hleGFnb24vY3B1LmgNCj4gKysrIGIvdGFy
+Z2V0L2hleGFnb24vY3B1LmgNCj4gQEAgLTIwLDExICsyMCwxMCBAQA0KPiANCj4gICNpbmNsdWRl
+ICJmcHUvc29mdGZsb2F0LXR5cGVzLmgiDQo+IA0KPiArI2luY2x1ZGUgImNwdS1xb20uaCINCj4g
+ICNpbmNsdWRlICJleGVjL2NwdS1kZWZzLmgiDQo+ICAjaW5jbHVkZSAiaGV4X3JlZ3MuaCINCj4g
+ICNpbmNsdWRlICJtbXZlYy9tbXZlYy5oIg0KPiAtI2luY2x1ZGUgInFvbS9vYmplY3QuaCINCj4g
+LSNpbmNsdWRlICJody9jb3JlL2NwdS5oIg0KPiAgI2luY2x1ZGUgImh3L3JlZ2lzdGVyZmllbGRz
+LmgiDQo+IA0KPiAgI2RlZmluZSBOVU1fUFJFR1MgNA0KPiBAQCAtMzYsMTggKzM1LDggQEANCj4g
+ICNkZWZpbmUgUFJFRF9XUklURVNfTUFYIDUgICAgICAgICAgICAgICAgICAgLyogNCBpbnNucyAr
+IGVuZGxvb3AgKi8NCj4gICNkZWZpbmUgVlNUT1JFU19NQVggMg0KPiANCj4gLSNkZWZpbmUgVFlQ
+RV9IRVhBR09OX0NQVSAiaGV4YWdvbi1jcHUiDQo+IC0NCj4gLSNkZWZpbmUgSEVYQUdPTl9DUFVf
+VFlQRV9TVUZGSVggIi0iIFRZUEVfSEVYQUdPTl9DUFUNCj4gLSNkZWZpbmUgSEVYQUdPTl9DUFVf
+VFlQRV9OQU1FKG5hbWUpIChuYW1lDQo+IEhFWEFHT05fQ1BVX1RZUEVfU1VGRklYKQ0KPiAgI2Rl
+ZmluZSBDUFVfUkVTT0xWSU5HX1RZUEUgVFlQRV9IRVhBR09OX0NQVQ0KPiANCj4gLSNkZWZpbmUg
+VFlQRV9IRVhBR09OX0NQVV9WNjcgSEVYQUdPTl9DUFVfVFlQRV9OQU1FKCJ2NjciKQ0KPiAtI2Rl
+ZmluZSBUWVBFX0hFWEFHT05fQ1BVX1Y2OCBIRVhBR09OX0NQVV9UWVBFX05BTUUoInY2OCIpDQo+
+IC0jZGVmaW5lIFRZUEVfSEVYQUdPTl9DUFVfVjY5IEhFWEFHT05fQ1BVX1RZUEVfTkFNRSgidjY5
+IikNCj4gLSNkZWZpbmUgVFlQRV9IRVhBR09OX0NQVV9WNzEgSEVYQUdPTl9DUFVfVFlQRV9OQU1F
+KCJ2NzEiKQ0KPiAtI2RlZmluZSBUWVBFX0hFWEFHT05fQ1BVX1Y3MyBIRVhBR09OX0NQVV9UWVBF
+X05BTUUoInY3MyIpDQo+IC0NCj4gIHZvaWQgaGV4YWdvbl9jcHVfbGlzdCh2b2lkKTsNCj4gICNk
+ZWZpbmUgY3B1X2xpc3QgaGV4YWdvbl9jcHVfbGlzdA0KPiANCj4gQEAgLTEyNyw4ICsxMTYsNiBA
+QCB0eXBlZGVmIHN0cnVjdCBDUFVBcmNoU3RhdGUgew0KPiAgICAgIFZUQ01TdG9yZUxvZyB2dGNt
+X2xvZzsNCj4gIH0gQ1BVSGV4YWdvblN0YXRlOw0KPiANCj4gLU9CSkVDVF9ERUNMQVJFX0NQVV9U
+WVBFKEhleGFnb25DUFUsIEhleGFnb25DUFVDbGFzcywNCj4gSEVYQUdPTl9DUFUpDQo+IC0NCj4g
+IHR5cGVkZWYgc3RydWN0IEhleGFnb25DUFVDbGFzcyB7DQo+ICAgICAgQ1BVQ2xhc3MgcGFyZW50
+X2NsYXNzOw0KPiANCj4gLS0NCj4gMi40MS4wDQoNClJldmlld2VkLWJ5OiBCcmlhbiBDYWluIDxi
+Y2FpbkBxdWljaW5jLmNvbT4NCg==

@@ -1,239 +1,445 @@
-Received: by 2002:a05:7022:f409:b0:6e:5a56:ff6c with SMTP id rj9csp597079dlb;
-        Thu, 26 Oct 2023 05:41:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH9wdu6tmxpfC+zb5ozbwF8SKByi23J8IOAiGYHGrFAy0SLkiA5NEjZQpksHxv0gWSK+s8Y
-X-Received: by 2002:a05:6214:224c:b0:66d:a1d3:fd94 with SMTP id c12-20020a056214224c00b0066da1d3fd94mr20834728qvc.19.1698324070955;
-        Thu, 26 Oct 2023 05:41:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698324070; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp509343ejb;
+        Thu, 26 Oct 2023 09:48:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGmQ15KsP1P6j7W9lvl9ExxDpRyn8a3Lh9X11xGPyCd0bk6OE3/87czXvu9WwGjJn3M++yv
+X-Received: by 2002:a81:9209:0:b0:5a7:b464:ff1a with SMTP id j9-20020a819209000000b005a7b464ff1amr20762703ywg.6.1698338901197;
+        Thu, 26 Oct 2023 09:48:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698338901; cv=none;
         d=google.com; s=arc-20160816;
-        b=FdgEtV6vxIcDIhNRnB2wJy0xiGCilIypEe5N7o/w+Dv6hQHjNT4Lr0o6qlQjiVL1lB
-         Ez7RXOCavc8QCAVz5+41H3GCZg9ZesS0/ox0veZdKZMJNqvKH8RrTX85GKGZTqr48cnC
-         NwlN3QAqDXPVjPNIeIm9sJ60l3+9BOlVx17DIq2yRf/cyOUI/foyDBYUn++QkBKQnw5d
-         Tnoc2BFP6+30Jntx5yewM89CYOSjIlpDJla+3xJK9Z/GuYBFoUY0jTLIugQTxtpIEi8p
-         O4V8fnxNWBVEObebMPKqmPoUZ7NkosooXqDz5PN5Z3cdd9RkFPS86qdSIcv5NlByIyLF
-         kG4Q==
+        b=A3QTGbVQa2dHV2wOztVY/yLjmnNuN0OAQZhhZaac7eRgjvt3WquhRMWUzGDy6R4/Xo
+         xHEkQXuXumnsJKYMcEiQZB66qo9zee5SuulymJlAnhmX9sa9eS/QowZRWVhwFj0wJitY
+         Yds5dFMDIEwlctvkeBr4VLbbaRNyoYu9JvFsy4W0AE5yx5C/VTjmVn99+ukwlGVt6s+K
+         nUEVaTzQyQPDTMY04NpvjXkX+uy0uQFmr2rGKLBnBgO60T0RRUa6q3/KbL2hTg6TpPJS
+         5T0SiESnLSXhQqIsQJJkbPvTmcSMY/w8czxCY3LwBKVvLku0MsUZdpPNcThh5FeJtGGT
+         J2/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=+8LLrAduSXNqZUXXnFq+1TDLT+T1Sh1kSSpOXTamkMQ=;
-        fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
-        b=XiVQ1zlXDCaSdzT4u3cEnnDCtC2s64GZ7W9Qw3ZLM9vpyXAk+lcaycrt4mgvFbdHeG
-         8zARyo7SuZD41/1RxHRBykzPuv+M3EQdayLdYMY3qkM/lwzs5Dip2UfxpvWnqxRin84x
-         4ZBv/jJzkwJzfWjNg0DRfI5JYjXC/iz2sZ0p+7GER1lKOPJ0GiItTZF0nCbhp+fY67Q+
-         S+lMUjlATchoe7p0top7gIf2ytrJ1+SM+7k3UE76VeQTrTuWq4cIA82ik7lGZYKY1S1y
-         2Gnet4eZScrwdIi8a9rZjcNHZNq6lDwXlrbkczRVbfT+BcYJFlpkmsPQcx1sVKyJg8E9
-         lRFQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=qqXLKuSj6rrTC1OTVYXls/KBUZRI6hNC2ubRoMzkwCo=;
+        fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
+        b=OXFzb1/7ElwOeff008rl6LAYtasS2QkOu3No/BpTZ2+5fhj5yBclR5sY7TgfxF5keG
+         13BDri2sZvqmRPnofaWWrgICVnABMAABfUIPfQe4xARDdYBcKdt8qVedlt92+aUkGgL+
+         yf+DYGb3hS63cVACh0e2yFjZwClOrJyL1s7x2p7k7/0kF96yeVOFKxb2fwTiEoq8s+UE
+         v180ozvl4WqoN9fEAaIDxDnOHmUdirdmMVFleVuGMuSUOdXNwjjFC7llo2/Tsn1k8tlA
+         ekidZO4/bIcqYTXPZ9qE8cALRpqJNVfWJuklU3GmYeu4Rm9RP/FZzepMF7McVOGqpdDk
+         LBwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XykjC+2v;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id v18-20020ad448d2000000b0066d1e75c07csi9441298qvx.195.2023.10.26.05.41.10
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="jQ/9mt0j";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r68-20020a818147000000b005927a8ccfe9si14604580ywf.283.2023.10.26.09.48.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Oct 2023 05:41:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 26 Oct 2023 09:48:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XykjC+2v;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1698324070;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+8LLrAduSXNqZUXXnFq+1TDLT+T1Sh1kSSpOXTamkMQ=;
-	b=XykjC+2vn3/q4WU8aT3HIqxjnHueAUk68bnjdLxb+o0ftbLTMzQvxMvVXBhm6mJocH2Xip
-	3t3rdTWZ7h1RfdUOa+Tnxg76QYRUdIe/2WYgeoounNf7j9JCHHyPPBhitAH8e7ZXS+I6gT
-	90l3+7a5GS1VZ9Jl/1r9iiHSEAYVNVE=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-102-WNjnU9tWPc-gUXs9N9S3yQ-1; Thu, 26 Oct 2023 08:41:07 -0400
-X-MC-Unique: WNjnU9tWPc-gUXs9N9S3yQ-1
-Received: by mail-ej1-f71.google.com with SMTP id a640c23a62f3a-9ae57d8b502so57750866b.2
-        for <alex.bennee@linaro.org>; Thu, 26 Oct 2023 05:41:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698324066; x=1698928866;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rm7xHyPU7UrFKbHExCp3hETRS4Uo99zPiXo0roR67+8=;
-        b=txYdR3jyumKBwqdSnfF9O504dJW0l1SIqbhAjeaAP5DaQZwO8gcnyeTXYUGymm3nbp
-         mlB5+X1BV2oBoKprT5D87H3jAjUeZGyxXPzwWe18uMPfdOnxsjb0SHaIBzBvGQO1je4o
-         WijqHUPXcYDdKbZDVk4kyUuduKKB9Zj6Pu0dTqLqVHcgA0ADLRzj2xBfiM2IxlEy8KOT
-         nJE+I4BXcCi0Dbgj7CvuMCFRLtyxEk6fnkXd/YG88HDAkwp3vaFU5vyg1pd+OHw5V4u4
-         KsBFbtwcVyR2aiOWGP3hA1iiTdx0doI6NMMim1l+DWqS/my49qtYzZTkMdyopLqdqyu6
-         Z3pg==
-X-Gm-Message-State: AOJu0YzlZWWEYC2mDlKfgBjHd3dJ0qEnxqbl+hsBaS9y+jYu/2wl1D/X
-	+GCkUbboOhYUQVFSQk2bDDN74eBSJXhmsucVCLDMMRXKsj7p45SOI4F0CuYfxunvOFszIwmJNi1
-	EMTqS+bS9zATepfla
-X-Received: by 2002:a17:907:60cd:b0:9be:466c:1824 with SMTP id hv13-20020a17090760cd00b009be466c1824mr13930143ejc.11.1698324066293;
-        Thu, 26 Oct 2023 05:41:06 -0700 (PDT)
-X-Received: by 2002:a17:907:60cd:b0:9be:466c:1824 with SMTP id hv13-20020a17090760cd00b009be466c1824mr13930110ejc.11.1698324065904;
-        Thu, 26 Oct 2023 05:41:05 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id lt13-20020a170906fa8d00b009c4cb1553edsm11620259ejb.95.2023.10.26.05.41.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Oct 2023 05:41:04 -0700 (PDT)
-Date: Thu, 26 Oct 2023 14:41:03 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
- <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
- <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
- <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
- <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
- <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
- <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
- <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
- <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
- <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
- <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
- <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
- <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
- <lixianglai@loongson.cn>, <linuxarm@huawei.com>
-Subject: Re: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
- Hotplug
-Message-ID: <20231026144103.565a9566@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231013105129.25648-1-salil.mehta@huawei.com>
-References: <20231013105129.25648-1-salil.mehta@huawei.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="jQ/9mt0j";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qw3Wk-0000sV-Fk; Thu, 26 Oct 2023 12:48:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qw3Wg-0000eS-Ry; Thu, 26 Oct 2023 12:48:06 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qw3Wb-0007oY-66; Thu, 26 Oct 2023 12:48:05 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39QGlGrp022303; Thu, 26 Oct 2023 16:47:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=pp1;
+ bh=qqXLKuSj6rrTC1OTVYXls/KBUZRI6hNC2ubRoMzkwCo=;
+ b=jQ/9mt0jidd+kxT6zK7UBh/xXFjXjXWzFUspLWR8i9idzNwLjqpNHmBpM2PA6nDemtzS
+ gmNq80dc3TSvVgQyrM2oDtWhcd0YzmQzedJvOLnsBpyt2eRBCZwJDR+HAEemxmcjliF6
+ TkD1LEccIcvf1dNhpS87DzEoXS4wqkzLGyrl4QESIeKstH6EV7+U1J3lcbm/oJO7XvMf
+ iJXEucuJuB1Jj6bPn+baWxqLgjLXItafM532Sjc/BR9FGyLR7WJU2M/gNa4fswapGd1V
+ hckRPCxEfiXcRDqKfC+OK6oATGLsvGjg9B08mWD4kZI3/QPeRVBpfwFajjg5yFd11EpX mQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tyuhfrmvd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 16:47:50 +0000
+Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39QGln3j025457;
+ Thu, 26 Oct 2023 16:47:49 GMT
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tyuhfrmv3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 16:47:49 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39QEGV7t023834; Thu, 26 Oct 2023 16:47:49 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tvrytfpt7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 16:47:49 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39QGlmLK1639042
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 26 Oct 2023 16:47:48 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4930258059;
+ Thu, 26 Oct 2023 16:47:48 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 75CB258043;
+ Thu, 26 Oct 2023 16:47:47 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 26 Oct 2023 16:47:47 +0000 (GMT)
+From: Ninad Palsule <ninad@linux.ibm.com>
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>
+Subject: [PATCH v7 04/10] hw/fsi: Introduce IBM's FSI
+Date: Thu, 26 Oct 2023 11:47:35 -0500
+Message-Id: <20231026164741.1184058-5-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231026164741.1184058-1-ninad@linux.ibm.com>
+References: <20231026164741.1184058-1-ninad@linux.ibm.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: mO2+4jp/8ax6
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: YlEnymWB0qNS29yhK41Zesgh3dmxNab1
+X-Proofpoint-GUID: wqmJ3oRRn6BWRa6C8MCBp6bT7t6s-fJi
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-26_15,2023-10-26_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 bulkscore=0
+ mlxscore=0 impostorscore=0 clxscore=1015 priorityscore=1501
+ mlxlogscore=999 malwarescore=0 lowpriorityscore=0 phishscore=0
+ suspectscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2310170001 definitions=main-2310260145
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kc6wtlCRcSMv
 
-On Fri, 13 Oct 2023 11:51:20 +0100
-Salil Mehta <salil.mehta@huawei.com> wrote:
+This is a part of patchset where IBM's Flexible Service Interface is
+introduced.
 
-> Virtual CPU hotplug support is being added across various architectures[1=
-][3].
-> This series adds various code bits common across all architectures:
->=20
-> 1. vCPU creation and Parking code refactor [Patch 1]
-> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
-> 3. ACPI CPUs AML code change [Patch 5]
-> 4. Helper functions to support unrealization of CPU objects [Patch 8,9]
-> 5. Misc [Patch 2,3]
+This commit models the FSI bus. CFAM is hanging out of FSI bus. The bus
+is model such a way that it is embedded inside the FSI master which is a
+bus controller.
 
-Thanks Salil!
+The FSI master: A controller in the platform service processor (e.g.
+BMC) driving CFAM engine accesses into the POWER chip. At the
+hardware level FSI is a bit-based protocol supporting synchronous and
+DMA-driven accesses of engines in a CFAM.
 
-Overall series looks good to me (modulo some points, I'd like to be address=
-ed)
-I'll do some testing and follow with per patch review tomorrow.=20
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+---
+v2:
+- Incorporated review comments by Joel
+v5:
+- Incorporated review comments by Cedric.
+v6:
+- Incorporated review comments by Cedric & Daniel
+v7:
+- Cleaned up unused bits.
+---
+ include/hw/fsi/fsi-master.h |  30 +++++++
+ hw/fsi/fsi-master.c         | 162 ++++++++++++++++++++++++++++++++++++
+ hw/fsi/fsi.c                |  25 ++++++
+ hw/fsi/meson.build          |   2 +-
+ hw/fsi/trace-events         |   2 +
+ 5 files changed, 220 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 hw/fsi/fsi-master.c
+ create mode 100644 hw/fsi/fsi.c
 
-> Repository:
->=20
-> [*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2.commo=
-n.v6
->=20
->=20
-> Revision History:
->=20
-> Patch-set  V5 -> V6
-> 1. Addressed Gavin Shan's comments
->    - Fixed the assert() ranges of address spaces
->    - Rebased the patch-set to latest changes in the qemu.git
->    - Added Reviewed-by tags for patches {8,9}
-> 2. Addressed Jonathan Cameron's comments
->    - Updated commit-log for [Patch V5 1/9] with mention of trace events
->    - Added Reviewed-by tags for patches {1,5}
-> 3. Added Tested-by tags from Xianglai Li
-> 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9]=20
-> Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.meh=
-ta@huawei.com/
->=20
-> Patch-set  V4 -> V5
-> 1. Addressed Gavin Shan's comments
->    - Fixed the trace events print string for kvm_{create,get,park,destroy=
-}_vcpu
->    - Added Reviewed-by tag for patch {1}
-> 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
-> 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
-> 4. Dropped the ARM specific [Patch V4 10/10]
-> Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.meh=
-ta@huawei.com/
->=20
-> Patch-set  V3 -> V4
-> 1. Addressed David Hilderbrand's comments
->    - Fixed the wrong doc comment of kvm_park_vcpu API prototype
->    - Added Reviewed-by tags for patches {2,4}
-> Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.meh=
-ta@huawei.com/
->=20
-> Patch-set  V2 -> V3
-> 1. Addressed Jonathan Cameron's comments
->    - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'intege=
-r'
->    - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
->    - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_MET=
-HOD macro
->    - Updated [Patch V2 5/10] commit-log with details of conditional event=
- handler method
->    - Added Reviewed-by tags for patches {2,3,4,6,7}
-> 2. Addressed Gavin Shan's comments
->    - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
->    - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
->    - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_al=
-l
->    - Fixed the kvm_{create,park}_vcpu prototypes docs
->    - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
-> 3. Addressed one earlier missed comment by Alex Benn=C3=A9e in RFC V1
->    - Added traces instead of DPRINTF in the newly added and some existing=
- functions
-> Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.meht=
-a@huawei.com/
->=20
-> Patch-set V1 -> V2
-> 1. Addressed Alex Benn=C3=A9e's comments
->    - Refactored the kvm_create_vcpu logic to get rid of goto
->    - Added the docs for kvm_{create,park}_vcpu prototypes
->    - Splitted the gdbstub and AddressSpace destruction change into separa=
-te patches
->    - Added Reviewed-by tags for patches {2,10}
-> Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.meh=
-ta@huawei.com/
->=20
-> References:
->=20
-> [1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta=
-@huawei.com/
-> [2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com=
-/
-> [3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@lo=
-ongson.cn/
->=20
->=20
-> Salil Mehta (9):
->   accel/kvm: Extract common KVM vCPU {creation,parking} code
->   hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
->   hw/acpi: Add ACPI CPU hotplug init stub
->   hw/acpi: Init GED framework with CPU hotplug events
->   hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
->   hw/acpi: Update GED _EVT method AML with CPU scan
->   hw/acpi: Update ACPI GED framework to support vCPU Hotplug
->   physmem: Add helper function to destroy CPU AddressSpace
->   gdbstub: Add helper function to unregister GDB register space
->=20
->  accel/kvm/kvm-all.c                    | 64 ++++++++++++++++++++------
->  accel/kvm/trace-events                 |  4 ++
->  gdbstub/gdbstub.c                      | 12 +++++
->  hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
->  hw/acpi/cpu.c                          | 27 +++++++----
->  hw/acpi/generic_event_device.c         | 22 +++++++++
->  hw/i386/acpi-build.c                   |  3 +-
->  include/exec/cpu-common.h              |  8 ++++
->  include/exec/gdbstub.h                 |  5 ++
->  include/hw/acpi/cpu.h                  |  5 +-
->  include/hw/acpi/cpu_hotplug.h          |  4 ++
->  include/hw/acpi/generic_event_device.h |  5 ++
->  include/hw/core/cpu.h                  |  1 +
->  include/sysemu/kvm.h                   | 16 +++++++
->  system/physmem.c                       | 29 ++++++++++++
->  15 files changed, 184 insertions(+), 27 deletions(-)
->=20
+diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
+new file mode 100644
+index 0000000000..847078919c
+--- /dev/null
++++ b/include/hw/fsi/fsi-master.h
+@@ -0,0 +1,30 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2019 IBM Corp.
++ *
++ * IBM Flexible Service Interface Master
++ */
++#ifndef FSI_FSI_MASTER_H
++#define FSI_FSI_MASTER_H
++
++#include "exec/memory.h"
++#include "hw/qdev-core.h"
++#include "hw/fsi/fsi.h"
++
++#define TYPE_FSI_MASTER "fsi.master"
++OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
++
++#define FSI_MASTER_NR_REGS ((0x2e0 >> 2) + 1)
++
++typedef struct FSIMasterState {
++    DeviceState parent;
++    MemoryRegion iomem;
++    MemoryRegion opb2fsi;
++
++    FSIBus bus;
++
++    uint32_t regs[FSI_MASTER_NR_REGS];
++} FSIMasterState;
++
++
++#endif /* FSI_FSI_H */
+diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
+new file mode 100644
+index 0000000000..bb7a893003
+--- /dev/null
++++ b/hw/fsi/fsi-master.c
+@@ -0,0 +1,162 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM Flexible Service Interface master
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "trace.h"
++
++#include "hw/fsi/fsi-master.h"
++
++#define TYPE_OP_BUS "opb"
++
++#define TO_REG(x)                               ((x) >> 2)
++
++#define FSI_MENP0                               TO_REG(0x010)
++#define FSI_MENP32                              TO_REG(0x014)
++#define FSI_MSENP0                              TO_REG(0x018)
++#define FSI_MLEVP0                              TO_REG(0x018)
++#define FSI_MSENP32                             TO_REG(0x01c)
++#define FSI_MLEVP32                             TO_REG(0x01c)
++#define FSI_MCENP0                              TO_REG(0x020)
++#define FSI_MREFP0                              TO_REG(0x020)
++#define FSI_MCENP32                             TO_REG(0x024)
++#define FSI_MREFP32                             TO_REG(0x024)
++
++#define FSI_MVER                                TO_REG(0x074)
++#define FSI_MRESP0                              TO_REG(0x0d0)
++
++#define FSI_MRESB0                              TO_REG(0x1d0)
++#define   FSI_MRESB0_RESET_GENERAL              BE_BIT(0)
++#define   FSI_MRESB0_RESET_ERROR                BE_BIT(1)
++
++static uint64_t fsi_master_read(void *opaque, hwaddr addr, unsigned size)
++{
++    FSIMasterState *s = FSI_MASTER(opaque);
++
++    trace_fsi_master_read(addr, size);
++
++    if (addr + size > sizeof(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
++                      __func__, addr, size);
++        return 0;
++    }
++
++    return s->regs[TO_REG(addr)];
++}
++
++static void fsi_master_write(void *opaque, hwaddr addr, uint64_t data,
++                             unsigned size)
++{
++    FSIMasterState *s = FSI_MASTER(opaque);
++
++    trace_fsi_master_write(addr, size, data);
++
++    if (addr + size > sizeof(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
++                      __func__, addr, size);
++        return;
++    }
++
++    switch (TO_REG(addr)) {
++    case FSI_MENP0:
++        s->regs[FSI_MENP0] = data;
++        break;
++    case FSI_MENP32:
++        s->regs[FSI_MENP32] = data;
++        break;
++    case FSI_MSENP0:
++        s->regs[FSI_MENP0] |= data;
++        break;
++    case FSI_MSENP32:
++        s->regs[FSI_MENP32] |= data;
++        break;
++    case FSI_MCENP0:
++        s->regs[FSI_MENP0] &= ~data;
++        break;
++    case FSI_MCENP32:
++        s->regs[FSI_MENP32] &= ~data;
++        break;
++    case FSI_MRESP0:
++        /* Perform necessary resets leave register 0 to indicate no errors */
++        break;
++    case FSI_MRESB0:
++        if (data & FSI_MRESB0_RESET_GENERAL) {
++            device_cold_reset(DEVICE(opaque));
++        }
++        if (data & FSI_MRESB0_RESET_ERROR) {
++            /* FIXME: this seems dubious */
++            device_cold_reset(DEVICE(opaque));
++        }
++        break;
++    default:
++        s->regs[TO_REG(addr)] = data;
++    }
++}
++
++static const struct MemoryRegionOps fsi_master_ops = {
++    .read = fsi_master_read,
++    .write = fsi_master_write,
++    .endianness = DEVICE_BIG_ENDIAN,
++};
++
++static void fsi_master_realize(DeviceState *dev, Error **errp)
++{
++    FSIMasterState *s = FSI_MASTER(dev);
++
++    qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
++                          TYPE_FSI_MASTER, 0x10000000);
++    memory_region_init(&s->opb2fsi, OBJECT(s), "fsi.opb2fsi", 0x10000000);
++
++    if (!object_property_set_bool(OBJECT(&s->bus), "realized", true, errp)) {
++        return;
++    }
++
++    memory_region_add_subregion(&s->opb2fsi, 0, &s->bus.slave.mr);
++
++    /* Let's add first CFAM */
++    object_initialize_child(OBJECT(BUS(&s->bus)), TYPE_FSI_CFAM, &s->bus.slave,
++                            TYPE_FSI_CFAM);
++    qdev_set_parent_bus(DEVICE(&s->bus.slave), BUS(&s->bus), &error_abort);
++    object_property_set_bool(OBJECT(&s->bus.slave), "realized", true, errp);
++}
++
++static void fsi_master_reset(DeviceState *dev)
++{
++    FSIMasterState *s = FSI_MASTER(dev);
++
++    /* ASPEED default */
++    s->regs[FSI_MVER] = 0xe0050101;
++}
++
++static void fsi_master_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->bus_type = TYPE_OP_BUS;
++    dc->desc = "FSI Master";
++    dc->realize = fsi_master_realize;
++    dc->reset = fsi_master_reset;
++}
++
++static const TypeInfo fsi_master_info = {
++    .name = TYPE_FSI_MASTER,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(FSIMasterState),
++    .class_init = fsi_master_class_init,
++};
++
++static void fsi_register_types(void)
++{
++    type_register_static(&fsi_master_info);
++}
++
++type_init(fsi_register_types);
+diff --git a/hw/fsi/fsi.c b/hw/fsi/fsi.c
+new file mode 100644
+index 0000000000..180283746e
+--- /dev/null
++++ b/hw/fsi/fsi.c
+@@ -0,0 +1,25 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM Flexible Service Interface
++ */
++#include "qemu/osdep.h"
++
++#include "qapi/error.h"
++
++#include "hw/fsi/fsi.h"
++#include "hw/fsi/cfam.h"
++
++static const TypeInfo fsi_bus_info = {
++    .name = TYPE_FSI_BUS,
++    .parent = TYPE_BUS,
++    .instance_size = sizeof(FSIBus),
++};
++
++static void fsi_bus_register_types(void)
++{
++    type_register_static(&fsi_bus_info);
++}
++
++type_init(fsi_bus_register_types);
+diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+index a9e7cd4099..f617943b4a 100644
+--- a/hw/fsi/meson.build
++++ b/hw/fsi/meson.build
+@@ -1,4 +1,4 @@
+ system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
+ system_ss.add(when: 'CONFIG_FSI_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
+ system_ss.add(when: 'CONFIG_FSI_CFAM', if_true: files('cfam.c'))
+-system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi-slave.c'))
++system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-master.c','fsi-slave.c'))
+diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+index b57b2dcc86..89d8cd62c8 100644
+--- a/hw/fsi/trace-events
++++ b/hw/fsi/trace-events
+@@ -7,3 +7,5 @@ fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%"
+ fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+ fsi_slave_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+ fsi_slave_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
++fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
++fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+-- 
+2.39.2
+

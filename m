@@ -1,122 +1,95 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp117621ejb;
-        Wed, 25 Oct 2023 21:33:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGueaPpMfRCwKQVWL7s/nJfEGlOM4JA3+XiQ1Rd83ib821SG6skrWwg9wEZsH31SZ327g/S
-X-Received: by 2002:a05:6214:e6d:b0:65a:f5e3:5ac0 with SMTP id jz13-20020a0562140e6d00b0065af5e35ac0mr18726306qvb.51.1698294780777;
-        Wed, 25 Oct 2023 21:33:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698294780; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp134570ejb;
+        Wed, 25 Oct 2023 22:18:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE829PZL+mALbrW22YY4t141CDd5GPiG2ePMiVlCBHOQlnv116fd5/AeN5GrkhWO5mfdbFC
+X-Received: by 2002:a05:6214:4115:b0:66d:8752:b6cf with SMTP id kc21-20020a056214411500b0066d8752b6cfmr2280969qvb.26.1698297501034;
+        Wed, 25 Oct 2023 22:18:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698297501; cv=none;
         d=google.com; s=arc-20160816;
-        b=CCd5+qAEL4xJPcknDkPlTjuTtZjfZTCRvSIhziNDyDr3qDVJHh1u748m4quZIUMMFZ
-         GOo/7LvPWheXHY2l3va5uDMTDLgajk9gq/4AMleiR8PgplUaUPj4h/QTmIGkUCe4/7xq
-         pC6LCBhpDgFqWVjZPZcKToDgszXtixGM1pqTTu4wVKNZ3U8ElIAz0UgbmgjET8dngYX1
-         Q1IrIAfJrso0WffwCv8rMhQ6mm3E3290bE++0NmMZdX0sC5OOzXeBhASxUK55PjfISOZ
-         bNUI5X3AXYc4CKgo/3jVwB2vxkoLBRUeB4BwlwYOcNogpiz26DfL/gWfvWtORVob4xtT
-         Lurg==
+        b=O9KSM8vJqM3W/2HWyEzyIWvGOz0x3Ry9/xxEHYkjr3XZiZ79wzJsR9ASH01DHs8UVo
+         WTIbM3tVGKpL5HjpjntRnpg1Nl+CNgiIs3rQ0vFdbdBeDnG/n2SsTHFo3iWjsxYCPET4
+         rplX8wiFaKxZArZvsEjIuYq+iaYU9eGaAD7TsnGqpN36swzWGRyQKef1Fh31HcuYJCUS
+         TrriL+ejVdU3o8d/UwL1HDxbjZy30nFP1CB1aKs67thanBtapXOVszYh9dxs1oOkak8j
+         lQw3pK5YtDLIGrAVqiBM4Rkz/o0dCcfJMXHn252AZumJ9SyxZDPpzEUzmwI6MqH5nkRS
+         yNLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oQeLLJX1SNl3fiduP6mhol3eLmwp6WdGHayJ5XYZBfw=;
-        fh=NjxW+xwwZv9ij4NCeGT5dichoZEHejgQhA6VSE7zQ08=;
-        b=dzOIv5wM1X7ypcHAS5KXC2l/AlKmGPdqgUCbii016f2Cmbhp2iV7ZvVT4lJRorEvBs
-         uoNWVngZ6dBbUYncWf0+nZtfnyzllEC0pNVDyLfLw75N4By7WuU2cGeGd/SfvJDaz+Rx
-         Ov5G0KzOOHBcn5VOTh9o6J2kJGb/HRZqLoYeH1HpR1ThyCEQDdzzNbv5jXfLL0lK9bCp
-         9lkzSnso6V8ADRnCSA6t/8lhauUR63cc4smDJqc59ogDDSxi/eBraz/fpxDaiIUp5kld
-         Fc9sy8f+fzJoFHU7us8EQoRD4lu4hFTwrOen2o7SNNISoKP/3v6SO3i9guT026N6wjx2
-         EIGQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=dAHfECnoFvXcqfIQIqID4USTey8MMaNynUgTIYo+GaI=;
+        fh=utPrHkWy8aV1hx4eICREVsOUYPYS1qvYfqTBN9iZaCA=;
+        b=MSQzrDUqgz/Ynww4UIqiio91wY8FEaNZOBUc5solTFLqSKwmxXgxRur9WgDmHnFBWA
+         onXxwu2JHYZk3narBajuJyRShy6IicH6nE0WEMsvFQjZjIc3oFbBmVzQwTEpNMo/OMms
+         +nIjNP/spyfF6uQ/Vkhnf5pWz/zxdUUhxw93vqVUrEIEeBV+BhWA+IylMZ54q+CgfVkK
+         Ru6Qz16ylOPWZGZZuWxivxCqHt0n1rDEDVptjeVwOguJ5jvS9zqBll5BBXLySBfghRdo
+         G4J/6AkZPPukvGqUW/OmrXwmgxi7JQttrFDh2cHrI37kvUDSABzKEhyAKmm8luKwF/UC
+         bphg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=CpeFUW9I;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=EPKrh0dj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17-20020ac85dd1000000b0041cc02700dbsi9554351qtx.257.2023.10.25.21.33.00
+        by mx.google.com with ESMTPS id dr6-20020a05621408e600b0066d20b83674si9092666qvb.75.2023.10.25.22.18.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 21:33:00 -0700 (PDT)
+        Wed, 25 Oct 2023 22:18:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=CpeFUW9I;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=EPKrh0dj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvs2o-0000CA-AU; Thu, 26 Oct 2023 00:32:30 -0400
+	id 1qvsl7-0001yr-Dy; Thu, 26 Oct 2023 01:18:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1qvs2j-0000BO-2H; Thu, 26 Oct 2023 00:32:25 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1qvs2g-0007FK-59; Thu, 26 Oct 2023 00:32:24 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-99bdeae1d0aso72097766b.1; 
- Wed, 25 Oct 2023 21:32:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1qvsl3-0001vE-C5; Thu, 26 Oct 2023 01:18:13 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1qvsl1-0004Rg-N5; Thu, 26 Oct 2023 01:18:13 -0400
+Received: from [192.168.13.88]
+ (ppp118-210-136-142.adl-adc-lon-bras33.tpg.internode.on.net
+ [118.210.136.142])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id EDDAA20174;
+ Thu, 26 Oct 2023 13:18:05 +0800 (AWST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698294739; x=1698899539; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date:message-id:reply-to;
- bh=oQeLLJX1SNl3fiduP6mhol3eLmwp6WdGHayJ5XYZBfw=;
- b=CpeFUW9IFDcZzEMIqUfHq69YA2ri2OryEtCB/6brmpF5KI9G5prFtc1TN3i5+2Gs2b
- m4QTiHfnE3EVM04Gy+B0KFL/GqqB2cwt+7Y4Dddquk07myHs3dEUfuALruWObdJfOyrU
- Dbf0hCxuE7YOZxww9DmAAtCLk6SLGC1VNw3eJVs3Ol1BKSfjXjt7Xy1mukp03aiN7WKV
- Wz98aWo6gEhl0pL4Yk2/X5CMwz7bIojcSLjyi+pQWCr6AXnMkb4ZtfbeAHmUQlHkaxqT
- Gp0u9qQbfxRmWz7uwZOuJ5rVx9LbizWqfzhszkxRCErluknTUMKDpA2Tg8KEXq9nxII4
- YKIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698294739; x=1698899539;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=oQeLLJX1SNl3fiduP6mhol3eLmwp6WdGHayJ5XYZBfw=;
- b=TnAfLYIItmkK89tBZCo0qKpd408OHniVvZZD2cNDl6YUc62nfGR/NfMxJ5HqmrIfEK
- c1IZalXllt/nN5/E3O2YliP1AuZE6oa5GE68SPlELPbxoYI1ZVQNDThgrFp2ww8C+LLm
- ecoRpWj1HiKEWshanpHowIJl7YOamwcovz7YHLPCdqO5Joe3r9GArcn1Rl5gKMMuy9Ch
- ZgLS4H5SZNEY8ck+7EM151NCHBW3KeBlFm+4nstwtiohZq/LjOrbF6AtpgS7H3WeMkQo
- op3l8KTWOoOI7LovcnbYiSU0s77SHPEWvpNRqJVYb1G7uOV6xxRDeUInAj0EhxDRrK4O
- 9QGA==
-X-Gm-Message-State: AOJu0YzGBhqa9JsSBZeRc5fqmVgKDyKcOsF4A3NYdd6LXq5MdtQvrK0l
- nq0diwUF/X89QTJBGmC9h9cuL5ExwympcQ==
-X-Received: by 2002:a17:907:7da7:b0:9a9:ef41:e5c7 with SMTP id
- oz39-20020a1709077da700b009a9ef41e5c7mr13271742ejc.8.1698294738902; 
- Wed, 25 Oct 2023 21:32:18 -0700 (PDT)
-Received: from [192.168.69.115]
- (aif79-h01-176-172-114-150.dsl.sta.abo.bbox.fr. [176.172.114.150])
- by smtp.gmail.com with ESMTPSA id
- ga23-20020a170906b85700b009b65b2be80bsm10869958ejb.76.2023.10.25.21.32.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Oct 2023 21:32:17 -0700 (PDT)
-Message-ID: <fbc5f8a6-a5ae-c60e-272f-6c96d150308d@amsat.org>
-Date: Thu, 26 Oct 2023 06:32:15 +0200
+ d=codeconstruct.com.au; s=2022a; t=1698297488;
+ bh=dAHfECnoFvXcqfIQIqID4USTey8MMaNynUgTIYo+GaI=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=EPKrh0djUxCHCZi8sBE7mhllzGodTnw+dPQ0ZL3kII7ETzL6Ix4WmXkp9cdBh5DcZ
+ X/mpw4hojMWKtc4PDby3sOlz8gELdkmEpMsalWE940N4sYxf5Shy7JKzU1IYJkGVd3
+ hgnSdJBvYI9gfxFmXg20ah9tKmCax3knJx0Knhw/A6/ZlKZLddrO3ZCHaqG7WaJTXo
+ ytlqARk2G0BBVMI9jFjbDPTp+KWmchjjO1VIFH0zp/tO9Ct36jLJyUGaJKYMgGPBRE
+ de0TAANYs6KPL6PMjhaFMidNQUrygYGzSYsJKoq1OL+D1n2vBvAECtd0ZyEtamWRSj
+ RDLFAKLP7g4tQ==
+Message-ID: <6a3d71264cc7e771cf1988ac4a73ef23d142a895.camel@codeconstruct.com.au>
+Subject: Re: [PATCH] MAINTAINERS: aspeed: Update Andrew's email address
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, andrew@aj.id.au
+Cc: joel@jms.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org, Laurent Vivier
+ <lvivier@redhat.com>
+Date: Thu, 26 Oct 2023 15:48:05 +1030
+In-Reply-To: <255f59a0-6666-44c5-9b21-2435c82e17e2@kaod.org>
+References: <20230925062212.66112-1-andrew@codeconstruct.com.au>
+ <aaa71ccc-e7d4-46f4-b902-22a422ff895a@kaod.org>
+ <255f59a0-6666-44c5-9b21-2435c82e17e2@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH v2 2/5] hw/arm: ast2600: Set AST2600_MAX_IRQ to value from
- datasheet
-Content-Language: en-US
-To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- peter.maydell@linaro.org
-Cc: clg@kaod.org, joel@jms.id.au, minyard@acm.org, ryan_chen@aspeedtech.com,
- qemu-devel@nongnu.org
-References: <20210301010610.355702-1-andrew@aj.id.au>
- <20210301010610.355702-3-andrew@aj.id.au>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-In-Reply-To: <20210301010610.355702-3-andrew@aj.id.au>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,54 +105,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jRXOIX5OjqjD
+X-TUID: S48eSbd5VPPD
 
-Hi Andrew,
+On Wed, 2023-10-25 at 10:57 +0200, C=C3=A9dric Le Goater wrote:
+> On 10/24/23 11:36, C=C3=A9dric Le Goater wrote:
+> > On 9/25/23 08:22, Andrew Jeffery wrote:
+> > > I've changed employers, have company email that deals with patch-base=
+d
+> > > workflows without too much of a headache, and am trying to steer some
+> > > content out of my personal mail.
+> > >=20
+> > > Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+> > > ---
+> > >=20
+> > > Hi C=C3=A9dric, do you mind including this in your Aspeed queue?
+> >=20
+> >=20
+> > I am not sure to send an Aspeed PR. May be this change could go
+> > through qemu-trivial ?
+>=20
+> After all, I will send an Aspeed PR. Don't bother.
 
-On 1/3/21 02:06, Andrew Jeffery wrote:
-> The datasheet says we have 197 IRQs allocated, and we need more than 128
-> to describe IRQs from LPC devices. Raise the value now to allow
-> modelling of the LPC devices.
-> 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
->   hw/arm/aspeed_ast2600.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index bc0eeb058b24..22fcb5b0edbe 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -65,7 +65,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->   
->   #define ASPEED_A7MPCORE_ADDR 0x40460000
->   
-> -#define AST2600_MAX_IRQ 128
-> +#define AST2600_MAX_IRQ 197
-
-Revisiting this patch (now commit b151de69f6), do we want 197 here or
-197 - GIC_INTERNAL = 197 - 32 = 165?
-
-Otherwise this ROUND line from commit 957ad79f73:
-
-   ROUND_UP(AST2600_MAX_IRQ + GIC_INTERNAL, 32),
-
-end requesting a GIC with 256 SPIs, but the A15MPCORE one is limited
-to 224...
-
-Hmm I see you name this as 'a7mpcore' but use the A15MPCORE...
-
-     object_initialize_child(obj, "a7mpcore", &a->a7mpcore,
-                             TYPE_A15MPCORE_PRIV);
-
-Per [*], A7MPCORE indeed can have up to 480 SPIs.
-
-Maybe we need to implement A7MPCORE along with A15MPCORE but
-relaxing the GIC SPIs limit?
-
-[*] 
-https://developer.arm.com/documentation/ddi0464/f/Introduction/Configurable-options?lang=en
-
->   /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
->   static const int aspeed_soc_ast2600_irqmap[] = {
-
+Thanks!

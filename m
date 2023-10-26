@@ -1,128 +1,177 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp214624ejb;
-        Thu, 26 Oct 2023 01:32:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGirypRqKwMWdI6yxE/j2j7p+WK7imL/zcF51NdOVHtKcV3RIpz8oB96Np9x3lZngcw8XRP
-X-Received: by 2002:a2e:720d:0:b0:2c5:1037:b54d with SMTP id n13-20020a2e720d000000b002c51037b54dmr11882560ljc.31.1698309158247;
-        Thu, 26 Oct 2023 01:32:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698309158; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp220396ejb;
+        Thu, 26 Oct 2023 01:45:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF/gA5hQVk5GGyrJPnx7ujZwSiqSJyHu+UWgm6bFG9DEIb0oK1UlmSmXv0Umc4DbEO/DwFT
+X-Received: by 2002:a05:6000:1109:b0:32d:a41b:bd47 with SMTP id z9-20020a056000110900b0032da41bbd47mr13147299wrw.59.1698309948838;
+        Thu, 26 Oct 2023 01:45:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698309948; cv=none;
         d=google.com; s=arc-20160816;
-        b=aTyx1fHgrbjITLopltEf+W5zoV+JTkgCr0uWRvTQ3x4CheiQgFHf4hiXX24NrnVaPT
-         3M1F0pAkVsdCZJZr3RSrwtwdhKwuByYz+JzS8ELN1UxU9FCeRTck68rKPE107zAy7OAf
-         gTSgKyicRQRunCYHF4pvi8HJEOO5De7bKuYgitkZAa1kscqjXKxRByJUy7ipZQz9HS9j
-         rekd4Vkz95HhQZZrfMmTArkLpySJ92B0Hw+8TRmLOoxmaI6fzDjoamPhPgLsQnUHcEIO
-         LFhJKqVEeam72A7SallaioeU0XyYXP4nPX0M+mnDH9on6Um31t+QaH++m8BvSTMxEt5L
-         khBg==
+        b=U4u3P0HnnolvZrMK6/3SUbBa60HTR1l5W9swqO1TrTYQEWbkSs9Q6n+wmUBrDQc0oO
+         CJddL8KpRSLbHk1atb9TOBTbQ8AjYrG3cS4/UcYpxhb0SuiuoVoh7FrB+O+Jq/+kNKMW
+         LheLsafeH1IW7QbHu2UCEGUUECR9DIy4JhQdVvFdvNSsjNJxgWA3WmfJ1VniBGFUnN8J
+         /gGVZaxpBm0iBFp/48fu05t+848dYNGGX3mIKTMp7XAUzL5a4v7suwh2l4Lw/MovmnQa
+         cLaDSAgf/zNAW/lPZypLYsxpgxNfxVTghF2MJ1RgrrglFBMDFH97GZ7j7QfMZePuPgxm
+         KPxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=EK7z7nW9IbW+wNSjNYnANY+PyJrIBvlcjyYf+zls/uw=;
-        fh=SYVNIGgMweLEigKkxxjVeKF0UfGSstuc4pW8xSHUd/Y=;
-        b=aBXELp8AfjVPb1sCEqJ9dUtoRf7Mhyp/iGxFLc8+Y78hrq1fHaWomRmNW630TWSqYp
-         vyeRmeJr2q04/oHqwkYqsg7L6i8QCjGhomFXbR8JyP9y7kmAI/Kc3uqvb0lsIjmpqTf+
-         fMBBDJe5GHY7w51EIhMkEVqL8hFJq/otcGMbtdF/7iQHfompQlSYhq6IZZSkjgW0uxnA
-         NOTc0L5QfLTCb6oJRrAcHieQqMA7zlkGXPpXnN+T9jOWQFiOd9aTYUf+SGGO89Kt6lFT
-         AhvYfOL5UYKGxeeixFrZUqqGCtxRpX4Tq5uZSp13S5QgRhe/qXHKnpcW9dY8GwthdRDB
-         ilBA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=D8yHzVlwxhOyUyZx/CNYzpSz7Sti9RHU5svhTzGIDjc=;
+        fh=5BUS2PCSm2nFNPOL6oRx/PUrf8tFxJ7Wy3BRN7xsIww=;
+        b=j7M57wZvBU0j9I/Wy9YUUc7JKxgLaHuaKvhrngexz8qjghJKUjKVqhPra/1hvmZ+9q
+         MJmJeO8VSFDUemJlBOi3jQieIbjMuj8+latdcgYy5KUBXgHVPC/5EHvvkTsjObeiPhEI
+         S/RT97LUUCVXmmn/xagpQ4RV8SkCcvEu+ubvbEBUa34x1UNh/Bi3xQQwD8poQ8ayfjwv
+         eJLW2x/krRF1QkfZ+sIlaQvQPOEhA4D7fmDB40VdzFQzUTHZs/583L/yD+7f7mhu5Wpn
+         PWdwLc5Q909mryr9i8FVK4FL7RaNDxIZpKf6xUnykBZFDuzDGiBPpFGEM9WGlyp7uyuJ
+         iw3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=M6LMvx2L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ghWdQQ+i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8-20020a05600c178800b0040813e14b47si1231079wmo.182.2023.10.26.01.32.38
+        by mx.google.com with ESMTPS id w12-20020adfec4c000000b0032da1287dc2si8893915wrn.382.2023.10.26.01.45.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Oct 2023 01:32:38 -0700 (PDT)
+        Thu, 26 Oct 2023 01:45:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=M6LMvx2L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ghWdQQ+i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvvmZ-0002f1-OJ; Thu, 26 Oct 2023 04:31:59 -0400
+	id 1qvvzp-0007Sn-T0; Thu, 26 Oct 2023 04:45:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1qvvmX-0002cj-E9
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:31:57 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1qvvmU-0003GD-L7
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:31:57 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-9b1ebc80d0aso94434866b.0
- for <qemu-arm@nongnu.org>; Thu, 26 Oct 2023 01:31:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1698309112; x=1698913912; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=EK7z7nW9IbW+wNSjNYnANY+PyJrIBvlcjyYf+zls/uw=;
- b=M6LMvx2L2C+RajBW1RvmL6VhlnaajATqj/UT3vwaMX1x3cU6iFCu/AXpVm3XKE1PWS
- CThs9s8UqK+0MGVbrWc0y7FV0TK3QqK3DePwXJvt0wrr/sMsH+HYS0aMPlQSWDzG7eYx
- oeqEjWOCONpxCWUma4LpmyVk4HhZQ6wfROdaz9Z2d0VGy1J0qxlJ/2CCzc/rjHV0eney
- XYK8VmyYcKr2NejBs0h3oxqiaS0ztB4p71pmB1fuMR28nGee6vvKKPATQZ7nv5QWmfsJ
- RAc9tBYrchpKB8N2OWADUoqIoDm1QlsoguXQ10zr7G0NN02tdzkb2xNtewNWB6r9KJqz
- tKEw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvvzn-0007O3-OG
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:45:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvvzk-0000yM-VO
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:45:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698309932;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=D8yHzVlwxhOyUyZx/CNYzpSz7Sti9RHU5svhTzGIDjc=;
+ b=ghWdQQ+ifuDvaPdSS1SW93/HzwKKkz8i/JSP/GSrLRzOjYqho+695Qhh2wEVEp8ZmuqfCn
+ LF4VU8YCb16RHvxD+sLoUE9IhQcq9JYoRlvxHljUu8hn8Y4nnGc3K1EzHIzyJVCoTH6Rwp
+ fWcK4PEnFGpXlMkKOks41wgm3VDMNuc=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-547-_iT9yLB9N4euXnSGueZuIg-1; Thu, 26 Oct 2023 04:45:27 -0400
+X-MC-Unique: _iT9yLB9N4euXnSGueZuIg-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-66d0b251a6aso9050996d6.2
+ for <qemu-arm@nongnu.org>; Thu, 26 Oct 2023 01:45:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698309112; x=1698913912;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=EK7z7nW9IbW+wNSjNYnANY+PyJrIBvlcjyYf+zls/uw=;
- b=QPyY2xS0PTDfB04pqxP2boNhcU9DJP3hsVQ6xB7oKf4a0afnSo726zena+OO2ptJHA
- 2SHNQp3CeDGgl7dsYv9w3N9pIld75ftOjaY6Ew5dqcMJ0jUYcs6B7FScC7Up6zrRlcOT
- Uy0L3kZ/vTqulMsahIgum63epFBMG/8nH0UZRVajv5lxc3FfyZCFJ31vUQGTGuHWqfkr
- L37mPd026UuaIbEysqO9LPDIj4VTX7v0ozNrdr0kFuQxJOlDN4t0D9O1qf6l46p6Bc+4
- 5OMDW9v5IVEmn5n7/j172U3nRlWegljt8Hfpt0IDMr8A0cS582n63vAyoWUfyzV+uEtS
- ZgHw==
-X-Gm-Message-State: AOJu0YzsOnbvf1Kzx9hnpr+2tBzleEDszrYksRcqrA+OkiqelXgKpGW9
- Kkecoq8jMQg4mXfIyeloAG0XpA==
-X-Received: by 2002:a17:907:94c3:b0:9c3:bd63:4245 with SMTP id
- dn3-20020a17090794c300b009c3bd634245mr12536736ejc.47.1698309112538; 
- Thu, 26 Oct 2023 01:31:52 -0700 (PDT)
-Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz.
- [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
+ d=1e100.net; s=20230601; t=1698309927; x=1698914727;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=D8yHzVlwxhOyUyZx/CNYzpSz7Sti9RHU5svhTzGIDjc=;
+ b=H15P9zCSiQ9QaTuNJHPlPkJFxu5Pd41jYvHafhuZ98IPDYIUAssVL0mtBGInXF2qXR
+ AGhb+P9VOn48G81vIpEXTdCjdVMovf12JRdHOgzOgrdpmXGKGByCc6NlJUzx3oDK20q0
+ mfbv7DN6komCHhdBIlBKyFF+uRUGeYzz3SFnqDRJ09/xl2EO6VTO2RXxRO2rDiPaXnkb
+ CKBw4jCMW6a1yaVUhn2kPef7h//+0uZtzwMGze8mX3CZZlSWyErZg5bN48dSfgRT3L59
+ yR5tHx5wyMFTgx/xGmAzZXSpkXM5FbUHG6Z5PnbbQ7GkSbUkBEHfpWbO/nXEPt2CUaqk
+ x0Sg==
+X-Gm-Message-State: AOJu0Yw2sTg6YzeWPcrgZk8h9+2QC7UqN9QO6JN1ac4VJRhO9kMVV/8s
+ VCpHkVysb5j8CroJJh3XyLoGNTjU+1K8EU2Ev1RFEm/Ai6UDEHhFiNfkUzBgufhKyJnxcJEy2oX
+ RHH6VZG4jxC4W
+X-Received: by 2002:a05:6214:5004:b0:66d:9d4d:683 with SMTP id
+ jo4-20020a056214500400b0066d9d4d0683mr19650689qvb.57.1698309927324; 
+ Thu, 26 Oct 2023 01:45:27 -0700 (PDT)
+X-Received: by 2002:a05:6214:5004:b0:66d:9d4d:683 with SMTP id
+ jo4-20020a056214500400b0066d9d4d0683mr19650671qvb.57.1698309927085; 
+ Thu, 26 Oct 2023 01:45:27 -0700 (PDT)
+Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
  by smtp.gmail.com with ESMTPSA id
- i6-20020a17090671c600b009920a690cd9sm11159820ejk.59.2023.10.26.01.31.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Oct 2023 01:31:52 -0700 (PDT)
-Date: Thu, 26 Oct 2023 10:31:51 +0200
-From: Andrew Jones <ajones@ventanamicro.com>
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
- Ani Sinha <anisinha@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, 
- Eduardo Habkost <eduardo@habkost.net>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH v4 09/13] hw/riscv/virt-acpi-build.c: Add MMU node in RHCT
-Message-ID: <20231026-5530c164173cd1859e9df666@orel>
-References: <20231025200713.580814-1-sunilvl@ventanamicro.com>
- <20231025200713.580814-10-sunilvl@ventanamicro.com>
+ jy12-20020a0562142b4c00b0065823d20381sm5062574qvb.8.2023.10.26.01.45.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 Oct 2023 01:45:26 -0700 (PDT)
+Message-ID: <d41aa305-6d3d-478a-82c7-e9a8789bdfce@redhat.com>
+Date: Thu, 26 Oct 2023 10:45:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231025200713.580814-10-sunilvl@ventanamicro.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=ajones@ventanamicro.com; helo=mail-ej1-x62b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 15/23] ui/gl: opengl doesn't require PIXMAN
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
+ <20231025190818.3278423-16-marcandre.lureau@redhat.com>
+ <4b2a7827-b0a0-4cd5-81a4-d4129a53ac82@redhat.com>
+ <CAJ+F1C+q1N0MWGHH=L82iyL-gCp__U+eELo9=y5fz0rexUFptQ@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAJ+F1C+q1N0MWGHH=L82iyL-gCp__U+eELo9=y5fz0rexUFptQ@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,113 +186,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YWRMacQ3o1B6
+X-TUID: YlBlXHHiM+0E
 
-On Thu, Oct 26, 2023 at 01:37:09AM +0530, Sunil V L wrote:
-> MMU type information is available via MMU node in RHCT. Add this node in
-> RHCT.
+On 26/10/2023 10.09, Marc-André Lureau wrote:
+> Hi
 > 
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-> ---
->  hw/riscv/virt-acpi-build.c | 37 ++++++++++++++++++++++++++++++++++++-
->  1 file changed, 36 insertions(+), 1 deletion(-)
+> On Thu, Oct 26, 2023 at 10:44 AM Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> On 25/10/2023 21.08, marcandre.lureau@redhat.com wrote:
+>>> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>>
+>>> The QEMU fallback covers the requirements. We still need the flags of
+>>> header inclusion with CONFIG_PIXMAN.
+>>>
+>>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>> ---
+>>>    ui/meson.build | 4 ++--
+>>>    1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/ui/meson.build b/ui/meson.build
+>>> index 3085e10a72..7c99613950 100644
+>>> --- a/ui/meson.build
+>>> +++ b/ui/meson.build
+>>> @@ -60,8 +60,8 @@ endif
+>>>    system_ss.add(opengl)
+>>>    if opengl.found()
+>>>      opengl_ss = ss.source_set()
+>>> -  opengl_ss.add(gbm)
+>>> -  opengl_ss.add(when: [opengl, pixman],
+>>> +  opengl_ss.add(gbm, pixman)
+>>
+>> I don't quite get the above line (sorry, meson ignorant here) ... does
+>> "pixman" simply get ignored here if it has not been found?
+>>
 > 
-> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-> index ebe7062b9b..dc7c0213f5 100644
-> --- a/hw/riscv/virt-acpi-build.c
-> +++ b/hw/riscv/virt-acpi-build.c
-> @@ -159,6 +159,8 @@ static void build_rhct(GArray *table_data,
->      size_t len, aligned_len;
->      uint32_t isa_offset, num_rhct_nodes, cmo_offset = 0;
->      RISCVCPU *cpu = &s->soc[0].harts[0];
-> +    uint32_t mmu_offset = 0;
-> +    uint8_t satp_mode_max;
->      char *isa;
->  
->      AcpiTable table = { .sig = "RHCT", .rev = 1, .oem_id = s->oem_id,
-> @@ -178,6 +180,10 @@ static void build_rhct(GArray *table_data,
->          num_rhct_nodes++;
->      }
->  
-> +    if (cpu->cfg.satp_mode.supported != 0) {
-> +        num_rhct_nodes++;
-> +    }
-> +
->      /* Number of RHCT nodes*/
->      build_append_int_noprefix(table_data, num_rhct_nodes, 4);
->  
-> @@ -233,6 +239,26 @@ static void build_rhct(GArray *table_data,
->          }
->      }
->  
-> +    /* MMU node structure */
-> +    if (cpu->cfg.satp_mode.supported != 0) {
-> +        satp_mode_max = satp_mode_max_from_map(cpu->cfg.satp_mode.map);
-> +        mmu_offset = table_data->len - table.table_offset;
-> +        build_append_int_noprefix(table_data, 2, 2);    /* Type */
-> +        build_append_int_noprefix(table_data, 8, 2);    /* Length */
-> +        build_append_int_noprefix(table_data, 0x1, 2);  /* Revision */
-> +        build_append_int_noprefix(table_data, 0, 1);    /* Reserved */
-> +        /* MMU Type */
-> +        if (satp_mode_max == VM_1_10_SV57) {
-> +            build_append_int_noprefix(table_data, 2, 1);    /* Sv57 */
-> +        } else if (satp_mode_max == VM_1_10_SV48) {
-> +            build_append_int_noprefix(table_data, 1, 1);    /* Sv48 */
-> +        } else if (satp_mode_max == VM_1_10_SV39) {
-> +            build_append_int_noprefix(table_data, 0, 1);    /* Sv39 */
-> +        } else {
-> +            assert(1);
-> +        }
-> +    }
-> +
->      /* Hart Info Node */
->      for (int i = 0; i < arch_ids->len; i++) {
->          len = 16;
-> @@ -245,17 +271,26 @@ static void build_rhct(GArray *table_data,
->              num_offsets++;
->          }
->  
-> +        if (mmu_offset) {
-> +            len += 4;
-> +            num_offsets++;
-> +        }
-> +
->          build_append_int_noprefix(table_data, len, 2);
->          build_append_int_noprefix(table_data, 0x1, 2); /* Revision */
->          /* Number of offsets */
->          build_append_int_noprefix(table_data, num_offsets, 2);
->          build_append_int_noprefix(table_data, i, 4);   /* ACPI Processor UID */
-> -
->          /* Offsets */
->          build_append_int_noprefix(table_data, isa_offset, 4);
-> +        if (mmu_offset) {
-> +            build_append_int_noprefix(table_data, mmu_offset, 4);
-> +        }
-> +
+> Yes, when it is 'not_found", it's simply ignored. Essentially, this is
+> making pixman from required to optional to build the opengl source
+> set.
 
-In the previous version of this patch the MMU node was getting generated
-above the CMO node, so its offset was less than those of the CMO node,
-and why I recommended moving it up here. But, in this version, the MMU
-node is now getting generated after the CMO node, so moving this up
-means the offsets are still not in ascending order.
+All right, then I think the patch is fine:
 
->          if (cmo_offset) {
->              build_append_int_noprefix(table_data, cmo_offset, 4);
->          }
-> +
->      }
->  
->      acpi_table_end(linker, &table);
-> -- 
-> 2.39.2
-> 
->
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Anyway,
+But one more cosmetic question:
 
-Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
++  opengl_ss.add(when: [opengl],
+                  if_true: files('shader.c', 'console-gl.c', 
+'egl-helpers.c', 'egl-context.c'))
 
-Thanks,
-drew
+Do we still need the "when: [opengl]" part here? ... there is already the 
+"if opengl.found()" earlier in this file, so it looks like this is not 
+necessary anymore now?
+
+  Thomas
 

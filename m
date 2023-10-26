@@ -1,130 +1,121 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp38848ejb;
-        Wed, 25 Oct 2023 17:52:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFeb4afomL9JCsmPoasZHFeiEMc3YqF6DJWqjjyDqdLgsydTfud17wYBeUz0hMx1FcKSVRA
-X-Received: by 2002:adf:ebc7:0:b0:32d:a022:8559 with SMTP id v7-20020adfebc7000000b0032da0228559mr10956735wrn.47.1698281532096;
-        Wed, 25 Oct 2023 17:52:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698281532; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp117621ejb;
+        Wed, 25 Oct 2023 21:33:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGueaPpMfRCwKQVWL7s/nJfEGlOM4JA3+XiQ1Rd83ib821SG6skrWwg9wEZsH31SZ327g/S
+X-Received: by 2002:a05:6214:e6d:b0:65a:f5e3:5ac0 with SMTP id jz13-20020a0562140e6d00b0065af5e35ac0mr18726306qvb.51.1698294780777;
+        Wed, 25 Oct 2023 21:33:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698294780; cv=none;
         d=google.com; s=arc-20160816;
-        b=wnjclk3cbvcc1anrmLJxLhLYPftFUKcBmsaGJLdjywjmSyvrZXgIrEeVz21GPWFsxT
-         KRv+bar5mkLxsJ86mbFCsEeP2JT7OimM+LcMBAun8t8EhwloEwQXzfT0vzlsV6bycPsp
-         mQvwmf5ghTAcJVFnGoTJzgCZKFYeZQKvpqep5WD1X1Mz+odaiDp9aMIp5BvFBNAg9Xip
-         pqfOJPAADkMxsqXb6iJ+CTjarH8uujt992tEq1I72KfPK7sc/+4kBOuHiA0RneHhGscG
-         TIZtf95ywJTKxZXMAvmjtLjztIFvRrrVd9avjTolrurg3Wj0IMT+SsigCaAFpL+0lQ8Y
-         hiDg==
+        b=CCd5+qAEL4xJPcknDkPlTjuTtZjfZTCRvSIhziNDyDr3qDVJHh1u748m4quZIUMMFZ
+         GOo/7LvPWheXHY2l3va5uDMTDLgajk9gq/4AMleiR8PgplUaUPj4h/QTmIGkUCe4/7xq
+         pC6LCBhpDgFqWVjZPZcKToDgszXtixGM1pqTTu4wVKNZ3U8ElIAz0UgbmgjET8dngYX1
+         Q1IrIAfJrso0WffwCv8rMhQ6mm3E3290bE++0NmMZdX0sC5OOzXeBhASxUK55PjfISOZ
+         bNUI5X3AXYc4CKgo/3jVwB2vxkoLBRUeB4BwlwYOcNogpiz26DfL/gWfvWtORVob4xtT
+         Lurg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ZvLKDcA1Bbl99MTx91e5m6PwJViefSi8KsQ0LDpK4Lw=;
-        fh=/UD8kdp/ALGNnXCif2yneFHSiSGZIqiRAajQ+pHSqfQ=;
-        b=vw0jCfLWIXYYGLOl7QYaqvv4XxhdgUVzQB6fslt6vA6FyI3x8f+30wMK7xVyMjAHiA
-         GzWcMag+yHfGnZZWr5/JLoBQ8A+k3TVv9LnRVe3Rn2NqNGoRtUhru4KTw0aqq6beXOQB
-         WLx8QyoxzgBXgWwSUxe5DUg1c5n0mv6VTkaSCT7uhK9TlG6YqJ+haa9kWlMKYmEX7xMZ
-         Hy1CfhMw4tCJXMY0FIpF+gPCMx11PXY/eBwFKqLYbTIVpUcN9iAgGMbKS2yIuwovTMwj
-         MDbI+UhywXd+jAtlu1wDOrVIQmCm7thAs14laXb6+je5dJtKTK0++CmuTX0a07htiIE0
-         bxWw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=oQeLLJX1SNl3fiduP6mhol3eLmwp6WdGHayJ5XYZBfw=;
+        fh=NjxW+xwwZv9ij4NCeGT5dichoZEHejgQhA6VSE7zQ08=;
+        b=dzOIv5wM1X7ypcHAS5KXC2l/AlKmGPdqgUCbii016f2Cmbhp2iV7ZvVT4lJRorEvBs
+         uoNWVngZ6dBbUYncWf0+nZtfnyzllEC0pNVDyLfLw75N4By7WuU2cGeGd/SfvJDaz+Rx
+         Ov5G0KzOOHBcn5VOTh9o6J2kJGb/HRZqLoYeH1HpR1ThyCEQDdzzNbv5jXfLL0lK9bCp
+         9lkzSnso6V8ADRnCSA6t/8lhauUR63cc4smDJqc59ogDDSxi/eBraz/fpxDaiIUp5kld
+         Fc9sy8f+fzJoFHU7us8EQoRD4lu4hFTwrOen2o7SNNISoKP/3v6SO3i9guT026N6wjx2
+         EIGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=INigDWjv;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=CpeFUW9I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13-20020a5d61cd000000b0032d8da048c5si8113301wrv.445.2023.10.25.17.52.11
+        by mx.google.com with ESMTPS id e17-20020ac85dd1000000b0041cc02700dbsi9554351qtx.257.2023.10.25.21.33.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 17:52:12 -0700 (PDT)
+        Wed, 25 Oct 2023 21:33:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=INigDWjv;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=CpeFUW9I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvoaf-0005Ig-3a; Wed, 25 Oct 2023 20:51:13 -0400
+	id 1qvs2o-0000CA-AU; Thu, 26 Oct 2023 00:32:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1qvoad-0005Ha-5w; Wed, 25 Oct 2023 20:51:11 -0400
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1qvs2j-0000BO-2H; Thu, 26 Oct 2023 00:32:25 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1qvoab-0002E9-3j; Wed, 25 Oct 2023 20:51:10 -0400
-Received: by mail-oo1-xc2f.google.com with SMTP id
- 006d021491bc7-581fb6f53fcso225148eaf.2; 
- Wed, 25 Oct 2023 17:51:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1qvs2g-0007FK-59; Thu, 26 Oct 2023 00:32:24 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-99bdeae1d0aso72097766b.1; 
+ Wed, 25 Oct 2023 21:32:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698281465; x=1698886265; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZvLKDcA1Bbl99MTx91e5m6PwJViefSi8KsQ0LDpK4Lw=;
- b=INigDWjvN2+WQ2X3/add5QkNX2hU3oRbYC3YJtCWESTmVwLnbPSjKL4zbQYjisRB8+
- DejgIjR1/ZgkyxY7wl/e1eb6kmhVNGs6Cj5OSDLo+j7ahE1p5ISGjmOXq/X+v4bYoEle
- xKzdpPnxI/1gM3Q4o59o6LdkYVUdm8EQINo+9AOLIp8AKLupIOf7E6pok4COekGnu+P0
- 757BiPavlD5umZ0HIRXRHmD+H92bEt+KQhpiScZXsOimAtmie1/CaRYMSEt3zE61BtgX
- lxfFnuCKQT4TWrRqsbbew5onvKqqT6QqEM+AxFxniuOso7QVMd4RluC3+lUuKr0mPbpP
- Wqlw==
+ d=gmail.com; s=20230601; t=1698294739; x=1698899539; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=oQeLLJX1SNl3fiduP6mhol3eLmwp6WdGHayJ5XYZBfw=;
+ b=CpeFUW9IFDcZzEMIqUfHq69YA2ri2OryEtCB/6brmpF5KI9G5prFtc1TN3i5+2Gs2b
+ m4QTiHfnE3EVM04Gy+B0KFL/GqqB2cwt+7Y4Dddquk07myHs3dEUfuALruWObdJfOyrU
+ Dbf0hCxuE7YOZxww9DmAAtCLk6SLGC1VNw3eJVs3Ol1BKSfjXjt7Xy1mukp03aiN7WKV
+ Wz98aWo6gEhl0pL4Yk2/X5CMwz7bIojcSLjyi+pQWCr6AXnMkb4ZtfbeAHmUQlHkaxqT
+ Gp0u9qQbfxRmWz7uwZOuJ5rVx9LbizWqfzhszkxRCErluknTUMKDpA2Tg8KEXq9nxII4
+ YKIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698281465; x=1698886265;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ZvLKDcA1Bbl99MTx91e5m6PwJViefSi8KsQ0LDpK4Lw=;
- b=wWhCSvSOFJICNBw5SX3Dk3zG6vfuwjoeAJb9KwyKSD7XFcan2zusrcaZbV2X5vimTw
- oDvLvK+Sc7pHcfFu2T4x+lfRJVAUi+LuqhUXZC0yU+HPGkPshcQLQijXRrR9XVJZr7ir
- xmiQ+j5R3CaXarkfGxJeH5NcJA5FLl7dXzNFuYnv7xC8OfbC2F8P3+QnRjub1M0CD9gd
- ID6TXRIKSpfma5TKguEQw67cDs4OQKxab7ejrW6jP8qtiqTT2/51KK3l+nlG8/Yqx3I1
- QDf1a9SDsjiENWCVyZvgA6vRjUDy7n/4EkC6BH/xxd04D5wOeB7ACRUs8qA3SFYLaOAc
- S96Q==
-X-Gm-Message-State: AOJu0Yz1/eEQ5LPXpigsuz/ZKlXVyjkb+Q7pEUV/WhBwOt8aVEHWzBNi
- dTWXHoSHz6BqFf+tx1C9r6wchyeqJGLBX+C0e48=
-X-Received: by 2002:a4a:e8dc:0:b0:573:bf68:8dbc with SMTP id
- h28-20020a4ae8dc000000b00573bf688dbcmr14060519ooe.7.1698281465607; Wed, 25
- Oct 2023 17:51:05 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1698294739; x=1698899539;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :sender:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oQeLLJX1SNl3fiduP6mhol3eLmwp6WdGHayJ5XYZBfw=;
+ b=TnAfLYIItmkK89tBZCo0qKpd408OHniVvZZD2cNDl6YUc62nfGR/NfMxJ5HqmrIfEK
+ c1IZalXllt/nN5/E3O2YliP1AuZE6oa5GE68SPlELPbxoYI1ZVQNDThgrFp2ww8C+LLm
+ ecoRpWj1HiKEWshanpHowIJl7YOamwcovz7YHLPCdqO5Joe3r9GArcn1Rl5gKMMuy9Ch
+ ZgLS4H5SZNEY8ck+7EM151NCHBW3KeBlFm+4nstwtiohZq/LjOrbF6AtpgS7H3WeMkQo
+ op3l8KTWOoOI7LovcnbYiSU0s77SHPEWvpNRqJVYb1G7uOV6xxRDeUInAj0EhxDRrK4O
+ 9QGA==
+X-Gm-Message-State: AOJu0YzGBhqa9JsSBZeRc5fqmVgKDyKcOsF4A3NYdd6LXq5MdtQvrK0l
+ nq0diwUF/X89QTJBGmC9h9cuL5ExwympcQ==
+X-Received: by 2002:a17:907:7da7:b0:9a9:ef41:e5c7 with SMTP id
+ oz39-20020a1709077da700b009a9ef41e5c7mr13271742ejc.8.1698294738902; 
+ Wed, 25 Oct 2023 21:32:18 -0700 (PDT)
+Received: from [192.168.69.115]
+ (aif79-h01-176-172-114-150.dsl.sta.abo.bbox.fr. [176.172.114.150])
+ by smtp.gmail.com with ESMTPSA id
+ ga23-20020a170906b85700b009b65b2be80bsm10869958ejb.76.2023.10.25.21.32.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Oct 2023 21:32:17 -0700 (PDT)
+Message-ID: <fbc5f8a6-a5ae-c60e-272f-6c96d150308d@amsat.org>
+Date: Thu, 26 Oct 2023 06:32:15 +0200
 MIME-Version: 1.0
-References: <20231024131305.87468-1-quintela@redhat.com>
-In-Reply-To: <20231024131305.87468-1-quintela@redhat.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Thu, 26 Oct 2023 09:50:53 +0900
-Message-ID: <CAJSP0QVZPM5BkHYBTqXmDBuBvUuAAhjdgX_3Ka0WbqTzBxutvg@mail.gmail.com>
-Subject: Re: [PULL 00/39] Migration 20231024 patches
-To: Juan Quintela <quintela@redhat.com>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Corey Minyard <minyard@acm.org>, Li Zhijian <lizhijian@fujitsu.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Hanna Reitz <hreitz@redhat.com>, John Snow <jsnow@redhat.com>, 
- David Gibson <david@gibson.dropbear.id.au>, Gerd Hoffmann <kraxel@redhat.com>, 
- Stefan Hajnoczi <stefanha@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Corey Minyard <cminyard@mvista.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Kevin Wolf <kwolf@redhat.com>,
- qemu-s390x@nongnu.org, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org, 
- libvir-list@redhat.com, Stefan Weil <sw@weilnetz.de>, 
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- Jason Wang <jasowang@redhat.com>, 
- Fam Zheng <fam@euphon.net>, Christian Borntraeger <borntraeger@linux.ibm.com>, 
- David Hildenbrand <david@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Eric Farman <farman@linux.ibm.com>, Markus Armbruster <armbru@redhat.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-ppc@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
- envelope-from=stefanha@gmail.com; helo=mail-oo1-xc2f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v2 2/5] hw/arm: ast2600: Set AST2600_MAX_IRQ to value from
+ datasheet
+Content-Language: en-US
+To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org
+Cc: clg@kaod.org, joel@jms.id.au, minyard@acm.org, ryan_chen@aspeedtech.com,
+ qemu-devel@nongnu.org
+References: <20210301010610.355702-1-andrew@aj.id.au>
+ <20210301010610.355702-3-andrew@aj.id.au>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+In-Reply-To: <20210301010610.355702-3-andrew@aj.id.au>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.339,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -141,145 +132,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e3nZyTZByOXE
+X-TUID: jRXOIX5OjqjD
 
-On Tue, 24 Oct 2023 at 23:45, Juan Quintela <quintela@redhat.com> wrote:
->
-> The following changes since commit a95260486aa7e78d7c7194eba65cf03311ad94=
-ad:
->
->   Merge tag 'pull-tcg-20231023' of https://gitlab.com/rth7680/qemu into s=
-taging (2023-10-23 14:45:46 -0700)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/juan.quintela/qemu.git tags/migration-20231024-pull-=
-request
->
-> for you to fetch changes up to 088f7f03da3f5b3487091302b795c22b1bfe56fb:
->
->   migration: Deprecate old compression method (2023-10-24 13:48:24 +0200)
->
-> ----------------------------------------------------------------
-> Migration Pull request (20231024)
->
-> Hi
->
-> In this PULL:
-> - vmstate registration fixes (thomas, juan)
-> - start merging vmstate_section_needed changes (marc)
-> - migration depreactions (juan)
-> - migration documentation for backwards compatibility (juan)
->
-> Please apply.
+Hi Andrew,
 
-Hi Juan,
-I'm seeing CI failures:
-https://gitlab.com/qemu-project/qemu/-/pipelines/1048630760
+On 1/3/21 02:06, Andrew Jeffery wrote:
+> The datasheet says we have 197 IRQs allocated, and we need more than 128
+> to describe IRQs from LPC devices. Raise the value now to allow
+> modelling of the LPC devices.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> ---
+>   hw/arm/aspeed_ast2600.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index bc0eeb058b24..22fcb5b0edbe 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -65,7 +65,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>   
+>   #define ASPEED_A7MPCORE_ADDR 0x40460000
+>   
+> -#define AST2600_MAX_IRQ 128
+> +#define AST2600_MAX_IRQ 197
 
-You can ignore avocado-system-debian, but the others look like real failure=
-s.
+Revisiting this patch (now commit b151de69f6), do we want 197 here or
+197 - GIC_INTERNAL = 197 - 32 = 165?
 
-Please take a look. Thanks!
+Otherwise this ROUND line from commit 957ad79f73:
 
-Stefan
+   ROUND_UP(AST2600_MAX_IRQ + GIC_INTERNAL, 32),
 
->
-> ----------------------------------------------------------------
->
-> Juan Quintela (31):
->   migration/doc: Add contents
->   migration/doc: Add documentation for backwards compatiblity
->   migration/doc: How to migrate when hosts have different features
->   migration/doc: We broke backwards compatibility
->   migration: Receiving a zero page non zero is an error
->   migration: Rename ram_handle_compressed() to ram_handle_zero()
->   migration: Give one error if trying to set MULTIFD and XBZRLE
->   migration: Give one error if trying to set COMPRESSION and XBZRLE
->   migration: Remove save_page_use_compression()
->   migration: Make compress_data_with_multithreads return bool
->   migration: Simplify compress_page_with_multithread()
->   migration: Move busy++ to migrate_with_multithread
->   migration: Create compress_update_rates()
->   migration: Export send_queued_data()
->   migration: Move ram_flush_compressed_data() to ram-compress.c
->   migration: Merge flush_compressed_data() and compress_flush_data()
->   migration: Rename ram_compressed_pages() to compress_ram_pages()
->   migration: Create vmstate_register_any()
->   migration: Use vmstate_register_any()
->   migration: Use vmstate_register_any() for isa-ide
->   migration: Use VMSTATE_INSTANCE_ID_ANY for slirp
->   migration: Hack to maintain backwards compatibility for ppc
->   migration: Improve example and documentation of vmstate_register()
->   migration: Use vmstate_register_any() for audio
->   migration: Use vmstate_register_any() for eeprom93xx
->   migration: Use vmstate_register_any() for vmware_vga
->   qemu-iotests: Filter warnings about block migration being deprecated
->   migration: migrate 'inc' command option is deprecated.
->   migration: migrate 'blk' command option is deprecated.
->   migration: Deprecate block migration
->   migration: Deprecate old compression method
->
-> Marc-Andr=C3=A9 Lureau (2):
->   migration: rename vmstate_save_needed->vmstate_section_needed
->   migration: set file error on subsection loading
->
-> Peter Xu (1):
->   migration: Check in savevm_state_handler_insert for dups
->
-> Thomas Huth (5):
->   hw/ipmi: Don't call vmstate_register() from instance_init() functions
->   hw/s390x/s390-skeys: Don't call register_savevm_live() during
->     instance_init()
->   hw/s390x/s390-stattrib: Simplify handling of the "migration-enabled"
->     property
->   hw/s390x/s390-stattrib: Don't call register_savevm_live() during
->     instance_init()
->   migration/ram: Fix compilation with -Wshadow=3Dlocal
->
->  docs/about/deprecated.rst        |  35 ++
->  docs/devel/migration.rst         | 532 ++++++++++++++++++++++++++++++-
->  qapi/migration.json              |  93 ++++--
->  include/migration/vmstate.h      |  30 +-
->  migration/ram-compress.h         |  10 +-
->  migration/ram.h                  |   3 +-
->  audio/audio.c                    |   2 +-
->  backends/dbus-vmstate.c          |   3 +-
->  backends/tpm/tpm_emulator.c      |   3 +-
->  hw/display/vmware_vga.c          |   2 +-
->  hw/i2c/core.c                    |   2 +-
->  hw/ide/isa.c                     |   2 +-
->  hw/input/adb.c                   |   2 +-
->  hw/input/ads7846.c               |   2 +-
->  hw/input/stellaris_input.c       |   3 +-
->  hw/intc/xics.c                   |  18 +-
->  hw/ipmi/ipmi_bmc_extern.c        |  29 +-
->  hw/ipmi/isa_ipmi_bt.c            |  34 +-
->  hw/ipmi/isa_ipmi_kcs.c           |  50 +--
->  hw/net/eepro100.c                |   3 +-
->  hw/nvram/eeprom93xx.c            |   2 +-
->  hw/pci/pci.c                     |   2 +-
->  hw/ppc/spapr.c                   |  25 +-
->  hw/ppc/spapr_nvdimm.c            |   3 +-
->  hw/s390x/s390-skeys.c            |  35 +-
->  hw/s390x/s390-stattrib.c         |  71 ++---
->  hw/timer/arm_timer.c             |   2 +-
->  hw/virtio/virtio-mem.c           |   4 +-
->  migration/block.c                |   3 +
->  migration/migration-hmp-cmds.c   |  10 +
->  migration/migration.c            |  10 +
->  migration/options.c              |  36 ++-
->  migration/ram-compress.c         | 112 +++++--
->  migration/ram.c                  | 114 ++-----
->  migration/rdma.c                 |   8 +-
->  migration/savevm.c               |  34 +-
->  migration/vmstate.c              |   5 +-
->  net/slirp.c                      |   5 +-
->  tests/qemu-iotests/183           |   2 +-
->  tests/qemu-iotests/common.filter |   7 +
->  40 files changed, 1041 insertions(+), 307 deletions(-)
->
-> --
-> 2.41.0
->
->
+end requesting a GIC with 256 SPIs, but the A15MPCORE one is limited
+to 224...
+
+Hmm I see you name this as 'a7mpcore' but use the A15MPCORE...
+
+     object_initialize_child(obj, "a7mpcore", &a->a7mpcore,
+                             TYPE_A15MPCORE_PRIV);
+
+Per [*], A7MPCORE indeed can have up to 480 SPIs.
+
+Maybe we need to implement A7MPCORE along with A15MPCORE but
+relaxing the GIC SPIs limit?
+
+[*] 
+https://developer.arm.com/documentation/ddi0464/f/Introduction/Configurable-options?lang=en
+
+>   /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
+>   static const int aspeed_soc_ast2600_irqmap[] = {
+

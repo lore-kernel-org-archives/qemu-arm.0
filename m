@@ -1,94 +1,94 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp207456ejb;
-        Thu, 26 Oct 2023 01:15:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFZ/P1uzZksa4HQ8136CO+r8WxpvmUhSlpQsT1gZpwZoy+KhWOYdR59sLq4MBVy7XsDqRIK
-X-Received: by 2002:a05:6512:10c9:b0:507:aa8d:a572 with SMTP id k9-20020a05651210c900b00507aa8da572mr15398441lfg.49.1698308120189;
-        Thu, 26 Oct 2023 01:15:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698308120; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp214624ejb;
+        Thu, 26 Oct 2023 01:32:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGirypRqKwMWdI6yxE/j2j7p+WK7imL/zcF51NdOVHtKcV3RIpz8oB96Np9x3lZngcw8XRP
+X-Received: by 2002:a2e:720d:0:b0:2c5:1037:b54d with SMTP id n13-20020a2e720d000000b002c51037b54dmr11882560ljc.31.1698309158247;
+        Thu, 26 Oct 2023 01:32:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698309158; cv=none;
         d=google.com; s=arc-20160816;
-        b=X3U+eBJ+xNB2O5M7wGgMH+B8VqMT0JwRmfABjYcTuSYVEvOHzcUBLOeNlJt6q+qbUH
-         tOTr/IuNuiKOmYYOcRduRYulqI3au4fwYvVzVWXZFOrEYBLP4jNTanK+yFBq+X9X1NHy
-         R1d6WDLXXAMyuvKmyQ0VWQ/7n360hkEJLkW/oUJ2HVodw5b4oNjcCfjCdN84laPs3TgI
-         Uhl04j4nkclRiINjjkMntqNKXmqNn4yfaO4fxoq+f0rd7VONcnHMWFsM9BeuWrlBzRvJ
-         TioyKANr+hez5ISyIMA8poHezjIzS/vC6Gg4Mv0j9b5CSpg5texcJrNsQG/buXm0XLGo
-         Q2ew==
+        b=aTyx1fHgrbjITLopltEf+W5zoV+JTkgCr0uWRvTQ3x4CheiQgFHf4hiXX24NrnVaPT
+         3M1F0pAkVsdCZJZr3RSrwtwdhKwuByYz+JzS8ELN1UxU9FCeRTck68rKPE107zAy7OAf
+         gTSgKyicRQRunCYHF4pvi8HJEOO5De7bKuYgitkZAa1kscqjXKxRByJUy7ipZQz9HS9j
+         rekd4Vkz95HhQZZrfMmTArkLpySJ92B0Hw+8TRmLOoxmaI6fzDjoamPhPgLsQnUHcEIO
+         LFhJKqVEeam72A7SallaioeU0XyYXP4nPX0M+mnDH9on6Um31t+QaH++m8BvSTMxEt5L
+         khBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=Ql5Vy4pWQNjDcXY9mDI9mWkXrxMH6KemWvgXgYc24PY=;
+        bh=EK7z7nW9IbW+wNSjNYnANY+PyJrIBvlcjyYf+zls/uw=;
         fh=SYVNIGgMweLEigKkxxjVeKF0UfGSstuc4pW8xSHUd/Y=;
-        b=HwOKv1k6dv6hNtfhS6ohIHio+itl+oFUVhn5hdh6+l9RztOej/R43zSDxVeLiOZ+M/
-         tStiV61pWj89M4txWjJKuakVEhEaLj9YAiozcpG+Mi9Z2Lk1cehtgNfr3waet8mSGVGc
-         EvdB0Ou4Y1+Bb/2GZmVpVzFjIymKD62HOv3gS5jinKaDD0ri7MkAQFb8Nn2kGI8YjlbR
-         x7lcFt3qdzN82xpy0e4xJHz1AbTcCBfyEQP8A7yMVCyZ6ow+nruqmk/FwWjR8SbVENAC
-         WLDMljhVsbL+COK1xj4HkbSndSBI6mUVs712uE9rckxoBlbteOf+pfWtuCI3E1wpJEGJ
-         iEhw==
+        b=aBXELp8AfjVPb1sCEqJ9dUtoRf7Mhyp/iGxFLc8+Y78hrq1fHaWomRmNW630TWSqYp
+         vyeRmeJr2q04/oHqwkYqsg7L6i8QCjGhomFXbR8JyP9y7kmAI/Kc3uqvb0lsIjmpqTf+
+         fMBBDJe5GHY7w51EIhMkEVqL8hFJq/otcGMbtdF/7iQHfompQlSYhq6IZZSkjgW0uxnA
+         NOTc0L5QfLTCb6oJRrAcHieQqMA7zlkGXPpXnN+T9jOWQFiOd9aTYUf+SGGO89Kt6lFT
+         AhvYfOL5UYKGxeeixFrZUqqGCtxRpX4Tq5uZSp13S5QgRhe/qXHKnpcW9dY8GwthdRDB
+         ilBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=b3jdnbWx;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=M6LMvx2L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d23-20020a05600c4c1700b0040924ba7ab2si410009wmp.128.2023.10.26.01.15.20
+        by mx.google.com with ESMTPS id x8-20020a05600c178800b0040813e14b47si1231079wmo.182.2023.10.26.01.32.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Oct 2023 01:15:20 -0700 (PDT)
+        Thu, 26 Oct 2023 01:32:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=b3jdnbWx;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=M6LMvx2L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvvWH-0005mQ-LX; Thu, 26 Oct 2023 04:15:10 -0400
+	id 1qvvmZ-0002f1-OJ; Thu, 26 Oct 2023 04:31:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1qvvWE-0005lg-KO
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:15:06 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1qvvmX-0002cj-E9
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:31:57 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1qvvWB-0003DG-Oo
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:15:05 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-53dd3f169d8so850114a12.3
- for <qemu-arm@nongnu.org>; Thu, 26 Oct 2023 01:15:03 -0700 (PDT)
+ id 1qvvmU-0003GD-L7
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 04:31:57 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-9b1ebc80d0aso94434866b.0
+ for <qemu-arm@nongnu.org>; Thu, 26 Oct 2023 01:31:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1698308101; x=1698912901; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1698309112; x=1698913912; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Ql5Vy4pWQNjDcXY9mDI9mWkXrxMH6KemWvgXgYc24PY=;
- b=b3jdnbWx4/2EgT625N5lzFuuCBdB1Q6Zw1OY5CxR4gbnXXyDMu3wyhk+cCXvJYquDp
- f2aHbi1FenlPzx4leY6waVEZcl5Dv8GBQEzdvC8ZaigOQWvTE/6hAKArqJCG0yRRCcNz
- Y0LtdaNOQUt+38QKb+OBkciTVcsmUh90u6cp7sx/Ua4otVtlJdzqn6CLeoahjyOIDQgV
- 8bzOY2i0g+Bng65aBSAfna/gNAwJ0fRke8b2YsdJGZ15BlQc/hjU7uCeDZJti7VCHaVZ
- tth5lJubUXikH6SO6u1rC9RWQmoGXNB3vd78a2RVNTuXGcqTBMPEJseXDpu+/N9Kogv7
- 93Ug==
+ bh=EK7z7nW9IbW+wNSjNYnANY+PyJrIBvlcjyYf+zls/uw=;
+ b=M6LMvx2L2C+RajBW1RvmL6VhlnaajATqj/UT3vwaMX1x3cU6iFCu/AXpVm3XKE1PWS
+ CThs9s8UqK+0MGVbrWc0y7FV0TK3QqK3DePwXJvt0wrr/sMsH+HYS0aMPlQSWDzG7eYx
+ oeqEjWOCONpxCWUma4LpmyVk4HhZQ6wfROdaz9Z2d0VGy1J0qxlJ/2CCzc/rjHV0eney
+ XYK8VmyYcKr2NejBs0h3oxqiaS0ztB4p71pmB1fuMR28nGee6vvKKPATQZ7nv5QWmfsJ
+ RAc9tBYrchpKB8N2OWADUoqIoDm1QlsoguXQ10zr7G0NN02tdzkb2xNtewNWB6r9KJqz
+ tKEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698308101; x=1698912901;
+ d=1e100.net; s=20230601; t=1698309112; x=1698913912;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ql5Vy4pWQNjDcXY9mDI9mWkXrxMH6KemWvgXgYc24PY=;
- b=s1WXxw95pYI5zc5Dga3Yi6Lw0S3/JRtMRWwwZi4PJrJqEpP09BhAGJ5p1L4Q7Kn+17
- APJ/WbIEayx2cd6mQNX3ls2orMmMbrj/GhS98r1czMbZ2uHQbstH2DmybIFNylSPeuz0
- C+5smC8kWBtJdRvWVeSanObGwbRrFOHOPg0w+zwXm+BHozTSOIt8r5UXPmh8VwTheAxk
- GydkZ3AhWigDtBor/Cdr7oEKsmMP8i3VZFyA/x5oPjdVwg7A6itM5Oby0foQfvygX9p2
- DtzvjmqDs1XsU2iUG65S/tzN0ch43hK96xcXq7jvjZ2ANoixHpS1xZySY1XK5jPWFijX
- HquA==
-X-Gm-Message-State: AOJu0Yz3ixkLUGYngX79rYIeoeN3na0o6E4bpaPxOxRtrtqCIdGPRhxB
- Dg/R0lbXOD6FZym7xtlEgfUVqw==
-X-Received: by 2002:a50:8e19:0:b0:53e:98c6:5100 with SMTP id
- 25-20020a508e19000000b0053e98c65100mr11789231edw.30.1698308101376; 
- Thu, 26 Oct 2023 01:15:01 -0700 (PDT)
+ bh=EK7z7nW9IbW+wNSjNYnANY+PyJrIBvlcjyYf+zls/uw=;
+ b=QPyY2xS0PTDfB04pqxP2boNhcU9DJP3hsVQ6xB7oKf4a0afnSo726zena+OO2ptJHA
+ 2SHNQp3CeDGgl7dsYv9w3N9pIld75ftOjaY6Ew5dqcMJ0jUYcs6B7FScC7Up6zrRlcOT
+ Uy0L3kZ/vTqulMsahIgum63epFBMG/8nH0UZRVajv5lxc3FfyZCFJ31vUQGTGuHWqfkr
+ L37mPd026UuaIbEysqO9LPDIj4VTX7v0ozNrdr0kFuQxJOlDN4t0D9O1qf6l46p6Bc+4
+ 5OMDW9v5IVEmn5n7/j172U3nRlWegljt8Hfpt0IDMr8A0cS582n63vAyoWUfyzV+uEtS
+ ZgHw==
+X-Gm-Message-State: AOJu0YzsOnbvf1Kzx9hnpr+2tBzleEDszrYksRcqrA+OkiqelXgKpGW9
+ Kkecoq8jMQg4mXfIyeloAG0XpA==
+X-Received: by 2002:a17:907:94c3:b0:9c3:bd63:4245 with SMTP id
+ dn3-20020a17090794c300b009c3bd634245mr12536736ejc.47.1698309112538; 
+ Thu, 26 Oct 2023 01:31:52 -0700 (PDT)
 Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz.
  [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
  by smtp.gmail.com with ESMTPSA id
- q20-20020a056402033400b0053dd8898f75sm10706781edw.81.2023.10.26.01.15.00
+ i6-20020a17090671c600b009920a690cd9sm11159820ejk.59.2023.10.26.01.31.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Oct 2023 01:15:00 -0700 (PDT)
-Date: Thu, 26 Oct 2023 10:15:00 +0200
+ Thu, 26 Oct 2023 01:31:52 -0700 (PDT)
+Date: Thu, 26 Oct 2023 10:31:51 +0200
 From: Andrew Jones <ajones@ventanamicro.com>
 To: Sunil V L <sunilvl@ventanamicro.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
@@ -106,24 +106,23 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Anup Patel <apatel@ventanamicro.com>,
  Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH v4 01/13] hw/arm/virt-acpi-build.c: Migrate fw_cfg
- creation to common location
-Message-ID: <20231026-6b31593481fe2476e49197e5@orel>
+Subject: Re: [PATCH v4 09/13] hw/riscv/virt-acpi-build.c: Add MMU node in RHCT
+Message-ID: <20231026-5530c164173cd1859e9df666@orel>
 References: <20231025200713.580814-1-sunilvl@ventanamicro.com>
- <20231025200713.580814-2-sunilvl@ventanamicro.com>
+ <20231025200713.580814-10-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231025200713.580814-2-sunilvl@ventanamicro.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=ajones@ventanamicro.com; helo=mail-ed1-x52c.google.com
+In-Reply-To: <20231025200713.580814-10-sunilvl@ventanamicro.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=ajones@ventanamicro.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,85 +137,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lYv2WOiVg++j
+X-TUID: YWRMacQ3o1B6
 
-On Thu, Oct 26, 2023 at 01:37:01AM +0530, Sunil V L wrote:
-...
-> diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
-> new file mode 100644
-> index 0000000000..eddaffc09b
-> --- /dev/null
-> +++ b/hw/nvram/fw_cfg-acpi.c
-> @@ -0,0 +1,44 @@
-> +/*
-> + * Add fw_cfg device in DSDT
-> + *
-> + * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
-> + * Copyright (C) 2006 Fabrice Bellard
-> + * Copyright (C) 2013 Red Hat Inc
-> + *
-> + * Author: Michael S. Tsirkin <mst@redhat.com>
-> + *
-> + * Copyright (c) 2015 HUAWEI TECHNOLOGIES CO.,LTD.
-> + *
-> + * Author: Shannon Zhao <zhaoshenglong@huawei.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
+On Thu, Oct 26, 2023 at 01:37:09AM +0530, Sunil V L wrote:
+> MMU type information is available via MMU node in RHCT. Add this node in
+> RHCT.
+> 
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+> ---
+>  hw/riscv/virt-acpi-build.c | 37 ++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 36 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+> index ebe7062b9b..dc7c0213f5 100644
+> --- a/hw/riscv/virt-acpi-build.c
+> +++ b/hw/riscv/virt-acpi-build.c
+> @@ -159,6 +159,8 @@ static void build_rhct(GArray *table_data,
+>      size_t len, aligned_len;
+>      uint32_t isa_offset, num_rhct_nodes, cmo_offset = 0;
+>      RISCVCPU *cpu = &s->soc[0].harts[0];
+> +    uint32_t mmu_offset = 0;
+> +    uint8_t satp_mode_max;
+>      char *isa;
+>  
+>      AcpiTable table = { .sig = "RHCT", .rev = 1, .oem_id = s->oem_id,
+> @@ -178,6 +180,10 @@ static void build_rhct(GArray *table_data,
+>          num_rhct_nodes++;
+>      }
+>  
+> +    if (cpu->cfg.satp_mode.supported != 0) {
+> +        num_rhct_nodes++;
+> +    }
 > +
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
+>      /* Number of RHCT nodes*/
+>      build_append_int_noprefix(table_data, num_rhct_nodes, 4);
+>  
+> @@ -233,6 +239,26 @@ static void build_rhct(GArray *table_data,
+>          }
+>      }
+>  
+> +    /* MMU node structure */
+> +    if (cpu->cfg.satp_mode.supported != 0) {
+> +        satp_mode_max = satp_mode_max_from_map(cpu->cfg.satp_mode.map);
+> +        mmu_offset = table_data->len - table.table_offset;
+> +        build_append_int_noprefix(table_data, 2, 2);    /* Type */
+> +        build_append_int_noprefix(table_data, 8, 2);    /* Length */
+> +        build_append_int_noprefix(table_data, 0x1, 2);  /* Revision */
+> +        build_append_int_noprefix(table_data, 0, 1);    /* Reserved */
+> +        /* MMU Type */
+> +        if (satp_mode_max == VM_1_10_SV57) {
+> +            build_append_int_noprefix(table_data, 2, 1);    /* Sv57 */
+> +        } else if (satp_mode_max == VM_1_10_SV48) {
+> +            build_append_int_noprefix(table_data, 1, 1);    /* Sv48 */
+> +        } else if (satp_mode_max == VM_1_10_SV39) {
+> +            build_append_int_noprefix(table_data, 0, 1);    /* Sv39 */
+> +        } else {
+> +            assert(1);
+> +        }
+> +    }
 > +
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+>      /* Hart Info Node */
+>      for (int i = 0; i < arch_ids->len; i++) {
+>          len = 16;
+> @@ -245,17 +271,26 @@ static void build_rhct(GArray *table_data,
+>              num_offsets++;
+>          }
+>  
+> +        if (mmu_offset) {
+> +            len += 4;
+> +            num_offsets++;
+> +        }
+> +
+>          build_append_int_noprefix(table_data, len, 2);
+>          build_append_int_noprefix(table_data, 0x1, 2); /* Revision */
+>          /* Number of offsets */
+>          build_append_int_noprefix(table_data, num_offsets, 2);
+>          build_append_int_noprefix(table_data, i, 4);   /* ACPI Processor UID */
+> -
+>          /* Offsets */
+>          build_append_int_noprefix(table_data, isa_offset, 4);
+> +        if (mmu_offset) {
+> +            build_append_int_noprefix(table_data, mmu_offset, 4);
+> +        }
+> +
 
-I don't recommend creating new files with the long form GPL instead of an
-SPDX. I can't find a QEMU SPDX policy to point at, but pretty much every
-project I work on has been moving towards SPDX, and usually with a format
-policy. I presume QEMU will either slowly work its way there too or
-someday do a mass change. New files can participate in an unofficial slow
-transition now, rather than have to be touched again in a mass change.
+In the previous version of this patch the MMU node was getting generated
+above the CMO node, so its offset was less than those of the CMO node,
+and why I recommended moving it up here. But, in this version, the MMU
+node is now getting generated after the CMO node, so moving this up
+means the offsets are still not in ascending order.
 
-...
-> diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
-> new file mode 100644
-> index 0000000000..1c863df329
-> --- /dev/null
-> +++ b/include/hw/nvram/fw_cfg_acpi.h
-> @@ -0,0 +1,15 @@
-> +/*
-> + * ACPI support for fw_cfg
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
+>          if (cmo_offset) {
+>              build_append_int_noprefix(table_data, cmo_offset, 4);
+>          }
+> +
+>      }
+>  
+>      acpi_table_end(linker, &table);
+> -- 
+> 2.39.2
+> 
+>
 
-While QEMU doesn't appear to have an SPDX policy with formatting rules,
-I would format this as
+Anyway,
 
-/* SPDX-License-Identifier: GPL-2.0-or-later */
-/*
- * ACPI support for fw_cfg
- */
-
-And the source file above as
-
-// SPDX-License-Identifier: GPL-2.0-or-later
-/*
- * Add fw_cfg device in DSDT
- *
- * ...
- */
-
-as that is the recommended format for many projects (I think starting
-with Linux which documents[1] it) and tools have already learned that
-formatting. QEMU's checkpatch will accept the C99 comment style[2].
-
-[1] https://www.kernel.org/doc/html/latest/process/license-rules.html#license-identifier-syntax
-[2] commit 8d061278d385 ("checkpatch: allow SPDX-License-Identifier")
+Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
 
 Thanks,
 drew
+

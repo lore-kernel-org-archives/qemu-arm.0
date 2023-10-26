@@ -1,142 +1,191 @@
-Received: by 2002:a05:7022:f409:b0:6e:5a56:ff6c with SMTP id rj9csp727024dlb;
-        Thu, 26 Oct 2023 08:34:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFM9U2Pa6fbOt2IlBxQhc8DyZRVUXeOprZAaq6VfF5rd+TFriN3Udb+pnpSev10unvfy+uD
-X-Received: by 2002:a05:620a:3953:b0:76c:e027:2c1f with SMTP id qs19-20020a05620a395300b0076ce0272c1fmr20923861qkn.14.1698334459209;
-        Thu, 26 Oct 2023 08:34:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698334459; cv=none;
+Received: by 2002:a05:7022:f409:b0:6e:5a56:ff6c with SMTP id rj9csp728598dlb;
+        Thu, 26 Oct 2023 08:36:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNOuduZCi/l2WFC0QULyNyqt3KI8GF9/TxbabrNNWxwxjSo1ZmldVizbxoluUISgSU+wmi
+X-Received: by 2002:a05:620a:468e:b0:775:ce76:4840 with SMTP id bq14-20020a05620a468e00b00775ce764840mr3775081qkb.7.1698334594568;
+        Thu, 26 Oct 2023 08:36:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698334594; cv=none;
         d=google.com; s=arc-20160816;
-        b=YRoYw2AIv157MLm8EgRdqamBpsqjXp5HoDUpEVAUVDyEAVBBtrMHi97KDiSuULL2m4
-         UtIyvTPXt5J5/zIUr2nBmAlQZzWnOBLcUcQpyOLUJlQWiwCQ36n40uiZ1GAgKvkqazGE
-         tg4hw1vdmqkuiULLlnI9Lk9OqDiHg7I2VZZcUMpK0EB110Wd0XGI3HX7ZsqgZOnuSdA5
-         ScfO+lfQd8mnkHH1npQCrJ+O4dY3AclnybtaEIjpVLQEZ9aC7hubKimrkIgFT6BT11Pk
-         oIsYj8+Yvd0LDNMiBBL5vMoNhrULDrLH67xaDOU6GjFa20PT+/Rll13WaBzJnvvPtapC
-         ekwg==
+        b=pR4EW1bSg1fe5y12/8pb1BR+JHij87juyUxwbKE/YO3XQbyBZyfHGuomsRda0xZD2y
+         9jUeH82SAbzq6utcakx23sWwGL/YQhGg/CERMgVf//YLVjeEhpodVL3q48ocMhWKZPZm
+         4NIeiG91T9psXNaAlM+lsbNSBZxIprn3Ssn5WFA04w3tTHT8ee2LYgMFfzExnQqBH59u
+         YAbV5Z/ky16hH7poaAoglabg2viymkvXd16Ym4TJFeZ+rbkMLo3+j9ULSdpb7V557EeM
+         EaDOs6o7qEbFHNE3zy5W4r/96BrMNOkPnv1MP7AnTtXk9VaAESWRSsUmI/OuGS6BKDG9
+         Gbug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8S96I+GwIc6BZR8u2xdLhkmxjFWxeXf83Sud5jEP5Lc=;
-        fh=cgAQA+XUIsr4IqXjvxsNSbu6yUfPNOKZue5KQ1lizTE=;
-        b=gthmr+JgXpktecZBQl2NR9A91lp/9OlfqFXpY8D31axquokBe0C8mDYlvty/iLSP8T
-         ySiiw3p23LAvcDQBfVoKHiiJxsr/41OxfcI8HMcRXCw8HbHDPDmOT2ybGszvv5ktKT50
-         b26Tnmax05uWy3EVa0yyIJes+pc2rAZrMd3JBrBxwUkCmQFTZqPOs62MDuFaLylFANF0
-         In594onDMdc7LLIA1JiiAAxhEeIv/Ja+wtCSHG+VlH5g8ctqiFMF4bYw89PmNdURZ59q
-         vdFUjH/2lwaI6giQbuNu5lP8FuCalsRalvW/lEAhVCRjeyIiFIMMzqozK6BVbgU8lopv
-         QyeA==
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5Qh35c9c5z9vLgTiIFfl9j6up82I/dDNDvBApoL3zmE=;
+        fh=tQxkPO0MPf4YMQQmQidYEJrcmu7dni2HllufmpsPvOg=;
+        b=T5LEhcGTZwPTrdN0A6Z7JCvR4NQ935F/SPEGB5hgqp38WBXimsMReA99SeYnrCibag
+         Vd49h+XIoylbzSzHBi9xOWZYlhELvrv5dRCrORgPVPIPXnQNDEv0JRbSy2LGoQYgdJzK
+         Z5+uAc7WMMgiB/DYwT+hdTlC8nLyhTiC/jDLwfFrolbcdXipucdGJBaof/BmHvC8Vktr
+         Z+Tg5O81sJzkBtJbQQ8805z9/lWxeZI7nkA3RFnZWqCf2dAcPPxh/bnIEUXDtAwgz0LY
+         0IJqtUmZwkPuY8NyAGTVtUfgbH3MkYWknvCUzIKCAAtAtWk3SyCcYt1n2dD6LVGKO4kD
+         +D+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=XX+nvMsV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Eg/xdIRe";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i12-20020a05620a0a0c00b00768046bd0f6si9054097qka.381.2023.10.26.08.34.19
+        by mx.google.com with ESMTPS id d8-20020a05620a240800b007757acf4889si797230qkn.1.2023.10.26.08.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Oct 2023 08:34:19 -0700 (PDT)
+        Thu, 26 Oct 2023 08:36:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=XX+nvMsV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Eg/xdIRe";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qw2NC-0005Ci-Ol; Thu, 26 Oct 2023 11:34:14 -0400
+	id 1qw2Ow-0006iA-0h; Thu, 26 Oct 2023 11:36:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qw2NC-00059i-3J; Thu, 26 Oct 2023 11:34:14 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qw2Ou-0006go-GN
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 11:36:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qw2NA-00035h-26; Thu, 26 Oct 2023 11:34:13 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39QFXk82015788; Thu, 26 Oct 2023 15:33:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=8S96I+GwIc6BZR8u2xdLhkmxjFWxeXf83Sud5jEP5Lc=;
- b=XX+nvMsV3VxRvdM7L3P47GlSQyppep6Ph6aeyidLqtOMXqAg+Y6LXF/lKI1WC2LdOKWF
- bDc33phG0GxII27SFH9EMAtQ10IiHudOlWLx3s+SikMrvlNB8cBGg6IcMzU0piSok0O1
- 8U/2F5G8WI4YREma2upQzhZexuXdNi6nXzvA2HuM6P6OLaiLl5LRMpMg9dKuJGkB+Bd8
- rOn3TGcjirI70pMDLOozywwlmVcF8mDhMDDVBs/SfTjmQmUXw8uxe5IW73cVq9YqlgGF
- aiprY+QX6V2VCIpWXCFio4HpM5N5RydU9DPU5SCwnE64zC8IiRulk0SAa48NRbGT2Jjf AA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tytk20c92-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Oct 2023 15:33:56 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39QFXsJa016986;
- Thu, 26 Oct 2023 15:33:54 GMT
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tytk20c0d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Oct 2023 15:33:54 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39QEAIFt010231; Thu, 26 Oct 2023 15:30:07 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tvsbyy7bu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Oct 2023 15:30:07 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
- [10.39.53.232])
- by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39QFU6DQ59572566
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 26 Oct 2023 15:30:07 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CAA7D58043;
- Thu, 26 Oct 2023 15:30:06 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 195BC58061;
- Thu, 26 Oct 2023 15:30:06 +0000 (GMT)
-Received: from [9.24.12.86] (unknown [9.24.12.86])
- by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 26 Oct 2023 15:30:06 +0000 (GMT)
-Message-ID: <e14bc1db-1eb8-4d74-8324-e0b0523040f0@linux.ibm.com>
-Date: Thu, 26 Oct 2023 10:30:05 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qw2Os-0004RZ-EB
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 11:36:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698334556;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=5Qh35c9c5z9vLgTiIFfl9j6up82I/dDNDvBApoL3zmE=;
+ b=Eg/xdIReKOY3LP8+II13GmNDNRFijlkPrFoZVyQfsvQLv1uZqGzqbXh6AtTXrGm3KKUNNC
+ 5S5wARIHy2gmARvr1GVv9PgHNpEIlTn+n9X3xp2AgXZJOa3LRrkSuoIb9ZpSRYtfT/0uBu
+ /KBMSqyJKdepNLQkg98PZWuJD7Q28SI=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-509-UJMAb4q2M9enV93gJc3ULg-1; Thu, 26 Oct 2023 11:35:55 -0400
+X-MC-Unique: UJMAb4q2M9enV93gJc3ULg-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-9ae7663e604so72712366b.3
+ for <qemu-arm@nongnu.org>; Thu, 26 Oct 2023 08:35:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698334554; x=1698939354;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5Qh35c9c5z9vLgTiIFfl9j6up82I/dDNDvBApoL3zmE=;
+ b=TCa+IGf+WeiDf4O9UDtnhTLr/nQFPbFags9kTvE5xpF9/EbBgnQc05zDqZB9kbQgjY
+ JVEFirL2omXR1m2xGwP79af55jzSexDF5ZCkAlPRGfVSPQ1JwKqMBbc4bwr65rOra646
+ R8HgP6Q5ApOHcVr8aQpuu1Ffwl90q8iiMKVL268LFWzapORobrMuufqz3dzEAGdBK0yq
+ e+Hz7fZsX45tvFGiVPB/+jlqnO+ZH3eriPHXT7Y2u/XAvNcnl8UYyIAx954hCWJ9Vwci
+ UNrm3hxtmgTACNCL7XtoeFUgA/XZFSfMH3Xs6uHGPOlV19pXOozvqMQWHBXZ5CMOn7gL
+ 79+Q==
+X-Gm-Message-State: AOJu0YyXTn3P99fSYgaBfFPiqXQBWyfqcdejZUk3phKjTJ60n2ROPpX7
+ /PVRdJbQ2k0YRfB7IyUmbMI9J1MGkssSWDQI6dLg4BeAhcuV4VFNSBtXL19YShSnN2UuO2pE03q
+ +MA7pzoMOZd3M
+X-Received: by 2002:a17:906:c150:b0:9bf:63b2:b6f0 with SMTP id
+ dp16-20020a170906c15000b009bf63b2b6f0mr19046ejc.29.1698334554071; 
+ Thu, 26 Oct 2023 08:35:54 -0700 (PDT)
+X-Received: by 2002:a17:906:c150:b0:9bf:63b2:b6f0 with SMTP id
+ dp16-20020a170906c15000b009bf63b2b6f0mr19037ejc.29.1698334553715; 
+ Thu, 26 Oct 2023 08:35:53 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-176-238.web.vodafone.de.
+ [109.43.176.238]) by smtp.gmail.com with ESMTPSA id
+ h11-20020a1709063b4b00b009b9aa8fffdasm11819659ejf.131.2023.10.26.08.35.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 Oct 2023 08:35:53 -0700 (PDT)
+Message-ID: <8e83c7e4-f595-463b-91d1-f5112392461a@redhat.com>
+Date: Thu, 26 Oct 2023 17:35:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 08/10] hw/fsi: Added qtest
+Subject: Re: [PULL 19/39] hw/s390x/s390-skeys: Don't call
+ register_savevm_live() during instance_init()
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, libvir-list@redhat.com,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Li Zhijian <lizhijian@fujitsu.com>, Peter Xu <peterx@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, qemu-block@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Corey Minyard <minyard@acm.org>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Stefan Weil <sw@weilnetz.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ David Hildenbrand <david@redhat.com>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Hanna Reitz <hreitz@redhat.com>, Leonardo Bras <leobras@redhat.com>,
+ qemu-ppc@nongnu.org
+References: <20231024131305.87468-1-quintela@redhat.com>
+ <20231024131305.87468-20-quintela@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20231024131305.87468-20-quintela@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org
-References: <20231021211720.3571082-1-ninad@linux.ibm.com>
- <20231021211720.3571082-9-ninad@linux.ibm.com>
- <3d1fc354-0daf-4bf4-bf33-d737e180a14c@kaod.org>
-From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <3d1fc354-0daf-4bf4-bf33-d737e180a14c@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: fKc9fp01ERf4eJIJts3fWbEGgRLoxThw
-X-Proofpoint-ORIG-GUID: -rNx5PoAl6o6CA8BNnr_waS5x7lhT1KA
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-26_13,2023-10-26_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 spamscore=0
- impostorscore=0 mlxlogscore=734 adultscore=0 lowpriorityscore=0
- phishscore=0 priorityscore=1501 clxscore=1015 mlxscore=0 bulkscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310170001 definitions=main-2310260134
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,274 +200,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C/+Eod7NrQv3
+X-TUID: i9G2JdaBH1yj
 
-Hello Cedric,
+On 24/10/2023 15.12, Juan Quintela wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> Since the instance_init() function immediately tries to set the
+> property to "true", the s390_skeys_set_migration_enabled() tries
+> to register a savevm handler during instance_init(). However,
+> instance_init() functions can be called multiple times, e.g. for
+> introspection of devices. That means multiple instances of devices
+> can be created during runtime (which is fine as long as they all
+> don't get realized, too), so the "Prevent double registration of
+> savevm handler" check in the s390_skeys_set_migration_enabled()
+> function does not work at all as expected (since there could be
+> more than one instance).
+> 
+> Thus we must not call register_savevm_live() from an instance_init()
+> function at all. Move this to the realize() function instead. This
+> way we can also get rid of the property getter and setter functions
+> completely, simplifying the code along the way quite a bit.
+> 
+> Acked-by: David Hildenbrand <david@redhat.com>
+> Reviewed-by: Eric Farman <farman@linux.ibm.com>
+> Acked-by: Juan Quintela <quintela@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Juan Quintela <quintela@redhat.com>
+> Message-ID: <20231020150554.664422-2-thuth@redhat.com>
+> ---
+>   hw/s390x/s390-skeys.c | 35 ++++++++---------------------------
+>   1 file changed, 8 insertions(+), 27 deletions(-)
+> 
+> diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
+> index 5024faf411..8e9d9e41e8 100644
+> --- a/hw/s390x/s390-skeys.c
+> +++ b/hw/s390x/s390-skeys.c
+> @@ -12,6 +12,7 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu/units.h"
+>   #include "hw/boards.h"
+> +#include "hw/qdev-properties.h"
+>   #include "hw/s390x/storage-keys.h"
+>   #include "qapi/error.h"
+>   #include "qapi/qapi-commands-misc-target.h"
+> @@ -432,58 +433,38 @@ static int s390_storage_keys_load(QEMUFile *f, void *opaque, int version_id)
+>       return ret;
+>   }
+>   
+> -static inline bool s390_skeys_get_migration_enabled(Object *obj, Error **errp)
+> -{
+> -    S390SKeysState *ss = S390_SKEYS(obj);
+> -
+> -    return ss->migration_enabled;
+> -}
+> -
+>   static SaveVMHandlers savevm_s390_storage_keys = {
+>       .save_state = s390_storage_keys_save,
+>       .load_state = s390_storage_keys_load,
+>   };
+>   
+> -static inline void s390_skeys_set_migration_enabled(Object *obj, bool value,
+> -                                            Error **errp)
+> +static void s390_skeys_realize(DeviceState *dev, Error **errp)
+>   {
+> -    S390SKeysState *ss = S390_SKEYS(obj);
+> -
+> -    /* Prevent double registration of savevm handler */
+> -    if (ss->migration_enabled == value) {
+> -        return;
+> -    }
+> -
+> -    ss->migration_enabled = value;
+> +    S390SKeysState *ss = S390_SKEYS(dev);
+>   
+>       if (ss->migration_enabled) {
+>           register_savevm_live(TYPE_S390_SKEYS, 0, 1,
+>                                &savevm_s390_storage_keys, ss);
+> -    } else {
+> -        unregister_savevm(VMSTATE_IF(ss), TYPE_S390_SKEYS, ss);
+>       }
+>   }
+>   
+> -static void s390_skeys_instance_init(Object *obj)
+> -{
+> -    object_property_add_bool(obj, "migration-enabled",
+> -                             s390_skeys_get_migration_enabled,
+> -                             s390_skeys_set_migration_enabled);
+> -    object_property_set_bool(obj, "migration-enabled", true, NULL);
+> -}
+> +static Property s390_skeys_props[] = {
+> +    DEFINE_PROP_BOOL("migration-enabled", S390SKeysState, migration_enabled, true),
 
-On 10/24/23 02:34, Cédric Le Goater wrote:
-> On 10/21/23 23:17, Ninad Palsule wrote:
->> Added basic qtests for FSI model.
->>
->> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->> ---
->> v3:
->>   - Added new qtest as per Cedric's comment.
->> V4:
->>   - Remove MAINTAINER and documentation changes from this commit
->> v6:
->>   - Incorporated review comments by Thomas Huth.
->> ---
->>   tests/qtest/fsi-test.c  | 207 ++++++++++++++++++++++++++++++++++++++++
->
-> please rename the file to aspeed-fsi-test.c
+This needs a  DEFINE_PROP_END_OF_LIST() here ... mea culpa!
 
-Renamed it.
+  Thomas
 
-Thanks for the review.
 
-Regards,
+> +};
+>   
+>   static void s390_skeys_class_init(ObjectClass *oc, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(oc);
+>   
+>       dc->hotpluggable = false;
+> +    dc->realize = s390_skeys_realize;
+> +    device_class_set_props(dc, s390_skeys_props);
+>       set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>   }
+>   
+>   static const TypeInfo s390_skeys_info = {
+>       .name          = TYPE_S390_SKEYS,
+>       .parent        = TYPE_DEVICE,
+> -    .instance_init = s390_skeys_instance_init,
+>       .instance_size = sizeof(S390SKeysState),
+>       .class_init    = s390_skeys_class_init,
+>       .class_size    = sizeof(S390SKeysClass),
 
-Ninad
-
->
-> Thanks,
->
-> C.
->
->
->>   tests/qtest/meson.build |   1 +
->>   2 files changed, 208 insertions(+)
->>   create mode 100644 tests/qtest/fsi-test.c
->>
->> diff --git a/tests/qtest/fsi-test.c b/tests/qtest/fsi-test.c
->> new file mode 100644
->> index 0000000000..01a0739092
->> --- /dev/null
->> +++ b/tests/qtest/fsi-test.c
->> @@ -0,0 +1,207 @@
->> +/*
->> + * QTest testcases for IBM's Flexible Service Interface (FSI)
->> + *
->> + * Copyright (c) 2023 IBM Corporation
->> + *
->> + * Authors:
->> + *   Ninad Palsule <ninad@linux.ibm.com>
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 
->> or later.
->> + * See the COPYING file in the top-level directory.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include <glib/gstdio.h>
->> +
->> +#include "qemu/module.h"
->> +#include "libqtest-single.h"
->> +
->> +/* Registers from ast2600 specifications */
->> +#define ASPEED_FSI_ENGINER_TRIGGER   0x04
->> +#define ASPEED_FSI_OPB0_BUS_SELECT   0x10
->> +#define ASPEED_FSI_OPB1_BUS_SELECT   0x28
->> +#define ASPEED_FSI_OPB0_RW_DIRECTION 0x14
->> +#define ASPEED_FSI_OPB1_RW_DIRECTION 0x2c
->> +#define ASPEED_FSI_OPB0_XFER_SIZE    0x18
->> +#define ASPEED_FSI_OPB1_XFER_SIZE    0x30
->> +#define ASPEED_FSI_OPB0_BUS_ADDR     0x1c
->> +#define ASPEED_FSI_OPB1_BUS_ADDR     0x34
->> +#define ASPEED_FSI_INTRRUPT_CLEAR    0x40
->> +#define ASPEED_FSI_INTRRUPT_STATUS   0x48
->> +#define ASPEED_FSI_OPB0_BUS_STATUS   0x80
->> +#define ASPEED_FSI_OPB1_BUS_STATUS   0x8c
->> +#define ASPEED_FSI_OPB0_READ_DATA    0x84
->> +#define ASPEED_FSI_OPB1_READ_DATA    0x90
->> +
->> +/*
->> + * FSI Base addresses from the ast2600 specifications.
->> + */
->> +#define AST2600_OPB_FSI0_BASE_ADDR 0x1e79b000
->> +#define AST2600_OPB_FSI1_BASE_ADDR 0x1e79b100
->> +
->> +static uint32_t aspeed_fsi_base_addr;
->> +
->> +static uint32_t aspeed_fsi_readl(QTestState *s, uint32_t reg)
->> +{
->> +    return qtest_readl(s, aspeed_fsi_base_addr + reg);
->> +}
->> +
->> +static void aspeed_fsi_writel(QTestState *s, uint32_t reg, uint32_t 
->> val)
->> +{
->> +    qtest_writel(s, aspeed_fsi_base_addr + reg, val);
->> +}
->> +
->> +/* Setup base address and select register */
->> +static void test_fsi_setup(QTestState *s, uint32_t base_addr)
->> +{
->> +    uint32_t curval;
->> +
->> +    /* Set the base select register */
->> +    if (base_addr == AST2600_OPB_FSI0_BASE_ADDR) {
->> +        aspeed_fsi_base_addr = base_addr;
->> +
->> +        /* Unselect FSI1 */
->> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x0);
->> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
->> +        g_assert_cmpuint(curval, ==, 0x0);
->> +
->> +        /* Select FSI0 */
->> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x1);
->> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
->> +        g_assert_cmpuint(curval, ==, 0x1);
->> +    } else if (base_addr == AST2600_OPB_FSI1_BASE_ADDR) {
->> +        aspeed_fsi_base_addr = base_addr;
->> +
->> +        /* Unselect FSI0 */
->> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x0);
->> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
->> +        g_assert_cmpuint(curval, ==, 0x0);
->> +
->> +        /* Select FSI1 */
->> +        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x1);
->> +        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
->> +        g_assert_cmpuint(curval, ==, 0x1);
->> +    } else {
->> +        g_assert_not_reached();
->> +    }
->> +}
->> +
->> +static void test_fsi_reg_change(QTestState *s, uint32_t reg, 
->> uint32_t newval)
->> +{
->> +    uint32_t base;
->> +    uint32_t curval;
->> +
->> +    base = aspeed_fsi_readl(s, reg);
->> +    aspeed_fsi_writel(s, reg, newval);
->> +    curval = aspeed_fsi_readl(s, reg);
->> +    g_assert_cmpuint(curval, ==, newval);
->> +    aspeed_fsi_writel(s, reg, base);
->> +    curval = aspeed_fsi_readl(s, reg);
->> +    g_assert_cmpuint(curval, ==, base);
->> +}
->> +
->> +static void test_fsi0_master_regs(const void *data)
->> +{
->> +    QTestState *s = (QTestState *)data;
->> +
->> +    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
->> +
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0xF3F4F514);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_XFER_SIZE, 0xF3F4F518);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xF3F4F51c);
->> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
->> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_STATUS, 0xF3F4F580);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB0_READ_DATA, 0xF3F4F584);
->> +}
->> +
->> +static void test_fsi1_master_regs(const void *data)
->> +{
->> +    QTestState *s = (QTestState *)data;
->> +
->> +    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
->> +
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0xF3F4F514);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_XFER_SIZE, 0xF3F4F518);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xF3F4F51c);
->> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
->> +    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_STATUS, 0xF3F4F580);
->> +    test_fsi_reg_change(s, ASPEED_FSI_OPB1_READ_DATA, 0xF3F4F584);
->> +}
->> +
->> +static void test_fsi0_getcfam_addr0(const void *data)
->> +{
->> +    QTestState *s = (QTestState *)data;
->> +    uint32_t curval;
->> +
->> +    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
->> +
->> +    /* Master access direction read */
->> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0x1);
->> +    /* word */
->> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_XFER_SIZE, 0x3);
->> +    /* Address */
->> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xa0000000);
->> +    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
->> +    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
->> +
->> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
->> +    g_assert_cmpuint(curval, ==, 0x10000);
->> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_STATUS);
->> +    g_assert_cmpuint(curval, ==, 0x0);
->> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_READ_DATA);
->> +    g_assert_cmpuint(curval, ==, 0x152d02c0);
->> +}
->> +
->> +static void test_fsi1_getcfam_addr0(const void *data)
->> +{
->> +    QTestState *s = (QTestState *)data;
->> +    uint32_t curval;
->> +
->> +    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
->> +
->> +    /* Master access direction read */
->> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0x1);
->> +
->> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_XFER_SIZE, 0x3);
->> +    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xa0000000);
->> +    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
->> +    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
->> +
->> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
->> +    g_assert_cmpuint(curval, ==, 0x20000);
->> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_STATUS);
->> +    g_assert_cmpuint(curval, ==, 0x0);
->> +    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_READ_DATA);
->> +    g_assert_cmpuint(curval, ==, 0x152d02c0);
->> +}
->> +
->> +int main(int argc, char **argv)
->> +{
->> +    int ret = -1;
->> +    QTestState *s;
->> +
->> +    g_test_init(&argc, &argv, NULL);
->> +
->> +    s = qtest_init("-machine ast2600-evb ");
->> +
->> +    /* Tests for OPB/FSI0 */
->> +    qtest_add_data_func("/fsi-test/test_fsi0_master_regs", s,
->> +                        test_fsi0_master_regs);
->> +
->> +    qtest_add_data_func("/fsi-test/test_fsi0_getcfam_addr0", s,
->> +                        test_fsi0_getcfam_addr0);
->> +
->> +    /* Tests for OPB/FSI1 */
->> +    qtest_add_data_func("/fsi-test/test_fsi1_master_regs", s,
->> +                        test_fsi1_master_regs);
->> +
->> +    qtest_add_data_func("/fsi-test/test_fsi1_getcfam_addr0", s,
->> +                        test_fsi1_getcfam_addr0);
->> +
->> +    ret = g_test_run();
->> +    qtest_quit(s);
->> +
->> +    return ret;
->> +}
->> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
->> index d6022ebd64..74228a4aed 100644
->> --- a/tests/qtest/meson.build
->> +++ b/tests/qtest/meson.build
->> @@ -207,6 +207,7 @@ qtests_arm = \
->>     (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? 
->> ['tpm-tis-i2c-test'] : []) + \
->>     (config_all_devices.has_key('CONFIG_VEXPRESS') ? 
->> ['test-arm-mptimer'] : []) + \
->>     (config_all_devices.has_key('CONFIG_MICROBIT') ? 
->> ['microbit-test'] : []) + \
->> +  (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? 
->> ['fsi-test'] : []) + \
->>     ['arm-cpu-features',
->>      'boot-serial-test']
->

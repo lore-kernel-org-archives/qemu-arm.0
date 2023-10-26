@@ -1,117 +1,144 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp425268ejb;
-        Thu, 26 Oct 2023 07:42:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE0u563xZp2ynKK9mpL2cUgXK3y+70ZvdR6Wm1wXfGELYH4cN/HKrStI+MtEqqHH/RzNagc
-X-Received: by 2002:a05:6214:1c07:b0:66d:4062:4cc with SMTP id u7-20020a0562141c0700b0066d406204ccmr21816168qvc.61.1698331330427;
-        Thu, 26 Oct 2023 07:42:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698331330; cv=none;
+Received: by 2002:a05:7022:f409:b0:6e:5a56:ff6c with SMTP id rj9csp720536dlb;
+        Thu, 26 Oct 2023 08:25:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH1pc2yIQImxUIZv6Lu5y+FsLwq26nktlxm85RfLzO5RVy4Xng8odViCsnRmtQ0wIlwSANJ
+X-Received: by 2002:a05:6358:c10a:b0:168:d90a:f72 with SMTP id fh10-20020a056358c10a00b00168d90a0f72mr14733660rwb.28.1698333937561;
+        Thu, 26 Oct 2023 08:25:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698333937; cv=none;
         d=google.com; s=arc-20160816;
-        b=mwDd0DtecOz8Oq30tHr/5TIG5FYjC2pG3VWd4NjTqt0Ke9MOUVH02Jf6gYX5YkZYd8
-         p3hrUw32ERtLnY4qw2V77dRmvKWdmiu88+ewtSmYZ6WhDxw2NHzG47PrIreUHaEtKVi0
-         7k9ywUCGZW+Nsslxfhz3rE/v/5CrqK/qOOZlzI0AsM6hqMRWRKpIkgBs6ynCGcS3OFXd
-         ZKSQ4h1it9ZIQnAMUGE5O70Oj1A6a0n+S/u+qUdG2HV/mf/IKn9trKDSyMFvjRwpxZLc
-         TOY/iqyLpnRd9vhyu3KcMX4grjHtshb+71NNXLMbXWm+MsX74U+8vzfzlqNs3c20Rwgg
-         7+Zg==
+        b=HeF6CxmQkMtMr6+NZUwjg7AE7yudvDu9GLN5pb3oEpG9NZQbtEJQO8nME+LYZ0D5OC
+         t/gmCCLQ3zO/XZ76l8dK+1+zo+F880vF99qdXI2Jl9xOgBKoM2AO+JsREvdqUG6nb8oN
+         t9/+0Vj/xF7KcT6m1B65mzOCaqB/G9cYKtPhGGIfUxfCavR8cCb85BAjwKR/LdKQdi7i
+         iTxTmD1tEHLugeZJWkZwCH7PNriDFw9pqUDUyoVbfoCX3Kii0ZGsN2NPOlCGwl6Sl1UK
+         cteuF3fCng8tp3pv0BgWY536c3rSl7WLT0yQB0n50ziV9qoEWaOxXCJabvruY9dHnQKH
+         tSsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=fCSN8nUInCVgzcv47Urswfs8EVHYc4O4rVQBVENV3SI=;
-        fh=tL9cWo6q7qjVTtKtUrNmre9bN8OSfcZjQizS3tEZgHo=;
-        b=D9D6MeSdYWmLdzgXnf5K/r8UtrRcvf/ATHp15hXcBSrhXc6GLBoYNcUf3eUMDD8IMU
-         ev88LQSskisFTT7MdlViqdb2gURKTraWpuVeQvN7lK/v39u2L8CzQ1rN/PjJNwxjev3u
-         lZW6sKcJxLl0/2GUJtl3aWj7jvlyvzd49tjXDdzX9v12c9+0CWrvbDU8k7CR1MqVqCap
-         L/QlJs1883zdqlJX4QQjNXP6OU1aWxRayM3oro/6IBCIpyBaDnH0bikqzXjh8f38RlcI
-         NHqVyYFsOEnhJuZkAn9GguTVgzMrgtjX1rxwv1pfaF2+x/asKh5/AiRlMs6ZzLDHwu9Z
-         3K1g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bgYmqJoFleQS4H1PbfPvZE79DpdZ7LIeAIRGaddso24=;
+        fh=ocxrNli2/ARJYmnmna17Dir4bT/pGRu/zmEBoN1+sVg=;
+        b=Krp4hYFfkdwhwMNrRmFNK4AlNNtQRIMxxylNYOqiRdUgbzefRPGIchjet7/tTnlGgz
+         zgZaFP21dc836kWopYQ+U9dtoMNJCd8C2s+glXgvw85dSX6rD7lvNFOiurHAg0oELxRn
+         k7lO95RDnC7AFn/sqkSmVWa3VR8YRirVo87uEC56DjeUTGacyLYa7E/g3LnRYXd6ysmU
+         WdVGeGlRSmUK2oz1CKe4tw3fR3cbdSZa0N7Pr9nauXA1TVNesHfTEkwwT48LBr3ZPp7e
+         NA2ik8H76QEjYQHp+cOhkL1ocMhKDNQLl+gvJF3pBjzlg1+ndbNG45rcgR6mSPz6fZAH
+         1CBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ilyVvAwv;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CGzkXq+y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4-20020a05621421c400b0065d05afb84esi10662395qvh.350.2023.10.26.07.42.10
+        by mx.google.com with ESMTPS id c1-20020a0dc101000000b00589f5a9e862si16014704ywd.493.2023.10.26.08.25.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Oct 2023 07:42:10 -0700 (PDT)
+        Thu, 26 Oct 2023 08:25:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ilyVvAwv;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CGzkXq+y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qw1Y7-0001kc-Jm; Thu, 26 Oct 2023 10:41:27 -0400
+	id 1qw2Ee-0000pK-4D; Thu, 26 Oct 2023 11:25:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1qw1Y5-0001jj-PU; Thu, 26 Oct 2023 10:41:25 -0400
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1qw1Y4-0007UE-0b; Thu, 26 Oct 2023 10:41:25 -0400
-Received: by mail-qt1-x834.google.com with SMTP id
- d75a77b69052e-41e1921da84so6776291cf.1; 
- Thu, 26 Oct 2023 07:41:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698331282; x=1698936082; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fCSN8nUInCVgzcv47Urswfs8EVHYc4O4rVQBVENV3SI=;
- b=ilyVvAwv8KfPHI/0IzzH6Qh6VfT3JAliPQfGUSxlOMr9gI9EGoPMuyyygA90KAUWGA
- X3bsEqATxF6Le0UwtyhbWPCKDWpanZJEgpkLRBNJB+XElME2gURWPir2koCE+UOHe6tz
- NN1nEkfEO5B69ZaZt3Mva6ttz8qQ3az7R/hzLDwOV1VPEc74YJJNLLCT31dPHvjSQLML
- Gq5PcvG4A8iu2RvpoIOWwBoFU7Q+jmAU6c46bzq8GFQcwiBEwK4DW3v91LVqkdK0ZwwO
- s6QwcjwGeBBdaPPRjy7epM35PbOUGmW6KHQgGZqgf6+D4/QEToWi+JV5IzlxKia42q1j
- qfPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698331282; x=1698936082;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fCSN8nUInCVgzcv47Urswfs8EVHYc4O4rVQBVENV3SI=;
- b=hdHwsB+Rodf1kPvdWueGkqV4g40roG/lzWm71rlSseKhCniTH7SlZ6lEGtZuhh4FIJ
- 2JxWPqMJqrFw7o6M3P1t8g+PAE2Kw/RIhyaLdjsA60Dc5do/twz1MgbMeOce8orqhmkb
- 9pGQU9SvUhvu2jFf1EAKM1dR57CtwPqVpmr4jaMU6AGHddLZUCaZM4fqwm4GL3rw0DM/
- ab9qRFf9Jzz3iMtxdgdBLHzUB/YlOu+T7uMWByAXHQD1Uo/q+Ix1jfFokDKOvJ01iEGc
- +4C8sIlP5l0iRu/glDGLDYj/eyn1kgvQoBDYSKbrcVuAFtXajtwsre1/iN5wcHUtofQx
- CQWg==
-X-Gm-Message-State: AOJu0YyOZoesfxKJg4qELhvFtpcmpauxFFPPd98PpjgOQyPciCtW/fS+
- wmVrziJ5w8xBrkYSw0pwPlPv85iuObVsfUZ+zMc=
-X-Received: by 2002:a05:622a:408:b0:41e:2d40:5e64 with SMTP id
- n8-20020a05622a040800b0041e2d405e64mr8411481qtx.51.1698331282115; Thu, 26 Oct
- 2023 07:41:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qw2Eb-0000oy-Sc; Thu, 26 Oct 2023 11:25:22 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qw2EZ-0000zv-Ld; Thu, 26 Oct 2023 11:25:21 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39QFORh2013594; Thu, 26 Oct 2023 15:24:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=bgYmqJoFleQS4H1PbfPvZE79DpdZ7LIeAIRGaddso24=;
+ b=CGzkXq+y8bK6GAAf3i1TjtGRx7XSiFmzwDPcAi4PdxwUwWEK4CltP5mgitNHu1D0j8xk
+ onfJUuMMWOjhwd2i5BBnnm6fEpOBc5n1eteSaj791/iuObFlgFIO370pWD5aN6OKyPRW
+ iH5HTb3xHYaOq4wB8kGcBnVKNVIKPxGs+rmKXNfmLeW/1Z1t1rrJD9ekG84mNLaW4Z6a
+ rT/4iMophjpqNUu/oH7/dvPaCuiv1UGfmWxB3HLLShibko6XU72YlzlauK4x2lNlGU/8
+ w2d6bgsmIx9ZhYNeqgl7/NiyW7u6rIw9oRrGOC2Sh0YgH3inw0zJ8GxNz7arV5kyMyRJ 0A== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tyth3rdp4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 15:24:58 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39QFOXFJ014265;
+ Thu, 26 Oct 2023 15:24:57 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tyth3rdnq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 15:24:57 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39QE4Rah010218; Thu, 26 Oct 2023 15:24:57 GMT
+Received: from smtprelay07.dal12v.mail.ibm.com ([172.16.1.9])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tvsbyy6hg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 26 Oct 2023 15:24:57 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39QFOu2h37618116
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 26 Oct 2023 15:24:56 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0A90658053;
+ Thu, 26 Oct 2023 15:24:56 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3232D58043;
+ Thu, 26 Oct 2023 15:24:55 +0000 (GMT)
+Received: from [9.24.12.86] (unknown [9.24.12.86])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 26 Oct 2023 15:24:55 +0000 (GMT)
+Message-ID: <14bca721-8cc0-428a-9898-038b07323571@linux.ibm.com>
+Date: Thu, 26 Oct 2023 10:24:54 -0500
 MIME-Version: 1.0
-References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
- <20231025190818.3278423-23-marcandre.lureau@redhat.com>
- <63e8196a-da54-83fa-0eea-ed9a4b669186@eik.bme.hu>
-In-Reply-To: <63e8196a-da54-83fa-0eea-ed9a4b669186@eik.bme.hu>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 26 Oct 2023 18:41:10 +0400
-Message-ID: <CAJ+F1CJaS_OOJPu+QF8Xv1zdU_1NUY0nZS1J5TFaDZbA64rx=g@mail.gmail.com>
-Subject: Re: [PATCH v6 22/23] hw/display: make ATI_VGA depend on PIXMAN
-To: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dave@treblig.org>, 
- Eric Blake <eblake@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::834;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x834.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 02/10] hw/fsi: Introduce IBM's scratchpad
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ lvivier@redhat.com
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
+References: <20231021211720.3571082-1-ninad@linux.ibm.com>
+ <20231021211720.3571082-3-ninad@linux.ibm.com>
+ <957bc5db-53aa-6946-edf3-3b728a52b660@linaro.org>
+ <f2a50afd-3fa1-47d2-960e-0aaaf57c7cd2@linux.ibm.com>
+ <4b2e68dd-db49-4041-ee5a-ae2b836bd255@linaro.org>
+Content-Language: en-US
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <4b2e68dd-db49-4041-ee5a-ae2b836bd255@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: VRDoNUX0ltXdaisX8JliAu-aYsBzZNHw
+X-Proofpoint-ORIG-GUID: qaOyQk5-T34quNQQXWy0oLndDtnBm4r-
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-26_13,2023-10-26_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ adultscore=0 suspectscore=0 bulkscore=0 malwarescore=0 priorityscore=1501
+ phishscore=0 mlxscore=0 spamscore=0 impostorscore=0 clxscore=1015
+ mlxlogscore=740 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2310170001 definitions=main-2310260133
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -127,119 +154,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZKV+7YmRbOBh
+X-TUID: RkxCvodhyShn
 
-Hi
 
-On Thu, Oct 26, 2023 at 1:07=E2=80=AFAM BALATON Zoltan <balaton@eik.bme.hu>=
- wrote:
+On 10/24/23 02:08, Philippe Mathieu-Daudé wrote:
+> On 23/10/23 19:08, Ninad Palsule wrote:
+>> Hello Philippe,
+>>
+>> On 10/23/23 10:00, Philippe Mathieu-Daudé wrote:
+>>> On 21/10/23 23:17, Ninad Palsule wrote:
+>>>> This is a part of patchset where scratchpad is introduced.
+>>>>
+>>>> The scratchpad provides a set of non-functional registers. The 
+>>>> firmware
+>>>> is free to use them, hardware does not support any special management
+>>>> support. The scratchpad registers can be read or written from LBUS
+>>>> slave.
+>>>>
+>>>> In this model, The LBUS device is parent for the scratchpad.
+>>>>
+>>>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>>>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>>>> ---
+>>>> v2:
+>>>> - Incorporated Joel's review comments.
+>>>> v5:
+>>>> - Incorporated review comments by Cedric.
+>>>> v6:
+>>>> - Incorporated review comments by Daniel.
+>>>> ---
+>>>>   meson.build                        |  1 +
+>>>>   hw/fsi/trace.h                     |  1 +
+>>>>   include/hw/fsi/engine-scratchpad.h | 32 ++++++++++
+>>>>   include/hw/fsi/fsi.h               | 16 +++++
+>>>>   hw/fsi/engine-scratchpad.c         | 93 
+>>>> ++++++++++++++++++++++++++++++
+>>>>   hw/fsi/Kconfig                     |  4 ++
+>>>>   hw/fsi/meson.build                 |  1 +
+>>>>   hw/fsi/trace-events                |  2 +
+>>>>   8 files changed, 150 insertions(+)
+>>>>   create mode 100644 hw/fsi/trace.h
+>>>>   create mode 100644 include/hw/fsi/engine-scratchpad.h
+>>>>   create mode 100644 include/hw/fsi/fsi.h
+>>>>   create mode 100644 hw/fsi/engine-scratchpad.c
+>>>>   create mode 100644 hw/fsi/trace-events
+>>>
+>>>
+>>>> diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
+>>>> new file mode 100644
+>>>> index 0000000000..e65f26f17b
+>>>> --- /dev/null
+>>>> +++ b/include/hw/fsi/fsi.h
+>>>> @@ -0,0 +1,16 @@
+>>>> +/*
+>>>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>>>> + * Copyright (C) 2023 IBM Corp.
+>>>> + *
+>>>> + * IBM Flexible Service Interface
+>>>> + */
+>>>> +#ifndef FSI_FSI_H
+>>>> +#define FSI_FSI_H
+>>>> +
+>>>> +/* Bitwise operations at the word level. */
+>>>> +#define BE_BIT(x)                          BIT(31 - (x))
+>>>> +#define GENMASK(t, b) \
+>>>> +    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
+>>>
+>>> Please use MAKE_64BIT_MASK() from "qemu/bitops.h".
+>>
+>> The GENMASK and MAKE_64BIT_MASK macros are invoke differently.
+>>
+>> GENMASK is invoked with bit t and bit b (t:b) and it provides the 
+>> mask and
+>>
+>> MAKE_64BIT_MASK uses shift and length.
 >
-> On Wed, 25 Oct 2023, marcandre.lureau@redhat.com wrote:
-> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > Acked-by: BALATON Zoltan <balaton@eik.bme.hu>
-> > ---
-> > configs/devices/mips64el-softmmu/default.mak | 2 +-
-> > hw/display/Kconfig                           | 2 +-
-> > hw/display/meson.build                       | 2 +-
-> > 3 files changed, 3 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/configs/devices/mips64el-softmmu/default.mak b/configs/dev=
-ices/mips64el-softmmu/default.mak
-> > index d5188f7ea5..8d85607571 100644
-> > --- a/configs/devices/mips64el-softmmu/default.mak
-> > +++ b/configs/devices/mips64el-softmmu/default.mak
-> > @@ -3,7 +3,7 @@
-> > include ../mips-softmmu/common.mak
-> > CONFIG_FULOONG=3Dy
-> > CONFIG_LOONGSON3V=3Dy
-> > -CONFIG_ATI_VGA=3Dy
-> > +# CONFIG_ATI_VGA=3Dn
+> Don't we have:
 >
-> I think I've asked this before but forgot the answer... However fuloong2e
-> has an on board ati-vga so does this (or should it) disable CONFIG_FULOON=
-G
-> when !PIXMAN? Or that machine should omit the on board graphics in this
-> case?
+> #define GENMASK(t, b) MAKE_64BIT_MASK(t, b - t + 1)
 >
+> ?
 
-yes, it is not obvious to spot, because it's a run time error (the
-"ati-vga" device creation).
+You are right. I am able to use this macro. I have removed some unused 
+macros.
 
-I think we should express this like that, but it fails with:
-KconfigDataError: cycle found including PCI_BONITO
+Thanks for the review.
 
-And I have no idea why. Paolo, any idea?
+Regards,
 
-diff --git a/configs/devices/mips64el-softmmu/default.mak
-b/configs/devices/mips64el-softmmu/default.mak
-index 8d85607571..4d80d60511 100644
---- a/configs/devices/mips64el-softmmu/default.mak
-+++ b/configs/devices/mips64el-softmmu/default.mak
-@@ -1,9 +1,8 @@
- # Default configuration for mips64el-softmmu
+Ninad
 
- include ../mips-softmmu/common.mak
--CONFIG_FULOONG=3Dy
-+#CONFIG_FULOONG=3Dy
- CONFIG_LOONGSON3V=3Dy
--# CONFIG_ATI_VGA=3Dn
- CONFIG_RTL8139_PCI=3Dy
- CONFIG_JAZZ=3Dy
- CONFIG_VT82C686=3Dy
-diff --git a/hw/mips/Kconfig b/hw/mips/Kconfig
-index ac1eb06a51..48bb15fdd3 100644
---- a/hw/mips/Kconfig
-+++ b/hw/mips/Kconfig
-@@ -32,7 +32,9 @@ config JAZZ
-
- config FULOONG
-     bool
-+    default y if MIPS
-     select PCI_BONITO
-+    depends on ATI_VGA
-
-
-
-> Regards,
-> BALATON Zoltan
 >
-> > CONFIG_RTL8139_PCI=3Dy
-> > CONFIG_JAZZ=3Dy
-> > CONFIG_VT82C686=3Dy
-> > diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-> > index 1aafe1923d..4d8a6c4af8 100644
-> > --- a/hw/display/Kconfig
-> > +++ b/hw/display/Kconfig
-> > @@ -125,7 +125,7 @@ config DPCD
-> > config ATI_VGA
-> >     bool
-> >     default y if PCI_DEVICES
-> > -    depends on PCI
-> > +    depends on PCI && PIXMAN
-> >     select VGA
-> >     select BITBANG_I2C
-> >     select DDC
-> > diff --git a/hw/display/meson.build b/hw/display/meson.build
-> > index 9c06aaee20..344dfe3d8c 100644
-> > --- a/hw/display/meson.build
-> > +++ b/hw/display/meson.build
-> > @@ -62,7 +62,7 @@ system_ss.add(when: 'CONFIG_XLNX_DISPLAYPORT', if_tru=
-e: files('xlnx_dp.c'))
-> >
-> > system_ss.add(when: 'CONFIG_ARTIST', if_true: files('artist.c'))
-> >
-> > -system_ss.add(when: [pixman, 'CONFIG_ATI_VGA'], if_true: files('ati.c'=
-, 'ati_2d.c', 'ati_dbg.c'))
-> > +system_ss.add(when: 'CONFIG_ATI_VGA', if_true: [files('ati.c', 'ati_2d=
-.c', 'ati_dbg.c'), pixman])
-> >
-> >
-> > if config_all_devices.has_key('CONFIG_VIRTIO_GPU')
-> >
-
-
-
---=20
-Marc-Andr=C3=A9 Lureau
+>> Thanks for the review.
+>>
+>> Regards,
+>>
+>> Ninad
+>>
+>>
+>>>> +#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), 
+>>>> BE_BIT(b))
+>>>> +
+>>>> +#endif
+>>>
+>

@@ -1,105 +1,106 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp138427ejb;
-        Wed, 25 Oct 2023 22:29:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGNtfY1eFkO08QSF6vFdIiviQWp490RmPdpR55s8dYeL171rpDtzWek/CxqAI4Cny/+zA2n
-X-Received: by 2002:a05:600c:1c29:b0:407:5b7c:2f6a with SMTP id j41-20020a05600c1c2900b004075b7c2f6amr13204946wms.0.1698298178507;
-        Wed, 25 Oct 2023 22:29:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698298178; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp139593ejb;
+        Wed, 25 Oct 2023 22:32:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGTnBWA0/26WxyhWjDLcKwMRRDLE8yN9jUpTVA4c/SLubXOC1dUWEo6qn0bYLaQD6TJlnNs
+X-Received: by 2002:a05:600c:a47:b0:408:39d3:a26b with SMTP id c7-20020a05600c0a4700b0040839d3a26bmr12814944wmq.40.1698298342771;
+        Wed, 25 Oct 2023 22:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698298342; cv=none;
         d=google.com; s=arc-20160816;
-        b=0vFECE3qkbuUA8xae+Ls93rwzpuXA/EylPAwgD4o7REz3hPn0wSB3bHZvQ3JjMR//3
-         raG5sfHOoCaV0bjiBmUb4HvhtOxdZqqvV9tnrXINRZ6FzWtkT72T+KOo+I/3id11fALF
-         2h7t39xWRzCiS8kJ4CFWYnfet6JzOMlGU4dlY89LCn0fReI2x7v6c/Rt/kSMbGWdM4hx
-         sbTlEnf4xv0jVtMcAwqLD2LhdS/AlNiYbBIdFmXvL+jefdy8oomsNGlnRcAkFo4svYlt
-         PW5NAwYK2t6NvRnf7UrdJMs+/8qv1FajK8Uw+d7dQNf7IXOwC7zoEPTjb8jg9zFHreab
-         O19g==
+        b=qLKP+46NV6YtjsKMzvGRIeW0lYiIcWVY7gaQkrNXTqKmAb33mxlJ3b9eDW5gFRebFo
+         CD8CCxnI1A/L56RlfYxgjbe2y07ZzGOl6u58sFz5VhyzDeZ8rKI75UyQT3XQwQt3hbgG
+         PL7kLSgV2rjfW4bU6k+Vp1c3tYQuMfOKcv0tA6TaUyBl1MHI3gGqHMTi55njPBnx8d+t
+         tOLqG+sYylyTfbM0viQvscoIpZ9i8cKKC4dOBwzsjAdod09b5sgUaEtq+W7mYC6V9WfV
+         HLgB465Bq5MCLqQGhNb8y2szPRM+B9JoWzQA05xLVb0RkRRliZg5LFmaCfMehQXysM4I
+         oa6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ogvkYCilsHe/ekfvb3A3ST8Y97I0ntZS3tXu7WqCNsg=;
+        bh=dg7yJm/Ib0Twr2aw2U56EKleRPMMVl6176tDtWCmItA=;
         fh=0zTg7JqpEkRv6PpnFgWax7BLxT45hIRqZHSy67B+2mI=;
-        b=LteEITx/GLF7l532MKO3iCp763DHGSi6FodVeisTt+sZXKqjfhPa70lyU53mtSWyD0
-         XXQjaztrKErQaRJSaXqRWoLg27+IA1hfRyZHxlYCw+uSdcKKoHZj5wibZ9u2RiVKvmgc
-         dX3FJcpZaXCGhjUiWlmKX//aPJ7gHWVAq3eHNL2VCzjBMU0S/ix7yDapMoANSar1Os7O
-         gCCmAK/4HtaNWrdjuDOLOVwvBzi82KeLPBbVfn05vPf9VNd6ZV6NJHgKFBq+GVqT8fGz
-         PFHsIbJjpnMjIVks9W7BmsJAPjO0h0jywGm0nqCMoxD7sT4zq+zBaa2VO0ZO+c9STxTa
-         VrPA==
+        b=elbg5wu8Qab3TT7gTz4+VUUEw3N78x0d1l0rMYCIa72WneptCx4iFkoKBePt9hFlLR
+         XNCTFUPhZUyCf1iVNswItCtjcc3Bu3SiTRbvqaFnqqel82949lRjxIipoEqrZZYSLF40
+         BCB+bVE35m/rxR4pslG+OGUIoDqxbvaE5n/1/3uqdzPI4JZb/pfsefFLGid7I2K19lwM
+         qSqidHzvbWb8ORkw1Z6LBc4DJkFLEnkpMW80J8SgWcmHcYAnSCX7MQmqQjUhHnkgKWvc
+         wh7UCl5pWn2XmWg7KCJFibG/DqAo+W43NzATwVT1DtsWnQ387eV4zEYMFmgKAzCy/4EI
+         GDCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eof+93Ba;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S8wwds90;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12-20020a05600c3acc00b0040643197ad3si1072826wms.73.2023.10.25.22.29.38
+        by mx.google.com with ESMTPS id f10-20020a05600c4e8a00b00406eef28528si1090865wmq.67.2023.10.25.22.32.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Oct 2023 22:29:38 -0700 (PDT)
+        Wed, 25 Oct 2023 22:32:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eof+93Ba;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S8wwds90;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qvsvu-0007EP-MP; Thu, 26 Oct 2023 01:29:26 -0400
+	id 1qvsxp-00083n-Am; Thu, 26 Oct 2023 01:31:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvsvs-0007Dy-LS
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 01:29:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvsxo-00083U-Bc
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 01:31:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvsvr-0007C7-8R
- for qemu-arm@nongnu.org; Thu, 26 Oct 2023 01:29:24 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qvsxl-0001NG-F6
+ for qemu-arm@nongnu.org; Thu, 26 Oct 2023 01:31:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698298162;
+ s=mimecast20190719; t=1698298280;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ogvkYCilsHe/ekfvb3A3ST8Y97I0ntZS3tXu7WqCNsg=;
- b=eof+93Ba275Alc8t26wYgKAYx9xZbp+ezRys8vwhq3zq0ikyoCMD04G0Bkork957i7IX0U
- QR0zVXST2iynYjaD2xgrF8xuT9X2mgYbmiDr7H3h+93tQo7wY0H7+yLs6PgTCpHsyFLVHU
- kwY6wd1J+sbBnRbUm8OaWUREzcy4Lx0=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=dg7yJm/Ib0Twr2aw2U56EKleRPMMVl6176tDtWCmItA=;
+ b=S8wwds90239AuRbgCPp3DJUWcAWceKn7wZZOqkXyWTpktA5AlejdOP2hxq8GMft8B+g+gK
+ lX4s5DVTxgddSZNp2shHUqwyINB24igbz1ewn9ViMU7xkm5uMD4frw/Ub8WVCVucjKC9o9
+ bVNl6OeOMXyM6tiBBJKPX7SmdLTXO0A=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-184-Uik_Tq2ZNfeYs7EJDPU3fA-1; Thu, 26 Oct 2023 01:29:21 -0400
-X-MC-Unique: Uik_Tq2ZNfeYs7EJDPU3fA-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-5402e97fdd1so306248a12.0
- for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 22:29:21 -0700 (PDT)
+ us-mta-591-9g1S--6pOCOz33H-Pv1T_A-1; Thu, 26 Oct 2023 01:31:17 -0400
+X-MC-Unique: 9g1S--6pOCOz33H-Pv1T_A-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-9ae0bf9c0b4so35155566b.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Oct 2023 22:31:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698298160; x=1698902960;
+ d=1e100.net; s=20230601; t=1698298276; x=1698903076;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ogvkYCilsHe/ekfvb3A3ST8Y97I0ntZS3tXu7WqCNsg=;
- b=W+jJ5720VuvTorHz7nOz5hfVr80RIksr9HLFe0Yb0UcpYiF6OgFg9Ux+Ct/wu+J7VQ
- eP5zrL2JViDG/awBHhfUvv/QDaDaiak/3E00Y+jCgahAZUgDgSrQE/W4ZTvDMc7Ut/9Y
- hO5CRblCDAvNCcfRgDUbpLIoOii+ia0lIuIvWb9IpC1R4NPe62KhJFfeZHkLF541V5eT
- TCLIp5TRM2pdsrD+BfGsd+JBH9kKMf9CZ74S+fcu58iYGeLN0ya3UgBv7AcYSzle0Kh+
- JsrbTX1BlnkaZmtjs4DMVRPAGWA89EopKScmRpep2s+/PdCRU+83TocUa8nmpsV5PpLq
- z2FA==
-X-Gm-Message-State: AOJu0YxBExWMvDpdWuHiNlLKVwop30n2K6VP86yjlpY/XsBSBkPhwzsU
- XYlRsqAJfYMAcAzILBFrFq+OE79kCjg3yhEU34b+a5ieA/AkYyf1yBjyQ+Bkv41XuP4FY2b4nDY
- C7BxByw060REO
-X-Received: by 2002:a05:6402:3593:b0:53d:983c:2672 with SMTP id
- y19-20020a056402359300b0053d983c2672mr14213181edc.38.1698298159830; 
- Wed, 25 Oct 2023 22:29:19 -0700 (PDT)
-X-Received: by 2002:a05:6402:3593:b0:53d:983c:2672 with SMTP id
- y19-20020a056402359300b0053d983c2672mr14213144edc.38.1698298159481; 
- Wed, 25 Oct 2023 22:29:19 -0700 (PDT)
+ bh=dg7yJm/Ib0Twr2aw2U56EKleRPMMVl6176tDtWCmItA=;
+ b=k1IA98KkXewipXEKKn4nz7M0NCJ4pEcTZITweQC0NCD4tIk0TfnQiVYoeJOXD8bkzb
+ hC6IdiWr6RHuQtIdUu5eAijQdiyG5l6L06cgXgQfRKsXqKE9bBzap2M2znxJVoz04tBA
+ u6jjxWRCnwP6w9wS+/RSvqiKIlVfaGdGtso03aM0a1xD2GKyp38H27ydkrVmO3h9cZvA
+ IBEQEUrlzWDuuOq2XQh/UiOodLwcs5Ho9sSwhKyyhOU5OkXtmzAKrNPxt+TERhLVIVAm
+ sEfd7n/909pw3UHDfX/ZtSOZhG5ZyRoiygYAvCtYmIFsWhMsAKsh3Gt9y1s0dANv4BSe
+ PdUw==
+X-Gm-Message-State: AOJu0YxnnohkOrDtyprYTJKDyIp/fI9h/R84vfQj9f86iGenFpFnINu6
+ IDXAvIbnHQeRVZLvsQS06uDOIBNr/GJ6DaAzZLiXfOWJpkrNxnAgDLyimwyI7Nby/yV6VkFjEMY
+ +mTJnRc1l0tKp
+X-Received: by 2002:a17:907:7fa7:b0:9ae:701a:6efa with SMTP id
+ qk39-20020a1709077fa700b009ae701a6efamr16925984ejc.69.1698298276079; 
+ Wed, 25 Oct 2023 22:31:16 -0700 (PDT)
+X-Received: by 2002:a17:907:7fa7:b0:9ae:701a:6efa with SMTP id
+ qk39-20020a1709077fa700b009ae701a6efamr16925963ejc.69.1698298275816; 
+ Wed, 25 Oct 2023 22:31:15 -0700 (PDT)
 Received: from [192.168.0.6] (ip-109-43-176-238.web.vodafone.de.
  [109.43.176.238]) by smtp.gmail.com with ESMTPSA id
- a17-20020a50c311000000b0053dfd3519f4sm10803177edb.22.2023.10.25.22.29.18
+ m11-20020a170906234b00b00988e953a586sm10967937eja.61.2023.10.25.22.31.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Oct 2023 22:29:18 -0700 (PDT)
-Message-ID: <1470d93e-171e-4f92-aff9-bc6ae7d088ae@redhat.com>
-Date: Thu, 26 Oct 2023 07:29:17 +0200
+ Wed, 25 Oct 2023 22:31:15 -0700 (PDT)
+Message-ID: <da8c43c9-e8e0-47c9-a7a8-3abb3a2aa4ca@redhat.com>
+Date: Thu, 26 Oct 2023 07:31:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 07/23] vl: simplify display_remote logic
+Subject: Re: [PATCH v6 08/23] vl: move display early init before default
+ devices
 To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  "Dr. David Alan Gilbert" <dave@treblig.org>, Eric Blake <eblake@redhat.com>,
@@ -110,7 +111,7 @@ Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 References: <20231025190818.3278423-1-marcandre.lureau@redhat.com>
- <20231025190818.3278423-8-marcandre.lureau@redhat.com>
+ <20231025190818.3278423-9-marcandre.lureau@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -154,21 +155,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231025190818.3278423-8-marcandre.lureau@redhat.com>
+In-Reply-To: <20231025190818.3278423-9-marcandre.lureau@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,43 +184,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q/gZByWQdBDB
+X-TUID: 2stzRci+DLNw
 
 On 25/10/2023 21.08, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Bump the display_remote variable when the -vnc option is parsed, just
-> like -spice.
+> The next commit needs to have the display registered itself before
+> creating the default VCs.
 > 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->   system/vl.c | 6 +-----
->   1 file changed, 1 insertion(+), 5 deletions(-)
-> 
-> diff --git a/system/vl.c b/system/vl.c
-> index de6df188da..b07805d476 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -1401,11 +1401,6 @@ static void qemu_create_default_devices(void)
->   #endif
->       }
->   
-> -#if defined(CONFIG_VNC)
-> -    if (!QTAILQ_EMPTY(&(qemu_find_opts("vnc")->head))) {
-> -        display_remote++;
-> -    }
-> -#endif
->       if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
->           if (!qemu_display_find_default(&dpy)) {
->               dpy.type = DISPLAY_TYPE_NONE;
-> @@ -3350,6 +3345,7 @@ void qemu_init(int argc, char **argv)
->   #ifdef CONFIG_VNC
->               case QEMU_OPTION_vnc:
->                   vnc_parse(optarg);
-> +                display_remote++;
->                   break;
->   #endif
->               case QEMU_OPTION_no_acpi:
+>   system/vl.c | 31 ++++++++++++++++++-------------
+>   1 file changed, 18 insertions(+), 13 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 

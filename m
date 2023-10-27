@@ -1,340 +1,136 @@
-Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp510439ejb;
-        Thu, 26 Oct 2023 09:50:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF9citaBJjROhYNipOE757AngbMgX7O6s/1Y6f9l5cR+nUGr7yx2uHZst8ykZ2SsuE2jHyB
-X-Received: by 2002:a05:6902:291:b0:da0:c5eb:a6c6 with SMTP id v17-20020a056902029100b00da0c5eba6c6mr1098624ybh.32.1698339014426;
-        Thu, 26 Oct 2023 09:50:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698339014; cv=none;
+Received: by 2002:a17:906:c785:b0:9bd:85f7:2662 with SMTP id cw5csp878589ejb;
+        Thu, 26 Oct 2023 23:07:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFVUFttp0FQLdtx7eMcCtHpMFpNZs0JbA6h7ItlXHlYdw+nNb01JbIyGw3CVjqdlK3qOyNU
+X-Received: by 2002:ac8:5a47:0:b0:41c:cca0:171b with SMTP id o7-20020ac85a47000000b0041ccca0171bmr1980739qta.32.1698386852580;
+        Thu, 26 Oct 2023 23:07:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698386852; cv=none;
         d=google.com; s=arc-20160816;
-        b=RAS0IJieCoxLx6fZQnOQ7TnIkXkpadqKvcoBa2hBcooSySziryZ+P10tIiS2BPL0LP
-         9/iZ0xe+EaMBBVJWuZIr6LcCM/KH7rFWZ8LRHDtYBP0lA4RmmbpH/PFzDTj3eJGsviaQ
-         pBBnK9JSAoii7AjCNkIDaiw5G3W2nEsmcIda5YnYjxdk97LTINSn1ANjyI5n/1bOqGuo
-         xk9Kpg/gj93kBZmAEgDiiMYB7NHj1Xto6INe+zGuy840ZMy1djVClDPK2IEkYpCo/8IS
-         bScZd/IONfi/5RxKVQSDqvolL995EWTDXH4Ec3deYwFtFXqNzdvGQO9GJX4XITXgGh2E
-         LxWA==
+        b=PjOz8puZ8Op1m68pwtxEKf9VVFimPPpqOlVf/CVj4Ks45Q57ZqbPOUQCrXzQi/+Gwy
+         Jwz3XYNqHsBIv1BJNDqziCovJ3BIaGoibuiePBTGfn6A+brkS1Lx1Z1ezULYnROXq3NF
+         zVRU3vZ9taloJm9eFJUbHcf+izL3DYljyAO1c+Y4eYr1mK4CfaFC0DsUmqxvmviXFyfL
+         /4sTzftrY5HhDQT9/uvvTAd6ZKiFJk+Rhh1oAA/oYQjp+vtnPvKSFLHgdJUOSaE3hJii
+         Ul7M9lS7iUP88/hxX/JjkDnZ+5zT1x/7D5/yqcR3kPbkDhtadM3oIPMpxnPUNNhTHMlJ
+         DlDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=K00Dlx2uJPJAwsDtp7bY4JE+xgry1yNmf64QCGv1nAk=;
-        fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
-        b=kZQrjWz0g/Ch7+HMCvuJYZ7kVDCKi05WQgF1piHrerPhy9jyXaI7Q9IHWV9sNk+DPG
-         auRgGA3vdcRkV27kHoV4zNWYIUWoiLHPzvb+LxeEaZ9fg6djOLWI0ApO9yOY9bIAyMm6
-         bLRY6JNm88wClb0R95y/a/gUCQautyBkVpuL6kFxo3KfIs0rcMiJsYH3QT8ApLaOZ5EE
-         8uPXhzyCBY5cg3LaSyPoQ7yhuTcFVN7Xq35b0lIj74VOxn6WTD/XuEUwFz7Rmf09lDqr
-         Sv6Mjh8zFD77Jgijm21+xWxnyCGnZUTpGb6KPoimqMlX8aL1nSd7ixri1Wf+7TJ+Qy90
-         a7oA==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vzLepVbCar0JkiTW9XVwgKL2r1EV7yOeGtAAEZPis0Q=;
+        fh=qGUyRo0UIMpHkwOq0Lcr+v2qgCuc70tZpkITjSw4Vwg=;
+        b=02+XmULjVf1cXr5dz/hSTZ22+5JThQtElrUMifzCAhbGxFKoULyiMlcjT/c1H+YGio
+         t114t+hNR9AHvyIZjlIiOHt21uIj/8FGKDuqLwWZmRlTsKLlru1HrLd1q3lEWhsCHadG
+         TOmseNeYwjsdc0JDf9TOqj02UmmEStVHDy8V6ZSNpQ5FTKzG/hc19COxZuFLUcBEkvGL
+         yEUvMxjT7zUK5ZAbbyJ4vL+WLLdf0XEY11FgsiH3irf6zmZyKQcmWgMx8YOgl22ilxB3
+         5dnE6Q4p4QHotf7WjaiD0UVl/X6XeXnV2fNBONOKnA+fNmQOk8lsuBn8dRYlqfXm4rJo
+         MpzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=G8MXM4rj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J4DdPxAn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5-20020a25b305000000b00d9a534937cdsi16077459ybj.445.2023.10.26.09.50.14
+        by mx.google.com with ESMTPS id k13-20020a05622a03cd00b0041989dab884si454247qtx.77.2023.10.26.23.07.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Oct 2023 09:50:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Oct 2023 23:07:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=G8MXM4rj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J4DdPxAn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qw3Ye-0006nn-Rp; Thu, 26 Oct 2023 12:50:09 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qwG06-0003Vu-TL; Fri, 27 Oct 2023 02:07:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qw3Ya-0006TV-4r; Thu, 26 Oct 2023 12:50:04 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qwG05-0003VV-EW
+ for qemu-arm@nongnu.org; Fri, 27 Oct 2023 02:07:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qw3YX-000893-7i; Thu, 26 Oct 2023 12:50:03 -0400
-Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39QGfJgU016098; Thu, 26 Oct 2023 16:49:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=K00Dlx2uJPJAwsDtp7bY4JE+xgry1yNmf64QCGv1nAk=;
- b=G8MXM4rjI7JCGaftXRIG+LpFdO2mvQ31dU/4Lx2tknmgjs1OYpfLdbaAA4Ni+9sQaayJ
- nq0A8ENwmXhyG2sSAmb4m7KR/9h0Wt5LHFJRDMny23XVhLO3oaHcEuUIbPoKj2yZAn9Y
- kkXcPmFXn+rXx9ivT4XRg5dD0cg8152MIJiNp8YzF17tJSK0gI+aYwoxYtP79jLFCSyP
- IAPEyq57y/FwhuIbYEaPIZgi6LWyi8MZLW4+ujm0oUcorZsNU8pUjsMEUXbhASMPSj73
- WdLFPgF8L/mEO/JNyf7IQ/iCYTmed2A3pguWXYLmpv/MAT0nggpbOIA11j439AVskBeU 0Q== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tyu2g9mkr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Oct 2023 16:49:41 +0000
-Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39QGfHGN015869;
- Thu, 26 Oct 2023 16:49:41 GMT
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tyu2g9mfk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Oct 2023 16:49:40 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39QGlP5F010290; Thu, 26 Oct 2023 16:47:49 GMT
-Received: from smtprelay07.wdc07v.mail.ibm.com ([172.16.1.74])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tvsbyymra-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Oct 2023 16:47:49 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
- [10.39.53.232])
- by smtprelay07.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39QGln8P15205106
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 26 Oct 2023 16:47:49 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3E6F058059;
- Thu, 26 Oct 2023 16:47:49 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 64BF758043;
- Thu, 26 Oct 2023 16:47:48 +0000 (GMT)
-Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
- by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 26 Oct 2023 16:47:48 +0000 (GMT)
-From: Ninad Palsule <ninad@linux.ibm.com>
-To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
- andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
- philmd@linaro.org, lvivier@redhat.com
-Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>
-Subject: [PATCH v7 05/10] hw/fsi: IBM's On-chip Peripheral Bus
-Date: Thu, 26 Oct 2023 11:47:36 -0500
-Message-Id: <20231026164741.1184058-6-ninad@linux.ibm.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231026164741.1184058-1-ninad@linux.ibm.com>
-References: <20231026164741.1184058-1-ninad@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qwG04-00088T-37
+ for qemu-arm@nongnu.org; Fri, 27 Oct 2023 02:07:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698386835;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vzLepVbCar0JkiTW9XVwgKL2r1EV7yOeGtAAEZPis0Q=;
+ b=J4DdPxAnz2WGec+OxemCZP+o7qpZ++7tUAIpeOk5g7ueZJNtvpjS/ztAx2jvfKO/SjgsNP
+ AF5wMIeB6tCJeQmopvK4xeLh0hz+hf0eTmGPz0zUcLdWi0Szgp2jCP7SA+gPJzQcYu8PgL
+ 4RazbLabVSjS2IbZ6AQO0FB3/Ku9l+s=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-124-tplu8pV3NviObdC7dTL7CQ-1; Fri,
+ 27 Oct 2023 02:07:11 -0400
+X-MC-Unique: tplu8pV3NviObdC7dTL7CQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 122253C0C899;
+ Fri, 27 Oct 2023 06:07:11 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.196])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 24C142166B26;
+ Fri, 27 Oct 2023 06:07:09 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] MAINTAINERS: Make sure that gicv3_internal.h is covered, too
+Date: Fri, 27 Oct 2023 08:07:09 +0200
+Message-ID: <20231027060709.242388-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: QJuGjiBJE3qovFx6PTDkpHOvbipQ5IIr
-X-Proofpoint-GUID: vAb3HWs_S4w-zVas8yzax3CcuTbyseXk
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-26_15,2023-10-26_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- suspectscore=0 adultscore=0 malwarescore=0 priorityscore=1501 mlxscore=0
- bulkscore=0 spamscore=0 mlxlogscore=902 clxscore=1015 impostorscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310170001 definitions=main-2310260146
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZyzpQX6dqs3k
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 81MB/VpfkIpq
 
-This is a part of patchset where IBM's Flexible Service Interface is
-introduced.
+gic_internal.h is already covered by the "ARM cores" section.
+Let's adapt the entry with a wildcard to cover gicv3_internal.h, too.
 
-The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in
-POWER processors. This now makes an appearance in the ASPEED SoC due
-to tight integration of the FSI master IP with the OPB, mainly the
-existence of an MMIO-mapping of the CFAM address straight onto a
-sub-region of the OPB address space.
-
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
-v2:
-- Incorporated review comment by Joel.
-v5:
-- Incorporated review comments by Cedric.
-v6:
-- Incorporated review comments by Cedric & Daniel
-v7:
-- Incorporated review comments by Cedric.
----
- include/hw/fsi/opb.h | 33 ++++++++++++++++++++
- hw/fsi/fsi-master.c  |  3 +-
- hw/fsi/opb.c         | 74 ++++++++++++++++++++++++++++++++++++++++++++
- hw/fsi/Kconfig       |  4 +++
- hw/fsi/meson.build   |  1 +
- 5 files changed, 113 insertions(+), 2 deletions(-)
- create mode 100644 include/hw/fsi/opb.h
- create mode 100644 hw/fsi/opb.c
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/fsi/opb.h b/include/hw/fsi/opb.h
-new file mode 100644
-index 0000000000..8b71bb55c2
---- /dev/null
-+++ b/include/hw/fsi/opb.h
-@@ -0,0 +1,33 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM On-Chip Peripheral Bus
-+ */
-+#ifndef FSI_OPB_H
-+#define FSI_OPB_H
-+
-+#include "exec/memory.h"
-+#include "hw/fsi/fsi-master.h"
-+
-+#define TYPE_OP_BUS "opb"
-+OBJECT_DECLARE_SIMPLE_TYPE(OPBus, OP_BUS)
-+
-+typedef struct OPBus {
-+        /*< private >*/
-+        BusState bus;
-+
-+        /*< public >*/
-+        MemoryRegion mr;
-+        AddressSpace as;
-+
-+        /* Model OPB as dumb enough just to provide an address-space */
-+        /* TODO: Maybe don't store device state in the bus? */
-+        FSIMasterState fsi;
-+} OPBus;
-+
-+typedef struct OPBusClass {
-+        BusClass parent_class;
-+} OPBusClass;
-+
-+#endif /* FSI_OPB_H */
-diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-index bb7a893003..ec092b42ea 100644
---- a/hw/fsi/fsi-master.c
-+++ b/hw/fsi/fsi-master.c
-@@ -11,8 +11,7 @@
- #include "trace.h"
- 
- #include "hw/fsi/fsi-master.h"
--
--#define TYPE_OP_BUS "opb"
-+#include "hw/fsi/opb.h"
- 
- #define TO_REG(x)                               ((x) >> 2)
- 
-diff --git a/hw/fsi/opb.c b/hw/fsi/opb.c
-new file mode 100644
-index 0000000000..04771b4b27
---- /dev/null
-+++ b/hw/fsi/opb.c
-@@ -0,0 +1,74 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM On-chip Peripheral Bus
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+
-+#include "hw/fsi/opb.h"
-+
-+static void fsi_opb_realize(BusState *bus, Error **errp)
-+{
-+    OPBus *opb = OP_BUS(bus);
-+
-+    memory_region_init_io(&opb->mr, OBJECT(opb), NULL, opb,
-+                          NULL, UINT32_MAX);
-+    address_space_init(&opb->as, &opb->mr, "opb");
-+
-+    if (!object_property_set_bool(OBJECT(&opb->fsi), "realized", true, errp)) {
-+        return;
-+    }
-+
-+    memory_region_add_subregion(&opb->mr, 0x80000000, &opb->fsi.iomem);
-+
-+    /* OPB2FSI region */
-+    /*
-+     * Avoid endianness issues by mapping each slave's memory region directly.
-+     * Manually bridging multiple address-spaces causes endian swapping
-+     * headaches as memory_region_dispatch_read() and
-+     * memory_region_dispatch_write() correct the endianness based on the
-+     * target machine endianness and not relative to the device endianness on
-+     * either side of the bridge.
-+     */
-+    /*
-+     * XXX: This is a bit hairy and will need to be fixed when I sort out the
-+     * bus/slave relationship and any changes to the CFAM modelling (multiple
-+     * slaves, LBUS)
-+     */
-+    memory_region_add_subregion(&opb->mr, 0xa0000000, &opb->fsi.opb2fsi);
-+}
-+
-+static void fsi_opb_init(Object *o)
-+{
-+    OPBus *opb = OP_BUS(o);
-+
-+    object_initialize_child(o, "fsi-master", &opb->fsi, TYPE_FSI_MASTER);
-+    qdev_set_parent_bus(DEVICE(&opb->fsi), BUS(o), &error_abort);
-+}
-+
-+static void fsi_opb_class_init(ObjectClass *klass, void *data)
-+{
-+    BusClass *bc = BUS_CLASS(klass);
-+    bc->realize = fsi_opb_realize;
-+}
-+
-+static const TypeInfo opb_info = {
-+    .name = TYPE_OP_BUS,
-+    .parent = TYPE_BUS,
-+    .instance_init = fsi_opb_init,
-+    .instance_size = sizeof(OPBus),
-+    .class_init = fsi_opb_class_init,
-+    .class_size = sizeof(OPBusClass),
-+};
-+
-+static void fsi_opb_register_types(void)
-+{
-+    type_register_static(&opb_info);
-+}
-+
-+type_init(fsi_opb_register_types);
-diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-index 8d712e77ed..0f6e6d331a 100644
---- a/hw/fsi/Kconfig
-+++ b/hw/fsi/Kconfig
-@@ -1,3 +1,7 @@
-+config FSI_OPB
-+    bool
-+    select FSI_CFAM
-+
- config FSI_CFAM
-     bool
-     select FSI
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index f617943b4a..407b8c2775 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -2,3 +2,4 @@ system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
- system_ss.add(when: 'CONFIG_FSI_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
- system_ss.add(when: 'CONFIG_FSI_CFAM', if_true: files('cfam.c'))
- system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-master.c','fsi-slave.c'))
-+system_ss.add(when: 'CONFIG_FSI_OPB', if_true: files('opb.c'))
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4d54c6fc2b..2c4126b63d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -700,7 +700,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/intc/arm*
+-F: hw/intc/gic_internal.h
++F: hw/intc/gic*_internal.h
+ F: hw/misc/a9scu.c
+ F: hw/misc/arm11scu.c
+ F: hw/misc/arm_l2x0.c
 -- 
-2.39.2
+2.41.0
 

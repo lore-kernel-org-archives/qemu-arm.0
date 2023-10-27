@@ -1,147 +1,177 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp180792ejc;
-        Fri, 27 Oct 2023 06:05:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFxk9boTqCtN3xr9H8/ikX1cJmqopAIu7pgUaTfPOp9ivqVx/tkbVOM3z8+zmYqtkTbH7Fu
-X-Received: by 2002:a05:620a:4707:b0:778:a656:e352 with SMTP id bs7-20020a05620a470700b00778a656e352mr3552391qkb.11.1698411944280;
-        Fri, 27 Oct 2023 06:05:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698411944; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp189121ejc;
+        Fri, 27 Oct 2023 06:15:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGbycf/4iGRxVX2Tjsa/1L6pelR6w15PQvr9QoFtbRrS5n2q0P9w/NNTsWHW9Qv/ZQpL8hM
+X-Received: by 2002:a5b:c4a:0:b0:da0:cafa:815b with SMTP id d10-20020a5b0c4a000000b00da0cafa815bmr2602719ybr.31.1698412533042;
+        Fri, 27 Oct 2023 06:15:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698412533; cv=none;
         d=google.com; s=arc-20160816;
-        b=S9Gz0k7lbqHdnOb/8PBQ/7tGYv4JPnXJCKn0rWDIoQa09+LjPoPa0eS+sO7rbiP9HT
-         zD5Wqrb3LtcP1AIa5GjUv5CByvAWXIMiMkCJWaUA8AeLO/qklTf/PCK9kflBo91Pk0xV
-         Zd1uiCoU3NJVhxojsRZDgBZyD/wX/CubFYii5EjkfrTGrIYJYHB93qSc5baGaBlLSzny
-         q0/luKhpGy8E22kO3kBcTQnewFrHstEDqYLOK3gEVQNBpnlPprB2IUz5azv8rkaZgEHB
-         2dqP8iziLHDejjBNFKhNGFNsY2rJuq1LTRKyR0+k6GvjE+Vw93v1g0llfhjsyynG0b91
-         v/EQ==
+        b=HDLpThYw/hxuM6IOl1mDFsKb/bY/k1GJsZLLzghLGEV4qpSD94Ft0LmNyEDMiVoeIF
+         U7oHR8RZn/LaSACUtDf2UwyMeaX7NxjhS2vpfIwygvYV0Nwpqy0X35nMqnqAJkk6AWBB
+         tERqrjw3XM+QGIhOylqPz3X/JkuSzoOPa1IyHUmV2Oa6FjOTT4lWylvl7G6WsyZQcgUW
+         UB+LDNvQ0WZvmBpBHiTJ/3s3oFknEM3Kkmc2zUpxgdDiWwNa8FxyuRBGMp066WZ1+KLG
+         cdGY89Xo4E2ukzCCLQyuwYBdAJi7Xh1JCzJHSGywhFx2UBN4mCCmPe1MvOcr19ceNFp6
+         lp5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=zPQjhoQ1E5USycJ//Pc6ErxRJzo/AyNfPGhonSaOKxM=;
-        fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
-        b=SPz61gMW87sjlKR49R4TTp5Gu8d6VjpWE6k6TWVc/zs+3fDdFUO8ZN0K4Lt8+B+DGz
-         Wkw7l7lpyKWJ85phewdX//sMvNUI33OtEHiv6VD60VPVe1gOvxfAqb7l67AXsrWNhxzc
-         uKa9cB/DqfwVNeiSuvNmmlkU6z3GVCuobO0ZCxgEm+YpwwLMCMs+4seuXOMceI341K81
-         MIN67NulSzaekZnbXOkVtX47rQpclagk5HxZ8pFkW2/Mk2HSpvNrL4d1tt9j44xPDBFa
-         aUmn8Qwq2Yvo8a65WMKBhpn5BRE27pBkwdTYZMPcWPuPNRMLM2gbKU6tdrDYZQEjnlSq
-         NZtQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=l4gzMSUyQ/FMX0J7Ljcbxg1HLk8uA62Lx8jX0w7ORsw=;
+        fh=SvHDuYAzdQV5U08zdZH97tLIUUiEaLY00f4mdxmyTQw=;
+        b=BFWwHTRMC4K2sstv+NwH+8LOoUAXtIC4FQ1CG4CcuT2vTkfx0tbZYTLrBnGHMcZOse
+         Jm09tI0KxhnZMecbSEXWA5hbMRzatqJqGgLgsbXHqsSsC0YmvFRri01++oOcl4W/euhp
+         jYDHfODk7b+vml9xVeuJ98pQ39+ysE5JAf5CqRTffZ/xv9pNVAzY65zlR5o6+43yQg03
+         bb/b8gXhXoPg1tM4oSzljy444FiILwnZhXtKQArSZOAxKcCdwyobrZaX+qspPy8I2I02
+         etzU5EbVt8QWNnrwwO8fCdUJRHRCsbstZMG+y50XW6hq6VlDFLy3dMyNkAHFxEVKPuhq
+         BNwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZvkHH2He;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id x20-20020ae9f814000000b007758709cfefsi651695qkh.215.2023.10.27.06.05.43
+       dkim=pass header.i=@linaro.org header.s=google header.b=mnd8ULoB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o81-20020a254154000000b00d9a608c47aasi2267601yba.514.2023.10.27.06.15.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Oct 2023 06:05:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 27 Oct 2023 06:15:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZvkHH2He;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1698411943;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zPQjhoQ1E5USycJ//Pc6ErxRJzo/AyNfPGhonSaOKxM=;
-	b=ZvkHH2He5/c7aYKZ2f+4D2r7esKIBVMdCl/6gBwPaPiFnIZBVjZS5NDs6knqtAM/6SFtfX
-	Yn+DCGpfhwZYB0p23Ea0nBMdyDS6bzmh4cq53khZYDVB2LD2sY1BqwvBzRvt7wCexLhtgf
-	ciglKLwKWZ+zW0RWr6nI4NQlyTv3jQ8=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-271-kGt6F7hMOReSg1SeHq6Osw-1; Fri, 27 Oct 2023 09:05:40 -0400
-X-MC-Unique: kGt6F7hMOReSg1SeHq6Osw-1
-Received: by mail-ej1-f70.google.com with SMTP id a640c23a62f3a-9a62adedadbso145665866b.1
-        for <alex.bennee@linaro.org>; Fri, 27 Oct 2023 06:05:40 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=mnd8ULoB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qwMgN-0004lB-3O; Fri, 27 Oct 2023 09:15:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qwMgL-0004kk-DU
+ for qemu-arm@nongnu.org; Fri, 27 Oct 2023 09:15:21 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qwMgJ-0000O5-0E
+ for qemu-arm@nongnu.org; Fri, 27 Oct 2023 09:15:20 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-53e04b17132so3298473a12.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Oct 2023 06:15:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698412517; x=1699017317; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=l4gzMSUyQ/FMX0J7Ljcbxg1HLk8uA62Lx8jX0w7ORsw=;
+ b=mnd8ULoBbPvMfyByPfFEiGbx9N51vIjZTrUVnQLIFSXBZ0gnQUfDhVjXyKqLmTFpqe
+ nq34TJjCT7B7NI2ryjsTLptEtaQSSNGmnhqVSACTSBtdNxzxRQm6cFisHFtI5r7vvxOk
+ GuVkcljBiJfXIAXqBqFjrBbydhF0PNTU9yZUc3uT2D+kY1dTzB6qjicKnC0XspZVVTAG
+ LQUYgxJbiQTL47i2WWTdQJe9Qpyge+MFb8PzKZkzgCNXSUDIvIs+V6dDrLoroc5j5Dp9
+ fyCua5pYKZCs858Ri0pcom19EIRUiiphs2Or3OXyfrZjqgu9g+9pCwrnISW2KxRotR+l
+ XsCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698411939; x=1699016739;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zPQjhoQ1E5USycJ//Pc6ErxRJzo/AyNfPGhonSaOKxM=;
-        b=JSlFz0vI77AtWs/f5eXNTXhuqC9uWHveyab2xsfnATseCvf+E8X77yVXWGPnuMFdvw
-         JZg26O5lkZawNhmFLc+WGkcPz1zXKrJwZZ7mwqmDT7ELzLfsh1Ifs9/5lLy/cPjE6pgV
-         0LD9Kt2yCYPW1m6p2vm7D9OjWwKQgpf5ghYEEw21ZdBCkRQMx2AH/mZSwJor0ACwoPj9
-         Zk9a3kbgcxgbHmqkfH9SDnDRYPOpUtT/2IzX0q200Tv6lNJf+Ow1nwisx5VeYc3mUQVc
-         HexGCmW3hYnb2jWUczqSx52kUHdLZSjyHlg1q2vZPobQBYmy8fevpe4HyOHTtr2D+vfl
-         k/3w==
-X-Gm-Message-State: AOJu0Yzec+vKYz5HXH8IQRf+WBB1UMQBEV+0AfF8cbat4ItiUuC/ZYWL
-	ibSt8gjSZr586HKU9Meoe3zY+QQL7lMt/55sFnDSGjYd4D6m6uLM0B/iWpvSGgmSkSpwU/mFOW/
-	NqyMXWikKrg06Mztp
-X-Received: by 2002:a17:907:72c5:b0:9b2:f941:6916 with SMTP id du5-20020a17090772c500b009b2f9416916mr2006921ejc.17.1698411939333;
-        Fri, 27 Oct 2023 06:05:39 -0700 (PDT)
-X-Received: by 2002:a17:907:72c5:b0:9b2:f941:6916 with SMTP id du5-20020a17090772c500b009b2f9416916mr2006879ejc.17.1698411938913;
-        Fri, 27 Oct 2023 06:05:38 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id dc17-20020a170906c7d100b0098e34446464sm1180550ejb.25.2023.10.27.06.05.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Oct 2023 06:05:38 -0700 (PDT)
-Date: Fri, 27 Oct 2023 15:05:36 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
- <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
- <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
- <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
- <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
- <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
- <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
- <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
- <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
- <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
- <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
- <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
- <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
- <lixianglai@loongson.cn>, <linuxarm@huawei.com>
-Subject: Re: [PATCH V6 3/9] hw/acpi: Add ACPI CPU hotplug init stub
-Message-ID: <20231027150536.3c481246@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231013105129.25648-4-salil.mehta@huawei.com>
-References: <20231013105129.25648-1-salil.mehta@huawei.com>
-	<20231013105129.25648-4-salil.mehta@huawei.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1698412517; x=1699017317;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=l4gzMSUyQ/FMX0J7Ljcbxg1HLk8uA62Lx8jX0w7ORsw=;
+ b=Kk+BfVBag6ftJBpo6AuTasBETMWzZG0HmvLQoypnwKMGB0l2R3BP4RyvYrhlJG27oC
+ nWtjkk994I9xvhj+eQdtfbE8Qlpv+fdZYmg7yzjKeL6Kedr37W1UCC/EIqk4kAccKHYh
+ XqQq0p/ivTHzbA+nIYHLjXLkZbdv6ECwr06kbUovweiCh1yPp0O11XGbiryoto78fJ3n
+ cKAao3T7YxfofDLaDTk9U1QjVvyQSuXFHR3C1XvXLVC0lVS9GrnZo1e09pKG9VcY7+Y5
+ xB6QxnSne88/H8Z8WbHiz9tJ9vcU7i/R86ywpvh++f+zv9tBogK3t/CscyE6din59eIH
+ Rxcg==
+X-Gm-Message-State: AOJu0YzXitv4w4UU188U0UTSS+QZ8m0YZsTnCZzIi/LdVAOqiqa2a47d
+ QWaEkjYV9hjLwAyboOOv99v7tP8Q8euBwf9u8qy+LA==
+X-Received: by 2002:a50:d494:0:b0:53d:a4e5:67d0 with SMTP id
+ s20-20020a50d494000000b0053da4e567d0mr2453938edi.13.1698412517284; Fri, 27
+ Oct 2023 06:15:17 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: Y7nemikEdeOb
+References: <20231017193217.1512868-1-tong.ho@amd.com>
+ <20231017193217.1512868-4-tong.ho@amd.com>
+In-Reply-To: <20231017193217.1512868-4-tong.ho@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 27 Oct 2023 14:15:06 +0100
+Message-ID: <CAFEAcA9z8BAgapk4HixRdpB49reLNGs8_b5GMrEt7uYCEr9Pug@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx Versal
+ TRNG device
+To: Tong Ho <tong.ho@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me, 
+ edgar.iglesias@gmail.com, richard.henderson@linaro.org, 
+ frasse.iglesias@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uijRv4h4EeQk
 
-On Fri, 13 Oct 2023 11:51:23 +0100
-Salil Mehta <salil.mehta@huawei.com> wrote:
-
-> ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
-> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
-> stub to avoid compilation break.
-
-merge this with 4/9 that actually requires this to be done. 
-
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+On Tue, 17 Oct 2023 at 20:32, Tong Ho <tong.ho@amd.com> wrote:
+>
+> Signed-off-by: Tong Ho <tong.ho@amd.com>
 > ---
->  hw/acpi/acpi-cpu-hotplug-stub.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
-> index 3fc4b14c26..c6c61bb9cd 100644
-> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
-> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
-> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
->      return;
->  }
->  
-> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-> +                         CPUHotplugState *state, hwaddr base_addr)
-> +{
-> +    return;
-> +}
+>  tests/qtest/meson.build             |   2 +-
+>  tests/qtest/xlnx-versal-trng-test.c | 486 ++++++++++++++++++++++++++++
+>  2 files changed, 487 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/qtest/xlnx-versal-trng-test.c
+>
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 66795cfcd2..593ca6714b 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -216,7 +216,7 @@ qtests_aarch64 = \
+>    (config_all.has_key('CONFIG_TCG') and config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ?            \
+>      ['tpm-tis-device-test', 'tpm-tis-device-swtpm-test'] : []) +                                         \
+>    (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
+> -  (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test'] : []) + \
+> +  (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test', 'xlnx-versal-trng-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
+>    (config_all.has_key('CONFIG_TCG') and                                            \
+>     config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+> diff --git a/tests/qtest/xlnx-versal-trng-test.c b/tests/qtest/xlnx-versal-trng-test.c
+> new file mode 100644
+> index 0000000000..dc19c1e83b
+> --- /dev/null
+> +++ b/tests/qtest/xlnx-versal-trng-test.c
+> @@ -0,0 +1,486 @@
+> +/*
+> + * QTests for the Xilinx Versal True Random Number Generator device
+> + *
+> + * Copyright (c) 2023 Advanced Micro Devices, Inc.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
 > +
->  void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
->  {
->      return;
+
+> +#define FAILED(FMT, ...) g_error("%s(): " FMT, __func__, ## __VA_ARGS__)
+
+This fails to build for Windows because this macro name clashes
+with one from the system winerror.h:
+
+../tests/qtest/xlnx-versal-trng-test.c:71: error: "FAILED" redefined [-Werror]
+71 | #define FAILED(FMT, ...) g_error("%s(): " FMT, __func__, ## __VA_ARGS__)
+
+Also, qtests should not be using g_error() to report errors, because
+this turns into a call to abort(), which the test harness will
+not report nicely as an error. Use g_assert_true() or one of
+the family of g_assert_cmp*() functions to test checks that
+you want to be test passes or failures (but *not* g_assert()).
+
+thanks
+-- PMM

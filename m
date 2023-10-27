@@ -1,99 +1,98 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp378481ejc;
-        Fri, 27 Oct 2023 10:56:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEL9Iru9+29NUFbsvpEbhVTghEsfxyyal4t03oVBJarKZjZuSBJoQlusugUfqGfkolJP87H
-X-Received: by 2002:a05:622a:18a4:b0:41e:2423:f0be with SMTP id v36-20020a05622a18a400b0041e2423f0bemr4218717qtc.40.1698429400180;
-        Fri, 27 Oct 2023 10:56:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698429400; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp378505ejc;
+        Fri, 27 Oct 2023 10:56:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH45N4upfuGjiKoB2AREEbugAf4AP04A0RF6Anb+OOgskWGKunq+ffRUGRE5LLpW4/QP826
+X-Received: by 2002:a05:620a:25c6:b0:777:2aeb:7df5 with SMTP id y6-20020a05620a25c600b007772aeb7df5mr3750794qko.3.1698429402405;
+        Fri, 27 Oct 2023 10:56:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698429402; cv=none;
         d=google.com; s=arc-20160816;
-        b=r/ABEnnqHP6s07NbJkadzRTBGyAekSOK7gCdUzuibFhXujiGr3BTrPwL+SvAdOegPk
-         74c0kz48wPSJVgJSpiPx+Dd4Zs5f3RoKacRrTBQNKLEbEfowGA0Ym8AnFkA4h70dvVuS
-         MkOKGHH1kz3tUgitIfZnZlor5FdLwmDJAsaBk2L4XorsFOJhVzSaE3VV0Do6Rk52tov9
-         Wk73WKeF82oHJU4LgCyWp5CsvkFT2cHMQCC/HnhlN6x9lJBbNLifN8TeduFhHZpe1tev
-         CiacqA43bmkoW2BUg6L0kUHezxr4rBDHVySxBs5CblU83l2hBvF/A76ahQAqnppafqh2
-         13+Q==
+        b=0WNyCFvY1600gZydTFYeV6XA1cv6I0cQVKIJxBNmheqMpWwoQHE7Qm58qX5tGfdzaf
+         qmMKTUCmMficQES+3P7a9kPsqrSvUFSmWmFRpHljjXTzUMp4lu0PNSi1hvliQJJNPGGP
+         Nzy9XBL3BMN26HcpFRijMSn/vHAQN/+lejMHZmq8FDVoRDJoNCpkT6BVlvwVI5ZkvvTE
+         b7/nHjYK/PTX9WF0D9LpuUSB4fF1msZlxh8WeF7E1FJIbBRNSCQTyV2thLi+ubWMMiIO
+         YX1UXAsd9W/tczJvbJLHbRP5zkZEBqId2U5fQlC/aGnWTryaGTLVXvMo4J45ukKWqhch
+         3SLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=Cf4ZMULPkv6KFZn9sGC6bapr0PPKsCuQ7B6d91QqlZ8=;
+        bh=MFVq39a3Zkb86vlKHkeih78APcgTOc6ibbt1bQ0oub0=;
         fh=jnbnc+JA8os8BNrWArfY9mDntgDud8nPmN5Do23zP6g=;
-        b=RSQapZZ+QH2OZpJhdkc6WaRYZH50NCRwfB4agEUCl54RAaxKpwP5mczI6XWaNi9Lk6
-         wzWkdNIuxjosC+k3EoKRXKkkzD2wCMC26uQAOeRsPSv2wHtLhcIK26YXrQVsFphnlNtU
-         5JQGnNuPC5qxuIxWHz1b0W/Joduok/1a4J1i8WLMj614d7sRHUmATjNzzjy99d740Xm4
-         9p7FBIrC6f7BvcFR84YPhL0qEL/JNQ0O1kQtMZEP/8qyzh2/ttMPZvbf1LdHXqf4KmVu
-         oV9dkUGaztokbmWACYNblIggkISuNcMfvyh+MWmSCGsKOaOLc72HKCfSvUrQ7YrZGhKM
-         OqBg==
+        b=UTU5rV6qW6hHSwMAVXR22o3HF8kaRRYbc4R2bA5bKLymsoPOGGSrytgPsCBmgFMdEB
+         mMPin4/c83Enwx6iRHf5eWCqoBcWUJnsUrsVyfi9twmjEODkMz+FOWT3EIkDwGRzRVJn
+         IYs1e4hFFJtvl4Wfd7FEbtjY0opDASAdexKU8RZaZveJD5MkGBJlbJslnb/GAoZAO2+u
+         2gfi0Ha2ZefFSX+5k9/AOwrqavR3qas6kbvODc8sMZ3TPTLImKw6CaHRv12XYPxQFXg1
+         eCS6Y0iM06rXNDgb5noxjhbiHYd90/cm4igUoV0Qk3/PErjo/HjxNQzDRLo8wMIiD8p9
+         5X+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=XcAQXweY;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=lA+jarlS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z5-20020a05622a028500b00419919e7380si947349qtw.339.2023.10.27.10.56.39
+        by mx.google.com with ESMTPS id q13-20020a05622a030d00b00419905d39e7si978955qtw.517.2023.10.27.10.56.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Oct 2023 10:56:40 -0700 (PDT)
+        Fri, 27 Oct 2023 10:56:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=XcAQXweY;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=lA+jarlS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qwR3v-0006Ue-RP; Fri, 27 Oct 2023 13:55:59 -0400
+	id 1qwR41-0006c1-PC; Fri, 27 Oct 2023 13:56:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3o_k7ZQwKCrYjWXedaopabWjckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--nabihestefan.bounces.google.com>)
- id 1qwR3s-0006Ri-3T
- for qemu-devel@nongnu.org; Fri, 27 Oct 2023 13:55:56 -0400
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ <3pvk7ZQwKCrkmZahgdrsdeZmfnnfkd.bnlpdlt-cdudkmnmfmt.nqf@flex--nabihestefan.bounces.google.com>)
+ id 1qwR3x-0006Xk-QZ
+ for qemu-devel@nongnu.org; Fri, 27 Oct 2023 13:56:01 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3o_k7ZQwKCrYjWXedaopabWjckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--nabihestefan.bounces.google.com>)
- id 1qwR3m-0007kc-2B
- for qemu-devel@nongnu.org; Fri, 27 Oct 2023 13:55:54 -0400
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-5a7cfdacf8fso32442577b3.0
- for <qemu-devel@nongnu.org>; Fri, 27 Oct 2023 10:55:47 -0700 (PDT)
+ <3pvk7ZQwKCrkmZahgdrsdeZmfnnfkd.bnlpdlt-cdudkmnmfmt.nqf@flex--nabihestefan.bounces.google.com>)
+ id 1qwR3p-0007lN-UF
+ for qemu-devel@nongnu.org; Fri, 27 Oct 2023 13:55:59 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ 3f1490d57ef6-da03c5ae220so3479311276.1
+ for <qemu-devel@nongnu.org>; Fri, 27 Oct 2023 10:55:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1698429347; x=1699034147; darn=nongnu.org;
+ d=google.com; s=20230601; t=1698429351; x=1699034151; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=Cf4ZMULPkv6KFZn9sGC6bapr0PPKsCuQ7B6d91QqlZ8=;
- b=XcAQXweYO4jHPawkF72uC3tYIrSrtoGSeqrf7v1VrGMHv0QBrumpsdBhRB2dp2E7rf
- LdCZOluWH6IM5VY24MhYyiJrB3rTbHRuK6HX4uUXK2UKrebfVlL7uXPLg6sxE/z7Qkbp
- R5SsUXM4cOjcZbfjtcacWPq+dIg1i/HYguRhZpwsNoiTVi65NRan2wsF4sZMsnKdo4j+
- fPEmg45+DA8jsmCFhU3ITZSXTi7W+kl/woLIqV4SIpZeVkQDtYBI8cQAD3dTUROyndtH
- SM1A1wBd+KEufAdN4kPnpLIImvRdbzcNW+EdL8pPDdGwYr3/tH3GUuKJSC0kDYli9DAj
- F0AA==
+ bh=MFVq39a3Zkb86vlKHkeih78APcgTOc6ibbt1bQ0oub0=;
+ b=lA+jarlSLFqMzFVcbVMe5Jc6di9laO7U6UNXdAjaF+yVZPzalyY+8GPE8sUJ2m6d+t
+ 9OGZvTE2djJXVYJpZRSY7gKkhbGZ5TlCnmRq3kBq4oFc+SFM+53+jxijsKOtMztTnke0
+ MxjN2grrCWqAv5Bfx/pOIrEieusL2U3Y9KB0s0GCnAg6/UFOJa3v+/qmwdESSaEa+zml
+ IPs5XIvAhkZmOQzbF8bIhW8uD0cpdfBPaqzOujjQ+pRerwcVDZv0+bbRLd0qUW3mdNeu
+ FqvM8XjyX1Men1ASLWp/zlszGYcXIq7dk0AAxqoJM+itilnm5f30Prx+aZraeGRnvRvo
+ zf+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698429347; x=1699034147;
+ d=1e100.net; s=20230601; t=1698429351; x=1699034151;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Cf4ZMULPkv6KFZn9sGC6bapr0PPKsCuQ7B6d91QqlZ8=;
- b=Wr4jqjCANY8jc2o6ljvZqWHkXdMUOti8ziZR1qjwxMHMOEttt7wL8FJE/KY9+mVo5Z
- dQEc/hztma9MHU+m9uYUepJGbUwkr2fruj2Z2brtOI2ZbSg8TvdCpAtO1ORSECdBc7J8
- Tyh9t8++p3AswM3r27ZwxZP7T0Sp4ujcM27qpcvBZL2Ya/FtvcWTBYU93gAQiTLMjMLY
- frOZnkIWyH4Tyt1mxrPYZTfFM3KznhfRklrneP85SS7EHxhpEa2ad0MvJQINdCJuafdp
- Vgc7DtFl3vv6MJiYEFrFGWP9PaoACwdbt4kxFn5/X2umYt5rHT2h4vKAf5frIAeEd0ku
- AiEQ==
-X-Gm-Message-State: AOJu0YwaY6zXUHgrlh6RckNPYrf/uxfVjeKYGrgxynCFwwae1fUeMkIO
- 2lXFxn0EoDhBmoT4odq4N+IQmQL2NVkl8HIS+0Q=
+ bh=MFVq39a3Zkb86vlKHkeih78APcgTOc6ibbt1bQ0oub0=;
+ b=nIqptnyd1RDa0yJmApse+Qf5LH2KyjGpV7wTV1KQBjweRlBsNkHVdm+6s/dVuKSQiD
+ BRCPELo18oY0r2cQtsurPT/GmhSl2FWwLaD1zKM6ghGOkZSAOgyHRR2SeS1HqDg658sY
+ PfneBvLE6fA2rf9r0CwS7Eu/MnnzsGVz7Z/uP+12gbifumlQhcRmUc7f0cAEkJKm32+Q
+ 25kdQLyqEYgerRbsWCpUlp8U7xfN/81MxM4seYyewYLetPZYMUJXw+6PcMFD9xz5fZEA
+ kghRTFHDXT4A/JvOKfQh5v18cXxwNRezILpHYIR5VpXTb0MpYER3dh7FFngc16wwKbVa
+ rQhg==
+X-Gm-Message-State: AOJu0Yy7jjj0hF/nocoT4DlqRseXe8sW1hxJVb0JDpGZZuDWj37S5uNH
+ 0Krr6Wiku0p4vNUzRYMFLnGyMyy0qMPlUAuTSQs=
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
  (user=nabihestefan job=sendgmr) by 2002:a05:6902:569:b0:ca3:3341:6315 with
- SMTP id a9-20020a056902056900b00ca333416315mr102192ybt.0.1698429347359; Fri,
- 27 Oct 2023 10:55:47 -0700 (PDT)
-Date: Fri, 27 Oct 2023 17:55:28 +0000
+ SMTP id a9-20020a056902056900b00ca333416315mr102195ybt.0.1698429350858; Fri,
+ 27 Oct 2023 10:55:50 -0700 (PDT)
+Date: Fri, 27 Oct 2023 17:55:30 +0000
 In-Reply-To: <20231027175532.3601297-1-nabihestefan@google.com>
 Mime-Version: 1.0
 References: <20231027175532.3601297-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.42.0.820.g83a721a137-goog
-Message-ID: <20231027175532.3601297-8-nabihestefan@google.com>
-Subject: [PATCH v5 07/11] include/hw/net: Implemented Classes and Masks for
- GMAC Descriptors
+Message-ID: <20231027175532.3601297-10-nabihestefan@google.com>
+Subject: [PATCH v5 09/11] hw/net: GMAC Rx Implementation
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
@@ -101,16 +100,16 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com,
  nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
  Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3o_k7ZQwKCrYjWXedaopabWjckkcha.Ykimaiq-Zarahjkjcjq.knc@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x114a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3pvk7ZQwKCrkmZahgdrsdeZmfnnfkd.bnlpdlt-cdudkmnmfmt.nqf@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,378 +124,488 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZTBLUoZrDSRH
+X-TUID: D3uJHSq2i0Yc
 
 From: Nabih Estefan Diaz <nabihestefan@google.com>
 
- - Implemeted classes for GMAC Receive and Transmit Descriptors
- - Implemented Masks for said descriptors
+- Implementation of Receive function for packets
+- Implementation for reading and writing from and to descriptors in
+  memory for Rx
 
-Change-Id: Id671a69137927e169afc9e610dde8dcd7811f6be
+When RX starts, we need to flush the queued packets so that they
+can be received by the GMAC device. Without this it won't work
+with TAP NIC device.
+
+When RX descriptor list is full, it returns a DMA_STATUS for software to handle it. But there's no way to indicate the software ha handled all RX descriptors and the whole pipeline stalls.
+
+We do something similar to NPCM7XX EMC to handle this case.
+
+1. Return packet size when RX descriptor is full, effectively dropping these packets in such a case.
+2. When software clears RX descriptor full bit, continue receiving further packets by flushing QEMU packet queue.
+
+Change-Id: Ie176cbbeecbc02d3bb7442ef6262c9ef8029c232
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
 Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 ---
- hw/net/npcm_gmac.c           | 183 +++++++++++++++++++++++++++--------
- hw/net/trace-events          |   9 ++
- include/hw/net/npcm_gmac.h   |   2 -
- tests/qtest/npcm_gmac-test.c |   2 +-
- 4 files changed, 150 insertions(+), 46 deletions(-)
+ hw/net/npcm_gmac.c         | 331 ++++++++++++++++++++++++++++++++++++-
+ include/hw/net/npcm_gmac.h |  28 ++--
+ 2 files changed, 343 insertions(+), 16 deletions(-)
 
 diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index 5ce632858d..6f8109e0ee 100644
+index 220955346c..cd59ca5fd4 100644
 --- a/hw/net/npcm_gmac.c
 +++ b/hw/net/npcm_gmac.c
-@@ -32,7 +32,7 @@
- REG32(NPCM_DMA_BUS_MODE, 0x1000)
- REG32(NPCM_DMA_XMT_POLL_DEMAND, 0x1004)
- REG32(NPCM_DMA_RCV_POLL_DEMAND, 0x1008)
--REG32(NPCM_DMA_RCV_BASE_ADDR, 0x100c)
-+REG32(NPCM_DMA_RX_BASE_ADDR, 0x100c)
- REG32(NPCM_DMA_TX_BASE_ADDR, 0x1010)
- REG32(NPCM_DMA_STATUS, 0x1014)
- REG32(NPCM_DMA_CONTROL, 0x1018)
-@@ -91,7 +91,8 @@ REG32(NPCM_GMAC_PTP_TTSR, 0x71c)
- #define NPCM_DMA_BUS_MODE_SWR               BIT(0)
+@@ -23,7 +23,11 @@
+ #include "hw/registerfields.h"
+ #include "hw/net/mii.h"
+ #include "hw/net/npcm_gmac.h"
++#include "linux/if_ether.h"
+ #include "migration/vmstate.h"
++#include "net/checksum.h"
++#include "net/net.h"
++#include "qemu/cutils.h"
+ #include "qemu/log.h"
+ #include "qemu/units.h"
+ #include "sysemu/dma.h"
+@@ -146,6 +150,17 @@ static void gmac_phy_set_link(NPCMGMACState *s, bool active)
  
- static const uint32_t npcm_gmac_cold_reset_values[NPCM_GMAC_NR_REGS] = {
--    [R_NPCM_GMAC_VERSION]         = 0x00001037,
-+    /* Reduce version to 3.2 so that the kernel can enable interrupt. */
-+    [R_NPCM_GMAC_VERSION]         = 0x00001032,
-     [R_NPCM_GMAC_TIMER_CTRL]      = 0x03e80000,
-     [R_NPCM_GMAC_MAC0_ADDR_HI]    = 0x8000ffff,
-     [R_NPCM_GMAC_MAC0_ADDR_LO]    = 0xffffffff,
-@@ -125,12 +126,12 @@ static const uint16_t phy_reg_init[] = {
-     [MII_EXTSTAT]   = 0x3000, /* 1000BASTE_T full-duplex capable */
- };
- 
--static void npcm_gmac_soft_reset(NPCMGMACState *s)
-+static void npcm_gmac_soft_reset(NPCMGMACState *gmac)
+ static bool gmac_can_receive(NetClientState *nc)
  {
--    memcpy(s->regs, npcm_gmac_cold_reset_values,
-+    memcpy(gmac->regs, npcm_gmac_cold_reset_values,
-            NPCM_GMAC_NR_REGS * sizeof(uint32_t));
-     /* Clear reset bits */
--    s->regs[R_NPCM_DMA_BUS_MODE] &= ~NPCM_DMA_BUS_MODE_SWR;
-+    gmac->regs[R_NPCM_DMA_BUS_MODE] &= ~NPCM_DMA_BUS_MODE_SWR;
- }
- 
- static void gmac_phy_set_link(NPCMGMACState *s, bool active)
-@@ -148,11 +149,53 @@ static bool gmac_can_receive(NetClientState *nc)
++    NPCMGMACState *gmac = NPCM_GMAC(qemu_get_nic_opaque(nc));
++
++    /* If GMAC receive is disabled. */
++    if (!(gmac->regs[R_NPCM_GMAC_MAC_CONFIG] & NPCM_GMAC_MAC_CONFIG_RX_EN)) {
++        return false;
++    }
++
++    /* If GMAC DMA RX is stopped. */
++    if (!(gmac->regs[R_NPCM_DMA_CONTROL] & NPCM_DMA_CONTROL_START_STOP_RX)) {
++        return false;
++    }
      return true;
  }
  
--static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len1)
-+/*
-+ * Function that updates the GMAC IRQ
-+ * It find the logical OR of the enabled bits for NIS (if enabled)
-+ * It find the logical OR of the enabled bits for AIS (if enabled)
-+ */
-+static void gmac_update_irq(NPCMGMACState *gmac)
- {
--    return 0;
-+    /*
-+     * Check if the normal interrupts summery is enabled
-+     * if so, add the bits for the summary that are enabled
-+     */
-+    if (gmac->regs[R_NPCM_DMA_INTR_ENA] & gmac->regs[R_NPCM_DMA_STATUS] &
-+        (NPCM_DMA_INTR_ENAB_NIE_BITS))
-+    {
-+        gmac->regs[R_NPCM_DMA_STATUS] |=  NPCM_DMA_STATUS_NIS;
-+    }
-+    /*
-+     * Check if the abnormal interrupts summery is enabled
-+     * if so, add the bits for the summary that are enabled
-+     */
-+    if (gmac->regs[R_NPCM_DMA_INTR_ENA] & gmac->regs[R_NPCM_DMA_STATUS] &
-+        (NPCM_DMA_INTR_ENAB_AIE_BITS))
-+    {
-+        gmac->regs[R_NPCM_DMA_STATUS] |=  NPCM_DMA_STATUS_AIS;
-+    }
-+
-+    /* Get the logical OR of both normal and abnormal interrupts */
-+    int level = !!((gmac->regs[R_NPCM_DMA_STATUS] &
-+                    gmac->regs[R_NPCM_DMA_INTR_ENA] &
-+                    NPCM_DMA_STATUS_NIS) |
-+                   (gmac->regs[R_NPCM_DMA_STATUS] &
-+                   gmac->regs[R_NPCM_DMA_INTR_ENA] &
-+                   NPCM_DMA_STATUS_AIS));
-+
-+    /* Set the IRQ */
-+    trace_npcm_gmac_update_irq(DEVICE(gmac)->canonical_path,
-+                               gmac->regs[R_NPCM_DMA_STATUS],
-+                               gmac->regs[R_NPCM_DMA_INTR_ENA],
-+                               level);
-+    qemu_set_irq(gmac->irq, level);
+@@ -191,11 +206,288 @@ static void gmac_update_irq(NPCMGMACState *gmac)
+     qemu_set_irq(gmac->irq, level);
  }
  
+-static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
++static int gmac_read_rx_desc(dma_addr_t addr, struct NPCMGMACRxDesc *desc)
++{
++    if (dma_memory_read(&address_space_memory, addr, desc,
++                        sizeof(*desc), MEMTXATTRS_UNSPECIFIED)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to read descriptor @ 0x%"
++                      HWADDR_PRIx "\n", __func__, addr);
++        return -1;
++    }
++    desc->rdes0 = le32_to_cpu(desc->rdes0);
++    desc->rdes1 = le32_to_cpu(desc->rdes1);
++    desc->rdes2 = le32_to_cpu(desc->rdes2);
++    desc->rdes3 = le32_to_cpu(desc->rdes3);
++    return 0;
++}
++
++static int gmac_write_rx_desc(dma_addr_t addr, struct NPCMGMACRxDesc *desc)
++{
++    struct NPCMGMACRxDesc le_desc;
++    le_desc.rdes0 = cpu_to_le32(desc->rdes0);
++    le_desc.rdes1 = cpu_to_le32(desc->rdes1);
++    le_desc.rdes2 = cpu_to_le32(desc->rdes2);
++    le_desc.rdes3 = cpu_to_le32(desc->rdes3);
++    if (dma_memory_write(&address_space_memory, addr, &le_desc,
++                        sizeof(le_desc), MEMTXATTRS_UNSPECIFIED)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to write descriptor @ 0x%"
++                      HWADDR_PRIx "\n", __func__, addr);
++        return -1;
++    }
++    return 0;
++}
++
++static int gmac_read_tx_desc(dma_addr_t addr, struct NPCMGMACTxDesc *desc)
++{
++    if (dma_memory_read(&address_space_memory, addr, desc,
++                        sizeof(*desc), MEMTXATTRS_UNSPECIFIED)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to read descriptor @ 0x%"
++                      HWADDR_PRIx "\n", __func__, addr);
++        return -1;
++    }
++    desc->tdes0 = le32_to_cpu(desc->tdes0);
++    desc->tdes1 = le32_to_cpu(desc->tdes1);
++    desc->tdes2 = le32_to_cpu(desc->tdes2);
++    desc->tdes3 = le32_to_cpu(desc->tdes3);
++    return 0;
++}
++
++static int gmac_write_tx_desc(dma_addr_t addr, struct NPCMGMACTxDesc *desc)
+ {
+-    /* Placeholder */
++    struct NPCMGMACTxDesc le_desc;
++    le_desc.tdes0 = cpu_to_le32(desc->tdes0);
++    le_desc.tdes1 = cpu_to_le32(desc->tdes1);
++    le_desc.tdes2 = cpu_to_le32(desc->tdes2);
++    le_desc.tdes3 = cpu_to_le32(desc->tdes3);
++    if (dma_memory_write(&address_space_memory, addr, &le_desc,
++                        sizeof(le_desc), MEMTXATTRS_UNSPECIFIED)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to write descriptor @ 0x%"
++                      HWADDR_PRIx "\n", __func__, addr);
++        return -1;
++    }
+     return 0;
+ }
++static int gmac_rx_transfer_frame_to_buffer(uint32_t rx_buf_len,
++                                            uint32_t *left_frame,
++                                            uint32_t rx_buf_addr,
++                                            bool *eof_transferred,
++                                            const uint8_t **frame_ptr,
++                                            uint16_t *transferred)
++{
++    uint32_t to_transfer;
++    /*
++     * Check that buffer is bigger than the frame being transfered
++     * If bigger then transfer only whats left of frame
++     * Else, fill frame with all the content possible
++     */
++    if (rx_buf_len >= *left_frame) {
++        to_transfer = *left_frame;
++        *eof_transferred = true;
++    } else {
++        to_transfer = rx_buf_len;
++    }
++
++    /* write frame part to memory */
++    if (dma_memory_write(&address_space_memory, (uint64_t) rx_buf_addr,
++                         *frame_ptr, to_transfer, MEMTXATTRS_UNSPECIFIED))
++    {
++        return -1;
++    }
++
++    /* update frame pointer and size of whats left of frame */
++    *frame_ptr += to_transfer;
++    *left_frame -= to_transfer;
++    *transferred += to_transfer;
++
++    return 0;
++}
++
++static void gmac_dma_set_state(NPCMGMACState *gmac, int shift, uint32_t state)
++{
++    gmac->regs[R_NPCM_DMA_STATUS] = deposit32(gmac->regs[R_NPCM_DMA_STATUS],
++        shift, 3, state);
++}
++
 +static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
 +{
-+    /* Placeholder */
-+    return 0;
++    /*
++     * Comments have steps that relate to the
++     * receiving process steps in pg 386
++     */
++    NPCMGMACState *gmac = NPCM_GMAC(qemu_get_nic_opaque(nc));
++    uint32_t left_frame = len;
++    const uint8_t *frame_ptr = buf;
++    uint32_t desc_addr;
++    uint32_t rx_buf_len, rx_buf_addr;
++    struct NPCMGMACRxDesc rx_desc;
++    uint16_t transferred = 0;
++    bool eof_transferred = false;
++
++    trace_npcm_gmac_packet_receive(DEVICE(gmac)->canonical_path, len);
++    if (!gmac_can_receive(nc)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "GMAC Currently is not able for Rx");
++        return -1;
++    }
++    if (!gmac->regs[R_NPCM_DMA_HOST_RX_DESC]) {
++        gmac->regs[R_NPCM_DMA_HOST_RX_DESC] =
++            NPCM_DMA_HOST_RX_DESC_MASK(gmac->regs[R_NPCM_DMA_RX_BASE_ADDR]);
++    }
++    desc_addr = NPCM_DMA_HOST_RX_DESC_MASK(gmac->regs[R_NPCM_DMA_HOST_RX_DESC]);
++
++    /* step 1 */
++    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++        NPCM_DMA_STATUS_RX_RUNNING_FETCHING_STATE);
++    trace_npcm_gmac_packet_desc_read(DEVICE(gmac)->canonical_path, desc_addr);
++    if (gmac_read_rx_desc(desc_addr, &rx_desc)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "RX Descriptor @ 0x%x cant be read\n",
++                      desc_addr);
++        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++            NPCM_DMA_STATUS_RX_SUSPENDED_STATE);
++        return -1;
++    }
++
++    /* step 2 */
++    if (!(rx_desc.rdes0 & RX_DESC_RDES0_OWN)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "RX Descriptor @ 0x%x is owned by software\n",
++                      desc_addr);
++        gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RU;
++        gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RI;
++        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++            NPCM_DMA_STATUS_RX_SUSPENDED_STATE);
++        gmac_update_irq(gmac);
++        return len;
++    }
++    /* step 3 */
++    /*
++     * TODO --
++     * Implement all frame filtering and processing (with its own interrupts)
++     */
++    trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &rx_desc,
++                                    rx_desc.rdes0, rx_desc.rdes1, rx_desc.rdes2,
++                                    rx_desc.rdes3);
++    /* Clear rdes0 for the incoming descriptor and set FS in first descriptor.*/
++    rx_desc.rdes0 = RX_DESC_RDES0_FIRST_DESC_MASK;
++
++    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++        NPCM_DMA_STATUS_RX_RUNNING_TRANSFERRING_STATE);
++
++    /* Pad the frame with FCS as the kernel driver will strip it away. */
++    left_frame += ETH_FCS_LEN;
++
++    /* repeat while we still have frame to transfer to memory */
++    while (!eof_transferred) {
++        /* Return descriptor no matter what happens */
++        rx_desc.rdes0 &= ~RX_DESC_RDES0_OWN;
++        /* Set the frame to be an IPv4/IPv6 frame. */
++        rx_desc.rdes0 |= RX_DESC_RDES0_FRM_TYPE_MASK;
++
++        /* step 4 */
++        rx_buf_len = RX_DESC_RDES1_BFFR1_SZ_MASK(rx_desc.rdes1);
++        rx_buf_addr = rx_desc.rdes2;
++        gmac->regs[R_NPCM_DMA_CUR_RX_BUF_ADDR] = rx_buf_addr;
++        gmac_rx_transfer_frame_to_buffer(rx_buf_len, &left_frame, rx_buf_addr,
++                                         &eof_transferred, &frame_ptr,
++                                         &transferred);
++
++        trace_npcm_gmac_packet_receiving_buffer(DEVICE(gmac)->canonical_path,
++                                                rx_buf_len, rx_buf_addr);
++        /* if we still have frame left and the second buffer is not chained */
++         if (!(rx_desc.rdes1 & RX_DESC_RDES1_SEC_ADDR_CHND_MASK) && \
++              !eof_transferred) {
++            /* repeat process from above on buffer 2 */
++            rx_buf_len = RX_DESC_RDES1_BFFR2_SZ_MASK(rx_desc.rdes1);
++            rx_buf_addr = rx_desc.rdes3;
++            gmac->regs[R_NPCM_DMA_CUR_RX_BUF_ADDR] = rx_buf_addr;
++            gmac_rx_transfer_frame_to_buffer(rx_buf_len, &left_frame,
++                                             rx_buf_addr, &eof_transferred,
++                                             &frame_ptr, &transferred);
++            trace_npcm_gmac_packet_receiving_buffer( \
++                                                DEVICE(gmac)->canonical_path,
++                                                rx_buf_len, rx_buf_addr);
++        }
++        /* update address for descriptor */
++        gmac->regs[R_NPCM_DMA_HOST_RX_DESC] = rx_buf_addr;
++        /* Return descriptor */
++        rx_desc.rdes0 &= ~RX_DESC_RDES0_OWN;
++        /* Update frame length transferred */
++        rx_desc.rdes0 |= ((uint32_t)transferred)
++            << RX_DESC_RDES0_FRAME_LEN_SHIFT;
++        trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &rx_desc,
++                                        rx_desc.rdes0, rx_desc.rdes1,
++                                        rx_desc.rdes2, rx_desc.rdes3);
++
++        /* step 5 */
++        gmac_write_rx_desc(desc_addr, &rx_desc);
++        trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path,
++                                        &rx_desc, rx_desc.rdes0,
++                                        rx_desc.rdes1, rx_desc.rdes2,
++                                        rx_desc.rdes3);
++        /* read new descriptor into rx_desc if needed*/
++        if (!eof_transferred) {
++            /* Get next descriptor address (chained or sequential) */
++            if (rx_desc.rdes1 & RX_DESC_RDES1_RC_END_RING_MASK) {
++                desc_addr = gmac->regs[R_NPCM_DMA_RX_BASE_ADDR];
++            } else if (rx_desc.rdes1 & RX_DESC_RDES1_SEC_ADDR_CHND_MASK) {
++                desc_addr = rx_desc.rdes3;
++            } else {
++                desc_addr += sizeof(rx_desc);
++            }
++            trace_npcm_gmac_packet_desc_read(DEVICE(gmac)->canonical_path,
++                                             desc_addr);
++            if (gmac_read_rx_desc(desc_addr, &rx_desc)) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "RX Descriptor @ 0x%x cant be read\n",
++                              desc_addr);
++                gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RU;
++                gmac_update_irq(gmac);
++                return len;
++            }
++
++            /* step 6 */
++            if (!(rx_desc.rdes0 & RX_DESC_RDES0_OWN)) {
++                if (!(gmac->regs[R_NPCM_DMA_CONTROL] & \
++                     NPCM_DMA_CONTROL_FLUSH_MASK)) {
++                    rx_desc.rdes0 |= RX_DESC_RDES0_DESC_ERR_MASK;
++                }
++                eof_transferred = true;
++            }
++            /* Clear rdes0 for the incoming descriptor */
++            rx_desc.rdes0 = 0;
++        }
++    }
++    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++        NPCM_DMA_STATUS_RX_RUNNING_CLOSING_STATE);
++
++    rx_desc.rdes0 |= RX_DESC_RDES0_LAST_DESC_MASK;
++    if (!(rx_desc.rdes1 & RX_DESC_RDES1_DIS_INTR_COMP_MASK)) {
++        gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_RI;
++        gmac_update_irq(gmac);
++    }
++    trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &rx_desc,
++                                    rx_desc.rdes0, rx_desc.rdes1, rx_desc.rdes2,
++                                    rx_desc.rdes3);
++
++    /* step 8 */
++    gmac->regs[R_NPCM_DMA_CONTROL] |= NPCM_DMA_CONTROL_FLUSH_MASK;
++
++    /* step 9 */
++    trace_npcm_gmac_packet_received(DEVICE(gmac)->canonical_path, left_frame);
++    gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++        NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
++    gmac_write_rx_desc(desc_addr, &rx_desc);
++
++    /* Get next descriptor address (chained or sequential) */
++    if (rx_desc.rdes1 & RX_DESC_RDES1_RC_END_RING_MASK) {
++        desc_addr = gmac->regs[R_NPCM_DMA_RX_BASE_ADDR];
++    } else if (rx_desc.rdes1 & RX_DESC_RDES1_SEC_ADDR_CHND_MASK) {
++        desc_addr = rx_desc.rdes3;
++    } else {
++        desc_addr += sizeof(rx_desc);
++    }
++    gmac->regs[R_NPCM_DMA_HOST_RX_DESC] = desc_addr;
++    return len;
 +}
  static void gmac_cleanup(NetClientState *nc)
  {
      /* Nothing to do yet. */
-@@ -166,7 +209,7 @@ static void gmac_set_link(NetClientState *nc)
-     gmac_phy_set_link(s, !nc->link_down);
- }
- 
--static void npcm_gmac_mdio_access(NPCMGMACState *s, uint16_t v)
-+static void npcm_gmac_mdio_access(NPCMGMACState *gmac, uint16_t v)
- {
-     bool busy = v & NPCM_GMAC_MII_ADDR_BUSY;
-     uint8_t is_write;
-@@ -183,33 +226,38 @@ static void npcm_gmac_mdio_access(NPCMGMACState *s, uint16_t v)
- 
- 
-         if (v & NPCM_GMAC_MII_ADDR_WRITE) {
--            data = s->regs[R_NPCM_GMAC_MII_DATA];
-+            data = gmac->regs[R_NPCM_GMAC_MII_DATA];
-             /* Clear reset bit for BMCR register */
-             switch (gr) {
-             case MII_BMCR:
-                 data &= ~MII_BMCR_RESET;
--                /* Complete auto-negotiation immediately and set as complete */
--                if (data & MII_BMCR_AUTOEN) {
-+                /* Autonegotiation is a W1C bit*/
-+                if (data & MII_BMCR_ANRESTART) {
-                     /* Tells autonegotiation to not restart again */
-                     data &= ~MII_BMCR_ANRESTART;
-+                }
-+                if ((data & MII_BMCR_AUTOEN) &&
-+                    !(gmac->phy_regs[pa][MII_BMSR] & MII_BMSR_AN_COMP)) {
-                     /* sets autonegotiation as complete */
--                    s->phy_regs[pa][MII_BMSR] |= MII_BMSR_AN_COMP;
-+                    gmac->phy_regs[pa][MII_BMSR] |= MII_BMSR_AN_COMP;
-+                    /* Resolve AN automatically->need to set this */
-+                    gmac->phy_regs[0][MII_ANLPAR] = 0x0000;
-                 }
-             }
--            s->phy_regs[pa][gr] = data;
-+            gmac->phy_regs[pa][gr] = data;
-         } else {
--            data = s->phy_regs[pa][gr];
--            s->regs[R_NPCM_GMAC_MII_DATA] = data;
-+            data = gmac->phy_regs[pa][gr];
-+            gmac->regs[R_NPCM_GMAC_MII_DATA] = data;
-         }
--        trace_npcm_gmac_mdio_access(DEVICE(s)->canonical_path, is_write, pa,
--                                    gr, data);
-+        trace_npcm_gmac_mdio_access(DEVICE(gmac)->canonical_path, is_write, pa,
-+                                        gr, data);
-     }
--    s->regs[R_NPCM_GMAC_MII_ADDR] = v & ~NPCM_GMAC_MII_ADDR_BUSY;
-+    gmac->regs[R_NPCM_GMAC_MII_ADDR] = v & ~NPCM_GMAC_MII_ADDR_BUSY;
- }
- 
- static uint64_t npcm_gmac_read(void *opaque, hwaddr offset, unsigned size)
- {
--    NPCMGMACState *s = opaque;
-+    NPCMGMACState *gmac = opaque;
-     uint32_t v = 0;
- 
-     switch (offset) {
-@@ -218,22 +266,25 @@ static uint64_t npcm_gmac_read(void *opaque, hwaddr offset, unsigned size)
-     case A_NPCM_DMA_RCV_POLL_DEMAND:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Read of write-only reg: offset: 0x%04" HWADDR_PRIx
--                      "\n", DEVICE(s)->canonical_path, offset);
-+                      "\n", DEVICE(gmac)->canonical_path, offset);
-         break;
- 
-     default:
--        v = s->regs[offset / sizeof(uint32_t)];
-+        v = gmac->regs[offset / sizeof(uint32_t)];
-     }
--    trace_npcm_gmac_reg_read(DEVICE(s)->canonical_path, offset, v);
-+
-+    trace_npcm_gmac_reg_read(DEVICE(gmac)->canonical_path, offset, v);
-     return v;
- }
- 
- static void npcm_gmac_write(void *opaque, hwaddr offset,
+@@ -281,7 +573,6 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
                                uint64_t v, unsigned size)
  {
--    NPCMGMACState *s = opaque;
-+    NPCMGMACState *gmac = opaque;
-+    uint32_t prev;
-+
-+    trace_npcm_gmac_reg_write(DEVICE(gmac)->canonical_path, offset, v);
+     NPCMGMACState *gmac = opaque;
+-    uint32_t prev;
  
--    trace_npcm_gmac_reg_write(DEVICE(s)->canonical_path, offset, v);
-     switch (offset) {
-     /* Read only registers */
-     case A_NPCM_GMAC_VERSION:
-@@ -250,25 +301,44 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Write of read-only reg: offset: 0x%04" HWADDR_PRIx
-                       ", value: 0x%04" PRIx64 "\n",
--                      DEVICE(s)->canonical_path, offset, v);
-+                      DEVICE(gmac)->canonical_path, offset, v);
-+        break;
-+
-+    case A_NPCM_GMAC_MAC_CONFIG:
-+        prev = gmac->regs[offset / sizeof(uint32_t)];
+     trace_npcm_gmac_reg_write(DEVICE(gmac)->canonical_path, offset, v);
+ 
+@@ -305,6 +596,7 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
+         break;
+ 
+     case A_NPCM_GMAC_MAC_CONFIG:
 +        gmac->regs[offset / sizeof(uint32_t)] = v;
-+
-+        /* If transmit is being enabled for first time, update desc addr */
-+        if (~(prev & NPCM_GMAC_MAC_CONFIG_TX_EN) &
-+             (v & NPCM_GMAC_MAC_CONFIG_TX_EN)) {
-+            gmac->regs[R_NPCM_DMA_HOST_TX_DESC] =
-+                gmac->regs[R_NPCM_DMA_TX_BASE_ADDR];
-+        }
-+
-+        /* If receive is being enabled for first time, update desc addr */
-+        if (~(prev & NPCM_GMAC_MAC_CONFIG_RX_EN) &
-+             (v & NPCM_GMAC_MAC_CONFIG_RX_EN)) {
-+            gmac->regs[R_NPCM_DMA_HOST_RX_DESC] =
-+                gmac->regs[R_NPCM_DMA_RX_BASE_ADDR];
-+        }
          break;
  
      case A_NPCM_GMAC_MII_ADDR:
--        npcm_gmac_mdio_access(s, v);
-+        npcm_gmac_mdio_access(gmac, v);
-         break;
+@@ -346,6 +638,31 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
  
-     case A_NPCM_GMAC_MAC0_ADDR_HI:
--        s->regs[offset / sizeof(uint32_t)] = v;
--        s->conf.macaddr.a[0] = v >> 8;
--        s->conf.macaddr.a[1] = v >> 0;
-+        gmac->regs[offset / sizeof(uint32_t)] = v;
-+        gmac->conf.macaddr.a[0] = v >> 8;
-+        gmac->conf.macaddr.a[1] = v >> 0;
-         break;
- 
-     case A_NPCM_GMAC_MAC0_ADDR_LO:
--        s->regs[offset / sizeof(uint32_t)] = v;
--        s->conf.macaddr.a[2] = v >> 24;
--        s->conf.macaddr.a[3] = v >> 16;
--        s->conf.macaddr.a[4] = v >> 8;
--        s->conf.macaddr.a[5] = v >> 0;
-+        gmac->regs[offset / sizeof(uint32_t)] = v;
-+        gmac->conf.macaddr.a[2] = v >> 24;
-+        gmac->conf.macaddr.a[3] = v >> 16;
-+        gmac->conf.macaddr.a[4] = v >> 8;
-+        gmac->conf.macaddr.a[5] = v >> 0;
-         break;
- 
-     case A_NPCM_GMAC_MAC1_ADDR_HI:
-@@ -277,33 +347,60 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
-     case A_NPCM_GMAC_MAC2_ADDR_LO:
-     case A_NPCM_GMAC_MAC3_ADDR_HI:
-     case A_NPCM_GMAC_MAC3_ADDR_LO:
--        s->regs[offset / sizeof(uint32_t)] = v;
-+        gmac->regs[offset / sizeof(uint32_t)] = v;
-         qemu_log_mask(LOG_UNIMP,
-                       "%s: Only MAC Address 0 is supported. This request "
--                      "is ignored.\n", DEVICE(s)->canonical_path);
-+                      "is ignored.\n", DEVICE(gmac)->canonical_path);
-         break;
- 
-     case A_NPCM_DMA_BUS_MODE:
--        s->regs[offset / sizeof(uint32_t)] = v;
-+        gmac->regs[offset / sizeof(uint32_t)] = v;
-         if (v & NPCM_DMA_BUS_MODE_SWR) {
--            npcm_gmac_soft_reset(s);
-+            npcm_gmac_soft_reset(gmac);
-+        }
+     case A_NPCM_DMA_RCV_POLL_DEMAND:
+         /* We dont actually care about the value */
++        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++            NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
 +        break;
 +
-+    case A_NPCM_DMA_RCV_POLL_DEMAND:
++    case A_NPCM_DMA_XMT_POLL_DEMAND:
 +        /* We dont actually care about the value */
++        gmac_try_send_next_packet(gmac);
 +        break;
 +
-+    case A_NPCM_DMA_STATUS:
-+        /* Check that RO bits are not written to */
-+        if (NPCM_DMA_STATUS_RO_MASK(v)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: Write of read-only bits of reg: offset: 0x%04"
-+                           HWADDR_PRIx ", value: 0x%04" PRIx64 "\n",
-+                           DEVICE(gmac)->canonical_path, offset, v);
++    case A_NPCM_DMA_CONTROL:
++        gmac->regs[offset / sizeof(uint32_t)] = v;
++        if (v & NPCM_DMA_CONTROL_START_STOP_TX) {
++            gmac_try_send_next_packet(gmac);
 +        } else {
-+            /* for W1c bits, implement W1C */
-+            gmac->regs[offset / sizeof(uint32_t)] &=
-+                ~NPCM_DMA_STATUS_W1C_MASK(v);
-+            if (v & NPCM_DMA_STATUS_NIS_BITS) {
-+                gmac->regs[offset / sizeof(uint32_t)] &= ~NPCM_DMA_STATUS_NIS;
-+            }
-+            if (v & NPCM_DMA_STATUS_AIS_BITS) {
-+                gmac->regs[offset / sizeof(uint32_t)] &= ~NPCM_DMA_STATUS_AIS;
-+            }
++            gmac_dma_set_state(gmac, NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT,
++                NPCM_DMA_STATUS_TX_STOPPED_STATE);
++        }
++        if (v & NPCM_DMA_CONTROL_START_STOP_RX) {
++            gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++                NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
++            qemu_flush_queued_packets(qemu_get_queue(gmac->nic));
++        } else {
++            gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++                NPCM_DMA_STATUS_RX_STOPPED_STATE);
++        }
+         break;
+ 
+     case A_NPCM_DMA_STATUS:
+@@ -356,6 +673,14 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
+                            HWADDR_PRIx ", value: 0x%04" PRIx64 "\n",
+                            DEVICE(gmac)->canonical_path, offset, v);
          }
++        /* for W1C bits, implement W1C */
++        gmac->regs[offset / sizeof(uint32_t)] &= ~NPCM_DMA_STATUS_W1C_MASK(v);
++        if (v & NPCM_DMA_STATUS_RU) {
++            /* Clearing RU bit indicates descriptor is owned by DMA again. */
++            gmac_dma_set_state(gmac, NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT,
++                NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE);
++            qemu_flush_queued_packets(qemu_get_queue(gmac->nic));
++        }
          break;
  
      default:
--        s->regs[offset / sizeof(uint32_t)] = v;
-+        gmac->regs[offset / sizeof(uint32_t)] = v;
-         break;
-     }
-+
-+    gmac_update_irq(gmac);
- }
- 
- static void npcm_gmac_reset(DeviceState *dev)
- {
--    NPCMGMACState *s = NPCM_GMAC(dev);
-+    NPCMGMACState *gmac = NPCM_GMAC(dev);
- 
--    npcm_gmac_soft_reset(s);
--    memcpy(s->phy_regs[0], phy_reg_init, sizeof(phy_reg_init));
-+    npcm_gmac_soft_reset(gmac);
-+    memcpy(gmac->phy_regs[0], phy_reg_init, sizeof(phy_reg_init));
- 
--    trace_npcm_gmac_reset(DEVICE(s)->canonical_path, s->phy_regs[0][MII_BMSR]);
-+    trace_npcm_gmac_reset(DEVICE(gmac)->canonical_path,
-+                          gmac->phy_regs[0][MII_BMSR]);
- }
- 
- static NetClientInfo net_npcm_gmac_info = {
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 1dbb5d2d64..2843f1eaf8 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -472,6 +472,15 @@ npcm_gmac_reg_write(const char *name, uint64_t offset, uint32_t value) "%s: offs
- npcm_gmac_mdio_access(const char *name, uint8_t is_write, uint8_t pa, uint8_t gr, uint16_t val) "%s: is_write: %" PRIu8 " pa: %" PRIu8 " gr: %" PRIu8 " val: 0x%04" PRIx16
- npcm_gmac_reset(const char *name, uint16_t value) "%s: phy_regs[0][1]: 0x%04" PRIx16
- npcm_gmac_set_link(bool active) "Set link: active=%u"
-+npcm_gmac_update_irq(const char *name, uint32_t status, uint32_t intr_en, int level) "%s: Status Reg: 0x%04" PRIX32 " Interrupt Enable Reg: 0x%04" PRIX32 " IRQ Set: %d"
-+npcm_gmac_packet_desc_read(const char* name, uint32_t desc_addr) "%s: attempting to read descriptor @0x%04" PRIX32
-+npcm_gmac_packet_receive(const char* name, uint32_t len) "%s: RX packet length: 0x%04" PRIX32
-+npcm_gmac_packet_receiving_buffer(const char* name, uint32_t buf_len, uint32_t rx_buf_addr) "%s: Receiving into Buffer size: 0x%04" PRIX32 " at address 0x%04" PRIX32
-+npcm_gmac_packet_received(const char* name, uint32_t len) "%s: Reception finished, packet left: 0x%04" PRIX32
-+npcm_gmac_packet_transmit(const char* name, uint16_t len) "%s: TX transmission start, packed length 0x%04" PRIX16
-+npcm_gmac_packet_sent(const char* name, uint16_t len) "%s: TX packet sent!, length: 0x%04" PRIX16
-+npcm_gmac_debug_desc_data(const char* name, void* addr, uint32_t des0, uint32_t des1, uint32_t des2, uint32_t des3)"%s: Address: %p Descriptor 0: 0x%04" PRIX32 " Descriptor 1: 0x%04" PRIX32 "Descriptor 2: 0x%04" PRIX32 " Descriptor 3: 0x%04" PRIX32
-+npcm_gmac_packet_tx_desc_data(const char* name, uint32_t tdes0, uint32_t tdes1) "%s: Tdes0: 0x%04" PRIX32 " Tdes1: 0x%04" PRIX32
- 
- # npcm_pcs.c
- npcm_pcs_reg_read(const char *name, uint16_t indirect_access_baes, uint64_t offset, uint16_t value) "%s: IND: 0x%02" PRIx16 " offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
 diff --git a/include/hw/net/npcm_gmac.h b/include/hw/net/npcm_gmac.h
-index a92a654278..e5729e83ea 100644
+index c97eb6fe6e..d0a37e6988 100644
 --- a/include/hw/net/npcm_gmac.h
 +++ b/include/hw/net/npcm_gmac.h
-@@ -37,8 +37,6 @@ struct NPCMGMACRxDesc {
- /* RDES2 and RDES3 are buffer address pointers */
- /* Owner: 0 = software, 1 = gmac */
- #define RX_DESC_RDES0_OWNER_MASK BIT(31)
--/* Owner*/
--#define RX_DESC_RDES0_OWNER_SHIFT 31
- /* Destination Address Filter Fail */
- #define RX_DESC_RDES0_DEST_ADDR_FILT_FAIL_MASK BIT(30)
- /* Frame length*/
-diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
-index 77a83c4c58..130a1599a8 100644
---- a/tests/qtest/npcm_gmac-test.c
-+++ b/tests/qtest/npcm_gmac-test.c
-@@ -154,7 +154,7 @@ static void test_init(gconstpointer test_data)
-     CHECK_REG32(NPCM_GMAC_MII_DATA, 0);
-     CHECK_REG32(NPCM_GMAC_FLOW_CTRL, 0);
-     CHECK_REG32(NPCM_GMAC_VLAN_FLAG, 0);
--    CHECK_REG32(NPCM_GMAC_VERSION, 0x00001037);
-+    CHECK_REG32(NPCM_GMAC_VERSION, 0x00001032);
-     CHECK_REG32(NPCM_GMAC_WAKEUP_FILTER, 0);
-     CHECK_REG32(NPCM_GMAC_PMT, 0);
-     CHECK_REG32(NPCM_GMAC_LPI_CTRL, 0);
+@@ -136,7 +136,7 @@ struct NPCMGMACTxDesc {
+ #define TX_DESC_TDES1_INTERR_COMP_MASK BIT(31)
+ /* Last Segment */
+ #define TX_DESC_TDES1_LAST_SEG_MASK BIT(30)
+-/* Last Segment */
++/* First Segment */
+ #define TX_DESC_TDES1_FIRST_SEG_MASK BIT(29)
+ /* Checksum Insertion Control */
+ #define TX_DESC_TDES1_CHKSM_INS_CTRL_MASK(word) extract32(word, 27, 2)
+@@ -176,32 +176,32 @@ OBJECT_DECLARE_SIMPLE_TYPE(NPCMGMACState, NPCM_GMAC)
+ #define NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT 20
+ /* Transmit States */
+ #define NPCM_DMA_STATUS_TX_STOPPED_STATE \
+-    (0b000 << NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT)
++    (0b000)
+ #define NPCM_DMA_STATUS_TX_RUNNING_FETCHING_STATE \
+-    (0b001 << NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT)
++    (0b001)
+ #define NPCM_DMA_STATUS_TX_RUNNING_WAITING_STATE \
+-    (0b010 << NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT)
++    (0b010)
+ #define NPCM_DMA_STATUS_TX_RUNNING_READ_STATE \
+-    (0b011 << NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT)
++    (0b011)
+ #define NPCM_DMA_STATUS_TX_SUSPENDED_STATE \
+-    (0b110 << NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT)
++    (0b110)
+ #define NPCM_DMA_STATUS_TX_RUNNING_CLOSING_STATE \
+-    (0b111 << NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT)
++    (0b111)
+ /* Transmit Process State */
+ #define NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT 17
+ /* Receive States */
+ #define NPCM_DMA_STATUS_RX_STOPPED_STATE \
+-    (0b000 << NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT)
++    (0b000)
+ #define NPCM_DMA_STATUS_RX_RUNNING_FETCHING_STATE \
+-    (0b001 << NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT)
++    (0b001)
+ #define NPCM_DMA_STATUS_RX_RUNNING_WAITING_STATE \
+-    (0b011 << NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT)
++    (0b011)
+ #define NPCM_DMA_STATUS_RX_SUSPENDED_STATE \
+-    (0b100 << NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT)
++    (0b100)
+ #define NPCM_DMA_STATUS_RX_RUNNING_CLOSING_STATE \
+-    (0b101 << NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT)
++    (0b101)
+ #define NPCM_DMA_STATUS_RX_RUNNING_TRANSFERRING_STATE \
+-    (0b111 << NPCM_DMA_STATUS_RX_PROCESS_STATE_SHIFT)
++    (0b111)
+ 
+ 
+ /* Early Receive Interrupt */
+@@ -302,6 +302,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(NPCMGMACState, NPCM_GMAC)
+ #define NPCM_DMA_CONTROL_FLUSH_MASK BIT(24)
+ /* Start/stop Transmit */
+ #define NPCM_DMA_CONTROL_START_STOP_TX BIT(13)
++/* Start/stop Receive */
++#define NPCM_DMA_CONTROL_START_STOP_RX BIT(1)
+ /* Next receive descriptor start address */
+ #define NPCM_DMA_HOST_RX_DESC_MASK(word) ((uint32_t) (word) & ~3u)
+ /* Next transmit descriptor start address */
 -- 
 2.42.0.820.g83a721a137-goog
 

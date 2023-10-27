@@ -1,312 +1,197 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp173486ejc;
-        Fri, 27 Oct 2023 05:56:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEiLdyEg83m4y2to7fiSxorBMXU+ehm7X9cfh1fuEkapztqGlcxesuJ9hSBxO7fFOn6fNKn
-X-Received: by 2002:a05:620a:450e:b0:773:aa77:91d5 with SMTP id t14-20020a05620a450e00b00773aa7791d5mr5993048qkp.33.1698411419339;
-        Fri, 27 Oct 2023 05:56:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698411419; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp179171ejc;
+        Fri, 27 Oct 2023 06:04:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG0sclpZrMQhH5X7hlEqzyb7upIwhOzjN+FyPH0ZmA/jHpHnqtpK1CMGGTf9KR6uIi//0dH
+X-Received: by 2002:a05:6808:2395:b0:3ae:5c36:99b2 with SMTP id bp21-20020a056808239500b003ae5c3699b2mr2989379oib.55.1698411840357;
+        Fri, 27 Oct 2023 06:04:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698411840; cv=none;
         d=google.com; s=arc-20160816;
-        b=ns/ksSuvNUMEVteN76rj6YqMlYdE8Ac2EBXlISfMD1tENqL6L9krdFwULUF30qVKWZ
-         ubxYASQsYsULFqPBYypBBlewaIWMLr1SBngfnqw/a3xLEzTVUIV7Z4ZTNcnbROG15NjD
-         DMn0RpAX6FLp8tiWkW71l6+qxk/CtzZfaYGpTuegSE3HszLouRJ0raew6jVmrIAPuj4+
-         7zrRAoOx1trPATVHZsMPobQLon+xtQFWyZywS635stUKctUB6PM75YKrsGFGwoo6x6cf
-         j69uQVM641R/K9htaqhOMFLma23JcWNYqVm1FM6YmqjunhNIjZx+nBAvEFgjLqf97m7M
-         /5/g==
+        b=PffG/xPx/L/PcSlXT0Ty3oPZeloq7qvrNBfiDXuAa1Vsd43+Cq+7VYAHUaxcKw2dNy
+         Zik/lsq0VAwBWJuOu1WkX2X7h6uwfd1lmBBPZKXp8uNb31hIn5p9evRM4wJwGakrFWIQ
+         ceV4Mk+myGepMJCMi74QyK7YNrannuF5yK7F8A0IH6VIqe7ti6WDLrmQIpSaHa9c06SD
+         S5Dj4G3aGdNV62kS5h5e8QQCTt2Jo5EGtvwQtEJgsO3z+9XiTLYdECIqWq/GK5xs0A5K
+         Qb7TBWH7JP1u0nZ3AIbKCBaU1J/62Idm6huOmEwmoZAZ9+Lfq0beVGHt2MZxe5+dwzLm
+         jhSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=oJitzRlD+4efw2WkN5qAXdFYOyGL7volVXYBUrGuI/s=;
-        fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
-        b=fqLzYTeObnHifzC20qKb/6XDRqLZo7Tm59ZSOaoWDGSzDCHbAYEqm1mkFId9j7XNfN
-         sHB8wHg0xI4v1pyy4yNwJ4ZEvbj3DG1S9/IkQqG2p7elHgMJvadbPuFlhBBvWd8GvmJF
-         7eNxNDLe8TfRu8jZTEdc3zKk9pQkhGEgRWeXFuJPkj0QJbPAOoas9uh71axqGjzhSolm
-         F+0V2qRAOnk2spHj1LZHGQ5k1u/XfOTsnJws1au+FAwfQisTZZ0nbR88XPEv04gH8I9f
-         97Nx/Q/sHIWb7nbloqhCyoDBqlvNQo1Oc7giEbM0V0hhA9HNIevOusXppIL5mmIgAwoj
-         VqXw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=vV0oo815QhzL1gOOOissasTqRzmW7vZ7I0CYYBg4Y8E=;
+        fh=SvHDuYAzdQV5U08zdZH97tLIUUiEaLY00f4mdxmyTQw=;
+        b=qLWetayJRpCCM14/SfqzJIzWlLJbbMh7WuMt5g+rR5s1xr0WQSmGyVUk2cc/zL3WKT
+         g3gfmCGAi0Bs+9aC6bp4lE4xhyaTuu4vMlrI2jrI9BleEfhuXRIik0soq4QAHexkYEot
+         rV0ddN0FWeZhxm2OSEld6K/xwCCZWRvnXptF26HAXwuXVbol1ROJ2wXaIFt/ZXKvIQh7
+         grlGl0ySsoxC9pf1CyOg7KyncUJruENp+SdGeGTe8yM2gIuK7N9nGObOEnN9IC+ran57
+         rFqtwB6OfIyk45b+seSXgkRUk21MTrWdNNnwxhhLwQd7JTYt/dD46xGU8idarF9RlWYj
+         Wf1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Be69PWIS;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id x2-20020ae9e642000000b007770bfd4044si642951qkl.459.2023.10.27.05.56.59
+       dkim=pass header.i=@linaro.org header.s=google header.b=QreBGJBY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n189-20020a2540c6000000b00d9cb899c106si2267360yba.649.2023.10.27.06.04.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Oct 2023 05:56:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 27 Oct 2023 06:04:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Be69PWIS;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1698411418;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oJitzRlD+4efw2WkN5qAXdFYOyGL7volVXYBUrGuI/s=;
-	b=Be69PWISP09C1OMzgHRdNNhlpUzsVWf3DKjeekzSRA2A4NtN4E8bj/pRdq+Ug2BQnqrzak
-	huYSMFV+QHV1ElpU4WkhM58Y3eyGttYJoq6vyZ5ebqLcw0vgXrkRwnjOloZZ1xZnWP50PB
-	9XlMkW3FiHFgQwg6MhB9xg5SrMIL1VU=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-426-XMPrLKhSPIOajZhkJZWHLw-1; Fri, 27 Oct 2023 08:56:57 -0400
-X-MC-Unique: XMPrLKhSPIOajZhkJZWHLw-1
-Received: by mail-ej1-f70.google.com with SMTP id a640c23a62f3a-9c15543088aso235411566b.1
-        for <alex.bennee@linaro.org>; Fri, 27 Oct 2023 05:56:57 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=QreBGJBY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qwMUr-0006mf-De; Fri, 27 Oct 2023 09:03:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qwMUo-0006mE-H9
+ for qemu-arm@nongnu.org; Fri, 27 Oct 2023 09:03:27 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qwMUm-00050Y-PV
+ for qemu-arm@nongnu.org; Fri, 27 Oct 2023 09:03:26 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-53e855d7dacso3211406a12.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Oct 2023 06:03:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698411803; x=1699016603; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vV0oo815QhzL1gOOOissasTqRzmW7vZ7I0CYYBg4Y8E=;
+ b=QreBGJBYjelsNoqa2CD4IfN3djc9ZURIMxv7w712woxn/K3xGxjekAUmki2J38IoDh
+ MnWOGASSjA8XTVgrMaupx//qXLH9AOgVovxJrIzinQ4SFPm1DeLGfI6KOHxTFS68J80C
+ /0nB4T81MNmJ4s0Ktahcw3oHglEJhE7QiA2XYGJ5Dy+MMLxp2PimweHm1/800nuaq8p+
+ qqz+wA/j2dD5tZqnrlniLqL7LScq+fQsxk/MuL7kC+MUpCAL41BM/1N1vWCNXLOH8IxS
+ U7hmqbJFA5sNQmGuGISOvQyfcGhTZkcb3eo9Te9gIp7IfQJmmSkTIpYRMCdmKPkxBo2s
+ q5vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698411416; x=1699016216;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oJitzRlD+4efw2WkN5qAXdFYOyGL7volVXYBUrGuI/s=;
-        b=VNifZ00t6hFuosZwWd2gfAAQSOTH2i3ycF0QIApTNGzkv4ncFERjcT2M/hdKy8tvJG
-         jVTriNy1W9CydxBP1D/NgPx/qJXHZ7xNlkU1gUZrY0GeUuIncC+2cX1cGSVhUatQPRVX
-         9vZmBgPdTY4scr+Nj/4nRqXuT+zVSfG2Dzwg0i6MaEWvX8Fxi7Oxkmsk1waR5uVxsWhD
-         vKB9x+PlyEu8Emh6/9XXOHAo5Yf48H/7SBD6yhSAoupPYGp085DxTVNY3VCbOPaKxAAf
-         0xJOS1SKCREji1FY/9zrRrCnTCG6r7pr/xEqqHOgaYDOYuVqNFShusMaw7zXt/TB1fsA
-         epZQ==
-X-Gm-Message-State: AOJu0YxScjku9rmCgphyrvmh/yqqmU0vcOA7A+iAj4fALpHSEvUrBWZD
-	tI2pVFNVtxvxt4WXpuTnQY9cHMa4wR3ezIdFklx7Hz+2EdOgu46++tiqjEtizXPNukD4a2WKhpC
-	j4uoX9EbDHvIWc2nr
-X-Received: by 2002:a17:907:7253:b0:9a9:f042:deb9 with SMTP id ds19-20020a170907725300b009a9f042deb9mr2785371ejc.19.1698411416565;
-        Fri, 27 Oct 2023 05:56:56 -0700 (PDT)
-X-Received: by 2002:a17:907:7253:b0:9a9:f042:deb9 with SMTP id ds19-20020a170907725300b009a9f042deb9mr2785327ejc.19.1698411416179;
-        Fri, 27 Oct 2023 05:56:56 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id k13-20020a17090666cd00b009b65a834dd6sm1168699ejp.215.2023.10.27.05.56.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Oct 2023 05:56:55 -0700 (PDT)
-Date: Fri, 27 Oct 2023 14:56:52 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
- <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
- <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
- <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
- <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
- <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
- <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
- <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
- <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
- <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
- <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
- <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
- <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
- <lixianglai@loongson.cn>, <linuxarm@huawei.com>
-Subject: Re: [PATCH V6 1/9] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Message-ID: <20231027145652.44cc845c@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231013105129.25648-2-salil.mehta@huawei.com>
-References: <20231013105129.25648-1-salil.mehta@huawei.com>
-	<20231013105129.25648-2-salil.mehta@huawei.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1698411803; x=1699016603;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vV0oo815QhzL1gOOOissasTqRzmW7vZ7I0CYYBg4Y8E=;
+ b=D1MMXcWrp4t1ybYAuGyTrDddKxQ68jaV1U/EVupCWbNcEWgBwp48Lj6ulC8XJOvd84
+ L3Qfu41KOFUnOvUge27L56RIONcOv3kcPzaQH6GoWOUMYiG766MHaZvmSYO5r9PjlWk1
+ UGoo7OkRZv/0cHVJAWEYcqkeE1X82GX+HEs9hh4HaE4uWgVwslW5bnqjulVjevmLk+km
+ 7dc7iY7rJ/yo4R9oI4cBeaZoZ1vdDRSz//f/VfYAocB9Y1FBS/umzgY6IES6P60zbQHU
+ Q6e5xPVHt5RF6DAS2FZXJJBG2kZt4JCFrodn6l8jOJLhc1tvaRbYqru/0DSQcis78pBC
+ 7UxQ==
+X-Gm-Message-State: AOJu0YxeWhbSl54BMwwwBtv0OqT1nUnhY11Yj31vpOfGJuhhOllnWZDI
+ Zvw7J3kDAUCvgMFfFhIMm/SHDXaIT4tdFa/p/XiSYQ==
+X-Received: by 2002:a05:6402:74c:b0:53f:b964:ddb1 with SMTP id
+ p12-20020a056402074c00b0053fb964ddb1mr2365208edy.37.1698411802669; Fri, 27
+ Oct 2023 06:03:22 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: beNInolYdLW9
+References: <20231017193217.1512868-1-tong.ho@amd.com>
+ <20231017193217.1512868-4-tong.ho@amd.com>
+In-Reply-To: <20231017193217.1512868-4-tong.ho@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 27 Oct 2023 14:03:10 +0100
+Message-ID: <CAFEAcA_yCEtDkW6R43LGNjWGH323HuSWPFibgaRSZ=+DqfrZ_g@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx Versal
+ TRNG device
+To: Tong Ho <tong.ho@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me, 
+ edgar.iglesias@gmail.com, richard.henderson@linaro.org, 
+ frasse.iglesias@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: l6FisQ7rDOaC
 
-On Fri, 13 Oct 2023 11:51:21 +0100
-Salil Mehta <salil.mehta@huawei.com> wrote:
-
-> KVM vCPU creation is done once during the initialization of the VM when Qemu
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> thread is spawned. This is common to all the architectures.
-
-is it really true fox x86?
-
-> 
-> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-> corresponding KVM vCPU object in the Host KVM is not destroyed and its
-                                                                ^
-since KVM doesn't support vCPU removal
-
-> representative KVM vCPU object/context in Qemu is parked.
-> 
-> Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
-'reused' part doesn't happen within this series. So a reason
-why patch exists is not clear/no one can deduce the reason
-without the actual user here.
-
-Suggest to move it to a series that actually will use this patch.
-
-
-> Update new/old APIs with trace events instead of DTRACE.
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+On Tue, 17 Oct 2023 at 20:32, Tong Ho <tong.ho@amd.com> wrote:
+>
+> Signed-off-by: Tong Ho <tong.ho@amd.com>
 > ---
->  accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
->  accel/kvm/trace-events |  4 +++
->  include/sysemu/kvm.h   | 16 +++++++++++
->  3 files changed, 69 insertions(+), 15 deletions(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 72e1d1141c..bfa7816aaa 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
->  #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
->  
->  static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
-> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
->  
->  static inline void kvm_resample_fd_remove(int gsi)
->  {
-> @@ -320,14 +321,53 @@ err:
->      return ret;
->  }
->  
-> +void kvm_park_vcpu(CPUState *cpu)
+>  tests/qtest/meson.build             |   2 +-
+>  tests/qtest/xlnx-versal-trng-test.c | 486 ++++++++++++++++++++++++++++
+>  2 files changed, 487 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/qtest/xlnx-versal-trng-test.c
+
+
+> +static void trng_wait(uint32_t wait_mask, bool on, const char *act)
 > +{
-> +    struct KVMParkedVcpu *vcpu;
+> +    time_t tmo = time(NULL) + 2; /* at most 2 seconds */
+
+Don't put timeouts this short into tests, please; ideally,
+avoid them entirely. Sometimes the CI machines are heavily
+loaded and the test might not be able to complete in a
+short time like this. If you must have a timeout, it should
+be at least a minute. (And see below on whether we need one.)
+
+> +    uint32_t event_mask = 0;
+> +    uint32_t clear_mask = 0;
 > +
-> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> +
-> +    vcpu = g_malloc0(sizeof(*vcpu));
-> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    vcpu->kvm_fd = cpu->kvm_fd;
-> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +}
-> +
-> +int kvm_create_vcpu(CPUState *cpu)
-> +{
-> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    KVMState *s = kvm_state;
-> +    int kvm_fd;
-> +
-> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> +
-> +    /* check if the KVM vCPU already exist but is parked */
-> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
-> +    if (kvm_fd < 0) {
-> +        /* vCPU not parked: create a new KVM vCPU */
-> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-> +        if (kvm_fd < 0) {
-> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
-> +            return kvm_fd;
-> +        }
+> +    /*
+> +     * Only selected bits are events in R_TRNG_STATUS, and
+> +     * clear them needs to go through R_INT_CTRL.
+> +     */
+> +    if (wait_mask & TRNG_STATUS_CERTF_MASK) {
+> +        event_mask |= TRNG_STATUS_CERTF_MASK;
+> +        clear_mask |= TRNG_INT_CTRL_CERTF_RST_MASK;
+> +    }
+> +    if (wait_mask & TRNG_STATUS_DTF_MASK) {
+> +        event_mask |= TRNG_STATUS_DTF_MASK;
+> +        clear_mask |= TRNG_INT_CTRL_DTF_RST_MASK;
+> +    }
+> +    if (wait_mask & TRNG_STATUS_DONE_MASK) {
+> +        event_mask |= TRNG_STATUS_DONE_MASK;
+> +        clear_mask |= TRNG_INT_CTRL_DONE_RST_MASK;
 > +    }
 > +
-> +    cpu->kvm_fd = kvm_fd;
-> +    cpu->kvm_state = s;
-> +    cpu->vcpu_dirty = true;
-> +    cpu->dirty_pages = 0;
-> +    cpu->throttle_us_per_full = 0;
+> +    for (;;) {
+> +        bool sta = !!(trng_status() & event_mask);
 > +
-> +    return 0;
+> +        if ((on ^ sta) == 0) {
+> +            break;
+> +        }
+> +
+> +        if (time(NULL) >= tmo) {
+> +            FAILED("%s: Timed out waiting for event 0x%x to be %d%s",
+> +                   act, event_mask, (int)on, trng_info());
+> +        }
+> +
+> +        g_usleep(10000);
+
+Why does this test need to use sleeps and timeouts?
+A qtest test controls the guest 'clock' directly, so
+usually they're completely deterministic. Is there some
+behaviour in the TRNG device which is asynchronous (in
+a way not driven from the QEMU guest clock) that I've missed ?
+
+> +    }
+> +
+> +    /* Remove event */
+> +    trng_bit_set(R_TRNG_INT_CTRL, clear_mask);
+> +
+> +    if (!!(trng_read(R_TRNG_STATUS) & event_mask)) {
+> +        FAILED("%s: Event 0x%0x stuck at 1 after clear: %s",
+> +               act, event_mask, trng_info());
+> +    }
 > +}
-> +
->  static int do_kvm_destroy_vcpu(CPUState *cpu)
->  {
->      KVMState *s = kvm_state;
->      long mmap_size;
-> -    struct KVMParkedVcpu *vcpu = NULL;
->      int ret = 0;
->  
-> -    DPRINTF("kvm_destroy_vcpu\n");
-> +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->  
->      ret = kvm_arch_destroy_vcpu(cpu);
->      if (ret < 0) {
-> @@ -353,10 +393,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
->          }
->      }
->  
-> -    vcpu = g_malloc0(sizeof(*vcpu));
-> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> -    vcpu->kvm_fd = cpu->kvm_fd;
-> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +    kvm_park_vcpu(cpu);
->  err:
->      return ret;
->  }
-> @@ -377,6 +414,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->          if (cpu->vcpu_id == vcpu_id) {
->              int kvm_fd;
->  
-> +            trace_kvm_get_vcpu(vcpu_id);
-> +
->              QLIST_REMOVE(cpu, node);
->              kvm_fd = cpu->kvm_fd;
->              g_free(cpu);
-> @@ -384,7 +423,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->          }
->      }
->  
-> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-> +    return -ENOENT;
->  }
->  
->  int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> @@ -395,19 +434,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
->  
->      trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->  
-> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-> +    ret = kvm_create_vcpu(cpu);
->      if (ret < 0) {
-> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-> +        error_setg_errno(errp, -ret,
-> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
->                           kvm_arch_vcpu_id(cpu));
->          goto err;
->      }
->  
-> -    cpu->kvm_fd = ret;
-> -    cpu->kvm_state = s;
-> -    cpu->vcpu_dirty = true;
-> -    cpu->dirty_pages = 0;
-> -    cpu->throttle_us_per_full = 0;
-> -
->      mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
->      if (mmap_size < 0) {
->          ret = mmap_size;
-> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-> index 399aaeb0ec..cdd0c95c09 100644
-> --- a/accel/kvm/trace-events
-> +++ b/accel/kvm/trace-events
-> @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
->  kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
->  kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
->  kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
-> +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
->  kvm_irqchip_commit_routes(void) ""
->  kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
->  kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index ee9025f8e9..8137e6a44c 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -465,6 +465,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
->  int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
->                                         hwaddr *phys_addr);
->  
-> +/**
-> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-> + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-> + *
-> + * @returns: 0 when success, errno (<0) when failed.
-> + */
-> +int kvm_create_vcpu(CPUState *cpu);
-> +
-> +/**
-> + * kvm_park_vcpu - Park QEMU KVM vCPU context
-> + * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-> + *
-> + * @returns: none
-> + */
-> +void kvm_park_vcpu(CPUState *cpu);
-> +
->  #endif /* NEED_CPU_H */
->  
->  void kvm_cpu_synchronize_state(CPUState *cpu);
+
+thanks
+-- PMM

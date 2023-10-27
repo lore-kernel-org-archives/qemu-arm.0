@@ -1,153 +1,181 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp149349ejc;
-        Fri, 27 Oct 2023 05:17:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGHS+GEPSVTjWAibAQlSNLREq4Kp2Iq9AqpNu0tVI8exZXB6rsCPz19J90witnE21mE8G1q
-X-Received: by 2002:a25:aaca:0:b0:d9b:90d2:aadf with SMTP id t68-20020a25aaca000000b00d9b90d2aadfmr2602751ybi.49.1698409020781;
-        Fri, 27 Oct 2023 05:17:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698409020; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp159344ejc;
+        Fri, 27 Oct 2023 05:32:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHGSBLNKAFE4Eg0sUbJKjpigQUP2oxP7inUkCLnec7d8gMl90bPGFdMRsbt/w7CY+AGkTeK
+X-Received: by 2002:a05:6870:1202:b0:1e9:a5f2:aab3 with SMTP id 2-20020a056870120200b001e9a5f2aab3mr2279424oan.57.1698409966481;
+        Fri, 27 Oct 2023 05:32:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698409966; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVsZWyTgnmr7HgzsrgOVXx3Bzz+uLtbwzfwGJbgwb+39vhnFTo7GVK4YTNQvxfdil+
-         HbOR/lPPOwZE5bjlLMkPscACIHiex+LdwX5ZHvVgIEtrSg3Dn5uAKwOZeTIcIfZD/46k
-         4HBY7FvuKxxK4PisZLt6kIOZulizdnevhPBlv9LEe2IMZ2B9RVCk88l/dfHf5ZKkGe3c
-         OlX0EeWPEW2uzOyIefmuO7biyDQJ4pQEe7Uijo+eenm7owWPWPeZ046fN/1qETJmKI6X
-         F3r2gwtMumAoO0LY/oASbtriGtPB9EGONoJUyulLaSvY6LH/iJGaCoP6lUkFXSND/26b
-         Hyog==
+        b=T+aAger+fXFM0q8BApxuDZOew0eTLY2qVbJPEOaWiRicExdXitziltrfXVTD4BVW0F
+         jyhlnm33Qd162YxOnO8zIUYUNPFjWoGUsCP1hsp5lJGGjVLjzklRSW/kcOkob8Hu6LD5
+         lTZPhzoKTPyuiYulIuodyr0RNp9fH8Zc3xJ4tVseB0kxUFxwH8EJwc5tBDYMKllucgEO
+         f76sCwA9XtJH9X2hddYNTNL7vj9K4YXHr7TqOZ41rezCvMCN5f9VKDz6VWu5KWE1QQFh
+         6xDUpH53Misl1uWcJTDVykNa7oBu4EobHtjciFbxkTpPuDj0YZ2m/EgXvfpT7fTbi2Gw
+         lbYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+niAB94xkwrpIXtX89f78vV3+CT29Hlo7jQqkO4CSGY=;
-        fh=AzswT6i0x5VifN6t6e7cFRAfmFUzzjusx2oAttgKAqk=;
-        b=z1uqDU8nswzwj58rE9/VK/T7Ej8dnc52z3oKBSEyQe8tRHGycZY8lKp9AWpZ29ooKt
-         uBYFI+I8qwm+uLDaiPb7zC9TL0plKZkV0t0oH+jGkxcUz1FrIwyrDPdxfXhvOTBvk+uy
-         ftfsPT/lQVcqRjQiUIwe8xyNHeAfThggbmif7W+vCqH+GGho68UpyQlrMjs0C7DyKnel
-         S4KNrK9Ab8FnnX5b7n/lBZnXcgj7MfjWqRlQzkQJlrGfIW9Z2aAy6JCx9LMqEqTDEe6Z
-         05YXcAeU4U0zoy/JqnkCkTIJDJoVYtf4s5XjEIidHM6xQsdGEyI0rhQXGdCZ7J8bN60Q
-         +UiQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:subject:cc:to:from:message-id:date;
+        bh=LX40q+acxXgYLj9mGy7oJfhNRBxwFExGm+2hTHPmt34=;
+        fh=Yayz+XiKk88dJys6SuiG2nTZdd5iIq/RRT2BUIKx1Mg=;
+        b=KaXYen7UQ9EL0MgJzFxHOQTUvYQCMx3lmeHBvcffv/TujxTrlfjpmoBATs2b87CCOG
+         ih+kdm8BOlLLAB6kFUywB+u3ibb2k2tGhkmu+14lvGVnXF0bLp4kUFNwejYwu1VIb/uY
+         VTbrnGnHITgXTkDEhYeWEU3qOjhXxtnWOlvAfV170RrGrO+ew2sQzaFVFsG+ue6M5OG+
+         MNm+1F/f7V0HCZJoivi4/qJej4O2dCRwMaxQBkacoXCUF5ROCdJ4MTRpQmYUw/y/7Gy8
+         n86v9BJ/CY4cN6osbod97RRQ5lPXHVLMhfs81FggkikefZAd0ikX2vwDz+aL44zBV62F
+         au/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LT7FDkJ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9-20020a255009000000b00da0b6904d15si2505836ybb.284.2023.10.27.05.17.00
+        by mx.google.com with ESMTPS id n12-20020ac85a0c000000b0041962bf168esi662444qta.418.2023.10.27.05.32.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Oct 2023 05:17:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 Oct 2023 05:32:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LT7FDkJ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qwLlB-0004aO-E4; Fri, 27 Oct 2023 08:16:17 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qwM0e-0001qI-QY; Fri, 27 Oct 2023 08:32:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qwLl9-0004a4-QB
- for qemu-arm@nongnu.org; Fri, 27 Oct 2023 08:16:16 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <ysato@users.sourceforge.jp>)
+ id 1qwM0W-0001jh-BH
+ for qemu-devel@nongnu.org; Fri, 27 Oct 2023 08:32:12 -0400
+Received: from hsmtpd-def.xspmail.jp ([202.238.198.238])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qwLl8-0006qY-22
- for qemu-arm@nongnu.org; Fri, 27 Oct 2023 08:16:15 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-53f9af41444so3399173a12.1
- for <qemu-arm@nongnu.org>; Fri, 27 Oct 2023 05:16:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698408972; x=1699013772; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+niAB94xkwrpIXtX89f78vV3+CT29Hlo7jQqkO4CSGY=;
- b=LT7FDkJ1DeRGe9/hxpgpeclFa3PktcPDd6e6ogf+LMzsxRVoZ+3ZRCPJlwcxeeN2IM
- KqW6IezXxY6aSc7V0p4Yl4wYQqhx9MYXEBNtslh02sbiySChXBtzeGN1z4JGzAAHYtbw
- xpcmvcs4p5ZgSQDbDApRVt6Zg7OGUSVSoKYFYip3RGNxMoq9STLeH9A3vbIdPAuZhwg2
- C0k56aVN2iauBw3vWwaHl89prg+KQqZ2yQ7Drar3DeLR/QdGQkRraofUe28E+EQ4MJ+R
- p3RG1jiPUoCuix4du1cfcxO+QJZ70qFt9hpvM03pwA2XVrYElAVqotD4Q6jilMvQ4yv3
- IVXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698408972; x=1699013772;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+niAB94xkwrpIXtX89f78vV3+CT29Hlo7jQqkO4CSGY=;
- b=bhtk5UTtim7eydEE1OvdNe+e+qOBnq0BE4S6OpSGfhYn6J9irQ9gb6k1YR+J5efvUE
- VMtK0xOZV+49wyiS5+wsVPBFNi+qBamow4ructwDSLKrFWR7jww5cg7d3dWv1fI8scJa
- ToHOcJRUk7w6JOzixjjOlXjfkw2jLIn0jeFBDtwvjtW34FY6qbVUkgAVRHz0koE0rKH3
- Qw1GvLwWHp+jUYL2UeIWC8IOaqMq2IaJDKTGCYIhVXNuLt7MnUr9edLyaZNlYXmF0o7W
- JVl4oJdc0W/sIo19v7Gusf7r7Lo6tPbAc48X9WrX4xLHua7szdPvMSI9xxcOzq4KBPOK
- vAvA==
-X-Gm-Message-State: AOJu0YwSRzvyZ5sRN3y6whdj0ezQViqZLapskXlVclen8g6HhtvWzIwa
- zL1Er+wDevLQ3T5Yr7RvSzj8UzgehJQC/SPq0RK8Qw==
-X-Received: by 2002:a05:6402:8c1:b0:53e:afc0:ea43 with SMTP id
- d1-20020a05640208c100b0053eafc0ea43mr2338947edz.4.1698408972054; Fri, 27 Oct
- 2023 05:16:12 -0700 (PDT)
-MIME-Version: 1.0
-References: <20231017194422.4124691-1-luc.michel@amd.com>
-In-Reply-To: <20231017194422.4124691-1-luc.michel@amd.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Oct 2023 13:16:01 +0100
-Message-ID: <CAFEAcA94NgfP52=y0dxE+ao_--DsLU+2bBXtjKvK28q-biabNQ@mail.gmail.com>
-Subject: Re: [PATCH 00/11] Various updates for the Cadence GEM model
-To: Luc Michel <luc.michel@amd.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Frederic Konrad <frederic.konrad@amd.com>, 
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <ysato@users.sourceforge.jp>)
+ id 1qwM0O-0003l9-1m
+ for qemu-devel@nongnu.org; Fri, 27 Oct 2023 08:32:06 -0400
+X-Country-Code: JP
+Received: from sakura.ysato.name (ik1-413-38519.vs.sakura.ne.jp
+ [153.127.30.23])
+ by hsmtpd-out-0.asahinet.cluster.xspmail.jp (Halon) with ESMTPA
+ id cf9071da-cfc2-430a-aae8-d12cacb28888;
+ Fri, 27 Oct 2023 21:31:54 +0900 (JST)
+Received: from SIOS1075.ysato.ml (ZM005235.ppp.dion.ne.jp [222.8.5.235])
+ by sakura.ysato.name (Postfix) with ESMTPSA id 755761C0037;
+ Fri, 27 Oct 2023 21:31:45 +0900 (JST)
+Date: Fri, 27 Oct 2023 21:31:44 +0900
+Message-ID: <87sf5wi6vj.wl-ysato@users.sourceforge.jp>
+From: Yoshinori Sato <ysato@users.sourceforge.jp>
+To: David Woodhouse <dwmw2@infradead.org>
+Cc: qemu-devel@nongnu.org,	Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,	Peter Maydell
+ <peter.maydell@linaro.org>,	Strahinja Jankovic
+ <strahinja.p.jankovic@gmail.com>,	Niek Linnenbank
+ <nieklinnenbank@gmail.com>,	=?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>,	Andrew Jeffery <andrew@aj.id.au>,	Joel Stanley
+ <joel@jms.id.au>,	Igor Mitsyanko <i.mitsyanko@gmail.com>,	Jean-Christophe
+ Dubois <jcd@tribudubois.net>,	Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,	Rob Herring
+ <robh@kernel.org>,	Subbaraya Sundeep <sundeep.lkml@gmail.com>,	Jan Kiszka
+ <jan.kiszka@web.de>,	Tyrone Ting <kfting@nuvoton.com>,	Hao Wu
+ <wuhaotsh@google.com>,	Radoslaw Biernacki <rad@semihalf.com>,	Leif Lindholm
+ <quic_llindhol@quicinc.com>,	Marcin Juszkiewicz
+ <marcin.juszkiewicz@linaro.org>,	"Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,	Alistair Francis <alistair@alistair23.me>,
+ Helge Deller <deller@gmx.de>,	Paolo Bonzini <pbonzini@redhat.com>,	Eduardo
+ Habkost <eduardo@habkost.net>,	"Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,	Song Gao
+ <gaosong@loongson.cn>,	Thomas Huth <huth@tuxfamily.org>,	Laurent Vivier
+ <laurent@vivier.eu>,	Huacai Chen <chenhuacai@kernel.org>,	Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,	=?ISO-8859-1?Q?Herv=E9?= Poussineau
+ <hpoussin@reactos.org>,	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,	Jason Wang <jasowang@redhat.com>,
+ Jia Liu <proljc@gmail.com>,	Stafford Horne <shorne@gmail.com>,	Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,	Nicholas Piggin
+ <npiggin@gmail.com>,	Daniel Henrique Barboza <danielhb413@gmail.com>,	David
+ Gibson <david@gibson.dropbear.id.au>,	Harsh Prateek Bora
+ <harshpb@linux.ibm.com>,	Bin Meng <bin.meng@windriver.com>,	Palmer Dabbelt
+ <palmer@dabbelt.com>,	Weiwei Li <liweiwei@iscas.ac.cn>,	Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,	David Hildenbrand <david@redhat.com>,	Ilya
+ Leoshkevich <iii@linux.ibm.com>,	Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,	Eric Farman
+ <farman@linux.ibm.com>,	Magnus Damm <magnus.damm@gmail.com>,	Artyom
+ Tarasenko <atar4qemu@gmail.com>,	Stefano Stabellini
+ <sstabellini@kernel.org>,	Anthony Perard <anthony.perard@citrix.com>,	Paul
+ Durrant <paul@xen.org>,	Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org,	qemu-ppc@nongnu.org,	qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org,	xen-devel@lists.xenproject.org
+Subject: Re: [PATCH 18/45] hw/sh4/r2d: use pci_init_nic_devices()
+In-Reply-To: <20231022155200.436340-19-dwmw2@infradead.org>
+References: <20231022155200.436340-1-dwmw2@infradead.org>
+ <20231022155200.436340-19-dwmw2@infradead.org>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
+ Emacs/28.2 (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: softfail client-ip=202.238.198.238;
+ envelope-from=ysato@users.sourceforge.jp; helo=hsmtpd-def.xspmail.jp
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Sloqdhzwdc4S
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6Jfrqop9f+b7
 
-On Tue, 17 Oct 2023 at 20:44, Luc Michel <luc.michel@amd.com> wrote:
->
-> Hi,
->
-> This series brings small changes to the Cadence GEM Ethernet model.
-> There is (almost) no behaviour change.
->
-> Patches 1 to 9 replace handcrafted defines with the use of REG32 and
-> FIELDS macros for register and fields declarations.
->
-> Patch 10 fixes PHY accesses so that they are done only on a write to the
-> PHYMNTNC register (as the real hardware does).
->
-> Patch 11 fixes a potential bug on hosts where unsigned would not be 32
-> bits.
+On Mon, 23 Oct 2023 00:51:33 +0900,
+David Woodhouse wrote:
+> 
+> From: David Woodhouse <dwmw@amazon.co.uk>
+> 
+> Previously, the first PCI NIC would be assigned to slot 2 even if the
+> user override the model and made it something other than an rtl8139
+> which is the default. Everything else would be dynamically assigned.
+> 
+> Now, the first rtl8139 gets slot 2 and everything else is dynamic.
+> 
+> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
 
-Applied to target-arm.next, thanks.
+> ---
+>  hw/sh4/r2d.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+> index 4944994e9c..e9f316a6ce 100644
+> --- a/hw/sh4/r2d.c
+> +++ b/hw/sh4/r2d.c
+> @@ -240,7 +240,6 @@ static void r2d_init(MachineState *machine)
+>      MemoryRegion *sdram = g_new(MemoryRegion, 1);
+>      qemu_irq *irq;
+>      DriveInfo *dinfo;
+> -    int i;
+>      DeviceState *dev;
+>      SysBusDevice *busdev;
+>      MemoryRegion *address_space_mem = get_system_memory();
+> @@ -309,9 +308,8 @@ static void r2d_init(MachineState *machine)
+>                            0x555, 0x2aa, 0);
+>  
+>      /* NIC: rtl8139 on-board, and 2 slots. */
+> -    for (i = 0; i < nb_nics; i++)
+> -        pci_nic_init_nofail(&nd_table[i], pci_bus,
+> -                            mc->default_nic, i == 0 ? "2" : NULL);
+> +    pci_init_nic_in_slot(pci_bus, mc->default_nic, NULL, "2");
+> +    pci_init_nic_devices(pci_bus, mc->default_nic);
+>  
+>      /* USB keyboard */
+>      usb_create_simple(usb_bus_find(-1), "usb-kbd");
+> -- 
+> 2.40.1
+> 
 
-Note to Sai for the future: in Reviewed-by: tags, as with
-Signed-off-by: tags, the expected form is "Full Name <email@example.com>",
-not just a bare email address. (I would actively ask for a change
-on a signed-off-by line with an email alone, but for Reviewed-by
-it's less significant.)
-
-thanks
--- PMM
+-- 
+Yosinori Sato

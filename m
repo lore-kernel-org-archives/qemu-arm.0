@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y15-20020a05600c2b0f00b004083996dad8sm7108076wme.18.2023.10.28.03.33.15
+        by smtp.gmail.com with ESMTPSA id iv8-20020a05600c548800b003fefaf299b6sm3769631wmb.38.2023.10.28.03.33.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Sat, 28 Oct 2023 03:33:18 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 638545F798;
+	by draig.lan (Postfix) with ESMTP id 799495F7A4;
 	Sat, 28 Oct 2023 11:33:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,90 +28,50 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Brad Smith <brad@comstyle.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Thomas Huth <thuth@redhat.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH 14/17] gdbstub: Check if gdb_regs is NULL
-Date: Sat, 28 Oct 2023 11:33:08 +0100
-Message-Id: <20231028103311.347104-15-alex.bennee@linaro.org>
+	Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Subject: [PATCH 15/17] semihosting: fix memleak at semihosting_arg_fallback
+Date: Sat, 28 Oct 2023 11:33:09 +0100
+Message-Id: <20231028103311.347104-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
 References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SJhRQgCqMqau
+X-TUID: z8S/RjtVG+zP
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
 
-cpu->gdb_regs may be NULL if no coprocessor is registered.
+We duplicate "cmd" as strtok may modify its argument, but we forgot
+to free it later. Furthermore, add_semihosting_arg doesn't take
+responsibility for this memory either (it strdup's the argument).
 
-Fixes: 73c392c26b ("gdbstub: Replace gdb_regs with an array")
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20231019101030.128431-2-akihiko.odaki@daynix.com>
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <03d81c56bfc3d08224e4106efca5949d8894cfa5.1697801632.git.quic_mathbern@quicinc.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Fabiano Rosas <farosas@suse.de>
 ---
- gdbstub/gdbstub.c | 34 ++++++++++++++++++++--------------
- 1 file changed, 20 insertions(+), 14 deletions(-)
+ semihosting/config.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 1e96a71c0c..29540a0284 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -385,12 +385,14 @@ static const char *get_feature_xml(const char *p, const char **newp,
-                 xml,
-                 g_markup_printf_escaped("<xi:include href=\"%s\"/>",
-                                         cc->gdb_core_xml_file));
--            for (guint i = 0; i < cpu->gdb_regs->len; i++) {
--                r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--                g_ptr_array_add(
--                    xml,
--                    g_markup_printf_escaped("<xi:include href=\"%s\"/>",
--                                            r->xml));
-+            if (cpu->gdb_regs) {
-+                for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+                    r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+                    g_ptr_array_add(
-+                        xml,
-+                        g_markup_printf_escaped("<xi:include href=\"%s\"/>",
-+                                                r->xml));
-+                }
-             }
-             g_ptr_array_add(xml, g_strdup("</target>"));
-             g_ptr_array_add(xml, NULL);
-@@ -430,10 +432,12 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-         return cc->gdb_read_register(cpu, buf, reg);
-     }
+diff --git a/semihosting/config.c b/semihosting/config.c
+index 249a377ae8..56283b5c3c 100644
+--- a/semihosting/config.c
++++ b/semihosting/config.c
+@@ -113,12 +113,13 @@ static int add_semihosting_arg(void *opaque,
+ void semihosting_arg_fallback(const char *file, const char *cmd)
+ {
+     char *cmd_token;
++    g_autofree char *cmd_dup = g_strdup(cmd);
  
--    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
--        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--        if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
--            return r->get_reg(env, buf, reg - r->base_reg);
-+    if (cpu->gdb_regs) {
-+        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+            r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+            if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
-+                return r->get_reg(env, buf, reg - r->base_reg);
-+            }
-         }
-     }
-     return 0;
-@@ -449,10 +453,12 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
-         return cc->gdb_write_register(cpu, mem_buf, reg);
-     }
+     /* argv[0] */
+     add_semihosting_arg(&semihosting, "arg", file, NULL);
  
--    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
--        r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--        if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
--            return r->set_reg(env, mem_buf, reg - r->base_reg);
-+    if (cpu->gdb_regs) {
-+        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+            r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+            if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
-+                return r->set_reg(env, mem_buf, reg - r->base_reg);
-+            }
-         }
-     }
-     return 0;
+     /* split -append and initialize argv[1..n] */
+-    cmd_token = strtok(g_strdup(cmd), " ");
++    cmd_token = strtok(cmd_dup, " ");
+     while (cmd_token) {
+         add_semihosting_arg(&semihosting, "arg", cmd_token, NULL);
+         cmd_token = strtok(NULL, " ");
 -- 
 2.39.2

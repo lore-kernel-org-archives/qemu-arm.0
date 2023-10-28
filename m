@@ -1,597 +1,218 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1123559ejc;
-        Sat, 28 Oct 2023 19:22:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGVDwT3MP5Phrr7N8VLVNs/dK4e+kKiGgx5WpL4xND18t+g0IQ/45/WbV0zq8PA5EZIwjYn
-X-Received: by 2002:a05:622a:1113:b0:41e:20f4:c08c with SMTP id e19-20020a05622a111300b0041e20f4c08cmr7998468qty.36.1698546128842;
-        Sat, 28 Oct 2023 19:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698546128; cv=none;
-        d=google.com; s=arc-20160816;
-        b=yMgsXZ/Dqe1nEGZZzr61dkBCaPqrSdtING/UqNQhfRwOOQqhje5yTpNKJ5fD6H/ROw
-         4I5FSzy2122sg8C5Hi667G3FeDJ//yBBPRL3p8SP3EXCh5JIyCHn5Af2pSp02eUKHnrG
-         CdcepOKyEkXRsY/aivkNe3NQGHCeN0Eyo7qDRTWqepKE8nEBeH+VXv5CwSHhzEntmj7N
-         iShUmP5Uz5SUVXK/jUQyNRsEXpO6Fd3BNNEJr+p/M1ZbuZr9lAhL9evKraN2AawlM6AK
-         WnMw8x7LMOc2Dp4fkZgIpKQOzdi8QYY8ctQbYpA1u1M0VVS6eB/w1mGRu3hjF2+xAyiV
-         4sLg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version;
-        bh=qqDFRNlxc7GMm/TwGsl9F9EDBj/7TPdJacoztk2/tgQ=;
-        fh=sEAruGhToWbYDn7WGz+1DBWJIk+MN2JQV8bcHcnyNww=;
-        b=j6sNyt7RDLlXuKFkWH4QaPj/Rt7nehXUuiluui5EPj7Axx+cpYS3LbwB65mDhOCFgB
-         PTHphMaV0bfA7nbPaRGwI3+Ti1WA11QNBoyuX/GkBUIjY8mHlvzdvXcXthr31CmL8qnr
-         JGd3W9HWA9xylR+B99/Ee/0mAfDRN8OglfeGypyJ5QrfJRvePT+lXVQ2vUjWK0YOKsyi
-         qGNoHpsTCT5/1sR8mwz188bgtITAtFiszvmdb4Jl9yHU2EJn4PAdJW7gHn/hKn2hRcaq
-         zjSQtmB8K6FWnya1MZS/JTq4JCTx98ngy6Gzfh6VzGJeLklZeirgRcQ+32wI6F6oXJLp
-         ridw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6-20020a05622a030600b00417cdd2e10asi3268568qtw.346.2023.10.28.19.22.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 28 Oct 2023 19:22:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qwvR9-0002Hk-1H; Sat, 28 Oct 2023 22:22:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
- id 1qwvR6-0002HP-S5; Sat, 28 Oct 2023 22:21:56 -0400
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
- id 1qwvR4-00027V-3i; Sat, 28 Oct 2023 22:21:56 -0400
-Received: by mail-oo1-f51.google.com with SMTP id
- 006d021491bc7-586a5d76413so1893858eaf.3; 
- Sat, 28 Oct 2023 19:21:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698546111; x=1699150911;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=qqDFRNlxc7GMm/TwGsl9F9EDBj/7TPdJacoztk2/tgQ=;
- b=rUfxmRoH5tsXa61lTtfu+DVXlD2BM0Da5IHWa1lgSN4RO8WZOA3BStn/o2QppxN9tL
- aBR6yh/I6D5nx//uFqy5IZXjH/yaD0T4rnf4k1pWzmBnjGTrcLg/l+lFT1ZXFjuZxIoS
- 1VDkHizlDDDGZyMiZgkqFTlhs874wM/pg5UwumO/cgty+t2ztUx5U1a8AwOw5JGp/ubU
- FiZMqxZgzzH9rtI5Gue+9W4gsBx1Gw7yGYuoRs5dKB/6agggDoFwyEeqT6OZXfnGuVjL
- q4LFuwqPuWPI97+5xBNKJM6Y/EWoiUuTx7nQ7eRwKD9VMLfvlsuXfvHrIc2U8vmua83s
- cEWQ==
-X-Gm-Message-State: AOJu0YyQCox8YWlCq0CqpFyPxsQFiQV1N6V5yak6jRziE4xbr/2+icyS
- jedPBJIinBuD9yPzlfIikROQklkCfQM=
-X-Received: by 2002:a05:6808:1810:b0:3b2:eab1:918 with SMTP id
- bh16-20020a056808181000b003b2eab10918mr8289367oib.29.1698546111184; 
- Sat, 28 Oct 2023 19:21:51 -0700 (PDT)
-Received: from mail-oo1-f43.google.com (mail-oo1-f43.google.com.
- [209.85.161.43]) by smtp.gmail.com with ESMTPSA id
- g38-20020a0568080de600b003ac9e775706sm864590oic.1.2023.10.28.19.21.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 28 Oct 2023 19:21:50 -0700 (PDT)
-Received: by mail-oo1-f43.google.com with SMTP id
- 006d021491bc7-581e5a9413bso1961383eaf.1; 
- Sat, 28 Oct 2023 19:21:50 -0700 (PDT)
-X-Received: by 2002:a05:6808:bc6:b0:3a7:7988:9916 with SMTP id
- o6-20020a0568080bc600b003a779889916mr8721878oik.59.1698546110218; Sat, 28 Oct
- 2023 19:21:50 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id z6-20020a05600c220600b00407b93d8085sm7038650wml.27.2023.10.28.03.33.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 Oct 2023 03:33:13 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 4AA325F799;
+	Sat, 28 Oct 2023 11:33:12 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Beraldo Leal <bleal@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Brian Cain <bcain@quicinc.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Warner Losh <imp@bsdimp.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Kyle Evans <kevans@freebsd.org>,
+	qemu-arm@nongnu.org,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Brad Smith <brad@comstyle.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 03/17] gitlab: split alpha testing into a legacy container
+Date: Sat, 28 Oct 2023 11:32:57 +0100
+Message-Id: <20231028103311.347104-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
+References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20230714070931.23476-1-j@getutm.app>
- <20230714070931.23476-11-j@getutm.app>
- <20230717162331.2e8a35d7@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230717162331.2e8a35d7@imammedo.users.ipa.redhat.com>
-From: Joelle van Dyne <j@getutm.app>
-Date: Sat, 28 Oct 2023 19:21:39 -0700
-X-Gmail-Original-Message-ID: <CA+E+eSA+OLF_Q2ZWaOF_z7j41L_q9mZj6UhXcEeT05Eit5kFkg@mail.gmail.com>
-Message-ID: <CA+E+eSA+OLF_Q2ZWaOF_z7j41L_q9mZj6UhXcEeT05Eit5kFkg@mail.gmail.com>
-Subject: Re: [PATCH v2 10/11] tpm_crb_sysbus: introduce TPM CRB SysBus device
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Joelle van Dyne <j@getutm.app>, qemu-devel@nongnu.org, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
- Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.161.51; envelope-from=osy86dev@gmail.com;
- helo=mail-oo1-f51.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3PN6GfIUHEU8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: HXN1eJnCFSkk
 
-On Mon, Jul 17, 2023 at 7:23=E2=80=AFAM Igor Mammedov <imammedo@redhat.com>=
- wrote:
->
-> On Fri, 14 Jul 2023 00:09:26 -0700
-> Joelle van Dyne <j@getutm.app> wrote:
->
-> > This SysBus variant of the CRB interface supports dynamically locating
-> > the MMIO interface so that Virt machines can use it. This interface
-> > is currently the only one supported by QEMU that works on Windows 11
-> > ARM64. We largely follow the TPM TIS SysBus device as a template.
-> >
-> > To try out this device with Windows 11 before OVMF is updated, you
-> > will need to modify `sysbud-fdt.c` and change the added line from:
-> >
-> > ```c
-> >     TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
-> > ```
-> >
-> > to
-> >
-> > ```c
-> >     TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, add_tpm_tis_fdt_node),
-> > ```
-> >
-> > This change was not included because it can confuse Linux (although
-> > from testing, it seems like Linux is able to properly ignore the
-> > device from the TPM TIS driver and recognize it from the ACPI device
-> > in the TPM CRB driver). A proper fix would require OVMF to recognize
-> > the ACPI device and not depend on the FDT node for recognizing TPM.
-> >
-> > The command line to try out this device with SWTPM is:
-> >
-> > ```
-> > $ qemu-system-aarch64 \
-> >     -chardev socket,id=3Dchrtpm0,path=3Dtpm.sock \
-> >     -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm0 \
-> >     -device tpm-crb-device,tpmdev=3Dtpm0
-> > ```
-> >
-> > along with SWTPM:
-> >
-> > ```
-> > $ swtpm \
-> >     --ctrl type=3Dunixio,path=3Dtpm.sock,terminate \
-> >     --tpmstate backend-uri=3Dfile://tpm.data \
-> >     --tpm2
-> > ```
-> >
-> > Signed-off-by: Joelle van Dyne <j@getutm.app>
-> > ---
-> >  docs/specs/tpm.rst          |   1 +
-> >  include/hw/acpi/aml-build.h |   1 +
-> >  include/sysemu/tpm.h        |   3 +
-> >  hw/acpi/aml-build.c         |   7 +-
-> >  hw/arm/virt.c               |   1 +
-> >  hw/core/sysbus-fdt.c        |   1 +
-> >  hw/loongarch/virt.c         |   1 +
-> >  hw/riscv/virt.c             |   1 +
-> >  hw/tpm/tpm_crb_sysbus.c     | 170 ++++++++++++++++++++++++++++++++++++
-> >  hw/arm/Kconfig              |   1 +
-> >  hw/riscv/Kconfig            |   1 +
-> >  hw/tpm/Kconfig              |   5 ++
-> >  hw/tpm/meson.build          |   2 +
-> >  13 files changed, 194 insertions(+), 1 deletion(-)
-> >  create mode 100644 hw/tpm/tpm_crb_sysbus.c
-> >
-> > diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-> > index 2bc29c9804..95aeb49220 100644
-> > --- a/docs/specs/tpm.rst
-> > +++ b/docs/specs/tpm.rst
-> > @@ -46,6 +46,7 @@ operating system.
-> >  QEMU files related to TPM CRB interface:
-> >   - ``hw/tpm/tpm_crb.c``
-> >   - ``hw/tpm/tpm_crb_common.c``
-> > + - ``hw/tpm/tpm_crb_sysbus.c``
-> >
-> >  SPAPR interface
-> >  ---------------
-> > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> > index d1fb08514b..9660e16148 100644
-> > --- a/include/hw/acpi/aml-build.h
-> > +++ b/include/hw/acpi/aml-build.h
-> > @@ -3,6 +3,7 @@
-> >
-> >  #include "hw/acpi/acpi-defs.h"
-> >  #include "hw/acpi/bios-linker-loader.h"
-> > +#include "exec/hwaddr.h"
-> >
-> >  #define ACPI_BUILD_APPNAME6 "BOCHS "
-> >  #define ACPI_BUILD_APPNAME8 "BXPC    "
-> > diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
-> > index 66e3b45f30..f79c8f3575 100644
-> > --- a/include/sysemu/tpm.h
-> > +++ b/include/sysemu/tpm.h
-> > @@ -47,6 +47,7 @@ struct TPMIfClass {
-> >  #define TYPE_TPM_TIS_ISA            "tpm-tis"
-> >  #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
-> >  #define TYPE_TPM_CRB                "tpm-crb"
-> > +#define TYPE_TPM_CRB_SYSBUS         "tpm-crb-device"
-> >  #define TYPE_TPM_SPAPR              "tpm-spapr"
-> >  #define TYPE_TPM_TIS_I2C            "tpm-tis-i2c"
-> >
-> > @@ -56,6 +57,8 @@ struct TPMIfClass {
-> >      object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
-> >  #define TPM_IS_CRB(chr)                             \
-> >      object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
-> > +#define TPM_IS_CRB_SYSBUS(chr)                      \
-> > +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB_SYSBUS)
-> >  #define TPM_IS_SPAPR(chr)                           \
-> >      object_dynamic_cast(OBJECT(chr), TYPE_TPM_SPAPR)
-> >  #define TPM_IS_TIS_I2C(chr)                      \
-> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > index ea331a20d1..f809137fc9 100644
-> > --- a/hw/acpi/aml-build.c
-> > +++ b/hw/acpi/aml-build.c
-> > @@ -31,6 +31,7 @@
-> >  #include "hw/pci/pci_bus.h"
-> >  #include "hw/pci/pci_bridge.h"
-> >  #include "qemu/cutils.h"
-> > +#include "qom/object.h"
-> >
-> >  static GArray *build_alloc_array(void)
-> >  {
-> > @@ -2218,7 +2219,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *l=
-inker, GArray *tcpalog,
-> >  {
-> >      uint8_t start_method_params[12] =3D {};
-> >      unsigned log_addr_offset;
-> > -    uint64_t control_area_start_address;
-> > +    uint64_t baseaddr, control_area_start_address;
-> >      TPMIf *tpmif =3D tpm_find();
-> >      uint32_t start_method;
-> >      AcpiTable table =3D { .sig =3D "TPM2", .rev =3D 4,
-> > @@ -2236,6 +2237,10 @@ void build_tpm2(GArray *table_data, BIOSLinker *=
-linker, GArray *tcpalog,
-> >      } else if (TPM_IS_CRB(tpmif)) {
-> >          control_area_start_address =3D TPM_CRB_ADDR_CTRL;
-> >          start_method =3D TPM2_START_METHOD_CRB;
-> > +    } else if (TPM_IS_CRB_SYSBUS(tpmif)) {
-> > +        baseaddr =3D object_property_get_uint(OBJECT(tpmif), "baseaddr=
-", NULL);
-> > +        control_area_start_address =3D baseaddr + A_CRB_CTRL_REQ;
-> > +        start_method =3D TPM2_START_METHOD_CRB;
-> >      } else {
-> >          g_assert_not_reached();
-> >      }
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 432148ef47..88e8b16103 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2977,6 +2977,7 @@ static void virt_machine_class_init(ObjectClass *=
-oc, void *data)
-> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-> >  #ifdef CONFIG_TPM
-> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-> > +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
-> >  #endif
-> >      mc->block_default_type =3D IF_VIRTIO;
-> >      mc->no_cdrom =3D 1;
-> > diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-> > index eebcd28f9a..9c783f88eb 100644
-> > --- a/hw/core/sysbus-fdt.c
-> > +++ b/hw/core/sysbus-fdt.c
-> > @@ -493,6 +493,7 @@ static const BindingEntry bindings[] =3D {
-> >  #endif
-> >  #ifdef CONFIG_TPM
-> >      TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
-> > +    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
-> >  #endif
-> >      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-> >      TYPE_BINDING("", NULL), /* last element */
-> > diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> > index 9c536c52bc..eb59fb04ee 100644
-> > --- a/hw/loongarch/virt.c
-> > +++ b/hw/loongarch/virt.c
-> > @@ -1194,6 +1194,7 @@ static void loongarch_class_init(ObjectClass *oc,=
- void *data)
-> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-> >  #ifdef CONFIG_TPM
-> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-> > +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
-> >  #endif
-> >  }
-> >
-> > diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> > index d90286dc46..5d639a870a 100644
-> > --- a/hw/riscv/virt.c
-> > +++ b/hw/riscv/virt.c
-> > @@ -1681,6 +1681,7 @@ static void virt_machine_class_init(ObjectClass *=
-oc, void *data)
-> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-> >  #ifdef CONFIG_TPM
-> >      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-> > +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
-> >  #endif
-> >
-> >      if (tcg_enabled()) {
-> > diff --git a/hw/tpm/tpm_crb_sysbus.c b/hw/tpm/tpm_crb_sysbus.c
-> > new file mode 100644
-> > index 0000000000..66be57a532
-> > --- /dev/null
-> > +++ b/hw/tpm/tpm_crb_sysbus.c
-> > @@ -0,0 +1,170 @@
-> > +/*
-> > + * tpm_crb_sysbus.c - QEMU's TPM CRB interface emulator
-> > + *
-> > + * Copyright (c) 2018 Red Hat, Inc.
-> > + *
-> > + * Authors:
-> > + *   Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + *
-> > + * tpm_crb is a device for TPM 2.0 Command Response Buffer (CRB) Inter=
-face
-> > + * as defined in TCG PC Client Platform TPM Profile (PTP) Specificatio=
-n
-> > + * Family =E2=80=9C2.0=E2=80=9D Level 00 Revision 01.03 v22
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/acpi/acpi_aml_interface.h"
-> > +#include "hw/acpi/tpm.h"
-> > +#include "hw/qdev-properties.h"
-> > +#include "migration/vmstate.h"
-> > +#include "tpm_prop.h"
-> > +#include "hw/pci/pci_ids.h"
-> > +#include "hw/sysbus.h"
-> > +#include "qapi/visitor.h"
-> > +#include "qom/object.h"
-> > +#include "sysemu/tpm_util.h"
-> > +#include "trace.h"
-> > +#include "tpm_crb.h"
->
-> is it possible to weed off some unnecessary includes?
-Done.
+The current bookworm compiler doesn't build the static binaries due to
+bug #1054412 and it might be awhile before it gets fixes. The problem
+of keeping older architecture compilers running isn't going to go away
+so lets prepare the ground. Create a legacy container and move some
+tests around so the others can get upgraded.
 
->
-> > +
-> > +struct TPMCRBStateSysBus {
-> > +    /*< private >*/
-> > +    SysBusDevice parent_obj;
-> > +
-> > +    /*< public >*/
-> > +    TPMCRBState state;
-> > +    uint64_t baseaddr;
-> > +    uint64_t size;
-> > +};
-> > +
-> > +OBJECT_DECLARE_SIMPLE_TYPE(TPMCRBStateSysBus, TPM_CRB_SYSBUS)
-> > +
-> > +static void tpm_crb_sysbus_request_completed(TPMIf *ti, int ret)
-> > +{
-> > +    TPMCRBStateSysBus *s =3D TPM_CRB_SYSBUS(ti);
-> > +
-> > +    return tpm_crb_request_completed(&s->state, ret);
-> > +}
-> > +
-> > +static enum TPMVersion tpm_crb_sysbus_get_tpm_version(TPMIf *ti)
-> > +{
-> > +    TPMCRBStateSysBus *s =3D TPM_CRB_SYSBUS(ti);
-> > +
-> > +    return tpm_crb_get_version(&s->state);
-> > +}
-> > +
-> > +static int tpm_crb_sysbus_pre_save(void *opaque)
-> > +{
-> > +    TPMCRBStateSysBus *s =3D opaque;
-> > +
-> > +    return tpm_crb_pre_save(&s->state);
-> > +}
-> > +
-> > +static const VMStateDescription vmstate_tpm_crb_sysbus =3D {
-> > +    .name =3D "tpm-crb-sysbus",
-> > +    .pre_save =3D tpm_crb_sysbus_pre_save,
-> > +    .fields =3D (VMStateField[]) {
-> > +        VMSTATE_END_OF_LIST(),
-> > +    }
-> > +};
-> > +
-> > +static Property tpm_crb_sysbus_properties[] =3D {
-> > +    DEFINE_PROP_TPMBE("tpmdev", TPMCRBStateSysBus, state.tpmbe),
-> > +    DEFINE_PROP_UINT64("baseaddr", TPMCRBStateSysBus,
-> > +                       baseaddr, TPM_CRB_ADDR_BASE),
-> > +    DEFINE_PROP_UINT64("size", TPMCRBStateSysBus, size, TPM_CRB_ADDR_S=
-IZE),
-> > +    DEFINE_PROP_END_OF_LIST(),
-> > +};
-> > +
-> > +static void tpm_crb_sysbus_initfn(Object *obj)
-> > +{
-> > +    TPMCRBStateSysBus *s =3D TPM_CRB_SYSBUS(obj);
-> > +
-> > +    tpm_crb_init_memory(obj, &s->state, NULL);
-> > +
-> > +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->state.mmio);
-> > +}
-> > +
-> > +static void tpm_crb_sysbus_reset(DeviceState *dev)
-> > +{
-> > +    TPMCRBStateSysBus *s =3D TPM_CRB_SYSBUS(dev);
-> > +
-> > +    return tpm_crb_reset(&s->state, s->baseaddr);
-> > +}
-> > +
-> > +static void tpm_crb_sysbus_realizefn(DeviceState *dev, Error **errp)
-> > +{
-> > +    TPMCRBStateSysBus *s =3D TPM_CRB_SYSBUS(dev);
-> > +
-> > +    if (!tpm_find()) {
-> > +        error_setg(errp, "at most one TPM device is permitted");
-> > +        return;
-> > +    }
-> > +
-> > +    if (!s->state.tpmbe) {
-> > +        error_setg(errp, "'tpmdev' property is required");
-> > +        return;
-> > +    }
->
-> above parts can be common with ISA vesion
-This was done in order to abstract away the callback interface. All
-the common code uses `TPMCRBState` instead of `TPMIf` as the argument
-and it is cleaner this way IMO.
+While checking the softmmu TCG tests I realised more had been added so
+that makes up a little bit for the lost alpha-softmmu coverage.
 
->
-> > +    if (tpm_crb_sysbus_get_tpm_version(TPM_IF(s)) !=3D TPM_VERSION_2_0=
-) {
-> > +        error_setg(errp, "TPM CRB only supports TPM 2.0 backends");
-> > +        return;
-> why ISA version doesn't require this?
-TPM CRB is only defined for 2.0. We can add this in the ISA version
-but it would break any existing VM which depended on this erroneous
-behaviour. Better to keep this check only on the new device.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ .gitlab-ci.d/buildtest.yml                    | 20 ++++++--
+ .gitlab-ci.d/container-cross.yml              |  6 +++
+ .../dockerfiles/debian-all-test-cross.docker  |  4 +-
+ .../debian-legacy-test-cross.docker           | 46 +++++++++++++++++++
+ 4 files changed, 70 insertions(+), 6 deletions(-)
+ create mode 100644 tests/docker/dockerfiles/debian-legacy-test-cross.docker
 
->
-> > +    }
-> > +}
-> > +
-> > +static void build_tpm_crb_sysbus_aml(AcpiDevAmlIf *adev, Aml *scope)
-> > +{
-> > +    Aml *dev, *crs;
-> > +    TPMCRBStateSysBus *s =3D TPM_CRB_SYSBUS(adev);
-> > +    TPMIf *ti =3D TPM_IF(s);
-> > +
-> > +    dev =3D aml_device("TPM");
-> > +    aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-> > +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")=
-));
-> > +    aml_append(dev, aml_name_decl("_UID", aml_int(1)));
-> > +    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
-> > +    crs =3D aml_resource_template();
-> > +    aml_append(crs, aml_memory32_fixed(s->baseaddr, s->size,
-> > +                                      AML_READ_WRITE));
-> > +    aml_append(dev, aml_name_decl("_CRS", crs));
-> > +    aml_append(scope, dev);
-> > +}
->
-> this almost matches isa version, modulo hard-codded address/size
-> (suggest to generalize and reuse it in both places)
-Done.
-
-> and ppi, why sysbus variant doesn't implement PPI parts?
-The support has not been implemented. See
-4c46fe2ed492f35f411632c8b5a8442f322bc3f0 for disabling this option on
-TIS sysbus devices.
-
->
-> > +
-> > +static void tpm_crb_sysbus_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +    TPMIfClass *tc =3D TPM_IF_CLASS(klass);
-> > +    AcpiDevAmlIfClass *adevc =3D ACPI_DEV_AML_IF_CLASS(klass);
-> > +
-> > +    device_class_set_props(dc, tpm_crb_sysbus_properties);
-> > +    dc->vmsd  =3D &vmstate_tpm_crb_sysbus;
-> > +    tc->model =3D TPM_MODEL_TPM_CRB;
-> > +    dc->realize =3D tpm_crb_sysbus_realizefn;
-> > +    dc->user_creatable =3D true;
-> > +    dc->reset =3D tpm_crb_sysbus_reset;
-> > +    tc->request_completed =3D tpm_crb_sysbus_request_completed;
-> > +    tc->get_version =3D tpm_crb_sysbus_get_tpm_version;
-> > +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> > +    adevc->build_dev_aml =3D build_tpm_crb_sysbus_aml;
-> > +}
-> > +
-> > +static const TypeInfo tpm_crb_sysbus_info =3D {
-> > +    .name =3D TYPE_TPM_CRB_SYSBUS,
-> > +    .parent =3D TYPE_SYS_BUS_DEVICE,
-> > +    .instance_size =3D sizeof(TPMCRBStateSysBus),
-> > +    .instance_init =3D tpm_crb_sysbus_initfn,
-> > +    .class_init  =3D tpm_crb_sysbus_class_init,
-> > +    .interfaces =3D (InterfaceInfo[]) {
-> > +        { TYPE_TPM_IF },
-> > +        { TYPE_ACPI_DEV_AML_IF },
-> > +        { }
-> > +    }
-> > +};
-> > +
-> > +static void tpm_crb_sysbus_register(void)
-> > +{
-> > +    type_register_static(&tpm_crb_sysbus_info);
-> > +}
-> > +
-> > +type_init(tpm_crb_sysbus_register)
-> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> > index 7e68348440..efe1beaa7b 100644
-> > --- a/hw/arm/Kconfig
-> > +++ b/hw/arm/Kconfig
-> > @@ -5,6 +5,7 @@ config ARM_VIRT
-> >      imply VFIO_AMD_XGBE
-> >      imply VFIO_PLATFORM
-> >      imply VFIO_XGMAC
-> > +    imply TPM_CRB_SYSBUS
-> >      imply TPM_TIS_SYSBUS
-> >      imply TPM_TIS_I2C
-> >      imply NVDIMM
-> > diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-> > index b6a5eb4452..d824cb58f9 100644
-> > --- a/hw/riscv/Kconfig
-> > +++ b/hw/riscv/Kconfig
-> > @@ -29,6 +29,7 @@ config RISCV_VIRT
-> >      imply PCI_DEVICES
-> >      imply VIRTIO_VGA
-> >      imply TEST_DEVICES
-> > +    imply TPM_CRB_SYSBUS
-> >      imply TPM_TIS_SYSBUS
-> >      select RISCV_NUMA
-> >      select GOLDFISH_RTC
-> > diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
-> > index 1fd73fe617..3f294a20ba 100644
-> > --- a/hw/tpm/Kconfig
-> > +++ b/hw/tpm/Kconfig
-> > @@ -25,6 +25,11 @@ config TPM_CRB
-> >      depends on TPM && ISA_BUS
-> >      select TPM_BACKEND
-> >
-> > +config TPM_CRB_SYSBUS
-> > +    bool
-> > +    depends on TPM
-> > +    select TPM_BACKEND
-> > +
-> >  config TPM_SPAPR
-> >      bool
-> >      default y
-> > diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
-> > index cb8204d5bc..d96de92c16 100644
-> > --- a/hw/tpm/meson.build
-> > +++ b/hw/tpm/meson.build
-> > @@ -4,6 +4,8 @@ system_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: f=
-iles('tpm_tis_sysbus.c'))
-> >  system_ss.add(when: 'CONFIG_TPM_TIS_I2C', if_true: files('tpm_tis_i2c.=
-c'))
-> >  system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
-> >  system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb_common.c=
-'))
-> > +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_s=
-ysbus.c'))
-> > +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_c=
-ommon.c'))
-> >  system_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_ppi.c'))
-> >  system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_ppi.c'))
-> >
->
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 25af1bc41e..d670fb42b9 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -256,6 +256,7 @@ build-user:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --disable-tools --disable-system
++      --target-list-exclude=alpha-linux-user
+     MAKE_CHECK_ARGS: check-tcg
+ 
+ build-user-static:
+@@ -264,6 +265,18 @@ build-user-static:
+     job: amd64-debian-user-cross-container
+   variables:
+     IMAGE: debian-all-test-cross
++    CONFIGURE_ARGS: --disable-tools --disable-system --static
++      --target-list-exclude=alpha-linux-user
++    MAKE_CHECK_ARGS: check-tcg
++
++# targets stuck on older compilers
++build-user-legacy:
++  extends: .native_build_job_template
++  needs:
++    job: amd64-debian-legacy-cross-container
++  variables:
++    IMAGE: debian-legacy-test-cross
++    TARGETS: alpha-linux-user
+     CONFIGURE_ARGS: --disable-tools --disable-system --static
+     MAKE_CHECK_ARGS: check-tcg
+ 
+@@ -278,6 +291,7 @@ build-user-hexagon:
+     MAKE_CHECK_ARGS: check-tcg
+ 
+ # Only build the softmmu targets we have check-tcg tests for
++# (skip alpha due to missing compilers, others need their own containers)
+ build-some-softmmu:
+   extends: .native_build_job_template
+   needs:
+@@ -285,7 +299,7 @@ build-some-softmmu:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --disable-tools --enable-debug
+-    TARGETS: xtensa-softmmu arm-softmmu aarch64-softmmu alpha-softmmu
++    TARGETS: arm-softmmu aarch64-softmmu i386-softmmu riscv64-softmmu s390x-softmmu xtensa-softmmu
+     MAKE_CHECK_ARGS: check-tcg
+ 
+ # We build tricore in a very minimal tricore only container
+@@ -318,7 +332,7 @@ clang-user:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --cc=clang --cxx=clang++ --disable-system
+-      --target-list-exclude=microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
++      --target-list-exclude=alpha-linux-user,microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
+       --extra-cflags=-fsanitize=undefined --extra-cflags=-fno-sanitize-recover=undefined
+     MAKE_CHECK_ARGS: check-unit check-tcg
+ 
+@@ -505,7 +519,7 @@ build-tci:
+   variables:
+     IMAGE: debian-all-test-cross
+   script:
+-    - TARGETS="aarch64 alpha arm hppa m68k microblaze ppc64 s390x x86_64"
++    - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
+     - mkdir build
+     - cd build
+     - ../configure --enable-tcg-interpreter --disable-docs --disable-gtk --disable-vnc
+diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
+index 2848166ba3..80c540230a 100644
+--- a/.gitlab-ci.d/container-cross.yml
++++ b/.gitlab-ci.d/container-cross.yml
+@@ -16,6 +16,12 @@ amd64-debian-user-cross-container:
+   variables:
+     NAME: debian-all-test-cross
+ 
++amd64-debian-legacy-cross-container:
++  extends: .container_job_template
++  stage: containers
++  variables:
++    NAME: debian-legacy-test-cross
++
+ arm64-debian-cross-container:
+   extends: .container_job_template
+   stage: containers
+diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
+index 54e957d5e7..205173b0a5 100644
+--- a/tests/docker/dockerfiles/debian-all-test-cross.docker
++++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
+@@ -28,8 +28,6 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+         ninja-build \
+         gcc-aarch64-linux-gnu \
+         libc6-dev-arm64-cross \
+-        gcc-alpha-linux-gnu \
+-        libc6.1-dev-alpha-cross \
+         gcc-arm-linux-gnueabihf \
+         libc6-dev-armhf-cross \
+         gcc-hppa-linux-gnu \
+@@ -66,7 +64,7 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+ RUN /usr/bin/pip3 install tomli
+ 
+ ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
+-ENV DEF_TARGET_LIST aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
++ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-legacy-test-cross.docker b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
+new file mode 100644
+index 0000000000..763d36dfe3
+--- /dev/null
++++ b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
+@@ -0,0 +1,46 @@
++# Docker legacy cross-compiler target (tests and minimal qemu)
++#
++# Compilers for some of our older targets which we cant currently
++# upgrade. Currently:
++#
++#   libc6.1-dev-alpha-cross: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054412
++#
++# As we are targeting check-tcg here we only need minimal qemu
++# dependencies and the relevant cross compilers.
++
++FROM docker.io/library/debian:11-slim
++
++# Duplicate deb line as deb-src
++RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
++
++RUN export DEBIAN_FRONTEND=noninteractive && \
++    apt-get update && \
++    apt-get install -y eatmydata && \
++    eatmydata apt-get dist-upgrade -y && \
++    apt build-dep -yy qemu
++
++# Add extra build tools and as many cross compilers as we can for testing
++RUN DEBIAN_FRONTEND=noninteractive eatmydata \
++        apt install -y --no-install-recommends \
++        bison \
++        ccache \
++        clang  \
++        flex \
++        git \
++        ninja-build \
++        gcc-alpha-linux-gnu \
++        libc6.1-dev-alpha-cross \
++        python3-pip \
++        python3-setuptools \
++        python3-venv \
++        python3-wheel
++
++RUN /usr/bin/pip3 install tomli
++
++ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
++ENV DEF_TARGET_LIST alpha-linux-user
++# As a final step configure the user (if env is defined)
++ARG USER
++ARG UID
++RUN if [ "${USER}" ]; then \
++  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
+-- 
+2.39.2

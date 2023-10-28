@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp814139ejc;
-        Sat, 28 Oct 2023 05:26:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGKzmY52Y33Ey14hobViQY+x+NZ9qKTb6AlzbxfibzWSyUK9RXbSMxTJPkNReMcebRhYgdZ
-X-Received: by 2002:a05:622a:114:b0:417:9c40:c606 with SMTP id u20-20020a05622a011400b004179c40c606mr6509388qtw.4.1698495983438;
-        Sat, 28 Oct 2023 05:26:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698495983; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp814301ejc;
+        Sat, 28 Oct 2023 05:26:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFddLZNFFajIOrNPVaMkJfFdBwYK6s4tYF5S/xnVUzzBetrxKFAMkj8F+unkrnhes09e4xM
+X-Received: by 2002:a05:620a:45ab:b0:778:96f1:173a with SMTP id bp43-20020a05620a45ab00b0077896f1173amr6012231qkb.17.1698496005258;
+        Sat, 28 Oct 2023 05:26:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698496005; cv=none;
         d=google.com; s=arc-20160816;
-        b=OW2qIb6fBDDsSp72fR8mhEPX/cMFVxxlXGBLBWU5HpMVivVUgyAN+ttFHFnkkfnbCo
-         Kah0jVW4HgCZ2938h8JEY9wLxJhd+wOCNciHYx/pL/2BeMaIVdiJvKzbtTxcjuPd+CIM
-         Tke/0rwlgSorTTUaGbsumb1u8w7xLAhyQENU+0S5QwTzr+wCsjnlcvhWXrtdxndrQqkD
-         0UeTBd00XRkawJytAYN0qk1vLSujou504QgMVwCkkNVpjzwIihTl05c+y7eWikTK/flD
-         S9PXxHFNO+lDIe/TfmQbxQGtKt4xAP52BJImbsylRhO23kL9WkYO7vuEKPuHwXKhtpI5
-         H3uw==
+        b=l8ER7eZpJsA4bmi6ToFpmBj8bgREN1PUlaoMCOdrTRhpsrww12naXYvJkQ3aHV3G/Y
+         nUph2tvUnnsDGzrtkYPXUjgDVXbNJXmHEaDVJgD8fOOIO3QWchS9NFYBXybPG0D3C6X4
+         C8QXHC3mDrwgPItcD+mnIZpF4vgaKENI5peJ+HdTfDj/bF4U4kWA2u9ruiXAE32CTNPG
+         vhzOuGF3ltAiltGhPJekOOs/inNpFD8O9eZ9qoNZtu9eOl4pj01LylIuBMvkwmwEX/kc
+         ykGTAq1EwYhjLY01FCQ2Hxk1pwBCUIK8Fyen3wEyVJ9CkN0f1/MsNh9eBTZt/LlRyTP7
+         pJHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fjgdUkcWnddjAoJazRvwcvImmvBOY1raY1kEKMOKf0U=;
+        bh=/GoSWYHVdJxtZMHJ3DaJORKAAQ1OsmJR2yJLwNoj76I=;
         fh=mPN9/WblWXCg2g59vjErH+E42ODcsdjD5KgDEJZDWAk=;
-        b=aI8WCZIZQQuo5iZRKar5rU29i7Gr1vYjW1VFE6F0tYNGX5/01Y9DEPO/72FHg+3hWS
-         r7Z9aOv+wFetBE8rAOXkeuREQCUDacL606zu7kSKRxlCeB1rcCVGjDb6LdG/QmDe8Xww
-         7xXQHb/3vSBTFyawFRmCHboUbnjszZs4ADcn2RNBlDbZuwR0ZsVV5j3EdxqF9wZkqiRC
-         GyGltU5ZkL3rQYbLUmKwNDxJUAmNJfquWtK6IZ6sK9WJ0BNMAtfkCICuef8MWkQ3ZXKh
-         i9ZvlA5bTvblA42qtDDRjQ/3/hQyEVF31k8XJsiBIt2qO62oPXvvwuKx7y+PcUQVQCQK
-         SBNg==
+        b=kKEsjZH27R132TDdptryhCqpm4ruoa5pDrlXbOzBfHo60SGF/JkI1ZBGjIwXxILAqY
+         YJXb9KqXlG+XJuclfgDuBJrqU7l0tNLqWH7xfsbNFpuL+3AS5QzyyxGv1f+WNTXqntkR
+         SGgxBR3sQ0EE0Izrr2NgIwftzBdtKpGXuam6BA9zivagzh/RBcEFvoJTBwh+A/x+135S
+         PJWuBpM18o6oE37Rcfe7qJVkynzqINwJmPY8lxgPYwuXB8nl/myE0a69ULd5noxM94Z7
+         Bu1YhEjM04wxH0MJaD0/RHdt+MrZNlKbewI/IMor7uQNiwGDltx6Z8Ci0MQ3ukdLi7ML
+         +DOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="kLlozT/w";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Os35jh3v;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11-20020a05622a020b00b0040551c533e2si2261319qtx.424.2023.10.28.05.26.23
+        by mx.google.com with ESMTPS id d15-20020a05620a166f00b00778a570841fsi2045053qko.717.2023.10.28.05.26.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 28 Oct 2023 05:26:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 28 Oct 2023 05:26:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="kLlozT/w";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Os35jh3v;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qwiMr-0006R6-2l; Sat, 28 Oct 2023 08:24:41 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qwiMs-0006SA-FY; Sat, 28 Oct 2023 08:24:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1qwiMo-0006OW-Vg; Sat, 28 Oct 2023 08:24:38 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1qwiMq-0006Pt-Bb; Sat, 28 Oct 2023 08:24:40 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1qwiMn-0006ma-6v; Sat, 28 Oct 2023 08:24:38 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-53e08e439c7so4972035a12.0; 
- Sat, 28 Oct 2023 05:24:36 -0700 (PDT)
+ id 1qwiMo-0006mm-G8; Sat, 28 Oct 2023 08:24:40 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-9c603e2354fso601583366b.1; 
+ Sat, 28 Oct 2023 05:24:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698495874; x=1699100674; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1698495876; x=1699100676; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fjgdUkcWnddjAoJazRvwcvImmvBOY1raY1kEKMOKf0U=;
- b=kLlozT/wxisgJdu9nNPJ2Doc10Dlgu+5O/FsYU54yO/l+8bd1PCJaKaRAd6/68BTRu
- dC2/IVL3muAlXZ5CKqkqSFSwgi06cDxrc88TxfnE9Dw6Wt1VzijkFBmWuJG5jBVzx296
- h1Bn+ygTpCN3f5aIrFDZwzjZ8/FcS5cDoQ5m9Ev4AGm6lzE2qwfU6fq8h9ZBF1RUL6N+
- GoSNBauJRKyP106U1PHQt8thOVVaa7zOxoPfEytVckIbr8xh6qNG9LaJUiumnJ0zA+s3
- ZCr9w+lGBAV7j2kywTKJIx6ybVkqNeTdZsIVz6Km+Vg0r+XFVt+UIAaR7o1litvnkBXw
- T67g==
+ bh=/GoSWYHVdJxtZMHJ3DaJORKAAQ1OsmJR2yJLwNoj76I=;
+ b=Os35jh3vSGYS+W3icYzpWjuC54e2nb/8PddHFPhst+Nwk4JJsFyEYESmGu3MXh2IHG
+ /YLKAy3g0tigPeUZNrxouKqOmwwNhBnCQ77XrSmt630gmhBGZNlEqD3FWc9a7VKzMXVR
+ glM49MD4Wu6LdB5QH7JPwQNI0ZwzLMIP74wKwLh4OBcsCBeRHtDGLHTwKSGQZdDfwjTi
+ UsQ7ifrWCDWYj1TZbxGRqKRDi/t1tqrVr4xpdp4+6Pa6TJXrrw2unMkYcvlfQzu+oDeY
+ yjQYmGrM42x/qFaptdsSkZ+B04NEb86um0IjBfkRO1iOAVxxlfrg2V8l4AgFS5S2hlKW
+ tEXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698495874; x=1699100674;
+ d=1e100.net; s=20230601; t=1698495876; x=1699100676;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fjgdUkcWnddjAoJazRvwcvImmvBOY1raY1kEKMOKf0U=;
- b=drvM+RN+6mkbBFkI1YBwoMSr+Nbyy202YyHMq2EyONVOrN522rz0Ht/P7uSXN2No38
- nDHnGb4c2pgy1Qf+3J6DNdSdjfvN+qXTicBQpQd1XwKCeoeaUmkVgLgEy6wpJACufe/n
- erkNSwZ2sil7tdnRif/Y+pNgehCrZLzSUCtzrMEO/XB6V3lKeO3A8D7jmNuA8elHlSAm
- Sprh4Y7XyfFig0RjFuD/Oq87Gzutcn1y5FbLykR9J59AfvD2jedu2TDY+dlrOL1oe0q7
- M/Kj8eVx8U7akGtvf5M5Dkak3MrrBMHDymahO1X6IXnbkw9GFc0iJEUq1/K5J+shEgd3
- iSQg==
-X-Gm-Message-State: AOJu0YxE5D/+Ij4VcJrNBl+4dvxsLDmu55ktPLOeAxLG6XWaVrwZAi2z
- tPeNV9Cw7e8OnTycuu3tji8W9b7Jy6A=
-X-Received: by 2002:a17:907:3603:b0:9be:40ba:5f1 with SMTP id
- bk3-20020a170907360300b009be40ba05f1mr4436765ejc.60.1698495874201; 
- Sat, 28 Oct 2023 05:24:34 -0700 (PDT)
+ bh=/GoSWYHVdJxtZMHJ3DaJORKAAQ1OsmJR2yJLwNoj76I=;
+ b=gql46KPm8Ut+HdzmqMqLYNLQVfeXV/GP7MZb8WfsyFjmXXA3XpX801EMfQgdAHA5wg
+ UZ9/pCIDsCVj8gb8e7IrUzrWycNDm8pZFjonwCRB7LQyQhMlCCVC3YqUqQ5I8FXVGs2j
+ ZpLm+2bhwttY56fb3gG7Hb5OStEkvw1OqqaC58oHmJGqEl9JgIcAu1Xlo946xLASm9Au
+ GkGIJPBUbV5LOZvGA6JVb2jV5hOYb5cjpXFoqAsg3oBLSAi4fA1kIMvzQZAkLDsN8mkc
+ oyCSBl5sif37dxcSz90hUe4x0V/n0JxDlYiFttewfT8Es/dm4vHuuAvcCDuK/7aEDIZv
+ 0iow==
+X-Gm-Message-State: AOJu0YwFbQny0miT72dG2aVnK0kV4kbuzwYlDKhxpW3/mUhbg4KYlVbU
+ LlyIrXXyp6KsJLnlB7urw6r+sheWdF0=
+X-Received: by 2002:a17:907:94d1:b0:9ae:699d:8a31 with SMTP id
+ dn17-20020a17090794d100b009ae699d8a31mr4595836ejc.33.1698495875718; 
+ Sat, 28 Oct 2023 05:24:35 -0700 (PDT)
 Received: from archlinux.. (dynamic-089-012-044-170.89.12.pool.telefonica.de.
  [89.12.44.170]) by smtp.gmail.com with ESMTPSA id
- a13-20020a170906190d00b009ae3d711fd9sm2706687eje.69.2023.10.28.05.24.32
+ a13-20020a170906190d00b009ae3d711fd9sm2706687eje.69.2023.10.28.05.24.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 28 Oct 2023 05:24:33 -0700 (PDT)
+ Sat, 28 Oct 2023 05:24:35 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
@@ -99,16 +99,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 5/6] hw/i2c/pm_smbus: Convert DPRINTF to trace events
-Date: Sat, 28 Oct 2023 14:24:14 +0200
-Message-ID: <20231028122415.14869-6-shentey@gmail.com>
+Subject: [PATCH 6/6] system/memory: Trace names of MemoryRegions rather than
+ host pointers
+Date: Sat, 28 Oct 2023 14:24:15 +0200
+Message-ID: <20231028122415.14869-7-shentey@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231028122415.14869-1-shentey@gmail.com>
 References: <20231028122415.14869-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,105 +118,156 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9HcicbQZVV4i
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OWTnvu5LBMvz
 
-Let the trace messages slightly deviate from the function names
-("smb" -> "smbus") being traced in order to avoid conflights with the SMB
-protocol.
+Tracing the host pointer of the accessed MemoryRegion seems to be a debug
+feature for developing QEMU itself. When analyzing guest behavior by comparing
+traces, these pointers generate a lot of noise since the pointers differ between
+QEMU invocations, making this task harder than it needs to be. Moreover, the
+pointers seem to be redundant to the names already assigned to MemoryRegions.
+
+Remove the pointers from the traces and trace the names where missing. When
+developing QEMU, developers could just add the host pointer tracing for
+themselves.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/i2c/pm_smbus.c   | 18 ++++--------------
- hw/i2c/trace-events |  6 ++++++
- 2 files changed, 10 insertions(+), 14 deletions(-)
+ docs/devel/tracing.rst |  4 ++--
+ system/memory.c        | 26 ++++++++++++++++----------
+ system/trace-events    | 12 ++++++------
+ 3 files changed, 24 insertions(+), 18 deletions(-)
 
-diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
-index 4e1b8a5182..78e7c229a8 100644
---- a/hw/i2c/pm_smbus.c
-+++ b/hw/i2c/pm_smbus.c
-@@ -23,6 +23,7 @@
- #include "hw/i2c/pm_smbus.h"
- #include "hw/i2c/smbus_master.h"
- #include "migration/vmstate.h"
-+#include "trace.h"
+diff --git a/docs/devel/tracing.rst b/docs/devel/tracing.rst
+index d288480db1..8c31d5f76e 100644
+--- a/docs/devel/tracing.rst
++++ b/docs/devel/tracing.rst
+@@ -18,8 +18,8 @@ events::
  
- #define SMBHSTSTS       0x00
- #define SMBHSTCNT       0x02
-@@ -64,15 +65,6 @@
- #define AUX_BLK       (1 << 1)
- #define AUX_MASK      0x3
+     $ qemu --trace "memory_region_ops_*" ...
+     ...
+-    719585@1608130130.441188:memory_region_ops_read cpu 0 mr 0x562fdfbb3820 addr 0x3cc value 0x67 size 1
+-    719585@1608130130.441190:memory_region_ops_write cpu 0 mr 0x562fdfbd2f00 addr 0x3d4 value 0x70e size 2
++    719585@1608130130.441188:memory_region_ops_read cpu 0 addr 0x3cc value 0x67 size 1
++    719585@1608130130.441190:memory_region_ops_write cpu 0 addr 0x3d4 value 0x70e size 2
  
--/*#define DEBUG*/
--
--#ifdef DEBUG
--# define SMBUS_DPRINTF(format, ...)     printf(format, ## __VA_ARGS__)
--#else
--# define SMBUS_DPRINTF(format, ...)     do { } while (0)
--#endif
--
--
- static void smb_transaction(PMSMBus *s)
- {
-     uint8_t prot = (s->smb_ctl >> 2) & 0x07;
-@@ -82,7 +74,7 @@ static void smb_transaction(PMSMBus *s)
-     I2CBus *bus = s->smbus;
-     int ret;
+ This output comes from the "log" trace backend that is enabled by default when
+ ``./configure --enable-trace-backends=BACKENDS`` was not explicitly specified.
+diff --git a/system/memory.c b/system/memory.c
+index 4928f2525d..076a992b74 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -444,10 +444,11 @@ static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
  
--    SMBUS_DPRINTF("SMBus trans addr=0x%02x prot=0x%02x\n", addr, prot);
-+    trace_smbus_transaction(addr, prot);
-     /* Transaction isn't exec if STS_DEV_ERR bit set */
-     if ((s->smb_stat & STS_DEV_ERR) != 0)  {
-         goto error;
-@@ -258,8 +250,7 @@ static void smb_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
-     PMSMBus *s = opaque;
-     uint8_t clear_byte_done;
+     tmp = mr->ops->read(mr->opaque, addr, size);
+     if (mr->subpage) {
+-        trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
++        trace_memory_region_subpage_read(get_cpu_index(), addr, tmp, size,
++                                         memory_region_name(mr));
+     } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
+         hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+-        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
++        trace_memory_region_ops_read(get_cpu_index(), abs_addr, tmp, size,
+                                      memory_region_name(mr));
+     }
+     memory_region_shift_read_access(value, shift, mask, tmp);
+@@ -467,10 +468,11 @@ static MemTxResult memory_region_read_with_attrs_accessor(MemoryRegion *mr,
  
--    SMBUS_DPRINTF("SMB writeb port=0x%04" HWADDR_PRIx
--                  " val=0x%02" PRIx64 "\n", addr, val);
-+    trace_smbus_ioport_writeb(addr, val);
-     switch(addr) {
-     case SMBHSTSTS:
-         clear_byte_done = s->smb_stat & val & STS_BYTE_DONE;
-@@ -429,8 +420,7 @@ static uint64_t smb_ioport_readb(void *opaque, hwaddr addr, unsigned width)
-         val = 0;
+     r = mr->ops->read_with_attrs(mr->opaque, addr, &tmp, size, attrs);
+     if (mr->subpage) {
+-        trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
++        trace_memory_region_subpage_read(get_cpu_index(), addr, tmp, size,
++                                         memory_region_name(mr));
+     } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
+         hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+-        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
++        trace_memory_region_ops_read(get_cpu_index(), abs_addr, tmp, size,
+                                      memory_region_name(mr));
+     }
+     memory_region_shift_read_access(value, shift, mask, tmp);
+@@ -488,10 +490,11 @@ static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
+     uint64_t tmp = memory_region_shift_write_access(value, shift, mask);
+ 
+     if (mr->subpage) {
+-        trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
++        trace_memory_region_subpage_write(get_cpu_index(), addr, tmp, size,
++                                          memory_region_name(mr));
+     } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
+         hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+-        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
++        trace_memory_region_ops_write(get_cpu_index(), abs_addr, tmp, size,
+                                       memory_region_name(mr));
+     }
+     mr->ops->write(mr->opaque, addr, tmp, size);
+@@ -509,10 +512,11 @@ static MemTxResult memory_region_write_with_attrs_accessor(MemoryRegion *mr,
+     uint64_t tmp = memory_region_shift_write_access(value, shift, mask);
+ 
+     if (mr->subpage) {
+-        trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
++        trace_memory_region_subpage_write(get_cpu_index(), addr, tmp, size,
++                                          memory_region_name(mr));
+     } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
+         hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
+-        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
++        trace_memory_region_ops_write(get_cpu_index(), abs_addr, tmp, size,
+                                       memory_region_name(mr));
+     }
+     return mr->ops->write_with_attrs(mr->opaque, addr, tmp, size, attrs);
+@@ -1356,7 +1360,8 @@ static uint64_t memory_region_ram_device_read(void *opaque,
          break;
      }
--    SMBUS_DPRINTF("SMB readb port=0x%04" HWADDR_PRIx " val=0x%02x\n",
--                  addr, val);
-+    trace_smbus_ioport_readb(addr, val);
  
-     if (s->set_irq) {
-         s->set_irq(s, smb_irq_value(s));
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index d7b1e25858..6900e06eda 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -15,6 +15,12 @@ i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) data:0x%0
- i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
- i2c_ack(void) ""
+-    trace_memory_region_ram_device_read(get_cpu_index(), mr, addr, data, size);
++    trace_memory_region_ram_device_read(get_cpu_index(), addr, data, size,
++                                        memory_region_name(mr));
  
-+# pm_smbus.c
-+
-+smbus_ioport_readb(uint16_t addr, uint8_t data) "[0x%04" PRIx16 "] -> val=0x%02x"
-+smbus_ioport_writeb(uint16_t addr, uint8_t data) "[0x%04" PRIx16 "] <- val=0x%02x"
-+smbus_transaction(uint8_t addr, uint8_t prot) "addr=0x%02x prot=0x%02x"
-+
- # allwinner_i2c.c
+     return data;
+ }
+@@ -1366,7 +1371,8 @@ static void memory_region_ram_device_write(void *opaque, hwaddr addr,
+ {
+     MemoryRegion *mr = opaque;
  
- allwinner_i2c_read(const char* reg_name, uint64_t offset, uint64_t value) "read %s [0x%" PRIx64 "]: -> 0x%" PRIx64
+-    trace_memory_region_ram_device_write(get_cpu_index(), mr, addr, data, size);
++    trace_memory_region_ram_device_write(get_cpu_index(), addr, data, size,
++                                         memory_region_name(mr));
+ 
+     switch (size) {
+     case 1:
+diff --git a/system/trace-events b/system/trace-events
+index 69c9044151..21f1c005e0 100644
+--- a/system/trace-events
++++ b/system/trace-events
+@@ -9,12 +9,12 @@ cpu_in(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
+ cpu_out(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
+ 
+ # memory.c
+-memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
+-memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
+-memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
+-memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
+-memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
+-memory_region_ram_device_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
++memory_region_ops_read(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
++memory_region_ops_write(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
++memory_region_subpage_read(int cpu_index, uint64_t offset, uint64_t value, unsigned size, const char *name) "cpu %d offset 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
++memory_region_subpage_write(int cpu_index, uint64_t offset, uint64_t value, unsigned size, const char *name) "cpu %d offset 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
++memory_region_ram_device_read(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
++memory_region_ram_device_write(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
+ memory_region_sync_dirty(const char *mr, const char *listener, int global) "mr '%s' listener '%s' synced (global=%d)"
+ flatview_new(void *view, void *root) "%p (root %p)"
+ flatview_destroy(void *view, void *root) "%p (root %p)"
 -- 
 2.42.0
 

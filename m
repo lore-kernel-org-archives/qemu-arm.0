@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h6-20020a5d4fc6000000b00327de0173f6sm3539309wrw.115.2023.10.28.03.33.12
+        by smtp.gmail.com with ESMTPSA id p14-20020a5d68ce000000b003253523d767sm3576841wrw.109.2023.10.28.03.41.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Oct 2023 03:33:12 -0700 (PDT)
+        Sat, 28 Oct 2023 03:41:08 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0F02D5F797;
-	Sat, 28 Oct 2023 11:33:12 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 90B645F7A5;
+	Sat, 28 Oct 2023 11:33:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
@@ -27,56 +27,61 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Brad Smith <brad@comstyle.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 01/17] tests/vm/openbsd: Use the system dtc package
-Date: Sat, 28 Oct 2023 11:32:55 +0100
-Message-Id: <20231028103311.347104-2-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 16/17] plugins: Remove an extra parameter
+Date: Sat, 28 Oct 2023 11:33:10 +0100
+Message-Id: <20231028103311.347104-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
 References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Y9giUBJjoYPt
+X-TUID: GDtNxbMWZtGu
 
-From: Thomas Huth <thuth@redhat.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-We can use the pre-packaged libfdt from the dtc package to avoid
-that we have to compile this code each time again and again.
+copy_call() has an unused parameter so remove it.
 
-While we're at it, the "--python=python3" does not seemt to be
-necessary anymore, so we can drop it.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231016154049.37147-1-thuth@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20231019101030.128431-7-akihiko.odaki@daynix.com>
 ---
- tests/vm/openbsd | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ accel/tcg/plugin-gen.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/tests/vm/openbsd b/tests/vm/openbsd
-index 6b4fc29793..85c5bb3536 100755
---- a/tests/vm/openbsd
-+++ b/tests/vm/openbsd
-@@ -27,6 +27,7 @@ class OpenBSDVM(basevm.BaseVM):
-     size = "20G"
-     pkgs = [
-         # tools
-+        "dtc",
-         "git",
-         "pkgconf",
-         "bzip2", "xz",
-@@ -67,8 +68,9 @@ class OpenBSDVM(basevm.BaseVM):
-         cd $(mktemp -d /home/qemu/qemu-test.XXXXXX);
-         mkdir src build; cd src;
-         tar -xf /dev/rsd1c;
--        cd ../build
--        ../src/configure --cc=cc --python=python3 {configure_opts};
-+        cd ../build;
-+        ../src/configure --cc=cc  --extra-cflags=-I/usr/local/include \
-+                         --extra-ldflags=-L/usr/local/lib {configure_opts};
-         gmake --output-sync -j{jobs} {target} {verbose};
-     """
-     poweroff = "halt -p"
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 39b3c9351f..78b331b251 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -327,8 +327,7 @@ static TCGOp *copy_st_ptr(TCGOp **begin_op, TCGOp *op)
+     return op;
+ }
+ 
+-static TCGOp *copy_call(TCGOp **begin_op, TCGOp *op, void *empty_func,
+-                        void *func, int *cb_idx)
++static TCGOp *copy_call(TCGOp **begin_op, TCGOp *op, void *func, int *cb_idx)
+ {
+     TCGOp *old_op;
+     int func_idx;
+@@ -372,8 +371,7 @@ static TCGOp *append_udata_cb(const struct qemu_plugin_dyn_cb *cb,
+     }
+ 
+     /* call */
+-    op = copy_call(&begin_op, op, HELPER(plugin_vcpu_udata_cb),
+-                   cb->f.vcpu_udata, cb_idx);
++    op = copy_call(&begin_op, op, cb->f.vcpu_udata, cb_idx);
+ 
+     return op;
+ }
+@@ -420,8 +418,7 @@ static TCGOp *append_mem_cb(const struct qemu_plugin_dyn_cb *cb,
+ 
+     if (type == PLUGIN_GEN_CB_MEM) {
+         /* call */
+-        op = copy_call(&begin_op, op, HELPER(plugin_vcpu_mem_cb),
+-                       cb->f.vcpu_udata, cb_idx);
++        op = copy_call(&begin_op, op, cb->f.vcpu_udata, cb_idx);
+     }
+ 
+     return op;
 -- 
 2.39.2

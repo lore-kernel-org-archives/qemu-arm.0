@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 26-20020a05600c021a00b0040813e14b49sm7176737wmi.30.2023.10.28.03.33.15
+        by smtp.gmail.com with ESMTPSA id y15-20020a05600c2b0f00b004083996dad8sm7108076wme.18.2023.10.28.03.33.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Sat, 28 Oct 2023 03:33:18 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4FD735F7A3;
+	by draig.lan (Postfix) with ESMTP id 638545F798;
 	Sat, 28 Oct 2023 11:33:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,78 +27,91 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Brad Smith <brad@comstyle.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 13/17] tests/docker: upgrade debian-all-test-cross to bookworm
-Date: Sat, 28 Oct 2023 11:33:07 +0100
-Message-Id: <20231028103311.347104-14-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH 14/17] gdbstub: Check if gdb_regs is NULL
+Date: Sat, 28 Oct 2023 11:33:08 +0100
+Message-Id: <20231028103311.347104-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
 References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kB26hY6rfVR8
+X-TUID: SJhRQgCqMqau
 
-This requires a few more tweaks than usual as:
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-  - the default sources format has changed
-  - bring in python3-tomli from the repos
-  - split base install from cross compilers
-  - also include libclang-rt-dev for sanitiser builds
+cpu->gdb_regs may be NULL if no coprocessor is registered.
 
+Fixes: 73c392c26b ("gdbstub: Replace gdb_regs with an array")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20231019101030.128431-2-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Tested-by: Fabiano Rosas <farosas@suse.de>
 ---
- .../dockerfiles/debian-all-test-cross.docker  | 20 +++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+ gdbstub/gdbstub.c | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
-index 43cc083318..2cc7a24d4d 100644
---- a/tests/docker/dockerfiles/debian-all-test-cross.docker
-+++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
-@@ -6,10 +6,10 @@
- # basic compilers for as many targets as possible. We shall use this
- # to build and run linux-user tests on GitLab
- #
--FROM docker.io/library/debian:11-slim
-+FROM docker.io/library/debian:12-slim
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 1e96a71c0c..29540a0284 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -385,12 +385,14 @@ static const char *get_feature_xml(const char *p, const char **newp,
+                 xml,
+                 g_markup_printf_escaped("<xi:include href=\"%s\"/>",
+                                         cc->gdb_core_xml_file));
+-            for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+-                r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-                g_ptr_array_add(
+-                    xml,
+-                    g_markup_printf_escaped("<xi:include href=\"%s\"/>",
+-                                            r->xml));
++            if (cpu->gdb_regs) {
++                for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++                    r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++                    g_ptr_array_add(
++                        xml,
++                        g_markup_printf_escaped("<xi:include href=\"%s\"/>",
++                                                r->xml));
++                }
+             }
+             g_ptr_array_add(xml, g_strdup("</target>"));
+             g_ptr_array_add(xml, NULL);
+@@ -430,10 +432,12 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+         return cc->gdb_read_register(cpu, buf, reg);
+     }
  
- # Duplicate deb line as deb-src
--RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
-+RUN sed -in "s/Types: deb/Types: deb deb-src/g" /etc/apt/sources.list.d/debian.sources
+-    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+-        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-        if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
+-            return r->get_reg(env, buf, reg - r->base_reg);
++    if (cpu->gdb_regs) {
++        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++            r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++            if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
++                return r->get_reg(env, buf, reg - r->base_reg);
++            }
+         }
+     }
+     return 0;
+@@ -449,10 +453,12 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
+         return cc->gdb_write_register(cpu, mem_buf, reg);
+     }
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-@@ -25,7 +25,16 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-         clang  \
-         flex \
-         git \
-+        libclang-rt-dev \
-         ninja-build \
-+        python3-pip \
-+        python3-setuptools \
-+        python3-tomli \
-+        python3-venv \
-+        python3-wheel
-+
-+RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-+        apt install -y --no-install-recommends \
-         gcc-aarch64-linux-gnu \
-         libc6-dev-arm64-cross \
-         gcc-arm-linux-gnueabihf \
-@@ -53,13 +62,8 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-         gcc-s390x-linux-gnu \
-         libc6-dev-s390x-cross \
-         gcc-sparc64-linux-gnu \
--        libc6-dev-sparc64-cross \
--        python3-pip \
--        python3-setuptools \
--        python3-venv \
--        python3-wheel
-+        libc6-dev-sparc64-cross
- 
--RUN /usr/bin/pip3 install tomli
- 
- ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
- ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sparc64-linux-user
+-    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+-        r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-        if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
+-            return r->set_reg(env, mem_buf, reg - r->base_reg);
++    if (cpu->gdb_regs) {
++        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++            r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++            if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
++                return r->set_reg(env, mem_buf, reg - r->base_reg);
++            }
+         }
+     }
+     return 0;
 -- 
 2.39.2

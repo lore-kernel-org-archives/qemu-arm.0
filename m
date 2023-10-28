@@ -1,185 +1,215 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ay32-20020a05600c1e2000b004065daba6casm7187734wmb.46.2023.10.28.03.33.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Oct 2023 03:33:14 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 7F1595F79B;
-	Sat, 28 Oct 2023 11:33:12 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp813866ejc;
+        Sat, 28 Oct 2023 05:25:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHlHL3zA0dcvhMIjLdqRm1UBD8LqHHXnpMieyloQtlW5VA1mmuDFPfUMFG+9ZFwEElliTxF
+X-Received: by 2002:a05:622a:90a:b0:41e:2c87:e84 with SMTP id bx10-20020a05622a090a00b0041e2c870e84mr5272161qtb.30.1698495941310;
+        Sat, 28 Oct 2023 05:25:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698495941; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Wt6rukeB0TUJgSarIznQUF/yUFEvFASViVtzGj9Q3WRMjRJixzL+dxCKz/1+oI0TUn
+         /HZOteZ11CAsLnNX9b3gK7dZex3X5q7krjHGy2YBPCicSaTy8CgLZRWlpU/YZV4hpmpZ
+         rvelFwgWZD/jtRfxFLwPehlffs9Rq9gFfnTUN8uXcLINPdMXc4cBTJlj8zT3b9zbuZfw
+         OQRV6f/Dz/dKBpTFx/XTutfbgspkTZKn/ltZQ0Hs+3zVtMBBWnnbbK/ysdd2Jq2FJK23
+         fo1GMCKaW1jm7PO2RhZVoEhUydH0WFAHuHemrWuSO/xx1TbxWKoUOvv1FDVKgUgzpl2a
+         ZwOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Z+50/O4PNCKQH2UPmRwpwa8C3hjwmP+3AadueA5nS0w=;
+        fh=mPN9/WblWXCg2g59vjErH+E42ODcsdjD5KgDEJZDWAk=;
+        b=ut9A9kGs2I7ocJi162PP4vylJMJHWPebJKuepmvBECKM2tOrYeXQyk/kELlajBeaei
+         V36idOZnMWyas/30bhxOyW+4bQJZ7mRd3mfRF9LCyyCFFNW6j6/q5n/SwYsiOw1XOHfJ
+         oF1o46LhnZVQO5gaPOMUQcwuaLqBYoKJaxxPHb78BBhhVexl2x8urie+56F2mqbkcsjn
+         ZaXYGam7Bu+FO6+2XwAwwSPmAcT1jklO0k+HMLtTf03EMix+4IG2+tJDxkcwiWAvt8ij
+         5GtqDXUqOdRIfUjr0/qHJ2nWcyNbtvoQ7lfh/axIFYvmSjPV0NqygodI5dhxvNJy02xN
+         bs0A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PapyUXBe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w4-20020a05622a190400b0041986d97773si2278387qtc.580.2023.10.28.05.25.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 28 Oct 2023 05:25:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PapyUXBe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qwiMj-0006Kk-QO; Sat, 28 Oct 2023 08:24:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1qwiMi-0006Jw-2C; Sat, 28 Oct 2023 08:24:32 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1qwiMg-0006lP-CW; Sat, 28 Oct 2023 08:24:31 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5409bc907edso4520477a12.0; 
+ Sat, 28 Oct 2023 05:24:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1698495867; x=1699100667; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Z+50/O4PNCKQH2UPmRwpwa8C3hjwmP+3AadueA5nS0w=;
+ b=PapyUXBeuUVf0POH/6KHuqPs+IigD3SggaKDpbhME/1n8E+il45JauEHKciIhLvH1u
+ tF0t7yA+1gwXmdv+cEM3E0UPoJVxRbiJQWZ88ZuxQQjoeRyWkunq3UGxtBNMqYcVkolk
+ snfk2AdZxdy9E+NmYxH/TQ0hG2jqfJ2KVPlrwlyCC1+7xZuDzxVJsoOEHpNLeAD9fqEC
+ lM5ZSZqqhGGvKBHe5BGt9KQWFzbXacITsr9lYC7BZ+Mcz00hDNHQPncWyge6DNkar91L
+ W7+h+iU97G7SMAXeNeEKg+p1yZ/AlueQrT6Y8T3Vx7HYZj6FcL5EFSd1ifsKPxxdFiM4
+ DYUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698495867; x=1699100667;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Z+50/O4PNCKQH2UPmRwpwa8C3hjwmP+3AadueA5nS0w=;
+ b=vw4T+S89qaLjWEZNg6pPUetl+HtZRhSlrLIO89DT2Yp7xAfHLG3HyB39nqr2ztxTPo
+ 0yXsz3u7pbmxwUXhR7NDGX6B5EWJBLiDzP/FIQ02WawR7KZdl3dHioC4W1Z8cs3G0pZl
+ TelOgX/qr4pnaZhPUfewMfSXy9SyAHnuP+u7Ueq+znQGq9Cq6lqBib/QmkD95qL6H+bm
+ wVPz+BIUzeN0wXuymFtkvfciQZqn3GmrzhNu+AUVE17R4nqxcxARoqAImKmlAHYtXWGp
+ SWtAhHVs15V9dWO0xQp2+pFp4H9cMACt7uV7k3axF1px5yvBxqqDu2rN32HnrcsXQLgA
+ Ee/Q==
+X-Gm-Message-State: AOJu0Yy3c5S0YqO6fv3MTpu1EVDvNWD3j6N1xgC98lbTIW0R6JVkmfwZ
+ efWyMh4JrIXpgFmJc9XbV19trtszWXI=
+X-Received: by 2002:a17:907:1c25:b0:9ae:50e3:7e40 with SMTP id
+ nc37-20020a1709071c2500b009ae50e37e40mr4172825ejc.52.1698495867279; 
+ Sat, 28 Oct 2023 05:24:27 -0700 (PDT)
+Received: from archlinux.. (dynamic-089-012-044-170.89.12.pool.telefonica.de.
+ [89.12.44.170]) by smtp.gmail.com with ESMTPSA id
+ a13-20020a170906190d00b009ae3d711fd9sm2706687eje.69.2023.10.28.05.24.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 28 Oct 2023 05:24:26 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Warner Losh <imp@bsdimp.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Kyle Evans <kevans@freebsd.org>,
-	qemu-arm@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Brad Smith <brad@comstyle.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 05/17] tests/docker: move sh4 to use debian-legacy-test-cross
-Date: Sat, 28 Oct 2023 11:32:59 +0100
-Message-Id: <20231028103311.347104-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
-References: <20231028103311.347104-1-alex.bennee@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 1/6] hw/watchdog/wdt_imx2: Trace MMIO access
+Date: Sat, 28 Oct 2023 14:24:10 +0200
+Message-ID: <20231028122415.14869-2-shentey@gmail.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231028122415.14869-1-shentey@gmail.com>
+References: <20231028122415.14869-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7P3VO4tqFTyj
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iRBl7eq0FsTG
 
-sh4 is another target which doesn't work with bookworm compilers. To
-keep on buster move across to the debian-legacy-test-cross image and
-update accordingly.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- configure                                     |  4 ++++
- .gitlab-ci.d/buildtest.yml                    |  2 +-
- .gitlab-ci.d/container-cross.yml              |  6 ------
- tests/docker/Makefile.include                 |  2 +-
- .../dockerfiles/debian-all-test-cross.docker  |  4 +---
- .../debian-legacy-test-cross.docker           |  3 ++-
- .../dockerfiles/debian-sh4-cross.docker       | 19 -------------------
- 7 files changed, 9 insertions(+), 31 deletions(-)
- delete mode 100644 tests/docker/dockerfiles/debian-sh4-cross.docker
+ hw/watchdog/wdt_imx2.c   | 24 ++++++++++++++++++------
+ hw/watchdog/trace-events |  4 ++++
+ 2 files changed, 22 insertions(+), 6 deletions(-)
 
-diff --git a/configure b/configure
-index c8d0d4f7cb..37d1b10b87 100755
---- a/configure
-+++ b/configure
-@@ -1334,6 +1334,10 @@ probe_target_compiler() {
-         container_cross_prefix=powerpc${target_arch#ppc}-linux-gnu-
-         container_cross_cc=${container_cross_prefix}gcc-10
-         ;;
-+      sh4)
-+        container_image=debian-legacy-test-cross
-+        container_cross_prefix=sh4-linux-gnu-
-+        ;;
-       tricore)
-         container_image=debian-tricore-cross
-         container_cross_prefix=tricore-
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index d670fb42b9..983c95e785 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -276,7 +276,7 @@ build-user-legacy:
-     job: amd64-debian-legacy-cross-container
-   variables:
-     IMAGE: debian-legacy-test-cross
--    TARGETS: alpha-linux-user
-+    TARGETS: alpha-linux-user sh4-linux-user
-     CONFIGURE_ARGS: --disable-tools --disable-system --static
-     MAKE_CHECK_ARGS: check-tcg
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index e776a2fbd4..885ebd3978 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -17,6 +17,7 @@
+ #include "hw/qdev-properties.h"
  
-diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
-index c2394ff001..61f23561b7 100644
---- a/.gitlab-ci.d/container-cross.yml
-+++ b/.gitlab-ci.d/container-cross.yml
-@@ -110,12 +110,6 @@ s390x-debian-cross-container:
-   variables:
-     NAME: debian-s390x-cross
+ #include "hw/watchdog/wdt_imx2.h"
++#include "trace.h"
  
--sh4-debian-cross-container:
--  extends: .container_job_template
--  stage: containers
--  variables:
--    NAME: debian-sh4-cross
--
- sparc64-debian-cross-container:
-   extends: .container_job_template
-   stage: containers
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 25147f0220..654f24b188 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -130,7 +130,7 @@ DOCKER_PARTIAL_IMAGES += debian-microblaze-cross
- DOCKER_PARTIAL_IMAGES += debian-mips-cross
- DOCKER_PARTIAL_IMAGES += debian-nios2-cross
- DOCKER_PARTIAL_IMAGES += debian-riscv64-test-cross
--DOCKER_PARTIAL_IMAGES += debian-sh4-cross debian-sparc64-cross
-+DOCKER_PARTIAL_IMAGES += debian-sparc64-cross
- DOCKER_PARTIAL_IMAGES += debian-xtensa-cross
- DOCKER_PARTIAL_IMAGES += fedora-cris-cross
+ static void imx2_wdt_interrupt(void *opaque)
+ {
+@@ -67,20 +68,29 @@ static void imx2_wdt_reset(DeviceState *dev)
+ static uint64_t imx2_wdt_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+     IMX2WdtState *s = IMX2_WDT(opaque);
++    uint16_t value = 0;
  
-diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
-index 205173b0a5..43cc083318 100644
---- a/tests/docker/dockerfiles/debian-all-test-cross.docker
-+++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
-@@ -52,8 +52,6 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-         libc6-dev-riscv64-cross \
-         gcc-s390x-linux-gnu \
-         libc6-dev-s390x-cross \
--        gcc-sh4-linux-gnu \
--        libc6-dev-sh4-cross \
-         gcc-sparc64-linux-gnu \
-         libc6-dev-sparc64-cross \
-         python3-pip \
-@@ -64,7 +62,7 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
- RUN /usr/bin/pip3 install tomli
+     switch (addr) {
+     case IMX2_WDT_WCR:
+-        return s->wcr;
++        value = s->wcr;
++        break;
+     case IMX2_WDT_WSR:
+-        return s->wsr;
++        value = s->wsr;
++        break;
+     case IMX2_WDT_WRSR:
+-        return s->wrsr;
++        value = s->wrsr;
++        break;
+     case IMX2_WDT_WICR:
+-        return s->wicr;
++        value = s->wicr;
++        break;
+     case IMX2_WDT_WMCR:
+-        return s->wmcr;
++        value = s->wmcr;
++        break;
+     }
+-    return 0;
++
++    trace_imx2_wdt_read(addr, value);
++
++    return value;
+ }
  
- ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
--ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
-+ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sparc64-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-legacy-test-cross.docker b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
-index 763d36dfe3..d9b37995a2 100644
---- a/tests/docker/dockerfiles/debian-legacy-test-cross.docker
-+++ b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
-@@ -4,6 +4,7 @@
- # upgrade. Currently:
- #
- #   libc6.1-dev-alpha-cross: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054412
-+#   sh4-linux-user: binaries don't run with bookworm compiler
- #
- # As we are targeting check-tcg here we only need minimal qemu
- # dependencies and the relevant cross compilers.
-@@ -38,7 +39,7 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
- RUN /usr/bin/pip3 install tomli
+ static void imx_wdt2_update_itimer(IMX2WdtState *s, bool start)
+@@ -137,6 +147,8 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
+ {
+     IMX2WdtState *s = IMX2_WDT(opaque);
  
- ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
--ENV DEF_TARGET_LIST alpha-linux-user
-+ENV DEF_TARGET_LIST alpha-linux-user,sh4-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-sh4-cross.docker b/tests/docker/dockerfiles/debian-sh4-cross.docker
-deleted file mode 100644
-index 6bd8171d33..0000000000
---- a/tests/docker/dockerfiles/debian-sh4-cross.docker
-+++ /dev/null
-@@ -1,19 +0,0 @@
--#
--# Docker cross-compiler target
--#
--# This docker target builds on the Debian Bullseye base image.
--#
--FROM docker.io/library/debian:11-slim
--
--RUN export DEBIAN_FRONTEND=noninteractive && \
--    apt-get update && \
--    apt-get install -y eatmydata && \
--    eatmydata apt-get dist-upgrade -y && \
--    eatmydata apt-get install --no-install-recommends -y \
--        gcc-sh4-linux-gnu \
--        libc6-dev-sh4-cross
--# As a final step configure the user (if env is defined)
--ARG USER
--ARG UID
--RUN if [ "${USER}" ]; then \
--  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
++    trace_imx2_wdt_write(addr, value);
++
+     switch (addr) {
+     case IMX2_WDT_WCR:
+         if (s->wcr_locked) {
+diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
+index 2739570652..874968cc06 100644
+--- a/hw/watchdog/trace-events
++++ b/hw/watchdog/trace-events
+@@ -17,6 +17,10 @@ cmsdk_apb_watchdog_lock(uint32_t lock) "CMSDK APB watchdog: lock %" PRIu32
+ aspeed_wdt_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+ aspeed_wdt_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+ 
++# wdt_imx2.c
++imx2_wdt_read(uint32_t addr, uint16_t data) "[0x%" PRIx32 "] -> 0x%" PRIx16
++imx2_wdt_write(uint32_t addr, uint16_t data) "[0x%" PRIx32 "] <- 0x%" PRIx16
++
+ # spapr_watchdog.c
+ spapr_watchdog_start(uint64_t flags, uint64_t num, uint64_t timeout) "Flags 0x%" PRIx64 " num=%" PRId64 " %" PRIu64 "ms"
+ spapr_watchdog_stop(uint64_t num, uint64_t ret) "num=%" PRIu64 " ret=%" PRId64
 -- 
-2.39.2
+2.42.0
+

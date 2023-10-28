@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y20-20020a1c4b14000000b0040588d85b3asm7021327wma.15.2023.10.28.03.33.12
+        by smtp.gmail.com with ESMTPSA id c9-20020a7bc849000000b00405d9a950a2sm7076142wml.28.2023.10.28.03.33.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Oct 2023 03:33:13 -0700 (PDT)
+        Sat, 28 Oct 2023 03:33:14 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2E37F5F798;
+	by draig.lan (Postfix) with ESMTP id 96E265F79E;
 	Sat, 28 Oct 2023 11:33:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,159 +27,108 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Brad Smith <brad@comstyle.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 02/17] tests/tcg: Add -fno-stack-protector
-Date: Sat, 28 Oct 2023 11:32:56 +0100
-Message-Id: <20231028103311.347104-3-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 06/17] tests/docker: use debian-all-test-cross for power
+Date: Sat, 28 Oct 2023 11:33:00 +0100
+Message-Id: <20231028103311.347104-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
 References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: q+SyuRbX9iMY
+X-TUID: ajvkN6oVwoZj
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Maintaining two sets of containers for test building is silly. While
+it makes sense for the QEMU cross-compile targets to have their own
+fat containers built by lcitool we might as well merge the other
+random debian based compilers into the same one used on gitlab.
 
-A build of GCC 13.2 will have stack protector enabled by default if it
-was configured with --enable-default-ssp option. For such a compiler,
-it is necessary to explicitly disable stack protector when linking
-without standard libraries.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20230731091042.139159-3-akihiko.odaki@daynix.com>
-[AJB: fix comment string typo]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/mips/hello-mips.c       | 4 ++--
- tests/tcg/Makefile.target         | 2 +-
- tests/tcg/aarch64/Makefile.target | 2 +-
- tests/tcg/arm/Makefile.target     | 2 +-
- tests/tcg/cris/Makefile.target    | 2 +-
- tests/tcg/hexagon/Makefile.target | 2 +-
- tests/tcg/i386/Makefile.target    | 2 +-
- tests/tcg/minilib/Makefile.target | 2 +-
- tests/tcg/mips/Makefile.target    | 2 +-
- 9 files changed, 10 insertions(+), 10 deletions(-)
+ configure                                     |  4 ++--
+ .gitlab-ci.d/container-cross.yml              |  6 -----
+ tests/docker/Makefile.include                 |  1 -
+ .../debian-powerpc-test-cross.docker          | 23 -------------------
+ 4 files changed, 2 insertions(+), 32 deletions(-)
+ delete mode 100644 tests/docker/dockerfiles/debian-powerpc-test-cross.docker
 
-diff --git a/tests/tcg/mips/hello-mips.c b/tests/tcg/mips/hello-mips.c
-index 4e1cf501af..38e22d00e3 100644
---- a/tests/tcg/mips/hello-mips.c
-+++ b/tests/tcg/mips/hello-mips.c
-@@ -5,8 +5,8 @@
- * http://www.linux-mips.org/wiki/MIPSABIHistory
- * http://www.linux.com/howtos/Assembly-HOWTO/mips.shtml
- *
--* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -mabi=32 \
--*                  -O2 -static -o hello-mips hello-mips.c
-+* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -fno-stack-protector \
-+*                  -mabi=32 -O2 -static -o hello-mips hello-mips.c
- *
- */
- #define __NR_SYSCALL_BASE	4000
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index f3a189c9d4..8cf65f68dd 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -123,7 +123,7 @@ else
- # For system targets we include a different Makefile fragment as the
- # build options for bare programs are usually pretty different. They
- # are expected to provide their own build recipes.
--EXTRA_CFLAGS += -ffreestanding
-+EXTRA_CFLAGS += -ffreestanding -fno-stack-protector
- -include $(SRC_PATH)/tests/tcg/minilib/Makefile.target
- -include $(SRC_PATH)/tests/tcg/multiarch/system/Makefile.softmmu-target
- -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.softmmu-target
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 62b38c792f..0c84b61ae0 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -53,7 +53,7 @@ endif
- # bti-1 tests the elf notes, so we require special compiler support.
- ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
- AARCH64_TESTS += bti-1 bti-3
--bti-1 bti-3: CFLAGS += -mbranch-protection=standard
-+bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
- bti-1 bti-3: LDFLAGS += -nostdlib
- endif
- # bti-2 tests PROT_BTI, so no special compiler support required.
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 0038cef02c..3473f4619e 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -12,7 +12,7 @@ float_madds: CFLAGS+=-mfpu=neon-vfpv4
+diff --git a/configure b/configure
+index 37d1b10b87..8707bd2e78 100755
+--- a/configure
++++ b/configure
+@@ -1325,12 +1325,12 @@ probe_target_compiler() {
+         container_cross_prefix=nios2-linux-gnu-
+         ;;
+       ppc)
+-        container_image=debian-powerpc-test-cross
++        container_image=debian-all-test-cross
+         container_cross_prefix=powerpc-linux-gnu-
+         container_cross_cc=${container_cross_prefix}gcc
+         ;;
+       ppc64|ppc64le)
+-        container_image=debian-powerpc-test-cross
++        container_image=debian-all-test-cross
+         container_cross_prefix=powerpc${target_arch#ppc}-linux-gnu-
+         container_cross_cc=${container_cross_prefix}gcc-10
+         ;;
+diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
+index 61f23561b7..ec56990bc5 100644
+--- a/.gitlab-ci.d/container-cross.yml
++++ b/.gitlab-ci.d/container-cross.yml
+@@ -76,12 +76,6 @@ mipsel-debian-cross-container:
+   variables:
+     NAME: debian-mipsel-cross
  
- # Basic Hello World
- ARM_TESTS = hello-arm
--hello-arm: CFLAGS+=-marm -ffreestanding
-+hello-arm: CFLAGS+=-marm -ffreestanding -fno-stack-protector
- hello-arm: LDFLAGS+=-nostdlib
+-powerpc-test-cross-container:
+-  extends: .container_job_template
+-  stage: containers
+-  variables:
+-    NAME: debian-powerpc-test-cross
+-
+ ppc64el-debian-cross-container:
+   extends: .container_job_template
+   stage: containers
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 654f24b188..356986d687 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -122,7 +122,6 @@ docker-image-debian-nios2-cross: $(DOCKER_FILES_DIR)/debian-toolchain.docker \
+ 	$(call debian-toolchain, $@)
  
- # IWMXT floating point extensions
-diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
-index 43587d2769..713e2a5b6c 100644
---- a/tests/tcg/cris/Makefile.target
-+++ b/tests/tcg/cris/Makefile.target
-@@ -30,7 +30,7 @@ AS	= $(CC) -x assembler-with-cpp
- LD      = $(CC)
- 
- # we rely on GCC inline:ing the stuff we tell it to in many places here.
--CFLAGS  = -Winline -Wall -g -O2 -static
-+CFLAGS  = -Winline -Wall -g -O2 -static -fno-stack-protector
- NOSTDFLAGS = -nostartfiles -nostdlib
- ASFLAGS += -mcpu=v10 -g -Wa,-I,$(SRC_PATH)/tests/tcg/cris/bare
- CRT_FILES = crt.o sys.o
-diff --git a/tests/tcg/hexagon/Makefile.target b/tests/tcg/hexagon/Makefile.target
-index 87ed2c90b9..f839b2c0d5 100644
---- a/tests/tcg/hexagon/Makefile.target
-+++ b/tests/tcg/hexagon/Makefile.target
-@@ -19,7 +19,7 @@
- EXTRA_RUNS =
- 
- CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal
--CFLAGS += -fno-unroll-loops
-+CFLAGS += -fno-unroll-loops -fno-stack-protector
- 
- HEX_SRC=$(SRC_PATH)/tests/tcg/hexagon
- VPATH += $(HEX_SRC)
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index fdf757c6ce..3dec7c6c42 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -35,7 +35,7 @@ run-test-aes: QEMU_OPTS += -cpu max
- #
- # hello-i386 is a barebones app
- #
--hello-i386: CFLAGS+=-ffreestanding
-+hello-i386: CFLAGS+=-ffreestanding -fno-stack-protector
- hello-i386: LDFLAGS+=-nostdlib
- 
- # test-386 includes a couple of additional objects that need to be
-diff --git a/tests/tcg/minilib/Makefile.target b/tests/tcg/minilib/Makefile.target
-index c821d2806a..af0bf54be9 100644
---- a/tests/tcg/minilib/Makefile.target
-+++ b/tests/tcg/minilib/Makefile.target
-@@ -12,7 +12,7 @@ SYSTEM_MINILIB_SRC=$(SRC_PATH)/tests/tcg/minilib
- MINILIB_SRCS=$(wildcard $(SYSTEM_MINILIB_SRC)/*.c)
- MINILIB_OBJS=$(patsubst $(SYSTEM_MINILIB_SRC)/%.c, %.o, $(MINILIB_SRCS))
- 
--MINILIB_CFLAGS+=-nostdlib -ggdb -O0
-+MINILIB_CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0
- MINILIB_INC=-isystem $(SYSTEM_MINILIB_SRC)
- 
- .PRECIOUS: $(MINILIB_OBJS)
-diff --git a/tests/tcg/mips/Makefile.target b/tests/tcg/mips/Makefile.target
-index 1a994d5525..5d17c1706e 100644
---- a/tests/tcg/mips/Makefile.target
-+++ b/tests/tcg/mips/Makefile.target
-@@ -14,6 +14,6 @@ MIPS_TESTS=hello-mips
- 
- TESTS += $(MIPS_TESTS)
- 
--hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -mabi=32
-+hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -fno-stack-protector -mabi=32
- hello-mips: LDFLAGS+=-nostdlib
- endif
+ # These images may be good enough for building tests but not for test builds
+-DOCKER_PARTIAL_IMAGES += debian-powerpc-test-cross
+ DOCKER_PARTIAL_IMAGES += debian-hppa-cross
+ DOCKER_PARTIAL_IMAGES += debian-loongarch-cross
+ DOCKER_PARTIAL_IMAGES += debian-m68k-cross debian-mips64-cross
+diff --git a/tests/docker/dockerfiles/debian-powerpc-test-cross.docker b/tests/docker/dockerfiles/debian-powerpc-test-cross.docker
+deleted file mode 100644
+index 23779413d3..0000000000
+--- a/tests/docker/dockerfiles/debian-powerpc-test-cross.docker
++++ /dev/null
+@@ -1,23 +0,0 @@
+-#
+-# Docker powerpc/ppc64/ppc64le cross-compiler target
+-#
+-# This docker target builds on the Debian Bullseye base image.
+-#
+-FROM docker.io/library/debian:11-slim
+-
+-RUN export DEBIAN_FRONTEND=noninteractive && \
+-    apt-get update && \
+-    apt-get install -y eatmydata && \
+-    eatmydata apt-get dist-upgrade -y && \
+-    eatmydata apt-get install --no-install-recommends -y \
+-        gcc-powerpc-linux-gnu \
+-        libc6-dev-powerpc-cross \
+-        gcc-10-powerpc64-linux-gnu \
+-        libc6-dev-ppc64-cross \
+-        gcc-10-powerpc64le-linux-gnu \
+-        libc6-dev-ppc64el-cross
+-# As a final step configure the user (if env is defined)
+-ARG USER
+-ARG UID
+-RUN if [ "${USER}" ]; then \
+-  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
 -- 
 2.39.2

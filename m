@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bq22-20020a5d5a16000000b0032f7865a4c7sm1548316wrb.21.2023.10.28.03.33.13
+        by smtp.gmail.com with ESMTPSA id m9-20020adfe949000000b0032196c508e3sm3582913wrn.53.2023.10.28.03.33.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Sat, 28 Oct 2023 03:33:14 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C6CF15F7A0;
+	by draig.lan (Postfix) with ESMTP id AE4D45F79F;
 	Sat, 28 Oct 2023 11:33:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,16 +28,16 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Brad Smith <brad@comstyle.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 08/17] tests/docker: use debian-all-test-cross for m68k
-Date: Sat, 28 Oct 2023 11:33:02 +0100
-Message-Id: <20231028103311.347104-9-alex.bennee@linaro.org>
+Subject: [PATCH 07/17] tests/docker: use debian-all-test-cross for hppa
+Date: Sat, 28 Oct 2023 11:33:01 +0100
+Message-Id: <20231028103311.347104-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
 References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: La/e3Xu2nBhq
+X-TUID: WDsvVZYIXstI
 
 Maintaining two sets of containers for test building is silly. While
 it makes sense for the QEMU cross-compile targets to have their own
@@ -48,61 +48,60 @@ Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
  configure                                     |  5 +++++
  .gitlab-ci.d/container-cross.yml              |  6 ------
- tests/docker/Makefile.include                 |  2 +-
- .../dockerfiles/debian-m68k-cross.docker      | 19 -------------------
- 4 files changed, 6 insertions(+), 26 deletions(-)
- delete mode 100644 tests/docker/dockerfiles/debian-m68k-cross.docker
+ tests/docker/Makefile.include                 |  1 -
+ .../dockerfiles/debian-hppa-cross.docker      | 19 -------------------
+ 4 files changed, 5 insertions(+), 26 deletions(-)
+ delete mode 100644 tests/docker/dockerfiles/debian-hppa-cross.docker
 
 diff --git a/configure b/configure
-index 0a755c71a0..c7c811fb02 100755
+index 8707bd2e78..0a755c71a0 100755
 --- a/configure
 +++ b/configure
-@@ -1313,6 +1313,11 @@ probe_target_compiler() {
-         container_image=debian-loongarch-cross
-         container_cross_prefix=loongarch64-unknown-linux-gnu-
+@@ -1300,6 +1300,11 @@ probe_target_compiler() {
+         container_cross_prefix=hexagon-unknown-linux-musl-
+         container_cross_cc=${container_cross_prefix}clang
          ;;
-+      m68k)
++      hppa)
 +        container_image=debian-all-test-cross
-+        container_cross_prefix=m68k-linux-gnu-
++        container_cross_prefix=hppa-linux-gnu-
 +        container_cross_cc=${container_cross_prefix}gcc
 +        ;;
-       microblaze)
-         container_image=debian-microblaze-cross
-         container_cross_prefix=microblaze-linux-musl-
+       i386)
+         container_image=fedora-i386-cross
+         container_cross_prefix=
 diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
-index 5f8616c0fd..cf2fcaa59e 100644
+index ec56990bc5..5f8616c0fd 100644
 --- a/.gitlab-ci.d/container-cross.yml
 +++ b/.gitlab-ci.d/container-cross.yml
 @@ -40,12 +40,6 @@ hexagon-cross-container:
    variables:
      NAME: debian-hexagon-cross
  
--m68k-debian-cross-container:
+-hppa-debian-cross-container:
 -  extends: .container_job_template
 -  stage: containers
 -  variables:
--    NAME: debian-m68k-cross
+-    NAME: debian-hppa-cross
 -
- mips64-debian-cross-container:
+ m68k-debian-cross-container:
    extends: .container_job_template
    stage: containers
 diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index b701f1225a..f482b1e92d 100644
+index 356986d687..b701f1225a 100644
 --- a/tests/docker/Makefile.include
 +++ b/tests/docker/Makefile.include
-@@ -123,7 +123,7 @@ docker-image-debian-nios2-cross: $(DOCKER_FILES_DIR)/debian-toolchain.docker \
+@@ -122,7 +122,6 @@ docker-image-debian-nios2-cross: $(DOCKER_FILES_DIR)/debian-toolchain.docker \
+ 	$(call debian-toolchain, $@)
  
  # These images may be good enough for building tests but not for test builds
+-DOCKER_PARTIAL_IMAGES += debian-hppa-cross
  DOCKER_PARTIAL_IMAGES += debian-loongarch-cross
--DOCKER_PARTIAL_IMAGES += debian-m68k-cross debian-mips64-cross
-+DOCKER_PARTIAL_IMAGES += debian-mips64-cross
+ DOCKER_PARTIAL_IMAGES += debian-m68k-cross debian-mips64-cross
  DOCKER_PARTIAL_IMAGES += debian-microblaze-cross
- DOCKER_PARTIAL_IMAGES += debian-mips-cross
- DOCKER_PARTIAL_IMAGES += debian-nios2-cross
-diff --git a/tests/docker/dockerfiles/debian-m68k-cross.docker b/tests/docker/dockerfiles/debian-m68k-cross.docker
+diff --git a/tests/docker/dockerfiles/debian-hppa-cross.docker b/tests/docker/dockerfiles/debian-hppa-cross.docker
 deleted file mode 100644
-index 25dd1c1e68..0000000000
---- a/tests/docker/dockerfiles/debian-m68k-cross.docker
+index dd47ffdfa4..0000000000
+--- a/tests/docker/dockerfiles/debian-hppa-cross.docker
 +++ /dev/null
 @@ -1,19 +0,0 @@
 -#
@@ -117,8 +116,8 @@ index 25dd1c1e68..0000000000
 -    apt-get install -y eatmydata && \
 -    eatmydata apt-get dist-upgrade -y && \
 -    eatmydata apt-get install --no-install-recommends -y \
--        gcc-m68k-linux-gnu \
--        libc6-dev-m68k-cross
+-        gcc-hppa-linux-gnu \
+-        libc6-dev-hppa-cross
 -# As a final step configure the user (if env is defined)
 -ARG USER
 -ARG UID

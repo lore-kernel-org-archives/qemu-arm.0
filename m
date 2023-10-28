@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 3-20020a05600c248300b00406408dc788sm7135731wms.44.2023.10.28.03.33.12
+        by smtp.gmail.com with ESMTPSA id y20-20020a1c4b14000000b0040588d85b3asm7021327wma.15.2023.10.28.03.33.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Oct 2023 03:33:12 -0700 (PDT)
+        Sat, 28 Oct 2023 03:33:13 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id ECE225F76C;
-	Sat, 28 Oct 2023 11:33:11 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 2E37F5F798;
+	Sat, 28 Oct 2023 11:33:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
@@ -27,107 +27,159 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Brad Smith <brad@comstyle.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 00/17] Maintainer updates for testing, gdb, semihosting and plugins
-Date: Sat, 28 Oct 2023 11:32:54 +0100
-Message-Id: <20231028103311.347104-1-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 02/17] tests/tcg: Add -fno-stack-protector
+Date: Sat, 28 Oct 2023 11:32:56 +0100
+Message-Id: <20231028103311.347104-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231028103311.347104-1-alex.bennee@linaro.org>
+References: <20231028103311.347104-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: djw6nPTA5QJ6
+X-TUID: q+SyuRbX9iMY
 
-This collects up a number of fixes across my various maintainer trees.
-There will be a longer plugins related one coming later but I wanted
-to turn these around first. The update to bookworm was delayed from
-the last release but I've now "solved" that by moving sh4 and alpha
-into a legacy container stuck on bullseye.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-I've also taken the opportunity to rationalise our zoo of containers
-to better sync up with what we actually use on gitlab.
+A build of GCC 13.2 will have stack protector enabled by default if it
+was configured with --enable-default-ssp option. For such a compiler,
+it is necessary to explicitly disable stack protector when linking
+without standard libraries.
 
-The following still need review:
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20230731091042.139159-3-akihiko.odaki@daynix.com>
+[AJB: fix comment string typo]
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/mips/hello-mips.c       | 4 ++--
+ tests/tcg/Makefile.target         | 2 +-
+ tests/tcg/aarch64/Makefile.target | 2 +-
+ tests/tcg/arm/Makefile.target     | 2 +-
+ tests/tcg/cris/Makefile.target    | 2 +-
+ tests/tcg/hexagon/Makefile.target | 2 +-
+ tests/tcg/i386/Makefile.target    | 2 +-
+ tests/tcg/minilib/Makefile.target | 2 +-
+ tests/tcg/mips/Makefile.target    | 2 +-
+ 9 files changed, 10 insertions(+), 10 deletions(-)
 
-  plugins: Remove an extra parameter
-  tests/docker: upgrade debian-all-test-cross to bookworm
-  tests/docker: use debian-all-test-cross for sparc64
-  tests/docker: use debian-all-test-cross for riscv64
-  tests/docker: use debian-all-test-cross for mips
-  tests/docker: use debian-all-test-cross for mips64
-  tests/docker: use debian-all-test-cross for m68k
-  tests/docker: use debian-all-test-cross for hppa
-  tests/docker: use debian-all-test-cross for power
-  tests/docker: move sh4 to use debian-legacy-test-cross
-  tests/docker: use debian-legacy-test-cross for alpha
-  gitlab: split alpha testing into a legacy container
-
-Akihiko Odaki (3):
-  tests/tcg: Add -fno-stack-protector
-  gdbstub: Check if gdb_regs is NULL
-  plugins: Remove an extra parameter
-
-Alex Bennée (11):
-  gitlab: split alpha testing into a legacy container
-  tests/docker: use debian-legacy-test-cross for alpha
-  tests/docker: move sh4 to use debian-legacy-test-cross
-  tests/docker: use debian-all-test-cross for power
-  tests/docker: use debian-all-test-cross for hppa
-  tests/docker: use debian-all-test-cross for m68k
-  tests/docker: use debian-all-test-cross for mips64
-  tests/docker: use debian-all-test-cross for mips
-  tests/docker: use debian-all-test-cross for riscv64
-  tests/docker: use debian-all-test-cross for sparc64
-  tests/docker: upgrade debian-all-test-cross to bookworm
-
-Cong Liu (1):
-  contrib/plugins: Close file descriptor on error return
-
-Matheus Tavares Bernardino (1):
-  semihosting: fix memleak at semihosting_arg_fallback
-
-Thomas Huth (1):
-  tests/vm/openbsd: Use the system dtc package
-
- configure                                     | 37 ++++++++++-
- accel/tcg/plugin-gen.c                        |  9 +--
- contrib/plugins/lockstep.c                    |  2 +
- gdbstub/gdbstub.c                             | 34 ++++++-----
- semihosting/config.c                          |  3 +-
- tests/tcg/mips/hello-mips.c                   |  4 +-
- .gitlab-ci.d/buildtest.yml                    | 20 +++++-
- .gitlab-ci.d/container-cross.yml              | 61 ++-----------------
- tests/docker/Makefile.include                 |  7 ---
- .../dockerfiles/debian-all-test-cross.docker  | 26 ++++----
- .../dockerfiles/debian-alpha-cross.docker     | 19 ------
- .../dockerfiles/debian-hppa-cross.docker      | 19 ------
- .../debian-legacy-test-cross.docker           | 47 ++++++++++++++
- .../dockerfiles/debian-m68k-cross.docker      | 19 ------
- .../dockerfiles/debian-mips-cross.docker      | 19 ------
- .../dockerfiles/debian-mips64-cross.docker    | 19 ------
- .../debian-powerpc-test-cross.docker          | 23 -------
- .../debian-riscv64-test-cross.docker          | 19 ------
- .../dockerfiles/debian-sh4-cross.docker       | 19 ------
- .../dockerfiles/debian-sparc64-cross.docker   | 19 ------
- tests/tcg/Makefile.target                     |  2 +-
- tests/tcg/aarch64/Makefile.target             |  2 +-
- tests/tcg/arm/Makefile.target                 |  2 +-
- tests/tcg/cris/Makefile.target                |  2 +-
- tests/tcg/hexagon/Makefile.target             |  2 +-
- tests/tcg/i386/Makefile.target                |  2 +-
- tests/tcg/minilib/Makefile.target             |  2 +-
- tests/tcg/mips/Makefile.target                |  2 +-
- tests/vm/openbsd                              |  6 +-
- 29 files changed, 158 insertions(+), 289 deletions(-)
- delete mode 100644 tests/docker/dockerfiles/debian-alpha-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-hppa-cross.docker
- create mode 100644 tests/docker/dockerfiles/debian-legacy-test-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-m68k-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-mips-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-mips64-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-powerpc-test-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-riscv64-test-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-sh4-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-sparc64-cross.docker
-
+diff --git a/tests/tcg/mips/hello-mips.c b/tests/tcg/mips/hello-mips.c
+index 4e1cf501af..38e22d00e3 100644
+--- a/tests/tcg/mips/hello-mips.c
++++ b/tests/tcg/mips/hello-mips.c
+@@ -5,8 +5,8 @@
+ * http://www.linux-mips.org/wiki/MIPSABIHistory
+ * http://www.linux.com/howtos/Assembly-HOWTO/mips.shtml
+ *
+-* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -mabi=32 \
+-*                  -O2 -static -o hello-mips hello-mips.c
++* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -fno-stack-protector \
++*                  -mabi=32 -O2 -static -o hello-mips hello-mips.c
+ *
+ */
+ #define __NR_SYSCALL_BASE	4000
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index f3a189c9d4..8cf65f68dd 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -123,7 +123,7 @@ else
+ # For system targets we include a different Makefile fragment as the
+ # build options for bare programs are usually pretty different. They
+ # are expected to provide their own build recipes.
+-EXTRA_CFLAGS += -ffreestanding
++EXTRA_CFLAGS += -ffreestanding -fno-stack-protector
+ -include $(SRC_PATH)/tests/tcg/minilib/Makefile.target
+ -include $(SRC_PATH)/tests/tcg/multiarch/system/Makefile.softmmu-target
+ -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.softmmu-target
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 62b38c792f..0c84b61ae0 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -53,7 +53,7 @@ endif
+ # bti-1 tests the elf notes, so we require special compiler support.
+ ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
+ AARCH64_TESTS += bti-1 bti-3
+-bti-1 bti-3: CFLAGS += -mbranch-protection=standard
++bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
+ bti-1 bti-3: LDFLAGS += -nostdlib
+ endif
+ # bti-2 tests PROT_BTI, so no special compiler support required.
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 0038cef02c..3473f4619e 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -12,7 +12,7 @@ float_madds: CFLAGS+=-mfpu=neon-vfpv4
+ 
+ # Basic Hello World
+ ARM_TESTS = hello-arm
+-hello-arm: CFLAGS+=-marm -ffreestanding
++hello-arm: CFLAGS+=-marm -ffreestanding -fno-stack-protector
+ hello-arm: LDFLAGS+=-nostdlib
+ 
+ # IWMXT floating point extensions
+diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
+index 43587d2769..713e2a5b6c 100644
+--- a/tests/tcg/cris/Makefile.target
++++ b/tests/tcg/cris/Makefile.target
+@@ -30,7 +30,7 @@ AS	= $(CC) -x assembler-with-cpp
+ LD      = $(CC)
+ 
+ # we rely on GCC inline:ing the stuff we tell it to in many places here.
+-CFLAGS  = -Winline -Wall -g -O2 -static
++CFLAGS  = -Winline -Wall -g -O2 -static -fno-stack-protector
+ NOSTDFLAGS = -nostartfiles -nostdlib
+ ASFLAGS += -mcpu=v10 -g -Wa,-I,$(SRC_PATH)/tests/tcg/cris/bare
+ CRT_FILES = crt.o sys.o
+diff --git a/tests/tcg/hexagon/Makefile.target b/tests/tcg/hexagon/Makefile.target
+index 87ed2c90b9..f839b2c0d5 100644
+--- a/tests/tcg/hexagon/Makefile.target
++++ b/tests/tcg/hexagon/Makefile.target
+@@ -19,7 +19,7 @@
+ EXTRA_RUNS =
+ 
+ CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal
+-CFLAGS += -fno-unroll-loops
++CFLAGS += -fno-unroll-loops -fno-stack-protector
+ 
+ HEX_SRC=$(SRC_PATH)/tests/tcg/hexagon
+ VPATH += $(HEX_SRC)
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index fdf757c6ce..3dec7c6c42 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -35,7 +35,7 @@ run-test-aes: QEMU_OPTS += -cpu max
+ #
+ # hello-i386 is a barebones app
+ #
+-hello-i386: CFLAGS+=-ffreestanding
++hello-i386: CFLAGS+=-ffreestanding -fno-stack-protector
+ hello-i386: LDFLAGS+=-nostdlib
+ 
+ # test-386 includes a couple of additional objects that need to be
+diff --git a/tests/tcg/minilib/Makefile.target b/tests/tcg/minilib/Makefile.target
+index c821d2806a..af0bf54be9 100644
+--- a/tests/tcg/minilib/Makefile.target
++++ b/tests/tcg/minilib/Makefile.target
+@@ -12,7 +12,7 @@ SYSTEM_MINILIB_SRC=$(SRC_PATH)/tests/tcg/minilib
+ MINILIB_SRCS=$(wildcard $(SYSTEM_MINILIB_SRC)/*.c)
+ MINILIB_OBJS=$(patsubst $(SYSTEM_MINILIB_SRC)/%.c, %.o, $(MINILIB_SRCS))
+ 
+-MINILIB_CFLAGS+=-nostdlib -ggdb -O0
++MINILIB_CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0
+ MINILIB_INC=-isystem $(SYSTEM_MINILIB_SRC)
+ 
+ .PRECIOUS: $(MINILIB_OBJS)
+diff --git a/tests/tcg/mips/Makefile.target b/tests/tcg/mips/Makefile.target
+index 1a994d5525..5d17c1706e 100644
+--- a/tests/tcg/mips/Makefile.target
++++ b/tests/tcg/mips/Makefile.target
+@@ -14,6 +14,6 @@ MIPS_TESTS=hello-mips
+ 
+ TESTS += $(MIPS_TESTS)
+ 
+-hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -mabi=32
++hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -fno-stack-protector -mabi=32
+ hello-mips: LDFLAGS+=-nostdlib
+ endif
 -- 
 2.39.2

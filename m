@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o12-20020a056000010c00b003232f167df5sm6084952wrx.108.2023.10.29.07.50.34
+        by smtp.gmail.com with ESMTPSA id bu3-20020a056000078300b0032dab20e773sm6200141wrb.69.2023.10.29.07.50.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Sun, 29 Oct 2023 07:50:34 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4122B5F7A2;
+	by draig.lan (Postfix) with ESMTP id 58A965F7A3;
 	Sun, 29 Oct 2023 14:50:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,161 +27,186 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>,
 	Brian Cain <bcain@quicinc.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 02/19] tests/tcg: Add -fno-stack-protector
-Date: Sun, 29 Oct 2023 14:50:16 +0000
-Message-Id: <20231029145033.592566-3-alex.bennee@linaro.org>
+	Alexandre Iooss <erdnaxe@crans.org>
+Subject: [PATCH v2 03/19] gitlab: split alpha testing into a legacy container
+Date: Sun, 29 Oct 2023 14:50:17 +0000
+Message-Id: <20231029145033.592566-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231029145033.592566-1-alex.bennee@linaro.org>
 References: <20231029145033.592566-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0iWOfDSTWoUw
+X-TUID: NNP5I6YU/9Eh
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+The current bookworm compiler doesn't build the static binaries due to
+bug #1054412 and it might be awhile before it gets fixed. The problem
+of keeping older architecture compilers running isn't going to go away
+so lets prepare the ground. Create a legacy container and move some
+tests around so the others can get upgraded.
 
-A build of GCC 13.2 will have stack protector enabled by default if it
-was configured with --enable-default-ssp option. For such a compiler,
-it is necessary to explicitly disable stack protector when linking
-without standard libraries.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20230731091042.139159-3-akihiko.odaki@daynix.com>
-[AJB: fix comment string typo]
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231028103311.347104-3-alex.bennee@linaro.org>
----
- tests/tcg/mips/hello-mips.c       | 4 ++--
- tests/tcg/Makefile.target         | 2 +-
- tests/tcg/aarch64/Makefile.target | 2 +-
- tests/tcg/arm/Makefile.target     | 2 +-
- tests/tcg/cris/Makefile.target    | 2 +-
- tests/tcg/hexagon/Makefile.target | 2 +-
- tests/tcg/i386/Makefile.target    | 2 +-
- tests/tcg/minilib/Makefile.target | 2 +-
- tests/tcg/mips/Makefile.target    | 2 +-
- 9 files changed, 10 insertions(+), 10 deletions(-)
+Message-Id: <20231028103311.347104-4-alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/mips/hello-mips.c b/tests/tcg/mips/hello-mips.c
-index 4e1cf501af..38e22d00e3 100644
---- a/tests/tcg/mips/hello-mips.c
-+++ b/tests/tcg/mips/hello-mips.c
-@@ -5,8 +5,8 @@
- * http://www.linux-mips.org/wiki/MIPSABIHistory
- * http://www.linux.com/howtos/Assembly-HOWTO/mips.shtml
- *
--* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -mabi=32 \
--*                  -O2 -static -o hello-mips hello-mips.c
-+* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -fno-stack-protector \
-+*                  -mabi=32 -O2 -static -o hello-mips hello-mips.c
- *
- */
- #define __NR_SYSCALL_BASE	4000
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index f3a189c9d4..8cf65f68dd 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -123,7 +123,7 @@ else
- # For system targets we include a different Makefile fragment as the
- # build options for bare programs are usually pretty different. They
- # are expected to provide their own build recipes.
--EXTRA_CFLAGS += -ffreestanding
-+EXTRA_CFLAGS += -ffreestanding -fno-stack-protector
- -include $(SRC_PATH)/tests/tcg/minilib/Makefile.target
- -include $(SRC_PATH)/tests/tcg/multiarch/system/Makefile.softmmu-target
- -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.softmmu-target
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 62b38c792f..0c84b61ae0 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -53,7 +53,7 @@ endif
- # bti-1 tests the elf notes, so we require special compiler support.
- ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
- AARCH64_TESTS += bti-1 bti-3
--bti-1 bti-3: CFLAGS += -mbranch-protection=standard
-+bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
- bti-1 bti-3: LDFLAGS += -nostdlib
- endif
- # bti-2 tests PROT_BTI, so no special compiler support required.
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 0038cef02c..3473f4619e 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -12,7 +12,7 @@ float_madds: CFLAGS+=-mfpu=neon-vfpv4
+---
+v2
+  - split other softmmu patches into a new patch
+---
+ .gitlab-ci.d/buildtest.yml                    | 19 ++++++--
+ .gitlab-ci.d/container-cross.yml              |  6 +++
+ .../dockerfiles/debian-all-test-cross.docker  |  4 +-
+ .../debian-legacy-test-cross.docker           | 46 +++++++++++++++++++
+ 4 files changed, 69 insertions(+), 6 deletions(-)
+ create mode 100644 tests/docker/dockerfiles/debian-legacy-test-cross.docker
+
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 25af1bc41e..bb24e052f6 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -256,6 +256,7 @@ build-user:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --disable-tools --disable-system
++      --target-list-exclude=alpha-linux-user
+     MAKE_CHECK_ARGS: check-tcg
  
- # Basic Hello World
- ARM_TESTS = hello-arm
--hello-arm: CFLAGS+=-marm -ffreestanding
-+hello-arm: CFLAGS+=-marm -ffreestanding -fno-stack-protector
- hello-arm: LDFLAGS+=-nostdlib
+ build-user-static:
+@@ -265,6 +266,18 @@ build-user-static:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --disable-tools --disable-system --static
++      --target-list-exclude=alpha-linux-user
++    MAKE_CHECK_ARGS: check-tcg
++
++# targets stuck on older compilers
++build-legacy:
++  extends: .native_build_job_template
++  needs:
++    job: amd64-debian-legacy-cross-container
++  variables:
++    IMAGE: debian-legacy-test-cross
++    TARGETS: alpha-linux-user alpha-softmmu
++    CONFIGURE_ARGS: --disable-tools
+     MAKE_CHECK_ARGS: check-tcg
  
- # IWMXT floating point extensions
-diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
-index 43587d2769..713e2a5b6c 100644
---- a/tests/tcg/cris/Makefile.target
-+++ b/tests/tcg/cris/Makefile.target
-@@ -30,7 +30,7 @@ AS	= $(CC) -x assembler-with-cpp
- LD      = $(CC)
+ build-user-hexagon:
+@@ -285,7 +298,7 @@ build-some-softmmu:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --disable-tools --enable-debug
+-    TARGETS: xtensa-softmmu arm-softmmu aarch64-softmmu alpha-softmmu
++    TARGETS: xtensa-softmmu arm-softmmu aarch64-softmmu
+     MAKE_CHECK_ARGS: check-tcg
  
- # we rely on GCC inline:ing the stuff we tell it to in many places here.
--CFLAGS  = -Winline -Wall -g -O2 -static
-+CFLAGS  = -Winline -Wall -g -O2 -static -fno-stack-protector
- NOSTDFLAGS = -nostartfiles -nostdlib
- ASFLAGS += -mcpu=v10 -g -Wa,-I,$(SRC_PATH)/tests/tcg/cris/bare
- CRT_FILES = crt.o sys.o
-diff --git a/tests/tcg/hexagon/Makefile.target b/tests/tcg/hexagon/Makefile.target
-index 87ed2c90b9..f839b2c0d5 100644
---- a/tests/tcg/hexagon/Makefile.target
-+++ b/tests/tcg/hexagon/Makefile.target
-@@ -19,7 +19,7 @@
- EXTRA_RUNS =
+ # We build tricore in a very minimal tricore only container
+@@ -318,7 +331,7 @@ clang-user:
+   variables:
+     IMAGE: debian-all-test-cross
+     CONFIGURE_ARGS: --cc=clang --cxx=clang++ --disable-system
+-      --target-list-exclude=microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
++      --target-list-exclude=alpha-linux-user,microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
+       --extra-cflags=-fsanitize=undefined --extra-cflags=-fno-sanitize-recover=undefined
+     MAKE_CHECK_ARGS: check-unit check-tcg
  
- CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal
--CFLAGS += -fno-unroll-loops
-+CFLAGS += -fno-unroll-loops -fno-stack-protector
+@@ -505,7 +518,7 @@ build-tci:
+   variables:
+     IMAGE: debian-all-test-cross
+   script:
+-    - TARGETS="aarch64 alpha arm hppa m68k microblaze ppc64 s390x x86_64"
++    - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
+     - mkdir build
+     - cd build
+     - ../configure --enable-tcg-interpreter --disable-docs --disable-gtk --disable-vnc
+diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
+index 2848166ba3..80c540230a 100644
+--- a/.gitlab-ci.d/container-cross.yml
++++ b/.gitlab-ci.d/container-cross.yml
+@@ -16,6 +16,12 @@ amd64-debian-user-cross-container:
+   variables:
+     NAME: debian-all-test-cross
  
- HEX_SRC=$(SRC_PATH)/tests/tcg/hexagon
- VPATH += $(HEX_SRC)
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index fdf757c6ce..3dec7c6c42 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -35,7 +35,7 @@ run-test-aes: QEMU_OPTS += -cpu max
- #
- # hello-i386 is a barebones app
- #
--hello-i386: CFLAGS+=-ffreestanding
-+hello-i386: CFLAGS+=-ffreestanding -fno-stack-protector
- hello-i386: LDFLAGS+=-nostdlib
++amd64-debian-legacy-cross-container:
++  extends: .container_job_template
++  stage: containers
++  variables:
++    NAME: debian-legacy-test-cross
++
+ arm64-debian-cross-container:
+   extends: .container_job_template
+   stage: containers
+diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
+index 54e957d5e7..205173b0a5 100644
+--- a/tests/docker/dockerfiles/debian-all-test-cross.docker
++++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
+@@ -28,8 +28,6 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+         ninja-build \
+         gcc-aarch64-linux-gnu \
+         libc6-dev-arm64-cross \
+-        gcc-alpha-linux-gnu \
+-        libc6.1-dev-alpha-cross \
+         gcc-arm-linux-gnueabihf \
+         libc6-dev-armhf-cross \
+         gcc-hppa-linux-gnu \
+@@ -66,7 +64,7 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+ RUN /usr/bin/pip3 install tomli
  
- # test-386 includes a couple of additional objects that need to be
-diff --git a/tests/tcg/minilib/Makefile.target b/tests/tcg/minilib/Makefile.target
-index c821d2806a..af0bf54be9 100644
---- a/tests/tcg/minilib/Makefile.target
-+++ b/tests/tcg/minilib/Makefile.target
-@@ -12,7 +12,7 @@ SYSTEM_MINILIB_SRC=$(SRC_PATH)/tests/tcg/minilib
- MINILIB_SRCS=$(wildcard $(SYSTEM_MINILIB_SRC)/*.c)
- MINILIB_OBJS=$(patsubst $(SYSTEM_MINILIB_SRC)/%.c, %.o, $(MINILIB_SRCS))
- 
--MINILIB_CFLAGS+=-nostdlib -ggdb -O0
-+MINILIB_CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0
- MINILIB_INC=-isystem $(SYSTEM_MINILIB_SRC)
- 
- .PRECIOUS: $(MINILIB_OBJS)
-diff --git a/tests/tcg/mips/Makefile.target b/tests/tcg/mips/Makefile.target
-index 1a994d5525..5d17c1706e 100644
---- a/tests/tcg/mips/Makefile.target
-+++ b/tests/tcg/mips/Makefile.target
-@@ -14,6 +14,6 @@ MIPS_TESTS=hello-mips
- 
- TESTS += $(MIPS_TESTS)
- 
--hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -mabi=32
-+hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -fno-stack-protector -mabi=32
- hello-mips: LDFLAGS+=-nostdlib
- endif
+ ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
+-ENV DEF_TARGET_LIST aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
++ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-legacy-test-cross.docker b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
+new file mode 100644
+index 0000000000..763d36dfe3
+--- /dev/null
++++ b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
+@@ -0,0 +1,46 @@
++# Docker legacy cross-compiler target (tests and minimal qemu)
++#
++# Compilers for some of our older targets which we cant currently
++# upgrade. Currently:
++#
++#   libc6.1-dev-alpha-cross: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054412
++#
++# As we are targeting check-tcg here we only need minimal qemu
++# dependencies and the relevant cross compilers.
++
++FROM docker.io/library/debian:11-slim
++
++# Duplicate deb line as deb-src
++RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
++
++RUN export DEBIAN_FRONTEND=noninteractive && \
++    apt-get update && \
++    apt-get install -y eatmydata && \
++    eatmydata apt-get dist-upgrade -y && \
++    apt build-dep -yy qemu
++
++# Add extra build tools and as many cross compilers as we can for testing
++RUN DEBIAN_FRONTEND=noninteractive eatmydata \
++        apt install -y --no-install-recommends \
++        bison \
++        ccache \
++        clang  \
++        flex \
++        git \
++        ninja-build \
++        gcc-alpha-linux-gnu \
++        libc6.1-dev-alpha-cross \
++        python3-pip \
++        python3-setuptools \
++        python3-venv \
++        python3-wheel
++
++RUN /usr/bin/pip3 install tomli
++
++ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
++ENV DEF_TARGET_LIST alpha-linux-user
++# As a final step configure the user (if env is defined)
++ARG USER
++ARG UID
++RUN if [ "${USER}" ]; then \
++  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
 -- 
 2.39.2

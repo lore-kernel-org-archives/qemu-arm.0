@@ -1,184 +1,132 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp814351ejc;
-        Sat, 28 Oct 2023 05:26:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFVRlTTjFhgvKkIY4+Md+k0D5tjS/r7Ype3yiif/QIf0N3X/b8r/5Bm+DDIFMnVdtVuuLJ1
-X-Received: by 2002:a05:620a:2490:b0:779:9b67:811 with SMTP id i16-20020a05620a249000b007799b670811mr6476834qkn.52.1698496010390;
-        Sat, 28 Oct 2023 05:26:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698496010; cv=none;
-        d=google.com; s=arc-20160816;
-        b=SWChjez5SFgtCzV2r2VQ9mvznHTuUHwTTxHU41S3JXBSz4X/01ITmRZNsCqKUuliCK
-         htp/3A2Rn3xwdiGCKtTCFI2iTg1VtBGW2AFYI6tfEfCbdI3rqXA+76kkd0d9qXxpyb4Y
-         VYpJoP7zeUmO1+VxxDhjLR2uuB2bWeoi+c5YsH8pOfqjxB47UFmnXYWQc/4hQyNaWOZZ
-         KRYiyt6zFqL1HoZKR+c6gAWGFJS7Kq4+ktJMpqxnO9WCucbqSF6uM3as4YyOmc2MqphD
-         01PVq/eSG6loPDo5lBsn/m70KrjnbV9yP+jz2uNP9O9G+/zDI4jl7PmtgLN/m5UUcq5d
-         S5wQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=p98LzR4A98wQ5ZfYaKYuefbwebJ7vVfonZaSMKgh8fI=;
-        fh=mPN9/WblWXCg2g59vjErH+E42ODcsdjD5KgDEJZDWAk=;
-        b=ejL6+Ef829JhYXMukz3TBDKgGqk3loUX/uUdNGWoFFStNkxAOJhPNY+AMkzQzt9agb
-         6EN0MKDAg+8pnmolN9z0s9GHTjb552njmAVmz7aZeu2IScdqm3pRp5PGXl3qr077TMVw
-         zEel6d+NxyqjT8e7s0VilMV7zNMa5eAxrsa54MjaD5TnIBY9DByH7GgBOK/RjWRudMQ3
-         HpNhR2q3WXgqSfLMQdAHUTmofAIP6T3qf6uM6pZw9R8KvwZtvIUeXg3zCqPE4D8POrSN
-         yWtG89dw/R2DW9KJgw19Ca5fzUaCetoNAzgnWY7EeWIurJ2SJ4mfVKeNwq4zjb6TkesW
-         jkSA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Ltxrwo8f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5-20020a05620a268500b00768064b6b5bsi2179391qkp.755.2023.10.28.05.26.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 28 Oct 2023 05:26:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Ltxrwo8f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qwiMq-0006Q7-HI; Sat, 28 Oct 2023 08:24:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1qwiMo-0006OT-Rq; Sat, 28 Oct 2023 08:24:38 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1qwiMj-0006m0-Jo; Sat, 28 Oct 2023 08:24:38 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-9d10f94f70bso130853866b.3; 
- Sat, 28 Oct 2023 05:24:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698495871; x=1699100671; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=p98LzR4A98wQ5ZfYaKYuefbwebJ7vVfonZaSMKgh8fI=;
- b=Ltxrwo8fo+ppBxo9soWE1pFE66G33G1uPSN7E0VdVwWEIdwUMfDg7tmcVr4UNf0Wjw
- zcCM+BqCjcz6vDU1IAOK3ago39QHmbxys+eiHqbDIdBxQTothuVVX9yL7cU2wd2KHmbc
- MMKkfQWDklaBPkh5JP2Tp4TEecDos78nP7QOJIgTh7lxPlab0iQMFiEbqEraCeLbZaJ8
- 5Jah9VuuK08WVe2BHdyHbV/WjO1uR0prJMoz5J1MDL1QGjU23sB/oUSCDfnOxKCMxA5H
- kjVrbPUPbkzufi8CYQGuLxi9S3MH1zWqdpKa1ULrLtWw9WvSzdwJRGvRCsGasHJsPG3v
- fsgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698495871; x=1699100671;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=p98LzR4A98wQ5ZfYaKYuefbwebJ7vVfonZaSMKgh8fI=;
- b=rKgMTWjAnGr2lakIhdOq0G+zPGcQnoNnbAQwBRQhhjEf9KcjYWDPvfvv82Y07qu1aA
- uZeLVsKVXiJ/0dIAvOO25aXjfIyoI3K8zO+j7UBQeGrdfM2mTfKluL5aknAGUK86NLih
- OH7SGHeM0k0rU6hgkHbT8pWpWbx6OCmdHzgB5U+JsOtwq61iGjx8+V0JqI8Ly3WH0Ds2
- 3qPSPTpLAZjS4ByOIbaqvJ34hrn0CPHp62aBVvx3po7spRiPlvd/mNKUimeNKWp8Mu+S
- Ft4NXAb71i2BRLFODYXnpjZpTuRW5nFySA3QqWZmKWpThw3QGSu8qCMpVPGFDHTsyGd1
- LKNg==
-X-Gm-Message-State: AOJu0YxPZRQSngoXkXSLNvejUWDhRA09/p9LLnofqYvFExWNA892xUEC
- JB9oekUq5sRSzHeKhm4uoHwibFNF9Qc=
-X-Received: by 2002:a17:907:3f1f:b0:9ae:4878:1172 with SMTP id
- hq31-20020a1709073f1f00b009ae48781172mr4123125ejc.7.1698495870679; 
- Sat, 28 Oct 2023 05:24:30 -0700 (PDT)
-Received: from archlinux.. (dynamic-089-012-044-170.89.12.pool.telefonica.de.
- [89.12.44.170]) by smtp.gmail.com with ESMTPSA id
- a13-20020a170906190d00b009ae3d711fd9sm2706687eje.69.2023.10.28.05.24.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 28 Oct 2023 05:24:30 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id je12-20020a05600c1f8c00b004080f0376a0sm6730174wmb.42.2023.10.29.07.50.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Oct 2023 07:50:34 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 0CCF25F7A0;
+	Sun, 29 Oct 2023 14:50:34 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 3/6] hw/misc/imx7_snvs: Trace MMIO access
-Date: Sat, 28 Oct 2023 14:24:12 +0200
-Message-ID: <20231028122415.14869-4-shentey@gmail.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231028122415.14869-1-shentey@gmail.com>
-References: <20231028122415.14869-1-shentey@gmail.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Brad Smith <brad@comstyle.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Kyle Evans <kevans@freebsd.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Warner Losh <imp@bsdimp.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Beraldo Leal <bleal@redhat.com>,
+	Brian Cain <bcain@quicinc.com>,
+	Alexandre Iooss <erdnaxe@crans.org>
+Subject: [PATCH v2 00/19] Maintainer updates for testing, gdb, semihosting and plugins (pre-PR)
+Date: Sun, 29 Oct 2023 14:50:14 +0000
+Message-Id: <20231029145033.592566-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F+9kRECcAaa8
+X-TUID: LGIyFZ8xpqv9
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/misc/imx7_snvs.c  | 5 +++++
- hw/misc/trace-events | 4 ++++
- 2 files changed, 9 insertions(+)
+This collects up a number of fixes across my various maintainer trees.
+There will be a longer plugins related one coming later but I wanted
+to turn these around first. The update to bookworm was delayed from
+the last release but I've now "solved" that by moving sh4 and alpha
+into a legacy container stuck on bullseye.
 
-diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
-index ee7698bd9c..a245f96cd4 100644
---- a/hw/misc/imx7_snvs.c
-+++ b/hw/misc/imx7_snvs.c
-@@ -16,9 +16,12 @@
- #include "hw/misc/imx7_snvs.h"
- #include "qemu/module.h"
- #include "sysemu/runstate.h"
-+#include "trace.h"
- 
- static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
- {
-+    trace_imx7_snvs_read(offset, 0);
-+
-     return 0;
- }
- 
-@@ -28,6 +31,8 @@ static void imx7_snvs_write(void *opaque, hwaddr offset,
-     const uint32_t value = v;
-     const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
- 
-+    trace_imx7_snvs_write(offset, value);
-+
-     if (offset == SNVS_LPCR && ((value & mask) == mask)) {
-         qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-     }
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 24ba7cc4d0..426a8472b6 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -115,6 +115,10 @@ msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL status regist
- imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
- imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
- 
-+# imx7_snvs.c
-+imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-+imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-+
- # mos6522.c
- mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
- mos6522_get_next_irq_time(uint16_t latch, int64_t d, int64_t delta) "latch=%d counter=0x%"PRIx64 " delta_next=0x%"PRIx64
+v2
+  - further split the first alpha patch
+  - re-base and merge conflicts
+  - address comments and tags
+
+The following still need review:
+
+  tests/docker: upgrade debian-all-test-cross to bookworm (1 acks, 1 sobs, 0 tbs)
+  tests/docker: use debian-all-test-cross for sparc64
+  tests/docker: move sh4 to use debian-legacy-test-cross
+  gitlab: add build-loongarch to matrix
+  gitlab: clean-up build-soft-softmmu job
+  gitlab: split alpha testing into a legacy container
+
+Akihiko Odaki (3):
+  tests/tcg: Add -fno-stack-protector
+  gdbstub: Check if gdb_regs is NULL
+  plugins: Remove an extra parameter
+
+Alex Bennée (13):
+  gitlab: split alpha testing into a legacy container
+  gitlab: clean-up build-soft-softmmu job
+  gitlab: add build-loongarch to matrix
+  tests/docker: use debian-legacy-test-cross for alpha
+  tests/docker: move sh4 to use debian-legacy-test-cross
+  tests/docker: use debian-all-test-cross for power
+  tests/docker: use debian-all-test-cross for hppa
+  tests/docker: use debian-all-test-cross for m68k
+  tests/docker: use debian-all-test-cross for mips64
+  tests/docker: use debian-all-test-cross for mips
+  tests/docker: use debian-all-test-cross for riscv64
+  tests/docker: use debian-all-test-cross for sparc64
+  tests/docker: upgrade debian-all-test-cross to bookworm
+
+Cong Liu (1):
+  contrib/plugins: Close file descriptor on error return
+
+Matheus Tavares Bernardino (1):
+  semihosting: fix memleak at semihosting_arg_fallback
+
+Thomas Huth (1):
+  tests/vm/openbsd: Use the system dtc package
+
+ configure                                     | 37 +++++++++++-
+ accel/tcg/plugin-gen.c                        |  9 +--
+ contrib/plugins/lockstep.c                    |  2 +
+ gdbstub/gdbstub.c                             | 34 ++++++-----
+ semihosting/config.c                          |  3 +-
+ tests/tcg/mips/hello-mips.c                   |  4 +-
+ .gitlab-ci.d/buildtest.yml                    | 34 +++++++++--
+ .gitlab-ci.d/container-cross.yml              | 59 +++----------------
+ tests/docker/Makefile.include                 |  8 ---
+ .../dockerfiles/debian-all-test-cross.docker  | 26 ++++----
+ .../dockerfiles/debian-alpha-cross.docker     | 19 ------
+ .../dockerfiles/debian-hppa-cross.docker      | 19 ------
+ .../debian-legacy-test-cross.docker           | 47 +++++++++++++++
+ .../dockerfiles/debian-loongarch-cross.docker | 22 ++++++-
+ .../dockerfiles/debian-m68k-cross.docker      | 19 ------
+ .../dockerfiles/debian-mips-cross.docker      | 19 ------
+ .../dockerfiles/debian-mips64-cross.docker    | 19 ------
+ .../debian-powerpc-test-cross.docker          | 23 --------
+ .../debian-riscv64-test-cross.docker          | 19 ------
+ .../dockerfiles/debian-sh4-cross.docker       | 19 ------
+ .../dockerfiles/debian-sparc64-cross.docker   | 19 ------
+ tests/tcg/Makefile.target                     |  2 +-
+ tests/tcg/aarch64/Makefile.target             |  2 +-
+ tests/tcg/arm/Makefile.target                 |  2 +-
+ tests/tcg/cris/Makefile.target                |  2 +-
+ tests/tcg/hexagon/Makefile.target             |  2 +-
+ tests/tcg/i386/Makefile.target                |  2 +-
+ tests/tcg/minilib/Makefile.target             |  2 +-
+ tests/tcg/mips/Makefile.target                |  2 +-
+ tests/vm/openbsd                              |  6 +-
+ 30 files changed, 194 insertions(+), 288 deletions(-)
+ delete mode 100644 tests/docker/dockerfiles/debian-alpha-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-hppa-cross.docker
+ create mode 100644 tests/docker/dockerfiles/debian-legacy-test-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-m68k-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-mips-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-mips64-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-powerpc-test-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-riscv64-test-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-sh4-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-sparc64-cross.docker
+
 -- 
-2.42.0
-
+2.39.2

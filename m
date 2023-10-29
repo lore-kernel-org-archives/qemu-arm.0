@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id k6-20020adff286000000b0032da8fb0d05sm6071554wro.110.2023.10.29.07.50.37
+        by smtp.gmail.com with ESMTPSA id o8-20020a056000010800b0032d8354fb43sm2271548wrx.76.2023.10.29.07.56.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Oct 2023 07:50:40 -0700 (PDT)
+        Sun, 29 Oct 2023 07:56:16 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 89FDD656E6;
+	by draig.lan (Postfix) with ESMTP id C59406570A;
 	Sun, 29 Oct 2023 14:50:35 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,80 +27,63 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>,
 	Brian Cain <bcain@quicinc.com>,
-	Alexandre Iooss <erdnaxe@crans.org>
-Subject: [PATCH v2 15/19] tests/docker: upgrade debian-all-test-cross to bookworm
-Date: Sun, 29 Oct 2023 14:50:29 +0000
-Message-Id: <20231029145033.592566-16-alex.bennee@linaro.org>
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v2 18/19] plugins: Remove an extra parameter
+Date: Sun, 29 Oct 2023 14:50:32 +0000
+Message-Id: <20231029145033.592566-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231029145033.592566-1-alex.bennee@linaro.org>
 References: <20231029145033.592566-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Rtm5qwEgJ2Re
+X-TUID: X23m+iepvdw1
 
-This requires a few more tweaks than usual as:
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-  - the default sources format has changed
-  - bring in python3-tomli from the repos
-  - split base install from cross compilers
-  - also include libclang-rt-dev for sanitiser builds
+copy_call() has an unused parameter so remove it.
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231028103311.347104-14-alex.bennee@linaro.org>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20231019101030.128431-7-akihiko.odaki@daynix.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231028103311.347104-17-alex.bennee@linaro.org>
 ---
- .../dockerfiles/debian-all-test-cross.docker  | 20 +++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+ accel/tcg/plugin-gen.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
-index 43cc083318..2cc7a24d4d 100644
---- a/tests/docker/dockerfiles/debian-all-test-cross.docker
-+++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
-@@ -6,10 +6,10 @@
- # basic compilers for as many targets as possible. We shall use this
- # to build and run linux-user tests on GitLab
- #
--FROM docker.io/library/debian:11-slim
-+FROM docker.io/library/debian:12-slim
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 39b3c9351f..78b331b251 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -327,8 +327,7 @@ static TCGOp *copy_st_ptr(TCGOp **begin_op, TCGOp *op)
+     return op;
+ }
  
- # Duplicate deb line as deb-src
--RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
-+RUN sed -in "s/Types: deb/Types: deb deb-src/g" /etc/apt/sources.list.d/debian.sources
+-static TCGOp *copy_call(TCGOp **begin_op, TCGOp *op, void *empty_func,
+-                        void *func, int *cb_idx)
++static TCGOp *copy_call(TCGOp **begin_op, TCGOp *op, void *func, int *cb_idx)
+ {
+     TCGOp *old_op;
+     int func_idx;
+@@ -372,8 +371,7 @@ static TCGOp *append_udata_cb(const struct qemu_plugin_dyn_cb *cb,
+     }
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-@@ -25,7 +25,16 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-         clang  \
-         flex \
-         git \
-+        libclang-rt-dev \
-         ninja-build \
-+        python3-pip \
-+        python3-setuptools \
-+        python3-tomli \
-+        python3-venv \
-+        python3-wheel
-+
-+RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-+        apt install -y --no-install-recommends \
-         gcc-aarch64-linux-gnu \
-         libc6-dev-arm64-cross \
-         gcc-arm-linux-gnueabihf \
-@@ -53,13 +62,8 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-         gcc-s390x-linux-gnu \
-         libc6-dev-s390x-cross \
-         gcc-sparc64-linux-gnu \
--        libc6-dev-sparc64-cross \
--        python3-pip \
--        python3-setuptools \
--        python3-venv \
--        python3-wheel
-+        libc6-dev-sparc64-cross
+     /* call */
+-    op = copy_call(&begin_op, op, HELPER(plugin_vcpu_udata_cb),
+-                   cb->f.vcpu_udata, cb_idx);
++    op = copy_call(&begin_op, op, cb->f.vcpu_udata, cb_idx);
  
--RUN /usr/bin/pip3 install tomli
+     return op;
+ }
+@@ -420,8 +418,7 @@ static TCGOp *append_mem_cb(const struct qemu_plugin_dyn_cb *cb,
  
- ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
- ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sparc64-linux-user
+     if (type == PLUGIN_GEN_CB_MEM) {
+         /* call */
+-        op = copy_call(&begin_op, op, HELPER(plugin_vcpu_mem_cb),
+-                       cb->f.vcpu_udata, cb_idx);
++        op = copy_call(&begin_op, op, cb->f.vcpu_udata, cb_idx);
+     }
+ 
+     return op;
 -- 
 2.39.2

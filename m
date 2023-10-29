@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bu3-20020a056000078300b0032dab20e773sm6200141wrb.69.2023.10.29.07.50.34
+        by smtp.gmail.com with ESMTPSA id t13-20020a5d534d000000b0032d9548240fsm6116589wrv.82.2023.10.29.07.50.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Oct 2023 07:50:34 -0700 (PDT)
+        Sun, 29 Oct 2023 07:50:36 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 58A965F7A3;
+	by draig.lan (Postfix) with ESMTP id D303E655DF;
 	Sun, 29 Oct 2023 14:50:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,185 +28,109 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>,
 	Brian Cain <bcain@quicinc.com>,
 	Alexandre Iooss <erdnaxe@crans.org>
-Subject: [PATCH v2 03/19] gitlab: split alpha testing into a legacy container
-Date: Sun, 29 Oct 2023 14:50:17 +0000
-Message-Id: <20231029145033.592566-4-alex.bennee@linaro.org>
+Subject: [PATCH v2 08/19] tests/docker: use debian-all-test-cross for power
+Date: Sun, 29 Oct 2023 14:50:22 +0000
+Message-Id: <20231029145033.592566-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231029145033.592566-1-alex.bennee@linaro.org>
 References: <20231029145033.592566-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NNP5I6YU/9Eh
+X-TUID: a0kZn+HBkIN1
 
-The current bookworm compiler doesn't build the static binaries due to
-bug #1054412 and it might be awhile before it gets fixed. The problem
-of keeping older architecture compilers running isn't going to go away
-so lets prepare the ground. Create a legacy container and move some
-tests around so the others can get upgraded.
+Maintaining two sets of containers for test building is silly. While
+it makes sense for the QEMU cross-compile targets to have their own
+fat containers built by lcitool we might as well merge the other
+random debian based compilers into the same one used on gitlab.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231028103311.347104-4-alex.bennee@linaro.org>
-
+Message-Id: <20231028103311.347104-7-alex.bennee@linaro.org>
 ---
-v2
-  - split other softmmu patches into a new patch
----
- .gitlab-ci.d/buildtest.yml                    | 19 ++++++--
- .gitlab-ci.d/container-cross.yml              |  6 +++
- .../dockerfiles/debian-all-test-cross.docker  |  4 +-
- .../debian-legacy-test-cross.docker           | 46 +++++++++++++++++++
- 4 files changed, 69 insertions(+), 6 deletions(-)
- create mode 100644 tests/docker/dockerfiles/debian-legacy-test-cross.docker
+ configure                                     |  4 ++--
+ .gitlab-ci.d/container-cross.yml              |  6 -----
+ tests/docker/Makefile.include                 |  1 -
+ .../debian-powerpc-test-cross.docker          | 23 -------------------
+ 4 files changed, 2 insertions(+), 32 deletions(-)
+ delete mode 100644 tests/docker/dockerfiles/debian-powerpc-test-cross.docker
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 25af1bc41e..bb24e052f6 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -256,6 +256,7 @@ build-user:
-   variables:
-     IMAGE: debian-all-test-cross
-     CONFIGURE_ARGS: --disable-tools --disable-system
-+      --target-list-exclude=alpha-linux-user
-     MAKE_CHECK_ARGS: check-tcg
- 
- build-user-static:
-@@ -265,6 +266,18 @@ build-user-static:
-   variables:
-     IMAGE: debian-all-test-cross
-     CONFIGURE_ARGS: --disable-tools --disable-system --static
-+      --target-list-exclude=alpha-linux-user
-+    MAKE_CHECK_ARGS: check-tcg
-+
-+# targets stuck on older compilers
-+build-legacy:
-+  extends: .native_build_job_template
-+  needs:
-+    job: amd64-debian-legacy-cross-container
-+  variables:
-+    IMAGE: debian-legacy-test-cross
-+    TARGETS: alpha-linux-user alpha-softmmu
-+    CONFIGURE_ARGS: --disable-tools
-     MAKE_CHECK_ARGS: check-tcg
- 
- build-user-hexagon:
-@@ -285,7 +298,7 @@ build-some-softmmu:
-   variables:
-     IMAGE: debian-all-test-cross
-     CONFIGURE_ARGS: --disable-tools --enable-debug
--    TARGETS: xtensa-softmmu arm-softmmu aarch64-softmmu alpha-softmmu
-+    TARGETS: xtensa-softmmu arm-softmmu aarch64-softmmu
-     MAKE_CHECK_ARGS: check-tcg
- 
- # We build tricore in a very minimal tricore only container
-@@ -318,7 +331,7 @@ clang-user:
-   variables:
-     IMAGE: debian-all-test-cross
-     CONFIGURE_ARGS: --cc=clang --cxx=clang++ --disable-system
--      --target-list-exclude=microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
-+      --target-list-exclude=alpha-linux-user,microblazeel-linux-user,aarch64_be-linux-user,i386-linux-user,m68k-linux-user,mipsn32el-linux-user,xtensaeb-linux-user
-       --extra-cflags=-fsanitize=undefined --extra-cflags=-fno-sanitize-recover=undefined
-     MAKE_CHECK_ARGS: check-unit check-tcg
- 
-@@ -505,7 +518,7 @@ build-tci:
-   variables:
-     IMAGE: debian-all-test-cross
-   script:
--    - TARGETS="aarch64 alpha arm hppa m68k microblaze ppc64 s390x x86_64"
-+    - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
-     - mkdir build
-     - cd build
-     - ../configure --enable-tcg-interpreter --disable-docs --disable-gtk --disable-vnc
+diff --git a/configure b/configure
+index 37d1b10b87..8707bd2e78 100755
+--- a/configure
++++ b/configure
+@@ -1325,12 +1325,12 @@ probe_target_compiler() {
+         container_cross_prefix=nios2-linux-gnu-
+         ;;
+       ppc)
+-        container_image=debian-powerpc-test-cross
++        container_image=debian-all-test-cross
+         container_cross_prefix=powerpc-linux-gnu-
+         container_cross_cc=${container_cross_prefix}gcc
+         ;;
+       ppc64|ppc64le)
+-        container_image=debian-powerpc-test-cross
++        container_image=debian-all-test-cross
+         container_cross_prefix=powerpc${target_arch#ppc}-linux-gnu-
+         container_cross_cc=${container_cross_prefix}gcc-10
+         ;;
 diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
-index 2848166ba3..80c540230a 100644
+index 3e6d741f62..a1dac0a45f 100644
 --- a/.gitlab-ci.d/container-cross.yml
 +++ b/.gitlab-ci.d/container-cross.yml
-@@ -16,6 +16,12 @@ amd64-debian-user-cross-container:
+@@ -82,12 +82,6 @@ mipsel-debian-cross-container:
    variables:
-     NAME: debian-all-test-cross
+     NAME: debian-mipsel-cross
  
-+amd64-debian-legacy-cross-container:
-+  extends: .container_job_template
-+  stage: containers
-+  variables:
-+    NAME: debian-legacy-test-cross
-+
- arm64-debian-cross-container:
+-powerpc-test-cross-container:
+-  extends: .container_job_template
+-  stage: containers
+-  variables:
+-    NAME: debian-powerpc-test-cross
+-
+ ppc64el-debian-cross-container:
    extends: .container_job_template
    stage: containers
-diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
-index 54e957d5e7..205173b0a5 100644
---- a/tests/docker/dockerfiles/debian-all-test-cross.docker
-+++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
-@@ -28,8 +28,6 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-         ninja-build \
-         gcc-aarch64-linux-gnu \
-         libc6-dev-arm64-cross \
--        gcc-alpha-linux-gnu \
--        libc6.1-dev-alpha-cross \
-         gcc-arm-linux-gnueabihf \
-         libc6-dev-armhf-cross \
-         gcc-hppa-linux-gnu \
-@@ -66,7 +64,7 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
- RUN /usr/bin/pip3 install tomli
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index f61d97102f..82e06d84b3 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -122,7 +122,6 @@ docker-image-debian-nios2-cross: $(DOCKER_FILES_DIR)/debian-toolchain.docker \
+ 	$(call debian-toolchain, $@)
  
- ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
--ENV DEF_TARGET_LIST aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
-+ENV DEF_TARGET_LIST aarch64-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-legacy-test-cross.docker b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
-new file mode 100644
-index 0000000000..763d36dfe3
---- /dev/null
-+++ b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
-@@ -0,0 +1,46 @@
-+# Docker legacy cross-compiler target (tests and minimal qemu)
-+#
-+# Compilers for some of our older targets which we cant currently
-+# upgrade. Currently:
-+#
-+#   libc6.1-dev-alpha-cross: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054412
-+#
-+# As we are targeting check-tcg here we only need minimal qemu
-+# dependencies and the relevant cross compilers.
-+
-+FROM docker.io/library/debian:11-slim
-+
-+# Duplicate deb line as deb-src
-+RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
-+
-+RUN export DEBIAN_FRONTEND=noninteractive && \
-+    apt-get update && \
-+    apt-get install -y eatmydata && \
-+    eatmydata apt-get dist-upgrade -y && \
-+    apt build-dep -yy qemu
-+
-+# Add extra build tools and as many cross compilers as we can for testing
-+RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-+        apt install -y --no-install-recommends \
-+        bison \
-+        ccache \
-+        clang  \
-+        flex \
-+        git \
-+        ninja-build \
-+        gcc-alpha-linux-gnu \
-+        libc6.1-dev-alpha-cross \
-+        python3-pip \
-+        python3-setuptools \
-+        python3-venv \
-+        python3-wheel
-+
-+RUN /usr/bin/pip3 install tomli
-+
-+ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
-+ENV DEF_TARGET_LIST alpha-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
+ # These images may be good enough for building tests but not for test builds
+-DOCKER_PARTIAL_IMAGES += debian-powerpc-test-cross
+ DOCKER_PARTIAL_IMAGES += debian-hppa-cross
+ DOCKER_PARTIAL_IMAGES += debian-m68k-cross debian-mips64-cross
+ DOCKER_PARTIAL_IMAGES += debian-microblaze-cross
+diff --git a/tests/docker/dockerfiles/debian-powerpc-test-cross.docker b/tests/docker/dockerfiles/debian-powerpc-test-cross.docker
+deleted file mode 100644
+index 23779413d3..0000000000
+--- a/tests/docker/dockerfiles/debian-powerpc-test-cross.docker
++++ /dev/null
+@@ -1,23 +0,0 @@
+-#
+-# Docker powerpc/ppc64/ppc64le cross-compiler target
+-#
+-# This docker target builds on the Debian Bullseye base image.
+-#
+-FROM docker.io/library/debian:11-slim
+-
+-RUN export DEBIAN_FRONTEND=noninteractive && \
+-    apt-get update && \
+-    apt-get install -y eatmydata && \
+-    eatmydata apt-get dist-upgrade -y && \
+-    eatmydata apt-get install --no-install-recommends -y \
+-        gcc-powerpc-linux-gnu \
+-        libc6-dev-powerpc-cross \
+-        gcc-10-powerpc64-linux-gnu \
+-        libc6-dev-ppc64-cross \
+-        gcc-10-powerpc64le-linux-gnu \
+-        libc6-dev-ppc64el-cross
+-# As a final step configure the user (if env is defined)
+-ARG USER
+-ARG UID
+-RUN if [ "${USER}" ]; then \
+-  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
 -- 
 2.39.2

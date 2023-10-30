@@ -1,121 +1,110 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1939712ejc;
-        Mon, 30 Oct 2023 08:16:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG8ZcA0h9x5eS5wHi3RNgSzLm89/KuzcX/CoslOWDrZ2WKhjZOV9/WmaVhqkmXuY5gjqUIJ
-X-Received: by 2002:a05:6358:e497:b0:168:e887:2646 with SMTP id by23-20020a056358e49700b00168e8872646mr11880005rwb.29.1698678998435;
-        Mon, 30 Oct 2023 08:16:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698678998; cv=none;
+Received: by 2002:a05:7022:1119:b0:6e:5a56:ff6c with SMTP id ou25csp1635275dlb;
+        Mon, 30 Oct 2023 10:40:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFIW9p5J+9L7z790HZNWvQZdJHhdEq08kx6zQuOAVCCQQ0bv4APMQat+E+4Yck2h+GI2vJI
+X-Received: by 2002:a05:622a:44b:b0:412:3092:feab with SMTP id o11-20020a05622a044b00b004123092feabmr12092266qtx.50.1698687636727;
+        Mon, 30 Oct 2023 10:40:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698687636; cv=none;
         d=google.com; s=arc-20160816;
-        b=DttXHjz04LseY30/IcSFpsBsNOn1WPHKwQ9iGnSoAJHvZTGCLUthrchrruEGW57Ihf
-         XY/2U6SK6TyNUyc4/d3TjEonrkbZOgkA4daHzQkCpvlFXVyk7PgXr7zVU0AY7fikakX9
-         sccQ1KZtoz9SMQf5fxO4/UqBpr2M/tpt198cd7lEKIqKbbjKoXct1zk9VKPk3PZjne9s
-         MFfjOVWp4EhQ3Xn1Hwrt8mmA6nuqKW0/WaQwd1SxqAz4OC3pa93EqZQKC5utT/r5jA7l
-         MGvbstnRujbZ7lw69+4nWV0VqHOi9u44iCSQUIzPeBmj/nYjWvHFSwVrg5CWNEh+v6o6
-         PJxQ==
+        b=E/+WbbiRB2PW/Qqk946b/4JDJAfduml2m8HtjhI4Vwu44Xf7BSjHxAJU6jRg86PXwz
+         /zDc5P1ZE5N+KB77OczLqHrHryg+xi5GEKA30fhYzLVPiMiFYlVpEkrrJhrmDh2w99Pz
+         lUhc0QcFLTT5urX55yztsdHdzUyloqGLEaPaLUx+IsKdsegQAFOh/aQN2Hl/lH9raFhl
+         R7NrwfnRvZpxh8Y0BEEz0ZKa8M72KAhDB2TXR1hjxqG/V1ioXUtiE6poquF7MRPOpuGN
+         YVYCsY86nEDo/EAMASj7tNqbMc0EaaZudn/4Td3Qico6v5xqwKU2YUn0ea8fY/bDW8k/
+         J5tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=1wzlyeAffKIVPpofvyyI/nktGGQtprwS66d1BSP8mFU=;
-        fh=aCejG00mBFvUFyicGgwZuyWNmnQkTwZFkToSNY6Vt+0=;
-        b=gXCCf6hXQP4L1LBQf1oXLGiu/n4sL8maVl2FqU76TFnBzNPoCI/AqH3LaJ4IQv+ihm
-         DowehboOIQ9Vaq9ZtZ8c383N4oEAWpP7g8WGUxme1R17Xeq6W4nUVoMJTbx9JUVnFpL9
-         Hcm1Dq+Xrkgu4INAu1DrbKncCCWumJ00S2Z2iaB8RI+lqzGiwAOlwpM7uNBHx33aChti
-         vBttju92OeYbUuYBnb3LlCgPwfQqnY0Z086Pcr1pZGhO+yPE2asnznoEF9aDBcNmjknn
-         QCiMP+db6FfJm1kkmfFcSMn4emqdqx404ArC4FJQaaa2cN7ewfUx58SjOlP8wZ0NQhLC
-         TV0Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=JSidavZgzvowrW64VxdmqiVfrHkIfq+Vecol2GK2W74=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=Jqoi5aUnC7Qwgov3fDZtlx3k5PjQmnXLaNatqNJtOIznMwp5oVkWoMMk+C+JKtYQDY
+         NYqB37JFEtIALrZ8xNxvR/6cK11htHpZEZ5locL0sLkyF6+WVFMrQTeeoXkZ2UP4N52g
+         Fli6p3nBkC9OyeNmVXODM0jkVkKAyq0C+faiB0UMbYaGNgxT8QqBjn4LXfE8yXoICiph
+         bLu9t3siDGFwVMFWrygGLMBJI41+6RNtz4yD9Q09yuAt9yP2wRNTNU6Pz0tB7eP8l5Mv
+         d8SjUBl5ZsD36IfunERHhASFk6AItuQKxo4BMuS/PJvsV7F3tCNuTBW/HaZPawRhN7bZ
+         nQSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rt-labs-com.20230601.gappssmtp.com header.s=20230601 header.b=M1iyU99I;
+       dkim=pass header.i=@linaro.org header.s=google header.b="GS941/U8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rt-labs.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu7-20020ad45cc7000000b006561f4b120asi6389549qvb.52.2023.10.30.08.16.38
+        by mx.google.com with ESMTPS id d12-20020a05622a100c00b0041cbf262514si6068075qte.19.2023.10.30.10.40.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 08:16:38 -0700 (PDT)
+        Mon, 30 Oct 2023 10:40:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rt-labs-com.20230601.gappssmtp.com header.s=20230601 header.b=M1iyU99I;
+       dkim=pass header.i=@linaro.org header.s=google header.b="GS941/U8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rt-labs.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxTzs-0002od-Hi; Mon, 30 Oct 2023 11:16:08 -0400
+	id 1qxWFH-0000WI-FJ; Mon, 30 Oct 2023 13:40:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hans-erik.floryd@rt-labs.com>)
- id 1qxTzp-0002gs-6S
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 11:16:05 -0400
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qxWFE-0000U9-QF
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 13:40:08 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hans-erik.floryd@rt-labs.com>)
- id 1qxTzl-0002w2-OE
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 11:16:04 -0400
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2c54c8934abso64767241fa.0
- for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 08:15:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qxWFC-0000BB-4E
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 13:40:08 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-408425c7c10so37822525e9.0
+ for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 10:40:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=rt-labs-com.20230601.gappssmtp.com; s=20230601; t=1698678956; x=1699283756;
- darn=nongnu.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1wzlyeAffKIVPpofvyyI/nktGGQtprwS66d1BSP8mFU=;
- b=M1iyU99ILxKIerB97LwhXffQUWHj5UG/op0Ufhz18Z7vFY1YYL0J58Q8ZpcmoUZarG
- jYjAEOsRoxWA/qj2PymPn11H78l1XeGItPwgfcd5Rno7+BA8WaY15jy6lESexomebJ1o
- DJdGDjnv3hQ3qL/UnshvUreX3ATFmB4NFqU9/h1gagcos6VT4vswSWVH9j2AFIJZVp0j
- uLWXIzCQEFfBEHaSTkTK3V98/ilpTsd5WNJ5aqID1uMu/A39u2Argh2uejsjybZW+pb2
- dnJw7JWwpVW9jgsmKYoAAPjP+vZrKbvOP4I5df6xzNaKzOmNueszLxdBYFB23qtJQ9WO
- DiYg==
+ d=linaro.org; s=google; t=1698687603; x=1699292403; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=JSidavZgzvowrW64VxdmqiVfrHkIfq+Vecol2GK2W74=;
+ b=GS941/U84ca5QNuXttulTNHJVQCU8M32h23t98XjSy4DFMVzB2gteisZA5pXzBFkPC
+ fjhHr43WfrzpYnhHkJJL9zc/0q7AUNDiBD56BO1kMqTuGFj6hTmDK5XT9h8wynczVVRG
+ MET/hagWB3ZJlA7TsOLmZyLpQQsIa3k4Lcyw9ZYZkgwB3zQ35/Oe4p8sSUhw7AfdZZ3s
+ 5yYDpcPUxfdlNXrrS+JwjVrg2i32mZT3dkee8e8Eat/BPD9JV2N+Wm/Lb/Pwrcm/kHaU
+ AE4NDl3fnSvs++3sHzXJ3ZysPbt/OkQhog2K33Ty9B91GcfDRhMSWrWk0n9EkyM+62ke
+ 1IsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698678956; x=1699283756;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=1wzlyeAffKIVPpofvyyI/nktGGQtprwS66d1BSP8mFU=;
- b=LMXszl0SnydMX//8EdbCCO5HCVVHBBNW8EL/a/ChyvDDYS7+hDD9ZZceMNbbUu65iz
- Nwk+X9ZIsQi61TjxYYAPDqvgFbwaO8t79k5OIml6t8SOypsO5kNusZkB6g1eO+zc2viF
- P4ApuAYGxGFE3m6ruw+PFBnjjihbMiP6W2o+qeR7Pa8nDvjrAOfpxj3RL1oZKLDMxMxx
- 92jU7Ln5pwX3ZuL0cO7rYn993nonfl2ivajaR5RL0QPyzkKWLiDGl2+pOAMN1FAqhKuK
- SQRts0QKFMypP8O62TW+gisHwAOMFwPlr7sLXhjojcLkcOBvTUnpzGKeRxLuLv5qDnuO
- 6rIA==
-X-Gm-Message-State: AOJu0YwH+MexUgB4j0HSiNJgOB2jwQh88iVoyQHb8d2PqLNrU5fdSYPV
- 7yki8t8KweyVbitpfLPNfbbRDg==
-X-Received: by 2002:a05:651c:1c5:b0:2c5:175f:6466 with SMTP id
- d5-20020a05651c01c500b002c5175f6466mr9054675ljn.34.1698678956328; 
- Mon, 30 Oct 2023 08:15:56 -0700 (PDT)
-Received: from rtlap47.intra.rt-labs.com (h-213-136-33-86.NA.cust.bahnhof.se.
- [213.136.33.86]) by smtp.gmail.com with ESMTPSA id
- j18-20020a2e3c12000000b002b95eb96ab7sm1282274lja.18.2023.10.30.08.15.55
+ d=1e100.net; s=20230601; t=1698687603; x=1699292403;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=JSidavZgzvowrW64VxdmqiVfrHkIfq+Vecol2GK2W74=;
+ b=Gb7MnB525mv+ifnbNccK/yacQ6v19DqE0aYiFTfPckqhXujzr7aZoSVAqBTJRJUULW
+ l4OXrqHG9BC6PvpNgNVgPSOY98Gu+cgR9ZY06GyfNHXI1Y/tYG4CxPsQpV4Y6P6EvrHm
+ MKMQjJWtaddote/oGegnVAWq0YWm8wQ4UMa1dkzTCwkI4dM4dyN/be34OidmQbdh+WeR
+ HFEeYVJPX/1sINKrqjHp65d6TeH16q2obwQ0jsTeGzk1ohCia+LDc3XDBvVf4EDclO7M
+ YPjG6S9TEysfRfDeXiDjN2iDf8aXo5F53dDTUIwyU8IM4ESABdgafJ8JTpkzV78qeol8
+ lu2Q==
+X-Gm-Message-State: AOJu0YzPua+fDabmZnx6YkPmGbz1tD7kORnH4i291YDBFhyg0XbwQ4/7
+ eqLfLgyS3mTrr+64SVGAF0ybwShrrP3qMlgkuNM=
+X-Received: by 2002:a05:6000:1562:b0:32d:a01a:9573 with SMTP id
+ 2-20020a056000156200b0032da01a9573mr9358538wrz.8.1698687603097; 
+ Mon, 30 Oct 2023 10:40:03 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ e16-20020a5d5950000000b0032f7d1e2c7csm5912914wri.95.2023.10.30.10.40.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Oct 2023 08:15:55 -0700 (PDT)
-From: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-To: alistair@alistair23.me, peter.maydell@linaro.org,
- marcandre.lureau@redhat.com, pbonzini@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, philmd@linaro.org
-Cc: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v3 3/3] hw/char/stm32f2xx_usart: Add more definitions for CR1
- register
-Date: Mon, 30 Oct 2023 16:15:18 +0100
-Message-ID: <20231030151528.1138131-4-hans-erik.floryd@rt-labs.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231030151528.1138131-1-hans-erik.floryd@rt-labs.com>
-References: <20231030151528.1138131-1-hans-erik.floryd@rt-labs.com>
+ Mon, 30 Oct 2023 10:40:02 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/3] target/arm: Fix various FEAT_MOPS bugs
+Date: Mon, 30 Oct 2023 17:39:57 +0000
+Message-Id: <20231030174000.3792225-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=hans-erik.floryd@rt-labs.com; helo=mail-lj1-x234.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,37 +119,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gpTHgwl+sFxR
+X-TUID: Nj9Wq9aiDMEI
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
----
- include/hw/char/stm32f2xx_usart.h | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+This patchset fixes some bugs in FEAT_MOPS that were encountered
+by somebody trying to use it in qemu user-mode:
+ * we forgot to set the SCTLR bit in CPU reset, so all the
+   insns UNDEF
+ * we weren't reporting the hwcap bit because of a uint32_t
+   vs uint64_t mixup
+ * we didn't handle the case of SET* with Xs == XZR correctly
 
-diff --git a/include/hw/char/stm32f2xx_usart.h b/include/hw/char/stm32f2xx_usart.h
-index 65bcc85470..fdfa7424a7 100644
---- a/include/hw/char/stm32f2xx_usart.h
-+++ b/include/hw/char/stm32f2xx_usart.h
-@@ -48,10 +48,12 @@
- #define USART_SR_TC   (1 << 6)
- #define USART_SR_RXNE (1 << 5)
- 
--#define USART_CR1_UE  (1 << 13)
--#define USART_CR1_RXNEIE  (1 << 5)
--#define USART_CR1_TE  (1 << 3)
--#define USART_CR1_RE  (1 << 2)
-+#define USART_CR1_UE     (1 << 13)
-+#define USART_CR1_TXEIE  (1 << 7)
-+#define USART_CR1_TCEIE  (1 << 6)
-+#define USART_CR1_RXNEIE (1 << 5)
-+#define USART_CR1_TE     (1 << 3)
-+#define USART_CR1_RE     (1 << 2)
- 
- #define TYPE_STM32F2XX_USART "stm32f2xx-usart"
- OBJECT_DECLARE_SIMPLE_TYPE(STM32F2XXUsartState, STM32F2XX_USART)
+This set of patches fix these issues.
+
+thanks
+-- PMM
+
+Peter Maydell (3):
+  target/arm: Enable FEAT_MOPS insns in user-mode emulation
+  linux-user: Report AArch64 hwcap2 fields above bit 31
+  target/arm: Make FEAT_MOPS SET* insns handle Xs == XZR correctly
+
+ linux-user/loader.h         |  2 +-
+ linux-user/elfload.c        |  8 ++++----
+ target/arm/cpu.c            |  2 ++
+ target/arm/tcg/helper-a64.c | 15 ++++++++++++---
+ 4 files changed, 19 insertions(+), 8 deletions(-)
+
 -- 
-2.42.0
+2.34.1
 

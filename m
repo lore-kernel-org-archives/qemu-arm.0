@@ -1,83 +1,83 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1773238ejc;
-        Mon, 30 Oct 2023 03:49:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEkrq4EdxQHN2A+aiDjaBWX2GKjcuZFkDanRRQGmSH6LEXY6l9VUqkGI6bBiFGBDm99YhK+
-X-Received: by 2002:a05:6214:e82:b0:66d:a50a:2c6 with SMTP id hf2-20020a0562140e8200b0066da50a02c6mr13669370qvb.63.1698662957258;
-        Mon, 30 Oct 2023 03:49:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698662957; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1773272ejc;
+        Mon, 30 Oct 2023 03:49:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEvoObHzf3iAQuDMTju6DLJCeL396R1DXHVyw5SreXJ/lpPXij7Oqw6ub9TLcT/TPxhsfBf
+X-Received: by 2002:ad4:4191:0:b0:66d:59a4:a2f3 with SMTP id e17-20020ad44191000000b0066d59a4a2f3mr15028874qvp.14.1698662961483;
+        Mon, 30 Oct 2023 03:49:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698662961; cv=none;
         d=google.com; s=arc-20160816;
-        b=KwG5Pnhb0Nmmkq6hamoPr1ZfvtP2VU8HoCbS9jaMH94P3TtBdYgDqQKZvNj0QQCYT8
-         KBPRJc9m14PQMImcqxzXaMWlokky2Y7OON8jxpMiO1h3diuYCkeTgECh1uDNklsdph4E
-         txEKsi9kSLGoSXoZWMQ6e0cXrGX658D5M6uISdNdvV/roPMbEDQTtHEiY42kNmOJNPdu
-         f9xDLPnnOFfCVmWhWxjKKug2t7ZHBg/j5qz+k5jvlLbmHvqBB1Qr6c/ci+wn4DLCKdcQ
-         kN9whSGqMqlm/nI+Gcnk7OleXZRSIiyg5BNApyIajhuf9Se1sD6eBZtAyByncxrU51L6
-         bj8A==
+        b=Uvsfz16Ur2FT6mPla6B7z8dzFM0qFCZI3L1qj16e3+4G9WD/xDA2cK5orGs0R05K11
+         0PuhMp1oZBxLmwGYQ6RzZoeS2jiE9QIc9xsH4enLARvQQRYcQWXAcs98wyoB3hHQm4L+
+         3p/5EH/fjAJcPXXsnohXlb8Nu6/NqtCZ+u51UZISsSm7/k3nyIxlliJWQHMddXiubPIV
+         SD/24SiJTAAYD5bmX4gnVAN+X88CAB7mCyHIIbVqb+vE7TvhF3hZGf0n/F8k4enKnV/X
+         9vWMeNZLFl6iH5Xg+Nv/t0eY4o8K8hdUVZvPjkKJ65GJZpUelfs6+sQt4uy4eOBrKDZA
+         utEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AMPwwzvkGtI1530yAC+qrKlrh8Wsf5pzf8NLRChUMss=;
+        bh=gPT015W0PbRyFxOHs7nwx2+/BQzoOH/swmOsdeWxQEw=;
         fh=Ci9wK9l4xitOqL9yuxnV9ynOTs+kWb6MxTZujaeFoew=;
-        b=gTPKQ+G35Mb+unYCqUtny6hzeJVbiG2k45bSbCnui2reGH4k493/fqe55artO4yAfq
-         ddK9ztRUn6TvK2axXPJCEnWhA0Cr78bTJK+4JI4/2yegYIw+jChpPMeQJQXlvcQTnxcb
-         qLrzkYEtWGRun9zxsdZsIWN/hSynYQ2EkVypNsIkcl1r6sQz7xyLJ/Y/OkEjwpEwfEav
-         Yd+K6PYJQZZhKXfJPpuKtINWVy5FM79cOYBD8vYEixEc3LXuNtf5+SVo+sgzvpuzNCAC
-         zl9oqq6ViOntjqZpjx0sPqrE0chDQXLIWAHQOhRmQPaOWXoVj63uInBrV8je0h02M1Uz
-         1FlA==
+        b=kjT3Cs5Zh2LZqeQYVOPoHIo8J7rVLtTQoVNtORvGjNbbElBj/mobSMSHt3pgUyGy/K
+         o8I0ixdxLTEeADUehlPmZ7BkbbbwdZhRaT/JS5xqYrpMI7aYj0gwtSTtnNyuiX4qYR4b
+         InOk9eKvsf4LlrKA6by8SqA/hShn/oozMqq8Lvsoug1uofsE16F5EGlEXyXgGDZvLs1M
+         DH7ZG3LRbm9WqOdVPjNGXU1EXFmn5sNHY6h9zHdzXDCDq2oFlaPtIntXpogdgERWYXfV
+         COKj3K2SR+2Z1gcJZ2A6YdMNkYeK6gpousXamptjdSE/Uo1zWFMVDjJJbw1fB1Dtq5xI
+         6/gA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ii32RHkR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZpjODPgu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020ad4434b000000b0066d0a9f4d0fsi4359800qvs.527.2023.10.30.03.49.17
+        by mx.google.com with ESMTPS id ec10-20020ad44e6a000000b0065cfc03bc17si3829299qvb.7.2023.10.30.03.49.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 03:49:17 -0700 (PDT)
+        Mon, 30 Oct 2023 03:49:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ii32RHkR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZpjODPgu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxPot-0001bQ-9c; Mon, 30 Oct 2023 06:48:31 -0400
+	id 1qxPp8-0001xY-Mk; Mon, 30 Oct 2023 06:48:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qxPoq-0001Zr-Ka
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:48:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qxPp7-0001wi-5Z
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:48:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qxPoo-0002Wf-RO
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:48:28 -0400
+ id 1qxPp5-0002aQ-NT
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:48:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698662906;
+ s=mimecast20190719; t=1698662923;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AMPwwzvkGtI1530yAC+qrKlrh8Wsf5pzf8NLRChUMss=;
- b=ii32RHkRdMty/AhGaKcC0bMQZTpAF0SApMygLedmX/W9M5lju+y5MP8uPu068bkPEak9ac
- 62iB1YAd2UWmXg2Q3hW0MFTtOqmJif8qhwMEFgU5q6BZdgvBNu40nxz+kqqGuH0RuiedW0
- iU5wlNHRC6NUr05KDvGd+u+xKKtakSA=
+ bh=gPT015W0PbRyFxOHs7nwx2+/BQzoOH/swmOsdeWxQEw=;
+ b=ZpjODPgudwfEWBLnY3rs2msdqVxXAUoutHng5riqR4xTB58t4cvI174Il3+NPQF2WK+mHa
+ kq/xID6EZv4VoZ6kIEFLM2/bR0zgB2RLLCd6MgwkWE3DDWEFkIRq7W9Li3bI3i4UgErgff
+ 1JnILvdjcIdgUIt42HKyGhKk3geVXUE=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-249-w-TNzYVLO6OLBoE0R8SO-g-1; Mon, 30 Oct 2023 06:48:20 -0400
-X-MC-Unique: w-TNzYVLO6OLBoE0R8SO-g-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-670-T9fv_HIWNuSdtPlwevMLGA-1; Mon, 30 Oct 2023 06:48:40 -0400
+X-MC-Unique: T9fv_HIWNuSdtPlwevMLGA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7E3B88AA1E4;
- Mon, 30 Oct 2023 10:48:20 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8A4B0101AA42;
+ Mon, 30 Oct 2023 10:48:39 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ED7B4492BFC;
- Mon, 30 Oct 2023 10:48:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6E80B10EA1;
+ Mon, 30 Oct 2023 10:48:38 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -89,16 +89,16 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-Subject: [PATCH v7 04/23] ui: add pixman-minimal.h
-Date: Mon, 30 Oct 2023 14:47:35 +0400
-Message-ID: <20231030104755.124188-5-marcandre.lureau@redhat.com>
+Subject: [PATCH v7 08/23] vl: move display early init before default devices
+Date: Mon, 30 Oct 2023 14:47:39 +0400
+Message-ID: <20231030104755.124188-9-marcandre.lureau@redhat.com>
 In-Reply-To: <20231030104755.124188-1-marcandre.lureau@redhat.com>
 References: <20231030104755.124188-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
@@ -106,8 +106,8 @@ X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.478,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,237 +122,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TxlNediRU3oX
+X-TUID: JQKbbMgQBilu
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-This is a tiny subset of PIXMAN API that is used pervasively in QEMU
-codebase to manage images and identify the underlying format.
-
-It doesn't seems worth to wrap this in a QEMU-specific API.
+The next commit needs to have the display registered itself before
+creating the default VCs.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Acked-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- include/ui/pixman-minimal.h | 195 ++++++++++++++++++++++++++++++++++++
- include/ui/qemu-pixman.h    |   2 +
- 2 files changed, 197 insertions(+)
- create mode 100644 include/ui/pixman-minimal.h
+ system/vl.c | 31 ++++++++++++++++++-------------
+ 1 file changed, 18 insertions(+), 13 deletions(-)
 
-diff --git a/include/ui/pixman-minimal.h b/include/ui/pixman-minimal.h
-new file mode 100644
-index 0000000000..efcf570c9e
---- /dev/null
-+++ b/include/ui/pixman-minimal.h
-@@ -0,0 +1,195 @@
-+/*
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * Tiny subset of PIXMAN API commonly used by QEMU.
-+ *
-+ * Copyright 1987, 1988, 1989, 1998  The Open Group
-+ * Copyright 1987, 1988, 1989 Digital Equipment Corporation
-+ * Copyright 1999, 2004, 2008 Keith Packard
-+ * Copyright 2000 SuSE, Inc.
-+ * Copyright 2000 Keith Packard, member of The XFree86 Project, Inc.
-+ * Copyright 2004, 2005, 2007, 2008, 2009, 2010 Red Hat, Inc.
-+ * Copyright 2004 Nicholas Miell
-+ * Copyright 2005 Lars Knoll & Zack Rusin, Trolltech
-+ * Copyright 2005 Trolltech AS
-+ * Copyright 2007 Luca Barbato
-+ * Copyright 2008 Aaron Plattner, NVIDIA Corporation
-+ * Copyright 2008 Rodrigo Kumpera
-+ * Copyright 2008 André Tupinambá
-+ * Copyright 2008 Mozilla Corporation
-+ * Copyright 2008 Frederic Plourde
-+ * Copyright 2009, Oracle and/or its affiliates. All rights reserved.
-+ * Copyright 2009, 2010 Nokia Corporation
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a
-+ * copy of this software and associated documentation files (the "Software"),
-+ * to deal in the Software without restriction, including without limitation
-+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-+ * and/or sell copies of the Software, and to permit persons to whom the
-+ * Software is furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice (including the next
-+ * paragraph) shall be included in all copies or substantial portions of the
-+ * Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-+ * DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#ifndef PIXMAN_MINIMAL_H
-+#define PIXMAN_MINIMAL_H
-+
-+#define PIXMAN_TYPE_OTHER       0
-+#define PIXMAN_TYPE_ARGB        2
-+#define PIXMAN_TYPE_ABGR        3
-+#define PIXMAN_TYPE_BGRA        8
-+#define PIXMAN_TYPE_RGBA        9
-+
-+#define PIXMAN_FORMAT(bpp, type, a, r, g, b) (((bpp) << 24) |   \
-+                                              ((type) << 16) |  \
-+                                              ((a) << 12) |     \
-+                                              ((r) << 8) |      \
-+                                              ((g) << 4) |      \
-+                                              ((b)))
-+
-+#define PIXMAN_FORMAT_RESHIFT(val, ofs, num)                            \
-+        (((val >> (ofs)) & ((1 << (num)) - 1)) << ((val >> 22) & 3))
-+
-+#define PIXMAN_FORMAT_BPP(f)    PIXMAN_FORMAT_RESHIFT(f, 24, 8)
-+#define PIXMAN_FORMAT_TYPE(f)   (((f) >> 16) & 0x3f)
-+#define PIXMAN_FORMAT_A(f)      PIXMAN_FORMAT_RESHIFT(f, 12, 4)
-+#define PIXMAN_FORMAT_R(f)      PIXMAN_FORMAT_RESHIFT(f, 8, 4)
-+#define PIXMAN_FORMAT_G(f)      PIXMAN_FORMAT_RESHIFT(f, 4, 4)
-+#define PIXMAN_FORMAT_B(f)      PIXMAN_FORMAT_RESHIFT(f, 0, 4)
-+#define PIXMAN_FORMAT_DEPTH(f)  (PIXMAN_FORMAT_A(f) +   \
-+                                 PIXMAN_FORMAT_R(f) +   \
-+                                 PIXMAN_FORMAT_G(f) +   \
-+                                 PIXMAN_FORMAT_B(f))
-+
-+typedef enum {
-+    /* 32bpp formats */
-+    PIXMAN_a8r8g8b8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_ARGB, 8, 8, 8, 8),
-+    PIXMAN_x8r8g8b8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_ARGB, 0, 8, 8, 8),
-+    PIXMAN_a8b8g8r8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_ABGR, 8, 8, 8, 8),
-+    PIXMAN_x8b8g8r8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_ABGR, 0, 8, 8, 8),
-+    PIXMAN_b8g8r8a8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_BGRA, 8, 8, 8, 8),
-+    PIXMAN_b8g8r8x8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_BGRA, 0, 8, 8, 8),
-+    PIXMAN_r8g8b8a8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_RGBA, 8, 8, 8, 8),
-+    PIXMAN_r8g8b8x8 =    PIXMAN_FORMAT(32, PIXMAN_TYPE_RGBA, 0, 8, 8, 8),
-+    /* 24bpp formats */
-+    PIXMAN_r8g8b8 =      PIXMAN_FORMAT(24, PIXMAN_TYPE_ARGB, 0, 8, 8, 8),
-+    PIXMAN_b8g8r8 =      PIXMAN_FORMAT(24, PIXMAN_TYPE_ABGR, 0, 8, 8, 8),
-+    /* 16bpp formats */
-+    PIXMAN_r5g6b5 =      PIXMAN_FORMAT(16, PIXMAN_TYPE_ARGB, 0, 5, 6, 5),
-+    PIXMAN_a1r5g5b5 =    PIXMAN_FORMAT(16, PIXMAN_TYPE_ARGB, 1, 5, 5, 5),
-+    PIXMAN_x1r5g5b5 =    PIXMAN_FORMAT(16, PIXMAN_TYPE_ARGB, 0, 5, 5, 5),
-+} pixman_format_code_t;
-+
-+typedef struct pixman_image pixman_image_t;
-+
-+typedef void (*pixman_image_destroy_func_t)(pixman_image_t *image, void *data);
-+
-+struct pixman_image {
-+    int ref_count;
-+    pixman_format_code_t format;
-+    int width;
-+    int height;
-+    int stride;
-+    uint32_t *data;
-+    uint32_t *free_me;
-+    pixman_image_destroy_func_t destroy_func;
-+    void *destroy_data;
-+};
-+
-+typedef struct pixman_color {
-+    uint16_t    red;
-+    uint16_t    green;
-+    uint16_t    blue;
-+    uint16_t    alpha;
-+} pixman_color_t;
-+
-+static inline pixman_image_t *pixman_image_create_bits(pixman_format_code_t format,
-+                                                       int width,
-+                                                       int height,
-+                                                       uint32_t *bits,
-+                                                       int rowstride_bytes)
+diff --git a/system/vl.c b/system/vl.c
+index b07805d476..db4d5ee79a 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1352,6 +1352,23 @@ static void qemu_disable_default_devices(void)
+     }
+ }
+ 
++static void qemu_setup_display(void)
 +{
-+    pixman_image_t *i = g_new0(pixman_image_t, 1);
-+
-+    i->width = width;
-+    i->height = height;
-+    i->stride = rowstride_bytes ?: width * DIV_ROUND_UP(PIXMAN_FORMAT_BPP(format), 8);
-+    i->format = format;
-+    if (bits) {
-+        i->data = bits;
-+    } else {
-+        i->free_me = i->data = g_malloc0(rowstride_bytes * height);
-+    }
-+    i->ref_count = 1;
-+
-+    return i;
-+}
-+
-+static inline pixman_image_t *pixman_image_ref(pixman_image_t *i)
-+{
-+    i->ref_count++;
-+    return i;
-+}
-+
-+static inline bool pixman_image_unref(pixman_image_t *i)
-+{
-+    i->ref_count--;
-+
-+    if (i->ref_count == 0) {
-+        if (i->destroy_func) {
-+            i->destroy_func(i, i->destroy_data);
++    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
++        if (!qemu_display_find_default(&dpy)) {
++            dpy.type = DISPLAY_TYPE_NONE;
++#if defined(CONFIG_VNC)
++            vnc_parse("localhost:0,to=99,id=default");
++#endif
 +        }
-+        g_free(i->free_me);
-+        g_free(i);
-+
-+        return true;
++    }
++    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
++        dpy.type = DISPLAY_TYPE_NONE;
 +    }
 +
-+    return false;
++    qemu_display_early_init(&dpy);
 +}
 +
-+static inline void pixman_image_set_destroy_function(pixman_image_t *i,
-+                                                     pixman_image_destroy_func_t func,
-+                                                     void *data)
-+
-+{
-+    i->destroy_func = func;
-+    i->destroy_data = data;
-+}
-+
-+static inline uint32_t *pixman_image_get_data(pixman_image_t *i)
-+{
-+    return i->data;
-+}
-+
-+static inline int pixman_image_get_height(pixman_image_t *i)
-+{
-+    return i->height;
-+}
-+
-+static inline int pixman_image_get_width(pixman_image_t *i)
-+{
-+    return i->width;
-+}
-+
-+static inline int pixman_image_get_stride(pixman_image_t *i)
-+{
-+    return i->stride;
-+}
-+
-+static inline pixman_format_code_t pixman_image_get_format(pixman_image_t *i)
-+{
-+    return i->format;
-+}
-+
-+#endif /* PIXMAN_MINIMAL_H */
-diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
-index c140cd84b6..ef13a8210c 100644
---- a/include/ui/qemu-pixman.h
-+++ b/include/ui/qemu-pixman.h
-@@ -8,6 +8,8 @@
- 
- #ifdef CONFIG_PIXMAN
- #include <pixman.h>
-+#else
-+#include "pixman-minimal.h"
+ static void qemu_create_default_devices(void)
+ {
+     MachineClass *machine_class = MACHINE_GET_CLASS(current_machine);
+@@ -1401,18 +1418,6 @@ static void qemu_create_default_devices(void)
  #endif
+     }
  
- /*
+-    if (dpy.type == DISPLAY_TYPE_DEFAULT && !display_remote) {
+-        if (!qemu_display_find_default(&dpy)) {
+-            dpy.type = DISPLAY_TYPE_NONE;
+-#if defined(CONFIG_VNC)
+-            vnc_parse("localhost:0,to=99,id=default");
+-#endif
+-        }
+-    }
+-    if (dpy.type == DISPLAY_TYPE_DEFAULT) {
+-        dpy.type = DISPLAY_TYPE_NONE;
+-    }
+-
+     /* If no default VGA is requested, the default is "none".  */
+     if (default_vga) {
+         vga_model = get_default_vga_model(machine_class);
+@@ -1937,7 +1942,6 @@ static void qemu_create_early_backends(void)
+                      "ignoring option");
+     }
+ 
+-    qemu_display_early_init(&dpy);
+     qemu_console_early_init();
+ 
+     if (dpy.has_gl && dpy.gl != DISPLAYGL_MODE_OFF && display_opengl == 0) {
+@@ -3666,6 +3670,7 @@ void qemu_init(int argc, char **argv)
+     suspend_mux_open();
+ 
+     qemu_disable_default_devices();
++    qemu_setup_display();
+     qemu_create_default_devices();
+     qemu_create_early_backends();
+ 
 -- 
 2.41.0
 

@@ -1,171 +1,130 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1669258ejc;
-        Sun, 29 Oct 2023 23:26:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE8YpGkTRB0gewd2MZK0vN2nUu8TV5owoLedikg4hr2EE+O62vWrxr7qyIBjfz7Cenxo1Xk
-X-Received: by 2002:a05:622a:1188:b0:417:9c63:391c with SMTP id m8-20020a05622a118800b004179c63391cmr11907884qtk.52.1698647167124;
-        Sun, 29 Oct 2023 23:26:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1698647167; cv=pass;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1696915ejc;
+        Mon, 30 Oct 2023 00:49:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/zZqmDDvlkxLr/NBi5gUVhd2SgG9sNQOT2FzAn1UdZO7KZTF26qqIzeTjcmu7bMIlvt4D
+X-Received: by 2002:ac8:7d8e:0:b0:41e:1d15:69a6 with SMTP id c14-20020ac87d8e000000b0041e1d1569a6mr11902786qtd.31.1698652140081;
+        Mon, 30 Oct 2023 00:49:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698652140; cv=none;
         d=google.com; s=arc-20160816;
-        b=EGRkVAtfNQaUAny6PRXIkk1EzZZK/+DkPILEuO6cRCDmfeDbs7wtF5tlkNnnbnhbUl
-         SqstKuPIL4JIxD1WutLGv+pqvri4qju06TLQ4Q0MTGgFoShsAJssnKxhcapv5TETId10
-         YlzBQ031jseSAbB0bfC7DXMojiDGHV1naAOBS/NAMTgStIU4TWuf3npYAZrFFvtEpQe/
-         kONltDUZZ++5okWUTjXHAuMLR6SOfa8d+QrjRyd3ENA1JkGTaS16lFJf0sA546Lif4zp
-         5VVQNb/3IpiELSalRuuSYHI1rJyUjf1J0O/mlKwbUsRPF9dyjPAvcEtAZQ+NsiCLxdQI
-         zXYg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=BILGlYmyzKfyT+pgxomZjQumZrB7DHL3NVs04v5riG8Y0VETFds+o8zkxR8HOqnptk
+         XN9B2ZKLUgQSzrnGb+5VxED9cudGqmqISaXJTpL5FR7EIijqQj8EfP7ME0i7YYxijPkl
+         gZgRgyxSNzshv3LSxtLEoC/2ZyfguQBYgcf+S5G+DTRyJLjFGmMSGPQhb468Si9Kj0/P
+         zIuLHwfUo/xOfYMtV304rvnbZns6ddwgLuFnsUi+4ougYLs6pPThU1bQDFSmyPAyRAuB
+         HZ4AWfsDku+l6sVn4hzXkL1QEy6YQ0l5nDBgFH+/i1fUGjmgmxgh8r2Q4Ohf+AlKAZ+Y
+         gKIg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:msip_labels
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature;
-        bh=QKpRZNtXGZDTC1h4is3Eck6FyF7VvA3eQAf+wMEkrDk=;
-        fh=sIRkYyUt4ku3TjvV73xnYqJGfbeAi69XK1ePpTQDFcY=;
-        b=Z25ZUciI5TjMzezncSFJ0TiIUJmzx6ynwvtw08nI5g9yHe8u1ENwxiSUu2uvRs0/y8
-         XAulP5fO2gP2L3fk28IRIVBDDNzQzPhvSIV4gPX4EdXjuUh+EWwEVeyF9phx+ZzeQbHm
-         drh4Ibs2o36AQhJEg4/R2gJFOJX8FZBhiHycCO3WKpI3DJaFMJkoTV5THqPgXqa1z+pk
-         TJbdBpwXoIYMGBqWUlqknG8q4q6bjmCbB7VbAE3btLhvzJGUAd0XD1W5k0CxWN8LL0YD
-         CEffmChAydV+4uBafH69LXY7PBprW3GKZ+VXrtfDWD9r9ORqvO7OGGrMW8DGeR6p7ZaM
-         qeQw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="0o/fHgxK";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=/guRBi6ajR+ayqdAktCr4JvRYGgzSk5QYCj2qcjmyT8=;
+        fh=oE1DE8s/NcUmD1oRh8LgpJewQn8nDOQXzA7bIkJDMzM=;
+        b=F4h/QIiOnTC+jO/6RxoqtZH2sNDOAoN+MMru5RivQC5FI6CJ71vN7PbKRJpgm1v7ey
+         aaVK+rgpNSnmDL7U3J4bjJUhTDYxyf8AOkek2hAdpk5l7uliotPa5ZJtIiFas0h9czSa
+         TSEvddr2m5ABEX6CCxPQXi64SW6njNnr9lHog01/ajCM0BoNWCL1YAj/3ZA4It+GIL5D
+         WrTyxR50AUA1ivX47qr8Phl3jx0MWhDSYDSnVERPLzGok33vr5TLNFeImLF9TlAeQyug
+         H5q1qy62dSvPljb5PixEwNJas+2jhlINjYNdaY/cCrOG/7S03jcaVAxgQuaQ/STQjwd4
+         X0bQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FUAxdu6E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020ac85708000000b004181b5c82b9si5172177qtw.83.2023.10.29.23.26.06
+        by mx.google.com with ESMTPS id c16-20020a05622a059000b004008532ea2asi5287894qtb.500.2023.10.30.00.48.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Oct 2023 23:26:07 -0700 (PDT)
+        Mon, 30 Oct 2023 00:49:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="0o/fHgxK";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FUAxdu6E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxLig-0008Fx-Ag; Mon, 30 Oct 2023 02:25:50 -0400
+	id 1qxN0m-0003tR-16; Mon, 30 Oct 2023 03:48:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qxLie-0008FU-IA; Mon, 30 Oct 2023 02:25:48 -0400
-Received: from mail-dm6nam12on20631.outbound.protection.outlook.com
- ([2a01:111:f400:fe59::631]
- helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1qxN0k-0003sv-KK
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 03:48:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qxLiS-0007q5-E4; Mon, 30 Oct 2023 02:25:48 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=e++pW7hB+JPU82b9Db6duPh4157adXtGG6Yx0KH01dPgUj5M17G9YODvK+M6r6ZAQ7gvFIk5HvGpnNmUkBFF98Ppr84Erk0OOv2OMUUZfB+oiNIdB9JQGaXG/G7RDRRiMb1pasqwUuw8Uf0kcOUYBkOyBKlCGcJEBqgILQPDRmuImprBuuWAaRKTBXkNqyYrH3KuyPK42b1YW5dUGwKHNw8/nobXN6cMR5SMh/kS/DmrXVCDLJ9UoUCjQQLHKmWoRBSmBklHIc4XeXZm454xaEVFD485Vib4Hy5GwGP8+pnkT06ctmA+XhX4FoOVq7FnWjYlP9AX0j2kp2qKOdUIlQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QKpRZNtXGZDTC1h4is3Eck6FyF7VvA3eQAf+wMEkrDk=;
- b=V8J3z0NyHq086s0ivVBHw6So9NC++9ryqCftAmPiEawJQFW2u2G0TlxkwxLtM+6BOxb4HUyKQ1OMzO4TGP5pdWy5UForkIthpJFTlptDuT1RxLP79yXj9k+58G4pslrunQl0xMNcFXY5dl8bf7ic8iTGe185kglN4A5O4V79gj7B2RQB/ziA7ZBUMXtqlYE4H9GLA8qXg5qLQIvCBO5OMnqrrsJ9q7XSJrbjHTnRiQDx9s9xrrHMXMFXPpeXjg+EG0Py6UrTmNXRyJjUEMcxoyhs5IdNXmiNYDzdZcB1pi77Aqs116CbNmDFepY8+hdkzbQ3DOHXfVrzx5oMyXrxVg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QKpRZNtXGZDTC1h4is3Eck6FyF7VvA3eQAf+wMEkrDk=;
- b=0o/fHgxK4CTW9bObBEwJNPCrTU2tHRR8bP1v88CT7DBerZjL4RKsfwrKWukrImDr9VEwEN/OVyRO2PRfn5+dZ+45qrm5pAAU238GR8hd///b9gdj6Llww3WhcQunMkgBaVUHPCS8EhbMK6tzcT8wua+9zYA9JYHeHqccd2kaJTE=
-Received: from BL0PR12MB4882.namprd12.prod.outlook.com (2603:10b6:208:1c3::10)
- by IA1PR12MB8359.namprd12.prod.outlook.com (2603:10b6:208:3fc::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.26; Mon, 30 Oct
- 2023 06:25:30 +0000
-Received: from BL0PR12MB4882.namprd12.prod.outlook.com
- ([fe80::6a67:b8a8:161b:e684]) by BL0PR12MB4882.namprd12.prod.outlook.com
- ([fe80::6a67:b8a8:161b:e684%2]) with mapi id 15.20.6933.027; Mon, 30 Oct 2023
- 06:25:29 +0000
-From: "Ho, Tong" <tong.ho@amd.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "alistair@alistair23.me" <alistair@alistair23.me>,
- "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "frasse.iglesias@gmail.com" <frasse.iglesias@gmail.com>
-Subject: Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx Versal
- TRNG device
-Thread-Topic: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx
- Versal TRNG device
-Thread-Index: AQHaATCrrzNJcYMzpEigiTL96G3ywrBdqX0AgARBDS8=
-Date: Mon, 30 Oct 2023 06:25:29 +0000
-Message-ID: <BL0PR12MB48827D764A414B476C261C45E6A1A@BL0PR12MB4882.namprd12.prod.outlook.com>
-References: <20231017193217.1512868-1-tong.ho@amd.com>
- <20231017193217.1512868-4-tong.ho@amd.com>
- <CAFEAcA_yCEtDkW6R43LGNjWGH323HuSWPFibgaRSZ=+DqfrZ_g@mail.gmail.com>
-In-Reply-To: <CAFEAcA_yCEtDkW6R43LGNjWGH323HuSWPFibgaRSZ=+DqfrZ_g@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL0PR12MB4882:EE_|IA1PR12MB8359:EE_
-x-ms-office365-filtering-correlation-id: 5d4f5820-51a7-46a0-fc73-08dbd9110376
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: bEFvSLy2D1v2PALnNOAPw5oaq8hSuVScYZ0aS+kB4yOSLU5l2ggBtDyyBIsadHxO2fOjahgHOJ4WfWhLm0HR63ErOo811w/UoExr9TXXrmX1lktI+2zigmB0gbGvRY/Bji7pV3JqNtSWEHSFkOhlCz74u+evZYLWdHk3H2OwL273c5BGB9/SCoBuVpo8NRuFbi6gqghvA2p9twIAVXPmhCJ+lWxGRHJELu2bj1P+PPIPabJ7/jbrF9jLaHO0aCduq9H240mPK1VWQYIcREQq9onxgEce5YfBkZzoI5h4O65XukvDWW85Azz0Hn8N3gkKsRzbmgJ7hCoAcHc9zabgHxmoL7+4R1jd84gfTlgXFTLgic9CKug3xfXgTno5H9Eru3wdzvtepbV89NMdq+AnVcY5teDxFSBvTM0oUzcqJGlgDteehhr8PVhAaen96FSjrCjXNPc35BNzU2p9lhFU9XxBrcSm84M67BW4cmCqP0G67HWU6EJf0ehl2MeaWZrv6vg6503ev2R1VCdsF6DmpCHcMoGacf5t+4Q8eiN3m2VUTyyGWgt00tPUvcc2e8YC+/T1+4Xx94Z5yBz2NP7wnxo/wSukBXrdOz5SkXLLEm6XKGg8mvXCfQCyxmdi49ne
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR12MB4882.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(346002)(136003)(39860400002)(396003)(376002)(366004)(230922051799003)(64100799003)(186009)(1800799009)(451199024)(55016003)(9686003)(26005)(53546011)(71200400001)(478600001)(6506007)(7696005)(2906002)(83380400001)(91956017)(66556008)(41300700001)(66946007)(5660300002)(76116006)(8936002)(66476007)(66446008)(4326008)(8676002)(52536014)(6916009)(54906003)(64756008)(316002)(38070700009)(38100700002)(122000001)(86362001)(33656002)(19627405001)(66899024);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?xH9s9s6rZqsEV1gw7J5k3IxVpobYsfTqPuhhUzHHBWMhWjCF9PO+GLnAUF?=
- =?iso-8859-1?Q?CHV7gI9Kxd4+O2ijm+4lC3E9x2YQF9JYUarmiIAIBQVcXx+Dr/NZo+My84?=
- =?iso-8859-1?Q?IARzFzyUmyab+E0IvoDqGHT7qT8pkjYzoRBqTf7kCWtuFuAKMOb4kKhjvY?=
- =?iso-8859-1?Q?M/v4hk1SKaVQuBe3UzJHTT4Qa++A/vmvX5oPTuM7K/q9qsd5CUGJWuQ5Jd?=
- =?iso-8859-1?Q?Za31NNLT6IMzZbn8MDa9PbyGa3QoHcZZrg0SBBIGF5FE9xm6DG1BHQNDIt?=
- =?iso-8859-1?Q?m8xZktwkUxgJzTGcGoZlWTPcUyyyVji3U/65hiZLPKHJShjkC1lA4Vtqk6?=
- =?iso-8859-1?Q?y1YHYbS72jADTSI0a9ezYV5wZ5u7LJ2vTYZDcl0SdbYR1IgTqp1Xn/ub2d?=
- =?iso-8859-1?Q?XpWXC2uXratje/Vo7J/UBsHdRrAI0Vs9aV4OHtxS/zCbMztvqotQYqbCcn?=
- =?iso-8859-1?Q?NkW/S0IuBtbinCect0ebFCmoEOcpyFBGyM75r7AqzgNOIt/tmelosR/qnR?=
- =?iso-8859-1?Q?lISsN4lV1AVJd/kzL6JRrdhG7qgbCzcgn2InWROH5yaNzDKlHLqU66lQCS?=
- =?iso-8859-1?Q?561+PmgNm8jcIrLddl7p5ovTtk7RcMx3rgNIAxUKoFX2jbEkDdamrTugAZ?=
- =?iso-8859-1?Q?o2KNTZkf4lvk+MpnzTUjYFHM1PlyNFPPBtpl9C1XEbX1uP8q4k/efhemmL?=
- =?iso-8859-1?Q?AdtlKx6rMqbt3pzFyOia7tOBHKPMJzwuZ6PZn/kb2ezkHAXV1x0zoVh6hG?=
- =?iso-8859-1?Q?OGN5Ufsrwg6hI5f5N9cmIuVGDfq1kvUDg1dMxtGymDnUFkLeNUQxbYMxVm?=
- =?iso-8859-1?Q?k0fEk1PS31VdGFJk01XZe65DeNFBT2WhJhPmEjFSlvMjvGvsOyztZRVa5Q?=
- =?iso-8859-1?Q?lk/48ip3IBUy5OWonFbQLxWmNjECfACDEZj4UQHzk2LbvbhseSdcLX8hTd?=
- =?iso-8859-1?Q?yjd5qNZ860qwLzGGahP8Hie764NjpL9hEjKFf2MEmiqffRmNY7q2ndAApm?=
- =?iso-8859-1?Q?ZlzY2hjO02U+VEK8lYoE3qWZQxnB2WffL3aVqkecHjxJ07gijfUrTfOwJ4?=
- =?iso-8859-1?Q?w7g5qaiiN7je0xxYhfWpuaAXKuEmyf//ExCRInAO6F5VtPKABfwA7Ua3mj?=
- =?iso-8859-1?Q?pR4w52KFM21H9u7c4QQ4Wz9P7XhB28oWYruBc3o/PoolH+yiIx120oBGSr?=
- =?iso-8859-1?Q?Du/0sC1eR0dGO5sGVd8ZOavbD8P/ceZkk3AZ1oXKMRIeF4EH4mnPDabnbq?=
- =?iso-8859-1?Q?gjhVBlcfvvPMUtwhibxlsdljuGX49QYFpVCqeZZiem9fxLZY1E5gvuBGf0?=
- =?iso-8859-1?Q?lgn9atBnoGu0/jQERpKM4ojxatNSbaf/Dx9gTCFrCJ9j8JyjSJxgLmOgyC?=
- =?iso-8859-1?Q?NQj8gts1K04+4oXMD3bV0rbXpXhbowwy2Cxc3tsh8WL/Ntks/8uGNpdvW2?=
- =?iso-8859-1?Q?dgKhcgua2/Dif6UD8onSdlCbyqujgpZwevYoddFFe8D5GQ+Z3kJryMvhZG?=
- =?iso-8859-1?Q?2NyQUJk0fPAL2Kb5H0jdDmiljKLE8Bi5Gczq4Ep1x/kj+NlnvjdwOSF+px?=
- =?iso-8859-1?Q?3wcP//xU12e/QlQ1sxTGYk6mXAy+m/sZ0YyptTEJ+9FNCDht7nllS0peFV?=
- =?iso-8859-1?Q?DAUYbGMHJ9y1s=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_"
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1qxN0i-0004yf-Di
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 03:48:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698652110;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/guRBi6ajR+ayqdAktCr4JvRYGgzSk5QYCj2qcjmyT8=;
+ b=FUAxdu6E5DqPPpPfYd0prXDl/1f3iNhO1Nk+jVOSwwwQgmiSD0OVxn+yTf9vD68WIanqwK
+ +gv79n5sbCuU4C/6YEORG3K4iCXrvo1xlArLN4qHhDda5LO3bqSeFe+hn9xkTEkvgrp9IC
+ HYofHpXo6yMB+l+LivLY96p3UQf9lYc=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-245-VdHx25CXNz-KNHgK920K-Q-1; Mon, 30 Oct 2023 03:48:28 -0400
+X-MC-Unique: VdHx25CXNz-KNHgK920K-Q-1
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-779ffb552eeso541840785a.3
+ for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 00:48:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698652108; x=1699256908;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/guRBi6ajR+ayqdAktCr4JvRYGgzSk5QYCj2qcjmyT8=;
+ b=R+2QjGltXnnRvgIWszAULWixb8oaDex2FDjpletvpF63Zsk/5tGkuFdKBEkkDm2xzq
+ vpPZbY6QQsQrso567fnh5JpRS+Lj6MBy5b0NETitgStZ9IADsRda6RjQTspl7n9wV4Ya
+ /F5bfzPJwKfTALVqaZUSOAm4O7ZyUu/W0oWgqp1fC1QP/9UcwSzfTG5L+jD7ldJSEP3i
+ viJJPEo0xnSnt2sRGcaiwA6RnKl4XIH4NnmeWZnJKMPY9HCwNg1ioz/5FNXfASml5VHO
+ yCVJj79+3q00YoRdbKfx7EEyTYY0GzUzRU4jyajdcwEtHmffzD9RQqq21B2oWOkjwV53
+ uXgA==
+X-Gm-Message-State: AOJu0Yz0UWSCvedc8eT1zxL2qHdLOYMxNjJofyCQkjsMAMWQKnmXnCs4
+ MDa1FUg4/fjNZilrDdDQIfxPJOayCKZFjSJ3JZi8imLYsN/Bak+n3sga1wwVvFp1tsRWfk9/pKU
+ vcKMj4xGAdJ9K
+X-Received: by 2002:a05:620a:1b86:b0:778:92d6:db0f with SMTP id
+ dv6-20020a05620a1b8600b0077892d6db0fmr8701067qkb.20.1698652108162; 
+ Mon, 30 Oct 2023 00:48:28 -0700 (PDT)
+X-Received: by 2002:a05:620a:1b86:b0:778:92d6:db0f with SMTP id
+ dv6-20020a05620a1b8600b0077892d6db0fmr8701059qkb.20.1698652107886; 
+ Mon, 30 Oct 2023 00:48:27 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:3f78:514a:4f03:fdc0?
+ ([2a01:e0a:280:24f0:3f78:514a:4f03:fdc0])
+ by smtp.gmail.com with ESMTPSA id
+ bm7-20020a05620a198700b00774376e6475sm3112977qkb.6.2023.10.30.00.48.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Oct 2023 00:48:27 -0700 (PDT)
+Message-ID: <3687e6e6-a81f-495e-8f31-ea2516f2a4ad@redhat.com>
+Date: Mon, 30 Oct 2023 08:48:24 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB4882.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5d4f5820-51a7-46a0-fc73-08dbd9110376
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Oct 2023 06:25:29.8466 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rmsLIYtNFoZIyacieuUrANEvItd9RuIvQnta+y4KapZdqTxNT5Z+ZsWl+IMAw3Qz
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB8359
-Received-SPF: softfail client-ip=2a01:111:f400:fe59::631;
- envelope-from=tong.ho@amd.com;
- helo=NAM12-DM6-obe.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 12/13] test: Add some tests for range and resv-mem
+ helpers
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.williamson@redhat.com,
+ jean-philippe@linaro.org, mst@redhat.com, pbonzini@redhat.com
+Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
+ philmd@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com
+References: <20231011175516.541374-1-eric.auger@redhat.com>
+ <20231011175516.541374-13-eric.auger@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+In-Reply-To: <20231011175516.541374-13-eric.auger@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.478,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -180,360 +139,365 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U2x72UUtlpxt
+X-TUID: mP63d3j2Mahs
 
---_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Peter,
-
-This is in regard to your comment on the use of g_usleep() in waiting for
-an event-bit update from the device under test.
-
-The TRNG device model presented in patch #1 does not have any asynchronous =
-behavior.
-
-So, do you mean that, although the qtest process and the qemu-system-* proc=
-ess
-are running as 2 separate processes, qtest infrastructure already has the n=
-ecessary
-mechanism to ensure that:
-
-1. After qtest test sets a register that has the correct deterministic beha=
-vior to update an event bit,
-
-2. The same qtest test subsequently issuing a register read will be guarant=
-eed to observe the updated bit?
-
-If that is the case, then there would be no need for any timeout. Instead,
-a qtest test can declare fail when the expected bit update is not observed =
-by the test.
-
-I would like to know.
-
-Thanks,
-Tong Ho
-
-________________________________
-From: Peter Maydell <peter.maydell@linaro.org>
-Sent: Friday, October 27, 2023 6:03 AM
-To: Ho, Tong <tong.ho@amd.com>
-Cc: qemu-arm@nongnu.org <qemu-arm@nongnu.org>; qemu-devel@nongnu.org <qemu-=
-devel@nongnu.org>; alistair@alistair23.me <alistair@alistair23.me>; edgar.i=
-glesias@gmail.com <edgar.iglesias@gmail.com>; richard.henderson@linaro.org =
-<richard.henderson@linaro.org>; frasse.iglesias@gmail.com <frasse.iglesias@=
-gmail.com>
-Subject: Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx Ver=
-sal TRNG device
-
-On Tue, 17 Oct 2023 at 20:32, Tong Ho <tong.ho@amd.com> wrote:
->
-> Signed-off-by: Tong Ho <tong.ho@amd.com>
+On 10/11/23 19:52, Eric Auger wrote:
+> Add unit tests for both resv_region_list_insert() and
+> range_inverse_array().
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
 > ---
->  tests/qtest/meson.build             |   2 +-
->  tests/qtest/xlnx-versal-trng-test.c | 486 ++++++++++++++++++++++++++++
->  2 files changed, 487 insertions(+), 1 deletion(-)
->  create mode 100644 tests/qtest/xlnx-versal-trng-test.c
-
-
-> +static void trng_wait(uint32_t wait_mask, bool on, const char *act)
+> 
+> v2 -> v3:
+> - conversion to new GList based protos
+> ---
+>   tests/unit/test-resv-mem.c | 318 +++++++++++++++++++++++++++++++++++++
+>   tests/unit/meson.build     |   1 +
+>   2 files changed, 319 insertions(+)
+>   create mode 100644 tests/unit/test-resv-mem.c
+> 
+> diff --git a/tests/unit/test-resv-mem.c b/tests/unit/test-resv-mem.c
+> new file mode 100644
+> index 0000000000..ea3336c39d
+> --- /dev/null
+> +++ b/tests/unit/test-resv-mem.c
+> @@ -0,0 +1,318 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * reserved-region/range.c unit-tests.
+> + *
+> + * Copyright (C) 2023, Red Hat, Inc.
+> + *
+> + * Author: Eric Auger <eric.auger@redhat.com>
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/range.h"
+> +#include "exec/memory.h"
+> +#include "qemu/reserved-region.h"
+> +
+> +#define DEBUG 0
+> +
+> +#if DEBUG
+> +static void print_ranges(const char *prefix, GList *ranges)
 > +{
-> +    time_t tmo =3D time(NULL) + 2; /* at most 2 seconds */
-
-Don't put timeouts this short into tests, please; ideally,
-avoid them entirely. Sometimes the CI machines are heavily
-loaded and the test might not be able to complete in a
-short time like this. If you must have a timeout, it should
-be at least a minute. (And see below on whether we need one.)
-
-> +    uint32_t event_mask =3D 0;
-> +    uint32_t clear_mask =3D 0;
+> +    GList *l;
+> +    int i = 0;
 > +
-> +    /*
-> +     * Only selected bits are events in R_TRNG_STATUS, and
-> +     * clear them needs to go through R_INT_CTRL.
-> +     */
-> +    if (wait_mask & TRNG_STATUS_CERTF_MASK) {
-> +        event_mask |=3D TRNG_STATUS_CERTF_MASK;
-> +        clear_mask |=3D TRNG_INT_CTRL_CERTF_RST_MASK;
+> +    if (!g_list_length(ranges)) {
+> +        printf("%s is void\n", prefix);
+> +        return;
 > +    }
-> +    if (wait_mask & TRNG_STATUS_DTF_MASK) {
-> +        event_mask |=3D TRNG_STATUS_DTF_MASK;
-> +        clear_mask |=3D TRNG_INT_CTRL_DTF_RST_MASK;
-> +    }
-> +    if (wait_mask & TRNG_STATUS_DONE_MASK) {
-> +        event_mask |=3D TRNG_STATUS_DONE_MASK;
-> +        clear_mask |=3D TRNG_INT_CTRL_DONE_RST_MASK;
-> +    }
+> +    for (l = ranges; l; l = l->next) {
+> +        Range *r = (Range *)l->data;
 > +
-> +    for (;;) {
-> +        bool sta =3D !!(trng_status() & event_mask);
-> +
-> +        if ((on ^ sta) =3D=3D 0) {
-> +            break;
-> +        }
-> +
-> +        if (time(NULL) >=3D tmo) {
-> +            FAILED("%s: Timed out waiting for event 0x%x to be %d%s",
-> +                   act, event_mask, (int)on, trng_info());
-> +        }
-> +
-> +        g_usleep(10000);
-
-Why does this test need to use sleeps and timeouts?
-A qtest test controls the guest 'clock' directly, so
-usually they're completely deterministic. Is there some
-behaviour in the TRNG device which is asynchronous (in
-a way not driven from the QEMU guest clock) that I've missed ?
-
-> +    }
-> +
-> +    /* Remove event */
-> +    trng_bit_set(R_TRNG_INT_CTRL, clear_mask);
-> +
-> +    if (!!(trng_read(R_TRNG_STATUS) & event_mask)) {
-> +        FAILED("%s: Event 0x%0x stuck at 1 after clear: %s",
-> +               act, event_mask, trng_info());
+> +        printf("%s rev[%i] = [0x%"PRIx64",0x%"PRIx64"]\n",
+> +               prefix, i, range_lob(r), range_upb(r));
+> +        i++;
 > +    }
 > +}
+> +#endif
+> +
+> +static void compare_ranges(const char *prefix, GList *ranges,
+> +                           GList *expected)
+> +{
+> +    GList *l, *e;
+> +    int i = 0;
 
-thanks
--- PMM
+I dropped this variable. It's unused and clang complained about it.
 
---_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Thanks,
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-Hi Peter,</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-This is in regard to your comment on the use of g_usleep() in waiting for</=
-div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-an event-bit update from the device under test.</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-The TRNG device model presented in patch #1 does not have any asynchronous =
-behavior.</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-So, do you mean that, although the qtest process and the qemu-system-* proc=
-ess</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-are running as 2 separate processes, qtest infrastructure already has the n=
-ecessary</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-mechanism to ensure that:</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-1. After qtest test sets a register that has the correct deterministic beha=
-vior to update an event bit,</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-2. The same qtest test subsequently issuing a register read will be guarant=
-eed to observe the updated bit?</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-If that is the case, then there would be no need for any timeout. Instead,<=
-/div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-a qtest test can declare fail when the expected bit update is not observed =
-by the test.</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-I would&nbsp;like to know.</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-Thanks,</div>
-<div class=3D"elementToProof"><span style=3D"font-family: Aptos, Aptos_Embe=
-ddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 1=
-1pt; color: rgb(0, 0, 0);">Tong Ho</span></div>
-<div id=3D"appendonsend"></div>
-<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
-nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
-olor: rgb(0, 0, 0);">
-<br>
-</div>
-<hr style=3D"display: inline-block; width: 98%;">
-<div id=3D"divRplyFwdMsg" dir=3D"ltr"><span style=3D"font-family: Calibri, =
-sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><b>From:</b>&nbsp;Peter =
-Maydell &lt;peter.maydell@linaro.org&gt;<br>
-<b>Sent:</b>&nbsp;Friday, October 27, 2023 6:03 AM<br>
-<b>To:</b>&nbsp;Ho, Tong &lt;tong.ho@amd.com&gt;<br>
-<b>Cc:</b>&nbsp;qemu-arm@nongnu.org &lt;qemu-arm@nongnu.org&gt;; qemu-devel=
-@nongnu.org &lt;qemu-devel@nongnu.org&gt;; alistair@alistair23.me &lt;alist=
-air@alistair23.me&gt;; edgar.iglesias@gmail.com &lt;edgar.iglesias@gmail.co=
-m&gt;; richard.henderson@linaro.org &lt;richard.henderson@linaro.org&gt;;
- frasse.iglesias@gmail.com &lt;frasse.iglesias@gmail.com&gt;<br>
-<b>Subject:</b>&nbsp;Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AM=
-D/Xilinx Versal TRNG device</span>
-<div>&nbsp;</div>
-</div>
-<div><span style=3D"font-size: 11pt;">On Tue, 17 Oct 2023 at 20:32, Tong Ho=
- &lt;tong.ho@amd.com&gt; wrote:<br>
-&gt;<br>
-&gt; Signed-off-by: Tong Ho &lt;tong.ho@amd.com&gt;<br>
-&gt; ---<br>
-&gt;&nbsp; tests/qtest/meson.build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 2 +-<br>
-&gt;&nbsp; tests/qtest/xlnx-versal-trng-test.c | 486 ++++++++++++++++++++++=
-++++++<br>
-&gt;&nbsp; 2 files changed, 487 insertions(+), 1 deletion(-)<br>
-&gt;&nbsp; create mode 100644 tests/qtest/xlnx-versal-trng-test.c<br>
-<br>
-<br>
-&gt; +static void trng_wait(uint32_t wait_mask, bool on, const char *act)<b=
-r>
-&gt; +{<br>
-&gt; +&nbsp;&nbsp;&nbsp; time_t tmo =3D time(NULL) + 2; /* at most 2 second=
-s */<br>
-<br>
-Don't put timeouts this short into tests, please; ideally,<br>
-avoid them entirely. Sometimes the CI machines are heavily<br>
-loaded and the test might not be able to complete in a<br>
-short time like this. If you must have a timeout, it should<br>
-be at least a minute. (And see below on whether we need one.)<br>
-<br>
-&gt; +&nbsp;&nbsp;&nbsp; uint32_t event_mask =3D 0;<br>
-&gt; +&nbsp;&nbsp;&nbsp; uint32_t clear_mask =3D 0;<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp; /*<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp; * Only selected bits are events in R_TRNG_ST=
-ATUS, and<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp; * clear them needs to go through R_INT_CTRL.=
-<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp; */<br>
-&gt; +&nbsp;&nbsp;&nbsp; if (wait_mask &amp; TRNG_STATUS_CERTF_MASK) {<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event_mask |=3D TRNG_STATU=
-S_CERTF_MASK;<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_mask |=3D TRNG_INT_C=
-TRL_CERTF_RST_MASK;<br>
-&gt; +&nbsp;&nbsp;&nbsp; }<br>
-&gt; +&nbsp;&nbsp;&nbsp; if (wait_mask &amp; TRNG_STATUS_DTF_MASK) {<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event_mask |=3D TRNG_STATU=
-S_DTF_MASK;<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_mask |=3D TRNG_INT_C=
-TRL_DTF_RST_MASK;<br>
-&gt; +&nbsp;&nbsp;&nbsp; }<br>
-&gt; +&nbsp;&nbsp;&nbsp; if (wait_mask &amp; TRNG_STATUS_DONE_MASK) {<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event_mask |=3D TRNG_STATU=
-S_DONE_MASK;<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_mask |=3D TRNG_INT_C=
-TRL_DONE_RST_MASK;<br>
-&gt; +&nbsp;&nbsp;&nbsp; }<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp; for (;;) {<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bool sta =3D !!(trng_statu=
-s() &amp; event_mask);<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ((on ^ sta) =3D=3D 0) {=
-<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; br=
-eak;<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (time(NULL) &gt;=3D tmo=
-) {<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FA=
-ILED(&quot;%s: Timed out waiting for event 0x%x to be %d%s&quot;,<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; act, event_mask, (int)on, trng_info=
-());<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g_usleep(10000);<br>
-<br>
-Why does this test need to use sleeps and timeouts?<br>
-A qtest test controls the guest 'clock' directly, so<br>
-usually they're completely deterministic. Is there some<br>
-behaviour in the TRNG device which is asynchronous (in<br>
-a way not driven from the QEMU guest clock) that I've missed ?<br>
-<br>
-&gt; +&nbsp;&nbsp;&nbsp; }<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp; /* Remove event */<br>
-&gt; +&nbsp;&nbsp;&nbsp; trng_bit_set(R_TRNG_INT_CTRL, clear_mask);<br>
-&gt; +<br>
-&gt; +&nbsp;&nbsp;&nbsp; if (!!(trng_read(R_TRNG_STATUS) &amp; event_mask))=
- {<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FAILED(&quot;%s: Event 0x%=
-0x stuck at 1 after clear: %s&quot;,<br>
-&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp; act, event_mask, trng_info());<br>
-&gt; +&nbsp;&nbsp;&nbsp; }<br>
-&gt; +}<br>
-<br>
-thanks<br>
--- PMM</span></div>
-</body>
-</html>
+C.
 
---_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_--
+> +
+> +#if DEBUG
+> +    print_ranges("out", ranges);
+> +    print_ranges("expected", expected);
+> +#endif
+> +    g_assert_cmpint(g_list_length(ranges), ==, g_list_length(expected));
+> +    for (l = ranges, e = expected; l ; l = l->next, e = e->next) {
+> +        Range *r = (Range *)l->data;
+> +        Range *er = (Range *)e->data;
+> +
+> +        g_assert_true(range_lob(r) == range_lob(er) &&
+> +                      range_upb(r) == range_upb(er));
+> +        i++;
+> +    }
+> +}
+> +
+> +static GList *insert_sorted_range(GList *list, uint64_t lob, uint64_t upb)
+> +{
+> +    Range *new = g_new0(Range, 1);
+> +
+> +    range_set_bounds(new, lob, upb);
+> +    return range_list_insert(list, new);
+> +}
+> +
+> +static void reset(GList **in, GList **out, GList **expected)
+> +{
+> +    g_list_free_full(*in, g_free);
+> +    g_list_free_full(*out, g_free);
+> +    g_list_free_full(*expected, g_free);
+> +    *in = NULL;
+> +    *out = NULL;
+> +    *expected = NULL;
+> +}
+> +
+> +static void
+> +run_range_inverse_array(const char *prefix, GList **in, GList **expected,
+> +                        uint64_t low, uint64_t high)
+> +{
+> +    GList *out = NULL;
+> +    range_inverse_array(*in, &out, low, high);
+> +    compare_ranges(prefix, out, *expected);
+> +    reset(in, &out, expected);
+> +}
+> +
+> +static void check_range_reverse_array(void)
+> +{
+> +    GList *in = NULL, *expected = NULL;
+> +
+> +    /* test 1 */
+> +
+> +    in = insert_sorted_range(in, 0x10000, UINT64_MAX);
+> +    expected = insert_sorted_range(expected, 0x0, 0xFFFF);
+> +    run_range_inverse_array("test1", &in, &expected, 0x0, UINT64_MAX);
+> +
+> +    /* test 2 */
+> +
+> +    in = insert_sorted_range(in, 0x10000, 0xFFFFFFFFFFFF);
+> +    expected = insert_sorted_range(expected, 0x0, 0xFFFF);
+> +    expected = insert_sorted_range(expected, 0x1000000000000, UINT64_MAX);
+> +    run_range_inverse_array("test1", &in, &expected, 0x0, UINT64_MAX);
+> +
+> +    /* test 3 */
+> +
+> +    in = insert_sorted_range(in, 0x0, 0xFFFF);
+> +    in = insert_sorted_range(in, 0x10000, 0x2FFFF);
+> +    expected = insert_sorted_range(expected, 0x30000, UINT64_MAX);
+> +    run_range_inverse_array("test1", &in, &expected, 0x0, UINT64_MAX);
+> +
+> +    /* test 4 */
+> +
+> +    in = insert_sorted_range(in, 0x50000, 0x5FFFF);
+> +    in = insert_sorted_range(in, 0x60000, 0xFFFFFFFFFFFF);
+> +    expected = insert_sorted_range(expected, 0x0, 0x4FFFF);
+> +    expected = insert_sorted_range(expected, 0x1000000000000, UINT64_MAX);
+> +    run_range_inverse_array("test1", &in, &expected, 0x0, UINT64_MAX);
+> +
+> +    /* test 5 */
+> +
+> +    in = insert_sorted_range(in, 0x0, UINT64_MAX);
+> +    run_range_inverse_array("test1", &in, &expected, 0x0, UINT64_MAX);
+> +
+> +    /* test 6 */
+> +    in = insert_sorted_range(in,  0x10000, 0x1FFFF);
+> +    in = insert_sorted_range(in,  0x30000, 0x6FFFF);
+> +    in = insert_sorted_range(in,  0x90000, UINT64_MAX);
+> +    expected = insert_sorted_range(expected, 0x0, 0xFFFF);
+> +    expected = insert_sorted_range(expected, 0x20000, 0x2FFFF);
+> +    expected = insert_sorted_range(expected, 0x70000, 0x8FFFF);
+> +    run_range_inverse_array("test1", &in, &expected, 0x0, UINT64_MAX);
+> +}
+> +
+> +static void check_range_reverse_array_low_end(void)
+> +{
+> +    GList *in = NULL, *expected = NULL;
+> +
+> +    /* test 1 */
+> +    in = insert_sorted_range(in,  0x0, UINT64_MAX);
+> +    run_range_inverse_array("test1", &in, &expected, 0x10000, 0xFFFFFF);
+> +
+> +    /* test 2 */
+> +
+> +    in = insert_sorted_range(in,  0x0, 0xFFFF);
+> +    in = insert_sorted_range(in,  0x20000, 0x2FFFF);
+> +    expected = insert_sorted_range(expected, 0x40000, 0xFFFFFFFFFFFF);
+> +    run_range_inverse_array("test2", &in, &expected, 0x40000, 0xFFFFFFFFFFFF);
+> +
+> +    /* test 3 */
+> +    in = insert_sorted_range(in,  0x0, 0xFFFF);
+> +    in = insert_sorted_range(in,  0x20000, 0x2FFFF);
+> +    in = insert_sorted_range(in,  0x1000000000000, UINT64_MAX);
+> +    expected = insert_sorted_range(expected, 0x40000, 0xFFFFFFFFFFFF);
+> +    run_range_inverse_array("test3", &in, &expected, 0x40000, 0xFFFFFFFFFFFF);
+> +
+> +    /* test 4 */
+> +
+> +    in = insert_sorted_range(in,  0x0, 0xFFFF);
+> +    in = insert_sorted_range(in,  0x20000, 0x2FFFF);
+> +    in = insert_sorted_range(in,  0x1000000000000, UINT64_MAX);
+> +    expected = insert_sorted_range(expected, 0x30000, 0xFFFFFFFFFFFF);
+> +    run_range_inverse_array("test4", &in, &expected, 0x20000, 0xFFFFFFFFFFFF);
+> +
+> +    /* test 5 */
+> +
+> +    in = insert_sorted_range(in,  0x2000, 0xFFFF);
+> +    in = insert_sorted_range(in,  0x20000, 0x2FFFF);
+> +    in = insert_sorted_range(in,  0x100000000, 0x1FFFFFFFF);
+> +    expected = insert_sorted_range(expected, 0x1000, 0x1FFF);
+> +    expected = insert_sorted_range(expected, 0x10000, 0x1FFFF);
+> +    expected = insert_sorted_range(expected, 0x30000, 0xFFFFFFFF);
+> +    expected = insert_sorted_range(expected, 0x200000000, 0xFFFFFFFFFFFF);
+> +    run_range_inverse_array("test5", &in, &expected, 0x1000, 0xFFFFFFFFFFFF);
+> +
+> +    /* test 6 */
+> +
+> +    in = insert_sorted_range(in,  0x10000000 , 0x1FFFFFFF);
+> +    in = insert_sorted_range(in,  0x100000000, 0x1FFFFFFFF);
+> +    expected = insert_sorted_range(expected, 0x0, 0xFFFF);
+> +    run_range_inverse_array("test6", &in, &expected, 0x0, 0xFFFF);
+> +}
+> +
+> +static ReservedRegion *alloc_resv_mem(unsigned type, uint64_t lob, uint64_t upb)
+> +{
+> +    ReservedRegion *r;
+> +
+> +    r = g_new0(ReservedRegion, 1);
+> +    r->type = type;
+> +    range_set_bounds(&r->range, lob, upb);
+> +    return r;
+> +}
+> +
+> +static void print_resv_region_list(const char *prefix, GList *list,
+> +                                   uint32_t expected_length)
+> +{
+> +    int i = g_list_length(list);
+> +
+> +    g_assert_cmpint(i, ==, expected_length);
+> +#if DEBUG
+> +    i = 0;
+> +    for (GList *l = list; l; l = l->next) {
+> +        ReservedRegion *r = (ReservedRegion *)l->data;
+> +        Range *range = &r->range;
+> +
+> +        printf("%s item[%d]=[0x%x, 0x%"PRIx64", 0x%"PRIx64"]\n",
+> +               prefix, i++, r->type, range_lob(range), range_upb(range));
+> +    }
+> +#endif
+> +}
+> +
+> +static void free_resv_region(gpointer data)
+> +{
+> +    ReservedRegion *reg = (ReservedRegion *)data;
+> +
+> +    g_free(reg);
+> +}
+> +
+> +static void check_resv_region_list_insert(void)
+> +{
+> +    ReservedRegion *r[10];
+> +    GList *l = NULL;
+> +
+> +    r[0] = alloc_resv_mem(0xA, 0, 0xFFFF);
+> +    r[1] = alloc_resv_mem(0xA, 0x20000, 0x2FFFF);
+> +    l = resv_region_list_insert(l, r[0]);
+> +    l = resv_region_list_insert(l, r[1]);
+> +    print_resv_region_list("test1", l, 2);
+> +
+> +    /* adjacent on left */
+> +    r[2] = alloc_resv_mem(0xB, 0x0, 0xFFF);
+> +    l = resv_region_list_insert(l, r[2]);
+> +    /* adjacent on right */
+> +    r[3] = alloc_resv_mem(0xC, 0x21000, 0x2FFFF);
+> +    l = resv_region_list_insert(l, r[3]);
+> +    print_resv_region_list("test2", l, 4);
+> +
+> +    /* exact overlap of D into C*/
+> +    r[4] = alloc_resv_mem(0xD, 0x21000, 0x2FFFF);
+> +    l = resv_region_list_insert(l, r[4]);
+> +    print_resv_region_list("test3", l, 4);
+> +
+> +    /* in the middle */
+> +    r[5] = alloc_resv_mem(0xE, 0x22000, 0x23FFF);
+> +    l = resv_region_list_insert(l, r[5]);
+> +    print_resv_region_list("test4", l, 6);
+> +
+> +    /* overwrites several existing ones */
+> +    r[6] = alloc_resv_mem(0xF, 0x10000, 0x2FFFF);
+> +    l = resv_region_list_insert(l, r[6]);
+> +    print_resv_region_list("test5", l, 3);
+> +
+> +    /* contiguous at the end */
+> +    r[7] = alloc_resv_mem(0x0, 0x30000, 0x40000);
+> +    l = resv_region_list_insert(l, r[7]);
+> +    print_resv_region_list("test6", l, 4);
+> +
+> +    g_list_free_full(l, free_resv_region);
+> +    l = NULL;
+> +
+> +    r[0] = alloc_resv_mem(0x0, 0x10000, 0x1FFFF);
+> +    l = resv_region_list_insert(l, r[0]);
+> +    /* insertion before the 1st item */
+> +    r[1] = alloc_resv_mem(0x1, 0x0, 0xFF);
+> +    l = resv_region_list_insert(l, r[1]);
+> +    print_resv_region_list("test8", l, 2);
+> +
+> +    /* collision on the left side */
+> +    r[2] = alloc_resv_mem(0xA, 0x1200, 0x11FFF);
+> +    l = resv_region_list_insert(l, r[2]);
+> +    print_resv_region_list("test9", l, 3);
+> +
+> +    /* collision on the right side */
+> +    r[3] = alloc_resv_mem(0xA, 0x1F000, 0x2FFFF);
+> +    l = resv_region_list_insert(l, r[3]);
+> +    print_resv_region_list("test10", l, 4);
+> +
+> +    /* override everything */
+> +    r[4] = alloc_resv_mem(0xF, 0x0, UINT64_MAX);
+> +    l = resv_region_list_insert(l, r[4]);
+> +    print_resv_region_list("test11", l, 1);
+> +
+> +    g_list_free_full(l, free_resv_region);
+> +    l = NULL;
+> +
+> +    r[0] = alloc_resv_mem(0xF, 0x1000000000000, UINT64_MAX);
+> +    l = resv_region_list_insert(l, r[0]);
+> +    print_resv_region_list("test12", l, 1);
+> +
+> +    r[1] = alloc_resv_mem(0xA, 0x0, 0xFFFFFFF);
+> +    l = resv_region_list_insert(l, r[1]);
+> +    print_resv_region_list("test12", l, 2);
+> +
+> +    r[2] = alloc_resv_mem(0xB, 0x100000000, 0x1FFFFFFFF);
+> +    l = resv_region_list_insert(l, r[2]);
+> +    print_resv_region_list("test12", l, 3);
+> +
+> +    r[3] = alloc_resv_mem(0x0, 0x010000000, 0x2FFFFFFFF);
+> +    l = resv_region_list_insert(l, r[3]);
+> +    print_resv_region_list("test12", l, 3);
+> +
+> +    g_list_free_full(l, free_resv_region);
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    g_test_add_func("/resv-mem/range_reverse_array",
+> +                    check_range_reverse_array);
+> +    g_test_add_func("/resv-mem/range_reverse_array_low_end",
+> +                    check_range_reverse_array_low_end);
+> +    g_test_add_func("/resv-mem/resv_region_list_insert",
+> +                    check_resv_region_list_insert);
+> +
+> +    g_test_run();
+> +
+> +    return 0;
+> +}
+> diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+> index f33ae64b8d..e6c51e7a86 100644
+> --- a/tests/unit/meson.build
+> +++ b/tests/unit/meson.build
+> @@ -21,6 +21,7 @@ tests = {
+>     'test-opts-visitor': [testqapi],
+>     'test-visitor-serialization': [testqapi],
+>     'test-bitmap': [],
+> +  'test-resv-mem': [],
+>     # all code tested by test-x86-cpuid is inside topology.h
+>     'test-x86-cpuid': [],
+>     'test-cutils': [],
+

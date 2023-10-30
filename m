@@ -1,125 +1,170 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1608241ejc;
-        Sun, 29 Oct 2023 20:07:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG8byib+IvJ3vFp9XbqUEstoDA/QDRwE46uWtjYcmftOrr1Ir3n5EKHoO+GkyI0UWPqXWQM
-X-Received: by 2002:a05:6214:dca:b0:66d:995e:24f6 with SMTP id 10-20020a0562140dca00b0066d995e24f6mr13357638qvt.10.1698635279673;
-        Sun, 29 Oct 2023 20:07:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698635279; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1669258ejc;
+        Sun, 29 Oct 2023 23:26:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE8YpGkTRB0gewd2MZK0vN2nUu8TV5owoLedikg4hr2EE+O62vWrxr7qyIBjfz7Cenxo1Xk
+X-Received: by 2002:a05:622a:1188:b0:417:9c63:391c with SMTP id m8-20020a05622a118800b004179c63391cmr11907884qtk.52.1698647167124;
+        Sun, 29 Oct 2023 23:26:07 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1698647167; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xr1akdgytr36vWaAtsr+MAovHwbjWMgTwPYmEIsvp1WOA2RAW6U0RC2zTeNIwlMSNK
-         zZWYD9VGGExTaHnx1eqMNiUTVyh/JaMaxv+L8OeR6ByyyAK+Vzk7DJjXo8yXjSi7wCnK
-         trA2I932gPuRpMLxxguRvNwXyRbpjoQDA+5i+mNgxYrhfN5ggw43VQO6cfssdyS0BU8K
-         6UagzoLPFZqpOI31jPKApRNNveM3i+XQpW6MVRsJtfo3tFPge7wIktoY5Ra5z9G5cACM
-         q7OZ6Gx8nZE6hsBc6ZiCViNyALsbdV5xRYiIA5aJo2etxpj7ijrwiBVesi9kSyuJMlD9
-         4fxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=EGRkVAtfNQaUAny6PRXIkk1EzZZK/+DkPILEuO6cRCDmfeDbs7wtF5tlkNnnbnhbUl
+         SqstKuPIL4JIxD1WutLGv+pqvri4qju06TLQ4Q0MTGgFoShsAJssnKxhcapv5TETId10
+         YlzBQ031jseSAbB0bfC7DXMojiDGHV1naAOBS/NAMTgStIU4TWuf3npYAZrFFvtEpQe/
+         kONltDUZZ++5okWUTjXHAuMLR6SOfa8d+QrjRyd3ENA1JkGTaS16lFJf0sA546Lif4zp
+         5VVQNb/3IpiELSalRuuSYHI1rJyUjf1J0O/mlKwbUsRPF9dyjPAvcEtAZQ+NsiCLxdQI
+         zXYg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=kKqDv679ySdJMxtQEiGBQ7m1OShMU4f+ekzS0O3i5bs=;
-        fh=6shsvKYrlFrmZkZ104G5ZLpZWHjxnoELhMDkASP2ZRU=;
-        b=YGcbzWpCoeteQgJX2INSjK84Oj1f/T2iAKB7DFEBfVXELKJP0+QV4pXpXWGdx0ZZxl
-         Ec6leOIdXDv3jDt15hGdnbjgXe3ZBMLKOnFcLYwU+LSiupOK8O01FmHCcLCsm5ykG0QA
-         5Z9KiMq5Gd8ArVpRLiZGC/ts+ptHqdiotRx92JXiNBqFdnIyWfVFgN5gupigkaicD0EQ
-         cuyTOt3+fXwCO239Jx12w0unoyYjhVtOwZ47XnPH4YdQPzMYrguhWeYg12hh2pEn9mTQ
-         E8Ch2iBu/udSzOopZWDX09TYMn3rLKw98reOeSz84ykrI3uNnPuKUUSPT4TGX1IGsSgL
-         H30w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="IFmR/1Lr";
+         :list-unsubscribe:list-id:precedence:mime-version:msip_labels
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature;
+        bh=QKpRZNtXGZDTC1h4is3Eck6FyF7VvA3eQAf+wMEkrDk=;
+        fh=sIRkYyUt4ku3TjvV73xnYqJGfbeAi69XK1ePpTQDFcY=;
+        b=Z25ZUciI5TjMzezncSFJ0TiIUJmzx6ynwvtw08nI5g9yHe8u1ENwxiSUu2uvRs0/y8
+         XAulP5fO2gP2L3fk28IRIVBDDNzQzPhvSIV4gPX4EdXjuUh+EWwEVeyF9phx+ZzeQbHm
+         drh4Ibs2o36AQhJEg4/R2gJFOJX8FZBhiHycCO3WKpI3DJaFMJkoTV5THqPgXqa1z+pk
+         TJbdBpwXoIYMGBqWUlqknG8q4q6bjmCbB7VbAE3btLhvzJGUAd0XD1W5k0CxWN8LL0YD
+         CEffmChAydV+4uBafH69LXY7PBprW3GKZ+VXrtfDWD9r9ORqvO7OGGrMW8DGeR6p7ZaM
+         qeQw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="0o/fHgxK";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14-20020a05620a430e00b00779d20f2f99si5131976qko.495.2023.10.29.20.07.59
+        by mx.google.com with ESMTPS id 8-20020ac85708000000b004181b5c82b9si5172177qtw.83.2023.10.29.23.26.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Oct 2023 20:07:59 -0700 (PDT)
+        Sun, 29 Oct 2023 23:26:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="IFmR/1Lr";
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="0o/fHgxK";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxIco-0000KI-T6; Sun, 29 Oct 2023 23:07:34 -0400
+	id 1qxLig-0008Fx-Ag; Mon, 30 Oct 2023 02:25:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qxIco-0000K1-A0; Sun, 29 Oct 2023 23:07:34 -0400
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qxIcm-0004Qz-NK; Sun, 29 Oct 2023 23:07:34 -0400
-Received: by mail-ua1-x932.google.com with SMTP id
- a1e0cc1a2514c-7b9dc244151so2440181241.1; 
- Sun, 29 Oct 2023 20:07:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698635251; x=1699240051; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=kKqDv679ySdJMxtQEiGBQ7m1OShMU4f+ekzS0O3i5bs=;
- b=IFmR/1LrT8rRTTIUT6GXUvTez0g7H5olJomW+EwMfM7ep9D2XsXgMugzJuAFFo2QHc
- dJ58+e5ab8+A41SG/zgLPsPZ9WmLzU8FEa4Jc4162eYfe0RbIc908R548HdJozVVveWj
- 1f4XV8x15J/pWnsAU9W9ccsfyq2HOcQx+el9zhYikCDSaPgHIAOLLfdlwaNWlBLEicAo
- l+rZOMk8zeEktcodpqqCJeQRnL28s4iHe3VhqRfGCwghGL9JhmarHjIzvwdvyCWEi76/
- GPwcSVPFT4owfXne8bxSBHQHr42HGZ+lpycEext0PA8I53P2yMKjGPH+j/Um1Ix7fvR9
- 9TZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698635251; x=1699240051;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=kKqDv679ySdJMxtQEiGBQ7m1OShMU4f+ekzS0O3i5bs=;
- b=L6G4MQ7q59xTdo2xnIljX3DA2FT/yUlpe+IzPcjax9at+kzEKjqbWDEOZRg8FIBHAO
- gWSMqB9+byE61yg9ZVnh1l4f1nnozw+UHf++EJEAb9C3EwAX0nZjah9FScPvy0iodIPD
- FPyaAHIlV4aWUOJpmq+9xNr0Dejnk8h6dMbB2Br1FdAExGsu323xKqYpXj9qMWswHBtj
- 9zvqrKSf69E7wjaTfNg2eb4K0wWTRNHiNZC8+NbXjtLUTI8nmVpqopfU39qE/7ujM8h6
- 0jwPi6ZmJvX0LjiFV3e9f4N5M0aD4/hFKk2sx/+b66MZC00iufW7/0KHyF7I7/ooUWp9
- rrRg==
-X-Gm-Message-State: AOJu0YxotZHx3V61QcGoP/AzAsn2tk1ErooIsbQK5FcivRZpJxg9u2vU
- EkBoNXJCOTiPGMHcjfSn+6+1LP81dH5bqqBg8KY=
-X-Received: by 2002:a05:6102:e0c:b0:452:69f8:a00d with SMTP id
- o12-20020a0561020e0c00b0045269f8a00dmr5216824vst.2.1698635251041; Sun, 29 Oct
- 2023 20:07:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qxLie-0008FU-IA; Mon, 30 Oct 2023 02:25:48 -0400
+Received: from mail-dm6nam12on20631.outbound.protection.outlook.com
+ ([2a01:111:f400:fe59::631]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qxLiS-0007q5-E4; Mon, 30 Oct 2023 02:25:48 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e++pW7hB+JPU82b9Db6duPh4157adXtGG6Yx0KH01dPgUj5M17G9YODvK+M6r6ZAQ7gvFIk5HvGpnNmUkBFF98Ppr84Erk0OOv2OMUUZfB+oiNIdB9JQGaXG/G7RDRRiMb1pasqwUuw8Uf0kcOUYBkOyBKlCGcJEBqgILQPDRmuImprBuuWAaRKTBXkNqyYrH3KuyPK42b1YW5dUGwKHNw8/nobXN6cMR5SMh/kS/DmrXVCDLJ9UoUCjQQLHKmWoRBSmBklHIc4XeXZm454xaEVFD485Vib4Hy5GwGP8+pnkT06ctmA+XhX4FoOVq7FnWjYlP9AX0j2kp2qKOdUIlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QKpRZNtXGZDTC1h4is3Eck6FyF7VvA3eQAf+wMEkrDk=;
+ b=V8J3z0NyHq086s0ivVBHw6So9NC++9ryqCftAmPiEawJQFW2u2G0TlxkwxLtM+6BOxb4HUyKQ1OMzO4TGP5pdWy5UForkIthpJFTlptDuT1RxLP79yXj9k+58G4pslrunQl0xMNcFXY5dl8bf7ic8iTGe185kglN4A5O4V79gj7B2RQB/ziA7ZBUMXtqlYE4H9GLA8qXg5qLQIvCBO5OMnqrrsJ9q7XSJrbjHTnRiQDx9s9xrrHMXMFXPpeXjg+EG0Py6UrTmNXRyJjUEMcxoyhs5IdNXmiNYDzdZcB1pi77Aqs116CbNmDFepY8+hdkzbQ3DOHXfVrzx5oMyXrxVg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QKpRZNtXGZDTC1h4is3Eck6FyF7VvA3eQAf+wMEkrDk=;
+ b=0o/fHgxK4CTW9bObBEwJNPCrTU2tHRR8bP1v88CT7DBerZjL4RKsfwrKWukrImDr9VEwEN/OVyRO2PRfn5+dZ+45qrm5pAAU238GR8hd///b9gdj6Llww3WhcQunMkgBaVUHPCS8EhbMK6tzcT8wua+9zYA9JYHeHqccd2kaJTE=
+Received: from BL0PR12MB4882.namprd12.prod.outlook.com (2603:10b6:208:1c3::10)
+ by IA1PR12MB8359.namprd12.prod.outlook.com (2603:10b6:208:3fc::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.26; Mon, 30 Oct
+ 2023 06:25:30 +0000
+Received: from BL0PR12MB4882.namprd12.prod.outlook.com
+ ([fe80::6a67:b8a8:161b:e684]) by BL0PR12MB4882.namprd12.prod.outlook.com
+ ([fe80::6a67:b8a8:161b:e684%2]) with mapi id 15.20.6933.027; Mon, 30 Oct 2023
+ 06:25:29 +0000
+From: "Ho, Tong" <tong.ho@amd.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "alistair@alistair23.me" <alistair@alistair23.me>,
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "frasse.iglesias@gmail.com" <frasse.iglesias@gmail.com>
+Subject: Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx Versal
+ TRNG device
+Thread-Topic: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx
+ Versal TRNG device
+Thread-Index: AQHaATCrrzNJcYMzpEigiTL96G3ywrBdqX0AgARBDS8=
+Date: Mon, 30 Oct 2023 06:25:29 +0000
+Message-ID: <BL0PR12MB48827D764A414B476C261C45E6A1A@BL0PR12MB4882.namprd12.prod.outlook.com>
+References: <20231017193217.1512868-1-tong.ho@amd.com>
+ <20231017193217.1512868-4-tong.ho@amd.com>
+ <CAFEAcA_yCEtDkW6R43LGNjWGH323HuSWPFibgaRSZ=+DqfrZ_g@mail.gmail.com>
+In-Reply-To: <CAFEAcA_yCEtDkW6R43LGNjWGH323HuSWPFibgaRSZ=+DqfrZ_g@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR12MB4882:EE_|IA1PR12MB8359:EE_
+x-ms-office365-filtering-correlation-id: 5d4f5820-51a7-46a0-fc73-08dbd9110376
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: bEFvSLy2D1v2PALnNOAPw5oaq8hSuVScYZ0aS+kB4yOSLU5l2ggBtDyyBIsadHxO2fOjahgHOJ4WfWhLm0HR63ErOo811w/UoExr9TXXrmX1lktI+2zigmB0gbGvRY/Bji7pV3JqNtSWEHSFkOhlCz74u+evZYLWdHk3H2OwL273c5BGB9/SCoBuVpo8NRuFbi6gqghvA2p9twIAVXPmhCJ+lWxGRHJELu2bj1P+PPIPabJ7/jbrF9jLaHO0aCduq9H240mPK1VWQYIcREQq9onxgEce5YfBkZzoI5h4O65XukvDWW85Azz0Hn8N3gkKsRzbmgJ7hCoAcHc9zabgHxmoL7+4R1jd84gfTlgXFTLgic9CKug3xfXgTno5H9Eru3wdzvtepbV89NMdq+AnVcY5teDxFSBvTM0oUzcqJGlgDteehhr8PVhAaen96FSjrCjXNPc35BNzU2p9lhFU9XxBrcSm84M67BW4cmCqP0G67HWU6EJf0ehl2MeaWZrv6vg6503ev2R1VCdsF6DmpCHcMoGacf5t+4Q8eiN3m2VUTyyGWgt00tPUvcc2e8YC+/T1+4Xx94Z5yBz2NP7wnxo/wSukBXrdOz5SkXLLEm6XKGg8mvXCfQCyxmdi49ne
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB4882.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(346002)(136003)(39860400002)(396003)(376002)(366004)(230922051799003)(64100799003)(186009)(1800799009)(451199024)(55016003)(9686003)(26005)(53546011)(71200400001)(478600001)(6506007)(7696005)(2906002)(83380400001)(91956017)(66556008)(41300700001)(66946007)(5660300002)(76116006)(8936002)(66476007)(66446008)(4326008)(8676002)(52536014)(6916009)(54906003)(64756008)(316002)(38070700009)(38100700002)(122000001)(86362001)(33656002)(19627405001)(66899024);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?xH9s9s6rZqsEV1gw7J5k3IxVpobYsfTqPuhhUzHHBWMhWjCF9PO+GLnAUF?=
+ =?iso-8859-1?Q?CHV7gI9Kxd4+O2ijm+4lC3E9x2YQF9JYUarmiIAIBQVcXx+Dr/NZo+My84?=
+ =?iso-8859-1?Q?IARzFzyUmyab+E0IvoDqGHT7qT8pkjYzoRBqTf7kCWtuFuAKMOb4kKhjvY?=
+ =?iso-8859-1?Q?M/v4hk1SKaVQuBe3UzJHTT4Qa++A/vmvX5oPTuM7K/q9qsd5CUGJWuQ5Jd?=
+ =?iso-8859-1?Q?Za31NNLT6IMzZbn8MDa9PbyGa3QoHcZZrg0SBBIGF5FE9xm6DG1BHQNDIt?=
+ =?iso-8859-1?Q?m8xZktwkUxgJzTGcGoZlWTPcUyyyVji3U/65hiZLPKHJShjkC1lA4Vtqk6?=
+ =?iso-8859-1?Q?y1YHYbS72jADTSI0a9ezYV5wZ5u7LJ2vTYZDcl0SdbYR1IgTqp1Xn/ub2d?=
+ =?iso-8859-1?Q?XpWXC2uXratje/Vo7J/UBsHdRrAI0Vs9aV4OHtxS/zCbMztvqotQYqbCcn?=
+ =?iso-8859-1?Q?NkW/S0IuBtbinCect0ebFCmoEOcpyFBGyM75r7AqzgNOIt/tmelosR/qnR?=
+ =?iso-8859-1?Q?lISsN4lV1AVJd/kzL6JRrdhG7qgbCzcgn2InWROH5yaNzDKlHLqU66lQCS?=
+ =?iso-8859-1?Q?561+PmgNm8jcIrLddl7p5ovTtk7RcMx3rgNIAxUKoFX2jbEkDdamrTugAZ?=
+ =?iso-8859-1?Q?o2KNTZkf4lvk+MpnzTUjYFHM1PlyNFPPBtpl9C1XEbX1uP8q4k/efhemmL?=
+ =?iso-8859-1?Q?AdtlKx6rMqbt3pzFyOia7tOBHKPMJzwuZ6PZn/kb2ezkHAXV1x0zoVh6hG?=
+ =?iso-8859-1?Q?OGN5Ufsrwg6hI5f5N9cmIuVGDfq1kvUDg1dMxtGymDnUFkLeNUQxbYMxVm?=
+ =?iso-8859-1?Q?k0fEk1PS31VdGFJk01XZe65DeNFBT2WhJhPmEjFSlvMjvGvsOyztZRVa5Q?=
+ =?iso-8859-1?Q?lk/48ip3IBUy5OWonFbQLxWmNjECfACDEZj4UQHzk2LbvbhseSdcLX8hTd?=
+ =?iso-8859-1?Q?yjd5qNZ860qwLzGGahP8Hie764NjpL9hEjKFf2MEmiqffRmNY7q2ndAApm?=
+ =?iso-8859-1?Q?ZlzY2hjO02U+VEK8lYoE3qWZQxnB2WffL3aVqkecHjxJ07gijfUrTfOwJ4?=
+ =?iso-8859-1?Q?w7g5qaiiN7je0xxYhfWpuaAXKuEmyf//ExCRInAO6F5VtPKABfwA7Ua3mj?=
+ =?iso-8859-1?Q?pR4w52KFM21H9u7c4QQ4Wz9P7XhB28oWYruBc3o/PoolH+yiIx120oBGSr?=
+ =?iso-8859-1?Q?Du/0sC1eR0dGO5sGVd8ZOavbD8P/ceZkk3AZ1oXKMRIeF4EH4mnPDabnbq?=
+ =?iso-8859-1?Q?gjhVBlcfvvPMUtwhibxlsdljuGX49QYFpVCqeZZiem9fxLZY1E5gvuBGf0?=
+ =?iso-8859-1?Q?lgn9atBnoGu0/jQERpKM4ojxatNSbaf/Dx9gTCFrCJ9j8JyjSJxgLmOgyC?=
+ =?iso-8859-1?Q?NQj8gts1K04+4oXMD3bV0rbXpXhbowwy2Cxc3tsh8WL/Ntks/8uGNpdvW2?=
+ =?iso-8859-1?Q?dgKhcgua2/Dif6UD8onSdlCbyqujgpZwevYoddFFe8D5GQ+Z3kJryMvhZG?=
+ =?iso-8859-1?Q?2NyQUJk0fPAL2Kb5H0jdDmiljKLE8Bi5Gczq4Ep1x/kj+NlnvjdwOSF+px?=
+ =?iso-8859-1?Q?3wcP//xU12e/QlQ1sxTGYk6mXAy+m/sZ0YyptTEJ+9FNCDht7nllS0peFV?=
+ =?iso-8859-1?Q?DAUYbGMHJ9y1s=3D?=
+Content-Type: multipart/alternative;
+ boundary="_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_"
 MIME-Version: 1.0
-References: <20231025200713.580814-1-sunilvl@ventanamicro.com>
- <20231025200713.580814-14-sunilvl@ventanamicro.com>
-In-Reply-To: <20231025200713.580814-14-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 30 Oct 2023 13:07:04 +1000
-Message-ID: <CAKmqyKP62z0MShdJy3BYmSt+PRGG+2t95bxzThsyDr1=p6Ao7g@mail.gmail.com>
-Subject: Re: [PATCH v4 13/13] hw/riscv/virt-acpi-build.c: Add PLIC in MADT
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>, 
- Andrew Jones <ajones@ventanamicro.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::932;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x932.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB4882.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5d4f5820-51a7-46a0-fc73-08dbd9110376
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Oct 2023 06:25:29.8466 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rmsLIYtNFoZIyacieuUrANEvItd9RuIvQnta+y4KapZdqTxNT5Z+ZsWl+IMAw3Qz
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB8359
+Received-SPF: softfail client-ip=2a01:111:f400:fe59::631;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.478,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -135,81 +180,360 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4xTmAN01LFuc
+X-TUID: U2x72UUtlpxt
 
-On Thu, Oct 26, 2023 at 6:15=E2=80=AFAM Sunil V L <sunilvl@ventanamicro.com=
-> wrote:
+--_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Peter,
+
+This is in regard to your comment on the use of g_usleep() in waiting for
+an event-bit update from the device under test.
+
+The TRNG device model presented in patch #1 does not have any asynchronous =
+behavior.
+
+So, do you mean that, although the qtest process and the qemu-system-* proc=
+ess
+are running as 2 separate processes, qtest infrastructure already has the n=
+ecessary
+mechanism to ensure that:
+
+1. After qtest test sets a register that has the correct deterministic beha=
+vior to update an event bit,
+
+2. The same qtest test subsequently issuing a register read will be guarant=
+eed to observe the updated bit?
+
+If that is the case, then there would be no need for any timeout. Instead,
+a qtest test can declare fail when the expected bit update is not observed =
+by the test.
+
+I would like to know.
+
+Thanks,
+Tong Ho
+
+________________________________
+From: Peter Maydell <peter.maydell@linaro.org>
+Sent: Friday, October 27, 2023 6:03 AM
+To: Ho, Tong <tong.ho@amd.com>
+Cc: qemu-arm@nongnu.org <qemu-arm@nongnu.org>; qemu-devel@nongnu.org <qemu-=
+devel@nongnu.org>; alistair@alistair23.me <alistair@alistair23.me>; edgar.i=
+glesias@gmail.com <edgar.iglesias@gmail.com>; richard.henderson@linaro.org =
+<richard.henderson@linaro.org>; frasse.iglesias@gmail.com <frasse.iglesias@=
+gmail.com>
+Subject: Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AMD/Xilinx Ver=
+sal TRNG device
+
+On Tue, 17 Oct 2023 at 20:32, Tong Ho <tong.ho@amd.com> wrote:
 >
-> Add PLIC structures for each socket in the MADT when system is
-> configured with PLIC as the external interrupt controller.
->
-> Signed-off-by: Haibo Xu <haibo1.xu@intel.com>
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-> Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
-
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+> Signed-off-by: Tong Ho <tong.ho@amd.com>
 > ---
->  hw/riscv/virt-acpi-build.c | 29 +++++++++++++++++++++++++++++
->  1 file changed, 29 insertions(+)
->
-> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-> index c410fe7d5c..cc934a5c4b 100644
-> --- a/hw/riscv/virt-acpi-build.c
-> +++ b/hw/riscv/virt-acpi-build.c
-> @@ -85,6 +85,12 @@ static void riscv_acpi_madt_add_rintc(uint32_t uid,
->                                        arch_ids->cpus[uid].props.node_id,
->                                        local_cpu_id),
->                                    4);
-> +    } else if (aia_type =3D=3D VIRT_AIA_TYPE_NONE) {
-> +        build_append_int_noprefix(entry,
-> +                                  ACPI_BUILD_INTC_ID(
-> +                                      arch_ids->cpus[uid].props.node_id,
-> +                                      2 * local_cpu_id + 1),
-> +                                  4);
->      } else {
->          build_append_int_noprefix(entry, 0, 4);
->      }
-> @@ -515,6 +521,29 @@ static void build_madt(GArray *table_data,
->              build_append_int_noprefix(table_data,
->                                        s->memmap[VIRT_APLIC_S].size, 4);
->          }
-> +    } else {
-> +        /* PLICs */
-> +        for (socket =3D 0; socket < riscv_socket_count(ms); socket++) {
-> +            aplic_addr =3D s->memmap[VIRT_PLIC].base +
-> +                         s->memmap[VIRT_PLIC].size * socket;
-> +            gsi_base =3D VIRT_IRQCHIP_NUM_SOURCES * socket;
-> +            build_append_int_noprefix(table_data, 0x1B, 1);   /* Type */
-> +            build_append_int_noprefix(table_data, 36, 1);     /* Length =
-*/
-> +            build_append_int_noprefix(table_data, 1, 1);      /* Version=
- */
-> +            build_append_int_noprefix(table_data, socket, 1); /* PLIC ID=
- */
-> +            build_append_int_noprefix(table_data, 0, 8);      /* Hardwar=
-e ID */
-> +            /* Total External Interrupt Sources Supported */
-> +            build_append_int_noprefix(table_data,
-> +                                      VIRT_IRQCHIP_NUM_SOURCES - 1, 2);
-> +            build_append_int_noprefix(table_data, 0, 2);     /* Max Prio=
-rity */
-> +            build_append_int_noprefix(table_data, 0, 4);     /* Flags */
-> +            /* PLIC Size */
-> +            build_append_int_noprefix(table_data, s->memmap[VIRT_PLIC].s=
-ize, 4);
-> +            /* PLIC Address */
-> +            build_append_int_noprefix(table_data, aplic_addr, 8);
-> +            /* Global System Interrupt Vector Base */
-> +            build_append_int_noprefix(table_data, gsi_base, 4);
+>  tests/qtest/meson.build             |   2 +-
+>  tests/qtest/xlnx-versal-trng-test.c | 486 ++++++++++++++++++++++++++++
+>  2 files changed, 487 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/qtest/xlnx-versal-trng-test.c
+
+
+> +static void trng_wait(uint32_t wait_mask, bool on, const char *act)
+> +{
+> +    time_t tmo =3D time(NULL) + 2; /* at most 2 seconds */
+
+Don't put timeouts this short into tests, please; ideally,
+avoid them entirely. Sometimes the CI machines are heavily
+loaded and the test might not be able to complete in a
+short time like this. If you must have a timeout, it should
+be at least a minute. (And see below on whether we need one.)
+
+> +    uint32_t event_mask =3D 0;
+> +    uint32_t clear_mask =3D 0;
+> +
+> +    /*
+> +     * Only selected bits are events in R_TRNG_STATUS, and
+> +     * clear them needs to go through R_INT_CTRL.
+> +     */
+> +    if (wait_mask & TRNG_STATUS_CERTF_MASK) {
+> +        event_mask |=3D TRNG_STATUS_CERTF_MASK;
+> +        clear_mask |=3D TRNG_INT_CTRL_CERTF_RST_MASK;
+> +    }
+> +    if (wait_mask & TRNG_STATUS_DTF_MASK) {
+> +        event_mask |=3D TRNG_STATUS_DTF_MASK;
+> +        clear_mask |=3D TRNG_INT_CTRL_DTF_RST_MASK;
+> +    }
+> +    if (wait_mask & TRNG_STATUS_DONE_MASK) {
+> +        event_mask |=3D TRNG_STATUS_DONE_MASK;
+> +        clear_mask |=3D TRNG_INT_CTRL_DONE_RST_MASK;
+> +    }
+> +
+> +    for (;;) {
+> +        bool sta =3D !!(trng_status() & event_mask);
+> +
+> +        if ((on ^ sta) =3D=3D 0) {
+> +            break;
 > +        }
->      }
->
->      acpi_table_end(linker, &table);
-> --
-> 2.39.2
->
->
+> +
+> +        if (time(NULL) >=3D tmo) {
+> +            FAILED("%s: Timed out waiting for event 0x%x to be %d%s",
+> +                   act, event_mask, (int)on, trng_info());
+> +        }
+> +
+> +        g_usleep(10000);
+
+Why does this test need to use sleeps and timeouts?
+A qtest test controls the guest 'clock' directly, so
+usually they're completely deterministic. Is there some
+behaviour in the TRNG device which is asynchronous (in
+a way not driven from the QEMU guest clock) that I've missed ?
+
+> +    }
+> +
+> +    /* Remove event */
+> +    trng_bit_set(R_TRNG_INT_CTRL, clear_mask);
+> +
+> +    if (!!(trng_read(R_TRNG_STATUS) & event_mask)) {
+> +        FAILED("%s: Event 0x%0x stuck at 1 after clear: %s",
+> +               act, event_mask, trng_info());
+> +    }
+> +}
+
+thanks
+-- PMM
+
+--_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+Hi Peter,</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+This is in regard to your comment on the use of g_usleep() in waiting for</=
+div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+an event-bit update from the device under test.</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+The TRNG device model presented in patch #1 does not have any asynchronous =
+behavior.</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+So, do you mean that, although the qtest process and the qemu-system-* proc=
+ess</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+are running as 2 separate processes, qtest infrastructure already has the n=
+ecessary</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+mechanism to ensure that:</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+1. After qtest test sets a register that has the correct deterministic beha=
+vior to update an event bit,</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+2. The same qtest test subsequently issuing a register read will be guarant=
+eed to observe the updated bit?</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+If that is the case, then there would be no need for any timeout. Instead,<=
+/div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+a qtest test can declare fail when the expected bit update is not observed =
+by the test.</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+I would&nbsp;like to know.</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+Thanks,</div>
+<div class=3D"elementToProof"><span style=3D"font-family: Aptos, Aptos_Embe=
+ddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 1=
+1pt; color: rgb(0, 0, 0);">Tong Ho</span></div>
+<div id=3D"appendonsend"></div>
+<div class=3D"elementToProof" style=3D"font-family: Aptos, Aptos_EmbeddedFo=
+nt, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; c=
+olor: rgb(0, 0, 0);">
+<br>
+</div>
+<hr style=3D"display: inline-block; width: 98%;">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><span style=3D"font-family: Calibri, =
+sans-serif; font-size: 11pt; color: rgb(0, 0, 0);"><b>From:</b>&nbsp;Peter =
+Maydell &lt;peter.maydell@linaro.org&gt;<br>
+<b>Sent:</b>&nbsp;Friday, October 27, 2023 6:03 AM<br>
+<b>To:</b>&nbsp;Ho, Tong &lt;tong.ho@amd.com&gt;<br>
+<b>Cc:</b>&nbsp;qemu-arm@nongnu.org &lt;qemu-arm@nongnu.org&gt;; qemu-devel=
+@nongnu.org &lt;qemu-devel@nongnu.org&gt;; alistair@alistair23.me &lt;alist=
+air@alistair23.me&gt;; edgar.iglesias@gmail.com &lt;edgar.iglesias@gmail.co=
+m&gt;; richard.henderson@linaro.org &lt;richard.henderson@linaro.org&gt;;
+ frasse.iglesias@gmail.com &lt;frasse.iglesias@gmail.com&gt;<br>
+<b>Subject:</b>&nbsp;Re: [PATCH v4 3/3] tests/qtest: Introduce tests for AM=
+D/Xilinx Versal TRNG device</span>
+<div>&nbsp;</div>
+</div>
+<div><span style=3D"font-size: 11pt;">On Tue, 17 Oct 2023 at 20:32, Tong Ho=
+ &lt;tong.ho@amd.com&gt; wrote:<br>
+&gt;<br>
+&gt; Signed-off-by: Tong Ho &lt;tong.ho@amd.com&gt;<br>
+&gt; ---<br>
+&gt;&nbsp; tests/qtest/meson.build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 2 +-<br>
+&gt;&nbsp; tests/qtest/xlnx-versal-trng-test.c | 486 ++++++++++++++++++++++=
+++++++<br>
+&gt;&nbsp; 2 files changed, 487 insertions(+), 1 deletion(-)<br>
+&gt;&nbsp; create mode 100644 tests/qtest/xlnx-versal-trng-test.c<br>
+<br>
+<br>
+&gt; +static void trng_wait(uint32_t wait_mask, bool on, const char *act)<b=
+r>
+&gt; +{<br>
+&gt; +&nbsp;&nbsp;&nbsp; time_t tmo =3D time(NULL) + 2; /* at most 2 second=
+s */<br>
+<br>
+Don't put timeouts this short into tests, please; ideally,<br>
+avoid them entirely. Sometimes the CI machines are heavily<br>
+loaded and the test might not be able to complete in a<br>
+short time like this. If you must have a timeout, it should<br>
+be at least a minute. (And see below on whether we need one.)<br>
+<br>
+&gt; +&nbsp;&nbsp;&nbsp; uint32_t event_mask =3D 0;<br>
+&gt; +&nbsp;&nbsp;&nbsp; uint32_t clear_mask =3D 0;<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp; /*<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp; * Only selected bits are events in R_TRNG_ST=
+ATUS, and<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp; * clear them needs to go through R_INT_CTRL.=
+<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp; */<br>
+&gt; +&nbsp;&nbsp;&nbsp; if (wait_mask &amp; TRNG_STATUS_CERTF_MASK) {<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event_mask |=3D TRNG_STATU=
+S_CERTF_MASK;<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_mask |=3D TRNG_INT_C=
+TRL_CERTF_RST_MASK;<br>
+&gt; +&nbsp;&nbsp;&nbsp; }<br>
+&gt; +&nbsp;&nbsp;&nbsp; if (wait_mask &amp; TRNG_STATUS_DTF_MASK) {<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event_mask |=3D TRNG_STATU=
+S_DTF_MASK;<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_mask |=3D TRNG_INT_C=
+TRL_DTF_RST_MASK;<br>
+&gt; +&nbsp;&nbsp;&nbsp; }<br>
+&gt; +&nbsp;&nbsp;&nbsp; if (wait_mask &amp; TRNG_STATUS_DONE_MASK) {<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; event_mask |=3D TRNG_STATU=
+S_DONE_MASK;<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_mask |=3D TRNG_INT_C=
+TRL_DONE_RST_MASK;<br>
+&gt; +&nbsp;&nbsp;&nbsp; }<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp; for (;;) {<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bool sta =3D !!(trng_statu=
+s() &amp; event_mask);<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ((on ^ sta) =3D=3D 0) {=
+<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; br=
+eak;<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (time(NULL) &gt;=3D tmo=
+) {<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FA=
+ILED(&quot;%s: Timed out waiting for event 0x%x to be %d%s&quot;,<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; act, event_mask, (int)on, trng_info=
+());<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g_usleep(10000);<br>
+<br>
+Why does this test need to use sleeps and timeouts?<br>
+A qtest test controls the guest 'clock' directly, so<br>
+usually they're completely deterministic. Is there some<br>
+behaviour in the TRNG device which is asynchronous (in<br>
+a way not driven from the QEMU guest clock) that I've missed ?<br>
+<br>
+&gt; +&nbsp;&nbsp;&nbsp; }<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp; /* Remove event */<br>
+&gt; +&nbsp;&nbsp;&nbsp; trng_bit_set(R_TRNG_INT_CTRL, clear_mask);<br>
+&gt; +<br>
+&gt; +&nbsp;&nbsp;&nbsp; if (!!(trng_read(R_TRNG_STATUS) &amp; event_mask))=
+ {<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FAILED(&quot;%s: Event 0x%=
+0x stuck at 1 after clear: %s&quot;,<br>
+&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; act, event_mask, trng_info());<br>
+&gt; +&nbsp;&nbsp;&nbsp; }<br>
+&gt; +}<br>
+<br>
+thanks<br>
+-- PMM</span></div>
+</body>
+</html>
+
+--_000_BL0PR12MB48827D764A414B476C261C45E6A1ABL0PR12MB4882namp_--

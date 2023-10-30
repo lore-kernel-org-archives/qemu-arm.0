@@ -1,241 +1,314 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1806275ejc;
-        Mon, 30 Oct 2023 04:49:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGcV+uncSFbt++ekJSFg1ZvcoL+c1fA8R9ai4l8CMVCceckSH59Kj5fUDQC6yyof//tvSP7
-X-Received: by 2002:a05:620a:bd3:b0:76c:8998:1866 with SMTP id s19-20020a05620a0bd300b0076c89981866mr10175384qki.40.1698666594756;
-        Mon, 30 Oct 2023 04:49:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698666594; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1863447ejc;
+        Mon, 30 Oct 2023 06:21:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHbXTjDxFA0XZcY78vE1yv9J516TkBVEEg5+Sf8Tjs9hXMtBb11OktcUGtM5CtBxg+KIDVl
+X-Received: by 2002:a05:622a:11cc:b0:41c:cfc0:5c52 with SMTP id n12-20020a05622a11cc00b0041ccfc05c52mr11864656qtk.39.1698672093322;
+        Mon, 30 Oct 2023 06:21:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698672093; cv=none;
         d=google.com; s=arc-20160816;
-        b=tqoTTvrgtiaDYfLlXUvCVJbeRcvQ0/sdR+TGOT4tfzBMlNBEwrrhvClJ+MwDnkLzEH
-         GdDddIbUrPju726YVMzfkZmA8YLew9QPY6fTDhY2dYz4xb/kvsYdUdGF7sB5PQhj3EP+
-         TjIcMvAYAzxsbpGYrFLJ8K06GGxMbZbdkdgJ1Pkx2/5eWGP2M/t2b0kX6U7kvu2wFw8p
-         BIKymGHs/DaHQdAGvKbE1c7vnJ+NgTvG5H18a6jvRMJVVsdhyF1/WWeIa2f6NkpJPRNw
-         FRgta4G8UVR1zM3/DrUDapFJpQwe0iSCqkXuAbLjeMm5tF0r1zRlfZFyV26hGz/E97ZF
-         3wjg==
+        b=P/6dDEVT/KoWoWucr4YYE9eRVLzBpWIFkNUWLXXNHUpvdO8ThCQrIVfnUNGdyd+CiK
+         AHd7M9NkIKyA5Y79xOT/N/Dw3pc7z6W+iQ4Eu3v7ob0ABwRjlE5qDvNiouexla0UH9r+
+         /CEz3nWuql3uCMAubZCxqOQH6s89/3dguydSXqv4mSUHk2oU7/U5T17wc8nzhP4zEbH6
+         DCm27SqD45PwQTMVXaUO4cgfN/fI8DNcIX53J8UMNGw9w/EaGk+Q9OJ1iB33bfZ4i4WT
+         nf3p/dfKwXfpwFInmrp+Bn4hPiZLLHgHIjXuB0HXN1gv/6aOCQkuz8z1u7RCM3WbDnRT
+         R9fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2pm1CVuPPnKuyid7/qwQ4aH08/PxePci45dgYY6sxK0=;
-        fh=yUeHCMY0O7AHgYs4WRBJtcSGK81/h+/8SdmYaglLfmk=;
-        b=WcWavTx5q3w6H7l0nS+8QBCYU+UXwmRU04EtMV1laQ5zJ4Wzeb0eotMWPc3JpQpMEq
-         Tu/Coa9BWw137lIdZTfMUEN5V/whGrGywsPq8/CPByx04w42May//Jnbm+9OjvEIgIgF
-         ZjB5qPOlPZburS817i3Wdb1bLwQyGRA/hVie2xuXaiLplATpWjPWB1gDubdmunEB8+pE
-         Kq+fya1jkKdTHL84N+2tlW2QgiDNp7PeCHOh3dNlm8rJysOXSkSlRmfN6ldIRilNl4iM
-         ISuVL0xL8nBGEx0SaQioNC9w4iARb47RRMRu74AjVbc5DTzctZyHgtNrlNzgLqUjXzPz
-         Y8Ig==
+        bh=SUOXp0KMuwuEQ8v4SeRb+knalLC8nOeygatHRi5aG0s=;
+        fh=67Hov/BsT8RxH3/kFZB7fU49Uoc12n1VmFCLNpavJ9k=;
+        b=H6y/kbMZhfYulhldFjAEMeQdprAbfepMzQ5kkqmWp8cM5WDjftWGjhC2OQQ+wda/nz
+         9zlWaptzoP0LSTBp5wvZ1t8dLat38E4I3StBHYYCWQU6RjYuwojUxP55xmcevEKSxkzB
+         fbvHCx/+v2CEehzUeh6MxCcpa/SgMDkYWGteatXGaBZUyEfL+Jn6P4JB23yb114QynEy
+         ddYNdqg57YEhgljnemRvpe/m/03iml8Q+rjw12MmkNUNHsDnyP0Ttt4kTIK8B/TUYWX1
+         I2C2FHGn0GwDHAq1uT/6/T1OrLEHC2Z4mG/qRHPqsklBen9fU4TU1T35SIv9qXDLErhN
+         PQhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tEhrO7c9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=hnnS9KwX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2-20020a05620a268200b007788bae81cbsi5597551qkp.498.2023.10.30.04.49.54
+        by mx.google.com with ESMTPS id o19-20020a05622a009300b0040378f30d44si5685758qtw.172.2023.10.30.06.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 04:49:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Oct 2023 06:21:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tEhrO7c9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=hnnS9KwX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qxQkd-0007rK-CB; Mon, 30 Oct 2023 07:48:11 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qxSCu-0006g4-UQ; Mon, 30 Oct 2023 09:21:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxQkb-0007or-Ds
- for qemu-devel@nongnu.org; Mon, 30 Oct 2023 07:48:09 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qxSCt-0006fJ-8h
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 09:21:27 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxQkY-0007Hg-4i
- for qemu-devel@nongnu.org; Mon, 30 Oct 2023 07:48:09 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-32deb2809daso2759843f8f.3
- for <qemu-devel@nongnu.org>; Mon, 30 Oct 2023 04:48:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qxSCl-0002mm-A1
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 09:21:27 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-280260db156so1713589a91.2
+ for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 06:21:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698666484; x=1699271284; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1698672074; x=1699276874; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2pm1CVuPPnKuyid7/qwQ4aH08/PxePci45dgYY6sxK0=;
- b=tEhrO7c9dNphMlRIKhcNdKcZoMOdCTWMqP2O4wcH0ywjf6m5uZ+jBqS/NgtmMbbCnm
- hOc2EpDRjsmTJNITJphCGaR1yfnYqOEYlu4J0GEH2Sxmz2kRJbgjw1n6lIuXnXa4hUYL
- jGdakFpUZM6hCJc73Qm/AB5qi+k60/dkUpvjggTCy79dYGMsXNY0ZmgLmaHLSyImGrZq
- 99mEVCjvbjQsbOOIH04UUGSmBtNSlfT8cHs9qPOsI5rSMeAexT3kYY+XjYyiF5u685Jn
- Y53PJ0zgdHOJtXUV9S9hNeCyZb3VrngyZv4B+8CcsdBml9EGQgD/u7L43sbpc+K40Flg
- gEgw==
+ bh=SUOXp0KMuwuEQ8v4SeRb+knalLC8nOeygatHRi5aG0s=;
+ b=hnnS9KwXX/Z0crtQcK8FxOO4sC9pyyCHrITiBrpX43IsHQUsyt3yTK4W8tyHR3r+Rl
+ EH6E1ZXmaHXnPMXDe80ZxAXrOti1BuhRkigStxIsWrqfUYFgZ0IHZ47NfKtpRK2n58Zc
+ rM5SqQPiWjkA8lp6VLjD4T+yggYoliD40ZbzFLdc8Ckm0QCHB0f1A3rJrQupxlcJCc6B
+ lrWU2yhGSErHpFOMeIodn+kTNzLdgn3bP5p5aa5Y5+gBTvOIVMnTzbWIoyyN44BY2a97
+ Xg06z0JTPAU0mG+Phhn7ofI6oTuI9mulWl37FGFEhkL5uaZMklwe6kv1shuruFjhB3U4
+ oIAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698666484; x=1699271284;
+ d=1e100.net; s=20230601; t=1698672074; x=1699276874;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2pm1CVuPPnKuyid7/qwQ4aH08/PxePci45dgYY6sxK0=;
- b=wxuqkH9tKPGuiSTS3IwVRPOTYB1AtJFcy0tEXXh1PcXsVCZFiIsHVLtROxvOm6SD7I
- OBxZjed8Pa0oCM01CXVkiO+ZF8j26IUh5AN1FkTfLc+lZQPC+896g3U9PzDrwNgBbeE5
- GVyBoPDKkwVZhbYQzRKPQV4lbHkIhMYXKGXFKnZ9T2B/SySOVO5nHKlm+OYG5GOk/917
- 3aJVjZJ1QIHcIp9ALw4g8iy1iS6qIJBPo069U2+VX7vsTdwSXI7cagHq9/BD5ngYdUkx
- OVABbvQYW6juJh5phfOK7dA7V/qMnK79omYoeLfY4QDxAq51sk/kcsBJGw0Yi868W2LV
- XO7w==
-X-Gm-Message-State: AOJu0Yyb18Cu5IP1fxXMk89v2rDUUyZ05D3KMFv0KiNfKi5b6HNWO/9n
- s22Xh7JgfoV6eAgII031gpdfag==
-X-Received: by 2002:a5d:4c45:0:b0:32d:8961:d864 with SMTP id
- n5-20020a5d4c45000000b0032d8961d864mr6580246wrt.48.1698666484487; 
- Mon, 30 Oct 2023 04:48:04 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ bh=SUOXp0KMuwuEQ8v4SeRb+knalLC8nOeygatHRi5aG0s=;
+ b=J1vpeTmOIRChvEOLYzTZhmsSW8zPQNgPFyNGwv6tH9MRg5z9852NEqLQ9i+zIEWojl
+ rahiZMFzhY6BGddDpRJyX+3mdX+cPQsmxS4MHGP28zygXrIEtfpGoLZ0INkBWvA2btoQ
+ Eol+5qBY0oV6fmWqZV9hJK+c8igf5W+8Vd+gLmRW6FQE4POj6bGyECyd8aET4mC6ck+F
+ olxRd6R1d9nfm5ktN/UAoEUn2V1wJSBPFDA2w4sz47aIGkQ1N5nuOSol7CgHAo3J9tOJ
+ EGhkOBsNecBhc68iNeMGqvQjcKqhmCgPsHR/YHMkvXKrPldpX9nM74EGse4gvzGAQlAm
+ /xbA==
+X-Gm-Message-State: AOJu0YxnkCLwTigcrOyltDalHE4qWJFqfzKIF2Md+h+6bwf/h4Hdp1p6
+ J7HQPAnWnv7pUBDBYbut9kiaoyC1yetFfMpWkBbNCA==
+X-Received: by 2002:a17:90a:4b:b0:27f:f788:f950 with SMTP id
+ 11-20020a17090a004b00b0027ff788f950mr7767621pjb.42.1698672073963; 
+ Mon, 30 Oct 2023 06:21:13 -0700 (PDT)
+Received: from sunil-pc.Dlink ([106.51.188.78])
  by smtp.gmail.com with ESMTPSA id
- az30-20020adfe19e000000b0032f7d7ec4adsm5262268wrb.92.2023.10.30.04.48.04
+ 15-20020a17090a000f00b0027ced921e80sm8122412pja.38.2023.10.30.06.21.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Oct 2023 04:48:04 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
+ Mon, 30 Oct 2023 06:21:13 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH v2 1/6] hw/input/stellaris_input: Rename to stellaris_gamepad
-Date: Mon, 30 Oct 2023 11:47:57 +0000
-Message-Id: <20231030114802.3671871-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231030114802.3671871-1-peter.maydell@linaro.org>
-References: <20231030114802.3671871-1-peter.maydell@linaro.org>
+	qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Anup Patel <apatel@ventanamicro.com>,
+ Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
+ Sunil V L <sunilvl@ventanamicro.com>,
+ Andrew Jones <ajones@ventanamicro.com>
+Subject: [PATCH v5 01/13] hw/arm/virt-acpi-build.c: Migrate fw_cfg creation to
+ common location
+Date: Mon, 30 Oct 2023 18:50:46 +0530
+Message-Id: <20231030132058.763556-2-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231030132058.763556-1-sunilvl@ventanamicro.com>
+References: <20231030132058.763556-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X9Jej2Dx3M50
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6Gegskrs4xRr
 
-This source file implements a stellaris gamepad device; rename
-it so that it is a closer match to the device name.
+RISC-V also needs to use the same code to create fw_cfg in DSDT. So,
+avoid code duplication by moving the code in arm and riscv to a device
+specific file.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
 ---
- include/hw/input/{gamepad.h => stellaris_gamepad.h} | 6 +++---
- hw/arm/stellaris.c                                  | 2 +-
- hw/input/{stellaris_input.c => stellaris_gamepad.c} | 2 +-
- hw/arm/Kconfig                                      | 2 +-
- hw/input/Kconfig                                    | 2 +-
- hw/input/meson.build                                | 2 +-
- 6 files changed, 8 insertions(+), 8 deletions(-)
- rename include/hw/input/{gamepad.h => stellaris_gamepad.h} (77%)
- rename hw/input/{stellaris_input.c => stellaris_gamepad.c} (98%)
+ hw/arm/virt-acpi-build.c       | 19 ++-----------------
+ hw/nvram/fw_cfg-acpi.c         | 23 +++++++++++++++++++++++
+ hw/nvram/meson.build           |  1 +
+ hw/riscv/virt-acpi-build.c     | 19 ++-----------------
+ include/hw/nvram/fw_cfg_acpi.h | 15 +++++++++++++++
+ 5 files changed, 43 insertions(+), 34 deletions(-)
+ create mode 100644 hw/nvram/fw_cfg-acpi.c
+ create mode 100644 include/hw/nvram/fw_cfg_acpi.h
 
-diff --git a/include/hw/input/gamepad.h b/include/hw/input/stellaris_gamepad.h
-similarity index 77%
-rename from include/hw/input/gamepad.h
-rename to include/hw/input/stellaris_gamepad.h
-index 6f6aa2406aa..23cfd3c95f3 100644
---- a/include/hw/input/gamepad.h
-+++ b/include/hw/input/stellaris_gamepad.h
-@@ -8,11 +8,11 @@
-  * See the COPYING file in the top-level directory.
-  */
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 9ce136cd88..dd2e95f0ea 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -35,7 +35,7 @@
+ #include "target/arm/cpu.h"
+ #include "hw/acpi/acpi-defs.h"
+ #include "hw/acpi/acpi.h"
+-#include "hw/nvram/fw_cfg.h"
++#include "hw/nvram/fw_cfg_acpi.h"
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
+@@ -94,21 +94,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+     aml_append(scope, dev);
+ }
  
--#ifndef HW_INPUT_GAMEPAD_H
--#define HW_INPUT_GAMEPAD_H
-+#ifndef HW_INPUT_STELLARIS_GAMEPAD_H
-+#define HW_INPUT_STELLARIS_GAMEPAD_H
+-static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+-{
+-    Aml *dev = aml_device("FWCF");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+-    /* device present, functioning, decoding, not shown in UI */
+-    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+-    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-
+-    Aml *crs = aml_resource_template();
+-    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+-                                       fw_cfg_memmap->size, AML_READ_WRITE));
+-    aml_append(dev, aml_name_decl("_CRS", crs));
+-    aml_append(scope, dev);
+-}
+-
+ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+ {
+     Aml *dev, *crs;
+@@ -864,7 +849,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     }
+-    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
++    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
+diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+new file mode 100644
+index 0000000000..4e48baeaa0
+--- /dev/null
++++ b/hw/nvram/fw_cfg-acpi.c
+@@ -0,0 +1,23 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Add fw_cfg device in DSDT
++ *
++ */
++
++#include "hw/nvram/fw_cfg_acpi.h"
++#include "hw/acpi/aml-build.h"
++
++void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap)
++{
++    Aml *dev = aml_device("FWCF");
++    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    /* device present, functioning, decoding, not shown in UI */
++    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
++    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
++
++    Aml *crs = aml_resource_template();
++    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
++                                       fw_cfg_memmap->size, AML_READ_WRITE));
++    aml_append(dev, aml_name_decl("_CRS", crs));
++    aml_append(scope, dev);
++}
+diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
+index 75e415b1a0..4996c72456 100644
+--- a/hw/nvram/meson.build
++++ b/hw/nvram/meson.build
+@@ -17,3 +17,4 @@ system_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true: files(
+ system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
  
+ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
++specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+index 7331248f59..d8772c2821 100644
+--- a/hw/riscv/virt-acpi-build.c
++++ b/hw/riscv/virt-acpi-build.c
+@@ -28,6 +28,7 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
++#include "hw/nvram/fw_cfg_acpi.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/reset.h"
+@@ -97,22 +98,6 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
+     }
+ }
  
--/* stellaris_input.c */
-+/* stellaris_gamepad.c */
- void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
+-static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+-{
+-    Aml *dev = aml_device("FWCF");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+-
+-    /* device present, functioning, decoding, not shown in UI */
+-    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+-    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-
+-    Aml *crs = aml_resource_template();
+-    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+-                                       fw_cfg_memmap->size, AML_READ_WRITE));
+-    aml_append(dev, aml_name_decl("_CRS", crs));
+-    aml_append(scope, dev);
+-}
+-
+ /* RHCT Node[N] starts at offset 56 */
+ #define RHCT_NODE_ARRAY_OFFSET 56
  
- #endif
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index aa5b0ddfaa5..96585dd7106 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -23,7 +23,7 @@
- #include "sysemu/sysemu.h"
- #include "hw/arm/armv7m.h"
- #include "hw/char/pl011.h"
--#include "hw/input/gamepad.h"
-+#include "hw/input/stellaris_gamepad.h"
- #include "hw/irq.h"
- #include "hw/watchdog/cmsdk-apb-watchdog.h"
- #include "migration/vmstate.h"
-diff --git a/hw/input/stellaris_input.c b/hw/input/stellaris_gamepad.c
-similarity index 98%
-rename from hw/input/stellaris_input.c
-rename to hw/input/stellaris_gamepad.c
-index e6ee5e11f1b..3bab557cab3 100644
---- a/hw/input/stellaris_input.c
-+++ b/hw/input/stellaris_gamepad.c
-@@ -8,7 +8,7 @@
-  */
+@@ -226,7 +211,7 @@ static void build_dsdt(GArray *table_data,
+     scope = aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, s);
  
- #include "qemu/osdep.h"
--#include "hw/input/gamepad.h"
-+#include "hw/input/stellaris_gamepad.h"
- #include "hw/irq.h"
- #include "migration/vmstate.h"
- #include "ui/console.h"
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 7e683484405..841f3131ea5 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -291,7 +291,7 @@ config STELLARIS
-     select SSD0303 # OLED display
-     select SSD0323 # OLED display
-     select SSI_SD
--    select STELLARIS_INPUT
-+    select STELLARIS_GAMEPAD
-     select STELLARIS_ENET # ethernet
-     select STELLARIS_GPTM # general purpose timer module
-     select UNIMP
-diff --git a/hw/input/Kconfig b/hw/input/Kconfig
-index 55865bb3869..f86e98c8293 100644
---- a/hw/input/Kconfig
-+++ b/hw/input/Kconfig
-@@ -20,7 +20,7 @@ config PL050
- config PS2
-     bool
+-    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
++    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
  
--config STELLARIS_INPUT
-+config STELLARIS_GAMEPAD
-     bool
+     aml_append(dsdt, scope);
  
- config TSC2005
-diff --git a/hw/input/meson.build b/hw/input/meson.build
-index c0d44821800..640556bbbcc 100644
---- a/hw/input/meson.build
-+++ b/hw/input/meson.build
-@@ -5,7 +5,7 @@ system_ss.add(when: 'CONFIG_LM832X', if_true: files('lm832x.c'))
- system_ss.add(when: 'CONFIG_PCKBD', if_true: files('pckbd.c'))
- system_ss.add(when: 'CONFIG_PL050', if_true: files('pl050.c'))
- system_ss.add(when: 'CONFIG_PS2', if_true: files('ps2.c'))
--system_ss.add(when: 'CONFIG_STELLARIS_INPUT', if_true: files('stellaris_input.c'))
-+system_ss.add(when: 'CONFIG_STELLARIS_GAMEPAD', if_true: files('stellaris_gamepad.c'))
- system_ss.add(when: 'CONFIG_TSC2005', if_true: files('tsc2005.c'))
- 
- system_ss.add(when: 'CONFIG_VIRTIO_INPUT', if_true: files('virtio-input.c'))
+diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
+new file mode 100644
+index 0000000000..b6553d86fc
+--- /dev/null
++++ b/include/hw/nvram/fw_cfg_acpi.h
+@@ -0,0 +1,15 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * ACPI support for fw_cfg
++ *
++ */
++
++#ifndef FW_CFG_ACPI_H
++#define FW_CFG_ACPI_H
++
++#include "qemu/osdep.h"
++#include "exec/hwaddr.h"
++
++void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
++
++#endif
 -- 
-2.34.1
+2.39.2
 

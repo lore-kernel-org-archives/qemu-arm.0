@@ -1,149 +1,128 @@
-Received: by 2002:a17:906:7e1a:b0:9d0:bf65:29fa with SMTP id e26csp135540ejr;
-        Mon, 30 Oct 2023 14:09:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEr9JsDq5irY5k508Ud3oj+Uax3LYroLXnfCEGpd8BWv7Ta8RbdO/JUXM4E/ChtofhFIt43
-X-Received: by 2002:a05:620a:f11:b0:774:ebd:9f8c with SMTP id v17-20020a05620a0f1100b007740ebd9f8cmr11423856qkl.60.1698700168962;
-        Mon, 30 Oct 2023 14:09:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698700168; cv=none;
+Received: by 2002:a17:906:7e1a:b0:9d0:bf65:29fa with SMTP id e26csp121594ejr;
+        Mon, 30 Oct 2023 13:38:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFicV4jl4eUTYU3wzj/l5HLkqZbOv45iPIICN4bq4U9ocKmeMHmacC87R8Bd2fBjZFy0+as
+X-Received: by 2002:a05:620a:4048:b0:765:6923:623e with SMTP id i8-20020a05620a404800b007656923623emr1269344qko.29.1698698298743;
+        Mon, 30 Oct 2023 13:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698698298; cv=none;
         d=google.com; s=arc-20160816;
-        b=R8k3qInx6K8noMQkh9Vu7iN77xRgzy5rnPW8gVhNnnERW37oXmWNMaskXI/2y7+KVZ
-         +suWKl/3t+hC83tDvR2VdTdj7BYsdy/D4OKGKUajqyj2trFfmH8ZM5gIB9oytoVchcTH
-         lcuex7imJUvSp5zFcKu0xYDHpaNz3TnKpPitITquzAvn944FnYXdFnVxEwL+Z47nf5bs
-         45FExETRW8Jjv1fuESQQz9kO/ImJOXLtNMocp2eRtMrt1jx8h/vqJYmnU9O1f4KWOq9Q
-         fEMYMzwjQG2rjb26etTGf4n1ZtLI8TGwUBrPtV8RloSctBzybqwF8yci9Y50T5dgsBv0
-         F83A==
+        b=uQGNgi5IMG2F22rL+U9BL62D+NOnTXlBBNTXDXLfjcGW3SAxr9qH07Vlf5pyyBKrD/
+         voLmpxAU7Tt01MhrspJHZA9tF7CDGhFvmQCxarqqsxhzZYvAXx7631UuPj/mndwntU6i
+         KWpV4Jhgx8JrfkVYiU7DcsvF5BigpvZUFq609Kh48aZ2465MdwN3C8e4LI2le8OH3tBJ
+         XXRdzXk1zklSu0JMybAPEfG47InRsJ19t4GbpzmigEM+7aqRhtHIVDBtQ9tYNVWAIHJj
+         2rbppKkSS2xnUNXdZ68KP7/CVkrSjOVXF7sWh8/1s9hAIRC+WEi6t72oMYJXF1RhKOYo
+         YkMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature;
-        bh=j9pl6uicCpoEUpPrWsdGSfFAqwyY1BAC74BCATHNHYw=;
-        fh=TDefha0veoMhYcKrgwpzJE28V97fDDcwzEAPluWXANM=;
-        b=zjQrJAAUV/kKMfWSHSfG0+zF6FPco+QGT1Jbo0jlZlDRP3KCNACyOEmoM6UK1ZdTIU
-         UgLQbsFudIkArSRlLPAAIFdqfebAhZt/7VrzIGFvJ+sFKYQT7gNPGmRHgd+dnjJWmEWs
-         j1G/CpWMYHiv44n4uHiOOm3OToDWd3AKlRjUOsQp7BbAk7aqUSzWSg0PxJAgQm18QEsu
-         w9hkCgS6lQtTWuNR2ZadmZxxDlBizGGEtdvxsf4QR0CqsCO5mDioKwTx51tbPOs1C/BC
-         RBpZixJ/0Zcxd2R7jRc5h+fxDuBNZFkz24ZCXxRL+GKxJXk6ljp2BDJHNQPhGTBTMbhL
-         2erg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=SyF+WfYOcafPUzfohavt56YZ1a8og4MVEmfTcVo57eU=;
+        fh=62SlkOPBe5y7GosdpnfUAj+2TZrFuKMYsb50poUj09E=;
+        b=nx6BeXJOSyw53F8RchWxd0a1qqG0pdeR5ocVs7dQC9/E7ZdEkRuH0RcOX2QyGpXifi
+         HNwqVrfLv69oYDTEI/uKqRfYpVBAcnfJcM/h1JpLNbeBT52xrQsC/6yZvzkM4G2nCK/a
+         cObx2osDGbStjz4WM7eEnSnhXAt74up/Wwyq5UYwXw0ClDFSF2zaO5m6ICR8PkRnv4bn
+         gkL71eERxIPDgIyeZ5R1MuCdjdvrJx1ALqjPz24esCPZvT2wZudaz7sgm3QrJ0NWngUw
+         BH8pOi8SwRecMopW+l4sM9l/DNsKWcHS1cnrdvbjrghE5SK5ZkIEsW1oVo9dbqsS3/h/
+         qtbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VUUnXV+Z;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="j9GS/cRe";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12-20020a05620a15ac00b0077573e813dasi6201003qkk.202.2023.10.30.14.09.28
+        by mx.google.com with ESMTPS id m28-20020a05620a215c00b0076f0cc82e44si6148605qkm.718.2023.10.30.13.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 14:09:28 -0700 (PDT)
+        Mon, 30 Oct 2023 13:38:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VUUnXV+Z;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="j9GS/cRe";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxZVh-0006ds-7b; Mon, 30 Oct 2023 17:09:21 -0400
+	id 1qxZ1V-0008Dx-Q8; Mon, 30 Oct 2023 16:38:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qxZVc-0006ax-PX; Mon, 30 Oct 2023 17:09:16 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qxZ1U-0008DJ-Tw; Mon, 30 Oct 2023 16:38:08 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qxZVY-0004ov-RR; Mon, 30 Oct 2023 17:09:16 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39UL2l3I018476; Mon, 30 Oct 2023 21:08:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=j9pl6uicCpoEUpPrWsdGSfFAqwyY1BAC74BCATHNHYw=;
- b=VUUnXV+ZgRdWi9kUIkT2UL9sD+epgqDHfio+JmnMUGY4b4JV5sXuKZdTQSHa33zmdle/
- IcgPcgMa8jzCx5WE+ag04lK+O2ZnPeGmIceBWzNE5RaHuiHkLd3YQzbPnL4rw7yCADSS
- ba1hD1yY5cTepPEVzlCC0VcQPbF6cTkSaZ68MfxONv+w5fliN7NuYdNKLXjM/9AIR9Tk
- GF9QvDfmtEImpqIcrZ3CLf8k+zDkzVDYsrr/YCTxIuwoJjJvS27/U0gRQ/Og+Dl+Ujq2
- FUOtB5q/p0+7dEPETw7rrNY2QNK0CfhJqWxsCRs3jIY17CKeZtxGRAvyx5wkwhCwS59l mQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3u2m2604j0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 30 Oct 2023 21:08:56 +0000
-Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39UL4b4B023477;
- Mon, 30 Oct 2023 21:08:56 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3u2m2604hp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 30 Oct 2023 21:08:56 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39UIKdG9011291; Mon, 30 Oct 2023 21:08:55 GMT
-Received: from smtprelay07.dal12v.mail.ibm.com ([172.16.1.9])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3u1eujueeh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 30 Oct 2023 21:08:55 +0000
-Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
- [10.241.53.105])
- by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39UL8skj25887074
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 30 Oct 2023 21:08:54 GMT
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8BBD358055;
- Mon, 30 Oct 2023 21:08:54 +0000 (GMT)
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 438F858043;
- Mon, 30 Oct 2023 21:08:53 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTPS;
- Mon, 30 Oct 2023 21:08:53 +0000 (GMT)
-Message-ID: <d203aee9-f319-4ce4-9fc4-1f29440817bc@linux.ibm.com>
-Date: Mon, 30 Oct 2023 17:08:51 -0400
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 11/14] tpm_crb_sysbus: introduce TPM CRB SysBus device
-Content-Language: en-US
-To: Joelle van Dyne <j@getutm.app>, qemu-devel@nongnu.org
-Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
-References: <20231029060404.71196-1-j@getutm.app>
- <20231029060404.71196-12-j@getutm.app>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <20231029060404.71196-12-j@getutm.app>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: tDsdXZwxAIpVObkfHs1yxIwh2ZagbTlp
-X-Proofpoint-GUID: 8_-khV70fh8_B6YJuG7gMfEGhZXhbbYx
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qxZ1S-0007J2-L0; Mon, 30 Oct 2023 16:38:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=SyF+WfYOcafPUzfohavt56YZ1a8og4MVEmfTcVo57eU=; b=j9GS/cReygmQpkNsVKhntow3NQ
+ uShnzdW4zzF/eDojFIHEl9oY2wls4JHR/WJSOmGU3h4i4mQs0P9E6nwRgAaoDhMMN/wnyjctkXCk4
+ MZkK/cfcEd6OqqN2H661JGLnR4xT3QYJ0so2+6g+cYQAGGpdz4UrENmNicEZkIEpwg/SCh0KmLKba
+ +wurJEqgrHF4hsBzlr/VlD/zQaSmii0NtLYPP45gyVpTPUAbJMwbJLuKP5Epi1IqljXRY2dfQGGNr
+ w27jZFvLHRaL531HsVgVJbmWHKL5qRkiQxfIGhAYoiDTULn6l5l8mBEUNPmm3g1esbyLZNGLT0i+Z
+ YkNxWGBLyi/f17lzJ5yU0ftHq+J5vXdWL2Ex/gZeFH1DyQtXl6ay8cXkClkWwLA/V/MYd/fEqbhfS
+ RLovp99/0AHAnFrU0YPCObQKjFajS0DYCNqLKESSkmJufQnXcV0Ly4yan66yaM1NWPsqX5upnXANq
+ 4r8cEJb/Qq53JxDI7Ct+ZXrVfu0Z0xCZCoGgOZLO6G8zBX26tgVvhl1FO8J1VtzGh+SUipfXdOibJ
+ KNMZmpmYK2WU6VwQrv1SeZIFZn256Ety+lmuQVn8rGzx1ZXf6asLMrM3XJfiCHUN/ONtc4FV1psg1
+ aK5LvmArEpKHZJFa5ZOMLvyECmq5ugEmUaxEM95PA=;
+Received: from [2a00:23c4:8bb0:5400:5ff2:9176:6cc5:bf69]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qxZ1E-000Clj-TE; Mon, 30 Oct 2023 20:37:56 +0000
+Message-ID: <9ea5c9b8-d740-4cec-9896-568babeca9aa@ilande.co.uk>
+Date: Mon, 30 Oct 2023 20:37:57 +0000
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-30_13,2023-10-27_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- suspectscore=0 bulkscore=0 mlxlogscore=999 malwarescore=0 clxscore=1011
- spamscore=0 phishscore=0 priorityscore=1501 adultscore=0 impostorscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2310240000 definitions=main-2310300166
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>
+References: <20231030114802.3671871-1-peter.maydell@linaro.org>
+ <20231030114802.3671871-6-peter.maydell@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <20231030114802.3671871-6-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8bb0:5400:5ff2:9176:6cc5:bf69
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2 5/6] hw/input/stellaris_input: Convert to qdev
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -159,430 +138,216 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HgIUX6Kpr28g
+X-TUID: hoA1SoY0PTjv
 
+On 30/10/2023 11:48, Peter Maydell wrote:
 
-On 10/29/23 02:03, Joelle van Dyne wrote:
-> This SysBus variant of the CRB interface supports dynamically locating
-> the MMIO interface so that Virt machines can use it. This interface
-> is currently the only one supported by QEMU that works on Windows 11
-> ARM64 as 'tpm-tis-device' does not work with current Windows drivers.
-> We largely follow that device as a template.
->
-> To try out this device with Windows 11 before OVMF is updated, you
-> will need to modify `sysbud-fdt.c` and change the added line from:
-
-typo: sysbus-fdt.c
-
-
->
-> ```c
->      TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
-> ```
->
-> to
->
-> ```c
->      TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, add_tpm_tis_fdt_node),
-
-
-Would the proper fix at some point be a call to a function that has 
-'crb' in its name (add_tpm_crb_fdt_node) rather than 'tis'?
-
-> ```
->
-> This change was not included because it can confuse Linux (although
-> from testing, it seems like Linux is able to properly ignore the
-> device from the TPM TIS driver and recognize it from the ACPI device
-> in the TPM CRB driver). A proper fix would require OVMF to recognize
-> the ACPI device and not depend on the FDT node for recognizing TPM.
-
-What does a fix in OVMF have to do with Linux possibly getting confused?
-
-
->
-> The command line to try out this device with SWTPM is:
->
-> ```
-> $ qemu-system-aarch64 \
->      -chardev socket,id=chrtpm0,path=tpm.sock \
->      -tpmdev emulator,id=tpm0,chardev=chrtpm0 \
->      -device tpm-crb-device,tpmdev=tpm0
-> ```
->
-> along with SWTPM:
->
-> ```
-> $ swtpm \
->      --ctrl type=unixio,path=tpm.sock,terminate \
->      --tpmstate backend-uri=file://tpm.data \
->      --tpm2
-> ```
->
-> Signed-off-by: Joelle van Dyne <j@getutm.app>
+> Convert the hw/input/stellaris_input device to qdev.
+> 
+> The interface uses an array property for the board to specify the
+> keycodes to use, so the s->keycodes memory is now allocated by the
+> array-property machinery.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   docs/specs/tpm.rst      |   1 +
->   include/sysemu/tpm.h    |   3 +
->   hw/acpi/aml-build.c     |   7 +-
->   hw/arm/virt.c           |   1 +
->   hw/core/sysbus-fdt.c    |   1 +
->   hw/loongarch/virt.c     |   1 +
->   hw/riscv/virt.c         |   1 +
->   hw/tpm/tpm_crb_sysbus.c | 161 ++++++++++++++++++++++++++++++++++++++++
->   hw/arm/Kconfig          |   1 +
->   hw/loongarch/Kconfig    |   1 +
->   hw/riscv/Kconfig        |   1 +
->   hw/tpm/Kconfig          |   5 ++
->   hw/tpm/meson.build      |   3 +
->   13 files changed, 186 insertions(+), 1 deletion(-)
->   create mode 100644 hw/tpm/tpm_crb_sysbus.c
->
-> diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-> index 2bc29c9804..95aeb49220 100644
-> --- a/docs/specs/tpm.rst
-> +++ b/docs/specs/tpm.rst
-> @@ -46,6 +46,7 @@ operating system.
->   QEMU files related to TPM CRB interface:
->    - ``hw/tpm/tpm_crb.c``
->    - ``hw/tpm/tpm_crb_common.c``
-> + - ``hw/tpm/tpm_crb_sysbus.c``
->
->   SPAPR interface
->   ---------------
-> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
-> index ffd300e607..bab30fa546 100644
-> --- a/include/sysemu/tpm.h
-> +++ b/include/sysemu/tpm.h
-> @@ -49,6 +49,7 @@ struct TPMIfClass {
->   #define TYPE_TPM_TIS_ISA            "tpm-tis"
->   #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
->   #define TYPE_TPM_CRB                "tpm-crb"
-> +#define TYPE_TPM_CRB_SYSBUS         "tpm-crb-device"
->   #define TYPE_TPM_SPAPR              "tpm-spapr"
->   #define TYPE_TPM_TIS_I2C            "tpm-tis-i2c"
->
-> @@ -58,6 +59,8 @@ struct TPMIfClass {
->       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
->   #define TPM_IS_CRB(chr)                             \
->       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
-> +#define TPM_IS_CRB_SYSBUS(chr)                      \
-> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB_SYSBUS)
->   #define TPM_IS_SPAPR(chr)                           \
->       object_dynamic_cast(OBJECT(chr), TYPE_TPM_SPAPR)
->   #define TPM_IS_TIS_I2C(chr)                      \
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index af66bde0f5..acc654382e 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -31,6 +31,7 @@
->   #include "hw/pci/pci_bus.h"
->   #include "hw/pci/pci_bridge.h"
->   #include "qemu/cutils.h"
+> v1->v2: drop private/public comment lines
+> ---
+>   include/hw/input/stellaris_gamepad.h | 22 ++++++++-
+>   hw/arm/stellaris.c                   | 26 +++++++---
+>   hw/input/stellaris_gamepad.c         | 73 +++++++++++++++++++---------
+>   3 files changed, 89 insertions(+), 32 deletions(-)
+> 
+> diff --git a/include/hw/input/stellaris_gamepad.h b/include/hw/input/stellaris_gamepad.h
+> index 23cfd3c95f3..6140b889a28 100644
+> --- a/include/hw/input/stellaris_gamepad.h
+> +++ b/include/hw/input/stellaris_gamepad.h
+> @@ -11,8 +11,26 @@
+>   #ifndef HW_INPUT_STELLARIS_GAMEPAD_H
+>   #define HW_INPUT_STELLARIS_GAMEPAD_H
+>   
+> +#include "hw/sysbus.h"
 > +#include "qom/object.h"
->
->   static GArray *build_alloc_array(void)
->   {
-> @@ -2218,7 +2219,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
->   {
->       uint8_t start_method_params[12] = {};
->       unsigned log_addr_offset;
-> -    uint64_t control_area_start_address;
-> +    uint64_t baseaddr, control_area_start_address;
->       TPMIf *tpmif = tpm_find();
->       uint32_t start_method;
->       AcpiTable table = { .sig = "TPM2", .rev = 4,
-> @@ -2236,6 +2237,10 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
->       } else if (TPM_IS_CRB(tpmif)) {
->           control_area_start_address = TPM_CRB_ADDR_CTRL;
->           start_method = TPM2_START_METHOD_CRB;
-> +    } else if (TPM_IS_CRB_SYSBUS(tpmif)) {
-> +        baseaddr = object_property_get_uint(OBJECT(tpmif), "x-baseaddr", NULL);
-> +        control_area_start_address = baseaddr + A_CRB_CTRL_REQ;
-> +        start_method = TPM2_START_METHOD_CRB;
->       } else {
->           g_assert_not_reached();
->       }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index f1a161b0ea..22e147f71a 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2950,6 +2950,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
->   #ifdef CONFIG_TPM
->       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
->   #endif
->       mc->block_default_type = IF_VIRTIO;
->       mc->no_cdrom = 1;
-> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-> index eebcd28f9a..9c783f88eb 100644
-> --- a/hw/core/sysbus-fdt.c
-> +++ b/hw/core/sysbus-fdt.c
-> @@ -493,6 +493,7 @@ static const BindingEntry bindings[] = {
->   #endif
->   #ifdef CONFIG_TPM
->       TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
-> +    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
->   #endif
->       TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
->       TYPE_BINDING("", NULL), /* last element */
-> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> index feed0f8bbf..9d5ad2bc8e 100644
-> --- a/hw/loongarch/virt.c
-> +++ b/hw/loongarch/virt.c
-> @@ -1114,6 +1114,7 @@ static void loongarch_class_init(ObjectClass *oc, void *data)
->       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
->   #ifdef CONFIG_TPM
->       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
->   #endif
->   }
->
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index 9de578c756..c0d2cd1d60 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1702,6 +1702,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
->   #ifdef CONFIG_TPM
->       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
->   #endif
->
->
-> diff --git a/hw/tpm/tpm_crb_sysbus.c b/hw/tpm/tpm_crb_sysbus.c
-> new file mode 100644
-> index 0000000000..c10a8b5639
-> --- /dev/null
-> +++ b/hw/tpm/tpm_crb_sysbus.c
-> @@ -0,0 +1,161 @@
+>   
+> -/* stellaris_gamepad.c */
+> -void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
 > +/*
-> + * tpm_crb_sysbus.c - QEMU's TPM CRB interface emulator
-> + *
-> + * Copyright (c) 2018 Red Hat, Inc.
-> + *
-> + * Authors:
-> + *   Marc-André Lureau <marcandre.lureau@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * tpm_crb is a device for TPM 2.0 Command Response Buffer (CRB) Interface
-> + * as defined in TCG PC Client Platform TPM Profile (PTP) Specification
-> + * Family “2.0” Level 00 Revision 01.03 v22
+> + * QEMU interface:
+> + *  + QOM array property "keycodes": uint32_t QEMU keycodes to handle
+> + *  + unnamed GPIO outputs: one per keycode, in the same order as the
+> + *    "keycodes" array property entries; asserted when key is down
 > + */
 > +
-> +#include "qemu/osdep.h"
-> +#include "hw/acpi/acpi_aml_interface.h"
-> +#include "hw/acpi/tpm.h"
-> +#include "hw/qdev-properties.h"
-> +#include "migration/vmstate.h"
-> +#include "tpm_prop.h"
-> +#include "hw/sysbus.h"
-> +#include "qapi/visitor.h"
-> +#include "qom/object.h"
-> +#include "sysemu/tpm_util.h"
-> +#include "trace.h"
-> +#include "tpm_crb.h"
+> +#define TYPE_STELLARIS_GAMEPAD "stellaris-gamepad"
+> +OBJECT_DECLARE_SIMPLE_TYPE(StellarisGamepad, STELLARIS_GAMEPAD)
 > +
-> +struct TPMCRBStateSysBus {
-> +    /*< private >*/
+> +struct StellarisGamepad {
 > +    SysBusDevice parent_obj;
-> +
-> +    /*< public >*/
-> +    TPMCRBState state;
-> +    uint64_t baseaddr;
-> +    uint64_t size;
+
+Minor style comment: for QOM types there should be an empty line after parent_obj to 
+aid identification (as per 
+https://qemu.readthedocs.io/en/master/devel/style.html#qemu-object-model-declarations).
+
+> +    uint32_t num_buttons;
+> +    qemu_irq *irqs;
+> +    uint32_t *keycodes;
+> +    uint8_t *pressed;
+> +    int extension;
 > +};
+>   
+>   #endif
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index 96585dd7106..707b0dae375 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -31,6 +31,7 @@
+>   #include "hw/timer/stellaris-gptm.h"
+>   #include "hw/qdev-clock.h"
+>   #include "qom/object.h"
+> +#include "qapi/qmp/qlist.h"
+>   
+>   #define GPIO_A 0
+>   #define GPIO_B 1
+> @@ -1274,16 +1275,27 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+>           sysbus_connect_irq(SYS_BUS_DEVICE(enet), 0, qdev_get_gpio_in(nvic, 42));
+>       }
+>       if (board->peripherals & BP_GAMEPAD) {
+> -        qemu_irq gpad_irq[5];
+> +        QList *gpad_keycode_list = qlist_new();
+>           static const int gpad_keycode[5] = { 0xc8, 0xd0, 0xcb, 0xcd, 0x1d };
+> +        DeviceState *gpad;
+>   
+> -        gpad_irq[0] = qemu_irq_invert(gpio_in[GPIO_E][0]); /* up */
+> -        gpad_irq[1] = qemu_irq_invert(gpio_in[GPIO_E][1]); /* down */
+> -        gpad_irq[2] = qemu_irq_invert(gpio_in[GPIO_E][2]); /* left */
+> -        gpad_irq[3] = qemu_irq_invert(gpio_in[GPIO_E][3]); /* right */
+> -        gpad_irq[4] = qemu_irq_invert(gpio_in[GPIO_F][1]); /* select */
+> +        gpad = qdev_new(TYPE_STELLARIS_GAMEPAD);
+> +        for (i = 0; i < ARRAY_SIZE(gpad_keycode); i++) {
+> +            qlist_append_int(gpad_keycode_list, gpad_keycode[i]);
+> +        }
+> +        qdev_prop_set_array(gpad, "keycodes", gpad_keycode_list);
+> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(gpad), &error_fatal);
+>   
+> -        stellaris_gamepad_init(5, gpad_irq, gpad_keycode);
+> +        qdev_connect_gpio_out(gpad, 0,
+> +                              qemu_irq_invert(gpio_in[GPIO_E][0])); /* up */
+> +        qdev_connect_gpio_out(gpad, 1,
+> +                              qemu_irq_invert(gpio_in[GPIO_E][1])); /* down */
+> +        qdev_connect_gpio_out(gpad, 2,
+> +                              qemu_irq_invert(gpio_in[GPIO_E][2])); /* left */
+> +        qdev_connect_gpio_out(gpad, 3,
+> +                              qemu_irq_invert(gpio_in[GPIO_E][3])); /* right */
+> +        qdev_connect_gpio_out(gpad, 4,
+> +                              qemu_irq_invert(gpio_in[GPIO_F][1])); /* select */
+>       }
+>       for (i = 0; i < 7; i++) {
+>           if (board->dc4 & (1 << i)) {
+> diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
+> index 82ddc47a26d..6ccf0e80adc 100644
+> --- a/hw/input/stellaris_gamepad.c
+> +++ b/hw/input/stellaris_gamepad.c
+> @@ -8,19 +8,13 @@
+>    */
+>   
+>   #include "qemu/osdep.h"
+> +#include "qapi/error.h"
+>   #include "hw/input/stellaris_gamepad.h"
+>   #include "hw/irq.h"
+> +#include "hw/qdev-properties.h"
+>   #include "migration/vmstate.h"
+>   #include "ui/console.h"
+>   
+> -typedef struct {
+> -    uint32_t num_buttons;
+> -    int extension;
+> -    qemu_irq *irqs;
+> -    uint32_t *keycodes;
+> -    uint8_t *pressed;
+> -} StellarisGamepad;
+> -
+>   static void stellaris_gamepad_put_key(void * opaque, int keycode)
+>   {
+>       StellarisGamepad *s = (StellarisGamepad *)opaque;
+> @@ -57,22 +51,55 @@ static const VMStateDescription vmstate_stellaris_gamepad = {
+>       }
+>   };
+>   
+> -/* Returns an array of 5 output slots.  */
+> -void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode)
+> +static void stellaris_gamepad_realize(DeviceState *dev, Error **errp)
+>   {
+> -    StellarisGamepad *s;
+> -    int i;
+> +    StellarisGamepad *s = STELLARIS_GAMEPAD(dev);
+>   
+> -    s = g_new0(StellarisGamepad, 1);
+> -    s->irqs = g_new0(qemu_irq, n);
+> -    s->keycodes = g_new0(uint32_t, n);
+> -    s->pressed = g_new0(uint8_t, n);
+> -    for (i = 0; i < n; i++) {
+> -        s->irqs[i] = irq[i];
+> -        s->keycodes[i] = keycode[i];
+> +    if (s->num_buttons == 0) {
+> +        error_setg(errp, "keycodes property array must be set");
+> +        return;
+>       }
+> -    s->num_buttons = n;
+> -    qemu_add_kbd_event_handler(stellaris_gamepad_put_key, s);
+> -    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+> -                     &vmstate_stellaris_gamepad, s);
 > +
-> +OBJECT_DECLARE_SIMPLE_TYPE(TPMCRBStateSysBus, TPM_CRB_SYSBUS)
+> +    s->irqs = g_new0(qemu_irq, s->num_buttons);
+> +    s->pressed = g_new0(uint8_t, s->num_buttons);
+> +    qdev_init_gpio_out(dev, s->irqs, s->num_buttons);
+> +    qemu_add_kbd_event_handler(stellaris_gamepad_put_key, dev);
+>   }
 > +
-> +static void tpm_crb_sysbus_request_completed(TPMIf *ti, int ret)
+> +static void stellaris_gamepad_reset_enter(Object *obj, ResetType type)
 > +{
-> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
+> +    StellarisGamepad *s = STELLARIS_GAMEPAD(obj);
 > +
-> +    return tpm_crb_request_completed(&s->state, ret);
+> +    memset(s->pressed, 0, s->num_buttons * sizeof(uint8_t));
 > +}
 > +
-> +static enum TPMVersion tpm_crb_sysbus_get_tpm_version(TPMIf *ti)
-> +{
-> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
-> +
-> +    return tpm_crb_get_version(&s->state);
-> +}
-> +
-> +static int tpm_crb_sysbus_pre_save(void *opaque)
-> +{
-> +    TPMCRBStateSysBus *s = opaque;
-> +
-> +    return tpm_crb_pre_save(&s->state);
-> +}
-> +
-> +static const VMStateDescription vmstate_tpm_crb_sysbus = {
-> +    .name = "tpm-crb-sysbus",
-> +    .pre_save = tpm_crb_sysbus_pre_save,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_END_OF_LIST(),
-> +    }
-> +};
-> +
-> +static Property tpm_crb_sysbus_properties[] = {
-> +    DEFINE_PROP_TPMBE("tpmdev", TPMCRBStateSysBus, state.tpmbe),
-> +    DEFINE_PROP_UINT64("x-baseaddr", TPMCRBStateSysBus,
-> +                       baseaddr, TPM_CRB_ADDR_BASE),
-> +    DEFINE_PROP_UINT64("x-size", TPMCRBStateSysBus,
-> +                       size, TPM_CRB_ADDR_SIZE),
+> +static Property stellaris_gamepad_properties[] = {
+> +    DEFINE_PROP_ARRAY("keycodes", StellarisGamepad, num_buttons,
+> +                      keycodes, qdev_prop_uint32, uint32_t),
 > +    DEFINE_PROP_END_OF_LIST(),
 > +};
 > +
-> +static void tpm_crb_sysbus_initfn(Object *obj)
-> +{
-> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(obj);
-> +
-> +    tpm_crb_init_memory(obj, &s->state, NULL);
-> +
-> +    vmstate_register_ram(&s->state.mmio, DEVICE(obj));
-> +
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->state.mmio);
-> +}
-> +
-> +static void tpm_crb_sysbus_reset(DeviceState *dev)
-> +{
-> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
-> +
-> +    return tpm_crb_reset(&s->state, s->baseaddr);
-> +}
-> +
-> +static void tpm_crb_sysbus_realizefn(DeviceState *dev, Error **errp)
-> +{
-> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
-> +
-> +    if (!tpm_find()) {
-> +        error_setg(errp, "at most one TPM device is permitted");
-> +        return;
-> +    }
-> +
-> +    if (!s->state.tpmbe) {
-> +        error_setg(errp, "'tpmdev' property is required");
-> +        return;
-> +    }
-> +
-> +    if (tpm_crb_sysbus_get_tpm_version(TPM_IF(s)) != TPM_VERSION_2_0) {
-> +        error_setg(errp, "TPM CRB only supports TPM 2.0 backends");
-> +        return;
-> +    }
-> +}
-> +
-> +static void build_tpm_crb_sysbus_aml(AcpiDevAmlIf *adev, Aml *scope)
-> +{
-> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(adev);
-> +
-> +    tpm_crb_build_aml(TPM_IF(adev), scope, s->baseaddr, s->size, false);
-> +}
-> +
-> +static void tpm_crb_sysbus_class_init(ObjectClass *klass, void *data)
+> +static void stellaris_gamepad_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    TPMIfClass *tc = TPM_IF_CLASS(klass);
-> +    AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(klass);
+> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
 > +
-> +    device_class_set_props(dc, tpm_crb_sysbus_properties);
-> +    dc->vmsd  = &vmstate_tpm_crb_sysbus;
-> +    tc->model = TPM_MODEL_TPM_CRB;
-> +    dc->realize = tpm_crb_sysbus_realizefn;
-> +    dc->user_creatable = true;
-> +    dc->reset = tpm_crb_sysbus_reset;
-> +    tc->request_completed = tpm_crb_sysbus_request_completed;
-> +    tc->get_version = tpm_crb_sysbus_get_tpm_version;
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> +    adevc->build_dev_aml = build_tpm_crb_sysbus_aml;
+> +    rc->phases.enter = stellaris_gamepad_reset_enter;
+> +    dc->realize = stellaris_gamepad_realize;
+> +    dc->vmsd = &vmstate_stellaris_gamepad;
+> +    device_class_set_props(dc, stellaris_gamepad_properties);
 > +}
 > +
-> +static const TypeInfo tpm_crb_sysbus_info = {
-> +    .name = TYPE_TPM_CRB_SYSBUS,
+> +static const TypeInfo stellaris_gamepad_info = {
+> +    .name = TYPE_STELLARIS_GAMEPAD,
 > +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(TPMCRBStateSysBus),
-> +    .instance_init = tpm_crb_sysbus_initfn,
-> +    .class_init  = tpm_crb_sysbus_class_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { TYPE_TPM_IF },
-> +        { TYPE_ACPI_DEV_AML_IF },
-> +        { }
-> +    }
+> +    .instance_size = sizeof(StellarisGamepad),
+> +    .class_init = stellaris_gamepad_class_init,
 > +};
 > +
-> +static void tpm_crb_sysbus_register(void)
+> +static void stellaris_gamepad_register_types(void)
 > +{
-> +    type_register_static(&tpm_crb_sysbus_info);
+> +    type_register_static(&stellaris_gamepad_info);
 > +}
 > +
-> +type_init(tpm_crb_sysbus_register)
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 7e68348440..efe1beaa7b 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -5,6 +5,7 @@ config ARM_VIRT
->       imply VFIO_AMD_XGBE
->       imply VFIO_PLATFORM
->       imply VFIO_XGMAC
-> +    imply TPM_CRB_SYSBUS
->       imply TPM_TIS_SYSBUS
->       imply TPM_TIS_I2C
->       imply NVDIMM
-> diff --git a/hw/loongarch/Kconfig b/hw/loongarch/Kconfig
-> index 25da190ffc..70544f3ce5 100644
-> --- a/hw/loongarch/Kconfig
-> +++ b/hw/loongarch/Kconfig
-> @@ -6,6 +6,7 @@ config LOONGARCH_VIRT
->       imply PCI_DEVICES
->       imply NVDIMM
->       imply TPM_TIS_SYSBUS
-> +    imply TPM_CRB_SYSBUS
->       select SERIAL
->       select VIRTIO_PCI
->       select PLATFORM_BUS
-> diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-> index b6a5eb4452..d824cb58f9 100644
-> --- a/hw/riscv/Kconfig
-> +++ b/hw/riscv/Kconfig
-> @@ -29,6 +29,7 @@ config RISCV_VIRT
->       imply PCI_DEVICES
->       imply VIRTIO_VGA
->       imply TEST_DEVICES
-> +    imply TPM_CRB_SYSBUS
->       imply TPM_TIS_SYSBUS
->       select RISCV_NUMA
->       select GOLDFISH_RTC
-> diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
-> index a46663288c..28139c456a 100644
-> --- a/hw/tpm/Kconfig
-> +++ b/hw/tpm/Kconfig
-> @@ -25,6 +25,11 @@ config TPM_CRB
->       depends on TPM && PC
->       select TPM_BACKEND
->
-> +config TPM_CRB_SYSBUS
-> +    bool
-> +    depends on TPM
-> +    select TPM_BACKEND
-> +
->   config TPM_SPAPR
->       bool
->       default y
-> diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
-> index 3060ac05e8..f2536c99e3 100644
-> --- a/hw/tpm/meson.build
-> +++ b/hw/tpm/meson.build
-> @@ -5,6 +5,9 @@ system_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm-sysbus.c'))
->   system_ss.add(when: 'CONFIG_TPM_TIS_I2C', if_true: files('tpm_tis_i2c.c'))
->   system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
->   system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb_common.c'))
-> +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_sysbus.c'))
-> +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_common.c'))
-> +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm-sysbus.c'))
->   system_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_ppi.c'))
->   system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_ppi.c'))
->
+> +type_init(stellaris_gamepad_register_types);
 
-The rest looks good to me.
+Is it worth converting this to use DEFINE_TYPES() during the conversion? I know Phil 
+has considered some automation to remove the type_init() boilerplate for the majority 
+of cases.
+
+
+ATB,
+
+Mark.
 

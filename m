@@ -1,83 +1,83 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1773981ejc;
-        Mon, 30 Oct 2023 03:50:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IESWECewrF7mB/+XfZ53mh4ap1fmUKE+j8jaUEfxsgvkU0ZMqxvVNUaLsl3+3TuOsWx8N1+
-X-Received: by 2002:a54:451a:0:b0:3ab:929e:c5e1 with SMTP id l26-20020a54451a000000b003ab929ec5e1mr10193309oil.39.1698663040070;
-        Mon, 30 Oct 2023 03:50:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698663040; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1773991ejc;
+        Mon, 30 Oct 2023 03:50:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHrlxda6QNYn/gJLh8utKM/Zk/bkhR1oqF8BBgVLXa/ae65jmVkxu2B83UsbrLlNZIr7f6p
+X-Received: by 2002:a05:620a:3725:b0:773:c43e:5e73 with SMTP id de37-20020a05620a372500b00773c43e5e73mr18340724qkb.25.1698663041212;
+        Mon, 30 Oct 2023 03:50:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698663041; cv=none;
         d=google.com; s=arc-20160816;
-        b=YNSKEpvSpquwQXW4PyB33S6nafAsK2Pnbtq5fhxH5LHzRryUmvT7NSbwCaMsOmpJAd
-         HErKSjYtZYDoNvtaFUBbZ0s7lKryoAeU8P1aU9AJTe35NDpcm5g8Qk/+0cuDiV2A0PWn
-         s7uZEii8AuPrXvxZ0UigwgnwiLLLkO2c8ZHMwwoMEV1po308K7pPgW/kMimxnZF+kK8p
-         YX8Z3ME22szRbD1xWBR5qSu3GY5PuqA5m6akSqznqdOecsAP5n75fgZHg4f+efUsndqS
-         P/RMkc1pDwiGvl/zjaDJ+8t1BMJV5Jn1TwIOlHp0Dy+XgVQ6JFLhcTnbC3OM00nO7+0p
-         GGdQ==
+        b=lLuOAluJ90mAEzbz86IUKYK9pu5iuC7xPx6hotxunIboZRh7URdEMwbaeXmPSQPKx4
+         bewhjnWzygA1o3Q59ElUOwqafCoCBV2GWqIRPnV7ic8b6bHNX2WqIYpGV5sT8zN/nt58
+         2WTojeQq2TGTcvB4dAIqisG57DmcOoMzrhxDf45qi1ZcaZNKRbC+iO433qlk7e3f24yn
+         0oTAUt14fA1b1pQAVWer53WjfVRXiyphSHDHiWU81kXSY+E2yMKl4NRfxJaBq0Wlruur
+         Ki0YETR/V0xDKh0p8oUvO3aBhTRAy0x85ELnHCEV3y1GUflynSe99vt7zQ5WwLxcTBAO
+         v8gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YgZKMYWn3Wdc710ymth6R/fFVwX/oO2V2i44QoXo7BY=;
+        bh=Ngzny1QtASkwy4IfrDWfVKDSut+nimzaGhnpW+xw2xM=;
         fh=Ci9wK9l4xitOqL9yuxnV9ynOTs+kWb6MxTZujaeFoew=;
-        b=IRQ1iOasoFqHoLR5OtAWvsY2blABsVFOd3aEPFR8j71q4PFZ6U/Hq5Ui8ZhKH2obIj
-         VrfRhVb+aRU91TB4kTzZKAEWDNJSBHm80j2MKB7AwhQ6qLFf/VaKjhuiVAYzUxCMKeZ1
-         FeMELsNd6mOAb1cYhMQhMOo25tryD6DOVlI0MJ/69jegqkumdgtuNPxtYKI2Rm/ICweq
-         AiVlGThvmT4TbEwJNY/mqKUQU/hHayEgt1kKQnbKwIMm3VySn8oC/wH6HNi8hUXzqfvN
-         4CvDeepjDbMOeESOLgsPmlVBU2TsRwEUdMwqZSglj+Xhfll2DxM1r1Nr960ddx5Gt9vw
-         RANQ==
+        b=LBoU4G0XRKyEfcnmV6rtVuCSduA8Jvp4PymSadlkqcDI1Xj06txsIGsSrWxZD2DaCS
+         FPuxPztaYYUHrTJEmjxb5cmYkIJRFp35jrQxw0fLcA4WgcQlgHZIwTmNByWP70nbO55X
+         JNIbescVgnti6uGSOI5z6LMrCBusNl3wx1vHS5atyleSeWY1x6+erhmcHvwxTTaeeL5+
+         FFsal/uyIveIxFajO1vOkVXmXXuJybDinBzCmRhJb2o1g5FYduNzffVOwfIxdQDqRzxL
+         IBr75cCyi+isOTeOlGGACjpo6N3jmRtN2Snu8sCc/Kuj30hNe5kCRqkFLc/uSjSJD8/L
+         VIUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aIPZE1vj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="HeTJZN/3";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x28-20020a05620a099c00b007777245ad11si5239128qkx.454.2023.10.30.03.50.39
+        by mx.google.com with ESMTPS id bq14-20020a05620a468e00b007788fb75a90si5369311qkb.620.2023.10.30.03.50.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 03:50:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Oct 2023 03:50:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aIPZE1vj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="HeTJZN/3";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qxPqG-0006ky-QN; Mon, 30 Oct 2023 06:49:56 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qxPpt-0004d1-Aq; Mon, 30 Oct 2023 06:49:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qxPqE-0006U2-M0
- for qemu-devel@nongnu.org; Mon, 30 Oct 2023 06:49:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qxPpr-0004NE-NM
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:49:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qxPqB-0002mJ-OF
- for qemu-devel@nongnu.org; Mon, 30 Oct 2023 06:49:54 -0400
+ id 1qxPpp-0002jK-WF
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:49:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698662991;
+ s=mimecast20190719; t=1698662969;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YgZKMYWn3Wdc710ymth6R/fFVwX/oO2V2i44QoXo7BY=;
- b=aIPZE1vjt2LhMh1veVK6YRHYa2TIXnaezWifGpRpE1plxXwfkw4gcI4mHsir7xZ//FPT/i
- 0VukVXqkAnz+OOxa/xdeJJ9zRXb89lyM+wS/S47nb7TZc2wEm62g17h1E37FpSIMjfyiR7
- Rk705KKu9Gc4PfGjoBy4Qdm13HpKlms=
+ bh=Ngzny1QtASkwy4IfrDWfVKDSut+nimzaGhnpW+xw2xM=;
+ b=HeTJZN/33dHJlLZPyqLgQaCz58n0L/KWgpd/et3ird1mnIZDL24oGol+i7o2xwHM3gQXNj
+ PUdV85QWXIs2oS5wmvnDoJ4n0N6J6JYyoSJ+UCjoAZpCl97v49wdotyoG/p+GqvmrjWCoF
+ mybkkUJefxkFNO/Mume/3EiW4YyQl0I=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-472-TFjYbUwvMICLQ5aCnx1FdQ-1; Mon,
- 30 Oct 2023 06:49:37 -0400
-X-MC-Unique: TFjYbUwvMICLQ5aCnx1FdQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-653-ft2FurLLNsOXejUIxoMYvA-1; Mon,
+ 30 Oct 2023 06:49:26 -0400
+X-MC-Unique: ft2FurLLNsOXejUIxoMYvA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 22BF23826D26;
- Mon, 30 Oct 2023 10:49:36 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D68753826D23;
+ Mon, 30 Oct 2023 10:49:25 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AB419C1596C;
- Mon, 30 Oct 2023 10:49:33 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B174F2026D4C;
+ Mon, 30 Oct 2023 10:49:24 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -89,16 +89,16 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-Subject: [PATCH v7 19/23] ui/dbus: do not require PIXMAN
-Date: Mon, 30 Oct 2023 14:47:50 +0400
-Message-ID: <20231030104755.124188-20-marcandre.lureau@redhat.com>
+Subject: [PATCH v7 17/23] ui/spice: SPICE/QXL requires PIXMAN
+Date: Mon, 30 Oct 2023 14:47:48 +0400
+Message-ID: <20231030104755.124188-18-marcandre.lureau@redhat.com>
 In-Reply-To: <20231030104755.124188-1-marcandre.lureau@redhat.com>
 References: <20231030104755.124188-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
@@ -106,228 +106,86 @@ X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.478,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zbaA47S+s8sm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fMwpxmRdz8h2
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Implement a fallback path for region 2D update.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- ui/dbus-listener.c | 90 ++++++++++++++++++++++++++++++++--------------
- ui/meson.build     |  4 +--
- 2 files changed, 65 insertions(+), 29 deletions(-)
+ meson.build        |  6 +++++-
+ hw/display/Kconfig |  2 +-
+ ui/meson.build     | 10 +++++-----
+ 3 files changed, 11 insertions(+), 7 deletions(-)
 
-diff --git a/ui/dbus-listener.c b/ui/dbus-listener.c
-index 36548a7f52..18f556aa73 100644
---- a/ui/dbus-listener.c
-+++ b/ui/dbus-listener.c
-@@ -26,9 +26,6 @@
- #include "qapi/error.h"
- #include "sysemu/sysemu.h"
- #include "dbus.h"
--#ifdef CONFIG_OPENGL
--#include <pixman.h>
--#endif
- #ifdef G_OS_UNIX
- #include <gio/gunixfdlist.h>
- #endif
-@@ -41,6 +38,7 @@
- #include "ui/shader.h"
- #include "ui/egl-helpers.h"
- #include "ui/egl-context.h"
-+#include "ui/qemu-pixman.h"
- #endif
- #include "trace.h"
+diff --git a/meson.build b/meson.build
+index f3fc1ba68d..0dbad80fcc 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1015,7 +1015,11 @@ if not get_option('spice_protocol').auto() or have_system
+                               method: 'pkg-config')
+ endif
+ spice = not_found
+-if not get_option('spice').auto() or have_system
++if get_option('spice') \
++             .disable_auto_if(not have_system) \
++             .require(pixman.found(),
++                      error_message: 'cannot enable SPICE if pixman is not available') \
++             .allowed()
+   spice = dependency('spice-server', version: '>=0.14.0',
+                      required: get_option('spice'),
+                      method: 'pkg-config')
+diff --git a/hw/display/Kconfig b/hw/display/Kconfig
+index 7b3da68d1c..4d8b0cec40 100644
+--- a/hw/display/Kconfig
++++ b/hw/display/Kconfig
+@@ -93,7 +93,7 @@ config VGA
  
-@@ -62,9 +60,11 @@ struct _DBusDisplayListener {
+ config QXL
+     bool
+-    depends on SPICE && PCI
++    depends on SPICE && PCI && PIXMAN
+     select VGA
  
-     QemuDBusDisplay1Listener *proxy;
- 
--#ifdef CONFIG_OPENGL
-+#ifdef CONFIG_PIXMAN
-     /* Keep track of the damage region */
-     pixman_region32_t gl_damage;
-+#else
-+    int gl_damage;
- #endif
- 
-     DisplayChangeListener dcl;
-@@ -545,6 +545,7 @@ static void dbus_gl_refresh(DisplayChangeListener *dcl)
-         return;
-     }
- 
-+#ifdef CONFIG_PIXMAN
-     int n_rects = pixman_region32_n_rects(&ddl->gl_damage);
- 
-     for (int i = 0; i < n_rects; i++) {
-@@ -555,6 +556,13 @@ static void dbus_gl_refresh(DisplayChangeListener *dcl)
-                             box->x2 - box->x1, box->y2 - box->y1);
-     }
-     pixman_region32_clear(&ddl->gl_damage);
-+#else
-+    if (ddl->gl_damage) {
-+        dbus_call_update_gl(dcl, 0, 0,
-+                            surface_width(ddl->ds), surface_height(ddl->ds));
-+        ddl->gl_damage = 0;
-+    }
-+#endif
- }
- #endif /* OPENGL */
- 
-@@ -569,20 +577,64 @@ static void dbus_gl_gfx_update(DisplayChangeListener *dcl,
- {
-     DBusDisplayListener *ddl = container_of(dcl, DBusDisplayListener, dcl);
- 
-+#ifdef CONFIG_PIXMAN
-     pixman_region32_t rect_region;
-     pixman_region32_init_rect(&rect_region, x, y, w, h);
-     pixman_region32_union(&ddl->gl_damage, &ddl->gl_damage, &rect_region);
-     pixman_region32_fini(&rect_region);
-+#else
-+    ddl->gl_damage++;
-+#endif
- }
- #endif
- 
-+static void dbus_gfx_update_sub(DBusDisplayListener *ddl,
-+                                int x, int y, int w, int h)
-+{
-+    pixman_image_t *img;
-+    size_t stride;
-+    GVariant *v_data;
-+
-+    /* make a copy, since gvariant only handles linear data */
-+    stride = w * DIV_ROUND_UP(PIXMAN_FORMAT_BPP(surface_format(ddl->ds)), 8);
-+    img = pixman_image_create_bits(surface_format(ddl->ds),
-+                                   w, h, NULL, stride);
-+#ifdef CONFIG_PIXMAN
-+    pixman_image_composite(PIXMAN_OP_SRC, ddl->ds->image, NULL, img,
-+                           x, y, 0, 0, 0, 0, w, h);
-+#else
-+    {
-+        uint8_t *src = (uint8_t *)pixman_image_get_data(ddl->ds->image);
-+        uint8_t *dst = (uint8_t *)pixman_image_get_data(img);
-+        int bp = PIXMAN_FORMAT_BPP(surface_format(ddl->ds)) / 8;
-+        int hh;
-+
-+        for (hh = 0; hh < h; hh++) {
-+            memcpy(&dst[stride * hh],
-+                   &src[surface_stride(ddl->ds) * (hh + y) + x * bp],
-+                   stride);
-+        }
-+    }
-+#endif
-+    v_data = g_variant_new_from_data(
-+        G_VARIANT_TYPE("ay"),
-+        pixman_image_get_data(img),
-+        pixman_image_get_stride(img) * h,
-+        TRUE,
-+        (GDestroyNotify)pixman_image_unref,
-+        img);
-+    qemu_dbus_display1_listener_call_update(ddl->proxy,
-+        x, y, w, h, pixman_image_get_stride(img), pixman_image_get_format(img),
-+        v_data,
-+        G_DBUS_CALL_FLAGS_NONE,
-+        DBUS_DEFAULT_TIMEOUT, NULL, NULL, NULL);
-+}
-+
- static void dbus_gfx_update(DisplayChangeListener *dcl,
-                             int x, int y, int w, int h)
- {
-     DBusDisplayListener *ddl = container_of(dcl, DBusDisplayListener, dcl);
--    pixman_image_t *img;
-     GVariant *v_data;
--    size_t stride;
- 
-     assert(ddl->ds);
- 
-@@ -619,25 +671,7 @@ static void dbus_gfx_update(DisplayChangeListener *dcl,
-         return;
-     }
- 
--    /* make a copy, since gvariant only handles linear data */
--    stride = w * DIV_ROUND_UP(PIXMAN_FORMAT_BPP(surface_format(ddl->ds)), 8);
--    img = pixman_image_create_bits(surface_format(ddl->ds),
--                                   w, h, NULL, stride);
--    pixman_image_composite(PIXMAN_OP_SRC, ddl->ds->image, NULL, img,
--                           x, y, 0, 0, 0, 0, w, h);
--
--    v_data = g_variant_new_from_data(
--        G_VARIANT_TYPE("ay"),
--        pixman_image_get_data(img),
--        pixman_image_get_stride(img) * h,
--        TRUE,
--        (GDestroyNotify)pixman_image_unref,
--        img);
--    qemu_dbus_display1_listener_call_update(ddl->proxy,
--        x, y, w, h, pixman_image_get_stride(img), pixman_image_get_format(img),
--        v_data,
--        G_DBUS_CALL_FLAGS_NONE,
--        DBUS_DEFAULT_TIMEOUT, NULL, NULL, NULL);
-+    dbus_gfx_update_sub(ddl, x, y, w, h);
- }
- 
- #ifdef CONFIG_OPENGL
-@@ -751,8 +785,10 @@ dbus_display_listener_dispose(GObject *object)
-     g_clear_object(&ddl->map_proxy);
-     g_clear_object(&ddl->d3d11_proxy);
-     g_clear_pointer(&ddl->peer_process, CloseHandle);
--#ifdef CONFIG_OPENGL
-+#ifdef CONFIG_PIXMAN
-     pixman_region32_fini(&ddl->gl_damage);
-+#endif
-+#ifdef CONFIG_OPENGL
-     egl_fb_destroy(&ddl->fb);
- #endif
- #endif
-@@ -787,7 +823,7 @@ dbus_display_listener_class_init(DBusDisplayListenerClass *klass)
- static void
- dbus_display_listener_init(DBusDisplayListener *ddl)
- {
--#ifdef CONFIG_OPENGL
-+#ifdef CONFIG_PIXMAN
-     pixman_region32_init(&ddl->gl_damage);
- #endif
- }
+ config VIRTIO_GPU
 diff --git a/ui/meson.build b/ui/meson.build
-index 024f494faf..0ccb3387ee 100644
+index 19723188b5..024f494faf 100644
 --- a/ui/meson.build
 +++ b/ui/meson.build
-@@ -93,7 +93,7 @@ if dbus_display
-                                           '--generate-c-code', '@BASENAME@'])
-   dbus_display1_lib = static_library('dbus-display1', dbus_display1, dependencies: gio)
-   dbus_display1_dep = declare_dependency(link_with: dbus_display1_lib, include_directories: include_directories('.'))
--  dbus_ss.add(when: [gio, pixman, dbus_display1_dep],
-+  dbus_ss.add(when: [gio, dbus_display1_dep],
-               if_true: [files(
-                 'dbus-chardev.c',
-                 'dbus-clipboard.c',
-@@ -101,7 +101,7 @@ if dbus_display
-                 'dbus-error.c',
-                 'dbus-listener.c',
-                 'dbus.c',
--              ), opengl, gbm])
-+              ), opengl, gbm, pixman])
-   ui_modules += {'dbus' : dbus_ss}
+@@ -141,12 +141,12 @@ if spice.found()
+     'spice-display.c'
+   ))
+   ui_modules += {'spice-core' : spice_core_ss}
+-endif
+ 
+-if spice.found() and gio.found()
+-  spice_ss = ss.source_set()
+-  spice_ss.add(spice, gio, pixman, files('spice-app.c'))
+-  ui_modules += {'spice-app': spice_ss}
++  if gio.found()
++    spice_ss = ss.source_set()
++    spice_ss.add(spice, gio, pixman, files('spice-app.c'))
++    ui_modules += {'spice-app': spice_ss}
++  endif
  endif
  
+ keymaps = [
 -- 
 2.41.0
 

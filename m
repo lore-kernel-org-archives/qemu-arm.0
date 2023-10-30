@@ -1,111 +1,133 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1905823ejc;
-        Mon, 30 Oct 2023 07:25:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFot+EMxS3Hzt28whuFyLynNK6KNcjRTbCkoKMYSPXhufAUaPqMDxT2AgVqA+vnPCBe4Hv2
-X-Received: by 2002:a05:620a:2a01:b0:76c:b7f0:2bc9 with SMTP id o1-20020a05620a2a0100b0076cb7f02bc9mr14893075qkp.16.1698675933335;
-        Mon, 30 Oct 2023 07:25:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698675933; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1863549ejc;
+        Mon, 30 Oct 2023 06:21:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG047z70b1W0qGxVII87mVkWzMMQ4aVPxg/+OTxBcjTfAQ/CSK1+r0t+DwSIBRsbW9eCT/H
+X-Received: by 2002:a05:620a:1a91:b0:778:8ce0:221a with SMTP id bl17-20020a05620a1a9100b007788ce0221amr10228737qkb.63.1698672105357;
+        Mon, 30 Oct 2023 06:21:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698672105; cv=none;
         d=google.com; s=arc-20160816;
-        b=ifbjS9KyBtAaOAL4P9DCjHlnQwfNJdX/tpiUX4kd7Ye2dRHRZJK2M93BoI2HmBbi26
-         4mfCVb2DAKeQLDGcVaqJAeEiRUpHn07WZ+smRPFZIJ/dTqG8UAgF4+xsBxzCLRwUOaVg
-         Sy0E86M2VYFqhsETquSCUAZwLqVZ/AQySKKHKJmzvaRMamOhfIVL8VGRVe7UcT4OAkfd
-         FiAX84v59QCyfuIkp2XwemUSVSejRlGVt5DaPbPbzgxfl6/tuU2p1w5EhGrGN/gskkcj
-         R5Lg3ztNwrXryb7GZYIWCGuLg5NB4MkxTwiUIboiCABP7Y859Um0CXzrnT086PpeLL1m
-         9ufg==
+        b=lMANUhaBO1unA45QeoV6l8Su0i33uzkdwlbCXkcC8mZS97UWfjjy/NTKaDXTur89QC
+         PcPPdDAEqWMFs0iYa82N5lUm3K1pDRmHDxLxXeAOL6+H2WnGpJ5nYMDOrxCzh2+9btxk
+         g6VZ9INHLGIftQx5dIoOors8/U6Imh8dUdrMnERu1TvT+UGnKq/mUUV14jZK8S3eFAx3
+         E1cjM8Kod08+Rp6fBNpDv/fTq1vbgi2vYnNVeCSn8TemC4EeTU4n/hHDKFTOIjc7Sf0h
+         /O5g8ECHkrKqNAjkFsjQz5mbyfrFZiHkjZtOhDJTjxjeX2vcrlwgDUdJNtsnVLf9MBWW
+         HIzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=nSIm+xy18eZ0sK8H4uKlzHn1rwtN98dl6uA4rXP3aa4=;
-        fh=2ipoTlA8tvzyRbGCeci9XXv4lYL45ySsxipPhy/7rFQ=;
-        b=LL7FUBZMpWNu2E9RGiAaegaITy7vIl17516qMf20LhPgh4kp3gDursi+rJR1b7ld0I
-         0voDVQZB8IzSL1mWmnac3jtBPFDk4OcVGz5cqMQ6lXTrD6z3n/ajQ2ykRLQ3+kHD/4+s
-         ThPJs9BK37MW442uT6mOHzIl/BS3rfCdMYHjQ40lKHyDbtcoJ49ERXatZOmkmwbSl8D7
-         z7cmRZgY6ZtOU3B2vwB8OUogTm2bGonKpDKa/ljNWJJVp0pV1brExFRVQ+s1zNfgb8iX
-         B49IQfog3gUdVqxSlCUvUhXMV3XMbVThPGWGDwb/MOUAz6JIaDsDcSesoIH4bd5nueZB
-         Z45w==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=/WGOkPkGN7tv/gSpkSvp7dZKwocQSlsYgp8ZegSWvEw=;
+        fh=67Hov/BsT8RxH3/kFZB7fU49Uoc12n1VmFCLNpavJ9k=;
+        b=GRSV3oEhYjsEncw0o5OlCjeudbwSm1R/MfvfuTsR//ty6262LFazYd7i/EyzTNgakQ
+         GvmMOSjQIdg/6y5Y5WHBOmJHRfLHKS4D99zzCF4THSzTXAkz69QHq2yNZiB/heEJWp3g
+         S/0qDNPODEfOTrlzwcugxasDJ7v8NsoO5AVoQpLb+64g4QXswo88XdJuZDeNTk7rMfDJ
+         ELNWDzb27T38JuNUPeKN005UCIfTPMpM5KZ0efM8yAuA/4iTWJ3b+sDhIpDLz3dYy0Xy
+         4v6E4lDtR64SnOoO2DkEaA4o1v1U631Yi+3TsM8bre+1ae69Fi38vp6RhcgQCcI7arK7
+         eAOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vef7YZqI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=lZ7sHuE+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e30-20020a05620a209e00b007788b96f13esi5401175qka.515.2023.10.30.07.25.33
+        by mx.google.com with ESMTPS id i8-20020a05620a248800b00775cadf4b83si5704508qkn.249.2023.10.30.06.21.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 07:25:33 -0700 (PDT)
+        Mon, 30 Oct 2023 06:21:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vef7YZqI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=lZ7sHuE+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxTCh-00059u-Ed; Mon, 30 Oct 2023 10:25:19 -0400
+	id 1qxSCy-0006hU-BR; Mon, 30 Oct 2023 09:21:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qxTCe-00059R-Dh
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 10:25:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qxTCX-0006qG-UK
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 10:25:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698675909;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nSIm+xy18eZ0sK8H4uKlzHn1rwtN98dl6uA4rXP3aa4=;
- b=Vef7YZqIMW/dlqjiR+ZO36LQrYnlbsFGp1N1jXi/5lWAD2MbB8NfAwD2Zq3vTZPEye4ngW
- HqhtBUvL2z/pzv2eGW6tX4aStayX4RT5a7M/2MTCVGbhXkxcePVbiyppOoVphTmx132L+K
- DJDXObZdMu0f1EJX6IgEHDaokdpZXDs=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-247-HShPKYc9PdCeCm3NGR3gpQ-1; Mon,
- 30 Oct 2023 10:25:03 -0400
-X-MC-Unique: HShPKYc9PdCeCm3NGR3gpQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6536F1C05AAE;
- Mon, 30 Oct 2023 14:25:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E162492BE0;
- Mon, 30 Oct 2023 14:25:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 29F9D21E6A1F; Mon, 30 Oct 2023 15:25:02 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  Markus Armbruster
- <armbru@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,  qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v2 5/6] hw/input/stellaris_input: Convert to qdev
-References: <20231030114802.3671871-1-peter.maydell@linaro.org>
- <20231030114802.3671871-6-peter.maydell@linaro.org>
- <edf24aec-59cf-d594-7bda-cef3c268a835@linaro.org>
-Date: Mon, 30 Oct 2023 15:25:02 +0100
-In-Reply-To: <edf24aec-59cf-d594-7bda-cef3c268a835@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 30 Oct 2023 14:52:24
- +0100")
-Message-ID: <87jzr4p4qp.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qxSCv-0006ga-VI
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 09:21:29 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qxSCo-0002pG-Cv
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 09:21:29 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-280260db156so1713667a91.2
+ for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 06:21:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1698672080; x=1699276880; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/WGOkPkGN7tv/gSpkSvp7dZKwocQSlsYgp8ZegSWvEw=;
+ b=lZ7sHuE+svFs/69m+Bi1x9hQXYgZE2M2fXTCWhDosBBOkhc0kLN28CiITB2/6vKc3J
+ wXgVv6nSSOz0QOnU0GH24/ytTfAUVdfmw+0EOOFxSshCJlPhTPxzM28rMl5hcGNibDc8
+ HWSdhtDX0JywFhoS3oxd6bAZizXJ+CPViG0KKaTTcAskYtfcNMKnw2v7AooZA3ozwoUl
+ HsRs7tzMUWKgYpXiHHgMtYsrdFkcB78z/U4RXqXU9la4ncE1tNCAp7hbwQXCzdbco2mL
+ wtzib5qtKsUljvSQgRyh45q+uZ/5xjfI4RUPq3bo4J6aXKMQYK8Bh6rY29V7RIH6OMie
+ 6ypg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698672080; x=1699276880;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=/WGOkPkGN7tv/gSpkSvp7dZKwocQSlsYgp8ZegSWvEw=;
+ b=ds/ObeiqaiPNmhvZ5cuuTdlSEQigvkS4kLlIRTPfNWvgOqRzlPb6wOwITA4JoHP+o6
+ tspYVx5d+t+RP9MDfx2BMwwhiJXXsgfb9S5I1IN9TMi+0klIK2qdW0i7E3mHf3mW2cQC
+ cdcDVGzSwnrS5LmOUwRL4vfjtrqvyDKSy/3vU7WAh/RqBan256CUmamJpxyA0xiIYkMz
+ D8e4dHugoY4d8ku9mx/OlaVRKnPc7bFxfPc6YI2ln2RUUpw8nkelHz928rOcJI1iKip3
+ 71QDOY5iYgfEtRA+ezsT8y/LxHi1nSB/aVwebUsL/WhTC7ncLUy2k0+craLYLJK80kL9
+ zaAg==
+X-Gm-Message-State: AOJu0Yw3JFda/t0cjW+qOI7BpLhrmWSljQpRbhNayb3do3Kq/kvrhRK0
+ FaFWwJRZR4DvM3OxxZ6WeA2K+HbtLv1k7bXphLRhCw==
+X-Received: by 2002:a17:90a:2dca:b0:280:35d:4532 with SMTP id
+ q10-20020a17090a2dca00b00280035d4532mr8841203pjm.14.1698672080074; 
+ Mon, 30 Oct 2023 06:21:20 -0700 (PDT)
+Received: from sunil-pc.Dlink ([106.51.188.78])
+ by smtp.gmail.com with ESMTPSA id
+ 15-20020a17090a000f00b0027ced921e80sm8122412pja.38.2023.10.30.06.21.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Oct 2023 06:21:19 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Anup Patel <apatel@ventanamicro.com>,
+ Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
+ Sunil V L <sunilvl@ventanamicro.com>,
+ Andrew Jones <ajones@ventanamicro.com>
+Subject: [PATCH v5 02/13] hw/arm/virt-acpi-build.c: Migrate virtio creation to
+ common location
+Date: Mon, 30 Oct 2023 18:50:47 +0530
+Message-Id: <20231030132058.763556-3-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231030132058.763556-1-sunilvl@ventanamicro.com>
+References: <20231030132058.763556-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x1036.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.483,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,136 +142,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BTGJAtz/S8UL
+X-TUID: jV9dtQfDfGhM
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+RISC-V also needs to create the virtio in DSDT in the same way as ARM.
+So, instead of duplicating the code, move this function to the device
+specific file which is common across architectures.
 
-> Hi Peter,
->
-> Cc'ing Markus for QObject.
->
-> On 30/10/23 12:48, Peter Maydell wrote:
->> Convert the hw/input/stellaris_input device to qdev.
->> The interface uses an array property for the board to specify the
->> keycodes to use, so the s->keycodes memory is now allocated by the
->> array-property machinery.
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->> ---
->> v1->v2: drop private/public comment lines
->> ---
->>   include/hw/input/stellaris_gamepad.h | 22 ++++++++-
->>   hw/arm/stellaris.c                   | 26 +++++++---
->>   hw/input/stellaris_gamepad.c         | 73 +++++++++++++++++++---------
->>   3 files changed, 89 insertions(+), 32 deletions(-)
->
->
->> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
->> index 96585dd7106..707b0dae375 100644
->> --- a/hw/arm/stellaris.c
->> +++ b/hw/arm/stellaris.c
->> @@ -31,6 +31,7 @@
->>   #include "hw/timer/stellaris-gptm.h"
->>   #include "hw/qdev-clock.h"
->>   #include "qom/object.h"
->> +#include "qapi/qmp/qlist.h"
->>     #define GPIO_A 0
->>   #define GPIO_B 1
->> @@ -1274,16 +1275,27 @@ static void stellaris_init(MachineState *ms, ste=
-llaris_board_info *board)
->>           sysbus_connect_irq(SYS_BUS_DEVICE(enet), 0, qdev_get_gpio_in(n=
-vic, 42));
->>       }
->>       if (board->peripherals & BP_GAMEPAD) {
->> -        qemu_irq gpad_irq[5];
->> +        QList *gpad_keycode_list =3D qlist_new();
->
-> I'm trying to understand better qlist_new(), but unfortunately there
-> is not much documentation. Looking at how the allocated list was
-> released, I found use of g_autoptr in tests/unit/check-qobject.c,
-> so I tried:
->
->            g_autoptr(QList) gpad_keycode_list =3D qlist_new();
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
+---
+ hw/arm/virt-acpi-build.c        | 32 ++++----------------------------
+ hw/virtio/meson.build           |  1 +
+ hw/virtio/virtio-acpi.c         | 32 ++++++++++++++++++++++++++++++++
+ include/hw/virtio/virtio-acpi.h | 16 ++++++++++++++++
+ 4 files changed, 53 insertions(+), 28 deletions(-)
+ create mode 100644 hw/virtio/virtio-acpi.c
+ create mode 100644 include/hw/virtio/virtio-acpi.h
 
-QObject and its subtypes QDict, QList, QString, ... are reference
-counted.  qFOO_new() ist to be paired with qFOO_unref() or
-qobject_unref().
-
-Your use of g_autoptr(QList) should work.
-
-> But QEMU crashes elsewhere which seems unrelated:
->
-> * thread #2, stop reason =3D signal SIGABRT
->   * frame #0: 0x8b1eb11c libsystem_kernel.dylib`__pthread_kill + 8
->     frame #1: 0x8b222cc0 libsystem_pthread.dylib`pthread_kill + 288
->     frame #2: 0x8b132a50 libsystem_c.dylib`abort + 180
->     frame #3: 0x8b049b08 libsystem_malloc.dylib`malloc_vreport + 908
->     frame #4: 0x8b06924c libsystem_malloc.dylib`malloc_zone_error + 104
->     frame #5: 0x8b05b094 libsystem_malloc.dylib`nanov2_guard_corruption_d=
-etected + 44
->     frame #6: 0x8b05a2a8 libsystem_malloc.dylib`nanov2_allocate_outlined =
-+ 404
->     frame #7: 0x0201fdc0 libglib-2.0.0.dylib`g_malloc0 + 36
->     frame #8: 0x02007718 libglib-2.0.0.dylib`g_hash_table_setup_storage +=
- 76
->     frame #9: 0x020076b0 libglib-2.0.0.dylib`g_hash_table_new_full + 96
->     frame #10: 0x003a9920 qemu-system-ppc`object_unref [inlined] object_p=
-roperty_del_all(obj=3D0x42023e00) at object.c:635:34
->     frame #11: 0x003a9914 qemu-system-ppc`object_unref [inlined] object_f=
-inalize(data=3D0x42023e00) at object.c:707:5
->     frame #12: 0x003a990c qemu-system-ppc`object_unref(objptr=3D0x42023e0=
-0) at object.c:1216:9
->     frame #13: 0x00355114 qemu-system-ppc`address_space_dispatch_free at =
-physmem.c:1001:9
->     frame #14: 0x003550fc qemu-system-ppc`address_space_dispatch_free at =
-physmem.c:1010:9
->     frame #15: 0x003550e0 qemu-system-ppc`address_space_dispatch_free(d=
-=3D0x000060000385d680) at physmem.c:2473:5
->     frame #16: 0x00349438 qemu-system-ppc`flatview_destroy(view=3D0x00006=
-0000385d640) at memory.c:295:9
->     frame #17: 0x00524920 qemu-system-ppc`call_rcu_thread(opaque=3D<unava=
-ilable>) at rcu.c:301:13
->     frame #18: 0x0051c1f0 qemu-system-ppc`qemu_thread_start(args=3D<unava=
-ilable>) at qemu-thread-posix.c:541:9
->     frame #19: 0x8b223034 libsystem_pthread.dylib`_pthread_start + 136
-
-Can't see QList or QObject in this backtrace.  object_unref() is QOM,
-not QObject.
-
-> However when running 'make check-unit', qobject_is_equal_list_test()
-> is successful, so I'm a bit confused...
->
->>           static const int gpad_keycode[5] =3D { 0xc8, 0xd0, 0xcb, 0xcd,=
- 0x1d };
->> +        DeviceState *gpad;
->>   -        gpad_irq[0] =3D qemu_irq_invert(gpio_in[GPIO_E][0]); /* up */
->> -        gpad_irq[1] =3D qemu_irq_invert(gpio_in[GPIO_E][1]); /* down */
->> -        gpad_irq[2] =3D qemu_irq_invert(gpio_in[GPIO_E][2]); /* left */
->> -        gpad_irq[3] =3D qemu_irq_invert(gpio_in[GPIO_E][3]); /* right */
->> -        gpad_irq[4] =3D qemu_irq_invert(gpio_in[GPIO_F][1]); /* select =
-*/
->> +        gpad =3D qdev_new(TYPE_STELLARIS_GAMEPAD);
->> +        for (i =3D 0; i < ARRAY_SIZE(gpad_keycode); i++) {
->> +            qlist_append_int(gpad_keycode_list, gpad_keycode[i]);
->> +        }
->> +        qdev_prop_set_array(gpad, "keycodes", gpad_keycode_list);
->> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(gpad), &error_fatal);
->>   -        stellaris_gamepad_init(5, gpad_irq, gpad_keycode);
->> +        qdev_connect_gpio_out(gpad, 0,
->> +                              qemu_irq_invert(gpio_in[GPIO_E][0])); /* =
-up */
->> +        qdev_connect_gpio_out(gpad, 1,
->> +                              qemu_irq_invert(gpio_in[GPIO_E][1])); /* =
-down */
->> +        qdev_connect_gpio_out(gpad, 2,
->> +                              qemu_irq_invert(gpio_in[GPIO_E][2])); /* =
-left */
->> +        qdev_connect_gpio_out(gpad, 3,
->> +                              qemu_irq_invert(gpio_in[GPIO_E][3])); /* =
-right */
->> +        qdev_connect_gpio_out(gpad, 4,
->> +                              qemu_irq_invert(gpio_in[GPIO_F][1])); /* =
-select */
->>       }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index dd2e95f0ea..b73ddd0c38 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -58,6 +58,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/viot.h"
++#include "hw/virtio/virtio-acpi.h"
+ 
+ #define ARM_SPI_BASE 32
+ 
+@@ -118,32 +119,6 @@ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+     aml_append(scope, dev);
+ }
+ 
+-static void acpi_dsdt_add_virtio(Aml *scope,
+-                                 const MemMapEntry *virtio_mmio_memmap,
+-                                 uint32_t mmio_irq, int num)
+-{
+-    hwaddr base = virtio_mmio_memmap->base;
+-    hwaddr size = virtio_mmio_memmap->size;
+-    int i;
+-
+-    for (i = 0; i < num; i++) {
+-        uint32_t irq = mmio_irq + i;
+-        Aml *dev = aml_device("VR%02u", i);
+-        aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0005")));
+-        aml_append(dev, aml_name_decl("_UID", aml_int(i)));
+-        aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-
+-        Aml *crs = aml_resource_template();
+-        aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
+-        aml_append(crs,
+-                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+-                                 AML_EXCLUSIVE, &irq, 1));
+-        aml_append(dev, aml_name_decl("_CRS", crs));
+-        aml_append(scope, dev);
+-        base += size;
+-    }
+-}
+-
+ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+                               uint32_t irq, VirtMachineState *vms)
+ {
+@@ -850,8 +825,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     }
+     fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+-    acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+-                    (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
++    virtio_acpi_dsdt_add(scope, memmap[VIRT_MMIO].base, memmap[VIRT_MMIO].size,
++                         (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
++                         0, NUM_VIRTIO_TRANSPORTS);
+     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
+     if (vms->acpi_dev) {
+         build_ged_aml(scope, "\\_SB."GED_DEVICE,
+diff --git a/hw/virtio/meson.build b/hw/virtio/meson.build
+index c0055a7832..9d62097a21 100644
+--- a/hw/virtio/meson.build
++++ b/hw/virtio/meson.build
+@@ -79,3 +79,4 @@ system_ss.add(when: 'CONFIG_ALL', if_true: files('virtio-stub.c'))
+ system_ss.add(files('virtio-hmp-cmds.c'))
+ 
+ specific_ss.add_all(when: 'CONFIG_VIRTIO', if_true: specific_virtio_ss)
++system_ss.add(when: 'CONFIG_ACPI', if_true: files('virtio-acpi.c'))
+diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
+new file mode 100644
+index 0000000000..682283800f
+--- /dev/null
++++ b/hw/virtio/virtio-acpi.c
+@@ -0,0 +1,32 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * virtio ACPI Support
++ *
++ */
++
++#include "hw/virtio/virtio-acpi.h"
++#include "hw/acpi/aml-build.h"
++
++void virtio_acpi_dsdt_add(Aml *scope, const hwaddr base, const hwaddr size,
++                          uint32_t mmio_irq, long int start_index, int num)
++{
++    long int i;
++    hwaddr virtio_base = base;
++
++    for (i = start_index; i < start_index + num; i++) {
++        uint32_t irq = mmio_irq + i;
++        Aml *dev = aml_device("VR%02u", (unsigned)i);
++        aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0005")));
++        aml_append(dev, aml_name_decl("_UID", aml_int(i)));
++        aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
++
++        Aml *crs = aml_resource_template();
++        aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
++        aml_append(crs,
++                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
++                                 AML_EXCLUSIVE, &irq, 1));
++        aml_append(dev, aml_name_decl("_CRS", crs));
++        aml_append(scope, dev);
++        virtio_base += size;
++    }
++}
+diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-acpi.h
+new file mode 100644
+index 0000000000..844e102569
+--- /dev/null
++++ b/include/hw/virtio/virtio-acpi.h
+@@ -0,0 +1,16 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * ACPI support for virtio
++ */
++
++#ifndef VIRTIO_ACPI_H
++#define VIRTIO_ACPI_H
++
++#include "qemu/osdep.h"
++#include "exec/hwaddr.h"
++
++void virtio_acpi_dsdt_add(Aml *scope, const hwaddr virtio_mmio_base,
++                          const hwaddr virtio_mmio_size, uint32_t mmio_irq,
++                          long int start_index, int num);
++
++#endif
+-- 
+2.39.2
 

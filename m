@@ -1,117 +1,111 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1616720ejc;
-        Sun, 29 Oct 2023 20:37:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG+W1W0VpnJHWNbbTabSoGqnACs+YAiAxtml2zygCUkZSjC61WskJe2cWkZKv4uB0NB4Vwr
-X-Received: by 2002:ac8:7dd0:0:b0:41c:dd22:e7bf with SMTP id c16-20020ac87dd0000000b0041cdd22e7bfmr11598263qte.42.1698637053514;
-        Sun, 29 Oct 2023 20:37:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698637053; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1617440ejc;
+        Sun, 29 Oct 2023 20:40:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHvfm1IYfRqDuhRXReSgzRw6cv/oyzuEW82D3g304Rrx0cpVDttMWnpSJcnZOvONe+jOjY9
+X-Received: by 2002:ac8:4e47:0:b0:417:d340:c426 with SMTP id e7-20020ac84e47000000b00417d340c426mr11926105qtw.9.1698637219615;
+        Sun, 29 Oct 2023 20:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698637219; cv=none;
         d=google.com; s=arc-20160816;
-        b=DFlZ56fwiI7cmjeqvqGtGmKoo7R/GE4aD2K78ieur2UQvRz3AfZCJ2qdoPNNeDuQNZ
-         8c3G7T+ztjrMfvwv/A5swQ6clKJViFKdiiA+Kei3qk7zMs/sA7q+6l1P3TB1hmrYMRtr
-         46qYv7wNun7ofmp8tEg6v/ZVb0e5sWFzb7xyArx2PqV8CTOvmGJfmKuWD1MP9iaf1Npg
-         J+9dBSqanWR3hir4atMEx5Ks4UFkC93zLmqYreGMxXRY/oYF6mJlaoTBEpQ7+FPwjaeW
-         +qtsceiF+X9Mw9jdFEwoO/uMK/UjEBDqXRR18m34+AlNwFuDgKLL2+rbuOD/A4JGVD8u
-         Magw==
+        b=g3posIDYuYpUxkSRgPnXKIkL94CelaqXZ6ICr4938sXy/UX/h0gHVeNm2GoxJcAQvQ
+         rMSFY8rC0qFyR2upsoi5iCSNsvKN4exZwm2D7qXiiGvzcXA50Ew1z1tceUvNNcipA4gG
+         tXFEpACb/oRXYo8T5JYQaCoCTpCgoZXO7s4s3A9A2oVMEybNKskNhrkSucyi4xGwLtxH
+         pGbSQrGtRnmMqZlJRQ2m+lYdqkqac8H34vIVjJHyvwJdIqdOQqOoaJP+XI8tDkNrFwb5
+         9MZHMLfWmYNJTVQYmHGYBuXAjGgWqrKq28iK6CQ0oDGr2BiZtKnA8GI4JSybZYsltE2P
+         t1iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=mf4/7UVRiLpRnuSKTdGQjFO3fn80t7w58PQBuFU5/TM=;
-        fh=quGGJMq0ydBTDXlGfbb7QR+TitS/aKGIch9QE/o+OrY=;
-        b=CoJrv5zmMj9UmLwW0TY735suvtIl6aS5sFsgkjtmuoWfS8/+eW8XUNp4oHEiRQxF63
-         b2+hMmFO1m4hbOxfaLaHREBxvvHkONH9125GLx8a94U9cRfF34LYcvzN/KmDgxM8NVtm
-         OepWtuNcYQG3f830sf5ZzfWbGbQZKPlKegR+N+6IcWkT2+9hxD+ourJpUlKSwV3vxjQp
-         wVHIqddU6UTQlGxrA+GVICOnT0MWjz/dId6gs95/AHSOOQHx0rbHmIO+qgv53BkDwVrq
-         2oNs2A9hLRWAancC7D/AB9RmXNDtnfsOtAMRxcFbRfAP6GnnDujHIoqoJoInsAbZdKau
-         KdXQ==
+        bh=CLbnV4tOw6DA3WcwtkTlioe4LZD7T9M1jQqf5mnagl0=;
+        fh=5H85q9tQYYGdQYeaF5Nhx+gdy8rTfR/PSyyhR28qviE=;
+        b=XzlCT1PVmmBowktYdJ5iffCvSUJ2LNY/jOMXszGRAlVqvi+PAkR9pEyV4b52T5DSNV
+         otd++qRTnnwG5Mv97qytM2jveUgknBzyzG+CunEHsDaF6aYvUTuMAFQItRDF3GoJ0rPx
+         /THEldrtUGjGSS6JkYvQeq6Lidgg5XdztZ170S8YXoJd+a3UYzD5XIMWU0z0AT6RFpAG
+         ZNuDWXTXFQ+jn31F2Y917Sc3Z1x+HoskKts/lxXqCC3qr5qMq5twTgYmevDyaTBdltHH
+         ZA1BvvPY3WgVovezxEPbJpOtwrMWU2bIhn1vWf2NBPEThUEMRS00wt4WVe+zbpM/cStO
+         5Agw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zP5UmK9v;
+       dkim=pass header.i=@linaro.org header.s=google header.b="mL/HoMRS";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13-20020a05622a138d00b0041989c564ecsi4977448qtk.423.2023.10.29.20.37.33
+        by mx.google.com with ESMTPS id o13-20020a05622a138d00b0041989c564ecsi4979913qtk.423.2023.10.29.20.40.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Oct 2023 20:37:33 -0700 (PDT)
+        Sun, 29 Oct 2023 20:40:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zP5UmK9v;
+       dkim=pass header.i=@linaro.org header.s=google header.b="mL/HoMRS";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxJ5B-0004Fp-HZ; Sun, 29 Oct 2023 23:36:53 -0400
+	id 1qxJ84-0005Kl-45; Sun, 29 Oct 2023 23:39:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxJ5A-0004FC-8F
- for qemu-arm@nongnu.org; Sun, 29 Oct 2023 23:36:52 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxJ82-0005KV-Kf
+ for qemu-arm@nongnu.org; Sun, 29 Oct 2023 23:39:50 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxJ57-0000Lm-Qt
- for qemu-arm@nongnu.org; Sun, 29 Oct 2023 23:36:52 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-408002b5b9fso29541495e9.3
- for <qemu-arm@nongnu.org>; Sun, 29 Oct 2023 20:36:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxJ80-0000nS-UR
+ for qemu-arm@nongnu.org; Sun, 29 Oct 2023 23:39:50 -0400
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-2c5071165d5so11377031fa.0
+ for <qemu-arm@nongnu.org>; Sun, 29 Oct 2023 20:39:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698637008; x=1699241808; darn=nongnu.org;
+ d=linaro.org; s=google; t=1698637187; x=1699241987; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mf4/7UVRiLpRnuSKTdGQjFO3fn80t7w58PQBuFU5/TM=;
- b=zP5UmK9vruggYD5JOKnFxOUjwxmtBBeTZRXBKRgKLNegGdRTi88LC4sWER4nj1IKRB
- g/CEvTOZIeg9LaR4JK3c/M2zioXeBKWtwlky8waJlg/+jDW6gqXURZD+natdfXN2Gx1X
- 0aEwnj9y/YKysWEa1N8jdoKuNsSduw6hYLGP8CnRnWuBerrctx3D3gRldFh6GCZdBHnq
- uthVC41e6juq24eMwpnVyE+hGhoQD8pTw6QdTB2YBcFW+zxylFxyjEC2AvO69x/ZsBV2
- XsINL2qXbz4qdhp9v/p9VDdpXBGSPF0CRTrnynh4zEII440qomYeOjaOYhSuSMn1Pjc8
- qM+Q==
+ bh=CLbnV4tOw6DA3WcwtkTlioe4LZD7T9M1jQqf5mnagl0=;
+ b=mL/HoMRSQHKgfdLLV6AqMlqkfKQjnHXkIEfyw8ZtwmcYRieLklYwXqe79mIvu+ZtVo
+ eHG6CRrps/T5MZh6zehmVT13M4qvRzlE+7+TszeVeFJjudAuIiYq7lLAfAQ/csYhVROF
+ X++d8UbKwugpa7z/nnbPN289y/ljzcA14yIc5reWPL8GbNkeOHXkWWP8RCK+6rgJF3rL
+ 3oOvUXogEj+0qQJvrM996QOTglFUf3DrpxbI2LrhNXK26W+4jXC9risR8lp3StoKvzHN
+ s9VZY+AlfJolWeUD3DiAdsqFPMb1FitnDgxfeZ9TiEVIr1ugXEFUeRXRBcV11dByGoNO
+ ftGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698637008; x=1699241808;
+ d=1e100.net; s=20230601; t=1698637187; x=1699241987;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mf4/7UVRiLpRnuSKTdGQjFO3fn80t7w58PQBuFU5/TM=;
- b=fnr7EjGBVEPN/058sPJm+c1pXjm0UW6S6eHEh++r58b3szsgGU0pT1IVAeuetxM6p8
- h9Ho08pXQdpHl7PfawOjtK6Srvvchy2BFSf9H5WsJjkt0VxLhv0zB8eo/sHqd7j1fVUr
- GOu7ZYf9meU3iEkha7XFk96KzzlPzAxvF3lGoZ20nTgoPbi+FIzcX2e2bL5DsbCn2ebp
- z5J+Z3LzmjubGbDQBHuepzz8D4diyFls0XvVrgingmLSPLhGJL4B1lRFf21MdfMqbot0
- iyIfpwMpyvSgFtAL5g5RtReLLpIWJ2IDQSIZ9YkHXpqbYKxqEpm3ymnOzkzyG0mJMU44
- hhMw==
-X-Gm-Message-State: AOJu0YyCyt3cRrf9ku6JZjOhjByZhXm7oH5vexlfLXRog9OYNBAtO/N9
- /lck8PpFyfCsYB1gx+p6g5ko9w==
-X-Received: by 2002:a05:600c:164a:b0:409:1841:3f42 with SMTP id
- o10-20020a05600c164a00b0040918413f42mr6954044wmn.13.1698637007884; 
- Sun, 29 Oct 2023 20:36:47 -0700 (PDT)
+ bh=CLbnV4tOw6DA3WcwtkTlioe4LZD7T9M1jQqf5mnagl0=;
+ b=C8Uy5q3MQn7SJpUf5TtpTy7tufHv6W3G+lB/o5BgxlL9Tp9wJbKImQtZz/IfAYQZnV
+ 5qUOrHpwKyv/5c9f7233TtQE+tFYYPcuFrEOASoRXNak0+HhrbidUZ6Z9aUZns+GmWmu
+ JFrGbTI2D756L3uCMV1HqPEAnYpKoMUecKIDfVFS4zHApjI7t/VxrZjSSny4G0R92vlw
+ xa+aofXN5CzM+H0vPLF5phz8EytnI/KfalfyiLmN9pThovftenpf31+ij4S2duzDS/UF
+ 3ivVNfRsrpflrVtYJU2FS/+qRwWr1TsmeN8Aghh0eUY3FlLaq1ZFy0U5aUk3dFMj8iY0
+ Xq3g==
+X-Gm-Message-State: AOJu0YzXaV233+ViQ3THVaSHqr+jvmn6MKiCpIgvJ82nMWda/gsRrBRi
+ w4tZJGMnGMG/A2xEMikLjz9MHQ==
+X-Received: by 2002:a2e:9154:0:b0:2c2:8efd:a52b with SMTP id
+ q20-20020a2e9154000000b002c28efda52bmr5584293ljg.36.1698637186979; 
+ Sun, 29 Oct 2023 20:39:46 -0700 (PDT)
 Received: from [192.168.69.115] ([176.170.212.50])
  by smtp.gmail.com with ESMTPSA id
- gy14-20020a05600c880e00b004064741f855sm7947914wmb.47.2023.10.29.20.36.45
+ p21-20020a05600c431500b003fe61c33df5sm11389641wme.3.2023.10.29.20.39.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 29 Oct 2023 20:36:47 -0700 (PDT)
-Message-ID: <fd799a65-8dbd-4206-241b-6b9a300caf8c@linaro.org>
-Date: Mon, 30 Oct 2023 04:36:44 +0100
+ Sun, 29 Oct 2023 20:39:46 -0700 (PDT)
+Message-ID: <797a7fb9-6987-525d-cc0f-442a308357a9@linaro.org>
+Date: Mon, 30 Oct 2023 04:39:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 6/6] system/memory: Trace names of MemoryRegions rather
- than host pointers
+Subject: Re: [PATCH] linux-user/elfload: Add missing arm64 hwcap values
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>,
- Markus Armbruster <armbru@redhat.com>
-References: <20231028122415.14869-1-shentey@gmail.com>
- <20231028122415.14869-7-shentey@gmail.com>
+To: Marielle Novastrider <marielle@novastrider.com>, qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20231029210058.38986-1-marielle@novastrider.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231028122415.14869-7-shentey@gmail.com>
+In-Reply-To: <20231029210058.38986-1-marielle@novastrider.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x229.google.com
 X-Spam_score_int: -50
 X-Spam_score: -5.1
 X-Spam_bar: -----
@@ -133,160 +127,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hps/+kAe79yd
+X-TUID: ANKt0WVAKMQN
 
-Hi Bernhard,
-
-On 28/10/23 14:24, Bernhard Beschow wrote:
-> Tracing the host pointer of the accessed MemoryRegion seems to be a debug
-> feature for developing QEMU itself. When analyzing guest behavior by comparing
-> traces, these pointers generate a lot of noise since the pointers differ between
-> QEMU invocations, making this task harder than it needs to be. Moreover, the
-> pointers seem to be redundant to the names already assigned to MemoryRegions.
-
-I tried that few years ago but this got lost:
-https://lore.kernel.org/qemu-devel/20210307074833.143106-1-f4bug@amsat.org/
-
-> Remove the pointers from the traces and trace the names where missing. When
-> developing QEMU, developers could just add the host pointer tracing for
-> themselves.
-
-But sometimes an object exposing a MR is instantiated multiple times,
-each time, and now you can not distinct which object is accessed.
-
-IIRC a suggestion was to cache the QOM parent path and display that,
-which should be constant to diff tracing logs. But then IIRC again the
-issue was the QOM path is resolved once the object is realized, which
-happens *after* we initialize the MR within the object. Maybe the
-solution is to add a memory_region_qom_pathname() getter and do lazy
-initialization?
-
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   docs/devel/tracing.rst |  4 ++--
->   system/memory.c        | 26 ++++++++++++++++----------
->   system/trace-events    | 12 ++++++------
->   3 files changed, 24 insertions(+), 18 deletions(-)
+On 29/10/23 22:00, Marielle Novastrider wrote:
+> Specifically DIT, LSE2, and MTE3.
 > 
-> diff --git a/docs/devel/tracing.rst b/docs/devel/tracing.rst
-> index d288480db1..8c31d5f76e 100644
-> --- a/docs/devel/tracing.rst
-> +++ b/docs/devel/tracing.rst
-> @@ -18,8 +18,8 @@ events::
->   
->       $ qemu --trace "memory_region_ops_*" ...
->       ...
-> -    719585@1608130130.441188:memory_region_ops_read cpu 0 mr 0x562fdfbb3820 addr 0x3cc value 0x67 size 1
-> -    719585@1608130130.441190:memory_region_ops_write cpu 0 mr 0x562fdfbd2f00 addr 0x3d4 value 0x70e size 2
-> +    719585@1608130130.441188:memory_region_ops_read cpu 0 addr 0x3cc value 0x67 size 1
-> +    719585@1608130130.441190:memory_region_ops_write cpu 0 addr 0x3d4 value 0x70e size 2
+> We already expose detection of these via the CPUID interface, but
+> missed these from ELF hwcaps.
+> 
+> Signed-off-by: Marielle Novastrider <marielle@novastrider.com>
+> ---
+>   linux-user/elfload.c | 3 +++
+>   target/arm/cpu.h     | 5 +++++
+>   2 files changed, 8 insertions(+)
 
-Is this example missing the MR name?
-
->   
->   This output comes from the "log" trace backend that is enabled by default when
->   ``./configure --enable-trace-backends=BACKENDS`` was not explicitly specified.
-> diff --git a/system/memory.c b/system/memory.c
-> index 4928f2525d..076a992b74 100644
-> --- a/system/memory.c
-> +++ b/system/memory.c
-> @@ -444,10 +444,11 @@ static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
->   
->       tmp = mr->ops->read(mr->opaque, addr, size);
->       if (mr->subpage) {
-> -        trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
-> +        trace_memory_region_subpage_read(get_cpu_index(), addr, tmp, size,
-> +                                         memory_region_name(mr));
->       } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
->           hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
-> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
-> +        trace_memory_region_ops_read(get_cpu_index(), abs_addr, tmp, size,
->                                        memory_region_name(mr));
->       }
->       memory_region_shift_read_access(value, shift, mask, tmp);
-> @@ -467,10 +468,11 @@ static MemTxResult memory_region_read_with_attrs_accessor(MemoryRegion *mr,
->   
->       r = mr->ops->read_with_attrs(mr->opaque, addr, &tmp, size, attrs);
->       if (mr->subpage) {
-> -        trace_memory_region_subpage_read(get_cpu_index(), mr, addr, tmp, size);
-> +        trace_memory_region_subpage_read(get_cpu_index(), addr, tmp, size,
-> +                                         memory_region_name(mr));
->       } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_READ)) {
->           hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
-> -        trace_memory_region_ops_read(get_cpu_index(), mr, abs_addr, tmp, size,
-> +        trace_memory_region_ops_read(get_cpu_index(), abs_addr, tmp, size,
->                                        memory_region_name(mr));
->       }
->       memory_region_shift_read_access(value, shift, mask, tmp);
-> @@ -488,10 +490,11 @@ static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
->       uint64_t tmp = memory_region_shift_write_access(value, shift, mask);
->   
->       if (mr->subpage) {
-> -        trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
-> +        trace_memory_region_subpage_write(get_cpu_index(), addr, tmp, size,
-> +                                          memory_region_name(mr));
->       } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
->           hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
-> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
-> +        trace_memory_region_ops_write(get_cpu_index(), abs_addr, tmp, size,
->                                         memory_region_name(mr));
->       }
->       mr->ops->write(mr->opaque, addr, tmp, size);
-> @@ -509,10 +512,11 @@ static MemTxResult memory_region_write_with_attrs_accessor(MemoryRegion *mr,
->       uint64_t tmp = memory_region_shift_write_access(value, shift, mask);
->   
->       if (mr->subpage) {
-> -        trace_memory_region_subpage_write(get_cpu_index(), mr, addr, tmp, size);
-> +        trace_memory_region_subpage_write(get_cpu_index(), addr, tmp, size,
-> +                                          memory_region_name(mr));
->       } else if (trace_event_get_state_backends(TRACE_MEMORY_REGION_OPS_WRITE)) {
->           hwaddr abs_addr = memory_region_to_absolute_addr(mr, addr);
-> -        trace_memory_region_ops_write(get_cpu_index(), mr, abs_addr, tmp, size,
-> +        trace_memory_region_ops_write(get_cpu_index(), abs_addr, tmp, size,
->                                         memory_region_name(mr));
->       }
->       return mr->ops->write_with_attrs(mr->opaque, addr, tmp, size, attrs);
-> @@ -1356,7 +1360,8 @@ static uint64_t memory_region_ram_device_read(void *opaque,
->           break;
->       }
->   
-> -    trace_memory_region_ram_device_read(get_cpu_index(), mr, addr, data, size);
-> +    trace_memory_region_ram_device_read(get_cpu_index(), addr, data, size,
-> +                                        memory_region_name(mr));
->   
->       return data;
->   }
-> @@ -1366,7 +1371,8 @@ static void memory_region_ram_device_write(void *opaque, hwaddr addr,
->   {
->       MemoryRegion *mr = opaque;
->   
-> -    trace_memory_region_ram_device_write(get_cpu_index(), mr, addr, data, size);
-> +    trace_memory_region_ram_device_write(get_cpu_index(), addr, data, size,
-> +                                         memory_region_name(mr));
->   
->       switch (size) {
->       case 1:
-> diff --git a/system/trace-events b/system/trace-events
-> index 69c9044151..21f1c005e0 100644
-> --- a/system/trace-events
-> +++ b/system/trace-events
-> @@ -9,12 +9,12 @@ cpu_in(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
->   cpu_out(unsigned int addr, char size, unsigned int val) "addr 0x%x(%c) value %u"
->   
->   # memory.c
-> -memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> -memory_region_ops_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> -memory_region_subpage_read(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
-> -memory_region_subpage_write(int cpu_index, void *mr, uint64_t offset, uint64_t value, unsigned size) "cpu %d mr %p offset 0x%"PRIx64" value 0x%"PRIx64" size %u"
-> -memory_region_ram_device_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
-> -memory_region_ram_device_write(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
-> +memory_region_ops_read(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> +memory_region_ops_write(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> +memory_region_subpage_read(int cpu_index, uint64_t offset, uint64_t value, unsigned size, const char *name) "cpu %d offset 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> +memory_region_subpage_write(int cpu_index, uint64_t offset, uint64_t value, unsigned size, const char *name) "cpu %d offset 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> +memory_region_ram_device_read(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
-> +memory_region_ram_device_write(int cpu_index, uint64_t addr, uint64_t value, unsigned size, const char *name) "cpu %d addr 0x%"PRIx64" value 0x%"PRIx64" size %u name '%s'"
->   memory_region_sync_dirty(const char *mr, const char *listener, int global) "mr '%s' listener '%s' synced (global=%d)"
->   flatview_new(void *view, void *root) "%p (root %p)"
->   flatview_destroy(void *view, void *root) "%p (root %p)"
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

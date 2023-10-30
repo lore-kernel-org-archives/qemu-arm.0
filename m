@@ -1,92 +1,123 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1508111ejc;
-        Sun, 29 Oct 2023 14:27:32 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHEWpQST/7ncEzDHda0y65+VFVWhP/QMybKWlb9+m+FEne0rLotOSJL1Fw6nhfIVl9K4t96
-X-Received: by 2002:a05:622a:138b:b0:41b:7738:a8cf with SMTP id o11-20020a05622a138b00b0041b7738a8cfmr11219559qtk.17.1698614852122;
-        Sun, 29 Oct 2023 14:27:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698614852; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1611312ejc;
+        Sun, 29 Oct 2023 20:18:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHhPcU5ttfVgjOUk+2fPqDONqz165kkLNI/BVMoATyLmXwNae4VXc8HP//x/3doHx3biPzK
+X-Received: by 2002:ad4:5943:0:b0:670:6340:2b03 with SMTP id eo3-20020ad45943000000b0067063402b03mr3335519qvb.21.1698635893832;
+        Sun, 29 Oct 2023 20:18:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698635893; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8Lc3H9wcJBlV0OX8/FN/tIB6iTgFh/0/DCwcTxZpIufCQArXVduRm5Fd/enR0kxHx
-         fIvnC29LAz3YRhy+gebGgCO3ov5zfHbSs9Ww1mOrOggp1ahzBSbCygKggDVW49vlpppa
-         Yri5K7S2iPjdTIq8baeemsM7tvAB3/Bx02By2ElRmg69/sZv+7jeHW7dLrpwyS3ua2pS
-         epqPveuroI5YpxVoV5XPzGS6kjiPXZ3qqmsyiona3osN8jPiFDEtETQReLB4f8zpdwnw
-         OnTQPEq8zlimTVfLA0epWmYDYY78JN4KT9oh0Qk2PIPMjEef9+MFNIX/cTKA1xxGGjWM
-         ++WQ==
+        b=i3Fp04UE5EUjoA941iu32Quk2J77Wr0FtQbmG0I4nvjHoHl0go610lwe6fdG6YUR9E
+         X0tr2ldjqt/v07bENbkoiqMF1tFpT+pMvM4X2ZY3Om6/VGRQx1/Z/aYtOhG293HiW7mo
+         JAjcDP/WsxGiJsXH40hhcXzsyZYE1EndnZtsEZ2wCgLzhb2rl4w1LEfaIU9P7HJxt3O0
+         AE0rMQRZUCevMy0lUdRqn8t/BDZhZ4TwODTq3/+iOXrk6n94LAEjRUFlFoP4ET57u7Pk
+         Fh3aNla5VZZzUBjQJ2m2ZInxECgTBCw8pepxuH6dpqdyB2iQ13XD7dHCo3X9RDV/MOkh
+         PI9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GFoIeXJ41GUo62f6dyhb4xjXazYAtreCSXuwN4KhqZo=;
-        fh=bpx81pcVwhPA/huLxApnUjpU+tavqPZ4rsYbODYug4s=;
-        b=WXKzzD5grDMys02dTonSpcB9mgpwKBZCitX72bjE10FHywpGH7vQsVxBKq1F8iF1a7
-         T42r5J5dctUrVOhQXTZAVO2X0Y6QKeCt+ab+MuQa3M0zdPj6p1b7ouh29RFONhuO/ohT
-         LaqVZsOO3xrFRVF9ZX9ucyx1P1BfQXBPErQ3jgB9jSQQ1+DLLbzGYoTxeQkedtb3gzsX
-         IRvb4tS9m2lXiQ3wcshwp4drFiLYjFm5pZwBV1UZzcheqnnbtPGSoRWuluYZNcoe5tZ/
-         R70XFZFIh0jh0mb9T2tQVTvZV2k9dS1KFpD/pOCq4RjTOgcNoVD5Vdwr0u+Mdr73etSK
-         USsg==
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EZDWAj1ykkJn4R5/rp3f1Fz3f3ygHodsmieKmcp466M=;
+        fh=Hg5GsWkkEURgb3z6bjzv30cpIevLjynGSTcy1gDgd5w=;
+        b=A14rIhWOJ3q4IAe515H+ttq0r8TvnPWQ+nrVRBXDEayxM4Wo9280ybbjsw6yYStG3A
+         0qh+b5h8vD4TFYjWw2KXbBaLB+qJXrYCTcwPLhJ1aXzTeh3WCA/wSxzbLdaqQwFfPThf
+         Gg6sDS+V/CoOxpxoO38X2+5SVB7ZsV2/WwaGfEH4MFsBhsmywK+CmbDW9b1Mwhz9hY7x
+         42/SmCkQxl+B+bHZAG5BSm0fl2CIcfDfQloKlgYLPANS186R92k1YNiFUe7Pmb9jguNn
+         qtDlvPCdvnKQ9LvCtT+oEZxogWu22qUbjjZzd/9YmPIU63zTsLCmeNl8Mk72vYWn9jbx
+         UZMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@novastrider.com header.s=key1 header.b="YH4wOi/O";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zmIiWTzD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=novastrider.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x9-20020ac85f09000000b00417ba0580b1si4565361qta.626.2023.10.29.14.27.31
+        by mx.google.com with ESMTPS id bj37-20020a05620a192500b00777722d8abfsi5058112qkb.244.2023.10.29.20.18.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Oct 2023 14:27:31 -0700 (PDT)
+        Sun, 29 Oct 2023 20:18:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@novastrider.com header.s=key1 header.b="YH4wOi/O";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zmIiWTzD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=novastrider.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxDJX-0003SZ-Vt; Sun, 29 Oct 2023 17:27:20 -0400
+	id 1qxImo-0005RA-71; Sun, 29 Oct 2023 23:17:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marielle@novastrider.com>)
- id 1qxCux-0001uT-P3
- for qemu-arm@nongnu.org; Sun, 29 Oct 2023 17:01:55 -0400
-Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marielle@novastrider.com>)
- id 1qxCuv-00046L-FX
- for qemu-arm@nongnu.org; Sun, 29 Oct 2023 17:01:55 -0400
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=novastrider.com;
- s=key1; t=1698613301;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=GFoIeXJ41GUo62f6dyhb4xjXazYAtreCSXuwN4KhqZo=;
- b=YH4wOi/OpVNaFsFXxGLryJN1YpZH5azNwMpunwz16vJQp47jKYn9Ilh+xnQmnuZkDFBseh
- GTzmixsAu199dma50qAItQN0KYlZaiKozSP0Ff63u0BLwuA8lPYZP7FFa9x26P31pJKrHY
- wOhS8GFDCAddQluQP2yYMvvV1EkxIH8MIQyrHrudLhvze4eTirc/Zb1014AggEFstE5Eco
- XttlHUg+vlgqDN2tbkSiOKd+TuACOKsbGYWiVeYWd00xXvFQBCLZmKKSfArKEWFP2diz+e
- 2dKImrjIVCYp5g/bzb2GqW3qPjb2of3Hzworl5GYIld54bDdcXYiBJVDf3k/Ug==
-From: Marielle Novastrider <marielle@novastrider.com>
-To: qemu-devel@nongnu.org
-Cc: Marielle Novastrider <marielle@novastrider.com>,
- Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH] linux-user/elfload: Add missing arm64 hwcap values
-Date: Sun, 29 Oct 2023 21:00:58 +0000
-Message-Id: <20231029210058.38986-1-marielle@novastrider.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxImj-0005Qg-Ph
+ for qemu-arm@nongnu.org; Sun, 29 Oct 2023 23:17:49 -0400
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxImi-00067u-5p
+ for qemu-arm@nongnu.org; Sun, 29 Oct 2023 23:17:49 -0400
+Received: by mail-lj1-x22a.google.com with SMTP id
+ 38308e7fff4ca-2c50906f941so57986001fa.2
+ for <qemu-arm@nongnu.org>; Sun, 29 Oct 2023 20:17:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698635864; x=1699240664; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EZDWAj1ykkJn4R5/rp3f1Fz3f3ygHodsmieKmcp466M=;
+ b=zmIiWTzD8gWWWFWNxjeQ/ZypjDUCDodRCTDY8nKLHBiSWJ1erJncw8LUPkVR3eijC/
+ 2JnjdorEqTUoaP3KZEK/DkrA8h5MomO87YBUs8DhzN4Nq9Xw3mmUDMbcaRUMQTM+dMsg
+ 1gGiRtCPSHhmentt/AcOPUR+IFmYXspmYI0wFT5rSbeyJHJbdYq9ixl9nQ3fnsz58KT7
+ q08HsCYHfMHo1A7EGhWIO3yPJrPxU/nvC9NOxFzCVDF28m2oyvv0NSVbiFlPMzNR6e9n
+ +xRDVbCKr96beN0EIJdNxP4A+27Zs5D4eaLKOQkSLbREu8YuV2VX6FccwCpJcwfghV1l
+ Bgsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698635864; x=1699240664;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EZDWAj1ykkJn4R5/rp3f1Fz3f3ygHodsmieKmcp466M=;
+ b=VnoeQcZE7eEpIDqYS1VR5u4xP5+pVfM0RF6lgu1LDnSznZMz4Jz77osCGg03zw5CEQ
+ +nWifYwRKzBOj+prE/y3LA1j8V0nMwgispGlViap7Xbg2sfA5uhbOjl5AjSbGcCBbrP8
+ FNvD6dtGLtZTqqAOo76kQ1X/5RFZhkQMFT6U17jw5ncVRoyKovgxtfu3HCMTzwxIGiOj
+ fx0k+PtW1byOmwxbyTNC91tNnP5oi29KUVqAAqrI0ffw8MARDI2R3ic3cyj6xa5uqukT
+ JdCpDqO1oBunUOhkCo8pDNFwhK9ToOWbfG7SuPkS5m90LjQyB1J+jXBIpWIXD9ytcX2M
+ 9UtQ==
+X-Gm-Message-State: AOJu0YxS685sXe6VS0F68VXaalBW6JFRKTFk+2iD0qtOZqKKc0s+gEet
+ RIdR/u9DC59juWpuhOPWNzDUmw==
+X-Received: by 2002:a2e:bc83:0:b0:2c3:3c0b:d747 with SMTP id
+ h3-20020a2ebc83000000b002c33c0bd747mr7670151ljf.17.1698635864024; 
+ Sun, 29 Oct 2023 20:17:44 -0700 (PDT)
+Received: from [192.168.69.115] ([176.170.212.50])
+ by smtp.gmail.com with ESMTPSA id
+ t10-20020a1c770a000000b00405bbfd5d16sm8002419wmi.7.2023.10.29.20.17.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 29 Oct 2023 20:17:43 -0700 (PDT)
+Message-ID: <2fe346f1-c76f-7b37-32cf-b9118037b235@linaro.org>
+Date: Mon, 30 Oct 2023 04:17:40 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 1/6] hw/watchdog/wdt_imx2: Trace MMIO access
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20231028122415.14869-1-shentey@gmail.com>
+ <20231028122415.14869-2-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231028122415.14869-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
-Received-SPF: pass client-ip=2001:41d0:203:375::b5;
- envelope-from=marielle@novastrider.com; helo=out-181.mta1.migadu.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22a.google.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.972,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 29 Oct 2023 17:27:18 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,62 +131,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h74iN6Ki4GZN
+X-TUID: bWBgOhPUoAJr
 
-Specifically DIT, LSE2, and MTE3.
+On 28/10/23 14:24, Bernhard Beschow wrote:
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/watchdog/wdt_imx2.c   | 24 ++++++++++++++++++------
+>   hw/watchdog/trace-events |  4 ++++
+>   2 files changed, 22 insertions(+), 6 deletions(-)
 
-We already expose detection of these via the CPUID interface, but
-missed these from ELF hwcaps.
-
-Signed-off-by: Marielle Novastrider <marielle@novastrider.com>
----
- linux-user/elfload.c | 3 +++
- target/arm/cpu.h     | 5 +++++
- 2 files changed, 8 insertions(+)
-
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 2e3809f03c..d9683809a1 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -768,12 +768,14 @@ uint32_t get_elf_hwcap(void)
-     GET_FEATURE_ID(aa64_sm4, ARM_HWCAP_A64_SM4);
-     GET_FEATURE_ID(aa64_fp16, ARM_HWCAP_A64_FPHP | ARM_HWCAP_A64_ASIMDHP);
-     GET_FEATURE_ID(aa64_atomics, ARM_HWCAP_A64_ATOMICS);
-+    GET_FEATURE_ID(aa64_lse2, ARM_HWCAP_A64_USCAT);
-     GET_FEATURE_ID(aa64_rdm, ARM_HWCAP_A64_ASIMDRDM);
-     GET_FEATURE_ID(aa64_dp, ARM_HWCAP_A64_ASIMDDP);
-     GET_FEATURE_ID(aa64_fcma, ARM_HWCAP_A64_FCMA);
-     GET_FEATURE_ID(aa64_sve, ARM_HWCAP_A64_SVE);
-     GET_FEATURE_ID(aa64_pauth, ARM_HWCAP_A64_PACA | ARM_HWCAP_A64_PACG);
-     GET_FEATURE_ID(aa64_fhm, ARM_HWCAP_A64_ASIMDFHM);
-+    GET_FEATURE_ID(aa64_dit, ARM_HWCAP_A64_DIT);
-     GET_FEATURE_ID(aa64_jscvt, ARM_HWCAP_A64_JSCVT);
-     GET_FEATURE_ID(aa64_sb, ARM_HWCAP_A64_SB);
-     GET_FEATURE_ID(aa64_condm_4, ARM_HWCAP_A64_FLAGM);
-@@ -807,6 +809,7 @@ uint32_t get_elf_hwcap2(void)
-     GET_FEATURE_ID(aa64_rndr, ARM_HWCAP2_A64_RNG);
-     GET_FEATURE_ID(aa64_bti, ARM_HWCAP2_A64_BTI);
-     GET_FEATURE_ID(aa64_mte, ARM_HWCAP2_A64_MTE);
-+    GET_FEATURE_ID(aa64_mte3, ARM_HWCAP2_A64_MTE3);
-     GET_FEATURE_ID(aa64_sme, (ARM_HWCAP2_A64_SME |
-                               ARM_HWCAP2_A64_SME_F32F32 |
-                               ARM_HWCAP2_A64_SME_B16F32 |
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 76d4cef9e3..7605d6ee3a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -4073,6 +4073,11 @@ static inline bool isar_feature_aa64_mte(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 2;
- }
- 
-+static inline bool isar_feature_aa64_mte3(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 3;
-+}
-+
- static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
--- 
-2.39.3 (Apple Git-145)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -1,108 +1,120 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1746501ejc;
-        Mon, 30 Oct 2023 02:53:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGXEnSlp1qaIGJuugKoomANMIRHu+Qz0HEnmI6Cy7h8jeKx4baUZEb7z6PxHChKZp6d2M1E
-X-Received: by 2002:a05:620a:8781:b0:778:5dc:fb74 with SMTP id py1-20020a05620a878100b0077805dcfb74mr8031641qkn.68.1698659585877;
-        Mon, 30 Oct 2023 02:53:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698659585; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1774802ejc;
+        Mon, 30 Oct 2023 03:52:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFSN/7BnL2KRX1C9jTplQbpSLaPFcbFMEsM1z77YgSTG/DTh3GIxnecP3rSa5CMKnBqFfh/
+X-Received: by 2002:a05:620a:86ce:b0:778:9be8:275c with SMTP id pr14-20020a05620a86ce00b007789be8275cmr9357357qkn.33.1698663157097;
+        Mon, 30 Oct 2023 03:52:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698663157; cv=none;
         d=google.com; s=arc-20160816;
-        b=hEnuHf1GbX7UU5VCD8V9BXLkLDXJxcJJDI8ZZVEXuNqAZdnMuO0HAIkX+hl9fRBi6L
-         mdmOZCW4XZqEi5+MrQtXyfbL7MWDBwFXjgrhk1bSMsrnrvleKtpoT/SU4QgDnauDTHPv
-         GlCDrbppw2D9xBF2kDY4LJkOuJLHQ2zw5sPd+va4DeRQmkHVPY9qH5AGPyO1g71IgF3K
-         dVKQdVTPKQbH01rs7CdFtDIXOeRMpPLO+dMt96oKoNlWSBeKSYSjSqguuexPo1vb3VCv
-         YyfnuXw4KMPJ9WHC7FulO8AshTF6VgbpFpUarutNvVUwquCKkfIGiZ4KboupcTJqqNQ1
-         1dpg==
+        b=o7CqfYDRr1BMpmAH1ob2ZeWij6KsAfiB4EhRP+er88QlseTTfkT6d+f9uM7OgjnU+1
+         +n9QunE1BStVr7qrWFSjG92jrw89GbFap8cVSxuSD4kcKSG0IG6gOXBmhyAMQKZiAbyj
+         Ip87MtNXg16pb/X8rZIIZ71B/bZk86Yfj9o1DUgKo3SmCNlhytms3fbgDmW7/yxU1nrO
+         vGJpjEc9Gibm5GHXTr+fCYXEgzkJ0m5K3WDv5MbWBtCW6IfdAAk3nytRtoBXuw+NGSdb
+         88fitok+9CROiKfzB2r3aak761AFbm7lsysi141X4C9IjflaCzE3jQkDXeoIDNDUX3UK
+         a9hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=GBupKdDYd7/M7+TcrdF896J+H3uMDigsIgVmdFb1wSM=;
-        fh=MrxszEF/F4kIHHArArVMcXFfLXBu24bCPd92Q4XIY3E=;
-        b=yNIDtXHYv6PncSCJGm7cF1LWgwqxTBCaR5Gy02lCs5WZkbCXwvOuu3o8HivySYdwqm
-         3R+CF6YbS1yRf3dtwsDNnYktc9OLS/KNuAysXP198+2lPAzm4K5AKwuvoLVPhp1+N9sp
-         t5q81eP/LpWzEEBeBbyTa2WbR3Ic/B8QYLCEbDgzkNPRXhmGxL3CXcfeF9SlRlbrLq7k
-         M2PDGR+baYKi+ZNTLhcgVisPxByIuMoO8Bt2BMIdXoqEymGWF3b+QWgA22nAU8+Jsbvr
-         u9Ba+lJNwuHzjujvEWLwnmkx5WRRb7ymocYlBgMK6+zXBv8X3OZo4m7qUsb+vYkuQZ1C
-         uPdw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Gl8HMH6iD4/5CtVeEZHLjGviQ5rXHsErSFhAiMTJ86U=;
+        fh=w9lLPeNGJEb6T4gCW2+Fja8z/9rd5e7BX2gVADWR+fo=;
+        b=eTVze6tDQyEDX9ysAZ17yqyYBTdRBVvjQOZze81yKKOZ+0ntpQcgw6QGKrHiC70lIM
+         +AsxrXirKhXX9qvL2DI/3/CFIUc3/6wRWBStXANWpT+YGZXqaWjjULdQCZZTDH6ZbN+L
+         cICVFHC8eufRF+sFkJPusPmSAoGVdDLMOgj/05FzRoVHhPK2CxeVu9nHlXqe+a/lBGeO
+         mUZx1a45dz8Sfa4UgoIAIGWmlFYbejFF7SZXUHhBw0LlIoznpttelnZchU0rB1gtAQBB
+         VjqIoZXbHNZ3fje4VzNw8b7M+jqp+Vg3vikLtSa3VKg7QC/i9/J1uuffWz5EjFCJCg4b
+         UHJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jcTTBruA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y0GKM6WR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ud4-20020a05620a6a8400b00773c2679efcsi5030489qkn.242.2023.10.30.02.53.05
+        by mx.google.com with ESMTPS id x9-20020ae9e649000000b0077a0328dfeesi5230415qkl.587.2023.10.30.03.52.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 02:53:05 -0700 (PDT)
+        Mon, 30 Oct 2023 03:52:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jcTTBruA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y0GKM6WR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxOwx-0001sR-5I; Mon, 30 Oct 2023 05:52:47 -0400
+	id 1qxPsa-0005K0-0O; Mon, 30 Oct 2023 06:52:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxOwv-0001s2-Ob
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 05:52:45 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qxPsK-0004z1-Vr
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:52:05 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxOwt-0000mr-0C
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 05:52:45 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-543456dbd7bso579735a12.1
- for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 02:52:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qxPsI-0003e2-DH
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 06:52:04 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4084095722aso33693355e9.1
+ for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 03:52:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698659561; x=1699264361; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GBupKdDYd7/M7+TcrdF896J+H3uMDigsIgVmdFb1wSM=;
- b=jcTTBruAF0arex2XJFhh8UQMQC4v/urhkXVp6fqyv1fHbCNbpaKx3u4GcPulUHUYFD
- JibujI4yekyw2+j2n/bpj5FgK2FSKkKycqwe/WUXbK+u/RYUqq3wIVh8r7Hw/KfQ/5HL
- QU+kHLj/X/+OghNGQdcBfOI63zUKncHyavT3cuoqfgJ9hs/L3OCxKnPUcb3hUuAq7S08
- PWQUwQU/n93rKOiTq4Q+I5tqExXnbias1+tnxLUzR8L5a4y+FYH+ewTwp2RmHpEGlVii
- 7RN5ovCYplm4dQFF5cQaiRt0NVZMkYPuxW4C/G3FbmglNmkdUigLIxbqGxLzEs3HQVVB
- JPFg==
+ d=linaro.org; s=google; t=1698663120; x=1699267920; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Gl8HMH6iD4/5CtVeEZHLjGviQ5rXHsErSFhAiMTJ86U=;
+ b=y0GKM6WRh0ynWyxoso2hfbHwVBvMjQA4AcqxyB5nqsHdD9rAQvHcAaILL/Oow8MWtA
+ aK6OH1p+J7kGcznoikhf6h79BwHHCbIuFRVALvBi3PRa8ecSMZBv0T/k2HiZMho2TuN5
+ Rog1oQr4Qu3lD1v7XxD4OT9hFc/W2PkSkYIJDCBT6+hzwQMoIagjYuc2e4Qz8DEuJoau
+ 8+LaVl55GfwNXKtOMLde9hkX1Y8kZ29pYfGCzlgijQgRHqRPKtNAGXs0sArzbeVfZhCJ
+ vpA1/UfJpwi+U8pNX7+sq27YEvz4EYMKolo8k1QBkOqtkIVzYs2QTF9+QBSZk5gGcYgS
+ +wXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698659561; x=1699264361;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GBupKdDYd7/M7+TcrdF896J+H3uMDigsIgVmdFb1wSM=;
- b=rtcvmCp7/CN4D2UvIqdvXq608aSvxpV1w21tof3U4pHvmSpc1CKFmlfoq4GJZsPR9O
- fAAsObl647YG506a8wC6qY3RonLJkL/i6OZv134TiLdJAm23b+3OkU5608xi/IBD5Srf
- PposQPFD1gmffgOul+HqRSfFN7ymdF92/veJwM+vBBkXSBxMOdc9keHNNX/yX6XAU1wb
- sljwrIJYRFmhe0SEcP8TU/09XLoNvd+Wx2FhE1eeKHI/vVnp7ANA9slf8PPVM4rUpa3K
- FjI0oUibeXjS0ic/5dAtN8XagWFKkz4DqEkbOP/27k/tcf+7XZ96JWS2UUdFaOS9MiAJ
- 3mlw==
-X-Gm-Message-State: AOJu0YwTM1fXxE8u9TgiQ+FY5iip1GgYEOLUcTM4R7YkPElln8pwZtf2
- PpCqHT/iSjQR240RIzSkX56naD9sOBzdg/x9CPNElA==
-X-Received: by 2002:a05:6402:1d95:b0:540:911b:72b1 with SMTP id
- dk21-20020a0564021d9500b00540911b72b1mr8221943edb.7.1698659560920; Mon, 30
- Oct 2023 02:52:40 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1698663120; x=1699267920;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Gl8HMH6iD4/5CtVeEZHLjGviQ5rXHsErSFhAiMTJ86U=;
+ b=vOUgiGkZfgFhTj8MslLde1ZmDdrve4r6c8o2VIMECFhECWSt3vPqxATX8zSyWOPWx0
+ LizMfYlMPNzDQ7ONXsJNNaKZcPb716BA5xq8SyMv3GHYjJ2XoIMc8M53wTdncSMC2GcL
+ 9DKxes6l/s9YzAypAAbThrWyiyl2LWvTbmVmArJt2IrCR/+LbrAY9WMnAQnwvnqxochr
+ z/lKGWdP1shCJ2bPLyodGFuIMMngS+jSrTwXlUstUhGBBSAO+bCUg5kYarVmXSG0H7O1
+ cYXb/mNUge3JN4k6cfvtG11DwC5HsqZSYpnNtE0fZsZiQ6gpyEXEJpv67g2ppqNypbgh
+ ivyQ==
+X-Gm-Message-State: AOJu0YxncOv3E4rAz0V/w4f+abE0qafRgj5JTouAVxiG3ow0A71apcMU
+ gzZRP28+9aBAc02ymDfVaYR9lA==
+X-Received: by 2002:a05:600c:45ca:b0:408:4f5d:eeb2 with SMTP id
+ s10-20020a05600c45ca00b004084f5deeb2mr8351467wmo.20.1698663120218; 
+ Mon, 30 Oct 2023 03:52:00 -0700 (PDT)
+Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
+ by smtp.gmail.com with ESMTPSA id
+ j7-20020a05600c1c0700b003fefb94ccc9sm8897797wms.11.2023.10.30.03.51.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Oct 2023 03:52:00 -0700 (PDT)
+Date: Mon, 30 Oct 2023 10:52:05 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>,
+ Itaru Kitayama <itaru.kitayama@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: Quick start guide on RME emulation
+Message-ID: <20231030105205.GA1730363@myrica>
+References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
+ <20231002102231.GA3075015@myrica>
+ <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
+ <20231004105558.GA1454132@myrica>
+ <CANLsYkx340VE0nr7EH6t2r-5x5-wTv+9S4z-fOtUSGWR_FWE6w@mail.gmail.com>
+ <CANLsYkxSY86YwC8KQ=Fb0Cq6QQKMy7CmX8D4pMskMKQMccy7vw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20231029210058.38986-1-marielle@novastrider.com>
-In-Reply-To: <20231029210058.38986-1-marielle@novastrider.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Oct 2023 09:52:30 +0000
-Message-ID: <CAFEAcA8ELCiGy3jDKjJhAd9Zn7Sse9ZSoJ6uQ=u4ROvV3rNcyQ@mail.gmail.com>
-Subject: Re: [PATCH] linux-user/elfload: Add missing arm64 hwcap values
-To: Marielle Novastrider <marielle@novastrider.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANLsYkxSY86YwC8KQ=Fb0Cq6QQKMy7CmX8D4pMskMKQMccy7vw@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,74 +129,156 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bR5kMqHun5L+
+X-TUID: F8MupqnLKN+W
 
-On Sun, 29 Oct 2023 at 21:01, Marielle Novastrider
-<marielle@novastrider.com> wrote:
+On Mon, Oct 23, 2023 at 04:35:35PM -0600, Mathieu Poirier wrote:
+> > > QEMU system emulation
+> > > ---------------------
+> > >
+> > > Repo: https://gitlab.com/qemu-project/qemu.git
+> > >
+> > > Run with:
+> > >
+> > >         qemu-system-aarch64 -M virt,virtualization=on,secure=on,gic-version=3
+> > >                 -M acpi=off -cpu max,x-rme=on,sme=off -m 3G -smp 8
+> > >                 -nographic
+> > >                 -bios tf-a/flash.bin
+> > >                 -kernel linux/arch/arm64/boot/Image
+> > >                 -drive format=raw,if=none,file=buildroot/output/images/rootfs.ext4,id=hd0
+> > >                 -device virtio-blk-pci,drive=hd0
+> > >                 -append root=/dev/vda
+> > >
+> > > To use separate consoles for FW (port 54320), secure payload (54321), host
+> > > (54322) and guest (54323):
+> > >
+> > >                 -nodefaults
+> > >                 -serial tcp:localhost:54320
+> > >                 -serial tcp:localhost:54321
+> > >                 -chardev socket,mux=on,id=hvc0,port=54322,host=localhost
+> > >                 -device virtio-serial-device
+> > >                 -device virtconsole,chardev=hvc0
+> > >                 -chardev socket,mux=on,id=hvc1,port=54323,host=localhost
+> > >                 -device virtio-serial-device
+> > >                 -device virtconsole,chardev=hvc1
+> > >                 -append "root=/dev/vda console=hvc0"
+> > >                 -device virtio-net-pci,netdev=net0 -net user,id=net0
+> >
+> > This argument above gave me an error.  See [1], line 19 to see how I
+> > corrected it.  Notice the "-netdev user,id=net0" rather than "-net
+> > user,id=net0".  Please confirm you have the same on your side.
+
+Yes, I do have '-netdev'
+
+> >
+> >
+> > Also, "root=/dev/vda" is a duplicate entry.
+
+Right, I left this in case the user wants to keep the default consoles
+(the second '-append' overrides the first one). I'll try to clarify that
+or get rid of it
+
+> >
+> > [1]. https://pastebin.com/KCh8KFD0
+> >
+> > >
+> > >   And connect with 'socat -,rawer TCP-LISTEN:5432x'
+> > >
+> >
+> > There seems to be a syntax error with the above command:
+> >
+> > $ socat -,rawer TCP-LISTEN:54320
+> > 2023/10/19 16:44:55 socat[2799916] E tcsetattr(1, TCSADRAIN,
+> > 0x561add6715c0): Invalid argument
+
+I just encountered this one on Ubuntu, it seems to be a bug in socat that
+has been fixed in newer versions:
+https://bugs.launchpad.net/ubuntu/+source/socat/+bug/1883957
+
+> >
+> > I ended up writing my own startup script [2] using the same mechanic
+> > as found in OP-TEE.  The "soc_term.spy" file is available here[3].
+> >
+> > Once the QEMU syntax and the console output were fixed I was able to
+> > start the boot stack with the resulting output [4].  The assert, in
+> > function gicv2_driver_init()[5] , is caused by variable gic_version
+> > being set to 0 rather than 1 or 2.  I found that weird because my QEMU
+> > command line [1] explicitly set gic-version=3.  As such I would have
+> > expected to read 3.  And why using gic-version=3 when the code is
+> > specifically looking for a value of 1 or 2?  Any insight would be
+> > appreciated.
+> >
+> 
+> I looked into this problem further today and found my way through.
+> Turns out the TF-A defaults to compiling GICv2, and it has to
+> explicitly be told to use GICv3, which I did by adding
+> QEMU_USE_GIC_DRIVER=QEMU_GICV3 when compiling.  As such, the command
+> you have above becomes:
+> 
+>         make -j CROSS_COMPILE=aarch64-linux-gnu- PLAT=qemu
+>                  ENABLE_RME=1 DEBUG=1 LOG_LEVEL=40
+> QEMU_USE_GIC_DRIVER=QEMU_GICV3
+>                  RMM=rmm/build-qemu/Debug/rmm.img
+> 
+> BL33=edk2/Build/ArmVirtQemuKernel-AARCH64/RELEASE_GCC5/FV/QEMU_EFI.fd
+>                  all fip
+> 
+> You problably had to do something like that (or hack the Makefile) but
+> simply forgot about it.
+
+Yes, I do have QEMU_USE_GIC_DRIVER=QEMU_GICV3
+
+Thank you for helping with this, I'll fix this doc and move it to the wiki
+
+Thanks,
+Jean
+
 >
-> Specifically DIT, LSE2, and MTE3.
->
-> We already expose detection of these via the CPUID interface, but
-> missed these from ELF hwcaps.
->
-> Signed-off-by: Marielle Novastrider <marielle@novastrider.com>
-> ---
->  linux-user/elfload.c | 3 +++
->  target/arm/cpu.h     | 5 +++++
->  2 files changed, 8 insertions(+)
->
-> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index 2e3809f03c..d9683809a1 100644
-> --- a/linux-user/elfload.c
-> +++ b/linux-user/elfload.c
-> @@ -768,12 +768,14 @@ uint32_t get_elf_hwcap(void)
->      GET_FEATURE_ID(aa64_sm4, ARM_HWCAP_A64_SM4);
->      GET_FEATURE_ID(aa64_fp16, ARM_HWCAP_A64_FPHP | ARM_HWCAP_A64_ASIMDHP);
->      GET_FEATURE_ID(aa64_atomics, ARM_HWCAP_A64_ATOMICS);
-> +    GET_FEATURE_ID(aa64_lse2, ARM_HWCAP_A64_USCAT);
->      GET_FEATURE_ID(aa64_rdm, ARM_HWCAP_A64_ASIMDRDM);
->      GET_FEATURE_ID(aa64_dp, ARM_HWCAP_A64_ASIMDDP);
->      GET_FEATURE_ID(aa64_fcma, ARM_HWCAP_A64_FCMA);
->      GET_FEATURE_ID(aa64_sve, ARM_HWCAP_A64_SVE);
->      GET_FEATURE_ID(aa64_pauth, ARM_HWCAP_A64_PACA | ARM_HWCAP_A64_PACG);
->      GET_FEATURE_ID(aa64_fhm, ARM_HWCAP_A64_ASIMDFHM);
-> +    GET_FEATURE_ID(aa64_dit, ARM_HWCAP_A64_DIT);
->      GET_FEATURE_ID(aa64_jscvt, ARM_HWCAP_A64_JSCVT);
->      GET_FEATURE_ID(aa64_sb, ARM_HWCAP_A64_SB);
->      GET_FEATURE_ID(aa64_condm_4, ARM_HWCAP_A64_FLAGM);
-> @@ -807,6 +809,7 @@ uint32_t get_elf_hwcap2(void)
-
-These two are correct...
-
->      GET_FEATURE_ID(aa64_rndr, ARM_HWCAP2_A64_RNG);
->      GET_FEATURE_ID(aa64_bti, ARM_HWCAP2_A64_BTI);
->      GET_FEATURE_ID(aa64_mte, ARM_HWCAP2_A64_MTE);
-> +    GET_FEATURE_ID(aa64_mte3, ARM_HWCAP2_A64_MTE3);
->      GET_FEATURE_ID(aa64_sme, (ARM_HWCAP2_A64_SME |
->                                ARM_HWCAP2_A64_SME_F32F32 |
->                                ARM_HWCAP2_A64_SME_B16F32 |
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 76d4cef9e3..7605d6ee3a 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -4073,6 +4073,11 @@ static inline bool isar_feature_aa64_mte(const ARMISARegisters *id)
->      return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 2;
->  }
->
-> +static inline bool isar_feature_aa64_mte3(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, MTE) >= 3;
-> +}
-
-...but we don't implement FEAT_MTE3 yet. We would add this feature test
-function, and the GET_FEATURE_ID() line, when we do, but we don't
-need it until then.
-
->  static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
->  {
->      return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, SME) != 0;
-> --
-> 2.39.3 (Apple Git-145)
-
-thanks
--- PMM
+> With that the TF-A is able to complete its
+> initialization and start the Linux kernel in NS world.  Your
+> instructions on how to mount the host's rootFS to gain access to the
+> realm kernel and CPIO work.  From there I was able to start a realm VM
+> and boot it to a command line.  I still haven't seen:
+> 
+> [    0.000000] RME: RSI version 13.0 advertised
+> 
+> but that is because I haven't enabled early console access in my
+> kernel, something I will do later today.  I also want to start a realm
+> VM using the kvmtools.  From there I want to integrate everything in
+> the OP-TEE build environment and send you a link for you to try.
+> 
+> I will get back to you once I have studied the boot stack and the
+> enhancement you did to the various components.  Many thanks for
+> putting this together, it was a huge help.
+> 
+> > Regards,
+> > Mathieu
+> >
+> > [2]. https://pastebin.com/XYjUSgSF
+> > [3]. https://github.com/OP-TEE/build/blob/master/soc_term.py
+> > [4]. https://pastebin.com/qnSXrE7z
+> > [5]. https://jpbrucker.net/git/tf-a/tree/drivers/arm/gic/v2/gicv2_main.c?h=qemu-rme#n128
+> >
+> > > To share the files needed for booting the guest:
+> > >
+> > >                 -device virtio-9p-device,fsdev=shr0,mount_tag=shr0
+> > >                 -fsdev local,security_model=none,path=.,id=shr0
+> > >
+> > >   And 'mount -t 9p shr0 /mnt' in the host.
+> > >
+> > >
+> > > Then in the host, launch a Realm guest:
+> > >
+> > >         qemu-system-aarch64 -M virt,acpi=off,gic-version=3 -nographic
+> > >                 -cpu host -enable-kvm -smp 2 -m 512M -overcommit mem-lock=on
+> > >                 -kernel /mnt/linux/arch/arm64/boot/Image
+> > >                 -initrd /mnt/buildroot/output/images/rootfs.cpio
+> > >                 -append "console=hvc0 root=/dev/vda"
+> > >                 -M confidential-guest-support=rme0
+> > >                 -object rme-guest,id=rme0,measurement-algo=sha512,num-pmu-counters=6,sve-vector-length=256
+> > >                 -nodefaults -chardev stdio,mux=on,id=hvc0,signal=off
+> > >                 -device virtio-serial-pci -device virtconsole,chardev=hvc0
+> > >                 -device virtio-net-pci,netdev=net0,romfile= -netdev user,id=net0
+> > >                 </dev/hvc1 >/dev/hvc1 &
+> > >         ...
+> > >         [    0.000000] RME: RSI version 13.0 advertised
+> > >

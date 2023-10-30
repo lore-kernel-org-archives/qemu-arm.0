@@ -1,135 +1,111 @@
-Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1898437ejc;
-        Mon, 30 Oct 2023 07:14:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGTxvHA8kcbZmxkujeVFwcajUON4kkcUyBIIoG3zOXdGWiNGTFDJA3qOQ24Elj53w+TomRe
-X-Received: by 2002:ac8:5a8b:0:b0:41e:2d63:ac5d with SMTP id c11-20020ac85a8b000000b0041e2d63ac5dmr11685672qtc.8.1698675267944;
-        Mon, 30 Oct 2023 07:14:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698675267; cv=none;
+Received: by 2002:a17:907:d043:b0:9d0:bf65:29fa with SMTP id vb3csp1905823ejc;
+        Mon, 30 Oct 2023 07:25:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFot+EMxS3Hzt28whuFyLynNK6KNcjRTbCkoKMYSPXhufAUaPqMDxT2AgVqA+vnPCBe4Hv2
+X-Received: by 2002:a05:620a:2a01:b0:76c:b7f0:2bc9 with SMTP id o1-20020a05620a2a0100b0076cb7f02bc9mr14893075qkp.16.1698675933335;
+        Mon, 30 Oct 2023 07:25:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698675933; cv=none;
         d=google.com; s=arc-20160816;
-        b=l1eB2nQl/CD7/jIu2FpTRg19PkiyCNGH1ODSgM7AFC0Dc9B2GUe+3pW+IRPd2FI/od
-         +af0r9rr1765MzXvg5+G919v3Vxk/8fU1OHEu02z0rl2Nus4H/Taldk5dRav3IEZ2aV+
-         uauz5vNXsufF/I+VPtIWNqGwlOmoYWacG0cbHJxn9O+6ybcInImvyHEUOhkreahs+juK
-         po9Dplj2p5vOIMHrzlqsmcY2oDHIW98o46QK86s62/KviBGVkNZ+PkNC5kRd8X4tqRcu
-         2eWyKDZ8hy6e0+WvbzpvPtZCWKzZFZ95KxuuRwzJbe9c3l9T+2+QsI1SfE2ARayMz635
-         JHdQ==
+        b=ifbjS9KyBtAaOAL4P9DCjHlnQwfNJdX/tpiUX4kd7Ye2dRHRZJK2M93BoI2HmBbi26
+         4mfCVb2DAKeQLDGcVaqJAeEiRUpHn07WZ+smRPFZIJ/dTqG8UAgF4+xsBxzCLRwUOaVg
+         Sy0E86M2VYFqhsETquSCUAZwLqVZ/AQySKKHKJmzvaRMamOhfIVL8VGRVe7UcT4OAkfd
+         FiAX84v59QCyfuIkp2XwemUSVSejRlGVt5DaPbPbzgxfl6/tuU2p1w5EhGrGN/gskkcj
+         R5Lg3ztNwrXryb7GZYIWCGuLg5NB4MkxTwiUIboiCABP7Y859Um0CXzrnT086PpeLL1m
+         9ufg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=WpgIXu9F0YZoR6UhZGb6IiyYms/3VLhSFs02Fgz0SuM=;
-        fh=Ql61013HQi6Jet/zFUTmiSZzv5rGArWzHM3k65vfwjg=;
-        b=q85xULN7yYZVQGOUnMZP5zGCyagQyW5HlRPO5gAvwaT8jooAvGwbj27WquAEqqyR9c
-         q17Fyyv4WBVPiodO8lVmKBGg+WfEmC72vNXA7LFkdwflbu7UZt/QmlQ2WIzqDq0UfHDn
-         WsxctEioB2dk3VMSMjVNVQMgm+9JhpigC4SMsJvF4Z8gul689HMIjUrWwrr+Ypxk+AGj
-         OIjZjNCpmUgS5elqxNP9Ix4aNJlki5fxD0YOKDHTa4wPsZ7x8IvuQsul3JnvzzIZPyIa
-         IRdUcAbmP06s4AbFjj/wOVKuim/SDL6lXTzPfYlfLp/u3NVv7DXVC7Xr0wbJaDZsGDQV
-         OxpQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=nSIm+xy18eZ0sK8H4uKlzHn1rwtN98dl6uA4rXP3aa4=;
+        fh=2ipoTlA8tvzyRbGCeci9XXv4lYL45ySsxipPhy/7rFQ=;
+        b=LL7FUBZMpWNu2E9RGiAaegaITy7vIl17516qMf20LhPgh4kp3gDursi+rJR1b7ld0I
+         0voDVQZB8IzSL1mWmnac3jtBPFDk4OcVGz5cqMQ6lXTrD6z3n/ajQ2ykRLQ3+kHD/4+s
+         ThPJs9BK37MW442uT6mOHzIl/BS3rfCdMYHjQ40lKHyDbtcoJ49ERXatZOmkmwbSl8D7
+         z7cmRZgY6ZtOU3B2vwB8OUogTm2bGonKpDKa/ljNWJJVp0pV1brExFRVQ+s1zNfgb8iX
+         B49IQfog3gUdVqxSlCUvUhXMV3XMbVThPGWGDwb/MOUAz6JIaDsDcSesoIH4bd5nueZB
+         Z45w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XRhYZFMh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vef7YZqI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a22-20020a05622a02d600b00417b80188eesi5665939qtx.518.2023.10.30.07.14.27
+        by mx.google.com with ESMTPS id e30-20020a05620a209e00b007788b96f13esi5401175qka.515.2023.10.30.07.25.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Oct 2023 07:14:27 -0700 (PDT)
+        Mon, 30 Oct 2023 07:25:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XRhYZFMh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vef7YZqI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxT22-0001Yn-BK; Mon, 30 Oct 2023 10:14:18 -0400
+	id 1qxTCh-00059u-Ed; Mon, 30 Oct 2023 10:25:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qxT20-0001WY-7M
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 10:14:16 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qxTCe-00059R-Dh
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 10:25:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qxT1l-0004vi-Pu
- for qemu-arm@nongnu.org; Mon, 30 Oct 2023 10:14:15 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qxTCX-0006qG-UK
+ for qemu-arm@nongnu.org; Mon, 30 Oct 2023 10:25:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698675240;
+ s=mimecast20190719; t=1698675909;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WpgIXu9F0YZoR6UhZGb6IiyYms/3VLhSFs02Fgz0SuM=;
- b=XRhYZFMhggczObnwmtp0hIlf/7hEdxz2Clum+O1JsSVquT8pTdwrmdASXYEQC2fUxEqFQl
- rUaPhB6zK2919Mt6lvdBtRreZTJ1pf7ECAfVb5Yvc2uDagVlJZoLmBRyMLElh1PJhj7pPa
- u7eGtxnx0KceuBkJy/xumZ/r2vQpaR0=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-sVvzaBNEPZCsD4mA_Z2vmg-1; Mon, 30 Oct 2023 10:13:59 -0400
-X-MC-Unique: sVvzaBNEPZCsD4mA_Z2vmg-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-32dc767e619so2384211f8f.1
- for <qemu-arm@nongnu.org>; Mon, 30 Oct 2023 07:13:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698675233; x=1699280033;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=WpgIXu9F0YZoR6UhZGb6IiyYms/3VLhSFs02Fgz0SuM=;
- b=DYx1QpH62pCXMmb1WU5C1HZtxt5FsXR19zWQqA1o413DUMGJEAJXLPRR5/261Rdcds
- L/qXHmWQNKEIi2ZjVUiqMHHiZEfE59WK0Vs2R789AOSwGoNvTTtY1kjRuNcirl4BuCge
- ti/xEXkEYbNgGwF12H2UZIdup8QZH7XJ4Cz85XupCKDzDKs3IS7izbaIhcJ6UfpSP2ns
- PGPi1MbdtCXHQ1IdMkbusvEyeSWqXWMXk7a+akqqNfdDHBaiPILbvkZfs1CcTHx5+1rb
- BelWP3TBCnc2PQB497paUudcqH9N+BX3i1DkoHEDgtHQcHxZ/JLg8F4O77BsisL5Sgvn
- qbnA==
-X-Gm-Message-State: AOJu0YzTeK6SSrHc31L4ExXGB7Ruiaehfv1LFGUHmtueEvHSSmTiF2GP
- TZjLT/o+7077DqTvDI3CzuSWSey0bFniVv+cCar+jfzpzqLG7dZpVznzIi2Rg4Hcuh8zpZ8eAEY
- N5GLkaPAO/HNq
-X-Received: by 2002:a5d:48c8:0:b0:32d:aa62:a8c3 with SMTP id
- p8-20020a5d48c8000000b0032daa62a8c3mr6295978wrs.41.1698675233064; 
- Mon, 30 Oct 2023 07:13:53 -0700 (PDT)
-X-Received: by 2002:a5d:48c8:0:b0:32d:aa62:a8c3 with SMTP id
- p8-20020a5d48c8000000b0032daa62a8c3mr6295942wrs.41.1698675232490; 
- Mon, 30 Oct 2023 07:13:52 -0700 (PDT)
-Received: from redhat.com ([31.187.78.246]) by smtp.gmail.com with ESMTPSA id
- q12-20020adffecc000000b0032dc1fc84f2sm8443927wrs.46.2023.10.30.07.13.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Oct 2023 07:13:51 -0700 (PDT)
-Date: Mon, 30 Oct 2023 10:13:46 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH v5 00/13] RISC-V: ACPI: Enable AIA, PLIC and update RHCT
-Message-ID: <20231030101332-mutt-send-email-mst@kernel.org>
-References: <20231030132058.763556-1-sunilvl@ventanamicro.com>
+ bh=nSIm+xy18eZ0sK8H4uKlzHn1rwtN98dl6uA4rXP3aa4=;
+ b=Vef7YZqIMW/dlqjiR+ZO36LQrYnlbsFGp1N1jXi/5lWAD2MbB8NfAwD2Zq3vTZPEye4ngW
+ HqhtBUvL2z/pzv2eGW6tX4aStayX4RT5a7M/2MTCVGbhXkxcePVbiyppOoVphTmx132L+K
+ DJDXObZdMu0f1EJX6IgEHDaokdpZXDs=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-247-HShPKYc9PdCeCm3NGR3gpQ-1; Mon,
+ 30 Oct 2023 10:25:03 -0400
+X-MC-Unique: HShPKYc9PdCeCm3NGR3gpQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6536F1C05AAE;
+ Mon, 30 Oct 2023 14:25:03 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E162492BE0;
+ Mon, 30 Oct 2023 14:25:03 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 29F9D21E6A1F; Mon, 30 Oct 2023 15:25:02 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  Markus Armbruster
+ <armbru@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,  qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v2 5/6] hw/input/stellaris_input: Convert to qdev
+References: <20231030114802.3671871-1-peter.maydell@linaro.org>
+ <20231030114802.3671871-6-peter.maydell@linaro.org>
+ <edf24aec-59cf-d594-7bda-cef3c268a835@linaro.org>
+Date: Mon, 30 Oct 2023 15:25:02 +0100
+In-Reply-To: <edf24aec-59cf-d594-7bda-cef3c268a835@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 30 Oct 2023 14:52:24
+ +0100")
+Message-ID: <87jzr4p4qp.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20231030132058.763556-1-sunilvl@ventanamicro.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.483,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,100 +120,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y1kS/sx57+2E
+X-TUID: BTGJAtz/S8UL
 
-On Mon, Oct 30, 2023 at 06:50:45PM +0530, Sunil V L wrote:
-> This series primarily enables external interrupt controllers (AIA and PLIC)
-> in ACPI tables for RISC-V virt platform. It also updates RHCT with CMO and
-> MMU related information.
-> 
-> Below ECRs for these changes are approved by ASWG and will be
-> available in next ACPI spec release.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
+> Hi Peter,
+>
+> Cc'ing Markus for QObject.
+>
+> On 30/10/23 12:48, Peter Maydell wrote:
+>> Convert the hw/input/stellaris_input device to qdev.
+>> The interface uses an array property for the board to specify the
+>> keycodes to use, so the s->keycodes memory is now allocated by the
+>> array-property machinery.
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> ---
+>> v1->v2: drop private/public comment lines
+>> ---
+>>   include/hw/input/stellaris_gamepad.h | 22 ++++++++-
+>>   hw/arm/stellaris.c                   | 26 +++++++---
+>>   hw/input/stellaris_gamepad.c         | 73 +++++++++++++++++++---------
+>>   3 files changed, 89 insertions(+), 32 deletions(-)
+>
+>
+>> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+>> index 96585dd7106..707b0dae375 100644
+>> --- a/hw/arm/stellaris.c
+>> +++ b/hw/arm/stellaris.c
+>> @@ -31,6 +31,7 @@
+>>   #include "hw/timer/stellaris-gptm.h"
+>>   #include "hw/qdev-clock.h"
+>>   #include "qom/object.h"
+>> +#include "qapi/qmp/qlist.h"
+>>     #define GPIO_A 0
+>>   #define GPIO_B 1
+>> @@ -1274,16 +1275,27 @@ static void stellaris_init(MachineState *ms, ste=
+llaris_board_info *board)
+>>           sysbus_connect_irq(SYS_BUS_DEVICE(enet), 0, qdev_get_gpio_in(n=
+vic, 42));
+>>       }
+>>       if (board->peripherals & BP_GAMEPAD) {
+>> -        qemu_irq gpad_irq[5];
+>> +        QList *gpad_keycode_list =3D qlist_new();
+>
+> I'm trying to understand better qlist_new(), but unfortunately there
+> is not much documentation. Looking at how the allocated list was
+> released, I found use of g_autoptr in tests/unit/check-qobject.c,
+> so I tried:
+>
+>            g_autoptr(QList) gpad_keycode_list =3D qlist_new();
 
-pci, acpi things look ok
+QObject and its subtypes QDict, QList, QString, ... are reference
+counted.  qFOO_new() ist to be paired with qFOO_unref() or
+qobject_unref().
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Your use of g_autoptr(QList) should work.
 
-> 1) MADT (AIA) - https://drive.google.com/file/d/1oMGPyOD58JaPgMl1pKasT-VKsIKia7zR/view?usp=sharing
-> 2) RHCT - https://drive.google.com/file/d/1sKbOa8m1UZw1JkquZYe3F1zQBN1xXsaf/view?usp=sharing
-> 
-> First two patches in this series are to migrate a couple of functions from
-> ARM architecture to common code so that RISC-V doesn't need to duplicate
-> the same.
-> 
-> The patch set is based on Alistair's riscv-to-apply.next branch.
-> 
-> These changes are also available in  riscv_acpi_b2_v5 branch at:
-> https://github.com/vlsunil/qemu/
-> 
-> Changes since v4:
-> 	1) Updated copyright for new files as per SPDX format suggested by Drew.
-> 	2) Updated RINTC patch to avoid code duplication as suggested by Drew.
-> 	3) Moved mmu offset below cmo in MMU patch as suggested by Drew.
-> 	4) Updated tags.
-> 
-> Changes since v3:
-> 	1) Addressed comments from Daniel and Drew.
-> 	2) Added a new patch in microvm to use common function for virtio in DSDT.
-> 	3) Rebased to latest riscv-to-apply.next branch and added tags.
-> 
-> Changes since v2:
->         1) Rebased to latest riscv-to-apply.next branch which needed
->            changing ext_icboz to ext_zicboz in CMO patch.
->         2) Fixed node type in MMU node.
->         3) Added latest tags.
-> 
-> Changes since v1:
->         1) As per Igor's suggestion, migrated fw_cfg and virtio creation
->            functions to device specific file instead of generic aml-build.c.
->            Since ACPI is optional, new files are created and enabled for
->            build only when CONFIG_ACPI is enabled.
->         2) As per Igor's suggestion, properties are added to the GPEX PCI
->            host to indicate MMIO ranges. The platform fw can initialize
->            these to appropriate values and the DSDT generator can fetch
->            the information from the host bus itself. This makes the code
->            generic instead of machine specific.
->         3) Added PLIC patch from Haibo.
->         4) Rebased to latest riscv-to-apply.next and added RB tags as
->            appropriate.
-> 
-> Sunil V L (13):
->   hw/arm/virt-acpi-build.c: Migrate fw_cfg creation to common location
->   hw/arm/virt-acpi-build.c: Migrate virtio creation to common location
->   hw/i386/acpi-microvm.c: Use common function to add virtio in DSDT
->   hw/riscv: virt: Make few IMSIC macros and functions public
->   hw/riscv/virt-acpi-build.c: Add AIA support in RINTC
->   hw/riscv/virt-acpi-build.c: Add IMSIC in the MADT
->   hw/riscv/virt-acpi-build.c: Add APLIC in the MADT
->   hw/riscv/virt-acpi-build.c: Add CMO information in RHCT
->   hw/riscv/virt-acpi-build.c: Add MMU node in RHCT
->   hw/pci-host/gpex: Define properties for MMIO ranges
->   hw/riscv/virt: Update GPEX MMIO related properties
->   hw/riscv/virt-acpi-build.c: Add IO controllers and devices
->   hw/riscv/virt-acpi-build.c: Add PLIC in MADT
-> 
->  hw/arm/virt-acpi-build.c        |  51 +----
->  hw/i386/acpi-microvm.c          |  15 +-
->  hw/nvram/fw_cfg-acpi.c          |  23 +++
->  hw/nvram/meson.build            |   1 +
->  hw/pci-host/gpex-acpi.c         |  13 ++
->  hw/pci-host/gpex.c              |  12 ++
->  hw/riscv/Kconfig                |   1 +
->  hw/riscv/virt-acpi-build.c      | 323 +++++++++++++++++++++++++++++---
->  hw/riscv/virt.c                 |  72 ++++---
->  hw/virtio/meson.build           |   1 +
->  hw/virtio/virtio-acpi.c         |  32 ++++
->  include/hw/nvram/fw_cfg_acpi.h  |  15 ++
->  include/hw/pci-host/gpex.h      |  28 ++-
->  include/hw/riscv/virt.h         |  26 +++
->  include/hw/virtio/virtio-acpi.h |  16 ++
->  15 files changed, 498 insertions(+), 131 deletions(-)
->  create mode 100644 hw/nvram/fw_cfg-acpi.c
->  create mode 100644 hw/virtio/virtio-acpi.c
->  create mode 100644 include/hw/nvram/fw_cfg_acpi.h
->  create mode 100644 include/hw/virtio/virtio-acpi.h
-> 
-> -- 
-> 2.39.2
+> But QEMU crashes elsewhere which seems unrelated:
+>
+> * thread #2, stop reason =3D signal SIGABRT
+>   * frame #0: 0x8b1eb11c libsystem_kernel.dylib`__pthread_kill + 8
+>     frame #1: 0x8b222cc0 libsystem_pthread.dylib`pthread_kill + 288
+>     frame #2: 0x8b132a50 libsystem_c.dylib`abort + 180
+>     frame #3: 0x8b049b08 libsystem_malloc.dylib`malloc_vreport + 908
+>     frame #4: 0x8b06924c libsystem_malloc.dylib`malloc_zone_error + 104
+>     frame #5: 0x8b05b094 libsystem_malloc.dylib`nanov2_guard_corruption_d=
+etected + 44
+>     frame #6: 0x8b05a2a8 libsystem_malloc.dylib`nanov2_allocate_outlined =
++ 404
+>     frame #7: 0x0201fdc0 libglib-2.0.0.dylib`g_malloc0 + 36
+>     frame #8: 0x02007718 libglib-2.0.0.dylib`g_hash_table_setup_storage +=
+ 76
+>     frame #9: 0x020076b0 libglib-2.0.0.dylib`g_hash_table_new_full + 96
+>     frame #10: 0x003a9920 qemu-system-ppc`object_unref [inlined] object_p=
+roperty_del_all(obj=3D0x42023e00) at object.c:635:34
+>     frame #11: 0x003a9914 qemu-system-ppc`object_unref [inlined] object_f=
+inalize(data=3D0x42023e00) at object.c:707:5
+>     frame #12: 0x003a990c qemu-system-ppc`object_unref(objptr=3D0x42023e0=
+0) at object.c:1216:9
+>     frame #13: 0x00355114 qemu-system-ppc`address_space_dispatch_free at =
+physmem.c:1001:9
+>     frame #14: 0x003550fc qemu-system-ppc`address_space_dispatch_free at =
+physmem.c:1010:9
+>     frame #15: 0x003550e0 qemu-system-ppc`address_space_dispatch_free(d=
+=3D0x000060000385d680) at physmem.c:2473:5
+>     frame #16: 0x00349438 qemu-system-ppc`flatview_destroy(view=3D0x00006=
+0000385d640) at memory.c:295:9
+>     frame #17: 0x00524920 qemu-system-ppc`call_rcu_thread(opaque=3D<unava=
+ilable>) at rcu.c:301:13
+>     frame #18: 0x0051c1f0 qemu-system-ppc`qemu_thread_start(args=3D<unava=
+ilable>) at qemu-thread-posix.c:541:9
+>     frame #19: 0x8b223034 libsystem_pthread.dylib`_pthread_start + 136
+
+Can't see QList or QObject in this backtrace.  object_unref() is QOM,
+not QObject.
+
+> However when running 'make check-unit', qobject_is_equal_list_test()
+> is successful, so I'm a bit confused...
+>
+>>           static const int gpad_keycode[5] =3D { 0xc8, 0xd0, 0xcb, 0xcd,=
+ 0x1d };
+>> +        DeviceState *gpad;
+>>   -        gpad_irq[0] =3D qemu_irq_invert(gpio_in[GPIO_E][0]); /* up */
+>> -        gpad_irq[1] =3D qemu_irq_invert(gpio_in[GPIO_E][1]); /* down */
+>> -        gpad_irq[2] =3D qemu_irq_invert(gpio_in[GPIO_E][2]); /* left */
+>> -        gpad_irq[3] =3D qemu_irq_invert(gpio_in[GPIO_E][3]); /* right */
+>> -        gpad_irq[4] =3D qemu_irq_invert(gpio_in[GPIO_F][1]); /* select =
+*/
+>> +        gpad =3D qdev_new(TYPE_STELLARIS_GAMEPAD);
+>> +        for (i =3D 0; i < ARRAY_SIZE(gpad_keycode); i++) {
+>> +            qlist_append_int(gpad_keycode_list, gpad_keycode[i]);
+>> +        }
+>> +        qdev_prop_set_array(gpad, "keycodes", gpad_keycode_list);
+>> +        sysbus_realize_and_unref(SYS_BUS_DEVICE(gpad), &error_fatal);
+>>   -        stellaris_gamepad_init(5, gpad_irq, gpad_keycode);
+>> +        qdev_connect_gpio_out(gpad, 0,
+>> +                              qemu_irq_invert(gpio_in[GPIO_E][0])); /* =
+up */
+>> +        qdev_connect_gpio_out(gpad, 1,
+>> +                              qemu_irq_invert(gpio_in[GPIO_E][1])); /* =
+down */
+>> +        qdev_connect_gpio_out(gpad, 2,
+>> +                              qemu_irq_invert(gpio_in[GPIO_E][2])); /* =
+left */
+>> +        qdev_connect_gpio_out(gpad, 3,
+>> +                              qemu_irq_invert(gpio_in[GPIO_E][3])); /* =
+right */
+>> +        qdev_connect_gpio_out(gpad, 4,
+>> +                              qemu_irq_invert(gpio_in[GPIO_F][1])); /* =
+select */
+>>       }
 

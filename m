@@ -1,154 +1,67 @@
-Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp184724ejb;
-        Tue, 31 Oct 2023 03:52:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHhxazqE6nGpSNI4Zq9cOvI10DwTqBW1Y5cgFp9QdAkycEusDbd5+53XmMhEL2OB/tJy1fk
-X-Received: by 2002:a05:620a:c4e:b0:778:bb39:7d42 with SMTP id u14-20020a05620a0c4e00b00778bb397d42mr13767760qki.31.1698749570620;
-        Tue, 31 Oct 2023 03:52:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698749570; cv=none;
-        d=google.com; s=arc-20160816;
-        b=lCozsKHMPKoQzbdopOkRMuSYyke5+d6KdLVeKQAl019+KLkC8a2hg4xXUk1DW7nfvA
-         MPKoMQJUhE5R92W8saSSCg/KuP3odtKqTsAHrmaEYKJVQMCRS8biGeczr3ed/MskQ26v
-         l2HFWRL2zllVnhs84Zs1jDm6y0ZkYRvhOjtV8trT7iCSpX6Y+W93t3lrSS9vaDgh0vhj
-         hGVyVfDpt5Tt9sFKHYXkxuNesEE6Hq4r4OmHFfC487HkWewOH4JGCooeln6lIRw61OhJ
-         LBh5HbsmHz7RECXaBA8Orpj5PrH26FRkxkxhefpiCzMat+tDllMPrqlKP+E4gw5Wfx9w
-         gt2w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=RI+K7+Ec0wKr9LBm4qXj86Wdkj40B89dPJBLeuP1HuU=;
-        fh=GRGAhYIRyJLIexm/SQeD/ONQMnKo+TSDqNowgo15cfY=;
-        b=hY3ZIij4ZjDiN/oIs0x5G00uFWyfmj6RbW2qVCNz5VFzW9OhymQ695yKZF2Bt0h4Xk
-         3QZGjFCcUaF7uG6hTm0l+iT/8jfVIcI8YqrBEzHXT1QWG/ZGUkZdwbSihfEvN1YGYyRF
-         jPwDFaAQlZ18EPBtgMl09go4TX9C4Wo3pWluTMcsJzup+g997FKLki5k1ab274/LKiXD
-         rL1JvGTPjdd+3vfUKKlyYXj8L5+x7FlC811C1jfr6VOvRVxV6Okdhb0HscwcIWr9T/kc
-         NfZ8haVb7EYfCZdYr6017caXdfKxiogXprDmR9TOGbV1n8kpxS+IteY9sA8b+M4E8DGB
-         IZ5A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EAwXq8sl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g4-20020a05620a278400b0076ef0da9545si834323qkp.736.2023.10.31.03.52.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Oct 2023 03:52:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EAwXq8sl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxmMD-0003pj-Nl; Tue, 31 Oct 2023 06:52:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxmMB-0003og-Sj
- for qemu-arm@nongnu.org; Tue, 31 Oct 2023 06:52:23 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxmMA-0002Op-2x
- for qemu-arm@nongnu.org; Tue, 31 Oct 2023 06:52:23 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-53de8fc1ad8so8957460a12.0
- for <qemu-arm@nongnu.org>; Tue, 31 Oct 2023 03:52:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698749537; x=1699354337; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=RI+K7+Ec0wKr9LBm4qXj86Wdkj40B89dPJBLeuP1HuU=;
- b=EAwXq8slE9VNzSZsgeULxp/8yJAz8U5eZ5gLQTaRKmjIaO21MVSGe56pNVZLrnCqHf
- cn/rsFvtviEQB4f8FL0v9zsFv5AaYHjGwhz35gpaT5GFzWJ9kqauULzJvK8jG70dtkcx
- TZ3qSoWr//WhkUg6QwUtichbQ76onncdIyXmxGYVNxikrZ7GsgHyMBfrEvRsMhfEPmh5
- Xz/aVJMt6ZgyfjRuvMAnh2kl2q7J69use+6M1LtBu+3yhLo4LOzczglJx9F1RXDF943g
- XJsXNUNv0UCpbTgUD9q+/PWq9GQ0dq9tQ7+mPz7Fy6gJBY6aYFr5mvjmz5WvGD7AgXSD
- 91nQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698749537; x=1699354337;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=RI+K7+Ec0wKr9LBm4qXj86Wdkj40B89dPJBLeuP1HuU=;
- b=RBYLtFYpAQdUX00rffDBFfWaz2Llh4qBtNltA0E3o/5ts1wFSk+iAj+vzh2b3Vd+fw
- 9SXqih0F37w8ZZIy7a22ur8vqazKd0VNjlmAJAM0SNocpmQzkHR0PvSA3ym7PrjXntsT
- V9xiP/LfK5lY4/oDHPnLuiaoFTQn4tkMWzU0Ytxs8mIsYG6j3EtCMdNLja3aswdsnWPr
- n+xG7qVUStfpv9FNZ8OWVb8vWP4x5hW7zgeOOqDPIHfb58/1I6OZEoaSTOK3Gk28TVQe
- VA9cEw8/9jsM0/wPedImLu8wXb/1qJsmG/5w0sJ5ME2y7GpwqnL79hvpYebvvRhNm1xq
- 5e3w==
-X-Gm-Message-State: AOJu0YyT9z2UireKOIEc2zAZEYDBaXZtr9wPX8YQo3u6yZ7EabAmp88E
- UxsCH+MonjMTyIIAKcOfSWRsajQh5AshFs/i118lEEOI+BONB0QU
-X-Received: by 2002:a05:6402:4305:b0:540:a5a1:745e with SMTP id
- m5-20020a056402430500b00540a5a1745emr11681231edc.14.1698749537553; Tue, 31
- Oct 2023 03:52:17 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id x4-20020a1c7c04000000b003fe61c33df5sm1567917wmc.3.2023.10.31.05.02.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 Oct 2023 05:02:03 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 44A4D5F78A;
+	Tue, 31 Oct 2023 12:02:03 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, Jason Wang
+ <jasowang@redhat.com>, Kunkun Jiang <jiangkunkun@huawei.com>, Zenghui Yu
+ <yuzenghui@huawei.com>, Simon Veith <sveith@amazon.de>
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, QEMU
+ Developers <qemu-devel@nongnu.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Joe Komlodi <joe.komlodi@xilinx.com>, Prem Mallappa
+ <prem.mallappa@broadcom.com>, Leonardo Garcia
+ <leonardo.garcia@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Alistair Francis <alistair@alistair23.me>
+Subject: Any plans to implement more ARM SMMUv3 features?
+User-Agent: mu4e 1.11.23; emacs 29.1
+Date: Tue, 31 Oct 2023 12:02:03 +0000
+Message-ID: <87il6n0zlw.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20231030190354.94671-1-richard.henderson@linaro.org>
-In-Reply-To: <20231030190354.94671-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 Oct 2023 10:52:06 +0000
-Message-ID: <CAFEAcA_kG-yE9sYDx+QBxCoAMySjc57oXx+UtSo=p=nCqAwKfQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix SVE STR increment
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /4nT3nW7xDUA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: WvAhf3JKWLIF
 
-On Mon, 30 Oct 2023 at 19:04, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The previous change missed updating one of the increments.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: e6dd5e782be ("target/arm: Use tcg_gen_qemu_{ld, st}_i128 in gen_sve_{ld, st}r")
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/translate-sve.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-> index 7b39962f20..fc4220114d 100644
-> --- a/target/arm/tcg/translate-sve.c
-> +++ b/target/arm/tcg/translate-sve.c
-> @@ -4294,7 +4294,7 @@ void gen_sve_str(DisasContext *s, TCGv_ptr base, int vofs,
->          t0 = tcg_temp_new_i64();
->          t1 = tcg_temp_new_i64();
->          t16 = tcg_temp_new_i128();
-> -        for (i = 0; i < len_align; i += 8) {
-> +        for (i = 0; i < len_align; i += 16) {
->              tcg_gen_ld_i64(t0, base, vofs + i);
->              tcg_gen_ld_i64(t1, base, vofs + i + 8);
->              tcg_gen_concat_i64_i128(t16, t0, t1);
-> --
 
-This fixes the test case I have for vector lengths of 64 bytes
-and below, but vector lengths above that (eg 128 bytes) still
-misbehave in a different way (only every other set of 8 bytes
-gets stored). Presumably that's a different bug somewhere else?
+Hi All,
 
-thanks
--- PMM
+Since 8.1 we enabled the FEAT_RME CPU feature to allow for Arm CCA
+guests to be run under QEMU's Arm emulation. While this is enough for
+pure software guests eventually we would want to support modelling
+systems with "real" hardware. One part of that is updating the SMMU
+emulation to make it RME aware.
+
+The recently published F.a spec is available on the Arm site:
+
+  https://developer.arm.com/documentation/ihi0070/latest/
+
+As we have a keen interest on tracking (and implementing!) Arm features
+we have coded up the various sub-features as stories under an EPIC for
+each level of SMMU feature on our public JIRA:
+
+  https://linaro.atlassian.net/browse/QEMU-533 (SMMUv3.0)
+  https://linaro.atlassian.net/browse/QEMU-553 (SMMUv3.1)
+  https://linaro.atlassian.net/browse/QEMU-558 (SMMUv3.2)
+  https://linaro.atlassian.net/browse/QEMU-566 (SMMUv3.3)
+=20=20
+I think the state of the cards currently represents what has been
+implemented and what is left to do. As you can see it adds up to a fair
+bit of stuff. As a lot of people have been hacking on the SMMU code over
+the last few years I thought it would be useful to reach out and see who
+else is interested in further enhancing the SMMU emulation support?
+
+If anyone has any patches/branches cooking or is intending to implement
+any particular bits please do let me know and I can update the cards to
+reflect the current state of work. As ever we will do our best to help
+review and smooth the up-streaming process for all Arm related feature
+enhancements.
+
+Thanks,
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

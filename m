@@ -1,67 +1,158 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x4-20020a1c7c04000000b003fe61c33df5sm1567917wmc.3.2023.10.31.05.02.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Oct 2023 05:02:03 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 44A4D5F78A;
-	Tue, 31 Oct 2023 12:02:03 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>, Jason Wang
- <jasowang@redhat.com>, Kunkun Jiang <jiangkunkun@huawei.com>, Zenghui Yu
- <yuzenghui@huawei.com>, Simon Veith <sveith@amazon.de>
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, QEMU
- Developers <qemu-devel@nongnu.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Joe Komlodi <joe.komlodi@xilinx.com>, Prem Mallappa
- <prem.mallappa@broadcom.com>, Leonardo Garcia
- <leonardo.garcia@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Alistair Francis <alistair@alistair23.me>
-Subject: Any plans to implement more ARM SMMUv3 features?
-User-Agent: mu4e 1.11.23; emacs 29.1
-Date: Tue, 31 Oct 2023 12:02:03 +0000
-Message-ID: <87il6n0zlw.fsf@draig.linaro.org>
+Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp273320ejb;
+        Tue, 31 Oct 2023 06:18:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHjzKUYchgLw8lD5GbhO+yUZdpylJMSa+kCHyCcdbrg4ANCD6+rs1nqwGL8Wo9Qk4Em2PrR
+X-Received: by 2002:a5d:684e:0:b0:32d:8a7c:6efc with SMTP id o14-20020a5d684e000000b0032d8a7c6efcmr2477297wrw.9.1698758322423;
+        Tue, 31 Oct 2023 06:18:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698758322; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SFMMX0D2FATbaF5eZLkkw2Pk3dqZlZj970CyLG4BnjZxCBqyWtLcIbqxxcrlbkxPD3
+         Rx9Mzbmdqqh3dQ7s9Nzr6SMg2akf5lz9g/4DbGFAKl12+YMOXeohbqQSACBX/+sbFwjk
+         7KoJhw3unsyVRaQTsKTiRKuS2Qv5hsGZoFMrWDupb5fUBfwrOtrUyEAd69532SsE6Sbi
+         fdNfB9afh5kDRg6oW7tdtx7Sp3/Lrrd8i7DQlWczQFcDLAwMhxRuEEXfyp3RW5OuSL4a
+         Nb4Gv76kHUZ7wu4ABVbCj+6a/e24JVwDjzhEnFNFqowcX0S5C3bRswn14EaQeAMcuQIE
+         g4Aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=RQgbpbhe06eH1hJLCzobEgsuAcsHm4lCj9WiyDgKUrE=;
+        fh=groEtDf43ciA83E/Np518/4yAPF0H5teDJyNYIbB/Dc=;
+        b=b0N9y7Q2D+U9VxASJVs3XgSSk09Fvx8qujv41+sOS9ZyC0+z2x3B6hQ0lgMnubsDEu
+         lf0UVUWQYnOip1M6tDEoSZCiIdYNfacfNlZeTmMI4VDF0M3bhThLV69IqGK6doR39aGK
+         s8HvUsujJtUzNmMjO+eEs3T2wc4o9BcCNWauMe709b1Nv6lo3CKpHdwXZFdxSRDfIOWb
+         IbD63oI1zyOKhNhSyJN6pdSz4vPYVxzNXnCeXzrGeLa+FEBUZdwiJqVkg52R/FvhAx12
+         SvJ2FhuIspMWeIW5XvByfA7GXWASc9NzZ9jQ9DRU71GCRcXBNj2OEjmhDZgM/PFFsttG
+         OteQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hE7O+NQ5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i10-20020adfe48a000000b0032f7a42b528si934504wrm.341.2023.10.31.06.18.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 31 Oct 2023 06:18:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hE7O+NQ5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qxodQ-0001wy-Jr; Tue, 31 Oct 2023 09:18:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1qxodP-0001wW-8L
+ for qemu-devel@nongnu.org; Tue, 31 Oct 2023 09:18:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1qxodN-0000vq-Vx
+ for qemu-devel@nongnu.org; Tue, 31 Oct 2023 09:18:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698758297;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RQgbpbhe06eH1hJLCzobEgsuAcsHm4lCj9WiyDgKUrE=;
+ b=hE7O+NQ5yNNmEXhbQtBaQwgp3uk2EuPdIgAVQPhXYX1yX7xFmQHsfOmlEhjV46WsmOdiM2
+ 7fTEwrefm8kKNDor6v5YFIc4B41eryPdfANCyVPdTElzioB+I1IHmktgFGYSAsepEv+8jk
+ EX2OPmXb8iE4eE36m638qR73zQTYIGE=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-VTdWBVAZPYi4QUxakUH6Mw-1; Tue,
+ 31 Oct 2023 09:18:01 -0400
+X-MC-Unique: VTdWBVAZPYi4QUxakUH6Mw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 13B571C0BA5B;
+ Tue, 31 Oct 2023 13:18:00 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.218])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 08BD5492BFC;
+ Tue, 31 Oct 2023 13:17:57 +0000 (UTC)
+Date: Tue, 31 Oct 2023 14:17:56 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Fam Zheng <fam@euphon.net>,
+ qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-block@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Gerd Hoffmann <kraxel@redhat.com>, rjones@redhat.com
+Subject: Re: [PATCH 4/7] hw/scsi/virtio-scsi: Use VIRTIO_SCSI_COMMON() macro
+Message-ID: <ZUD+hMTWf9DidzDb@redhat.com>
+References: <20231017140150.44995-1-philmd@linaro.org>
+ <20231017140150.44995-5-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WvAhf3JKWLIF
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231017140150.44995-5-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.481,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /76YbRdOVfx1
 
+Am 17.10.2023 um 16:01 hat Philippe Mathieu-Daudé geschrieben:
+> Access QOM parent with the proper QOM VIRTIO_SCSI_COMMON() macro.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  hw/scsi/virtio-scsi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
+> index 45b95ea070..fa53f0902c 100644
+> --- a/hw/scsi/virtio-scsi.c
+> +++ b/hw/scsi/virtio-scsi.c
+> @@ -761,7 +761,7 @@ static void virtio_scsi_fail_cmd_req(VirtIOSCSIReq *req)
+>  
+>  static int virtio_scsi_handle_cmd_req_prepare(VirtIOSCSI *s, VirtIOSCSIReq *req)
+>  {
+> -    VirtIOSCSICommon *vs = &s->parent_obj;
+> +    VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(s);
+>      SCSIDevice *d;
+>      int rc;
 
-Hi All,
+Why is a dynamic cast more "proper" than a static type-safe access, even
+more so in a hot I/O path?
 
-Since 8.1 we enabled the FEAT_RME CPU feature to allow for Arm CCA
-guests to be run under QEMU's Arm emulation. While this is enough for
-pure software guests eventually we would want to support modelling
-systems with "real" hardware. One part of that is updating the SMMU
-emulation to make it RME aware.
+Rich Jones posted a flamegraph the other day that surprised me because
+object_class_dynamic_class_assert() and object_dynamic_cast_assert()
+were shown to be a big part of scsi_req_new(). In the overall
+performance, it's probably dwarved by other issues, but unnecessary
+little things can add up, too.
 
-The recently published F.a spec is available on the Arm site:
+Kevin
 
-  https://developer.arm.com/documentation/ihi0070/latest/
-
-As we have a keen interest on tracking (and implementing!) Arm features
-we have coded up the various sub-features as stories under an EPIC for
-each level of SMMU feature on our public JIRA:
-
-  https://linaro.atlassian.net/browse/QEMU-533 (SMMUv3.0)
-  https://linaro.atlassian.net/browse/QEMU-553 (SMMUv3.1)
-  https://linaro.atlassian.net/browse/QEMU-558 (SMMUv3.2)
-  https://linaro.atlassian.net/browse/QEMU-566 (SMMUv3.3)
-=20=20
-I think the state of the cards currently represents what has been
-implemented and what is left to do. As you can see it adds up to a fair
-bit of stuff. As a lot of people have been hacking on the SMMU code over
-the last few years I thought it would be useful to reach out and see who
-else is interested in further enhancing the SMMU emulation support?
-
-If anyone has any patches/branches cooking or is intending to implement
-any particular bits please do let me know and I can update the cards to
-reflect the current state of work. As ever we will do our best to help
-review and smooth the up-streaming process for all Arm related feature
-enhancements.
-
-Thanks,
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

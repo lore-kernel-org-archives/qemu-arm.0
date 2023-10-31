@@ -1,115 +1,117 @@
-Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp293872ejb;
-        Tue, 31 Oct 2023 06:49:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG8k8Bb/kI4Voe4AhZr7ER2+cURZ7QHqFPO5yZ5mUfmq5TJC2jnY7AIl9ipCkjo7GtvmErV
-X-Received: by 2002:a05:620a:318a:b0:778:e431:3ef1 with SMTP id bi10-20020a05620a318a00b00778e4313ef1mr4148846qkb.32.1698760188154;
-        Tue, 31 Oct 2023 06:49:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698760188; cv=none;
+Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp308811ejb;
+        Tue, 31 Oct 2023 07:08:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHCyEB7e2JeCtZzlyw6ga81yOXY0c9TyjpcWsG/GbMl8HbldONI9jMcTZOXK40zqNDDsw72
+X-Received: by 2002:a05:622a:247:b0:41e:3472:f1f0 with SMTP id c7-20020a05622a024700b0041e3472f1f0mr4014612qtx.2.1698761337990;
+        Tue, 31 Oct 2023 07:08:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698761337; cv=none;
         d=google.com; s=arc-20160816;
-        b=bOOZ3as7o3X80WN0BxWQNRcYH46/a6A7cos7DFePLJE+TGE/e56UtbC0i0SMJhL1z2
-         nEM8wDduP5bNu0mWq+JV73mKxKDyMFNv57dbtAsvivWBZ2U6qLKmA+OZZJtQiI+Gp284
-         p7Cfn9F9C8BsxDlbmNhA6aCOpXia5chkIGj9LteRkJTvcIt3T4Bws9rPM0B7yyfg9/vK
-         kUNzmSMSlGebd8tTtg0Z/UFIkuDGNgrbtCv8o+9S3VfQCQrjmqdDNADPBSmiGb/xgKkh
-         gXQcy35amsSQSpL7z/siwEMWDqZf78KEsIeMect5rMf5j1nYBBYcp+KQsXvmlUT9NIci
-         +N1A==
+        b=DYl4/ibbAzzTTe/Fw8FDCi2JxXQDLRya5jTQ5RM444ttbTsf9o5Lftg2qxbI8xlVKF
+         e86wsl+7+dPAb6HDMpNGvkQQf3ecgumskD8IDBE/DpIBwyN9984p9N09WWrebNSXdt3q
+         HjznhfSrpBEMRgqAJS9W7zgMw0dFRmwQDWYjVEw2hnKkhQ0JAF8z7JkCH6Ggcg9z9OwT
+         JwGWLxnVVAoFzK12jJQekJFRr5FbOIags1yRH0v8dPskuc819/2CTtSbCvImWqwtm7Dx
+         I7PYbAkwAAbQpjRLe3bHZpfnLz4PchgvVBYBj2yiEfl7eJPBXqfO1dVh20YTbAPhYriG
+         usYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=4i99DJfkgIhPzdJU4QRsZ/OkV6XLN9AK7OBs5pamFbU=;
-        fh=Nusx70EtXMF8gdYoOVgP9eW+eKnIcoALoVz0NeuRzzg=;
-        b=rRXoDMI/SadNeltATjW4jXd6WMKG5/PfNQhHOvGe4SR5ZwGVMn6q80/68BkV386uz0
-         Xhe/cU0n6uS2l6d/6/D+XIiAZsLBVko8eoeBPXx/nmjvXof1uYUY5F3vmxwZuvfkR6ve
-         Hsn6gyjXdLeNoLq/EWG/46kw6LVxttuPd3N7FD426XnCxpkcZ7qHnfLmGzM1aMYAEJnz
-         HSHMTE2NKYT92iAeHrHAAq1l/FlHLO/wj50C7hdtYN1qVYV37Y0/b7Fti4b6QF3IkhuG
-         JBbZm6VAaX2ClxddCf6VK+RBgK7V282RC1G5tyqmHAP768iks/WH0Gf9fy4zpCef2FvH
-         BHpQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=DRjBWf6bHMPR3RkpPgDb61jJ3A0hzo0if24G0b5t9UI=;
+        fh=iUCPneHvQATULSMZbVQyKf5arfzDKucfm3tWYCvjfDg=;
+        b=ao3/XoaWPHwnFsREgBECXQ/5e1APgoF5PSgEoevairkssjL1omFVH3et4xw1jLdUki
+         cQIQC2cbg1sfd278C2SrPZleetG76DcxtQZdXIBrPyhzQNcck8IF13+E0QaOBj/fApe5
+         P2gke5gJB9wag8ZMPuTw1pzZ2GMqigddgnUXXYkjXisO/aVLtuCHvKXt+2HEe3trPx61
+         FW6RPl5Qcd5GX1YB9+aWrssMUKNuIEzrvVH6msscAx2PRbxz4Exl6p9zTamP0jbWHsd8
+         WZ0kPR6si5hiT1ZGsfvascUZmkVK1VXeq2E3f+18AY/4FJV3x7ZVH0uwLB/hZAW9/7Aj
+         V4mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EzJ1raad;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GvqIOVjM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f22-20020a05620a12f600b0076daad4ad3csi1085284qkl.32.2023.10.31.06.49.47
+        by mx.google.com with ESMTPS id 3-20020ac85703000000b0041e3dfe1bb9si1144374qtw.30.2023.10.31.07.08.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Oct 2023 06:49:48 -0700 (PDT)
+        Tue, 31 Oct 2023 07:08:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EzJ1raad;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GvqIOVjM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxp7P-0005WP-2f; Tue, 31 Oct 2023 09:49:19 -0400
+	id 1qxpQ6-0007ni-Co; Tue, 31 Oct 2023 10:08:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rjones@redhat.com>) id 1qxp7N-0005Vq-Ts
- for qemu-arm@nongnu.org; Tue, 31 Oct 2023 09:49:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rjones@redhat.com>) id 1qxp7L-0007HF-Eg
- for qemu-arm@nongnu.org; Tue, 31 Oct 2023 09:49:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698760152;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4i99DJfkgIhPzdJU4QRsZ/OkV6XLN9AK7OBs5pamFbU=;
- b=EzJ1raadnI4ll1bzTDbVk0iGRvZ+umqX9fPNCUNqiZkrzcqvtfLV3UBQXOROJNGjK+5dTo
- UXZ7W/13ZzsGMHuaMnkLbnbvKSTBdBSxOTIZxavsdvgwVdJw5Kc6mtoIVGJ6Tl3wRcF5lk
- yZJOCPnKqdlyvYAbhCQWZduipaGzPAQ=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-413-1HIB55WCPUu5qomvxRt-kA-1; Tue, 31 Oct 2023 09:48:58 -0400
-X-MC-Unique: 1HIB55WCPUu5qomvxRt-kA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CA9B2104456A;
- Tue, 31 Oct 2023 13:48:57 +0000 (UTC)
-Received: from localhost (unknown [10.42.28.8])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6FB651121308;
- Tue, 31 Oct 2023 13:48:57 +0000 (UTC)
-Date: Tue, 31 Oct 2023 13:48:56 +0000
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Fam Zheng <fam@euphon.net>,
- qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-block@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Raphael Norwitz <raphael.norwitz@nutanix.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH 4/7] hw/scsi/virtio-scsi: Use VIRTIO_SCSI_COMMON() macro
-Message-ID: <20231031134856.GL7636@redhat.com>
-References: <20231017140150.44995-1-philmd@linaro.org>
- <20231017140150.44995-5-philmd@linaro.org>
- <ZUD+hMTWf9DidzDb@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qxpQ1-0007m8-4U
+ for qemu-arm@nongnu.org; Tue, 31 Oct 2023 10:08:35 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qxpPz-0003Hs-Gb
+ for qemu-arm@nongnu.org; Tue, 31 Oct 2023 10:08:32 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-6b44befac59so4927900b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 31 Oct 2023 07:08:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698761310; x=1699366110; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=DRjBWf6bHMPR3RkpPgDb61jJ3A0hzo0if24G0b5t9UI=;
+ b=GvqIOVjMDVH2AIGt9Rk6HqBTmRg7ANtx6/olk+ktR6XoszyaDEjcyEq8zQHBe6RFAm
+ MKzyU6pnJnHmZfdjTBERmGNSBto7xRJS5BDOfnMk/layjxLsyMgWGVbntQwGyvcz3ync
+ 17jEIPE5niFmhxmPyKWbNBQhJUrAvKb4XVe4b3Y5kXtnhg1SYqrKmCN50zWh1RIGRiql
+ BjE3/0lhGjYiyZ5JBEwQwxTUuVkHUrQOmflbTn/lGt/PnjA7xr1bwz67T3v4vm9OHUFG
+ HqjJnDCT3G5SFSmrL5z//idlE4rgG2Tnf5f8AhKzXS6QQQedMolB0YGyIb7XtTC8sJOL
+ v/dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698761310; x=1699366110;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=DRjBWf6bHMPR3RkpPgDb61jJ3A0hzo0if24G0b5t9UI=;
+ b=VXK0TXQK8+r7Iqs2DjwoR57HDV9pH1mfmS31LmBVbCtyck6lFfZqbnm+lBIE8fIGHr
+ Z3qUlXmx4YD9ntOjbCls9X+dgDfd1kOuI2id7QwL8zwbXvyyLyyvNmRQ548ainBhPzFV
+ CeWPEQj3Za/RqpPn4tqed3VQ8KzDdrDB646BEZkAHIE/Hj7gg6gMSAgevlUnbEFUuxav
+ UO1kxuBm+jGH2qDNpgLAPc7ZoUTVINDiz2mBAN2SJsUPoPb69VlYuvwMdq13cGuUdRSc
+ AsTsscfhiJ2FZ9/iRRwEg5XZnVmGPqHQdmWvq3poNEJQyqhvjOXcTA+k0RrQI6n6SgLe
+ YSAw==
+X-Gm-Message-State: AOJu0YzPpIJiQudZO+b/e1HeQ+Q3I/MQLOthocpRy4cSqMBH8XOWjzsn
+ JEpnIB6YWK017MaVJ5umlwui7w==
+X-Received: by 2002:a05:6a20:e106:b0:128:ffb7:dcfe with SMTP id
+ kr6-20020a056a20e10600b00128ffb7dcfemr3711831pzb.1.1698761309908; 
+ Tue, 31 Oct 2023 07:08:29 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.149.95])
+ by smtp.gmail.com with ESMTPSA id
+ k20-20020aa788d4000000b0068fbaea118esm1293772pff.45.2023.10.31.07.08.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Oct 2023 07:08:29 -0700 (PDT)
+Message-ID: <c0479a28-1e95-480a-abaf-faf8ee12743e@linaro.org>
+Date: Tue, 31 Oct 2023 07:08:27 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZUD+hMTWf9DidzDb@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=rjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Fix SVE STR increment
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
+References: <20231030190354.94671-1-richard.henderson@linaro.org>
+ <CAFEAcA_kG-yE9sYDx+QBxCoAMySjc57oXx+UtSo=p=nCqAwKfQ@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA_kG-yE9sYDx+QBxCoAMySjc57oXx+UtSo=p=nCqAwKfQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.481,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,64 +127,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RjREuMdf/9VR
+X-TUID: ZzNOFeBYpys2
 
-On Tue, Oct 31, 2023 at 02:17:56PM +0100, Kevin Wolf wrote:
-> Am 17.10.2023 um 16:01 hat Philippe Mathieu-Daudé geschrieben:
-> > Access QOM parent with the proper QOM VIRTIO_SCSI_COMMON() macro.
-> > 
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > ---
-> >  hw/scsi/virtio-scsi.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
-> > index 45b95ea070..fa53f0902c 100644
-> > --- a/hw/scsi/virtio-scsi.c
-> > +++ b/hw/scsi/virtio-scsi.c
-> > @@ -761,7 +761,7 @@ static void virtio_scsi_fail_cmd_req(VirtIOSCSIReq *req)
-> >  
-> >  static int virtio_scsi_handle_cmd_req_prepare(VirtIOSCSI *s, VirtIOSCSIReq *req)
-> >  {
-> > -    VirtIOSCSICommon *vs = &s->parent_obj;
-> > +    VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(s);
-> >      SCSIDevice *d;
-> >      int rc;
+On 10/31/23 03:52, Peter Maydell wrote:
+> On Mon, 30 Oct 2023 at 19:04, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> The previous change missed updating one of the increments.
+>>
+>> Cc: qemu-stable@nongnu.org
+>> Fixes: e6dd5e782be ("target/arm: Use tcg_gen_qemu_{ld, st}_i128 in gen_sve_{ld, st}r")
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/tcg/translate-sve.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+>> index 7b39962f20..fc4220114d 100644
+>> --- a/target/arm/tcg/translate-sve.c
+>> +++ b/target/arm/tcg/translate-sve.c
+>> @@ -4294,7 +4294,7 @@ void gen_sve_str(DisasContext *s, TCGv_ptr base, int vofs,
+>>           t0 = tcg_temp_new_i64();
+>>           t1 = tcg_temp_new_i64();
+>>           t16 = tcg_temp_new_i128();
+>> -        for (i = 0; i < len_align; i += 8) {
+>> +        for (i = 0; i < len_align; i += 16) {
+>>               tcg_gen_ld_i64(t0, base, vofs + i);
+>>               tcg_gen_ld_i64(t1, base, vofs + i + 8);
+>>               tcg_gen_concat_i64_i128(t16, t0, t1);
+>> --
 > 
-> Why is a dynamic cast more "proper" than a static type-safe access, even
-> more so in a hot I/O path?
-> 
-> Rich Jones posted a flamegraph the other day that surprised me because
-> object_class_dynamic_class_assert() and object_dynamic_cast_assert()
-> were shown to be a big part of scsi_req_new(). In the overall
-> performance, it's probably dwarved by other issues, but unnecessary
-> little things can add up, too.
+> This fixes the test case I have for vector lengths of 64 bytes
+> and below, but vector lengths above that (eg 128 bytes) still
+> misbehave in a different way (only every other set of 8 bytes
+> gets stored). Presumably that's a different bug somewhere else?
 
-I think Kevin is referring to one of these flamegraphs:
+Oh yes -- enable-debug yields
 
-  http://oirase.annexia.org/tmp/2023-kvm-build-on-device.svg
-  http://oirase.annexia.org/tmp/2023-kvm-build.svg
+qemu-aarch64: ../src/tcg/tcg-op-ldst.c:712: tcg_gen_qemu_st_i128_chk: Assertion `(memop & 
+MO_SIZE) == MO_128' failed.
 
-Here's a zoom showing scsi_req_new (hopefully this URL is stable ...):
 
-  http://oirase.annexia.org/tmp/2023-kvm-build-on-device.svg?s=scsi_req_new&x=512.9&y=501
-
-Note that qemu has been compiled with QOM cast debug.  This is the
-default for Fedora (not RHEL) because we'd like to get early detection
-of bugs from Fedora users.
-
-There was another patch recently where a simple change saved about 5%
-of total runtime in RISC-V TCG guests (admittedly a much more hot path
-than this one).
-
-  https://lists.nongnu.org/archive/html/qemu-devel/2023-10/msg02388.html
-
-Rich.
-
--- 
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
-Read my programming and virtualization blog: http://rwmj.wordpress.com
-Fedora Windows cross-compiler. Compile Windows programs, test, and
-build Windows installers. Over 100 libraries supported.
-http://fedoraproject.org/wiki/MinGW
+r~
 

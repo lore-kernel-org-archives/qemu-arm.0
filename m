@@ -1,112 +1,114 @@
-Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp489600ejb;
-        Tue, 31 Oct 2023 11:47:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHmfrJwD/MSqCpanvwCRK89cYrflSsGbzvBlQmDkVIOzQb7M9u6V9O51E4BYSdPTHAT0e79
-X-Received: by 2002:a67:cc1c:0:b0:452:8999:fb76 with SMTP id q28-20020a67cc1c000000b004528999fb76mr10381792vsl.21.1698778032418;
-        Tue, 31 Oct 2023 11:47:12 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1698778032; cv=pass;
+Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp490097ejb;
+        Tue, 31 Oct 2023 11:48:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE8wuBRlB6iWg0hlbDjFWWahsfc3QP/HCly9eWU79AQSP3g5DqX1Y9kP83XeJ4gTD5jM72j
+X-Received: by 2002:a81:e905:0:b0:5a8:dfd3:c34d with SMTP id d5-20020a81e905000000b005a8dfd3c34dmr13241984ywm.20.1698778088143;
+        Tue, 31 Oct 2023 11:48:08 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1698778088; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Tf5GlrHbv5Zm5MQ4A5SigvKP2zc3svP4a89+Pj0w1wMU9H3qP0o/LPt+9ul7T/AR3K
-         /rP0OBQIyeFVFjovVQgIhWWovrk/i1KuCpGYQmki0bmYj9sf82CWrJsO5VJlbXUwW31u
-         HfNBZcmmw31vXVhJZJedCBA77lM8ODpC8PT/meLbFnzhMg5UjRfmIAqOiQKO6xoMj3aY
-         dZxDKQYQHNHRVCOI5nnpNaJKOSXXMlgr4i5CYKl3s/ALjHZZrwDjYO2eRmqwyZOiU4+W
-         8wbt5vODtrWY2MTM/VaQCgOrZYaPppYWlhLR5U8qWNj2XmqtlmreKak80KQVWR+1tdgl
-         y1xw==
+        b=Gcg6yfoK55vOcgwTu5wrULuJfJJulc4fWWAsrXjg0rgeLs+feCQ4RFNXz7+LGI9kTT
+         CXLxf3i1ushTC3wA7eHStzLdxY9lSDGiD2sM/5Mfa9dcKwxxJK18KqVqEDY+8ZlkqLNT
+         pozvQknb6JSneXmzfXaIBe2Co2+sirUSqEHnKdPWn9SlLrAR3rhOhD9zPkPMS+jlJ4Ts
+         97sIvgK+xoCOTtALZu5LDLyEQbetL0m5l2Deg2LiwplWdycH6jNTdML2X6LABhtL87AM
+         J7rZE41EG7uN2sMpZibH3Q3/vxweQh2UOKUeZWDYo0HYZNBBFyRVzx0/InOEs6VAqTkg
+         8hIQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=objj/FDquT/1p9npsqZred/iyWW+1TNiwAzdvnEsvKE=;
+        bh=P7VNUomf8+sno4ktyYb6+80hnuZCnvctudz9DMexgIA=;
         fh=voBcUzMOU8H7GhrKfzDBeuNEarwOE0Oh9mBXV+XTGOc=;
-        b=Tt0IUk2jb63T605KDmmOQTjnojjQFmy58LBTfMwm6MTBWU5EPNbr2zBYXhKWUecqWf
-         xeoYdW4e7QRLh4lLTbBSnQg11G1a1Hz2Q94DkeCrDooii6SlD36BG5/Zt4iiuqRrfCCX
-         q/xTmDFsn70a1zCS3N3wKeiNjQhBxlDqLgiGfu7jY3V5rVRaPB2Z0DcIebJEPhIDb6nO
-         GnF/ssMVHN85musJLnbWyF7A2bmRpEw1rarB/s9Uh0rb9sf1btuI6QQT5Id77nW3hSal
-         MfMN8pX1I9HvCvd+fre3Vl7D9+nvG8u7bRZxMxg77pby8fhCevXfB69Bm8xl2oMduCR8
-         lE6A==
+        b=mL4oHbk8goGvJ970mGYGtNB6XWbJ51S8K/+1u6m/1+a/1KZoGNDk9AQCc2didh3hkJ
+         zUPW7fz3i4pA2tTsf6yyy0AKZXqFmVeMxp65wwIDI8PMpan1f1bvoHTwmiCceLdWnnQZ
+         03OZFa4OU2tZAYn9Ybod4/+V5dSM7u9YXIY6OpHW1PfLc5mW9WZnEaq7fsYLA1s/7u9I
+         y6MHXJ3EmaR/UsSJBovQy6z/XvD4VbbsENw2fUn/BD7TABCmj+mYCKAGTipxLT92BmhL
+         Lbdfp8gtiq0Ay0Z7NKRbTISIAWtQSdUbDNhWaz+Pdkc/E2kQEgkPUGb43vKos5XatSEp
+         lWtg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=BqvveHkw;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=Addqn9M5;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7-20020a05622a05c700b0041820c4f419si1597169qtb.782.2023.10.31.11.47.12
+        by mx.google.com with ESMTPS id w20-20020a0562140b3400b0066d17fa0648si1604487qvj.198.2023.10.31.11.48.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Oct 2023 11:47:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 31 Oct 2023 11:48:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=BqvveHkw;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=Addqn9M5;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxtlR-0005MW-Dl; Tue, 31 Oct 2023 14:46:58 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qxtlM-0005LA-Tl; Tue, 31 Oct 2023 14:46:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qxtlA-0005I9-Pe; Tue, 31 Oct 2023 14:46:42 -0400
-Received: from mail-dm6nam11on20627.outbound.protection.outlook.com
- ([2a01:111:f400:7eaa::627]
+ id 1qxtl7-0005Fw-LY; Tue, 31 Oct 2023 14:46:38 -0400
+Received: from mail-dm6nam11on20601.outbound.protection.outlook.com
+ ([2a01:111:f400:7eaa::601]
  helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qxtl8-0003mA-Fh; Tue, 31 Oct 2023 14:46:40 -0400
+ id 1qxtl3-0003lZ-JU; Tue, 31 Oct 2023 14:46:37 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j/e9Zi8di0dZt/8HfEjOdUIU4GLuYMNNt3iG/AQVm/Ld+UcvxZaTAxU0X6btKGP+MJRXqp5I31ljLd1P2ICrpz3Std+ANenwNyd87sQ1Agm1dqA9/ym/ANw5AwcKJ0ENx+8yNTvdhUA/t9R0BN8qz8Zr6ZUD6W0fYw8RIfF0RJXGHa7l5Dp7mo6I6Xmvel0nY+QILCE36YFfXLE2gYYGHA4m+MWvSdanqHREYNGo2lTD4ucBXpQ3oPOl1XS9AD41hJdRSOhOEYt4IHNnlFdc45Kz5EzKf9Yphv7qq9K2s7LK0HLiqstwCkqkl3jgmzNVO1Q6efaBCO5QrXj3hgk5dA==
+ b=mIZypL4tnlhBQ5DSc2ydNaXvAwACieaQwKDZ86u+01Ma3Zn2uXLHEmvrbwJKvPvGr9HwaY+qWXMBUtYRf0cWxBxB1bwzxzjILZce+kgrFhtRu+LIXqFAsdM/haLnehz/dRFlYS2lpX77tZXytkaZVTxbPCT8+DuD1ZwS7qQalny1A5y6CW+ePHpPRBDyMCJxi2YOwVB8nl3/N4lJSFrTkCIYSE+naCAL0CnqsLpzDajs/Q35LehkAKVvMtQBcV4znEtH5DkDWybr/Dh1a4xr769yAvlsL0kK/oLxmy9OVGQkqhoBZ6HA4ngxa2d/dq1ttrfVXzsWORWYbj7VUIZ1Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=objj/FDquT/1p9npsqZred/iyWW+1TNiwAzdvnEsvKE=;
- b=h1sGg9JzdbST74OcUG7cAyozJ4soHZUKecVDd16+hTlCEdRofpvtNPypsBpNrodb5buAhtuTLtlK0r3p9QZBb70UQFu3GBH6x64B4wxermA/L7zGgICjwS6O7M2IM+Nr10VxBu3CqI5/DeBlpAId27C/IxfoEnuWF6KapqF+ilZrwyNJPCGFwBGKe1vHgDdeBu7q/m/BRYXhvOBck8qb+QmaX5ufM/nQSzDNh3TV0FaGTpUw5LMzwt8ZQqtOpfpMroaGGMM4Ta66Ilc8B2v3M7fcupiLvFAg7TZutU+POItp77FfZctfP4yARGOLnNfIpyZN86hpCubwidQdk6Wv0Q==
+ bh=P7VNUomf8+sno4ktyYb6+80hnuZCnvctudz9DMexgIA=;
+ b=I27psQNmd8YeJdcg2zW0YzUO6nC15802AXk09fG85WopQ7wQHHIjjFG3U7IRvVeb/rSnsKarev0mxHWSCJil+TJCL8p2HefFqMo5mVBO879CXFhBvZQYCeHQEU0wFS9mVZ0U1strrcNqmhCb0PYsHJJImKQmUnIfT5RCDBXxzgpVmbjZr1DI4ASrUCZ/0bVP8tdofNuUHn9R380OWRIeYiuFxXgs6o/3hi9Pu1YsOKH7e7kSUZxtQMitPECcQxuUbPvU3wAgQ2QUOcAukq77WV7ly3P7DqFL27NouTvydxoAiUVIdFkKvhChzJPC4nVQ7ancS5KT22aM1GAjfr4pvw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=objj/FDquT/1p9npsqZred/iyWW+1TNiwAzdvnEsvKE=;
- b=BqvveHkwrEkBxS8+ckFXKEhQgsyopWOAY/jW4vNV2X7ZPUcfclHdrb86dBP6kw62wmUIfOr9FZfR4BU5+ugbD962OymRDG7I3qJPE48DTeHMnyLHe6AyRXWw70om5PgTHnSMN7bY724Us2uC4Cu4wEvJ2QnFI7Po1j1solIAmJ8=
-Received: from MW4PR02CA0027.namprd02.prod.outlook.com (2603:10b6:303:16d::32)
- by DS0PR12MB7703.namprd12.prod.outlook.com (2603:10b6:8:130::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.29; Tue, 31 Oct
- 2023 18:46:33 +0000
-Received: from CO1PEPF000044F3.namprd05.prod.outlook.com
- (2603:10b6:303:16d:cafe::fb) by MW4PR02CA0027.outlook.office365.com
- (2603:10b6:303:16d::32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.29 via Frontend
- Transport; Tue, 31 Oct 2023 18:46:33 +0000
+ bh=P7VNUomf8+sno4ktyYb6+80hnuZCnvctudz9DMexgIA=;
+ b=Addqn9M5g6EVjp/tWTuUz71JTuPIRODgubsJ3/ttfG3iYOyzBG/rinForRbI1HMeD7oxy8GYqXYGREp8PYKBBDwG2pXkZ3EbAWdwdeUOSPkBTNfmXyZH7kaKw0kPafjtkcxLzmJckRIRyTxtRqwzBDSdGoNKGHqg8uEW3NCvtz0=
+Received: from CY5PR15CA0095.namprd15.prod.outlook.com (2603:10b6:930:7::17)
+ by DS7PR12MB5887.namprd12.prod.outlook.com (2603:10b6:8:7a::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6933.19; Tue, 31 Oct 2023 18:46:27 +0000
+Received: from CY4PEPF0000EE33.namprd05.prod.outlook.com
+ (2603:10b6:930:7:cafe::2) by CY5PR15CA0095.outlook.office365.com
+ (2603:10b6:930:7::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.19 via Frontend
+ Transport; Tue, 31 Oct 2023 18:46:27 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
 Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CO1PEPF000044F3.mail.protection.outlook.com (10.167.241.73) with Microsoft
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ CY4PEPF0000EE33.mail.protection.outlook.com (10.167.242.39) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6954.19 via Frontend Transport; Tue, 31 Oct 2023 18:46:30 +0000
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.6954.19 via Frontend Transport; Tue, 31 Oct 2023 18:46:24 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Tue, 31 Oct
- 2023 13:46:19 -0500
+ 2023 13:46:18 -0500
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Tue, 31 Oct
+ 2023 11:46:18 -0700
 Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.32 via Frontend
- Transport; Tue, 31 Oct 2023 13:46:19 -0500
+ Transport; Tue, 31 Oct 2023 13:46:17 -0500
 From: Tong Ho <tong.ho@amd.com>
 To: <qemu-arm@nongnu.org>
 CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
  <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>,
  <richard.henderson@linaro.org>, <frasse.iglesias@gmail.com>,
  <tong.ho@amd.com>
-Subject: [PATCH v5 3/3] tests/qtest: Introduce tests for AMD/Xilinx Versal
- TRNG device
-Date: Tue, 31 Oct 2023 11:46:11 -0700
-Message-ID: <20231031184611.3029156-4-tong.ho@amd.com>
+Subject: [PATCH v5 1/3] hw/misc: Introduce AMD/Xilix Versal TRNG device
+Date: Tue, 31 Oct 2023 11:46:09 -0700
+Message-ID: <20231031184611.3029156-2-tong.ho@amd.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20231031184611.3029156-1-tong.ho@amd.com>
 References: <20231031184611.3029156-1-tong.ho@amd.com>
@@ -115,27 +117,27 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF000044F3:EE_|DS0PR12MB7703:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0d7b1152-2580-4172-a95b-08dbda41b3a8
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE33:EE_|DS7PR12MB5887:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4784cba9-b4c6-4278-ced5-08dbda41b034
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: nybXUiZTTDWJcAz7clF2zwr35aesGNsHFnkTPwHcYRE+kK0bD9ie5ULvLNj0bZQo5JxKKCzZIbZch5wsWOy0XMrq5T2EaOSaZZPImxxOQba6aTMIxPR3J52GUVWf4nmLKDIw16L60gNKtGr52WKtXiCzkdxJ1FOTaL9NTn/3R1hY3Vkjn89MyidRkHtH6SEN0PGt5G+VwhXxIIWwkrDmWFr0mPkpltlNmSZj+9jU79Acu0ILAOlc8zCRp/TXthheHwWuv9q+tvpMc/f385gvKVBUfwwAIgnTGPo7PLVr69QxYsB/MR9bigQ2dhRba+CfiLtFXg8KpB7RF/dZSwVmspUFn3Kf/ZBPQX5O6b4lRwjEJvizteJSuZqvKapeXtA3hUrUHgG1EypWZaihUHmn22LHqQ7by6c/tHD6rW2eZ/hx37Fhh1fZcgs1xvINsmFpEomfkmup+WjXpAwgCR89kLf+9VAZOeWsLmNONZRqHMLs/DgLMhEtTp1APOM7OxyCkTim+u52NXxcfngkCLQ/NFveaaH1SqeBvdlGTkG/V/QwJmQ5gsLsTmYbKEDgyUYtatZhMtIa53soxkk+O6UsdX6sxe1eo7o9Majn/gijSK+IMUGHeqwjwTJAVugfHQX+EJAzAsxPPYR1kR60Gnagv/hWVa0NtBr9ODsGIDFzdVi6sqS0rckoBPr9gjqVtWLaPIsKD9ohjkSy4xPxXEblmutZP5yN6+df/a7cWR6Ui8pN65e29Jct1UtZB2rdzjxaTFn72K1tqEN/fBR6sfx78A==
+X-Microsoft-Antispam-Message-Info: 81cWAtnIdPfoRDtt/FWth1XL4O5qp1CkpJecWweFUZE6bxZSPHiUKRb4fisdrKU1uGIhqe7nAgtS7BOzMNvEhWJ6FpdHkhrSUFKzy1asWZQiDgbgq3MvIL8iaUm6yDK4i2whaCuwS8ZPRyexvzmF6PRH8wpFAiwBVYxKqsW8OLRrsw0Dm6s7VQrwNwxfqheIGB+MrQbU1CgGYpKyK5IeQV3codtBzaWU3m8S905mBaJzeRDrwxTOnDBstzFt0iea6DQg1XnvWRZmwvI2ac0dAcOcbVeIRpCU9Z/TtjTJO9GWzrh2p493LxnWkTMB+g/b8V8SUgmzRlSHN7iCaI1nLL8Y4QUn1FOlxzRGzAAgoYt70+xl392f/Bv6/PTqtFz+TiWu3AY8y2iYKMHB6bd3atzvJ5cTBshACMBwjRhROlmQKK4jR7ZwNCVEe7DggTYzCi0YeJSwfpDAiRp4hq3qEo9Sikz9GFWe1iq0o9eI51SZLE7ggjcIlsv4UPaQgEdNEWJBLhfvu6OzxCEjFrtAWu3yXH3w3/ikINRQcIXa2HwzVIYmkhxxAM1CtWGH/Q4CSK5P19jXJves3+zF2/GX3LEsjSbB7S2Wyu6hXpDZl01ZWYxge6ZBcaujt1OJViYVIX+HXmSBBHvNc96evFhNzejA0e5CN59DcU6Kfzl1QM89A1oxWRqhtreBZOyl4CxyjvRcW9t61L31VwXcWWcC8ppIF9ykMeRL9cSgHcdGTwxTNFfR+YIrSfaWlhxTYpJ+jzt3yBXfnmAH/IXurAiQOCJSeUh5+ZyTcIxRqeYT26sPnbj6aMJ9UxX1LM47wn7b
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(376002)(39860400002)(136003)(346002)(396003)(230922051799003)(82310400011)(64100799003)(186009)(1800799009)(451199024)(40470700004)(36840700001)(46966006)(26005)(1076003)(40460700003)(86362001)(36756003)(40480700001)(81166007)(82740400003)(356005)(426003)(30864003)(8936002)(2906002)(83380400001)(478600001)(36860700001)(47076005)(6666004)(2616005)(316002)(8676002)(54906003)(6916009)(336012)(4326008)(5660300002)(41300700001)(70586007)(44832011)(70206006)(36900700001);
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(346002)(136003)(39860400002)(396003)(376002)(230273577357003)(230173577357003)(230922051799003)(64100799003)(451199024)(1800799009)(186009)(82310400011)(46966006)(36840700001)(40470700004)(1076003)(2616005)(66899024)(70206006)(82740400003)(40480700001)(70586007)(356005)(81166007)(316002)(26005)(40460700003)(426003)(6666004)(478600001)(336012)(54906003)(6916009)(47076005)(41300700001)(44832011)(83380400001)(30864003)(86362001)(2906002)(5660300002)(4326008)(36756003)(8676002)(36860700001)(8936002)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2023 18:46:30.2461 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0d7b1152-2580-4172-a95b-08dbda41b3a8
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2023 18:46:24.5162 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4784cba9-b4c6-4278-ced5-08dbda41b034
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000044F3.namprd05.prod.outlook.com
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE33.namprd05.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7703
-Received-SPF: softfail client-ip=2a01:111:f400:7eaa::627;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5887
+Received-SPF: softfail client-ip=2a01:111:f400:7eaa::601;
  envelope-from=tong.ho@amd.com;
  helo=NAM11-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -25
@@ -146,532 +148,880 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.481,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UFlR/uvJgMDV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VTx8SAuiPt+X
+
+This adds a non-cryptographic grade implementation of the
+model for the True Random Number Generator (TRNG) component
+in AMD/Xilinx Versal device family.
+
+This implements all 3 modes defined by the actual hardware
+specs, all of which selectable by guest software at will
+at anytime:
+1) PRNG mode, in which the generated sequence is required to
+   be reproducible after reseeded by the same 384-bit value
+   as supplied by guest software.
+2) Test mode, in which the generated sequence is required to
+   be reproducible ater reseeded by the same 128-bit test
+   seed supplied by guest software.
+3) TRNG mode, in which non-reproducible sequence is generated
+   based on periodic reseed by a suitable entropy source.
+
+This model is only intended for non-real world testing of
+guest software, where cryptographically strong PRNG or TRNG
+is not needed.
+
+This model supports versions 1 & 2 of the device, with
+default to be version 2; the 'hw-version' uint32 property
+can be set to 0x0100 to override the default.
+
+Other implemented properties:
+- 'forced-prng', uint64
+  When set to non-zero, mode 3's entropy source is implemented
+  as a deterministic sequence based on the given value and other
+  deterministic parameters.
+  This option allows the emulation to test guest software using
+  mode 3 and to reproduce data-dependent defects.
+
+- 'fips-fault-events', uint32, bit-mask
+  bit 3: Triggers the SP800-90B entropy health test fault irq
+  bit 1: Triggers the FIPS 140-2 continuous test fault irq
 
 Signed-off-by: Tong Ho <tong.ho@amd.com>
 ---
- tests/qtest/meson.build             |   2 +-
- tests/qtest/xlnx-versal-trng-test.c | 485 ++++++++++++++++++++++++++++
- 2 files changed, 486 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/xlnx-versal-trng-test.c
+ hw/misc/Kconfig                    |   3 +
+ hw/misc/meson.build                |   3 +
+ hw/misc/xlnx-versal-trng.c         | 717 +++++++++++++++++++++++++++++
+ include/hw/misc/xlnx-versal-trng.h |  58 +++
+ 4 files changed, 781 insertions(+)
+ create mode 100644 hw/misc/xlnx-versal-trng.c
+ create mode 100644 include/hw/misc/xlnx-versal-trng.h
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index d6022ebd64..c9945e69b1 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -216,7 +216,7 @@ qtests_aarch64 = \
-   (config_all.has_key('CONFIG_TCG') and config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ?            \
-     ['tpm-tis-device-test', 'tpm-tis-device-swtpm-test'] : []) +                                         \
-   (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test', 'xlnx-versal-trng-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
-   (config_all.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-diff --git a/tests/qtest/xlnx-versal-trng-test.c b/tests/qtest/xlnx-versal-trng-test.c
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index dba41afe67..cc8a8c1418 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -197,4 +197,7 @@ config DJMEMC
+ config IOSB
+     bool
+ 
++config XLNX_VERSAL_TRNG
++    bool
++
+ source macio/Kconfig
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index f60de33f9a..36c20d5637 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -104,6 +104,9 @@ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
+   'xlnx-cfi-if.c',
+   'xlnx-versal-cframe-reg.c',
+ ))
++system_ss.add(when: 'CONFIG_XLNX_VERSAL_TRNG', if_true: files(
++  'xlnx-versal-trng.c',
++))
+ system_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
+ system_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
+ system_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_exti.c'))
+diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
 new file mode 100644
-index 0000000000..cef4e575bb
+index 0000000000..4d41c262c4
 --- /dev/null
-+++ b/tests/qtest/xlnx-versal-trng-test.c
-@@ -0,0 +1,485 @@
++++ b/hw/misc/xlnx-versal-trng.c
+@@ -0,0 +1,717 @@
 +/*
-+ * QTests for the Xilinx Versal True Random Number Generator device
++ * Non-crypto strength model of the True Random Number Generator
++ * in the AMD/Xilinx Versal device family.
 + *
++ * Copyright (c) 2017-2020 Xilinx Inc.
 + * Copyright (c) 2023 Advanced Micro Devices, Inc.
 + *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
 + */
-+
 +#include "qemu/osdep.h"
-+#include "libqtest-single.h"
++#include "hw/misc/xlnx-versal-trng.h"
 +
-+/* Base Address */
-+#define TRNG_BASEADDR      (0xf1230000)
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "qemu/guest-random.h"
++#include "qemu/timer.h"
++#include "qapi/visitor.h"
++#include "migration/vmstate.h"
++#include "hw/qdev-properties.h"
 +
-+/* TRNG_INT_CTRL */
-+#define R_TRNG_INT_CTRL                 (0x0000)
-+#define   TRNG_INT_CTRL_CERTF_RST_MASK  (1 << 5)
-+#define   TRNG_INT_CTRL_DTF_RST_MASK    (1 << 4)
-+#define   TRNG_INT_CTRL_DONE_RST_MASK   (1 << 3)
-+#define   TRNG_INT_CTRL_CERTF_EN_MASK   (1 << 2)
-+#define   TRNG_INT_CTRL_DTF_EN_MASK     (1 << 1)
-+#define   TRNG_INT_CTRL_DONE_EN_MASK    (1)
++#ifndef XLNX_VERSAL_TRNG_ERR_DEBUG
++#define XLNX_VERSAL_TRNG_ERR_DEBUG 0
++#endif
 +
-+/* TRNG_STATUS */
-+#define R_TRNG_STATUS              (0x0004)
-+#define   TRNG_STATUS_QCNT_SHIFT   (9)
-+#define   TRNG_STATUS_QCNT_MASK    (7 << TRNG_STATUS_QCNT_SHIFT)
-+#define   TRNG_STATUS_CERTF_MASK   (1 << 3)
-+#define   TRNG_STATUS_DTF_MASK     (1 << 1)
-+#define   TRNG_STATUS_DONE_MASK    (1)
++REG32(INT_CTRL, 0x0)
++    FIELD(INT_CTRL, CERTF_RST, 5, 1)
++    FIELD(INT_CTRL, DTF_RST, 4, 1)
++    FIELD(INT_CTRL, DONE_RST, 3, 1)
++    FIELD(INT_CTRL, CERTF_EN, 2, 1)
++    FIELD(INT_CTRL, DTF_EN, 1, 1)
++    FIELD(INT_CTRL, DONE_EN, 0, 1)
++REG32(STATUS, 0x4)
++    FIELD(STATUS, QCNT, 9, 3)
++    FIELD(STATUS, EAT, 4, 5)
++    FIELD(STATUS, CERTF, 3, 1)
++    FIELD(STATUS, DTF, 1, 1)
++    FIELD(STATUS, DONE, 0, 1)
++REG32(CTRL, 0x8)
++    FIELD(CTRL, PERSODISABLE, 10, 1)
++    FIELD(CTRL, SINGLEGENMODE, 9, 1)
++    FIELD(CTRL, EUMODE, 8, 1)
++    FIELD(CTRL, PRNGMODE, 7, 1)
++    FIELD(CTRL, TSTMODE, 6, 1)
++    FIELD(CTRL, PRNGSTART, 5, 1)
++    FIELD(CTRL, EATAU, 4, 1)
++    FIELD(CTRL, PRNGXS, 3, 1)
++    FIELD(CTRL, TRSSEN, 2, 1)
++    FIELD(CTRL, QERTUEN, 1, 1)
++    FIELD(CTRL, PRNGSRST, 0, 1)
++REG32(CTRL_2, 0xc)
++    FIELD(CTRL_2, REPCOUNTTESTCUTOFF, 8, 9)
++    FIELD(CTRL_2, RESERVED_7_5, 5, 3)
++    FIELD(CTRL_2, DIT, 0, 5)
++REG32(CTRL_3, 0x10)
++    FIELD(CTRL_3, ADAPTPROPTESTCUTOFF, 8, 10)
++    FIELD(CTRL_3, DLEN, 0, 8)
++REG32(CTRL_4, 0x14)
++    FIELD(CTRL_4, SINGLEBITRAW, 0, 1)
++REG32(EXT_SEED_0, 0x40)
++REG32(EXT_SEED_1, 0x44)
++REG32(EXT_SEED_2, 0x48)
++REG32(EXT_SEED_3, 0x4c)
++REG32(EXT_SEED_4, 0x50)
++REG32(EXT_SEED_5, 0x54)
++REG32(EXT_SEED_6, 0x58)
++REG32(EXT_SEED_7, 0x5c)
++REG32(EXT_SEED_8, 0x60)
++REG32(EXT_SEED_9, 0x64)
++REG32(EXT_SEED_10, 0x68)
++REG32(EXT_SEED_11, 0x6c)
++REG32(PER_STRNG_0, 0x80)
++REG32(PER_STRNG_1, 0x84)
++REG32(PER_STRNG_2, 0x88)
++REG32(PER_STRNG_3, 0x8c)
++REG32(PER_STRNG_4, 0x90)
++REG32(PER_STRNG_5, 0x94)
++REG32(PER_STRNG_6, 0x98)
++REG32(PER_STRNG_7, 0x9c)
++REG32(PER_STRNG_8, 0xa0)
++REG32(PER_STRNG_9, 0xa4)
++REG32(PER_STRNG_10, 0xa8)
++REG32(PER_STRNG_11, 0xac)
++REG32(CORE_OUTPUT, 0xc0)
++REG32(RESET, 0xd0)
++    FIELD(RESET, VAL, 0, 1)
++REG32(OSC_EN, 0xd4)
++    FIELD(OSC_EN, VAL, 0, 1)
++REG32(TRNG_ISR, 0xe0)
++    FIELD(TRNG_ISR, SLVERR, 1, 1)
++    FIELD(TRNG_ISR, CORE_INT, 0, 1)
++REG32(TRNG_IMR, 0xe4)
++    FIELD(TRNG_IMR, SLVERR, 1, 1)
++    FIELD(TRNG_IMR, CORE_INT, 0, 1)
++REG32(TRNG_IER, 0xe8)
++    FIELD(TRNG_IER, SLVERR, 1, 1)
++    FIELD(TRNG_IER, CORE_INT, 0, 1)
++REG32(TRNG_IDR, 0xec)
++    FIELD(TRNG_IDR, SLVERR, 1, 1)
++    FIELD(TRNG_IDR, CORE_INT, 0, 1)
++REG32(SLV_ERR_CTRL, 0xf0)
++    FIELD(SLV_ERR_CTRL, ENABLE, 0, 1)
 +
-+/* TRNG_CTRL */
-+#define R_TRNG_CTRL                (0x0008)
-+#define   TRNG_CTRL_PERSODISABLE_MASK   (1 << 10)
-+#define   TRNG_CTRL_SINGLEGENMODE_MASK  (1 << 9)
-+#define   TRNG_CTRL_PRNGMODE_MASK       (1 << 7)
-+#define   TRNG_CTRL_TSTMODE_MASK        (1 << 6)
-+#define   TRNG_CTRL_PRNGSTART_MASK      (1 << 5)
-+#define   TRNG_CTRL_PRNGXS_MASK         (1 << 3)
-+#define   TRNG_CTRL_TRSSEN_MASK         (1 << 2)
-+#define   TRNG_CTRL_QERTUEN_MASK        (1 << 1)
-+#define   TRNG_CTRL_PRNGSRST_MASK       (1)
++#define R_MAX (R_SLV_ERR_CTRL + 1)
 +
-+/* TRNG_EXT_SEED_0 ... _11 */
-+#define R_TRNG_EXT_SEED_0          (0x0040)
-+#define R_TRNG_EXT_SEED_11         (R_TRNG_EXT_SEED_0 + 4 * 11)
++QEMU_BUILD_BUG_ON(R_MAX * 4 != sizeof_field(XlnxVersalTRng, regs));
 +
-+/* TRNG_PER_STRNG_0 ... 11 */
-+#define R_TRNG_PER_STRNG_0         (0x0080)
-+#define R_TRNG_PER_STRNG_11        (R_TRNG_PER_STRNG_0 + 4 * 11)
-+
-+/* TRNG_CORE_OUTPUT */
-+#define R_TRNG_CORE_OUTPUT         (0x00c0)
-+
-+/* TRNG_RESET */
-+#define R_TRNG_RESET               (0x00d0)
-+#define   TRNG_RESET_VAL_MASK      (1)
-+
-+/* TRNG_OSC_EN */
-+#define R_TRNG_OSC_EN              (0x00d4)
-+#define   TRNG_OSC_EN_VAL_MASK     (1)
-+
-+/* TRNG_TRNG_ISR, _IMR, _IER, _IDR */
-+#define R_TRNG_ISR                 (0x00e0)
-+#define R_TRNG_IMR                 (0x00e4)
-+#define R_TRNG_IER                 (0x00e8)
-+#define R_TRNG_IDR                 (0x00ec)
-+#define   TRNG_IRQ_SLVERR_MASK     (1 << 1)
-+#define   TRNG_IRQ_CORE_INT_MASK   (1)
-+
-+/*
-+ * End test with a formatted error message, by embedding the message
-+ * in a GError.
-+ */
-+#define TRNG_FAILED(FMT, ...)                           \
-+    do {                                                \
-+        g_autoptr(GError) err = g_error_new(            \
-+            g_quark_from_static_string(trng_qname), 0,  \
-+            FMT, ## __VA_ARGS__);                       \
-+        g_assert_no_error(err);                         \
++#define TRNG_GUEST_ERROR(D, FMT, ...) \
++    do {                                                               \
++        g_autofree char *p = object_get_canonical_path(OBJECT(D));     \
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: " FMT, p, ## __VA_ARGS__); \
 +    } while (0)
 +
-+static const gchar trng_qname[] = "xlnx-versal-trng-test";
++#define TRNG_WARN(D, FMT, ...) \
++    do {                                                               \
++        g_autofree char *p = object_get_canonical_path(OBJECT(D));     \
++        warn_report("%s: " FMT, p, ## __VA_ARGS__);                    \
++    } while (0)
 +
-+static const uint32_t prng_seed[12] = {
-+    0x01234567, 0x12345678, 0x23456789, 0x3456789a, 0x456789ab, 0x56789abc,
-+    0x76543210, 0x87654321, 0x98765432, 0xa9876543, 0xba987654, 0xfedcba98,
-+};
-+
-+static const uint32_t pers_str[12] = {
-+    0x76543210, 0x87654321, 0x98765432, 0xa9876543, 0xba987654, 0xfedcba98,
-+    0x01234567, 0x12345678, 0x23456789, 0x3456789a, 0x456789ab, 0x56789abc,
-+};
-+
-+static void trng_test_start(void)
++static bool trng_older_than_v2(XlnxVersalTRng *s)
 +{
-+    qtest_start("-machine xlnx-versal-virt");
++    return s->hw_version < 0x0200;
 +}
 +
-+static void trng_test_stop(void)
++static bool trng_in_reset(XlnxVersalTRng *s)
 +{
-+    qtest_end();
++    if (ARRAY_FIELD_EX32(s->regs, RESET, VAL)) {
++        return true;
++    }
++    if (ARRAY_FIELD_EX32(s->regs, CTRL, PRNGSRST)) {
++        return true;
++    }
++
++    return false;
 +}
 +
-+static void trng_test_set_uint_prop(const char *name, uint64_t value)
++static bool trng_test_enabled(XlnxVersalTRng *s)
 +{
-+    const char *path = "/machine/xlnx-versal/trng";
-+    QDict *response;
-+
-+    response = qmp("{ 'execute': 'qom-set',"
-+                    " 'arguments': {"
-+                       " 'path': %s,"
-+                       " 'property': %s,"
-+                       " 'value': %llu"
-+                      "} }", path,
-+                   name, (unsigned long long)value);
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
++    return ARRAY_FIELD_EX32(s->regs, CTRL, TSTMODE);
 +}
 +
-+static void trng_write(unsigned ra, uint32_t val)
++static bool trng_trss_enabled(XlnxVersalTRng *s)
 +{
-+    writel(TRNG_BASEADDR + ra, val);
++    if (trng_in_reset(s)) {
++        return false;
++    }
++    if (!ARRAY_FIELD_EX32(s->regs, CTRL, TRSSEN)) {
++        return false;
++    }
++    if (!ARRAY_FIELD_EX32(s->regs, OSC_EN, VAL)) {
++        return false;
++    }
++
++    return true;
 +}
 +
-+static uint32_t trng_read(unsigned ra)
++static void trng_seed_128(uint32_t *seed, uint64_t h00, uint64_t h64)
 +{
-+    return readl(TRNG_BASEADDR + ra);
++    seed[0] = extract64(h00, 0, 32);
++    seed[1] = extract64(h00, 32, 32);
++    seed[2] = extract64(h64, 0, 32);
++    seed[3] = extract64(h64, 32, 32);
 +}
 +
-+static void trng_bit_set(unsigned ra, uint32_t bits)
++static void trng_reseed(XlnxVersalTRng *s)
 +{
-+    trng_write(ra, (trng_read(ra) | bits));
-+}
++    bool ext_seed = ARRAY_FIELD_EX32(s->regs, CTRL, PRNGXS);
++    bool pers_disabled = ARRAY_FIELD_EX32(s->regs, CTRL, PERSODISABLE);
 +
-+static void trng_bit_clr(unsigned ra, uint32_t bits)
-+{
-+    trng_write(ra, (trng_read(ra) & ~bits));
-+}
-+
-+static void trng_ctrl_set(uint32_t bits)
-+{
-+    trng_bit_set(R_TRNG_CTRL, bits);
-+}
-+
-+static void trng_ctrl_clr(uint32_t bits)
-+{
-+    trng_bit_clr(R_TRNG_CTRL, bits);
-+}
-+
-+static uint32_t trng_status(void)
-+{
-+    return trng_read(R_TRNG_STATUS);
-+}
-+
-+static unsigned trng_qcnt(void)
-+{
-+    uint32_t sta = trng_status();
-+
-+    return (sta & TRNG_STATUS_QCNT_MASK) >> TRNG_STATUS_QCNT_SHIFT;
-+}
-+
-+static const char *trng_info(void)
-+{
-+    uint32_t sta = trng_status();
-+    uint32_t ctl = trng_read(R_TRNG_CTRL);
-+
-+    static char info[64];
-+
-+    snprintf(info, sizeof(info), "; status=0x%x, ctrl=0x%x", sta, ctl);
-+    return info;
-+}
-+
-+static void trng_check_status(uint32_t status_mask, const char *act)
-+{
-+    uint32_t clear_mask = 0;
-+    uint32_t status;
++    enum {
++        U384_U8 = 384 / 8,
++        U384_U32 = 384 / 32,
++    };
 +
 +    /*
-+     * Only selected bits are events in R_TRNG_STATUS, and
-+     * clear them needs to go through R_INT_CTRL.
++     * Maximum seed length is len(personalized string) + len(ext seed).
++     *
++     * g_rand_set_seed_array() takes array of uint32 in host endian.
 +     */
-+    if (status_mask & TRNG_STATUS_CERTF_MASK) {
-+        clear_mask |= TRNG_INT_CTRL_CERTF_RST_MASK;
-+    }
-+    if (status_mask & TRNG_STATUS_DTF_MASK) {
-+        clear_mask |= TRNG_INT_CTRL_DTF_RST_MASK;
-+    }
-+    if (status_mask & TRNG_STATUS_DONE_MASK) {
-+        clear_mask |= TRNG_INT_CTRL_DONE_RST_MASK;
-+    }
++    guint32 gs[U384_U32 * 2], *seed = &gs[U384_U32];
 +
-+    status = trng_status();
-+    if ((status & status_mask) != status_mask) {
-+        TRNG_FAILED("%s: Status bitmask 0x%x failed to be 1%s",
-+                    act, status_mask, trng_info());
-+    }
++    /*
++     * A disabled personalized string is the same as
++     * a string with all zeros.
++     *
++     * The device's hardware spec defines 3 modes (all selectable
++     * by guest at will and at anytime):
++     * 1) External seeding
++     *    This is a PRNG mode, in which the produced sequence shall
++     *    be reproducible if reseeded by the same 384-bit seed, as
++     *    supplied by guest software.
++     * 2) Test seeding
++     *    This is a PRNG mode, in which the produced sequence shall
++     *    be reproducible if reseeded by a 128-bit test seed, as
++     *    supplied by guest software.
++     * 3) Truly-random seeding
++     *    This is the TRNG mode, in which the produced sequence is
++     *    periodically reseeded by a crypto-strength entropy source.
++     *
++     * To assist debugging of certain classes of software defects,
++     * this QEMU model implements a 4th mode,
++     * 4) Forced PRNG
++     *    When in this mode, a reproducible sequence is generated
++     *    if software has selected the TRNG mode (mode 2).
++     *
++     *    This emulation-only mode can only be selected by setting
++     *    the uint64 property 'forced-prng' to a non-zero value.
++     *    Guest software cannot select this mode.
++     */
++    memset(gs, 0, sizeof(gs));
 +
-+    /* Remove event */
-+    trng_bit_set(R_TRNG_INT_CTRL, clear_mask);
-+
-+    if (!!(trng_read(R_TRNG_STATUS) & status_mask)) {
-+        TRNG_FAILED("%s: Event 0x%0x stuck at 1 after clear: %s",
-+                    act, status_mask, trng_info());
-+    }
-+}
-+
-+static void trng_check_done_status(const char *act)
-+{
-+    trng_check_status(TRNG_STATUS_DONE_MASK, act);
-+}
-+
-+static void trng_check_dtf_status(void)
-+{
-+    trng_check_status(TRNG_STATUS_DTF_MASK, "DTF injection");
-+}
-+
-+static void trng_check_certf_status(void)
-+{
-+    trng_check_status(TRNG_STATUS_CERTF_MASK, "CERTF injection");
-+}
-+
-+static void trng_reset(void)
-+{
-+    trng_write(R_TRNG_RESET, TRNG_RESET_VAL_MASK);
-+    trng_write(R_TRNG_RESET, 0);
-+}
-+
-+static void trng_load(unsigned r0, const uint32_t *b384)
-+{
-+    static const uint32_t zero[12] = { 0 };
-+    unsigned k;
-+
-+    if (!b384) {
-+        b384 = zero;
++    if (!pers_disabled) {
++        memcpy(gs, &s->regs[R_PER_STRNG_0], U384_U8);
 +    }
 +
-+    for (k = 0; k < 12; k++) {
-+        trng_write(r0 + 4 * k, b384[k]);
-+    }
-+}
-+
-+static void trng_reseed(const uint32_t *seed)
-+{
-+    const char *act;
-+    uint32_t ctl;
-+
-+    ctl = TRNG_CTRL_PRNGSTART_MASK |
-+          TRNG_CTRL_PRNGXS_MASK |
-+          TRNG_CTRL_TRSSEN_MASK;
-+
-+    trng_ctrl_clr(ctl | TRNG_CTRL_PRNGMODE_MASK);
-+
-+    if (seed) {
-+        trng_load(R_TRNG_EXT_SEED_0, seed);
-+        act = "Reseed PRNG";
-+        ctl &= ~TRNG_CTRL_TRSSEN_MASK;
++    if (ext_seed) {
++        memcpy(seed, &s->regs[R_EXT_SEED_0], U384_U8);
++    } else if (trng_test_enabled(s)) {
++        trng_seed_128(seed, s->tst_seed[0], s->tst_seed[1]);
++    } else if (s->forced_prng_seed) {
++        s->forced_prng_count++;
++        trng_seed_128(seed, s->forced_prng_count, s->forced_prng_seed);
 +    } else {
-+        trng_write(R_TRNG_OSC_EN, TRNG_OSC_EN_VAL_MASK);
-+        act = "Reseed TRNG";
-+        ctl &= ~TRNG_CTRL_PRNGXS_MASK;
++        qemu_guest_getrandom_nofail(seed, U384_U8);
 +    }
 +
-+    trng_ctrl_set(ctl);
-+    trng_check_done_status(act);
-+    trng_ctrl_clr(TRNG_CTRL_PRNGSTART_MASK);
++    g_rand_set_seed_array(s->prng, gs, ARRAY_SIZE(gs));
++
++    s->rand_count = 0;
++    s->rand_reseed = 1ULL << 48;
 +}
 +
-+static void trng_generate(bool auto_enb)
++static void trng_regen(XlnxVersalTRng *s)
 +{
-+    uint32_t ctl;
++    if (s->rand_reseed == 0) {
++        TRNG_GUEST_ERROR(s, "Too many generations without a reseed");
++        trng_reseed(s);
++    }
++    s->rand_reseed--;
 +
-+    ctl = TRNG_CTRL_PRNGSTART_MASK | TRNG_CTRL_SINGLEGENMODE_MASK;
-+    trng_ctrl_clr(ctl);
++    /*
++     * In real hardware, each regen creates 256 bits, but QCNT
++     * reports a max of 4.
++     */
++    ARRAY_FIELD_DP32(s->regs, STATUS, QCNT, 4);
++    s->rand_count = 256 / 32;
++}
 +
-+    if (auto_enb) {
-+        ctl &= ~TRNG_CTRL_SINGLEGENMODE_MASK;
++static uint32_t trng_rdout(XlnxVersalTRng *s)
++{
++    assert(s->rand_count);
++
++    s->rand_count--;
++    if (s->rand_count < 4) {
++        ARRAY_FIELD_DP32(s->regs, STATUS, QCNT, s->rand_count);
 +    }
 +
-+    trng_ctrl_set(ctl | TRNG_CTRL_PRNGMODE_MASK);
-+
-+    trng_check_done_status("Generate");
-+    g_assert(trng_qcnt() != 7);
++    return g_rand_int(s->prng);
 +}
 +
-+static size_t trng_collect(uint32_t *rnd, size_t cnt)
++static void trng_irq_update(XlnxVersalTRng *s)
 +{
-+    size_t i;
++    bool pending = s->regs[R_TRNG_ISR] & ~s->regs[R_TRNG_IMR];
++    qemu_set_irq(s->irq, pending);
++}
 +
-+    for (i = 0; i < cnt; i++) {
-+        if (trng_qcnt() == 0) {
-+            return i;
++static void trng_isr_postw(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
++    trng_irq_update(s);
++}
++
++static uint64_t trng_ier_prew(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
++    uint32_t val = val64;
++
++    s->regs[R_TRNG_IMR] &= ~val;
++    trng_irq_update(s);
++    return 0;
++}
++
++static uint64_t trng_idr_prew(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
++    uint32_t val = val64;
++
++    s->regs[R_TRNG_IMR] |= val;
++    trng_irq_update(s);
++    return 0;
++}
++
++static void trng_core_int_update(XlnxVersalTRng *s)
++{
++    bool pending = false;
++    uint32_t st = s->regs[R_STATUS];
++    uint32_t en = s->regs[R_INT_CTRL];
++
++    if (FIELD_EX32(st, STATUS, CERTF) && FIELD_EX32(en, INT_CTRL, CERTF_EN)) {
++        pending = true;
++    }
++
++    if (FIELD_EX32(st, STATUS, DTF) && FIELD_EX32(en, INT_CTRL, DTF_EN)) {
++        pending = true;
++    }
++
++    if (FIELD_EX32(st, STATUS, DONE) && FIELD_EX32(en, INT_CTRL, DONE_EN)) {
++        pending = true;
++    }
++
++    ARRAY_FIELD_DP32(s->regs, TRNG_ISR, CORE_INT, pending);
++    trng_irq_update(s);
++}
++
++static void trng_int_ctrl_postw(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
++    uint32_t v32 = val64;
++    uint32_t clr_mask = 0;
++
++    if (FIELD_EX32(v32, INT_CTRL, CERTF_RST)) {
++        clr_mask |= R_STATUS_CERTF_MASK;
++    }
++    if (FIELD_EX32(v32, INT_CTRL, DTF_RST)) {
++        clr_mask |= R_STATUS_DTF_MASK;
++    }
++    if (FIELD_EX32(v32, INT_CTRL, DONE_RST)) {
++        clr_mask |= R_STATUS_DONE_MASK;
++    }
++
++    s->regs[R_STATUS] &= ~clr_mask;
++    trng_core_int_update(s);
++}
++
++static void trng_done(XlnxVersalTRng *s)
++{
++    ARRAY_FIELD_DP32(s->regs, STATUS, DONE, true);
++    trng_core_int_update(s);
++}
++
++static void trng_fault_event_set(XlnxVersalTRng *s, uint32_t events)
++{
++    bool pending = false;
++
++    /* Disabled TRSS cannot generate any fault event */
++    if (!trng_trss_enabled(s)) {
++        return;
++    }
++
++    if (FIELD_EX32(events, STATUS, CERTF)) {
++        /* In older version, ERTU must be enabled explicitly to get CERTF */
++        if (trng_older_than_v2(s) &&
++            !ARRAY_FIELD_EX32(s->regs, CTRL, QERTUEN)) {
++            TRNG_WARN(s, "CERTF injection ignored: ERTU disabled");
++        } else {
++            ARRAY_FIELD_DP32(s->regs, STATUS, CERTF, true);
++            pending = true;
 +        }
-+
-+        rnd[i] = trng_read(R_TRNG_CORE_OUTPUT);
 +    }
 +
-+    return i;
++    if (FIELD_EX32(events, STATUS, DTF)) {
++        ARRAY_FIELD_DP32(s->regs, STATUS, DTF, true);
++        pending = true;
++    }
++
++    if (pending) {
++        trng_core_int_update(s);
++    }
 +}
 +
-+static void trng_test_autogen(void)
++static void trng_soft_reset(XlnxVersalTRng *s)
 +{
-+    const size_t cnt = 512 / 32;
-+    uint32_t rng[cnt], prng[cnt];
-+    size_t n;
++    s->rand_count = 0;
++    s->regs[R_STATUS] = 0;
 +
-+    trng_reset();
-+
-+    /* PRNG run #1 */
-+    trng_reseed(prng_seed);
-+    trng_generate(true);
-+
-+    n = trng_collect(prng, cnt);
-+    if (n != cnt) {
-+        TRNG_FAILED("PRNG_1 Auto-gen test failed: expected = %u, got = %u",
-+                    (unsigned)cnt, (unsigned)n);
-+    }
-+
-+    /* TRNG, should not match PRNG */
-+    trng_reseed(NULL);
-+    trng_generate(true);
-+
-+    n = trng_collect(rng, cnt);
-+    if (n != cnt) {
-+        TRNG_FAILED("TRNG Auto-gen test failed: expected = %u, got = %u",
-+                    (unsigned)cnt, (unsigned)n);
-+    }
-+
-+    /* PRNG #2: should matches run #1 */
-+    trng_reseed(prng_seed);
-+    trng_generate(true);
-+
-+    n = trng_collect(rng, cnt);
-+    if (n != cnt) {
-+        TRNG_FAILED("PRNG_2 Auto-gen test failed: expected = %u, got = %u",
-+                    (unsigned)cnt, (unsigned)n);
-+    }
-+
-+    if (memcmp(rng, prng, sizeof(rng))) {
-+        TRNG_FAILED("PRNG_2 Auto-gen test failed: does not match PRNG_1");
-+    }
++    ARRAY_FIELD_DP32(s->regs, TRNG_ISR, CORE_INT, 0);
 +}
 +
-+static void trng_test_oneshot(void)
++static void trng_ctrl_postw(RegisterInfo *reg, uint64_t val64)
 +{
-+    const size_t cnt = 512 / 32;
-+    uint32_t rng[cnt];
-+    size_t n;
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
 +
-+    trng_reset();
-+
-+    /* PRNG run #1 */
-+    trng_reseed(prng_seed);
-+    trng_generate(false);
-+
-+    n = trng_collect(rng, cnt);
-+    if (n == cnt) {
-+        TRNG_FAILED("PRNG_1 One-shot gen test failed");
++    if (trng_in_reset(s)) {
++        return;
 +    }
 +
-+    /* TRNG, should not match PRNG */
-+    trng_reseed(NULL);
-+    trng_generate(false);
-+
-+    n = trng_collect(rng, cnt);
-+    if (n == cnt) {
-+        TRNG_FAILED("TRNG One-shot test failed");
++    if (FIELD_EX32(val64, CTRL, PRNGSRST)) {
++        trng_soft_reset(s);
++        trng_irq_update(s);
++        return;
 +    }
++
++    if (!FIELD_EX32(val64, CTRL, PRNGSTART)) {
++        return;
++    }
++
++    if (FIELD_EX32(val64, CTRL, PRNGMODE)) {
++        trng_regen(s);
++    } else {
++        trng_reseed(s);
++    }
++
++    trng_done(s);
 +}
 +
-+static void trng_test_per_str(void)
++static void trng_ctrl4_postw(RegisterInfo *reg, uint64_t val64)
 +{
-+    const size_t cnt = 512 / 32;
-+    uint32_t rng[cnt], prng[cnt];
-+    size_t n;
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
 +
-+    trng_reset();
-+
-+    /* #1: disabled */
-+    trng_ctrl_set(TRNG_CTRL_PERSODISABLE_MASK);
-+    trng_reseed(prng_seed);
-+    trng_ctrl_clr(TRNG_CTRL_PERSODISABLE_MASK);
-+
-+    trng_generate(true);
-+    n = trng_collect(prng, cnt);
-+    g_assert_cmpuint(n, ==, cnt);
-+
-+    /* #2: zero string should match personalization disabled */
-+    trng_load(R_TRNG_PER_STRNG_0, NULL);
-+    trng_reseed(prng_seed);
-+
-+    trng_generate(true);
-+    n = trng_collect(rng, cnt);
-+    g_assert_cmpuint(n, ==, cnt);
-+
-+    if (memcmp(rng, prng, sizeof(rng))) {
-+        TRNG_FAILED("Failed: PER_DISABLE != PER_STRNG_ALL_ZERO");
++    /* Only applies to test mode with TRSS enabled */
++    if (!trng_test_enabled(s) || !trng_trss_enabled(s)) {
++        return;
 +    }
 +
-+    /* #3: non-zero string should not match personalization disabled */
-+    trng_load(R_TRNG_PER_STRNG_0, pers_str);
-+    trng_reseed(prng_seed);
++    /* Shift in a single bit.  */
++    s->tst_seed[1] <<= 1;
++    s->tst_seed[1] |= s->tst_seed[0] >> 63;
++    s->tst_seed[0] <<= 1;
++    s->tst_seed[0] |= val64 & 1;
 +
-+    trng_generate(true);
-+    n = trng_collect(rng, cnt);
-+    g_assert_cmpuint(n, ==, cnt);
++    trng_reseed(s);
++    trng_regen(s);
++}
 +
-+    if (!memcmp(rng, prng, sizeof(rng))) {
-+        TRNG_FAILED("Failed: PER_DISABLE == PER_STRNG_NON_ZERO");
++static uint64_t trng_core_out_postr(RegisterInfo *reg, uint64_t val)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
++    bool oneshot = ARRAY_FIELD_EX32(s->regs, CTRL, SINGLEGENMODE);
++    bool start = ARRAY_FIELD_EX32(s->regs, CTRL, PRNGSTART);
++    uint32_t r = 0xbad;
++
++    if (trng_in_reset(s)) {
++        TRNG_GUEST_ERROR(s, "Reading random number while in reset!");
++        return r;
 +    }
-+}
 +
-+static void trng_test_forced_prng(void)
-+{
-+    const char *prop = "forced-prng";
-+    const uint64_t seed = 0xdeadbeefbad1bad0ULL;
-+
-+    const size_t cnt = 512 / 32;
-+    uint32_t rng[cnt], prng[cnt];
-+    size_t n;
-+
-+    trng_reset();
-+    trng_test_set_uint_prop(prop, seed);
-+
-+    /* TRNG run #1 */
-+    trng_reset();
-+    trng_reseed(NULL);
-+    trng_generate(true);
-+
-+    n = trng_collect(prng, cnt);
-+    g_assert_cmpuint(n, ==, cnt);
-+
-+    /* TRNG run #2 should match run #1 */
-+    trng_reset();
-+    trng_reseed(NULL);
-+    trng_generate(true);
-+
-+    n = trng_collect(rng, cnt);
-+    g_assert_cmpuint(n, ==, cnt);
-+
-+    if (memcmp(rng, prng, sizeof(rng))) {
-+        TRNG_FAILED("Forced-prng test failed: results do not match");
++    if (s->rand_count == 0) {
++        TRNG_GUEST_ERROR(s, "Reading random number when unavailable!");
++        return r;
 +    }
++
++    r = trng_rdout(s);
++
++    /* Automatic mode regenerates when half the output reg is empty.  */
++    if (!oneshot && start && s->rand_count <= 3) {
++        trng_regen(s);
++    }
++
++    return r;
 +}
 +
-+static void trng_test_fault_events(void)
++static void trng_reset(XlnxVersalTRng *s)
 +{
-+    const char *prop = "fips-fault-events";
++    unsigned int i;
 +
-+    trng_reset();
++    s->forced_prng_count = 0;
 +
-+    /* Fault events only when TRSS is enabled */
-+    trng_write(R_TRNG_OSC_EN, TRNG_OSC_EN_VAL_MASK);
-+    trng_ctrl_set(TRNG_CTRL_TRSSEN_MASK);
-+
-+    trng_test_set_uint_prop(prop, TRNG_STATUS_CERTF_MASK);
-+    trng_check_certf_status();
-+
-+    trng_test_set_uint_prop(prop, TRNG_STATUS_DTF_MASK);
-+    trng_check_dtf_status();
-+
-+    trng_reset();
++    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
++        register_reset(&s->regs_info[i]);
++    }
++    trng_soft_reset(s);
++    trng_irq_update(s);
 +}
 +
-+int main(int argc, char **argv)
++static uint64_t trng_reset_prew(RegisterInfo *reg, uint64_t val64)
 +{
-+    int rc;
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg->opaque);
 +
-+    g_test_init(&argc, &argv, NULL);
++    if (!ARRAY_FIELD_EX32(s->regs, RESET, VAL) &&
++        FIELD_EX32(val64, RESET, VAL)) {
++        trng_reset(s);
++    }
 +
-+    #define TRNG_TEST_ADD(n) \
-+            qtest_add_func("/hw/misc/xlnx-versal-trng/" #n, trng_test_ ## n);
-+    TRNG_TEST_ADD(autogen);
-+    TRNG_TEST_ADD(oneshot);
-+    TRNG_TEST_ADD(per_str);
-+    TRNG_TEST_ADD(forced_prng);
-+    TRNG_TEST_ADD(fault_events);
-+    #undef TRNG_TEST_ADD
-+
-+    trng_test_start();
-+    rc = g_test_run();
-+    trng_test_stop();
-+
-+    return rc;
++    return val64;
 +}
++
++static uint64_t trng_register_read(void *opaque, hwaddr addr, unsigned size)
++{
++    /*
++     * Guest provided seed and personalized strings cannot be
++     * read back, and read attempts return value of A_STATUS.
++     */
++    switch (addr) {
++    case A_EXT_SEED_0 ... A_PER_STRNG_11:
++        addr = A_STATUS;
++        break;
++    }
++
++    return register_read_memory(opaque, addr, size);
++}
++
++static void trng_register_write(void *opaque, hwaddr addr,
++                                uint64_t value, unsigned size)
++{
++    RegisterInfoArray *reg_array = opaque;
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(reg_array->r[0]->opaque);
++
++    if (trng_older_than_v2(s)) {
++        switch (addr) {
++        case A_CTRL:
++            value = FIELD_DP64(value, CTRL, PERSODISABLE, 0);
++            value = FIELD_DP64(value, CTRL, SINGLEGENMODE, 0);
++            break;
++        case A_CTRL_2:
++        case A_CTRL_3:
++        case A_CTRL_4:
++            return;
++        }
++    } else {
++        switch (addr) {
++        case A_CTRL:
++            value = FIELD_DP64(value, CTRL, EATAU, 0);
++            value = FIELD_DP64(value, CTRL, QERTUEN, 0);
++            break;
++        }
++    }
++
++    register_write_memory(opaque, addr, value, size);
++}
++
++static RegisterAccessInfo trng_regs_info[] = {
++    {   .name = "INT_CTRL",  .addr = A_INT_CTRL,
++        .post_write = trng_int_ctrl_postw,
++    },{ .name = "STATUS",  .addr = A_STATUS,
++        .ro = 0xfff,
++    },{ .name = "CTRL",  .addr = A_CTRL,
++        .post_write = trng_ctrl_postw,
++    },{ .name = "CTRL_2",  .addr = A_CTRL_2,
++        .reset = 0x210c,
++    },{ .name = "CTRL_3",  .addr = A_CTRL_3,
++        .reset = 0x26f09,
++    },{ .name = "CTRL_4",  .addr = A_CTRL_4,
++        .post_write = trng_ctrl4_postw,
++    },{ .name = "EXT_SEED_0",  .addr = A_EXT_SEED_0,
++    },{ .name = "EXT_SEED_1",  .addr = A_EXT_SEED_1,
++    },{ .name = "EXT_SEED_2",  .addr = A_EXT_SEED_2,
++    },{ .name = "EXT_SEED_3",  .addr = A_EXT_SEED_3,
++    },{ .name = "EXT_SEED_4",  .addr = A_EXT_SEED_4,
++    },{ .name = "EXT_SEED_5",  .addr = A_EXT_SEED_5,
++    },{ .name = "EXT_SEED_6",  .addr = A_EXT_SEED_6,
++    },{ .name = "EXT_SEED_7",  .addr = A_EXT_SEED_7,
++    },{ .name = "EXT_SEED_8",  .addr = A_EXT_SEED_8,
++    },{ .name = "EXT_SEED_9",  .addr = A_EXT_SEED_9,
++    },{ .name = "EXT_SEED_10",  .addr = A_EXT_SEED_10,
++    },{ .name = "EXT_SEED_11",  .addr = A_EXT_SEED_11,
++    },{ .name = "PER_STRNG_0",  .addr = A_PER_STRNG_0,
++    },{ .name = "PER_STRNG_1",  .addr = A_PER_STRNG_1,
++    },{ .name = "PER_STRNG_2",  .addr = A_PER_STRNG_2,
++    },{ .name = "PER_STRNG_3",  .addr = A_PER_STRNG_3,
++    },{ .name = "PER_STRNG_4",  .addr = A_PER_STRNG_4,
++    },{ .name = "PER_STRNG_5",  .addr = A_PER_STRNG_5,
++    },{ .name = "PER_STRNG_6",  .addr = A_PER_STRNG_6,
++    },{ .name = "PER_STRNG_7",  .addr = A_PER_STRNG_7,
++    },{ .name = "PER_STRNG_8",  .addr = A_PER_STRNG_8,
++    },{ .name = "PER_STRNG_9",  .addr = A_PER_STRNG_9,
++    },{ .name = "PER_STRNG_10",  .addr = A_PER_STRNG_10,
++    },{ .name = "PER_STRNG_11",  .addr = A_PER_STRNG_11,
++    },{ .name = "CORE_OUTPUT",  .addr = A_CORE_OUTPUT,
++        .ro = 0xffffffff,
++        .post_read = trng_core_out_postr,
++    },{ .name = "RESET",  .addr = A_RESET,
++        .reset = 0x1,
++        .pre_write = trng_reset_prew,
++    },{ .name = "OSC_EN",  .addr = A_OSC_EN,
++    },{ .name = "TRNG_ISR",  .addr = A_TRNG_ISR,
++        .w1c = 0x3,
++        .post_write = trng_isr_postw,
++    },{ .name = "TRNG_IMR",  .addr = A_TRNG_IMR,
++        .reset = 0x3,
++        .ro = 0x3,
++    },{ .name = "TRNG_IER",  .addr = A_TRNG_IER,
++        .pre_write = trng_ier_prew,
++    },{ .name = "TRNG_IDR",  .addr = A_TRNG_IDR,
++        .pre_write = trng_idr_prew,
++    },{ .name = "SLV_ERR_CTRL",  .addr = A_SLV_ERR_CTRL,
++    }
++};
++
++static const MemoryRegionOps trng_ops = {
++    .read = trng_register_read,
++    .write = trng_register_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void trng_init(Object *obj)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    RegisterInfoArray *reg_array;
++
++    reg_array =
++        register_init_block32(DEVICE(obj), trng_regs_info,
++                              ARRAY_SIZE(trng_regs_info),
++                              s->regs_info, s->regs,
++                              &trng_ops,
++                              XLNX_VERSAL_TRNG_ERR_DEBUG,
++                              R_MAX * 4);
++
++    sysbus_init_mmio(sbd, &reg_array->mem);
++    sysbus_init_irq(sbd, &s->irq);
++
++    s->prng = g_rand_new();
++}
++
++static void trng_unrealize(DeviceState *dev)
++{
++    XlnxVersalTRng *s = XLNX_VERSAL_TRNG(dev);
++
++    g_rand_free(s->prng);
++    s->prng = NULL;
++}
++
++static void trng_reset_hold(Object *obj)
++{
++    trng_reset(XLNX_VERSAL_TRNG(obj));
++}
++
++static void trng_prop_fault_event_set(Object *obj, Visitor *v,
++                                      const char *name, void *opaque,
++                                      Error **errp)
++{
++    Property *prop = opaque;
++    uint32_t *events = object_field_prop_ptr(obj, prop);
++
++    visit_type_uint32(v, name, events, errp);
++    if (*errp) {
++        return;
++    }
++
++    trng_fault_event_set(XLNX_VERSAL_TRNG(obj), *events);
++}
++
++static const PropertyInfo trng_prop_fault_events = {
++    .name = "uint32:bits",
++    .description = "Set to trigger TRNG fault events",
++    .set = trng_prop_fault_event_set,
++    .realized_set_allowed = true,
++};
++
++static PropertyInfo trng_prop_uint64; /* to extend qdev_prop_uint64 */
++
++static Property trng_props[] = {
++    DEFINE_PROP_UINT64("forced-prng", XlnxVersalTRng, forced_prng_seed, 0),
++    DEFINE_PROP_UINT32("hw-version", XlnxVersalTRng, hw_version, 0x0200),
++    DEFINE_PROP("fips-fault-events", XlnxVersalTRng, forced_faults,
++                trng_prop_fault_events, uint32_t),
++
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static const VMStateDescription vmstate_trng = {
++    .name = TYPE_XLNX_VERSAL_TRNG,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(rand_count, XlnxVersalTRng),
++        VMSTATE_UINT64(rand_reseed, XlnxVersalTRng),
++        VMSTATE_UINT64(forced_prng_count, XlnxVersalTRng),
++        VMSTATE_UINT64_ARRAY(tst_seed, XlnxVersalTRng, 2),
++        VMSTATE_UINT32_ARRAY(regs, XlnxVersalTRng, R_MAX),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static void trng_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    dc->vmsd = &vmstate_trng;
++    dc->unrealize = trng_unrealize;
++    rc->phases.hold = trng_reset_hold;
++
++    /* Clone uint64 property with set allowed after realized */
++    trng_prop_uint64 = qdev_prop_uint64;
++    trng_prop_uint64.realized_set_allowed = true;
++    trng_props[0].info = &trng_prop_uint64;
++
++    device_class_set_props(dc, trng_props);
++}
++
++static const TypeInfo trng_info = {
++    .name          = TYPE_XLNX_VERSAL_TRNG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(XlnxVersalTRng),
++    .class_init    = trng_class_init,
++    .instance_init = trng_init,
++};
++
++static void trng_register_types(void)
++{
++    type_register_static(&trng_info);
++}
++
++type_init(trng_register_types)
+diff --git a/include/hw/misc/xlnx-versal-trng.h b/include/hw/misc/xlnx-versal-trng.h
+new file mode 100644
+index 0000000000..0bcef8a613
+--- /dev/null
++++ b/include/hw/misc/xlnx-versal-trng.h
+@@ -0,0 +1,58 @@
++/*
++ * Non-crypto strength model of the True Random Number Generator
++ * in the AMD/Xilinx Versal device family.
++ *
++ * Copyright (c) 2017-2020 Xilinx Inc.
++ * Copyright (c) 2023 Advanced Micro Devices, Inc.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++#ifndef XLNX_VERSAL_TRNG_H
++#define XLNX_VERSAL_TRNG_H
++
++#include "hw/irq.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++
++#define TYPE_XLNX_VERSAL_TRNG "xlnx.versal-trng"
++OBJECT_DECLARE_SIMPLE_TYPE(XlnxVersalTRng, XLNX_VERSAL_TRNG);
++
++#define RMAX_XLNX_VERSAL_TRNG ((0xf0 / 4) + 1)
++
++typedef struct XlnxVersalTRng {
++    SysBusDevice parent_obj;
++    qemu_irq irq;
++    GRand *prng;
++
++    uint32_t hw_version;
++    uint32_t forced_faults;
++
++    uint32_t rand_count;
++    uint64_t rand_reseed;
++
++    uint64_t forced_prng_seed;
++    uint64_t forced_prng_count;
++    uint64_t tst_seed[2];
++
++    uint32_t regs[RMAX_XLNX_VERSAL_TRNG];
++    RegisterInfo regs_info[RMAX_XLNX_VERSAL_TRNG];
++} XlnxVersalTRng;
++
++#undef RMAX_XLNX_VERSAL_TRNG
++#endif
 -- 
 2.25.1
 

@@ -1,145 +1,207 @@
-Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp884613ejb;
-        Wed, 1 Nov 2023 04:09:32 -0700 (PDT)
-X-Received: by 2002:a05:6402:cad:b0:540:1bc0:65b2 with SMTP id cn13-20020a0564020cad00b005401bc065b2mr11855209edb.10.1698836972519;
-        Wed, 01 Nov 2023 04:09:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698836972; cv=none;
+Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp1254839ejb;
+        Wed, 1 Nov 2023 14:08:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH3CnrX9kcNlJGRi67AM5CLAYGu0U6J0VQpjpBgwLc8Ofh6kvDMPmASNXx8fEyrAlK83eoe
+X-Received: by 2002:a05:6214:1304:b0:674:4ef3:f400 with SMTP id pn4-20020a056214130400b006744ef3f400mr8958222qvb.53.1698872892012;
+        Wed, 01 Nov 2023 14:08:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1698872891; cv=pass;
         d=google.com; s=arc-20160816;
-        b=clP/ZjSs+XJ33loAf1Im0c7eRZnfTQUqGm9CJ+McqW8g9vB8p6gO46DWlJyZzlKCyo
-         GDDgLd4q64WASwAq+WMFmaSzUC0Lv2AJNDEdoduIxV7eFtxLvEUaZ0FJHWHH7cj0SxSN
-         55qWu6rzvldmxdrrf5MgRQ4bVTrIX9mpgheSiTfMGIcPEjkuF+r7clAZftgt2m7+yGTW
-         gEobYmsD8PPA9OH6Z+VZ7bJWcP3ylp7dBcbElFdcBS6XzxqCwuB/EmA0B6rGHj1ce//c
-         z3NxzUUKZhHoDfmGZcQqDlEr6lBEFXoZA+TRMaGpaYVB/PP8NXnKsla9cDbXj11KJvYp
-         44wQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=yqVFnW1WUFIe+4EJTxkGaGemTAQgj7XGsOKAu6CZ+Zw=;
-        fh=nostK4uholfZQz2xFpf5ajL9JVfbmVsFSRvduyIl1pM=;
-        b=m4DfWjBDb5VymzCtEKQaLG9e+bjc6XfL/qXO9ujoyZQsEJxZQ1zy3P2smlBQfHofhl
-         jNFhlwA1qNJIKgtZnxjGFklRZhDIR+nsn8efPYXljELL/oysz8sreJN6uyYVnLZiSL30
-         ymExPHHYg1QIbUEVBxEk0pfhU4rUEl4POyGyiQkYBFoP8c0i/C6vg8E+MBwyzb3EMO8/
-         8B80d75dmkjf1AYvkzfISnACtSGJgIOqnfXpDqgRrrIkBC3yCk0q1lqBXXRzWO8CJ4vB
-         DeVOKsOL9/cNMV96lkNH9WbalRMyS2crB6Tq0oMncmsW4fpWPDcnI9PPkeUP5AmW11PV
-         yJNw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2SiwlMUq;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s1-20020a50d481000000b0054353639155sor108413edi.11.2023.11.01.04.09.32
+        b=jg1MfTrSrpI4WVRKo5llib26LP9jP84Nlac8Hkx3owQ9qdxV2oqbx+/AOsXsk8XrRa
+         pfjQ50oBXuIHu2du/uKF0WzFuM8wPl3EYbJ0Dve7jCQlXWohXYacnR6R8qvFMbdtMBo4
+         NsAPtyQx/rjVFJBkxlEULWw9bFz26tmjzoVzJYdkajHrXJeHEMs84cKPurX1LvXZa8Ob
+         6lELSr+NrrU7jktQQAd48l+7ElkVNW/pDkUjL5cdZxOKcxnOACOs2TpHmrSJ5Dl0fRGE
+         AzPzUSuLZr9usUbhbmmyO/26ol+EX3WMUaO61HRkkeJusyIA6UF+HRgX/lxnW0JjYwNT
+         7X0A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=Moa0axuF7omkDierUjBunbHH6SOVyOt/e+07ff+jXW8=;
+        fh=dYx7FQ7/ftMDkTsnXowDDyTw+udrU75BPfDa6mIYzq4=;
+        b=CQF5EON9j5xjwuOk7EvahFwDxnOVzWOrzodv+QgUB0COqaArS7Ptg3O5bQogZYM4LO
+         glaGAatlkwGbgWcXL/nlrcDVXEbJD8PjCkjLU+1VOOZK5TGEYQVFPegQdgm1y8EsKaPA
+         +rw7QUiUd/e48RfzMBE7WakQ8OPAdeymTYwFEpdHtyRmyl9Op6/bSgsfcA/Kwyrz3cMz
+         rSUzV6iAdOBFjhEoYrguF6hyw78nyJk1SYI/KRJojY/A3AALWw9ZtRA0J30zOqSjv7SD
+         pUp62KQ2A4QWOHH1PKoPQjxtabDHb4U7HQ+nWUlThmU5GD7/aOSS4f0c8L1zrALYsTkc
+         Ulbg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=ITfdo05d;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x4-20020a0ceb84000000b0066d03a72f6fsi3160054qvo.613.2023.11.01.14.08.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 01 Nov 2023 04:09:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 01 Nov 2023 14:08:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2SiwlMUq;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1698836972; x=1699441772; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=yqVFnW1WUFIe+4EJTxkGaGemTAQgj7XGsOKAu6CZ+Zw=;
-        b=2SiwlMUqnYPKTfB3Gan1ETJlHN0II0VlTX8q2tJNcpKPT08GXOcIqNNO5MGmGw96zG
-         JXJrUQz7eK8lIH74sSuWqvFuoT5St7uFyGQThXJNDAaY4EtnLr+CJBPIzgPeDxUS5mOw
-         g7OIIRnSkfWmazNfd6TAXFjFSDYFxuawkVXp3g+woaZ66iJ/4GtbExPgULHhNTFTAmlZ
-         YyaY9OwHQL3Y6+3ISbNrouuqmxiy1GtLQW1rkClZmDZx5G3JFImWQVAXlOc6TEw5qJSR
-         v3ZmUpcOpkTazj471soJ7graqIj1IilwqIewVC39fejyr2avCBB0gi65i0/ntcxp/Ipi
-         RYTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698836972; x=1699441772;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yqVFnW1WUFIe+4EJTxkGaGemTAQgj7XGsOKAu6CZ+Zw=;
-        b=S07EaI4jbW0tNaiQFJyNIUhLtk1tXgKDKSA2YlJftPrYpZ+njvch8UhYyGh/XAmxP7
-         CBZGNJAMGp2rkix1fwkElrYEWRNB6UCCBpF5R96Z5rKPJKKvI2l+aOeus96hbSijQKVI
-         92MQJ4f5omhSE/y2wh4BXGAHbayPOzibomVA7ujLf1MDXlTttphvmX34pxCuhG5h/fXb
-         IF/A53xaFBpi0ilGrOHKz4QaY1Lrf3qgmzWJp0Fg0oBU5omn0AAA8ag4ltffaMhNbAM0
-         sR5+yxiFWvh81SQUmHtRTbZ5xCRByIqnmgjIlRjX2pZkLUDv/wuo7vxBSth68y/OiacI
-         lJ9A==
-X-Gm-Message-State: AOJu0Yy0poEGkS4bKHqJs3lub5WD74ETpTlOuHG/1nadJ6XwvjtIdoXP
-	aTf5Mx+W9kjSEXWmwBAWWL2UBAfMKgM9LXKMgkBtGg==
-X-Google-Smtp-Source: AGHT+IEglgoiFzblwGaoUG696VsUyY6rrTgHoyX01C4Z9yioOlWCKk1Tbu9+fJ4ivJz7cUM0dwtdTQ==
-X-Received: by 2002:a50:99cf:0:b0:543:6397:b46d with SMTP id n15-20020a5099cf000000b005436397b46dmr224828edb.2.1698836971343;
-        Wed, 01 Nov 2023 04:09:31 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (49.222.77.34.bc.googleusercontent.com. [34.77.222.49])
-        by smtp.gmail.com with ESMTPSA id du15-20020a05600c634f00b004083bc9ac90sm1162832wmb.24.2023.11.01.04.09.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Nov 2023 04:09:30 -0700 (PDT)
-Date: Wed, 1 Nov 2023 11:09:26 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: Eric Auger <eric.auger@redhat.com>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jason Wang <jasowang@redhat.com>,
-	Kunkun Jiang <jiangkunkun@huawei.com>,
-	Zenghui Yu <yuzenghui@huawei.com>, Simon Veith <sveith@amazon.de>,
-	qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Joe Komlodi <joe.komlodi@xilinx.com>,
-	Prem Mallappa <prem.mallappa@broadcom.com>,
-	Leonardo Garcia <leonardo.garcia@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>
-Subject: Re: Any plans to implement more ARM SMMUv3 features?
-Message-ID: <ZUIx5qA8YAIbyWEI@google.com>
-References: <87il6n0zlw.fsf@draig.linaro.org>
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=ITfdo05d;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qyIRR-0006ag-V2; Wed, 01 Nov 2023 17:07:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
+ id 1qyIRQ-0006aU-Qh; Wed, 01 Nov 2023 17:07:57 -0400
+Received: from mail-bn8nam12on20624.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5b::624]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
+ id 1qyIRO-0006Nh-5i; Wed, 01 Nov 2023 17:07:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NnqNDVOJHo9nyT5TWxoEv3b3BqC7Cdc4DDbPKis+fWyBRSwlrNp+7avdhwy3K4RrGujfNStm2qT68mLQEFRU7eAZMXhhAhnEHCBeZFW1AqHmIRXVfhGCnFSa+l71PJhFwRNyO3/IbG6IBp7pYWa563QYMP0CD9ZpMOp080/faITGGPZbpbHDPpHyQsd/EaleHfP2Q6akWMY4cRVdBQIQpezaiZZeXZALNI5F59DTPT/ZP3AwcisTUcVGOfSKLG+/hYMkD2NlQieW9cVmn8NW6rg3VVstf5r9rdLKKZWA3I9LcUp1rXZ+7hJR9/DM60qWV3FTcXBV4vdizdMzAVErlg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Moa0axuF7omkDierUjBunbHH6SOVyOt/e+07ff+jXW8=;
+ b=cYfJnGIffe1bg5gm0rMfDLu/SksgTkACSpjf/LCF7p0RBM/cBjLuztMTsCIvCw+lIvaGML3q5P3K3G3sf9pyjnJHQzt6FmB3Qbt4b1daKTpgEPkBwQo6YyVGouo4haVPGuPd2345wUQx1U2l82NbRtFBgt/Uy/Ji8rzFnFKcp9UYGQueCFZVo8d5Lbeg5KW2q4G+TJe8348563uCh0XoKUUOAAv9GLu1nZZ6qzdikkBr9SnPpB3ZsDYFPP+/8p+oTkOcu3U8mBAZN7M4c1Os2fRzhTatGwi6kQCpAC7fkV41Z172+LeQreMqpZneF7I8UIV38+Y2kuo86EI0tVfqzQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Moa0axuF7omkDierUjBunbHH6SOVyOt/e+07ff+jXW8=;
+ b=ITfdo05dO4E37SNkOBKGGGxkvio+2lm4/kJS1/lscm9QhCEFI2/Lh4ujBFFSM7f0TnPhlpZpNtSS9xMfSIFRl5b1hX+eyLPKSlabxAT1zvYRA7B3N6+5Zcvq2LnELbelJa1fhlXeuWK8lVdwCyyFYVkaHW4UtZMgKQb5zjXVsL0=
+Received: from DM5PR08CA0025.namprd08.prod.outlook.com (2603:10b6:4:60::14) by
+ SA1PR12MB7319.namprd12.prod.outlook.com (2603:10b6:806:2b5::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.19; Wed, 1 Nov
+ 2023 21:07:48 +0000
+Received: from CY4PEPF0000FCC4.namprd03.prod.outlook.com
+ (2603:10b6:4:60:cafe::c9) by DM5PR08CA0025.outlook.office365.com
+ (2603:10b6:4:60::14) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.19 via Frontend
+ Transport; Wed, 1 Nov 2023 21:07:48 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ CY4PEPF0000FCC4.mail.protection.outlook.com (10.167.242.106) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6954.19 via Frontend Transport; Wed, 1 Nov 2023 21:07:47 +0000
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Wed, 1 Nov
+ 2023 16:07:46 -0500
+Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.32 via Frontend
+ Transport; Wed, 1 Nov 2023 16:07:45 -0500
+From: Vikram Garhwal <vikram.garhwal@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <sstabellini@kernel.org>, <vikram.garhwal@amd.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Anthony Perard <anthony.perard@citrix.com>, "Paul
+ Durrant" <paul@xen.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
+Subject: [QEMU][PATCH v1] Xen: Fix xen_set_irq() and
+ xendevicemodel_set_irq_level()
+Date: Wed, 1 Nov 2023 14:07:23 -0700
+Message-ID: <20231101210724.27263-1-vikram.garhwal@amd.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <87il6n0zlw.fsf@draig.linaro.org>
-X-TUID: pP7vFb1FFGWI
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000FCC4:EE_|SA1PR12MB7319:EE_
+X-MS-Office365-Filtering-Correlation-Id: 61a46221-23b1-4320-e7fe-08dbdb1e99d2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 1FjwNtzkfSY35JT5UXB11fIvap/I6B8BCWkMfj6c0bwcb/JAOUbUMwKWGe4j0BKYt+U82cDMDVQxWXrT9ebv2C1FvsX8tC2OZJPYQwHCxy7Z8D/lOmArAo0BQV4eQrKpuj+QuBzB/tm8px4LDbgnwnfyUIfHQ4X7lrRKf+e6akxr/2sxoZ+y7HPUONNS3aj7xZWjzUZVy81tdcAarrn6UNMJxl4tP4D3dHSj3m0wxbbqqp5sWu+sicWAtbFfyqYSNvGTbfIr3ZCEVA7ZU+Kqtx+7RIoyjM/xTT49mEm+bBJ1J3gQKqWDRMh1v6Gt7hExyaVAuBZSP2iZHfoB5dFZ4EPORwFAK8DOiJUvFTHomxFTvhXe+eI+PeyAFxYcRLQ1ezQfMd/MsWyt4tPkXZGUnw4dD/JMhkYH9tQWRITWWnu1v8RKaIr/SDa4rcU91+x6Jm8f4qQSWbI5k+RtZafyxsoFe4REhBHJKhxi0PzMixaz3K7IJcB2bGx5F73s7OAaPfHpeVZOxwq+VKUc8t3Ic5qnlqX40syKwwwCeSVBqI0NSPVTOiUInMriPtHZScJlgwiCZNgsrkQuHBH7ICRksAa5iGUEZcyact1KST0NAyZvsbcRlI0YiMrlATCOCtwL/X+w64/NRTocxSZJE8xpVKcueKgAHOaliK2XHhLhcTLdEoJgWluTiEwRo98qA3bf7kq62NrNnREuS/Op0mfozfTCANqzuy1QYULhwN3wFHpvoVsnwG8S+BVanY6BiIg1bqtt3q5nCBYVzqnOPR3R0A==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(396003)(376002)(39860400002)(136003)(346002)(230922051799003)(64100799003)(186009)(82310400011)(1800799009)(451199024)(36840700001)(46966006)(40470700004)(8676002)(4326008)(8936002)(44832011)(1076003)(6916009)(54906003)(316002)(478600001)(26005)(41300700001)(6666004)(5660300002)(336012)(2616005)(426003)(2906002)(83380400001)(40480700001)(36860700001)(47076005)(70586007)(70206006)(82740400003)(356005)(81166007)(86362001)(40460700003)(36756003)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Nov 2023 21:07:47.6482 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 61a46221-23b1-4320-e7fe-08dbdb1e99d2
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000FCC4.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7319
+Received-SPF: softfail client-ip=2a01:111:f400:fe5b::624;
+ envelope-from=vikram.garhwal@amd.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IZJjDX47JzUG
 
-Hi Alex,
+Remove '=' from 'if CONFIG_XEN_CTRL_INTERFACE_VERSION <= 41500'.
+Because xendevicemodel_set_irq_level() was introduced in 4.15 version.
 
-On Tue, Oct 31, 2023 at 12:02:03PM +0000, Alex Bennée wrote:
-> 
-> Hi All,
-> 
-> Since 8.1 we enabled the FEAT_RME CPU feature to allow for Arm CCA
-> guests to be run under QEMU's Arm emulation. While this is enough for
-> pure software guests eventually we would want to support modelling
-> systems with "real" hardware. One part of that is updating the SMMU
-> emulation to make it RME aware.
-> 
-> The recently published F.a spec is available on the Arm site:
-> 
->   https://developer.arm.com/documentation/ihi0070/latest/
-> 
-> As we have a keen interest on tracking (and implementing!) Arm features
-> we have coded up the various sub-features as stories under an EPIC for
-> each level of SMMU feature on our public JIRA:
-> 
->   https://linaro.atlassian.net/browse/QEMU-533 (SMMUv3.0)
->   https://linaro.atlassian.net/browse/QEMU-553 (SMMUv3.1)
->   https://linaro.atlassian.net/browse/QEMU-558 (SMMUv3.2)
->   https://linaro.atlassian.net/browse/QEMU-566 (SMMUv3.3)
->   
-> I think the state of the cards currently represents what has been
-> implemented and what is left to do. As you can see it adds up to a fair
-> bit of stuff. As a lot of people have been hacking on the SMMU code over
-> the last few years I thought it would be useful to reach out and see who
-> else is interested in further enhancing the SMMU emulation support?
-> 
-> If anyone has any patches/branches cooking or is intending to implement
-> any particular bits please do let me know and I can update the cards to
-> reflect the current state of work. As ever we will do our best to help
-> review and smooth the up-streaming process for all Arm related feature
-> enhancements.
+Also, update xendevicemodel_set_irq_level() to return -1 for older versions.
 
-I worked on adding stage-2 SMMUv3 support in qemu and was planning on
-working on nesting (stage-1 + stage-2). However, I haven't done any
-work on this yet and I will be busy till early next year.
+Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+---
+ hw/arm/xen_arm.c            | 4 +++-
+ include/hw/xen/xen_native.h | 4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-If this work would start before that I can put some time to help with
-the review, otherwise I can start working on this early next year.
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+index f83b983ec5..a5631529d0 100644
+--- a/hw/arm/xen_arm.c
++++ b/hw/arm/xen_arm.c
+@@ -75,7 +75,9 @@ static MemoryRegion ram_lo, ram_hi;
+ 
+ static void xen_set_irq(void *opaque, int irq, int level)
+ {
+-    xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level);
++    if (xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level)) {
++        error_report("xendevicemodel_set_irq_level failed");
++    }
+ }
+ 
+ static void xen_create_virtio_mmio_devices(XenArmState *xam)
+diff --git a/include/hw/xen/xen_native.h b/include/hw/xen/xen_native.h
+index 5d2718261f..6f09c48823 100644
+--- a/include/hw/xen/xen_native.h
++++ b/include/hw/xen/xen_native.h
+@@ -523,12 +523,12 @@ static inline int xen_set_ioreq_server_state(domid_t dom,
+                                                  enable);
+ }
+ 
+-#if CONFIG_XEN_CTRL_INTERFACE_VERSION <= 41500
++#if CONFIG_XEN_CTRL_INTERFACE_VERSION < 41500
+ static inline int xendevicemodel_set_irq_level(xendevicemodel_handle *dmod,
+                                                domid_t domid, uint32_t irq,
+                                                unsigned int level)
+ {
+-    return 0;
++    return -1;
+ }
+ #endif
+ 
+-- 
+2.17.1
 
-Thanks,
-Mostafa

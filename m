@@ -1,120 +1,145 @@
-Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp849839ejb;
-        Wed, 1 Nov 2023 02:59:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFQ4m1tlNmk7WMbfTMY9/E7kxEz623CMY5HPOnWW8sFVnfzBj1Kbagln5nC5pA6iXMMmRvJ
-X-Received: by 2002:a05:620a:40d5:b0:76c:a695:fe5b with SMTP id g21-20020a05620a40d500b0076ca695fe5bmr14498947qko.62.1698832775566;
-        Wed, 01 Nov 2023 02:59:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698832775; cv=none;
+Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp884613ejb;
+        Wed, 1 Nov 2023 04:09:32 -0700 (PDT)
+X-Received: by 2002:a05:6402:cad:b0:540:1bc0:65b2 with SMTP id cn13-20020a0564020cad00b005401bc065b2mr11855209edb.10.1698836972519;
+        Wed, 01 Nov 2023 04:09:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698836972; cv=none;
         d=google.com; s=arc-20160816;
-        b=m1WCdBl/RSJY8aKsvXM2iNiFBEzBHUwoO4XXgyp+I9HwP1Zw0jjYEkl5Xhm8rG2PL+
-         +bRB6B4tOo9/Ajn51/sOIQbKvZqBgPDMNjLNSwmTNDl1E9MhrGTlsWYZCGvOWil3jFjO
-         VDtAKvPgBkmMh4Cd7A7aBQNgR6yzK5dHC62oP5ISt7tceuNgYo9ZEUhqjfrdfhe99SF1
-         iiMTqxPoJvI6v+1nhnL8Ird+FBm5h7++ul1BH3R8PuVZ/yKtEiYOddyR1wo+ynAug/jK
-         2q/y28VX6VqGSLV1B2p71vtumPkunleVrog+mJmuUsxeO/uEAbD05plkLK8NCqWRQXyP
-         PgDw==
+        b=clP/ZjSs+XJ33loAf1Im0c7eRZnfTQUqGm9CJ+McqW8g9vB8p6gO46DWlJyZzlKCyo
+         GDDgLd4q64WASwAq+WMFmaSzUC0Lv2AJNDEdoduIxV7eFtxLvEUaZ0FJHWHH7cj0SxSN
+         55qWu6rzvldmxdrrf5MgRQ4bVTrIX9mpgheSiTfMGIcPEjkuF+r7clAZftgt2m7+yGTW
+         gEobYmsD8PPA9OH6Z+VZ7bJWcP3ylp7dBcbElFdcBS6XzxqCwuB/EmA0B6rGHj1ce//c
+         z3NxzUUKZhHoDfmGZcQqDlEr6lBEFXoZA+TRMaGpaYVB/PP8NXnKsla9cDbXj11KJvYp
+         44wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ahTruYL3vZJ7F0HCtqfq4Bqyi8MzW7CUd9f0vBpXky0=;
-        fh=JhuDwHtKEKKQrnxhvX6DUTE1uXioTIKHM19RXfNzL2o=;
-        b=Tza8iF9ExaYdvd44bztTL+wOEWowZLC58WIaBd03YrRyaVyqCn/mAEnj5FfHU/3wHj
-         ndG4jMsoHcczqoEdLfaals0S/msBmDgqP4lsGGVRTFSKe5BPWu26DxZ8CG+RJWO8g5Ov
-         O0qMUzXGj1ZhODThQdRaWeYcaFyux+GJRKU6R2kuEgTZQfNRSjZ9WRmNAisP+B19G1ZR
-         9N5kpCntYZTStoy85huLY45R55GotLjS2XcL/zXZM3ek0B4sgDe+WpPwxnN/Kr2rPS4e
-         hlvxnzrnv6vTldfWBDgzxWIxnacgCrgAv++h7ZV356cv6c7iR7mQBrivBtuSF9wiaUTh
-         6C6Q==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=yqVFnW1WUFIe+4EJTxkGaGemTAQgj7XGsOKAu6CZ+Zw=;
+        fh=nostK4uholfZQz2xFpf5ajL9JVfbmVsFSRvduyIl1pM=;
+        b=m4DfWjBDb5VymzCtEKQaLG9e+bjc6XfL/qXO9ujoyZQsEJxZQ1zy3P2smlBQfHofhl
+         jNFhlwA1qNJIKgtZnxjGFklRZhDIR+nsn8efPYXljELL/oysz8sreJN6uyYVnLZiSL30
+         ymExPHHYg1QIbUEVBxEk0pfhU4rUEl4POyGyiQkYBFoP8c0i/C6vg8E+MBwyzb3EMO8/
+         8B80d75dmkjf1AYvkzfISnACtSGJgIOqnfXpDqgRrrIkBC3yCk0q1lqBXXRzWO8CJ4vB
+         DeVOKsOL9/cNMV96lkNH9WbalRMyS2crB6Tq0oMncmsW4fpWPDcnI9PPkeUP5AmW11PV
+         yJNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17-20020a05620a015100b00774395787a6si2316267qkn.299.2023.11.01.02.59.35
+       dkim=pass header.i=@google.com header.s=20230601 header.b=2SiwlMUq;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s1-20020a50d481000000b0054353639155sor108413edi.11.2023.11.01.04.09.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Nov 2023 02:59:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 01 Nov 2023 04:09:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qy801-00021Q-4u; Wed, 01 Nov 2023 05:58:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qy7zz-00020p-2r; Wed, 01 Nov 2023 05:58:55 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qy7zx-000056-3e; Wed, 01 Nov 2023 05:58:54 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 87B9A2F360;
- Wed,  1 Nov 2023 12:58:54 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id D1508329B6;
- Wed,  1 Nov 2023 12:58:48 +0300 (MSK)
-Message-ID: <29190e8c-f2e0-4ee2-8e3e-cefc4a616af1@tls.msk.ru>
-Date: Wed, 1 Nov 2023 12:58:48 +0300
+       dkim=pass header.i=@google.com header.s=20230601 header.b=2SiwlMUq;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1698836972; x=1699441772; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=yqVFnW1WUFIe+4EJTxkGaGemTAQgj7XGsOKAu6CZ+Zw=;
+        b=2SiwlMUqnYPKTfB3Gan1ETJlHN0II0VlTX8q2tJNcpKPT08GXOcIqNNO5MGmGw96zG
+         JXJrUQz7eK8lIH74sSuWqvFuoT5St7uFyGQThXJNDAaY4EtnLr+CJBPIzgPeDxUS5mOw
+         g7OIIRnSkfWmazNfd6TAXFjFSDYFxuawkVXp3g+woaZ66iJ/4GtbExPgULHhNTFTAmlZ
+         YyaY9OwHQL3Y6+3ISbNrouuqmxiy1GtLQW1rkClZmDZx5G3JFImWQVAXlOc6TEw5qJSR
+         v3ZmUpcOpkTazj471soJ7graqIj1IilwqIewVC39fejyr2avCBB0gi65i0/ntcxp/Ipi
+         RYTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698836972; x=1699441772;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yqVFnW1WUFIe+4EJTxkGaGemTAQgj7XGsOKAu6CZ+Zw=;
+        b=S07EaI4jbW0tNaiQFJyNIUhLtk1tXgKDKSA2YlJftPrYpZ+njvch8UhYyGh/XAmxP7
+         CBZGNJAMGp2rkix1fwkElrYEWRNB6UCCBpF5R96Z5rKPJKKvI2l+aOeus96hbSijQKVI
+         92MQJ4f5omhSE/y2wh4BXGAHbayPOzibomVA7ujLf1MDXlTttphvmX34pxCuhG5h/fXb
+         IF/A53xaFBpi0ilGrOHKz4QaY1Lrf3qgmzWJp0Fg0oBU5omn0AAA8ag4ltffaMhNbAM0
+         sR5+yxiFWvh81SQUmHtRTbZ5xCRByIqnmgjIlRjX2pZkLUDv/wuo7vxBSth68y/OiacI
+         lJ9A==
+X-Gm-Message-State: AOJu0Yy0poEGkS4bKHqJs3lub5WD74ETpTlOuHG/1nadJ6XwvjtIdoXP
+	aTf5Mx+W9kjSEXWmwBAWWL2UBAfMKgM9LXKMgkBtGg==
+X-Google-Smtp-Source: AGHT+IEglgoiFzblwGaoUG696VsUyY6rrTgHoyX01C4Z9yioOlWCKk1Tbu9+fJ4ivJz7cUM0dwtdTQ==
+X-Received: by 2002:a50:99cf:0:b0:543:6397:b46d with SMTP id n15-20020a5099cf000000b005436397b46dmr224828edb.2.1698836971343;
+        Wed, 01 Nov 2023 04:09:31 -0700 (PDT)
+Return-Path: <smostafa@google.com>
+Received: from google.com (49.222.77.34.bc.googleusercontent.com. [34.77.222.49])
+        by smtp.gmail.com with ESMTPSA id du15-20020a05600c634f00b004083bc9ac90sm1162832wmb.24.2023.11.01.04.09.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Nov 2023 04:09:30 -0700 (PDT)
+Date: Wed, 1 Nov 2023 11:09:26 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: Eric Auger <eric.auger@redhat.com>,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	Jason Wang <jasowang@redhat.com>,
+	Kunkun Jiang <jiangkunkun@huawei.com>,
+	Zenghui Yu <yuzenghui@huawei.com>, Simon Veith <sveith@amazon.de>,
+	qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Joe Komlodi <joe.komlodi@xilinx.com>,
+	Prem Mallappa <prem.mallappa@broadcom.com>,
+	Leonardo Garcia <leonardo.garcia@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>
+Subject: Re: Any plans to implement more ARM SMMUv3 features?
+Message-ID: <ZUIx5qA8YAIbyWEI@google.com>
+References: <87il6n0zlw.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] Accompany -nostdlib with -fno-stack-protector
-Content-Language: en-US
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Brian Cain <bcain@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-References: <20230731091042.139159-1-akihiko.odaki@daynix.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230731091042.139159-1-akihiko.odaki@daynix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G70hN7GHwVhx
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87il6n0zlw.fsf@draig.linaro.org>
+X-TUID: pP7vFb1FFGWI
 
-31.07.2023 12:10, Akihiko Odaki:
-> A build of GCC 13.2 will have stack protector enabled by default if it was
-> configured with --enable-default-ssp option. For such a compiler, it is
-> necessary to explicitly disable stack protector when linking without
-> standard libraries.
+Hi Alex,
+
+On Tue, Oct 31, 2023 at 12:02:03PM +0000, Alex Bennée wrote:
 > 
-> This is a tree-wide change to add -fno-stack-protector where -nostdlib is
-> present.
+> Hi All,
+> 
+> Since 8.1 we enabled the FEAT_RME CPU feature to allow for Arm CCA
+> guests to be run under QEMU's Arm emulation. While this is enough for
+> pure software guests eventually we would want to support modelling
+> systems with "real" hardware. One part of that is updating the SMMU
+> emulation to make it RME aware.
+> 
+> The recently published F.a spec is available on the Arm site:
+> 
+>   https://developer.arm.com/documentation/ihi0070/latest/
+> 
+> As we have a keen interest on tracking (and implementing!) Arm features
+> we have coded up the various sub-features as stories under an EPIC for
+> each level of SMMU feature on our public JIRA:
+> 
+>   https://linaro.atlassian.net/browse/QEMU-533 (SMMUv3.0)
+>   https://linaro.atlassian.net/browse/QEMU-553 (SMMUv3.1)
+>   https://linaro.atlassian.net/browse/QEMU-558 (SMMUv3.2)
+>   https://linaro.atlassian.net/browse/QEMU-566 (SMMUv3.3)
+>   
+> I think the state of the cards currently represents what has been
+> implemented and what is left to do. As you can see it adds up to a fair
+> bit of stuff. As a lot of people have been hacking on the SMMU code over
+> the last few years I thought it would be useful to reach out and see who
+> else is interested in further enhancing the SMMU emulation support?
+> 
+> If anyone has any patches/branches cooking or is intending to implement
+> any particular bits please do let me know and I can update the cards to
+> reflect the current state of work. As ever we will do our best to help
+> review and smooth the up-streaming process for all Arm related feature
+> enhancements.
 
-Should we perhaps pick this up for -stable too?
-The changes seems to be harmless for older compiler and lets to test
-qemu with more recent compiler.
+I worked on adding stage-2 SMMUv3 support in qemu and was planning on
+working on nesting (stage-1 + stage-2). However, I haven't done any
+work on this yet and I will be busy till early next year.
 
-/mjt
+If this work would start before that I can put some time to help with
+the review, otherwise I can start working on this early next year.
+
+Thanks,
+Mostafa

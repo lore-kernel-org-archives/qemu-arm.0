@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp324791eja;
-        Thu, 2 Nov 2023 04:50:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEuOTyIukG/jkwwLcsZMuZ1JhuUby3QcEiTaqH2wFdHfZmATWiDnGKBm5SDdmMFBCz1sZy1
-X-Received: by 2002:a05:620a:471e:b0:778:b352:5f0c with SMTP id bs30-20020a05620a471e00b00778b3525f0cmr7616382qkb.28.1698925824020;
-        Thu, 02 Nov 2023 04:50:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925824; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp325385eja;
+        Thu, 2 Nov 2023 04:51:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFPDK1uOBROIe3R4JMRW0cSfqlvGFEgzgwWcezEzllo4POgMFJB6y5/2lHUqmrvMBW9rLEj
+X-Received: by 2002:a25:d047:0:b0:da0:3b6c:fc22 with SMTP id h68-20020a25d047000000b00da03b6cfc22mr16435251ybg.31.1698925891674;
+        Thu, 02 Nov 2023 04:51:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925891; cv=none;
         d=google.com; s=arc-20160816;
-        b=PW6UEQ0APwIWFxl6kLlaMqUFzXY0TSpesrjVkUohcIxiyBy3MqV63a0FUl6SERSZAl
-         nmMbyGpO/HL/QFvfDJqOPfqEypatkUij4t4riqUYHCivucN8Ihij7yyHG1ob5oxGmUyh
-         Fbnt9SqW/ZwormVnQt8ypKWbowTU28rVK4s0JPYyGCxdWDsNXNAvHijZrr84IUrOunpj
-         zQBWUL7lNjJ4s/0olCSoyqWxOLfIKeRmWf5Aw/Z0GWjXL3iP4Br1CwtDu8/VifiLUo4e
-         FjVdtTDORFDuGjGNbXb5KTiHlwTJpQCiMEFxMcc6wNX4R5gT3KETD5oAMXKYK39ny7mA
-         Z4Tg==
+        b=AzNKZn41VDoKDpl3G8r+tt8Mdrxpd/pb4CGxqBXski8ucgd7zrmuXW0UsK2sm6tcU7
+         Wb5NJlikhjfJM0jSHIxnK10yT4ouQLtkFMk2PiTFPhCCZJv5BjakUqvbx0zMW9HNucUZ
+         yNU+lYYqf3qZ19WLHdRz3YLWuIKqgsXoo6P6uaB6FG2rB2O7kuREaB4C24urZuUUKli4
+         nHfm5iOBNhhf3IEZ8cYWyik8Fee4PqSIPy8z+5jcsSMEW+6Gopb+dtsWQ41KowzWckMR
+         tOr5/dMhvAWp98lC6rcYsPsP2g0Q0UCU7QiJZIbzLFQenIs/UdYiJqnckWBMR2QNeHzZ
+         NshA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZAy4VBc66QoZq5KeEa71dSNGlXnXaidLjsRTcJA5+f0=;
-        fh=ES/vJtI5J5RM9CDwQFbx/OtSpDk18PEyXjfn3CS+k7o=;
-        b=M6T7bbZlE+YUNJ2zwKSVOTK4Zd456QyKYoKqbR4uHgzT3GL4izmDcN33CLY9m5qKJc
-         VZcS5e0DTA2n9spEt9LLs+R2bN6wW1Ke/wuTrztscPuob2He9+FysqvvuOXhaTt5gwJX
-         cbfUajpCjwlYs7Vga2U7WToMmO2io2+u9mewhGZ3ghjQXQj9jDEQ08sZxjUnUJdGkArz
-         aJhKUMsGNZN6sLeWQEcR00fW62BBvb+XDxXR8M0Ghbsmy2QIv7/hyteRIv4CNEX2YL2i
-         eyJ4h4zyL6KuyqWLw9arH0YqZoK16gZwPOSSYF8Jn+pRmpt6skRQi0AMprOGk8Rg8aC8
-         tnxA==
+        bh=qMrx1riEvb3RA7dYm5KBjiM+nQjdYZKB+bCCm3twBGk=;
+        fh=T4EM+6jbLn5eRwObk7JR2S+dK3nM2HMDfFhJxfrmv8w=;
+        b=mup1G/sv90b4OXCzwPUZUkbk2v5yqTnedlcxFj83UUOzoCv3ToGyoz2l2aIiq8Qytp
+         /JIwa0dnPJnaoACyYQ9ygLtGHWgfHibC3jbOHMPMWRWpacIxV9GBK/vSZvhgCQZXKHNK
+         ZrKvj2wl5dgKef/TZX9U53KInrDNpdDMSpQIVHIOYKACVIR8PpCTg2wIJ/MQBscpc/x8
+         lBe3ONrjP8CmE+4e1x7Bej5Z8wpGbMBHepGxTTPDBhDK5wStTArQo4tMEKCrUMdLl+TK
+         O5GbebFPVqDfkg/yBn6ZY7UQI1i1nPe5voOYDtSNHBu6+fiKSeBQWF6GXpFxozsIe9in
+         Fkdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cHYkEbqz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h7ycPwLK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t24-20020a05620a0b1800b0077a3bd8821fsi4053180qkg.775.2023.11.02.04.50.23
+        by mx.google.com with ESMTPS id i15-20020a056214030f00b00656289535bbsi4299099qvu.472.2023.11.02.04.51.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:50:24 -0700 (PDT)
+        Thu, 02 Nov 2023 04:51:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cHYkEbqz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h7ycPwLK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qyWBi-0003XK-5g; Thu, 02 Nov 2023 07:48:38 -0400
+	id 1qyW74-00068C-El; Thu, 02 Nov 2023 07:43:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW9Z-0000AG-Hc
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:46:29 -0400
+ id 1qyW6p-0005Lr-I8
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:43:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW9R-0006wq-7B
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:46:22 -0400
+ id 1qyW6h-0005sZ-QZ
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:43:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925574;
+ s=mimecast20190719; t=1698925407;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZAy4VBc66QoZq5KeEa71dSNGlXnXaidLjsRTcJA5+f0=;
- b=cHYkEbqzQNKNvvWRmfrF/XFNcxM0m2LQdDGitC3Pbsv6zC4uJpQPhPCG+EIiWSWGnwi6Eu
- 8c78x3MrD1dj1oJf8kgTAYk75kAoGZaLQfDfIEZPLmDxxYBh9qiDL+Mysyrl/CVt9JRKaH
- wo1hTB8i66uevdHhuKvsF0VC76MPqWk=
+ bh=qMrx1riEvb3RA7dYm5KBjiM+nQjdYZKB+bCCm3twBGk=;
+ b=h7ycPwLKE2qjeYm8Fc2PjXyslnzGv5hnzXbziI6hopcj3tUX5ONNWNSv3kCVqOLwnbIHlC
+ aNmMb2V/A0TKgPPJIS+RsP003QApyDZYkGXzNTfOQAeIzr5hiU1wQwtVsaZcEd7rwsXSER
+ tmYo36qpyrhXduVQFauLfZPLaAIqpgA=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-654-iLWaQKg-OgiAJrmmH1wRfg-1; Thu,
- 02 Nov 2023 07:46:07 -0400
-X-MC-Unique: iLWaQKg-OgiAJrmmH1wRfg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-652-Q5wD7dJpMHSSfclf_8MjNg-1; Thu,
+ 02 Nov 2023 07:43:22 -0400
+X-MC-Unique: Q5wD7dJpMHSSfclf_8MjNg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D7A9B2808FCD;
- Thu,  2 Nov 2023 11:46:05 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F2CEF2808FC1;
+ Thu,  2 Nov 2023 11:43:20 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 52B3F2026D4C;
- Thu,  2 Nov 2023 11:45:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CB06B2026D4C;
+ Thu,  2 Nov 2023 11:43:13 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -111,12 +111,10 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>, Het Gala <het.gala@nutanix.com>,
- Aravind Retnakaran <aravind.retnakaran@nutanix.com>
-Subject: [PULL 39/40] migration: Implement MigrateChannelList to hmp migration
- flow.
-Date: Thu,  2 Nov 2023 12:40:53 +0100
-Message-ID: <20231102114054.44360-40-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>
+Subject: [PULL 18/40] migration: migration_stop_vm() helper
+Date: Thu,  2 Nov 2023 12:40:32 +0100
+Message-ID: <20231102114054.44360-19-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
@@ -131,7 +129,7 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,110 +144,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EaZafRGL0/pA
+X-TUID: YTqDL9VKjhwY
 
-From: Het Gala <het.gala@nutanix.com>
+From: Peter Xu <peterx@redhat.com>
 
-Integrate MigrateChannelList with all transport backends
-(socket, exec and rdma) for both src and dest migration
-endpoints for hmp migration.
+Provide a helper for non-COLO use case of migration to stop a VM.  This
+prepares for adding some downtime relevant tracepoints to migration, where
+they may or may not apply to COLO.
 
-Suggested-by: Aravind Retnakaran <aravind.retnakaran@nutanix.com>
-Signed-off-by: Het Gala <het.gala@nutanix.com>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Message-ID: <20231023182053.8711-14-farosas@suse.de>
+Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
+Message-ID: <20231030163346.765724-5-peterx@redhat.com>
 ---
- migration/migration.h          |  3 ++-
- migration/migration-hmp-cmds.c | 23 +++++++++++++++++++++--
- migration/migration.c          |  5 ++---
- 3 files changed, 25 insertions(+), 6 deletions(-)
+ migration/migration.h |  2 ++
+ migration/migration.c | 11 ++++++++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/migration/migration.h b/migration/migration.h
-index af8c965b7f..cf2c9c88e0 100644
+index ae82004892..5944107ad5 100644
 --- a/migration/migration.h
 +++ b/migration/migration.h
-@@ -520,7 +520,8 @@ bool check_dirty_bitmap_mig_alias_map(const BitmapMigrationNodeAliasList *bbm,
-                                       Error **errp);
+@@ -544,4 +544,6 @@ void migration_rp_wait(MigrationState *s);
+  */
+ void migration_rp_kick(MigrationState *s);
  
- void migrate_add_address(SocketAddress *address);
--
-+bool migrate_uri_parse(const char *uri, MigrationChannel **channel,
-+                       Error **errp);
- int foreach_not_ignored_block(RAMBlockIterFunc func, void *opaque);
- 
- #define qemu_ram_foreach_block \
-diff --git a/migration/migration-hmp-cmds.c b/migration/migration-hmp-cmds.c
-index 6ec778a990..86ae832176 100644
---- a/migration/migration-hmp-cmds.c
-+++ b/migration/migration-hmp-cmds.c
-@@ -451,9 +451,18 @@ void hmp_migrate_incoming(Monitor *mon, const QDict *qdict)
- {
-     Error *err = NULL;
-     const char *uri = qdict_get_str(qdict, "uri");
-+    MigrationChannelList *caps = NULL;
-+    g_autoptr(MigrationChannel) channel = NULL;
- 
--    qmp_migrate_incoming(uri, false, NULL, &err);
-+    if (!migrate_uri_parse(uri, &channel, &err)) {
-+        goto end;
-+    }
-+    QAPI_LIST_PREPEND(caps, g_steal_pointer(&channel));
- 
-+    qmp_migrate_incoming(NULL, true, caps, &err);
-+    qapi_free_MigrationChannelList(caps);
++int migration_stop_vm(RunState state);
 +
-+end:
-     hmp_handle_error(mon, err);
- }
- 
-@@ -753,6 +762,8 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
-     bool resume = qdict_get_try_bool(qdict, "resume", false);
-     const char *uri = qdict_get_str(qdict, "uri");
-     Error *err = NULL;
-+    MigrationChannelList *caps = NULL;
-+    g_autoptr(MigrationChannel) channel = NULL;
- 
-     if (inc) {
-         warn_report("option '-i' is deprecated;"
-@@ -764,12 +775,20 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
-                     " use blockdev-mirror with NBD instead");
-     }
- 
--    qmp_migrate(uri, false, NULL, !!blk, blk, !!inc, inc,
-+    if (!migrate_uri_parse(uri, &channel, &err)) {
-+        hmp_handle_error(mon, err);
-+        return;
-+    }
-+    QAPI_LIST_PREPEND(caps, g_steal_pointer(&channel));
-+
-+    qmp_migrate(NULL, true, caps, !!blk, blk, !!inc, inc,
-                  false, false, true, resume, &err);
-     if (hmp_handle_error(mon, err)) {
-         return;
-     }
- 
-+    qapi_free_MigrationChannelList(caps);
-+
-     if (!detach) {
-         HMPMigrationStatus *status;
- 
+ #endif
 diff --git a/migration/migration.c b/migration/migration.c
-index 10a6f2fb12..28a34c9068 100644
+index 8aac0c753e..3e38294485 100644
 --- a/migration/migration.c
 +++ b/migration/migration.c
-@@ -457,9 +457,8 @@ void migrate_add_address(SocketAddress *address)
-                       QAPI_CLONE(SocketAddress, address));
+@@ -149,6 +149,11 @@ static gint page_request_addr_cmp(gconstpointer ap, gconstpointer bp)
+     return (a > b) - (a < b);
  }
  
--static bool migrate_uri_parse(const char *uri,
--                              MigrationChannel **channel,
--                              Error **errp)
-+bool migrate_uri_parse(const char *uri, MigrationChannel **channel,
-+                       Error **errp)
++int migration_stop_vm(RunState state)
++{
++    return vm_stop_force_state(state);
++}
++
+ void migration_object_init(void)
  {
-     g_autoptr(MigrationChannel) val = g_new0(MigrationChannel, 1);
-     g_autoptr(MigrationAddress) addr = g_new0(MigrationAddress, 1);
+     /* This can only be called once. */
+@@ -2169,7 +2174,7 @@ static int postcopy_start(MigrationState *ms, Error **errp)
+ 
+     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
+     global_state_store();
+-    ret = vm_stop_force_state(RUN_STATE_FINISH_MIGRATE);
++    ret = migration_stop_vm(RUN_STATE_FINISH_MIGRATE);
+     if (ret < 0) {
+         goto fail;
+     }
+@@ -2371,7 +2376,7 @@ static int migration_completion_precopy(MigrationState *s,
+     s->vm_old_state = runstate_get();
+     global_state_store();
+ 
+-    ret = vm_stop_force_state(RUN_STATE_FINISH_MIGRATE);
++    ret = migration_stop_vm(RUN_STATE_FINISH_MIGRATE);
+     trace_migration_completion_vm_stop(ret);
+     if (ret < 0) {
+         goto out_unlock;
+@@ -3222,7 +3227,7 @@ static void *bg_migration_thread(void *opaque)
+ 
+     global_state_store();
+     /* Forcibly stop VM before saving state of vCPUs and devices */
+-    if (vm_stop_force_state(RUN_STATE_PAUSED)) {
++    if (migration_stop_vm(RUN_STATE_PAUSED)) {
+         goto fail;
+     }
+     /*
 -- 
 2.41.0
 

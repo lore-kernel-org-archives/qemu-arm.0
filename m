@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp322455eja;
-        Thu, 2 Nov 2023 04:45:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFt0jWVjs5Q8qGX9li5hT1pBDGAmNUEKZHs9ui7EpEGTd++gyZo2SdACR7P6aIz1ee6rmmk
-X-Received: by 2002:a05:620a:2549:b0:774:26bf:efa2 with SMTP id s9-20020a05620a254900b0077426bfefa2mr19399298qko.58.1698925545004;
-        Thu, 02 Nov 2023 04:45:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925544; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp323276eja;
+        Thu, 2 Nov 2023 04:47:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEsCsiiNQsq1VKdVip+vcR/vRiINEgvw1b9sYER14rS39LXfX2zw2PHqXGwUJMQKYh/xfY3
+X-Received: by 2002:ac8:594a:0:b0:41e:23c7:ec24 with SMTP id 10-20020ac8594a000000b0041e23c7ec24mr21451459qtz.59.1698925638014;
+        Thu, 02 Nov 2023 04:47:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925638; cv=none;
         d=google.com; s=arc-20160816;
-        b=TK5IMQdklEK30S1oQHBKmeBVW0TGScDLrKRW5x/QbiC0yADpLAE8buOpseb2KCplbE
-         QjIep0prqrpR1f7qd+azyOvXKmUIkeRVaPjYcyAJmiApc5hsyK4Omkq+WeCjCXsbIZu7
-         PcRFBIzUeF9wBj7A0DVfwzh5fBoXfp2s2/vJ4OL23s9hjneApk2dMAZ4BkoUmGrtIhzy
-         Rjk+UbP7Jr7oXyYCDc67ZF3MqAGzfc9lKq1X7xDc/iuPixLKxLqg40gWhozrK+KRqQ48
-         Q9GHAlB9Quo0tTQGjuWzTxWBJ9Hyi+ogiuh/vLNansDI9/IHeAHrJkPRD9QdnSPNPedU
-         cvoQ==
+        b=UQkPDsdIPClRdq9hlJ+XegJQF0Rk8hRRsL82Oh2BWsKM8+lKVTFnl3JZXHyZzHgEY1
+         Jtv5FTg0UrF9eorqt2YLJwJcMX9gRbz7uAk0faNGgxd4JMzDRAPeQ5xSNbcneG2xZ9Nx
+         KGRiOGZax0Ync25LqlwP63wvifs/qsBXuDe99gtA4Qwhqb6+9D/Tv+oPbYB/Yss/yJtr
+         wwZsg4wtwlAPBLHNkA8SRCos8ICPTvBGwRrUNmdFJ+LYhVvwfSGPkXCIShH93zlCbm5l
+         QlzV9XI7gHOzFkSQ1h2p6jpX0vts6NnU5aAfAiSnpAAxwnSIMi+KXaeZyIeNGmscKKyk
+         e4Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8nC6FZ1Y3kH01iHkAe3CaWVSOv9HnUpMpq4M0pKyH3c=;
-        fh=7EtsIJQlWJMvukgpl3HOplN+fRLWcKCbfEGCZk3yHwk=;
-        b=NU+nfg9B+KdwT20aG7PWFpT5DALt31wptj4Pc6ve/VNYMWXQcXJL4HH7C4yH7MYivk
-         iONEF6B3db+j8b2gL8XWrYUsZnGwUYikxKwo7U6LOz3DqxBHHCohJgZSIQ10SSSPveZ7
-         q7bb6Qr9WhYAKJTKYbK2lP6cykhUPuim4b501+rGdKWfRS4GJgxorTYrTmX2NUSubtTR
-         gubkY6jiKTskXbnTBsBukMMXmm3JMvKm0LoqpGDfIdeDBDEvh+eTYu5PYmK7dBu7/iSP
-         cn6bmJHBloGDQMMqtBZTXctu+MEuP9dkMWUzZV4zRhg9W0lHS2yVNt0cPsa29BP1dNXN
-         XdUA==
+        bh=juXYONqV+/W0nBHoFpD72iSqcDaEYIDEPx7/03c+W6Y=;
+        fh=dl913iPfNrA2OqzFM5s8w96BWy5TnJzFxs2pNQzLPB8=;
+        b=D0XgK3YlL5MQvkc3saKsNnG8tE7bzKlBj86zvJxieunMhQLQnHMBXjXut9AuuEMQJ8
+         +Q0RxQuM0bg56Fe5XLkhAkB8MmO0LGqLVr+b5P8Jqn77zzohRM4GgJ66NmLLqhRjNvw0
+         ziI8xaHkGAJ8y2quzuYLs1bTom+azuyWe/LGU0JkAAaYGLrSmpIiziy8SwmMjeLNZxH0
+         qR7MdUcJivnmmgcD9hnJomyokZ7Hv+9vNK4mrfYtbVxFou0tEi+5nOhRldvBwACEyLji
+         3CCWzFZxIKYmsPRnNFghJf5ussbCbQOCxNGVI5fqN0iOphkYG6YBung6WVaT42ywu+P9
+         VeeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pg2ahMpF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ilvsc7Cu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pr13-20020a05620a86cd00b0076dbbc2aaf9si4607717qkn.179.2023.11.02.04.45.44
+        by mx.google.com with ESMTPS id t8-20020a05622a148800b004121604095asi4577664qtx.61.2023.11.02.04.47.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:45:44 -0700 (PDT)
+        Thu, 02 Nov 2023 04:47:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pg2ahMpF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ilvsc7Cu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyW8B-00064A-Q4; Thu, 02 Nov 2023 07:44:59 -0400
+	id 1qyW7O-0000UZ-Hm; Thu, 02 Nov 2023 07:44:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW86-0005JI-Sh
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:44:55 -0400
+ id 1qyW7M-0000E3-MN
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:44:08 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW84-0006F8-Tj
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:44:54 -0400
+ id 1qyW7J-00063x-Sg
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:44:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925491;
+ s=mimecast20190719; t=1698925445;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8nC6FZ1Y3kH01iHkAe3CaWVSOv9HnUpMpq4M0pKyH3c=;
- b=Pg2ahMpFGS87orUQGxJ7VQfwx9Uw57IMBs3z78/MW8cEFT7cGhHKu3zV+BHwvHkf3WKWGd
- KIkrVP1MAVygQf3haD9unGr+dqcgf0ULiizFSU5kUZ4B+/CWjAJ8o6lLghZOocXGNlu9Wr
- MqRdzoz0d3QGYSwVVpA27Oh+vu9RXQk=
+ bh=juXYONqV+/W0nBHoFpD72iSqcDaEYIDEPx7/03c+W6Y=;
+ b=Ilvsc7CuldllT+4phK0F5EQL4GlqLv6sEsUI/A0sl6na1QGhS10d3KYksri5Uv8AVDV5KT
+ kxDmz2WSBCDesmvs4uifC61u6nzE96YcGbhbGAChp4VrRDYYWNRIS1lvJc+6m+6Vh12SVa
+ QLrpSnThshcE0StWLYXoISvPRrn170M=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-584-J5WI3n8YN1Wc-BtWw8-zLg-1; Thu, 02 Nov 2023 07:44:48 -0400
-X-MC-Unique: J5WI3n8YN1Wc-BtWw8-zLg-1
+ us-mta-694-q6u3DRwIPHumia6WlCgZjg-1; Thu, 02 Nov 2023 07:44:01 -0400
+X-MC-Unique: q6u3DRwIPHumia6WlCgZjg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id ADB0185A58B;
- Thu,  2 Nov 2023 11:44:46 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DCBF5101A52D;
+ Thu,  2 Nov 2023 11:43:59 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 373932026D4C;
- Thu,  2 Nov 2023 11:44:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 844BB2026D4C;
+ Thu,  2 Nov 2023 11:43:52 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -111,16 +111,13 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 29/40] migration: Change ram_dirty_bitmap_reload() retval to
- bool
-Date: Thu,  2 Nov 2023 12:40:43 +0100
-Message-ID: <20231102114054.44360-30-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>, Steve Sistare <steven.sistare@oracle.com>
+Subject: [PULL 23/40] cpr: relax vhost migration blockers
+Date: Thu,  2 Nov 2023 12:40:37 +0100
+Message-ID: <20231102114054.44360-24-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
@@ -132,7 +129,7 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,172 +144,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fm2jnylY0QcI
+X-TUID: cBq7/O/blw6R
 
-From: Peter Xu <peterx@redhat.com>
+From: Steve Sistare <steven.sistare@oracle.com>
 
-Now we have a Error** passed into the return path thread stack, which is
-even clearer than an int retval.  Change ram_dirty_bitmap_reload() and the
-callers to use a bool instead to replace errnos.
+vhost blocks migration if logging is not supported to track dirty
+memory, and vhost-user blocks it if the log cannot be saved to a shm fd.
 
-Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Peter Xu <peterx@redhat.com>
+vhost-vdpa blocks migration if both hosts do not support all the device's
+features using a shadow VQ, for tracking requests and dirty memory.
+
+vhost-scsi blocks migration if storage cannot be shared across hosts,
+or if state cannot be migrated.
+
+None of these conditions apply if the old and new qemu processes do
+not run concurrently, and if new qemu starts on the same host as old,
+which is the case for cpr.
+
+Narrow the scope of these blockers so they only apply to normal mode.
+They will not block cpr modes when they are added in subsequent patches.
+
+No functional change until a new mode is added.
+
+Signed-off-by: Steve Sistare <steven.sistare@oracle.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231017202633.296756-5-peterx@redhat.com>
+Message-ID: <1698263069-406971-5-git-send-email-steven.sistare@oracle.com>
 ---
- migration/ram.h       |  2 +-
- migration/migration.c | 18 +++++++++---------
- migration/ram.c       | 24 ++++++++++++------------
- 3 files changed, 22 insertions(+), 22 deletions(-)
+ hw/scsi/vhost-scsi.c | 2 +-
+ hw/virtio/vhost.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/migration/ram.h b/migration/ram.h
-index 6e2c2c1950..9b937a446b 100644
---- a/migration/ram.h
-+++ b/migration/ram.h
-@@ -71,7 +71,7 @@ void ramblock_recv_bitmap_set(RAMBlock *rb, void *host_addr);
- void ramblock_recv_bitmap_set_range(RAMBlock *rb, void *host_addr, size_t nr);
- int64_t ramblock_recv_bitmap_send(QEMUFile *file,
-                                   const char *block_name);
--int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *rb, Error **errp);
-+bool ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *rb, Error **errp);
- bool ramblock_page_is_discarded(RAMBlock *rb, ram_addr_t start);
- void postcopy_preempt_shutdown_file(MigrationState *s);
- void *postcopy_preempt_thread(void *opaque);
-diff --git a/migration/migration.c b/migration/migration.c
-index e875ea0d6b..ce9b7692ad 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1971,29 +1971,29 @@ migrate_handle_rp_req_pages(MigrationState *ms, const char* rbname,
-     ram_save_queue_pages(rbname, start, len, errp);
- }
- 
--static int migrate_handle_rp_recv_bitmap(MigrationState *s, char *block_name,
--                                         Error **errp)
-+static bool migrate_handle_rp_recv_bitmap(MigrationState *s, char *block_name,
-+                                          Error **errp)
- {
-     RAMBlock *block = qemu_ram_block_by_name(block_name);
- 
-     if (!block) {
-         error_setg(errp, "MIG_RP_MSG_RECV_BITMAP has invalid block name '%s'",
-                    block_name);
--        return -EINVAL;
-+        return false;
+diff --git a/hw/scsi/vhost-scsi.c b/hw/scsi/vhost-scsi.c
+index 5d9e06a9bb..3126df9e1d 100644
+--- a/hw/scsi/vhost-scsi.c
++++ b/hw/scsi/vhost-scsi.c
+@@ -210,7 +210,7 @@ static void vhost_scsi_realize(DeviceState *dev, Error **errp)
+                 "When external environment supports it (Orchestrator migrates "
+                 "target SCSI device state or use shared storage over network), "
+                 "set 'migratable' property to true to enable migration.");
+-        if (migrate_add_blocker(&vsc->migration_blocker, errp) < 0) {
++        if (migrate_add_blocker_normal(&vsc->migration_blocker, errp) < 0) {
+             goto free_virtio;
+         }
+     }
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index aa7b272452..9c9ae7109e 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -1527,7 +1527,7 @@ int vhost_dev_init(struct vhost_dev *hdev, void *opaque,
      }
  
-     /* Fetch the received bitmap and refresh the dirty bitmap */
-     return ram_dirty_bitmap_reload(s, block, errp);
- }
- 
--static int migrate_handle_rp_resume_ack(MigrationState *s,
--                                        uint32_t value, Error **errp)
-+static bool migrate_handle_rp_resume_ack(MigrationState *s,
-+                                         uint32_t value, Error **errp)
- {
-     trace_source_return_path_thread_resume_ack(value);
- 
-     if (value != MIGRATION_RESUME_ACK_VALUE) {
-         error_setg(errp, "illegal resume_ack value %"PRIu32, value);
--        return -1;
-+        return false;
-     }
- 
-     /* Now both sides are active. */
-@@ -2003,7 +2003,7 @@ static int migrate_handle_rp_resume_ack(MigrationState *s,
-     /* Notify send thread that time to continue send pages */
-     migration_rp_kick(s);
- 
--    return 0;
-+    return true;
- }
- 
- /*
-@@ -2154,14 +2154,14 @@ static void *source_return_path_thread(void *opaque)
-             }
-             /* Format: len (1B) + idstr (<255B). This ends the idstr. */
-             buf[buf[0] + 1] = '\0';
--            if (migrate_handle_rp_recv_bitmap(ms, (char *)(buf + 1), &err)) {
-+            if (!migrate_handle_rp_recv_bitmap(ms, (char *)(buf + 1), &err)) {
-                 goto out;
-             }
-             break;
- 
-         case MIG_RP_MSG_RESUME_ACK:
-             tmp32 = ldl_be_p(buf);
--            if (migrate_handle_rp_resume_ack(ms, tmp32, &err)) {
-+            if (!migrate_handle_rp_resume_ack(ms, tmp32, &err)) {
-                 goto out;
-             }
-             break;
-diff --git a/migration/ram.c b/migration/ram.c
-index 929cba08f4..a0f3b86663 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -4113,10 +4113,11 @@ static int ram_dirty_bitmap_sync_all(MigrationState *s, RAMState *rs)
-  * Read the received bitmap, revert it as the initial dirty bitmap.
-  * This is only used when the postcopy migration is paused but wants
-  * to resume from a middle point.
-+ *
-+ * Returns true if succeeded, false for errors.
-  */
--int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block, Error **errp)
-+bool ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block, Error **errp)
- {
--    int ret = -EINVAL;
-     /* from_dst_file is always valid because we're within rp_thread */
-     QEMUFile *file = s->rp_state.from_dst_file;
-     g_autofree unsigned long *le_bitmap = NULL;
-@@ -4130,7 +4131,7 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block, Error **errp)
-     if (s->state != MIGRATION_STATUS_POSTCOPY_RECOVER) {
-         error_setg(errp, "Reload bitmap in incorrect state %s",
-                    MigrationStatus_str(s->state));
--        return -EINVAL;
-+        return false;
-     }
- 
-     /*
-@@ -4148,24 +4149,23 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block, Error **errp)
-     if (size != local_size) {
-         error_setg(errp, "ramblock '%s' bitmap size mismatch (0x%"PRIx64
-                    " != 0x%"PRIx64")", block->idstr, size, local_size);
--        return -EINVAL;
-+        return false;
-     }
- 
-     size = qemu_get_buffer(file, (uint8_t *)le_bitmap, local_size);
-     end_mark = qemu_get_be64(file);
- 
--    ret = qemu_file_get_error(file);
--    if (ret || size != local_size) {
--        error_setg(errp, "read bitmap failed for ramblock '%s': %d"
--                   " (size 0x%"PRIx64", got: 0x%"PRIx64")",
--                   block->idstr, ret, local_size, size);
--        return -EIO;
-+    if (qemu_file_get_error(file) || size != local_size) {
-+        error_setg(errp, "read bitmap failed for ramblock '%s': "
-+                   "(size 0x%"PRIx64", got: 0x%"PRIx64")",
-+                   block->idstr, local_size, size);
-+        return false;
-     }
- 
-     if (end_mark != RAMBLOCK_RECV_BITMAP_ENDING) {
-         error_setg(errp, "ramblock '%s' end mark incorrect: 0x%"PRIx64,
-                    block->idstr, end_mark);
--        return -EINVAL;
-+        return false;
-     }
- 
-     /*
-@@ -4197,7 +4197,7 @@ int ram_dirty_bitmap_reload(MigrationState *s, RAMBlock *block, Error **errp)
-      */
-     migration_rp_kick(s);
- 
--    return 0;
-+    return true;
- }
- 
- static int ram_resume_prepare(MigrationState *s, void *opaque)
+     if (hdev->migration_blocker != NULL) {
+-        r = migrate_add_blocker(&hdev->migration_blocker, errp);
++        r = migrate_add_blocker_normal(&hdev->migration_blocker, errp);
+         if (r < 0) {
+             goto fail_busyloop;
+         }
 -- 
 2.41.0
 

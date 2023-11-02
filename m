@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp321943eja;
-        Thu, 2 Nov 2023 04:44:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFwoBZQQ75B9GAr0BpRUcqBo1Gvc+hWdDt/oLfqqqJDwDl8GEvlFwSIfILMgslVj/3gCcBJ
-X-Received: by 2002:a67:c083:0:b0:457:c17a:d34 with SMTP id x3-20020a67c083000000b00457c17a0d34mr13142484vsi.2.1698925489032;
-        Thu, 02 Nov 2023 04:44:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925489; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp322018eja;
+        Thu, 2 Nov 2023 04:44:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEMwcXnx28GF009VPBqJr4TLnHtd+FGSlLGIU8s3qgX3n0m/LHir9F/6WmWQWRxfQBatIMS
+X-Received: by 2002:a05:620a:6649:b0:76f:5b9:3f32 with SMTP id qg9-20020a05620a664900b0076f05b93f32mr16203314qkn.19.1698925498849;
+        Thu, 02 Nov 2023 04:44:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925498; cv=none;
         d=google.com; s=arc-20160816;
-        b=RtdjUU9eArqLCrzZ7rBl/ZjoMvHo8604iZ6v9E+qDDu5doSEbmZXb74+qzE9WeAUz7
-         rbzoJeEkUV9GQperVHz5FTWoKYBnZRmz0eH2YfBJzi3zDn4Z2HdNje5vJTq5194612mK
-         Ge+k3dLIwmaIZwqTePH9bHRSfWTIa3s84wULZsXZ1M/uek4ik4+rYnhYEF0W9dkCcM81
-         YagboqlXLm/ZktUrCNE0f9F7Bj9j/GRzrDXzuYBR6kdoGY276ja2GJMv5w4mgVbXxpTz
-         DM+XL4sSmhxMlUFY8hSZfnbE5ffEmMl/1Stgb4zJw/g6kgFjo2/9RnxHMV6kV0qCcNlC
-         4HIg==
+        b=QqwLvx9cBHWh7yNW33r2imGERVZH+nw1HUy0ZImQ3V/vaRYy9LqEDmTKyStzxnzSXE
+         EAR6yeBfxRJzGMeJx+zkLDZvvWP6fSbZWLS3qax6TsSY3QiGhoRhJrOV1eYFvcCE6/Nv
+         NCff7dRyphiqX2BxaTo5VR6Rsy7OpUbtWmLvPo+AkebzKHU03Om41m7oUP0V79PdOiBy
+         EuUQ/QDuWPeY6Cel6pydmRpak4MGSv19/5oDc7VGPdfioGXjoXkRStjB+/oLzEhLq9BF
+         T17UkvVHz/8kzSwQtjJdwS9CB7E2+ftUIIsufD5QZJMF+MDKRdhmDr4R+WXDQHAerJbq
+         Za7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Wlltny6SsZfybCdSb+V6HIflnOr0x+IHQz2evKolZpE=;
-        fh=T4EM+6jbLn5eRwObk7JR2S+dK3nM2HMDfFhJxfrmv8w=;
-        b=ZEBCHG5f3xpfwukQL5z+YvTtalvMLLC/+uo0xKt5OZeZBVdAtBcgb2OUiRtIO8P4G9
-         D3QPfqUAE4SA/9LQZA6pQBGtF2gdRRrhC3Er2MbJXU+XEQ/48g0ES/UTLhDesKxVhEKX
-         8MHqG/TztlQayR4uJv+xkcjKwv2H5EaMO5e7SYOIRQwNKKFKSH886FYTW723b76CIiIJ
-         X9TOkl7iEfNtwtt9IgNjwOOaKcfXqfpLJkLVJVy4fMKRRb877laCsp2wX83AZL7AxVRW
-         lJriFqtbiMHx13LdPTDrwGyt1r7Q5PPq/69ZeSAixssB8xJ6JVCo/XcG2bjQ6cOiEoxx
-         upzg==
+        bh=HmJEQt2xd3Vrd5xaVOxontA23tK9m5eqT86vJ3+YcNQ=;
+        fh=dl913iPfNrA2OqzFM5s8w96BWy5TnJzFxs2pNQzLPB8=;
+        b=nC6AWZUwRdpajVOwKXuNzY0175JaSxn1fq6XvE2xCU8C49JL4GKVDgk0LXriPkVQSl
+         6gFt88GGIrNEtN7+zy9FNq0fXrtZOkGLs4JKdotgQpnGjBaaS5FMIPQzCul5y00p/7x9
+         LOboIFA0h4QQRmtxns+UBKMLRFzsZAwfiYd3BmU6tKMUwFwbQ0lnSyroJrjGXnD6e7uJ
+         GiBR76Jvr+dnASD44zFvF3Cc+srPUetRNxDEV5Ki5EU6zSqlYllwZ0Ct5LfdKaBkkYZr
+         hSB6P8YtYy7PiO4B2xfUGX7hGU3tHi0HEcAzfK7+eQj+dFyp4FMeibe9iJGwbSGSYMWC
+         IOdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDFgP+rA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sc+gn50p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1-20020ac858c1000000b004181cc21b33si4168106qta.232.2023.11.02.04.44.48
+        by mx.google.com with ESMTPS id i11-20020a05620a404b00b0077890e5b1acsi4483088qko.527.2023.11.02.04.44.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:44:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Nov 2023 04:44:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eDFgP+rA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sc+gn50p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyW7I-0007zD-Ac; Thu, 02 Nov 2023 07:44:04 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qyW7R-0000tS-N4; Thu, 02 Nov 2023 07:44:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW6k-00056m-Mb
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:43:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qyW70-0005dz-7p
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:43:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW6Y-0005rL-Jj
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:43:30 -0400
+ id 1qyW6x-0005x0-Mv
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:43:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925397;
+ s=mimecast20190719; t=1698925422;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Wlltny6SsZfybCdSb+V6HIflnOr0x+IHQz2evKolZpE=;
- b=eDFgP+rAwctmVYXTBtP6+0oXbzylc9cMncPOeU0QdVUTHs+2zOdU6h9uHnt4ZU2KCrIxPe
- FcEZjjqT3+YVF7U3wqjSdNbxpy9gaEeokI3IHjsw9rq/12Wl+n7MbdBELI2//oP/D9NJu/
- P84uX7+wek7X6LjMq187eubO3OrU4dk=
+ bh=HmJEQt2xd3Vrd5xaVOxontA23tK9m5eqT86vJ3+YcNQ=;
+ b=Sc+gn50p/H7Q17LhsfzV7VUO4SW4ZuLydLepUXKfdZ9pc3qpuSIiAojQTLzOO5SidL5aC9
+ +3uaRconQyDJPmwKv5RDXLYVsy54D+QdjxZ07Ba/ClONknGH0i/TVtSWaBOY7l9B9k4mL/
+ QNlz0Bp3HgzFcD6bzm5b0h2agfHtVKQ=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-694-6wX--IUaOcS-1KThQNJqaQ-1; Thu,
- 02 Nov 2023 07:43:15 -0400
-X-MC-Unique: 6wX--IUaOcS-1KThQNJqaQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-CwlJpAPCO-26joc8qMqtow-1; Thu,
+ 02 Nov 2023 07:43:38 -0400
+X-MC-Unique: CwlJpAPCO-26joc8qMqtow-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7DD131C01E90;
- Thu,  2 Nov 2023 11:43:13 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C02992808FC9;
+ Thu,  2 Nov 2023 11:43:36 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3D4C82026D4C;
- Thu,  2 Nov 2023 11:43:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E714F2026D4C;
+ Thu,  2 Nov 2023 11:43:28 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -111,240 +111,309 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>
-Subject: [PULL 17/40] migration: Add per vmstate downtime tracepoints
-Date: Thu,  2 Nov 2023 12:40:31 +0100
-Message-ID: <20231102114054.44360-18-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>, Steve Sistare <steven.sistare@oracle.com>
+Subject: [PULL 20/40] migration: mode parameter
+Date: Thu,  2 Nov 2023 12:40:34 +0100
+Message-ID: <20231102114054.44360-21-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EKcImDufQzZm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: F0kWQP0eEFm6
 
-From: Peter Xu <peterx@redhat.com>
+From: Steve Sistare <steven.sistare@oracle.com>
 
-We have a bunch of savevm_section* tracepoints, they're good to analyze
-migration stream, but not always suitable if someone would like to analyze
-the migration downtime.  Two major problems:
+Create a mode migration parameter that can be used to select alternate
+migration algorithms.  The default mode is normal, representing the
+current migration algorithm, and does not need to be explicitly set.
 
-  - savevm_section* tracepoints are dumping all sections, we only care
-    about the sections that contribute to the downtime
+No functional change until a new mode is added, except that the mode is
+shown by the 'info migrate' command.
 
-  - They don't have an identifier to show the type of sections, so no way
-    to filter downtime information either easily.
-
-We can add type into the tracepoints, but instead of doing so, this patch
-kept them untouched, instead of adding a bunch of downtime specific
-tracepoints, so one can enable "vmstate_downtime*" tracepoints and get a
-full picture of how the downtime is distributed across iterative and
-non-iterative vmstate save/load.
-
-Note that here both save() and load() need to be traced, because both of
-them may contribute to the downtime.  The contribution is not a simple "add
-them together", though: consider when the src is doing a save() of device1
-while the dest can be load()ing for device2, so they can happen
-concurrently.
-
-Tracking both sides make sense because device load() and save() can be
-imbalanced, one device can save() super fast, but load() super slow, vice
-versa.  We can't figure that out without tracing both.
-
-Signed-off-by: Peter Xu <peterx@redhat.com>
+Signed-off-by: Steve Sistare <steven.sistare@oracle.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231030163346.765724-4-peterx@redhat.com>
+Message-ID: <1698263069-406971-2-git-send-email-steven.sistare@oracle.com>
 ---
- migration/savevm.c     | 49 ++++++++++++++++++++++++++++++++++++++----
- migration/trace-events |  2 ++
- 2 files changed, 47 insertions(+), 4 deletions(-)
+ qapi/migration.json                 | 27 ++++++++++++++++++++++++---
+ include/hw/qdev-properties-system.h |  4 ++++
+ include/migration/misc.h            |  1 +
+ migration/options.h                 |  1 +
+ hw/core/qdev-properties-system.c    | 14 ++++++++++++++
+ migration/migration-hmp-cmds.c      |  9 +++++++++
+ migration/options.c                 | 21 +++++++++++++++++++++
+ 7 files changed, 74 insertions(+), 3 deletions(-)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 2095ddd6f8..99ce42b6f3 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -1491,6 +1491,7 @@ void qemu_savevm_state_complete_postcopy(QEMUFile *f)
- static
- int qemu_savevm_state_complete_precopy_iterable(QEMUFile *f, bool in_postcopy)
- {
-+    int64_t start_ts_each, end_ts_each;
-     SaveStateEntry *se;
-     int ret;
+diff --git a/qapi/migration.json b/qapi/migration.json
+index e6610af428..47c02a9346 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -631,6 +631,15 @@
+   'data': [ 'none', 'zlib',
+             { 'name': 'zstd', 'if': 'CONFIG_ZSTD' } ] }
  
-@@ -1507,6 +1508,8 @@ int qemu_savevm_state_complete_precopy_iterable(QEMUFile *f, bool in_postcopy)
-                 continue;
-             }
-         }
++##
++# @MigMode:
++#
++# @normal: the original form of migration. (since 8.2)
++#
++##
++{ 'enum': 'MigMode',
++  'data': [ 'normal' ] }
 +
-+        start_ts_each = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-         trace_savevm_section_start(se->idstr, se->section_id);
+ ##
+ # @BitmapMigrationBitmapAliasTransform:
+ #
+@@ -849,6 +858,9 @@
+ # @vcpu-dirty-limit: Dirtyrate limit (MB/s) during live migration.
+ #     Defaults to 1.  (Since 8.1)
+ #
++# @mode: Migration mode. See description in @MigMode. Default is 'normal'.
++#        (Since 8.2)
++#
+ # Features:
+ #
+ # @deprecated: Member @block-incremental is deprecated.  Use
+@@ -881,7 +893,8 @@
+            'multifd-zlib-level', 'multifd-zstd-level',
+            'block-bitmap-mapping',
+            { 'name': 'x-vcpu-dirty-limit-period', 'features': ['unstable'] },
+-           'vcpu-dirty-limit'] }
++           'vcpu-dirty-limit',
++           'mode'] }
  
-         save_section_header(f, se, QEMU_VM_SECTION_END);
-@@ -1518,6 +1521,9 @@ int qemu_savevm_state_complete_precopy_iterable(QEMUFile *f, bool in_postcopy)
-             qemu_file_set_error(f, ret);
-             return -1;
-         }
-+        end_ts_each = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+        trace_vmstate_downtime_save("iterable", se->idstr, se->instance_id,
-+                                    end_ts_each - start_ts_each);
+ ##
+ # @MigrateSetParameters:
+@@ -1033,6 +1046,9 @@
+ # @vcpu-dirty-limit: Dirtyrate limit (MB/s) during live migration.
+ #     Defaults to 1.  (Since 8.1)
+ #
++# @mode: Migration mode. See description in @MigMode. Default is 'normal'.
++#        (Since 8.2)
++#
+ # Features:
+ #
+ # @deprecated: Member @block-incremental is deprecated.  Use
+@@ -1085,7 +1101,8 @@
+             '*block-bitmap-mapping': [ 'BitmapMigrationNodeAlias' ],
+             '*x-vcpu-dirty-limit-period': { 'type': 'uint64',
+                                             'features': [ 'unstable' ] },
+-            '*vcpu-dirty-limit': 'uint64'} }
++            '*vcpu-dirty-limit': 'uint64',
++            '*mode': 'MigMode'} }
+ 
+ ##
+ # @migrate-set-parameters:
+@@ -1257,6 +1274,9 @@
+ # @vcpu-dirty-limit: Dirtyrate limit (MB/s) during live migration.
+ #     Defaults to 1.  (Since 8.1)
+ #
++# @mode: Migration mode. See description in @MigMode. Default is 'normal'.
++#        (Since 8.2)
++#
+ # Features:
+ #
+ # @deprecated: Member @block-incremental is deprecated.  Use
+@@ -1306,7 +1326,8 @@
+             '*block-bitmap-mapping': [ 'BitmapMigrationNodeAlias' ],
+             '*x-vcpu-dirty-limit-period': { 'type': 'uint64',
+                                             'features': [ 'unstable' ] },
+-            '*vcpu-dirty-limit': 'uint64'} }
++            '*vcpu-dirty-limit': 'uint64',
++            '*mode': 'MigMode'} }
+ 
+ ##
+ # @query-migrate-parameters:
+diff --git a/include/hw/qdev-properties-system.h b/include/hw/qdev-properties-system.h
+index e4f8a13afc..91f7a2452d 100644
+--- a/include/hw/qdev-properties-system.h
++++ b/include/hw/qdev-properties-system.h
+@@ -7,6 +7,7 @@ extern const PropertyInfo qdev_prop_chr;
+ extern const PropertyInfo qdev_prop_macaddr;
+ extern const PropertyInfo qdev_prop_reserved_region;
+ extern const PropertyInfo qdev_prop_multifd_compression;
++extern const PropertyInfo qdev_prop_mig_mode;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+ extern const PropertyInfo qdev_prop_blockdev_on_error;
+ extern const PropertyInfo qdev_prop_bios_chs_trans;
+@@ -42,6 +43,9 @@ extern const PropertyInfo qdev_prop_cpus390entitlement;
+ #define DEFINE_PROP_MULTIFD_COMPRESSION(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_multifd_compression, \
+                        MultiFDCompression)
++#define DEFINE_PROP_MIG_MODE(_n, _s, _f, _d) \
++    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_mig_mode, \
++                       MigMode)
+ #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_losttickpolicy, \
+                         LostTickPolicy)
+diff --git a/include/migration/misc.h b/include/migration/misc.h
+index 673ac490fb..1bc8902e6d 100644
+--- a/include/migration/misc.h
++++ b/include/migration/misc.h
+@@ -15,6 +15,7 @@
+ #define MIGRATION_MISC_H
+ 
+ #include "qemu/notify.h"
++#include "qapi/qapi-types-migration.h"
+ #include "qapi/qapi-types-net.h"
+ 
+ /* migration/ram.c */
+diff --git a/migration/options.h b/migration/options.h
+index 237f2d6b4a..246c160aee 100644
+--- a/migration/options.h
++++ b/migration/options.h
+@@ -83,6 +83,7 @@ uint8_t migrate_max_cpu_throttle(void);
+ uint64_t migrate_max_bandwidth(void);
+ uint64_t migrate_avail_switchover_bandwidth(void);
+ uint64_t migrate_max_postcopy_bandwidth(void);
++MigMode migrate_mode(void);
+ int migrate_multifd_channels(void);
+ MultiFDCompression migrate_multifd_compression(void);
+ int migrate_multifd_zlib_level(void);
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 7c6dfab128..b9179e8917 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -673,6 +673,20 @@ const PropertyInfo qdev_prop_multifd_compression = {
+     .set_default_value = qdev_propinfo_set_default_value_enum,
+ };
+ 
++/* --- MigMode --- */
++
++QEMU_BUILD_BUG_ON(sizeof(MigMode) != sizeof(int));
++
++const PropertyInfo qdev_prop_mig_mode = {
++    .name = "MigMode",
++    .description = "mig_mode values, "
++                   "normal",
++    .enum_table = &MigMode_lookup,
++    .get = qdev_propinfo_get_enum,
++    .set = qdev_propinfo_set_enum,
++    .set_default_value = qdev_propinfo_set_default_value_enum,
++};
++
+ /* --- Reserved Region --- */
+ 
+ /*
+diff --git a/migration/migration-hmp-cmds.c b/migration/migration-hmp-cmds.c
+index dfe98da355..a170440991 100644
+--- a/migration/migration-hmp-cmds.c
++++ b/migration/migration-hmp-cmds.c
+@@ -387,6 +387,11 @@ void hmp_info_migrate_parameters(Monitor *mon, const QDict *qdict)
+         monitor_printf(mon, "%s: %" PRIu64 " MB/s\n",
+             MigrationParameter_str(MIGRATION_PARAMETER_VCPU_DIRTY_LIMIT),
+             params->vcpu_dirty_limit);
++
++        assert(params->has_mode);
++        monitor_printf(mon, "%s: %s\n",
++            MigrationParameter_str(MIGRATION_PARAMETER_MODE),
++            qapi_enum_lookup(&MigMode_lookup, params->mode));
      }
  
-     return 0;
-@@ -1528,6 +1534,7 @@ int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
-                                                     bool inactivate_disks)
- {
-     MigrationState *ms = migrate_get_current();
-+    int64_t start_ts_each, end_ts_each;
-     JSONWriter *vmdesc = ms->vmdesc;
-     int vmdesc_len;
-     SaveStateEntry *se;
-@@ -1539,11 +1546,17 @@ int qemu_savevm_state_complete_precopy_non_iterable(QEMUFile *f,
-             continue;
-         }
- 
-+        start_ts_each = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+
-         ret = vmstate_save(f, se, vmdesc);
-         if (ret) {
-             qemu_file_set_error(f, ret);
-             return ret;
-         }
-+
-+        end_ts_each = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+        trace_vmstate_downtime_save("non-iterable", se->idstr, se->instance_id,
-+                                    end_ts_each - start_ts_each);
+     qapi_free_MigrationParameters(params);
+@@ -661,6 +666,10 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+         p->has_vcpu_dirty_limit = true;
+         visit_type_size(v, param, &p->vcpu_dirty_limit, &err);
+         break;
++    case MIGRATION_PARAMETER_MODE:
++        p->has_mode = true;
++        visit_type_MigMode(v, param, &p->mode, &err);
++        break;
+     default:
+         assert(0);
      }
+diff --git a/migration/options.c b/migration/options.c
+index 9a39826ca5..8d8ec73ad9 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -176,6 +176,9 @@ Property migration_properties[] = {
+     DEFINE_PROP_UINT64("vcpu-dirty-limit", MigrationState,
+                        parameters.vcpu_dirty_limit,
+                        DEFAULT_MIGRATE_VCPU_DIRTY_LIMIT),
++    DEFINE_PROP_MIG_MODE("mode", MigrationState,
++                      parameters.mode,
++                      MIG_MODE_NORMAL),
  
-     if (inactivate_disks) {
-@@ -2537,9 +2550,12 @@ static bool check_section_footer(QEMUFile *f, SaveStateEntry *se)
+     /* Migration capabilities */
+     DEFINE_PROP_MIG_CAP("x-xbzrle", MIGRATION_CAPABILITY_XBZRLE),
+@@ -827,6 +830,13 @@ uint64_t migrate_max_postcopy_bandwidth(void)
+     return s->parameters.max_postcopy_bandwidth;
  }
  
- static int
--qemu_loadvm_section_start_full(QEMUFile *f, MigrationIncomingState *mis)
-+qemu_loadvm_section_start_full(QEMUFile *f, MigrationIncomingState *mis,
-+                               uint8_t type)
++MigMode migrate_mode(void)
++{
++    MigrationState *s = migrate_get_current();
++
++    return s->parameters.mode;
++}
++
+ int migrate_multifd_channels(void)
  {
-+    bool trace_downtime = (type == QEMU_VM_SECTION_FULL);
-     uint32_t instance_id, version_id, section_id;
-+    int64_t start_ts, end_ts;
-     SaveStateEntry *se;
-     char idstr[256];
-     int ret;
-@@ -2588,12 +2604,23 @@ qemu_loadvm_section_start_full(QEMUFile *f, MigrationIncomingState *mis)
-         return -EINVAL;
-     }
+     MigrationState *s = migrate_get_current();
+@@ -999,6 +1009,8 @@ MigrationParameters *qmp_query_migrate_parameters(Error **errp)
+     params->x_vcpu_dirty_limit_period = s->parameters.x_vcpu_dirty_limit_period;
+     params->has_vcpu_dirty_limit = true;
+     params->vcpu_dirty_limit = s->parameters.vcpu_dirty_limit;
++    params->has_mode = true;
++    params->mode = s->parameters.mode;
  
-+    if (trace_downtime) {
-+        start_ts = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+    }
-+
-     ret = vmstate_load(f, se);
-     if (ret < 0) {
-         error_report("error while loading state for instance 0x%"PRIx32" of"
-                      " device '%s'", instance_id, idstr);
-         return ret;
-     }
-+
-+    if (trace_downtime) {
-+        end_ts = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+        trace_vmstate_downtime_load("non-iterable", se->idstr,
-+                                    se->instance_id, end_ts - start_ts);
-+    }
-+
-     if (!check_section_footer(f, se)) {
-         return -EINVAL;
-     }
-@@ -2602,8 +2629,11 @@ qemu_loadvm_section_start_full(QEMUFile *f, MigrationIncomingState *mis)
+     return params;
+ }
+@@ -1034,6 +1046,7 @@ void migrate_params_init(MigrationParameters *params)
+     params->has_announce_step = true;
+     params->has_x_vcpu_dirty_limit_period = true;
+     params->has_vcpu_dirty_limit = true;
++    params->has_mode = true;
  }
  
- static int
--qemu_loadvm_section_part_end(QEMUFile *f, MigrationIncomingState *mis)
-+qemu_loadvm_section_part_end(QEMUFile *f, MigrationIncomingState *mis,
-+                             uint8_t type)
- {
-+    bool trace_downtime = (type == QEMU_VM_SECTION_END);
-+    int64_t start_ts, end_ts;
-     uint32_t section_id;
-     SaveStateEntry *se;
-     int ret;
-@@ -2628,12 +2658,23 @@ qemu_loadvm_section_part_end(QEMUFile *f, MigrationIncomingState *mis)
-         return -EINVAL;
+ /*
+@@ -1331,6 +1344,10 @@ static void migrate_params_test_apply(MigrateSetParameters *params,
+     if (params->has_vcpu_dirty_limit) {
+         dest->vcpu_dirty_limit = params->vcpu_dirty_limit;
      }
++
++    if (params->has_mode) {
++        dest->mode = params->mode;
++    }
+ }
  
-+    if (trace_downtime) {
-+        start_ts = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+    }
-+
-     ret = vmstate_load(f, se);
-     if (ret < 0) {
-         error_report("error while loading state section id %d(%s)",
-                      section_id, se->idstr);
-         return ret;
+ static void migrate_params_apply(MigrateSetParameters *params, Error **errp)
+@@ -1471,6 +1488,10 @@ static void migrate_params_apply(MigrateSetParameters *params, Error **errp)
+     if (params->has_vcpu_dirty_limit) {
+         s->parameters.vcpu_dirty_limit = params->vcpu_dirty_limit;
      }
 +
-+    if (trace_downtime) {
-+        end_ts = qemu_clock_get_us(QEMU_CLOCK_REALTIME);
-+        trace_vmstate_downtime_load("iterable", se->idstr,
-+                                    se->instance_id, end_ts - start_ts);
++    if (params->has_mode) {
++        s->parameters.mode = params->mode;
 +    }
-+
-     if (!check_section_footer(f, se)) {
-         return -EINVAL;
-     }
-@@ -2822,14 +2863,14 @@ retry:
-         switch (section_type) {
-         case QEMU_VM_SECTION_START:
-         case QEMU_VM_SECTION_FULL:
--            ret = qemu_loadvm_section_start_full(f, mis);
-+            ret = qemu_loadvm_section_start_full(f, mis, section_type);
-             if (ret < 0) {
-                 goto out;
-             }
-             break;
-         case QEMU_VM_SECTION_PART:
-         case QEMU_VM_SECTION_END:
--            ret = qemu_loadvm_section_part_end(f, mis);
-+            ret = qemu_loadvm_section_part_end(f, mis, section_type);
-             if (ret < 0) {
-                 goto out;
-             }
-diff --git a/migration/trace-events b/migration/trace-events
-index fa9486dffe..5820add1f3 100644
---- a/migration/trace-events
-+++ b/migration/trace-events
-@@ -48,6 +48,8 @@ savevm_state_cleanup(void) ""
- savevm_state_complete_precopy(void) ""
- vmstate_save(const char *idstr, const char *vmsd_name) "%s, %s"
- vmstate_load(const char *idstr, const char *vmsd_name) "%s, %s"
-+vmstate_downtime_save(const char *type, const char *idstr, uint32_t instance_id, int64_t downtime) "type=%s idstr=%s instance_id=%d downtime=%"PRIi64
-+vmstate_downtime_load(const char *type, const char *idstr, uint32_t instance_id, int64_t downtime) "type=%s idstr=%s instance_id=%d downtime=%"PRIi64
- postcopy_pause_incoming(void) ""
- postcopy_pause_incoming_continued(void) ""
- postcopy_page_req_sync(void *host_addr) "sync page req %p"
+ }
+ 
+ void qmp_migrate_set_parameters(MigrateSetParameters *params, Error **errp)
 -- 
 2.41.0
 

@@ -1,317 +1,293 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp1361566ejb;
-        Fri, 20 Oct 2023 09:39:11 -0700 (PDT)
-X-Received: by 2002:a17:906:7311:b0:9bd:9507:ed1c with SMTP id di17-20020a170906731100b009bd9507ed1cmr1990315ejc.18.1697819950934;
-        Fri, 20 Oct 2023 09:39:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697819950; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp60024eja;
+        Wed, 1 Nov 2023 17:26:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFnUErGv/BAqiseNRUf6VBS6qUDv2S3FrbR1kjk6tCMVHnm0qUecQ99jmLN9Z4msVP50rRO
+X-Received: by 2002:a05:622a:2a81:b0:41e:1c64:7b34 with SMTP id kf1-20020a05622a2a8100b0041e1c647b34mr14078390qtb.67.1698884799566;
+        Wed, 01 Nov 2023 17:26:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698884799; cv=none;
         d=google.com; s=arc-20160816;
-        b=VCowsMkGuL6Pvnf50g8qlc07DVc1eduF2ZHSGGRoIoNbtgkLeuc/hgni02q8NQisdV
-         ZzTouBjCQQKiuK9hH0VmJ0gX1HgpAwElLZYxpdlpPj6BsMg1ke3eeL4XaVD++R5RwrYJ
-         U6vOMBmiPLbdU8Y0M+TWGY/HU0t57HsLNUcsWIX9FsjlP2SfjJnIqfWTkziiLwoNuSfi
-         S4yBsbRIVZGBBI8GjKodPhAA3JRCq3seY0rVD3jwSCMaayfNaRsTtbq/+B4M1HlKiHsP
-         otU/qWfnWE8ViMnmvYRXoW7YDlvpftdRIscBPGJLG7A34XHMb6q/1xmy8Rr+poRhJ0TU
-         Zang==
+        b=PRZpYNqvWgnQPPteapXZ381uZZnNsHpPGXdwHHCtfg0Obr4rxi/MFONMRaS98rZRyl
+         HKJhEtGeosDBX4BqplcoCThWQquD/h8NuzVukNNy6s+9SQFcGLwuUCCUH1cDv+yVcW0E
+         O+c+A8i3+7AjF6U2kALzdkwdEOUdMuMdcayIN2cCL90OkXSKfHE+zHmaXtSgAgyHkiTz
+         u2RMnlRrpS4G03o76o0p1FRdpynnlERsF6wI392iQDxwLxQGjOwWXNIit0uMGcH9WS+k
+         SgLRakqPQgfL/MRhuUSX5y4zpGBpAiYIvwXvmH/DxhAVDD5m1HyDFaB6yn0SwtjNdtJG
+         XOFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yOZrNX/+z7aB8oqqC+6GO7cwysfniQeher82irVu/7U=;
-        fh=5vNLQZgUhb7ifj4t5DykeM/1wDWOFfZHd3VmOJfrfNE=;
-        b=tYedrANFKMg/nbUb3RTr/UTKCbCrdIXHugl7Vrc3zhN4uo9z6vwyqcrdSz6cjkP3pO
-         Lr4+eBr3SXNM6m1uYYkqQdMguNJ/whAz5W//E8f5AdeL+tkpTCAKduRGf9gmusJ3prh2
-         PkyRHTxyncVO2cqrYQ2Tdiy8G0xCmMGtRtljkHlwNiQ2OvqU8h82br7ko/qQf34sekRl
-         n1pyLM7ybj8gggbCWXk6P+/s0gW4SuZTUq05BKeKFa/0+4o5n7XCJX+rgsiOK/FjdNHP
-         tlCZ/EUlQFfJR5pytAtkPo2BcUx/Nb0TtRhSX9T3amRrMQ54O4ILVnOajP2n1Lk6KUTB
-         bYpQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:mime-version:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=L2Qn8R/0wzVuiL3gACkZMpV9Y9yBgfHAX0OxhSnceJQ=;
+        fh=rgQPcVbcOjZgL6aK5WmEt+m6+w+zLiqfGJUo4Bg6NIA=;
+        b=NDO+6RSNG+YK0bJWTGev8d5GW8uMCIuc/edgQE0rr856vG96l/9S5ax8b7itrm3oky
+         vP5xzcQkHLEd/psfL7NWbq2yR161nzBozHqkC1ftWi1O81DiQwpifCgDM1yH7tfj4bxq
+         gVIuwg2fKQgW0ur1WEHSwh1MP+10eJBerkUQMufclLQfw2jnAjmORVRW/7QssqKF2IKL
+         /gprZGbkbWBZOQZTkj1bg9uKv3pdJzmLJFgoW52e/tCU2iTi/6i3VLFi0Qp9UrbKqD/E
+         E1UZ8g4iIG/SH0Km7LwhjrtdqwRzc++Xq4uzWghyJ7NFoAKi5bZ4LkTtmvcr4fmwLPix
+         0xaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Gg+O/LS8";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hy22-20020a1709068a7600b009b2ddd27e09sor701433ejc.16.2023.10.20.09.39.10
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RGff4tCm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f14-20020ac85d0e000000b004181e519799si3799319qtx.100.2023.11.01.17.26.39
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 20 Oct 2023 09:39:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 01 Nov 2023 17:26:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Gg+O/LS8";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697819950; x=1698424750; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yOZrNX/+z7aB8oqqC+6GO7cwysfniQeher82irVu/7U=;
-        b=Gg+O/LS8U9gEzpM74tJ9lXsri+9FsI1OTMgmSq/7xjjpkK38WC4cylMG6qpEyp3r/F
-         QZ7CFauPksAQS82KkoNbb1y7KgHp3KSQLDGPZUY6sFS23Ui5VQ4R0CwPAbbx9lQbV+5m
-         lBguXavy7op1iVtT0pnsDDupdXvXFNcxrYB7maKfe9Nx0wKvwH55tlZp+Pjn4/7q+sCS
-         qRIiaIG8ry7Ke0bsaGhxoPpssHf20jYbWzuiYj43oyjpAVSvx04aCK9BoeS3XUbtpXLA
-         bmgb2SNY/i9DgaXgk/VF7ccteB0YLKWP5v7CReqsB3Bd7eOUhEIc+OjIrPTYMuSb7wwa
-         6NFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697819950; x=1698424750;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yOZrNX/+z7aB8oqqC+6GO7cwysfniQeher82irVu/7U=;
-        b=n8Fm3sKdkq639z+8GoTgITVo7hyT1hVEwr4nZVHUx0sxv7hAcFLN70erE+CY+QcNyR
-         l4peaYUh1bUFdGDJ4fH4q9rHe/krgC5XCUurKqe0j5Ns8lJNEq6xpu9BFqrGCuNqFAqg
-         LCv8LUPHLk0qi3FlfEypQKdPFxDNbVyvEE9AWuEI3moc4ZCRZWlcDZJSgf3EvGZAZvvg
-         MAv7VfTsGDAwMg0b2/x0lnkVIwbMTkDbd8RfHUTnl8ZOo7Pb4kVJ65InHZVQbntlYljp
-         UsVjqseVGZaYVgBktx1ekue3W+pXKyYFL/z0qtTIrsHRfsh+W01dpYsHTU5Qolia16Jg
-         9x5Q==
-X-Gm-Message-State: AOJu0YyCxtR4a2t5vACpTSNPH1vIbMk/+QU/xgNVP3JmQ3o246tnjC9H
-	94bSfDjDv7ZT6E/MpPf67JDMU2ek
-X-Google-Smtp-Source: AGHT+IGsgNGfCT5XpM2lTQY8HMLu12TWjzLu8IMAwyY25dXL0k0/QS5mYRTmqOEG0tkPfFgRkGRxOw==
-X-Received: by 2002:a17:907:7b9f:b0:9ae:5f51:2e4a with SMTP id ne31-20020a1709077b9f00b009ae5f512e4amr2165318ejc.36.1697819950597;
-        Fri, 20 Oct 2023 09:39:10 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr. [176.171.212.97])
-        by smtp.gmail.com with ESMTPSA id do6-20020a170906c10600b009ad7fc17b2asm1806575ejc.224.2023.10.20.09.39.08
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 20 Oct 2023 09:39:10 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-ppc@nongnu.org,
-	Eduardo Habkost <eduardo@habkost.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-s390x@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Sergio Lopez <slp@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	kvm@vger.kernel.org
-Subject: [PATCH 19/19] cpus: Replace first_cpu by qemu_get_cpu(0, TYPE_X86_CPU)
-Date: Fri, 20 Oct 2023 18:36:41 +0200
-Message-ID: <20231020163643.86105-20-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231020163643.86105-1-philmd@linaro.org>
-References: <20231020163643.86105-1-philmd@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RGff4tCm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qyLXM-0000c8-56; Wed, 01 Nov 2023 20:26:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qyLXF-0000Yl-0x
+ for qemu-arm@nongnu.org; Wed, 01 Nov 2023 20:26:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qyLWy-0008JA-2f
+ for qemu-arm@nongnu.org; Wed, 01 Nov 2023 20:26:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698884749;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=L2Qn8R/0wzVuiL3gACkZMpV9Y9yBgfHAX0OxhSnceJQ=;
+ b=RGff4tCm/Omm4XF28iac5n0p6cqFAoR9LEpG3O0q2DmkclEY6eHMMjxqLEnCUWuV4GZd54
+ K1tYGBi4k91oJcG4RuI7lXrWRBoYZy+WKungSanyoF6d6MHaPKKeCZIencLJBJIVTG/EHd
+ KLGyqpT+aDP9S0TyQBEMZs4VLUN+m1o=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-130-kpFMDz_RPA-RDPhIYQ86qA-1; Wed,
+ 01 Nov 2023 20:25:46 -0400
+X-MC-Unique: kpFMDz_RPA-RDPhIYQ86qA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65EA228B72F2;
+ Thu,  2 Nov 2023 00:25:44 +0000 (UTC)
+Received: from gshan.redhat.com (unknown [10.64.136.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C3305C1290F;
+ Thu,  2 Nov 2023 00:25:23 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, philmd@linaro.org, clg@kaod.org,
+ imammedo@redhat.com, imp@bsdimp.com, kevans@freebsd.org,
+ richard.henderson@linaro.org, pbonzini@redhat.com,
+ peter.maydell@linaro.org, b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
+ quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com,
+ aleksandar.rikalo@syrmia.com, chenhuacai@kernel.org, crwulff@gmail.com,
+ marex@denx.de, shorne@gmail.com, npiggin@gmail.com,
+ ysato@users.sourceforge.jp, david@redhat.com, thuth@redhat.com,
+ iii@linux.ibm.com, kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com,
+ shan.gavin@gmail.com
+Subject: [PATCH v4 00/33] Unified CPU type check
+Date: Thu,  2 Nov 2023 10:24:27 +1000
+Message-ID: <20231102002500.1750692-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: pc6VzzEnicK2
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RVMi9ptt3tbP
 
-Mechanical change using the following coccinelle script:
+There are two places where the user specified CPU type is checked to see
+if it's supported or allowed by the board: machine_run_board_init() and
+mc->init(). We don't have to maintain two duplicate sets of logic. This
+series intends to move the check to machine_run_board_init() so that we
+have unified CPU type check.
 
-  @@ @@
-  -   first_cpu
-  +   qemu_get_cpu(0, TYPE_X86_CPU)
+Note that the term "the registered CPU type name" used in this series
+corresponds to the names of non-abstract CPU classes, regitered by
+individual target.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/i386/kvm/clock.c                 | 4 ++--
- hw/i386/kvmvapic.c                  | 3 ++-
- hw/i386/microvm.c                   | 2 +-
- hw/i386/pc.c                        | 7 ++++---
- hw/i386/pc_piix.c                   | 3 ++-
- hw/i386/x86.c                       | 2 +-
- hw/isa/lpc_ich9.c                   | 2 +-
- target/i386/arch_dump.c             | 6 +++---
- target/i386/kvm/kvm.c               | 6 +++---
- target/i386/tcg/sysemu/fpu_helper.c | 4 ++--
- 10 files changed, 21 insertions(+), 18 deletions(-)
+PATCH[01-03] Come from Philippe Mathieu-Daudé. cpu_class_by_name()
+             is consolidated to ensure that the returned object
+             class isn't abstract and a child object class of
+             CPU_RESOLVING_TYPE
+PATCH[04]    Adds a generic helper cpu_model_from_type() to extract
+             the CPU model name from the CPU type name
+PATCH[05-20] Uses cpu_model_from_type() in the individual target
+PATCH[21-24] Implements cpu_list() for the missed targets
+PATCH[25-33] Validates the CPU type in machine_run_board_init() for
+             the individual board
 
-diff --git a/hw/i386/kvm/clock.c b/hw/i386/kvm/clock.c
-index f25977d3f6..00067adde3 100644
---- a/hw/i386/kvm/clock.c
-+++ b/hw/i386/kvm/clock.c
-@@ -65,7 +65,7 @@ struct pvclock_vcpu_time_info {
- 
- static uint64_t kvmclock_current_nsec(KVMClockState *s)
- {
--    CPUState *cpu = first_cpu;
-+    CPUState *cpu = qemu_get_cpu(0, TYPE_X86_CPU);
-     CPUX86State *env = cpu_env(cpu);
-     hwaddr kvmclock_struct_pa;
-     uint64_t migration_tsc = env->tsc;
-@@ -330,7 +330,7 @@ static const TypeInfo kvmclock_info = {
- /* Note: Must be called after VCPU initialization. */
- void kvmclock_create(bool create_always)
- {
--    X86CPU *cpu = X86_CPU(first_cpu);
-+    X86CPU *cpu = X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU));
- 
-     assert(kvm_enabled());
-     if (!kvm_has_adjust_clock()) {
-diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
-index 43f8a8f679..e10c2bfc5a 100644
---- a/hw/i386/kvmvapic.c
-+++ b/hw/i386/kvmvapic.c
-@@ -760,7 +760,8 @@ static void kvmvapic_vm_state_change(void *opaque, bool running,
- 
-     if (s->state == VAPIC_ACTIVE) {
-         if (ms->smp.cpus == 1) {
--            run_on_cpu(first_cpu, do_vapic_enable, RUN_ON_CPU_HOST_PTR(s));
-+            run_on_cpu(qemu_get_cpu(0, TYPE_X86_CPU), do_vapic_enable,
-+                       RUN_ON_CPU_HOST_PTR(s));
-         } else {
-             zero = g_malloc0(s->rom_state.vapic_size);
-             cpu_physical_memory_write(s->vapic_paddr, zero,
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index b9c93039e2..d043f71992 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -229,7 +229,7 @@ static void microvm_devices_init(MicrovmMachineState *mms)
- 
-     if (x86_machine_is_acpi_enabled(x86ms) && mms->pcie == ON_OFF_AUTO_ON) {
-         /* use topmost 25% of the address space available */
--        hwaddr phys_size = (hwaddr)1 << X86_CPU(first_cpu)->phys_bits;
-+        hwaddr phys_size = (hwaddr)1 << X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU))->phys_bits;
-         if (phys_size > 0x1000000ll) {
-             mms->gpex.mmio64.size = phys_size / 4;
-             mms->gpex.mmio64.base = phys_size - mms->gpex.mmio64.size;
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index bb3854d1d0..7f10078096 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -813,7 +813,7 @@ static uint64_t pc_get_cxl_range_end(PCMachineState *pcms)
- 
- static hwaddr pc_max_used_gpa(PCMachineState *pcms, uint64_t pci_hole64_size)
- {
--    X86CPU *cpu = X86_CPU(first_cpu);
-+    X86CPU *cpu = X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU));
-     PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
-     MachineState *ms = MACHINE(pcms);
- 
-@@ -898,7 +898,7 @@ void pc_memory_init(PCMachineState *pcms,
-     X86MachineState *x86ms = X86_MACHINE(pcms);
-     hwaddr maxphysaddr, maxusedaddr;
-     hwaddr cxl_base, cxl_resv_end = 0;
--    X86CPU *cpu = X86_CPU(first_cpu);
-+    X86CPU *cpu = X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU));
- 
-     assert(machine->ram_size == x86ms->below_4g_mem_size +
-                                 x86ms->above_4g_mem_size);
-@@ -1182,7 +1182,8 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
-     }
-     port92 = isa_create_simple(isa_bus, TYPE_PORT92);
- 
--    a20_line = qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2);
-+    a20_line = qemu_allocate_irqs(handle_a20_line_change,
-+                                  qemu_get_cpu(0, TYPE_X86_CPU), 2);
-     i8042_setup_a20_line(i8042, a20_line[0]);
-     qdev_connect_gpio_out_named(DEVICE(port92),
-                                 PORT92_A20_LINE, 0, a20_line[1]);
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index e36a3262b2..1e0c2bb2e3 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -363,7 +363,8 @@ static void pc_init1(MachineState *machine,
-     if (pcmc->pci_enabled && x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
-         PCIDevice *piix4_pm;
- 
--        smi_irq = qemu_allocate_irq(pc_acpi_smi_interrupt, first_cpu, 0);
-+        smi_irq = qemu_allocate_irq(pc_acpi_smi_interrupt,
-+                                    qemu_get_cpu(0, TYPE_X86_CPU), 0);
-         piix4_pm = pci_new(piix3_devfn + 3, TYPE_PIIX4_PM);
-         qdev_prop_set_uint32(DEVICE(piix4_pm), "smb_io_base", 0xb100);
-         qdev_prop_set_bit(DEVICE(piix4_pm), "smm-enabled",
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index b3d054889b..ef7949ac42 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -538,7 +538,7 @@ uint64_t cpu_get_tsc(CPUX86State *env)
- /* IRQ handling */
- static void pic_irq_request(void *opaque, int irq, int level)
- {
--    CPUState *cs = first_cpu;
-+    CPUState *cs = qemu_get_cpu(0, TYPE_X86_CPU);
-     X86CPU *cpu = X86_CPU(cs);
- 
-     trace_x86_pic_interrupt(irq, level);
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index 3f59980aa0..0b9c37e0bf 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -327,7 +327,7 @@ static PCIINTxRoute ich9_route_intx_pin_to_irq(void *opaque, int pirq_pin)
- 
- void ich9_generate_smi(void)
- {
--    cpu_interrupt(first_cpu, CPU_INTERRUPT_SMI);
-+    cpu_interrupt(qemu_get_cpu(0, TYPE_X86_CPU), CPU_INTERRUPT_SMI);
- }
- 
- /* Returns -1 on error, IRQ number on success */
-diff --git a/target/i386/arch_dump.c b/target/i386/arch_dump.c
-index c290910a04..c167f893db 100644
---- a/target/i386/arch_dump.c
-+++ b/target/i386/arch_dump.c
-@@ -185,7 +185,7 @@ int x86_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-     X86CPU *cpu = X86_CPU(cs);
-     int ret;
- #ifdef TARGET_X86_64
--    X86CPU *first_x86_cpu = X86_CPU(first_cpu);
-+    X86CPU *first_x86_cpu = X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU));
-     bool lma = !!(first_x86_cpu->env.hflags & HF_LMA_MASK);
- 
-     if (lma) {
-@@ -401,8 +401,8 @@ int cpu_get_dump_info(ArchDumpInfo *info,
-     GuestPhysBlock *block;
- 
- #ifdef TARGET_X86_64
--    X86CPU *first_x86_cpu = X86_CPU(first_cpu);
--    lma = first_cpu && (first_x86_cpu->env.hflags & HF_LMA_MASK);
-+    X86CPU *first_x86_cpu = X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU));
-+    lma = qemu_get_cpu(0, TYPE_X86_CPU) && (first_x86_cpu->env.hflags & HF_LMA_MASK);
- #endif
- 
-     if (lma) {
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index ab72bcdfad..c38e68275e 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -3464,7 +3464,7 @@ static int kvm_put_msrs(X86CPU *cpu, int level)
-          * Hyper-V partition-wide MSRs: to avoid clearing them on cpu hot-add,
-          * only sync them to KVM on the first cpu
-          */
--        if (current_cpu == first_cpu) {
-+        if (current_cpu == qemu_get_cpu(0, TYPE_X86_CPU)) {
-             if (has_msr_hv_hypercall) {
-                 kvm_msr_entry_add(cpu, HV_X64_MSR_GUEST_OS_ID,
-                                   env->msr_hv_guest_os_id);
-@@ -5601,10 +5601,10 @@ uint64_t kvm_swizzle_msi_ext_dest_id(uint64_t address)
-     CPUX86State *env;
-     uint64_t ext_id;
- 
--    if (!first_cpu) {
-+    if (!qemu_get_cpu(0, TYPE_X86_CPU)) {
-         return address;
-     }
--    env = &X86_CPU(first_cpu)->env;
-+    env = &X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU))->env;
-     if (!(env->features[FEAT_KVM] & (1 << KVM_FEATURE_MSI_EXT_DEST_ID))) {
-         return address;
-     }
-diff --git a/target/i386/tcg/sysemu/fpu_helper.c b/target/i386/tcg/sysemu/fpu_helper.c
-index 93506cdd94..942d04037c 100644
---- a/target/i386/tcg/sysemu/fpu_helper.c
-+++ b/target/i386/tcg/sysemu/fpu_helper.c
-@@ -41,13 +41,13 @@ void fpu_check_raise_ferr_irq(CPUX86State *env)
- 
- void cpu_clear_ignne(void)
- {
--    CPUX86State *env = &X86_CPU(first_cpu)->env;
-+    CPUX86State *env = &X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU))->env;
-     env->hflags2 &= ~HF2_IGNNE_MASK;
- }
- 
- void cpu_set_ignne(void)
- {
--    CPUX86State *env = &X86_CPU(first_cpu)->env;
-+    CPUX86State *env = &X86_CPU(qemu_get_cpu(0, TYPE_X86_CPU))->env;
- 
-     assert(qemu_mutex_iothread_locked());
- 
+v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00302.html
+v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00528.html
+v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-09/msg00157.html
+
+Testing
+=======
+
+With the following command lines, the output messages are varied before
+and after the series is applied.
+
+  ./build/qemu-system-aarch64            \
+  -accel tcg -machine virt,gic-version=3 \
+  -cpu cortex-a8 -smp maxcpus=2,cpus=1
+
+Before the series is applied:
+
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+
+After the series is applied:
+
+  qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
+  The valid models are: cortex-a7, cortex-a15, cortex-a35, cortex-a55,
+                        cortex-a72, cortex-a76, a64fx, neoverse-n1,
+                        neoverse-v1, cortex-a53, cortex-a57, max
+
+Changelog
+=========
+v4:
+  * Rebase to latest v8.1.2                                     (Gavin)
+  * Integrate Philippe's patches where cpu_class_by_name()
+    is consolidated and my duplicate code is dropped            (Philippe)
+  * Simplified changelog and improvements                       (Thomas)
+  * g_assert() on the return value from cpu_model_from_type()
+    in is_cpu_type_supported()                                  (Philippe)
+  * Collected r-bs from Philippe Mathieu-Daudé, Leif Lindholm,
+    Bastian Koppelmann, Daniel Henrique Barboza, Cédric Le Goater,
+    Gavin Shan                                                  (Gavin)
+v3:
+  * Generic helper cpu_model_from_type()                        (Igor)
+  * Apply cpu_model_from_type() to the individual targets       (Igor)
+  * Implement cpu_list() for the missed targets                 (Gavin)
+  * Remove mc->valid_cpu_models                                 (Richard)
+  * Separate patch to constify mc->validate_cpu_types           (Gavin)
+v2:
+  * Constify mc->valid_cpu_types                                (Richard)
+  * Print the supported CPU models, instead of typenames        (Peter)
+  * Misc improvements for the hleper to do the check            (Igor)
+  * More patches to move the check                              (Marcin)
+
+Gavin Shan (30):
+  cpu: Add helper cpu_model_from_type()
+  target/alpha: Use generic helper to show CPU model names
+  target/arm: Use generic helper to show CPU model names
+  target/avr: Use generic helper to show CPU model names
+  target/cris: Use generic helper to show CPU model names
+  target/hexagon: Use generic helper to show CPU model names
+  target/i386: Use generic helper to show CPU model names
+  target/loongarch: Use generic helper to show CPU model names
+  target/m68k: Use generic helper to show CPU model names
+  target/mips: Use generic helper to show CPU model names
+  target/openrisc: Use generic helper to show CPU model names
+  target/ppc: Use generic helper to show CPU model names
+  target/riscv: Use generic helper to show CPU model names
+  target/rx: Use generic helper to show CPU model names
+  target/s390x: Use generic helper to show CPU model names
+  target/sh4: Use generic helper to show CPU model names
+  target/tricore: Use generic helper to show CPU model names
+  target/hppa: Implement hppa_cpu_list()
+  target/microblaze: Implement microblaze_cpu_list()
+  target/nios2: Implement nios2_cpu_list()
+  cpu: Mark cpu_list() supported on all targets
+  machine: Constify MachineClass::valid_cpu_types[i]
+  machine: Use error handling when CPU type is checked
+  machine: Introduce helper is_cpu_type_supported()
+  machine: Print CPU model name instead of CPU type name
+  hw/arm/virt: Check CPU type in machine_run_board_init()
+  hw/arm/virt: Hide host CPU model for tcg
+  hw/arm/sbsa-ref: Check CPU type in machine_run_board_init()
+  hw/arm: Check CPU type in machine_run_board_init()
+  hw/riscv/shakti_c: Check CPU type in machine_run_board_init()
+
+Philippe Mathieu-Daudé (3):
+  target/alpha: Tidy up alpha_cpu_class_by_name()
+  hw/cpu: Call object_class_is_abstract() once in cpu_class_by_name()
+  cpu: Call object_class_dynamic_cast() once in cpu_class_by_name()
+
+ bsd-user/main.c                       |  3 -
+ cpu-target.c                          | 34 +++++++++-
+ hw/arm/bananapi_m2u.c                 | 12 ++--
+ hw/arm/cubieboard.c                   | 12 ++--
+ hw/arm/mps2-tz.c                      | 20 ++++--
+ hw/arm/mps2.c                         | 25 +++++--
+ hw/arm/msf2-som.c                     | 12 ++--
+ hw/arm/musca.c                        | 13 ++--
+ hw/arm/npcm7xx_boards.c               | 13 ++--
+ hw/arm/orangepi.c                     | 12 ++--
+ hw/arm/sbsa-ref.c                     | 21 +-----
+ hw/arm/virt.c                         | 23 ++-----
+ hw/core/cpu-common.c                  |  8 ---
+ hw/core/machine.c                     | 93 ++++++++++++++++-----------
+ hw/m68k/q800.c                        |  2 +-
+ hw/riscv/shakti_c.c                   | 11 ++--
+ include/hw/boards.h                   |  2 +-
+ include/hw/core/cpu.h                 | 19 +++++-
+ target/alpha/cpu.c                    | 15 ++---
+ target/arm/arm-qmp-cmds.c             |  6 +-
+ target/arm/cpu.c                      |  5 +-
+ target/arm/helper.c                   | 12 ++--
+ target/avr/cpu.c                      | 17 +++--
+ target/cris/cpu.c                     | 12 ++--
+ target/hexagon/cpu.c                  | 17 ++---
+ target/hppa/cpu.c                     | 19 ++++++
+ target/hppa/cpu.h                     |  3 +
+ target/i386/cpu.c                     |  7 +-
+ target/loongarch/cpu.c                | 14 ++--
+ target/loongarch/loongarch-qmp-cmds.c |  3 +-
+ target/m68k/cpu.c                     |  5 +-
+ target/m68k/helper.c                  | 14 ++--
+ target/microblaze/cpu.c               | 20 ++++++
+ target/microblaze/cpu.h               |  3 +
+ target/mips/cpu-defs.c.inc            |  9 ---
+ target/mips/cpu.c                     | 18 ++++++
+ target/mips/sysemu/mips-qmp-cmds.c    |  3 +-
+ target/nios2/cpu.c                    | 20 ++++++
+ target/nios2/cpu.h                    |  3 +
+ target/openrisc/cpu.c                 | 19 ++----
+ target/ppc/cpu_init.c                 | 12 ++--
+ target/riscv/cpu.c                    | 19 +++---
+ target/riscv/riscv-qmp-cmds.c         |  3 +-
+ target/rx/cpu.c                       | 11 ++--
+ target/s390x/cpu_models.c             | 12 ++--
+ target/s390x/cpu_models_sysemu.c      |  9 ++-
+ target/sh4/cpu.c                      | 26 ++++----
+ target/tricore/cpu.c                  |  5 +-
+ target/tricore/helper.c               | 13 ++--
+ target/xtensa/cpu.c                   |  5 +-
+ 50 files changed, 384 insertions(+), 310 deletions(-)
+
 -- 
 2.41.0
+

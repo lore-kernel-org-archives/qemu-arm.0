@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp321427eja;
-        Thu, 2 Nov 2023 04:43:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFqp5bmINaIqUAu/tngnID6jfn/ejlbTeQnCk+t3NDM3Ab9TlbxmDpoWFEJjNggoObPBoyo
-X-Received: by 2002:a05:620a:2409:b0:778:e431:3f19 with SMTP id d9-20020a05620a240900b00778e4313f19mr22434986qkn.4.1698925433217;
-        Thu, 02 Nov 2023 04:43:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925433; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp321459eja;
+        Thu, 2 Nov 2023 04:43:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGaTzKYb0dXVkf8MPIjJUnD2Aahv9cQULygG9BdY+dZxz9hCaf3RmWuLt7ESLs5lyZ4IjGr
+X-Received: by 2002:ac8:7d10:0:b0:41e:41e3:72ac with SMTP id g16-20020ac87d10000000b0041e41e372acmr22301743qtb.65.1698925437238;
+        Thu, 02 Nov 2023 04:43:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925437; cv=none;
         d=google.com; s=arc-20160816;
-        b=R+Y8M5g/dNYm0xIgkVCj4xKT0PpVXuM9bKyY3nKgeJeVmx4EkeYGX0G/WBWz+IPce3
-         DMHJIg+3p73Ge+Aj8Dwi4hmNJIZgMR0ylsC/iNE2881Y/T8+YTWKTrp3vZ+i8kAtjZB7
-         fX9i+cb9gL88qYzDpFAPGbip1CD7m9EUyn6LjiNbJNRr75a/bnF8JA7+b7mfZGtMfDnV
-         M+sJ62bhJqMTpT2gRRE8M4Jv129LtZQsVP+BDj2siGyPEBkRORIhbchUDhEy7M98NHeb
-         Ty6W2CsCz7xuGtF1oy9hlXkRMApwt1kowrVWDNso/OnbhoPUbcpQV/zXBhJK8yTVZ3VN
-         JZbg==
+        b=qrl0z+orxd6et1Q5MeA0+V/wDpyg+HV9YG2nVS5qlxp48n3If/qHtioR+Go18PQyCF
+         GYL2/VjLa9bAWeiwZkf31KpnkR4kHtttugrtzyXNpAupTZzOBObAhb5rWt+VsKI+8KNo
+         3gPZy99bbYcOwOXyqZ9Cxlv1TmiPeqMIUDvBqzyKgb9Y6Jx9jMVbb0cNRcUKstYBPHyq
+         iadfW0GuPDyfO85ysRrs7vKjUXcMcPJDBh4R8mvZfnBA3Q6VoKTqpD3DSGMYj8JEm5r0
+         kqWkXO5hQ4nEg0U4BhUggRoPfBV37qI+S3j9x5o2oxzafNTlsAhREdTHfT4hNfKBrDPz
+         tSmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2hrQbpcQmjkjZUwzY0IzeCAEPzEo5tGlkuI99YW2Hnk=;
+        bh=6nMXgCoVhISLBJNOjtiuvCJB8LXGvZSvy0RxY6VNnQ8=;
         fh=T4EM+6jbLn5eRwObk7JR2S+dK3nM2HMDfFhJxfrmv8w=;
-        b=kkZJw4ypI/GQPo2/rmlHdax5mNhepnZQf3eg8RmFROOtamMSiEYe0A78jzYlhhVqwa
-         dN5JbImYEraZSTe2mdBR85UNIsTzjSCj+u5WaD/GDwRBQ+3+ESFneRiHZjS7x9p+9VEi
-         DbPGi93W18/CwKvNahvMvYfCD4y8C9sT36g/rkOeznzYiSwtxByFKBWz0ltV1x6GTiSd
-         ET9bwYT1xTt/QttH4mCTGYxN0r1O87zDJw3BoJgil9GDLx40Jm1FjEzgY+PbDh2yT4u6
-         jXZ2034oJIWlFlArGpIXZC893S77jkIMoTd1Ddx8WlFGtRw0oaV+nwh7Z6dZ1NFAxqil
-         7zrw==
+        b=EoK6/B2zzs1MwMYS3w5zhGUgOS93cKcchCruqD9269+MIy3ost/5OY3UpshWxqrkP/
+         hd59Ed6dWrJ1c9kPm/RFiUrzaKyRj++kVbVRGA+yxcDpHByyslwMZva5fOzbuklssZ3i
+         IT21DQUBZWRU7efrDm2RMYty4M1FgLj+XyoAhM4JARWTPOHnwh3HAonNj+dPTCMa9eKK
+         iZNhqWUWaJhIw6fUgjx1QiOgPq0TNEyxf5GTtU3xn/TfUu5LVi9QAMMMJvi5S8fIg7Ev
+         B6c6qiAORPFawofY1gIZ81QGcSe6m9EjrQ5jxq6Mu0iTwKWbB9O2YYs47qlnBH5xBp0A
+         jiqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MXgC+2nT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TK+7EC/J";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bn3-20020a05620a2ac300b007759f94721asi4089953qkb.209.2023.11.02.04.43.53
+        by mx.google.com with ESMTPS id v13-20020a05622a188d00b0041cc4e7c208si4308382qtc.417.2023.11.02.04.43.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:43:53 -0700 (PDT)
+        Thu, 02 Nov 2023 04:43:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MXgC+2nT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="TK+7EC/J";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyW4g-00021f-M2; Thu, 02 Nov 2023 07:41:22 -0400
+	id 1qyW6k-00059C-Rz; Thu, 02 Nov 2023 07:43:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW4e-0001y5-BS
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:41:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qyW6Q-0004Er-Ln
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:43:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW4b-00046l-11
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:41:19 -0400
+ id 1qyW6M-0005dz-JL
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:43:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925276;
+ s=mimecast20190719; t=1698925385;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2hrQbpcQmjkjZUwzY0IzeCAEPzEo5tGlkuI99YW2Hnk=;
- b=MXgC+2nTdoF45+bN2oiifPaontQyYb/AX3tVqTcVyQiWRHv5r/kGmSmYU6EpC7loHMTAqv
- 4bvplRbesV7IQz+IRwlQ2h8UxVAAQdu+AgWUBoKXIC4hxPyzPUpYJmi+tM3qPshn9YyL6p
- kEMeEjZr00zYd0BuxL7Ag80Ag4V088o=
+ bh=6nMXgCoVhISLBJNOjtiuvCJB8LXGvZSvy0RxY6VNnQ8=;
+ b=TK+7EC/JH0/lXc2D1kygANyvNmyMGdQCEkDTmu/pnN7y5FHeWFzuOAzN0l4R91dW9OsSKi
+ 19aUk/IpJqjOEiV6um2TceshxGpUMG2y9rtEHJCM7i3NsMdlcJDiV+dVDKScpCbAGmqas6
+ t/60HKbKBPdYj1XK/YkaifHmyb03K08=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-613--tGWoiN3PIW9hjCeqAQlBA-1; Thu,
- 02 Nov 2023 07:41:12 -0400
-X-MC-Unique: -tGWoiN3PIW9hjCeqAQlBA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-600-zh0O5OqGOmaFAuQ-9m0-vQ-1; Thu,
+ 02 Nov 2023 07:43:00 -0400
+X-MC-Unique: zh0O5OqGOmaFAuQ-9m0-vQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6AC713806623;
- Thu,  2 Nov 2023 11:41:11 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 789CB3806623;
+ Thu,  2 Nov 2023 11:42:58 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 026A42026D4C;
- Thu,  2 Nov 2023 11:41:03 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 418212026D4C;
+ Thu,  2 Nov 2023 11:42:51 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -112,23 +112,22 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Fam Zheng <fam@euphon.net>
-Subject: [PULL 01/40] hw/ipmi: Don't call vmstate_register() from
- instance_init() functions
-Date: Thu,  2 Nov 2023 12:40:15 +0100
-Message-ID: <20231102114054.44360-2-quintela@redhat.com>
+Subject: [PULL 15/40] migration: Set downtime_start even for postcopy
+Date: Thu,  2 Nov 2023 12:40:29 +0100
+Message-ID: <20231102114054.44360-16-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -145,211 +144,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4HruGcMllp2M
+X-TUID: u8E6o9++FZ2r
 
-From: Thomas Huth <thuth@redhat.com>
+From: Peter Xu <peterx@redhat.com>
 
-instance_init() can be called multiple times, e.g. during introspection
-of the device. We should not install the vmstate handlers here. Do it
-in the realize() function instead.
+Postcopy calculates its downtime separately.  It always sets
+MigrationState.downtime properly, but not MigrationState.downtime_start.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Make postcopy do the same as other modes on properly recording the
+timestamp when the VM is going to be stopped.  Drop the temporary variable
+in postcopy_start() along the way.
+
+Signed-off-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Acked-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231020145554.662751-1-thuth@redhat.com>
+Message-ID: <20231030163346.765724-2-peterx@redhat.com>
 ---
- hw/ipmi/ipmi_bmc_extern.c | 29 ++++++++++++-----------
- hw/ipmi/isa_ipmi_bt.c     | 34 +++++++++++++-------------
- hw/ipmi/isa_ipmi_kcs.c    | 50 +++++++++++++++++++--------------------
- 3 files changed, 57 insertions(+), 56 deletions(-)
+ migration/migration.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
-index e232d35ba2..2117dad35a 100644
---- a/hw/ipmi/ipmi_bmc_extern.c
-+++ b/hw/ipmi/ipmi_bmc_extern.c
-@@ -453,19 +453,6 @@ static void ipmi_bmc_extern_handle_reset(IPMIBmc *b)
-     continue_send(ibe);
- }
+diff --git a/migration/migration.c b/migration/migration.c
+index 6abcbefd9c..6dcdc5be2b 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -2126,7 +2126,6 @@ static int postcopy_start(MigrationState *ms, Error **errp)
+     int ret;
+     QIOChannelBuffer *bioc;
+     QEMUFile *fb;
+-    int64_t time_at_stop = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
+     uint64_t bandwidth = migrate_max_postcopy_bandwidth();
+     bool restart_block = false;
+     int cur_state = MIGRATION_STATUS_ACTIVE;
+@@ -2148,6 +2147,8 @@ static int postcopy_start(MigrationState *ms, Error **errp)
+     qemu_mutex_lock_iothread();
+     trace_postcopy_start_set_run();
  
--static void ipmi_bmc_extern_realize(DeviceState *dev, Error **errp)
--{
--    IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(dev);
--
--    if (!qemu_chr_fe_backend_connected(&ibe->chr)) {
--        error_setg(errp, "IPMI external bmc requires chardev attribute");
--        return;
--    }
--
--    qemu_chr_fe_set_handlers(&ibe->chr, can_receive, receive,
--                             chr_event, NULL, ibe, NULL, true);
--}
--
- static int ipmi_bmc_extern_post_migrate(void *opaque, int version_id)
- {
-     IPMIBmcExtern *ibe = opaque;
-@@ -499,12 +486,26 @@ static const VMStateDescription vmstate_ipmi_bmc_extern = {
-     }
- };
- 
-+static void ipmi_bmc_extern_realize(DeviceState *dev, Error **errp)
-+{
-+    IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(dev);
++    ms->downtime_start = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
 +
-+    if (!qemu_chr_fe_backend_connected(&ibe->chr)) {
-+        error_setg(errp, "IPMI external bmc requires chardev attribute");
-+        return;
-+    }
-+
-+    qemu_chr_fe_set_handlers(&ibe->chr, can_receive, receive,
-+                             chr_event, NULL, ibe, NULL, true);
-+
-+    vmstate_register(NULL, 0, &vmstate_ipmi_bmc_extern, ibe);
-+}
-+
- static void ipmi_bmc_extern_init(Object *obj)
- {
-     IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(obj);
+     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
+     global_state_store();
+     ret = vm_stop_force_state(RUN_STATE_FINISH_MIGRATE);
+@@ -2250,7 +2251,7 @@ static int postcopy_start(MigrationState *ms, Error **errp)
+     ms->postcopy_after_devices = true;
+     migration_call_notifiers(ms);
  
-     ibe->extern_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, extern_timeout, ibe);
--    vmstate_register(NULL, 0, &vmstate_ipmi_bmc_extern, ibe);
- }
+-    ms->downtime =  qemu_clock_get_ms(QEMU_CLOCK_REALTIME) - time_at_stop;
++    ms->downtime = qemu_clock_get_ms(QEMU_CLOCK_REALTIME) - ms->downtime_start;
  
- static void ipmi_bmc_extern_finalize(Object *obj)
-diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
-index a83e7243d6..aec064d3cd 100644
---- a/hw/ipmi/isa_ipmi_bt.c
-+++ b/hw/ipmi/isa_ipmi_bt.c
-@@ -68,6 +68,21 @@ static void isa_ipmi_bt_lower_irq(IPMIBT *ib)
-     qemu_irq_lower(iib->irq);
- }
+     qemu_mutex_unlock_iothread();
  
-+static const VMStateDescription vmstate_ISAIPMIBTDevice = {
-+    .name = TYPE_IPMI_INTERFACE_PREFIX "isa-bt",
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-+    /*
-+     * Version 1 had messed up the array transfer, it's not even usable
-+     * because it used VMSTATE_VBUFFER_UINT32, but it did not transfer
-+     * the buffer length, so random things would happen.
-+     */
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_STRUCT(bt, ISAIPMIBTDevice, 1, vmstate_IPMIBT, IPMIBT),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static void isa_ipmi_bt_realize(DeviceState *dev, Error **errp)
- {
-     Error *err = NULL;
-@@ -102,30 +117,15 @@ static void isa_ipmi_bt_realize(DeviceState *dev, Error **errp)
-     qdev_set_legacy_instance_id(dev, iib->bt.io_base, iib->bt.io_length);
- 
-     isa_register_ioport(isadev, &iib->bt.io, iib->bt.io_base);
--}
- 
--static const VMStateDescription vmstate_ISAIPMIBTDevice = {
--    .name = TYPE_IPMI_INTERFACE_PREFIX "isa-bt",
--    .version_id = 2,
--    .minimum_version_id = 2,
--    /*
--     * Version 1 had messed up the array transfer, it's not even usable
--     * because it used VMSTATE_VBUFFER_UINT32, but it did not transfer
--     * the buffer length, so random things would happen.
--     */
--    .fields      = (VMStateField[]) {
--        VMSTATE_STRUCT(bt, ISAIPMIBTDevice, 1, vmstate_IPMIBT, IPMIBT),
--        VMSTATE_END_OF_LIST()
--    }
--};
-+    vmstate_register(NULL, 0, &vmstate_ISAIPMIBTDevice, dev);
-+}
- 
- static void isa_ipmi_bt_init(Object *obj)
- {
-     ISAIPMIBTDevice *iib = ISA_IPMI_BT(obj);
- 
-     ipmi_bmc_find_and_link(obj, (Object **) &iib->bt.bmc);
--
--    vmstate_register(NULL, 0, &vmstate_ISAIPMIBTDevice, iib);
- }
- 
- static void *isa_ipmi_bt_get_backend_data(IPMIInterface *ii)
-diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
-index b2ed70b9da..b5dcb64616 100644
---- a/hw/ipmi/isa_ipmi_kcs.c
-+++ b/hw/ipmi/isa_ipmi_kcs.c
-@@ -67,6 +67,24 @@ static void isa_ipmi_kcs_lower_irq(IPMIKCS *ik)
-     qemu_irq_lower(iik->irq);
- }
- 
-+static bool vmstate_kcs_before_version2(void *opaque, int version)
-+{
-+    return version <= 1;
-+}
-+
-+static const VMStateDescription vmstate_ISAIPMIKCSDevice = {
-+    .name = TYPE_IPMI_INTERFACE,
-+    .version_id = 2,
-+    .minimum_version_id = 1,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_VSTRUCT_TEST(kcs, ISAIPMIKCSDevice, vmstate_kcs_before_version2,
-+                             0, vmstate_IPMIKCS, IPMIKCS, 1),
-+        VMSTATE_VSTRUCT_V(kcs, ISAIPMIKCSDevice, 2, vmstate_IPMIKCS,
-+                          IPMIKCS, 2),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static void ipmi_isa_realize(DeviceState *dev, Error **errp)
- {
-     Error *err = NULL;
-@@ -101,31 +119,6 @@ static void ipmi_isa_realize(DeviceState *dev, Error **errp)
-     qdev_set_legacy_instance_id(dev, iik->kcs.io_base, iik->kcs.io_length);
- 
-     isa_register_ioport(isadev, &iik->kcs.io, iik->kcs.io_base);
--}
--
--static bool vmstate_kcs_before_version2(void *opaque, int version)
--{
--    return version <= 1;
--}
--
--static const VMStateDescription vmstate_ISAIPMIKCSDevice = {
--    .name = TYPE_IPMI_INTERFACE,
--    .version_id = 2,
--    .minimum_version_id = 1,
--    .fields      = (VMStateField[]) {
--        VMSTATE_VSTRUCT_TEST(kcs, ISAIPMIKCSDevice, vmstate_kcs_before_version2,
--                             0, vmstate_IPMIKCS, IPMIKCS, 1),
--        VMSTATE_VSTRUCT_V(kcs, ISAIPMIKCSDevice, 2, vmstate_IPMIKCS,
--                          IPMIKCS, 2),
--        VMSTATE_END_OF_LIST()
--    }
--};
--
--static void isa_ipmi_kcs_init(Object *obj)
--{
--    ISAIPMIKCSDevice *iik = ISA_IPMI_KCS(obj);
--
--    ipmi_bmc_find_and_link(obj, (Object **) &iik->kcs.bmc);
- 
-     /*
-      * Version 1 had an incorrect name, it clashed with the BT
-@@ -135,6 +128,13 @@ static void isa_ipmi_kcs_init(Object *obj)
-     vmstate_register(NULL, 0, &vmstate_ISAIPMIKCSDevice, iik);
- }
- 
-+static void isa_ipmi_kcs_init(Object *obj)
-+{
-+    ISAIPMIKCSDevice *iik = ISA_IPMI_KCS(obj);
-+
-+    ipmi_bmc_find_and_link(obj, (Object **) &iik->kcs.bmc);
-+}
-+
- static void *isa_ipmi_kcs_get_backend_data(IPMIInterface *ii)
- {
-     ISAIPMIKCSDevice *iik = ISA_IPMI_KCS(ii);
 -- 
 2.41.0
 

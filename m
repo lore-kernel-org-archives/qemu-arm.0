@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp323908eja;
-        Thu, 2 Nov 2023 04:48:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF1Uskq/F4PLT5ic1qlzTUPtrE3bNQFGJFpkwpoF3ZvFrLIQa6853jEtWM0zERDSb8NHOEq
-X-Received: by 2002:a67:c19d:0:b0:45b:ece:21f7 with SMTP id h29-20020a67c19d000000b0045b0ece21f7mr17390136vsj.14.1698925718436;
-        Thu, 02 Nov 2023 04:48:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925718; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp324052eja;
+        Thu, 2 Nov 2023 04:48:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHOyrwDKdpdKUnq1EleEGHdOHGLxP4RqlFDQPR9uOvnJj/6HxRGg4TPO6FzlRT7ZVtax09X
+X-Received: by 2002:a1f:178c:0:b0:49e:2145:1654 with SMTP id 134-20020a1f178c000000b0049e21451654mr17191848vkx.7.1698925739666;
+        Thu, 02 Nov 2023 04:48:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925739; cv=none;
         d=google.com; s=arc-20160816;
-        b=oNUh3zA5nDHiSvBPMfnkzXNMA5/SP5kTcdz/VYvLaS/voo69nvSWMmqV5CsHZkrCbi
-         lJS0k+qG5C/chzxnS8x1we/4VghSRWhx3OQA83tIVFEq51cneDCUPdeMzT2X2QkwkN2D
-         GqyBw9dJT00cK9GAt/h1cq5YmGcOHogYf4HW3WR5C57oG6sH6bSWtjy8SoZsGF51epuj
-         mEMVTNUDUOS3Tl50pGGhfIKVRUaJBesb2LDwTfR4htqpi0+HIj+lNHBACdKsnMgPHBV0
-         6NwtXg7yIxQ8t74Yj0M/vaW18fi8nwj1o9UDANyHWwHndpUoIj3dVKPXi16aeT/TZmGo
-         zwDQ==
+        b=DCW6oEkm+Tza1nThvWyJclqaUX/X4btfWpu+gbq0baoi8nPQFf+JO5ma79TaDu/sEE
+         83rp6ZhflFuCmRo6ZP7+uqHLjVni6hJDqv2ZEl7VEnEN3vEX1UANLbXV7Lc6DQzLS5Il
+         tQKtaWXuVKnDGw4rTM0jeTqfRKcY3Hl7U2h88kq5IMNVTxCF718ZvtgqYORstq99D1bE
+         6TzAuscVqF7f3cVHcwwHjp7LyaYN89URllTYdpYcF3+1KhtqAR077yyk6cqxltcjHvh3
+         8Kx8FT0f5D32q/tlLGiIfer10kP8/aFbW9xxDlrkR1ogOolJvBFLs7ozVrIdsalgwI2V
+         g2WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=rOgbHA1BGBj58uu94eNpRZUsMXvo3CpHBuS02YQfySg=;
-        fh=ES/vJtI5J5RM9CDwQFbx/OtSpDk18PEyXjfn3CS+k7o=;
-        b=nde74IFOJTO3oqvRHyTIEj2p2vnTUq3GRt7WGs9GZFymfxBz7GzECB4gIgfLrZjrAu
-         x5HE1yNFTNIzwvVwENOKKbFoI5a8PnPC87NGsGPrzoF0vQph1+IIGSyNqmCDckdYP9MX
-         Tc6v9d/8ck6qvj5wBfJgjTjRguA7qfJyYH1/YnfpOW/9DdNprtpTnKW5nwWYQpsaW6QL
-         Eu+GM+l9wJdRAJ3InCv6t6fL+OF4ty5M3tsW1NKWwBt4qF4Q/oXTbZYPTOH4BEgoa9bz
-         r3Nx6zepqLthp/sXdXkw0Tht6i62Od/SUc1ePEQriDHUEvofyVGzRd73vGsbKnPTjNrT
-         mFFw==
+        bh=cHuYA1eEprhWaGTRXzUYI9nnE15YBkEUHUViwNC2wOo=;
+        fh=T4EM+6jbLn5eRwObk7JR2S+dK3nM2HMDfFhJxfrmv8w=;
+        b=bgmeyExl15yMZi/HUWNk/f+aZJhHZRHrHlabPzLwSoegLLjUvRVJ6w790uioMAVB+q
+         YgVCJBpruZhoST0awF4H7AhRjqvIMnihw8QEaUiTyjjFDMIHVdM75itozqHPvFXOMli5
+         O3jdcJmw/q/dtF3DJyKkXryTh0m2eYgAaGZ0Dpz+CNfHnt8X5WK2AUwleO61GuplJ7fN
+         8Y8SIa1sx0S7/+q719cJfnYsJf9PS6KgrtDinsWIKv0GstS3OrPIUJYEGOU6faNcSPVB
+         21xVdzMIaJBnZvLrp+qhZ7b3Mv9FbsAGVw6QOgo18qTBgRH9/7Iu6ftzXZal7cr2YGh+
+         2NjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MXRXHrbe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WCFfMOT7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9-20020a05622a048900b004179da82083si4374474qtx.681.2023.11.02.04.48.38
+        by mx.google.com with ESMTPS id u15-20020ac858cf000000b00403affc6ad2si4308955qta.469.2023.11.02.04.48.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:48:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Nov 2023 04:48:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MXRXHrbe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WCFfMOT7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyW9I-0008KM-2x; Thu, 02 Nov 2023 07:46:12 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qyW85-0005CF-V1; Thu, 02 Nov 2023 07:44:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW8e-0007Kc-7D
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:45:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qyW7z-0004bW-Oa
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:44:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW8Z-0006ba-05
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:45:27 -0400
+ id 1qyW7w-0006D1-4Q
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:44:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925521;
+ s=mimecast20190719; t=1698925483;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rOgbHA1BGBj58uu94eNpRZUsMXvo3CpHBuS02YQfySg=;
- b=MXRXHrbeXZrcctqzXANle2vp2kixSl9/c1hWFrbeLshLLTFY5P/kHEVyP8HW7vtjkbn1vA
- tfNavcH7DhG0hvpARTKkanp9qQfwISsSOlgkJt6vhdomcAbW5bUYkHH6fyBdtjAWaglGp+
- LN2BOsJyZBSiuw1n1ZomABVtOm1ZAUM=
+ bh=cHuYA1eEprhWaGTRXzUYI9nnE15YBkEUHUViwNC2wOo=;
+ b=WCFfMOT78Ipv61iX57+GbLwNAWzlARrMKgcVcAStuAFelIgHYXdpn4gEUXJf1qGM2kVJQy
+ CwlE48CJjdsWUBqAgLG3H0Ikxd+kIXeYfFq8UFl62h2kpoLcAj8yraWcBk8hKaa/w/RnaJ
+ QrrpfCvcevRZIJ4H0i3wJwHsfO6aZ0Y=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-4wzCPPnkPxGTK9SHIo1x3A-1; Thu,
- 02 Nov 2023 07:45:19 -0400
-X-MC-Unique: 4wzCPPnkPxGTK9SHIo1x3A-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-227-ZIiR_lw6N-K1h5pGklo-_Q-1; Thu,
+ 02 Nov 2023 07:44:40 -0400
+X-MC-Unique: ZIiR_lw6N-K1h5pGklo-_Q-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 300673C14908;
- Thu,  2 Nov 2023 11:45:18 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E73DB2808FCC;
+ Thu,  2 Nov 2023 11:44:38 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A0AD32026D4C;
- Thu,  2 Nov 2023 11:45:10 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 75CCE2026D6E;
+ Thu,  2 Nov 2023 11:44:31 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -111,226 +111,219 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>, Het Gala <het.gala@nutanix.com>,
- Aravind Retnakaran <aravind.retnakaran@nutanix.com>
-Subject: [PULL 33/40] migration: convert rdma backend to accept MigrateAddress
-Date: Thu,  2 Nov 2023 12:40:47 +0100
-Message-ID: <20231102114054.44360-34-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>
+Subject: [PULL 28/40] tests/migration-test: Add a test for postcopy hangs
+ during RECOVER
+Date: Thu,  2 Nov 2023 12:40:42 +0100
+Message-ID: <20231102114054.44360-29-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ral7Q9wcHPQ+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3XHIrQ55mbbo
 
-From: Het Gala <het.gala@nutanix.com>
+From: Fabiano Rosas <farosas@suse.de>
 
-RDMA based transport backend for 'migrate'/'migrate-incoming' QAPIs
-accept new wire protocol of MigrateAddress struct.
+To do so, create two paired sockets, but make them not providing real data.
+Feed those fake sockets to src/dst QEMUs for recovery to let them go into
+RECOVER stage without going out.  Test that we can always kick it out and
+recover again with the right ports.
 
-It is achived by parsing 'uri' string and storing migration parameters
-required for RDMA connection into well defined InetSocketAddress struct.
+This patch is based on Fabiano's version here:
 
-Suggested-by: Aravind Retnakaran <aravind.retnakaran@nutanix.com>
-Signed-off-by: Het Gala <het.gala@nutanix.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+https://lore.kernel.org/r/877cowmdu0.fsf@suse.de
+
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
+[peterx: write commit message, remove case 1, fix bugs, and more]
+Signed-off-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231023182053.8711-7-farosas@suse.de>
+Message-ID: <20231017202633.296756-4-peterx@redhat.com>
 ---
- migration/rdma.h      |  6 ++++--
- migration/migration.c |  8 ++++----
- migration/rdma.c      | 33 +++++++++++----------------------
- 3 files changed, 19 insertions(+), 28 deletions(-)
+ tests/qtest/migration-test.c | 110 +++++++++++++++++++++++++++++++++--
+ 1 file changed, 104 insertions(+), 6 deletions(-)
 
-diff --git a/migration/rdma.h b/migration/rdma.h
-index 30b15b4466..a8d27f33b8 100644
---- a/migration/rdma.h
-+++ b/migration/rdma.h
-@@ -14,15 +14,17 @@
-  *
-  */
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index b7ebc23903..047b7194df 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -728,6 +728,7 @@ typedef struct {
+     /* Postcopy specific fields */
+     void *postcopy_data;
+     bool postcopy_preempt;
++    bool postcopy_recovery_test_fail;
+ } MigrateCommon;
  
-+#include "qemu/sockets.h"
+ static int test_migrate_start(QTestState **from, QTestState **to,
+@@ -1404,6 +1405,80 @@ static void test_postcopy_preempt_tls_psk(void)
+ }
+ #endif
+ 
++static void wait_for_postcopy_status(QTestState *one, const char *status)
++{
++    wait_for_migration_status(one, status,
++                              (const char * []) { "failed", "active",
++                                                  "completed", NULL });
++}
 +
- #ifndef QEMU_MIGRATION_RDMA_H
- #define QEMU_MIGRATION_RDMA_H
- 
- #include "exec/memory.h"
- 
--void rdma_start_outgoing_migration(void *opaque, const char *host_port,
-+void rdma_start_outgoing_migration(void *opaque, InetSocketAddress *host_port,
-                                    Error **errp);
- 
--void rdma_start_incoming_migration(const char *host_port, Error **errp);
-+void rdma_start_incoming_migration(InetSocketAddress *host_port, Error **errp);
- 
- /*
-  * Constants used by rdma return codes
-diff --git a/migration/migration.c b/migration/migration.c
-index 846877135a..8c26672630 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -534,7 +534,7 @@ static void qemu_start_incoming_migration(const char *uri, Error **errp)
-             fd_start_incoming_migration(saddr->u.fd.str, errp);
-         }
- #ifdef CONFIG_RDMA
--    } else if (strstart(uri, "rdma:", &p)) {
-+    } else if (channel->transport == MIGRATION_ADDRESS_TYPE_RDMA) {
-         if (migrate_compress()) {
-             error_setg(errp, "RDMA and compression can't be used together");
-             return;
-@@ -547,7 +547,7 @@ static void qemu_start_incoming_migration(const char *uri, Error **errp)
-             error_setg(errp, "RDMA and multifd can't be used together");
-             return;
-         }
--        rdma_start_incoming_migration(p, errp);
-+        rdma_start_incoming_migration(&channel->u.rdma, errp);
- #endif
-     } else if (strstart(uri, "exec:", &p)) {
-         exec_start_incoming_migration(p, errp);
-@@ -1935,8 +1935,8 @@ void qmp_migrate(const char *uri, bool has_blk, bool blk,
-             fd_start_outgoing_migration(s, saddr->u.fd.str, &local_err);
-         }
- #ifdef CONFIG_RDMA
--    } else if (strstart(uri, "rdma:", &p)) {
--        rdma_start_outgoing_migration(s, p, &local_err);
-+    } else if (channel->transport == MIGRATION_ADDRESS_TYPE_RDMA) {
-+        rdma_start_outgoing_migration(s, &channel->u.rdma, &local_err);
- #endif
-     } else if (strstart(uri, "exec:", &p)) {
-         exec_start_outgoing_migration(s, p, &local_err);
-diff --git a/migration/rdma.c b/migration/rdma.c
-index 2938db4f64..6a29e53daf 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -289,7 +289,6 @@ typedef struct RDMALocalBlocks {
- typedef struct RDMAContext {
-     char *host;
-     int port;
--    char *host_port;
- 
-     RDMAWorkRequestData wr_data[RDMA_WRID_MAX];
- 
-@@ -2431,9 +2430,7 @@ static void qemu_rdma_cleanup(RDMAContext *rdma)
-         rdma->channel = NULL;
-     }
-     g_free(rdma->host);
--    g_free(rdma->host_port);
-     rdma->host = NULL;
--    rdma->host_port = NULL;
- }
- 
- 
-@@ -2723,28 +2720,16 @@ static void qemu_rdma_return_path_dest_init(RDMAContext *rdma_return_path,
-     rdma_return_path->is_return_path = true;
- }
- 
--static RDMAContext *qemu_rdma_data_init(const char *host_port, Error **errp)
-+static RDMAContext *qemu_rdma_data_init(InetSocketAddress *saddr, Error **errp)
++#ifndef _WIN32
++static void postcopy_recover_fail(QTestState *from, QTestState *to)
++{
++    int ret, pair1[2], pair2[2];
++    char c;
++
++    /* Create two unrelated socketpairs */
++    ret = qemu_socketpair(PF_LOCAL, SOCK_STREAM, 0, pair1);
++    g_assert_cmpint(ret, ==, 0);
++
++    ret = qemu_socketpair(PF_LOCAL, SOCK_STREAM, 0, pair2);
++    g_assert_cmpint(ret, ==, 0);
++
++    /*
++     * Give the guests unpaired ends of the sockets, so they'll all blocked
++     * at reading.  This mimics a wrong channel established.
++     */
++    qtest_qmp_fds_assert_success(from, &pair1[0], 1,
++                                 "{ 'execute': 'getfd',"
++                                 "  'arguments': { 'fdname': 'fd-mig' }}");
++    qtest_qmp_fds_assert_success(to, &pair2[0], 1,
++                                 "{ 'execute': 'getfd',"
++                                 "  'arguments': { 'fdname': 'fd-mig' }}");
++
++    /*
++     * Write the 1st byte as QEMU_VM_COMMAND (0x8) for the dest socket, to
++     * emulate the 1st byte of a real recovery, but stops from there to
++     * keep dest QEMU in RECOVER.  This is needed so that we can kick off
++     * the recover process on dest QEMU (by triggering the G_IO_IN event).
++     *
++     * NOTE: this trick is not needed on src QEMUs, because src doesn't
++     * rely on an pre-existing G_IO_IN event, so it will always trigger the
++     * upcoming recovery anyway even if it can read nothing.
++     */
++#define QEMU_VM_COMMAND              0x08
++    c = QEMU_VM_COMMAND;
++    ret = send(pair2[1], &c, 1, 0);
++    g_assert_cmpint(ret, ==, 1);
++
++    migrate_recover(to, "fd:fd-mig");
++    migrate_qmp(from, "fd:fd-mig", "{'resume': true}");
++
++    /*
++     * Make sure both QEMU instances will go into RECOVER stage, then test
++     * kicking them out using migrate-pause.
++     */
++    wait_for_postcopy_status(from, "postcopy-recover");
++    wait_for_postcopy_status(to, "postcopy-recover");
++
++    /*
++     * This would be issued by the admin upon noticing the hang, we should
++     * make sure we're able to kick this out.
++     */
++    migrate_pause(from);
++    wait_for_postcopy_status(from, "postcopy-paused");
++
++    /* Do the same test on dest */
++    migrate_pause(to);
++    wait_for_postcopy_status(to, "postcopy-paused");
++
++    close(pair1[0]);
++    close(pair1[1]);
++    close(pair2[0]);
++    close(pair2[1]);
++}
++#endif /* _WIN32 */
++
+ static void test_postcopy_recovery_common(MigrateCommon *args)
  {
-     RDMAContext *rdma = NULL;
--    InetSocketAddress *addr;
- 
-     rdma = g_new0(RDMAContext, 1);
-     rdma->current_index = -1;
-     rdma->current_chunk = -1;
- 
--    addr = g_new(InetSocketAddress, 1);
--    if (!inet_parse(addr, host_port, NULL)) {
--        rdma->port = atoi(addr->port);
--        rdma->host = g_strdup(addr->host);
--        rdma->host_port = g_strdup(host_port);
--    } else {
--        error_setg(errp, "RDMA ERROR: bad RDMA migration address '%s'",
--                   host_port);
--        g_free(rdma);
--        rdma = NULL;
--    }
--
--    qapi_free_InetSocketAddress(addr);
-+    rdma->host = g_strdup(saddr->host);
-+    rdma->port = atoi(saddr->port);
-     return rdma;
- }
- 
-@@ -3353,6 +3338,7 @@ static int qemu_rdma_accept(RDMAContext *rdma)
-                                             .private_data_len = sizeof(cap),
-                                          };
-     RDMAContext *rdma_return_path = NULL;
-+    g_autoptr(InetSocketAddress) isock = g_new0(InetSocketAddress, 1);
-     struct rdma_cm_event *cm_event;
-     struct ibv_context *verbs;
-     int ret;
-@@ -3367,13 +3353,16 @@ static int qemu_rdma_accept(RDMAContext *rdma)
-         goto err_rdma_dest_wait;
-     }
- 
-+    isock->host = rdma->host;
-+    isock->port = g_strdup_printf("%d", rdma->port);
-+
-     /*
-      * initialize the RDMAContext for return path for postcopy after first
-      * connection request reached.
+     QTestState *from, *to;
+@@ -1439,9 +1514,19 @@ static void test_postcopy_recovery_common(MigrateCommon *args)
+      * migrate-recover command can only succeed if destination machine
+      * is in the paused state
       */
-     if ((migrate_postcopy() || migrate_return_path())
-         && !rdma->is_return_path) {
--        rdma_return_path = qemu_rdma_data_init(rdma->host_port, NULL);
-+        rdma_return_path = qemu_rdma_data_init(isock, NULL);
-         if (rdma_return_path == NULL) {
-             rdma_ack_cm_event(cm_event);
-             goto err_rdma_dest_wait;
-@@ -4074,7 +4063,8 @@ static void rdma_accept_incoming_migration(void *opaque)
-     }
+-    wait_for_migration_status(to, "postcopy-paused",
+-                              (const char * []) { "failed", "active",
+-                                                  "completed", NULL });
++    wait_for_postcopy_status(to, "postcopy-paused");
++    wait_for_postcopy_status(from, "postcopy-paused");
++
++#ifndef _WIN32
++    if (args->postcopy_recovery_test_fail) {
++        /*
++         * Test when a wrong socket specified for recover, and then the
++         * ability to kick it out, and continue with a correct socket.
++         */
++        postcopy_recover_fail(from, to);
++        /* continue with a good recovery */
++    }
++#endif /* _WIN32 */
+ 
+     /*
+      * Create a new socket to emulate a new channel that is different
+@@ -1455,9 +1540,6 @@ static void test_postcopy_recovery_common(MigrateCommon *args)
+      * Try to rebuild the migration channel using the resume flag and
+      * the newly created channel
+      */
+-    wait_for_migration_status(from, "postcopy-paused",
+-                              (const char * []) { "failed", "active",
+-                                                  "completed", NULL });
+     migrate_qmp(from, uri, "{'resume': true}");
+ 
+     /* Restore the postcopy bandwidth to unlimited */
+@@ -1482,6 +1564,17 @@ static void test_postcopy_recovery_compress(void)
+     test_postcopy_recovery_common(&args);
  }
  
--void rdma_start_incoming_migration(const char *host_port, Error **errp)
-+void rdma_start_incoming_migration(InetSocketAddress *host_port,
-+                                   Error **errp)
++#ifndef _WIN32
++static void test_postcopy_recovery_double_fail(void)
++{
++    MigrateCommon args = {
++        .postcopy_recovery_test_fail = true,
++    };
++
++    test_postcopy_recovery_common(&args);
++}
++#endif /* _WIN32 */
++
+ #ifdef CONFIG_GNUTLS
+ static void test_postcopy_recovery_tls_psk(void)
  {
-     MigrationState *s = migrate_get_current();
-     int ret;
-@@ -4118,13 +4108,12 @@ cleanup_rdma:
- err:
-     if (rdma) {
-         g_free(rdma->host);
--        g_free(rdma->host_port);
+@@ -3093,6 +3186,11 @@ int main(int argc, char **argv)
+             qtest_add_func("/migration/postcopy/recovery/compress/plain",
+                            test_postcopy_recovery_compress);
+         }
++#ifndef _WIN32
++        qtest_add_func("/migration/postcopy/recovery/double-failures",
++                       test_postcopy_recovery_double_fail);
++#endif /* _WIN32 */
++
      }
-     g_free(rdma);
- }
  
- void rdma_start_outgoing_migration(void *opaque,
--                            const char *host_port, Error **errp)
-+                            InetSocketAddress *host_port, Error **errp)
- {
-     MigrationState *s = opaque;
-     RDMAContext *rdma_return_path = NULL;
+     qtest_add_func("/migration/bad_dest", test_baddest);
 -- 
 2.41.0
 

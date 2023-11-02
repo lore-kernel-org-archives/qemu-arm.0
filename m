@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp531565eja;
-        Thu, 2 Nov 2023 10:04:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH/W+jpL6b7SZSCQl8Yw8Hs2e6JL+8hU068vghSrV+pojHDa9qNub5rJOlZn0/kLuIBGm22
-X-Received: by 2002:a05:620a:2907:b0:775:95c0:af5b with SMTP id m7-20020a05620a290700b0077595c0af5bmr22535374qkp.73.1698944681261;
-        Thu, 02 Nov 2023 10:04:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698944681; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp531611eja;
+        Thu, 2 Nov 2023 10:04:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHvxvx794pUKxxa7Lz8sCMFsC9F6DjMrLiJODveeArSO7KpJQOTKo5JplsD84uyGFplnh8W
+X-Received: by 2002:a05:622a:114:b0:41e:217a:bad5 with SMTP id u20-20020a05622a011400b0041e217abad5mr21935293qtw.67.1698944683625;
+        Thu, 02 Nov 2023 10:04:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698944683; cv=none;
         d=google.com; s=arc-20160816;
-        b=TvV+Bo/JZCt1qLo/t35q7JfmomEr2I40ZhnXQb4sd4vicDZQ//hovpI+k5gU5UXYes
-         P/+4Y8CMFl0vd/12yUElTLFkdJdRL1+kE3Us8jDCXv0LQs7ruvqbccto6miUoVB7bzow
-         uFI23jknoGyNEDftkHMygxSlC5DeZ1DEmP/ljlmafqYWQ7bi1Avfn6BOmDklnR1JqTGQ
-         4uQ/OV6Qk/rh6JKS+44hFDDt+gqM8jLNKY8Hgl49TBTcEvJBPzVoMuTuCr0GnTlTW2J0
-         nJnjTxM7818zs0sG5bUFaF1YJpQJqpO9+busKLhm2XhkG/NPlCRHGLgUhi+W63IAREsZ
-         NrBg==
+        b=UCibe3/hGZKqHqydOacATqRhEAz5UcVO6UH8nKctz73yxJvfGCfqUxmkL6CQRatAM1
+         Og0hkgPOOf57+ZJJp1DF5CA8CA1wVlSduUesD1PGucuGlObDo8YmLc7NHI8NVkFupGKV
+         uFLmUchRWyUu1OmS4lBdObVDjZBF1q46hA0ibH//ZZ8vVqh6vc4N8HAJQn/ZYq81xqZX
+         cwqvMppzhXpRxDZ7pm0e4+ymD0+rvmNmLWuGfkJsVUWo7luOM3iXoaX2LGrid03daWzn
+         9UZUWvWaHyeiPj2tY7/7igCkP/LIMFqmubxmZDkdnpURm+U2uh2lo77+fgItYNEQC51i
+         EgcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KcgJ4FRc9yz2b5H8HRo0vnvqFidecDDHMaAJ2DLpido=;
+        bh=ozwEIx8DJpOuIHNR2h+O+1SfwqWBoYWeAIIvl7CgSBg=;
         fh=67Hov/BsT8RxH3/kFZB7fU49Uoc12n1VmFCLNpavJ9k=;
-        b=rTZ5qVB97ymZh47RlWB7r4UHtH/68EVfiBpeTEkXYccfplsLODUKKfqU8AOmOwhswZ
-         kn3t9g1rbybZOCox1HhAJ56Yd8BvMABAJhTm3Iqy5smAkziYKZ9zReKHVkQPZfQkuTuN
-         sbt7dIdDcnOMgR7lqSOODYnKqeOHRNa04Jseh1qZKNxaHSPQffjZW51RRSta7NdiXvyO
-         JKLW54SfjrzGfKv6Let6HCXT8b/Stg0uMhxRoAl2hgJKN1CGfAJnjq8hWXvxVTnqQWNm
-         8dWSlONbU4q0QhOtPdlcEBJW5bXp36oYKqnGaldwbxtZcnP2D4aaF+rv+0shhci0gTbl
-         8Z1Q==
+        b=eiU+Omi1Bft3+wva3Yiq+7BwiHqnuVMzjM3wg5i7wt+m0YfKeMCmXkt2bM82TJuPkX
+         HYZT+vG84TflBn/mqJgxCNKp1p3PpWTd+eqPzoFP0p7qAc1HUY9yXrZs3VtgrgWu+GbT
+         dQB7HnXPQ8GmcEQot958szmnAYYEW8PySvxg/gWMsCvZj0Xvte7bWLr9NW/wOkRQTtOe
+         GC+J6XIty0dFWGErEX1fhtcPGq6cCWEgg3aoA0k5lyOkxRfZZ/Cvd8gC8Lq0zfDn6jIw
+         IxeH3Hyp6OTpKAV66ZPTY1p2Eyg9BNM2GMufRoc8vs6AgPcAHU1hdLdgRXGzucG0GUnz
+         hB4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Z2OptI4s;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="d/zhPjjP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ql8-20020a05620a890800b007742898bb24si210225qkn.776.2023.11.02.10.04.41
+        by mx.google.com with ESMTPS id k7-20020ac85fc7000000b00417cf21cf2esi209890qta.676.2023.11.02.10.04.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 10:04:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Nov 2023 10:04:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Z2OptI4s;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="d/zhPjjP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qyb6I-0003Hj-Ta; Thu, 02 Nov 2023 13:03:22 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qyb6R-0003RB-6D; Thu, 02 Nov 2023 13:03:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qyb6H-0003Fs-Iz
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 13:03:21 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+ id 1qyb6P-0003QU-S2
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 13:03:29 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qyb6F-0004Dz-FG
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 13:03:21 -0400
-Received: by mail-pg1-x535.google.com with SMTP id
- 41be03b00d2f7-5bd33abbb90so424342a12.2
- for <qemu-devel@nongnu.org>; Thu, 02 Nov 2023 10:03:18 -0700 (PDT)
+ id 1qyb6L-0004Gr-DE
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 13:03:29 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-2809a824bbbso1058112a91.3
+ for <qemu-arm@nongnu.org>; Thu, 02 Nov 2023 10:03:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1698944597; x=1699549397; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1698944604; x=1699549404; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KcgJ4FRc9yz2b5H8HRo0vnvqFidecDDHMaAJ2DLpido=;
- b=Z2OptI4sgRafIIbi69i4bdd5mY6jXWBKlpThmuEAYx1W37VASTyBOEjjdoBBZZv4Xs
- 0g/bVLKDrriZ84aneqmOeHCrxCPqzaa1Sg4cuNQt9cPEir5Nj4b5L1Ja8GUMEHWjjANX
- voJlEIobWEtAC01ub/bMl66aJLIDihFS/cHHyPDO+W9ZwAqhnluzJI/RcK0UP5qNtAY1
- CbplZQ/MWYm0yyxmYN4BKfaGl7FeUZiqz/drS7fLk89GQvkkCwmvRIfPah9TuAidkiW5
- f+wz/XvQfL1i/RsXvu1SgTNYyELebtl17Y70ROdfcXsuSTz3UCMZw6LS4/1oHyy9L+oA
- eTsw==
+ bh=ozwEIx8DJpOuIHNR2h+O+1SfwqWBoYWeAIIvl7CgSBg=;
+ b=d/zhPjjPSDezm/HmYludRP+4WE6HeUZUnpA7LOAmgPMtdwEPq7F/OL2s2CfEXqiL5+
+ sACUuHjTHJ+79YwlNXE0xXZg0Pkz7nugUwXqqSkZGCMMGFHlSIIQL565Deuz0FHWvh6B
+ kVXqy2wNdtqxbg9ly2nn8BPf8MrWf+WjmAbAOYeT/9igacpUvyi8XK4KKjE6GawIMJ90
+ UDin7C7YBljpg7/aXAQQ4cEmoMEsHytr4vV3BZlDNQ5VjzJ2mlbkFmtz6NLmjeHMzbAa
+ 5gQzz5Q79ubPPnbxVAbXZUWg2XJKucUFoAKKwnMS74OF7Nm/Zm3hjBoWTysmn5LwHiO6
+ agWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698944597; x=1699549397;
+ d=1e100.net; s=20230601; t=1698944604; x=1699549404;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KcgJ4FRc9yz2b5H8HRo0vnvqFidecDDHMaAJ2DLpido=;
- b=W177evVo+pnoxaTBPAeFJd3+M+WrWf820bJJxTkIP9CxeXimVv0DUSSkAXcWj6r/ug
- IhnaWRpNM71tFIeMvqiGSSXDCfhvwmu6X/CDkHvr0Nzb/jpdVLWL9aSQHglAIkYS7ZkC
- JDcctjn+xn2hjZQGdQ+W6zUqkboCnHbfPtQmSEnLuNojIT4aJlBugBQFxEy0Oiv4y5Eo
- qprMnnto+Kbd4hzeGGZ4DxzZ9lWslU3mgBoGI5GlMRnZJB1DVl7KMl7DJaN9hnEiF19F
- r9LHbCtnu5R6DnkOxFHH8f35X08ldwIqSd427iSKX9CFvi2GW+jl5g04RMLJOVbHsqaV
- l8oQ==
-X-Gm-Message-State: AOJu0YwLriS9A9eiAK5ejCHqkRGbwuatXDUw52DBmv2J8UReEcGEpC2v
- IVwqPfNjptCd9cgMvmq07lF30Q==
-X-Received: by 2002:a17:90a:357:b0:27c:f9e7:30fd with SMTP id
- 23-20020a17090a035700b0027cf9e730fdmr15559333pjf.7.1698944596970; 
- Thu, 02 Nov 2023 10:03:16 -0700 (PDT)
+ bh=ozwEIx8DJpOuIHNR2h+O+1SfwqWBoYWeAIIvl7CgSBg=;
+ b=xCOojwzHaUTR2ETPpNMY+lASHqqJVlbNW8PRqB/aLNjn4Cj+whtDoWfTipCz0WKj1o
+ QbgYTZ8CAaOQWobQMOQZPJXncrQQ8f0o/NfiQoUC+XZY8RDtFPnH1/TN7cAblD5vJYSd
+ iCeFDY8wB3hOjndO/F8VJhLJFgROQW0FPeFTf77yb6XQ+79cIY40xYZVjw4J0Dhh+zpx
+ ZCqKVVd0mRG5Ibl4SKJ8x6k9s/UTjsupnq0Q/1yIJCSQtXuvjfbShLl1azWUUlkhmL3J
+ lUqbyXiJZkPQQnWiyYoyGllmuRPS5PFteFtWePAa2UvUi8yB6i56y17RVP0QcQuDErBu
+ FInw==
+X-Gm-Message-State: AOJu0YwZbh27HVRjCijWIXUuGKkFy4OTCyuivqeQmJLyj/10fea3K5Be
+ NEIzHq3i9ygkxZLPYYFQeKhpzy739xWbm4Be6w7sMg==
+X-Received: by 2002:a17:90b:1904:b0:280:16bb:8169 with SMTP id
+ mp4-20020a17090b190400b0028016bb8169mr13029955pjb.40.1698944603118; 
+ Thu, 02 Nov 2023 10:03:23 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.188.78])
  by smtp.gmail.com with ESMTPSA id
- 18-20020a17090a031200b0026b70d2a8a2sm25098pje.29.2023.11.02.10.03.11
+ 18-20020a17090a031200b0026b70d2a8a2sm25098pje.29.2023.11.02.10.03.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Nov 2023 10:03:16 -0700 (PDT)
+ Thu, 02 Nov 2023 10:03:22 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
@@ -110,16 +110,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>,
  Andrew Jones <ajones@ventanamicro.com>
-Subject: [PATCH v6 07/13] hw/riscv/virt-acpi-build.c: Add APLIC in the MADT
-Date: Thu,  2 Nov 2023 22:32:17 +0530
-Message-Id: <20231102170223.2619260-8-sunilvl@ventanamicro.com>
+Subject: [PATCH v6 08/13] hw/riscv/virt-acpi-build.c: Add CMO information in
+ RHCT
+Date: Thu,  2 Nov 2023 22:32:18 +0530
+Message-Id: <20231102170223.2619260-9-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231102170223.2619260-1-sunilvl@ventanamicro.com>
 References: <20231102170223.2619260-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x535.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,23 +129,24 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uGrtPC/ES/cf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JdS3o8dhWTHk
 
-Add APLIC structures for each socket in the MADT when system is configured
-with APLIC as the external wired interrupt controller.
+When CMO related extensions like Zicboz, Zicbom and Zicbop are enabled, the
+block size for those extensions need to be communicated via CMO node in
+RHCT. Add CMO node in RHCT if any of those CMO extensions are detected.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
@@ -152,61 +154,115 @@ Reviewed-by: Andrew Jones <ajones@ventanamicro.com>
 Acked-by: Alistair Francis <alistair.francis@wdc.com>
 Acked-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/riscv/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ hw/riscv/virt-acpi-build.c | 64 +++++++++++++++++++++++++++++++++-----
+ 1 file changed, 56 insertions(+), 8 deletions(-)
 
 diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 6bb21014fd..ec49c8804b 100644
+index ec49c8804b..506d487ede 100644
 --- a/hw/riscv/virt-acpi-build.c
 +++ b/hw/riscv/virt-acpi-build.c
-@@ -274,6 +274,8 @@ static void build_madt(GArray *table_data,
-     uint8_t  guest_index_bits = imsic_num_bits(s->aia_guests + 1);
-     uint16_t imsic_max_hart_per_socket = 0;
-     uint8_t  hart_index_bits;
-+    uint64_t aplic_addr;
-+    uint32_t gsi_base;
-     uint8_t  socket;
+@@ -140,6 +140,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
+  * 5.2.36 RISC-V Hart Capabilities Table (RHCT)
+  * REF: https://github.com/riscv-non-isa/riscv-acpi/issues/16
+  *      https://drive.google.com/file/d/1nP3nFiH4jkPMp6COOxP6123DCZKR-tia/view
++ *      https://drive.google.com/file/d/1sKbOa8m1UZw1JkquZYe3F1zQBN1xXsaf/view
+  */
+ static void build_rhct(GArray *table_data,
+                        BIOSLinker *linker,
+@@ -149,8 +150,8 @@ static void build_rhct(GArray *table_data,
+     MachineState *ms = MACHINE(s);
+     const CPUArchIdList *arch_ids = mc->possible_cpu_arch_ids(ms);
+     size_t len, aligned_len;
+-    uint32_t isa_offset, num_rhct_nodes;
+-    RISCVCPU *cpu;
++    uint32_t isa_offset, num_rhct_nodes, cmo_offset = 0;
++    RISCVCPU *cpu = &s->soc[0].harts[0];
+     char *isa;
  
-     for (socket = 0; socket < riscv_socket_count(ms); socket++) {
-@@ -319,6 +321,38 @@ static void build_madt(GArray *table_data,
-         build_append_int_noprefix(table_data, IMSIC_MMIO_GROUP_MIN_SHIFT, 1);
+     AcpiTable table = { .sig = "RHCT", .rev = 1, .oem_id = s->oem_id,
+@@ -166,6 +167,9 @@ static void build_rhct(GArray *table_data,
+ 
+     /* ISA + N hart info */
+     num_rhct_nodes = 1 + ms->smp.cpus;
++    if (cpu->cfg.ext_zicbom || cpu->cfg.ext_zicboz) {
++        num_rhct_nodes++;
++    }
+ 
+     /* Number of RHCT nodes*/
+     build_append_int_noprefix(table_data, num_rhct_nodes, 4);
+@@ -177,7 +181,6 @@ static void build_rhct(GArray *table_data,
+     isa_offset = table_data->len - table.table_offset;
+     build_append_int_noprefix(table_data, 0, 2);   /* Type 0 */
+ 
+-    cpu = &s->soc[0].harts[0];
+     isa = riscv_isa_string(cpu);
+     len = 8 + strlen(isa) + 1;
+     aligned_len = (len % 2) ? (len + 1) : len;
+@@ -193,14 +196,59 @@ static void build_rhct(GArray *table_data,
+         build_append_int_noprefix(table_data, 0x0, 1);   /* Optional Padding */
      }
  
-+    if (s->aia_type != VIRT_AIA_TYPE_NONE) {
-+        /* APLICs */
-+        for (socket = 0; socket < riscv_socket_count(ms); socket++) {
-+            aplic_addr = s->memmap[VIRT_APLIC_S].base +
-+                             s->memmap[VIRT_APLIC_S].size * socket;
-+            gsi_base = VIRT_IRQCHIP_NUM_SOURCES * socket;
-+            build_append_int_noprefix(table_data, 0x1A, 1);    /* Type */
-+            build_append_int_noprefix(table_data, 36, 1);      /* Length */
-+            build_append_int_noprefix(table_data, 1, 1);       /* Version */
-+            build_append_int_noprefix(table_data, socket, 1);  /* APLIC ID */
-+            build_append_int_noprefix(table_data, 0, 4);       /* Flags */
-+            build_append_int_noprefix(table_data, 0, 8);       /* Hardware ID */
-+            /* Number of IDCs */
-+            if (s->aia_type == VIRT_AIA_TYPE_APLIC) {
-+                build_append_int_noprefix(table_data,
-+                                          s->soc[socket].num_harts,
-+                                          2);
-+            } else {
-+                build_append_int_noprefix(table_data, 0, 2);
-+            }
-+            /* Total External Interrupt Sources Supported */
-+            build_append_int_noprefix(table_data, VIRT_IRQCHIP_NUM_SOURCES, 2);
-+            /* Global System Interrupt Base */
-+            build_append_int_noprefix(table_data, gsi_base, 4);
-+            /* APLIC Address */
-+            build_append_int_noprefix(table_data, aplic_addr, 8);
-+            /* APLIC size */
++    /* CMO node */
++    if (cpu->cfg.ext_zicbom || cpu->cfg.ext_zicboz) {
++        cmo_offset = table_data->len - table.table_offset;
++        build_append_int_noprefix(table_data, 1, 2);    /* Type */
++        build_append_int_noprefix(table_data, 10, 2);   /* Length */
++        build_append_int_noprefix(table_data, 0x1, 2);  /* Revision */
++        build_append_int_noprefix(table_data, 0, 1);    /* Reserved */
++
++        /* CBOM block size */
++        if (cpu->cfg.cbom_blocksize) {
 +            build_append_int_noprefix(table_data,
-+                                      s->memmap[VIRT_APLIC_S].size, 4);
++                                      __builtin_ctz(cpu->cfg.cbom_blocksize),
++                                      1);
++        } else {
++            build_append_int_noprefix(table_data, 0, 1);
++        }
++
++        /* CBOP block size */
++        build_append_int_noprefix(table_data, 0, 1);
++
++        /* CBOZ block size */
++        if (cpu->cfg.cboz_blocksize) {
++            build_append_int_noprefix(table_data,
++                                      __builtin_ctz(cpu->cfg.cboz_blocksize),
++                                      1);
++        } else {
++            build_append_int_noprefix(table_data, 0, 1);
 +        }
 +    }
 +
-     acpi_table_end(linker, &table);
- }
+     /* Hart Info Node */
+     for (int i = 0; i < arch_ids->len; i++) {
++        len = 16;
++        int num_offsets = 1;
+         build_append_int_noprefix(table_data, 0xFFFF, 2);  /* Type */
+-        build_append_int_noprefix(table_data, 16, 2);      /* Length */
+-        build_append_int_noprefix(table_data, 0x1, 2);     /* Revision */
+-        build_append_int_noprefix(table_data, 1, 2);    /* Number of offsets */
+-        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
+-        build_append_int_noprefix(table_data, isa_offset, 4); /* Offsets[0] */
++
++        /* Length */
++        if (cmo_offset) {
++            len += 4;
++            num_offsets++;
++        }
++
++        build_append_int_noprefix(table_data, len, 2);
++        build_append_int_noprefix(table_data, 0x1, 2); /* Revision */
++        /* Number of offsets */
++        build_append_int_noprefix(table_data, num_offsets, 2);
++        build_append_int_noprefix(table_data, i, 4);   /* ACPI Processor UID */
++
++        /* Offsets */
++        build_append_int_noprefix(table_data, isa_offset, 4);
++        if (cmo_offset) {
++            build_append_int_noprefix(table_data, cmo_offset, 4);
++        }
+     }
  
+     acpi_table_end(linker, &table);
 -- 
 2.39.2
 

@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp321725eja;
-        Thu, 2 Nov 2023 04:44:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHZ4T/6c1fAnM7/zsmN4zQcElfFlfuyZnjSdO9azZ0r2B+lCvDaU8enXWBrCya/YIHyGZCg
-X-Received: by 2002:ac8:5a91:0:b0:403:b645:86fa with SMTP id c17-20020ac85a91000000b00403b64586famr22363382qtc.24.1698925461856;
-        Thu, 02 Nov 2023 04:44:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925461; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp321773eja;
+        Thu, 2 Nov 2023 04:44:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHF3P5+fYDrrAtRyKSvfdv79jjL9E2N7Hf+8z195lMWdhMhbOlwK09VWsXDSMxL6RXbeDec
+X-Received: by 2002:a05:6830:4386:b0:6d3:fb6:3f9c with SMTP id s6-20020a056830438600b006d30fb63f9cmr9020870otv.15.1698925467481;
+        Thu, 02 Nov 2023 04:44:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925467; cv=none;
         d=google.com; s=arc-20160816;
-        b=iAz0T/GOacjJP5O+4FYfWJFoxCTh3avPYdS9JgZxun8bYatfA8W/HC2hSDK1i2pXgs
-         Na/Efpb/92lODNG5D7mQPiAuHRE41w7ZqC0gReJhxc4QkvqK1mFfAQJrk3+O8vhyBmGd
-         Ty8vcYuUNwMjwnKKLr5Y0lic72I4XDJeqNClcWV0jQl2s8OEo93CXs72tn3z+CX51vSc
-         /L+FRyusjWffS98ciwc6cHVrDZhoCX/8PzJLsG4M3NIWACbrdTKLtZhiHkOC74oDAg02
-         VxfR3DZNsns+qQ8CwlmTZokgzdTnJuIX6ZgfP6CfPH7SUF/ng5PyieywbpdK++AbZQMD
-         XWOw==
+        b=kyBwdMe8luOCMH4LUp4yYZOR4qTr6k/Y20A6ViriyacPdrC6q5TTQJnIPJm9F7mkTt
+         NIaR+ta8N5+QCtPOLqAioOXqBI/GGsKgBQn3O34Y6b2lTHC/sFie2kmsUQjQJ0oiq3VJ
+         297tL+GQp9JfRizj/7LFagEFWRfszmHmnOiMlshy8tcIrdc694KFIisXO+G2lQqIs3GF
+         fb9y5aHs5OnJTRnersj91I/qw8IcQC4O83A+TzHbmHQjr0fmvc3tUjRaHx7EAxMUnosF
+         sqXH13iEFjocwWSxCNFxRpbiOAHH3Ha0SCOpZ4yoYJoPgXPLrprCDl40E+wX38eytzDl
+         WtVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=HJTb+LTNQd3/dJXBX14vBzyMQV1D1vyynb/zu6zV1RM=;
-        fh=9XEyySFYRp6Olqe53+AU8I52EufRgt7BknvnnkPQpGA=;
-        b=tqhbHGiJMkQ3g/u1pvG018rf+bf1fU+lCr3P7SqLy7t64gNKfKR7AWwRKo+JPPxz1K
-         CEgp7EezglRMujCEaNuaMM8lKQ9uYQMmIkM777ciRaxjlUH4hX639UR0U0d4X3dBhLdg
-         JVNXYRENVzQB5Kl8malhsL6W7S6y68uPsrl7n5on/ntihJjiKSb5Hfy1KLA1GypD9DdO
-         tm7dnEoJEKEaJJEdjzEQy/BPFQNybt/KyYVZiBv7b9M4aAxoEp0KalXV3H5nPW+3uHVq
-         PrrNEchD79a5Tz3K/YAt/n+u0pLobf09nqehdFFS1HaSQ/WmYqJb418o7eR7pW0Vou+z
-         Bn8A==
+        bh=A3urJpzcWBNu+N6FvtT6GHVVyu20J9BGWB+Gu+5Odqc=;
+        fh=dl913iPfNrA2OqzFM5s8w96BWy5TnJzFxs2pNQzLPB8=;
+        b=UrGsoX/UKib44fU+v8vRU6zYsbmgPYE/46VyzKv1vomd02sN8L2Il+uOdHbhFfvm5F
+         P83s6WCdJjqdYF401gmRW1P+o3yHkj2LcVQqjP3BvbXtQEsFlxcsur7ZwSEOItkmbyIE
+         KXak01PRQ00G57YPUZDFaR3q8ZTd4loRAEl2eU9DRG9kjQUPbAbV32vkfiyC1xgpH6iQ
+         vwbrct+/9rqpEJs11eyOdCKymrz+1qUmqfaggk8PqOwNCQqEC2iV1JSFLM5pUOhc0lsd
+         08ce3YVF2s5LJmDl1p4Ed2+hAMGqg88sZ7OXRu9DIHyuWxAdsQ88Q5aHywePEfyzFNmG
+         l9Ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZpkOmdMX;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8UPdE5o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20-20020a05622a049400b0041e5f97a708si4372524qtx.248.2023.11.02.04.44.21
+        by mx.google.com with ESMTPS id c9-20020a05622a024900b00419785d97c8si4310571qtx.564.2023.11.02.04.44.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:44:21 -0700 (PDT)
+        Thu, 02 Nov 2023 04:44:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZpkOmdMX;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P8UPdE5o;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qyW6k-00055x-RK; Thu, 02 Nov 2023 07:43:34 -0400
+	id 1qyW7Z-0001uF-C4; Thu, 02 Nov 2023 07:44:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW5y-0003XX-99
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:42:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qyW7V-0001QU-JO
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:44:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW5u-00055P-0H
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:42:40 -0400
+ id 1qyW7T-00065k-1C
+ for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:44:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925352;
+ s=mimecast20190719; t=1698925454;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HJTb+LTNQd3/dJXBX14vBzyMQV1D1vyynb/zu6zV1RM=;
- b=ZpkOmdMXG+BRc9N/4dCC/xC8qiyCVjcAIqU2GYZZaLKLjLhmDsZsue4TIKY3myaMP/NA8H
- X+54QcCEfGZvMc4JA7fxnewYFZdutyxrjw3xmpZKfcdgs86bTZTXoev1LzhlIhHlXTNvcH
- 7WZ1/FeQwLajm5fmLzDRAiMfq0YnQac=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-135-KroVwiO7N6KkkL1phWyAog-1; Thu, 02 Nov 2023 07:42:29 -0400
-X-MC-Unique: KroVwiO7N6KkkL1phWyAog-1
+ bh=A3urJpzcWBNu+N6FvtT6GHVVyu20J9BGWB+Gu+5Odqc=;
+ b=P8UPdE5oXJZO9YlgfGV2xtcfRn96+8oFokt09TAoAGG2Jyypoup4eHw/X1KD4E12fq5J5Q
+ 7tK3gDE8L5jsAXk7MpcUnGG3qgERLXUqBsbUDJHdbPS17/NDgc4dl7H4Ot5Q6i4d5rPsIm
+ da5TGiv+5uQlXyMzElXmfqwmL+IO+7Y=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-390-bFZVhtncMQC8XQuQrStdiQ-1; Thu,
+ 02 Nov 2023 07:44:09 -0400
+X-MC-Unique: bFZVhtncMQC8XQuQrStdiQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E5E5E811E86;
- Thu,  2 Nov 2023 11:42:27 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9A933380662F;
+ Thu,  2 Nov 2023 11:44:07 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 91CA82026D4C;
- Thu,  2 Nov 2023 11:42:20 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 365552026D4C;
+ Thu,  2 Nov 2023 11:44:00 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -111,26 +111,25 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>, Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PULL 11/40] migration: Improve example and documentation of
- vmstate_register()
-Date: Thu,  2 Nov 2023 12:40:25 +0100
-Message-ID: <20231102114054.44360-12-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>, Steve Sistare <steven.sistare@oracle.com>
+Subject: [PULL 24/40] cpr: reboot mode
+Date: Thu,  2 Nov 2023 12:40:38 +0100
+Message-ID: <20231102114054.44360-25-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,41 +144,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xopjnc0Ey0Dp
+X-TUID: Lg74UYg4auyi
 
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+From: Steve Sistare <steven.sistare@oracle.com>
+
+Add the cpr-reboot migration mode.  Usage:
+
+$ qemu-system-$arch -monitor stdio ...
+QEMU 8.1.50 monitor - type 'help' for more information
+(qemu) migrate_set_capability x-ignore-shared on
+(qemu) migrate_set_parameter mode cpr-reboot
+(qemu) migrate -d file:vm.state
+(qemu) info status
+VM status: paused (postmigrate)
+(qemu) quit
+
+$ qemu-system-$arch -monitor stdio -incoming defer ...
+QEMU 8.1.50 monitor - type 'help' for more information
+(qemu) migrate_set_capability x-ignore-shared on
+(qemu) migrate_set_parameter mode cpr-reboot
+(qemu) migrate_incoming file:vm.state
+(qemu) info status
+VM status: running
+
+In this mode, the migrate command saves state to a file, allowing one
+to quit qemu, reboot to an updated kernel, and restart an updated version
+of qemu.  The caller must specify a migration URI that writes to and reads
+from a file.  Unlike normal mode, the use of certain local storage options
+does not block the migration, but the caller must not modify guest block
+devices between the quit and restart.  To avoid saving guest RAM to the
+file, the memory backend must be shared, and the @x-ignore-shared migration
+capability must be set.  Guest RAM must be non-volatile across reboot, such
+as by backing it with a dax device, but this is not enforced.  The restarted
+qemu arguments must match those used to initially start qemu, plus the
+-incoming option.
+
+Signed-off-by: Steve Sistare <steven.sistare@oracle.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231020090731.28701-11-quintela@redhat.com>
+Message-ID: <1698263069-406971-6-git-send-email-steven.sistare@oracle.com>
 ---
- docs/devel/migration.rst | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ qapi/migration.json              | 15 ++++++++++++++-
+ hw/core/qdev-properties-system.c |  2 +-
+ 2 files changed, 15 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index be913630c3..240eb16d90 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -167,13 +167,17 @@ An example (from hw/input/pckbd.c)
-       }
-   };
+diff --git a/qapi/migration.json b/qapi/migration.json
+index 47c02a9346..3daeffc95d 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -636,9 +636,22 @@
+ #
+ # @normal: the original form of migration. (since 8.2)
+ #
++# @cpr-reboot: The migrate command saves state to a file, allowing one to
++#              quit qemu, reboot to an updated kernel, and restart an updated
++#              version of qemu.  The caller must specify a migration URI
++#              that writes to and reads from a file.  Unlike normal mode,
++#              the use of certain local storage options does not block the
++#              migration, but the caller must not modify guest block devices
++#              between the quit and restart.  To avoid saving guest RAM to the
++#              file, the memory backend must be shared, and the @x-ignore-shared
++#              migration capability must be set.  Guest RAM must be non-volatile
++#              across reboot, such as by backing it with a dax device, but this
++#              is not enforced.  The restarted qemu arguments must match those
++#              used to initially start qemu, plus the -incoming option.
++#              (since 8.2)
+ ##
+ { 'enum': 'MigMode',
+-  'data': [ 'normal' ] }
++  'data': [ 'normal', 'cpr-reboot' ] }
  
--We are declaring the state with name "pckbd".
--The ``version_id`` is 3, and the fields are 4 uint8_t in a KBDState structure.
--We registered this with:
-+We are declaring the state with name "pckbd".  The ``version_id`` is
-+3, and there are 4 uint8_t fields in the KBDState structure.  We
-+registered this ``VMSTATEDescription`` with one of the following
-+functions.  The first one will generate a device ``instance_id``
-+different for each registration.  Use the second one if you already
-+have an id that is different for each instance of the device:
- 
- .. code:: c
- 
--    vmstate_register(NULL, 0, &vmstate_kbd, s);
-+    vmstate_register_any(NULL, &vmstate_kbd, s);
-+    vmstate_register(NULL, instance_id, &vmstate_kbd, s);
- 
- For devices that are ``qdev`` based, we can register the device in the class
- init function:
+ ##
+ # @BitmapMigrationBitmapAliasTransform:
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index b9179e8917..2f1dbb3fd7 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -680,7 +680,7 @@ QEMU_BUILD_BUG_ON(sizeof(MigMode) != sizeof(int));
+ const PropertyInfo qdev_prop_mig_mode = {
+     .name = "MigMode",
+     .description = "mig_mode values, "
+-                   "normal",
++                   "normal,cpr-reboot",
+     .enum_table = &MigMode_lookup,
+     .get = qdev_propinfo_get_enum,
+     .set = qdev_propinfo_set_enum,
 -- 
 2.41.0
 

@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp326951eja;
-        Thu, 2 Nov 2023 04:54:42 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHRvIJAs4Ici2r7U2E7av3zhk8mquvWkk8nIzj4uI1fJDbW6H8rkPS83rFEo0kYpkr4bXHn
-X-Received: by 2002:a05:620a:45a3:b0:775:6726:7e77 with SMTP id bp35-20020a05620a45a300b0077567267e77mr21161635qkb.10.1698926082489;
-        Thu, 02 Nov 2023 04:54:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698926082; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp326996eja;
+        Thu, 2 Nov 2023 04:54:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGvZVK7jPbBZx/6HZ+vPFJUHQfoyNGACC3D97dJOCHXhxT0Jc5VpZn+DVHHIrBeZJwrO1M3
+X-Received: by 2002:a05:620a:bca:b0:77a:565e:3fd3 with SMTP id s10-20020a05620a0bca00b0077a565e3fd3mr4211632qki.59.1698926088251;
+        Thu, 02 Nov 2023 04:54:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698926088; cv=none;
         d=google.com; s=arc-20160816;
-        b=LxTSxSKHbg0fAB3nXxxMe9tDXtM8cgtL3QfP+sp8PFVU6aebTWwHAtmuW/Am+6NOH5
-         CyUXdu32XbAaMFLseySqsYgodSUPw1oQelnZw/9UA7Mx8pULSSaKhybHX6tzt7HkIhwG
-         nQ/9Q8SJSltA4pP87okZW72tHxdgX4DQNvQrtquiEJxu0NA/Uj6xdbB81O3Dvhh/puIq
-         Qv08VoXBdqyiKv+HcZ4PU5XIvQjQaM0ViSxFZg8jobnBgl5UY7ZE+V5PDwsdFzttpyDw
-         zz+4QCUlA9c4eH85MIx5Gs3+YjJPo/mphFedVcfO/eD5PDph5tj+DN7/wg7c5PZNijxL
-         F0mQ==
+        b=Sv/hFjIaclvPoYExRqDj8OWPl48wAXTeikJNIH6eB5cU+c5l0F0oTLhmfQQWqM7nEm
+         AMjfvkF3fXD6nUYhvXdO9sz06jKUseXCW4lmMPLryOPkqwDAQ+FC1QzFFG8uzmDTzcBh
+         aWKSYSLsbZB5BS3m3OWSmccsmskRExuFZoDt6sXP9xIdmQ+BnCdOfIMJz46vlxgJFkdh
+         pNe+zsnz4qk1/qIyTx7sQ/F0Sd367/m4DbXHqjvaPr/Li6YME8mZRi2syVTIopKJVU3H
+         6An1X0iFCS4RVGNr+wI16UA9Use6Er9k2SdmOmSsjx8yDXb5qXmFWtH/caA4/jFBjEiu
+         HV1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nU3JuMWHygF67xfbq/l2au3y8PAann8vt1M9q4g8gpU=;
+        bh=ycH7Pzd60GdSUSqN4qjd6nf1GPx4gaBxv8xhqHyn4NY=;
         fh=ES/vJtI5J5RM9CDwQFbx/OtSpDk18PEyXjfn3CS+k7o=;
-        b=HxWETt/LsGNR4vZ9wkInHvw6DB0+kXcEJ1rpS+67y9GllC5TDxBZJIJC2/xVGl7HG5
-         rct4lKjXVWCgEB6KIpJBLOtE97n1s2SftDw0PYR/3ssbwo8xzNpf80JYp7Ctudgo1Dl3
-         p7QuZ+z5l/ywtxahxgR3Dr0/pP3qqq8HFVs99WWrj18CrYbHtjyPmv5NStj1VtB7RXe8
-         H5eC12OAGmdQExbzl8Ba5tWONWX94drQeQiGHx/UiQtcnyiOtpCyrb93czOP9fnPkG8g
-         R4g1S1bCeGbevg/qg1v2sKtwsRmk2au5sP+OwbONYp10I8pLHQhjUdBh4ZByw6KSvqtW
-         IZIw==
+        b=cXmvWc2ii8lS3UpJIB87DhFnq1PwcNU72a2tvmo6g5ZKVAN2gBMHoziXG8nF7Hrh7h
+         laMOubcVTyN60WnEV/hftO67bPwt+kC07jJpLzmimyLanujyZhZIyRo9KbCx3ssOupPn
+         xKYmp8Nm89gVnQGNCWZVtte4Ou40LTYL6BOKoKTgrU9dELAVf8OXrS8R/vt4lbovLc+v
+         +tHOs6Y2xx5XybKsvovWFudumF1cKfIjV8wFBc9Jkwrob+VVWTKoKKN4/lAZQXJ5c7B9
+         BZSAQFZzd7Alg6bznFfy5hQDb5jAsrlCjJZ14f71IGR0HofQHhzcKucpvCVXlYKeB3AZ
+         34Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LfxTmH6E;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=doNClgo+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9-20020a05620a066900b007758e5dba43si3928972qkh.481.2023.11.02.04.54.42
+        by mx.google.com with ESMTPS id dt37-20020a05620a47a500b0076da636ca68si4174270qkb.197.2023.11.02.04.54.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:54:42 -0700 (PDT)
+        Thu, 02 Nov 2023 04:54:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LfxTmH6E;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=doNClgo+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyWBg-0003Jm-Qi; Thu, 02 Nov 2023 07:48:36 -0400
+	id 1qyW8y-0007oa-DO; Thu, 02 Nov 2023 07:45:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW9Z-0000AL-Sf
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:46:29 -0400
+ id 1qyW8V-00070e-BJ
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:45:21 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW9V-0006yE-71
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:46:25 -0400
+ id 1qyW8R-0006Yf-Rr
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:45:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925580;
+ s=mimecast20190719; t=1698925514;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nU3JuMWHygF67xfbq/l2au3y8PAann8vt1M9q4g8gpU=;
- b=LfxTmH6Eum5V107paY2hEcS8zN3krNlYTQnA+Df8cNMEno/H3qnNFVYkURoVCOFK46Vpwt
- It4zG0jqOTEg57mUtwv197tdJT7d8eDNoGMiZmh8I0BAr0RrNnhvIx3mhDV7wN6Et0rHru
- tr9wuKMJIWXCVIDC7JKdry/BfJUCovE=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-529-VqLnO8mIO529w4tlw41hDQ-1; Thu,
- 02 Nov 2023 07:46:15 -0400
-X-MC-Unique: VqLnO8mIO529w4tlw41hDQ-1
+ bh=ycH7Pzd60GdSUSqN4qjd6nf1GPx4gaBxv8xhqHyn4NY=;
+ b=doNClgo+FRTK6+Z3g3AJe6/1SEUatr5syB06DX45JoVKw8pbDeUzZ2Q1Ei/+e7Hqa7gzE5
+ YSySlT6pOGOHbl6VPsSoxTJpG2ATLrW04CkiSkEVpvKRSgU9VDdNM+rtzMuPIvLb0zOles
+ pRiDFz5qw6GBHRLCe1ifeWQxTdOE3C4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-27-DkTOmCTwMkqFttbCR704_Q-1; Thu, 02 Nov 2023 07:45:11 -0400
+X-MC-Unique: DkTOmCTwMkqFttbCR704_Q-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B73E33C14911;
- Thu,  2 Nov 2023 11:46:13 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 51906101A529;
+ Thu,  2 Nov 2023 11:45:10 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 25D7C2026D6E;
- Thu,  2 Nov 2023 11:46:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C1DEE2026D4C;
+ Thu,  2 Nov 2023 11:45:02 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -113,13 +113,14 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Fam Zheng <fam@euphon.net>, Het Gala <het.gala@nutanix.com>,
  Aravind Retnakaran <aravind.retnakaran@nutanix.com>
-Subject: [PULL 40/40] migration: modify test_multifd_tcp_none() to use new
- QAPI syntax.
-Date: Thu,  2 Nov 2023 12:40:54 +0100
-Message-ID: <20231102114054.44360-41-quintela@redhat.com>
+Subject: [PULL 32/40] migration: convert socket backend to accept
+ MigrateAddress
+Date: Thu,  2 Nov 2023 12:40:46 +0100
+Message-ID: <20231102114054.44360-33-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
@@ -131,7 +132,7 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,41 +147,195 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J1huLopaDDHx
+X-TUID: BuPkU9rEGQDw
 
 From: Het Gala <het.gala@nutanix.com>
 
-modify multifd tcp common test to incorporate the new QAPI
-syntax defined.
+Socket transport backend for 'migrate'/'migrate-incoming' QAPIs accept
+new wire protocol of MigrateAddress struct.
+
+It is achived by parsing 'uri' string and storing migration parameters
+required for socket connection into well defined SocketAddress struct.
 
 Suggested-by: Aravind Retnakaran <aravind.retnakaran@nutanix.com>
 Signed-off-by: Het Gala <het.gala@nutanix.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231023182053.8711-15-farosas@suse.de>
+Message-ID: <20231023182053.8711-6-farosas@suse.de>
 ---
- tests/qtest/migration-test.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ migration/socket.h    |  7 ++++---
+ migration/migration.c | 30 ++++++++++++++++++------------
+ migration/socket.c    | 39 +++++++++------------------------------
+ 3 files changed, 31 insertions(+), 45 deletions(-)
 
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index 047b7194df..e803b46039 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -1310,7 +1310,12 @@ static int migrate_postcopy_prepare(QTestState **from_ptr,
+diff --git a/migration/socket.h b/migration/socket.h
+index dc54df4e6c..5e4c33b8ea 100644
+--- a/migration/socket.h
++++ b/migration/socket.h
+@@ -19,13 +19,14 @@
  
-     migrate_prepare_for_dirty_mem(from);
-     qtest_qmp_assert_success(to, "{ 'execute': 'migrate-incoming',"
--                             "  'arguments': { 'uri': 'tcp:127.0.0.1:0' }}");
-+                             "  'arguments': { "
-+                             "      'channels': [ { 'channel-type': 'main',"
-+                             "      'addr': { 'transport': 'socket',"
-+                             "                'type': 'inet',"
-+                             "                'host': '127.0.0.1',"
-+                             "                'port': '0' } } ] } }");
+ #include "io/channel.h"
+ #include "io/task.h"
++#include "qemu/sockets.h"
  
-     /* Wait for the first serial output from the source */
-     wait_for_serial("src_serial");
+ void socket_send_channel_create(QIOTaskFunc f, void *data);
+ QIOChannel *socket_send_channel_create_sync(Error **errp);
+ int socket_send_channel_destroy(QIOChannel *send);
+ 
+-void socket_start_incoming_migration(const char *str, Error **errp);
++void socket_start_incoming_migration(SocketAddress *saddr, Error **errp);
+ 
+-void socket_start_outgoing_migration(MigrationState *s, const char *str,
+-                                     Error **errp);
++void socket_start_outgoing_migration(MigrationState *s,
++                                     SocketAddress *saddr, Error **errp);
+ #endif
+diff --git a/migration/migration.c b/migration/migration.c
+index a1bace259e..846877135a 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -524,10 +524,15 @@ static void qemu_start_incoming_migration(const char *uri, Error **errp)
+     migrate_set_state(&mis->state, MIGRATION_STATUS_NONE,
+                       MIGRATION_STATUS_SETUP);
+ 
+-    if (strstart(uri, "tcp:", &p) ||
+-        strstart(uri, "unix:", NULL) ||
+-        strstart(uri, "vsock:", NULL)) {
+-        socket_start_incoming_migration(p ? p : uri, errp);
++    if (channel->transport == MIGRATION_ADDRESS_TYPE_SOCKET) {
++        SocketAddress *saddr = &channel->u.socket;
++        if (saddr->type == SOCKET_ADDRESS_TYPE_INET ||
++            saddr->type == SOCKET_ADDRESS_TYPE_UNIX ||
++            saddr->type == SOCKET_ADDRESS_TYPE_VSOCK) {
++            socket_start_incoming_migration(saddr, errp);
++        } else if (saddr->type == SOCKET_ADDRESS_TYPE_FD) {
++            fd_start_incoming_migration(saddr->u.fd.str, errp);
++        }
+ #ifdef CONFIG_RDMA
+     } else if (strstart(uri, "rdma:", &p)) {
+         if (migrate_compress()) {
+@@ -546,8 +551,6 @@ static void qemu_start_incoming_migration(const char *uri, Error **errp)
+ #endif
+     } else if (strstart(uri, "exec:", &p)) {
+         exec_start_incoming_migration(p, errp);
+-    } else if (strstart(uri, "fd:", &p)) {
+-        fd_start_incoming_migration(p, errp);
+     } else if (strstart(uri, "file:", &p)) {
+         file_start_incoming_migration(p, errp);
+     } else {
+@@ -1922,18 +1925,21 @@ void qmp_migrate(const char *uri, bool has_blk, bool blk,
+         }
+     }
+ 
+-    if (strstart(uri, "tcp:", &p) ||
+-        strstart(uri, "unix:", NULL) ||
+-        strstart(uri, "vsock:", NULL)) {
+-        socket_start_outgoing_migration(s, p ? p : uri, &local_err);
++    if (channel->transport == MIGRATION_ADDRESS_TYPE_SOCKET) {
++        SocketAddress *saddr = &channel->u.socket;
++        if (saddr->type == SOCKET_ADDRESS_TYPE_INET ||
++            saddr->type == SOCKET_ADDRESS_TYPE_UNIX ||
++            saddr->type == SOCKET_ADDRESS_TYPE_VSOCK) {
++            socket_start_outgoing_migration(s, saddr, &local_err);
++        } else if (saddr->type == SOCKET_ADDRESS_TYPE_FD) {
++            fd_start_outgoing_migration(s, saddr->u.fd.str, &local_err);
++        }
+ #ifdef CONFIG_RDMA
+     } else if (strstart(uri, "rdma:", &p)) {
+         rdma_start_outgoing_migration(s, p, &local_err);
+ #endif
+     } else if (strstart(uri, "exec:", &p)) {
+         exec_start_outgoing_migration(s, p, &local_err);
+-    } else if (strstart(uri, "fd:", &p)) {
+-        fd_start_outgoing_migration(s, p, &local_err);
+     } else if (strstart(uri, "file:", &p)) {
+         file_start_outgoing_migration(s, p, &local_err);
+     } else {
+diff --git a/migration/socket.c b/migration/socket.c
+index 1b6f5baefb..98e3ea1514 100644
+--- a/migration/socket.c
++++ b/migration/socket.c
+@@ -28,6 +28,8 @@
+ #include "trace.h"
+ #include "postcopy-ram.h"
+ #include "options.h"
++#include "qapi/clone-visitor.h"
++#include "qapi/qapi-visit-sockets.h"
+ 
+ struct SocketOutgoingArgs {
+     SocketAddress *saddr;
+@@ -108,19 +110,19 @@ out:
+     object_unref(OBJECT(sioc));
+ }
+ 
+-static void
+-socket_start_outgoing_migration_internal(MigrationState *s,
+-                                         SocketAddress *saddr,
+-                                         Error **errp)
++void socket_start_outgoing_migration(MigrationState *s,
++                                     SocketAddress *saddr,
++                                     Error **errp)
+ {
+     QIOChannelSocket *sioc = qio_channel_socket_new();
+     struct SocketConnectData *data = g_new0(struct SocketConnectData, 1);
++    SocketAddress *addr = QAPI_CLONE(SocketAddress, saddr);
+ 
+     data->s = s;
+ 
+     /* in case previous migration leaked it */
+     qapi_free_SocketAddress(outgoing_args.saddr);
+-    outgoing_args.saddr = saddr;
++    outgoing_args.saddr = addr;
+ 
+     if (saddr->type == SOCKET_ADDRESS_TYPE_INET) {
+         data->hostname = g_strdup(saddr->u.inet.host);
+@@ -135,18 +137,6 @@ socket_start_outgoing_migration_internal(MigrationState *s,
+                                      NULL);
+ }
+ 
+-void socket_start_outgoing_migration(MigrationState *s,
+-                                     const char *str,
+-                                     Error **errp)
+-{
+-    Error *err = NULL;
+-    SocketAddress *saddr = socket_parse(str, &err);
+-    if (!err) {
+-        socket_start_outgoing_migration_internal(s, saddr, &err);
+-    }
+-    error_propagate(errp, err);
+-}
+-
+ static void socket_accept_incoming_migration(QIONetListener *listener,
+                                              QIOChannelSocket *cioc,
+                                              gpointer opaque)
+@@ -172,9 +162,8 @@ socket_incoming_migration_end(void *opaque)
+     object_unref(OBJECT(listener));
+ }
+ 
+-static void
+-socket_start_incoming_migration_internal(SocketAddress *saddr,
+-                                         Error **errp)
++void socket_start_incoming_migration(SocketAddress *saddr,
++                                     Error **errp)
+ {
+     QIONetListener *listener = qio_net_listener_new();
+     MigrationIncomingState *mis = migration_incoming_get_current();
+@@ -213,13 +202,3 @@ socket_start_incoming_migration_internal(SocketAddress *saddr,
+     }
+ }
+ 
+-void socket_start_incoming_migration(const char *str, Error **errp)
+-{
+-    Error *err = NULL;
+-    SocketAddress *saddr = socket_parse(str, &err);
+-    if (!err) {
+-        socket_start_incoming_migration_internal(saddr, &err);
+-    }
+-    qapi_free_SocketAddress(saddr);
+-    error_propagate(errp, err);
+-}
 -- 
 2.41.0
 

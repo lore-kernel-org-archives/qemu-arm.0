@@ -1,81 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp320161eja;
-        Thu, 2 Nov 2023 04:41:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE277gDJb66yWNBJJYAUx1vEBX/fBbEwn/wrdSqMIluxF3s9FYhDqOvwE0oX9p2fC4inIuL
-X-Received: by 2002:a05:6870:d88b:b0:1ea:1510:d8e0 with SMTP id oe11-20020a056870d88b00b001ea1510d8e0mr21971508oac.36.1698925283203;
-        Thu, 02 Nov 2023 04:41:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925283; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp320262eja;
+        Thu, 2 Nov 2023 04:41:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEEJhn+sijekZh38IrE35AZomzkLMN+pjqiiCbxWzrQ8j8OYWGnweLH3+ViJfQ354Vw1O7S
+X-Received: by 2002:a81:ed0b:0:b0:5a7:ccf3:7163 with SMTP id k11-20020a81ed0b000000b005a7ccf37163mr16474967ywm.15.1698925295590;
+        Thu, 02 Nov 2023 04:41:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925295; cv=none;
         d=google.com; s=arc-20160816;
-        b=YGqFhLqCJpRl0aYf6lr6pMeBZrIgZWVjUbwW7yg/HxxqrlGC+3iYiEgCZNziwWn4YP
-         eYZo23skQ6MOBtWZKL92ICb6R9KrREtWMTgnk0EiPLJp8mRfktohnWdObD3Hs1qCswxL
-         wQuSy3oICGhCKUFAkugkmZNu8UmB4amU+BilflozK8p8qHCjSaIyB2aN/hIGPKxX+w60
-         2MuuAX3sPqiwKAnX76gtcNee5Q4JlFLIAizT0EOLohTGuFVJuG1/mBLntsOiYZfnG1GR
-         DiNIJMgkXQFbyLDGymDzTpv+yrSdm3qAFFsxoncea+/sh311nAJMmEqxUMTLgzPe6pfo
-         +JjQ==
+        b=zImdAedlpTalw4YiwFna53YI3HqZP8XAJPDNA7uhdXPraq1OX3wt9353Rqlf736fb6
+         pl+IHbpHnep5YxIIrOg9Rkleado4O1ZFFnE13PEXbce1pRKiXYWSLjM7G7A6fOGYsTcD
+         eUHS2C2OdeT5WfzBKiMGLxvxhiz4eAN+P0VTLa8soVNhz26XzCdTwJHO26RWOBmTUDGZ
+         MokbXGfMDKAeHMioDFlMzcz2vYRSGEMDj/27wPrk3rvpeF8R/6lsKxqHBgXS2a6p+uAS
+         KEZKTEHuBtjENp8KspBEdf8rmAJIv4N7jk+9AAR3zBa1symwjGfSp2c9PRXlFsnfL+hG
+         Dkkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WhT+P8/6U+nvarAERVRiWE+tWgt2ygDJenHlyXLV7rs=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=aU/oAyiEYTQ199GlSYyGpGmZ5amU/+oK4ZEr9qSAJIo=;
         fh=T4EM+6jbLn5eRwObk7JR2S+dK3nM2HMDfFhJxfrmv8w=;
-        b=RTTS5fCrmS2M6rInpwesZFMJKGl5hohkDIGXXF/nST05U5jjgbgD/SMPNnPj5h14Zl
-         aPEU2LZj+PjJ7H9PwOwN/lhguSjE9uUEjgrNOuvvdFPkXNxJ2wHpyMjSv3hvn3RZ3Vd7
-         pSgVhDL3fT8Zzf9/gkigvmtaLvFx60tTw3WIJz4kHF2tMWwjAYywSUdWVIHXRKSi+oo1
-         UvYLCAFY1CXQAWHURqJoVvRtGyKXUQk959TsDb0NbhG/ZCmphrZrcm8bIq+UljLvxc2l
-         E+d6IXEXiEb3/BdxXQ+OpMEt07GxBMhR3OSbbyjovMAuYdMZgZRXevZumJqT2DmkaenZ
-         YGTA==
+        b=is225hUXwNUMqwltnC/rr/b2xm+hMqMH/uqEkGI0u2eWI9WN5ot7CvShiHTXfBvKgA
+         t/uQq5wl7rUiVU99QQO3P3Fmjlg/AuMuHvEJzeTvq4dCxwDvEv96bR5o9Dyw93NcOzIu
+         Ee1Ke1DHLYw04Up0dSZ7j8hvNXhx4n3f157AbTUwQGygUIzk/AA3xY0H0nIuMbz367QY
+         MECWmQ1K2zA0pIALHyfdsdhmuP//nRKV0Ps6k4+6opFosNFjKcZ3hQuD6PTMkWyKBwHI
+         GGfSkX4OFhs1ddXDwdTZ/m6YeF6v6B9oRFHwKUOB4CrItW3ET11VXDG0f/PMuZjF2E9T
+         nSuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YyY8FrZh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JqY6+HcW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16-20020ac85cd0000000b0041972bc1dd8si4439789qta.93.2023.11.02.04.41.22
+        by mx.google.com with ESMTPS id m11-20020ad44b6b000000b0065afaec84b5si4149480qvx.355.2023.11.02.04.41.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:41:23 -0700 (PDT)
+        Thu, 02 Nov 2023 04:41:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YyY8FrZh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JqY6+HcW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyW4Y-0001vO-Ti; Thu, 02 Nov 2023 07:41:14 -0400
+	id 1qyW4q-00029m-Rk; Thu, 02 Nov 2023 07:41:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW4X-0001uM-Pq
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:41:13 -0400
+ id 1qyW4p-00027h-6I
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:41:31 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW4U-00044z-N7
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:41:13 -0400
+ id 1qyW4n-00048x-I6
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:41:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925268;
+ s=mimecast20190719; t=1698925288;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=WhT+P8/6U+nvarAERVRiWE+tWgt2ygDJenHlyXLV7rs=;
- b=YyY8FrZhfwiSNzdqXnUVv4BtM4kkqa4I94RQZFsi2cYcDeXfeU5PjlAKcn+YC1pwq5xkSx
- cvJ7xGgnvcwNQC9F5V5A93iIrcCQcFDFPTgBT/WZWCxuis+gN7036U+pISJpKDEq/dAQUl
- 4xwOzw2rEQA884Q57yghNevUFG41uWE=
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aU/oAyiEYTQ199GlSYyGpGmZ5amU/+oK4ZEr9qSAJIo=;
+ b=JqY6+HcWgvAwaj3dXF8mXLmB11/abc9S83WdKvnDI1fJR1rVuyGEt32NNLzOeY4o5BN/og
+ jBVaQ2h1OruuErlX5mQIiFtlw+Rt8JPiyGLGMgE7qQafNkauCvLAEug6+cliXw5LPv7fCr
+ LP8JIFcySFZ7L/SIlRMNJPoKR9JY49Q=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-194-ecR3ctlSOKi1jNIWgYyUGA-1; Thu, 02 Nov 2023 07:41:05 -0400
-X-MC-Unique: ecR3ctlSOKi1jNIWgYyUGA-1
+ us-mta-36-alZolWBdOYubRik3lIQ4Ag-1; Thu, 02 Nov 2023 07:41:20 -0400
+X-MC-Unique: alZolWBdOYubRik3lIQ4Ag-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AB338185A782;
- Thu,  2 Nov 2023 11:41:03 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3C806101A529;
+ Thu,  2 Nov 2023 11:41:19 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8701A2026D4C;
- Thu,  2 Nov 2023 11:40:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B93D82026D4C;
+ Thu,  2 Nov 2023 11:41:11 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -110,11 +112,13 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Fam Zheng <fam@euphon.net>
-Subject: [PULL 00/40] Migration 20231102 patches
-Date: Thu,  2 Nov 2023 12:40:14 +0100
-Message-ID: <20231102114054.44360-1-quintela@redhat.com>
+Subject: [PULL 02/40] hw/s390x/s390-skeys: Don't call register_savevm_live()
+ during instance_init()
+Date: Thu,  2 Nov 2023 12:40:16 +0100
+Message-ID: <20231102114054.44360-3-quintela@redhat.com>
+In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
+References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
@@ -141,161 +145,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YxPdMlWNu+/e
+X-TUID: fUDsjdF/tZrl
 
-The following changes since commit 6c9ae1ce82b65faa3f266fd103729878cf11e07e:
+From: Thomas Huth <thuth@redhat.com>
 
-  Merge tag 'for-upstream' of https://repo.or.cz/qemu/kevin into staging (2023-11-01 06:58:11 +0900)
+Since the instance_init() function immediately tries to set the
+property to "true", the s390_skeys_set_migration_enabled() tries
+to register a savevm handler during instance_init(). However,
+instance_init() functions can be called multiple times, e.g. for
+introspection of devices. That means multiple instances of devices
+can be created during runtime (which is fine as long as they all
+don't get realized, too), so the "Prevent double registration of
+savevm handler" check in the s390_skeys_set_migration_enabled()
+function does not work at all as expected (since there could be
+more than one instance).
 
-are available in the Git repository at:
+Thus we must not call register_savevm_live() from an instance_init()
+function at all. Move this to the realize() function instead. This
+way we can also get rid of the property getter and setter functions
+completely, simplifying the code along the way quite a bit.
 
-  https://gitlab.com/juan.quintela/qemu.git tags/migration-20231102-pull-request
+Acked-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
+Acked-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Juan Quintela <quintela@redhat.com>
+Message-ID: <20231020150554.664422-2-thuth@redhat.com>
+---
+ hw/s390x/s390-skeys.c | 36 +++++++++---------------------------
+ 1 file changed, 9 insertions(+), 27 deletions(-)
 
-for you to fetch changes up to 8e3766eefbb4036cbc280c1f1a0d28537929f7fb:
-
-  migration: modify test_multifd_tcp_none() to use new QAPI syntax. (2023-11-02 11:35:04 +0100)
-
-----------------------------------------------------------------
-Migration Pull request (20231102)
-
-Hi
-
-In this pull request:
-
-- migration reboot mode (steve)
-  * I disabled the test because our CI don't like programs using so
-    much shared memory.  Searching for a fix.
-- test for postcopy recover (fabiano)
-- MigrateAddress QAPI (het)
-- better return path error handling (peter)
-- traces for downtime (peter)
-- vmstate_register() check for duplicates (juan)
-  thomas find better solutions for s390x and ipmi.
-  now also works on s390x
-
-Please, apply.
-
-----------------------------------------------------------------
-
-Fabiano Rosas (2):
-  tests/migration-test: Add a test for postcopy hangs during RECOVER
-  migration: Convert the file backend to the new QAPI syntax
-
-Het Gala (10):
-  migration: New QAPI type 'MigrateAddress'
-  migration: convert migration 'uri' into 'MigrateAddress'
-  migration: convert socket backend to accept MigrateAddress
-  migration: convert rdma backend to accept MigrateAddress
-  migration: convert exec backend to accept MigrateAddress.
-  migration: New migrate and migrate-incoming argument 'channels'
-  migration: modify migration_channels_and_uri_compatible() for new QAPI
-    syntax
-  migration: Implement MigrateChannelList to qmp migration flow.
-  migration: Implement MigrateChannelList to hmp migration flow.
-  migration: modify test_multifd_tcp_none() to use new QAPI syntax.
-
-Juan Quintela (9):
-  migration: Create vmstate_register_any()
-  migration: Use vmstate_register_any()
-  migration: Use vmstate_register_any() for isa-ide
-  migration: Use VMSTATE_INSTANCE_ID_ANY for slirp
-  migration: Hack to maintain backwards compatibility for ppc
-  migration: Improve example and documentation of vmstate_register()
-  migration: Use vmstate_register_any() for audio
-  migration: Use vmstate_register_any() for eeprom93xx
-  migration: Use vmstate_register_any() for vmware_vga
-
-Peter Xu (9):
-  migration: Check in savevm_state_handler_insert for dups
-  migration: Set downtime_start even for postcopy
-  migration: Add migration_downtime_start|end() helpers
-  migration: Add per vmstate downtime tracepoints
-  migration: migration_stop_vm() helper
-  migration: Add tracepoints for downtime checkpoints
-  migration: Refactor error handling in source return path
-  migration: Allow network to fail even during recovery
-  migration: Change ram_dirty_bitmap_reload() retval to bool
-
-Steve Sistare (6):
-  migration: mode parameter
-  migration: per-mode blockers
-  cpr: relax blockdev migration blockers
-  cpr: relax vhost migration blockers
-  cpr: reboot mode
-  tests/qtest: migration: add reboot mode test
-
-Thomas Huth (4):
-  hw/ipmi: Don't call vmstate_register() from instance_init() functions
-  hw/s390x/s390-skeys: Don't call register_savevm_live() during
-    instance_init()
-  hw/s390x/s390-stattrib: Simplify handling of the "migration-enabled"
-    property
-  hw/s390x/s390-stattrib: Don't call register_savevm_live() during
-    instance_init()
-
- docs/devel/migration.rst            |  12 +-
- qapi/migration.json                 | 210 ++++++++++-
- include/hw/qdev-properties-system.h |   4 +
- include/migration/blocker.h         |  44 ++-
- include/migration/misc.h            |   1 +
- include/migration/vmstate.h         |  28 ++
- migration/exec.h                    |   8 +-
- migration/file.h                    |  10 +-
- migration/migration.h               |  14 +-
- migration/options.h                 |   1 +
- migration/qemu-file.h               |   1 +
- migration/ram.h                     |   5 +-
- migration/rdma.h                    |   6 +-
- migration/socket.h                  |   7 +-
- audio/audio.c                       |   2 +-
- backends/dbus-vmstate.c             |   3 +-
- backends/tpm/tpm_emulator.c         |   3 +-
- block/parallels.c                   |   2 +-
- block/qcow.c                        |   2 +-
- block/vdi.c                         |   2 +-
- block/vhdx.c                        |   2 +-
- block/vmdk.c                        |   2 +-
- block/vpc.c                         |   2 +-
- block/vvfat.c                       |   2 +-
- hw/core/qdev-properties-system.c    |  14 +
- hw/display/vmware_vga.c             |   2 +-
- hw/i2c/core.c                       |   2 +-
- hw/ide/isa.c                        |   2 +-
- hw/input/adb.c                      |   2 +-
- hw/input/ads7846.c                  |   2 +-
- hw/input/stellaris_input.c          |   3 +-
- hw/intc/xics.c                      |  18 +-
- hw/ipmi/ipmi_bmc_extern.c           |  29 +-
- hw/ipmi/isa_ipmi_bt.c               |  34 +-
- hw/ipmi/isa_ipmi_kcs.c              |  50 +--
- hw/net/eepro100.c                   |   3 +-
- hw/nvram/eeprom93xx.c               |   2 +-
- hw/pci/pci.c                        |   2 +-
- hw/ppc/spapr.c                      |  25 +-
- hw/ppc/spapr_nvdimm.c               |   3 +-
- hw/s390x/s390-skeys.c               |  36 +-
- hw/s390x/s390-stattrib.c            |  72 ++--
- hw/scsi/vhost-scsi.c                |   2 +-
- hw/timer/arm_timer.c                |   2 +-
- hw/virtio/vhost.c                   |   2 +-
- hw/virtio/virtio-mem.c              |   4 +-
- migration/exec.c                    |  74 ++--
- migration/file.c                    |  24 +-
- migration/migration-hmp-cmds.c      |  34 +-
- migration/migration.c               | 550 ++++++++++++++++++++--------
- migration/options.c                 |  21 ++
- migration/qemu-file.c               |   2 +-
- migration/ram.c                     |  61 +--
- migration/rdma.c                    |  33 +-
- migration/savevm.c                  |  95 ++++-
- migration/socket.c                  |  39 +-
- net/slirp.c                         |   5 +-
- stubs/migr-blocker.c                |  10 +
- system/vl.c                         |   2 +-
- tests/qtest/migration-test.c        | 150 +++++++-
- migration/trace-events              |   8 +-
- 61 files changed, 1316 insertions(+), 476 deletions(-)
-
+diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
+index 5024faf411..8f5159d85d 100644
+--- a/hw/s390x/s390-skeys.c
++++ b/hw/s390x/s390-skeys.c
+@@ -12,6 +12,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "hw/boards.h"
++#include "hw/qdev-properties.h"
+ #include "hw/s390x/storage-keys.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-misc-target.h"
+@@ -432,58 +433,39 @@ static int s390_storage_keys_load(QEMUFile *f, void *opaque, int version_id)
+     return ret;
+ }
+ 
+-static inline bool s390_skeys_get_migration_enabled(Object *obj, Error **errp)
+-{
+-    S390SKeysState *ss = S390_SKEYS(obj);
+-
+-    return ss->migration_enabled;
+-}
+-
+ static SaveVMHandlers savevm_s390_storage_keys = {
+     .save_state = s390_storage_keys_save,
+     .load_state = s390_storage_keys_load,
+ };
+ 
+-static inline void s390_skeys_set_migration_enabled(Object *obj, bool value,
+-                                            Error **errp)
++static void s390_skeys_realize(DeviceState *dev, Error **errp)
+ {
+-    S390SKeysState *ss = S390_SKEYS(obj);
+-
+-    /* Prevent double registration of savevm handler */
+-    if (ss->migration_enabled == value) {
+-        return;
+-    }
+-
+-    ss->migration_enabled = value;
++    S390SKeysState *ss = S390_SKEYS(dev);
+ 
+     if (ss->migration_enabled) {
+         register_savevm_live(TYPE_S390_SKEYS, 0, 1,
+                              &savevm_s390_storage_keys, ss);
+-    } else {
+-        unregister_savevm(VMSTATE_IF(ss), TYPE_S390_SKEYS, ss);
+     }
+ }
+ 
+-static void s390_skeys_instance_init(Object *obj)
+-{
+-    object_property_add_bool(obj, "migration-enabled",
+-                             s390_skeys_get_migration_enabled,
+-                             s390_skeys_set_migration_enabled);
+-    object_property_set_bool(obj, "migration-enabled", true, NULL);
+-}
++static Property s390_skeys_props[] = {
++    DEFINE_PROP_BOOL("migration-enabled", S390SKeysState, migration_enabled, true),
++    DEFINE_PROP_END_OF_LIST(),
++};
+ 
+ static void s390_skeys_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+ 
+     dc->hotpluggable = false;
++    dc->realize = s390_skeys_realize;
++    device_class_set_props(dc, s390_skeys_props);
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+ }
+ 
+ static const TypeInfo s390_skeys_info = {
+     .name          = TYPE_S390_SKEYS,
+     .parent        = TYPE_DEVICE,
+-    .instance_init = s390_skeys_instance_init,
+     .instance_size = sizeof(S390SKeysState),
+     .class_init    = s390_skeys_class_init,
+     .class_size    = sizeof(S390SKeysClass),
 -- 
 2.41.0
 

@@ -1,96 +1,122 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp38021eja;
-        Wed, 1 Nov 2023 16:31:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGB5HELUO8CO6c7Rc5/mjdKt/oIy5tVAskGqla0RT19yL7LEyV6U61g8gtyT8D68K/n1PD4
-X-Received: by 2002:a05:620a:b81:b0:76d:52a:c93b with SMTP id k1-20020a05620a0b8100b0076d052ac93bmr11821953qkh.73.1698881489841;
-        Wed, 01 Nov 2023 16:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698881489; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp60009eja;
+        Wed, 1 Nov 2023 17:26:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGP68VIL+JpY+GGJjS7LTqAD8Ws/mozsaVbD54JKW4bqVL6oHKnU0/t3CnPQJ8a8MZBqHqh
+X-Received: by 2002:a05:6214:16b:b0:66d:66cd:a351 with SMTP id y11-20020a056214016b00b0066d66cda351mr5710640qvs.18.1698884795165;
+        Wed, 01 Nov 2023 17:26:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698884795; cv=none;
         d=google.com; s=arc-20160816;
-        b=h9T0FF6g5XZeRJR22si2npyWYW9/ayeiBvJSLAImWnJjDne6IHBNI+UHfT9YkLWePM
-         0VW7eF5hG+/VWnvFTUvieOKiZy/CQHp/ImrVmLHRaqSWb5NKeDjRPQgSkZWmd1nDJ6Hz
-         3GnPol3OQb6x/bY34wsX7eY36ctJtsnctGAeW8Oi3bzWr/u2M2ckr0SSXm/kKu7B34vu
-         20xHLdTr2VEQNOyuiy0uPoYriWPAFAeIaqigbidbGorP5LFKYE9YLgUh00AUZqfd2lmD
-         XMv8DN1fUrXYaVYO4gQ8dVCK+jhJFU6zAqIU87Wqb2Rdjvri73Lf9s4tQVmMbitC4BBT
-         4I9A==
+        b=jorsovvUGzSaDHMjrnSSOuRLkTwnsH2ImjnUIZsEFyyryLhXPZ6tYZYbrc256vqy7m
+         QHxXZboHIbnSLX1Pyd1Zg2/t9CcbbucX+C9i+fNcALoUUCdzeDdZ2AmUtCBWqUceKho/
+         f4Rb09BuHxTIIrL9UyE7YHagsRS5Bt4VMzXnJzHJ0QG04KBd9rhlJTwHYQDqeXq5vZuA
+         LmKKrDjkD8jKFZ+z2zQ3Ln4lX0B3hmnY2NUR4BVVbLBDSLgsegyXGZcs2OOyALLZZ+Hr
+         Myq4oATfwJFp+qRv1TWz8fsf/LiK/Fk4XHiciWRdothsL8KsJCH+hnW9D7/dYis4Lq+5
+         FZ0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:message-id:in-reply-to:subject:cc:to:from:date
-         :dkim-signature;
-        bh=zf9BtL3FsrNlX8O7VIT385PUy+b5UA1+oRs2lPPi4dc=;
-        fh=gWQBhr5Sxy5m76L1kwiZ7VwcnHdrZSX5kODp7+gW3uk=;
-        b=BVkiJjfMVZKkR+d41J+S4iVnCgc3EG6vm6wplWZZJXYDJRijuYdyMti2TAd+hdDWtk
-         05pVpdToFSzqP9MeYR3kg7Zn7MufGI3YJlAhZPUHGlCShI+ZH1xP2c+H1jzasFVw3WVA
-         pspbCpkcfwE/b0NRXpdoDrOCgBafPGkzamC+sGRqtjLtmBYOKQgP8Eb7ZaJJFx6YDD1K
-         5sNusWMzEGnC71HErlMi26MtMxVOoMvKPMfC0pxREXRMovO43+aq8ZKzIbkgC+YhComg
-         a8BrvokUEAiKUswCu01/Qz6o/kN6fOVpbTRHD7u/PLE5Wb4Wv8DPD4p2PoZfomr0Hu/v
-         h6kw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:mime-version:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=Fdwsdg9xMPpFL242HTsTKI5/3qWGOT7NqszjRSdnRvw=;
+        fh=rgQPcVbcOjZgL6aK5WmEt+m6+w+zLiqfGJUo4Bg6NIA=;
+        b=n6fePcucoSOcZ5jlV2ygCgfY6YvcuMFjNxaCncrnudFAl11LhkiKctK1IuhQ1dqurY
+         gymoauuEbnapgPohS3ySW66A5SbWrHLRWKJNGNlMTZHRHKwV/A8Zzd2DUCyCbOKhXQ1/
+         ncBIpjO0JlWPC7OdRtnzfh4invOUPzOBTM/le+hJD8f7xR6Gpf6YsxhmFiH+1ZmUsrP9
+         N9RW87+cnrdV13NmGSayB7RLhRXw4qI2xUUyat9H9178GAEthx/2pwnhC6t4alKaJPEG
+         CWCIJGxuE9mUHsb1RMsyrz2ZlUOjUZzhFK1o1nVLBa6rINfG+unlXFlzu9GXMg4dZF54
+         XPfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DP88gazj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KfOz9AZl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt32-20020a05620a47a000b00767d6e06822si3373185qkb.40.2023.11.01.16.31.29
+        by mx.google.com with ESMTPS id i13-20020a0cf94d000000b0066d23d50deesi3490014qvo.479.2023.11.01.17.26.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Nov 2023 16:31:29 -0700 (PDT)
+        Wed, 01 Nov 2023 17:26:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DP88gazj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KfOz9AZl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyKg5-0008Uo-RA; Wed, 01 Nov 2023 19:31:15 -0400
+	id 1qyLXW-0000hI-6P; Wed, 01 Nov 2023 20:26:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
- id 1qyKg4-0008Ua-0y; Wed, 01 Nov 2023 19:31:12 -0400
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qyLXT-0000ew-DO
+ for qemu-arm@nongnu.org; Wed, 01 Nov 2023 20:26:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
- id 1qyKg0-0006OQ-CS; Wed, 01 Nov 2023 19:31:11 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 3E66FB81AD4;
- Wed,  1 Nov 2023 23:30:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DA2FC433C9;
- Wed,  1 Nov 2023 23:30:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1698881457;
- bh=JxUtRxESUN+aCwM4FjmhZNb0/hDgfR/VIt2KMA7rS1E=;
- h=Date:From:To:cc:Subject:In-Reply-To:References:From;
- b=DP88gazjYIU5slexLf+BCn5Bm2j3gpXZFNWA0FG2TIxgYnb4g7AImjTvjCKL2HdWc
- 4y4xb+xlbuYKl+pA+K73cFmjbr9HZBYUy1E2UoHsB/dqu1gzvjEsLfS/oDmmzRzmbY
- vuzMnkv2rJYXp0wqw3nHH+jicyHGtjFEIYMWGXUTUWPecZCl/k2GSXybMML7icJNMn
- TH1fTmzm+D/lYDUYN0js7x89Bj0TLeIdoTpwvFOAlOl4WI6DRItNguJ36NJSGoNEa2
- 7LLJxAEHfqowxCdLuQA7C2r4bnWVR0fhMqXhHtzUhRVxBFJtreLAIkyLFCLr1htw0+
- IJDrKD2lEKTSw==
-Date: Wed, 1 Nov 2023 16:30:55 -0700 (PDT)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
-To: Vikram Garhwal <vikram.garhwal@amd.com>
-cc: qemu-devel@nongnu.org, sstabellini@kernel.org, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, 
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, 
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>
-Subject: Re: [QEMU][PATCH v1] Xen: Fix xen_set_irq() and
- xendevicemodel_set_irq_level()
-In-Reply-To: <20231101210724.27263-1-vikram.garhwal@amd.com>
-Message-ID: <alpine.DEB.2.22.394.2311011630390.2125691@ubuntu-linux-20-04-desktop>
-References: <20231101210724.27263-1-vikram.garhwal@amd.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qyLXR-0008Nf-9C
+ for qemu-arm@nongnu.org; Wed, 01 Nov 2023 20:26:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698884780;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Fdwsdg9xMPpFL242HTsTKI5/3qWGOT7NqszjRSdnRvw=;
+ b=KfOz9AZlGhQyMhdPeXIcf59JW9uyYIqxngDxqyFlD0ZkV1XQ8DTpY6rt2yRjobTBh1NBUk
+ 9HoIKCCpP4rFBRk/JU11kYuIR/Yu72/riiU3t9N1x72gjGVtqx7xn1BmbSNTNozOWRKKpA
+ K2hHz0r36jaiTmr1GWwxLLc6F2QQvJ0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-408-FH4h3Lo4PLaZG0qI5xtByw-1; Wed, 01 Nov 2023 20:26:18 -0400
+X-MC-Unique: FH4h3Lo4PLaZG0qI5xtByw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 58431185A780;
+ Thu,  2 Nov 2023 00:26:16 +0000 (UTC)
+Received: from gshan.redhat.com (unknown [10.64.136.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1369AC1290F;
+ Thu,  2 Nov 2023 00:26:01 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, philmd@linaro.org, clg@kaod.org,
+ imammedo@redhat.com, imp@bsdimp.com, kevans@freebsd.org,
+ richard.henderson@linaro.org, pbonzini@redhat.com,
+ peter.maydell@linaro.org, b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
+ quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com,
+ aleksandar.rikalo@syrmia.com, chenhuacai@kernel.org, crwulff@gmail.com,
+ marex@denx.de, shorne@gmail.com, npiggin@gmail.com,
+ ysato@users.sourceforge.jp, david@redhat.com, thuth@redhat.com,
+ iii@linux.ibm.com, kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com,
+ shan.gavin@gmail.com
+Subject: [PATCH v4 02/33] hw/cpu: Call object_class_is_abstract() once in
+ cpu_class_by_name()
+Date: Thu,  2 Nov 2023 10:24:29 +1000
+Message-ID: <20231102002500.1750692-3-gshan@redhat.com>
+In-Reply-To: <20231102002500.1750692-1-gshan@redhat.com>
+References: <20231102002500.1750692-1-gshan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=2604:1380:4601:e00::1;
- envelope-from=sstabellini@kernel.org; helo=ams.source.kernel.org
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
+Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,58 +132,269 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qASAfysUnfUQ
+X-TUID: i9L5qHWmsvyz
 
-On Wed, 1 Nov 2023, Vikram Garhwal wrote:
-> Remove '=' from 'if CONFIG_XEN_CTRL_INTERFACE_VERSION <= 41500'.
-> Because xendevicemodel_set_irq_level() was introduced in 4.15 version.
-> 
-> Also, update xendevicemodel_set_irq_level() to return -1 for older versions.
-> 
-> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+Let CPUClass::class_by_name() handlers to return abstract classes,
+and filter them once in the public cpu_class_by_name() method.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+---
+ hw/core/cpu-common.c   | 8 +++++++-
+ include/hw/core/cpu.h  | 7 ++++---
+ target/alpha/cpu.c     | 2 +-
+ target/arm/cpu.c       | 3 +--
+ target/avr/cpu.c       | 3 +--
+ target/cris/cpu.c      | 3 +--
+ target/hexagon/cpu.c   | 3 +--
+ target/loongarch/cpu.c | 3 +--
+ target/m68k/cpu.c      | 3 +--
+ target/openrisc/cpu.c  | 3 +--
+ target/riscv/cpu.c     | 3 +--
+ target/rx/cpu.c        | 5 +----
+ target/sh4/cpu.c       | 3 ---
+ target/tricore/cpu.c   | 3 +--
+ target/xtensa/cpu.c    | 3 +--
+ 15 files changed, 23 insertions(+), 32 deletions(-)
 
-> ---
->  hw/arm/xen_arm.c            | 4 +++-
->  include/hw/xen/xen_native.h | 4 ++--
->  2 files changed, 5 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-> index f83b983ec5..a5631529d0 100644
-> --- a/hw/arm/xen_arm.c
-> +++ b/hw/arm/xen_arm.c
-> @@ -75,7 +75,9 @@ static MemoryRegion ram_lo, ram_hi;
->  
->  static void xen_set_irq(void *opaque, int irq, int level)
->  {
-> -    xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level);
-> +    if (xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level)) {
-> +        error_report("xendevicemodel_set_irq_level failed");
-> +    }
->  }
->  
->  static void xen_create_virtio_mmio_devices(XenArmState *xam)
-> diff --git a/include/hw/xen/xen_native.h b/include/hw/xen/xen_native.h
-> index 5d2718261f..6f09c48823 100644
-> --- a/include/hw/xen/xen_native.h
-> +++ b/include/hw/xen/xen_native.h
-> @@ -523,12 +523,12 @@ static inline int xen_set_ioreq_server_state(domid_t dom,
->                                                   enable);
->  }
->  
-> -#if CONFIG_XEN_CTRL_INTERFACE_VERSION <= 41500
-> +#if CONFIG_XEN_CTRL_INTERFACE_VERSION < 41500
->  static inline int xendevicemodel_set_irq_level(xendevicemodel_handle *dmod,
->                                                 domid_t domid, uint32_t irq,
->                                                 unsigned int level)
->  {
-> -    return 0;
-> +    return -1;
->  }
->  #endif
->  
-> -- 
-> 2.17.1
-> 
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index bab8942c30..bca0323e9f 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -150,9 +150,15 @@ static bool cpu_common_has_work(CPUState *cs)
+ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
+ {
+     CPUClass *cc = CPU_CLASS(object_class_by_name(typename));
++    ObjectClass *oc;
+ 
+     assert(cpu_model && cc->class_by_name);
+-    return cc->class_by_name(cpu_model);
++    oc = cc->class_by_name(cpu_model);
++    if (oc && !object_class_is_abstract(oc)) {
++        return oc;
++    }
++
++    return NULL;
+ }
+ 
+ static void cpu_common_parse_features(const char *typename, char *features,
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 18593db5b2..ee85aafdf5 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -102,7 +102,7 @@ struct SysemuCPUOps;
+ /**
+  * CPUClass:
+  * @class_by_name: Callback to map -cpu command line model name to an
+- * instantiatable CPU type.
++ *                 instantiatable CPU type.
+  * @parse_features: Callback to parse command line arguments.
+  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
+  * @has_work: Callback for checking if there is work to do.
+@@ -772,9 +772,10 @@ void cpu_reset(CPUState *cpu);
+  * @typename: The CPU base type.
+  * @cpu_model: The model string without any parameters.
+  *
+- * Looks up a CPU #ObjectClass matching name @cpu_model.
++ * Looks up a concrete CPU #ObjectClass matching name @cpu_model.
+  *
+- * Returns: A #CPUClass or %NULL if not matching class is found.
++ * Returns: A concrete #CPUClass or %NULL if no matching class is found
++ *          or if the matching class is abstract.
+  */
+ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model);
+ 
+diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+index c7ae4d6a41..9436859c7b 100644
+--- a/target/alpha/cpu.c
++++ b/target/alpha/cpu.c
+@@ -126,7 +126,7 @@ static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
+     int i;
+ 
+     oc = object_class_by_name(cpu_model);
+-    if (oc != NULL && object_class_dynamic_cast(oc, TYPE_ALPHA_CPU) != NULL &&
++    if (object_class_dynamic_cast(oc, TYPE_ALPHA_CPU) &&
+         !object_class_is_abstract(oc)) {
+         return oc;
+     }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 954328d72a..8c622d6b59 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2399,8 +2399,7 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_ARM_CPU) ||
+-        object_class_is_abstract(oc)) {
++    if (!object_class_dynamic_cast(oc, TYPE_ARM_CPU)) {
+         return NULL;
+     }
+     return oc;
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 14d8b9d1f0..113d522f75 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -157,8 +157,7 @@ static ObjectClass *avr_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+ 
+     oc = object_class_by_name(cpu_model);
+-    if (object_class_dynamic_cast(oc, TYPE_AVR_CPU) == NULL ||
+-        object_class_is_abstract(oc)) {
++    if (!object_class_dynamic_cast(oc, TYPE_AVR_CPU)) {
+         oc = NULL;
+     }
+     return oc;
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index be4a44c218..1cb431cd46 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -95,8 +95,7 @@ static ObjectClass *cris_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(CRIS_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && (!object_class_dynamic_cast(oc, TYPE_CRIS_CPU) ||
+-                       object_class_is_abstract(oc))) {
++    if (!object_class_dynamic_cast(oc, TYPE_CRIS_CPU)) {
+         oc = NULL;
+     }
+     return oc;
+diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+index 1adc11b713..bd5adb7acd 100644
+--- a/target/hexagon/cpu.c
++++ b/target/hexagon/cpu.c
+@@ -63,8 +63,7 @@ static ObjectClass *hexagon_cpu_class_by_name(const char *cpu_model)
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_HEXAGON_CPU) ||
+-        object_class_is_abstract(oc)) {
++    if (!object_class_dynamic_cast(oc, TYPE_HEXAGON_CPU)) {
+         return NULL;
+     }
+     return oc;
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index ef1bf89dac..06d1b9bb95 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -648,8 +648,7 @@ static ObjectClass *loongarch_cpu_class_by_name(const char *cpu_model)
+         }
+     }
+ 
+-    if (object_class_dynamic_cast(oc, TYPE_LOONGARCH_CPU)
+-        && !object_class_is_abstract(oc)) {
++    if (object_class_dynamic_cast(oc, TYPE_LOONGARCH_CPU)) {
+         return oc;
+     }
+     return NULL;
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 538d9473c2..fe381cc5d3 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -111,8 +111,7 @@ static ObjectClass *m68k_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(M68K_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && (object_class_dynamic_cast(oc, TYPE_M68K_CPU) == NULL ||
+-                       object_class_is_abstract(oc))) {
++    if (!object_class_dynamic_cast(oc, TYPE_M68K_CPU)) {
+         return NULL;
+     }
+     return oc;
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index f5a3d5273b..cc94f37e77 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -164,8 +164,7 @@ static ObjectClass *openrisc_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(OPENRISC_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && (!object_class_dynamic_cast(oc, TYPE_OPENRISC_CPU) ||
+-                       object_class_is_abstract(oc))) {
++    if (!object_class_dynamic_cast(oc, TYPE_OPENRISC_CPU)) {
+         return NULL;
+     }
+     return oc;
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index ac4a6c7eec..018bad6f82 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -636,8 +636,7 @@ static ObjectClass *riscv_cpu_class_by_name(const char *cpu_model)
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_RISCV_CPU) ||
+-        object_class_is_abstract(oc)) {
++    if (!object_class_dynamic_cast(oc, TYPE_RISCV_CPU)) {
+         return NULL;
+     }
+     return oc;
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index 4d0d3a0c8c..0063837e93 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -111,16 +111,13 @@ static ObjectClass *rx_cpu_class_by_name(const char *cpu_model)
+     char *typename;
+ 
+     oc = object_class_by_name(cpu_model);
+-    if (oc != NULL && object_class_dynamic_cast(oc, TYPE_RX_CPU) != NULL &&
++    if (object_class_dynamic_cast(oc, TYPE_RX_CPU) &&
+         !object_class_is_abstract(oc)) {
+         return oc;
+     }
+     typename = g_strdup_printf(RX_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && object_class_is_abstract(oc)) {
+-        oc = NULL;
+-    }
+ 
+     return oc;
+ }
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 788e41fea6..a8ec98b134 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -152,9 +152,6 @@ static ObjectClass *superh_cpu_class_by_name(const char *cpu_model)
+ 
+     typename = g_strdup_printf(SUPERH_CPU_TYPE_NAME("%s"), s);
+     oc = object_class_by_name(typename);
+-    if (oc != NULL && object_class_is_abstract(oc)) {
+-        oc = NULL;
+-    }
+ 
+ out:
+     g_free(s);
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 5ca666ee12..47e1c272cf 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -132,8 +132,7 @@ static ObjectClass *tricore_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(TRICORE_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_TRICORE_CPU) ||
+-        object_class_is_abstract(oc)) {
++    if (!object_class_dynamic_cast(oc, TYPE_TRICORE_CPU)) {
+         return NULL;
+     }
+     return oc;
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index ea1dae7390..5d1c090467 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -141,8 +141,7 @@ static ObjectClass *xtensa_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(XTENSA_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc == NULL || !object_class_dynamic_cast(oc, TYPE_XTENSA_CPU) ||
+-        object_class_is_abstract(oc)) {
++    if (!object_class_dynamic_cast(oc, TYPE_XTENSA_CPU)) {
+         return NULL;
+     }
+     return oc;
+-- 
+2.41.0
+

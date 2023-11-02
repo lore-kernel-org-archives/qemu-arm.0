@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp324122eja;
-        Thu, 2 Nov 2023 04:49:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHdwuebkEzbAj4u2fSpMgGOHT6F+8Xk6xGzXd3Gclb/dEaQCNmGPZVys0RgXIf6KXWKzae8
-X-Received: by 2002:ac8:5987:0:b0:41c:bac1:6d0 with SMTP id e7-20020ac85987000000b0041cbac106d0mr22040504qte.36.1698925750200;
-        Thu, 02 Nov 2023 04:49:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698925750; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp324152eja;
+        Thu, 2 Nov 2023 04:49:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGSG21N8VE6AUveXZL8Wz4XkBb3N9McLIyw+Kpn4NPv+9JxOwe6gq39JGIn0lmVbwLTzNyh
+X-Received: by 2002:a0c:e188:0:b0:66d:298f:fae with SMTP id p8-20020a0ce188000000b0066d298f0faemr14596519qvl.49.1698925754133;
+        Thu, 02 Nov 2023 04:49:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698925754; cv=none;
         d=google.com; s=arc-20160816;
-        b=N5wqkV3AQVrfzEiPySFCW/w83nUIL1XvtPJ/PYQxJ1Gbquw8XRQXi7eltBvgLRYYcd
-         mSRVEypOqQJmK4Kyuf5o099JD/p0ci/k5bOkQ6YCEvy15fhE/5Bo8wVzwl2hYNlAAyOz
-         ixMQyoZSVS96UaqzYh83tJzsy44TNOTYEMD47koFfgEM1M/VqQv0T3v+T6m0/NckI3wL
-         FANbYq1Xw4y1Ww1j4INdUV1hXFVxQsa3+sCWnOuzW6Lp8kxpUA+0VNH+276760QTKVpt
-         X8W+aVE7fqtQ+u02IG4COofib6g+3kK6AyTuv8sAAKyqE4v2PKeLppunahWemsL0o2bs
-         2SdA==
+        b=SFiIZFhqQwMII0hNoeVVVrnq3S2IUZOUHKLxRv5m/BPRmUUezzJh9XZjFNBN7+7rYB
+         FRDybS7BH1z1rV2nBO244QBNZd8rMPIICMWlIZ+poIk+l2PkkX9b4pD3kpOD6fTpRNxp
+         pi3n9uGLys987tGRVcUSMGxortFYhBPZ07LIhIrzmaAo6mYwUeW+PIoitbNOGXua1yX7
+         8tkENH8rX202JA9Ny/9ZwsddOuQNF+KU2/gU13RA3wXdN3vjvdw8lrUbjdZqL588EC7e
+         pOEv9zOiWhgTqM/sd0io6XWfCyhmxKZcEryT9QUTP8WUklkZaOcSbtd0fxWeKUThaqU7
+         7SEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=F6LTTAnG40MiBbQV66ubOdXNTvJQQFJxxx2lJdYVZFw=;
-        fh=T4EM+6jbLn5eRwObk7JR2S+dK3nM2HMDfFhJxfrmv8w=;
-        b=i3KPq9q3u/Woe2Q6gB/iJMP3i5P7t7Xviyot8q/wT9dSznO66UI7vDf5Rd/heXQm/m
-         OELsgCuE60G3p/VaPU4j9n6orIeXeslSLyKBbKpHXUS0F5YOkmcMuxgMFw1zTHV+22IH
-         mCY2HICbPh6Pm06lciC2jhXv1YiJKtu04Sclv36muIsGxJbs+bSO/4d1UYoh990p5DOv
-         Y1otkRaZamOYUS/kBeVMZiMB5nqxWBEgXGfeVZY3Atpccj55Oql48OMHXAIxEElb6Gs1
-         RvQkwqrDNwyUH0cKf2Om8pNrMoQwX2WNKaejQweoXzzZS5T46cqy1EoOxQ7j1GKLjpxO
-         6+uw==
+        bh=/VdSgx65F7Tj7G3d+wn9FD25Gm8dPJEgqKaA5q9Rcxw=;
+        fh=dl913iPfNrA2OqzFM5s8w96BWy5TnJzFxs2pNQzLPB8=;
+        b=TpbPbJdPCgKZ3MSfTW6Vu9Fl43YX1WnMtlppLIKzB6AhCKC+APH8fmviA1gOl8/OOH
+         XACaFzBQCuRgAb0/SRUeMc6L/Qc2DLl4fpmC+gkutMhljIqhFSFuppTvvxNvxPL3zbKo
+         1aKT9oYHrgZjaOy0HLUE0bDn2Q69cjCup58VmQhZHyTmCfaVpSZiwWrMvI5HWj7Cfskc
+         55VHvVdjnLbmwCl/4j+2TV2KUp1boHC7oOpOB76tdpNYV9LbuqX+/68HHA8NfKlvOSlm
+         Jt9ub6/Y2h4H53r380SLl7jCTNG+Gb5bJPwRVAtlZQtylb8tj9sPFinH7Td+92Rg4zpY
+         AxDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HphSqhaA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ejvSNSbL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i11-20020ac85e4b000000b004181b5c82b9si4302382qtx.83.2023.11.02.04.49.10
+        by mx.google.com with ESMTPS id cy16-20020a05621418d000b0065b14c19db6si4322697qvb.288.2023.11.02.04.49.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 04:49:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Nov 2023 04:49:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HphSqhaA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ejvSNSbL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qyW7H-0007qb-8G; Thu, 02 Nov 2023 07:44:03 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qyW7l-0002ho-F6; Thu, 02 Nov 2023 07:44:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW6W-0004RC-CA
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:43:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qyW7c-0002Es-Oq
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:44:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qyW6U-0005q9-NC
- for qemu-devel@nongnu.org; Thu, 02 Nov 2023 07:43:16 -0400
+ id 1qyW7a-00067E-QR
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 07:44:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698925392;
+ s=mimecast20190719; t=1698925462;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F6LTTAnG40MiBbQV66ubOdXNTvJQQFJxxx2lJdYVZFw=;
- b=HphSqhaAK7S4mUCglZ6VtJw52QNOS8rqDIR+C5+9ezt+rrmtz9aOXFFPVvucVhuxCzCQ4+
- Z7OULYS9jsEZfusZI4R8DJM7Y14ihEQnTyUix9IAS19QfXgSjRBGdNKDjFuGvYioBzdxDZ
- VxvV/4ZC9jq2pzkdvVl100t/9UHTmag=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-288-t1yMvx5TOfKDrZ5bQpS81A-1; Thu, 02 Nov 2023 07:43:08 -0400
-X-MC-Unique: t1yMvx5TOfKDrZ5bQpS81A-1
+ bh=/VdSgx65F7Tj7G3d+wn9FD25Gm8dPJEgqKaA5q9Rcxw=;
+ b=ejvSNSbL8iEyM9D2HeumPqBaJUEvApy2JeeAY7sw3a9bKgdF06f91od66pe5Q6JQ2oHA5K
+ M74jo9ZTX3hjczqqOiNzbNQFQ6U8UTkhvR5gSzO4MNfMV1kP7EoVbfWofp3C0jVZZAMmvk
+ J6Tky5jQ+6cbksMhLSIPHpxTrPLnM6o=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-331-obxTx3HON-yJk2le-omPNQ-1; Thu,
+ 02 Nov 2023 07:44:17 -0400
+X-MC-Unique: obxTx3HON-yJk2le-omPNQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EC8AA831523;
- Thu,  2 Nov 2023 11:43:05 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A85B32808FC8;
+ Thu,  2 Nov 2023 11:44:15 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.195.26])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BDE822026D4C;
- Thu,  2 Nov 2023 11:42:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E98402026D4C;
+ Thu,  2 Nov 2023 11:44:07 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
@@ -111,145 +111,108 @@ Cc: Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Stefan Weil <sw@weilnetz.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>
-Subject: [PULL 16/40] migration: Add migration_downtime_start|end() helpers
-Date: Thu,  2 Nov 2023 12:40:30 +0100
-Message-ID: <20231102114054.44360-17-quintela@redhat.com>
+ Fam Zheng <fam@euphon.net>, Steve Sistare <steven.sistare@oracle.com>
+Subject: [PULL 25/40] tests/qtest: migration: add reboot mode test
+Date: Thu,  2 Nov 2023 12:40:39 +0100
+Message-ID: <20231102114054.44360-26-quintela@redhat.com>
 In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
 References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SnviP3/S7S6B
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jZklhhpJwhlG
 
-From: Peter Xu <peterx@redhat.com>
+From: Steve Sistare <steven.sistare@oracle.com>
 
-Unify the three users on recording downtimes with the same pair of helpers.
+[ Maintainer note:
 
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+I put the test as flaky because our CI has problems with shared
+memory.  We will remove the flaky bits as soon as we get a solution.
+]
+
+Signed-off-by: Steve Sistare <steven.sistare@oracle.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
-Message-ID: <20231030163346.765724-3-peterx@redhat.com>
+Message-ID: <1698263069-406971-7-git-send-email-steven.sistare@oracle.com>
 ---
- migration/migration.c | 37 ++++++++++++++++++++++++-------------
- 1 file changed, 24 insertions(+), 13 deletions(-)
+ tests/qtest/migration-test.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 6dcdc5be2b..8aac0c753e 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -101,6 +101,24 @@ static int migration_maybe_pause(MigrationState *s,
- static void migrate_fd_cancel(MigrationState *s);
- static int close_return_path_on_source(MigrationState *s);
- 
-+static void migration_downtime_start(MigrationState *s)
-+{
-+    s->downtime_start = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-+}
-+
-+static void migration_downtime_end(MigrationState *s)
-+{
-+    int64_t now = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-+
-+    /*
-+     * If downtime already set, should mean that postcopy already set it,
-+     * then that should be the real downtime already.
-+     */
-+    if (!s->downtime) {
-+        s->downtime = now - s->downtime_start;
-+    }
-+}
-+
- static bool migration_needs_multiple_sockets(void)
- {
-     return migrate_multifd() || migrate_postcopy_preempt();
-@@ -2147,7 +2165,7 @@ static int postcopy_start(MigrationState *ms, Error **errp)
-     qemu_mutex_lock_iothread();
-     trace_postcopy_start_set_run();
- 
--    ms->downtime_start = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-+    migration_downtime_start(ms);
- 
-     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
-     global_state_store();
-@@ -2251,7 +2269,7 @@ static int postcopy_start(MigrationState *ms, Error **errp)
-     ms->postcopy_after_devices = true;
-     migration_call_notifiers(ms);
- 
--    ms->downtime = qemu_clock_get_ms(QEMU_CLOCK_REALTIME) - ms->downtime_start;
-+    migration_downtime_end(ms);
- 
-     qemu_mutex_unlock_iothread();
- 
-@@ -2347,7 +2365,7 @@ static int migration_completion_precopy(MigrationState *s,
-     int ret;
- 
-     qemu_mutex_lock_iothread();
--    s->downtime_start = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-+    migration_downtime_start(s);
-     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
- 
-     s->vm_old_state = runstate_get();
-@@ -2704,15 +2722,8 @@ static void migration_calculate_complete(MigrationState *s)
-     int64_t end_time = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-     int64_t transfer_time;
- 
-+    migration_downtime_end(s);
-     s->total_time = end_time - s->start_time;
--    if (!s->downtime) {
--        /*
--         * It's still not set, so we are precopy migration.  For
--         * postcopy, downtime is calculated during postcopy_start().
--         */
--        s->downtime = end_time - s->downtime_start;
--    }
--
-     transfer_time = s->total_time - s->setup_time;
-     if (transfer_time) {
-         s->mbps = ((double) bytes * 8.0) / transfer_time / 1000;
-@@ -3131,7 +3142,7 @@ static void bg_migration_vm_start_bh(void *opaque)
-     s->vm_start_bh = NULL;
- 
-     vm_start();
--    s->downtime = qemu_clock_get_ms(QEMU_CLOCK_REALTIME) - s->downtime_start;
-+    migration_downtime_end(s);
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index bc70a14642..b7ebc23903 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -2026,6 +2026,31 @@ static void test_precopy_file_offset_bad(void)
+     test_file_common(&args, false);
  }
  
- /**
-@@ -3198,7 +3209,7 @@ static void *bg_migration_thread(void *opaque)
-     s->setup_time = qemu_clock_get_ms(QEMU_CLOCK_HOST) - setup_start;
++static void *test_mode_reboot_start(QTestState *from, QTestState *to)
++{
++    migrate_set_parameter_str(from, "mode", "cpr-reboot");
++    migrate_set_parameter_str(to, "mode", "cpr-reboot");
++
++    migrate_set_capability(from, "x-ignore-shared", true);
++    migrate_set_capability(to, "x-ignore-shared", true);
++
++    return NULL;
++}
++
++static void test_mode_reboot(void)
++{
++    g_autofree char *uri = g_strdup_printf("file:%s/%s", tmpfs,
++                                           FILE_TEST_FILENAME);
++    MigrateCommon args = {
++        .start.use_shmem = true,
++        .connect_uri = uri,
++        .listen_uri = "defer",
++        .start_hook = test_mode_reboot_start
++    };
++
++    test_file_common(&args, true);
++}
++
+ static void test_precopy_tcp_plain(void)
+ {
+     MigrateCommon args = {
+@@ -3096,6 +3121,14 @@ int main(int argc, char **argv)
+     qtest_add_func("/migration/precopy/file/offset/bad",
+                    test_precopy_file_offset_bad);
  
-     trace_migration_thread_setup_complete();
--    s->downtime_start = qemu_clock_get_ms(QEMU_CLOCK_REALTIME);
-+    migration_downtime_start(s);
- 
-     qemu_mutex_lock_iothread();
- 
++    /*
++     * Our CI system has problems with shared memory.
++     * Don't run this test until we find a workaround.
++     */
++    if (getenv("QEMU_TEST_FLAKY_TESTS")) {
++        qtest_add_func("/migration/mode/reboot", test_mode_reboot);
++    }
++
+ #ifdef CONFIG_GNUTLS
+     qtest_add_func("/migration/precopy/unix/tls/psk",
+                    test_precopy_unix_tls_psk);
 -- 
 2.41.0
 

@@ -1,112 +1,110 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp1271337eja;
-        Fri, 3 Nov 2023 11:28:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFhuUvDA5eMfppy7bMim2g3WpDw675Bjs2PoYjO01yS0urZnCn+DkAdIjRRJp8txlAyt+Gm
-X-Received: by 2002:a05:622a:138a:b0:41c:f729:8032 with SMTP id o10-20020a05622a138a00b0041cf7298032mr30801556qtk.63.1699036137077;
-        Fri, 03 Nov 2023 11:28:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1699036137; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp1284457eja;
+        Fri, 3 Nov 2023 11:56:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGvLC0OAPLm+i0FC9l1/mAScnKaSeLhCCzHhvS3v8b6wfSrdGjMd2XfdAH0HcajTZr/kCsM
+X-Received: by 2002:a05:620a:6585:b0:778:958f:4c22 with SMTP id qd5-20020a05620a658500b00778958f4c22mr19528578qkn.45.1699037777262;
+        Fri, 03 Nov 2023 11:56:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1699037777; cv=none;
         d=google.com; s=arc-20160816;
-        b=F8DOoG7iFVJgrnHAQJX8Wo1BooI28NzDgjJJCZgVLlr9kdECZevYpBj4G6/S6xlF6E
-         1u8JZjfiixxPmxKyg/tYEJHAPzZlAxanGKwjYmx1+fAohuusk17soYWe4kwUtOzRtUs+
-         9x8+6o1CUYb6JJ6HNFIToSx3jzQRcaW1EtyKhMWLzIwfvuSsZ+GP5wxxSnLeKnzuujme
-         8kvy0Op5FxjuCzXzomo5LubGbHRJmpQagwdeGmt1wvjc2VHUJlVcm2ovRqY5TcsY80+R
-         oQb4s1Ro7jNk1uvWONbjnmlL0DH/Xx59DGQDVV02SwmsBQYrUSUGY8B9BeBZlq1UqaqO
-         RKyA==
+        b=WmR+rLWxxZNMmiisScuKKe6R4mHfnvXu8tvPAC45x/MM+pRFNu6eQOro5xDDMwTe6j
+         ITFaoCGwX1z2v+fBjTavhNGFLnUyH5FWkOT9GTTs7oSeyTxlISRu6PAp/Oifbll7fBVX
+         f0PcFvKQDABSlRzxluUBYn0PUgmO6+nG4kd5LLGvBrxNeiFSY/wpQunHQPdaiZ0eePfx
+         TK+GCcswDA5WHfrfD0fpSu0bfmU2cN8uALR6a67hRD96e/oOwc+6h1G03NhXXjSj4B5X
+         wvFDtzfGokHEjpt56A097Y4opJQKxx+8bLfVEcXdClf+eu9X5qrX/3dg5rTU4P4U3ISs
+         lBbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+EVTungCfjDjTacji5Eqs9/sv58Ra/hS/gF67unlV+M=;
-        fh=v045sp/n/mLZv49zCKO2LE5RLzVm9wU5iQpoO1Uergo=;
-        b=C9W/RDUVeE9jGAUChWhKy3U/teFed6mGV3BStWkDStigyyR5AOGhEC5YpMGXg1A7gi
-         ta9qRLwLK0ndn67NLlEjixqBGeDuVyA0uEZtu4t1kmfcJAB56FUuAp88tC+soSsKIK8x
-         YLSuX8VWRpO1yNHHI+UNhvRnJHOu81ctjqlpYU0lXox/xp+D2prf/Kl4rFlU44h5QOxR
-         ZxyKauv6RdTHk8cYkuiFmsEDDsMwK26Pf92+j6BEO5+adn+/FpyGPitwnnSltUZJZiuS
-         sVsZQ0ICXCKt3WEWhClM5yrVLNztTiQHl2rzdiKZfb4dP5rgddtFmIyATti85R9j2u07
-         +qQg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=R/Qz4BRA1gjPk+dEXh6h6hhbMDtVGzlPlkIywNyzTUM=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=Tx6SIm9NbYlazvlxfuBMAkPYCtbJs66sClQEuwTXfAwi7JVeVTiY6U7eVkldhQ6C7Q
+         hBygLwRWOX1OkIm5fnqYpwdw83V4GkUaZ1SOGRsNteavi87WWgSochC8d32AZXPE+ImV
+         Q6Rpw9IUYyt89efoRxsfme7AcIGCy4z3RcbMnreOz7U6eGFwugwlb1/RoNUaFp32vGli
+         /OJ8cWvbA3X2jRXcpO8NXtqHaXMvKtpYLzlZUOvwOfKOyTqhGQ/7fa39CCZ/vLFUE99q
+         gScxZ9kurSLHU/4UsgryqY0xsvn5Iltx9PDpgh64JA0CDbWdhTdtjVhrqhFlMM77ICiS
+         8JIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J7blYejo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b0QBjV9f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c13-20020ac87d8d000000b00417fd10f754si1906493qtd.412.2023.11.03.11.28.56
+        by mx.google.com with ESMTPS id eb5-20020a05620a480500b0076dbe1d6084si2011698qkb.675.2023.11.03.11.56.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Nov 2023 11:28:57 -0700 (PDT)
+        Fri, 03 Nov 2023 11:56:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J7blYejo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b0QBjV9f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qyytn-0001jx-4p; Fri, 03 Nov 2023 14:28:03 -0400
+	id 1qyzL1-0000rk-2Y; Fri, 03 Nov 2023 14:56:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qyytm-0001je-BF
- for qemu-arm@nongnu.org; Fri, 03 Nov 2023 14:28:02 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1qyzKz-0000rE-G8
+ for qemu-arm@nongnu.org; Fri, 03 Nov 2023 14:56:09 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qyyte-0007AV-J5
- for qemu-arm@nongnu.org; Fri, 03 Nov 2023 14:28:02 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-40806e40fccso15155735e9.2
- for <qemu-arm@nongnu.org>; Fri, 03 Nov 2023 11:27:54 -0700 (PDT)
+ id 1qyzKw-0005Df-W3
+ for qemu-arm@nongnu.org; Fri, 03 Nov 2023 14:56:09 -0400
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-5094727fa67so3130368e87.3
+ for <qemu-arm@nongnu.org>; Fri, 03 Nov 2023 11:56:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699036073; x=1699640873; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=+EVTungCfjDjTacji5Eqs9/sv58Ra/hS/gF67unlV+M=;
- b=J7blYejozMCugUYX3MSVHHG2j926sHxqcOVq/N1Zuyp0BXwqou7qNo9JIzNXG7JQ8r
- 9c2Ok/1ePEhCOS75JBO6uBmVm92FRn8vOySPBgj3X6zn++pj0F07b4AHjhdkbqK5Ele2
- 3mz/T0ZrRA/BTlC580TjfXhZC6Ps10krTpyDEL10Lz6Hi6VT/mY0sHX5GLRMSmXvlAxf
- EqGTw6LPFzc022sVgMhl1mFyIqNgJ3bPUvRiWK1F6XWLrFdfhMq9bmnNP6PaCqSNQTd/
- f4QLbc1ctWmIu5td3wB+oKAtk/eGbT3F+T5J0D5i8AgDIhIYYR7QDU/S9Zy4Z3pzm6Kz
- g1iw==
+ d=linaro.org; s=google; t=1699037764; x=1699642564; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=R/Qz4BRA1gjPk+dEXh6h6hhbMDtVGzlPlkIywNyzTUM=;
+ b=b0QBjV9fl629eql9D8Q4r86RAds2U2r1OZWtw9mADcIyqIR/5dz4gTfPo4H9cYTzm6
+ cxPE9F6Tvdb5V0G0PupF24IaLjvtvON3R5Q+SYGT3vQ60oqmItr11TJEcE7IPpsW+baI
+ t8HlvPRTnijhL3MI7tHBBBGLV6L3QLvN9iBFLnTb4jJSheVQvF3nsf1CZw7AR2FmCGIi
+ EJv/7QLjx0gJgdgkyrbl3LOOK04l0lu7NEKYnmpg2PE3wuw96zxrcN8jhdXKNyJluZFV
+ +WykOa68h5+sTJdyhgkoQO9qmytvij3OEI+ZyEhtgD+t11c0bOjR6nYEgYHkgwI4d3tx
+ 5X0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699036073; x=1699640873;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+EVTungCfjDjTacji5Eqs9/sv58Ra/hS/gF67unlV+M=;
- b=KI+F5mIvTcwl2FdbSbwR5MQszWt7VUI5uyt9/gn97wdjOMyT/NOKvwZP6GkyDBpKv2
- eeS6tcYlfkpoFBSJBreWSqgEufbwFfY1CoR1gxOFcQojbTIM5kecujN4SE8iwTneVYap
- uGDfhwbVoDHFw62vHd41SpC+CQUZHZJceeQ3C56WaA8Bg+/bpkW1YTgvh3UHBmb/1c5m
- gwBqrCqd2ejdB9fSc+RK7AouWShuxR6NPVs/bYRXagjk4UqWXxFPStyGgK1txcPCDipQ
- 0VkGpmzc2rXl7l0DAOfXO0KS0JTIl7EWHFbPYUdq3h4qs2eanCNrkiEyXaFhjU+lB/C8
- UaCg==
-X-Gm-Message-State: AOJu0YyJuKouxTK5GtQWushrnrh7ZKHuXsVVIlw6B+CT55GQMTKxS8PV
- C2Lc/Mh77xKc3eBjaixLxrmz2O9kTUtKmwc7hAw=
-X-Received: by 2002:a5d:4e06:0:b0:32d:7efc:7e1f with SMTP id
- p6-20020a5d4e06000000b0032d7efc7e1fmr14761777wrt.71.1699036072728; 
- Fri, 03 Nov 2023 11:27:52 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1699037764; x=1699642564;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=R/Qz4BRA1gjPk+dEXh6h6hhbMDtVGzlPlkIywNyzTUM=;
+ b=nx4QSTC0DpmLatTIaUX/RUa6GjheRO3mSqHgMtUZpx3FSd3VhbZFd5BupYIIRZ433d
+ ft75VjXkIAW2JbIFwPVnG8GXW+POmyXFhmU1PvXCa5VDgP84oh232kfjBFewZaDAki1k
+ LE3NERyLlksED/9/EN75Flb/9JS6nc+/6rBqsva/7A9OcQDrQlifNJ4wpM6QP30Xpyvn
+ AeEZQy+qKnxesnfwpg69LGAvjCR3n16q8ZvAVUoQGqRNfrY6aImfnQLGEYy+pFvcBT/P
+ 0NEQx+PjujS3zFyh/g5M+Se+cR4UPzb+6T5cJUkzNW60/dZ60+QOOa4bcQq8ncpsj9rw
+ 6SQA==
+X-Gm-Message-State: AOJu0Yz8hn4FQq9/Lan8vS6SQKAynwFCO3yiXLE2SWF3vCvUQUADPIlp
+ CHqmDx51N3cuvIZ4PeMWmBb23pKTSU+pPIqQ2yg=
+X-Received: by 2002:a05:6512:1081:b0:500:daf6:3898 with SMTP id
+ j1-20020a056512108100b00500daf63898mr18623958lfg.26.1699037764476; 
+ Fri, 03 Nov 2023 11:56:04 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- i7-20020adfe487000000b0032de6f95fb3sm2423224wrm.40.2023.11.03.11.27.51
+ q2-20020adff782000000b0032179c4a46dsm2483584wrp.100.2023.11.03.11.56.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Nov 2023 11:27:51 -0700 (PDT)
+ Fri, 03 Nov 2023 11:56:03 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jan Kiszka <jan.kiszka@web.de>
-Subject: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
-Date: Fri,  3 Nov 2023 18:27:50 +0000
-Message-Id: <20231103182750.855577-1-peter.maydell@linaro.org>
+Subject: [PATCH] hw/arm/vexpress-a9: Remove useless mapping of RAM at address 0
+Date: Fri,  3 Nov 2023 18:56:02 +0000
+Message-Id: <20231103185602.875849-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,230 +119,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: V2xgjSlYeudC
+X-TUID: qHsID9f9mH6W
 
-Convert the musicpal key input device to use
-qemu_add_kbd_event_handler().  This lets us simplify it because we no
-longer need to track whether we're in the middle of a PS/2 multibyte
-key sequence.
+On the vexpress-a9 board we try to map both RAM and flash to address 0,
+as seen in "info mtree":
 
-In the conversion we move the keyboard handler registration from init
-to realize, because devices shouldn't disturb the state of the
-simulation by doing things like registering input handlers until
-they're realized, so that device objects can be introspected
-safely.
+address-space: memory
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-0000000003ffffff (prio 0, romd): alias vexpress.flashalias @vexpress.flash0 0000000000000000-0000000003ffffff
+    0000000000000000-0000000003ffffff (prio 0, ram): alias vexpress.lowmem @vexpress.highmem 0000000000000000-0000000003ffffff
+    0000000010000000-0000000010000fff (prio 0, i/o): arm-sysctl
+    0000000010004000-0000000010004fff (prio 0, i/o): pl041
+(etc)
 
-The behaviour where key-repeat is permitted for the arrow-keys only
-is intentional (added in commit 7c6ce4baedfcd0c), so we retain it,
-and add a comment to that effect.
+The flash "wins" and the RAM mapping is useless (but also harmless).
 
-This is a migration compatibility break for musicpal.
+This happened as a result of commit 6ec1588e in 2014, which changed
+"we always map the RAM to the low addresses for vexpress-a9" to "we
+always map flash in the low addresses", but forgot to stop mapping
+the RAM.
 
+In real hardware, this low part of memory is remappable, both at
+runtime by the guest writing to a control register, and configurably
+as to what you get out of reset -- you can have the first flash
+device, or the second, or the DDR2 RAM, or the external AXI bus
+(which for QEMU means "nothing there").  In an ideal world we would
+support that remapping both at runtime and via a machine property to
+select the out-of-reset behaviour.
+
+Pending anybody caring enough to implement the full remapping
+behaviour:
+ * remove the useless mapped-but-inaccessible lowram MR
+ * document that QEMU doesn't support remapping of low memory
+
+Fixes: 6ec1588e ("hw/arm/vexpress: Alias NOR flash at 0 for vexpress-a9")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1761
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/musicpal.c | 131 +++++++++++++++++++++-------------------------
- 1 file changed, 61 insertions(+), 70 deletions(-)
+ docs/system/arm/vexpress.rst |  3 +++
+ hw/arm/vexpress.c            | 14 +++-----------
+ 2 files changed, 6 insertions(+), 11 deletions(-)
 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 9703bfb97fb..e8c1250ab04 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1043,20 +1043,6 @@ static const TypeInfo musicpal_gpio_info = {
- };
+diff --git a/docs/system/arm/vexpress.rst b/docs/system/arm/vexpress.rst
+index 3e3839e9231..38f29c73e71 100644
+--- a/docs/system/arm/vexpress.rst
++++ b/docs/system/arm/vexpress.rst
+@@ -58,6 +58,9 @@ Other differences between the hardware and the QEMU model:
+   ``vexpress-a15``, and have IRQs from 40 upwards. If a dtb is
+   provided on the command line then QEMU will edit it to include
+   suitable entries describing these transports for the guest.
++- QEMU does not currently support either dynamic or static remapping
++  of the area of memory at address 0: it is always mapped to alias
++  the first flash bank
  
- /* Keyboard codes & masks */
--#define KEY_RELEASED            0x80
--#define KEY_CODE                0x7f
--
--#define KEYCODE_TAB             0x0f
--#define KEYCODE_ENTER           0x1c
--#define KEYCODE_F               0x21
--#define KEYCODE_M               0x32
--
--#define KEYCODE_EXTENDED        0xe0
--#define KEYCODE_UP              0x48
--#define KEYCODE_DOWN            0x50
--#define KEYCODE_LEFT            0x4b
--#define KEYCODE_RIGHT           0x4d
--
- #define MP_KEY_WHEEL_VOL       (1 << 0)
- #define MP_KEY_WHEEL_VOL_INV   (1 << 1)
- #define MP_KEY_WHEEL_NAV       (1 << 2)
-@@ -1074,67 +1060,66 @@ struct musicpal_key_state {
-     SysBusDevice parent_obj;
-     /*< public >*/
- 
--    uint32_t kbd_extended;
-     uint32_t pressed_keys;
-     qemu_irq out[8];
- };
- 
--static void musicpal_key_event(void *opaque, int keycode)
-+static void musicpal_key_event(DeviceState *dev, QemuConsole *src,
-+                               InputEvent *evt)
+ Booting a Linux kernel
+ ----------------------
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 8ff37f52ca1..c08ea34e924 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -177,7 +177,6 @@ struct VexpressMachineState {
+     MemoryRegion vram;
+     MemoryRegion sram;
+     MemoryRegion flashalias;
+-    MemoryRegion lowram;
+     MemoryRegion a15sram;
+     bool secure;
+     bool virt;
+@@ -276,7 +275,6 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
  {
--    musicpal_key_state *s = opaque;
-+    musicpal_key_state *s = MUSICPAL_KEY(dev);
-+    InputKeyEvent *key = evt->u.key.data;
-+    int qcode = qemu_input_key_value_to_qcode(key->key);
-     uint32_t event = 0;
-     int i;
+     MachineState *machine = MACHINE(vms);
+     MemoryRegion *sysmem = get_system_memory();
+-    ram_addr_t low_ram_size;
  
--    if (keycode == KEYCODE_EXTENDED) {
--        s->kbd_extended = 1;
--        return;
-+    switch (qcode) {
-+    case Q_KEY_CODE_UP:
-+        event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
-+        break;
-+
-+    case Q_KEY_CODE_DOWN:
-+        event = MP_KEY_WHEEL_NAV;
-+        break;
-+
-+    case Q_KEY_CODE_LEFT:
-+        event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
-+        break;
-+
-+    case Q_KEY_CODE_RIGHT:
-+        event = MP_KEY_WHEEL_VOL;
-+        break;
-+
-+    case Q_KEY_CODE_F:
-+        event = MP_KEY_BTN_FAVORITS;
-+        break;
-+
-+    case Q_KEY_CODE_TAB:
-+        event = MP_KEY_BTN_VOLUME;
-+        break;
-+
-+    case Q_KEY_CODE_RET:
-+        event = MP_KEY_BTN_NAVIGATION;
-+        break;
-+
-+    case Q_KEY_CODE_M:
-+        event = MP_KEY_BTN_MENU;
-+        break;
+     if (ram_size > 0x40000000) {
+         /* 1GB is the maximum the address space permits */
+@@ -284,17 +282,11 @@ static void a9_daughterboard_init(VexpressMachineState *vms,
+         exit(1);
      }
  
--    if (s->kbd_extended) {
--        switch (keycode & KEY_CODE) {
--        case KEYCODE_UP:
--            event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
--            break;
--
--        case KEYCODE_DOWN:
--            event = MP_KEY_WHEEL_NAV;
--            break;
--
--        case KEYCODE_LEFT:
--            event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
--            break;
--
--        case KEYCODE_RIGHT:
--            event = MP_KEY_WHEEL_VOL;
--            break;
--        }
--    } else {
--        switch (keycode & KEY_CODE) {
--        case KEYCODE_F:
--            event = MP_KEY_BTN_FAVORITS;
--            break;
--
--        case KEYCODE_TAB:
--            event = MP_KEY_BTN_VOLUME;
--            break;
--
--        case KEYCODE_ENTER:
--            event = MP_KEY_BTN_NAVIGATION;
--            break;
--
--        case KEYCODE_M:
--            event = MP_KEY_BTN_MENU;
--            break;
--        }
--        /* Do not repeat already pressed buttons */
--        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
+-    low_ram_size = ram_size;
+-    if (low_ram_size > 0x4000000) {
+-        low_ram_size = 0x4000000;
+-    }
+-    /* RAM is from 0x60000000 upwards. The bottom 64MB of the
 +    /*
-+     * We allow repeated wheel-events when the arrow keys are held down,
-+     * but do not repeat already-pressed buttons for the other key inputs.
-+     */
-+    if (!(event & (MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_VOL))) {
-+        if (key->down && (s->pressed_keys & event)) {
-             event = 0;
-         }
-     }
++     * RAM is from 0x60000000 upwards. The bottom 64MB of the
+      * address space should in theory be remappable to various
+-     * things including ROM or RAM; we always map the RAM there.
++     * things including ROM or RAM; we always map the flash there.
+      */
+-    memory_region_init_alias(&vms->lowram, NULL, "vexpress.lowmem",
+-                             machine->ram, 0, low_ram_size);
+-    memory_region_add_subregion(sysmem, 0x0, &vms->lowram);
+     memory_region_add_subregion(sysmem, 0x60000000, machine->ram);
  
-     if (event) {
-         /* Raise GPIO pin first if repeating a key */
--        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
-+        if (key->down && (s->pressed_keys & event)) {
-             for (i = 0; i <= 7; i++) {
-                 if (event & (1 << i)) {
-                     qemu_set_irq(s->out[i], 1);
-@@ -1143,17 +1128,15 @@ static void musicpal_key_event(void *opaque, int keycode)
-         }
-         for (i = 0; i <= 7; i++) {
-             if (event & (1 << i)) {
--                qemu_set_irq(s->out[i], !!(keycode & KEY_RELEASED));
-+                qemu_set_irq(s->out[i], !key->down);
-             }
-         }
--        if (keycode & KEY_RELEASED) {
--            s->pressed_keys &= ~event;
--        } else {
-+        if (key->down) {
-             s->pressed_keys |= event;
-+        } else {
-+            s->pressed_keys &= ~event;
-         }
-     }
--
--    s->kbd_extended = 0;
- }
- 
- static void musicpal_key_init(Object *obj)
-@@ -1162,20 +1145,27 @@ static void musicpal_key_init(Object *obj)
-     DeviceState *dev = DEVICE(sbd);
-     musicpal_key_state *s = MUSICPAL_KEY(dev);
- 
--    s->kbd_extended = 0;
-     s->pressed_keys = 0;
- 
-     qdev_init_gpio_out(dev, s->out, ARRAY_SIZE(s->out));
-+}
- 
--    qemu_add_kbd_event_handler(musicpal_key_event, s);
-+static const QemuInputHandler musicpal_key_handler = {
-+    .name = "musicpal_key",
-+    .mask = INPUT_EVENT_MASK_KEY,
-+    .event = musicpal_key_event,
-+};
-+
-+static void musicpal_key_realize(DeviceState *dev, Error **errp)
-+{
-+    qemu_input_handler_register(dev, &musicpal_key_handler);
- }
- 
- static const VMStateDescription musicpal_key_vmsd = {
-     .name = "musicpal_key",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(kbd_extended, musicpal_key_state),
-         VMSTATE_UINT32(pressed_keys, musicpal_key_state),
-         VMSTATE_END_OF_LIST()
-     }
-@@ -1186,6 +1176,7 @@ static void musicpal_key_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->vmsd = &musicpal_key_vmsd;
-+    dc->realize = musicpal_key_realize;
- }
- 
- static const TypeInfo musicpal_key_info = {
+     /* 0x1e000000 A9MPCore (SCU) private memory region */
 -- 
 2.34.1
 

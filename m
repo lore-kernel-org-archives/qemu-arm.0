@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i20-20020a05600c355400b0040839fcb217sm3520792wmq.8.2023.11.03.12.59.57
+        by smtp.gmail.com with ESMTPSA id p12-20020adfe60c000000b0032d886039easm2608394wrm.14.2023.11.03.13.00.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Nov 2023 13:00:00 -0700 (PDT)
+        Fri, 03 Nov 2023 13:00:07 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3C4AD65745;
-	Fri,  3 Nov 2023 19:59:57 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 03FEB6574A;
+	Fri,  3 Nov 2023 19:59:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -46,297 +46,227 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Michael Rolnik <mrolnik@gmail.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Luis Machado <luis.machado@linaro.org>
-Subject: [PATCH 06/29] tests/tcg: add an explicit gdbstub register tester
-Date: Fri,  3 Nov 2023 19:59:33 +0000
-Message-Id: <20231103195956.1998255-7-alex.bennee@linaro.org>
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 13/29] target/riscv: Use GDBFeature for dynamic XML
+Date: Fri,  3 Nov 2023 19:59:40 +0000
+Message-Id: <20231103195956.1998255-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
 References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kGrz/oPeWMLK
+X-TUID: E9gE9wYpX2xz
 
-We already do a couple of "info registers" for specific tests but this
-is a more comprehensive multiarch test. It also has some output
-helpful for debugging the gdbstub by showing which XML features are
-advertised and what the underlying register numbers are.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-My initial motivation was to see if there are any duplicate register
-names exposed via the gdbstub while I was reviewing the proposed
-register interface for TCG plugins.
+In preparation for a change to use GDBFeature as a parameter of
+gdb_register_coprocessor(), convert the internal representation of
+dynamic feature from plain XML to GDBFeature.
 
-Mismatches between the xml and remote-desc are reported for debugging
-but do not fail the test.
-
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Luis Machado <luis.machado@linaro.org>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20231025093128.33116-7-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231012170426.1335442-1-alex.bennee@linaro.org>
-
 ---
-v2
-  - remove python2 compat bits
-  - add SPDX header, clean up comment lines
-  - fix duplicate check
-  - use field 6 (Rmt Nr) instead of field 1 (Nr) for cross-check
-  - more useful output on finding a duplicates and missing regs
-  - handle non-XML targets cleanly
----
- tests/tcg/multiarch/Makefile.target           |  11 +-
- tests/tcg/multiarch/gdbstub/registers.py      | 188 ++++++++++++++++++
- .../multiarch/system/Makefile.softmmu-target  |  13 +-
- 3 files changed, 210 insertions(+), 2 deletions(-)
- create mode 100644 tests/tcg/multiarch/gdbstub/registers.py
+ target/riscv/cpu.h     |  5 +--
+ target/riscv/cpu.c     |  4 +--
+ target/riscv/gdbstub.c | 79 +++++++++++++++++++-----------------------
+ 3 files changed, 40 insertions(+), 48 deletions(-)
 
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index f3bfaf1a22..d31ba8d6ae 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -93,12 +93,21 @@ run-gdbstub-thread-breakpoint: testthread
- 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-thread-breakpoint.py, \
- 	hitting a breakpoint on non-main thread)
-+
-+run-gdbstub-registers: sha512
-+	$(call run-test, $@, $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
-+	checking register enumeration)
-+
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
- endif
- EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
--	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint
-+	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
-+	      run-gdbstub-registers
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index f8ffa5ee38..73ec1d3b79 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -24,6 +24,7 @@
+ #include "hw/registerfields.h"
+ #include "hw/qdev-properties.h"
+ #include "exec/cpu-defs.h"
++#include "exec/gdbstub.h"
+ #include "qemu/cpu-float.h"
+ #include "qom/object.h"
+ #include "qemu/int128.h"
+@@ -395,8 +396,8 @@ struct ArchCPU {
  
- # ARM Compatible Semi Hosting Tests
- #
-diff --git a/tests/tcg/multiarch/gdbstub/registers.py b/tests/tcg/multiarch/gdbstub/registers.py
-new file mode 100644
-index 0000000000..2aa0c30165
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/registers.py
-@@ -0,0 +1,188 @@
-+# Exercise the register functionality by exhaustively iterating
-+# through all supported registers on the system.
-+#
-+# This is launched via tests/guest-debug/run-test.py but you can also
-+# call it directly if using it for debugging/introspection:
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import gdb
-+import sys
-+import xml.etree.ElementTree as ET
-+
-+initial_vlen = 0
-+failcount = 0
-+
-+def report(cond, msg):
-+    "Report success/fail of test."
-+    if cond:
-+        print("PASS: %s" % (msg))
-+    else:
-+        print("FAIL: %s" % (msg))
-+        global failcount
-+        failcount += 1
-+
-+
-+def fetch_xml_regmap():
-+    """
-+    Iterate through the XML descriptions and validate.
-+
-+    We check for any duplicate registers and report them. Return a
-+    reg_map hash containing the names, regnums and initial values of
-+    all registers.
-+    """
-+
-+    # First check the XML descriptions we have sent. Most arches
-+    # support XML but a few of the ancient ones don't in which case we
-+    # need to gracefully fail.
-+
-+    try:
-+        xml = gdb.execute("maint print xml-tdesc", False, True)
-+    except (gdb.error):
-+        print("SKIP: target does not support XML")
-+        return None
-+
-+    total_regs = 0
-+    reg_map = {}
-+    frame = gdb.selected_frame()
-+
-+    tree = ET.fromstring(xml)
-+    for f in tree.findall("feature"):
-+        name = f.attrib["name"]
-+        regs = f.findall("reg")
-+
-+        total = len(regs)
-+        total_regs += total
-+        base = int(regs[0].attrib["regnum"])
-+        top = int(regs[-1].attrib["regnum"])
-+
-+        print(f"feature: {name} has {total} registers from {base} to {top}")
-+
-+        for r in regs:
-+            name = r.attrib["name"]
-+            regnum = int(r.attrib["regnum"])
-+            value = frame.read_register(name).__str__()
-+            entry = { "name": name, "initial": value, "regnum": regnum }
-+
-+            if name in reg_map:
-+                report(False, f"duplicate register {entry} vs {reg_map[name]}")
-+                continue
-+
-+            reg_map[name] = entry
-+
-+    # Validate we match
-+    report(total_regs == len(reg_map.keys()),
-+           f"counted all {total_regs} registers in XML")
-+
-+    return reg_map
-+
-+def crosscheck_remote_xml(reg_map):
-+    """
-+    Cross-check the list of remote-registers with the XML info.
-+    """
-+
-+    remote = gdb.execute("maint print remote-registers", False, True)
-+    r_regs = remote.split("\n")
-+
-+    total_regs = len(reg_map.keys())
-+    total_r_regs = 0
-+
-+    for r in r_regs:
-+        fields = r.split()
-+        # Some of the registers reported here are "pseudo" registers that
-+        # gdb invents based on actual registers so we need to filter them
-+        # out.
-+        if len(fields) == 8:
-+            r_name = fields[0]
-+            r_regnum = int(fields[6])
-+
-+            # check in the XML
-+            try:
-+                x_reg = reg_map[r_name]
-+                x_reg["seen"] = True
-+            except KeyError:
-+                report(False, "{r_name} not in XML description")
-+                continue
-+
-+            x_regnum = x_reg["regnum"]
-+            if r_regnum != x_regnum:
-+                report(False, f"{r_name} {r_regnum} == {x_regnum} (xml)")
-+            else:
-+                total_r_regs += 1
-+
-+    # Just print a mismatch in totals as gdb will filter out 64 bit
-+    # registers on a 32 bit machine. Also print what is missing to
-+    # help with debug.
-+    if total_regs != total_r_regs:
-+        print(f"xml-tdesc ({total_regs}) and remote-registers ({total_r_regs}) do not agree")
-+
-+        for x_key in reg_map.keys():
-+            x_reg = reg_map[x_key]
-+            if "seen" not in x_reg:
-+                print(f"{x_reg} wasn't seen in remote-registers")
-+
-+def complete_and_diff(reg_map):
-+    """
-+    Let the program run to (almost) completion and then iterate
-+    through all the registers we know about and report which ones have
-+    changed.
-+    """
-+    # Let the program get to the end and we can check what changed
-+    gdb.Breakpoint("_exit")
-+    gdb.execute("continue")
-+
-+    frame = gdb.selected_frame()
-+    changed = 0
-+
-+    for e in reg_map.values():
-+        name = e["name"]
-+        old_val = e["initial"]
-+
-+        try:
-+            new_val = frame.read_register(name).__str__()
-+        except:
-+            report(False, f"failed to read {name} at end of run")
-+            continue
-+
-+        if new_val != old_val:
-+            print(f"{name} changes from {old_val} to {new_val}")
-+            changed += 1
-+
-+    # as long as something changed we can be confident its working
-+    report(changed > 0, f"{changed} registers were changed")
-+
-+
-+def run_test():
-+    "Run through the tests"
-+
-+    reg_map = fetch_xml_regmap()
-+
-+    if reg_map is not None:
-+        crosscheck_remote_xml(reg_map)
-+        complete_and_diff(reg_map)
-+
-+
-+#
-+# This runs as the script it sourced (via -x, via run-test.py)
-+#
-+try:
-+    inferior = gdb.selected_inferior()
-+    arch = inferior.architecture()
-+    print("ATTACHED: %s" % arch.name())
-+except (gdb.error, AttributeError):
-+    print("SKIPPING (not connected)", file=sys.stderr)
-+    exit(0)
-+
-+if gdb.parse_and_eval('$pc') == 0:
-+    print("SKIP: PC not set")
-+    exit(0)
-+
-+try:
-+    run_test()
-+except (gdb.error):
-+    print ("GDB Exception: %s" % (sys.exc_info()[0]))
-+    failcount += 1
-+    pass
-+
-+print("All tests complete: %d failures" % failcount)
-+exit(failcount)
-diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
-index dee4f58dea..32dc0f9830 100644
---- a/tests/tcg/multiarch/system/Makefile.softmmu-target
-+++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
-@@ -48,9 +48,20 @@ run-gdbstub-untimely-packet: hello
- 	$(call quiet-command, \
- 		(! grep -Fq 'Packet instead of Ack, ignoring it' untimely-packet.gdb.err), \
- 		"GREP", file untimely-packet.gdb.err)
-+
-+run-gdbstub-registers: memory
-+	$(call run-test, $@, $(GDB_SCRIPT) \
-+		--gdb $(GDB) \
-+		--qemu $(QEMU) \
-+		--output $<.registers.gdb.out \
-+		--qargs \
-+		"-monitor none -display none -chardev file$(COMMA)path=$<.out$(COMMA)id=output $(QEMU_OPTS)" \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
-+	softmmu gdbstub support)
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
- endif
+     CPURISCVState env;
  
--MULTIARCH_RUNS += run-gdbstub-memory run-gdbstub-interrupt run-gdbstub-untimely-packet
-+MULTIARCH_RUNS += run-gdbstub-memory run-gdbstub-interrupt \
-+	run-gdbstub-untimely-packet run-gdbstub-registers
+-    char *dyn_csr_xml;
+-    char *dyn_vreg_xml;
++    GDBFeature dyn_csr_feature;
++    GDBFeature dyn_vreg_feature;
+ 
+     /* Configuration Settings */
+     RISCVCPUConfig cfg;
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index ac4a6c7eec..5200fba9b9 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -1421,9 +1421,9 @@ static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+     RISCVCPU *cpu = RISCV_CPU(cs);
+ 
+     if (strcmp(xmlname, "riscv-csr.xml") == 0) {
+-        return cpu->dyn_csr_xml;
++        return cpu->dyn_csr_feature.xml;
+     } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
+-        return cpu->dyn_vreg_xml;
++        return cpu->dyn_vreg_feature.xml;
+     }
+ 
+     return NULL;
+diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
+index 524bede865..a3ac0212d1 100644
+--- a/target/riscv/gdbstub.c
++++ b/target/riscv/gdbstub.c
+@@ -212,12 +212,13 @@ static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
+     return 0;
+ }
+ 
+-static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
++static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+-    GString *s = g_string_new(NULL);
++    GDBFeatureBuilder builder;
+     riscv_csr_predicate_fn predicate;
++    const char *name;
+     int bitsize = 16 << env->misa_mxl_max;
+     int i;
+ 
+@@ -230,9 +231,9 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
+         bitsize = 64;
+     }
+ 
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.csr\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_csr_feature,
++                             "org.gnu.gdb.riscv.csr", "riscv-csr.xml",
++                             base_reg);
+ 
+     for (i = 0; i < CSR_TABLE_SIZE; i++) {
+         if (env->priv_ver < csr_ops[i].min_priv_ver) {
+@@ -240,72 +241,64 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
+         }
+         predicate = csr_ops[i].predicate;
+         if (predicate && (predicate(env, i) == RISCV_EXCP_NONE)) {
+-            if (csr_ops[i].name) {
+-                g_string_append_printf(s, "<reg name=\"%s\"", csr_ops[i].name);
+-            } else {
+-                g_string_append_printf(s, "<reg name=\"csr%03x\"", i);
++            g_autofree char *dynamic_name = NULL;
++            name = csr_ops[i].name;
++            if (!name) {
++                dynamic_name = g_strdup_printf("csr%03x", i);
++                name = dynamic_name;
+             }
+-            g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
+-            g_string_append_printf(s, " regnum=\"%d\"/>", base_reg + i);
++
++            gdb_feature_builder_append_reg(&builder, name, bitsize, i,
++                                           "int", NULL);
+         }
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
+-
+-    cpu->dyn_csr_xml = g_string_free(s, false);
++    gdb_feature_builder_end(&builder);
+ 
+ #if !defined(CONFIG_USER_ONLY)
+     env->debugger = false;
+ #endif
+ 
+-    return CSR_TABLE_SIZE;
++    return &cpu->dyn_csr_feature;
+ }
+ 
+-static int ricsv_gen_dynamic_vector_xml(CPUState *cs, int base_reg)
++static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    g_autoptr(GString) ts = g_string_new("");
++    GDBFeatureBuilder builder;
+     int reg_width = cpu->cfg.vlen;
+-    int num_regs = 0;
+     int i;
+ 
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.vector\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_vreg_feature,
++                             "org.gnu.gdb.riscv.vector", "riscv-vector.xml",
++                             base_reg);
+ 
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+         int count = reg_width / vec_lanes[i].size;
+-        g_string_printf(ts, "%s", vec_lanes[i].id);
+-        g_string_append_printf(s,
+-                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+-                               ts->str, vec_lanes[i].gdb_type, count);
++        gdb_feature_builder_append_tag(
++            &builder, "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
++            vec_lanes[i].id, vec_lanes[i].gdb_type, count);
+     }
+ 
+     /* Define unions */
+-    g_string_append_printf(s, "<union id=\"riscv_vector\">");
++    gdb_feature_builder_append_tag(&builder, "<union id=\"riscv_vector\">");
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-        g_string_append_printf(s, "<field name=\"%c\" type=\"%s\"/>",
+-                               vec_lanes[i].suffix,
+-                               vec_lanes[i].id);
++        gdb_feature_builder_append_tag(&builder,
++                                       "<field name=\"%c\" type=\"%s\"/>",
++                                       vec_lanes[i].suffix, vec_lanes[i].id);
+     }
+-    g_string_append(s, "</union>");
++    gdb_feature_builder_append_tag(&builder, "</union>");
+ 
+     /* Define vector registers */
+     for (i = 0; i < 32; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"v%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" group=\"vector\""
+-                               " type=\"riscv_vector\"/>",
+-                               i, reg_width, base_reg++);
+-        num_regs++;
++        gdb_feature_builder_append_reg(&builder, g_strdup_printf("v%d", i),
++                                       reg_width, i, "riscv_vector", "vector");
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
++    gdb_feature_builder_end(&builder);
+ 
+-    cpu->dyn_vreg_xml = g_string_free(s, false);
+-    return num_regs;
++    return &cpu->dyn_vreg_feature;
+ }
+ 
+ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+@@ -320,10 +313,9 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+                                  32, "riscv-32bit-fpu.xml", 0);
+     }
+     if (env->misa_ext & RVV) {
+-        int base_reg = cs->gdb_num_regs;
+         gdb_register_coprocessor(cs, riscv_gdb_get_vector,
+                                  riscv_gdb_set_vector,
+-                                 ricsv_gen_dynamic_vector_xml(cs, base_reg),
++                                 ricsv_gen_dynamic_vector_feature(cs, cs->gdb_num_regs)->num_regs,
+                                  "riscv-vector.xml", 0);
+     }
+     switch (env->misa_mxl_max) {
+@@ -343,9 +335,8 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+     }
+ 
+     if (cpu->cfg.ext_icsr) {
+-        int base_reg = cs->gdb_num_regs;
+         gdb_register_coprocessor(cs, riscv_gdb_get_csr, riscv_gdb_set_csr,
+-                                 riscv_gen_dynamic_csr_xml(cs, base_reg),
++                                 riscv_gen_dynamic_csr_feature(cs, cs->gdb_num_regs)->num_regs,
+                                  "riscv-csr.xml", 0);
+     }
+ }
 -- 
 2.39.2

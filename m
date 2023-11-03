@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y23-20020a05600c341700b00406408dc788sm3402021wmp.44.2023.11.03.12.59.57
+        by smtp.gmail.com with ESMTPSA id i20-20020a05600c355400b0040839fcb217sm3520792wmq.8.2023.11.03.12.59.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Nov 2023 12:59:57 -0700 (PDT)
+        Fri, 03 Nov 2023 13:00:00 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id AAAC9656E5;
-	Fri,  3 Nov 2023 19:59:56 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 3C4AD65745;
+	Fri,  3 Nov 2023 19:59:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -45,145 +45,298 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Bin Meng <bin.meng@windriver.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>
-Subject: [PATCH 00/29] gdbstub and plugin read register and windows support
-Date: Fri,  3 Nov 2023 19:59:27 +0000
-Message-Id: <20231103195956.1998255-1-alex.bennee@linaro.org>
+	Michael Rolnik <mrolnik@gmail.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Luis Machado <luis.machado@linaro.org>
+Subject: [PATCH 06/29] tests/tcg: add an explicit gdbstub register tester
+Date: Fri,  3 Nov 2023 19:59:33 +0000
+Message-Id: <20231103195956.1998255-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
+References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /hMBIiMRXwPI
+X-TUID: kGrz/oPeWMLK
 
-Here are my final updates for the 8.2 cycle which I can hopefully
-merge if we get enough review. Aside from the usual tweaks and fixes
-there are two new features:
+We already do a couple of "info registers" for specific tests but this
+is a more comprehensive multiarch test. It also has some output
+helpful for debugging the gdbstub by showing which XML features are
+advertised and what the underlying register numbers are.
 
-TCG Plugin Register Access
+My initial motivation was to see if there are any duplicate register
+names exposed via the gdbstub while I was reviewing the proposed
+register interface for TCG plugins.
 
-This is based on Akihiko's previously posted series with some changes
-by myself. I wasn't keen on the plugin facing API so I've re-written
-it to use an opaque handle and hide the gdb details from the plugin. I
-think this allows for potential future improvements as well as being
-ready for up-coming heterogeneous support. The new API allowed for
-making the execlog register tracking a bit more flexible and able to
-track multiple registers.
+Mismatches between the xml and remote-desc are reported for debugging
+but do not fail the test.
 
-Windows Support
+Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Luis Machado <luis.machado@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231012170426.1335442-1-alex.bennee@linaro.org>
 
-This fairly late breaking patch finally adds support for Windows to
-the TCG plugins subsystem. I'm pretty pleased with Greg's approach
-which improves on previous attempts by avoiding re-implementing a
-linker for POSIX targets. I don't have access to Windows though so I'm
-calling on Windows users to test the solution.
-
-The following patches still need review:
-
-  contrib/plugins: extend execlog to track register changes
-  plugins: add an API to read registers
-  gdbstub: expose api to find registers
-  tests/avocado: update the tcg_plugins test
-  tests/tcg: add an explicit gdbstub register tester
-  target/arm: hide aliased MIDR from gdbstub
-  target/arm: hide all versions of DBGD[RS]AR from gdbstub
-  target/arm: hide the 32bit version of PAR from gdbstub
-  gdb-xml: fix duplicate register in arm-neon.xml
-
-Akihiko Odaki (16):
-  default-configs: Add TARGET_XML_FILES definition
-  gdbstub: Add num_regs member to GDBFeature
-  gdbstub: Introduce gdb_find_static_feature()
-  gdbstub: Introduce GDBFeatureBuilder
-  target/arm: Use GDBFeature for dynamic XML
-  target/ppc: Use GDBFeature for dynamic XML
-  target/riscv: Use GDBFeature for dynamic XML
-  gdbstub: Use GDBFeature for gdb_register_coprocessor
-  gdbstub: Use GDBFeature for GDBRegisterState
-  gdbstub: Change gdb_get_reg_cb and gdb_set_reg_cb
-  gdbstub: Simplify XML lookup
-  gdbstub: Infer number of core registers from XML
-  hw/core/cpu: Remove gdb_get_dynamic_xml member
-  gdbstub: Add members to identify registers to GDBFeature
-  cpu: Call plugin hooks only when ready
-  plugins: Use different helpers when reading registers
-
-Alex Bennée (9):
-  gdb-xml: fix duplicate register in arm-neon.xml
-  target/arm: hide the 32bit version of PAR from gdbstub
-  target/arm: hide all versions of DBGD[RS]AR from gdbstub
-  target/arm: hide aliased MIDR from gdbstub
-  tests/tcg: add an explicit gdbstub register tester
-  tests/avocado: update the tcg_plugins test
-  gdbstub: expose api to find registers
-  plugins: add an API to read registers
-  contrib/plugins: extend execlog to track register changes
-
-Greg Manning (4):
-  plugins: add dllexport and dllimport to api funcs
-  plugins: make test/example plugins work on windows
-  plugins: disable lockstep plugin on windows
-  plugins: allow plugins to be enabled on windows
-
- docs/devel/tcg-plugins.rst                    |  10 +-
- configure                                     |   9 +-
- configs/targets/loongarch64-linux-user.mak    |   1 +
- meson.build                                   |   5 +
- accel/tcg/plugin-helpers.h                    |   3 +-
- include/exec/gdbstub.h                        | 121 +++++++-
- include/hw/core/cpu.h                         |   7 +-
- include/qemu/plugin.h                         |   1 +
- include/qemu/qemu-plugin.h                    | 104 ++++++-
- target/arm/cpu.h                              |  27 +-
- target/arm/internals.h                        |  14 +-
- target/hexagon/internal.h                     |   4 +-
- target/microblaze/cpu.h                       |   4 +-
- target/ppc/cpu-qom.h                          |   4 +-
- target/ppc/cpu.h                              |   2 -
- target/riscv/cpu.h                            |   5 +-
- target/s390x/cpu.h                            |   2 -
- accel/tcg/plugin-gen.c                        |  43 ++-
- contrib/plugins/execlog.c                     | 180 +++++++++---
- contrib/plugins/win32_linker.c                |  34 +++
- cpu-target.c                                  |  11 -
- gdbstub/gdbstub.c                             | 273 +++++++++++++-----
- hw/core/cpu-common.c                          |  15 +-
- plugins/api.c                                 | 114 +++++++-
- target/arm/cpu.c                              |   2 -
- target/arm/cpu64.c                            |   1 -
- target/arm/debug_helper.c                     |   8 +-
- target/arm/gdbstub.c                          | 230 +++++++--------
- target/arm/gdbstub64.c                        | 122 ++++----
- target/arm/helper.c                           |   4 +-
- target/avr/cpu.c                              |   1 -
- target/hexagon/cpu.c                          |   4 +-
- target/hexagon/gdbstub.c                      |  10 +-
- target/i386/cpu.c                             |   2 -
- target/loongarch/cpu.c                        |   2 -
- target/loongarch/gdbstub.c                    |  13 +-
- target/m68k/cpu.c                             |   1 -
- target/m68k/helper.c                          |  26 +-
- target/microblaze/cpu.c                       |   6 +-
- target/microblaze/gdbstub.c                   |   9 +-
- target/ppc/cpu_init.c                         |   7 -
- target/ppc/gdbstub.c                          | 114 ++++----
- target/riscv/cpu.c                            |  15 -
- target/riscv/gdbstub.c                        | 139 +++++----
- target/rx/cpu.c                               |   1 -
- target/s390x/cpu.c                            |   1 -
- target/s390x/gdbstub.c                        | 105 ++++---
- contrib/plugins/Makefile                      |  26 +-
- gdb-xml/arm-neon.xml                          |   2 +-
- plugins/meson.build                           |  17 ++
- plugins/qemu-plugins.symbols                  |   2 +
- scripts/feature_to_c.py                       |  58 +++-
- tests/avocado/tcg_plugins.py                  |  28 +-
- tests/plugin/meson.build                      |  14 +-
+---
+v2
+  - remove python2 compat bits
+  - add SPDX header, clean up comment lines
+  - fix duplicate check
+  - use field 6 (Rmt Nr) instead of field 1 (Nr) for cross-check
+  - more useful output on finding a duplicates and missing regs
+  - handle non-XML targets cleanly
+---
  tests/tcg/multiarch/Makefile.target           |  11 +-
- tests/tcg/multiarch/gdbstub/registers.py      | 188 ++++++++++++
+ tests/tcg/multiarch/gdbstub/registers.py      | 188 ++++++++++++++++++
  .../multiarch/system/Makefile.softmmu-target  |  13 +-
- 57 files changed, 1577 insertions(+), 598 deletions(-)
- create mode 100644 contrib/plugins/win32_linker.c
+ 3 files changed, 210 insertions(+), 2 deletions(-)
  create mode 100644 tests/tcg/multiarch/gdbstub/registers.py
 
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index f3bfaf1a22..d31ba8d6ae 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -93,12 +93,21 @@ run-gdbstub-thread-breakpoint: testthread
+ 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
+ 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-thread-breakpoint.py, \
+ 	hitting a breakpoint on non-main thread)
++
++run-gdbstub-registers: sha512
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
++	checking register enumeration)
++
+ else
+ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
+ endif
+ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
+-	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint
++	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
++	      run-gdbstub-registers
+ 
+ # ARM Compatible Semi Hosting Tests
+ #
+diff --git a/tests/tcg/multiarch/gdbstub/registers.py b/tests/tcg/multiarch/gdbstub/registers.py
+new file mode 100644
+index 0000000000..2aa0c30165
+--- /dev/null
++++ b/tests/tcg/multiarch/gdbstub/registers.py
+@@ -0,0 +1,188 @@
++# Exercise the register functionality by exhaustively iterating
++# through all supported registers on the system.
++#
++# This is launched via tests/guest-debug/run-test.py but you can also
++# call it directly if using it for debugging/introspection:
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import gdb
++import sys
++import xml.etree.ElementTree as ET
++
++initial_vlen = 0
++failcount = 0
++
++def report(cond, msg):
++    "Report success/fail of test."
++    if cond:
++        print("PASS: %s" % (msg))
++    else:
++        print("FAIL: %s" % (msg))
++        global failcount
++        failcount += 1
++
++
++def fetch_xml_regmap():
++    """
++    Iterate through the XML descriptions and validate.
++
++    We check for any duplicate registers and report them. Return a
++    reg_map hash containing the names, regnums and initial values of
++    all registers.
++    """
++
++    # First check the XML descriptions we have sent. Most arches
++    # support XML but a few of the ancient ones don't in which case we
++    # need to gracefully fail.
++
++    try:
++        xml = gdb.execute("maint print xml-tdesc", False, True)
++    except (gdb.error):
++        print("SKIP: target does not support XML")
++        return None
++
++    total_regs = 0
++    reg_map = {}
++    frame = gdb.selected_frame()
++
++    tree = ET.fromstring(xml)
++    for f in tree.findall("feature"):
++        name = f.attrib["name"]
++        regs = f.findall("reg")
++
++        total = len(regs)
++        total_regs += total
++        base = int(regs[0].attrib["regnum"])
++        top = int(regs[-1].attrib["regnum"])
++
++        print(f"feature: {name} has {total} registers from {base} to {top}")
++
++        for r in regs:
++            name = r.attrib["name"]
++            regnum = int(r.attrib["regnum"])
++            value = frame.read_register(name).__str__()
++            entry = { "name": name, "initial": value, "regnum": regnum }
++
++            if name in reg_map:
++                report(False, f"duplicate register {entry} vs {reg_map[name]}")
++                continue
++
++            reg_map[name] = entry
++
++    # Validate we match
++    report(total_regs == len(reg_map.keys()),
++           f"counted all {total_regs} registers in XML")
++
++    return reg_map
++
++def crosscheck_remote_xml(reg_map):
++    """
++    Cross-check the list of remote-registers with the XML info.
++    """
++
++    remote = gdb.execute("maint print remote-registers", False, True)
++    r_regs = remote.split("\n")
++
++    total_regs = len(reg_map.keys())
++    total_r_regs = 0
++
++    for r in r_regs:
++        fields = r.split()
++        # Some of the registers reported here are "pseudo" registers that
++        # gdb invents based on actual registers so we need to filter them
++        # out.
++        if len(fields) == 8:
++            r_name = fields[0]
++            r_regnum = int(fields[6])
++
++            # check in the XML
++            try:
++                x_reg = reg_map[r_name]
++                x_reg["seen"] = True
++            except KeyError:
++                report(False, "{r_name} not in XML description")
++                continue
++
++            x_regnum = x_reg["regnum"]
++            if r_regnum != x_regnum:
++                report(False, f"{r_name} {r_regnum} == {x_regnum} (xml)")
++            else:
++                total_r_regs += 1
++
++    # Just print a mismatch in totals as gdb will filter out 64 bit
++    # registers on a 32 bit machine. Also print what is missing to
++    # help with debug.
++    if total_regs != total_r_regs:
++        print(f"xml-tdesc ({total_regs}) and remote-registers ({total_r_regs}) do not agree")
++
++        for x_key in reg_map.keys():
++            x_reg = reg_map[x_key]
++            if "seen" not in x_reg:
++                print(f"{x_reg} wasn't seen in remote-registers")
++
++def complete_and_diff(reg_map):
++    """
++    Let the program run to (almost) completion and then iterate
++    through all the registers we know about and report which ones have
++    changed.
++    """
++    # Let the program get to the end and we can check what changed
++    gdb.Breakpoint("_exit")
++    gdb.execute("continue")
++
++    frame = gdb.selected_frame()
++    changed = 0
++
++    for e in reg_map.values():
++        name = e["name"]
++        old_val = e["initial"]
++
++        try:
++            new_val = frame.read_register(name).__str__()
++        except:
++            report(False, f"failed to read {name} at end of run")
++            continue
++
++        if new_val != old_val:
++            print(f"{name} changes from {old_val} to {new_val}")
++            changed += 1
++
++    # as long as something changed we can be confident its working
++    report(changed > 0, f"{changed} registers were changed")
++
++
++def run_test():
++    "Run through the tests"
++
++    reg_map = fetch_xml_regmap()
++
++    if reg_map is not None:
++        crosscheck_remote_xml(reg_map)
++        complete_and_diff(reg_map)
++
++
++#
++# This runs as the script it sourced (via -x, via run-test.py)
++#
++try:
++    inferior = gdb.selected_inferior()
++    arch = inferior.architecture()
++    print("ATTACHED: %s" % arch.name())
++except (gdb.error, AttributeError):
++    print("SKIPPING (not connected)", file=sys.stderr)
++    exit(0)
++
++if gdb.parse_and_eval('$pc') == 0:
++    print("SKIP: PC not set")
++    exit(0)
++
++try:
++    run_test()
++except (gdb.error):
++    print ("GDB Exception: %s" % (sys.exc_info()[0]))
++    failcount += 1
++    pass
++
++print("All tests complete: %d failures" % failcount)
++exit(failcount)
+diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
+index dee4f58dea..32dc0f9830 100644
+--- a/tests/tcg/multiarch/system/Makefile.softmmu-target
++++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
+@@ -48,9 +48,20 @@ run-gdbstub-untimely-packet: hello
+ 	$(call quiet-command, \
+ 		(! grep -Fq 'Packet instead of Ack, ignoring it' untimely-packet.gdb.err), \
+ 		"GREP", file untimely-packet.gdb.err)
++
++run-gdbstub-registers: memory
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(GDB) \
++		--qemu $(QEMU) \
++		--output $<.registers.gdb.out \
++		--qargs \
++		"-monitor none -display none -chardev file$(COMMA)path=$<.out$(COMMA)id=output $(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
++	softmmu gdbstub support)
+ else
+ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
+ endif
+ 
+-MULTIARCH_RUNS += run-gdbstub-memory run-gdbstub-interrupt run-gdbstub-untimely-packet
++MULTIARCH_RUNS += run-gdbstub-memory run-gdbstub-interrupt \
++	run-gdbstub-untimely-packet run-gdbstub-registers
 -- 
 2.39.2

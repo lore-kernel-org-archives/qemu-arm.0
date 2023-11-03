@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r18-20020a05600c35d200b00401e32b25adsm3557288wmq.4.2023.11.03.12.59.57
+        by smtp.gmail.com with ESMTPSA id y23-20020a05600c341700b00406408dc788sm3402021wmp.44.2023.11.03.12.59.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 03 Nov 2023 12:59:57 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BDC2A65740;
+	by draig.lan (Postfix) with ESMTP id AAAC9656E5;
 	Fri,  3 Nov 2023 19:59:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -45,39 +45,145 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Bin Meng <bin.meng@windriver.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 01/29] default-configs: Add TARGET_XML_FILES definition
-Date: Fri,  3 Nov 2023 19:59:28 +0000
-Message-Id: <20231103195956.1998255-2-alex.bennee@linaro.org>
+	Michael Rolnik <mrolnik@gmail.com>
+Subject: [PATCH 00/29] gdbstub and plugin read register and windows support
+Date: Fri,  3 Nov 2023 19:59:27 +0000
+Message-Id: <20231103195956.1998255-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
-References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: YOZQAubRroid
+X-TUID: /hMBIiMRXwPI
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Here are my final updates for the 8.2 cycle which I can hopefully
+merge if we get enough review. Aside from the usual tweaks and fixes
+there are two new features:
 
-loongarch64-linux-user has references to XML files so include them.
+TCG Plugin Register Access
 
-Fixes: d32688ecdb ("default-configs: Add loongarch linux-user support")
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20231030054834.39145-6-akihiko.odaki@daynix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- configs/targets/loongarch64-linux-user.mak | 1 +
- 1 file changed, 1 insertion(+)
+This is based on Akihiko's previously posted series with some changes
+by myself. I wasn't keen on the plugin facing API so I've re-written
+it to use an opaque handle and hide the gdb details from the plugin. I
+think this allows for potential future improvements as well as being
+ready for up-coming heterogeneous support. The new API allowed for
+making the execlog register tracking a bit more flexible and able to
+track multiple registers.
 
-diff --git a/configs/targets/loongarch64-linux-user.mak b/configs/targets/loongarch64-linux-user.mak
-index 7d1b964020..43b8a2160f 100644
---- a/configs/targets/loongarch64-linux-user.mak
-+++ b/configs/targets/loongarch64-linux-user.mak
-@@ -1,3 +1,4 @@
- # Default configuration for loongarch64-linux-user
- TARGET_ARCH=loongarch64
- TARGET_BASE_ARCH=loongarch
-+TARGET_XML_FILES=gdb-xml/loongarch-base32.xml gdb-xml/loongarch-base64.xml gdb-xml/loongarch-fpu.xml
+Windows Support
+
+This fairly late breaking patch finally adds support for Windows to
+the TCG plugins subsystem. I'm pretty pleased with Greg's approach
+which improves on previous attempts by avoiding re-implementing a
+linker for POSIX targets. I don't have access to Windows though so I'm
+calling on Windows users to test the solution.
+
+The following patches still need review:
+
+  contrib/plugins: extend execlog to track register changes
+  plugins: add an API to read registers
+  gdbstub: expose api to find registers
+  tests/avocado: update the tcg_plugins test
+  tests/tcg: add an explicit gdbstub register tester
+  target/arm: hide aliased MIDR from gdbstub
+  target/arm: hide all versions of DBGD[RS]AR from gdbstub
+  target/arm: hide the 32bit version of PAR from gdbstub
+  gdb-xml: fix duplicate register in arm-neon.xml
+
+Akihiko Odaki (16):
+  default-configs: Add TARGET_XML_FILES definition
+  gdbstub: Add num_regs member to GDBFeature
+  gdbstub: Introduce gdb_find_static_feature()
+  gdbstub: Introduce GDBFeatureBuilder
+  target/arm: Use GDBFeature for dynamic XML
+  target/ppc: Use GDBFeature for dynamic XML
+  target/riscv: Use GDBFeature for dynamic XML
+  gdbstub: Use GDBFeature for gdb_register_coprocessor
+  gdbstub: Use GDBFeature for GDBRegisterState
+  gdbstub: Change gdb_get_reg_cb and gdb_set_reg_cb
+  gdbstub: Simplify XML lookup
+  gdbstub: Infer number of core registers from XML
+  hw/core/cpu: Remove gdb_get_dynamic_xml member
+  gdbstub: Add members to identify registers to GDBFeature
+  cpu: Call plugin hooks only when ready
+  plugins: Use different helpers when reading registers
+
+Alex Bennée (9):
+  gdb-xml: fix duplicate register in arm-neon.xml
+  target/arm: hide the 32bit version of PAR from gdbstub
+  target/arm: hide all versions of DBGD[RS]AR from gdbstub
+  target/arm: hide aliased MIDR from gdbstub
+  tests/tcg: add an explicit gdbstub register tester
+  tests/avocado: update the tcg_plugins test
+  gdbstub: expose api to find registers
+  plugins: add an API to read registers
+  contrib/plugins: extend execlog to track register changes
+
+Greg Manning (4):
+  plugins: add dllexport and dllimport to api funcs
+  plugins: make test/example plugins work on windows
+  plugins: disable lockstep plugin on windows
+  plugins: allow plugins to be enabled on windows
+
+ docs/devel/tcg-plugins.rst                    |  10 +-
+ configure                                     |   9 +-
+ configs/targets/loongarch64-linux-user.mak    |   1 +
+ meson.build                                   |   5 +
+ accel/tcg/plugin-helpers.h                    |   3 +-
+ include/exec/gdbstub.h                        | 121 +++++++-
+ include/hw/core/cpu.h                         |   7 +-
+ include/qemu/plugin.h                         |   1 +
+ include/qemu/qemu-plugin.h                    | 104 ++++++-
+ target/arm/cpu.h                              |  27 +-
+ target/arm/internals.h                        |  14 +-
+ target/hexagon/internal.h                     |   4 +-
+ target/microblaze/cpu.h                       |   4 +-
+ target/ppc/cpu-qom.h                          |   4 +-
+ target/ppc/cpu.h                              |   2 -
+ target/riscv/cpu.h                            |   5 +-
+ target/s390x/cpu.h                            |   2 -
+ accel/tcg/plugin-gen.c                        |  43 ++-
+ contrib/plugins/execlog.c                     | 180 +++++++++---
+ contrib/plugins/win32_linker.c                |  34 +++
+ cpu-target.c                                  |  11 -
+ gdbstub/gdbstub.c                             | 273 +++++++++++++-----
+ hw/core/cpu-common.c                          |  15 +-
+ plugins/api.c                                 | 114 +++++++-
+ target/arm/cpu.c                              |   2 -
+ target/arm/cpu64.c                            |   1 -
+ target/arm/debug_helper.c                     |   8 +-
+ target/arm/gdbstub.c                          | 230 +++++++--------
+ target/arm/gdbstub64.c                        | 122 ++++----
+ target/arm/helper.c                           |   4 +-
+ target/avr/cpu.c                              |   1 -
+ target/hexagon/cpu.c                          |   4 +-
+ target/hexagon/gdbstub.c                      |  10 +-
+ target/i386/cpu.c                             |   2 -
+ target/loongarch/cpu.c                        |   2 -
+ target/loongarch/gdbstub.c                    |  13 +-
+ target/m68k/cpu.c                             |   1 -
+ target/m68k/helper.c                          |  26 +-
+ target/microblaze/cpu.c                       |   6 +-
+ target/microblaze/gdbstub.c                   |   9 +-
+ target/ppc/cpu_init.c                         |   7 -
+ target/ppc/gdbstub.c                          | 114 ++++----
+ target/riscv/cpu.c                            |  15 -
+ target/riscv/gdbstub.c                        | 139 +++++----
+ target/rx/cpu.c                               |   1 -
+ target/s390x/cpu.c                            |   1 -
+ target/s390x/gdbstub.c                        | 105 ++++---
+ contrib/plugins/Makefile                      |  26 +-
+ gdb-xml/arm-neon.xml                          |   2 +-
+ plugins/meson.build                           |  17 ++
+ plugins/qemu-plugins.symbols                  |   2 +
+ scripts/feature_to_c.py                       |  58 +++-
+ tests/avocado/tcg_plugins.py                  |  28 +-
+ tests/plugin/meson.build                      |  14 +-
+ tests/tcg/multiarch/Makefile.target           |  11 +-
+ tests/tcg/multiarch/gdbstub/registers.py      | 188 ++++++++++++
+ .../multiarch/system/Makefile.softmmu-target  |  13 +-
+ 57 files changed, 1577 insertions(+), 598 deletions(-)
+ create mode 100644 contrib/plugins/win32_linker.c
+ create mode 100644 tests/tcg/multiarch/gdbstub/registers.py
+
 -- 
 2.39.2

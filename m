@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id j20-20020a5d4534000000b0032dc74c093dsm1333423wra.103.2023.11.03.13.06.04
+        by smtp.gmail.com with ESMTPSA id h3-20020a5d5043000000b0032dba85ea1bsm2636745wrt.75.2023.11.03.13.06.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 03 Nov 2023 13:06:05 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 09F0065751;
-	Fri,  3 Nov 2023 19:59:59 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id CC2FB6574F;
+	Fri,  3 Nov 2023 19:59:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -47,165 +47,194 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Michael Rolnik <mrolnik@gmail.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 21/29] gdbstub: expose api to find registers
-Date: Fri,  3 Nov 2023 19:59:48 +0000
-Message-Id: <20231103195956.1998255-22-alex.bennee@linaro.org>
+Subject: [PATCH 19/29] hw/core/cpu: Remove gdb_get_dynamic_xml member
+Date: Fri,  3 Nov 2023 19:59:46 +0000
+Message-Id: <20231103195956.1998255-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
 References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bicv4Lh5F/rL
+X-TUID: UsBlKLrHpuYN
 
-Expose an internal API to QEMU to find groups of registers. It returns
-a list containing the details required to called gdb_read_register().
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Based-on: <20231025093128.33116-15-akihiko.odaki@daynix.com>
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+This function is no longer used.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231025093128.33116-13-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-vAJB:
+ include/hw/core/cpu.h |  4 ----
+ target/arm/cpu.h      |  6 ------
+ target/ppc/cpu.h      |  1 -
+ target/arm/cpu.c      |  1 -
+ target/arm/gdbstub.c  | 18 ------------------
+ target/ppc/cpu_init.c |  3 ---
+ target/ppc/gdbstub.c  | 10 ----------
+ target/riscv/cpu.c    | 14 --------------
+ 8 files changed, 57 deletions(-)
 
-This principle difference is the find registers is a single call which
-can return a) multiple registers and b) is agnostic to the gdb
-feature. This is because I haven't so far found any duplicate
-registers in the system so I thing the regname by itself should be
-enough. However I do expose the gdb feature name in case the caller
-wants to do some additional filtering.
----
- include/exec/gdbstub.h | 47 +++++++++++++++++++++++++++++++++
- gdbstub/gdbstub.c      | 59 +++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 105 insertions(+), 1 deletion(-)
-
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index da9ddfe54c..b201eb4b84 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -111,6 +111,53 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
-  */
- const GDBFeature *gdb_find_static_feature(const char *xmlname);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 9a771d682f..e4d28e09e8 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -134,9 +134,6 @@ struct SysemuCPUOps;
+  *           before the insn which triggers a watchpoint rather than after it.
+  * @gdb_arch_name: Optional callback that returns the architecture name known
+  * to GDB. The caller must free the returned string with g_free.
+- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
+- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
+- *   or NULL if the CPU doesn't have a dynamically generated content for it.
+  * @disas_set_info: Setup architecture specific components of disassembly info
+  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
+  * address before attempting to match it against watchpoints.
+@@ -167,7 +164,6 @@ struct CPUClass {
  
-+/**
-+ * gdb_find_feature() - Find a feature associated with a CPU.
-+ * @cpu: The CPU associated with the feature.
-+ * @name: The feature's name.
-+ *
-+ * Return: The feature's number.
-+ */
-+int gdb_find_feature(CPUState *cpu, const char *name);
-+
-+/**
-+ * gdb_find_feature_register() - Find a register associated with a CPU.
-+ * @cpu: The CPU associated with the register.
-+ * @feature: The feature's number returned by gdb_find_feature().
-+ * @name: The register's name.
-+ *
-+ * Return: The register's number.
-+ */
-+int gdb_find_feature_register(CPUState *cpu, int feature, const char *name);
-+
-+/**
-+ * gdb_read_register() - Read a register associated with a CPU.
-+ * @cpu: The CPU associated with the register.
-+ * @buf: The buffer that the read register will be appended to.
-+ * @reg: The register's number returned by gdb_find_feature_register().
-+ *
-+ * Return: The number of read bytes.
-+ */
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-+
-+/**
-+ * typedef GDBRegDesc - a register description from gdbstub
-+ */
-+typedef struct {
-+    int gdb_reg;
-+    const char *name;
-+    const char *feature_name;
-+} GDBRegDesc;
-+
-+/**
-+ * gdb_find_registers() - Return list of registers matching pattern
-+ * @cpu: The CPU being searched
-+ * @reg_pattern: the pattern being searched for
-+ *
-+ * Returns a GArray of GDBRegDesc, caller frees
-+ */
-+GArray *gdb_find_registers(CPUState *cpu, const char *reg_pattern);
-+
- void gdb_set_stop_cpu(CPUState *cpu);
+     const char *gdb_core_xml_file;
+     const gchar * (*gdb_arch_name)(CPUState *cpu);
+-    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
  
- /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 7d7d887817..45882d1a6f 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -490,7 +490,64 @@ const GDBFeature *gdb_find_static_feature(const char *xmlname)
-     g_assert_not_reached();
+     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
+ 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 2549681367..ad0940dc57 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1137,12 +1137,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+ int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ 
+-/* Returns the dynamically generated XML for the gdb stub.
+- * Returns a pointer to the XML contents for the specified XML file or NULL
+- * if the XML name doesn't match the predefined one.
+- */
+-const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
+-
+ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                              int cpuid, DumpState *s);
+ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index 848062bc9f..650e6ece70 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -1384,7 +1384,6 @@ int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
+ #ifndef CONFIG_USER_ONLY
+ hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+-const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
+ #endif
+ int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                                int cpuid, DumpState *s);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index a18b832c9a..9de8dd7599 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2490,7 +2490,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->sysemu_ops = &arm_sysemu_ops;
+ #endif
+     cc->gdb_arch_name = arm_gdb_arch_name;
+-    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
+     cc->gdb_stop_before_watchpoint = true;
+     cc->disas_set_info = arm_disas_set_info;
+ 
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 059d84f98e..a3bb73cfa7 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -474,24 +474,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
+ #endif
+ #endif /* CONFIG_TCG */
+ 
+-const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-
+-    if (strcmp(xmlname, "system-registers.xml") == 0) {
+-        return cpu->dyn_sysreg_feature.desc.xml;
+-    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
+-        return cpu->dyn_svereg_feature.desc.xml;
+-    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
+-        return cpu->dyn_m_systemreg_feature.desc.xml;
+-#ifndef CONFIG_USER_ONLY
+-    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
+-        return cpu->dyn_m_secextreg_feature.desc.xml;
+-#endif
+-    }
+-    return NULL;
+-}
+-
+ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+ {
+     CPUState *cs = CPU(cpu);
+diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+index a0178c3ce8..909d753b02 100644
+--- a/target/ppc/cpu_init.c
++++ b/target/ppc/cpu_init.c
+@@ -7380,9 +7380,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+ #endif
+ 
+     cc->gdb_num_core_regs = 71;
+-#ifndef CONFIG_USER_ONLY
+-    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
+-#endif
+ #ifdef USE_APPLE_GDB
+     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
+     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
+diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+index 8ca37b6bf9..f47878a67b 100644
+--- a/target/ppc/gdbstub.c
++++ b/target/ppc/gdbstub.c
+@@ -342,16 +342,6 @@ static void gdb_gen_spr_feature(CPUState *cs)
+ 
+     gdb_feature_builder_end(&builder);
+ }
+-
+-const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
+-{
+-    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
+-
+-    if (strcmp(xml_name, "power-spr.xml") == 0) {
+-        return pcc->gdb_spr.xml;
+-    }
+-    return NULL;
+-}
+ #endif
+ 
+ #if !defined(CONFIG_USER_ONLY)
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 00518df497..aee422c497 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -1416,19 +1416,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
+     }
  }
  
--static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-+int gdb_find_feature(CPUState *cpu, const char *name)
-+{
-+    GDBRegisterState *r;
-+
-+    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+        if (!strcmp(name, r->feature->name)) {
-+            return i;
-+        }
-+    }
-+
-+    return -1;
-+}
-+
-+int gdb_find_feature_register(CPUState *cpu, int feature, const char *name)
-+{
-+    GDBRegisterState *r;
-+
-+    r = &g_array_index(cpu->gdb_regs, GDBRegisterState, feature);
-+
-+    for (int i = 0; i < r->feature->num_regs; i++) {
-+        if (r->feature->regs[i] && !strcmp(name, r->feature->regs[i])) {
-+            return r->base_reg + i;
-+        }
-+    }
-+
-+    return -1;
-+}
-+
-+GArray *gdb_find_registers(CPUState *cpu, const char *reg_pattern)
-+{
-+    g_autoptr(GPatternSpec) pat = g_pattern_spec_new(reg_pattern);
-+    GArray *results = g_array_new(true, true, sizeof(GDBRegDesc));
-+
-+    /* registers are only available once the CPU is initialised */
-+    if (!cpu->gdb_regs) {
-+        return results;
-+    }
-+
-+    for (int f = 0; f < cpu->gdb_regs->len; f++) {
-+        GDBRegisterState *r = &g_array_index(cpu->gdb_regs, GDBRegisterState, f);
-+        for (int i = 0; i < r->feature->num_regs; i++) {
-+            const char *name = r->feature->regs[i];
-+            if (name && g_pattern_match_string(pat, name)) {
-+                GDBRegDesc desc = {
-+                    r->base_reg + i,
-+                    name,
-+                    r->feature->name
-+                };
-+                g_array_append_val(results, desc);
-+            }
-+        }
-+    }
-+
-+    return results;
-+}
-+
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+-static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+-{
+-    RISCVCPU *cpu = RISCV_CPU(cs);
+-
+-    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
+-        return cpu->dyn_csr_feature.xml;
+-    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
+-        return cpu->dyn_vreg_feature.xml;
+-    }
+-
+-    return NULL;
+-}
+-
+ #ifndef CONFIG_USER_ONLY
+ static int64_t riscv_get_arch_id(CPUState *cs)
  {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-     GDBRegisterState *r;
+@@ -1582,7 +1569,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+     cc->get_arch_id = riscv_get_arch_id;
+ #endif
+     cc->gdb_arch_name = riscv_gdb_arch_name;
+-    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
+ 
+     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
+                               cpu_set_mvendorid, NULL, NULL);
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q6-20020a05600c2e4600b003feae747ff2sm3388427wmf.35.2023.11.03.13.00.01
+        by smtp.gmail.com with ESMTPSA id l41-20020a05600c1d2900b004083a105f27sm3551821wms.26.2023.11.03.13.00.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 03 Nov 2023 13:00:07 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C276665749;
-	Fri,  3 Nov 2023 19:59:57 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 8AEC765756;
+	Fri,  3 Nov 2023 19:59:59 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -46,525 +46,396 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Michael Rolnik <mrolnik@gmail.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 11/29] target/arm: Use GDBFeature for dynamic XML
-Date: Fri,  3 Nov 2023 19:59:38 +0000
-Message-Id: <20231103195956.1998255-12-alex.bennee@linaro.org>
+	Greg Manning <gmanning@rapitasystems.com>
+Subject: [PATCH 26/29] plugins: add dllexport and dllimport to api funcs
+Date: Fri,  3 Nov 2023 19:59:53 +0000
+Message-Id: <20231103195956.1998255-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
 References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: mcm5FuL06xFp
+X-TUID: nL8Olk4NInVm
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Greg Manning <gmanning@rapitasystems.com>
 
-In preparation for a change to use GDBFeature as a parameter of
-gdb_register_coprocessor(), convert the internal representation of
-dynamic feature from plain XML to GDBFeature.
+In qemu-plugin.h, mark all API functions as __declspec(dllexport) when
+compiling the executables, and as __declspec(dllimport) when being used
+to compile plugins against.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20231025093128.33116-5-akihiko.odaki@daynix.com>
+Signed-off-by: Greg Manning <gmanning@rapitasystems.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231102172053.17692-2-gmanning@rapitasystems.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu.h       |  21 +++---
- target/arm/internals.h |   2 +-
- target/arm/gdbstub.c   | 142 ++++++++++++++++++++---------------------
- target/arm/gdbstub64.c |  95 +++++++++++++--------------
- 4 files changed, 123 insertions(+), 137 deletions(-)
+ include/qemu/qemu-plugin.h | 52 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 49 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d51dfe48db..2549681367 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -25,6 +25,7 @@
- #include "hw/registerfields.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "exec/gdbstub.h"
- #include "qapi/qapi-types-common.h"
- 
- /* ARM processors have a weak memory model */
-@@ -136,23 +137,21 @@ enum {
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index e5c16df5ca..785315c06d 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -23,15 +23,18 @@
+  *   https://gcc.gnu.org/wiki/Visibility
   */
+ #if defined _WIN32 || defined __CYGWIN__
+-  #ifdef BUILDING_DLL
+-    #define QEMU_PLUGIN_EXPORT __declspec(dllexport)
+-  #else
++  #ifdef CONFIG_PLUGIN
+     #define QEMU_PLUGIN_EXPORT __declspec(dllimport)
++    #define QEMU_PLUGIN_API __declspec(dllexport)
++  #else
++    #define QEMU_PLUGIN_EXPORT __declspec(dllexport)
++    #define QEMU_PLUGIN_API __declspec(dllimport)
+   #endif
+   #define QEMU_PLUGIN_LOCAL
+ #else
+   #define QEMU_PLUGIN_EXPORT __attribute__((visibility("default")))
+   #define QEMU_PLUGIN_LOCAL  __attribute__((visibility("hidden")))
++  #define QEMU_PLUGIN_API
+ #endif
  
  /**
-- * DynamicGDBXMLInfo:
-- * @desc: Contains the XML descriptions.
-- * @num: Number of the registers in this XML seen by GDB.
-+ * DynamicGDBFeatureInfo:
-+ * @desc: Contains the feature descriptions.
-  * @data: A union with data specific to the set of registers
-  *    @cpregs_keys: Array that contains the corresponding Key of
-  *                  a given cpreg with the same order of the cpreg
-  *                  in the XML description.
+@@ -148,6 +151,7 @@ typedef void (*qemu_plugin_vcpu_udata_cb_t)(unsigned int vcpu_index,
+  *
+  * Note: Calling this function from qemu_plugin_install() is a bug.
   */
--typedef struct DynamicGDBXMLInfo {
--    char *desc;
--    int num;
-+typedef struct DynamicGDBFeatureInfo {
-+    GDBFeature desc;
-     union {
-         struct {
-             uint32_t *keys;
-         } cpregs;
-     } data;
--} DynamicGDBXMLInfo;
-+} DynamicGDBFeatureInfo;
++QEMU_PLUGIN_API
+ void qemu_plugin_uninstall(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb);
  
- /* CPU state for each instance of a generic timer (in cp15 c14) */
- typedef struct ARMGenericTimer {
-@@ -880,10 +879,10 @@ struct ArchCPU {
-     uint64_t *cpreg_vmstate_values;
-     int32_t cpreg_vmstate_array_len;
+ /**
+@@ -161,6 +165,7 @@ void qemu_plugin_uninstall(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb);
+  * Plugins are reset asynchronously, and therefore the given plugin receives
+  * callbacks until @cb is called.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_reset(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb);
  
--    DynamicGDBXMLInfo dyn_sysreg_xml;
--    DynamicGDBXMLInfo dyn_svereg_xml;
--    DynamicGDBXMLInfo dyn_m_systemreg_xml;
--    DynamicGDBXMLInfo dyn_m_secextreg_xml;
-+    DynamicGDBFeatureInfo dyn_sysreg_feature;
-+    DynamicGDBFeatureInfo dyn_svereg_feature;
-+    DynamicGDBFeatureInfo dyn_m_systemreg_feature;
-+    DynamicGDBFeatureInfo dyn_m_secextreg_feature;
+ /**
+@@ -172,6 +177,7 @@ void qemu_plugin_reset(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb);
+  *
+  * See also: qemu_plugin_register_vcpu_exit_cb()
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_init_cb(qemu_plugin_id_t id,
+                                        qemu_plugin_vcpu_simple_cb_t cb);
  
-     /* Timers used by the generic (architected) timer */
-     QEMUTimer *gt_timer[NUM_GTIMERS];
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c837506e44..989416e613 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1440,7 +1440,7 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
- }
+@@ -184,6 +190,7 @@ void qemu_plugin_register_vcpu_init_cb(qemu_plugin_id_t id,
+  *
+  * See also: qemu_plugin_register_vcpu_init_cb()
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_exit_cb(qemu_plugin_id_t id,
+                                        qemu_plugin_vcpu_simple_cb_t cb);
  
- #ifdef TARGET_AARCH64
--int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
-+GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
- int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg);
- int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg);
- int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg);
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 28f546a5ff..5949adfb31 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -26,11 +26,11 @@
- #include "cpu-features.h"
- #include "cpregs.h"
+@@ -194,6 +201,7 @@ void qemu_plugin_register_vcpu_exit_cb(qemu_plugin_id_t id,
+  *
+  * The @cb function is called every time a vCPU idles.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_idle_cb(qemu_plugin_id_t id,
+                                        qemu_plugin_vcpu_simple_cb_t cb);
  
--typedef struct RegisterSysregXmlParam {
-+typedef struct RegisterSysregFeatureParam {
-     CPUState *cs;
--    GString *s;
-+    GDBFeatureBuilder builder;
-     int n;
--} RegisterSysregXmlParam;
-+} RegisterSysregFeatureParam;
+@@ -204,6 +212,7 @@ void qemu_plugin_register_vcpu_idle_cb(qemu_plugin_id_t id,
+  *
+  * The @cb function is called every time a vCPU resumes execution.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_resume_cb(qemu_plugin_id_t id,
+                                          qemu_plugin_vcpu_simple_cb_t cb);
  
- /* Old gdb always expect FPA registers.  Newer (xml-aware) gdb only expect
-    whatever the target description contains.  Due to a historical mishap
-@@ -216,7 +216,7 @@ static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
-     const ARMCPRegInfo *ri;
-     uint32_t key;
+@@ -254,6 +263,7 @@ typedef void (*qemu_plugin_vcpu_tb_trans_cb_t)(qemu_plugin_id_t id,
+  * callbacks to be triggered when the block or individual instruction
+  * executes.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_tb_trans_cb(qemu_plugin_id_t id,
+                                            qemu_plugin_vcpu_tb_trans_cb_t cb);
  
--    key = cpu->dyn_sysreg_xml.data.cpregs.keys[reg];
-+    key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
-     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
-     if (ri) {
-         if (cpreg_field_is_64bit(ri)) {
-@@ -233,34 +233,32 @@ static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
+@@ -266,6 +276,7 @@ void qemu_plugin_register_vcpu_tb_trans_cb(qemu_plugin_id_t id,
+  *
+  * The @cb function is called every time a translated unit executes.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_tb_exec_cb(struct qemu_plugin_tb *tb,
+                                           qemu_plugin_vcpu_udata_cb_t cb,
+                                           enum qemu_plugin_cb_flags flags,
+@@ -297,6 +308,7 @@ enum qemu_plugin_op {
+  * Note: ops are not atomic so in multi-threaded/multi-smp situations
+  * you will get inexact results.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_tb_exec_inline(struct qemu_plugin_tb *tb,
+                                               enum qemu_plugin_op op,
+                                               void *ptr, uint64_t imm);
+@@ -310,6 +322,7 @@ void qemu_plugin_register_vcpu_tb_exec_inline(struct qemu_plugin_tb *tb,
+  *
+  * The @cb function is called every time an instruction is executed
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_insn_exec_cb(struct qemu_plugin_insn *insn,
+                                             qemu_plugin_vcpu_udata_cb_t cb,
+                                             enum qemu_plugin_cb_flags flags,
+@@ -325,6 +338,7 @@ void qemu_plugin_register_vcpu_insn_exec_cb(struct qemu_plugin_insn *insn,
+  * Insert an inline op to every time an instruction executes. Useful
+  * if you just want to increment a single counter somewhere in memory.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_insn_exec_inline(struct qemu_plugin_insn *insn,
+                                                 enum qemu_plugin_op op,
+                                                 void *ptr, uint64_t imm);
+@@ -335,6 +349,7 @@ void qemu_plugin_register_vcpu_insn_exec_inline(struct qemu_plugin_insn *insn,
+  *
+  * Returns: number of instructions in this block
+  */
++QEMU_PLUGIN_API
+ size_t qemu_plugin_tb_n_insns(const struct qemu_plugin_tb *tb);
  
--static void arm_gen_one_xml_sysreg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
-+static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
-+                                       DynamicGDBFeatureInfo *dyn_feature,
-                                        ARMCPRegInfo *ri, uint32_t ri_key,
--                                       int bitsize, int regnum)
-+                                       int bitsize, int n)
- {
--    g_string_append_printf(s, "<reg name=\"%s\"", ri->name);
--    g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
--    g_string_append_printf(s, " regnum=\"%d\"", regnum);
--    g_string_append_printf(s, " group=\"cp_regs\"/>");
--    dyn_xml->data.cpregs.keys[dyn_xml->num] = ri_key;
--    dyn_xml->num++;
-+    gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
-+                                   "int", "cp_regs");
-+
-+    dyn_feature->data.cpregs.keys[n] = ri_key;
- }
+ /**
+@@ -343,6 +358,7 @@ size_t qemu_plugin_tb_n_insns(const struct qemu_plugin_tb *tb);
+  *
+  * Returns: virtual address of block start
+  */
++QEMU_PLUGIN_API
+ uint64_t qemu_plugin_tb_vaddr(const struct qemu_plugin_tb *tb);
  
--static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
--                                        gpointer p)
-+static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
-+                                            gpointer p)
- {
-     uint32_t ri_key = (uintptr_t)key;
-     ARMCPRegInfo *ri = value;
--    RegisterSysregXmlParam *param = (RegisterSysregXmlParam *)p;
--    GString *s = param->s;
-+    RegisterSysregFeatureParam *param = p;
-     ARMCPU *cpu = ARM_CPU(param->cs);
-     CPUARMState *env = &cpu->env;
--    DynamicGDBXMLInfo *dyn_xml = &cpu->dyn_sysreg_xml;
-+    DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
+ /**
+@@ -356,6 +372,7 @@ uint64_t qemu_plugin_tb_vaddr(const struct qemu_plugin_tb *tb);
+  *
+  * Returns: opaque handle to instruction
+  */
++QEMU_PLUGIN_API
+ struct qemu_plugin_insn *
+ qemu_plugin_tb_get_insn(const struct qemu_plugin_tb *tb, size_t idx);
  
-     if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
-         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-             if (ri->state == ARM_CP_STATE_AA64) {
--                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
--                                           param->n++);
-+                arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
-+                                           ri, ri_key, 64, param->n++);
-             }
-         } else {
-             if (ri->state == ARM_CP_STATE_AA32) {
-@@ -269,32 +267,32 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
-                     return;
-                 }
-                 if (ri->type & ARM_CP_64BIT) {
--                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
--                                               param->n++);
-+                    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
-+                                               ri, ri_key, 64, param->n++);
-                 } else {
--                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32,
--                                               param->n++);
-+                    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
-+                                               ri, ri_key, 32, param->n++);
-                 }
-             }
-         }
-     }
- }
+@@ -369,6 +386,7 @@ qemu_plugin_tb_get_insn(const struct qemu_plugin_tb *tb, size_t idx);
+  * Returns: pointer to a stream of bytes containing the value of this
+  * instructions opcode.
+  */
++QEMU_PLUGIN_API
+ const void *qemu_plugin_insn_data(const struct qemu_plugin_insn *insn);
  
--static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
-+static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
--    GString *s = g_string_new(NULL);
--    RegisterSysregXmlParam param = {cs, s, base_reg};
--
--    cpu->dyn_sysreg_xml.num = 0;
--    cpu->dyn_sysreg_xml.data.cpregs.keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.arm.sys.regs\">");
--    g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_xml, &param);
--    g_string_append_printf(s, "</feature>");
--    cpu->dyn_sysreg_xml.desc = g_string_free(s, false);
--    return cpu->dyn_sysreg_xml.num;
-+    RegisterSysregFeatureParam param = {cs};
-+    gsize num_regs = g_hash_table_size(cpu->cp_regs);
-+
-+    gdb_feature_builder_init(&param.builder,
-+                             &cpu->dyn_sysreg_feature.desc,
-+                             "org.qemu.gdb.arm.sys.regs",
-+                             "system-registers.xml",
-+                             base_reg);
-+    cpu->dyn_sysreg_feature.data.cpregs.keys = g_new(uint32_t, num_regs);
-+    g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_feature, &param);
-+    gdb_feature_builder_end(&param.builder);
-+    return &cpu->dyn_sysreg_feature.desc;
- }
+ /**
+@@ -377,6 +395,7 @@ const void *qemu_plugin_insn_data(const struct qemu_plugin_insn *insn);
+  *
+  * Returns: size of instruction in bytes
+  */
++QEMU_PLUGIN_API
+ size_t qemu_plugin_insn_size(const struct qemu_plugin_insn *insn);
  
- #ifdef CONFIG_TCG
-@@ -386,31 +384,29 @@ static int arm_gdb_set_m_systemreg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0; /* TODO */
- }
+ /**
+@@ -385,6 +404,7 @@ size_t qemu_plugin_insn_size(const struct qemu_plugin_insn *insn);
+  *
+  * Returns: virtual address of instruction
+  */
++QEMU_PLUGIN_API
+ uint64_t qemu_plugin_insn_vaddr(const struct qemu_plugin_insn *insn);
  
--static int arm_gen_dynamic_m_systemreg_xml(CPUState *cs, int orig_base_reg)
-+static GDBFeature *arm_gen_dynamic_m_systemreg_feature(CPUState *cs,
-+                                                       int base_reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    GString *s = g_string_new(NULL);
--    int base_reg = orig_base_reg;
-+    GDBFeatureBuilder builder;
-+    int reg = 0;
-     int i;
+ /**
+@@ -393,6 +413,7 @@ uint64_t qemu_plugin_insn_vaddr(const struct qemu_plugin_insn *insn);
+  *
+  * Returns: hardware (physical) target address of instruction
+  */
++QEMU_PLUGIN_API
+ void *qemu_plugin_insn_haddr(const struct qemu_plugin_insn *insn);
  
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.m-system\">\n");
-+    gdb_feature_builder_init(&builder, &cpu->dyn_m_systemreg_feature.desc,
-+                             "org.gnu.gdb.arm.m-system", "arm-m-system.xml",
-+                             base_reg);
+ /**
+@@ -411,6 +432,7 @@ struct qemu_plugin_hwaddr;
+  *
+  * Returns: size of access in ^2 (0=byte, 1=16bit, 2=32bit etc...)
+  */
++QEMU_PLUGIN_API
+ unsigned int qemu_plugin_mem_size_shift(qemu_plugin_meminfo_t info);
+ /**
+  * qemu_plugin_mem_is_sign_extended() - was the access sign extended
+@@ -418,6 +440,7 @@ unsigned int qemu_plugin_mem_size_shift(qemu_plugin_meminfo_t info);
+  *
+  * Returns: true if it was, otherwise false
+  */
++QEMU_PLUGIN_API
+ bool qemu_plugin_mem_is_sign_extended(qemu_plugin_meminfo_t info);
+ /**
+  * qemu_plugin_mem_is_big_endian() - was the access big endian
+@@ -425,6 +448,7 @@ bool qemu_plugin_mem_is_sign_extended(qemu_plugin_meminfo_t info);
+  *
+  * Returns: true if it was, otherwise false
+  */
++QEMU_PLUGIN_API
+ bool qemu_plugin_mem_is_big_endian(qemu_plugin_meminfo_t info);
+ /**
+  * qemu_plugin_mem_is_store() - was the access a store
+@@ -432,6 +456,7 @@ bool qemu_plugin_mem_is_big_endian(qemu_plugin_meminfo_t info);
+  *
+  * Returns: true if it was, otherwise false
+  */
++QEMU_PLUGIN_API
+ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info);
  
-     for (i = 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
-         if (arm_feature(env, m_sysreg_def[i].feature)) {
--            g_string_append_printf(s,
--                "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
--                m_sysreg_def[i].name, base_reg++);
-+            gdb_feature_builder_append_reg(&builder, m_sysreg_def[i].name, 32,
-+                                           reg++, "int", NULL);
-         }
-     }
+ /**
+@@ -447,6 +472,7 @@ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info);
+  * information about the handle should be recovered before the
+  * callback returns.
+  */
++QEMU_PLUGIN_API
+ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+                                                   uint64_t vaddr);
  
--    g_string_append_printf(s, "</feature>");
--    cpu->dyn_m_systemreg_xml.desc = g_string_free(s, false);
--    cpu->dyn_m_systemreg_xml.num = base_reg - orig_base_reg;
-+    gdb_feature_builder_end(&builder);
+@@ -463,6 +489,7 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+  * Returns true if the handle's memory operation is to memory-mapped IO, or
+  * false if it is to RAM
+  */
++QEMU_PLUGIN_API
+ bool qemu_plugin_hwaddr_is_io(const struct qemu_plugin_hwaddr *haddr);
  
--    return cpu->dyn_m_systemreg_xml.num;
-+    return &cpu->dyn_m_systemreg_feature.desc;
- }
+ /**
+@@ -474,12 +501,14 @@ bool qemu_plugin_hwaddr_is_io(const struct qemu_plugin_hwaddr *haddr);
+  * Note that the returned physical address may not be unique if you are dealing
+  * with multiple address spaces.
+  */
++QEMU_PLUGIN_API
+ uint64_t qemu_plugin_hwaddr_phys_addr(const struct qemu_plugin_hwaddr *haddr);
  
- #ifndef CONFIG_USER_ONLY
-@@ -428,31 +424,31 @@ static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0; /* TODO */
- }
+ /*
+  * Returns a string representing the device. The string is valid for
+  * the lifetime of the plugin.
+  */
++QEMU_PLUGIN_API
+ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h);
  
--static int arm_gen_dynamic_m_secextreg_xml(CPUState *cs, int orig_base_reg)
-+static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
-+                                                       int base_reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
--    GString *s = g_string_new(NULL);
--    int base_reg = orig_base_reg;
-+    GDBFeatureBuilder builder;
-+    char *name;
-+    int reg = 0;
-     int i;
+ /**
+@@ -514,6 +543,7 @@ typedef void (*qemu_plugin_vcpu_mem_cb_t) (unsigned int vcpu_index,
+  * callback so the plugin is responsible for ensuring it doesn't get
+  * confused by making appropriate use of locking if required.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_mem_cb(struct qemu_plugin_insn *insn,
+                                       qemu_plugin_vcpu_mem_cb_t cb,
+                                       enum qemu_plugin_cb_flags flags,
+@@ -532,6 +562,7 @@ void qemu_plugin_register_vcpu_mem_cb(struct qemu_plugin_insn *insn,
+  * instruction. This provides for a lightweight but not thread-safe
+  * way of counting the number of operations done.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_mem_inline(struct qemu_plugin_insn *insn,
+                                           enum qemu_plugin_mem_rw rw,
+                                           enum qemu_plugin_op op, void *ptr,
+@@ -545,6 +576,7 @@ typedef void
+                                  uint64_t a3, uint64_t a4, uint64_t a5,
+                                  uint64_t a6, uint64_t a7, uint64_t a8);
  
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.secext\">\n");
-+    gdb_feature_builder_init(&builder, &cpu->dyn_m_secextreg_feature.desc,
-+                             "org.gnu.gdb.arm.secext", "arm-m-secext.xml",
-+                             base_reg);
++QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_syscall_cb(qemu_plugin_id_t id,
+                                           qemu_plugin_vcpu_syscall_cb_t cb);
  
-     for (i = 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
--        g_string_append_printf(s,
--            "<reg name=\"%s_ns\" bitsize=\"32\" regnum=\"%d\"/>\n",
--            m_sysreg_def[i].name, base_reg++);
--        g_string_append_printf(s,
--            "<reg name=\"%s_s\" bitsize=\"32\" regnum=\"%d\"/>\n",
--            m_sysreg_def[i].name, base_reg++);
-+        name = g_strconcat(m_sysreg_def[i].name, "_ns", NULL);
-+        gdb_feature_builder_append_reg(&builder, name, 32, reg++,
-+                                       "int", NULL);
-+        name = g_strconcat(m_sysreg_def[i].name, "_s", NULL);
-+        gdb_feature_builder_append_reg(&builder, name, 32, reg++,
-+                                       "int", NULL);
-     }
+@@ -552,6 +584,7 @@ typedef void
+ (*qemu_plugin_vcpu_syscall_ret_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_idx,
+                                      int64_t num, int64_t ret);
  
--    g_string_append_printf(s, "</feature>");
--    cpu->dyn_m_secextreg_xml.desc = g_string_free(s, false);
--    cpu->dyn_m_secextreg_xml.num = base_reg - orig_base_reg;
-+    gdb_feature_builder_end(&builder);
++QEMU_PLUGIN_API
+ void
+ qemu_plugin_register_vcpu_syscall_ret_cb(qemu_plugin_id_t id,
+                                          qemu_plugin_vcpu_syscall_ret_cb_t cb);
+@@ -564,6 +597,7 @@ qemu_plugin_register_vcpu_syscall_ret_cb(qemu_plugin_id_t id,
+  * Returns an allocated string containing the disassembly
+  */
  
--    return cpu->dyn_m_secextreg_xml.num;
-+    return &cpu->dyn_m_secextreg_feature.desc;
- }
- #endif
- #endif /* CONFIG_TCG */
-@@ -462,14 +458,14 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
-     ARMCPU *cpu = ARM_CPU(cs);
++QEMU_PLUGIN_API
+ char *qemu_plugin_insn_disas(const struct qemu_plugin_insn *insn);
  
-     if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_xml.desc;
-+        return cpu->dyn_sysreg_feature.desc.xml;
-     } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_xml.desc;
-+        return cpu->dyn_svereg_feature.desc.xml;
-     } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_xml.desc;
-+        return cpu->dyn_m_systemreg_feature.desc.xml;
- #ifndef CONFIG_USER_ONLY
-     } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_xml.desc;
-+        return cpu->dyn_m_secextreg_feature.desc.xml;
- #endif
-     }
-     return NULL;
-@@ -487,7 +483,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-          */
- #ifdef TARGET_AARCH64
-         if (isar_feature_aa64_sve(&cpu->isar)) {
--            int nreg = arm_gen_dynamic_svereg_xml(cs, cs->gdb_num_regs);
-+            int nreg = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs)->num_regs;
-             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
-                                      aarch64_gdb_set_sve_reg, nreg,
-                                      "sve-registers.xml", 0);
-@@ -533,20 +529,20 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-                                  1, "arm-m-profile-mve.xml", 0);
-     }
-     gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
--                             arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
-+                             arm_gen_dynamic_sysreg_feature(cs, cs->gdb_num_regs)->num_regs,
-                              "system-registers.xml", 0);
+ /**
+@@ -573,6 +607,7 @@ char *qemu_plugin_insn_disas(const struct qemu_plugin_insn *insn);
+  * Return a static string referring to the symbol. This is dependent
+  * on the binary QEMU is running having provided a symbol table.
+  */
++QEMU_PLUGIN_API
+ const char *qemu_plugin_insn_symbol(const struct qemu_plugin_insn *insn);
  
- #ifdef CONFIG_TCG
-     if (arm_feature(env, ARM_FEATURE_M) && tcg_enabled()) {
-         gdb_register_coprocessor(cs,
-             arm_gdb_get_m_systemreg, arm_gdb_set_m_systemreg,
--            arm_gen_dynamic_m_systemreg_xml(cs, cs->gdb_num_regs),
-+            arm_gen_dynamic_m_systemreg_feature(cs, cs->gdb_num_regs)->num_regs,
-             "arm-m-system.xml", 0);
- #ifndef CONFIG_USER_ONLY
-         if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-             gdb_register_coprocessor(cs,
-                 arm_gdb_get_m_secextreg, arm_gdb_set_m_secextreg,
--                arm_gen_dynamic_m_secextreg_xml(cs, cs->gdb_num_regs),
-+                arm_gen_dynamic_m_secextreg_feature(cs, cs->gdb_num_regs)->num_regs,
-                 "arm-m-secext.xml", 0);
-         }
- #endif
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index d7b79a6589..5286d5c604 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -247,7 +247,7 @@ int aarch64_gdb_set_pauth_reg(CPUARMState *env, uint8_t *buf, int reg)
-     return 0;
- }
+ /**
+@@ -584,9 +619,11 @@ const char *qemu_plugin_insn_symbol(const struct qemu_plugin_insn *insn);
+  *
+  * See also: qemu_plugin_register_vcpu_init_cb()
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_vcpu_for_each(qemu_plugin_id_t id,
+                                qemu_plugin_vcpu_simple_cb_t cb);
  
--static void output_vector_union_type(GString *s, int reg_width,
-+static void output_vector_union_type(GDBFeatureBuilder *builder, int reg_width,
-                                      const char *name)
- {
-     struct TypeSize {
-@@ -282,10 +282,10 @@ static void output_vector_union_type(GString *s, int reg_width,
++QEMU_PLUGIN_API
+ void qemu_plugin_register_flush_cb(qemu_plugin_id_t id,
+                                    qemu_plugin_simple_cb_t cb);
  
-     /* First define types and totals in a whole VL */
-     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
--        g_string_append_printf(s,
--                               "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
--                               name, vec_lanes[i].sz, vec_lanes[i].suffix,
--                               vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
-+        gdb_feature_builder_append_tag(
-+            builder, "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
-+            name, vec_lanes[i].sz, vec_lanes[i].suffix,
-+            vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
-     }
+@@ -603,6 +640,7 @@ void qemu_plugin_register_flush_cb(qemu_plugin_id_t id,
+  * In user-mode it is possible a few un-instrumented instructions from
+  * child threads may run before the host kernel reaps the threads.
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_register_atexit_cb(qemu_plugin_id_t id,
+                                     qemu_plugin_udata_cb_t cb, void *userdata);
  
-     /*
-@@ -296,86 +296,77 @@ static void output_vector_union_type(GString *s, int reg_width,
-     for (i = 0; i < ARRAY_SIZE(suf); i++) {
-         int bits = 8 << i;
+@@ -616,6 +654,7 @@ int qemu_plugin_n_max_vcpus(void);
+  * qemu_plugin_outs() - output string via QEMU's logging system
+  * @string: a string
+  */
++QEMU_PLUGIN_API
+ void qemu_plugin_outs(const char *string);
  
--        g_string_append_printf(s, "<union id=\"%sn%c\">", name, suf[i]);
-+        gdb_feature_builder_append_tag(builder, "<union id=\"%sn%c\">",
-+                                       name, suf[i]);
-         for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
-             if (vec_lanes[j].size == bits) {
--                g_string_append_printf(s, "<field name=\"%c\" type=\"%s%c%c\"/>",
--                                       vec_lanes[j].suffix, name,
--                                       vec_lanes[j].sz, vec_lanes[j].suffix);
-+                gdb_feature_builder_append_tag(
-+                    builder, "<field name=\"%c\" type=\"%s%c%c\"/>",
-+                    vec_lanes[j].suffix, name,
-+                    vec_lanes[j].sz, vec_lanes[j].suffix);
-             }
-         }
--        g_string_append(s, "</union>");
-+        gdb_feature_builder_append_tag(builder, "</union>");
-     }
+ /**
+@@ -629,6 +668,7 @@ void qemu_plugin_outs(const char *string);
+  * returns true if the combination @name=@val parses correctly to a boolean
+  * argument, and false otherwise
+  */
++QEMU_PLUGIN_API
+ bool qemu_plugin_bool_parse(const char *name, const char *val, bool *ret);
  
-     /* And now the final union of unions */
--    g_string_append_printf(s, "<union id=\"%s\">", name);
-+    gdb_feature_builder_append_tag(builder, "<union id=\"%s\">", name);
-     for (i = ARRAY_SIZE(suf) - 1; i >= 0; i--) {
--        g_string_append_printf(s, "<field name=\"%c\" type=\"%sn%c\"/>",
--                               suf[i], name, suf[i]);
-+        gdb_feature_builder_append_tag(builder,
-+                                       "<field name=\"%c\" type=\"%sn%c\"/>",
-+                                       suf[i], name, suf[i]);
-     }
--    g_string_append(s, "</union>");
-+    gdb_feature_builder_append_tag(builder, "</union>");
- }
+ /**
+@@ -639,6 +679,7 @@ bool qemu_plugin_bool_parse(const char *name, const char *val, bool *ret);
+  * return NULL. The user should g_free() the string once no longer
+  * needed.
+  */
++QEMU_PLUGIN_API
+ const char *qemu_plugin_path_to_binary(void);
  
--int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
-+GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
--    GString *s = g_string_new(NULL);
--    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
-     int reg_width = cpu->sve_max_vq * 128;
-     int pred_width = cpu->sve_max_vq * 16;
--    int base_reg = orig_base_reg;
-+    GDBFeatureBuilder builder;
-+    char *name;
-+    int reg = 0;
-     int i;
+ /**
+@@ -647,6 +688,7 @@ const char *qemu_plugin_path_to_binary(void);
+  * Returns the nominal start address of the main text segment in
+  * user-mode. Currently returns 0 for system emulation.
+  */
++QEMU_PLUGIN_API
+ uint64_t qemu_plugin_start_code(void);
  
--    g_string_printf(s, "<?xml version=\"1.0\"?>");
--    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
-+    gdb_feature_builder_init(&builder, &cpu->dyn_svereg_feature.desc,
-+                             "org.gnu.gdb.aarch64.sve", "sve-registers.xml",
-+                             base_reg);
+ /**
+@@ -655,6 +697,7 @@ uint64_t qemu_plugin_start_code(void);
+  * Returns the nominal end address of the main text segment in
+  * user-mode. Currently returns 0 for system emulation.
+  */
++QEMU_PLUGIN_API
+ uint64_t qemu_plugin_end_code(void);
  
-     /* Create the vector union type. */
--    output_vector_union_type(s, reg_width, "svev");
-+    output_vector_union_type(&builder, reg_width, "svev");
+ /**
+@@ -663,6 +706,7 @@ uint64_t qemu_plugin_end_code(void);
+  * Returns the nominal entry address of the main text segment in
+  * user-mode. Currently returns 0 for system emulation.
+  */
++QEMU_PLUGIN_API
+ uint64_t qemu_plugin_entry_code(void);
  
-     /* Create the predicate vector type. */
--    g_string_append_printf(s,
--                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
--                           pred_width / 8);
-+    gdb_feature_builder_append_tag(
-+        &builder, "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
-+        pred_width / 8);
+ /** struct qemu_plugin_register - Opaque handle for a translated instruction */
+@@ -692,6 +736,7 @@ typedef struct {
+  * start you should call this from a qemu_plugin_register_vcpu_init_cb()
+  * callback.
+  */
++QEMU_PLUGIN_API
+ GArray * qemu_plugin_find_registers(unsigned int vcpu_index, const char *reg_pattern);
  
-     /* Define the vector registers. */
-     for (i = 0; i < 32; i++) {
--        g_string_append_printf(s,
--                               "<reg name=\"z%d\" bitsize=\"%d\""
--                               " regnum=\"%d\" type=\"svev\"/>",
--                               i, reg_width, base_reg++);
-+        name = g_strdup_printf("z%d", i);
-+        gdb_feature_builder_append_reg(&builder, name, reg_width, reg++,
-+                                       "svev", NULL);
-     }
- 
-     /* fpscr & status registers */
--    g_string_append_printf(s, "<reg name=\"fpsr\" bitsize=\"32\""
--                           " regnum=\"%d\" group=\"float\""
--                           " type=\"int\"/>", base_reg++);
--    g_string_append_printf(s, "<reg name=\"fpcr\" bitsize=\"32\""
--                           " regnum=\"%d\" group=\"float\""
--                           " type=\"int\"/>", base_reg++);
-+    gdb_feature_builder_append_reg(&builder, "fpsr", 32, reg++,
-+                                   "int", "float");
-+    gdb_feature_builder_append_reg(&builder, "fpcr", 32, reg++,
-+                                   "int", "float");
- 
-     /* Define the predicate registers. */
-     for (i = 0; i < 16; i++) {
--        g_string_append_printf(s,
--                               "<reg name=\"p%d\" bitsize=\"%d\""
--                               " regnum=\"%d\" type=\"svep\"/>",
--                               i, pred_width, base_reg++);
-+        name = g_strdup_printf("p%d", i);
-+        gdb_feature_builder_append_reg(&builder, name, pred_width, reg++,
-+                                       "svep", NULL);
-     }
--    g_string_append_printf(s,
--                           "<reg name=\"ffr\" bitsize=\"%d\""
--                           " regnum=\"%d\" group=\"vector\""
--                           " type=\"svep\"/>",
--                           pred_width, base_reg++);
-+    gdb_feature_builder_append_reg(&builder, "ffr", pred_width, reg++,
-+                                   "svep", "vector");
- 
-     /* Define the vector length pseudo-register. */
--    g_string_append_printf(s,
--                           "<reg name=\"vg\" bitsize=\"64\""
--                           " regnum=\"%d\" type=\"int\"/>",
--                           base_reg++);
-+    gdb_feature_builder_append_reg(&builder, "vg", 64, reg++, "int", NULL);
- 
--    g_string_append_printf(s, "</feature>");
-+    gdb_feature_builder_end(&builder);
- 
--    info->desc = g_string_free(s, false);
--    info->num = base_reg - orig_base_reg;
--    return info->num;
-+    return &cpu->dyn_svereg_feature.desc;
- }
+ /**
+@@ -707,6 +752,7 @@ GArray * qemu_plugin_find_registers(unsigned int vcpu_index, const char *reg_pat
+  * Returns the size of the read register. The content of @buf is in target byte
+  * order. On failure returns -1
+  */
++QEMU_PLUGIN_API
+ int qemu_plugin_read_register(unsigned int vcpu,
+                               struct qemu_plugin_register *handle,
+                               GByteArray *buf);
 -- 
 2.39.2

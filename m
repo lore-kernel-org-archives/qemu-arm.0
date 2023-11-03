@@ -1,127 +1,138 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp814139eja;
-        Thu, 2 Nov 2023 20:22:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEZDJ6AfX0ALFjU7ak3twXTPKi89nNM531iZvi6bXqzdH+Ts2jGPLJU5LkzzIxPyAqzjoa7
-X-Received: by 2002:a05:620a:2b82:b0:778:9713:9d7 with SMTP id dz2-20020a05620a2b8200b00778971309d7mr18884758qkb.77.1698981733549;
-        Thu, 02 Nov 2023 20:22:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698981733; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp814733eja;
+        Thu, 2 Nov 2023 20:24:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHQ/4GZ0rIXQQGA4AhsurVFUY4sa6uq5MLKUJjtyRHctjeP51oAS3CX6sLfbW5zY/E/kd1J
+X-Received: by 2002:ac8:5e4e:0:b0:41e:3c42:bbff with SMTP id i14-20020ac85e4e000000b0041e3c42bbffmr23281283qtx.49.1698981850572;
+        Thu, 02 Nov 2023 20:24:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1698981850; cv=none;
         d=google.com; s=arc-20160816;
-        b=dmYbmVGUyfZ0HUDEoLIpwb46U4wkTwWQIV90/Y8WJSBxh4yXt6xAEDQtAKn241PYZd
-         Jhq9GSXUjK+wz7gddfeJL2r+T/FoysXZTP3xsOd3/MTC9r2bFsGK3Cy5K3NPQW9/NvhQ
-         yO8Wp//5ukSjbz5uD3x0ZvYTUoppRgv5xYVuzfLs803bnWXEjVWHIOTzIwErLBwr+xod
-         zFRJrBJWw4q+yWCBEYBGJulhbR+y+9exZLNMrcqpbEOmRqMQPXwQXvmizH9FZY+FOMSD
-         rpGcL+dTVjURGGIbbo4OJim+DLQAyNyYYCqzK+kyZPsImWgWNV/81H03rMWhGknLoBYE
-         VUSQ==
+        b=LMIdhz4Lo3FTRE32sm3CJfQ3v3KOsfpuOZ3PkiSVK6zzEEqrlGKSlIo/wJCwOzx0Wl
+         WIUXPz398rmZIdnY4dv/NMAG6Fw2u42FiKV/KI9hnNN5aLvaqtWTVAk6DxV3D/jwVA2d
+         0KEGHi7x9TsWapeRX+wpA0aR+6umNfQzigQnQMu6wSbzvvGQmgmxoTAdN0cwwj/vmfT0
+         fXH8ZMlTLbe9Up34VxHcr+OpEvOroCFD8SQM86Q6YA9ZFydDIDwRLZWqgFb3cforCnZJ
+         wA4g2rEhJtA1Se7vXGldIp17CU8Owp46A9EBemRT3945E7ZfzyX8iWOYghvMQe0Ye/ls
+         +hJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=MRWkzNV15sMQ1OThxzZvfTQZK66YIKvjAWMAHks9Xmg=;
-        fh=ifcZN9pwepZvPMfqVNhmzGQFbYTJCzM6roK1mhgwNk8=;
-        b=nBq2mM8WmFUur7JJsDlDcbaHOQkCYjinN7gPWUdAF00SMXa7drIs15+Ai2zyQjRb1Z
-         cjQ7v/9XQjl725jUhTuPbmZMXp3XrlxryO9OrVweYo7ZjVCWJMFUJOwEPS7Mh6qKpc07
-         VfgFBiIQ+8pADVSZPHUzTCWoRNCtGBopi0lDGx4EZjP3sEVko0nDAEQC6QEFEcYdYdRz
-         8GYGEDgyBUoVf9vXevwOTXuuVMtWp2to25QNhKTwdGd2294cn/XaiJSpFg1QDMavgWmu
-         4WzOj/s25jWKvBxpUKoxlHzhC/nsGXuU8dpg9Qwxxt0vI2ClSi7tjyBTMbArORR7B0FQ
-         D8eQ==
+        bh=+eB/u9oLNspqXcPK+E8Mco/4NBkWn6vwr1h/+oomn9U=;
+        fh=1eSBVWkhTIxB1FMRNgNedy3GfLOxebt8JH9gOPe63dw=;
+        b=aFp4dRWKuAwfuPpoVCEIIYI8CKV/Dy+eNUpP0QJmf1xJ7fBHUaxx36xQkVkifUEBwr
+         vu/5xlU7QmBCJoZfwbW8LQKpIgQu8N4sfp0/UDOelvg04ikU97JTLrWw4aKNHgvzT0cQ
+         TshCVd43Sq/ioJp42YbFQLA91+7MZqdlOyGP4y5wXh3/t/UYF7eF7oUDFWYO0e9z5WNf
+         kp6YaHBlsYIUzSMQsDF9R+b6aeHeUmxKk32vO4tthrxXTGfVoCDOpe6fVkBjid98Gh/b
+         z4jD0l2k7DHGeNJCD+ORVXsYBs27AkdeKc3c3V9DRIbmkjBEn/EWKun4cD0JT4tRaouT
+         sLXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FPe9qHj8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ijbjOzPZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ea14-20020a05620a488e00b0077744988681si838800qkb.504.2023.11.02.20.22.13
+        by mx.google.com with ESMTPS id t6-20020ac85886000000b004198b50a2c6si747351qta.459.2023.11.02.20.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Nov 2023 20:22:13 -0700 (PDT)
+        Thu, 02 Nov 2023 20:24:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FPe9qHj8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ijbjOzPZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qykkx-0001kv-H1; Thu, 02 Nov 2023 23:21:59 -0400
+	id 1qykn1-0003Tq-5b; Thu, 02 Nov 2023 23:24:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qykkv-0001iD-4p
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 23:21:57 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qykkt-0005tG-Cm
- for qemu-arm@nongnu.org; Thu, 02 Nov 2023 23:21:56 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-6c3443083f2so951996b3a.0
- for <qemu-arm@nongnu.org>; Thu, 02 Nov 2023 20:21:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1698981714; x=1699586514; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=MRWkzNV15sMQ1OThxzZvfTQZK66YIKvjAWMAHks9Xmg=;
- b=FPe9qHj8wJhQBaTElihGdU1ZzDPYc92vg5vdr8Vv6FbDBaYztfj7jWvM7Gyn6Cp0wc
- 18v4ciMV1p/Y1IAsMBSu6uIljriw5/VUiYCvpDkFbfnPvHb4OyqcaSgIVVt80tk2/vHN
- JXi6XdZVG3CT2s+bpkS6Rl1H1D8O+yh9JkWEr5UIIe/oMiaHP7zeqAi8ztCac6hyEErr
- lD4qn+3b4INvzd8l57/r8Y9FK2Idc16BWqWve7XgI+9Z5qH6snNKapOO6IEdhHlsNNPl
- 4Sc2Lykr5ErPIZcIQmAmMmBS1yJL3XZAadUbtSMTvrnbG+mx3Y1VCXjFxV4MQOfJ+2wR
- 5TwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698981714; x=1699586514;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MRWkzNV15sMQ1OThxzZvfTQZK66YIKvjAWMAHks9Xmg=;
- b=reUppgYdHKXfoDn41RKu8FiKsjVenlk/55s+mRGudo2MMP32DB0HImMzMyKxLjqOOS
- JV/CeOYzewmRQbLs32FSUtod0GeqND0qyyzIeG3cw9QJYBRXrHVx4WUGBVtLhrkaDHhm
- k/zrDg1DVIRqePhjl8kB1cuKBSbQmG7utau8KzPY0uQmTOlOGHjTb3xeGNVbPezRGvqJ
- JyrdBQiIXoq6YM4+jrR0uBtgTkov2a2RMrvI2qiYcxM78GG0ZJhR0gDpp83l9PVhy52e
- Gmg+S0MebYbb1wbEc1iuFJokSJd2qiSPX74Po7OWM6nr9Y1dHBo9YGvhWdGAw0w2Tila
- bjNw==
-X-Gm-Message-State: AOJu0Ywh8VZ60zVx4KFK7GWJtlD01ffbnntGhH5UHfAift+tLn66hwfp
- zSSSfs8PWK3dykUaWI3nm7eijA==
-X-Received: by 2002:a05:6a20:3c88:b0:181:7e88:56f7 with SMTP id
- b8-20020a056a203c8800b001817e8856f7mr4765956pzj.18.1698981714002; 
- Thu, 02 Nov 2023 20:21:54 -0700 (PDT)
-Received: from sunil-laptop ([106.51.188.78]) by smtp.gmail.com with ESMTPSA id
- l8-20020a170902f68800b001b890009634sm380108plg.139.2023.11.02.20.21.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Nov 2023 20:21:53 -0700 (PDT)
-Date: Fri, 3 Nov 2023 08:51:42 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qykmz-0003Sm-Fe
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 23:24:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qykmx-00069u-Rp
+ for qemu-arm@nongnu.org; Thu, 02 Nov 2023 23:24:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698981842;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=+eB/u9oLNspqXcPK+E8Mco/4NBkWn6vwr1h/+oomn9U=;
+ b=ijbjOzPZWxWVmBx24YzJSa+TGtBsYDrcfYLodm5/0jx0wI/ChU3tKsI/AvuI0mlfxkbQ2V
+ cm99cWuR9gfg4JvqaQ5wyowhGZ3J7a3WVgF9q9MVSYoQ0f+jsiOI3gDFLNzCVVlVilqMl4
+ +IMMCr3jvNK2pqX6XcHcWPQduDWbF2I=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-505-Pm2DZNyLOjme-KRmmjNgXA-1; Thu, 02 Nov 2023 23:23:59 -0400
+X-MC-Unique: Pm2DZNyLOjme-KRmmjNgXA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A9D6C185A781;
+ Fri,  3 Nov 2023 03:23:57 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.17])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1960F3F9;
+ Fri,  3 Nov 2023 03:23:56 +0000 (UTC)
+Date: Fri, 3 Nov 2023 11:23:53 +0800
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Juan Quintela <quintela@redhat.com>
+Cc: qemu-devel@nongnu.org, Eric Farman <farman@linux.ibm.com>,
+ Laurent Vivier <lvivier@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-block@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>, qemu-s390x@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
+ Leonardo Bras <leobras@redhat.com>, Corey Minyard <cminyard@mvista.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
  Eduardo Habkost <eduardo@habkost.net>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Subject: Re: [PATCH v6 00/13] RISC-V: ACPI: Enable AIA, PLIC and update RHCT
-Message-ID: <ZURnRrsG13pMJYLi@sunil-laptop>
-References: <20231102170223.2619260-1-sunilvl@ventanamicro.com>
- <64055d84-7a8f-4fc5-85db-dcaa7a36e120@ventanamicro.com>
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Li Zhijian <lizhijian@fujitsu.com>, Eric Blake <eblake@redhat.com>,
+ "Denis V. Lunev" <den@openvz.org>, Hanna Reitz <hreitz@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Corey Minyard <minyard@acm.org>,
+ John Snow <jsnow@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Juan Quintela <quintela@redhat.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Fam Zheng <fam@euphon.net>
+Subject: Re: [PULL 00/40] Migration 20231102 patches
+Message-ID: <20231103032353.GA772102@fedora>
+References: <20231102114054.44360-1-quintela@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="+mUUt5TN4jlsF39c"
 Content-Disposition: inline
-In-Reply-To: <64055d84-7a8f-4fc5-85db-dcaa7a36e120@ventanamicro.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20231102114054.44360-1-quintela@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.393,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,75 +147,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r9idnuvIGvH1
+X-TUID: WExF8kicMRCN
 
-On Thu, Nov 02, 2023 at 06:00:22PM -0300, Daniel Henrique Barboza wrote:
-> Sunil,
-> 
-> 
-> While doing unrelated work (running Gitlab on my series built on top of
-> current riscv-to-apply.next), I hit the following error:
-> 
-> https://gitlab.com/danielhb/qemu/-/jobs/5448178994
-> 
-> ==========
-> 
-> 4/257 ERROR:../tests/qtest/bios-tables-test.c:535:test_acpi_asl: assertion failed: (all_tables_match) ERROR
->   4/257 qemu:qtest+qtest-i386 / qtest-i386/bios-tables-test                ERROR           7.77s   killed by signal 6 SIGABRT
-> > > > G_TEST_DBUS_DAEMON=/builds/danielhb/qemu/tests/dbus-vmstate-daemon.sh PYTHON=/builds/danielhb/qemu/build/pyvenv/bin/python3 MALLOC_PERTURB_=159 QTEST_QEMU_BINARY=./qemu-system-i386 /builds/danielhb/qemu/build/tests/qtest/bios-tables-test --tap -k
-> 
-> acpi-test: Warning! DSDT binary file mismatch. Actual [aml:/tmp/aml-IOYVD2], Expected [aml:tests/data/acpi/microvm/DSDT].
-> See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
-> to see ASL diff between mismatched files install IASL, rebuild QEMU from scratch and re-run tests with V=1 environment variable set**
-> ERROR:../tests/qtest/bios-tables-test.c:535:test_acpi_asl: assertion failed: (all_tables_match)
-> (test program exited with status code -6)
-> 
-> (...)
-> 
-> Summary of Failures:
-> 4571  4/257 qemu:qtest+qtest-i386 / qtest-i386/bios-tables-test                ERROR           7.77s   killed by signal 6 SIGABRT
-> 4572  7/257 qemu:qtest+qtest-aarch64 / qtest-aarch64/bios-tables-test          ERROR          66.00s   killed by signal 6 SIGABRT
-> 4573  Ok:                 247
-> 4574  Expected Fail:      0
-> 4575  Fail:               2
-> 4576  Unexpected Pass:    0
-> 4577  Skipped:            8
-> 4578  Timeout:            0
-> 
-> ==========
-> 
-Thanks! Daniel. I sent v7 with this issue fixed. With v7, here is the
-qtest report I got.
 
-$ make check-qtest-i386 V=1
-...
-Ok:                 60  
-Expected Fail:      0   
-Fail:               0   
-Unexpected Pass:    0   
-Skipped:            3   
-Timeout:            0
+--+mUUt5TN4jlsF39c
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-$ make check-qtest-aarch64 V=1
-...
-Ok:                 20  
-Expected Fail:      0   
-Fail:               0   
-Unexpected Pass:    0   
-Skipped:            2   
-Timeout:            0
+Applied, thanks.
 
-$ make check
-...
-Ok:                 765
-Expected Fail:      0   
-Fail:               0   
-Unexpected Pass:    0   
-Skipped:            71  
-Timeout:            0
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
 
-While I don't see any failures now, there are some tests skipped which
-look expected. Let me know if I need to run any other tests.
+--+mUUt5TN4jlsF39c
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thanks!
-Sunil
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmVEZ8kACgkQnKSrs4Gr
+c8h4Xwf9EmXawNS/GWHyQCKGdfE4V2MJTWhc19RhUzUbpe6ps7f+Va0tXEwEMPME
+Ttf/JZXqIU5JJI+Z5SN7/UVrndTVkw1sRg8HHOhiCsymDWaGWP5PZyaJyoELpoH1
+Yn/VS38/KhE9pvpSo4gdoSxQnavwAFuwEniManGz9AQ4zzlH0YY58MW5jVssWI3C
+W1bySHtgZ4N6tS9hBJX88Pr2QxrS+UhLEsSFvPEysiFGFuqxRFD89DOCeJS+gPnK
+cQhrH+qhY7rpT00ijJNQPdk0zS87LO1e8oGf9+QDTalOIJZ65L7ffqEh3Z5as3Fl
+L9WqbadmvroN7eJl6flK5qUndiWMsQ==
+=B/ad
+-----END PGP SIGNATURE-----
+
+--+mUUt5TN4jlsF39c--
+

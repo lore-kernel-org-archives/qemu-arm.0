@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id g23-20020a7bc4d7000000b004063cd8105csm3381219wmk.22.2023.11.03.13.06.04
+        by smtp.gmail.com with ESMTPSA id g10-20020a056000118a00b00326dd5486dcsm2610517wrx.107.2023.11.03.13.06.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 03 Nov 2023 13:06:05 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 850D56574D;
-	Fri,  3 Nov 2023 19:59:58 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 3F0E365753;
+	Fri,  3 Nov 2023 19:59:59 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -47,266 +47,198 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Michael Rolnik <mrolnik@gmail.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 17/29] gdbstub: Simplify XML lookup
-Date: Fri,  3 Nov 2023 19:59:44 +0000
-Message-Id: <20231103195956.1998255-18-alex.bennee@linaro.org>
+Subject: [PATCH 23/29] plugins: Use different helpers when reading registers
+Date: Fri,  3 Nov 2023 19:59:50 +0000
+Message-Id: <20231103195956.1998255-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
 References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qY/BL70QOPkp
+X-TUID: xyqvRPzLswT9
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Now we know all instances of GDBFeature that is used in CPU so we can
-traverse them to find XML. This removes the need for a CPU-specific
-lookup function for dynamic XMLs.
+This avoids optimizations incompatible when reading registers.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231025093128.33116-11-akihiko.odaki@daynix.com>
+Message-Id: <20231025093128.33116-17-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/exec/gdbstub.h |   6 +++
- gdbstub/gdbstub.c      | 118 +++++++++++++++++++++--------------------
- hw/core/cpu-common.c   |   5 +-
- 3 files changed, 69 insertions(+), 60 deletions(-)
+ accel/tcg/plugin-helpers.h |  3 ++-
+ include/qemu/plugin.h      |  1 +
+ accel/tcg/plugin-gen.c     | 43 ++++++++++++++++++++++++++++++++++----
+ plugins/api.c              | 12 +++++++++--
+ 4 files changed, 52 insertions(+), 7 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index bcaab1bc75..82a8afa237 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -27,6 +27,12 @@ typedef struct GDBFeatureBuilder {
- typedef int (*gdb_get_reg_cb)(CPUState *cpu, GByteArray *buf, int reg);
- typedef int (*gdb_set_reg_cb)(CPUState *cpu, uint8_t *buf, int reg);
+diff --git a/accel/tcg/plugin-helpers.h b/accel/tcg/plugin-helpers.h
+index 8e685e0654..11796436f3 100644
+--- a/accel/tcg/plugin-helpers.h
++++ b/accel/tcg/plugin-helpers.h
+@@ -1,4 +1,5 @@
+ #ifdef CONFIG_PLUGIN
+-DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
++DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb_no_wg, TCG_CALL_NO_WG | TCG_CALL_PLUGIN, void, i32, ptr)
++DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb_no_rwg, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
+ DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, i32, i64, ptr)
+ #endif
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index 7fdc3a4849..b0c5ac6829 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -73,6 +73,7 @@ enum plugin_dyn_cb_type {
  
-+/**
-+ * gdb_init_cpu(): Initialize the CPU for gdbstub.
-+ * @cpu: The CPU to be initialized.
-+ */
-+void gdb_init_cpu(CPUState *cpu);
+ enum plugin_dyn_cb_subtype {
+     PLUGIN_CB_REGULAR,
++    PLUGIN_CB_REGULAR_R,
+     PLUGIN_CB_INLINE,
+     PLUGIN_N_CB_SUBTYPES,
+ };
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 78b331b251..b37ce7683e 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -79,6 +79,7 @@ enum plugin_gen_from {
+ 
+ enum plugin_gen_cb {
+     PLUGIN_GEN_CB_UDATA,
++    PLUGIN_GEN_CB_UDATA_R,
+     PLUGIN_GEN_CB_INLINE,
+     PLUGIN_GEN_CB_MEM,
+     PLUGIN_GEN_ENABLE_MEM_HELPER,
+@@ -90,7 +91,10 @@ enum plugin_gen_cb {
+  * These helpers are stubs that get dynamically switched out for calls
+  * direct to the plugin if they are subscribed to.
+  */
+-void HELPER(plugin_vcpu_udata_cb)(uint32_t cpu_index, void *udata)
++void HELPER(plugin_vcpu_udata_cb_no_wg)(uint32_t cpu_index, void *udata)
++{ }
 +
- /**
-  * gdb_register_coprocessor() - register a supplemental set of registers
-  * @cpu - the CPU associated with registers
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 4809c90c4a..5ecd1f23e6 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -352,6 +352,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
++void HELPER(plugin_vcpu_udata_cb_no_rwg)(uint32_t cpu_index, void *udata)
+ { }
+ 
+ void HELPER(plugin_vcpu_mem_cb)(unsigned int vcpu_index,
+@@ -98,7 +102,7 @@ void HELPER(plugin_vcpu_mem_cb)(unsigned int vcpu_index,
+                                 void *userdata)
+ { }
+ 
+-static void gen_empty_udata_cb(void)
++static void gen_empty_udata_cb(void (*gen_helper)(TCGv_i32, TCGv_ptr))
  {
-     CPUState *cpu = gdb_get_first_cpu_in_process(process);
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-+    GDBRegisterState *r;
-     size_t len;
+     TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+     TCGv_ptr udata = tcg_temp_ebb_new_ptr();
+@@ -106,12 +110,22 @@ static void gen_empty_udata_cb(void)
+     tcg_gen_movi_ptr(udata, 0);
+     tcg_gen_ld_i32(cpu_index, tcg_env,
+                    -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
+-    gen_helper_plugin_vcpu_udata_cb(cpu_index, udata);
++    gen_helper(cpu_index, udata);
  
-     /*
-@@ -365,7 +366,6 @@ static const char *get_feature_xml(const char *p, const char **newp,
-     /* Is it the main target xml? */
-     if (strncmp(p, "target.xml", len) == 0) {
-         if (!process->target_xml) {
--            GDBRegisterState *r;
-             g_autoptr(GPtrArray) xml = g_ptr_array_new_with_free_func(g_free);
- 
-             g_ptr_array_add(
-@@ -380,18 +380,12 @@ static const char *get_feature_xml(const char *p, const char **newp,
-                     g_markup_printf_escaped("<architecture>%s</architecture>",
-                                             cc->gdb_arch_name(cpu)));
-             }
--            g_ptr_array_add(
--                xml,
--                g_markup_printf_escaped("<xi:include href=\"%s\"/>",
--                                        cc->gdb_core_xml_file));
--            if (cpu->gdb_regs) {
--                for (guint i = 0; i < cpu->gdb_regs->len; i++) {
--                    r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--                    g_ptr_array_add(
--                        xml,
--                        g_markup_printf_escaped("<xi:include href=\"%s\"/>",
--                                                r->feature->xmlname));
--                }
-+            for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+                r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+                g_ptr_array_add(
-+                    xml,
-+                    g_markup_printf_escaped("<xi:include href=\"%s\"/>",
-+                                            r->feature->xmlname));
-             }
-             g_ptr_array_add(xml, g_strdup("</target>"));
-             g_ptr_array_add(xml, NULL);
-@@ -400,20 +394,11 @@ static const char *get_feature_xml(const char *p, const char **newp,
-         }
-         return process->target_xml;
-     }
--    /* Is it dynamically generated by the target? */
--    if (cc->gdb_get_dynamic_xml) {
--        g_autofree char *xmlname = g_strndup(p, len);
--        const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
--        if (xml) {
--            return xml;
--        }
--    }
--    /* Is it one of the encoded gdb-xml/ files? */
--    for (int i = 0; gdb_static_features[i].xmlname; i++) {
--        const char *name = gdb_static_features[i].xmlname;
--        if ((strncmp(name, p, len) == 0) &&
--            strlen(name) == len) {
--            return gdb_static_features[i].xml;
-+    /* Is it one of the features? */
-+    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+        if (strncmp(p, r->feature->xmlname, len) == 0) {
-+            return r->feature->xml;
-         }
-     }
- 
-@@ -508,12 +493,10 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-         return cc->gdb_read_register(cpu, buf, reg);
-     }
- 
--    if (cpu->gdb_regs) {
--        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
--            r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--            if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
--                return r->get_reg(cpu, buf, reg - r->base_reg);
--            }
-+    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+        if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
-+            return r->get_reg(cpu, buf, reg - r->base_reg);
-         }
-     }
-     return 0;
-@@ -528,51 +511,70 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
-         return cc->gdb_write_register(cpu, mem_buf, reg);
-     }
- 
--    if (cpu->gdb_regs) {
--        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
--            r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--            if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
--                return r->set_reg(cpu, mem_buf, reg - r->base_reg);
--            }
-+    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+        r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+        if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
-+            return r->set_reg(cpu, mem_buf, reg - r->base_reg);
-         }
-     }
-     return 0;
+     tcg_temp_free_ptr(udata);
+     tcg_temp_free_i32(cpu_index);
  }
  
-+static void gdb_register_feature(CPUState *cpu, int base_reg,
-+                                 gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-+                                 const GDBFeature *feature)
++static void gen_empty_udata_cb_no_wg(void)
 +{
-+    GDBRegisterState s = {
-+        .base_reg = base_reg,
-+        .get_reg = get_reg,
-+        .set_reg = set_reg,
-+        .feature = feature
-+    };
-+
-+    g_array_append_val(cpu->gdb_regs, s);
++    gen_empty_udata_cb(gen_helper_plugin_vcpu_udata_cb_no_wg);
 +}
 +
-+void gdb_init_cpu(CPUState *cpu)
++static void gen_empty_udata_cb_no_rwg(void)
 +{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+    const GDBFeature *feature;
-+
-+    cpu->gdb_regs = g_array_new(false, false, sizeof(GDBRegisterState));
-+
-+    if (cc->gdb_core_xml_file) {
-+        feature = gdb_find_static_feature(cc->gdb_core_xml_file);
-+        gdb_register_feature(cpu, 0,
-+                             cc->gdb_read_register, cc->gdb_write_register,
-+                             feature);
-+    }
-+
-+    cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
++    gen_empty_udata_cb(gen_helper_plugin_vcpu_udata_cb_no_rwg);
 +}
 +
- void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               const GDBFeature *feature, int g_pos)
- {
-     GDBRegisterState *s;
-     guint i;
-+    int base_reg = cpu->gdb_num_regs;
+ /*
+  * For now we only support addi_i64.
+  * When we support more ops, we can generate one empty inline cb for each.
+@@ -192,7 +206,8 @@ static void plugin_gen_empty_callback(enum plugin_gen_from from)
+                     gen_empty_mem_helper);
+         /* fall through */
+     case PLUGIN_GEN_FROM_TB:
+-        gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb);
++        gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb_no_rwg);
++        gen_wrapped(from, PLUGIN_GEN_CB_UDATA_R, gen_empty_udata_cb_no_wg);
+         gen_wrapped(from, PLUGIN_GEN_CB_INLINE, gen_empty_inline_cb);
+         break;
+     default:
+@@ -588,6 +603,12 @@ static void plugin_gen_tb_udata(const struct qemu_plugin_tb *ptb,
+     inject_udata_cb(ptb->cbs[PLUGIN_CB_REGULAR], begin_op);
+ }
  
--    if (cpu->gdb_regs) {
--        for (i = 0; i < cpu->gdb_regs->len; i++) {
--            /* Check for duplicates.  */
--            s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--            if (s->feature == feature) {
--                return;
--            }
-+    for (i = 0; i < cpu->gdb_regs->len; i++) {
-+        /* Check for duplicates.  */
-+        s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+        if (s->feature == feature) {
-+            return;
-         }
--    } else {
--        cpu->gdb_regs = g_array_new(false, false, sizeof(GDBRegisterState));
--        i = 0;
++static void plugin_gen_tb_udata_r(const struct qemu_plugin_tb *ptb,
++                                  TCGOp *begin_op)
++{
++    inject_udata_cb(ptb->cbs[PLUGIN_CB_REGULAR_R], begin_op);
++}
++
+ static void plugin_gen_tb_inline(const struct qemu_plugin_tb *ptb,
+                                  TCGOp *begin_op)
+ {
+@@ -602,6 +623,14 @@ static void plugin_gen_insn_udata(const struct qemu_plugin_tb *ptb,
+     inject_udata_cb(insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR], begin_op);
+ }
+ 
++static void plugin_gen_insn_udata_r(const struct qemu_plugin_tb *ptb,
++                                    TCGOp *begin_op, int insn_idx)
++{
++    struct qemu_plugin_insn *insn = g_ptr_array_index(ptb->insns, insn_idx);
++
++    inject_udata_cb(insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR_R], begin_op);
++}
++
+ static void plugin_gen_insn_inline(const struct qemu_plugin_tb *ptb,
+                                    TCGOp *begin_op, int insn_idx)
+ {
+@@ -721,6 +750,9 @@ static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
+                 case PLUGIN_GEN_CB_UDATA:
+                     plugin_gen_tb_udata(plugin_tb, op);
+                     break;
++                case PLUGIN_GEN_CB_UDATA_R:
++                    plugin_gen_tb_udata_r(plugin_tb, op);
++                    break;
+                 case PLUGIN_GEN_CB_INLINE:
+                     plugin_gen_tb_inline(plugin_tb, op);
+                     break;
+@@ -737,6 +769,9 @@ static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
+                 case PLUGIN_GEN_CB_UDATA:
+                     plugin_gen_insn_udata(plugin_tb, op, insn_idx);
+                     break;
++                case PLUGIN_GEN_CB_UDATA_R:
++                    plugin_gen_insn_udata_r(plugin_tb, op, insn_idx);
++                    break;
+                 case PLUGIN_GEN_CB_INLINE:
+                     plugin_gen_insn_inline(plugin_tb, op, insn_idx);
+                     break;
+diff --git a/plugins/api.c b/plugins/api.c
+index 5521b0ad36..ac39cdea0b 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -89,7 +89,11 @@ void qemu_plugin_register_vcpu_tb_exec_cb(struct qemu_plugin_tb *tb,
+                                           void *udata)
+ {
+     if (!tb->mem_only) {
+-        plugin_register_dyn_cb__udata(&tb->cbs[PLUGIN_CB_REGULAR],
++        int index = flags == QEMU_PLUGIN_CB_R_REGS ||
++                    flags == QEMU_PLUGIN_CB_RW_REGS ?
++                    PLUGIN_CB_REGULAR_R : PLUGIN_CB_REGULAR;
++
++        plugin_register_dyn_cb__udata(&tb->cbs[index],
+                                       cb, flags, udata);
      }
- 
--    g_array_set_size(cpu->gdb_regs, i + 1);
--    s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
--    s->base_reg = cpu->gdb_num_regs;
--    s->get_reg = get_reg;
--    s->set_reg = set_reg;
--    s->feature = feature;
-+    gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature);
- 
-     /* Add to end of list.  */
-     cpu->gdb_num_regs += feature->num_regs;
-     if (g_pos) {
--        if (g_pos != s->base_reg) {
-+        if (g_pos != base_reg) {
-             error_report("Error: Bad gdb register numbering for '%s', "
--                         "expected %d got %d", feature->xml,
--                         g_pos, s->base_reg);
-+                         "expected %d got %d", feature->xml, g_pos, base_reg);
-         } else {
-             cpu->gdb_num_g_regs = cpu->gdb_num_regs;
-         }
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index bab8942c30..2a2a6eb3eb 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -27,6 +27,7 @@
- #include "qemu/main-loop.h"
- #include "exec/log.h"
- #include "exec/cpu-common.h"
-+#include "exec/gdbstub.h"
- #include "qemu/error-report.h"
- #include "qemu/qemu-print.h"
- #include "sysemu/tcg.h"
-@@ -223,11 +224,10 @@ static void cpu_common_unrealizefn(DeviceState *dev)
- static void cpu_common_initfn(Object *obj)
+ }
+@@ -109,7 +113,11 @@ void qemu_plugin_register_vcpu_insn_exec_cb(struct qemu_plugin_insn *insn,
+                                             void *udata)
  {
-     CPUState *cpu = CPU(obj);
--    CPUClass *cc = CPU_GET_CLASS(obj);
- 
-+    gdb_init_cpu(cpu);
-     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
-     cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
--    cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
-     /* user-mode doesn't have configurable SMP topology */
-     /* the default value is changed by qemu_init_vcpu() for system-mode */
-     cpu->nr_cores = 1;
-@@ -247,6 +247,7 @@ static void cpu_common_finalize(Object *obj)
- {
-     CPUState *cpu = CPU(obj);
- 
-+    g_array_free(cpu->gdb_regs, TRUE);
-     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
-     qemu_mutex_destroy(&cpu->work_mutex);
+     if (!insn->mem_only) {
+-        plugin_register_dyn_cb__udata(&insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR],
++        int index = flags == QEMU_PLUGIN_CB_R_REGS ||
++                    flags == QEMU_PLUGIN_CB_RW_REGS ?
++                    PLUGIN_CB_REGULAR_R : PLUGIN_CB_REGULAR;
++
++        plugin_register_dyn_cb__udata(&insn->cbs[PLUGIN_CB_INSN][index],
+                                       cb, flags, udata);
+     }
  }
 -- 
 2.39.2

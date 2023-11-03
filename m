@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p12-20020adfe60c000000b0032d886039easm2608287wrm.14.2023.11.03.12.59.58
+        by smtp.gmail.com with ESMTPSA id f14-20020a05600c154e00b004097881d7a8sm385873wmg.0.2023.11.03.12.59.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 03 Nov 2023 13:00:00 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5461F65746;
+	by draig.lan (Postfix) with ESMTP id 6EDA865747;
 	Fri,  3 Nov 2023 19:59:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -45,86 +45,113 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Bin Meng <bin.meng@windriver.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>
-Subject: [PATCH 07/29] tests/avocado: update the tcg_plugins test
-Date: Fri,  3 Nov 2023 19:59:34 +0000
-Message-Id: <20231103195956.1998255-8-alex.bennee@linaro.org>
+	Michael Rolnik <mrolnik@gmail.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 08/29] gdbstub: Add num_regs member to GDBFeature
+Date: Fri,  3 Nov 2023 19:59:35 +0000
+Message-Id: <20231103195956.1998255-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231103195956.1998255-1-alex.bennee@linaro.org>
 References: <20231103195956.1998255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: S8P+gC6bcxOJ
+X-TUID: zHAVbsjHJJPj
 
-There are a number of things that are broken on the test currently so
-lets fix that up:
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-  - replace retired Debian kernel for tuxrun_baseline one
-  - remove "detected repeat instructions test" since ea185a55
-  - log total counted instructions/memory accesses
+Currently the number of registers exposed to GDB is written as magic
+numbers in code. Derive the number of registers GDB actually see from
+XML files to replace the magic numbers in code later.
 
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231025093128.33116-2-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/avocado/tcg_plugins.py | 28 ++++++++++++++++++----------
- 1 file changed, 18 insertions(+), 10 deletions(-)
+ include/exec/gdbstub.h  |  1 +
+ scripts/feature_to_c.py | 46 +++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 45 insertions(+), 2 deletions(-)
 
-diff --git a/tests/avocado/tcg_plugins.py b/tests/avocado/tcg_plugins.py
-index 642d2e49e3..15fd87b2c1 100644
---- a/tests/avocado/tcg_plugins.py
-+++ b/tests/avocado/tcg_plugins.py
-@@ -54,13 +54,11 @@ def run_vm(self, kernel_path, kernel_command_line,
- class PluginKernelNormal(PluginKernelBase):
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 1a01c35f8e..a43aa34dad 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -13,6 +13,7 @@
+ typedef struct GDBFeature {
+     const char *xmlname;
+     const char *xml;
++    int num_regs;
+ } GDBFeature;
  
-     def _grab_aarch64_kernel(self):
--        kernel_url = ('http://security.debian.org/'
--                      'debian-security/pool/updates/main/l/linux-signed-arm64/'
--                      'linux-image-4.19.0-12-arm64_4.19.152-1_arm64.deb')
--        kernel_sha1 = '2036c2792f80ac9c4ccaae742b2e0a28385b6010'
--        kernel_deb = self.fetch_asset(kernel_url, asset_hash=kernel_sha1)
--        kernel_path = self.extract_from_deb(kernel_deb,
--                                            "/boot/vmlinuz-4.19.0-12-arm64")
-+        kernel_url = ('https://storage.tuxboot.com/20230331/arm64/Image')
-+        kernel_sha256 = 'ce95a7101a5fecebe0fe630deee6bd97b32ba41bc8754090e9ad8961ea8674c7'
-+        kernel_path = self.fetch_asset(kernel_url,
-+                                       asset_hash=kernel_sha256,
-+                                       algorithm = "sha256")
-         return kernel_path
  
-     def test_aarch64_virt_insn(self):
-@@ -88,6 +86,10 @@ def test_aarch64_virt_insn(self):
-             m = re.search(br"insns: (?P<count>\d+)", s)
-             if "count" not in m.groupdict():
-                 self.fail("Failed to find instruction count")
-+            else:
-+                count = int(m.group("count"))
-+                self.log.info(f"Counted: {count} instructions")
+diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
+index bcbcb83beb..e04d6b2df7 100644
+--- a/scripts/feature_to_c.py
++++ b/scripts/feature_to_c.py
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-import os, sys
++import os, sys, xml.etree.ElementTree
+ 
+ def writeliteral(indent, bytes):
+     sys.stdout.write(' ' * indent)
+@@ -39,10 +39,52 @@ def writeliteral(indent, bytes):
+     with open(input, 'rb') as file:
+         read = file.read()
+ 
++    parser = xml.etree.ElementTree.XMLPullParser(['start', 'end'])
++    parser.feed(read)
++    events = parser.read_events()
++    event, element = next(events)
++    if event != 'start':
++        sys.stderr.write(f'unexpected event: {event}\n')
++        exit(1)
++    if element.tag != 'feature':
++        sys.stderr.write(f'unexpected start tag: {element.tag}\n')
++        exit(1)
 +
- 
-     def test_aarch64_virt_insn_icount(self):
-         """
-@@ -111,9 +113,13 @@ def test_aarch64_virt_insn_icount(self):
- 
-         with plugin_log as lf, \
-              mmap.mmap(lf.fileno(), 0, access=mmap.ACCESS_READ) as s:
--            m = re.search(br"detected repeat execution @ (?P<addr>0x[0-9A-Fa-f]+)", s)
--            if m is not None and "addr" in m.groupdict():
--                self.fail("detected repeated instructions")
++    regnum = 0
++    regnums = []
++    tags = ['feature']
++    for event, element in events:
++        if event == 'end':
++            if element.tag != tags[len(tags) - 1]:
++                sys.stderr.write(f'unexpected end tag: {element.tag}\n')
++                exit(1)
 +
-+            m = re.search(br"insns: (?P<count>\d+)", s)
-+            if "count" not in m.groupdict():
-+                self.fail("Failed to find instruction count")
-+            else:
-+                count = int(m.group("count"))
-+                self.log.info(f"Counted: {count} instructions")
++            tags.pop()
++            if element.tag == 'feature':
++                break
++        elif event == 'start':
++            if len(tags) < 2 and element.tag == 'reg':
++                if 'regnum' in element.attrib:
++                    regnum = int(element.attrib['regnum'])
++
++                regnums.append(regnum)
++                regnum += 1
++
++            tags.append(element.tag)
++        else:
++            raise Exception(f'unexpected event: {event}\n')
++
++    if len(tags):
++        sys.stderr.write('unterminated feature tag\n')
++        exit(1)
++
++    base_reg = min(regnums)
++    num_regs = max(regnums) - base_reg + 1 if len(regnums) else 0
++
+     sys.stdout.write('    {\n')
+     writeliteral(8, bytes(os.path.basename(input), 'utf-8'))
+     sys.stdout.write(',\n')
+     writeliteral(8, read)
+-    sys.stdout.write('\n    },\n')
++    sys.stdout.write(f',\n        {num_regs},\n    }},\n')
  
-     def test_aarch64_virt_mem_icount(self):
-         """
-@@ -145,3 +151,5 @@ def test_aarch64_virt_mem_icount(self):
-                 callback = int(m[1])
-                 if inline != callback:
-                     self.fail("mismatched access counts")
-+                else:
-+                    self.log.info(f"Counted {inline} memory accesses")
+ sys.stdout.write('    { NULL }\n};\n')
 -- 
 2.39.2

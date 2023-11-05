@@ -1,79 +1,80 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2142212eja;
-        Sun, 5 Nov 2023 04:17:26 -0800 (PST)
-X-Received: by 2002:a17:902:f301:b0:1cc:31a8:d733 with SMTP id c1-20020a170902f30100b001cc31a8d733mr17772527ple.44.1699186646419;
-        Sun, 05 Nov 2023 04:17:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699186646; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2151106eja;
+        Sun, 5 Nov 2023 04:40:22 -0800 (PST)
+X-Received: by 2002:a05:6602:3411:b0:794:eddf:daae with SMTP id n17-20020a056602341100b00794eddfdaaemr31651775ioz.12.1699188022399;
+        Sun, 05 Nov 2023 04:40:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699188022; cv=none;
         d=google.com; s=arc-20160816;
-        b=f1V8jclcra3h1n3vTlMd5UfHpgd/hv/49lxkCTJr3lenWLVBBOcV0q/8rph+eCQfRo
-         7XanVhS9dH40qXOYa0kximlwR2qZAVstQIrXj6bnLV0Eo+n1QB36ZExYHRFZfnzr+d58
-         ++9d85rawPPMK/9wI2XiCisHdwQGGmAlndNMsIq+dy0G6U3O/2GrJj8hiMw9Yxgh+7Yh
-         BFvJbWxY7wOGeEYSl0rrCh8CkTSkCd/rMIV4wBSCx6rkey9sjJrH01O8g3VpwRYxYsTd
-         9/yoS5v8qWKouSodkAVF2ykOMvOumLS44SNoaNG2l2KjWBGZW8W3kiHyTIhpy/EgaEG8
-         FhgQ==
+        b=pIuDq4H4Xp4OQb6N8thBUmvwzkjH25GNoKl6qpJhEfeUTIyqikL3dbQsjPZ6/Bq14B
+         NT0plNB5X8Bwe2wGvYxjJhANpWNZM07NVpv2+OVJDQgbe1+J9yUhWsuHCwWkC97z/+6U
+         aZtN33Xc+TfVSoVoQCEUk06WgGzk42SydKnRhMNch8u6wQANvVLQQQSJ3nuFGMN2Z0Hv
+         lTpifAPem4ktwdYHnzng/XlNISeTPoh2+Z+4SmVkp1tkc17vgmCvnSffmbAOg22VMijt
+         ImICDEwIxopwBzrcbJUdKnkSPBY1xdXr1q5X74qA47y+kbUwbALV1sjO2MuYACpXzcRt
+         afdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=SeSAy6CaTtpqhdSyHQCwmDvDBGSEd3nXyY7i9vBAN/w=;
-        fh=LCJpmRa5AvPcT5RBA4T8gQ3MYoK9deIz7D2jjtWywaU=;
-        b=OsJlcsgo9L9qgYdwaWkXy4zYhFd5xXkUT16RWdPLN5/4MNie5+cE29MpNPOhQjdc8z
-         79jasgl+/qWrh8JCONIUy19ikAKdK0oX9SL1uWAqFdOoCPE4ZOjcHc4G3XKDnPe5I5cB
-         Z/3A5BFITJhSrhsQNrwjm/zUdtHwxZHjAO1dg5aDEXR3K7AW8VDyweLQVSdLV9E7W1/I
-         V0poWPP42qBCzNfWOuD2Xg8q8SpQrU9sBKB4eJ6UdcGNuEWVed9MsSmqerfT8R8gqo8h
-         4CZ/eYp5TjbWBfHC6mxSQHINVTYvAJufNMvU1HViOGUVlPpHq1JpoBfryRWP2KQ0EdCc
-         3dlA==
+        bh=Vf6hD4b5DeYyR1VQm5b1bivfW1BFqsDiKGbajuDl/eI=;
+        fh=H+gvt3q0+D3Q3kUdvq+81g6fiI9pf3XHGmw+1XzI+is=;
+        b=WxHTPxf4EesFqZvCs4I/iNVFH9PtHpiEjL/w++uvGJ4RwacxAINbfKIhgZarG+hlz0
+         UN4unVXZ4AAaBcyb/HR93geBioNCGq2u9OJJI1CxHBFkd0HlJbMnQrqp7aMf7wdAUdtY
+         A3w4CHZQgexTVrnWvUr0uHJP8IrMPkITPb8EYFQurSAxCj7BgQYsKtHSK5R4SLmQSVHC
+         PLwEtvZHX7qVPUm56IdJBUGRscPcF+qt/R8RgvUxhD44MJoyNVcMVRW46221i3kFjYgj
+         wKPNNaG35j5W2ayvEtCpi2h8ISO6cPIvgK8feABd55b1Ato6xtCBu/NaTq8Xgv11xof6
+         D8iA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=TV3woJwa;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1kFVSBRN;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jk3-20020a170903330300b001cc1e1c32d0sor2650691plb.5.2023.11.05.04.17.26
+        by mx.google.com with SMTPS id n23-20020a056a00213700b006b5034de047sor1996744pfj.8.2023.11.05.04.40.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 05 Nov 2023 04:17:26 -0800 (PST)
+        Sun, 05 Nov 2023 04:40:22 -0800 (PST)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=TV3woJwa;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1kFVSBRN;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1699186646; x=1699791446; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1699188022; x=1699792822; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=SeSAy6CaTtpqhdSyHQCwmDvDBGSEd3nXyY7i9vBAN/w=;
-        b=TV3woJwar9TjkmbJ4LD/B531PajUwZlRMORjUpRXihdt0ph/mYGRBxdABszLiZZELC
-         XJ4K/6PVjJQkKEpCLwEysSbjdUmurOP8Wu/szb8owjMx2IqMnbH12qUAQv3ColjCTdgK
-         zc/myzsmmFfD8hwTsFwqQc2kB3Lc8CZxQmdMZK61n/eSSQZYCQnptwTFXdU5E+d6Oxh/
-         CqABxMexA1RI7oYGr6MjNJVSJ3H2DWSTaY01gBlJCavP5ES7u0jC9IV90EdbjDiVbV+T
-         PSXAPH8i24xPKKXLnhZoYDS5oKOEykkynP4O0gtluaWKoUXdd/kPMTYviNixj4dtOnZY
-         SiCQ==
+        bh=Vf6hD4b5DeYyR1VQm5b1bivfW1BFqsDiKGbajuDl/eI=;
+        b=1kFVSBRNXAyK9D0LIMk2qGbqxYEp7FtU0PkY5PpVclMC2wDTJMVOMcwgbhthQKcSKq
+         Te44CScvc38prG3E6ufpd6M9vi2JZqjoRFhc2Z5DxSjF8AQz64sUgTc8hbEFbdgoA9zp
+         QOhHQMv3kS3ujTAx1l6r9p+UWUVhh1s0KJRvChOogZG0udHIYW3s+cZo0Joi6EY6FEOT
+         btgI1mwg+QT59JBA9S1oWQKHMqeoN/S+yOlt2NPRoThY8JqoB3HiFafkXWNdg6FO4EJz
+         DgmzinQLZEcZRyrTzgIRZ8mx1Wze14ttZRWG9AxnM6zTNbeYNwxBiH/z8gwVGlgEdIua
+         B0Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699186646; x=1699791446;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1699188022; x=1699792822;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SeSAy6CaTtpqhdSyHQCwmDvDBGSEd3nXyY7i9vBAN/w=;
-        b=IQ2L89Rdt2KnqsZjC6By9ussBPcaHpluDHppKhZAoW+h5le74qmLwSLhtCFAw98VTx
-         sEu2LwW7FT6uMZ4a8RWpZ9/VG/FmL6b2oAmoTRqM4fcmBwCSqJhC3BI9FTwmE2EdCdqQ
-         f1njE0jhByrVCFg6N+7SI9kfAJ9WveVDHgKUwYBLxSf37JHMbtpzMGGLdsqWkf3VRWzI
-         1uuhvnxLKUd1DazWyE/8yriejKBMEXvr7WtVf38o4uJ15CaM8lrVQoNNoG7nxw7dHLtl
-         Sj3BGakr6F7j7E8HJVZ52G0/DphxAR+uNC4CKQN+DB3YZryCyCZbrsc3NZ5wObVgudCz
-         n4uA==
-X-Gm-Message-State: AOJu0YzVGvCaK2k6/G79kQNOMdZtsutCMpRMw5E+z59v8uriCAnVJJK0
-	CbPVakjnhC7NCvIkVbc2DyqhktRpRdG/wEAQ0BA=
-X-Google-Smtp-Source: AGHT+IEddoUQay+8ZE9xXcKrOyoFFrBQzIfOn8VssoA27aSnXsMEhr+vQNdg8V2RXaSSmp0GYw3KfA==
-X-Received: by 2002:a17:903:288b:b0:1c5:6157:f073 with SMTP id ku11-20020a170903288b00b001c56157f073mr26337827plb.11.1699186645690;
-        Sun, 05 Nov 2023 04:17:25 -0800 (PST)
+        bh=Vf6hD4b5DeYyR1VQm5b1bivfW1BFqsDiKGbajuDl/eI=;
+        b=cSV5+SHad6WMhtJ1BaJtxrceeFTxFLKQ8SHqy/hdneSDSUN/+fTQURU6LO3hwcLJAO
+         nTAWqOtYgKjXbGYolf8VFxvgW6d9oJl2u8VH5/WtjnAVoEes/uZyrXABIBLCf8G4N9xN
+         GQhbqUz6g2tyiCYcyftGHE4J2mou3DloWiTgaibNBnQyz5S/8YnHa9pGBkwnOfoA/WjK
+         CVs4i2BNyDYQS2l0DPcaIVFu35+Mym6o1nKx404e1FN0ic+cS74LcYTGLOOU7K9rtYxx
+         KhKbtzHfCRYAqnagx7rmuuvHhKmQBYwfJEM+qJUeQnO65O0APCMSWr5roVJHO66O8UZC
+         ZX6w==
+X-Gm-Message-State: AOJu0YwGxz83C0Hzbu0fwYW22QmKt/4qLUyESzdWKsMrkxdRogGN3EAv
+	PcMjcluWc1vtSEtGqMOllxAGy3iGrEfsRSOzYiw=
+X-Google-Smtp-Source: AGHT+IEi0KXGbZSe7qwgF+DFcSd7hs7HKWUtrLO8aYPCk34nFrOvK5drPh0J5mkKUj9JCs46tRY81A==
+X-Received: by 2002:a05:6a20:914e:b0:16b:b824:b25c with SMTP id x14-20020a056a20914e00b0016bb824b25cmr22441456pzc.25.1699188021599;
+        Sun, 05 Nov 2023 04:40:21 -0800 (PST)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from ?IPV6:2400:4050:a840:1e00:78d2:b862:10a7:d486? ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id i10-20020a170902c94a00b001b8a00d4f7asm4140306pla.9.2023.11.05.04.17.18
+        by smtp.gmail.com with ESMTPSA id n1-20020a170902d2c100b001c625acfed0sm4160870plc.44.2023.11.05.04.40.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 05 Nov 2023 04:17:25 -0800 (PST)
-Message-ID: <a28e343f-d864-4817-9ef4-75d6f0f1c291@daynix.com>
-Date: Sun, 5 Nov 2023 21:17:16 +0900
+        Sun, 05 Nov 2023 04:40:20 -0800 (PST)
+Message-ID: <e9c6bb21-678e-44d5-b34d-e7a840a1b7b0@daynix.com>
+Date: Sun, 5 Nov 2023 21:40:12 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/29] tests/tcg: add an explicit gdbstub register tester
+Subject: Re: [PATCH 24/29] plugins: add an API to read registers
+Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -102,192 +103,100 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Bin Meng <bin.meng@windriver.com>, Beraldo Leal <bleal@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>, Luis Machado <luis.machado@linaro.org>
+ Michael Rolnik <mrolnik@gmail.com>
 References: <20231103195956.1998255-1-alex.bennee@linaro.org>
- <20231103195956.1998255-7-alex.bennee@linaro.org>
-Content-Language: en-US
+ <20231103195956.1998255-25-alex.bennee@linaro.org>
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20231103195956.1998255-7-alex.bennee@linaro.org>
+In-Reply-To: <20231103195956.1998255-25-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: rkbE2XqjXens
+X-TUID: OMTeRrB8WOTw
 
 On 2023/11/04 4:59, Alex Bennée wrote:
-> We already do a couple of "info registers" for specific tests but this
-> is a more comprehensive multiarch test. It also has some output
-> helpful for debugging the gdbstub by showing which XML features are
-> advertised and what the underlying register numbers are.
+> We can only request a list of registers once the vCPU has been
+> initialised so the user needs to use either call the find function on
+> vCPU initialisation or during the translation phase. We don't expose
+> the reg number to the plugin instead hiding it behind an opaque
+> handle. This allows for a bit of future proofing should the internals
+> need to be changed while also being hashed against the CPUClass so we
+> can handle different register sets per-vCPU in hetrogenous situations.
 > 
-> My initial motivation was to see if there are any duplicate register
-> names exposed via the gdbstub while I was reviewing the proposed
-> register interface for TCG plugins.
+> Having an internal state within the plugins also allows us to expand
+> the interface in future (for example providing callbacks on register
+> change if the translator can track changes).
 > 
-> Mismatches between the xml and remote-desc are reported for debugging
-> but do not fail the test.
-> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
 > Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Cc: Luis Machado <luis.machado@linaro.org>
+> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20231012170426.1335442-1-alex.bennee@linaro.org>
 > 
 > ---
-> v2
->    - remove python2 compat bits
->    - add SPDX header, clean up comment lines
->    - fix duplicate check
->    - use field 6 (Rmt Nr) instead of field 1 (Nr) for cross-check
->    - more useful output on finding a duplicates and missing regs
->    - handle non-XML targets cleanly
-> ---
->   tests/tcg/multiarch/Makefile.target           |  11 +-
->   tests/tcg/multiarch/gdbstub/registers.py      | 188 ++++++++++++++++++
->   .../multiarch/system/Makefile.softmmu-target  |  13 +-
->   3 files changed, 210 insertions(+), 2 deletions(-)
->   create mode 100644 tests/tcg/multiarch/gdbstub/registers.py
+> vAJB:
 > 
-> diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-> index f3bfaf1a22..d31ba8d6ae 100644
-> --- a/tests/tcg/multiarch/Makefile.target
-> +++ b/tests/tcg/multiarch/Makefile.target
-> @@ -93,12 +93,21 @@ run-gdbstub-thread-breakpoint: testthread
->   		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
->   		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-thread-breakpoint.py, \
->   	hitting a breakpoint on non-main thread)
-> +
-> +run-gdbstub-registers: sha512
-> +	$(call run-test, $@, $(GDB_SCRIPT) \
-> +		--gdb $(GDB) \
-> +		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-> +		--bin $< --test $(MULTIARCH_SRC)/gdbstub/registers.py, \
-> +	checking register enumeration)
-> +
->   else
->   run-gdbstub-%:
->   	$(call skip-test, "gdbstub test $*", "need working gdb with $(patsubst -%,,$(TARGET_NAME)) support")
->   endif
->   EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
-> -	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint
-> +	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
-> +	      run-gdbstub-registers
+> The main difference to Akikio's version is hiding the gdb register
+> detail from the plugin for the reasons described above.
+> ---
+>   include/qemu/qemu-plugin.h   |  52 +++++++++++++++++-
+>   plugins/api.c                | 102 +++++++++++++++++++++++++++++++++++
+>   plugins/qemu-plugins.symbols |   2 +
+>   3 files changed, 154 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+> index 50a9957279..e5c16df5ca 100644
+> --- a/include/qemu/qemu-plugin.h
+> +++ b/include/qemu/qemu-plugin.h
+> @@ -11,6 +11,7 @@
+>   #ifndef QEMU_QEMU_PLUGIN_H
+>   #define QEMU_QEMU_PLUGIN_H
 >   
->   # ARM Compatible Semi Hosting Tests
->   #
-> diff --git a/tests/tcg/multiarch/gdbstub/registers.py b/tests/tcg/multiarch/gdbstub/registers.py
-> new file mode 100644
-> index 0000000000..2aa0c30165
-> --- /dev/null
-> +++ b/tests/tcg/multiarch/gdbstub/registers.py
-> @@ -0,0 +1,188 @@
-> +# Exercise the register functionality by exhaustively iterating
-> +# through all supported registers on the system.
-> +#
-> +# This is launched via tests/guest-debug/run-test.py but you can also
-> +# call it directly if using it for debugging/introspection:
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +#include <glib.h>
+>   #include <inttypes.h>
+>   #include <stdbool.h>
+>   #include <stddef.h>
+> @@ -218,8 +219,8 @@ struct qemu_plugin_insn;
+>    * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
+>    * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
+>    *
+> - * Note: currently unused, plugins cannot read or change system
+> - * register state.
+> + * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
+> + * system register state.
+>    */
+>   enum qemu_plugin_cb_flags {
+>       QEMU_PLUGIN_CB_NO_REGS,
+> @@ -664,4 +665,51 @@ uint64_t qemu_plugin_end_code(void);
+>    */
+>   uint64_t qemu_plugin_entry_code(void);
+>   
+> +/** struct qemu_plugin_register - Opaque handle for a translated instruction */
+> +struct qemu_plugin_register;
 > +
-> +import gdb
-> +import sys
-> +import xml.etree.ElementTree as ET
+> +/**
+> + * typedef qemu_plugin_reg_descriptor - register descriptions
+> + *
+> + * @name: register name
+> + * @handle: opaque handle for retrieving value with qemu_plugin_read_register
+> + * @feature: optional feature descriptor, can be NULL
+> + */
+> +typedef struct {
+> +    char name[32];
+> +    struct qemu_plugin_register *handle;
+> +    const char *feature;
+> +} qemu_plugin_reg_descriptor;
 > +
-> +initial_vlen = 0
+> +/**
+> + * qemu_plugin_find_registers() - return register list
+> + * @vcpu_index: vcpu to query
+> + * @reg_pattern: register name pattern
+> + *
+> + * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
+> + * frees. As the register set of a given vCPU is only available once
+> + * the vCPU is initialised if you want to monitor registers from the
+> + * start you should call this from a qemu_plugin_register_vcpu_init_cb()
+> + * callback.
+> + */
+> +GArray * qemu_plugin_find_registers(unsigned int vcpu_index, const char *reg_pattern);
 
-This seems unused.
-
-> +failcount = 0
-> +
-> +def report(cond, msg):
-> +    "Report success/fail of test."
-> +    if cond:
-> +        print("PASS: %s" % (msg))
-> +    else:
-> +        print("FAIL: %s" % (msg))
-> +        global failcount
-> +        failcount += 1
-
-I suggest using unittest to remove this boilerplate.
-
-> +
-> +
-> +def fetch_xml_regmap():
-> +    """
-> +    Iterate through the XML descriptions and validate.
-> +
-> +    We check for any duplicate registers and report them. Return a
-> +    reg_map hash containing the names, regnums and initial values of
-> +    all registers.
-> +    """
-> +
-> +    # First check the XML descriptions we have sent. Most arches
-> +    # support XML but a few of the ancient ones don't in which case we
-> +    # need to gracefully fail.
-> +
-> +    try:
-> +        xml = gdb.execute("maint print xml-tdesc", False, True)
-> +    except (gdb.error):
-> +        print("SKIP: target does not support XML")
-> +        return None
-> +
-> +    total_regs = 0
-> +    reg_map = {}
-> +    frame = gdb.selected_frame()
-> +
-> +    tree = ET.fromstring(xml)
-> +    for f in tree.findall("feature"):
-> +        name = f.attrib["name"]
-> +        regs = f.findall("reg")
-> +
-> +        total = len(regs)
-> +        total_regs += total
-> +        base = int(regs[0].attrib["regnum"])
-> +        top = int(regs[-1].attrib["regnum"])
-> +
-> +        print(f"feature: {name} has {total} registers from {base} to {top}")
-> +
-> +        for r in regs:
-> +            name = r.attrib["name"]
-> +            regnum = int(r.attrib["regnum"])
-> +            value = frame.read_register(name).__str__()
-
-Does it really need conversion to string?
-
-> +            entry = { "name": name, "initial": value, "regnum": regnum }
-> +
-> +            if name in reg_map:
-> +                report(False, f"duplicate register {entry} vs {reg_map[name]}")
-> +                continue
-> +
-> +            reg_map[name] = entry
-> +
-> +    # Validate we match
-> +    report(total_regs == len(reg_map.keys()),
-> +           f"counted all {total_regs} registers in XML")
-> +
-> +    return reg_map
-> +
-> +def crosscheck_remote_xml(reg_map):
-> +    """
-> +    Cross-check the list of remote-registers with the XML info.
-> +    """
-> +
-> +    remote = gdb.execute("maint print remote-registers", False, True)
-> +    r_regs = remote.split("\n")
-> +
-> +    total_regs = len(reg_map.keys())
-> +    total_r_regs = 0
-> +
-> +    for r in r_regs:
-> +        fields = r.split()
-> +        # Some of the registers reported here are "pseudo" registers that
-> +        # gdb invents based on actual registers so we need to filter them
-> +        # out.
-> +        if len(fields) == 8:
-> +            r_name = fields[0]
-> +            r_regnum = int(fields[6])
-> +
-> +            # check in the XML
-> +            try:
-> +                x_reg = reg_map[r_name]
-> +                x_reg["seen"] = True
-
-Place x_reg["seen"] out of this try block.
+A pattern may be convenient for humans but not for machine. My 
+motivation to introduce the feature is to generate traces consumable by 
+trace-based simulators. Such a plugin needs an exact match of registers.

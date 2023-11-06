@@ -1,164 +1,388 @@
-Received: by 2002:a17:906:70a:b0:9d0:bf65:29fa with SMTP id y10csp369593ejb;
-        Tue, 31 Oct 2023 08:37:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEMVe6m68RPmiI35a2BR2+ZmqxpMCGStPoLniPC1aekfXE8+UBjQemsVkHXAoZ8IGYNk3+p
-X-Received: by 2002:a05:6808:1889:b0:3a9:bb4f:9efd with SMTP id bi9-20020a056808188900b003a9bb4f9efdmr17163309oib.29.1698766643683;
-        Tue, 31 Oct 2023 08:37:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1698766643; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3003790eja;
+        Mon, 6 Nov 2023 11:55:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHUfrvHjxVsdd3pTqKFcUsZrLVmvQJBqtAI0ZjxJER0QbH1YMn+Y6Hl8JjlBAU2SpboSALO
+X-Received: by 2002:a05:620a:2698:b0:774:1d7f:2730 with SMTP id c24-20020a05620a269800b007741d7f2730mr29361440qkp.46.1699300509514;
+        Mon, 06 Nov 2023 11:55:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300509; cv=none;
         d=google.com; s=arc-20160816;
-        b=X80M4p3BK8X1VuKkhad4QSpNBQ4h0MAiXcWZTUDk762CQ+o7ALAWmpn5UJ85laWRel
-         KJGVh50NQ6b+j9jxKT8h7NJ1jQlOYuuniQzL+BbdgTEnTA+VFGKVs0mDSXUPXzLf56A4
-         jnVWmMP23PETZCDnWQFuM5EO0bSLg77bL0MCiK2JPma0YSEwlGIpBomdsOLXrE3LSFKk
-         KmfZ44l2AWDRr6isPMFzQvplzIoAJYUbJMI//6tsIF+snmPLmnfsgC3cnPPOVkhCbl7w
-         CLiFm0wkliTTLMOuCUsmCsjWtv0/yY1as3DjJxdINq1cGPExvQdZNy7orLovwKmonzSt
-         mQ6A==
+        b=h8Zb4fpXFh/TpgymWuUUDGxo0AMWtPZzYcz7vCBkHASza0anu+/E8XRB53q7ff50+D
+         gOJKOXUgyYwnyONg/BXw4jBF4wIXOSxVKO8H7OBLwZwLq6Maq5wfu+ti4xKmp+lSW7uj
+         stKpZtDxWjFY5Sqx/EKNqsjEDoUSGl+qYHn1+KEqdp2lC+9VzJYu9F7mO+j3zLQvTB1M
+         p1Ld8oeFyDFYQEIDfku08T4qaXQs0dLoiw+if5fxOzNBlezrHeCloGd3vjhr8q28oI/P
+         klsWVLMZDp+75eAZ0li69jTWtwVJfTJHuLIXUSikgIL6fv43hyA4sJ1dkOoHmkKWHMDs
+         ojkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=J94TLVmxpl0XnRjKblCQ373JUKXqYHNbMQKHGSlFu3c=;
-        fh=giCHlKppfOgmdvLAMagRFWW2RCPUlCMrCS/S3knKnVE=;
-        b=AYHTfiWLQ6ahzZvB6F9BQWDabDQGB6udZYeDAr6nLDqTpDYShO4WDqOT54k6iOcc8Q
-         IKRcfxKdtrUje/eH7Aiz8JTIzYJ7D0em9zXgLV3nVaJ8zTEMeWmPjczLgaImJmB7N54R
-         lAvk2hBunxxoHrXG3FYu636aWAQW3bxEHNLhTUF34TpB67gTsscqjlces+Rwd0wzrDM2
-         C6aqDXfLQKtrJUmBys/JvcXKKh6ntVV6Ko4T/OVScx0fA/lHNQQmBqN/IhhgcqNSoqLZ
-         ynDOw0TNfXo8WSSdQThPMxOS0TR09pHa5MRgZWi+TPpbK7Lvw4jlU9fdFuCmUkJ1YUVI
-         YIsg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=udFQWarJn+hEJgz2ZpM+rMCQmr2oQkjwNUAfu2C/g0c=;
+        fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
+        b=DvfHQZbcbVHNnQzWX54UGw7xWNWnU8TV+m31RuvlJ5O0orUQY8rFP+Hb36vA9eQBtb
+         +KTO/EfoY0YpnlSIdlSz4iRMjOTL2sGCcV6CFDhrO4PjlqhVWqEMZSz62gwjVGAMX+Ru
+         s9sxPKixw+4K6PvWFF7l/g9JjMCOYcufy1te6g60wTO4/YfacCM9/Y0zv1c9FQ5FvIv8
+         Tveh0glEi6d+3ZpdDttoXsOb6fHWUeYLq9JF+8lEEd1IcS6RHQNVJNdCNSQ7VNmg4lsM
+         +LcBN6y7TXXA1NrcpL7Qv+HQor8rfHp1s+3++o2CVHhougJc/4noC/SN0BFXXsXiDLF0
+         w5lw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TbovjNLe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=m+mvt0iB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4-20020ad448c4000000b00671c0c3730esi1258513qvx.423.2023.10.31.08.37.23
+        by mx.google.com with ESMTPS id w6-20020a05620a424600b0077434519ca0si4439235qko.3.2023.11.06.11.55.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Oct 2023 08:37:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Nov 2023 11:55:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TbovjNLe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=m+mvt0iB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qxqno-0000sD-Dh; Tue, 31 Oct 2023 11:37:12 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r05g9-0005jX-1X; Mon, 06 Nov 2023 14:54:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxqnl-0000n6-Al
- for qemu-arm@nongnu.org; Tue, 31 Oct 2023 11:37:09 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qxqnj-0003AN-Q0
- for qemu-arm@nongnu.org; Tue, 31 Oct 2023 11:37:09 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-9a58dbd5daeso893224466b.2
- for <qemu-arm@nongnu.org>; Tue, 31 Oct 2023 08:37:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698766626; x=1699371426; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=J94TLVmxpl0XnRjKblCQ373JUKXqYHNbMQKHGSlFu3c=;
- b=TbovjNLebta0uJG+EHLa1Ndze5oDKC6v64hoWVbhJEVhpF9SUE5DtSckjNDAQv2Hck
- Veu5F1KS4ipjETO7f5vMt0JX5swkh8jztfKChYWREvSGIyruDoKfmV725QC2xs+pF2P+
- 5ASJe5Rd+FHfUCWdFesLCUmS0Hnf3rBDzSNPkSG5vmHykZxKw3K6GYRW1deiaTIrqA0M
- CvUz0g+XgrkN+Nj/yAs9Wq0njtD1E2GyrMMvP+/AmriNXukGhQPWjM8x18moesaw785a
- /85imbKF01QqFuNg6TeNKcvIC235SYrAQvG+ye5tmw8Nzdm/KzL7yPJXAld7SRwgYwh9
- JFnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698766626; x=1699371426;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=J94TLVmxpl0XnRjKblCQ373JUKXqYHNbMQKHGSlFu3c=;
- b=t8KhcvsPxSZWvyT/7KlN2M6wbTxzub/hoBkIUJoPEXqtyBNgQ7ZqGoRKBIIbDMuw7+
- sZfB0c3z30G1tjFuO+j3QDyEDu8LIuZiElj1vD3w+owXTBLtJ3Vmg/spIrDZCbZtJs79
- 8jDTOLEEJm26TLM1ieJ4DCskTmiWXdQ9h84KOfDdT6iNb86QBjVhwXQhsZtw8P7LBztH
- CTv/ldUYts1SZaqTU9WYUJ8sCql/p7GIoJRb8Z8nKEfTjQrwxpRwpbTP0WEjmyn7oOHT
- keHXuGskEUiRcz//0g3iHYEKos+aAKsjBGotfcZITTuM7GIWfNbaciFQBtPQKDznzz4O
- yjOw==
-X-Gm-Message-State: AOJu0YyosOCKqyxf726BUzhdOqOu1g+Iv5kiyMu6BlORXxGxJNJSaL5D
- 6RDY70ND3poI4fiGOJjReX4ovFSC1vXhS5P8CKd2FQ==
-X-Received: by 2002:a17:907:318a:b0:9be:21dc:8a9a with SMTP id
- xe10-20020a170907318a00b009be21dc8a9amr10630988ejb.39.1698766625947; Tue, 31
- Oct 2023 08:37:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05g2-0005Yg-BZ; Mon, 06 Nov 2023 14:54:26 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05fy-00065m-2W; Mon, 06 Nov 2023 14:54:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=udFQWarJn+hEJgz2ZpM+rMCQmr2oQkjwNUAfu2C/g0c=; b=m+mvt0iBoqp36d4xmxonPeSMsr
+ F812/mq4W1OECg+8jFEzI/RIr5PILlCWSlJleBGLINYomXUm1eOlLurzG7cNRgSZrct3Af/5gs49Q
+ +UuzWqNCu2e2oQAhmBYcgLhUqbYXVdTrsBZIaOw923YVo0gbIeDChkloZgySxkRbAbrft0hJU43Vh
+ 0CrD6u56IBLuWxT3KclSCBlRkZqXebOg/LwUfXXK9IhVWpxZ9qnidqLNmnalb2cS7RwxfDIduIIP+
+ W/3NXOhLwC1SBGdO4UQitet2UTqfB1hG19ZOu7xcKsHPPINvm3npSnyy43TA916uWXsNCvBCscHed
+ +y5FSF6w==;
+Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1r05fa-00AkFd-1p; Mon, 06 Nov 2023 19:53:58 +0000
+Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
+ Hat Linux)) id 1r05fZ-001GMw-2O; Mon, 06 Nov 2023 19:53:57 +0000
+From: David Woodhouse <dwmw2@infradead.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
+ Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
+ Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ xen-devel@lists.xenproject.org
+Subject: [PATCH for-8.3 v2 06/46] hw/xen: use qemu_create_nic_bus_devices() to
+ instantiate Xen NICs
+Date: Mon,  6 Nov 2023 19:49:11 +0000
+Message-ID: <20231106195352.301038-7-dwmw2@infradead.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
+References: <20231106195352.301038-1-dwmw2@infradead.org>
 MIME-Version: 1.0
-References: <20231030114802.3671871-1-peter.maydell@linaro.org>
- <20231030114802.3671871-6-peter.maydell@linaro.org>
- <9ea5c9b8-d740-4cec-9896-568babeca9aa@ilande.co.uk>
- <CAFEAcA9dJnp0CVOzVWV+Q-U4ji9c8=14ggztKGktCSsDDp_F0g@mail.gmail.com>
- <CAFEAcA_4wqP7G+gXnunJx85OTvUr-3kx6HGABGb6Kt3y=b_Nvw@mail.gmail.com>
- <59d6df3c-95ee-4ac4-9ac4-3f4ed49708fa@linaro.org>
-In-Reply-To: <59d6df3c-95ee-4ac4-9ac4-3f4ed49708fa@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 Oct 2023 15:36:54 +0000
-Message-ID: <CAFEAcA9tipCFVfnR0Z9P8rvmtFdvzsn7dkz3FUAkTEuH+35d2g@mail.gmail.com>
-Subject: Re: [PATCH v2 5/6] hw/input/stellaris_input: Convert to qdev
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2Km0k/yZEWVF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sqJOfCjbJ7ad
 
-On Tue, 31 Oct 2023 at 14:55, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 31/10/23 15:05, Peter Maydell wrote:
-> > On Tue, 31 Oct 2023 at 13:55, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
-> >>
-> >> On Mon, 30 Oct 2023 at 20:38, Mark Cave-Ayland
-> >> <mark.cave-ayland@ilande.co.uk> wrote:
-> >>>
-> >>> On 30/10/2023 11:48, Peter Maydell wrote:
-> >>> Is it worth converting this to use DEFINE_TYPES() during the conversi=
-on? I know Phil
-> >>> has considered some automation to remove the type_init() boilerplate =
-for the majority
-> >>> of cases.
-> >>
-> >> I could, I guess. It seems a bit awkward that DEFINE_TYPES()
-> >> wants you to pass it an array even when you only have one type,
-> >> though, which is going to be a very common use case.
->
-> For single type, there is no point beside enforcing a QOM style.
->
-> I'll update docs/devel/qom.rst...
+From: David Woodhouse <dwmw@amazon.co.uk>
 
-I do like that the macro means you're not writing an actual
-function for the registration.
+When instantiating XenBus itself, for each NIC which is configured with
+either the model unspecified, or set to to "xen" or "xen-net-device",
+create a corresponding xen-net-device for it.
 
-We could I guess have a DEFINE_TYPE() macro that was similar
-to DEFINE_TYPES but emitted a function that called
-type_register_static() instead of type_register_static_array().
-Is that worth having? I'm not sure.
+Now we can revert the previous more hackish version which relied on the
+platform code explicitly registering the NICs on its own XenBus, having
+returned the BusState* from xen_bus_init() itself.
 
-thanks
--- PMM
+This also fixes the setup for Xen PV guests, which was previously broken
+in various ways and never actually managed to peer with the netdev.
+
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Paul Durrant <paul@xen.org>
+---
+ hw/i386/pc.c                        | 13 ++-----------
+ hw/i386/pc_piix.c                   |  2 +-
+ hw/i386/pc_q35.c                    |  2 +-
+ hw/xen/xen-bus.c                    |  6 ++++--
+ hw/xen/xen_devconfig.c              | 25 -------------------------
+ hw/xenpv/xen_machine_pv.c           |  9 ---------
+ include/hw/i386/pc.h                |  4 +---
+ include/hw/xen/xen-bus.h            |  2 +-
+ include/hw/xen/xen-legacy-backend.h |  1 -
+ 9 files changed, 10 insertions(+), 54 deletions(-)
+
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 4078d2d231..86abba61c0 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1262,7 +1262,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+         if (pcms->bus) {
+             pci_create_simple(pcms->bus, -1, "xen-platform");
+         }
+-        pcms->xenbus = xen_bus_init();
++        xen_bus_init();
+         xen_be_init();
+     }
+ #endif
+@@ -1290,8 +1290,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+                     pcms->vmport != ON_OFF_AUTO_ON);
+ }
+ 
+-void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
+-                 BusState *xen_bus)
++void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus)
+ {
+     MachineClass *mc = MACHINE_CLASS(pcmc);
+     bool default_is_ne2k = g_str_equal(mc->default_nic, TYPE_ISA_NE2000);
+@@ -1299,14 +1298,6 @@ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
+ 
+     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_NIC);
+ 
+-    if (xen_bus) {
+-        while (nc = qemu_find_nic_info("xen-net-device", true, NULL)) {
+-            DeviceState *dev = qdev_new("xen-net-device");
+-            qdev_set_nic_properties(dev, nd);
+-            qdev_realize_and_unref(dev, xen_bus, &error_fatal);
+-        }
+-    }
+-
+     while ((nd = qemu_find_nic_info(TYPE_ISA_NE2000, default_is_ne2k, NULL))) {
+         pc_init_ne2k_isa(isa_bus, nd);
+     }
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index eace854335..26e161beb9 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -342,7 +342,7 @@ static void pc_init1(MachineState *machine,
+     pc_basic_device_init(pcms, isa_bus, x86ms->gsi, rtc_state, true,
+                          0x4);
+ 
+-    pc_nic_init(pcmc, isa_bus, pci_bus, pcms->xenbus);
++    pc_nic_init(pcmc, isa_bus, pci_bus);
+ 
+     if (pcmc->pci_enabled) {
+         pc_cmos_init(pcms, idebus[0], idebus[1], rtc_state);
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 4f3e5412f6..597943ff1b 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -340,7 +340,7 @@ static void pc_q35_init(MachineState *machine)
+ 
+     /* the rest devices to which pci devfn is automatically assigned */
+     pc_vga_init(isa_bus, host_bus);
+-    pc_nic_init(pcmc, isa_bus, host_bus, pcms->xenbus);
++    pc_nic_init(pcmc, isa_bus, host_bus);
+ 
+     if (machine->nvdimms_state->is_enabled) {
+         nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+diff --git a/hw/xen/xen-bus.c b/hw/xen/xen-bus.c
+index 4973e7d9c9..fb82cc33e4 100644
+--- a/hw/xen/xen-bus.c
++++ b/hw/xen/xen-bus.c
+@@ -19,6 +19,7 @@
+ #include "qapi/error.h"
+ #include "qapi/qmp/qdict.h"
+ #include "sysemu/sysemu.h"
++#include "net/net.h"
+ #include "trace.h"
+ 
+ static char *xen_device_get_backend_path(XenDevice *xendev)
+@@ -1133,7 +1134,7 @@ static void xen_register_types(void)
+ 
+ type_init(xen_register_types)
+ 
+-BusState *xen_bus_init(void)
++void xen_bus_init(void)
+ {
+     DeviceState *dev = qdev_new(TYPE_XEN_BRIDGE);
+     BusState *bus = qbus_new(TYPE_XEN_BUS, dev, NULL);
+@@ -1141,5 +1142,6 @@ BusState *xen_bus_init(void)
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     qbus_set_bus_hotplug_handler(bus);
+ 
+-    return bus;
++    qemu_create_nic_bus_devices(bus, TYPE_XEN_DEVICE, "xen-net-device",
++                                "xen", "xen-net-device");
+ }
+diff --git a/hw/xen/xen_devconfig.c b/hw/xen/xen_devconfig.c
+index 3f77c675c6..2150869f60 100644
+--- a/hw/xen/xen_devconfig.c
++++ b/hw/xen/xen_devconfig.c
+@@ -46,31 +46,6 @@ static int xen_config_dev_all(char *fe, char *be)
+ 
+ /* ------------------------------------------------------------- */
+ 
+-int xen_config_dev_nic(NICInfo *nic)
+-{
+-    char fe[256], be[256];
+-    char mac[20];
+-    int vlan_id = -1;
+-
+-    net_hub_id_for_client(nic->netdev, &vlan_id);
+-    snprintf(mac, sizeof(mac), "%02x:%02x:%02x:%02x:%02x:%02x",
+-             nic->macaddr.a[0], nic->macaddr.a[1], nic->macaddr.a[2],
+-             nic->macaddr.a[3], nic->macaddr.a[4], nic->macaddr.a[5]);
+-    xen_pv_printf(NULL, 1, "config nic %d: mac=\"%s\"\n", vlan_id, mac);
+-    xen_config_dev_dirs("vif", "qnic", vlan_id, fe, be, sizeof(fe));
+-
+-    /* frontend */
+-    xenstore_write_int(fe, "handle",     vlan_id);
+-    xenstore_write_str(fe, "mac",        mac);
+-
+-    /* backend */
+-    xenstore_write_int(be, "handle",     vlan_id);
+-    xenstore_write_str(be, "mac",        mac);
+-
+-    /* common stuff */
+-    return xen_config_dev_all(fe, be);
+-}
+-
+ int xen_config_dev_vfb(int vdev, const char *type)
+ {
+     char fe[256], be[256];
+diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
+index 9f9f137f99..1130d1a147 100644
+--- a/hw/xenpv/xen_machine_pv.c
++++ b/hw/xenpv/xen_machine_pv.c
+@@ -32,8 +32,6 @@
+ 
+ static void xen_init_pv(MachineState *machine)
+ {
+-    int i;
+-
+     setup_xen_backend_ops();
+ 
+     /* Initialize backend core & drivers */
+@@ -62,13 +60,6 @@ static void xen_init_pv(MachineState *machine)
+         vga_interface_created = true;
+     }
+ 
+-    /* configure nics */
+-    for (i = 0; i < nb_nics; i++) {
+-        if (!nd_table[i].model || 0 != strcmp(nd_table[i].model, "xen"))
+-            continue;
+-        xen_config_dev_nic(nd_table + i);
+-    }
+-
+     xen_bus_init();
+ 
+     /* config cleanup hook */
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index a10ceeabbf..29a9724524 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -33,7 +33,6 @@ typedef struct PCMachineState {
+ 
+     /* Pointers to devices and objects: */
+     PCIBus *bus;
+-    BusState *xenbus;
+     I2CBus *smbus;
+     PFlashCFI01 *flash[2];
+     ISADevice *pcspk;
+@@ -185,8 +184,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
+ void pc_cmos_init(PCMachineState *pcms,
+                   BusState *ide0, BusState *ide1,
+                   ISADevice *s);
+-void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
+-                 BusState *xen_bus);
++void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus);
+ 
+ void pc_i8259_create(ISABus *isa_bus, qemu_irq *i8259_irqs);
+ 
+diff --git a/include/hw/xen/xen-bus.h b/include/hw/xen/xen-bus.h
+index 334ddd1ff6..38d40afa37 100644
+--- a/include/hw/xen/xen-bus.h
++++ b/include/hw/xen/xen-bus.h
+@@ -75,7 +75,7 @@ struct XenBusClass {
+ OBJECT_DECLARE_TYPE(XenBus, XenBusClass,
+                     XEN_BUS)
+ 
+-BusState *xen_bus_init(void);
++void xen_bus_init(void);
+ 
+ void xen_device_backend_set_state(XenDevice *xendev,
+                                   enum xenbus_state state);
+diff --git a/include/hw/xen/xen-legacy-backend.h b/include/hw/xen/xen-legacy-backend.h
+index fc42146bc2..2cca174778 100644
+--- a/include/hw/xen/xen-legacy-backend.h
++++ b/include/hw/xen/xen-legacy-backend.h
+@@ -81,7 +81,6 @@ extern struct XenDevOps xen_usb_ops;          /* xen-usb.c         */
+ 
+ /* configuration (aka xenbus setup) */
+ void xen_config_cleanup(void);
+-int xen_config_dev_nic(NICInfo *nic);
+ int xen_config_dev_vfb(int vdev, const char *type);
+ int xen_config_dev_vkbd(int vdev);
+ int xen_config_dev_console(int vdev);
+-- 
+2.41.0
+

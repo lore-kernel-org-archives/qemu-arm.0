@@ -1,185 +1,382 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2645464eja;
-        Mon, 6 Nov 2023 01:57:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHJszSSdodlJqUjPApAGjuKG7yV2w7BLZ9d9jmDLT+cMQzxChGGs/4h/xWEFPr9LO+EKnnJ
-X-Received: by 2002:a05:622a:40d:b0:419:7e82:9190 with SMTP id n13-20020a05622a040d00b004197e829190mr37299245qtx.31.1699264672909;
-        Mon, 06 Nov 2023 01:57:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699264672; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2675822eja;
+        Mon, 6 Nov 2023 03:03:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEuZFwvYvKe6yBg50jYBEv0AJxvwmIYebxsYL3tMwA13PcliQff8w6fjsPl40Z5tlZF8noy
+X-Received: by 2002:a17:903:41c4:b0:1cc:4a84:27fc with SMTP id u4-20020a17090341c400b001cc4a8427fcmr19835308ple.52.1699268630933;
+        Mon, 06 Nov 2023 03:03:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268630; cv=none;
         d=google.com; s=arc-20160816;
-        b=WshrEN1/9rMU5VOjaBDyXGb27LNNU/X1LNfmC2mjy77auHnyZ3exnfWFQRrCm5qG5a
-         bkkK8EvDWm3Nhb3+FPuXdKOiVEFM2nS2bTH9ACsT1hVArX4m0+dnAuoQmgvAqk0R6mrB
-         E8TkLcsocgX44+ZgT5VU1xop7TxCyoNZPr/UpXpR5pscK5jsF1hQE06jeimVBlwTPCg7
-         tynhEBe1TVnb1mHPHjddKDTeVSrHf/LVeo3C1Dw+Om4/o7iMHlcx6rQTlv1t0xZth4IB
-         0tY8qQZlWe50/Acpp4O8Gusglnq1NQXxqf7hEPFG/W3RV83n9HqUlhevBEqzMInmmm9d
-         bqJw==
+        b=toxQe4Bww+qBin8eU+keJtBzxxtfDBPVfQOaUsfOMF5N1DTVQ20aMbSK4sjOIW/BGF
+         vwdfwx4WmzoUch/CXZNjXcfVwE9XKSLtxnAo0m+4g3zJe3vAG856ZDIizmDO/DDzYHwn
+         bSPjKWTXE6oClqDts+ysvBAZwe1zcz/sLmKzRFAORV88NUlDV9yLsvPDlrHV5DmoHosF
+         5RYdDMupMUFyyTwHGvkPGMz1hm2Nc6yEO1LfTeY91aER+cGMtVshNrm8++r7LKnwMsQq
+         MjziKhBRS+3DYyXXhGsFUR0QJbnMJZA4iZldVr4O1uT2qumKUOyC7rzbWabFnroSnbUP
+         W7+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2dTeKlsF2I7zQAqovNNgVB/FgoobsTX2dh4aN4tFqx4=;
-        fh=jCWr8o4gKfVryjAlDChV7jmMrIfhOWUhS6ngY+scWJ0=;
-        b=W5E3zqO7Ahqi0GG21JVBlEZw7efRjDHitjDFK/XcMAFI1Wuaw6lX0EnqhqmKP1r79K
-         vtn55gdIJ3i0gPxPv4DbDveYxd0zM9I30BJf0Cm/xT6Nz2FTAVymk1IEmQMwDlHV/Pbs
-         wY32w29Jhh5subYG5FVHekH1qThW3iUqcosed0ysCmWRMJqvj9p8v6RHygloUde/o43e
-         fGsDJCNlHAVHHhuhWQyj41w9Rjcty3Y7pItoBm2TMTZ6GH9kbKEUSD1DHNOgdcmg2JIv
-         Qb/48URarmEw1bDqjKXWdnyh+71SmHK3nca5Zu9juM31vMYJsB9/uODwYfgriQiy6Au/
-         krQQ==
+        bh=s2ZTAIZ3EcP2rWfDpzhdpbAQPKF0BMVTmUIclEXcHBw=;
+        fh=S6ZXhkdH+Ed6UTLsCa2Eu+CVYqgvfOtsf+1dLoN0YgU=;
+        b=Mee7Jd2FcvoYKSvP4z/7m8ATheqFsZ6nP9Nsy6fZ4kSvGCo9zzluKffuexyG3F0QpU
+         iEBrxQdHYIPeI9AhHrmgrRevvBmar2n0ySyRci4W90pZf1/tlho7WPPdk1HQssmi9zx/
+         SUCKAHdnKSJLt2XMfHiSN2Yj9z2IEEcaaTwwB+qKBscdfu9J8t8FmD5+7rgSBt7sLwmb
+         iQl7TN9SgSjBK8G7P8RcIHm/kKZqjpgNkRGtEQCObWT/2h7gugYby0caOSAOZh2O0r9G
+         Q7O015y6BL/5M6y285NlT9u94V5s2Wa7ohS8rebOdSEHRt3NI0xdypayar1vqdhoCPQD
+         0uDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OGyonID5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a21-20020ac85b95000000b00419ab6ffee0si5150287qta.235.2023.11.06.01.57.52
+       dkim=pass header.i=@linaro.org header.s=google header.b=cuabuBTi;
+       spf=pass (google.com: domain of kvm+bounces-668-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-668-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-668-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id kv6-20020a17090328c600b001cc37466bdasi7694816plb.239.2023.11.06.03.03.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 01:57:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Nov 2023 03:03:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-668-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OGyonID5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qzwM8-0000de-UQ; Mon, 06 Nov 2023 04:57:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qzwM7-0000Yr-Tq
- for qemu-arm@nongnu.org; Mon, 06 Nov 2023 04:57:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qzwM6-00005O-7Z
- for qemu-arm@nongnu.org; Mon, 06 Nov 2023 04:57:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699264632;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2dTeKlsF2I7zQAqovNNgVB/FgoobsTX2dh4aN4tFqx4=;
- b=OGyonID5TBw4aeKTJoHXMi3Z6hD4e/muNB43/M1g7+uhO5V75865TKaOiXDW/Mf2UcIhWl
- o8/nwn8eAF3upyuExWOPwUS49AGqVz31sxb1q4DHALyVGqGJQwEX8nPz2XOllzPHVB8q0u
- YlAVVsPSDvmwNBUYwe2iZDtgABitMO0=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-313-IDCX9MHKOyuIUmQDbjDelA-1; Mon,
- 06 Nov 2023 04:57:08 -0500
-X-MC-Unique: IDCX9MHKOyuIUmQDbjDelA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0FE5528B72E1;
- Mon,  6 Nov 2023 09:57:08 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.31])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 19425502B;
- Mon,  6 Nov 2023 09:57:06 +0000 (UTC)
-From: marcandre.lureau@redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=cuabuBTi;
+       spf=pass (google.com: domain of kvm+bounces-668-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-668-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 48F8A2811AD
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:03:50 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2ACC8199B7;
+	Mon,  6 Nov 2023 11:03:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="cuabuBTi"
+Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 058E7199A1
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:03:43 +0000 (UTC)
+Received: from mail-lf1-x12b.google.com (mail-lf1-x12b.google.com [IPv6:2a00:1450:4864:20::12b])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5F05FBB
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:03:41 -0800 (PST)
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-507e85ebf50so5315980e87.1
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:03:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1699268619; x=1699873419; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=s2ZTAIZ3EcP2rWfDpzhdpbAQPKF0BMVTmUIclEXcHBw=;
+        b=cuabuBTidQJ1RADeG8blCRV3Zqd3OSs16QbShXgA2rn9CKJEzqz7QO3ka/As0NyVsj
+         J6leJ2R+CUymhZheJT2g3aNOr1ogLz18O3rkTq31UF2os0yl1mBYRpdtTqlZLFxjhB/Q
+         hJC8rjfn+cGLr1H+oVttYGtG1ZfBc0qOs1cnZ/ghySU8sIae29zySs6ZGML36elzXAMd
+         szP7eI7p4nIofl5BS4zYXF93ImVnN2UE19y1DFThPClXGjwJiYtN/b7EUr+qsFktBuZj
+         bB5fvVZQIgyY2k2j3X8yIeEP3Tc29DNHIBgKbrihsL9ogBhEAPlPzu8v2b5Ca1IbkM7Y
+         Mw3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699268619; x=1699873419;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=s2ZTAIZ3EcP2rWfDpzhdpbAQPKF0BMVTmUIclEXcHBw=;
+        b=EwJXgQNxFItbZ9VxaefwefZcTNKCYIQMph/MNz4PFwAScDGzvH/J7OYmBkkfW0bmtO
+         s8YuAD6A7pMIOzbeLDhiD9cn3AfnjOfbCAZ0mk1aX34iibzChwdUJ9Gi54bEqHxX0IRP
+         IsgGxYMQdxHJOOnoDmKrJDH+Nwt9RIwWHd7iEZAV40G77AQVKUqv7nWB/7OItlyAX+S+
+         yln6x09o7+Xr8T1CybVWw0rSipXtYhUodr8F1xfAHatisnRV0agJAqNW3jwB2LcgL8ju
+         CyfnPtXpv20wADDAl4uSBKplKaHzbpUCKLc1Lp/HGpUaMIvn0TuuBbdfe22JrRovF+Ee
+         n+KQ==
+X-Gm-Message-State: AOJu0YyMfSHp6TS1TKwPYtlO28B7qn+L/AMhdE6tDO+f9+PznsUnRqoF
+	HYPtMwCo+Fs9A6Qozl1LUc4/T2CSv0rBJ7t9PvQ=
+X-Received: by 2002:a05:6512:2810:b0:504:30eb:f2ac with SMTP id cf16-20020a056512281000b0050430ebf2acmr25611384lfb.68.1699268619393;
+        Mon, 06 Nov 2023 03:03:39 -0800 (PST)
+Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
+        by smtp.gmail.com with ESMTPSA id j17-20020a056000125100b0032db4e660d9sm9168557wrx.56.2023.11.06.03.03.37
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 06 Nov 2023 03:03:39 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: stefanha@gmail.com,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL v2 20/24] arm/kconfig: XLNX_ZYNQMP_ARM depends on PIXMAN
-Date: Mon,  6 Nov 2023 13:55:37 +0400
-Message-ID: <20231106095542.1852973-21-marcandre.lureau@redhat.com>
-In-Reply-To: <20231106095542.1852973-1-marcandre.lureau@redhat.com>
-References: <20231106095542.1852973-1-marcandre.lureau@redhat.com>
+Cc: kvm@vger.kernel.org,
+	qemu-s390x@nongnu.org,
+	qemu-block@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 00/60] Misc HW/UI patches for 2023-11-06
+Date: Mon,  6 Nov 2023 12:02:32 +0100
+Message-ID: <20231106110336.358-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.581,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jv4Xf4LbjAcs
+X-TUID: zVqxcMdWHm8Z
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+The following changes since commit d762bf97931b58839316b68a570eecc6143c9e3e:
 
-The Display Port has some strong PIXMAN dependency.
+  Merge tag 'pull-target-arm-20231102' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2023-11-03 10:04:12 +0800)
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/Kconfig         | 3 ++-
- hw/display/Kconfig     | 5 +++++
- hw/display/meson.build | 2 +-
- 3 files changed, 8 insertions(+), 2 deletions(-)
+are available in the Git repository at:
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index e35007ed41..8ce288a40c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -451,7 +451,7 @@ config STM32F405_SOC
- config XLNX_ZYNQMP_ARM
-     bool
-     default y
--    depends on TCG && AARCH64
-+    depends on TCG && AARCH64 && PIXMAN
-     select AHCI
-     select ARM_GIC
-     select CADENCE
-@@ -463,6 +463,7 @@ config XLNX_ZYNQMP_ARM
-     select XILINX_AXI
-     select XILINX_SPIPS
-     select XLNX_CSU_DMA
-+    select XLNX_DISPLAYPORT
-     select XLNX_ZYNQMP
-     select XLNX_ZDMA
-     select USB_DWC3
-diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-index 4d8b0cec40..1aafe1923d 100644
---- a/hw/display/Kconfig
-+++ b/hw/display/Kconfig
-@@ -134,3 +134,8 @@ config MACFB
-     bool
-     select FRAMEBUFFER
-     depends on NUBUS
-+
-+config XLNX_DISPLAYPORT
-+    bool
-+    # defaults to "N", enabled by specific boards
-+    depends on PIXMAN
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 2b64fd9f9d..9c06aaee20 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -58,7 +58,7 @@ if config_all_devices.has_key('CONFIG_QXL')
- endif
- 
- system_ss.add(when: 'CONFIG_DPCD', if_true: files('dpcd.c'))
--system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx_dp.c'))
-+system_ss.add(when: 'CONFIG_XLNX_DISPLAYPORT', if_true: files('xlnx_dp.c'))
- 
- system_ss.add(when: 'CONFIG_ARTIST', if_true: files('artist.c'))
- 
+  https://github.com/philmd/qemu.git tags/misc-cpus-20231106
+
+for you to fetch changes up to a81b438ac3933419910cbdf2e2e8d87681de611e:
+
+  ui/sdl2: use correct key names in win title on mac (2023-11-06 11:07:32 +0100)
+
+Few checkpatch warnings in target/i386/hvf/x86_emu.c are deliberately ignored.
+----------------------------------------------------------------
+Misc hardware patch queue
+
+HW emulation:
+- PMBus fixes and tests (Titus)
+- IDE fixes and tests (Fiona)
+- New ADM1266 sensor (Titus)
+- Better error propagation in PCI-ISA i82378 (Philippe)
+
+Topology:
+- Fix CPUState::nr_cores calculation (Zhuocheng Ding and Zhao Liu)
+
+Monitor:
+- Synchronize CPU state in 'info lapic' (Dongli Zhang)
+
+QOM:
+- Have 'cpu-qom.h' target-agnostic (Philippe)
+- Call object_class_is_abstract once in cpu_class_by_name (Philippe)
+
+UI:
+- Use correct key names in titles on MacOS / SDL2 (Adrian)
+
+MIPS:
+- Fix MSA BZ/BNZ and TX79 LQ/SQ opcodes (Philippe)
+
+Nios2:
+- Create IRQs *after* vCPU is realized (Philippe)
+
+PPC:
+- Restrict KVM objects to system emulation (Philippe)
+
+X86:
+- HVF & KVM cleanups (Philippe)
+
+Various targets:
+- Use env_archcpu() to optimize (Philippe)
+
+Misc:
+- Few global variable shadowing removed (Philippe)
+- Introduce cpu_exec_reset_hold and factor tcg_cpu_reset_hold out (Philippe)
+- Remove few more 'softmmu' mentions (Philippe)
+- Fix and cleanup in vl.c (Akihiko & Marc-André)
+- MAINTAINERS updates (Thomas, Daniel)
+
+----------------------------------------------------------------
+
+Adrian Wowk (1):
+  ui/sdl2: use correct key names in win title on mac
+
+Akihiko Odaki (1):
+  vl: Free machine list
+
+Daniel P. Berrangé (1):
+  MAINTAINERS: update libvirt devel mailing list address
+
+Dongli Zhang (1):
+  target/i386/monitor: synchronize cpu state for lapic info
+
+Fiona Ebner (2):
+  hw/ide: reset: cancel async DMA operation before resetting state
+  tests/qtest: ahci-test: add test exposing reset issue with pending
+    callback
+
+Marc-André Lureau (1):
+  vl: constify default_list
+
+Philippe Mathieu-Daudé (39):
+  tests/vm/ubuntu.aarch64: Correct comment about TCG specific delay
+  tests/unit/test-seccomp: Remove mentions of softmmu in test names
+  accel/tcg: Declare tcg_flush_jmp_cache() in 'exec/tb-flush.h'
+  accel: Introduce cpu_exec_reset_hold()
+  accel/tcg: Factor tcg_cpu_reset_hold() out
+  target: Unify QOM style
+  target: Mention 'cpu-qom.h' is target agnostic
+  target/arm: Move internal declarations from 'cpu-qom.h' to 'cpu.h'
+  target/ppc: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+  target/riscv: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+  target: Declare FOO_CPU_TYPE_NAME/SUFFIX in 'cpu-qom.h'
+  target/hexagon: Declare QOM definitions in 'cpu-qom.h'
+  target/loongarch: Declare QOM definitions in 'cpu-qom.h'
+  target/nios2: Declare QOM definitions in 'cpu-qom.h'
+  target/openrisc: Declare QOM definitions in 'cpu-qom.h'
+  target/riscv: Move TYPE_RISCV_CPU_BASE definition to 'cpu.h'
+  target/ppc: Use env_archcpu() in helper_book3s_msgsndp()
+  target/riscv: Use env_archcpu() in [check_]nanbox()
+  target/s390x: Use env_archcpu() in handle_diag_308()
+  target/xtensa: Use env_archcpu() in update_c[compare|count]()
+  target/i386/hvf: Use x86_cpu in simulate_[rdmsr|wrmsr]()
+  target/i386/hvf: Use env_archcpu() in simulate_[rdmsr/wrmsr]()
+  target/i386/hvf: Use CPUState typedef
+  target/i386/hvf: Rename 'CPUState *cpu' variable as 'cs'
+  target/i386/hvf: Rename 'X86CPU *x86_cpu' variable as 'cpu'
+  target/i386/kvm: Correct comment in kvm_cpu_realize()
+  target/mips: Fix MSA BZ/BNZ opcodes displacement
+  target/mips: Fix TX79 LQ/SQ opcodes
+  sysemu/kvm: Restrict kvmppc_get_radix_page_info() to ppc targets
+  hw/ppc/e500: Restrict ppce500_init_mpic_kvm() to KVM
+  target/ppc: Restrict KVM objects to system emulation
+  target/ppc: Prohibit target specific KVM prototypes on user emulation
+  target/nios2: Create IRQs *after* accelerator vCPU is realized
+  target/alpha: Tidy up alpha_cpu_class_by_name()
+  hw/cpu: Call object_class_is_abstract() once in cpu_class_by_name()
+  exec/cpu: Have cpu_exec_realize() return a boolean
+  hw/cpu: Clean up global variable shadowing
+  hw/loader: Clean up global variable shadowing in rom_add_file()
+  hw/isa/i82378: Propagate error if PC_SPEAKER device creation failed
+
+Thomas Huth (2):
+  MAINTAINERS: Add include/hw/timer/tmu012.h to the SH4 R2D section
+  MAINTAINERS: Add the CAN documentation file to the CAN section
+
+Zhao Liu (3):
+  hw/i386: Fix comment style in topology.h
+  tests/unit: Rename test-x86-cpuid.c to test-x86-topo.c
+  hw/cpu: Update the comments of nr_cores and nr_dies
+
+Zhuocheng Ding (1):
+  system/cpus: Fix CPUState.nr_cores' calculation
+
+titusr@google.com (8):
+  hw/i2c: pmbus add support for block receive
+  hw/i2c: pmbus: add vout mode bitfields
+  hw/i2c: pmbus: add fan support
+  hw/i2c: pmbus: add VCAP register
+  hw/sensor: add ADM1266 device model
+  tests/qtest: add tests for ADM1266
+  hw/i2c: pmbus: immediately clear faults on request
+  hw/i2c: pmbus: reset page register for out of range reads
+
+ MAINTAINERS                                   |   8 +-
+ include/exec/cpu-common.h                     |   3 -
+ include/exec/tb-flush.h                       |   2 +
+ include/hw/core/cpu.h                         |  20 +-
+ include/hw/i2c/pmbus_device.h                 |  17 ++
+ include/hw/i386/topology.h                    |  33 +--
+ include/hw/loader.h                           |   2 +-
+ include/sysemu/accel-ops.h                    |   1 +
+ include/sysemu/kvm.h                          |   1 -
+ target/alpha/cpu-qom.h                        |   7 +-
+ target/alpha/cpu.h                            |   4 -
+ target/arm/cpu-qom.h                          |  34 +--
+ target/arm/cpu.h                              |  24 +-
+ target/arm/internals.h                        |   6 +
+ target/avr/cpu-qom.h                          |   8 +-
+ target/avr/cpu.h                              |   4 -
+ target/cris/cpu-qom.h                         |   7 +-
+ target/cris/cpu.h                             |   4 -
+ target/hexagon/cpu-qom.h                      |  28 ++
+ target/hexagon/cpu.h                          |  20 +-
+ target/hppa/cpu-qom.h                         |   4 +-
+ target/hppa/cpu.h                             |   2 -
+ target/i386/cpu-qom.h                         |   5 +-
+ target/i386/cpu.h                             |   5 +-
+ target/i386/hvf/x86_emu.h                     |   4 +-
+ target/loongarch/cpu-qom.h                    |  24 ++
+ target/loongarch/cpu.h                        |  14 +-
+ target/m68k/cpu-qom.h                         |   7 +-
+ target/m68k/cpu.h                             |   4 -
+ target/microblaze/cpu-qom.h                   |   4 +-
+ target/microblaze/cpu.h                       |   2 -
+ target/mips/cpu-qom.h                         |   5 +-
+ target/mips/cpu.h                             |   4 -
+ target/nios2/cpu-qom.h                        |  19 ++
+ target/nios2/cpu.h                            |  11 +-
+ target/openrisc/cpu-qom.h                     |  22 ++
+ target/openrisc/cpu.h                         |  14 +-
+ target/ppc/cpu-qom.h                          |   3 +-
+ target/ppc/cpu.h                              |   4 +-
+ target/ppc/kvm_ppc.h                          |   4 +
+ target/riscv/cpu-qom.h                        |  12 +-
+ target/riscv/cpu.h                            |  10 +-
+ target/riscv/internals.h                      |   8 +-
+ target/rx/cpu-qom.h                           |   7 +-
+ target/rx/cpu.h                               |   4 -
+ target/s390x/cpu-qom.h                        |   8 +-
+ target/s390x/cpu.h                            |   4 -
+ target/sh4/cpu-qom.h                          |   7 +-
+ target/sh4/cpu.h                              |   4 -
+ target/sparc/cpu-qom.h                        |   7 +-
+ target/sparc/cpu.h                            |   4 -
+ target/tricore/cpu-qom.h                      |   7 +-
+ target/tricore/cpu.h                          |   4 -
+ target/xtensa/cpu-qom.h                       |   7 +-
+ target/xtensa/cpu.h                           |   4 -
+ target/mips/tcg/msa.decode                    |   4 +-
+ target/mips/tcg/tx79.decode                   |   2 +-
+ accel/stubs/tcg-stub.c                        |   4 -
+ accel/tcg/cputlb.c                            |   1 +
+ accel/tcg/tcg-accel-ops.c                     |   9 +
+ accel/tcg/translate-all.c                     |   8 -
+ accel/tcg/user-exec-stub.c                    |   4 +
+ cpu-common.c                                  |   6 +-
+ cpu-target.c                                  |   6 +-
+ hw/core/cpu-common.c                          |  19 +-
+ hw/core/loader.c                              |   4 +-
+ hw/i2c/pmbus_device.c                         | 237 +++++++++++++++-
+ hw/ide/core.c                                 |  14 +-
+ hw/isa/i82378.c                               |   4 +-
+ hw/ppc/e500.c                                 |   4 +
+ hw/sensor/adm1266.c                           | 254 ++++++++++++++++++
+ linux-user/main.c                             |   2 +-
+ plugins/core.c                                |   1 -
+ system/cpus.c                                 |   9 +-
+ system/vl.c                                   |   5 +-
+ target/alpha/cpu.c                            |  10 +-
+ target/arm/cpu.c                              |   3 +-
+ target/avr/cpu.c                              |   3 +-
+ target/cris/cpu.c                             |   3 +-
+ target/hexagon/cpu.c                          |   3 +-
+ target/i386/cpu.c                             |   9 +-
+ target/i386/hvf/hvf.c                         |   4 +-
+ target/i386/hvf/x86_emu.c                     | 111 ++++----
+ target/i386/kvm/kvm-cpu.c                     |   1 +
+ target/i386/monitor.c                         |   5 +
+ target/loongarch/cpu.c                        |   3 +-
+ target/m68k/cpu.c                             |   3 +-
+ target/nios2/cpu.c                            |  16 +-
+ target/openrisc/cpu.c                         |   3 +-
+ target/ppc/excp_helper.c                      |   2 +-
+ target/ppc/kvm-stub.c                         |  19 --
+ target/ppc/kvm.c                              |   4 +-
+ target/riscv/cpu.c                            |   3 +-
+ target/rx/cpu.c                               |   6 +-
+ target/s390x/cpu_models.c                     |   2 +-
+ target/s390x/diag.c                           |   2 +-
+ target/sh4/cpu.c                              |   3 -
+ target/tricore/cpu.c                          |   3 +-
+ target/xtensa/cpu.c                           |   3 +-
+ target/xtensa/op_helper.c                     |   4 +-
+ tests/qtest/adm1266-test.c                    | 122 +++++++++
+ tests/qtest/ahci-test.c                       |  86 +++++-
+ tests/qtest/max34451-test.c                   |  24 ++
+ tests/unit/test-seccomp.c                     |  24 +-
+ .../{test-x86-cpuid.c => test-x86-topo.c}     |   2 +-
+ ui/sdl2.c                                     |   8 +
+ hw/arm/Kconfig                                |   1 +
+ hw/sensor/Kconfig                             |   5 +
+ hw/sensor/meson.build                         |   1 +
+ target/ppc/meson.build                        |   2 +-
+ tests/qtest/meson.build                       |   1 +
+ tests/unit/meson.build                        |   4 +-
+ tests/vm/ubuntu.aarch64                       |   2 +-
+ 113 files changed, 1162 insertions(+), 436 deletions(-)
+ create mode 100644 target/hexagon/cpu-qom.h
+ create mode 100644 target/loongarch/cpu-qom.h
+ create mode 100644 target/nios2/cpu-qom.h
+ create mode 100644 target/openrisc/cpu-qom.h
+ create mode 100644 hw/sensor/adm1266.c
+ delete mode 100644 target/ppc/kvm-stub.c
+ create mode 100644 tests/qtest/adm1266-test.c
+ rename tests/unit/{test-x86-cpuid.c => test-x86-topo.c} (99%)
+
 -- 
 2.41.0
 

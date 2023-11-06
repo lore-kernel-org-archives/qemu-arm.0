@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004328eja;
-        Mon, 6 Nov 2023 11:56:13 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFlPp8334urZlQyxUczWjGa4+Orj25IUUG0stCUuZjYDZlDVTqsZnFTl1/R4Fndt31aJnk2
-X-Received: by 2002:ac8:5852:0:b0:40f:ce6d:775e with SMTP id h18-20020ac85852000000b0040fce6d775emr38449117qth.42.1699300573615;
-        Mon, 06 Nov 2023 11:56:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300573; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004397eja;
+        Mon, 6 Nov 2023 11:56:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEfIx0IjAZvMpsay0jxyCmASjm4jTIFpHaMdl+8i2HqcZwjh9nwgDdIpxQ2CCUIPH58Jo8a
+X-Received: by 2002:a05:622a:164e:b0:412:c2a:eaef with SMTP id y14-20020a05622a164e00b004120c2aeaefmr36879170qtj.11.1699300583743;
+        Mon, 06 Nov 2023 11:56:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300583; cv=none;
         d=google.com; s=arc-20160816;
-        b=ft2wBxuJwIOQLVDARVZ4/ege9wpXrMWFIu8yLjCD9Xm8bsr+Ftz9KlTk+JtV84QCTz
-         /w0H5Plt1OZ8aMYpsvQTKrrnrb5JptO9+Qc2o9oUMv7tprMT5wLXhh6Pp6VaNscCHLte
-         77Eawy8V1KT9mhVj7Qh69in8fqqsWrh1XLh/a8Q9fdBz5BAIY3/yMvj1ZypWlBYhdG+H
-         5P6gviFMUIZx6j1YeUmH6gAUot5WEK0Y3kxN1cSjqErl4fG1YezvixqkTniMus44PyMQ
-         0pkwlHCQaY1/eiNvvuk01uDbgWTCJsROiVSMgr3wJF+GXssZU6pxPi168sFZXeXX6xbL
-         yKIA==
+        b=pKyNsoS5i6fo0ZtzcyBNS3IQ+Tau/QnzJj53hONL2R1MlwwHgqvmDQ6So/DoHTmjDP
+         GGSNjnRfyv0Z+Ty/XyCdPCDncjlxfx3j1tJOXufe3b2pp6BKdINDbiwTbVEOysJUKgX6
+         Z++JyP3DcmwZ+LB6OglfeA78ITWMs10S5h+g43+89yoMWxMgsCIjlaEs3qQvXrWM70kl
+         pKnb+zzeMN6nOszG+yAi+qwcq4jI5Oi9/WMgxB99etnDhT8D3GetDTfIWw+N39xPIhXY
+         nj7UygXhoo1HNW/eJAYmoq4qmQbkJ9hNgYstCVtMyuKEYq1F8fewHVzMyCc43O5+GOmG
+         xsiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WZmVL1uI/KotgdQhXO/qrZTP/dohS1pm8NaUzNrIdIE=;
+        bh=O7+HX3w6XyECWcZnAzqqwZKvx1qj71QgIwZtZm02KnA=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=vCS8rXSvi59soJqtluDnsXiGdWUTAVcqNFcj2qj6gk2SwqJU7lCc3w8zgKGTmvJStb
-         aYItfagsZJtpldS/AoDp4nk+LS6gkiYOkomvm0Al0uUw5Shme6y8BOYcoRh8BTTCQ+jp
-         i+2gKFL+9djEAmO7NFl8dTgDksLw+FN2xFKR6yEeQFFbwD/d+dq/uz8AjeB3ewtRUTH4
-         J1N0isYuP68s1Hq/p7x7bel773tzC/8HOpluHm8qiN7VMk2MUK7rR4Kme3os/bBK+PyP
-         iLBLDrTF/y+hdUDq5e0EdRNVuY6kBA363DZnMiT1dZNy7L2n3r2GcaPfhAjv9OUziVXQ
-         mzSw==
+        b=cFwToSPpngXSuqWdJweGi4bA0U6j9VofRHN8hjO7ZxWihyTBY7xJk2c5z+wECCq1TL
+         /3UAeK77wEgmc+uBw3nJKNcBs/bDOwp0IxIjpOvkjj5xgtR1mIe3ZCgFrSYsWRbfYYZO
+         xdK8EwpbjYNXDRP+uUZEFbuJdk/plkrwVTonQGj5+e05pKmLC+K1axEBGC/6y/p0zIh7
+         bpjk7L3V6ov+SL6mxp0JYp5fC8rDze6RfucHS74zpN0DJm+ZDBcXFwuwSGZbkOmKfucS
+         w+lFs73yewOcd+7BULeUYQLJN8AcGztpkrmXKzPcKdb6bRmmGzQxExr8QkbRbD7OvKo8
+         Innw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=nv6FvVLj;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=FYb1RUmF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g4-20020ac87d04000000b00417b8ceb616si5793248qtb.403.2023.11.06.11.56.13
+        by mx.google.com with ESMTPS id o10-20020a05622a138a00b0041e2342f335si6205433qtk.755.2023.11.06.11.56.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 11:56:13 -0800 (PST)
+        Mon, 06 Nov 2023 11:56:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=nv6FvVLj;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=FYb1RUmF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r05gP-00067y-Kk; Mon, 06 Nov 2023 14:54:49 -0500
+	id 1r05g4-0005bU-6u; Mon, 06 Nov 2023 14:54:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05g7-0005hS-IQ; Mon, 06 Nov 2023 14:54:31 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05g1-0005Xb-HB; Mon, 06 Nov 2023 14:54:25 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05g0-00066o-22; Mon, 06 Nov 2023 14:54:31 -0500
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05fx-00065b-Ub; Mon, 06 Nov 2023 14:54:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
- To:From:Reply-To:Content-ID:Content-Description;
- bh=WZmVL1uI/KotgdQhXO/qrZTP/dohS1pm8NaUzNrIdIE=; b=nv6FvVLjCIrbFr+0UrcGp1qnHZ
- j8eZtUiloNyLV0p1HBnbUW3cQA8b3Ad9kga46jhIwPt+7DNjSjq91AetVDsNzVWurXkc032ybq1cE
- ndRNvWJ4wo7eQLok0W4yWtMBv7cdAqvtge6WiUHZ3UyrQBo44ihqFXo7OxqI7PWDGPNoc7p9WQYme
- 4PQJtIywrHXUUkH4K+Ssyufegy11RZx/ogCOTJ06D4svHb90SfbDwab44b5ZV0YXbhjXOUbC9uQuU
- QL4J2f8mqAaxsJJJyZz0JvhN+OETvwULHgUoTDvqyODAJb8821GAXA9ZUr78ZA2sv3chD4cHetanC
- Zkp1ElpQ==;
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=O7+HX3w6XyECWcZnAzqqwZKvx1qj71QgIwZtZm02KnA=; b=FYb1RUmFgC2o88t7cCEf/HK/k+
+ xkOfAXzqneBS6o/ywK5HQaFPcCwcjcU7pTseyg6U7f0hvbWH1XdOXoCN9Db3kssQWHUTPgVeJ3UaX
+ l9vRtYto0dT+2vRCliOYN05Jm0EnGuBMRSeAD6Rv6L5QQSKVaCn5xRMo4gI8GdDu4APmWCfwr3NlQ
+ c4eiGjOG9KoBH/9Nj6q1vK7uNP2l/v+21L7oK4P5Y8mxkACz/c3ixumWvjQu5hW9YluKHnK3rLpM+
+ bHdHiyy6YOdTMckCWVzCw0dR5aB+o1dTEsh9ZegMTqnhTiKmkaMX2twqS6fG8UhU1qQxTzdiP7spC
+ rwzZiV3g==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fZ-007taC-BY; Mon, 06 Nov 2023 19:53:58 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1r05fb-00AkFq-2b; Mon, 06 Nov 2023 19:54:00 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fZ-001GMj-1Z; Mon, 06 Nov 2023 19:53:57 +0000
+ Hat Linux)) id 1r05fa-001GNd-2K; Mon, 06 Nov 2023 19:53:58 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,20 +116,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 03/46] net: add qemu_create_nic_bus_devices()
-Date: Mon,  6 Nov 2023 19:49:08 +0000
-Message-ID: <20231106195352.301038-4-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 16/46] hw/ppc/spapr: use qemu_get_nic_info() and
+ pci_init_nic_devices()
+Date: Mon,  6 Nov 2023 19:49:21 +0000
+Message-ID: <20231106195352.301038-17-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -151,100 +151,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Hopqga0VAydX
+X-TUID: SK4NOhr12pqt
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-This will instantiate any NICs which live on a given bus type. Each bus
-is allowed *one* substitution (for PCI it's virtio → virtio-net-pci, for
-Xen it's xen → xen-net-device; no point in overengineering it unless we
-actually want more).
+Avoid directly referencing nd_table[] by first instantiating any
+spapr-vlan devices using a qemu_get_nic_info() loop, then calling
+pci_init_nic_devices() to do the rest.
+
+No functional change intended.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Paul Durrant <paul@xen.org>
 ---
- include/net/net.h |  3 +++
- net/net.c         | 53 +++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+)
+ hw/ppc/spapr.c | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/include/net/net.h b/include/net/net.h
-index 56be694c75..ce830a47d0 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -211,6 +211,9 @@ bool qemu_configure_nic_device(DeviceState *dev, bool match_default,
-                                const char *alias);
- DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
-                                     const char *alias);
-+void qemu_create_nic_bus_devices(BusState *bus, const char *parent_type,
-+                                 const char *default_model,
-+                                 const char *alias, const char *alias_target);
- void print_net_client(Monitor *mon, NetClientState *nc);
- void net_socket_rs_init(SocketReadState *rs,
-                         SocketReadStateFinalize *finalize,
-diff --git a/net/net.c b/net/net.c
-index 807220e630..73621795cb 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -1208,6 +1208,59 @@ DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
-     return dev;
- }
- 
-+void qemu_create_nic_bus_devices(BusState *bus, const char *parent_type,
-+                                 const char *default_model,
-+                                 const char *alias, const char *alias_target)
-+{
-+    GPtrArray *nic_models = qemu_get_nic_models(parent_type);
-+    const char *model;
-+    DeviceState *dev;
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index df09aa9d6a..3d8ad75790 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -2796,6 +2796,7 @@ static void spapr_machine_init(MachineState *machine)
+     MemoryRegion *sysmem = get_system_memory();
+     long load_limit, fw_size;
+     Error *resize_hpt_err = NULL;
 +    NICInfo *nd;
-+    int i;
+ 
+     if (!filename) {
+         error_report("Could not find LPAR firmware '%s'", bios_name);
+@@ -2996,21 +2997,12 @@ static void spapr_machine_init(MachineState *machine)
+ 
+     phb = spapr_create_default_phb();
+ 
+-    for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
+-
+-        if (!nd->model) {
+-            nd->model = g_strdup("spapr-vlan");
+-        }
+-
+-        if (g_str_equal(nd->model, "spapr-vlan") ||
+-            g_str_equal(nd->model, "ibmveth")) {
+-            spapr_vlan_create(spapr->vio_bus, nd);
+-        } else {
+-            pci_nic_init_nofail(&nd_table[i], phb->bus, nd->model, NULL);
+-        }
++    while ((nd = qemu_find_nic_info("spapr-vlan", true, "ibmveth"))) {
++        spapr_vlan_create(spapr->vio_bus, nd);
+     }
+ 
++    pci_init_nic_devices(phb->bus, NULL);
 +
-+    if (nic_model_help) {
-+        if (alias_target) {
-+            add_nic_model_help(alias_target, alias);
-+        }
-+        for (i = 0; i < nic_models->len - 1; i++) {
-+            add_nic_model_help(nic_models->pdata[i], NULL);
-+        }
-+    }
-+
-+    /* Drop the NULL terminator which would make g_str_equal() unhappy */
-+    nic_models->len--;
-+
-+    for (i = 0; i < nb_nics; i++) {
-+        nd = &nd_table[i];
-+
-+        if (!nd->used || nd->instantiated) {
-+            continue;
-+        }
-+
-+        model = nd->model ? nd->model : default_model;
-+        if (!model) {
-+            continue;
-+        }
-+
-+        /* Each bus type is allowed *one* substitution */
-+        if (g_str_equal(model, alias)) {
-+            model = alias_target;
-+        }
-+
-+        if (!g_ptr_array_find_with_equal_func(nic_models, model,
-+                                              g_str_equal, NULL)) {
-+            /* This NIC does not live on this bus. */
-+            continue;
-+        }
-+
-+        dev = qdev_new(model);
-+        qdev_set_nic_properties(dev, nd);
-+        qdev_realize_and_unref(dev, bus, &error_fatal);
-+    }
-+
-+    g_ptr_array_free(nic_models, true);
-+}
-+
- static int (* const net_client_init_fun[NET_CLIENT_DRIVER__MAX])(
-     const Netdev *netdev,
-     const char *name,
+     for (i = 0; i <= drive_get_max_bus(IF_SCSI); i++) {
+         spapr_vscsi_create(spapr->vio_bus);
+     }
 -- 
 2.41.0
 

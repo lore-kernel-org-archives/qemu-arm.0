@@ -1,134 +1,145 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2795776eja;
-        Mon, 6 Nov 2023 06:23:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFCrYyCwVfVyF7Bqlv8nk/VQl6wpbJPZ4fbKkXF9PVSBNf+bq3yauL4Uzo4M0J6kaBSlA0z
-X-Received: by 2002:a1f:a754:0:b0:49d:fab:fa37 with SMTP id q81-20020a1fa754000000b0049d0fabfa37mr23852900vke.4.1699280603544;
-        Mon, 06 Nov 2023 06:23:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699280603; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2798204eja;
+        Mon, 6 Nov 2023 06:27:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEUdT7wM7bHeBVtW2w0pLvp8N1G3HAEU1D/L+GlhBUXtoTGf1pwdYBRfBuBaGqMaTzEVgVd
+X-Received: by 2002:ac8:7d04:0:b0:41e:2aab:8dc with SMTP id g4-20020ac87d04000000b0041e2aab08dcmr32996201qtb.37.1699280847272;
+        Mon, 06 Nov 2023 06:27:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699280847; cv=none;
         d=google.com; s=arc-20160816;
-        b=o1WeNEXILb+cAg6D2d/9IKGHkK1vDhjw5ZKM/3sXK5derushrdoDTe53WIEgx3Yt9k
-         kCOLOQ3/rKcGdm1aX09qcuxwBDOWbiC2yGOBvc0ngNiy+Ef9csScPGt2ZGmVdNLyrHjm
-         oY1WhDUn/ZztxmYFiLN0abyzz+Rx5hmyubu9pgxxiaHwxuRuZqQ7Tj6t+f9wYQV85mEi
-         vQ5bmpseeoKGxmpjKbOhxGCinXC4NcEesKGWksaPoEo8WjPVCCEdXcaWmKk78i5t/N8t
-         SLPd+/EKo5aZ8mX0FDhVMJM51eK4Dk/Bdqoq8VtR2QDQCuzPCB4Um0DZArZC5uyrMcVM
-         msgw==
+        b=Dzo8rYtdfUjt1yU2R9dEKPTW0cFADZB+PookCb1nYhp/RKjBkFbL3KXm86LfN84SFx
+         7r1zo35bwKnX2HvWsYt8QooY5kPpRMX17vXec7+vrlrZvrA0bhuda7nCMr5TNEe8w898
+         axAy1x5JCPc+BzFcvd0CuMfmPD3IMG58GxiVSWVDEcP+37eas6NWTSJBbTmLFA0/Aq7N
+         Vqm8NAtICgQRZPG0OtpIGfU58+tFt4QORU42xazg2bmjTi25XlR9NtfbC3gz4LvYbkVE
+         O/XEVcyJ+FxSFvEgiDsqPbFPMIAvUW70ARKPstrK61BvXcBZbR0WGBa9dm4CcUteOkAr
+         HiyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=O5dbkPiZr4z+1yb7wNNqDt+DOhhhjUbdIQfK2e2ZVZ0=;
-        fh=+At9UU09dkxYcwbUrk675a4v9Aq96t/jl9NTrd4gkMY=;
-        b=uK4rQO/WIG/yi4SoLB4qopbfz68ToNFYEPxoI3qL26kX5Ua/wrvaCTFzOBn4aqNMsn
-         orZjOM/EPOzHIm+cAd4C++mQAPtykNcuvI6JiPDWmkL9eCQY6Z+Lao1GYnFFlaPaJ8ih
-         PfqZ6BpR3+PPFtkOoMfRh7qnLo8qb7gN/VLy1dklPWX8WU1LwNLAflKbYWUWx/od8de3
-         hxhSzRQDyWXr58wL0n9ETk/Yut1hiG6/Ve5C24FQAxlfwJc21SMCbLUAJFw76l5wOWZ0
-         DoVpyMSHU4s8llt3Wi94lFagS7TQ1McQ20wjNE7786owRLwWdewVh00rQnlr2rZOG3iw
-         WY0g==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=STw7PPXKTwq/79ZC+zWpWW3I5vyrQnVcv7UcsPJeMxc=;
+        fh=0SWNLNYfLX4tUJlYYHo1Cemz4SgaxrW3eXHxEKTpfIk=;
+        b=BxuuiRRxFVs2XRGnfgNQI3o+BTUzMeGwt59Jg0rahZ5sFyZUblrotdjoSGPtfaIZJz
+         LAjMxGnp4T1LXxMpGvVVxtrqtKH4AoLRhrS0T/fwyjCBUOwJKXvlHRBJ47E65liq7Kcl
+         eEJslnjWbm8/tfY+epDuDAmJwmbSCHCrESMNpfW45VFT1IkBvZzUmYcwK2RJaEe6bG1g
+         VLp0NXohXqpxqmE4oLo3fGVmMN0mcu/1v55fCr2WdJ+Slfn8p5o+Gay1PKVlGI9u9bSx
+         Y4C3OWbavnA8mr8upnXM0H7NsDJ/TKhXaFD6yseLXREoYLmtswkbAVx4kHoPFQGVOKNj
+         1ycA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AbyYnYBF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL1dOsAB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11-20020a05622a02cb00b00419621a79d9si5559550qtx.667.2023.11.06.06.23.23
+        by mx.google.com with ESMTPS id bb32-20020a05622a1b2000b0041eae06bef8si3137345qtb.496.2023.11.06.06.27.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 06:23:23 -0800 (PST)
+        Mon, 06 Nov 2023 06:27:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AbyYnYBF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OL1dOsAB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r00VB-0003BW-Fx; Mon, 06 Nov 2023 09:22:53 -0500
+	id 1r00ZP-0002ty-NU; Mon, 06 Nov 2023 09:27:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1r00VA-00039Y-IA
- for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:22:52 -0500
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1r00ZM-0002tB-Tu
+ for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:27:12 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1r00V9-0005kZ-1K
- for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:22:52 -0500
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1r00ZK-0006rO-Pu
+ for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:27:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699280570;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=O5dbkPiZr4z+1yb7wNNqDt+DOhhhjUbdIQfK2e2ZVZ0=;
- b=AbyYnYBFXeYpvz1wWYsyl26JptxrIV8EjE41nbAbi+eoBFlcD1Xt6egwk3LOl1UokmhUCL
- grBKyeBanNhXUBJTcMACk2bbYQjF1xM6DUJXZVUCozERiIUUMO1uyMBv/3K40QqNvGQkJ3
- RYFDB0Zy38OSzZOMjXlI6AFRSrYkALs=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1699280829;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=STw7PPXKTwq/79ZC+zWpWW3I5vyrQnVcv7UcsPJeMxc=;
+ b=OL1dOsABnBHXGndW4L0o8cLgjydZ3U9BY556mywhcNLTSGdLyN1YC+REqtn/zh47zO9Xgy
+ fQdvv3frTWidBn0WJcb9g/ZMvrlCz4HDlu9rPsFJ++wmkM+BU6ij64B932HZTHZ65n5YQP
+ MW/eLRvCDbzqnnTDERaoqo6a9RYzBO4=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-70-RkRD4hYaORWLQL8_9s74KA-1; Mon, 06 Nov 2023 09:22:38 -0500
-X-MC-Unique: RkRD4hYaORWLQL8_9s74KA-1
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-41cdc542b56so52907471cf.0
- for <qemu-devel@nongnu.org>; Mon, 06 Nov 2023 06:22:38 -0800 (PST)
+ us-mta-670-HITAUoGxOEOYV6iGJPj-2g-1; Mon, 06 Nov 2023 09:27:08 -0500
+X-MC-Unique: HITAUoGxOEOYV6iGJPj-2g-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4092164ee4eso28831425e9.3
+ for <qemu-devel@nongnu.org>; Mon, 06 Nov 2023 06:27:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699280558; x=1699885358;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1699280827; x=1699885627;
+ h=mime-version:message-id:date:reply-to:user-agent:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=O5dbkPiZr4z+1yb7wNNqDt+DOhhhjUbdIQfK2e2ZVZ0=;
- b=WP9+wFpjcoHDzYtgS7Xo5/45t057g20dLCZ+wU32rFDJ0+/JEIL62MLmWOm1hxWYTu
- N0PxDGpamaCM4RvkGjuyKzGfR1T2PfuEvSzmmnnu0tMZRR044t46Y//kpJHX8haLeGZw
- mMVgorz1EIw1ansPj8yVT3zdvhcAQ6U6W3Y6VsupHIGw+e+Huv/i4hsGOoWfJXx/sSkS
- U0Cf0ULSu+zGLY8EgCjSTibnDpk9Pwznq2hvmzCFz0XAi8Y7rD/kQeg9Tf4BdlYVXtB0
- vuhrBtLaHf8nyMrWlLQUHo4XmqaRbGePxmuQFgpi95xlYQCSQPnsz95m3QGjjW52qQAb
- a3fw==
-X-Gm-Message-State: AOJu0YzeosZfACrqSN/k9cRNORgv9RHK0a5gOIy6UekArUc7gaHR2e96
- rflOC29nwU/r5bDPdWaUHoy1n0p6gp2AOWzqMdeVbEXBt/2BGEggKUHyca91M1Ve7TO2IyIyrCL
- wui8XHp75/a/muzM=
-X-Received: by 2002:a05:622a:1190:b0:403:a262:7751 with SMTP id
- m16-20020a05622a119000b00403a2627751mr37027483qtk.12.1699280558395; 
- Mon, 06 Nov 2023 06:22:38 -0800 (PST)
-X-Received: by 2002:a05:622a:1190:b0:403:a262:7751 with SMTP id
- m16-20020a05622a119000b00403a2627751mr37027433qtk.12.1699280558084; 
- Mon, 06 Nov 2023 06:22:38 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- g20-20020ac84694000000b00419ab6ffedasm3394548qto.29.2023.11.06.06.22.31
+ bh=STw7PPXKTwq/79ZC+zWpWW3I5vyrQnVcv7UcsPJeMxc=;
+ b=dgImjB6qsIZ4KlxIOAmPjsg9IBqEsPhkNG9EwBqhlripr5/ZQ11aF7O2Um9ZPWTqoI
+ uCaT9LnvlhicINge/I3kfF0a4D8aVed5QWNG7PHBh5rLYzCkHDEYNBDVzsz9Bs9JAdDz
+ efhoIXB1O3kBeOQD+lrdEpASvSwLCzjxgbwfCVApWSeKL66eIxqgVT24ZbfO/ba0y4TG
+ NhNwzz22Z717b1k1F+BfkC7lVNYziFj70rk+1Z6f9DbeY7vTKiqcS3FLImXhicK5xT9k
+ 2cGyPKDWTmnxWrEZcYpK3ruVJDZ/beskulh2tGW2f0aEzMhLuFJlR9Jj0v8YFRIjP5bb
+ Zfqg==
+X-Gm-Message-State: AOJu0YzOUbLRNBqBPVVsQHLoStwi/CpkDieR9HXxa1mM89ITsCJzpzvo
+ kraiNBAReLRj/qMUK5bBX2KX3ZFCXuYejWCdT2lcRE7Xs/dKBtY+HU0luhKgcGmn6Qcq+UGVydH
+ neVFIMkkGg9+HzxU=
+X-Received: by 2002:a05:600c:548f:b0:405:49aa:d578 with SMTP id
+ iv15-20020a05600c548f00b0040549aad578mr24013268wmb.37.1699280826905; 
+ Mon, 06 Nov 2023 06:27:06 -0800 (PST)
+X-Received: by 2002:a05:600c:548f:b0:405:49aa:d578 with SMTP id
+ iv15-20020a05600c548f00b0040549aad578mr24013203wmb.37.1699280826470; 
+ Mon, 06 Nov 2023 06:27:06 -0800 (PST)
+Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
+ [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
+ t10-20020a05600c450a00b004064cd71aa8sm12471303wmo.34.2023.11.06.06.27.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Nov 2023 06:22:37 -0800 (PST)
-Date: Mon, 6 Nov 2023 15:22:29 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, philmd@linaro.org,
- clg@kaod.org, imp@bsdimp.com, kevans@freebsd.org,
- richard.henderson@linaro.org, pbonzini@redhat.com,
- peter.maydell@linaro.org, b.galvani@gmail.com,
- strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
- wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
- quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
- laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
- edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
- aurelien@aurel32.net, jiaxun.yang@flygoat.com,
- aleksandar.rikalo@syrmia.com, chenhuacai@kernel.org, crwulff@gmail.com,
- marex@denx.de, shorne@gmail.com, npiggin@gmail.com,
- ysato@users.sourceforge.jp, david@redhat.com, thuth@redhat.com,
- iii@linux.ibm.com, kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com,
- shan.gavin@gmail.com
-Subject: Re: [PATCH v4 01/33] target/alpha: Tidy up alpha_cpu_class_by_name()
-Message-ID: <20231106152229.02d6326a@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231102002500.1750692-2-gshan@redhat.com>
-References: <20231102002500.1750692-1-gshan@redhat.com>
- <20231102002500.1750692-2-gshan@redhat.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+ Mon, 06 Nov 2023 06:27:05 -0800 (PST)
+From: Juan Quintela <quintela@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,  Eric Farman <farman@linux.ibm.com>,  Laurent
+ Vivier <lvivier@redhat.com>,  David Gibson <david@gibson.dropbear.id.au>,
+ qemu-block@nongnu.org,  Stefan Hajnoczi <stefanha@redhat.com>,  Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>,  Kevin Wolf <kwolf@redhat.com>,
+ David Hildenbrand <david@redhat.com>,  Samuel Thibault
+ <samuel.thibault@ens-lyon.org>,  qemu-s390x@nongnu.org,  Richard Henderson
+ <richard.henderson@linaro.org>,  Leonardo Bras <leobras@redhat.com>,
+ Corey Minyard <cminyard@mvista.com>,  Ilya Leoshkevich
+ <iii@linux.ibm.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,  Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Eduardo Habkost <eduardo@habkost.net>,
+ Paolo Bonzini <pbonzini@redhat.com>,  qemu-ppc@nongnu.org,  "Michael S.
+ Tsirkin" <mst@redhat.com>,  Halil Pasic <pasic@linux.ibm.com>,  Gerd
+ Hoffmann <kraxel@redhat.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  Li
+ Zhijian <lizhijian@fujitsu.com>,  Eric Blake <eblake@redhat.com>,  "Denis
+ V. Lunev" <den@openvz.org>,  Hanna Reitz <hreitz@redhat.com>,  Fabiano
+ Rosas <farosas@suse.de>,  Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ qemu-arm@nongnu.org,  Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Thomas Huth <thuth@redhat.com>,  Corey Minyard <minyard@acm.org>,  John
+ Snow <jsnow@redhat.com>,  Jeff Cody <codyprime@gmail.com>,  Peter Xu
+ <peterx@redhat.com>,  Nicholas Piggin <npiggin@gmail.com>,  Harsh Prateek
+ Bora <harshpb@linux.ibm.com>,  Jason Wang <jasowang@redhat.com>,  Daniel
+ P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Stefan Weil
+ <sw@weilnetz.de>,  Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Fam Zheng <fam@euphon.net>,
+ Het Gala <het.gala@nutanix.com>,  Aravind Retnakaran
+ <aravind.retnakaran@nutanix.com>
+Subject: Re: [PULL 38/40] migration: Implement MigrateChannelList to qmp
+ migration flow.
+In-Reply-To: <CAFEAcA90R-Yg-LrMmbotCQDMPGPrOi6dN1ZyC0ufBziPREzyyA@mail.gmail.com>
+ (Peter Maydell's message of "Mon, 6 Nov 2023 13:57:19 +0000")
+References: <20231102114054.44360-1-quintela@redhat.com>
+ <20231102114054.44360-39-quintela@redhat.com>
+ <CAFEAcA90R-Yg-LrMmbotCQDMPGPrOi6dN1ZyC0ufBziPREzyyA@mail.gmail.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
+Date: Mon, 06 Nov 2023 15:27:05 +0100
+Message-ID: <87y1fbyn2e.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -137,7 +148,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,53 +161,139 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BEbaU2uOEXn/
+X-TUID: XaVK+XtvGVmx
 
-On Thu,  2 Nov 2023 10:24:28 +1000
-Gavin Shan <gshan@redhat.com> wrote:
-
-> From: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->=20
-> For target/alpha, the default CPU model name is "ev67". The default
-> CPU model is used when no matching CPU model is found. The conditions
-> to fall back to the default CPU model can be combined so that the code
-> looks a bit simplified.
-
-default cpu should be specified by board not by target internals.
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> ---
->  target/alpha/cpu.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
->=20
-> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-> index 51b7d8d1bf..c7ae4d6a41 100644
-> --- a/target/alpha/cpu.c
-> +++ b/target/alpha/cpu.c
-> @@ -142,13 +142,10 @@ static ObjectClass *alpha_cpu_class_by_name(const c=
-har *cpu_model)
->      typename =3D g_strdup_printf(ALPHA_CPU_TYPE_NAME("%s"), cpu_model);
->      oc =3D object_class_by_name(typename);
->      g_free(typename);
-> -    if (oc !=3D NULL && object_class_is_abstract(oc)) {
-> -        oc =3D NULL;
-> -    }
-> =20
->      /* TODO: remove match everything nonsense */
-
-Let's do ^^^^^ instead of just shifting code around.
-It will break users that specify junk as input, but it's clear
-users error so garbage in =3D> error out.
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Thu, 2 Nov 2023 at 11:46, Juan Quintela <quintela@redhat.com> wrote:
+>>
+>> From: Het Gala <het.gala@nutanix.com>
+>>
+>> Integrate MigrateChannelList with all transport backends
+>> (socket, exec and rdma) for both src and dest migration
+>> endpoints for qmp migration.
+>>
+>> For current series, limit the size of MigrateChannelList
+>> to single element (single interface) as runtime check.
+>>
+>> Suggested-by: Aravind Retnakaran <aravind.retnakaran@nutanix.com>
+>> Signed-off-by: Het Gala <het.gala@nutanix.com>
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> Reviewed-by: Juan Quintela <quintela@redhat.com>
+>> Signed-off-by: Juan Quintela <quintela@redhat.com>
+>> Message-ID: <20231023182053.8711-13-farosas@suse.de>
+>
+> Hi; after this migration pull there seem to be a lot of
+> new Coverity issues in migration code. Could somebody
+> take a look at them, please?
 
 
-> -    /* Default to ev67; no reason not to emulate insns by default. */
-> -    if (!oc) {
-> +    if (!oc || object_class_is_abstract(oc)) {
-> +        /* Default to ev67, no reason not to emulate insns by default */
->          oc =3D object_class_by_name(ALPHA_CPU_TYPE_NAME("ev67"));
->      }
-> =20
+Hi
+
+I received this, looking into it.
+
+Later, Juan.
+
+>
+> Here's one in particular (CID 1523826, 1523828):
+>
+>> @@ -1927,35 +1933,38 @@ void qmp_migrate(const char *uri, bool has_channels,
+>>      bool resume_requested;
+>>      Error *local_err = NULL;
+>>      MigrationState *s = migrate_get_current();
+>> -    g_autoptr(MigrationAddress) channel = NULL;
+>> +    MigrationChannel *channel = NULL;
+>> +    MigrationAddress *addr = NULL;
+>
+> 'channel' in this function used to be auto-freed, but now it is not...
+>
+>>
+>>      /*
+>>       * Having preliminary checks for uri and channel
+>>       */
+>> -    if (has_channels) {
+>> -        error_setg(errp, "'channels' argument should not be set yet.");
+>> -        return;
+>> -    }
+>> -
+>>      if (uri && has_channels) {
+>>          error_setg(errp, "'uri' and 'channels' arguments are mutually "
+>>                     "exclusive; exactly one of the two should be present in "
+>>                     "'migrate' qmp command ");
+>>          return;
+>> -    }
+>> -
+>> -    if (!uri && !has_channels) {
+>> +    } else if (channels) {
+>> +        /* To verify that Migrate channel list has only item */
+>> +        if (channels->next) {
+>> +            error_setg(errp, "Channel list has more than one entries");
+>> +            return;
+>> +        }
+>> +        channel = channels->value;
+>> +    } else if (uri) {
+>> +        /* caller uses the old URI syntax */
+>> +        if (!migrate_uri_parse(uri, &channel, errp)) {
+>> +            return;
+>> +        }
+>
+> ...and here migrate_uri_parse() allocates memory which is
+> returned into 'channel'...
+>
+>> +    } else {
+>>          error_setg(errp, "neither 'uri' or 'channels' argument are "
+>>                     "specified in 'migrate' qmp command ");
+>>          return;
+>>      }
+>> -
+>> -    if (!migrate_uri_parse(uri, &channel, errp)) {
+>> -        return;
+>> -    }
+>> +    addr = channel->addr;
+>>
+>>      /* transport mechanism not suitable for migration? */
+>> -    if (!migration_channels_and_transport_compatible(channel, errp)) {
+>> +    if (!migration_channels_and_transport_compatible(addr, errp)) {
+>>          return;
+>>      }
+>>
+>> @@ -1972,8 +1981,8 @@ void qmp_migrate(const char *uri, bool has_channels,
+>>          }
+>>      }
+>>
+>> -    if (channel->transport == MIGRATION_ADDRESS_TYPE_SOCKET) {
+>> -        SocketAddress *saddr = &channel->u.socket;
+>> +    if (addr->transport == MIGRATION_ADDRESS_TYPE_SOCKET) {
+>> +        SocketAddress *saddr = &addr->u.socket;
+>>          if (saddr->type == SOCKET_ADDRESS_TYPE_INET ||
+>>              saddr->type == SOCKET_ADDRESS_TYPE_UNIX ||
+>>              saddr->type == SOCKET_ADDRESS_TYPE_VSOCK) {
+>> @@ -1982,13 +1991,13 @@ void qmp_migrate(const char *uri, bool has_channels,
+>>              fd_start_outgoing_migration(s, saddr->u.fd.str, &local_err);
+>>          }
+>>  #ifdef CONFIG_RDMA
+>> -    } else if (channel->transport == MIGRATION_ADDRESS_TYPE_RDMA) {
+>> -        rdma_start_outgoing_migration(s, &channel->u.rdma, &local_err);
+>> +    } else if (addr->transport == MIGRATION_ADDRESS_TYPE_RDMA) {
+>> +        rdma_start_outgoing_migration(s, &addr->u.rdma, &local_err);
+>>  #endif
+>> -    } else if (channel->transport == MIGRATION_ADDRESS_TYPE_EXEC) {
+>> -        exec_start_outgoing_migration(s, channel->u.exec.args, &local_err);
+>> -    } else if (channel->transport == MIGRATION_ADDRESS_TYPE_FILE) {
+>> -        file_start_outgoing_migration(s, &channel->u.file, &local_err);
+>> +    } else if (addr->transport == MIGRATION_ADDRESS_TYPE_EXEC) {
+>> +        exec_start_outgoing_migration(s, addr->u.exec.args, &local_err);
+>> +    } else if (addr->transport == MIGRATION_ADDRESS_TYPE_FILE) {
+>> +        file_start_outgoing_migration(s, &addr->u.file, &local_err);
+>>      } else {
+>>          error_setg(&local_err, QERR_INVALID_PARAMETER_VALUE, "uri",
+>>                     "a valid migration protocol");
+>
+> ...which is leaked because we don't add any code for freeing
+> channel to compensate for it no longer being autofreed.
+>
+> thanks
+> -- PMM
 

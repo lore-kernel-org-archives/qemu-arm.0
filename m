@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2679163eja;
-        Mon, 6 Nov 2023 03:09:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHxYQjW72YZGwJj+ysz9h1GoA0JLKm7sVCF3+jAGvfGmBjVhP+NVsj82CEkxkSg3STRjeF7
-X-Received: by 2002:a25:cf88:0:b0:d9a:ed4d:b396 with SMTP id f130-20020a25cf88000000b00d9aed4db396mr29304257ybg.6.1699268962850;
-        Mon, 06 Nov 2023 03:09:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268962; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2679254eja;
+        Mon, 6 Nov 2023 03:09:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG8nXJShmUQrjQLiK694Gbtl5ZF0umF/S1WOZWDUoqu0lcEIeYLA+c+D7qH56b7xultitMU
+X-Received: by 2002:a17:902:c412:b0:1cc:c273:603 with SMTP id k18-20020a170902c41200b001ccc2730603mr3429422plk.42.1699268971809;
+        Mon, 06 Nov 2023 03:09:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268971; cv=none;
         d=google.com; s=arc-20160816;
-        b=q53WmGhqnTJUf63YPQZvJL3xbc7XXGLm4gQqOhj6pehZgoH9W17iJFgGtLbpWdbyX0
-         I4sZIyMa4Xo5SOmYf5VrAJSP136vB02llPscCTg+FrrwrVKIlNolo0weAvN0MJhLw0Yh
-         nDC8WVquuhHY+G/E0O9gbS/RlwzyMDpmSquUI/qH85uD4HZNo9kvN56WsuT3JAzPMUJi
-         A93uy7Ls5WtpVyVDrw709CRRD6Xlhs9tRjl5jBiy3hQMMS++/W6js1BwLIK9Hz+PcK13
-         LsZALzc6PsBR0YUr3kA50l2NxjKjLgbJcS2oQkquFWgiZJrAGRsjK7K5cI0mC4q2kPTB
-         hK7Q==
+        b=SHLVPDiaKRkbPUfVU66moImXfS8DNIY68RkpfaPlXQ53L1PrfLJbIIw9X6bZAcIg6m
+         Z3JnU3ENlPo86SiGuOJiLjJxbusWQXtbCr/5FbFq2qINEyYNCZWS4X1TGpeNLL15mJaP
+         wCJqZch0BY+ibmCeEVEzrarHGDruEX29emZ3fF5fP+whMRLUyHsEAxtA6VxNBPKEaAr7
+         10yTZvyo2KAJUhPdhlFZ4TeHyjC5wD3VH+6OtA6plf1RUO2K/aVQhBjNM+qje1xbnAMy
+         e79+JYs+fUhsebSp9Xeeq3bqjJtYCdtm5iA5uT042ymPRUJLrWmopDx15rJE37ee9dtG
+         VGsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=gh2da5PI+FWVTGRmyCu8rnn16q3Vdl/J/DOzB/U83Dc=;
+        bh=X3TRJ7mvtWFdvHNvT+G6kpqIlBzXe7wSn3LOLdu3gVg=;
         fh=c1Hsd908U9PKLwue3PgIR6OEtkIdu11a71wsyXYOJoE=;
-        b=Y8eq0tcUA/0Igq6u7xXKqv8WmmdjOYpRF7o3tjPwFQZr5yimXv07+ABMeFgTeffKRL
-         4dXb3xFGyy4hfqwZvZbY6q0R55xPtB62Io5Z4wPEhD8re9uciHtt5bATf8aWSNhbFb0r
-         aM9vlmtmXhSLF4JZuaOcJb4gGkxvDvKpqbHDo7xgSrNgmZcB0aaQDV3+xxJo2shi72vp
-         TGrCBd/29f1ACdx40G3WN6nAfxMJrNpDnFtTXfbI7uUBagetZtqaeLnVG8NCl3/G+xzh
-         yt7v8jwaEDHDi/nbhjWXfhKHsNr6y++OYS7ibJoMzF8xxYsKWG8aRaMU/PKiiZ36PFbJ
-         6rng==
+        b=SgPJIMDuhQ55bCnRkm37K1Wx94Mk95bE775gzA6Mb6jDpIabseAeqLq9Jan9aTWKxS
+         zfaC5HPPx2iSfv0p9oDsziCJyQuP8Ow+U3VYvBZK5/H3aMVVafSjc7q4uQUu4HI8KX0b
+         NRPvjNxNPj8+O/2DFDrrFIIpsOP1wVbYiovJoSWaYF9Z5W2s2GBBxtkp8LDjfgYXlGhr
+         T+oiET7t+pAAr2eDKFN2WJL6vf6+wG/gZznMftChXN6r/o4UWz6TRtFNdOP8o+qoSHfp
+         0rpWIO6QczE/tlhITbgdXRg4CasDxa/VYl0qqchjQ8lPSytfnpvW987E+0vPmUSaoLIW
+         JSqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TH8UyjV/";
-       spf=pass (google.com: domain of kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OOe5vG9a;
+       spf=pass (google.com: domain of kvm+bounces-719-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-719-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id l6-20020ad44246000000b0066d060465dasi5301683qvq.481.2023.11.06.03.09.22
+Return-Path: <kvm+bounces-719-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id i10-20020a170902c94a00b001b81a112f9bsi8356551pla.586.2023.11.06.03.09.31
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:09:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Mon, 06 Nov 2023 03:09:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-719-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TH8UyjV/";
-       spf=pass (google.com: domain of kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OOe5vG9a;
+       spf=pass (google.com: domain of kvm+bounces-719-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-719-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 799EC1C20BFE
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:09:22 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 44D23280D7B
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:09:31 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0A9BB1A712;
-	Mon,  6 Nov 2023 11:09:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9FD9F18B0C;
+	Mon,  6 Nov 2023 11:09:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="TH8UyjV/"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="OOe5vG9a"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 495C21A708
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:09:16 +0000 (UTC)
-Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com [IPv6:2a00:1450:4864:20::42a])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 095BBDB
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:09:15 -0800 (PST)
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-32db188e254so2655319f8f.0
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:09:14 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18F5F1BDCC
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:09:23 +0000 (UTC)
+Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com [IPv6:2a00:1450:4864:20::333])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 9FAF7FA
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:09:21 -0800 (PST)
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-40837ebba42so27346555e9.0
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:09:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268953; x=1699873753; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268960; x=1699873760; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gh2da5PI+FWVTGRmyCu8rnn16q3Vdl/J/DOzB/U83Dc=;
-        b=TH8UyjV/8lCS4aHRZiXTzO21dnKP0scR73v6DFF/nNcOlurSUO4s/85jxqYA/x2eVn
-         EVSfr+9UI0QQZ6i8J3iJ+oMXllmiYvYuO1Hg1k/TGRz92D1cxUFFP/1HNSh8n5v9PoMX
-         T3XvobkSaPSf8Kc80Kh5Csc+WU/g8TvlKuW93/PdS3+Ge8brAAwEb8YZsEBENDN4zDb7
-         1uY7enMwlIjmoXheY4UdcHEdlLJDr213kd56IDbsB5eBwrlMymicOoxA4sgJ+RtNasNC
-         cX0qdA4Aa8poOKcnxnRoorO99gtBt43zUK7hJEF/nhocvJhaN4IlPqWs9XU1fD/N4+/M
-         Eilw==
+        bh=X3TRJ7mvtWFdvHNvT+G6kpqIlBzXe7wSn3LOLdu3gVg=;
+        b=OOe5vG9a6beO9wl2CTEWZvgsrja2Y2Fee/67KVeV3+8BholjyGgrMdjN3tT6JTOgQY
+         CHLsIWpQzvWMnWuOr8bPfcqzsmIXFukAiIcKpmPOCkhTQHxC4Pf4FtZbWtC6Gsj2KElz
+         ROKmE/JoGDmBIb7tWKPAXZLE/hdGsgMFBAiwmyFZcNYo7Lgi5xX/TZ3RFMpWIZF3O1OZ
+         ks6sPp+aL8bk9v3JkfjMu3ATN6Yo7+BZqf/YFfuBAUlrzwPtcogi2X71FVw3frULq0RQ
+         VmjqeOrnwX09H3VWzQLbdxs1FwRKgGfmrNtVse/ZdCrVQpj6n0qad3n3eTUghDttUjl8
+         1R2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268953; x=1699873753;
+        d=1e100.net; s=20230601; t=1699268960; x=1699873760;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gh2da5PI+FWVTGRmyCu8rnn16q3Vdl/J/DOzB/U83Dc=;
-        b=VCRDILJbRQCQPMHKcZGDqLve/cBKjh1L+kbfcITvP+v9MP+8Pz3GBd5vWJSQPX4ntD
-         wYf1Gr5hCYKdbiROevI2dZCpMm8n3WKUOrqIk3PVmQLKDq+r0ozF3so02y2PFWm7eicp
-         mqoRbn8RK8Z1JhoqkGO9iaqc6VIh1T7e7mvmFmqA6/ZIQXVIsEeyGSVn/h9ooU0Z7e3+
-         5T5x9DIZyP1Mg+ux03vFHK6dhE8ESqFqZQuXCmz7PZe0z+xpk1Zk+5wEuGFeyykRzRze
-         q43uz4TeiNJgR0RGuAUTfjG39sZBeiIfpMzjFLMfk/uHbTr4vX7A2D33RZQN7yu1EmLA
-         zgLQ==
-X-Gm-Message-State: AOJu0YzvKBYyyz08W8+GlB895Wkg1YCCfHlZj8aUCOfyBBbCLbzOrP/W
-	qTPqgX2Zcp0JuN9FN91svgzonA==
-X-Received: by 2002:a5d:5a06:0:b0:32d:a101:689d with SMTP id bq6-20020a5d5a06000000b0032da101689dmr35272735wrb.56.1699268953327;
-        Mon, 06 Nov 2023 03:09:13 -0800 (PST)
+        bh=X3TRJ7mvtWFdvHNvT+G6kpqIlBzXe7wSn3LOLdu3gVg=;
+        b=KFNs+2rluSERaTVktprhKCyxllMv5QtO6mc7muvvFD0EM67aGdWwPE3tf8hmPHhczb
+         P8+NMhKP0FbvAOFqx54/kxX7ex4q1SzduFE7e4as+zRtWuiWmaxcvbHRon4zRyGOP5KT
+         /f1bOBsa0+5Ejb/cG58PhZVzjykBGX3zuxQng403P0kXfY2JybMlI29YWfZmqTsHhQBI
+         ntQhXA63sMv9AlqdYh2U8TCRw3wSaU1g+2cCJZRWBH3j4DipZgUJK2J673rpvXUrv/WU
+         7/vy/x6zHvSacMezHrxoGa08NR9Kta2swKFBkClBJyXqWgSZj4GzM2o68+RvW4UVDeAj
+         /3Pg==
+X-Gm-Message-State: AOJu0YxQ990ubCNLtBdKU37FrocJk+Z5TScfUtmfCh1uGcLjzHdBtlwg
+	7ohfDPAFGOcwShpdbNwoG4TeDw==
+X-Received: by 2002:a05:600c:46c8:b0:3ff:233f:2cfb with SMTP id q8-20020a05600c46c800b003ff233f2cfbmr23090503wmo.23.1699268960044;
+        Mon, 06 Nov 2023 03:09:20 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id j17-20020a056000125100b0032db4e660d9sm9181558wrx.56.2023.11.06.03.09.11
+        by smtp.gmail.com with ESMTPSA id t14-20020a05600c198e00b00405d9a950a2sm11977070wmq.28.2023.11.06.03.09.18
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:09:12 -0800 (PST)
+        Mon, 06 Nov 2023 03:09:19 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -102,9 +102,9 @@ Cc: kvm@vger.kernel.org,
 	Hao Wu <wuhaotsh@google.com>,
 	Corey Minyard <cminyard@mvista.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 49/60] hw/i2c: pmbus add support for block receive
-Date: Mon,  6 Nov 2023 12:03:21 +0100
-Message-ID: <20231106110336.358-50-philmd@linaro.org>
+Subject: [PULL 50/60] hw/i2c: pmbus: add vout mode bitfields
+Date: Mon,  6 Nov 2023 12:03:22 +0100
+Message-ID: <20231106110336.358-51-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -116,93 +116,46 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7UtDrNoX8oCd
+X-TUID: vX0Rn1EJe0ZL
 
 From: Titus Rwantare <titusr@google.com>
 
-PMBus devices can send and receive variable length data using the
-block read and write format, with the first byte in the payload
-denoting the length.
+The VOUT_MODE command is described in the PMBus Specification,
+Part II, Ver 1.3 Section 8.3
 
-This is mostly used for strings and on-device logs. Devices can
-respond to a block read with an empty string.
+VOUT_MODE has a three bit mode and 4 bit parameter, the three bit
+mode determines whether voltages are formatted as uint16, uint16,
+VID, and Direct modes. VID and Direct modes use the remaining 5 bits
+to scale the voltage readings.
 
 Reviewed-by: Hao Wu <wuhaotsh@google.com>
 Acked-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Titus Rwantare <titusr@google.com>
-Message-ID: <20231023-staging-pmbus-v3-v4-1-07a8cb7cd20a@google.com>
+Message-ID: <20231023-staging-pmbus-v3-v4-2-07a8cb7cd20a@google.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/i2c/pmbus_device.h |  7 +++++++
- hw/i2c/pmbus_device.c         | 30 +++++++++++++++++++++++++++++-
- 2 files changed, 36 insertions(+), 1 deletion(-)
+ include/hw/i2c/pmbus_device.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 93f5d57c9d..7dc00cc4d9 100644
+index 7dc00cc4d9..2e95164aa1 100644
 --- a/include/hw/i2c/pmbus_device.h
 +++ b/include/hw/i2c/pmbus_device.h
-@@ -501,6 +501,13 @@ void pmbus_send64(PMBusDevice *state, uint64_t data);
-  */
- void pmbus_send_string(PMBusDevice *state, const char *data);
+@@ -444,6 +444,14 @@ typedef struct PMBusCoefficients {
+     int32_t R;     /* exponent */
+ } PMBusCoefficients;
  
 +/**
-+ * @brief Receive data sent with Block Write.
-+ * @param dest - memory with enough capacity to receive the write
-+ * @param len - the capacity of dest
++ * VOUT_Mode bit fields
 + */
-+uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len);
++typedef struct PMBusVoutMode {
++    uint8_t  mode:3;
++    int8_t   exp:5;
++} PMBusVoutMode;
 +
  /**
-  * @brief Receive data over PMBus
-  * These methods help track how much data is being received over PMBus
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index cef51663d0..ea15490720 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -102,7 +102,6 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
-     }
- 
-     size_t len = strlen(data);
--    g_assert(len > 0);
-     g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
-     pmdev->out_buf[len + pmdev->out_buf_len] = len;
- 
-@@ -112,6 +111,35 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
-     pmdev->out_buf_len += len + 1;
- }
- 
-+uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len)
-+{
-+    /* dest may contain data from previous writes */
-+    memset(dest, 0, len);
-+
-+    /* Exclude command code from return value */
-+    pmdev->in_buf++;
-+    pmdev->in_buf_len--;
-+
-+    /* The byte after the command code denotes the length */
-+    uint8_t sent_len = pmdev->in_buf[0];
-+
-+    if (sent_len != pmdev->in_buf_len - 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: length mismatch. Expected %d bytes, got %d bytes\n",
-+                      __func__, sent_len, pmdev->in_buf_len - 1);
-+    }
-+
-+    /* exclude length byte */
-+    pmdev->in_buf++;
-+    pmdev->in_buf_len--;
-+
-+    if (pmdev->in_buf_len < len) {
-+        len = pmdev->in_buf_len;
-+    }
-+    memcpy(dest, pmdev->in_buf, len);
-+    return len;
-+}
-+
- 
- static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
- {
+  * Convert sensor values to direct mode format
+  *
 -- 
 2.41.0
 

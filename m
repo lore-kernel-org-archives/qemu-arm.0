@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a1-20020a05600c348100b003fe1fe56202sm13473409wmq.33.2023.11.06.10.51.14
+        by smtp.gmail.com with ESMTPSA id a16-20020a5d5710000000b0031aef72a021sm284215wrv.86.2023.11.06.10.51.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 06 Nov 2023 10:51:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 5D8B16575D;
+	by draig.lan (Postfix) with ESMTP id 311DE6575B;
 	Mon,  6 Nov 2023 18:51:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,174 +27,112 @@ Cc: qemu-arm@nongnu.org,
 	Marek Vasut <marex@denx.de>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 10/22] gdbstub: Introduce GDBFeatureBuilder
-Date: Mon,  6 Nov 2023 18:51:00 +0000
-Message-Id: <20231106185112.2755262-11-alex.bennee@linaro.org>
+Subject: [PATCH 08/22] gdbstub: Add num_regs member to GDBFeature
+Date: Mon,  6 Nov 2023 18:50:58 +0000
+Message-Id: <20231106185112.2755262-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231106185112.2755262-1-alex.bennee@linaro.org>
 References: <20231106185112.2755262-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZfBG1BwL5Dvr
+X-TUID: J8psGsePtYZs
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-GDBFeatureBuilder unifies the logic to generate dynamic GDBFeature.
+Currently the number of registers exposed to GDB is written as magic
+numbers in code. Derive the number of registers GDB actually see from
+XML files to replace the magic numbers in code later.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20231025093128.33116-4-akihiko.odaki@daynix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231025093128.33116-2-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231103195956.1998255-11-alex.bennee@linaro.org>
+Message-Id: <20231103195956.1998255-9-alex.bennee@linaro.org>
 ---
- include/exec/gdbstub.h | 50 ++++++++++++++++++++++++++++++++
- gdbstub/gdbstub.c      | 65 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 115 insertions(+)
+ include/exec/gdbstub.h  |  1 +
+ scripts/feature_to_c.py | 46 +++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 45 insertions(+), 2 deletions(-)
 
 diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 7fe00506c7..d8a3c56fa2 100644
+index 1a01c35f8e..a43aa34dad 100644
 --- a/include/exec/gdbstub.h
 +++ b/include/exec/gdbstub.h
-@@ -16,6 +16,12 @@ typedef struct GDBFeature {
-     int num_regs;
+@@ -13,6 +13,7 @@
+ typedef struct GDBFeature {
+     const char *xmlname;
+     const char *xml;
++    int num_regs;
  } GDBFeature;
  
-+typedef struct GDBFeatureBuilder {
-+    GDBFeature *feature;
-+    GPtrArray *xml;
-+    int base_reg;
-+} GDBFeatureBuilder;
-+
  
- /* Get or set a register.  Returns the size of the register.  */
- typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
-@@ -44,6 +50,50 @@ void gdb_register_coprocessor(CPUState *cpu,
-  */
- int gdbserver_start(const char *port_or_device);
+diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
+index bcbcb83beb..e04d6b2df7 100644
+--- a/scripts/feature_to_c.py
++++ b/scripts/feature_to_c.py
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
-+/**
-+ * gdb_feature_builder_init() - Initialize GDBFeatureBuilder.
-+ * @builder: The builder to be initialized.
-+ * @feature: The feature to be filled.
-+ * @name: The name of the feature.
-+ * @xmlname: The name of the XML.
-+ * @base_reg: The base number of the register ID.
-+ */
-+void gdb_feature_builder_init(GDBFeatureBuilder *builder, GDBFeature *feature,
-+                              const char *name, const char *xmlname,
-+                              int base_reg);
-+
-+/**
-+ * gdb_feature_builder_append_tag() - Append a tag.
-+ * @builder: The builder.
-+ * @format: The format of the tag.
-+ * @...: The values to be formatted.
-+ */
-+void G_GNUC_PRINTF(2, 3)
-+gdb_feature_builder_append_tag(const GDBFeatureBuilder *builder,
-+                               const char *format, ...);
-+
-+/**
-+ * gdb_feature_builder_append_reg() - Append a register.
-+ * @builder: The builder.
-+ * @name: The register's name; it must be unique within a CPU.
-+ * @bitsize: The register's size, in bits.
-+ * @regnum: The offset of the register's number in the feature.
-+ * @type: The type of the register.
-+ * @group: The register group to which this register belongs; it can be NULL.
-+ */
-+void gdb_feature_builder_append_reg(const GDBFeatureBuilder *builder,
-+                                    const char *name,
-+                                    int bitsize,
-+                                    int regnum,
-+                                    const char *type,
-+                                    const char *group);
-+
-+/**
-+ * gdb_feature_builder_end() - End building GDBFeature.
-+ * @builder: The builder.
-+ */
-+void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
-+
- /**
-  * gdb_find_static_feature() - Find a static feature.
-  * @xmlname: The name of the XML.
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index ae24c4848f..ebb912da1b 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -422,6 +422,71 @@ static const char *get_feature_xml(const char *p, const char **newp,
-     return NULL;
- }
+-import os, sys
++import os, sys, xml.etree.ElementTree
  
-+void gdb_feature_builder_init(GDBFeatureBuilder *builder, GDBFeature *feature,
-+                              const char *name, const char *xmlname,
-+                              int base_reg)
-+{
-+    char *header = g_markup_printf_escaped(
-+        "<?xml version=\"1.0\"?>"
-+        "<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">"
-+        "<feature name=\"%s\">",
-+        name);
+ def writeliteral(indent, bytes):
+     sys.stdout.write(' ' * indent)
+@@ -39,10 +39,52 @@ def writeliteral(indent, bytes):
+     with open(input, 'rb') as file:
+         read = file.read()
+ 
++    parser = xml.etree.ElementTree.XMLPullParser(['start', 'end'])
++    parser.feed(read)
++    events = parser.read_events()
++    event, element = next(events)
++    if event != 'start':
++        sys.stderr.write(f'unexpected event: {event}\n')
++        exit(1)
++    if element.tag != 'feature':
++        sys.stderr.write(f'unexpected start tag: {element.tag}\n')
++        exit(1)
 +
-+    builder->feature = feature;
-+    builder->xml = g_ptr_array_new();
-+    g_ptr_array_add(builder->xml, header);
-+    builder->base_reg = base_reg;
-+    feature->xmlname = xmlname;
-+    feature->num_regs = 0;
-+}
++    regnum = 0
++    regnums = []
++    tags = ['feature']
++    for event, element in events:
++        if event == 'end':
++            if element.tag != tags[len(tags) - 1]:
++                sys.stderr.write(f'unexpected end tag: {element.tag}\n')
++                exit(1)
 +
-+void gdb_feature_builder_append_tag(const GDBFeatureBuilder *builder,
-+                                    const char *format, ...)
-+{
-+    va_list ap;
-+    va_start(ap, format);
-+    g_ptr_array_add(builder->xml, g_markup_vprintf_escaped(format, ap));
-+    va_end(ap);
-+}
++            tags.pop()
++            if element.tag == 'feature':
++                break
++        elif event == 'start':
++            if len(tags) < 2 and element.tag == 'reg':
++                if 'regnum' in element.attrib:
++                    regnum = int(element.attrib['regnum'])
 +
-+void gdb_feature_builder_append_reg(const GDBFeatureBuilder *builder,
-+                                    const char *name,
-+                                    int bitsize,
-+                                    int regnum,
-+                                    const char *type,
-+                                    const char *group)
-+{
-+    if (builder->feature->num_regs < regnum) {
-+        builder->feature->num_regs = regnum;
-+    }
++                regnums.append(regnum)
++                regnum += 1
 +
-+    if (group) {
-+        gdb_feature_builder_append_tag(
-+            builder,
-+            "<reg name=\"%s\" bitsize=\"%d\" regnum=\"%d\" type=\"%s\" group=\"%s\"/>",
-+            name, bitsize, builder->base_reg + regnum, type, group);
-+    } else {
-+        gdb_feature_builder_append_tag(
-+            builder,
-+            "<reg name=\"%s\" bitsize=\"%d\" regnum=\"%d\" type=\"%s\"/>",
-+            name, bitsize, builder->base_reg + regnum, type);
-+    }
-+}
++            tags.append(element.tag)
++        else:
++            raise Exception(f'unexpected event: {event}\n')
 +
-+void gdb_feature_builder_end(const GDBFeatureBuilder *builder)
-+{
-+    g_ptr_array_add(builder->xml, (void *)"</feature>");
-+    g_ptr_array_add(builder->xml, NULL);
++    if len(tags):
++        sys.stderr.write('unterminated feature tag\n')
++        exit(1)
 +
-+    builder->feature->xml = g_strjoinv(NULL, (void *)builder->xml->pdata);
++    base_reg = min(regnums)
++    num_regs = max(regnums) - base_reg + 1 if len(regnums) else 0
 +
-+    for (guint i = 0; i < builder->xml->len - 2; i++) {
-+        g_free(g_ptr_array_index(builder->xml, i));
-+    }
-+
-+    g_ptr_array_free(builder->xml, TRUE);
-+}
-+
- const GDBFeature *gdb_find_static_feature(const char *xmlname)
- {
-     const GDBFeature *feature;
+     sys.stdout.write('    {\n')
+     writeliteral(8, bytes(os.path.basename(input), 'utf-8'))
+     sys.stdout.write(',\n')
+     writeliteral(8, read)
+-    sys.stdout.write('\n    },\n')
++    sys.stdout.write(f',\n        {num_regs},\n    }},\n')
+ 
+ sys.stdout.write('    { NULL }\n};\n')
 -- 
 2.39.2

@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2679295eja;
-        Mon, 6 Nov 2023 03:09:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEo6lQ4eV8d1616ryAOMF3ja2rAO9WGhDP/B7IK0yslVPw6hF3GOPzKVzo4s29FiYiGmQll
-X-Received: by 2002:a05:6a20:42a5:b0:140:6979:295d with SMTP id o37-20020a056a2042a500b001406979295dmr27901181pzj.2.1699268976867;
-        Mon, 06 Nov 2023 03:09:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268976; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2679356eja;
+        Mon, 6 Nov 2023 03:09:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF75p8o12nfIHH/EkjWLkHyvfl3UKEly8yUAIO4/+ZLxb7SUVNutY1bEGRyAWYnRXaVcrLj
+X-Received: by 2002:a05:620a:1486:b0:774:fb6:124f with SMTP id w6-20020a05620a148600b007740fb6124fmr28625812qkj.29.1699268982015;
+        Mon, 06 Nov 2023 03:09:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268982; cv=none;
         d=google.com; s=arc-20160816;
-        b=oCU+xr4a1vJF0aRME6UZyFEdFO0++LHEZK+B/RsCErvfFB6+4Ybsr5lAX1l3i4xOXp
-         ySm2zXau1AfKE2UwHDeEQm4vQDLISR0F3Of8z3PiLdxwUzjsFsxJ4zZvuQs+uLKFOWAQ
-         U+V3Qbr8OWHWw8yM1W0dGRk5PvhOyLTCjO8J4IH7jhU63f2QI2r2dBxVlgHPs+5dWTkh
-         NAinMbB17pVrnxSb8soN22MOYyU3ybkzBW27i4PUcokZgh/LErDW0PMt8BPQh3vzZPYw
-         N69c8f9wwUnMmJpdcP1o7VI/GobYJx7jTv6kajip1XviT6y3U9HrAJ/PDV/xGloCVxqX
-         83iw==
+        b=Pciw7fpOuxyQWre5e6Xp5jXYg7ECL3XbAXGyR+7eWgphCFnTihcoFv+4IooWp1jsiq
+         Dy00ehzp/a8URRowEdB9if102BLqj1nJTlf8bN4H5ACkL0+G1RkxfpmdN9+C0ByEVutU
+         Z1VgVk5NLOV3W+2ZPjcZlMCrJhHTFNgszqMKTsQPv7NNfgQOHW6LlFkkR95X5iHqsVfy
+         3RjBQj3t8RbpReDndbXvNNccOUWAH+fA79lOD16Y+aNSWVBNkP1QWMPCy54ovT0WTKS+
+         S09wU1boRyYYN54MUBRcc/h3BphobFbmlXJaMeUByQw4uP8UUiqbSgEx+KUNuW0xVC3k
+         W/Mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=SjHtz+lPcIw6M6S7bcDq7sYVmI6jCo0hvfjVBU4M5Y0=;
-        fh=f+gs2uUOwy1aaohSYhHU7Dp8Xo0RL3ov5eFKDyVFYsQ=;
-        b=l/qqx6+h8bM+9ZqMGBjnX0gXyftHpe6xOcIC+ArPqt0gO94GcBa30n1p95kQHRhSxf
-         3/VL0LTxihf4rV92RCa+2OP4fqw1GzuvTWLEy+nKWJP0LR0GpPIr0jXprbr+EfQWHyPI
-         IeZPZw5Q4Qu8VGksLH8aWMNcK66CCBGB2IkiQit3ebqSK2YACjYIsnSOIJbh5m6IDebV
-         wdVA1G6jmC46lVqlXphiIlx7kD8sLkUDUbtGuiXDXZZpA/P9EbVoQ9tZbW7CygwbBWss
-         ZXVMPH9PHWTiKKcaV843kN9QY1lpMsAMtN14kfPOpyhB1XGvAjCwnjsWtRza3p2gHHUc
-         LMLw==
+        bh=3MW0tyH68/nf1rlEHwZAluKpdYAi9tPVuWOS5/QAWBA=;
+        fh=BrsXn2Mt19aqa/pgd+z/3CIJ3M3WCq93nIkOdCPdI3Q=;
+        b=bfqE88hz5xL/iDZM9UJmX9cKNOKGIoyxdBWDGY/l0Z8hj/nyC48bazGn5A0uBRI6eI
+         Vo/GBHqI6choDs4RCX+bscoXoQnvA84H5lfNISel6Gvi/TEBuqcztlku43ZEzcOmVATu
+         we55s54nixYAMng6Nh8w50sjRXfJHOgUbjoPGS/Ep+zNi9D9TDTRtnbdJMliA4Y+HlPO
+         bpW70drlvCHh+JoOrYzFytuhel/vbEiWzymjsknksS19Hd/Uw8ld1FpK2GnQvN/+u9S6
+         b1xuni358aLr9nqzzbagFAiwIenFswg/6N3b5FgXLS53u+dcgqqkDEcfdm8asorYsS+R
+         ivmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CAU5PsWJ;
-       spf=pass (google.com: domain of kvm+bounces-720-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-720-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=W3apIab0;
+       spf=pass (google.com: domain of kvm+bounces-721-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-721-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-720-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d12-20020aa7868c000000b006bf53b69e21si7242963pfo.359.2023.11.06.03.09.36
+Return-Path: <kvm+bounces-721-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id x5-20020a05620a448500b00778ae164b87si5223265qkp.160.2023.11.06.03.09.41
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:09:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-720-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Mon, 06 Nov 2023 03:09:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-721-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CAU5PsWJ;
-       spf=pass (google.com: domain of kvm+bounces-720-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-720-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=W3apIab0;
+       spf=pass (google.com: domain of kvm+bounces-721-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-721-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 48D94280E68
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:09:36 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A58BF1C20B92
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:09:41 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D368C199B8;
-	Mon,  6 Nov 2023 11:09:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6C51C1A5B8;
+	Mon,  6 Nov 2023 11:09:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="CAU5PsWJ"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="W3apIab0"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B065D199B3
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:09:29 +0000 (UTC)
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com [IPv6:2a00:1450:4864:20::32a])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 10DF9CC
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:09:28 -0800 (PST)
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-40842752c6eso33386795e9.1
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:09:27 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D3821A5A4
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:09:36 +0000 (UTC)
+Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com [IPv6:2a00:1450:4864:20::429])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 99590BB
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:09:34 -0800 (PST)
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-32f737deedfso2644292f8f.3
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:09:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268966; x=1699873766; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268973; x=1699873773; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SjHtz+lPcIw6M6S7bcDq7sYVmI6jCo0hvfjVBU4M5Y0=;
-        b=CAU5PsWJRg1LWpCDjcp2g3JiR3mbXOGiyOf3WCmO16BCrHa2pU5a3WTOe5CYIUQo69
-         T2OfAjcn+FqOi4Up317xAp0ycpXnFsHKy2KwL65Ky1nKdDiUfrv/O6hh020kNiUqELq+
-         dlsT0kLgcc5yD65FT/Ou7OFmX7PkxlTvCil7zi34cN97YcnQY+Fj3hL8AEEP+3XXF9uu
-         5s5okkww2EjLtv7ZB4Idh3GR79IZe9pdisAoMwqB0PRtrKRgoX+BUT+yEetg9l+ekO9d
-         zfoE3ehZcJdY7wL5R4aFzCYfQbMB1gC5neDEJz1BIUGXJHWgOd61Od977O8O6o/At5NQ
-         r3Zw==
+        bh=3MW0tyH68/nf1rlEHwZAluKpdYAi9tPVuWOS5/QAWBA=;
+        b=W3apIab0xrpXHVy4DY6TRVOPSjSpbTFoaqxbeJcsG1CGBEvtcAg2pU1lrNnp7FezNS
+         lzmjwpxsmTIHsDN0A0ZDf6oTZZhkYQNHuNYC/LkR4csO7x1OXyUZq90tLDByXxIDO8GE
+         2X7JYtlTEmcgLawMkNqmt5Oi0iKKlmRUnEOdWfuQ4nk8GV+u3zIFYQz+QZhfVqAJTcL5
+         lFPnsjNUPuLXm7ikAgcyONYGW+XiHSjycoycqaIUCslPI0CV00qj06uMp9w5R517nvRX
+         2ku0YWqmLs5tchhbwVAp+flFj/J2lCVcegJRgc2LhOLZEjZGDx48e7uPf62bnn0rQ0OK
+         34pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268966; x=1699873766;
+        d=1e100.net; s=20230601; t=1699268973; x=1699873773;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SjHtz+lPcIw6M6S7bcDq7sYVmI6jCo0hvfjVBU4M5Y0=;
-        b=wbxXvM7cTieWxN1UObtwCk0FsaBkP9/3Y1L2bUH6CSNAISL9vTPwdGMZRqFRCGS2kr
-         ilduqHLdf5hfICoMYgA7MwEX4uHULYjUl4d9zGGHmmTHTvTaEng+fjz3KVf7nE/Y8UW/
-         CaW83p3NQFroF8amEa9KVk1EfC2HmbxFHefjfWYjKkc/VmToDqXAVvo1HpOwniXkXa62
-         VV2IDxP/oyT6SKlIk8TewM/JkvzLb0IgUUza7kW+CV1N0GqKlpKAi/ZMoGZl8YnCnK1d
-         AHso3rrDc/AtFDtJfMMThQUQfuqHhYjazgocNHptfjC0hcF6ZXnDV/Hgr0r+xtNMmBh2
-         C2UQ==
-X-Gm-Message-State: AOJu0Yyb+WtGFJP9XjzZ5E6u8GvheW70HQzH+AkaQMntSSfCmYYhoEMh
-	EDjMFqvRCT4nJEntevuACD8ha4lGF5b8U/22wgg=
-X-Received: by 2002:a05:600c:4693:b0:409:5a92:472f with SMTP id p19-20020a05600c469300b004095a92472fmr11071290wmo.6.1699268966532;
-        Mon, 06 Nov 2023 03:09:26 -0800 (PST)
+        bh=3MW0tyH68/nf1rlEHwZAluKpdYAi9tPVuWOS5/QAWBA=;
+        b=gqdkJvFKvK/mTHa590BNF3wRVddfFrgfyFTVvQH1GRvW5LP28W76J5j0hOPTWmI0jU
+         w2w5/6yI1H6EujLGYq5JPMukU9Oj+H0gf/SIFNW1Lhh588xuSV393cGgL11PMj18QN9y
+         hDJSZhZnLZcGC92j6ZdhLYVj3aX8XD3IQW/Fv4GDgA04YuljHhdpl9EsFcJwbAcbmwbI
+         h6pEDKu/I35BXrnYEHeyRtOB9a+mLq+Rk0uG1orJ6nBx+wglxTp01uL+Dq7ce1cXPqNE
+         gxEDFSOo1uCu0g1POex0A/ItlDsgJURZmxuBhJFrm4Wu8zMRxXnIG3iVSGxdDaSctx+W
+         6e6A==
+X-Gm-Message-State: AOJu0YxBvq5Hhs7GLs6ZlQzzf5Ng696Td/xB4WgAPNDs7CcCzzvJrpKS
+	BBNL2t5Ycb6hVk0PzBTZPwU93g==
+X-Received: by 2002:a05:6000:2c5:b0:32f:7ae2:4165 with SMTP id o5-20020a05600002c500b0032f7ae24165mr27652837wry.9.1699268972999;
+        Mon, 06 Nov 2023 03:09:32 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id j6-20020adfea46000000b0032fc609c118sm6076145wrn.66.2023.11.06.03.09.24
+        by smtp.gmail.com with ESMTPSA id y8-20020a5d4708000000b0032d2f09d991sm9141944wrq.33.2023.11.06.03.09.31
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:09:26 -0800 (PST)
+        Mon, 06 Nov 2023 03:09:32 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -99,12 +99,12 @@ Cc: kvm@vger.kernel.org,
 	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
 	Titus Rwantare <titusr@google.com>,
-	Stephen Longfield <slongfield@google.com>,
+	Benjamin Streb <bstreb@google.com>,
 	Corey Minyard <cminyard@mvista.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 51/60] hw/i2c: pmbus: add fan support
-Date: Mon,  6 Nov 2023 12:03:23 +0100
-Message-ID: <20231106110336.358-52-philmd@linaro.org>
+Subject: [PULL 52/60] hw/i2c: pmbus: add VCAP register
+Date: Mon,  6 Nov 2023 12:03:24 +0100
+Message-ID: <20231106110336.358-53-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -116,251 +116,53 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: blQGtsf9JNVc
+X-TUID: CU2T7oK11vbB
 
 From: Titus Rwantare <titusr@google.com>
 
-PMBus devices may integrate fans whose operation is configurable
-over PMBus. This commit allows the driver to read and write the
-fan control registers but does not model the operation of fans.
+VCAP is a register for devices with energy storage capacitors.
 
-Reviewed-by: Stephen Longfield <slongfield@google.com>
+Reviewed-by: Benjamin Streb <bstreb@google.com>
 Acked-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Titus Rwantare <titusr@google.com>
-Message-ID: <20231023-staging-pmbus-v3-v4-3-07a8cb7cd20a@google.com>
+Message-ID: <20231023-staging-pmbus-v3-v4-4-07a8cb7cd20a@google.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/i2c/pmbus_device.h |   1 +
- hw/i2c/pmbus_device.c         | 176 ++++++++++++++++++++++++++++++++++
- 2 files changed, 177 insertions(+)
+ include/hw/i2c/pmbus_device.h | 1 +
+ hw/i2c/pmbus_device.c         | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
 diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 2e95164aa1..ad431bdc7c 100644
+index ad431bdc7c..f195c11384 100644
 --- a/include/hw/i2c/pmbus_device.h
 +++ b/include/hw/i2c/pmbus_device.h
-@@ -258,6 +258,7 @@ OBJECT_DECLARE_TYPE(PMBusDevice, PMBusDeviceClass,
- #define PB_HAS_TEMP2               BIT_ULL(41)
- #define PB_HAS_TEMP3               BIT_ULL(42)
- #define PB_HAS_TEMP_RATING         BIT_ULL(43)
-+#define PB_HAS_FAN                 BIT_ULL(44)
- #define PB_HAS_MFR_INFO            BIT_ULL(50)
- #define PB_HAS_STATUS_MFR_SPECIFIC BIT_ULL(51)
- 
+@@ -243,6 +243,7 @@ OBJECT_DECLARE_TYPE(PMBusDevice, PMBusDeviceClass,
+ #define PB_HAS_VIN_RATING          BIT_ULL(13)
+ #define PB_HAS_VOUT_RATING         BIT_ULL(14)
+ #define PB_HAS_VOUT_MODE           BIT_ULL(15)
++#define PB_HAS_VCAP                BIT_ULL(16)
+ #define PB_HAS_IOUT                BIT_ULL(21)
+ #define PB_HAS_IIN                 BIT_ULL(22)
+ #define PB_HAS_IOUT_RATING         BIT_ULL(23)
 diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index ea15490720..c1d8c93056 100644
+index c1d8c93056..3bce39e84e 100644
 --- a/hw/i2c/pmbus_device.c
 +++ b/hw/i2c/pmbus_device.c
-@@ -500,6 +500,54 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+@@ -906,6 +906,14 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
          }
          break;
  
-+    case PMBUS_FAN_CONFIG_1_2:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].fan_config_1_2);
++    case PMBUS_READ_VCAP:                 /* Read-Only word */
++        if (pmdev->pages[index].page_flags & PB_HAS_VCAP) {
++            pmbus_send16(pmdev, pmdev->pages[index].read_vcap);
 +        } else {
 +            goto passthough;
 +        }
 +        break;
 +
-+    case PMBUS_FAN_COMMAND_1:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_1);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_2:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_2);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_CONFIG_3_4:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].fan_config_3_4);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_3:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_3);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_4:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].fan_command_4);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-     case PMBUS_VOUT_OV_FAULT_LIMIT:       /* R/W word */
+     case PMBUS_READ_VOUT:                 /* Read-Only word */
          if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
-             pmbus_send16(pmdev, pmdev->pages[index].vout_ov_fault_limit);
-@@ -810,6 +858,22 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         pmbus_send8(pmdev, pmdev->pages[index].status_mfr_specific);
-         break;
- 
-+    case PMBUS_STATUS_FANS_1_2:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_1_2);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_STATUS_FANS_3_4:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_3_4);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-     case PMBUS_READ_EIN:                  /* Read-Only block 5 bytes */
-         if (pmdev->pages[index].page_flags & PB_HAS_EIN) {
-             pmbus_send(pmdev, pmdev->pages[index].read_ein, 5);
-@@ -882,6 +946,54 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
-         }
-         break;
- 
-+    case PMBUS_READ_FAN_SPEED_1:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_1);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_READ_FAN_SPEED_2:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_2);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_READ_FAN_SPEED_3:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_3);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_READ_FAN_SPEED_4:          /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_4);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_READ_DUTY_CYCLE:           /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_duty_cycle);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-+    case PMBUS_READ_FREQUENCY:            /* Read-Only word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send16(pmdev, pmdev->pages[index].read_frequency);
-+        } else {
-+            goto passthough;
-+        }
-+        break;
-+
-     case PMBUS_READ_POUT:                 /* Read-Only word */
-         if (pmdev->pages[index].page_flags & PB_HAS_POUT) {
-             pmbus_send16(pmdev, pmdev->pages[index].read_pout);
-@@ -1305,6 +1417,54 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         }
-         break;
- 
-+    case PMBUS_FAN_CONFIG_1_2:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_config_1_2 = pmbus_receive8(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_1:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_1 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_2:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_2 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_CONFIG_3_4:            /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_config_3_4 = pmbus_receive8(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_3:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_3 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-+    case PMBUS_FAN_COMMAND_4:             /* R/W word */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmdev->pages[index].fan_command_4 = pmbus_receive16(pmdev);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-     case PMBUS_VOUT_OV_FAULT_LIMIT:       /* R/W word */
-         if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
-             pmdev->pages[index].vout_ov_fault_limit = pmbus_receive16(pmdev);
-@@ -1610,6 +1770,22 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
-         pmdev->pages[index].status_mfr_specific = pmbus_receive8(pmdev);
-         break;
- 
-+    case PMBUS_STATUS_FANS_1_2:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_1_2);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-+    case PMBUS_STATUS_FANS_3_4:           /* R/W byte */
-+        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
-+            pmbus_send8(pmdev, pmdev->pages[index].status_fans_3_4);
-+        } else {
-+            goto passthrough;
-+        }
-+        break;
-+
-     case PMBUS_PAGE_PLUS_READ:            /* Block Read-only */
-     case PMBUS_CAPABILITY:                /* Read-Only byte */
-     case PMBUS_COEFFICIENTS:              /* Read-only block 5 bytes */
+             pmbus_send16(pmdev, pmdev->pages[index].read_vout);
 -- 
 2.41.0
 

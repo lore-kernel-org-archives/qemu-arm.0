@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a16-20020a5d5710000000b0031aef72a021sm284214wrv.86.2023.11.06.10.51.14
+        by smtp.gmail.com with ESMTPSA id q24-20020a7bce98000000b0040648217f4fsm12793752wmj.39.2023.11.06.10.51.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 06 Nov 2023 10:51:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 1C8836575A;
+	by draig.lan (Postfix) with ESMTP id 465616575C;
 	Mon,  6 Nov 2023 18:51:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -25,87 +25,78 @@ Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Chris Wulff <crwulff@gmail.com>,
 	Marek Vasut <marex@denx.de>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 07/22] tests/avocado: update the tcg_plugins test
-Date: Mon,  6 Nov 2023 18:50:57 +0000
-Message-Id: <20231106185112.2755262-8-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 09/22] gdbstub: Introduce gdb_find_static_feature()
+Date: Mon,  6 Nov 2023 18:50:59 +0000
+Message-Id: <20231106185112.2755262-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231106185112.2755262-1-alex.bennee@linaro.org>
 References: <20231106185112.2755262-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ei2/x6Rqa8/W
+X-TUID: Ec63cqZAlpd1
 
-There are a number of things that are broken on the test currently so
-lets fix that up:
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-  - replace retired Debian kernel for tuxrun_baseline one
-  - remove "detected repeat instructions test" since ea185a55
-  - log total counted instructions/memory accesses
+This function is useful to determine the number of registers exposed to
+GDB from the XML name.
 
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231025093128.33116-3-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231103195956.1998255-8-alex.bennee@linaro.org>
+Message-Id: <20231103195956.1998255-10-alex.bennee@linaro.org>
 ---
- tests/avocado/tcg_plugins.py | 28 ++++++++++++++++++----------
- 1 file changed, 18 insertions(+), 10 deletions(-)
+ include/exec/gdbstub.h |  8 ++++++++
+ gdbstub/gdbstub.c      | 13 +++++++++++++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/tests/avocado/tcg_plugins.py b/tests/avocado/tcg_plugins.py
-index 642d2e49e3..15fd87b2c1 100644
---- a/tests/avocado/tcg_plugins.py
-+++ b/tests/avocado/tcg_plugins.py
-@@ -54,13 +54,11 @@ def run_vm(self, kernel_path, kernel_command_line,
- class PluginKernelNormal(PluginKernelBase):
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index a43aa34dad..7fe00506c7 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -44,6 +44,14 @@ void gdb_register_coprocessor(CPUState *cpu,
+  */
+ int gdbserver_start(const char *port_or_device);
  
-     def _grab_aarch64_kernel(self):
--        kernel_url = ('http://security.debian.org/'
--                      'debian-security/pool/updates/main/l/linux-signed-arm64/'
--                      'linux-image-4.19.0-12-arm64_4.19.152-1_arm64.deb')
--        kernel_sha1 = '2036c2792f80ac9c4ccaae742b2e0a28385b6010'
--        kernel_deb = self.fetch_asset(kernel_url, asset_hash=kernel_sha1)
--        kernel_path = self.extract_from_deb(kernel_deb,
--                                            "/boot/vmlinuz-4.19.0-12-arm64")
-+        kernel_url = ('https://storage.tuxboot.com/20230331/arm64/Image')
-+        kernel_sha256 = 'ce95a7101a5fecebe0fe630deee6bd97b32ba41bc8754090e9ad8961ea8674c7'
-+        kernel_path = self.fetch_asset(kernel_url,
-+                                       asset_hash=kernel_sha256,
-+                                       algorithm = "sha256")
-         return kernel_path
- 
-     def test_aarch64_virt_insn(self):
-@@ -88,6 +86,10 @@ def test_aarch64_virt_insn(self):
-             m = re.search(br"insns: (?P<count>\d+)", s)
-             if "count" not in m.groupdict():
-                 self.fail("Failed to find instruction count")
-+            else:
-+                count = int(m.group("count"))
-+                self.log.info(f"Counted: {count} instructions")
++/**
++ * gdb_find_static_feature() - Find a static feature.
++ * @xmlname: The name of the XML.
++ *
++ * Return: The static feature.
++ */
++const GDBFeature *gdb_find_static_feature(const char *xmlname);
 +
+ void gdb_set_stop_cpu(CPUState *cpu);
  
-     def test_aarch64_virt_insn_icount(self):
-         """
-@@ -111,9 +113,13 @@ def test_aarch64_virt_insn_icount(self):
+ /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 29540a0284..ae24c4848f 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -422,6 +422,19 @@ static const char *get_feature_xml(const char *p, const char **newp,
+     return NULL;
+ }
  
-         with plugin_log as lf, \
-              mmap.mmap(lf.fileno(), 0, access=mmap.ACCESS_READ) as s:
--            m = re.search(br"detected repeat execution @ (?P<addr>0x[0-9A-Fa-f]+)", s)
--            if m is not None and "addr" in m.groupdict():
--                self.fail("detected repeated instructions")
++const GDBFeature *gdb_find_static_feature(const char *xmlname)
++{
++    const GDBFeature *feature;
 +
-+            m = re.search(br"insns: (?P<count>\d+)", s)
-+            if "count" not in m.groupdict():
-+                self.fail("Failed to find instruction count")
-+            else:
-+                count = int(m.group("count"))
-+                self.log.info(f"Counted: {count} instructions")
- 
-     def test_aarch64_virt_mem_icount(self):
-         """
-@@ -145,3 +151,5 @@ def test_aarch64_virt_mem_icount(self):
-                 callback = int(m[1])
-                 if inline != callback:
-                     self.fail("mismatched access counts")
-+                else:
-+                    self.log.info(f"Counted {inline} memory accesses")
++    for (feature = gdb_static_features; feature->xmlname; feature++) {
++        if (!strcmp(feature->xmlname, xmlname)) {
++            return feature;
++        }
++    }
++
++    g_assert_not_reached();
++}
++
+ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
 -- 
 2.39.2

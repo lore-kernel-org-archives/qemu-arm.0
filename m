@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004961eja;
-        Mon, 6 Nov 2023 11:57:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEyJ7juuNZ7l3tWEZJspNsg+nwgcwkFbOePm06EIaq+hnYee/Qr0o3FCYbrasFTCInqetUK
-X-Received: by 2002:ad4:4ea7:0:b0:649:384f:ed4 with SMTP id ed7-20020ad44ea7000000b00649384f0ed4mr37802723qvb.19.1699300664220;
-        Mon, 06 Nov 2023 11:57:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300664; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3005018eja;
+        Mon, 6 Nov 2023 11:57:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFeadSDlOcA+ScZh41EYG3h3QxbHlVvAJiX4QC7VkLkEpmlrJ4vvcZC+NMkMiZJJTsaPMeT
+X-Received: by 2002:a05:6102:1357:b0:45a:9e8d:bf09 with SMTP id j23-20020a056102135700b0045a9e8dbf09mr20834711vsl.33.1699300672313;
+        Mon, 06 Nov 2023 11:57:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300672; cv=none;
         d=google.com; s=arc-20160816;
-        b=DguEO0mfo57MsNEuKsacPBtaBd0hy6xFA3kQNv6ZneVJn1w8WPpmxUQjC1MgfYIHaP
-         ETtsB7onbz+p+LHDkvxU8XYavzZ6qDqEpoEY7Z++gV1lDm+wVQV2FMLqB+teZg+bA0mX
-         g/GKoLUZ58SWc8FjXT91MsTnYBB1Hh1mnZJSL9XXmAV+Ck5Yrch9Z2mg4FmqB1MhzxAA
-         So4WtkJoXw/EmXDuI63Nm0d7v4+Fqhd1bb6PzHYQozRZavzNiqjZycEAi0Xzq+pIqDsS
-         IzhfQ49I/B0coEiAX5f+GrQdq/88/dIiuPHp7TFdXcAiaMRCHv44ZQ49CKmSGmALRGbv
-         wXtQ==
+        b=vxZIUG0fmtAbun2DAABP9SHti+SV1Kv3us2GLT7BJ+TwhOVtxwho81rUVrUNIN+Mic
+         ohNOhDsyop63ubhhHGEOl6W7R6I4BdluKYgMdEsu4N56fKn4dgb7R2QEC53Ak+kACEmP
+         0JQoPSjwmzLfn4WzgNkXgXzRQvtB4x7Jcwlr0DdyobrlGdH6dOhSijemUeLRmxi176XR
+         s9ftm1gbzIYCf5Qg5mnir1QEwh/VQ2aISI3edj91nM7DMN1AL/JafckPVhnHIyqt0rZQ
+         6Ox12tt/14Q2jM/1yEn41a2uWjUqnm0LAFQFiM/gSlEdj2laC6uDwPGCqE1ZQ9ubRP6D
+         HfVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=q0R/vGQ9T82wbQo8p5ZlrUQuMaAjQBGhQrtm5gCHFCU=;
+        bh=hIoRnAOMf4YLSnQadmaBzYXHMtK98X95ymuChZmuyOk=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=oBaTu5aUdFuputGnVVQhPVGpZzcQ1iLjU2sok+u7aLIkPiW9WDxu6oC2mxP4EKDeyp
-         UpeZFsWbIQVgZNMR6/gmkwna2JAnEHGWvG6DqFm15NH+XICURc/Z7iErUDuU1u/fsyPl
-         rG6uTnsqUdlcEO5P9rgoas39Nui2hEJ2D2Khj3y1Zkc8mSLEBm0XAGrX6/TgTLGzWyuf
-         c5mBg48F+2BLCrd9Yv5RqRrL3f3Qzdr2oOxSiekC1TxUqCxZOkSD/9NCwtFaT6Cf1Gac
-         oYtwrjrIFjhQNvi4RhPjfB1WCrSubeWZmgxdoH03ONE4URc4l6e6R77KElgk6xinSHF7
-         fV7Q==
+        b=j7qgOidCxl7e4SMmopNWA6449HOU1HV2jKe0GRImHdbyqgMKHxPydOCBkwFVP/BHa6
+         GxuFYbKuRmEEJ3wOfh04AnMYyRXr+GE158IHYINMULL0qKoDZ7ux2i0H7qJWtdOkm4S/
+         thVFPl5vk3yIIx4eeReEJ6nLy6zSlrTRp6YLw6TjPK5hF5YG/S7GEztEHS+n9bmiykgB
+         3EMZ/3Our5icYAMGv7oSm4304pNCq46A+m0gGXfIGo/+zR86XNaP3umQtk+lqWkvJok2
+         bIdv1lzLhrVeC5Q1eDAzS/RCtW2PMxB84FXE9AQyMiiuBl4PuYUewQFeXoOx8F7kHEod
+         z12g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=YK3C7Jen;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=qUzKCqpV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18-20020a0cead2000000b0065b1c33dfcfsi6163733qvp.352.2023.11.06.11.57.44
+        by mx.google.com with ESMTPS id cr14-20020a05622a428e00b0041fe7e569e4si2443607qtb.242.2023.11.06.11.57.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 11:57:44 -0800 (PST)
+        Mon, 06 Nov 2023 11:57:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=YK3C7Jen;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=qUzKCqpV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r05gI-0005wY-41; Mon, 06 Nov 2023 14:54:42 -0500
+	id 1r05g9-0005ko-Qv; Mon, 06 Nov 2023 14:54:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05g5-0005co-AH; Mon, 06 Nov 2023 14:54:29 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05g2-0005Xp-Pq; Mon, 06 Nov 2023 14:54:26 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05fy-00066s-RP; Mon, 06 Nov 2023 14:54:29 -0500
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05fy-00065Y-5R; Mon, 06 Nov 2023 14:54:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=q0R/vGQ9T82wbQo8p5ZlrUQuMaAjQBGhQrtm5gCHFCU=; b=YK3C7Jenk8mKIqGsUPnTM8EyMw
- POLjAyOcSK0W2nDQyOB2QKERFVOXLtAM8+Eia0Y14pKOJNsATlJqpxv6JlVEbkDNYtghyf1UmyRQX
- PrB/HF2paV+1bsRVE6RKGuXAGQuamQ9TQ81HyyI7hmWIZBK29wXf0aaQAsBc/ZXJ3Nf+6i5U2t6E1
- 7KVtgPm3H/8Ud8rHHF3VHKZceX6K/IMgYs0/Q/IrNufePqWlNamLXvESBdKCwjSiY6/zMkMGq+v26
- m+dGAQv/40uXcGzWgcW1RTl7euzbtf1m8nckwmOYBYK6bX/OJeLw/JVvqBx9i2vuxPgRTVnuGEJb9
- hwMMKwyQ==;
+ bh=hIoRnAOMf4YLSnQadmaBzYXHMtK98X95ymuChZmuyOk=; b=qUzKCqpVO6Udx/7XIIZTFy0bXa
+ 8m85YwoNugBIZJ3XycbR/IgX5y/nXHX99FXCHqy5/o1vseWe0iaTrMoL7MC9FrQ0dc15abMItpQYp
+ ZWJR1xN6KWhkW72+kWxsmKO27l6QjOeqBVWusI+Hz2MbeJrLM2hFQkN4Kf/4BSyixYnl65hkvrThQ
+ qUJl8QRy1qnLdzOGW+Q2qIXWES9a99eal/SYiDM/UTBtyKCjIVqTujTI8PVOfA0Hg0nF4M2XIhOPE
+ pqd28U2LshWkEgecDecNcvuQck8JMbE2m/iNgYoQnZgpMkJjSO7ZVbLHC9lvfQYXkLzxlaVVbyegU
+ pI4+5QFA==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fb-007taV-FP; Mon, 06 Nov 2023 19:54:00 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1r05fb-00AkFy-2Z; Mon, 06 Nov 2023 19:54:02 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fb-001GON-2E; Mon, 06 Nov 2023 19:53:59 +0000
+ Hat Linux)) id 1r05fb-001GO0-0s; Mon, 06 Nov 2023 19:53:59 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,20 +116,20 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 25/46] hw/net/smc91c111: use
+Subject: [PATCH for-8.3 v2 21/46] hw/arm/allwinner: use
  qemu_configure_nic_device()
-Date: Mon,  6 Nov 2023 19:49:30 +0000
-Message-ID: <20231106195352.301038-26-dwmw2@infradead.org>
+Date: Mon,  6 Nov 2023 19:49:26 +0000
+Message-ID: <20231106195352.301038-22-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -151,195 +151,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MPQ+mutuOCAc
+X-TUID: whTxD8UNyVXR
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Some callers instantiate the device unconditionally, others will do so only
-if there is a NICInfo to go with it. This appears to be fairly random, but
-preserve the existing behaviour for now.
-
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/arm/gumstix.c           |  6 ++----
- hw/arm/integratorcp.c      |  5 +++--
- hw/arm/mainstone.c         |  3 +--
- hw/arm/realview.c          | 25 ++++++++++---------------
- hw/arm/versatilepb.c       | 15 ++++-----------
- hw/net/smc91c111.c         |  5 ++---
- include/hw/net/smc91c111.h |  2 +-
- 7 files changed, 23 insertions(+), 38 deletions(-)
+ hw/arm/allwinner-a10.c |  6 +-----
+ hw/arm/allwinner-h3.c  |  6 +-----
+ hw/arm/allwinner-r40.c | 27 ++-------------------------
+ 3 files changed, 4 insertions(+), 35 deletions(-)
 
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-index 2ca4140c9f..f58c4da7f9 100644
---- a/hw/arm/gumstix.c
-+++ b/hw/arm/gumstix.c
-@@ -74,8 +74,7 @@ static void connex_init(MachineState *machine)
-                           FLASH_SECTOR_SIZE, 2, 0, 0, 0, 0, 0);
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index b0ea3f7f66..57f52871ec 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -142,11 +142,7 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0, AW_A10_DRAMC_BASE);
  
-     /* Interrupt line of NIC is connected to GPIO line 36 */
--    smc91c111_init(&nd_table[0], 0x04000300,
--                    qdev_get_gpio_in(cpu->gpio, 36));
-+    smc91c111_init(0x04000300, qdev_get_gpio_in(cpu->gpio, 36));
- }
- 
- static void verdex_init(MachineState *machine)
-@@ -98,8 +97,7 @@ static void verdex_init(MachineState *machine)
-                           FLASH_SECTOR_SIZE, 2, 0, 0, 0, 0, 0);
- 
-     /* Interrupt line of NIC is connected to GPIO line 99 */
--    smc91c111_init(&nd_table[0], 0x04000300,
--                    qdev_get_gpio_in(cpu->gpio, 99));
-+    smc91c111_init(0x04000300, qdev_get_gpio_in(cpu->gpio, 99));
- }
- 
- static void connex_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index d176e9af7e..29bc128992 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -669,8 +669,9 @@ static void integratorcp_init(MachineState *machine)
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0x1d000000);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[25]);
- 
--    if (nd_table[0].used)
--        smc91c111_init(&nd_table[0], 0xc8000000, pic[27]);
-+    if (qemu_find_nic_info("smc91c111", true, NULL)) {
-+        smc91c111_init(0xc8000000, pic[27]);
-+    }
- 
-     sysbus_create_simple("pl110", 0xc0000000, pic[22]);
- 
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index 68329c4617..84dbb6e525 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -153,8 +153,7 @@ static void mainstone_common_init(MachineState *machine,
-             qdev_get_gpio_in(mst_irq, S1_IRQ),
-             qdev_get_gpio_in(mst_irq, S1_CD_IRQ));
- 
--    smc91c111_init(&nd_table[0], MST_ETH_PHYS,
--                    qdev_get_gpio_in(mst_irq, ETHERNET_IRQ));
-+    smc91c111_init(MST_ETH_PHYS, qdev_get_gpio_in(mst_irq, ETHERNET_IRQ));
- 
-     mainstone_binfo.board_id = arm_id;
-     arm_load_kernel(mpu->cpu, machine, &mainstone_binfo);
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 132217b2ed..6e7529d98f 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -89,7 +89,6 @@ static void realview_init(MachineState *machine,
-     I2CBus *i2c;
-     int n;
-     unsigned int smp_cpus = machine->smp.cpus;
--    int done_nic = 0;
-     qemu_irq cpu_irq[4];
-     int is_mpcore = 0;
-     int is_pb = 0;
-@@ -295,24 +294,20 @@ static void realview_init(MachineState *machine,
-             n--;
-         }
+-    /* FIXME use qdev NIC properties instead of nd_table[] */
+-    if (nd_table[0].used) {
+-        qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
+-        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+-    }
++    qemu_configure_nic_device(DEVICE(&s->emac), true, NULL);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->emac), errp)) {
+         return;
      }
--    for(n = 0; n < nb_nics; n++) {
--        nd = &nd_table[n];
--
--        if (!done_nic && (!nd->model ||
--                    strcmp(nd->model, is_pb ? "lan9118" : "smc91c111") == 0)) {
--            if (is_pb) {
--                lan9118_init(nd, 0x4e000000, pic[28]);
--            } else {
--                smc91c111_init(nd, 0x4e000000, pic[28]);
--            }
--            done_nic = 1;
-+
-+    nd = qemu_find_nic_info(is_pb ? "lan9118" : "smc91c111", true, NULL);
-+    if (nd) {
-+        if (is_pb) {
-+            lan9118_init(nd, 0x4e000000, pic[28]);
-         } else {
--            if (pci_bus) {
--                pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
--            }
-+            smc91c111_init(0x4e000000, pic[28]);
-         }
-     }
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+index f05afddf7e..4f102ad082 100644
+--- a/hw/arm/allwinner-h3.c
++++ b/hw/arm/allwinner-h3.c
+@@ -369,11 +369,7 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+                               "sd-bus");
  
-+    if (pci_bus) {
-+        pci_init_nic_devices(pci_bus, "rtl8139");
-+    }
-+
-     dev = sysbus_create_simple(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
-     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
-     i2c_slave_create_simple(i2c, "ds1338", 0x68);
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 2f22dc890f..7bf2ba7c21 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -192,10 +192,8 @@ static void versatile_init(MachineState *machine, int board_id)
-     SysBusDevice *busdev;
-     DeviceState *pl041;
-     PCIBus *pci_bus;
--    NICInfo *nd;
-     I2CBus *i2c;
-     int n;
--    int done_smc = 0;
-     DriveInfo *dinfo;
+     /* EMAC */
+-    /* FIXME use qdev NIC properties instead of nd_table[] */
+-    if (nd_table[0].used) {
+-        qemu_check_nic_model(&nd_table[0], TYPE_AW_SUN8I_EMAC);
+-        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+-    }
++    qemu_configure_nic_device(DEVICE(&s->emac), true, NULL);
+     object_property_set_link(OBJECT(&s->emac), "dma-memory",
+                              OBJECT(get_system_memory()), &error_fatal);
+     sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index a0d367c60d..4d5661b014 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -294,7 +294,6 @@ static void allwinner_r40_init(Object *obj)
  
-     if (machine->ram_size > 0x10000000) {
-@@ -263,16 +261,11 @@ static void versatile_init(MachineState *machine, int board_id)
-     sysbus_connect_irq(busdev, 3, sic[30]);
-     pci_bus = (PCIBus *)qdev_get_child_bus(dev, "pci");
- 
--    for(n = 0; n < nb_nics; n++) {
--        nd = &nd_table[n];
--
--        if (!done_smc && (!nd->model || strcmp(nd->model, "smc91c111") == 0)) {
--            smc91c111_init(nd, 0x10010000, sic[25]);
--            done_smc = 1;
--        } else {
--            pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
--        }
-+    if (qemu_find_nic_info("smc91c111", true, NULL)) {
-+        smc91c111_init(0x10010000, sic[25]);
-     }
-+    pci_init_nic_devices(pci_bus, "rtl8139");
-+
-     if (machine_usb(machine)) {
-         pci_create_simple(pci_bus, -1, "pci-ohci");
-     }
-diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-index ddbceda967..dec4982cfe 100644
---- a/hw/net/smc91c111.c
-+++ b/hw/net/smc91c111.c
-@@ -817,14 +817,13 @@ static void smc91c111_register_types(void)
- 
- /* Legacy helper function.  Should go away when machine config files are
-    implemented.  */
--void smc91c111_init(NICInfo *nd, uint32_t base, qemu_irq irq)
-+void smc91c111_init(uint32_t base, qemu_irq irq)
+ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
  {
-     DeviceState *dev;
-     SysBusDevice *s;
+-    const char *r40_nic_models[] = { "gmac", "emac", NULL };
+     AwR40State *s = AW_R40(dev);
  
--    qemu_check_nic_model(nd, "smc91c111");
-     dev = qdev_new(TYPE_SMC91C111);
--    qdev_set_nic_properties(dev, nd);
-+    qemu_configure_nic_device(dev, true, NULL);
-     s = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-     sysbus_mmio_map(s, 0, base);
-diff --git a/include/hw/net/smc91c111.h b/include/hw/net/smc91c111.h
-index df5b11dcef..dba32a233f 100644
---- a/include/hw/net/smc91c111.h
-+++ b/include/hw/net/smc91c111.h
-@@ -13,6 +13,6 @@
+     /* CPUs */
+@@ -454,31 +453,8 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
+                     s->memmap[AW_R40_DEV_DRAMPHY]);
  
- #include "net/net.h"
+-    /* nic support gmac and emac */
+-    for (int i = 0; i < ARRAY_SIZE(r40_nic_models) - 1; i++) {
+-        NICInfo *nic = &nd_table[i];
+-
+-        if (!nic->used) {
+-            continue;
+-        }
+-        if (qemu_show_nic_models(nic->model, r40_nic_models)) {
+-            exit(0);
+-        }
+-
+-        switch (qemu_find_nic_model(nic, r40_nic_models, r40_nic_models[0])) {
+-        case 0: /* gmac */
+-            qdev_set_nic_properties(DEVICE(&s->gmac), nic);
+-            break;
+-        case 1: /* emac */
+-            qdev_set_nic_properties(DEVICE(&s->emac), nic);
+-            break;
+-        default:
+-            exit(1);
+-            break;
+-        }
+-    }
+-
+     /* GMAC */
++    qemu_configure_nic_device(DEVICE(&s->gmac), true, "gmac");
+     object_property_set_link(OBJECT(&s->gmac), "dma-memory",
+                                      OBJECT(get_system_memory()), &error_fatal);
+     sysbus_realize(SYS_BUS_DEVICE(&s->gmac), &error_fatal);
+@@ -487,6 +463,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+                        qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_GMAC));
  
--void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
-+void smc91c111_init(uint32_t, qemu_irq);
- 
- #endif
+     /* EMAC */
++    qemu_configure_nic_device(DEVICE(&s->emac), true, "emac");
+     sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_R40_DEV_EMAC]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
 -- 
 2.41.0
 

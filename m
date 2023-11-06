@@ -1,419 +1,458 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2812148eja;
-        Mon, 6 Nov 2023 06:50:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHw+jor7APa7taQjLiPIL3H0a+aeH3QnaPzqKoP4dikXHbJBD2iVrjt0lV4vZ4xzGdNAreo
-X-Received: by 2002:a05:620a:298c:b0:770:f3ed:bbc8 with SMTP id r12-20020a05620a298c00b00770f3edbbc8mr34755652qkp.65.1699282205044;
-        Mon, 06 Nov 2023 06:50:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699282205; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2816880eja;
+        Mon, 6 Nov 2023 06:59:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEj1SJtOR1SHdKJAuE6raJYuDhz9RCAvZDzstjie9Pv7W+woOA8vEOJouis8OfAUKp7NmJc
+X-Received: by 2002:ac8:7e96:0:b0:419:5309:20fd with SMTP id w22-20020ac87e96000000b00419530920fdmr34571780qtj.25.1699282750900;
+        Mon, 06 Nov 2023 06:59:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699282750; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kz7acbh8CjXwzCHUq30kTTgl36QxNr8Nay2tkC1wxyzNXCLKhXJK1a/YcJoMlyVeTe
-         pktqe1iNe2ZbKUh0vGSx+FWVPL5d8G4YT2BY5Bz85IoCNnVzZ9wAXZND1JZ+kjU9p+2o
-         YalqaNXPRwRMGqZLn8W3+I0dZieW8B9tEWKF845bPuuDSB8OTD12QyqwVTjWyAyclw9K
-         MD/9L/D/PeQMRGf3CHvvDd7WDFp6JCy+7qZ+IhuiFUpJp8G1RWUWsdvyHV8UFSoDi/0n
-         hQLrRP0qoCoLeLU7b8cpziAyviYyizK2N+If1V9DcMT9Z5hq5DeLOoaFJKQjW4j2WjuP
-         a4qw==
+        b=fTWmeEmFY7Wasuu0xevzH1PuWmqsGu1/9KvHtgQ0ajFhf7O7zJfG3Z/CyQg6sBaMEA
+         +IfFVzEhQLWcuvge/3WEhaUIxVG6E2b+7gvUc75xWb9R+7T+HjwlumLAxWlPGKP70dMq
+         zUlqWEMzEvQLgJXrSu4b2ebzZURQ43Tv1aVcgtBOpF5U3qepLEPcOKWvzjV2qkKNrzIA
+         bruYUmVnNxhKK22AWIWzlrZuaOn2AbrCSdLNQlqRnB++m5kuzL6DoGhYXDtzvGMITJji
+         PrfX8A4ma8CbRGT95d0Rglwj6bugjnYHPXhBtfmYyhxHCASm+UrVSEikhM5Mbvsu9W8k
+         3law==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=w6VnJupNv310nAsSW2jgxWimNTYOvZSnU2FeGbZkojw=;
-        fh=+At9UU09dkxYcwbUrk675a4v9Aq96t/jl9NTrd4gkMY=;
-        b=f8AMIE9ioX5Kr6lOGVz5poTVpx7Cr1Tx+C6Sq2nXEzId7twhT6WaRpzYUYOumZMOfl
-         m+1fB9AhZZqoMtVIaZ3olyhj2PPZEmJnCM9ZTevBGSQt2XRh1KbaEwbNGj1xehxvJT1O
-         gIi5E31Ma4TzJLy6t+SBluMytSfCA3P5ou/zd9ocFQF/MPD1cJVH5UdHcGJNFpQrVsnu
-         jf/636vWL4ckHXJVfxSUFJKMG4aM/ol3n5rcBM13XVh3CIBaIpw1sUv2144gbzVto7Rz
-         QBZPMrZkOuFMZB77r3hhQWHOzo227Yo6CdZRzr4om3aurYRgb2ksssxgOWaayFG2lnvv
-         aqvA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=G7jeyfc1W8DSP9oWF4r1xDBFL58foM+AMjlNuNg9rZs=;
+        fh=D9Zy3Zo6Ngtij0ADD13U6lCyN9zlgWdxS2svbWoLGjE=;
+        b=uZEtvSDJX3b97C6Cac3wmlE2z2rYK7smnhI0AtKi3XDhIFLhclxRwaoWFyZAbxmcT8
+         sHSeAFs+A/nfZNBkl55J4BRoXMEllGw0NjbfrvINTvROZvC6J2Y457/o3Wy4tgRWWHrl
+         46wWMzct7NcuOYe+vytvpDxeL9J4j2kE7TX3YjouWvGIi0pVqitJcLo7pujRAXGa/h3S
+         uRQM6xU15v3F0Mvx120mqnj4r0QMl+HpLRpTajiwOtARKs/d988/U9guJoBE9ClYa8h6
+         zJNk0hwV4xsjlupbMvlFVdXfU+VG5I6uctJlD3b9IQ09xyvsI+abh7TU0wHYkU91BcRw
+         +oGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RrsDLt2O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=TVLUgD8K;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 9-20020a05620a040900b007752bd6a25bsi5290389qkp.320.2023.11.06.06.50.04
+        by mx.google.com with ESMTPS id q5-20020a05622a030500b004181b5c82b9si5610389qtw.83.2023.11.06.06.59.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 06:50:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Nov 2023 06:59:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RrsDLt2O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=TVLUgD8K;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r00uY-0005vK-9e; Mon, 06 Nov 2023 09:49:06 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r0142-0003cG-Fh; Mon, 06 Nov 2023 09:58:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1r00tp-0004xA-4y
- for qemu-arm@nongnu.org; Mon, 06 Nov 2023 09:48:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1r00tk-0003CX-Rx
- for qemu-arm@nongnu.org; Mon, 06 Nov 2023 09:48:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699282095;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=w6VnJupNv310nAsSW2jgxWimNTYOvZSnU2FeGbZkojw=;
- b=RrsDLt2OIhze9JpyRC8cvVgYioMACf7Zr28ARJu6qdO3CVy4FE1cEHxlKCDgMff82TVPk9
- GLHYhZazak2QbajV2FGBXzV5UFNfN4M+nKOLguMtwRfj8Ld4rzDvJzmKzZtCIIf63wS6Xe
- m5RzjJOAZCP1/eoW0BpS7zrK2ddXO7A=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-573-vX2GE9sJPgiI1XOcj22p0g-1; Mon, 06 Nov 2023 09:48:14 -0500
-X-MC-Unique: vX2GE9sJPgiI1XOcj22p0g-1
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-66d08175882so53801756d6.1
- for <qemu-arm@nongnu.org>; Mon, 06 Nov 2023 06:48:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r013m-0003GH-Du
+ for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:58:39 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r013h-0005Tp-FW
+ for qemu-devel@nongnu.org; Mon, 06 Nov 2023 09:58:38 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-40806e4106dso27846645e9.1
+ for <qemu-devel@nongnu.org>; Mon, 06 Nov 2023 06:58:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1699282710; x=1699887510; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=G7jeyfc1W8DSP9oWF4r1xDBFL58foM+AMjlNuNg9rZs=;
+ b=TVLUgD8KBLIcvheL+o/MUDTlCXk6ScYalG1407AphmLkszK4Ttk30xd6BMtiCg2q4w
+ 2Wa801JeLqKcdgx9JbPynCZVIrLpIdxkuhPW2dF11pOVAOvK6I60Ox9r6tRxy5isEH+B
+ atDPdGjmEvp5vo94tqlvGpgsmFvfXeJaveyoFj0OsaPVPv4r211JbhpGzmZXCEnpwPka
+ +vWRKq4/JbeNE7GU6QOVGFGPZjHT8d89QTWIuuqW3rSzL0ve1XV6c9gqqstrZIE1A2l6
+ U4Iu7C6x/0eju8Mxyx6ns3X+tE0e4pvBJ4acqGqdy7upP6FzbyPjnHA51DbG5INQVbio
+ sSSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699282094; x=1699886894;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=mUoc8PMON7X3zrYkHx51gOOcmIIcI3Sptdru+zJ9W/A=;
- b=eggzXcZRZwfweKpX26JcEtnTtZHzl2vCvTNYV4gno3zMbEfDRKF/K+flwlnQrfFdzz
- ZvrUai0Plj+vGh67zMNQpI6gEF2fJ27ymrNgERDcpld8jcD3RXYeaa+urmQ9Iotk3Mx4
- FP5EE+f+4u3XUWqce3jJLApT/7/2u0oK0rhVYfGX9i3N1AwVwyaFyCtvyk0MNJXyNGlh
- lvNOf1DgNl7m5XpzQLLjBmJ4rc9PkQgn2f5yvD57F+oSAwMQW5xrkZiD6JpX72HUpRpm
- dAm+1xk6XEmU7bUTi+Wai4kUHxLQssB6VthdA0nxpVFhvJRfjl3Fkx8S24qRobC1f1jg
- aOXg==
-X-Gm-Message-State: AOJu0YwK4+UtinYdtMLUuvb0sqWSqicQzxTgnbmwg7ayDk0Gd1wuGXh9
- ulBUINkfodc9h/PtOwOzOX/UKer8Ti/SMNevnRaonuPlTzIHVc/OIGWyCCgAi5vIPdK0wjW0QHG
- d9HNFhJIXTwIa
-X-Received: by 2002:a0c:cd0f:0:b0:66d:6544:8eae with SMTP id
- b15-20020a0ccd0f000000b0066d65448eaemr27904789qvm.34.1699282093796; 
- Mon, 06 Nov 2023 06:48:13 -0800 (PST)
-X-Received: by 2002:a0c:cd0f:0:b0:66d:6544:8eae with SMTP id
- b15-20020a0ccd0f000000b0066d65448eaemr27904773qvm.34.1699282093492; 
- Mon, 06 Nov 2023 06:48:13 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- e6-20020a056214162600b00671248b9cfcsm3470873qvw.67.2023.11.06.06.48.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Nov 2023 06:48:12 -0800 (PST)
-Date: Mon, 6 Nov 2023 15:48:04 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, philmd@linaro.org,
- clg@kaod.org, imp@bsdimp.com, kevans@freebsd.org,
- richard.henderson@linaro.org, pbonzini@redhat.com,
- peter.maydell@linaro.org, b.galvani@gmail.com,
- strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
- wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
- quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
- laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
- edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
- aurelien@aurel32.net, jiaxun.yang@flygoat.com,
- aleksandar.rikalo@syrmia.com, chenhuacai@kernel.org, crwulff@gmail.com,
- marex@denx.de, shorne@gmail.com, npiggin@gmail.com,
- ysato@users.sourceforge.jp, david@redhat.com, thuth@redhat.com,
- iii@linux.ibm.com, kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com,
- shan.gavin@gmail.com
-Subject: Re: [PATCH v4 03/33] cpu: Call object_class_dynamic_cast() once in
- cpu_class_by_name()
-Message-ID: <20231106154804.6085c2f6@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231102002500.1750692-4-gshan@redhat.com>
-References: <20231102002500.1750692-1-gshan@redhat.com>
- <20231102002500.1750692-4-gshan@redhat.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1699282710; x=1699887510;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=G7jeyfc1W8DSP9oWF4r1xDBFL58foM+AMjlNuNg9rZs=;
+ b=f6L5n9axkrWXelIq2vr+/BrwccTdZ6znYnhiOOGvSU9+kwXNLxOzrQGn1Y1EPAu+2j
+ PCrpKC5p+2gjs44iUyiOepFlNqPaaSJbt92ETkH7H720DR8OZkdGyX6GCHkLSkyYcPob
+ OuwMYoSBD1uf38dmGa8UwXNBUuMO1dUbQYRdpDrnlCcn7T/3Y5HF4oeoSfi6w0SzRw9C
+ Y3DmbIoxnwK7Dvy706t6zLvOcoTwKequFxQDQaFCfAZpyfDmt2vlaQLDp8cHtht+pPo9
+ PQIaaLbjtR/B7JHTesWYPuSxTpgEqfXu1cpO5I5eK0s/h4pg4ylPtkTvgRCaacOK8Koe
+ J5Sw==
+X-Gm-Message-State: AOJu0YxePqAJIAdRiZQwGKxmKrEsSP7x+sd4rlEJ/vx1grdSf/TUwzzO
+ Bs6klCGB4cY4wvztNuvq1iuqLQ==
+X-Received: by 2002:a7b:ce11:0:b0:405:3ab3:e640 with SMTP id
+ m17-20020a7bce11000000b004053ab3e640mr9665940wmc.20.1699282710104; 
+ Mon, 06 Nov 2023 06:58:30 -0800 (PST)
+Received: from [192.168.69.115] (176-131-220-199.abo.bbox.fr.
+ [176.131.220.199]) by smtp.gmail.com with ESMTPSA id
+ gy14-20020a05600c880e00b00403b63e87f2sm12169569wmb.32.2023.11.06.06.58.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Nov 2023 06:58:29 -0800 (PST)
+Message-ID: <9b6eb677-1655-e452-2555-01eb01cf9072@linaro.org>
+Date: Mon, 6 Nov 2023 15:58:24 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
+Content-Language: en-US
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-ppc@nongnu.org,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Song Gao <gaosong@loongson.cn>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-riscv@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Bin Meng <bin.meng@windriver.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-arm@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Marek Vasut <marex@denx.de>,
+ Laurent Vivier <laurent@vivier.eu>, Peter Maydell
+ <peter.maydell@linaro.org>, Brian Cain <bcain@quicinc.com>,
+ Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+ Sergio Lopez <slp@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
+References: <20231013140116.255-1-philmd@linaro.org>
+ <20231013140116.255-13-philmd@linaro.org> <ZTI0T98ruc3yWSsa@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <ZTI0T98ruc3yWSsa@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.085,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dz0hHRIrVEJY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q2rWGec6mtfO
 
-On Thu,  2 Nov 2023 10:24:30 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+On 20/10/23 10:03, Zhao Liu wrote:
+> Hi Philippe,
+> 
+> On Fri, Oct 13, 2023 at 04:01:11PM +0200, Philippe Mathieu-Daudé wrote:
+>> Date: Fri, 13 Oct 2023 16:01:11 +0200
+>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Subject: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
+>> X-Mailer: git-send-email 2.41.0
+>>
+>> The OBJECT_DECLARE_CPU_TYPE() macro forward-declares each
+>> ArchCPUClass type. These forward declarations are sufficient
+>> for code in hw/ to use the QOM definitions. No need to expose
+>> these structure definitions. Keep each local to their target/
+>> by moving them to the corresponding "cpu.h" header.
+>>
+>> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   target/alpha/cpu-qom.h      | 16 ---------------
+>>   target/alpha/cpu.h          | 13 +++++++++++++
+>>   target/arm/cpu-qom.h        | 27 -------------------------
+>>   target/arm/cpu.h            | 25 ++++++++++++++++++++++++
+>>   target/avr/cpu-qom.h        | 16 ---------------
+>>   target/avr/cpu.h            | 14 +++++++++++++
+>>   target/cris/cpu-qom.h       | 19 ------------------
+>>   target/cris/cpu.h           | 16 +++++++++++++++
+>>   target/hexagon/cpu-qom.h    |  1 -
+>>   target/hppa/cpu-qom.h       | 16 ---------------
+>>   target/hppa/cpu.h           | 14 +++++++++++++
+>>   target/i386/cpu-qom.h       | 39 -------------------------------------
+>>   target/i386/cpu.h           | 35 +++++++++++++++++++++++++++++++++
+>>   target/loongarch/cpu-qom.h  |  1 -
+>>   target/m68k/cpu-qom.h       | 16 ---------------
+>>   target/m68k/cpu.h           | 13 +++++++++++++
+>>   target/microblaze/cpu-qom.h | 16 ---------------
+>>   target/microblaze/cpu.h     | 13 +++++++++++++
+>>   target/mips/cpu-qom.h       | 20 -------------------
+>>   target/mips/cpu.h           | 17 ++++++++++++++++
+>>   target/nios2/cpu-qom.h      |  1 -
+>>   target/openrisc/cpu-qom.h   |  1 -
+>>   target/riscv/cpu-qom.h      | 16 +--------------
+>>   target/riscv/cpu.h          | 14 +++++++++++++
+>>   target/rx/cpu-qom.h         | 15 --------------
+>>   target/rx/cpu.h             | 14 +++++++++++++
+>>   target/s390x/cpu-qom.h      | 37 +----------------------------------
+>>   target/s390x/cpu.h          | 30 ++++++++++++++++++++++++++++
+>>   target/s390x/cpu_models.h   |  8 ++++----
+>>   target/sh4/cpu-qom.h        | 23 ----------------------
+>>   target/sh4/cpu.h            | 20 +++++++++++++++++++
+>>   target/sparc/cpu-qom.h      | 18 -----------------
+>>   target/sparc/cpu.h          | 18 +++++++++++++++--
+>>   target/tricore/cpu-qom.h    | 10 ----------
+>>   target/tricore/cpu.h        |  6 ++++++
+>>   target/xtensa/cpu-qom.h     | 21 --------------------
+>>   target/xtensa/cpu.h         | 20 +++++++++++++++++--
+>>   37 files changed, 284 insertions(+), 335 deletions(-)
 
-> From: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->=20
-> For all targets, the CPU class returned from CPUClass::class_by_name()
-> and object_class_dynamic_cast(oc, CPU_RESOLVING_TYPE) need to be
-> compatible. Lets apply the check in cpu_class_by_name() for once,
-> instead of having the check in CPUClass::class_by_name() for individual
-> target. In order to make CPU_RESOLVING_TYPE visible to cpu_class_by_name(=
-),
-> the helper has to be moved to cpu-target.c
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+>> diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
+>> index dffc74c1ce..d4e216d000 100644
+>> --- a/target/i386/cpu-qom.h
+>> +++ b/target/i386/cpu-qom.h
+>> @@ -21,8 +21,6 @@
+>>   #define QEMU_I386_CPU_QOM_H
+>>   
+>>   #include "hw/core/cpu.h"
+>> -#include "qemu/notify.h"
+>> -#include "qom/object.h"
+>>   
+>>   #ifdef TARGET_X86_64
+>>   #define TYPE_X86_CPU "x86_64-cpu"
+>> @@ -35,41 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
+>>   #define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
+>>   #define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+>>   
+>> -typedef struct X86CPUModel X86CPUModel;
+>> -
+>> -/**
+>> - * X86CPUClass:
+>> - * @cpu_def: CPU model definition
+>> - * @host_cpuid_required: Whether CPU model requires cpuid from host.
+>> - * @ordering: Ordering on the "-cpu help" CPU model list.
+>> - * @migration_safe: See CpuDefinitionInfo::migration_safe
+>> - * @static_model: See CpuDefinitionInfo::static
+>> - * @parent_realize: The parent class' realize handler.
+>> - * @parent_phases: The parent class' reset phase handlers.
+>> - *
+>> - * An x86 CPU model or family.
+>> - */
+>> -struct X86CPUClass {
+>> -    CPUClass parent_class;
+>> -
+>> -    /* CPU definition, automatically loaded by instance_init if not NULL.
+>> -     * Should be eventually replaced by subclass-specific property defaults.
+>> -     */
+>> -    X86CPUModel *model;
+>> -
+>> -    bool host_cpuid_required;
+>> -    int ordering;
+>> -    bool migration_safe;
+>> -    bool static_model;
+>> -
+>> -    /* Optional description of CPU model.
+>> -     * If unavailable, cpu_def->model_id is used */
+>> -    const char *model_description;
+>> -
+>> -    DeviceRealize parent_realize;
+>> -    DeviceUnrealize parent_unrealize;
+>> -    ResettablePhases parent_phases;
+>> -};
+>> -
+>> -
+>>   #endif
+>> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+>> index 2dea4df086..e21d293daa 100644
+>> --- a/target/i386/cpu.h
+>> +++ b/target/i386/cpu.h
+>> @@ -2037,6 +2037,41 @@ struct ArchCPU {
+>>       bool xen_vapic;
+>>   };
+>>   
+>> +typedef struct X86CPUModel X86CPUModel;
+> 
+> Could we "typedef" this structure at its definition?
 
-> ---
->  cpu-target.c           | 15 +++++++++++++++
->  hw/core/cpu-common.c   | 14 --------------
->  target/arm/cpu.c       |  4 +---
->  target/avr/cpu.c       |  8 +-------
->  target/cris/cpu.c      |  4 +---
->  target/hexagon/cpu.c   |  4 +---
->  target/loongarch/cpu.c |  8 +-------
->  target/m68k/cpu.c      |  4 +---
->  target/openrisc/cpu.c  |  4 +---
->  target/riscv/cpu.c     |  4 +---
->  target/tricore/cpu.c   |  4 +---
->  target/xtensa/cpu.c    |  4 +---
->  12 files changed, 25 insertions(+), 52 deletions(-)
->=20
-> diff --git a/cpu-target.c b/cpu-target.c
-> index 79363ae370..876b498233 100644
-> --- a/cpu-target.c
-> +++ b/cpu-target.c
-> @@ -250,6 +250,21 @@ void cpu_exec_initfn(CPUState *cpu)
->  #endif
->  }
-> =20
-> +ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_mod=
-el)
-> +{
-> +    CPUClass *cc =3D CPU_CLASS(object_class_by_name(typename));
-> +    ObjectClass *oc;
-> +
-> +    assert(cpu_model && cc->class_by_name);
-> +    oc =3D cc->class_by_name(cpu_model);
-> +    if (oc && !object_class_is_abstract(oc) &&
-> +        object_class_dynamic_cast(oc, CPU_RESOLVING_TYPE)) {
-> +        return oc;
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
->  const char *parse_cpu_option(const char *cpu_option)
->  {
->      ObjectClass *oc;
-> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-> index bca0323e9f..1024de53bb 100644
-> --- a/hw/core/cpu-common.c
-> +++ b/hw/core/cpu-common.c
-> @@ -147,20 +147,6 @@ static bool cpu_common_has_work(CPUState *cs)
->      return false;
->  }
-> =20
-> -ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_mod=
-el)
-> -{
-> -    CPUClass *cc =3D CPU_CLASS(object_class_by_name(typename));
-> -    ObjectClass *oc;
-> -
-> -    assert(cpu_model && cc->class_by_name);
-> -    oc =3D cc->class_by_name(cpu_model);
-> -    if (oc && !object_class_is_abstract(oc)) {
-> -        return oc;
-> -    }
-> -
-> -    return NULL;
-> -}
-> -
->  static void cpu_common_parse_features(const char *typename, char *featur=
-es,
->                                        Error **errp)
->  {
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 8c622d6b59..4942239b34 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2399,9 +2399,7 @@ static ObjectClass *arm_cpu_class_by_name(const cha=
-r *cpu_model)
->      oc =3D object_class_by_name(typename);
->      g_strfreev(cpuname);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_ARM_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-> index 113d522f75..a36cc48aae 100644
-> --- a/target/avr/cpu.c
-> +++ b/target/avr/cpu.c
-> @@ -154,13 +154,7 @@ static void avr_cpu_initfn(Object *obj)
-> =20
->  static ObjectClass *avr_cpu_class_by_name(const char *cpu_model)
->  {
-> -    ObjectClass *oc;
-> -
-> -    oc =3D object_class_by_name(cpu_model);
-> -    if (!object_class_dynamic_cast(oc, TYPE_AVR_CPU)) {
-> -        oc =3D NULL;
-> -    }
-> -    return oc;
-> +    return object_class_by_name(cpu_model);
->  }
-> =20
->  static void avr_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
-> index 1cb431cd46..a5083a0077 100644
-> --- a/target/cris/cpu.c
-> +++ b/target/cris/cpu.c
-> @@ -95,9 +95,7 @@ static ObjectClass *cris_cpu_class_by_name(const char *=
-cpu_model)
->      typename =3D g_strdup_printf(CRIS_CPU_TYPE_NAME("%s"), cpu_model);
->      oc =3D object_class_by_name(typename);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_CRIS_CPU)) {
-> -        oc =3D NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-> index bd5adb7acd..aa48f5fe89 100644
-> --- a/target/hexagon/cpu.c
-> +++ b/target/hexagon/cpu.c
-> @@ -63,9 +63,7 @@ static ObjectClass *hexagon_cpu_class_by_name(const cha=
-r *cpu_model)
->      oc =3D object_class_by_name(typename);
->      g_strfreev(cpuname);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_HEXAGON_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-> index 06d1b9bb95..c6712e13f9 100644
-> --- a/target/loongarch/cpu.c
-> +++ b/target/loongarch/cpu.c
-> @@ -643,15 +643,9 @@ static ObjectClass *loongarch_cpu_class_by_name(cons=
-t char *cpu_model)
->          g_autofree char *typename
->              =3D g_strdup_printf(LOONGARCH_CPU_TYPE_NAME("%s"), cpu_model=
-);
->          oc =3D object_class_by_name(typename);
-> -        if (!oc) {
-> -            return NULL;
-> -        }
->      }
-> =20
-> -    if (object_class_dynamic_cast(oc, TYPE_LOONGARCH_CPU)) {
-> -        return oc;
-> -    }
-> -    return NULL;
-> +    return oc;
->  }
-> =20
->  void loongarch_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-> index fe381cc5d3..6cd5b56d6f 100644
-> --- a/target/m68k/cpu.c
-> +++ b/target/m68k/cpu.c
-> @@ -111,9 +111,7 @@ static ObjectClass *m68k_cpu_class_by_name(const char=
- *cpu_model)
->      typename =3D g_strdup_printf(M68K_CPU_TYPE_NAME("%s"), cpu_model);
->      oc =3D object_class_by_name(typename);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_M68K_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
-> index cc94f37e77..f7d53c592a 100644
-> --- a/target/openrisc/cpu.c
-> +++ b/target/openrisc/cpu.c
-> @@ -164,9 +164,7 @@ static ObjectClass *openrisc_cpu_class_by_name(const =
-char *cpu_model)
->      typename =3D g_strdup_printf(OPENRISC_CPU_TYPE_NAME("%s"), cpu_model=
-);
->      oc =3D object_class_by_name(typename);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_OPENRISC_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 018bad6f82..8b4024338c 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -636,9 +636,7 @@ static ObjectClass *riscv_cpu_class_by_name(const cha=
-r *cpu_model)
->      oc =3D object_class_by_name(typename);
->      g_strfreev(cpuname);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_RISCV_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-> index 47e1c272cf..8acacdf0c0 100644
-> --- a/target/tricore/cpu.c
-> +++ b/target/tricore/cpu.c
-> @@ -132,9 +132,7 @@ static ObjectClass *tricore_cpu_class_by_name(const c=
-har *cpu_model)
->      typename =3D g_strdup_printf(TRICORE_CPU_TYPE_NAME("%s"), cpu_model)=
-;
->      oc =3D object_class_by_name(typename);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_TRICORE_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
-> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
-> index 5d1c090467..93e782a6e0 100644
-> --- a/target/xtensa/cpu.c
-> +++ b/target/xtensa/cpu.c
-> @@ -141,9 +141,7 @@ static ObjectClass *xtensa_cpu_class_by_name(const ch=
-ar *cpu_model)
->      typename =3D g_strdup_printf(XTENSA_CPU_TYPE_NAME("%s"), cpu_model);
->      oc =3D object_class_by_name(typename);
->      g_free(typename);
-> -    if (!object_class_dynamic_cast(oc, TYPE_XTENSA_CPU)) {
-> -        return NULL;
-> -    }
-> +
->      return oc;
->  }
-> =20
+No, because X86CPUClass uses the declaration in its 'model' field
+in [*], so we have to forward-declare it first.
 
+> Then this explicit "typedef" can also be omitted, just like you did
+> elsewhere.
+> 
+>> +
+>> +/**
+>> + * X86CPUClass:
+>> + * @cpu_def: CPU model definition
+>> + * @host_cpuid_required: Whether CPU model requires cpuid from host.
+>> + * @ordering: Ordering on the "-cpu help" CPU model list.
+>> + * @migration_safe: See CpuDefinitionInfo::migration_safe
+>> + * @static_model: See CpuDefinitionInfo::static
+>> + * @parent_realize: The parent class' realize handler.
+>> + * @parent_phases: The parent class' reset phase handlers.
+>> + *
+>> + * An x86 CPU model or family.
+>> + */
+>> +struct X86CPUClass {
+>> +    CPUClass parent_class;
+>> +
+>> +    /* CPU definition, automatically loaded by instance_init if not NULL.
+>> +     * Should be eventually replaced by subclass-specific property defaults.
+>> +     */
+>> +    X86CPUModel *model;
+
+[*]     ^^^^^^^^^^^
+
+>> +    bool host_cpuid_required;
+>> +    int ordering;
+>> +    bool migration_safe;
+>> +    bool static_model;
+>> +
+>> +    /* Optional description of CPU model.
+>> +     * If unavailable, cpu_def->model_id is used */
+>> +    const char *model_description;
+>> +
+>> +    DeviceRealize parent_realize;
+>> +    DeviceUnrealize parent_unrealize;
+>> +    ResettablePhases parent_phases;
+>> +};
+
+
+>> diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
+>> index 76efb614a6..35ca5c4600 100644
+>> --- a/target/riscv/cpu-qom.h
+>> +++ b/target/riscv/cpu-qom.h
+>> @@ -20,7 +20,6 @@
+>>   #define RISCV_CPU_QOM_H
+>>   
+>>   #include "hw/core/cpu.h"
+>> -#include "qom/object.h"
+>>   
+>>   #define TYPE_RISCV_CPU "riscv-cpu"
+>>   #define TYPE_RISCV_DYNAMIC_CPU "riscv-dynamic-cpu"
+>> @@ -44,21 +43,8 @@
+>>   #define TYPE_RISCV_CPU_VEYRON_V1        RISCV_CPU_TYPE_NAME("veyron-v1")
+>>   #define TYPE_RISCV_CPU_HOST             RISCV_CPU_TYPE_NAME("host")
+>>   
+>> -typedef struct CPUArchState CPURISCVState;
+>> +typedef struct CPUArchState CPURISCVState; // XXX
+> 
+> Is "// XXX" redundant?
+
+Good catch, I forgot about this comment. I now simply moved that
+to "cpu.h".
+
+> 
+>>   
+>>   OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
+>>   
+>> -/**
+>> - * RISCVCPUClass:
+>> - * @parent_realize: The parent class' realize handler.
+>> - * @parent_phases: The parent class' reset phase handlers.
+>> - *
+>> - * A RISCV CPU model.
+>> - */
+>> -struct RISCVCPUClass {
+>> -    CPUClass parent_class;
+>> -
+>> -    DeviceRealize parent_realize;
+>> -    ResettablePhases parent_phases;
+>> -};
+>>   #endif /* RISCV_CPU_QOM_H */
+>> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+>> index d832696418..a7edf95213 100644
+>> --- a/target/riscv/cpu.h
+>> +++ b/target/riscv/cpu.h
+>> @@ -414,6 +414,20 @@ struct ArchCPU {
+>>       GHashTable *pmu_event_ctr_map;
+>>   };
+>>   
+>> +/**
+>> + * RISCVCPUClass:
+>> + * @parent_realize: The parent class' realize handler.
+>> + * @parent_phases: The parent class' reset phase handlers.
+>> + *
+>> + * A RISCV CPU model.
+>> + */
+>> +struct RISCVCPUClass {
+>> +    CPUClass parent_class;
+>> +
+>> +    DeviceRealize parent_realize;
+>> +    ResettablePhases parent_phases;
+>> +};
+>> +
+
+
+>> diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
+>> index fcd70daddf..4037e31f79 100644
+>> --- a/target/s390x/cpu-qom.h
+>> +++ b/target/s390x/cpu-qom.h
+>> @@ -21,7 +21,6 @@
+>>   #define QEMU_S390_CPU_QOM_H
+>>   
+>>   #include "hw/core/cpu.h"
+>> -#include "qom/object.h"
+>>   
+>>   #define TYPE_S390_CPU "s390x-cpu"
+>>   
+>> @@ -30,40 +29,6 @@ OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
+>>   #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+>>   #define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
+>>   
+>> -typedef struct S390CPUModel S390CPUModel;
+>> -typedef struct S390CPUDef S390CPUDef;
+>> -
+>> -typedef struct CPUArchState CPUS390XState;
+>> -
+>> -typedef enum cpu_reset_type {
+>> -    S390_CPU_RESET_NORMAL,
+>> -    S390_CPU_RESET_INITIAL,
+>> -    S390_CPU_RESET_CLEAR,
+>> -} cpu_reset_type;
+>> -
+>> -/**
+>> - * S390CPUClass:
+>> - * @parent_realize: The parent class' realize handler.
+>> - * @parent_reset: The parent class' reset handler.
+>> - * @load_normal: Performs a load normal.
+>> - * @cpu_reset: Performs a CPU reset.
+>> - * @initial_cpu_reset: Performs an initial CPU reset.
+>> - *
+>> - * An S/390 CPU model.
+>> - */
+>> -struct S390CPUClass {
+>> -    CPUClass parent_class;
+>> -
+>> -    const S390CPUDef *cpu_def;
+>> -    bool kvm_required;
+>> -    bool is_static;
+>> -    bool is_migration_safe;
+>> -    const char *desc;
+>> -
+>> -    DeviceRealize parent_realize;
+>> -    DeviceReset parent_reset;
+>> -    void (*load_normal)(CPUState *cpu);
+>> -    void (*reset)(CPUState *cpu, cpu_reset_type type);
+>> -};
+>> +typedef struct CPUArchState CPUS390XState; // XXX
+> 
+> same here.
+
+Oops, I forgot to send the preliminary series required to
+remove that comment, see:
+https://lore.kernel.org/qemu-devel/20231106114500.5269-1-philmd@linaro.org/
+
+> Just the above nits. Otherwise,
+> 
+> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
+Thanks for your careful review!

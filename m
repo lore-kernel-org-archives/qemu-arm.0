@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2676582eja;
-        Mon, 6 Nov 2023 03:05:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHLUeAj7nfs0Ci6b5j7sf3PQhLUfAT/MhFQdrOEr2W3ICVAfx18Uvh0d+IwMzqTgZi5QCpr
-X-Received: by 2002:a17:902:ea11:b0:1cc:520a:544 with SMTP id s17-20020a170902ea1100b001cc520a0544mr23986145plg.48.1699268702200;
-        Mon, 06 Nov 2023 03:05:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268702; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2676610eja;
+        Mon, 6 Nov 2023 03:05:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGvv7Q02WUgjRs0OWphJHyfyK8kwKETEcrFdCmlpEwCbCKRcf3ynOlxTZQuy6U0uXGtqUlV
+X-Received: by 2002:a05:6a21:380b:b0:172:629f:455e with SMTP id yi11-20020a056a21380b00b00172629f455emr23054951pzb.57.1699268704432;
+        Mon, 06 Nov 2023 03:05:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268704; cv=none;
         d=google.com; s=arc-20160816;
-        b=TqT+F3zvgE+ZXsL+6W6S+wGUWUfD9xEIFe681mOuCyS2FcV0N+KQoEsJmdIo2/HrUX
-         RqEQuIG6LcE1JnQ5NT/bbpKzEBRgSrwCUOjGY++f6+TNS4BNRsv4a9xfgO8DVju5cGBm
-         xvglFnE6NQhQg/Q+Wh+q5ytwgCMXdQeI2gPF88UN107OvFiAdBQoPq/qpSw9f/FfrvZM
-         j78GECm0seBX0XqhXLdtJja+0EWkhhsUxWtFhmtIcQRzyyP7zrj0YdteKxIYSNUDyxWJ
-         G3FWa4HGPdpLGHur2giM23kinCOit7evVPWLs4F/YjHdt7k7kagaCyFPcEOe8vlunjiO
-         8D6w==
+        b=uU3c0Cf91nSzmZtyDdGwUtlCjIXpgeT8t/DSLpcCXhUAurI5HIFERjQ9g58ucG6wkn
+         ERV+qMctsHrGiSNufkClGpUWUXRC6dt2gysd2Q+sD88krCkD7r4cEE57Kz0OjRyNhj++
+         W9ido2KAmZVOObAEAruWxw7P3GNSF9BJ1oBBB1dPn9IsyrAfsnxhv5jWLdjHNJdKU5pW
+         w7vrudVwLSnibWR3JOfwN+K+WOKUG6hjEyDtUMzESynvcmCbF493KP8XJai5plWEN9M7
+         NXk76O5C1F4hHUQRP+GmSNijA9mxSn/h5MgBiSeetwKUhaizIjnbh8ap14G8Gf2nHs7Z
+         5T+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=5wOkrsA8z2Hole9awlJYsNuk4oh7gPmhIjtphAMJsw8=;
-        fh=VKl5gk7jxaHt8Tg4zmPPFZx0DaBatpg0SVP+SHjL4SM=;
-        b=AVLSJc89QF/LXUwfy3eeKeHiKgxtaSwyg5ZzUGJqYO/awy/qxzBnEFUKO8XZJLC1Bv
-         FKFX/v9m4ROBS7JhJmFOSZjfchBu8aMRVRyIZDyaJ2J3xMC2jBerNtNqi+5JyYSiHBv8
-         As39lNIoQ8N3zNLY8rl7e97ruXuE7bR+VSiZfvTWZzm3ipFHkTl0mCLcnsTHr7mCo+ue
-         juWsX5jxgD0U7oitZShcrobFsjiG+E3Rt5WfrXiZIFmsuGWgWwgXpzJlN7JfQ74F7uPB
-         xEgZKuxT8XZk2ZYJJ3UKMcLp36u5Zi2q/HTLuqLmQZX0ez8ztv93OllsSkxUvK5O158/
-         vX7Q==
+        bh=vePePWiaVFUAUv821iwYutEeShxemZReiuwQp7UFnAo=;
+        fh=EAnNOTx5rrq8DPtFwGHdbtsF7iNCWNgVaP9w8twwXg0=;
+        b=JfYTwpG5TE8ivJBKcdykMbWdbieQE+L0U2IrEu0dv0xNTMM+fNJDweInBVfjff6Pw8
+         pycd80o+24MiderCJba7aLmDHWRt7n+qvEjE6UPie9CRzlnAq3UoNt13NzbI+8jNqKgh
+         VfeGoGiquVf5kZqzBIyX4Kzkr17ILjKuBp9YWtw25LXfgpTNdbGzYEyHm2JQhlygUaPz
+         fIHg9UgYNd9PTRolPElYoEKcyjNI+uqLOo2ZSaejmxRaO9GxeRX/X0Hyy2SvZ84aNGme
+         HIh/FwR4ZXLz76wG1miD6fJ0IWs2nNt6S/UO9jfSsZt4/L5tAXKThGlxBUCUtdqhQ3mP
+         r0Nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UE9FceSP;
-       spf=pass (google.com: domain of kvm+bounces-679-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-679-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QIG1oeoY;
+       spf=pass (google.com: domain of kvm+bounces-680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-680-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-679-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id ld6-20020a170902fac600b001cc45f1add8si7592766plb.499.2023.11.06.03.05.01
+Return-Path: <kvm+bounces-680-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id h71-20020a63834a000000b0057b55b52870si7743882pge.170.2023.11.06.03.05.04
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:05:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-679-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Mon, 06 Nov 2023 03:05:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UE9FceSP;
-       spf=pass (google.com: domain of kvm+bounces-679-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-679-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QIG1oeoY;
+       spf=pass (google.com: domain of kvm+bounces-680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-680-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E058EB217B6
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:04:59 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id DA3E62814D1
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:05:03 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 65AA418B1B;
-	Mon,  6 Nov 2023 11:04:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 96404199B7;
+	Mon,  6 Nov 2023 11:05:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="UE9FceSP"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="QIG1oeoY"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90C3A18B0C
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:04:52 +0000 (UTC)
-Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com [IPv6:2a00:1450:4864:20::32e])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A646AC6
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:04:50 -0800 (PST)
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-40839652b97so32700295e9.3
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:04:50 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1273199A7
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:04:58 +0000 (UTC)
+Received: from mail-lf1-x12b.google.com (mail-lf1-x12b.google.com [IPv6:2a00:1450:4864:20::12b])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 9E5CD98
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:04:57 -0800 (PST)
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5094cb3a036so5224991e87.2
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:04:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268689; x=1699873489; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268696; x=1699873496; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5wOkrsA8z2Hole9awlJYsNuk4oh7gPmhIjtphAMJsw8=;
-        b=UE9FceSPlDMJk7CZToEJXS87GfXMmOG3kbFD9fAAg/A+oGcelQRpbFg7rjagIs4K0i
-         b3tmhol6+seysAXNM2H+10oFjuqWk+laVF/Qq3etBjYynBovtq7nDlM3he6uS4w7Xn5D
-         DC/DfrTD5WexzvJ+ZmTl6h91+hkqnv2XPvb8rw7je8sC4G2bEiaPkfeiTjcOLzJcfnEE
-         mL3Ix4kPdukOwUaklW9w2QDxQskmCqtjG4G2VnKLY4wejRMH9i2dlzhS8mesVpS1ZleW
-         0xxaw+6iniMXopqkZYAxAl/EtdnBrvrX7JzFfhYaVSU/XH1KM6k6rFZDTShlP0ihD6bZ
-         Wsfw==
+        bh=vePePWiaVFUAUv821iwYutEeShxemZReiuwQp7UFnAo=;
+        b=QIG1oeoYYiMyDF8MK5Kh2mQKLT0xhZ/c00lDbEnRoa/CsDQZ+swg4IUmwa7lsR1d+P
+         SQ0JikYTKJ+J9VfS4F3DF3cUBMq25QUQp9nn8OQgnBAutLMVIFAgnfp90zIjGqw2br/4
+         Vx7XagEOnhtGQwA11s+hGLiueF6UYLsuEGqYlTeJLmvkz58dt7qO8wEXnMqFgzMwoSu8
+         mPKi9MQGg5j5aSLhEmNdd4Zf5i6EXWyMStqEfCvc97gHPHOsMpNhAWAOYzLvJio3YfKw
+         wKQlD3mHDtlo3r/ffRxFWBRUQNpCSG/6TZMLbFo9rpf5tfrjmOnKAiEPuevW3ZMen198
+         OkQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268689; x=1699873489;
+        d=1e100.net; s=20230601; t=1699268696; x=1699873496;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=5wOkrsA8z2Hole9awlJYsNuk4oh7gPmhIjtphAMJsw8=;
-        b=FZynxwxkTSYCT2nJwD9spsOu0eW7y0TCcBWVO7CvYNWSrl1lMg0eeW1rWkAI9ksCLW
-         bTGaeyNYF3CoTWisMqO3r3bxaGJj3hfC3Np+lvw0d8+75qtTjFpJcTe3n096nS39hJ06
-         QWYqFFKmWMvh2TOb8bHRLpnRdpime2JRqFjnZI/+YEzfzsK34uTI2YqKsNmsawQTbXDm
-         RnWAMr60tQdUv9npwBrWWfP2vg3PXEtTA/GK/DnUr8wHFbYiAHt5AfT0XqOBk8/QcO/d
-         9xtv87KK+/EIXjKCz7OTO4o1RJcmYhqBK94CNLf4aswbfnswAt33YzcDnUFuNPtSSRFs
-         jYwQ==
-X-Gm-Message-State: AOJu0YwYdZtNMo5PfyUmS+COTe3LJDgiXplkbR18yQFNyg1pQ6XkFk/X
-	R4btkM1Ay3XNdqjpBNcCx1as/A==
-X-Received: by 2002:a05:6000:18a9:b0:32f:9a39:777f with SMTP id b9-20020a05600018a900b0032f9a39777fmr15067192wri.62.1699268689108;
-        Mon, 06 Nov 2023 03:04:49 -0800 (PST)
+        bh=vePePWiaVFUAUv821iwYutEeShxemZReiuwQp7UFnAo=;
+        b=MseNM+Spn4b1wbKo7o28Z0TlnRV/Rylw5grr92pqVxbgWSSKeiWMoxeHxwWaN/5365
+         Qq7wV4tiKJkzYJ4DAAh0YHkkmzIq4DNwew82rmcmWlM4ankBI72KtZ3dlIFill2ktlpY
+         fjKd+5C9VEfybjOogy4zzSbQkODeuZ1nMBebVsAtBlJkjSRrZ4KmwDZvjZcQ/mQsACKy
+         SQqrkj0XAA1K4LqBHN5sX0rNJ2Fo/nO4EcGsH9iSu1IsYqQWB9zz7YdcF93xl8IXP8za
+         C7OerxBxfT879iY5aGUbxMIliclDF6JkoNbAmZogMAxcGxmQX64gv+DoFi+dD89muSRl
+         HWaQ==
+X-Gm-Message-State: AOJu0YxvK4pn6wUthor4IIa0Ns/B0MUJuh7yu49C7X9mIEHeRUftP4JB
+	wfDBidpAo7fay6ebpdel0Q4aIA==
+X-Received: by 2002:ac2:4d93:0:b0:507:b074:ecd4 with SMTP id g19-20020ac24d93000000b00507b074ecd4mr20448646lfe.7.1699268695795;
+        Mon, 06 Nov 2023 03:04:55 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id z2-20020a5d6402000000b0032d9caeab0fsm9209526wru.77.2023.11.06.03.04.47
+        by smtp.gmail.com with ESMTPSA id p12-20020adfce0c000000b0032dc1fc84f2sm9191301wrn.46.2023.11.06.03.04.53
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:04:48 -0800 (PST)
+        Mon, 06 Nov 2023 03:04:55 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -100,10 +100,12 @@ Cc: kvm@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 10/60] target/arm: Move internal declarations from 'cpu-qom.h' to 'cpu.h'
-Date: Mon,  6 Nov 2023 12:02:42 +0100
-Message-ID: <20231106110336.358-11-philmd@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 11/60] target/ppc: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+Date: Mon,  6 Nov 2023 12:02:43 +0100
+Message-ID: <20231106110336.358-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -115,120 +117,55 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 893owwQbpIhm
+X-TUID: J/+G/sNIcqvi
 
-These definitions and declarations are only used by
-target/arm/, no need to expose them to generic hw/.
+CPU_RESOLVING_TYPE is a per-target definition, and is
+irrelevant for other targets. Move it to "cpu.h".
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20231013140116.255-4-philmd@linaro.org>
+"target/ppc/cpu-qom.h" is supposed to be target agnostic
+(include-able by any target). Add such mention in the
+header.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <c48c9829-3dfa-79cf-3042-454fda0d00dc@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231013140116.255-5-philmd@linaro.org>
 ---
- target/arm/cpu-qom.h   | 28 ----------------------------
- target/arm/cpu.h       | 22 ++++++++++++++++++++++
- target/arm/internals.h |  6 ++++++
- 3 files changed, 28 insertions(+), 28 deletions(-)
+ target/ppc/cpu-qom.h | 3 +--
+ target/ppc/cpu.h     | 2 ++
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index dfb9d5b827..35c3b0924e 100644
---- a/target/arm/cpu-qom.h
-+++ b/target/arm/cpu-qom.h
-@@ -35,9 +35,6 @@ typedef struct ARMCPUInfo {
-     void (*class_init)(ObjectClass *oc, void *data);
- } ARMCPUInfo;
+diff --git a/target/ppc/cpu-qom.h b/target/ppc/cpu-qom.h
+index be33786bd8..41df51269b 100644
+--- a/target/ppc/cpu-qom.h
++++ b/target/ppc/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU PowerPC CPU
++ * QEMU PowerPC CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -33,7 +33,6 @@ OBJECT_DECLARE_CPU_TYPE(PowerPCCPU, PowerPCCPUClass, POWERPC_CPU)
  
--void arm_cpu_register(const ARMCPUInfo *info);
--void aarch64_cpu_register(const ARMCPUInfo *info);
--
- /**
-  * ARMCPUClass:
-  * @parent_realize: The parent class' realize handler.
-@@ -63,29 +60,4 @@ struct AArch64CPUClass {
-     ARMCPUClass parent_class;
- };
+ #define POWERPC_CPU_TYPE_SUFFIX "-" TYPE_POWERPC_CPU
+ #define POWERPC_CPU_TYPE_NAME(model) model POWERPC_CPU_TYPE_SUFFIX
+-#define CPU_RESOLVING_TYPE TYPE_POWERPC_CPU
  
--void register_cp_regs_for_features(ARMCPU *cpu);
--void init_cpreg_list(ARMCPU *cpu);
--
--/* Callback functions for the generic timer's timers. */
--void arm_gt_ptimer_cb(void *opaque);
--void arm_gt_vtimer_cb(void *opaque);
--void arm_gt_htimer_cb(void *opaque);
--void arm_gt_stimer_cb(void *opaque);
--void arm_gt_hvtimer_cb(void *opaque);
--
--#define ARM_AFF0_SHIFT 0
--#define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
--#define ARM_AFF1_SHIFT 8
--#define ARM_AFF1_MASK  (0xFFULL << ARM_AFF1_SHIFT)
--#define ARM_AFF2_SHIFT 16
--#define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
--#define ARM_AFF3_SHIFT 32
--#define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
--#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
--
--#define ARM32_AFFINITY_MASK (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK)
--#define ARM64_AFFINITY_MASK \
--    (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK|ARM_AFF3_MASK)
--#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
--
- #endif
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2f7ab22169..4a86c8f831 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1116,11 +1116,33 @@ struct ArchCPU {
-     uint64_t gt_cntfrq_hz;
- };
+ #define TYPE_HOST_POWERPC_CPU POWERPC_CPU_TYPE_NAME("host")
  
-+/* Callback functions for the generic timer's timers. */
-+void arm_gt_ptimer_cb(void *opaque);
-+void arm_gt_vtimer_cb(void *opaque);
-+void arm_gt_htimer_cb(void *opaque);
-+void arm_gt_stimer_cb(void *opaque);
-+void arm_gt_hvtimer_cb(void *opaque);
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index 24dd6b1b0a..02619e5d54 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -27,6 +27,8 @@
+ #include "qom/object.h"
+ #include "hw/registerfields.h"
+ 
++#define CPU_RESOLVING_TYPE TYPE_POWERPC_CPU
 +
- unsigned int gt_cntfrq_period_ns(ARMCPU *cpu);
- void gt_rme_post_el_change(ARMCPU *cpu, void *opaque);
+ #define TCG_GUEST_DEFAULT_MO 0
  
- void arm_cpu_post_init(Object *obj);
- 
-+#define ARM_AFF0_SHIFT 0
-+#define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
-+#define ARM_AFF1_SHIFT 8
-+#define ARM_AFF1_MASK  (0xFFULL << ARM_AFF1_SHIFT)
-+#define ARM_AFF2_SHIFT 16
-+#define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
-+#define ARM_AFF3_SHIFT 32
-+#define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
-+#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
-+
-+#define ARM32_AFFINITY_MASK (ARM_AFF0_MASK | ARM_AFF1_MASK | ARM_AFF2_MASK)
-+#define ARM64_AFFINITY_MASK \
-+    (ARM_AFF0_MASK | ARM_AFF1_MASK | ARM_AFF2_MASK | ARM_AFF3_MASK)
-+#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
-+
- uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz);
- 
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index c837506e44..143d57c0fe 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -183,6 +183,12 @@ static inline int r14_bank_number(int mode)
-     return (mode == ARM_CPU_MODE_HYP) ? BANK_USRSYS : bank_number(mode);
- }
- 
-+void arm_cpu_register(const ARMCPUInfo *info);
-+void aarch64_cpu_register(const ARMCPUInfo *info);
-+
-+void register_cp_regs_for_features(ARMCPU *cpu);
-+void init_cpreg_list(ARMCPU *cpu);
-+
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
- void arm_translate_init(void);
- 
+ #define TARGET_PAGE_BITS_64K 16
 -- 
 2.41.0
 

@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3003790eja;
-        Mon, 6 Nov 2023 11:55:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHUfrvHjxVsdd3pTqKFcUsZrLVmvQJBqtAI0ZjxJER0QbH1YMn+Y6Hl8JjlBAU2SpboSALO
-X-Received: by 2002:a05:620a:2698:b0:774:1d7f:2730 with SMTP id c24-20020a05620a269800b007741d7f2730mr29361440qkp.46.1699300509514;
-        Mon, 06 Nov 2023 11:55:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300509; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3003996eja;
+        Mon, 6 Nov 2023 11:55:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEs/5O8ASXNla4xToSSCYdmm69QyUfMW4DLuO3Veiga9jS9rnQltjropxMRtlrPvVm9gVBL
+X-Received: by 2002:a05:620a:6183:b0:777:73e8:e24d with SMTP id or3-20020a05620a618300b0077773e8e24dmr32054732qkn.21.1699300535975;
+        Mon, 06 Nov 2023 11:55:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300535; cv=none;
         d=google.com; s=arc-20160816;
-        b=h8Zb4fpXFh/TpgymWuUUDGxo0AMWtPZzYcz7vCBkHASza0anu+/E8XRB53q7ff50+D
-         gOJKOXUgyYwnyONg/BXw4jBF4wIXOSxVKO8H7OBLwZwLq6Maq5wfu+ti4xKmp+lSW7uj
-         stKpZtDxWjFY5Sqx/EKNqsjEDoUSGl+qYHn1+KEqdp2lC+9VzJYu9F7mO+j3zLQvTB1M
-         p1Ld8oeFyDFYQEIDfku08T4qaXQs0dLoiw+if5fxOzNBlezrHeCloGd3vjhr8q28oI/P
-         klsWVLMZDp+75eAZ0li69jTWtwVJfTJHuLIXUSikgIL6fv43hyA4sJ1dkOoHmkKWHMDs
-         ojkw==
+        b=ZG7MPbXK9J8cThdxC8rVvcz6qQqWQaPoX3Z4U/w5Gse93EixXfk9nirPPrs4fe/FcQ
+         6F9GlyEB7zwMSVutXSIv5HkXS1TXy9Vfx+O2bk6E+1FdulTSJgKj/JcqL6PafO+BpVL2
+         7OZy/8uw8bY/D6qdorddS5L/Mi7fdyZCb5RzZkoIXZ8ZWzdB9ATwWhPHcE8pySq5veCu
+         L68QNU2Cub1QUNmuJod6U+H1TNhTeUz2v4dTXAIsCKMbqwG4PQb5vxgDClicpeG5vgr+
+         CF7b42uwQnKre+7V0s/zPjXBYcezRS26JlVY3UG0sOTOdkAHZmTyH/psOY3MV/F0PJaG
+         6JFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=udFQWarJn+hEJgz2ZpM+rMCQmr2oQkjwNUAfu2C/g0c=;
+        bh=6llESs8/oOse6Qm5wJ5lTY9fMB0QkZmfTge4Rjf6G8M=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=DvfHQZbcbVHNnQzWX54UGw7xWNWnU8TV+m31RuvlJ5O0orUQY8rFP+Hb36vA9eQBtb
-         +KTO/EfoY0YpnlSIdlSz4iRMjOTL2sGCcV6CFDhrO4PjlqhVWqEMZSz62gwjVGAMX+Ru
-         s9sxPKixw+4K6PvWFF7l/g9JjMCOYcufy1te6g60wTO4/YfacCM9/Y0zv1c9FQ5FvIv8
-         Tveh0glEi6d+3ZpdDttoXsOb6fHWUeYLq9JF+8lEEd1IcS6RHQNVJNdCNSQ7VNmg4lsM
-         +LcBN6y7TXXA1NrcpL7Qv+HQor8rfHp1s+3++o2CVHhougJc/4noC/SN0BFXXsXiDLF0
-         w5lw==
+        b=b1EUlZE3py1U+3JACR3HJ0XtmZNAEUlMQx1GGaWh2O+0ovtpiDY84Y46ePqN2GnZN4
+         yoA2WdO4Is3yLseFedPTzugZD07dc77VF+cAjaezXccCWZ6/JHndreCb5O9rl3mKtW7a
+         IpMygQz1wppiONboOw3GEFOcfSGor6SwxeEBRKDccrqrNT98RGFwpgc4DYNTf3+k4psq
+         mQST1gzTjJ6twxCqA9274zVJdra5Yu0uL7Q997/127XAFrjF/oqIVvAmMv5vbxdM0wBR
+         Lpra1CIW6hVB4ROGHLnKe6vWqxaNrQGo/Uy0oSzRIR0aSms0xMGsr6xlz/MDBGvZis1L
+         qG7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=m+mvt0iB;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=buYUSYgO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6-20020a05620a424600b0077434519ca0si4439235qko.3.2023.11.06.11.55.09
+        by mx.google.com with ESMTPS id s17-20020a05620a255100b007783026be9esi6199862qko.621.2023.11.06.11.55.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 11:55:09 -0800 (PST)
+        Mon, 06 Nov 2023 11:55:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=m+mvt0iB;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=buYUSYgO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r05g9-0005jX-1X; Mon, 06 Nov 2023 14:54:33 -0500
+	id 1r05gB-0005mF-Jn; Mon, 06 Nov 2023 14:54:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1r05g2-0005Yg-BZ; Mon, 06 Nov 2023 14:54:26 -0500
+ id 1r05g3-0005aE-29; Mon, 06 Nov 2023 14:54:27 -0500
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
- id 1r05fy-00065m-2W; Mon, 06 Nov 2023 14:54:26 -0500
+ id 1r05fx-00065i-RI; Mon, 06 Nov 2023 14:54:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=udFQWarJn+hEJgz2ZpM+rMCQmr2oQkjwNUAfu2C/g0c=; b=m+mvt0iBoqp36d4xmxonPeSMsr
- F812/mq4W1OECg+8jFEzI/RIr5PILlCWSlJleBGLINYomXUm1eOlLurzG7cNRgSZrct3Af/5gs49Q
- +UuzWqNCu2e2oQAhmBYcgLhUqbYXVdTrsBZIaOw923YVo0gbIeDChkloZgySxkRbAbrft0hJU43Vh
- 0CrD6u56IBLuWxT3KclSCBlRkZqXebOg/LwUfXXK9IhVWpxZ9qnidqLNmnalb2cS7RwxfDIduIIP+
- W/3NXOhLwC1SBGdO4UQitet2UTqfB1hG19ZOu7xcKsHPPINvm3npSnyy43TA916uWXsNCvBCscHed
- +y5FSF6w==;
+ bh=6llESs8/oOse6Qm5wJ5lTY9fMB0QkZmfTge4Rjf6G8M=; b=buYUSYgObmiJkgEwvOBOxICL5m
+ Bu6dMQKL5r8EhzkrGEb6+QQLWhg4/ivpdi4hYISAKXzzl84UBkMxM8nA9pLswCfwEoDVSPEJMtJPS
+ EobPO3/gZvrfN7EDLA3nJRcnsc1B+SNMzoJ9gpDbQOgvvyxCdFzM821lKBfrfAv9Epn/H0ylfjXsX
+ o1vuclcKrn33Xg2SnDEzyMrNKJghJcdDfgLR69P38aiPUYnxsOieXhd8i91CuR4hgZoSLvwd20pBa
+ UJKSMbQ3YOL87CNsct14MZJgcgnyv4BHk+8Mbr8CZLSJajVwO26WGABsw3+99noLxbwxJqhY2MbC2
+ +d5TIpng==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1r05fa-00AkFd-1p; Mon, 06 Nov 2023 19:53:58 +0000
+ id 1r05fe-00AkGF-0J; Mon, 06 Nov 2023 19:54:03 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fZ-001GMw-2O; Mon, 06 Nov 2023 19:53:57 +0000
+ Hat Linux)) id 1r05fd-001GPd-0F; Mon, 06 Nov 2023 19:54:01 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,10 +116,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 06/46] hw/xen: use qemu_create_nic_bus_devices() to
- instantiate Xen NICs
-Date: Mon,  6 Nov 2023 19:49:11 +0000
-Message-ID: <20231106195352.301038-7-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 41/46] hw/sparc/sun4m: use qemu_find_nic_info()
+Date: Mon,  6 Nov 2023 19:49:46 +0000
+Message-ID: <20231106195352.301038-42-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
@@ -151,238 +150,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sqJOfCjbJ7ad
+X-TUID: eQlDUR65MOk0
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-When instantiating XenBus itself, for each NIC which is configured with
-either the model unspecified, or set to to "xen" or "xen-net-device",
-create a corresponding xen-net-device for it.
-
-Now we can revert the previous more hackish version which relied on the
-platform code explicitly registering the NICs on its own XenBus, having
-returned the BusState* from xen_bus_init() itself.
-
-This also fixes the setup for Xen PV guests, which was previously broken
-in various ways and never actually managed to peer with the netdev.
+Obtain the MAC address from the NIC configuration if there is one, or
+generate one explicitly so that it can be placed in the PROM.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Paul Durrant <paul@xen.org>
 ---
- hw/i386/pc.c                        | 13 ++-----------
- hw/i386/pc_piix.c                   |  2 +-
- hw/i386/pc_q35.c                    |  2 +-
- hw/xen/xen-bus.c                    |  6 ++++--
- hw/xen/xen_devconfig.c              | 25 -------------------------
- hw/xenpv/xen_machine_pv.c           |  9 ---------
- include/hw/i386/pc.h                |  4 +---
- include/hw/xen/xen-bus.h            |  2 +-
- include/hw/xen/xen-legacy-backend.h |  1 -
- 9 files changed, 10 insertions(+), 54 deletions(-)
+ hw/sparc/sun4m.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 4078d2d231..86abba61c0 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1262,7 +1262,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
-         if (pcms->bus) {
-             pci_create_simple(pcms->bus, -1, "xen-platform");
-         }
--        pcms->xenbus = xen_bus_init();
-+        xen_bus_init();
-         xen_be_init();
-     }
- #endif
-@@ -1290,8 +1290,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
-                     pcms->vmport != ON_OFF_AUTO_ON);
- }
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 17bf5f2879..75b0c0ff7a 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -299,13 +299,15 @@ static void *iommu_init(hwaddr addr, uint32_t version, qemu_irq irq)
  
--void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
--                 BusState *xen_bus)
-+void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus)
+ static void *sparc32_dma_init(hwaddr dma_base,
+                               hwaddr esp_base, qemu_irq espdma_irq,
+-                              hwaddr le_base, qemu_irq ledma_irq, NICInfo *nd)
++                              hwaddr le_base, qemu_irq ledma_irq,
++                              MACAddr *mac)
  {
-     MachineClass *mc = MACHINE_CLASS(pcmc);
-     bool default_is_ne2k = g_str_equal(mc->default_nic, TYPE_ISA_NE2000);
-@@ -1299,14 +1298,6 @@ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
+     DeviceState *dma;
+     ESPDMADeviceState *espdma;
+     LEDMADeviceState *ledma;
+     SysBusESPState *esp;
+     SysBusPCNetState *lance;
++    NICInfo *nd = qemu_find_nic_info("lance", true, NULL);
  
-     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_NIC);
+     dma = qdev_new(TYPE_SPARC32_DMA);
+     espdma = SPARC32_ESPDMA_DEVICE(object_resolve_path_component(
+@@ -320,7 +322,14 @@ static void *sparc32_dma_init(hwaddr dma_base,
  
--    if (xen_bus) {
--        while (nc = qemu_find_nic_info("xen-net-device", true, NULL)) {
--            DeviceState *dev = qdev_new("xen-net-device");
--            qdev_set_nic_properties(dev, nd);
--            qdev_realize_and_unref(dev, xen_bus, &error_fatal);
--        }
--    }
--
-     while ((nd = qemu_find_nic_info(TYPE_ISA_NE2000, default_is_ne2k, NULL))) {
-         pc_init_ne2k_isa(isa_bus, nd);
-     }
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index eace854335..26e161beb9 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -342,7 +342,7 @@ static void pc_init1(MachineState *machine,
-     pc_basic_device_init(pcms, isa_bus, x86ms->gsi, rtc_state, true,
-                          0x4);
+     lance = SYSBUS_PCNET(object_resolve_path_component(
+                          OBJECT(ledma), "lance"));
+-    qdev_set_nic_properties(DEVICE(lance), nd);
++
++    if (nd) {
++        qdev_set_nic_properties(DEVICE(lance), nd);
++        memcpy(mac->a, nd->macaddr.a, sizeof(mac->a));
++    } else {
++        qemu_macaddr_default_if_unset(mac);
++        qdev_prop_set_macaddr(DEVICE(lance), "mac", mac->a);
++    }
  
--    pc_nic_init(pcmc, isa_bus, pci_bus, pcms->xenbus);
-+    pc_nic_init(pcmc, isa_bus, pci_bus);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dma), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dma), 0, dma_base);
+@@ -832,7 +841,7 @@ static void sun4m_hw_init(MachineState *machine)
+     unsigned int smp_cpus = machine->smp.cpus;
+     unsigned int max_cpus = machine->smp.max_cpus;
+     HostMemoryBackend *ram_memdev = machine->memdev;
+-    NICInfo *nd = &nd_table[0];
++    MACAddr hostid;
  
-     if (pcmc->pci_enabled) {
-         pc_cmos_init(pcms, idebus[0], idebus[1], rtc_state);
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 4f3e5412f6..597943ff1b 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -340,7 +340,7 @@ static void pc_q35_init(MachineState *machine)
- 
-     /* the rest devices to which pci devfn is automatically assigned */
-     pc_vga_init(isa_bus, host_bus);
--    pc_nic_init(pcmc, isa_bus, host_bus, pcms->xenbus);
-+    pc_nic_init(pcmc, isa_bus, host_bus);
- 
-     if (machine->nvdimms_state->is_enabled) {
-         nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
-diff --git a/hw/xen/xen-bus.c b/hw/xen/xen-bus.c
-index 4973e7d9c9..fb82cc33e4 100644
---- a/hw/xen/xen-bus.c
-+++ b/hw/xen/xen-bus.c
-@@ -19,6 +19,7 @@
- #include "qapi/error.h"
- #include "qapi/qmp/qdict.h"
- #include "sysemu/sysemu.h"
-+#include "net/net.h"
- #include "trace.h"
- 
- static char *xen_device_get_backend_path(XenDevice *xendev)
-@@ -1133,7 +1134,7 @@ static void xen_register_types(void)
- 
- type_init(xen_register_types)
- 
--BusState *xen_bus_init(void)
-+void xen_bus_init(void)
- {
-     DeviceState *dev = qdev_new(TYPE_XEN_BRIDGE);
-     BusState *bus = qbus_new(TYPE_XEN_BUS, dev, NULL);
-@@ -1141,5 +1142,6 @@ BusState *xen_bus_init(void)
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     qbus_set_bus_hotplug_handler(bus);
- 
--    return bus;
-+    qemu_create_nic_bus_devices(bus, TYPE_XEN_DEVICE, "xen-net-device",
-+                                "xen", "xen-net-device");
- }
-diff --git a/hw/xen/xen_devconfig.c b/hw/xen/xen_devconfig.c
-index 3f77c675c6..2150869f60 100644
---- a/hw/xen/xen_devconfig.c
-+++ b/hw/xen/xen_devconfig.c
-@@ -46,31 +46,6 @@ static int xen_config_dev_all(char *fe, char *be)
- 
- /* ------------------------------------------------------------- */
- 
--int xen_config_dev_nic(NICInfo *nic)
--{
--    char fe[256], be[256];
--    char mac[20];
--    int vlan_id = -1;
--
--    net_hub_id_for_client(nic->netdev, &vlan_id);
--    snprintf(mac, sizeof(mac), "%02x:%02x:%02x:%02x:%02x:%02x",
--             nic->macaddr.a[0], nic->macaddr.a[1], nic->macaddr.a[2],
--             nic->macaddr.a[3], nic->macaddr.a[4], nic->macaddr.a[5]);
--    xen_pv_printf(NULL, 1, "config nic %d: mac=\"%s\"\n", vlan_id, mac);
--    xen_config_dev_dirs("vif", "qnic", vlan_id, fe, be, sizeof(fe));
--
--    /* frontend */
--    xenstore_write_int(fe, "handle",     vlan_id);
--    xenstore_write_str(fe, "mac",        mac);
--
--    /* backend */
--    xenstore_write_int(be, "handle",     vlan_id);
--    xenstore_write_str(be, "mac",        mac);
--
--    /* common stuff */
--    return xen_config_dev_all(fe, be);
--}
--
- int xen_config_dev_vfb(int vdev, const char *type)
- {
-     char fe[256], be[256];
-diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
-index 9f9f137f99..1130d1a147 100644
---- a/hw/xenpv/xen_machine_pv.c
-+++ b/hw/xenpv/xen_machine_pv.c
-@@ -32,8 +32,6 @@
- 
- static void xen_init_pv(MachineState *machine)
- {
--    int i;
--
-     setup_xen_backend_ops();
- 
-     /* Initialize backend core & drivers */
-@@ -62,13 +60,6 @@ static void xen_init_pv(MachineState *machine)
-         vga_interface_created = true;
+     if (machine->ram_size > hwdef->max_mem) {
+         error_report("Too much memory for this machine: %" PRId64 ","
+@@ -893,10 +902,9 @@ static void sun4m_hw_init(MachineState *machine)
+                         hwdef->iommu_pad_base, hwdef->iommu_pad_len);
      }
  
--    /* configure nics */
--    for (i = 0; i < nb_nics; i++) {
--        if (!nd_table[i].model || 0 != strcmp(nd_table[i].model, "xen"))
--            continue;
--        xen_config_dev_nic(nd_table + i);
--    }
--
-     xen_bus_init();
+-    qemu_check_nic_model(nd, TYPE_LANCE);
+     sparc32_dma_init(hwdef->dma_base,
+                      hwdef->esp_base, slavio_irq[18],
+-                     hwdef->le_base, slavio_irq[16], nd);
++                     hwdef->le_base, slavio_irq[16], &hostid);
  
-     /* config cleanup hook */
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index a10ceeabbf..29a9724524 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -33,7 +33,6 @@ typedef struct PCMachineState {
+     if (graphic_depth != 8 && graphic_depth != 24) {
+         error_report("Unsupported depth: %d", graphic_depth);
+@@ -1048,7 +1056,7 @@ static void sun4m_hw_init(MachineState *machine)
+                                     machine->initrd_filename,
+                                     machine->ram_size, &initrd_size);
  
-     /* Pointers to devices and objects: */
-     PCIBus *bus;
--    BusState *xenbus;
-     I2CBus *smbus;
-     PFlashCFI01 *flash[2];
-     ISADevice *pcspk;
-@@ -185,8 +184,7 @@ void pc_basic_device_init(struct PCMachineState *pcms,
- void pc_cmos_init(PCMachineState *pcms,
-                   BusState *ide0, BusState *ide1,
-                   ISADevice *s);
--void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus,
--                 BusState *xen_bus);
-+void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus);
- 
- void pc_i8259_create(ISABus *isa_bus, qemu_irq *i8259_irqs);
- 
-diff --git a/include/hw/xen/xen-bus.h b/include/hw/xen/xen-bus.h
-index 334ddd1ff6..38d40afa37 100644
---- a/include/hw/xen/xen-bus.h
-+++ b/include/hw/xen/xen-bus.h
-@@ -75,7 +75,7 @@ struct XenBusClass {
- OBJECT_DECLARE_TYPE(XenBus, XenBusClass,
-                     XEN_BUS)
- 
--BusState *xen_bus_init(void);
-+void xen_bus_init(void);
- 
- void xen_device_backend_set_state(XenDevice *xendev,
-                                   enum xenbus_state state);
-diff --git a/include/hw/xen/xen-legacy-backend.h b/include/hw/xen/xen-legacy-backend.h
-index fc42146bc2..2cca174778 100644
---- a/include/hw/xen/xen-legacy-backend.h
-+++ b/include/hw/xen/xen-legacy-backend.h
-@@ -81,7 +81,6 @@ extern struct XenDevOps xen_usb_ops;          /* xen-usb.c         */
- 
- /* configuration (aka xenbus setup) */
- void xen_config_cleanup(void);
--int xen_config_dev_nic(NICInfo *nic);
- int xen_config_dev_vfb(int vdev, const char *type);
- int xen_config_dev_vkbd(int vdev);
- int xen_config_dev_console(int vdev);
+-    nvram_init(nvram, (uint8_t *)&nd->macaddr, machine->kernel_cmdline,
++    nvram_init(nvram, hostid.a, machine->kernel_cmdline,
+                machine->boot_config.order, machine->ram_size, kernel_size,
+                graphic_width, graphic_height, graphic_depth,
+                hwdef->nvram_machine_id, "Sun4m");
 -- 
 2.41.0
 

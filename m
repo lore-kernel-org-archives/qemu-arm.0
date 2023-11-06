@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2677607eja;
-        Mon, 6 Nov 2023 03:06:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEVhqiF4v135vVysrozttVilIYXg3rRMewCHB2h3nu0/c5sWUhbUh/cEbWvQPy8rdCj5kCQ
-X-Received: by 2002:a05:6870:aa07:b0:1ef:b809:3f26 with SMTP id gv7-20020a056870aa0700b001efb8093f26mr32366311oab.17.1699268799580;
-        Mon, 06 Nov 2023 03:06:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268799; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2677728eja;
+        Mon, 6 Nov 2023 03:06:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGRfC4qV41ZNtfIkJlQH1vaRYSz3Tf5p09DQdtrAxkBjm4ITnBr82jy4zNz8+wHRRlqWxiT
+X-Received: by 2002:ad4:5ca9:0:b0:66d:2813:fd18 with SMTP id q9-20020ad45ca9000000b0066d2813fd18mr40954258qvh.52.1699268812149;
+        Mon, 06 Nov 2023 03:06:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268812; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pqn/DcMnxqCg3dZKV6+yd7JV4bxnYMOnBvQ7D0QUrQ65aa+j2ysYKvdHhhvwRE08g7
-         wZjHKsBIKvQ3FyESNG3w+7j0/jfU5Tpye470GW7l7EPd4nqmpPiF/55CHggB98CjyGcc
-         kxecLQPvYRm2ryJ0v7D26fVVvvM1HgikOLZZrKzIKWe1sDcDUBU0kLENUa8U5vio8sLb
-         9VwmnTAUI0DHD3LoP/j4MkIY5/Jqjkbn/fsU5CCr6e7qkJfAXesQJakLJoBbSkqTSfY8
-         PZSlXCsF/LKQb21hX5Oq5yaG3eqoV57Rjh60Vuw7jh5kyPsj8whBwt+bbM7JQV+kTiAb
-         87LQ==
+        b=MU8nesNU8w0Tj5FlLz3u0SdExqWyNcp2SLAigEuvVh04344aWhrPYraXnD3ppPvxHu
+         0yd3jl8NaSW0tovgjOFRQLk2q+4K0Ko2hkkGxfmM1o3fz/t2EB50UmQBCNO4epnsaspp
+         Hhalg2t6BQePcTNuTmcGWjx0AvmHFJlmS+5YBsxMEPHeFFt0ylJI0nPIPrnR1Z7P1XLZ
+         rtxqCK1VCKCgcjWHbQYLdqy8bGNn7hh10Z43AWDd4wfA8M0Bm6Z20VWoROl2ax7PMFNj
+         fgc8dtQlZile8n39+wZj/3P+/lTE8DuxqlINghR+wsQ8pG8hzCajAOQQfHwr4CXB2M/q
+         /Hhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=QkEvU4QtX35g0CiL+rllnKg5EMCBRsMDB6Gavwvy6mM=;
+        bh=zvMSXcHtnsGDEEiq2Ygmmilt86JHxbxrpSYP17lWc2k=;
         fh=M7LpSu7Ta78I+2rWAN95QEp5TLITKFQ2uBdD4PuAGlE=;
-        b=BXQjAlPCNkfnyEQJUMFpJXS13XhQvGrl3IHoUWj/ujQ9rgr5MeUw+p8ecZki2JTkjt
-         B4E32fHcrjo+Y/012FOwE0CpqlDDWDdayZu3UQw5mubGmAB392QxLUiGDolltVLjH3rd
-         pD7YTLIxHIQ2cYdvLDQZoCLRZYc3X4aD+XdRkrESlxYPbmpmvWjXF/oT6cz1hS66rJWF
-         d5yyGzVAmWFT211g1GXRDMEi867XdogteqmQs0+iUkfUfGrrREG+JTPsv0ePF+giIZXL
-         0WE3xEowd33NM0XmWSW5RUAXVv90znin3vBEnz9JdlE3+XwbUIKzcNzhw3Ev13jzd+Mq
-         DpLQ==
+        b=Wqbd1rggzgqXg+C1+z+HV+6Hzr7+2OIuW9V4K2M+/zuMd2M1UUFVP2H3ZqEIfE+0fv
+         ldQ2iZNxObPN3mcpAljBRmmfOK/CoJhkkMrhZbXo8nKaxLlG9QTvsUXWS3ndq5LLHUVl
+         fuvA4a5n9mnhR5Mjp787unNvKl4zpOwCGP13v0K+XDx0lXew/A6sdAPZ8tQxpouEqXeb
+         TxkHae7xBDuzjnoXg2p1tdFzPg1AjE8k7fwB/Mh0xo57vFzoWZCSd6M0/R+UX8meyisU
+         y716eId//qnsBWgKONrxW8tBnzGIM56zebUZBjgC4p361ZBIY2CQSbdtNOpEqOhrgD5o
+         9D+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LYqeAQJm;
-       spf=pass (google.com: domain of kvm+bounces-694-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-694-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EtDRzNDf;
+       spf=pass (google.com: domain of kvm+bounces-695-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-695-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-694-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id l71-20020a63914a000000b005b982b93780si7750357pge.251.2023.11.06.03.06.39
+Return-Path: <kvm+bounces-695-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id fb19-20020ad44f13000000b0064cd41b2cf3si5364172qvb.25.2023.11.06.03.06.51
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:06:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-694-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Mon, 06 Nov 2023 03:06:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-695-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LYqeAQJm;
-       spf=pass (google.com: domain of kvm+bounces-694-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-694-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EtDRzNDf;
+       spf=pass (google.com: domain of kvm+bounces-695-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-695-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 039F0280EB6
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:06:39 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id BBD031C20BA0
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:06:51 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 63F221EB30;
-	Mon,  6 Nov 2023 11:06:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6643718646;
+	Mon,  6 Nov 2023 11:06:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LYqeAQJm"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="EtDRzNDf"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BAC591EB29
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:06:36 +0000 (UTC)
-Received: from mail-ej1-x62e.google.com (mail-ej1-x62e.google.com [IPv6:2a00:1450:4864:20::62e])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id BAF2E134
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:06:34 -0800 (PST)
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-9d242846194so625427766b.1
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:06:34 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4610A18636
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:06:43 +0000 (UTC)
+Received: from mail-lj1-x236.google.com (mail-lj1-x236.google.com [IPv6:2a00:1450:4864:20::236])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 431A698
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:06:41 -0800 (PST)
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2c5087d19a6so58551371fa.0
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:06:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268793; x=1699873593; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268799; x=1699873599; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QkEvU4QtX35g0CiL+rllnKg5EMCBRsMDB6Gavwvy6mM=;
-        b=LYqeAQJm1XfhxGwOB9+/SQQ+km8H2IRwZ+n0Ff2kNDpGGoRvc4+tfxFcKe4PEnJSpZ
-         L7/YsRNLF3z6uaVHzeOC0GslLuWrVc28RE5P9vMGaJraDcZXxaNgAEB8DzgRRvwudX3d
-         uDgLiWEOa9IE8oqS3dvs7AlmH3tXcQGLpliIcIHvBcGv9QyX0bsiuDvZgmzdO5NBoucz
-         imG++sABAhRuFM3AErjcOykMWGeI+akYtlKVYd+BGQu0w4ItJLerIbIAFkLsfFzbgYyr
-         P9QziHkDLgJFMyZxbhwCKyjasn7QXD7SLrZAyQy/FUv+zFGscB0wA6IvqBnBEA1AHFha
-         wqJQ==
+        bh=zvMSXcHtnsGDEEiq2Ygmmilt86JHxbxrpSYP17lWc2k=;
+        b=EtDRzNDfVvqoH0pBylwAc790aFTUqTYALM68PtJI3zZ3g50p7m9toevhla4Zqnah0L
+         ZB5LjhXZap0mCeDO2fJcgb6b4Z2Rf6ZMzgnSzz4FJoBrIyp3EuJIuhLINkn0sRV6/5YF
+         tyOxHji6hjHOf4Oqrv6deUTyzwxKE81pbCfIkk/htQmh1HEbu3aoQVuB1w+MYpl0qIyf
+         pp2SfWwqckFn8NrKOm2bjw7wDiLIZqxGFMnMLcy9L5MonJhVKzTbxE/PDOAmSyH/y44M
+         R1YvQHcdNxb5FWFayOZZhm+79WYxlBZmHnjw15nQjwsllMaipw97X5pmIf4C1w+SYmjp
+         dmfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268793; x=1699873593;
+        d=1e100.net; s=20230601; t=1699268799; x=1699873599;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=QkEvU4QtX35g0CiL+rllnKg5EMCBRsMDB6Gavwvy6mM=;
-        b=EsBOcngBlHd9CycL15oFem+7Tk6GQeZVz8aZ+gKyqYSsvcBifRYKz2QFXOdAq1fAlN
-         celE4PGKUWFp2qI9OD9koyD08up76VzK/ruDCyjlQa5sMtOFzzjMKxvbrfeoQDXeXrSC
-         +KItpgFII3i6HtYrxgwxGoMZRY3jQrxhFj000cUv+iC4Vk6ahD0HGexoMyVA4CnplbVF
-         Fdi0ke35S9RYjc5psZwcGl63Yf6hBu/V2eQ5hxW0Fl074HasusOuQpVh2CsAxH0BQ7+M
-         ApbPb3WFOvwwvrITPFbwV3ihwXMo4K1j7VCR5OO0tu4BZV7NXrqsjOBLJTTTUchSE9ko
-         +qEw==
-X-Gm-Message-State: AOJu0YyK0IYE7fpc+Xhv//IEBpT7ZNEaHc+K7k+iQFNFZSqgGpKXNnYe
-	OxV1jEH2ohb2JZLnpyv0Nlpnfrt8pkFNUNvY4qE=
-X-Received: by 2002:a17:907:2ce2:b0:9be:36c2:162 with SMTP id hz2-20020a1709072ce200b009be36c20162mr13367612ejc.31.1699268793032;
-        Mon, 06 Nov 2023 03:06:33 -0800 (PST)
+        bh=zvMSXcHtnsGDEEiq2Ygmmilt86JHxbxrpSYP17lWc2k=;
+        b=C6/k2F0WYd/jgBB6JDqPlLCuWigraXyKkV0ejoDpy7UwzT6sFIjLNlhosXDEuEHd+P
+         TGPcCA5N8zswvCYODyxzW3XAvQilWH0LDxn45PFDkHpGI2fqtV0LxP7gmU3cyBro9zXR
+         6bRqqNXXU2jC/qZgYn8w/QBKbL49u1L0jRc9kvPShpmQeFiQjBqQMhBHtJF6hWVBZTDD
+         2XY8yUQlCv28N+mWeD6gossbvP8RvfFjey1jW5LXtLgwwfOoeOoyNKdg2i2Y1mJyhQXZ
+         DQQqStrpImLI7Q2liHgz7qjIOp7mw0k+cGUloFFLv8dBViKco6LJLr7RWhKDG4JooZxS
+         vKLw==
+X-Gm-Message-State: AOJu0YzFb+XJkaPh8RUEogAVoJ9EKlGjVF4teTl3xNeyAtmF1mmAL6AR
+	qDCdbWuKRE5K4XBAQamP1rjQFA==
+X-Received: by 2002:a05:651c:210e:b0:2b6:df71:cff1 with SMTP id a14-20020a05651c210e00b002b6df71cff1mr28309158ljq.52.1699268799607;
+        Mon, 06 Nov 2023 03:06:39 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id iv12-20020a05600c548c00b0040641a9d49bsm11948176wmb.17.2023.11.06.03.06.31
+        by smtp.gmail.com with ESMTPSA id g20-20020a05600c4ed400b003fee8793911sm12017300wmq.44.2023.11.06.03.06.37
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:06:32 -0800 (PST)
+        Mon, 06 Nov 2023 03:06:39 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -102,9 +102,9 @@ Cc: kvm@vger.kernel.org,
 	Zhao Liu <zhao1.liu@intel.com>,
 	Cameron Esfahani <dirty@apple.com>,
 	Roman Bolshakov <rbolshakov@ddn.com>
-Subject: [PULL 25/60] target/i386/hvf: Use CPUState typedef
-Date: Mon,  6 Nov 2023 12:02:57 +0100
-Message-ID: <20231106110336.358-26-philmd@linaro.org>
+Subject: [PULL 26/60] target/i386/hvf: Rename 'CPUState *cpu' variable as 'cs'
+Date: Mon,  6 Nov 2023 12:02:58 +0100
+Message-ID: <20231106110336.358-27-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -116,51 +116,218 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EDe16/Oetbe0
+X-TUID: 6NaglOpgY1WE
 
-Follow C style guidelines and use CPUState forward
-declaration from "qemu/typedefs.h".
+Follow the naming used by other files in target/i386/.
 
 No functional changes.
 
+Suggested-by: Zhao Liu <zhao1.liu@intel.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Message-Id: <20231020111136.44401-2-philmd@linaro.org>
+Message-Id: <20231020111136.44401-3-philmd@linaro.org>
 ---
- target/i386/hvf/x86_emu.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/i386/hvf/x86_emu.c | 92 +++++++++++++++++++--------------------
+ 1 file changed, 46 insertions(+), 46 deletions(-)
 
 diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
-index b1f8a685d1..cd7ef30126 100644
+index cd7ef30126..5b82e84778 100644
 --- a/target/i386/hvf/x86_emu.c
 +++ b/target/i386/hvf/x86_emu.c
 @@ -45,7 +45,7 @@
  #include "vmcs.h"
  #include "vmx.h"
  
--void hvf_handle_io(struct CPUState *cpu, uint16_t port, void *data,
-+void hvf_handle_io(CPUState *cpu, uint16_t port, void *data,
+-void hvf_handle_io(CPUState *cpu, uint16_t port, void *data,
++void hvf_handle_io(CPUState *cs, uint16_t port, void *data,
                     int direction, int size, uint32_t count);
  
  #define EXEC_2OP_FLAGS_CMD(env, decode, cmd, FLAGS_FUNC, save_res) \
-@@ -1417,7 +1417,7 @@ static void init_cmd_handler()
+@@ -666,13 +666,13 @@ static void exec_lods(CPUX86State *env, struct x86_decode *decode)
+ void simulate_rdmsr(CPUX86State *env)
+ {
+     X86CPU *x86_cpu = env_archcpu(env);
+-    CPUState *cpu = env_cpu(env);
++    CPUState *cs = env_cpu(env);
+     uint32_t msr = ECX(env);
+     uint64_t val = 0;
+ 
+     switch (msr) {
+     case MSR_IA32_TSC:
+-        val = rdtscp() + rvmcs(cpu->accel->fd, VMCS_TSC_OFFSET);
++        val = rdtscp() + rvmcs(cs->accel->fd, VMCS_TSC_OFFSET);
+         break;
+     case MSR_IA32_APICBASE:
+         val = cpu_get_apic_base(x86_cpu->apic_state);
+@@ -681,16 +681,16 @@ void simulate_rdmsr(CPUX86State *env)
+         val = x86_cpu->ucode_rev;
+         break;
+     case MSR_EFER:
+-        val = rvmcs(cpu->accel->fd, VMCS_GUEST_IA32_EFER);
++        val = rvmcs(cs->accel->fd, VMCS_GUEST_IA32_EFER);
+         break;
+     case MSR_FSBASE:
+-        val = rvmcs(cpu->accel->fd, VMCS_GUEST_FS_BASE);
++        val = rvmcs(cs->accel->fd, VMCS_GUEST_FS_BASE);
+         break;
+     case MSR_GSBASE:
+-        val = rvmcs(cpu->accel->fd, VMCS_GUEST_GS_BASE);
++        val = rvmcs(cs->accel->fd, VMCS_GUEST_GS_BASE);
+         break;
+     case MSR_KERNELGSBASE:
+-        val = rvmcs(cpu->accel->fd, VMCS_HOST_FS_BASE);
++        val = rvmcs(cs->accel->fd, VMCS_HOST_FS_BASE);
+         break;
+     case MSR_STAR:
+         abort();
+@@ -745,8 +745,8 @@ void simulate_rdmsr(CPUX86State *env)
+         val = env->mtrr_deftype;
+         break;
+     case MSR_CORE_THREAD_COUNT:
+-        val = cpu->nr_threads * cpu->nr_cores;  /* thread count, bits 15..0 */
+-        val |= ((uint32_t)cpu->nr_cores << 16); /* core count, bits 31..16 */
++        val = cs->nr_threads * cs->nr_cores;  /* thread count, bits 15..0 */
++        val |= ((uint32_t)cs->nr_cores << 16); /* core count, bits 31..16 */
+         break;
+     default:
+         /* fprintf(stderr, "%s: unknown msr 0x%x\n", __func__, msr); */
+@@ -767,7 +767,7 @@ static void exec_rdmsr(CPUX86State *env, struct x86_decode *decode)
+ void simulate_wrmsr(CPUX86State *env)
+ {
+     X86CPU *x86_cpu = env_archcpu(env);
+-    CPUState *cpu = env_cpu(env);
++    CPUState *cs = env_cpu(env);
+     uint32_t msr = ECX(env);
+     uint64_t data = ((uint64_t)EDX(env) << 32) | EAX(env);
+ 
+@@ -778,13 +778,13 @@ void simulate_wrmsr(CPUX86State *env)
+         cpu_set_apic_base(x86_cpu->apic_state, data);
+         break;
+     case MSR_FSBASE:
+-        wvmcs(cpu->accel->fd, VMCS_GUEST_FS_BASE, data);
++        wvmcs(cs->accel->fd, VMCS_GUEST_FS_BASE, data);
+         break;
+     case MSR_GSBASE:
+-        wvmcs(cpu->accel->fd, VMCS_GUEST_GS_BASE, data);
++        wvmcs(cs->accel->fd, VMCS_GUEST_GS_BASE, data);
+         break;
+     case MSR_KERNELGSBASE:
+-        wvmcs(cpu->accel->fd, VMCS_HOST_FS_BASE, data);
++        wvmcs(cs->accel->fd, VMCS_HOST_FS_BASE, data);
+         break;
+     case MSR_STAR:
+         abort();
+@@ -796,10 +796,10 @@ void simulate_wrmsr(CPUX86State *env)
+         abort();
+         break;
+     case MSR_EFER:
+-        /*printf("new efer %llx\n", EFER(cpu));*/
+-        wvmcs(cpu->accel->fd, VMCS_GUEST_IA32_EFER, data);
++        /*printf("new efer %llx\n", EFER(cs));*/
++        wvmcs(cs->accel->fd, VMCS_GUEST_IA32_EFER, data);
+         if (data & MSR_EFER_NXE) {
+-            hv_vcpu_invalidate_tlb(cpu->accel->fd);
++            hv_vcpu_invalidate_tlb(cs->accel->fd);
+         }
+         break;
+     case MSR_MTRRphysBase(0):
+@@ -848,9 +848,9 @@ void simulate_wrmsr(CPUX86State *env)
+ 
+     /* Related to support known hypervisor interface */
+     /* if (g_hypervisor_iface)
+-         g_hypervisor_iface->wrmsr_handler(cpu, msr, data);
++         g_hypervisor_iface->wrmsr_handler(cs, msr, data);
+ 
+-    printf("write msr %llx\n", RCX(cpu));*/
++    printf("write msr %llx\n", RCX(cs));*/
+ }
+ 
+ static void exec_wrmsr(CPUX86State *env, struct x86_decode *decode)
+@@ -1417,56 +1417,56 @@ static void init_cmd_handler()
      }
  }
  
--void load_regs(struct CPUState *cpu)
-+void load_regs(CPUState *cpu)
+-void load_regs(CPUState *cpu)
++void load_regs(CPUState *cs)
  {
-     X86CPU *x86_cpu = X86_CPU(cpu);
+-    X86CPU *x86_cpu = X86_CPU(cpu);
++    X86CPU *x86_cpu = X86_CPU(cs);
      CPUX86State *env = &x86_cpu->env;
-@@ -1440,7 +1440,7 @@ void load_regs(struct CPUState *cpu)
-     env->eip = rreg(cpu->accel->fd, HV_X86_RIP);
+ 
+     int i = 0;
+-    RRX(env, R_EAX) = rreg(cpu->accel->fd, HV_X86_RAX);
+-    RRX(env, R_EBX) = rreg(cpu->accel->fd, HV_X86_RBX);
+-    RRX(env, R_ECX) = rreg(cpu->accel->fd, HV_X86_RCX);
+-    RRX(env, R_EDX) = rreg(cpu->accel->fd, HV_X86_RDX);
+-    RRX(env, R_ESI) = rreg(cpu->accel->fd, HV_X86_RSI);
+-    RRX(env, R_EDI) = rreg(cpu->accel->fd, HV_X86_RDI);
+-    RRX(env, R_ESP) = rreg(cpu->accel->fd, HV_X86_RSP);
+-    RRX(env, R_EBP) = rreg(cpu->accel->fd, HV_X86_RBP);
++    RRX(env, R_EAX) = rreg(cs->accel->fd, HV_X86_RAX);
++    RRX(env, R_EBX) = rreg(cs->accel->fd, HV_X86_RBX);
++    RRX(env, R_ECX) = rreg(cs->accel->fd, HV_X86_RCX);
++    RRX(env, R_EDX) = rreg(cs->accel->fd, HV_X86_RDX);
++    RRX(env, R_ESI) = rreg(cs->accel->fd, HV_X86_RSI);
++    RRX(env, R_EDI) = rreg(cs->accel->fd, HV_X86_RDI);
++    RRX(env, R_ESP) = rreg(cs->accel->fd, HV_X86_RSP);
++    RRX(env, R_EBP) = rreg(cs->accel->fd, HV_X86_RBP);
+     for (i = 8; i < 16; i++) {
+-        RRX(env, i) = rreg(cpu->accel->fd, HV_X86_RAX + i);
++        RRX(env, i) = rreg(cs->accel->fd, HV_X86_RAX + i);
+     }
+ 
+-    env->eflags = rreg(cpu->accel->fd, HV_X86_RFLAGS);
++    env->eflags = rreg(cs->accel->fd, HV_X86_RFLAGS);
+     rflags_to_lflags(env);
+-    env->eip = rreg(cpu->accel->fd, HV_X86_RIP);
++    env->eip = rreg(cs->accel->fd, HV_X86_RIP);
  }
  
--void store_regs(struct CPUState *cpu)
-+void store_regs(CPUState *cpu)
+-void store_regs(CPUState *cpu)
++void store_regs(CPUState *cs)
  {
-     X86CPU *x86_cpu = X86_CPU(cpu);
+-    X86CPU *x86_cpu = X86_CPU(cpu);
++    X86CPU *x86_cpu = X86_CPU(cs);
      CPUX86State *env = &x86_cpu->env;
+ 
+     int i = 0;
+-    wreg(cpu->accel->fd, HV_X86_RAX, RAX(env));
+-    wreg(cpu->accel->fd, HV_X86_RBX, RBX(env));
+-    wreg(cpu->accel->fd, HV_X86_RCX, RCX(env));
+-    wreg(cpu->accel->fd, HV_X86_RDX, RDX(env));
+-    wreg(cpu->accel->fd, HV_X86_RSI, RSI(env));
+-    wreg(cpu->accel->fd, HV_X86_RDI, RDI(env));
+-    wreg(cpu->accel->fd, HV_X86_RBP, RBP(env));
+-    wreg(cpu->accel->fd, HV_X86_RSP, RSP(env));
++    wreg(cs->accel->fd, HV_X86_RAX, RAX(env));
++    wreg(cs->accel->fd, HV_X86_RBX, RBX(env));
++    wreg(cs->accel->fd, HV_X86_RCX, RCX(env));
++    wreg(cs->accel->fd, HV_X86_RDX, RDX(env));
++    wreg(cs->accel->fd, HV_X86_RSI, RSI(env));
++    wreg(cs->accel->fd, HV_X86_RDI, RDI(env));
++    wreg(cs->accel->fd, HV_X86_RBP, RBP(env));
++    wreg(cs->accel->fd, HV_X86_RSP, RSP(env));
+     for (i = 8; i < 16; i++) {
+-        wreg(cpu->accel->fd, HV_X86_RAX + i, RRX(env, i));
++        wreg(cs->accel->fd, HV_X86_RAX + i, RRX(env, i));
+     }
+ 
+     lflags_to_rflags(env);
+-    wreg(cpu->accel->fd, HV_X86_RFLAGS, env->eflags);
+-    macvm_set_rip(cpu, env->eip);
++    wreg(cs->accel->fd, HV_X86_RFLAGS, env->eflags);
++    macvm_set_rip(cs, env->eip);
+ }
+ 
+ bool exec_instruction(CPUX86State *env, struct x86_decode *ins)
+ {
+-    /*if (hvf_vcpu_id(cpu))
+-    printf("%d, %llx: exec_instruction %s\n", hvf_vcpu_id(cpu),  env->eip,
++    /*if (hvf_vcpu_id(cs))
++    printf("%d, %llx: exec_instruction %s\n", hvf_vcpu_id(cs),  env->eip,
+           decode_cmd_to_string(ins->cmd));*/
+ 
+     if (!_cmd_handler[ins->cmd].handler) {
 -- 
 2.41.0
 

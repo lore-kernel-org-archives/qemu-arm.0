@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2678163eja;
-        Mon, 6 Nov 2023 03:07:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH/Hukcsi3mKjAWuj4XU6o/VevXJpFqbTqg91lMb3ox/YfB+CC2HkeFU0lnJm1XSSiNd6aj
-X-Received: by 2002:a05:620a:4622:b0:775:c5cc:7ce4 with SMTP id br34-20020a05620a462200b00775c5cc7ce4mr30275782qkb.13.1699268862039;
-        Mon, 06 Nov 2023 03:07:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268862; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2678206eja;
+        Mon, 6 Nov 2023 03:07:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGFH5V7+WRcXPfZiXY4I608Y25guxeAFpdo101uyZO8Jl9tcGFTKIsLg2OiddUl5vbpc+cn
+X-Received: by 2002:a05:620a:4305:b0:77a:75f7:d147 with SMTP id u5-20020a05620a430500b0077a75f7d147mr8253765qko.18.1699268867205;
+        Mon, 06 Nov 2023 03:07:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268867; cv=none;
         d=google.com; s=arc-20160816;
-        b=FpycPpl/nhAEKpqNCDfHZPI1qkLXNAJMxnMbMnfRhcmX9T4zkUd+gEmzxr4XotPPlc
-         lYKtezZhdhZB2rGiTHLASitj3dAbnnho/+vUP3aUqtTg8HZ1DQ7CHfGD53dgWnLpYm3p
-         JtjyF4I51QfdxMBdP0J7G/rJA+7mUKh2O6CvqZbvpyhpmLPW8hQZaXBQCJtvIjsfGqDW
-         V6LvniTFdFv1hip45XzrGhcZyDKp9G+6kNSAduMTLdvFA4Gzz4W9Zm8nHyIIMt4K3rdN
-         MRzcGuFtI2kY0O6Az2E8lTTGn19iB2XnvUkV+QboL/mMjmDmeZBSWKQBM2kVH54dX8YP
-         LuNA==
+        b=v4THuVrp+1rxGy/bBpxvg+QNx2rllBOKztgeF8aUNI2t71BKktFWyMvJNNMBweUOfC
+         Iki8GV3Ojmw8LS8fHyMA9RIX4d4d0ClENqqFZgEsImNAUMgI1ad2017Edx+wdFrRk5+m
+         R6Dj2B7+o4snt/a3H2TaVq5d0x6CA51Uls6GTee6RFBmwa8LqvMP4daxqK7NCd02O7oz
+         m9LQiNkTSdjyR5wFUGUp9dDsa41TPR55LBXKEaoNDKDa8u4ESXF6FLl688kG/wtka1GZ
+         jTZAeBDeUAvlTvL6ZtLyk3MRbem5iUWCDbefMflSJg6V6EB4Q8WloxbdqWUGqSM5qgUE
+         WBOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=S8/5vIGDLKMGAXYMu1UZsIS0RjKQzcO4h+Duvu/oNU4=;
-        fh=q9b78AFgRM1O2or92wExPmoPEBaJapvt1WsXQwq6grY=;
-        b=Wj9nU8v8dFtTuclrjAxLzIpkzBNwNVi+ZLcrxpEszVynVFC1dCCUxfM/X2vAFbyhtT
-         TRGj7DkiSwbKpst4/i+27IkfFC/eTtJDJrYJlqYL+KtjAjGETLDhJNBRb67eN9AfFhSY
-         u+hC4bm166qVqOOCzEx+71NghyXqUlffHE/i2trXZjH3weqFllmi0uKyB7mAjwuGFpEL
-         b89vl9+FP7mLrJ3/XUleCsifgjAcjWU6tUtIK2irtiBmsR0aTx23R1WUcnKWPMQaSBgU
-         y+SY/avqeCqwa/uMJ/CwhgFgARPPYRlbhPZrDrfqQgeZ/b/TdFsaY/GiN0N7+nfKfJ3C
-         ySpw==
+        bh=2OUN8qI3wvvK+6EjwaYybG9IZ1pKduK7zbEAWLMDuTw=;
+        fh=kxtIBrwY7v58V0MwHpEoArvHEW6OKvCH9QYtBCkoxeY=;
+        b=UyDDt+JLqmSZ/xxtJmHnSMBk1Dv70r/sg4rpBKPQFhcAiMggsS8tjV51HyvQTXD10b
+         gn4d7GuFtkxC+tOUALuYCOer969103RrHzN777F3TIj2gx8vRCcLbhDKW8U/Ou58oCuu
+         YqpbcEW/75MyqsuGgJXCI+qyGM/op3SzIMFa5TGCeuIZyXTU4XqZSMap5JNO7tsjM9HN
+         YNAh8lFohWNbI7Ozb2QYVRSGP8nULKv967bew6sqeGkrQk9GIG7S8xPaISH/sEPft0zQ
+         6HrARsh0PctUshCqRMGfayuLcFyjTLAoj2JzzHJl8qCvs5Nc5ue6RFs+umklDne4cwk5
+         UESw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HxkprFIC;
-       spf=pass (google.com: domain of kvm+bounces-701-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-701-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="OuV1/Wk3";
+       spf=pass (google.com: domain of kvm+bounces-702-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-702-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-701-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id az44-20020a05620a172c00b007788f266816si5573511qkb.278.2023.11.06.03.07.41
+Return-Path: <kvm+bounces-702-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id v2-20020a05620a0f0200b00765aafce58csi5441587qkl.120.2023.11.06.03.07.47
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:07:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-701-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Mon, 06 Nov 2023 03:07:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-702-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HxkprFIC;
-       spf=pass (google.com: domain of kvm+bounces-701-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-701-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="OuV1/Wk3";
+       spf=pass (google.com: domain of kvm+bounces-702-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-702-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id ADC7B1C20BF1
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:07:41 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D6CE01C20BE1
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:07:46 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D49041A5BE;
-	Mon,  6 Nov 2023 11:07:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5A3FC1B271;
+	Mon,  6 Nov 2023 11:07:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="HxkprFIC"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="OuV1/Wk3"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A2481A598
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:07:30 +0000 (UTC)
-Received: from mail-lj1-x231.google.com (mail-lj1-x231.google.com [IPv6:2a00:1450:4864:20::231])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id C6253D73
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:07:20 -0800 (PST)
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2c6b48cb2b6so61122941fa.2
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:07:20 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D4991A72A
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:07:35 +0000 (UTC)
+Received: from mail-lj1-x233.google.com (mail-lj1-x233.google.com [IPv6:2a00:1450:4864:20::233])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 3FCCABD
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:07:27 -0800 (PST)
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2c509d5ab43so62477151fa.0
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:07:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268839; x=1699873639; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268845; x=1699873645; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=S8/5vIGDLKMGAXYMu1UZsIS0RjKQzcO4h+Duvu/oNU4=;
-        b=HxkprFIC4OGDu5zmDRCgl4rUg3HUPT6iT7yscdI7ZLfbbZiJp5wA2m8x2b6m4siGZA
-         GTF770ccxx0Prpc0G2oz8+4ITg0QKzhfR6ofBOBHQ/Pgzd1loHAaWob44K/SRmKiQw//
-         oQMXVIyz6a++UmRuwVX2rxWHYgMIOP79z6Rah01ZSUqZF9djXappWbc0w6W2oZJgeVXY
-         QSfzMUzbwuYLPWHSK9/Iq254yruTmYL5VTh7veHKSRDtnmAwx60lJ0tlOQkAzfOl63Zh
-         pL7K02ME+jx7GJDGBP6CG1wCvIL/ISJnW/ZUEZP51741g3p006zgZbbusu9Qr7KZ98G4
-         Kdrg==
+        bh=2OUN8qI3wvvK+6EjwaYybG9IZ1pKduK7zbEAWLMDuTw=;
+        b=OuV1/Wk3p2CYejNS+Gmt2fBvHPaXuFEdMy3ENvZKuseLm9SyNXLphqn+KAOww7EgB3
+         kQrUyMLV7PixhbhbbOliMsTqMYLHOcH9FOIkZ5M4uissYodFsVdFoD8Mkcnu8wf+in+G
+         pV85dQii9abuJ+x9BCNGFfEyJvxtN+5KVl8Q3Etp87oXyE1I3EuoqLNMm6FB6+OacD1l
+         177JvWzSBdJqiM8JaWGnge1WvxedXGLDyWf4KvLifPTWCNShDnhxF7+vqbHEgogpgL5R
+         6wGqljJ2rF3AvWZj9zFTfqm1b/XV40CFh4cghPgE3foVYY7RnNRs/o57lrI2YxaEozrL
+         BdsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268839; x=1699873639;
+        d=1e100.net; s=20230601; t=1699268845; x=1699873645;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=S8/5vIGDLKMGAXYMu1UZsIS0RjKQzcO4h+Duvu/oNU4=;
-        b=UYMwQXyOTZrWkHDTHRX5mDoQqet+d9sF7vn/SClni2ISmizFo59josBcqOVm281LoC
-         LmVLTdShyaUFsarK2CAEv5MV+TuPLBfvKUWw00c+KUKyAL7zUKe3gryjG2ZRn5ZJDJQe
-         OHQwZC3Eih843ot2Cr7SBVr7bILl33B9s7iZfz++w+HC+KyFB2b7Qx1jyvw6D+NgUjLv
-         TQVusZpIEnpG9nLeeJZJCVJw5NH2ISqx1gjID1ubmXIAx/IxWa9c019Lj1qj9zS/xayK
-         i0VboZEipBqjEzy14EKU4G438L8uH1CGGL3hu7E4y27+9UNt5XKf6IsGZ7D0RFIo5dYD
-         Lu1g==
-X-Gm-Message-State: AOJu0Ywn7ylQlFTQgQvS04hijQlZScZiOcs3iJAiat7i3KxgKU//KEGG
-	ysRDXrxKb6c3if18wkDXkYqKvQ==
-X-Received: by 2002:a2e:940e:0:b0:2c6:e46e:9849 with SMTP id i14-20020a2e940e000000b002c6e46e9849mr10927288ljh.15.1699268838970;
-        Mon, 06 Nov 2023 03:07:18 -0800 (PST)
+        bh=2OUN8qI3wvvK+6EjwaYybG9IZ1pKduK7zbEAWLMDuTw=;
+        b=VKsQJ9XdvYK5b4r+OicjoaBf8GNGeUWp3AVkHS+3RBklJ04SZYzi5TiyQTXjJ+QPzq
+         Z7TZWsfISZQUWbNuzzNcSbabSq8eG9Ny4YexbgZNRBzp0/Sh5A7+le1hSMl5GaV+1G0J
+         LYZKu0e1eRufbmNK5BEOgFqMHwHlvDX8MEo9LaOjOhy82ZHwzjj6kpoW7T6yhR9CiGnU
+         R4lHavtHPvK0tiiviDY5Yab+SpgAfbC9jhWuUTpRSk95oK4Jygy37ZnEb5UxTmc1+2Om
+         TeV2plCaEPfJas/+eRyoJxMQ8w+KpzhYebia696jHAI0oOJYypdNIem9GwPeBs2Yln5U
+         x0zA==
+X-Gm-Message-State: AOJu0Yx8BlejoIU2ON6Kr0iG2Fu3q76fPmgQY/DQo7l6pLcBN54Y/rNP
+	rOw0tiBz5rdGoLbYCwolQtnicA==
+X-Received: by 2002:a2e:3816:0:b0:2c5:8a0:b502 with SMTP id f22-20020a2e3816000000b002c508a0b502mr21890109lja.48.1699268845464;
+        Mon, 06 Nov 2023 03:07:25 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id v9-20020a05600c470900b003feea62440bsm11701095wmo.43.2023.11.06.03.07.17
+        by smtp.gmail.com with ESMTPSA id j8-20020a05600c1c0800b004063977eccesm11981849wms.42.2023.11.06.03.07.23
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:07:18 -0800 (PST)
+        Mon, 06 Nov 2023 03:07:25 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -100,13 +100,12 @@ Cc: kvm@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Michael Tokarev <mjt@tls.msk.ru>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 32/60] sysemu/kvm: Restrict kvmppc_get_radix_page_info() to ppc targets
-Date: Mon,  6 Nov 2023 12:03:04 +0100
-Message-ID: <20231106110336.358-33-philmd@linaro.org>
+Subject: [PULL 33/60] hw/ppc/e500: Restrict ppce500_init_mpic_kvm() to KVM
+Date: Mon,  6 Nov 2023 12:03:05 +0100
+Message-ID: <20231106110336.358-34-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -118,57 +117,81 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MRhubjy2OlLu
+X-TUID: xcDJt/7y2Y2+
 
-kvm_get_radix_page_info() is only defined for ppc targets (in
-target/ppc/kvm.c). The declaration is not useful in other targets,
-reduce its scope.
-Rename using the 'kvmppc_' prefix following other declarations
-from target/ppc/kvm_ppc.h.
+Inline and guard the single call to kvm_openpic_connect_vcpu()
+allows to remove kvm-stub.c.
 
-Suggested-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-Message-Id: <20231003070427.69621-2-philmd@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20231003070427.69621-3-philmd@linaro.org>
 ---
- include/sysemu/kvm.h | 1 -
- target/ppc/kvm.c     | 4 ++--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ hw/ppc/e500.c          |  4 ++++
+ target/ppc/kvm-stub.c  | 19 -------------------
+ target/ppc/meson.build |  2 +-
+ 3 files changed, 5 insertions(+), 20 deletions(-)
+ delete mode 100644 target/ppc/kvm-stub.c
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 80b69d88f6..d614878164 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -521,7 +521,6 @@ int kvm_set_one_reg(CPUState *cs, uint64_t id, void *source);
-  * Returns: 0 on success, or a negative errno on failure.
-  */
- int kvm_get_one_reg(CPUState *cs, uint64_t id, void *target);
--struct ppc_radix_page_info *kvm_get_radix_page_info(void);
- 
- /* Notify resamplefd for EOI of specific interrupts. */
- void kvm_resample_fd_notify(int gsi);
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index d0e2dcdc77..9b1abe2fc4 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -268,7 +268,7 @@ static void kvm_get_smmu_info(struct kvm_ppc_smmu_info *info, Error **errp)
-                      "KVM failed to provide the MMU features it supports");
- }
- 
--struct ppc_radix_page_info *kvm_get_radix_page_info(void)
-+static struct ppc_radix_page_info *kvmppc_get_radix_page_info(void)
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index e04114fb3c..384226296b 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -834,6 +834,7 @@ static DeviceState *ppce500_init_mpic_qemu(PPCE500MachineState *pms,
+ static DeviceState *ppce500_init_mpic_kvm(const PPCE500MachineClass *pmc,
+                                           IrqLines *irqs, Error **errp)
  {
-     KVMState *s = KVM_STATE(current_accel());
-     struct ppc_radix_page_info *radix_page_info;
-@@ -2368,7 +2368,7 @@ static void kvmppc_host_cpu_class_init(ObjectClass *oc, void *data)
++#ifdef CONFIG_KVM
+     DeviceState *dev;
+     CPUState *cs;
+ 
+@@ -854,6 +855,9 @@ static DeviceState *ppce500_init_mpic_kvm(const PPCE500MachineClass *pmc,
      }
  
- #if defined(TARGET_PPC64)
--    pcc->radix_page_info = kvm_get_radix_page_info();
-+    pcc->radix_page_info = kvmppc_get_radix_page_info();
+     return dev;
++#else
++    g_assert_not_reached();
++#endif
+ }
  
-     if ((pcc->pvr & 0xffffff00) == CPU_POWERPC_POWER9_DD1) {
-         /*
+ static DeviceState *ppce500_init_mpic(PPCE500MachineState *pms,
+diff --git a/target/ppc/kvm-stub.c b/target/ppc/kvm-stub.c
+deleted file mode 100644
+index b98e1d404f..0000000000
+--- a/target/ppc/kvm-stub.c
++++ /dev/null
+@@ -1,19 +0,0 @@
+-/*
+- * QEMU KVM PPC specific function stubs
+- *
+- * Copyright Freescale Inc. 2013
+- *
+- * Author: Alexander Graf <agraf@suse.de>
+- *
+- * This work is licensed under the terms of the GNU GPL, version 2 or later.
+- * See the COPYING file in the top-level directory.
+- *
+- */
+-#include "qemu/osdep.h"
+-#include "cpu.h"
+-#include "hw/ppc/openpic_kvm.h"
+-
+-int kvm_openpic_connect_vcpu(DeviceState *d, CPUState *cs)
+-{
+-    return -EINVAL;
+-}
+diff --git a/target/ppc/meson.build b/target/ppc/meson.build
+index 97ceb6e7c0..eab4e3e1b3 100644
+--- a/target/ppc/meson.build
++++ b/target/ppc/meson.build
+@@ -30,7 +30,7 @@ gen = [
+ ]
+ ppc_ss.add(when: 'CONFIG_TCG', if_true: gen)
+ 
+-ppc_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c'), if_false: files('kvm-stub.c'))
++ppc_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c'))
+ ppc_ss.add(when: 'CONFIG_USER_ONLY', if_true: files('user_only_helper.c'))
+ 
+ ppc_system_ss = ss.source_set()
 -- 
 2.41.0
 

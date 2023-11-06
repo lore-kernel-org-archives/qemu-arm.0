@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004606eja;
-        Mon, 6 Nov 2023 11:56:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH6fKGA1XYaYyLofI7LoR7vYuXVkasYWxyRk0lKI7PuM63zRy4XMs55tzsmWeJcrlNqKTzP
-X-Received: by 2002:a05:620a:4552:b0:770:f2bb:37c3 with SMTP id u18-20020a05620a455200b00770f2bb37c3mr37541074qkp.6.1699300610395;
-        Mon, 06 Nov 2023 11:56:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300610; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004619eja;
+        Mon, 6 Nov 2023 11:56:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHneZP4RzQ8Q2M6QnLezO9opCfnxDSnfY/6SlOGRxIwa51BzXspHh3yHCOJdK/BqxHn3BMZ
+X-Received: by 2002:ac8:5c56:0:b0:417:944a:bcd0 with SMTP id j22-20020ac85c56000000b00417944abcd0mr37447507qtj.3.1699300612126;
+        Mon, 06 Nov 2023 11:56:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300612; cv=none;
         d=google.com; s=arc-20160816;
-        b=t1GEbsHaLZoxz60pH8WkekJx1NeoEwVmj+IFZnhN8nQMyAc4M61m+CctA3Nb/H9oUK
-         90tDN6O+BiI7EPv5cKhGcujRgCGLC9A/kCNAijK6YHKEJikmtoYA2QGciMwUPJsn5icy
-         J2hNx5+Pa1XYzV2H1dZeWYChSpV+WyDaeqFwFfqU3tD5US4RpEpbzd+6XoEqMqgUPc32
-         Lxyzqzq3F+ZzZ5xE74thmpPzee16oaK/Uktlxmo7pIbESEdexVGqRtvwJTEFQHusV2RM
-         ow38cFoa05yL/OJfwkvhE6TK+b7+9jKlgsZ5/ZAc2UPPBynxy1qZP7XaU4/AcTH280NV
-         Z8nQ==
+        b=bFo31863KFGh93wm5NdKFccbb3w9wje4U6EMPtdiQuKcw9pZzynXwYgk1ogmVnoiyV
+         h3wGaftrdDVJCrFiU8pfH7qX1uJi3dvPlG44Ni7/S5JR3icaE1G1trF2WMkM4n2FOFVb
+         t6Q6UIrx518jybJaL7WkjBMilEB1zMnIMWfSyAxlyGd2edkh+uOgWm5LM60GsTX9MrTf
+         sBsQiTdzQqfVS2hoqfZMfGPI6lz7cCIxCGb0N8BXeiUmZw2A2pFcoKEFZJyvaHfy/gxz
+         ZomsISOgkwX+kciIIXN7P2xxh2pfSJ/HaCKTP2WNhhERQPm0N0qR3CI2hl9Es2VELoMB
+         r/RQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=AhJIqQ4JvGd0KYjdhY7u9mp0ZZRVDk/M4nuhh3LTnPc=;
+        bh=uVqD0N8xPMjrBJQgjiJIoni6BiAb3d/o4YlG390jwak=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=wHnlfNLVjUCDfHgBWjQ5TZxKdO2qfLbl1r0sFeyn0dGq649hql/6zDVnToqQhvHIAq
-         FUFv5yIvsacViBZbUNjwzlH/rjTKrYs2QW3U9Nw6Ra5G3zIs6MoFBup1ZcnEJMiEzuos
-         FdSY8KF12QPvtUoNngqS/7TWOtHce7hCsk2fqNOnQs6ZQ1uzudTZBFouKfNu2er5RnuZ
-         f6+GKMgHFuPUEX7OXGQStoZOAAgtyLHfKq/6BBzLmLsizgtJl9AMTx6f2CTx7O3/xpxI
-         TKtn5lDr7QDonEmCCcEZQbxs2MOJO40ZFK3XnLmyvJ2IWMM77FNRXOsR5GySF0kCwF5R
-         fO5g==
+        b=VoEyL/MTDK2DJKdoqwJpkPXBM6aqZ7zgp3HLbUpEWIGlplfvnJ3LKIlF3qnmZTSB64
+         Y6yhMvtrH8Pml1sPnSNvFK7EKHbI+U0nvtmKleLC/GkHmXRhM2Iz/JY/+IrKBP8Ng5V4
+         t56M9kZNN/44HxzX0ZxuOCHtLGqCEw05Lwj2CDRFsVq06x/GoJrvdGlJPNQlRKhgdNYr
+         xzTn17cI0HtuZ8qXsAddiN7YCZ2Sg4QQbWS6G3Zh4onNaASxhYnri0OnZW0bJRQKWWWd
+         a59uQVGPylRco5kpXjGY4GPizvkLvcqAn4saT72znEOLfivALeWTWfj+6wYk49+pEmbK
+         X4wg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=V9EgTCJo;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=roICQBHr;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id pf2-20020a05620a858200b007709df4a576si5508366qkn.711.2023.11.06.11.56.50
+        by mx.google.com with ESMTPS id 14-20020ac8570e000000b0041908908ba9si6007439qtw.165.2023.11.06.11.56.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 11:56:50 -0800 (PST)
+        Mon, 06 Nov 2023 11:56:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=V9EgTCJo;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=roICQBHr;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.628289.979601 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.628292.979635 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1r05hF-0002if-LT; Mon, 06 Nov 2023 19:55:41 +0000
+	id 1r05hJ-0003Za-DY; Mon, 06 Nov 2023 19:55:45 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 628289.979601; Mon, 06 Nov 2023 19:55:41 +0000
+Received: by outflank-mailman (output) from mailman id 628292.979635; Mon, 06 Nov 2023 19:55:45 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1r05hF-0002fm-9V; Mon, 06 Nov 2023 19:55:41 +0000
-Received: by outflank-mailman (input) for mailman id 628289;
- Mon, 06 Nov 2023 19:55:39 +0000
+	id 1r05hI-0003Vt-Rj; Mon, 06 Nov 2023 19:55:44 +0000
+Received: by outflank-mailman (input) for mailman id 628292;
+ Mon, 06 Nov 2023 19:55:41 +0000
 Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
  helo=se1-gles-flk1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=OHvK=GT=casper.srs.infradead.org=BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1r05hC-0001Ig-Sy
- for xen-devel@lists.xenproject.org; Mon, 06 Nov 2023 19:55:39 +0000
+ id 1r05hF-0001Ig-Dx
+ for xen-devel@lists.xenproject.org; Mon, 06 Nov 2023 19:55:41 +0000
 Received: from casper.infradead.org (casper.infradead.org
  [2001:8b0:10b:1236::1])
  by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 736924cb-7cde-11ee-9b0e-b553b5be7939;
- Mon, 06 Nov 2023 20:55:35 +0100 (CET)
+ id 752943bf-7cde-11ee-9b0e-b553b5be7939;
+ Mon, 06 Nov 2023 20:55:38 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fc-007tal-Ke; Mon, 06 Nov 2023 19:54:01 +0000
+ id 1r05fb-007tab-VU; Mon, 06 Nov 2023 19:54:00 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fc-001GPL-2d; Mon, 06 Nov 2023 19:54:00 +0000
+ Hat Linux)) id 1r05fc-001GOe-0A; Mon, 06 Nov 2023 19:54:00 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: 736924cb-7cde-11ee-9b0e-b553b5be7939
+X-Inumbo-ID: 752943bf-7cde-11ee-9b0e-b553b5be7939
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=AhJIqQ4JvGd0KYjdhY7u9mp0ZZRVDk/M4nuhh3LTnPc=; b=V9EgTCJo/9IUxzcjTxQ4eFZZSm
-	Ek6V7ePz+KGtWWGQNNARR+vI/mCIf9Q/gnaNJBBwPHNjdliCmaBx4KRTkOjCKTbSIpwVNub1LwcPA
-	0lMqOy/iKe54l12rVjL2iut9OXpYLDrsKUCeCtLvsc7mdr+RsOjsuF8h9efzma3fdwXOb6ofTL0AW
-	/Hsffv6lw4wXFeqhC5py2TQEdYhFxrbEBaixDii3zP35BNgJPG6w3kUpgJhVWuXEocKxpqVebCscz
-	kYG+lo69p+fjtLHJHrfOIeykzGmf9r54SF20igEQUBX5z8ihKTL1rIdS1YMBCNcvJR6O8uU9pmUCw
-	ICKcfI8A==;
+	bh=uVqD0N8xPMjrBJQgjiJIoni6BiAb3d/o4YlG390jwak=; b=roICQBHrd89cGUxxnVQ4SGclNs
+	XDjywuqCAUA3rIR1ANWkBnG8pvsdilTtU1Shmu14Xh+Dlja1cu83/djrGY4S3Brgit+tJ175Yxw72
+	qHussyQYr2ufcgB2kP3CwPwt5erN4ypQ8VYgQk9vlxWBH8Y3bG/SHHsmKBhgCrf4CDQte6PSsVbha
+	BCxmvRH90iYXqsb4Dn+lUOWkYiBtjqO6gfKekI1FW4QmW4AmoU83zuRoaUao53crzpCx6K6cl20aT
+	9so4T+ODmprdAaxd2nTr/MdJfd5BZ4v0402+Ux9u5VnzUrkeIPJktgn+lvga+phr+nXUtuYczzq1F
+	3y7Vlc7Q==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -150,9 +150,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 38/46] hw/openrisc/openrisc_sim: use qemu_create_nic_device()
-Date: Mon,  6 Nov 2023 19:49:43 +0000
-Message-ID: <20231106195352.301038-39-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 29/46] hw/arm/stellaris: use qemu_find_nic_info()
+Date: Mon,  6 Nov 2023 19:49:34 +0000
+Message-ID: <20231106195352.301038-30-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
@@ -160,58 +160,81 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: CvqfGIEdhqEY
+X-TUID: ixGKxlvcsTTQ
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
+Rather than just using qemu_configure_nic_device(), populate the MAC
+address in the system-registers device by peeking at the NICInfo before
+it's assigned to the device.
+
+Generate the MAC address early, if there is no matching -nic option.
+Otherwise the MAC address wouldn't be generated until net_client_init1()
+runs.
+
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/openrisc/openrisc_sim.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ hw/arm/stellaris.c | 30 ++++++++++++++++++++++--------
+ 1 file changed, 22 insertions(+), 8 deletions(-)
 
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index 35da123aef..bffd6f721f 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -170,7 +170,7 @@ static void openrisc_create_fdt(Or1ksimState *state,
- 
- static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
-                                   int num_cpus, OpenRISCCPU *cpus[],
--                                  int irq_pin, NICInfo *nd)
-+                                  int irq_pin)
- {
-     void *fdt = state->fdt;
-     DeviceState *dev;
-@@ -178,8 +178,10 @@ static void openrisc_sim_net_init(Or1ksimState *state, hwaddr base, hwaddr size,
-     char *nodename;
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index dd90f686bf..fdf15aab63 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1027,7 +1027,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     DeviceState *ssys_dev;
      int i;
+     int j;
+-    const uint8_t *macaddr;
++    NICInfo *nd;
++    MACAddr mac;
  
--    dev = qdev_new("open_eth");
--    qdev_set_nic_properties(dev, nd);
-+    dev = qemu_create_nic_device("open_eth", true, NULL);
-+    if (!dev) {
-+        return;
+     MemoryRegion *sram = g_new(MemoryRegion, 1);
+     MemoryRegion *flash = g_new(MemoryRegion, 1);
+@@ -1050,12 +1051,22 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+      * need its sysclk output.
+      */
+     ssys_dev = qdev_new(TYPE_STELLARIS_SYS);
+-    /* Most devices come preprogrammed with a MAC address in the user data. */
+-    macaddr = nd_table[0].macaddr.a;
++
++    /*
++     * Most devices come preprogrammed with a MAC address in the user data.
++     * Generate a MAC address now, if there isn't a matching -nic for it.
++     */
++    nd = qemu_find_nic_info("stellaris_enet", true, "stellaris");
++    if (nd) {
++        memcpy(mac.a, nd->macaddr.a, sizeof(mac.a));
++    } else {
++        qemu_macaddr_default_if_unset(&mac);
 +    }
++
+     qdev_prop_set_uint32(ssys_dev, "user0",
+-                         macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16));
++                         mac.a[0] | (mac.a[1] << 8) | (mac.a[2] << 16));
+     qdev_prop_set_uint32(ssys_dev, "user1",
+-                         macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16));
++                         mac.a[3] | (mac.a[4] << 8) | (mac.a[5] << 16));
+     qdev_prop_set_uint32(ssys_dev, "did0", board->did0);
+     qdev_prop_set_uint32(ssys_dev, "did1", board->did1);
+     qdev_prop_set_uint32(ssys_dev, "dc0", board->dc0);
+@@ -1267,10 +1278,13 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     if (board->dc4 & (1 << 28)) {
+         DeviceState *enet;
  
-     s = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-@@ -313,12 +315,10 @@ static void openrisc_sim_init(MachineState *machine)
-     openrisc_create_fdt(state, or1ksim_memmap, smp_cpus, machine->ram_size,
-                         machine->kernel_cmdline);
- 
--    if (nd_table[0].used) {
--        openrisc_sim_net_init(state, or1ksim_memmap[OR1KSIM_ETHOC].base,
--                              or1ksim_memmap[OR1KSIM_ETHOC].size,
--                              smp_cpus, cpus,
--                              OR1KSIM_ETHOC_IRQ, nd_table);
--    }
-+    openrisc_sim_net_init(state, or1ksim_memmap[OR1KSIM_ETHOC].base,
-+                          or1ksim_memmap[OR1KSIM_ETHOC].size,
-+                          smp_cpus, cpus,
-+                          OR1KSIM_ETHOC_IRQ);
- 
-     if (smp_cpus > 1) {
-         openrisc_sim_ompic_init(state, or1ksim_memmap[OR1KSIM_OMPIC].base,
+-        qemu_check_nic_model(&nd_table[0], "stellaris");
+-
+         enet = qdev_new("stellaris_enet");
+-        qdev_set_nic_properties(enet, &nd_table[0]);
++        if (nd) {
++            qdev_set_nic_properties(enet, nd);
++        } else {
++            qdev_prop_set_macaddr(enet, "mac", mac.a);
++        }
++
+         sysbus_realize_and_unref(SYS_BUS_DEVICE(enet), &error_fatal);
+         sysbus_mmio_map(SYS_BUS_DEVICE(enet), 0, 0x40048000);
+         sysbus_connect_irq(SYS_BUS_DEVICE(enet), 0, qdev_get_gpio_in(nvic, 42));
 -- 
 2.41.0
 

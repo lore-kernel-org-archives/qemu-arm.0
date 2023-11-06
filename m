@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a10-20020a5d53ca000000b00326dd5486dcsm291434wrw.107.2023.11.06.10.51.13
+        by smtp.gmail.com with ESMTPSA id a1-20020a05600c348100b003fe1fe56202sm13473409wmq.33.2023.11.06.10.51.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 06 Nov 2023 10:51:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E5E1C6574F;
-	Mon,  6 Nov 2023 18:51:12 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 5D8B16575D;
+	Mon,  6 Nov 2023 18:51:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -25,39 +25,176 @@ Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Chris Wulff <crwulff@gmail.com>,
 	Marek Vasut <marex@denx.de>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 05/22] target/arm: hide aliased MIDR from gdbstub
-Date: Mon,  6 Nov 2023 18:50:55 +0000
-Message-Id: <20231106185112.2755262-6-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 10/22] gdbstub: Introduce GDBFeatureBuilder
+Date: Mon,  6 Nov 2023 18:51:00 +0000
+Message-Id: <20231106185112.2755262-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231106185112.2755262-1-alex.bennee@linaro.org>
 References: <20231106185112.2755262-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: g/DgLvIbDvow
+X-TUID: ZfBG1BwL5Dvr
 
-This is just a constant alias register with the same value as the
-"other" MIDR so it serves no purpose being presented to gdbstub.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
+GDBFeatureBuilder unifies the logic to generate dynamic GDBFeature.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231025093128.33116-4-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231103195956.1998255-6-alex.bennee@linaro.org>
+Message-Id: <20231103195956.1998255-11-alex.bennee@linaro.org>
 ---
- target/arm/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/exec/gdbstub.h | 50 ++++++++++++++++++++++++++++++++
+ gdbstub/gdbstub.c      | 65 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 115 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 104f9378b4..a681bcba62 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8993,7 +8993,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .type = ARM_CP_CONST, .resetvalue = cpu->revidr },
-         };
-         ARMCPRegInfo id_v8_midr_alias_cp_reginfo = {
--            .name = "MIDR", .type = ARM_CP_ALIAS | ARM_CP_CONST,
-+            .name = "MIDR", .type = ARM_CP_ALIAS | ARM_CP_CONST | ARM_CP_NO_GDB,
-             .cp = 15, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 4,
-             .access = PL1_R, .resetvalue = cpu->midr
-         };
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 7fe00506c7..d8a3c56fa2 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -16,6 +16,12 @@ typedef struct GDBFeature {
+     int num_regs;
+ } GDBFeature;
+ 
++typedef struct GDBFeatureBuilder {
++    GDBFeature *feature;
++    GPtrArray *xml;
++    int base_reg;
++} GDBFeatureBuilder;
++
+ 
+ /* Get or set a register.  Returns the size of the register.  */
+ typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
+@@ -44,6 +50,50 @@ void gdb_register_coprocessor(CPUState *cpu,
+  */
+ int gdbserver_start(const char *port_or_device);
+ 
++/**
++ * gdb_feature_builder_init() - Initialize GDBFeatureBuilder.
++ * @builder: The builder to be initialized.
++ * @feature: The feature to be filled.
++ * @name: The name of the feature.
++ * @xmlname: The name of the XML.
++ * @base_reg: The base number of the register ID.
++ */
++void gdb_feature_builder_init(GDBFeatureBuilder *builder, GDBFeature *feature,
++                              const char *name, const char *xmlname,
++                              int base_reg);
++
++/**
++ * gdb_feature_builder_append_tag() - Append a tag.
++ * @builder: The builder.
++ * @format: The format of the tag.
++ * @...: The values to be formatted.
++ */
++void G_GNUC_PRINTF(2, 3)
++gdb_feature_builder_append_tag(const GDBFeatureBuilder *builder,
++                               const char *format, ...);
++
++/**
++ * gdb_feature_builder_append_reg() - Append a register.
++ * @builder: The builder.
++ * @name: The register's name; it must be unique within a CPU.
++ * @bitsize: The register's size, in bits.
++ * @regnum: The offset of the register's number in the feature.
++ * @type: The type of the register.
++ * @group: The register group to which this register belongs; it can be NULL.
++ */
++void gdb_feature_builder_append_reg(const GDBFeatureBuilder *builder,
++                                    const char *name,
++                                    int bitsize,
++                                    int regnum,
++                                    const char *type,
++                                    const char *group);
++
++/**
++ * gdb_feature_builder_end() - End building GDBFeature.
++ * @builder: The builder.
++ */
++void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
++
+ /**
+  * gdb_find_static_feature() - Find a static feature.
+  * @xmlname: The name of the XML.
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index ae24c4848f..ebb912da1b 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -422,6 +422,71 @@ static const char *get_feature_xml(const char *p, const char **newp,
+     return NULL;
+ }
+ 
++void gdb_feature_builder_init(GDBFeatureBuilder *builder, GDBFeature *feature,
++                              const char *name, const char *xmlname,
++                              int base_reg)
++{
++    char *header = g_markup_printf_escaped(
++        "<?xml version=\"1.0\"?>"
++        "<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">"
++        "<feature name=\"%s\">",
++        name);
++
++    builder->feature = feature;
++    builder->xml = g_ptr_array_new();
++    g_ptr_array_add(builder->xml, header);
++    builder->base_reg = base_reg;
++    feature->xmlname = xmlname;
++    feature->num_regs = 0;
++}
++
++void gdb_feature_builder_append_tag(const GDBFeatureBuilder *builder,
++                                    const char *format, ...)
++{
++    va_list ap;
++    va_start(ap, format);
++    g_ptr_array_add(builder->xml, g_markup_vprintf_escaped(format, ap));
++    va_end(ap);
++}
++
++void gdb_feature_builder_append_reg(const GDBFeatureBuilder *builder,
++                                    const char *name,
++                                    int bitsize,
++                                    int regnum,
++                                    const char *type,
++                                    const char *group)
++{
++    if (builder->feature->num_regs < regnum) {
++        builder->feature->num_regs = regnum;
++    }
++
++    if (group) {
++        gdb_feature_builder_append_tag(
++            builder,
++            "<reg name=\"%s\" bitsize=\"%d\" regnum=\"%d\" type=\"%s\" group=\"%s\"/>",
++            name, bitsize, builder->base_reg + regnum, type, group);
++    } else {
++        gdb_feature_builder_append_tag(
++            builder,
++            "<reg name=\"%s\" bitsize=\"%d\" regnum=\"%d\" type=\"%s\"/>",
++            name, bitsize, builder->base_reg + regnum, type);
++    }
++}
++
++void gdb_feature_builder_end(const GDBFeatureBuilder *builder)
++{
++    g_ptr_array_add(builder->xml, (void *)"</feature>");
++    g_ptr_array_add(builder->xml, NULL);
++
++    builder->feature->xml = g_strjoinv(NULL, (void *)builder->xml->pdata);
++
++    for (guint i = 0; i < builder->xml->len - 2; i++) {
++        g_free(g_ptr_array_index(builder->xml, i));
++    }
++
++    g_ptr_array_free(builder->xml, TRUE);
++}
++
+ const GDBFeature *gdb_find_static_feature(const char *xmlname)
+ {
+     const GDBFeature *feature;
 -- 
 2.39.2

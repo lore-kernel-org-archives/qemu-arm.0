@@ -1,201 +1,316 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3008938eja;
-        Mon, 6 Nov 2023 12:03:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFwdRm9amATA9YQ7TEKRClwZk/WUZ6eWqY/trGOwjzY7r3/mD64SHEuMy8bPcNmxbnJ7m6P
-X-Received: by 2002:ad4:568a:0:b0:63d:8447:ddd with SMTP id bd10-20020ad4568a000000b0063d84470dddmr878652qvb.20.1699301020646;
-        Mon, 06 Nov 2023 12:03:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699301020; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3067418eja;
+        Mon, 6 Nov 2023 14:04:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFsCvu/uXt1wLdKJwQga8LQYEEUjgFGn2xgpVn/QIQJHhOXHcrCXC9dzcnZNT2JicOJGep8
+X-Received: by 2002:a05:6214:242d:b0:66d:3e2b:bf0a with SMTP id gy13-20020a056214242d00b0066d3e2bbf0amr33975683qvb.20.1699308260134;
+        Mon, 06 Nov 2023 14:04:20 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1699308260; cv=pass;
         d=google.com; s=arc-20160816;
-        b=A5qdcOR6GtWtOhC70b47hIdp5booxZ2oj1+T4/QLcP/D3exKP/eJGNByimMDEV1wjt
-         l3Qegwj7eYnMmKwhxU6Db72d6rn1W8KiWKX6xP17DL4+pvhnin4wmMXqokBUVLnPRCKS
-         uNZC0zf+LWjQxCJ7Bn+SEzXXU3sVwx+9SuTY7rT8UrNyl+rEsti9z54nVO7/1rPKOljt
-         nK80q996yELvuFdidPsdXvAI/gRmJH+j4WsVhgXZRR10+F/ajrKRggy1gAdSdvCbyJKP
-         8FKsTLad/FuAwHdV+Rx/jvWTb2X2+ddP5WygkeIWtjtqCkh82h+6gP2O3+PLjJFYlbgw
-         VU8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=j6Itnpn3Pt1XSeu3Ui6HttdsF5Bywn8EjalUbdlBIivsnslRrQqHmsmDhg9HyQYvag
+         mpFUXfXxtbrm9vUnqcX9L6TJeGvkBtlUdxzoSMwrdBi1vpE1B/kF7CL65nMmh1w5QvTk
+         CVmJCmd5XuyiFnfLDZKBuKp5T6iD/McO5YqtxatfFrcEeKvziwbDzfxBfTuNCS40JIp5
+         z7/VSELn27joTCsyipAPPlZjKw9F+Z65cI63czxRZtH3n5cGzXAVysd89t3ZA1ToVh6S
+         kRV4dsmhNa9ncKffFjLx7SLgyqXF4gko7pS+JFLeX4EhcbDGQ+Cqud3kI9a1XM8hBVdm
+         5LzQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=oZFrVya+rdWrf3x18ocvL/Kncj5tARqXig5ZmBeCviY=;
-        fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=cHCq+peUC+8R4hwYAi6WckCrVet6uFuKvy0gJzUMFH2WuYt+5+xHf4c1vA2AkSyehk
-         eyVSrxLM0I/1rZsm9ljpTVIGpX17wVgAPFWvcJ42z/CwCWLGUwebX0lQNb5JPdB2lJs4
-         Yr6iD6yUDe+WYGBOSDGPmobEK5+vfRDW1p6RyBwats4sLM83H1/E5YJeUkoJSkhp7MU6
-         817W41025R34bOyv8nHqNRdKULfuq8rcT3q/A6DeZ4I3O8X362A3vYY8VFkcrJrph2FQ
-         9M9dtJGvYCYVJQP2aGdJ9sUJVvwS74rEFw1v7WVXvt/RycKPUNei3ozF0DudzQqgnE8t
-         5LMw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=csdvWB5T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=nsMpA6cOfVtaZmG0mxpAtEq5zd9ltHuV3orvSACb4rw=;
+        fh=qJi44N8+SGaG6b3BdZAx3ZGbBl5Ym+IjUpJZbdDSDVc=;
+        b=FtxQVS9JdTut9qGlixA4PI3g2bnWPkJuOJpwh/kFnQSZBoKOaDsPuVXonvD7OpbUzn
+         GgSBgEod+hSzJSToR1WKMP3aLpJFJ3jXnUItFb0WaVz5wA1MsayFm29qJWQOericJo2N
+         w54qRzYEY93Yc1RL5dd6l3ALd9cUdez4F6ItGiHkJvA5NTvtPS9EBZkLC67aLAnhjxR3
+         URNT7ftAOHipSr2TFX/97kREwEDupwlbXpdbxKkbNMGNGyu54Om7PQnI0J6HkrDJ8tgY
+         8nyhItonGzV1j/zEHNtGRCihGMLWhI8AC8wXQBZHVjrDzg/cbHGEJJl+/0KRTcGfiqIR
+         qcIg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=t4dF1AJz;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="E/PMi7z+";
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id er19-20020a056214191300b0065afd35c75dsi5965247qvb.70.2023.11.06.12.03.40
+        by mx.google.com with ESMTPS id z16-20020a0ce990000000b0064f6cc498aasi6107247qvn.263.2023.11.06.14.04.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 12:03:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Nov 2023 14:04:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=csdvWB5T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=t4dF1AJz;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="E/PMi7z+";
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r05hU-0000n0-Vq; Mon, 06 Nov 2023 14:55:57 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r07hR-0000Lc-PF; Mon, 06 Nov 2023 17:04:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05gt-0006Nf-4r; Mon, 06 Nov 2023 14:55:23 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1r07hQ-0000Ky-Fb; Mon, 06 Nov 2023 17:04:00 -0500
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05gm-00066p-Rq; Mon, 06 Nov 2023 14:55:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
- Reply-To:Content-Type:Content-ID:Content-Description;
- bh=oZFrVya+rdWrf3x18ocvL/Kncj5tARqXig5ZmBeCviY=; b=csdvWB5TP4sQ94OEt9+XbYER05
- hbmUqcsiCNfJB5IKyQ3eSi1XtpfOiWBPJuC08a5MBE5ehHLCECUUTKMJHslVo5FzJ6hGBeqXQEGbV
- Dsol5aBk9Ua6OBUpM9OgZ6/hStstD/gRRhw/RLq7gFq6l20MKN8AfFKlm+zBpoYaPFMB43qyB9vpd
- Efm1U6RK1SRjoS9g5kfyjEvYgMqTiMGVnY3lhytvgc3Nbx1Rsq8MtH2nF3RmTUPDtFj9/jpOeia8W
- 1yxmrvg1F0HPQfZRXR8/0/QxU0wW86zfYnVyWFVUWZzFuGVp7cJZrD1PLAu3UmdJun3X4tR6wsfsw
- DDtixxYA==;
-Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fd-007tat-4h; Mon, 06 Nov 2023 19:54:01 +0000
-Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fd-001GPm-0x; Mon, 06 Nov 2023 19:54:01 +0000
-From: David Woodhouse <dwmw2@infradead.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
- Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
- Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 43/46] net: remove qemu_check_nic_model()
-Date: Mon,  6 Nov 2023 19:49:48 +0000
-Message-ID: <20231106195352.301038-44-dwmw2@infradead.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
-References: <20231106195352.301038-1-dwmw2@infradead.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1r07hN-0006Im-R2; Mon, 06 Nov 2023 17:04:00 -0500
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 3A6FkZhD022018; Mon, 6 Nov 2023 22:03:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references :
+ content-transfer-encoding : content-type : mime-version;
+ s=corp-2023-03-30; bh=nsMpA6cOfVtaZmG0mxpAtEq5zd9ltHuV3orvSACb4rw=;
+ b=t4dF1AJzWVF6niFZX9jMbPknmd+Xnog7oNgF9yqqyoH1reELH+jMVk5/PU12INvf4VPM
+ gINXAxMdAhP9LfuJi/7gTKK9wlE/APkF3rGUpokBIZMFk1lI/5IHY+E6kp57yTmJlErB
+ itSW0/yY8Kv44W4cvaJdg+DczWcZLJdExQ8VXqRhQectUGJMoKOHzE5jxFpPsuAeomKC
+ UqzjhpO4UiGtUmFtmQKp7/DTWoxfs1vS5w8tPrer5gw6/0aVETSYJrenPRrvsUgnCJhd
+ v/sTzAdFIuP/h4xAA0FMOE4bg42RqKCuFIy/fP4O3/HJ5hkMvrB4K3NWpcb34NzIfxCz CQ== 
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3u5e0dvj6s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 06 Nov 2023 22:03:41 +0000
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
+ with ESMTP id 3A6Ljemb026947; Mon, 6 Nov 2023 22:03:40 GMT
+Received: from nam10-bn7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10lp2101.outbound.protection.outlook.com [104.47.70.101])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3u5cd5v832-2
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 06 Nov 2023 22:03:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Hm5e1HoRNXeSN9bpTE+DZFQwCIgD1VOJ8crSg6dUmAsn+uInWYT5INMPK6JWDWzmFQCCNV4aOpGe1xg279Ves4ksBlpQbN599TwW5/NQxMWSr3FSWQJKzAv7kir2NeqzAZD9kZEf3yAHaw+kn0hx4404RQwT2jbX6+prMbHCTYS1gmTthPpCeo51KXzdO+/uWHE9OpXWVUGKeVleED5xroIeA2jQ/Z2jKDYNpBv4qkP6Av//EQD0wP3t6OmTooOgYymGJeMzuxdyoQ017m8CxUJfgbOh4qHSlG0CYunaleLzRbgd1uxL1bT0aHArCW1YO/fsag2dFTnGVwzvEJlBbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nsMpA6cOfVtaZmG0mxpAtEq5zd9ltHuV3orvSACb4rw=;
+ b=K+wmwvaFMCxhKmMhUstIjVaOReq3Q/LOGrjcm6GngTsusUZ8AF3ucGXEkq/UG5wgVS0izIpoT1DKKgmuhmCU+VYOjRlyH+q2r3Jg7nOtoYKKh6pDQQzpbJ0gp5Kfqsm+iEVIT9KmfMeAVzCcWOIPcRAScjjfKtAdFgf75Oy0rNM2Rq5BmqKJK1b/nuLSHepw2gAbKtMi0wPQ5a2hb4us2aOgeXgmbJIp7IHKbzRMwbhxALwpgeBM3QnNUr6BDK09Q248+X5aE0Wx6zfEVPBK20uezQpPfJUO8OENyzln5Fpku5cN8HSnXY5iSUEL2Yws/ycuI97WIa+RWyqMk5pKPA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nsMpA6cOfVtaZmG0mxpAtEq5zd9ltHuV3orvSACb4rw=;
+ b=E/PMi7z+eRea70E7nwFLOpZW95yJaf+DyjFw2/xbU5SUF31NKc7Dy8KAK6ikI+TTEer6ghHRItaRIWo3q+jzHC/h9QhSmSNTfnSB3CIr9EqGbwYda2wdd2AD84RVDBrEiAeRPkPwqmNFqUcFclvY37jErmc03/ndEnW/dSM2BPo=
+Received: from PH0PR10MB5481.namprd10.prod.outlook.com (2603:10b6:510:ea::5)
+ by DM4PR10MB6790.namprd10.prod.outlook.com (2603:10b6:8:10a::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.28; Mon, 6 Nov
+ 2023 22:03:34 +0000
+Received: from PH0PR10MB5481.namprd10.prod.outlook.com
+ ([fe80::a7ee:d2c9:c03e:6ec2]) by PH0PR10MB5481.namprd10.prod.outlook.com
+ ([fe80::a7ee:d2c9:c03e:6ec2%7]) with mapi id 15.20.6954.028; Mon, 6 Nov 2023
+ 22:03:34 +0000
+From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peterx@redhat.com
+Cc: lizhijian@fujitsu.com, pbonzini@redhat.com, quintela@redhat.com,
+ leobras@redhat.com, joao.m.martins@oracle.com, lidongchen@tencent.com,
+ william.roche@oracle.com
+Subject: [PATCH v5 0/2] Qemu crashes on VM migration after an handled memory
+ error
+Date: Mon,  6 Nov 2023 22:03:17 +0000
+Message-Id: <20231106220319.456765-1-william.roche@oracle.com>
+X-Mailer: git-send-email 2.39.3
+In-Reply-To: <ZS6ksf8o7dJ8mzUe@x1n>
+References: <ZS6ksf8o7dJ8mzUe@x1n>
 Content-Transfer-Encoding: 8bit
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain
+X-ClientProxiedBy: BY3PR04CA0016.namprd04.prod.outlook.com
+ (2603:10b6:a03:217::21) To PH0PR10MB5481.namprd10.prod.outlook.com
+ (2603:10b6:510:ea::5)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR10MB5481:EE_|DM4PR10MB6790:EE_
+X-MS-Office365-Filtering-Correlation-Id: fc2930ae-2180-4227-511e-08dbdf143846
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: RycGdWWK+Mxxy5J9+6X8J0S0MGDqcL8LLYHv7W7suWt5Bqk+jaS+mML8TIzBkG8c8NGTqovUXMKzyZJTgJxGfNoiE2cKNCwqLLY4rvq3c0QQ+DgrqJpq93bLmx+WxPMhkwHsnTZA7lwe9UXi3WTviq74qAH+/duGxOvaACdZMm2YRbPeCs3mxSBLclvE7ASY3EflgQskw8WBK5eA0K628fKyh3jdLypBAE38i4f1fdJOucma9cqWzmhipRHbrLSMSXvfurBU7NQWS3BflY8fCdf+QFFX/lP75WkQDN7FsljbXFauz+e7Nqj7rHAvjTgRXEg1Ehc41eurAoI5MJ3tkp9y1YF8i4gqQ+nNq0EjVJDi7m/0tv1+2oLLlQBL9gSr3ca/rqYCXb2znAbYikFy5wpJITpe0q20dZ76+jTKLPcJnDMZkg6+U1IUbUw6XhA3f9iUixWKQBR0av4mjff5bYk+faK4j+Qz5/Y4Dm66bVt0mAltyj5t1Bn6zLGlwowBCrIhKjr7D0aybp1TaDw6rrIlEO2mSUYyX1uRxUYX24E=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR10MB5481.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(39860400002)(136003)(366004)(376002)(346002)(230922051799003)(451199024)(186009)(1800799009)(64100799003)(38100700002)(6666004)(6506007)(83380400001)(6512007)(107886003)(1076003)(66899024)(2616005)(66556008)(2906002)(86362001)(41300700001)(966005)(36756003)(5660300002)(8676002)(8936002)(4326008)(66476007)(66946007)(316002)(26005)(478600001)(6486002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cPpbVqiBAl2MknORkCxgcowOgypEexBAaP8exQPq9xKfARFFO9Yl0Mm1hcY8?=
+ =?us-ascii?Q?W/E/JQn3spWmYJdffN0/En9gpE8F48YPqvXNeW9URBAUsVOTAAryGqpAhCSu?=
+ =?us-ascii?Q?lxoZ61pXEk0e3c8bG2rbQXlO3bGdECENcktywV2GD0kRp0WvjCOLMoxX9Vp2?=
+ =?us-ascii?Q?13pUjpWZeuZxBfnQZTF3KVG9DeUG5fvz6enXNXteOK5CCZRNpi9TCS5INVrt?=
+ =?us-ascii?Q?eNMy9SDUZNpoK55y54WcA/hyYyBMT3xKfc+8H8tuoR65ILqdhrJpLa+ws44Y?=
+ =?us-ascii?Q?6Zdk58ufEba8ydjbpoTuEW0M0sH6Tq5OIOQg9IOD2H4nZfZa6kdEfXE4YwEM?=
+ =?us-ascii?Q?8r14aRPXkJOwCECB/SRFf78SiONiB3gpRtuLm4OY3S/7oiuADN2HOknct6P5?=
+ =?us-ascii?Q?w6yaoFvCS25wvSZn0Fh8qV6iq/kZXnh4DNd2o4XdLTRjhrwd0r2cGAjMdMtQ?=
+ =?us-ascii?Q?7RlmAz94d7KRonONsfez5ep8ejSK7NGzYOwgSV38LUBYdfpOX3wPH3LiMVIC?=
+ =?us-ascii?Q?VkjBIDpW8fyNeRTVHmgnKjZuzRJWuZcQ5ZzsgZGQh04cF04U3BiJfAu27Ck/?=
+ =?us-ascii?Q?xqz8CdfB1fghUA9jk6tQ32AtwfxZqH7+pP4AOr+Rpo1ygBXjxWrvWQq26XXC?=
+ =?us-ascii?Q?PHTx5VObGmyZfI0WQJEf2vVC1enXG0eExb2rRBn5072R9RuPCAarSEc0y7+W?=
+ =?us-ascii?Q?TbImo6oOh/JvDycQ6sR/FLNAml6l1kZURPiJytcD9dYlBT4HbsXF+IFooqkh?=
+ =?us-ascii?Q?zI+EtwH9iXfUfrJquXE2KNVlvDDfK95i6M/I7mG9FEmDZxJ8vjhnh6zmpFQy?=
+ =?us-ascii?Q?Wnzz6SW7HpH5op0MmIIxCysW1JOMojobIXRt64Wv7AIHd/nE9Z5KWgYOUTd5?=
+ =?us-ascii?Q?UMNxdCr5QV6ktN9rzfkj/foZhkVoRIngohnWxXDNbnRo0fH0FyLyKcxRHOeQ?=
+ =?us-ascii?Q?lPLf1Oe9hdlgIyOIO24jjxOYQ8YvTQYqW2eF0416K9HGAYwvmKFUbk0OUsdG?=
+ =?us-ascii?Q?dLsqvbtORd2+sSksBXOqHkrLXxsv+sYm5C649MdBBLXIijBiMLxwd/fAzQ3Z?=
+ =?us-ascii?Q?j7SyDwh+wvmjgI55Asq8A4M1uregC3CoaSz/DMPHdjcOqX11Kmyt2l5ftUT/?=
+ =?us-ascii?Q?rTFbbMHAePhBfSVIzJyagjVPYsqMywDPdabQlA0bN5oSxxUNUndEk3QP597O?=
+ =?us-ascii?Q?bO3IuHEQppLlUb2uB/KqSv7Xmk8iyXd/hShweDPDmrrzIOnsVEH4vKiEhGwL?=
+ =?us-ascii?Q?zFQHsC3XQM/XpFLdP6acsse/ujFknPBoWvkKG6UQSgXslYAO5L4sqhaCvsOv?=
+ =?us-ascii?Q?EJuhLRVxudTBA9xi+Nx9UzD3WfQTh8VyDNRxcV6mWbvKa0wMsBFKPYmjhDB1?=
+ =?us-ascii?Q?i1XKs69tE7qdkZFsGR63WfNHXL8Or5YZI187pWUwoZmmNVXyIPSfJz+GYUeG?=
+ =?us-ascii?Q?sPNIR1War0paGF0LNG7lRaBGI2OknkLf971/XxP8leAImICPw1tQogYX2zY+?=
+ =?us-ascii?Q?ThJ7uyM9aR4oePWeOE4q86MzLDNS6kQnxCwCFHyTXBb3G0vH1+P+4m4LrY3B?=
+ =?us-ascii?Q?cplUFBR6XKVy6lmJ4rMNetLTSgHDWnb5gZj3927zfleveFf7nCfTpt1Ye98F?=
+ =?us-ascii?Q?ww=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: avsJs0hIi9W2QNoCJmEEGq6T2cCa/kiNvKzUbN2YYkeOStoT8CN4agelRx64Nroz3t4KWSFVbFejSgkfhOVPJFHj8dT/lB7R/C2hAoixSJcJYvfQuzAgaWorKvttYnuhI5KrEwaXsVV+99GEUH0vz6+72mqJrRyF9e+f5Y1TjSAk+tk7/huGTHPNnyK0TrutgjGe3kApNMQDP82i/I4OFBb27q4fC64Ch6sZnNhIAWy+sN/CSQdzmDKsUud5TwIEbHEb5488MIuOa7um5CedtzRQOtNVzGYaC4+xisYkgw2NRE7EQ9n4PEp5FV7g0fPfYbcZi2afTJeyjPvTuJB+2y62Tw+zZ459fS656GVPTlS+tjxwljFY6wGisqEVCvc2udjSMlLoZrVebOWuMQVs4Ouc45WEs+FusK5MJX55RLIKtF39ZKbOhwrZ7jdqpdt/YqN19hdbIq7RbVbgblupnyVzK6LWz6ZRakDidHpAySNquOOnHrQP0TB2kEOgbjtGm0HHfG/YSpMXsDWmvdFnT7rXv7AMTHb3DgRttUoTx48f0e6N3Bipzc3/TmXCCFZYz/ELtlODSHamkj7Zcic6o2kzQJ46ZDXTthztnPYz6R5iYU/wKLF7vhEKXsvqON9QZokrHxsPuilxFguQ8aJE4lWpmU0Kc7UdULh/vc/x6Y3FP+HsW2IOVc9vZ4hyB1VEPx/EUYp639Jc2OLBNRJMlcJP7eCehpKIjFSK0IlAtHDG2r7UTl/2NzZhUnB4M6ajKkQnb1XlEi3D/ygYuYtIXWOXuEz4IpxSmLl7hL3XI7q8wO0sVDD8Ut9mBweyOwHMCz+nGenADkQFrJXF1sKjiA==
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fc2930ae-2180-4227-511e-08dbdf143846
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5481.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2023 22:03:34.0935 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: BmR6OyslxSJUjheiY2AmOBalvMuLqVxS9yI3hiwmZkKGmIkpCTXk5kS5z2FJvJw+gWtyqcKwi6Iia4koffF2691f1YrbyCheaeio5MXzZpw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR10MB6790
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-06_15,2023-11-02_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=999 mlxscore=0
+ phishscore=0 malwarescore=0 spamscore=0 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310240000
+ definitions=main-2311060181
+X-Proofpoint-GUID: 40VD6yW_oqsn9UgQ6B2qClQaI5lc4NBh
+X-Proofpoint-ORIG-GUID: 40VD6yW_oqsn9UgQ6B2qClQaI5lc4NBh
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=william.roche@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5rlBs2S8aAnF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: B5f3HuWbxqnb
 
-From: David Woodhouse <dwmw@amazon.co.uk>
+From: William Roche <william.roche@oracle.com>
 
-Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
----
- include/net/net.h |  1 -
- net/net.c         | 13 -------------
- 2 files changed, 14 deletions(-)
 
-diff --git a/include/net/net.h b/include/net/net.h
-index ce830a47d0..1512650190 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -202,7 +202,6 @@ int qemu_set_vnet_le(NetClientState *nc, bool is_le);
- int qemu_set_vnet_be(NetClientState *nc, bool is_be);
- void qemu_macaddr_default_if_unset(MACAddr *macaddr);
- int qemu_show_nic_models(const char *arg, const char *const *models);
--void qemu_check_nic_model(NICInfo *nd, const char *model);
- int qemu_find_nic_model(NICInfo *nd, const char * const *models,
-                         const char *default_model);
- NICInfo *qemu_find_nic_info(const char *typename, bool match_default,
-diff --git a/net/net.c b/net/net.c
-index 73621795cb..ffc722069f 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -977,19 +977,6 @@ int qemu_show_nic_models(const char *arg, const char *const *models)
-     return 1;
- }
- 
--void qemu_check_nic_model(NICInfo *nd, const char *model)
--{
--    const char *models[2];
--
--    models[0] = model;
--    models[1] = NULL;
--
--    if (qemu_show_nic_models(nd->model, models))
--        exit(0);
--    if (qemu_find_nic_model(nd, models, model) < 0)
--        exit(1);
--}
--
- int qemu_find_nic_model(NICInfo *nd, const char * const *models,
-                         const char *default_model)
- {
+Note about ARM specificities:
+This code has a small part impacting more specificaly ARM machines,
+that's the reason why I added qemu-arm@nongnu.org -- see description.
+
+
+A Qemu VM can survive a memory error, as qemu can relay the error to the
+VM kernel which could also deal with it -- poisoning/off-lining the impacted
+page.
+This situation creates a hole in the VM memory address space that the VM kernel
+knows about (an unreadable page or set of pages).
+
+But the migration of this VM (live migration through the network or
+pseudo-migration with the creation of a state file) will crash Qemu when
+it sequentially reads the memory address space and stumbles on the
+existing hole.
+
+In order to thoroughly correct this problem, the poison information should
+follow the migration which represents several difficulties:
+- poisoning a page on the destination machine to replicate the source
+  poison requires CAP_SYS_ADMIN priviledges, and qemu process may not
+  always run as a root process
+- the destination kernel needs to be configured with CONFIG_MEMORY_FAILURE
+- the poison information would require a memory transfer protocol
+  enhancement to provide this information
+(The current patches don't provide any of that)
+
+But if we rely on the fact that the a running VM kernel is correctly
+dealing with memory poison it is informed about: marking the poison page
+as inaccessible, we could count on the VM kernel to make sure that
+poisoned pages are not used, even after a migration.
+In this case, I suggest to treat the poisoned pages as if they were
+zero-pages for the migration copy.
+This fix also works with underlying large pages, taking into account the
+RAMBlock segment "page-size".
+
+Now, it leaves a case that we have to deal with: if a memory error is
+reported to qemu but not injected into the running kernel...
+As the migration will go from a poisoned page to an all-zero page, if
+the VM kernel doesn't prevent the access to this page, a memory read
+that would generate a BUS_MCEERR_AR error on the source platform, could
+be reading zeros on the destination. This is a memory corruption.
+
+So we have to ensure that all poisoned pages we set to zero are known by
+the running kernel. But we have a problem with platforms where BUS_MCEERR_AO
+errors are ignored, which means that qemu knows about the poison but the VM
+doesn't. For the moment it's only the case for ARM, but could later be
+also needed for AMD VMs.
+See https://lore.kernel.org/all/20230912211824.90952-3-john.allen@amd.com/
+
+In order to avoid this possible silent data corruption situation, we should
+prevent the migration when we know that a poisoned page is ignored from the VM.
+
+Which is, according to me, the smallest fix we need  to avoid qemu crashes
+on migration after an handled memory error, without introducing a possible
+corruption situation.
+
+This fix is scripts/checkpatch.pl clean.
+Unit test: Migration blocking succesfully tested on ARM -- injected AO error
+blocks it. On x86 the same type of error being relayed doesn't block.
+
+v2:
+  - adding compressed transfer handling of poisoned pages
+
+v3:
+  - Included the Reviewed-by and Tested-by information on first patch
+  - added a TODO comment above control_save_page()
+    mentioning Zhijian's feedback about RDMA migration failure.
+
+v4:
+  - adding a patch to deal with unknown poison tracking (impacting ARM)
+    (not using migrate_add_blocker as this is not devices related and
+    we want to avoid the interaction with --only-migratable mechanism)
+
+v5:
+  - Updating the code to the latest version
+  - adding qemu-arm@nongnu.org for a complementary review
+
+
+William Roche (2):
+  migration: skip poisoned memory pages on "ram saving" phase
+  migration: prevent migration when a poisoned page is unknown from the
+    VM
+
+ accel/kvm/kvm-all.c      | 41 +++++++++++++++++++++++++++++++++++++++-
+ accel/stubs/kvm-stub.c   | 10 ++++++++++
+ include/sysemu/kvm.h     | 16 ++++++++++++++++
+ include/sysemu/kvm_int.h |  3 ++-
+ migration/migration.c    |  6 ++++++
+ migration/ram-compress.c |  3 ++-
+ migration/ram.c          | 24 +++++++++++++++++++++--
+ migration/ram.h          |  2 ++
+ target/arm/kvm64.c       |  6 +++++-
+ target/i386/kvm/kvm.c    |  2 +-
+ 10 files changed, 106 insertions(+), 7 deletions(-)
+
 -- 
-2.41.0
+2.39.3
 

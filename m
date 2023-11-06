@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2677231eja;
-        Mon, 6 Nov 2023 03:06:03 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHQsX5nA+WbgCMhHdH8XNK/omuE5clouWqrxUhQ5nXKDBDoQJRpHVoFTtCKW+BVmmAtzBkh
-X-Received: by 2002:a17:90a:dc81:b0:27d:b3d:5c33 with SMTP id j1-20020a17090adc8100b0027d0b3d5c33mr29291591pjv.28.1699268763210;
-        Mon, 06 Nov 2023 03:06:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268763; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2677319eja;
+        Mon, 6 Nov 2023 03:06:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IELgKcIMVL7kwZTzHO0YnY/Zvsw69QpKIklztkDbXUgf9R+CHeGK4iXqTNQgXyDN3UcPjJz
+X-Received: by 2002:a05:6a21:4841:b0:181:a52:3162 with SMTP id au1-20020a056a21484100b001810a523162mr16306352pzc.46.1699268771074;
+        Mon, 06 Nov 2023 03:06:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268771; cv=none;
         d=google.com; s=arc-20160816;
-        b=bpvAzQbWdwDDBxTHo6pJm2eyM2ylMNPjLk6n1xcCGAmbEtK1eRykAm0UsRLx7VXDQk
-         +78S5F/ao5k2298zxLZgkchs61bxtzr/LcCz4drQWnm2wax5KfYqFv9otfwQ6JEFuQZ+
-         9GbJIwQRIK4VbXdWPSosTozwkSYvZD4XcAOKKsckeiBGvnhzZ4Zn0Nn+EjJullAV2QBP
-         EI2NamzkLZ1HO3aoVmFQfsJlTr7J4eIRfYysMudEQfq9jSfv6HwSoNC4WYV9UdLjt3f6
-         R1cZsC+1YJsceXFWPqDjVMZhNR+TW5kDfjpaD+Pa1Cm58oAZ6v28sDw4SPnnRymCvU1q
-         C67Q==
+        b=PIsCxZ6hqPSWHWs7H/ZszacrNaUp3b6F9A1V3yr1QcCdjIAMyu4LW8taA9W3/vgCZo
+         Rh0KI1Ligxcz+Ybyg4XRaEUxOt7S6zzjiyD9Ldx9oAyEJjN5gYTTmxikDhPofYKbAL4f
+         Xxc19lt4V+wH2GFx5CirHaMCSJxrO7+8oMUd+cRWoy2ikoHXTDHiN2/5gbmzCqgM3CV8
+         dA+D+2qLMfw2ZWn5K1Gk1ttP3UPqkd+pHHQc04Hjo/dULBj1zcwxnwQyW7plSIbxXlnf
+         aosI3KI4FyoHOG6oEGmikiUSiKjyVkAO8yoQGlQ219+C1DIHqkARrN2dZ2j0HlKM3PLw
+         6eoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=oZ4xqFJalLvpzsW1bcHeUL/13mhLi/mzZSAy+mux2v0=;
-        fh=HuX1rIYGmdZZgKe/JxI9BhGzQc/86yFuDGfJ/eSpZl0=;
-        b=KKj5TIagVaXL4YtvbiOnBP6Ix9wly5Arh+qW/2GJzv2WwusK6UIT8jm8dJHgU+Cnn5
-         22RSikPtWH4RuiOPrqqF4aXOT7IzU6kxcrK5TAwdIF3Cxl2at0EzlvvX26+LtPWJQ3j+
-         Tzm9jnLwRlrzqGZHp5FHra9OHZjL7jL4fvYnNf5Pn6myEtxdrEm08VmbVYhQIgpxOFZF
-         Bvzx4LfL9fDhTQqj0pmv4LXyhn3wy5f9MEE+L0WmnQV2puqRKdBlwPGL+bU9Hd9I+ef9
-         K/OEmk7SsT+qZBSX9BSmSRHB+IPCk6S16k2KoHHUolbaJT0Zrz3DiCeOgEzvAFfedK/V
-         zr6Q==
+        bh=WdevyuV5vDNMMgKGndHL1Lb3pKI2mM3BGOnKiVXcZMA=;
+        fh=QkIcAbdeg7uT6FK914KQVPDd8FDc9hVDQgO9cPJGHCk=;
+        b=DhAjQ2vSbdHolll5ztVfKgmOxclWRSfOVAhs1TLRUnBXxrQ2T1/dGod9sx7gFlVKXw
+         Z6KWC5J/5Y1BYtr96SXniN+L7dJW8/jvg0yPXx4tBqX2Mf3PGskAY5mLIFf5yX9l8Jdy
+         X0DpzzXftSRscv1mJxLaaQediobC05zDq17zUCkKvuMDD6OG6UwSFXNUHiysCbL5gECY
+         knD80C0ADLpyMdSs861GbCjgdN16el5P0hSbgCXRgmm5PPZ2lSSplhfWF6loW25qKHhh
+         rfh6nuVpwjQWtLw5Glf9PERHoqDJU+UE6z+EQ0tXmDZYjayroDyVF1oRJjPZMFXoyuOk
+         JUZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qgJaTLaQ;
-       spf=pass (google.com: domain of kvm+bounces-688-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-688-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WBE0801e;
+       spf=pass (google.com: domain of kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-688-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id ci18-20020a17090afc9200b00263f3c1bb86si7763916pjb.158.2023.11.06.03.06.02
+Return-Path: <kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id p16-20020a056a0026d000b006bdb7c5f75dsi7075282pfw.357.2023.11.06.03.06.10
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:06:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-688-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Mon, 06 Nov 2023 03:06:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qgJaTLaQ;
-       spf=pass (google.com: domain of kvm+bounces-688-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-688-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WBE0801e;
+       spf=pass (google.com: domain of kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id A4EFE280F7F
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:06:02 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E614FB21732
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:06:08 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B6D7D1EB34;
-	Mon,  6 Nov 2023 11:05:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id ADC821EB29;
+	Mon,  6 Nov 2023 11:06:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="qgJaTLaQ"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="WBE0801e"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 016121EB2E
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:05:55 +0000 (UTC)
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com [IPv6:2a00:1450:4864:20::32a])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4EC58BB
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:05:53 -0800 (PST)
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-40806e4106dso25960585e9.1
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:05:53 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0BDE91EB2B
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:06:02 +0000 (UTC)
+Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com [IPv6:2a00:1450:4864:20::32b])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 70160BB
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:06:00 -0800 (PST)
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40850b244beso33448265e9.2
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:06:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268752; x=1699873552; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268759; x=1699873559; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oZ4xqFJalLvpzsW1bcHeUL/13mhLi/mzZSAy+mux2v0=;
-        b=qgJaTLaQnrF3FRlgM4dnO8rJSYudacBS92LDmwzpG+ypHUqJwMoi3888ND13yqBoA1
-         sYVX+pUta4zAHUwNDcNChP+t5DPb0oRB3rxErfi3YovWPL+hscsg6HiCo6xLzEqImgrE
-         XAeYuLBjKdLKlRu2e/WJI0XVU75dnBKfBCZw4krSdKPwV+wBk5PhAyiuM7ueCfxD956e
-         5hk8UEgod73sYlBc8Xysb5MrU2xaxCP7i5n44Bxt9IUBHOANR3i0vz0bZM+5QKT6oTE+
-         WaxDlcbxQZj9Ma6/tWXHSw5CdPn/oa3iY9SDrm6MIKpcYVWl2yJuM6toGH+ZtGLxjOTQ
-         nTUA==
+        bh=WdevyuV5vDNMMgKGndHL1Lb3pKI2mM3BGOnKiVXcZMA=;
+        b=WBE0801e4XnuSIlK6JsYwl4jQIIH5PUy/D4CUwckJKbnX+5qROFaBLXMVFpCqynx9T
+         RV9MZ/8hKv3MRHtPHzCe9kE1rBIaSR41OqZSf7dn7Za2pE5+6GTeDn3QYa/fmnw05aPJ
+         h9Actf+0F50QmQ1It/6fi9Rn2YRjx85vgP+8aQ/+pG5GXnzFqZ4i1Tv+ixVFm5cocVqx
+         ROZE38bDnd6hMGva2L5vpo0JaeTSPJhevV8BacMn7Yc/0RAXg0BO9KV6jLb28NYPQLFJ
+         sYZsnc+9yP2lTSibuvyzoN9U12QCmh+zSfd4L47pRUdIotT52jn3Sc/9u30gUVGpPotP
+         Ib7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268752; x=1699873552;
+        d=1e100.net; s=20230601; t=1699268759; x=1699873559;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oZ4xqFJalLvpzsW1bcHeUL/13mhLi/mzZSAy+mux2v0=;
-        b=fOptc41xguXY8RPNQ9hLigdj1z2ZvS7q4NoQqkQ03Z86QBJwRMBBRb3THBhEgaBavP
-         +LUMLc2O9rYNZxSwRq2QbZWdDPAHUGbIuGzFSng7nHr0bLk44U00j4XSQ1I7WTd9Kkv6
-         yMnKg3D10uv4zHcEvu9bR38XTQ3WKwqDWPuL5SsV95c8XFsyFtOgVbRPrRtABHgpaXCC
-         iLt0d9eppbbNHEiwf6ZqBueuvy3cF0JB3FXeHBkgrOAl4joUjwAdg4Sa9gfDyFBkPqEC
-         Ue8dV5IHqBxhqqDpn9Uel00dA7vlJq+56UPa/LH+L6xO/GuQkIbk6PW5yavhClGF+ywX
-         vA7A==
-X-Gm-Message-State: AOJu0YxPaEjIxU+j8cuEj8c5XahdS5Lxxlpu97Oin3FTDgdSJVqnUXel
-	Bm7gAxlmAgzVEfuke9ICatsLkA==
-X-Received: by 2002:a7b:c7c9:0:b0:406:45c1:4dd with SMTP id z9-20020a7bc7c9000000b0040645c104ddmr10153754wmk.14.1699268751703;
-        Mon, 06 Nov 2023 03:05:51 -0800 (PST)
+        bh=WdevyuV5vDNMMgKGndHL1Lb3pKI2mM3BGOnKiVXcZMA=;
+        b=pefOmXRuD4nKxotAIQR2DVpUBJCYfewDSGyJ4Kk8cDuZSCeadumI0/VfhB2BN7iM0k
+         FEGjgE60S4wdVJufkti99IONu0XhcD7rC5EqkaHvHA52U4Xq/RAXj2UxtM+4WBOx85bT
+         IXhwZEXwSgNFBx/tm/oZ42WWSDvHeu+fJrJeM9994l0IVpWf9Z3uPaY2C/m2JGUXIcCC
+         QXoC5ESg08feqTNBFxzzhnl41OfgtA9GPPvRO+H9P8Mpz7f3pzajyAs/STTaMAERRDk5
+         cLQYMl7F2x5fykxgl+V4vZSK62++ntjZDBvCxWMN4V09KMT9L6JsxXfOUCoT3zapX+VS
+         cHhA==
+X-Gm-Message-State: AOJu0YygL0kHB7Z/+p0B7ZhjrPnHoR/f0eaBqtB0IZkmRTZg6dUrmp+B
+	BFaOYMfDuye7NUenVeURRZ1fwg==
+X-Received: by 2002:a05:600c:1c9a:b0:401:d803:6243 with SMTP id k26-20020a05600c1c9a00b00401d8036243mr25577656wms.32.1699268759004;
+        Mon, 06 Nov 2023 03:05:59 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id bh5-20020a05600c3d0500b004094e565e71sm12164949wmb.23.2023.11.06.03.05.49
+        by smtp.gmail.com with ESMTPSA id r13-20020a05600c458d00b00406443c8b4fsm11744176wmo.19.2023.11.06.03.05.56
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:05:51 -0800 (PST)
+        Mon, 06 Nov 2023 03:05:58 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -99,15 +99,17 @@ Cc: kvm@vger.kernel.org,
 	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	"Richard W . M . Jones" <rjones@redhat.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	LIU Zhiwei <zhiwei_liu@linux.alibaba.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Alistair Francis <alistair.francis@wdc.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 19/60] target/ppc: Use env_archcpu() in helper_book3s_msgsndp()
-Date: Mon,  6 Nov 2023 12:02:51 +0100
-Message-ID: <20231106110336.358-20-philmd@linaro.org>
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>
+Subject: [PULL 20/60] target/riscv: Use env_archcpu() in [check_]nanbox()
+Date: Mon,  6 Nov 2023 12:02:52 +0100
+Message-ID: <20231106110336.358-21-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -119,35 +121,65 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WM/elRuWJPij
+X-TUID: xf7mbyJBjOfN
 
-When CPUArchState* is available (here CPUPPCState*), we
+When CPUArchState* is available (here CPURISCVState*), we
 can use the fast env_archcpu() macro to get ArchCPU* (here
-PowerPCCPU*). The QOM cast POWERPC_CPU() macro will be
-slower when building with --enable-qom-cast-debug.
+RISCVCPU*). The QOM cast RISCV_CPU() macro will be slower
+when building with --enable-qom-cast-debug.
 
+Inspired-by: Richard W.M. Jones <rjones@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+Reviewed-by: Richard W.M. Jones <rjones@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20231009110239.66778-2-philmd@linaro.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-Id: <20231009110239.66778-3-philmd@linaro.org>
 ---
- target/ppc/excp_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/riscv/internals.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-index 7926114d5c..a42743a3e0 100644
---- a/target/ppc/excp_helper.c
-+++ b/target/ppc/excp_helper.c
-@@ -3136,7 +3136,7 @@ void helper_book3s_msgclrp(CPUPPCState *env, target_ulong rb)
- void helper_book3s_msgsndp(CPUPPCState *env, target_ulong rb)
+diff --git a/target/riscv/internals.h b/target/riscv/internals.h
+index b5f823c7ec..8239ae83cc 100644
+--- a/target/riscv/internals.h
++++ b/target/riscv/internals.h
+@@ -87,7 +87,7 @@ enum {
+ static inline uint64_t nanbox_s(CPURISCVState *env, float32 f)
  {
-     CPUState *cs = env_cpu(env);
--    PowerPCCPU *cpu = POWERPC_CPU(cs);
-+    PowerPCCPU *cpu = env_archcpu(env);
-     CPUState *ccs;
-     uint32_t nr_threads = cs->nr_threads;
-     int ttir = rb & PPC_BITMASK(57, 63);
+     /* the value is sign-extended instead of NaN-boxing for zfinx */
+-    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
++    if (env_archcpu(env)->cfg.ext_zfinx) {
+         return (int32_t)f;
+     } else {
+         return f | MAKE_64BIT_MASK(32, 32);
+@@ -97,7 +97,7 @@ static inline uint64_t nanbox_s(CPURISCVState *env, float32 f)
+ static inline float32 check_nanbox_s(CPURISCVState *env, uint64_t f)
+ {
+     /* Disable NaN-boxing check when enable zfinx */
+-    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
++    if (env_archcpu(env)->cfg.ext_zfinx) {
+         return (uint32_t)f;
+     }
+ 
+@@ -113,7 +113,7 @@ static inline float32 check_nanbox_s(CPURISCVState *env, uint64_t f)
+ static inline uint64_t nanbox_h(CPURISCVState *env, float16 f)
+ {
+     /* the value is sign-extended instead of NaN-boxing for zfinx */
+-    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
++    if (env_archcpu(env)->cfg.ext_zfinx) {
+         return (int16_t)f;
+     } else {
+         return f | MAKE_64BIT_MASK(16, 48);
+@@ -123,7 +123,7 @@ static inline uint64_t nanbox_h(CPURISCVState *env, float16 f)
+ static inline float16 check_nanbox_h(CPURISCVState *env, uint64_t f)
+ {
+     /* Disable nanbox check when enable zfinx */
+-    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
++    if (env_archcpu(env)->cfg.ext_zfinx) {
+         return (uint16_t)f;
+     }
+ 
 -- 
 2.41.0
 

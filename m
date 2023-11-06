@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2679100eja;
-        Mon, 6 Nov 2023 03:09:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGw4YZJgd87WxqNyl4XEytSp4qhwIpkJ1bFEXGWR2GiAgdCGhORqd5530M7yN/QJEwjA84n
-X-Received: by 2002:a67:cb81:0:b0:457:d55a:cbc6 with SMTP id h1-20020a67cb81000000b00457d55acbc6mr24751907vsl.5.1699268957263;
-        Mon, 06 Nov 2023 03:09:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268957; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2679163eja;
+        Mon, 6 Nov 2023 03:09:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHxYQjW72YZGwJj+ysz9h1GoA0JLKm7sVCF3+jAGvfGmBjVhP+NVsj82CEkxkSg3STRjeF7
+X-Received: by 2002:a25:cf88:0:b0:d9a:ed4d:b396 with SMTP id f130-20020a25cf88000000b00d9aed4db396mr29304257ybg.6.1699268962850;
+        Mon, 06 Nov 2023 03:09:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268962; cv=none;
         d=google.com; s=arc-20160816;
-        b=fPb9QAN5wJOSrd3kr3atqVljgUWu4kYpWWm/GhXmTFfvx0Jykuv7/xtz9mmJbxDlJb
-         tl8vFqlkGvIwj5s5FNQGja3BrLQ8UuV8cVRuRzpP7DTa95Iiipq5o3l3xZwCRmYbYGVi
-         MU5lTa3t1WZcW5JqoLPVY6sxs3n1/PWh5HFx2zxNuBhDBHDaHhNfhQSMMslkwdOIvk7q
-         zNVmn8dQajTZBoZFZLHxa68dCl4erpsEaTHTJWx9j5uMwNrNbQtdSKqkcBl/E2yehmyS
-         7Ud2pGBtof0tKCk1fJNplLAtf1x34pIOPE8hhyuHkei1dEuTztXZG1ivIucpbusUj42R
-         jjYQ==
+        b=q53WmGhqnTJUf63YPQZvJL3xbc7XXGLm4gQqOhj6pehZgoH9W17iJFgGtLbpWdbyX0
+         I4sZIyMa4Xo5SOmYf5VrAJSP136vB02llPscCTg+FrrwrVKIlNolo0weAvN0MJhLw0Yh
+         nDC8WVquuhHY+G/E0O9gbS/RlwzyMDpmSquUI/qH85uD4HZNo9kvN56WsuT3JAzPMUJi
+         A93uy7Ls5WtpVyVDrw709CRRD6Xlhs9tRjl5jBiy3hQMMS++/W6js1BwLIK9Hz+PcK13
+         LsZALzc6PsBR0YUr3kA50l2NxjKjLgbJcS2oQkquFWgiZJrAGRsjK7K5cI0mC4q2kPTB
+         hK7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=csVQGgR+Tak3/eKK57JrtNqjD/O4/1GmajzGwSgP8l0=;
-        fh=k9fZxyegpWwV/An0sLmdtv3KpXt6jlboUSEAMcvnYI4=;
-        b=p6MzP10Lhgtn74OGizbFnkjZViaBNqguH5xY4FuAGrF4LCy3hcLSmS2Q5vVRMuUevI
-         0pFtBSIsqoTrKAdKdD1kf709WTlFzLOoaE6DCGzdeIeqSoj/clK/nevq/gqhSWIf/dVL
-         b4HLy/Uga1BasTYety1V3Iah9mzT5HAobEkSc2LtXK4sauNXMW9i0z+NM/0DJmjtKD5e
-         TWXuyXVR5UMaPz7um+9bdfm+ZcV59UMO3Itre5gQfL5iHVgtfKrjePXKgDUczeCSpYfy
-         wBWMQ+EbszSvvwgcDIDJ1ww7EKa4BTz5kSm7Nw9LEnr2DW+Ok2SLnNmwbw+ewlCqGI4A
-         8jfQ==
+        bh=gh2da5PI+FWVTGRmyCu8rnn16q3Vdl/J/DOzB/U83Dc=;
+        fh=c1Hsd908U9PKLwue3PgIR6OEtkIdu11a71wsyXYOJoE=;
+        b=Y8eq0tcUA/0Igq6u7xXKqv8WmmdjOYpRF7o3tjPwFQZr5yimXv07+ABMeFgTeffKRL
+         4dXb3xFGyy4hfqwZvZbY6q0R55xPtB62Io5Z4wPEhD8re9uciHtt5bATf8aWSNhbFb0r
+         aM9vlmtmXhSLF4JZuaOcJb4gGkxvDvKpqbHDo7xgSrNgmZcB0aaQDV3+xxJo2shi72vp
+         TGrCBd/29f1ACdx40G3WN6nAfxMJrNpDnFtTXfbI7uUBagetZtqaeLnVG8NCl3/G+xzh
+         yt7v8jwaEDHDi/nbhjWXfhKHsNr6y++OYS7ibJoMzF8xxYsKWG8aRaMU/PKiiZ36PFbJ
+         6rng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k3sA5ePH;
-       spf=pass (google.com: domain of kvm+bounces-717-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-717-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="TH8UyjV/";
+       spf=pass (google.com: domain of kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-717-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 8-20020ac84e88000000b00419856ea1casi5336442qtp.123.2023.11.06.03.09.17
+Return-Path: <kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id l6-20020ad44246000000b0066d060465dasi5301683qvq.481.2023.11.06.03.09.22
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:09:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-717-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Mon, 06 Nov 2023 03:09:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k3sA5ePH;
-       spf=pass (google.com: domain of kvm+bounces-717-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-717-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="TH8UyjV/";
+       spf=pass (google.com: domain of kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-718-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D6DE61C20BE9
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:09:16 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 799EC1C20BFE
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:09:22 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 60F981A5A3;
-	Mon,  6 Nov 2023 11:09:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0A9BB1A712;
+	Mon,  6 Nov 2023 11:09:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="k3sA5ePH"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="TH8UyjV/"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59B461A596
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:09:11 +0000 (UTC)
-Received: from mail-lf1-x12b.google.com (mail-lf1-x12b.google.com [IPv6:2a00:1450:4864:20::12b])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 885EB191
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:09:08 -0800 (PST)
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-507adc3381cso5489697e87.3
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:09:08 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 495C21A708
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:09:16 +0000 (UTC)
+Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com [IPv6:2a00:1450:4864:20::42a])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 095BBDB
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:09:15 -0800 (PST)
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-32db188e254so2655319f8f.0
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:09:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268947; x=1699873747; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268953; x=1699873753; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=csVQGgR+Tak3/eKK57JrtNqjD/O4/1GmajzGwSgP8l0=;
-        b=k3sA5ePHaUaL+0NraaBP33n7zYhynEv4csu+5APLc7yzzXu1A84C0ccY5u6Fnn1+sD
-         SWIpDM15l8NeV3QCS7dD7UJ5Cx3PtkQZIFfBjLNmqKnQc5IHqU70tnNiQkN7wLvVd3sp
-         /FWlAs/6cnpsKWA1DySqq+0LvE1jrz0X4od+ov2KVrV2m+xsDIz0rjwOezGkVuE3cd+K
-         UVnw7OPDsk2tGIjFfvZZ3MYtsakQ+SI9nE9ho92YfXM0Kbm9bGJyECR0Zf8ekEDSNPVD
-         hC8oyPoUNruRoZkjCCqnutp6zCo/izO46HuWGtntldtOnpobsTIwd9oi+k3hTcYJTXI/
-         WJOQ==
+        bh=gh2da5PI+FWVTGRmyCu8rnn16q3Vdl/J/DOzB/U83Dc=;
+        b=TH8UyjV/8lCS4aHRZiXTzO21dnKP0scR73v6DFF/nNcOlurSUO4s/85jxqYA/x2eVn
+         EVSfr+9UI0QQZ6i8J3iJ+oMXllmiYvYuO1Hg1k/TGRz92D1cxUFFP/1HNSh8n5v9PoMX
+         T3XvobkSaPSf8Kc80Kh5Csc+WU/g8TvlKuW93/PdS3+Ge8brAAwEb8YZsEBENDN4zDb7
+         1uY7enMwlIjmoXheY4UdcHEdlLJDr213kd56IDbsB5eBwrlMymicOoxA4sgJ+RtNasNC
+         cX0qdA4Aa8poOKcnxnRoorO99gtBt43zUK7hJEF/nhocvJhaN4IlPqWs9XU1fD/N4+/M
+         Eilw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268947; x=1699873747;
+        d=1e100.net; s=20230601; t=1699268953; x=1699873753;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=csVQGgR+Tak3/eKK57JrtNqjD/O4/1GmajzGwSgP8l0=;
-        b=I+Qv/oLbh+EkAlwhIf8gKgaZiIyhaccJhPWnyhGneCm6FpM5mj8uOzejw9UYTeh9Ig
-         fdFwsrwmNBTT5KbmT2nmRgLrT1a2ltdW9de65i+iz4XmMJ9u3ItHZQmJI8pUhYPHs8if
-         v2Vg1xgI4vTU3kBecGYCXBAVaSFDdjPbWz9yYCKNaqG6wThpbBRnAkTElCkSqb+eDAuH
-         K/NGApBGNr0g1/s56U7NuoH43E9UShSL7Qe5iCKN8yI7cByGTuxCq6qf/NQZEcVa6+Ks
-         PZVvM7Ijb8ltFDVSqEjBFjoGDcQL83Wn7/cil1FOV/DJQ9Py1h6pRm8cuHBaCOJ/zrH7
-         snkw==
-X-Gm-Message-State: AOJu0Yx12yQcnZHJtFTYwm4m/ndK3kX6UdoXVhqyiWoAZ4rpgNNWRZeT
-	8yXSe3/8Z6Fis9i3XTyf1T05bQ==
-X-Received: by 2002:a05:6512:370b:b0:507:a6a5:a87b with SMTP id z11-20020a056512370b00b00507a6a5a87bmr20578908lfr.51.1699268946691;
-        Mon, 06 Nov 2023 03:09:06 -0800 (PST)
+        bh=gh2da5PI+FWVTGRmyCu8rnn16q3Vdl/J/DOzB/U83Dc=;
+        b=VCRDILJbRQCQPMHKcZGDqLve/cBKjh1L+kbfcITvP+v9MP+8Pz3GBd5vWJSQPX4ntD
+         wYf1Gr5hCYKdbiROevI2dZCpMm8n3WKUOrqIk3PVmQLKDq+r0ozF3so02y2PFWm7eicp
+         mqoRbn8RK8Z1JhoqkGO9iaqc6VIh1T7e7mvmFmqA6/ZIQXVIsEeyGSVn/h9ooU0Z7e3+
+         5T5x9DIZyP1Mg+ux03vFHK6dhE8ESqFqZQuXCmz7PZe0z+xpk1Zk+5wEuGFeyykRzRze
+         q43uz4TeiNJgR0RGuAUTfjG39sZBeiIfpMzjFLMfk/uHbTr4vX7A2D33RZQN7yu1EmLA
+         zgLQ==
+X-Gm-Message-State: AOJu0YzvKBYyyz08W8+GlB895Wkg1YCCfHlZj8aUCOfyBBbCLbzOrP/W
+	qTPqgX2Zcp0JuN9FN91svgzonA==
+X-Received: by 2002:a5d:5a06:0:b0:32d:a101:689d with SMTP id bq6-20020a5d5a06000000b0032da101689dmr35272735wrb.56.1699268953327;
+        Mon, 06 Nov 2023 03:09:13 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id j19-20020a05600c191300b004090ca6d785sm11949457wmq.2.2023.11.06.03.09.04
+        by smtp.gmail.com with ESMTPSA id j17-20020a056000125100b0032db4e660d9sm9181558wrx.56.2023.11.06.03.09.11
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:09:06 -0800 (PST)
+        Mon, 06 Nov 2023 03:09:12 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -98,15 +98,13 @@ Cc: kvm@vger.kernel.org,
 	qemu-riscv@nongnu.org,
 	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
-	Fiona Ebner <f.ebner@proxmox.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 48/60] tests/qtest: ahci-test: add test exposing reset issue with pending callback
-Date: Mon,  6 Nov 2023 12:03:20 +0100
-Message-ID: <20231106110336.358-49-philmd@linaro.org>
+	Titus Rwantare <titusr@google.com>,
+	Hao Wu <wuhaotsh@google.com>,
+	Corey Minyard <cminyard@mvista.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 49/60] hw/i2c: pmbus add support for block receive
+Date: Mon,  6 Nov 2023 12:03:21 +0100
+Message-ID: <20231106110336.358-50-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -118,130 +116,93 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Nd9g4j/LkMAR
+X-TUID: 7UtDrNoX8oCd
 
-From: Fiona Ebner <f.ebner@proxmox.com>
+From: Titus Rwantare <titusr@google.com>
 
-Before commit "hw/ide: reset: cancel async DMA operation before
-resetting state", this test would fail, because a reset with a
-pending write operation would lead to an unsolicited write to the
-first sector of the disk.
+PMBus devices can send and receive variable length data using the
+block read and write format, with the first byte in the payload
+denoting the length.
 
-The test writes a pattern to the beginning of the disk and verifies
-that it is still intact after a reset with a pending operation. It
-also checks that the pending operation actually completes correctly.
+This is mostly used for strings and on-device logs. Devices can
+respond to a block read with an empty string.
 
-Signed-off-by: Fiona Ebner <f.ebner@proxmox.com>
-Message-ID: <20230906130922.142845-2-f.ebner@proxmox.com>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
+Signed-off-by: Titus Rwantare <titusr@google.com>
+Message-ID: <20231023-staging-pmbus-v3-v4-1-07a8cb7cd20a@google.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/ahci-test.c | 86 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 85 insertions(+), 1 deletion(-)
+ include/hw/i2c/pmbus_device.h |  7 +++++++
+ hw/i2c/pmbus_device.c         | 30 +++++++++++++++++++++++++++++-
+ 2 files changed, 36 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
-index eea8b5f77b..5a1923f721 100644
---- a/tests/qtest/ahci-test.c
-+++ b/tests/qtest/ahci-test.c
-@@ -1424,6 +1424,89 @@ static void test_reset(void)
-     ahci_shutdown(ahci);
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index 93f5d57c9d..7dc00cc4d9 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -501,6 +501,13 @@ void pmbus_send64(PMBusDevice *state, uint64_t data);
+  */
+ void pmbus_send_string(PMBusDevice *state, const char *data);
+ 
++/**
++ * @brief Receive data sent with Block Write.
++ * @param dest - memory with enough capacity to receive the write
++ * @param len - the capacity of dest
++ */
++uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len);
++
+ /**
+  * @brief Receive data over PMBus
+  * These methods help track how much data is being received over PMBus
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index cef51663d0..ea15490720 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -102,7 +102,6 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
+     }
+ 
+     size_t len = strlen(data);
+-    g_assert(len > 0);
+     g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
+     pmdev->out_buf[len + pmdev->out_buf_len] = len;
+ 
+@@ -112,6 +111,35 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
+     pmdev->out_buf_len += len + 1;
  }
  
-+static void test_reset_pending_callback(void)
++uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len)
 +{
-+    AHCIQState *ahci;
-+    AHCICommand *cmd;
-+    uint8_t port;
-+    uint64_t ptr1;
-+    uint64_t ptr2;
++    /* dest may contain data from previous writes */
++    memset(dest, 0, len);
 +
-+    int bufsize = 4 * 1024;
-+    int speed = bufsize + (bufsize / 2);
-+    int offset1 = 0;
-+    int offset2 = bufsize / AHCI_SECTOR_SIZE;
++    /* Exclude command code from return value */
++    pmdev->in_buf++;
++    pmdev->in_buf_len--;
 +
-+    g_autofree unsigned char *tx1 = g_malloc(bufsize);
-+    g_autofree unsigned char *tx2 = g_malloc(bufsize);
-+    g_autofree unsigned char *rx1 = g_malloc0(bufsize);
-+    g_autofree unsigned char *rx2 = g_malloc0(bufsize);
++    /* The byte after the command code denotes the length */
++    uint8_t sent_len = pmdev->in_buf[0];
 +
-+    /* Uses throttling to make test independent of specific environment. */
-+    ahci = ahci_boot_and_enable("-drive if=none,id=drive0,file=%s,"
-+                                "cache=writeback,format=%s,"
-+                                "throttling.bps-write=%d "
-+                                "-M q35 "
-+                                "-device ide-hd,drive=drive0 ",
-+                                tmp_path, imgfmt, speed);
++    if (sent_len != pmdev->in_buf_len - 1) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: length mismatch. Expected %d bytes, got %d bytes\n",
++                      __func__, sent_len, pmdev->in_buf_len - 1);
++    }
 +
-+    port = ahci_port_select(ahci);
-+    ahci_port_clear(ahci, port);
++    /* exclude length byte */
++    pmdev->in_buf++;
++    pmdev->in_buf_len--;
 +
-+    ptr1 = ahci_alloc(ahci, bufsize);
-+    ptr2 = ahci_alloc(ahci, bufsize);
-+
-+    g_assert(ptr1 && ptr2);
-+
-+    /* Need two different patterns. */
-+    do {
-+        generate_pattern(tx1, bufsize, AHCI_SECTOR_SIZE);
-+        generate_pattern(tx2, bufsize, AHCI_SECTOR_SIZE);
-+    } while (memcmp(tx1, tx2, bufsize) == 0);
-+
-+    qtest_bufwrite(ahci->parent->qts, ptr1, tx1, bufsize);
-+    qtest_bufwrite(ahci->parent->qts, ptr2, tx2, bufsize);
-+
-+    /* Write to beginning of disk to check it wasn't overwritten later. */
-+    ahci_guest_io(ahci, port, CMD_WRITE_DMA_EXT, ptr1, bufsize, offset1);
-+
-+    /* Issue asynchronously to get a pending callback during reset. */
-+    cmd = ahci_command_create(CMD_WRITE_DMA_EXT);
-+    ahci_command_adjust(cmd, offset2, ptr2, bufsize, 0);
-+    ahci_command_commit(ahci, cmd, port);
-+    ahci_command_issue_async(ahci, cmd);
-+
-+    ahci_set(ahci, AHCI_GHC, AHCI_GHC_HR);
-+
-+    ahci_command_free(cmd);
-+
-+    /* Wait for throttled write to finish. */
-+    sleep(1);
-+
-+    /* Start again. */
-+    ahci_clean_mem(ahci);
-+    ahci_pci_enable(ahci);
-+    ahci_hba_enable(ahci);
-+    port = ahci_port_select(ahci);
-+    ahci_port_clear(ahci, port);
-+
-+    /* Read and verify. */
-+    ahci_guest_io(ahci, port, CMD_READ_DMA_EXT, ptr1, bufsize, offset1);
-+    qtest_bufread(ahci->parent->qts, ptr1, rx1, bufsize);
-+    g_assert_cmphex(memcmp(tx1, rx1, bufsize), ==, 0);
-+
-+    ahci_guest_io(ahci, port, CMD_READ_DMA_EXT, ptr2, bufsize, offset2);
-+    qtest_bufread(ahci->parent->qts, ptr2, rx2, bufsize);
-+    g_assert_cmphex(memcmp(tx2, rx2, bufsize), ==, 0);
-+
-+    ahci_free(ahci, ptr1);
-+    ahci_free(ahci, ptr2);
-+
-+    ahci_clean_mem(ahci);
-+
-+    ahci_shutdown(ahci);
++    if (pmdev->in_buf_len < len) {
++        len = pmdev->in_buf_len;
++    }
++    memcpy(dest, pmdev->in_buf, len);
++    return len;
 +}
 +
- static void test_ncq_simple(void)
+ 
+ static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
  {
-     AHCIQState *ahci;
-@@ -1945,7 +2028,8 @@ int main(int argc, char **argv)
-     qtest_add_func("/ahci/migrate/dma/halted", test_migrate_halted_dma);
- 
-     qtest_add_func("/ahci/max", test_max);
--    qtest_add_func("/ahci/reset", test_reset);
-+    qtest_add_func("/ahci/reset/simple", test_reset);
-+    qtest_add_func("/ahci/reset/pending_callback", test_reset_pending_callback);
- 
-     qtest_add_func("/ahci/io/ncq/simple", test_ncq_simple);
-     qtest_add_func("/ahci/migrate/ncq/simple", test_migrate_ncq);
 -- 
 2.41.0
 

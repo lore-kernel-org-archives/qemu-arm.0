@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2678557eja;
-        Mon, 6 Nov 2023 03:08:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEHiu9uPg2P+4oCAmzoiDwX/FmW8droxMA8VOj0E3kdFcOH/DIC89dzFpCshfrUsBf9aAJk
-X-Received: by 2002:a05:6102:c93:b0:45f:3b30:9ca9 with SMTP id f19-20020a0561020c9300b0045f3b309ca9mr2079888vst.15.1699268897973;
-        Mon, 06 Nov 2023 03:08:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268897; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2678651eja;
+        Mon, 6 Nov 2023 03:08:28 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHOCMS1iznu7fSBxeokKy8HBmnJ4WyQ/zyzcDa51NJdarMGFrxu5avQMsz2lucJlixiHBnE
+X-Received: by 2002:a05:6358:781:b0:16b:5cc3:612f with SMTP id n1-20020a056358078100b0016b5cc3612fmr7273417rwj.18.1699268907951;
+        Mon, 06 Nov 2023 03:08:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268907; cv=none;
         d=google.com; s=arc-20160816;
-        b=c33zk7W9kmrk9Q8AiQ6Iw95rC2BcuiIPF6QHdIHiDLNI9RnxM5JprLERXmsENHs0Dl
-         uhpnU2kkNIVKy8WdGZuc5Cf2pF8aqnTubRGgZi2co4URbM1paOGHXLdCbrDjvh7XSAO9
-         7Es66ElnTA2m3t1BrvV6v19Tu9BhqznxMlpfcScNLCQ/XI2Xie/1LdSlZHoLhIUplGd2
-         GOwDdzn03yvFChUbB4gw+hm5o+MoYeQ9rfzBQPPrsOXfzQ5MPzgfwd0xvYvNG1CdrAbw
-         WX0MkxLZrI0pEn7/BBR88cFBS6bCiPetxlihuvw6RzQjiLUizpmvTSZLTt//mHICmpOP
-         qViQ==
+        b=WJ/86IVQ0/8P37BjPzLXrTQ9kfW2qSUZLPErFVpOC5uXPMMUeWxtvO3ddCjJvxys+I
+         pJEjyTynUnQUypAy3X4Jg55uwRWCM73xT9zZ5eiSGfY9ERSCH2LxaQCtml8JYYq3YJl8
+         ctePDz/3H5FsI4L0Dy9jyl2l2f/76Wp2Nj2GyZgXds1Qg5IrdKd2vMJksWIwKHqyiMEI
+         k071FyriCtXZJYzSXhT7FnP598iVIdJuRXtV2f+ws+E91wINeT2siNxCXv168UJjwMqN
+         lWh2fG/zY64td+khi8+M9W+mGcVDAi5z/CJgHX5f5HrqToycDiDUWPCMzYiyw5iM50V9
+         wzxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=HIk2D2Zy+mW9KoNQEGhLCqqc6EXwTlAoiLD308KY354=;
-        fh=wKPAfzysS4tcL3tAeYvV/VveclYm430IzPgaH2k8XpQ=;
-        b=YknLOEgE3d1I3b1C3YlIhUnUAzQ6Rlb7FDXF19a20972FA5zooRqg2NrGe6ThvsJ05
-         DOQJZSEKo9CakyPiD/wo2wO9NIF44kPpAV1JeXnDmyPS7Wb0FTSOGUaUsA6wiv6cKqPu
-         rmCHQBnpEFJB9RfqWRM/mafa6gy/PutX6QtM4EOZi5jvsJb87BV4bbiEVyvB2ig1Smot
-         Nm925bycRzAO3LFIEEJBPXcjjUlp21yk1Q9k1n7wA/5a2n7JlZkWmwjUFPjVK+E4KcaB
-         wfqtneCsNs/+P5l3M/m+Rqtgfw3r7JWBBGsAFTbs71LaRzAAmq+SDGm96H6+USQT+iOF
-         sFPQ==
+        bh=1c+BV5Tpk9NJdk/9uGPTtpoehyOljryZgDubWA0xkSQ=;
+        fh=NGV8uWnFsrZtmxILs5xalLPeZUcUP259BieRNCJqy3Q=;
+        b=QnNbETKkd/rmBBowz36jlPWyHWlVr+7jzQ+wZhoyOu5DZRz2KvS0QXNyCyNkJv5tos
+         ks0ZKiFYIdZAQwEcspKzIZEZz9VbaS4DU2A5Q+gnSA5M76UChl/0S9rkk5W/VJ/NBWTr
+         SQ8lEryZet2uAuyvb9i6rnCim6wx3kUH2uIG5WICFj0+ehISkI9iXNmbtmhbsMILpa1Z
+         WpJty3/EstXIJgQMwZvuW7BEaH3SvT0rGvFh5ZtZ4m5COAOnc7R5X7CoE5E2SgMs48Co
+         dlWbJdCTHiV3nhYBbaNa7kkL/aRFgPhWjUXZbyMuiU9oqTXuP7urEEmzOcnD3lL64gZ4
+         QmbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="MC1qL/c1";
-       spf=pass (google.com: domain of kvm+bounces-708-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-708-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MuvGfNFA;
+       spf=pass (google.com: domain of kvm+bounces-709-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-709-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-708-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id s10-20020a05620a29ca00b0076cc4d494c2si5297827qkp.88.2023.11.06.03.08.17
+Return-Path: <kvm+bounces-709-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id i75-20020a636d4e000000b00578b4082453si7699815pgc.712.2023.11.06.03.08.27
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:08:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-708-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Mon, 06 Nov 2023 03:08:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-709-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="MC1qL/c1";
-       spf=pass (google.com: domain of kvm+bounces-708-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-708-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MuvGfNFA;
+       spf=pass (google.com: domain of kvm+bounces-709-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-709-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9EFD61C20BED
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:08:17 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id C74E8B229A1
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:08:25 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 97E2918AE5;
-	Mon,  6 Nov 2023 11:08:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id C6FEE18AE4;
+	Mon,  6 Nov 2023 11:08:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="MC1qL/c1"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="MuvGfNFA"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7FCF1864A
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:08:09 +0000 (UTC)
-Received: from mail-lf1-x12b.google.com (mail-lf1-x12b.google.com [IPv6:2a00:1450:4864:20::12b])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 345C8BB
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:08:08 -0800 (PST)
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-507a62d4788so5742921e87.0
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:08:08 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F403C182C1
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:08:16 +0000 (UTC)
+Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com [IPv6:2a00:1450:4864:20::42b])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 08517A3
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:08:15 -0800 (PST)
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-32fd7fc9f19so308058f8f.2
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:08:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268886; x=1699873686; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268893; x=1699873693; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HIk2D2Zy+mW9KoNQEGhLCqqc6EXwTlAoiLD308KY354=;
-        b=MC1qL/c1JmdA2KXSwgfHJKlCA7+0CjClNDrlzpwQSCtS3LwZxQvHhGlbwsPQoAvv5T
-         Ke2Rv3m3G6W1HCszsuy078PCNSQcP2XQgb38kbywCev20nGWx2gij8c8aVTviThbKj7i
-         h3llptGcshB5xHE8t8qgdUdOpHk36Q3c7CWuEwVB8dJvCZ9eSik15ZH/srOBPoFNgyqd
-         zCIS87D4Y++AahEUkw6a9C8awyNp14AmrsvsUYP6h6cjV7vU0VUB+lR7u5YkBQH5f/hM
-         E6lCzmsoXOFuTkRXshAWPsS8CbGhN0CeE19YYFCBW7rQamfWEbHbYHibmJCyn1f33Ma0
-         2bbg==
+        bh=1c+BV5Tpk9NJdk/9uGPTtpoehyOljryZgDubWA0xkSQ=;
+        b=MuvGfNFAM9MQGFCQS/5TsqG4N8yHvx90JnWeZNahhXuAn2uH1k9DOiIcJIfhlamMDe
+         VaW2mB+dNj7est0QJoPY9TkwceBI4YQVx9KZhp6HZVtKryxDMnDP72n02ITufK8aKcLq
+         Vl+DADaPUFW3/pRN4H9MfwZ+p0FpH8o9eCq+5sLeOqa+N/ZI8IKyhDlsdD7tsHixJwuu
+         al0e94PH2wL7KP5GgoD/OnCkI2sl+Z2Iz+ZWFspyftc3R+OYH083DGjmFAD55Ii3WxO9
+         Dp2lFsidAuy5RNtPxzuDjNn4THV+yIaBgwcFG0xipi1SOBammULu8FryYNvJEypdhRgn
+         L3Cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268886; x=1699873686;
+        d=1e100.net; s=20230601; t=1699268893; x=1699873693;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HIk2D2Zy+mW9KoNQEGhLCqqc6EXwTlAoiLD308KY354=;
-        b=N2UZOx9Jlu9/RJHw2+Io3XHwi7zp0OrrxJ/PWTYkvOgSy4Z2//ZpcPhk31sMfwNWmn
-         a8NF5jZ/75bb+PAEn1q8KKYc90ls/jtMrKrJXgbKNdrKTsUyL0iy3id5iJP6uHm/wrX3
-         8gpIC6gsVdNAv9oMfTHtf2vB+xtxn8csTQV7WCHfWYBTqejaD4gZa14yOFTl4RhErKR+
-         MH87NIgV2fEHWVSCuub+6ULXR+AWQWNxl5NlJ21Z2tOFFTHAnZpSUgD4lWR04M9g0Z3c
-         aOKTxOddcHdAhFIofpzvCxosbDnAVI86aeJwgKsJRgdiCW51aFuxcaAEK5fzKpFL8CZ2
-         Nzfg==
-X-Gm-Message-State: AOJu0YwitjABMVfNvunoIS1EtX0xyFb22YEMeG1W+S/0D5JFVHT0Ak6w
-	135gQJb7nEFBDr5wJ990GQH3hg==
-X-Received: by 2002:a2e:7c15:0:b0:2c5:5926:de52 with SMTP id x21-20020a2e7c15000000b002c55926de52mr22771440ljc.53.1699268886360;
-        Mon, 06 Nov 2023 03:08:06 -0800 (PST)
+        bh=1c+BV5Tpk9NJdk/9uGPTtpoehyOljryZgDubWA0xkSQ=;
+        b=ph3Nzt1DvY3Yrg8tTqQNG/jF+ZBbqxaAwrBveBPGixdKePNZiPacqsgpUeyBM416bb
+         3ZWXh+rZniWvQ9BCoFAXq8znXsO4ILnQxKmlqeRuivKvChw25Xtbi53zcb7KlOMwEt1v
+         pFrxnnokv8jlBM/u4gDpEPDPllu+/AKBiohCj/71NPrVSk7DfSB+24Ga04r07xbaCwQN
+         6bZuNtaoMiVNPBrlmtRKuiTC0GE7fsCwuYHAPBK8dbV7HThmUGQXBJvLT4Lip63Xi4fj
+         aVpFw/G3grbjp0TMTY5Zs0BAT7/Q+Weih/dbwqaPuZ6uOOMXU5Offh9tmXkIV5o5rQzH
+         HzOw==
+X-Gm-Message-State: AOJu0YylylXbgeo1ickU9ZM3q+tkVfhECyMWb6F7t6yuwWUiOkEvVU14
+	LQt3UDQPT8AgIrEL3sMMldSRLQ==
+X-Received: by 2002:a05:6000:1864:b0:32f:7c4d:8746 with SMTP id d4-20020a056000186400b0032f7c4d8746mr24071431wri.12.1699268893422;
+        Mon, 06 Nov 2023 03:08:13 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id a1-20020a05600c348100b003fe1fe56202sm12104665wmq.33.2023.11.06.03.08.04
+        by smtp.gmail.com with ESMTPSA id h16-20020a05600004d000b0032dbf99bf4fsm9290025wri.89.2023.11.06.03.08.10
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:08:06 -0800 (PST)
+        Mon, 06 Nov 2023 03:08:13 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -99,14 +99,19 @@ Cc: kvm@vger.kernel.org,
 	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Ani Sinha <anisinha@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>
-Subject: [PULL 39/60] exec/cpu: Have cpu_exec_realize() return a boolean
-Date: Mon,  6 Nov 2023 12:03:11 +0100
-Message-ID: <20231106110336.358-40-philmd@linaro.org>
+	Yanan Wang <wangyanan55@huawei.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	David Hildenbrand <david@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PULL 40/60] hw/cpu: Clean up global variable shadowing
+Date: Mon,  6 Nov 2023 12:03:12 +0100
+Message-ID: <20231106110336.358-41-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -118,62 +123,115 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 23FOQX0BFRof
+X-TUID: c/teH2vGn/LC
 
-Following the example documented since commit e3fe3988d7 ("error:
-Document Error API usage rules"), have cpu_exec_realizefn()
-return a boolean indicating whether an error is set or not.
+Fix:
+
+  hw/core/machine.c:1302:22: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+      const CPUArchId *cpus = possible_cpus->cpus;
+                       ^
+  hw/core/numa.c:69:17: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+      uint16List *cpus = NULL;
+                  ^
+  hw/acpi/aml-build.c:2005:20: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+      CPUArchIdList *cpus = ms->possible_cpus;
+                     ^
+  hw/core/machine-smp.c:77:14: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+      unsigned cpus    = config->has_cpus ? config->cpus : 0;
+               ^
+  include/hw/core/cpu.h:589:17: note: previous declaration is here
+  extern CPUTailQ cpus;
+                  ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230918160257.30127-22-philmd@linaro.org>
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
+Message-Id: <20231010115048.11856-2-philmd@linaro.org>
 ---
- include/hw/core/cpu.h | 2 +-
- cpu-target.c          | 6 ++++--
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ include/hw/core/cpu.h     | 8 ++++----
+ cpu-common.c              | 6 +++---
+ linux-user/main.c         | 2 +-
+ target/s390x/cpu_models.c | 2 +-
+ 4 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 5d6f8dca43..eb943efb8f 100644
+index eb943efb8f..77893d7b81 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -1152,7 +1152,7 @@ G_NORETURN void cpu_abort(CPUState *cpu, const char *fmt, ...)
- /* $(top_srcdir)/cpu.c */
- void cpu_class_init_props(DeviceClass *dc);
- void cpu_exec_initfn(CPUState *cpu);
--void cpu_exec_realizefn(CPUState *cpu, Error **errp);
-+bool cpu_exec_realizefn(CPUState *cpu, Error **errp);
- void cpu_exec_unrealizefn(CPUState *cpu);
- void cpu_exec_reset_hold(CPUState *cpu);
- 
-diff --git a/cpu-target.c b/cpu-target.c
-index 79363ae370..f3e1ad8bcd 100644
---- a/cpu-target.c
-+++ b/cpu-target.c
-@@ -131,13 +131,13 @@ const VMStateDescription vmstate_cpu_common = {
- };
- #endif
- 
--void cpu_exec_realizefn(CPUState *cpu, Error **errp)
-+bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
- {
-     /* cache the cpu class for the hotpath */
-     cpu->cc = CPU_GET_CLASS(cpu);
- 
-     if (!accel_cpu_common_realize(cpu, errp)) {
--        return;
-+        return false;
-     }
- 
-     /* Wait until cpu initialization complete before exposing cpu. */
-@@ -159,6 +159,8 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
-         vmstate_register(NULL, cpu->cpu_index, cpu->cc->sysemu_ops->legacy_vmsd, cpu);
-     }
- #endif /* CONFIG_USER_ONLY */
-+
-+    return true;
+@@ -586,13 +586,13 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
  }
  
- void cpu_exec_unrealizefn(CPUState *cpu)
+ typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
+-extern CPUTailQ cpus;
++extern CPUTailQ cpus_queue;
+ 
+-#define first_cpu        QTAILQ_FIRST_RCU(&cpus)
++#define first_cpu        QTAILQ_FIRST_RCU(&cpus_queue)
+ #define CPU_NEXT(cpu)    QTAILQ_NEXT_RCU(cpu, node)
+-#define CPU_FOREACH(cpu) QTAILQ_FOREACH_RCU(cpu, &cpus, node)
++#define CPU_FOREACH(cpu) QTAILQ_FOREACH_RCU(cpu, &cpus_queue, node)
+ #define CPU_FOREACH_SAFE(cpu, next_cpu) \
+-    QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus, node, next_cpu)
++    QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus_queue, node, next_cpu)
+ 
+ extern __thread CPUState *current_cpu;
+ 
+diff --git a/cpu-common.c b/cpu-common.c
+index 45c745ecf6..c81fd72d16 100644
+--- a/cpu-common.c
++++ b/cpu-common.c
+@@ -73,7 +73,7 @@ static int cpu_get_free_index(void)
+     return max_cpu_index;
+ }
+ 
+-CPUTailQ cpus = QTAILQ_HEAD_INITIALIZER(cpus);
++CPUTailQ cpus_queue = QTAILQ_HEAD_INITIALIZER(cpus_queue);
+ static unsigned int cpu_list_generation_id;
+ 
+ unsigned int cpu_list_generation_id_get(void)
+@@ -90,7 +90,7 @@ void cpu_list_add(CPUState *cpu)
+     } else {
+         assert(!cpu_index_auto_assigned);
+     }
+-    QTAILQ_INSERT_TAIL_RCU(&cpus, cpu, node);
++    QTAILQ_INSERT_TAIL_RCU(&cpus_queue, cpu, node);
+     cpu_list_generation_id++;
+ }
+ 
+@@ -102,7 +102,7 @@ void cpu_list_remove(CPUState *cpu)
+         return;
+     }
+ 
+-    QTAILQ_REMOVE_RCU(&cpus, cpu, node);
++    QTAILQ_REMOVE_RCU(&cpus_queue, cpu, node);
+     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
+     cpu_list_generation_id++;
+ }
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 0c23584a96..0cdaf30d34 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -156,7 +156,7 @@ void fork_end(int child)
+            Discard information about the parent threads.  */
+         CPU_FOREACH_SAFE(cpu, next_cpu) {
+             if (cpu != thread_cpu) {
+-                QTAILQ_REMOVE_RCU(&cpus, cpu, node);
++                QTAILQ_REMOVE_RCU(&cpus_queue, cpu, node);
+             }
+         }
+         qemu_init_cpu_list();
+diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+index 4dead48650..5c455d00c0 100644
+--- a/target/s390x/cpu_models.c
++++ b/target/s390x/cpu_models.c
+@@ -757,7 +757,7 @@ void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
+     const S390CPUDef *def = s390_find_cpu_def(type, gen, ec_ga, NULL);
+ 
+     g_assert(def);
+-    g_assert(QTAILQ_EMPTY_RCU(&cpus));
++    g_assert(QTAILQ_EMPTY_RCU(&cpus_queue));
+ 
+     /* build the CPU model */
+     s390_qemu_cpu_model.def = def;
 -- 
 2.41.0
 

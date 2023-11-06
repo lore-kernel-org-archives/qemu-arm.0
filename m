@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2676171eja;
-        Mon, 6 Nov 2023 03:04:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFBhZd6JeGpoRk50E1E2JLKmeeCt30b/svdxC3kVx18siboSGEYYDe+/DRqTrNIgY5JTDRr
-X-Received: by 2002:a05:6870:1191:b0:1ef:b0df:1347 with SMTP id 17-20020a056870119100b001efb0df1347mr27082356oau.29.1699268660214;
-        Mon, 06 Nov 2023 03:04:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268660; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2676271eja;
+        Mon, 6 Nov 2023 03:04:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEIKHigungvb/iOT0vxOFly3ObM+4+/N4WDa+faW1VUW3wVht44jYNPLgxqlwY0J9XKH+g9
+X-Received: by 2002:a05:6214:1c8a:b0:672:6450:f809 with SMTP id ib10-20020a0562141c8a00b006726450f809mr15054913qvb.16.1699268670058;
+        Mon, 06 Nov 2023 03:04:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268670; cv=none;
         d=google.com; s=arc-20160816;
-        b=OMwRfyv/KQfhAZldaatR27ZeIbVZQ1O6jspr4uhf2aBh2dDmPliFbymNP8fWNC4NSC
-         X0TiBmRaQ0erLBoAs7l1A5tzTTm3QYmCZ5gAltLJNK60nt4w8u0WMxUqGyVpGWZxhbx6
-         KAmj5DR+4tw6a652h44J1VM8Bz+QmIBCsJGVXVKKaI9VyuVA3WuiQlZItM3cV13ETknw
-         rb8PwU4PopNCQr3xsvusO6TgEnizkcH70NGvgQRt07r5CzTQfwaWrWtQFY7B3/YYnCJZ
-         xonYX59wWhoMram4VF1bbSvs9RVhbaTfPT+V9Cp9zraBNvAcSWtej99ZIysviLETR/vq
-         0T9w==
+        b=RLpHIe2PiF5IDUxpgSPaT+AqUx00r2kHzczDikUHFx76lR8zMzmLpAA09DhDMpD6UF
+         VETDcx0D3XwbVGkYE8+jDNASG1j0nU7irszKtNt1uAQelEYFU/lVKTltweoZFRmNB+o0
+         FH7vrMfUt+9OSmo30kLy6qR0JYONYuZckj0aZsjmF3yvvr6WCMwLzW3n/fx/i08qLstL
+         TeP+sgtq5/R3wltHHXn8pi1+Z2sseiohs1k2OnJyY49W6xAUAph/8k1QskUdmWYDVkBc
+         +qYMDlX4uy33m/PgJK7P4KH0nNZ0LIYo1WwcsmG5GzVL35FRn+XVmpvbA/GVzp9tgHPi
+         vSUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=th3yfEu9dsqZLmfk3I95d9IkQeEp24N2k4ODPshVYkY=;
-        fh=MxQbjwEdFwlPHdTHbnth+HR++MIzjIZTbqQwuZPTx7c=;
-        b=xOFvlTcuRCelzb2O9euB98fm03AmauZcQ5J1GyYFweSLL/beayfJoXJIuObBoU9A5X
-         +Lt2ZEaJbgstWujJFD+hstHZ4Jw8v5MDHiqJdv+9lVcw5ntOU7LUaHIUyqqk3iyR0awM
-         7IKoCsSwR/+Gqsz5DktJH0xAVDaNrj6P6OatNghIXdtDyUVLCiwGy0w/aAeD8jINNUmI
-         XdGMYWBD1mh5le+0BQkuTvBzTAyUmV4bMAjhQ1PIk24o60v1p+/Z5pOoFUDJT0YyMHhA
-         W1imIl6UA392Qv8Xnprz1RApvkLCM2YPIedoQTz1IFqHxDPE4k6gtksjF9MDFlZmxNW8
-         Iu+g==
+        bh=vBU4Pso0gSsGUJn6Y+tUxfBbchAwyEFBu11FifHIio4=;
+        fh=OL+rgKfSk1cJBtILMSZyacaN6K7ZUVETDsu1eT6OjNI=;
+        b=j7TXTjbszN0R8T5uwJrVT1HZdb2KjrXILEY6ThfR/DUOXX+WIbD0cvbGU87KzXhi76
+         ZF8c/Rgox13py/27nBnBUyPaMFp8bPBwXrXiLeRGMp5cRLH2HwePy7/k3416O7qL3VOi
+         xoCaNJeoYolOy/BX/NTEbESUKlBfpG/L1uveyEumH505IS2k3ATv7jd4mYUMQC09hlMn
+         5NZL9C+xS6lMRB85pqtuqtDJrtkhFRFi6dthzQlwbzJNNED8jKV0qdYNrH0OEs5PZgY7
+         M4XbUQORYD11gwvfX65LBjpiZ8XMdF7Kn3nmR+sBuF/meQyuMkOl2ReFDyWfGGgXJBYb
+         FeiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cn8b2mI8;
-       spf=pass (google.com: domain of kvm+bounces-673-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-673-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NFenQgRw;
+       spf=pass (google.com: domain of kvm+bounces-675-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-675-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-673-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d125-20020a633683000000b005b57aa8517bsi7738444pga.91.2023.11.06.03.04.19
+Return-Path: <kvm+bounces-675-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id h9-20020a0cd809000000b0066d01e0158asi5345590qvj.298.2023.11.06.03.04.29
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:04:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-673-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Mon, 06 Nov 2023 03:04:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-675-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cn8b2mI8;
-       spf=pass (google.com: domain of kvm+bounces-673-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-673-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NFenQgRw;
+       spf=pass (google.com: domain of kvm+bounces-675-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-675-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 7C4F42814BB
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:04:19 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id AE4D11C2083C
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:04:29 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CF4C51EB2E;
-	Mon,  6 Nov 2023 11:04:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id D67441EB33;
+	Mon,  6 Nov 2023 11:04:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Cn8b2mI8"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="NFenQgRw"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F8FE1EB2B
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:04:11 +0000 (UTC)
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com [IPv6:2a00:1450:4864:20::432])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D0A8A13E
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:04:08 -0800 (PST)
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-32d9d8284abso2666733f8f.3
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:04:08 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFF951EB31
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:04:23 +0000 (UTC)
+Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com [IPv6:2a00:1450:4864:20::333])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 080C8FA
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:04:22 -0800 (PST)
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-4084095722aso33486155e9.1
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:04:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268647; x=1699873447; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268660; x=1699873460; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=th3yfEu9dsqZLmfk3I95d9IkQeEp24N2k4ODPshVYkY=;
-        b=Cn8b2mI8ZK8KYRGfl3CS1+RrcpbMtbnOFd0Kl3tJg34L/FeFUvwxHces4SHN2P6IBl
-         JQ4cvciqCHsChvDNjuEWiGwyLWrdDNcnmDorSbkmxKU+Fyd1AnhBjy2cVLXBIAAVoWhe
-         XYOvYwipmiWrt7diPNV2x0vatmLnulI+2jyhrM6ncHleKrMg8uOgSSGBCdZlAzrIhutS
-         MR0P+STI2i26VAvid72BYqdm7rvLzfaGOs0iVykpHvSAAm69V4XEWcIooVa2ujE0cAA3
-         XQj9MlQhFXgkKHeFL+41y4Sho8AUd10I5eCcxMs+MjwJQ3dNB/ZWLM65Q09psr/8I8kb
-         UPrg==
+        bh=vBU4Pso0gSsGUJn6Y+tUxfBbchAwyEFBu11FifHIio4=;
+        b=NFenQgRwp3mcMP5N0RZvhctVrozKPA+o9CeMHsVICoYMEtfFN3bjJ/udPwvkw9MtOQ
+         sm/N2wdnDawzawr7vTBuSnTmBNdYW/wGzGbViWhFZw9+22+fyt1s6IR/U28SSRgpokI3
+         ds6S5aJ4mbCCXFS16tCZcbX4WFfxzVgFFrEV0kjQ9o0b2RpsHSNxrWWo8nKE1WrzlrMy
+         xI1p61ACJtDvCGeCgl27A8HPuv43ujSv4NNlSLZpUi8MSYgGbs44GdSXxmQt8/Ki9XZp
+         go58IDKVLpsQ3lENeB0TloRqfNp9eRCIlsXRHm24fIj2H7ORa7+qoRqWgDWp7UIHZJty
+         gVCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268647; x=1699873447;
+        d=1e100.net; s=20230601; t=1699268660; x=1699873460;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=th3yfEu9dsqZLmfk3I95d9IkQeEp24N2k4ODPshVYkY=;
-        b=g2puD+NJEeY4REsuQn4ce7DGhvs4BvIgU+ZEuDhVQstyvh7aDA44HagyrUnwuMC65U
-         vRPN5PPLiWqOJs7rVwDfkhAvZw6VA45F1KBAfSZrEMAM5Oj6eVipB6vre87v+UeE1V8S
-         aCqz+KZjZM6NjIaxiUFH77sHgyj7V6o0WNnYCCiTe+uCKFLJYoof1lGZ2LW8huFAA8Pr
-         3BRbVEh94GBVSbAvyQYkQz6LWZus0Vahq0lrei7klB0MqZcCzUnpme/sAbDW1fCUx0UM
-         SpMeI7ViWURLul+7pjVvhlqSl9QzgE24R6pucmXUfsGjH2WzlFN10oB1ylQ9gZtBAx8p
-         HYcQ==
-X-Gm-Message-State: AOJu0YxhsMeUH8imQTQagDtC2GPF2jj8CNyIWakl0Htiuzj6mAoq8g7W
-	hqRny2d9ptSjbrQkC3SMzOqk7g==
-X-Received: by 2002:adf:fd82:0:b0:32d:9a87:b7a with SMTP id d2-20020adffd82000000b0032d9a870b7amr17402964wrr.50.1699268646998;
-        Mon, 06 Nov 2023 03:04:06 -0800 (PST)
+        bh=vBU4Pso0gSsGUJn6Y+tUxfBbchAwyEFBu11FifHIio4=;
+        b=Si9P2X7jiBOdh32JtKhvH+Mk1uv4pzJ3n2kzdCJB5tmR8Y7iCObMOpKa1EoS87kRAc
+         5swZ3Hl9ZusGHGrnor1VFGJ7grkmJK4FmZJ7XS9wZ7c+XzUXKxQ2TSpA2YHISa88Ljzn
+         vu2rW+QCpoCcY4vNmvFwbQzzDqXwS8WnbBulUHXArZnTarXEAuds4UPyban+Uq4255c9
+         ied5Gq3ME/DME2JR0kyXks34oNMsDyFOigNZz90ydRqkaZnMHY2MZP2jba0c4TWtYQ8f
+         HRZfO3XJoHs0T76fAs0WgECXPTuSKYF1QJJZI9ue7FCS7qSVy+BcbfshXwclGvsVMsQe
+         IuVQ==
+X-Gm-Message-State: AOJu0YwcD1JpRM0f2YTS4t3w0em5wmqd64gPNmHB5+TAfBkuMcyHvMzr
+	5+fpOx6JXWictCUhYjxtpjVb2A==
+X-Received: by 2002:a05:600c:1906:b0:408:3b8d:f7e8 with SMTP id j6-20020a05600c190600b004083b8df7e8mr24996294wmq.33.1699268660546;
+        Mon, 06 Nov 2023 03:04:20 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id k13-20020a5d6e8d000000b003196b1bb528sm9094731wrz.64.2023.11.06.03.04.05
+        by smtp.gmail.com with ESMTPSA id g20-20020a05600c4ed400b003fee8793911sm12010027wmq.44.2023.11.06.03.04.18
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:04:06 -0800 (PST)
+        Mon, 06 Nov 2023 03:04:20 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -99,11 +99,16 @@ Cc: kvm@vger.kernel.org,
 	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Anton Johansson <anjo@rev.ng>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 04/60] tests/unit/test-seccomp: Remove mentions of softmmu in test names
-Date: Mon,  6 Nov 2023 12:02:36 +0100
-Message-ID: <20231106110336.358-5-philmd@linaro.org>
+	Riku Voipio <riku.voipio@iki.fi>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>
+Subject: [PULL 06/60] accel: Introduce cpu_exec_reset_hold()
+Date: Mon,  6 Nov 2023 12:02:38 +0100
+Message-ID: <20231106110336.358-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -115,75 +120,95 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YWBTIt4OYpV6
+X-TUID: 9PkXAjlk9D3a
 
-Wether we are using a software MMU or not is irrelevant for the
-seccomp facility. The facility is restricted to system emulation,
-but such detail isn't really helpful, so directly drop the
-'softmmu' mention from the test names.
+Introduce cpu_exec_reset_hold() which call an accelerator
+specific AccelOpsClass::cpu_reset_hold() handler.
+
+Define a stub on TCG user emulation, because CPU reset is
+irrelevant there.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Anton Johansson <anjo@rev.ng>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20231002145104.52193-3-philmd@linaro.org>
+Message-Id: <20230918104153.24433-3-philmd@linaro.org>
 ---
- tests/unit/test-seccomp.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ include/hw/core/cpu.h      | 1 +
+ include/sysemu/accel-ops.h | 1 +
+ accel/tcg/user-exec-stub.c | 4 ++++
+ hw/core/cpu-common.c       | 1 +
+ system/cpus.c              | 7 +++++++
+ 5 files changed, 14 insertions(+)
 
-diff --git a/tests/unit/test-seccomp.c b/tests/unit/test-seccomp.c
-index f02c79cafd..bab93fd6da 100644
---- a/tests/unit/test-seccomp.c
-+++ b/tests/unit/test-seccomp.c
-@@ -229,26 +229,26 @@ int main(int argc, char **argv)
-     g_test_init(&argc, &argv, NULL);
-     if (can_play_with_seccomp()) {
- #ifdef SYS_fork
--        g_test_add_func("/softmmu/seccomp/sys-fork/on",
-+        g_test_add_func("/seccomp/sys-fork/on",
-                         test_seccomp_sys_fork_on);
--        g_test_add_func("/softmmu/seccomp/sys-fork/on-nospawn",
-+        g_test_add_func("/seccomp/sys-fork/on-nospawn",
-                         test_seccomp_sys_fork_on_nospawn);
--        g_test_add_func("/softmmu/seccomp/sys-fork/off",
-+        g_test_add_func("/seccomp/sys-fork/off",
-                         test_seccomp_sys_fork_off);
- #endif
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 18593db5b2..6373aa4501 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -1153,6 +1153,7 @@ void cpu_class_init_props(DeviceClass *dc);
+ void cpu_exec_initfn(CPUState *cpu);
+ void cpu_exec_realizefn(CPUState *cpu, Error **errp);
+ void cpu_exec_unrealizefn(CPUState *cpu);
++void cpu_exec_reset_hold(CPUState *cpu);
  
--        g_test_add_func("/softmmu/seccomp/fork/on",
-+        g_test_add_func("/seccomp/fork/on",
-                         test_seccomp_fork_on);
--        g_test_add_func("/softmmu/seccomp/fork/on-nospawn",
-+        g_test_add_func("/seccomp/fork/on-nospawn",
-                         test_seccomp_fork_on_nospawn);
--        g_test_add_func("/softmmu/seccomp/fork/off",
-+        g_test_add_func("/seccomp/fork/off",
-                         test_seccomp_fork_off);
+ /**
+  * target_words_bigendian:
+diff --git a/include/sysemu/accel-ops.h b/include/sysemu/accel-ops.h
+index 3c1fab4b1e..ef91fc28bb 100644
+--- a/include/sysemu/accel-ops.h
++++ b/include/sysemu/accel-ops.h
+@@ -30,6 +30,7 @@ struct AccelOpsClass {
+     void (*ops_init)(AccelOpsClass *ops);
  
--        g_test_add_func("/softmmu/seccomp/thread/on",
-+        g_test_add_func("/seccomp/thread/on",
-                         test_seccomp_thread_on);
--        g_test_add_func("/softmmu/seccomp/thread/on-nospawn",
-+        g_test_add_func("/seccomp/thread/on-nospawn",
-                         test_seccomp_thread_on_nospawn);
--        g_test_add_func("/softmmu/seccomp/thread/off",
-+        g_test_add_func("/seccomp/thread/off",
-                         test_seccomp_thread_off);
+     bool (*cpus_are_resettable)(void);
++    void (*cpu_reset_hold)(CPUState *cpu);
  
-         if (doit_sched() == 0) {
-@@ -256,11 +256,11 @@ int main(int argc, char **argv)
-              * musl doesn't impl sched_setscheduler, hence
-              * we check above if it works first
-              */
--            g_test_add_func("/softmmu/seccomp/sched/on",
-+            g_test_add_func("/seccomp/sched/on",
-                             test_seccomp_sched_on);
--            g_test_add_func("/softmmu/seccomp/sched/on-nores",
-+            g_test_add_func("/seccomp/sched/on-nores",
-                             test_seccomp_sched_on_nores);
--            g_test_add_func("/softmmu/seccomp/sched/off",
-+            g_test_add_func("/seccomp/sched/off",
-                             test_seccomp_sched_off);
-         }
-     }
+     void (*create_vcpu_thread)(CPUState *cpu); /* MANDATORY NON-NULL */
+     void (*kick_vcpu_thread)(CPUState *cpu);
+diff --git a/accel/tcg/user-exec-stub.c b/accel/tcg/user-exec-stub.c
+index 2dc6fd9c4e..4fbe2dbdc8 100644
+--- a/accel/tcg/user-exec-stub.c
++++ b/accel/tcg/user-exec-stub.c
+@@ -14,6 +14,10 @@ void qemu_init_vcpu(CPUState *cpu)
+ {
+ }
+ 
++void cpu_exec_reset_hold(CPUState *cpu)
++{
++}
++
+ /* User mode emulation does not support record/replay yet.  */
+ 
+ bool replay_exception(void)
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 29c917c5dc..7d266c36ac 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -137,6 +137,7 @@ static void cpu_common_reset_hold(Object *obj)
+     cpu->crash_occurred = false;
+     cpu->cflags_next_tb = -1;
+ 
++    cpu_exec_reset_hold(cpu);
+     if (tcg_enabled()) {
+         tcg_flush_jmp_cache(cpu);
+         tcg_flush_softmmu_tlb(cpu);
+diff --git a/system/cpus.c b/system/cpus.c
+index 0848e0dbdb..952f15868c 100644
+--- a/system/cpus.c
++++ b/system/cpus.c
+@@ -201,6 +201,13 @@ bool cpus_are_resettable(void)
+     return true;
+ }
+ 
++void cpu_exec_reset_hold(CPUState *cpu)
++{
++    if (cpus_accel->cpu_reset_hold) {
++        cpus_accel->cpu_reset_hold(cpu);
++    }
++}
++
+ int64_t cpus_get_virtual_clock(void)
+ {
+     /*
 -- 
 2.41.0
 

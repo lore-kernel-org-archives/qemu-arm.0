@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2677319eja;
-        Mon, 6 Nov 2023 03:06:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IELgKcIMVL7kwZTzHO0YnY/Zvsw69QpKIklztkDbXUgf9R+CHeGK4iXqTNQgXyDN3UcPjJz
-X-Received: by 2002:a05:6a21:4841:b0:181:a52:3162 with SMTP id au1-20020a056a21484100b001810a523162mr16306352pzc.46.1699268771074;
-        Mon, 06 Nov 2023 03:06:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699268771; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp2677374eja;
+        Mon, 6 Nov 2023 03:06:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGQAHk7iwlz0Td6Iy0UyJ4fw92MkSK2jjjBGc5idDHpvbNtplx0jzwy1XG646R6YN/mcsu4
+X-Received: by 2002:a05:6808:302:b0:3a7:b011:8960 with SMTP id i2-20020a056808030200b003a7b0118960mr30602705oie.40.1699268776591;
+        Mon, 06 Nov 2023 03:06:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699268776; cv=none;
         d=google.com; s=arc-20160816;
-        b=PIsCxZ6hqPSWHWs7H/ZszacrNaUp3b6F9A1V3yr1QcCdjIAMyu4LW8taA9W3/vgCZo
-         Rh0KI1Ligxcz+Ybyg4XRaEUxOt7S6zzjiyD9Ldx9oAyEJjN5gYTTmxikDhPofYKbAL4f
-         Xxc19lt4V+wH2GFx5CirHaMCSJxrO7+8oMUd+cRWoy2ikoHXTDHiN2/5gbmzCqgM3CV8
-         dA+D+2qLMfw2ZWn5K1Gk1ttP3UPqkd+pHHQc04Hjo/dULBj1zcwxnwQyW7plSIbxXlnf
-         aosI3KI4FyoHOG6oEGmikiUSiKjyVkAO8yoQGlQ219+C1DIHqkARrN2dZ2j0HlKM3PLw
-         6eoQ==
+        b=EdnUN9HLp1tRN1EbfoG/WHp1+SpZFBc1OcNaIYSWOlx0nnFe2/mJSOLCAbo7fvz9gx
+         EcwEqFpjE+NkZ4DqyeKCjAOOA3GvvAsxYTfgfqD6QfvgUYXpfpOT2Mu26zZVjh0bN8c1
+         a+G2V0TqsOtq7uYURj/FhvL37MnfaHWkAHyjnNnvPoD8/Tv4GvOmYSl7wg6Wyl5sX1tV
+         DbY+iBsRGYvd2ZJeyTXyyJLGN6G2rco0pThPa9YzWTlEbaDtYdbXGwccVYAzX2ea3VZo
+         cY0UGyNlWZlFnKkfc/uHFlxf8dsNt6AzHmMd4tuCeGL4LS3KjdrinTzElWMb2S5atWP7
+         ZJOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=WdevyuV5vDNMMgKGndHL1Lb3pKI2mM3BGOnKiVXcZMA=;
-        fh=QkIcAbdeg7uT6FK914KQVPDd8FDc9hVDQgO9cPJGHCk=;
-        b=DhAjQ2vSbdHolll5ztVfKgmOxclWRSfOVAhs1TLRUnBXxrQ2T1/dGod9sx7gFlVKXw
-         Z6KWC5J/5Y1BYtr96SXniN+L7dJW8/jvg0yPXx4tBqX2Mf3PGskAY5mLIFf5yX9l8Jdy
-         X0DpzzXftSRscv1mJxLaaQediobC05zDq17zUCkKvuMDD6OG6UwSFXNUHiysCbL5gECY
-         knD80C0ADLpyMdSs861GbCjgdN16el5P0hSbgCXRgmm5PPZ2lSSplhfWF6loW25qKHhh
-         rfh6nuVpwjQWtLw5Glf9PERHoqDJU+UE6z+EQ0tXmDZYjayroDyVF1oRJjPZMFXoyuOk
-         JUZg==
+        bh=R87QIdTSbuBFqtOuBBqCdN1J8XfSkpLJYhBFwzXT2iA=;
+        fh=yyoSMMuczYczRB0qLOV9kKRdIs9IcHxKWkwG7vSWkvM=;
+        b=AZk1HFov/S0XzFtrIho37UOa3bfLsSHvQ9Z41Ezv7a9SDwzMsmHfcPeVYfOicglw2j
+         d7PaLNbp1aHdn2gRvpWNDR8h8YxjJG3e+DahMZ6C9tFAHYC6qoo+ICsVukFhBoxZ/JnY
+         zVwbX0SjYMGsKa+EhOPh2cz0mlYlvZLBUaCi/1mvMr4neerZuf4lLhoYM3N/sodqFcLh
+         BZQSSRZ0dQuwzuPfhfWQoxnJZwvOfnNMlv1fJziWgfdnec9Cu6FqFTPc7Ed74HoKjDO0
+         2HIsIw3TXMdDcZ2y6sH+7Ggv/h5g4KYkLRZmNNYm49+z/QYwzrE8yxXidj8fp3mxhYBn
+         Ol4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WBE0801e;
-       spf=pass (google.com: domain of kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WB8BvWTV;
+       spf=pass (google.com: domain of kvm+bounces-690-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-690-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id p16-20020a056a0026d000b006bdb7c5f75dsi7075282pfw.357.2023.11.06.03.06.10
+Return-Path: <kvm+bounces-690-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id dw5-20020a056a00368500b0068e256c6366si7960645pfb.352.2023.11.06.03.06.15
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 03:06:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Mon, 06 Nov 2023 03:06:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-690-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WBE0801e;
-       spf=pass (google.com: domain of kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-689-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WB8BvWTV;
+       spf=pass (google.com: domain of kvm+bounces-690-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-690-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E614FB21732
-	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:06:08 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 4F26AB21773
+	for <alex.bennee@linaro.org>; Mon,  6 Nov 2023 11:06:14 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id ADC821EB29;
-	Mon,  6 Nov 2023 11:06:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 76DEB1EB2E;
+	Mon,  6 Nov 2023 11:06:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="WBE0801e"
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="WB8BvWTV"
 Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0BDE91EB2B
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:06:02 +0000 (UTC)
-Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com [IPv6:2a00:1450:4864:20::32b])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 70160BB
-	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:06:00 -0800 (PST)
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-40850b244beso33448265e9.2
-        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:06:00 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C83321EB2B
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 11:06:08 +0000 (UTC)
+Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com [IPv6:2a00:1450:4864:20::332])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 55BA698
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 03:06:07 -0800 (PST)
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-40839652b97so32709365e9.3
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 03:06:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699268759; x=1699873559; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1699268766; x=1699873566; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=WdevyuV5vDNMMgKGndHL1Lb3pKI2mM3BGOnKiVXcZMA=;
-        b=WBE0801e4XnuSIlK6JsYwl4jQIIH5PUy/D4CUwckJKbnX+5qROFaBLXMVFpCqynx9T
-         RV9MZ/8hKv3MRHtPHzCe9kE1rBIaSR41OqZSf7dn7Za2pE5+6GTeDn3QYa/fmnw05aPJ
-         h9Actf+0F50QmQ1It/6fi9Rn2YRjx85vgP+8aQ/+pG5GXnzFqZ4i1Tv+ixVFm5cocVqx
-         ROZE38bDnd6hMGva2L5vpo0JaeTSPJhevV8BacMn7Yc/0RAXg0BO9KV6jLb28NYPQLFJ
-         sYZsnc+9yP2lTSibuvyzoN9U12QCmh+zSfd4L47pRUdIotT52jn3Sc/9u30gUVGpPotP
-         Ib7A==
+        bh=R87QIdTSbuBFqtOuBBqCdN1J8XfSkpLJYhBFwzXT2iA=;
+        b=WB8BvWTVjbblMFHonJ5b+mqiY2CdZBOG48306okf57aSMtiYfazOtZxTj9ijt0twjC
+         3SdGEj10wS84v8Ras1JBjlsp9kT260OK2tgXsE4GlRjshT+iCVHSwzRwLyjtPPzEiRgq
+         iExstb9hpuwQPyDB8s+4ecbtaYT8HRcuBz/SND0CyRJmj21rRMFzfWVhmoXD+Y9qCsGU
+         V6kasAxfmhQNU+aLz13RVywpoxxNW21kMLjPiUo0Rj7AR6nC7Isx1hc8vSzk/03jT/mj
+         H6zWZQ8EYBZRw53OFoxUhE9ESshX987u1Zgq85EHyJl+mEeT6TLvG2ZViQyN223iVsfP
+         pHpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699268759; x=1699873559;
+        d=1e100.net; s=20230601; t=1699268766; x=1699873566;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WdevyuV5vDNMMgKGndHL1Lb3pKI2mM3BGOnKiVXcZMA=;
-        b=pefOmXRuD4nKxotAIQR2DVpUBJCYfewDSGyJ4Kk8cDuZSCeadumI0/VfhB2BN7iM0k
-         FEGjgE60S4wdVJufkti99IONu0XhcD7rC5EqkaHvHA52U4Xq/RAXj2UxtM+4WBOx85bT
-         IXhwZEXwSgNFBx/tm/oZ42WWSDvHeu+fJrJeM9994l0IVpWf9Z3uPaY2C/m2JGUXIcCC
-         QXoC5ESg08feqTNBFxzzhnl41OfgtA9GPPvRO+H9P8Mpz7f3pzajyAs/STTaMAERRDk5
-         cLQYMl7F2x5fykxgl+V4vZSK62++ntjZDBvCxWMN4V09KMT9L6JsxXfOUCoT3zapX+VS
-         cHhA==
-X-Gm-Message-State: AOJu0YygL0kHB7Z/+p0B7ZhjrPnHoR/f0eaBqtB0IZkmRTZg6dUrmp+B
-	BFaOYMfDuye7NUenVeURRZ1fwg==
-X-Received: by 2002:a05:600c:1c9a:b0:401:d803:6243 with SMTP id k26-20020a05600c1c9a00b00401d8036243mr25577656wms.32.1699268759004;
-        Mon, 06 Nov 2023 03:05:59 -0800 (PST)
+        bh=R87QIdTSbuBFqtOuBBqCdN1J8XfSkpLJYhBFwzXT2iA=;
+        b=b1mx4YNBrJzGKokz1DBglby4iJZCAtac9nwYuyxtyxQ4F3y8zlDATumOENOL/bDa2+
+         kaO8u1CvrJGXA8zKr1nlrgOWCfFaQPkQs2VOGiMmllzBI0z9YX3D6Zxkum0tn18IK3jQ
+         B+E6hz0aAnEu4bCJadUIavule25kVtZKkd/DfUy53IrR4Y1oZ6n5jQA91bEEO2O02xbD
+         UJcoeah60NaQVKzBkRah3h2Bw7oK0saTNETFfFVkofDl4n0d8k0N5/2me/8KjIKjZ6+7
+         zsWNZJsuo+qWAewkIQW272kNjQ+bMVOCv5XA+c1Jdx/dAu+rRZ6XcqtWc6r8e5aXXXP1
+         D0MQ==
+X-Gm-Message-State: AOJu0YyiVD6aCEwLVAeMhvhDdVzDUmRGMFf6WNH+cEWYc598cXxvhg6S
+	mNxcD1Vr/7IhRDZsGsXhx8SOHA==
+X-Received: by 2002:a05:600c:3148:b0:405:1c19:b747 with SMTP id h8-20020a05600c314800b004051c19b747mr24127659wmo.15.1699268765817;
+        Mon, 06 Nov 2023 03:06:05 -0800 (PST)
 Received: from m1x-phil.lan (176-131-220-199.abo.bbox.fr. [176.131.220.199])
-        by smtp.gmail.com with ESMTPSA id r13-20020a05600c458d00b00406443c8b4fsm11744176wmo.19.2023.11.06.03.05.56
+        by smtp.gmail.com with ESMTPSA id i20-20020a05600c355400b0040839fcb217sm11896421wmq.8.2023.11.06.03.06.03
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Nov 2023 03:05:58 -0800 (PST)
+        Mon, 06 Nov 2023 03:06:05 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org,
@@ -99,17 +99,14 @@ Cc: kvm@vger.kernel.org,
 	qemu-ppc@nongnu.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	"Richard W . M . Jones" <rjones@redhat.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	LIU Zhiwei <zhiwei_liu@linux.alibaba.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Alistair Francis <alistair.francis@wdc.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>
-Subject: [PULL 20/60] target/riscv: Use env_archcpu() in [check_]nanbox()
-Date: Mon,  6 Nov 2023 12:02:52 +0100
-Message-ID: <20231106110336.358-21-philmd@linaro.org>
+	David Hildenbrand <david@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PULL 21/60] target/s390x: Use env_archcpu() in handle_diag_308()
+Date: Mon,  6 Nov 2023 12:02:53 +0100
+Message-ID: <20231106110336.358-22-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
 References: <20231106110336.358-1-philmd@linaro.org>
@@ -121,65 +118,34 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xf7mbyJBjOfN
+X-TUID: 2B2+fGJ2rDKv
 
-When CPUArchState* is available (here CPURISCVState*), we
+When CPUArchState* is available (here CPUS390XState*), we
 can use the fast env_archcpu() macro to get ArchCPU* (here
-RISCVCPU*). The QOM cast RISCV_CPU() macro will be slower
-when building with --enable-qom-cast-debug.
+S390CPU*). The QOM cast S390_CPU() macro will be slower when
+building with --enable-qom-cast-debug.
 
-Inspired-by: Richard W.M. Jones <rjones@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-Reviewed-by: Richard W.M. Jones <rjones@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20231009110239.66778-3-philmd@linaro.org>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Message-Id: <20231009110239.66778-4-philmd@linaro.org>
 ---
- target/riscv/internals.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ target/s390x/diag.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/riscv/internals.h b/target/riscv/internals.h
-index b5f823c7ec..8239ae83cc 100644
---- a/target/riscv/internals.h
-+++ b/target/riscv/internals.h
-@@ -87,7 +87,7 @@ enum {
- static inline uint64_t nanbox_s(CPURISCVState *env, float32 f)
+diff --git a/target/s390x/diag.c b/target/s390x/diag.c
+index 8ce18e08f3..27ffd48576 100644
+--- a/target/s390x/diag.c
++++ b/target/s390x/diag.c
+@@ -77,7 +77,7 @@ void handle_diag_308(CPUS390XState *env, uint64_t r1, uint64_t r3, uintptr_t ra)
  {
-     /* the value is sign-extended instead of NaN-boxing for zfinx */
--    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
-+    if (env_archcpu(env)->cfg.ext_zfinx) {
-         return (int32_t)f;
-     } else {
-         return f | MAKE_64BIT_MASK(32, 32);
-@@ -97,7 +97,7 @@ static inline uint64_t nanbox_s(CPURISCVState *env, float32 f)
- static inline float32 check_nanbox_s(CPURISCVState *env, uint64_t f)
- {
-     /* Disable NaN-boxing check when enable zfinx */
--    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
-+    if (env_archcpu(env)->cfg.ext_zfinx) {
-         return (uint32_t)f;
-     }
- 
-@@ -113,7 +113,7 @@ static inline float32 check_nanbox_s(CPURISCVState *env, uint64_t f)
- static inline uint64_t nanbox_h(CPURISCVState *env, float16 f)
- {
-     /* the value is sign-extended instead of NaN-boxing for zfinx */
--    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
-+    if (env_archcpu(env)->cfg.ext_zfinx) {
-         return (int16_t)f;
-     } else {
-         return f | MAKE_64BIT_MASK(16, 48);
-@@ -123,7 +123,7 @@ static inline uint64_t nanbox_h(CPURISCVState *env, float16 f)
- static inline float16 check_nanbox_h(CPURISCVState *env, uint64_t f)
- {
-     /* Disable nanbox check when enable zfinx */
--    if (RISCV_CPU(env_cpu(env))->cfg.ext_zfinx) {
-+    if (env_archcpu(env)->cfg.ext_zfinx) {
-         return (uint16_t)f;
-     }
- 
+     bool valid;
+     CPUState *cs = env_cpu(env);
+-    S390CPU *cpu = S390_CPU(cs);
++    S390CPU *cpu = env_archcpu(env);
+     uint64_t addr =  env->regs[r1];
+     uint64_t subcode = env->regs[r3];
+     IplParameterBlock *iplb;
 -- 
 2.41.0
 

@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3005312eja;
-        Mon, 6 Nov 2023 11:58:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH9NRc2Z7yfQrMMPKnRDX5u5dozMJqSPGoyI9nGcYnx3XZt+WUBjQOeKXx/WzxA99pgU0Dl
-X-Received: by 2002:a05:622a:190c:b0:418:1088:7d69 with SMTP id w12-20020a05622a190c00b0041810887d69mr36446870qtc.18.1699300717794;
-        Mon, 06 Nov 2023 11:58:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300717; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3005432eja;
+        Mon, 6 Nov 2023 11:58:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHwxeQ+i4GD7BfybgJPIfwq+9cRcyu3AOX9ZYlGUE4C9pZPBpRNGDmeCD68Gjs9AvO9PNhi
+X-Received: by 2002:a05:6214:1313:b0:66d:18ec:8e6f with SMTP id pn19-20020a056214131300b0066d18ec8e6fmr40331743qvb.39.1699300734574;
+        Mon, 06 Nov 2023 11:58:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300734; cv=none;
         d=google.com; s=arc-20160816;
-        b=dGedoxowBPBeqRnAVGo+aR45f6esI6ikysw/PzgI0xjPulpfraN8DjCDt4jzUlVTj+
-         azUiBUCjrotgoPG46E1Jt6tD7yrfbHK9sls9PltD1d5bYjM9Wx0Vr/UHhwGi6p4VknYY
-         hX2PvkELiQhfDW5vKwAmE3ABz22AmkSuAY1u0GjF1yY0Rm9ZOrPDH6s+g29EzJ2y28KM
-         jipRJaUJ9eqU9LghwIoBNsrq57HP1sX8JzzE97xVi3ccShVA5CBnVN6hhtZpiOi5PpfJ
-         6F15+NgACXsG0mOEYedOZaMQSL4epi0cIz0LNlOrT2Msc4QdyAysW9gY2APGec93lY2q
-         cLaQ==
+        b=mzXp2uAjr+0ArH+raBQq+azA7EMV3TOC3zwcwnjM0DEZL8j7WSwaxXpDDH8UDv1kzU
+         15NtdZqM9QVkjXvysh5z9U7gBec2eHyIvM8GQ3tUgM5xmyXYa0v/OrHW6Zlufj0Wo9kj
+         XrTUF4bjNwX+O0EFxkkWTeE9TPb1qa2rQW3vSQfgeDB91Avh4kRmTSeYmvbZ1BvQjVSA
+         XdenLPI4z9pxNom7zFUv5AC1ylbl/8b0a99DoEh7Q/Ts0lXbqL+IPZqUjf7dY5/i+XUy
+         aitccqrtzRWjC8jF17H+2c6UQ0pUJ64dzy3EY15n8uSPLhYoCUop8rIQYvphnXBqhHls
+         +eCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3IJgWxMmUdLOBVuYUZ4BO4uyS9hEOvqvAglyEu5N/aM=;
+        bh=b/4LHUVwE3s/LELrt+0ER1ploJUp0OvQT5xXzN2r1Zo=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=qmQNGYoRseSBPIPULEU/vTg7BDtggOEU8jUV35MpzXyMDbWfa8Nd3IRJMhkDx/FtSO
-         HEJCRL2URKgPU/9bGAGdYfkXWjht5uX8AxvMitrKLtV7ZYJU3BDljhIIPaRFFfr736kn
-         4A/8AjDPahS+xGNg9yb3sX5BeelhWLV9FVRbySu+saYLw2snqhSbpnQUw3B5IkJxm7dr
-         vEHFzCH0iXcaIbVXfMRFSisBMDcqu1BZdD24c2O3iNemmgca/T3x3EzuCS5kxEfTEyRM
-         tWjopShtCiB6MHRz6ghY7eNRQL8kEsiJuT/dMIBU+oWw7RXdi5th+Pm5fu2PUsd5FQwK
-         yN9A==
+        b=iOY5jvfoXLrzo4iIQznPJr0Qhatxbdh6uyNlizEA7vH7u04fzwfTL4m/CxPxl7rP2F
+         jAggLRTUGOfXIlukU5ddnsrPSwogM3W9fMMQyiNA1nNgqaUfM+IU8Zge6uVIMv0agGud
+         dD3OR2dn9f9u7+GJWbNTOQatP0xXhU/LtDTh0QBTqeL1EFop16ADiNCcrSg6K4DETNfm
+         7MI1lODVzmhNxyWttyTJ/EeElUkrO6d85XLju//kFZlUzXGzgX76pGvkI9jHVPm/H4Bu
+         BHd9X2PKVVfkAOX6HwIQ/bj7qH+vdEwjhT6dvAwdZVxltk9IECvP0IWS1CgbqUBnePA9
+         EKBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=j6KlICEN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=wO03cTdG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8-20020ac85b88000000b00418162e6a6asi6285337qta.789.2023.11.06.11.58.37
+        by mx.google.com with ESMTPS id d9-20020a0cea89000000b00668da565494si6015821qvp.162.2023.11.06.11.58.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 11:58:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Nov 2023 11:58:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=j6KlICEN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=wO03cTdG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r05hX-0000vE-0Y; Mon, 06 Nov 2023 14:55:59 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r05h9-0006t9-NH; Mon, 06 Nov 2023 14:55:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05gy-0006OQ-3S; Mon, 06 Nov 2023 14:55:25 -0500
+ id 1r05gy-0006OT-IB; Mon, 06 Nov 2023 14:55:25 -0500
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05gm-00066e-M6; Mon, 06 Nov 2023 14:55:23 -0500
+ id 1r05go-00066S-Hv; Mon, 06 Nov 2023 14:55:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=3IJgWxMmUdLOBVuYUZ4BO4uyS9hEOvqvAglyEu5N/aM=; b=j6KlICENR/MCVSKkvWFpHlDir2
- SJpTd6hXGivub3V8Rz710ZQhhjzcIYKyHLqI4xBbKgJlXCMQUtDDjojU3CtRwaOyojn2drQl74kTH
- Kcola95OJDvw1AiBtg+MWnNHBl6subOMR5K8WmYvQway11zNxqyPfd7dY/I+/T7J8Bnj6qcnIDRwg
- UXPppJ5I9BsnvVnqy7e0KHwUcjjRNae1sgCvkXqLn7Q6wLNZAyGNSsLC3bLNadONxLFNKND0u0332
- 1VsdAXPFzU2KF+iIIkDrImtJZ2ad2Rl8ciGW6sNehFhqZZiXTVLM9if5CUSEg4+qs0cSblZv2qdiV
- DXZo9Nsw==;
+ bh=b/4LHUVwE3s/LELrt+0ER1ploJUp0OvQT5xXzN2r1Zo=; b=wO03cTdGV6iCEdBG6L0F1cccO1
+ QHSGg+nUHOXWPBZvM1na4u5Vn0DxTDkX6KPZkAonJt+d1Enf6ARbK0irjKYcgE98PDTHSUsp+ae/e
+ MErCOIrLehEAU9XtYb3Ab96/YhbXt3+WrtEkFl5fDCZxg/VCp9C3VZW5tF7f85QBmOHVtBUVdNmpK
+ MK0pvW0U+32sS60xeuqo6zB/MXVPkPcUmCAiu+qqQaHx9c0O4ngdT8NYhPcp8QuvyqAFFNrFJlyvV
+ TYhStPSHFu1/IJCYuapswv/aXPQwANpELKGmLssVZJgBYzav2I6TFCsFx087/9NOnZIHS82EV6YJy
+ Q2HkysFQ==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fc-007tas-W0; Mon, 06 Nov 2023 19:54:01 +0000
+ id 1r05fb-007taU-BN; Mon, 06 Nov 2023 19:54:00 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fd-001GPh-0e; Mon, 06 Nov 2023 19:54:01 +0000
+ Hat Linux)) id 1r05fb-001GOC-1Y; Mon, 06 Nov 2023 19:53:59 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,10 +116,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 42/46] hw/xtensa/xtfpga: use
- qemu_create_nic_device()
-Date: Mon,  6 Nov 2023 19:49:47 +0000
-Message-ID: <20231106195352.301038-43-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 23/46] hw/arm/exynos4: use qemu_create_nic_device()
+Date: Mon,  6 Nov 2023 19:49:28 +0000
+Message-ID: <20231106195352.301038-24-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
@@ -138,64 +137,45 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WSbar/++oZn8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fp/0ossGlfBV
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/xtensa/xtfpga.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ hw/arm/exynos4_boards.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index fbad1c83a3..f49e6591dc 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -141,14 +141,16 @@ static void xtfpga_net_init(MemoryRegion *address_space,
-         hwaddr base,
-         hwaddr descriptors,
-         hwaddr buffers,
--        qemu_irq irq, NICInfo *nd)
-+        qemu_irq irq)
- {
-     DeviceState *dev;
+diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+index b0e13eb4f0..003992189b 100644
+--- a/hw/arm/exynos4_boards.c
++++ b/hw/arm/exynos4_boards.c
+@@ -76,10 +76,8 @@ static void lan9215_init(uint32_t base, qemu_irq irq)
      SysBusDevice *s;
-     MemoryRegion *ram;
  
--    dev = qdev_new("open_eth");
--    qdev_set_nic_properties(dev, nd);
-+    dev = qemu_create_nic_device("open_eth", true, NULL);
-+    if (!dev) {
-+        return;
-+    }
- 
-     s = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(s, &error_fatal);
-@@ -301,10 +303,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-         memory_region_add_subregion(system_memory, board->io[1], io);
-     }
-     xtfpga_fpga_init(system_io, 0x0d020000, freq);
+     /* This should be a 9215 but the 9118 is close enough */
 -    if (nd_table[0].used) {
--        xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000,
--                        extints[1], nd_table);
--    }
-+    xtfpga_net_init(system_io, 0x0d030000, 0x0d030400, 0x0d800000, extints[1]);
- 
-     serial_mm_init(system_io, 0x0d050020, 2, extints[0],
-                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+-        qemu_check_nic_model(&nd_table[0], "lan9118");
+-        dev = qdev_new(TYPE_LAN9118);
+-        qdev_set_nic_properties(dev, &nd_table[0]);
++    dev = qemu_create_nic_device(TYPE_LAN9118, true, NULL);
++    if (dev) {
+         qdev_prop_set_uint32(dev, "mode_16bit", 1);
+         s = SYS_BUS_DEVICE(dev);
+         sysbus_realize_and_unref(s, &error_fatal);
 -- 
 2.41.0
 

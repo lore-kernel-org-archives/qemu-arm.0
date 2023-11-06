@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m13-20020a5d4a0d000000b00327b5ca093dsm300326wrq.117.2023.11.06.10.58.28
+        by smtp.gmail.com with ESMTPSA id z8-20020adfe548000000b003143c9beeaesm327095wrm.44.2023.11.06.10.58.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 06 Nov 2023 10:58:30 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6DCEC65766;
-	Mon,  6 Nov 2023 18:51:14 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id D32A76575F;
+	Mon,  6 Nov 2023 18:51:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -25,58 +25,50 @@ Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Chris Wulff <crwulff@gmail.com>,
 	Marek Vasut <marex@denx.de>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 22/22] Revert "tests/tcg/nios2: Re-enable linux-user tests"
-Date: Mon,  6 Nov 2023 18:51:12 +0000
-Message-Id: <20231106185112.2755262-23-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>,
+	Greg Manning <gmanning@rapitasystems.com>
+Subject: [PATCH 15/22] plugins: disable lockstep plugin on windows
+Date: Mon,  6 Nov 2023 18:51:05 +0000
+Message-Id: <20231106185112.2755262-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231106185112.2755262-1-alex.bennee@linaro.org>
 References: <20231106185112.2755262-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qqabPuJb42en
+X-TUID: 30HFhuzg3J9J
 
-nios2 signal tests are broken again:
+From: Greg Manning <gmanning@rapitasystems.com>
 
-  retry.py -n 10 -c -- ./qemu-nios2 ./tests/tcg/nios2-linux-user/signals
-  Results summary:
-  0: 8 times (80.00%), avg time 2.254 (0.00 varience/0.00 deviation)
-  -11: 2 times (20.00%), avg time 0.253 (0.00 varience/0.00 deviation)
-  Ran command 10 times, 8 passes
+The lockstep plugin uses unix sockets and would require a different
+communication mechanism to work on Windows.
 
-This wasn't picked up by CI as we don't have a docker container that
-can build QEMU with the nios2 compiler. I don't have to bisect the
-breakage and the target is orphaned anyway so take the easy route and
-revert it.
-
-This reverts commit 20e7524ff9f0cab4c9a0306014d6f3d7b467ae1e.
-
-Cc: Chris Wulff <crwulff@gmail.com>
-Cc: Marek Vasut <marex@denx.de>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Greg Manning <gmanning@rapitasystems.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231102172053.17692-4-gmanning@rapitasystems.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231103195956.1998255-29-alex.bennee@linaro.org>
 ---
- tests/tcg/nios2/Makefile.target | 11 +++++++++++
- 1 file changed, 11 insertions(+)
- create mode 100644 tests/tcg/nios2/Makefile.target
+ contrib/plugins/Makefile | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/tests/tcg/nios2/Makefile.target b/tests/tcg/nios2/Makefile.target
-new file mode 100644
-index 0000000000..b38e2352b7
---- /dev/null
-+++ b/tests/tcg/nios2/Makefile.target
-@@ -0,0 +1,11 @@
-+# nios2 specific test tweaks
+diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
+index 751fa38619..1783750cf6 100644
+--- a/contrib/plugins/Makefile
++++ b/contrib/plugins/Makefile
+@@ -17,7 +17,13 @@ NAMES += execlog
+ NAMES += hotblocks
+ NAMES += hotpages
+ NAMES += howvec
 +
-+# Currently nios2 signal handling is broken
-+run-signals: signals
-+	$(call skip-test, $<, "BROKEN")
-+run-plugin-signals-with-%:
-+	$(call skip-test, $<, "BROKEN")
-+run-linux-test: linux-test
-+	$(call skip-test, $<, "BROKEN")
-+run-plugin-linux-test-with-%:
-+	$(call skip-test, $<, "BROKEN")
++# The lockstep example communicates using unix sockets,
++# and can't be easily made to work on windows.
++ifneq ($(CONFIG_WIN32),y)
+ NAMES += lockstep
++endif
++
+ NAMES += hwprofile
+ NAMES += cache
+ NAMES += drcov
 -- 
 2.39.2

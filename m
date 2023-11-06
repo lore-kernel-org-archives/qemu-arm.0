@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004619eja;
-        Mon, 6 Nov 2023 11:56:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHneZP4RzQ8Q2M6QnLezO9opCfnxDSnfY/6SlOGRxIwa51BzXspHh3yHCOJdK/BqxHn3BMZ
-X-Received: by 2002:ac8:5c56:0:b0:417:944a:bcd0 with SMTP id j22-20020ac85c56000000b00417944abcd0mr37447507qtj.3.1699300612126;
-        Mon, 06 Nov 2023 11:56:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300612; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004628eja;
+        Mon, 6 Nov 2023 11:56:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFggkK2SMWhVre3WllN8iR1EcgB7l0H875JDQYO6f8g4ZIikZsUeFFVWbvyPi2gjSCIHjgF
+X-Received: by 2002:a05:6214:5691:b0:66d:1012:c16a with SMTP id qm17-20020a056214569100b0066d1012c16amr30968145qvb.1.1699300614125;
+        Mon, 06 Nov 2023 11:56:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300614; cv=none;
         d=google.com; s=arc-20160816;
-        b=bFo31863KFGh93wm5NdKFccbb3w9wje4U6EMPtdiQuKcw9pZzynXwYgk1ogmVnoiyV
-         h3wGaftrdDVJCrFiU8pfH7qX1uJi3dvPlG44Ni7/S5JR3icaE1G1trF2WMkM4n2FOFVb
-         t6Q6UIrx518jybJaL7WkjBMilEB1zMnIMWfSyAxlyGd2edkh+uOgWm5LM60GsTX9MrTf
-         sBsQiTdzQqfVS2hoqfZMfGPI6lz7cCIxCGb0N8BXeiUmZw2A2pFcoKEFZJyvaHfy/gxz
-         ZomsISOgkwX+kciIIXN7P2xxh2pfSJ/HaCKTP2WNhhERQPm0N0qR3CI2hl9Es2VELoMB
-         r/RQ==
+        b=lRJFKoL7bA+XqUqrSjYhTGqNaihVeTrSrTDtwEiutu7dywdmDIXxluI9MFD+bOTlLB
+         /iLFO0eUFTB7ArQ/qM7EuVDpxDqztaUa8c0nrij0smJl0zBTuwvL0em+T0iEYNwdxTGP
+         UqTWl3yehBKIf8Gc0vG7eABexuKVysqInBSfnpLl+qC3kmAHIAGwrOXMlZTYXmjM5z0p
+         Gt5P9OemNjl9rjwYneULG85KpBRYmvfHVOc/2voGqx65exdhrgLFOMSXyolxRmeXcOrR
+         GY8FeDc8d5Ult/sdj42xeq8THYwcaIeSOcQcE5nJ7u/mp2HU3Ex8VhGTAhGXKCrzmbOn
+         lZ7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=uVqD0N8xPMjrBJQgjiJIoni6BiAb3d/o4YlG390jwak=;
+        bh=MtsxthwV/XHTVMI8Ph+V2vIGIyQmamq03UN301HMpX4=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=VoEyL/MTDK2DJKdoqwJpkPXBM6aqZ7zgp3HLbUpEWIGlplfvnJ3LKIlF3qnmZTSB64
-         Y6yhMvtrH8Pml1sPnSNvFK7EKHbI+U0nvtmKleLC/GkHmXRhM2Iz/JY/+IrKBP8Ng5V4
-         t56M9kZNN/44HxzX0ZxuOCHtLGqCEw05Lwj2CDRFsVq06x/GoJrvdGlJPNQlRKhgdNYr
-         xzTn17cI0HtuZ8qXsAddiN7YCZ2Sg4QQbWS6G3Zh4onNaASxhYnri0OnZW0bJRQKWWWd
-         a59uQVGPylRco5kpXjGY4GPizvkLvcqAn4saT72znEOLfivALeWTWfj+6wYk49+pEmbK
-         X4wg==
+        b=yAdUT6er2lcTwWiJe9D6UAp0lq2YL4bG2sV6VBhTd+Xm+a3tIpxQiO6RQ71LCuXIlC
+         YEYA8KjAia3cMW5FPMEeBpVnzH6NgsOUoYBTDUKtx5Af8n1yW/FIRSzEIxZzAcNaqkqU
+         0/n9QvqFiYgVW/kE4P2cJSwIUcqkS68b03X9OJVoAsQ5bDp6+/EBT/VFlGKaNITCkHth
+         LjGct0X0nbEvmnmU43xRf7HBZer6QnYVQtjrvusJV5pR3PKKetgF4PnVh2tnEF6YkJNx
+         /EKAnX/K6NSP8FSsq7rlcWKiWoWrUlqhhDsRmYS6qQ7TEZj7UAgLSrWSudNWxLxaoYbG
+         WmZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=roICQBHr;
+       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b="DAx/R55k";
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 14-20020ac8570e000000b0041908908ba9si6007439qtw.165.2023.11.06.11.56.51
+        by mx.google.com with ESMTPS id t17-20020a056214155100b006585a789586si6096564qvw.216.2023.11.06.11.56.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 11:56:52 -0800 (PST)
+        Mon, 06 Nov 2023 11:56:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=roICQBHr;
+       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b="DAx/R55k";
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.628292.979635 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.628296.979654 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1r05hJ-0003Za-DY; Mon, 06 Nov 2023 19:55:45 +0000
+	id 1r05hM-0004Dt-3r; Mon, 06 Nov 2023 19:55:48 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 628292.979635; Mon, 06 Nov 2023 19:55:45 +0000
+Received: by outflank-mailman (output) from mailman id 628296.979654; Mon, 06 Nov 2023 19:55:47 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1r05hI-0003Vt-Rj; Mon, 06 Nov 2023 19:55:44 +0000
-Received: by outflank-mailman (input) for mailman id 628292;
- Mon, 06 Nov 2023 19:55:41 +0000
+	id 1r05hL-000476-FZ; Mon, 06 Nov 2023 19:55:47 +0000
+Received: by outflank-mailman (input) for mailman id 628296;
+ Mon, 06 Nov 2023 19:55:43 +0000
 Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
  helo=se1-gles-flk1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=OHvK=GT=casper.srs.infradead.org=BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1r05hF-0001Ig-Dx
- for xen-devel@lists.xenproject.org; Mon, 06 Nov 2023 19:55:41 +0000
-Received: from casper.infradead.org (casper.infradead.org
- [2001:8b0:10b:1236::1])
+ <SRS0=nwd5=GT=desiato.srs.infradead.org=BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
+ id 1r05hG-0001Ig-PO
+ for xen-devel@lists.xenproject.org; Mon, 06 Nov 2023 19:55:42 +0000
+Received: from desiato.infradead.org (desiato.infradead.org
+ [2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id 752943bf-7cde-11ee-9b0e-b553b5be7939;
- Mon, 06 Nov 2023 20:55:38 +0100 (CET)
+ id 760c71ff-7cde-11ee-9b0e-b553b5be7939;
+ Mon, 06 Nov 2023 20:55:40 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fb-007tab-VU; Mon, 06 Nov 2023 19:54:00 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1r05fb-00AkFf-2g; Mon, 06 Nov 2023 19:54:00 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fc-001GOe-0A; Mon, 06 Nov 2023 19:54:00 +0000
+ Hat Linux)) id 1r05fa-001GNL-1G; Mon, 06 Nov 2023 19:53:58 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: 752943bf-7cde-11ee-9b0e-b553b5be7939
+X-Inumbo-ID: 760c71ff-7cde-11ee-9b0e-b553b5be7939
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+	d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=uVqD0N8xPMjrBJQgjiJIoni6BiAb3d/o4YlG390jwak=; b=roICQBHrd89cGUxxnVQ4SGclNs
-	XDjywuqCAUA3rIR1ANWkBnG8pvsdilTtU1Shmu14Xh+Dlja1cu83/djrGY4S3Brgit+tJ175Yxw72
-	qHussyQYr2ufcgB2kP3CwPwt5erN4ypQ8VYgQk9vlxWBH8Y3bG/SHHsmKBhgCrf4CDQte6PSsVbha
-	BCxmvRH90iYXqsb4Dn+lUOWkYiBtjqO6gfKekI1FW4QmW4AmoU83zuRoaUao53crzpCx6K6cl20aT
-	9so4T+ODmprdAaxd2nTr/MdJfd5BZ4v0402+Ux9u5VnzUrkeIPJktgn+lvga+phr+nXUtuYczzq1F
-	3y7Vlc7Q==;
+	bh=MtsxthwV/XHTVMI8Ph+V2vIGIyQmamq03UN301HMpX4=; b=DAx/R55kK7r8sP6AD0SSADmu8W
+	6mv00cH13ry/O54Sp8qxXE34rxLnhofaOJUW1qGtQ/qsfuhzcqJUVr9I7hQJBodwJhYyKbuRvwIP0
+	mhghhgHKbon1H8aYLpaHHe3QpOzgK09XrLyS83jLgmxFf3wl63b2Mble6kSsVzMwp00NGKftWyDy2
+	67oJ3dnffyFdKhWF4GFw5dn6n5g3AbZO7tcWFsi2ouv9N9AhqXxKbDrhkDzjRtGNT9HPUn8OpRyY8
+	nuuQRVH7hiUNbcQiAdIayce9GCd6MAsp19CIW5rrY9YWCRZRUENfxq9jw/TX254Mmyw5fP+Z53IvD
+	Jyu/YTnQ==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -150,91 +150,63 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 29/46] hw/arm/stellaris: use qemu_find_nic_info()
-Date: Mon,  6 Nov 2023 19:49:34 +0000
-Message-ID: <20231106195352.301038-30-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 12/46] hw/mips/fuloong2e: use pci_init_nic_devices()
+Date: Mon,  6 Nov 2023 19:49:17 +0000
+Message-ID: <20231106195352.301038-13-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: ixGKxlvcsTTQ
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by desiato.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: Mtc36W2+/9kS
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Rather than just using qemu_configure_nic_device(), populate the MAC
-address in the system-registers device by peeking at the NICInfo before
-it's assigned to the device.
+The previous behaviour was: *if* the first NIC specified on the command
+line was an RTL8139 (or unspecified model) then it gets assigned to PCI
+slot 7, which is where the Fuloong board had an RTL8139. All other
+devices (including the first, if it was specified a anything other then
+an rtl8319) get dynamically assigned on the bus.
 
-Generate the MAC address early, if there is no matching -nic option.
-Otherwise the MAC address wouldn't be generated until net_client_init1()
-runs.
+The new behaviour is subtly different: If the first NIC was given a
+specific model *other* than rtl8139, and a subsequent NIC was not,
+then the rtl8139 (or unspecified) NIC will go to slot 7 and the rest
+will be dynamically assigned.
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/arm/stellaris.c | 30 ++++++++++++++++++++++--------
- 1 file changed, 22 insertions(+), 8 deletions(-)
+ hw/mips/fuloong2e.c | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index dd90f686bf..fdf15aab63 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1027,7 +1027,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     DeviceState *ssys_dev;
-     int i;
-     int j;
--    const uint8_t *macaddr;
-+    NICInfo *nd;
-+    MACAddr mac;
- 
-     MemoryRegion *sram = g_new(MemoryRegion, 1);
-     MemoryRegion *flash = g_new(MemoryRegion, 1);
-@@ -1050,12 +1051,22 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-      * need its sysclk output.
-      */
-     ssys_dev = qdev_new(TYPE_STELLARIS_SYS);
--    /* Most devices come preprogrammed with a MAC address in the user data. */
--    macaddr = nd_table[0].macaddr.a;
-+
-+    /*
-+     * Most devices come preprogrammed with a MAC address in the user data.
-+     * Generate a MAC address now, if there isn't a matching -nic for it.
-+     */
-+    nd = qemu_find_nic_info("stellaris_enet", true, "stellaris");
-+    if (nd) {
-+        memcpy(mac.a, nd->macaddr.a, sizeof(mac.a));
-+    } else {
-+        qemu_macaddr_default_if_unset(&mac);
-+    }
-+
-     qdev_prop_set_uint32(ssys_dev, "user0",
--                         macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16));
-+                         mac.a[0] | (mac.a[1] << 8) | (mac.a[2] << 16));
-     qdev_prop_set_uint32(ssys_dev, "user1",
--                         macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16));
-+                         mac.a[3] | (mac.a[4] << 8) | (mac.a[5] << 16));
-     qdev_prop_set_uint32(ssys_dev, "did0", board->did0);
-     qdev_prop_set_uint32(ssys_dev, "did1", board->did1);
-     qdev_prop_set_uint32(ssys_dev, "dc0", board->dc0);
-@@ -1267,10 +1278,13 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     if (board->dc4 & (1 << 28)) {
-         DeviceState *enet;
- 
--        qemu_check_nic_model(&nd_table[0], "stellaris");
+diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+index 97b2c8ed8e..a45aac368c 100644
+--- a/hw/mips/fuloong2e.c
++++ b/hw/mips/fuloong2e.c
+@@ -201,19 +201,9 @@ static void main_cpu_reset(void *opaque)
+ /* Network support */
+ static void network_init(PCIBus *pci_bus)
+ {
+-    int i;
 -
-         enet = qdev_new("stellaris_enet");
--        qdev_set_nic_properties(enet, &nd_table[0]);
-+        if (nd) {
-+            qdev_set_nic_properties(enet, nd);
-+        } else {
-+            qdev_prop_set_macaddr(enet, "mac", mac.a);
-+        }
-+
-         sysbus_realize_and_unref(SYS_BUS_DEVICE(enet), &error_fatal);
-         sysbus_mmio_map(SYS_BUS_DEVICE(enet), 0, 0x40048000);
-         sysbus_connect_irq(SYS_BUS_DEVICE(enet), 0, qdev_get_gpio_in(nvic, 42));
+-    for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
+-        const char *default_devaddr = NULL;
+-
+-        if (i == 0 && (!nd->model || strcmp(nd->model, "rtl8139") == 0)) {
+-            /* The Fuloong board has a RTL8139 card using PCI SLOT 7 */
+-            default_devaddr = "07";
+-        }
+-
+-        pci_nic_init_nofail(nd, pci_bus, "rtl8139", default_devaddr);
+-    }
++    /* The Fuloong board has a RTL8139 card using PCI SLOT 7 */
++    pci_init_nic_in_slot(pci_bus, "rtl8139", NULL, "07");
++    pci_init_nic_devices(pci_bus, "rtl8139");
+ }
+ 
+ static void mips_fuloong2e_init(MachineState *machine)
 -- 
 2.41.0
 

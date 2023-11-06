@@ -1,68 +1,68 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004568eja;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3004569eja;
         Mon, 6 Nov 2023 11:56:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF31aAtX1QNTR5lUjFykvpc6uTiOe6t41NDaK/uwhLE4BfJOAlVrRtWiTQq3qqzsEk3Myn4
-X-Received: by 2002:a05:622a:170f:b0:410:840c:dee4 with SMTP id h15-20020a05622a170f00b00410840cdee4mr34626926qtk.0.1699300605900;
-        Mon, 06 Nov 2023 11:56:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300605; cv=none;
+X-Google-Smtp-Source: AGHT+IG9GVn+XiKavZ5jaDqCH1TL9AvMREAdSK6gTbj0SweINNSHkoq1pm/gX/7uzJGCgrdeRXf0
+X-Received: by 2002:a05:620a:2711:b0:778:9b9f:ccbb with SMTP id b17-20020a05620a271100b007789b9fccbbmr32777615qkp.0.1699300606027;
+        Mon, 06 Nov 2023 11:56:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300606; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pz79Jb32pqQsrfKJBZ0o+j0cEnre/l5W4HwJJah5wSoWMqVwzFGQ4qadpA14Vu9237
-         vaFwacIUaNswTKyTzuev4eXdbg7UFWlxM9eQzzfTaOVcxRG7HbzYyndZyn2+IGIzgtyI
-         mE6PESSe1BQ7R277jZLKyv58A+aP6LBn9ToNKn9FgIvW1cP402ccFnj+GG9o9k/cQHz2
-         rr24r7zhuPUgAHxBB+LxXfMKiCNswmgOTP/+tnltaNJSHFIZYp3rX0LhZnV7V+VWtGs6
-         68nrF9tlkKhNs95v8vjSDq8bCa5TCpy1aa0jn39pOQcO0Q7N41xbrrmup8Puc1TD9qoz
-         kZ4g==
+        b=0zk0MBwterQfvhwrCWWLJdlrWaVge+3mjjzPN4SYaVsqC0ww29hmAUfD0ZyOo7tqEX
+         mvv/mNB1iLlfrS1CBigpFDGOMq8ZjTOlwhtHwSDzFYQo6q/TYK1Z0SeI0es9oI6YqEeO
+         wDmwoT/JEIpENmK4KpBGYimYcTJdjTQ+uZlQ0HxKLNeDckZ699KPfYYJhVTZRUxtBAfe
+         jkO9JG+usrwO7AiSmtuTkvfBZAvNW+c6KO/cEIoKqJNCV/80BRiSxyMj7hUnsN5Hct+A
+         pL08bFM2QDu86syKZapDUhOqneaHlH8BDqrjod140ZVjbm6IW/KzRjDX7fCvbqqdxQCo
+         KltA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature
          :precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=lQGkWaXlk0kHJQOu4VM9UyFsuEmDTGHLTrgFw2PSPLc=;
+        bh=nQ3rktK8dEdIEwAMeeCC6bqdVVt9BSYkg4MRVTEfqOM=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=ZW2vhEllJUgQUsrmSxRP0ET0jjXAVdFo+3AdjrK7qaGgh1Eh3cVT9EeHz3XlmTo/1M
-         tcoN0umAfGmf5qyhT0FYOneUZjgvc1eAbypCK129bBRC0um2nAakys5WZl6N3K6K6S1i
-         vqzclgDpaEEuiLKUDqDPERw1hRoSG8K37udw351AneCK0pdqcRKFpe0L6LRNhWwjwd5t
-         ZwjOY8YWXgDUCaDGrRpzZbNBN40Y72wnoYHPgMbOzggTCvt7OGoqYeFITXj62Yues/BW
-         DhLJMHfrJHrCV8gwOizz1CyVcaADlHw1kYsOR892xuD0aUMCBYz9/m+V7KjbmY3AKwsI
-         w0bg==
+        b=sRI0z7oKepWYKOxhYnH2h56gT0h5/tinBjPfEl4tvPTOlXVe27ToYDODbhm4Q7yW13
+         NwHrl7hDdrGjWDBFR2Rgj0wJ68Ltv5mXN9W4Hs0nYV7jHPg/6oEaV5M4YY/nBpfqxsfn
+         cLOVfL+gQOSP4sCZ+7oQ5iHQdbY5d+DlZTx/h1Dr2Bkr6cSItGPRTyHiIPdjVYJnzZnv
+         gYhSl+Xn2x/gntBL6V2cuwK6/bVKXVNh2XlXc3pKhjgIHl41qEdcvCnbKsGO4pjWI1xq
+         2SlKYh/siTxXOB5LFXo2pD4Wb1sdvYX0XpecigVKT2v22dvd/6DJKNzz5/9jwwNVkvsI
+         wImw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=M76NPgkC;
+       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=SlkY4tP2;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id g18-20020ac87d12000000b0041b83bbd0eesi5726507qtb.43.2023.11.06.11.56.45
+        by mx.google.com with ESMTPS id f1-20020a05620a280100b007788fc003aasi6251832qkp.618.2023.11.06.11.56.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Nov 2023 11:56:45 -0800 (PST)
+        Mon, 06 Nov 2023 11:56:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=M76NPgkC;
+       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=SlkY4tP2;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.628291.979617 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.628290.979612 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1r05hG-00037I-Vx; Mon, 06 Nov 2023 19:55:42 +0000
+	id 1r05hG-0002s1-H5; Mon, 06 Nov 2023 19:55:42 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 628291.979617; Mon, 06 Nov 2023 19:55:42 +0000
+Received: by outflank-mailman (output) from mailman id 628290.979612; Mon, 06 Nov 2023 19:55:42 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1r05hG-00035V-M3; Mon, 06 Nov 2023 19:55:42 +0000
-Received: by outflank-mailman (input) for mailman id 628291;
- Mon, 06 Nov 2023 19:55:40 +0000
+	id 1r05hF-0002qT-U2; Mon, 06 Nov 2023 19:55:41 +0000
+Received: by outflank-mailman (input) for mailman id 628290;
+ Mon, 06 Nov 2023 19:55:39 +0000
 Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
  helo=se1-gles-sth1.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=nwd5=GT=desiato.srs.infradead.org=BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@srs-se1.protection.inumbo.net>)
- id 1r05hE-00024f-Ml
- for xen-devel@lists.xenproject.org; Mon, 06 Nov 2023 19:55:40 +0000
+ id 1r05hD-00024f-MW
+ for xen-devel@lists.xenproject.org; Mon, 06 Nov 2023 19:55:39 +0000
 Received: from desiato.infradead.org (desiato.infradead.org
  [2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id 74829bfb-7cde-11ee-98da-6d05b1d4d9a1;
- Mon, 06 Nov 2023 20:55:37 +0100 (CET)
+ id 7419ae07-7cde-11ee-98da-6d05b1d4d9a1;
+ Mon, 06 Nov 2023 20:55:36 +0100 (CET)
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
  by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1r05fa-00AkFZ-1z; Mon, 06 Nov 2023 19:53:59 +0000
+ id 1r05fa-00AkFe-1t; Mon, 06 Nov 2023 19:53:59 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fZ-001GMb-14; Mon, 06 Nov 2023 19:53:57 +0000
+ Hat Linux)) id 1r05fa-001GNG-0t; Mon, 06 Nov 2023 19:53:58 +0000
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -73,17 +73,17 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
  <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-X-Inumbo-ID: 74829bfb-7cde-11ee-98da-6d05b1d4d9a1
+X-Inumbo-ID: 7419ae07-7cde-11ee-98da-6d05b1d4d9a1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description;
-	bh=lQGkWaXlk0kHJQOu4VM9UyFsuEmDTGHLTrgFw2PSPLc=; b=M76NPgkCYn+13IEfnWOpGFyHqC
-	TrrbmTHCT04fTedllyOjCpCNMndbfiKzftDnT+OKNyY1NkCYQyeAe3nnU+nJHOM/PqxcxQ37qTWWC
-	LG9lJFgdiJxBfeVjJWwF4wSvM0o6fKz6QNmBFb+tM521TGVpXl5A6dDlgh7zCzsoCYlvi+6HHxln+
-	9Jab/Ojr9pjujlwIUn7m9mG1IoTXZC7y3vdg8jDeeXFqHrdNh5PVCLVBVgGttoeybhNwE9ByQBoSB
-	9Ev80pQZCwSMEWEUUOj0yzda1SlfY6tj7W9y6pnVhFjYF2jbF7/oMxl25FSZeM0xgT8dU3DqupTyy
-	AvfgROSw==;
+	bh=nQ3rktK8dEdIEwAMeeCC6bqdVVt9BSYkg4MRVTEfqOM=; b=SlkY4tP2znbXS4OHj3RcvyUsSm
+	tuzLgYByxSm10vbMtYpyBtc8ACf6FEKT8fPuxx5Pb0dCNYaSL3cYvM9If40duOtk7XbVSLE3yjIGt
+	9ASf8Ehupryu5QVXH1ak2UGqTv3xZ4i2+Bl1Pn5vKVhMe3mG1hbH6zKXlYBBCc/rKqJZ7cHDIX57b
+	b1Ey2YUdG5TNE5hWQDIAhh+x7XnaMBHNuGjsQPNoY2lgSCHi5ogIUlFrNHhlik79+xhmB9oDZBvKu
+	XaK/MHdaHL9U1QktbGG1tz8vpQ7S+tUHNSXNctY/Boc7rJacSZAxXv8qBUQ+RqMjAW9vnAEn7D4ho
+	RPVIRK3g==;
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -150,9 +150,9 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 01/46] net: add qemu_{configure,create}_nic_device(), qemu_find_nic_info()
-Date: Mon,  6 Nov 2023 19:49:06 +0000
-Message-ID: <20231106195352.301038-2-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 11/46] hw/loongarch: use pci_init_nic_devices()
+Date: Mon,  6 Nov 2023 19:49:16 +0000
+Message-ID: <20231106195352.301038-12-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
@@ -160,111 +160,30 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: David Woodhouse <dwmw2@infradead.org>
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by desiato.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: hubxBvlCkNHe
+X-TUID: LX0Azo+yawul
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
-Most code which directly accesses nd_table[] and nb_nics uses them for
-one of two things. Either "I have created a NIC device and I'd like a
-configuration for it", or "I will create a NIC device *if* there is a
-configuration for it".  With some variants on the theme around whether
-they actually *check* if the model specified in the configuration is
-the right one.
-
-Provide functions which perform both of those, allowing platforms to
-be a little more consistent and as a step towards making nd_table[]
-and nb_nics private to the net code.
-
-Also export the qemu_find_nic_info() helper, as some platforms have
-special cases they need to handle.
-
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-Reviewed-by: Paul Durrant <paul@xen.org>
 ---
- include/net/net.h |  7 ++++++-
- net/net.c         | 51 +++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 57 insertions(+), 1 deletion(-)
+ hw/loongarch/virt.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/include/net/net.h b/include/net/net.h
-index 2fb1c9181c..56be694c75 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -205,7 +205,12 @@ int qemu_show_nic_models(const char *arg, const char *const *models);
- void qemu_check_nic_model(NICInfo *nd, const char *model);
- int qemu_find_nic_model(NICInfo *nd, const char * const *models,
-                         const char *default_model);
--
-+NICInfo *qemu_find_nic_info(const char *typename, bool match_default,
-+                            const char *alias);
-+bool qemu_configure_nic_device(DeviceState *dev, bool match_default,
-+                               const char *alias);
-+DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
-+                                    const char *alias);
- void print_net_client(Monitor *mon, NetClientState *nc);
- void net_socket_rs_init(SocketReadState *rs,
-                         SocketReadStateFinalize *finalize,
-diff --git a/net/net.c b/net/net.c
-index bbe33da176..f8b4973a1e 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -1072,6 +1072,57 @@ static int net_init_nic(const Netdev *netdev, const char *name,
-     return idx;
- }
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 4b7dc67a2d..c48804ac38 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -504,9 +504,7 @@ static void loongarch_devices_init(DeviceState *pch_pic, LoongArchMachineState *
+     fdt_add_uart_node(lams);
  
-+NICInfo *qemu_find_nic_info(const char *typename, bool match_default,
-+                            const char *alias)
-+{
-+    NICInfo *nd;
-+    int i;
-+
-+    for (i = 0; i < nb_nics; i++) {
-+        nd = &nd_table[i];
-+
-+        if (!nd->used || nd->instantiated) {
-+            continue;
-+        }
-+
-+        if ((match_default && !nd->model) || !g_strcmp0(nd->model, typename)
-+            || (alias && !g_strcmp0(nd->model, alias))) {
-+            return nd;
-+        }
-+    }
-+    return NULL;
-+}
-+
-+
-+/* "I have created a device. Please configure it if you can" */
-+bool qemu_configure_nic_device(DeviceState *dev, bool match_default,
-+                               const char *alias)
-+{
-+    NICInfo *nd = qemu_find_nic_info(object_get_typename(OBJECT(dev)),
-+                                     match_default, alias);
-+
-+    if (nd) {
-+        qdev_set_nic_properties(dev, nd);
-+        return true;
-+    }
-+    return false;
-+}
-+
-+/* "Please create a device, if you have a configuration for it" */
-+DeviceState *qemu_create_nic_device(const char *typename, bool match_default,
-+                                    const char *alias)
-+{
-+    NICInfo *nd = qemu_find_nic_info(typename, match_default, alias);
-+    DeviceState *dev;
-+
-+    if (!nd) {
-+        return NULL;
-+    }
-+
-+    dev = qdev_new(typename);
-+    qdev_set_nic_properties(dev, nd);
-+    return dev;
-+}
+     /* Network init */
+-    for (i = 0; i < nb_nics; i++) {
+-        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
+-    }
++    pci_init_nic_devices(pci_bus, mc->default_nic);
  
- static int (* const net_client_init_fun[NET_CLIENT_DRIVER__MAX])(
-     const Netdev *netdev,
+     /*
+      * There are some invalid guest memory access.
 -- 
 2.41.0
 

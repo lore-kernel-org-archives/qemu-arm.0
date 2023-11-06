@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3005432eja;
-        Mon, 6 Nov 2023 11:58:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHwxeQ+i4GD7BfybgJPIfwq+9cRcyu3AOX9ZYlGUE4C9pZPBpRNGDmeCD68Gjs9AvO9PNhi
-X-Received: by 2002:a05:6214:1313:b0:66d:18ec:8e6f with SMTP id pn19-20020a056214131300b0066d18ec8e6fmr40331743qvb.39.1699300734574;
-        Mon, 06 Nov 2023 11:58:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699300734; cv=none;
+Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3005611eja;
+        Mon, 6 Nov 2023 11:59:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEXexC+8mBEo0lVyKhnZAonlcyXInUwn46BStKx8pINIXd0pCRYdJuBi6lFtApeG0m6uRUe
+X-Received: by 2002:a25:df8b:0:b0:d9a:cd62:410c with SMTP id w133-20020a25df8b000000b00d9acd62410cmr30730954ybg.4.1699300760034;
+        Mon, 06 Nov 2023 11:59:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699300760; cv=none;
         d=google.com; s=arc-20160816;
-        b=mzXp2uAjr+0ArH+raBQq+azA7EMV3TOC3zwcwnjM0DEZL8j7WSwaxXpDDH8UDv1kzU
-         15NtdZqM9QVkjXvysh5z9U7gBec2eHyIvM8GQ3tUgM5xmyXYa0v/OrHW6Zlufj0Wo9kj
-         XrTUF4bjNwX+O0EFxkkWTeE9TPb1qa2rQW3vSQfgeDB91Avh4kRmTSeYmvbZ1BvQjVSA
-         XdenLPI4z9pxNom7zFUv5AC1ylbl/8b0a99DoEh7Q/Ts0lXbqL+IPZqUjf7dY5/i+XUy
-         aitccqrtzRWjC8jF17H+2c6UQ0pUJ64dzy3EY15n8uSPLhYoCUop8rIQYvphnXBqhHls
-         +eCQ==
+        b=LK+iv72LBFPQHkD4uF74daJISJtlbqgaZuHixdIANEuZEnVt1KZ0MQvK76K0sgOotP
+         VNYRQzog6SfS74CcCVJww5qjy2hGrsm5mH/p/5TP+vBzrpDasU/2ZrgMvvnDVrPcDaT1
+         tR7H9fV3W+ykCjcJouT/Dg/M672GjwWAxj1XO98v+9NuGB6Be4aDBCocQk/nfgkZ23FL
+         FjIA1qguI1moebiUmty4oVn7JdGJF9PuvjDkKX5AuaQwNokHijW6NCHZaRwmZyDwkpaX
+         EXM84aJ+xxWpsLbnTyfq5xlk9Vy84/CJdS8u0xwIatA90wl2ibghWUNDrHm5U15XplKK
+         DSRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=b/4LHUVwE3s/LELrt+0ER1ploJUp0OvQT5xXzN2r1Zo=;
+        bh=CwrcftsMNPuPT4LX6xWfoQshSKeiy5wRc7ZmctS6KKk=;
         fh=aO0iHn1gEkY7cXLX0OqpYrk+6ZrDWUTepWYzJsBxj6U=;
-        b=iOY5jvfoXLrzo4iIQznPJr0Qhatxbdh6uyNlizEA7vH7u04fzwfTL4m/CxPxl7rP2F
-         jAggLRTUGOfXIlukU5ddnsrPSwogM3W9fMMQyiNA1nNgqaUfM+IU8Zge6uVIMv0agGud
-         dD3OR2dn9f9u7+GJWbNTOQatP0xXhU/LtDTh0QBTqeL1EFop16ADiNCcrSg6K4DETNfm
-         7MI1lODVzmhNxyWttyTJ/EeElUkrO6d85XLju//kFZlUzXGzgX76pGvkI9jHVPm/H4Bu
-         BHd9X2PKVVfkAOX6HwIQ/bj7qH+vdEwjhT6dvAwdZVxltk9IECvP0IWS1CgbqUBnePA9
-         EKBg==
+        b=lrUvtYfwEOSWQ884YzoKY5rv0kgqbPPnIZI1prnfj8+/ajxZo7Wn5duUOUfAsxwMfI
+         D9NP8VOihcBcc0Q0HFEf8l8SgGrz0OkelmwA0FRl/Vg9X3erViiUBCAHG3n+jY+Eybd7
+         42os+f0HAEw8RV4dB/Hm3diLhrEUmC9Fj3AWV+RdgDgUnCiWm8Y5q/hLR+FD/XTqSidW
+         3VsOAxaJmmqUwxMQF+JpeoxUVxByd7rHLdfPchzw+PWuWeAmaU6AEnQGG832t6UnVb0C
+         MaPm4aRMSHk35B4xLoHH66C7AGO+JtJp348heWRUKGt1pMeUxd1e+/1Q3R/QPKuhbrIF
+         DP+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=wO03cTdG;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=dEGvR06K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9-20020a0cea89000000b00668da565494si6015821qvp.162.2023.11.06.11.58.54
+        by mx.google.com with ESMTPS id fb19-20020ad44f13000000b0064cd41b2cf3si5956550qvb.25.2023.11.06.11.59.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 11:58:54 -0800 (PST)
+        Mon, 06 Nov 2023 11:59:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=wO03cTdG;
+       dkim=fail header.i=@infradead.org header.s=desiato.20200630 header.b=dEGvR06K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r05h9-0006t9-NH; Mon, 06 Nov 2023 14:55:35 -0500
+	id 1r05hS-0000fm-4X; Mon, 06 Nov 2023 14:55:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05gy-0006OT-IB; Mon, 06 Nov 2023 14:55:25 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05h1-0006S8-3b; Mon, 06 Nov 2023 14:55:28 -0500
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r05go-00066S-Hv; Mon, 06 Nov 2023 14:55:24 -0500
+ <BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org>)
+ id 1r05gj-00065U-Ng; Mon, 06 Nov 2023 14:55:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Sender:Content-Transfer-Encoding:
+ d=infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=b/4LHUVwE3s/LELrt+0ER1ploJUp0OvQT5xXzN2r1Zo=; b=wO03cTdGV6iCEdBG6L0F1cccO1
- QHSGg+nUHOXWPBZvM1na4u5Vn0DxTDkX6KPZkAonJt+d1Enf6ARbK0irjKYcgE98PDTHSUsp+ae/e
- MErCOIrLehEAU9XtYb3Ab96/YhbXt3+WrtEkFl5fDCZxg/VCp9C3VZW5tF7f85QBmOHVtBUVdNmpK
- MK0pvW0U+32sS60xeuqo6zB/MXVPkPcUmCAiu+qqQaHx9c0O4ngdT8NYhPcp8QuvyqAFFNrFJlyvV
- TYhStPSHFu1/IJCYuapswv/aXPQwANpELKGmLssVZJgBYzav2I6TFCsFx087/9NOnZIHS82EV6YJy
- Q2HkysFQ==;
+ bh=CwrcftsMNPuPT4LX6xWfoQshSKeiy5wRc7ZmctS6KKk=; b=dEGvR06KP0y4apTEU1yjiPEPOc
+ kpKKLIyCjS6YI/yS9dc5pWcbRmkOU/Dav0mBmqcS5mUmsVn+RiYPn4dnGqSRdP4qBeSqRCmHGQEvA
+ I8LuIGoJCq3BEX7GEI/6xYRZWRxHlG40RXDYR0dS+ry/epAQ8ZyPxx8EOoLoWyFDoT7rfu4GVj0QD
+ Wwl9NmeKPPaJQZRnfXOe2lneNGMDoQTLfTBFpOMiDQWdbid/1p0ASecZwTixO3sgt3maGhzE3Oew0
+ oh3HP5CJNhQbnYgCdJf0PAR1WYf+848zw2bMgK4n0NwFb6snrmBz9ZRz8lJFiEV8rmBRMLswyWHiq
+ qDltYN6Q==;
 Received: from [2001:8b0:10b:1::ebe] (helo=i7.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r05fb-007taU-BN; Mon, 06 Nov 2023 19:54:00 +0000
+ by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
+ id 1r05fc-00AkG0-33; Mon, 06 Nov 2023 19:54:01 +0000
 Received: from dwoodhou by i7.infradead.org with local (Exim 4.96.2 #2 (Red
- Hat Linux)) id 1r05fb-001GOC-1Y; Mon, 06 Nov 2023 19:53:59 +0000
+ Hat Linux)) id 1r05fb-001GOW-2o; Mon, 06 Nov 2023 19:53:59 +0000
 From: David Woodhouse <dwmw2@infradead.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -116,26 +116,26 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  xen-devel@lists.xenproject.org
-Subject: [PATCH for-8.3 v2 23/46] hw/arm/exynos4: use qemu_create_nic_device()
-Date: Mon,  6 Nov 2023 19:49:28 +0000
-Message-ID: <20231106195352.301038-24-dwmw2@infradead.org>
+Subject: [PATCH for-8.3 v2 27/46] hw/arm/highbank: use qemu_create_nic_device()
+Date: Mon,  6 Nov 2023 19:49:32 +0000
+Message-ID: <20231106195352.301038-28-dwmw2@infradead.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231106195352.301038-1-dwmw2@infradead.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+7ad6dfa9aff48d363c6b+7379+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ desiato.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+ envelope-from=BATV+aa7b7dce24b49c47a83c+7379+infradead.org+dwmw2@desiato.srs.infradead.org;
+ helo=desiato.infradead.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,32 +150,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fp/0ossGlfBV
+X-TUID: Vo/1qCZTkRm2
 
 From: David Woodhouse <dwmw@amazon.co.uk>
 
 Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- hw/arm/exynos4_boards.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ hw/arm/highbank.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index b0e13eb4f0..003992189b 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -76,10 +76,8 @@ static void lan9215_init(uint32_t base, qemu_irq irq)
-     SysBusDevice *s;
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index f12aacea6b..798e5391dc 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -296,19 +296,17 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
  
-     /* This should be a 9215 but the 9118 is close enough */
+     sysbus_create_simple(TYPE_SYSBUS_AHCI, 0xffe08000, pic[83]);
+ 
 -    if (nd_table[0].used) {
--        qemu_check_nic_model(&nd_table[0], "lan9118");
--        dev = qdev_new(TYPE_LAN9118);
+-        qemu_check_nic_model(&nd_table[0], "xgmac");
+-        dev = qdev_new("xgmac");
 -        qdev_set_nic_properties(dev, &nd_table[0]);
-+    dev = qemu_create_nic_device(TYPE_LAN9118, true, NULL);
++    dev = qemu_create_nic_device("xgmac", true, NULL);
 +    if (dev) {
-         qdev_prop_set_uint32(dev, "mode_16bit", 1);
-         s = SYS_BUS_DEVICE(dev);
-         sysbus_realize_and_unref(s, &error_fatal);
+         sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xfff50000);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[77]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 1, pic[78]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 2, pic[79]);
++    }
+ 
+-        qemu_check_nic_model(&nd_table[1], "xgmac");
+-        dev = qdev_new("xgmac");
+-        qdev_set_nic_properties(dev, &nd_table[1]);
++    dev = qemu_create_nic_device("xgmac", true, NULL);
++    if (dev) {
+         sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xfff51000);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[80]);
 -- 
 2.41.0
 

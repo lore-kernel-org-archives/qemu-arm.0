@@ -1,152 +1,154 @@
-Received: by 2002:a17:906:4a55:b0:9d0:bf65:29fa with SMTP id a21csp208030ejv;
-        Tue, 7 Nov 2023 02:11:15 -0800 (PST)
-X-Received: by 2002:aa7:d6c4:0:b0:53e:29c1:ae1f with SMTP id x4-20020aa7d6c4000000b0053e29c1ae1fmr25893170edr.19.1699351874866;
-        Tue, 07 Nov 2023 02:11:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699351874; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IdyJMl18bFiH7VWp6zwqoXvqeyUtBjABPBdGNEQjQM75iSGq1vK3/QTaH+JNETJv01
-         2oWGpF3EAFwTbGns6FD/AptlHyJsRuZzNsTr6VlMjB9P7AohD0ETldb6SS6q54rCxW/6
-         z/PkzL+ILywNp5GwAE5OPzOBynuE6Eo1WGVniG4hB1rykm00/NjgDIKBJyra2PCK1LYP
-         PNBd5ZUZQe1Dtl1QlDCu1r5sz9dk1EqxbIozkolHaP5xM7AGGIiyj3GBJKPJA90l3wlp
-         +Q7eVdGX1bI6IZNIFtBq1YOj88LnaCxg9yOARIzQTs1dVHpdVA2n2tigdEqYyCMZGlwi
-         4blA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Ib8kBRPeV5EfosSTrkg+X2z6Y5tUzvz041Z1N7hG7z0=;
-        fh=dDlxUCK+tdEK+SsfJnc41mHelFsfTI5RiG/3T4mL6v4=;
-        b=DO3a0ssO4O2M+aTdJHkN+i7Y2kjl8APQkIvRxz8FRraK+trd+gARLROX/UulzaJQVD
-         iyoaIs9KT0W+5kuSBcE1UU6G/I0uhai+5xDLOELBJDv73eqmwcH02Mn0Cjxc2nQ9nL8D
-         JF8tX1HSO8uDmegLYm/9QK+IMtIHEjPItaE/rqlwfQOcF73bgxe6sGXkXR+SzsdONJZT
-         ew3OKwKCoIYzpIRf28xiIIsFvL1H0EanBMjNPhN4i/uGcVLS7XDkNdW5TScrF4VsFh2J
-         UuhcG91gUtw+Azq2OhQwlKl9KeD7AgfHx0OvaHUqdyHNHc9XWIBX7zlg0z3sk40FeuB0
-         N5qw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OVGavAhM;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u21-20020a509515000000b00540284621bfsor2857264eda.7.2023.11.07.02.11.14
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 07 Nov 2023 02:11:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OVGavAhM;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699351874; x=1699956674; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Ib8kBRPeV5EfosSTrkg+X2z6Y5tUzvz041Z1N7hG7z0=;
-        b=OVGavAhMcz+SXC/oBOeFN1xxrdubSNyCzApCnlPWdeFseHSXSJaotJzZNAPV2zSL8H
-         9WB1xFhEWekZQuHiRyI93ywst3cMAH6r/IDDfI8mADVCUwexOYpPSkAUDDKfSKKYjWUE
-         vXDCt3e4XiJIDuGyF6qsGpmRVYi9rSW2RPeV0GFnBset2mVMnfBc0kqAGEOeZBKSn/mS
-         bJOwJyHvGu9eNkn2zqQleYynTMFaUW20gkDbZAqyML71t6KMdEaXd1jJRpUo0GNqsBGZ
-         ugVgGWjSbLrWGbtcgeJsjB6QTE5hJJKqP4iI3zM1BntRkIoS7Dgp8QKEYvncqa/jTgqW
-         Emdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699351874; x=1699956674;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ib8kBRPeV5EfosSTrkg+X2z6Y5tUzvz041Z1N7hG7z0=;
-        b=GAs7yZhXolejw7SjnoTdsTqWgkYuDoeh6DIjaWW5DixZfXPvjK2Y41ZUGxtlaPte4v
-         Xj67HP85Qr4q3GVkUwwagAMPhrVAahaxhb7AiJn1emZ6bEOKJVKoKD8Lt5HL4M+C9So4
-         tmvi6P1wLGN6LJNTn0kC6OKwA+/B8+lfy169WAcMOg4iNZqTBxy1baKspGhs8CjvP8L6
-         1LVYyCpa3STECczlTSzITXT3hEzItrYwzCwOpDom0xykXjIj6hmca9/XpIuS9gNCV2gh
-         QCgGQLAaO/Pi1gK1I2twsI9W5IFzbNINFsNiM2uII75D9TdDu2NEsGcOv3dwxn2Gp6Ek
-         c52A==
-X-Gm-Message-State: AOJu0Yyt20rJnMoJ215FrRb4mU97xxJf7pPxmU43nJwvJibaghdYmZnL
-	c/HjytOsuRvdP+8tlrnchlNIGloGo8x5CljvsNGVyg==
-X-Google-Smtp-Source: AGHT+IGJAyiF30wW/loslMC5FhfX2qPQMxwQJurW3n9tsuJRnBHl4lbw7c0LmzcT9jQkYJ5z26fU1g==
-X-Received: by 2002:a50:d511:0:b0:543:f08:fdc with SMTP id u17-20020a50d511000000b005430f080fdcmr22627590edi.9.1699351874203;
-        Tue, 07 Nov 2023 02:11:14 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] ([176.187.216.69])
-        by smtp.gmail.com with ESMTPSA id k28-20020a508adc000000b0053de19620b9sm5450734edk.2.2023.11.07.02.11.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Nov 2023 02:11:13 -0800 (PST)
-Message-ID: <3de367cf-9b32-4bab-bb03-af974c6d894c@linaro.org>
-Date: Tue, 7 Nov 2023 11:11:11 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 16/22] plugins: allow plugins to be enabled on windows
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Stefan Weil <sw@weilnetz.de>,
- Yonggang Luo <luoyonggang@gmail.com>
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Mahmoud Mandour <ma.mandourr@gmail.com>,
- Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- John Snow <jsnow@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Chris Wulff <crwulff@gmail.com>,
- Marek Vasut <marex@denx.de>, Richard Henderson
- <richard.henderson@linaro.org>, Greg Manning <gmanning@rapitasystems.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id r16-20020a05600c459000b003fefaf299b6sm15298090wmo.38.2023.11.07.02.21.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Nov 2023 02:21:25 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 901AA5F790;
+	Tue,  7 Nov 2023 10:21:24 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Philippe =?utf-8?Q?Mathi?=
+ =?utf-8?Q?eu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 03/22] target/arm: hide the 32bit version of PAR from
+ gdbstub
+In-Reply-To: <941e40a0-b235-4c31-8e0d-6a1ac868e72a@linaro.org> (Richard
+	Henderson's message of "Mon, 6 Nov 2023 19:52:44 -0800 (6 hours, 23
+	minutes ago)")
 References: <20231106185112.2755262-1-alex.bennee@linaro.org>
- <20231106185112.2755262-17-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231106185112.2755262-17-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 6kZDyLwBQ/FM
+	<20231106185112.2755262-4-alex.bennee@linaro.org>
+	<941e40a0-b235-4c31-8e0d-6a1ac868e72a@linaro.org>
+User-Agent: mu4e 1.11.24; emacs 29.1
+Date: Tue, 07 Nov 2023 10:21:24 +0000
+Message-ID: <87edh17tjv.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: sPKp8onvql+E
 
-On 6/11/23 19:51, Alex Bennée wrote:
-> From: Greg Manning <gmanning@rapitasystems.com>
-> 
-> allow plugins to be enabled in the configure script on windows. Also,
-> add the qemu_plugin_api.lib to the installer.
-> 
-> Signed-off-by: Greg Manning <gmanning@rapitasystems.com>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20231102172053.17692-5-gmanning@rapitasystems.com>
-> [AJB: add check for dlltool to configure]
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20231103195956.1998255-30-alex.bennee@linaro.org>
-> ---
->   configure   | 4 ++--
->   meson.build | 5 +++++
->   2 files changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/configure b/configure
-> index e50ec99fe2..abcb199aa8 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1011,9 +1011,9 @@ if test "$targetos" = "bogus"; then
->   fi
->   
->   # test for any invalid configuration combinations
-> -if test "$targetos" = "windows"; then
-> +if test "$targetos" = "windows" && ! has "$dlltool"; then
->     if test "$plugins" = "yes"; then
-> -    error_exit "TCG plugins not currently supported on Windows platforms"
-> +    error_exit "TCG plugins requires dlltool to build on Windows platforms"
->     fi
->     plugins="no"
->   fi
-> diff --git a/meson.build b/meson.build
-> index dcef8b1e79..b855224acc 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -3904,6 +3904,11 @@ endforeach
->   
->   if get_option('plugins')
->     install_headers('include/qemu/qemu-plugin.h')
-> +  if targetos == 'windows'
-> +    # On windows, we want to deliver the qemu_plugin_api.lib file in the qemu installer,
-> +    # so that plugin authors can compile against it.
-> +    install_data(win32_qemu_plugin_api_lib, install_dir: 'lib')
-> +  endif
->   endif
->   
->   subdir('qga')
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> On 11/6/23 10:50, Alex Benn=C3=A9e wrote:
+>> This is a slightly hacky way to avoid duplicate PAR's in the system
+>> register XML we send to gdb which causes an alias. However the other
+>> alternative would be to post process ARMCPRegInfo once all registers
+>> have been defined looking for textual duplicates. And that seems like
+>> overkill.
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Message-Id: <20231103195956.1998255-4-alex.bennee@linaro.org>
+>> ---
+>>   target/arm/helper.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index 5dc0d20a84..104f9378b4 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -3727,7 +3727,7 @@ static const ARMCPRegInfo vapa_cp_reginfo[] =3D {
+>>         .access =3D PL1_RW, .resetvalue =3D 0,
+>>         .bank_fieldoffsets =3D { offsetoflow32(CPUARMState, cp15.par_s),
+>>                                offsetoflow32(CPUARMState, cp15.par_ns) },
+>> -      .writefn =3D par_write },
+>> +      .writefn =3D par_write, .type =3D ARM_CP_NO_GDB },
+>>   #ifndef CONFIG_USER_ONLY
+>>       /* This underdecoding is safe because the reginfo is NO_RAW. */
+>>       { .name =3D "ATS", .cp =3D 15, .crn =3D 7, .crm =3D 8, .opc1 =3D 0=
+, .opc2 =3D CP_ANY,
+>
+> If the implementation includes LPAE, this is an alias of the full
+> 64-bit register (the "other PAR", and so type should contain
+> ARM_CP_ALIAS.
+>
+> If the implementation does not include LPAE, this should not be
+> ARM_CP_NO_GDB because there is no 64-bit alternate.
+
+I did discuss with Peter on IRC but its a lot of hoop jumping for very
+little benefit. But I guess I can add some logic to do that.
+
+  [17:58:51] <pm215> no, those are different registers. the PAR in lpae_cp_=
+reginfo is ARM_CP_64BIT, and the one in vapa_cp_reginfo is not
+  [17:59:51] > ah yes slightly different opcs
+  [17:59:54] >     { .name =3D "PAR", .cp =3D 15, .crm =3D 7, .opc1 =3D 0,
+  [18:00:07] > vs
+  [18:00:09] >     { .name =3D "PAR", .cp =3D 15, .crn =3D 7, .crm =3D 4, .=
+opc1 =3D 0, .opc2 =3D 0,
+  [18:00:18] <pm215> the important bit is the ARM_CP_64BIT
+  [18:00:20] > pm215 should they have differnt names then?
+  [18:00:39] <pm215> historically we have said that the .name field is pure=
+ly for debug purposes and not worried too much about overlap
+  [18:01:27] <pm215> architecturally these are considered two different acc=
+ess methods for getting at the same PAR register
+  [18:01:54] <pm215> (unlike the AArch64 PAR_EL1, which is considered a sep=
+arate register whose bits are 'architecturally mapped' to the AArch32 PAR)
+  [18:02:51] > PAR_A32 and PAR_A64?
+  [18:03:19] <pm215> no
+  [18:03:20] > afterall these are extra registers we report to gdb so we ca=
+n control the naming
+  [18:03:24] <pm215> the AArch64 register is PAR_EL1
+  [18:03:43] > or so PAR and PAR_EL1
+  [18:03:58] <pm215> the AArch32 register is PAR, and there are two differe=
+nt ways to read it, with the 32-bit MRC/MCR insns, or with the 64-bit MCRR/=
+MRRC insns
+  [18:04:23] > oh we define PAR_EL1 as well
+  [18:04:26] >     { .name =3D "PAR_EL1", .state =3D ARM_CP_STATE_AA64,
+  [18:04:26] >       .type =3D ARM_CP_ALIAS,
+  [18:04:26] >       .opc0 =3D 3, .opc1 =3D 0, .crn =3D 7, .crm =3D 4, .opc=
+2 =3D 0,
+  [18:04:29] <pm215> yep
+  [18:05:08] > PAR, PAR_A64 and PAR_El1?
+  [18:05:20] <pm215> PAR_A64 implies AArch64, which it is not
+  [18:05:34] > PAR_64?
+  [18:05:49] <pm215> what are you trying to achieve here? that every cpreg =
+has a distinct name string?
+  [18:06:22] > pm215 yes - as we expose them to gdb and hence are over writ=
+ing one definition with the other
+  [18:06:40] <pm215> the correct way to expose them to the user would be to=
+ only present one PAR, which is 64 bits
+  [18:06:56] <pm215> i.e. if the 64-bit version is present, ignore the 32-b=
+it version
+  [18:07:09] * stsquad2 has also fixed a duplicate q10 in arm-neon.xml
+  [18:07:39] <pm215> duplicate q10> I wonder if that's in gdb's copy too?
+  [18:09:14] > this is qemu-arm so
+  [18:09:36] <pm215> yes, qemu-arm will have both the 32-bit and 64-bit PAR
+  [18:09:40] <pm215> (depending on cpu type)
+  [18:10:20] > *sigh*
+  [18:10:33] > I suspect this will be messy to fix...=20
+  [18:11:02] <pm215> the gdb exposure of sysregs was always a bit of a "thi=
+s basically works" hack
+  [18:11:36] <pm215> ideally for an AArch64 vcpu we would expose them with =
+the correct-for-AArch64 names, but we don't in many cases where the regdef =
+is shared with AArch32
+  [18:12:24] > so I could split vapa_cp_reginfo into two parts and do a che=
+ck on if the 64 bit feature exits before adding it?
+  [18:13:00] <pm215> that won't really help you, because on a CPU with FEAT=
+_LPAE we need both regdefs
+  [18:13:42] * stsquad2 does not want to add a .dont_expose_to_gdb field to=
+ ARMCPRegInfo
+  [18:14:21] <pm215> stsquad2: we already have ARM_CP_NO_GDB :-)
+  [18:17:19] > pm215 we have logic that applies         r2->type |=3D ARM_C=
+P_ALIAS | ARM_CP_NO_GDB;
+  [18:19:40] <pm215> stsquad2: yeah, that's for the CP_ANY wildcarding. But=
+ there's no inherent reason you couldn't mark a regdef with ARM_CP_NO_GDB b=
+y hand
+  [18:19:51] > pm215 looking at the commit that added it: "This bit could b=
+e enabled manually for any register we want to remove from the
+  [18:19:51] > dynamic XML description."=20
+  [18:20:32] <pm215> (ARM_CP_NO_RAW registers also don't get exposed to gdb)
+  [18:20:49] > pm215 so I'll just add it to the 32 bit register and wait fo=
+r the 1 user in the future to complain they can't see it out of the 100s of=
+ sysregs we expose
+  [18:21:28] <pm215> that breaks reading PAR from gdbstub for any pre-v7VE =
+CPU
+  [18:22:05] > pm215 we can argue the case on the review ;-)
+  [18:22:33] > in the current case its failing a linux-user test which is e=
+xplicitly -cpu max anyway
+  [18:30:52] * stsquad2 looks at DBGDSAR next
+
+
+>
+>
+> r~
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

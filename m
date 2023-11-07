@@ -1,405 +1,275 @@
-Received: by 2002:a17:906:33ce:b0:9d0:bf65:29fa with SMTP id w14csp3067584eja;
-        Mon, 6 Nov 2023 14:04:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFDF/wzVeBSeX3Ryvg0np4vatQG1gGi+Wals0OMlRzO8Sr70jLDM5T1hlCPFRThf806DaNC
-X-Received: by 2002:a05:620a:2886:b0:76e:f3a9:1e12 with SMTP id j6-20020a05620a288600b0076ef3a91e12mr1245712qkp.1.1699308276920;
-        Mon, 06 Nov 2023 14:04:36 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1699308276; cv=pass;
+Received: by 2002:a17:906:4a55:b0:9d0:bf65:29fa with SMTP id a21csp19659ejv;
+        Mon, 6 Nov 2023 17:40:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGJdcgrOwggisZdta8SIuEeANuTLxTykLSGhbrV3fZqPjB3cju/ZfwN6UsTP35EcbGiOGDb
+X-Received: by 2002:a05:6870:f681:b0:1ea:ce71:dd12 with SMTP id el1-20020a056870f68100b001eace71dd12mr1483263oab.3.1699321210255;
+        Mon, 06 Nov 2023 17:40:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699321210; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qlmvy76EJYQgU8ozt7PPVlMlZ8wL4U3Gs8QDA/+L9g0pspi4uI6O9kEkepwPwpIRk/
-         Ckex7Kxsm7JEpEAHzDPXJyDyiTlOi188GCBrdZnDMHQffaLMYaFw1WEttejQsvYW9Xia
-         6AVAyCIA/yC0u5SCh5m5qbnaZp0ARqXNXGKi5lCDoO6wSTOJP+/mSKp0Q/54nhhMt6Zz
-         VjRpsTxyvn0sTJiOqxraf53vuGV/M16nIlpDL5gUal+gFgMV+1tbDAMc5IMArM46CPzy
-         s71OYj3rjO+I/EstPdqf3cLiZzLMvNC5dSyheFwNFnQk8DhCCntGneC823a7UtAUKCwF
-         Eevg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=nBpc7ltGTTryJ17ec//n0X+dvRU2vgCrVl5VDB2SGtA=;
-        fh=qJi44N8+SGaG6b3BdZAx3ZGbBl5Ym+IjUpJZbdDSDVc=;
-        b=Zj7kYHKYaTlPXYa7t4Hie5wwJgukN4mQE/aPBVQ3NoSKggrsytCUIZ31s9tiT1NwbK
-         B9dgLdw7HD64Mv2CVo3S5jrmDotPy4IS0LZj614+SEfz8PoAVFXbHiKsS+l6sggXC631
-         PVmWX9eXos/GdTxYuDLz8RUny7e2Ero4stWMgYkB3Qb+ny4g566lTYNKKyvy+wQkh8i4
-         9KsDkS0GJtkVErt/nqbUt6LsJEL/UeGTjF6PBZoCTnZ12KajNTfUoXINJORikx4gWnB0
-         j606hiWgX/FoSK5mRuiD6DxryqF2z6Gvu48NWAo6pp3/obLBTYkYbDNhrqZ9fdTFrFC0
-         4eqQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=errQ4+AH;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=ajDwpi2c;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9-20020a05620a410900b00778711ee25esi6282605qko.281.2023.11.06.14.04.36
+        b=lLU/Ym3nZuT6h6rtH03gEYVdOVUQ538+YNZhu0G1DSLMChlBrd/rOQ3yVOu06Un6IM
+         S8MxxSOcmltm5W4flA8C1X5HbYQwRdAKuE2lK+WTpLG2us4pMG2+iuZXtH+aZZDioBef
+         u7poUhi8m0yRz/EPmBrOssBJ+MK+MiPnwySmZZXP3rSe7MDKcZXwzhG85nUKFaWlbwrR
+         tKZIqI/oaA9hrTHJOeUlTIlLS5Nv6oM1xYxNaRYNkh9DuS4+hMSSFrD3KRShGPgf9gbp
+         B+WNEMJH1D2Fz/UX6cONfNq2fECZc2h6shHHagGPWAHMe/gWNk5gKWX2dQcVyrOIWAIT
+         Zm6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:list-unsubscribe:list-subscribe
+         :list-id:precedence:dkim-signature;
+        bh=xJleMQjaaLsKD3zymDLq2GG+Em4KcVhskoi6Q7RZmiw=;
+        fh=bTrp0tbXejj4goZpql/kYwQ7B6V0hIktYnjBiwPMXeU=;
+        b=zpEoRygFcanM0SxpIAwzhAGlMZbQRm3NqLGuVGoBhIYOcrUxNkxsUH4X/2iXIZ+u9F
+         JOS4VRTtyR/QEs5XP86mUTf3oBI6y3zIgfN/r4i6NB5Yung3LtxvljI9VZ9BPwU3LdVw
+         xRbR2CeEX9xzfs2Q9rCoJbPHUQEDyNMr2gYWSXnpm3JEUkesLeuB1Z1GaAb64Un08Qv5
+         fw+iVOiX27qtxCY40SuPObsvivnI9pnSEbaMMBBe1yIzXEFYleNEU+ShaPhPGSvwX1CV
+         eKtWhC8hMlj8xAOTK/Kdt79d/7wm4ExPA809/r4Cb4FPVd+LtRC1r/IhdljT6ws/odOo
+         /bow==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LK2qxz9D;
+       spf=pass (google.com: domain of kvm+bounces-827-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-827-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kvm+bounces-827-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id u1-20020a637901000000b005aa6c0aa22dsi911514pgc.724.2023.11.06.17.40.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Nov 2023 14:04:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Nov 2023 17:40:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-827-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=errQ4+AH;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=ajDwpi2c;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r07hd-0000O7-Lz; Mon, 06 Nov 2023 17:04:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1r07hb-0000No-Kl; Mon, 06 Nov 2023 17:04:12 -0500
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1r07hT-0006LW-KD; Mon, 06 Nov 2023 17:04:05 -0500
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3A6FkumJ008867; Mon, 6 Nov 2023 22:04:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references :
- content-transfer-encoding : content-type : mime-version;
- s=corp-2023-03-30; bh=nBpc7ltGTTryJ17ec//n0X+dvRU2vgCrVl5VDB2SGtA=;
- b=errQ4+AH3hjWFpKSORiagDe2+L1jM4YA5FgyRth/RHY+5FEfWA6QEMRwdT8FkO1Ln9Gk
- 4cxInU6UeyrIMBrwsqSXCA+Qf241E3fSKCnpPYStewGj987PJ3r7m0geelB3fpFEwPkP
- MGNwih9ddXYn7RiFydntRnqUKHVoBexQlUp0BLe7Tigm7dF1MDrhn6EbX6rvAyqzg+jb
- HCCVM7LpuQDg3OgRcmgv7D0uWRXrqgW/OPDlBpeM3jzBHkq8T+QgnEmE+PhIsLTOtitn
- iUEQSWfzz6rqzdZBmRjbxm1ocIGyYCW7wC2mF3jjctYhRuqBm9r2RlMeOdX8lZwbi2CT YA== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3u5ccdvh7y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 06 Nov 2023 22:04:00 +0000
-Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
- with ESMTP id 3A6Ld0Zf023638; Mon, 6 Nov 2023 22:03:43 GMT
-Received: from nam10-bn7-obe.outbound.protection.outlook.com
- (mail-bn7nam10lp2100.outbound.protection.outlook.com [104.47.70.100])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 3u5cd5mf8v-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 06 Nov 2023 22:03:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lXrAPaJEoGoKlC1gCsQy8mSwtSVmP/FbKbn6q5iuSxq1VTVxb/pxyA/zJWH1LuzMeJ+/EZ3z+zmK3DUx36gJG+97IYPn4AEI+OFD3Erz08CDM1pWFigjGJqmqUQ5qsdnC+Wc9eSPb5gtMd9N85rQJnA83GZgQpjiNDodwd7rIuzjckD0xqiTlzGtwdW9H223nJAupu3WuMA6HNMiksUrdQDQcfU7HS2aZKxDwDlxC5MWddmHAS4MXFUDvZaDiFLxLF83NFSCnohJF78/ktAwruCZwpxWTZU0l0aoHtjsN5ZuATtIIQKK1wsfWlIQx95/CKUBuaTb3GlmO2hmSgN8KQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nBpc7ltGTTryJ17ec//n0X+dvRU2vgCrVl5VDB2SGtA=;
- b=PqsURWqEujd0g7JpXmvNRozMaiaiFcNoJ1V6GhzN1FwZW9BioNeG1vydrz18NUiy382fPg6CoWRPd2K5xuVR9+mMT2fDw8ldZjr0DhWV3ATlrneVxi0A3Brr0XnKZwf+sPjUqzpvCrzE3pUHo/VxIbygCnT3hIGw3LTmx5F10PUQs0Uf63KOZqEsGwvnaYAHbsvmDDPmxMy1ZwEK/xCISlCkAGcxSCYPO7YGhuRYVIzul032fetm9xlIjCoJZrpJS8EH/hVtR13HoPR0soLPkjX8gFPk1huU99Rf++o+F1iB3dojQxb9c4HcrlIDPRArzvq8EJHz5QkeVpc/DWqU4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LK2qxz9D;
+       spf=pass (google.com: domain of kvm+bounces-827-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-827-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 85512280DDE
+	for <alex.bennee@linaro.org>; Tue,  7 Nov 2023 01:40:09 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 84DC61873;
+	Tue,  7 Nov 2023 01:40:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LK2qxz9D"
+Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5FA58186E
+	for <kvm@vger.kernel.org>; Tue,  7 Nov 2023 01:40:04 +0000 (UTC)
+Received: from mail-ot1-x331.google.com (mail-ot1-x331.google.com [IPv6:2607:f8b0:4864:20::331])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 78603184
+	for <kvm@vger.kernel.org>; Mon,  6 Nov 2023 17:40:00 -0800 (PST)
+Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-6ce37683cf6so3204184a34.3
+        for <kvm@vger.kernel.org>; Mon, 06 Nov 2023 17:40:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nBpc7ltGTTryJ17ec//n0X+dvRU2vgCrVl5VDB2SGtA=;
- b=ajDwpi2c4pnP7jZPdkPiofRlAI5QCRll50p8db4MTNUlaX2+oqSBRDnD+CLaOqPAnpKcmviTYeWxfhDEwHNyWiYJgwaeZNGILPmk2UysfTIsdF1xmN0I4Xuc6Vm/GMsHvGu1iCLXoN5ldLHCGr4B59h8nAYfpNMFjoFYPf+ScTE=
-Received: from PH0PR10MB5481.namprd10.prod.outlook.com (2603:10b6:510:ea::5)
- by DM4PR10MB6790.namprd10.prod.outlook.com (2603:10b6:8:10a::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.28; Mon, 6 Nov
- 2023 22:03:36 +0000
-Received: from PH0PR10MB5481.namprd10.prod.outlook.com
- ([fe80::a7ee:d2c9:c03e:6ec2]) by PH0PR10MB5481.namprd10.prod.outlook.com
- ([fe80::a7ee:d2c9:c03e:6ec2%7]) with mapi id 15.20.6954.028; Mon, 6 Nov 2023
- 22:03:36 +0000
-From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peterx@redhat.com
-Cc: lizhijian@fujitsu.com, pbonzini@redhat.com, quintela@redhat.com,
- leobras@redhat.com, joao.m.martins@oracle.com, lidongchen@tencent.com,
- william.roche@oracle.com
-Subject: [PATCH v5 1/2] migration: skip poisoned memory pages on "ram saving"
- phase
-Date: Mon,  6 Nov 2023 22:03:18 +0000
-Message-Id: <20231106220319.456765-2-william.roche@oracle.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20231106220319.456765-1-william.roche@oracle.com>
-References: <ZS6ksf8o7dJ8mzUe@x1n>
- <20231106220319.456765-1-william.roche@oracle.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR13CA0056.namprd13.prod.outlook.com
- (2603:10b6:a03:2c2::31) To PH0PR10MB5481.namprd10.prod.outlook.com
- (2603:10b6:510:ea::5)
+        d=gmail.com; s=20230601; t=1699321199; x=1699925999; darn=vger.kernel.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xJleMQjaaLsKD3zymDLq2GG+Em4KcVhskoi6Q7RZmiw=;
+        b=LK2qxz9DX84ChXK2vPzJdOx+3l3KNf1qXe8ervOo8XLikghzzLUmjszxQ0Y2rly38a
+         AoMn59MG7fZ4odCk87Phet+4VYmu7RM08OowRSJu1V3PLqt09tBd5eW/s/WTr74f9bMo
+         pS+r7VApPItrf8E2nLPeP4Bp/W34iTKs+gc/MURketD6mJujS+Aic0/FetcTc/moYao1
+         KCowycRXK7Ul7orlqyI9p36xfckXyRm1IzRQKr7bxc9yF5ZtzNwKrgeQ9f3YXuNyz6eu
+         UN9FHAwVAZsWPildPkfHDagczq5u/XHsEPMWNkiNC+lqUxWHjAqpXzHv7IuGal7zc1Dj
+         YR3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699321199; x=1699925999;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xJleMQjaaLsKD3zymDLq2GG+Em4KcVhskoi6Q7RZmiw=;
+        b=RGwQKP/MOtTheXFMmc1hgX75R/dYP9MoXrFLTl5nfysrITHn3af7+6vpcdD+nmGeJj
+         lTAKmfCljLxBHbS9wrqQJCdCQUOc58VNykOSC2srLzHlrv9SN1+OwHxtwhM2vtpTbLHd
+         hzD9DF/hwZkCXdxAn4b7KR9sUx+c/C8l4k7RwoID6CM7lyieLEYkXSYbGOlZA386XCIB
+         RoP32hULzfC68p3ywgIeeG8xSa3Llf3YuEeTi2ewvz2sLBREaWwjAavMzo0nTR3+b8jQ
+         ZPvfqURp2W5hEIUH1AOuLFywXJb4/X+tMyoMMO25PudmxqBr4tQBZ95uGKflIKISteps
+         3IfA==
+X-Gm-Message-State: AOJu0YxztyO6bIqc/H1rSctemuEqe/Z0UTOUuuduzQ4utTz8RGqcolSC
+	p/gA3XuSL5K4FSj00q1zYQtDm0IY6j1w+Yz4u2D43sQUwJ0=
+X-Received: by 2002:a05:6830:2054:b0:6c4:ac5b:aaea with SMTP id
+ f20-20020a056830205400b006c4ac5baaeamr30873746otp.25.1699321199492; Mon, 06
+ Nov 2023 17:39:59 -0800 (PST)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB5481:EE_|DM4PR10MB6790:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7441a500-a0d3-4bcf-f95f-08dbdf14398c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: zsv++fTYHyYTTLRQC9zf2vErxm6Pzw4dqoDGX4XihuNbIreFDKmbo5nbEkIxgF/+a93KTVFT477sZXss3iyln8RIBujARk/XDJBI+Dw7Nz0uBHh3NkUf1trjMS1LRL+869i4vlWfs2YV6fzbeMVfqjcFp9v2V1ZFzz/SxZOZNohXzmLVprqoXMOJc91NJOgyAxdFk+f9Ph7ePCj1PgdrhPXzZMuyRaXziaVo+Q4ZQaBekxQPeqg74fl9K6SMMLnKgFBQjV0wBMqSw7W97HBk2hXwo7TaOl+u4OHYAb1+nEvk0NVmd4qHKWz9DsYyt46OLs/hksOEn58CSTaYqu0hlBMwp5CVOlHDDNH8663StJi/st5HVH7WkIOvy7LlaQe8zu1ipfY5t3m7DVuFjHip50/moBdli3Wu1w+RD7CeQjBIOBw7lYOXMVKFxJx0kt5x31RVbuyN53HneoG3jhWbbx1a77mHHfVFdiQjuf6CEUV4EFXgITW6qBK4KwmOPHFeh99/cVSY4VpXEIQZ9Lbgeppp+cd7tOjVFNqjjC0aBw0LR6zK7NadC4gdG3zswb1Z
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB5481.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(39860400002)(136003)(366004)(376002)(346002)(230922051799003)(451199024)(186009)(1800799009)(64100799003)(38100700002)(6666004)(6506007)(83380400001)(6512007)(107886003)(1076003)(2616005)(66556008)(2906002)(86362001)(41300700001)(36756003)(5660300002)(8676002)(8936002)(4326008)(66476007)(66946007)(316002)(26005)(478600001)(6486002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PSuxygaTxVuba35axRYHv8EzAVxbTwniJcW4h5cH2ntxYH7GMUgRdGbMVVQy?=
- =?us-ascii?Q?gVbJE3KQXM6578pzIPraV6LFPUK7kPZpzRa8LRXNlSqcY8ANzBmwEL8A8GGy?=
- =?us-ascii?Q?+G6Lzz+Xo1qz22ZpbUx3i+/E/v28rJkJ9bjScXUcpxS3ml/N4HaBD/z2ZCmv?=
- =?us-ascii?Q?0FKYY3s2Al72V/9lqdRw5SJfttaKZDhpqPqPeWG3G7NTn55rl8kUb2+nEXqr?=
- =?us-ascii?Q?A8PWwpkVpllnzVXfUSIlTRPGY29GBAwVl6ROp1W4VBH4VJpmWQFoFFSNgQr5?=
- =?us-ascii?Q?ERyld1FRiKzAapbXGdTexnLHMJpdsPtteEMjZvQLQuigsnUmQFc9NeGjrl1G?=
- =?us-ascii?Q?MB09m1eQijXq4t2mnpCTivb4tNagEAkTqmRGA14Cj1zesg9pc1XoEhbMNuDY?=
- =?us-ascii?Q?/dY3m5xoEEj1QBqkCjpbSagLnAPVh9jtBNiuGZLIeKGM4nsUvzlMHdxB2t4o?=
- =?us-ascii?Q?x+2y9pKPSs27LB9wWuaiXmGRerf294SWZ9fNBUwFL35ZOv4wmE9FxRIV7NDX?=
- =?us-ascii?Q?pJS4XUVA07hkK22hTm21OEQlSIVn5JJpA72VNmqLTYvksPLBcEgX601CMDxl?=
- =?us-ascii?Q?YtF1vvxwhkzMBHpDeDHy/q00r2E6h05kv8vB2zuyRWQrGpSw0S2225PZeMea?=
- =?us-ascii?Q?lRdMNd1U0XLLAJjhmyxuQTZwBtywZ2IZxny3sN4E7qLPR15NkoD9iOqFfc0A?=
- =?us-ascii?Q?hSMOpcaEyudlP0HbV03X63HugNnsU56Myl1h6DGjN+BtynDOh42Na7bfSEBj?=
- =?us-ascii?Q?BZffTM0uhr3yJDvWta6nPF1Hz1fm6L50L0nPLpn0S5tD/OcV7S31gtu82wPJ?=
- =?us-ascii?Q?Co5vYhP2p4+vreeAqQ6A78PletdC+ZD5g+yaUaqtHKu6OAEmR/eZzmfVKesp?=
- =?us-ascii?Q?rFDE1h5p0GHbbC69xlpi54QhOGO9aVJhtiophGMFxhd0GNa7sYP1HA6qeA4m?=
- =?us-ascii?Q?B5BLqaIC2s1779qsm9LjzlGD5kq9eT8lW2yig8CFDGwCtAGs1IYgD5DanQ9l?=
- =?us-ascii?Q?rhEarxy2YJ9RZeibvm0bnopTnEMpE3xhSB4EmoPM4lu1nw4uA3lRSlK4EOga?=
- =?us-ascii?Q?NU1qsE/a7Earq4xLa4Ouhylep+VZndCE4gOsz9/mZR7rYJ0t6UaGX86Leh1q?=
- =?us-ascii?Q?ZD4hWkMviCT1h6gm9yJELZsvDlrMgc13OHNNC1EwZrvmh5gxuHYPrVb60cQH?=
- =?us-ascii?Q?t2mwvELuDb8VLY8f6I/t+wLabDtsJzd8k6XXz1OwDH64Q8o0TNC56f77DUOj?=
- =?us-ascii?Q?lec18o/BSLKAn0545gzN7Q8bgRZhqVCvBAJzxpxD1BgH0hCJ2czXcSg7RMXx?=
- =?us-ascii?Q?sEmxVlDGo6e0Ka+aB8T7PDhXYqV35qSFf4OtD36gur3QdS8LkvWe8/Ab0gff?=
- =?us-ascii?Q?S6DF+dR9uw/+OWv6oz+t5e4Z7d84AAi23rKMdFwNh1cn08Mro9D4IiU/nYWN?=
- =?us-ascii?Q?Ja7bn9XJemR8xdc4Reai5M5Bk4T4CyoyJ5eXyJSAKxChEr8HpiomczRdgDjI?=
- =?us-ascii?Q?rNyV/1yWClg4uEcq+QdGnV4/1sewtoMdrhxnvKI6+wlaM5XYLzK4unbpbeKm?=
- =?us-ascii?Q?qYMQZDKJlheYyHQRcnullr6NxxOhJm6HaDLxXOIDBStbbrwT1kkyKECKoYrY?=
- =?us-ascii?Q?eQ=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: /ptf8uNsi4cMVWnY7cPeVBVnxMeQV63TGqxUWAhqiXrh7ITrMUnToVJ3FmM2n7KGw9Tl0v31TX55omgvzUaeHSwq+us7/FRn0/GKihCEe7HdNyO7HALveqEqaJkloAj+pruUBwiJ531j4nzEpLjaKlP/HHzNWxuUqPyJ7fEVM7AJcFa3rYe+J6Z7b5xJm3Sx/pfZpxHR37ky3+d2s01VpSAGfNWbd7qPh2vAheVAGXo/LaMouzET9ZTsVj4ZrTpA3z8VY/HhHG854DdJa3LgusU/ZVEHbFhmbP6EAW+yfV3FJvkfiz9FVrI326WxPOmo7D9JdQTMQyMjw7TpLwiB2Ockhx6cYjllWgobwVeOfbjr3DPi9W8Shl6KSviOwb+OR24mFRLsk8oUkebUNgY3vgkMhnWBwnVp1shaLtjHpQbN50qtcw6bNtnsGvR/bNNB61R3/Bz2e55WkChmeOnmPDN/yy9+Ktk9Y2ulkmitkIzGKojhUFUryX+3k7Zi31UVXK9oY+bkdpp8WtXnGl46dhLbna1ACPgWAHTz3eQ17lyO4U6+EDTEwW8pA9wkCSLJs7J7Erx3nmGmbRUk33xNsvIJaxqflYttpUbfhDkF0zJrr7/cGHd3ZRDR2iSnzWgDDTtP7RDdA3ObgkLrfgC+U646SZ5PbQXlPUmg8LQWAQaE2+Tuj3ZIP9JeK0D9frfwcJIAOwDTm/xkQ8ioyYVD6WFTCIniX7JNFZHC1eoFYbysRNOB8Np0r4Z1csxiVobWFgKeUYS0pxg4BW910pP/0UmXbBT0EKpDxft3t4vEhPO7bQQwUGuCCWmUmsGNKAnwiUV5uyYKr8IKVYYFE0hVHw==
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7441a500-a0d3-4bcf-f95f-08dbdf14398c
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5481.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2023 22:03:36.2131 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PSt1cSye3GbiIqyqBQ8MU2x+YabGIXK7ET5u3aUNv3HbhacIchLYzLPlP95JKb+mFGB8kiH5pTpX+zO38FoOJh8bW1hPgsf0gJBI1239YOg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR10MB6790
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-06_15,2023-11-02_03,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxscore=0 adultscore=0
- suspectscore=0 phishscore=0 spamscore=0 mlxlogscore=999 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2310240000
- definitions=main-2311060181
-X-Proofpoint-ORIG-GUID: 7ZRQnjWNHY0e1Oh0tBRhevtzcavI392S
-X-Proofpoint-GUID: 7ZRQnjWNHY0e1Oh0tBRhevtzcavI392S
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=william.roche@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9cnkEDRdFMIT
+References: <20231106110336.358-1-philmd@linaro.org>
+In-Reply-To: <20231106110336.358-1-philmd@linaro.org>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Tue, 7 Nov 2023 09:39:47 +0800
+Message-ID: <CAJSP0QXN5LQ_56do2MOAXyHWwqstYPDEDgptN4h464mW7wnjqA@mail.gmail.com>
+Subject: Re: [PULL 00/60] Misc HW/UI patches for 2023-11-06
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-s390x@nongnu.org, 
+	qemu-block@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, 
+	qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: R5AOqRv1QlfY
 
-From: William Roche <william.roche@oracle.com>
+On Mon, 6 Nov 2023 at 19:03, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> The following changes since commit d762bf97931b58839316b68a570eecc6143c9e=
+3e:
+>
+>   Merge tag 'pull-target-arm-20231102' of https://git.linaro.org/people/p=
+maydell/qemu-arm into staging (2023-11-03 10:04:12 +0800)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/philmd/qemu.git tags/misc-cpus-20231106
+>
+> for you to fetch changes up to a81b438ac3933419910cbdf2e2e8d87681de611e:
+>
+>   ui/sdl2: use correct key names in win title on mac (2023-11-06 11:07:32=
+ +0100)
+>
+> Few checkpatch warnings in target/i386/hvf/x86_emu.c are deliberately ign=
+ored.
+> ----------------------------------------------------------------
+> Misc hardware patch queue
+>
+> HW emulation:
+> - PMBus fixes and tests (Titus)
+> - IDE fixes and tests (Fiona)
+> - New ADM1266 sensor (Titus)
+> - Better error propagation in PCI-ISA i82378 (Philippe)
+>
+> Topology:
+> - Fix CPUState::nr_cores calculation (Zhuocheng Ding and Zhao Liu)
+>
+> Monitor:
+> - Synchronize CPU state in 'info lapic' (Dongli Zhang)
+>
+> QOM:
+> - Have 'cpu-qom.h' target-agnostic (Philippe)
+> - Call object_class_is_abstract once in cpu_class_by_name (Philippe)
+>
+> UI:
+> - Use correct key names in titles on MacOS / SDL2 (Adrian)
+>
+> MIPS:
+> - Fix MSA BZ/BNZ and TX79 LQ/SQ opcodes (Philippe)
+>
+> Nios2:
+> - Create IRQs *after* vCPU is realized (Philippe)
+>
+> PPC:
+> - Restrict KVM objects to system emulation (Philippe)
+>
+> X86:
+> - HVF & KVM cleanups (Philippe)
+>
+> Various targets:
+> - Use env_archcpu() to optimize (Philippe)
+>
+> Misc:
+> - Few global variable shadowing removed (Philippe)
+> - Introduce cpu_exec_reset_hold and factor tcg_cpu_reset_hold out (Philip=
+pe)
+> - Remove few more 'softmmu' mentions (Philippe)
+> - Fix and cleanup in vl.c (Akihiko & Marc-Andr=C3=A9)
+> - MAINTAINERS updates (Thomas, Daniel)
+>
+> ----------------------------------------------------------------
+>
+> Adrian Wowk (1):
+>   ui/sdl2: use correct key names in win title on mac
+>
+> Akihiko Odaki (1):
+>   vl: Free machine list
+>
+> Daniel P. Berrang=C3=A9 (1):
+>   MAINTAINERS: update libvirt devel mailing list address
+>
+> Dongli Zhang (1):
+>   target/i386/monitor: synchronize cpu state for lapic info
+>
+> Fiona Ebner (2):
+>   hw/ide: reset: cancel async DMA operation before resetting state
+>   tests/qtest: ahci-test: add test exposing reset issue with pending
+>     callback
+>
+> Marc-Andr=C3=A9 Lureau (1):
+>   vl: constify default_list
+>
+> Philippe Mathieu-Daud=C3=A9 (39):
+>   tests/vm/ubuntu.aarch64: Correct comment about TCG specific delay
+>   tests/unit/test-seccomp: Remove mentions of softmmu in test names
+>   accel/tcg: Declare tcg_flush_jmp_cache() in 'exec/tb-flush.h'
+>   accel: Introduce cpu_exec_reset_hold()
+>   accel/tcg: Factor tcg_cpu_reset_hold() out
+>   target: Unify QOM style
+>   target: Mention 'cpu-qom.h' is target agnostic
+>   target/arm: Move internal declarations from 'cpu-qom.h' to 'cpu.h'
+>   target/ppc: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+>   target/riscv: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+>   target: Declare FOO_CPU_TYPE_NAME/SUFFIX in 'cpu-qom.h'
+>   target/hexagon: Declare QOM definitions in 'cpu-qom.h'
+>   target/loongarch: Declare QOM definitions in 'cpu-qom.h'
+>   target/nios2: Declare QOM definitions in 'cpu-qom.h'
+>   target/openrisc: Declare QOM definitions in 'cpu-qom.h'
+>   target/riscv: Move TYPE_RISCV_CPU_BASE definition to 'cpu.h'
+>   target/ppc: Use env_archcpu() in helper_book3s_msgsndp()
+>   target/riscv: Use env_archcpu() in [check_]nanbox()
+>   target/s390x: Use env_archcpu() in handle_diag_308()
+>   target/xtensa: Use env_archcpu() in update_c[compare|count]()
+>   target/i386/hvf: Use x86_cpu in simulate_[rdmsr|wrmsr]()
+>   target/i386/hvf: Use env_archcpu() in simulate_[rdmsr/wrmsr]()
+>   target/i386/hvf: Use CPUState typedef
+>   target/i386/hvf: Rename 'CPUState *cpu' variable as 'cs'
+>   target/i386/hvf: Rename 'X86CPU *x86_cpu' variable as 'cpu'
+>   target/i386/kvm: Correct comment in kvm_cpu_realize()
+>   target/mips: Fix MSA BZ/BNZ opcodes displacement
+>   target/mips: Fix TX79 LQ/SQ opcodes
+>   sysemu/kvm: Restrict kvmppc_get_radix_page_info() to ppc targets
+>   hw/ppc/e500: Restrict ppce500_init_mpic_kvm() to KVM
+>   target/ppc: Restrict KVM objects to system emulation
+>   target/ppc: Prohibit target specific KVM prototypes on user emulation
+>   target/nios2: Create IRQs *after* accelerator vCPU is realized
+>   target/alpha: Tidy up alpha_cpu_class_by_name()
+>   hw/cpu: Call object_class_is_abstract() once in cpu_class_by_name()
+>   exec/cpu: Have cpu_exec_realize() return a boolean
+>   hw/cpu: Clean up global variable shadowing
 
-A memory page poisoned from the hypervisor level is no longer readable.
-Thus, it is now treated as a zero-page for the ram saving migration phase.
+Please take a look at the following CI failure:
 
-The migration of a VM will crash Qemu when it tries to read the
-memory address space and stumbles on the poisoned page with a similar
-stack trace:
+cc -m64 -mcx16 -Ilibqemu-arm-bsd-user.fa.p -I. -I.. -Itarget/arm
+-I../target/arm -I../common-user/host/x86_64 -I../bsd-user/include
+-Ibsd-user/freebsd -I../bsd-user/freebsd -I../bsd-user/host/x86_64
+-Ibsd-user -I../bsd-user -I../bsd-user/arm -Iqapi -Itrace -Iui
+-Iui/shader -I/usr/local/include/capstone
+-I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include
+-I/usr/local/include -fcolor-diagnostics -Wall -Winvalid-pch -Werror
+-std=3Dgnu11 -O2 -g -fstack-protector-strong -Wundef -Wwrite-strings
+-Wmissing-prototypes -Wstrict-prototypes -Wredundant-decls
+-Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k
+-Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs
+-Wendif-labels -Wexpansion-to-defined -Wmissing-format-attribute
+-Wno-initializer-overrides -Wno-missing-include-dirs
+-Wno-shift-negative-value -Wno-string-plus-int
+-Wno-typedef-redefinition -Wno-tautological-type-limit-compare
+-Wno-psabi -Wno-gnu-variable-sized-type-not-at-end -Wthread-safety
+-iquote . -iquote /tmp/cirrus-ci-build -iquote
+/tmp/cirrus-ci-build/include -iquote
+/tmp/cirrus-ci-build/host/include/x86_64 -iquote
+/tmp/cirrus-ci-build/host/include/generic -iquote
+/tmp/cirrus-ci-build/tcg/i386 -pthread -D_GNU_SOURCE
+-D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -fno-strict-aliasing
+-fno-common -fwrapv -fPIE -DNEED_CPU_H
+'-DCONFIG_TARGET=3D"arm-bsd-user-config-target.h"'
+'-DCONFIG_DEVICES=3D"arm-bsd-user-config-devices.h"' -MD -MQ
+libqemu-arm-bsd-user.fa.p/bsd-user_main.c.o -MF
+libqemu-arm-bsd-user.fa.p/bsd-user_main.c.o.d -o
+libqemu-arm-bsd-user.fa.p/bsd-user_main.c.o -c ../bsd-user/main.c
+../bsd-user/main.c:121:36: error: use of undeclared identifier 'cpus';
+did you mean 'cpu'?
+QTAILQ_REMOVE_RCU(&cpus, cpu, node);
+^~~~
+cpu
 
-Program terminated with signal SIGBUS, Bus error.
-#0  _mm256_loadu_si256
-#1  buffer_zero_avx2
-#2  select_accel_fn
-#3  buffer_is_zero
-#4  save_zero_page
-#5  ram_save_target_page_legacy
-#6  ram_save_host_page
-#7  ram_find_and_save_block
-#8  ram_save_iterate
-#9  qemu_savevm_state_iterate
-#10 migration_iteration_run
-#11 migration_thread
-#12 qemu_thread_start
+https://gitlab.com/qemu-project/qemu/-/jobs/5472832586
 
-Fix it by considering poisoned pages as if they were zero-pages for
-the migration copy. This fix also works with underlying large pages,
-taking into account the RAMBlock segment "page-size".
-
-Standard migration and compressed transfers are handled by this code.
-RDMA transfer isn't touched.
-
-Reviewed-by: Peter Xu <peterx@redhat.com>
-Tested-by: Li Zhijian <lizhijian@fujitsu.com> # RDMA
-Signed-off-by: William Roche <william.roche@oracle.com>
----
- accel/kvm/kvm-all.c      | 14 ++++++++++++++
- accel/stubs/kvm-stub.c   |  5 +++++
- include/sysemu/kvm.h     | 10 ++++++++++
- migration/ram-compress.c |  3 ++-
- migration/ram.c          | 24 ++++++++++++++++++++++--
- migration/ram.h          |  2 ++
- 6 files changed, 55 insertions(+), 3 deletions(-)
-
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index e39a810a4e..64c0b37823 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -1149,6 +1149,20 @@ static void kvm_unpoison_all(void *param)
-     }
- }
- 
-+bool kvm_hwpoisoned_page(RAMBlock *block, void *offset)
-+{
-+    HWPoisonPage *pg;
-+    ram_addr_t ram_addr = (ram_addr_t) offset;
-+
-+    QLIST_FOREACH(pg, &hwpoison_page_list, list) {
-+        if ((ram_addr >= pg->ram_addr) &&
-+            (ram_addr - pg->ram_addr < block->page_size)) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
-+
- void kvm_hwpoison_page_add(ram_addr_t ram_addr)
- {
-     HWPoisonPage *page;
-diff --git a/accel/stubs/kvm-stub.c b/accel/stubs/kvm-stub.c
-index 1b37d9a302..17774fa5ef 100644
---- a/accel/stubs/kvm-stub.c
-+++ b/accel/stubs/kvm-stub.c
-@@ -124,3 +124,8 @@ uint32_t kvm_dirty_ring_size(void)
- {
-     return 0;
- }
-+
-+bool kvm_hwpoisoned_page(RAMBlock *block, void *ram_addr)
-+{
-+    return false;
-+}
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 80b69d88f6..66937f9dfe 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -539,4 +539,14 @@ bool kvm_arch_cpu_check_are_resettable(void);
- bool kvm_dirty_ring_enabled(void);
- 
- uint32_t kvm_dirty_ring_size(void);
-+
-+/**
-+ * kvm_hwpoisoned_page - indicate if the given page is poisoned
-+ * @block: memory block of the given page
-+ * @ram_addr: offset of the page
-+ *
-+ * Returns: true: page is poisoned
-+ *          false: page not yet poisoned
-+ */
-+bool kvm_hwpoisoned_page(RAMBlock *block, void *ram_addr);
- #endif
-diff --git a/migration/ram-compress.c b/migration/ram-compress.c
-index fa4388f6a6..a7772a08a2 100644
---- a/migration/ram-compress.c
-+++ b/migration/ram-compress.c
-@@ -35,6 +35,7 @@
- #include "qemu/stats64.h"
- #include "migration.h"
- #include "options.h"
-+#include "ram.h"
- #include "io/channel-null.h"
- #include "exec/target_page.h"
- #include "exec/ramblock.h"
-@@ -214,7 +215,7 @@ static CompressResult do_compress_ram_page(QEMUFile *f, z_stream *stream,
- 
-     assert(qemu_file_buffer_empty(f));
- 
--    if (buffer_is_zero(p, page_size)) {
-+    if (migration_buffer_is_zero(block, offset, page_size)) {
-         return RES_ZEROPAGE;
-     }
- 
-diff --git a/migration/ram.c b/migration/ram.c
-index 8c7886ab79..5fd4d27854 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1107,6 +1107,26 @@ void ram_release_page(const char *rbname, uint64_t offset)
-     ram_discard_range(rbname, offset, TARGET_PAGE_SIZE);
- }
- 
-+/**
-+ * migration_buffer_is_zero: indicate if the page at the given
-+ * location is entirely filled with zero, or is a poisoned page.
-+ *
-+ * @block: block that contains the page
-+ * @offset: offset inside the block for the page
-+ * @len: size to consider
-+ */
-+bool migration_buffer_is_zero(RAMBlock *block, ram_addr_t offset,
-+                                     size_t len)
-+{
-+    uint8_t *p = block->host + offset;
-+
-+    if (kvm_enabled() && kvm_hwpoisoned_page(block, (void *)offset)) {
-+        return true;
-+    }
-+
-+    return buffer_is_zero(p, len);
-+}
-+
- /**
-  * save_zero_page: send the zero page to the stream
-  *
-@@ -1119,11 +1139,10 @@ void ram_release_page(const char *rbname, uint64_t offset)
- static int save_zero_page(RAMState *rs, PageSearchStatus *pss,
-                           ram_addr_t offset)
- {
--    uint8_t *p = pss->block->host + offset;
-     QEMUFile *file = pss->pss_channel;
-     int len = 0;
- 
--    if (!buffer_is_zero(p, TARGET_PAGE_SIZE)) {
-+    if (!migration_buffer_is_zero(pss->block, offset, TARGET_PAGE_SIZE)) {
-         return 0;
-     }
- 
-@@ -1154,6 +1173,7 @@ static int save_zero_page(RAMState *rs, PageSearchStatus *pss,
-  *        > 0 - number of pages written
-  *
-  * Return true if the pages has been saved, otherwise false is returned.
-+ * TODO: hwpoison pages fail RDMA migration, should be handled.
-  */
- static bool control_save_page(PageSearchStatus *pss,
-                               ram_addr_t offset, int *pages)
-diff --git a/migration/ram.h b/migration/ram.h
-index 9b937a446b..d34ba79d36 100644
---- a/migration/ram.h
-+++ b/migration/ram.h
-@@ -65,6 +65,8 @@ void ram_handle_zero(void *host, uint64_t size);
- void ram_transferred_add(uint64_t bytes);
- void ram_release_page(const char *rbname, uint64_t offset);
- 
-+bool migration_buffer_is_zero(RAMBlock *block, ram_addr_t offset, size_t len);
-+
- int ramblock_recv_bitmap_test(RAMBlock *rb, void *host_addr);
- bool ramblock_recv_bitmap_test_byte_offset(RAMBlock *rb, uint64_t byte_offset);
- void ramblock_recv_bitmap_set(RAMBlock *rb, void *host_addr);
--- 
-2.39.3
-
+Thanks,
+Stefan

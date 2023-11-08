@@ -1,177 +1,239 @@
-Received: by 2002:a17:906:4a55:b0:9d0:bf65:29fa with SMTP id a21csp1168496ejv;
-        Wed, 8 Nov 2023 10:00:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEP1AFKyskQZxRKcBjEHxYVxDlCRXk/0qnQnfPtJ6CJ21MRRHyGiiRt4x8XciG5bcmwHOnk
-X-Received: by 2002:a05:620a:4413:b0:76c:ea67:38e4 with SMTP id v19-20020a05620a441300b0076cea6738e4mr3910502qkp.12.1699466440296;
-        Wed, 08 Nov 2023 10:00:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699466440; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp59289ejq;
+        Wed, 8 Nov 2023 13:49:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHNwbm3bSrEksah5rvSXl5EQXgELfw2BwkAmjf/m0OBwsgGGi4a+vErITCbDFBE2omw9rwc
+X-Received: by 2002:a25:2417:0:b0:d9a:c5f7:f848 with SMTP id k23-20020a252417000000b00d9ac5f7f848mr2706445ybk.63.1699480190118;
+        Wed, 08 Nov 2023 13:49:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699480190; cv=none;
         d=google.com; s=arc-20160816;
-        b=bdfIekKLJEXqHhm2dNqp9HWDLRAO3M+ZVvQiH9/KAuSQ53480dOPuWT51LkVjV5lQB
-         X71HgOKKxJFk42N07TSR09gbNWH1hPfStsLMirQOpvnCXUM6b8u01U9KlqTHzHEVYKBW
-         N2WmER+bfJF0fB1YhYST4dUwSO4CEcPR1+w1NWjfMIrXWyZxrcSUxsu3I/w+DM0PqI3w
-         PZO3eq7DiUsRBgogLxHfAQDNvmVgpPeMdsWywJ56KzVQD5dqmBwYParFNRozJ6A4nzNV
-         wusgoYVwIMwupedSodrxALOfG2HqjTu0OeV5Km5b6b+5AfkDss3Hg55lIp3fHeGUILZl
-         MRrg==
+        b=BvnqNoEOVhfVfE9UY4IuVHi9e91h3Qff4Eq+DD03jN92UIGmAsS43738fwzOXm1qog
+         bXzxR9xyCU6TCiPWqd21CgvIfDRPykmamhXPYX26zMPFgxABzlsmIy1kygSfAc0UH9Ci
+         9aXcihPTEy0i1I68DQ68LTriJnMIAz8Fa5NJ2qCoEbETtcQXUbILy2KKo2pp0gTdgbh9
+         lQUChx8vye1g/CWwV0bZ4uw4dbMzjl0LkvyhtHxgP/3WEmcuwWV8Fj/u9a5nM/qfAhSO
+         7pmXqzXgadzx8ASIG9V4VNDKsEr04M3zcfvAVKjMB0RrSVFWStQkWfNqCvE3GJOPnbwN
+         wwnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=zCIV6xhOEy9e0/ump87scJTxEKubosmfb6SjXkR8ygA=;
-        fh=j5doSKGod8oyUESooY4x4uPb0J6wbivLP2rgXSRQ1/o=;
-        b=e68D7m8NP2zihuLkZe8RkXICjNKEggxlymZ4Ny3uYWO8i55vamGIjHjyRtVkvBi8u+
-         Uu9TFegt3haS/bNaS9O/KC3dKPwD6N3bgP2INXBh1PhBaJS/m1V7AyTgYxj8dil57N/F
-         NFQU43Jz1zxrrEUSFPyjNBmUgc68jlComVq24qMa0GVr6BK+m/jDFX6GQITogWXp/OVb
-         QMmIG5KU+iTr7XidqfIuyt605l7WJFAFu+hhKn8fBVamWei+WRaspaRBXbPytpmBxw0g
-         OnFoQ9w62WkxWGEbOIk49LbfE42V/xBgz7GL4gGB62f//FPSvex9qub6zt7K54xAWMUf
-         NfQA==
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Ez8IJy1a3BA4fs9XHfB8x7X2MAdhj78GynjkmlHeeOM=;
+        fh=xJDaZhEb4KBpBIz+OIaeBItn5QC4JZks5tIv2Xozrs0=;
+        b=Y71vkQ1hZ0gf36xllWXRIw6aOmsk3t4LEvHmRTvMFj59gyjw4gy5VDg7xgmmjkxmKg
+         EAKzsiA3WTKvxyzjam5/W4SNtGzkGNh6NujSJEgy8fduxitWY5I38FEJcTLsGxxnR1z/
+         KH2pa0UlcLhQyd+NnHdOCjnRIa1cgam1RQNyDsZKtABGpHZw7fsrVvRs18OJNpFTS2Sv
+         F5MuFu5tTL5DPhJsviH6UcdsPPol42ouZT+juFcajnVaY74ZK4awp3HwEwBTZe1UQuz9
+         kclCVOpBWj7z4gAByP1YYlOgB640Uro8DvddtiXhOPHvB3HPlku4gA1GJs7TBmwjLJUB
+         6+Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eZScp0Ds;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bPca4mtZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6-20020a05620a268600b0076da7802c1csi1817167qkp.59.2023.11.08.10.00.40
+        by mx.google.com with ESMTPS id o17-20020a05622a045100b0041959c8e2c0si1958157qtx.110.2023.11.08.13.49.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Nov 2023 10:00:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Nov 2023 13:49:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eZScp0Ds;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bPca4mtZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r0mq5-0003P3-FE; Wed, 08 Nov 2023 12:59:41 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r0qQY-00083r-P7; Wed, 08 Nov 2023 16:49:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r0mpq-0003Ec-HH
- for qemu-devel@nongnu.org; Wed, 08 Nov 2023 12:59:29 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r0mpn-00055R-QW
- for qemu-devel@nongnu.org; Wed, 08 Nov 2023 12:59:26 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-9becde9ea7bso230454466b.0
- for <qemu-devel@nongnu.org>; Wed, 08 Nov 2023 09:59:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699466360; x=1700071160; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zCIV6xhOEy9e0/ump87scJTxEKubosmfb6SjXkR8ygA=;
- b=eZScp0DsAYKLUHY38/aaergN2iNLsRYskutobN92uNvh5rO5vxUGxWatpaPya4gZ8z
- 0+m3/NHf1FUTg0U1+S5LxmWTOS4ZHrqX/vgBELEGFv4jKWW+5eqH9RGJBw8bdvSOrVmR
- rGRBJe0tKziiMYqXjM5bYeUrW72oKWY51A0ZjGWvwHAuE07JGDA7/GDJEB0MMoo/zTel
- ZaXR3+ebJwfcqJb2AmsiXsX8IGkrBR6m8cK8x9tqt/OOxO81NVmOJ3FTk5PDZTr+Adrw
- JN23mdxsTtMdb9Iyms+8lKr5B3WnY+7+9FOrpQHyYFXvg6zt8s2xJNWlp9iarTlOTiia
- J6YA==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1r0qQX-00083V-DA
+ for qemu-arm@nongnu.org; Wed, 08 Nov 2023 16:49:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1r0qQV-0007oz-F5
+ for qemu-arm@nongnu.org; Wed, 08 Nov 2023 16:49:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1699480170;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ez8IJy1a3BA4fs9XHfB8x7X2MAdhj78GynjkmlHeeOM=;
+ b=bPca4mtZIqYfusYj9I+nZCQJessnA+o77wlVI5VPqVe5MvWfQMD9AzJGFDwVmFZiaAl3KS
+ TdZmhpND3d/uavSr8Tl51f03pPTTYxDl1upj/Sh7DebckonzPS+b/+uSryRC3/slolQ9JP
+ CgU+klvOwFPQbA4XfEz4ZDPPfs6cbUM=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-575-ddQTxqcgM2K9qaVJ1ZI0Lg-1; Wed, 08 Nov 2023 16:49:28 -0500
+X-MC-Unique: ddQTxqcgM2K9qaVJ1ZI0Lg-1
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-41e1d5557a9so559801cf.0
+ for <qemu-arm@nongnu.org>; Wed, 08 Nov 2023 13:49:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699466360; x=1700071160;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1699480168; x=1700084968;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zCIV6xhOEy9e0/ump87scJTxEKubosmfb6SjXkR8ygA=;
- b=bAF4JtPdMTglSQNsjgvUFXrIZPlAdqr1pG5bgygPJynEhqOBvnIQEiTAWEf/K7hdGs
- kM+smEGx1CtZZhjvYmP0g6LY984D5j0bELQOgC7MxJwchsEx4y3fKsUOIEGurxoKkoY3
- us4N/tw3pYSNsT1n2VHATOI+SHMBISdJYf5vrPx4stvrd53++TNYUd9Ct06MbyHaVrh8
- tmBQMgxD/WIitlUgfRYoJjKwqPVbK/esIPGzw8YiOi++LgyBQ3JO0E/py37SGl5TduIx
- r6/5DEd2EJTKx3DSE7KHj50+kPwDlSTA9NA2Gmb4mgAyFk+LN6BuqO8CW5Ir6PItffsr
- RPVA==
-X-Gm-Message-State: AOJu0Yz9q7teDMu+Nnt2MS4yVhNbRBUs8U+C0Q5e7ueEDQ0K2v6C07m5
- nHTw1btqvW1fxg4H5/DTXrFKQI0CPSVjgvxSBxc=
-X-Received: by 2002:a17:907:7246:b0:9a9:f0e6:904e with SMTP id
- ds6-20020a170907724600b009a9f0e6904emr2745557ejc.16.1699466360431; 
- Wed, 08 Nov 2023 09:59:20 -0800 (PST)
-Received: from [192.168.69.115] ([176.187.199.60])
- by smtp.gmail.com with ESMTPSA id
- lv19-20020a170906bc9300b009a9fbeb15f5sm1372376ejb.46.2023.11.08.09.59.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Nov 2023 09:59:19 -0800 (PST)
-Message-ID: <9ba58d8f-0554-439e-b93d-b6e06fafe3d0@linaro.org>
-Date: Wed, 8 Nov 2023 18:59:18 +0100
+ bh=Ez8IJy1a3BA4fs9XHfB8x7X2MAdhj78GynjkmlHeeOM=;
+ b=ZcURzOEwcx+Gk+5jwSbZt3RarwdPOjhfCyJ7m7ALS8YOZxdI5vzp4uP314FFYOW2Ru
+ lpEQXV3WnZ8/iNEOe2ssbdHCxKdnDzLCvgS4I8kVIlA0iIaoH8Aiq63fmtplw7VsMJPU
+ 8o6UeH8KaX+nPT09CksMSk3yjor/2laaosfLQfo+qjmFyeS4TD/ImzRklbOBZe8lAuQP
+ HeSdhDUhI4zAnX7y8My+lGfmbFtmtWKqDmh7xwOOempGvoaFvfHzG8OJO3oE/4bLsvHM
+ jD6abDe1wpJutGojjS/+gPfRx2qCu/KbT/bk3F4lPsP2scVWjAnBKzLqHrExee48hMRx
+ Cy0g==
+X-Gm-Message-State: AOJu0YxVlNtB+UmrNRUEMZzZ9kA7YsZjSvk7D18jUibwy+7SoDC61PHA
+ fQIg+I0YH1kR698EzkzJdgrhTzO4f/tVFIG8gbfMF1OjXZKurij0znX0mTFD4weN0gu0mh0XW4z
+ YinjA4te6zYcU
+X-Received: by 2002:ad4:4a02:0:b0:670:b357:82bd with SMTP id
+ m2-20020ad44a02000000b00670b35782bdmr3060654qvz.6.1699480168262; 
+ Wed, 08 Nov 2023 13:49:28 -0800 (PST)
+X-Received: by 2002:ad4:4a02:0:b0:670:b357:82bd with SMTP id
+ m2-20020ad44a02000000b00670b35782bdmr3060643qvz.6.1699480167890; 
+ Wed, 08 Nov 2023 13:49:27 -0800 (PST)
+Received: from x1n (cpe5c7695f3aee0-cm5c7695f3aede.cpe.net.cable.rogers.com.
+ [99.254.144.39]) by smtp.gmail.com with ESMTPSA id
+ u16-20020a0cec90000000b0064f4ac061b0sm1491509qvo.12.2023.11.08.13.49.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Nov 2023 13:49:27 -0800 (PST)
+Date: Wed, 8 Nov 2023 16:49:25 -0500
+From: Peter Xu <peterx@redhat.com>
+To: =?utf-8?Q?=E2=80=9CWilliam?= Roche <william.roche@oracle.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, lizhijian@fujitsu.com,
+ pbonzini@redhat.com, quintela@redhat.com, leobras@redhat.com,
+ joao.m.martins@oracle.com, lidongchen@tencent.com
+Subject: Re: [PATCH v5 0/2] Qemu crashes on VM migration after an handled
+ memory error
+Message-ID: <ZUwCZdZj-vZD1NJC@x1n>
+References: <ZS6ksf8o7dJ8mzUe@x1n>
+ <20231106220319.456765-1-william.roche@oracle.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/35 2/2] tcg/arm: Support TCG_COND_TST{EQ,NE}
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-References: <20231028194522.245170-12-richard.henderson@linaro.org>
- <20231108145244.72421-2-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231108145244.72421-2-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <20231106220319.456765-1-william.roche@oracle.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j6BiAYMHI2fC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: l4hWgrGn+dgg
 
-On 8/11/23 15:52, Philippe Mathieu-Daudé wrote:
-> From: Richard Henderson <richard.henderson@linaro.org>
+On Mon, Nov 06, 2023 at 10:03:17PM +0000, “William Roche wrote:
+> From: William Roche <william.roche@oracle.com>
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-Id: <20231028194522.245170-12-richard.henderson@linaro.org>
-> [PMD: Split from bigger patch, part 2/2]
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   tcg/arm/tcg-target.c.inc | 29 ++++++++++++++++++++++++++++-
->   1 file changed, 28 insertions(+), 1 deletion(-)
 > 
-> diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-> index 66d71af8bf..0fc7273b16 100644
-> --- a/tcg/arm/tcg-target.c.inc
-> +++ b/tcg/arm/tcg-target.c.inc
-> @@ -1194,7 +1194,27 @@ static void tcg_out_mb(TCGContext *s, TCGArg a0)
->   static TCGCond tcg_out_cmp(TCGContext *s, TCGCond cond, TCGReg a,
->                              TCGArg b, int b_const)
->   {
-> -    tcg_out_dat_rIN(s, COND_AL, ARITH_CMP, ARITH_CMN, 0, a, b, b_const);
-> +    if (!is_tst_cond(cond)) {
-> +        tcg_out_dat_rIN(s, COND_AL, ARITH_CMP, ARITH_CMN, 0, a, b, b_const);
-> +        return cond;
-> +    }
-> +
-> +    cond = tcg_tst_eqne_cond(cond);
-> +    if (b_const) {
-> +        int imm12 = encode_imm(b);
-> +
-> +        /*
-> +         * The compare constraints allow rIN, but TST does not support N.
-> +         * Be prepared to load the constant into a scratch register.
-> +         */
-> +        if (imm12 >= 0) {
-> +            tcg_out_dat_imm(s, COND_AL, ARITH_TST, 0, a, imm12);
-> +            return cond;
-> +        }
-> +        tcg_out_movi32(s, COND_AL, TCG_REG_TMP, b);
-> +        b = TCG_REG_TMP;
-> +    }
-> +    tcg_out_dat_reg(s, COND_AL, ARITH_TST, 0, a, b, SHIFT_IMM_LSL(0));
->       return cond;
->   }
+> Note about ARM specificities:
+> This code has a small part impacting more specificaly ARM machines,
+> that's the reason why I added qemu-arm@nongnu.org -- see description.
+> 
+> 
+> A Qemu VM can survive a memory error, as qemu can relay the error to the
+> VM kernel which could also deal with it -- poisoning/off-lining the impacted
+> page.
+> This situation creates a hole in the VM memory address space that the VM kernel
+> knows about (an unreadable page or set of pages).
+> 
+> But the migration of this VM (live migration through the network or
+> pseudo-migration with the creation of a state file) will crash Qemu when
+> it sequentially reads the memory address space and stumbles on the
+> existing hole.
+> 
+> In order to thoroughly correct this problem, the poison information should
+> follow the migration which represents several difficulties:
+> - poisoning a page on the destination machine to replicate the source
+>   poison requires CAP_SYS_ADMIN priviledges, and qemu process may not
+>   always run as a root process
+> - the destination kernel needs to be configured with CONFIG_MEMORY_FAILURE
+> - the poison information would require a memory transfer protocol
+>   enhancement to provide this information
+> (The current patches don't provide any of that)
+> 
+> But if we rely on the fact that the a running VM kernel is correctly
+> dealing with memory poison it is informed about: marking the poison page
+> as inaccessible, we could count on the VM kernel to make sure that
+> poisoned pages are not used, even after a migration.
+> In this case, I suggest to treat the poisoned pages as if they were
+> zero-pages for the migration copy.
+> This fix also works with underlying large pages, taking into account the
+> RAMBlock segment "page-size".
+> 
+> Now, it leaves a case that we have to deal with: if a memory error is
+> reported to qemu but not injected into the running kernel...
+> As the migration will go from a poisoned page to an all-zero page, if
+> the VM kernel doesn't prevent the access to this page, a memory read
+> that would generate a BUS_MCEERR_AR error on the source platform, could
+> be reading zeros on the destination. This is a memory corruption.
+> 
+> So we have to ensure that all poisoned pages we set to zero are known by
+> the running kernel. But we have a problem with platforms where BUS_MCEERR_AO
+> errors are ignored, which means that qemu knows about the poison but the VM
+> doesn't. For the moment it's only the case for ARM, but could later be
+> also needed for AMD VMs.
+> See https://lore.kernel.org/all/20230912211824.90952-3-john.allen@amd.com/
+> 
+> In order to avoid this possible silent data corruption situation, we should
+> prevent the migration when we know that a poisoned page is ignored from the VM.
+> 
+> Which is, according to me, the smallest fix we need  to avoid qemu crashes
+> on migration after an handled memory error, without introducing a possible
+> corruption situation.
+> 
+> This fix is scripts/checkpatch.pl clean.
+> Unit test: Migration blocking succesfully tested on ARM -- injected AO error
+> blocks it. On x86 the same type of error being relayed doesn't block.
+> 
+> v2:
+>   - adding compressed transfer handling of poisoned pages
+> 
+> v3:
+>   - Included the Reviewed-by and Tested-by information on first patch
+>   - added a TODO comment above control_save_page()
+>     mentioning Zhijian's feedback about RDMA migration failure.
+> 
+> v4:
+>   - adding a patch to deal with unknown poison tracking (impacting ARM)
+>     (not using migrate_add_blocker as this is not devices related and
+>     we want to avoid the interaction with --only-migratable mechanism)
+> 
+> v5:
+>   - Updating the code to the latest version
+>   - adding qemu-arm@nongnu.org for a complementary review
+> 
+> 
+> William Roche (2):
+>   migration: skip poisoned memory pages on "ram saving" phase
+>   migration: prevent migration when a poisoned page is unknown from the
+>     VM
 
-To the best of my knowledge,
+I hope someone from arch-specific can have a quick look at patch 2..
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+One thing to mention is unfortunately waiting on patch 2 means we'll miss
+this release. Actually it is already missed.. softfreeze yesterday [1].  So
+it may likely need to wait for 9.0.
+
+[1] https://wiki.qemu.org/Planning/8.2
+
+-- 
+Peter Xu
 

@@ -1,219 +1,112 @@
-Received: by 2002:a17:906:4a55:b0:9d0:bf65:29fa with SMTP id a21csp909979ejv;
-        Wed, 8 Nov 2023 02:58:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGR9FAvYfmOjabqMrjHxtasKC4ga0Z1L/lZAkTk/wmwzRZ3H+v5jKW4HCnrFzIsXXAQfw2U
-X-Received: by 2002:adf:a447:0:b0:32d:bc7d:c431 with SMTP id e7-20020adfa447000000b0032dbc7dc431mr1138976wra.1.1699441112943;
-        Wed, 08 Nov 2023 02:58:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699441112; cv=none;
+Received: by 2002:a17:906:4a55:b0:9d0:bf65:29fa with SMTP id a21csp937956ejv;
+        Wed, 8 Nov 2023 03:58:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHaWMp/W9H/xd/2R/wMtN9a4fwIl6KE1pAS6mx5odS+iMEtVOyBxCPn+EMr/s5VMnr1PDR6
+X-Received: by 2002:ad4:5d44:0:b0:656:2d03:a4be with SMTP id jk4-20020ad45d44000000b006562d03a4bemr1832519qvb.40.1699444733781;
+        Wed, 08 Nov 2023 03:58:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699444733; cv=none;
         d=google.com; s=arc-20160816;
-        b=x7IowsIoTGaBkIPrdu/jps4boa3be/Ka6WmB2q57mxa3aOd8AR2Ohki9/UoI0TIJKN
-         x71puJ/s4JyXlqrRsCT72G/DJmShiQm9vAXq3fbcPWzYjdM451IBJa9HfzIw42iKqgXl
-         FJtilWHCalDGU9F++e5v+8BCHE5CWnq7KK1hMroXnAHZUm2TpXznQhx3is5kDThYSsZv
-         hYHZlEfyElmP+7CNWSSI1Hk8ybcDzhV/Okx+Nh1IX8FXU5ZNEprZq4053+xw9Iml5ENG
-         ZqxQMv6I/zmV3z4NHAGMdgh/0RomfQDbGZ3dQJo+dQCKptd5Ov/+bS2Upqxe0L3MhWwP
-         oSVg==
+        b=zfRibX+jzTMbuuDJzNfYxcfV/6c9BD4wkJLokYqUmSIq2GXtq9IgJadsPRXekWeD+Y
+         ZRFomeIUfvBV5wjcxvWmG2eN/itygvjCmCrnoJZEHqh8vEVTIjqlxiZ/yf37DaCVKSB4
+         vGdpsmitk88YsMo574PtMwvZG94RHkg1S18Q4YulV9zITjEcqhntld7klAPRWuwPCC1U
+         o7uDGTvODhCiDe86AFuOPzbvS66uUk/7x0eekRysA/im2wCgr8p+vHW9sR4/7GcozbKs
+         A+abjXb5izUAH4MrwJNJ9EyBo1u9zdinYXpYzcMBBfnGqjuSafiE9OICXL5qRnkarinY
+         2A1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=dC8T/FjObZHxZhn9tBAWAoCxfVUyrBsoDEckaecw7ck=;
-        fh=kANT3D++wurOQU1BOFSp5pyqxd/rDLTFW2yMBofHfAU=;
-        b=SZR9W93MGHm0P25wjgFPJ/Uctf0sSaWF7DknJU14zQLTZnlaUlgL6Tf8SLerqwyMSq
-         6oaapgVkKnr4tZ1OLiMSHJHK+cY7baQpAlwSRXpr5vD07oacXWlpNzlU+6tIgO0GL7mO
-         lcCjIS1P5EfBJ7K+3/z1+hXyB+yAU4A+GJYw3SS+hkPr3Pt8ShcJBRvOQ8yzGpNsjahB
-         2/z9wm9eJ+pw31rcKlsI2D2xF57BkxZyr1hQzygZ8NkqBn6LXSTjDjKF7u/zyZEJKdgj
-         iaXRbUBA/koc2wLJFS2AOl/wuPMY3xoz/e3nO+3DZNKOFwYC3RwjtE+BIjB1VfXmHEHb
-         v9+Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+6N2ChRa1sb9NmKGcc3xfDk8X2qA9gCkqmJSCVGuX0c=;
+        fh=2Rkq29ow0/lyblRUcuORZLUTOLYUYkyw7Dez3WWGon0=;
+        b=HJaSlJkTtQT68P2WukoJejo7HXcjVzUw82L+IgLypjgf0r+vrLwz6HzLyWd44q/N8N
+         33c6gX3lBJAbXRgsYCBdkssyvM6xiSFO80NifUHt9kZt26WYw+ETzUgtnJ6q88WoMfJD
+         /BxfAY3/S6vUDFPmN92D+OPL2NUciER2k24XHZw7EQMUfeYjzGB9s4mbxRFysjVil5qx
+         0w2F+Kh8olvjF4Q0j+OO6htGr3F7Uq3XknIxUAwd0gem/W4tm+5qovY87D6DJQw/v4KP
+         lKnc/sqS8ktMqwoOXWhh3TQCiHHQVjX+aTCpj0IZX/PC7uB/80wpq7StZah1Ca6ay0x5
+         rA8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id p11-20020a5d59ab000000b0032d5152cc5bsi3429942wrr.332.2023.11.08.02.58.32
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Nov 2023 02:58:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F+zXxboo;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id m10-20020ad44b6a000000b0066d09046052si1213842qvx.103.2023.11.08.03.58.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Nov 2023 03:58:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500004.china.huawei.com (unknown [172.18.147.206])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4SQMRp5CdBz67XhB;
-	Wed,  8 Nov 2023 18:55:02 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500004.china.huawei.com (7.191.163.9) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Wed, 8 Nov 2023 10:58:31 +0000
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Wed, 8 Nov 2023 10:58:31 +0000
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
-	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
-	<eric.auger@redhat.com>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>, "mst@redhat.com"
-	<mst@redhat.com>, "will@kernel.org" <will@kernel.org>, "gshan@redhat.com"
-	<gshan@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
-	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
-	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, Linuxarm
-	<linuxarm@huawei.com>
-Subject: RE: [PATCH V6 7/9] hw/acpi: Update ACPI GED framework to support vCPU
- Hotplug
-Thread-Topic: [PATCH V6 7/9] hw/acpi: Update ACPI GED framework to support
- vCPU Hotplug
-Thread-Index: AQHZ/cOYufqPrPRhXUanC39HFNBrArBdo9oAgA/gD4A=
-Date: Wed, 8 Nov 2023 10:58:30 +0000
-Message-ID: <950b9f911fb341dca81ceeaeab6c50b3@huawei.com>
-References: <20231013105129.25648-1-salil.mehta@huawei.com>
-	<20231013105129.25648-8-salil.mehta@huawei.com>
- <20231027151828.5c9d499b@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231027151828.5c9d499b@imammedo.users.ipa.redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.245.122]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F+zXxboo;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1699444733;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+6N2ChRa1sb9NmKGcc3xfDk8X2qA9gCkqmJSCVGuX0c=;
+	b=F+zXxboow6qTswxI9gj6ehYi76uMrBWTS9MjZoCM+tTFHd2hSbgU4Rdpt13zWniLysyqjY
+	dCkcGB2nuU0UMqkBQBnilwXp8e/Mq4BgiPJe3+ymzfdtfm0itcZkibQ794T0m8KmuGfE0+
+	L1hU1qCwlivLcdQcf0i/lNruH8NQ1Wg=
+Received: from mail-ua1-f70.google.com (mail-ua1-f70.google.com
+ [209.85.222.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-308-nrnh3_h7O9Cbd7FSJJk6NQ-1; Wed, 08 Nov 2023 06:58:52 -0500
+X-MC-Unique: nrnh3_h7O9Cbd7FSJJk6NQ-1
+Received: by mail-ua1-f70.google.com with SMTP id a1e0cc1a2514c-7ba8e3107c5so1949919241.0
+        for <alex.bennee@linaro.org>; Wed, 08 Nov 2023 03:58:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699444731; x=1700049531;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+6N2ChRa1sb9NmKGcc3xfDk8X2qA9gCkqmJSCVGuX0c=;
+        b=LvDe++pn5sQFBlJVYsSaHIRCPt2RI8d+nm9gq2hg4g1MKj7OhVtgiJtWOACOZ8LSI6
+         r5Ifu2DizQ6X7AlU8rUo5KDqRdlT+Dj39swtIvVHE370fmNyuXKt5lKWl7eRRvrxVGom
+         SCnNGurGRP6IaVZziP/mR7Hfk06U+ATU5PeoznrMY0bATEvzob8Jwnlt4k7vE1w2nEZ7
+         jHjHEHUFS9+ZvUMGdrLngBJT1Ea3hCZlPt+hc1o3X2cgqLkSIP/WFacxn9sFcG1BD7qS
+         Ux570JhB+lLvflbgR2YE53YXl0lwlWFqrfCz1S3ftiRPnVeTgmDTdijzOiF4hmemloPq
+         O2Sg==
+X-Gm-Message-State: AOJu0YzcIcTV1bjj8edZ13uYcVSZWTaD//di5RhJ9/E0QE6oG2RNM0a2
+	W9Lm26KPjhEhHvxdKEF97hVgI9519n+HIhmyf/QbpWo7FddjixxwPE6DDZcFHPe3YrIB6oyMRNn
+	EFG4hugQbQECMwv4vNGHf8bVH4323vZd6
+X-Received: by 2002:a67:b802:0:b0:45d:a302:54be with SMTP id i2-20020a67b802000000b0045da30254bemr1434909vsf.25.1699444731598;
+        Wed, 08 Nov 2023 03:58:51 -0800 (PST)
+X-Received: by 2002:a67:b802:0:b0:45d:a302:54be with SMTP id
+ i2-20020a67b802000000b0045da30254bemr1434886vsf.25.1699444731364; Wed, 08 Nov
+ 2023 03:58:51 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: 7IZ6wf+D2oLR
+References: <20231106185112.2755262-1-alex.bennee@linaro.org>
+ <20231106185112.2755262-15-alex.bennee@linaro.org> <ea92d71f-35a3-4a5f-bece-01436a33e1e8@redhat.com>
+ <CWXP123MB4341A5286537C5060BA71FB8D7A9A@CWXP123MB4341.GBRP123.PROD.OUTLOOK.COM>
+ <CWXP123MB4341C5B85F101081C325619CD7A9A@CWXP123MB4341.GBRP123.PROD.OUTLOOK.COM>
+In-Reply-To: <CWXP123MB4341C5B85F101081C325619CD7A9A@CWXP123MB4341.GBRP123.PROD.OUTLOOK.COM>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 8 Nov 2023 12:58:39 +0100
+Message-ID: <CABgObfbW=8ywhUiWaZeT5pS_xCXuwJirMsQe=Q1ar=rEM_ytAQ@mail.gmail.com>
+Subject: Re: [PATCH 14/22] plugins: make test/example plugins work on windows
+To: Greg Manning <gmanning@rapitasystems.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Laurent Vivier <laurent@vivier.eu>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Cleber Rosa <crosa@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Beraldo Leal <bleal@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, John Snow <jsnow@redhat.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
+	Richard Henderson <richard.henderson@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: ruEtGbhaE2jG
 
-Hi Igor,
+On Tue, Nov 7, 2023 at 1:43=E2=80=AFPM Greg Manning <gmanning@rapitasystems=
+.com> wrote:
+> Windows will look for __pfnDliFailureHook2 in the module doing the delay
+> loading, which in this case is the plugin DLL.
 
-> From: Igor Mammedov <imammedo@redhat.com>
-> Sent: Friday, October 27, 2023 2:18 PM
-> To: Salil Mehta <salil.mehta@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; maz@kernel.org; jean-
-> philippe@linaro.org; Jonathan Cameron <jonathan.cameron@huawei.com>;
-> lpieralisi@kernel.org; peter.maydell@linaro.org;
-> richard.henderson@linaro.org; andrew.jones@linux.dev; david@redhat.com;
-> philmd@linaro.org; eric.auger@redhat.com; oliver.upton@linux.dev;
-> pbonzini@redhat.com; mst@redhat.com; will@kernel.org; gshan@redhat.com;
-> rafael@kernel.org; alex.bennee@linaro.org; linux@armlinux.org.uk;
-> darren@os.amperecomputing.com; ilkka@os.amperecomputing.com;
-> vishnu@os.amperecomputing.com; karl.heubaum@oracle.com;
-> miguel.luis@oracle.com; salil.mehta@opnsrc.net; zhukeqian
-> <zhukeqian1@huawei.com>; wangxiongfeng (C) <wangxiongfeng2@huawei.com>;
-> wangyanan (Y) <wangyanan55@huawei.com>; jiakernel2@gmail.com;
-> maobibo@loongson.cn; lixianglai@loongson.cn; Linuxarm <linuxarm@huawei.co=
-m>
-> Subject: Re: [PATCH V6 7/9] hw/acpi: Update ACPI GED framework to support
-> vCPU Hotplug
->=20
-> On Fri, 13 Oct 2023 11:51:27 +0100
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->=20
-> > ACPI GED shall be used to convey to the guest kernel about any CPU hot-=
-(un)plug
-> > events. Therefore, existing ACPI GED framework inside QEMU needs to be =
-enhanced
-> > to support CPU hotplug state and events.
-> >
->=20
-> This is a part of hw wiring which you started to introduce in 4/9
-> Given patches are small, I'd merge this into 4/9 to avoid broken context.
-> So essentially GED improvement would consist from hw and aml parts.
-> with some extra refactoring (5/9) in a separate patch.
+Fair enough, this is what was not clear from the Microsoft docs.
 
-
-No issues. Will merge.
-
-Thanks
-Salil.
-
-> > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Reviewed-by: Gavin Shan <gshan@redhat.com>
-> > Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> > Tested-by: Xianglai Li <lixianglai@loongson.cn>
-> > ---
-> >  hw/acpi/generic_event_device.c | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >
-> > diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_dev=
-ice.c
-> > index 62d504d231..0d5f0140e5 100644
-> > --- a/hw/acpi/generic_event_device.c
-> > +++ b/hw/acpi/generic_event_device.c
-> > @@ -12,6 +12,7 @@
-> >  #include "qemu/osdep.h"
-> >  #include "qapi/error.h"
-> >  #include "hw/acpi/acpi.h"
-> > +#include "hw/acpi/cpu.h"
-> >  #include "hw/acpi/generic_event_device.h"
-> >  #include "hw/irq.h"
-> >  #include "hw/mem/pc-dimm.h"
-> > @@ -239,6 +240,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler =
-*hotplug_dev,
-> >          } else {
-> >              acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, err=
-p);
-> >          }
-> > +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-> > +        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-> >      } else {
-> >          error_setg(errp, "virt: device plug request for unsupported de=
-vice"
-> >                     " type: %s", object_get_typename(OBJECT(dev)));
-> > @@ -253,6 +256,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandl=
-er *hotplug_dev,
-> >      if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
-> >                         !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)=
-))) {
-> >          acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, de=
-v, errp);
-> > +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-> > +        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, =
-errp);
-> >      } else {
-> >          error_setg(errp, "acpi: device unplug request for unsupported =
-device"
-> >                     " type: %s", object_get_typename(OBJECT(dev)));
-> > @@ -266,6 +271,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotp=
-lug_dev,
-> >
-> >      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> >          acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-> > +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-> > +        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-> >      } else {
-> >          error_setg(errp, "acpi: device unplug for unsupported device"
-> >                     " type: %s", object_get_typename(OBJECT(dev)));
-> > @@ -277,6 +284,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev=
-, ACPIOSTInfoList ***list)
-> >      AcpiGedState *s =3D ACPI_GED(adev);
-> >
-> >      acpi_memory_ospm_status(&s->memhp_state, list);
-> > +    acpi_cpu_ospm_status(&s->cpuhp_state, list);
-> >  }
-> >
-> >  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBit=
-s ev)
-> > @@ -291,6 +299,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev,=
- AcpiEventStatusBits ev)
-> >          sel =3D ACPI_GED_PWR_DOWN_EVT;
-> >      } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-> >          sel =3D ACPI_GED_NVDIMM_HOTPLUG_EVT;
-> > +    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-> > +        sel =3D ACPI_GED_CPU_HOTPLUG_EVT;
-> >      } else {
-> >          /* Unknown event. Return without generating interrupt. */
-> >          warn_report("GED: Unsupported event %d. No irq injected", ev);
+Paolo

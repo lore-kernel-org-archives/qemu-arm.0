@@ -1,82 +1,81 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp820570ejq;
-        Thu, 9 Nov 2023 15:24:22 -0800 (PST)
-X-Received: by 2002:a05:6808:1a0a:b0:3b5:66af:f8d6 with SMTP id bk10-20020a0568081a0a00b003b566aff8d6mr4056823oib.47.1699572262549;
-        Thu, 09 Nov 2023 15:24:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699572262; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp825065ejq;
+        Thu, 9 Nov 2023 15:34:24 -0800 (PST)
+X-Received: by 2002:a05:6808:1a8a:b0:3b6:4e58:dd54 with SMTP id bm10-20020a0568081a8a00b003b64e58dd54mr2643065oib.26.1699572864306;
+        Thu, 09 Nov 2023 15:34:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699572864; cv=none;
         d=google.com; s=arc-20160816;
-        b=V4Xj+JT0W+bny4QyQQYCwWlHxE+1cMgin35lom+Sw1ANJ5qXaWbeZGWj4TUjcw84aX
-         NJYfu5mdMMSO7FFStPI/x5f3BaiY9v0wdO4MXRyQU0J8E4s8opy0dSA4mY7vf1/M5hOW
-         O5VGmn/0gXR8YAj8ynz1NUj3NhIoGWQsR8ja9xsmZmcagVhdpNpiuzAagk+oAVUD4+WK
-         4KqL60c54aOSsmXlQ9uE3urB3wUrlVWzHmlmCX+kl2LAOtv+pEr627jG5lhGsyzN1V28
-         oh29R1vezRyULuLuqstBQsiuPybjXqEu8CP3lS7hHy1SotNTczlQuuIWlrLn37nmFMoK
-         OfSA==
+        b=KZWDrUNIn3vRvu73NYH7aKCamaL0QJfU+AOKMlkfR5mielpvQZXXp7Hi9J8rY7TDYX
+         xcP9v4RxD7iq929NwUfbbxxab/C0tYm1yuuBepxPWBdhaaKo09+7jOuHZPvARGeOcVmf
+         q++Js1MBy8oKrHDZdCFaJLoBUEUh2EVIQeCSYtICsqYXGPcHmByqLQfd75Wl+nYRUChO
+         phrsyP+VoEUiQc4aDqxlk1UrA88NLcmTl8ivYBu8r42hed41CYzANEBtqWZJifIA5cuY
+         wckMnuIW2v+ucPRIDJYM5Z+Fucfp84Ib3zFyRAHcn0T/3vxM8lOO0y0Wnv4wMp2vD9IT
+         Uj0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=z0J/6DHP2X8a1wCtKJDIFetqab1BTX7su+f2YOz1nrc=;
-        fh=2//BTKMtB/wRCpJ0oPiyq6NWRc4prSmDqz8j41Iy9Yc=;
-        b=S43mIQ4ru9klAhSEgJ8jrfPGIy0yc1t1amDA35yMWIJtmoRNrYldi0p4KpBnPPGyKs
-         D9utpwZG87QzKpEO2HW33CsL4J9gZqhXZocpz2UpwcaLJJA7ycHyQF55pd28W3JyQbsg
-         xg9ef5wF9TrutFSxNarIXoctjbp8Q78+8Rn7NiNkZComd66Jzl6DiXSW8MnCW2EInutJ
-         GKPU6LlLX33WDqq0qz1Ge1RFuqZyy2cQNbdg2QH8uE1CEcg+CKhke9nPNL3Fpcw4uSdi
-         wwKl7Pbf4hfoRah18om1N6qMP8mbxDNgXbOdrBJgWo12N+TNWgEJOZWxRw/1DvivEhD2
-         /oFQ==
+        bh=v3jppUeEd320Y8fdOz/rUSZHbzt53xKH4zhdrGWNlDo=;
+        fh=fhNV6EMYPN76jrUN/t8QrsmYfpKAju5LBgcGi6qRGCU=;
+        b=DEPALmPIwkqAvCuC1ZqXsUiXx0ogwaVV8zpABcmodzY4UdgPHsC0rFCEhVTDPfOHro
+         zdXDq/MiUsNkLQvMcpSt1AJ7IOYPj3K+gNoHit4xJRyFMmOL+QHbphNSmRvKcwR11itv
+         gCy5SJq25+tlVqOE6ks+klPZ3dESzbcF/Mwx0FGNZM+8nwKzU9afDuNv61z0sfV7mEOO
+         FwbX12E44VTrMWY1mvBC8ktPnoGOe4MBNvmUGNUwiMjTy1fgNhF2aCVsvhFKtG+Am6ZV
+         1YhcoZVn4qBvFd5XUPDmdwj+yZv7xlMiTB5AP/kxrz8SSAP0mgH1XDxomEHs7JDcjWTP
+         ywuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ToPk8YDI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wc6J5gDu;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bi8-20020a056a00310800b006c041f1f70dsor7046365pfb.12.2023.11.09.15.24.22
+        by mx.google.com with SMTPS id gn7-20020a0568082dc700b003ae23619098sor8426138oib.1.2023.11.09.15.34.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 09 Nov 2023 15:24:22 -0800 (PST)
+        Thu, 09 Nov 2023 15:34:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ToPk8YDI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wc6J5gDu;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699572262; x=1700177062; darn=linaro.org;
+        d=linaro.org; s=google; t=1699572864; x=1700177664; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=z0J/6DHP2X8a1wCtKJDIFetqab1BTX7su+f2YOz1nrc=;
-        b=ToPk8YDIr+l+7f9XTRP3oInuKSQIO0px6kldE0x6aJZY50Uj0Uue7UtLCin8FlkVjW
-         rQ99bXrDQFxvd8GHMxXOcgE4ul2fjhl+jWX411GKrInw9D5Y3/CYfv1vNZqDeGX2bzJr
-         Q18RtKssKVxwuTGaO2m/ijGTpOjWSKssAVBatwl8JhmjvabsyobA55YNeTS0TGRUkOeN
-         QYplbdOSagGrQhpLMr2FzHtz6/64H1gUC/6Abq/WFNj2a95jzIXnn51zQc4CrBwt6gQd
-         ng1c4ZVF9TILvR0NlWW/1qbEfTizvH4Re7CmQPJ/XBrmOJjviIYWd1We0MV7pZAWbVp5
-         dIFg==
+        bh=v3jppUeEd320Y8fdOz/rUSZHbzt53xKH4zhdrGWNlDo=;
+        b=wc6J5gDukjJ4kaI1YOzEBKGsrF2ftxnWxHKAMyUpohnveHJGtSXTS9kyYsJ9xMesNx
+         2kWYOTh+n9Cww0117lmFovl4DPBso5OchbSDrZ0WsHIOT2POGoSgAsewoFd2GwpqI9Mt
+         sMQ6e8jQxyFxRdEpYKE1rGBV8R+q7LL4g/AKDRzZD/PNqbBADOMbzzNTRDYFU7iQefa9
+         FhHACWfeoFJEbHnpVfmsjm+2iAJ7ZG2d8Dh5/IdeNlThIIRnGLS59wTKKpIr9l96G6YZ
+         rsG67NucNF44v12vxFCZtelo/C4uoSvUjkhyUr9f7XXKSKsKaRGPPYvr2RQyxaT0F32Q
+         Vxqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699572262; x=1700177062;
+        d=1e100.net; s=20230601; t=1699572864; x=1700177664;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=z0J/6DHP2X8a1wCtKJDIFetqab1BTX7su+f2YOz1nrc=;
-        b=rXF4j/knACTVEKcFWsXTmknQ/urEePFwM+2QOMmVLI5hoHC6+mHOFdf9U+vbti3FFs
-         ytopF9f6rfwGJsOzKDmoaSEovWbKrjrL00OCAqalDKzAMVps9z25ew0GMq3DGej1Nn5O
-         qC7nZVaxXoOd11cRrAScsVicTSmrU+l+1+MZI8IM/rNeGJzO8EeW2+1gCkKWYzohdSTH
-         3t1eS91irhszv2HOdFAg6/6obiR0Wg6FT7zquOocXoiqdWQL/qQe0zuTlqQjCZpcPpyG
-         cHek3LQWGEy8rx+fYLzAniBgX6GNdbD/qtfFbqNEq7eUS4wu+VzZL9VsE0LdqsDD8KoU
-         EOIQ==
-X-Gm-Message-State: AOJu0YyJcKKQE4qv5LsiEB39Hf9Yhsgt+pJ0Fcwb7Llk4WPLoQh8UM1P
-	WYPfI1MfjRMTlJ+9WReTN/qbGiot
-X-Google-Smtp-Source: AGHT+IE7G4uZmkjJPFeELy9K52AKxjbJ6slSAa4SrJTsTOeystgUWLk79O/YZ9Yt4/rN7ApQoEvQQQ==
-X-Received: by 2002:a05:6a00:1a8b:b0:68e:46d2:e331 with SMTP id e11-20020a056a001a8b00b0068e46d2e331mr6115120pfv.23.1699572261936;
-        Thu, 09 Nov 2023 15:24:21 -0800 (PST)
+        bh=v3jppUeEd320Y8fdOz/rUSZHbzt53xKH4zhdrGWNlDo=;
+        b=JprMNj+NzRlxATljYfUtZFZSnjIQnXKa3TLJnTTB9punlRcSFFGKOTwkS6Gq8+y0zk
+         fRv+SxVwq5vLTBqXRW7MRLDwSnhZQxRnoDK1Fd0UFlrMQ4bw4LXSPGuDiueMUDxlmKXZ
+         rFryFou3QQP4nsGRyt+Wo279W00+UGByOXB8MUjF629zQe2t5v7ApRAp6LoHO0FnILkB
+         oSKX64GRo5KIvkvSnDMAlQJ4oojpNuKdsR1xrwm9oxqfw8xkPZCb/oBqBER2rNVaLDHV
+         E+rW41oGR4q4Jiyk5JYb+eKFukzCksVI64xdnkzAB++3BDdL9victvp3CNs/eWjEQS4S
+         El3g==
+X-Gm-Message-State: AOJu0Yzr2fYjO447bwG4BJGL+a9MxjS7WkN5VoAvyAKySeuPTKrp2XHf
+	7QUXjxaAXxX/XfwE5xGx2zSadpwI
+X-Google-Smtp-Source: AGHT+IFvAMWOwhO7wqRrIv2YKQqzWdvtS3FVFZLPhIW4lhB0BAwve4GdIdZKbU9n3ixE+P1cJ7kZ5A==
+X-Received: by 2002:a05:6808:4c4:b0:3b2:dfa0:aea3 with SMTP id a4-20020a05680804c400b003b2dfa0aea3mr3849934oie.3.1699572863810;
+        Thu, 09 Nov 2023 15:34:23 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from ?IPV6:2607:fb91:1ee6:29b:6626:64c4:1b48:c565? ([2607:fb91:1ee6:29b:6626:64c4:1b48:c565])
-        by smtp.gmail.com with ESMTPSA id t8-20020a056a00138800b0068be4ce33easm11584419pfg.96.2023.11.09.15.24.19
+        by smtp.gmail.com with ESMTPSA id 29-20020a630a1d000000b0057412d84d25sm5191779pgk.4.2023.11.09.15.34.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Nov 2023 15:24:21 -0800 (PST)
-Message-ID: <45ef60fe-dcb6-461d-97e1-d19e5174075d@linaro.org>
-Date: Thu, 9 Nov 2023 15:24:16 -0800
+        Thu, 09 Nov 2023 15:34:23 -0800 (PST)
+Message-ID: <858ea782-e9da-4eed-a065-ef0266e01591@linaro.org>
+Date: Thu, 9 Nov 2023 15:34:18 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-8.2 v4 09/10] hw/char/pl011: Add transmit FIFO to
- PL011State
+Subject: Re: [PATCH-for-8.2 v4 10/10] hw/char/pl011: Implement TX FIFO
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -86,58 +85,139 @@ Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Peter Maydell <peter.maydell@linaro.org>,
  Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org,
- Juan Quintela <quintela@redhat.com>
+ Mikko Rapeli <mikko.rapeli@linaro.org>
 References: <20231109192814.95977-1-philmd@linaro.org>
- <20231109192814.95977-10-philmd@linaro.org>
+ <20231109192814.95977-11-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231109192814.95977-10-philmd@linaro.org>
+In-Reply-To: <20231109192814.95977-11-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: qUy+VTFb2fP3
+X-TUID: zJCm2KCYopMs
 
 On 11/9/23 11:28, Philippe Mathieu-Daudé wrote:
-> @@ -436,6 +438,24 @@ static const VMStateDescription vmstate_pl011_clock = {
->       }
->   };
+> If the UART back-end chardev doesn't drain data as fast as stdout
+> does or blocks, buffer in the TX FIFO to try again later.
+> 
+> This avoids having the IO-thread busy waiting on chardev back-ends,
+> reported recently when testing the Trusted Reference Stack and
+> using the socket backend:
+> https://linaro.atlassian.net/browse/TRS-149?focusedCommentId=149574
+> 
+> Implement registering a front-end 'watch' callback on back-end
+> events, so we can resume transmitting when the back-end is writable
+> again, not blocking the main loop.
+> 
+> Similarly to the RX FIFO path, FIFO level selection is not
+> implemented (interrupt is triggered when a single byte is available
+> in the FIFO).
+> 
+> We only migrate the TX FIFO if it is in use.
+> 
+> Reported-by: Mikko Rapeli <mikko.rapeli@linaro.org>
+> Suggested-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/char/pl011.c      | 107 ++++++++++++++++++++++++++++++++++++++++---
+>   hw/char/trace-events |   4 ++
+>   2 files changed, 105 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> index f474f56780..a14ece4f07 100644
+> --- a/hw/char/pl011.c
+> +++ b/hw/char/pl011.c
+> @@ -57,6 +57,9 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
+>   /* Data Register, UARTDR */
+>   #define DR_BE   (1 << 10)
 >   
-> +static bool pl011_xmit_fifo_state_needed(void *opaque)
-> +{
-> +    PL011State* s = opaque;
+> +/* Receive Status Register/Error Clear Register, UARTRSR/UARTECR */
+> +#define RSR_OE  (1 << 3)
 > +
-> +    return !fifo8_is_empty(&s->xmit_fifo);
+>   /* Interrupt status bits in UARTRIS, UARTMIS, UARTIMSC */
+>   #define INT_OE (1 << 10)
+>   #define INT_BE (1 << 9)
+> @@ -156,6 +159,68 @@ static void pl011_reset_tx_fifo(PL011State *s)
+>       fifo8_reset(&s->xmit_fifo);
+>   }
+>   
+> +static gboolean pl011_drain_tx(PL011State *s)
+> +{
+> +    trace_pl011_fifo_tx_drain(fifo8_num_used(&s->xmit_fifo));
+> +    pl011_reset_tx_fifo(s);
+> +    s->rsr &= ~RSR_OE;
+> +    return G_SOURCE_REMOVE;
 > +}
 > +
-> +static const VMStateDescription vmstate_pl011_xmit_fifo = {
-> +    .name = "pl011/xmit_fifo",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = pl011_xmit_fifo_state_needed,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_FIFO8(xmit_fifo, PL011State),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
+> +static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
+> +{
+> +    PL011State *s = opaque;
+> +    int ret;
+> +    const uint8_t *buf;
+> +    uint32_t buflen;
+> +    uint32_t count;
+> +    bool tx_enabled;
 > +
->   static int pl011_post_load(void *opaque, int version_id)
->   {
->       PL011State* s = opaque;
-> @@ -487,7 +507,11 @@ static const VMStateDescription vmstate_pl011 = {
->       .subsections = (const VMStateDescription * []) {
->           &vmstate_pl011_clock,
->           NULL
-> -    }
-> +    },
-> +    .subsections = (const VMStateDescription * []) {
-> +        &vmstate_pl011_xmit_fifo,
-> +        NULL
-> +    },
->   };
+> +    tx_enabled = (s->cr & CR_UARTEN) && (s->cr & CR_TXE);
+> +    if (!tx_enabled) {
+> +        /*
+> +         * If TX is disabled, nothing to do.
+> +         * Keep the potentially used FIFO as is.
+> +         */
+> +        return G_SOURCE_REMOVE;
+> +    }
+> +
+> +    if (!qemu_chr_fe_backend_connected(&s->chr)) {
+> +        /* Instant drain the fifo when there's no back-end */
+> +        return pl011_drain_tx(s);
+> +    }
+> +
+> +    count = fifo8_num_used(&s->xmit_fifo);
+> +    if (count < 1) {
+> +        /* FIFO empty */
+> +        return G_SOURCE_REMOVE;
+> +    }
 
-It just occurred to me that you may need a vmstate_pl011 pre_load() to empty the FIFO, 
-which will then be filled if and only if the saved vmstate_pl011_xmit_fifo subsection is 
-present.
+Could swap these two blocks.  Certainly the fifo does not need draining if it is empty...
 
-Juan, have I got this correct about how migration would or should handle a missing subsection?
+> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
+> +        /* Reschedule another transmission if we couldn't transmit all */
+> +        guint r = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
+> +                                        pl011_xmit, s);
+> +        if (!r) {
+> +            /* Error in back-end? */
+> +            return pl011_drain_tx(s);
+> +        }
+> +    }
+> +
+> +    pl011_update(s);
+> +
+> +    return G_SOURCE_REMOVE;
+
+The documentation for FEWatchFunc says you should be returning G_SOURCE_CONTINUE to leave 
+the source in the main loop.  That certainly makes more sense than re-adding a watch when 
+the fifo is not empty.  There's also no error handling to do then.  Just
+
+
+     pl011_update(s);
+     return fifo8_is_empty(&s->xmit_fifo) ? G_SOURCE_REMOVE : G_SOURCE_CONTINUE;
+
+> +    case 12: /* UARTCR */ {
+> +        uint16_t en_bits = s->cr & (CR_UARTEN | CR_TXE | CR_RXE);
+> +        uint16_t dis_bits = value & (CR_UARTEN | CR_TXE | CR_RXE);
+> +        if (en_bits ^ dis_bits && !fifo8_is_empty(&s->xmit_fifo)) {
+> +            /*
+> +             * If the UART is disabled in the middle of transmission
+> +             * or reception, it completes the current character before
+> +             * stopping.
+> +             */
+> +            pl011_xmit(NULL, G_IO_OUT, s);
+
+This seems wrong.  You don't know that the host device is ready.
+
+We will never transmit a partial character because the host will never accept less than 
+one character at a time.  Therefore there's absolutely nothing we need to do in order to 
+"complete the current character", which is the one we started with the *previous* pl011_xmit.
+
+Just set the CR bits with no further comment.
 
 
 r~

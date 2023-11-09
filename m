@@ -1,204 +1,172 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp633787ejq;
-        Thu, 9 Nov 2023 09:28:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGE+4DSpIhXoZeUr75PlytBPqXeZRLItmEmxQwm5S8zlaDYDdZDTrXhVmFl/WiWpIN6nYqB
-X-Received: by 2002:a05:6512:1243:b0:509:fbf:f235 with SMTP id fb3-20020a056512124300b005090fbff235mr2624330lfb.6.1699550917890;
-        Thu, 09 Nov 2023 09:28:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699550917; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp703368ejq;
+        Thu, 9 Nov 2023 11:28:23 -0800 (PST)
+X-Received: by 2002:a17:907:3f26:b0:9ae:4878:1172 with SMTP id hq38-20020a1709073f2600b009ae48781172mr5924568ejc.7.1699558103712;
+        Thu, 09 Nov 2023 11:28:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699558103; cv=none;
         d=google.com; s=arc-20160816;
-        b=psoXgoCmxBEzulbRI8F26H8nAjb/CczZB4nGN/rXASFyl40dqi16c9xZkrIONHuwlM
-         kIpGr7D7Yumv5bBhBWHViEE6xMG48LYyGIoO5Mx3rWNoK4tIv7TFBbJuucQ7Pr5gp8Nh
-         bSLeD7JtpjUg0gN/6VZXSJznZRAwDAHfSCGZCBpB7fx00GZn7/2MNRPMfGbZoOa17RRF
-         pqm9SxxtJ9aq8A23ychgb2eYUW785jV+RaKa3xS2d8IaQGbIP+d9F6T1ULLNS0BeVW8v
-         3vCH0UxYwZOV73/ZwDSmQyum4V1SwwvhPC6Q4Rjgnxy6UhxL3LH99w5v5wS/nw8U06E6
-         xH7w==
+        b=tCyjp95sOeFen2t5jUMAVZAZCFh4wRq4vaQppaNG5hfVAPyqTCVPsL3NUdZthkDwXz
+         +bDVVZ4nJEIjQzgIHNU/w2c0qTHUeZEyD4wLieQmIzMIHXww6NWpmE6/xhDTUKIjg6al
+         /WCU4VQ998nVZLNVK9lDnMD43MCvDIy/n75w97xla2dyipBDcd/wTVWgZu9boilhGkHm
+         lgFMkKsL9zAmxQIVamFrSwQtYfehN0Ii2/ZCawcqFmbRQtV/t3WmQ6KbGQGotWc0B18k
+         a0GwEuYt/vKOtPRIWx+lQfrYEDGdiVywghDzZlg7U9qT2z9EmHJ/La/iNTPNtFVnTgFR
+         z2SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=RuhH/Qhk/2sg+k7lek2T32YisJ5CbwhJVf7ncXAcHy4=;
-        fh=+ZwGweo1eGucUU+lFLIRZtrFKWD4f78k/QYKsVzsKnE=;
-        b=mxnBohTeBsJT/ncZRExW+wT3lMBy9iiPhGlhXuCrJQGDV9iiEySoMN4EnO2EhXjIBX
-         33bYEhOYenNyROD0NLTcPCqFO/Dp2hDWhdphxcVi+4oDEiDhCjz3Z8Hp9piDtVrGvDEo
-         z1TbbjQH6Bp6Vl5RIbOzfsURJeMFVlM4yLyqAISIIM++XetnLA47A+HXQ5/UUFBwtF6R
-         mgnIYrJ5/ITEoIcJhUt4pTsDwbx6moth4WJZC5eq+U1BaT+2ioqQAwqQO4jZDch+3AA/
-         mQlEXOzEkIbj1CSpp0iG5edYbkf3olKcKpVbDHAP03v1m2J/jIaSDl3m4FlO/B/qk8z+
-         AIaw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=tAZvf0/lxzzRafQirPbdSKogeoxVhHxgjxTZIWfzoxQ=;
+        fh=GQxR5x0bbpeaxpQRj0Ss2iF9lxOTaG+uCQYEI2XZ3x0=;
+        b=Ueel0wvBfD2hHtpj1ViyQeHgmUq0Ru6s44GmLiKG5EyVdI75vxC4Ifv2l+ja9O5v6L
+         Z+6Uup/w+oiQQsIxUamPHqOuoJJAc+yITgvJL1XgpXIh9Ow2kNdKeVs8qRGGfAEvWS5E
+         nXpg1ECDAvOUBp6/3vXxLrHXIIsmKosronWSTtkXD1IgXGIS2Fivvqx14fXYsbbRUoQ+
+         xRU76PB21Yb4KRb2RcJpx5ehDxQFVUGadd453LxayeAEYmEnD1IpxRIIg9NZyKwdpSyq
+         Qidcm9kUsPdSfsMdlvUUr1eFy1r+wYz2W404GSDU1wpxhPUXAl3OR+GFu9O7fEKtgcd9
+         up/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O7inRCdE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tmEA1vYB;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c13-20020a5d528d000000b0032f7cfaf2acsi5710030wrv.843.2023.11.09.09.28.37
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 11-20020a170906024b00b009b927358aa2sor3155767ejl.13.2023.11.09.11.28.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Nov 2023 09:28:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 09 Nov 2023 11:28:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O7inRCdE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tmEA1vYB;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r18oY-0004MG-Do; Thu, 09 Nov 2023 12:27:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r18oW-0004L4-Ts
- for qemu-arm@nongnu.org; Thu, 09 Nov 2023 12:27:32 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r18oT-00012Q-SB
- for qemu-arm@nongnu.org; Thu, 09 Nov 2023 12:27:32 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-53e2308198eso1812171a12.1
- for <qemu-arm@nongnu.org>; Thu, 09 Nov 2023 09:27:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699550848; x=1700155648; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=RuhH/Qhk/2sg+k7lek2T32YisJ5CbwhJVf7ncXAcHy4=;
- b=O7inRCdEuhRQdkEuL37h3VmcOiF/wS1EtOqoms1pJo4aqOoJuRP+jMrA5uu3mVFiC1
- tFGuPWSu1OD4uoigT2baMU4vFdEqA7o7mO5vQCWgCt/Qr4MfluXVyu9ot5OHj+AgbAZi
- MbghsD/Djf/ph+hUbspeFMvLNVclo/4fSr9aSxrO2oEG/XhiYDgYtfHxsahgsH/4rdug
- meTi/wJcUmaDBeS4Pb9cth6CEsjB8+VuzLv8E5XQUrIzDPT2Bk803hmalEDP7qjn0xw6
- mRtVZAG9HgGWnQOmgO5T0Va4kOU2EnodjdnwgDCGPXXNjYQw9jkvhDgxHNNUTBWzMsOs
- Ma7Q==
+        d=linaro.org; s=google; t=1699558103; x=1700162903; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tAZvf0/lxzzRafQirPbdSKogeoxVhHxgjxTZIWfzoxQ=;
+        b=tmEA1vYBQvqhrUZ7VxMTmIFSRFZNiMZew64Q3hHR0mgomKI/L7k6HmnasiWXIVyyWm
+         xV/O4T/EgEA8GG/ElPESS09zldXUaYTQRH1T3+q2gAYWXPj+CkTLqOP8m8QyA7Ky5p4/
+         w45+YVC2AhSPtiHgMulsKVi87f8BhbVBNcLvimhg8mdZCnfNd6cujSJPvERfn67G/FlN
+         H/Q7Tt9W8HIUiP6RBEdt3lfirx8QVlurqYpwSH62ZgUOrz3Iwe4qA6GB343Bkz7OuC2m
+         Li5lUCCTbMCIci4X6eEdxEOtcR34lvO9h5G9IdFlK0Z5K4inh3F6vu0kP9zPAB62QAw2
+         0fIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699550848; x=1700155648;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=RuhH/Qhk/2sg+k7lek2T32YisJ5CbwhJVf7ncXAcHy4=;
- b=fAv/A2m4iJMlw2brdI4OSBQzopkfA7+wU/ktdeI1as3FOUd7uUjnV9U0PRS3mf49vL
- 8/xJMvGhj7Mwt8z4yzhLXpwGvQycMA8uYYWLf2O4hk5SPxk9X4x0Yrp7RNUtQGYu/nPc
- qVMSmzkm0ZN7sjutV9Lu3nt/rP0XOLKO3B4FUOQfcb8m6VwivQF0/5JGuTc5NaD3UiND
- MMyRHBbB1DMBiWFb3TKtfsJmtwqlRt08NsWpNHXYussVocgdOmF5vW4tDEEbDBYZfz4t
- xwz07ZvXTbtFrD8KOj5X+PlcUDmkH668wAZukhRavfql4B5u6luwItJzDWq4pkvq4t02
- y6Lg==
-X-Gm-Message-State: AOJu0YwqVxA+JAFqPPcMJ+mwnbrFsfK3K2Opzc395xIQn0aMWqTDuXtv
- nSj+TUdnVjO8MJO+j1aNzXQVkYYxSOfTxjhQbo7Yww==
-X-Received: by 2002:a05:6402:1e8e:b0:540:c989:fcdd with SMTP id
- f14-20020a0564021e8e00b00540c989fcddmr5375086edf.11.1699550848137; Thu, 09
- Nov 2023 09:27:28 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699558103; x=1700162903;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tAZvf0/lxzzRafQirPbdSKogeoxVhHxgjxTZIWfzoxQ=;
+        b=GycmUyzknkfHIjfCtEFET6bHe1PpQfQqF9EqQ1bn+ZFV9nIwc3OBU7mAOyP6YpifFG
+         VvsgvUCShwsZ2Y6ve63vXd6a6rrU44hXkvN6SOsbuLl3NZvO6FDh7qBFTrgBUgOAWnNJ
+         AJQjw7VVXV1dauO63AscusqDK7zgRcb0k9iXnH17YM0b5whYZgHeRiii1N+X3Pc3Opf6
+         QMKlFGbG7UJKNXuOwrncP0DM1EuiaYTzFSLuSTNmYnkF4teMx3bD0ZMRKMa1joYEzqd2
+         LqoMrpDLgoS7BVwFYcx134XN6V7s89hk9XahiLFJgR7kgHMg8wTyXfLR57QNuEyZd8MB
+         KcCA==
+X-Gm-Message-State: AOJu0YwQguCiSYPIbdJdbJc2cF6p5uHZgRbMa//En99a4gNl885JiXIb
+	heSUdMv2TAreDkGWe1SAZSvAK+B1A54M6hUZzjkNWkuI
+X-Google-Smtp-Source: AGHT+IGpPcJ3Xf7zLqTm3djhkxKHFhbHSxJ+qioykBUXmykUoXU8maRNfXen/gfl7USeEY2cT3/uDA==
+X-Received: by 2002:a50:8d0b:0:b0:53e:37d1:a31f with SMTP id s11-20020a508d0b000000b0053e37d1a31fmr5226900eds.28.1699558103375;
+        Thu, 09 Nov 2023 11:28:23 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan ([176.187.199.161])
+        by smtp.gmail.com with ESMTPSA id z3-20020a5096c3000000b00544f8271b5fsm189937eda.8.2023.11.09.11.28.22
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 09 Nov 2023 11:28:23 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gavin Shan <gshan@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>
+Subject: [PATCH-for-8.2 v4 01/10] util/fifo8: Allow fifo8_pop_buf() to not populate popped length
+Date: Thu,  9 Nov 2023 20:28:05 +0100
+Message-ID: <20231109192814.95977-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231109192814.95977-1-philmd@linaro.org>
+References: <20231109192814.95977-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20231102114054.44360-1-quintela@redhat.com>
- <20231102114054.44360-22-quintela@redhat.com>
- <CAFEAcA_LrLsJ_4PnWLW0cuuTQRP5J7yq48xm8=kLDL39MObn9g@mail.gmail.com>
- <39d99e8d-29ee-431f-82a2-34947f9f4eb5@oracle.com>
-In-Reply-To: <39d99e8d-29ee-431f-82a2-34947f9f4eb5@oracle.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Nov 2023 17:27:16 +0000
-Message-ID: <CAFEAcA8pmJkPe651F9qbFfqiTeeLLxsim-y1yJ2Bc5w6zw6BPw@mail.gmail.com>
-Subject: Re: [PULL 21/40] migration: per-mode blockers
-To: Steven Sistare <steven.sistare@oracle.com>
-Cc: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org, 
- Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>, 
- David Gibson <david@gibson.dropbear.id.au>, qemu-block@nongnu.org, 
- Stefan Hajnoczi <stefanha@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Kevin Wolf <kwolf@redhat.com>, David Hildenbrand <david@redhat.com>, 
- Samuel Thibault <samuel.thibault@ens-lyon.org>, qemu-s390x@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>,
- Leonardo Bras <leobras@redhat.com>, 
- Corey Minyard <cminyard@mvista.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Markus Armbruster <armbru@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-ppc@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Gerd Hoffmann <kraxel@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Li Zhijian <lizhijian@fujitsu.com>, Eric Blake <eblake@redhat.com>, 
- "Denis V. Lunev" <den@openvz.org>, Hanna Reitz <hreitz@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-arm@nongnu.org, 
- Daniel Henrique Barboza <danielhb413@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Corey Minyard <minyard@acm.org>, John Snow <jsnow@redhat.com>,
- Jeff Cody <codyprime@gmail.com>, 
- Peter Xu <peterx@redhat.com>, Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Jason Wang <jasowang@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Stefan Weil <sw@weilnetz.de>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Fam Zheng <fam@euphon.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ynIZQjAMWG7V
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: nOV8AwNnMjHS
 
-On Thu, 9 Nov 2023 at 17:24, Steven Sistare <steven.sistare@oracle.com> wrote:
->
-> On 11/9/2023 12:10 PM, Peter Maydell wrote:
-> > On Thu, 2 Nov 2023 at 11:43, Juan Quintela <quintela@redhat.com> wrote:
-> >>
-> >> From: Steve Sistare <steven.sistare@oracle.com>
-> >>
-> >> Extend the blocker interface so that a blocker can be registered for
-> >> one or more migration modes.  The existing interfaces register a
-> >> blocker for all modes, and the new interfaces take a varargs list
-> >> of modes.
-> >>
-> >> Internally, maintain a separate blocker list per mode.  The same Error
-> >> object may be added to multiple lists.  When a block is deleted, it is
-> >> removed from every list, and the Error is freed.
-> >>
-> >> No functional change until a new mode is added.
-> >
-> > Hi; Coverity worries about this code:
-> >
-> >> -static GSList *migration_blockers;
-> >> +static GSList *migration_blockers[MIG_MODE__MAX];
-> >>
-> >>  static bool migration_object_check(MigrationState *ms, Error **errp);
-> >>  static int migration_maybe_pause(MigrationState *s,
-> >> @@ -1043,7 +1043,7 @@ static void fill_source_migration_info(MigrationInfo *info)
-> >>  {
-> >>      MigrationState *s = migrate_get_current();
-> >>      int state = qatomic_read(&s->state);
-> >> -    GSList *cur_blocker = migration_blockers;
-> >> +    GSList *cur_blocker = migration_blockers[migrate_mode()];
-> >
-> > because it thinks that migrate_mode() might return a value that's
-> > too big for the migration_blockers[] array. (CID 1523829, 1523830.)
-> >
-> > I think Coverity complains mostly because it doesn't understand
-> > that the MIG_MODE__MAX in the enum is not a valid enum value
-> > that a function returning a MigMode might return. But we can
-> > help it out by assert()ing in migrate_mode() that the value
-> > we're about to return is definitely a valid mode.
->
-> Thanks Peter, I will submit a fix with suggested-by, unless you want to.
-> I'll look at all uses of migration_blocker[].
-> Would coverity be happier if I also increase the size of the array?
+There might be cases where we know the number of bytes we can
+pop from the FIFO, or we simply don't care how many bytes is
+returned. Allow fifo8_pop_buf() to take a NULL numptr.
 
-Increasing the array size would also placate Coverity, but I think
-in terms of actual bug possibilities the assert() is probably better,
-as it would also catch the case of a garbage out-of-range value
-getting written into the struct somehow.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ include/qemu/fifo8.h | 10 +++++-----
+ util/fifo8.c         | 12 ++++++++----
+ 2 files changed, 13 insertions(+), 9 deletions(-)
 
-thanks
--- PMM
+diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
+index 16be02f361..d0d02bc73d 100644
+--- a/include/qemu/fifo8.h
++++ b/include/qemu/fifo8.h
+@@ -71,7 +71,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
+  * fifo8_pop_buf:
+  * @fifo: FIFO to pop from
+  * @max: maximum number of bytes to pop
+- * @num: actual number of returned bytes
++ * @numptr: pointer filled with number of bytes returned (can be NULL)
+  *
+  * Pop a number of elements from the FIFO up to a maximum of max. The buffer
+  * containing the popped data is returned. This buffer points directly into
+@@ -82,16 +82,16 @@ uint8_t fifo8_pop(Fifo8 *fifo);
+  * around in the ring buffer; in this case only a contiguous part of the data
+  * is returned.
+  *
+- * The number of valid bytes returned is populated in *num; will always return
+- * at least 1 byte. max must not be 0 or greater than the number of bytes in
+- * the FIFO.
++ * The number of valid bytes returned is populated in *numptr; will always
++ * return at least 1 byte. max must not be 0 or greater than the number of
++ * bytes in the FIFO.
+  *
+  * Clients are responsible for checking the availability of requested data
+  * using fifo8_num_used().
+  *
+  * Returns: A pointer to popped data.
+  */
+-const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *num);
++const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+ 
+ /**
+  * fifo8_reset:
+diff --git a/util/fifo8.c b/util/fifo8.c
+index d4d1c135e0..032e985440 100644
+--- a/util/fifo8.c
++++ b/util/fifo8.c
+@@ -66,16 +66,20 @@ uint8_t fifo8_pop(Fifo8 *fifo)
+     return ret;
+ }
+ 
+-const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *num)
++const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
+ {
+     uint8_t *ret;
++    uint32_t num;
+ 
+     assert(max > 0 && max <= fifo->num);
+-    *num = MIN(fifo->capacity - fifo->head, max);
++    num = MIN(fifo->capacity - fifo->head, max);
+     ret = &fifo->data[fifo->head];
+-    fifo->head += *num;
++    fifo->head += num;
+     fifo->head %= fifo->capacity;
+-    fifo->num -= *num;
++    fifo->num -= num;
++    if (numptr) {
++        *numptr = num;
++    }
+     return ret;
+ }
+ 
+-- 
+2.41.0

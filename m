@@ -1,231 +1,145 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp566185ejq;
-        Thu, 9 Nov 2023 07:47:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHW/k+8uieEHNRrv7eSvdXhMPavhTVbCZjnOmDtCFc40U1RIQmUjMeMh0Hs8R/TiWOEQBys
-X-Received: by 2002:a67:cb8e:0:b0:45e:150:ecbb with SMTP id h14-20020a67cb8e000000b0045e0150ecbbmr5067424vsl.14.1699544869730;
-        Thu, 09 Nov 2023 07:47:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699544869; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp620567ejq;
+        Thu, 9 Nov 2023 09:07:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFYmi2ezdZ33qfzJWGma+R5rUArybVf61sDK5hyXBCqT9I1mIfGImeL+moukP1fU5D3K39H
+X-Received: by 2002:a05:620a:6541:b0:76f:1268:9e26 with SMTP id qc1-20020a05620a654100b0076f12689e26mr4044950qkn.24.1699549667682;
+        Thu, 09 Nov 2023 09:07:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699549667; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikVaChQchVPEPfRuyThaefWd5wFDi3cSrtF/1VRa3a2IZt7/deChImEp3vmUdi6ZHe
-         AkdOv+ZWqJ7pxfSaoFgKfYlakWBEPB6RA0izo/oalBx5WmdeUQgSggkFThfbW5tFF2NS
-         y+53Ys+1Cjzu2gZTYRKyBUa2ftwcZK4ndu5Ym6btC0XgNZCHtyfuhU899seQD9PTWsic
-         jo0nyrRg0ic3Ro+UWu0GiIn1HGHI0Dwxx3WuqDPmTeuFCYd2wkN19LAqz1GWKnYI/0YA
-         b6a4G01XprvrGf+6u/idLDjJnTcPfMJ4UBPxdp8pClJYR4Dq9S3n19llHbEyPEa3vhaM
-         tRSA==
+        b=vfRbjNsPn57xVcWvu2ey0o4zzdASVqExUxtdkW1/EN3dIAcAvul7Bs2zAB7rSsfj1I
+         wYu0WJLzgPYc7dN+9m2e93deCAUmIbMk/xCSuw5MgYmnJ7EigZq1BmzIZod6fP7UPpLE
+         +S3pUE7BY5FWBQ2io7zxvKd+dE1h/9PehNERjW2TiyDXP4UsB9EA24QF7LRBXIyAS0QT
+         ABx4ptAwuwkhuPHrgsDjyIGa/SDABsEHITIO755td9AE+fsPSlJursTelBi7lJj9Za/9
+         TjKupp+cMOkJc36qv/Xi+v1E2Ix0i4Vp9PzWbNgY5fjJhjKuYKfT1M0GdoLmZIW4JFKF
+         7bXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=E7vJXSBetClD/gOUlPRTJf1R7+Q0EPYGlWm8oFc/t4Q=;
-        fh=nVkAIXuVa0oMjWg8LRGh1shL1aR3DvIcz/kGIZU/Gfg=;
-        b=ANO4g/XWxQwhD24yqBpfLniawk0tvaa4CBAtrM4hHiJP90AbgPVphQ1EcmRO8tAS2x
-         ETz6lVZMTGY9fa+cG7NldhXFSnc24wLMksYmK6BQmtT/kZVYiKt/9cJktQ5NZKAty52X
-         VBicykYFq/BJCMKvlzzh+8MTijOWiX21XXvx7AjliHLBv+ptrNg36giA9jMI+CtBNlOX
-         eFaTnNm4NRiYUQ/SfTU22HLFkuGJAyFw6qnz2lHBn14kU43SeBIdjfLax3Ghg6j7NiOQ
-         oSn8tT3SB6usN3A8EytTPxYL3YjdpZ/gvqSRFF5zWzwEWrdldcrNW4T1B4MNneVsi7Rn
-         cl9A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=2g173LzwlNG1UZ2ytVKC6y+FtXCeB8wlX3gt4AG2AAo=;
+        fh=o9D/RsuucffVLqBPhzCLnd0bXUqN7a+AOvWzkBJaMwY=;
+        b=GWAwUqH5pmNYILR2QSwfNNdBzt314y0HtkbeccZDGXJ480kqnZHOauFY6bu9V+iDCu
+         s/nLPvltYtJ9MTYNdWh6FAnGcgrbuDAL3wOM+QyZQJpnwoQZFiKnpftRx80aRgWP6DG9
+         aidAqF/27kfGXNR6tA+nfi72ewIXbDAR1Jtf+EYWroVTHpMHqjgY5GhAD7JxNjNasvo4
+         GQLc0KLd8S4UNSAJwgRtCgnM7+VMlVyehrIDMagggg4YPk1zFfZ9x/NZzThnaVH5uBWe
+         gxIFHNjDXh0wdvTjWlKxFsq0n0UJ7p2g5eZRp+vjYefjiNpqDI2qDRtS5WhcgAS4xEiw
+         BWvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IXl8qbr9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HTSSvnls;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7-20020a056214154700b0066b0f53b19asi2958094qvw.242.2023.11.09.07.47.49
+        by mx.google.com with ESMTPS id bn3-20020a05620a2ac300b0076da5b428c1si3075696qkb.785.2023.11.09.09.07.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Nov 2023 07:47:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Nov 2023 09:07:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IXl8qbr9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HTSSvnls;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r17FM-0002O7-AT; Thu, 09 Nov 2023 10:47:09 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r18V6-000812-JB; Thu, 09 Nov 2023 12:07:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1r17FK-0002My-FS; Thu, 09 Nov 2023 10:47:06 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1r17F5-0006MK-1x; Thu, 09 Nov 2023 10:47:06 -0500
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-53e70b0a218so1635472a12.2; 
- Thu, 09 Nov 2023 07:46:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1699544808; x=1700149608; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=E7vJXSBetClD/gOUlPRTJf1R7+Q0EPYGlWm8oFc/t4Q=;
- b=IXl8qbr9h8JnCaAGbwW95r684Dtliu4KCALtlM3iYjcvqAK+vmYSfr9jF3Z0s3uAQb
- cPuqiofn3OaseAf+E471NAZWD7K8bOpHIksC/wl8Ikm5Y+jiPQ2huMoJVb3OnsEfMefX
- ee0OkPYZhFGmxB4wjZVHp4OwnlBvulUYLneaROmbHS1dJJKM8s7KpZ6AoiAcqHXmH3wl
- IpIfmqDCCvmZ5on5fVm61bqfTH2HxoSNXvy21le9x9ivQrUEXCbGKi4YLIGrtVJVpM1g
- KwmckVak6I4wNwRR0b0FMzcSRvsVlMxlfyQDA/lHITF/65OwhvhdLb9HQ6Ct7CXVOKuL
- nFrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699544808; x=1700149608;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=E7vJXSBetClD/gOUlPRTJf1R7+Q0EPYGlWm8oFc/t4Q=;
- b=Z6XWhnVy5F9t86zAGLLwd9vO7nTeiTaqTTrBJ3OBsV4qsuLswfe4WS1CS0lj+t5EZ4
- WrRWKtHbP+3OBCZ0IMrjlzptsipfP7YR0Hul8vp3HOOZ+28BV150MQWrQe4pUk98BFPu
- fILy6wbwm2Hjm179fGdkMlEKGH7bc/cQP/ATYvtL4IG0vkfwvesAUZVgZaqP5T3zD/4s
- GMYD3kmOjgmZhpVhzILyU50YYEbhwdjlin6j4jHlNrN2EgAJQcHjIdvkN4XB4wqr0AXN
- Hb8rWOmzLOAuT1r27BPuy8Z9g6TTflvSHDc/FRiTf/nckhmLE1mj7KEPJM5hT4famvMv
- IcuQ==
-X-Gm-Message-State: AOJu0YxrbNKhe+XcD1082GlJk7k9yL9DwcSaaRal2LhZE6wKPOs3rzbq
- 4sHjkv9d2BoI1C3LEMqxcGyyB4Bs8JaJV12FERg=
-X-Received: by 2002:a50:8a81:0:b0:53e:1b:15f5 with SMTP id
- j1-20020a508a81000000b0053e001b15f5mr4562023edj.39.1699544807820; 
- Thu, 09 Nov 2023 07:46:47 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1r18V4-00080E-Bv
+ for qemu-devel@nongnu.org; Thu, 09 Nov 2023 12:07:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1r18V3-0005yA-0J
+ for qemu-devel@nongnu.org; Thu, 09 Nov 2023 12:07:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1699549643;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=2g173LzwlNG1UZ2ytVKC6y+FtXCeB8wlX3gt4AG2AAo=;
+ b=HTSSvnlsSVOtbtDZCFcc2W0cx3r9EuPTpEZXP//qtKlDUKFzJZrz1RexupSfoLRIkqu/lu
+ b8uwY9HjdLDh3zhk7neyMn3O69UZIIcLv3T7Pl1twZUx1IcmhUdNeCnfuH1JIqvCKNr4/z
+ zx92vvAjjulTzZHXxTsYO0j4055AV4g=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-220-DMwr-JpvOumr2uwz603DoQ-1; Thu,
+ 09 Nov 2023 12:07:20 -0500
+X-MC-Unique: DMwr-JpvOumr2uwz603DoQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A3DE13816B4E;
+ Thu,  9 Nov 2023 17:07:19 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.57])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E3AD8C1290F;
+ Thu,  9 Nov 2023 17:07:17 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Cc: clg@redhat.com, mst@redhat.com, yanghliu@redhat.com,
+ alex.williamson@redhat.com
+Subject: [PATCH] virtio-iommu: Remove useless !sdev check in
+ virtio_iommu_probe()
+Date: Thu,  9 Nov 2023 18:07:15 +0100
+Message-ID: <20231109170715.259520-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20231109151917.1925107-1-peter.maydell@linaro.org>
-In-Reply-To: <20231109151917.1925107-1-peter.maydell@linaro.org>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Thu, 9 Nov 2023 16:46:36 +0100
-Message-ID: <CAJy5ezoyaWH0fzdjO-W6tS3RjJtOytr2CVT7uUkwhg=VOUYaEg@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: HVC at EL3 should go to EL3, not EL2
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000008cd5400609ba1cd6"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x532.google.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: O1wwTuUv5NvH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: e/UcJtlc61Q4
 
---0000000000008cd5400609ba1cd6
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The code already checks iommu_mr is not NULL so there is no
+need to check container_of() is not NULL. Remove the check.
 
-On Thu, Nov 9, 2023 at 4:20=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org>
-wrote:
+Fixes: CID 1523901
+Fixes: 09b4c3d6a2 ("virtio-iommu: Record whether a probe request has
+been issued")
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reported-by: Coverity (CID 1523901)
+---
+ hw/virtio/virtio-iommu.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-> AArch64 permits code at EL3 to use the HVC instruction; however the
-> exception we take should go to EL3, not down to EL2 (see the pseudocode
-> AArch64.CallHypervisor()). Fix the target EL.
->
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 89fb5767d1..9d463efc52 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -698,9 +698,6 @@ static int virtio_iommu_probe(VirtIOIOMMU *s,
+     }
+ 
+     sdev = container_of(iommu_mr, IOMMUDevice, iommu_mr);
+-    if (!sdev) {
+-        return -EINVAL;
+-    }
+ 
+     count = virtio_iommu_fill_resv_mem_prop(sdev, ep_id, buf, free);
+     if (count < 0) {
+-- 
+2.41.0
 
-Reviewed-by: Edgar E. Iglesias <edgar@zeroasic.com>
-
-
-
-> ---
->  target/arm/tcg/translate-a64.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/tcg/translate-a64.c
-> b/target/arm/tcg/translate-a64.c
-> index 41484d8ae54..a2e49c39f9f 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -2351,6 +2351,8 @@ static bool trans_SVC(DisasContext *s, arg_i *a)
->
->  static bool trans_HVC(DisasContext *s, arg_i *a)
->  {
-> +    int target_el =3D s->current_el =3D=3D 3 ? 3 : 2;
-> +
->      if (s->current_el =3D=3D 0) {
->          unallocated_encoding(s);
->          return true;
-> @@ -2363,7 +2365,7 @@ static bool trans_HVC(DisasContext *s, arg_i *a)
->      gen_helper_pre_hvc(tcg_env);
->      /* Architecture requires ss advance before we do the actual work */
->      gen_ss_advance(s);
-> -    gen_exception_insn_el(s, 4, EXCP_HVC, syn_aa64_hvc(a->imm), 2);
-> +    gen_exception_insn_el(s, 4, EXCP_HVC, syn_aa64_hvc(a->imm),
-> target_el);
->      return true;
->  }
->
-> --
-> 2.34.1
->
->
->
-
---0000000000008cd5400609ba1cd6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div class=3D"gmail_quote"><div=
- dir=3D"ltr" class=3D"gmail_attr">On Thu, Nov 9, 2023 at 4:20=E2=80=AFPM Pe=
-ter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@l=
-inaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">AArch64 permits code at EL3 to use the HVC instruction; however =
-the<br>
-exception we take should go to EL3, not down to EL2 (see the pseudocode<br>
-AArch64.CallHypervisor()). Fix the target EL.<br>
-<br>
-Cc: <a href=3D"mailto:qemu-stable@nongnu.org" target=3D"_blank">qemu-stable=
-@nongnu.org</a><br>
-Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
-" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br></blockquote><div><=
-br></div><div>Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar@ze=
-roasic.com">edgar@zeroasic.com</a>&gt;<br></div><div><br></div><div>=C2=A0<=
-/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
-rder-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0target/arm/tcg/translate-a64.c | 4 +++-<br>
-=C2=A01 file changed, 3 insertions(+), 1 deletion(-)<br>
-<br>
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.=
-c<br>
-index 41484d8ae54..a2e49c39f9f 100644<br>
---- a/target/arm/tcg/translate-a64.c<br>
-+++ b/target/arm/tcg/translate-a64.c<br>
-@@ -2351,6 +2351,8 @@ static bool trans_SVC(DisasContext *s, arg_i *a)<br>
-<br>
-=C2=A0static bool trans_HVC(DisasContext *s, arg_i *a)<br>
-=C2=A0{<br>
-+=C2=A0 =C2=A0 int target_el =3D s-&gt;current_el =3D=3D 3 ? 3 : 2;<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0if (s-&gt;current_el =3D=3D 0) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unallocated_encoding(s);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return true;<br>
-@@ -2363,7 +2365,7 @@ static bool trans_HVC(DisasContext *s, arg_i *a)<br>
-=C2=A0 =C2=A0 =C2=A0gen_helper_pre_hvc(tcg_env);<br>
-=C2=A0 =C2=A0 =C2=A0/* Architecture requires ss advance before we do the ac=
-tual work */<br>
-=C2=A0 =C2=A0 =C2=A0gen_ss_advance(s);<br>
--=C2=A0 =C2=A0 gen_exception_insn_el(s, 4, EXCP_HVC, syn_aa64_hvc(a-&gt;imm=
-), 2);<br>
-+=C2=A0 =C2=A0 gen_exception_insn_el(s, 4, EXCP_HVC, syn_aa64_hvc(a-&gt;imm=
-), target_el);<br>
-=C2=A0 =C2=A0 =C2=A0return true;<br>
-=C2=A0}<br>
-<br>
--- <br>
-2.34.1<br>
-<br>
-<br>
-</blockquote></div></div>
-
---0000000000008cd5400609ba1cd6--

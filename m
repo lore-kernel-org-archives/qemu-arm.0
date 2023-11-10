@@ -1,268 +1,307 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1010953ejq;
-        Thu, 9 Nov 2023 23:32:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHye04xcQ0xj/TPZyCA0ObS3PL3F/kyHTzJm2WfoANmhIVQoDPpdPYOmJjkXy/fjxOaIOKx
-X-Received: by 2002:a05:620a:2408:b0:773:c6a1:a4e0 with SMTP id d8-20020a05620a240800b00773c6a1a4e0mr8009720qkn.2.1699601550776;
-        Thu, 09 Nov 2023 23:32:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699601550; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1059466ejq;
+        Fri, 10 Nov 2023 01:22:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEfPI41/mghgh5MHtYlWOizPM/RienRMWs2OlrYlHhKWp+lqZefTzDHzijqdZcwPcqIJk3N
+X-Received: by 2002:a05:620a:6019:b0:777:457:34be with SMTP id dw25-20020a05620a601900b00777045734bemr7458774qkb.24.1699608146677;
+        Fri, 10 Nov 2023 01:22:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699608146; cv=none;
         d=google.com; s=arc-20160816;
-        b=SLe/MbR7+5fAvhLh6IqR75EmfCsn2BXOhULAwWN9ZeA7u8UD983bqzV7jQnmkJgxsl
-         1BjfcAsCE6aZ452v53RoCcWOo7IF9vEyd8LVvbKDBDmZm4fKgI/3THcBUxmCr8f3vAvn
-         I+lDFDDAt9E/2pmm9Z0XXN6oNGBVE6fT5YaAieMpLra+nsKPzFBnu0fDXHPWLyKKa6oj
-         9GZMo1PdtV22AG97EypnEIT3QwIs90Ocv17Z276HK80EWwBtSnZZen4wPD1PN5LNhVrw
-         o24d6wIyuSo3DgdoH0eCx2nokuybt648zOgwpNwbbYk6Zk8y5Xz2ndYgNNeqsrmkUFP2
-         ieWQ==
+        b=JCQNafkR5+HwHV+7rHh8rVUhyfNX0UPmCu9hNWYbxgETUV/hu1i6cW7PuMaaE+73l3
+         7jugNmUInBSSKzCrLx+2Yo3JbGRIV5xlerzRxY1fJUz37X/S+M8EKWaM5GHRZcTCnQUt
+         JNwBDfYXgRQp+wrjwBCM/OOmKsBpmoUNxlVRGJb4uNbHZh8Lo8k5repAdtSduyxucCZP
+         Rrtpz8FRCsJNiB97GgxMhmHPU1KsxSE/+/vlNoPCC8jKa27wsc+4VnfG7AIwbqmLpMyj
+         n84ayvwWBO1/9MCLZB87BmiX79TLpMo8sFVJqVmZpF0y3zHW41xfMA2JN9V7QluvhetO
+         uZXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ZpzkuQ3EokkT80Y2bQ2BAl9ZQRy6Itv22qj1L2DbalU=;
-        fh=VFthBNTFGAd8XGwXzHkSOFg0ccThzO5uyAVYa9pZWZU=;
-        b=XO6mNqFhPS4b+qFgh1cIrWtGzxH1VzdGGmsqSDj/hwD7I4wqG1hi4FsAr+eHTysnJV
-         Oipfgfe4/wR8OldqikFAxOaNi/7YMlORqKMWBTP9ih8ayLIarazh5V/lyV0qOgLl3Zfu
-         w1c3pbhZV9BWK36wii1fzJGIos6puEnfI6TFNbExteb/Wl8ljc6qAaL7uyz1h0YV8CTS
-         FvYcgTYYS9CpVgFhel9JEnUQ1QrAS0Wje3iEodar7q9BNViBBO2SoV9ZZBOGOa+fEYgB
-         H8CnjgS+mYIRb4ZzivGJSSftcmKXYjSY7YGJlz/XIvxqqTW3FW3QI7mJslM6NnQ+TylA
-         fLeQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:in-reply-to:date:cc:to:from:subject:message-id
+         :dkim-signature;
+        bh=PVOJKFJlFu0ZtmCzArIbpoDlvkbx60MTRGoiIX110N0=;
+        fh=D6G8v9WEdU/oq5usU9X+y4xI3pEbXfO/aJKDQcVFDdg=;
+        b=lcPL4ubzn/lPQ3+5J8FlJnMqE7ZOP+E930rOxcGwJXGtc5eRzvGwV4Q4cSR/qf38a+
+         u+Ixp73TTLIA9+PNcdKG27ZZ6Z1KpBX1daqS+jrxGfqukYZCptQBLmz6pZy6FIYGWli8
+         H3tulF9WxCRFH7vJqG9hEOLbstr/Hg+OQtgV1eKq2Q+qTOoveBV3CrjxVO0XtvKNH5wQ
+         JxY+juxthWebSAY1DAD3u3vGZv6JoewxElmzpKDxs0ZambRTlDrc3R6/8WCPVyqp/VKR
+         j/dZ1s4f7+2hf0sNe7x+4JiFn4zZ9OMH3t68slE+lhxNY/+HgyxQ5VhI9rYEdA7xhdLT
+         aHDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JyP1IZzx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b="r4v/VdEj";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5-20020a05620a056500b007771d46fd50si3879871qkp.111.2023.11.09.23.32.30
+        by mx.google.com with ESMTPS id os38-20020a05620a812600b007758e5534e7si4072498qkn.781.2023.11.10.01.22.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Nov 2023 23:32:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 10 Nov 2023 01:22:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JyP1IZzx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b="r4v/VdEj";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r1Lzf-0004Nc-6A; Fri, 10 Nov 2023 02:31:56 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r1Ni1-0005d0-RP; Fri, 10 Nov 2023 04:21:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r1Lzc-0004Lq-6Q
- for qemu-arm@nongnu.org; Fri, 10 Nov 2023 02:31:52 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r1LzW-00074o-VV
- for qemu-arm@nongnu.org; Fri, 10 Nov 2023 02:31:51 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-53e08e439c7so2944869a12.0
- for <qemu-arm@nongnu.org>; Thu, 09 Nov 2023 23:31:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699601505; x=1700206305; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ZpzkuQ3EokkT80Y2bQ2BAl9ZQRy6Itv22qj1L2DbalU=;
- b=JyP1IZzxa0gvLOcfIwK20DxBM84jgLn9NRIwSMTXg/uZ5JNm2nOnrmMoiw4cEY99Bi
- 4s8PN5cdAHLLNGVuYRIkNfcoWtZ2Sqrl1VLxNN49bkn3s5sbljWLj6hs6EqjgSuT7Vc7
- iBQgymVQN4v+454kmbDwpvb2cEw9p8AfZL41OmXrQEZp6hS5Ciy3tOWbm1hpPf7ZOArc
- tIScnDN9baW5jtYF8XRIZ3psXqVnnSOnLUOZj/HEVm6WvLR7CSqTdUG63uUcFc1M8zXU
- SJk5Gg2WkSXG6a7W2cyoXYX+1XiBQffTV2d+boNxq1Vqp4YxqAKPfUrJb3W5AuLmB0+e
- fotg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699601505; x=1700206305;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZpzkuQ3EokkT80Y2bQ2BAl9ZQRy6Itv22qj1L2DbalU=;
- b=NMG2M3cAU1gRkvH/xE3dfEvK4EZQLm2fKJFC5KARawD+ylliHBFy4zKlNYnu15PFnc
- uMwoeX2w6ELDcbCkYF8sK5Wx0F2DxTIzWb9TuogLAmHuRcOv0+TjrcSPoxF9hat8P5xc
- 1bHbVdxRmHANY9KFZyh419aQJEWH6tWGVek4DpaIBktDxf7/n5T98nciL5EIWOglCvzo
- biojmWDjy8IrHy0m2QIHFlrxLg3GOcrOSHygsvt3wupI5UG7mEBu96u762uhwNmKpB0t
- mQgtRKGW1isgFgD3/tlJ3t/OzrgKH7c3tlpMuEaGuIA4zwd1IvVi6VGb6Way8S3B0zPL
- n9vw==
-X-Gm-Message-State: AOJu0YzN1Z0N9j5Rghph1pmeIAIbfmqUj22q0ABZgq12rdgDwhgBnVMM
- YdrqXKdLTZFQXZS6xlg0Z84IPQ==
-X-Received: by 2002:a17:907:a0b:b0:9cf:35a7:9ea5 with SMTP id
- bb11-20020a1709070a0b00b009cf35a79ea5mr5018325ejc.74.1699601505123; 
- Thu, 09 Nov 2023 23:31:45 -0800 (PST)
-Received: from [192.168.69.115] ([176.187.194.109])
- by smtp.gmail.com with ESMTPSA id
- c10-20020a170906d18a00b009a1a653770bsm3512222ejz.87.2023.11.09.23.31.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Nov 2023 23:31:44 -0800 (PST)
-Message-ID: <464bf22d-e9c0-44bf-8d78-4e64eb57c8c1@linaro.org>
-Date: Fri, 10 Nov 2023 08:31:38 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from
+ <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1r1Nhz-0005cN-M0; Fri, 10 Nov 2023 04:21:48 -0500
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
+ id 1r1Nhv-0003fO-W1; Fri, 10 Nov 2023 04:21:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+ In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=PVOJKFJlFu0ZtmCzArIbpoDlvkbx60MTRGoiIX110N0=; b=r4v/VdEjY28CTfHKcV0pLAIk2q
+ BgpvCiBAk5Tax5InPgSPnwlZouNygZGcusmtkRx79MqrGIWlQtPMf3Wwp2cSm4tE4RPSh8680vuEg
+ EIZ/STIhdv1F+ApEpT62UYh0oqyLVuey/aoYC9xGDw7gSZGn05NBMP3jAWb52ttsCXTo0AEBh16IP
+ N9YlMYOD73OgYHKhvB33iwqlOgttTmxbdVMzRb6jzQriSe5Agh8KMwczOMarbstRxOUWN1eIdh+w9
+ iy3QPUBHefF1xaYjM5CtbytY9bToYKpQDGnOMGsB3QP4BrGh5bOrexsMPTjHyKaeb87AtsJt6/BRi
+ NQjEcXFg==;
+Received: from [2001:8b0:10b:5:18d3:34d5:5849:7b74]
+ (helo=u3832b3a9db3152.ant.amazon.com)
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1r1NhT-00CYyi-2F; Fri, 10 Nov 2023 09:21:15 +0000
+Message-ID: <1899e499bbcfce96640296dd6f88643900e78ce3.camel@infradead.org>
 Subject: Re: [PATCH for-8.3 v2 04/46] hw/pci: add pci_init_nic_devices(),
  pci_init_nic_in_slot()
-Content-Language: en-US
-To: David Woodhouse <dwmw2@infradead.org>, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Rob Herring <robh@kernel.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Jan Kiszka <jan.kiszka@web.de>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Helge Deller <deller@gmx.de>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Song Gao <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>,
- Laurent Vivier <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+From: David Woodhouse <dwmw2@infradead.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, Beniamino Galvani
+ <b.galvani@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Strahinja
+ Jankovic <strahinja.p.jankovic@gmail.com>, Niek Linnenbank
+ <nieklinnenbank@gmail.com>,  =?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley
+ <joel@jms.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>, Jean-Christophe
+ Dubois <jcd@tribudubois.net>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Rob Herring <robh@kernel.org>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>, Hao Wu
+ <wuhaotsh@google.com>, Radoslaw Biernacki <rad@semihalf.com>, Leif Lindholm
+ <quic_llindhol@quicinc.com>, Marcin Juszkiewicz
+ <marcin.juszkiewicz@linaro.org>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, Alistair Francis <alistair@alistair23.me>,
+ Helge Deller <deller@gmx.de>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Song Gao
+ <gaosong@loongson.cn>, Thomas Huth <huth@tuxfamily.org>, Laurent Vivier
+ <laurent@vivier.eu>, Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, =?ISO-8859-1?Q?Herv=E9?= Poussineau
+ <hpoussin@reactos.org>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
  Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
- Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Bin Meng
- <bin.meng@windriver.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>, Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Nicholas Piggin
+ <npiggin@gmail.com>, Daniel Henrique Barboza <danielhb413@gmail.com>, David
+ Gibson <david@gibson.dropbear.id.au>, Harsh Prateek Bora
+ <harshpb@linux.ibm.com>, Bin Meng <bin.meng@windriver.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Weiwei Li <liweiwei@iscas.ac.cn>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, David Hildenbrand <david@redhat.com>, Ilya
+ Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, Eric Farman
+ <farman@linux.ibm.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Magnus
+ Damm <magnus.damm@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, Anthony Perard
+ <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, Max Filippov
+ <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
+Date: Fri, 10 Nov 2023 09:21:14 +0000
+In-Reply-To: <464bf22d-e9c0-44bf-8d78-4e64eb57c8c1@linaro.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
  <20231106195352.301038-5-dwmw2@infradead.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231106195352.301038-5-dwmw2@infradead.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ <464bf22d-e9c0-44bf-8d78-4e64eb57c8c1@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256";
+ protocol="application/pkcs7-signature"; 
+ boundary="=-jF7GAC0DLUuHciBsiF80"
+User-Agent: Evolution 3.44.4-0ubuntu2 
+MIME-Version: 1.0
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
+ envelope-from=BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org;
+ helo=casper.infradead.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0+F81B0tm3t3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mYWjsr7rgX5+
 
-Hi David,
 
-On 6/11/23 20:49, David Woodhouse wrote:
-> From: David Woodhouse <dwmw@amazon.co.uk>
-> 
-> The loop over nd_table[] to add PCI NICs is repeated in quite a few
-> places. Add a helper function to do it.
-> 
-> Some platforms also try to instantiate a specific model in a specific
-> slot, to match the real hardware. Add pci_init_nic_in_slot() for that
-> purpose.
-> 
-> Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
-> Reviewed-by: Paul Durrant <paul@xen.org>
-> ---
->   hw/pci/pci.c         | 45 ++++++++++++++++++++++++++++++++++++++++++++
->   include/hw/pci/pci.h |  4 +++-
->   2 files changed, 48 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 885c04b6f5..5703266c0b 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -1925,6 +1925,51 @@ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
->       return pci_dev;
->   }
->   
-> +void pci_init_nic_devices(PCIBus *bus, const char *default_model)
-> +{
-> +    qemu_create_nic_bus_devices(&bus->qbus, TYPE_PCI_DEVICE, default_model,
-> +                                "virtio", "virtio-net-pci");
-> +}
-> +
-> +bool pci_init_nic_in_slot(PCIBus *rootbus, const char *model,
-> +                          const char *alias, const char *devaddr)
-> +{
-> +    NICInfo *nd = qemu_find_nic_info(model, true, alias);
-> +    int dom, busnr, devfn;
-> +    PCIDevice *pci_dev;
-> +    unsigned slot;
-> +    PCIBus *bus;
-> +
-> +    if (!nd) {
-> +        return false;
-> +    }
-> +
-> +    if (!devaddr || pci_parse_devaddr(devaddr, &dom, &busnr, &slot, NULL) < 0) {
-> +        error_report("Invalid PCI device address %s for device %s",
-> +                     devaddr, model);
-> +        exit(1);
-> +    }
-> +
-> +    if (dom != 0) {
-> +        error_report("No support for non-zero PCI domains");
-> +        exit(1);
-> +    }
-> +
-> +    devfn = PCI_DEVFN(slot, 0);
-> +
-> +    bus = pci_find_bus_nr(rootbus, busnr);
-> +    if (!bus) {
-> +        error_report("Invalid PCI device address %s for device %s",
-> +                     devaddr, model);
-> +        exit(1);
-> +    }
-> +
-> +    pci_dev = pci_new(devfn, model);
-> +    qdev_set_nic_properties(&pci_dev->qdev, nd);
-> +    pci_realize_and_unref(pci_dev, bus, &error_fatal);
+--=-jF7GAC0DLUuHciBsiF80
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Could these functions be used with hotplug devices?
+On Fri, 2023-11-10 at 08:31 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+>=20
+> > +=C2=A0=C2=A0=C2=A0 pci_dev =3D pci_new(devfn, model);
+> > +=C2=A0=C2=A0=C2=A0 qdev_set_nic_properties(&pci_dev->qdev, nd);
+> > +=C2=A0=C2=A0=C2=A0 pci_realize_and_unref(pci_dev, bus, &error_fatal);
+>=20
+> Could these functions be used with hotplug devices?
+>=20
+> If so we should propagate the error, not make it fatal.
 
-If so we should propagate the error, not make it fatal.
+Hm, not sure. Mostly, I'm trying not to change existing behaviour with
+this series (except in carefully noted cases where the minuti=C3=A6 of the
+existing behaviour appear to be both unintended and unimportant, and it
+would be unnecessarily complex to preserve the gratuitous differences
+between the way that platforms have open-coded things).
 
-> +    return true;
-> +}
-> +
->   PCIDevice *pci_vga_init(PCIBus *bus)
->   {
->       vga_interface_created = true;
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index ea5aff118b..684d49bdcd 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -317,7 +317,9 @@ void pci_device_reset(PCIDevice *dev);
->   PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
->                                  const char *default_model,
->                                  const char *default_devaddr);
-> -
-> +void pci_init_nic_devices(PCIBus *bus, const char *default_model);
-> +bool pci_init_nic_in_slot(PCIBus *rootbus, const char *default_model,
-> +                          const char *alias, const char *devaddr);
->   PCIDevice *pci_vga_init(PCIBus *bus);
->   
->   static inline PCIBus *pci_get_bus(const PCIDevice *dev)
+I don't think it makes much sense *even* to use the new
+qemu_configure_nic_device() with hotplug devices. The user might create
+a *netdev* at startup, for later hotplug devices to use. But they
+wouldn't use `-nic` for that, and any devices explicitly added through
+hotplug will have an explicitly specified netdev, won't they?
 
+I don't think we want to change that model and allow hotplug devices to
+magically get config from -nic on the command line... do we?
+
+We even have a warning for the case where NIC configurations are
+provided with -nic but aren't consumed by the time the platform is
+instantiated (although that doesn't *prevent* them from being used
+later by hotplug).
+
+But that's answering your question which was about "these functions".
+
+For *this* particular function, pci_init_nic_in_slot(), it makes even
+less sense to consider hotplug. This is for platforms to handle the
+special cases, like "this board had an RTL8139 in slot 3", and make
+that NIC appear in the appropriate slot. It's done as a special case
+before processing the rest of the NICs which land in dynamically
+assigned slots =E2=80=94 which may even be on a *different* bus, in the cas=
+e of
+sun4u.
+
+
+--=-jF7GAC0DLUuHciBsiF80
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEwMDkyMTE0WjAvBgkqhkiG9w0BCQQxIgQgLM611qmK
+37cumtyANrjjuLdD6412xjPvTQ1HbBAHjmYwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCjpA+OvKqoWwYNUOHEm6Me4lM4p9P4YW9Q
+Y4ECwBwF7J98iaHes7Pb8hMCx7GSgsw1V2CkL2KkZUFPJC7fCBQEx+QW8o1GXQWjwB+3ER00RCOl
+9Q+d95TBp3nYgOlaOL7C9S/Rrwx54MjI+YNZUMwaP5Y//kQvf5HlDxJiBI9Hmr/pTsbUXlOocYcT
+WuDKLO3dlTai+4ZUrUr9IdTgzGjJuZMKNNhSAefUaCeapWeLinzc4To/8LfrEtSM5fVK6dBQQheV
+u/YZhhs3bxVFwchwuvbblzdbsEj+XbodqlwbUBVh897TutgRKlTs9s1FITTdaroC5ZOqULnHnklx
+rDbBcWWumGj2S7AOWHrwqibeMosZ+CDtCxs0fsqsdkdVvbOzUKq5cUOgQhvYLDHaPh13Lpzi6giD
+Mo+tZIEJhU9vnErEKpc+MQNacYYsWplf15/Aukk8r+ViYF50zdYUg+odsBB7+2DJQpvLe/eKk3mj
+qYE0tC8l/C5vvrM2ErpAhpGQ7Y8eBnV8pjCJhAan0gZXeIqGfJBqvXSY/h3XzUGTVTa6DMMUOhhV
+n+vuqJNrNRoPvo4PAxqdyAckOdqHWi6reh3owpH/pt6FKgcjUsbkhm/KVGjWYxxdO00zOo1uvJ5N
+cyXs0re1za9dUuYlKa+f8Ro8FHKQ7/mbiaR8CpIj0AAAAAAAAA==
+
+
+--=-jF7GAC0DLUuHciBsiF80--

@@ -1,99 +1,100 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1120679ejq;
-        Fri, 10 Nov 2023 03:28:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGNbdrxn9z0zj0UOJ/N6VDQaD4FAP5xToewGRrsqDt8jPK3zhbEa8cQUwyTp4jN0JPn9w7s
-X-Received: by 2002:a25:ade1:0:b0:da0:3972:a062 with SMTP id d33-20020a25ade1000000b00da03972a062mr7784645ybe.39.1699615709604;
-        Fri, 10 Nov 2023 03:28:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699615709; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1123407ejq;
+        Fri, 10 Nov 2023 03:33:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEz8GrvXO/EZsyLw77VPBo7jGo0vzWDjYL4fFKZL4xK8FK/Qg6kw/PKSxwQ0X9YNT/jqBoR
+X-Received: by 2002:ac8:5e4c:0:b0:410:89e7:ef0b with SMTP id i12-20020ac85e4c000000b0041089e7ef0bmr8693737qtx.14.1699616015402;
+        Fri, 10 Nov 2023 03:33:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699616015; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZWHPyLIdSY7XrHlBpGVPBTeipMXP8IZZ4LOOpiDx4NUZ1iVx75kx1WaCG7ajUSnxfJ
-         1B3LQIJTF4iAcNgVwFlXjYNepGrCMV0/v43AMT1GddTSCyOWMjnA0E2IuQgdeztxy+6/
-         eCZyYi0lu3l09xbqOXpw46JayDM35xMwpcKSOl2xn5WnwIfiHq8sQZN2zrv90rN1i6uX
-         F04JfCzSUfySlWedDWH9TYgJ5l+qqKNzkHnrxQIxrzsBTCBZCK3AgtEMX4XTQw5pD9we
-         5aL+yNOkSoN/LjOQAGTfi6qy3nZM8HaGLhV8IqwkW26B25o/YQ3ttcXwj/hamM8GVXW9
-         IR6Q==
+        b=yWLV01JoMdtajEY2WPBzgu8g3xV8Chg6SCKgoj7rXp2bFaXVt8z6xYKGykxXrVqsFt
+         Q+tXwIM2MlJjJVufDoK56XgGQPYIUE7xCvpR5VpESaH3kJq3pOOERQgOukzJd2jUyQc1
+         lGdeyp6KmwG/97EyQ0SarRMmCn55byFiTANg+V2s3LcsDQKNOlCGFjJY1awN7Vi7Omml
+         l6etNgGvmTkbojmFkPEITuCZQW4jOmQDwLcPgfRjp1EHNQrk6V9MCiwEzY06pMY8Kb2l
+         FN0GLvJ7JsYPmeijtA/9zSenaWw+BVp2FtBEArcBHCYi7oW+elMyK3OEmBkLkLGdaDIu
+         FShA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:in-reply-to:references:user-agent:subject
          :cc:to:from:date:dkim-signature;
-        bh=x2cJf8U8zq+7Qc886E7RORcVF/kML0kHxdy9k4APJtU=;
-        fh=OcAfL4ePqegSIuc/SkP+wEx+Eq+N0qKdP42puOVug9I=;
-        b=C73TkG5+GcziLmDbyA0Ws20mO9MGCb3XPHtHrYY0Ip9C0YQX5J3RT4xycH5nXO1KzF
-         HUygvYn0D024q7HSYEz5QeAyr+rSN0TpAymM2jqmXenm4t+KT2MEEhsIM7JahqgPq7YZ
-         7SCWbsV/99j4h31OEDFR1ucvRf93zxnQht8NHi+niHhIR8+KR20eujEN8VgBjfevsxEj
-         Gfjj+6X5unJdcBh8lINgUlPp5VAjZKkrkTJOATsqRV6uzNk5Dp8/TjqDPITBpmFN+rPi
-         te32XV1MF/ga2FSY+QCokWwQhbf3KFG9Th/VM6HJTFwJZ3FC4IaNubbJNX6o/Rsy8yhd
-         gvPg==
+        bh=N9RRjo0H7ohPMN50cLmaMghwMlykvqa2DWQuM/AlxhE=;
+        fh=LMea0p/jA6xvmRSFcVeSFyoeO4LQ/xGWTUhsWuuvPcM=;
+        b=wKKga5pHdJhw9K1HmZovBAjHY44Cx/JRp+3Zl2yFEL1AFOHD2fQJ34cumrP4iS4kHe
+         J9EBYcLLnhMjKdDbVGbX+tvukfOn6OxK8hVdAG9OQT4Sz+GUSJTMw1oYh+6YIcjpqx+f
+         vS4XmXMRJmEuajfzj05atUa7cz8MqgQ9tmIw5TrIC84khddk2NRB3UQN3HRX3etXwurK
+         utkirBPi/Q4PJdT96shLukeTWMkNodp1yDSNxypQnHNArJxnf920haLpiYsC3MAFhDdr
+         fO5DXYGf/eTXJjOx6NdcIxzGWwMWdI6SxXCoKq/RuewtUMv7OBUo+jCcvHJPNa2x01Sq
+         nUqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lVBjluGr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lpLzH6gh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6-20020ad45f46000000b0066ac82c4487si4760233qvg.365.2023.11.10.03.28.29
+        by mx.google.com with ESMTPS id s2-20020a05622a018200b00417d1c0ba59si4401058qtw.341.2023.11.10.03.33.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Nov 2023 03:28:29 -0800 (PST)
+        Fri, 10 Nov 2023 03:33:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lVBjluGr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lpLzH6gh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r1PgP-0003JW-IP; Fri, 10 Nov 2023 06:28:17 -0500
+	id 1r1PlM-0004gj-8D; Fri, 10 Nov 2023 06:33:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1r1PgL-0003Ip-2W
- for qemu-arm@nongnu.org; Fri, 10 Nov 2023 06:28:14 -0500
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+ id 1r1PlI-0004gI-TB
+ for qemu-arm@nongnu.org; Fri, 10 Nov 2023 06:33:21 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1r1PgH-00066q-6s
- for qemu-arm@nongnu.org; Fri, 10 Nov 2023 06:28:12 -0500
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2c50ec238aeso26421491fa.0
- for <qemu-arm@nongnu.org>; Fri, 10 Nov 2023 03:28:07 -0800 (PST)
+ id 1r1PlG-0007P6-Jd
+ for qemu-arm@nongnu.org; Fri, 10 Nov 2023 06:33:20 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4083740f92dso14410125e9.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Nov 2023 03:33:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699615684; x=1700220484; darn=nongnu.org;
+ d=linaro.org; s=google; t=1699615994; x=1700220794; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:in-reply-to
  :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to;
- bh=x2cJf8U8zq+7Qc886E7RORcVF/kML0kHxdy9k4APJtU=;
- b=lVBjluGrZXpb6ZIladq35o4iVt0n7YXmJnNcOpJp+2rvMpABEri9gY6qawKFTEI6Ya
- ylwKm8nGjZJnjww90KwOn85W9doAFghVfr/BAhuzyBaXUqsyBlgaG+zOLe/1dIFPhn5v
- 9SxFUWgye0mN6GMBheqpZOs2kM2lzCOIrpZrPqsbOqvIr2ixtqhdnA4tyn//DEtsxVVv
- tfppk6RycTJ1AeNukvgciFOho8BPKTZl7kO8tAcX27cj0RMg0OoEL5ljty7dhjuY7QZX
- wao85Ck6EaWmwceI9kA4NPp2GjZw++hon+MRlWfypvtkqRkCiFPRtLghcNRozYR1Awua
- w4mg==
+ bh=N9RRjo0H7ohPMN50cLmaMghwMlykvqa2DWQuM/AlxhE=;
+ b=lpLzH6ghRlUR38FVa1ED8/9BWWg5tGfeYEhcIOMgEVpeK9jSuUvHY9BJ7UY1IER/qS
+ UBlK1rby9dhrCHpOyizWmOhMUz9xZ+t+716wHcdB2nLWRCLLpIl+entOZPLo8AZIS7H9
+ oDQJQXO0A25b7Wer9408fsAmM/8G8D2RnecTL+MtDki2G1wvzj2jSUrm7lV7CJ88beKW
+ 1YBsEdZTMtUneiZdIiZj0ljgfarSThLrsn496XUfkyC75cwSir/kurquQAIXaAyi0I/N
+ rGZa79eSShbPSvuqcWV0syEQyP2PydjC8+6CD3TFX9hcnv5dzr1iTIoSJfikF60wQ6Rm
+ l4vQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699615684; x=1700220484;
+ d=1e100.net; s=20230601; t=1699615994; x=1700220794;
  h=content-transfer-encoding:mime-version:message-id:in-reply-to
  :references:user-agent:subject:cc:to:from:date:x-gm-message-state
  :from:to:cc:subject:date:message-id:reply-to;
- bh=x2cJf8U8zq+7Qc886E7RORcVF/kML0kHxdy9k4APJtU=;
- b=QkxVDBw+Usp4nkF4j1uWZWRvX8gPvbdCzDnNbJYqs3kTN28hnXM0vNnE5pamQATpqA
- ro7akbzdZluJZ4ClIPrye7rCH8mZQuTq682tkwNKFYLmq1RDsmRn7MdOq0M18xOErQnA
- +6BXYM9XdN8ONgvTXQbrsiygDSG7ANtq3E6NdeptKoUEvpP3wZR+tJBdZH99mzm8iv8L
- wIkwgrX1bYA+7MFsy1jtJUS16Yr+zPaeQ9TnhkBTZk6tPQyba51Vs3V+oPyuybhqe08L
- OEhha0XTpaePxBZ8v20n2tilxioKtlonBP/wQ2lo/VR/lszui6cIJ0GPNob5I1i9xrLU
- 13nw==
-X-Gm-Message-State: AOJu0Yz1dwuEb/aTSGFfh6BJhJ3RtpqFS6sZLMBlWzoFEyDu3QTAzBTf
- +bbPufWHFHH6mZNIUN1NbrfJlg==
-X-Received: by 2002:a05:651c:a0f:b0:2c8:3571:b08c with SMTP id
- k15-20020a05651c0a0f00b002c83571b08cmr384477ljq.53.1699615684521; 
- Fri, 10 Nov 2023 03:28:04 -0800 (PST)
-Received: from meli.delivery (adsl-109.37.6.163.tellas.gr. [37.6.163.109])
+ bh=N9RRjo0H7ohPMN50cLmaMghwMlykvqa2DWQuM/AlxhE=;
+ b=a8NngrKtKqutncAToe8bxNjLQTYDzzK40aNcYx5z6dfPodcrdr6OrpA02nXQGthFrP
+ 9Gye9wVqYhjiiyzzoGiN6QZwU5qGVILk127K2Z8od2RAgWYgrW4QyIccXNe2zB5c8S+Q
+ aRBzId5yIC8j+XuDhcBFu6lcDFwGe/PeeJKRli45sD+6HiiGmWOUhzRu5pEGIQmq95zr
+ pqXeKFK56k/AFQlLI5AqQ+9prcSirwdo8h51sNrVUC6ft3EYk4HeujBAv52icp6uvRo0
+ k59/Be4lQdHXKwFzhkIvt5BTJh6fHIlKSS6kejSMFQjhZbmPUThXrkJiY5m66KssFZEb
+ Vp6Q==
+X-Gm-Message-State: AOJu0Yy5LSQg+eD+l9NVnGiK/PPDQyvERLv75UFsiqLM4N+8nuplS5gH
+ 9IvTBUSzep9PlUPBTfJPZwQvHw==
+X-Received: by 2002:a05:600c:190a:b0:40a:4609:9cbd with SMTP id
+ j10-20020a05600c190a00b0040a46099cbdmr1129318wmq.13.1699615994588; 
+ Fri, 10 Nov 2023 03:33:14 -0800 (PST)
+Received: from meli.delivery (adsl-205.37.6.2.tellas.gr. [37.6.2.205])
  by smtp.gmail.com with ESMTPSA id
- u8-20020a05600c138800b004075d5664basm4975761wmf.8.2023.11.10.03.28.04
+ v19-20020a05600c445300b0040813e14b49sm4988328wmn.30.2023.11.10.03.33.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Nov 2023 03:28:04 -0800 (PST)
-Date: Fri, 10 Nov 2023 13:25:56 +0200
+ Fri, 10 Nov 2023 03:33:14 -0800 (PST)
+Date: Fri, 10 Nov 2023 13:28:14 +0200
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: "Daniel P. Berrang=?UTF-8?B?w6k=?= " <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+To: "Daniel P. Berrang=?UTF-8?B?w6k=?= " <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Marc-Andr=?UTF-8?B?w6kg?=Lureau <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org
@@ -103,14 +104,16 @@ User-Agent: meli 0.8.2
 References: <cover.1699606819.git.manos.pitsidianakis@linaro.org>
  <4b040fc18cb0e563e92ce084ca18b89a050a8aaa.1699606819.git.manos.pitsidianakis@linaro.org>
  <CAFEAcA80sv6ewJ+LoROn-9ooEyLGQwiqYpL3=fqrK7gA0oZG-A@mail.gmail.com>
- <3wmne.fhuf28sb5yfg@linaro.org> <ZU4R+08zuo8xvlg8@redhat.com>
-In-Reply-To: <ZU4R+08zuo8xvlg8@redhat.com>
-Message-ID: <3wnuq.xckj65oye27@linaro.org>
+ <3wmne.fhuf28sb5yfg@linaro.org>
+ <CAFEAcA-mSBgLuGLp4Tzaq0L78PtsxF19CVfmkJwaM8pHfwv7wg@mail.gmail.com>
+ <ZU4SmH8LMGVJmGZp@redhat.com>
+In-Reply-To: <ZU4SmH8LMGVJmGZp@redhat.com>
+Message-ID: <3wo3c.z2jjrdl2xn4i@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset=utf-8; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lj1-x22d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,37 +135,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rx0ps2451zW4
+X-TUID: t2NO4tRTAYZy
 
-On Fri, 10 Nov 2023 13:20, "Daniel P. Berrangé" <berrange@redhat.com> wrote:
->Your approach to the problem:
+On Fri, 10 Nov 2023 13:23, "Daniel P. Berrangé" <berrange@redhat.com> wrote:
+>On Fri, Nov 10, 2023 at 11:18:39AM +0000, Peter Maydell wrote:
+>> On Fri, 10 Nov 2023 at 11:02, Manos Pitsidianakis
+>> <manos.pitsidianakis@linaro.org> wrote:
+>> >
+>> > On Fri, 10 Nov 2023 12:21, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> > >This kind of thing is why Coverity's unused-result warning has a
+>> > >lot of false positives. We shouldn't introduce extra code like
+>> > >this to work around the fact that the tooling doesn't understand
+>> > >our error-handling convention (i.e. error_fatal, and the way
+>> > >that some functions report errors both via the return value and
+>> > >also via the Error** argument).
+>> >
+>> > I respect that :). But I personally believe that clinging to C's
+>> > inadequacies, instead of preventing bugs statically just because it adds
+>> > some lines of code, is misguided. Proper code should strive to make bugs
+>> > impossible in the first place.
+>> 
+>> I generally agree. The problem here really is that we've ended
+>> up with this odd API convention that reports errors in two
+>> ways. In an ideal world we'd tidy up our APIs to report errors
+>> exactly in one way (presumably via the Error).
 >
->  if (!AUD_register_card("OMAP EAC", &s->codec.card, &error_fatal)) {
->    exit(1);
->  }
+>The compelling thing about our slightly odd &error_fatal/error_abort
+>approach is that we can directly get stack traces showing exactly
+>where the error happened.
 >
->is adding dead-code because the exit(1) will never be reachable. So while
->it lets you squelch the unused result warning, it is verbose and misleading
->to anyone who sees it.
->
->Perhaps a more viable option is to pull in gnulib's ignore_value macro
->
->  #define ignore_value(x) \
->    (__extension__ ({ __typeof__ (x) __x = (x); (void) __x; }))
->
->and then we would have just this:
->
-> ignore_value(AUD_register_card("OMAP EAC", &s->codec.card, &error_fatal));
+>If we just propagate the error up the stack to finally exit/abort,
+>the origin context is essentially lost, and when it does abort, we
+>don't get a snapshot of all threads at the time the error hit, as
+>we've moved on in time.
 
-Good suggestion, thanks!
+FYI: It is possible to get a stack trace using gnu libunwind which is 
+portable, dependency-free and runs on many targets: 
+https://github.com/libunwind/libunwind#libunwind
 
-And to be fair, I did put a comment directly above that line to explain 
-the unreachable code path. :)
+Or llvm's libunwind which is also of great quality: 
+https://bcain-llvm.readthedocs.io/projects/libunwind/en/latest/
 
-+    /*
-+     * We pass error_fatal so on error QEMU will exit(). But we check 
-the
-+     * return value to make the warn_unused_result compiler warning go 
-away.
-+     */
-
+They are also compatible with co-routines and JIT code (At least, the 
+GNU one is, not sure about llvm).

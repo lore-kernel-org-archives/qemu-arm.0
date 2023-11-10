@@ -1,104 +1,115 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1087776ejq;
-        Fri, 10 Nov 2023 02:21:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGWvC8+Mp4R5eUiQalVyt9RnjvdaPxZQKrtTKIVtIM5khK7rKhOqRV24spM6NiSx2U1B96Q
-X-Received: by 2002:a25:ad06:0:b0:d9c:a485:332b with SMTP id y6-20020a25ad06000000b00d9ca485332bmr7480779ybi.4.1699611713198;
-        Fri, 10 Nov 2023 02:21:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699611713; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1106926ejq;
+        Fri, 10 Nov 2023 03:02:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFWetxfN/Sr7wFy3wNmSHzM2zZzIWXyXemCVEtZ/n+4QtBNbxYqBll7IfIieETL11mbCrm8
+X-Received: by 2002:a05:620a:25d3:b0:77b:bd56:1ac4 with SMTP id y19-20020a05620a25d300b0077bbd561ac4mr4348127qko.68.1699614150366;
+        Fri, 10 Nov 2023 03:02:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699614150; cv=none;
         d=google.com; s=arc-20160816;
-        b=d2qVnaDgR/g8ZnXFdyGOOeebeK3iKZ439CGwznC9o73GbQEq7FDsRnv9HZ9q0FBYDy
-         XOE16cvI0P9wJFyuJbOAnxiG5lpfpSYEvqk49nw6AJ9IH8f/AlHbeoWQLSuIWTRKZSZb
-         lJ6rDSXcTDNIMP3Q4W52VvDuRuiazo9BXx95NSP1fv5IF/Ezn5wG9Ndfy3MnygA3azgG
-         vmV7Y1U3Rl3OhrIyDzeoYLE1FhcVS+Upt0CN16BE0zJpRyPnnSKP6eEjUOxPRedLT94e
-         EVV9jp7+ciX0Fr5iIpfYPcRgB7vLY9p6nkbbVtpqS/q2ANIR+E+YRAlAT8JPWKHzFh12
-         SA+g==
+        b=dMVHNdfyWMBx2QH8dcbtH5RBsTQGhgfnFJb3rOZ7B/UK0slsM5tKHKE+EteIxVAP5C
+         a38rsrkorzXuu4g048VXkIm5U8KHNHH1B0QDCqkEnkOCYKjnSFd+dfZZgJE73U04JYI/
+         +T5UyPwFpdausyaURb//Sz1GcUjwiMsWSBb6Rd1vFaWsF6WL8Vvrl2jo+hTsAdqYwX4a
+         QJvu4MyEs1iNr7OFFRIFvcpj4NZlplLl7/2y/pWwBeplvPC8mlQxiQrWKliZhO6mPM9E
+         XzOxJdkG6haBzyIGnWBLr0s4kGIhOz2/hIjC1SRMgicPIoNw2/t6athNQWNESOD16Vmw
+         uxSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=LqHY1rM+nJijkVtRNRAZWGeNV/wqoJqulwCB5qLr/y4=;
-        fh=+cXu/u1gi8FLs40kD85giOgg2zmUaEFQn2Fp3TN2jNA=;
-        b=lE47eX6cCW1Dtpn8wshBUbo+eJGagxCW1K0IiqniDdvJv+Q7ruwWHVS0mhxZCYYVEk
-         s1cAUKDArJdMy3SlBPb6PjlJYk+hfdrp7Kv99q2e7L884IRoinPQl16OZn5njjn3ZPng
-         IodmXsTS59JhV/uLnyC0YUpl4TLLJSK5eTilyv6tqD3rn8Jp7KrGiDu75HOMqx7E2VoF
-         MiOIGM5h5605Guoravi7ONvTVl0obunEm+h+dRfgDsXs3BmhHxQjhGO0ItclO5jgrWjg
-         UP2zqVcpqX1O6btqPZ7QZlu/H9qMhXQshwknz7HZ11w7vXWp581ToPI+lCopbF+NVXSF
-         LAzQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:in-reply-to:references:user-agent:subject
+         :cc:to:from:date:dkim-signature;
+        bh=cQlg1PFbziQhy1MSqYIFuEQXWN8xizhWbYBQqbezDhw=;
+        fh=kp3Azl2K9Y/8KQsKot/1Jfa9DUXZwMGt9B8E3nvN2mk=;
+        b=HOw67m/60F2QcN82dCxQlBTDprTaiAC3Z0gRSJKN+8VIFji17ygX7YycUeJhu1bjLp
+         BOXTjLRdBtqBuAnqTZ9SiM19mqe4gPf5jAgbKczBek/6rOyH+zr1ZoYZwp90KkNCfaAR
+         a33KaSDxN4ct6RvP5NehOJcNI4VcR3ppsdYo3H2K0Dr63PJf3ScwuFblba4GWq7ShR76
+         IAVjzKDjb2fAODDduE5Xu8ESdHWVAEbGFCunNMkpsiBsgckkadGz+D5txJcbNzzEHwcy
+         dVBnF7zcUKL7W2aXTcZ8e81lAGTGq6AxTlLZA9UBxeokN4jX+7kmLpYTS7hxCkZNb2zF
+         NvvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ibq1QfZj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eaxM+EXO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16-20020a05620a16b000b007788b84dbc7si4277435qkj.496.2023.11.10.02.21.53
+        by mx.google.com with ESMTPS id bl26-20020a05620a1a9a00b0077592c3366esi4339457qkb.329.2023.11.10.03.02.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Nov 2023 02:21:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 10 Nov 2023 03:02:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ibq1QfZj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eaxM+EXO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r1Odd-000407-Q1; Fri, 10 Nov 2023 05:21:21 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r1PHD-0005Lp-RD; Fri, 10 Nov 2023 06:02:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r1OdZ-0003zl-Qw
- for qemu-devel@nongnu.org; Fri, 10 Nov 2023 05:21:17 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1r1PH8-0005LE-DE
+ for qemu-arm@nongnu.org; Fri, 10 Nov 2023 06:02:11 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r1OdX-0007tz-Tk
- for qemu-devel@nongnu.org; Fri, 10 Nov 2023 05:21:17 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-5437d60fb7aso2963112a12.3
- for <qemu-devel@nongnu.org>; Fri, 10 Nov 2023 02:21:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1r1PH6-0008Ea-9L
+ for qemu-arm@nongnu.org; Fri, 10 Nov 2023 06:02:09 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4084e49a5e5so14567865e9.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Nov 2023 03:02:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699611673; x=1700216473; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=LqHY1rM+nJijkVtRNRAZWGeNV/wqoJqulwCB5qLr/y4=;
- b=ibq1QfZjiC41nploVvtIV9UazPqmOakfhqm+EVSE2syEjEK/kno4rVt8nd+lNpV/cs
- CstuO91P9Ifk2EpriO6LcZLm8E5rrWigPKIRcEQl6rnzuIw0tRL8KMyNZ6AimjAJd04H
- C7zDDcZiQJCD8TSjaE7/d/t2XZF/fGtaS8qsXmDZboRt/dzga/hu7aqUjxVKHqtgQzs3
- VJ+Bzh4S8kLu9epQbRRdgZgokzERW0HTezHymYAgvMb4Nkpgw/m8poAPbqByM7jeab2s
- 4rdbh5ITyp6ulgOk56Iu/+ErQb8y+4dqHYPE/pike0K1ZPK2bDZ6GRW7pIgqQIDHoPhM
- t5Bg==
+ d=linaro.org; s=google; t=1699614125; x=1700218925; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=cQlg1PFbziQhy1MSqYIFuEQXWN8xizhWbYBQqbezDhw=;
+ b=eaxM+EXOC9qxwt7GtuDQ/AJAm2BMdl0H204nmhU+f/ag9d8/Qkth3m0BDux+BJpUbg
+ Ub9449ZTFK0O8ZsRkTMimQNO+nWRD+d8BE4AOxEd8rBrttYf026Ii2uHxEEA9bM54dOt
+ QQxVtuFo57wjStlsaqXmxRC63c6Gxoyum1X46FzZ701xUAwKsDq6fHjwgWTS6WstWy8S
+ 9g44lICP4ES0AoF1R3dwD+77gysCUfQT8hHPPuhXZHyQVsKs+JxzGsHKCXvODhMGdL1k
+ ObQ9EWHUt5Cvt5/5Dk3l6QQ3fPB+5zpdovSJTQdo0/Liyf1HovGwoCUjuFsVCbuAvBU7
+ NO+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699611673; x=1700216473;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LqHY1rM+nJijkVtRNRAZWGeNV/wqoJqulwCB5qLr/y4=;
- b=ZkLnL+G1UhFmooFYOBPuW41zix7fhP6seE3C6nohkxV3dtW1WGXPMY8fZ36HftFtHc
- z9MXCeSVRnBillxleHK6cuDhh4XgjD+m88b7P8xzFIKsgnj8JPdIKGwshsRWvzBPxYYr
- D0RzAYjwdLxkZ5k0BAOUbQyicf0B8LBeBF/Lj5s8hcsBCTMYIomXItKxAsrTrqyCb2md
- B1PQ3rwbFFlGz2o67M2hXa3p0tFFX+b1HVRf4jiHn75OgXW1kVoamAWbokLbds+Ptm6u
- 2ozp8/4ncb+KVtEMcWAZd4uGtUssWrTsC/JnmYzRQs58GkqkNmF9YxT+M81O8NxGqVU3
- rGRA==
-X-Gm-Message-State: AOJu0YzM9OD+9gKIlCAMcK+gNh+J/K1rVrecls3XdWogYLR7DXxbWXQi
- Mh9A53ugQvem5MFkOEKJFjCMMVIbO0cAQUu0WikQhg==
-X-Received: by 2002:a50:8714:0:b0:53d:f072:7b0a with SMTP id
- i20-20020a508714000000b0053df0727b0amr6661245edb.39.1699611673413; Fri, 10
- Nov 2023 02:21:13 -0800 (PST)
-MIME-Version: 1.0
+ d=1e100.net; s=20230601; t=1699614125; x=1700218925;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cQlg1PFbziQhy1MSqYIFuEQXWN8xizhWbYBQqbezDhw=;
+ b=uYsXs+VraUr7nMQrzcbWxkl2QoQKFdyIBzoN74D+EchmK5Nvs09tH7zhHqFOhpIwMs
+ jZT18KKIVbV/61kcfUEm1pc0xvhtCJvEvHCHBfnV+6bzolxJjyMvmXHFdIlYqiWSmC7m
+ MHowABV7f6U/TYiSEd1tELT2VzHtsm7HogrF6VOWJQgTqi2cgNPwd2sr5pjRgoCt4XSd
+ KaLMi3GvK+C4omAA55oJD2O5Pt6Z551bu6fMGnsmLGulUHdkQ8bkXVs61SrdcjZrlquV
+ PUAGv28N8fxC8b6a+vdMPcC38WP92dmEXQYrAoppmvwBAncQF3bPNEBN4NCBU/DpD8cD
+ ZoDQ==
+X-Gm-Message-State: AOJu0YyyMOFL4sLbEmgn31aK4RJQJdagVyrljVprBLOWJ1HLyzaRKIx+
+ rZFTla0fQr7vDiU3tENBpMiy2A==
+X-Received: by 2002:a05:600c:35d6:b0:402:8c7e:3fc4 with SMTP id
+ r22-20020a05600c35d600b004028c7e3fc4mr6470094wmq.30.1699614125041; 
+ Fri, 10 Nov 2023 03:02:05 -0800 (PST)
+Received: from meli.delivery (adsl-157.109.242.225.tellas.gr.
+ [109.242.225.157]) by smtp.gmail.com with ESMTPSA id
+ hg12-20020a05600c538c00b0040a4835d2b2sm568664wmb.37.2023.11.10.03.02.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Nov 2023 03:02:04 -0800 (PST)
+Date: Fri, 10 Nov 2023 12:44:56 +0200
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Marc-Andr=?UTF-8?B?w6kg?=Lureau" <marcandre.lureau@redhat.com>,
+ <qemu-arm@nongnu.org>
+Bcc: 
+Subject: Re: [PATCH 2/2] Add warn_unused_result attr to AUD_register_card
+User-Agent: meli 0.8.2
 References: <cover.1699606819.git.manos.pitsidianakis@linaro.org>
  <4b040fc18cb0e563e92ce084ca18b89a050a8aaa.1699606819.git.manos.pitsidianakis@linaro.org>
-In-Reply-To: <4b040fc18cb0e563e92ce084ca18b89a050a8aaa.1699606819.git.manos.pitsidianakis@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Nov 2023 10:21:02 +0000
-Message-ID: <CAFEAcA80sv6ewJ+LoROn-9ooEyLGQwiqYpL3=fqrK7gA0oZG-A@mail.gmail.com>
-Subject: Re: [PATCH 2/2] Add warn_unused_result attr to AUD_register_card
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- "open list:OMAP" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+ <CAFEAcA80sv6ewJ+LoROn-9ooEyLGQwiqYpL3=fqrK7gA0oZG-A@mail.gmail.com>
+In-Reply-To: <CAFEAcA80sv6ewJ+LoROn-9ooEyLGQwiqYpL3=fqrK7gA0oZG-A@mail.gmail.com>
+Message-ID: <3wmne.fhuf28sb5yfg@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,71 +118,33 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X6JRHu13G47G
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LQPH3qWSQWWE
 
-On Fri, 10 Nov 2023 at 09:16, Manos Pitsidianakis
-<manos.pitsidianakis@linaro.org> wrote:
->
-> Ignoring the return value by accident is easy to miss as a bug. Such a
-> bug was spotted by Coverity CID 1523899. Now, future instances of this
-> type of bug will produce a warning when using GCC.
->
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->  audio/audio.h      | 2 +-
->  hw/arm/omap2.c     | 8 +++++++-
->  hw/input/tsc210x.c | 8 +++++++-
->  3 files changed, 15 insertions(+), 3 deletions(-)
->
-> diff --git a/audio/audio.h b/audio/audio.h
-> index fcc22307be..b78c75962e 100644
-> --- a/audio/audio.h
-> +++ b/audio/audio.h
-> @@ -94,7 +94,7 @@ typedef struct QEMUAudioTimeStamp {
->  void AUD_vlog (const char *cap, const char *fmt, va_list ap) G_GNUC_PRINTF(2, 0);
->  void AUD_log (const char *cap, const char *fmt, ...) G_GNUC_PRINTF(2, 3);
->
-> -bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp);
-> +bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp) QEMU_WARN_UNUSED_RESULT;
->  void AUD_remove_card (QEMUSoundCard *card);
->  CaptureVoiceOut *AUD_add_capture(
->      AudioState *s,
-> diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-> index f170728e7e..59fc061120 100644
-> --- a/hw/arm/omap2.c
-> +++ b/hw/arm/omap2.c
-> @@ -614,7 +614,13 @@ static struct omap_eac_s *omap_eac_init(struct omap_target_agent_s *ta,
->          s->codec.card.name = g_strdup(current_machine->audiodev);
->          s->codec.card.state = audio_state_by_name(s->codec.card.name, &error_fatal);
->      }
-> -    AUD_register_card("OMAP EAC", &s->codec.card, &error_fatal);
-> +    /*
-> +     * We pass error_fatal so on error QEMU will exit(). But we check the
-> +     * return value to make the warn_unused_result compiler warning go away.
-> +     */
-> +    if (!AUD_register_card("OMAP EAC", &s->codec.card, &error_fatal)) {
-> +        exit(1);
-> +    }
+On Fri, 10 Nov 2023 12:21, Peter Maydell <peter.maydell@linaro.org> wrote:
+>This kind of thing is why Coverity's unused-result warning has a
+>lot of false positives. We shouldn't introduce extra code like
+>this to work around the fact that the tooling doesn't understand
+>our error-handling convention (i.e. error_fatal, and the way
+>that some functions report errors both via the return value and
+>also via the Error** argument).
 
-This kind of thing is why Coverity's unused-result warning has a
-lot of false positives. We shouldn't introduce extra code like
-this to work around the fact that the tooling doesn't understand
-our error-handling convention (i.e. error_fatal, and the way
-that some functions report errors both via the return value and
-also via the Error** argument).
-
-thanks
--- PMM
+I respect that :). But I personally believe that clinging to C's 
+inadequacies, instead of preventing bugs statically just because it adds 
+some lines of code, is misguided. Proper code should strive to make bugs 
+impossible in the first place. At least that is my perspective and I 
+would like there to be constructive discussions about different 
+approaches in the mailing list. Perhaps something good might come out of 
+it!

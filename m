@@ -1,101 +1,112 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1039186ejq;
-        Fri, 10 Nov 2023 00:37:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGl3V0yfbsy3wFAJ/BFIM/uMfCXE5F9BhXbXOGM2c+ygGtljqczeRjcpNMV3GhQg39lA2w0
-X-Received: by 2002:a05:6122:4e21:b0:49e:1eca:f849 with SMTP id ge33-20020a0561224e2100b0049e1ecaf849mr4445226vkb.13.1699605435284;
-        Fri, 10 Nov 2023 00:37:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699605435; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1052875ejq;
+        Fri, 10 Nov 2023 01:08:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE2zOoLPks8GYIm9sPnzHbo4hMGLm8mV+O6qWnMnE6wvG7+AGqfHhjkSNAbyaT9q6UIvNxZ
+X-Received: by 2002:a05:622a:1b8e:b0:418:11ab:1bf7 with SMTP id bp14-20020a05622a1b8e00b0041811ab1bf7mr2628602qtb.30.1699607287549;
+        Fri, 10 Nov 2023 01:08:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699607287; cv=none;
         d=google.com; s=arc-20160816;
-        b=oRCjVe6Pj76K+qgRtfL/H8sInfErxywzaF595db0RMERajLF8/CnGN0hMIJ3FDwvJV
-         0AgGURQ1ww5NjKNczBQNteRlXIht9GguGUHTj6pphmBTc9TbxwgFH9psGZZxM+M6DQCe
-         Vqb62e/b9lgT8+Xf/7EDqQ/ORJ+LfYCMuSQD3knQR3MMybSSBO5p2UZmMFmBGKXV+dIK
-         D8+DaJ209pFcq4QPb3SPc5IeZNg1drARdBb54JY8tP1ZhtmIIshYu+ZHiFu/WhidP3Hx
-         wHeRTXt0xy+SvD0PeMFqtXd7G2TyrDyS0Orygp17kSecXSVwrhP343WSOnp6StESLIcF
-         T6vQ==
+        b=m2Q0n08aPgWjcbote9QrVENNhnqhdopG5hFU4IBd5E0THSDQ13l7vatD1srD6W0Ca/
+         stsARrirO0yt5LPHNu71Lm3Wh4a+hNwASOeMDdrVtiz/0ReSdFu/vIzP8PvjkJPxaACf
+         RYXgZlTTxR25MOnpmWs6nhlDwxpNfkGnuOq+QbEwRcgiOv9I2RYcfhJ0DpvgeIikNwcr
+         6aEZFmgFUStIjsXrUwaYbUuLlL2OK5oOonwUxtarPMgBlYCuhb0q514Oeu/GsnLu+x0t
+         2fMPKZ7clT1XMn+9bKSPFSbJ9py94z7FMfGw7iCPIQh6RKL737VsgVe02OK01nnsOIpj
+         itsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/48ObBUAedEyPRpgtsOuL4Ztg+DGbSyrmAPAkGMsBpg=;
-        fh=wvE75R8K7StshYDYoCBQZS54o1uS7pCyBaULH42g0uw=;
-        b=WPAr75q16G3Bz79LlnPgkKxa1iPVDnjbe5tQhfXRCTpRBo9mCWKAjbPWxlFNdQqhVq
-         C8KB5PRgmr+9h5kMaP+S/FKUgXYyb3YSJlf5KofTHJwWI0G1DAoWp/qMeIUnVQYOq5V8
-         YTgzahhYmNaYLuzShp6rSGEoI4X1EBHJGS7z9OCoH5I8zgwZy7119sDGjtFll6n4O0H7
-         bEcYVWA9wuwk9M+vAIw877bibcWERu5dBX4n6YkA/RQkvA0ZGq92IYObs+YABr3xSkNC
-         ZsbPC4KIANHFX4JY++E+1cojSdbNiRT0nqT9Kz7flJ0TJV0pinYLTZqaPIJRGr5FRHYf
-         iujg==
+        bh=EzWAd4i8SfrnOVX1XV2s9b3+InPfyVDmDF/a6BICHBE=;
+        fh=C2FsmRbQ7EWUl7lfPdfXyVHemm/cZPyko4K0Xw3sclA=;
+        b=UNmeCRBIE9dEH7YoQcTTUDclUIr7/iVxv96zUJ1Pn03wwIk9Xj8o208bDOQe7Ss3RR
+         lbLCj0cukRXg5AU9iCJcTS+EzFdzlTg0KwC8f0YuvgOUK+e/clSp6HVs+BrWSCC+L4DT
+         9aSzvsYpuA3WvqCinwE576xgxxsYpI6S9vuvmDzmbi5nFJ/ZMRyJxz4JyoSjkXRS6xQC
+         wr6vKCV74Jw79QOtM/4heobtI8G2hIgk0NaaRrpebnifIDmBJI/4rR/1dkhHEO6sQOye
+         OwJbDo/ypel6rfhiHaVQ8w7/qRrTlKOr50+6EhmnDeM3dmExDG9t/HMbxSqKGDi+Cz3b
+         lnng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TFxu2Fkg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=elfKYo5s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16-20020a05622a065000b00421b4686cfbsi393084qtb.489.2023.11.10.00.37.15
+        by mx.google.com with ESMTPS id e21-20020a05622a111500b00419905d39ebsi4210256qty.205.2023.11.10.01.08.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Nov 2023 00:37:15 -0800 (PST)
+        Fri, 10 Nov 2023 01:08:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TFxu2Fkg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=elfKYo5s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r1N0n-0004PT-8h; Fri, 10 Nov 2023 03:37:09 -0500
+	id 1r1NUT-0005yX-Lr; Fri, 10 Nov 2023 04:07:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r1N0l-0004P0-Nz
- for qemu-arm@nongnu.org; Fri, 10 Nov 2023 03:37:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r1N0k-0002sR-CW
- for qemu-arm@nongnu.org; Fri, 10 Nov 2023 03:37:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699605425;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=/48ObBUAedEyPRpgtsOuL4Ztg+DGbSyrmAPAkGMsBpg=;
- b=TFxu2FkgbpyiHWQSQ2WbSJultY/Ek+Y6yKg4hZvLJMiCkCRv27Ze533ABUzObzmqLhaGKM
- VyY09mP1JMTqKTaEm5DWqMZ2ixuNOQndWtQQUnM0+qRCPaJ36OIV5BHHQoRVgseMJKxtO0
- QosSXsya3BNQpck2P8hALnZUgfjKijI=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-196-UtbcqoM7O1WJI2gHPw4Ghg-1; Fri, 10 Nov 2023 03:37:00 -0500
-X-MC-Unique: UtbcqoM7O1WJI2gHPw4Ghg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1F67D811E82;
- Fri, 10 Nov 2023 08:37:00 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.149])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D6C45492BFC;
- Fri, 10 Nov 2023 08:36:58 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Cc: clg@redhat.com
-Subject: [PATCH for-8.2] test-resv-mem: Fix CID 1523911
-Date: Fri, 10 Nov 2023 09:36:54 +0100
-Message-ID: <20231110083654.277345-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1r1NUS-0005yG-Pk
+ for qemu-arm@nongnu.org; Fri, 10 Nov 2023 04:07:48 -0500
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1r1NUO-0000qz-0O
+ for qemu-arm@nongnu.org; Fri, 10 Nov 2023 04:07:45 -0500
+Received: by mail-lj1-x22f.google.com with SMTP id
+ 38308e7fff4ca-2c523ac38fbso22756731fa.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Nov 2023 01:07:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1699607261; x=1700212061; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=EzWAd4i8SfrnOVX1XV2s9b3+InPfyVDmDF/a6BICHBE=;
+ b=elfKYo5sfA+dHJSFEjHuVknPtwRegB0+YWVERW8Sxiq9jw1f4D3+c4mbb+pcbOzhIi
+ QA4aRI3tdlYQN5k7FrNsT2gwkQkclD9DuEwfRcf42BghRFDv6YqwbLTvNOcBTTTGl9Sh
+ blmS/RPKzEdh9b5iDe2uXhK4Kd/XfIXi2mIpZsX/Rkvs79aFxN2igUW304KFzzkd4HJQ
+ RDjqvMzOD1+PgKiu6kibZdr6ZL9vD2Kb8OiB4xQrFCx/Ow59WAOhs2rbclrLQE7eFNWT
+ qc3Tf8bGgMmCobJ32wWIlDJMvXktGlr8qTpD6PzFoSEQdrIzSWGpyJddm+6OJwKSERxC
+ 74ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1699607261; x=1700212061;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EzWAd4i8SfrnOVX1XV2s9b3+InPfyVDmDF/a6BICHBE=;
+ b=V7G5r5eZlRh/zpLzEdw3z8tIOcFd5QFrIBoYdaPLE5S2JH7Ph14LoRFX4BpzuNsRVn
+ NAn3ccdNkXpUlaWTlxsQZKaJXd5odJ4sivwh8fs+fIBtnWT2+5rLpkA0l9SsIiznt4AR
+ 6OA1dlamARnl+q2vHvIVOdvUJjJ1I5UBdAXnz66kHwW8OgKi8myWy6YiRj0mJ+HcDuMF
+ S9d+2aa+jfEapkaNS7L0rW72cC845nECWNWjMPsXfBe6ojGQ0V8Dda1Q4W7C1yetU0J1
+ 5ugLmcnHbicA7aV8L2Ap+YQoHognPTLL5y6s5ivQ907xsauTd8mPgRBdXkUpiGU9pWIx
+ RvhQ==
+X-Gm-Message-State: AOJu0YyioUgEPwggOP1bzIO4A8fJyJ9cWTttqhYAYc+1rW81cDBKsn/c
+ 0B0u9AqU2Cb7gHc2F/QqHfd5Mg==
+X-Received: by 2002:a2e:92d7:0:b0:2c5:1f57:1ef5 with SMTP id
+ k23-20020a2e92d7000000b002c51f571ef5mr6588095ljh.39.1699607260695; 
+ Fri, 10 Nov 2023 01:07:40 -0800 (PST)
+Received: from localhost.localdomain ([2.221.137.100])
+ by smtp.gmail.com with ESMTPSA id
+ u8-20020a05600c138800b004075d5664basm4631372wmf.8.2023.11.10.01.07.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Nov 2023 01:07:40 -0800 (PST)
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: [PATCH] hw/arm/virt: fix GIC maintenance IRQ registration
+Date: Fri, 10 Nov 2023 09:05:58 +0000
+Message-ID: <20231110090557.3219206-2-jean-philippe@linaro.org>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
+ envelope-from=jean-philippe@linaro.org; helo=mail-lj1-x22f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,44 +121,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fShsaGJTsiIT
+X-TUID: TWHvH/VIMkr2
 
-Coverity complains about passing "&expected" to "run_range_inverse_array",
-which dereferences null "expected". I guess the problem is that the
-compare_ranges() loop dereferences 'e' without testing it. However the
-loop condition is based on 'ranges' which is garanteed to have
-the same length as 'expected' given the g_assert_cmpint() just
-before the loop. So the code looks safe to me.
+Since commit 9036e917f8 ("{include/}hw/arm: refactor virt PPI logic"),
+GIC maintenance IRQ registration fails on arm64:
 
-Nevertheless adding a test on expected before the loop to get rid of the
-warning.
+[    0.979743] kvm [1]: Cannot register interrupt 9
 
-Fixes: CID 1523901
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Coverity (CID 1523901)
+That commit re-defined VIRTUAL_PMU_IRQ to be a INTID but missed a case
+where the maintenance IRQ is actually referred by its PPI index. Just
+like commit fa68ecb330db ("hw/arm/virt: fix PMU IRQ registration"), use
+INITID_TO_PPI(). A search of "GIC_FDT_IRQ_TYPE_PPI" indicates that there
+shouldn't be more similar issues.
 
+Fixes: 9036e917f8 ("{include/}hw/arm: refactor virt PPI logic")
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
+ hw/arm/virt.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Hope this fixes the Coverity warning as I cannot test.
----
- tests/unit/test-resv-mem.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/tests/unit/test-resv-mem.c b/tests/unit/test-resv-mem.c
-index 5963274e2c..cd8f7318cc 100644
---- a/tests/unit/test-resv-mem.c
-+++ b/tests/unit/test-resv-mem.c
-@@ -44,6 +44,10 @@ static void compare_ranges(const char *prefix, GList *ranges,
-     print_ranges("out", ranges);
-     print_ranges("expected", expected);
- #endif
-+    if (!expected) {
-+        g_assert_true(!ranges);
-+        return;
-+    }
-     g_assert_cmpint(g_list_length(ranges), ==, g_list_length(expected));
-     for (l = ranges, e = expected; l ; l = l->next, e = e->next) {
-         Range *r = (Range *)l->data;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 783d71a1b3..f5e685b060 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -591,7 +591,8 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+ 
+         if (vms->virt) {
+             qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+-                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GIC_MAINT_IRQ,
++                                   GIC_FDT_IRQ_TYPE_PPI,
++                                   INTID_TO_PPI(ARCH_GIC_MAINT_IRQ),
+                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+         }
+     } else {
+@@ -615,7 +616,8 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+                                          2, vms->memmap[VIRT_GIC_VCPU].base,
+                                          2, vms->memmap[VIRT_GIC_VCPU].size);
+             qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
+-                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GIC_MAINT_IRQ,
++                                   GIC_FDT_IRQ_TYPE_PPI,
++                                   INTID_TO_PPI(ARCH_GIC_MAINT_IRQ),
+                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+         }
+     }
 -- 
-2.41.0
+2.42.0
 

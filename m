@@ -1,76 +1,77 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1059466ejq;
-        Fri, 10 Nov 2023 01:22:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEfPI41/mghgh5MHtYlWOizPM/RienRMWs2OlrYlHhKWp+lqZefTzDHzijqdZcwPcqIJk3N
-X-Received: by 2002:a05:620a:6019:b0:777:457:34be with SMTP id dw25-20020a05620a601900b00777045734bemr7458774qkb.24.1699608146677;
-        Fri, 10 Nov 2023 01:22:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699608146; cv=none;
+Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1062861ejq;
+        Fri, 10 Nov 2023 01:28:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF6IYaBtuUUhL/U1FSNGKXHSKtkQ5u50kuQi9cH4OlMoIiYEzuKon1Pnh8Kg0EMyy359bMX
+X-Received: by 2002:a67:a201:0:b0:458:3bd3:9af2 with SMTP id l1-20020a67a201000000b004583bd39af2mr6744137vse.13.1699608536516;
+        Fri, 10 Nov 2023 01:28:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699608536; cv=none;
         d=google.com; s=arc-20160816;
-        b=JCQNafkR5+HwHV+7rHh8rVUhyfNX0UPmCu9hNWYbxgETUV/hu1i6cW7PuMaaE+73l3
-         7jugNmUInBSSKzCrLx+2Yo3JbGRIV5xlerzRxY1fJUz37X/S+M8EKWaM5GHRZcTCnQUt
-         JNwBDfYXgRQp+wrjwBCM/OOmKsBpmoUNxlVRGJb4uNbHZh8Lo8k5repAdtSduyxucCZP
-         Rrtpz8FRCsJNiB97GgxMhmHPU1KsxSE/+/vlNoPCC8jKa27wsc+4VnfG7AIwbqmLpMyj
-         n84ayvwWBO1/9MCLZB87BmiX79TLpMo8sFVJqVmZpF0y3zHW41xfMA2JN9V7QluvhetO
-         uZXw==
+        b=tMuqB7DlZiqc/XI4Vm3MF5j/67v91vNDCZaObLkLYDTgVkJSheRURqX50FCK+BA8x5
+         AMNH/CY1j9XMlD//4eSnM+GSeZDyYudENLA70BG7GFYfNOAOiZg5VDeumkmc3xiNhX2+
+         sotFE+zZAHs7/Arvb6+9QEAFa5B86temfDIT1//XMYv8oESSaoT6CKe5RzqLNUx0RpSj
+         P8qku2psw7M1CGPLdbfzVwEMbB98Gkh+woPm4CzYAFJfWo/gRQiGK2GASmfOqskGJNrN
+         /rbIFK1FynhaOe0ErWLU1Rvo4QjlaeyD2NXYy8lc3EZ1Ie/7UQvBfxum7cv0RZhO/b8w
+         wQ/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :references:in-reply-to:date:cc:to:from:subject:message-id
          :dkim-signature;
-        bh=PVOJKFJlFu0ZtmCzArIbpoDlvkbx60MTRGoiIX110N0=;
-        fh=D6G8v9WEdU/oq5usU9X+y4xI3pEbXfO/aJKDQcVFDdg=;
-        b=lcPL4ubzn/lPQ3+5J8FlJnMqE7ZOP+E930rOxcGwJXGtc5eRzvGwV4Q4cSR/qf38a+
-         u+Ixp73TTLIA9+PNcdKG27ZZ6Z1KpBX1daqS+jrxGfqukYZCptQBLmz6pZy6FIYGWli8
-         H3tulF9WxCRFH7vJqG9hEOLbstr/Hg+OQtgV1eKq2Q+qTOoveBV3CrjxVO0XtvKNH5wQ
-         JxY+juxthWebSAY1DAD3u3vGZv6JoewxElmzpKDxs0ZambRTlDrc3R6/8WCPVyqp/VKR
-         j/dZ1s4f7+2hf0sNe7x+4JiFn4zZ9OMH3t68slE+lhxNY/+HgyxQ5VhI9rYEdA7xhdLT
-         aHDg==
+        bh=oO9LT3DPNTa4fkoiugIprfdxPX0wXCW4JpFpWpowqbI=;
+        fh=BXL654tRS57V7r1CmpcyzUg6jWIvCTMNMVL0wzwjYHE=;
+        b=KEJ6+ozx7y96Sxo0RlNnEkhjTYAId0ViiesCE8sJHr3YHP17cCUgwBM78hd/igiYz0
+         ZS3H34UMDu+iQ0WnWmzQ0MmfCopWDQbPa2fW6I9Yor3htL9xlgQiIrr3igUzbmbmBNkX
+         F36MmU31nPmd/F9QS3/ah/UK76WehBBOwFph1vUEMy4bU6L2rN1/46JS+H9HmcltpF7I
+         a1udQWV1IOBLFElJdGePiZxfy4pTWFphwDf6pqpyOjC7CkgTYDiQlWrrcFiPHbSYdyCR
+         ZHJopPbhYnPpDV/o4LSjIJSOm0asDJvAhHToHfK9pe1UbNPswBDq3+pvTwJQ4TZvfNqu
+         FVdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b="r4v/VdEj";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=luy+1wfX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id os38-20020a05620a812600b007758e5534e7si4072498qkn.781.2023.11.10.01.22.26
+        by mx.google.com with ESMTPS id fe2-20020a0562140b8200b0065afaecdbfcsi4233745qvb.190.2023.11.10.01.28.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Nov 2023 01:22:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 10 Nov 2023 01:28:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b="r4v/VdEj";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@infradead.org header.s=casper.20170209 header.b=luy+1wfX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r1Ni1-0005d0-RP; Fri, 10 Nov 2023 04:21:50 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r1NoD-0000Dr-K0; Fri, 10 Nov 2023 04:28:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r1Nhz-0005cN-M0; Fri, 10 Nov 2023 04:21:48 -0500
+ id 1r1NoA-0000CF-1z; Fri, 10 Nov 2023 04:28:10 -0500
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r1Nhv-0003fO-W1; Fri, 10 Nov 2023 04:21:47 -0500
+ id 1r1Nnn-0004jK-Vu; Fri, 10 Nov 2023 04:28:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
  In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=PVOJKFJlFu0ZtmCzArIbpoDlvkbx60MTRGoiIX110N0=; b=r4v/VdEjY28CTfHKcV0pLAIk2q
- BgpvCiBAk5Tax5InPgSPnwlZouNygZGcusmtkRx79MqrGIWlQtPMf3Wwp2cSm4tE4RPSh8680vuEg
- EIZ/STIhdv1F+ApEpT62UYh0oqyLVuey/aoYC9xGDw7gSZGn05NBMP3jAWb52ttsCXTo0AEBh16IP
- N9YlMYOD73OgYHKhvB33iwqlOgttTmxbdVMzRb6jzQriSe5Agh8KMwczOMarbstRxOUWN1eIdh+w9
- iy3QPUBHefF1xaYjM5CtbytY9bToYKpQDGnOMGsB3QP4BrGh5bOrexsMPTjHyKaeb87AtsJt6/BRi
- NQjEcXFg==;
+ bh=oO9LT3DPNTa4fkoiugIprfdxPX0wXCW4JpFpWpowqbI=; b=luy+1wfXgEor99SuHzUEZO6CAS
+ I1JYZ4rzm6Fp4oXEoecPhckhi6m5rcN+/69GmG2uY4vEKt3sQGLFVfcpkaCzoaWunxtaIYcwZslmp
+ gcDV4rBotUyXhUIwsFOYEE58eyErrwTpSCGbuQb6S4+UqVkRYKXiRSZFsXPoGIm6jJmZMOj013lXn
+ nltEF9q0B/m8YA7o30yy0SVFwLLRCm8dw8c+88Y2YZ/qPKjW2OuaNFIiyr8vTa7zu0KILxzUVNx5o
+ 6Q3F+tueA1beApIZyv64zLTTKwdiolCXrjC41WwOZsjffXrzOU6KLVuWM6XfrlSQZWxE4Z1HlXeQm
+ dl6GNp5A==;
 Received: from [2001:8b0:10b:5:18d3:34d5:5849:7b74]
  (helo=u3832b3a9db3152.ant.amazon.com)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r1NhT-00CYyi-2F; Fri, 10 Nov 2023 09:21:15 +0000
-Message-ID: <1899e499bbcfce96640296dd6f88643900e78ce3.camel@infradead.org>
-Subject: Re: [PATCH for-8.3 v2 04/46] hw/pci: add pci_init_nic_devices(),
- pci_init_nic_in_slot()
+ id 1r1NnY-00CbTG-GE; Fri, 10 Nov 2023 09:27:33 +0000
+Message-ID: <941df87a4a1173c3498343d84d13a1d82aefd3a0.camel@infradead.org>
+Subject: Re: [PATCH for-8.3 v2 05/46] hw/i386/pc: use qemu_get_nic_info()
+ and pci_init_nic_devices()
 From: David Woodhouse <dwmw2@infradead.org>
 To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org
+ qemu-devel@nongnu.org, Bernhard Beschow <shentey@gmail.com>, Markus
+ Armbruster <armbru@redhat.com>
 Cc: Richard Henderson <richard.henderson@linaro.org>, Beniamino Galvani
  <b.galvani@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Strahinja
  Jankovic <strahinja.p.jankovic@gmail.com>, Niek Linnenbank
@@ -107,14 +108,14 @@ Cc: Richard Henderson <richard.henderson@linaro.org>, Beniamino Galvani
  <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, Max Filippov
  <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
-Date: Fri, 10 Nov 2023 09:21:14 +0000
-In-Reply-To: <464bf22d-e9c0-44bf-8d78-4e64eb57c8c1@linaro.org>
+Date: Fri, 10 Nov 2023 09:27:31 +0000
+In-Reply-To: <34e2c0c6-4e04-486a-8e1f-4afdc461a5d4@linaro.org>
 References: <20231106195352.301038-1-dwmw2@infradead.org>
- <20231106195352.301038-5-dwmw2@infradead.org>
- <464bf22d-e9c0-44bf-8d78-4e64eb57c8c1@linaro.org>
+ <20231106195352.301038-6-dwmw2@infradead.org>
+ <34e2c0c6-4e04-486a-8e1f-4afdc461a5d4@linaro.org>
 Content-Type: multipart/signed; micalg="sha-256";
  protocol="application/pkcs7-signature"; 
- boundary="=-jF7GAC0DLUuHciBsiF80"
+ boundary="=-PA5ixZaqSq1wPm2X84kJ"
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
@@ -130,69 +131,127 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mYWjsr7rgX5+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CXxNWlZouxhe
 
 
---=-jF7GAC0DLUuHciBsiF80
+--=-PA5ixZaqSq1wPm2X84kJ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, 2023-11-10 at 08:31 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+On Fri, 2023-11-10 at 08:40 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi David,
 >=20
-> > +=C2=A0=C2=A0=C2=A0 pci_dev =3D pci_new(devfn, model);
-> > +=C2=A0=C2=A0=C2=A0 qdev_set_nic_properties(&pci_dev->qdev, nd);
-> > +=C2=A0=C2=A0=C2=A0 pci_realize_and_unref(pci_dev, bus, &error_fatal);
+> +Markus/Bernhard
 >=20
-> Could these functions be used with hotplug devices?
+> On 6/11/23 20:49, David Woodhouse wrote:
+> > From: David Woodhouse <dwmw@amazon.co.uk>
+> >=20
+> > Eliminate direct access to nd_table[] and nb_nics by processing the the
+> > Xen and ISA NICs first and then calling pci_init_nic_devices() for the
+> > rest.
+> >=20
+> > Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+> > Reviewed-by: Paul Durrant <paul@xen.org>
+> > ---
+> > =C2=A0 hw/i386/pc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 26 ++++++++++++++++----------
+> > =C2=A0 include/hw/net/ne2000-isa.h |=C2=A0 2 --
+> > =C2=A0 2 files changed, 16 insertions(+), 12 deletions(-)
+> >=20
+> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> > index c2bc3fa52d..4078d2d231 100644
+> > --- a/hw/i386/pc.c
+> > +++ b/hw/i386/pc.c
+> > @@ -652,8 +652,11 @@ static void pc_init_ne2k_isa(ISABus *bus, NICInfo =
+*nd)
+> > =C2=A0 {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 static int nb_ne2k =3D 0;
+> > =C2=A0=20
+> > -=C2=A0=C2=A0=C2=A0 if (nb_ne2k =3D=3D NE2000_NB_MAX)
+> > +=C2=A0=C2=A0=C2=A0 if (nb_ne2k =3D=3D NE2000_NB_MAX) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(&error_fatal,
 >=20
-> If so we should propagate the error, not make it fatal.
+> In the context of dynamically created machines I'd rather have
+> this function,
+>=20
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "maximum number of ISA NE2000 devic=
+es exceeded");
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+> > +=C2=A0=C2=A0=C2=A0 }
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 isa_ne2000_init(bus, ne2000_io[nb_ne2k],
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ne2000_irq[nb_ne2=
+k], nd);
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nb_ne2k++;
+> > @@ -1291,23 +1294,26 @@ void pc_nic_init(PCMachineClass *pcmc, ISABus *=
+isa_bus, PCIBus *pci_bus,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 BusState *xen_bus)
+> > =C2=A0 {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MachineClass *mc =3D MACHINE_CLASS(pcmc)=
+;
+> > -=C2=A0=C2=A0=C2=A0 int i;
+> > +=C2=A0=C2=A0=C2=A0 bool default_is_ne2k =3D g_str_equal(mc->default_ni=
+c, TYPE_ISA_NE2000);
+> > +=C2=A0=C2=A0=C2=A0 NICInfo *nd;
+> > =C2=A0=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rom_set_order_override(FW_CFG_ORDER_OVER=
+RIDE_NIC);
+> > -=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < nb_nics; i++) {
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 NICInfo *nd =3D &nd_table[i=
+];
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const char *model =3D nd->m=
+odel ? nd->model : mc->default_nic;
+> > =C2=A0=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (xen_bus && (!nd->model =
+|| g_str_equal(model, "xen-net-device"))) {
+> > +=C2=A0=C2=A0=C2=A0 if (xen_bus) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 while (nc =3D qemu_find_nic=
+_info("xen-net-device", true, NULL)) {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 DeviceState *dev =3D qdev_new("xen-net-device");
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 qdev_set_nic_properties(dev, nd);
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 qdev_realize_and_unref(dev, xen_bus, &error_fatal);
+>=20
+> and this one non-fatal (primarily for API example). But this is pending
+> on a discussion on another thread, see:
+> https://lore.kernel.org/qemu-devel/c1322f3b-2ae2-4ca7-9a76-a2a434dc8315@l=
+inaro.org/
+> so no changed requested so far.
 
-Hm, not sure. Mostly, I'm trying not to change existing behaviour with
-this series (except in carefully noted cases where the minuti=C3=A6 of the
-existing behaviour appear to be both unintended and unimportant, and it
-would be unnecessarily complex to preserve the gratuitous differences
-between the way that platforms have open-coded things).
+Thanks for the reference.
 
-I don't think it makes much sense *even* to use the new
-qemu_configure_nic_device() with hotplug devices. The user might create
-a *netdev* at startup, for later hotplug devices to use. But they
-wouldn't use `-nic` for that, and any devices explicitly added through
-hotplug will have an explicitly specified netdev, won't they?
+I'm happy to make pc_init_ne2k_isa() and even pc_nic_init() take an
+'Error **' argument and use that instead of &error_fatal... and for the
+*caller* to pass &error_fatal for now until/unless that discussion is
+resolved? Not sure it helps much?
 
-I don't think we want to change that model and allow hotplug devices to
-magically get config from -nic on the command line... do we?
+Then again... I do not favour the "my caller cannot *currently*
+handle/propagate an error therefore I won't bother to return one
+coherently" approach. That leads to someone else thinking "my callee
+does not return an error coherently therefore I won't bother to handle
+it", and nothing ever gets fixed.
 
-We even have a warning for the case where NIC configurations are
-provided with -nic but aren't consumed by the time the platform is
-instantiated (although that doesn't *prevent* them from being used
-later by hotplug).
-
-But that's answering your question which was about "these functions".
-
-For *this* particular function, pci_init_nic_in_slot(), it makes even
-less sense to consider hotplug. This is for platforms to handle the
-special cases, like "this board had an RTL8139 in slot 3", and make
-that NIC appear in the appropriate slot. It's done as a special case
-before processing the rest of the NICs which land in dynamically
-assigned slots =E2=80=94 which may even be on a *different* bus, in the cas=
-e of
-sun4u.
+I'll go fix it to take an errp argument.
 
 
---=-jF7GAC0DLUuHciBsiF80
+--=-PA5ixZaqSq1wPm2X84kJ
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -284,24 +343,24 @@ IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
 dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
 NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
 xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEwMDkyMTE0WjAvBgkqhkiG9w0BCQQxIgQgLM611qmK
-37cumtyANrjjuLdD6412xjPvTQ1HbBAHjmYwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEwMDkyNzMxWjAvBgkqhkiG9w0BCQQxIgQgKViPcPHp
+Ywn6K8TDcOwEANHfIwp+5w84tfoqSyOXQwgwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
 A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
 dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
 DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
 MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
 Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCjpA+OvKqoWwYNUOHEm6Me4lM4p9P4YW9Q
-Y4ECwBwF7J98iaHes7Pb8hMCx7GSgsw1V2CkL2KkZUFPJC7fCBQEx+QW8o1GXQWjwB+3ER00RCOl
-9Q+d95TBp3nYgOlaOL7C9S/Rrwx54MjI+YNZUMwaP5Y//kQvf5HlDxJiBI9Hmr/pTsbUXlOocYcT
-WuDKLO3dlTai+4ZUrUr9IdTgzGjJuZMKNNhSAefUaCeapWeLinzc4To/8LfrEtSM5fVK6dBQQheV
-u/YZhhs3bxVFwchwuvbblzdbsEj+XbodqlwbUBVh897TutgRKlTs9s1FITTdaroC5ZOqULnHnklx
-rDbBcWWumGj2S7AOWHrwqibeMosZ+CDtCxs0fsqsdkdVvbOzUKq5cUOgQhvYLDHaPh13Lpzi6giD
-Mo+tZIEJhU9vnErEKpc+MQNacYYsWplf15/Aukk8r+ViYF50zdYUg+odsBB7+2DJQpvLe/eKk3mj
-qYE0tC8l/C5vvrM2ErpAhpGQ7Y8eBnV8pjCJhAan0gZXeIqGfJBqvXSY/h3XzUGTVTa6DMMUOhhV
-n+vuqJNrNRoPvo4PAxqdyAckOdqHWi6reh3owpH/pt6FKgcjUsbkhm/KVGjWYxxdO00zOo1uvJ5N
-cyXs0re1za9dUuYlKa+f8Ro8FHKQ7/mbiaR8CpIj0AAAAAAAAA==
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgAuM4SPZi0m/p2En7ZBhDMPlG2wj3rjCIkn
+DwrnLTDZERqKWfnmYRhPJ8kqmbESz/9jdtGry6vJ5njgLwf/54Q5bX8LlVfKe+gwh55OlRYfbjoR
+kNrmPq9YJwm//LfBqoOTorPwMtjZga0bR7mY/uRfz1v3uJH4f+GZQHLkJsLh3MLNBWJFngN2udB5
+qYU7gvqzj+FRi/pPPfjcj2sePKGwpEML5RSTOZ36nIfWx98IkzghR1ebqaxKkQh+fJAOSgnfXgeZ
+KCZP4/zs44iUa9jsiRRh9x9QB5cX1BmL7UKtp3bsj45kkrkyxjjVatK/KQfM++B4Ly6dcFuRkF7/
+JnT/r7433nly3XAXNMZDsn+Q2pSljwEqVrs3rk2F6hzT0s6RvvmLlsYKnUNFBP1o6qx0IIEh05Gt
+AmDsHuHiJoBuSw5oHw8K2pvmDBN1/fafSZ7rtDWt9T+UWajeJrJwWbhlw5mwX8b2aUTTMKzNx0DV
+Y3X2JcOnBhWMzF4S+69XN6Gvp0XoHpZV4Yopm6Iks4/ROszNICmYIXeFhK1QCQVGmtXESErcDuOm
+00lHRfJdUdmuhkfORWsEpUzPiaji+lMTIPwU4ODS9bs13y2QOmLCdRr5qRDO4sE33zfLVui31y3O
+GWuFKKiLIbFD5WajaIrErPCkUIp5D4IRQnaKIfZLZwAAAAAAAA==
 
 
---=-jF7GAC0DLUuHciBsiF80--
+--=-PA5ixZaqSq1wPm2X84kJ--

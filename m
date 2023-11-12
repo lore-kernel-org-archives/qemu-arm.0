@@ -1,117 +1,110 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp866451ejc;
-        Sun, 12 Nov 2023 08:22:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFdmhXoN/yHUlsFxOZiDZrMQyKBkTA/BsykJ9Nn7KLNlAU4ThJuY69Iwexcu83+4G5nHYSM
-X-Received: by 2002:ac8:4e56:0:b0:418:1f52:1421 with SMTP id e22-20020ac84e56000000b004181f521421mr6981134qtw.9.1699806156474;
-        Sun, 12 Nov 2023 08:22:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699806156; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp876895ejc;
+        Sun, 12 Nov 2023 08:51:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHcFijF2ntcEXdLekaBRVk8xoR3pYh8lfkWPOoRighzIuOgVf+OIBQn7ARIOQKKFtcBI70p
+X-Received: by 2002:a25:54d:0:b0:da0:6876:c20d with SMTP id 74-20020a25054d000000b00da06876c20dmr3468410ybf.19.1699807861579;
+        Sun, 12 Nov 2023 08:51:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699807861; cv=none;
         d=google.com; s=arc-20160816;
-        b=GwYEcjuucJf8d74dw6S/wbNf5T4cKrOMMQ3phynoI3fn8M4SfF7NNCoJACWEyr1fQN
-         0D0L9OyyBxXSMe/89t/M24cKO8j7a+YPva/GOJBZWQpkni2DW6WmHtL+OCVC4B7FKOiz
-         d3YJPJx02CMSaT1QeyzfYSYudkUtrjOTHb+Dn5y3DN65gWAVFH40uC1v1OEC7UOr6Upx
-         KKFz9n+gOfMStaKSuPR1vuCdxMNt7TCX/fjc/IYmLuGm88nQspuweMh6PaTBd2nIxE+o
-         fjJLObTSE4Emf2NBm9yJzS/b+j+i7ZZP8TePJD451p6bmepABWGtC0UFRJtYxcnAsnNU
-         8JvQ==
+        b=sTMFxFnNgWwbR06n2U0RHz8T2CXnnV9drtfGHgxZYirPNY6u1Lf7M6LW8KOy5kuXoe
+         TUApIlQ++Sf/50qgQ3XnjQ3ZC8ZGj/9rny4bCy5SWdZUjdupmksKa+mJKoCtuk/sxXiJ
+         qflXvsDS4iw//8vLhPsv/q7jOTHqWtciqrZzQBr5lt3xO2KyeAp0ETMrvFFCKcw5lOy4
+         WmGoQ9Z7ZbjYUQpSv42FkbNmepWHqRWbKASsPnvgno6J/tGqhFOsq46eSfbeJm2Qag1Y
+         vzJOXxe1gaUDe2s/7flIYDnjpvnKRnZoSabIg/0tftFCmqNTH8d0wd4+pjhVGOPpmkGH
+         OTSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=ocmIQd+SVY2U71IwwT0Nh9IIR0HnuTvPwuQ/4K+4PK0=;
-        fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=UHzaaqn2+FEDDKFAIOf3YLhrvzX8S3D9LGlVWdb0HzS9JlARAE41kQLe9s+BIYhYwe
-         V9UA1JQw3yiZHDrOF2ysPUbntAl2Q6Mn9Da4IM7fvEVgCUi9m6It0CyUL84S2Z3k6/fR
-         9X08NO4wmFH5q1lbBxuEUBJmJE6E0RgLW+/tTsDRjnPjQSBdRxnLU2hTTnsjamncnoBb
-         GfHMR26o9Ul9N2F7PLq/0TaZSnUSZauL4fcmWAxpicNe2Qo36gVIuWpe5h4oICrws2bk
-         nhNvY+QmlaMpj9JIlp7Q62/18CGGSbmAlYHI2nhu8dnavgScRD68Ia/BgDYB4AESGIaD
-         bi8w==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=F1AvnSWiGvbigVuu/6MFNbfurAHFpFskCCpRglAvvlo=;
+        fh=lvehWK2eOmqFfuFauTj24r0WBVBl7I9q9ItkxomfwyA=;
+        b=YpbVtskclWkIE/ddsi/6AKo+L91Z6mTkbUfVGDgS0aMwy5MyqD93GrlwOZ2pnCX4Qi
+         Aua9MVfS+yqwFPdduLVu/FNYDBpXZzO8CEOk2CEtt9EUEdlz0QrtxtDJ6S31Xv6Onxcx
+         +mNKuTHj4kQWeg2wTwQC7s+MkyGh1OEKXuYSI/lzLWsIdt+Y2hlvlv+DWVTmmr2CegHS
+         s4m7D3THwlOCfAXpvLi0RpG25qzfvxZ3FSNAo8eS1zFFZFoaTZ8aCUkQEoXPL66yuSIL
+         glTW/wvnxuAiAaDWODuaor9qYAeb98M2nVsuijcZpB/T+3mDNk7ghoeJ4+0pi50IgQm8
+         iVcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YTzkZIGs;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Kaebh44f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w20-20020ac87e94000000b0041962d20ecasi3101205qtj.90.2023.11.12.08.22.36
+        by mx.google.com with ESMTPS id j10-20020a05620a410a00b00773dc958046si3380774qko.258.2023.11.12.08.51.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Nov 2023 08:22:36 -0800 (PST)
+        Sun, 12 Nov 2023 08:51:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YTzkZIGs;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Kaebh44f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2DEB-00069q-Il; Sun, 12 Nov 2023 11:22:27 -0500
+	id 1r2DfK-000473-KJ; Sun, 12 Nov 2023 11:50:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r2DEA-000699-Ch
- for qemu-arm@nongnu.org; Sun, 12 Nov 2023 11:22:26 -0500
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
+ id 1r2DfJ-00046a-4C; Sun, 12 Nov 2023 11:50:29 -0500
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r2DE8-0002h7-Rz
- for qemu-arm@nongnu.org; Sun, 12 Nov 2023 11:22:26 -0500
-Received: by mail-ot1-x32c.google.com with SMTP id
- 46e09a7af769-6cd1918afb2so2380615a34.0
- for <qemu-arm@nongnu.org>; Sun, 12 Nov 2023 08:22:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
+ id 1r2DfG-00015s-7d; Sun, 12 Nov 2023 11:50:28 -0500
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-507c5249d55so5601558e87.3; 
+ Sun, 12 Nov 2023 08:50:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699806143; x=1700410943; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ocmIQd+SVY2U71IwwT0Nh9IIR0HnuTvPwuQ/4K+4PK0=;
- b=YTzkZIGsmUMf8KUp+V24y79E+6iuhEtIBFMZ9me5Zty8XjI1lmww0AhQWQQxvooIHy
- sOuMOrG5g+MI/PlAA/9+XzrXwgSPCdiL8282aMABJMwvUJjJsb8GbvsYLGEOnpmYD4l0
- 0hUbgDqUk8D/87Ku3/mX/Fjwo5Q9n6OSNs+H09c5WmPcLYAz/IbSKU5ZAW4pz/NXVagx
- HSbEB8R0SaXv7fw/iQmzlBc6sZrfTZ+z+HwYHZ1xHD8tA6hvIBOpyno93HlhiUNAFu7T
- Wt7RV9FdgjA7bfIJ244rxAthQumBhqHrpPQFqW6g20vTTmYQsIXsQT0bRrJPcBoph7IN
- Lpvg==
+ d=gmail.com; s=20230601; t=1699807824; x=1700412624; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=F1AvnSWiGvbigVuu/6MFNbfurAHFpFskCCpRglAvvlo=;
+ b=Kaebh44fXB9K3452jJDhVAW4mAuFoWZ6MUTrdfrAe6v61kIEw2nQNOkE5RTKuKwoKa
+ lGd8TgxGzYFNHA0Pw0J1pVGdumpj/EzFm0ywD3wXZtCtjqiJO+Nm6hw2igHgowopfjZ0
+ Y3k8EBc4sdSgCIC/nBzdU5AJFIogHHU0+VjFbq2k+HnHr1z3cUkQyCuMIUCw/8O1InbY
+ Lj3DcqVIuMcHeCAdBFMgIjqhsvtW2y62pGnFwc4VbVJmK7n1ztf312BayHR0LORBXji1
+ mjskn+7nVzGScinkJ57g53miOlTF2LjYZECXbATuTUHqaITjgUfJh//GSDpIS1g6oLFf
+ 3u5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699806143; x=1700410943;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ocmIQd+SVY2U71IwwT0Nh9IIR0HnuTvPwuQ/4K+4PK0=;
- b=Tjva59NJ6frxtq40xXOgwLZNwsIe7XAkuVLs4Ig8b1vf0j1NZVJF/sxgMVrqymWNxB
- 0tEeWaOH/ouVuBQBt4s352Q/2bHvBTmbaXxkfrcfdoPDGsu1HxqqZqkpG3GbpR6wkMKs
- zjMohel6StBePR8oQYM4kppEkc/Ss3U6bZ+Vp/V+09imn2VLhnjMgJD0fE10LNOHO2o8
- XYZFvDynecmBx2LEqvK92iGurnhbnlqhdWSj80qoQfLMBOVCQrviJxQtnIQnZ4xnk+xl
- gGPBUQRv9WZ3fQZFfbWdm/6mSamdTg+FJlLkiEc+m11C/PV528PdZKnkM5mwUrdfUKQR
- 4iRQ==
-X-Gm-Message-State: AOJu0Yx5dGXm477fSw28j2iqzSRlTfsm3bXeXODT8jzusc4vKqGBnmqm
- j4vqzSGLL2nGC2ZHoiOMoSQjew==
-X-Received: by 2002:a05:6830:71a7:b0:6d6:45f1:d7b4 with SMTP id
- el39-20020a05683071a700b006d645f1d7b4mr6140058otb.35.1699806143067; 
- Sun, 12 Nov 2023 08:22:23 -0800 (PST)
-Received: from [192.168.114.227] (c-24-20-177-206.hsd1.or.comcast.net.
- [24.20.177.206]) by smtp.gmail.com with ESMTPSA id
- w123-20020a636281000000b005891f3af36asm2828571pgb.87.2023.11.12.08.22.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Nov 2023 08:22:22 -0800 (PST)
-Message-ID: <80d7bc69-1277-496c-94fe-e1fd974f6ea1@linaro.org>
-Date: Sun, 12 Nov 2023 08:22:19 -0800
+ d=1e100.net; s=20230601; t=1699807824; x=1700412624;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=F1AvnSWiGvbigVuu/6MFNbfurAHFpFskCCpRglAvvlo=;
+ b=JYEp6Y2zBPGwXIhKZkjwWObQI8LCu31heN5NOHGs1vA/iuqjnX4yBvuP9vD89+iQi6
+ 87/+a7nUv7nRmELUFenWUGuOpBH8Su7f5ORKvYmanI49ermmVBQZ57rC5MHUOi6p6z5q
+ UbVjBzhxL7f/K6FXoMMwXm1NH/9yJn82n02d2c8fMdElvAJBh1IdT7LojJJ9qJHrFD7z
+ X7/ngU2AjnTyfQq3aIfcnfRAgMZPj1kokMkDaTVxD4VBPp3wzSz+GhVS3kZ/PVHzzHdT
+ sGmf6tQGQYuASTfpUqnh7CdmxGjW7/fUjGIMwzVAk9061slBy1bWngDkKZrmaMSXPxcH
+ xmdQ==
+X-Gm-Message-State: AOJu0Yx+IvJLfKwx1v52bn7ICplLEb/y+cjfr5iy6srpRnq4apZyC3Vp
+ XYyQYEK+iuvkSBjsAFnVjREdmKQu0Wnu18uR
+X-Received: by 2002:a05:6512:15a2:b0:507:9ff6:75b6 with SMTP id
+ bp34-20020a05651215a200b005079ff675b6mr4166409lfb.50.1699807823417; 
+ Sun, 12 Nov 2023 08:50:23 -0800 (PST)
+Received: from localhost.localdomain ([176.120.189.69])
+ by smtp.gmail.com with ESMTPSA id
+ m7-20020a0565120a8700b005041b7735dbsm672620lfu.53.2023.11.12.08.50.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 Nov 2023 08:50:22 -0800 (PST)
+From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Nikita Ostrenkov <Nikita.Ostrenkov@gmail.com>
+Subject: [PATCH] target/arm/tcg: enable pmu feature for cortex a9
+Date: Sun, 12 Nov 2023 16:50:08 +0000
+Message-Id: <20231112165008.1419-1-n.ostrenkov@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Correct MTE tag checking for reverse-copy MOPS
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20231110162546.2192512-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231110162546.2192512-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32c.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=n.ostrenkov@gmail.com; helo=mail-lf1-x132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,34 +119,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j0chvC3okwYC
+X-TUID: kn+PgcNNU8ds
 
-On 11/10/23 08:25, Peter Maydell wrote:
-> When we are doing a FEAT_MOPS copy that must be performed backwards,
-> we call mte_mops_probe_rev(), passing it the address of the last byte
-> in the region we are probing.  However, allocation_tag_mem_probe()
-> wants the address of the first byte to get the tag memory for.
-> Because we passed it (ptr, size) we could incorrectly trip the
-> allocation_tag_mem_probe() check for "does this access run across to
-> the following page", and if that following page happened not to be
-> valid then we would assert.
-> 
-> We know we will always be only dealing with a single page because the
-> code that calls mte_mops_probe_rev() ensures that.  We could make
-> mte_mops_probe_rev() pass 'ptr - (size - 1)' to
-> allocation_tag_mem_probe(), but then we would have to adjust the
-> returned 'mem' pointer to get back to the tag RAM for the last byte
-> of the region.  It's simpler to just pass in a size of 1 byte,
-> because we know that allocation_tag_mem_probe() in pure-probe
-> single-page mode doesn't care about the size.
-> 
-> Fixes: 69c51dc3723b ("target/arm: Implement MTE tag-checking functions for FEAT_MOPS copies")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/tcg/mte_helper.c | 12 ++++++++++--
->   1 file changed, 10 insertions(+), 2 deletions(-)
+From: Nikita Ostrenkov <Nikita.Ostrenkov@gmail.com>
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+According to the technical reference manual Cortex A9 like Cortex A7 and Cortex A15 has Perfomance Unit Monitor (PMU)
+https://developer.arm.com/documentation/100511/0401/performance-monitoring-unit/about-the-performance-monitoring-unit
+---
+ target/arm/tcg/cpu32.c | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index 0d5d8e307d..0008c3f890 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -418,6 +418,7 @@ static void cortex_a9_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
+     /*
+      * Note that A9 supports the MP extensions even for
+      * A9UP and single-core A9MP (which are both different
+-- 
+2.34.1
 
-r~

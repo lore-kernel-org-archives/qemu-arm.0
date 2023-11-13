@@ -1,55 +1,55 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1576629ejc;
-        Mon, 13 Nov 2023 11:41:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFpZHOa7GOKHClWwYkfOfS8VMbJUsyKdjPrWE6l9v337R8NId+6OcM2QX3Uz42u6pu32f1s
-X-Received: by 2002:a2e:b5d0:0:b0:2c8:3613:d07c with SMTP id g16-20020a2eb5d0000000b002c83613d07cmr160381ljn.12.1699904462336;
-        Mon, 13 Nov 2023 11:41:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699904462; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1582240ejc;
+        Mon, 13 Nov 2023 11:52:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGkAq7OTKsVY/cQ1jeu/7U1daS9LNwCs9aTLQf45lvJlBo5QmXlGkje3cRIfAMbFsah6r5o
+X-Received: by 2002:a05:6000:188f:b0:32d:8a7c:6efc with SMTP id a15-20020a056000188f00b0032d8a7c6efcmr479028wri.9.1699905141575;
+        Mon, 13 Nov 2023 11:52:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699905141; cv=none;
         d=google.com; s=arc-20160816;
-        b=qu0fdBXiSP77H0hiAWVJLlKvL1UPHmDTyKIU79NdlTlmQqIP6H2ooSu2ureMKJMa0v
-         5fbIfHB8rVI0GUtQhiVjxN2YebNArHhlD/TMSyrZsAKHsZzqEni9x3hrPOoddcb7EGav
-         +fdpaeeFjDqxz6+tsX1jeMG7nsrNcqQ1f3lAxJce+ckzks54TktVj5Xhn4ICP6nm4+hK
-         m//GmRlXePb0HK5C6JvcQR+2FnXlcS+qn+U0KGx+iYUdtWG8qHJC+r1TWnjNtKmq+soT
-         0Ozyna6IBoGu1oRESHEDJy/y+lA7AivRAdIB+C+iJrWdVEPfVRfaxMOKpqW31/fTXtlw
-         qgxg==
+        b=f9l4BRvV1p85v3xeC+8v/dKEWiT0uR+24QfyuziQbzaDQHZG1mt6jYCHyo77uCD+pC
+         gNzZjRz+4eiEJjfIlb2zN45anlja3v1ReAxVXSPy6Dij/3UaeWE1yu3sl5OVOnuNQdDB
+         m7WmwzRWQq7QdGQapNH0kmxCbm/idsev3X0dPAmcwBJJvVZrjLLEG8wA3GqC7sX/NF+k
+         ukqthseZnxkd7gBexnLGix4GuzzfxwAtTD420hUsD1GXiZhrcAtqJtxOvQn4Nxxpf8Hr
+         Z0DODqyb7/uE47gPfWuXGfwQvGEE30DtkCOBj7Sq+u8SoBrBgRK3W7gBPeGcfiMoUj6u
+         LaFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
          :subject:message-id:dkim-signature;
-        bh=vDojeE+VDCgKD8l9cL6TztmyFKIp3i3VilvUqdl3nZM=;
-        fh=xt/rbYbukDVRiGWW0U0trphLPVTpJnXLS+L5STDiz9A=;
-        b=wp6YGrQFAJKQ6Al2cFDUXRxPJuCA2vL+vJi9/jkxahyjbJxBSLLZJ+07g86o9MzDwX
-         N0s5gASXwWTh1PpnYL7ojeKxOUwjXJc/A/DP3s8UE7kQJduPTUhlpAQto+Wak3uIgnN+
-         xP5zeIvvmJtjli+wBvhZ3NA0HD5rDxF2rAVMr9oRDBNAQg1ULlRB246XrCD4kSVG0Tb+
-         7xPHLGZA9DeN2LozkqkcGD/p4xuf5qbj4W9pAgR3FaF9CYHvFr5g9ijt8qXCSfFRSfxV
-         x67wVqqUhlprFuVB8t9bix/42SlA7DUlvLXDUF738R4k9sz83DW6wM3dnQT9QTe2WxAv
-         NQwg==
+        bh=2MGB1FuhlMyr27jTMcGniLy3acfwzxq3KGBhJEoW/WQ=;
+        fh=iL4WDupC5Q9sXHH9c5Eej3AfYHJToY7iR+HZFDUXaks=;
+        b=bFXlAnF+2nrg95OIfnTa6v5ZeTych7ilZCZQX/WGmk4r+KRSpvTHOSPQY3Dg68a9rF
+         4OPtCBPopXoVg0STcKTHoFaLlvqmU6XyoXCuyq4izH4j8AQf3f2DpD2877hf9IbcJ8Yk
+         xLll1wrSRn93myI+N8zbCvJv6ltVddqto758iL0AH8KVFtNCpw7IwY6mB1wQ+vPIZ86/
+         WWozFDFHamEd+yT//2I9ff306AX+j5rEN61KpZj5gAdon7OtYgv1qiH5zwQUY2xIXCg4
+         eRXMo5v9pO5iEBiDLgt9eBUfiT4HeHOMD2t3wrc444pN3JB7RaJ9rluJqukXylEA60uk
+         Pzkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=l5xmldSO;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=k8XbWX6S;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
 Return-Path: <BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org>
 Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id u9-20020adfeb49000000b0032fa454b933si3476365wrn.883.2023.11.13.11.41.02
+        by mx.google.com with ESMTPS id o9-20020a5d4a89000000b0032dbbf02479si3448547wrq.50.2023.11.13.11.52.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 11:41:02 -0800 (PST)
+        Mon, 13 Nov 2023 11:52:21 -0800 (PST)
 Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=l5xmldSO;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=k8XbWX6S;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
 	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=vDojeE+VDCgKD8l9cL6TztmyFKIp3i3VilvUqdl3nZM=; b=l5xmldSO5l7IP+bXut+uIVT9l1
-	Bh2K88+FBvrYjSBuW/0xko022SG9cw2zTZX9E3MLg58gXBcLqI/lTlYsJWi07B1f81RfSpxlGG0Qz
-	umDJ0QnYSSKr4HvD9Z2HV1eT2fCpvJ5B0Sb6bOc9wEr8eWOPNNk25gdriObNaHYUUiz37sLcf3NbE
-	P5hr9Mb5Mq9LpQTNk/YIOVA0qxJLZV/hf8qEIgu3w9SjEr0I1KUf3mLK2NJM0OgUyyrtHtUOaHs0K
-	ds94oBh7qP50vUfkwFadk6GylcQul9Zc9s/fXR8GKg+RVsRVaYp1jScos45JZDt95pEO+9h6jcB2A
-	W3QiOuJQ==;
+	bh=2MGB1FuhlMyr27jTMcGniLy3acfwzxq3KGBhJEoW/WQ=; b=k8XbWX6SdlzdNuG2Y6DzlkJFMV
+	6iNK5VzqQ2cokVq5VLJyB8HCsKSv6rUCt4Ff6OI/rvA9qYL4NmZ0zxJhrr9DU8UE3pTeaTno1hs17
+	5trS1n19vccVJlsgRzCa/vR4L1HydR7FBz7l2+duDyMz+DdHgZ3rRTJp+mxwx6QzvR+4XracbZStz
+	zpesu3zRyRHROEwjef3h0muNj3gHsbPt4SHXkajRkynNPuWbkmv09R6Q09VpYDtOly1WsYAf4MQMP
+	a+3bQPg0x64R9krACQ7Kgx5RwZwIkJXuUZprM1aub8D+JXuEYKNXWXPZPaja6I2nNupIFzeYQXM6T
+	DLgJEVMQ==;
 Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
 	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r2cns-00G5jd-Mm; Mon, 13 Nov 2023 19:41:00 +0000
-Message-ID: <9504dd64e33f63375bf2ca775929bb763d96b86f.camel@infradead.org>
-Subject: Re: [PATCH-for-9.0 06/10] hw/xen: Reduce inclusion of 'cpu.h' to
- target-specific sources
+	id 1r2cym-00G8Nf-Gp; Mon, 13 Nov 2023 19:52:17 +0000
+Message-ID: <9ba10b4a92ac6782d0c581b1e1ee5d5efee44c33.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 07/10] sysemu/xen-mapcache: Check Xen
+ availability with CONFIG_XEN_IS_POSSIBLE
 From: David Woodhouse <dwmw2@infradead.org>
 To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
 	qemu-devel@nongnu.org
@@ -58,38 +58,36 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
  xen-devel@lists.xenproject.org, Stefano Stabellini
  <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
  <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>, Peter Maydell
- <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Mon, 13 Nov 2023 14:40:56 -0500
-In-Reply-To: <20231113152114.47916-7-philmd@linaro.org>
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>
+Date: Mon, 13 Nov 2023 14:52:09 -0500
+In-Reply-To: <20231113152114.47916-8-philmd@linaro.org>
 References: <20231113152114.47916-1-philmd@linaro.org>
-	 <20231113152114.47916-7-philmd@linaro.org>
+	 <20231113152114.47916-8-philmd@linaro.org>
 Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
-	boundary="=-WvCt0F5a/IYZ1lPgeKpC"
+	boundary="=-ho6uNE8dMLlxbsJOBL+A"
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: 9DfkxJ/SzDOL
+X-TUID: QVd+TiQ+EdfP
 
 
---=-WvCt0F5a/IYZ1lPgeKpC
+--=-ho6uNE8dMLlxbsJOBL+A
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
-> We rarely need to include "cpu.h" in headers. Including it
-> 'taint' headers to be target-specific. Here only the i386/arm
-> implementations requires "cpu.h", so include it there and
-> remove from the "hw/xen/xen-hvm-common.h" *common* header.
+> "sysemu/xen.h" defines CONFIG_XEN_IS_POSSIBLE as a target-agnostic
+> version of CONFIG_XEN. Use it in order to use "sysemu/xen-mapcache.h"
+> in target-agnostic files.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
+Noting that CONFIG_XEN_IS_POSSIBLE is for Xen accelerator support, and
+may not be set in all cases when we're hosting Xen-compatible guests,
+
 Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 
-
---=-WvCt0F5a/IYZ1lPgeKpC
+--=-ho6uNE8dMLlxbsJOBL+A
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -181,24 +179,24 @@ IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
 dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
 NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
 xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMTk0MDU2WjAvBgkqhkiG9w0BCQQxIgQgM1m9I8J2
-6OD3/eEEuDKVBlWoajxtuNhJccXuBhPU4Cgwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMTk1MjA5WjAvBgkqhkiG9w0BCQQxIgQgW3029mV9
+zi6c019ZemSuV1F5eSB3WsrEMLB2P3JeN84wgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
 A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
 dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
 DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
 MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
 Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgAhRegQUatojbl576eH3ps7PLNYs1zi61Tt
-ypApUH9RINC+A8KCYkPLjPzdLH+6k2CT2b+JcG949H4EyP5e77HT4uhhYhdLBPsJZaAZsaKHz4cW
-EUJaGNsPzgPxbuwjaiRpuFQUXruY/TCxUTq4ROiex6SNZp7/Yj0UihC5CnIkdfn9OUFSS1deJnVU
-h6BdH2wojEPanVMCYXMHSMQMUaTL12a5fTWwdEy4bzAD+VJX/TQ+lR0ubuddjuz3QdFeUWZUJwZT
-GqIPynFiNOs/fJIJ1CxWO6h/mHkYYacYTj2mWY/X1OFtwcIzVv1+z6qDiEoM4tMby9PDKSLgzze9
-eQY+xeU2aKMox81My3WG2ZKKuFeqKr13jXNOXz9vQALkRS8+E/G19ccT3hvb6bIqSpML00DroDkK
-YXgriX1LjueK/Skn9tL3ppDJ7ci3P5keJDKSQyMOf1rVuxG/sAkuCKiN7Vd62F+X4QFhSpZ6h8rf
-dk4PRepf+gX372VasuzV3AD69w7OGyd66TEpr/CHx3fWJABgnLv+jpwVR4cE4k9NLkfgwbCNyNj3
-54DGScJPY8qtY3XXJIT433BlDmLLHfu3HpkMOuB7Ntt0ezBlOlc6kW9+LI5xjjY+QG39lcNTTc1U
-Z45jkrfDtPL+BQUWVR2D5cOCeFcb2g/1GAX1Hp0S/gAAAAAAAA==
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgAYXiVLsHqsEC+Js9XVMiISMMYtrkx4+WER
+WF3quUmLxYfMoutix6j9PQencgh3u2YyY0Ht73SFvaWXGaASurinhGoye8XYu7B2/+W9gIMion3J
+WIF3NBCYkPztjjiRvdSHdfrpaX4HZ0rnWFyiv03kJb4ntU40PbTBZgOLNd4LNBGioRbFOAu2Ngu+
+6lNLXjFrMVAZLeFXamVartkyicaE2SppZkrAL0dKyIbW2GZSjgrHUjh425xKLUf5cPrwpj9XUsIo
+xzLSBZg3qVNRBvdLmForU2ap4X6Dy0shxRpygo8RXCC4+WBZKwZHK9mBYCjTtqUmRFu8E5hm7dxg
+tLSio0mQ4HKd6T2wkuG735F+gNq5eeB59VHFYWdzxOKOMsWASfmpdtwFOWE3q1e2fjcem0ZaDcY9
+ay+fOw6fqibIbt0gctLC65mS0T/n15RI1u+vv6Mezl9m7RCuIBNLvBCoH13x8oNcFVnES+Eq1UTf
+aD5x2BUJumYc6WSURqpyrahuruPQzdrftBUg2Dg7lHppsekMXekbz7caDDKHcfN1J5yYp5RA3FpL
+tozFGZkNiumi7v5rGnh5vpkYofwpzPq3mT3G06mQI3p4XsSNa64DIaVMkz+qfrSpT2pWze5FbRIM
+v3mmnW//T4spmIZ0TdLTomGFQMwVblxp/Kk0mV9e2gAAAAAAAA==
 
 
---=-WvCt0F5a/IYZ1lPgeKpC--
+--=-ho6uNE8dMLlxbsJOBL+A--

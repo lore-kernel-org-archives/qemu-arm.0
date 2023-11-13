@@ -1,229 +1,469 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2332723ejc;
-        Tue, 14 Nov 2023 13:18:34 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEKuMJOi7LOUcwW6iTQClRbDrd5e6OIxBcaWAWWfh5JGsWf3SSXZs0yb7K7EU+e3g4F4jo7
-X-Received: by 2002:a05:6000:4020:b0:32f:75d2:bdba with SMTP id cp32-20020a056000402000b0032f75d2bdbamr3517545wrb.6.1699996714639;
-        Tue, 14 Nov 2023 13:18:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699996714; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1694179ejc;
+        Mon, 13 Nov 2023 15:47:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF8TDPfeOPeKevwaLKPdVBY9Y/QQvN9Ry1VVQmWiDUGwUBezV/ELhFEn/ewNIOD0khbwtno
+X-Received: by 2002:a05:6870:d07:b0:1e9:da9a:f2d6 with SMTP id mk7-20020a0568700d0700b001e9da9af2d6mr11098714oab.40.1699919248900;
+        Mon, 13 Nov 2023 15:47:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699919248; cv=none;
         d=google.com; s=arc-20160816;
-        b=iHMBqt4OlLLjptSKB9gCwwkd4Fkf9inZCTNpXjDOGozugTnFP6yMyGPOnBW6OxtY1r
-         zkIKR5OJDxT+tWi4BGncqPfLobVgr1UGcWe6BGzOTdusI1SC/LQ23cUtzhbnlnP5k7pC
-         zESCys9sSKr5qoGbUSLSZ78DA73dkEvMPuRDuOeDOCzMXkXC0JKQsqHQL48d700SZKDq
-         Mbl2zmtBS0YEQEuV2zM5TquXU8mw4BJsFvrHsedGj0uRQVHSCdR3/FoDopgFpH+ghICT
-         95yFh7R2xCUqkfa94WiEwrhd4UQELxw7J5HVUu+BP5j2cxaIf1Mbj53t7jLBeiDQss9Y
-         zwcA==
+        b=YtDTx7BlJmJ5EyzlCKZ150wC6xLqhczUsp9Tsu25c1L+abdq+zNTmaDx6dsPi8OMvX
+         6blQ7X7+kO0mYqUU3D4N2n2Ts0Z1YRszULPfLJjADDise4P+QyAmRHbBqvIt+T//dvX/
+         3UekrCVvv3ArppSRcZqyUWXDmrI77+KJliYKxH6OlazxNsGdEEGlB3Z0mBQflbwEOE+Y
+         eSlVsq1szRCHmxrIJ9aM+6pfwvdzq8S2kgS1ZkvLXbuLKUa8eGHvtWQtzzuHdmRzRAu3
+         b2YrBiQtWeb52Ide4wUrxTb7lL996N7hf9J2GYmQqlcY6/9jGkQkAmg4g/e8nq33kien
+         QN2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=gECNK7hNnz9BN8xpS+w416YYyNbDY/ic3nanEYq03Es=;
-        fh=xdU6j9YXTMqT88o9wegX5T4MrupCVhn8V0KCl+ymeuQ=;
-        b=zzsHMcqWIyTiPOAe0SkFyfBRvLdk7oD8fb5+XTkkRHQZvFZC41TrzmFaXtHzO3QFMh
-         N0N3dhoH6F83iN6rbB8fPoSZHp7UB+PE4ywkq8LlE3V9q3RX7sZGJKY2M9zHzbjpFGBA
-         NM1l5STOEws6W9fKK17TVeDP/NoWgk7qTv7zmvju/sgBQ2Iq3S9s4od53r6wHZ0TNDD2
-         6/hMOjcygLFGjcEih4QdAnEHI2XeY/ryTT9fsbivvbbBAli9woOER5m2ogGVYvxAcLp8
-         N+qQjCfoo8mq6R1VMpmb6gdTKcqjPNhvcxfeosFY17+eoxIWWGrUBtKz4o3bokgNSDjm
-         dFFg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sGUuKvwBfQnuZThD6dwFXx+pkZQdA2vvt9ZH1MIF/ao=;
+        fh=9oVi/nj9UAEUrQ57vsoUXRmvoirMfEtGVeTXMQTp4D8=;
+        b=wF89/gOzoy72W54CpsmhuEnDO1RDyMRPZ2ini9z9Ys3am+wu+2QjmKqUzvfKvhXFbY
+         4HGW0PKTx4KEI5elkdICAeiMo4oMkf32aJxx6dfqyassFeNgAF9DEflFBrgeNRNMzFf/
+         /faD5DYUAYCyK3vrKmr3TdPO519BKPli9gQIY+Lkh3k0y7Rh94IYk4KLheNReSHUGh3J
+         JgZ/lHp04tzUvuc0VB9MfZX5TL9C4/jZBi/XAfyCc41Zbt+ID5t6Tfi0VzAUqlmLIUb5
+         gIEhM9024n2F1jugtQR1nkZXvMuPEqZD2cEwLIrzI5a1oihxXG2fg62k8SLSjcvS+bHc
+         WGFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=bbgCNZC3;
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
-Return-Path: <BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id f4-20020a5d5684000000b0032d9b3d4f70si5178703wrv.998.2023.11.14.13.18.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Nov 2023 13:18:34 -0800 (PST)
-Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GsE7r42N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m7-20020a05620a290700b0077a3bdd7079si5455089qkp.688.2023.11.13.15.47.28
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Nov 2023 15:47:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=bbgCNZC3;
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=gECNK7hNnz9BN8xpS+w416YYyNbDY/ic3nanEYq03Es=; b=bbgCNZC37w47nIC8h1N2kXZZ9P
-	aHS2PVR0h7t2NfF4ktZqR3bLrS42ROtdDo1otwnxM7TF5o9p8KuGVU6Rpz4KuBbobL+xF9EpMTJ1L
-	kRBsqhXp42d0bqHAwCRd+9PPkQ8NwskOd1nMvQVypSVmL9ibRdwKcdQd5WlvxOSrEzJ1gh4UgXr7+
-	DH/+y8tk/k9kcJilL5Ophur/CUEvRM+STUY/oDVBpVvAExyk64FcqvgL8O8jhS2M31B2LFwVeRqo+
-	Qn9VEDk/A65jE/X0iLOy/QveO+5AqPr+wfTxszoAHy+mcT0Qr5pFNY4hvIRsEOdsppElCvrioSSL5
-	y9/fD1BA==;
-Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
-	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r30nm-00AF61-UV; Tue, 14 Nov 2023 21:18:31 +0000
-Message-ID: <6444dfbb334151579607a8d76da8ebf6434f6278.camel@infradead.org>
-Subject: Re: [PATCH-for-9.0 v2 06/19] hw/pci/msi: Restrict xen_is_pirq_msi()
- call to Xen
-From: David Woodhouse <dwmw2@infradead.org>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org
-Cc: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, Paul Durrant
- <paul@xen.org>, qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, Richard Henderson
- <richard.henderson@linaro.org>,  xen-devel@lists.xenproject.org,
- qemu-block@nongnu.org, Anthony Perard <anthony.perard@citrix.com>,
- kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>,  "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Tue, 14 Nov 2023 16:18:27 -0500
-In-Reply-To: <87CD61D3-D862-45C6-9DBC-2765D747EA58@infradead.org>
-References: <20231114143816.71079-1-philmd@linaro.org>
-	 <20231114143816.71079-7-philmd@linaro.org>
-	 <EEC18CA6-88F2-4F18-BDE5-5E9AAE5778A7@infradead.org>
-	 <7fd25b34-6fd9-4f7c-90b4-e44338b2b09e@linaro.org>
-	 <87CD61D3-D862-45C6-9DBC-2765D747EA58@infradead.org>
-Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
-	boundary="=-olabTuHfq9fA1SvIFDdf"
-User-Agent: Evolution 3.44.4-0ubuntu2 
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GsE7r42N;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r2gdq-0003CV-CM; Mon, 13 Nov 2023 18:46:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r2gdo-0003CF-N7
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 18:46:52 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r2gdY-0005z7-QF
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 18:46:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1699919195;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sGUuKvwBfQnuZThD6dwFXx+pkZQdA2vvt9ZH1MIF/ao=;
+ b=GsE7r42No6Co2mnFRQiqZNwFDF0kIVY6pW7wo363L8AInUecoFeRmkgCJuWKmmmOLiHF+K
+ Ql9UbWuquW5Khfh4AGo0P5LUBnUJsTZQ4evBmDiRFtwVA1Ts0JCsN/rH9rm5LthANBmBWz
+ pkQP3sP9NBz9pkl8vEGqGayIvQdzpns=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-313-LEBw6RA2PGuDx8oHrp2NRg-1; Mon, 13 Nov 2023 18:46:32 -0500
+X-MC-Unique: LEBw6RA2PGuDx8oHrp2NRg-1
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-1cc3ad55c75so53903325ad.0
+ for <qemu-arm@nongnu.org>; Mon, 13 Nov 2023 15:46:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1699919191; x=1700523991;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sGUuKvwBfQnuZThD6dwFXx+pkZQdA2vvt9ZH1MIF/ao=;
+ b=acU/yoDuVa4U6mXjlrXiyltpq7A0wHVw3Ur4nff7vdmrboZOrN59ciG2jaa2ctt7gt
+ 5T2e1xQlJVM0s7fhuSgOEktGyK/QLGufHkYh+iGUZBjWfXnnLdud+s7SvYIuBpsnQqqb
+ 1T+tooNo3+fFHpNVwAqmH+Hal4lAXvQFMAEMI/jeEKmc/2m+ZnqJrQnuYdbXviL+xYuF
+ X2rBX6hT+CUlLeqDfGKsU4AVR9B/RkEh9XVZR8kCUkWh9F7QRdKm+pRrBLxHFYU8lFyd
+ 4cPXerPlNfDlp1ZEMgKgGF5/jryc403smBy2VT7PwJscByP390V7v5uq3vraLC1uehVY
+ PHjg==
+X-Gm-Message-State: AOJu0YxzZAazOFnc/UUl23CX2SNHffM9GVixuocrOu24YiUS4Qgb9/Pu
+ +OhVBR3bu4dZ42qnkUPqcOYypXdHkoQOBUHxZwFilKx6o3SkUoyAU0On/oS7axjzB8LIssoKAno
+ P4sPzXMGsnM9S
+X-Received: by 2002:a17:902:e88c:b0:1ca:a290:4c0c with SMTP id
+ w12-20020a170902e88c00b001caa2904c0cmr934923plg.16.1699919191068; 
+ Mon, 13 Nov 2023 15:46:31 -0800 (PST)
+X-Received: by 2002:a17:902:e88c:b0:1ca:a290:4c0c with SMTP id
+ w12-20020a170902e88c00b001caa2904c0cmr934885plg.16.1699919190654; 
+ Mon, 13 Nov 2023 15:46:30 -0800 (PST)
+Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15?
+ ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
+ by smtp.gmail.com with ESMTPSA id
+ ba12-20020a170902720c00b001c60d0a6d84sm4535699plb.127.2023.11.13.15.46.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Nov 2023 15:46:30 -0800 (PST)
+Message-ID: <0dbc478c-45f9-44e8-a938-de71fed6c3ec@redhat.com>
+Date: Tue, 14 Nov 2023 09:46:12 +1000
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: eXY+FqQLboV+
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 02/33] hw/cpu: Call object_class_is_abstract() once in
+ cpu_class_by_name()
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, philmd@linaro.org, clg@kaod.org,
+ imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
+ quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, crwulff@gmail.com, marex@denx.de, shorne@gmail.com,
+ npiggin@gmail.com, ysato@users.sourceforge.jp, david@redhat.com,
+ thuth@redhat.com, iii@linux.ibm.com, kbastian@mail.uni-paderborn.de,
+ jcmvbkbc@gmail.com, shan.gavin@gmail.com
+References: <20231102002500.1750692-1-gshan@redhat.com>
+ <20231102002500.1750692-3-gshan@redhat.com>
+ <20231106154029.0354f0ed@imammedo.users.ipa.redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20231106154029.0354f0ed@imammedo.users.ipa.redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2h6FdUhFHtH3
 
 
---=-olabTuHfq9fA1SvIFDdf
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 11/7/23 00:40, Igor Mammedov wrote:
+> On Thu,  2 Nov 2023 10:24:29 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
+> 
+>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
+>> Let CPUClass::class_by_name() handlers to return abstract classes,
+>> and filter them once in the public cpu_class_by_name() method.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   hw/core/cpu-common.c   | 8 +++++++-
+>>   include/hw/core/cpu.h  | 7 ++++---
+>>   target/alpha/cpu.c     | 2 +-
+>>   target/arm/cpu.c       | 3 +--
+>>   target/avr/cpu.c       | 3 +--
+>>   target/cris/cpu.c      | 3 +--
+>>   target/hexagon/cpu.c   | 3 +--
+>>   target/loongarch/cpu.c | 3 +--
+>>   target/m68k/cpu.c      | 3 +--
+>>   target/openrisc/cpu.c  | 3 +--
+>>   target/riscv/cpu.c     | 3 +--
+>>   target/rx/cpu.c        | 5 +----
+>>   target/sh4/cpu.c       | 3 ---
+>>   target/tricore/cpu.c   | 3 +--
+>>   target/xtensa/cpu.c    | 3 +--
+>>   15 files changed, 23 insertions(+), 32 deletions(-)
+>>
+>> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+>> index bab8942c30..bca0323e9f 100644
+>> --- a/hw/core/cpu-common.c
+>> +++ b/hw/core/cpu-common.c
+>> @@ -150,9 +150,15 @@ static bool cpu_common_has_work(CPUState *cs)
+>>   ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
+>>   {
+>>       CPUClass *cc = CPU_CLASS(object_class_by_name(typename));
+>> +    ObjectClass *oc;
+>>   
+>>       assert(cpu_model && cc->class_by_name);
+>> -    return cc->class_by_name(cpu_model);
+>> +    oc = cc->class_by_name(cpu_model);
+>> +    if (oc && !object_class_is_abstract(oc)) {
+>> +        return oc;
+>> +    }
+>> +
+>> +    return NULL;
+>>   }
+>>   
+>>   static void cpu_common_parse_features(const char *typename, char *features,
+>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+>> index 18593db5b2..ee85aafdf5 100644
+>> --- a/include/hw/core/cpu.h
+>> +++ b/include/hw/core/cpu.h
+>> @@ -102,7 +102,7 @@ struct SysemuCPUOps;
+>>   /**
+>>    * CPUClass:
+>>    * @class_by_name: Callback to map -cpu command line model name to an
+>> - * instantiatable CPU type.
+>> + *                 instantiatable CPU type.
+>>    * @parse_features: Callback to parse command line arguments.
+>>    * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
+>>    * @has_work: Callback for checking if there is work to do.
+>> @@ -772,9 +772,10 @@ void cpu_reset(CPUState *cpu);
+>>    * @typename: The CPU base type.
+>>    * @cpu_model: The model string without any parameters.
+>>    *
+>> - * Looks up a CPU #ObjectClass matching name @cpu_model.
+>> + * Looks up a concrete CPU #ObjectClass matching name @cpu_model.
+>>    *
+>> - * Returns: A #CPUClass or %NULL if not matching class is found.
+>> + * Returns: A concrete #CPUClass or %NULL if no matching class is found
+>> + *          or if the matching class is abstract.
+>>    */
+>>   ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model);
+>>   
+>> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+>> index c7ae4d6a41..9436859c7b 100644
+>> --- a/target/alpha/cpu.c
+>> +++ b/target/alpha/cpu.c
+>> @@ -126,7 +126,7 @@ static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
+>>       int i;
+>>   
+>>       oc = object_class_by_name(cpu_model);
+>> -    if (oc != NULL && object_class_dynamic_cast(oc, TYPE_ALPHA_CPU) != NULL &&
+> I'd split 'oc != NULL &&' into a separate patch
+> 
 
-On Tue, 2023-11-14 at 10:44 -0500, David Woodhouse wrote:
->=20
-> I believe that if you push your branch to a gitlab tree with the
-> right CI variables defined, it'll run all the CI? And I *hope* it
-> fails with this patch. It's precisely the kind of thing I was
-> *intending* to catch with the testing!
+Agree. It's a good idea, but this patch has been merged as:
 
-So it doesn't fail. Because virtio-net-pci doesn't use MSI, we need to
-test with E1000E or something like that. And actually I'm not 100%
-convinced the avocado tests are even running in the gitlab CI.
+3a9d0d7b64 hw/cpu: Call object_class_is_abstract() once in cpu_class_by_name()
 
-And also, if I test it manually... it doesn't fail because you didn't
-break it :)
+>> +    if (object_class_dynamic_cast(oc, TYPE_ALPHA_CPU) &&
+>>           !object_class_is_abstract(oc)) {
+> 
+> stray abstract check leftover??
+> 
 
-You didn't break the xen_evtchn_snoop_msi() call; that still works.
+Nope, It's intentional. We will fall back to @alpha_cpu_aliases if the
+CPU class corresponding to @cpu_model is abstract.
 
-What you were changing is the part which makes msi_is_masked() lie and
-unconditionally return false when it's mapped to a Xen PIRQ. And
-actually, even in the Xen-emulation case, xen_is_pirq_msi() is always
-returning zero. So your patch isn't changing anything.
+>>           return oc;
+>>       }
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 954328d72a..8c622d6b59 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -2399,8 +2399,7 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+>>       oc = object_class_by_name(typename);
+>>       g_strfreev(cpuname);
+>>       g_free(typename);
+>> -    if (!oc || !object_class_dynamic_cast(oc, TYPE_ARM_CPU) ||
+>> -        object_class_is_abstract(oc)) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_ARM_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+>> index 14d8b9d1f0..113d522f75 100644
+>> --- a/target/avr/cpu.c
+>> +++ b/target/avr/cpu.c
+>> @@ -157,8 +157,7 @@ static ObjectClass *avr_cpu_class_by_name(const char *cpu_model)
+>>       ObjectClass *oc;
+>>   
+>>       oc = object_class_by_name(cpu_model);
+>> -    if (object_class_dynamic_cast(oc, TYPE_AVR_CPU) == NULL ||
+>> -        object_class_is_abstract(oc)) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_AVR_CPU)) {
+>>           oc = NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+>> index be4a44c218..1cb431cd46 100644
+>> --- a/target/cris/cpu.c
+>> +++ b/target/cris/cpu.c
+>> @@ -95,8 +95,7 @@ static ObjectClass *cris_cpu_class_by_name(const char *cpu_model)
+>>       typename = g_strdup_printf(CRIS_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (oc != NULL && (!object_class_dynamic_cast(oc, TYPE_CRIS_CPU) ||
+>> -                       object_class_is_abstract(oc))) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_CRIS_CPU)) {
+>>           oc = NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+>> index 1adc11b713..bd5adb7acd 100644
+>> --- a/target/hexagon/cpu.c
+>> +++ b/target/hexagon/cpu.c
+>> @@ -63,8 +63,7 @@ static ObjectClass *hexagon_cpu_class_by_name(const char *cpu_model)
+>>       oc = object_class_by_name(typename);
+>>       g_strfreev(cpuname);
+>>       g_free(typename);
+>> -    if (!oc || !object_class_dynamic_cast(oc, TYPE_HEXAGON_CPU) ||
+>> -        object_class_is_abstract(oc)) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_HEXAGON_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+>> index ef1bf89dac..06d1b9bb95 100644
+>> --- a/target/loongarch/cpu.c
+>> +++ b/target/loongarch/cpu.c
+>> @@ -648,8 +648,7 @@ static ObjectClass *loongarch_cpu_class_by_name(const char *cpu_model)
+>>           }
+>>       }
+>>   
+>> -    if (object_class_dynamic_cast(oc, TYPE_LOONGARCH_CPU)
+>> -        && !object_class_is_abstract(oc)) {
+>> +    if (object_class_dynamic_cast(oc, TYPE_LOONGARCH_CPU)) {
+>>           return oc;
+>>       }
+>>       return NULL;
+>> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+>> index 538d9473c2..fe381cc5d3 100644
+>> --- a/target/m68k/cpu.c
+>> +++ b/target/m68k/cpu.c
+>> @@ -111,8 +111,7 @@ static ObjectClass *m68k_cpu_class_by_name(const char *cpu_model)
+>>       typename = g_strdup_printf(M68K_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (oc != NULL && (object_class_dynamic_cast(oc, TYPE_M68K_CPU) == NULL ||
+>> -                       object_class_is_abstract(oc))) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_M68K_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+>> index f5a3d5273b..cc94f37e77 100644
+>> --- a/target/openrisc/cpu.c
+>> +++ b/target/openrisc/cpu.c
+>> @@ -164,8 +164,7 @@ static ObjectClass *openrisc_cpu_class_by_name(const char *cpu_model)
+>>       typename = g_strdup_printf(OPENRISC_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (oc != NULL && (!object_class_dynamic_cast(oc, TYPE_OPENRISC_CPU) ||
+>> -                       object_class_is_abstract(oc))) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_OPENRISC_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+>> index ac4a6c7eec..018bad6f82 100644
+>> --- a/target/riscv/cpu.c
+>> +++ b/target/riscv/cpu.c
+>> @@ -636,8 +636,7 @@ static ObjectClass *riscv_cpu_class_by_name(const char *cpu_model)
+>>       oc = object_class_by_name(typename);
+>>       g_strfreev(cpuname);
+>>       g_free(typename);
+>> -    if (!oc || !object_class_dynamic_cast(oc, TYPE_RISCV_CPU) ||
+>> -        object_class_is_abstract(oc)) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_RISCV_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+>> index 4d0d3a0c8c..0063837e93 100644
+>> --- a/target/rx/cpu.c
+>> +++ b/target/rx/cpu.c
+>> @@ -111,16 +111,13 @@ static ObjectClass *rx_cpu_class_by_name(const char *cpu_model)
+>>       char *typename;
+>>   
+>>       oc = object_class_by_name(cpu_model);
+>> -    if (oc != NULL && object_class_dynamic_cast(oc, TYPE_RX_CPU) != NULL &&
+>> +    if (object_class_dynamic_cast(oc, TYPE_RX_CPU) &&
+>>           !object_class_is_abstract(oc)) {
+> 
+> ditto wrt strays
+> 
 
-It *does*, however, make hw/pci/msi.c do this exactly the same way as
-hw/pci/msix.c does. That one does check xen_enabled() first.
+Same as above. It's intentional. We will fall back to @cpu_model-rx-cpu if
+the CPU class corresponding to @cpu_model is abstract. The point is we don't
+want rx_cpu_class_by_name() returns an abstract CPU class in the middle. The
+last returned CPU class will be validated by cpu_class_by_name() like below.
 
-I need to double-check whether the msi{x,}_is_masked() checks ought to
-be doing the same for Xen-emu as they do on real Xen. That whole thing
-is a complete abomination. But that isn't your problem. For your patch,
-
-Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
-
-
-
-
-
-
---=-olabTuHfq9fA1SvIFDdf
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
-ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
-EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
-FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
-aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
-EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
-VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
-aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
-AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
-ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
-QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
-rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
-ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
-U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
-DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
-BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
-dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
-BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
-QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
-CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
-xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
-IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
-kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
-eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
-KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
-1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
-OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
-x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
-5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
-DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
-VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
-UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
-MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
-ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
-oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
-SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
-xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
-RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
-bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
-NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
-KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
-5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
-C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
-gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
-VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
-MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
-by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
-b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
-BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
-QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
-c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
-AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
-qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
-v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
-Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
-tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
-Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
-YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
-ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
-IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
-ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
-GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
-h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
-9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
-P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
-2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
-BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
-7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
-lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
-lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
-AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
-Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
-FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
-BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
-cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
-aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
-LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
-BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
-cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
-Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
-lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
-WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
-hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
-IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
-dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
-NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
-xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTE0MjExODI3WjAvBgkqhkiG9w0BCQQxIgQg7onyX3Ra
-XCH87bFKyHRLcKmRncLOQeAokR+h9GwaXPEwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
-A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
-dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
-DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
-MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
-Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCnlN+Jz/n/p265r5wbJtFtx8w+hZcc2klo
-0xL1EUWavSpz9FgdKDp246yCW4YbInsq5QJTE4oUZPK6wEmeZ9IFEYZAIzJWhPugqoccJZcXeM+4
-+5dcMvrsbHEdR0P8yR5abuEciOdfnGx0F0CaW6Sgb7uXYSQPUKOiYxu50wEdri9nhWrbClgHbyI/
-IKP+8oh2X3BwUejZAroESZvoZFNk+rVSYUeAUTao1oSWor1Af2MYgCZNcoTK4lqyWvDJ53cuktFq
-FFXiv5XFuZVWbCWEcja8KiUOZM79JmzZKKfoLFviuhVsG0CsorTYrSXCPzXIXYSt7NY9wxfKckoM
-Cqv+6iisD/zWgTYhSdkyjaeB/4ulYpKtOjMkAS7Z5fgytXgB+ihxiU/1UghgtknAa24FHH+HJ0Hs
-Usi20yjXmoHytS6oAa4IEDhHmcITF+JMC6UZ3Mh3bnQCgvlCTQZUm1+kQvuwisfbFsrv2ph7yWPr
-uAsDgZVgtUscWtlFRdQ1qyj0+f5Tntic20tRTnto23Mn2K/G1rI1znBNx7HZLlltrCfupzh5wtTS
-omCAZZJxzh7UlErt+GtRVFqdhu/f8d30npBfPpeUw53JmWL9vseO7t/eseaDBJEvMtQ4DKzHb06O
-wGOUu7wI4MG7bQuqnQe23vWBydOwqs+1R++AvhjqgwAAAAAAAA==
+ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
+{
+     :
+     if (oc == NULL || object_class_is_abstract(oc)) {
+         return NULL;
+     }
+     return oc;
+}
 
 
---=-olabTuHfq9fA1SvIFDdf--
+>>           return oc;
+>>       }
+>>       typename = g_strdup_printf(RX_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (oc != NULL && object_class_is_abstract(oc)) {
+>> -        oc = NULL;
+>> -    }
+>>   
+>>       return oc;
+>>   }
+>> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+>> index 788e41fea6..a8ec98b134 100644
+>> --- a/target/sh4/cpu.c
+>> +++ b/target/sh4/cpu.c
+>> @@ -152,9 +152,6 @@ static ObjectClass *superh_cpu_class_by_name(const char *cpu_model)
+>>   
+>>       typename = g_strdup_printf(SUPERH_CPU_TYPE_NAME("%s"), s);
+>>       oc = object_class_by_name(typename);
+>> -    if (oc != NULL && object_class_is_abstract(oc)) {
+>> -        oc = NULL;
+>> -    }
+> 
+> Why they do not do
+>      object_class_dynamic_cast(oc, TYPE_ABSTRACT_FOO_CPU)
+> here, do we really need this dynamic cast elsewhere at all?
+> 
+
+I think it was missed at the beginning. We need to ensure the class is a CPU class
+here. It's not harmful at least.
+
+>>   out:
+>>       g_free(s);
+>> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+>> index 5ca666ee12..47e1c272cf 100644
+>> --- a/target/tricore/cpu.c
+>> +++ b/target/tricore/cpu.c
+>> @@ -132,8 +132,7 @@ static ObjectClass *tricore_cpu_class_by_name(const char *cpu_model)
+>>       typename = g_strdup_printf(TRICORE_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (!oc || !object_class_dynamic_cast(oc, TYPE_TRICORE_CPU) ||
+>> -        object_class_is_abstract(oc)) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_TRICORE_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+>> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+>> index ea1dae7390..5d1c090467 100644
+>> --- a/target/xtensa/cpu.c
+>> +++ b/target/xtensa/cpu.c
+>> @@ -141,8 +141,7 @@ static ObjectClass *xtensa_cpu_class_by_name(const char *cpu_model)
+>>       typename = g_strdup_printf(XTENSA_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (oc == NULL || !object_class_dynamic_cast(oc, TYPE_XTENSA_CPU) ||
+>> -        object_class_is_abstract(oc)) {
+>> +    if (!object_class_dynamic_cast(oc, TYPE_XTENSA_CPU)) {
+>>           return NULL;
+>>       }
+>>       return oc;
+> 
+
+Thanks,
+Gavin
+

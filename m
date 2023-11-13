@@ -1,116 +1,198 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1528945ejc;
-        Mon, 13 Nov 2023 10:19:07 -0800 (PST)
-X-Received: by 2002:a05:6a20:428f:b0:16c:b95c:6d35 with SMTP id o15-20020a056a20428f00b0016cb95c6d35mr9292141pzj.50.1699899547481;
-        Mon, 13 Nov 2023 10:19:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699899547; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1576029ejc;
+        Mon, 13 Nov 2023 11:39:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG4bZSkjWNNTKhK3KhT0kMeOrDdboyvpVU9bltUFdfsgpxFRlyiLDKwSvDINnRG8E8AdB1c
+X-Received: by 2002:a05:6000:1843:b0:32d:a13e:acce with SMTP id c3-20020a056000184300b0032da13eaccemr6072471wri.13.1699904393338;
+        Mon, 13 Nov 2023 11:39:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699904393; cv=none;
         d=google.com; s=arc-20160816;
-        b=iD1JZil4kuKi6CFidwLUJGKHuBhzFISkd9LeXjmS9x8RsAoK0wUqOLUi7ZkD4AE4lI
-         nTyaHjrE7JIVZ53MFYi+Jm09YlxFVFpxwyOFYqQZnCu8xAvFmrxNxuE1cHw16zDwDVH9
-         3Py6TsJ343kbkz80NISykrGdz1K3q+wNYQLJ93Sa8zVV+YX7njaMOvllB16ONsY0uWPD
-         S4m94CNg/kKoDC+K8fhZ3FvOGG+QHcrZrcbf1DshzeSpj39aDezu9cgx4xNoUY8FWBEq
-         /UtEWLqCgvy5ps2Cw9dr/9rsFnnASKpYaAL8DIi+dnZQNyxkgS3+2u1ngtXHGeFoBpLl
-         rcjw==
+        b=KusRWJIiSbAY7Sa+C+5bYpAPThugEiu35YANcLyOXtV/GmrJJjeW1/UWO+gSXAyFRa
+         Ql4ameuPjzSkDbX7hhFIGvmAvXTJWZTJ0EAyxboSG61o+veOzoLY/O9ropXhXqG14hO8
+         vWESuV2c4BztMVVh4ipL6SfaadZNINweZBPhCTpCpFaJC5du9OAEPqxN6ZagWxfckZMh
+         jJFTc1Rc+LqwReRaOtXiwyMYdVBRtnnCe4AI0LfdceN2ZDRSPfFQSeU9H89+WuGIpVgb
+         FR46/2KvMnMuFLQqEN5FbUXQthiHf88ytIw5aDsjFc1TGpNjA5dO+w4RNKbuHxBzwkK7
+         JKXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=umxmIrkbAOLmL1DmXXbJI6TnuJLS61wFseCU5AQMMlE=;
-        fh=EvOKQYaIe4I9Kcy6c/Ll7Qwfc3jBPyyxi3MLAzaX1fM=;
-        b=mRbTAppTeoMXGx9qi8EpPPl6UIPmyMOoy0yOWEoBtXxsBed/wCwYc61CbEbHL9UExR
-         bL7cWUSMSfb+jcqwIcpnDHi7RnjPsOMiLtCWck/FdisauB+2T5K24SxEfVDhfhXv/hOY
-         +Loab4l2wlWaF6gl0xTLn6rEl9v8gs8WfRZyWOeTm9HhkjWg2VW2BdU4OrSnl5UFohoT
-         Yuu6xyPN9e1nYbagYzoTM3IeOu7s656hc+1NJSaNePX+IERluhrmwaV2BpZUrsE1h5hV
-         VI9QqVre9Q6SUnXnRDi/vDFJl7bZUZbwkJSlGlsX3sObKSctWTnYM1p1UAxSOjnvmc8b
-         ZFIg==
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=TNulHO67NIckCB8oHPrROeoDh3QBnKCESKDLV560ROg=;
+        fh=iL4WDupC5Q9sXHH9c5Eej3AfYHJToY7iR+HZFDUXaks=;
+        b=i/02KOI3bpfVHUqRjUyH5km/cLdYjyjbBJWOBFBQU+i69Mat2dO2001k4aYh2C8FkS
+         oksgQ3OdEZ4ANXiK91dxsH2dU20mo57bdhx89BxOqyNGYa9UqtJqVy4ZraKlCl9rsOoc
+         TVVgfjkyVJY5FpOSYE4/ltWm5GQxIMSe6hND4t25oQCCtoD/eB0ycT3LS9qL3wrtxkol
+         aHrhy4my47bca5Dq9FElEj6NEOIBcZxtiZzOuV1hfx98xiiQPZh0n/J37D1jGCeyPtdS
+         bTTwvi0gALvEpQnrLzf83HcvthJHTKMkYOZvJcrF9EfAcEuD3prFGit3+RvYRuayMZ9y
+         mDdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IYIwyDwV;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ja21-20020a170902efd500b001cab282c41dsor180020plb.13.2023.11.13.10.19.07
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 Nov 2023 10:19:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=VLEbrmDp;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id y6-20020a5d4ac6000000b0032f7d6df328si3283227wrs.641.2023.11.13.11.39.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Nov 2023 11:39:53 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IYIwyDwV;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699899547; x=1700504347; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=umxmIrkbAOLmL1DmXXbJI6TnuJLS61wFseCU5AQMMlE=;
-        b=IYIwyDwVX1HDYwVIH3G1FiZuczGPNv3yl8hO5xuHzs1+4+Q21oJTlCih68Fi0VUeim
-         JUiHyJIbkcPL4s5H7p4xrpnD0Zv9Me9zHOSofOZe8WmvaKPhku8kE9bHGSBpcfxetQfC
-         U2bpX3KjIS6Mj5uNO+dvyfuxGJGDhtbIgGDqL5lcVJYvoBaXrM3vdej0NJ4jiV+kOG/t
-         b0VBjqZitxdErp1Qb+lbLvnYYjegFUcn4DxBt1HavNY+pCNPePuW+RVvDG2xexuTg7Z1
-         sU2fObbU/Rbt31/6Oe9rKp6BCeoGgEZANxAKK+MztVbqGAi3ZeN7zwcsrFz3ls8uEkJA
-         zOqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699899547; x=1700504347;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=umxmIrkbAOLmL1DmXXbJI6TnuJLS61wFseCU5AQMMlE=;
-        b=uzWcQuVhdwlNau1kFIbFTWuHmtU8LanjLsKbauiVkpUl9uC88+90QcVzAYY/cChue+
-         dSZ21a9FLrs04YlVaV2Xj9s+FjJBxzpM8mU6w7WOGGDtgpvQ+0OIYmTWf1Ir1x4wklh7
-         y5H/AGE6HTGeE59fbLQ3BAHg/h3XQeJqP21LxTMNNzDRI/56jxUwUH5dDoczTiQsM3Nx
-         YZlClbhjXtCNbq/x/ADps3DaiqKbtvjlq/Lkci9kOs8xddzuLXRLthb61CW3vFwI+gqR
-         0Ov6fbGL1uKwE/QIDY1RLT8ecyzh6mgmVYCphdkBcX68Enf+hFw6sAa/dCdW8HyO0CmZ
-         bddQ==
-X-Gm-Message-State: AOJu0Yy6SeG1o+HMoi7xpp5uPF1IKO79ph2P7AZKomv27n8jvKPdmi2j
-	jHTzywE2+Iwiklyt09RRMe4WVAV7
-X-Google-Smtp-Source: AGHT+IGg248TCR5/kb/i5Pi6wxhtajoY/akEWVclfGdoBcuPjMW4q7qpmailfQkpV0PQqKGOfBIpTg==
-X-Received: by 2002:a17:902:e88e:b0:1c2:1068:1f4f with SMTP id w14-20020a170902e88e00b001c210681f4fmr423529plg.17.1699899546984;
-        Mon, 13 Nov 2023 10:19:06 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] ([71.212.149.95])
-        by smtp.gmail.com with ESMTPSA id ju10-20020a170903428a00b001c59f23a3fesm4142792plb.251.2023.11.13.10.19.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Nov 2023 10:19:06 -0800 (PST)
-Message-ID: <a6333482-93f5-4ff6-826a-c1564e89c796@linaro.org>
-Date: Mon, 13 Nov 2023 10:19:05 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 06/10] hw/xen: Reduce inclusion of 'cpu.h' to
- target-specific sources
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=VLEbrmDp;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=TNulHO67NIckCB8oHPrROeoDh3QBnKCESKDLV560ROg=; b=VLEbrmDpvYCyLJf0Y3MoYe5jes
+	S3c4+/lo9pwqRveNzHcGLkTpbGH8eXlVvhfuxf37IrmEhGvuxxST00XTNSoaQx3QVloN9tsgB6uzN
+	iJ9oQCTRoVd5CM9mot54DM+LEJwkSWSPAAejeX9eCRUPHNJNOl/IBC5DetRQWSjonfx/mTqykD1dB
+	amGx/xWPiMnH27papNLDaOv/0CamlDDAR/08hHNpVsAOymM5o5IlcD7u+YovzRGTxpllMi0UB6PTG
+	55C/sMUw32IvQlctlb229s0Adr8pNS3G9n+e4AnzFtYVdED031dfxGeZijNYgZfPfCnTQUOzg6YLl
+	+f3k1V1Q==;
+Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1r2cma-00G5fM-4F; Mon, 13 Nov 2023 19:39:41 +0000
+Message-ID: <15b379e44cca703ddcbc7f93db3e9cdbc04b8305.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 05/10] hw/xen: Use target-agnostic
+ qemu_target_page_bits()
+From: David Woodhouse <dwmw2@infradead.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
+ <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>, 
+ xen-devel@lists.xenproject.org, Stefano Stabellini
+ <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>
+Date: Mon, 13 Nov 2023 14:39:34 -0500
+In-Reply-To: <20231113152114.47916-6-philmd@linaro.org>
 References: <20231113152114.47916-1-philmd@linaro.org>
- <20231113152114.47916-7-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231113152114.47916-7-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: rhZdZqhzKXfU
-
-On 11/13/23 07:21, Philippe Mathieu-Daudé wrote:
-> We rarely need to include "cpu.h" in headers. Including it
-> 'taint' headers to be target-specific. Here only the i386/arm
-> implementations requires "cpu.h", so include it there and
-> remove from the "hw/xen/xen-hvm-common.h" *common* header.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   include/hw/xen/xen-hvm-common.h | 1 -
->   hw/arm/xen_arm.c                | 1 +
->   hw/i386/xen/xen-hvm.c           | 1 +
->   3 files changed, 2 insertions(+), 1 deletion(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+	 <20231113152114.47916-6-philmd@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-Ykjvuzguo0f2dUfjNvwE"
+User-Agent: Evolution 3.44.4-0ubuntu2 
+MIME-Version: 1.0
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: FzTfjJuOSLoK
 
 
-r~
+--=-Ykjvuzguo0f2dUfjNvwE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> Instead of the target-specific TARGET_PAGE_BITS definition,
+> use qemu_target_page_bits() which is target agnostic.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
+
+--=-Ykjvuzguo0f2dUfjNvwE
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMTkzOTM0WjAvBgkqhkiG9w0BCQQxIgQgJ+15/aej
+gxjORszaOOljsnbif9LyxmsNJAutxuYWcFwwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgApIhaarkalFWI1YN4BDdTs8A3Isb4jzkZx
+dNJFAOO2jqyCjgsKcPokt1fBYvfQmPvyEQfacTxzOJWpRRIjGaAj6bqtt3fv3pxTEPnDffYCbPV5
+AaCCRa844AvXsJDoyEH8Cq36eSWOfdC7Zv8yXSGV8r8k0gUfuY8X5QqfXrSrDrRtzg/eZO0TEFD4
+NBi6QiKh87is5tB9q0Q+pX1CvpW3t/J1gvYNFx8/oAsVzNHLl51mw3hf5iGMtIFA7Mll8U0l+TzH
+fkCUBbst0RopEUfUWl64lrxiArj9BrhfjtqyNpD+Bcr8GVUG58VAIjmiDO0QMtPJBgkp5dl8jKEF
+lBbzIFmVlHvLXelMxiWtiaBOSYGDUUTDjyUgYlNi2s6VH4ZyhUyJE2N3st+UxX3ypSoAcOmtiwQH
+BZjE0AEQ4DRcAGi8eWVrXlpqEfMSKajGTyrEYx4AE82TXNeOQjMPHxqY/Et+1I+nFdwOKLe6e2ZK
+8fe0uJbrUFXZuA6wcGawAXo/ZO/LTr/ZrSkRhfWkOUXleV+krJuzOs0VXul7TBaFAqwEZTpfaWr4
+3fFPOxNxgMtsRaKH0LRBDCAnQGsVmPEcHUGz48ryDxwIcC2gUeluw/trD0AH7Y4/RcHBPWoRCJGB
+6OzQt1sy75liLdAxKae2ZC0TEKXKyXQaGjZLAmokYQAAAAAAAA==
+
+
+--=-Ykjvuzguo0f2dUfjNvwE--

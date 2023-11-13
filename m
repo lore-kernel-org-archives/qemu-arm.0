@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1408250ejc;
-        Mon, 13 Nov 2023 07:21:43 -0800 (PST)
-X-Received: by 2002:a17:906:34d2:b0:9d2:20ee:b18b with SMTP id h18-20020a17090634d200b009d220eeb18bmr4978048ejb.42.1699888903019;
-        Mon, 13 Nov 2023 07:21:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699888903; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1408297ejc;
+        Mon, 13 Nov 2023 07:21:49 -0800 (PST)
+X-Received: by 2002:ac2:4c38:0:b0:4f3:9136:9cd0 with SMTP id u24-20020ac24c38000000b004f391369cd0mr4422249lfq.44.1699888909226;
+        Mon, 13 Nov 2023 07:21:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699888909; cv=none;
         d=google.com; s=arc-20160816;
-        b=hBsTnBewzyaSHeLSNnNVE6B3rwDWFTpLyyu7qJbpFX3czTI5tXIQhblqCjdnuiJMfV
-         F4T+WsuH0ELWOOz/66aasncHAKzrNWQQgmTxk22Q94odS5aGgfql4DccS6z61fQK+ztI
-         zdsjBDxG/gNsiRdMR19+XgjqeUkEFoGjdUqA6gOGF0OU7nM30qdfHZOxkkB7YqFjkJt9
-         0Lc/5A416A0Pb8Rxg1Omp2ZtljSvZgTARrIAeH+YdetAz4bEq1ZIqOvulfpVjLf5WHUS
-         fCvhDsoRvMzDuorCU7G5RLQ0hxdVV7/6I8rT2zRuQzrrgpUCtgX3/4uqIda4raqTqtAp
-         8kbg==
+        b=iqWBv1fZk+vcWaRN/kFViWn5Ha1V6hUfJRFQx1B5/OTTQbwOnxTJ5INnFHKVGVIJEi
+         FkU8ambR9X3pdAXywTdbLCg4/NCYuf0iNcmb/mKuHAV/xzhHt0TtbWtruDpE+djHKrq6
+         P60v+8u4v7cxrDvk9FXZ4/E3ud1a1uDMeeetBU6NdwaHS9HQ1F0zCDe9j3y2WPGHzISy
+         G/rtJDQkqUdxHEs8vkUI0pAButhFUntfX0nLmtPCIFikgPTu4FkCEY428yyaT4fSYYHB
+         ewD0POmH+pDpClpVg9t+ck4Mo8ZdGq+01gjikUwRuFrx+GOXNetQeXBVTkaCT2QMhFVp
+         9Fpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YAZk+3Dse8rl86kxKUGHVuPZUfUpHgJaPljFBSi46HI=;
-        fh=l0GfR1YsFBV1p/d6Yn0Cy9b7NFKbeuH6aWfu2sQY5rM=;
-        b=UhHpSDcg5/8+3f0C32qvgKoteBr1pk34/vCASdUpC3FjlVoOxoY/KuzqfBiiJGCIiH
-         wyknVijz1CcIXU3y4W78JzQNWWISI44LWNjUN/C1tnPRWpJ+ZsrCakDrf89wyI4O6kzl
-         VYAcg7a/51Y4xGEetk7IYA4V6st8OagVZ2cXyhvJi2fA9e2pn4iJg4Hn+cDrMREvKlEt
-         Z+/vGx9eVeZ6qwjh70uMWt276hRuWiFXxG8Jb/Ua+7ryM6JmSUwjMeRzDwN0zprFPTfG
-         hADNe1NLvM7mVKQD6Y8V+zb23LSk0kgBSaJJBcn6uj4h9AjPZvcdEYSX6wSxQ2jecPBT
-         fg/A==
+        bh=hC1GyuSTm1pIOLAiq1jl6VtM1wTJGGJIerTVB/FTO70=;
+        fh=E0jvqUTVnbyPitMGLtsCjS/srUbMS2WTNKk9XEDC2rY=;
+        b=DvAX/XGFfTCEM7sKRusOB0RdfakuTdHjb5yoIi8h3z1rlDO0p8ikRooO7oJQKCDK48
+         0a/be56wdLOh0qNnsXSKcvfuSB4f2bPsNYD2YdGdbXiWwZQ0MN1xPM5+k3FLpjkBSKq6
+         HjUz38feJRnyXKEmGnHCv6txAqPfQnea+2S0r4w4ke5K4ylaKq9x0TYfCZa/pNWupXrU
+         jjYj9oe5dtm/HHXzcpBEc2I5Wj8OdUy0oXbzDlrfaOdiLrrh5VKAR84rb1iu+0oRsJ2F
+         TOJx0sSlQ4Fv/9cfzhiZ5fmAIPmn/0+zeHxtzhlQPMtf/SdD88KsriuSANtMX6WXUxXF
+         3P3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XIOqng8c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r4pXaqTG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k24-20020a170906681800b009dd8453eac1sor1173645ejr.13.2023.11.13.07.21.42
+        by mx.google.com with SMTPS id ek27-20020a056402371b00b005470939b685sor1030053edb.7.2023.11.13.07.21.49
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 13 Nov 2023 07:21:43 -0800 (PST)
+        Mon, 13 Nov 2023 07:21:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XIOqng8c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r4pXaqTG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699888902; x=1700493702; darn=linaro.org;
+        d=linaro.org; s=google; t=1699888909; x=1700493709; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YAZk+3Dse8rl86kxKUGHVuPZUfUpHgJaPljFBSi46HI=;
-        b=XIOqng8cNYIKCvQv/Or9mN5cO3OY14WSveYZ+eb8dw1pJDhDrK1iojwzQ5KYvtL0CQ
-         usGU33vKZeDUOW7hqSkkDTnsXuEcQkVov1Dsrjp2o2wKm5mWHWiP10B4ppEG8HCumsjm
-         39CiCddF1Ke2ifes1NxnakvpXJ82ZsqLeSu+TKrdWMQ1fOj8Ys67Hk7hcwXrZi5BgbXu
-         mfwCEtq12+sv/g8NSKAE/atDNsq9ssfsyiVSzOnww4YzKqjBLOdkYj4W5Zy41n69h1DE
-         bDGHGxp+4z7Ep8CjzR3BX/qN2TmiNZCiUfoJba4YVf1MGN+cq8y19xxDmOMuwvI5b2J+
-         r4hg==
+        bh=hC1GyuSTm1pIOLAiq1jl6VtM1wTJGGJIerTVB/FTO70=;
+        b=r4pXaqTGz4tf0T1LwIrOipV0zMmA9J3ulAEJ3LQQF9/+NgWhal1mZb3hgRBHoH/1A2
+         xrnk5PkC/23j8G3IktqruWne/AXpr1zPZU+raVSSIaJNNTtsnIeZcyBknrri5RdV1Uws
+         MMIDkRL1KIkqNl47sIIVx+W5VIBxX+jmy4b6AWDtVyj3P8J2fgMJGzEaW3VzJSP3/a10
+         szfsIHpn5f3BDOO9E/ery6akShKkC7y82dvWqQOKTCufOtsEwPT0RtBziTQTb1OjzMD7
+         Q65rHtlDjvKD+UOumr8bir2yW3pi5xQK5jh4458lI2JmYIYGxv4HFQjkCmEhAIittkIt
+         s7rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699888902; x=1700493702;
+        d=1e100.net; s=20230601; t=1699888909; x=1700493709;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YAZk+3Dse8rl86kxKUGHVuPZUfUpHgJaPljFBSi46HI=;
-        b=HGPTdzPzvabeiGl37B4w4YlxrXjpMxYSl7iOSBaau1jsSV0Fz3Q8uG2mPAdUNpB6XH
-         xI7fMcWPqaNLVoyD0/GyTTQevWCWp9fKovLg+DkDqdmxozcuqQj32l0XyHJvkFSLBgxC
-         /VCBEQoJGDoKk26B50l9F733pZHzprk0L0RJI8XTY53upSfPBWpPZKcvDoNgGdtbckVW
-         geJ5J2zA+aFggW1TNwZJo0xcg6higjs7Drnn4XKN5I0wBQKofQh66kG3QqhkRAN3Av11
-         jnzuj4VHy5vhzeaRVtbNKWGd5qyQrXqLzdaAROiK2BqrXaFSUrPseebzb7XKIR+iAA3u
-         tPfg==
-X-Gm-Message-State: AOJu0Yzo5y7vfh5BsjkgYHJTiy4cHFshinUtKpuNcbjS27FHHqbfPSiw
-	Xkl7IhMd3viJWNQoU7Q9CqWb9jHK
-X-Google-Smtp-Source: AGHT+IGj6dXGN5MguahUCcbomoo2q2R5bpml51YnyeqNpSNRHHGNbaVXW8b4IH/nqJe1/joi6MIM1w==
-X-Received: by 2002:a17:906:84c:b0:9ae:6da8:1819 with SMTP id f12-20020a170906084c00b009ae6da81819mr4194118ejd.48.1699888902783;
-        Mon, 13 Nov 2023 07:21:42 -0800 (PST)
+        bh=hC1GyuSTm1pIOLAiq1jl6VtM1wTJGGJIerTVB/FTO70=;
+        b=q3oyazX3/i/Y3VZ8WYcdZVAzX/k362lPttN4+XsiuVHeY+9TeACNgkAGG36ICSvHob
+         EazSkLYoEbixtkU/t0TeDscG1vNG5EnSz83rzbjl7G/hg2yyw8X3GOu6WN1OmW6DYko/
+         6/wrpYkU1zvOrMFdsPBBwfRGKS3NRSSZfq56e9N2XyPZjhrQEEn+9CgCX/oCYcoa3VCK
+         VPLaDlb59pk/4Vg2PuGC4tCjBe6etIrP6TorbC4poOL4P5hZL7JcBiP3ntRD217TQ4os
+         vEO0QM249fo5s1Zi0wGbj4InznLDO6EhuaLhVvhhSJ2XyAHVwb6qSnALlGhH9dfDLOPk
+         3GoA==
+X-Gm-Message-State: AOJu0YyNH9XgMF3WpldWW6BNwGr/za5pYi90FNfc/j5rGTSwGe3ICDZC
+	SwCEx4Z5+Cnefx8Ute0l1lcO5G9R
+X-Google-Smtp-Source: AGHT+IGbtAixMPiQVaiouSIFTb1IQKmmFA1AcOCrzXhQQ2Afk2FYf+XnPnB9Zgf0YAtZ7aK4/lySbw==
+X-Received: by 2002:a50:ab12:0:b0:540:2ece:79 with SMTP id s18-20020a50ab12000000b005402ece0079mr5690457edc.10.1699888908890;
+        Mon, 13 Nov 2023 07:21:48 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.164.221.204])
-        by smtp.gmail.com with ESMTPSA id d17-20020a17090648d100b009e6cedc8bf5sm4165051ejt.29.2023.11.13.07.21.40
+        by smtp.gmail.com with ESMTPSA id f19-20020a50a6d3000000b0054026e95beesm3942482edc.76.2023.11.13.07.21.47
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 13 Nov 2023 07:21:42 -0800 (PST)
+        Mon, 13 Nov 2023 07:21:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: David Woodhouse <dwmw@amazon.co.uk>,
 	qemu-devel@nongnu.org
@@ -83,107 +83,59 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	Paul Durrant <paul@xen.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH-for-9.0 04/10] hw/xen: Factor xen_arch_align_ioreq_data() out of handle_ioreq()
-Date: Mon, 13 Nov 2023 16:21:07 +0100
-Message-ID: <20231113152114.47916-5-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-9.0 05/10] hw/xen: Use target-agnostic qemu_target_page_bits()
+Date: Mon, 13 Nov 2023 16:21:08 +0100
+Message-ID: <20231113152114.47916-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231113152114.47916-1-philmd@linaro.org>
 References: <20231113152114.47916-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EhwTU9MR4Ulh
+X-TUID: B/6a9lZQ8zG3
 
-Per commit f17068c1c7 ("xen-hvm: reorganize xen-hvm and move common
-function to xen-hvm-common"), handle_ioreq() is expected to be
-target-agnostic. However it uses 'target_ulong', which is a target
-specific definition.
-
-In order to compile this file once for all targets, factor the
-target-specific code out of handle_ioreq() as a per-target handler
-called xen_arch_align_ioreq_data().
+Instead of the target-specific TARGET_PAGE_BITS definition,
+use qemu_target_page_bits() which is target agnostic.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-Should we have a 'unsigned qemu_target_long_bits();' helper
-such qemu_target_page_foo() API and target_words_bigendian()?
----
- include/hw/xen/xen-hvm-common.h | 1 +
- hw/arm/xen_arm.c                | 8 ++++++++
- hw/i386/xen/xen-hvm.c           | 8 ++++++++
- hw/xen/xen-hvm-common.c         | 5 +----
- 4 files changed, 18 insertions(+), 4 deletions(-)
+ hw/xen/xen-hvm-common.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
-index 27e938d268..734bfa3183 100644
---- a/include/hw/xen/xen-hvm-common.h
-+++ b/include/hw/xen/xen-hvm-common.h
-@@ -97,6 +97,7 @@ void xen_register_ioreq(XenIOState *state, unsigned int max_cpus,
- 
- void cpu_ioreq_pio(ioreq_t *req);
- 
-+void xen_arch_align_ioreq_data(ioreq_t *req);
- void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
- void xen_arch_set_memory(XenIOState *state,
-                          MemoryRegionSection *section,
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index 6a1d7719e9..c646fd70d0 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -128,6 +128,14 @@ static void xen_init_ram(MachineState *machine)
-     }
- }
- 
-+void xen_arch_align_ioreq_data(ioreq_t *req)
-+{
-+    if (!req->data_is_ptr && (req->dir == IOREQ_WRITE)
-+            && (req->size < sizeof(target_ulong))) {
-+        req->data &= ((target_ulong) 1 << (8 * req->size)) - 1;
-+    }
-+}
-+
- void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
- {
-     hw_error("Invalid ioreq type 0x%x\n", req->type);
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index f8a195270a..aff5c5b81d 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -699,6 +699,14 @@ void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
-     }
- }
- 
-+void xen_arch_align_ioreq_data(ioreq_t *req)
-+{
-+    if (!req->data_is_ptr && (req->dir == IOREQ_WRITE)
-+            && (req->size < sizeof(target_ulong))) {
-+        req->data &= ((target_ulong) 1 << (8 * req->size)) - 1;
-+    }
-+}
-+
- void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
- {
-     switch (req->type) {
 diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
-index c028c1b541..03f9417e7e 100644
+index 03f9417e7e..35b3b5407d 100644
 --- a/hw/xen/xen-hvm-common.c
 +++ b/hw/xen/xen-hvm-common.c
-@@ -426,10 +426,7 @@ static void handle_ioreq(XenIOState *state, ioreq_t *req)
-     trace_handle_ioreq(req, req->type, req->dir, req->df, req->data_is_ptr,
-                        req->addr, req->data, req->count, req->size);
+@@ -1,6 +1,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "qapi/error.h"
++#include "exec/target_page.h"
+ #include "trace.h"
  
--    if (!req->data_is_ptr && (req->dir == IOREQ_WRITE) &&
--            (req->size < sizeof (target_ulong))) {
--        req->data &= ((target_ulong) 1 << (8 * req->size)) - 1;
--    }
-+    xen_arch_align_ioreq_data(req);
+ #include "hw/pci/pci_host.h"
+@@ -13,6 +14,7 @@ MemoryRegion ram_memory;
+ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
+                    Error **errp)
+ {
++    unsigned target_page_bits = qemu_target_page_bits();
+     unsigned long nr_pfn;
+     xen_pfn_t *pfn_list;
+     int i;
+@@ -31,11 +33,11 @@ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
  
-     if (req->dir == IOREQ_WRITE)
-         trace_handle_ioreq_write(req, req->type, req->df, req->data_is_ptr,
+     trace_xen_ram_alloc(ram_addr, size);
+ 
+-    nr_pfn = size >> TARGET_PAGE_BITS;
++    nr_pfn = size >> target_page_bits;
+     pfn_list = g_new(xen_pfn_t, nr_pfn);
+ 
+     for (i = 0; i < nr_pfn; i++) {
+-        pfn_list[i] = (ram_addr >> TARGET_PAGE_BITS) + i;
++        pfn_list[i] = (ram_addr >> target_page_bits) + i;
+     }
+ 
+     if (xc_domain_populate_physmap_exact(xen_xc, xen_domid, nr_pfn, 0, 0, pfn_list)) {
 -- 
 2.41.0

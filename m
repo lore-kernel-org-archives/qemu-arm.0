@@ -1,141 +1,170 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1422876ejc;
-        Mon, 13 Nov 2023 07:44:34 -0800 (PST)
-X-Received: by 2002:a05:6512:3441:b0:507:99fe:28f3 with SMTP id j1-20020a056512344100b0050799fe28f3mr4092163lfr.34.1699890274565;
-        Mon, 13 Nov 2023 07:44:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699890274; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1477654ejc;
+        Mon, 13 Nov 2023 09:04:39 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGNS6kSOmT8XmhjBnejZqDZCIjfhRUEOOaeFVsbWvVTDfPXiWGp3OhQEYq2KEt7Y+ANcHn7
+X-Received: by 2002:a67:a647:0:b0:452:618b:13e3 with SMTP id r7-20020a67a647000000b00452618b13e3mr52709vsh.9.1699895079456;
+        Mon, 13 Nov 2023 09:04:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699895079; cv=none;
         d=google.com; s=arc-20160816;
-        b=G3Kl/IAVXipHakUqSkHXvK30I2/na2BIec28TmyHN7QMVRKdt3eaJ6WPKKXPb3YboW
-         ciLc00ar1fjlynXsuqSyzuRm3qLL9jnmtdy2KCmBdfppneUsv6ypyQvkziMSw7APIZbx
-         IAB2JuoZYhI8S+CWEfRfbN0PMfifWAU+Xzf73hUqzoGyQMDrKfwVAdomV0kVLqypmR7L
-         vAtrtnFYxQWoyupe4xtmdAR6yztMSZiRnZj7KP6Pj9AiOHyX6AXTa3DVqCQi2aiNpT2y
-         n3rGi7x95bCWZqPN5qMFKhza1TgfzIZUsX79lBaz0+1l4beBZKZBH0CU77YeWaKB5b6W
-         s+fQ==
+        b=cTwZN5vwIHApwEgV2HnrOgdJvKuNVQksboqLe8XnDsJDuPqTxg7tkq30hCCGAfZBxO
+         m7ycQXhvXxpwfKIwV163V6Lh/jCeF6ucTeeyEUtgiN9XzdhMhn0ydt+/yuMkZbHPGDdY
+         0G/4rzYoMhpMyzphyPFG7T/vvD20Z5ibz6rZlhn0FOd501BLrTJ8KARnorbDV+4HxTs7
+         9NHh+Yt9KlpR2un4WMJ8wfJE/wKan0FTLuS/nx66I5I2FXQIUsvs8nD5PagE8zBSnjaS
+         AvoN0d8FqVUV7NEVrLZThySNgocPHGfWNAdxifNuDXvFCnbxYg244e6yEuGRPYAOnfUL
+         AbBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=b8wJckh9c9DAIPaY8C9Mwpjrc/Mbkz3CSbjHl9DJNIQ=;
-        fh=HqjL50fGvw0OCAHQh/59/6YtcdDPZ3EcW/Jc4dKzvD4=;
-        b=iBse7S1dlgSY2qXU51NUNHsqyS9mod4lbZOCEUaiZchbdYkw2X2KrBJWQyvqOLZvh/
-         ziwJQgBMMzUZdFhWN/a1ghGDFG87TeIKPJlInhAwFcXl8dNkBg5pIu/lwQRgrqly2OhC
-         KsYP9qrQ+S6GvYE9l7Bl4Cv1axOC3PJO68wQrUz94WWu4/qpIgzFk/ybqeldoFSVIUZH
-         fhcGUsLKrLYYocC/iYD2C1fM2AI7F/1B14U59zk1qCr4j6fhURkY4YZO1LAZc5lLH6QU
-         FX0LcKGja9WpPy3OWqt3PCVYFfnLiHuaQjf+ynHRkFuR0IvkJ0+j0EpWISQ37vK/J8JG
-         ojBQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=tXoTXFWOeQYOegr331Fli9ECx2LaIgBkkd5shOsuOag=;
+        fh=bfwl0cLRt6i4pfJCs5PuomPHcsZftWIiDFLyF6BvuGU=;
+        b=t9rIRcs6jH1brfV/1mJplw/dtxMN2vamDxCqep5CFiYV7uKf+wZZFSX0QMBOT+u3i4
+         YGpFOYDs5IpOLl6wHPyUwfjtMfBxTbhtUKoS2SDOtq7eg3cYKmoFtPEkU51OFkw9HOcN
+         ChXYgFaC6T/CGfdMomhMvUzE7U9XndkM0Z12+TLjMzrmY86Jc3nxZVVFyCNrWoFoKZtc
+         HZxRXc4CeFjCUv2D8LnN/LePhvF38eD7o7qTK1Bci9WT6IvNIcClB9HNQ6CCh0CswOAO
+         uaBPjMxvcMoxne12+M7KzP6LxUzPoo8ABj+FrI5V9n6mafnPvpbBq1FlJRXR1xG6I2lH
+         xyAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A0CVEV8a;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mfRueeFA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f13-20020ac2498d000000b005090be5cd4fsor1065066lfl.28.2023.11.13.07.44.34
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jk14-20020a056102190e00b0045281c73fa9si526116vsb.818.2023.11.13.09.04.39
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 Nov 2023 07:44:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Nov 2023 09:04:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A0CVEV8a;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mfRueeFA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r2aMO-0007fr-Dk; Mon, 13 Nov 2023 12:04:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1r2aML-0007f5-NN
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 12:04:25 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1r2aMG-0004PS-Ci
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 12:04:25 -0500
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-53dfc28a2afso7115409a12.1
+ for <qemu-arm@nongnu.org>; Mon, 13 Nov 2023 09:04:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699890274; x=1700495074; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=b8wJckh9c9DAIPaY8C9Mwpjrc/Mbkz3CSbjHl9DJNIQ=;
-        b=A0CVEV8a8MJl3duHUMCtnIEIh4KY5qMuNt2M+FJ/b2wSHEyEjifa5mtTHndeLxrGjA
-         eV/3+g5H3LIEuaDBlodkOHA2qDfhLI8ZE0shIQMhsOqcj7+BSuHztmo/rpJZRYPjy2j3
-         ZYr76SntYJYUcwFgZnWTDhJiMjaIjKYeYMeUTT7J4s0i7nVK1PBVh0QlbF6+obMi9RAM
-         U3zYoS8ym8F0Jj6VyGKVCkeeDGt4lCTXp37Y7g7tSNoOWPlrsqfikS7i1ENV9woCAvEY
-         mQmAknFfNauIR8M8M6VUOYCdr/po0KGODYNneEhy+dG/2NEBXAZ3pyeLEh5zkGH6d+Fc
-         hW7w==
+ d=linaro.org; s=google; t=1699895057; x=1700499857; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tXoTXFWOeQYOegr331Fli9ECx2LaIgBkkd5shOsuOag=;
+ b=mfRueeFA/TIBNaXsiQ1+Eflvl6fV2lJcjr4OknZ7kUHCsw9q5B8HlFTTv+x+U3sinb
+ SgFpgocCIT2ZozG+3QR3qe1DSRU0NWZS9aiyBKXw6UeXrLI/Q1ZF0YehyCKTxeMzGIKj
+ iEzRX2z7hA0agfT8bOA1wAME0BGC9fnsXLI9JN8EfPB/8q3fDk0JrBMKvojXSAOqXsfq
+ izeHikygA88Okss7izV+ZuUiaSAfU3JsohniKXNak4TpJ7S8adF2dTAt0eM7Q+ssfiHY
+ 35QMFDcv/BwLC1orthLuPwWKQieUuL6iFKvOLgyGtRW8++1g9TEbznMX9/L6Zna5GHgY
+ 5Hlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699890274; x=1700495074;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=b8wJckh9c9DAIPaY8C9Mwpjrc/Mbkz3CSbjHl9DJNIQ=;
-        b=RVFFadjNYEVtocFM/aDLnW9SDFZV81hpEbcygRACO7ZDa4UweAwLqANl80YMdLMQDu
-         R5lxZjbTUQoyr41QInXQf8JlLNzFQo6jdltNAGk+JLIDGk5RwXWTyqgJou3MB+ALGoVC
-         8S074rSlpDRHoLSTUiwrm65FMGBWkM7IVZxN+2umZyDwUdGK7mEWkNCGBaVIl/Ih4VYf
-         Q3aDWNqoGLrgxx5EIITN/uXm1X+1SiwD/7vZmF4Zz33aumt+3Jl2egjOtbnj3n9BbfGH
-         /7nx2zg7yTMSMLgPzWk87xaCRP68jwO0ooVQUZ6a0IetUSDFk0+XDTg2Vi0IrY7fDNVU
-         LotA==
-X-Gm-Message-State: AOJu0Yz5bGBGudqxf5+PW59mihlKfBfqFESooiSBe6T9YpG2h8yrhJ65
-	MVZs7SAdfz15MxvI0NAVYYY/Sthz
-X-Google-Smtp-Source: AGHT+IE3zFYvOZvg/BeMnFU/aXqqKzf/zcPPT7OJuFIBln2ZvlAfjekdREr2wAqFApWBEF5QzAOCRA==
-X-Received: by 2002:ac2:4a74:0:b0:503:3278:3221 with SMTP id q20-20020ac24a74000000b0050332783221mr4282625lfp.69.1699890274055;
-        Mon, 13 Nov 2023 07:44:34 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.164.221.204])
-        by smtp.gmail.com with ESMTPSA id q24-20020a17090622d800b009db53aa4f7bsm4201445eja.28.2023.11.13.07.44.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Nov 2023 07:44:33 -0800 (PST)
-Message-ID: <fe730485-9f49-4333-bcd5-c6e452a2787a@linaro.org>
-Date: Mon, 13 Nov 2023 16:44:31 +0100
+ d=1e100.net; s=20230601; t=1699895057; x=1700499857;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tXoTXFWOeQYOegr331Fli9ECx2LaIgBkkd5shOsuOag=;
+ b=pRhGxb4MlV5C3eJr1ZrSeajqHViYfiUbUfGaMcqdJ+hICAAeLn0mixLG3neCxP9jLV
+ yqI3L5S3gArsfjOCu5XNfSVnIMyYUap7XgJ8mhaq9p1pgOV3dNNPpSEwq36l/+HTwOc+
+ Pru4knJxn8ZFJHthsE1hvP3ylXzeYtH/nBajEY915wb497D3zpB1UnWtsBEd1du0iDGT
+ WQdKHXP6IPMSZEjQs6+w3Z3y8DsUpHjZft4eZMNOHRj2lxiP1I5eXXOTsa6WXFjcfD1/
+ yytX60d5PHcf1va/Jez4XIyGXpiRedLWjJKYPaFjCxmizSjAIdiabXIm3v47/Gq1CmZe
+ ApmA==
+X-Gm-Message-State: AOJu0YyxA4AMhC9PlByHvMDPHX3ZJ8j090GUbTIm++onY26ZzrUHnrQ8
+ sZbxc+yXEXZBHD2ZhLcZXF04OyBEy7TLANkIuYRfww==
+X-Received: by 2002:a05:6402:1052:b0:543:52be:e6ad with SMTP id
+ e18-20020a056402105200b0054352bee6admr5217435edu.5.1699895057359; Mon, 13 Nov
+ 2023 09:04:17 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-8.2 v4 00/10] hw/char/pl011: Implement TX (async) FIFO
- to avoid blocking the main loop
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Mikko Rapeli <mikko.rapeli@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Gavin Shan <gshan@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
-References: <20231109192814.95977-1-philmd@linaro.org>
- <CAFEAcA8MJeX1Jk_-ONP1nNgHYadL7Oa8P3jGQXwNoofQnJWk8g@mail.gmail.com>
- <4ffed8f5-6624-4488-a74f-567cbd926b78@linaro.org>
- <CAFEAcA_0BfGVDZWJUPs8hwYRKS8FmzppQgY+s83qxBXHjLJvnw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_0BfGVDZWJUPs8hwYRKS8FmzppQgY+s83qxBXHjLJvnw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: T3uiM/zJX1dW
+References: <20231112165658.2335-1-n.ostrenkov@gmail.com>
+In-Reply-To: <20231112165658.2335-1-n.ostrenkov@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Nov 2023 17:04:06 +0000
+Message-ID: <CAFEAcA_qmKctYajg2fXSd0GU0YtD_HBPGq5_BzdDDj0aLw1J9g@mail.gmail.com>
+Subject: Re: [PATCH v3] target/arm/tcg: enable pmu feature for cortex a9
+To: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 07sYmjbVqozV
 
-Hi Peter,
+On Sun, 12 Nov 2023 at 16:57, Nikita Ostrenkov <n.ostrenkov@gmail.com> wrote:
+>
+> According to the technical reference manual Cortex A9 like Cortex A7 and Cortex A15 has Perfomance Unit Monitor (PMU)
+> https://developer.arm.com/documentation/100511/0401/performance-monitoring-unit/about-the-performance-monitoring-unit
+>
+> Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+> ---
+>  target/arm/tcg/cpu32.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+> index 0d5d8e307d..0008c3f890 100644
+> --- a/target/arm/tcg/cpu32.c
+> +++ b/target/arm/tcg/cpu32.c
+> @@ -418,6 +418,7 @@ static void cortex_a9_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_NEON);
+>      set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
+>      set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>      /*
+>       * Note that A9 supports the MP extensions even for
+>       * A9UP and single-core A9MP (which are both different
 
-Cc'ing Mikko.
+Thanks for this patch.
 
-On 13/11/23 14:11, Peter Maydell wrote:
-> On Thu, 9 Nov 2023 at 20:59, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi Peter,
->>
->> On 9/11/23 20:29, Peter Maydell wrote:
->>> On Thu, 9 Nov 2023 at 19:28, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>>>
->>>> Missing review: #10
->>>>
->>>> Hi,
->>>>
->>>> This series add support for (async) FIFO on the transmit path
->>>> of the PL011 UART.
->>>
->>> Hi; what's the rationale for the "for-8.2" targeting here?
->>> What bug are we fixing?
->>
->> The bug is on Trusted Substrate when the ZynqMP machine is used:
->> https://linaro.atlassian.net/browse/TRS-149?focusedCommentId=149574
-> 
-> And have we confirmed that the async FIFO support fixes that problem?
-> That bug report seems to have mostly just speculation in it that
-> maybe this XXX comment is why...
+There definitely seem to be some weirdnesses in our PMU emulation
+for older CPUs like the A9. In particular we define the registers
+in v7_cp_reginfo[], so you get them on all v7 cores, even if
+ARM_FEATURE_PMU is turned off; they just don't actually do anything.
+This seems to affect the cortex-a8 and cortex-a9; everything
+newer defines ARM_FEATURE_PMU. We really ought to have the PMU
+registers separated out and only defined for ARM_FEATURE_PMU CPUs.
+(Annoyingly, we can't drop ARM_FEATURE_PMU and look at ID_DFR0
+instead, because the A8 and A9 have a PMU but don't advertise
+it in ID_DFR0, because they predate the PMUv2 standardization
+of the ID_DFR0 field for that.)
 
-Mikko tested the v2 (or v1?) and confirmed it was fixing their problem
-with TRS.
+The other thing here is that these CPUs are older versions
+of the PMU, so strictly we ought to check whether they
+have deviations from the registers we define. But since
+we're already defining all those registers anyway, it seems
+safe enough to let them actually work.
 
-That said, besides the v4 last-minute review from Richard just before
-his US holiday WE, I have to sadly recognize -- although I could argue
-this is a bug fix -- this series is not yet ready, thus will miss the
-8.2 release :(
+I've applied this to target-arm.next, with an update to also
+set ARM_FEATURE_PMU for the Cortex-A8, since that was the
+only other CPU in this odd "PMU registers present but not
+really working" state.
 
-(Mikko: no need to test this one, I'll Cc you on the next one to get
-  your Tested-by tag on the list).
-
-Regards,
-
-Phil.
+thanks
+-- PMM

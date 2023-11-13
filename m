@@ -1,170 +1,263 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1450790ejc;
-        Mon, 13 Nov 2023 08:23:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE3WKFUkxMvUcSOkG8Q90HXlV3d5tygdbHUrQsj4nmed2loIElNBewrgikuqbEw5UcVpXTr
-X-Received: by 2002:a05:622a:1485:b0:419:50d0:cf5a with SMTP id t5-20020a05622a148500b0041950d0cf5amr9457014qtx.2.1699892596942;
-        Mon, 13 Nov 2023 08:23:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699892596; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1461707ejc;
+        Mon, 13 Nov 2023 08:40:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFzlrvpVqe6Hfo9/f2fHSXoT7OrpRgitKE9SadKcbYTktWSIQ/Fr2qv1C6nQ44GZHhldILs
+X-Received: by 2002:a17:90a:1cc:b0:283:1da6:fa2 with SMTP id 12-20020a17090a01cc00b002831da60fa2mr5201340pjd.15.1699893613949;
+        Mon, 13 Nov 2023 08:40:13 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1699893613; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Vk2/xHKE0/EbLg8+ADbRDiGvnrFyR/aYJLUiiHolc6meGSPnQ9ihbG0ckTJwBTN1I2
-         sd1s0UvFgHaGQmt90ZvFTekYVhOgYlWTcGg2QJAMRfjVkpyoNxvnEdzHQfOu8WGm9AG7
-         YYROfK7085rdIr9bPcflARBtfSxqQU5xwhbfihxdNtn0FZ8p3I6YKDyYF7oC5J1viohM
-         ycvu0oR+Tu1L72V3741WBhnIcFdZRUQX+3f2Pha69dsITVEYbB6JAhJ6zpP9+y6UAJgz
-         peg1CvHQo2m0Olm/dpr8e6IdJEW/ZPyM5shJwM3qDzptFlemfFyFf0eKhxn6kHhpK3Y+
-         TmAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:cc:to:from
-         :dkim-signature;
-        bh=5FF8VvkwUcZrfN2KkFU+AGkFEcy2kySXeryCtxcW9Ug=;
-        fh=8+TunD9lRLv3fg3TqaAVJJ4/bAWT3UZM9GnFRhAR3SE=;
-        b=JgotCLSYJu/meRbbKuALVgeO0c8p6O6CnfjcrhQfDKEvkVKfe1N3rJSwp5uSLljGNr
-         eQF9tDyNmaH501ux5m1xyaS3Bf4j24pJfXls3u6OnK2qoqiBbZN8I4JELW18m2FP352n
-         QEvR8wVWCwrDGaYQYUb3TGqUlhvSZn1J41TkVPO6zvDIahHUJnsXBUdtCcfl864DdUA5
-         W9oxJG531nDYaPSwK2rwfUzoNjAibg10usdM9KJg42ieDU2YEA9agemyAvOxReXjOEQm
-         rk+HQFQ/9qWZxplQMfIQzPo0fQFX45isvRwXRLZAYeTRaX5RrHZCWKBoT9bV1hK9/5jn
-         6sig==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UxXAAPe6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i19-20020ac85c13000000b004180054f084si4638932qti.74.2023.11.13.08.23.16
+        b=EVestrS9yxlYNDFohHMGFqPFfPggCSEnvyJk6JXIQeW65/QTI9KiRUopkmJIdo62d+
+         mi8leS4Eky/fSu1HagtQO/dcGvrrgebQSsdkCx+d8DdQ+nT6ebxZ/TN/Gg6A7daie6PA
+         kUbbgEI1xI3jz24an6djufPaLxnLkdDcFngTTAqhk8E5rdboooj68oXfORRa6Hwhh+aL
+         7gJbim4BpDKAHztYJgnNDnydr2GQBUI8BqOvbuQ0CRx0FPnbtmV87+MlYmCltETYV6p6
+         NHMF5eEQ1XIn+h9mnH1d8m5M8iQhvFa0LiqQXiNCT+FNSZ5byhB3jRy3uxwQecBnLjT5
+         2+rw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature;
+        bh=5nV63I7m1BfzZjTeWqD8ywa/NKdHAmISawF2Gx6ZS0k=;
+        fh=ysDsLU/NihSfY+805uNWEaxjypkq53Y/7G5XYvnGtDs=;
+        b=v/aJJloSI6ghCihGGYHfewUbUZ/pPJUwzj3JAkS00UOPl622lguS4zxVaC3FPG1KGD
+         7DKbwWX1gkB6RkwNoTwsVNWexGxnbCCTfqXXjJMoPTgZYINpI7ydG4WRJsLEVA9noZ9o
+         UnRfSSDBYdhwMa791AfRAn0B5twNni4nGFIZLkZYvPgjuzvdKQDQJTpP0REdcCfOkQ2i
+         LLIV6zHDfy7SYZJEQf3Xlh+vf8xT9REygPDtajDlkp/wnCLDdcYdknLFXJ71OM+LVm8/
+         Ons2eaAf5pFXInHhgbsJ5pQc5UsHG0AE9LWu2P600YcqZZ+t/NyBvHhtvC/LxxqA0CWh
+         EzLw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=SS3AGQV6;
+       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
+       spf=pass (google.com: domain of kvm+bounces-1605-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-1605-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
+Return-Path: <kvm+bounces-1605-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id jx2-20020a17090b46c200b002800fffeb61si10777824pjb.5.2023.11.13.08.40.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Nov 2023 08:23:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Nov 2023 08:40:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-1605-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UxXAAPe6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2ZiL-00072K-D9; Mon, 13 Nov 2023 11:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r2ZiJ-00071r-Lr
- for qemu-arm@nongnu.org; Mon, 13 Nov 2023 11:23:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r2ZiI-0005Gi-4D
- for qemu-arm@nongnu.org; Mon, 13 Nov 2023 11:23:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699892579;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=5FF8VvkwUcZrfN2KkFU+AGkFEcy2kySXeryCtxcW9Ug=;
- b=UxXAAPe6sFBgzdSTBrIVSRDNxIQmHrUllsAK9aW9TU1D7RBSV58T2jcrBLf0DFfLnbgQWQ
- Wv6Cb2jbxQZvRhESkNJ8ZrAKSsn6CXBawPUGQq2h2d++cgNXY6HoKqJAHjM6uxH5QP+NTf
- XgGMcgIgWFDUb/8ralPqLfbiJPF6gDo=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-256-KOSOH5WUMHmb2y3DwXQKtQ-1; Mon, 13 Nov 2023 11:22:57 -0500
-X-MC-Unique: KOSOH5WUMHmb2y3DwXQKtQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B8F82852AC0;
- Mon, 13 Nov 2023 16:22:55 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.91])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D2B336EE;
- Mon, 13 Nov 2023 16:22:55 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6C4F321E6A1F; Mon, 13 Nov 2023 17:22:54 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  alistair@alistair23.me,
- edgar.iglesias@gmail.com,  peter.maydell@linaro.org,
- francisco.iglesias@amd.com,  qemu-arm@nongnu.org
-Subject: Re: [PATCH 1/2] docs/system/arm: Fix for rename of type
- "xlnx.bbram-ctrl"
-References: <20231113134344.1195478-1-armbru@redhat.com>
- <20231113134344.1195478-2-armbru@redhat.com>
- <43bf23f8-ef98-453b-a687-5367e39f0c2b@redhat.com>
-Date: Mon, 13 Nov 2023 17:22:54 +0100
-In-Reply-To: <43bf23f8-ef98-453b-a687-5367e39f0c2b@redhat.com> (Thomas Huth's
- message of "Mon, 13 Nov 2023 16:54:52 +0100")
-Message-ID: <87pm0dk4gx.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=SS3AGQV6;
+       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
+       spf=pass (google.com: domain of kvm+bounces-1605-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-1605-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 5C625280A8E
+	for <alex.bennee@linaro.org>; Mon, 13 Nov 2023 16:40:13 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6A0A921361;
+	Mon, 13 Nov 2023 16:40:09 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=virtuozzo.com header.i=@virtuozzo.com header.b="SS3AGQV6"
+Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 853C021347
+	for <kvm@vger.kernel.org>; Mon, 13 Nov 2023 16:40:07 +0000 (UTC)
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com (mail-vi1eur05on2116.outbound.protection.outlook.com [40.107.21.116])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id EA7AFDB
+	for <kvm@vger.kernel.org>; Mon, 13 Nov 2023 08:40:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=d6nt7t11PQFNUfcUw8qi2SIhKXy8uIlAw0hcLHcI8vvaXxaFfAJqGQHNkozqMx/IBAmCl3R8fuOXQcxHJDJ4iZQbqTbCNXSoFGYlwGfMVh2LHemkUEUyW8RBwPRRMG1Omon6fuq/0WmwA90T251qlBxXW+G1NYFB8ejNLEkcMrjWWDZb3aJNsMkv0oiT4JO86CLEDZUaGE/v9nRGiQuKR8W3Ea1N+jO7jsIAQDYx62w7bzFtEE1bLN0UjJ9fGTDtIm2AsgvtF9nCi+HUGQ/l7EmWjHNnhUUreovSJmG+CcTd7UenZnMF82jQsZOQoJY43qV4idJBVT35xj+zJRKXUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5nV63I7m1BfzZjTeWqD8ywa/NKdHAmISawF2Gx6ZS0k=;
+ b=YS5tPp9Omx5Gs0fK2EMHVU4K4etI08QZT8yi+uGj+WTYGoSvhsihUbZqY/i25zqUgcXB+URe62kPyEZfABgmg9LCUWBuXr6qIeVepFy0+ZtaVD03zXLsinRX3AK2jH7wEkdMxE6W+HGdbXa3v+y5u+t0RswiS+oioxvBTEDBV6sGNO00pWEDPRMtRQAZAVgQJHKhuJIh2eqnnXaxowQXd575KHomTu4vlhj+WAa4mVxQBWRqGM47X2dlXobAvLGu6IG/s/mYtfM6+DTP9l3tZoHn9kRB0M+dBd3ZKgu9Gz3IOLJNg6D4E1vVE2a35soBvofAZPmVz6NV8hYQH1+amA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5nV63I7m1BfzZjTeWqD8ywa/NKdHAmISawF2Gx6ZS0k=;
+ b=SS3AGQV6t7dq2tcy6gvPS7pfKiv6gc/R+4G13zZvsE7WSpf0JbLPXNecEBSXGKKxjgzrbNd10dCx+uDZXnZzxw+VlKIAKl65DeVJmgSFFQbn0WFNM9A3ewokGUHaxCTu1wHwnDt+fbpginodOPc2G3V+G1dEbKFE+iFRHnuiXirhED4gBDaCKjCP195Go0eQCubdyLa4Cg9nP1b8EQ/0Z0TxFlfBDEVYxoPtNyVOMa6PRHQUETx2iD0rZ9OLnxUwKb1xDp88mFfVHeP+dxrX5L6eqP8zuWurmNSJUhdunC2h6gf91Afww9m6KGhCfGZ85z/hNVaOVOasoghK+0fHSg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=virtuozzo.com;
+Received: from PAXPR08MB6956.eurprd08.prod.outlook.com (2603:10a6:102:1db::9)
+ by DU2PR08MB10087.eurprd08.prod.outlook.com (2603:10a6:10:491::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.29; Mon, 13 Nov
+ 2023 16:40:02 +0000
+Received: from PAXPR08MB6956.eurprd08.prod.outlook.com
+ ([fe80::46ee:1c5c:2cc6:b1fa]) by PAXPR08MB6956.eurprd08.prod.outlook.com
+ ([fe80::46ee:1c5c:2cc6:b1fa%4]) with mapi id 15.20.6977.029; Mon, 13 Nov 2023
+ 16:40:02 +0000
+Message-ID: <c84e080c-1504-4856-8949-28abfad5cd19@virtuozzo.com>
+Date: Mon, 13 Nov 2023 17:39:59 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] i386: kvm: disable KVM_CAP_PMU_CAPABILITY if "pmu" is
+ disabled
+Content-Language: en-US
+To: Dongli Zhang <dongli.zhang@oracle.com>, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Cc: pbonzini@redhat.com, peter.maydell@linaro.org, mtosatti@redhat.com,
+ chenhuacai@kernel.org, philmd@linaro.org, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ danielhb413@gmail.com, clg@kaod.org, david@gibson.dropbear.id.au,
+ groug@kaod.org, palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ richard.henderson@linaro.org, david@redhat.com, iii@linux.ibm.com,
+ thuth@redhat.com, joe.jin@oracle.com, likexu@tencent.com,
+ Alexander Ivanov <alexander.ivanov@virtuozzo.com>,
+ Konstantin Khorenko <khorenko@virtuozzo.com>
+References: <20221119122901.2469-1-dongli.zhang@oracle.com>
+ <20221119122901.2469-3-dongli.zhang@oracle.com>
+From: "Denis V. Lunev" <den@virtuozzo.com>
+In-Reply-To: <20221119122901.2469-3-dongli.zhang@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: VI1PR04CA0116.eurprd04.prod.outlook.com
+ (2603:10a6:803:f0::14) To PAXPR08MB6956.eurprd08.prod.outlook.com
+ (2603:10a6:102:1db::9)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S+sQujIVC0ii
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAXPR08MB6956:EE_|DU2PR08MB10087:EE_
+X-MS-Office365-Filtering-Correlation-Id: c4f5bd24-ce06-4039-18da-08dbe4672f06
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	tDjJ2mCtHyh5HVUkmRVkqm6mJtbUgPjqJCTjAH0q8pS8/u6ObL8rN1Ws5bUMoPmYzyimXF3rADCpexcs1OIgQy3jnL1cepCh+E7Jmu4qzjvKkmDDrc3drosyRe6zvYewyBMASyE/uTu//YZ9SAMO9UTbOtu95swnPlxDiM+qTZAjM/nj/GKA9iU20jkHm+cdsNxAJxIcXJrOhS/yOsIBhDfCtFPOT7Qs22kT8GCSpuAuTngTUy3gNEgOFhEp5+QV1080oMeBXV+Zoybh2CpgxcmiP9/4uWSxMNjjT18R4YiSTW43Ir5HSVUUnWcU9Tqt6pPw5yNSDA3VMlnQmdZpFGQhwAZMtrrwISEplRPs75Xdbz7Ndp0pi+3Hroo1NCqthUIiFP6cweZ2vChl9IYzoMFCG/DAEKXyG6lVTk2kYqmiG8QWMQp4Djhh8HNJ5d8Qfj/e2SExv3g/eeVSJI91H3GbITlsiKuZEoUb1Ks5rRCkxDEpsNV5bvBGJLJ+MWEM5DbwiyafFvjrmf/HcYFAtTWtRQ27bcNaV2IelnAXG4zRG/BzKMrsb2ofpAh8PjKbG8GxF7wvXnQMOXICh/YvgrdWLP2YkA/wimLBHMNZ/rk/67tBErIclnYuqvOYx6HTAYSFVWROoIMa+xhdow5rmg==
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR08MB6956.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(39830400003)(376002)(396003)(136003)(366004)(346002)(230922051799003)(186009)(451199024)(1800799009)(64100799003)(26005)(107886003)(38100700002)(83380400001)(31696002)(86362001)(7416002)(7406005)(5660300002)(2616005)(6512007)(6506007)(53546011)(31686004)(478600001)(6666004)(6486002)(966005)(36756003)(66946007)(316002)(66476007)(66556008)(54906003)(8676002)(4326008)(8936002)(2906002)(41300700001)(43740500002)(45980500001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?M2JpRFBBY1ZTSmpMVDNBWWNORzJ0TzZoYlh2NW5wcVljR2pmV2tSZGN4NGU4?=
+ =?utf-8?B?VW1MWXFFMURBcHZhL0Q0SjV2dTNvNktDQmwxM0tyM3VmeTVpUzhvUk1aWHJk?=
+ =?utf-8?B?TXZXMkxGVlpDOHQ0Yy9JQ0pKMjl1Z2FlK0lMSkJEa0QwbWsyVGhiMGxHSmkx?=
+ =?utf-8?B?OE9scUY1aHdxRU9lMURlcWg1MXVwd1lqdUtzNDNqOVJmeGFtNTNMVjRRUGZw?=
+ =?utf-8?B?dkdkVHg0bGZRZGc1Qk9qV2thV1QzQUJqeFlGOE53dWpjbkFxMTFDTm1qalIr?=
+ =?utf-8?B?WXBWWXhhM1RpTWJjUTVSSXVJUnVqZXU2b2VqMXA3VHp0SUdFUDJGbHVGMGVE?=
+ =?utf-8?B?elF2TnV5QUVoTGpzNmx5a3FSQ0JubHNiejNIUnp5MjZFcmkwYTd5KzZhU3p5?=
+ =?utf-8?B?SXFSMW0veTYyNUhueGkwZVRiTWlDeWQvcEIwSmV3L2pKUXdoenROMFNwOUdp?=
+ =?utf-8?B?bk5LZk1CVmxiTG1vLzQ0UkVzSFowbmtyWlhIakFsYWpaUlRxQzE5ekdQc2FS?=
+ =?utf-8?B?bm1hejl3ZFBJbGpDWGg2MFdhemJ6Q0g2TXlIQUhIZ0dqdWs3L3ArVmJmKzRr?=
+ =?utf-8?B?ZnI0VzJHNVFvTGRVSkZUNS9oODBLQ0tFUGt0Snd3aU8vZDBLWTlVYmtCN21o?=
+ =?utf-8?B?dXJTVE14OHlrS01YbFI3VklCMks1VzVPeTlxekF0WHBEaVVydmNka1UzYXdC?=
+ =?utf-8?B?bDBKdFVGOFN5T3NJcFJuZmJQVTNvNnNIM0FCb2RHTzRLbDlIQUtER3dwdFZk?=
+ =?utf-8?B?MlErdU1JMmtqYkhTaGRIMDM5V2F5UVRRR0VJQjlGejRJOEZCb1hza2cyeUY0?=
+ =?utf-8?B?c2gyYnR5VFpvUkZhYnQxVEY0dlR3dXBsTk9IT0pEY2trM0xrSGVPNnZJV0pt?=
+ =?utf-8?B?NEM3Zkcza1F6Rmp6Y0Q0TkFBL05YRjhBdmQxQXZsVVdFMUpiV3picHpieWJ6?=
+ =?utf-8?B?NUNYWDF5VkZnOGtUeS85R0g3TTd0UnpyUFpWNHU1SUFtSlBDSVlxZ1FISXFh?=
+ =?utf-8?B?akNrb1BiMk03WUt3R3NhSXY2b0xFVFI4dVJTenZQTmxXTVMzci9VeG91RFZz?=
+ =?utf-8?B?Uk5LOEpWMm1renBzcStMUGhCckIvVjV1bm5YSHc0SGcvOVF4dlhMVFFkZE1D?=
+ =?utf-8?B?citOZ25Uam5IYWFsY0x3VWdTeCtESGl0R2lNTjlJRzh5S1NqaXFQcjVuY2Z2?=
+ =?utf-8?B?ai9nR0dHQk9DMWZSNENYa1FaSnBkNGh0TVltQ2FObGtmZ1dYblZ6dkx1VnJ4?=
+ =?utf-8?B?UndUWklZNHdvZjFRN2pLTk9jQXJPZVpYVmJ4NFI3eE1tUVhsdG0zdTBmUDZR?=
+ =?utf-8?B?TU1RbEd5dUYxcGVqaFpIZFZkaXVOU2E5NGRMd0lyb2JyWERKR09SNUE2a0Q2?=
+ =?utf-8?B?YVhkdjhqd2dud1hIMFJZZDZhM1o0Rlo5Tk9YRXd5UUZHQjBIUTNtcFNMOGtn?=
+ =?utf-8?B?UXJXc3VsbmxFNHJyT2ZkL2xhSzJHTG90dDNPWURvUGhvSlhZbW5sWjZCK284?=
+ =?utf-8?B?YnVrclV2TzZna2Y4Wm1OUWN1Zm41SkZoUzE1Y3h2ZmwyeXc0TXdmdHkvcUY3?=
+ =?utf-8?B?N1R6SU9iYnhCdkZEOGl6QkJXV3JLK1FQZElZdnRHaTBxNFlDWGY0Z1NjOGNV?=
+ =?utf-8?B?SjN3MjRjdStmbjNzRlN3TGVocml1dHRHOEo1ZkJVcENVbTcxdXhUUWhFZnky?=
+ =?utf-8?B?WktMYStJeXQySTFPaUMyakZvRUN5MHhKQUxzVzBLblJvTDNFa29UUm1nYnlr?=
+ =?utf-8?B?NEkrYnV1dm5nc1l1M0ZMb1ZlK1BXUDFRRGV6bEJDbFhRMUtUdzdtTmxkWlQ4?=
+ =?utf-8?B?aHZVSWkwRmZEYTRWMCs4bzZGejNYSFpLUDl0L05Kd2wvblVVNGp0TnAyUzRj?=
+ =?utf-8?B?YkdXenlqSnh3eGowZVp4UVNQZG5vaTV1ejZSN2FtYmZVaEc2dTE5OEJDcm5E?=
+ =?utf-8?B?QUNZWDlvbmVrMS9wczZiS0xzbjJ2bXBleWxWN1A2c1FHQVZFMS93ZDR6dXFT?=
+ =?utf-8?B?SWFVb1RROGp5TmYvRjk1dFQ1c2FLRDVSN2tUanI3OCtROXRady8xdFlJT1Mv?=
+ =?utf-8?B?R2xUQm9PTXVnMTRudjNabDR1aUtRcUhCb0Izek53MkFYdGErTlFzcmxRMk9G?=
+ =?utf-8?Q?9MRyMBny6ehARhfRkpZyNK7+y?=
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c4f5bd24-ce06-4039-18da-08dbe4672f06
+X-MS-Exchange-CrossTenant-AuthSource: PAXPR08MB6956.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2023 16:40:02.5958
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: i0mx3+lGHHgB7/NZ2QdWuuyAw2xus/XcKdpeta0ChQoaZpFjtbsihjLcCtD6BurO79Jgyb6W/tlGkWwyQ1ukyg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR08MB10087
+X-TUID: aMviBmJdjzjU
 
-Thomas Huth <thuth@redhat.com> writes:
-
-> On 13/11/2023 14.43, Markus Armbruster wrote:
->> Fixes: b65b4b7ae3c8 (xlnx-bbram: hw/nvram: Use dot in device type name)
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>   docs/system/arm/xlnx-versal-virt.rst | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
->> index d2d1b26692..a6a77b3799 100644
->> --- a/docs/system/arm/xlnx-versal-virt.rst
->> +++ b/docs/system/arm/xlnx-versal-virt.rst
->> @@ -194,7 +194,7 @@ To use a different index value, N, from default of 0, add:
->>     .. code-block:: bash
->>   -  -global xlnx,bbram-ctrl.drive-index=N
->> +  -global xlnx.bbram-ctrl.drive-index=N
+On 11/19/22 13:29, Dongli Zhang wrote:
+> The "perf stat" at the VM side still works even we set "-cpu host,-pmu" in
+> the QEMU command line. That is, neither "-cpu host,-pmu" nor "-cpu EPYC"
+> could disable the pmu virtualization in an AMD environment.
 >
-> Ouch, that's now ugly, too. Imagine that we have a device called "xlnx" one day, how's the reader supposed to distinguish between the "xlnx" and the "xlnx.bbram-ctrl" device here?
+> We still see below at VM kernel side ...
+>
+> [    0.510611] Performance Events: Fam17h+ core perfctr, AMD PMU driver.
+>
+> ... although we expect something like below.
+>
+> [    0.596381] Performance Events: PMU not available due to virtualization, using software events only.
+> [    0.600972] NMI watchdog: Perf NMI watchdog permanently disabled
+>
+> This is because the AMD pmu (v1) does not rely on cpuid to decide if the
+> pmu virtualization is supported.
+>
+> We disable KVM_CAP_PMU_CAPABILITY if the 'pmu' is disabled in the vcpu
+> properties.
+>
+> Cc: Joe Jin <joe.jin@oracle.com>
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> ---
+>   target/i386/kvm/kvm.c | 17 +++++++++++++++++
+>   1 file changed, 17 insertions(+)
+>
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index 8fec0bc5b5..0b1226ff7f 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -137,6 +137,8 @@ static int has_triple_fault_event;
+>   
+>   static bool has_msr_mcg_ext_ctl;
+>   
+> +static int has_pmu_cap;
+> +
+>   static struct kvm_cpuid2 *cpuid_cache;
+>   static struct kvm_cpuid2 *hv_cpuid_cache;
+>   static struct kvm_msr_list *kvm_feature_msrs;
+> @@ -1725,6 +1727,19 @@ static void kvm_init_nested_state(CPUX86State *env)
+>   
+>   void kvm_arch_pre_create_vcpu(CPUState *cs)
+>   {
+> +    X86CPU *cpu = X86_CPU(cs);
+> +    int ret;
+> +
+> +    if (has_pmu_cap && !cpu->enable_pmu) {
+> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_PMU_CAPABILITY, 0,
+> +                                KVM_PMU_CAP_DISABLE);
+> +        if (ret < 0) {
+> +            error_report("kvm: Failed to disable pmu cap: %s",
+> +                         strerror(-ret));
+> +        }
+> +
+> +        has_pmu_cap = 0;
+> +    }
+>   }
+>   
+>   int kvm_arch_init_vcpu(CPUState *cs)
+> @@ -2517,6 +2532,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>           }
+>       }
+>   
+> +    has_pmu_cap = kvm_check_extension(s, KVM_CAP_PMU_CAPABILITY);
+> +
+>       ret = kvm_get_supported_msrs(s);
+>       if (ret < 0) {
+>           return ret;
+This patch is very important in particular.
+It boosts performance of any single VMexit
+is 13% for AMD. Intel is being measured.
 
-Hmm, it's actually worse than ugly: it doesn't work.
+At my opinion v1 of the patch is better that
+version 2. We should not introduce any
+new capability but disable PMU if we can
+while it is disabled according to the configuration.
 
-    $ qemu-system-aarch64 -nodefaults -S -display none -M none -global xlnx.bbram-ctrl.drive-index=2
-    qemu-system-aarch64: warning: global xlnx.bbram-ctrl.drive-index has invalid class name
+The discussion about performance improvement
+is here
+https://lore.kernel.org/lkml/ZU2D3f6kc0MDzNR5@google.com/T/
 
-That's because xlnx.bbram-ctrl.drive-index=N is syntactically ambiguous: it
-could be sugar for
-
-    driver=xlnx.bbram-ctrl,property=drive-index,value=N
-
-or for
-
-    driver=xlnx,property=bbram-ctrl.drive-index,value=N
-
-Our parser picks the latter.
-
-I'll respin the patch to use longhand syntax.
-
-> It feels like we should forbid both, "," and "." in device names...
-
-Yes, '.' is a bad idea, too.  But there are many names with them, and
-I'm not ready to tackle them.
-
-> Anyway, for the current state:
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-Thanks!
-
+Den

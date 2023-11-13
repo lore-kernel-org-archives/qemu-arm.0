@@ -1,153 +1,170 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1441143ejc;
-        Mon, 13 Nov 2023 08:09:41 -0800 (PST)
-X-Received: by 2002:a17:906:1341:b0:9dd:8aa0:f7b8 with SMTP id x1-20020a170906134100b009dd8aa0f7b8mr5459073ejb.9.1699891781107;
-        Mon, 13 Nov 2023 08:09:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699891781; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1450790ejc;
+        Mon, 13 Nov 2023 08:23:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE3WKFUkxMvUcSOkG8Q90HXlV3d5tygdbHUrQsj4nmed2loIElNBewrgikuqbEw5UcVpXTr
+X-Received: by 2002:a05:622a:1485:b0:419:50d0:cf5a with SMTP id t5-20020a05622a148500b0041950d0cf5amr9457014qtx.2.1699892596942;
+        Mon, 13 Nov 2023 08:23:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699892596; cv=none;
         d=google.com; s=arc-20160816;
-        b=cD5cPojBl638p//vrj79utT+4LIH2sL+XRDWSMM2ch0JQAwCv8H8i1Kq6uun9v7aT3
-         Z7U5dDBWwVnO+VNefLWTSkNczYo1THPdAf8vkr+OSMx0ujsfHwmATavALqshzrRo9iCh
-         B5J8W8MOds5YkJrMMekRinctf4FUT9OgNSmwfp6eFOzzPRVD0p1W6r8C0uR+C3L1jQg0
-         xTuJ6D7jnvTZ0bSBPPwBMBr35wecDeUElfjhIFaShRmJxOKfVRpmTIes8aOCsEQcPrVZ
-         IAxMtvnqQTYiljykhoC6aIsmF85SDyrErKpyFnhTPAjpabHdKwIPJIGVxL9A3GnBez8B
-         iS0w==
+        b=Vk2/xHKE0/EbLg8+ADbRDiGvnrFyR/aYJLUiiHolc6meGSPnQ9ihbG0ckTJwBTN1I2
+         sd1s0UvFgHaGQmt90ZvFTekYVhOgYlWTcGg2QJAMRfjVkpyoNxvnEdzHQfOu8WGm9AG7
+         YYROfK7085rdIr9bPcflARBtfSxqQU5xwhbfihxdNtn0FZ8p3I6YKDyYF7oC5J1viohM
+         ycvu0oR+Tu1L72V3741WBhnIcFdZRUQX+3f2Pha69dsITVEYbB6JAhJ6zpP9+y6UAJgz
+         peg1CvHQo2m0Olm/dpr8e6IdJEW/ZPyM5shJwM3qDzptFlemfFyFf0eKhxn6kHhpK3Y+
+         TmAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
          :dkim-signature;
-        bh=MT2jqnM1EXDZd7Eo9GsBNo8vayQdwjXlJYvjk3d8/BQ=;
-        fh=M8yTh4l6jr21/vLhx7agVqc/k9FzlJ52dzT+D9Si6nA=;
-        b=SaL4B852C+ZknAh+YMtIGiQb9c8KPC/DIpDsEZuqkMI4hbrZzURYlWbqAuZX7qCWlY
-         cE9vpb3POCvzgmp6N8gEty0hCyOL8wJroRFWkTnWQ9qNsVRNkXsISxkKXH3eA16y6CcN
-         P3JpOjZm/pl+aMtSA4phtqK4cKjTgP5xjnfAZmlw+c2NaJBWJWLdDPlgsFxB2zL83NKn
-         xqKtUcpVAEz299OtjZqkt6RL14pZh49jWGjooFj6GEWgVwlGSX4ZS0Ao2u+EdjTwgCME
-         e/bE4vHlHYATC6pWjHL61Dcp8YWQUTGPvDm5gNAmqc/TwJ1atl2/AVjcqLHQ+itZwhBi
-         TiQQ==
+        bh=5FF8VvkwUcZrfN2KkFU+AGkFEcy2kySXeryCtxcW9Ug=;
+        fh=8+TunD9lRLv3fg3TqaAVJJ4/bAWT3UZM9GnFRhAR3SE=;
+        b=JgotCLSYJu/meRbbKuALVgeO0c8p6O6CnfjcrhQfDKEvkVKfe1N3rJSwp5uSLljGNr
+         eQF9tDyNmaH501ux5m1xyaS3Bf4j24pJfXls3u6OnK2qoqiBbZN8I4JELW18m2FP352n
+         QEvR8wVWCwrDGaYQYUb3TGqUlhvSZn1J41TkVPO6zvDIahHUJnsXBUdtCcfl864DdUA5
+         W9oxJG531nDYaPSwK2rwfUzoNjAibg10usdM9KJg42ieDU2YEA9agemyAvOxReXjOEQm
+         rk+HQFQ/9qWZxplQMfIQzPo0fQFX45isvRwXRLZAYeTRaX5RrHZCWKBoT9bV1hK9/5jn
+         6sig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cKDFJOHk;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v25-20020a17090651d900b009e5d15311a6sor1188727ejk.9.2023.11.13.08.09.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UxXAAPe6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i19-20020ac85c13000000b004180054f084si4638932qti.74.2023.11.13.08.23.16
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 Nov 2023 08:09:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Nov 2023 08:23:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cKDFJOHk;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699891781; x=1700496581; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=MT2jqnM1EXDZd7Eo9GsBNo8vayQdwjXlJYvjk3d8/BQ=;
-        b=cKDFJOHktssAqVweHsmB7nDCdQHzdQjGQ/pUrzNz+6HGC35iw+oq2/pnzrYLJ0mHKD
-         /wNARA/XB3IeunacIMr+F34WhNULrfHC1Yogck6Y0BOQutZvGmhylw0dET2Sl5uulmGO
-         VAJH/yV/hOqNXdD2Nr8+09l2MVKiayQWtOX6HH3wCdgsWA/02fuYWcvwkw2f8KZ2wHjr
-         IqJIBe9qwkrOulY2lTNfK7PTbV6qTfxH+JB/6cyA9dLc78L4JuJWeKNnLk7frYAcYa6F
-         rf73tRfRZ2V/rrzAT3BR2AwZq/6R+uuk8vGp6ns+Tk4Re8R/OdQbPhBjgUFmLjFmap5u
-         54cw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699891781; x=1700496581;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MT2jqnM1EXDZd7Eo9GsBNo8vayQdwjXlJYvjk3d8/BQ=;
-        b=fhwKpAVCf8gf44+sJKnhalNSVNLK3EAWSNjZKSGgoxfWSGCzKfS5ugrYKb1g2aouKG
-         WTKxLCUc6hM6R4KikcigCEHqJAJE9UOdBcAqGa7CeZHJooprk3G1NfLjGwd6i7nz2yB1
-         SPd+oAdnkjqt4v7EwxEU6dQdEJCglCmT5ctOIQ8Hk8bvLCp0ZKCojyhcMfrjKpHCpp1V
-         1eWA3BR4kXgIC9oRbeTH4bPRKHNUvSpJzKA7jioDquuuujySbkZAXwArvl7o/w7Z0EOL
-         88sxgOWikVgPkd8S66X0l5xptFDxCqSpS+HEEv4NhrOy8AWbfYXrfKr9Hbv+JGZXtxsI
-         8Xdg==
-X-Gm-Message-State: AOJu0Yzng2xEb9366VUnit45pl0/T0ydRCmHHfdRQp8d+XTdfKIMZ0WU
-	vKy3nvUXECLbjZFs2oTXNQbgjfqp
-X-Google-Smtp-Source: AGHT+IGeRhJFxDoIfveJ9ETd2OdQ3oHGQ3FlHAF/NrjNVpCIp+vrcNE4rMVRNzJtDcSpxiFGnRsC1Q==
-X-Received: by 2002:a17:907:86a3:b0:9be:b41d:4f7e with SMTP id qa35-20020a17090786a300b009beb41d4f7emr5851496ejc.17.1699891780129;
-        Mon, 13 Nov 2023 08:09:40 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.164.221.204])
-        by smtp.gmail.com with ESMTPSA id qk16-20020a170906d9d000b0099297782aa9sm4153050ejb.49.2023.11.13.08.09.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Nov 2023 08:09:39 -0800 (PST)
-Message-ID: <7a66c289-19e1-4690-8c6e-31a9f6344b6f@linaro.org>
-Date: Mon, 13 Nov 2023 17:09:37 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UxXAAPe6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r2ZiL-00072K-D9; Mon, 13 Nov 2023 11:23:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r2ZiJ-00071r-Lr
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 11:23:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r2ZiI-0005Gi-4D
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 11:23:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1699892579;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=5FF8VvkwUcZrfN2KkFU+AGkFEcy2kySXeryCtxcW9Ug=;
+ b=UxXAAPe6sFBgzdSTBrIVSRDNxIQmHrUllsAK9aW9TU1D7RBSV58T2jcrBLf0DFfLnbgQWQ
+ Wv6Cb2jbxQZvRhESkNJ8ZrAKSsn6CXBawPUGQq2h2d++cgNXY6HoKqJAHjM6uxH5QP+NTf
+ XgGMcgIgWFDUb/8ralPqLfbiJPF6gDo=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-256-KOSOH5WUMHmb2y3DwXQKtQ-1; Mon, 13 Nov 2023 11:22:57 -0500
+X-MC-Unique: KOSOH5WUMHmb2y3DwXQKtQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B8F82852AC0;
+ Mon, 13 Nov 2023 16:22:55 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D2B336EE;
+ Mon, 13 Nov 2023 16:22:55 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6C4F321E6A1F; Mon, 13 Nov 2023 17:22:54 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  alistair@alistair23.me,
+ edgar.iglesias@gmail.com,  peter.maydell@linaro.org,
+ francisco.iglesias@amd.com,  qemu-arm@nongnu.org
+Subject: Re: [PATCH 1/2] docs/system/arm: Fix for rename of type
+ "xlnx.bbram-ctrl"
+References: <20231113134344.1195478-1-armbru@redhat.com>
+ <20231113134344.1195478-2-armbru@redhat.com>
+ <43bf23f8-ef98-453b-a687-5367e39f0c2b@redhat.com>
+Date: Mon, 13 Nov 2023 17:22:54 +0100
+In-Reply-To: <43bf23f8-ef98-453b-a687-5367e39f0c2b@redhat.com> (Thomas Huth's
+ message of "Mon, 13 Nov 2023 16:54:52 +0100")
+Message-ID: <87pm0dk4gx.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 04/10] hw/xen: Factor xen_arch_align_ioreq_data()
- out of handle_ioreq()
-Content-Language: en-US
-To: "Woodhouse, David" <dwmw@amazon.co.uk>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Paul Durrant <paul@xen.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <f791a822-f6f5-44fa-904b-f67d3f193763@email.android.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <f791a822-f6f5-44fa-904b-f67d3f193763@email.android.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: QjhZf43g6OXf
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: S+sQujIVC0ii
 
-On 13/11/23 16:58, Woodhouse, David wrote:
-> On 13 Nov 2023 10:22, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
-> 
->     Per commit f17068c1c7 ("xen-hvm: reorganize xen-hvm and move common
->     function to xen-hvm-common"), handle_ioreq() is expected to be
->     target-agnostic. However it uses 'target_ulong', which is a target
->     specific definition.
-> 
->     In order to compile this file once for all targets, factor the
->     target-specific code out of handle_ioreq() as a per-target handler
->     called xen_arch_align_ioreq_data().
-> 
->     Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->     ---
->     Should we have a 'unsigned qemu_target_long_bits();' helper
->     such qemu_target_page_foo() API and target_words_bigendian()?
-> 
-> 
-> It can be more fun than that though. What about 
-> qemu_target_alignof_uint64() for example, which differs between i386 and 
-> x86_64 and causes even structs with *explicitly* sized fields to differ 
-> because of padding.
-> 
-> I'd *love* to see this series as a step towards my fantasy of being able 
-> to support Xen under TCG. After all, without that what's the point in 
-> being target-agnostic?
+Thomas Huth <thuth@redhat.com> writes:
 
-Another win is we are building all these files once instead of one for
-each i386/x86_64/aarch64 targets, so we save CI time and Amazon trees.
+> On 13/11/2023 14.43, Markus Armbruster wrote:
+>> Fixes: b65b4b7ae3c8 (xlnx-bbram: hw/nvram: Use dot in device type name)
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>   docs/system/arm/xlnx-versal-virt.rst | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
+>> index d2d1b26692..a6a77b3799 100644
+>> --- a/docs/system/arm/xlnx-versal-virt.rst
+>> +++ b/docs/system/arm/xlnx-versal-virt.rst
+>> @@ -194,7 +194,7 @@ To use a different index value, N, from default of 0, add:
+>>     .. code-block:: bash
+>>   -  -global xlnx,bbram-ctrl.drive-index=N
+>> +  -global xlnx.bbram-ctrl.drive-index=N
+>
+> Ouch, that's now ugly, too. Imagine that we have a device called "xlnx" one day, how's the reader supposed to distinguish between the "xlnx" and the "xlnx.bbram-ctrl" device here?
 
-> However, I am mildly concerned that some of these files are accidentally 
-> using the host ELF ABI, perhaps with explicit management of 32-bit 
-> compatibility, and the target-agnosticity is purely an illusion?
-> 
-> See the "protocol" handling and the three ABIs for the ring in 
-> xen-block, for example.
+Hmm, it's actually worse than ugly: it doesn't work.
 
-If so I'd expect build failures or violent runtime assertions.
+    $ qemu-system-aarch64 -nodefaults -S -display none -M none -global xlnx.bbram-ctrl.drive-index=2
+    qemu-system-aarch64: warning: global xlnx.bbram-ctrl.drive-index has invalid class name
 
-Reviewing quickly hw/block/dataplane/xen-block.c, this code doesn't
-seem target specific at all IMHO. Otherwise I'd really expect it to
-fail compiling. But I don't know much about Xen, so I'll let block &
-xen experts to have a look.
+That's because xlnx.bbram-ctrl.drive-index=N is syntactically ambiguous: it
+could be sugar for
 
-> Can we be explicit about what's expected to work here and what's not in 
-> scope?
+    driver=xlnx.bbram-ctrl,property=drive-index,value=N
 
-What do you mean? Everything is expected to work like without this
-series applied :)
+or for
 
-Regards,
+    driver=xlnx,property=bbram-ctrl.drive-index,value=N
 
-Phil.
+Our parser picks the latter.
+
+I'll respin the patch to use longhand syntax.
+
+> It feels like we should forbid both, "," and "." in device names...
+
+Yes, '.' is a bad idea, too.  But there are many names with them, and
+I'm not ready to tackle them.
+
+> Anyway, for the current state:
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+Thanks!
+

@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1408023ejc;
-        Mon, 13 Nov 2023 07:21:24 -0800 (PST)
-X-Received: by 2002:a17:906:2416:b0:9be:21dc:8a9a with SMTP id z22-20020a170906241600b009be21dc8a9amr5297261eja.39.1699888884276;
-        Mon, 13 Nov 2023 07:21:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699888884; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1408115ejc;
+        Mon, 13 Nov 2023 07:21:30 -0800 (PST)
+X-Received: by 2002:a17:907:20e5:b0:9e6:3570:bc0d with SMTP id rh5-20020a17090720e500b009e63570bc0dmr5133475ejb.59.1699888890444;
+        Mon, 13 Nov 2023 07:21:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699888890; cv=none;
         d=google.com; s=arc-20160816;
-        b=XtHsrtgw2rlWBPiT+x98GTnxNvEqBbQfD1qypFQFpfOxK9eXPOMjK9wC5hDYFnLINd
-         oSxSoepK/jud0hLz3ZMjF7UvjA2b/qJSPRUnSOJRPczo5stoyFG2YujTMi2v+CKOOl/u
-         aEGqpBhV3iQIvwPNhDP+ys2SkWHmyufu+Yc+ee1CeiSi1B6roP80jKtuZhu8WaMTCkg5
-         PVS40aX8Rtn+mVFFnqgg359bTmGcdYVxdj8cwYft2KJt7cecGifQQw5TShmRbAELKz2e
-         uk1rQIVIvIWjXnSGg6oXzthBreQWRV/xWy0QZgPg3Iod8IMYfiOMf0Braqs73CB46oZB
-         zRaA==
+        b=fVnUYOB4kH3TE6g2njt90SmlqCZdrOIPqSPHsyaftV5WQanR8afDq3dm9QQ0gWClre
+         MvhidMV1krkRSVg/HofTYMkqbHsIxWGmwZTmenOPi8TS9lhxYvKcAs9RW31Rs61QcH5g
+         s/7FrOdvCy6C8p9ssb8WtyMwdQ3nSVvnsfoVjHMGnhv19AgOUuR9sAZl8O482WvKOpZ/
+         mlvfRTp3bjNwnmB5DWU2L52g4mttSFXrvPgu3BUcgsNoPQ9aYGEY+dPKipXJgjRdSsSs
+         fkGayPaHIALisbQsdGBT+6CnjCXLT4FfuyA8YS/5Awf7ZcYfSDmrASrFPGXIfkFMvxLH
+         hCbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=R0n+efnCwqYZSgvX5xA6BN1n520F2bZNMKVl3gVhASA=;
-        fh=E0jvqUTVnbyPitMGLtsCjS/srUbMS2WTNKk9XEDC2rY=;
-        b=oCyaUA3vmC5y3fr8sv594SzKIx1665zunwkPg58116cR7/bz6HGGAsYng6sen9KbZV
-         lUMpcB/6MuOUCWSjWz6cP2R4v3GgVcawd0wUgiKJIX70mlcXKaK5bVznvV0Qto7UsJWf
-         +7hJ0+mQ/YZDGn9NyxJQsI5BFBjlPU9Ap5Nscr6Vl4pOhQhYZ9F+tChumXhx9oz+YRp7
-         l9nIzo/SMXupYELLHAqkMDsahh3nRkc8cHxkClRPaWpCFeD8n9y3Plx36T8RTCYnhcPi
-         TB4rYhJa861UzAD0NlDCa/mIe0ZaUJzqXPNNWQE/jV/1dI2xkTpBxWqpumfwR0q3n5lS
-         v0wQ==
+        bh=R3bxfGqI5yyGuHTvJ252KdxHxDRKsvIzu9uNKMF+2iI=;
+        fh=l0GfR1YsFBV1p/d6Yn0Cy9b7NFKbeuH6aWfu2sQY5rM=;
+        b=UQ20opNlaH9qGUiVPV8O5QRnU6qCXQCpsu5i3Yztk9Y4/UfPzZvj8T1sYvCeBvg7Bb
+         sHs88q5u5ot9yJxc6R0IeiFp0eoSj+hSnNOv5jfuGBVJGMuMJkf5FvM6XmY5IaYZXUXI
+         MygRRcNvNmSGazSaA8lP8MHLlu82m14kO06U4+ZqbXoipk6I/NU7oUfLcqlW3O0h+lRl
+         0jKzxnrFZdqKWUzc8hbqpiuvlgOEgk1s3cI3c/RQqdZfsTdkdGpW6bgQ9yVQXN+fM2NM
+         f4sGoGzXigsUYFhlhvd0hjyLjjvRki3AeyYg3F7KN4yZFjMoPS+sO6J3DbMMNl7MkHZa
+         Eb2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Nm/b7wvt";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jCpuYAYd;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j12-20020a170906104c00b009e42aa0e87bsor1220957ejj.18.2023.11.13.07.21.24
+        by mx.google.com with SMTPS id dc9-20020a170906c7c900b009ba0a38f2b1sor1212175ejb.20.2023.11.13.07.21.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 13 Nov 2023 07:21:24 -0800 (PST)
+        Mon, 13 Nov 2023 07:21:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Nm/b7wvt";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jCpuYAYd;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699888884; x=1700493684; darn=linaro.org;
+        d=linaro.org; s=google; t=1699888890; x=1700493690; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=R0n+efnCwqYZSgvX5xA6BN1n520F2bZNMKVl3gVhASA=;
-        b=Nm/b7wvtv5/WBRd5Te2goF4uIBD7VnGH7Kc40PMCKN3OnMI0bw66GXGmwD38Pac+Fw
-         BwJHn+XFK4bX1E+IvsyaHQbcaN2aMkQmIN3D0IsMiQjv7uTRG9fCELWPnY8uCPngMezk
-         hGFTUbzm7IgTpb9zQW9bvnkfsA8u1B3ueyF2jdoPFNezxI3iRRpjb++aHyVgha+0MQOb
-         ksXh5/wfs3+WHmNzbV257fidSY3QrbPRhb/MdH1O25BcyWC+eoBwtcDZza3n5i+B2dL7
-         9fppe7xwkDfAjNmj0ok8iqGeex0ZvbaYzp/e18ku4r03uI8Ftf0wecqi0cpv8bRkuTe/
-         H82w==
+        bh=R3bxfGqI5yyGuHTvJ252KdxHxDRKsvIzu9uNKMF+2iI=;
+        b=jCpuYAYdGmAvyKqQPqTq8aVHBkIYz/5Tpimdsnjau/uhPbRKpbiDKIVZr7toBKPgyw
+         k5dAli7CE2rG8WTxOQtBvOrNCQ5s/8cSQ91UU6r01eygIaPYxgxlVbwEB37BS/ps8f1k
+         1TS8EB76mk6f7iV8R3g/ndckjOP78/jM3FF1gDnV7LmDWa3VrhTyg2adgo27KvcpsIPI
+         X6H/7zb7ch+aBJq+w2UAajmpznJf2Wyzj6+IVXKy/tcLhEsd9vmQ4S1lgBF5jTr0ass1
+         jLHkNPLdn8cEWmSYtAf6fkNKascr+eEUKo9Ysd2bhnYbRAHAgm6Zdlu++FAQFjpq2IUa
+         0yDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699888884; x=1700493684;
+        d=1e100.net; s=20230601; t=1699888890; x=1700493690;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=R0n+efnCwqYZSgvX5xA6BN1n520F2bZNMKVl3gVhASA=;
-        b=wSIPPuiDjf0FmNOyj8sGZtmGnIZwCVguvcsg+9iCqBfhqK3IlZOV0Qjb/zVdXUnxkL
-         33lIql6dV++g0AQQfuMPViJysChQjuQ9jwRvB/OobEcs4+CA+P7MkZPhxonX65orOOf/
-         Ok2Lcc77mxOcJrzu4dH1RxkV9GoxUh64AXnaZN9xMrNApFE4TrG7fRnhhDhOqDkHaXHr
-         rzIFx6rmcQcbuaYoTO9wZx6Ku0lddLUbzmj3oTqfOF3pG47p1wLblfBtnyHPK2qXCyvv
-         wdHqBpDgpjr7lk4x9TA9pNJrEmfEsDkT7/tm2mX6KnZ+3VVSKmbC0xe0K6yTWQuxXzRB
-         Ji7A==
-X-Gm-Message-State: AOJu0YzYwJQoOGWEDgP7QTckZ6Vy2GCk/7g6KJgjTzVOrkNrMGkWIqD5
-	1ZpTCdpPMXePOXY2v/NCBFAFHNB3
-X-Google-Smtp-Source: AGHT+IH6xxb8oSsdvX/Qxe7SX73ROr6di4a0tnTAF45WIy9EC8KmTSkElWDjJsGSvtz6GSstCFLdyw==
-X-Received: by 2002:a17:906:4c84:b0:9cb:5a8a:b19d with SMTP id q4-20020a1709064c8400b009cb5a8ab19dmr4350360eju.5.1699888883852;
-        Mon, 13 Nov 2023 07:21:23 -0800 (PST)
+        bh=R3bxfGqI5yyGuHTvJ252KdxHxDRKsvIzu9uNKMF+2iI=;
+        b=leiXvfnwRWYd7p4Esxrps7DorkgQCTrCUgPfWc1rMOcNlntVUhRNFvEJQG3Tk3fAPb
+         xdGnAGz5aWdRf96uRfdiz3hdRaJTIJl4Hhtr/BOQPPURPreFcaWYVg9dGCbSvP5plVdf
+         vUX81SyfDE7N1luRqVNF9O3TGio5GPXctjf3GSoltAXIcPhzZua2jxe9IXDRjcsUMhw3
+         fUc4DCls8E6dK/USequ386BJ2wxJ5Cop/Za/AGt6XF72jMD+cgBSy6cTTYSNxFPOYKKX
+         kiNZyvzxc7FdR1CDnU8HXNmRfiTeEjXBL2Ypff400Au/M+UdtY4+/aws4cB1nASy03OL
+         fKiA==
+X-Gm-Message-State: AOJu0YwjR+MZvmSmkEnq6Q0dgo/cKGDoH3QzdOZa5blYAMJKImud+r7N
+	j/JomWOwPG5oe9sPMdibo5cuiVxw
+X-Google-Smtp-Source: AGHT+IF709HFmNxhzIc8XnNuz+a2oAKUrEHD5dHSaR8itUuUqXulXss7tknv1cuy4PMkZKxP4RsDmw==
+X-Received: by 2002:a17:906:3049:b0:9bd:f155:eb54 with SMTP id d9-20020a170906304900b009bdf155eb54mr4125199ejd.6.1699888890200;
+        Mon, 13 Nov 2023 07:21:30 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.164.221.204])
-        by smtp.gmail.com with ESMTPSA id dx15-20020a170906a84f00b009adcb6c0f0esm4204593ejb.193.2023.11.13.07.21.21
+        by smtp.gmail.com with ESMTPSA id o23-20020a17090611d700b009829d2e892csm4243243eja.15.2023.11.13.07.21.28
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 13 Nov 2023 07:21:23 -0800 (PST)
+        Mon, 13 Nov 2023 07:21:29 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: David Woodhouse <dwmw@amazon.co.uk>,
 	qemu-devel@nongnu.org
@@ -83,65 +83,130 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	Paul Durrant <paul@xen.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 01/10] sysemu/xen: Forbid using Xen headers in user emulation
-Date: Mon, 13 Nov 2023 16:21:04 +0100
-Message-ID: <20231113152114.47916-2-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH-for-9.0 02/10] hw/xen/xen_arch_hvm: Rename prototypes using 'xen_arch_' prefix
+Date: Mon, 13 Nov 2023 16:21:05 +0100
+Message-ID: <20231113152114.47916-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231113152114.47916-1-philmd@linaro.org>
 References: <20231113152114.47916-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WpL8kssQ3O+3
+X-TUID: pFuZiG3elVgs
 
-Xen is a system specific accelerator, it makes no sense
-to include its headers in user emulation.
+Use a common 'xen_arch_' prefix for architecture-specific functions.
+Rename xen_arch_set_memory() and xen_arch_handle_ioreq().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/sysemu/xen.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/arm/xen_arch_hvm.h  | 4 ++--
+ include/hw/i386/xen_arch_hvm.h | 4 ++--
+ hw/arm/xen_arm.c               | 4 ++--
+ hw/i386/xen/xen-hvm.c          | 6 +++---
+ hw/xen/xen-hvm-common.c        | 4 ++--
+ 5 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/include/sysemu/xen.h b/include/sysemu/xen.h
-index bc13ad5692..a9f591f26d 100644
---- a/include/sysemu/xen.h
-+++ b/include/sysemu/xen.h
-@@ -10,6 +10,10 @@
- #ifndef SYSEMU_XEN_H
- #define SYSEMU_XEN_H
+diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+index 8fd645e723..6a974f2020 100644
+--- a/include/hw/arm/xen_arch_hvm.h
++++ b/include/hw/arm/xen_arch_hvm.h
+@@ -2,8 +2,8 @@
+ #define HW_XEN_ARCH_ARM_HVM_H
  
-+#ifdef CONFIG_USER_ONLY
-+#error Cannot include sysemu/xen.h from user emulation
-+#endif
-+
- #include "exec/cpu-common.h"
+ #include <xen/hvm/ioreq.h>
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+-void arch_xen_set_memory(XenIOState *state,
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
++void xen_arch_set_memory(XenIOState *state,
+                          MemoryRegionSection *section,
+                          bool add);
+ #endif
+diff --git a/include/hw/i386/xen_arch_hvm.h b/include/hw/i386/xen_arch_hvm.h
+index 1000f8f543..2822304955 100644
+--- a/include/hw/i386/xen_arch_hvm.h
++++ b/include/hw/i386/xen_arch_hvm.h
+@@ -4,8 +4,8 @@
+ #include <xen/hvm/ioreq.h>
+ #include "hw/xen/xen-hvm-common.h"
  
- #ifdef NEED_CPU_H
-@@ -26,16 +30,13 @@ extern bool xen_allowed;
- 
- #define xen_enabled()           (xen_allowed)
- 
--#ifndef CONFIG_USER_ONLY
- void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length);
- void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size,
-                    struct MemoryRegion *mr, Error **errp);
--#endif
- 
- #else /* !CONFIG_XEN_IS_POSSIBLE */
- 
- #define xen_enabled() 0
--#ifndef CONFIG_USER_ONLY
- static inline void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
- {
-     /* nothing */
-@@ -45,7 +46,6 @@ static inline void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size,
- {
-     g_assert_not_reached();
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+-void arch_xen_set_memory(XenIOState *state,
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
++void xen_arch_set_memory(XenIOState *state,
+                          MemoryRegionSection *section,
+                          bool add);
+ #endif
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+index a5631529d0..28d790f4ce 100644
+--- a/hw/arm/xen_arm.c
++++ b/hw/arm/xen_arm.c
+@@ -129,14 +129,14 @@ static void xen_init_ram(MachineState *machine)
+     }
  }
--#endif
  
- #endif /* CONFIG_XEN_IS_POSSIBLE */
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+ {
+     hw_error("Invalid ioreq type 0x%x\n", req->type);
  
+     return;
+ }
+ 
+-void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
++void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
+                          bool add)
+ {
+ }
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index f42621e674..ffa95e3c3d 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -659,8 +659,8 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
+     }
+ }
+ 
+-void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
+-                                bool add)
++void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
++                         bool add)
+ {
+     hwaddr start_addr = section->offset_within_address_space;
+     ram_addr_t size = int128_get64(section->size);
+@@ -700,7 +700,7 @@ void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
+     }
+ }
+ 
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+ {
+     switch (req->type) {
+     case IOREQ_TYPE_VMWARE_PORT:
+diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
+index 565dc39c8f..1d8bd9aea7 100644
+--- a/hw/xen/xen-hvm-common.c
++++ b/hw/xen/xen-hvm-common.c
+@@ -65,7 +65,7 @@ static void xen_set_memory(struct MemoryListener *listener,
+         }
+     }
+ 
+-    arch_xen_set_memory(state, section, add);
++    xen_arch_set_memory(state, section, add);
+ }
+ 
+ void xen_region_add(MemoryListener *listener,
+@@ -452,7 +452,7 @@ static void handle_ioreq(XenIOState *state, ioreq_t *req)
+             cpu_ioreq_config(state, req);
+             break;
+         default:
+-            arch_handle_ioreq(state, req);
++            xen_arch_handle_ioreq(state, req);
+     }
+     if (req->dir == IOREQ_READ) {
+         trace_handle_ioreq_read(req, req->type, req->df, req->data_is_ptr,
 -- 
 2.41.0

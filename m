@@ -1,320 +1,207 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1183752ejc;
-        Mon, 13 Nov 2023 00:18:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEZ/2hfNYM8qZ2E9vCd3QuQ80dhwL8FTq2ZpZvYHRJ5YZq++MUSYC5Z2WT1pJl0nf+fJ8HT
-X-Received: by 2002:a05:6a20:9148:b0:181:5ee9:ba93 with SMTP id x8-20020a056a20914800b001815ee9ba93mr4124183pzc.26.1699863485824;
-        Mon, 13 Nov 2023 00:18:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699863485; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1588447ejc;
+        Mon, 13 Nov 2023 12:03:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFjRWv+h6stj7J3/r2iKjv3zM3v0Ora3AXr+4FpuhXJnk9TTstuvFvQcMOjmhm5jOew2owm
+X-Received: by 2002:a05:600c:4eca:b0:408:3696:3d51 with SMTP id g10-20020a05600c4eca00b0040836963d51mr6035035wmq.4.1699905809424;
+        Mon, 13 Nov 2023 12:03:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699905809; cv=none;
         d=google.com; s=arc-20160816;
-        b=AnghxWgpXRk5tSEOKDckhTF7ilm2WtCdnzr8NkVAJIv2yDqvgdX9rR5G0Pd4UFIjNn
-         oKKtO0kTexixU+92pTP5qeABAvkPxythv1p2XySyXlT5fJlCs9L+QMxQ4WxcxYx8XKY4
-         S4aLojtRph07eFoo0/LJ7HxVg6pfpmtbTTDtjAE8daZ874SuGGgfz6OlFp4QwsdXfmmq
-         +bg8ChJULKYLae8ehiomVLBw4tTVWn082ZKCcbV2UW79gQf7zKXZs0NhtPjKDPwaBpgq
-         L276nGJFSF+MDAbUou3JmwuTVEMW/XD5X5e7oAql5Yq2QM7qd0MQejJfC3a5f/5+bVTU
-         K1Hg==
+        b=L1EkC9k3ICdEqniRhW/bk6QN4c8cjTt6S6oS0XK/WBAVnqVeK2g9Xv5InggW3pYsuW
+         XqDYp+tsbYCK6aGZy7m3GXQ5rHdwCIBv/WLflAFiR0lSMBuj5q2ILM5MpgqFF0o7rZ7X
+         Bi4oC9w05XHXYfDn1CHhFcimoAvKIy8in18t7hTeJ8DE/pz+Y8Lt3zbJt0mZamFyknIN
+         BiqIjMz1mSWuslyhSIqTW7BT5HxD5OaLurRuA80xGwWpfQxMO1kbQ4LXCR+oM0TsAPA2
+         wRJj1OjQZCKKLDXA7SSwp1xocvP/VYGGXQ2tqoKQTm4nvD1MQd8zG1Wp8yP6R+FCraw2
+         0vtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=q42X0BrKYlxA1k6mvCtM7nD6PBtAE2gh+Zb8mj4NqmM=;
-        fh=d6+BkVm0ifGLgnuS8wfve+0UfThL1WbA9n/WeHHIz+g=;
-        b=ZT+P0ZEijs6tn6dp2vCl6vFHNAj+Kez2ObkwbIG0jpr3kqXkBnp0HoIRAwhY5RMTMD
-         yxG/1sG3w9lvOW7p3GYrhG1nkoHOMw8knUxZ0F2hQCIBh8fSWHboa39IUrO9jv7KI/OW
-         xmpu7SkZb6eQI4H16f7h8JpXCXHvJXoNV3u/vFGmnXvXsKT1NDckaz+h4DXer89VVJvC
-         cHs7LDYjaMgw9XfBQSYbSj+V1My9qnyTLH+8EeC1yo8VBdPvmtxKy2671W0ZHgE94p9o
-         MpcQLXIdf1jGDsRxNTThCmNDUBO8FinHvUzMCUGmwRb0ZqJXEK7ESiYU2octqKaZ23RM
-         dUaw==
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=2dt7RjPx38FrZiUBU9K5RW9mFpHeuvrpE3dBpoplUog=;
+        fh=PlCRF2v/4HSnMUIzszkzoyqkGuazZ1lFN4gjVJT9cRM=;
+        b=xFrcJgSdZQV98vTMApO4uutvNbIEGEzqZYbl8hZsgrbzna/MmDH/zx4x7pj6TEkcmg
+         WNC+lSgd1VosAPItuyOvFJZWJVssV05MGZmfOnVuvne86MnQNdjGtmho3BZomlfdjqOP
+         klmSV5BlwUCr2j3XxiqBG3hHa2wpqgSOzG4n61WJ7BPrFT3pGdjs+xNF2+H4dGB9EBp9
+         YVMkVwNcvkdCfWHWM5vPyaHSgeSPK6de3LL1DJlYW0WQ2GsMZlj/x7RP3itM/eNq938Q
+         aJnpRqvVUfT16OSvIQms2GREZamuTbT3lHjkOxq7lUIs+0iC97K+CayvHQopa09TPz0J
+         8nkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LpkxvFZL;
-       spf=pass (google.com: domain of kvm+bounces-1581-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-1581-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-1581-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d7-20020a056a00244700b006c4d3cd9132si5414811pfj.0.2023.11.13.00.18.05
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=FzAqNIgf;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id m3-20020adffa03000000b00324f2ab4542si3247480wrr.645.2023.11.13.12.03.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 00:18:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-1581-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Mon, 13 Nov 2023 12:03:29 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LpkxvFZL;
-       spf=pass (google.com: domain of kvm+bounces-1581-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-1581-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id E7179280C52
-	for <alex.bennee@linaro.org>; Mon, 13 Nov 2023 08:18:04 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id DBEE915ADC;
-	Mon, 13 Nov 2023 08:18:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="LpkxvFZL"
-Received: from lindbergh.monkeyblade.net (lindbergh.monkeyblade.net [23.128.96.19])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F140915AD3
-	for <kvm@vger.kernel.org>; Mon, 13 Nov 2023 08:17:58 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 599D510F0
-	for <kvm@vger.kernel.org>; Mon, 13 Nov 2023 00:17:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1699863476;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=q42X0BrKYlxA1k6mvCtM7nD6PBtAE2gh+Zb8mj4NqmM=;
-	b=LpkxvFZLpMu8cm535qFiR7QuR7/56kcHdXRyDzBAUTj14H5WOfkiXK/pGLWAohcBr2wBoC
-	PvS6Hn29NygInexHFiaKn7CCdrExcEktDC7CXVxdz8kuKnDtRg/DVHuwY5TAw8ZgR3pTae
-	vd2I6K8bnSCyes3K/1jB3ppzBPV/GSo=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-255-tb-QDpZDOFuZcXOUGt6lPA-1; Mon,
- 13 Nov 2023 03:17:51 -0500
-X-MC-Unique: tb-QDpZDOFuZcXOUGt6lPA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 97A843813BC4;
-	Mon, 13 Nov 2023 08:17:51 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 837A22026D4C;
-	Mon, 13 Nov 2023 08:17:51 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: eric.auger@redhat.com,
-	Shaoqin Huang <shahuang@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	kvm@vger.kernel.org,
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=FzAqNIgf;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=2dt7RjPx38FrZiUBU9K5RW9mFpHeuvrpE3dBpoplUog=; b=FzAqNIgfBnqn1mnBmfjhagZd5j
+	Meuu71mdk5Eltlz/NMhrVOGPrQiQfMYXWDil1UIgVCUAd77KTazdiiSxIi3qjrocltWq8BT5R5iFS
+	d9Lawh5pwaHDLh3yhf20Qk2c4Q67dy92B0O7dsMYkueqIpxJulc/exOy4xbeqIiN3DicPypn9Nxwz
+	WaOHu8nrBQOSdgVIUe4J8jgxs+Zal7TU3sd/fUHL09Y1aIlUoWDQNuKz8NueruLucZnypEVO+kIn8
+	Noq62JXnR+aqKa6rvQVoNWHdueoThwhvUJOzAfyKFvJM0SspDhAL+K/C5ljNv4z5kjaPasOwe8QE+
+	PQXuUN1g==;
+Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1r2d9b-00GB4z-IQ; Mon, 13 Nov 2023 20:03:27 +0000
+Message-ID: <1681041d88a9f9062170eb6599947e24424bf37f.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 08/10] system/physmem: Only include
+ 'hw/xen/xen.h' when Xen is available
+From: David Woodhouse <dwmw2@infradead.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
 	qemu-devel@nongnu.org
-Subject: [PATCH v1] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Date: Mon, 13 Nov 2023 03:17:13 -0500
-Message-Id: <20231113081713.153615-1-shahuang@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
+ <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>, 
+ xen-devel@lists.xenproject.org, Stefano Stabellini
+ <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>, Peter Xu
+ <peterx@redhat.com>, David Hildenbrand <david@redhat.com>
+Date: Mon, 13 Nov 2023 15:03:20 -0500
+In-Reply-To: <20231113152114.47916-9-philmd@linaro.org>
+References: <20231113152114.47916-1-philmd@linaro.org>
+	 <20231113152114.47916-9-philmd@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-iZ/9pSLcedkHP5tz2Zm6"
+User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-X-TUID: 97MaM8kr4LuM
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: 0OHOYFBiiEDq
 
-The KVM_ARM_VCPU_PMU_V3_FILTER provide the ability to let the VMM decide
-which PMU events are provided to the guest. Add a new option
-`pmu-filter` as -accel sub-option to set the PMU Event Filtering.
 
-The `pmu-filter` has such format:
+--=-iZ/9pSLcedkHP5tz2Zm6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
+On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> "hw/xen/xen.h" contains declarations for Xen hardware. There is
+> no point including it when Xen is not available.
 
-The A means "allow" and D means "deny", start if the first event of the
-range and the end is the last one. For example:
+... if even when Xen *is* available, AFAICT. Can you just remove the
+inclusion of hw/xen/xen.h entirely? I think that still builds, at least
+for x86.
 
-  pmu-filter="A:0x11-0x11;A:0x23-0x3a,D:0x30-0x30"
+>  When Xen is not
+> available, we have enough with declarations of "sysemu/xen.h".
 
-This will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-also allowed except the event 0x30 is denied, and all the other events
-are disallowed.
+... and system/xen-mapcache.h
 
-Here is an real example shows how to use the PMU Event Filtering, when
-we launch a guest by use kvm, add such command line:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-  # qemu-system-aarch64 \
-	-accel kvm,pmu-filter="D:0x11-0x11"
 
-And then in guest, use the perf to count the cycle:
+--=-iZ/9pSLcedkHP5tz2Zm6
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
 
-  # perf stat sleep 1
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMjAwMzIwWjAvBgkqhkiG9w0BCQQxIgQgoOXrxgtP
+A79vTwMs5GSgPIPk0PRKx4Sx69Sb9kXn5hIwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBMmN2cDXFk2wFF5am6RpsbtdcnV/9EuofW
+oMvXFk2wvCfApN8+QUaGr9d6al9Uj+M/nma2E1N1IuCU1rnTsx/gVU9OzSlreJqHB4t2Ws2SGyv0
+kjllMO36QhcKw/U9N7zV3zMmL+SKUERmb/Wmoo+toibAHcbk/Pj6mbEHK480HmlhFx5glpmgnsW8
+yiG/kIoNeoJozU+Gku3+P+XhoFrdfkY6d9upTiYmQRH4Hc3WzkfheksH/LBM56RwxjKMsA8lb4Ql
+Z4wOI4bvAm3+bHpnaWEvSz2B6oUfSMMIhDE58elPv/marHfNfGNBJgigWh/Fy52uxcvdAcwGPQFg
+I+q0Wuce+yH7ffQ2JuiCHj1RfzykNJaZ/vdkPT5Nkx1e8eS6xW9EmMI0LvMKfZ9mtcWvXBYoxam4
+TMKO6cjck65VxaOS1Mg/qfpZxsgj+Ikf7m0C1QReJT6RmlbMV4UKtKn9LSXmBoYdRYwAJ/5+11Wc
+ltEN02XkybhqBnGFXqB54wpJ2TUkZkpwilfG9RFTGqdWX/CeTe4hOWmauMGK7ktZTSLkfSl6qaz5
+POlyP/en54bROyCyr8JoS7FpyrtFHEssP/pr3CP1OUcg7MHRNoF8bvwQHgiMJy8db5LiJOc1xORC
+0ZFwgwY21FZtcCs/kJOo51FkQdxnZ+XvqxWaSo0V4QAAAAAAAA==
 
-   Performance counter stats for 'sleep 1':
 
-              1.22 msec task-clock                       #    0.001 CPUs utilized
-                 1      context-switches                 #  820.695 /sec
-                 0      cpu-migrations                   #    0.000 /sec
-                55      page-faults                      #   45.138 K/sec
-   <not supported>      cycles
-           1128954      instructions
-            227031      branches                         #  186.323 M/sec
-              8686      branch-misses                    #    3.83% of all branches
-
-       1.002492480 seconds time elapsed
-
-       0.001752000 seconds user
-       0.000000000 seconds sys
-
-As we can see, the cycle counter has been disabled in the guest, but
-other pmu events are still work.
-
-Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
----
- include/sysemu/kvm_int.h |  1 +
- qemu-options.hx          | 16 +++++++++++++
- target/arm/kvm.c         | 22 ++++++++++++++++++
- target/arm/kvm64.c       | 49 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 88 insertions(+)
-
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index fd846394be..8f4601474f 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -120,6 +120,7 @@ struct KVMState
-     uint32_t xen_caps;
-     uint16_t xen_gnttab_max_frames;
-     uint16_t xen_evtchn_max_pirq;
-+    char *kvm_pmu_filter;
- };
- 
- void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 42fd09e4de..dd3518092c 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -187,6 +187,7 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
-     "                tb-size=n (TCG translation block cache size)\n"
-     "                dirty-ring-size=n (KVM dirty ring GFN count, default 0)\n"
-     "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
-+    "                pmu-filter={A,D}:start-end[;...] (KVM PMU Event Filter, default no filter. ARM only)\n"
-     "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
-     "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
- SRST
-@@ -259,6 +260,21 @@ SRST
-         impact on the memory. By default, this feature is disabled
-         (eager-split-size=0).
- 
-+    ``pmu-filter={A,D}:start-end[;...]``
-+        KVM implements pmu event filtering to prevent a guest from being able to
-+	sample certain events. It has the following format:
-+
-+	pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-+
-+	The A means "allow" and D means "deny", start if the first event of the
-+	range and the end is the last one. For example:
-+
-+	pmu-filter="A:0x11-0x11;A:0x23-0x3a,D:0x30-0x30"
-+
-+	This will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-+	also allowed except the event 0x30 is denied, and all the other events
-+	are disallowed.
-+
-     ``notify-vmexit=run|internal-error|disable,notify-window=n``
-         Enables or disables notify VM exit support on x86 host and specify
-         the corresponding notify window to trigger the VM exit if enabled.
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 7903e2ddde..74796de055 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1108,6 +1108,21 @@ static void kvm_arch_set_eager_split_size(Object *obj, Visitor *v,
-     s->kvm_eager_split_size = value;
- }
- 
-+static char *kvm_arch_get_pmu_filter(Object *obj, Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+
-+    return g_strdup(s->kvm_pmu_filter);
-+}
-+
-+static void kvm_arch_set_pmu_filter(Object *obj, const char *pmu_filter,
-+                                    Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+
-+    s->kvm_pmu_filter = g_strdup(pmu_filter);
-+}
-+
- void kvm_arch_accel_class_init(ObjectClass *oc)
- {
-     object_class_property_add(oc, "eager-split-size", "size",
-@@ -1116,4 +1131,11 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
- 
-     object_class_property_set_description(oc, "eager-split-size",
-         "Eager Page Split chunk size for hugepages. (default: 0, disabled)");
-+
-+    object_class_property_add_str(oc, "pmu-filter",
-+                                  kvm_arch_get_pmu_filter,
-+                                  kvm_arch_set_pmu_filter);
-+
-+    object_class_property_set_description(oc, "pmu-filter",
-+        "PMU Event Filtering description for guest pmu. (default: NULL, disabled)");
- }
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 3c175c93a7..ce03b22312 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include <asm-arm64/kvm.h>
- #include <sys/ioctl.h>
- #include <sys/ptrace.h>
- 
-@@ -131,16 +132,64 @@ static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
-     return true;
- }
- 
-+static void kvm_arm_pmu_filter_init(CPUState *cs)
-+{
-+    struct kvm_pmu_event_filter filter;
-+    struct kvm_device_attr attr = {
-+        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
-+        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
-+    };
-+    KVMState *kvm_state = cs->kvm_state;
-+    char *tmp;
-+    char *str, act;
-+
-+    if (!kvm_state->kvm_pmu_filter)
-+        return;
-+
-+    tmp = g_strdup(kvm_state->kvm_pmu_filter);
-+
-+    for (str = strtok(tmp, ";"); str != NULL; str = strtok(NULL, ";")) {
-+        unsigned short start = 0, end = 0;
-+
-+        sscanf(str, "%c:%hx-%hx", &act, &start, &end);
-+        if ((act != 'A' && act != 'D') || (!start && !end)) {
-+            error_report("skipping invalid filter %s\n", str);
-+            continue;
-+        }
-+
-+        filter = (struct kvm_pmu_event_filter) {
-+            .base_event     = start,
-+            .nevents        = end - start + 1,
-+            .action         = act == 'A' ? KVM_PMU_EVENT_ALLOW :
-+                                           KVM_PMU_EVENT_DENY,
-+        };
-+
-+        attr.addr = (uint64_t)&filter;
-+        if (!kvm_arm_set_device_attr(cs, &attr, "PMU Event Filter")) {
-+            error_report("Failed to init PMU Event Filter\n");
-+            abort();
-+        }
-+    }
-+
-+    g_free(tmp);
-+}
-+
- void kvm_arm_pmu_init(CPUState *cs)
- {
-     struct kvm_device_attr attr = {
-         .group = KVM_ARM_VCPU_PMU_V3_CTRL,
-         .attr = KVM_ARM_VCPU_PMU_V3_INIT,
-     };
-+    static bool pmu_filter_init = false;
- 
-     if (!ARM_CPU(cs)->has_pmu) {
-         return;
-     }
-+    if (!pmu_filter_init) {
-+        kvm_arm_pmu_filter_init(cs);
-+        pmu_filter_init = true;
-+    }
-+
-     if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
-         error_report("failed to init PMU");
-         abort();
--- 
-2.40.1
-
+--=-iZ/9pSLcedkHP5tz2Zm6--

@@ -1,207 +1,311 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1588447ejc;
-        Mon, 13 Nov 2023 12:03:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFjRWv+h6stj7J3/r2iKjv3zM3v0Ora3AXr+4FpuhXJnk9TTstuvFvQcMOjmhm5jOew2owm
-X-Received: by 2002:a05:600c:4eca:b0:408:3696:3d51 with SMTP id g10-20020a05600c4eca00b0040836963d51mr6035035wmq.4.1699905809424;
-        Mon, 13 Nov 2023 12:03:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699905809; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1256295ejc;
+        Mon, 13 Nov 2023 03:14:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFEaVjSOfVB8qIeHwykxWvT76m1smmifeXAFhb2P9DPhjbOkZEIq4/ryDPwvu87nz50mexn
+X-Received: by 2002:ac8:5a15:0:b0:418:1a08:729 with SMTP id n21-20020ac85a15000000b004181a080729mr6756608qta.10.1699874076151;
+        Mon, 13 Nov 2023 03:14:36 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1699874076; cv=pass;
         d=google.com; s=arc-20160816;
-        b=L1EkC9k3ICdEqniRhW/bk6QN4c8cjTt6S6oS0XK/WBAVnqVeK2g9Xv5InggW3pYsuW
-         XqDYp+tsbYCK6aGZy7m3GXQ5rHdwCIBv/WLflAFiR0lSMBuj5q2ILM5MpgqFF0o7rZ7X
-         Bi4oC9w05XHXYfDn1CHhFcimoAvKIy8in18t7hTeJ8DE/pz+Y8Lt3zbJt0mZamFyknIN
-         BiqIjMz1mSWuslyhSIqTW7BT5HxD5OaLurRuA80xGwWpfQxMO1kbQ4LXCR+oM0TsAPA2
-         wRJj1OjQZCKKLDXA7SSwp1xocvP/VYGGXQ2tqoKQTm4nvD1MQd8zG1Wp8yP6R+FCraw2
-         0vtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=2dt7RjPx38FrZiUBU9K5RW9mFpHeuvrpE3dBpoplUog=;
-        fh=PlCRF2v/4HSnMUIzszkzoyqkGuazZ1lFN4gjVJT9cRM=;
-        b=xFrcJgSdZQV98vTMApO4uutvNbIEGEzqZYbl8hZsgrbzna/MmDH/zx4x7pj6TEkcmg
-         WNC+lSgd1VosAPItuyOvFJZWJVssV05MGZmfOnVuvne86MnQNdjGtmho3BZomlfdjqOP
-         klmSV5BlwUCr2j3XxiqBG3hHa2wpqgSOzG4n61WJ7BPrFT3pGdjs+xNF2+H4dGB9EBp9
-         YVMkVwNcvkdCfWHWM5vPyaHSgeSPK6de3LL1DJlYW0WQ2GsMZlj/x7RP3itM/eNq938Q
-         aJnpRqvVUfT16OSvIQms2GREZamuTbT3lHjkOxq7lUIs+0iC97K+CayvHQopa09TPz0J
-         8nkA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=FzAqNIgf;
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
-Return-Path: <BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id m3-20020adffa03000000b00324f2ab4542si3247480wrr.645.2023.11.13.12.03.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 12:03:29 -0800 (PST)
-Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
+        b=njK+R7JHjF51x0HcTsFlXqC0y8+YjJUoOwuoGmnidbTmaBTWL/HkMmGM0FpPWyM/57
+         unnHdg8rL430tiQmCcdW5Qh5B9UTELSIz91X+jWr662xexvMfrHnOw5DVbzBmlyacebD
+         zS0W9wR80gbQLl1YF8ra7QrHRWojQEEICJQHL0sx47f9C9UCf55wipWQ3P/foBkS0Jfy
+         flUGv6JPVilmyK9yoo5B8YHUW9JUbcfTRkSHQTe5+p8IL3HxTGHWK1kYuMFEYem9XkzU
+         nDqbpGZLpPYMSLM96ihjG79sQFzrChZ+ZAa/hLCFyZbvLlMeU5dlH+wiDBLL26sTqdbL
+         Oezg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=Sk4AxTK80/olf0nT0AghfkkPpHBmSIFYOdc0Hq6i8uw=;
+        fh=2ycoQDXW4zv92QJXMgvXnqE/b3UBtl5a84L8k28XCZY=;
+        b=N5cKVIwfCgHK5TKm59c/yn/ZzUMVzNvctGEdGosAAzj0tjbLvlKuTeDiQL9D0XmzPz
+         4URw+JET6/xFgVmF2GhP4aI5+ntoT3GgKD4FY7RDEDxcKWygRVjejPzsQbY2ZYMNx2U6
+         EH0OQsM1qL8y1w3KePkRZoDawt1v+JP4ETunzXLtcCCxZijok5cl0TFnDbX94ucjfHr7
+         +VSnbqOs3yhl4pDUjI/fCCLDkwj0T8isUUSGqx1yK/eSkFUbjUweigK/MKoFe8x0sFl9
+         Pl0R3xHuHQRtpEcn5gIfc7inTSJExYFryneRsqLRMEgNC0VP3odqlgMaH9fo+PEI7NHN
+         kNLQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="DB86/RSX";
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a7-20020a05622a064700b0041cc795c5e3si4254156qtb.759.2023.11.13.03.14.35
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Nov 2023 03:14:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=FzAqNIgf;
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=2dt7RjPx38FrZiUBU9K5RW9mFpHeuvrpE3dBpoplUog=; b=FzAqNIgfBnqn1mnBmfjhagZd5j
-	Meuu71mdk5Eltlz/NMhrVOGPrQiQfMYXWDil1UIgVCUAd77KTazdiiSxIi3qjrocltWq8BT5R5iFS
-	d9Lawh5pwaHDLh3yhf20Qk2c4Q67dy92B0O7dsMYkueqIpxJulc/exOy4xbeqIiN3DicPypn9Nxwz
-	WaOHu8nrBQOSdgVIUe4J8jgxs+Zal7TU3sd/fUHL09Y1aIlUoWDQNuKz8NueruLucZnypEVO+kIn8
-	Noq62JXnR+aqKa6rvQVoNWHdueoThwhvUJOzAfyKFvJM0SspDhAL+K/C5ljNv4z5kjaPasOwe8QE+
-	PQXuUN1g==;
-Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
-	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r2d9b-00GB4z-IQ; Mon, 13 Nov 2023 20:03:27 +0000
-Message-ID: <1681041d88a9f9062170eb6599947e24424bf37f.camel@infradead.org>
-Subject: Re: [PATCH-for-9.0 08/10] system/physmem: Only include
- 'hw/xen/xen.h' when Xen is available
-From: David Woodhouse <dwmw2@infradead.org>
-To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
- <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>, 
- xen-devel@lists.xenproject.org, Stefano Stabellini
- <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
- <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>, Peter Xu
- <peterx@redhat.com>, David Hildenbrand <david@redhat.com>
-Date: Mon, 13 Nov 2023 15:03:20 -0500
-In-Reply-To: <20231113152114.47916-9-philmd@linaro.org>
-References: <20231113152114.47916-1-philmd@linaro.org>
-	 <20231113152114.47916-9-philmd@linaro.org>
-Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
-	boundary="=-iZ/9pSLcedkHP5tz2Zm6"
-User-Agent: Evolution 3.44.4-0ubuntu2 
-MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: 0OHOYFBiiEDq
-
-
---=-iZ/9pSLcedkHP5tz2Zm6
-Content-Type: text/plain; charset="UTF-8"
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="DB86/RSX";
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r2UtR-0007Os-2l; Mon, 13 Nov 2023 06:14:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1r2UtP-0007OH-N8; Mon, 13 Nov 2023 06:14:11 -0500
+Received: from mail-dm6nam12on2060a.outbound.protection.outlook.com
+ ([2a01:111:f400:fe59::60a]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1r2UtN-0002Ii-96; Mon, 13 Nov 2023 06:14:11 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aooeACX7ZrduQ1T3IzW7Se7QgVgajipu6ZgzKctlaNCxdGIbxL4eJhczwhJ5dLcEdVjhuvwNkTy7qiz9MFH8NLn2cphwXLI6Q2FsSbeJ8GhUjdtDffLG1sE6pZ/UKX7ZIJJ/lG0iFxk23FHDU+vfCPO5UgwHJQC6R+7AVCTsgD6Y9IYzKmx8PxKgeme5qM1z5+UXlTpXVbM40LhI9Fiq0OxshRmWbASLaaOFzVFWBVciDNqJHGc+x7XHRFyrXlitRfH5ghCUWxZlZHGoucYymB6d+AuH3TYTb0v0hLTj2Dlsb42xioNIw8iKoimO5Ww9+99rzNQyRjekZV5k6/Qr5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Sk4AxTK80/olf0nT0AghfkkPpHBmSIFYOdc0Hq6i8uw=;
+ b=EBNcGhmLbDFjdRiAoBtBF0us18m1230WS26eYVw2FNgPyGr/sJxcRckk0i3wQ95DHcXwVdWTXB0tQzfNzv+9pXIC+7j59rHUpxmnmh9kqVF2Osl3DvaIC7PeiBN8aVFR9Dj6/tm/YLbtQaSxFGyEfesfp4hrvYW2T3kvR5OAYQE7Tq8M7Pez6HnvLgbQbo3AT1dLjnJe2dO3yFX5NISORDd7oeSLati37Cfd8ltWyjnxoMb9SgusAdb5ccpFyBWuOTEuQe0u0dxRqeZl7V1/nU95hp2jRYrJsZpEKaCPMmCp74kge6edUs9ZSvh8Ve5eLib42rxdx/FQg+qY9/yvZg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Sk4AxTK80/olf0nT0AghfkkPpHBmSIFYOdc0Hq6i8uw=;
+ b=DB86/RSXyDXqsgmTyx6MRWwRpYiFJR1WwjmQP5qGPnLrwBjrqCiSbIRtr4h+IeFLQ76JTMqBYRxg984gLJTHfAN/NvSvdnnZvcLNPPAyIMuDUlAZQwA7j5tKS6k7+275BRXW4Bo8My6dLcJYl8kRJs2ty3I6qrKck6qhrW03WU0Bsyp2QdPYktJuyfqx+cMET2Xa5rk/VYVQcFXo/twL9/8Bz7sX2WruO1q1OS77YHCvRgALCQBtOiESH12Sf7XisbKloyVtsteDku0B553+6VQaS8VJyeN90Y0f0LfOPC/s8Faol7tx1c8UNwfzrQvjtL0VQ3O1dGrycdW9dMbGoA==
+Received: from BY5PR12MB3763.namprd12.prod.outlook.com (2603:10b6:a03:1a8::24)
+ by DS7PR12MB9042.namprd12.prod.outlook.com (2603:10b6:8:ed::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.31; Mon, 13 Nov
+ 2023 11:14:01 +0000
+Received: from BY5PR12MB3763.namprd12.prod.outlook.com
+ ([fe80::946b:df84:1f08:737a]) by BY5PR12MB3763.namprd12.prod.outlook.com
+ ([fe80::946b:df84:1f08:737a%5]) with mapi id 15.20.6977.029; Mon, 13 Nov 2023
+ 11:14:00 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "eblake@redhat.com" <eblake@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>, "david@redhat.com"
+ <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
+ "Jonathan.Cameron@huawei.com" <Jonathan.Cameron@huawei.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v3 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Topic: [PATCH v3 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Index: AQHaEazTOeKIE4XgF0qerAxHLKOa8rBvbzCAgAJ8Bb4=
+Date: Mon, 13 Nov 2023 11:14:00 +0000
+Message-ID: <BY5PR12MB376329341A19E4FA1B5B63FDB0AFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+References: <20231107190039.19434-1-ankita@nvidia.com>
+ <20231107190039.19434-3-ankita@nvidia.com>
+ <20231107172318-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20231107172318-mutt-send-email-mst@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|DS7PR12MB9042:EE_
+x-ms-office365-filtering-correlation-id: 55cf8adf-c3ab-4bdc-024d-08dbe439a34b
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: P4082z3DByjMutHD/O6I11/12oK5/vnmfQ9l0IlegA1oQSLvOK0LCmbnbLFU39RtcBeEiiNI8kUZXUxX3XlahA90AjFT4I1pqgwK15fNFQBqwN3tYRWx7iyHLvMySRIOw8riUPOU0hpgrinzGX7AZWmPMEB3L4cpePhH/D3D3BGINdoRT8Mo7S7SeCeW87Om26op0NbXyoZL1m6yjI1zLKNyB2RdUKs61gS6DtHnaG0AAQNo0eGwPm0sFprix/eDX+TaWc3wWx23lE/iuW+3c0EXzvUmDGdUGRcWLgX9CVbBuihhupASbaI2mLAbtUNeanoxglsBN5jpXB12lCfbwFmXhBv58NE76kjms19YYofdU1Xa2rjEuDBmIhQrLV/f4YcDYV6hm3xAcw9D3LT11YPWQ8hExpFW6LQqVxPZnmNVgXcTcpssxTJi/lJry7IFhbRseiTif+zgBqm9xoXrL1147ibpXHTjuf0ivD51S3Dng8K0WIYcmMG0l64yegpAWh049GoAfvjJfnmo2UCkOJygc8VWDV5WVeOHPrP2+Je3uuFPFUdgADXkq982JNwlzKfmjFaUPu+4qesCH0BQpn+3uW0qltTcHLLTFWkBgEqLHN3hP/c4ZT0wpekInfiK
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR12MB3763.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(39860400002)(136003)(366004)(396003)(346002)(376002)(230922051799003)(451199024)(186009)(1800799009)(64100799003)(7416002)(38070700009)(2906002)(52536014)(71200400001)(5660300002)(86362001)(41300700001)(33656002)(26005)(91956017)(9686003)(54906003)(66446008)(66556008)(66946007)(76116006)(66476007)(6916009)(316002)(55016003)(64756008)(83380400001)(38100700002)(478600001)(122000001)(7696005)(6506007)(8676002)(4326008)(8936002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?3S4ZxKNLZm5LfPuOooyPiP3yV5OhPUqenh24MlFUO8NMRQe/bHZ4t/UN8C?=
+ =?iso-8859-1?Q?0/zYq8L0MnSjxlpIHylabMxDuBqhggoCqkMkXvp0E7e3EQJyXBNQfiym/h?=
+ =?iso-8859-1?Q?eaUGHb58AUdIU+sjo1TOEnfKH1qL6R1q8WN5goB4Fx0/HtjPvPl3b0CYku?=
+ =?iso-8859-1?Q?inL7IUcXghuPxUdEkTPx5zlKJ8e7B+YzQdLDlICFn5A/oOVVPllkuQdoBg?=
+ =?iso-8859-1?Q?7S+XPfbgqONv8IxarGYCSSCGHDhIXm6Z+/FMJ8Z1+RiE67GbchtQ8lMsLp?=
+ =?iso-8859-1?Q?K8BJDnTDnJ4TCaVZzIz6FupdXZI8rho6tMHD4WMAe3SjJ9xBb9sbWRTNa0?=
+ =?iso-8859-1?Q?4Q4ZgMN3c/zDftxXfrPGeE7wRsgM5+7Lr3NeBCUqbxpNmGSLLoaVVAa0o9?=
+ =?iso-8859-1?Q?gjTm5aQK/j8PTVARxzxdcP2HemR8RxrJRY6CjXur0J+BOrWPPUWZbZlxXQ?=
+ =?iso-8859-1?Q?8y6P+Cpzw0bSulLgA+kjP8l2W2UJlyR2OL/l5FxhjQrzQxihIQ9cFC6SVf?=
+ =?iso-8859-1?Q?76e4d2FRfRvvCeoY/ub9tMDj1L/KN8nQWGslf+jlj2FIko5UHVlAwG44W4?=
+ =?iso-8859-1?Q?CeT6Kw7mjYaMYDt/LkLog9yovNdbzG3PUe4U4jxC4h33k6Asd9bJZT+ffW?=
+ =?iso-8859-1?Q?8XGRKHOobdCqbTKQM0i+IAsVH/m6t/SEA6LM+R5JqCHODf42Xfdmaay73y?=
+ =?iso-8859-1?Q?vL+nmOZUP9EHOebGUcdJdTWcGMNSm+4M6friFTgLG/+JUhwTtT9QOV36Js?=
+ =?iso-8859-1?Q?WPPWpdX0NYFK0IkqBZraQE79yBx+n1+Ai6kpP7cdi6Lpi4YWjscJlUvEs1?=
+ =?iso-8859-1?Q?eMVCp8UPzGWtqZ9MmMk3GOGB21qlgbWIxneuW6KNtmD7bewPV5jfGqHSX6?=
+ =?iso-8859-1?Q?SwOfsSJqcEGjx6wHz1dKUnvJ8IE0UTOEVgG6x6oMPDwfllidJwByS1RE+3?=
+ =?iso-8859-1?Q?+CoBgzUSgsILZJb/crvv4vPNi7Zn3JaSxX+UFClsBvey8ttjk/3loFrwE/?=
+ =?iso-8859-1?Q?A8+dvEV56689QJ8xGUwAE2jVfK1nUe+09+wd7tVLZOPT8S0Gq3Qc67CZJY?=
+ =?iso-8859-1?Q?OYM3H0E2kS4vyhhXs/SWgX892FaSivCeynM6mY10wQ6Tlk6E4Tz9Ngh8ml?=
+ =?iso-8859-1?Q?GSm3V2wtIhVyywpk5DM+9PlOZo8cTPUh3ndyLrdnWnATZIoc30RFkv15K6?=
+ =?iso-8859-1?Q?FJOh0PfQ2elPxwzeiR5x9TtVotz3+2pI7wJlm/j27g1WPLzx6QIvAD4qJE?=
+ =?iso-8859-1?Q?oST6sIJjAAVD632msy6sHrYnp4ru5/MdjG8MFPaPHAfOpp6gv3DWYJgUXk?=
+ =?iso-8859-1?Q?UFhantJeJ/yeLjEJ5JGgAiYYPSxQrZUmpIzmPrZkXVf9lPDVEEZbKpTn1x?=
+ =?iso-8859-1?Q?sCNbcFJDMwhdB/oE+eBXVDaLq2phFQME6KBMj+3A+LTng27C+KmVfPhi1h?=
+ =?iso-8859-1?Q?c1ywYJH50dDffNk9kRzFwIU3Zu5dbV1N5ckCVIKR3lgR00x/A05zyaDWEz?=
+ =?iso-8859-1?Q?zH97oxDWRUUnAZpVVKc+rW5YMlZ8u9SKEgQR+SIZhq9sGWTOliEdLor0i9?=
+ =?iso-8859-1?Q?Lfu003OP47b8wn36ly+bhfooyzrJdDGgE9ycd7WYabtfgSmHfyF1fcRpTb?=
+ =?iso-8859-1?Q?g2ce1pFzme6qo=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3763.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 55cf8adf-c3ab-4bdc-024d-08dbe439a34b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Nov 2023 11:14:00.6724 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: g/PimcnD1utrx8YyhFgGXYr59HEsr5Lvcv837jobCBdWKAXDNKsMKAXQ//TjuIR4kTbWJNYrzWQajkbEOJI1Hw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB9042
+Received-SPF: softfail client-ip=2a01:111:f400:fe59::60a;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VQoDL713MXUP
 
-On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
-> "hw/xen/xen.h" contains declarations for Xen hardware. There is
-> no point including it when Xen is not available.
-
-... if even when Xen *is* available, AFAICT. Can you just remove the
-inclusion of hw/xen/xen.h entirely? I think that still builds, at least
-for x86.
-
->  When Xen is not
-> available, we have enough with declarations of "sysemu/xen.h".
-
-... and system/xen-mapcache.h
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-
-
---=-iZ/9pSLcedkHP5tz2Zm6
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
-ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
-EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
-FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
-aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
-EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
-VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
-aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
-AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
-ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
-QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
-rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
-ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
-U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
-DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
-BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
-dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
-BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
-QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
-CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
-xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
-IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
-kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
-eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
-KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
-1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
-OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
-x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
-5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
-DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
-VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
-UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
-MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
-ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
-oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
-SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
-xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
-RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
-bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
-NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
-KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
-5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
-C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
-gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
-VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
-MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
-by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
-b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
-BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
-QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
-c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
-AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
-qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
-v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
-Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
-tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
-Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
-YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
-ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
-IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
-ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
-GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
-h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
-9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
-P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
-2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
-BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
-7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
-lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
-lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
-AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
-Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
-FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
-BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
-cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
-aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
-LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
-BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
-cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
-Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
-lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
-WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
-hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
-IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
-dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
-NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
-xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMjAwMzIwWjAvBgkqhkiG9w0BCQQxIgQgoOXrxgtP
-A79vTwMs5GSgPIPk0PRKx4Sx69Sb9kXn5hIwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
-A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
-dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
-DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
-MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
-Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBMmN2cDXFk2wFF5am6RpsbtdcnV/9EuofW
-oMvXFk2wvCfApN8+QUaGr9d6al9Uj+M/nma2E1N1IuCU1rnTsx/gVU9OzSlreJqHB4t2Ws2SGyv0
-kjllMO36QhcKw/U9N7zV3zMmL+SKUERmb/Wmoo+toibAHcbk/Pj6mbEHK480HmlhFx5glpmgnsW8
-yiG/kIoNeoJozU+Gku3+P+XhoFrdfkY6d9upTiYmQRH4Hc3WzkfheksH/LBM56RwxjKMsA8lb4Ql
-Z4wOI4bvAm3+bHpnaWEvSz2B6oUfSMMIhDE58elPv/marHfNfGNBJgigWh/Fy52uxcvdAcwGPQFg
-I+q0Wuce+yH7ffQ2JuiCHj1RfzykNJaZ/vdkPT5Nkx1e8eS6xW9EmMI0LvMKfZ9mtcWvXBYoxam4
-TMKO6cjck65VxaOS1Mg/qfpZxsgj+Ikf7m0C1QReJT6RmlbMV4UKtKn9LSXmBoYdRYwAJ/5+11Wc
-ltEN02XkybhqBnGFXqB54wpJ2TUkZkpwilfG9RFTGqdWX/CeTe4hOWmauMGK7ktZTSLkfSl6qaz5
-POlyP/en54bROyCyr8JoS7FpyrtFHEssP/pr3CP1OUcg7MHRNoF8bvwQHgiMJy8db5LiJOc1xORC
-0ZFwgwY21FZtcCs/kJOo51FkQdxnZ+XvqxWaSo0V4QAAAAAAAA==
-
-
---=-iZ/9pSLcedkHP5tz2Zm6--
+>> +=A0=A0=A0=A0=A0=A0=A0 for (l =3D gi->nodelist; l; l =3D l->next) {=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDeviceHandle dev_handle =3D {0};=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDevice *pci_dev =3D PCI_DEVICE(o);=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 dev_handle.bdf =3D PCI_BUILD_BDF(pci_=
+bus_num(pci_get_bus(pci_dev)),=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0 pci_dev->devfn);=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 build_srat_generic_pci_initiator_affi=
+nity(table_data,=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0 l->value, &dev_handle);=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 }=0A=
+>> +=A0=A0=A0 }=0A=
+>=0A=
+> if you never initialize segment then I don't see why have it.=0A=
+> It's just the bdf, just pass that as parameter no need for a struct.=0A=
+>=0A=
+> I'd explicitly set the segment to zero just to make it more apparent=0A=
+> that it would need to be addressed when QEMU adds multi-segment=0A=
+> support.=0A=
+=0A=
+Okay, so I'll keep the segment id, but set it to 0 explicitly.=0A=
+=0A=
+>> + * ACPI spec, Revision 6.5=0A=
+>=0A=
+> we normally just say ACPI 6.5 even though a couple of places are more=0A=
+> verbose.=0A=
+>=0A=
+> In ACPI we document *earliest* spec version that includes this, not just=
+=0A=
+> a random one you looked at. I checked 6.3 and it's there.=0A=
+> Pls find earliest one.=0A=
+=0A=
+Will make the change.=0A=
+=0A=
+>> +typedef enum {=0A=
+>> +    GEN_AFFINITY_NOFLAGS =3D 0,=0A=
+>> +    GEN_AFFINITY_ENABLED =3D (1 << 0),=0A=
+>> +    GEN_AFFINITY_ARCH_TRANS =3D (1 << 1),=0A=
+>> +} GenericAffinityFlags;=0A=
+>=0A=
+> Don't add these one-time use flags. They are impossible to match to=0A=
+> spec without reading and memorizing all of it. The way we do it in ACPI=
+=0A=
+> code is this:=0A=
+>=0A=
+> (1 << 0) /* [text matching ACPI spec verbatim ] */=0A=
+>=0A=
+> this also means you will not add a ton of dead code just because it is=0A=
+> in the spec.=0A=
+=0A=
+Ack.=0A=
+=0A=
+>> +typedef struct PCIDeviceHandle {=0A=
+>> +    uint16_t segment;=0A=
+>> +    uint16_t bdf;=0A=
+>> +    uint8_t res[12];=0A=
+>=0A=
+> what is this "res" and why do you need to pass it? It's always 0 isn't=0A=
+> it?=0A=
+=0A=
+It is 12 bytes reserved field in the "Device Handle - PCI" described in =0A=
+ACPI 6.5, Table 5.66. I'll remove it.=0A=
+=0A=
+>> +=0A=
+>> +        o =3D object_resolve_path_type(gi->device, TYPE_VFIO_PCI, NULL)=
+;=0A=
+>=0A=
+> As per previous comments, this should not be tied to vfio.  This should=
+=0A=
+> be able to describe an association between any PCI device and various=0A=
+> proximity domains, even those beyond this current use case.=0A=
+=0A=
+Sure, will change it to use TYPE_PCI_DEVICE.=0A=
+=0A=
+> It also looks like this support just silently fails if the device=0A=
+> string isn't the right type or isn't found.  That's not good.  Should=0A=
+> the previous patch validate the device where the Error return is more=0A=
+> readily available rather than only doing a strdup there?  Maybe then we=
+=0A=
+> should store the object there rather than a char buffer.=0A=
+=0A=
+AFAIU in a normal flow currently, a qemu -object is (parsed and) created mu=
+ch=0A=
+earlier that a -device. This complicates the situation as when the=0A=
+acpi-generic-initiator object is being created, the device is not available=
+ for=0A=
+error check. Maybe I should treat this object specially to create much late=
+r?=0A=
+=0A=
+> Don't we also still need to enforce that the device is not hotpluggable=
+=0A=
+> since we're tying it to this fixed ACPI object?  That was implicit when=
+=0A=
+> previously testing for the non-hotpluggable vfio-pci device type, but=0A=
+> should rely on something like device_get_hotpluggable() now.=0A=
+=0A=
+I think this will be similarly problematic as above due to the sequence of=
+=0A=
+object creation.=0A=
+=0A=
+> Also the ACPI Generic Initiator supports either a PCI or ACPI device=0A=
+> handle, where we're only adding PCI support here.  What do we want ACPI=
+=0A=
+> device support to look like?  Is it sufficient that device=3D only=0A=
+> accepts a PCI device now and fails on anything else and would later be=0A=
+> updated to accept an ACPI device or should the object have different=0A=
+> entry points, ex. pci_dev =3D vs acpi_dev=3D where it might later be=0A=
+> introspected whether ACPI device support exists?=0A=
+=0A=
+I am fine with either way. If we prefer different entry points, I can make =
+the=0A=
+change.=

@@ -1,55 +1,55 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1592527ejc;
-        Mon, 13 Nov 2023 12:09:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG1AunJm+PRmgRjS98Y0JzIvVRmgFraqeIvvttfZdB4Xv4aSqq8mhpoak8NZ05+FZLO3e1Y
-X-Received: by 2002:a05:600c:35d2:b0:40a:4835:d2a7 with SMTP id r18-20020a05600c35d200b0040a4835d2a7mr6542178wmq.7.1699906193004;
-        Mon, 13 Nov 2023 12:09:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699906192; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1593987ejc;
+        Mon, 13 Nov 2023 12:12:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGMEzCBZ5L0Cnm9hgJjbEProAAY4gLCCYrDvPd+E1NedPmVjj2zlcwmGAOawucK7i6QkucX
+X-Received: by 2002:a5d:6d8f:0:b0:32f:a7d5:4ef with SMTP id l15-20020a5d6d8f000000b0032fa7d504efmr7165959wrs.44.1699906339799;
+        Mon, 13 Nov 2023 12:12:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699906339; cv=none;
         d=google.com; s=arc-20160816;
-        b=NPveve6OF/n3qf5O/eBJW4vhiIXtJyEiCf9s0WfQJAJ8qyZUZdnWXbh3+CC+lcHERD
-         pfPBpf79X/PKKZCUA30CL7jMvG0IgZ22DF0ywKrbEXqGDMIBHC4W2BevPQTss1sqGFlt
-         kk4RDZA1FeAjq+kQXdUrn7cSOKXkEmMy5uAK94sDYjzjtuT1LakqhLDvEwkXd5FOLHDN
-         VUBL5SRDLUemn+4KQa8ktsKONJoYwGVou1yLZERNGsSfhtJFGBv2upSRYAoAJj8g7Oju
-         yKMbc2Nj6GeTTWJsPTYYJUPZJwnAvCdFYTTxT6tXumqrL64sjcoKDvmpk08bhM+H3jfX
-         dUaw==
+        b=hp88C7i7uVuqC8JNHwKhNlOFWBWpAGXRik300Eiz5VyBTuDLKQjPuIpn3nNvGTe+q1
+         Jb2JrP/I0xo73g77SrNr+0ov6b7YBU6w03NRg7rb2RoC3dXx6mXF3dv6BLSquimMWHCw
+         ZyUVa+YqLo3AstkZ7Jo0TH+9as6HIHvCk50d/rQb8oPGkvu8l4UdRc2L2qShdyc71Pbk
+         QSI262C1CNcN7axT1K5+A5Y9y8oNSWtPFMSnqQHLv/qUJk8xRM5x2tAd2UcUmFQSChgx
+         8hTXmn0WZDtTtN8x/QhdL6W7CPGcrPcDwxThi1OduX195gbFEwFFrybZJoRuk+i39mah
+         kpqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
          :subject:message-id:dkim-signature;
-        bh=RPMPzz9i1BequIN2qb1D2kZ94UKPCFkt9Mpn3oIoJKo=;
-        fh=FAV6Jr/R4uoM9udqlRHhWTkg6G0kFmRX0XpjOjePAzY=;
-        b=WZxbkaFdx7rDuV8KizwjODwn3QXxTy7kF12FvF8vfHThXcdA2f4KMbLWsC4aLPe6v5
-         L7jeSTALtRmDNMig/SWzobTrIUI18TgHJJeUVA2KG1ADh+/mv5xtL1BQuCFO+/jiLgCx
-         anMzIlnU53mDNhyGa6D/0r6l0yIHg38rWGjH5CbpDszXxvhp61uwLJ2pEHXGIU38Ru/+
-         rUcbckaXiUY6KIjUe3CVsCJsPA12iJz5N/xKWm37yAFxcxXAmCw/JK51/S1a7RJqqLsP
-         Lj0pjxB8IvIoAe/bL17HfCfDO+XMJgLLMbsVHxXGZZ/MO4/KNmDIcZLM26dVD75WKfBo
-         DeVw==
+        bh=sQm/Tabsg7dO3SHwFkRkAeXj69ouuRh5ESlA3ivn13g=;
+        fh=H3GtsGU+TYMYaMvHl5w+4xg5ThzIkVo3keTyIY595tY=;
+        b=KZRPfn0deQzPdEqV59rbwQfnLBHdK6J8CbxidqkDDhnCcK88GHkiqszkPse5mX+eVr
+         mvqUpPyHUjK2cIzP0vKNfUr4PYaNJgBEI8oTeUQ2IS/VL5kG2kYRdeiRehVhrOpMKlCr
+         aJ97cwH4XaGH+mfZU3JnRUDKiEwyBlIglFAF9MiHDK9UnVI3iDkvtwNKS9WzfIQV3ILW
+         eiPc5HvVn3/8C6op3vERVS76B7w5s3lzAvZqzrU4JVLY3B1tetjuFB9+KnTFxwNRYVM2
+         e4jZx3tefqB8yH8THUkI6Z8pJmEPnITlUirHW9ymE+2KRk5oq0yZmuS6wGSRYxtqWJOE
+         WZ1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=OanfNBX7;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=labIxc4Z;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
 Return-Path: <BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org>
 Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id l20-20020a05600c4f1400b00405019767cfsi7254924wmq.2.2023.11.13.12.09.52
+        by mx.google.com with ESMTPS id bu23-20020a056000079700b0032fa5f8c9dbsi3421651wrb.1004.2023.11.13.12.12.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Nov 2023 12:09:52 -0800 (PST)
+        Mon, 13 Nov 2023 12:12:19 -0800 (PST)
 Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=OanfNBX7;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=labIxc4Z;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
 	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=RPMPzz9i1BequIN2qb1D2kZ94UKPCFkt9Mpn3oIoJKo=; b=OanfNBX7b+eXbQxCggOQL2bnrL
-	/CDwSttmzKhHjZqislHPtGGJ49J4QT03wHvWiF7E0dd0oIGpnEXTW/0on+f0gch58aY7xO2hKP5P2
-	VR5kNmeauO7WEUo7llMOCj1IZVtpTWF+yoq3XtLIRdDNIiipk9DBDz25lgP5cNGwt3ybYQeoFjNeT
-	JhhT3Ts3acAkS0oxRiMPI2eMuRqNduSdlTgtDRL5e8V65yXNPdi8zUny/9+a55nxsxOHxXAYhAMr2
-	Z0q2kZELyVvgtXprhygc+1cXNp8FJjVdG3etOqiHYkwODCLEOrFlklfSEvW5sxZZFHvwbxNsnUh8P
-	a+W5tAbQ==;
+	bh=sQm/Tabsg7dO3SHwFkRkAeXj69ouuRh5ESlA3ivn13g=; b=labIxc4ZcCZU2BQlMoZnuQ1rx4
+	8o1bTJSSKq3rM+ZUgNxxfNFtlo68q2GDBPHM7/MRn/iDC2lRKZ81gIz3VpIeCAhUcNgfNVQkwNJWC
+	2PfJc2PhAEv3ma7I9L69IjuEuSsv3Due2N8XX2ME5B/4IMmQPi5tW582ScmzbEv4AtM6LiKLahD7m
+	9LnscN8esKs0o4yLBdDw0XiescaJYaqLHaUDaVc1zJ9G7AOG7/TtdOKKWWt6Xw7e9fw+tT7JqBPO8
+	pz5/gbArWSSN84tUq/vqzTraRjLfU4hK+LQUjGTl/JIWsOagQG7CL5fLTY+hv9ZcGnYHqELeNF4vR
+	8A1xBdvA==;
 Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
 	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r2dFe-00GDYK-II; Mon, 13 Nov 2023 20:09:43 +0000
-Message-ID: <e9cae2ced357b35d313f601318b51e491ead81c1.camel@infradead.org>
-Subject: Re: [PATCH-for-9.0 09/10] hw/xen: Extract 'xen_igd.h' from
- 'xen_pt.h'
+	id 1r2dIA-00GDfw-00; Mon, 13 Nov 2023 20:12:19 +0000
+Message-ID: <e761956a53b769ab0ccedaa985eea0dcacd70990.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 10/10] hw/xen: Have most of Xen files become
+ target-agnostic
 From: David Woodhouse <dwmw2@infradead.org>
 To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
 	qemu-devel@nongnu.org
@@ -58,46 +58,36 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
  xen-devel@lists.xenproject.org, Stefano Stabellini
  <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
  <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>,  Richard Henderson
- <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Mon, 13 Nov 2023 15:09:36 -0500
-In-Reply-To: <20231113152114.47916-10-philmd@linaro.org>
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>,  Stefan Hajnoczi
+ <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz
+ <hreitz@redhat.com>
+Date: Mon, 13 Nov 2023 15:12:14 -0500
+In-Reply-To: <20231113152114.47916-11-philmd@linaro.org>
 References: <20231113152114.47916-1-philmd@linaro.org>
-	 <20231113152114.47916-10-philmd@linaro.org>
+	 <20231113152114.47916-11-philmd@linaro.org>
 Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
-	boundary="=-eVaaov3VWp7iZK3p/HAp"
+	boundary="=-1qdYEFrlmqNAZQBgEn0B"
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: mw+WDphNkxo/
+X-TUID: E/b4jnU7fGJ1
 
 
---=-eVaaov3VWp7iZK3p/HAp
+--=-1qdYEFrlmqNAZQBgEn0B
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
-> "hw/xen/xen_pt.h" requires "hw/xen/xen_native.h" which is target
-> specific. It also declares IGD methods, which are not target
-> specific.
->=20
-> Target-agnostic code can use IGD methods. To allow that, extract
-> these methos into a new "hw/xen/xen_igd.h" header.
+> Previous commits re-organized the target-specific bits
+> from Xen files. We can now build the common files once
+> instead of per-target.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 
-> ---
-> What license for the new "hw/xen/xen_igd.h" header?
 
-The existing xen_pt.h came in with xen_pt.c (GPLv2) in commit
-eaab4d60d. I think it has to be GPLv2 (and not later) just like
-xen_pt.c?
-
-
---=-eVaaov3VWp7iZK3p/HAp
+--=-1qdYEFrlmqNAZQBgEn0B
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -189,24 +179,24 @@ IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
 dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
 NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
 xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMjAwOTM2WjAvBgkqhkiG9w0BCQQxIgQg/xeb+vWh
-AjsJWOHTG4Htv3vvTuidSmbu8iXpLTa3nNIwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMjAxMjE0WjAvBgkqhkiG9w0BCQQxIgQgEUzKl1UF
+mgx/+JB+i5Swm0M0VJt8RVe+QRtaOGU5Wdkwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
 A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
 dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
 DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
 MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
 Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBpCGrOlqR09fDF3datn5pMjc7VlbWpE+Bg
-xd5M98o43GsYsjVGm9rD1VP1ZiXxEBtAFespxn/vbWnLtJAAztNllqO5mCDPRZ+YukadXJ+1RIbS
-CUD1hR4IGrKQDdmoBBrTN+63zcSiihj4IR20iI4EZwLYZI9rIBa1s3Fl7siKEcKk9TjG+x0W6KZk
-wkEcbSGOYzewdC/2FCZtvHK42Ryl0b0nklQWa1tlJT0uR5UOWiIIiQ/BgKmSF+b1kV9VRdkiu4r1
-qi/KbS8l3fKOAyNuSC/H8l0ZYMBn+VxraLf7LdDyOaf2Z3SxXdcD+lApAsrGgDIMN+D9og082THM
-neQrJoiZesFiPMox2AJ9FJUmJgXOJEyvyV5FQ0hdaNG5lVxUg6qzSn7DOJPeDhSQ8EvwWnLpiM71
-epHujsENsbtJAo3GQnxBHcpzNiX09k8emUXaIZboBpRWBO/XJQ3qhUcgjPMHL6Od9GtR0RGeNr69
-pnvgHw6W2A22ZM3S8zOj/FjfprkQzMT65FbulqXglZuVOxGg2129Kn5AuiRMePPUwRa7zh/VfFRr
-dDNGRLgd9hWNoz3/xUs5hkwiSxTYF4pOSD+xlV2l3bnTFwB4QANsYb5Os5cg27d4VyuB+nB8dgEp
-t1aEPpuEZSDqDKEP9LB8inSmBgsODIU6ZOsBndnXtwAAAAAAAA==
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgAX3bFdQMDwX9ixj3RzoEwdJTiSmlmZyYq7
+ZsSJlwSGr2p0KMcQYHLWRe+0VPYLTzyJqL8G+PWoN8BojUDwoo6o3dLCMwx0fndekIeAt3EcLc89
+NLafPYwUlZ3nNgcHzLHe+yLOivzQLx2vOvOGSFSxHgJBpEtzuzuz5OAeYMen2w4PFjc6ktS9kw2q
+lS+D2RK92vTF+3mIM9xnUKNKkECakOL87dY0V86lHS/0itrT0DWlscyYqZTLGq4CtnKbacZlfIhi
+tIyFDVhgSE/EqCacG3JGvqCQKiWFwgNsvqIA7d9qwtfnNQY9QxtDIJAm+T2rb06/0eMFy81jgMUw
+K4bZzliB+hX6HDSTiY1hwrWMtXh0bvhhGXpPhXDzxfelvhgx2GuGDIt89M8cHeTMmfEvTaHaB8Vt
+boh0PbKBxWNUuoaCnveJcX/XWuLBZThC+vj2BVWfxl0krguVoAXycPiBoyBhvwNJwXQT4elLnOkN
+bIX5gQbt4nI1k0++5HLgyPvjmpx7NIOOWhlshqIuIGk0TmKabjW4EzqNIxhbgrj45LLwzBqwGaey
+gmezTM4DEqeJ6sqIXyYZm+tFgSgNIrxsnk5mBh79iSsuQ7hd4JikNx0p05EkL1HASJ7jziw7ens+
+vaZwUv6UWpzdGIIi2tikFS3WqiWZeYmGJ06oZe9oIAAAAAAAAA==
 
 
---=-eVaaov3VWp7iZK3p/HAp--
+--=-1qdYEFrlmqNAZQBgEn0B--

@@ -1,146 +1,114 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1250361ejc;
-        Mon, 13 Nov 2023 03:03:53 -0800 (PST)
-X-Received: by 2002:a05:6512:15a2:b0:507:9ff6:75b6 with SMTP id bp34-20020a05651215a200b005079ff675b6mr5950290lfb.50.1699873433629;
-        Mon, 13 Nov 2023 03:03:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699873433; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1320242ejc;
+        Mon, 13 Nov 2023 05:11:33 -0800 (PST)
+X-Received: by 2002:a50:ec95:0:b0:53e:29c1:ae1f with SMTP id e21-20020a50ec95000000b0053e29c1ae1fmr5136676edr.19.1699881093745;
+        Mon, 13 Nov 2023 05:11:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699881093; cv=none;
         d=google.com; s=arc-20160816;
-        b=LMOM/SCMljXoyFyXpZ9Cjq2FzPXsC6M5uv24621bysmUpYKbiH3//dgYtbfT2g2OCT
-         x40jj8ckPU234M5tIPOZCb9gDzgpXqo4eMHzKO1bsAvOHDpfgtROBDNN807MzZgfhCaJ
-         /LzpwIWVkaGA+7HjgeDvzlK0Cpr9o1P16XnQmqGkFRTbBrso9B4I+8urrqKfKHI+Wf+U
-         J6s2pYxHZ4BLMCx7wfcOzlDeAeDQ9m6nurbNpdxKDQlVYg2RTOUbZuh7xRSrFsjWfkjx
-         0EKKYQgLcSNEPV2zfoJdNm9eFYMcU9VULMoKkY4297NJAAVuzpf9YNcxUAnqs6kCU3Ds
-         1iig==
+        b=XiCtMRyCLyGfBUmxbf72eGTWSzJE30Uk+4H3tJp5utlyvHX04DgE7DWqDwUHlD34E2
+         v20FqtMq9t4S8a1P8GnJMOrjiApNEwhAJCZlupuTjjzxOx8MPj9oI5ww5FWNt0hj6UFZ
+         ldIrqqGgLm2ERPiSAey7pq0V0OZwFqctBuGwe/RM+kSydnMieLmdkW4FWOBKkoGo+HJ9
+         PYBj4lK2rUVRSuu4KIRJGrv7SR/aLeSDl1drTXTxyvlS/oK6sFxf83RzD6fuRS+/tPz7
+         IuwctvrK0vB41SsnZyb5pjal4mFX24U+g1aVeYyFVfqYimb+tDV1aC3YnlNWc/e5mfSW
+         1YjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=QKp+xYb/ek79oav1SQxQszAVvb+w9y9wc6rs4s4TIV0=;
-        fh=dex3qNzObdPYGIcX4ATRfXt7TTGZkQvCR5VPSOyrVXk=;
-        b=Y/g8baWhmAu1bI2CF9xZbmnuDNsnj7byAeryew2go0nL3OFhxl25zpRaUT1YPispMP
-         Cn3PriU2ldzMnkFwDIRp3QBaUXqbSqCuhQfhs+PVjLJ2UFoYK45lTn6m7wqXsjp9oREC
-         Sm0fnK7v5gq4QYw9gz6fs5zZet4ThYU9gTTJ2UkazLyAAtCFAFFH+0ChkbbU5tD6utfu
-         A8DrjViEwq8Z61f9+hIbiSsC0qu/1jxKNanraIznXLMow0eh5YokVS4dJS6mZQOEpADB
-         kMDWNANVgF/Z8kzjwQM7edRWd2tK6SkvboAh4pexMp6HxBLrBdrGosmv+PJd38sHI/Jl
-         QkZQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZgTbo620SzKFbNfoBUClJikuB7okF3V9knnrZKTMLY8=;
+        fh=P+Jxe+ydfSl1cP30TqtBnnQeiBkeQtzeFH1r/b1mTHI=;
+        b=LZ51tpM+c2q7MNLAOUJ3KcdhuIZdFUFk3hNfBhf0x4/ls2Trfk+4ioR/45TTpgyHB2
+         HgXS2xP5EVel1Y8dzx7J23Hv+eMbZd8/UKU4NIHKd4zP39oHwNcKslvR0RDjDrIMI+yC
+         2FHK/lBKCpGBixZ6o5I5OERljQjgU1E5ZwfNj+Ik/Ztv4O2hle28U8ALfHRVOiec0enE
+         ZZ4IWP0mNGC23lMtG49HbCwqa/4iBFXfzHF6gkOn9KqBSM+ChkQ2X7zs2ZfO74KcocgC
+         f78EPQJqFvx3AjX9b77VAcmfQ/0ZZQ+FjXmqIsJMsW23Y4vetIsFE6XKUIgAuCrXnJkF
+         KHAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kbMx3TbW;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ve+3ffVv;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id dc9-20020a170906c7c900b009ba0a38f2b1sor1037313ejb.20.2023.11.13.03.03.53
+        by mx.google.com with SMTPS id w18-20020a50d792000000b00537fa220bfesor945286edi.3.2023.11.13.05.11.33
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 13 Nov 2023 03:03:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 13 Nov 2023 05:11:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kbMx3TbW;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ve+3ffVv;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699873433; x=1700478233; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=QKp+xYb/ek79oav1SQxQszAVvb+w9y9wc6rs4s4TIV0=;
-        b=kbMx3TbWP5UDEEMwDJcM8CUzwivukIXalMYELaUoY5NTL+9DzdAIfZP++eswynUcSo
-         a/Yj6gb0jz0AcegcjJB0BvcRWCB6qXkrAaSfxLsnDOkidZhFRaZ4bZc9cl3SK4yQoe+E
-         hqksBxKu9EZOrGySK+d82/EzoLgL3fEK3JNVS0n8dwkn8aqmyjdoG4xThGT9GNDHfrsu
-         YSap8+xhVqwenVBMadV0Q7qHDZb5gJc+xffZdq/JB4UTrcH3V3wHOJB5gDVBo1t6LYnD
-         y4/K4nnqtMn6JGhGMdAjt6yhrgOoki0lGvY91555qBFeNCCeI7mWtAnFz2vOqFYIk9G7
-         T5ow==
+        d=linaro.org; s=google; t=1699881093; x=1700485893; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZgTbo620SzKFbNfoBUClJikuB7okF3V9knnrZKTMLY8=;
+        b=Ve+3ffVvIDDM2i1jDhO5ZnlGKjY8yK+7BxVl2BWoL3wjGNnssltkEqP3f4tWZsI0Nk
+         T7txKrZbnIh9Dcnnovo23LfKq1ZpgKtqeTAZNQVgLcxnivMpe4VihLMSE7QPdtWODZ70
+         RupduulLFPf6PQGy4eLtFNj9VU7TvEVAGDfcAyedzPCqN3bR5bvGAgrTDW/89wvC7WDv
+         JGaAvSeRo4jXq4g+HS5h5PCQI4xFZaQkuI+RUTUm1hjCFaN9oNWNs1dMoBW7iHWv8+73
+         fGP2y4GdtWAaQ2FEa29NMjoU3da4rA9dSB1XX+1sk1GCmLPyp4XlupJu60irHWGFp+KV
+         4wNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699873433; x=1700478233;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QKp+xYb/ek79oav1SQxQszAVvb+w9y9wc6rs4s4TIV0=;
-        b=w1oG/pzdArOkNfEj11oxeoxEQlm575AZbWA/2mOEsLzhZK5sphNjN82/AlP+UXLu7m
-         mkCX4a+3WYBhDWOXL/nilrDj6mfDEEFYtvCrkcgOQIJ9uhZN7mZeOCbkdlJ5E7jhxspV
-         /21pOLVjgw3FAVdwGGVqwPMiQwF4dcSA9uIgL4xUXKNEqneis91U1DfwaYjF5x4QKNW6
-         i8xiK0xkN13cbPk0j98U5hmmDCb7Rhq59AG7itth5h1dlA/0ATln/00vCZ8QoZLN1GxE
-         yCMSxXohfwgzuYAkCOuOxbuOfugOh6M5/i/IYMYEla1ErXLt0PH5CQ0DqcLd9HUrVyFA
-         1R2A==
-X-Gm-Message-State: AOJu0YxZ/9KDNgQAbD3e037SpDGvATi7MlSXNuaPNBH5L/gagV1DH0Wk
-	dO5V69Arpe1bSBvFodQJWE/cAQjTyYcvSuZjql3B2A==
-X-Google-Smtp-Source: AGHT+IEcpVk/ZJKH5fUHjDdlkXBWtXHg+h8SVusuB7e0Qp2gye6Uj+gs62g2kIJC5D/Yp5I7FMSxeA==
-X-Received: by 2002:a17:907:20e5:b0:9e6:3570:bc0d with SMTP id rh5-20020a17090720e500b009e63570bc0dmr4636729ejb.59.1699873432995;
-        Mon, 13 Nov 2023 03:03:52 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.164.221.204])
-        by smtp.gmail.com with ESMTPSA id dx9-20020a170906a84900b009c3828fec06sm3838073ejb.81.2023.11.13.03.03.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Nov 2023 03:03:52 -0800 (PST)
-Message-ID: <4d71476c-7de2-4e35-bb7c-d687578ce91e@linaro.org>
-Date: Mon, 13 Nov 2023 12:03:48 +0100
+        d=1e100.net; s=20230601; t=1699881093; x=1700485893;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZgTbo620SzKFbNfoBUClJikuB7okF3V9knnrZKTMLY8=;
+        b=neVv4EZd71xkFM4kkJuV4eJdWMvvTWcWxex32eIYFkU4d/Ys8o9haR4gdeaBSu/chZ
+         KCDijTh3Yxql9MYoU5Jf1dGRJgB2L4XUlxh1wVtjPC8yhk+GO+IbIA9c7/W6uvJcm28q
+         jvTtNOE4SYdCMJkfwFw++4U7sUVaIh96W/0EinsT+SU3nJZ5tGobS2LPwUzbOz7lh5DT
+         YhfgaQozCKhIm2VmBvx9PzJaNSMYCwTkXOBFh/B0Vrmema2QauODk+txTlj49IO0cd77
+         dPZkxh+IZyg9Ve5jt9WyTZsHU7YEMHYIiYbFkBQK4EpbOxKDvXseyvCGlOuImMIuxSLp
+         OaQg==
+X-Gm-Message-State: AOJu0YxwUlV5KnqsRy9yARS+B1UmrrUBkPbswY6zbklul8qELeeXNtVI
+	ydGiyWtaUdqBGepa3RFkytbC9HzjyavXlLEPlzRGRA5f
+X-Google-Smtp-Source: AGHT+IGeHKTmo24CQjCp6K1A7yRD9bgbQEfImpd8W+JHoeSUbzXOKe3aMFQgnVQvNjRN5z50PvNl++uWDB8FEqC8tLI=
+X-Received: by 2002:a05:6402:26c7:b0:530:77e6:849f with SMTP id
+ x7-20020a05640226c700b0053077e6849fmr6012174edd.27.1699881093359; Mon, 13 Nov
+ 2023 05:11:33 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 19/36] plugins: update lockstep to use g_memdup2
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
- Darren Kenny <darren.kenny@oracle.com>, Alexander Bulekov <alxndr@bu.edu>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Peter Xu <peterx@redhat.com>,
- Radoslaw Biernacki <rad@semihalf.com>, Laurent Vivier <laurent@vivier.eu>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Bandan Das
- <bsd@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Laurent Vivier <lvivier@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Riku Voipio <riku.voipio@iki.fi>
-References: <20230627160943.2956928-1-alex.bennee@linaro.org>
- <20230627160943.2956928-20-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20230627160943.2956928-20-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 6S01oC/2zZz8
+References: <20231109192814.95977-1-philmd@linaro.org> <CAFEAcA8MJeX1Jk_-ONP1nNgHYadL7Oa8P3jGQXwNoofQnJWk8g@mail.gmail.com>
+ <4ffed8f5-6624-4488-a74f-567cbd926b78@linaro.org>
+In-Reply-To: <4ffed8f5-6624-4488-a74f-567cbd926b78@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Nov 2023 13:11:22 +0000
+Message-ID: <CAFEAcA_0BfGVDZWJUPs8hwYRKS8FmzppQgY+s83qxBXHjLJvnw@mail.gmail.com>
+Subject: Re: [PATCH-for-8.2 v4 00/10] hw/char/pl011: Implement TX (async) FIFO
+ to avoid blocking the main loop
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: yX09vjF+ZS+b
 
-Hi Alex,
+On Thu, 9 Nov 2023 at 20:59, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> Hi Peter,
+>
+> On 9/11/23 20:29, Peter Maydell wrote:
+> > On Thu, 9 Nov 2023 at 19:28, Philippe Mathieu-Daud=C3=A9 <philmd@linaro=
+.org> wrote:
+> >>
+> >> Missing review: #10
+> >>
+> >> Hi,
+> >>
+> >> This series add support for (async) FIFO on the transmit path
+> >> of the PL011 UART.
+> >
+> > Hi; what's the rationale for the "for-8.2" targeting here?
+> > What bug are we fixing?
+>
+> The bug is on Trusted Substrate when the ZynqMP machine is used:
+> https://linaro.atlassian.net/browse/TRS-149?focusedCommentId=3D149574
 
-On 27/6/23 18:09, Alex Bennée wrote:
-> The old g_memdup is deprecated, use the replacement.
-> 
-> Message-Id: <20230623122100.1640995-21-alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   contrib/plugins/lockstep.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-> index e36f0b9562..3614c3564c 100644
-> --- a/contrib/plugins/lockstep.c
-> +++ b/contrib/plugins/lockstep.c
-> @@ -130,7 +130,7 @@ static void report_divergance(ExecState *us, ExecState *them)
->           }
->       }
->       divergence_log = g_slist_prepend(divergence_log,
-> -                                     g_memdup(&divrec, sizeof(divrec)));
-> +                                     g_memdup2(&divrec, sizeof(divrec)));
+And have we confirmed that the async FIFO support fixes that problem?
+That bug report seems to have mostly just speculation in it that
+maybe this XXX comment is why...
 
-Actually I missed g_memdup2() is GLib >= 2.68. For QEMU codebase we
-define it in include/glib-compat.h, but contrib/ files don't include
-that.
-
-So on Ubuntu 20.04 LTS we get:
-
-contrib/plugins/lockstep.c:133:38: error: implicit declaration of 
-function 'g_memdup2' is invalid in C99 
-[-Werror,-Wimplicit-function-declaration]
-   133 |                                      g_memdup2(&divrec, 
-sizeof(divrec)));
-       |                                      ^~~~~~~~~
-       |                                      g_memdup
-
->   
->       /* Output short log entry of going out of sync... */
->       if (verbose || divrec.distance == 1 || diverged) {
+-- PMM

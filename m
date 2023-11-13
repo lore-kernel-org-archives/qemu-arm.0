@@ -1,170 +1,201 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1477654ejc;
-        Mon, 13 Nov 2023 09:04:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGNS6kSOmT8XmhjBnejZqDZCIjfhRUEOOaeFVsbWvVTDfPXiWGp3OhQEYq2KEt7Y+ANcHn7
-X-Received: by 2002:a67:a647:0:b0:452:618b:13e3 with SMTP id r7-20020a67a647000000b00452618b13e3mr52709vsh.9.1699895079456;
-        Mon, 13 Nov 2023 09:04:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699895079; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1495699ejc;
+        Mon, 13 Nov 2023 09:29:28 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFKk3jaRrv1BZXtfkG03ulBFW9Q+6sj0JFm+dsjLEjCYRVUngw0v1RHpaOihe1/ViPIEg14
+X-Received: by 2002:adf:f0ce:0:b0:314:dc0:2fca with SMTP id x14-20020adff0ce000000b003140dc02fcamr4966562wro.29.1699896568008;
+        Mon, 13 Nov 2023 09:29:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699896567; cv=none;
         d=google.com; s=arc-20160816;
-        b=cTwZN5vwIHApwEgV2HnrOgdJvKuNVQksboqLe8XnDsJDuPqTxg7tkq30hCCGAfZBxO
-         m7ycQXhvXxpwfKIwV163V6Lh/jCeF6ucTeeyEUtgiN9XzdhMhn0ydt+/yuMkZbHPGDdY
-         0G/4rzYoMhpMyzphyPFG7T/vvD20Z5ibz6rZlhn0FOd501BLrTJ8KARnorbDV+4HxTs7
-         9NHh+Yt9KlpR2un4WMJ8wfJE/wKan0FTLuS/nx66I5I2FXQIUsvs8nD5PagE8zBSnjaS
-         AvoN0d8FqVUV7NEVrLZThySNgocPHGfWNAdxifNuDXvFCnbxYg244e6yEuGRPYAOnfUL
-         AbBA==
+        b=A+6aKP9KSW6VCVZ5HsDMivClpa2x/bH7fTCVz/XLJ/d3NFTy012Ydk609MSXcR0z16
+         vh/n6hpmC+vAtcAWANLhXucSiS51P4dezRQmzmiz2NUKuIVf+q2SvBztebsOuxpfVBmV
+         sgzHJfs51AVwm/JJc7Hs3Zf7bZZpWigfWUpxFUeuZxoEccYavREW4aQF3HiTIleLyq4h
+         K7u8eCVbObXZ5/BrjH9kW9Vi5fdDOnOdkGbHWF5pwtZCEedFdwqFzzCm0pGRsOr+3s2N
+         8MZX983AJmN2Dfr8j8HsODRSxImHhhiXnGrp82peE3e/QPae+CB/HiWt1Q0D9TL3bcrP
+         FPgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=tXoTXFWOeQYOegr331Fli9ECx2LaIgBkkd5shOsuOag=;
-        fh=bfwl0cLRt6i4pfJCs5PuomPHcsZftWIiDFLyF6BvuGU=;
-        b=t9rIRcs6jH1brfV/1mJplw/dtxMN2vamDxCqep5CFiYV7uKf+wZZFSX0QMBOT+u3i4
-         YGpFOYDs5IpOLl6wHPyUwfjtMfBxTbhtUKoS2SDOtq7eg3cYKmoFtPEkU51OFkw9HOcN
-         ChXYgFaC6T/CGfdMomhMvUzE7U9XndkM0Z12+TLjMzrmY86Jc3nxZVVFyCNrWoFoKZtc
-         HZxRXc4CeFjCUv2D8LnN/LePhvF38eD7o7qTK1Bci9WT6IvNIcClB9HNQ6CCh0CswOAO
-         uaBPjMxvcMoxne12+M7KzP6LxUzPoo8ABj+FrI5V9n6mafnPvpbBq1FlJRXR1xG6I2lH
-         xyAw==
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=dDRCldRPFTZG0rTRzpEGqdhyEmmyv/FTFvgvq/Rnfuw=;
+        fh=xt/rbYbukDVRiGWW0U0trphLPVTpJnXLS+L5STDiz9A=;
+        b=bHzoaR7lIfgz5onZT5SPrIZP3fLl7G3MvaI5COxxMt21MHtsajRuxckyU+hPIv1FKe
+         8e5wV0QfryeE04jsMSHH8+pMy9HJabNiz3WtnTJXCG4JiNyOqlUlADXN2cVtkw0aQNs5
+         ncAur/AVux+b8dg/LpNcdfHAEfA/PECT/Nhqoa1/9a5dDdyFjNgm+hfszIOt89r14Uy6
+         s0mrHM+iI0YDdDKGtES9EyRk3C8iz2eCC6klf5tJ+nRXxKjtMwflbvq5WDHWOwrNf+QF
+         uDkH8wZiMFX9pNd4eNmdpjJYlmWWBbJVi5S6kmwlO+63YLjqXrwrC6OwKGt8eHuWqNzA
+         9Taw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mfRueeFA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jk14-20020a056102190e00b0045281c73fa9si526116vsb.818.2023.11.13.09.04.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Nov 2023 09:04:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=VMhGlz0r;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id bj25-20020a0560001e1900b0032fb1e3e5e7si3334922wrb.842.2023.11.13.09.29.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Nov 2023 09:29:27 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mfRueeFA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2aMO-0007fr-Dk; Mon, 13 Nov 2023 12:04:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r2aML-0007f5-NN
- for qemu-arm@nongnu.org; Mon, 13 Nov 2023 12:04:25 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r2aMG-0004PS-Ci
- for qemu-arm@nongnu.org; Mon, 13 Nov 2023 12:04:25 -0500
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-53dfc28a2afso7115409a12.1
- for <qemu-arm@nongnu.org>; Mon, 13 Nov 2023 09:04:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699895057; x=1700499857; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=tXoTXFWOeQYOegr331Fli9ECx2LaIgBkkd5shOsuOag=;
- b=mfRueeFA/TIBNaXsiQ1+Eflvl6fV2lJcjr4OknZ7kUHCsw9q5B8HlFTTv+x+U3sinb
- SgFpgocCIT2ZozG+3QR3qe1DSRU0NWZS9aiyBKXw6UeXrLI/Q1ZF0YehyCKTxeMzGIKj
- iEzRX2z7hA0agfT8bOA1wAME0BGC9fnsXLI9JN8EfPB/8q3fDk0JrBMKvojXSAOqXsfq
- izeHikygA88Okss7izV+ZuUiaSAfU3JsohniKXNak4TpJ7S8adF2dTAt0eM7Q+ssfiHY
- 35QMFDcv/BwLC1orthLuPwWKQieUuL6iFKvOLgyGtRW8++1g9TEbznMX9/L6Zna5GHgY
- 5Hlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699895057; x=1700499857;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tXoTXFWOeQYOegr331Fli9ECx2LaIgBkkd5shOsuOag=;
- b=pRhGxb4MlV5C3eJr1ZrSeajqHViYfiUbUfGaMcqdJ+hICAAeLn0mixLG3neCxP9jLV
- yqI3L5S3gArsfjOCu5XNfSVnIMyYUap7XgJ8mhaq9p1pgOV3dNNPpSEwq36l/+HTwOc+
- Pru4knJxn8ZFJHthsE1hvP3ylXzeYtH/nBajEY915wb497D3zpB1UnWtsBEd1du0iDGT
- WQdKHXP6IPMSZEjQs6+w3Z3y8DsUpHjZft4eZMNOHRj2lxiP1I5eXXOTsa6WXFjcfD1/
- yytX60d5PHcf1va/Jez4XIyGXpiRedLWjJKYPaFjCxmizSjAIdiabXIm3v47/Gq1CmZe
- ApmA==
-X-Gm-Message-State: AOJu0YyxA4AMhC9PlByHvMDPHX3ZJ8j090GUbTIm++onY26ZzrUHnrQ8
- sZbxc+yXEXZBHD2ZhLcZXF04OyBEy7TLANkIuYRfww==
-X-Received: by 2002:a05:6402:1052:b0:543:52be:e6ad with SMTP id
- e18-20020a056402105200b0054352bee6admr5217435edu.5.1699895057359; Mon, 13 Nov
- 2023 09:04:17 -0800 (PST)
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=VMhGlz0r;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+4b2d4fa8b3c13737bab4+7386+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=dDRCldRPFTZG0rTRzpEGqdhyEmmyv/FTFvgvq/Rnfuw=; b=VMhGlz0rwErA2w27phfszPQ2ej
+	AAOCf6IpDCi3pz3hN/2gUkr7hC6FY79s7JYZPbSwGxHuZj3dYIADcWzkeKygZcPkmu2uAPZgeTxvr
+	JQDDSRJgi+PdSwyXCT6KlqcIIsG9dDdXnNEaILnQjgtCj+w1Pd6Dx5iuy8dYLcN614jtmcBlEqJV0
+	VPQPnyTmRPVInCap4HKisClliO+S/IFBmBt/85arl0BQA91DZ65D9e1KY54f6v0xi6n+ZViFRkIOH
+	UBjlbE5awc3ZI4TFddVuUJDg3lYLDf/W6VV2vtwy/r7qSNWE3opohzHNRXEUvolxnQtTqcCUBBSOb
+	ZkbWLuGQ==;
+Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1r2akV-00FWLA-O1; Mon, 13 Nov 2023 17:29:24 +0000
+Message-ID: <204a3e8c7f5d5788c92ea3d141b64162896dcdad.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 02/10] hw/xen/xen_arch_hvm: Rename prototypes
+ using 'xen_arch_' prefix
+From: David Woodhouse <dwmw2@infradead.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
+ <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>, 
+ xen-devel@lists.xenproject.org, Stefano Stabellini
+ <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Date: Mon, 13 Nov 2023 12:29:20 -0500
+In-Reply-To: <20231113152114.47916-3-philmd@linaro.org>
+References: <20231113152114.47916-1-philmd@linaro.org>
+	 <20231113152114.47916-3-philmd@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-xD0NYpOPeVgXZjGfxwVi"
+User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20231112165658.2335-1-n.ostrenkov@gmail.com>
-In-Reply-To: <20231112165658.2335-1-n.ostrenkov@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Nov 2023 17:04:06 +0000
-Message-ID: <CAFEAcA_qmKctYajg2fXSd0GU0YtD_HBPGq5_BzdDDj0aLw1J9g@mail.gmail.com>
-Subject: Re: [PATCH v3] target/arm/tcg: enable pmu feature for cortex a9
-To: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: N5zDjqPVNdb4
+
+
+--=-xD0NYpOPeVgXZjGfxwVi
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 07sYmjbVqozV
+Content-Transfer-Encoding: quoted-printable
 
-On Sun, 12 Nov 2023 at 16:57, Nikita Ostrenkov <n.ostrenkov@gmail.com> wrote:
->
-> According to the technical reference manual Cortex A9 like Cortex A7 and Cortex A15 has Perfomance Unit Monitor (PMU)
-> https://developer.arm.com/documentation/100511/0401/performance-monitoring-unit/about-the-performance-monitoring-unit
->
-> Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-> ---
->  target/arm/tcg/cpu32.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-> index 0d5d8e307d..0008c3f890 100644
-> --- a/target/arm/tcg/cpu32.c
-> +++ b/target/arm/tcg/cpu32.c
-> @@ -418,6 +418,7 @@ static void cortex_a9_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_NEON);
->      set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
->      set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
->      /*
->       * Note that A9 supports the MP extensions even for
->       * A9UP and single-core A9MP (which are both different
+On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> Use a common 'xen_arch_' prefix for architecture-specific functions.
+> Rename xen_arch_set_memory() and xen_arch_handle_ioreq().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Thanks for this patch.
+Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 
-There definitely seem to be some weirdnesses in our PMU emulation
-for older CPUs like the A9. In particular we define the registers
-in v7_cp_reginfo[], so you get them on all v7 cores, even if
-ARM_FEATURE_PMU is turned off; they just don't actually do anything.
-This seems to affect the cortex-a8 and cortex-a9; everything
-newer defines ARM_FEATURE_PMU. We really ought to have the PMU
-registers separated out and only defined for ARM_FEATURE_PMU CPUs.
-(Annoyingly, we can't drop ARM_FEATURE_PMU and look at ID_DFR0
-instead, because the A8 and A9 have a PMU but don't advertise
-it in ID_DFR0, because they predate the PMUv2 standardization
-of the ID_DFR0 field for that.)
+--=-xD0NYpOPeVgXZjGfxwVi
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
 
-The other thing here is that these CPUs are older versions
-of the PMU, so strictly we ought to check whether they
-have deviations from the registers we define. But since
-we're already defining all those registers anyway, it seems
-safe enough to let them actually work.
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEzMTcyOTIwWjAvBgkqhkiG9w0BCQQxIgQg6jhHz92J
+MJKBNRblGCkbjCkl6E0wkpKOVWu3VAUHOJAwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBpVukIq67YsRl/tl8dtWxSCPgIbd+2T8W9
+PUxu92CiG6ilLC40cGJgOX0Vp4GMyZ67qLNzUTQjGV76sSankDhHGoBxZZAXZMgzq23ZL8sai/0q
+U3ZDpRtqD7IsV05CP5IkkqtOi55NwCImmhRhYHykWtraWGJxLi91U54CJurhpgjx5D8Is3guZcex
+X8pjap4fOJGejhkAY8bftsfCo3HnX00Av26wgGXGA/TbrM1CZCUsYYygmNs+w2e+JHvckQzFgd/a
+LEjivYe2dp3gs8qSoK+dHL54kyF3nWsHLpo/TlTaz6plvUtiuWQd9F4FCyM3gVzh77B2EYoSzZ7z
+AAqeV8olLrFRHmxbn5TFb5f099uQeuYvMu1dwubUXNQJHW0U8a3SAxZnrwhtTkVBbLezHB9ltGrn
+pGH9516y7rm7Yj/Lq2tfPrz5tfIV4QSOSHWCw5Iy51Ww5YGhGv43j0pb423kJUUNvQrXBxb3QWmO
+nHUid1b334Z0RLHWWNgABufE9WPJTREVi7ybSrKNX7tPMs8ue0yi/MTlus2ELSeRUTzsJPx4EH3u
+4pOC6VJqkhUSCUNIVcLjZZWTUqVC8Zmis/0DFRCHEt8BGhSv2i5QFtlFKCd9i4R9LhTa1gcU2Cei
+DPSQI/091x1ptdObTnUNmk1tbj7Lm0V+RKpOjTvScgAAAAAAAA==
 
-I've applied this to target-arm.next, with an update to also
-set ARM_FEATURE_PMU for the Cortex-A8, since that was the
-only other CPU in this odd "PMU registers present but not
-really working" state.
 
-thanks
--- PMM
+--=-xD0NYpOPeVgXZjGfxwVi--

@@ -1,74 +1,75 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1407950ejc;
-        Mon, 13 Nov 2023 07:21:18 -0800 (PST)
-X-Received: by 2002:a17:906:66ca:b0:9ae:73ca:bbad with SMTP id k10-20020a17090666ca00b009ae73cabbadmr4784227ejp.43.1699888877930;
-        Mon, 13 Nov 2023 07:21:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699888877; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1408023ejc;
+        Mon, 13 Nov 2023 07:21:24 -0800 (PST)
+X-Received: by 2002:a17:906:2416:b0:9be:21dc:8a9a with SMTP id z22-20020a170906241600b009be21dc8a9amr5297261eja.39.1699888884276;
+        Mon, 13 Nov 2023 07:21:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699888884; cv=none;
         d=google.com; s=arc-20160816;
-        b=jzkd5olpnk/o4Wz5TdRsEqjWVH7nlB1TYzO4afu7dBbRxMcyEvxjg5aBhkyFBYWDZ/
-         m7Qih+3zy6LEvSze1DtvXtNzmQb+LC59EZdmasGVqORzdc49n7rYwQQ/iy1vCuVYjTPx
-         3h0K37D9NvtUXPa2KbmcbmK4ZWWBk08H+RNJvQWP2LV88B4+lrfNJUS/O4A8wx2PkFsw
-         VeKc1fXR1sYZ9NHrA4Iz0vYtNwsmT6ulrfRZFfpe/X5BgzMV6G/xBmteWDHkGBWzwLhw
-         wB/Zzm8eagKtaBNq7F+FWXn33E6VYMZPYI2wUv/b2pmTZVTyocTadMWuQv/yknGcEiXW
-         MJDw==
+        b=XtHsrtgw2rlWBPiT+x98GTnxNvEqBbQfD1qypFQFpfOxK9eXPOMjK9wC5hDYFnLINd
+         oSxSoepK/jud0hLz3ZMjF7UvjA2b/qJSPRUnSOJRPczo5stoyFG2YujTMi2v+CKOOl/u
+         aEGqpBhV3iQIvwPNhDP+ys2SkWHmyufu+Yc+ee1CeiSi1B6roP80jKtuZhu8WaMTCkg5
+         PVS40aX8Rtn+mVFFnqgg359bTmGcdYVxdj8cwYft2KJt7cecGifQQw5TShmRbAELKz2e
+         uk1rQIVIvIWjXnSGg6oXzthBreQWRV/xWy0QZgPg3Iod8IMYfiOMf0Braqs73CB46oZB
+         zRaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=wYPq4PnrkT6VT7CGpVPJFK/tNxRA7Q2Z3pzO9BbyyC0=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=R0n+efnCwqYZSgvX5xA6BN1n520F2bZNMKVl3gVhASA=;
         fh=E0jvqUTVnbyPitMGLtsCjS/srUbMS2WTNKk9XEDC2rY=;
-        b=PQFEiAPmCBlbr+Sqags2fXXyhgDygbE6oHMEnCxRoKV8xXtV87N7ay6PsxDPxuv9yB
-         2zw460aG5rJp0wONs1+mdifnId1trx36N24I2bEy7Lu6L/fmDu4Npj6oLS9wik9kOAzp
-         kgx/EH34uzxz4DT8ECztIBKL8UB8KxeMamIkTTyr9gZkp3NgRcayOCDXfSQxIIeS5mMq
-         GZyg5ZXJz/2T4lBnSLMhAH0Ugek3sOPrIFitXCDofZDwSUSZC9p8tCzTM4FhEEZEhKp0
-         /tLMbfSP/7lTQ3xETLWS1WKcIaZTR/E7Behe8Dngc2KxpjwAEIX9q4UB0cj4EJkierxN
-         XvwA==
+        b=oCyaUA3vmC5y3fr8sv594SzKIx1665zunwkPg58116cR7/bz6HGGAsYng6sen9KbZV
+         lUMpcB/6MuOUCWSjWz6cP2R4v3GgVcawd0wUgiKJIX70mlcXKaK5bVznvV0Qto7UsJWf
+         +7hJ0+mQ/YZDGn9NyxJQsI5BFBjlPU9Ap5Nscr6Vl4pOhQhYZ9F+tChumXhx9oz+YRp7
+         l9nIzo/SMXupYELLHAqkMDsahh3nRkc8cHxkClRPaWpCFeD8n9y3Plx36T8RTCYnhcPi
+         TB4rYhJa861UzAD0NlDCa/mIe0ZaUJzqXPNNWQE/jV/1dI2xkTpBxWqpumfwR0q3n5lS
+         v0wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Pix8C1Bp;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Nm/b7wvt";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s16-20020a170906221000b009b2c44483desor1166237ejs.7.2023.11.13.07.21.17
+        by mx.google.com with SMTPS id j12-20020a170906104c00b009e42aa0e87bsor1220957ejj.18.2023.11.13.07.21.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 13 Nov 2023 07:21:17 -0800 (PST)
+        Mon, 13 Nov 2023 07:21:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Pix8C1Bp;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Nm/b7wvt";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699888877; x=1700493677; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=wYPq4PnrkT6VT7CGpVPJFK/tNxRA7Q2Z3pzO9BbyyC0=;
-        b=Pix8C1BphPB+Kq84EraWWRMrA0dMbrmpFpQHgqoo1sgU2rvc4sHwNmBOFzSM0fpvhp
-         0iytcP1QyuqMDZAcFS77CbS8CHtvxaA1NVkI4dyoVdVg9IN5MZA56KXLqBvri75ich0z
-         JXfNO/9ySukiWdPbTOd4rV3UlDJsg2ss+7WzUUpRyi/ojBPz67zrfUN7PV9zKFB8uJmi
-         8+XPGKvuDh8Axeug/vFxUhAMBvFUAvrjMJB5l8MBzE4QeGwxdXmx693gfUh6U89oVOrX
-         DRZjOKwOSfBCfh0xOHPlLjXS7G2lMGos/m/+/W1HGJ3cy4ehz6FEvImnhZkM2rfugX+c
-         iGOA==
+        d=linaro.org; s=google; t=1699888884; x=1700493684; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=R0n+efnCwqYZSgvX5xA6BN1n520F2bZNMKVl3gVhASA=;
+        b=Nm/b7wvtv5/WBRd5Te2goF4uIBD7VnGH7Kc40PMCKN3OnMI0bw66GXGmwD38Pac+Fw
+         BwJHn+XFK4bX1E+IvsyaHQbcaN2aMkQmIN3D0IsMiQjv7uTRG9fCELWPnY8uCPngMezk
+         hGFTUbzm7IgTpb9zQW9bvnkfsA8u1B3ueyF2jdoPFNezxI3iRRpjb++aHyVgha+0MQOb
+         ksXh5/wfs3+WHmNzbV257fidSY3QrbPRhb/MdH1O25BcyWC+eoBwtcDZza3n5i+B2dL7
+         9fppe7xwkDfAjNmj0ok8iqGeex0ZvbaYzp/e18ku4r03uI8Ftf0wecqi0cpv8bRkuTe/
+         H82w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699888877; x=1700493677;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wYPq4PnrkT6VT7CGpVPJFK/tNxRA7Q2Z3pzO9BbyyC0=;
-        b=IVmXS1+G1Sc/o/wxrgWDrTJ9fVu9c4xbwy+ieENRSj6qC+tQvyGbXdD7dEFM7IHjxz
-         cOn3WgrjKVSNi/YXa+3rhElb6yuu1trm+cjezppF2TherfS43rszxX+KVsx/GXdpnR87
-         OzlI9xlktXNU1lXPWPyQFSZoh2FkORfB2SBnrp4SNSlMgflePZf9D3Q/TtSjKt/76Ntc
-         NL85DH+oaDTFpujIxopxjOhCsWAwLobZJvlnX8kf51oQ1luR3SQ2kvD4//I59J8HfExW
-         PQ4OnPbqGTQHC2Y7Ju90gMtNeNwO7CqrmBm8OtcTUSTyKxaADNf203M9rj34mbPuXjtt
-         d7uA==
-X-Gm-Message-State: AOJu0YxtGt59OxzBQx7lYHPSBGvtJ+CQiBqe35V71t7ScdbrqEzACMN6
-	zN8OGQM4Q6tG/rVBZX45B8Pfrhgv
-X-Google-Smtp-Source: AGHT+IF3A9n9kAcrQZnsw9wrjTnx3rsvapxiH3ZCQBhhtTiOatMf4sVc2qaWUo7af2ThaKbG2fzFSA==
-X-Received: by 2002:a17:906:410e:b0:9bf:b022:dc7 with SMTP id j14-20020a170906410e00b009bfb0220dc7mr5409271ejk.48.1699888877542;
-        Mon, 13 Nov 2023 07:21:17 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699888884; x=1700493684;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=R0n+efnCwqYZSgvX5xA6BN1n520F2bZNMKVl3gVhASA=;
+        b=wSIPPuiDjf0FmNOyj8sGZtmGnIZwCVguvcsg+9iCqBfhqK3IlZOV0Qjb/zVdXUnxkL
+         33lIql6dV++g0AQQfuMPViJysChQjuQ9jwRvB/OobEcs4+CA+P7MkZPhxonX65orOOf/
+         Ok2Lcc77mxOcJrzu4dH1RxkV9GoxUh64AXnaZN9xMrNApFE4TrG7fRnhhDhOqDkHaXHr
+         rzIFx6rmcQcbuaYoTO9wZx6Ku0lddLUbzmj3oTqfOF3pG47p1wLblfBtnyHPK2qXCyvv
+         wdHqBpDgpjr7lk4x9TA9pNJrEmfEsDkT7/tm2mX6KnZ+3VVSKmbC0xe0K6yTWQuxXzRB
+         Ji7A==
+X-Gm-Message-State: AOJu0YzYwJQoOGWEDgP7QTckZ6Vy2GCk/7g6KJgjTzVOrkNrMGkWIqD5
+	1ZpTCdpPMXePOXY2v/NCBFAFHNB3
+X-Google-Smtp-Source: AGHT+IH6xxb8oSsdvX/Qxe7SX73ROr6di4a0tnTAF45WIy9EC8KmTSkElWDjJsGSvtz6GSstCFLdyw==
+X-Received: by 2002:a17:906:4c84:b0:9cb:5a8a:b19d with SMTP id q4-20020a1709064c8400b009cb5a8ab19dmr4350360eju.5.1699888883852;
+        Mon, 13 Nov 2023 07:21:23 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.164.221.204])
-        by smtp.gmail.com with ESMTPSA id o9-20020a1709062e8900b00985ed2f1584sm4168622eji.187.2023.11.13.07.21.15
+        by smtp.gmail.com with ESMTPSA id dx15-20020a170906a84f00b009adcb6c0f0esm4204593ejb.193.2023.11.13.07.21.21
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 13 Nov 2023 07:21:17 -0800 (PST)
+        Mon, 13 Nov 2023 07:21:23 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: David Woodhouse <dwmw@amazon.co.uk>,
 	qemu-devel@nongnu.org
@@ -83,70 +84,64 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	qemu-arm@nongnu.org,
 	Paul Durrant <paul@xen.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 00/10] hw/xen: Have most of Xen files become target-agnostic
-Date: Mon, 13 Nov 2023 16:21:03 +0100
-Message-ID: <20231113152114.47916-1-philmd@linaro.org>
+Subject: [PATCH-for-9.0 01/10] sysemu/xen: Forbid using Xen headers in user emulation
+Date: Mon, 13 Nov 2023 16:21:04 +0100
+Message-ID: <20231113152114.47916-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231113152114.47916-1-philmd@linaro.org>
+References: <20231113152114.47916-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xrbfH27qeetM
+X-TUID: WpL8kssQ3O+3
 
-Hi,
+Xen is a system specific accelerator, it makes no sense
+to include its headers in user emulation.
 
-After discussing with Alex Bennée I realized most Xen code
-should be target-agnostic. David Woodhouse confirmed that
-last week, so I had a quick look and here is the result.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/sysemu/xen.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-More work is required to be able to instanciate Xen HW in
-an heterogeneous machine, but this doesn't make sense yet
-until we can run multiple accelerators concurrently.
-
-Only build-tested.
-
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (10):
-  sysemu/xen: Forbid using Xen headers in user emulation
-  hw/xen/xen_arch_hvm: Rename prototypes using 'xen_arch_' prefix
-  hw/xen: Merge 'hw/xen/arch_hvm.h' in 'hw/xen/xen-hvm-common.h'
-  hw/xen: Factor xen_arch_align_ioreq_data() out of handle_ioreq()
-  hw/xen: Use target-agnostic qemu_target_page_bits()
-  hw/xen: Reduce inclusion of 'cpu.h' to target-specific sources
-  sysemu/xen-mapcache: Check Xen availability with
-    CONFIG_XEN_IS_POSSIBLE
-  system/physmem: Only include 'hw/xen/xen.h' when Xen is available
-  hw/xen: Extract 'xen_igd.h' from 'xen_pt.h'
-  hw/xen: Have most of Xen files become target-agnostic
-
- hw/xen/xen_pt.h                 | 14 --------------
- include/hw/arm/xen_arch_hvm.h   |  9 ---------
- include/hw/i386/xen_arch_hvm.h  | 11 -----------
- include/hw/xen/arch_hvm.h       |  5 -----
- include/hw/xen/xen-hvm-common.h |  8 +++++++-
- include/hw/xen/xen_igd.h        | 23 +++++++++++++++++++++++
- include/sysemu/xen-mapcache.h   |  3 ++-
- include/sysemu/xen.h            |  8 ++++----
- accel/xen/xen-all.c             |  1 +
- hw/arm/xen_arm.c                | 14 +++++++++++---
- hw/i386/pc_piix.c               |  1 +
- hw/i386/xen/xen-hvm.c           | 16 ++++++++++++----
- hw/xen/xen-hvm-common.c         | 16 +++++++---------
- hw/xen/xen_pt.c                 |  3 ++-
- hw/xen/xen_pt_config_init.c     |  3 ++-
- hw/xen/xen_pt_graphics.c        |  3 ++-
- hw/xen/xen_pt_stub.c            |  2 +-
- system/physmem.c                |  5 ++++-
- accel/xen/meson.build           |  2 +-
- hw/block/dataplane/meson.build  |  2 +-
- hw/xen/meson.build              | 13 ++++---------
- 21 files changed, 85 insertions(+), 77 deletions(-)
- delete mode 100644 include/hw/arm/xen_arch_hvm.h
- delete mode 100644 include/hw/i386/xen_arch_hvm.h
- delete mode 100644 include/hw/xen/arch_hvm.h
- create mode 100644 include/hw/xen/xen_igd.h
-
+diff --git a/include/sysemu/xen.h b/include/sysemu/xen.h
+index bc13ad5692..a9f591f26d 100644
+--- a/include/sysemu/xen.h
++++ b/include/sysemu/xen.h
+@@ -10,6 +10,10 @@
+ #ifndef SYSEMU_XEN_H
+ #define SYSEMU_XEN_H
+ 
++#ifdef CONFIG_USER_ONLY
++#error Cannot include sysemu/xen.h from user emulation
++#endif
++
+ #include "exec/cpu-common.h"
+ 
+ #ifdef NEED_CPU_H
+@@ -26,16 +30,13 @@ extern bool xen_allowed;
+ 
+ #define xen_enabled()           (xen_allowed)
+ 
+-#ifndef CONFIG_USER_ONLY
+ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length);
+ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size,
+                    struct MemoryRegion *mr, Error **errp);
+-#endif
+ 
+ #else /* !CONFIG_XEN_IS_POSSIBLE */
+ 
+ #define xen_enabled() 0
+-#ifndef CONFIG_USER_ONLY
+ static inline void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+ {
+     /* nothing */
+@@ -45,7 +46,6 @@ static inline void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size,
+ {
+     g_assert_not_reached();
+ }
+-#endif
+ 
+ #endif /* CONFIG_XEN_IS_POSSIBLE */
+ 
 -- 
 2.41.0

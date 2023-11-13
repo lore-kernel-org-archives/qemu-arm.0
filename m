@@ -1,171 +1,144 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1879083ejc;
-        Tue, 14 Nov 2023 00:06:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFs6TVHHQJ54vW84KLziP1UQSE/wM6Al2L9uxpDivEGb6252LCmOVAIK7APMVXOGrPXw8jy
-X-Received: by 2002:a05:6214:403:b0:66c:fcfc:9174 with SMTP id z3-20020a056214040300b0066cfcfc9174mr2302585qvx.41.1699949204769;
-        Tue, 14 Nov 2023 00:06:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699949204; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1685229ejc;
+        Mon, 13 Nov 2023 15:24:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGvgLLtVCQ/DV2zc4v+9xPM6YdVV+u6gzDIzZJeeg5dvLAeP8W3+8UFk9JoC2Y1SiE9ySAg
+X-Received: by 2002:a05:6214:d87:b0:671:fb5a:4ad2 with SMTP id e7-20020a0562140d8700b00671fb5a4ad2mr748098qve.49.1699917861817;
+        Mon, 13 Nov 2023 15:24:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699917861; cv=none;
         d=google.com; s=arc-20160816;
-        b=iGswI6YsnAdvF4fJ5OgPFMgwAV96VJCYGk9NzYJbrc94CVr31vDIO/f65ofNBLTWom
-         bvulmlZZQEGvjB3XhH1b6+dOLdsWyaYixpJ1mWdV7icyj2fRE0RF+/mVdJ9+jFZQVcgf
-         xF4wyDQ/K8+oIB+dtk5dW4jRa3hC7UUmVO5PrF9xbMXyHlmvJolTaGzOGTKVOtPepcas
-         2DNCVKtJ2DKaUFbOshKN7M9C5Qd7u+BdIRBfYDNiXK2UVoRl6frzWNBapQmw/zevEXo2
-         nxAJo64/zuS+SHeJmYD6pJqnyz7lZIRBkQq6P+ZD8bxe7olnpiptK/uvomHZnN8qKVM7
-         Fs0A==
+        b=sf7LYuumXMU8BONvBw/1AdkYntubcJpw8+YAlmJHP6gZ85x3zVyx6BfwSo/lVLl8tD
+         Lpwgnilywvfn+0aazcrRZ1iekXwWouXXMUpX51lZGZcJLdr3i1pIhe+opKE/K5O557Un
+         rOAqVRUGMUU85ZUbA3Zm3qEy/z/T6vYjN8gX5J4wGDDBhyQ7eB/s739wDLwkCUkshtTh
+         JM5ps2HnQpz0qtArTGQjwp4hZdGVsXIopo3+nCTw1IhCg+a78nvBJOQvLcq0i5T96tcD
+         ziNwC6zOe2u51AlB3kRytQudE9he0+ILgrvyQtRPUmJ4inEhd6Gm+LvrLKIvpwl+KeGK
+         n/9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=0dlB2NsadnZ9Yd+KC6Sc39j/+NRDom1XC8C1tzRqZhQ=;
-        fh=Lt5L+E1Sm5iIYPnMKc+oATQH1KB4krGzAB6kyn6hYAI=;
-        b=nsGqT4aPQjnNm81i+Z8Wwu1JfWHqJYISYz/m0wTzzIPQ981sqUHUXC0TZCpO2vKfqY
-         QdZCXx5WCdtZEqk4b8e0qu31pXHUp++4HU04KawQpCQQQ8kKWjso5TEfnPZwfeSoIh2K
-         7UPn6t19Ny+z87M/sqrzNAuhXd5XQitGSiK19HJKlmFZIkrvH0e+1xLayudNwittPr8T
-         o1ZrdkUUwoCm54dLPWmIBvt9GB871nRWU9sAvBoIfQRtelSbxA3k7eNYS69BWV0t3HSv
-         +CTTRO5mpHlBONk8rnHd1OV0WiB7jAtFaRw1s/YdEwVEDDToS4XDkgVsY9zfDtHjayLX
-         H9jA==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=OujD5ycfqz/svV9Ju/bsg82JbTieO3a6f7J8r2fIurI=;
+        fh=9oVi/nj9UAEUrQ57vsoUXRmvoirMfEtGVeTXMQTp4D8=;
+        b=dQgVPm5uFoAZB9/YicC1LeNQOWYsmSM9zakm1yTMW08nPD7fZ/OD7t6s+EoCP9vXSz
+         82xIL4xraHRlwpqqrSAqM6oeXb/yAE7UzXLlA7HFN6GQnb6Se2H+AsMeNH66CSJnflHv
+         PILNp6nOTMIP1RU9KkPey/c1Dp43U2QiBK+tvjEYWFB+uEmIcUMNIHGmN/6mqRNGp8b2
+         4z0xFuQtsEkWFCPEiSF7H8IRU4iu8HQYTvuJ3jcKtsefRTvOz80uJJzjSwzo6KLQI+un
+         a49pwGOdq20Lw2k6sbSwXezmGK9dPGFzE4pvwy4QUD0L6GYhDr/GIdq747C2ze0vTbS4
+         RXfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XcL+ndb+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fGj+uUNx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eu20-20020ad44f54000000b0066d127c27fcsi6119184qvb.553.2023.11.14.00.06.44
+        by mx.google.com with ESMTPS id u14-20020a0cec8e000000b0066cfd0ec363si5497621qvo.418.2023.11.13.15.24.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 00:06:44 -0800 (PST)
+        Mon, 13 Nov 2023 15:24:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XcL+ndb+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fGj+uUNx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2oRF-0003sa-9D; Tue, 14 Nov 2023 03:06:25 -0500
+	id 1r2gHg-0006VW-Ui; Mon, 13 Nov 2023 18:24:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2oRD-0003p8-NB
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 03:06:23 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r2gHf-0006Uf-F1
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 18:23:59 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2oRB-0007Wy-UH
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 03:06:23 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r2gHd-0002T5-Ff
+ for qemu-arm@nongnu.org; Mon, 13 Nov 2023 18:23:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699949181;
+ s=mimecast20190719; t=1699917836;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0dlB2NsadnZ9Yd+KC6Sc39j/+NRDom1XC8C1tzRqZhQ=;
- b=XcL+ndb+/bmTMPuKeMa2i9gL3nxirJI+OuovYlsJDyv6tUOUyEJFus3Zcsmq6FhAg5uN1T
- r77WhdTn+MLmDcpumjHaLq/hPhlAkHE0xY7VzV/5TsO+VAcMckxmPQOlqB6HKr257RyZaK
- f8PGxYiTE8auSjEOhU5+7eGFmPg/OJg=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=OujD5ycfqz/svV9Ju/bsg82JbTieO3a6f7J8r2fIurI=;
+ b=fGj+uUNxy3cKXPJAr/Ylp03wX6v6EEjY/pg/xgLMy0DbF+B1wiVVP35nrq20kxdoo2Oh+G
+ b70cS0jdCuCJY4aZ6ciwQ0FWtreZZLEzsmRsc3GZMfRREGHk8xrXrROrVS3lKEZhCkNG4D
+ 8QgNbjAAgmAfm6Bhzl9VuZZbFzHdQBI=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-463-ph-jxDJvMXGwzLmMHKiOzA-1; Tue, 14 Nov 2023 03:06:19 -0500
-X-MC-Unique: ph-jxDJvMXGwzLmMHKiOzA-1
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-77a3fb5b214so639145185a.1
- for <qemu-arm@nongnu.org>; Tue, 14 Nov 2023 00:06:19 -0800 (PST)
+ us-mta-622-1jfu86unMWOPUogaCJ843A-1; Mon, 13 Nov 2023 18:23:54 -0500
+X-MC-Unique: 1jfu86unMWOPUogaCJ843A-1
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-1cc70f8a58fso67327815ad.3
+ for <qemu-arm@nongnu.org>; Mon, 13 Nov 2023 15:23:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699949179; x=1700553979;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1699917833; x=1700522633;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0dlB2NsadnZ9Yd+KC6Sc39j/+NRDom1XC8C1tzRqZhQ=;
- b=FrBYyA7CW9NejN3O0L1jIMQprdczGhq+aLrKEbcxDXMxwEWUH3G8RsOSR7pksq7tCm
- 6F/mdqqdvJqSktXhexcwQAacnTiA08agPy2QtWEvr9qR9KYDis2hlJYjIa3oKqPVXOP0
- eZrWMEyw1iCLQRcG+bpzoGV1jDwJhNAinu7NCICniPWAU7prCC40xfFkImzy+ldb2vOZ
- lXlnqabnikh4+C8Y6uUaJVOBD7LrxNNJ9gAd8oQeLtWEgsnqT6+Z12X/5sG0EmxQ9k2r
- yn77NnwRhKodbQx/FicEXxCzACopCdfrwreoIOjzTXGxmGY33U67afqy7ngUp805YE8S
- BzFQ==
-X-Gm-Message-State: AOJu0YxmQDELBG7nrnZ6mK4xpu10L8juK9HETfm9gAsbnT2jCKgaKRvB
- maYXMawtFIXmzV99Rp91zj/go+N8C3YpjHFKdmmu16albrJCrOj62SzFkf6fcoBorLObanIa7vs
- dFkG2mvLnXqfA
-X-Received: by 2002:a05:620a:8c14:b0:778:8676:fd4 with SMTP id
- qz20-20020a05620a8c1400b0077886760fd4mr1431145qkn.73.1699949179469; 
- Tue, 14 Nov 2023 00:06:19 -0800 (PST)
-X-Received: by 2002:a05:620a:8c14:b0:778:8676:fd4 with SMTP id
- qz20-20020a05620a8c1400b0077886760fd4mr1431140qkn.73.1699949179248; 
- Tue, 14 Nov 2023 00:06:19 -0800 (PST)
-Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
- [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- bn40-20020a05620a2ae800b007756f60bcacsm2463795qkb.79.2023.11.14.00.06.14
+ bh=OujD5ycfqz/svV9Ju/bsg82JbTieO3a6f7J8r2fIurI=;
+ b=cjPPfhpSsvBuuabH712y0UPnT1PUGetL33bNEYvrk+AkQ5s+s/dIhs2oY3sYH/P0ZL
+ 8uMNeqegtwfcPmpHH6Hqv5f3z5E4j83PNvEF0xuHyX3Bku9nAiYjjtjKo806PZZAJyTd
+ 2e7VZI/ILaMqEf3KPBOYoQd9korT4dmQSOeRfEokWjGTeovloV0020itRfvzIL4q0FxW
+ t44FhKT8Zf5a/ef/W0nboDUbUG6ct2hJkDJGDKxAeI7fEdCIdNk7VaKV+Yx0Tbt2woo7
+ XT+UP+UHghkTlZ3nrSJo783/7XGlG22hacbnUxf+RUiqYpG/lw6R4cRGA+Iq1kcX0mA2
+ BJPA==
+X-Gm-Message-State: AOJu0YzdsUyrLMPh7dz2NXp49RGiArabq8AxmVzvJ6S5o5jSZu+8o9MQ
+ coloO2Ngvzw4O7RmCnCU0vgUVOudauIuvDqM3KgXg99IHS9L0WD79l+TijeLDrdZ/2ezYIPOgdd
+ KGgnml3KQdq5M
+X-Received: by 2002:a17:902:7d87:b0:1c9:e508:ad54 with SMTP id
+ a7-20020a1709027d8700b001c9e508ad54mr564859plm.13.1699917833529; 
+ Mon, 13 Nov 2023 15:23:53 -0800 (PST)
+X-Received: by 2002:a17:902:7d87:b0:1c9:e508:ad54 with SMTP id
+ a7-20020a1709027d8700b001c9e508ad54mr564807plm.13.1699917833077; 
+ Mon, 13 Nov 2023 15:23:53 -0800 (PST)
+Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15?
+ ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
+ by smtp.gmail.com with ESMTPSA id
+ q18-20020a170902dad200b001ca82a4a9c0sm4501618plx.309.2023.11.13.15.23.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 00:06:18 -0800 (PST)
-Message-ID: <fb41ec92-d953-4536-b217-8c06f63115ef@redhat.com>
-Date: Tue, 14 Nov 2023 09:06:13 +0100
+ Mon, 13 Nov 2023 15:23:51 -0800 (PST)
+Message-ID: <4f2b342b-bf32-4fee-9736-a3536ddf5d92@redhat.com>
+Date: Tue, 14 Nov 2023 09:23:33 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] Replace anti-social QOM type names (again)
-To: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, alistair@alistair23.me, edgar.iglesias@gmail.com,
- peter.maydell@linaro.org, francisco.iglesias@amd.com, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
-References: <20231113134344.1195478-1-armbru@redhat.com>
- <ZVIo3FsmwpfHzsh8@redhat.com> <87y1f0hjdh.fsf@pond.sub.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <87y1f0hjdh.fsf@pond.sub.org>
+Subject: Re: [PATCH v4 01/33] target/alpha: Tidy up alpha_cpu_class_by_name()
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, philmd@linaro.org, clg@kaod.org,
+ imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
+ quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, crwulff@gmail.com, marex@denx.de, shorne@gmail.com,
+ npiggin@gmail.com, ysato@users.sourceforge.jp, david@redhat.com,
+ thuth@redhat.com, iii@linux.ibm.com, kbastian@mail.uni-paderborn.de,
+ jcmvbkbc@gmail.com, shan.gavin@gmail.com
+References: <20231102002500.1750692-1-gshan@redhat.com>
+ <20231102002500.1750692-2-gshan@redhat.com>
+ <20231106152229.02d6326a@imammedo.users.ipa.redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20231106152229.02d6326a@imammedo.users.ipa.redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -180,33 +153,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ukUY/LXMpDjF
+X-TUID: uCzs3CVR/TsC
 
-On 14/11/2023 08.41, Markus Armbruster wrote:
-> Cc: the other QOM maintainers
+On 11/7/23 00:22, Igor Mammedov wrote:
+> On Thu,  2 Nov 2023 10:24:28 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
 > 
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
->> On Mon, Nov 13, 2023 at 02:43:42PM +0100, Markus Armbruster wrote:
->>> We got rid of QOM type names containing ',' in 6.0, but some have
->>> crept back in.  Replace them just like we did in 6.0.
+>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
 >>
->> It is practical to add
->>
->>     assert(strchr(name, ',') == NULL)
->>
->> to some place in QOM to stop them coming back yet again ?
+>> For target/alpha, the default CPU model name is "ev67". The default
+>> CPU model is used when no matching CPU model is found. The conditions
+>> to fall back to the default CPU model can be combined so that the code
+>> looks a bit simplified.
 > 
-> This adds a naming rule to QOM.  Right now, QOM has none whatsoever,
-> which I've long called out as a mistake.
+> default cpu should be specified by board not by target internals.
 > 
-> I'm all for correcting that mistake, but I'd go further than just
-> outlawing ','.
 
-What prevents us from fixing this "mistake"? Is there any compelling reason 
-for keeping the current lax naming rules of QOM? Would there be migration 
-issues if we'd rename the current offenders? (and even if so, couldn't we 
-simply fix that issue by curating an allowlist of old names?)
+Yes, MachineClass::default_cpu_type used to specify the default CPU type.
+I will improve the changelog in next revision to avoid the confusion.
 
-  Thomas
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>>   target/alpha/cpu.c | 7 ++-----
+>>   1 file changed, 2 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+>> index 51b7d8d1bf..c7ae4d6a41 100644
+>> --- a/target/alpha/cpu.c
+>> +++ b/target/alpha/cpu.c
+>> @@ -142,13 +142,10 @@ static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
+>>       typename = g_strdup_printf(ALPHA_CPU_TYPE_NAME("%s"), cpu_model);
+>>       oc = object_class_by_name(typename);
+>>       g_free(typename);
+>> -    if (oc != NULL && object_class_is_abstract(oc)) {
+>> -        oc = NULL;
+>> -    }
+>>   
+>>       /* TODO: remove match everything nonsense */
+> 
+> Let's do ^^^^^ instead of just shifting code around.
+> It will break users that specify junk as input, but it's clear
+> users error so garbage in => error out.
+> 
+
+Ok. The whole chunk of code to fall back to 'ev67' will be dropped
+in next revision.
+
+> 
+>> -    /* Default to ev67; no reason not to emulate insns by default. */
+>> -    if (!oc) {
+>> +    if (!oc || object_class_is_abstract(oc)) {
+>> +        /* Default to ev67, no reason not to emulate insns by default */
+>>           oc = object_class_by_name(ALPHA_CPU_TYPE_NAME("ev67"));
+>>       }
+>>   
+
+Thanks,
+Gavin
 

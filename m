@@ -1,85 +1,139 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2134523ejc;
-        Tue, 14 Nov 2023 07:55:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGeExx7Xne7U49kqydmdkbyatO9cPyfO/+Mljry+UjPnJdspxs9tggdB2VAlNb+pGB2yMOq
-X-Received: by 2002:a05:600c:1d9b:b0:409:67bc:e1cc with SMTP id p27-20020a05600c1d9b00b0040967bce1ccmr8038521wms.36.1699977306864;
-        Tue, 14 Nov 2023 07:55:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699977306; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161071ejc;
+        Tue, 14 Nov 2023 08:31:28 -0800 (PST)
+X-Received: by 2002:a17:906:4907:b0:9b2:b691:9b5f with SMTP id b7-20020a170906490700b009b2b6919b5fmr7060938ejq.41.1699979487857;
+        Tue, 14 Nov 2023 08:31:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699979487; cv=none;
         d=google.com; s=arc-20160816;
-        b=NG4umeI441UqKAdlLWH3lP0B2nbUbpKDWFK+ZBQjSU4LXKbBVz+FQL7x+abA2BhUvE
-         Y/O3m3Z9Uu9123cgND3kSKBydXWo1/1MKmZUKW9UUawdkDiHBd4W7kygCbiqe70+MCSm
-         wl3yCFzXKA+ffI3CqMQDeq4u50RYhqyg0WrWiqY8s5KlpGfHsKqrZl5IQfVLl1tmIWzz
-         TiWoKplvvbxJ4AZRbtPV+4uJAVCZ8XalvXzliK0w0vRAh6tZi4aOOR38PrAtoPE4GKBE
-         X5qXfnoeFf3Gk3zBVJteM2ZSUFLK0pyfyW02XSTgZeqzfRMisSW3c9zNvh6nJGskQKu1
-         4kyg==
+        b=igFrLIxTWOg6n4wnFtR3E5VdMmLx2rjdw0FlBXOslPcnQHqMvOnOR+UlGqGtxLHF6/
+         bHW6hpX9ZOxFu4FkZZb0lPRtbBDQ9C3awJxZKFUBCVXAP4I0HyQO/2hdvpdgwhp58CjO
+         aIhH6Ii5xAYBRUzgEgc0Q0CCmxJrqSqUvkoP5xrQu5S/by4AqB8Jmpm3qHVLNJ2s6dvI
+         DOfOuna1olkIti1qJBUepM/G6P4TfB7AXoQ2elM2ne68SvBHXBigA0zE8iv73YB8HUP6
+         6BSKG7tsJbfKKYTJR0OLZXRpdpuVxaAg70bWapRr333PmiKX/4yMtVYHmEhG6MwuuRfH
+         u+jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:dkim-signature;
-        bh=/dnm/wFvk/yv7xaMVVCi4UNXjRYnVLcTr44nudqfiig=;
-        fh=7JhNqaM1Mp0687uOFl7YXgBivNCe7ij7R1FacKyuXcU=;
-        b=WxhtPdr1b3KacXKL+zw4XNkZUZsQxtt/iNqL9+1zm6tj8BvHd8QEjCp689aLEkeJjc
-         peL47zIydG4rEuVBRCPMwuTSsIrRnzr+umCCLFPkb16s82WRPls1VV07dt6NqBIe195j
-         wUHd+kd8uskg8dxQwzsF5b/T0FLuJ91l5KkqDk892lvFi5E99mW7+CZTI013DLdvINf0
-         3spAk6sYlTTyjBIBSzordGlYQjTQvlRCVc+UkjRS79ru7WTqRx7iL5l32EmK3cepNJjA
-         CMAehNujVmcyNw+sdZ7RLS5Gy8Pf+o0WC+pYpvsIcyFElTBfg9u141Z+Bhy/Vn/pSW79
-         DmVQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=WLUIW1wEN60RfjCUyh0wJRK9Kz/EqjAkfQjEh/PTjs0=;
+        fh=9pdq7NpBxJPnvyNu1sJsWepRx2HfUbiacvC5FeL2cfI=;
+        b=c0E6yoDIMccunnk1oIzI+mSQpiW0xZvEmwjjsIXJnKhFJdg44LELTZ7atTVSYjjuul
+         KqYdbfxhAA4lr2nq9cxjY2XilV920ph69QDnhlzuh9VOLoWrEPP3Qwe6bzywceI1qgcp
+         NpyLvFC/PzHU/5xXflQpUTkpku4p9BEiqw91O3KMrXGFKcDzCECskXd2ztsd43DCjJQV
+         YufJ0ZlAOI3kYeIxosO3pYbFREe4PycjTwY0KF2YcPEHJqxGILe+gS+RQqyMCqpJirqB
+         lYEy4zj4UA+LgZbwKexSLVcbwoRymDoR9wmIaHl8PXXdxvMfsrYzSNUvtcswEwUoMnHR
+         99pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=CrvEHaLu;
-       spf=none (google.com: desiato.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+c0bb53cb81094deeb936+7387+infradead.org+dwmw2@desiato.srs.infradead.org
-Return-Path: <BATV+c0bb53cb81094deeb936+7387+infradead.org+dwmw2@desiato.srs.infradead.org>
-Received: from desiato.infradead.org (desiato.infradead.org. [2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-        by mx.google.com with ESMTPS id 12-20020a05600c024c00b004075c57bae7si4815996wmj.132.2023.11.14.07.55.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Nov 2023 07:55:06 -0800 (PST)
-Received-SPF: none (google.com: desiato.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1:d65d:64ff:fe57:4e05;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZhvaYpfy;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 27-20020a170906001b00b009cd938511ddsor477368eja.21.2023.11.14.08.31.27
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 14 Nov 2023 08:31:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=desiato.20200630 header.b=CrvEHaLu;
-       spf=none (google.com: desiato.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+c0bb53cb81094deeb936+7387+infradead.org+dwmw2@desiato.srs.infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=/dnm/wFvk/yv7xaMVVCi4UNXjRYnVLcTr44nudqfiig=; b=CrvEHaLu3ghKko6qCLNKnbyNbO
-	H0HaiBWEDEqhiYXOyWq6L5fPwjkEEuFM/hPjw0DdPgdVBxI+hfbT8DDMqqG32wfgapci6OUoR+GwG
-	LWXFGfKFNSpfzi7W13vkvR1Qk9iNGPwbn/ZvEhT0U/TFVXS1dCcIHK9YwgL7NXv7izHrZkaWioseY
-	o2/3wuKNJ5fI/LnE0O+1GLlCXwFBTOIob05/Tt0QVIQ3fhqoeH6os7jaqbRUQXvuthfMe+J+5R2My
-	36DqwE1AyHONfjQ2p9p3mJ2mXSIPNVvkoPDkUya1YBWKOoVp6qb5x1u+SdwdorOgU1Od+9cvf/1Ly
-	pfoeq3TQ==;
-Received: from [12.186.190.2] (helo=[127.0.0.1])
-	by desiato.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1r2vkj-002YFc-1l;
-	Tue, 14 Nov 2023 15:55:05 +0000
-Date: Tue, 14 Nov 2023 10:54:57 -0500
-From: David Woodhouse <dwmw2@infradead.org>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
-CC: =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
- Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
- Anthony Perard <anthony.perard@citrix.com>, kvm@vger.kernel.org,
- Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH-for-9.0 v2 16/19] hw/xen/xen_pt: Add missing license
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20231114143816.71079-17-philmd@linaro.org>
-References: <20231114143816.71079-1-philmd@linaro.org> <20231114143816.71079-17-philmd@linaro.org>
-Message-ID: <533319AD-DC12-4E44-8C95-D7A85D8E4241@infradead.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZhvaYpfy;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1699979487; x=1700584287; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=WLUIW1wEN60RfjCUyh0wJRK9Kz/EqjAkfQjEh/PTjs0=;
+        b=ZhvaYpfyIxQmxx5CdKoM1HprYunDk72+1bAYreYfEfYmsOcJqcxw5K/K8hsiDgQT4A
+         rAKxz+pR3l7VfiNIvh8TMevjmoMYY9awkAFEyXnlqCJUwlCdA8WIpOxaP8rfzL77KZQO
+         +2KsPPeytaRvgsdQNF0LBHwraGct98JGmdI8KugB7KaGYuEm4TRC7yB/a4A8BQYzo1Z2
+         yYOCsZB9Nn2VAaomgoLbi+xz3RTgS46BSJLGUtgf51k65zz57Bd5kzrhLptyKCq2QOwM
+         6+0siZ7tdfnuO/zzPRGA8HX+7H0TNAsfUDZjunx+iUEu7JwQpSmuulMmJCFkpDHR/8bp
+         j+pA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699979487; x=1700584287;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WLUIW1wEN60RfjCUyh0wJRK9Kz/EqjAkfQjEh/PTjs0=;
+        b=qbvvylnlbkdfgAnh1Os+SOKIIjPmcxFbXTwJhalhCSynVsstE6sHOj22Z0JXK3+Pt7
+         uMIrIszkJyzrwoieKDKii/k1Cb/UTjvwfa3FbERnBVDoywYHDp72chfpRcF3wZbFeU6Q
+         v0fko8pvaNW8YrczaZOtmWUjX8D6q+opMO9DvPwyj84AIiHwsBVi+FX/G4TlXYiTQn3k
+         a5+yh5qtRuWkvIorSPXDIHebvIHc5yXJaqXwG6ng26Ic83Zrxn7Oss7S1RfDgxwAiMIf
+         8f3jbqcheT5eLI404n0vzPJZUqsCa/XTJqC1lF8yfpXRHCmnPsUBqVMkuS9vOezNpgvp
+         xk2w==
+X-Gm-Message-State: AOJu0YxDaCsR57bJYb7OjpRzfL6dBGmjDFpm5v7Rrld4O6SGQ99LdaZ9
+	C/VvmO4CxOcxuGzobkJPjBX9xxXQ
+X-Google-Smtp-Source: AGHT+IEWSkzHY5obRM6zNhXhqu10PReegPajovJZrPBLVpt+fJDzRpOh65h9KSuNBeV+qPZ25y+u/g==
+X-Received: by 2002:a17:906:b889:b0:9e0:dcf:17f6 with SMTP id hb9-20020a170906b88900b009e00dcf17f6mr7932359ejb.58.1699979487100;
+        Tue, 14 Nov 2023 08:31:27 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
+        by smtp.gmail.com with ESMTPSA id m16-20020a1709060d9000b009be14e5cd54sm5785453eji.57.2023.11.14.08.31.25
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 14 Nov 2023 08:31:26 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	David Woodhouse <dwmw@amazon.co.uk>,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	xen-devel@lists.xenproject.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH-for-9.0 0/9] hw/xen: Have ARM targets use common xen_memory_listener
+Date: Tue, 14 Nov 2023 17:31:14 +0100
+Message-ID: <20231114163123.74888-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by desiato.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: SwIu0QSFEl4d
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: wI/yuGGpldch
 
-On 14 November 2023 09:38:12 GMT-05:00, "Philippe Mathieu-Daud=C3=A9" <phil=
-md@linaro=2Eorg> wrote:
->Commit eaab4d60d3 ("Introduce Xen PCI Passthrough, qdevice")
->introduced both xen_pt=2E[ch], but only added the license to
->xen_pt=2Ec=2E Use the same license for xen_pt=2Eh=2E
->
->Suggested-by: David Woodhouse <dwmw@amazon=2Eco=2Euk>
->Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+Hi,
 
+While looking at Xen target-specific code, I noticed some
+generic code used by x86 which is not implemented for ARM.
 
-Reviewed-by: David Woodhouse <dwmw@amazon=2Eco=2Euk>
+Maybe ARM machines don't need it, I don't know. But I
+wanted to see if I can get this common code target agnostic
+and build it once, possibly bringing smth useful to ARM.
+
+The changes don't break CI testing and Avocado local tests.
+If this xen_memory_listener feature isn't required for ARM,
+I'll send follow up patch that keep this series with common
+xen_memory_listener but with a runtime flag to disable.
+
+Patches do the usual "change target-specific API to a
+target-agnostic one", in particular using "exec/target_page.h"
+at runtime. Then non-x86 code is extracted, then merged to
+the generic xen/xen-hvm-common.c.
+
+Thoughts?
+
+Regards,
+
+Phil.
+
+Based-on: <20231114143816.71079-1-philmd@linaro.org>
+
+Philippe Mathieu-Daudé (9):
+  hw/xen/hvm: Inline TARGET_PAGE_ALIGN() macro
+  hw/xen/hvm: Propagate page_mask to a pair of functions
+  hw/xen/hvm: Get target page size at runtime
+  hw/xen/hvm: Expose xen_memory_listener declaration
+  hw/xen/hvm: Expose xen_read_physmap() prototype
+  hw/xen/hvm: Initialize xen_physmap QLIST in xen_read_physmap()
+  hw/xen/hvm: Extract common code to xen-hvm-common.c
+  hw/xen/hvm: Merge xen-hvm-common.c files
+  hw/xen/hvm: Inline xen_arch_set_memory()
+
+ include/hw/xen/xen-hvm-common.h |   5 +-
+ hw/arm/xen_arm.c                |  24 --
+ hw/i386/xen/xen-hvm.c           | 441 +----------------------------
+ hw/xen/xen-hvm-common.c         | 474 +++++++++++++++++++++++++++++++-
+ stubs/xen-hw-stub.c             |   4 -
+ 5 files changed, 468 insertions(+), 480 deletions(-)
+
+-- 
+2.41.0

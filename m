@@ -1,200 +1,204 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1874805ejc;
-        Mon, 13 Nov 2023 23:58:25 -0800 (PST)
-X-Received: by 2002:a05:600c:3d10:b0:402:ff8d:609b with SMTP id bh16-20020a05600c3d1000b00402ff8d609bmr6896740wmb.33.1699948705353;
-        Mon, 13 Nov 2023 23:58:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699948705; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2029763ejc;
+        Tue, 14 Nov 2023 05:18:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFzzfy2OYgRPDJ0c46Hjo7OLAzhfhWoHypaUwga3fAvcqXx1a2Fog+gTosU4E8+zJv5mQAI
+X-Received: by 2002:ac2:4209:0:b0:50a:26b:6ddd with SMTP id y9-20020ac24209000000b0050a026b6dddmr5924056lfh.49.1699967928943;
+        Tue, 14 Nov 2023 05:18:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699967928; cv=none;
         d=google.com; s=arc-20160816;
-        b=kvDgmQU+6ugFDsB60D/wdaEGk6Q0xe6ZVj00wz3RXeiyWloKFoawNI10BeJb28q/DL
-         V/RGC8zqNZ3Eve2ApV+0UIHZ3+6XLp6PswK4e10Y/3f9vVcFI+aFfaeWtojJa2NdVGVa
-         +JBK8kYdpqEdwXqVko6pZ6SNwBYmXXAWSO2MaES63cOMZV5F3kyW+KPFVWc1+gqIcuw2
-         jwaRQQO1+LhHeFNVu2xICpAEyXbBYGRlUlG4N216HeYtklwM0OqQjpa7w4yxu4fDAHEC
-         4rX3daJFJsEUPTY+HdeQ4RQMv/MUIFYqwIVe8mGjR6K+ulHOLUyvDJa9PJklI5L94tey
-         7JOg==
+        b=AJDcFH4dzRYMB2B4KGf0OM/PHJDGVmEU+oYggVIJ70ZtL6bvYhc0qfiVa+npBnhSMv
+         FHlO7mT2Gq1em/EVuSb2cCguMwY3ZL1ZYRts5ppbOOAgkabfRQTwPLGp0qEX390DhIiX
+         fG+lKr9S0E8krnb1mRTuBJywo8lIhKdK6175y0Ea+VdgkrYliaWVzqEUo89p5Wqle1dL
+         9f0UMZLTPI5qp8P4y2frrJCTRJLbSesO44Pno16qwqEvD7RiOnXnJIM/ygN43l9VUeD6
+         ZU7OklcAWFwFcfXlj6v2OCfRLEGfxr2z7906qd8VmdkSvPge4+0GIKeMTj42QzFTyCWo
+         OtsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=/ocmXiH4qcLkoZdQoaluE8CpB0EXbFAC8scGwpgtKsc=;
-        fh=8rXE5142xSxqvhKbOviMovGfZ8HOw/C9aQF9KwL8P3o=;
-        b=Vr40dH69wYgTbIx6hfp6uPdSInObEBlSPY37w3xTu0RyE3k8lxihaCFoeEwP42NB/2
-         ItWmfurPc0Zh5/t0/0eG8VeExD5Z78be3Z5qv0ZuvGCWpGAPaaz1INNVXHhMdls1Fyuj
-         jEr4/lMlme3EfnDdRV/ZgoJsQMtLfr/lTtAbNsMgF+R0JdXx6rQ8t2G5nxNIutKd6ZxS
-         6nrO1yL0vrUPXQjZ4FM/Rz9jwl0npCra9teaC9/dG7k1fi80vySZRlY8sMP7kaLHzvCZ
-         S2x3kKtRru8O1gqYpej0+Qih6liOlkAWlHwesi5HJkg42fbvrf414i30Zg9feMrdiuL3
-         u8dw==
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=rIxfB7lqS8f6/uYru2oZbhVJ7EWsaS7Tb6LAwvtqCRY=;
+        fh=iL4WDupC5Q9sXHH9c5Eej3AfYHJToY7iR+HZFDUXaks=;
+        b=Z3B2qluW+DFEuSrGC5mh5vpvlAU0VZC9UsB8o3iKPbHW/SAD5pgI91oeaLk7rn86J3
+         93AMmLDFl/A7R5p1UvPeEintuCzaf7LtwSXIijagv43U0T2MiF9fW0SR/cqrnPB+O9OH
+         kl6Wbt0v6Cbd0ZZJmDOGx+FZWTFqLCXPSdKTeegdoTJ0ANsMggwY2PDiv09fh8OPSLXT
+         yuwOqIU82oh2HDqrUjZim3EBMJwESvOiKQCsn1Y//+y5zuJJ3PniO0tikZk30E5SiNFD
+         qzvEINqYQsj7YZmyrJJqbe1ty5XQ8uk/Kx29AeY/AYnLawOj5OOB3zneXxwXihC16Q2k
+         5/PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ouRTcoXj;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j22-20020a05600c489600b00403b83c45f1sor1575280wmp.13.2023.11.13.23.58.25
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 Nov 2023 23:58:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=P0Ynzimb;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id l22-20020a05600c4f1600b0040787d915b5si4607108wmq.140.2023.11.14.05.18.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Nov 2023 05:18:44 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ouRTcoXj;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699948705; x=1700553505; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/ocmXiH4qcLkoZdQoaluE8CpB0EXbFAC8scGwpgtKsc=;
-        b=ouRTcoXjiDgY3RxWj5gO9YN/X9ZgGmjKPbSzX7Z8tOFcZfA3acVq2DuqhJeM7mFlWg
-         7pfJCAD9+CfqVUunPWiTVQUUmtzqqK3N9qMlE4XqDed1hpwr8sdJpGpVi9Nj7le/5vuT
-         d6Qtsz5GurTC7xeAZQ45EfS+NayIbqvNetOLJWtnnPfbER0/JvHhfSrUeTZ9b3brV7ce
-         fjCUAhyigTNZGvLB3QXBTYd4YaEcXGC1GpSxLIf2YHXVuT3H91JkV4F3L+43oLCsyQRm
-         4+9452PnTx4AIzcp/89b2fPezDnluMWNe6ZRkpQhB99CyhZUAeB5jpR9R/MO/+af2lio
-         fhOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699948705; x=1700553505;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/ocmXiH4qcLkoZdQoaluE8CpB0EXbFAC8scGwpgtKsc=;
-        b=c4CEEcCfKCrebrcbQD0/6KIwqknmUxztVM7iVz2XEOAbvJ8kD2i9wG9+OcBAApVZRC
-         GVn1eLXpmy1i8F/qH5mghLWxdoDwCbnEFe0bnIMJZVw3lyu6onwP6Uj1kU+y/QUrFEGT
-         VkfaNYapvPc+Rs+bckUS7xRsjujZa8sV3OZH4EDDPnAi6vOpUVG+9yUblndu4nOUCaJH
-         1H5TuurZXJ3MEBYcEONGp50RUQ6sM/6jdqVoFvsSGfgjC08hKshfT8WdsJrJVwTS3SLA
-         BKMWvrcDmwtQVRy/wO3S1NjsDZORxahlVF6+ClJTdqKYfNi7nHKdCRZiVFZd6HrJ4h0V
-         0rFA==
-X-Gm-Message-State: AOJu0Yxn1SkD4mILIiy21iOvDOmauKY8MAcRJxDlfKCnCEjnUMRefPIz
-	PhxljaWiL0S91NWyQE9ciNm91UX1
-X-Google-Smtp-Source: AGHT+IGLnHPxByJUZlv0OHbrwkWB8vQY4zl1JbOsJeysfx3/2KJYr3iDxrCmrQRuOG07AKPgS0e+TQ==
-X-Received: by 2002:a05:600c:1c21:b0:407:612b:91fb with SMTP id j33-20020a05600c1c2100b00407612b91fbmr6720884wms.30.1699948704783;
-        Mon, 13 Nov 2023 23:58:24 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id r18-20020a05600c35d200b0040a487758dcsm10551547wmq.6.2023.11.13.23.58.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Nov 2023 23:58:24 -0800 (PST)
-Message-ID: <b7646614-8f5c-4ea6-9ea8-ff81f4a492c9@linaro.org>
-Date: Tue, 14 Nov 2023 08:58:22 +0100
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=P0Ynzimb;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=rIxfB7lqS8f6/uYru2oZbhVJ7EWsaS7Tb6LAwvtqCRY=; b=P0YnzimbL37kEQWcgkevi2TagE
+	SUuAaRXzCA6P2jeXBnfhfZHTwZ3ttqyBdF17eNC5aqLuWrxqsHMSESM4hJkC0751oyY6E53+c1BMS
+	Xc5+PO+TKvwXc+v/wDO5hBjH2Ee9G3sdZyk6KOaEC1QY2ngjM+QeBXe1vd+LtlhkILpvMSg81fkVl
+	vzd4SbZoVIUqlnjaspNZlzG+bfO/c/T4RL9UnwY6WGrBBhRem6SkA3PE1VhgE/a0pHCa+4To1YI0B
+	mE9ZMZAmdxHALzr0YI7P74puQCmm2OKvsuMe0NXc2NzvZLKsNc6nFJ12S0WyABVBhw6Er4Xu4aEqb
+	/MHPSXDA==;
+Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1r2tJD-0089f3-0n; Tue, 14 Nov 2023 13:18:27 +0000
+Message-ID: <112d2f8a79668c8a115df806d9587077c45ead96.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 07/10] sysemu/xen-mapcache: Check Xen
+ availability with CONFIG_XEN_IS_POSSIBLE
+From: David Woodhouse <dwmw2@infradead.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
+ <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>, 
+ xen-devel@lists.xenproject.org, Stefano Stabellini
+ <sstabellini@kernel.org>,  qemu-block@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>
+Date: Tue, 14 Nov 2023 08:18:24 -0500
+In-Reply-To: <86153cf2-129d-4e1e-8949-786764bdf607@linaro.org>
+References: <20231113152114.47916-1-philmd@linaro.org>
+	 <20231113152114.47916-8-philmd@linaro.org>
+	 <9ba10b4a92ac6782d0c581b1e1ee5d5efee44c33.camel@infradead.org>
+	 <86153cf2-129d-4e1e-8949-786764bdf607@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-aUBqOTLgNepVR1v3+gmY"
+User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 04/10] hw/xen: Factor xen_arch_align_ioreq_data()
- out of handle_ioreq()
-Content-Language: en-US
-To: David Woodhouse <dwmw2@infradead.org>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Anthony Perard <anthony.perard@citrix.com>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Paul Durrant <paul@xen.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <f791a822-f6f5-44fa-904b-f67d3f193763@email.android.com>
- <7a66c289-19e1-4690-8c6e-31a9f6344b6f@linaro.org>
- <e892e4eee469b1d1406dcd0844af48d1aaff23ae.camel@infradead.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <e892e4eee469b1d1406dcd0844af48d1aaff23ae.camel@infradead.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: scUGwaUTPMcH
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: Hwnyqg5XX+l5
 
-On 13/11/23 18:11, David Woodhouse wrote:
-> On Mon, 2023-11-13 at 17:09 +0100, Philippe Mathieu-Daudé wrote:
->> On 13/11/23 16:58, Woodhouse, David wrote:
->>> On 13 Nov 2023 10:22, Philippe Mathieu-Daudé <philmd@linaro.org>
->>> wrote:
->>>
->>>      Per commit f17068c1c7 ("xen-hvm: reorganize xen-hvm and move
->>> common
->>>      function to xen-hvm-common"), handle_ioreq() is expected to be
->>>      target-agnostic. However it uses 'target_ulong', which is a
->>> target
->>>      specific definition.
->>>
->>>      In order to compile this file once for all targets, factor the
->>>      target-specific code out of handle_ioreq() as a per-target
->>> handler
->>>      called xen_arch_align_ioreq_data().
->>>
->>>      Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>      ---
->>>      Should we have a 'unsigned qemu_target_long_bits();' helper
->>>      such qemu_target_page_foo() API and target_words_bigendian()?
->>>
->>>
->>> It can be more fun than that though. What about
->>> qemu_target_alignof_uint64() for example, which differs between
->>> i386 and
->>> x86_64 and causes even structs with *explicitly* sized fields to
->>> differ
->>> because of padding.
->>>
->>> I'd *love* to see this series as a step towards my fantasy of being
->>> able
->>> to support Xen under TCG. After all, without that what's the point
->>> in
->>> being target-agnostic?
->>
->> Another win is we are building all these files once instead of one
->> for
->> each i386/x86_64/aarch64 targets, so we save CI time and Amazon
->> trees.
->>
->>> However, I am mildly concerned that some of these files are
->>> accidentally
->>> using the host ELF ABI, perhaps with explicit management of 32-bit
->>> compatibility, and the target-agnosticity is purely an illusion?
->>>
->>> See the "protocol" handling and the three ABIs for the ring in
->>> xen-block, for example.
->>
->> If so I'd expect build failures or violent runtime assertions.
-> 
-> Heh, mostly the guest just crashes in the cases I've seen so far.
-> 
-> See commit a1c1082908d ("hw/xen: use correct default protocol for xen-
-> block on x86").
-> 
->> Reviewing quickly hw/block/dataplane/xen-block.c, this code doesn't
->> seem target specific at all IMHO. Otherwise I'd really expect it to
->> fail compiling. But I don't know much about Xen, so I'll let block &
->> xen experts to have a look.
-> 
-> Where it checks dataplane->protocol and does different things for
-> BLKIF_PROTOCOL_NATIVE/BLKIF_PROTOCOL_X86_32/BLKIF_PROTOCOL_X86_64, the
-> *structures* it uses are intended to be using the correct ABI. I think
-> the structs for BLKIF_PROTOCOL_NATIVE may actually be *different*
-> according to the target, in theory?
 
-OK I see what you mean, blkif_back_rings_t union in hw/block/xen_blkif.h
+--=-aUBqOTLgNepVR1v3+gmY
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-These structures shouldn't differ between targets, this is the point of
-an ABI :) And if they were, they wouldn't compile as target agnostic.
+On Tue, 2023-11-14 at 13:25 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+>=20
+> As is CONFIG_XEN.
+>=20
+> Maybe be worth renaming CONFIG_ACCEL_XEN if you think we need
+> guest hw specific CONFIG_foo_XEN variables.
 
-> I don't know that they are *correct* right now, if the host is
-> different from the target. But that's just a bug (that only matters if
-> we ever want to support Xen-compatible guests using TCG).
-> 
->>> Can we be explicit about what's expected to work here and what's
->>> not in scope?
->>
->> What do you mean? Everything is expected to work like without this
->> series applied :)
-> 
-> I think that if we ever do support Xen-compatible guests using TCG,
-> we'll have to fix that bug and use the right target-specific
-> structures... and then perhaps we'll want the affected files to
-> actually become target-specfic again?
-> 
-> I think this series makes it look like target-agnostic support *should*
-> work... but it doesn't really?
+I don't think so. We have CONFIG_XEN_BUS and CONFIG_XEN_EMU (from
+commit 820c1aba519b) which I think are all we need.
 
-For testing we have:
+Thanks.
 
-aarch64: tests/avocado/boot_xen.py
-x86_64: tests/avocado/kvm_xen_guest.py
+--=-aUBqOTLgNepVR1v3+gmY
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
 
-No combination with i386 is tested,
-Xen within aarch64 KVM is not tested (not sure it works).
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTE0MTMxODI0WjAvBgkqhkiG9w0BCQQxIgQgnJryHOXY
+5Pt9DjCzf/ly9qVlDKJr7NwNfjpuEp4y/mgwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCTlgw+sdY9PfyEu4sv1rE08NPZUYXqIwj0
+9CkAka/Jf0dYSZlzNFF53RXfwvXNYomN59AmcecUxZ6jVrTI5ESYRij0SiOJToHFwb15Q0RaKJyl
+wsXCrdZenwp2J/XqjkMTU6RHimmGgqplzU5sbn4VBqBvxEyeQJxNnL5v0UeDFEHqkqNHm898cn0w
+TFwOOC6cJB833HhiZCzVsNJtqhM6lmmKDOFgb2t5bJX/wqdrrZTwQCluYboAX817uP5SJFwzUqBq
+0qXrirJZswx8W6TGQf+caUWOntmL12IaJF6hGtYJVCKGoJ8tgwV+EfO+W2DjONxlU7FFjmbxgmIu
+tZaK5xySAdFCzgMyU42GH1tCjGjmXaNOxSJZFPULRV03zVmGYBtDAwAkYWV8MG+0RVS+h2i/UHsa
+vCCCrpc68pUUigz/gxxtMwrZ48rK/GpnVhtMOCPDS+Rav1fe7NuMKerfd8BSVL7kHCkqFxpWyoFm
+pVTAawp460dDhMKujLZPvalvYdpXECc2UAvNED+W/nSJ3hfL6G2Zq1NB4Ju1jTFns9N1cy11/6oH
+tiCBddbW4LNiFdbEUJAehgZmu03KnPG3SniQeyMvrtEgy/py+9PjI0OpvCsW9AmIlFwpJUg0FZWg
+r48iUtsBh8iHjOhaUDJCgNVUEFVzO1nzhDs7/5b52QAAAAAAAA==
+
+
+--=-aUBqOTLgNepVR1v3+gmY--

@@ -1,234 +1,115 @@
-Received: by 2002:a17:906:5615:b0:9d0:bf65:29fa with SMTP id f21csp1496371ejq;
-        Fri, 10 Nov 2023 13:34:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHetCUDHNe840S/cPAQMy3C4G7k5tuNNc8M0ApXKNRQ3X7PEuiPGRGdAyqmAFl+cnsCxgr0
-X-Received: by 2002:a05:6358:3a03:b0:168:ea51:23d with SMTP id g3-20020a0563583a0300b00168ea51023dmr523084rwe.26.1699652064893;
-        Fri, 10 Nov 2023 13:34:24 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1699652064; cv=pass;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1998270ejc;
+        Tue, 14 Nov 2023 04:25:43 -0800 (PST)
+X-Received: by 2002:a17:906:ccc3:b0:9c7:6087:49a7 with SMTP id ot3-20020a170906ccc300b009c7608749a7mr6874411ejb.43.1699964743742;
+        Tue, 14 Nov 2023 04:25:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699964743; cv=none;
         d=google.com; s=arc-20160816;
-        b=mzFrCTTV4FdcP6dpW1SNPaxY8NXaLCqagBXZvq/qKeXJGVt/+quyTj7QW/ZpEJKN39
-         alNLo21ZMTzpagP6VouWmuFsxSHwbUCH2aDcRsL+XnfWdFzofp0v2kCASuJbrqyMOZMm
-         TQNAPdcYjzgbVkE5AtifrtlReLkfAXFa28pzye81ksKJKa9T5d7L5jjXPFC0gY4OO1Pm
-         obvPBOJkBN5wX1jd8KeuWF/4HFmqSnf5swKuS0ZeDb68P58bunA94FlTq/MrchYeXA3h
-         vOM6o/rCZpk9f1oinGom8cqKA5Tsp07OsL8sQB4nFn2NcXi8jDbkti3KXi8VYXcqb+eE
-         qC6w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=MQhMXgI0DmtKlJZnPxUK5w6V43NeKKerokDdW5sHBw8=;
-        fh=Yi6SsXoBEPSj/lKNOmHhQs+3kkxtyjX5qv+iLa6AzR8=;
-        b=ueDCcrOEfHC6sCPIkdXUF0cihXLlBb5DeNzh9IfqYk2Im2KLPjEHo+7cf012uicqfq
-         Y2/q8QPmbc7nUB8xdnQ5G3GNEWYZ0MYKQzN5/Fw7l6TgP/9cFut65WDgqoEewfWyzrKI
-         jnrwYV7it6nwY3+OtcrCfbGHUz0l1cB2Uoh0QkKNR6nATha4Sl32p9pVzdM6/7de2Ocr
-         c/KAfqEslAvm0ipUCUniIZ/grJZpmCq56sYqZMHzYepii/tUuGZbIMPShk69LGy02eL2
-         xDpY2UMQYfnzik9cAq8N9HrCfMxOPLpSaOIP23JG8rK34p9VBveg5ZpM82owhVbGVeH/
-         7ayg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@epam.com header.s=selector2 header.b="rDoEtW3/";
-       arc=pass (i=1 spf=pass spfdomain=epam.com dkim=pass dkdomain=epam.com dmarc=pass fromdomain=epam.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=epam.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n2-20020a05622a11c200b004181127a232si287321qtk.651.2023.11.10.13.34.24
+        b=aZMdGhEQAlZxliOzPGpl244qONU+JjmNIBQeXgq9XGH0/APdi3nW3IyXnTqEil8Ydp
+         331kzaReU+7nEHcV0AeTQ5j+KjlhbvfNNcse0vBQ358Dprv3IdS1BuXQpYJe5Y+oHWq1
+         BCsCK6WirALXB9c0d8tExWK3bu/0/fcQ8wvdv8VIBDbgva7Gpx3R00mqzl4LFZnIZ9fa
+         tdtiuVNBS8gdVdedgfC8RM4XLnCWESg4vEN0NLkqCqNGleSOZahxc/HbfLeYTblMqf5N
+         ogLX6nzxQCCxDuNb9PWnf33qelPcXSKq1E4FWYlhPe43xLjFnEYhtPJkZ6tM+dQtHrF+
+         gu6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=/OaNUIXzZbTozIX8X4xF9tfJTPhcFd4ZMAc/W8lKR1s=;
+        fh=zNL1u6fc+PAQR8kHjT/hG7G+4bmfCKWi7BeP21vx3dU=;
+        b=rzZSanaEtIYTqa6wfk7G1EJjyN9peRf7NG5aYWtqgus7/P4xMXdMSezptGYtW5N3TR
+         ahII8XmqpGapY3kFoZXTtf3nNbNuj/1BA8zEhdL0B83EoucMLmXAdo4K1d77cZ29q8kK
+         d4Higr7z0oqA6/Z6s1+tjqjPn97haZAnf8IeWHkrWrSMHNVkanOeBPuMzXGaVxyJxFsG
+         Wz8Y14j8Mu6iXpQ0qjjyru8RJZ1v6z0qQ54f/peKTSbDYJBks2c9tXi4FXnw5k6CWz7O
+         sdXzExk7aQG8wa290N6xNcY8bdXCpLr+2OlYTg3SsOC2RD4kEvXbDEcf10ibxrg1j61j
+         Flmg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RGkRqiZA;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c27-20020a1709063f1b00b009b2b2ad2a82sor1822592ejj.17.2023.11.14.04.25.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Nov 2023 13:34:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 14 Nov 2023 04:25:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@epam.com header.s=selector2 header.b="rDoEtW3/";
-       arc=pass (i=1 spf=pass spfdomain=epam.com dkim=pass dkdomain=epam.com dmarc=pass fromdomain=epam.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=epam.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r1Z8a-0002EM-9e; Fri, 10 Nov 2023 16:34:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=56783987ff=volodymyr_babchuk@epam.com>)
- id 1r1YKr-00015R-CQ; Fri, 10 Nov 2023 15:42:37 -0500
-Received: from mx0b-0039f301.pphosted.com ([148.163.137.242])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=56783987ff=volodymyr_babchuk@epam.com>)
- id 1r1YKp-0003I4-L1; Fri, 10 Nov 2023 15:42:37 -0500
-Received: from pps.filterd (m0174683.ppops.net [127.0.0.1])
- by mx0b-0039f301.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 3AAKI1MR020361;
- Fri, 10 Nov 2023 20:42:33 GMT
-Received: from eur01-he1-obe.outbound.protection.outlook.com
- (mail-he1eur01lp2050.outbound.protection.outlook.com [104.47.0.50])
- by mx0b-0039f301.pphosted.com (PPS) with ESMTPS id 3u9jbx27f5-2
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 10 Nov 2023 20:42:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MOK36g/Pl2ODq37wiWTkrdMQbE0ICJRGgAJkbBIPbpqWkZ447Chj9frPNCX32xQRy5aqDjKpes9J2qhVeQGM1I3j8GpcR/C1S4IMtY+luQ+R88WpuQmK29cE39GqKiAT6UEyl0zubAVqtf1npa4z0SklEoUyuT0j7GrX61B4UeWk/n69UQzuk20rNUVcILjOSxZN3C/hznBeBDAiKjF5ld8bDgS1LAddIUXEk7nZ5NTZw5AXcDF8ILj+c/F3AUHXplzHK6ZZxhYd1cSbMxD3YZV1uIitr4qzbU9avSf+GAZM6htYVl9Z2RI1V8gVVpZ8KoUZcH4nU2xSqClhcjADIw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MQhMXgI0DmtKlJZnPxUK5w6V43NeKKerokDdW5sHBw8=;
- b=Dl1h/EP9ius4cX/wtcYC/bBqVQUI/f93b4YupCKx+o4/oEKBtvrvBX8dTYWs68KhTZKim+ZQzUVVVqMiUD1kf0JOSv/npjmyiPOLqNZYzP8hvMqql3OzhxbmYw0MJKem4MWt2FKWZDlo4wrs2YbYtuTb87r3KO2a27oQRD4dUrGf38zGldJDv+CPvhvK8ZRlCefTp2vwAT2CzPXC3tJJQJi1E+9d7QYPjVGNsMCh6Nu/Jz/Y4+6KKBs1IMwhR4m/ATpOPhQBPqL5DDqPSOdxU6EyhOBRbGGAapi3VEGUGQsmCUxXuyF3lv+10fPQ6wajTkfVi6SEAtU2KTH3ED44QQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=epam.com; dmarc=pass action=none header.from=epam.com;
- dkim=pass header.d=epam.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=epam.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MQhMXgI0DmtKlJZnPxUK5w6V43NeKKerokDdW5sHBw8=;
- b=rDoEtW3/rDdGAlcLMWze7yFkMXvH0DZxH4MjVMIX7cj9EBhmzxbbcFIap2tyZPHrcrzNtkY1ujeLpNQNkl4wS2AiQ9VFsOxR0oHb6zlqvrTZRsBjxzMWcdOcOAQL6+fu+ouAIWQ5WbuoyXTiMk1qBWzPqnE1NMkSrVsnvvH3KCOfran0AvuT4elXuNGVMA9YmNd4pbeEpY9T3eUGxGeub/K8U9j4Q/bE2zeZsxPYgzvf1q8ju3RiwWNx/2xM6yJ5Z6ChgdE3pPPrOFTBq3FJ0SxTQzqrHvcZlQkjKoQn3urx5kQu7CLV8TA72bX/wROafRJCPNIOYf75jqUJs7g8Vw==
-Received: from VI1PR03MB3710.eurprd03.prod.outlook.com (2603:10a6:803:31::18)
- by DB3PR0302MB8991.eurprd03.prod.outlook.com (2603:10a6:10:437::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6954.29; Fri, 10 Nov
- 2023 20:42:24 +0000
-Received: from VI1PR03MB3710.eurprd03.prod.outlook.com
- ([fe80::8e03:368:1fd7:1822]) by VI1PR03MB3710.eurprd03.prod.outlook.com
- ([fe80::8e03:368:1fd7:1822%5]) with mapi id 15.20.6977.019; Fri, 10 Nov 2023
- 20:42:24 +0000
-From: Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: Oleksandr Tyshchenko <Oleksandr_Tyshchenko@epam.com>, Volodymyr Babchuk
- <Volodymyr_Babchuk@epam.com>, Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: [PATCH v1 6/7] xen_arm: Set mc->max_cpus to GUEST_MAX_VCPUS in
- xen_arm_init()
-Thread-Topic: [PATCH v1 6/7] xen_arm: Set mc->max_cpus to GUEST_MAX_VCPUS in
- xen_arm_init()
-Thread-Index: AQHaFBZo7E1DnNqpy0eDQLoZ6N62MQ==
-Date: Fri, 10 Nov 2023 20:42:23 +0000
-Message-ID: <20231110204207.2927514-7-volodymyr_babchuk@epam.com>
-References: <20231110204207.2927514-1-volodymyr_babchuk@epam.com>
-In-Reply-To: <20231110204207.2927514-1-volodymyr_babchuk@epam.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: git-send-email 2.42.0
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: VI1PR03MB3710:EE_|DB3PR0302MB8991:EE_
-x-ms-office365-filtering-correlation-id: 5b2aa615-8726-46d3-0eea-08dbe22d8b94
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: pPMQlOKRU/1RzLzEprT9jsmzH0fENRAHQs6h3QmCJD6oC15qONzgUKuD4wGGYFGmDzj77aCUR+NdbgBglNE1rAS1Pn683L89BbluYLDEzOqVWbSz1R8IBQCx4Qv1QBoV6a845E2s5mseHo/L781ODsk7FmD9Q17E6N2UuC8Hm6fZgvC6MTzT3BIKYQV2EhRj54A+4gjndMhz2qx5AeQ/8BJYL3UnRYSumeyK842L6jL1vnEGEnWelIYrzXVtL/Dt/s/k9R5KnKVDAhGlOAn0LdS0B7C533+fmgkEWpzuCOxYhMxYdmNMiwnNAuFmpxQsqWl4yIRwl6GtP3trlj7z1wT01ONgITaggXN+gaSpBTOE72vFeFM3Lg8nQrwgH0caGup71JjQF13MVFqs0NhGcoB80X5IGA59rmM+UXB+A1KzhfUXdDLIiUvZtnA0aFfvS7tCnD4UvgJaoW/ZheM4PQEYVfxq/Y0YsvvSBEW+oE+KoUQhZrhZsfRqLLdVDoiCeBmFcXulUNyYZwxMxP3wrRQ/DkDYT5CZnHsWyOl9J3NgrrFdPhxpAf9NGdr/wS85nwrSKguC+t4JU13yT/FLzIYMmOnvrREjiz1Scl9wj0lziwOmIUVnYMvAY8RgdYsT
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR03MB3710.eurprd03.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(136003)(376002)(346002)(39860400002)(396003)(366004)(230922051799003)(451199024)(186009)(1800799009)(64100799003)(41300700001)(2906002)(8936002)(4326008)(86362001)(5660300002)(38070700009)(8676002)(316002)(36756003)(83380400001)(38100700002)(478600001)(2616005)(1076003)(6512007)(6486002)(71200400001)(122000001)(6506007)(55236004)(91956017)(76116006)(66556008)(66446008)(26005)(6916009)(64756008)(66476007)(66946007)(54906003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?asAw3NgwFsmtYKl00ZdbDxpAG4E4dGtWv/b9m3Ga44sYDnSTRIYlnUBKQa?=
- =?iso-8859-1?Q?7+4vRArrW6i0e+M09DtS886Ak55OCwKr9eSjlof/9gjX40TWXpHiuY2Fod?=
- =?iso-8859-1?Q?TnnJpUVbceVFkP239mRO5ht/ie0gHSiGjakkoZuAl6DfFkMPZebkJ3Bety?=
- =?iso-8859-1?Q?85r47q04fRv4xuFU6DxQal9zsXeyiYYaCLjTKrfBA8lrylqqGoBbuWIUdE?=
- =?iso-8859-1?Q?A+gC6MCXmWTb6V98GopUyHyHHT9XTjrvNj+hjh7MpnHkoE7toQh4CimuGP?=
- =?iso-8859-1?Q?+0j4ALZZjH33I06qjCxotWHvGUHSyGfgn1coTmqxxFpw3wODEFWUcjzL0F?=
- =?iso-8859-1?Q?ahis0wbDLlQB6GIXG+yu0bUPH0BxX4w5U0KRwRqrY15gM6wJ6npJdU25/1?=
- =?iso-8859-1?Q?aWSugAdgT5L/hC/hml/CD/8dq26/zaH/uPSZRnq8llMeP/c25pklsBr/nc?=
- =?iso-8859-1?Q?xK0yuqN/kqvOdlPQuW/9/OQnRaxfuBkRod7Mqt83vi3SqTRbRSc9U2hrdS?=
- =?iso-8859-1?Q?SbCmkYjJO7Zv3TuyTwdvIy80Ke9g11GW2OZAOreLuI5ONHuO60YaSezFjF?=
- =?iso-8859-1?Q?1ym2I605+QxzDLeAhEqfrVbVzBNTKs9o4Yd1Abez5JwSjMFbmetx0psWrD?=
- =?iso-8859-1?Q?TD1o8G4QcPL6yJkLiXCsY/E6tdYI35creju/PPTwzGdQa0SoadfsoYD1r9?=
- =?iso-8859-1?Q?gVTbYKXULI1eL5lGuw/v5JefcYVrSEoVHxHqwztUJ28djOfM1tMSjMgUhq?=
- =?iso-8859-1?Q?OzZszi0tliTR505AB48xA1WBQd5UnesD+ZtGMwn2M2PpcMFDh1fH9+T2Ag?=
- =?iso-8859-1?Q?nrwummERDGCKnjCttgYx6oFvKR9uYeZfOQs3HM3XSfrwrPgsDuNbbfPlA3?=
- =?iso-8859-1?Q?8rUCjWzcvSPIM24tWh8ijnxI4HXbkMbYrzLEGf5N350cTtcjRnRapFFufo?=
- =?iso-8859-1?Q?Uq47MSB7CS1Itt0nlPBNTebkLr79oXg2ky+oFxEMSrwnv9CnDJw6QP5b0R?=
- =?iso-8859-1?Q?ZLvEaf8zloK4kH2n0n0xs5OwNdcRUB1Ks2vaxU9C8D3dbK3atop7QjFkIg?=
- =?iso-8859-1?Q?3y09KImLyGFRqbHrsbRhJX9cezPWVhLV+GRMzla8ZBatoskQPzI7WrBMIG?=
- =?iso-8859-1?Q?BaaLiG+esexqEifFxMd/t2jSEgelQ3kSU7zNfIMboXbXOGHq88COTBmTKO?=
- =?iso-8859-1?Q?7W96IFsnR49Epc7q1A9DbvFQgn4ojYKLBT9oVlsuVTwzYgPHM1bJA7P8Vo?=
- =?iso-8859-1?Q?oBNgJdhF5ZlAmp6Rq0Y3a14gMyqB6TYssV/t3w4euTOax7JlN9ZFgwKtjH?=
- =?iso-8859-1?Q?0HPFrb7zTW6F30yje00wGUiYdOVh+m63iHkYlXNHNOrNwTvaj96+G8vG+g?=
- =?iso-8859-1?Q?/tMiAsI/6EACbB8S20y6HoR9p5BO/rCv9kA8nZ6QQIj1SjXxjJKf+vc7Tf?=
- =?iso-8859-1?Q?2lwy3FRRbv/e+MyjTqADrVTr7+F68piZKWjh9x61ZNYxCKf4uianK65n2A?=
- =?iso-8859-1?Q?t4J4idpaTb5zAIrMWZJTf24oLVUr5aKpY7m2Zri3OEGn/1WxpUqYnQfb8a?=
- =?iso-8859-1?Q?t8YVn8uwrtHsKdb5pK7uu1Ya9/pMKJy+u6tF1RyBXzokgZjUlp2vcsGx26?=
- =?iso-8859-1?Q?VKUoPs/+vDGhHwExvk5QgdPXlfV/9gTz90fjfIP/0Mmg//UpE20ivRuA?=
- =?iso-8859-1?Q?=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@linaro.org header.s=google header.b=RGkRqiZA;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1699964743; x=1700569543; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/OaNUIXzZbTozIX8X4xF9tfJTPhcFd4ZMAc/W8lKR1s=;
+        b=RGkRqiZAQqcVvdV9igdJ7MxYWFAtcW76HQjE8rJYRlH9kHaGwFwSeKxZ/uHgayuzTu
+         BFTLwrJOh7hfWaPpKzgC40L857ORjXUtBXY9OzfvXN5T5X/XmyMq2VqtSkvpgDDdWykw
+         cYUWQ2ElVSY+4Scd7ozXPdR+p2aX+Xn5VotaTlefUyEXzhKJ3882jpkKbN0JaY0k90Fu
+         Yg0VTfXUBFOUzZG2o5zlHF1aMQsBR+c5KhYQFNWeC7SVzwdf27aUrpgg9xkjIFd9SZme
+         Pd5jKzprCPqFMVgrjonPCYgnW+ydZGqyKysDgTvo5KxNK3i3b1Zjd6lkKaEUQkwNU5S+
+         jIyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699964743; x=1700569543;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/OaNUIXzZbTozIX8X4xF9tfJTPhcFd4ZMAc/W8lKR1s=;
+        b=M728rbhuknWEtl2UJzCen+CzeOwV/xD/PVSARjDSj9u6XG5VE8oYGY4pOyVnnOv05i
+         /mp6uBUiyfFlKA9kMUOqjgJzKZ9XS8vyXYcj2p9ApB/I3Szea7No9VTk7FwC9EWN7lvX
+         GQp0UnZhyUaC+k65WCyuU4jVEMFos8o4JS5F/BxcNJ79N7IuQCKP2A1o/A0Wm75547GH
+         GdYcH88q6TrUE8ol4oAwTXSb0e6MFr6fE3n4LrSHyh+vP/Vde7Rx2rM6UeL5dCYfbY3m
+         GNRfFh/LVtBzZZ8PazAHJWl+3oZe3DEQ5jGpsqlHODE0vIyquEB5l8gL+V2pVQAAK1Je
+         vQog==
+X-Gm-Message-State: AOJu0YzEvjMYOX/Yaah4A20Xq4ZC/Enoh+x9c2hl+iVIKQWJffIjp8fy
+	E/q+xqRcXULrw5/RH6jRg9ZUa1nX
+X-Google-Smtp-Source: AGHT+IHM6IuBxGUDmhvjGjE56b7qH2UrMdIaZaFuXREseUVLlPhT1pToLbIdRgtL7O9mZ4K3ubCdVQ==
+X-Received: by 2002:a17:906:5245:b0:9e5:2b1f:13f4 with SMTP id y5-20020a170906524500b009e52b1f13f4mr6552715ejm.42.1699964743415;
+        Tue, 14 Nov 2023 04:25:43 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
+        by smtp.gmail.com with ESMTPSA id rs4-20020a170907036400b009a1a653770bsm5412508ejb.87.2023.11.14.04.25.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Nov 2023 04:25:42 -0800 (PST)
+Message-ID: <86153cf2-129d-4e1e-8949-786764bdf607@linaro.org>
+Date: Tue, 14 Nov 2023 13:25:40 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: epam.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR03MB3710.eurprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5b2aa615-8726-46d3-0eea-08dbe22d8b94
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Nov 2023 20:42:23.9150 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b41b72d0-4e9f-4c26-8a69-f949f367c91d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0/ubqvU/d2GXaIFjsFkYPxjdN2sXXTDT27SD1aY3nVyuLkr0x1sNbmQFd5INbF4E1+kTbLaoXQ28GppU3xDF0fXNaO9P0lPPlhb5bxHTxgE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB3PR0302MB8991
-X-Proofpoint-ORIG-GUID: URn1e9JojTyjRIlC9e89918NbANoDH_l
-X-Proofpoint-GUID: URn1e9JojTyjRIlC9e89918NbANoDH_l
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-10_18,2023-11-09_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 adultscore=0
- spamscore=0 lowpriorityscore=0 priorityscore=1501 impostorscore=0
- mlxscore=0 mlxlogscore=999 malwarescore=0 suspectscore=0 clxscore=1015
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311100172
-Received-SPF: pass client-ip=148.163.137.242;
- envelope-from=prvs=56783987ff=volodymyr_babchuk@epam.com;
- helo=mx0b-0039f301.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Nov 2023 16:33:59 -0500
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AoXxPCjgn2WZ
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-9.0 07/10] sysemu/xen-mapcache: Check Xen availability
+ with CONFIG_XEN_IS_POSSIBLE
+Content-Language: en-US
+To: David Woodhouse <dwmw2@infradead.org>, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Paul Durrant <paul@xen.org>
+References: <20231113152114.47916-1-philmd@linaro.org>
+ <20231113152114.47916-8-philmd@linaro.org>
+ <9ba10b4a92ac6782d0c581b1e1ee5d5efee44c33.camel@infradead.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <9ba10b4a92ac6782d0c581b1e1ee5d5efee44c33.camel@infradead.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: dkiDltwlyATF
 
-From: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+On 13/11/23 20:52, David Woodhouse wrote:
+> On Mon, 2023-11-13 at 16:21 +0100, Philippe Mathieu-Daudé wrote:
+>> "sysemu/xen.h" defines CONFIG_XEN_IS_POSSIBLE as a target-agnostic
+>> version of CONFIG_XEN. Use it in order to use "sysemu/xen-mapcache.h"
+>> in target-agnostic files.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
+> Noting that CONFIG_XEN_IS_POSSIBLE is for Xen accelerator support, and
+> may not be set in all cases when we're hosting Xen-compatible guests,
 
-The number of vCPUs used for the IOREQ configuration (machine->smp.cpus)
-should really match the system value as for each vCPU we setup a dedicated
-evtchn for the communication with Xen at the runtime. This is needed
-for the IOREQ to be properly configured and work if the involved domain
-has more than one vCPU assigned.
+As is CONFIG_XEN.
 
-Set the number of current supported guest vCPUs here (128) which is
-defined in public header arch-arm.h. And the toolstack should then
-pass max_vcpus using "-smp" arg.
+Maybe be worth renaming CONFIG_ACCEL_XEN if you think we need
+guest hw specific CONFIG_foo_XEN variables.
 
-Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
-Signed-off-by: Volodymyr Babchuk <volodymyr_babchuk@epam.com>
----
- hw/arm/xen_arm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index f83b983ec5..a2b41dc2de 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -229,7 +229,7 @@ static void xen_arm_machine_class_init(ObjectClass *oc,=
- void *data)
-     MachineClass *mc =3D MACHINE_CLASS(oc);
-     mc->desc =3D "Xen Para-virtualized PC";
-     mc->init =3D xen_arm_init;
--    mc->max_cpus =3D 1;
-+    mc->max_cpus =3D GUEST_MAX_VCPUS;
-     mc->default_machine_opts =3D "accel=3Dxen";
-     /* Set explicitly here to make sure that real ram_size is passed */
-     mc->default_ram_size =3D 0;
---=20
-2.42.0
+Thanks!

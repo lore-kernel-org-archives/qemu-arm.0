@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2083038ejc;
-        Tue, 14 Nov 2023 06:39:28 -0800 (PST)
-X-Received: by 2002:ac2:5dea:0:b0:509:493d:25a3 with SMTP id z10-20020ac25dea000000b00509493d25a3mr6087261lfq.11.1699972768245;
-        Tue, 14 Nov 2023 06:39:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699972768; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2083106ejc;
+        Tue, 14 Nov 2023 06:39:35 -0800 (PST)
+X-Received: by 2002:a17:906:40c5:b0:9e2:d087:86de with SMTP id a5-20020a17090640c500b009e2d08786demr6335011ejk.42.1699972774994;
+        Tue, 14 Nov 2023 06:39:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699972774; cv=none;
         d=google.com; s=arc-20160816;
-        b=R31FdzK95UXVg0UVTEKEBcUxSkXDyoCnCIpsieC1nGgaWDq8wpnfLKPg7URbwxQetr
-         4GBWnqbxZ1NlUrdIRg4r51PN4IoHL1AbpBon5N9VzJ8mYm2FcFbHtNIdfkQLtFzVz8Bg
-         aaX6L03zEwCtc9HL0GTwAWy27K0XavLqc6x2kuDVLXWJ4zwxwxcY/Orexfb4L7RazmAe
-         Sd/I2Lmngt7jS6DzA4vK7M4dx73avjb2d8bl4TtlDFd4jqmpS+PE9eJM+iOZMIa+Nyyi
-         gcUnzCaqB0ZcFBec1QTSaEMY/FbeTsX7W8fjt+XcrZEHg9vAfBhs2c9TyXm7DfZ305Sg
-         Gu1A==
+        b=DzOuAUOX9+pP6XyqbE7xE3eMOBdA0J4QpObuhNFP+DHyyhFSBL/CGmmhuemRws2wSZ
+         UHjGxUdhta0HTrt4zDDobKthGoBRfyX9cQ1hXXZHZjyHdrvizNZQwM7LstJ+lXBU4kfT
+         1nC9c6rr6tthvO7UpY+exfndjtwxsQwHaj4p3FSWfQq/KM1QsZ4btDf5cp2bgNh4HiP2
+         dIBb6eei1/U539uIVpvC4Y6DfhuS0g/iY/VVFnKWSV82mY6oTRKECUgETVWe3ccdagJ+
+         qTcCxumhSHHuJifZ32dlOahjYlD2xfAAsIrL86LZuQ6+B4t+RXr9pV5SZW8uJmIN19a/
+         FUng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BqgJC9hPHkcXARLwNhCfo2KLP+5VvJiIzbHQjbp4PnI=;
-        fh=1nz8wG6UuYay2KL0jZBUp30jkEi8Ayfk1emV35/PTDM=;
-        b=TX2f9A2aK61EMqaEL5yg1sphlB+PS7PhSj5r4inz3i12QkVKthcAtjO2/YBVEcWt8m
-         TCYetjv2iNHoIOxF8rxz1odmANB2KysK3Y7cYuR3AW3RcaKq1pKX0XvJjaeKMP4rWTFw
-         zmAckzg5VuCUPkGY0YR4byG9TcVZ5DnGC0kG+ZFASIHovgI/nqVu88ENe6h9l8wuZUn2
-         2xkW78thBUakl+yW1VVTh2AmZaI5ogtXOTjHQXeeahTd2f69C3YmhgdYqXHfYVBjQFaX
-         8nvF6iJU9FkrlbMO0VJzKftCS6JrAe/dN+BjNtkGgd79lw/n7fwvSJwyhAwrsxEfmPe1
-         0TwQ==
+        bh=6XE67RaqwP19rEjPR9cmWaIkbDnma1jGWKj3qDcuG2M=;
+        fh=8PS3Hy0DxHmOgUJ3YqzgHibVab/EASfDmwtZOBvIi2A=;
+        b=AjZz0ha4+LFqGOYn3uUf96i1RdqpttfSwZeqZvkaSQ19RUXvKRuB0hRsIWKUYgO10v
+         wAmtDCGkvBdtbCRN/9P00+kY+eSWaovjVq73S0+s/NSEPjy554y2bbsbCaw+4hipsQqT
+         BqtRJP7WzwZBmLpDgHeqZLPhVAD4fDq7NhPU/w6pMQh7SGUHOmhl//Y1ZW1bfAg+zVGR
+         pG0phILXYt0rwSeBmPTzLLA2GPl7Sit0VSi+do/DxSAaPR2qyoenCTTovkaLtE8e+Inz
+         6moj3XfTiTvenLtUd2KPGgk98zOioWF4MHBIJm3+ZNqKf3PQh7T9kgbh05uQfad5JoaF
+         mkjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MWyW2hX3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T3C2HHCH;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b30-20020a19645e000000b00507c535cf6esor1756750lfj.16.2023.11.14.06.39.28
+        by mx.google.com with SMTPS id 21-20020a170906101500b009b927358aabsor1955392ejm.3.2023.11.14.06.39.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 14 Nov 2023 06:39:28 -0800 (PST)
+        Tue, 14 Nov 2023 06:39:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MWyW2hX3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T3C2HHCH;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699972768; x=1700577568; darn=linaro.org;
+        d=linaro.org; s=google; t=1699972774; x=1700577574; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BqgJC9hPHkcXARLwNhCfo2KLP+5VvJiIzbHQjbp4PnI=;
-        b=MWyW2hX3tdq9lS+MtxXMFlz/TRbKdS6iGs7wb2Nv14kSECWBIguup8aW1M5I/t9/cQ
-         iqDdF5tDo/r9yuP5Mue0aUN29ESMEHB4hI+Rn1y03SM6EW+dHyEVwLCVJwFI+4BZYukg
-         l0VCqRF+2rzyC6rDMkbR8xJb7nLerbjzPWV4vZt10lS0MYLlWQCixa0RxCmdwKCQhaCs
-         FcSIN1Q2k5qvvcKhlz4kEHu9iMC4ii5D7cQ2PGndWg7QYO+tYrLmsCOU+KUwyg7S9yiI
-         qjL0dUMWbca8eAZv/IYHSuz37v1OuoJcOYUoscPPuxW6KRq2EjHt5bvp9+j29lDcxbJm
-         ccdA==
+        bh=6XE67RaqwP19rEjPR9cmWaIkbDnma1jGWKj3qDcuG2M=;
+        b=T3C2HHCH/VDNX4tkR0s8qJKE6HapkhXwgAO/DQSRD3k0+WAws1LFy0odB94oFC8n3V
+         RXsybWkHT85c6iUCJmqiAF7nXghTOPLGos22GU4FFSLkPMs6VrBcsYgredviRjNlvSVJ
+         y43gx6s04gGPHxiD77etS7OMJbCO8kpE8+laAnciP3OrdPzlh5vAxS13VxOdRZf1ONZt
+         fsPETcDdoWuZZF7Fbyd/2+m4jLFuZQekeXZkh2ZO8GHtr9A6RvUOYnuQRkdugdGf9q/+
+         2BTIbwvknKIWPnSr7GYbfsfwwEErIAQCHzZlT6rofR+gu91oMjjRMYRx3HJRXuT59E/V
+         jUXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699972768; x=1700577568;
+        d=1e100.net; s=20230601; t=1699972774; x=1700577574;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BqgJC9hPHkcXARLwNhCfo2KLP+5VvJiIzbHQjbp4PnI=;
-        b=uNecwPArl143OFrlgHSQI+mSimOfQLP+mhaftumuMb9/HgoROQqA8L3DsM/eTbAXaS
-         LfjikmmBM7/Miai0Y1vkx5/Wlaez6l5ZC+IW7cnaYpUCBcyGg5CI06COH4erxoZpdj+W
-         T6O7gzCNo6WfXfsN6cJ8bj6GzpqBnAjl+9MwIcr5ujDLK+SexXR4tCbS2MzjNSWIhq4l
-         +foDQyuGN0a1xws2lTjm15OEHGcgWIPyrx7xEU1lhifxi82NzotuMeeOqsOXXAqnbyBk
-         +P8qUDlpgmJGzAyF4QjApKf6UNnwDIb2uxgZjaZeRJRG5zdlHM1WByC9mK3CcnOr0PqE
-         uRzg==
-X-Gm-Message-State: AOJu0YxymJVPSSN2V2QE+kcI7lO6WN1B+myhdt9iaF6m/Pxxhn+NhG2j
-	WlkEHXQJqHPQd6LFzE1o9JnLm8pC
-X-Google-Smtp-Source: AGHT+IG5cdmuSMLF1QQ3nk9d4MKQ+Rf9u6gyzBn2OUTA0N6PdU8Lc7kj9gwB2wtfxvTcro7nwctRJA==
-X-Received: by 2002:a05:6512:3d90:b0:507:9a49:2d3d with SMTP id k16-20020a0565123d9000b005079a492d3dmr7641727lfv.31.1699972767814;
-        Tue, 14 Nov 2023 06:39:27 -0800 (PST)
+        bh=6XE67RaqwP19rEjPR9cmWaIkbDnma1jGWKj3qDcuG2M=;
+        b=PqKqKJKzfC0yilYbisd79+H0MxHrWkjG6inCYQKKtn+3TiJR2O3bCOpm8iJ7SsjKX0
+         hcm92n6pDgetCe4zWtsaxjMZ6hp/jwBeQZ7iMvgWMaKm4JEbtA9K6SRIuo5cphkFHkWq
+         aVTVNQAxBbCrf0TxarKK9tpzaKiiqzFm6TP7x2+NGFCnstKoLDO7BmWCcyZy/SwFfZVS
+         uqy0iqY28tC2y94sY/Yt3EsQJYlzhwDvjkMPZa7i1BkGnmwNQKn/z0tDRf1UayLG6gsE
+         OBZLVTPqEX9Qm5loUVuI2drMy66SgEqo3C7k8AXMctdU+A2QKKPxX5oke5SEGNI/QBMj
+         svGA==
+X-Gm-Message-State: AOJu0Ywnm5JEJkM1jbLLAXE6mTxf78tYakfvFXUPx+fkJkBx+IShArRz
+	yJOXagM9Jh1VbszVP21Jqu2HPm1R
+X-Google-Smtp-Source: AGHT+IH5uADtxqVb0gu9wkOPtm794L9VQ3NjNtPGCuhDFtQMH4f3XXf2p8ohPfBbgEKWHzCsn1iRrg==
+X-Received: by 2002:a17:906:899:b0:9df:e457:cef6 with SMTP id n25-20020a170906089900b009dfe457cef6mr5737290eje.77.1699972774671;
+        Tue, 14 Nov 2023 06:39:34 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id c19-20020a50f613000000b00542d3e470f9sm5256915edn.10.2023.11.14.06.39.25
+        by smtp.gmail.com with ESMTPSA id qx25-20020a170906fcd900b0098e34446464sm5684531ejb.25.2023.11.14.06.39.32
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 14 Nov 2023 06:39:27 -0800 (PST)
+        Tue, 14 Nov 2023 06:39:34 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: David Woodhouse <dwmw@amazon.co.uk>,
 	qemu-devel@nongnu.org
@@ -87,135 +87,130 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH-for-9.0 v2 10/19] hw/xen: Rename 'ram_memory' global variable as 'xen_memory'
-Date: Tue, 14 Nov 2023 15:38:06 +0100
-Message-ID: <20231114143816.71079-11-philmd@linaro.org>
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH-for-9.0 v2 11/19] hw/xen/xen_arch_hvm: Rename prototypes using 'xen_arch_' prefix
+Date: Tue, 14 Nov 2023 15:38:07 +0100
+Message-ID: <20231114143816.71079-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231114143816.71079-1-philmd@linaro.org>
 References: <20231114143816.71079-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /mEX70gGH9OB
+X-TUID: H6wPyXhaXLdV
 
-To avoid a potential global variable shadow in
-hw/i386/pc_piix.c::pc_init1(), rename Xen's
-"ram_memory" as "xen_memory".
+Use a common 'xen_arch_' prefix for architecture-specific functions.
+Rename xen_arch_set_memory() and xen_arch_handle_ioreq().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/xen/xen-hvm-common.h |  2 +-
- hw/arm/xen_arm.c                |  6 +++---
- hw/i386/xen/xen-hvm.c           | 10 +++++-----
- hw/xen/xen-hvm-common.c         |  6 +++---
- 4 files changed, 12 insertions(+), 12 deletions(-)
+ include/hw/arm/xen_arch_hvm.h  | 4 ++--
+ include/hw/i386/xen_arch_hvm.h | 4 ++--
+ hw/arm/xen_arm.c               | 4 ++--
+ hw/i386/xen/xen-hvm.c          | 6 +++---
+ hw/xen/xen-hvm-common.c        | 4 ++--
+ 5 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
-index 4e9904f1a6..d3fa5ed29b 100644
---- a/include/hw/xen/xen-hvm-common.h
-+++ b/include/hw/xen/xen-hvm-common.h
-@@ -16,7 +16,7 @@
- #include "qemu/error-report.h"
+diff --git a/include/hw/arm/xen_arch_hvm.h b/include/hw/arm/xen_arch_hvm.h
+index 8fd645e723..6a974f2020 100644
+--- a/include/hw/arm/xen_arch_hvm.h
++++ b/include/hw/arm/xen_arch_hvm.h
+@@ -2,8 +2,8 @@
+ #define HW_XEN_ARCH_ARM_HVM_H
+ 
  #include <xen/hvm/ioreq.h>
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+-void arch_xen_set_memory(XenIOState *state,
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
++void xen_arch_set_memory(XenIOState *state,
+                          MemoryRegionSection *section,
+                          bool add);
+ #endif
+diff --git a/include/hw/i386/xen_arch_hvm.h b/include/hw/i386/xen_arch_hvm.h
+index 1000f8f543..2822304955 100644
+--- a/include/hw/i386/xen_arch_hvm.h
++++ b/include/hw/i386/xen_arch_hvm.h
+@@ -4,8 +4,8 @@
+ #include <xen/hvm/ioreq.h>
+ #include "hw/xen/xen-hvm-common.h"
  
--extern MemoryRegion ram_memory;
-+extern MemoryRegion xen_memory;
- extern MemoryListener xen_io_listener;
- extern DeviceListener xen_device_listener;
- 
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+-void arch_xen_set_memory(XenIOState *state,
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
++void xen_arch_set_memory(XenIOState *state,
+                          MemoryRegionSection *section,
+                          bool add);
+ #endif
 diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index a5631529d0..8a185da193 100644
+index 8a185da193..bf19407879 100644
 --- a/hw/arm/xen_arm.c
 +++ b/hw/arm/xen_arm.c
-@@ -111,17 +111,17 @@ static void xen_init_ram(MachineState *machine)
-         block_len = GUEST_RAM1_BASE + ram_size[1];
+@@ -129,14 +129,14 @@ static void xen_init_ram(MachineState *machine)
      }
+ }
  
--    memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
-+    memory_region_init_ram(&xen_memory, NULL, "xen.ram", block_len,
-                            &error_fatal);
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+ {
+     hw_error("Invalid ioreq type 0x%x\n", req->type);
  
--    memory_region_init_alias(&ram_lo, NULL, "xen.ram.lo", &ram_memory,
-+    memory_region_init_alias(&ram_lo, NULL, "xen.ram.lo", &xen_memory,
-                              GUEST_RAM0_BASE, ram_size[0]);
-     memory_region_add_subregion(sysmem, GUEST_RAM0_BASE, &ram_lo);
-     DPRINTF("Initialized region xen.ram.lo: base 0x%llx size 0x%lx\n",
-             GUEST_RAM0_BASE, ram_size[0]);
+     return;
+ }
  
-     if (ram_size[1] > 0) {
--        memory_region_init_alias(&ram_hi, NULL, "xen.ram.hi", &ram_memory,
-+        memory_region_init_alias(&ram_hi, NULL, "xen.ram.hi", &xen_memory,
-                                  GUEST_RAM1_BASE, ram_size[1]);
-         memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi);
-         DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n",
+-void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
++void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
+                          bool add)
+ {
+ }
 diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index f42621e674..1ae943370b 100644
+index 1ae943370b..5150984e46 100644
 --- a/hw/i386/xen/xen-hvm.c
 +++ b/hw/i386/xen/xen-hvm.c
-@@ -149,12 +149,12 @@ static void xen_ram_init(PCMachineState *pcms,
-          */
-         block_len = (4 * GiB) + x86ms->above_4g_mem_size;
+@@ -659,8 +659,8 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
      }
--    memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
-+    memory_region_init_ram(&xen_memory, NULL, "xen.ram", block_len,
-                            &error_fatal);
--    *ram_memory_p = &ram_memory;
-+    *ram_memory_p = &xen_memory;
+ }
  
-     memory_region_init_alias(&ram_640k, NULL, "xen.ram.640k",
--                             &ram_memory, 0, 0xa0000);
-+                             &xen_memory, 0, 0xa0000);
-     memory_region_add_subregion(sysmem, 0, &ram_640k);
-     /* Skip of the VGA IO memory space, it will be registered later by the VGA
-      * emulated device.
-@@ -163,12 +163,12 @@ static void xen_ram_init(PCMachineState *pcms,
-      * the Options ROM, so it is registered here as RAM.
-      */
-     memory_region_init_alias(&ram_lo, NULL, "xen.ram.lo",
--                             &ram_memory, 0xc0000,
-+                             &xen_memory, 0xc0000,
-                              x86ms->below_4g_mem_size - 0xc0000);
-     memory_region_add_subregion(sysmem, 0xc0000, &ram_lo);
-     if (x86ms->above_4g_mem_size > 0) {
-         memory_region_init_alias(&ram_hi, NULL, "xen.ram.hi",
--                                 &ram_memory, 0x100000000ULL,
-+                                 &xen_memory, 0x100000000ULL,
-                                  x86ms->above_4g_mem_size);
-         memory_region_add_subregion(sysmem, 0x100000000ULL, &ram_hi);
+-void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
+-                                bool add)
++void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
++                         bool add)
+ {
+     hwaddr start_addr = section->offset_within_address_space;
+     ram_addr_t size = int128_get64(section->size);
+@@ -700,7 +700,7 @@ void arch_xen_set_memory(XenIOState *state, MemoryRegionSection *section,
      }
+ }
+ 
+-void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
++void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+ {
+     switch (req->type) {
+     case IOREQ_TYPE_VMWARE_PORT:
 diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
-index 565dc39c8f..cf4053c9f2 100644
+index cf4053c9f2..cf6ed11f70 100644
 --- a/hw/xen/xen-hvm-common.c
 +++ b/hw/xen/xen-hvm-common.c
-@@ -9,7 +9,7 @@
- #include "hw/boards.h"
- #include "hw/xen/arch_hvm.h"
- 
--MemoryRegion ram_memory;
-+MemoryRegion xen_memory;
- 
- void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
-                    Error **errp)
-@@ -26,7 +26,7 @@ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
-         return;
+@@ -65,7 +65,7 @@ static void xen_set_memory(struct MemoryListener *listener,
+         }
      }
  
--    if (mr == &ram_memory) {
-+    if (mr == &xen_memory) {
-         return;
+-    arch_xen_set_memory(state, section, add);
++    xen_arch_set_memory(state, section, add);
+ }
+ 
+ void xen_region_add(MemoryListener *listener,
+@@ -452,7 +452,7 @@ static void handle_ioreq(XenIOState *state, ioreq_t *req)
+             cpu_ioreq_config(state, req);
+             break;
+         default:
+-            arch_handle_ioreq(state, req);
++            xen_arch_handle_ioreq(state, req);
      }
- 
-@@ -53,7 +53,7 @@ static void xen_set_memory(struct MemoryListener *listener,
- {
-     XenIOState *state = container_of(listener, XenIOState, memory_listener);
- 
--    if (section->mr == &ram_memory) {
-+    if (section->mr == &xen_memory) {
-         return;
-     } else {
-         if (add) {
+     if (req->dir == IOREQ_READ) {
+         trace_handle_ioreq_read(req, req->type, req->df, req->data_is_ptr,
 -- 
 2.41.0

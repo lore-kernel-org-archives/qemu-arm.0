@@ -1,160 +1,179 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2217000ejc;
-        Tue, 14 Nov 2023 09:56:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGS3unPGdXp26WI9V9HcSD3W2+kKUVB2GfT3jNfZh2o+MWJvZS27ARRryDPJWPO64us0wkf
-X-Received: by 2002:ad4:4089:0:b0:675:b904:9bc1 with SMTP id l9-20020ad44089000000b00675b9049bc1mr3099281qvp.49.1699984613829;
-        Tue, 14 Nov 2023 09:56:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699984613; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161205ejc;
+        Tue, 14 Nov 2023 08:31:40 -0800 (PST)
+X-Received: by 2002:aa7:cfcf:0:b0:523:100b:462b with SMTP id r15-20020aa7cfcf000000b00523100b462bmr7161487edy.5.1699979499998;
+        Tue, 14 Nov 2023 08:31:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699979499; cv=none;
         d=google.com; s=arc-20160816;
-        b=sbA2O3TE58GkcJxxIt9EZscY70Wp+W+i2+50De38XTVBBiXpff8z1Nak9djDOFOpBA
-         9TgqjV+BOKy4Yl87Za1BvIjHQRcTmb9KtW/ujUfmqdsS7BPBSyS4H/Hzk2C0R1KrjVLk
-         xXf+3UoGCroVI5sgHiE6VrurtYXGWQDNBd2xwBn/dJVOvXciYciGl7cV1d1Z6SAkGThO
-         WTK6dgL+qVNE9QTL4QiivlBqb6zn50Buk2XA5EI7rvp7lJEIiokHr58VtHY3qocfTq7y
-         VmCDVdCxQwIOtu45P/h+KMJNvnrgMeanuCPqT1mvde2RthNSYTCTLjvkutkSKzbAz5k/
-         bShQ==
+        b=v7nRz1r6HQoJM+0yp00cLOfyGRhNKMW5dlEHlDi8wHGs4TkyRJzQtshYgh5yZC5uO7
+         fBi+hjqWiz9AQ0fDsTT7sGipIVLHRj3PgBFbfT424qXp0ca2oPNBU7/fuIlBAGz0oKTd
+         zzapNaASbbZRP7WbrBa6VjOgeHsDJl0DWOatyLek7kjIiraqqK7kwYemgqXrzAnPBa5L
+         QED2xLHE1wwhNerEkjtCqWRW2Gx/7+w58SHPZtzvi8/Hqso8pS8XAStnEIj1PyswgPX+
+         6fbe5wQcbLKDyW0nVEarc9CnYnw9H8b0VdkJ0KRdsuYvvjj3yuJTqSYZfoGcWwaqnX/p
+         uThw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:from:references:cc:to:content-language
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=lWFmJaXdNb1cvdOqSWYWj5lK+WjOKKjQscIAYFDHkGk=;
-        fh=PpZ1CCXoZMh/DRvZh+FxXhmYvb7cgaexUeWdx5nsuRU=;
-        b=PzIBcjrpvKBZRxl/hGeHgxsy+z3lQgK6KYp8ErkB4TCplHhL2FKkMr4NwItGqx80Xv
-         T/R929oAPhMjFnNkcccEkxQBU6PwNGjIx85YL/tq25EB9UzKtzmvMOtuMyymRsdaodFI
-         p77N5CXt2yhMsnaCyfF/UDWwymJT/UiSuidLh7yh/om2fnYaAqkPuZ3OLvoK4+/wNUbH
-         U2S3KCPtVIa18PQLSV6J1Uc3VQFRPl2c0CrmWOnRsIa+M0XmomLArRZuFMw5EEUY0VOj
-         f9kqmhU4hmaijT+6t/Gd5c/hJSxrt5DrejGnG/+/btZ4bGhwKwmZDx4xXiVlL4Gt6ObQ
-         Yn+w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=SmG1RvmEVqSdouF1EAJ1JhQ2v4iViVsF9xcNQ9FZB1E=;
+        fh=3ONVdx/N3j+Uu4iiyqRRC3lFqZDQ7vyxbDGhEJiZppI=;
+        b=ZGRSHp9Vdkc4xDBdvfNOlbLjHiwf5MJ6ql5z59IjaoSFjunZNeUkO6bgs6U9XicHLW
+         Chhm3zvAIUYnPIC4lMWxwzOF5aur8M8AAOXW5kBfTLkZJtDkUD0/YyFBG28RT1FsboEh
+         kfZmR8/9z19expeI8KzPF/0PnP54fsxO7fUnyqie3Rk6RTDqGapsd9ZsWxQba/3jKwsV
+         rUY0VmzCttB6DsDvoXmsOKgVbJoU5i6qZamqjnQODuaigmDlLZmzF66swj7aCNcjMzEB
+         19nCTHQ/aiAXMjefF2XLWZ3Y9k8AkOJcgQ5tw4AMq/FTn4O+YEYWRJjanF9i3d2Xqedk
+         TuYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=s7BLtcsU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pm13-20020ad446cd000000b006716c269316si7402035qvb.467.2023.11.14.09.56.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=bzuhlklv;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ev18-20020a056402541200b005470a679011sor1773584edb.10.2023.11.14.08.31.39
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 09:56:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 14 Nov 2023 08:31:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=s7BLtcsU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2xeS-0003Yc-PC; Tue, 14 Nov 2023 12:56:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
- id 1r2xeQ-0003Uh-80; Tue, 14 Nov 2023 12:56:39 -0500
-Received: from imap4.hz.codethink.co.uk ([188.40.203.114])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
- id 1r2xeO-0008CI-1b; Tue, 14 Nov 2023 12:56:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=codethink.co.uk; s=imap4-20230908; h=Sender:Content-Transfer-Encoding:
- Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
- Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=lWFmJaXdNb1cvdOqSWYWj5lK+WjOKKjQscIAYFDHkGk=; b=s7BLtcsUn11XePqDDdrVw1L0j8
- ZQTFqOTdTxcm1EKu63Dvm7PK+qviOdU71NVzyRuWHBmJV2LUCiqNUKDuBBuS4uQrUyL2nq/GflXpA
- EvK8i1P6L4sGgYGiLIYqinfHHBrBJad/AZdU6D5ea7vvdq2e2KDgswKw4U14ftjBLtVxG78zUQgkl
- u1LXKwoclK3j0dk6zpVntJ4xpJDY+KfPjq1LCW+UGvDtZ0t1IieoJCq0xLELRbg1eYWQxBVJPtlbw
- gXTb3r1ZyElyXdTPdMVw7mfXxPT9ciqWOsbzS+UFiPiS/q01k4XEwp3p3zXbbFYqPqf053Ca+PfdC
- FXfMM8Bw==;
-Received: from [167.98.27.226] (helo=[10.35.4.236])
- by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1r2x8I-001oh5-U3; Tue, 14 Nov 2023 17:23:27 +0000
-Message-ID: <78989536-e29c-4ce1-a972-36be6c70349c@codethink.co.uk>
-Date: Tue, 14 Nov 2023 17:23:26 +0000
+       dkim=pass header.i=@linaro.org header.s=google header.b=bzuhlklv;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1699979499; x=1700584299; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SmG1RvmEVqSdouF1EAJ1JhQ2v4iViVsF9xcNQ9FZB1E=;
+        b=bzuhlklv8836c/9I1huPZ27KaZRpdV9rnkxtQtYwIWDlGxgorsXIk+Oz/+eo08UPES
+         GwfbvFFzGdzyEnndRYaz3l6XujRyi2E2b0NZcMNGGdblbGw1+MIXVZS+0eKp2TGIimIS
+         EhAldQ1XmZnQ16EBbnWz+Q0g42dIVKFv9YNxTQY5CBK3QbfemAJGJvR76+KUClbUs14E
+         2l9vgXo9WtU4V7HVzjKtHR9kSFp3la5m1Fs6IVPdCYG2hQfCSpuWjL18CBFkzOFHN2Ea
+         qgICs0bFOVz/nwE4DO6xlhcZr4WUZUnMY6nqcQtmQLD67Bt7dNANlaXDs0ezc1L9yRR+
+         wUIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699979499; x=1700584299;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=SmG1RvmEVqSdouF1EAJ1JhQ2v4iViVsF9xcNQ9FZB1E=;
+        b=GZmaLKpRUIrZgA+Dof/qfkGc2LYGMFtNnW/yYT4LMot7LC+cxDU4MUZXC/ed2SlEbb
+         NUvOeBNeFvbOStOebu0VLJWSoJ9VhOQURow+cyUD7LvWZnb5KjmoV6CeQJfc30GI3i8s
+         e6u4CCiqm8VmPYdi6iIM+vd/VMpGyoAx0Aol5PTJ0fEVCmBpjT3RvZWCVHHQNuTu6f43
+         NUfAxH2CNPpMYw7C8CcmuqYBCCYkW2DFyD5Yvt8iua15wM51E6EPiWBPeDJLU2b86HcG
+         lhjFEJTJtR2HpYXcX3Jr1M2HBUHOV1gN6q1qUsBT2orFkBrhRSJ6AS9UbcToujytxIc9
+         q02w==
+X-Gm-Message-State: AOJu0YwL/QEnXx5b0d+byKEh2GMdsfJCUpNXcK41WR0HUzk+OC+PFSTB
+	tQs1kOqtb6Y4qMlQxKf6mQXrhrxq
+X-Google-Smtp-Source: AGHT+IHL3uPIWo3k1FIfttqQPpxRZY2ZBH7YhX3W4Qy+3Zh4pc0MQhOvVP2dpnkHA2n+Lr+G86EpBQ==
+X-Received: by 2002:aa7:c487:0:b0:547:cbc:e07d with SMTP id m7-20020aa7c487000000b005470cbce07dmr7903450edq.1.1699979499591;
+        Tue, 14 Nov 2023 08:31:39 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
+        by smtp.gmail.com with ESMTPSA id d17-20020aa7c1d1000000b0052febc781bfsm5326899edp.36.2023.11.14.08.31.37
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 14 Nov 2023 08:31:39 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	David Woodhouse <dwmw@amazon.co.uk>,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	xen-devel@lists.xenproject.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH-for-9.0 2/9] hw/xen/hvm: Propagate page_mask to a pair of functions
+Date: Tue, 14 Nov 2023 17:31:16 +0100
+Message-ID: <20231114163123.74888-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231114163123.74888-1-philmd@linaro.org>
+References: <20231114163123.74888-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/arm_gicv3: ICC_PMR_EL1 high bits should be RAZ
-Content-Language: en-GB
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20231114165404.681826-1-ben.dooks@codethink.co.uk>
- <CAFEAcA-MG+ak8+xVyqgpWqmKAryOXJtOckUmA=GysQwnpuz5SQ@mail.gmail.com>
-From: Ben Dooks <ben.dooks@codethink.co.uk>
-Organization: Codethink Limited.
-In-Reply-To: <CAFEAcA-MG+ak8+xVyqgpWqmKAryOXJtOckUmA=GysQwnpuz5SQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=188.40.203.114;
- envelope-from=ben.dooks@codethink.co.uk; helo=imap4.hz.codethink.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YTbFAtMhfmOZ
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 982wZimFc7Lm
 
-On 14/11/2023 17:14, Peter Maydell wrote:
-> On Tue, 14 Nov 2023 at 16:54, Ben Dooks <ben.dooks@codethink.co.uk> wrote:
->>
->> The ICC_PMR_ELx bit msak returned from icc_fullprio_mask
->> should technically also remove any bit above 7 as these
->> are marked reserved (read 0) and should therefore should
->> not be written as anything other than 0.
->>
->> Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
->> ---
->>   hw/intc/arm_gicv3_cpuif.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
->> index d07b13eb27..986044df79 100644
->> --- a/hw/intc/arm_gicv3_cpuif.c
->> +++ b/hw/intc/arm_gicv3_cpuif.c
->> @@ -803,7 +803,7 @@ static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
->>        * with the group priority, whose mask depends on the value of BPR
->>        * for the interrupt group.)
->>        */
->> -    return ~0U << (8 - cs->pribits);
->> +    return (~0U << (8 - cs->pribits)) & 0xff;
->>   }
-> 
-> The upper bits of ICC_PMR_ELx are defined as RES0, which has a
-> complicated technical definition which you can find in the GIC
-> architecture specification glossary. It's valid for RES0 bits to
-> be implemented as reads-as-written, which is the way our current
-> implementation works. Valid guest code should never be writing
-> any non-zero value into those bits.
+We are going to replace TARGET_PAGE_MASK by a
+runtime variable. In order to reduce code duplication,
+propagate TARGET_PAGE_MASK to get_physmapping() and
+xen_phys_offset_to_gaddr().
 
-Yeah, got some proprietary test code that is trying write-1 and
-then assuming read-0.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/i386/xen/xen-hvm.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-> What problem are you running into that you're trying to fix
-> with this patch? If our implementation misbehaves as a result
-> of letting these high bits through into cs->icc_pmr_el1 that
-> would be a good reason for making the change.
-
-See above, local test code issue.
-
-  > If we do want to change this, for consistency we'd want
-> to change icv_fullprio_mask() too.
-
-If this isn't useful then I'll keep it as a local patch for now.
-
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 8aa6a1ec3b..3b10425986 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -174,11 +174,12 @@ static void xen_ram_init(PCMachineState *pcms,
+     }
+ }
+ 
+-static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
++static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
++                                   int page_mask)
+ {
+     XenPhysmap *physmap = NULL;
+ 
+-    start_addr &= TARGET_PAGE_MASK;
++    start_addr &= page_mask;
+ 
+     QLIST_FOREACH(physmap, &xen_physmap, list) {
+         if (range_covers_byte(physmap->start_addr, physmap->size, start_addr)) {
+@@ -188,9 +189,10 @@ static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size)
+     return NULL;
+ }
+ 
+-static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size)
++static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
++                                       int page_mask)
+ {
+-    hwaddr addr = phys_offset & TARGET_PAGE_MASK;
++    hwaddr addr = phys_offset & page_mask;
+     XenPhysmap *physmap = NULL;
+ 
+     QLIST_FOREACH(physmap, &xen_physmap, list) {
+@@ -252,7 +254,7 @@ static int xen_add_to_physmap(XenIOState *state,
+     hwaddr phys_offset = memory_region_get_ram_addr(mr);
+     const char *mr_name;
+ 
+-    if (get_physmapping(start_addr, size)) {
++    if (get_physmapping(start_addr, size, TARGET_PAGE_MASK)) {
+         return 0;
+     }
+     if (size <= 0) {
+@@ -325,7 +327,7 @@ static int xen_remove_from_physmap(XenIOState *state,
+     XenPhysmap *physmap = NULL;
+     hwaddr phys_offset = 0;
+ 
+-    physmap = get_physmapping(start_addr, size);
++    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+     if (physmap == NULL) {
+         return -1;
+     }
+@@ -373,7 +375,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
+     int rc, i, j;
+     const XenPhysmap *physmap = NULL;
+ 
+-    physmap = get_physmapping(start_addr, size);
++    physmap = get_physmapping(start_addr, size, TARGET_PAGE_MASK);
+     if (physmap == NULL) {
+         /* not handled */
+         return;
+@@ -633,7 +635,7 @@ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+         int rc;
+         ram_addr_t start_pfn, nb_pages;
+ 
+-        start = xen_phys_offset_to_gaddr(start, length);
++        start = xen_phys_offset_to_gaddr(start, length, TARGET_PAGE_MASK);
+ 
+         if (length == 0) {
+             length = TARGET_PAGE_SIZE;
 -- 
-Ben Dooks				http://www.codethink.co.uk/
-Senior Engineer				Codethink - Providing Genius
-
-https://www.codethink.co.uk/privacy.html
-
+2.41.0

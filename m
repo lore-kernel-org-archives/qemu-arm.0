@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161680ejc;
-        Tue, 14 Nov 2023 08:32:17 -0800 (PST)
-X-Received: by 2002:a17:907:c09:b0:9e7:de43:af91 with SMTP id ga9-20020a1709070c0900b009e7de43af91mr9440478ejc.41.1699979537118;
-        Tue, 14 Nov 2023 08:32:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699979537; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161739ejc;
+        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
+X-Received: by 2002:a17:906:45a:b0:9c7:56ee:b6e5 with SMTP id e26-20020a170906045a00b009c756eeb6e5mr7019316eja.40.1699979542612;
+        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699979542; cv=none;
         d=google.com; s=arc-20160816;
-        b=YkFjT1IDC6vDp0zwiNrmxYt2UWgAP0VbefaGO8YS3UZijd8rv1RaIpLTmc/izmgrSz
-         KJF3d47nSSw9pQkfxIBlu1GQzZv8rnu6KWJ/vKfKB+IXNq9sV/t62yBBeFdEJ2wtSlAQ
-         u1MeHRYyaWaG+Myjng0VQS8ZDND6Y9OlWkZSeZ1xTgykiC3PQiK+e9fwR2nWi8/eh29v
-         +gwXG+r+TIbyaR+VdufBYu4DjmoALcbG0/dcM3+S0lWqZ0rE6PvwGpMqHLFuMtj34H7o
-         q0cowQb7fPkebbjEwptKRo55yqCP9gNhXvlvGWVM7ozZEic5jUZ5Zo7VgYJSFfz/rvu/
-         87cw==
+        b=SCQdxJECQmkJi/gTDnf6JDgLcUtXNTT3wI497Q31EgSa/47TvzFvXpDUXuMjRbHFiM
+         cZjCb+9K/CLN70v8QUDVeMdEVJZZuqicm8w0/GA9CrkhhB3Khi38J3mn97vVYq+DQX9A
+         ifDVjdwSptcKfgrJm/1UmDxFT1oPbm576fwkCd+d+W8bmCwB05wdEq5gfz+wqm7sDcLD
+         OYkZorM3GeF1tOjfGWwdfVRhVXqh/wy1ao5jrAiGQTdE7Ty+vIpdTPPYnpEBO3zPfZED
+         vOhfByKw3EPVaI4FVpL/+zAPmPxq3cFw+H3Z7nxOZEaU0eDaLPkmPDmg7T6ftUXzWNw6
+         glIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fBoLjADQF92oUz8YGjrCFJ5vAIgrltjc0XkKGW8dGlc=;
-        fh=5lvcVWWZfEaW1el3BGyMdrws/7nl4pTH0ES2/FGtlZo=;
-        b=jIfdoawuGuaVimFN8yd5MWpPhIriv7MPv34tbfvihc1L2p9KjROpmcop5pTteh5jHg
-         EkbCEyg/Rq64WVzCFfJD2LqATQ2RyAwYsb9FQ93h9kc3NNMn27yDTTtO3VlrcZhAHoHo
-         U48bg0BiHdQggpOc8KM9AoaldLiAxitszGOV7KAp80u4VuomtJ3U63rclFtLDUDZxfF4
-         yJSZai4eNbFg8EdFLML8/BMnuen7TVYHF0rdCsUqsyebUYB9RrPm5l2aGdnnBRljrCRO
-         trZZjT3o0V1G0iB0ZdUsyvlW+7Fvy1gmdf0WAcAnpFA0THzBL0BZHtXjCYuAvf533Ugt
-         FxRw==
+        bh=htjkOQmTZcMenhXqLaaInIEhXImv4mUPxpJWcjUwWD8=;
+        fh=9pdq7NpBxJPnvyNu1sJsWepRx2HfUbiacvC5FeL2cfI=;
+        b=ucEcXltg8Qr7C13EcRFCsGlcUSZAQRR96LdiURhoJbH+UNCdRYFWt+XnLTAp4dpkam
+         BeeDP9Ku4ZD2d0y+ilbe1XaWoC7dUQVRMYr6/A9lsxn5dj/9kN9zN/IjQvgC7dydsP8s
+         lUjjlqOrS/1/y1myPdJ7wxB1IM2lNkL4pY45nKtqi4WcvYdY8c0Oe1ks7gZyr7/S4xKs
+         m66Uf4noFEcTx6tlbYSvjpxER9EaNVreKsFvEq/6lPgKoL+DB2vZIVmS7IhUuNeUlVza
+         ZBFM0obkd4DooP19IBU+p0uHmCOsxUireSGfFsfI9qkSd2E0UX8KHRt+1s3TSRy+DpVT
+         pvXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DA34NLQB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QhjUANfw;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 17-20020a170906025100b009bdef95cf2asor2040614ejl.19.2023.11.14.08.32.17
+        by mx.google.com with SMTPS id 30-20020a170906005e00b009de23de9361sor2108956ejg.15.2023.11.14.08.32.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 14 Nov 2023 08:32:17 -0800 (PST)
+        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DA34NLQB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QhjUANfw;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699979537; x=1700584337; darn=linaro.org;
+        d=linaro.org; s=google; t=1699979542; x=1700584342; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fBoLjADQF92oUz8YGjrCFJ5vAIgrltjc0XkKGW8dGlc=;
-        b=DA34NLQBGMEjAmKBh22CGETc7Wh0oo575QaV0ZJ1mfZSBSpu3XFgWk3HQLXm1+ixe6
-         d2Ui078G3kCMclIdGoCMBjpLWCK4UsIw7liJDKG4E0FTSDtUVC+ZS+zt9+lBhqVnK4v8
-         On5EDYDVLM7fdXS7GvAq8L8uJ2M8jFm0O1NkZt2hUIBcUaVIE8wz61MlMLMT5K7kHuIg
-         gYigfrlTimvRZtwQHaGpbdKJmVlQ5t+BCJGuFQ1Q4wLlNmO6EAxrdYhUD/xURwTcjha/
-         eU20uhn+S1yIbEcWLWO6cqySz/pQH3n+zYcsOqD25EK4JPiBpEvEeDpV7zx7Ix/pgUIx
-         ICVA==
+        bh=htjkOQmTZcMenhXqLaaInIEhXImv4mUPxpJWcjUwWD8=;
+        b=QhjUANfwbky5T3/8pW3D3zMMj2vDmFZ8liXdEYPS3/N5bcLFvtShEE7vOIRAG0y67R
+         8hyqqGXra0MxZNFNpvY5DexOUm3qkR8uKck5lVq7JR8du5kHiVnVrClolwHaoj6atvS2
+         jtizyNLCzwTElV9NmjSzsKErPo022Llcd08l9TxJg9wmXGlm7yHN9Mb8DSSVhAmha4dy
+         K231FZx0PYWqxHkiuMNetJ5CccngzX0AZ47mU8BgkNeMGoaj+HUc40+UzYWqqNzIhhl2
+         jsQ/sN+4mWzW9cBkK77lMqY4DEkjKe+fe+ebQIVM8PTC5SxwItsak69Ial8DFY++s7Kh
+         X33A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699979537; x=1700584337;
+        d=1e100.net; s=20230601; t=1699979542; x=1700584342;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fBoLjADQF92oUz8YGjrCFJ5vAIgrltjc0XkKGW8dGlc=;
-        b=npFtKx0B65u9ViqXL5qJ7IaARekoMyBJhCdkOuxJO+i0VVVzugvXZJpzIrdAQGd4Mm
-         YpPc2BJ8NNkpQEpPt9Q9P5MyIBhRPYuRBlg/x9RSKEIFKkq6qTiT/FYs9Z+oZctds7C6
-         cSB5KvDZTZqVK4QldOWWVgOGQxBI0DWCgRBQZkYQAkj9hiVwAORqqjMBD8PIBgFkbmjE
-         mMpAsQBYaq8d1YimOx0uKa2bG7rCAsN1w2b1JEICro3LJ9gzI0ANjNd8M31t3YJwCs8d
-         keTfEDAeX32abs7n1I2mDTaLQxLO1gzsDMrKxlcR+tKmcK3OD5AesW/QBGu3ERPuv6zd
-         yKkg==
-X-Gm-Message-State: AOJu0Yxbr4WppD7W4uz4SHUsJeEZ0Bp4vJKQWY+iMYFhU0hd5jDgUHUa
-	He94wUnrYttCvtaur8foPnDaNq5N
-X-Google-Smtp-Source: AGHT+IHCzaPi5Ki96YFTxblFzU9hUvvVJMXhVG8xP2TJoi7bkBVxcUKkybZuFBTY+HQf7VLJRu7P5A==
-X-Received: by 2002:a17:906:dc9:b0:9d4:84b6:8709 with SMTP id p9-20020a1709060dc900b009d484b68709mr6908245eji.58.1699979536701;
-        Tue, 14 Nov 2023 08:32:16 -0800 (PST)
+        bh=htjkOQmTZcMenhXqLaaInIEhXImv4mUPxpJWcjUwWD8=;
+        b=glGXeo27uztQRGoyl+rd2X+A6yeGDRYxnNCtURdjiiHoQ18yk9F3SmpHILOGa95ORA
+         16PWHYUEhmw7dLy4Roquw005asVbyxpvrnJ4qglnAUFxnkR01y4lHjZ/ED2k+PSaRd+W
+         ym2+pMwLgWg8yfYIFLJlGUSVAP8kSHsqQsHd01CCkL50EV7CRkg0vxdNcaBWIyheeaEa
+         3AdIhO9ir9+8Feqt3N15mlEDkdvld2L+wMm/1qrllW2FqKDA3U5dhvT5fxcZvqauJMt6
+         WVNZxT/QDkB/lQ2UEdI3ixKcSn8hMr84Bs4Q2j/DgY/cj1O2ow910KqANtsv5gXdwiAO
+         CnUg==
+X-Gm-Message-State: AOJu0YytfhaBcmZq2PcdeAY429BOqVWOS5zkh9vJgTjax1Oj6UPsIXrh
+	X4+PvVrrnElVvQS9h3ZdTC0FvvrZ
+X-Google-Smtp-Source: AGHT+IEJmFgqouqetrQ1cGRifpy+1FzLH8THhoRj/4LtsoCnWeS7Y04NxjXy02qkfonieH2Xog4T5Q==
+X-Received: by 2002:a17:906:7943:b0:9d3:e48f:30d3 with SMTP id l3-20020a170906794300b009d3e48f30d3mr9901673ejo.31.1699979542369;
+        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id s12-20020a1709066c8c00b0099cd008c1a4sm5788138ejr.136.2023.11.14.08.32.14
+        by smtp.gmail.com with ESMTPSA id c26-20020a17090603da00b009adce1c97ccsm5731084eja.53.2023.11.14.08.32.20
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 14 Nov 2023 08:32:16 -0800 (PST)
+        Tue, 14 Nov 2023 08:32:21 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Anthony Perard <anthony.perard@citrix.com>,
@@ -81,517 +81,48 @@ Cc: Anthony Perard <anthony.perard@citrix.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	xen-devel@lists.xenproject.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>
-Subject: [RFC PATCH-for-9.0 8/9] hw/xen/hvm: Merge xen-hvm-common.c files
-Date: Tue, 14 Nov 2023 17:31:22 +0100
-Message-ID: <20231114163123.74888-9-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-9.0 9/9] hw/xen/hvm: Inline xen_arch_set_memory()
+Date: Tue, 14 Nov 2023 17:31:23 +0100
+Message-ID: <20231114163123.74888-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231114163123.74888-1-philmd@linaro.org>
 References: <20231114163123.74888-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: lC4B5Gf0FcG4
+X-TUID: vLBQrcjE2WXn
 
-hw/i386/xen/xen-hvm-common.c content is target agnostic,
-and should be common to all targets. Merge both files.
-Remove the now unnecessary xen_register_framebuffer() stub.
-
-ARM targets now inherit the common xen_memory_listener.
+xen_arch_set_memory() is not arch-specific anymore. Being
+called once, inline it in xen_set_memory().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/xen_arm.c             |  24 --
- hw/i386/xen/xen-hvm-common.c | 473 -----------------------------------
- hw/xen/xen-hvm-common.c      | 458 +++++++++++++++++++++++++++++++++
- stubs/xen-hw-stub.c          |   4 -
- hw/i386/xen/meson.build      |   1 -
- 5 files changed, 458 insertions(+), 502 deletions(-)
- delete mode 100644 hw/i386/xen/xen-hvm-common.c
+ include/hw/xen/xen-hvm-common.h |   3 -
+ hw/xen/xen-hvm-common.c         | 104 ++++++++++++++++----------------
+ 2 files changed, 51 insertions(+), 56 deletions(-)
 
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index 39dcd74d07..0ead84c9e1 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -38,17 +38,6 @@
- #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
- OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
+diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
+index 536712dc83..a1b8a2783b 100644
+--- a/include/hw/xen/xen-hvm-common.h
++++ b/include/hw/xen/xen-hvm-common.h
+@@ -99,8 +99,5 @@ void cpu_ioreq_pio(ioreq_t *req);
  
--const MemoryListener xen_memory_listener = {
--    .region_add = xen_region_add,
--    .region_del = xen_region_del,
--    .log_start = NULL,
--    .log_stop = NULL,
--    .log_sync = NULL,
--    .log_global_start = NULL,
--    .log_global_stop = NULL,
--    .priority = MEMORY_LISTENER_PRIORITY_ACCEL,
--};
--
- struct XenArmState {
-     /*< private >*/
-     MachineState parent;
-@@ -136,19 +125,6 @@ void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req)
-     return;
+ void xen_read_physmap(XenIOState *state);
+ void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
+-void xen_arch_set_memory(XenIOState *state,
+-                         MemoryRegionSection *section,
+-                         bool add);
+ 
+ #endif /* HW_XEN_HVM_COMMON_H */
+diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
+index 50ce45effc..789c6b4b7a 100644
+--- a/hw/xen/xen-hvm-common.c
++++ b/hw/xen/xen-hvm-common.c
+@@ -426,50 +426,6 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
+     }
  }
  
--void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
--                         bool add)
--{
--}
--
--void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
--{
--}
--
--void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
--{
--}
--
- #ifdef CONFIG_TPM
- static void xen_enable_tpm(XenArmState *xam)
- {
-diff --git a/hw/i386/xen/xen-hvm-common.c b/hw/i386/xen/xen-hvm-common.c
-deleted file mode 100644
-index e8ef0e0c94..0000000000
---- a/hw/i386/xen/xen-hvm-common.c
-+++ /dev/null
-@@ -1,473 +0,0 @@
--/*
-- * Copyright (C) 2010       Citrix Ltd.
-- *
-- * This work is licensed under the terms of the GNU GPL, version 2.  See
-- * the COPYING file in the top-level directory.
-- *
-- * Contributions after 2012-01-13 are licensed under the terms of the
-- * GNU GPL, version 2 or (at your option) any later version.
-- */
--
--#include "qemu/osdep.h"
--#include "qemu/range.h"
--#include "qapi/qapi-commands-migration.h"
--#include "exec/target_page.h"
--#include "hw/xen/xen-hvm-common.h"
--#include "trace.h"
--
--static MemoryRegion *framebuffer;
--static bool xen_in_migration;
--
--static QLIST_HEAD(, XenPhysmap) xen_physmap;
--static const XenPhysmap *log_for_dirtybit;
--/* Buffer used by xen_sync_dirty_bitmap */
--static unsigned long *dirty_bitmap;
--
--static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
--                                   int page_mask)
--{
--    XenPhysmap *physmap = NULL;
--
--    start_addr &= -page_mask;
--
--    QLIST_FOREACH(physmap, &xen_physmap, list) {
--        if (range_covers_byte(physmap->start_addr, physmap->size, start_addr)) {
--            return physmap;
--        }
--    }
--    return NULL;
--}
--
--static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
--                                       int page_mask)
--{
--    hwaddr addr = phys_offset & -page_mask;
--    XenPhysmap *physmap = NULL;
--
--    QLIST_FOREACH(physmap, &xen_physmap, list) {
--        if (range_covers_byte(physmap->phys_offset, physmap->size, addr)) {
--            return physmap->start_addr + (phys_offset - physmap->phys_offset);
--        }
--    }
--
--    return phys_offset;
--}
--
--#ifdef XEN_COMPAT_PHYSMAP
--static int xen_save_physmap(XenIOState *state, XenPhysmap *physmap)
--{
--    char path[80], value[17];
--
--    snprintf(path, sizeof(path),
--            "/local/domain/0/device-model/%d/physmap/%"PRIx64"/start_addr",
--            xen_domid, (uint64_t)physmap->phys_offset);
--    snprintf(value, sizeof(value), "%"PRIx64, (uint64_t)physmap->start_addr);
--    if (!xs_write(state->xenstore, 0, path, value, strlen(value))) {
--        return -1;
--    }
--    snprintf(path, sizeof(path),
--            "/local/domain/0/device-model/%d/physmap/%"PRIx64"/size",
--            xen_domid, (uint64_t)physmap->phys_offset);
--    snprintf(value, sizeof(value), "%"PRIx64, (uint64_t)physmap->size);
--    if (!xs_write(state->xenstore, 0, path, value, strlen(value))) {
--        return -1;
--    }
--    if (physmap->name) {
--        snprintf(path, sizeof(path),
--                "/local/domain/0/device-model/%d/physmap/%"PRIx64"/name",
--                xen_domid, (uint64_t)physmap->phys_offset);
--        if (!xs_write(state->xenstore, 0, path,
--                      physmap->name, strlen(physmap->name))) {
--            return -1;
--        }
--    }
--    return 0;
--}
--#else
--static int xen_save_physmap(XenIOState *state, XenPhysmap *physmap)
--{
--    return 0;
--}
--#endif
--
--static int xen_add_to_physmap(XenIOState *state,
--                              hwaddr start_addr,
--                              ram_addr_t size,
--                              MemoryRegion *mr,
--                              hwaddr offset_within_region)
--{
--    unsigned target_page_bits = qemu_target_page_bits();
--    int page_size = qemu_target_page_size();
--    int page_mask = -page_size;
--    unsigned long nr_pages;
--    int rc = 0;
--    XenPhysmap *physmap = NULL;
--    hwaddr pfn, start_gpfn;
--    hwaddr phys_offset = memory_region_get_ram_addr(mr);
--    const char *mr_name;
--
--    if (get_physmapping(start_addr, size, page_mask)) {
--        return 0;
--    }
--    if (size <= 0) {
--        return -1;
--    }
--
--    /* Xen can only handle a single dirty log region for now and we want
--     * the linear framebuffer to be that region.
--     * Avoid tracking any regions that is not videoram and avoid tracking
--     * the legacy vga region. */
--    if (mr == framebuffer && start_addr > 0xbffff) {
--        goto go_physmap;
--    }
--    return -1;
--
--go_physmap:
--    DPRINTF("mapping vram to %"HWADDR_PRIx" - %"HWADDR_PRIx"\n",
--            start_addr, start_addr + size);
--
--    mr_name = memory_region_name(mr);
--
--    physmap = g_new(XenPhysmap, 1);
--
--    physmap->start_addr = start_addr;
--    physmap->size = size;
--    physmap->name = mr_name;
--    physmap->phys_offset = phys_offset;
--
--    QLIST_INSERT_HEAD(&xen_physmap, physmap, list);
--
--    if (runstate_check(RUN_STATE_INMIGRATE)) {
--        /* Now when we have a physmap entry we can replace a dummy mapping with
--         * a real one of guest foreign memory. */
--        uint8_t *p = xen_replace_cache_entry(phys_offset, start_addr, size);
--        assert(p && p == memory_region_get_ram_ptr(mr));
--
--        return 0;
--    }
--
--    pfn = phys_offset >> target_page_bits;
--    start_gpfn = start_addr >> target_page_bits;
--    nr_pages = size >> target_page_bits;
--    rc = xendevicemodel_relocate_memory(xen_dmod, xen_domid, nr_pages, pfn,
--                                        start_gpfn);
--    if (rc) {
--        int saved_errno = errno;
--
--        error_report("relocate_memory %lu pages from GFN %"HWADDR_PRIx
--                     " to GFN %"HWADDR_PRIx" failed: %s",
--                     nr_pages, pfn, start_gpfn, strerror(saved_errno));
--        errno = saved_errno;
--        return -1;
--    }
--
--    rc = xendevicemodel_pin_memory_cacheattr(xen_dmod, xen_domid,
--                                   start_addr >> target_page_bits,
--                                   (start_addr + size - 1) >> target_page_bits,
--                                   XEN_DOMCTL_MEM_CACHEATTR_WB);
--    if (rc) {
--        error_report("pin_memory_cacheattr failed: %s", strerror(errno));
--    }
--    return xen_save_physmap(state, physmap);
--}
--
--static int xen_remove_from_physmap(XenIOState *state,
--                                   hwaddr start_addr,
--                                   ram_addr_t size)
--{
--    unsigned target_page_bits = qemu_target_page_bits();
--    int page_size = qemu_target_page_size();
--    int page_mask = -page_size;
--    int rc = 0;
--    XenPhysmap *physmap = NULL;
--    hwaddr phys_offset = 0;
--
--    physmap = get_physmapping(start_addr, size, page_mask);
--    if (physmap == NULL) {
--        return -1;
--    }
--
--    phys_offset = physmap->phys_offset;
--    size = physmap->size;
--
--    DPRINTF("unmapping vram to %"HWADDR_PRIx" - %"HWADDR_PRIx", at "
--            "%"HWADDR_PRIx"\n", start_addr, start_addr + size, phys_offset);
--
--    size >>= target_page_bits;
--    start_addr >>= target_page_bits;
--    phys_offset >>= target_page_bits;
--    rc = xendevicemodel_relocate_memory(xen_dmod, xen_domid, size, start_addr,
--                                        phys_offset);
--    if (rc) {
--        int saved_errno = errno;
--
--        error_report("relocate_memory "RAM_ADDR_FMT" pages"
--                     " from GFN %"HWADDR_PRIx
--                     " to GFN %"HWADDR_PRIx" failed: %s",
--                     size, start_addr, phys_offset, strerror(saved_errno));
--        errno = saved_errno;
--        return -1;
--    }
--
--    QLIST_REMOVE(physmap, list);
--    if (log_for_dirtybit == physmap) {
--        log_for_dirtybit = NULL;
--        g_free(dirty_bitmap);
--        dirty_bitmap = NULL;
--    }
--    g_free(physmap);
--
--    return 0;
--}
--
--static void xen_sync_dirty_bitmap(XenIOState *state,
--                                  hwaddr start_addr,
--                                  ram_addr_t size)
--{
--    unsigned target_page_bits = qemu_target_page_bits();
--    int page_size = qemu_target_page_size();
--    int page_mask = -page_size;
--    hwaddr npages = size >> target_page_bits;
--    const int width = sizeof(unsigned long) * 8;
--    size_t bitmap_size = DIV_ROUND_UP(npages, width);
--    int rc, i, j;
--    const XenPhysmap *physmap = NULL;
--
--    physmap = get_physmapping(start_addr, size, page_mask);
--    if (physmap == NULL) {
--        /* not handled */
--        return;
--    }
--
--    if (log_for_dirtybit == NULL) {
--        log_for_dirtybit = physmap;
--        dirty_bitmap = g_new(unsigned long, bitmap_size);
--    } else if (log_for_dirtybit != physmap) {
--        /* Only one range for dirty bitmap can be tracked. */
--        return;
--    }
--
--    rc = xen_track_dirty_vram(xen_domid, start_addr >> target_page_bits,
--                              npages, dirty_bitmap);
--    if (rc < 0) {
--#ifndef ENODATA
--#define ENODATA  ENOENT
--#endif
--        if (errno == ENODATA) {
--            memory_region_set_dirty(framebuffer, 0, size);
--            DPRINTF("xen: track_dirty_vram failed (0x" HWADDR_FMT_plx
--                    ", 0x" HWADDR_FMT_plx "): %s\n",
--                    start_addr, start_addr + size, strerror(errno));
--        }
--        return;
--    }
--
--    for (i = 0; i < bitmap_size; i++) {
--        unsigned long map = dirty_bitmap[i];
--        while (map != 0) {
--            j = ctzl(map);
--            map &= ~(1ul << j);
--            memory_region_set_dirty(framebuffer,
--                                    (i * width + j) * page_size,
--                                    page_size);
--        };
--    }
--}
--
--static void xen_log_start(MemoryListener *listener,
--                          MemoryRegionSection *section,
--                          int old, int new)
--{
--    XenIOState *state = container_of(listener, XenIOState, memory_listener);
--
--    if (new & ~old & (1 << DIRTY_MEMORY_VGA)) {
--        xen_sync_dirty_bitmap(state, section->offset_within_address_space,
--                              int128_get64(section->size));
--    }
--}
--
--static void xen_log_stop(MemoryListener *listener, MemoryRegionSection *section,
--                         int old, int new)
--{
--    if (old & ~new & (1 << DIRTY_MEMORY_VGA)) {
--        log_for_dirtybit = NULL;
--        g_free(dirty_bitmap);
--        dirty_bitmap = NULL;
--        /* Disable dirty bit tracking */
--        xen_track_dirty_vram(xen_domid, 0, 0, NULL);
--    }
--}
--
--static void xen_log_sync(MemoryListener *listener, MemoryRegionSection *section)
--{
--    XenIOState *state = container_of(listener, XenIOState, memory_listener);
--
--    xen_sync_dirty_bitmap(state, section->offset_within_address_space,
--                          int128_get64(section->size));
--}
--
--static void xen_log_global_start(MemoryListener *listener)
--{
--    if (xen_enabled()) {
--        xen_in_migration = true;
--    }
--}
--
--static void xen_log_global_stop(MemoryListener *listener)
--{
--    xen_in_migration = false;
--}
--
--const MemoryListener xen_memory_listener = {
--    .name = "xen-memory",
--    .region_add = xen_region_add,
--    .region_del = xen_region_del,
--    .log_start = xen_log_start,
--    .log_stop = xen_log_stop,
--    .log_sync = xen_log_sync,
--    .log_global_start = xen_log_global_start,
--    .log_global_stop = xen_log_global_stop,
--    .priority = MEMORY_LISTENER_PRIORITY_ACCEL,
--};
--
--#ifdef XEN_COMPAT_PHYSMAP
--void xen_read_physmap(XenIOState *state)
--{
--    XenPhysmap *physmap = NULL;
--    unsigned int len, num, i;
--    char path[80], *value = NULL;
--    char **entries = NULL;
--
--    QLIST_INIT(&xen_physmap);
--
--    snprintf(path, sizeof(path),
--            "/local/domain/0/device-model/%d/physmap", xen_domid);
--    entries = xs_directory(state->xenstore, 0, path, &num);
--    if (entries == NULL)
--        return;
--
--    for (i = 0; i < num; i++) {
--        physmap = g_new(XenPhysmap, 1);
--        physmap->phys_offset = strtoull(entries[i], NULL, 16);
--        snprintf(path, sizeof(path),
--                "/local/domain/0/device-model/%d/physmap/%s/start_addr",
--                xen_domid, entries[i]);
--        value = xs_read(state->xenstore, 0, path, &len);
--        if (value == NULL) {
--            g_free(physmap);
--            continue;
--        }
--        physmap->start_addr = strtoull(value, NULL, 16);
--        free(value);
--
--        snprintf(path, sizeof(path),
--                "/local/domain/0/device-model/%d/physmap/%s/size",
--                xen_domid, entries[i]);
--        value = xs_read(state->xenstore, 0, path, &len);
--        if (value == NULL) {
--            g_free(physmap);
--            continue;
--        }
--        physmap->size = strtoull(value, NULL, 16);
--        free(value);
--
--        snprintf(path, sizeof(path),
--                "/local/domain/0/device-model/%d/physmap/%s/name",
--                xen_domid, entries[i]);
--        physmap->name = xs_read(state->xenstore, 0, path, &len);
--
--        QLIST_INSERT_HEAD(&xen_physmap, physmap, list);
--    }
--    free(entries);
--}
--#else
--void xen_read_physmap(XenIOState *state)
--{
--    QLIST_INIT(&xen_physmap);
--}
--#endif
--
--void xen_register_framebuffer(MemoryRegion *mr)
--{
--    framebuffer = mr;
--}
--
--void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
--{
--    unsigned target_page_bits = qemu_target_page_bits();
--    int page_size = qemu_target_page_size();
--    int page_mask = -page_size;
--
--    if (unlikely(xen_in_migration)) {
--        int rc;
--        ram_addr_t start_pfn, nb_pages;
--
--        start = xen_phys_offset_to_gaddr(start, length, page_mask);
--
--        if (length == 0) {
--            length = page_size;
--        }
--        start_pfn = start >> target_page_bits;
--        nb_pages = ((start + length + page_size - 1) >> target_page_bits)
--            - start_pfn;
--        rc = xen_modified_memory(xen_domid, start_pfn, nb_pages);
--        if (rc) {
--            fprintf(stderr,
--                    "%s failed for "RAM_ADDR_FMT" ("RAM_ADDR_FMT"): %i, %s\n",
--                    __func__, start, nb_pages, errno, strerror(errno));
--        }
--    }
--}
--
--void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
--{
--    if (enable) {
--        memory_global_dirty_log_start(GLOBAL_DIRTY_MIGRATION);
--    } else {
--        memory_global_dirty_log_stop(GLOBAL_DIRTY_MIGRATION);
--    }
--}
--
 -void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
 -                         bool add)
 -{
@@ -635,456 +166,56 @@ index e8ef0e0c94..0000000000
 -        }
 -    }
 -}
-diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
-index 73fa2c414d..50ce45effc 100644
---- a/hw/xen/xen-hvm-common.c
-+++ b/hw/xen/xen-hvm-common.c
-@@ -1,7 +1,9 @@
- #include "qemu/osdep.h"
- #include "qemu/units.h"
- #include "qemu/bitops.h"
-+#include "qemu/range.h"
- #include "qapi/error.h"
-+#include "qapi/qapi-commands-migration.h"
- #include "exec/target_page.h"
- #include "trace.h"
- 
-@@ -11,6 +13,462 @@
- #include "hw/boards.h"
- 
- MemoryRegion xen_memory;
-+static MemoryRegion *framebuffer;
-+static bool xen_in_migration;
-+
-+static QLIST_HEAD(, XenPhysmap) xen_physmap;
-+static const XenPhysmap *log_for_dirtybit;
-+/* Buffer used by xen_sync_dirty_bitmap */
-+static unsigned long *dirty_bitmap;
-+
-+static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
-+                                   int page_mask)
-+{
-+    XenPhysmap *physmap = NULL;
-+
-+    start_addr &= -page_mask;
-+
-+    QLIST_FOREACH(physmap, &xen_physmap, list) {
-+        if (range_covers_byte(physmap->start_addr, physmap->size, start_addr)) {
-+            return physmap;
-+        }
-+    }
-+    return NULL;
-+}
-+
-+static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
-+                                       int page_mask)
-+{
-+    hwaddr addr = phys_offset & -page_mask;
-+    XenPhysmap *physmap = NULL;
-+
-+    QLIST_FOREACH(physmap, &xen_physmap, list) {
-+        if (range_covers_byte(physmap->phys_offset, physmap->size, addr)) {
-+            return physmap->start_addr + (phys_offset - physmap->phys_offset);
-+        }
-+    }
-+
-+    return phys_offset;
-+}
-+
-+#ifdef XEN_COMPAT_PHYSMAP
-+static int xen_save_physmap(XenIOState *state, XenPhysmap *physmap)
-+{
-+    char path[80], value[17];
-+
-+    snprintf(path, sizeof(path),
-+            "/local/domain/0/device-model/%d/physmap/%"PRIx64"/start_addr",
-+            xen_domid, (uint64_t)physmap->phys_offset);
-+    snprintf(value, sizeof(value), "%"PRIx64, (uint64_t)physmap->start_addr);
-+    if (!xs_write(state->xenstore, 0, path, value, strlen(value))) {
-+        return -1;
-+    }
-+    snprintf(path, sizeof(path),
-+            "/local/domain/0/device-model/%d/physmap/%"PRIx64"/size",
-+            xen_domid, (uint64_t)physmap->phys_offset);
-+    snprintf(value, sizeof(value), "%"PRIx64, (uint64_t)physmap->size);
-+    if (!xs_write(state->xenstore, 0, path, value, strlen(value))) {
-+        return -1;
-+    }
-+    if (physmap->name) {
-+        snprintf(path, sizeof(path),
-+                "/local/domain/0/device-model/%d/physmap/%"PRIx64"/name",
-+                xen_domid, (uint64_t)physmap->phys_offset);
-+        if (!xs_write(state->xenstore, 0, path,
-+                      physmap->name, strlen(physmap->name))) {
-+            return -1;
-+        }
-+    }
-+    return 0;
-+}
-+#else
-+static int xen_save_physmap(XenIOState *state, XenPhysmap *physmap)
-+{
-+    return 0;
-+}
-+#endif
-+
-+static int xen_add_to_physmap(XenIOState *state,
-+                              hwaddr start_addr,
-+                              ram_addr_t size,
-+                              MemoryRegion *mr,
-+                              hwaddr offset_within_region)
-+{
+-
+ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
+                    Error **errp)
+ {
+@@ -512,20 +468,62 @@ static void xen_set_memory(struct MemoryListener *listener,
+                            bool add)
+ {
+     XenIOState *state = container_of(listener, XenIOState, memory_listener);
 +    unsigned target_page_bits = qemu_target_page_bits();
 +    int page_size = qemu_target_page_size();
 +    int page_mask = -page_size;
-+    unsigned long nr_pages;
-+    int rc = 0;
-+    XenPhysmap *physmap = NULL;
-+    hwaddr pfn, start_gpfn;
-+    hwaddr phys_offset = memory_region_get_ram_addr(mr);
-+    const char *mr_name;
-+
-+    if (get_physmapping(start_addr, size, page_mask)) {
-+        return 0;
-+    }
-+    if (size <= 0) {
-+        return -1;
-+    }
-+
-+    /* Xen can only handle a single dirty log region for now and we want
-+     * the linear framebuffer to be that region.
-+     * Avoid tracking any regions that is not videoram and avoid tracking
-+     * the legacy vga region. */
-+    if (mr == framebuffer && start_addr > 0xbffff) {
-+        goto go_physmap;
-+    }
-+    return -1;
-+
-+go_physmap:
-+    DPRINTF("mapping vram to %"HWADDR_PRIx" - %"HWADDR_PRIx"\n",
-+            start_addr, start_addr + size);
-+
-+    mr_name = memory_region_name(mr);
-+
-+    physmap = g_new(XenPhysmap, 1);
-+
-+    physmap->start_addr = start_addr;
-+    physmap->size = size;
-+    physmap->name = mr_name;
-+    physmap->phys_offset = phys_offset;
-+
-+    QLIST_INSERT_HEAD(&xen_physmap, physmap, list);
-+
-+    if (runstate_check(RUN_STATE_INMIGRATE)) {
-+        /* Now when we have a physmap entry we can replace a dummy mapping with
-+         * a real one of guest foreign memory. */
-+        uint8_t *p = xen_replace_cache_entry(phys_offset, start_addr, size);
-+        assert(p && p == memory_region_get_ram_ptr(mr));
-+
-+        return 0;
-+    }
-+
-+    pfn = phys_offset >> target_page_bits;
-+    start_gpfn = start_addr >> target_page_bits;
-+    nr_pages = size >> target_page_bits;
-+    rc = xendevicemodel_relocate_memory(xen_dmod, xen_domid, nr_pages, pfn,
-+                                        start_gpfn);
-+    if (rc) {
-+        int saved_errno = errno;
-+
-+        error_report("relocate_memory %lu pages from GFN %"HWADDR_PRIx
-+                     " to GFN %"HWADDR_PRIx" failed: %s",
-+                     nr_pages, pfn, start_gpfn, strerror(saved_errno));
-+        errno = saved_errno;
-+        return -1;
-+    }
-+
-+    rc = xendevicemodel_pin_memory_cacheattr(xen_dmod, xen_domid,
-+                                   start_addr >> target_page_bits,
-+                                   (start_addr + size - 1) >> target_page_bits,
-+                                   XEN_DOMCTL_MEM_CACHEATTR_WB);
-+    if (rc) {
-+        error_report("pin_memory_cacheattr failed: %s", strerror(errno));
-+    }
-+    return xen_save_physmap(state, physmap);
-+}
-+
-+static int xen_remove_from_physmap(XenIOState *state,
-+                                   hwaddr start_addr,
-+                                   ram_addr_t size)
-+{
-+    unsigned target_page_bits = qemu_target_page_bits();
-+    int page_size = qemu_target_page_size();
-+    int page_mask = -page_size;
-+    int rc = 0;
-+    XenPhysmap *physmap = NULL;
-+    hwaddr phys_offset = 0;
-+
-+    physmap = get_physmapping(start_addr, size, page_mask);
-+    if (physmap == NULL) {
-+        return -1;
-+    }
-+
-+    phys_offset = physmap->phys_offset;
-+    size = physmap->size;
-+
-+    DPRINTF("unmapping vram to %"HWADDR_PRIx" - %"HWADDR_PRIx", at "
-+            "%"HWADDR_PRIx"\n", start_addr, start_addr + size, phys_offset);
-+
-+    size >>= target_page_bits;
-+    start_addr >>= target_page_bits;
-+    phys_offset >>= target_page_bits;
-+    rc = xendevicemodel_relocate_memory(xen_dmod, xen_domid, size, start_addr,
-+                                        phys_offset);
-+    if (rc) {
-+        int saved_errno = errno;
-+
-+        error_report("relocate_memory "RAM_ADDR_FMT" pages"
-+                     " from GFN %"HWADDR_PRIx
-+                     " to GFN %"HWADDR_PRIx" failed: %s",
-+                     size, start_addr, phys_offset, strerror(saved_errno));
-+        errno = saved_errno;
-+        return -1;
-+    }
-+
-+    QLIST_REMOVE(physmap, list);
-+    if (log_for_dirtybit == physmap) {
-+        log_for_dirtybit = NULL;
-+        g_free(dirty_bitmap);
-+        dirty_bitmap = NULL;
-+    }
-+    g_free(physmap);
-+
-+    return 0;
-+}
-+
-+static void xen_sync_dirty_bitmap(XenIOState *state,
-+                                  hwaddr start_addr,
-+                                  ram_addr_t size)
-+{
-+    unsigned target_page_bits = qemu_target_page_bits();
-+    int page_size = qemu_target_page_size();
-+    int page_mask = -page_size;
-+    hwaddr npages = size >> target_page_bits;
-+    const int width = sizeof(unsigned long) * 8;
-+    size_t bitmap_size = DIV_ROUND_UP(npages, width);
-+    int rc, i, j;
-+    const XenPhysmap *physmap = NULL;
-+
-+    physmap = get_physmapping(start_addr, size, page_mask);
-+    if (physmap == NULL) {
-+        /* not handled */
-+        return;
-+    }
-+
-+    if (log_for_dirtybit == NULL) {
-+        log_for_dirtybit = physmap;
-+        dirty_bitmap = g_new(unsigned long, bitmap_size);
-+    } else if (log_for_dirtybit != physmap) {
-+        /* Only one range for dirty bitmap can be tracked. */
-+        return;
-+    }
-+
-+    rc = xen_track_dirty_vram(xen_domid, start_addr >> target_page_bits,
-+                              npages, dirty_bitmap);
-+    if (rc < 0) {
-+#ifndef ENODATA
-+#define ENODATA  ENOENT
-+#endif
-+        if (errno == ENODATA) {
-+            memory_region_set_dirty(framebuffer, 0, size);
-+            DPRINTF("xen: track_dirty_vram failed (0x" HWADDR_FMT_plx
-+                    ", 0x" HWADDR_FMT_plx "): %s\n",
-+                    start_addr, start_addr + size, strerror(errno));
-+        }
-+        return;
-+    }
-+
-+    for (i = 0; i < bitmap_size; i++) {
-+        unsigned long map = dirty_bitmap[i];
-+        while (map != 0) {
-+            j = ctzl(map);
-+            map &= ~(1ul << j);
-+            memory_region_set_dirty(framebuffer,
-+                                    (i * width + j) * page_size,
-+                                    page_size);
-+        };
-+    }
-+}
-+
-+static void xen_log_start(MemoryListener *listener,
-+                          MemoryRegionSection *section,
-+                          int old, int new)
-+{
-+    XenIOState *state = container_of(listener, XenIOState, memory_listener);
-+
-+    if (new & ~old & (1 << DIRTY_MEMORY_VGA)) {
-+        xen_sync_dirty_bitmap(state, section->offset_within_address_space,
-+                              int128_get64(section->size));
-+    }
-+}
-+
-+static void xen_log_stop(MemoryListener *listener, MemoryRegionSection *section,
-+                         int old, int new)
-+{
-+    if (old & ~new & (1 << DIRTY_MEMORY_VGA)) {
-+        log_for_dirtybit = NULL;
-+        g_free(dirty_bitmap);
-+        dirty_bitmap = NULL;
-+        /* Disable dirty bit tracking */
-+        xen_track_dirty_vram(xen_domid, 0, 0, NULL);
-+    }
-+}
-+
-+static void xen_log_sync(MemoryListener *listener, MemoryRegionSection *section)
-+{
-+    XenIOState *state = container_of(listener, XenIOState, memory_listener);
-+
-+    xen_sync_dirty_bitmap(state, section->offset_within_address_space,
-+                          int128_get64(section->size));
-+}
-+
-+static void xen_log_global_start(MemoryListener *listener)
-+{
-+    if (xen_enabled()) {
-+        xen_in_migration = true;
-+    }
-+}
-+
-+static void xen_log_global_stop(MemoryListener *listener)
-+{
-+    xen_in_migration = false;
-+}
-+
-+const MemoryListener xen_memory_listener = {
-+    .name = "xen-memory",
-+    .region_add = xen_region_add,
-+    .region_del = xen_region_del,
-+    .log_start = xen_log_start,
-+    .log_stop = xen_log_stop,
-+    .log_sync = xen_log_sync,
-+    .log_global_start = xen_log_global_start,
-+    .log_global_stop = xen_log_global_stop,
-+    .priority = MEMORY_LISTENER_PRIORITY_ACCEL,
-+};
-+
-+#ifdef XEN_COMPAT_PHYSMAP
-+void xen_read_physmap(XenIOState *state)
-+{
-+    XenPhysmap *physmap = NULL;
-+    unsigned int len, num, i;
-+    char path[80], *value = NULL;
-+    char **entries = NULL;
-+
-+    QLIST_INIT(&xen_physmap);
-+
-+    snprintf(path, sizeof(path),
-+            "/local/domain/0/device-model/%d/physmap", xen_domid);
-+    entries = xs_directory(state->xenstore, 0, path, &num);
-+    if (entries == NULL)
-+        return;
-+
-+    for (i = 0; i < num; i++) {
-+        physmap = g_new(XenPhysmap, 1);
-+        physmap->phys_offset = strtoull(entries[i], NULL, 16);
-+        snprintf(path, sizeof(path),
-+                "/local/domain/0/device-model/%d/physmap/%s/start_addr",
-+                xen_domid, entries[i]);
-+        value = xs_read(state->xenstore, 0, path, &len);
-+        if (value == NULL) {
-+            g_free(physmap);
-+            continue;
-+        }
-+        physmap->start_addr = strtoull(value, NULL, 16);
-+        free(value);
-+
-+        snprintf(path, sizeof(path),
-+                "/local/domain/0/device-model/%d/physmap/%s/size",
-+                xen_domid, entries[i]);
-+        value = xs_read(state->xenstore, 0, path, &len);
-+        if (value == NULL) {
-+            g_free(physmap);
-+            continue;
-+        }
-+        physmap->size = strtoull(value, NULL, 16);
-+        free(value);
-+
-+        snprintf(path, sizeof(path),
-+                "/local/domain/0/device-model/%d/physmap/%s/name",
-+                xen_domid, entries[i]);
-+        physmap->name = xs_read(state->xenstore, 0, path, &len);
-+
-+        QLIST_INSERT_HEAD(&xen_physmap, physmap, list);
-+    }
-+    free(entries);
-+}
-+#else
-+void xen_read_physmap(XenIOState *state)
-+{
-+    QLIST_INIT(&xen_physmap);
-+}
-+#endif
-+
-+void xen_register_framebuffer(MemoryRegion *mr)
-+{
-+    framebuffer = mr;
-+}
-+
-+void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
-+{
-+    unsigned target_page_bits = qemu_target_page_bits();
-+    int page_size = qemu_target_page_size();
-+    int page_mask = -page_size;
-+
-+    if (unlikely(xen_in_migration)) {
-+        int rc;
-+        ram_addr_t start_pfn, nb_pages;
-+
-+        start = xen_phys_offset_to_gaddr(start, length, page_mask);
-+
-+        if (length == 0) {
-+            length = page_size;
-+        }
-+        start_pfn = start >> target_page_bits;
-+        nb_pages = ((start + length + page_size - 1) >> target_page_bits)
-+            - start_pfn;
-+        rc = xen_modified_memory(xen_domid, start_pfn, nb_pages);
-+        if (rc) {
-+            fprintf(stderr,
-+                    "%s failed for "RAM_ADDR_FMT" ("RAM_ADDR_FMT"): %i, %s\n",
-+                    __func__, start, nb_pages, errno, strerror(errno));
-+        }
-+    }
-+}
-+
-+void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
-+{
-+    if (enable) {
-+        memory_global_dirty_log_start(GLOBAL_DIRTY_MIGRATION);
-+    } else {
-+        memory_global_dirty_log_stop(GLOBAL_DIRTY_MIGRATION);
-+    }
-+}
-+
-+void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
-+                         bool add)
-+{
-+    unsigned target_page_bits = qemu_target_page_bits();
-+    int page_size = qemu_target_page_size();
-+    int page_mask = -page_size;
-+    hwaddr start_addr = section->offset_within_address_space;
-+    ram_addr_t size = int128_get64(section->size);
-+    bool log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
++    hwaddr start_addr;
++    ram_addr_t size;
++    bool log_dirty;
 +    hvmmem_type_t mem_type;
++
+ 
+     if (section->mr == &xen_memory) {
+         return;
+-    } else {
+-        if (add) {
+-            xen_map_memory_section(xen_domid, state->ioservid,
+-                                   section);
+-        } else {
+-            xen_unmap_memory_section(xen_domid, state->ioservid,
+-                                     section);
+-        }
+     }
+ 
+-    xen_arch_set_memory(state, section, add);
++    if (add) {
++        xen_map_memory_section(xen_domid, state->ioservid,
++                               section);
++    } else {
++        xen_unmap_memory_section(xen_domid, state->ioservid,
++                                 section);
++    }
 +
 +    if (!memory_region_is_ram(section->mr)) {
 +        return;
 +    }
 +
++    log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
++
 +    if (log_dirty != add) {
 +        return;
 +    }
 +
++    start_addr = section->offset_within_address_space;
++    size = int128_get64(section->size);
 +    trace_xen_client_set_memory(start_addr, size, log_dirty);
 +
 +    start_addr &= page_mask;
@@ -1108,33 +239,8 @@ index 73fa2c414d..50ce45effc 100644
 +            DPRINTF("physmapping does not exist at "HWADDR_FMT_plx"\n", start_addr);
 +        }
 +    }
-+}
- 
- void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
-                    Error **errp)
-diff --git a/stubs/xen-hw-stub.c b/stubs/xen-hw-stub.c
-index 53c6a6f2a0..da8912f037 100644
---- a/stubs/xen-hw-stub.c
-+++ b/stubs/xen-hw-stub.c
-@@ -13,7 +13,3 @@ int xen_is_pirq_msi(uint32_t msi_data)
- {
-     return 0;
  }
--
--void xen_register_framebuffer(MemoryRegion *mr)
--{
--}
-diff --git a/hw/i386/xen/meson.build b/hw/i386/xen/meson.build
-index d38759cfe4..3f0df8bc07 100644
---- a/hw/i386/xen/meson.build
-+++ b/hw/i386/xen/meson.build
-@@ -1,7 +1,6 @@
- i386_ss.add(when: 'CONFIG_XEN', if_true: files(
-   'xen_apic.c',
-   'xen_pvdevice.c',
--  'xen-hvm-common.c',
- ))
- i386_ss.add(when: ['CONFIG_XEN', xen], if_true: files(
-   'xen-hvm.c',
+ 
+ void xen_region_add(MemoryListener *listener,
 -- 
 2.41.0

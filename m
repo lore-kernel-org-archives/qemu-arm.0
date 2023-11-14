@@ -1,83 +1,92 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1942246ejc;
-        Tue, 14 Nov 2023 02:35:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFuESnMQZR0tkXZ1NU0IB+xjMacPqJrQjENY60IE2tdOhxqh/gYTUeajEwP0QCjOmgA5X4Y
-X-Received: by 2002:a05:6359:5e17:b0:16b:f704:15a0 with SMTP id pw23-20020a0563595e1700b0016bf70415a0mr1596694rwb.8.1699958150243;
-        Tue, 14 Nov 2023 02:35:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699958150; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2199408ejc;
+        Tue, 14 Nov 2023 09:27:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEw5ykac94TNSsfvLyDFp2nvlw6d8Dl1UBrgPEg3GephzFdOjKZ5A4DLJnKi6wui9n8XM+7
+X-Received: by 2002:ac8:5952:0:b0:41e:20e8:a279 with SMTP id 18-20020ac85952000000b0041e20e8a279mr3100891qtz.43.1699982840982;
+        Tue, 14 Nov 2023 09:27:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699982840; cv=none;
         d=google.com; s=arc-20160816;
-        b=NrwyoMZHXrZDUVRKmLRFGLim+6MSjhaun0wbKWoRhgNHGo8rU5VeYFrOOo6MgqHHuV
-         GNOzCI9fmY5SQ2LF7amN2O/DVWltXKQSWZm9vHA2E0stZoB0Di8ucD0y1lM4gYQm8ZcW
-         oD0jqJDp9ucPpSRylMOVtaw4pID4mIfW3rzulmTSiGXY/773+aJwIAdbLX3ne2Fp43bn
-         f51BtrAthwXJhs1dzsgI1hHcgamCc9d6CPgeH+umq5lVL607MIdrlvk2qIutkhwBvBCU
-         voe/Un3ZkC5Ac+BbVXCu0AVjpz5Z06B0zajmF32cud0rySEZvKRwn8flhVzOr6YgCnEL
-         3nCg==
+        b=EF4d+LoqybZOiQ14sWH6eXdi2CCytsB+KDHGoAQTnVDD44jnlZ03I8gP15w1AeHHm3
+         7fEKgKwSCH/Xpe6JegIJkGd9Ej+9bkoU9lpdPy2yFbStnAb08yJt2KnpDrSR9yfmV/wc
+         0Gkqp42EB5YIDnnUbICjeKDWZQu0VLKg27RiDI/bZcZ855p2Wr+2+ZPGnjgTHtko7yoL
+         niAbwnJZxLBQcRwUqNrv6Kx0E/IPXgWcGVQzH5kPsyU7GKYou8/2+xzHOd02uw0ULCpH
+         0Vh1f8Fn+CyfccYh9Z05jkR2CAqeY2eIQraFu/W+8uk33iN2Hku+wAqMl9dYsYGMvo04
+         87vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=yW/4j0it7NGLdhTPZuUYAL56B+3njidh/zMW6jBAoe8=;
-        fh=gT18LomMi4CJmwZG/NBzG0ez4299g6cVe7jEzIk4n3Y=;
-        b=UTJxsHMOrjl4I6i9LjeEB5mO1PdpH2S+3CoD1BXbFtfijWMIqY6EUqddyqFhBDZDfs
-         YGQmPpeiKnSwjnYBnT0UOSZ8AWRFnftkf6j4S0p3EGLFsP+ZNgxhfNXpBgAMF7GHdpOW
-         kOD1MjCjCfYjmSV6L5kHX36mOO1oq6aXlLYeuQTaDwTs3GlPy/1+zWBuQ2id0hFTwZOY
-         BplDm/wtiHlcAjta2nidNWL3IurHXna97rZKkM83JzyXZ9X9H26jw1heD+qfp8Ux40mu
-         do3wFoeVZK+KgEIoTrtTtWV5Msfj/mAo4XCT47PKgwTdetzonQHz0PgitXKU8Ue5uesa
-         ZPFg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=aByQA5qmzql9xsLx/xcn8ZEzU30AG61TvPWwUn+kHqw=;
+        fh=CSMI7pw6GP6sILb5r3pw/FVw/AVMc/EkCesGZrEI5tA=;
+        b=uEpE9jyNxN+RNJ78vD23ZdkCI+4fR1hTJgc4Az2RKyDvmxbWmUwHyoIGCnWkeLbTD7
+         iko/uDW2OJIJdjqjhRnuVyxuR5ES/u5sB9qpgpbw+cF8lCfPH8PSowhtYmSrIUyFOX8O
+         QPJjRUf0PqNID0Zmwt9drnwqdVaqkxgx3D47c3bK8SW3qVCKWxIIcN6VWW3O6PLS86sD
+         9zAGuCyEgzJm6UBvIeGOcAf96J4MdE8KX1fYw9QwXi7OvVL8tmn9Fgg5b+bNxODvNs+B
+         LLsb8+hkvMY1vZ4Dn/Yf42DcmT9mPJWcwSanvg/c/tSFJTETGw7sjjmxLqudBQWKwM4k
+         7NLg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=CkzhEHnb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o12-20020a05622a008c00b0041811c03cc3si6698865qtw.254.2023.11.14.02.35.50
+        by mx.google.com with ESMTPS id v8-20020a05622a130800b004181e519799si7359952qtk.100.2023.11.14.09.27.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 02:35:50 -0800 (PST)
+        Tue, 14 Nov 2023 09:27:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=CkzhEHnb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2qkz-0003nE-Ed; Tue, 14 Nov 2023 05:34:57 -0500
+	id 1r2xBS-00081d-30; Tue, 14 Nov 2023 12:26:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1r2qkx-0003lk-O3; Tue, 14 Nov 2023 05:34:55 -0500
-Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ (Exim 4.90_1) (envelope-from <srv_ts003@codethink.com>)
+ id 1r2xBP-0007zT-UR; Tue, 14 Nov 2023 12:26:39 -0500
+Received: from imap4.hz.codethink.co.uk ([188.40.203.114])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1r2qkw-00015X-9Y; Tue, 14 Nov 2023 05:34:55 -0500
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 351EE26110A;
- Tue, 14 Nov 2023 11:34:50 +0100 (CET)
-X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id 7SfRNMwKDuUL; Tue, 14 Nov 2023 11:34:49 +0100 (CET)
-Received: from applejack.lan (83.11.210.67.ipv4.supernova.orange.pl
- [83.11.210.67])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 8928B260251;
- Tue, 14 Nov 2023 11:34:48 +0100 (CET)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH 1/1] target/arm: enable FEAT_RNG on Neoverse-N2
-Date: Tue, 14 Nov 2023 11:34:43 +0100
-Message-ID: <20231114103443.1652308-1-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.41.0
+ (Exim 4.90_1) (envelope-from <srv_ts003@codethink.com>)
+ id 1r2xBM-0001vP-M2; Tue, 14 Nov 2023 12:26:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=codethink.co.uk; s=imap4-20230908; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=aByQA5qmzql9xsLx/xcn8ZEzU30AG61TvPWwUn+kHqw=; b=CkzhEHnbCS9Nztqxu+61Hct5K3
+ bQX+vtTmwjFaXfBIdiBNSfEoCNhbz3eJ9AIrxrxjbEl1ZmFZYl2AD8YkHJd0smu0fUy4+CHz2EFWt
+ Yof8JE5b7YcLDTxhvzFp7IdeHhp2ga3cy/y6tzlV+HbaqumCmhTBojBDKK0B0qg5OpJAWXEODme1x
+ n7jGNAkV3fT93ZJc4hn/XWuIG4K48+ocdayl4LnAxzBhCopGETLNTNlyIHltJzj1LycXsES/cEffb
+ sq3TYJ5LTT+4IfUbeo0SgoF7BvABx+bR2L5KwEFFougwH7BcFmhQo67m8z5+w0ZgVLoIUgvZ5/o63
+ NRRtIZLA==;
+Received: from [167.98.27.226] (helo=rainbowdash)
+ by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
+ id 1r2wfu-001nru-Bl; Tue, 14 Nov 2023 16:54:06 +0000
+Received: from ben by rainbowdash with local (Exim 4.97)
+ (envelope-from <ben@rainbowdash>) id 1r2wft-00000002rNP-3u5E;
+ Tue, 14 Nov 2023 16:54:05 +0000
+From: Ben Dooks <ben.dooks@codethink.co.uk>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Ben Dooks <ben.dooks@codethink.co.uk>
+Subject: [PATCH] hw/intc/arm_gicv3: ICC_PMR_EL1 high bits should be RAZ
+Date: Tue, 14 Nov 2023 16:54:04 +0000
+Message-Id: <20231114165404.681826-1-ben.dooks@codethink.co.uk>
+X-Mailer: git-send-email 2.37.2.352.g3c44437643
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: softfail client-ip=213.251.184.221;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
+Received-SPF: pass client-ip=188.40.203.114;
+ envelope-from=srv_ts003@codethink.com; helo=imap4.hz.codethink.co.uk
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,29 +101,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cFygjn9Dv2Es
+X-TUID: 6tHYkD8xCoqo
 
-I noticed that Neoverse-V1 has FEAT_RNG enabled so let enable it also on
-Neoverse-N2.
+The ICC_PMR_ELx bit msak returned from icc_fullprio_mask
+should technically also remove any bit above 7 as these
+are marked reserved (read 0) and should therefore should
+not be written as anything other than 0.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
 ---
- target/arm/tcg/cpu64.c | 2 +-
+ hw/intc/arm_gicv3_cpuif.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 08db1dbcc7..fcda99e158 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1018,7 +1018,7 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
-     cpu->isar.id_aa64dfr1  = 0;
-     cpu->id_aa64afr0       = 0;
-     cpu->id_aa64afr1       = 0;
--    cpu->isar.id_aa64isar0 = 0x0221111110212120ull; /* with Crypto */
-+    cpu->isar.id_aa64isar0 = 0x1221111110212120ull; /* with Crypto and FEAT_RNG */
-     cpu->isar.id_aa64isar1 = 0x0011111101211052ull;
-     cpu->isar.id_aa64mmfr0 = 0x0000022200101125ull;
-     cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index d07b13eb27..986044df79 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -803,7 +803,7 @@ static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
+      * with the group priority, whose mask depends on the value of BPR
+      * for the interrupt group.)
+      */
+-    return ~0U << (8 - cs->pribits);
++    return (~0U << (8 - cs->pribits)) & 0xff;
+ }
+ 
+ static inline int icc_min_bpr(GICv3CPUState *cs)
 -- 
-2.41.0
+2.37.2.352.g3c44437643
 

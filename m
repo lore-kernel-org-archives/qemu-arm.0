@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2082596ejc;
-        Tue, 14 Nov 2023 06:38:47 -0800 (PST)
-X-Received: by 2002:ac2:5ec1:0:b0:509:8fbf:7af0 with SMTP id d1-20020ac25ec1000000b005098fbf7af0mr6274059lfq.69.1699972727678;
-        Tue, 14 Nov 2023 06:38:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699972727; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2082672ejc;
+        Tue, 14 Nov 2023 06:38:54 -0800 (PST)
+X-Received: by 2002:a17:906:d204:b0:9da:fd18:1fdc with SMTP id w4-20020a170906d20400b009dafd181fdcmr7258569ejz.44.1699972734129;
+        Tue, 14 Nov 2023 06:38:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699972734; cv=none;
         d=google.com; s=arc-20160816;
-        b=kKJRuoLv4GAuvOWqbkJjN2i5XI6Q7XARxEiL2V2R4PFXB23YNLlMwhGQrPDdlYRxxD
-         uyC1G2GaqWrD4dtP4LFeBpzx4EcL8rYKIhEU9PjITS4IbVefDyifRfvsORnStMjUrWFl
-         3SrJfrLqI2M28KmoiAk+SzQGURl2dY2LmSzcASQODY/w3x082oTFQS7AwmGUBlH9WGMy
-         CHNpRewXDGotjpnW2cjdy7QwWRjUxuc8OgMjfe6W1uwpYNc0H/2mPBg0cmmFQBMIQ/qd
-         J6CUhQ3yormdvD7XV9Sa1HUz+Vz0KS4FsJFVTiV6pJqsHB7bDhcpbiNqf1CFPVQrLtUj
-         nl5A==
+        b=QRnWkbeXn3KKcfjdvaULDzKBaotwD4tFAIVID9afo2kPpZ4quicfGhZYAaDfEc+chV
+         X3GyaBnph6mEXWSw/9dPdzLbslZGJh79TlckaB73z9F1cRAfsYxnWwOSuL2gSdj1AV2q
+         yVwUQlFeh5m3iuEK+5WqMMsf7EfCjuwHMkBrJHgZFoeDwsK7dgGTSRHNvicKnO7QYmzp
+         YHH/RPGtwkcKZRwICOmskLapZrWZaXCygxe5U9JjO15imF8CciaLzctKCojnl7r8aYoV
+         4p2olDJN8J9XlnTynSN2T2atCcQv17rFPoV6Lyt0vLuosUdwWftIwZHZoKFXhp8gKOQ1
+         s3RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UVR+oDiuZU+TW6PLxAmD0Xj/DK6BF5fQU92EHH5K3Z4=;
-        fh=ztskp5hIhfOCNxPFXdx834x7FKrpLw8UMSRnvoM7Mpw=;
-        b=JVpuklDzq9OJ8vzBMOe3WNfk6A+eMZ4KaUNfGu4vCI/WSFVzRXxvBi7sMBunkU8Gw/
-         ULJx9NBR0DXYcsPIDJAZzV8UngZohjTjA18nYjxk9ESPrEQS5wju/HHwkBAsAJ7sM2mJ
-         NKuONsQkIlOg/SMsRxGPhnuVrcjTbZHG73jF78lG94WPSY9582vO+7RPiSZjKSw6RXJt
-         1nxUG0jUGXALePrHHi4E35SspWQvKviQ4dFq+2APEhVethy3FmYGJ0sU/qIclu3mg13l
-         9kjUBP3J2KIQwGdHs5EQujgbuZbaHZrGH2lsijipUfJoFvwcgpQbGqH9xzk9Ae1QNBz9
-         tCSQ==
+        bh=xuAolXSNCEGrTS5m5CRvskBDG9NQVZE3kWB97Se1m9g=;
+        fh=JgHqP2LrV9J65/pN6QJ1PmL8fRqRH000nzYNaNgHxk0=;
+        b=PQepnqcyeEH9JGgCjKHNU0zN6oUKqFqKyp235K5lq6fuWpNHcPvpllLVvQsFwBj0Vx
+         ed9dpYVXONgVdsmRldpbb3JoyZRuUfJ0DIw8IL+05AGj+MQ60XV8ELRKwTbw3ZHvliLb
+         Wphl94vG6rmYmNmWit0bMLTUYR9pYQnLKaYPj0w3rvEJUN2IWUkRIi/VZtKh1xlzXh8Q
+         BbfidoT8DF1BIDrPIImhbf0g/hxfdFER8kwL5NsSbN4t3I+vCSUvKuO2AXEehvsyf9JN
+         STGSMYCqP5LZrtFJPoIdM40ty4CL3MxbIQBUsZV3HSiWvQqhf7QIlt5Az33+ap5k2VH0
+         i/8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZkNwRtXN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zbQpvAqn;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k24-20020a508ad8000000b00544a175fc22sor1742774edk.4.2023.11.14.06.38.47
+        by mx.google.com with SMTPS id s15-20020a170906220f00b009b2d6326247sor2015025ejs.21.2023.11.14.06.38.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 14 Nov 2023 06:38:47 -0800 (PST)
+        Tue, 14 Nov 2023 06:38:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZkNwRtXN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zbQpvAqn;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699972727; x=1700577527; darn=linaro.org;
+        d=linaro.org; s=google; t=1699972734; x=1700577534; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UVR+oDiuZU+TW6PLxAmD0Xj/DK6BF5fQU92EHH5K3Z4=;
-        b=ZkNwRtXNFVdwOM8yXaV02P16bCpjsGq29bKaTmJkj16dvvxRmM5gTJzUN5g4cgTjvG
-         ZODqNY7nYsgDVKf33ag2dwf+RZxkNB2+DI9LHfzTmdSiLwNZVeI2K3h9YeapGCeMMvje
-         HA/RfNJtt/zl6kiQ6uGJDTvDPbx1LZ1h3hLzevKiWUvIDCr0guzNS4KVNuig0Gagnwel
-         0eUITApMkY9piXM8tHmQSwh6DEMVrQSBQIt77Z/MQ7On4/j1oyKtR0Q/iNl86TOIdL+U
-         hkHBnP5UuLLVAhrTW6KjhvQhucKn13bb33P0mb6EHks6VqEQDXKm6IuQC1xrL+Iyr/Dn
-         ysew==
+        bh=xuAolXSNCEGrTS5m5CRvskBDG9NQVZE3kWB97Se1m9g=;
+        b=zbQpvAqnWcgx53+Dqjcp9y8gqpciBNZw1n5bZ5BtpPbn8i9rgXBticlr1DRd77XtEa
+         Ir1UyDHfHZUjLiKeXj5BBV+1Pi5/M4wO31DyM1zT0bCE7KZJuGN6kDChGaBwAK5EYgRC
+         rkoM4YFhkY0BwujXSZhsFetEPRx4IJ60+hX4NdIUTwbteWXSGV3dtPlKBXQZJE4KP117
+         hynlswl0FWCmkwsn9Nui5diJp9NYQudevk3tsFaLE2jNqWzy5WPy8z4D8WI8Gry2Dncw
+         /mk8y4tvYlDbkKpOZ+hwnWUSvtRfow5jUXVEcs6YE2yr8PV8NtGK+JxPv/WbznuurPng
+         L7eA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699972727; x=1700577527;
+        d=1e100.net; s=20230601; t=1699972734; x=1700577534;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UVR+oDiuZU+TW6PLxAmD0Xj/DK6BF5fQU92EHH5K3Z4=;
-        b=rtyxcXCfWcpuGwqqUksOiLB1qTkx3r5ricyEUqx4m35nTk4QJR/eqwGDHWsV8zR2q4
-         C96HmUslIECSy92x6d3fqDrmt3WMCLpSDxaI4nJ0pIXCxRjMSz9M6vpZbuNQCM5lZxhp
-         i445Ok62UG/jEr53rU8SQlH1dh7ugxSaf3yokl0cyWc3FiBFLw0aMcp3mT344/RLxtWX
-         G6AfZNcaCvQlhQgjrfKRC0GVKvOzhot22h8QgRwNk0qGgDqxdlii7gAW9M4nhm++QdXo
-         XQLNvadKqeXII/dYHN3w62TxzwBENxfTDfRORgS/fMIrcuFAG+NBB8QKYjfrEaz6xtfE
-         Fj/Q==
-X-Gm-Message-State: AOJu0Yyf8sSeiNGSkmYhxqZEoKnWS+TtIlMct6SGHGAx62MAlWQYpW5R
-	43Bpz6Mihm4VcRxkgOn7RkQnO7hf
-X-Google-Smtp-Source: AGHT+IFU6fMqnyRTdYcaSZcZeeOvXEQ5/pqyJPjwVu+SyaMG1cEZXv2HxBOf7hgBnVZ045SVB8RX8Q==
-X-Received: by 2002:aa7:c759:0:b0:543:5a91:a8b2 with SMTP id c25-20020aa7c759000000b005435a91a8b2mr7512514eds.19.1699972727421;
-        Tue, 14 Nov 2023 06:38:47 -0800 (PST)
+        bh=xuAolXSNCEGrTS5m5CRvskBDG9NQVZE3kWB97Se1m9g=;
+        b=bgWxm+gVOyrLq1YmFbC2uAyOOzDSTvGMb/Q8AKnu+G4ZLg+jDAWhOQk8+52kmzPHkJ
+         cy+PjTSWufG2e/qXcbTjk8XEMcg9x00nSAf8DP/zDgXIHtr72pimqcG9A1jeIV2Lwm2a
+         BsMR80z6FPdhRSZtWW4flX1pYPh1Pf9E2DKCTVtZ+lg9BjhQTT0oWfEXIU87mjDggzei
+         AI0tVC+LRBOcz0/kxQ3OHCjVkauFfEs92DkbhcFpD122fCwoOLp11S+PIFhUfR8ZZHHI
+         kzO1buO2hjpNnM2BkCgjQHoSyY+i9lV0fEmYR5779cQ55SDLrzz2J/NqCim/7kiq3A0K
+         Fk5Q==
+X-Gm-Message-State: AOJu0YzhaeC4PCzz5QH362Ts/01QXaIi72Uw97SQPDZZGo4N4C8C3IVN
+	cL5mmpN2+Run2yVETXfAdBHaEkOo
+X-Google-Smtp-Source: AGHT+IEd2vTLeg2GpIsCyOKyOB5sACh8KieliOs//U/3JH0fTJ/5IoDfAGItJdrYHg+Wv8sdCg7VbA==
+X-Received: by 2002:a17:906:b78c:b0:9bf:f20:8772 with SMTP id dt12-20020a170906b78c00b009bf0f208772mr7590866ejb.26.1699972733904;
+        Tue, 14 Nov 2023 06:38:53 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id m13-20020a50930d000000b0053e3d8f1d9fsm5267242eda.67.2023.11.14.06.38.45
+        by smtp.gmail.com with ESMTPSA id un1-20020a170907cb8100b009a9fbeb15f5sm5549367ejc.46.2023.11.14.06.38.51
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 14 Nov 2023 06:38:47 -0800 (PST)
+        Tue, 14 Nov 2023 06:38:53 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: David Woodhouse <dwmw@amazon.co.uk>,
 	qemu-devel@nongnu.org
@@ -86,40 +86,47 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	kvm@vger.kernel.org,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Xu <peterx@redhat.com>,
-	David Hildenbrand <david@redhat.com>
-Subject: [PATCH-for-9.0 v2 04/19] system/physmem: Do not include 'hw/xen/xen.h' but 'sysemu/xen.h'
-Date: Tue, 14 Nov 2023 15:38:00 +0100
-Message-ID: <20231114143816.71079-5-philmd@linaro.org>
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH-for-9.0 v2 05/19] hw/display: Restrict xen_register_framebuffer() call to Xen
+Date: Tue, 14 Nov 2023 15:38:01 +0100
+Message-ID: <20231114143816.71079-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231114143816.71079-1-philmd@linaro.org>
 References: <20231114143816.71079-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: aqq3+l+2Z/RE
+X-TUID: bIO1xUgW15Ed
 
-physmem.c doesn't use any declaration from "hw/xen/xen.h",
-it only requires "sysemu/xen.h" and "system/xen-mapcache.h".
+Only call xen_register_framebuffer() when Xen is enabled.
 
-Suggested-by: David Woodhouse <dwmw@amazon.co.uk>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- system/physmem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/vga.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/system/physmem.c b/system/physmem.c
-index fc2b0fee01..04630711d2 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -35,7 +35,7 @@
- #include "hw/qdev-core.h"
- #include "hw/qdev-properties.h"
- #include "hw/boards.h"
--#include "hw/xen/xen.h"
+diff --git a/hw/display/vga.c b/hw/display/vga.c
+index 37557c3442..f9cf3d6f77 100644
+--- a/hw/display/vga.c
++++ b/hw/display/vga.c
+@@ -25,6 +25,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+ #include "sysemu/reset.h"
 +#include "sysemu/xen.h"
- #include "sysemu/kvm.h"
- #include "sysemu/tcg.h"
- #include "sysemu/qtest.h"
+ #include "qapi/error.h"
+ #include "hw/core/cpu.h"
+ #include "hw/display/vga.h"
+@@ -2223,7 +2224,9 @@ bool vga_common_init(VGACommonState *s, Object *obj, Error **errp)
+         return false;
+     }
+     vmstate_register_ram(&s->vram, s->global_vmstate ? NULL : DEVICE(obj));
+-    xen_register_framebuffer(&s->vram);
++    if (xen_enabled()) {
++        xen_register_framebuffer(&s->vram);
++    }
+     s->vram_ptr = memory_region_get_ram_ptr(&s->vram);
+     s->get_bpp = vga_get_bpp;
+     s->get_offsets = vga_get_offsets;
 -- 
 2.41.0

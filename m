@@ -1,102 +1,92 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1752293ejc;
-        Mon, 13 Nov 2023 18:10:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFMdqBxw/kfeVF/Lg3fyAtlgEzXxHe50Orpcj5j6zG7mSBEh1T8Xn6Ix5cCWPLcAVsjDxCv
-X-Received: by 2002:a05:620a:430a:b0:77a:4606:7564 with SMTP id u10-20020a05620a430a00b0077a46067564mr1059162qko.41.1699927817109;
-        Mon, 13 Nov 2023 18:10:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699927817; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1752318ejc;
+        Mon, 13 Nov 2023 18:10:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE0QzGC6NF1YzyqcYIVeeXjDS94US1E5eC+GyItvUHzvsoT3LWIH7LI3NWN/IZmoC/zD0n+
+X-Received: by 2002:a05:6214:5804:b0:66d:2aa3:cd49 with SMTP id mk4-20020a056214580400b0066d2aa3cd49mr1065480qvb.14.1699927820593;
+        Mon, 13 Nov 2023 18:10:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699927820; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tdk4+jrqxsIJk/TlHg8+1szt0R1k15ZsL5ZoqfpVy/5lKsRmD/YZktvw/E2QHCbMtT
-         WdsASPHoysZX/e+mtIoGtosLst+nuxequPamc/2K9W25HQ0a1wQkcEnbsGjSffKa60V8
-         U0YMJlDJLvj0yj0/yeJ3qIhdabV82R7/VsRrbn4TjcMAbmKPMkE+H79DtfFKHmWE3a3K
-         ddLcO4YLtG82CxKJLPfx85ehvz81LDxb9b0WCLl+PcWCe5k/uVHOdHHmzpSHyL9gjZse
-         t26gsdbMbFaR/Gsjq96yjuAJOGi5ox//WUE7C1i6V9BJ8QJ8msXR5BsrqjiMgU7Nl5yR
-         oVtw==
+        b=A6oOAmeH3fiLCSIJK1RTwlEewJzwkueXDOy+sM1PBJXTvtQyKn5/Usmjr/SadoYO7y
+         eOlZsAmRzikvAj12EVCt/lyGwCBUhaF7fW8x+OCH+t+3ipT47JkKP3ejE04dvMTyLUzc
+         g7EPKXlJL0L/n/tR4Ry2TEX5CGRyfoT5VSAw/D/x084hIRgVIjVB+E2M1RGy/E7UgQsY
+         5Wo1ZvPZlnrXgDYkjhCXxyDTGXRydXVC8e39wyIlvQ/CARAxT47WTNlBvd11YflJjRKa
+         bZZUZzPrlSo2L6H28b4m/+8djDblu5pdjactsZKovXTkKnZutzZR4Y7JChjmwHk7+Gyz
+         3hkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=vbiTVookckMidOOPTQoozqrFKatQNEIrxbgSipaZNzQ=;
-        fh=G4J+9WsnWygNwyY7rkNUB1JzJfHo2WRvoqbUy/xtBZg=;
-        b=b/cDS0BgIH+2eunOFr5pzpZTTHaQr/Bq0Q/1hvqB+LPMJiNFJZ9nSsHv32ZzUecjJD
-         KBhYPsvLM5q5HEftDF6CEK9sLetAx4SEz6gxd+C0s+U2R0RTRJfKp/7M4xt/CFTVnjP9
-         EsYkXqpjpq7QctrOGg01kEvmxuZmXiCzc5uXbn/sBvLiB7+Ik+oeYTcPbrZCvcEg9ofs
-         nmIgPlQ6Cgfu90/KmZCJrkL6CMX2zlzO0Q6ZO4wVfQziDmtzq1whe4twNH1llcZlqvsG
-         1P4WFugTIfbvPHMbBJeuGABfWxEs0jykn/ianKvAZU646Jyl9Rj6aiB110xKMBR5TL0n
-         dYhA==
+        bh=pnXe1Tp9eRoBQn7pI22tFabU1RSpPOFV8giEL0/CmJw=;
+        fh=/6Z6G8Ct9GegS2ISYRgEVL2Mw6gwL7nfJicDEd0HDoY=;
+        b=cmJ9Os70lsv6AhBEgY9InFUGDWR2xGHYR6swNiD3onxNe78qB8E2NQI5e/8OuS4DUd
+         N3ZEzEemwbIHnYzrchFl60oeXTQcEgICfFuhm5033YOUx9u2P9VUj0g9X+dxzCT0XLM7
+         QMCwhoOCA63O2kpigWWurcQ6MFqIsxAIJxZHRd4+aZUJPVfw1zEfglqww58nPQ8Fayrc
+         JiaNqWOJ/IOtRCc1U5QVpxEBOBH5WSsbaH6KMEdxfqynVov/Fbx04uO6IXx8MoRVshNp
+         v19yttsn2VDvFsm6YIZ7msdP1ic3LWKuwGdmoeuGznSsKpZJ+nYJ/TvMSukno1UB64J5
+         MBww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br18-20020a05620a461200b0077a0282bfa1si6099590qkb.261.2023.11.13.18.10.16
+        by mx.google.com with ESMTPS id i15-20020a0cfccf000000b006587967568dsi5881551qvq.196.2023.11.13.18.10.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Nov 2023 18:10:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Nov 2023 18:10:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r2isL-0001Q2-M6; Mon, 13 Nov 2023 21:10:01 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r2isA-0001Mw-15; Mon, 13 Nov 2023 21:09:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
- id 1r2isJ-0001PO-Sx; Mon, 13 Nov 2023 21:09:59 -0500
-Received: from mail-pj1-f47.google.com ([209.85.216.47])
+ id 1r2is8-0001LM-2t; Mon, 13 Nov 2023 21:09:48 -0500
+Received: from mail-pj1-f53.google.com ([209.85.216.53])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
- id 1r2isH-0007c0-Kr; Mon, 13 Nov 2023 21:09:59 -0500
-Received: by mail-pj1-f47.google.com with SMTP id
- 98e67ed59e1d1-280137f1a1bso4036895a91.1; 
- Mon, 13 Nov 2023 18:09:56 -0800 (PST)
+ id 1r2is6-0007aq-NT; Mon, 13 Nov 2023 21:09:47 -0500
+Received: by mail-pj1-f53.google.com with SMTP id
+ 98e67ed59e1d1-2801d7f46f9so4411143a91.3; 
+ Mon, 13 Nov 2023 18:09:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699927795; x=1700532595;
+ d=1e100.net; s=20230601; t=1699927785; x=1700532585;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vbiTVookckMidOOPTQoozqrFKatQNEIrxbgSipaZNzQ=;
- b=YIb/U7QRIuSOxEy8XAJ1oVMHU29J8IgXXHNvd0f8m9TgjOluxCp12pUZ/wnuz/iRWy
- gA7eq2qtJzJ1B3GIPJfF6fk7AP1Dhkv8MAgF58yqq9ISEQPqT/yyM++Mgdj0aqulXAw3
- pxBMCDMfTtQwHtiu1zbCOSkQRFYPmbB+05/62K5A3TazDNBoRgPOjZfxTuR7iszcvb9W
- IYHlmITrGmFQsvdfXIU4fhQiov+vCjfnM6bNsalODUb+0ZMP9whx3c44MO//xxCifMEq
- lU/gvRfkVTMjRHI1AXVtEoj8oaDjRV8tVuhVyqIFTzkOoOwo+h+e6By88RIaVaydnmJR
- lG4g==
-X-Gm-Message-State: AOJu0YzlM+PyaNA8MZy0j5i7sy1inI3KdJNqLNdDBbDHQfeOGf18jA4E
- RCBzxlATfS1DqnkXGU7XDdhL0QXw9HGfWA==
-X-Received: by 2002:a17:90b:3b88:b0:27d:1051:83c4 with SMTP id
- pc8-20020a17090b3b8800b0027d105183c4mr6314581pjb.12.1699927795268; 
- Mon, 13 Nov 2023 18:09:55 -0800 (PST)
+ bh=pnXe1Tp9eRoBQn7pI22tFabU1RSpPOFV8giEL0/CmJw=;
+ b=ErrnDCyGYQZMKXDQLfZquRIOJjhQ5tMipzslhwgi25v7u2MxBs6n0BOxFchDGvBvtq
+ 4j4LMa4YuRcnnw86FBKdosw1otLeNVpeSzx8YiGYf6IprcoCHjLdQuGq28wjdT7VrbDP
+ aU2Luuwn5q3hfiGQlhyd2vBnigQoq1h0tTmzoSwxKdlVdiJJBLmxV/tGuY9nxAxY38Xl
+ Tw+eLe5T7r4fV+TOtTHWCt8xuc4MCXNYKYwZflT7+zRZxdyaiDXxuDHsyw07hyPTtlCu
+ WQH8qiEF438AHCvpcUzCLckommXrzl27NxlPinzwSvnJ3cghLFcmFQ2Onnc9GtyElKYn
+ cxmA==
+X-Gm-Message-State: AOJu0Yz1HOOlRbVeQLVwUC0WY2rOvzZZBM0FM1l5YFvJltIgUp8xZh+z
+ C5kun1G3HVbgC+j8CuxP52eAFPdfeijggw==
+X-Received: by 2002:a17:90b:3783:b0:280:9074:eb3d with SMTP id
+ mz3-20020a17090b378300b002809074eb3dmr6106221pjb.22.1699927784791; 
+ Mon, 13 Nov 2023 18:09:44 -0800 (PST)
 Received: from localhost.localdomain ([2601:642:4c01:2f7:5d09:c219:9099:a639])
  by smtp.gmail.com with ESMTPSA id
- g13-20020a17090ae58d00b0027d12b1e29dsm6175362pjz.25.2023.11.13.18.09.52
+ g13-20020a17090ae58d00b0027d12b1e29dsm6175362pjz.25.2023.11.13.18.09.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 13 Nov 2023 18:09:54 -0800 (PST)
+ Mon, 13 Nov 2023 18:09:44 -0800 (PST)
 From: Joelle van Dyne <j@getutm.app>
 To: qemu-devel@nongnu.org
 Cc: Joelle van Dyne <j@getutm.app>, Stefan Berger <stefanb@linux.ibm.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PATCH v5 11/14] tpm_crb_sysbus: introduce TPM CRB SysBus device
-Date: Mon, 13 Nov 2023 18:09:21 -0800
-Message-ID: <20231114020927.62315-12-j@getutm.app>
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Virt)
+Subject: [PATCH v5 07/14] hw/arm/virt: connect TPM to platform bus
+Date: Mon, 13 Nov 2023 18:09:17 -0800
+Message-ID: <20231114020927.62315-8-j@getutm.app>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231114020927.62315-1-j@getutm.app>
 References: <20231114020927.62315-1-j@getutm.app>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=209.85.216.47; envelope-from=osy86dev@gmail.com;
- helo=mail-pj1-f47.google.com
+Received-SPF: pass client-ip=209.85.216.53; envelope-from=osy86dev@gmail.com;
+ helo=mail-pj1-f53.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -106,430 +96,45 @@ X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bzu5Ypz0uJZS
-
-This SysBus variant of the CRB interface supports dynamically locating
-the MMIO interface so that Virt machines can use it. This interface
-is currently the only one supported by QEMU that works on Windows 11
-ARM64 as 'tpm-tis-device' does not work with current Windows drivers.
-We largely follow that device as a template.
-
-To try out this device with Windows 11 before OVMF is updated, you
-will need to modify `sysbus-fdt.c` and change the added line from:
-
-```c
-    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
-```
-
-to
-
-```c
-    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, add_tpm_tis_fdt_node),
-```
-
-This change was not included because it can confuse Linux (although
-from testing, it seems like Linux is able to properly ignore the
-device from the TPM TIS driver and recognize it from the ACPI device
-in the TPM CRB driver). A proper fix would require OVMF to recognize
-the ACPI device and not depend on the FDT node for recognizing TPM.
-
-The command line to try out this device with SWTPM is:
-
-```
-$ qemu-system-aarch64 \
-    -chardev socket,id=chrtpm0,path=tpm.sock \
-    -tpmdev emulator,id=tpm0,chardev=chrtpm0 \
-    -device tpm-crb-device,tpmdev=tpm0
-```
-
-along with SWTPM:
-
-```
-$ swtpm \
-    --ctrl type=unixio,path=tpm.sock,terminate \
-    --tpmstate backend-uri=file://tpm.data \
-    --tpm2
-```
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4fB5DTeY06XT
 
 Signed-off-by: Joelle van Dyne <j@getutm.app>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
- docs/specs/tpm.rst      |   1 +
- include/sysemu/tpm.h    |   3 +
- hw/acpi/aml-build.c     |   7 +-
- hw/arm/virt.c           |   1 +
- hw/core/sysbus-fdt.c    |   1 +
- hw/loongarch/virt.c     |   1 +
- hw/riscv/virt.c         |   1 +
- hw/tpm/tpm_crb_sysbus.c | 162 ++++++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig          |   1 +
- hw/loongarch/Kconfig    |   1 +
- hw/riscv/Kconfig        |   1 +
- hw/tpm/Kconfig          |   5 ++
- hw/tpm/meson.build      |   3 +
- 13 files changed, 187 insertions(+), 1 deletion(-)
- create mode 100644 hw/tpm/tpm_crb_sysbus.c
+ hw/arm/virt.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-index 2bc29c9804..95aeb49220 100644
---- a/docs/specs/tpm.rst
-+++ b/docs/specs/tpm.rst
-@@ -46,6 +46,7 @@ operating system.
- QEMU files related to TPM CRB interface:
-  - ``hw/tpm/tpm_crb.c``
-  - ``hw/tpm/tpm_crb_common.c``
-+ - ``hw/tpm/tpm_crb_sysbus.c``
- 
- SPAPR interface
- ---------------
-diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
-index ffd300e607..bab30fa546 100644
---- a/include/sysemu/tpm.h
-+++ b/include/sysemu/tpm.h
-@@ -49,6 +49,7 @@ struct TPMIfClass {
- #define TYPE_TPM_TIS_ISA            "tpm-tis"
- #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
- #define TYPE_TPM_CRB                "tpm-crb"
-+#define TYPE_TPM_CRB_SYSBUS         "tpm-crb-device"
- #define TYPE_TPM_SPAPR              "tpm-spapr"
- #define TYPE_TPM_TIS_I2C            "tpm-tis-i2c"
- 
-@@ -58,6 +59,8 @@ struct TPMIfClass {
-     object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
- #define TPM_IS_CRB(chr)                             \
-     object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
-+#define TPM_IS_CRB_SYSBUS(chr)                      \
-+    object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB_SYSBUS)
- #define TPM_IS_SPAPR(chr)                           \
-     object_dynamic_cast(OBJECT(chr), TYPE_TPM_SPAPR)
- #define TPM_IS_TIS_I2C(chr)                      \
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index af66bde0f5..acc654382e 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -31,6 +31,7 @@
- #include "hw/pci/pci_bus.h"
- #include "hw/pci/pci_bridge.h"
- #include "qemu/cutils.h"
-+#include "qom/object.h"
- 
- static GArray *build_alloc_array(void)
- {
-@@ -2218,7 +2219,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
- {
-     uint8_t start_method_params[12] = {};
-     unsigned log_addr_offset;
--    uint64_t control_area_start_address;
-+    uint64_t baseaddr, control_area_start_address;
-     TPMIf *tpmif = tpm_find();
-     uint32_t start_method;
-     AcpiTable table = { .sig = "TPM2", .rev = 4,
-@@ -2236,6 +2237,10 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
-     } else if (TPM_IS_CRB(tpmif)) {
-         control_area_start_address = TPM_CRB_ADDR_CTRL;
-         start_method = TPM2_START_METHOD_CRB;
-+    } else if (TPM_IS_CRB_SYSBUS(tpmif)) {
-+        baseaddr = object_property_get_uint(OBJECT(tpmif), "x-baseaddr", NULL);
-+        control_area_start_address = baseaddr + A_CRB_CTRL_REQ;
-+        start_method = TPM2_START_METHOD_CRB;
-     } else {
-         g_assert_not_reached();
-     }
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 36e2506420..e6152a2f51 100644
+index 85e3c5ba9d..36e2506420 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2955,6 +2955,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
- #ifdef CONFIG_TPM
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
- #endif
-     mc->block_default_type = IF_VIRTIO;
-     mc->no_cdrom = 1;
-diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-index eebcd28f9a..9c783f88eb 100644
---- a/hw/core/sysbus-fdt.c
-+++ b/hw/core/sysbus-fdt.c
-@@ -493,6 +493,7 @@ static const BindingEntry bindings[] = {
- #endif
- #ifdef CONFIG_TPM
-     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
-+    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
- #endif
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-     TYPE_BINDING("", NULL), /* last element */
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index feed0f8bbf..9d5ad2bc8e 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -1114,6 +1114,7 @@ static void loongarch_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
- #ifdef CONFIG_TPM
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
- #endif
+@@ -2811,6 +2811,13 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         vms->virtio_iommu_bdf = pci_get_bdf(pdev);
+         create_virtio_iommu_dt_bindings(vms);
+     }
++
++#ifdef CONFIG_TPM
++    if (object_dynamic_cast(OBJECT(dev), TYPE_TPM_IF)) {
++        tpm_sysbus_plug(TPM_IF(dev), OBJECT(vms->platform_bus_dev),
++                        vms->memmap[VIRT_PLATFORM_BUS].base);
++    }
++#endif
  }
  
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index c7fc97e273..4cce0b14ab 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1702,6 +1702,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
- #ifdef CONFIG_TPM
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
- #endif
- 
- 
-diff --git a/hw/tpm/tpm_crb_sysbus.c b/hw/tpm/tpm_crb_sysbus.c
-new file mode 100644
-index 0000000000..7edeae3665
---- /dev/null
-+++ b/hw/tpm/tpm_crb_sysbus.c
-@@ -0,0 +1,162 @@
-+/*
-+ * tpm_crb_sysbus.c - QEMU's TPM CRB interface emulator
-+ *
-+ * Copyright (c) 2018 Red Hat, Inc.
-+ *
-+ * Authors:
-+ *   Marc-André Lureau <marcandre.lureau@redhat.com>
-+ *   Joelle van Dyne <j@getutm.app>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * tpm_crb is a device for TPM 2.0 Command Response Buffer (CRB) Interface
-+ * as defined in TCG PC Client Platform TPM Profile (PTP) Specification
-+ * Family “2.0” Level 00 Revision 01.03 v22
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/acpi/acpi_aml_interface.h"
-+#include "hw/acpi/tpm.h"
-+#include "hw/qdev-properties.h"
-+#include "migration/vmstate.h"
-+#include "tpm_prop.h"
-+#include "hw/sysbus.h"
-+#include "qapi/visitor.h"
-+#include "qom/object.h"
-+#include "sysemu/tpm_util.h"
-+#include "trace.h"
-+#include "tpm_crb.h"
-+
-+struct TPMCRBStateSysBus {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    TPMCRBState state;
-+    uint64_t baseaddr;
-+    uint64_t size;
-+};
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(TPMCRBStateSysBus, TPM_CRB_SYSBUS)
-+
-+static void tpm_crb_sysbus_request_completed(TPMIf *ti, int ret)
-+{
-+    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
-+
-+    return tpm_crb_request_completed(&s->state, ret);
-+}
-+
-+static enum TPMVersion tpm_crb_sysbus_get_tpm_version(TPMIf *ti)
-+{
-+    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
-+
-+    return tpm_crb_get_version(&s->state);
-+}
-+
-+static int tpm_crb_sysbus_pre_save(void *opaque)
-+{
-+    TPMCRBStateSysBus *s = opaque;
-+
-+    return tpm_crb_pre_save(&s->state);
-+}
-+
-+static const VMStateDescription vmstate_tpm_crb_sysbus = {
-+    .name = "tpm-crb-sysbus",
-+    .pre_save = tpm_crb_sysbus_pre_save,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static Property tpm_crb_sysbus_properties[] = {
-+    DEFINE_PROP_TPMBE("tpmdev", TPMCRBStateSysBus, state.tpmbe),
-+    DEFINE_PROP_UINT64("x-baseaddr", TPMCRBStateSysBus,
-+                       baseaddr, TPM_CRB_ADDR_BASE),
-+    DEFINE_PROP_UINT64("x-size", TPMCRBStateSysBus,
-+                       size, TPM_CRB_ADDR_SIZE),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void tpm_crb_sysbus_initfn(Object *obj)
-+{
-+    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(obj);
-+
-+    tpm_crb_init_memory(obj, &s->state, NULL);
-+
-+    vmstate_register_ram(&s->state.mmio, DEVICE(obj));
-+
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->state.mmio);
-+}
-+
-+static void tpm_crb_sysbus_reset(DeviceState *dev)
-+{
-+    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
-+
-+    return tpm_crb_reset(&s->state, s->baseaddr);
-+}
-+
-+static void tpm_crb_sysbus_realizefn(DeviceState *dev, Error **errp)
-+{
-+    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
-+
-+    if (!tpm_find()) {
-+        error_setg(errp, "at most one TPM device is permitted");
-+        return;
-+    }
-+
-+    if (!s->state.tpmbe) {
-+        error_setg(errp, "'tpmdev' property is required");
-+        return;
-+    }
-+
-+    if (tpm_crb_sysbus_get_tpm_version(TPM_IF(s)) != TPM_VERSION_2_0) {
-+        error_setg(errp, "TPM CRB only supports TPM 2.0 backends");
-+        return;
-+    }
-+}
-+
-+static void build_tpm_crb_sysbus_aml(AcpiDevAmlIf *adev, Aml *scope)
-+{
-+    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(adev);
-+
-+    tpm_crb_build_aml(TPM_IF(adev), scope, s->baseaddr, s->size, false);
-+}
-+
-+static void tpm_crb_sysbus_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    TPMIfClass *tc = TPM_IF_CLASS(klass);
-+    AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(klass);
-+
-+    device_class_set_props(dc, tpm_crb_sysbus_properties);
-+    dc->vmsd  = &vmstate_tpm_crb_sysbus;
-+    tc->model = TPM_MODEL_TPM_CRB;
-+    dc->realize = tpm_crb_sysbus_realizefn;
-+    dc->user_creatable = true;
-+    dc->reset = tpm_crb_sysbus_reset;
-+    tc->request_completed = tpm_crb_sysbus_request_completed;
-+    tc->get_version = tpm_crb_sysbus_get_tpm_version;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    adevc->build_dev_aml = build_tpm_crb_sysbus_aml;
-+}
-+
-+static const TypeInfo tpm_crb_sysbus_info = {
-+    .name = TYPE_TPM_CRB_SYSBUS,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TPMCRBStateSysBus),
-+    .instance_init = tpm_crb_sysbus_initfn,
-+    .class_init  = tpm_crb_sysbus_class_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_TPM_IF },
-+        { TYPE_ACPI_DEV_AML_IF },
-+        { }
-+    }
-+};
-+
-+static void tpm_crb_sysbus_register(void)
-+{
-+    type_register_static(&tpm_crb_sysbus_info);
-+}
-+
-+type_init(tpm_crb_sysbus_register)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 3ada335a24..f524994fd3 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -5,6 +5,7 @@ config ARM_VIRT
-     imply VFIO_AMD_XGBE
-     imply VFIO_PLATFORM
-     imply VFIO_XGMAC
-+    imply TPM_CRB_SYSBUS
-     imply TPM_TIS_SYSBUS
-     imply TPM_TIS_I2C
-     imply NVDIMM
-diff --git a/hw/loongarch/Kconfig b/hw/loongarch/Kconfig
-index 25da190ffc..70544f3ce5 100644
---- a/hw/loongarch/Kconfig
-+++ b/hw/loongarch/Kconfig
-@@ -6,6 +6,7 @@ config LOONGARCH_VIRT
-     imply PCI_DEVICES
-     imply NVDIMM
-     imply TPM_TIS_SYSBUS
-+    imply TPM_CRB_SYSBUS
-     select SERIAL
-     select VIRTIO_PCI
-     select PLATFORM_BUS
-diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-index b6a5eb4452..d824cb58f9 100644
---- a/hw/riscv/Kconfig
-+++ b/hw/riscv/Kconfig
-@@ -29,6 +29,7 @@ config RISCV_VIRT
-     imply PCI_DEVICES
-     imply VIRTIO_VGA
-     imply TEST_DEVICES
-+    imply TPM_CRB_SYSBUS
-     imply TPM_TIS_SYSBUS
-     select RISCV_NUMA
-     select GOLDFISH_RTC
-diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
-index a46663288c..28139c456a 100644
---- a/hw/tpm/Kconfig
-+++ b/hw/tpm/Kconfig
-@@ -25,6 +25,11 @@ config TPM_CRB
-     depends on TPM && PC
-     select TPM_BACKEND
- 
-+config TPM_CRB_SYSBUS
-+    bool
-+    depends on TPM
-+    select TPM_BACKEND
-+
- config TPM_SPAPR
-     bool
-     default y
-diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
-index 3060ac05e8..f2536c99e3 100644
---- a/hw/tpm/meson.build
-+++ b/hw/tpm/meson.build
-@@ -5,6 +5,9 @@ system_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm-sysbus.c'))
- system_ss.add(when: 'CONFIG_TPM_TIS_I2C', if_true: files('tpm_tis_i2c.c'))
- system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
- system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb_common.c'))
-+system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_sysbus.c'))
-+system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_common.c'))
-+system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm-sysbus.c'))
- system_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_ppi.c'))
- system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_ppi.c'))
- 
+ static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
 -- 
 2.41.0
 

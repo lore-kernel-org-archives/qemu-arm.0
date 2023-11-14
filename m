@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2412833ejc;
-        Tue, 14 Nov 2023 16:05:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG5CDSzmXG+DN4pf24Xuo/7LZ0lQ11eqWbyYnUA7NiB8T/6OA5bef6g9d5kKzQiiSjOXzKb
-X-Received: by 2002:a05:620a:2728:b0:779:d0a6:2e6f with SMTP id b40-20020a05620a272800b00779d0a62e6fmr4574125qkp.43.1700006707225;
-        Tue, 14 Nov 2023 16:05:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700006707; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2413327ejc;
+        Tue, 14 Nov 2023 16:05:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEEQA1bBZHlfX5uQ4eeDWpH1g49lDqrBwzy4YCX6TiPhVC4QrDQLhnK7RtNcjcEwiftNkp2
+X-Received: by 2002:a05:620a:2483:b0:76d:96a9:da25 with SMTP id i3-20020a05620a248300b0076d96a9da25mr4620687qkn.61.1700006756965;
+        Tue, 14 Nov 2023 16:05:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700006756; cv=none;
         d=google.com; s=arc-20160816;
-        b=m2Bhlc+4ivbO9ZfrGWfVaWC8p4oDx76zPmGo7Kmn7H35KiAxkHEW2uV9edk5Qm0kYY
-         /S1WVWoPiK9Qzw24VfQXt5pDBLayC+mTssdDmtn1RRDKjUrQLaD/2ujqzkAKoXFFWjyV
-         4Thcg/2agvecCPd17jQcztvRWB+XTGniHjKS4/G6f5SoFuoLtItbmGSfTm8mHfMgP/Vq
-         njIUsAZsq4k9GUVkcHOYVl7IMiuGlxq4ehTPC0//O8UTUeod6rxkxUS3iKYzSH5vRy1H
-         ppv6i+b6MG26Qc5IOcDhtN/80clnKs71Hc1/sJOu2fkOWlFhf8HBCQM3JCEUAOkPMauX
-         z0RQ==
+        b=Zef1f6F02usIGkiKFXGGbJEXuDq6WcDijS0BBvD71LfjQpc5hqrCVzyPBbh+54D6J9
+         vBVSpdRQ4MOkmRte0fRPbAGhGmbn/BXNw91gwhoR9b7gNcV0Mh8UF4ls6RvZ3DEoGqv2
+         3Ub7gzTqLkZ7NEUSfH+v0W7eJU5xmiJVnlwUberppCN/m3oKTGw0D2x/I8/9NSMllJsI
+         eQBUh66NM+SVC9/M4zmZxV2Ecn8IitsDWIlWgo2QTSTBMxu9uMXmzCFC/8a2JHUd33Yd
+         hjcyTrWbSh8L0HjQQvvUhMO3bx7ZQb4Qnh8vTNDbwJ4TvyIAAOLZOS54yS5sUaVBxGmq
+         LPGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=eSKZd1L9LRo6Jc9HsJxd38PPckfLWMqZ/C5hiwSkFII=;
+         :mime-version:mime-version:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=hpeKOnNHDzdleIFAJE8H9OmrGjfXzc6pC5SCT7yL3NQ=;
         fh=/T6xqUCWHJxCL2odTXkl490KMICJmjWwCPOs7M5ODd4=;
-        b=0olYH7sJvSt6HztCv4BAs1tsCH09GmBfjhw80rrPBjj1l1IbivSr2FKhhjaAPQWWY+
-         oX+ISPKB7pQ40y9kyStXh96c9m1UPlrBZ4jRI6j0whB2JNTGveDbZsQNReo/2dvL81BS
-         A4y+MBxB/QSc5nzeDA7y9Hk7RjJ24j1dGZtLt+pak9ILwR41/B4WdQqdaOH7NE51qK+d
-         vKAhNw3faXtBEdKpP7tD/A3ftr/vA5QAsj7ZsF5AMXzBJj+vlBH0/BQ0TvlpUGtFMvK3
-         GUv7JJtMfHKoAph5eh3TUDlll3w8X3WKMRWmJfaCnplEDYpITARGbij6eGQkmaxkiMrS
-         ShNw==
+        b=nk4eNc286VQGsIjUUq4hPQ8BEVkcuPp9trtsFieGBguLZu8FtfC1oKAGgnujOi9MV8
+         xpkugA6ve8+ezLTcAvgOkGIZoUb834ncbWK+GL7c7+DhUnHCuwfjukKRAgGv0vdXBYgp
+         rZyJxZavu2UhPAKCfZBGE3G5QHsaiKluQrrfnzPsiVmNCVTK/m3YxsUH3kl7EdsYC7ci
+         47bmEzpn68GZzYD2ITZnJuz+9tbxUd1HcM7dL0AYXv6nmdri6/PjY+SQpwFpLt+Mbnzk
+         BMXoZQ1FoNACz9o3xM2sLrGlXuamF9P7QHJXFlSS6so1lZIQBRC+ZGmbQmXwDLTEqpNg
+         0KTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hyDHNPdR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JoLAhIuv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay39-20020a05620a17a700b0077433fe23b1si7738906qkb.277.2023.11.14.16.05.07
+        by mx.google.com with ESMTPS id bi20-20020a05620a319400b0076db12d14c2si7678541qkb.719.2023.11.14.16.05.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 16:05:07 -0800 (PST)
+        Tue, 14 Nov 2023 16:05:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hyDHNPdR;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JoLAhIuv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r33Nw-0002ab-EI; Tue, 14 Nov 2023 19:04:01 -0500
+	id 1r33Ob-0003NY-T3; Tue, 14 Nov 2023 19:04:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Nu-0002a0-MQ
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:03:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33O9-0002tq-Oh
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:04:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Nl-0008W6-V6
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:03:58 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33O0-00007h-Rl
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:04:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700006629;
+ s=mimecast20190719; t=1700006641;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=eSKZd1L9LRo6Jc9HsJxd38PPckfLWMqZ/C5hiwSkFII=;
- b=hyDHNPdRz+cNFt8ckx3WQeoD87O8qj6vnpnEhLWxgeqlK8QC5RnLQw1FLBZ7ZDZ5y30FEq
- 9Rrk5/5CBNXOXP6wckgj+PdSKFeVbY+H6Qs+eeXjEZRe/ZKVVerndLzo1ojVmTohlGx4HZ
- p53YBNma05ObgcAUanNvILxbY99ZCXs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-519-ReavzLn-MduUoaGhiD8CpA-1; Tue, 14 Nov 2023 19:03:45 -0500
-X-MC-Unique: ReavzLn-MduUoaGhiD8CpA-1
+ bh=hpeKOnNHDzdleIFAJE8H9OmrGjfXzc6pC5SCT7yL3NQ=;
+ b=JoLAhIuv1WjNyDj0Kr+dLv7B5fBbYL5NZDaA8JFHL4gbGMU87D/Ti+sgjOiTh/NMX6FGXe
+ FlbVS1FOh8dlWCuKbgMMUuuAZ6heaycSRd3Bq6naT+oZvyJAZC95QsTT7+ekOY55eYKqkI
+ 31VBKRAXNiax7bOdRb0fFWq+Ec6bfs0=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-346-iS5I3fx-PZykyfbeMhFZeQ-1; Tue,
+ 14 Nov 2023 19:03:58 -0500
+X-MC-Unique: iS5I3fx-PZykyfbeMhFZeQ-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A3978101A53B;
- Wed, 15 Nov 2023 00:03:43 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D2411C03140;
+ Wed, 15 Nov 2023 00:03:56 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CD7D1C15885;
- Wed, 15 Nov 2023 00:03:30 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2666AC15882;
+ Wed, 15 Nov 2023 00:03:43 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -94,25 +94,27 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
  ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
  jcmvbkbc@gmail.com, shan.gavin@gmail.com
-Subject: [PATCH v5 30/31] hw/arm: Check CPU type in machine_run_board_init()
-Date: Wed, 15 Nov 2023 09:56:27 +1000
-Message-ID: <20231114235628.534334-31-gshan@redhat.com>
+Subject: [PATCH v5 31/31] hw/riscv/shakti_c: Check CPU type in
+ machine_run_board_init()
+Date: Wed, 15 Nov 2023 09:56:28 +1000
+Message-ID: <20231114235628.534334-32-gshan@redhat.com>
 In-Reply-To: <20231114235628.534334-1-gshan@redhat.com>
 References: <20231114235628.534334-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,395 +129,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jlWeLHjVb9VZ
+X-TUID: R2Rpa0ZNk6+k
 
 Set mc->valid_cpu_types so that the user specified CPU type can
-be validated in machine_run_board_init(). We needn't to do it by
-ourselves.
+be validated in machine_run_board_init(). We needn't to do it
+by ourselves.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/bananapi_m2u.c   | 12 ++++++------
- hw/arm/cubieboard.c     | 12 ++++++------
- hw/arm/mps2-tz.c        | 20 ++++++++++++++------
- hw/arm/mps2.c           | 25 +++++++++++++++++++------
- hw/arm/msf2-som.c       | 12 ++++++------
- hw/arm/musca.c          | 13 ++++++-------
- hw/arm/npcm7xx_boards.c | 13 ++++++-------
- hw/arm/orangepi.c       | 12 ++++++------
- 8 files changed, 69 insertions(+), 50 deletions(-)
+ hw/riscv/shakti_c.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 8f24b18d8c..5eed11fe03 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -30,6 +30,11 @@
- 
- static struct arm_boot_info bpim2u_binfo;
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-a7"),
-+    NULL
-+};
-+
- /*
-  * R40 can boot from mmc0 and mmc2, and bpim2u has two mmc interface, one is
-  * connected to sdcard and another mount an emmc media.
-@@ -71,12 +76,6 @@ static void bpim2u_init(MachineState *machine)
-         exit(1);
-     }
- 
--    /* Only allow Cortex-A7 for this board */
--    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) != 0) {
--        error_report("This board can only be used with cortex-a7 CPU");
--        exit(1);
--    }
--
-     r40 = AW_R40(object_new(TYPE_AW_R40));
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(r40));
-     object_unref(OBJECT(r40));
-@@ -139,6 +138,7 @@ static void bpim2u_machine_init(MachineClass *mc)
-     mc->max_cpus = AW_R40_NUM_CPUS;
-     mc->default_cpus = AW_R40_NUM_CPUS;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "bpim2u.ram";
- }
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-index 29146f5018..7d9bb6c837 100644
---- a/hw/arm/cubieboard.c
-+++ b/hw/arm/cubieboard.c
-@@ -29,6 +29,11 @@ static struct arm_boot_info cubieboard_binfo = {
-     .board_id = 0x1008,
- };
+diff --git a/hw/riscv/shakti_c.c b/hw/riscv/shakti_c.c
+index 12ea74b032..fc83ed4db4 100644
+--- a/hw/riscv/shakti_c.c
++++ b/hw/riscv/shakti_c.c
+@@ -28,6 +28,10 @@
+ #include "exec/address-spaces.h"
+ #include "hw/riscv/boot.h"
  
 +static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-a8"),
++    RISCV_CPU_TYPE_NAME("shakti-c"),
 +    NULL
 +};
-+
- static void cubieboard_init(MachineState *machine)
- {
-     AwA10State *a10;
-@@ -52,12 +57,6 @@ static void cubieboard_init(MachineState *machine)
-         exit(1);
-     }
  
--    /* Only allow Cortex-A8 for this board */
--    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a8")) != 0) {
--        error_report("This board can only be used with cortex-a8 CPU");
--        exit(1);
--    }
--
-     a10 = AW_A10(object_new(TYPE_AW_A10));
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(a10));
-     object_unref(OBJECT(a10));
-@@ -116,6 +115,7 @@ static void cubieboard_machine_init(MachineClass *mc)
- {
-     mc->desc = "cubietech cubieboard (Cortex-A8)";
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a8");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->init = cubieboard_init;
-     mc->block_default_type = IF_IDE;
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 668db5ed61..1c88e76a22 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -191,6 +191,16 @@ OBJECT_DECLARE_TYPE(MPS2TZMachineState, MPS2TZMachineClass, MPS2TZ_MACHINE)
- /* For cpu{0,1}_mpu_{ns,s}, means "leave at SSE's default value" */
- #define MPU_REGION_DEFAULT UINT32_MAX
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m33"),
-+    NULL
-+};
-+
-+static const char * const mps3tz_an547_valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m55"),
-+    NULL
-+};
-+
- static const uint32_t an505_oscclk[] = {
-     40000000,
-     24580000,
-@@ -813,12 +823,6 @@ static void mps2tz_common_init(MachineState *machine)
-     int num_ppcs;
-     int i;
- 
--    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
--        error_report("This board can only be used with CPU %s",
--                     mc->default_cpu_type);
--        exit(1);
--    }
--
-     if (machine->ram_size != mc->default_ram_size) {
-         char *sz = size_to_str(mc->default_ram_size);
-         error_report("Invalid RAM size, should be %s", sz);
-@@ -1325,6 +1329,7 @@ static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = mc->default_cpus;
-     mmc->fpga_type = FPGA_AN505;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mmc->scc_id = 0x41045050;
-     mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
-     mmc->apb_periph_frq = mmc->sysclk_frq;
-@@ -1354,6 +1359,7 @@ static void mps2tz_an521_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = mc->default_cpus;
-     mmc->fpga_type = FPGA_AN521;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mmc->scc_id = 0x41045210;
-     mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
-     mmc->apb_periph_frq = mmc->sysclk_frq;
-@@ -1383,6 +1389,7 @@ static void mps3tz_an524_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = mc->default_cpus;
-     mmc->fpga_type = FPGA_AN524;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mmc->scc_id = 0x41045240;
-     mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
-     mmc->apb_periph_frq = mmc->sysclk_frq;
-@@ -1417,6 +1424,7 @@ static void mps3tz_an547_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = mc->default_cpus;
-     mmc->fpga_type = FPGA_AN547;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m55");
-+    mc->valid_cpu_types = mps3tz_an547_valid_cpu_types;
-     mmc->scc_id = 0x41055470;
-     mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
-     mmc->apb_periph_frq = 25 * 1000 * 1000; /* 25MHz */
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index 292a180ad2..3baff18571 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -111,6 +111,21 @@ OBJECT_DECLARE_TYPE(MPS2MachineState, MPS2MachineClass, MPS2_MACHINE)
-  */
- #define REFCLK_FRQ (1 * 1000 * 1000)
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m3"),
-+    NULL
-+};
-+
-+static const char * const mps2_an386_valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m4"),
-+    NULL
-+};
-+
-+static const char * const mps2_an500_valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m7"),
-+    NULL
-+};
-+
- /* Initialize the auxiliary RAM region @mr and map it into
-  * the memory map at @base.
-  */
-@@ -142,12 +157,6 @@ static void mps2_common_init(MachineState *machine)
-     QList *oscclk;
-     int i;
- 
--    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
--        error_report("This board can only be used with CPU %s",
--                     mc->default_cpu_type);
--        exit(1);
--    }
--
-     if (machine->ram_size != mc->default_ram_size) {
-         char *sz = size_to_str(mc->default_ram_size);
-         error_report("Invalid RAM size, should be %s", sz);
-@@ -488,6 +497,7 @@ static void mps2_an385_class_init(ObjectClass *oc, void *data)
-     mc->desc = "ARM MPS2 with AN385 FPGA image for Cortex-M3";
-     mmc->fpga_type = FPGA_AN385;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mmc->scc_id = 0x41043850;
-     mmc->psram_base = 0x21000000;
-     mmc->ethernet_base = 0x40200000;
-@@ -502,6 +512,7 @@ static void mps2_an386_class_init(ObjectClass *oc, void *data)
-     mc->desc = "ARM MPS2 with AN386 FPGA image for Cortex-M4";
-     mmc->fpga_type = FPGA_AN386;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
-+    mc->valid_cpu_types = mps2_an386_valid_cpu_types;
-     mmc->scc_id = 0x41043860;
-     mmc->psram_base = 0x21000000;
-     mmc->ethernet_base = 0x40200000;
-@@ -516,6 +527,7 @@ static void mps2_an500_class_init(ObjectClass *oc, void *data)
-     mc->desc = "ARM MPS2 with AN500 FPGA image for Cortex-M7";
-     mmc->fpga_type = FPGA_AN500;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m7");
-+    mc->valid_cpu_types = mps2_an500_valid_cpu_types;
-     mmc->scc_id = 0x41045000;
-     mmc->psram_base = 0x60000000;
-     mmc->ethernet_base = 0xa0000000;
-@@ -530,6 +542,7 @@ static void mps2_an511_class_init(ObjectClass *oc, void *data)
-     mc->desc = "ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3";
-     mmc->fpga_type = FPGA_AN511;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mmc->scc_id = 0x41045110;
-     mmc->psram_base = 0x21000000;
-     mmc->ethernet_base = 0x40200000;
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index 7b3106c790..470951a006 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -42,6 +42,11 @@
- #define M2S010_ENVM_SIZE      (256 * KiB)
- #define M2S010_ESRAM_SIZE     (64 * KiB)
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m3"),
-+    NULL
-+};
-+
- static void emcraft_sf2_s2s010_init(MachineState *machine)
- {
-     DeviceState *dev;
-@@ -55,12 +60,6 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
-     MemoryRegion *ddr = g_new(MemoryRegion, 1);
-     Clock *m3clk;
- 
--    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
--        error_report("This board can only be used with CPU %s",
--                     mc->default_cpu_type);
--        exit(1);
--    }
--
-     memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
-                            &error_fatal);
-     memory_region_add_subregion(sysmem, DDR_BASE_ADDRESS, ddr);
-@@ -109,6 +108,7 @@ static void emcraft_sf2_machine_init(MachineClass *mc)
-     mc->desc = "SmartFusion2 SOM kit from Emcraft (M2S010)";
-     mc->init = emcraft_sf2_s2s010_init;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
-+    mc->valid_cpu_types = valid_cpu_types;
- }
- 
- DEFINE_MACHINE("emcraft-sf2", emcraft_sf2_machine_init)
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index 6eeee57c9d..9bd78fd531 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -102,6 +102,11 @@ OBJECT_DECLARE_TYPE(MuscaMachineState, MuscaMachineClass, MUSCA_MACHINE)
- /* Slow 32Khz S32KCLK frequency in Hz */
- #define S32KCLK_FRQ (32 * 1000)
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m33"),
-+    NULL
-+};
-+
- static qemu_irq get_sse_irq_in(MuscaMachineState *mms, int irqno)
- {
-     /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
-@@ -355,7 +360,6 @@ static void musca_init(MachineState *machine)
- {
-     MuscaMachineState *mms = MUSCA_MACHINE(machine);
-     MuscaMachineClass *mmc = MUSCA_MACHINE_GET_CLASS(mms);
--    MachineClass *mc = MACHINE_GET_CLASS(machine);
+ static const struct MemmapEntry {
+     hwaddr base;
+@@ -47,12 +51,6 @@ static void shakti_c_machine_state_init(MachineState *mstate)
+     ShaktiCMachineState *sms = RISCV_SHAKTI_MACHINE(mstate);
      MemoryRegion *system_memory = get_system_memory();
-     DeviceState *ssedev;
-     DeviceState *dev_splitter;
-@@ -366,12 +370,6 @@ static void musca_init(MachineState *machine)
-     assert(mmc->num_irqs <= MUSCA_NUMIRQ_MAX);
-     assert(mmc->num_mpcs <= MUSCA_MPC_MAX);
  
--    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
--        error_report("This board can only be used with CPU %s",
--                     mc->default_cpu_type);
+-    /* Allow only Shakti C CPU for this platform */
+-    if (strcmp(mstate->cpu_type, TYPE_RISCV_CPU_SHAKTI_C) != 0) {
+-        error_report("This board can only be used with Shakti C CPU");
 -        exit(1);
 -    }
 -
-     mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
-     clock_set_hz(mms->sysclk, SYSCLK_FRQ);
-     mms->s32kclk = clock_new(OBJECT(machine), "S32KCLK");
-@@ -609,6 +607,7 @@ static void musca_class_init(ObjectClass *oc, void *data)
-     mc->min_cpus = mc->default_cpus;
-     mc->max_cpus = mc->default_cpus;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
+     /* Initialize SoC */
+     object_initialize_child(OBJECT(mstate), "soc", &sms->soc,
+                             TYPE_RISCV_SHAKTI_SOC);
+@@ -85,6 +83,7 @@ static void shakti_c_machine_class_init(ObjectClass *klass, void *data)
+     mc->desc = "RISC-V Board compatible with Shakti SDK";
+     mc->init = shakti_c_machine_state_init;
+     mc->default_cpu_type = TYPE_RISCV_CPU_SHAKTI_C;
 +    mc->valid_cpu_types = valid_cpu_types;
-     mc->init = musca_init;
+     mc->default_ram_id = "riscv.shakti.c.ram";
  }
  
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index 2aef579aac..ca37c893b4 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -55,6 +55,11 @@
- 
- static const char npcm7xx_default_bootrom[] = "npcm7xx_bootrom.bin";
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-a9"),
-+    NULL
-+};
-+
- static void npcm7xx_load_bootrom(MachineState *machine, NPCM7xxState *soc)
- {
-     const char *bios_name = machine->firmware ?: npcm7xx_default_bootrom;
-@@ -121,15 +126,8 @@ static NPCM7xxState *npcm7xx_create_soc(MachineState *machine,
-                                         uint32_t hw_straps)
- {
-     NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_GET_CLASS(machine);
--    MachineClass *mc = MACHINE_CLASS(nmc);
-     Object *obj;
- 
--    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
--        error_report("This board can only be used with %s",
--                     mc->default_cpu_type);
--        exit(1);
--    }
--
-     obj = object_new_with_props(nmc->soc_type, OBJECT(machine), "soc",
-                                 &error_abort, NULL);
-     object_property_set_uint(obj, "power-on-straps", hw_straps, &error_abort);
-@@ -469,6 +467,7 @@ static void npcm7xx_machine_class_init(ObjectClass *oc, void *data)
-     mc->no_parallel = 1;
-     mc->default_ram_id = "ram";
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
-+    mc->valid_cpu_types = valid_cpu_types;
- }
- 
- /*
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-index f3784d45ca..4e8a43978d 100644
---- a/hw/arm/orangepi.c
-+++ b/hw/arm/orangepi.c
-@@ -29,6 +29,11 @@
- 
- static struct arm_boot_info orangepi_binfo;
- 
-+static const char * const valid_cpu_types[] = {
-+    ARM_CPU_TYPE_NAME("cortex-a7"),
-+    NULL
-+};
-+
- static void orangepi_init(MachineState *machine)
- {
-     AwH3State *h3;
-@@ -49,12 +54,6 @@ static void orangepi_init(MachineState *machine)
-         exit(1);
-     }
- 
--    /* Only allow Cortex-A7 for this board */
--    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) != 0) {
--        error_report("This board can only be used with cortex-a7 CPU");
--        exit(1);
--    }
--
-     h3 = AW_H3(object_new(TYPE_AW_H3));
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(h3));
-     object_unref(OBJECT(h3));
-@@ -119,6 +118,7 @@ static void orangepi_machine_init(MachineClass *mc)
-     mc->max_cpus = AW_H3_NUM_CPUS;
-     mc->default_cpus = AW_H3_NUM_CPUS;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
-+    mc->valid_cpu_types = valid_cpu_types;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "orangepi.ram";
- }
 -- 
 2.41.0
 

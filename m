@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2408691ejc;
-        Tue, 14 Nov 2023 15:59:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGF44ZL/QxoPn/Tw1cMZb88mvT0fSJv1laehAxKnuahX24AP8zp3mUut85lC9urLqwFPoXl
-X-Received: by 2002:a25:df46:0:b0:d9a:c218:817c with SMTP id w67-20020a25df46000000b00d9ac218817cmr10545085ybg.4.1700006350773;
-        Tue, 14 Nov 2023 15:59:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700006350; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2408743ejc;
+        Tue, 14 Nov 2023 15:59:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG6IsaRGlNhzKK66W6blxGElJsL8zTP+bQ97n0qputRm8R9qMDlvoWiVQmu44po2n2PHXmr
+X-Received: by 2002:a67:ef52:0:b0:461:d92:e64c with SMTP id k18-20020a67ef52000000b004610d92e64cmr8617611vsr.16.1700006357787;
+        Tue, 14 Nov 2023 15:59:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700006357; cv=none;
         d=google.com; s=arc-20160816;
-        b=QiN+T6Cm+v36izwze0v8XFM5b+oobaHXbg86in03mOC8S4sGe3uh7RDPk9fbD1wBPg
-         NWsVAf4BGFPzT81KwhJyS8UoO4i35cG+LTZ/kR1dok4gjPznaqUqzn/HxQzcc3XuRKEW
-         DOsbjLfmQeqrMuk4Q12QII9IoaVE51sCsNzL7Xayi2SPY9EUhTyT4D3SbdcW5cYIiN9b
-         LPj6+cAD3hzyjG9SzHlItW2jCGi5UUIN1Lj4VlcAgxpmmXli+o0HycVU4Pr4KpJUFAME
-         xeU2ABRyYck8q1NkEUqRL/asIwnESi3Qx1DAEbeqonrdAMPLkU8Ezd3l1NG3YtBrsGMo
-         PAaA==
+        b=eL1soKn6URRThRzGlaZat+rugwXiXR8MbMvgkyIMsFQX7QKWVeiMohj9kpmprbWVDo
+         LlOJTAVSYwGfN4PC4LbkHnAUbrkRFfQiLiNnUkQcKSDsP6Rz97FXpHfOiuomyAOFYEez
+         xwiJOeo+tM8gB6j+v3PHLhLX8WPgDdZOEACgbASSlb0fud88lKeuJSo610qsoJx/EIx5
+         RMlsn/VJx9jW1F6nDVXMVJzx8ett0ZmOg/lf7MrDo9R3A178v1CBN7gno7IzDmFWnIWS
+         y7BJO8EmUF8FQz/oxznulMsCUKzBfAxtjNA6YAiHBtSZvV3YMgXcZfh+K+cW6gwMYgHd
+         LuPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=rZKg1/2JlTQ35ZjVGKYHI5rgb9pxMB3aE/K4wIwjIL8=;
+        bh=LiBQ8HNskbnGJakIHTbXcUveCafNXtneVERt1nHqLFo=;
         fh=/T6xqUCWHJxCL2odTXkl490KMICJmjWwCPOs7M5ODd4=;
-        b=IjyM0Z9O67jAWQvZaDVjJVgvP+4Gs4PzpU/us55/sAzaV3VsINuE7G0rldZ9dmBooo
-         yh0djailzYF4TrSx5tHlXrHUG3MJDy/aB0oCRnZE1RDAZWSuW62vkejXXMMjYY/toUd7
-         Xwy2+vaQlPfZdMcCQaulBAS/cmXRKlnTgqo06RatMaHAHKIyIoNAOX5D1Pa1ksMRA59U
-         CsJX7ZItBsX5pJDEl9YRaGZz0Yz3sNvL3EB2jGXw1iVXAZL6NQggMQnS865SGUE6AYgh
-         62O+lpFr9RCnq++uzeHTDA0ONiBhA55cQi80MsAvOB7vFTWX7TESCKinXEbc+Ai6fb4b
-         oxmw==
+        b=nTsLZWDymz/9iDGiZOfmn1UNi1d3MD1ECFEX0g19O3h68I6K+3GywQunqUtExuRHL+
+         sosc7EdoZa3Z32OlXEGF97+LvDhDInWfVQpFLnPy/BxZSziQpsy50rHTJamfUJ81mzSZ
+         BQt00jcQ3YyXR6UQSGNplNHV9swN2gDY4FbGxF9f1JKs6t1pz/xBhTjQH+ywyhn11YEy
+         kxzWtJ3FTq+blf/x6STrBRIwirNAu3A0cpfSSCuDIuITePko2XOZXtPDHPpJskAk8bDw
+         uRy8ezxG6gXUBUxf0coTymzkYrMuvMqaavMzRfOkIl9aZtJYWp4wwlnA88cF9z3QOsyf
+         Wf9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bVRpXT8x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="gf8/L0bq";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u20-20020a05621411b400b00656ef23713dsi7860586qvv.223.2023.11.14.15.59.10
+        by mx.google.com with ESMTPS id bq38-20020a05620a46a600b00773a681104csi7069741qkb.684.2023.11.14.15.59.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 15:59:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Nov 2023 15:59:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bVRpXT8x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="gf8/L0bq";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r33Io-0000tP-Sc; Tue, 14 Nov 2023 18:58:43 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r33Ie-0000Xy-QZ; Tue, 14 Nov 2023 18:58:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33In-0000sO-5M
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 18:58:41 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Ic-0000XE-UZ
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 18:58:31 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Il-00073a-KC
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 18:58:40 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Ia-000726-19
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 18:58:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700006318;
+ s=mimecast20190719; t=1700006307;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rZKg1/2JlTQ35ZjVGKYHI5rgb9pxMB3aE/K4wIwjIL8=;
- b=bVRpXT8xCpHwMrLLSCHpxatV3QokpiPPYrj534CzzUh2nOCVY18kiX5KK77pkRb1/PX2yh
- zB5ZaGqoVFKtQSXH5eoM/0tcxjDsZbCyuQ5cC1rVM+E/0xDk5SYXrQt67Ab3mFIoepYtxS
- ps3LVTwGDvP0cq28rYBu+jbBA6vLm5A=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-689-7FEO49NsPPuaobwdMDOacA-1; Tue, 14 Nov 2023 18:58:34 -0500
-X-MC-Unique: 7FEO49NsPPuaobwdMDOacA-1
+ bh=LiBQ8HNskbnGJakIHTbXcUveCafNXtneVERt1nHqLFo=;
+ b=gf8/L0bqBeUIbFO2duHvnxw0V54MtALJYFxDubbaNGabqmrZvnqra/wgxjAYEwxRjgvZb+
+ IuxSMB+i6rShfqVBcEh38XjO/mwe3Rr02i/MQSfcsvxTXLr/gm5rc9Scv2TTwu3PBu7P8Y
+ aJnN6UYfp9l9CtmnTeUnUi7BrxuhFTM=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-147-SZ7MPvCIOgCBq8QawagQkw-1; Tue,
+ 14 Nov 2023 18:58:21 -0500
+X-MC-Unique: SZ7MPvCIOgCBq8QawagQkw-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 03AB2185A782;
- Tue, 14 Nov 2023 23:58:33 +0000 (UTC)
-Received: from gshan.redhat.com (unknown [10.64.136.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 797EBC15885;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 00A7129ABA0F;
  Tue, 14 Nov 2023 23:58:20 +0000 (UTC)
+Received: from gshan.redhat.com (unknown [10.64.136.44])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 56771C15885;
+ Tue, 14 Nov 2023 23:58:07 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -94,9 +94,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
  ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
  jcmvbkbc@gmail.com, shan.gavin@gmail.com
-Subject: [PATCH v5 07/31] target/alpha: Use generic cpu_list()
-Date: Wed, 15 Nov 2023 09:56:04 +1000
-Message-ID: <20231114235628.534334-8-gshan@redhat.com>
+Subject: [PATCH v5 06/31] cpu: Add generic cpu_list()
+Date: Wed, 15 Nov 2023 09:56:03 +1000
+Message-ID: <20231114235628.534334-7-gshan@redhat.com>
 In-Reply-To: <20231114235628.534334-1-gshan@redhat.com>
 References: <20231114235628.534334-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -112,102 +112,109 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Nv4Fw9tEK1s3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: K+1W3hxlMzFP
 
-Before it's applied:
+Add generic cpu_list() to replace the individual target's implementation
+in the subsequent commits. Currently, there are 3 targets with no cpu_list()
+implementation: microblaze and nios2. With this applied, those two targets
+switch to the generic cpu_list().
 
-[gshan@gshan q]$ ./build/qemu-system-alpha -cpu ?
+[gshan@gshan q]$ ./build/qemu-system-microblaze -cpu ?
 Available CPUs:
-  ev4-alpha-cpu
-  ev5-alpha-cpu
-  ev56-alpha-cpu
-  ev6-alpha-cpu
-  ev67-alpha-cpu
-  ev68-alpha-cpu
-  pca56-alpha-cpu
+  microblaze-cpu
 
-After it's applied:
-
-[gshan@gshan q]$ ./build/qemu-system-alpha -cpu ?
+[gshan@gshan q]$ ./build/qemu-system-nios2 -cpu ?
 Available CPUs:
-  ev4
-  ev5
-  ev56
-  ev6
-  ev67
-  ev68
-  pca56
+  nios2-cpu
 
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/alpha/cpu.c | 17 -----------------
- target/alpha/cpu.h |  3 ---
- 2 files changed, 20 deletions(-)
+ bsd-user/main.c |  5 +----
+ cpu-target.c    | 29 ++++++++++++++++++++++++++---
+ 2 files changed, 27 insertions(+), 7 deletions(-)
 
-diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-index c19257d765..cece69bfa6 100644
---- a/target/alpha/cpu.c
-+++ b/target/alpha/cpu.c
-@@ -87,23 +87,6 @@ static void alpha_cpu_realizefn(DeviceState *dev, Error **errp)
-     acc->parent_realize(dev, errp);
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index e6014f517e..4de226d211 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -378,10 +378,7 @@ int main(int argc, char **argv)
+         } else if (!strcmp(r, "cpu")) {
+             cpu_model = argv[optind++];
+             if (is_help_option(cpu_model)) {
+-                /* XXX: implement xxx_cpu_list for targets that still miss it */
+-#if defined(cpu_list)
+-                cpu_list();
+-#endif
++                list_cpus();
+                 exit(1);
+             }
+         } else if (!strcmp(r, "B")) {
+diff --git a/cpu-target.c b/cpu-target.c
+index c078c0e91b..acfc654b95 100644
+--- a/cpu-target.c
++++ b/cpu-target.c
+@@ -24,6 +24,7 @@
+ #include "hw/qdev-core.h"
+ #include "hw/qdev-properties.h"
+ #include "qemu/error-report.h"
++#include "qemu/qemu-print.h"
+ #include "migration/vmstate.h"
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
+@@ -283,12 +284,34 @@ const char *parse_cpu_option(const char *cpu_option)
+     return cpu_type;
  }
  
--static void alpha_cpu_list_entry(gpointer data, gpointer user_data)
--{
--    ObjectClass *oc = data;
--
--    qemu_printf("  %s\n", object_class_get_name(oc));
--}
--
--void alpha_cpu_list(void)
--{
--    GSList *list;
--
--    list = object_class_get_list_sorted(TYPE_ALPHA_CPU, false);
--    qemu_printf("Available CPUs:\n");
--    g_slist_foreach(list, alpha_cpu_list_entry, NULL);
--    g_slist_free(list);
--}
--
- /* Models */
- typedef struct AlphaCPUAlias {
-     const char *alias;
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index d672e911dd..ce806587ca 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -292,8 +292,6 @@ void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
- int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int alpha_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
++#ifndef cpu_list
++static void cpu_list_entry(gpointer data, gpointer user_data)
++{
++    CPUClass *cc = CPU_CLASS(OBJECT_CLASS(data));
++    const char *typename = object_class_get_name(OBJECT_CLASS(data));
++    g_autofree char *model = cpu_model_from_type(typename);
++
++    if (cc->deprecation_note) {
++        qemu_printf("  %s (deprecated)\n", model);
++    } else {
++        qemu_printf("  %s\n", model);
++    }
++}
++
++static void cpu_list(void)
++{
++    GSList *list;
++
++    list = object_class_get_list_sorted(TYPE_CPU, false);
++    qemu_printf("Available CPUs:\n");
++    g_slist_foreach(list, cpu_list_entry, NULL);
++    g_slist_free(list);
++}
++#endif
++
+ void list_cpus(void)
+ {
+-    /* XXX: implement xxx_cpu_list for targets that still miss it */
+-#if defined(cpu_list)
+     cpu_list();
+-#endif
+ }
  
--#define cpu_list alpha_cpu_list
--
- #include "exec/cpu-all.h"
- 
- enum {
-@@ -441,7 +439,6 @@ void alpha_translate_init(void);
- 
- #define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
- 
--void alpha_cpu_list(void);
- G_NORETURN void dynamic_excp(CPUAlphaState *, uintptr_t, int, int);
- G_NORETURN void arith_excp(CPUAlphaState *, uintptr_t, int, uint64_t);
- 
+ #if defined(CONFIG_USER_ONLY)
 -- 
 2.41.0
 

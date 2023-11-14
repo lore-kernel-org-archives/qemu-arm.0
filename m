@@ -1,161 +1,169 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2190532ejc;
-        Tue, 14 Nov 2023 09:14:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF5odJkfSTHatDwkyXRIew3LAag8vSqfXhPKGVBM5r8HHthSHfDNuNBwMQDqv7BNSM2ZEFD
-X-Received: by 2002:a05:600c:4fc3:b0:405:3be0:c78d with SMTP id o3-20020a05600c4fc300b004053be0c78dmr2972352wmq.3.1699982078989;
-        Tue, 14 Nov 2023 09:14:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699982078; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2083235ejc;
+        Tue, 14 Nov 2023 06:39:49 -0800 (PST)
+X-Received: by 2002:ac2:5612:0:b0:507:a58f:79ac with SMTP id v18-20020ac25612000000b00507a58f79acmr6040832lfd.33.1699972788856;
+        Tue, 14 Nov 2023 06:39:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699972788; cv=none;
         d=google.com; s=arc-20160816;
-        b=kAbbkBKY6klD062ECf9zuC8v3SERxrVZEtgInPzKka5TllQdafP2Jpz+pSB1VTV3s8
-         yDCF3jqZ8h1d0GWKkhEBalSefLZ+JVMxqou/52N/sfm2XSCsdpxBvwrmeMy/gk8e003j
-         ZdJ3snN8crTldEvtokoGfhOlh+MVdIcH1njiZb/+1BlObx9vQm62A3vWT2S/TQWmnugL
-         /V8blZy51GHxtiiO/C384Ogjd+c+UVPIbtF13QX0rWHmpvDOREzrTPCKJRouoiLpOaIZ
-         vCbkXLnAJG1Ua+Cy3X3ga/Ls/82jEv30LCdXsWfdMlRppDpSeQdRWwJW9fx5CrFySSRu
-         wZxA==
+        b=kTXofpbW//QCuDqhI+P6RnV5lgBMxRaP3EUn9vwQY2+7ceOagOMUngXXr+J4gk8nsV
+         Zz4hVwVwKf7DuCWNl4WznttSAk/LVU5B8kP2nPsl5lIL8TMSG03I/Y314V017bOC2Qt3
+         QjrLDsGk2DgjPERFD1/xG71HFh2Cdh14fHqEPuFVSGHJh6TPwVfb8uk9VBw2AodLO4EL
+         9JQxRK26gjQh416hvY/S1dPivY6bD5CYmfmJq2NwzV2I2NZ4dommtItMPdsTrPOx2xen
+         9nynIZmpv9oqlpPZgF1P5GbrF8upRCQuKPMNost92aD20rxVk0Qx3ExR0uTXKqraCgOS
+         5xQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=VjIw4Bu3EPxhdXeKr7A+9QZgOLb13tZ8T17jgSOeo4o=;
-        fh=c9e8ZdZT8wwMBwRGuaC0xkbztqutrDCy/JBNLaqw0pY=;
-        b=Q6Jfo9gbDV9Pyg8bItCYRMxE0UuWFr/trT+dqnjYUNcSxdBVGtegByB1yF7EP2na1F
-         2utfEJs7ZteZEbV8lVpHW8rrjy0fPtxWr8HIPy2Be8TcpMFnK8ecAPovaPBlC83yuSb5
-         NiFDglAY/z6mB1ULGD0uTAcHhOrovxnRwAr8lL4gQiMVSUvlSyxCHPXP5fiiAP/pi7Zo
-         cNmVI4rkXBRIwctngS5Rk+hxWwtZQ8lSi63Au984v+FTbvsTxs8Iwxmq2Iqgl9k1dW/P
-         j/FcRE/LTgdofJbaz7aP+IUBkRoJbWA2lAM2TO5hU1EtgcvL/lQ+nGnstos9CjwkZy2/
-         fQ/Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=x5X2FluBMHtEHwLVURbcbmArZUeMN34wqMB+9uG3SGg=;
+        fh=WgzlLWvbY5R8+4JotruerK0jeEkAYyt0q4wPP6dSEVI=;
+        b=zlXQvtfTGl8fPU3iQ9CsYwFGDl0vOIQVrj4zrG1/ZHN9kmhoncK7+QsIPmbrxDMFBs
+         NHlSQ2sl1jin72DV7oEUVOO6wR/NB72tQZ8RHjCZLuU+Y03TnvCpGgh26XiE2NzAKjEK
+         QBFlKyEJJkhTEq6/LHpcLmsoh9TpSdBeWtQjYDLctf079XqFTQce7j1R75KLGZFuZm17
+         xRy2ZK/7OWzs/vsIUJ55Ol6Cm11hLfXsmsexe58jiejoecCDQGsWsPscGFAUwL9xfe9o
+         TGV5LRjvOlsevu7OOrYnsSa/qGqGWexWqfh6DSAYm30R1PDStxNxDdx4OLU7eJ9PuT2p
+         HX0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V07ClREs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=j7j5bl3X;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id do10-20020a0560000c4a00b003313a19d602si4613030wrb.716.2023.11.14.09.14.38
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c20-20020a196554000000b00507a6b9f3a0sor1712184lfj.29.2023.11.14.06.39.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 09:14:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 14 Nov 2023 06:39:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V07ClREs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=j7j5bl3X;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2wza-0002qj-AV; Tue, 14 Nov 2023 12:14:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r2wzX-0002mJ-BH
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 12:14:23 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r2wzV-0008E9-Mn
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 12:14:23 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-54796f18365so1618137a12.0
- for <qemu-arm@nongnu.org>; Tue, 14 Nov 2023 09:14:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699982060; x=1700586860; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VjIw4Bu3EPxhdXeKr7A+9QZgOLb13tZ8T17jgSOeo4o=;
- b=V07ClREs9aD64viu8z8mwUNBMcBnhSZHN9L6prviJAvvltEd+1dJUY4dhtfI/Jmd6r
- whBds/Ju/5G1jmwKvyDsCQbBJkFKw/djPn2Pt4gPb8Mycc/yzCCawS7lsqPkKsfncmqH
- MeDHmH7I6p3skGZYYG7NXsh3hWG45UL0yK7p7uRcSBoyudd3sofcKJS2GXuzWF86mGrC
- dhgk8bY9V8aeK/GA2VziRa+LXReKZlbaKB1nr4Vs3s64hRQpPmZP++cs9CbiP1QvAAYg
- 0myGsJA8LvjKjORk2FhBjqgqNmzV7S9W5r5ErW1SD+z5AflfNLyBvf6dMYpaQ1SQuYaM
- jovQ==
+        d=linaro.org; s=google; t=1699972788; x=1700577588; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=x5X2FluBMHtEHwLVURbcbmArZUeMN34wqMB+9uG3SGg=;
+        b=j7j5bl3XDmerb7tjreqrLxVcIOCJ+iJRpmMaPWdp8cKdQp/lAdIQ/tn5Efy2+QOymQ
+         +4K/eUoUAXrQ8UNOzjHNVl/JdBK87DCX+vs4+Ef2k5MxPAhoyzpHmjqw8Pfme0BLELma
+         3/U19t3YX6ITR7WiN3mcSSV475WsO//ksULoygb87nyivMbk5+1Yv2BD39kABVTaQxF8
+         QyBVYbQV6kKwDsr0PomRPV65vol21yb798YofEH9a+Jz/N4l7P4Tt85lZkw1ECFO0dAv
+         FOT1nqAykz35D407SqCjPK6z5aBWLUYGOd4ehsQRSsKqYTcrZjVJ5ejnyxcAwugjjkuG
+         05WQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699982060; x=1700586860;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=VjIw4Bu3EPxhdXeKr7A+9QZgOLb13tZ8T17jgSOeo4o=;
- b=XaO2jdeZ40JfDqKNHVYSaUmP40z3kfy0dGIlWEpKsZB8bVrSa7KLusbmRL2H3ROOxd
- ToObwcEPRhiJOgEJ9dpPDoU0LBCsEoijF7HiKEvS4+bVt37a8AdsLY6jA2cclA2trbRX
- oTSEx/lcOKAPyosBiCKwFMxbDIFrVOKDPxao3We5MHdxyHEOQVPRUsCjuf6N1j9UiYAQ
- 0ToGFN8UIsYcSu0fJLekyx+fTd8vARyBpFohXF4DPKYp6Sa8Otpc6W0BKmkMTyPnt+KM
- PsNbtVt6yU0wTRnE9eei/YNSUxkh06A5FalhLb4wKmPkgL8L9jPENoaa57rP4DpOkyDL
- AAMw==
-X-Gm-Message-State: AOJu0YywNBEAKOVQDgMr+1pQjTUMO+OmVp47Jg/y1Lze0+JsZ7iyfEXP
- AVq8wdVHVWR4KaAGkAsz01fmsLLJs96Nv07+dcLmtIBaWG+uckP9
-X-Received: by 2002:aa7:d48c:0:b0:545:5601:414d with SMTP id
- b12-20020aa7d48c000000b005455601414dmr3139481edr.17.1699982059869; Tue, 14
- Nov 2023 09:14:19 -0800 (PST)
+        d=1e100.net; s=20230601; t=1699972788; x=1700577588;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=x5X2FluBMHtEHwLVURbcbmArZUeMN34wqMB+9uG3SGg=;
+        b=Z5v9TNVWDMZBWDQe0n6pMWTuFbC7P0zbFMaNXBYdfUChh49IkRMFXRbY7O20Zgsvf2
+         0LRZmZTE3dhsPyhS6v5q5VbJMto370Z7iaeG9rIiiFZSRISXV0UZxNGVVX8cgYadoCAV
+         hBxYfa7d+0OBs7njm+BhX1pPfR0lSPiIT9Kj1KjAbIpD74uHEM6AF9t9XopX87MmZSaI
+         G5lU5CQcRDUSMXR3YoWmk89wZvIcshMCN3vERifsMGHEdhMjWvcchGGR/UIsrBaWIOvJ
+         0eRqBMQrnJZPrAHSa417Ixl5KbHONjKYiHUMbsEnYW01nweVlXzGlhin/wkZk8gWkdOV
+         /LPQ==
+X-Gm-Message-State: AOJu0YwvDqoDSPrWgBIteh/T4JKhuNBrgZPAWkAjt4G01hAyGVW5t1JH
+	I3laYQHfC8TsqAboQDrfijXRUP73
+X-Google-Smtp-Source: AGHT+IEJ1DzMQPrVK6vmcQ1s/BHFe+ZR138ty+E3IEfmXhpEvhlt8hMy3AYRKnboRNNE1Pe2RYsE2w==
+X-Received: by 2002:a05:6512:b14:b0:509:8e3d:7cb0 with SMTP id w20-20020a0565120b1400b005098e3d7cb0mr9400030lfu.41.1699972788532;
+        Tue, 14 Nov 2023 06:39:48 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
+        by smtp.gmail.com with ESMTPSA id l18-20020a50d6d2000000b00542db304680sm5268842edj.63.2023.11.14.06.39.46
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 14 Nov 2023 06:39:48 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: David Woodhouse <dwmw@amazon.co.uk>,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paul Durrant <paul@xen.org>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	xen-devel@lists.xenproject.org,
+	qemu-block@nongnu.org,
+	Anthony Perard <anthony.perard@citrix.com>,
+	kvm@vger.kernel.org,
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH-for-9.0 v2 13/19] hw/xen: Remove use of 'target_ulong' in handle_ioreq()
+Date: Tue, 14 Nov 2023 15:38:09 +0100
+Message-ID: <20231114143816.71079-14-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231114143816.71079-1-philmd@linaro.org>
+References: <20231114143816.71079-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20231114165404.681826-1-ben.dooks@codethink.co.uk>
-In-Reply-To: <20231114165404.681826-1-ben.dooks@codethink.co.uk>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Nov 2023 17:14:08 +0000
-Message-ID: <CAFEAcA-MG+ak8+xVyqgpWqmKAryOXJtOckUmA=GysQwnpuz5SQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/arm_gicv3: ICC_PMR_EL1 high bits should be RAZ
-To: Ben Dooks <ben.dooks@codethink.co.uk>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zGkLvjQN5bMt
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: EV6Nak/z48z4
 
-On Tue, 14 Nov 2023 at 16:54, Ben Dooks <ben.dooks@codethink.co.uk> wrote:
->
-> The ICC_PMR_ELx bit msak returned from icc_fullprio_mask
-> should technically also remove any bit above 7 as these
-> are marked reserved (read 0) and should therefore should
-> not be written as anything other than 0.
->
-> Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
-> ---
->  hw/intc/arm_gicv3_cpuif.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-> index d07b13eb27..986044df79 100644
-> --- a/hw/intc/arm_gicv3_cpuif.c
-> +++ b/hw/intc/arm_gicv3_cpuif.c
-> @@ -803,7 +803,7 @@ static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
->       * with the group priority, whose mask depends on the value of BPR
->       * for the interrupt group.)
->       */
-> -    return ~0U << (8 - cs->pribits);
-> +    return (~0U << (8 - cs->pribits)) & 0xff;
->  }
+Per commit f17068c1c7 ("xen-hvm: reorganize xen-hvm and move common
+function to xen-hvm-common"), handle_ioreq() is expected to be
+target-agnostic. However it uses 'target_ulong', which is a target
+specific definition.
 
-The upper bits of ICC_PMR_ELx are defined as RES0, which has a
-complicated technical definition which you can find in the GIC
-architecture specification glossary. It's valid for RES0 bits to
-be implemented as reads-as-written, which is the way our current
-implementation works. Valid guest code should never be writing
-any non-zero value into those bits.
+Per xen/include/public/hvm/ioreq.h header:
 
-What problem are you running into that you're trying to fix
-with this patch? If our implementation misbehaves as a result
-of letting these high bits through into cs->icc_pmr_el1 that
-would be a good reason for making the change.
+  struct ioreq {
+    uint64_t addr;          /* physical address */
+    uint64_t data;          /* data (or paddr of data) */
+    uint32_t count;         /* for rep prefixes */
+    uint32_t size;          /* size in bytes */
+    uint32_t vp_eport;      /* evtchn for notifications to/from device model */
+    uint16_t _pad0;
+    uint8_t state:4;
+    uint8_t data_is_ptr:1;  /* if 1, data above is the guest paddr
+                             * of the real data to use. */
+    uint8_t dir:1;          /* 1=read, 0=write */
+    uint8_t df:1;
+    uint8_t _pad1:1;
+    uint8_t type;           /* I/O type */
+  };
+  typedef struct ioreq ioreq_t;
 
-If we do want to change this, for consistency we'd want
-to change icv_fullprio_mask() too.
+If 'data' is not a pointer, it is a u64.
 
-thanks
--- PMM
+- In PIO / VMWARE_PORT modes, only 32-bit are used.
+
+- In MMIO COPY mode, memory is accessed by chunks of 64-bit
+
+- In PCI_CONFIG mode, access is u8 or u16 or u32.
+
+- None of TIMEOFFSET / INVALIDATE use 'req'.
+
+- Fallback is only used in x86 for VMWARE_PORT.
+
+Masking the upper bits of 'data' to keep 'req->size' low bits
+is irrelevant of the target word size. Remove the word size
+check and always extract the relevant bits.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/xen/xen-hvm-common.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
+index bb3cfb200c..fb81bd8fbc 100644
+--- a/hw/xen/xen-hvm-common.c
++++ b/hw/xen/xen-hvm-common.c
+@@ -1,5 +1,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
++#include "qemu/bitops.h"
+ #include "qapi/error.h"
+ #include "trace.h"
+ 
+@@ -426,9 +427,8 @@ static void handle_ioreq(XenIOState *state, ioreq_t *req)
+     trace_handle_ioreq(req, req->type, req->dir, req->df, req->data_is_ptr,
+                        req->addr, req->data, req->count, req->size);
+ 
+-    if (!req->data_is_ptr && (req->dir == IOREQ_WRITE) &&
+-            (req->size < sizeof (target_ulong))) {
+-        req->data &= ((target_ulong) 1 << (8 * req->size)) - 1;
++    if (!req->data_is_ptr && (req->dir == IOREQ_WRITE)) {
++        req->data = extract64(req->data, 0, BITS_PER_BYTE * req->size);
+     }
+ 
+     if (req->dir == IOREQ_WRITE)
+-- 
+2.41.0

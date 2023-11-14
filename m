@@ -1,356 +1,535 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1735564ejc;
-        Mon, 13 Nov 2023 17:24:47 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHbxzZePxymB1IQRt+KzjDyncL+sIXHcHrUmPLna9SyxKOYgBHNz8QY5Nxm0JOnf6+6NsnD
-X-Received: by 2002:a05:620a:2489:b0:778:8ebc:129e with SMTP id i9-20020a05620a248900b007788ebc129emr1580730qkn.15.1699925087005;
-        Mon, 13 Nov 2023 17:24:47 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1699925086; cv=pass;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1752293ejc;
+        Mon, 13 Nov 2023 18:10:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFMdqBxw/kfeVF/Lg3fyAtlgEzXxHe50Orpcj5j6zG7mSBEh1T8Xn6Ix5cCWPLcAVsjDxCv
+X-Received: by 2002:a05:620a:430a:b0:77a:4606:7564 with SMTP id u10-20020a05620a430a00b0077a46067564mr1059162qko.41.1699927817109;
+        Mon, 13 Nov 2023 18:10:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699927817; cv=none;
         d=google.com; s=arc-20160816;
-        b=WM5ZzCrjqcKci3G8uZgPMvkKwiq6NzqABxsg1isoG1up3ijIP40Ru15mqgvxXqamgh
-         EczokKK4TWc0Kal7jOoTIq34nw6FpFTlG6I04UmF9DvMzdl8462k0d+myxMNZNOscQgz
-         h555f/0Ytz1wn/vjzenK3n/gOEPqmJEYXuKqvNNgBx0IOv2JIgUx9zKKIJZHjg3L2Vxb
-         VWm8+grG4mvnQYlwLKAA9lm/fgGB5CcxizDnNy2zBKGID8nOerqaV6M4NevAwpn6Gonm
-         nTAjm9azpkEHHkOFk7NBq2rgFJsDw2zHSkHyT2UEQLpIEo6BbVh+tUtzbtBUMCJicrjQ
-         HM9g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Tdk4+jrqxsIJk/TlHg8+1szt0R1k15ZsL5ZoqfpVy/5lKsRmD/YZktvw/E2QHCbMtT
+         WdsASPHoysZX/e+mtIoGtosLst+nuxequPamc/2K9W25HQ0a1wQkcEnbsGjSffKa60V8
+         U0YMJlDJLvj0yj0/yeJ3qIhdabV82R7/VsRrbn4TjcMAbmKPMkE+H79DtfFKHmWE3a3K
+         ddLcO4YLtG82CxKJLPfx85ehvz81LDxb9b0WCLl+PcWCe5k/uVHOdHHmzpSHyL9gjZse
+         t26gsdbMbFaR/Gsjq96yjuAJOGi5ox//WUE7C1i6V9BJ8QJ8msXR5BsrqjiMgU7Nl5yR
+         oVtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=sIwZlpSj6q1Lj2S+k8NotQ+zeT5BvJdNg1YZw5MztKY=;
-        fh=py/btQKIxwK2MrTa/62upHKAriPUEoT1ypJ6qF+R9qM=;
-        b=l9q0AMl9mdqQjRJblSuW9q5mSMA8oUOxLKuke1i1RRiKx7khtstTL1e1Fy6dqqIrNF
-         FjTG6Enw/Pjz/PAMyO1kaHfG6HgDxbcjDCw0rTt2veZhPhtuXNlEKwY57HMBVc5uGLPb
-         oZr49OCVNCzU6o1chYvH84p95Di4TYPXyeoHX3sVG8huNzpJBLj1UOOCDPyxO2lT6gSv
-         2H+hOtm8QcYbUqRtxGXOfygVAhdru2aL9Z3T5WoQ84TPjqnrQt+JrwMIMAycT//zzu3l
-         tFOIctP5PQdq434Hn43QcsbTIh9WjtSyU9ee5PoV+5CBSrS2RltJx6CTzLBR4hQoTBy1
-         gMLA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@nuvoton.com header.s=selector1 header.b=flOa8LBI;
-       arc=pass (i=1 spf=pass spfdomain=nuvoton.com dkim=pass dkdomain=nuvoton.com dmarc=pass fromdomain=nuvoton.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nuvoton.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=vbiTVookckMidOOPTQoozqrFKatQNEIrxbgSipaZNzQ=;
+        fh=G4J+9WsnWygNwyY7rkNUB1JzJfHo2WRvoqbUy/xtBZg=;
+        b=b/cDS0BgIH+2eunOFr5pzpZTTHaQr/Bq0Q/1hvqB+LPMJiNFJZ9nSsHv32ZzUecjJD
+         KBhYPsvLM5q5HEftDF6CEK9sLetAx4SEz6gxd+C0s+U2R0RTRJfKp/7M4xt/CFTVnjP9
+         EsYkXqpjpq7QctrOGg01kEvmxuZmXiCzc5uXbn/sBvLiB7+Ik+oeYTcPbrZCvcEg9ofs
+         nmIgPlQ6Cgfu90/KmZCJrkL6CMX2zlzO0Q6ZO4wVfQziDmtzq1whe4twNH1llcZlqvsG
+         1P4WFugTIfbvPHMbBJeuGABfWxEs0jykn/ianKvAZU646Jyl9Rj6aiB110xKMBR5TL0n
+         dYhA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eb8-20020a05620a480800b00779e70e2777si5853382qkb.519.2023.11.13.17.24.46
+        by mx.google.com with ESMTPS id br18-20020a05620a461200b0077a0282bfa1si6099590qkb.261.2023.11.13.18.10.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Nov 2023 17:24:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Nov 2023 18:10:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuvoton.com header.s=selector1 header.b=flOa8LBI;
-       arc=pass (i=1 spf=pass spfdomain=nuvoton.com dkim=pass dkdomain=nuvoton.com dmarc=pass fromdomain=nuvoton.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nuvoton.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2iAB-0008V9-Fy; Mon, 13 Nov 2023 20:24:24 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r2isL-0001Q2-M6; Mon, 13 Nov 2023 21:10:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <KFTING@nuvoton.com>)
- id 1r2iA7-0008TD-7g; Mon, 13 Nov 2023 20:24:20 -0500
-Received: from mail-psaapc01on20602.outbound.protection.outlook.com
- ([2a01:111:f400:feae::602]
- helo=APC01-PSA-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <KFTING@nuvoton.com>)
- id 1r2i9z-0007LA-Qz; Mon, 13 Nov 2023 20:24:18 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D+i8OQmBF//TQZqEza/s2mYcxy13INJNTo2C28JSWqNw/4MWH55gJPxK9md1yzWg61S2OwlOsAiRJbKyTJEYfwZvpkLYCCUWwaklc9jJWBX/U/Af3U8J1pyO6RQSvgALDLGGZZ9lW/uCgkdHAMhw3HRIJrUuWotUVtPrQPagwsoXfDYXcwPD/BwrAtohwPw8zPVDWyi5IIik18019oLsaVHr0hBuULC+tC91mQttu+yuBajAFSHqA6QlpCfdrZJgtNz7Y+BLmFw7f0DncQvLlD+ou7OIeUIC/vb72UShuEQqT0qFRm9R/0j8o9/HZGqWw7uWR1vwsstNbtApxhV5cw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sIwZlpSj6q1Lj2S+k8NotQ+zeT5BvJdNg1YZw5MztKY=;
- b=a36lT9dgchzrlvK6OCG1F9w2XY7USQ4ijodUiVtehVfXCC7Bv96Eo3zPIEO5bqY7N1/rOUT6uon2bdAFydpXVAIEoRTRLoqMqniDMZY24qdp3j13Qvzle0aQ6UF3hqEt57xG4z7befs2psw6otLT6dipewGRErVrlOtaunHj+zHSYr0Wgsj9Msr5b4A9MhsKHw0TW4hk8RFZI78G2Y5u6oS6UQ9d9OjbeL9gfC8PC7TMOxaaoogrrbP3f3wuMWTYKLvlH8yl4LCNqINVOVpZ5r+Q55BxSufIcUS3eW9fgQ0GibJWkkHDWi2utPs+yHJLE8bI9FxPYS91Pm4dkDw+zQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nuvoton.com; dmarc=pass action=none header.from=nuvoton.com;
- dkim=pass header.d=nuvoton.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nuvoton.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sIwZlpSj6q1Lj2S+k8NotQ+zeT5BvJdNg1YZw5MztKY=;
- b=flOa8LBILxzNurKk2dX6LYs49re/VjVcqiPN55wzxEg3uSuPQMOOiM2ZeRuJE1vIOqrMm/FR5vZvdqy8halDMWyBQg11dbEDv+kryUUXL2ci/vOARu5wXXie2/hU6oxRmS2uJgNUDKNU8MN52mAnAmO9V04M1vz5Bg1iUjlwfOM=
-Received: from KL1PR03MB7744.apcprd03.prod.outlook.com (2603:1096:820:ed::12)
- by SI2PR03MB6109.apcprd03.prod.outlook.com (2603:1096:4:14d::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.31; Tue, 14 Nov
- 2023 01:24:02 +0000
-Received: from KL1PR03MB7744.apcprd03.prod.outlook.com
- ([fe80::1947:30aa:d3b2:ac3b]) by KL1PR03MB7744.apcprd03.prod.outlook.com
- ([fe80::1947:30aa:d3b2:ac3b%5]) with mapi id 15.20.6977.029; Tue, 14 Nov 2023
- 01:24:02 +0000
-From: "KFTING@nuvoton.com" <KFTING@nuvoton.com>
-To: Nabih Estefan <nabihestefan@google.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "wuhaotsh@google.com" <wuhaotsh@google.com>,
- "jasonwang@redhat.com" <jasonwang@redhat.com>, "Avi.Fishman@nuvoton.com"
- <Avi.Fishman@nuvoton.com>, "KWLIU@nuvoton.com" <KWLIU@nuvoton.com>,
- "tomer.maimon@nuvoton.com" <tomer.maimon@nuvoton.com>,
- "Hila.Miranda-Kuzi@nuvoton.com" <Hila.Miranda-Kuzi@nuvoton.com>
-Subject: RE: [PATCH v5 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
-Thread-Topic: [PATCH v5 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
-Thread-Index: AQHaCP7Q61gwJ7Nz0k+5kv3ABox+AbB5IF6w
-Date: Tue, 14 Nov 2023 01:24:01 +0000
-Message-ID: <KL1PR03MB7744A70A81045E5DC49C8191DBB2A@KL1PR03MB7744.apcprd03.prod.outlook.com>
-References: <20231027175532.3601297-1-nabihestefan@google.com>
- <20231027175532.3601297-4-nabihestefan@google.com>
-In-Reply-To: <20231027175532.3601297-4-nabihestefan@google.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nuvoton.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR03MB7744:EE_|SI2PR03MB6109:EE_
-x-ms-office365-filtering-correlation-id: 1cb2c765-35bc-47e4-533d-08dbe4b0626b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: zUcH2SfVMzHGpH+TOUhWXAMAwesiWziDqGzgEyqKVAVEWAiu/KQOI3EOlo7gpeqF0hJFoQyQJGErQb8lqtr4STkVlKG7VlWnoOYaDoHrWNCS6GftlXPUdf1ZyIoq8J7rbZbeZpuc+nI4cDkPZI76Yrm+rk56g62oQbA1Qzul4vp6GRsxgj7Cgl2IoqVAaWvXozphoKQ+UvNQKy/DXad+V/PlIGMF++LmYG63qH274pbhvQEqOjkL1Hlt7+npnmNdNm43TsZK0iKbZ2euscvzyD7tvT7CaPuGVDY8CXD1pRHHZO+YH2CTSDnBf07sd3VCulD8VEDzUJusdPWKrfB9RhrrJv94kAFkqpmXKD/8eCtJVW95IbTvhPyxL13Kgi+7pNcPmhyVGbwqW935+ynoS2DGdqtSaw3tK8H8bhENPhnMlEmpcJP+OJh5yJDC6kTTeuutt7BZfmZAm22eHpg8s9qiUC4/Di04yndCjFCBpw6kK1h9Z/cDadg+Me/U2nj8MeDJ6ZPfrwvgcWwQRqFJIY15NXrQAu/syr/6N5dgFmX9mqnHAqZrLqIW1MtXqBbre1PEIoo4YgyqgekvYGZPxW7efhn+5esuzbXO00Nt3AgskqVLz/lkewTSqPaD11ByxXP0f4e3hb2xnRZGl4gaO+bX5cHMZ0bdAm4el9ZVK0tB20Fvtm9bgvr7y82IsxiOiZ6yGLlPiMHQljpoOFt+b1Nlb9mZ6DV8J9kWDC7dh9c=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR03MB7744.apcprd03.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376002)(366004)(346002)(136003)(39860400002)(396003)(230173577357003)(230273577357003)(230922051799003)(1800799009)(186009)(64100799003)(451199024)(55016003)(4326008)(41300700001)(2906002)(15650500001)(5660300002)(52536014)(83380400001)(316002)(8676002)(8936002)(38070700009)(64756008)(66476007)(66446008)(66556008)(54906003)(86362001)(66946007)(33656002)(38100700002)(71200400001)(7696005)(6506007)(53546011)(478600001)(76116006)(110136005)(122000001)(107886003)(9686003)(26005)(2004002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aEUrWGV0WDNnTyszZGM1NzZrMVN0WTk2RklmRlRNR1ZhK1pmRkJkbCt4azd2?=
- =?utf-8?B?aVFNSmdXZGlNdkJkQklZc3lJVUpwWFBFdWJGeW5HL3lIUFZKRVN1WDdJZjZE?=
- =?utf-8?B?UXp4dDJKUURYMmRRNThGWnBUMHU2SzRGNnp0L1BRenBFdkZ0Tkd6WWladG1F?=
- =?utf-8?B?RjVIbGo1OHlibjFKRW1ta09oSXFKWDJKV1hlRjNJQTg4Z2YwR1o0R2V2RU1a?=
- =?utf-8?B?b3ptRWJ6RUJKaUhadXpXZVVwVGtvQ3NocDRxUnZlZWJUZU9jSy9zSzY5Mnlo?=
- =?utf-8?B?SHcwRWRRUWN5WllJdWRvTUtFRXh5K1RkSTJLeURrNUlnOW5BVlhDU0M0alVJ?=
- =?utf-8?B?TURjNTN0d21saHFVQmdiMHY2ZWFiamdWbXVtS29ZeVVZZWlvaTFsS2dqR2g4?=
- =?utf-8?B?UVJqR1JCVm8vWHBEKzA1MlNPRHdPMXJ0ZjZlOStScWJ2Q0RLS2VNRGZmd3o1?=
- =?utf-8?B?VW9PT1RiQ0hUalZmOWw5Ynk2MlI1dGVzdVlKL1lPc0hjcktYN2tLYytTemFR?=
- =?utf-8?B?UHZ0aWE3c3NBU2lQUXNnZnoyM0tveUJ6YVc1OUFsbXl3Y1lCeGVuMVgvT3Qx?=
- =?utf-8?B?L2YybW55SkszM3d0YVBLSUpyOGRBaXV1YUtLUjZ2b2ZwYk9HRVlPdWdVUVc2?=
- =?utf-8?B?b0dzbFJQbzNTb05meWpXQXg4VVJCZTMvU3l1TE1oWjBqY3Q5end0eVB0eW5U?=
- =?utf-8?B?TWszMDFndlhnVVVnTXZPNm1EaVN4T21MZEVCaEMwRXFSL09UYm9MdlppckxJ?=
- =?utf-8?B?cGxlVTQ1d05SeVllbmJmTWFhUk5QV3NsVWRSVTFWbEdlRmplNDhpQUVMbXkr?=
- =?utf-8?B?QjBJdkFYU2hmaGF6UXVVUWtqQTBnN2phVXprSVhNZUZDNk55RXBjVDExdUNH?=
- =?utf-8?B?VVZRMmRRejlwclNHL3FwNmRvWFdNZ2RKN2VhOTNMRERucjgxakRXZ294VmVR?=
- =?utf-8?B?SjBoZklCM2FiKzhJYm00MkdXVDhhbVIwcXlHb3R4MVpCeTNoa2cwcVNQV3Vy?=
- =?utf-8?B?MUUvQjJ3NVkrNUJwdmVSMGsrZmsvWHZWeVhtUGZCWHR1bzJwbkZEcnQ1V2Nk?=
- =?utf-8?B?Q3hYeG4wZ3BzVmNONWVSRTM1eGVVaHIyOUU0RmlRMWxqUjJoQVRnQ3Arejcz?=
- =?utf-8?B?NWpPMkZxUnRCY3NlblR4SUx0SkVyVC9meDlPeWx4Yk9uTWNsZUE5enFwS1hB?=
- =?utf-8?B?YmRtbVhVTmdlL0VMRk1wVlYwQW1NeDJLaEZJbE5heVdVbDNSYWhEWmpJakFx?=
- =?utf-8?B?V0V2M3ZhRlZwaEtrK3NhMnQ5ZW1VeHVHUngyOHBjYk1KbmZOZjIxWmkreG5q?=
- =?utf-8?B?amFJTHd4eGRiWDlUSGV0SmxKd0p3VmxzVEpkMkhaUEYwNHZHUVJDbkpqR3hY?=
- =?utf-8?B?U1RlbEVsN0NOQkp5S3B4aWdFNHZIYWZwWnl4aklJOFh1MnIwMWFwdFEyejRL?=
- =?utf-8?B?ZExNdmV5NEY1dXYxbFlzM3pwRjN6K01VSkViWitIWGozZFBia202SkJjOVBa?=
- =?utf-8?B?UGNPbXdwb0VleUpMdkZyYmpCb1RnK044YlJKem12RjJscTg0WVpHOUI5Q1N2?=
- =?utf-8?B?M0ZDN2ViTGpVZGVoZ3N0c3ptWUxCNjVKZXBUYWptTEtKTnZpWFIxN3hYaEpF?=
- =?utf-8?B?QWFOTUxQM0JhcXNNdkJadlptbjlFcldCT1FYSWljelExWEVrUjJKUFhncDdC?=
- =?utf-8?B?RlJZVFl3SU51NmJ0MHRLdUd0dFFwcWRYU09aMzM1QUVaNE05VndjTy8vbnIr?=
- =?utf-8?B?TG4rL1RCRS90SWtJRjZ3UGtSdDV0STl5eXQ3ZkJwekpPWkltcWtCRzQ5SmFm?=
- =?utf-8?B?dWFNL3pMT1IrWitKdjd5Skx4SUIzYVhYNGtGR3JlR1Z5TWxSK3FpUDQ3VXJa?=
- =?utf-8?B?MjZwY3RoQkVVNFlVVFc2U0h0NE5td2Z3VFZrcktiZkZkbE9SaENYYkhiaHJY?=
- =?utf-8?B?WW5mMmZ4Q2dKdWdXMGNveHE5eFRERy9kTlp6TzJIc3lZc1JRbVVZT2FNUGlL?=
- =?utf-8?B?bDZvUHRqZjdIUzgvakVCZjY2cm5SSEFwNUVzTERvNWNMQXBqWHl5TmQ1bFB3?=
- =?utf-8?B?S3h1RDNYQ1FucmhqcjR5TjBITFJVRytOWHNXK0FDcnBMRDY5ME5BQzZ1TTBV?=
- =?utf-8?Q?Ui5UZ1ZbXM6gTVSkKYzqXJ06z?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1r2isJ-0001PO-Sx; Mon, 13 Nov 2023 21:09:59 -0500
+Received: from mail-pj1-f47.google.com ([209.85.216.47])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1r2isH-0007c0-Kr; Mon, 13 Nov 2023 21:09:59 -0500
+Received: by mail-pj1-f47.google.com with SMTP id
+ 98e67ed59e1d1-280137f1a1bso4036895a91.1; 
+ Mon, 13 Nov 2023 18:09:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1699927795; x=1700532595;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vbiTVookckMidOOPTQoozqrFKatQNEIrxbgSipaZNzQ=;
+ b=YIb/U7QRIuSOxEy8XAJ1oVMHU29J8IgXXHNvd0f8m9TgjOluxCp12pUZ/wnuz/iRWy
+ gA7eq2qtJzJ1B3GIPJfF6fk7AP1Dhkv8MAgF58yqq9ISEQPqT/yyM++Mgdj0aqulXAw3
+ pxBMCDMfTtQwHtiu1zbCOSkQRFYPmbB+05/62K5A3TazDNBoRgPOjZfxTuR7iszcvb9W
+ IYHlmITrGmFQsvdfXIU4fhQiov+vCjfnM6bNsalODUb+0ZMP9whx3c44MO//xxCifMEq
+ lU/gvRfkVTMjRHI1AXVtEoj8oaDjRV8tVuhVyqIFTzkOoOwo+h+e6By88RIaVaydnmJR
+ lG4g==
+X-Gm-Message-State: AOJu0YzlM+PyaNA8MZy0j5i7sy1inI3KdJNqLNdDBbDHQfeOGf18jA4E
+ RCBzxlATfS1DqnkXGU7XDdhL0QXw9HGfWA==
+X-Received: by 2002:a17:90b:3b88:b0:27d:1051:83c4 with SMTP id
+ pc8-20020a17090b3b8800b0027d105183c4mr6314581pjb.12.1699927795268; 
+ Mon, 13 Nov 2023 18:09:55 -0800 (PST)
+Received: from localhost.localdomain ([2601:642:4c01:2f7:5d09:c219:9099:a639])
+ by smtp.gmail.com with ESMTPSA id
+ g13-20020a17090ae58d00b0027d12b1e29dsm6175362pjz.25.2023.11.13.18.09.52
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 13 Nov 2023 18:09:54 -0800 (PST)
+From: Joelle van Dyne <j@getutm.app>
+To: qemu-devel@nongnu.org
+Cc: Joelle van Dyne <j@getutm.app>, Stefan Berger <stefanb@linux.ibm.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs),
+ qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
+Subject: [PATCH v5 11/14] tpm_crb_sysbus: introduce TPM CRB SysBus device
+Date: Mon, 13 Nov 2023 18:09:21 -0800
+Message-ID: <20231114020927.62315-12-j@getutm.app>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231114020927.62315-1-j@getutm.app>
+References: <20231114020927.62315-1-j@getutm.app>
 MIME-Version: 1.0
-X-OriginatorOrg: nuvoton.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB7744.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1cb2c765-35bc-47e4-533d-08dbe4b0626b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Nov 2023 01:24:01.9208 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a3f24931-d403-4b4a-94f1-7d83ac638e07
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pCH87+9C8KH8souGum4tAGJ2PjXdf04d0MelvCrjFI41EeR0cI6LWEmAN/HdkMlMepvKyS3Y9eWhIWtGLs0DTw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB6109
-Received-SPF: pass client-ip=2a01:111:f400:feae::602;
- envelope-from=KFTING@nuvoton.com;
- helo=APC01-PSA-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=209.85.216.47; envelope-from=osy86dev@gmail.com;
+ helo=mail-pj1-f47.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 17+17dbKN1lz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bzu5Ypz0uJZS
 
-DQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBOYWJpaCBFc3RlZmFuIDxuYWJp
-aGVzdGVmYW5AZ29vZ2xlLmNvbT4NClNlbnQ6IFNhdHVyZGF5LCBPY3RvYmVyIDI4LCAyMDIzIDE6
-NTUgQU0NClRvOiBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmcNCkNjOiBxZW11LWFybUBub25nbnUu
-b3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmc7IENTMjAgS0ZUaW5nIDxLRlRJTkdAbnV2b3Rvbi5j
-b20+OyB3dWhhb3RzaEBnb29nbGUuY29tOyBqYXNvbndhbmdAcmVkaGF0LmNvbTsgSVMyMCBBdmkg
-RmlzaG1hbiA8QXZpLkZpc2htYW5AbnV2b3Rvbi5jb20+OyBuYWJpaGVzdGVmYW5AZ29vZ2xlLmNv
-bTsgQ1MyMCBLV0xpdSA8S1dMSVVAbnV2b3Rvbi5jb20+OyBJUzIwIFRvbWVyIE1haW1vbiA8dG9t
-ZXIubWFpbW9uQG51dm90b24uY29tPjsgSU4yMCBIaWxhIE1pcmFuZGEtS3V6aSA8SGlsYS5NaXJh
-bmRhLUt1emlAbnV2b3Rvbi5jb20+DQpTdWJqZWN0OiBbUEFUQ0ggdjUgMDMvMTFdIGh3L21pc2M6
-IEFkZCBxdGVzdCBmb3IgTlBDTTd4eCBQQ0kgTWFpbGJveA0KDQpDQVVUSU9OIC0gRXh0ZXJuYWwg
-RW1haWw6IERvIG5vdCBjbGljayBsaW5rcyBvciBvcGVuIGF0dGFjaG1lbnRzIHVubGVzcyB5b3Ug
-YWNrbm93bGVkZ2UgdGhlIHNlbmRlciBhbmQgY29udGVudC4NCg0KDQpGcm9tOiBIYW8gV3UgPHd1
-aGFvdHNoQGdvb2dsZS5jb20+DQoNClRoaXMgcGF0Y2hlcyBhZGRzIGEgcXRlc3QgZm9yIE5QQ003
-WFggUENJIE1haWxib3ggbW9kdWxlLg0KSXQgc2VuZHMgcmVhZCBhbmQgd3JpdGUgcmVxdWVzdHMg
-dG8gdGhlIG1vZHVsZSwgYW5kIHZlcmlmaWVzIHRoYXQgdGhlIG1vZHVsZSBjb250YWlucyB0aGUg
-Y29ycmVjdCBkYXRhIGFmdGVyIHRoZSByZXF1ZXN0cy4NCg0KQ2hhbmdlLUlkOiBJZDdhNGIzY2Jl
-YTU2NDM4M2I5NGQ1MDc1NTJkZmQxNmY2YjUxMjdkMQ0KU2lnbmVkLW9mZi1ieTogSGFvIFd1IDx3
-dWhhb3RzaEBnb29nbGUuY29tPg0KU2lnbmVkLW9mZi1ieTogTmFiaWggRXN0ZWZhbiA8bmFiaWhl
-c3RlZmFuQGdvb2dsZS5jb20+DQotLS0NCiB0ZXN0cy9xdGVzdC9tZXNvbi5idWlsZCAgICAgICAg
-ICAgICB8ICAgMSArDQogdGVzdHMvcXRlc3QvbnBjbTd4eF9wY2lfbWJveC10ZXN0LmMgfCAyMzgg
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKw0KIDIgZmlsZXMgY2hhbmdlZCwgMjM5IGluc2Vy
-dGlvbnMoKykNCiBjcmVhdGUgbW9kZSAxMDA2NDQgdGVzdHMvcXRlc3QvbnBjbTd4eF9wY2lfbWJv
-eC10ZXN0LmMNCg0KZGlmZiAtLWdpdCBhL3Rlc3RzL3F0ZXN0L21lc29uLmJ1aWxkIGIvdGVzdHMv
-cXRlc3QvbWVzb24uYnVpbGQgaW5kZXggZDYwMjJlYmQ2NC4uZGFlYzIxOWEzMiAxMDA2NDQNCi0t
-LSBhL3Rlc3RzL3F0ZXN0L21lc29uLmJ1aWxkDQorKysgYi90ZXN0cy9xdGVzdC9tZXNvbi5idWls
-ZA0KQEAgLTE4Myw2ICsxODMsNyBAQCBxdGVzdHNfc3BhcmM2NCA9IFwNCiBxdGVzdHNfbnBjbTd4
-eCA9IFwNCiAgIFsnbnBjbTd4eF9hZGMtdGVzdCcsDQogICAgJ25wY203eHhfZ3Bpby10ZXN0JywN
-CisgICAnbnBjbTd4eF9wY2lfbWJveC10ZXN0JywNCiAgICAnbnBjbTd4eF9wd20tdGVzdCcsDQog
-ICAgJ25wY203eHhfcm5nLXRlc3QnLA0KICAgICducGNtN3h4X3NkaGNpLXRlc3QnLA0KZGlmZiAt
-LWdpdCBhL3Rlc3RzL3F0ZXN0L25wY203eHhfcGNpX21ib3gtdGVzdC5jIGIvdGVzdHMvcXRlc3Qv
-bnBjbTd4eF9wY2lfbWJveC10ZXN0LmMNCm5ldyBmaWxlIG1vZGUgMTAwNjQ0DQppbmRleCAwMDAw
-MDAwMDAwLi4yNGVlYzE4ZTNjDQotLS0gL2Rldi9udWxsDQorKysgYi90ZXN0cy9xdGVzdC9ucGNt
-N3h4X3BjaV9tYm94LXRlc3QuYw0KQEAgLTAsMCArMSwyMzggQEANCisvKg0KKyAqIFFUZXN0cyBm
-b3IgTnV2b3RvbiBOUENNN3h4IFBDSSBNYWlsYm94IE1vZHVsZXMuDQorICoNCisgKiBDb3B5cmln
-aHQgMjAyMSBHb29nbGUgTExDDQorICoNCisgKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2Fy
-ZTsgeW91IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeQ0KK2l0DQorICogdW5kZXIg
-dGhlIHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcyBwdWJsaXNoZWQg
-YnkNCit0aGUNCisgKiBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb247IGVpdGhlciB2ZXJzaW9uIDIg
-b2YgdGhlIExpY2Vuc2UsIG9yDQorICogKGF0IHlvdXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lv
-bi4NCisgKg0KKyAqIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSB0aGF0
-IGl0IHdpbGwgYmUgdXNlZnVsLCBidXQNCitXSVRIT1VUDQorICogQU5ZIFdBUlJBTlRZOyB3aXRo
-b3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFudHkgb2YgTUVSQ0hBTlRBQklMSVRZDQorb3INCisg
-KiBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gU2VlIHRoZSBHTlUgR2VuZXJhbCBQ
-dWJsaWMgTGljZW5zZQ0KKyAqIGZvciBtb3JlIGRldGFpbHMuDQorICovDQorDQorI2luY2x1ZGUg
-InFlbXUvb3NkZXAuaCINCisjaW5jbHVkZSAicWVtdS9iaXRvcHMuaCINCisjaW5jbHVkZSAicWFw
-aS9xbXAvcWRpY3QuaCINCisjaW5jbHVkZSAicWFwaS9xbXAvcW51bS5oIg0KKyNpbmNsdWRlICJs
-aWJxdGVzdC1zaW5nbGUuaCINCisNCisjZGVmaW5lIFBDSV9NQk9YX0JBICAgICAgICAgMHhmMDg0
-ODAwMA0KKyNkZWZpbmUgUENJX01CT1hfSVJRICAgICAgICA4DQorDQorLyogcmVnaXN0ZXIgb2Zm
-c2V0ICovDQorI2RlZmluZSBQQ0lfTUJPWF9TVEFUICAgICAgIDB4MDANCisjZGVmaW5lIFBDSV9N
-Qk9YX0NUTCAgICAgICAgMHgwNA0KKyNkZWZpbmUgUENJX01CT1hfQ01EICAgICAgICAweDA4DQor
-DQorI2RlZmluZSBDT0RFX09LICAgICAgICAgICAgIDB4MDANCisjZGVmaW5lIENPREVfSU5WQUxJ
-RF9PUCAgICAgMHhhMA0KKyNkZWZpbmUgQ09ERV9JTlZBTElEX1NJWkUgICAweGExDQorI2RlZmlu
-ZSBDT0RFX0VSUk9SICAgICAgICAgIDB4ZmYNCisNCisjZGVmaW5lIE9QX1JFQUQgICAgICAgICAg
-ICAgMHgwMQ0KKyNkZWZpbmUgT1BfV1JJVEUgICAgICAgICAgICAweDAyDQorI2RlZmluZSBPUF9J
-TlZBTElEICAgICAgICAgIDB4NDENCisNCisNCitzdGF0aWMgaW50IHNvY2s7DQorc3RhdGljIGlu
-dCBmZDsNCisNCisvKg0KKyAqIENyZWF0ZSBhIGxvY2FsIFRDUCBzb2NrZXQgd2l0aCBhbnkgcG9y
-dCwgdGhlbiBzYXZlIG9mZiB0aGUgcG9ydCB3ZSBnb3QuDQorICovDQorc3RhdGljIGluX3BvcnRf
-dCBvcGVuX3NvY2tldCh2b2lkKQ0KK3sNCisgICAgc3RydWN0IHNvY2thZGRyX2luIG15YWRkcjsN
-CisgICAgc29ja2xlbl90IGFkZHJsZW47DQorDQorICAgIG15YWRkci5zaW5fZmFtaWx5ID0gQUZf
-SU5FVDsNCisgICAgbXlhZGRyLnNpbl9hZGRyLnNfYWRkciA9IGh0b25sKElOQUREUl9MT09QQkFD
-Syk7DQorICAgIG15YWRkci5zaW5fcG9ydCA9IDA7DQorICAgIHNvY2sgPSBzb2NrZXQoQUZfSU5F
-VCwgU09DS19TVFJFQU0sIElQUFJPVE9fVENQKTsNCisgICAgZ19hc3NlcnQoc29jayAhPSAtMSk7
-DQorICAgIGdfYXNzZXJ0KGJpbmQoc29jaywgKHN0cnVjdCBzb2NrYWRkciAqKSAmbXlhZGRyLCBz
-aXplb2YobXlhZGRyKSkgIT0gLTEpOw0KKyAgICBhZGRybGVuID0gc2l6ZW9mKG15YWRkcik7DQor
-ICAgIGdfYXNzZXJ0KGdldHNvY2tuYW1lKHNvY2ssIChzdHJ1Y3Qgc29ja2FkZHIgKikgJm15YWRk
-ciAsICZhZGRybGVuKSAhPSAtMSk7DQorICAgIGdfYXNzZXJ0KGxpc3Rlbihzb2NrLCAxKSAhPSAt
-MSk7DQorICAgIHJldHVybiBudG9ocyhteWFkZHIuc2luX3BvcnQpOw0KK30NCisNCitzdGF0aWMg
-dm9pZCBzZXR1cF9mZCh2b2lkKQ0KK3sNCisgICAgZmRfc2V0IHJlYWRmZHM7DQorDQorICAgIEZE
-X1pFUk8oJnJlYWRmZHMpOw0KKyAgICBGRF9TRVQoc29jaywgJnJlYWRmZHMpOw0KKyAgICBnX2Fz
-c2VydChzZWxlY3Qoc29jayArIDEsICZyZWFkZmRzLCBOVUxMLCBOVUxMLCBOVUxMKSA9PSAxKTsN
-CisNCisgICAgZmQgPSBhY2NlcHQoc29jaywgTlVMTCwgMCk7DQorICAgIGdfYXNzZXJ0KGZkID49
-IDApOw0KK30NCisNCitzdGF0aWMgdWludDhfdCByZWFkX3Jlc3BvbnNlKHVpbnQ4X3QgKmJ1Ziwg
-c2l6ZV90IGxlbikgew0KKyAgICB1aW50OF90IGNvZGU7DQorICAgIHNzaXplX3QgcmV0ID0gcmVh
-ZChmZCwgJmNvZGUsIDEpOw0KKw0KKyAgICBpZiAocmV0ID09IC0xKSB7DQorICAgICAgICByZXR1
-cm4gQ09ERV9FUlJPUjsNCisgICAgfQ0KKyAgICBpZiAoY29kZSAhPSBDT0RFX09LKSB7DQorICAg
-ICAgICByZXR1cm4gY29kZTsNCisgICAgfQ0KKyAgICBnX3Rlc3RfbWVzc2FnZSgicmVzcG9uc2Ug
-Y29kZTogJXgiLCBjb2RlKTsNCisgICAgaWYgKGxlbiA+IDApIHsNCisgICAgICAgIHJldCA9IHJl
-YWQoZmQsIGJ1ZiwgbGVuKTsNCisgICAgICAgIGlmIChyZXQgPCBsZW4pIHsNCisgICAgICAgICAg
-ICByZXR1cm4gQ09ERV9FUlJPUjsNCisgICAgICAgIH0NCisgICAgfQ0KKyAgICByZXR1cm4gQ09E
-RV9PSzsNCit9DQorDQorc3RhdGljIHZvaWQgcmVjZWl2ZV9kYXRhKHVpbnQ2NF90IG9mZnNldCwg
-dWludDhfdCAqYnVmLCBzaXplX3QgbGVuKSB7DQorICAgIHVpbnQ4X3Qgb3AgPSBPUF9SRUFEOw0K
-KyAgICB1aW50OF90IGNvZGU7DQorICAgIHNzaXplX3QgcnY7DQorDQorICAgIHdoaWxlIChsZW4g
-PiAwKSB7DQorICAgICAgICB1aW50OF90IHNpemU7DQorDQorICAgICAgICBpZiAobGVuID49IDgp
-IHsNCisgICAgICAgICAgICBzaXplID0gODsNCisgICAgICAgIH0gZWxzZSBpZiAobGVuID49IDQp
-IHsNCisgICAgICAgICAgICBzaXplID0gNDsNCisgICAgICAgIH0gZWxzZSBpZiAobGVuID49IDIp
-IHsNCisgICAgICAgICAgICBzaXplID0gMjsNCisgICAgICAgIH0gZWxzZSB7DQorICAgICAgICAg
-ICAgc2l6ZSA9IDE7DQorICAgICAgICB9DQorDQorICAgICAgICBnX3Rlc3RfbWVzc2FnZSgicmVj
-ZWl2aW5nICV1IGJ5dGVzIiwgc2l6ZSk7DQorICAgICAgICAvKiBXcml0ZSBvcCAqLw0KKyAgICAg
-ICAgcnYgPSB3cml0ZShmZCwgJm9wLCAxKTsNCisgICAgICAgIGdfYXNzZXJ0X2NtcGludChydiwg
-PT0sIDEpOw0KKyAgICAgICAgLyogV3JpdGUgb2Zmc2V0ICovDQorICAgICAgICBydiA9IHdyaXRl
-KGZkLCAodWludDhfdCAqKSZvZmZzZXQsIHNpemVvZih1aW50NjRfdCkpOw0KKyAgICAgICAgZ19h
-c3NlcnRfY21waW50KHJ2LCA9PSwgc2l6ZW9mKHVpbnQ2NF90KSk7DQorICAgICAgICAvKiBXcml0
-ZSBzaXplICovDQorICAgICAgICBnX2Fzc2VydF9jbXBpbnQod3JpdGUoZmQsICZzaXplLCAxKSwg
-PT0sIDEpOw0KKw0KKyAgICAgICAgLyogUmVhZCBkYXRhIGFuZCBFeHBlY3QgcmVzcG9uc2UgKi8N
-CisgICAgICAgIGNvZGUgPSByZWFkX3Jlc3BvbnNlKGJ1Ziwgc2l6ZSk7DQorICAgICAgICBnX2Fz
-c2VydF9jbXBoZXgoY29kZSwgPT0sIENPREVfT0spOw0KKw0KKyAgICAgICAgYnVmICs9IHNpemU7
-DQorICAgICAgICBvZmZzZXQgKz0gc2l6ZTsNCisgICAgICAgIGxlbiAtPSBzaXplOw0KKyAgICB9
-DQorfQ0KKw0KK3N0YXRpYyB2b2lkIHNlbmRfZGF0YSh1aW50NjRfdCBvZmZzZXQsIGNvbnN0IHVp
-bnQ4X3QgKmJ1Ziwgc2l6ZV90IGxlbikNCit7DQorICAgIHVpbnQ4X3Qgb3AgPSBPUF9XUklURTsN
-CisgICAgdWludDhfdCBjb2RlOw0KKyAgICBzc2l6ZV90IHJ2Ow0KKw0KKyAgICB3aGlsZSAobGVu
-ID4gMCkgew0KKyAgICAgICAgdWludDhfdCBzaXplOw0KKw0KKyAgICAgICAgaWYgKGxlbiA+PSA4
-KSB7DQorICAgICAgICAgICAgc2l6ZSA9IDg7DQorICAgICAgICB9IGVsc2UgaWYgKGxlbiA+PSA0
-KSB7DQorICAgICAgICAgICAgc2l6ZSA9IDQ7DQorICAgICAgICB9IGVsc2UgaWYgKGxlbiA+PSAy
-KSB7DQorICAgICAgICAgICAgc2l6ZSA9IDI7DQorICAgICAgICB9IGVsc2Ugew0KKyAgICAgICAg
-ICAgIHNpemUgPSAxOw0KKyAgICAgICAgfQ0KKw0KKyAgICAgICAgZ190ZXN0X21lc3NhZ2UoInNl
-bmRpbmcgJXUgYnl0ZXMiLCBzaXplKTsNCisgICAgICAgIC8qIFdyaXRlIG9wICovDQorICAgICAg
-ICBydiA9IHdyaXRlKGZkLCAmb3AsIDEpOw0KKyAgICAgICAgZ19hc3NlcnRfY21waW50KHJ2LCA9
-PSwgMSk7DQorICAgICAgICAvKiBXcml0ZSBvZmZzZXQgKi8NCisgICAgICAgIHJ2ID0gd3JpdGUo
-ZmQsICh1aW50OF90ICopJm9mZnNldCwgc2l6ZW9mKHVpbnQ2NF90KSk7DQorICAgICAgICBnX2Fz
-c2VydF9jbXBpbnQocnYsID09LCBzaXplb2YodWludDY0X3QpKTsNCisgICAgICAgIC8qIFdyaXRl
-IHNpemUgKi8NCisgICAgICAgIGdfYXNzZXJ0X2NtcGludCh3cml0ZShmZCwgJnNpemUsIDEpLCA9
-PSwgMSk7DQorICAgICAgICAvKiBXcml0ZSBkYXRhICovDQorICAgICAgICBnX2Fzc2VydF9jbXBp
-bnQod3JpdGUoZmQsIGJ1Ziwgc2l6ZSksID09LCBzaXplKTsNCisNCisgICAgICAgIC8qIEV4cGVj
-dCByZXNwb25zZSAqLw0KKyAgICAgICAgY29kZSA9IHJlYWRfcmVzcG9uc2UoTlVMTCwgMCk7DQor
-ICAgICAgICBnX2Fzc2VydF9jbXBoZXgoY29kZSwgPT0sIENPREVfT0spOw0KKw0KKyAgICAgICAg
-YnVmICs9IHNpemU7DQorICAgICAgICBvZmZzZXQgKz0gc2l6ZTsNCisgICAgICAgIGxlbiAtPSBz
-aXplOw0KKyAgICB9DQorfQ0KKw0KK3N0YXRpYyB2b2lkIHRlc3RfaW52YWxpZF9vcCh2b2lkKQ0K
-K3sNCisgICAgdWludDhfdCBvcCA9IE9QX0lOVkFMSUQ7DQorICAgIHVpbnQ4X3QgY29kZTsNCisg
-ICAgdWludDhfdCBidWZbMV07DQorDQorICAgIGdfYXNzZXJ0X2NtcGludCh3cml0ZShmZCwgJm9w
-LCAxKSwgPT0sIDEpOw0KKyAgICBjb2RlID0gcmVhZF9yZXNwb25zZShidWYsIDEpOw0KKyAgICBn
-X2Fzc2VydF9jbXBoZXgoY29kZSwgPT0sIENPREVfSU5WQUxJRF9PUCk7IH0NCisNCisvKiBTZW5k
-IGRhdGEgdmlhIGNoYXJkZXYgYW5kIHJlYWQgdGhlbSBpbiBndWVzdC4gKi8gc3RhdGljIHZvaWQN
-Cit0ZXN0X2d1ZXN0X3JlYWQodm9pZCkgew0KKyAgICBjb25zdCBjaGFyICpkYXRhID0gIkhlbGxv
-IFdvcmxkISI7DQorICAgIHVpbnQ2NF90IG9mZnNldCA9IDB4YTA7DQorICAgIGNoYXIgYnVmWzEw
-MF07DQorICAgIHNpemVfdCBsZW4gPSBzdHJsZW4oZGF0YSk7DQorDQorICAgIHNlbmRfZGF0YShv
-ZmZzZXQsICh1aW50OF90ICopZGF0YSwgbGVuKTsNCisgICAgbWVtcmVhZChQQ0lfTUJPWF9CQSAr
-IG9mZnNldCwgYnVmLCBsZW4pOw0KKyAgICBnX2Fzc2VydF9jbXBpbnQoc3RybmNtcChkYXRhLCBi
-dWYsIGxlbiksID09LCAwKTsgfQ0KKw0KKy8qIFdyaXRlIGRhdGEgaW4gZ3Vlc3QgYW5kIHJlYWQg
-b3V0IHZpYSBjaGFyZGV2LiAqLyBzdGF0aWMgdm9pZA0KK3Rlc3RfZ3Vlc3Rfd3JpdGUodm9pZCkg
-ew0KKyAgICBjb25zdCBjaGFyICpkYXRhID0gIkhlbGxvIFdvcmxkISI7DQorICAgIHVpbnQ2NF90
-IG9mZnNldCA9IDB4YTA7DQorICAgIGNoYXIgYnVmWzEwMF07DQorICAgIHNpemVfdCBsZW4gPSBz
-dHJsZW4oZGF0YSk7DQorDQorICAgIG1lbXdyaXRlKFBDSV9NQk9YX0JBICsgb2Zmc2V0LCBkYXRh
-LCBsZW4pOw0KKyAgICByZWNlaXZlX2RhdGEob2Zmc2V0LCAodWludDhfdCAqKWJ1ZiwgbGVuKTsN
-CisgICAgZ19hc3NlcnRfY21waW50KHN0cm5jbXAoZGF0YSwgYnVmLCBsZW4pLCA9PSwgMCk7IH0N
-CisNCitpbnQgbWFpbihpbnQgYXJnYywgY2hhciAqKmFyZ3YpDQorew0KKyAgICBpbnQgcmV0Ow0K
-KyAgICBpbnQgcG9ydDsNCisNCisgICAgZ190ZXN0X2luaXQoJmFyZ2MsICZhcmd2LCBOVUxMKTsN
-CisgICAgcG9ydCA9IG9wZW5fc29ja2V0KCk7DQorICAgIGdfdGVzdF9tZXNzYWdlKCJwb3J0PSVk
-IiwgcG9ydCk7DQorICAgIGdsb2JhbF9xdGVzdCA9IHF0ZXN0X2luaXRmKCItbWFjaGluZSBucGNt
-NzUwLWV2YiAiDQorICAgICAgICAiLWNoYXJkZXYgc29ja2V0LGlkPW5wY203eHgtcGNpbWJveC1j
-aHIsaG9zdD1sb2NhbGhvc3QsIg0KKyAgICAgICAgInBvcnQ9JWQscmVjb25uZWN0PTEwICINCisg
-ICAgICAgICItZ2xvYmFsIGRyaXZlcj1ucGNtN3h4LXBjaS1tYm94LHByb3BlcnR5PWNoYXJkZXYs
-Ig0KKyAgICAgICAgInZhbHVlPW5wY203eHgtcGNpbWJveC1jaHIiLA0KKyAgICAgICAgcG9ydCk7
-DQorICAgIHNldHVwX2ZkKCk7DQorICAgIHF0ZXN0X2lycV9pbnRlcmNlcHRfaW4oZ2xvYmFsX3F0
-ZXN0LCAiL21hY2hpbmUvc29jL2E5bXBjb3JlL2dpYyIpOw0KKw0KKyAgICBxdGVzdF9hZGRfZnVu
-YygiL25wY203eHhfcGNpX21ib3gvaW52YWxpZF9vcCIsIHRlc3RfaW52YWxpZF9vcCk7DQorICAg
-IHF0ZXN0X2FkZF9mdW5jKCIvbnBjbTd4eF9wY2lfbWJveC9yZWFkIiwgdGVzdF9ndWVzdF9yZWFk
-KTsNCisgICAgcXRlc3RfYWRkX2Z1bmMoIi9ucGNtN3h4X3BjaV9tYm94L3dyaXRlIiwgdGVzdF9n
-dWVzdF93cml0ZSk7DQorICAgIHJldCA9IGdfdGVzdF9ydW4oKTsNCisgICAgcXRlc3RfcXVpdChn
-bG9iYWxfcXRlc3QpOw0KKw0KKyAgICByZXR1cm4gcmV0Ow0KK30NCi0tDQoyLjQyLjAuODIwLmc4
-M2E3MjFhMTM3LWdvb2cNCg0KU2lnbmVkLW9mZi1ieTogVHlyb25lIFRpbmcgPGtmdGluZ0BudXZv
-dG9uLmNvbT4NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fDQpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXw0KIFRoZSBwcml2aWxlZ2VkIGNvbmZpZGVudGlhbCBpbmZvcm1h
-dGlvbiBjb250YWluZWQgaW4gdGhpcyBlbWFpbCBpcyBpbnRlbmRlZCBmb3IgdXNlIG9ubHkgYnkg
-dGhlIGFkZHJlc3NlZXMgYXMgaW5kaWNhdGVkIGJ5IHRoZSBvcmlnaW5hbCBzZW5kZXIgb2YgdGhp
-cyBlbWFpbC4gSWYgeW91IGFyZSBub3QgdGhlIGFkZHJlc3NlZSBpbmRpY2F0ZWQgaW4gdGhpcyBl
-bWFpbCBvciBhcmUgbm90IHJlc3BvbnNpYmxlIGZvciBkZWxpdmVyeSBvZiB0aGUgZW1haWwgdG8g
-c3VjaCBhIHBlcnNvbiwgcGxlYXNlIGtpbmRseSByZXBseSB0byB0aGUgc2VuZGVyIGluZGljYXRp
-bmcgdGhpcyBmYWN0IGFuZCBkZWxldGUgYWxsIGNvcGllcyBvZiBpdCBmcm9tIHlvdXIgY29tcHV0
-ZXIgYW5kIG5ldHdvcmsgc2VydmVyIGltbWVkaWF0ZWx5LiBZb3VyIGNvb3BlcmF0aW9uIGlzIGhp
-Z2hseSBhcHByZWNpYXRlZC4gSXQgaXMgYWR2aXNlZCB0aGF0IGFueSB1bmF1dGhvcml6ZWQgdXNl
-IG9mIGNvbmZpZGVudGlhbCBpbmZvcm1hdGlvbiBvZiBOdXZvdG9uIGlzIHN0cmljdGx5IHByb2hp
-Yml0ZWQ7IGFuZCBhbnkgaW5mb3JtYXRpb24gaW4gdGhpcyBlbWFpbCBpcnJlbGV2YW50IHRvIHRo
-ZSBvZmZpY2lhbCBidXNpbmVzcyBvZiBOdXZvdG9uIHNoYWxsIGJlIGRlZW1lZCBhcyBuZWl0aGVy
-IGdpdmVuIG5vciBlbmRvcnNlZCBieSBOdXZvdG9uLg0K
+This SysBus variant of the CRB interface supports dynamically locating
+the MMIO interface so that Virt machines can use it. This interface
+is currently the only one supported by QEMU that works on Windows 11
+ARM64 as 'tpm-tis-device' does not work with current Windows drivers.
+We largely follow that device as a template.
+
+To try out this device with Windows 11 before OVMF is updated, you
+will need to modify `sysbus-fdt.c` and change the added line from:
+
+```c
+    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
+```
+
+to
+
+```c
+    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, add_tpm_tis_fdt_node),
+```
+
+This change was not included because it can confuse Linux (although
+from testing, it seems like Linux is able to properly ignore the
+device from the TPM TIS driver and recognize it from the ACPI device
+in the TPM CRB driver). A proper fix would require OVMF to recognize
+the ACPI device and not depend on the FDT node for recognizing TPM.
+
+The command line to try out this device with SWTPM is:
+
+```
+$ qemu-system-aarch64 \
+    -chardev socket,id=chrtpm0,path=tpm.sock \
+    -tpmdev emulator,id=tpm0,chardev=chrtpm0 \
+    -device tpm-crb-device,tpmdev=tpm0
+```
+
+along with SWTPM:
+
+```
+$ swtpm \
+    --ctrl type=unixio,path=tpm.sock,terminate \
+    --tpmstate backend-uri=file://tpm.data \
+    --tpm2
+```
+
+Signed-off-by: Joelle van Dyne <j@getutm.app>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ docs/specs/tpm.rst      |   1 +
+ include/sysemu/tpm.h    |   3 +
+ hw/acpi/aml-build.c     |   7 +-
+ hw/arm/virt.c           |   1 +
+ hw/core/sysbus-fdt.c    |   1 +
+ hw/loongarch/virt.c     |   1 +
+ hw/riscv/virt.c         |   1 +
+ hw/tpm/tpm_crb_sysbus.c | 162 ++++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig          |   1 +
+ hw/loongarch/Kconfig    |   1 +
+ hw/riscv/Kconfig        |   1 +
+ hw/tpm/Kconfig          |   5 ++
+ hw/tpm/meson.build      |   3 +
+ 13 files changed, 187 insertions(+), 1 deletion(-)
+ create mode 100644 hw/tpm/tpm_crb_sysbus.c
+
+diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
+index 2bc29c9804..95aeb49220 100644
+--- a/docs/specs/tpm.rst
++++ b/docs/specs/tpm.rst
+@@ -46,6 +46,7 @@ operating system.
+ QEMU files related to TPM CRB interface:
+  - ``hw/tpm/tpm_crb.c``
+  - ``hw/tpm/tpm_crb_common.c``
++ - ``hw/tpm/tpm_crb_sysbus.c``
+ 
+ SPAPR interface
+ ---------------
+diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+index ffd300e607..bab30fa546 100644
+--- a/include/sysemu/tpm.h
++++ b/include/sysemu/tpm.h
+@@ -49,6 +49,7 @@ struct TPMIfClass {
+ #define TYPE_TPM_TIS_ISA            "tpm-tis"
+ #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
+ #define TYPE_TPM_CRB                "tpm-crb"
++#define TYPE_TPM_CRB_SYSBUS         "tpm-crb-device"
+ #define TYPE_TPM_SPAPR              "tpm-spapr"
+ #define TYPE_TPM_TIS_I2C            "tpm-tis-i2c"
+ 
+@@ -58,6 +59,8 @@ struct TPMIfClass {
+     object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
+ #define TPM_IS_CRB(chr)                             \
+     object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
++#define TPM_IS_CRB_SYSBUS(chr)                      \
++    object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB_SYSBUS)
+ #define TPM_IS_SPAPR(chr)                           \
+     object_dynamic_cast(OBJECT(chr), TYPE_TPM_SPAPR)
+ #define TPM_IS_TIS_I2C(chr)                      \
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index af66bde0f5..acc654382e 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -31,6 +31,7 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci/pci_bridge.h"
+ #include "qemu/cutils.h"
++#include "qom/object.h"
+ 
+ static GArray *build_alloc_array(void)
+ {
+@@ -2218,7 +2219,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+ {
+     uint8_t start_method_params[12] = {};
+     unsigned log_addr_offset;
+-    uint64_t control_area_start_address;
++    uint64_t baseaddr, control_area_start_address;
+     TPMIf *tpmif = tpm_find();
+     uint32_t start_method;
+     AcpiTable table = { .sig = "TPM2", .rev = 4,
+@@ -2236,6 +2237,10 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+     } else if (TPM_IS_CRB(tpmif)) {
+         control_area_start_address = TPM_CRB_ADDR_CTRL;
+         start_method = TPM2_START_METHOD_CRB;
++    } else if (TPM_IS_CRB_SYSBUS(tpmif)) {
++        baseaddr = object_property_get_uint(OBJECT(tpmif), "x-baseaddr", NULL);
++        control_area_start_address = baseaddr + A_CRB_CTRL_REQ;
++        start_method = TPM2_START_METHOD_CRB;
+     } else {
+         g_assert_not_reached();
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 36e2506420..e6152a2f51 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2955,6 +2955,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
+ #endif
+     mc->block_default_type = IF_VIRTIO;
+     mc->no_cdrom = 1;
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index eebcd28f9a..9c783f88eb 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -493,6 +493,7 @@ static const BindingEntry bindings[] = {
+ #endif
+ #ifdef CONFIG_TPM
+     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
++    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
+ #endif
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+     TYPE_BINDING("", NULL), /* last element */
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index feed0f8bbf..9d5ad2bc8e 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -1114,6 +1114,7 @@ static void loongarch_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
+ #endif
+ }
+ 
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index c7fc97e273..4cce0b14ab 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1702,6 +1702,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
+ #endif
+ 
+ 
+diff --git a/hw/tpm/tpm_crb_sysbus.c b/hw/tpm/tpm_crb_sysbus.c
+new file mode 100644
+index 0000000000..7edeae3665
+--- /dev/null
++++ b/hw/tpm/tpm_crb_sysbus.c
+@@ -0,0 +1,162 @@
++/*
++ * tpm_crb_sysbus.c - QEMU's TPM CRB interface emulator
++ *
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * Authors:
++ *   Marc-André Lureau <marcandre.lureau@redhat.com>
++ *   Joelle van Dyne <j@getutm.app>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ * tpm_crb is a device for TPM 2.0 Command Response Buffer (CRB) Interface
++ * as defined in TCG PC Client Platform TPM Profile (PTP) Specification
++ * Family “2.0” Level 00 Revision 01.03 v22
++ */
++
++#include "qemu/osdep.h"
++#include "hw/acpi/acpi_aml_interface.h"
++#include "hw/acpi/tpm.h"
++#include "hw/qdev-properties.h"
++#include "migration/vmstate.h"
++#include "tpm_prop.h"
++#include "hw/sysbus.h"
++#include "qapi/visitor.h"
++#include "qom/object.h"
++#include "sysemu/tpm_util.h"
++#include "trace.h"
++#include "tpm_crb.h"
++
++struct TPMCRBStateSysBus {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    TPMCRBState state;
++    uint64_t baseaddr;
++    uint64_t size;
++};
++
++OBJECT_DECLARE_SIMPLE_TYPE(TPMCRBStateSysBus, TPM_CRB_SYSBUS)
++
++static void tpm_crb_sysbus_request_completed(TPMIf *ti, int ret)
++{
++    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
++
++    return tpm_crb_request_completed(&s->state, ret);
++}
++
++static enum TPMVersion tpm_crb_sysbus_get_tpm_version(TPMIf *ti)
++{
++    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
++
++    return tpm_crb_get_version(&s->state);
++}
++
++static int tpm_crb_sysbus_pre_save(void *opaque)
++{
++    TPMCRBStateSysBus *s = opaque;
++
++    return tpm_crb_pre_save(&s->state);
++}
++
++static const VMStateDescription vmstate_tpm_crb_sysbus = {
++    .name = "tpm-crb-sysbus",
++    .pre_save = tpm_crb_sysbus_pre_save,
++    .fields = (VMStateField[]) {
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static Property tpm_crb_sysbus_properties[] = {
++    DEFINE_PROP_TPMBE("tpmdev", TPMCRBStateSysBus, state.tpmbe),
++    DEFINE_PROP_UINT64("x-baseaddr", TPMCRBStateSysBus,
++                       baseaddr, TPM_CRB_ADDR_BASE),
++    DEFINE_PROP_UINT64("x-size", TPMCRBStateSysBus,
++                       size, TPM_CRB_ADDR_SIZE),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void tpm_crb_sysbus_initfn(Object *obj)
++{
++    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(obj);
++
++    tpm_crb_init_memory(obj, &s->state, NULL);
++
++    vmstate_register_ram(&s->state.mmio, DEVICE(obj));
++
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->state.mmio);
++}
++
++static void tpm_crb_sysbus_reset(DeviceState *dev)
++{
++    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
++
++    return tpm_crb_reset(&s->state, s->baseaddr);
++}
++
++static void tpm_crb_sysbus_realizefn(DeviceState *dev, Error **errp)
++{
++    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
++
++    if (!tpm_find()) {
++        error_setg(errp, "at most one TPM device is permitted");
++        return;
++    }
++
++    if (!s->state.tpmbe) {
++        error_setg(errp, "'tpmdev' property is required");
++        return;
++    }
++
++    if (tpm_crb_sysbus_get_tpm_version(TPM_IF(s)) != TPM_VERSION_2_0) {
++        error_setg(errp, "TPM CRB only supports TPM 2.0 backends");
++        return;
++    }
++}
++
++static void build_tpm_crb_sysbus_aml(AcpiDevAmlIf *adev, Aml *scope)
++{
++    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(adev);
++
++    tpm_crb_build_aml(TPM_IF(adev), scope, s->baseaddr, s->size, false);
++}
++
++static void tpm_crb_sysbus_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    TPMIfClass *tc = TPM_IF_CLASS(klass);
++    AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(klass);
++
++    device_class_set_props(dc, tpm_crb_sysbus_properties);
++    dc->vmsd  = &vmstate_tpm_crb_sysbus;
++    tc->model = TPM_MODEL_TPM_CRB;
++    dc->realize = tpm_crb_sysbus_realizefn;
++    dc->user_creatable = true;
++    dc->reset = tpm_crb_sysbus_reset;
++    tc->request_completed = tpm_crb_sysbus_request_completed;
++    tc->get_version = tpm_crb_sysbus_get_tpm_version;
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    adevc->build_dev_aml = build_tpm_crb_sysbus_aml;
++}
++
++static const TypeInfo tpm_crb_sysbus_info = {
++    .name = TYPE_TPM_CRB_SYSBUS,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TPMCRBStateSysBus),
++    .instance_init = tpm_crb_sysbus_initfn,
++    .class_init  = tpm_crb_sysbus_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { TYPE_TPM_IF },
++        { TYPE_ACPI_DEV_AML_IF },
++        { }
++    }
++};
++
++static void tpm_crb_sysbus_register(void)
++{
++    type_register_static(&tpm_crb_sysbus_info);
++}
++
++type_init(tpm_crb_sysbus_register)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 3ada335a24..f524994fd3 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -5,6 +5,7 @@ config ARM_VIRT
+     imply VFIO_AMD_XGBE
+     imply VFIO_PLATFORM
+     imply VFIO_XGMAC
++    imply TPM_CRB_SYSBUS
+     imply TPM_TIS_SYSBUS
+     imply TPM_TIS_I2C
+     imply NVDIMM
+diff --git a/hw/loongarch/Kconfig b/hw/loongarch/Kconfig
+index 25da190ffc..70544f3ce5 100644
+--- a/hw/loongarch/Kconfig
++++ b/hw/loongarch/Kconfig
+@@ -6,6 +6,7 @@ config LOONGARCH_VIRT
+     imply PCI_DEVICES
+     imply NVDIMM
+     imply TPM_TIS_SYSBUS
++    imply TPM_CRB_SYSBUS
+     select SERIAL
+     select VIRTIO_PCI
+     select PLATFORM_BUS
+diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
+index b6a5eb4452..d824cb58f9 100644
+--- a/hw/riscv/Kconfig
++++ b/hw/riscv/Kconfig
+@@ -29,6 +29,7 @@ config RISCV_VIRT
+     imply PCI_DEVICES
+     imply VIRTIO_VGA
+     imply TEST_DEVICES
++    imply TPM_CRB_SYSBUS
+     imply TPM_TIS_SYSBUS
+     select RISCV_NUMA
+     select GOLDFISH_RTC
+diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
+index a46663288c..28139c456a 100644
+--- a/hw/tpm/Kconfig
++++ b/hw/tpm/Kconfig
+@@ -25,6 +25,11 @@ config TPM_CRB
+     depends on TPM && PC
+     select TPM_BACKEND
+ 
++config TPM_CRB_SYSBUS
++    bool
++    depends on TPM
++    select TPM_BACKEND
++
+ config TPM_SPAPR
+     bool
+     default y
+diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
+index 3060ac05e8..f2536c99e3 100644
+--- a/hw/tpm/meson.build
++++ b/hw/tpm/meson.build
+@@ -5,6 +5,9 @@ system_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm-sysbus.c'))
+ system_ss.add(when: 'CONFIG_TPM_TIS_I2C', if_true: files('tpm_tis_i2c.c'))
+ system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
+ system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb_common.c'))
++system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_sysbus.c'))
++system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_common.c'))
++system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm-sysbus.c'))
+ system_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_ppi.c'))
+ system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_ppi.c'))
+ 
+-- 
+2.41.0
+

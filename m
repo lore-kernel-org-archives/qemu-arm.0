@@ -1,138 +1,103 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1819850ejc;
-        Mon, 13 Nov 2023 21:30:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF0gmP0uNgG+IuEDs4OzTNzAHa3aW/AZOnqJnH3dGmToPDimTF5U++XAIpJwyeYkq/aqX7J
-X-Received: by 2002:a05:620a:318b:b0:76d:a110:856d with SMTP id bi11-20020a05620a318b00b0076da110856dmr1618553qkb.0.1699939852870;
-        Mon, 13 Nov 2023 21:30:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699939852; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp1869275ejc;
+        Mon, 13 Nov 2023 23:41:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFbO3R7NkEsXDHb0TljrWvDmiHDGpOCIktsp5FUJ2C5wzkl9W5VD0AASlotMpi0yxCk9kOM
+X-Received: by 2002:ac8:5c82:0:b0:417:8d08:958d with SMTP id r2-20020ac85c82000000b004178d08958dmr2153649qta.2.1699947715171;
+        Mon, 13 Nov 2023 23:41:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699947715; cv=none;
         d=google.com; s=arc-20160816;
-        b=p4tNnYX/8i7HABO92h7D3MilU1hfvx7LmSRH6ZIggwceDvUak8q028JwDWFIaCrx8m
-         OUV4c2I0aucYtU3xbpPiYUFiFYa9nEqzATG2bveO4b9ht1Qq/4rV8HYZqcPRd01djQgH
-         gAwa/y2V4ZdoCAtfiFWt8GWOaZxI/2MEWScPZnBkwyDYzzgOMVm6thBv2QzjUkU8uI8i
-         gqrVk07zYAblT9JEEfs5XrLwZv2oO1p8qUK27FJ8FWK22knufDGGK2Y0uDMFCFMRbdvE
-         orvaXBwtzL5MilNMtCYy+5gg8XlDNYqsgLXqAhJd3hModCFyzQB8JF0t8ye2C1qOqCic
-         lTHA==
+        b=n4yBuYY49VuAJgi1bwd40tWe1/JJLC5ONKjIgRkudizqnm54detfTmIwXKNG1WOl3d
+         b6nog+BDHr+JCbre9OpxbMO9QT+M3Ctt/MbCAYhYKEaUsxFN1cA6P3whKtvRrSWuGHGn
+         WFjeFZh3Mo2YiJdnxZniXKep9D+aIEZdPLjGT2strdkbJfH0ILD2SAQ9Q0N5Yih/ikDu
+         TUiyi729SyXpC8+Tv8imxxso423+IZznuDrTJtSmsU12BjrPmhN3vv9bumKzBVVc0XIJ
+         uMJSFw6ffuoYad/R4OPq3xF1W051jCfHSjWezRjRWFiW337H6NEKj7b3d+GVKshiDKJH
+         F2mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=KYdz1LdDqXxrg73NymxfuIwXOLaJadgVCvKcNkIZIj8=;
-        fh=tdzKUqqqEXbCYoPkCHUvWKQ7s8X5SLWdbKsYqKMwyS8=;
-        b=C4W+rG4/Wacf6YYyrx5TXdb+gvBkjFVAGVZN0VDI+tvodRcT7UxU1QdU1YBfS+2sfv
-         Rjr+DD18DmZEPKkNmDo4soBhwvNwUW0hB+pfHGE6Et6ZWm0r0d0XHUfUf+Xq19HVeyU7
-         PPaWfgSbBUYAvN7XpaIZD4zepTP8/vwe1QS4JxUoq3Qw7ZIDxMB8jogZ32Xdyc70sGxQ
-         8/8ZLTqpdLmv31hyAMY2Ew9hfij9fHY/1lOp/8HdgnCDyga1mdhxl7q84H+1VnbGGaeL
-         kOiYtzzwRiBK85FnTYbmRJtGvv1H5mJKAyFZ0BSAky4qDm4W1lEmWVAEdf4m+pk4wZDn
-         JSbw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=Pxv+suxA3oUCmSzu9uwUR1hp/Rq/pOC9iQKwd+ETz0I=;
+        fh=UOfelcJrjhN+wBZ4UPGC6WPCRZUo9Wbk4xASY5JeK3k=;
+        b=er3DKfAAsdZcsqY6naOroQ8W/OG4Li2OxFea7UJu7EN5iRPjWa/6kmEww4tVXM6YvA
+         g+SiV2Mp3t1bEjga7kFl/yusZw4RbWOt7njAB43pZMSkEjuVVFbwW/xnq+1CUJfFnP8X
+         pTEsqSyPFN9mceDvY6cGoGCGwvMlceB2jaJHBp4p8y8MoouGYDeMFFU+7d/S8kH0je6R
+         w4BI5UGGDUnxoRkh1Xn5s2WaWm3O+G70FzIEIR8uT60GO2RwpPs4FMN0vpjU/cmT4ZDq
+         ZuQSx/b8wu3ie1u6ydvamg+bSejwy8dCRV9XXSmj6t4+WIsvfv/dpAb4fddo0s0h9+Rq
+         sqEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PtfvZl+p;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cICs8Fp0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj34-20020a05620a192200b0077703bd9771si6051760qkb.364.2023.11.13.21.30.52
+        by mx.google.com with ESMTPS id w9-20020a05622a134900b0041953bee755si6300443qtk.441.2023.11.13.23.41.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Nov 2023 21:30:52 -0800 (PST)
+        Mon, 13 Nov 2023 23:41:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PtfvZl+p;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cICs8Fp0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r2m0A-0003HU-J4; Tue, 14 Nov 2023 00:30:18 -0500
+	id 1r2o3K-0005mH-Mi; Tue, 14 Nov 2023 02:41:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1r2m09-0003Gt-2e
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 00:30:17 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r2o3I-0005lf-SF
+ for qemu-arm@nongnu.org; Tue, 14 Nov 2023 02:41:40 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1r2m04-0008Ei-Cz
- for qemu-arm@nongnu.org; Tue, 14 Nov 2023 00:30:16 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r2o3F-0003cd-Sp
+ for qemu-arm@nongnu.org; Tue, 14 Nov 2023 02:41:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699939811;
+ s=mimecast20190719; t=1699947696;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KYdz1LdDqXxrg73NymxfuIwXOLaJadgVCvKcNkIZIj8=;
- b=PtfvZl+pDw4skMZygKSuKVVtopAnoP8+eFjbjKG+FoB075D1INf5T29iXmyEAIc4d2LUjI
- E9vGQSQh1+VqQ2XazTOrmrC8PPpH+DTseefgg2d8lmD1wOkqMscl6aq75NKS/kihrj5IG4
- ONbMDIMHSYdZQs3lI2plChX+w+fynAs=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Pxv+suxA3oUCmSzu9uwUR1hp/Rq/pOC9iQKwd+ETz0I=;
+ b=cICs8Fp0toY4R25nBO9g9NLoPBxsex4ha11T/Cpyey/mljI7XqNFVdqDkGfMjXV7Kc+w6M
+ xNQcQJjuWjO5PzbISdDV+zak2mcbStiBjw3179uSmDM5J3lxFy7aLaui249TMJKcOXA5t0
+ au+3wrppWugUOx0kCzJB7DgMwDz9AiM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-385-C87WZKmyNeeLgq6mJV0ndQ-1; Tue, 14 Nov 2023 00:30:09 -0500
-X-MC-Unique: C87WZKmyNeeLgq6mJV0ndQ-1
-Received: by mail-lf1-f70.google.com with SMTP id
- 2adb3069b0e04-50985abb593so5446380e87.3
- for <qemu-arm@nongnu.org>; Mon, 13 Nov 2023 21:30:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699939808; x=1700544608;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=KYdz1LdDqXxrg73NymxfuIwXOLaJadgVCvKcNkIZIj8=;
- b=CyWTWdI51WR47o6x5eu2DHIHBVlez7rIyz2skbOqF2lBBbaZi/AcCUxVXUKTXGwlyu
- SJmIi2GLZgZ6ChPRw6d9aKVTfo3fAD/EE7UzUq/3c1zcxpSZG03XMdc0VhKl5XrPoZVv
- bTCDjB6I4VH61qai5lbNtC8ZQfp2srA57uESSEpB+qrrz9UqOKY6ObCbmknTayfpUzEB
- HmKf2AzY7D3iS3H3bgVTUiekGx9vgFyAh7/Q0ZB5n3cGzReMTIIuBQWeYs0G2DjBKjpH
- QGmZ2wgA9nZ+ECuP1KJkIDCEup5qYRRMgSrsL0MIPMftSsHcG0klgbQB27hWIimShm9u
- wy+g==
-X-Gm-Message-State: AOJu0Yy4pwMi5YkqXYwad6R7ZfltLXtRcDuQY03fP3tAic/8F0CnVF5a
- seCQffXy7jim+AxDlsQTRDt5/iCco/yGkISqrxbqUyDuuX2xo+VKtzeXm40JV2f1DfcA4HlMCws
- kJS1cuGUm5OmQuu5YtpPerLdNPhU6
-X-Received: by 2002:ac2:511e:0:b0:508:1470:6168 with SMTP id
- q30-20020ac2511e000000b0050814706168mr5922335lfb.57.1699939808112; 
- Mon, 13 Nov 2023 21:30:08 -0800 (PST)
-X-Received: by 2002:ac2:511e:0:b0:508:1470:6168 with SMTP id
- q30-20020ac2511e000000b0050814706168mr5922308lfb.57.1699939807729; Mon, 13
- Nov 2023 21:30:07 -0800 (PST)
+ us-mta-679-2QzQBraTMwu7vF5JbGO-2A-1; Tue, 14 Nov 2023 02:41:32 -0500
+X-MC-Unique: 2QzQBraTMwu7vF5JbGO-2A-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 10EB2811002;
+ Tue, 14 Nov 2023 07:41:32 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C1D1A502E;
+ Tue, 14 Nov 2023 07:41:31 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C82C721E6A1F; Tue, 14 Nov 2023 08:41:30 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  alistair@alistair23.me,
+ edgar.iglesias@gmail.com,  peter.maydell@linaro.org,
+ francisco.iglesias@amd.com,  qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
+Subject: Re: [PATCH 0/2] Replace anti-social QOM type names (again)
+References: <20231113134344.1195478-1-armbru@redhat.com>
+ <ZVIo3FsmwpfHzsh8@redhat.com>
+Date: Tue, 14 Nov 2023 08:41:30 +0100
+In-Reply-To: <ZVIo3FsmwpfHzsh8@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+ "Mon, 13 Nov 2023 13:47:08 +0000")
+Message-ID: <87y1f0hjdh.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20230601031859.7115-1-akihiko.odaki@daynix.com>
- <a2cb6356-18b1-44d1-90a8-d137e8a25227@daynix.com>
-In-Reply-To: <a2cb6356-18b1-44d1-90a8-d137e8a25227@daynix.com>
-From: Jason Wang <jasowang@redhat.com>
-Date: Tue, 14 Nov 2023 13:29:55 +0800
-Message-ID: <CACGkMEvyDitD-5d_mzK0LxjidcT7ZXfw_qzK_WbMPt6dd+McKQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] net: Update MemReentrancyGuard for NIC
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Mauro Matteo Cascella <mcascell@redhat.com>, P J P <pj.pandit@yahoo.co.in>,
- Alexander Bulekov <alxndr@bu.edu>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Stefan Weil <sw@weilnetz.de>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
- Richard Henderson <richard.henderson@linaro.org>, Helge Deller <deller@gmx.de>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Thomas Huth <huth@tuxfamily.org>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- Jan Kiszka <jan.kiszka@web.de>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, 
- Max Filippov <jcmvbkbc@gmail.com>, Jiri Pirko <jiri@resnulli.us>, 
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, 
- Greg Kurz <groug@kaod.org>, Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Sven Schnelle <svens@stackframe.org>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, 
- Paul Durrant <paul@xen.org>, Rob Herring <robh@kernel.org>,
- Gerd Hoffmann <kraxel@redhat.com>, 
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org, 
- xen-devel@lists.xenproject.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jasowang@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -156,90 +121,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R2TReZjCzU2B
+X-TUID: 1BWopzTOfhMV
 
-On Thu, Sep 21, 2023 at 3:16=E2=80=AFPM Akihiko Odaki <akihiko.odaki@daynix=
-.com> wrote:
->
-> On 2023/06/01 12:18, Akihiko Odaki wrote:
-> > Recently MemReentrancyGuard was added to DeviceState to record that the
-> > device is engaging in I/O. The network device backend needs to update i=
-t
-> > when delivering a packet to a device.
-> >
-> > This implementation follows what bottom half does, but it does not add
-> > a tracepoint for the case that the network device backend started
-> > delivering a packet to a device which is already engaging in I/O. This
-> > is because such reentrancy frequently happens for
-> > qemu_flush_queued_packets() and is insignificant.
-> >
-> > This series consists of two patches. The first patch makes a bulk chang=
-e to
-> > add a new parameter to qemu_new_nic() and does not contain behavioral c=
-hanges.
-> > The second patch actually implements MemReentrancyGuard update.
-> >
-> > V1 -> V2: Added the 'Fixes: CVE-2023-3019' tag
-> >
-> > Akihiko Odaki (2):
-> >    net: Provide MemReentrancyGuard * to qemu_new_nic()
-> >    net: Update MemReentrancyGuard for NIC
-> >
-> >   include/net/net.h             |  2 ++
-> >   hw/net/allwinner-sun8i-emac.c |  3 ++-
-> >   hw/net/allwinner_emac.c       |  3 ++-
-> >   hw/net/cadence_gem.c          |  3 ++-
-> >   hw/net/dp8393x.c              |  3 ++-
-> >   hw/net/e1000.c                |  3 ++-
-> >   hw/net/e1000e.c               |  2 +-
-> >   hw/net/eepro100.c             |  4 +++-
-> >   hw/net/etraxfs_eth.c          |  3 ++-
-> >   hw/net/fsl_etsec/etsec.c      |  3 ++-
-> >   hw/net/ftgmac100.c            |  3 ++-
-> >   hw/net/i82596.c               |  2 +-
-> >   hw/net/igb.c                  |  2 +-
-> >   hw/net/imx_fec.c              |  2 +-
-> >   hw/net/lan9118.c              |  3 ++-
-> >   hw/net/mcf_fec.c              |  3 ++-
-> >   hw/net/mipsnet.c              |  3 ++-
-> >   hw/net/msf2-emac.c            |  3 ++-
-> >   hw/net/mv88w8618_eth.c        |  3 ++-
-> >   hw/net/ne2000-isa.c           |  3 ++-
-> >   hw/net/ne2000-pci.c           |  3 ++-
-> >   hw/net/npcm7xx_emc.c          |  3 ++-
-> >   hw/net/opencores_eth.c        |  3 ++-
-> >   hw/net/pcnet.c                |  3 ++-
-> >   hw/net/rocker/rocker_fp.c     |  4 ++--
-> >   hw/net/rtl8139.c              |  3 ++-
-> >   hw/net/smc91c111.c            |  3 ++-
-> >   hw/net/spapr_llan.c           |  3 ++-
-> >   hw/net/stellaris_enet.c       |  3 ++-
-> >   hw/net/sungem.c               |  2 +-
-> >   hw/net/sunhme.c               |  3 ++-
-> >   hw/net/tulip.c                |  3 ++-
-> >   hw/net/virtio-net.c           |  6 ++++--
-> >   hw/net/vmxnet3.c              |  2 +-
-> >   hw/net/xen_nic.c              |  4 ++--
-> >   hw/net/xgmac.c                |  3 ++-
-> >   hw/net/xilinx_axienet.c       |  3 ++-
-> >   hw/net/xilinx_ethlite.c       |  3 ++-
-> >   hw/usb/dev-network.c          |  3 ++-
-> >   net/net.c                     | 15 +++++++++++++++
-> >   40 files changed, 90 insertions(+), 41 deletions(-)
-> >
->
-> Hi Jason,
->
-> Can you review this series?
+Cc: the other QOM maintainers
 
-For some reason it falls through the cracks.
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-I've queued this for rc1.
-
-Thanks
-
+> On Mon, Nov 13, 2023 at 02:43:42PM +0100, Markus Armbruster wrote:
+>> We got rid of QOM type names containing ',' in 6.0, but some have
+>> crept back in.  Replace them just like we did in 6.0.
 >
-> Regards,
-> Akihiko Odaki
+> It is practical to add
 >
+>    assert(strchr(name, ',') =3D=3D NULL)
+>
+> to some place in QOM to stop them coming back yet again ?
+
+This adds a naming rule to QOM.  Right now, QOM has none whatsoever,
+which I've long called out as a mistake.
+
+I'm all for correcting that mistake, but I'd go further than just
+outlawing ','.
+
+Discussed in more depth here:
+
+>> Cover letter of 6.0's replacement:
+>> https://lore.kernel.org/qemu-devel/20210304140229.575481-1-armbru@redhat=
+.com/
+
+Let me copy the text for convenience.
+
+QAPI has naming rules.  docs/devel/qapi-code-gen.txt:
+
+    =3D=3D=3D Naming rules and reserved names =3D=3D=3D
+
+    All names must begin with a letter, and contain only ASCII letters,
+    digits, hyphen, and underscore.  There are two exceptions: enum values
+    may start with a digit, and names that are downstream extensions (see
+    section Downstream extensions) start with underscore.
+
+    [More on reserved names, upper vs. lower case, '-' vs. '_'...]
+
+The generator enforces the rules.
+
+Naming rules help in at least three ways:
+
+1. They help with keeping names in interfaces consistent and
+   predictable.
+
+2. They make avoiding collisions with the users' names in the
+   generator simpler.
+
+3. They enable quote-less, evolvable syntax.
+
+   For instance, keyval_parse() syntax consists of names, values, and
+   special characters ',', '=3D', '.'
+
+   Since names cannot contain special characters, there is no need for
+   quoting[*].  Simple.
+
+   Values are unrestricted, but only ',' is special there.  We quote
+   it by doubling.
+
+   Together, we get exactly the same quoting as in QemuOpts.  This is
+   a feature.
+
+   If we ever decice to extend key syntax, we have plenty of special
+   characters to choose from.  This is also a feature.
+
+   Both features rely on naming rules.
+
+QOM has no naming rules whatsoever.  Actual names aren't nearly as bad
+as they could be.  Still, there are plenty of "funny" names.  This may
+become a problem when we
+
+* Switch from QemuOpts to keyval_parse()
+
+  Compared to QemuOpts, keyval_parse() restricts *keys*, but not
+  *values*.
+
+  "Funny" type names occuring as values are no worse than before:
+  quoting issues, described below.
+
+  Type names occuring in keys must be valid QAPI names.  Should be
+  avoidable.
+
+* QAPIfy (the compile-time static parts of) QOM
+
+  QOM type names become QAPI enum values.  They must conform to QAPI
+  enum naming rules.
+
+[...]
+
+One more thing on relaxing QAPI naming rules.  QAPI names get mapped
+to (parts of) C identifiers.  These mappings are not injective.  The
+basic mapping is simple: replace characters other than letters and
+digits by '_'.
+
+This means names distinct QAPI names can clash in C.  Fairly harmless
+when the only "other" characters are '-' and '_'.  The more "others" we
+permit, the more likely confusing clashes become.  Not a show stopper,
+"merely" an issue of ergonomics.
 

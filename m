@@ -1,121 +1,160 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161149ejc;
-        Tue, 14 Nov 2023 08:31:34 -0800 (PST)
-X-Received: by 2002:a17:906:3bd9:b0:9c7:5667:5648 with SMTP id v25-20020a1709063bd900b009c756675648mr8031056ejf.51.1699979493898;
-        Tue, 14 Nov 2023 08:31:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699979493; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2217000ejc;
+        Tue, 14 Nov 2023 09:56:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGS3unPGdXp26WI9V9HcSD3W2+kKUVB2GfT3jNfZh2o+MWJvZS27ARRryDPJWPO64us0wkf
+X-Received: by 2002:ad4:4089:0:b0:675:b904:9bc1 with SMTP id l9-20020ad44089000000b00675b9049bc1mr3099281qvp.49.1699984613829;
+        Tue, 14 Nov 2023 09:56:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699984613; cv=none;
         d=google.com; s=arc-20160816;
-        b=SgZm6w0bzyDmt0WX5ccGKzujJVB78CMHzKUZ48vSvhYUhcpt52FrgDmLk0BZWRiY8X
-         vWcogZmAFiBQFfVC9HV8sLepOvd2ypZ/XKcUXQx0lVczt0avM7ph+WHOM6cOd28KQs5o
-         oLiJYd/tr774h6apc+fOCTulMMQxwHr0mubsEVTnlAoVRMaeFKdgAo3QoF3gqZt3o7KW
-         osuNHYfxgh8cUIr+uKU/A+Wn2yR3ab/tEDdSEBqtzrralNanrV31brRa1AC6O7lQk/RP
-         V6TFIk2TaTbclcK/aJQ+fTUHFcKZ3L6IcbAtJFzUYoHx39cVFNso9sCM+mlJcy4XHm0o
-         qRAw==
+        b=sbA2O3TE58GkcJxxIt9EZscY70Wp+W+i2+50De38XTVBBiXpff8z1Nak9djDOFOpBA
+         9TgqjV+BOKy4Yl87Za1BvIjHQRcTmb9KtW/ujUfmqdsS7BPBSyS4H/Hzk2C0R1KrjVLk
+         xXf+3UoGCroVI5sgHiE6VrurtYXGWQDNBd2xwBn/dJVOvXciYciGl7cV1d1Z6SAkGThO
+         WTK6dgL+qVNE9QTL4QiivlBqb6zn50Buk2XA5EI7rvp7lJEIiokHr58VtHY3qocfTq7y
+         VmCDVdCxQwIOtu45P/h+KMJNvnrgMeanuCPqT1mvde2RthNSYTCTLjvkutkSKzbAz5k/
+         bShQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=X6R5SODDqvfe3Gp9I1X7nXyO5kwGwphXiKxDLZtl7/E=;
-        fh=gWEHW3TxA6a60GQ8RCwIBjY/qgn5Qdgh2FZ6pi5rSzM=;
-        b=wtljI9l+7IafxWSBxJqt4tcoBYXHCPiri2PFBJtk5MXouNiLsilv3roHt9RCKHKxRr
-         KWwqDH3ijXIBL/Fh3fewEZ8O2pnrObIWqgvIPMpL/tyHWPtCx03V9mQmVXDbuSyqBnQq
-         DnSxjV85J67U5WLwAimwB87IE888ceCnxJ5C/NWEdk2D1SfFi3iB+qMDRoxkG1F1LTaK
-         T1s0eoNHEpbvj+b+bRa9NIoXyuBpI6cQLwkIPs6voO4SwXde+ImbHCzCLckypEfG8sha
-         jv6oh/+a70/7fvke5GQm/tc4ZtFCQXIpoogsyUv4ybTajSxWLfAoVoQaD36CeJ+X0sBb
-         NGoQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lWFmJaXdNb1cvdOqSWYWj5lK+WjOKKjQscIAYFDHkGk=;
+        fh=PpZ1CCXoZMh/DRvZh+FxXhmYvb7cgaexUeWdx5nsuRU=;
+        b=PzIBcjrpvKBZRxl/hGeHgxsy+z3lQgK6KYp8ErkB4TCplHhL2FKkMr4NwItGqx80Xv
+         T/R929oAPhMjFnNkcccEkxQBU6PwNGjIx85YL/tq25EB9UzKtzmvMOtuMyymRsdaodFI
+         p77N5CXt2yhMsnaCyfF/UDWwymJT/UiSuidLh7yh/om2fnYaAqkPuZ3OLvoK4+/wNUbH
+         U2S3KCPtVIa18PQLSV6J1Uc3VQFRPl2c0CrmWOnRsIa+M0XmomLArRZuFMw5EEUY0VOj
+         f9kqmhU4hmaijT+6t/Gd5c/hJSxrt5DrejGnG/+/btZ4bGhwKwmZDx4xXiVlL4Gt6ObQ
+         Yn+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OoPwbbTU;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ps7-20020a170906bf4700b009cc5a590546sor460691ejb.1.2023.11.14.08.31.33
+       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=s7BLtcsU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id pm13-20020ad446cd000000b006716c269316si7402035qvb.467.2023.11.14.09.56.53
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Nov 2023 08:31:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 14 Nov 2023 09:56:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OoPwbbTU;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699979493; x=1700584293; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=X6R5SODDqvfe3Gp9I1X7nXyO5kwGwphXiKxDLZtl7/E=;
-        b=OoPwbbTUcfzgz3lz6Vc851QMtynf++Y4yzpPVsml5AEC2oqrWIFZKXmXJKyScLzrGx
-         ELEcRRS28i4VhyQln+UyyfK7G5kCBHs4PGYjYEMaozHDdkmKxbdO/A5VzChC+YV8Q13z
-         tJPKBVWabKg8XkWXhTVk4WOYE+lacIRCBa+Gpap+EDO3dv/9pJbRArifsNgI0c+DOUUz
-         4MfWvZ0UkEmyOnNi7132S7lGVs0L0pCBeW3FJLOJhdMhD/1nfRvZ2iO0Ydl/zp3NwC3O
-         tIG/TM9MHC1S7Q85CEyC4N/sLW/j5o3nf3EYpLU6aGswMmyY32om9Frkh53dx9vVYxuF
-         D5Ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699979493; x=1700584293;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=X6R5SODDqvfe3Gp9I1X7nXyO5kwGwphXiKxDLZtl7/E=;
-        b=weyI3sk9pxQ9vCY7iW7U2AXuhyObPOfE19G5DCYuR9lD8LDKtRa+AcAxXPJ1gcNDpz
-         ev+l9nruzjXfERFCZmZbzNp9XbJROthmmC3Shia+ag7PXEtOhcOAQm2twgYkjETbjs3H
-         7a0dU5hTpbtjO3kB+mVQEZ+u/MBSmsRmWnIkJuNEGU26r9Ch7VI0ZsPdmXxjopHCKtQW
-         G3gZnpmXy2EtcwgMfyVpMhW6qsQ53d4zp9XbYkEqhMfMJQ3Ohm/9dOVRugHiB295L54F
-         JdKYVupMfQewDkppJ62S4+jWQrgTdAW/Yw3yr+ihyRbyaEPgE9EFxvhO9qDDGKWuoaPy
-         8f8A==
-X-Gm-Message-State: AOJu0YxuGORPvj43GXjd2CBr6lM4JTTPZgxeJBwJHWnAmngEc4bMuLlr
-	GLYBTvap34JdnzTY+3MvVXEfzx11
-X-Google-Smtp-Source: AGHT+IGutQxHrTQ0PDT/rm4Hi1BwUJSaiBc/cWKJ03y/patFhv44C9aSztIA1kKfAa9MrKB6HwgJAQ==
-X-Received: by 2002:a17:907:1c9b:b0:9e7:c9e3:d63d with SMTP id nb27-20020a1709071c9b00b009e7c9e3d63dmr8902204ejc.7.1699979493603;
-        Tue, 14 Nov 2023 08:31:33 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id dt10-20020a170906b78a00b009a5f1d15644sm5694182ejb.119.2023.11.14.08.31.31
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 14 Nov 2023 08:31:33 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	David Woodhouse <dwmw@amazon.co.uk>,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	xen-devel@lists.xenproject.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH-for-9.0 1/9] hw/xen/hvm: Inline TARGET_PAGE_ALIGN() macro
-Date: Tue, 14 Nov 2023 17:31:15 +0100
-Message-ID: <20231114163123.74888-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231114163123.74888-1-philmd@linaro.org>
-References: <20231114163123.74888-1-philmd@linaro.org>
+       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=s7BLtcsU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r2xeS-0003Yc-PC; Tue, 14 Nov 2023 12:56:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
+ id 1r2xeQ-0003Uh-80; Tue, 14 Nov 2023 12:56:39 -0500
+Received: from imap4.hz.codethink.co.uk ([188.40.203.114])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
+ id 1r2xeO-0008CI-1b; Tue, 14 Nov 2023 12:56:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=codethink.co.uk; s=imap4-20230908; h=Sender:Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+ Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=lWFmJaXdNb1cvdOqSWYWj5lK+WjOKKjQscIAYFDHkGk=; b=s7BLtcsUn11XePqDDdrVw1L0j8
+ ZQTFqOTdTxcm1EKu63Dvm7PK+qviOdU71NVzyRuWHBmJV2LUCiqNUKDuBBuS4uQrUyL2nq/GflXpA
+ EvK8i1P6L4sGgYGiLIYqinfHHBrBJad/AZdU6D5ea7vvdq2e2KDgswKw4U14ftjBLtVxG78zUQgkl
+ u1LXKwoclK3j0dk6zpVntJ4xpJDY+KfPjq1LCW+UGvDtZ0t1IieoJCq0xLELRbg1eYWQxBVJPtlbw
+ gXTb3r1ZyElyXdTPdMVw7mfXxPT9ciqWOsbzS+UFiPiS/q01k4XEwp3p3zXbbFYqPqf053Ca+PfdC
+ FXfMM8Bw==;
+Received: from [167.98.27.226] (helo=[10.35.4.236])
+ by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
+ id 1r2x8I-001oh5-U3; Tue, 14 Nov 2023 17:23:27 +0000
+Message-ID: <78989536-e29c-4ce1-a972-36be6c70349c@codethink.co.uk>
+Date: Tue, 14 Nov 2023 17:23:26 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: nSSbGVn4T4kj
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/intc/arm_gicv3: ICC_PMR_EL1 high bits should be RAZ
+Content-Language: en-GB
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20231114165404.681826-1-ben.dooks@codethink.co.uk>
+ <CAFEAcA-MG+ak8+xVyqgpWqmKAryOXJtOckUmA=GysQwnpuz5SQ@mail.gmail.com>
+From: Ben Dooks <ben.dooks@codethink.co.uk>
+Organization: Codethink Limited.
+In-Reply-To: <CAFEAcA-MG+ak8+xVyqgpWqmKAryOXJtOckUmA=GysQwnpuz5SQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=188.40.203.114;
+ envelope-from=ben.dooks@codethink.co.uk; helo=imap4.hz.codethink.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YTbFAtMhfmOZ
 
-Use TARGET_PAGE_SIZE to calculate TARGET_PAGE_ALIGN.
+On 14/11/2023 17:14, Peter Maydell wrote:
+> On Tue, 14 Nov 2023 at 16:54, Ben Dooks <ben.dooks@codethink.co.uk> wrote:
+>>
+>> The ICC_PMR_ELx bit msak returned from icc_fullprio_mask
+>> should technically also remove any bit above 7 as these
+>> are marked reserved (read 0) and should therefore should
+>> not be written as anything other than 0.
+>>
+>> Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
+>> ---
+>>   hw/intc/arm_gicv3_cpuif.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+>> index d07b13eb27..986044df79 100644
+>> --- a/hw/intc/arm_gicv3_cpuif.c
+>> +++ b/hw/intc/arm_gicv3_cpuif.c
+>> @@ -803,7 +803,7 @@ static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
+>>        * with the group priority, whose mask depends on the value of BPR
+>>        * for the interrupt group.)
+>>        */
+>> -    return ~0U << (8 - cs->pribits);
+>> +    return (~0U << (8 - cs->pribits)) & 0xff;
+>>   }
+> 
+> The upper bits of ICC_PMR_ELx are defined as RES0, which has a
+> complicated technical definition which you can find in the GIC
+> architecture specification glossary. It's valid for RES0 bits to
+> be implemented as reads-as-written, which is the way our current
+> implementation works. Valid guest code should never be writing
+> any non-zero value into those bits.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/i386/xen/xen-hvm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Yeah, got some proprietary test code that is trying write-1 and
+then assuming read-0.
 
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index f1c30d1384..8aa6a1ec3b 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -678,7 +678,7 @@ void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
-     trace_xen_client_set_memory(start_addr, size, log_dirty);
- 
-     start_addr &= TARGET_PAGE_MASK;
--    size = TARGET_PAGE_ALIGN(size);
-+    size = ROUND_UP(size, TARGET_PAGE_SIZE);
- 
-     if (add) {
-         if (!memory_region_is_rom(section->mr)) {
+> What problem are you running into that you're trying to fix
+> with this patch? If our implementation misbehaves as a result
+> of letting these high bits through into cs->icc_pmr_el1 that
+> would be a good reason for making the change.
+
+See above, local test code issue.
+
+  > If we do want to change this, for consistency we'd want
+> to change icv_fullprio_mask() too.
+
+If this isn't useful then I'll keep it as a local patch for now.
+
 -- 
-2.41.0
+Ben Dooks				http://www.codethink.co.uk/
+Senior Engineer				Codethink - Providing Genius
+
+https://www.codethink.co.uk/privacy.html
+

@@ -1,139 +1,301 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161071ejc;
-        Tue, 14 Nov 2023 08:31:28 -0800 (PST)
-X-Received: by 2002:a17:906:4907:b0:9b2:b691:9b5f with SMTP id b7-20020a170906490700b009b2b6919b5fmr7060938ejq.41.1699979487857;
-        Tue, 14 Nov 2023 08:31:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699979487; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2408000ejc;
+        Tue, 14 Nov 2023 15:57:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEg+3ALLCQPJjk4WIPrApooi/3SzPU9GwfoEsJ+eo10y2XlnlJZIwB2sOVJvym+me0ibs5V
+X-Received: by 2002:a67:e1d1:0:b0:45f:b8e3:f7d5 with SMTP id p17-20020a67e1d1000000b0045fb8e3f7d5mr6239805vsl.8.1700006242293;
+        Tue, 14 Nov 2023 15:57:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700006242; cv=none;
         d=google.com; s=arc-20160816;
-        b=igFrLIxTWOg6n4wnFtR3E5VdMmLx2rjdw0FlBXOslPcnQHqMvOnOR+UlGqGtxLHF6/
-         bHW6hpX9ZOxFu4FkZZb0lPRtbBDQ9C3awJxZKFUBCVXAP4I0HyQO/2hdvpdgwhp58CjO
-         aIhH6Ii5xAYBRUzgEgc0Q0CCmxJrqSqUvkoP5xrQu5S/by4AqB8Jmpm3qHVLNJ2s6dvI
-         DOfOuna1olkIti1qJBUepM/G6P4TfB7AXoQ2elM2ne68SvBHXBigA0zE8iv73YB8HUP6
-         6BSKG7tsJbfKKYTJR0OLZXRpdpuVxaAg70bWapRr333PmiKX/4yMtVYHmEhG6MwuuRfH
-         u+jw==
+        b=pYrTpqBYgjobpNbLQpQYS8ZRhFIe6cyUWwayta26gF753MiMtoEAYek/O1Wd7VvYkR
+         TsUPExqp9DFxkAFrrKgsyBRheY5ock3qhMc7qSUx0Xf48cw1aK5dSFS7w1sCEGAysGNk
+         XI8BGGPa/B6a7gVf4M9SkFiCPPV6exHPjUwr2Dpl8w8A3biHzLdQ1i1ayq2A9EdIJzSc
+         8EDvMtNF+QHgNX5+LzSCC4iUIWtng4h441Wy4ftbUeh2ZYo0OgMdcDPQZ8HxpD5TMcLD
+         tnxrx3d3PjncXBI3TsrupRqIa4geoSXC4Vj9htjtTFtFyBoM0AkFirjGUJA/wktIjk3c
+         OxBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=WLUIW1wEN60RfjCUyh0wJRK9Kz/EqjAkfQjEh/PTjs0=;
-        fh=9pdq7NpBxJPnvyNu1sJsWepRx2HfUbiacvC5FeL2cfI=;
-        b=c0E6yoDIMccunnk1oIzI+mSQpiW0xZvEmwjjsIXJnKhFJdg44LELTZ7atTVSYjjuul
-         KqYdbfxhAA4lr2nq9cxjY2XilV920ph69QDnhlzuh9VOLoWrEPP3Qwe6bzywceI1qgcp
-         NpyLvFC/PzHU/5xXflQpUTkpku4p9BEiqw91O3KMrXGFKcDzCECskXd2ztsd43DCjJQV
-         YufJ0ZlAOI3kYeIxosO3pYbFREe4PycjTwY0KF2YcPEHJqxGILe+gS+RQqyMCqpJirqB
-         lYEy4zj4UA+LgZbwKexSLVcbwoRymDoR9wmIaHl8PXXdxvMfsrYzSNUvtcswEwUoMnHR
-         99pw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8Ke/SSehHX8zHsgvtpbmPqDGZ0u7jii8Iz7ud5hiNZ8=;
+        fh=/T6xqUCWHJxCL2odTXkl490KMICJmjWwCPOs7M5ODd4=;
+        b=t/0t7u9ZlMdt5ynwV9Blt8EoopzOAc9ZZWBEEKHo9ogSoTbmfoCafQ8AQmGOAsc12e
+         W16Q81auSvf0nNEpq7Nz/e5Ij+pXN0jh62LT67MwSIT+lbpI+JKukTTsa9YSDJZGTGev
+         5iWy9sikoYqaak35hGBsw4rCgIWMmikVYrGtybVCUa2bFg3BfmLyDPDOGeFgUjUqVe4M
+         saFOBnoV/ZtVfhMMKL7fLQLXRC7GQN7kWOjIamWNYpdNYrvkXPjpRzNH578u6Logd3Oi
+         GzPgzOUlw641foEEgQwD9mMQyOJ6mpuXlIXAwOYELHMlMhVSbvnzJmOv14DrelxGOqRp
+         fwLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZhvaYpfy;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 27-20020a170906001b00b009cd938511ddsor477368eja.21.2023.11.14.08.31.27
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ANQezImI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t18-20020a056214155200b0066d7ec3340asi8223356qvw.63.2023.11.14.15.57.22
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Nov 2023 08:31:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 14 Nov 2023 15:57:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZhvaYpfy;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699979487; x=1700584287; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=WLUIW1wEN60RfjCUyh0wJRK9Kz/EqjAkfQjEh/PTjs0=;
-        b=ZhvaYpfyIxQmxx5CdKoM1HprYunDk72+1bAYreYfEfYmsOcJqcxw5K/K8hsiDgQT4A
-         rAKxz+pR3l7VfiNIvh8TMevjmoMYY9awkAFEyXnlqCJUwlCdA8WIpOxaP8rfzL77KZQO
-         +2KsPPeytaRvgsdQNF0LBHwraGct98JGmdI8KugB7KaGYuEm4TRC7yB/a4A8BQYzo1Z2
-         yYOCsZB9Nn2VAaomgoLbi+xz3RTgS46BSJLGUtgf51k65zz57Bd5kzrhLptyKCq2QOwM
-         6+0siZ7tdfnuO/zzPRGA8HX+7H0TNAsfUDZjunx+iUEu7JwQpSmuulMmJCFkpDHR/8bp
-         j+pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699979487; x=1700584287;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=WLUIW1wEN60RfjCUyh0wJRK9Kz/EqjAkfQjEh/PTjs0=;
-        b=qbvvylnlbkdfgAnh1Os+SOKIIjPmcxFbXTwJhalhCSynVsstE6sHOj22Z0JXK3+Pt7
-         uMIrIszkJyzrwoieKDKii/k1Cb/UTjvwfa3FbERnBVDoywYHDp72chfpRcF3wZbFeU6Q
-         v0fko8pvaNW8YrczaZOtmWUjX8D6q+opMO9DvPwyj84AIiHwsBVi+FX/G4TlXYiTQn3k
-         a5+yh5qtRuWkvIorSPXDIHebvIHc5yXJaqXwG6ng26Ic83Zrxn7Oss7S1RfDgxwAiMIf
-         8f3jbqcheT5eLI404n0vzPJZUqsCa/XTJqC1lF8yfpXRHCmnPsUBqVMkuS9vOezNpgvp
-         xk2w==
-X-Gm-Message-State: AOJu0YxDaCsR57bJYb7OjpRzfL6dBGmjDFpm5v7Rrld4O6SGQ99LdaZ9
-	C/VvmO4CxOcxuGzobkJPjBX9xxXQ
-X-Google-Smtp-Source: AGHT+IEWSkzHY5obRM6zNhXhqu10PReegPajovJZrPBLVpt+fJDzRpOh65h9KSuNBeV+qPZ25y+u/g==
-X-Received: by 2002:a17:906:b889:b0:9e0:dcf:17f6 with SMTP id hb9-20020a170906b88900b009e00dcf17f6mr7932359ejb.58.1699979487100;
-        Tue, 14 Nov 2023 08:31:27 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id m16-20020a1709060d9000b009be14e5cd54sm5785453eji.57.2023.11.14.08.31.25
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 14 Nov 2023 08:31:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	David Woodhouse <dwmw@amazon.co.uk>,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	xen-devel@lists.xenproject.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH-for-9.0 0/9] hw/xen: Have ARM targets use common xen_memory_listener
-Date: Tue, 14 Nov 2023 17:31:14 +0100
-Message-ID: <20231114163123.74888-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ANQezImI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r33HM-0007wV-RY; Tue, 14 Nov 2023 18:57:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33HL-0007w2-DN
+ for qemu-arm@nongnu.org; Tue, 14 Nov 2023 18:57:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33HH-0006kI-He
+ for qemu-arm@nongnu.org; Tue, 14 Nov 2023 18:57:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1700006225;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8Ke/SSehHX8zHsgvtpbmPqDGZ0u7jii8Iz7ud5hiNZ8=;
+ b=ANQezImIGxZShMX7PMID0MC7b147Ut8WMsiPTRu/aSaP2ytRhV8IA86v/hx5DH4JPuQSAx
+ 88S1ArExPVxT2LGnkw85hf03vkKAjwxFgPOw8dSpl21qHrGek9Fvj5BaIR4Bl3yxItBtvY
+ qH8TKjQMUmSlMhIDoNeJPM/FLJj0R9s=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-582-YSBwxAPGOJeYRAIQuBr_LQ-1; Tue, 14 Nov 2023 18:57:01 -0500
+X-MC-Unique: YSBwxAPGOJeYRAIQuBr_LQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B3888101A529;
+ Tue, 14 Nov 2023 23:56:59 +0000 (UTC)
+Received: from gshan.redhat.com (unknown [10.64.136.44])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1321DC15885;
+ Tue, 14 Nov 2023 23:56:44 +0000 (UTC)
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ philmd@linaro.org, b.galvani@gmail.com, strahinja.p.jankovic@gmail.com,
+ sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com,
+ nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, laurent@vivier.eu,
+ vijai@behindbytes.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com, edgar.iglesias@gmail.com,
+ bcain@quicinc.com, gaosong@loongson.cn, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
+ ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
+ jcmvbkbc@gmail.com, shan.gavin@gmail.com
+Subject: [PATCH v5 00/31] Unified CPU type check
+Date: Wed, 15 Nov 2023 09:55:57 +1000
+Message-ID: <20231114235628.534334-1-gshan@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wI/yuGGpldch
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tpufQVe6CGw2
 
-Hi,
+There are two places where the user specified CPU type is checked to see
+if it's supported or allowed by the board: machine_run_board_init() and
+mc->init(). We don't have to maintain two duplicate sets of logic. This
+series intends to move the check to machine_run_board_init() so that we
+have unified CPU type check.
 
-While looking at Xen target-specific code, I noticed some
-generic code used by x86 which is not implemented for ARM.
+PATCH[01-04] consolidate CPUClass::class_by_name() so that the returned
+             CPU class is checked for once in cpu_class_by_name()
+PATCH[05]    add generic helper cpu_model_from_type() to extract the CPU
+             model name from the CPU type name
+PATCH[06]    add generic cpu_list(), to be reused by most of the targets
+PATCH[07-21] switch to generic cpu_list() for most of the targets
+PATCH[22]    use generic helper cpu_model_from_type() for several targets
+PATCH[23-31] validate the CPU type in machine_run_board_init() for the
+             individual board
 
-Maybe ARM machines don't need it, I don't know. But I
-wanted to see if I can get this common code target agnostic
-and build it once, possibly bringing smth useful to ARM.
+v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00302.html
+v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00528.html
+v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-09/msg00157.html
+v4: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00005.html
 
-The changes don't break CI testing and Avocado local tests.
-If this xen_memory_listener feature isn't required for ARM,
-I'll send follow up patch that keep this series with common
-xen_memory_listener but with a runtime flag to disable.
+Testing
+=======
 
-Patches do the usual "change target-specific API to a
-target-agnostic one", in particular using "exec/target_page.h"
-at runtime. Then non-x86 code is extracted, then merged to
-the generic xen/xen-hvm-common.c.
+With the following command lines, the output messages are varied before
+and after the series is applied.
 
-Thoughts?
+  ./build/qemu-system-aarch64            \
+  -accel tcg -machine virt,gic-version=3 \
+  -cpu cortex-a8 -smp maxcpus=2,cpus=1
 
-Regards,
+Before the series is applied:
 
-Phil.
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
 
-Based-on: <20231114143816.71079-1-philmd@linaro.org>
+After the series is applied:
 
-Philippe Mathieu-Daudé (9):
-  hw/xen/hvm: Inline TARGET_PAGE_ALIGN() macro
-  hw/xen/hvm: Propagate page_mask to a pair of functions
-  hw/xen/hvm: Get target page size at runtime
-  hw/xen/hvm: Expose xen_memory_listener declaration
-  hw/xen/hvm: Expose xen_read_physmap() prototype
-  hw/xen/hvm: Initialize xen_physmap QLIST in xen_read_physmap()
-  hw/xen/hvm: Extract common code to xen-hvm-common.c
-  hw/xen/hvm: Merge xen-hvm-common.c files
-  hw/xen/hvm: Inline xen_arch_set_memory()
+  qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
+  The valid models are: cortex-a7, cortex-a15, cortex-a35, cortex-a55,
+                        cortex-a72, cortex-a76, a64fx, neoverse-n1,
+                        neoverse-v1, cortex-a53, cortex-a57, max
 
- include/hw/xen/xen-hvm-common.h |   5 +-
- hw/arm/xen_arm.c                |  24 --
- hw/i386/xen/xen-hvm.c           | 441 +----------------------------
- hw/xen/xen-hvm-common.c         | 474 +++++++++++++++++++++++++++++++-
- stubs/xen-hw-stub.c             |   4 -
- 5 files changed, 468 insertions(+), 480 deletions(-)
+Changelog
+=========
+v5:
+  * PATCH[v5 01] to remove CPU class 'ev67' for alpha            (Ricard/Igor)
+  * PATCH[v5 02] to remove object_class_is_abstract() for hppa   (Gavin)
+  * Don't move cpu_class_by_name()                               (Richard)
+  * PATCH[v5 04] to remove 'oc == NULL' since the check has
+    been covered in object_class_dynamic_cast()                  (Igor)
+  * Introduce generic cpu_list(), shared by most of the targets  (Richard)
+  * Use g_str_has_suffix and g_auto_free                         (Richard)
+  * Collect r-bs from Igor and Richard                           (Gavin)
+v4:
+  * Integrate Philippe's patches where cpu_class_by_name()
+    is consolidated and my duplicate code is dropped            (Philippe)
+  * Simplified changelog and improvements                       (Thomas)
+  * g_assert() on the return value from cpu_model_from_type()
+    in is_cpu_type_supported()                                  (Philippe)
+  * Collected r-bs from Philippe Mathieu-Daudé, Leif Lindholm,
+    Bastian Koppelmann, Daniel Henrique Barboza, Cédric Le Goater,
+    Gavin Shan                                                  (Gavin)
+v3:
+  * Generic helper cpu_model_from_type()                        (Igor)
+  * Apply cpu_model_from_type() to the individual targets       (Igor)
+  * Implement cpu_list() for the missed targets                 (Gavin)
+  * Remove mc->valid_cpu_models                                 (Richard)
+  * Separate patch to constify mc->validate_cpu_types           (Gavin)
+v2:
+  * Constify mc->valid_cpu_types                                (Richard)
+  * Print the supported CPU models, instead of typenames        (Peter)
+  * Misc improvements for the hleper to do the check            (Igor)
+  * More patches to move the check                              (Marcin)
+
+Gavin Shan (30):
+  target/alpha: Remove 'ev67' CPU class
+  target/hppa: Remove object_class_is_abstract()
+  target: Remove 'oc == NULL' check
+  cpu: Add helper cpu_model_from_type()
+  cpu: Add generic cpu_list()
+  target/alpha: Use generic cpu_list()
+  target/arm: Use generic cpu_list()
+  target/avr: Use generic cpu_list()
+  target/cris: Use generic cpu_list()
+  target/hexagon: Use generic cpu_list()
+  target/hppa: Use generic cpu_list()
+  target/loongarch: Use generic cpu_list()
+  target/m68k: Use generic cpu_list()
+  target/mips: Use generic cpu_list()
+  target/openrisc: Use generic cpu_list()
+  target/riscv: Use generic cpu_list()
+  target/rx: Use generic cpu_list()
+  target/sh4: Use generic cpu_list()
+  target/tricore: Use generic cpu_list()
+  target/xtensa: Use generic cpu_list()
+  target: Use generic cpu_model_from_type()
+  machine: Constify MachineClass::valid_cpu_types[i]
+  machine: Use error handling when CPU type is checked
+  machine: Introduce helper is_cpu_type_supported()
+  machine: Print CPU model name instead of CPU type name
+  hw/arm/virt: Hide host CPU model for tcg
+  hw/arm/virt: Check CPU type in machine_run_board_init()
+  hw/arm/sbsa-ref: Check CPU type in machine_run_board_init()
+  hw/arm: Check CPU type in machine_run_board_init()
+  hw/riscv/shakti_c: Check CPU type in machine_run_board_init()
+
+Philippe Mathieu-Daudé (1):
+  cpu: Call object_class_dynamic_cast() once in cpu_class_by_name()
+
+ bsd-user/main.c                       |  5 +-
+ cpu-target.c                          | 44 ++++++++++++-
+ hw/arm/bananapi_m2u.c                 | 12 ++--
+ hw/arm/cubieboard.c                   | 12 ++--
+ hw/arm/mps2-tz.c                      | 20 ++++--
+ hw/arm/mps2.c                         | 25 +++++--
+ hw/arm/msf2-som.c                     | 12 ++--
+ hw/arm/musca.c                        | 13 ++--
+ hw/arm/npcm7xx_boards.c               | 13 ++--
+ hw/arm/orangepi.c                     | 12 ++--
+ hw/arm/sbsa-ref.c                     | 21 +-----
+ hw/arm/virt.c                         | 23 ++-----
+ hw/core/cpu-common.c                  |  8 ++-
+ hw/core/machine.c                     | 93 ++++++++++++++++-----------
+ hw/m68k/q800.c                        |  2 +-
+ hw/riscv/shakti_c.c                   | 11 ++--
+ include/hw/boards.h                   |  2 +-
+ include/hw/core/cpu.h                 | 12 ++++
+ target/alpha/cpu.c                    | 26 +-------
+ target/alpha/cpu.h                    |  3 -
+ target/arm/arm-qmp-cmds.c             |  3 +-
+ target/arm/cpu.c                      |  4 +-
+ target/arm/cpu.h                      |  3 -
+ target/arm/helper.c                   | 46 -------------
+ target/avr/cpu.c                      | 23 +------
+ target/avr/cpu.h                      |  2 -
+ target/cris/cpu.c                     | 42 +-----------
+ target/cris/cpu.h                     |  3 -
+ target/hexagon/cpu.c                  | 24 +------
+ target/hexagon/cpu.h                  |  3 -
+ target/hppa/cpu.c                     | 32 +--------
+ target/hppa/cpu.h                     |  3 -
+ target/i386/cpu.c                     |  3 +-
+ target/loongarch/cpu.c                | 23 +------
+ target/loongarch/cpu.h                |  4 --
+ target/loongarch/loongarch-qmp-cmds.c |  3 +-
+ target/m68k/cpu.c                     |  4 +-
+ target/m68k/cpu.h                     |  4 --
+ target/m68k/helper.c                  | 40 ------------
+ target/mips/cpu-defs.c.inc            |  9 ---
+ target/mips/cpu.h                     |  4 --
+ target/mips/sysemu/mips-qmp-cmds.c    |  3 +-
+ target/openrisc/cpu.c                 | 46 +------------
+ target/openrisc/cpu.h                 |  3 -
+ target/ppc/cpu_init.c                 |  3 +-
+ target/ppc/ppc-qmp-cmds.c             |  3 +-
+ target/riscv/cpu.c                    | 36 +----------
+ target/riscv/cpu.h                    |  2 -
+ target/riscv/riscv-qmp-cmds.c         |  3 +-
+ target/rx/cpu.c                       | 20 +-----
+ target/rx/cpu.h                       |  3 -
+ target/sh4/cpu.c                      | 17 -----
+ target/sh4/cpu.h                      |  3 -
+ target/tricore/cpu.c                  |  4 +-
+ target/tricore/cpu.h                  |  4 --
+ target/tricore/helper.c               | 22 -------
+ target/xtensa/cpu.c                   |  4 +-
+ target/xtensa/cpu.h                   | 10 +--
+ target/xtensa/helper.c                | 19 +-----
+ target/xtensa/overlay_tool.h          |  7 +-
+ 60 files changed, 229 insertions(+), 634 deletions(-)
 
 -- 
 2.41.0
+

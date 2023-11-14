@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2412335ejc;
-        Tue, 14 Nov 2023 16:04:21 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHEBXFCS9zsvD2LPkDWeDJdMCEYX8TmIK0XEWQSghbTG/cJRqDOv8Fr2dykohdzPyptQwLu
-X-Received: by 2002:a05:622a:296:b0:41c:b787:7bb with SMTP id z22-20020a05622a029600b0041cb78707bbmr4026202qtw.21.1700006661459;
-        Tue, 14 Nov 2023 16:04:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700006661; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2412456ejc;
+        Tue, 14 Nov 2023 16:04:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF+NCBZPwZrZeYrke3Zd5MiSledaR8VAWdyP9hnRmBvKVWPA94NkGBq/IJ2yrI6IJ4lDpcw
+X-Received: by 2002:ad4:4e4f:0:b0:66d:5a3a:c5e6 with SMTP id eb15-20020ad44e4f000000b0066d5a3ac5e6mr5460294qvb.18.1700006671593;
+        Tue, 14 Nov 2023 16:04:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700006671; cv=none;
         d=google.com; s=arc-20160816;
-        b=KFl4S6sD1wuRUdhevDCRDV9mAh2vbZyE6QPNyzh1Tn8pN5iEC/V7HcfVrZyhAup1Xp
-         JrufAPRQbgAXVOQ/XSfk82cBtAw8df+7gTEiQI3VAR7eXb3YNtBtbl+9sU5ZGsIScsLE
-         2Wp3V1rYw6m1HugXeek7Q7Afc3Uoi7Eyr3GFt16YPIEIuWK6MLh0DJzLadDTc0O0Ve4L
-         TdB3qpFlwafCU1gerd4QsU9NM452KQxOqBVtmiI4DcGUNW6t9I0vRa0q04bQcVJfsRuX
-         h2lIZvtGtrTr0LRK68calAtBtA8p253o+c94YZQx7x0I/87ECAujhE1rWukg9RSbrYN9
-         6vPQ==
+        b=l3NoJPFOxPhUf6/FgPOE9ehNDv/QqF4jrIXnAeQVlgvdhkjCcqVKrj9fOVWldzFK6W
+         m/8Rpq/Jb8nvLgnj1Vs2Yz7UkXekTUJwJVfqnKiN6t6AKOU/XR/o74E9JlFJfR05zOz3
+         yIOck8cvS2U0whDH17cShIMyaDF8X4uloLH6p/4Xh/YVnxAp4dgPfyoXYnC4mmwZLWFf
+         hpsoN3Drbhuvg2dI6eZaZ7ZMZ8kzm/TLr/cwvP+Bh5ZX35JGi5TtP2OBOkIdD/HuYyvB
+         PYU6TvC2uNCvFo9Yd0+DKmHMukyhQIJf1BfzPZoC2XbKN6bCve8gMDrcVc0HfwusfBrn
+         5N4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mQSpWBUC1kwJ34qh0zAux7Kt73lQzg9r7Q8/AIyMDL4=;
+        bh=wkjJc9SmULphEh7KBEubO5fjf1sUZsLSsPFKusKCiHg=;
         fh=/T6xqUCWHJxCL2odTXkl490KMICJmjWwCPOs7M5ODd4=;
-        b=Eo4igB9zA60kZFiVdj26FJ4RJdOlg04ksyDL9K6XtV8xm8hCCZnq0NuIkll+j9E5Hh
-         Gj2jxOXAPbH8v1eRFHZiQs7xs8CMtalgHYoMcg9LMLVrCpwoJjZ+yQFyKiXLiRil+9y6
-         ic6ymm/Zy8Z2V7t43L33dfUgD8p33wASUV5L2CcfmR3ERaZmDdlVi29jHYA5jsUmNivC
-         YXBBnyeU0oRSZaHiLDlmjS398+7st6enngFder6Wc6DVhj/s/1vGb9jJx908c+Yidfno
-         By7/ZIYsL107956RfGdZogPxIaBjOryKvVhWdDUX66HkTRt0P84hiVei38tPvMZ9UG8O
-         MqyA==
+        b=lh3jUxq2VM/Y7r4jwYt0Fcekq/xjtEQRRXNzDLhXCaj40NfyuN66iOsWFjAqjrzn4E
+         fcSJ2BhgkedM2LfOfNYXqhcrYIlMuAtHRhT1nbxyO96gw8AwMDkbgaOIKM7bY1fz0wxK
+         JShBEfZZFnTy9+ovNsfZD5xZO26v9USkTbMrZRY0oyg1Y9xFArTC0HITkNLoFo/HKH6L
+         UGHW9RjG4MH6TeLwvpqukH1FXZ3cE29JXXyrVnuHejYKN36GKRSoDT6VM4N8fucc28/F
+         zQaPbIE7cR3EMf4j3+j7dcnnqNvEBp67gD/UNoI+c+W8l3b3qR6iJWWLkp2EgOaYZr6w
+         vWcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hxbt97AK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gaPsaa47;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7-20020a05622a05c700b0041814a70625si7371368qtb.798.2023.11.14.16.04.21
+        by mx.google.com with ESMTPS id l6-20020a056214104600b00670f2a1a0a4si7490199qvr.310.2023.11.14.16.04.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 16:04:21 -0800 (PST)
+        Tue, 14 Nov 2023 16:04:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hxbt97AK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gaPsaa47;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r33N6-0000Gu-DD; Tue, 14 Nov 2023 19:03:08 -0500
+	id 1r33Kh-0005lp-AY; Tue, 14 Nov 2023 19:00:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Mo-0008Tk-6n
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:02:54 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Kg-0005gG-AT
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:00:38 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Mm-0008Ms-LX
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:02:49 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Kd-00083e-8w
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:00:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700006568;
+ s=mimecast20190719; t=1700006430;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mQSpWBUC1kwJ34qh0zAux7Kt73lQzg9r7Q8/AIyMDL4=;
- b=Hxbt97AK+hob/vnSJ/SiI0jRsBx07sxaNgn8+SrAAXs2yTmeCslGhu6ekN9I8p3CB+RITL
- biQj+kgM0J9qAsQafD1i6lcwpymAIQsz6u4S5IGQa3uWPEcKUVIT/VwwNxKwf1FZskbItL
- wKarJwhuTKHsto2juEpFDpIkhWrayF4=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-25-Tkyawx-9PNCtB1x1EM0Ygg-1; Tue,
- 14 Nov 2023 19:02:41 -0500
-X-MC-Unique: Tkyawx-9PNCtB1x1EM0Ygg-1
+ bh=wkjJc9SmULphEh7KBEubO5fjf1sUZsLSsPFKusKCiHg=;
+ b=gaPsaa47HAwTyi7itMPPNqdOQoZ3MWAliKA+MMlSKD7j92ZtudxHiz+ty+U0+hEtthn0lq
+ QLDTB4UmktvpHRW0SeKTxu/fxhZqeRR9UBbrH7mYTYSQ3I339y0lA9c9Z6T/cSMzYacVIQ
+ aRRAGFmY3kowV5c+8YaeE04Qj6MRJp4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-237-b8vccmANMAesCOE6EAogfw-1; Tue, 14 Nov 2023 19:00:23 -0500
+X-MC-Unique: b8vccmANMAesCOE6EAogfw-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1F11B29ABA02;
- Wed, 15 Nov 2023 00:02:37 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DDD7D101A597;
+ Wed, 15 Nov 2023 00:00:21 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 05F09C15885;
- Wed, 15 Nov 2023 00:02:23 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 663F1C15885;
+ Wed, 15 Nov 2023 00:00:09 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -94,9 +94,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
  ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
  jcmvbkbc@gmail.com, shan.gavin@gmail.com
-Subject: [PATCH v5 25/31] machine: Introduce helper is_cpu_type_supported()
-Date: Wed, 15 Nov 2023 09:56:22 +1000
-Message-ID: <20231114235628.534334-26-gshan@redhat.com>
+Subject: [PATCH v5 15/31] target/mips: Use generic cpu_list()
+Date: Wed, 15 Nov 2023 09:56:12 +1000
+Message-ID: <20231114235628.534334-16-gshan@redhat.com>
 In-Reply-To: <20231114235628.534334-1-gshan@redhat.com>
 References: <20231114235628.534334-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -127,127 +127,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +E0c40L5tpYK
+X-TUID: eqkzUOBWM5Tr
 
-The logic, to check if the specified CPU type is supported in
-machine_run_board_init(), is independent enough. Factor it out into
-helper is_cpu_type_supported(). machine_run_board_init() looks a bit
-clean with this. Since we're here, @machine_class is renamed to @mc
-to avoid multiple line spanning of code. The comments are tweaked a
-bit either.
+Before it's applied:
 
-No functional change intended.
+[gshan@gshan q]$ ./build/qemu-system-mips64 -cpu ?
+MIPS '4Kc'
+MIPS '4Km'
+MIPS '4KEcR1'
+MIPS 'XBurstR1'
+MIPS '4KEmR1'
+MIPS '4KEc'
+MIPS '4KEm'
+MIPS '24Kc'
+MIPS '24KEc'
+MIPS '24Kf'
+MIPS '34Kf'
+MIPS '74Kf'
+MIPS 'XBurstR2'
+MIPS 'M14K'
+MIPS 'M14Kc'
+MIPS 'P5600'
+MIPS 'mips32r6-generic'
+MIPS 'I7200'
+MIPS 'R4000'
+MIPS 'VR5432'
+MIPS '5Kc'
+MIPS '5Kf'
+MIPS '20Kc'
+MIPS 'MIPS64R2-generic'
+MIPS '5KEc'
+MIPS '5KEf'
+MIPS 'I6400'
+MIPS 'I6500'
+MIPS 'Loongson-2E'
+MIPS 'Loongson-2F'
+MIPS 'Loongson-3A1000'
+MIPS 'Loongson-3A4000'
+MIPS 'mips64dspr2'
+MIPS 'Octeon68XX'
+
+After it's applied:
+
+[gshan@gshan q]$ ./build/qemu-system-mips64 -cpu ?
+Available CPUs:
+  20Kc
+  24Kc
+  24KEc
+  24Kf
+  34Kf
+  4Kc
+  4KEc
+  4KEcR1
+  4KEm
+  4KEmR1
+  4Km
+  5Kc
+  5KEc
+  5KEf
+  5Kf
+  74Kf
+  I6400
+  I6500
+  I7200
+  Loongson-2E
+  Loongson-2F
+  Loongson-3A1000
+  Loongson-3A4000
+  M14K
+  M14Kc
+  mips32r6-generic
+  mips64dspr2
+  MIPS64R2-generic
+  Octeon68XX
+  P5600
+  R4000
+  VR5432
+  XBurstR1
+  XBurstR2
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/core/machine.c | 82 +++++++++++++++++++++++++----------------------
- 1 file changed, 44 insertions(+), 38 deletions(-)
+ target/mips/cpu-defs.c.inc | 9 ---------
+ target/mips/cpu.h          | 4 ----
+ 2 files changed, 13 deletions(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 5b45dbbbd5..49e0bc874d 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1387,13 +1387,51 @@ out:
-     return r;
- }
+diff --git a/target/mips/cpu-defs.c.inc b/target/mips/cpu-defs.c.inc
+index c0c389c59a..fbf787d8ce 100644
+--- a/target/mips/cpu-defs.c.inc
++++ b/target/mips/cpu-defs.c.inc
+@@ -1018,15 +1018,6 @@ const mips_def_t mips_defs[] =
+ };
+ const int mips_defs_number = ARRAY_SIZE(mips_defs);
  
-+static void is_cpu_type_supported(MachineState *machine, Error **errp)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    ObjectClass *oc = object_class_by_name(machine->cpu_type);
-+    CPUClass *cc;
-+    int i;
-+
-+    /*
-+     * Check if the user specified CPU type is supported when the valid
-+     * CPU types have been determined. Note that the user specified CPU
-+     * type is provided through '-cpu' option.
-+     */
-+    if (mc->valid_cpu_types && machine->cpu_type) {
-+        for (i = 0; mc->valid_cpu_types[i]; i++) {
-+            if (object_class_dynamic_cast(oc, mc->valid_cpu_types[i])) {
-+                break;
-+            }
-+        }
-+
-+        /* The user specified CPU type isn't valid */
-+        if (!mc->valid_cpu_types[i]) {
-+            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
-+            error_append_hint(errp, "The valid types are: %s",
-+                              mc->valid_cpu_types[0]);
-+            for (i = 1; mc->valid_cpu_types[i]; i++) {
-+                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
-+            }
-+
-+            error_append_hint(errp, "\n");
-+            return;
-+        }
-+    }
-+
-+    /* Check if CPU type is deprecated and warn if so */
-+    cc = CPU_CLASS(oc);
-+    if (cc && cc->deprecation_note) {
-+        warn_report("CPU model %s is deprecated -- %s",
-+                    machine->cpu_type, cc->deprecation_note);
-+    }
-+}
- 
- void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp)
- {
-     ERRP_GUARD();
-     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
--    ObjectClass *oc = object_class_by_name(machine->cpu_type);
--    CPUClass *cc;
-     Error *local_err = NULL;
- 
-     /* This checkpoint is required by replay to separate prior clock
-@@ -1449,42 +1487,10 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
-         machine->ram = machine_consume_memdev(machine, machine->memdev);
-     }
- 
--    /* If the machine supports the valid_cpu_types check and the user
--     * specified a CPU with -cpu check here that the user CPU is supported.
--     */
--    if (machine_class->valid_cpu_types && machine->cpu_type) {
--        int i;
+-void mips_cpu_list(void)
+-{
+-    int i;
 -
--        for (i = 0; machine_class->valid_cpu_types[i]; i++) {
--            if (object_class_dynamic_cast(oc,
--                                          machine_class->valid_cpu_types[i])) {
--                /* The user specified CPU is in the valid field, we are
--                 * good to go.
--                 */
--                break;
--            }
--        }
--
--        if (!machine_class->valid_cpu_types[i]) {
--            /* The user specified CPU is not valid */
--            error_setg(&local_err, "Invalid CPU type: %s", machine->cpu_type);
--            error_append_hint(&local_err, "The valid types are: %s",
--                              machine_class->valid_cpu_types[0]);
--            for (i = 1; machine_class->valid_cpu_types[i]; i++) {
--                error_append_hint(&local_err, ", %s",
--                                  machine_class->valid_cpu_types[i]);
--            }
--            error_append_hint(&local_err, "\n");
--
--            error_propagate(errp, local_err);
--        }
+-    for (i = 0; i < ARRAY_SIZE(mips_defs); i++) {
+-        qemu_printf("MIPS '%s'\n", mips_defs[i].name);
 -    }
+-}
 -
--    /* Check if CPU type is deprecated and warn if so */
--    cc = CPU_CLASS(oc);
--    if (cc && cc->deprecation_note) {
--        warn_report("CPU model %s is deprecated -- %s", machine->cpu_type,
--                    cc->deprecation_note);
-+    /* Check if the CPU type is supported */
-+    is_cpu_type_supported(machine, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-     }
+ static void fpu_init (CPUMIPSState *env, const mips_def_t *def)
+ {
+     int i;
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 52f13f0363..1163a71f3c 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1235,10 +1235,6 @@ struct MIPSCPUClass {
+     bool no_data_aborts;
+ };
  
-     if (machine->cgs) {
+-void mips_cpu_list(void);
+-
+-#define cpu_list mips_cpu_list
+-
+ void cpu_wrdsp(uint32_t rs, uint32_t mask_num, CPUMIPSState *env);
+ uint32_t cpu_rddsp(uint32_t mask_num, CPUMIPSState *env);
+ 
 -- 
 2.41.0
 

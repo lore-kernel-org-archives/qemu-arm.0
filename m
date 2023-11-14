@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2413477ejc;
-        Tue, 14 Nov 2023 16:06:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGD+WAVXdKtNhj59WgugtfQw9zPsLGxnStWU8ZMhSyOYKt1VDOB7CQmwBPDHbMynfRDUZHh
-X-Received: by 2002:a05:6214:5149:b0:66f:ae2b:7a with SMTP id kh9-20020a056214514900b0066fae2b007amr3923224qvb.10.1700006769368;
-        Tue, 14 Nov 2023 16:06:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700006769; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2413482ejc;
+        Tue, 14 Nov 2023 16:06:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGDKEF9yEMwfwrsDKr4lL7h6Y0Oux4qbJwvYFwqSQlK3vT9Q7KgbAxKNg4+1+jaLiTosacW
+X-Received: by 2002:ac8:5fc2:0:b0:41e:213d:3c8e with SMTP id k2-20020ac85fc2000000b0041e213d3c8emr4748582qta.32.1700006770189;
+        Tue, 14 Nov 2023 16:06:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700006770; cv=none;
         d=google.com; s=arc-20160816;
-        b=gFWAwGMvYiWy29wLg0tS2FrXz5t7MwjH1eOQQ28PD0AJaDZSOj9TyBUt0BC9Jrk3gA
-         TsAjIWIqiUsf0BuI9Vra6aTZSWZRJQmZaG//ZXXlclUZAlG4Kw0ERLmIY43HYvgOtgOQ
-         22mtDa3j/eLNN7hq+2YKTlflRnn73LyUEr8F86BvBNpuBypnbGAC2FnmOGL3UoMg74pI
-         oSJw/LAYxzq41lklVbsOdPsXb3/m4hUsRol59tZ80Z2CY3002xKm3yCIiMxuXdZzRyOL
-         /iCP4kWfP6Z+hCvMqY6ifcogizr39mAelU5gXxg1rHl44w51PolBOw9HpIgN4e1LtK+N
-         kWLQ==
+        b=FDd7UA4Ua47U7YRhBqxLX9pEsO6N+UgdhoPIUOFSkdZISA1xiJkLIwz5h+o7uGDe9k
+         a+LBLHDM8snuLdNAUBS7QkN/uhO4/HlXm2im1oYpvP3GeFv68XKRZs6qDWZJOCnywuOo
+         VG4s1QKz7qZ9Ry8zXujHcwbP3UYVHdWarBG3l+/ZyBkXzAiEJfVsqqwXphiMXILzgNzn
+         //P20urArGX2bjGfKG2D33JmUYdZbDQ0a3WHz7tJKcBzBctgzrRZx8zIGNtx19YrMcXm
+         pUXgMX8/tz28pgBCUB0a4BreMzaw5wSo65wjLj0eLHA0hQQoEqzXtI2vPSQYjlJMaR0l
+         o9zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=0Qk6/QajLgnGyyzUHhMPIDBeq8Pe5C9hI3Ifb+WIAuI=;
+        bh=KwHrw3QcDvP6vtNRpEI2GW8H/o8KdTjf8rIuv3BkvEA=;
         fh=/T6xqUCWHJxCL2odTXkl490KMICJmjWwCPOs7M5ODd4=;
-        b=lBuoq1Ju+n36HFyrBzJNzV6J5m8lrPvlqC8Jo1bdtrkuWSmffhcK1mraV1FyXTLwka
-         0+6htcPTJ3Y5BQqULFY5HpVhvdiSXx9/J9i3wA5PhEQiFByy38QUW2rJa+LgrNWgDjDm
-         II6i8tFvK84j1BturmtEVnz0NY79Gk9RA3/2B7Nfh7aTsUaRJXJqr4Wdvvm+ZJ2c7Dt8
-         Y/CVqzrupuX+RS8k8C6UXUA6qijmO/QrVJPBqh1r5mQs01c+8JHECJdcmDtYjLAbkJ9e
-         EovwW9qUD/NDS+5MndKt7S0VlTVYz+iKGsoTUEhj67Bh906Nz1Qgtb2IymOhLYPeINjz
-         3tng==
+        b=q1ssHnRH2yG3YgReZWAQOV+nsYNkEtrojYIimrtZec4897ii2ZXKm/IcQ/cjQyBfOR
+         IGb8eC68M5NGraZ4ZoHa09hSbrTtiyw7sFjtC+uYXE+xnLoS+f1sUtwf4/ZExxwIPvIg
+         CRqR8QZ+D6H/e+S1GIbwus3E4Xm1r45a+4SSZ3YS6YOe9T3BHvO6EzI2xIPPWl3xmK8L
+         ulEjJPK+2uDoXSQSpIpkrKkrBEYsdt0qdlfNHrD3KEckb0TWiRrRFU0f4oTkBj1WhCAP
+         D++atYKYtcnE0KuG4ZGc2Q87drqV4aQrt/tMXAeaVGNtUb8cb09U4EZdfhYMLVcQpb1I
+         3mWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vc3cSvBg;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b2iTjdIc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay39-20020a05620a17a700b0077433fe23b1si7740306qkb.277.2023.11.14.16.06.09
+        by mx.google.com with ESMTPS id d5-20020ac85ac5000000b0041cbbbc2ed1si7854033qtd.362.2023.11.14.16.06.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 16:06:09 -0800 (PST)
+        Tue, 14 Nov 2023 16:06:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vc3cSvBg;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b2iTjdIc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r33NF-0000iN-4g; Tue, 14 Nov 2023 19:03:17 -0500
+	id 1r33Lb-0007CK-RC; Tue, 14 Nov 2023 19:01:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33NC-0000ck-9Y
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:03:14 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33LQ-00075g-MI
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:01:24 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33NA-0008Qb-Sw
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:03:14 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33LO-0008C1-Tp
+ for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:01:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700006591;
+ s=mimecast20190719; t=1700006482;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0Qk6/QajLgnGyyzUHhMPIDBeq8Pe5C9hI3Ifb+WIAuI=;
- b=Vc3cSvBgjVCJqR08QNL363uVMiO6UgpuNzevGmjeSPoez44sUMV0OBTMVgEHe/mOCg6kP7
- OHXPCWqPG3KHvfFnx1lBcnJAlOGAZPz1KDMw4wTk3/SG5/0zf5IvFvOpCFMVin7oem6tER
- BUdOZZoKCbdqMwJpf2j5xL+B24OP21M=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-251-FgyyvxepODesgtqxvhF8lg-1; Tue, 14 Nov 2023 19:03:05 -0500
-X-MC-Unique: FgyyvxepODesgtqxvhF8lg-1
+ bh=KwHrw3QcDvP6vtNRpEI2GW8H/o8KdTjf8rIuv3BkvEA=;
+ b=b2iTjdIcP3tq6y/D2Ae76WTsIdPL7CWNrpMfW+6P5l9zaVo/J0wSFaTt5GqJOkeCRtE1YL
+ WJw9zKAKC7OtQh+bn/Euu1NPNAsrqZ9TrOU0BkqCX7T5T6rTuRmuOidppptvEtwcBY3O5Y
+ 0rQisfEXhW7njINj7eQvoahqABrNdeQ=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-613-jeXBJGvTNh6s3qNRsGQtpA-1; Tue,
+ 14 Nov 2023 19:01:18 -0500
+X-MC-Unique: jeXBJGvTNh6s3qNRsGQtpA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A335E85A58B;
- Wed, 15 Nov 2023 00:03:03 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1336D280D203;
+ Wed, 15 Nov 2023 00:01:16 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E6562C15885;
- Wed, 15 Nov 2023 00:02:50 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C2555C15885;
+ Wed, 15 Nov 2023 00:01:02 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -94,9 +94,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
  ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
  jcmvbkbc@gmail.com, shan.gavin@gmail.com
-Subject: [PATCH v5 27/31] hw/arm/virt: Hide host CPU model for tcg
-Date: Wed, 15 Nov 2023 09:56:24 +1000
-Message-ID: <20231114235628.534334-28-gshan@redhat.com>
+Subject: [PATCH v5 19/31] target/sh4: Use generic cpu_list()
+Date: Wed, 15 Nov 2023 09:56:16 +1000
+Message-ID: <20231114235628.534334-20-gshan@redhat.com>
 In-Reply-To: <20231114235628.534334-1-gshan@redhat.com>
 References: <20231114235628.534334-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -127,48 +127,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nhxVIAkx3bn7
+X-TUID: CehMQ86yhRl2
 
-The 'host' CPU model isn't available until KVM or HVF is enabled.
-For example, the following error messages are seen when the guest
-is started with option '-cpu cortex-a8' on tcg after the next commit
-is applied to check the CPU type in machine_run_board_init().
+Before it's applied:
 
-  ERROR:../hw/core/machine.c:1423:is_cpu_type_supported: \
-  assertion failed: (model != NULL)
-  Bail out! ERROR:../hw/core/machine.c:1423:is_cpu_type_supported: \
-  assertion failed: (model != NULL)
-  Aborted (core dumped)
+[gshan@gshan q]$ ./build/qemu-system-sh4 -cpu ?
+sh7750r
+sh7751r
+sh7785
 
-Hide 'host' CPU model until KVM or HVF is enabled. With this applied,
-the valid CPU models can be shown.
+After it's applied:
 
-  qemu-system-aarch64: Invalid CPU type: cortex-a8
-  The valid types are: cortex-a7, cortex-a15, cortex-a35, \
-  cortex-a55, cortex-a72, cortex-a76, cortex-a710, a64fx, \
-  neoverse-n1, neoverse-v1, neoverse-n2, cortex-a53,      \
-  cortex-a57, max
+[gshan@gshan q]$ ./build/qemu-system-sh4 -cpu ?
+Available CPUs:
+  sh7750r
+  sh7751r
+  sh7785
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/arm/virt.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/sh4/cpu.c | 17 -----------------
+ target/sh4/cpu.h |  3 ---
+ 2 files changed, 20 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index be2856c018..668c0d3194 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -220,7 +220,9 @@ static const char *valid_cpus[] = {
- #endif
-     ARM_CPU_TYPE_NAME("cortex-a53"),
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     ARM_CPU_TYPE_NAME("host"),
-+#endif
-     ARM_CPU_TYPE_NAME("max"),
- };
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index a8ec98b134..806a0ef875 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -122,23 +122,6 @@ static void superh_cpu_disas_set_info(CPUState *cpu, disassemble_info *info)
+     info->print_insn = print_insn_sh;
+ }
  
+-static void superh_cpu_list_entry(gpointer data, gpointer user_data)
+-{
+-    const char *typename = object_class_get_name(OBJECT_CLASS(data));
+-    int len = strlen(typename) - strlen(SUPERH_CPU_TYPE_SUFFIX);
+-
+-    qemu_printf("%.*s\n", len, typename);
+-}
+-
+-void sh4_cpu_list(void)
+-{
+-    GSList *list;
+-
+-    list = object_class_get_list_sorted(TYPE_SUPERH_CPU, false);
+-    g_slist_foreach(list, superh_cpu_list_entry, NULL);
+-    g_slist_free(list);
+-}
+-
+ static ObjectClass *superh_cpu_class_by_name(const char *cpu_model)
+ {
+     ObjectClass *oc;
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index 360eac1fbe..e6fc6b87d4 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -238,7 +238,6 @@ G_NORETURN void superh_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+                                                uintptr_t retaddr);
+ 
+ void sh4_translate_init(void);
+-void sh4_cpu_list(void);
+ 
+ #if !defined(CONFIG_USER_ONLY)
+ hwaddr superh_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+@@ -272,8 +271,6 @@ void cpu_load_tlb(CPUSH4State * env);
+ 
+ #define CPU_RESOLVING_TYPE TYPE_SUPERH_CPU
+ 
+-#define cpu_list sh4_cpu_list
+-
+ /* MMU modes definitions */
+ #define MMU_USER_IDX 1
+ static inline int cpu_mmu_index (CPUSH4State *env, bool ifetch)
 -- 
 2.41.0
 

@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2413761ejc;
-        Tue, 14 Nov 2023 16:06:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGNr7qmW4dgkA4IE96j8q3s+VtrVB3Rld1ppmf1zuLmvMMX8yfMF09JBYLOs2V1Mq3aGar7
-X-Received: by 2002:a05:622a:1891:b0:41e:1c0d:35f9 with SMTP id v17-20020a05622a189100b0041e1c0d35f9mr4388192qtc.30.1700006800166;
-        Tue, 14 Nov 2023 16:06:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700006800; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2413880ejc;
+        Tue, 14 Nov 2023 16:06:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEK5A8okfEsCg2cyLSXAmfs1E3JiVCsqVW3ngBa9PVExj7iS5scy54h5XQLinezBeeuy7vW
+X-Received: by 2002:a05:6102:3712:b0:45e:7768:6e1a with SMTP id s18-20020a056102371200b0045e77686e1amr13026268vst.15.1700006812725;
+        Tue, 14 Nov 2023 16:06:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700006812; cv=none;
         d=google.com; s=arc-20160816;
-        b=XYeo6YG/O337Gr9aqYkGZE2+8hM83mhaJqeYa4GY4tjrl2ppjZ9jyChI9Mjh83JbBu
-         V6r2JTpqy0fcn8Ho83/CsAAuzeYcaUsg4S/W2z3S2C9JOERzpK5Ar/sz3JljoaN6wNeL
-         VObU69xv2/wjkoHhrUEvEzysSSzXKkBuuNP0mLLI/RR04zyXFUclZpofcZnpjsVBwA/f
-         IvqyeWdYCPlkVkFmI3YuCa91wK9FudYvuD1MHXQKT+kF4MtS+eEa0O2U9pLYaCvVjqWm
-         FBB3+bKeuk3Fxds1PUEW1hYwCogZrOjkvpE05IRxjSM6bpqQ0nld224hYV6skV0j0Oii
-         Hwig==
+        b=dPKGdxXpUmFSRIXxUYbX8VC8ZkKAxNO/WQXdYuIvZ2HbuQ9prY29JLO4GhbXTBWq1J
+         cJGJpofUHMLMJ4v0h9710T52GrNuoqtdctFALy3zi1Z3Aok26EgI6ofu0zoqlss1eREB
+         eXG1bGbgNWHH3FhVnmVjv+1xLt3337WRRuJUKr12hiRR8s1BAiH8XLvhhr093zSUJrD4
+         3OStB7a+Zx3nbjyaK+nYcHAN4BVpIcqNwoZ6O3iB2xW1cKJvoSwbgZM5c+O+Y0DE9Dad
+         SZAyL5YZG7q2fMKUOR2S9G8mJ/zr0e8vzFf5x9rprF0uykMJm3G0OrZ/MMpjzYBuGygl
+         PxAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iFAFhxRfroIsfxn23HJWeW06LXJGCEmhPBiImG7e8Nk=;
+        bh=PVpSfOoz03h777B/rb6Tl132+Io9+3dWRLTS26mmxwY=;
         fh=/T6xqUCWHJxCL2odTXkl490KMICJmjWwCPOs7M5ODd4=;
-        b=u9lB1HSZGKAsBo6w/QCnvJ04XdKPAGwaMJJ3QyU/fIoBgpD46ozi1hz+9jijgJAjkY
-         b9dht038KwLyhS72e2sIlajZ4h/sPNgy9cTZvLDxP1SlpjUh/W4yQ8GVTZ5rP5zskrc4
-         WWij8IDgTwAf2tzfhgywsazxze2CaN+5Ah+JMue5VcNzEODb5Z+J9sd/z4Ig4lD5PT5U
-         6CJI/YBmhl99q/P3/5MENmw3kYHl2Iri8ws5Tk2cry0g7Vh8uWPhuoYnJM8IEM+DZt+d
-         M2KV2J6/rws6Yts9CxZnAyeoMiwtLoKKfKUzCtG4RBY1lAIBHaSLLAs1UMoycalf+ruk
-         il1Q==
+        b=0s+ZGzHkk2m9RJCFE+8eJ9V5fKEvhNMZsK0uj5rC1C0GnDId4naK59M5rIhr+iHKJi
+         qf4wq486+jvUqvzNOu/CmLZm+J5rLw80EQRgiH4BiHclOClP8cSCxr3D7GMA6yUc0qpa
+         JsSPY5rbJDolGQXKQnw1fG2IPCT8kQoplihh2teCQz6X5R4g0RzSeJJkRy7WFdNxUxeB
+         0o3eTmN7gAQrzeRyfaRmgistF/ZDf1XVnPwVH1lfr9vPhp7bBvBgtxaSfiuylUjPU3H4
+         uYiBoYOhXKjj2aBJ+0vLPo3bXDaLngDrwq96cm7g2BeYtTbZE1swVF6ToIdWy4n9yasJ
+         /amg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G58gz3cV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BZO18xtf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z16-20020a05622a029000b004109d1af4d4si7545889qtw.647.2023.11.14.16.06.39
+        by mx.google.com with ESMTPS id a19-20020a05622a02d300b004181ae1bc43si8259580qtx.543.2023.11.14.16.06.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Nov 2023 16:06:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Nov 2023 16:06:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G58gz3cV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BZO18xtf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r33M4-0007OR-6z; Tue, 14 Nov 2023 19:02:04 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r33M3-0007Nq-MK; Tue, 14 Nov 2023 19:02:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Lu-0007IQ-4X
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:01:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Ln-0007GH-DJ
+ for qemu-arm@nongnu.org; Tue, 14 Nov 2023 19:01:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Ls-0008FQ-4Z
- for qemu-devel@nongnu.org; Tue, 14 Nov 2023 19:01:53 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r33Lb-0008D4-Nn
+ for qemu-arm@nongnu.org; Tue, 14 Nov 2023 19:01:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700006510;
+ s=mimecast20190719; t=1700006495;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iFAFhxRfroIsfxn23HJWeW06LXJGCEmhPBiImG7e8Nk=;
- b=G58gz3cV/pq4mSYnxDh0Vbo1mC649PBLYi8nPRHYrO+mMuliV5bRlMQgN4S1C6IqlsQAdt
- rG6EwkNBRgPgak3/KMVFPfMMQgRFYKh9ePqy5fOE1vW41NzrKqzIe89Q10Ih6DWzST+rWu
- r5WWR++/uliHaHBfr24Kka2CAES6IQs=
+ bh=PVpSfOoz03h777B/rb6Tl132+Io9+3dWRLTS26mmxwY=;
+ b=BZO18xtf4Po+tDD7ZJfb9+JN79F1rcPml8lJ8Aj2JlBfSM6lz3Ac/WnEkGZRNpxx+5Kebf
+ JDG5JNAB56kYVgsydqDf3IGXTXox3hCuqrm3gKq4IyBNoSV82eo+YrUMgbNN7NRCPtJNoL
+ jTnNfGL3oNkicQgAezovFANGe8T/fxI=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-352-MIfYUSP1P6yl4iPFHj5sGw-1; Tue,
- 14 Nov 2023 19:01:46 -0500
-X-MC-Unique: MIfYUSP1P6yl4iPFHj5sGw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-373-kDujcUSEPguZ7CIxUmsmhQ-1; Tue,
+ 14 Nov 2023 19:01:31 -0500
+X-MC-Unique: kDujcUSEPguZ7CIxUmsmhQ-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 294191C03141;
- Wed, 15 Nov 2023 00:01:43 +0000 (UTC)
-Received: from gshan.redhat.com (unknown [10.64.136.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0E865C15885;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 722323800083;
  Wed, 15 Nov 2023 00:01:29 +0000 (UTC)
+Received: from gshan.redhat.com (unknown [10.64.136.44])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9DA01C15887;
+ Wed, 15 Nov 2023 00:01:16 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -94,184 +94,104 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
  ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
  jcmvbkbc@gmail.com, shan.gavin@gmail.com
-Subject: [PATCH v5 21/31] target/xtensa: Use generic cpu_list()
-Date: Wed, 15 Nov 2023 09:56:18 +1000
-Message-ID: <20231114235628.534334-22-gshan@redhat.com>
+Subject: [PATCH v5 20/31] target/tricore: Use generic cpu_list()
+Date: Wed, 15 Nov 2023 09:56:17 +1000
+Message-ID: <20231114235628.534334-21-gshan@redhat.com>
 In-Reply-To: <20231114235628.534334-1-gshan@redhat.com>
 References: <20231114235628.534334-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NjAFZNP+3AvZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UeCFg8LPv4T1
 
-Before it's applied:
+No changes in the output from the following command.
 
-[gshan@gshan q]$ ./build/qemu-system-xtensa -cpu ?
+[gshan@gshan q]$ ./build/qemu-system-tricore -cpu ?
 Available CPUs:
-  test_mmuhifi_c3
-  sample_controller
-  lx106
-  dsp3400
-  de233_fpu
-  de212
-  dc233c
-  dc232b
-
-After it's applied:
-
-[gshan@gshan q]$ ./build/qemu-system-xtensa -cpu ?
-Available CPUs:
-  dc232b
-  dc233c
-  de212
-  de233_fpu
-  dsp3400
-  lx106
-  sample_controller
-  test_mmuhifi_c3
+  tc1796
+  tc1797
+  tc27x
+  tc37x
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/xtensa/cpu.h          | 10 +---------
- target/xtensa/helper.c       | 19 +++----------------
- target/xtensa/overlay_tool.h |  7 ++-----
- 3 files changed, 6 insertions(+), 30 deletions(-)
+ target/tricore/cpu.h    |  4 ----
+ target/tricore/helper.c | 22 ----------------------
+ 2 files changed, 26 deletions(-)
 
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index dd81729306..ffeb1ca43f 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -491,11 +491,6 @@ typedef struct XtensaConfig {
-     bool use_first_nan;
- } XtensaConfig;
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index de3ab53a83..2d4446cea5 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -246,10 +246,6 @@ void fpu_set_state(CPUTriCoreState *env);
  
--typedef struct XtensaConfigList {
--    const XtensaConfig *config;
--    struct XtensaConfigList *next;
--} XtensaConfigList;
+ #define MMU_USER_IDX 2
+ 
+-void tricore_cpu_list(void);
 -
- #if HOST_BIG_ENDIAN
- enum {
-     FP_F32_HIGH,
-@@ -600,8 +595,6 @@ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
-                                                MMUAccessType access_type, int mmu_idx,
-                                                uintptr_t retaddr);
- 
--#define cpu_list xtensa_cpu_list
+-#define cpu_list tricore_cpu_list
 -
- #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
- 
- #if TARGET_BIG_ENDIAN
-@@ -620,13 +613,12 @@ void xtensa_collect_sr_names(const XtensaConfig *config);
- void xtensa_translate_init(void);
- void **xtensa_get_regfile_by_name(const char *name, int entries, int bits);
- void xtensa_breakpoint_handler(CPUState *cs);
--void xtensa_register_core(XtensaConfigList *node);
-+void xtensa_register_core(XtensaConfig *config);
- void xtensa_sim_open_console(Chardev *chr);
- void check_interrupts(CPUXtensaState *s);
- void xtensa_irq_init(CPUXtensaState *env);
- qemu_irq *xtensa_get_extints(CPUXtensaState *env);
- qemu_irq xtensa_get_runstall(CPUXtensaState *env);
--void xtensa_cpu_list(void);
- void xtensa_sync_window_from_phys(CPUXtensaState *env);
- void xtensa_sync_phys_from_window(CPUXtensaState *env);
- void xtensa_rotate_window(CPUXtensaState *env, uint32_t delta);
-diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
-index dbeb97a953..3654739b09 100644
---- a/target/xtensa/helper.c
-+++ b/target/xtensa/helper.c
-@@ -35,8 +35,6 @@
- #include "qemu/qemu-print.h"
- #include "qemu/host-utils.h"
- 
--static struct XtensaConfigList *xtensa_cores;
--
- static void add_translator_to_hash(GHashTable *translator,
-                                    const char *name,
-                                    const XtensaOpcodeOps *opcode)
-@@ -187,17 +185,15 @@ static void xtensa_core_class_init(ObjectClass *oc, void *data)
-     cc->gdb_num_core_regs = config->gdb_regmap.num_regs;
- }
- 
--void xtensa_register_core(XtensaConfigList *node)
-+void xtensa_register_core(XtensaConfig *config)
+ static inline int cpu_mmu_index(CPUTriCoreState *env, bool ifetch)
  {
-     TypeInfo type = {
-         .parent = TYPE_XTENSA_CPU,
-         .class_init = xtensa_core_class_init,
--        .class_data = (void *)node->config,
-+        .class_data = (void *)config,
-     };
- 
--    node->next = xtensa_cores;
--    xtensa_cores = node;
--    type.name = g_strdup_printf(XTENSA_CPU_TYPE_NAME("%s"), node->config->name);
-+    type.name = g_strdup_printf(XTENSA_CPU_TYPE_NAME("%s"), config->name);
-     type_register(&type);
-     g_free((gpointer)type.name);
- }
-@@ -234,15 +230,6 @@ void xtensa_breakpoint_handler(CPUState *cs)
+     return 0;
+diff --git a/target/tricore/helper.c b/target/tricore/helper.c
+index 7e5da3cb23..174f666e1e 100644
+--- a/target/tricore/helper.c
++++ b/target/tricore/helper.c
+@@ -96,28 +96,6 @@ bool tricore_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
      }
  }
  
--void xtensa_cpu_list(void)
+-static void tricore_cpu_list_entry(gpointer data, gpointer user_data)
 -{
--    XtensaConfigList *core = xtensa_cores;
--    qemu_printf("Available CPUs:\n");
--    for (; core; core = core->next) {
--        qemu_printf("  %s\n", core->config->name);
--    }
+-    ObjectClass *oc = data;
+-    const char *typename;
+-    char *name;
+-
+-    typename = object_class_get_name(oc);
+-    name = g_strndup(typename, strlen(typename) - strlen("-" TYPE_TRICORE_CPU));
+-    qemu_printf("  %s\n", name);
+-    g_free(name);
 -}
 -
- #ifndef CONFIG_USER_ONLY
- void xtensa_cpu_do_unaligned_access(CPUState *cs,
-                                     vaddr addr, MMUAccessType access_type,
-diff --git a/target/xtensa/overlay_tool.h b/target/xtensa/overlay_tool.h
-index 701c00eed2..7373ba7592 100644
---- a/target/xtensa/overlay_tool.h
-+++ b/target/xtensa/overlay_tool.h
-@@ -450,13 +450,10 @@
- #endif
- 
- #if TARGET_BIG_ENDIAN == (XCHAL_HAVE_BE != 0)
--#define REGISTER_CORE(core) \
-+#define REGISTER_CORE(config) \
-     static void __attribute__((constructor)) register_core(void) \
-     { \
--        static XtensaConfigList node = { \
--            .config = &core, \
--        }; \
--        xtensa_register_core(&node); \
-+        xtensa_register_core(&config); \
-     }
- #else
- #define REGISTER_CORE(core)
+-void tricore_cpu_list(void)
+-{
+-    GSList *list;
+-
+-    list = object_class_get_list_sorted(TYPE_TRICORE_CPU, false);
+-    qemu_printf("Available CPUs:\n");
+-    g_slist_foreach(list, tricore_cpu_list_entry, NULL);
+-    g_slist_free(list);
+-}
+-
+ void fpu_set_state(CPUTriCoreState *env)
+ {
+     switch (extract32(env->PSW, 24, 2)) {
 -- 
 2.41.0
 

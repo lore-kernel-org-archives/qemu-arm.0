@@ -1,107 +1,272 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2102395ejc;
-        Tue, 14 Nov 2023 07:08:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE/XXAJ/dX7t02+538CRHLSOZy3x0nlwj7Zb5ROBMmKa4oMohV1hwcqDkQ6Op7RLK7Ieq4t
-X-Received: by 2002:a05:600c:4587:b0:409:7900:f3d0 with SMTP id r7-20020a05600c458700b004097900f3d0mr8383303wmo.34.1699974494211;
-        Tue, 14 Nov 2023 07:08:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699974494; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2047199ejc;
+        Tue, 14 Nov 2023 05:49:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFi2LIxUpJE8uDag1BcvMjvd2y0oqE2dNO3tdVA0f7VvydMT9oSB+FT7dmoRGjYpgSKfNvL
+X-Received: by 2002:a2e:891a:0:b0:2c5:3339:71d6 with SMTP id d26-20020a2e891a000000b002c5333971d6mr1938108lji.19.1699969776606;
+        Tue, 14 Nov 2023 05:49:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699969776; cv=none;
         d=google.com; s=arc-20160816;
-        b=vXWWE1X8txednxAt1J+6yYpYJb4Y64GL6UwrNqwGkAhlT+p7z/EwBMUe16esHnRUwU
-         haPT06BH76DvwLzPcmZ2d6qiDXoW+bSnhTK4J8RnLtegz2ZhwbbrhxAWBP6tG0mDCMmo
-         KH28vB3pYJJL4rp+mZnnHeOdJD+/da+rw+GxMz1ssvH1QQt4javv143A44zTS92B7Iju
-         A5D/1/Ub9cvXH6lq1jfKhK3VremMe1aExA+DpBCvmQ4Kyc8Gj6NFyoEho9+ss3670YAO
-         XN9Xawc5wEkj2JYiZkQCLmobOFG1UFA+N0yMx5epzBAt3Cs6B8Xldm4Qyl3GJXqbtJsI
-         nQJA==
+        b=h5WP7YpJ/BIakkmTs8GQxrlY/INmml80Ez/kNEu75pljoXBdNDfJrd+RDFL3lDQZKh
+         G1PY/M///5T3Fkbi+jwFJ9OHaDmYz0YaY9F1+tnciWvsLqBqNIvaYEjIgD0y4zb5/OXV
+         TDu6iSgRH8wqDnTjhDh546KZNsXozRhIloK1ht3vzEMal4Y88U8pjK0brkLCXDAbqBt2
+         hVHs3c3uGo5bLrgRXuOGwK0+rzDPNIWBm1lPoaS0B+aYREmE4W6l8dZ6luqlYl5u4Yel
+         elBRtldEMGtFKrsIn3KJNq2Curij48EmMjRl+/Qt0u+R90leTBMWaDc7dMXu3xoidoL0
+         DO7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:dkim-signature;
-        bh=gPlTnLrWpPWWoUPGEpERtBAlyTDR8Uk7y5kKdp/k5WQ=;
-        fh=7l+2fUZ4veeachM1eTcF5T4tmHnLCGR+DiUCgWvIH8I=;
-        b=icyTxNDM2dGbnABBk7aXRgwqN3vbBUfQ5NXrCxX+CgcH1FWm9dTOhICHdyPasaHHl7
-         kMjTeow8YTFRCDO11RfJWz3i91yOsdpC+C+JSUI38PNmUZorT4au1UmTgtw6YYSQvNjX
-         93qdItogWxcSywCRbjSFHaLA0TGUr+KvEiOidO0zABoaKXOy2I2UtQwcpoYCoqZIJ7lc
-         /mEgUg8I0yJ/W+Bga649VhxQVTzKHOen+xQNX7vXVLcF+K/rO7SxAhnKpv1Ns1OA2I6K
-         NRvsWw1uGOonarObM5/B5Ja+CcUR4FWHqMCCiv9ySxgmGWxa9DFmBWhZGgYHZpxt76cM
-         4nYw==
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=1Y+Y73vtNdgEqObRUF6UfDRE38w8n9i3DbDfYRNIhM0=;
+        fh=mFmQEkCKDJ25HC5rcAqJ4TPDdVCWWGWp51q+8sS4JvQ=;
+        b=LajMqPVQ+0wcaGCQFy5f3gql/rBGUffH69nU1kOFnp0hxT8BBnZpmIVhk4v3hh/f5y
+         GNa6QmjAp7ijsFlWp1OqqqGFriko8hK8GowJrJ1lMh+vaA11T5TRsrG8GZX49C2E0k7K
+         vCo4GCZK5ZaKoe1UYWAY5WsoOFLn1o06xvXoV6Itts/OZab+tHWCQuKB4hG9ZO+VY82c
+         ae2pV4jYTcpk/qB8/ji1E+FRXsRm0CG+7aUpmIWN8DGygWDJkLw4B/WaWtp653flkRtl
+         O/11cBwIVgUhx+K7ESGq8P5j0vp5k6+Lc0p4vdTriHLhN8oXjDNmo0QnIQ9V8/5NkazO
+         CWHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=u1gqmmwU;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=AShr94cu;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
 Return-Path: <BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org>
 Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id 17-20020a05600c021100b004083a323b44si8101472wmi.162.2023.11.14.07.08.13
+        by mx.google.com with ESMTPS id 6-20020a05600c228600b00408fd72a681si8143017wmf.58.2023.11.14.05.49.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Nov 2023 07:08:14 -0800 (PST)
+        Tue, 14 Nov 2023 05:49:34 -0800 (PST)
 Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=u1gqmmwU;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=AShr94cu;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:From:Date:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=gPlTnLrWpPWWoUPGEpERtBAlyTDR8Uk7y5kKdp/k5WQ=; b=u1gqmmwUiYpHqi0uHXy3+ToCOg
-	KHEul+myRl+dxaYk/qNKWcNttIq8/dZePgwrAoIO8+fIFGcpyX/LBLL2RF3dFIzW6YXDETCZ5hfdq
-	YZnC8QwR/QP/IvY2HE0U0K/ebiBiubW4IMEq4rDgmwiw4LF9zQ9Px1M/iVxncLveLC5156Q51zRLu
-	GjIunmXq7yWhG/pb+jRvc4LqTUV4u3FdRaGslz3bGN3HeiCKr/xGZcicCi1VgEx37L59bWG6O/YPG
-	/eR3o3YdWcexfFKmcOp0M3zHSiDW5cr8dZvQU9Ui86+l8t77xJryJcV0HGOzffZh0FI7e30+d1pvR
-	v+oQjvuA==;
-Received: from [12.186.190.2] (helo=[127.0.0.1])
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=1Y+Y73vtNdgEqObRUF6UfDRE38w8n9i3DbDfYRNIhM0=; b=AShr94cu8bQl860A+J8vq/O57W
+	jrRzzw8gLc0Tv+PVMMCGMR990ZEnEUzURm50uCQaG1FRtpXI36et3hH4BPkdR8MIuJmEfouPUsjTD
+	/aKc6IxofiLnCJFZfENDue2F82hgAQriMoJPH+9DfaLSfZlaFzCuKrUO2u6/v+nyhqsRvItGnYTaa
+	60t5nPdJFG4r3qBs4vbWey+xdTfUiygLCsCpkRD/qBiwVwXLr7jRbeGNM+yOjHKIWeHmiRyi2kKOf
+	yslBT7wJrkyMgFLHZc4sTrxH4BzmqrngaZNo3/BAjOz5/aFuzuntRx1qhGzS219mRvYrQBOYcjF8o
+	/IlYKT6A==;
+Received: from [12.186.190.1] (helo=u3832b3a9db3152.ant.amazon.com)
 	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r2v1Q-008cvI-6u; Tue, 14 Nov 2023 15:08:12 +0000
-Date: Tue, 14 Nov 2023 10:08:09 -0500
+	id 1r2tnH-008HaJ-4S; Tue, 14 Nov 2023 13:49:32 +0000
+Message-ID: <2b3491da6eacd5f20c950fb339eca20cc8bf845b.camel@infradead.org>
+Subject: Re: [PATCH-for-9.0 04/10] hw/xen: Factor
+ xen_arch_align_ioreq_data() out of handle_ioreq()
 From: David Woodhouse <dwmw2@infradead.org>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
-CC: =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
- Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
- Anthony Perard <anthony.perard@citrix.com>, kvm@vger.kernel.org,
- Thomas Huth <thuth@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH-for-9=2E0_v2_01/19=5D_tests/avocado=3A_A?= =?US-ASCII?Q?dd_=27guest=3Axen=27_tag_to_tests_running_Xen_guest?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <407f32ee-e489-4c05-9c3d-fa6c29bb1d99@linaro.org>
-References: <20231114143816.71079-1-philmd@linaro.org> <20231114143816.71079-2-philmd@linaro.org> <94D9484A-917D-4970-98DE-35B84BEDA1DC@infradead.org> <407f32ee-e489-4c05-9c3d-fa6c29bb1d99@linaro.org>
-Message-ID: <074BCACF-C8D0-440A-A805-CDB0DB21C416@infradead.org>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, 
+ Anthony Perard <anthony.perard@citrix.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,  Stefano
+ Stabellini <sstabellini@kernel.org>, "qemu-block@nongnu.org"
+ <qemu-block@nongnu.org>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Paul
+ Durrant <paul@xen.org>, Peter Maydell <peter.maydell@linaro.org>, Richard
+ Henderson <richard.henderson@linaro.org>,  Eduardo Habkost
+ <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Date: Tue, 14 Nov 2023 08:49:25 -0500
+In-Reply-To: <b7646614-8f5c-4ea6-9ea8-ff81f4a492c9@linaro.org>
+References: <f791a822-f6f5-44fa-904b-f67d3f193763@email.android.com>
+	 <7a66c289-19e1-4690-8c6e-31a9f6344b6f@linaro.org>
+	 <e892e4eee469b1d1406dcd0844af48d1aaff23ae.camel@infradead.org>
+	 <b7646614-8f5c-4ea6-9ea8-ff81f4a492c9@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-5z/984dlxxzasnjKCOka"
+User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: N3kcF8uU6ot1
+X-TUID: u6xDZ0NmNtVH
 
-On 14 November 2023 10:00:09 GMT-05:00, "Philippe Mathieu-Daud=C3=A9" <phil=
-md@linaro=2Eorg> wrote:
->On 14/11/23 15:50, David Woodhouse wrote:
->> On 14 November 2023 09:37:57 GMT-05:00, "Philippe Mathieu-Daud=C3=A9" <=
-philmd@linaro=2Eorg> wrote:
->>> Add a tag to run all Xen-specific tests using:
->>>=20
->>>   $ make check-avocado AVOCADO_TAGS=3D'guest:xen'
->>>=20
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
->>> ---
->>> tests/avocado/boot_xen=2Epy      | 3 +++
->>> tests/avocado/kvm_xen_guest=2Epy | 1 +
->>> 2 files changed, 4 insertions(+)
->>=20
->> Those two are very different=2E One runs on Xen, the other on KVM=2E Do=
- we want to use the same tag for both?
->
->My understanding is,
->- boot_xen=2Epy runs Xen on TCG
->- kvm_xen_guest=2Epy runs Xen on KVM
->so both runs Xen guests=2E
 
-Does boot_xen=2Epy actually boot *Xen*? And presumably at least one Xen gu=
-est *within* Xen?
+--=-5z/984dlxxzasnjKCOka
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-kvm_xen_guest=2Epy boots a "Xen guest" under KVM directly without any real=
- Xen being present=2E It's *emulating* Xen=2E
+On Tue, 2023-11-14 at 08:58 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> > > Reviewing quickly hw/block/dataplane/xen-block.c, this code doesn't
+> > > seem target specific at all IMHO. Otherwise I'd really expect it to
+> > > fail compiling. But I don't know much about Xen, so I'll let block &
+> > > xen experts to have a look.
+> >=20
+> > Where it checks dataplane->protocol and does different things for
+> > BLKIF_PROTOCOL_NATIVE/BLKIF_PROTOCOL_X86_32/BLKIF_PROTOCOL_X86_64, the
+> > *structures* it uses are intended to be using the correct ABI. I think
+> > the structs for BLKIF_PROTOCOL_NATIVE may actually be *different*
+> > according to the target, in theory?
+>=20
+> OK I see what you mean, blkif_back_rings_t union in hw/block/xen_blkif.h
+>=20
+> These structures shouldn't differ between targets, this is the point of
+> an ABI :)=20
 
-They do both run Xen guests (or at least guests which use Xen hypercalls a=
-nd *think* they're running under Xen)=2E But is that the important classifi=
-cation for lumping them together?
+Structures like that *shouldn't* differ between targets, but the Xen
+struct blkif_request does:
+
+typedef blkif_vdev_t uint16_t;
+struct blkif_request {
+    uint8_t        operation;    /* BLKIF_OP_???                         */
+    uint8_t        nr_segments;  /* number of segments                   */
+    blkif_vdev_t   handle;       /* only for read/write requests         */
+    uint64_t       id;           /* private guest value, echoed in resp  */
+    blkif_sector_t sector_number;/* start sector idx on disk (r/w only)  */
+    struct blkif_request_segment seg[BLKIF_MAX_SEGMENTS_PER_REQUEST];
+};
+
+This is why we end up with explicit versions for x86-32 and x86-64,
+with the 'id' field aligned explicitly to 4 or 8 bytes. The 'native'
+version when we build it in qemu will just use the *host* ABI to decide
+how to align it.
+
+> And if they were, they wouldn't compile as target agnostic.
+
+The words "wouldn't compile" gives me fantasies of a compiler that
+literally errors out, saying "you can't use that struct in arch-
+agnostic code because the padding is different on different
+architectures".
+
+It isn't so. You're just a tease.
+
+With the exception of the x86-{32,64} special case, the
+BLKIF_PROTOCOL_NATIVE support ends up using the *host* ABI, regardless
+of which target it was aimed at.
+
+Which might even be OK; are there any other targets which align
+uint64_t to 4 bytes, like i386 does? And certainly isn't *your* problem
+anyway.
+
+What I was thinking was that if we *do* need to do something to make
+BLKIF_PROTOCOL_NATIVE actually differ between targets, maybe that would
+mean we really *do* want to build this code separately for each target
+rather than just once?=20
+
+I suppose *if* we fix it, we can fix it in a way that doesn't require
+specific compilation. Like we already did for x86. I literally use
+object_dynamic_cast(qdev_get_machine(), "x86-machine") there.
+
+>=20
+> > I think this series makes it look like target-agnostic support *should*
+> > work... but it doesn't really?
+>=20
+> For testing we have:
+>=20
+> aarch64: tests/avocado/boot_xen.py
+> x86_64: tests/avocado/kvm_xen_guest.py
+>=20
+> No combination with i386 is tested,
+> Xen within aarch64 KVM is not tested (not sure it works).
+
+No, there is support in the *kernel* for Xen guests, which hasn't been
+added to AArch64 KVM.
+
+
+--=-5z/984dlxxzasnjKCOka
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTE0MTM0OTI1WjAvBgkqhkiG9w0BCQQxIgQgCBOafE2y
+mgIM2NhvD/6QBWHGclVnzbpscPlL1WcJPwAwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgADTxMAWF++RJS2Acbqi0+znNET3aw329C9
+eUK2uZe+XITN0PpNhzbueof14fHsDA+vxYN/ZM+Mxn/4HvwGBI1jrkkFRyWl+11/ulOT1AU6mMCm
+EkBv435DXh8/HtEhf8KEKD0d8iecvXKRwiKIh167DJ99FcrXcC1ipid23s99PgMd5ju52ObcCVsY
+bIFayIPmQEvOB8b7vXAaySAiDM84jv4qf8HGjyjRIyOqB3+vm6LIrw6JyJqzmJKzD9+lG1DEZWz7
+hPq1o6HXuhGUsgjkF+1psBQ+/fysJEkSGpwLlI8lA9ezLZWkXYCxZbgwJBM4DzaWh0avptphIcVl
+VimNMFxHYJIxNrzwAxY2YLX58qRVUDvl1AqH9UJwE6bKlBKjTZzEmY7T7xCHl+kfj4ec68zz2k+r
+I53YeIdU6v9VPQiuqsVVIRM5TisogOF7MQsCnGtDfO1adW1EBLYzPY/ndlYLZ5Fk0iOBS0JM4U51
+XVTylYHEPnLuNDEzQ5EF3aRYEKuX6z52RvF33wqTqNgFs0HsKDvInmBq2HWEM97Mfel8r+Z2+umV
+9qiP/tiTZA2vNHM9oG/HNh+HaXCRNwojSHi12ypSCBQh00yEvNxEzLyfdcQNs+kMUO9XujeJ3sv0
+viT8I3CCjVhXiyC+FtTuja2D0jM1dejS93ftpwbXVgAAAAAAAA==
+
+
+--=-5z/984dlxxzasnjKCOka--

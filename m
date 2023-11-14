@@ -1,83 +1,151 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2094366ejc;
-        Tue, 14 Nov 2023 06:59:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFZjmmyU9VRSVFDGCy47/WhQRI4HQ7cN5JflcF5J4kaLdofnkzaTuL2g+zTupXSkLWhklhz
-X-Received: by 2002:a5d:588c:0:b0:32f:83cf:831f with SMTP id n12-20020a5d588c000000b0032f83cf831fmr6584617wrf.48.1699973973364;
-        Tue, 14 Nov 2023 06:59:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699973973; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2082436ejc;
+        Tue, 14 Nov 2023 06:38:34 -0800 (PST)
+X-Received: by 2002:a17:907:7883:b0:9e2:b85e:59e2 with SMTP id ku3-20020a170907788300b009e2b85e59e2mr7142179ejc.32.1699972714497;
+        Tue, 14 Nov 2023 06:38:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699972714; cv=none;
         d=google.com; s=arc-20160816;
-        b=MAlL67yVinXKTM8LsDv8eRhy2lru2ER0pSyoRv4HmPv5fjtfZAXW+CAVKmtDd27/Ep
-         VzN6kbrRuNC+mlvCYVsDB4WWMvU7iVojbSQZSfrzq/7SMX8vLkxZCnhVPP3DLMTuUD8A
-         h3qT9ZXpCPtRok6gT8DhETjZ3yBeLpXk3MNXZ5/H4nqrJxYBRYeiV+bwONg8m820iRjT
-         p6BHpvcRIugRfVfC5MMOcn8ossZdiGgN2QUpMFcEwLid2ZTRKhl8T80zjNIb4OzbT0co
-         1cr5hdo86LNL9kRcrrgPYO0ilTuQh/2wQOjXGY3D4VKtDkVUMhPb4Wwtcmy0LFelhwMB
-         K60g==
+        b=wnIObo1iJakeROc4QhKXIVMqEdrkFgDdbn+LOjW8LkBJbEkp3+t85kBw0UNvDmPxmr
+         DliYmuEuEIql3I5QNJvmy43J+5Hk0L8BmmZf435jorsS+qGXYOK3atHgLZI04NnOQh5Z
+         UeWFN0BGaFa5UUfaiqi0U87cbriPPoK3tP9MU5rZuke54wDtndu0aNHMZF5NzdsXVKnZ
+         PbK1PlnbH3Pml5xUY+9B9iPJ+Pf1Nqj5T/ia1hBh8fqKKDPiGdfKJfYQ4RUB4iMNc5zF
+         6L+EjAi2wdG4HgFruZBbOpO4/zrCdKldORJ7MwYshynxZyIxO3+VbeyzCJi09eRFpEtu
+         H7lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:dkim-signature;
-        bh=2V2aN1FlolnINR1l3YlTw25qRr0vJF7wJ6RIq/GchL0=;
-        fh=yEiaWr9s9Tlm3Qw3a9nVJ8E1quYzRHFnCsTZa8iVC8c=;
-        b=omUBQd16oSLW84BD/ux2pTab1eYJvI5wXi5PXMHHWVzR/vaxYXoTE3IlLnQHJk8bEd
-         bVdu7qBFpvi7abw6AsEs2eKV80sWRYZa/mSQKE1g07QNw7puMz1TJBIL/mWvq5vAUjMr
-         NtnIKWiowA8Lp3UYtnRWT+VELmAMc062Y8BKZNW6UkgN6kKtV5hBcE6fFCXDmjPlYxLM
-         u0VIrdhcEgap3XNmTRiCmnMmdcT4bAUElcCYq4pArOwMOA/GtO/m3taQkTdfZEpvmOB4
-         vOVEx7oCJBr5fQNJaVOQqOvGxmf/TyK9WuJ9W/hmikSeKD4gbrH6F3/7/sLAEIDlIDBi
-         Vn7w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=r7OOTLwbh53U5+FgsPEU5EGeXSv4SaNpAAr4X/+o3UA=;
+        fh=WgzlLWvbY5R8+4JotruerK0jeEkAYyt0q4wPP6dSEVI=;
+        b=ZIbU3r/kbIKHxG6939u0aNN7wwaoap59A5JnoRKr9lGey7i83PVcz09Z64SRQslQzh
+         iSJfw2oItfJ3lYJimCRO+ck248Jv34Z+a20zmoKjtLPb4nLsZV4Vk1s5J1U/LNqPV8ZR
+         OQDNAWpSsiJKR+XPhg/puxTctCK3Wzf8AF36FrtcJBITdoyjked2wz6JUTSvWHCWAow+
+         08pZcbtnk1DN62/MekcFtg+GOYkJ4RV/cl8cp7MUmka1+rO0Kw0t28segMyrVF2ag0fM
+         zm2jKLGkRyBlm6xY1Z3dUt2W+gHmCGt18Y6A7CXGc70jqGH93PxpoEGvWR0iiJ6tUOCx
+         ZInA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b="E/PEXjvt";
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
-Return-Path: <BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id l2-20020a05600012c200b003231fb322fasi4626357wrx.291.2023.11.14.06.59.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Nov 2023 06:59:33 -0800 (PST)
-Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
+       dkim=pass header.i=@linaro.org header.s=google header.b="iCpKWA/k";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k24-20020a170906681800b009dd8453eac1sor1883275ejr.13.2023.11.14.06.38.34
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 14 Nov 2023 06:38:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b="E/PEXjvt";
-       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:From:Date:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=2V2aN1FlolnINR1l3YlTw25qRr0vJF7wJ6RIq/GchL0=; b=E/PEXjvt0+RnUlYrN++xmBLgjc
-	HuCaeTYOVkOefp8uy3ZSz/P6HEQekbeWntiUJxH7m1YR/R9+NhRL2luaaOdAWWsfGwCj9vF7sfChu
-	J4kSiafVKeRtFjBPxiuFAo6xu2mHULfx5cUzZjHFsJkKJXM2LkwTPWm94lP3pXzh+8dAXVF2IOAFF
-	fSfV1upQceel86/fLJuSmWwADzoC+KPOtbAHed77Z6tkpuV9iEklSCO+Alm8btl+EphB5Pfn4Mzlg
-	mK4N8HkJxJMjd+3+0P+LbO2K/yb2HegPlM96HCDpOt/n8/RjcauHGDBym2kUbXZSjBDzkYQJXKD0P
-	jq+BiHiQ==;
-Received: from [12.186.190.2] (helo=[127.0.0.1])
-	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r2ut1-008aJs-S4; Tue, 14 Nov 2023 14:59:32 +0000
-Date: Tue, 14 Nov 2023 09:59:29 -0500
-From: David Woodhouse <dwmw2@infradead.org>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
-CC: =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
- Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
- Anthony Perard <anthony.perard@citrix.com>, kvm@vger.kernel.org,
- Thomas Huth <thuth@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH-for-9=2E0_v2_04/19=5D_system/physmem=3A_D?= =?US-ASCII?Q?o_not_include_=27hw/xen/xen=2Eh=27_but_=27sysemu/xen=2Eh=27?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20231114143816.71079-5-philmd@linaro.org>
-References: <20231114143816.71079-1-philmd@linaro.org> <20231114143816.71079-5-philmd@linaro.org>
-Message-ID: <2D88622C-9DFB-4DB6-8F9C-E45850FB1DCD@infradead.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="iCpKWA/k";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1699972714; x=1700577514; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r7OOTLwbh53U5+FgsPEU5EGeXSv4SaNpAAr4X/+o3UA=;
+        b=iCpKWA/kfngOnC2yt25y4Jpo9u9JWKPKYPOJPjNlyYzaVTt4UKitH78QQlT8VHPpMk
+         8CeaJ2O9J/X054jsM23CECkqARM/eE5fhRgL65aAhA5BBTQM/L9gm5YsuMYiS2KjNXa6
+         Ub3/2HmAeSdkKu9r3xV41grFfYrbwhk0iGlKli0HhWhOBcAfnTNtrJ3jaepkZt48eTCE
+         TJTOcPK6OMhzwRyZResdCfhC+QgJyFo+H/5ealbgshTonB10VkJdNgLHJwcHU4K6oL93
+         b4S5f4ZuQ+Pxxtao2umb3Uu+9ieNwiJjln4eDCyLyYh6sP8mm9qfqvmz3ZpPqRXb96eP
+         Adlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1699972714; x=1700577514;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=r7OOTLwbh53U5+FgsPEU5EGeXSv4SaNpAAr4X/+o3UA=;
+        b=TFxeTBggAV8viasqwEUIByo8cl3GfKDJgjRdQICXvBi45blfk0QBDpb+AS5kWOyPky
+         ySmkuNgFbx0+sAjIieAgHRn6OhTvqzcRw9K8oYPqe0bKhxZJB2frpzWGsMCmkpptjY0s
+         r9+HlSLIWq9LZWMkVWVH/e9ni7Ce+t/SxOkKiBj+h2zdv3LbrnUVdG9U2XC3Vv3gW3tC
+         PDNTcVEskRVaq6a55KP3WLMOwhDFqftJMtOlJnceBhtfpQhnyZlJJzxn+0c84a6OYNPd
+         iAT4xg5ud65gxYQLEss6ZFIdPUyBcXM+CmzkVlzO+ZmPTtuVN/G4VLyt3B8PihBIRSYH
+         hBWA==
+X-Gm-Message-State: AOJu0YxAyTBZHgTV/1ub/PVRYaibLuC3U4KnABtuAt5KBZuFQrODXqT1
+	hVnR+72yk4ln049fAUt+bvz2gjeD
+X-Google-Smtp-Source: AGHT+IELhzs9bxNKpuVpMav1CIPsLfztJ8ibvFnuauNtaNuW/pX7cLT4uf7lQThdsPSioUMrMZEBQA==
+X-Received: by 2002:a17:906:ca5b:b0:9be:30c2:b8ff with SMTP id jx27-20020a170906ca5b00b009be30c2b8ffmr7193715ejb.61.1699972713904;
+        Tue, 14 Nov 2023 06:38:33 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
+        by smtp.gmail.com with ESMTPSA id ha17-20020a170906a89100b009dd8473559dsm5543525ejb.110.2023.11.14.06.38.32
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 14 Nov 2023 06:38:33 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: David Woodhouse <dwmw@amazon.co.uk>,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paul Durrant <paul@xen.org>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	xen-devel@lists.xenproject.org,
+	qemu-block@nongnu.org,
+	Anthony Perard <anthony.perard@citrix.com>,
+	kvm@vger.kernel.org,
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-9.0 v2 02/19] sysemu/xen: Forbid using Xen headers in user emulation
+Date: Tue, 14 Nov 2023 15:37:58 +0100
+Message-ID: <20231114143816.71079-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231114143816.71079-1-philmd@linaro.org>
+References: <20231114143816.71079-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: sZje5y2eYdLl
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: hvxZHGBbTy1f
 
-On 14 November 2023 09:38:00 GMT-05:00, "Philippe Mathieu-Daud=C3=A9" <phil=
-md@linaro=2Eorg> wrote:
->physmem=2Ec doesn't use any declaration from "hw/xen/xen=2Eh",
->it only requires "sysemu/xen=2Eh" and "system/xen-mapcache=2Eh"=2E
->
->Suggested-by: David Woodhouse <dwmw@amazon=2Eco=2Euk>
->Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+Xen is a system specific accelerator, it makes no sense
+to include its headers in user emulation.
 
-Reviewed-by: David Woodhouse <dwmw@amazon=2Eco=2Euk>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
+---
+ include/sysemu/xen.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/include/sysemu/xen.h b/include/sysemu/xen.h
+index bc13ad5692..a9f591f26d 100644
+--- a/include/sysemu/xen.h
++++ b/include/sysemu/xen.h
+@@ -10,6 +10,10 @@
+ #ifndef SYSEMU_XEN_H
+ #define SYSEMU_XEN_H
+ 
++#ifdef CONFIG_USER_ONLY
++#error Cannot include sysemu/xen.h from user emulation
++#endif
++
+ #include "exec/cpu-common.h"
+ 
+ #ifdef NEED_CPU_H
+@@ -26,16 +30,13 @@ extern bool xen_allowed;
+ 
+ #define xen_enabled()           (xen_allowed)
+ 
+-#ifndef CONFIG_USER_ONLY
+ void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length);
+ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size,
+                    struct MemoryRegion *mr, Error **errp);
+-#endif
+ 
+ #else /* !CONFIG_XEN_IS_POSSIBLE */
+ 
+ #define xen_enabled() 0
+-#ifndef CONFIG_USER_ONLY
+ static inline void xen_hvm_modified_memory(ram_addr_t start, ram_addr_t length)
+ {
+     /* nothing */
+@@ -45,7 +46,6 @@ static inline void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size,
+ {
+     g_assert_not_reached();
+ }
+-#endif
+ 
+ #endif /* CONFIG_XEN_IS_POSSIBLE */
+ 
+-- 
+2.41.0

@@ -1,86 +1,57 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2094799ejc;
-        Tue, 14 Nov 2023 07:00:13 -0800 (PST)
-X-Received: by 2002:a17:907:36c5:b0:9e7:c1cd:a4dc with SMTP id bj5-20020a17090736c500b009e7c1cda4dcmr6543822ejc.6.1699974013419;
-        Tue, 14 Nov 2023 07:00:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699974013; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2111239ejc;
+        Tue, 14 Nov 2023 07:20:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHCZd3LVXVBfiiKZ47oek+l9YJr+6is5km96RZr83XrBJlZeRSUsUG5GJPnk9FSFfrrNvZB
+X-Received: by 2002:a05:600c:4689:b0:406:53f1:d629 with SMTP id p9-20020a05600c468900b0040653f1d629mr7848587wmo.5.1699975201125;
+        Tue, 14 Nov 2023 07:20:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1699975201; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qp5rJMedvj2Sk/SoqfaoCwvAqFZZUb0vBqjyL1XsRKVMXsrZhvScqp3cmzHgNvMsVo
-         IVAnMXUy3G2JBuecp1+qpbrvLH404e56b+DWYkuXsr6WQd/fEFmPz6U/vQeYQgCxeJt0
-         ojsjGaWZCtLLBxv4sAcz/86sZWEKfjtXSG+lZo0J6l7Gp115L/rrQs0Rk/L/ZICVrb8g
-         je8d9pGoRYT72KwLXc1oaK4imlpf/KpdCWbg+d/DIDTlr2WSHCiQRYbtbdgtUYMijySc
-         fwkaiiW3hKhUK8eMVsQPZ32YKsEqBUgYYFoGgpk+FHR7xnp8ki0dLmIkkuI8ufh3222H
-         D35w==
+        b=KwNht/ThYQVWJqwQj0LtRD/QtLXCu/NMXGiuWIac84/BFgG4fx8JztgnOqQbdsdjzV
+         gz+r7FttZcA+6DMeHApBgYfdgzKdc3XPO5MDac+H5wpfWtEp+oknvmha62vWR3nhNGNF
+         /ucQQONdhyO5exLQpcEUj3LbIm2At5djseZLccu4QSdp2UycDbVfbZG8tde+tEiKFH8N
+         govUEEHXhLF/stuFaID9FhY5wcojOsEnEv7EibvXm42SaCfQV1qtkUag/KaVFUPWOgkU
+         7nCSSaGVtq+F1OJSqmVKY9TvpC9rO9RHfem35GwtbU7zYH7cTGzNdWcMlfATQdE648bu
+         T1pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=hvwMnVTQaJD67434mMenkNkErgsf9DqTmkoP4qGMiTA=;
-        fh=UHvDv+zkP5t6T7JK4PPrDv1YBJtZN5X3weQkuBCbTMk=;
-        b=hOOlsSX6EJm92YXq2wn1hZTUchvJ4cn1NNp1D87hscFMCn/cM+ffw/EM7Sbk/J2WAb
-         HDmJ8R8wVxBlc1r6v80KK2loa+ESaAKDOIqlUYkw/kFpBkynKAtVCbHR7JxxhCazrnxu
-         8nMtbwmCRNaAzuD+1I2A4OPoQ/oN/bDOeM4AgcM26vt8bjsqB13q0xPr1l0T6yFjLROt
-         yDC5HfEZJvR1/KReB9YXNxUjRVJjDRW9VM7U+jahhe+Z2rChW07rdyeGu41ei+chZe5w
-         88bJjuZDWzcf3QcUMVwGa0E21b8x34y/2arisFEExshpwCYFkyfj0L1OD23u6IMKDoUg
-         kEkw==
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:dkim-signature;
+        bh=8oHKIB2Z25t55M8rg997hmml2qBzYjJja9p3MLoID9Q=;
+        fh=7l+2fUZ4veeachM1eTcF5T4tmHnLCGR+DiUCgWvIH8I=;
+        b=ouE4NLEiKh3hpGJcCrRA08psKILG57IUHHdQdDZsg4entq79yyvn+Q0bYsEPoj/VC4
+         tp2hmAhCzq1joXdS69JDtpjuWw9o0W8uWgYNJwHKOdMw6Y8HufDcCjyxMdP2miPtCBEu
+         ZG+Hy0SpVb8Cz+PqmnPBgl1+POvcYFhiStwIemeMqW3GU+I1mP+msLsq5cySkoaAWj4u
+         0C7of58eyxMod+HZJezwJTz0ivQGhYjhVXfOmcHEf9qTUXlpD2+SAYJIAOXZFe5pMuMG
+         /O/GAsXRIQQAOaZaez5LeS3mAuEKkjpktVtOctfdxS2UrJ2nIerdBMjN20gJPH9wHPtT
+         a4AA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mP02VFcs;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z11-20020a17090674cb00b009cc5a59054csor1889361ejl.7.2023.11.14.07.00.13
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Nov 2023 07:00:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=MGoU06Rd;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id r18-20020a05600c35d200b003fbef8ad8f5si4904265wmq.40.2023.11.14.07.20.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Nov 2023 07:20:01 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mP02VFcs;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699974013; x=1700578813; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=hvwMnVTQaJD67434mMenkNkErgsf9DqTmkoP4qGMiTA=;
-        b=mP02VFcso9iJG1S2qbadPjk4tkNwIszixBFnGEMhsR2XnU0cw+0DQLtkqRmGq43+VS
-         l3IBzZ5o4dCrtU74UUphrSJ0A2zEUee1AdwRtKj72kzFzbonMy0r5m+GpZwfZQ5xQscS
-         d/L4CTR/p6PhE6g3YTqyuOYsn2CfNmWMZjjbiKes8MHAbUuMZVj0vtBqY7SFmTgiud+y
-         t9N1VRr9IXwMLydmvqNsATmNT5wMp4WodYBmm0xeflgiNJwtPUAj2XmXxzU74US1l9L6
-         rfAFODoGN5SuasIXX9fNcBMpP0iyPILma0yLhOGv6tPh/4LfM6LoGQU1efwIxL37dy5d
-         8bwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699974013; x=1700578813;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hvwMnVTQaJD67434mMenkNkErgsf9DqTmkoP4qGMiTA=;
-        b=E4M/N7IxPY9lMF3lzAX3tDurIhtawkt8VrFwaVSnIV9ldHgEOYeBDNRZLU38AtOm2a
-         KDNig3Wrn6Oz+cV1QD8CpbOmOqqPqS8NcI0qiH1nuyoxmzfkTHTD4L+Q1/j8Tf8BdTIB
-         E5sLV02+WZLVKdfFy33GrgDjKM8JULZZM1gox6Ffn0yuxctgvTEiq7ReuRizrdbTUaOg
-         l+hvQxB8XLB5aXsQ/9iYbNw1l399d/oyooBkSLDpI6Eq6BW/EQF28bMPU60T2xQoBaNl
-         BBPrWDq4RTcXuTZOQLAmiMaSYpvo6bs8MSxjFtKUSL2JN10PerinN4KFfGYnD/FKYLuQ
-         t9JQ==
-X-Gm-Message-State: AOJu0YwtAAAH9RVzPoacMgZw532qTjdsLUwcbr5LsYiy77E0r/KG1pcQ
-	mvgb68MjYYKQQayD3X9BCaQz4c8N
-X-Google-Smtp-Source: AGHT+IHf7MXlWtvkPtL4rKaxAjHGg7eiFZd1cU9GCPUEE1OMwcKoAJdSYUPudWARuJ4FPvDMOa6uyA==
-X-Received: by 2002:a17:906:7e06:b0:9d3:5d4a:8b6a with SMTP id e6-20020a1709067e0600b009d35d4a8b6amr7254726ejr.42.1699974013091;
-        Tue, 14 Nov 2023 07:00:13 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id ay18-20020a170906d29200b009ce03057c48sm5685319ejb.214.2023.11.14.07.00.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Nov 2023 07:00:12 -0800 (PST)
-Message-ID: <407f32ee-e489-4c05-9c3d-fa6c29bb1d99@linaro.org>
-Date: Tue, 14 Nov 2023 16:00:09 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 v2 01/19] tests/avocado: Add 'guest:xen' tag to
- tests running Xen guest
-Content-Language: en-US
-To: David Woodhouse <dwmw2@infradead.org>, David Woodhouse
- <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=MGoU06Rd;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+a8e905033730cff805ca+7387+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:From:Date:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=8oHKIB2Z25t55M8rg997hmml2qBzYjJja9p3MLoID9Q=; b=MGoU06Rd2CU4tijjS4zit7AS2o
+	EK5W2DNxSaap5vdRgr4lcPo4zGcIOq4atxzna3eoqsGisnNIWyNGw93pjsrw6oaP0WFFFgVLYBQZz
+	ClKfV7KrSJ1t1EoRo2xxMOh1jnYJshbl0jbHkjAa9cxj5rwxiL2k2+h7xbdzuUF4pLtlgUmOSkME0
+	Uq+kwwckEVCRyY9c0wqtGkbt3pl09tWIQNEMt3G1DMKTQtlMxIhdejhXq5Fe0Y7D6jA34FrWF434P
+	xU+RMJD/6Br8s11hd/K1O0XHW4bEY9r2voia+3nEj2IVrY/SvDOKzxr05FZJRtBMRX8gdRMisqfgH
+	oej8JDZQ==;
+Received: from [12.186.190.2] (helo=[127.0.0.1])
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1r2vCn-008fhY-Fa; Tue, 14 Nov 2023 15:19:57 +0000
+Date: Tue, 14 Nov 2023 10:19:51 -0500
+From: David Woodhouse <dwmw2@infradead.org>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
  Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Stefano Stabellini <sstabellini@kernel.org>,
@@ -90,32 +61,63 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Cleber Rosa <crosa@redhat.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>
-References: <20231114143816.71079-1-philmd@linaro.org>
- <20231114143816.71079-2-philmd@linaro.org>
- <94D9484A-917D-4970-98DE-35B84BEDA1DC@infradead.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <94D9484A-917D-4970-98DE-35B84BEDA1DC@infradead.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 2HIVADjQ4o4I
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH-for-9=2E0_v2_01/19=5D_tests/avocado=3A_A?= =?US-ASCII?Q?dd_=27guest=3Axen=27_tag_to_tests_running_Xen_guest?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <04917b57-d778-41a2-b320-c8c0afbe9ffb@linaro.org>
+References: <20231114143816.71079-1-philmd@linaro.org> <20231114143816.71079-2-philmd@linaro.org> <94D9484A-917D-4970-98DE-35B84BEDA1DC@infradead.org> <407f32ee-e489-4c05-9c3d-fa6c29bb1d99@linaro.org> <074BCACF-C8D0-440A-A805-CDB0DB21C416@infradead.org> <04917b57-d778-41a2-b320-c8c0afbe9ffb@linaro.org>
+Message-ID: <37D11113-662D-49FD-B1F1-757217EAFEEA@infradead.org>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: 5fnK3j0d8Uyu
 
-On 14/11/23 15:50, David Woodhouse wrote:
-> On 14 November 2023 09:37:57 GMT-05:00, "Philippe Mathieu-Daudé" <philmd@linaro.org> wrote:
->> Add a tag to run all Xen-specific tests using:
->>
->>   $ make check-avocado AVOCADO_TAGS='guest:xen'
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> tests/avocado/boot_xen.py      | 3 +++
->> tests/avocado/kvm_xen_guest.py | 1 +
->> 2 files changed, 4 insertions(+)
-> 
-> Those two are very different. One runs on Xen, the other on KVM. Do we want to use the same tag for both?
+On 14 November 2023 10:13:14 GMT-05:00, "Philippe Mathieu-Daud=C3=A9" <phil=
+md@linaro=2Eorg> wrote:
+>On 14/11/23 16:08, David Woodhouse wrote:
+>> On 14 November 2023 10:00:09 GMT-05:00, "Philippe Mathieu-Daud=C3=A9" <=
+philmd@linaro=2Eorg> wrote:
+>>> On 14/11/23 15:50, David Woodhouse wrote:
+>>>> On 14 November 2023 09:37:57 GMT-05:00, "Philippe Mathieu-Daud=C3=A9"=
+ <philmd@linaro=2Eorg> wrote:
+>>>>> Add a tag to run all Xen-specific tests using:
+>>>>>=20
+>>>>>    $ make check-avocado AVOCADO_TAGS=3D'guest:xen'
+>>>>>=20
+>>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>>>>> ---
+>>>>> tests/avocado/boot_xen=2Epy      | 3 +++
+>>>>> tests/avocado/kvm_xen_guest=2Epy | 1 +
+>>>>> 2 files changed, 4 insertions(+)
+>>>>=20
+>>>> Those two are very different=2E One runs on Xen, the other on KVM=2E =
+Do we want to use the same tag for both?
+>>>=20
+>>> My understanding is,
+>>> - boot_xen=2Epy runs Xen on TCG
+>>> - kvm_xen_guest=2Epy runs Xen on KVM
+>>> so both runs Xen guests=2E
+>>=20
+>> Does boot_xen=2Epy actually boot *Xen*? And presumably at least one Xen=
+ guest *within* Xen?
+>
+>I'll let Alex confirm, but yes, I expect Xen guest within Xen guest withi=
+n TCG=2E So the tags "accel:tcg" (already present) and "guest:xen"=2E
+>
+>> kvm_xen_guest=2Epy boots a "Xen guest" under KVM directly without any r=
+eal Xen being present=2E It's *emulating* Xen=2E
+>
+>Yes, so the tag "guest:xen" is correct=2E
+>
+>> They do both run Xen guests (or at least guests which use Xen hypercall=
+s and *think* they're running under Xen)=2E But is that the important class=
+ification for lumping them together?
+>
+>The idea of AVOCADO_TAGS is to restrict testing to what you want to cover=
+=2E So here this allow running 'anything that can run Xen guest'
+>in a single command, for example it is handy on my macOS aarch64 host=2E
 
-My understanding is,
-- boot_xen.py runs Xen on TCG
-- kvm_xen_guest.py runs Xen on KVM
-so both runs Xen guests.
+Ok, that makes sense then=2E Thanks for your patience=2E
 
-Alex, is that incorrect?
+Reviewed-by: David Woodhouse <dwmw@amazon=2Eco=2Euk>

@@ -1,166 +1,103 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2701093ejc;
-        Wed, 15 Nov 2023 03:27:13 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFKCBpdfr2Fn/gUyhemG3S2Qzz0v9IC99EY1AwG/nFDtI8dGwR57IDLkxa9DbJIwdjKlMYh
-X-Received: by 2002:a05:622a:f:b0:41f:ae4a:9b22 with SMTP id x15-20020a05622a000f00b0041fae4a9b22mr6380234qtw.24.1700047633441;
-        Wed, 15 Nov 2023 03:27:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700047633; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ZZyHxcArj3R4USCASkmaC/yPH1qs5M0LvGmyC2J3M00o43RhSkGZ6CG+aeN40jFQTU
-         4bYEUtYOWVmYzvIVsqMIKrdmatPKlx7RhzA0CXsAf8OMZ0TdYgxr/ANFkW5tZL0IGR2G
-         QnC+7eMalWtJ1DbKqSPoyC5/45ILqHuBmzs0lC5uTV7J8xNiIrVfINbO3KkhdhYw6BTq
-         lNJKltby8ioLexOqV0uUvBK+8zIzPbOcTWvVd0o8OYennSR9zd9Wy0Ynrvo/QzXXTNB0
-         9PSEm8qOcghr8G3m+PPICcEGD+NMgQUo9bE6HN7ZFKZF84K0wQQWs6J9FBj+CK1JVp5t
-         C6eQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=sW7/4qEgY7pu9tA3WtflIr9Wh/LgssG+8Ss6FS9udHo=;
-        fh=GDF2ithOv3W63HvYvcs3M4OHHet9JbOf9wneSGSeyE4=;
-        b=pexFibU9eYmt7rX8083DgBV496/dZHwQUWqzulxNiLhI4LwH75OJ46C66s+PynEiJp
-         iyUa6jPBiK7dtrkccbU34aXhdOxXy/tEsC47hIAAQ19on/M5R4ZeNoaa6v6MXgye0dfC
-         PTa9TBA49vk8LPQCnF7d1Nr5uZDTg67P2WQVwgLbtZCSSHc+qOh4CyJK0Mtcqr7S7na2
-         x3MLkXyM0FsI3aV1NHPgpewJB4Sc3H+oiVYR5VE9w5B58vyFia5uBhBoyUrnXCD3bpR5
-         a7z4yewcH6mANLO1qD/OzTH+PGD5zqevcCXtnSM7ZmJEYMuwuBEMyum59bvJcQPuIkMz
-         QEgA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4-20020a05622a018400b004197c401385si9063499qtw.439.2023.11.15.03.27.13
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Nov 2023 03:27:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3E2l-0001wi-CE; Wed, 15 Nov 2023 06:26:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1r3E2h-0001vR-CK; Wed, 15 Nov 2023 06:26:47 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1r3E2f-0000So-FK; Wed, 15 Nov 2023 06:26:47 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 8A99E75A4B7;
- Wed, 15 Nov 2023 12:27:10 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 7D15975A406; Wed, 15 Nov 2023 12:27:10 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 79326756066;
- Wed, 15 Nov 2023 12:27:10 +0100 (CET)
-Date: Wed, 15 Nov 2023 12:27:10 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Gavin Shan <gshan@redhat.com>
-cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- qemu-ppc@nongnu.org, imp@bsdimp.com, kevans@freebsd.org, 
- richard.henderson@linaro.org, pbonzini@redhat.com, 
- peter.maydell@linaro.org, imammedo@redhat.com, philmd@linaro.org, 
- b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, 
- sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com, 
- nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com, 
- marcin.juszkiewicz@linaro.org, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, laurent@vivier.eu, 
- vijai@behindbytes.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
- zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com, edgar.iglesias@gmail.com, 
- bcain@quicinc.com, gaosong@loongson.cn, aurelien@aurel32.net, 
- jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com, 
- chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org, 
- ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de, 
- jcmvbkbc@gmail.com, shan.gavin@gmail.com
-Subject: Re: [PATCH v5 02/31] target/hppa: Remove
- object_class_is_abstract()
-In-Reply-To: <dc3b8e48-1d33-480f-99bc-57e1242db13d@redhat.com>
-Message-ID: <9f9a2839-6702-43e2-79de-1d6f3b2f6618@eik.bme.hu>
-References: <20231114235628.534334-1-gshan@redhat.com>
- <20231114235628.534334-3-gshan@redhat.com>
- <35cae9bd-2240-2399-2212-e12f1683bf90@eik.bme.hu>
- <dc3b8e48-1d33-480f-99bc-57e1242db13d@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id o11-20020a5d408b000000b0032196c508e3sm11489021wrp.53.2023.11.15.12.55.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Nov 2023 12:55:43 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id B55AB5F76C;
+	Wed, 15 Nov 2023 20:55:42 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Beraldo Leal <bleal@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	qemu-arm@nongnu.org,
+	Alexandre Iooss <erdnaxe@crans.org>
+Subject: [PATCH 00/10] random fixes for 8.2 (tests, plugins, docs, semihosting)
+Date: Wed, 15 Nov 2023 20:55:32 +0000
+Message-Id: <20231115205542.3092038-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1723340199-1700047630=:4658"
-X-Virus-Scanned: ClamAV using ClamSMTP
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D9h7Gne7wQPJ
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Q3oDhSGsZv1a
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+I've just been trying to clear some of the bugs against various
+subsystems. These are mostly testing changes and a minor tweak I found
+while checking up on semihosting behaviour. Enabling arm-softmmu
+check-tcg tests expands our testing abilities slightly for the 32 bit
+side of the family.
 
---3866299591-1723340199-1700047630=:4658
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Let me know if there are any other patches worth picking up.
 
-On Wed, 15 Nov 2023, Gavin Shan wrote:
-> On 11/15/23 21:18, BALATON Zoltan wrote:
->> On Wed, 15 Nov 2023, Gavin Shan wrote:
->>> No need to check if @oc is abstract because it has been covered
->>> by cpu_class_by_name().
->>> 
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>> target/hppa/cpu.c | 1 -
->>> 1 file changed, 1 deletion(-)
->>> 
->>> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
->>> index 04de1689d7..fc4d2abad7 100644
->>> --- a/target/hppa/cpu.c
->>> +++ b/target/hppa/cpu.c
->>> @@ -163,7 +163,6 @@ static ObjectClass *hppa_cpu_class_by_name(const char 
->>> *cpu_model)
->>>     ObjectClass *oc = object_class_by_name(typename);
->>> 
->>>     if (oc &&
->>> -        !object_class_is_abstract(oc) &&
->>>         object_class_dynamic_cast(oc, TYPE_HPPA_CPU)) {
->> 
->> Might as well remove the line break as the remaining expression fits in 80 
->> chars.
->> 
->
-> Yes, but the whole chunk of code will be removed in PATCH[03]. So I think
-> we needn't the extra effort to adjust the format in PATCH[02]?
+The following need review:
 
-Yes, if it's gone later then does not matter.
+  tests/tcg: enable semiconsole test for Arm
+  tests/tcg: enable arm softmmu tests
+  testing: move arm system tests into their own folder
+  hw/core: skip loading debug on all failures
+  docs/emulation: expand warning about semihosting
+  tests/tcg: fixup Aarch64 semiconsole test
 
-Regards,
-BALATON Zoltan
+Alex Bennée (7):
+  tests/docker: merge debian-native with debian-amd64
+  tests/tcg: fixup Aarch64 semiconsole test
+  docs/emulation: expand warning about semihosting
+  hw/core: skip loading debug on all failures
+  testing: move arm system tests into their own folder
+  tests/tcg: enable arm softmmu tests
+  tests/tcg: enable semiconsole test for Arm
 
-> Thaks,
-> Gavin
->
->>>         return oc;
->>>     }
->>> 
->> 
->
->
->
---3866299591-1723340199-1700047630=:4658--
+Daniel P. Berrangé (1):
+  tests/docker: replace fedora-i386 with debian-i686
+
+Greg Manning (1):
+  plugins: fix win plugin tests on cross compile
+
+Philippe Mathieu-Daudé (1):
+  .gitlab-ci.d/cirrus: Upgrade macOS to 13 (Ventura)
+
+ docs/about/emulation.rst                      |   5 +-
+ configure                                     |   2 +-
+ hw/core/loader.c                              |   2 +-
+ tests/tcg/arm/system/semiconsole.c            |  42 +++
+ .gitlab-ci.d/buildtest.yml                    |  12 +-
+ .gitlab-ci.d/cirrus.yml                       |   6 +-
+ .../cirrus/{macos-12.vars => macos-13.vars}   |   2 +-
+ .gitlab-ci.d/container-cross.yml              |  11 +-
+ .gitlab-ci.d/containers.yml                   |   2 +-
+ .gitlab-ci.d/crossbuilds.yml                  |  14 +-
+ contrib/plugins/Makefile                      |   2 +-
+ plugins/meson.build                           |   2 +-
+ tests/docker/Makefile.include                 |   3 -
+ .../dockerfiles/debian-i686-cross.docker      | 182 +++++++++++
+ tests/docker/dockerfiles/debian-native.docker |  54 ----
+ .../{debian-amd64.docker => debian.docker}    |   7 +-
+ .../dockerfiles/fedora-i386-cross.docker      |  40 ---
+ tests/lcitool/refresh                         |  18 +-
+ tests/plugin/meson.build                      |   3 +-
+ tests/tcg/aarch64/Makefile.softmmu-target     |   5 +-
+ tests/tcg/arm/Makefile.softmmu-target         |  76 ++++-
+ tests/tcg/arm/system/boot.S                   | 288 ++++++++++++++++++
+ tests/tcg/arm/system/kernel.ld                |  24 ++
+ .../tcg/arm/{ => system}/test-armv6m-undef.S  |   0
+ .../tcg/arm/{ => system}/test-armv6m-undef.ld |   0
+ 25 files changed, 655 insertions(+), 147 deletions(-)
+ create mode 100644 tests/tcg/arm/system/semiconsole.c
+ rename .gitlab-ci.d/cirrus/{macos-12.vars => macos-13.vars} (95%)
+ create mode 100644 tests/docker/dockerfiles/debian-i686-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-native.docker
+ rename tests/docker/dockerfiles/{debian-amd64.docker => debian.docker} (96%)
+ delete mode 100644 tests/docker/dockerfiles/fedora-i386-cross.docker
+ create mode 100644 tests/tcg/arm/system/boot.S
+ create mode 100644 tests/tcg/arm/system/kernel.ld
+ rename tests/tcg/arm/{ => system}/test-armv6m-undef.S (100%)
+ rename tests/tcg/arm/{ => system}/test-armv6m-undef.ld (100%)
+
+-- 
+2.39.2

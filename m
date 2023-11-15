@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id g7-20020a05600c4ec700b004094e565e71sm871619wmq.23.2023.11.15.12.55.43
+        by smtp.gmail.com with ESMTPSA id x15-20020adfffcf000000b0031984b370f2sm11513405wrs.47.2023.11.15.12.55.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Nov 2023 12:55:43 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CF76C5F7AF;
-	Wed, 15 Nov 2023 20:55:42 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 0B7845F7B1;
+	Wed, 15 Nov 2023 20:55:43 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -18,370 +18,236 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	qemu-arm@nongnu.org,
 	Alexandre Iooss <erdnaxe@crans.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 01/10] tests/docker: replace fedora-i386 with debian-i686
-Date: Wed, 15 Nov 2023 20:55:33 +0000
-Message-Id: <20231115205542.3092038-2-alex.bennee@linaro.org>
+	Anders Roxell <anders.roxell@linaro.org>
+Subject: [PATCH 03/10] tests/docker: merge debian-native with debian-amd64
+Date: Wed, 15 Nov 2023 20:55:35 +0000
+Message-Id: <20231115205542.3092038-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231115205542.3092038-1-alex.bennee@linaro.org>
 References: <20231115205542.3092038-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: t/oY9+I5bGSl
+X-TUID: q1497wAxi6iS
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+debian-native isn't really needed and suffers from the problem of
+tracking a distros dependencies rather than the projects. With a
+little surgery we can make the debian-amd64 container architecture
+neutral and allow people to use it to build a native QEMU.
 
-Fedora is gradually killing off i386 packages in its repos, via a
-death-by-1000-cuts process. Thus Debian looks like a better long
-term bet for i686 build testing. It has the added advantage that
-we can generate it via lcitool too.
+Rename it so it follows the same non-arch pattern of the other distro
+containers.
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20231107164109.1449014-1-berrange@redhat.com>
-[AJB: tweak commit msg]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Anders Roxell <anders.roxell@linaro.org>
 ---
- configure                                     |   2 +-
- .gitlab-ci.d/container-cross.yml              |  11 +-
- .gitlab-ci.d/crossbuilds.yml                  |  12 +-
- .../dockerfiles/debian-i686-cross.docker      | 182 ++++++++++++++++++
- .../dockerfiles/fedora-i386-cross.docker      |  40 ----
- tests/lcitool/refresh                         |   7 +
- 6 files changed, 202 insertions(+), 52 deletions(-)
- create mode 100644 tests/docker/dockerfiles/debian-i686-cross.docker
- delete mode 100644 tests/docker/dockerfiles/fedora-i386-cross.docker
+ .gitlab-ci.d/buildtest.yml                    | 12 ++---
+ .gitlab-ci.d/containers.yml                   |  2 +-
+ tests/docker/Makefile.include                 |  3 --
+ tests/docker/dockerfiles/debian-native.docker | 54 -------------------
+ .../{debian-amd64.docker => debian.docker}    |  7 ++-
+ tests/lcitool/refresh                         |  9 ++--
+ 6 files changed, 18 insertions(+), 69 deletions(-)
+ delete mode 100644 tests/docker/dockerfiles/debian-native.docker
+ rename tests/docker/dockerfiles/{debian-amd64.docker => debian.docker} (96%)
 
-diff --git a/configure b/configure
-index abcb199aa8..5e7b76e3a1 100755
---- a/configure
-+++ b/configure
-@@ -1307,7 +1307,7 @@ probe_target_compiler() {
-         container_cross_cc=${container_cross_prefix}gcc
-         ;;
-       i386)
--        container_image=fedora-i386-cross
-+        container_image=debian-i686-cross
-         container_cross_prefix=
-         ;;
-       loongarch64)
-diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml
-index 463ac493ad..8d235cbea0 100644
---- a/.gitlab-ci.d/container-cross.yml
-+++ b/.gitlab-ci.d/container-cross.yml
-@@ -46,6 +46,12 @@ loongarch-debian-cross-container:
-   variables:
-     NAME: debian-loongarch-cross
- 
-+i686-debian-cross-container:
-+  extends: .container_job_template
-+  stage: containers
-+  variables:
-+    NAME: debian-i686-cross
-+
- mips64el-debian-cross-container:
-   extends: .container_job_template
-   stage: containers
-@@ -95,11 +101,6 @@ cris-fedora-cross-container:
-   variables:
-     NAME: fedora-cris-cross
- 
--i386-fedora-cross-container:
--  extends: .container_job_template
--  variables:
--    NAME: fedora-i386-cross
--
- win32-fedora-cross-container:
-   extends: .container_job_template
-   variables:
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index ac71a2abd3..c2af6c7f44 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -37,25 +37,25 @@ cross-arm64-kvm-only:
-     IMAGE: debian-arm64-cross
-     EXTRA_CONFIGURE_OPTS: --disable-tcg --without-default-features
- 
--cross-i386-user:
-+cross-i686-user:
-   extends:
-     - .cross_user_build_job
-     - .cross_test_artifacts
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index da72f7c690..7f9af83b10 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -70,7 +70,7 @@ build-system-debian:
    needs:
--    job: i386-fedora-cross-container
-+    job: i686-debian-cross-container
+     job: amd64-debian-container
    variables:
--    IMAGE: fedora-i386-cross
-+    IMAGE: debian-i686-cross
+-    IMAGE: debian-amd64
++    IMAGE: debian
+     CONFIGURE_ARGS: --with-coroutine=sigaltstack
+     TARGETS: arm-softmmu i386-softmmu riscv64-softmmu sh4eb-softmmu
+       sparc-softmmu xtensa-softmmu
+@@ -82,7 +82,7 @@ check-system-debian:
+     - job: build-system-debian
+       artifacts: true
+   variables:
+-    IMAGE: debian-amd64
++    IMAGE: debian
      MAKE_CHECK_ARGS: check
  
--cross-i386-tci:
-+cross-i686-tci:
-   extends:
-     - .cross_accel_build_job
-     - .cross_test_artifacts
-   timeout: 60m
-   needs:
--    job: i386-fedora-cross-container
-+    job: i686-debian-cross-container
+ avocado-system-debian:
+@@ -91,7 +91,7 @@ avocado-system-debian:
+     - job: build-system-debian
+       artifacts: true
    variables:
--    IMAGE: fedora-i386-cross
-+    IMAGE: debian-i686-cross
-     ACCEL: tcg-interpreter
-     EXTRA_CONFIGURE_OPTS: --target-list=i386-softmmu,i386-linux-user,aarch64-softmmu,aarch64-linux-user,ppc-softmmu,ppc-linux-user --disable-plugins
-     MAKE_CHECK_ARGS: check check-tcg
-diff --git a/tests/docker/dockerfiles/debian-i686-cross.docker b/tests/docker/dockerfiles/debian-i686-cross.docker
-new file mode 100644
-index 0000000000..3fc4e15acd
---- /dev/null
-+++ b/tests/docker/dockerfiles/debian-i686-cross.docker
-@@ -0,0 +1,182 @@
-+# THIS FILE WAS AUTO-GENERATED
-+#
-+#  $ lcitool dockerfile --layers all --cross-arch i686 debian-11 qemu
-+#
-+# https://gitlab.com/libvirt/libvirt-ci
-+
-+FROM docker.io/library/debian:11-slim
-+
-+RUN export DEBIAN_FRONTEND=noninteractive && \
-+    apt-get update && \
-+    apt-get install -y eatmydata && \
-+    eatmydata apt-get dist-upgrade -y && \
-+    eatmydata apt-get install --no-install-recommends -y \
-+                      bash \
-+                      bc \
-+                      bison \
-+                      bsdextrautils \
-+                      bzip2 \
-+                      ca-certificates \
-+                      ccache \
-+                      dbus \
-+                      debianutils \
-+                      diffutils \
-+                      exuberant-ctags \
-+                      findutils \
-+                      flex \
-+                      gcc \
-+                      gcovr \
-+                      gettext \
-+                      git \
-+                      hostname \
-+                      libglib2.0-dev \
-+                      libpcre2-dev \
-+                      libsndio-dev \
-+                      libspice-protocol-dev \
-+                      llvm \
-+                      locales \
-+                      make \
-+                      meson \
-+                      mtools \
-+                      ncat \
-+                      ninja-build \
-+                      openssh-client \
-+                      pkgconf \
-+                      python3 \
-+                      python3-numpy \
-+                      python3-opencv \
-+                      python3-pillow \
-+                      python3-pip \
-+                      python3-setuptools \
-+                      python3-sphinx \
-+                      python3-sphinx-rtd-theme \
-+                      python3-venv \
-+                      python3-wheel \
-+                      python3-yaml \
-+                      rpm2cpio \
-+                      sed \
-+                      socat \
-+                      sparse \
-+                      tar \
-+                      tesseract-ocr \
-+                      tesseract-ocr-eng \
-+                      xorriso \
-+                      zstd && \
-+    eatmydata apt-get autoremove -y && \
-+    eatmydata apt-get autoclean -y && \
-+    sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
-+    dpkg-reconfigure locales
-+
-+RUN /usr/bin/pip3 install tomli
-+
-+ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
-+ENV LANG "en_US.UTF-8"
-+ENV MAKE "/usr/bin/make"
-+ENV NINJA "/usr/bin/ninja"
-+ENV PYTHON "/usr/bin/python3"
-+
-+RUN export DEBIAN_FRONTEND=noninteractive && \
-+    dpkg --add-architecture i386 && \
-+    eatmydata apt-get update && \
-+    eatmydata apt-get dist-upgrade -y && \
-+    eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
-+    eatmydata apt-get install --no-install-recommends -y \
-+                      g++-i686-linux-gnu \
-+                      gcc-i686-linux-gnu \
-+                      libaio-dev:i386 \
-+                      libasan6:i386 \
-+                      libasound2-dev:i386 \
-+                      libattr1-dev:i386 \
-+                      libbpf-dev:i386 \
-+                      libbrlapi-dev:i386 \
-+                      libbz2-dev:i386 \
-+                      libc6-dev:i386 \
-+                      libcacard-dev:i386 \
-+                      libcap-ng-dev:i386 \
-+                      libcapstone-dev:i386 \
-+                      libcmocka-dev:i386 \
-+                      libcurl4-gnutls-dev:i386 \
-+                      libdaxctl-dev:i386 \
-+                      libdrm-dev:i386 \
-+                      libepoxy-dev:i386 \
-+                      libfdt-dev:i386 \
-+                      libffi-dev:i386 \
-+                      libfuse3-dev:i386 \
-+                      libgbm-dev:i386 \
-+                      libgcrypt20-dev:i386 \
-+                      libglib2.0-dev:i386 \
-+                      libglusterfs-dev:i386 \
-+                      libgnutls28-dev:i386 \
-+                      libgtk-3-dev:i386 \
-+                      libibumad-dev:i386 \
-+                      libibverbs-dev:i386 \
-+                      libiscsi-dev:i386 \
-+                      libjemalloc-dev:i386 \
-+                      libjpeg62-turbo-dev:i386 \
-+                      libjson-c-dev:i386 \
-+                      liblttng-ust-dev:i386 \
-+                      liblzo2-dev:i386 \
-+                      libncursesw5-dev:i386 \
-+                      libnfs-dev:i386 \
-+                      libnuma-dev:i386 \
-+                      libpam0g-dev:i386 \
-+                      libpipewire-0.3-dev:i386 \
-+                      libpixman-1-dev:i386 \
-+                      libpng-dev:i386 \
-+                      libpulse-dev:i386 \
-+                      librbd-dev:i386 \
-+                      librdmacm-dev:i386 \
-+                      libsasl2-dev:i386 \
-+                      libsdl2-dev:i386 \
-+                      libsdl2-image-dev:i386 \
-+                      libseccomp-dev:i386 \
-+                      libselinux1-dev:i386 \
-+                      libslirp-dev:i386 \
-+                      libsnappy-dev:i386 \
-+                      libspice-server-dev:i386 \
-+                      libssh-gcrypt-dev:i386 \
-+                      libsystemd-dev:i386 \
-+                      libtasn1-6-dev:i386 \
-+                      libubsan1:i386 \
-+                      libudev-dev:i386 \
-+                      liburing-dev:i386 \
-+                      libusb-1.0-0-dev:i386 \
-+                      libusbredirhost-dev:i386 \
-+                      libvdeplug-dev:i386 \
-+                      libvirglrenderer-dev:i386 \
-+                      libvte-2.91-dev:i386 \
-+                      libzstd-dev:i386 \
-+                      nettle-dev:i386 \
-+                      systemtap-sdt-dev:i386 \
-+                      xfslibs-dev:i386 \
-+                      zlib1g-dev:i386 && \
-+    eatmydata apt-get autoremove -y && \
-+    eatmydata apt-get autoclean -y && \
-+    mkdir -p /usr/local/share/meson/cross && \
-+    printf "[binaries]\n\
-+c = '/usr/bin/i686-linux-gnu-gcc'\n\
-+ar = '/usr/bin/i686-linux-gnu-gcc-ar'\n\
-+strip = '/usr/bin/i686-linux-gnu-strip'\n\
-+pkgconfig = '/usr/bin/i686-linux-gnu-pkg-config'\n\
-+\n\
-+[host_machine]\n\
-+system = 'linux'\n\
-+cpu_family = 'x86'\n\
-+cpu = 'i686'\n\
-+endian = 'little'\n" > /usr/local/share/meson/cross/i686-linux-gnu && \
-+    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt && \
-+    mkdir -p /usr/libexec/ccache-wrappers && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/i686-linux-gnu-c++ && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/i686-linux-gnu-cc && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/i686-linux-gnu-g++ && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/i686-linux-gnu-gcc
-+
-+ENV ABI "i686-linux-gnu"
-+ENV MESON_OPTS "--cross-file=i686-linux-gnu"
-+ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-linux-gnu-
-+ENV DEF_TARGET_LIST x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/fedora-i386-cross.docker b/tests/docker/dockerfiles/fedora-i386-cross.docker
+-    IMAGE: debian-amd64
++    IMAGE: debian
+     MAKE_CHECK_ARGS: check-avocado
+     AVOCADO_TAGS: arch:arm arch:i386 arch:riscv64 arch:sh4 arch:sparc arch:xtensa
+ 
+@@ -101,7 +101,7 @@ crash-test-debian:
+     - job: build-system-debian
+       artifacts: true
+   variables:
+-    IMAGE: debian-amd64
++    IMAGE: debian
+   script:
+     - cd build
+     - make NINJA=":" check-venv
+@@ -589,7 +589,7 @@ build-tools-and-docs-debian:
+     # when running on 'master' we use pre-existing container
+     optional: true
+   variables:
+-    IMAGE: debian-amd64
++    IMAGE: debian
+     MAKE_CHECK_ARGS: check-unit ctags TAGS cscope
+     CONFIGURE_ARGS: --disable-system --disable-user --enable-docs --enable-tools
+     QEMU_JOB_PUBLISH: 1
+@@ -609,7 +609,7 @@ build-tools-and-docs-debian:
+ # of what topic branch they're currently using
+ pages:
+   extends: .base_job_template
+-  image: $CI_REGISTRY_IMAGE/qemu/debian-amd64:$QEMU_CI_CONTAINER_TAG
++  image: $CI_REGISTRY_IMAGE/qemu/debian:$QEMU_CI_CONTAINER_TAG
+   stage: test
+   needs:
+     - job: build-tools-and-docs-debian
+diff --git a/.gitlab-ci.d/containers.yml b/.gitlab-ci.d/containers.yml
+index 8637a13d86..ae79d4c58b 100644
+--- a/.gitlab-ci.d/containers.yml
++++ b/.gitlab-ci.d/containers.yml
+@@ -11,7 +11,7 @@ amd64-debian-container:
+   extends: .container_job_template
+   stage: containers
+   variables:
+-    NAME: debian-amd64
++    NAME: debian
+ 
+ amd64-ubuntu2204-container:
+   extends: .container_job_template
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index cd4688bf07..5ba5b50ab9 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -88,9 +88,6 @@ DOCKER_PARTIAL_IMAGES += debian-s390x-cross
+ DOCKER_PARTIAL_IMAGES += fedora
+ endif
+ 
+-# The native build should never use the registry
+-docker-image-debian-native: DOCKER_REGISTRY=
+-
+ # alpine has no adduser
+ docker-image-alpine: NOUSER=1
+ 
+diff --git a/tests/docker/dockerfiles/debian-native.docker b/tests/docker/dockerfiles/debian-native.docker
 deleted file mode 100644
-index b59a9115c4..0000000000
---- a/tests/docker/dockerfiles/fedora-i386-cross.docker
+index abac7d7cd7..0000000000
+--- a/tests/docker/dockerfiles/debian-native.docker
 +++ /dev/null
-@@ -1,40 +0,0 @@
--FROM registry.fedoraproject.org/fedora:34
+@@ -1,54 +0,0 @@
+-#
+-# Docker Debian Native
+-#
+-# This is intended to build QEMU on native host systems. Debian is
+-# chosen due to the broadest range on supported host systems for QEMU.
+-#
+-# This docker target is based on the docker.io Debian Bullseye base
+-# image rather than QEMU's base because we would otherwise confuse the
+-# build grabbing stuff from the registry built for other
+-# architectures.
+-#
+-FROM docker.io/library/debian:bullseye-slim
+-MAINTAINER Alex Bennée <alex.bennee@linaro.org>
 -
--ENV PACKAGES \
--    bison \
--    bzip2 \
--    ccache \
--    diffutils \
--    flex \
--    findutils \
--    gcc \
--    git \
--    libfdt-devel.i686 \
--    libffi-devel.i686 \
--    libselinux-devel.i686 \
--    libtasn1-devel.i686 \
--    libzstd-devel.i686 \
--    make \
--    meson \
--    ninja-build \
--    glib2-devel.i686 \
--    glibc-devel.i686 \
--    glibc-static.i686 \
--    gnutls-devel.i686 \
--    nettle-devel.i686 \
--    pcre-devel.i686 \
--    pixman-devel.i686 \
--    python3-tomli \
--    sysprof-capture-devel.i686 \
--    zlib-devel.i686
+-# Duplicate deb line as deb-src
+-RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
 -
--ENV QEMU_CONFIGURE_OPTS --cpu=i386 --disable-vhost-user
--ENV PKG_CONFIG_LIBDIR /usr/lib/pkgconfig
+-# Install common build utilities
+-RUN apt update && \
+-    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata
 -
--RUN dnf update -y && dnf install -y $PACKAGES
--RUN rpm -q $PACKAGES | sort > /packages.txt
+-RUN apt update && \
+-    DEBIAN_FRONTEND=noninteractive eatmydata \
+-    apt build-dep -yy --arch-only qemu
+-
+-RUN apt update && \
+-    DEBIAN_FRONTEND=noninteractive eatmydata \
+-    apt install -y --no-install-recommends \
+-        cscope \
+-        genisoimage \
+-        exuberant-ctags \
+-        global \
+-        libbz2-dev \
+-        liblzo2-dev \
+-        libgcrypt20-dev \
+-        libfdt-dev \
+-        librdmacm-dev \
+-        libsasl2-dev \
+-        libsnappy-dev \
+-        libvte-dev \
+-        netcat-openbsd \
+-        ninja-build \
+-        openssh-client \
+-        python3-numpy \
+-        python3-opencv \
+-        python3-venv
+-
+-ENV QEMU_CONFIGURE_OPTS $QEMU_CONFIGURE_OPTS
+-ENV DEF_TARGET_LIST "none"
 -# As a final step configure the user (if env is defined)
 -ARG USER
 -ARG UID
 -RUN if [ "${USER}" ]; then \
 -  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
+diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian.docker
+similarity index 96%
+rename from tests/docker/dockerfiles/debian-amd64.docker
+rename to tests/docker/dockerfiles/debian.docker
+index 9b50fb2f63..b5e642d5b6 100644
+--- a/tests/docker/dockerfiles/debian-amd64.docker
++++ b/tests/docker/dockerfiles/debian.docker
+@@ -155,10 +155,13 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+   apt install -y --no-install-recommends \
+   cscope\
+   global\
+-  linux-headers-amd64
++  linux-headers-generic
+ RUN git clone https://github.com/luigirizzo/netmap.git /usr/src/netmap
+ RUN cd /usr/src/netmap && git checkout v11.3
+-RUN cd /usr/src/netmap/LINUX && ./configure --no-drivers --no-apps --kernel-dir=$(ls -d /usr/src/linux-headers-*-amd64) && make install
++RUN cd /usr/src/netmap/LINUX && \
++  ./configure --no-drivers --no-apps \
++  --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \
++  && make install
+ ENV QEMU_CONFIGURE_OPTS --enable-netmap
+ # As a final step configure the user (if env is defined)
+ ARG USER
 diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 92e7d30982..10c54a377c 100755
+index 7c211eba2e..993683cf48 100755
 --- a/tests/lcitool/refresh
 +++ b/tests/lcitool/refresh
-@@ -156,6 +156,13 @@ try:
-                         trailer=cross_build("arm-linux-gnueabihf-",
-                                             "arm-softmmu,arm-linux-user"))
+@@ -99,10 +99,13 @@ debian12_extras = [
+     "  apt install -y --no-install-recommends \\\n",
+     "  cscope\\\n",
+     "  global\\\n",
+-    "  linux-headers-amd64\n",
++    "  linux-headers-generic\n",
+     "RUN git clone https://github.com/luigirizzo/netmap.git /usr/src/netmap\n",
+     "RUN cd /usr/src/netmap && git checkout v11.3\n",
+-    "RUN cd /usr/src/netmap/LINUX && ./configure --no-drivers --no-apps --kernel-dir=$(ls -d /usr/src/linux-headers-*-amd64) && make install\n",
++    "RUN cd /usr/src/netmap/LINUX && \\\n",
++    "  ./configure --no-drivers --no-apps \\\n",
++    "  --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \\\n",
++    "  && make install\n",
+     "ENV QEMU_CONFIGURE_OPTS --enable-netmap\n"
+ ]
  
-+    generate_dockerfile("debian-i686-cross", "debian-11",
-+                        cross="i686",
-+                        trailer=cross_build("x86_64-linux-gnu-",
-+                                            "x86_64-softmmu,"
-+                                            "x86_64-linux-user,"
-+                                            "i386-softmmu,i386-linux-user"))
-+
-     generate_dockerfile("debian-mips64el-cross", "debian-11",
-                         cross="mips64el",
-                         trailer=cross_build("mips64el-linux-gnuabi64-",
+@@ -123,7 +126,7 @@ try:
+     #
+     generate_dockerfile("alpine", "alpine-318")
+     generate_dockerfile("centos8", "centos-stream-8")
+-    generate_dockerfile("debian-amd64", "debian-12",
++    generate_dockerfile("debian", "debian-12",
+                         trailer="".join(debian12_extras))
+     generate_dockerfile("fedora", "fedora-38")
+     generate_dockerfile("opensuse-leap", "opensuse-leap-15")
 -- 
 2.39.2

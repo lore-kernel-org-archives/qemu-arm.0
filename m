@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2839396ejc;
-        Wed, 15 Nov 2023 07:13:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFr6vlUEZ0dGJUpkjCnlPJgv7+p3zvJ8wsg8TVg9kxBBG/uXzd/rZLocbxQ1lOaSsT5l9DS
-X-Received: by 2002:a05:622a:a:b0:412:1e4c:e858 with SMTP id x10-20020a05622a000a00b004121e4ce858mr6177410qtw.36.1700061224383;
-        Wed, 15 Nov 2023 07:13:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700061224; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2839754ejc;
+        Wed, 15 Nov 2023 07:14:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFbbyZiR1g0uyWk+1JcaawtwLuSS67EYZoDo6bfY6h3+7AmJLhaKZI31DD/1lycDTcJo0u6
+X-Received: by 2002:a05:620a:4723:b0:77b:9dd3:2f90 with SMTP id bs35-20020a05620a472300b0077b9dd32f90mr6488721qkb.34.1700061251712;
+        Wed, 15 Nov 2023 07:14:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700061251; cv=none;
         d=google.com; s=arc-20160816;
-        b=GlXKmEU3f5JDU11KNR0c16Puu9wh4dd+Fd2T16S8Wr7oGRzF/N73r5sbdEWbxAPQRw
-         s06ilrktC2Ivy4zbLVkz7UmNK983QiLLnKIB4WEcg4NKrTsLJCu7KgEPVG9J9+2W7Le6
-         SHcuIRbm1zasxmG2yr/Ibc8s1Wp4YMcR1leAV9eztQpARIZfjmefWYtn254fRIw9DLll
-         7ThxnHjh4rZhQouMy99w5QkSo/G+kfoeI/ay3IK5+/dDxW8geND6ZACFnTZhuNhOuY0U
-         d7wRgzPCSTbT74agYZfpN3s27kkD0BAzrmpAkdo6QH3QJYk1/N+Oc4OEsOAXwMIUzjAI
-         CrPw==
+        b=rCRgOAwNhciEGnU2vdRYo8bSKj6jdCS58qQ8mu0LMeXg7CHQN5gnU9DKtfMZtarC7X
+         AlmFyX3zhCiTmoe+vx3/HNJs8bxjMq/NtRlata5PHBOlzctfcfAYyUPSA5rEQC+uT+JH
+         vnPMZaxecQxaBcC/cTW271+Gmm0VjqLsBABCCkkZRt6QzPMcrZ+H01EyJvhZ/xXa8BI6
+         tgcPgNhFUW8W3fvfom+hjOVIcDhxczwlrJX+RNFHcMugRrJFnJtlSZ4l7jgoBL2hBMOi
+         uHp1ZQBBv95WdgHky8/kDGHBqQSlHYZEBtOYuXqvOS5X/dbEkn85QCo7R8TsrQOoW1Tm
+         2Kmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3HjbIQIXvlNjSa0gvdvOx/3peo6nOqkjgT0g3BYPEDw=;
+        bh=1703dOjesTS8lC9RyrytkP2Jb4PIVv6TIpKvHPw8BMs=;
         fh=aH4SF+xuSHrUGtnSFxtFTCUyBE4iqqHq5kYhw/wkcgk=;
-        b=ZUNrlyOL5xO3IfFPbJME09Nx1Xm5kUpMuGNEusH94fsyKkVDcQe+7ztYqNe5o2ac+4
-         RBxFcTqA/ksH6G9BHC0TmeAhZ5QszafpqQ+q0iGLssc1pkjJHFbxKu6d4RO8o/NkCnJi
-         1GVIQn6kfd0Olc9sMI3yq/FlR9C2NK+lTYF6ZaIKa51RjSjcpehp5OepqNMg8wgOxqPu
-         Qeci4rwTB7Jew9hEc8pWieap0STqMd45SdcH0u7Z8y6+oG2c7kfnRPONhbJ89VaOqOIw
-         w5eWNAyd+npJISp8WUaOGAuQGWvmZvZUnSWscrLFmVr9Ej/TuFR47AooRAvvJutN3Unb
-         hTBQ==
+        b=rqDqIucrJ/2MUNptFtOFUb+3F5aCMeo5NmSA6qqesHcBg9qDgXz3azDyvh6ch/WQz4
+         hw6nBT1lvP1Q2FkkMjrsoL6PoTta4okhmRjd7EpymHqtJKW/OoEuK3ftHYlM7rIDF+L8
+         rZtnTZ+0GgyexR0yWnlyCQqycZTGpFujY6zA4gsCAdypK9HRrbR4/KS0c2VcAcwAZyEl
+         HwEeFgfNmmlP+gMjM1lWBMRSMIVosYVkACkurjeOjGC1eHDb3mVtQ9Dd6rmZYaZwAtJe
+         KDh3TUMil2Dpc1nxs7xZFOmcvH+GbwhTeCBHAK27SwPnVlSFQk1lrE1oM3CZvSEoIEvV
+         77UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=akK99qAB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V88NoHSx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 20-20020ac85754000000b00421bd62ff7asi9572923qtx.682.2023.11.15.07.13.44
+        by mx.google.com with ESMTPS id n6-20020a05620a294600b0076da9a05a45si9000674qkp.134.2023.11.15.07.14.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Nov 2023 07:13:44 -0800 (PST)
+        Wed, 15 Nov 2023 07:14:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=akK99qAB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V88NoHSx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3HZv-0003yw-0S; Wed, 15 Nov 2023 10:13:21 -0500
+	id 1r3HaB-000430-H0; Wed, 15 Nov 2023 10:13:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZW-0003t8-RX
- for qemu-arm@nongnu.org; Wed, 15 Nov 2023 10:12:56 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZl-0003ui-Gn
+ for qemu-arm@nongnu.org; Wed, 15 Nov 2023 10:13:12 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZQ-0003Ec-7E
- for qemu-arm@nongnu.org; Wed, 15 Nov 2023 10:12:51 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZf-0003Ho-IY
+ for qemu-arm@nongnu.org; Wed, 15 Nov 2023 10:13:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700061165;
+ s=mimecast20190719; t=1700061178;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3HjbIQIXvlNjSa0gvdvOx/3peo6nOqkjgT0g3BYPEDw=;
- b=akK99qABIXcPNomhEctmw32nOc7AIYJ273L1AbXOlxxy83v0Iq6DtqM2wYTRx9vG25QrMX
- T86QNUfB7TWmaC+3zbwDMVBNBZ0FtB00QBrnBDRawE6o7VE/9o5a6boyXPEhAW/8XI0gc0
- u20Ak3gBNGyUZZNvTDTEwbgGv+9H8jM=
+ bh=1703dOjesTS8lC9RyrytkP2Jb4PIVv6TIpKvHPw8BMs=;
+ b=V88NoHSxR2bIjUCF9XpAHyGXuBSwt091vEHuC/mrF7/JmN+vqljaXjsgwRWNBIcvJrASf5
+ GdPCTAhvsDPbVMO+kTV2UkgYbzl79qIKCfHq4Mtf7d1i7w7P99Bblql67g1ekHHxz+uT/h
+ 3GKr5VEHwo/DIzQmLMmsXD4M4yBmOoE=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-473-384p8qH9OIOesBzJxg7MqA-1; Wed,
- 15 Nov 2023 10:12:44 -0500
-X-MC-Unique: 384p8qH9OIOesBzJxg7MqA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-696-7x7UXb0rPpyPxmxJBHKXcw-1; Wed,
+ 15 Nov 2023 10:12:55 -0500
+X-MC-Unique: 7x7UXb0rPpyPxmxJBHKXcw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 073733C000B4;
- Wed, 15 Nov 2023 15:12:44 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CED363810D28;
+ Wed, 15 Nov 2023 15:12:54 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ADDFE2166B27;
- Wed, 15 Nov 2023 15:12:43 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 55A5FC15881;
+ Wed, 15 Nov 2023 15:12:54 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 6F844180AC07; Wed, 15 Nov 2023 16:12:42 +0100 (CET)
+ id 497EE180AC19; Wed, 15 Nov 2023 16:12:43 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
@@ -90,22 +90,22 @@ Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
  graf@amazon.com,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 01/16] hw/uefi: add include/hw/uefi/var-service-api.h
-Date: Wed, 15 Nov 2023 16:12:23 +0100
-Message-ID: <20231115151242.184645-2-kraxel@redhat.com>
+Subject: [PATCH 14/16] hw/uefi: add uefi-vars-isa device
+Date: Wed, 15 Nov 2023 16:12:36 +0100
+Message-ID: <20231115151242.184645-15-kraxel@redhat.com>
 In-Reply-To: <20231115151242.184645-1-kraxel@redhat.com>
 References: <20231115151242.184645-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.099,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -122,64 +122,144 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2JVGOSQEJC0O
+X-TUID: 2ecZY3p5LURg
 
-This file defines the register interface of the uefi-vars device.
-It's only a handful of registers: magic value, command and status
-registers, location and size of the communication buffer.
+This adds isa bindings for the variable service.
+
+Usage: qemu-system-x86_64 -device uefi-vars-isa,jsonfile=/path/to/uefivars.json
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/uefi/var-service-api.h | 40 +++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
- create mode 100644 include/hw/uefi/var-service-api.h
+ hw/uefi/var-service-isa.c | 88 +++++++++++++++++++++++++++++++++++++++
+ hw/uefi/Kconfig           |  6 +++
+ hw/uefi/meson.build       |  5 +++
+ 3 files changed, 99 insertions(+)
+ create mode 100644 hw/uefi/var-service-isa.c
 
-diff --git a/include/hw/uefi/var-service-api.h b/include/hw/uefi/var-service-api.h
+diff --git a/hw/uefi/var-service-isa.c b/hw/uefi/var-service-isa.c
 new file mode 100644
-index 000000000000..37fdab32741f
+index 000000000000..bdb270c2a643
 --- /dev/null
-+++ b/include/hw/uefi/var-service-api.h
-@@ -0,0 +1,40 @@
++++ b/hw/uefi/var-service-isa.c
+@@ -0,0 +1,88 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi-vars device - API of the virtual device for guest/host communication.
++ * uefi vars device - ISA variant for x64.
 + */
-+#ifndef QEMU_UEFI_VAR_SERVICE_API_H
-+#define QEMU_UEFI_VAR_SERVICE_API_H
++#include "qemu/osdep.h"
++#include "migration/vmstate.h"
 +
++#include "hw/isa/isa.h"
++#include "hw/qdev-properties.h"
 +
-+/* isa: io range */
-+#define UEFI_VARS_IO_BASE                   0x520
++#include "hw/uefi/var-service.h"
++#include "hw/uefi/var-service-api.h"
 +
-+/* sysbus: fdt node path */
-+#define UEFI_VARS_FDT_NODE       "qemu-uefi-vars"
-+#define UEFI_VARS_FDT_COMPAT     "qemu,uefi-vars"
++#define TYPE_UEFI_VARS_ISA "uefi-vars-isa"
++OBJECT_DECLARE_SIMPLE_TYPE(uefi_vars_isa_state, UEFI_VARS_ISA)
 +
-+/* registers */
-+#define UEFI_VARS_REG_MAGIC                  0x00  /* 16 bit */
-+#define UEFI_VARS_REG_CMD_STS                0x02  /* 16 bit */
-+#define UEFI_VARS_REG_BUFFER_SIZE            0x04  /* 32 bit */
-+#define UEFI_VARS_REG_BUFFER_ADDR_LO         0x08  /* 32 bit */
-+#define UEFI_VARS_REG_BUFFER_ADDR_HI         0x0c  /* 32 bit */
-+#define UEFI_VARS_REGS_SIZE                  0x10
++struct uefi_vars_isa_state {
++    ISADevice parent_obj;
++    struct uefi_vars_state state;
++};
 +
-+/* magic value */
-+#define UEFI_VARS_MAGIC_VALUE               0xef1
++static const VMStateDescription vmstate_uefi_vars_isa = {
++    .name = "uefi-vars-isa",
++    .fields = (VMStateField[]) {
++        VMSTATE_STRUCT(state, uefi_vars_isa_state, 0,
++                       vmstate_uefi_vars, uefi_vars_state),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
-+/* command values */
-+#define UEFI_VARS_CMD_RESET                  0x01
-+#define UEFI_VARS_CMD_MM                     0x02
++static Property uefi_vars_isa_properties[] = {
++    DEFINE_PROP_SIZE("size", uefi_vars_isa_state, state.max_storage,
++                     256 * 1024),
++    DEFINE_PROP_STRING("jsonfile", uefi_vars_isa_state, state.jsonfile),
++    DEFINE_PROP_END_OF_LIST(),
++};
 +
-+/* status values */
-+#define UEFI_VARS_STS_SUCCESS                0x00
-+#define UEFI_VARS_STS_BUSY                   0x01
-+#define UEFI_VARS_STS_ERR_UNKNOWN            0x10
-+#define UEFI_VARS_STS_ERR_NOT_SUPPORTED      0x11
-+#define UEFI_VARS_STS_ERR_BAD_BUFFER_SIZE    0x12
++static void uefi_vars_isa_init(Object *obj)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(obj);
 +
++    uefi_vars_init(obj, &uv->state);
++}
 +
-+#endif /* QEMU_UEFI_VAR_SERVICE_API_H */
++static void uefi_vars_isa_reset(DeviceState *dev)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(dev);
++
++    uefi_vars_hard_reset(&uv->state);
++}
++
++static void uefi_vars_isa_realize(DeviceState *dev, Error **errp)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(dev);
++    ISADevice *isa = ISA_DEVICE(dev);
++
++    isa_register_ioport(isa, &uv->state.mr, UEFI_VARS_IO_BASE);
++    uefi_vars_realize(&uv->state, errp);
++}
++
++static void uefi_vars_isa_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = uefi_vars_isa_realize;
++    dc->reset = uefi_vars_isa_reset;
++    dc->vmsd = &vmstate_uefi_vars_isa;
++    device_class_set_props(dc, uefi_vars_isa_properties);
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static const TypeInfo uefi_vars_isa_info = {
++    .name          = TYPE_UEFI_VARS_ISA,
++    .parent        = TYPE_ISA_DEVICE,
++    .instance_size = sizeof(uefi_vars_isa_state),
++    .instance_init = uefi_vars_isa_init,
++    .class_init    = uefi_vars_isa_class_init,
++};
++module_obj(TYPE_UEFI_VARS_ISA);
++module_dep("hw-uefi-vars");
++
++static void uefi_vars_isa_register_types(void)
++{
++    type_register_static(&uefi_vars_isa_info);
++}
++
++type_init(uefi_vars_isa_register_types)
+diff --git a/hw/uefi/Kconfig b/hw/uefi/Kconfig
+index ca6c2bc46a96..feb9f6de5e30 100644
+--- a/hw/uefi/Kconfig
++++ b/hw/uefi/Kconfig
+@@ -1,3 +1,9 @@
+ config UEFI_VARS
+ 	bool
+         default y if X86_64 || AARCH64
++
++config UEFI_VARS_ISA
++	bool
++        default y
++        depends on UEFI_VARS
++        depends on ISA_BUS
+diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
+index dc363d67cccc..959d2a630bbf 100644
+--- a/hw/uefi/meson.build
++++ b/hw/uefi/meson.build
+@@ -8,6 +8,11 @@ uefi_vars_ss.add(when: 'CONFIG_UEFI_VARS',
+                                 'var-service-policy.c',
+                                 'var-service-sysbus.c'))
+ 
++uefi_vars_isa_ss = ss.source_set()
++uefi_vars_isa_ss.add(when: 'CONFIG_UEFI_VARS_ISA',
++                     if_true: files('var-service-isa.c'))
++
+ modules += { 'hw-uefi' : {
+     'vars'     : uefi_vars_ss,
++    'vars-isa' : uefi_vars_isa_ss,
+ }}
 -- 
 2.41.0
 

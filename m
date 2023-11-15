@@ -1,246 +1,169 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2161739ejc;
-        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
-X-Received: by 2002:a17:906:45a:b0:9c7:56ee:b6e5 with SMTP id e26-20020a170906045a00b009c756eeb6e5mr7019316eja.40.1699979542612;
-        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1699979542; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2821486ejc;
+        Wed, 15 Nov 2023 06:48:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEz5zHNaTLJUMiIRJ6x6Wa0tQypXNeOXZwM3di/KW4cQs+LQ+VbpC29kyEM2Vdn0rcJn1ix
+X-Received: by 2002:a05:620a:244b:b0:769:89c8:4fae with SMTP id h11-20020a05620a244b00b0076989c84faemr6401171qkn.52.1700059692889;
+        Wed, 15 Nov 2023 06:48:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700059692; cv=none;
         d=google.com; s=arc-20160816;
-        b=SCQdxJECQmkJi/gTDnf6JDgLcUtXNTT3wI497Q31EgSa/47TvzFvXpDUXuMjRbHFiM
-         cZjCb+9K/CLN70v8QUDVeMdEVJZZuqicm8w0/GA9CrkhhB3Khi38J3mn97vVYq+DQX9A
-         ifDVjdwSptcKfgrJm/1UmDxFT1oPbm576fwkCd+d+W8bmCwB05wdEq5gfz+wqm7sDcLD
-         OYkZorM3GeF1tOjfGWwdfVRhVXqh/wy1ao5jrAiGQTdE7Ty+vIpdTPPYnpEBO3zPfZED
-         vOhfByKw3EPVaI4FVpL/+zAPmPxq3cFw+H3Z7nxOZEaU0eDaLPkmPDmg7T6ftUXzWNw6
-         glIA==
+        b=gKSxNReT1VkOufe2+mIwi09QXtrd/FFeP/3IgcB9IH+7JTdFVpG4o/c70dJfNB8rxR
+         /1Ar9hjkr/shq3BgCc6hsbH9YrPIk3fe+y6NF0D9T7/p9Qw/xHPou8DWt/BpD0Wb4Xah
+         3IFoURO7ZgJNx0s5xxMubNEHcNbOSarmxNWhkDvrveJZNcOd73gwWAge8rHhV1YcG3qS
+         PKbnENnw0Bv0NI+TaBGKUU5eayqtroEt/iTaNqCjE393KQkzdcyUfIH2NApXA/aDyxlV
+         RVB54ZakEBP1F1r+gsO7t+TRyJnGvzL5u2R/gtzzeiD00cnB1yoo+3wMJWj1sWlkt1di
+         U1Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=htjkOQmTZcMenhXqLaaInIEhXImv4mUPxpJWcjUwWD8=;
-        fh=9pdq7NpBxJPnvyNu1sJsWepRx2HfUbiacvC5FeL2cfI=;
-        b=ucEcXltg8Qr7C13EcRFCsGlcUSZAQRR96LdiURhoJbH+UNCdRYFWt+XnLTAp4dpkam
-         BeeDP9Ku4ZD2d0y+ilbe1XaWoC7dUQVRMYr6/A9lsxn5dj/9kN9zN/IjQvgC7dydsP8s
-         lUjjlqOrS/1/y1myPdJ7wxB1IM2lNkL4pY45nKtqi4WcvYdY8c0Oe1ks7gZyr7/S4xKs
-         m66Uf4noFEcTx6tlbYSvjpxER9EaNVreKsFvEq/6lPgKoL+DB2vZIVmS7IhUuNeUlVza
-         ZBFM0obkd4DooP19IBU+p0uHmCOsxUireSGfFsfI9qkSd2E0UX8KHRt+1s3TSRy+DpVT
-         pvXQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=vkw0S7izseqIgzkkW87TLP0K8eZgtlZhVNMLwo1dlp4=;
+        fh=1ZFdxd4lJGX8/0EXKONIPHogDKApTYxrJhmoD5HcMLM=;
+        b=i69MJQLXSli8XIea2IFjczkuXeYyVbTQCJrTMPUsOa+LYJAyjcETNDQiEZo9rvFZjn
+         gP9zgvRPaMqx9bQCf2GlGkS7FSu6hVQsVSkK5OwLypc2Ke9cLmKaYkmzS9iusLLzz8Hz
+         zG2+8NyYpGxOk4zJfOeP5gvqzkbQ+3wsdM5Ejfy6PVCVdTLPwu8RgwfzFh6VVfBRHsC2
+         aAS4JrL2xhcVOj33sNhcn3bID5MM/0akGq1HmTLcqJBDIvJWytjXEQYpLMGUTFCSZTVE
+         QSlLU/wOuPbZqSblYwE6W9k2wsGbtin/CxjxAufr2WDL6FnqNNwaa8LOLavMbO8BRCjx
+         OSzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QhjUANfw;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XmDAH4KC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 30-20020a170906005e00b009de23de9361sor2108956ejg.15.2023.11.14.08.32.22
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bi8-20020a05620a318800b0077575bac0a5si10088706qkb.98.2023.11.15.06.48.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 Nov 2023 06:48:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QhjUANfw;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XmDAH4KC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r3HB7-0003OP-Qq; Wed, 15 Nov 2023 09:47:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3HB7-0003OG-8p
+ for qemu-arm@nongnu.org; Wed, 15 Nov 2023 09:47:41 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3HB5-0000Nf-F0
+ for qemu-arm@nongnu.org; Wed, 15 Nov 2023 09:47:41 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-40859c464daso55276465e9.1
+ for <qemu-arm@nongnu.org>; Wed, 15 Nov 2023 06:47:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1699979542; x=1700584342; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=htjkOQmTZcMenhXqLaaInIEhXImv4mUPxpJWcjUwWD8=;
-        b=QhjUANfwbky5T3/8pW3D3zMMj2vDmFZ8liXdEYPS3/N5bcLFvtShEE7vOIRAG0y67R
-         8hyqqGXra0MxZNFNpvY5DexOUm3qkR8uKck5lVq7JR8du5kHiVnVrClolwHaoj6atvS2
-         jtizyNLCzwTElV9NmjSzsKErPo022Llcd08l9TxJg9wmXGlm7yHN9Mb8DSSVhAmha4dy
-         K231FZx0PYWqxHkiuMNetJ5CccngzX0AZ47mU8BgkNeMGoaj+HUc40+UzYWqqNzIhhl2
-         jsQ/sN+4mWzW9cBkK77lMqY4DEkjKe+fe+ebQIVM8PTC5SxwItsak69Ial8DFY++s7Kh
-         X33A==
+ d=linaro.org; s=google; t=1700059657; x=1700664457; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=vkw0S7izseqIgzkkW87TLP0K8eZgtlZhVNMLwo1dlp4=;
+ b=XmDAH4KCZSvQh0MbuWyNRFttOxvSqoGKJoUb/DkBQuCtdzhQnx7a8udUp5TSvH7AHE
+ KXDZgRJjRMe4qoW1hRxCNl1WISAtSK+zK7b9dztTEiFo0SAcfjcSA4DOXpAYTph4w2+D
+ 251JsAM63oCEFh468diDyiblr0f3oV7mS/jg9pCuODFgU42P2YzsmlMLf79Sr0Yr0QjG
+ 1RoRzpSWuQsIn5C0mHZqfrgQp7rDMfvJUrrtvmKpzhb4M6xEwYMiyVZl1gr6EXdSPw8G
+ Bu6wql5L1MsO5ZHEjT+idiOD5hj8gdhX+aIMwa3s4Cj+sCe7V75jEfd3fpNKrlbolie9
+ uZQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1699979542; x=1700584342;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=htjkOQmTZcMenhXqLaaInIEhXImv4mUPxpJWcjUwWD8=;
-        b=glGXeo27uztQRGoyl+rd2X+A6yeGDRYxnNCtURdjiiHoQ18yk9F3SmpHILOGa95ORA
-         16PWHYUEhmw7dLy4Roquw005asVbyxpvrnJ4qglnAUFxnkR01y4lHjZ/ED2k+PSaRd+W
-         ym2+pMwLgWg8yfYIFLJlGUSVAP8kSHsqQsHd01CCkL50EV7CRkg0vxdNcaBWIyheeaEa
-         3AdIhO9ir9+8Feqt3N15mlEDkdvld2L+wMm/1qrllW2FqKDA3U5dhvT5fxcZvqauJMt6
-         WVNZxT/QDkB/lQ2UEdI3ixKcSn8hMr84Bs4Q2j/DgY/cj1O2ow910KqANtsv5gXdwiAO
-         CnUg==
-X-Gm-Message-State: AOJu0YytfhaBcmZq2PcdeAY429BOqVWOS5zkh9vJgTjax1Oj6UPsIXrh
-	X4+PvVrrnElVvQS9h3ZdTC0FvvrZ
-X-Google-Smtp-Source: AGHT+IEJmFgqouqetrQ1cGRifpy+1FzLH8THhoRj/4LtsoCnWeS7Y04NxjXy02qkfonieH2Xog4T5Q==
-X-Received: by 2002:a17:906:7943:b0:9d3:e48f:30d3 with SMTP id l3-20020a170906794300b009d3e48f30d3mr9901673ejo.31.1699979542369;
-        Tue, 14 Nov 2023 08:32:22 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan (cac94-h02-176-184-25-155.dsl.sta.abo.bbox.fr. [176.184.25.155])
-        by smtp.gmail.com with ESMTPSA id c26-20020a17090603da00b009adce1c97ccsm5731084eja.53.2023.11.14.08.32.20
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 14 Nov 2023 08:32:21 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	David Woodhouse <dwmw@amazon.co.uk>,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	xen-devel@lists.xenproject.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 9/9] hw/xen/hvm: Inline xen_arch_set_memory()
-Date: Tue, 14 Nov 2023 17:31:23 +0100
-Message-ID: <20231114163123.74888-10-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231114163123.74888-1-philmd@linaro.org>
-References: <20231114163123.74888-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1700059657; x=1700664457;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vkw0S7izseqIgzkkW87TLP0K8eZgtlZhVNMLwo1dlp4=;
+ b=hSU7Y1amVqR4+qZ9Rtkq/XOirwM3ef0+pSKcfc5p5PcKXQ6HZQeLVg/vKjtsHRy2YJ
+ loKI2XgW15T04Mte/TyqOLOxA4Tzw+XxJC0cVQYtPFwWGf39S63WyU7H/+w0ym7MhEof
+ AhEHq57Rpbm/tB+KQzuVYyb2hA3/qx017PpQTvOVPFA1MHq/2044l8LGFEd7vVrfEjDx
+ 6MpBPW8HEDgE20tvvJcOEnma21mY6TH67pmnYDKOwB6I7II5pKeFxsa7lQ8TIrcEcsUW
+ SoyPkefAwwz7to5+k2EVxOhijWFf0zCEtRh8wyX4Yt+YIYiLXPCNlcZj7IPVGvV35Qag
+ IyxQ==
+X-Gm-Message-State: AOJu0YyTMuDe4x+u162O4Ljv9ApfFaWICTXAfaS0MkcyrPf/oe0WXmPi
+ nQZPzb6SIoA82z8l7lsyHVieWA==
+X-Received: by 2002:a05:600c:4f03:b0:406:f833:d853 with SMTP id
+ l3-20020a05600c4f0300b00406f833d853mr8693295wmq.15.1700059657507; 
+ Wed, 15 Nov 2023 06:47:37 -0800 (PST)
+Received: from [192.168.69.100] ([176.176.130.62])
+ by smtp.gmail.com with ESMTPSA id
+ h10-20020a05600c350a00b004097881d5f0sm21198422wmq.29.2023.11.15.06.47.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Nov 2023 06:47:37 -0800 (PST)
+Message-ID: <8455c237-2908-4a10-9438-0ed6b5275d92@linaro.org>
+Date: Wed, 15 Nov 2023 15:47:35 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-9.0 0/8] hw/pci-host/designware: QOM shuffling (Host
+ bridge <-> Root function)
+Content-Language: en-US
+To: qemu-devel@nongnu.org, Max Hsu <max.hsu@sifive.com>,
+ Frank Chang <frank.chang@sifive.com>, Greentime Hu <greentime.hu@sifive.com>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20231012121857.31873-1-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231012121857.31873-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: vLBQrcjE2WXn
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: i5UCQzeOm8Lt
 
-xen_arch_set_memory() is not arch-specific anymore. Being
-called once, inline it in xen_set_memory().
+Cc'ing Sifive developers :)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/xen/xen-hvm-common.h |   3 -
- hw/xen/xen-hvm-common.c         | 104 ++++++++++++++++----------------
- 2 files changed, 51 insertions(+), 56 deletions(-)
+On 12/10/23 14:18, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> While trying this PCI host bridge in a hegerogeneous setup
+> I noticed few discrepancies due to the fact that host bridge
+> pieces were managed by the root function.
+> 
+> This series move these pieces (ViewPort and MSI regs) to the
+> host bridge side where they belong. Unfortunately this is
+> a migration breakage.
+> 
+> I recommend reviewing using 'git-diff --color-moved=dimmed-zebra'.
+> 
+> Regards,
+> 
+> Phil.
+> 
+> Philippe Mathieu-Daudé (8):
+>    hw/pci-host/designware: Declare CPU QOM types using DEFINE_TYPES()
+>      macro
+>    hw/pci-host/designware: Initialize root function in host bridge
+>      realize
+>    hw/pci-host/designware: Add 'host_mem' variable for clarity
+>    hw/pci-host/designware: Hoist host controller in root function #0
+>    hw/pci-host/designware: Keep host reference in DesignwarePCIEViewport
+>    hw/pci-host/designware: Move viewports from root func to host bridge
+>    hw/pci-host/designware: Move MSI registers from root func to host
+>      bridge
+>    hw/pci-host/designware: Create ViewPorts during host bridge
+>      realization
+> 
+>   include/hw/pci-host/designware.h |  20 +-
+>   hw/pci-host/designware.c         | 376 +++++++++++++++----------------
+>   2 files changed, 187 insertions(+), 209 deletions(-)
+> 
 
-diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
-index 536712dc83..a1b8a2783b 100644
---- a/include/hw/xen/xen-hvm-common.h
-+++ b/include/hw/xen/xen-hvm-common.h
-@@ -99,8 +99,5 @@ void cpu_ioreq_pio(ioreq_t *req);
- 
- void xen_read_physmap(XenIOState *state);
- void xen_arch_handle_ioreq(XenIOState *state, ioreq_t *req);
--void xen_arch_set_memory(XenIOState *state,
--                         MemoryRegionSection *section,
--                         bool add);
- 
- #endif /* HW_XEN_HVM_COMMON_H */
-diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
-index 50ce45effc..789c6b4b7a 100644
---- a/hw/xen/xen-hvm-common.c
-+++ b/hw/xen/xen-hvm-common.c
-@@ -426,50 +426,6 @@ void qmp_xen_set_global_dirty_log(bool enable, Error **errp)
-     }
- }
- 
--void xen_arch_set_memory(XenIOState *state, MemoryRegionSection *section,
--                         bool add)
--{
--    unsigned target_page_bits = qemu_target_page_bits();
--    int page_size = qemu_target_page_size();
--    int page_mask = -page_size;
--    hwaddr start_addr = section->offset_within_address_space;
--    ram_addr_t size = int128_get64(section->size);
--    bool log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
--    hvmmem_type_t mem_type;
--
--    if (!memory_region_is_ram(section->mr)) {
--        return;
--    }
--
--    if (log_dirty != add) {
--        return;
--    }
--
--    trace_xen_client_set_memory(start_addr, size, log_dirty);
--
--    start_addr &= page_mask;
--    size = ROUND_UP(size, page_size);
--
--    if (add) {
--        if (!memory_region_is_rom(section->mr)) {
--            xen_add_to_physmap(state, start_addr, size,
--                               section->mr, section->offset_within_region);
--        } else {
--            mem_type = HVMMEM_ram_ro;
--            if (xen_set_mem_type(xen_domid, mem_type,
--                                 start_addr >> target_page_bits,
--                                 size >> target_page_bits)) {
--                DPRINTF("xen_set_mem_type error, addr: "HWADDR_FMT_plx"\n",
--                        start_addr);
--            }
--        }
--    } else {
--        if (xen_remove_from_physmap(state, start_addr, size) < 0) {
--            DPRINTF("physmapping does not exist at "HWADDR_FMT_plx"\n", start_addr);
--        }
--    }
--}
--
- void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
-                    Error **errp)
- {
-@@ -512,20 +468,62 @@ static void xen_set_memory(struct MemoryListener *listener,
-                            bool add)
- {
-     XenIOState *state = container_of(listener, XenIOState, memory_listener);
-+    unsigned target_page_bits = qemu_target_page_bits();
-+    int page_size = qemu_target_page_size();
-+    int page_mask = -page_size;
-+    hwaddr start_addr;
-+    ram_addr_t size;
-+    bool log_dirty;
-+    hvmmem_type_t mem_type;
-+
- 
-     if (section->mr == &xen_memory) {
-         return;
--    } else {
--        if (add) {
--            xen_map_memory_section(xen_domid, state->ioservid,
--                                   section);
--        } else {
--            xen_unmap_memory_section(xen_domid, state->ioservid,
--                                     section);
--        }
-     }
- 
--    xen_arch_set_memory(state, section, add);
-+    if (add) {
-+        xen_map_memory_section(xen_domid, state->ioservid,
-+                               section);
-+    } else {
-+        xen_unmap_memory_section(xen_domid, state->ioservid,
-+                                 section);
-+    }
-+
-+    if (!memory_region_is_ram(section->mr)) {
-+        return;
-+    }
-+
-+    log_dirty = memory_region_is_logging(section->mr, DIRTY_MEMORY_VGA);
-+
-+    if (log_dirty != add) {
-+        return;
-+    }
-+
-+    start_addr = section->offset_within_address_space;
-+    size = int128_get64(section->size);
-+    trace_xen_client_set_memory(start_addr, size, log_dirty);
-+
-+    start_addr &= page_mask;
-+    size = ROUND_UP(size, page_size);
-+
-+    if (add) {
-+        if (!memory_region_is_rom(section->mr)) {
-+            xen_add_to_physmap(state, start_addr, size,
-+                               section->mr, section->offset_within_region);
-+        } else {
-+            mem_type = HVMMEM_ram_ro;
-+            if (xen_set_mem_type(xen_domid, mem_type,
-+                                 start_addr >> target_page_bits,
-+                                 size >> target_page_bits)) {
-+                DPRINTF("xen_set_mem_type error, addr: "HWADDR_FMT_plx"\n",
-+                        start_addr);
-+            }
-+        }
-+    } else {
-+        if (xen_remove_from_physmap(state, start_addr, size) < 0) {
-+            DPRINTF("physmapping does not exist at "HWADDR_FMT_plx"\n", start_addr);
-+        }
-+    }
- }
- 
- void xen_region_add(MemoryListener *listener,
--- 
-2.41.0

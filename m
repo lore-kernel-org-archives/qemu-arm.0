@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2839951ejc;
-        Wed, 15 Nov 2023 07:14:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHVO7bVzH3YYDNARCwQ2dDKU95NxIuDDsQO1f8ObIAuEYY9NiHDb/fgBshhhRdDXxpfnquo
-X-Received: by 2002:a05:620a:2993:b0:774:2bdc:ab4 with SMTP id r19-20020a05620a299300b007742bdc0ab4mr6514899qkp.62.1700061265440;
-        Wed, 15 Nov 2023 07:14:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700061265; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp2840016ejc;
+        Wed, 15 Nov 2023 07:14:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGuuGih69Qi/Q3DRU5KAwvzRx9dnsOrG4dxI4jdeiv9SF1aPQ7llvkCfNUfIlrOeVDoNfEL
+X-Received: by 2002:ad4:4bc9:0:b0:677:9fb2:26e1 with SMTP id l9-20020ad44bc9000000b006779fb226e1mr5738920qvw.32.1700061270308;
+        Wed, 15 Nov 2023 07:14:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700061270; cv=none;
         d=google.com; s=arc-20160816;
-        b=jl2UfGwT0XJTPYuJWsd9CKnK7++0BmX1CjVFmlAO/SJsM7yVgaZW7G314lcSt7Er3+
-         Kj8kcNwhvWbalzueO0tLZIj8tEl+zDhRc8+XOVbrfdHXpaeckL6CVN6Xt6A5Bn5mkIDF
-         GFByJ2CWh2LucmFmUU9OXunCk0vQieGWpF102UWw/TzLERuvzqffELM/l92eqM7qhMOj
-         DTUCTwb7o2Gf+tUrXkY+p7GtnbG/XjV11iKEFrPg2IK8SP+qZ+h1PuIb1QgmmKWS/2xT
-         R+eOlpGzfjCbDBP5ClWCENqI/2Kzif6OqwLGMTxHA/uDhH6rtk7lPidbpu9SKl4KcuPS
-         NgMA==
+        b=0oHNKqcc7c6JRw6wMky8k2oQFuUMQ0Y/yRSreGTfiHmodsNIvZqr1G9sY/tf0s8fMs
+         Syy7URs6qAeepT5BwnNJRrEgNFiNvVxzBHYDUA6R1iCMaiVI5NdysYKnmTP99viEkpAl
+         fZhz6PqA13/8rTS2pBpuAAqJRVLwB6fAPKOVCN+L//YwVb4QcYZPxJdRL6dSxxi+CAdv
+         bNAJDSFmj0VBucnkQ5PCMyCALuRT6PRX/KI6ooE57cXMcWhYuM09ukWFqzvgLbBWTFm+
+         hm42tBf0VvVJByDAC+MCsjbq7jeaHLkMw0dqFmHsfeXDJ+iKlf2D/5tecEMTh3s1Velp
+         p9sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uvT8gCXN28mceIO8UoTKC3bCpQMbHAti1cIxN96isxA=;
+        bh=Q+YOxOGv6aHAHArmhe7oBMaBUWd7nFI9OPJS/66EXDo=;
         fh=aH4SF+xuSHrUGtnSFxtFTCUyBE4iqqHq5kYhw/wkcgk=;
-        b=eYErK18Mw6j3va1uMlOO81EfXNRCzPwtvmDvNCryFs6vwjOjloYKPLucoltEMpRJp7
-         +rjUY06a21+2xhWmCk7PfifyQgS4upXFjX2DcA+x5mQFsg7gP8HcsYN3R42lTtrM7ldY
-         llsVwpSE6/lgyHu4EiHUCHjZVo+pALZdpySWDlqxpWl8G88lts0i+X02yf/zXK8I5bNl
-         MAVmp8AsA6JDW1bbTkgxx37ZhqLMm43vSKplAY4E+HWc6s581blBaML/MnFAHN4f6Lw7
-         nC8+4DQ5wo4gI4pZxJjsgOanzxYs+wBlOYo9CaCF3jBC5sF6obEa/DJ7Pl9VPk0NTI2H
-         dTRQ==
+        b=W7MnRGZFw7mPlU7dKTbPQpdQp1bavqXeYt84mVCA33m3JjbuuctSiI7qq90YtTbuWu
+         yKG1GoVTGcH1cYQD7QR835ymdDTcLf4JJ8kkYchaFfydTkVwYSYHRV+EtS19kly78AeY
+         VVQZRA6uIyaV3lM5S/5Jkcjo63i4eCYTpvC3wfQX8R55Jhl87BBZzFxwmFY8XOcMYF79
+         V4d/yVe8UoQCgjHmk3dKIDhDdxEtrtN1R5QJ1y3s488TyrR0ZhcvsixLjEWZTqp1tyHV
+         F7U+vmR0uIcY0pawmKyezwYwGpZyJForLiHT0PHkNwGjpULs3H9PZcFFu6breoy1t5Z1
+         icGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R0aX2364;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtkM9x0Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17-20020a05620a415100b007770bfc2da9si9277787qko.83.2023.11.15.07.14.25
+        by mx.google.com with ESMTPS id q9-20020a05621410e900b0066db35647d6si9725104qvt.504.2023.11.15.07.14.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Nov 2023 07:14:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Nov 2023 07:14:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R0aX2364;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtkM9x0Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3HaB-00042z-Hx; Wed, 15 Nov 2023 10:13:36 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r3HZs-0003w0-Id; Wed, 15 Nov 2023 10:13:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZl-0003uj-HU
- for qemu-arm@nongnu.org; Wed, 15 Nov 2023 10:13:12 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZa-0003tL-CF
+ for qemu-devel@nongnu.org; Wed, 15 Nov 2023 10:12:59 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZf-0003Gy-Ia
- for qemu-arm@nongnu.org; Wed, 15 Nov 2023 10:13:08 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r3HZQ-0003Eo-G7
+ for qemu-devel@nongnu.org; Wed, 15 Nov 2023 10:12:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700061176;
+ s=mimecast20190719; t=1700061167;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uvT8gCXN28mceIO8UoTKC3bCpQMbHAti1cIxN96isxA=;
- b=R0aX2364CgQeP+PWNa1UrP8hEDoTermJUvjlb+tiRES92n5CDB5ADNqvJGKhqUcBi8fiNX
- yC6rwbZhJE4jwfq5UANOPlqIURm4Rv4egDq4uSfwwGtnMeE97kOrLG+hGFry3E1NmcWEO2
- pYtUPqZxeYmMAdunNdGUPdyRTdr614w=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-288-PFDZdSYcNGKSC5V20Gu_bA-1; Wed,
- 15 Nov 2023 10:12:53 -0500
-X-MC-Unique: PFDZdSYcNGKSC5V20Gu_bA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ bh=Q+YOxOGv6aHAHArmhe7oBMaBUWd7nFI9OPJS/66EXDo=;
+ b=QtkM9x0YlS/FECIBztyQhwqvdsx1CexlgSeYWV2+F1PWDyaL0pRYM2DsrwNYw7191oLUjD
+ 4hoQo3JRGuI1RsSsnKTpGlIgKTDByhKX0NNs+CO40DyWVTm96R4eduB8CbqxOIpV++fMy+
+ rqwUyZ9L7raQE1WhbguZdVDuCxBFgjs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-264-C0fwdmWcN0yvFKyfjn8pqg-1; Wed, 15 Nov 2023 10:12:46 -0500
+X-MC-Unique: C0fwdmWcN0yvFKyfjn8pqg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 756722825E94;
- Wed, 15 Nov 2023 15:12:53 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D7C0101A597;
+ Wed, 15 Nov 2023 15:12:45 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3655E5028;
- Wed, 15 Nov 2023 15:12:53 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 25A9D2166B27;
+ Wed, 15 Nov 2023 15:12:45 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 376A7180AC18; Wed, 15 Nov 2023 16:12:43 +0100 (CET)
+ id 7D7CE180AC08; Wed, 15 Nov 2023 16:12:42 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
@@ -90,14 +90,14 @@ Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
  graf@amazon.com,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 13/16] hw/uefi: add uefi-vars-sysbus device
-Date: Wed, 15 Nov 2023 16:12:35 +0100
-Message-ID: <20231115151242.184645-14-kraxel@redhat.com>
+Subject: [PATCH 02/16] hw/uefi: add include/hw/uefi/var-service-edk2.h
+Date: Wed, 15 Nov 2023 16:12:24 +0100
+Message-ID: <20231115151242.184645-3-kraxel@redhat.com>
 In-Reply-To: <20231115151242.184645-1-kraxel@redhat.com>
 References: <20231115151242.184645-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
@@ -106,140 +106,224 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.099,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MLe5doHRSVIk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: n0M2s/+LV7TZ
 
-This adds sysbus bindings for the variable service.
+A bunch of #defines and structs copied over from edk2,
+mostly needed to decode and encode the messages in the
+communication buffer.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-sysbus.c | 87 ++++++++++++++++++++++++++++++++++++
- hw/uefi/meson.build          |  3 +-
- 2 files changed, 89 insertions(+), 1 deletion(-)
- create mode 100644 hw/uefi/var-service-sysbus.c
+ include/hw/uefi/var-service-edk2.h | 184 +++++++++++++++++++++++++++++
+ 1 file changed, 184 insertions(+)
+ create mode 100644 include/hw/uefi/var-service-edk2.h
 
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
+diff --git a/include/hw/uefi/var-service-edk2.h b/include/hw/uefi/var-service-edk2.h
 new file mode 100644
-index 000000000000..2b393fc768a9
+index 000000000000..354b74d1d71c
 --- /dev/null
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -0,0 +1,87 @@
++++ b/include/hw/uefi/var-service-edk2.h
+@@ -0,0 +1,184 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - sysbus variant.
++ * uefi-vars device - structs and defines from edk2
++ *
++ * Note: The edk2 UINTN type has been mapped to uint64_t,
++ *       so the structs are compatible with 64bit edk2 builds.
 + */
-+#include "qemu/osdep.h"
-+#include "migration/vmstate.h"
++#ifndef QEMU_UEFI_VAR_SERVICE_EDK2_H
++#define QEMU_UEFI_VAR_SERVICE_EDK2_H
 +
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
++#include "qemu/uuid.h"
 +
-+#include "hw/uefi/var-service.h"
-+#include "hw/uefi/var-service-api.h"
++#define MAX_BIT                   0x8000000000000000ULL
++#define ENCODE_ERROR(StatusCode)  (MAX_BIT | (StatusCode))
++#define EFI_SUCCESS               0
++#define EFI_INVALID_PARAMETER     ENCODE_ERROR(2)
++#define EFI_UNSUPPORTED           ENCODE_ERROR(3)
++#define EFI_BAD_BUFFER_SIZE       ENCODE_ERROR(4)
++#define EFI_BUFFER_TOO_SMALL      ENCODE_ERROR(5)
++#define EFI_WRITE_PROTECTED       ENCODE_ERROR(8)
++#define EFI_OUT_OF_RESOURCES      ENCODE_ERROR(9)
++#define EFI_NOT_FOUND             ENCODE_ERROR(14)
++#define EFI_ACCESS_DENIED         ENCODE_ERROR(15)
++#define EFI_ALREADY_STARTED       ENCODE_ERROR(20)
 +
-+#define TYPE_UEFI_VARS_SYSBUS "uefi-vars-sysbus"
-+OBJECT_DECLARE_SIMPLE_TYPE(uefi_vars_sysbus_state, UEFI_VARS_SYSBUS)
++#define EFI_VARIABLE_NON_VOLATILE                           0x01
++#define EFI_VARIABLE_BOOTSERVICE_ACCESS                     0x02
++#define EFI_VARIABLE_RUNTIME_ACCESS                         0x04
++#define EFI_VARIABLE_HARDWARE_ERROR_RECORD                  0x08
++#define EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS             0x10  // deprecated
++#define EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS  0x20
++#define EFI_VARIABLE_APPEND_WRITE                           0x40
 +
-+struct uefi_vars_sysbus_state {
-+    SysBusDevice parent_obj;
-+    struct uefi_vars_state state;
++/* SecureBootEnable */
++#define SECURE_BOOT_ENABLE         1
++#define SECURE_BOOT_DISABLE        0
++
++/* SecureBoot */
++#define SECURE_BOOT_MODE_ENABLE    1
++#define SECURE_BOOT_MODE_DISABLE   0
++
++/* CustomMode */
++#define CUSTOM_SECURE_BOOT_MODE    1
++#define STANDARD_SECURE_BOOT_MODE  0
++
++/* SetupMode */
++#define SETUP_MODE                 1
++#define USER_MODE                  0
++
++typedef uint64_t efi_status;
++typedef struct mm_header mm_header;
++
++/* EFI_MM_COMMUNICATE_HEADER */
++struct mm_header {
++    QemuUUID  guid;
++    uint64_t  length;
 +};
 +
-+static const VMStateDescription vmstate_uefi_vars_sysbus = {
-+    .name = "uefi-vars-sysbus",
-+    .fields = (VMStateField[]) {
-+        VMSTATE_STRUCT(state, uefi_vars_sysbus_state, 0,
-+                       vmstate_uefi_vars, uefi_vars_state),
-+        VMSTATE_END_OF_LIST()
-+    }
++/* --- EfiSmmVariableProtocol ---------------------------------------- */
++
++#define SMM_VARIABLE_FUNCTION_GET_VARIABLE            1
++#define SMM_VARIABLE_FUNCTION_GET_NEXT_VARIABLE_NAME  2
++#define SMM_VARIABLE_FUNCTION_SET_VARIABLE            3
++#define SMM_VARIABLE_FUNCTION_QUERY_VARIABLE_INFO     4
++#define SMM_VARIABLE_FUNCTION_READY_TO_BOOT           5
++#define SMM_VARIABLE_FUNCTION_EXIT_BOOT_SERVICE       6
++#define SMM_VARIABLE_FUNCTION_LOCK_VARIABLE           8
++#define SMM_VARIABLE_FUNCTION_GET_PAYLOAD_SIZE       11
++
++typedef struct mm_variable mm_variable;
++typedef struct mm_variable_access mm_variable_access;
++typedef struct mm_next_variable mm_next_variable;
++typedef struct mm_next_variable mm_lock_variable;
++typedef struct mm_variable_info mm_variable_info;
++typedef struct mm_get_payload_size mm_get_payload_size;
++
++/* SMM_VARIABLE_COMMUNICATE_HEADER */
++struct mm_variable {
++    uint64_t  function;
++    uint64_t  status;
 +};
 +
-+static Property uefi_vars_sysbus_properties[] = {
-+    DEFINE_PROP_SIZE("size", uefi_vars_sysbus_state, state.max_storage,
-+                     256 * 1024),
-+    DEFINE_PROP_STRING("jsonfile", uefi_vars_sysbus_state, state.jsonfile),
-+    DEFINE_PROP_END_OF_LIST(),
++/* SMM_VARIABLE_COMMUNICATE_ACCESS_VARIABLE */
++struct QEMU_PACKED mm_variable_access {
++    QemuUUID  guid;
++    uint64_t  data_size;
++    uint64_t  name_size;
++    uint32_t  attributes;
++    /* Name */
++    /* Data */
 +};
 +
-+static void uefi_vars_sysbus_init(Object *obj)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(obj);
-+
-+    uefi_vars_init(obj, &uv->state);
-+}
-+
-+static void uefi_vars_sysbus_reset(DeviceState *dev)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(dev);
-+
-+    uefi_vars_hard_reset(&uv->state);
-+}
-+
-+static void uefi_vars_sysbus_realize(DeviceState *dev, Error **errp)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(dev);
-+    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
-+
-+    sysbus_init_mmio(sysbus, &uv->state.mr);
-+    uefi_vars_realize(&uv->state, errp);
-+}
-+
-+static void uefi_vars_sysbus_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = uefi_vars_sysbus_realize;
-+    dc->reset = uefi_vars_sysbus_reset;
-+    dc->vmsd = &vmstate_uefi_vars_sysbus;
-+    device_class_set_props(dc, uefi_vars_sysbus_properties);
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+}
-+
-+static const TypeInfo uefi_vars_sysbus_info = {
-+    .name          = TYPE_UEFI_VARS_SYSBUS,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(uefi_vars_sysbus_state),
-+    .instance_init = uefi_vars_sysbus_init,
-+    .class_init    = uefi_vars_sysbus_class_init,
++/* SMM_VARIABLE_COMMUNICATE_GET_NEXT_VARIABLE_NAME */
++struct mm_next_variable {
++    QemuUUID  guid;
++    uint64_t  name_size;
++    /* Name */
 +};
-+module_obj(TYPE_UEFI_VARS_SYSBUS);
 +
-+static void uefi_vars_sysbus_register_types(void)
-+{
-+    type_register_static(&uefi_vars_sysbus_info);
-+}
++/* SMM_VARIABLE_COMMUNICATE_QUERY_VARIABLE_INFO */
++struct QEMU_PACKED mm_variable_info {
++    uint64_t max_storage_size;
++    uint64_t free_storage_size;
++    uint64_t max_variable_size;
++    uint32_t attributes;
++};
 +
-+type_init(uefi_vars_sysbus_register_types)
-diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
-index b620297320d0..dc363d67cccc 100644
---- a/hw/uefi/meson.build
-+++ b/hw/uefi/meson.build
-@@ -5,7 +5,8 @@ uefi_vars_ss.add(when: 'CONFIG_UEFI_VARS',
-                                 'var-service-vars.c',
-                                 'var-service-auth.c',
-                                 'var-service-guid.c',
--                                'var-service-policy.c'))
-+                                'var-service-policy.c',
-+                                'var-service-sysbus.c'))
- 
- modules += { 'hw-uefi' : {
-     'vars'     : uefi_vars_ss,
++/* SMM_VARIABLE_COMMUNICATE_GET_PAYLOAD_SIZE */
++struct mm_get_payload_size {
++    uint64_t  payload_size;
++};
++
++/* --- VarCheckPolicyLibMmiHandler ----------------------------------- */
++
++#define VAR_CHECK_POLICY_COMMAND_DISABLE     0x01
++#define VAR_CHECK_POLICY_COMMAND_IS_ENABLED  0x02
++#define VAR_CHECK_POLICY_COMMAND_REGISTER    0x03
++#define VAR_CHECK_POLICY_COMMAND_DUMP        0x04
++#define VAR_CHECK_POLICY_COMMAND_LOCK        0x05
++
++typedef struct mm_check_policy mm_check_policy;
++typedef struct mm_check_policy_is_enabled mm_check_policy_is_enabled;
++typedef struct mm_check_policy_dump_params mm_check_policy_dump_params;
++
++/* VAR_CHECK_POLICY_COMM_HEADER */
++struct QEMU_PACKED mm_check_policy {
++    uint32_t  signature;
++    uint32_t  revision;
++    uint32_t  command;
++    uint64_t  result;
++};
++
++/* VAR_CHECK_POLICY_COMM_IS_ENABLED_PARAMS */
++struct QEMU_PACKED mm_check_policy_is_enabled {
++    uint8_t   state;
++};
++
++/* VAR_CHECK_POLICY_COMM_DUMP_PARAMS */
++struct QEMU_PACKED mm_check_policy_dump_params {
++    uint32_t  page_requested;
++    uint32_t  total_size;
++    uint32_t  page_size;
++    uint8_t   has_more;
++};
++
++/* --- Edk2VariablePolicyProtocol ------------------------------------ */
++
++#define VARIABLE_POLICY_ENTRY_REVISION  0x00010000
++
++#define VARIABLE_POLICY_TYPE_NO_LOCK            0
++#define VARIABLE_POLICY_TYPE_LOCK_NOW           1
++#define VARIABLE_POLICY_TYPE_LOCK_ON_CREATE     2
++#define VARIABLE_POLICY_TYPE_LOCK_ON_VAR_STATE  3
++
++typedef struct variable_policy_entry variable_policy_entry;
++typedef struct variable_lock_on_var_state variable_lock_on_var_state;
++
++/* VARIABLE_POLICY_ENTRY */
++struct variable_policy_entry {
++    uint32_t      version;
++    uint16_t      size;
++    uint16_t      offset_to_name;
++    QemuUUID      namespace;
++    uint32_t      min_size;
++    uint32_t      max_size;
++    uint32_t      attributes_must_have;
++    uint32_t      attributes_cant_have;
++    uint8_t       lock_policy_type;
++    uint8_t       padding[3];
++    /* LockPolicy */
++    /* Name */
++};
++
++/* VARIABLE_LOCK_ON_VAR_STATE_POLICY */
++struct variable_lock_on_var_state {
++    QemuUUID      namespace;
++    uint8_t       value;
++    uint8_t       padding;
++    /* Name */
++};
++
++
++#endif /* QEMU_UEFI_VAR_SERVICE_EDK2_H */
 -- 
 2.41.0
 

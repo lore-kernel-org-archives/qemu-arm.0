@@ -1,160 +1,199 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3651542ejc;
-        Thu, 16 Nov 2023 09:28:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFaHEmMOPjUxA6XvX7F/TL1THNTZW+N4CXMlgMwi2ATc+WDTulxodmwZzG5oj9GJj2X/IrG
-X-Received: by 2002:a05:6214:b12:b0:672:aecf:581a with SMTP id u18-20020a0562140b1200b00672aecf581amr8568899qvj.47.1700155723959;
-        Thu, 16 Nov 2023 09:28:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700155723; cv=none;
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp29504ejb;
+        Thu, 16 Nov 2023 15:14:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEuo8gK+StHfMsu9fK6eeZ8t/Ra+0MQ/UcsGT66eyLKPDKIA1bH+EYuuyGW8VEotfrIHar8
+X-Received: by 2002:a05:622a:1c0b:b0:41e:23fc:a040 with SMTP id bq11-20020a05622a1c0b00b0041e23fca040mr10786449qtb.56.1700176484630;
+        Thu, 16 Nov 2023 15:14:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700176484; cv=none;
         d=google.com; s=arc-20160816;
-        b=QEHPFL4CMjKD0AE2WMWJxECzn6tpF6mYhdt00UQlYPOIEC7cq4kKj0UH8PyC5QqEe3
-         aOxviwPltV7iVEBQk9L2YVhxgPd1vke4SNdMJdMBLMiPSshEmor1ttvDg3lUExD19ikG
-         WdA0P7YY3DnMe8BdXkEbWkn8FKaD9uI2VmoEAI1fgTJCMEgyAU1AOdhiaZ21K10lbEXg
-         x1Q+AwwRch0L4dLRMDmMLeBXpA2yFk7aFTVmwafRIJUGVvuXkNjqOK4V9u2olRFNhof8
-         6FmFj9HHxRKVTp1aNf/7WPD7syW2sGs7seZ4MtYjey+XjWTkcqP5Eww+g1D7tizswape
-         Ud/g==
+        b=owfH63KfprCdcyGLE45gWjAMyhLgOqNuiCEQ8Q+KS72k79l6oI9JEBZtWijnyurXwi
+         2lbmb1DCBNwKSOattDHVAKEY09oZnkRVELh6XOqXcxnnwHwYT5sUXcaVn+D/pwmDY4CL
+         CFFlS2IF7815eCX/odBItSbdSfwcrwJKWy9KubRb0UxYnkFoZGryrswDfj/yB587BhrI
+         Y477dZmxbp0MWRTpDjnpaqrGlTJsCcoCrNY6JvMIh6PHzyG61RDtN8y7Gp9rpGyUVMz3
+         MC0MYv7KuSgL3FDbs3Z+RrhkWqNUJ8lUfrcDCUsXN0d9ThIss8hv8ca/iSUw0Qk7jpFh
+         AObQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AC/pq7elg+KPYfHSJloGfLwZZpYUAD8i0EJrt5jkPTw=;
-        fh=hODO14haDQRz/iNkzC9G0kz3DtSxOSoj1tffTWgri9M=;
-        b=jogUqbi7S/uxPCZORWdDd44OomzLExTXu6dQLgq8f4OGcBiM0M6RO7Of0Q1y9jn/Z3
-         cbI6MkheGOCYtmeJe7zcM4mmCrsfBoy5J6i/M3bLhUOH6O8PtYNK4CuJbSi/ztpSak0K
-         QSU29/CvNKr8ER+WInY0tkK8tjmAFOAHo0qLEpbLCjQU90phD2NVkjYtP039sMAU27Lh
-         t/tSAY6aB1hSyd51yIDh2uBXunuFeRb75+KJpEnzUooTPM5E0RQz5CAHefFuXs9UftMU
-         SrfkN6P6moJxfq87tA7/A36WCO0UuZSAir3r0Jzju3nq0CPNP126phfbpY6dRZC4KDXW
-         /hGg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=uhX49lsCrLvnu60dw4Rb1gmQVUOoYKUwb+Zbt/YIRWs=;
+        fh=a7pXOaTBsSHAOcDhqYGjai0RHNA6jEApxyxU387OqdQ=;
+        b=V91g0Mc8wwt774UNwkEQmNtKTxjIEJhIS4MWROqJw4lebw0g9TrMsNVEaUPXjcJH+Z
+         G3rORLD7rrNgn1ll4lQQXoJ9LHsQL1Wu8q0q/EaR2IHwAQtk9v5XJWlFy0oiJ9eU3d5q
+         SI07GhQqcuPsjZaFAHmlYeCjiqYG6wSiJhrMOk0R7Nn0uw9Z4pSC1c5Nh1cWrNMDOMiN
+         etF+x3lfIRIoCgh9Zm2oI5X5CI47gHk4iiml6WFUmS2ZW4ye4XURvv9pKBrJpcmEQhND
+         pTrOjaz9l04bPWksmKox4A8U8CUY6GjZuCHByPGx29j2u83DiY1tQxpZDiYWNLwAWscu
+         T/3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=YtUUsMZD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Abj9oAhq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18-20020a0cf752000000b0066d15c73fc0si11719258qvo.120.2023.11.16.09.28.43
+        by mx.google.com with ESMTPS id s1-20020a05622a018100b00421c7919ee1si427119qtw.370.2023.11.16.15.14.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 09:28:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Nov 2023 15:14:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codethink.co.uk header.s=imap4-20230908 header.b=YtUUsMZD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=REJECT sp=NONE dis=QUARANTINE) header.from=codethink.co.uk
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Abj9oAhq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3gAK-0008IN-NP; Thu, 16 Nov 2023 12:28:33 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r3lYj-0003mS-Hx; Thu, 16 Nov 2023 18:14:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <srv_ts003@codethink.com>)
- id 1r3gAI-0008Hi-Vc; Thu, 16 Nov 2023 12:28:30 -0500
-Received: from imap4.hz.codethink.co.uk ([188.40.203.114])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r3lYi-0003lk-FX
+ for qemu-devel@nongnu.org; Thu, 16 Nov 2023 18:14:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <srv_ts003@codethink.com>)
- id 1r3gAG-0002W9-SZ; Thu, 16 Nov 2023 12:28:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=codethink.co.uk; s=imap4-20230908; h=Sender:Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=AC/pq7elg+KPYfHSJloGfLwZZpYUAD8i0EJrt5jkPTw=; b=YtUUsMZDhOISieUPB55XfiW0is
- ZYyh2QIk/N2h4xNX2dwEJl4sqJrhlRIIDx6zI8xMSicyY/2Qn5jXwNfFL4LGWaVJ2+4DYAJTVzNUM
- 8krvnF1A4irPnH/x4x1KG3dTdRbqL3IQEKw4wSMugNBCm8W+1F2VfyILzbKCCYd+6fEPgsrNXB3iF
- aO7XCOkuAhsXlGAId672dSDO8o5S/t+8xG/bkSOPwoBEmoAgs57W7hDpOVkA76BrbRA3QCJLlXAix
- KrOZRxWkT1Oj/R/conISN4hB2uk4RURw2V5I9t/iuuWelyYn3uWj7EghcHfrsmAT5YrkeDxNBX7av
- DmnvIClw==;
-Received: from [167.98.27.226] (helo=rainbowdash)
- by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
- id 1r3gA8-000cbp-6v; Thu, 16 Nov 2023 17:28:21 +0000
-Received: from ben by rainbowdash with local (Exim 4.97)
- (envelope-from <ben@rainbowdash>) id 1r3gA8-00000003K8I-2w99;
- Thu, 16 Nov 2023 17:28:20 +0000
-From: Ben Dooks <ben.dooks@codethink.co.uk>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Ben Dooks <ben.dooks@codethink.co.uk>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2] hw/intc/arm_gicv3: ICC_PMR_EL1 high bits should be RAZ
-Date: Thu, 16 Nov 2023 17:28:18 +0000
-Message-Id: <20231116172818.792364-1-ben.dooks@codethink.co.uk>
-X-Mailer: git-send-email 2.37.2.352.g3c44437643
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r3lYf-0002d4-Fx
+ for qemu-devel@nongnu.org; Thu, 16 Nov 2023 18:14:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1700176440;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uhX49lsCrLvnu60dw4Rb1gmQVUOoYKUwb+Zbt/YIRWs=;
+ b=Abj9oAhqS4dKEjV3xbC+jD6DNhJex2A3sBki2r9VtvDFi3l9MqMhBihLBlHVyW7SH1ZwE1
+ ZHXz8kkJO4Hh87/1YV2rcF7GSRRB7U5g0ByfcJzfo/T6BDHFDlkq/Jflf1pAcBbt45UqTM
+ 5H2a+jFTd9PPAIleg7ehM4R81+2vUb8=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-687-6BohWB_KNJ-ov5j7TR0Vfg-1; Thu, 16 Nov 2023 18:13:58 -0500
+X-MC-Unique: 6BohWB_KNJ-ov5j7TR0Vfg-1
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-1ce5b6ec63cso4413155ad.3
+ for <qemu-devel@nongnu.org>; Thu, 16 Nov 2023 15:13:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700176437; x=1700781237;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=uhX49lsCrLvnu60dw4Rb1gmQVUOoYKUwb+Zbt/YIRWs=;
+ b=WZmbqj0MAPYNECxlqpTEmCngqaDDrc8BS9LwYTSOVxj8g6X/vDHrZxJQbe8VXcVByj
+ 46JIQlFWu776vtCRs0I1ZowxJdC5GORxShL6ajXw5LIx+rUQs/IVjGsyoitcwpbTQ6bg
+ eYMd32c9f55trgZjje7w0deHna1i7z59UJZ20LdadpP55Qq3RIkzw/lzyIrTIW6f9vTc
+ G34byTiKyHpw4HdUhA2ADjLvNIWHC9wF1H3OOLFUtKFmogd09r37AIPNsLQ6pP6HvMDj
+ yCcnrfA1F0LMJUkpSGFIuRdMH0O7F3IrqGHUCxnz9P0AF1y1omwiOTt7twRM4n2ffTEV
+ I7zw==
+X-Gm-Message-State: AOJu0YzxVtf4blbTirZELCoDDj9u/eS6Dk9vDvSkGmK0VMqiwV81IFP7
+ 7M4fWPx9AZk7EoncukSnQieNVJ4rfpBIsYeuvaor1fJT2DY9XtNwH+clYcNEH7un85NvsQ8irKt
+ vaK1abBt44YQOp4A=
+X-Received: by 2002:a17:902:f544:b0:1cc:4146:9eb0 with SMTP id
+ h4-20020a170902f54400b001cc41469eb0mr11890991plf.57.1700176437608; 
+ Thu, 16 Nov 2023 15:13:57 -0800 (PST)
+X-Received: by 2002:a17:902:f544:b0:1cc:4146:9eb0 with SMTP id
+ h4-20020a170902f54400b001cc41469eb0mr11890936plf.57.1700176437262; 
+ Thu, 16 Nov 2023 15:13:57 -0800 (PST)
+Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15?
+ ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
+ by smtp.gmail.com with ESMTPSA id
+ w20-20020a170902d71400b001c726147a45sm184151ply.190.2023.11.16.15.13.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Nov 2023 15:13:56 -0800 (PST)
+Message-ID: <41f9dd8e-eb57-47b6-b159-328024bc339d@redhat.com>
+Date: Fri, 17 Nov 2023 09:13:39 +1000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 03/31] cpu: Call object_class_dynamic_cast() once in
+ cpu_class_by_name()
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com,
+ kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
+ ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
+ jcmvbkbc@gmail.com, shan.gavin@gmail.com
+References: <20231114235628.534334-1-gshan@redhat.com>
+ <20231114235628.534334-4-gshan@redhat.com>
+ <d7a80e9e-9ffd-476c-ac98-a92838e11b5e@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <d7a80e9e-9ffd-476c-ac98-a92838e11b5e@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=188.40.203.114;
- envelope-from=srv_ts003@codethink.com; helo=imap4.hz.codethink.co.uk
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.117,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5Nffx8crfKnX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pfv/pe6ovyO7
 
-The ICC_PMR_ELx and ICV_PMR_ELx bit masks returned from
-ic{c,v}_fullprio_mask should technically also remove any
-bit above 7 as these are marked reserved (read 0) and should
-therefore should not be written as anything other than 0.
+Hi Phil,
 
-This was noted during a run of a proprietary test system and
-discused on the mailing list [1] and initially thought not to
-be an issue due to RES0 being technically allowed to be
-written to and read back as long as the implementation does
-not use the RES0 bits. It is very possible that the values
-are used in comparison without masking, as pointed out by
-Peter in [2], if (cs->hppi.prio >= cs->icc_pmr_el1) may well
-do the wrong thing.
+On 11/17/23 02:08, Philippe Mathieu-Daudé wrote:
+> On 15/11/23 00:56, Gavin Shan wrote:
+>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
+>> For all targets, the CPU class returned from CPUClass::class_by_name()
+>> and object_class_dynamic_cast(oc, CPU_RESOLVING_TYPE) need to be
+>> compatible. Lets apply the check in cpu_class_by_name() for once,
+>> instead of having the check in CPUClass::class_by_name() for individual
+>> target.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> 
+> Gavin, this patch is missing your S-o-b tag. Do you mind responding to
+> this email with it? Thanks!
+> 
 
-Masking these values in ic{c,v}_fullprio_mask() should fix
-this and prevent any future problems with playing with the
-values.
+Yes, please add my s-o-b if you need:
 
-[1]: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00607.html
-[2]: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00737.html
+Signed-off-by: Gavin Shan <gshan@redhat.com>
 
-Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
----
-v2:
- - fixes as suggested by Peter Maydell to include icv_fullprio_mask()
----
- hw/intc/arm_gicv3_cpuif.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks,
+Gavin
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index d07b13eb27..ab1a00508e 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -146,7 +146,7 @@ static uint32_t icv_fullprio_mask(GICv3CPUState *cs)
-      * with the group priority, whose mask depends on the value of VBPR
-      * for the interrupt group.)
-      */
--    return ~0U << (8 - cs->vpribits);
-+    return (~0U << (8 - cs->vpribits)) & 0xff;
- }
- 
- static int ich_highest_active_virt_prio(GICv3CPUState *cs)
-@@ -803,7 +803,7 @@ static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
-      * with the group priority, whose mask depends on the value of BPR
-      * for the interrupt group.)
-      */
--    return ~0U << (8 - cs->pribits);
-+    return (~0U << (8 - cs->pribits)) & 0xff;
- }
- 
- static inline int icc_min_bpr(GICv3CPUState *cs)
--- 
-2.37.2.352.g3c44437643
+>> ---
+>>   hw/core/cpu-common.c   | 8 +++++---
+>>   target/alpha/cpu.c     | 3 ---
+>>   target/arm/cpu.c       | 4 +---
+>>   target/avr/cpu.c       | 8 +-------
+>>   target/cris/cpu.c      | 4 +---
+>>   target/hexagon/cpu.c   | 4 +---
+>>   target/hppa/cpu.c      | 7 +------
+>>   target/loongarch/cpu.c | 8 +-------
+>>   target/m68k/cpu.c      | 4 +---
+>>   target/openrisc/cpu.c  | 4 +---
+>>   target/riscv/cpu.c     | 4 +---
+>>   target/tricore/cpu.c   | 4 +---
+>>   target/xtensa/cpu.c    | 4 +---
+>>   13 files changed, 16 insertions(+), 50 deletions(-)
+> 
 

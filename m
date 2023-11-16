@@ -1,111 +1,129 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3563853ejc;
-        Thu, 16 Nov 2023 07:24:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFSF5YSt/pw2AL/RNp0Dt/Nuc5VoOsXUAEbL2H3DpAnItf/ummHEZRNQefl2rNKyDtPt1Y9
-X-Received: by 2002:a05:620a:430a:b0:77b:9bf1:6526 with SMTP id u10-20020a05620a430a00b0077b9bf16526mr8237891qko.44.1700148253880;
-        Thu, 16 Nov 2023 07:24:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700148253; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3603495ejc;
+        Thu, 16 Nov 2023 08:21:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEavuWdtnVcpAQT97RodQiMqcjhQ2WQTGNMXo6kW9riCHnUGilWyrJR09ApoQsdOOPJsS0L
+X-Received: by 2002:a05:600c:35d2:b0:408:55f8:7de with SMTP id r18-20020a05600c35d200b0040855f807demr11611966wmq.28.1700151664319;
+        Thu, 16 Nov 2023 08:21:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700151664; cv=none;
         d=google.com; s=arc-20160816;
-        b=df48FMXWqjrCswQo+zBXinkFhouwG3guLyZQgOVWXP9/bJ/T5GACgcAWjhZKnB3Cky
-         HcNXRba0L1LeCO37mnTRj2cNuzpUW8GNlX6g5ZGZacraN+5V5rUs7KVN2SQUcTHLjILj
-         lBQUsFQpahG0/R0MdZc3HyB9Kf5YuXc/CDQGLzKfgPg8lZou2ECbUm9g9QaDURQiPCmX
-         FBO8QFPbOhqrdUoE2Hg/s10TvdixRBWTR/QdcxuelmpCSMMQbIVFwHj19MCkJ0WvYlr0
-         tQsdHEnqf3LgUIpJZ7iGgarvrFYvTfUl6sxcq0nMNqjPJgY050sSO6f7x9lhoCeSboQd
-         gvfQ==
+        b=NFfxr1tffrxRs3IXV9pM2lOSgUsW11DZN9X8w/sT+sXr5tgj/cdrpzSvtnHtBidUkG
+         vMd9c8DoTfsK+JiGQGbPI8/6+FuCossZZK33LuGq6dOwEj3X1sln4Ei5l1S+E3lo6jpR
+         fhfSdksp0PnyFasWZ0DwXJHknZlTzfOYAPu6Ucdm/cFyZbi52Xqpn0nvkTkBUDUz/HS3
+         aanyLiCKKfK/TwN0TkwRswTzbNMqIlrqrCZwYwUg8+DYH334ggCVCJ48DDH+D/AF0jIx
+         3Tw5D1av+OkT6TKkmg9IxDBPA702qH2KCgxkDNm9O1jqy30pzaRaiUyc3kBA/ES3piad
+         H/Rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :mime-version:date:message-id:dkim-signature;
-        bh=rMFovMmAZzuE9DyDNWbNcGOU9+nIkR+RL3127aCRJ1g=;
-        fh=WaOdKrDWYJFCjpd9XuplKfhY5PHSKebwZLQ9Fcuj1Yw=;
-        b=eFaSHbRLo6SBKzr9HaTF5ZGNjEhGb8imeEaWmLf4QNYWEnvO7rhPx4pXLTAnaS0/uL
-         /sjQrz3GdzMiIultLcLXfMILKmAIdo9QmOuqRHylGyT+91SswczGWHgU6mXiHXZizK6E
-         cHzYvT8pU6AnOkwZAo88CIJk8uN0QG+dORpcfIq11XcHR99fGwuz06y9fXu1FKFl98t4
-         ME+7Mm5Lb3v3PTCODvvv/Sin5WiDl7lr4AEXUB1dqcdMtM6gg1zr1I8NQh+tq9qlyTxR
-         ATJY9SaMgiPx8CZB6nCNTc8+HHxz8nd0KXnIweSQ62HO+z30gU9Kh+6sRA0sXABzTWVx
-         nkKQ==
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=zU0y/oNPBlXNKcCKBdzv6P0WXp12W1o/8xvu9k23CBM=;
+        fh=MNy/s+eWWV9V6tfmhb2gUwit/2o7TQkLbQD1zQm6hqY=;
+        b=uZcqn6lPKkcR+rbFLGj4eyShs3S70Ah1gKf/VeJj+ibeVaG92Cq1qn7x8zfBCr+UkW
+         XV/VhJJgPk7tG79QI9LcZ1I75FOefG+tkpQn6mHefwGEE0l7NyiDj+QIc/95BpFh+ta9
+         Me7hgRJHKWVXbrwsxflKeleCwjNYj63WBvLXKbP0Vt0Q6LlhMvghZOYEqfgmjUXlG9e7
+         TsS7SnLMdifJWQWiv6bgNk42wyIXOEtZsbLvXd1u7cAGTcgoG1o+0zsb5z4Ev+cebQot
+         sa4MN08bFTvuTBqMQ818gzFeyG6qIKjFrh12qT7ZTKuj1E2zifV17EnZ3C9VsTc24frs
+         ZCoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VkZ++OU6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Yy1gmrnT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8-20020a05620a424800b0076541ed7f95si10785816qko.9.2023.11.16.07.24.13
+        by mx.google.com with ESMTPS id p16-20020a05600c469000b00407774682e8si1531251wmo.13.2023.11.16.08.21.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 07:24:13 -0800 (PST)
+        Thu, 16 Nov 2023 08:21:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VkZ++OU6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Yy1gmrnT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3eDZ-0002LD-K7; Thu, 16 Nov 2023 10:23:45 -0500
+	id 1r3f6v-0006ob-PC; Thu, 16 Nov 2023 11:20:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r3eDY-0002Jw-9D
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 10:23:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r3eDU-0003W1-Kk
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 10:23:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700148219;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rMFovMmAZzuE9DyDNWbNcGOU9+nIkR+RL3127aCRJ1g=;
- b=VkZ++OU6r1eqPNW417CeTtrRkTZ2IN6BS2+6MQcsVDLgfFKocQQywUwkGlNAt3KEaIY+Lh
- vFNlEPpXSNyCtXQN2myjwUlkYU8j90CLsbU+w2sIOsL1QLfr6iNaYIEY85hltbbV26V4TY
- ++EtC4y6Ksdkt4+c8ZlFiWsdxQE4rqE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-519-40x4p16VOx6cXvHD0A6-CA-1; Thu, 16 Nov 2023 10:23:36 -0500
-X-MC-Unique: 40x4p16VOx6cXvHD0A6-CA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6787F101A54C;
- Thu, 16 Nov 2023 15:23:35 +0000 (UTC)
-Received: from [10.39.193.151] (unknown [10.39.193.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 53AA11C060AE;
- Thu, 16 Nov 2023 15:23:33 +0000 (UTC)
-Message-ID: <177badae-dcde-947e-0a28-03b6dfb2f55d@redhat.com>
-Date: Thu, 16 Nov 2023 16:23:32 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3f6u-0006ns-Pj
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 11:20:56 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3f6s-0000rQ-Jk
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 11:20:56 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-32da9ef390fso723514f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 08:20:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1700151652; x=1700756452; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zU0y/oNPBlXNKcCKBdzv6P0WXp12W1o/8xvu9k23CBM=;
+ b=Yy1gmrnTty4pzUgP3ZdAa1oMxBGi1bqVzDsHmJl5UFZ2Rok+U8jpv9Ett2KIB8HF7A
+ L4i1MCOxY3j6PnqhQWVGcaIFoWU2e32C3NSLV/MaMVU/PV7DZKjjdyxQveC8upITwB67
+ x+4HWz8/E29LyighsVyFbxQZj8EW0cY5dE9jbw/o9iN4vxVfQFloLVO1hWhx6wuNwc0X
+ 1Uqff6RwuzmfZZvfABVLEAoq36yFjugYsCC3Qx9f2YxgedNa65f6YNGSXGEwxs/hxvpR
+ +cMeywP2QNHJpk/7uMNKEE8ct0PFSPMdc2tbvu1oZwQAzo1/0580kytjKbmyw0tDcQsI
+ Mydg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700151652; x=1700756452;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=zU0y/oNPBlXNKcCKBdzv6P0WXp12W1o/8xvu9k23CBM=;
+ b=a01NdzXyPaxQcT/kGYEeWTYip1jkNXpQqWlBc2ZDjQrr6bmNweG3C62C1i5q1+J2b6
+ Zn2z/m9xApxN6Jy6uLHXPvmgU7CuPpJILepgyNbOtw5XKIadwXsdCEg5auz0bfe6SxMb
+ O3jNIcL98Dfcss5TT95Dc930IuR+7+N0uecDdlv0ndqxMMJL2fPVwcEcIKL7R2lxouIE
+ QZ0rA3uj0V24ucjNeA+ciyVoHTWDmtniqLjTkuYhgLyjlZO6IugK1s1GjKdJJaZdZYH5
+ aB2Ss+rs5TrzFqVKTmV//SfbtoOhpb6mbNaqhhIhjLgbLKxfaInQH8/z7x+9EYNahiKz
+ lhdg==
+X-Gm-Message-State: AOJu0YzZtIeblbbfariH0kYkXoFZjF2vs53QdqiNlYMNinSu4oEZhg4K
+ CW59C6qMYZ6Mt8YY2AoxyDQEcQ==
+X-Received: by 2002:a05:6000:1845:b0:32f:7fb0:de13 with SMTP id
+ c5-20020a056000184500b0032f7fb0de13mr12173865wri.5.1700151652383; 
+ Thu, 16 Nov 2023 08:20:52 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.220.205])
+ by smtp.gmail.com with ESMTPSA id
+ d16-20020adfe850000000b0032fb17c65desm14099905wrn.19.2023.11.16.08.20.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Nov 2023 08:20:51 -0800 (PST)
+Message-ID: <78526851-6d44-4c18-97b8-57462fb42ab7@linaro.org>
+Date: Thu, 16 Nov 2023 17:20:48 +0100
 MIME-Version: 1.0
-Subject: Re: [PATCH 02/16] hw/uefi: add include/hw/uefi/var-service-edk2.h
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 00/31] Unified CPU type check
 Content-Language: en-US
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, graf@amazon.com,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-References: <20231115151242.184645-1-kraxel@redhat.com>
- <20231115151242.184645-3-kraxel@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-In-Reply-To: <20231115151242.184645-3-kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
+ pbonzini@redhat.com, peter.maydell@linaro.org, imammedo@redhat.com,
+ b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com,
+ kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
+ laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
+ edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
+ aurelien@aurel32.net, jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
+ ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
+ jcmvbkbc@gmail.com, shan.gavin@gmail.com
+References: <20231114235628.534334-1-gshan@redhat.com>
+ <efc49f7b-70f5-4ce9-8179-79e8a6abd732@linaro.org>
+In-Reply-To: <efc49f7b-70f5-4ce9-8179-79e8a6abd732@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.117,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,376 +139,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oD3VqF0Pa11S
+X-TUID: qOf7hjOJjyUE
 
-On 11/15/23 16:12, Gerd Hoffmann wrote:
-> A bunch of #defines and structs copied over from edk2,
-> mostly needed to decode and encode the messages in the
-> communication buffer.
+On 16/11/23 14:35, Philippe Mathieu-Daudé wrote:
+> Hi Gavin,
 > 
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  include/hw/uefi/var-service-edk2.h | 184 +++++++++++++++++++++++++++++
->  1 file changed, 184 insertions(+)
->  create mode 100644 include/hw/uefi/var-service-edk2.h
+> On 15/11/23 00:55, Gavin Shan wrote:
+>> There are two places where the user specified CPU type is checked to see
+>> if it's supported or allowed by the board: machine_run_board_init() and
+>> mc->init(). We don't have to maintain two duplicate sets of logic. This
+>> series intends to move the check to machine_run_board_init() so that we
+>> have unified CPU type check.
 > 
-> diff --git a/include/hw/uefi/var-service-edk2.h b/include/hw/uefi/var-service-edk2.h
-> new file mode 100644
-> index 000000000000..354b74d1d71c
-> --- /dev/null
-> +++ b/include/hw/uefi/var-service-edk2.h
-> @@ -0,0 +1,184 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * uefi-vars device - structs and defines from edk2
-> + *
-> + * Note: The edk2 UINTN type has been mapped to uint64_t,
-> + *       so the structs are compatible with 64bit edk2 builds.
-
-(1) What is the failure mode if the guest runs a 32-bit DXE phase and
-tries to access this device?
-
-> + */
-> +#ifndef QEMU_UEFI_VAR_SERVICE_EDK2_H
-> +#define QEMU_UEFI_VAR_SERVICE_EDK2_H
-> +
-> +#include "qemu/uuid.h"
-> +
-> +#define MAX_BIT                   0x8000000000000000ULL
-> +#define ENCODE_ERROR(StatusCode)  (MAX_BIT | (StatusCode))
-> +#define EFI_SUCCESS               0
-
-(2) Probably better to make this 0ULL, so that its type is consistent
-with that of the error codes.
-
-(3) BTW, these error codes are not edk2-specific; they are from the UEFI
-spec (Appendix D, "Status Codes"). I'm mentioning it because it might
-clarify the commit message.
-
-> +#define EFI_INVALID_PARAMETER     ENCODE_ERROR(2)
-> +#define EFI_UNSUPPORTED           ENCODE_ERROR(3)
-> +#define EFI_BAD_BUFFER_SIZE       ENCODE_ERROR(4)
-> +#define EFI_BUFFER_TOO_SMALL      ENCODE_ERROR(5)
-
-(4) any particular reason for skipping NOT_READY (6) and DEVICE_ERROR (7)?
-
-(If this file only defines status codes that the code actually uses,
-that's best!)
-
-> +#define EFI_WRITE_PROTECTED       ENCODE_ERROR(8)
-> +#define EFI_OUT_OF_RESOURCES      ENCODE_ERROR(9)
-> +#define EFI_NOT_FOUND             ENCODE_ERROR(14)
-> +#define EFI_ACCESS_DENIED         ENCODE_ERROR(15)
-> +#define EFI_ALREADY_STARTED       ENCODE_ERROR(20)
-> +
-> +#define EFI_VARIABLE_NON_VOLATILE                           0x01
-> +#define EFI_VARIABLE_BOOTSERVICE_ACCESS                     0x02
-> +#define EFI_VARIABLE_RUNTIME_ACCESS                         0x04
-> +#define EFI_VARIABLE_HARDWARE_ERROR_RECORD                  0x08
-> +#define EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS             0x10  // deprecated
-> +#define EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS  0x20
-> +#define EFI_VARIABLE_APPEND_WRITE                           0x40
-> +
-> +/* SecureBootEnable */
-
-(5) L"SecureBootEnable"
-
-(6) mentioning the variable namespace GUID might be worthwhile as well
-(gEfiSecureBootEnableDisableGuid -- F0A30BC7-AF08-4556-99C4-001009C93A44)
-
-(7) this variable is an edk2 extension indeed; might be worth mentioning
-
-> +#define SECURE_BOOT_ENABLE         1
-> +#define SECURE_BOOT_DISABLE        0
-> +
-> +/* SecureBoot */
-
-(8) L"SecureBoot"
-
-(9) this one is standard, so the namespace GUID is not important to
-mention -- but maybe mention that it is standard
-
-> +#define SECURE_BOOT_MODE_ENABLE    1
-> +#define SECURE_BOOT_MODE_DISABLE   0
-> +
-> +/* CustomMode */
-
-the usual comments:
-
-(10) L"CustomMode"
-
-(11) GUID: gEfiCustomModeEnableGuid -- C076EC0C-7028-4399-A072-71EE5C448B9F
-
-(12) edk2 extension
-
-> +#define CUSTOM_SECURE_BOOT_MODE    1
-> +#define STANDARD_SECURE_BOOT_MODE  0
-> +
-> +/* SetupMode */
-
-(13) L"SetupMode"
-
-(14) standard
-
-> +#define SETUP_MODE                 1
-> +#define USER_MODE                  0
-> +
-> +typedef uint64_t efi_status;
-> +typedef struct mm_header mm_header;
-> +
-> +/* EFI_MM_COMMUNICATE_HEADER */
-> +struct mm_header {
-> +    QemuUUID  guid;
-> +    uint64_t  length;
-> +};
-
-(15) QEMU_PACKED
-
-> +
-> +/* --- EfiSmmVariableProtocol ---------------------------------------- */
-
-(16) this is a bit too cryptic like this; what we mean here is that
-mm_header.guid is gEfiSmmVariableProtocolGuid
-(ED32D533-99E6-4209-9CC0-2D72CDD998A7) for the following functions
-
-(17) do you want to define SMM_VARIABLE_COMMUNICATE_HEADER as well?
-(because the function codes make sense inside that header) -- ah wait,
-those are below; OK
-
-(18) slight inconsistency: the function macros are named SMM_*, but the
-types are named mm_*.
-
-However... that inconsistency seems to be there in edk2 to as well; we
-don't have (for example) "MM_VARIABLE_FUNCTION_GET_VARIABLE"
-
-> +
-> +#define SMM_VARIABLE_FUNCTION_GET_VARIABLE            1
-> +#define SMM_VARIABLE_FUNCTION_GET_NEXT_VARIABLE_NAME  2
-> +#define SMM_VARIABLE_FUNCTION_SET_VARIABLE            3
-> +#define SMM_VARIABLE_FUNCTION_QUERY_VARIABLE_INFO     4
-> +#define SMM_VARIABLE_FUNCTION_READY_TO_BOOT           5
-> +#define SMM_VARIABLE_FUNCTION_EXIT_BOOT_SERVICE       6
-> +#define SMM_VARIABLE_FUNCTION_LOCK_VARIABLE           8
-> +#define SMM_VARIABLE_FUNCTION_GET_PAYLOAD_SIZE       11
-> +
-> +typedef struct mm_variable mm_variable;
-> +typedef struct mm_variable_access mm_variable_access;
-> +typedef struct mm_next_variable mm_next_variable;
-> +typedef struct mm_next_variable mm_lock_variable;
-> +typedef struct mm_variable_info mm_variable_info;
-> +typedef struct mm_get_payload_size mm_get_payload_size;
-> +
-> +/* SMM_VARIABLE_COMMUNICATE_HEADER */
-> +struct mm_variable {
-> +    uint64_t  function;
-> +    uint64_t  status;
-> +};
-
-(19) you have a typedef for efi_status above; no need to decode it to
-uint64_t here (for the status field)
-
-(20) This too should be QEMU_PACKED. (Will not make a difference in
-practice, but this is wire protocol, so best be clear.)
-
-BTW I'm just noticing that SMM_VARIABLE_COMMUNICATE_HEADER in edk2's
-"MdeModulePkg/Include/Guid/SmmVariableCommon.h" is *not* marked packed.
-That's a bug in edk2, of course (documentation bug).
-
-(21) a comment about the general request structure would be helpful:
-mm_header + mm_variable + function payload (any).
-
-> +
-> +/* SMM_VARIABLE_COMMUNICATE_ACCESS_VARIABLE */
-
-(22) worth mentioning functions 1 and 3?
-
-> +struct QEMU_PACKED mm_variable_access {
-
-I can see you packed this! :)
-
-> +    QemuUUID  guid;
-> +    uint64_t  data_size;
-
-correct, but we'll have to be careful with the range checks / buffer
-size checks later, because UEFI_VARS_REG_BUFFER_SIZE is only 32-bit!
-
-> +    uint64_t  name_size;
-> +    uint32_t  attributes;
-> +    /* Name */
-> +    /* Data */
-> +};
-> +
-> +/* SMM_VARIABLE_COMMUNICATE_GET_NEXT_VARIABLE_NAME */
-
-(23) worth mentioning function 2, or is that obvious from the name?
-
-> +struct mm_next_variable {
-> +    QemuUUID  guid;
-> +    uint64_t  name_size;
-> +    /* Name */
-> +};
-
-(24) should be packed
-
-> +
-> +/* SMM_VARIABLE_COMMUNICATE_QUERY_VARIABLE_INFO */
-> +struct QEMU_PACKED mm_variable_info {
-> +    uint64_t max_storage_size;
-> +    uint64_t free_storage_size;
-> +    uint64_t max_variable_size;
-> +    uint32_t attributes;
-> +};
-
-(25) mention function 4?
-
-> +
-> +/* SMM_VARIABLE_COMMUNICATE_GET_PAYLOAD_SIZE */
-
-(26) mention function 11?
-
-> +struct mm_get_payload_size {
-> +    uint64_t  payload_size;
-> +};
-
-(27) should be packed (just for documentation / exluding trailing padding)
-
-> +
-> +/* --- VarCheckPolicyLibMmiHandler ----------------------------------- */
-
-(28) Please be clearer: this means that we place GUID
-DA1B0D11-D1A7-46C4-9DC9-F3714875C6EB into mm_header.guid.
-
-(29) Also record that the generic structure is mm_header +
-mm_check_policy + command payload (if any).
-
-> +
-> +#define VAR_CHECK_POLICY_COMMAND_DISABLE     0x01
-> +#define VAR_CHECK_POLICY_COMMAND_IS_ENABLED  0x02
-> +#define VAR_CHECK_POLICY_COMMAND_REGISTER    0x03
-> +#define VAR_CHECK_POLICY_COMMAND_DUMP        0x04
-> +#define VAR_CHECK_POLICY_COMMAND_LOCK        0x05
-> +
-> +typedef struct mm_check_policy mm_check_policy;
-> +typedef struct mm_check_policy_is_enabled mm_check_policy_is_enabled;
-> +typedef struct mm_check_policy_dump_params mm_check_policy_dump_params;
-> +
-> +/* VAR_CHECK_POLICY_COMM_HEADER */
-> +struct QEMU_PACKED mm_check_policy {
-> +    uint32_t  signature;
-> +    uint32_t  revision;
-> +    uint32_t  command;
-> +    uint64_t  result;
-
-(30) field "result" should have "efi_status"
-
-(31) define the macros for (a) signature (VCPC) and (b) revision (1)?
-
-> +};
-> +
-> +/* VAR_CHECK_POLICY_COMM_IS_ENABLED_PARAMS */
-
-(32) mention command 2? (Just guessing)
-
-> +struct QEMU_PACKED mm_check_policy_is_enabled {
-> +    uint8_t   state;
-> +};
-
-(33) given that this is a "BOOLEAN" in the original, we might want to
-introduce a typedef "edk2_boolean" for uint8_t. Just an idea.
-
-> +
-> +/* VAR_CHECK_POLICY_COMM_DUMP_PARAMS */
-
-(34) mention command 4?
-
-> +struct QEMU_PACKED mm_check_policy_dump_params {
-> +    uint32_t  page_requested;
-> +    uint32_t  total_size;
-> +    uint32_t  page_size;
-> +    uint8_t   has_more;
-
-(35) consider updating the last field's type to "edk2_boolean".
-
-> +};
-> +
-> +/* --- Edk2VariablePolicyProtocol ------------------------------------ */
-
-(36) the proper spelling is "EdkiiVariablePolicyProtocol" (note: roman
-numeral "ii" rather than arabic numeral 2)
-
-(37) Mentioning this protocol here is confusing, IMO. Please correct me
-if I'm wrong, but the protocol appears to be used between DXE
-components, and not on the DXE<->SMM boundary.
-
-Instead, we need the following ABIs as payloads for
-VAR_CHECK_POLICY_COMMAND_REGISTER.
-
-Therefore I would remove the EdkiiVariablePolicyProtocol mention above
-altogether, and instead clarify that these are for:
-
-- mm_header + mm_check_policy (command 3) + variable_policy_entry,
-  or
-
-- mm_header + mm_check_policy (command 3) +
-  variable_policy_entry (policy 3) + variable_lock_on_var_state
-
-> +
-> +#define VARIABLE_POLICY_ENTRY_REVISION  0x00010000
-> +
-> +#define VARIABLE_POLICY_TYPE_NO_LOCK            0
-> +#define VARIABLE_POLICY_TYPE_LOCK_NOW           1
-> +#define VARIABLE_POLICY_TYPE_LOCK_ON_CREATE     2
-> +#define VARIABLE_POLICY_TYPE_LOCK_ON_VAR_STATE  3
-> +
-> +typedef struct variable_policy_entry variable_policy_entry;
-> +typedef struct variable_lock_on_var_state variable_lock_on_var_state;
-> +
-> +/* VARIABLE_POLICY_ENTRY */
-> +struct variable_policy_entry {
-
-(38) should be packed
-
-> +    uint32_t      version;
-> +    uint16_t      size;
-> +    uint16_t      offset_to_name;
-> +    QemuUUID      namespace;
-> +    uint32_t      min_size;
-> +    uint32_t      max_size;
-
-(39) also define the macros for "no min size" and "no max size"?
-
-> +    uint32_t      attributes_must_have;
-> +    uint32_t      attributes_cant_have;
-
-(40) define the macros that invalidate these fields?
-
-> +    uint8_t       lock_policy_type;
-> +    uint8_t       padding[3];
-> +    /* LockPolicy */
-> +    /* Name */
-> +};
-> +
-> +/* VARIABLE_LOCK_ON_VAR_STATE_POLICY */
-> +struct variable_lock_on_var_state {
-
-(41) should be packed
-
-> +    QemuUUID      namespace;
-> +    uint8_t       value;
-> +    uint8_t       padding;
-> +    /* Name */
-
-(42) probably worth mentioning the link
-
-https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Library/VariablePolicyLib/ReadMe.md
-
-around these parts too, not just in patch 8.
-
-> +};
-> +
-> +
-> +#endif /* QEMU_UEFI_VAR_SERVICE_EDK2_H */
-
-Laszlo
-
+> 
+>> Gavin Shan (30):
+>>    target/alpha: Remove 'ev67' CPU class
+>>    target/hppa: Remove object_class_is_abstract()
+>>    target: Remove 'oc == NULL' check
+>>    cpu: Add helper cpu_model_from_type()
+>>    cpu: Add generic cpu_list()
+>>    target/alpha: Use generic cpu_list()
+>>    target/arm: Use generic cpu_list()
+>>    target/avr: Use generic cpu_list()
+>>    target/cris: Use generic cpu_list()
+>>    target/hexagon: Use generic cpu_list()
+>>    target/hppa: Use generic cpu_list()
+>>    target/loongarch: Use generic cpu_list()
+>>    target/m68k: Use generic cpu_list()
+>>    target/mips: Use generic cpu_list()
+>>    target/openrisc: Use generic cpu_list()
+>>    target/riscv: Use generic cpu_list()
+>>    target/rx: Use generic cpu_list()
+>>    target/sh4: Use generic cpu_list()
+>>    target/tricore: Use generic cpu_list()
+>>    target/xtensa: Use generic cpu_list()
+>>    target: Use generic cpu_model_from_type()
+>>    machine: Constify MachineClass::valid_cpu_types[i]
+> 
+> I'm queuing patches 1-3 & 5-23 to my cpus-next tree. No need to
+> repost them, please base them on my tree. I'll follow up with the
+> branch link when I finish my testing and push it.
+
+Here are these patches queued:
+
+   https://github.com/philmd/qemu.git branches/cpus-next
+
+I might queue more patches before the 9.0 merge window opens.
+
+Regards,
+
+Phil.

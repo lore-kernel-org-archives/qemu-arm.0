@@ -1,111 +1,102 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3606501ejc;
-        Thu, 16 Nov 2023 08:25:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGXv+YRpY84+TxbR3/lFIbIrSRtMX7ifMUZCGJqEVsSTDiRjAXM0kR5BmsKa8Lcz4+lthcl
-X-Received: by 2002:a05:620a:d52:b0:77b:c398:34b5 with SMTP id o18-20020a05620a0d5200b0077bc39834b5mr9173682qkl.66.1700151939663;
-        Thu, 16 Nov 2023 08:25:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700151939; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3615501ejc;
+        Thu, 16 Nov 2023 08:38:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFGm/fj6PbqWc7BGnUSWbp63R1VgTjcs82CMb3sppPt80kiPHDEFEA1tJfz3VZZXWp+gPtu
+X-Received: by 2002:a05:6214:1649:b0:66f:ba8f:39a9 with SMTP id f9-20020a056214164900b0066fba8f39a9mr10198977qvw.8.1700152704016;
+        Thu, 16 Nov 2023 08:38:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700152704; cv=none;
         d=google.com; s=arc-20160816;
-        b=EScI+IbdfmNf2Xzba3RyhXtEg+g/s/kgWAJhlQiRXOiCzF1SuRI7KlYTQvJpSerMPj
-         C/w5y9vsI5MgILx0gbXw2Kb/HR9LD888y2uWp+/UyvO5e4EPOHO+ZRo/gOpN5BgOhn86
-         UZ8vfYSTDJMqffrhqaM6LaKYZ8EHGX6v+40MuNs/Ij/K0vfZvHUDRSZjwJaHBdGSN810
-         Y3wqBrs3tFACqXm3SgZCspUyYd51hI205/IgXAxZca0c3guEX6sE38MJUBc3Jg2Iwbni
-         MFtC23JLpRVuaaZSfGyWdj1j081ggZ43dVmxeefDC5diLY5FUO8lVTPFp8d1dApS8rQr
-         Fm2A==
+        b=RhFt0blHSa7R0ppg3u5Mfej1vHzpAZDCqoKbHM3q1BB5VCisUKdtdWmIXFCzGFw9HU
+         o23qAmo3tmcgLkSD/wAReTZQoCPcQBpNl3yJkNYPulRTgcX6V2UxS/Sq/cqUo20XWIDD
+         teduTjJRzs6H3IM7VozxAhOLR7TQFKqr2qE+HMjdTVlbQBCXCdSV8MF2ctl7zhdAX8UI
+         Xuqv2/IzV5+9jnv7UjaO5NiHxcnKCxWX1wzA91P1fZ3XWEfdvjK36E2LRyBiiA9kSEit
+         HfcopDUUAbQKPmsFWDQ9klkRE8s7ZELEMGOVHGrrZWRE3Y8CE4uejmrRGYl9/CpbAlqx
+         WGKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=bkbUHelvEVfyi281Puw91VQq2VTw+7wRvwEQdRJirao=;
-        fh=CV6llBq4//VoeFp1HCdggqhzJTJrYKmxPD7pkeqpGUc=;
-        b=Z3xQV3OeHe+vvnAnojjs+Q2E7xpl43zcI5ZcNkLcXEjpR3rGtvgb4EOQIGJS/Jh8fd
-         qbYSJSDsBvrc8WVtcYcIz55v8dak4eG3glTAC5gNZCYqbGueTmlELOVS5pYNi7gS3oG/
-         wNfcD4zc1EDwFe4EdzqWBtfZyr23ISGNH0OfpqOkQM0Iy+xGzvljku4UAk7uuazykuEF
-         WNu5b6ZZH47wZtDmCCjxzcHJ4NqI+go2LXXkfhxfxhgwrKLCEz2YNfsRSTGt104hBfUG
-         dexme7khnIhAqcbAb1Rz4VCBrlZiflUou2Xsc4cxL0gTlwSVeqcrfrnJe1wehgllkFlY
-         hjlg==
+        bh=ktGhejA0i54v/J4kYe0bRHlQH8aSFbAJWN6VW2Ab7ws=;
+        fh=c9e8ZdZT8wwMBwRGuaC0xkbztqutrDCy/JBNLaqw0pY=;
+        b=VK76DHXUxo8nd0dccPDPbLAO0kat+v27GR31t8zoyHpZrCki5AE0mLhIf52bGMYlgc
+         kQBclgx0mkPTTr/vqF8TALDCDgvN7JhUOlEJT7bO+8iTTL1yG23hWf+giMkv95rwxJFl
+         dqLk7SklssOx6AKV3iJvgbTAL/yy/ck9hqszP+0Vb5iwsrOuOuuL+u6OcJgeywzEPVVd
+         awaS1ca08lE8TcGKYIub6VV5pbdACRz58YVWQcJQEMt0swFGDJvmsYGhOg0WhII2wjY4
+         Bu/L3Zk/ENuUEbMXMrpqqprO7WpjPVsYaOLsYpiTWk/36nv+9sZ71UqZwY3uFy5cDlQB
+         vsYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KiB8HKsu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NOfmTgVc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u17-20020ae9c011000000b0076dae328b6fsi11309866qkk.109.2023.11.16.08.25.39
+        by mx.google.com with ESMTPS id qb8-20020ad44708000000b00670de8563e9si11219689qvb.444.2023.11.16.08.38.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 08:25:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Nov 2023 08:38:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KiB8HKsu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NOfmTgVc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r3fB9-0001AF-UQ; Thu, 16 Nov 2023 11:25:19 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r3fNc-0005bY-4A; Thu, 16 Nov 2023 11:38:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r3fB8-00016E-AJ
- for qemu-devel@nongnu.org; Thu, 16 Nov 2023 11:25:18 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1r3fNa-0005SG-5I
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 11:38:10 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r3fB6-00033V-7w
- for qemu-devel@nongnu.org; Thu, 16 Nov 2023 11:25:17 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5409bc907edso1475199a12.0
- for <qemu-devel@nongnu.org>; Thu, 16 Nov 2023 08:25:12 -0800 (PST)
+ id 1r3fNY-0006EX-AP
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 11:38:09 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-9becde9ea7bso442748566b.0
+ for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 08:38:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700151911; x=1700756711; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700152687; x=1700757487; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bkbUHelvEVfyi281Puw91VQq2VTw+7wRvwEQdRJirao=;
- b=KiB8HKsujsFA+WpMbhIxv5pQqMO6bYLzOm3+PnUs/TECknZRZhLsKlihObAfRzb4Rq
- YM+v+4JjAwI3N8Eto+mvK8rmDOOKYXLBsNgjRsyH6ct1ePwa5UFGgzohgoyWXYdUHsbb
- XtXXAklhCypMvP+huuZKTGtSUCK/ngRi01R2DK46uYNfN+USrcZ4EKe+BOqgJQv5UpFO
- FxHqbBBlkZ1FTSbUqU0pZbkzCi1zJEOqUEvgiVq+T5hwQBWaNxEITnxTr+UVog1zPNTK
- 4NybzFQLsvOjypsc0H9Pj/uhFziibwCv1ShKyrfE6FuX4Lyiox9VP3LUKcvjxooNCaWE
- RqKg==
+ bh=ktGhejA0i54v/J4kYe0bRHlQH8aSFbAJWN6VW2Ab7ws=;
+ b=NOfmTgVcU8feKjQMn7/mvAQWrZfgpsNhw21u+VT+tfZ+DFfe1bxLUjDZs55az8KFrT
+ pMcwN9rx4zmLKSaXV5P+sI4RMBIxHGAxdceGC1eK94nqAqo0w0ctIGSk4zxsvTnlXjE9
+ 4aVoh94q6UVUiMh1IiOkkbPHDknkddgVuoFMvX3PcUgzr5xz/vJDSwGU/YrR++e5jDQt
+ 9x4RRt4XNJgnlbfANOd9/3g+i6U4y3gGZ36qeAGM99hAcJ8QyKo48T4rnH0+g0cc2i5j
+ 83rALjb2+qVqRRV5QfNcJaEYdRt4po3PLsm9W+xomsmGZR6X6M6A/LKqnu7tFxZ1cItn
+ fkOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700151911; x=1700756711;
+ d=1e100.net; s=20230601; t=1700152687; x=1700757487;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=bkbUHelvEVfyi281Puw91VQq2VTw+7wRvwEQdRJirao=;
- b=iq3R4Fo7Y8+bk2CAAl8jqp3+N/0W/hqJh9QtQrmLr3pKeDE+Xqoy9TMdutIj4Uzhlt
- +YswGtxFeGH+uoORStBGdGeKWyx08hTOOiTcM8BYuVY8VPfd4txOVEL3V7y7QPw419RX
- +SPGknOvR3ggLa52VYRf0culP5L80NbFOt+W5it/DyI31T8/H9T5TkQlFGAU8p+ThcKC
- ffcF2tTBuyF1vtjwfobTVEWSPsXA4AFT37U2D4P9lCa9HLufcq0P2YQJ3pRnCUUvNhex
- v4k79VIA+YtiyaQt6nb6fYZJg+v6RGeL8vVdu0Wc98488Tj5wi00SCWZmth7D2oOeQ+O
- kpKA==
-X-Gm-Message-State: AOJu0Ywb/jJdMJTeqmSV29276OvTTvivhiSrhTxAXXG3/jRo6vruF/ja
- 5wQL7xwim+Bw7Cjw0JA9Gp5BTnLRxXzGT/BW9b4sfQ==
-X-Received: by 2002:aa7:c759:0:b0:543:5a91:a8b2 with SMTP id
- c25-20020aa7c759000000b005435a91a8b2mr12902665eds.19.1700151911080; Thu, 16
- Nov 2023 08:25:11 -0800 (PST)
+ bh=ktGhejA0i54v/J4kYe0bRHlQH8aSFbAJWN6VW2Ab7ws=;
+ b=LUD7AU5a3kLng2q1UqnQQHwHqLYK7/4BBz+Z5D1NxlUhLlYKVoEypBMU+kPJWgfrKc
+ FrqS6nGymS6W5vWFNmkzy1z+hgvLA1YfPqmHDASTdGUV5+IsZiqULLFiD33rJT6HYLDi
+ GY0oQpYsrJ0hYIKcfpqQTlZS7EAf74m/WGGGGAWwF7WotPJTsCHTEC+3aY9mk2XLAxq/
+ XBkF2QtxjGWMdiVOAeb2f7F+2Jjyr+OEwprx2HnsDZ922NGlG+v/5d2KY75wkld4gdNh
+ ZwUmlwKDPFWk7NLS+6oIkoka0LoSg/UOwVfaInZe9zNwa0XXMeHQvdU70DzFmtPBNTer
+ HAsQ==
+X-Gm-Message-State: AOJu0YyQQ6gxyoJ/ti0lk1qqnIm+diyIlCnzStmEeLIOuMjTjeoNC/5B
+ RLjF3/diB+TlDlwiTPyo9IETeOj/QxFMFV7yKIVy2Q==
+X-Received: by 2002:a17:906:4b42:b0:9dd:b919:79bf with SMTP id
+ j2-20020a1709064b4200b009ddb91979bfmr1886337ejv.36.1700152686797; Thu, 16 Nov
+ 2023 08:38:06 -0800 (PST)
 MIME-Version: 1.0
-References: <20231027175532.3601297-1-nabihestefan@google.com>
- <20231027175532.3601297-4-nabihestefan@google.com>
- <KL1PR03MB7744A70A81045E5DC49C8191DBB2A@KL1PR03MB7744.apcprd03.prod.outlook.com>
- <CAFEAcA_9HT=tccyTu9RffMxq7Cm5GEanM+OcSxfkpbnJW2m6hQ@mail.gmail.com>
- <KL1PR03MB7744B774223D04CF466EC2BEDBB1A@KL1PR03MB7744.apcprd03.prod.outlook.com>
-In-Reply-To: <KL1PR03MB7744B774223D04CF466EC2BEDBB1A@KL1PR03MB7744.apcprd03.prod.outlook.com>
+References: <20231114165404.681826-1-ben.dooks@codethink.co.uk>
+ <CAFEAcA-MG+ak8+xVyqgpWqmKAryOXJtOckUmA=GysQwnpuz5SQ@mail.gmail.com>
+ <78989536-e29c-4ce1-a972-36be6c70349c@codethink.co.uk>
+In-Reply-To: <78989536-e29c-4ce1-a972-36be6c70349c@codethink.co.uk>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Nov 2023 16:24:58 +0000
-Message-ID: <CAFEAcA98TjKa7tK+dgp7d0R4BcYv+s-jo+AwTn0L2RFYZkm09A@mail.gmail.com>
-Subject: Re: [PATCH v5 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
-To: "KFTING@nuvoton.com" <KFTING@nuvoton.com>
-Cc: Nabih Estefan <nabihestefan@google.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "wuhaotsh@google.com" <wuhaotsh@google.com>, 
- "Avi.Fishman@nuvoton.com" <Avi.Fishman@nuvoton.com>,
- "KWLIU@nuvoton.com" <KWLIU@nuvoton.com>, 
- "tomer.maimon@nuvoton.com" <tomer.maimon@nuvoton.com>, 
- "Hila.Miranda-Kuzi@nuvoton.com" <Hila.Miranda-Kuzi@nuvoton.com>
+Date: Thu, 16 Nov 2023 16:37:56 +0000
+Message-ID: <CAFEAcA8vZUZBADX109gCohhxxX_mdOp6h6EEOW8VgBYE6mNYOg@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/arm_gicv3: ICC_PMR_EL1 high bits should be RAZ
+To: Ben Dooks <ben.dooks@codethink.co.uk>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,51 +105,86 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BGJxAR235a0C
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GiorHltrCJgt
 
-On Wed, 15 Nov 2023 at 01:35, KFTING@nuvoton.com <KFTING@nuvoton.com> wrote:
-> Peter Maydell wrote:
-> On Tue, 14 Nov 2023 at 01:24, KFTING@nuvoton.com <KFTING@nuvoton.com> wrote:
-> > Signed-off-by: Tyrone Ting <kfting@nuvoton.com>
+On Tue, 14 Nov 2023 at 17:23, Ben Dooks <ben.dooks@codethink.co.uk> wrote:
 >
-> Hi; can you clarify what you mean with this Signed-off-by: tag?
-> Generally we use those where either you're the author of the code or else when you're taking somebody else's patch and including it in work you are sending to the list, and it doesn't seem like either of those are the case here.
-
-> Thank you for your comments. In the email thread " [PATCH v4 00/11] Implementation of NPI Mailbox and GMAC Networking Module",
-> it says " Hi; I'm afraid this is going to miss the 8.2 release, because it is still missing any review from Google or Nuvoton people."
+> On 14/11/2023 17:14, Peter Maydell wrote:
+> > On Tue, 14 Nov 2023 at 16:54, Ben Dooks <ben.dooks@codethink.co.uk> wrote:
+> >>
+> >> The ICC_PMR_ELx bit msak returned from icc_fullprio_mask
+> >> should technically also remove any bit above 7 as these
+> >> are marked reserved (read 0) and should therefore should
+> >> not be written as anything other than 0.
+> >>
+> >> Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
+> >> ---
+> >>   hw/intc/arm_gicv3_cpuif.c | 2 +-
+> >>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+> >> index d07b13eb27..986044df79 100644
+> >> --- a/hw/intc/arm_gicv3_cpuif.c
+> >> +++ b/hw/intc/arm_gicv3_cpuif.c
+> >> @@ -803,7 +803,7 @@ static uint32_t icc_fullprio_mask(GICv3CPUState *cs)
+> >>        * with the group priority, whose mask depends on the value of BPR
+> >>        * for the interrupt group.)
+> >>        */
+> >> -    return ~0U << (8 - cs->pribits);
+> >> +    return (~0U << (8 - cs->pribits)) & 0xff;
+> >>   }
+> >
+> > The upper bits of ICC_PMR_ELx are defined as RES0, which has a
+> > complicated technical definition which you can find in the GIC
+> > architecture specification glossary. It's valid for RES0 bits to
+> > be implemented as reads-as-written, which is the way our current
+> > implementation works. Valid guest code should never be writing
+> > any non-zero value into those bits.
 >
-> Is it okay to post "Acked by:" or "Reviewed by:" by someone from Nuvoton?
+> Yeah, got some proprietary test code that is trying write-1 and
+> then assuming read-0.
+>
+> > What problem are you running into that you're trying to fix
+> > with this patch? If our implementation misbehaves as a result
+> > of letting these high bits through into cs->icc_pmr_el1 that
+> > would be a good reason for making the change.
+>
+> See above, local test code issue.
 
-If you've reviewed the code and believe it to be good (i.e.,
-it doesn't need any changes), then, yes, by all means please
-post your Reviewed-by tag. Anybody who has done the work of
-code review on a patch can send in a Reviewed-by tag to say
-they've done it.
+Ah, right. That is technically bogus, but it wouldn't be
+the first time test case code explored the UNPREDICTABLE
+and IMPDEF reaches of the architecture :-)
 
-If you've reviewed the code and think there's something
-that needs to be changed or that you have a question about
-that, you can reply to the patch to say so.
+Looking at our GIC code, we *will* do something wrong if the guest
+writes to these high bits, because later on we do checks like
+    if (cs->hppi.prio >= cs->icc_pmr_el1) {
+that will do the wrong thing. So I think we do want to mask
+out these high bits (being easier than trying to ignore them
+later). But I think we should be consistent between the
+icc and icv code paths.
 
-We basically follow the same process here that the Linux
-kernel does; you can read about the various tags here:
-https://www.kernel.org/doc/html/v4.17/process/submitting-patches.html#using-reported-by-tested-by-reviewed-by-suggested-by-and-fixes
+So if you want to write a patch that either:
+ * masks out the high bits in both icc_fullprio_mask() and
+   icv_fullprio_mask()
+ * clears out those high bits directly in icc_pmr_write()
+(whichever you think looks nicer) I'd be happy to take that upstream.
 
-The meaning of "Acked-by:" is a little more disputed;
-personally I use that for "I haven't reviewed this code,
-but as a maintainer of the subsystem I don't object to it".
+(Currently icv_pmr_write() happens to be written in a way that
+it discards those high bits as part of the deposit64() into
+ich_vmcr_el2.)
 
 thanks
 -- PMM

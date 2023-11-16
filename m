@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3365825ejc;
-        Thu, 16 Nov 2023 01:34:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFeRRwYEFg1rqd1zMJqx10OO2lAjGhIUogMHr6H9Y7Vn0bK97irk3tFXtqPhUWg0WJJZ0ui
-X-Received: by 2002:a05:622a:587:b0:41c:c096:d26f with SMTP id c7-20020a05622a058700b0041cc096d26fmr1157760qtb.34.1700127243731;
-        Thu, 16 Nov 2023 01:34:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700127243; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3377940ejc;
+        Thu, 16 Nov 2023 02:01:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFF7+Fl5+IixYU7CEbSYAlht4zWVqTqKceMER4ISHF8Y8bdCW4ewvCiAzOgHsuN8/mgbWFF
+X-Received: by 2002:a05:6871:4106:b0:1f4:d1f3:6b18 with SMTP id la6-20020a056871410600b001f4d1f36b18mr15300481oab.34.1700128915753;
+        Thu, 16 Nov 2023 02:01:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700128915; cv=none;
         d=google.com; s=arc-20160816;
-        b=axGKbx0sd1c3R+xqa9Bh6v/MpaZUmnfXBIVnZnMHlzzQO0C6FKxIotJpvnjZiYwZ3j
-         zw2LLQugyaq/epyIwg8TnQo4tMhsmcHwMK9WNEITaYtoIGRl8KlqXQQAk4eZFAs1tRNw
-         teLe6iYMdtOagfVBt4M2r+XN2Nz4fou2HCuNIg7HlxZsearhfRiLHk29k51/NBvyGyPm
-         54bLq+KQOV+fCkSHd/gi28s0x+FFSMxyG6Tf+9zh3cFTkqn1BVKNLaodB6GQXyA4DXiV
-         CjQdeAgvzn9m1oMqkXXrvX5eP4v2P/xRZJ4oG22lMsXxTQE3eloUmRf8tcm65cwVQdTR
-         5ZNw==
+        b=bKObdoTlmgMko3JZcSQ3GBhE+ZePfOfvNQleoTXo3ONo+vwMKoPxL/76/jQSPIBhkZ
+         TVRtulu5a/KQUPd9GbWGKXOCiQA2KXG1CXooQAazbRnlSi4LN+zxD+opWORyTjfypZAA
+         bmvcKvNqeyy1TmhVavKWqzT18irLmDJjbYJU9jG9rNxpXmZ4mUKbwX4xqoVtduswsE4l
+         rILXn2NLkiVOPsm+IjPGVu4HwN1x2lFqzwNTVAakPR4wYoj0yC6PIqywLjK3GYu6klSK
+         wca0iqKJr3Ej82eY/XyXESHaS7UwfmR6x8MsuDM1sJR4qJEdoCaW3kHzJAM4Ke7IDhJS
+         XkZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BKHKZOdUPEdAi4OebjmiImqBlPQ23rLgYgjM01kf4k8=;
+        bh=0GOBjPQgq/BDEfRrJAbTfI8qHwKw2XyQ2WJKVxI/iDc=;
         fh=MNy/s+eWWV9V6tfmhb2gUwit/2o7TQkLbQD1zQm6hqY=;
-        b=YCLmJm8BmLWMrECPC3Ffm110m80vxW4hVS9gwim5eXr8xzaDKa/lOLOxAwHCMZOtPE
-         OWfoqW269WaS6RlU74r8XXyDXpVvyZRkXLN1V+M74cLD/ALJnXauyq4jQg0x6rr7DPZR
-         vpxt+dU8t0KkaGAswRKKBemd4RbnB3SXvAbAZxzjqT2ttvKdbEE8i+o+o3FgJUqMG6cc
-         mTAxYuJLaYLr1vCK/dYR83PfLa0910I2iarO0jF3lGvHalNewWSUj0BKDekKXS93809y
-         7A151ptfX9yS3UuSb/ftxgjt74rXQ/T1tuLbO5uLWI+LOW3DyRGE96UVxHVl2yjCDJHL
-         v+lw==
+        b=GS5CKBK6Rtt+yCmkoPpfzywiAypPgHiQYazyMggUTtew+KWp4oWfibDDw78umW4jfa
+         CoaurEWGt82fX2L5E+T8VWUZZvNBCqsXETCLbhTaIjTM2Fyhdj/b38/NqhCgbuFNyZQu
+         DhYZjgSsl18C1L0bDbg/K30AYH5BcraoTfCXjXwkGdbeee3EI9pV7zdWO6pd7Ri/bRKp
+         nvHKI7Wg9Vs3toh+fEz7JOe2x3mGl/3ZIQviwxMZR0aHSsNhB181D/ug+G6lEML6NmNG
+         ymDgFZ8iTdr/2T8tDrcgwUYxVShIMxEMA/dJFEv6kLH9nhE2tdsAnPB5Jb7kOKPuS3qS
+         4MCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NEBsSW9L;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dnzR3x3X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c7-20020ac87dc7000000b00417b8ceb616si10826587qte.403.2023.11.16.01.34.03
+        by mx.google.com with ESMTPS id m11-20020a05622a054b00b00421b95298d6si10606793qtx.518.2023.11.16.02.01.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 01:34:03 -0800 (PST)
+        Thu, 16 Nov 2023 02:01:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NEBsSW9L;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dnzR3x3X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3Yko-0007gN-HL; Thu, 16 Nov 2023 04:33:42 -0500
+	id 1r3ZBr-0005An-9B; Thu, 16 Nov 2023 05:01:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3Ykn-0007eF-BZ
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 04:33:41 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3ZBp-0005AK-VV
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 05:01:37 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3Ykk-0001zM-IC
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 04:33:41 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4081ccf69dcso10483615e9.0
- for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 01:33:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3ZBo-0004gn-5P
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 05:01:37 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-408382da7f0so4984835e9.0
+ for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 02:01:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700127215; x=1700732015; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700128894; x=1700733694; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=BKHKZOdUPEdAi4OebjmiImqBlPQ23rLgYgjM01kf4k8=;
- b=NEBsSW9LvXVibOtJaYGptPw6WBex2KYSLRnFixVzqcy0N8Ebprwctip5YxfOzraFdQ
- JooihvsvMtN+nVjlFhBPyUqJDajW717XPVRWT2w8MYJKjXbkvFClu508xPhfEOBwFYdj
- VfW7GGzpD0VFfY0XGCNFe7Swr2FOuXgxQepvdwTiEPfReDMk2Apk2FFJy0tQy0BSZWGv
- rnjXgEO7RPgVL6Sdh4SUYTewwpAvtZ8hMI01cPmViDKguaJimvJVSe6w04gvgfpsDn8t
- sU+SFCHyvWJGpzwxqT68Xi1n1Y53BScKq1P05eocuUhxxWsAwKWXCUcCOk4i2bBQqGNm
- FZLw==
+ bh=0GOBjPQgq/BDEfRrJAbTfI8qHwKw2XyQ2WJKVxI/iDc=;
+ b=dnzR3x3XyoRymj39V1B8dBe4NOQD0vsjeHFISCC9cXfBWQpLiORDe7qXcYFz/RPpuh
+ kROHAJr9fY1vTsDoEcqDlfoP1RfsM/o8Ws7yw5IavvDcdAeqAngvKt9mISJNXmzFB4UR
+ C7gB0yp1zkn+6KDVENsnqyE9NrcJ28WFutSoyB+S4Vy234YshMeFJ0H96hxxZZe5k2g3
+ MoeSsMM56qkHFenjqSeJ91UMcL/IQfAC9EvdE0acoXQsihsCh4byHfxLOM3KgytCf+o5
+ mU+iC84AGaJ6fCxkVdDFkqkC9ha8dCIo73L6p17vJHsvEUhlEiNBIMNvIvpc+zJ4BpnX
+ 4rjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700127215; x=1700732015;
+ d=1e100.net; s=20230601; t=1700128894; x=1700733694;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BKHKZOdUPEdAi4OebjmiImqBlPQ23rLgYgjM01kf4k8=;
- b=BkRDCdifbwQlLURu5Nz9KB23I1+wAY7i5aONslGLWNq6Si0wGeLWBY47FmWsXSKjrF
- jjBtNt4b8NlIjar4E4BgN3sT/zVWAxsdcG4AzT/XWdPw3teB0ivxsfRJy/bm3Jh/zy5K
- PgjQo0j88iGSq4vPEBEnbaepIpG+Hq3IDv7/V7ewSIKPK4M48UvrqiK6sKxU6H464LZx
- q/CUx/mVehkePzCJXzb1f6zzN4ZA7IbtvTdr/TYl93Ia9AJ0O+rl2LQbffuU+69VISdb
- X4CtNQKM88akjCI9RDMHRp0hNECCO3mmqp/uJwTuGUB+djROop+sxY9FSIICQBgEhQDY
- 722w==
-X-Gm-Message-State: AOJu0YwQZpSQsQJRKZYrXnbtgxOrO6FELBKp2IDsWiPPYA/wxHhCmBKf
- GC00cx0vCPavv7kxPUMXA6ZDJw==
-X-Received: by 2002:a5d:6da4:0:b0:32d:9d03:29e6 with SMTP id
- u4-20020a5d6da4000000b0032d9d0329e6mr905695wrs.27.1700127215562; 
- Thu, 16 Nov 2023 01:33:35 -0800 (PST)
+ bh=0GOBjPQgq/BDEfRrJAbTfI8qHwKw2XyQ2WJKVxI/iDc=;
+ b=SIEBQEspxHzG6Su45srt/lYz8h6P95EmvEeFiAR/Kug7syyQOQpGIhyemHLfoyKWzH
+ iOgznAnm+FAeGhS3kXsyr/opVunf4KPQGcVg0ou//afzIRwuKHh4VfT4Df8PxOQpVU2J
+ bxhZtRgX21DyKeUujm06eNUmn5CGWNaEdiAtmPdr3WOidDS3KeeWSH0uFTm7SPlKmGfB
+ xWvjJTq5iiDzZb6l+gOOHdFxrwXh9PsJZ34An/3ulffBkZ4fxEF9ZWFKJscAZ8hBl7ib
+ YlVGgcNXUzdKkbIN5mbkJSYNBqAYCUFho4hDI9exKU4IMVhetIaQApdLsmqwDfHozq6G
+ jyuQ==
+X-Gm-Message-State: AOJu0YxbQgcQfnKJI+Ks1ABj1MQHoN+yBVut07WE7JLPHdUdzbBmPQpX
+ bPmx2ogy92cnVGWxf9iArcTH2w==
+X-Received: by 2002:a05:6000:1250:b0:32f:8085:7411 with SMTP id
+ j16-20020a056000125000b0032f80857411mr1396165wrx.24.1700128893288; 
+ Thu, 16 Nov 2023 02:01:33 -0800 (PST)
 Received: from [192.168.69.100] ([176.187.220.205])
  by smtp.gmail.com with ESMTPSA id
- j7-20020a5d6187000000b0032dc74c093dsm13044830wru.103.2023.11.16.01.33.31
+ x15-20020adfffcf000000b0031984b370f2sm13066668wrs.47.2023.11.16.02.01.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Nov 2023 01:33:35 -0800 (PST)
-Message-ID: <25571924-3569-48f4-8b60-17f14e8261ea@linaro.org>
-Date: Thu, 16 Nov 2023 10:33:30 +0100
+ Thu, 16 Nov 2023 02:01:32 -0800 (PST)
+Message-ID: <d5b43eb1-93b4-4e3e-8c37-1dabd5a4cb52@linaro.org>
+Date: Thu, 16 Nov 2023 11:01:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 25/31] machine: Introduce helper is_cpu_type_supported()
+Subject: Re: [PATCH v5 00/31] Unified CPU type check
 Content-Language: en-US
 To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -111,20 +111,19 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
  jcmvbkbc@gmail.com, shan.gavin@gmail.com
 References: <20231114235628.534334-1-gshan@redhat.com>
- <20231114235628.534334-26-gshan@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231114235628.534334-26-gshan@redhat.com>
+In-Reply-To: <20231114235628.534334-1-gshan@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,75 +138,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I17W7PLIEIva
+X-TUID: TOJMD99Trv2g
 
-On 15/11/23 00:56, Gavin Shan wrote:
-> The logic, to check if the specified CPU type is supported in
-> machine_run_board_init(), is independent enough. Factor it out into
-> helper is_cpu_type_supported(). machine_run_board_init() looks a bit
-> clean with this. Since we're here, @machine_class is renamed to @mc
-> to avoid multiple line spanning of code. The comments are tweaked a
-> bit either.
+Hi Gavin,
+
+On 15/11/23 00:55, Gavin Shan wrote:
+> There are two places where the user specified CPU type is checked to see
+> if it's supported or allowed by the board: machine_run_board_init() and
+> mc->init(). We don't have to maintain two duplicate sets of logic. This
+> series intends to move the check to machine_run_board_init() so that we
+> have unified CPU type check.
 > 
-> No functional change intended.
+> PATCH[01-04] consolidate CPUClass::class_by_name() so that the returned
+>               CPU class is checked for once in cpu_class_by_name()
+> PATCH[05]    add generic helper cpu_model_from_type() to extract the CPU
+>               model name from the CPU type name
+> PATCH[06]    add generic cpu_list(), to be reused by most of the targets
+> PATCH[07-21] switch to generic cpu_list() for most of the targets
+> PATCH[22]    use generic helper cpu_model_from_type() for several targets
+> PATCH[23-31] validate the CPU type in machine_run_board_init() for the
+>               individual board
 > 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
->   hw/core/machine.c | 82 +++++++++++++++++++++++++----------------------
->   1 file changed, 44 insertions(+), 38 deletions(-)
-> 
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 5b45dbbbd5..49e0bc874d 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -1387,13 +1387,51 @@ out:
->       return r;
->   }
->   
-> +static void is_cpu_type_supported(MachineState *machine, Error **errp)
+> v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00302.html
+> v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00528.html
+> v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-09/msg00157.html
+> v4: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00005.html
 
-'const MachineState *'.
+Maybe I missed the comment in earlier series, but what is the plan for
+the following targets?
 
-> +{
-> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> +    ObjectClass *oc = object_class_by_name(machine->cpu_type);
-> +    CPUClass *cc;
-> +    int i;
-> +
-> +    /*
-> +     * Check if the user specified CPU type is supported when the valid
-> +     * CPU types have been determined. Note that the user specified CPU
-> +     * type is provided through '-cpu' option.
-> +     */
-> +    if (mc->valid_cpu_types && machine->cpu_type) {
-> +        for (i = 0; mc->valid_cpu_types[i]; i++) {
-> +            if (object_class_dynamic_cast(oc, mc->valid_cpu_types[i])) {
-> +                break;
-> +            }
-> +        }
-> +
-> +        /* The user specified CPU type isn't valid */
-> +        if (!mc->valid_cpu_types[i]) {
-> +            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
-> +            error_append_hint(errp, "The valid types are: %s",
-> +                              mc->valid_cpu_types[0]);
+$ git grep 'define cpu_list'
+target/i386/cpu.h:2289:#define cpu_list x86_cpu_list
+target/ppc/cpu.h:1623:#define cpu_list ppc_cpu_list
+target/s390x/cpu.h:922:#define cpu_list s390_cpu_list
+target/sparc/cpu.h:673:#define cpu_list sparc_cpu_list
 
-This hint could be clearer if only an unique CPU is allowed.
+Thanks,
 
-> +            for (i = 1; mc->valid_cpu_types[i]; i++) {
-> +                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
-> +            }
-> +
-> +            error_append_hint(errp, "\n");
-> +            return;
-> +        }
-> +    }
-> +
-> +    /* Check if CPU type is deprecated and warn if so */
-> +    cc = CPU_CLASS(oc);
-> +    if (cc && cc->deprecation_note) {
-> +        warn_report("CPU model %s is deprecated -- %s",
-> +                    machine->cpu_type, cc->deprecation_note);
-> +    }
-> +}
-
+Phil.

@@ -1,108 +1,100 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3394806ejc;
-        Thu, 16 Nov 2023 02:38:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG0uL6hyLY3ytpbGmdTqFWEzMzTuzl3RfsvDK9KMUaJbTcX14CFsWq4KRFVBF1sWumBtXpz
-X-Received: by 2002:a05:622a:58a:b0:421:bbb8:e70b with SMTP id c10-20020a05622a058a00b00421bbb8e70bmr8565453qtb.27.1700131125584;
-        Thu, 16 Nov 2023 02:38:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700131125; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3483213ejc;
+        Thu, 16 Nov 2023 05:24:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH2RhFzeg0uVhXrOtb9nDLSNK86etEXobjYqlNbGUtgZIWODNCQffod2RacmIj+hMF0UQOO
+X-Received: by 2002:a05:620a:28c5:b0:76f:1d96:4eb5 with SMTP id l5-20020a05620a28c500b0076f1d964eb5mr10000486qkp.36.1700141044335;
+        Thu, 16 Nov 2023 05:24:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700141044; cv=none;
         d=google.com; s=arc-20160816;
-        b=iAdRYjUIBHKQbIvpNsLfHPE0n/QP0V5KqhJPnRYj+D6YiWWXpBH4qUJ9DnMXONiOEI
-         X8rW5n9Oi7Bxi8MeHvX45lSuALwOhI7HTRXo+OwHJmo9E+ZWLEbr0vFH4ZGeId0kZFqN
-         PjKtqGaaEJDnnKWTlaviedxbFt3ExDOEcb07VDBtsrnTpdxN615C/vcH6qZsJW6Za/43
-         oJZ9dysi3hiK4tW+KEG2EP7cV7dJdUvbwJ2ZRjz6Fx+cZlleaAtNh+cpOtf//THnJEVQ
-         x415TOFaoE9p5A9AOMdnyOJI1oFpPwRfdGOPIXDLOkSUVHwuGOBlIZXXR4Ty0OPo+xPZ
-         Txsg==
+        b=RzVVK50yK0W8Xfrkr+wxYf4/xaCbA4LVXWoeoSPyOm0uHgUeVBGMv4YLXNU5y5ZThH
+         s990Wj9qnNZtOW8pX0P6+j2VPAnafPw4okI7asr5JzAQGdkTmTTex3MKcar5JmVbaFIC
+         tWuBJZ8b3DV0dwBNO+ApmkiJYMAhFY31/AVwBkwQMMm+NgOkbhlMtRyy2k9ARjZu5byJ
+         2sLxMOEgTGb5sfPz/cIxV3cXCxUoRS6Fuzer2FFWh0xHNxO6V7S8+bO2wfZOBfcIMvfd
+         9HPvm2fY8PgQebhaGvAmMSI3V7D58QoW/fACnFLtEZkGbTEaz4nTVMkVJvi6X3ho1hRp
+         6FDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
+         :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=RHrTxseyHZ/YXypNq2A1t5EMJxLtEgwqj7VjPx6kz0s=;
-        fh=a7pXOaTBsSHAOcDhqYGjai0RHNA6jEApxyxU387OqdQ=;
-        b=UwLaJOizIv/wcwmVeCYjF2esE5Q11YQlpbjLi90Cqn7G21/x+sRTye1oKP0VXMwjoD
-         h8rDS3rCeT7heLy06TeFqSuzN1S3NtsWI7fsIIqOAcwmr1hrwVzmSmvXLDdp73vdO/LP
-         i6WU/VFIWntw/ooFFxLGYCKFAEAEEcY01YO9sQem2H5l8Sw21fS5zjFGuEUPzJcbViIb
-         HZILr/cavEIyJEA1cOTebonFYfV6DO62RyC11Mz/Z9gjSAihnpiBWOcaFnVk3cvEvEVH
-         Q3wTqQGq3NtSt2Swqk6sJieQpzK8G2ccAtqMSgNzzdiB723s4KmpEfQJGFdF1aL/r/PN
-         lmtw==
+        bh=wpYKtitWZaN9Cy7xbji8Hdt44lw8x0AaY5nlqTz8g08=;
+        fh=MNy/s+eWWV9V6tfmhb2gUwit/2o7TQkLbQD1zQm6hqY=;
+        b=Jaxhn9N9yGy928tk0a1QQX+IW39HkqkrY3X7QtBQ+NsMA4CzJugnR9W8i8ejrJOLsD
+         UX2Vbc5On/NfrJKoBodxYHQkyKUEbADkm5dErEWG4NRBjzmwWp+YDq77s4C0qfRV7joA
+         KBHn+FKGGlHpzrVvHFbkQ6voIZtTCg2ffseuQy2srTnU7ZiD/RVkMilwiHjEuP3iu7aE
+         GzSWMCo7XqJRuKs/MO4iDmZGuhilLYNEpCo7IVDmxbroCPkGnERirj8kcoc7A+sRxRmm
+         EC3AqhpZidC2YryFiVQ7wg1x+CkrmmR87LRveeWVFlpggSOBvImIKjyMW22v09SC4cjH
+         dCpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D8v+QeC2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MoQnX3wz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12-20020ac87f4c000000b00403b1d1599asi10463410qtk.2.2023.11.16.02.38.45
+        by mx.google.com with ESMTPS id x29-20020a05620a0b5d00b0076da5b428c1si11102305qkg.785.2023.11.16.05.24.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 02:38:45 -0800 (PST)
+        Thu, 16 Nov 2023 05:24:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D8v+QeC2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MoQnX3wz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3ZlG-0003yE-DG; Thu, 16 Nov 2023 05:38:15 -0500
+	id 1r3cKn-00009I-NC; Thu, 16 Nov 2023 08:23:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r3ZlE-0003xs-0I
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 05:38:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r3ZlC-0003kP-11
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 05:38:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700131088;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RHrTxseyHZ/YXypNq2A1t5EMJxLtEgwqj7VjPx6kz0s=;
- b=D8v+QeC2LdXVUhA1ZN3kFK7miKdNcQuabjY5xRu2SNAeaECJZ7QnP3YL7GQcmsNqbhbkPF
- n5lkBKJMwkhcpPPY0eNoSf3gEKTYtnQvNgivuUHiWrWRwiv1hcQAAC1u1B9y/7Rwi8oiGd
- 2m74bFOg/UWTJbaTPh5Ne0riYOVLC10=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-378-ouqpGSNNP6SlwGHX4Qztmw-1; Thu, 16 Nov 2023 05:38:07 -0500
-X-MC-Unique: ouqpGSNNP6SlwGHX4Qztmw-1
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-1cc1682607eso7698215ad.1
- for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 02:38:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3cKk-00008N-KJ
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 08:23:03 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3cKi-0004vt-Sb
+ for qemu-arm@nongnu.org; Thu, 16 Nov 2023 08:23:02 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4084e49a5e5so6872465e9.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 05:22:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1700140978; x=1700745778; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=wpYKtitWZaN9Cy7xbji8Hdt44lw8x0AaY5nlqTz8g08=;
+ b=MoQnX3wzHi5LHE0upoMtQhEv4qBEbfXkF8u1Ttv3UgmyB3jf3gcO10Iz1eVz93Yegj
+ kLJsuDZhChDpqPByXXiJvOR4b2woT4LW6guYHHw94L4j824lEvGJiJ9wcB6XuoG8Yy71
+ iyEdhJPReElkXB1lEdibhkHSVgr3GyUcBgmb76pHfJO9O8ij/B79O8bzUKlUJmZKelh/
+ 58XN54xN2k9Ecu6hyVjxiSUz97oWKUBZSGf4xUOhVoaNzyJd5HsVFLUBdtcbObns39YW
+ ak9xv/kcJbuF/C6krLq11y1328QxWwpwpqtVPTKi3sxZ/nQYsPCzDHqeyTl812XFirh0
+ f4Yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700131086; x=1700735886;
+ d=1e100.net; s=20230601; t=1700140978; x=1700745778;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RHrTxseyHZ/YXypNq2A1t5EMJxLtEgwqj7VjPx6kz0s=;
- b=Y7T/qIIzbmJl9RIoHpqW9fRE5SawK59qhFHlL8folSXLroJZcn8fq1L3XrCBQAlf3b
- IA1WR+4hrBp+QuU19nFdvDmxWRVePQBUfcufl/ECwWwpK5DhRiJn5ajASXrZxq3p5+WN
- tkBEVRK/CQTPECVukyMKMCUkq8D77ue1b7E3PjR92tP3N5n2jlazcn1QOEamanSL2vys
- FAkBlwhqrghTaxOoWQxoCyeBePDky7VPr7Rl6DNaKoxHpeOpyQ9N+yxDdqqcV9wiovLK
- c6+PE+W8hCaivegrIPxe9giBJtrFf9E4ofoQFMZj0ur6NqbCCDIE1/iImNsij41iTn1A
- a4Nw==
-X-Gm-Message-State: AOJu0Ywjn23+Bnqv0BEE6OcTK/GFusp2lXBIK4zNlUF8XUdmiLqASnHl
- mS52E91Cn/tek+outEoMU1t7hEecBaYT12GOcFWFv1a/DvO4+wLkbnDPYkWI42soPWSjyqY4vO6
- j+2bCzy9kh92t
-X-Received: by 2002:a17:902:7449:b0:1ca:28f3:5690 with SMTP id
- e9-20020a170902744900b001ca28f35690mr8182929plt.46.1700131086127; 
- Thu, 16 Nov 2023 02:38:06 -0800 (PST)
-X-Received: by 2002:a17:902:7449:b0:1ca:28f3:5690 with SMTP id
- e9-20020a170902744900b001ca28f35690mr8182883plt.46.1700131085817; 
- Thu, 16 Nov 2023 02:38:05 -0800 (PST)
-Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15?
- ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
+ bh=wpYKtitWZaN9Cy7xbji8Hdt44lw8x0AaY5nlqTz8g08=;
+ b=wNAIAEJJQp9gx9Jr8y4YuMr4iwJ93D6T8KaWt34w0+KItXlxjXoc0/2/MY1rRZSBhP
+ yJNvShktNCODc0A5OERsg67CswY9bG0yeYd+U722AGaaDRrVEqW2c0o0wnhWcIpysHrX
+ QFSPC+Ri/6oYHL2ii39JEfdHt2pPUDmlEw5jArfbuUsXLxouQ/Jj3lbr1SsawQpKlzLj
+ 558/kvZY7chp+8pYejZE/Nvi0F7JyOvpijn4WxuBsjbOYkuL3cAljrurbzDVJ69WlJRo
+ Sao32p9eXx3AQR7scRe1Lq3EO6QHTTGGg0Lae9o7yujtLZ7jqXNYbzzG/SUaQmfsystA
+ avyA==
+X-Gm-Message-State: AOJu0YxsltGgRHD0+bh4MZwjB9E/C9tlZm8XxBrYfrcmCv2oKEckSI/m
+ yRhK6+gq2s+CcxCR2rNzrHYW4A==
+X-Received: by 2002:a05:600c:4f54:b0:40a:49bc:fa9d with SMTP id
+ m20-20020a05600c4f5400b0040a49bcfa9dmr12965675wmq.26.1700140977580; 
+ Thu, 16 Nov 2023 05:22:57 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.220.205])
  by smtp.gmail.com with ESMTPSA id
- v2-20020a1709029a0200b001cc131c65besm8897793plp.168.2023.11.16.02.37.51
+ z6-20020a05600c0a0600b004068e09a70bsm3718284wmp.31.2023.11.16.05.22.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Nov 2023 02:38:05 -0800 (PST)
-Message-ID: <2235248b-f2d0-409a-9ae0-e079970ea776@redhat.com>
-Date: Thu, 16 Nov 2023 20:37:48 +1000
+ Thu, 16 Nov 2023 05:22:57 -0800 (PST)
+Message-ID: <603ed1f0-ad44-4e51-9e60-7c9b4afb10b5@linaro.org>
+Date: Thu, 16 Nov 2023 14:22:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 06/31] cpu: Add generic cpu_list()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
+Content-Language: en-US
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
  pbonzini@redhat.com, peter.maydell@linaro.org, imammedo@redhat.com,
@@ -122,24 +114,19 @@ References: <20231114235628.534334-1-gshan@redhat.com>
  <20231114235628.534334-7-gshan@redhat.com>
  <80da2d00-0d96-4252-b2aa-f7859e44bece@linaro.org>
  <55922c30-be4b-459d-835b-819e1dcd2437@linaro.org>
- <ac71b101-3b61-47fa-b017-766ba55a2c8f@linaro.org>
- <38629155-9f2e-43b1-b8eb-e274755109fb@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <38629155-9f2e-43b1-b8eb-e274755109fb@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+ <93d5e7fa-b1c6-43cc-b3af-026e7a5964b5@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <93d5e7fa-b1c6-43cc-b3af-026e7a5964b5@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.099,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,167 +142,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: udiol7LBV2Gg
+X-TUID: paKjAYmbfQab
 
-Hi Phil,
-
-On 11/16/23 20:25, Philippe Mathieu-Daudé wrote:
-> On 16/11/23 11:19, Philippe Mathieu-Daudé wrote:
->> On 16/11/23 08:51, Philippe Mathieu-Daudé wrote:
->>> On 16/11/23 08:39, Philippe Mathieu-Daudé wrote:
->>>> On 15/11/23 00:56, Gavin Shan wrote:
->>>>> Add generic cpu_list() to replace the individual target's implementation
->>>>> in the subsequent commits. Currently, there are 3 targets with no cpu_list()
->>>>> implementation: microblaze and nios2. With this applied, those two targets
->>>>> switch to the generic cpu_list().
->>>>>
->>>>> [gshan@gshan q]$ ./build/qemu-system-microblaze -cpu ?
->>>>> Available CPUs:
->>>>>    microblaze-cpu
->>>>>
->>>>> [gshan@gshan q]$ ./build/qemu-system-nios2 -cpu ?
->>>>> Available CPUs:
->>>>>    nios2-cpu
->>>>>
->>>>> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
->>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>>>> ---
->>>>>   bsd-user/main.c |  5 +----
->>>>>   cpu-target.c    | 29 ++++++++++++++++++++++++++---
->>>>>   2 files changed, 27 insertions(+), 7 deletions(-)
+On 16/11/23 11:34, Gavin Shan wrote:
+> Hi Phil,
+> 
+> On 11/16/23 17:51, Philippe Mathieu-Daudé wrote:
+>> On 16/11/23 08:39, Philippe Mathieu-Daudé wrote:
+>>> On 15/11/23 00:56, Gavin Shan wrote:
+>>>> Add generic cpu_list() to replace the individual target's 
+>>>> implementation
+>>>> in the subsequent commits. Currently, there are 3 targets with no 
+>>>> cpu_list()
+>>>> implementation: microblaze and nios2. With this applied, those two 
+>>>> targets
+>>>> switch to the generic cpu_list().
 >>>>
+>>>> [gshan@gshan q]$ ./build/qemu-system-microblaze -cpu ?
+>>>> Available CPUs:
+>>>>    microblaze-cpu
 >>>>
->>>>> diff --git a/cpu-target.c b/cpu-target.c
->>>>> index c078c0e91b..acfc654b95 100644
->>>>> --- a/cpu-target.c
->>>>> +++ b/cpu-target.c
->>>>> @@ -24,6 +24,7 @@
->>>>>   #include "hw/qdev-core.h"
->>>>>   #include "hw/qdev-properties.h"
->>>>>   #include "qemu/error-report.h"
->>>>> +#include "qemu/qemu-print.h"
->>>>>   #include "migration/vmstate.h"
->>>>>   #ifdef CONFIG_USER_ONLY
->>>>>   #include "qemu.h"
->>>>> @@ -283,12 +284,34 @@ const char *parse_cpu_option(const char *cpu_option)
->>>>>       return cpu_type;
->>>>>   }
->>>>> +#ifndef cpu_list
->>>>> +static void cpu_list_entry(gpointer data, gpointer user_data)
->>>>> +{
->>>>> +    CPUClass *cc = CPU_CLASS(OBJECT_CLASS(data));
->>>>> +    const char *typename = object_class_get_name(OBJECT_CLASS(data));
->>>>> +    g_autofree char *model = cpu_model_from_type(typename);
->>>>> +
->>>>> +    if (cc->deprecation_note) {
->>>>> +        qemu_printf("  %s (deprecated)\n", model);
->>>>> +    } else {
->>>>> +        qemu_printf("  %s\n", model);
+>>>> [gshan@gshan q]$ ./build/qemu-system-nios2 -cpu ?
+>>>> Available CPUs:
+>>>>    nios2-cpu
+>>>>
+>>>> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>> ---
+>>>>   bsd-user/main.c |  5 +----
+>>>>   cpu-target.c    | 29 ++++++++++++++++++++++++++---
+>>>>   2 files changed, 27 insertions(+), 7 deletions(-)
+>>>
+>>>
+>>>> diff --git a/cpu-target.c b/cpu-target.c
+>>>> index c078c0e91b..acfc654b95 100644
+>>>> --- a/cpu-target.c
+>>>> +++ b/cpu-target.c
+>>>> @@ -24,6 +24,7 @@
+>>>>   #include "hw/qdev-core.h"
+>>>>   #include "hw/qdev-properties.h"
+>>>>   #include "qemu/error-report.h"
+>>>> +#include "qemu/qemu-print.h"
+>>>>   #include "migration/vmstate.h"
+>>>>   #ifdef CONFIG_USER_ONLY
+>>>>   #include "qemu.h"
+>>>> @@ -283,12 +284,34 @@ const char *parse_cpu_option(const char 
+>>>> *cpu_option)
+>>>>       return cpu_type;
+>>>>   }
+>>>> +#ifndef cpu_list
+>>>> +static void cpu_list_entry(gpointer data, gpointer user_data)
+>>>> +{
+>>>> +    CPUClass *cc = CPU_CLASS(OBJECT_CLASS(data));
+>>>> +    const char *typename = object_class_get_name(OBJECT_CLASS(data));
+>>>> +    g_autofree char *model = cpu_model_from_type(typename);
+>>>> +
+>>>> +    if (cc->deprecation_note) {
+>>>> +        qemu_printf("  %s (deprecated)\n", model);
+>>>> +    } else {
+>>>> +        qemu_printf("  %s\n", model);
+>>>> +    }
+>>>> +}
+>>>> +
+>>>> +static void cpu_list(void)
+>>>> +{
+>>>> +    GSList *list;
+>>>> +
+>>>> +    list = object_class_get_list_sorted(TYPE_CPU, false);
+>>>> +    qemu_printf("Available CPUs:\n");
+>>>
+>>> Since this output will likely be displayed a lot, IMHO it is worth
+>>> doing a first pass to get the number of available CPUs. If it is 1,
+>>> print using singular but even better smth like:
+>>>
+>>>         "This machine can only be used with the following CPU:"
 >>
->> Wondering how this scale to heterogeneous emulation. Should we
->> display the architecture, i.e.:
+>> Hmm I missed this code is common to user/system emulation.
 >>
->> -- >8 --
->> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
->> index 76ef59de0a..aeff182a37 100644
->> --- a/include/hw/core/cpu.h
->> +++ b/include/hw/core/cpu.h
->> @@ -792,6 +792,8 @@ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model);
->>    */
->>   char *cpu_model_from_type(const char *typename);
+>> System helper could be clever by using the intersection of cpu_list()
+>> and MachineClass::valid_cpu_types[] sets.
 >>
->> +char *cpu_arch_from_type(const char *typename);
->> +
->>   /**
->>    * cpu_create:
->>    * @typename: The CPU type.
->> diff --git a/cpu-target.c b/cpu-target.c
->> index acfc654b95..75412f902f 100644
->> --- a/cpu-target.c
->> +++ b/cpu-target.c
->> @@ -257,6 +257,12 @@ char *cpu_model_from_type(const char *typename)
->>       return g_strdup(typename);
->>   }
->>
->> +char *cpu_arch_from_type(const char *typename)
->> +{
->> +    assert(g_str_has_suffix(CPU_RESOLVING_TYPE, "-cpu"));
->> +    return g_strndup(CPU_RESOLVING_TYPE, strlen(CPU_RESOLVING_TYPE) - strlen("-cpu"));
 > 
-> Not good enough:
-> 
-> $ ./qemu-system-mips64el -M mps2-an500 -cpu \?
-> Available CPUs:
->    20Kc (MIPS64)
->    24Kc (MIPS64)
->    24KEc (MIPS64)
->    24Kf (MIPS64)
->    34Kf (MIPS64)
->    4Kc (MIPS64)
->    4KEc (MIPS64)
->    4KEcR1 (MIPS64)
->    4KEm (MIPS64)
->    4KEmR1 (MIPS64)
->    4Km (MIPS64)
->    5Kc (MIPS64)
->    5KEc (MIPS64)
->    5KEf (MIPS64)
->    5Kf (MIPS64)
-> 
-> Anyhow we can't use CPU_RESOLVING_TYPE in heterogeneous context,
-> so we'll probably have to add the arch as a CPUClass field.
-> 
+> When cpu_list() is called, it's possible the machine type option isn't
+> parsed yet. Besides, this function is usually used by "qemu-system-arm 
+> -cpu ?".
 
-CPU_RESOLVING_TYPE has been pinned to one specific target. We need to
-improve this to support heterogeneous scenario in the future if you
-agree. How about to figure out the improvement in the future to support
-heterogeneous case and leave it as what we had?
+Not sure this is a good example :)
 
-Thanks,
-Gavin
+   $ qemu-system-arm -cpu ?
+   qemu-system-arm: No machine specified, and there is no default
+   Use -machine help to list supported machines
 
->> +}
->> +
->>   const char *parse_cpu_option(const char *cpu_option)
->>   {
->>       ObjectClass *oc;
->> @@ -290,12 +296,11 @@ static void cpu_list_entry(gpointer data, gpointer user_data)
->>       CPUClass *cc = CPU_CLASS(OBJECT_CLASS(data));
->>       const char *typename = object_class_get_name(OBJECT_CLASS(data));
->>       g_autofree char *model = cpu_model_from_type(typename);
->> +    g_autofree char *arch = cpu_arch_from_type(typename);
->> +    g_autofree char *arch_up = g_ascii_strup(arch, -1);
->>
->> -    if (cc->deprecation_note) {
->> -        qemu_printf("  %s (deprecated)\n", model);
->> -    } else {
->> -        qemu_printf("  %s\n", model);
->> -    }
->> +    qemu_printf("  %s (%s%s)\n", model, arch_up,
->> +                cc->deprecation_note ? ", deprecated" : "");
->>   }
->> ---
->>
->> Produces:
->>
->> qemu-system-aarch64 -M mps2-an500 -cpu \?
->> Available CPUs:
->>    a64fx (ARM)
->>    arm1026 (ARM)
->>    arm1136 (ARM)
->>    arm1136-r2 (ARM)
->>    arm1176 (ARM)
->>    arm11mpcore (ARM)
->>    arm926 (ARM)
->>    arm946 (ARM)
->>    cortex-a15 (ARM)
->>    cortex-a35 (ARM)
->>    cortex-a53 (ARM)
->>    cortex-a55 (ARM)
->>    cortex-a57 (ARM)
->>    cortex-a7 (ARM)
->>    cortex-a710 (ARM)
->>    cortex-a72 (ARM)
->>    cortex-a76 (ARM)
-> 
+> So I wouldn't connect to MachineClass::valid_cpu_types[] here if you agree.
+
+Agreed.
 

@@ -1,178 +1,218 @@
-Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3356966ejc;
-        Thu, 16 Nov 2023 01:17:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHJNk54cvpsOkYB1SOEJrfJWEtTHBhINLNEqHHaNz3IKoHl5ElbrIUkbLw0NBFBhzqeuOwc
-X-Received: by 2002:a25:102:0:b0:d81:bb7e:f47f with SMTP id 2-20020a250102000000b00d81bb7ef47fmr14464501ybb.44.1700126264367;
-        Thu, 16 Nov 2023 01:17:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700126264; cv=none;
+Received: by 2002:a17:906:5a52:b0:9d0:bf65:29fa with SMTP id my18csp3366130ejc;
+        Thu, 16 Nov 2023 01:34:45 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGumhYgEYi59LBGvaW/Kr5qA+RJPPinfEHukflAEGjc4Ylj6y2SNf5c7pNxa+gGJI9yukej
+X-Received: by 2002:a05:6a20:8421:b0:185:876f:4f4d with SMTP id c33-20020a056a20842100b00185876f4f4dmr19435618pzd.32.1700127284797;
+        Thu, 16 Nov 2023 01:34:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700127284; cv=none;
         d=google.com; s=arc-20160816;
-        b=KnvnIIcwnroxULcpyG+7ZdHVkrdlNmyyTjp9wwV+sEDC5FdzjUmUQx+Z3MBoo0Dvcx
-         AolXqP1ovNKEPWpDVwNO153TqAY2tpAvRRDaNkpw5srcnZ5c+LD4qS4QGKu+dEWMStSe
-         9y9X8/a9fl9YojwS3gnjDsqIi3jerMzGogJ0XLEzTfCtZ23G8e2crawDlVfUx4ApKi5x
-         /9ygs2J55Sk6apmFj3q4PpflGN4xA6ZLLkYmIEPFboi2299RGMGLu2wY5Lx7MCXWv93T
-         E+rU0adAPh6gHbuTvEtt90e0D5tUm09g55H482vTGnquzyXfc34y1+X3CyxehsbW+CIY
-         iTqA==
+        b=JBgtygEdGdq1SJvuJfCxIHua+0xtjcPzkfPfXKDQc8tSZEvL+E51my53k5rBUc7Y5S
+         tzxXth9HFLAa6V0yAtbvVWzGoTYSoK1dfizPF7N5d8djL2AUzhQztBWXr4bIwEye9YqA
+         Jihq7vNO1XRxyAHr/IB1J1gPSZosCrv0KQ3uwOExoHPOMMcD6KU9H8YbIlb32AKcGb8N
+         xPZC36crWqI7FQtAI2zyZLuFeKMGE67/+/TB5JDFLMy1cS6OXfUJ3zSokVR/A/A5oS76
+         6L2GV+/hyAqL+78L1V3uwf1VWnhJ39SWrPHiNT++UMTRf/YNptPAwtsIT0c+m0Jh7Cp/
+         3OUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=JMjI2XfaZPZ8aJPRJ2OB+Zq7VaBJBQrbnLsWTaiaZso=;
-        fh=qsNWwcz6aWDVSPKpOJlKo9wkjlB1GRvrz9nLwEd+wjM=;
-        b=AHllWSEmuw70fjgDIgjqNX0XFQ9Y+2NXuT47ULTq4e/Ide650JTtkaxyoLHlBGyh/8
-         FRorUGWDNl7Zce399tGqDSTwRn0odt00yQRsjqI0Tx8+YM2hTR9xH91Z3Hcih2UETYLL
-         ybHNRaHJomOPkmYE+U8IzO45VzU0QyMn8dZhlu7vyYePfj4wWl1D2LLTTUG9970AF/Ms
-         jFZyS4JHoQJT+jHbFcFHRT1FSw77ooU6Oab9QraPv3K98KMKamTwcFhYxKYbXtdbrfKo
-         bW4TMpGYNEnJek3mFxDPGv2N99IFSFE/zNKuBZOju52z6Np7Ksc/WgUOx1MUbclIuB2n
-         Dclw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=QuTQg4Oyw0769gWhs5zrEa0uRXRA0CYB8AH2mm3Alio=;
+        fh=X2GqWc/JIVDQmglKKlEfIBmAr0wOiQtALxG7wgzwjhE=;
+        b=DprL+oYqCVM5BfX9ztKLH1nqTh/I8eHhZAf1yYV0ZEX3wt/aIuOKNK2uWkQGEBcSbu
+         qDp77zNns7b+UZrK70DdFpIn3qYlWSmlhXZT6d8A36Xgw4n4cp3pVvOCLT1IvW6AAReK
+         SIA9PYwnyqh8WqCr+bYjAwQMKgkuneAtFMF0n5WOE3n+kMEZNaqmPosrPyex3WWKRNli
+         AWykYg3oBlVHfU+9ht57LFpkuPBTfu3ZRn7SvDGSQdlglZNvpWinptJ8ovKoCz8rw5/W
+         CDjBq5NIVlGgK3wcx+/zDnGcHUjb8Ty/luwdWVSYlI+x9g0QnkKLUuSiy4NY7505slsW
+         9/VA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZX4VG4A6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W3tqRaA+;
+       spf=pass (google.com: domain of kvm+bounces-1882-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-1882-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qd24-20020ad44818000000b00655d728bf7bsi11629552qvb.227.2023.11.16.01.17.44
+Return-Path: <kvm+bounces-1882-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id g14-20020a17090a67ce00b002772b8993ebsi1643466pjm.159.2023.11.16.01.34.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 01:17:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Nov 2023 01:34:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-1882-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZX4VG4A6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W3tqRaA+;
+       spf=pass (google.com: domain of kvm+bounces-1882-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-1882-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3YUw-0001zd-Kr; Thu, 16 Nov 2023 04:17:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r3YUv-0001zM-6w
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 04:17:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r3YUq-0002FW-0D
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 04:17:16 -0500
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 3EA10B2093B
+	for <alex.bennee@linaro.org>; Thu, 16 Nov 2023 09:34:42 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 61AF5C146;
+	Thu, 16 Nov 2023 09:34:37 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="W3tqRaA+"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8451F1A3
+	for <kvm@vger.kernel.org>; Thu, 16 Nov 2023 01:34:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700126229;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JMjI2XfaZPZ8aJPRJ2OB+Zq7VaBJBQrbnLsWTaiaZso=;
- b=ZX4VG4A6YydvDqZJGTrVTt8hDc/Ckf9igOJWRhabQ8BHVF5EVa0qfMk9uDdUKLslUCcGNC
- Bd1Cv3uBvMhhPXHKiT9JTpBCetuBAvGCEm2Y2TGMb+sYRWafS6U8sitqfTgTH/2SkJeS1B
- LupsmXIGdfUNx61101ntdD915AwIKzw=
-Received: from mail-yb1-f200.google.com (mail-yb1-f200.google.com
- [209.85.219.200]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1700127273;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=QuTQg4Oyw0769gWhs5zrEa0uRXRA0CYB8AH2mm3Alio=;
+	b=W3tqRaA+VMnUBqYtcEY+LDBteStjYe8kOWjRXThLZ2YskGiKctbcXylTXV9mPyoLpLxw1V
+	HY3LQgsy9s6wXUXHZUTlOOtI+PITSyy0G1s7WUi2tZOAfBsRDK63OW4dChaiZYQcbrZp+A
+	l1r32TEoSRVe7714KRdcDYjMltsObbg=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-610-PAwNGo0kOz6NH2ssyj_PbQ-1; Thu, 16 Nov 2023 04:17:05 -0500
-X-MC-Unique: PAwNGo0kOz6NH2ssyj_PbQ-1
-Received: by mail-yb1-f200.google.com with SMTP id
- 3f1490d57ef6-da0cb98f66cso746221276.2
- for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 01:17:05 -0800 (PST)
+ us-mta-158-2G88DXnAPGilh6_9mftiZA-1; Thu, 16 Nov 2023 04:34:32 -0500
+X-MC-Unique: 2G88DXnAPGilh6_9mftiZA-1
+Received: by mail-pg1-f197.google.com with SMTP id 41be03b00d2f7-5be2bce0dc9so84128a12.1
+        for <kvm@vger.kernel.org>; Thu, 16 Nov 2023 01:34:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700126225; x=1700731025;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=JMjI2XfaZPZ8aJPRJ2OB+Zq7VaBJBQrbnLsWTaiaZso=;
- b=jVSQrS5Pf+xE8BQ/nOmpGG1Xja3qD0wavLor4YulyMHGHc4F6BDW9U6L6YaNWVSq4q
- HpJEF4jJDKKqURdk+uEXOJXsht7slfYQQDwwftAPa+L6bjWjfFmEfM/kV3lD3LUPiVZ8
- tD5lBG1VuA2H1eDVhWMesrOtQhzc+uqEYjacu+POLx35F0zALYdtOYMjhP1nqV/y1bcd
- 7yMZSjfi7Zq9A98hmJ/zN0I8Fiv2TABV8YFpzTzm2Cdnl8PEbpTWdbFH9ORgG8nvKWxQ
- XvgCR6MfKNL/HSqRgC3CNUrkvlvbtSKpjDtqK22Ju+AR58KciVo/GfLqjDXZz7EtXmM1
- /j5g==
-X-Gm-Message-State: AOJu0YzV5ktXKROJshr6/rkwOj4nLfmOinOpy0ANtCDNcpCfOb+VmJ8i
- 80AL7kibzyzoJ5B/SR69uSswI7NcjtQ/ANNqYj6VtUkc6a+mURG48+zedKHwS8yfZ+549BgkXt2
- ti8ot1iD5UQlz
-X-Received: by 2002:a25:4215:0:b0:daf:936f:4547 with SMTP id
- p21-20020a254215000000b00daf936f4547mr11461010yba.19.1700126225366; 
- Thu, 16 Nov 2023 01:17:05 -0800 (PST)
-X-Received: by 2002:a25:4215:0:b0:daf:936f:4547 with SMTP id
- p21-20020a254215000000b00daf936f4547mr11460994yba.19.1700126225117; 
- Thu, 16 Nov 2023 01:17:05 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- p11-20020ad451cb000000b0066d04196c3dsm1240544qvq.49.2023.11.16.01.17.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Nov 2023 01:17:04 -0800 (PST)
-Message-ID: <60f67b6b-a9f8-4bf2-a05a-6edc01c5da7e@redhat.com>
-Date: Thu, 16 Nov 2023 10:17:00 +0100
+        d=1e100.net; s=20230601; t=1700127271; x=1700732071;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QuTQg4Oyw0769gWhs5zrEa0uRXRA0CYB8AH2mm3Alio=;
+        b=uw6P6Lfyd3AdZ5OZMrLT1HX8WmMTY01rgQNvE/TfxkXLEKNJKLG7h9fRhnxauTpEDl
+         YApCvkKB/kK2rgMJirMKSN6F1AGHrnLFyeCP4UAQg8ZDbzgatW2UOhPClsLwq8Glns8o
+         2qdaT1yGANYGgQvc5hMG4wZxSOFBZF2EAMO4onU4Zho9l8nr/Znmy5GuZNzYPxL55tl4
+         /vGwdBgO7uSYpEGs18O2IXI2DRcuJ4UvxAnAJmHeChkvHvJHEv7LzoWf+qjL0XK+Vdg5
+         VK0+gSbW92uxnzr4xx7RQJJJy0RMGVdkAssq20Vd/Qs1DZjSFHMZ9ThX303voXaA/ZvJ
+         +8Uw==
+X-Gm-Message-State: AOJu0YyxIbufy8jR49ocdNlFFi5sMOJVFx6WaxZQQrUymT6rHrCxcC5K
+	WuMYkkpj7CMPOQKS8sNfkTeS9J/9x1/sS5YWq++Cn6h2rIpnK3c7tAYksDOyNLziaShX5QWy6k0
+	l0YmGmwUeh54b
+X-Received: by 2002:a17:902:e74f:b0:1cd:fbc7:270e with SMTP id p15-20020a170902e74f00b001cdfbc7270emr5851474plf.2.1700127271310;
+        Thu, 16 Nov 2023 01:34:31 -0800 (PST)
+X-Received: by 2002:a17:902:e74f:b0:1cd:fbc7:270e with SMTP id p15-20020a170902e74f00b001cdfbc7270emr5851458plf.2.1700127270996;
+        Thu, 16 Nov 2023 01:34:30 -0800 (PST)
+Received: from [10.72.112.142] ([43.228.180.230])
+        by smtp.gmail.com with ESMTPSA id l14-20020a170902f68e00b001ca4ad86357sm8743043plg.227.2023.11.16.01.34.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Nov 2023 01:34:30 -0800 (PST)
+Message-ID: <eb794c0d-51c8-ecbd-2b24-d93ae00466a0@redhat.com>
+Date: Thu, 16 Nov 2023 17:34:28 +0800
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 19/21] hw/arm: Activate IOMMUFD for virt machines
-To: Zhenzhong Duan <zhenzhong.duan@intel.com>, qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, clg@redhat.com, jgg@nvidia.com,
- nicolinc@nvidia.com, joao.m.martins@oracle.com, peterx@redhat.com,
- jasowang@redhat.com, kevin.tian@intel.com, yi.l.liu@intel.com,
- yi.y.sun@intel.com, chao.p.peng@intel.com,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20231114100955.1961974-1-zhenzhong.duan@intel.com>
- <20231114100955.1961974-20-zhenzhong.duan@intel.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20231114100955.1961974-20-zhenzhong.duan@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v1] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: Sebastian Ott <sebott@redhat.com>
+Cc: qemu-arm@nongnu.org, eric.auger@redhat.com,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, kvm@vger.kernel.org, qemu-devel@nongnu.org
+References: <20231113081713.153615-1-shahuang@redhat.com>
+ <3a570842-aaec-6447-b043-d908e83717ec@redhat.com>
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <3a570842-aaec-6447-b043-d908e83717ec@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.099,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EiCN0DAkDdMa
+X-TUID: BSE4ZBsi8LP6
 
+Hi Sebastian,
 
+On 11/15/23 20:17, Sebastian Ott wrote:
+> Hi,
+> 
+> On Mon, 13 Nov 2023, Shaoqin Huang wrote:
+>> +    ``pmu-filter={A,D}:start-end[;...]``
+>> +        KVM implements pmu event filtering to prevent a guest from 
+>> being able to
+>> +    sample certain events. It has the following format:
+>> +
+>> +    pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
+>> +
+>> +    The A means "allow" and D means "deny", start if the first event 
+>> of the
+>                                                        ^
+>                                                        is
+> 
 
-On 11/14/23 11:09, Zhenzhong Duan wrote:
-> From: Cédric Le Goater <clg@redhat.com>
->
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 3ada335a24..660f49db49 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -8,6 +8,7 @@ config ARM_VIRT
->      imply TPM_TIS_SYSBUS
->      imply TPM_TIS_I2C
->      imply NVDIMM
-> +    imply IOMMUFD
->      select ARM_GIC
->      select ACPI
->      select ARM_SMMUV3
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Thanks for point it out.
 
-Eric
+> Also it should be stated that the first filter action defines if the whole
+> list is an allow or a deny list.
+> 
+>> +static void kvm_arm_pmu_filter_init(CPUState *cs)
+>> +{
+>> +    struct kvm_pmu_event_filter filter;
+>> +    struct kvm_device_attr attr = {
+>> +        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
+>> +        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
+>> +    };
+>> +    KVMState *kvm_state = cs->kvm_state;
+>> +    char *tmp;
+>> +    char *str, act;
+>> +
+>> +    if (!kvm_state->kvm_pmu_filter)
+>> +        return;
+>> +
+>> +    tmp = g_strdup(kvm_state->kvm_pmu_filter);
+>> +
+>> +    for (str = strtok(tmp, ";"); str != NULL; str = strtok(NULL, ";")) {
+>> +        unsigned short start = 0, end = 0;
+>> +
+>> +        sscanf(str, "%c:%hx-%hx", &act, &start, &end);
+>> +        if ((act != 'A' && act != 'D') || (!start && !end)) {
+>> +            error_report("skipping invalid filter %s\n", str);
+>> +            continue;
+>> +        }
+>> +
+>> +        filter = (struct kvm_pmu_event_filter) {
+>> +            .base_event     = start,
+>> +            .nevents        = end - start + 1,
+>> +            .action         = act == 'A' ? KVM_PMU_EVENT_ALLOW :
+>> +                                           KVM_PMU_EVENT_DENY,
+>> +        };
+>> +
+>> +        attr.addr = (uint64_t)&filter;
+> 
+> That could move to the initialization of attr (the address of filter
+> doesn't change).
+> 
+
+It looks better. Will change it.
+
+>> +        if (!kvm_arm_set_device_attr(cs, &attr, "PMU Event Filter")) {
+>> +            error_report("Failed to init PMU Event Filter\n");
+>> +            abort();
+>> +        }
+>> +    }
+>> +
+>> +    g_free(tmp);
+>> +}
+>> +
+>> void kvm_arm_pmu_init(CPUState *cs)
+>> {
+>>     struct kvm_device_attr attr = {
+>>         .group = KVM_ARM_VCPU_PMU_V3_CTRL,
+>>         .attr = KVM_ARM_VCPU_PMU_V3_INIT,
+>>     };
+>> +    static bool pmu_filter_init = false;
+>>
+>>     if (!ARM_CPU(cs)->has_pmu) {
+>>         return;
+>>     }
+>> +    if (!pmu_filter_init) {
+>> +        kvm_arm_pmu_filter_init(cs);
+>> +        pmu_filter_init = true;
+> 
+> pmu_filter_init could move inside kvm_arm_pmu_filter_init() - maybe
+> together with a comment that this only needs to be called for 1 vcpu.
+
+Good idea. Will do that.
+
+Thanks,
+Shaoqin
+
+> 
+> Thanks,
+> Sebastian
+> 
 

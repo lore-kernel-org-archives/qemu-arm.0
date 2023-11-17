@@ -1,343 +1,248 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp188737ejb;
-        Thu, 16 Nov 2023 22:09:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEGpSUHv3I51AF3uixR+T2xV0fQDuJGNZY2YWNBfTuAgInIB7KDrb88QNMITCgc7mztfeS+
-X-Received: by 2002:a05:6102:1494:b0:45e:fe82:1d14 with SMTP id d20-20020a056102149400b0045efe821d14mr24277850vsv.7.1700201342249;
-        Thu, 16 Nov 2023 22:09:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700201342; cv=none;
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp215778ejb;
+        Thu, 16 Nov 2023 23:18:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEXk1a5IiaRRt2JUma+u6ad6PVG5c1VoF3AJ5TRSxw9b1HK4Z0mvJPThMN/K80Ayw1b/C+1
+X-Received: by 2002:a05:620a:8185:b0:77b:c66a:fe0c with SMTP id ot5-20020a05620a818500b0077bc66afe0cmr10152404qkn.20.1700205507351;
+        Thu, 16 Nov 2023 23:18:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700205507; cv=none;
         d=google.com; s=arc-20160816;
-        b=dIliUj1pXgZkg5yns7XHK+h8tLOorSLVZHJTlnwcasob5M9XnPW3VF11RoRb/PRR2M
-         wTewy9N6O3lRPhdty0M8W8fUkHfKv2F/uYaCuwCSOjzGv1G+Ad+u14GxXEe3/+JqO665
-         tB8tcIXWxiD0hH+H12V37mqAiwfjV1YqZUl51VpGkn6vVqSlRi3iPEcl8DNrvGblvuZB
-         /TLuzsPNJyo1XAPxpH/vKALxEOCZ88T2FWjDVdLT7+hxLT+369Lu7RijcMP8+FNRLqQf
-         vwtf5ihZYosBUgr+Pxu/iQeX1zbWx7xpyvMOAgI2ZpoDwek3PonmiihOLmc/Qf3ictoV
-         1H6Q==
+        b=UkQR1du4l9TOS6ktkKCwVj7p6EEpKsZC/RnTR1AO5WRUYjjixpbeVQtqsUCOgRvQHY
+         tJUCJYpQ/AMkEJEJjE3oRiqAtdgruKa6d+wUCC1w75l02ZFnbHn4YKauKqJNyrvB+HOW
+         a4xNx9JAgcMj6Y7b/AVJDF9yDxDjUZhg9Gtn/PJM7HSrZ9m7YAUQPOByqCntjlFJ+8EW
+         UFRmmG9vNSVWQ3/GcffRV9E6+vGisj7/42XNhdMCz4AqmPltVzVxQPkBLNVeGIK7VRlR
+         GUktAEV/w0aMtn1lFB5NFuk9arwsRwWWB2t5Fkbs44e8h3J03Hw7rdwb4Y0fkH927Dj5
+         FbLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dnx8Wy0kmvFz85ddxqlu+04DnnoUXIEIY79UvTlQTEo=;
-        fh=5VrEBYzADtxQPzmElhFCUva4MXApPvsyAKrfu3SGd9c=;
-        b=AsX4VPlXZqmgbkWfFr323WWH9T6+94tse8RxMaCOlTPpRzHgCTFr6zxhLZsnO9lvWY
-         MyE9rI0B9Tz/R+zHHWSczdfqAEKQyAC6DYDcb4ownMJzV2cHjTWmkRxXD7F1Xdlz7xXz
-         PStrvGNqgZNYhcQZg74hPbmKYQA3bCUK38alHfEGrrxszi1AsOUdJKE1PAirt99ppQeF
-         C5eE3zj4luGwozrvFRVs0m7Z6NCJ6W3VVZj2rpLcV8UoKxWNK468P3Jw3ppWYUqW468Y
-         H+NCnAYtRTYHnVrxvKNeYny8BOJmNdUv8SlySvIkG0ozzoZ20ooYRn3+F//W8IzHCk8B
-         IAgQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=NH5P5ZdsVBU0A7f/AHoAHis/E7XVaC6npXWaZcl7Gsk=;
+        fh=/iNNmKky1DrOYOLWnTIBUxaMagIUG/IvUjT5dhZ7EH4=;
+        b=wLumTzdcddBniwzYXbQbtkdlMDn0oaVdd8a9J7eXnfFukCKpbgYgNwzBEXuZfBEzP9
+         Nc9ecsBjDIiNPGE1Et2WqB3Qi7J/15H6EAAq7te68ZC9F4OHNgv5qWTicwpNWdbS25m/
+         Y6FBytd044f4skeXQbS+1fzzvaO4ZJuDv4K9FPOI4vBgz4Xbj56DmnKuiEqHnuJZ3G+6
+         WBdEl69vzpPCoTGwrC4I9uFJTYhO1OCqITZYPNu1U57coEon1sm0JQfHmaaE+0c3QtEW
+         hirRauGt1brlBncu7voMRjh8cBiy+lqN8BU9jq078/+0UrlPLJ+Qwj+xNQgVBP5dctcf
+         DBHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mh5KBzZf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YZeqypqQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o25-20020a05620a0d5900b0076edc6ca0afsi1088767qkl.172.2023.11.16.22.09.02
+        by mx.google.com with ESMTPS id w7-20020ae9e507000000b0077a7af50233si1143449qkf.386.2023.11.16.23.18.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 22:09:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Nov 2023 23:18:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mh5KBzZf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=YZeqypqQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3s2D-0003vE-71; Fri, 17 Nov 2023 01:08:57 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r3t6f-0005Rq-22; Fri, 17 Nov 2023 02:17:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1r3s2B-0003rZ-FJ
- for qemu-arm@nongnu.org; Fri, 17 Nov 2023 01:08:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1r3s29-0006Hc-6h
- for qemu-arm@nongnu.org; Fri, 17 Nov 2023 01:08:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700201331;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=dnx8Wy0kmvFz85ddxqlu+04DnnoUXIEIY79UvTlQTEo=;
- b=Mh5KBzZfKLCojpXmXsFUuZ9Gym3MqIO1O6o1yhrzQ+S/L8dj92RChB7ARXXu7ynUS9ZsLC
- 8eA7I1N5SIlQFOE/nD939CLV3UYLhdPUlbB49AFb4UlvKY7azfvHDEx9FH9uIEq7Wop9ei
- 8u+lndz15L1MevPjyXQWDGXR1Y3Vtc8=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-SGbQOF6ZNOq2i5k11GsxBw-1; Fri,
- 17 Nov 2023 01:08:49 -0500
-X-MC-Unique: SGbQOF6ZNOq2i5k11GsxBw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 273B73C0BE2C;
- Fri, 17 Nov 2023 06:08:49 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
- (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 194765028;
- Fri, 17 Nov 2023 06:08:49 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: Shaoqin Huang <shahuang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v2] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Date: Fri, 17 Nov 2023 01:08:38 -0500
-Message-Id: <20231117060838.39723-1-shahuang@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3t6c-0005Q7-FI
+ for qemu-devel@nongnu.org; Fri, 17 Nov 2023 02:17:34 -0500
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r3t6Y-0004Jm-Gd
+ for qemu-devel@nongnu.org; Fri, 17 Nov 2023 02:17:33 -0500
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-507be298d2aso2178725e87.1
+ for <qemu-devel@nongnu.org>; Thu, 16 Nov 2023 23:17:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1700205447; x=1700810247; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NH5P5ZdsVBU0A7f/AHoAHis/E7XVaC6npXWaZcl7Gsk=;
+ b=YZeqypqQ+np7QYxoeTfr8yg/OYs4B64DMFZmyNuuCVRFnBabFcdiJ8fh6IyYbuphxb
+ XvcnTDkxGgqWpvzRXI1CHLB34b1K1tdDPBq7khWk6+sACMtcFez3EftMBMxp6FuJG3Ox
+ k8G++LFf5tNKueXa50C6TF8ZQh3LmUP0NIBNs+L51k32G8nZIuaOuI18Ou002pEwFXBy
+ WrG0XTwTo/emPKq6YVbYjBEZxLnyLyiNCd2KFPcBhkAOnMpF1sKaLm+M6Ic8HD7awxlv
+ 2WYrlbOXgeDC+K4o05JdmOtZHxEpWWNApWku5eWB86gqJec29/nc+Pd6AkUoFqNgOHdU
+ YHUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700205447; x=1700810247;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=NH5P5ZdsVBU0A7f/AHoAHis/E7XVaC6npXWaZcl7Gsk=;
+ b=toxypK0a7PFiZxv7sCDJlF+fALrIr6y402Xa5zp2wD83cbS8opWHXV/0c/ANnSzl1Y
+ /4B2w4xW0tuqWUh1VVFS9WLg8b7/W3oQrL/+412iIuCBE9Zzq4M4kDDq5AwlUdl3LKT7
+ vSOlL3B3O2oZmL2waF/VWeCSSsdqn2qmpCOsymMwV0rCJ2PkhfAZXN5iuaX9Uqi3w1Ic
+ Mt6xs23KNpK0wVrnOmj1cZ7mjC2TXWnR51+3d1oyttl/cs0S4dRvBgFnHYxYy0HRxwnU
+ mNlVJ4Pt0Murd4awUuqBCwaXff/DQe5YbCE9woRC5o7B5tmNodKjgkopK1RxW76ZURHX
+ g/rQ==
+X-Gm-Message-State: AOJu0YzedMsqLYEf0TkLgSPy2Q6pIKJe3McNTm5zRthLzCiDXWM21gLs
+ fVXl+MeZEiKgGNX6AgO5EphIWEjPVMZm8EGJch0=
+X-Received: by 2002:a05:6512:11eb:b0:507:a383:fe18 with SMTP id
+ p11-20020a05651211eb00b00507a383fe18mr11716101lfs.40.1700205446406; 
+ Thu, 16 Nov 2023 23:17:26 -0800 (PST)
+Received: from m1x-phil.lan (bd137-h02-176-184-46-187.dsl.sta.abo.bbox.fr.
+ [176.184.46.187]) by smtp.gmail.com with ESMTPSA id
+ t4-20020a5d4604000000b0032fbd0c7d04sm1417408wrq.55.2023.11.16.23.17.24
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 16 Nov 2023 23:17:25 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Igor Mammedov <imammedo@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Felipe Balbi <balbi@kernel.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Helge Deller <deller@gmx.de>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Gavin Shan <gshan@redhat.com>
+Subject: [PATCH-for-8.2? v2 3/4] hw/arm/stm32f205: Report error when incorrect
+ CPU is used
+Date: Fri, 17 Nov 2023 08:17:03 +0100
+Message-ID: <20231117071704.35040-4-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231117071704.35040-1-philmd@linaro.org>
+References: <20231117071704.35040-1-philmd@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.117,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2rDqaiIWqMfi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3EnsQh/x4jqt
 
-The KVM_ARM_VCPU_PMU_V3_FILTER provide the ability to let the VMM decide
-which PMU events are provided to the guest. Add a new option
-`pmu-filter` as -accel sub-option to set the PMU Event Filtering.
+The 'netduino2' machine ignores the CPU type requested by the
+command line. This might confuse users, since the following will
+create a machine with a Cortex-M3 CPU:
 
-The `pmu-filter` has such format:
+  $ qemu-system-arm -M netduino2 -cpu cortex-a9
 
-  pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
+Set the MachineClass::valid_cpu_types field (introduced in commit
+c9cf636d48 "machine: Add a valid_cpu_types property").
+Remove the now unused MachineClass::default_cpu_type field.
 
-The A means "allow" and D means "deny", start is the first event of the
-range and the end is the last one. The first filter action defines if the whole
-event list is an allow or deny list, if the first filter action is "allow", all
-other events are denied except start-end; if the first filter action is "deny",
-all other events are allowed except start-end. For example:
+We now get:
 
-  pmu-filter="A:0x11-0x11;A:0x23-0x3a,D:0x30-0x30"
+  $ qemu-system-arm -M netduino2 -cpu cortex-a9
+  qemu-system-arm: Invalid CPU type: cortex-a9-arm-cpu
+  The valid types are: cortex-m3-arm-cpu
 
-This will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-also allowed except the event 0x30 is denied, and all the other events
-are disallowed.
+Since the SoC family can only use Cortex-M3 CPUs, hard-code the
+CPU type name at the SoC level, removing the QOM property
+entirely.
 
-Here is an real example shows how to use the PMU Event Filtering, when
-we launch a guest by use kvm, add such command line:
-
-  # qemu-system-aarch64 \
-	-accel kvm,pmu-filter="D:0x11-0x11"
-
-And then in guest, use the perf to count the cycle:
-
-  # perf stat sleep 1
-
-   Performance counter stats for 'sleep 1':
-
-              1.22 msec task-clock                       #    0.001 CPUs utilized
-                 1      context-switches                 #  820.695 /sec
-                 0      cpu-migrations                   #    0.000 /sec
-                55      page-faults                      #   45.138 K/sec
-   <not supported>      cycles
-           1128954      instructions
-            227031      branches                         #  186.323 M/sec
-              8686      branch-misses                    #    3.83% of all branches
-
-       1.002492480 seconds time elapsed
-
-       0.001752000 seconds user
-       0.000000000 seconds sys
-
-As we can see, the cycle counter has been disabled in the guest, but
-other pmu events are still work.
-
-Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-v1->v2:
-  - Add more description for allow and deny meaning in 
-    commit message.                                     [Sebastian]
-  - Small improvement.                                  [Sebastian]
+ include/hw/arm/stm32f205_soc.h | 4 ----
+ hw/arm/netduino2.c             | 7 ++++++-
+ hw/arm/stm32f205_soc.c         | 9 ++-------
+ 3 files changed, 8 insertions(+), 12 deletions(-)
 
-v1: https://lore.kernel.org/all/20231113081713.153615-1-shahuang@redhat.com/
----
- include/sysemu/kvm_int.h |  1 +
- qemu-options.hx          | 16 +++++++++++++
- target/arm/kvm.c         | 22 +++++++++++++++++
- target/arm/kvm64.c       | 51 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 90 insertions(+)
-
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index fd846394be..8f4601474f 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -120,6 +120,7 @@ struct KVMState
-     uint32_t xen_caps;
-     uint16_t xen_gnttab_max_frames;
-     uint16_t xen_evtchn_max_pirq;
-+    char *kvm_pmu_filter;
- };
+diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_soc.h
+index 5a4f776264..4f4c8bbebc 100644
+--- a/include/hw/arm/stm32f205_soc.h
++++ b/include/hw/arm/stm32f205_soc.h
+@@ -49,11 +49,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(STM32F205State, STM32F205_SOC)
+ #define SRAM_SIZE (128 * 1024)
  
- void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 42fd09e4de..dd3518092c 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -187,6 +187,7 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
-     "                tb-size=n (TCG translation block cache size)\n"
-     "                dirty-ring-size=n (KVM dirty ring GFN count, default 0)\n"
-     "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
-+    "                pmu-filter={A,D}:start-end[;...] (KVM PMU Event Filter, default no filter. ARM only)\n"
-     "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
-     "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
- SRST
-@@ -259,6 +260,21 @@ SRST
-         impact on the memory. By default, this feature is disabled
-         (eager-split-size=0).
+ struct STM32F205State {
+-    /*< private >*/
+     SysBusDevice parent_obj;
+-    /*< public >*/
+-
+-    char *cpu_type;
  
-+    ``pmu-filter={A,D}:start-end[;...]``
-+        KVM implements pmu event filtering to prevent a guest from being able to
-+	sample certain events. It has the following format:
-+
-+	pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-+
-+	The A means "allow" and D means "deny", start if the first event of the
-+	range and the end is the last one. For example:
-+
-+	pmu-filter="A:0x11-0x11;A:0x23-0x3a,D:0x30-0x30"
-+
-+	This will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-+	also allowed except the event 0x30 is denied, and all the other events
-+	are disallowed.
-+
-     ``notify-vmexit=run|internal-error|disable,notify-window=n``
-         Enables or disables notify VM exit support on x86 host and specify
-         the corresponding notify window to trigger the VM exit if enabled.
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 7903e2ddde..74796de055 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1108,6 +1108,21 @@ static void kvm_arch_set_eager_split_size(Object *obj, Visitor *v,
-     s->kvm_eager_split_size = value;
- }
+     ARMv7MState armv7m;
  
-+static char *kvm_arch_get_pmu_filter(Object *obj, Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+
-+    return g_strdup(s->kvm_pmu_filter);
-+}
-+
-+static void kvm_arch_set_pmu_filter(Object *obj, const char *pmu_filter,
-+                                    Error **errp)
-+{
-+    KVMState *s = KVM_STATE(obj);
-+
-+    s->kvm_pmu_filter = g_strdup(pmu_filter);
-+}
-+
- void kvm_arch_accel_class_init(ObjectClass *oc)
+diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+index 83753d53a3..501f63a77f 100644
+--- a/hw/arm/netduino2.c
++++ b/hw/arm/netduino2.c
+@@ -44,7 +44,6 @@ static void netduino2_init(MachineState *machine)
+     clock_set_hz(sysclk, SYSCLK_FRQ);
+ 
+     dev = qdev_new(TYPE_STM32F205_SOC);
+-    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+     qdev_connect_clock_in(dev, "sysclk", sysclk);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+@@ -54,8 +53,14 @@ static void netduino2_init(MachineState *machine)
+ 
+ static void netduino2_machine_init(MachineClass *mc)
  {
-     object_class_property_add(oc, "eager-split-size", "size",
-@@ -1116,4 +1131,11 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
- 
-     object_class_property_set_description(oc, "eager-split-size",
-         "Eager Page Split chunk size for hugepages. (default: 0, disabled)");
-+
-+    object_class_property_add_str(oc, "pmu-filter",
-+                                  kvm_arch_get_pmu_filter,
-+                                  kvm_arch_set_pmu_filter);
-+
-+    object_class_property_set_description(oc, "pmu-filter",
-+        "PMU Event Filtering description for guest pmu. (default: NULL, disabled)");
- }
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 3c175c93a7..6eac328b48 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include <asm-arm64/kvm.h>
- #include <sys/ioctl.h>
- #include <sys/ptrace.h>
- 
-@@ -131,6 +132,53 @@ static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
-     return true;
- }
- 
-+static void kvm_arm_pmu_filter_init(CPUState *cs)
-+{
-+    static bool pmu_filter_init = false;
-+    struct kvm_pmu_event_filter filter;
-+    struct kvm_device_attr attr = {
-+        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
-+        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
-+        .addr       = (uint64_t)&filter,
++    static const char * const valid_cpu_types[] = {
++        ARM_CPU_TYPE_NAME("cortex-m3"),
++        NULL
 +    };
-+    KVMState *kvm_state = cs->kvm_state;
-+    char *tmp;
-+    char *str, act;
 +
-+    if (!kvm_state->kvm_pmu_filter)
-+        return;
-+
-+    /* This only needs to be called for 1 vcpu. */
-+    if (!pmu_filter_init)
-+        pmu_filter_init = true;
-+
-+    tmp = g_strdup(kvm_state->kvm_pmu_filter);
-+
-+    for (str = strtok(tmp, ";"); str != NULL; str = strtok(NULL, ";")) {
-+        unsigned short start = 0, end = 0;
-+
-+        sscanf(str, "%c:%hx-%hx", &act, &start, &end);
-+        if ((act != 'A' && act != 'D') || (!start && !end)) {
-+            error_report("skipping invalid filter %s\n", str);
-+            continue;
-+        }
-+
-+        filter = (struct kvm_pmu_event_filter) {
-+            .base_event     = start,
-+            .nevents        = end - start + 1,
-+            .action         = act == 'A' ? KVM_PMU_EVENT_ALLOW :
-+                                           KVM_PMU_EVENT_DENY,
-+        };
-+
-+        if (!kvm_arm_set_device_attr(cs, &attr, "PMU Event Filter")) {
-+            error_report("Failed to init PMU Event Filter\n");
-+            abort();
-+        }
-+    }
-+
-+    g_free(tmp);
-+}
-+
- void kvm_arm_pmu_init(CPUState *cs)
- {
-     struct kvm_device_attr attr = {
-@@ -141,6 +189,9 @@ void kvm_arm_pmu_init(CPUState *cs)
-     if (!ARM_CPU(cs)->has_pmu) {
-         return;
+     mc->desc = "Netduino 2 Machine (Cortex-M3)";
+     mc->init = netduino2_init;
++    mc->valid_cpu_types = valid_cpu_types;
+     mc->ignore_memory_transaction_failures = true;
+ }
+ 
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index c6b75a381d..1a548646f6 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -127,7 +127,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+ 
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
+-    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+     qdev_connect_clock_in(armv7m, "refclk", s->refclk);
+@@ -201,17 +201,12 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
      }
-+
-+    kvm_arm_pmu_filter_init(cs);
-+
-     if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
-         error_report("failed to init PMU");
-         abort();
+ }
+ 
+-static Property stm32f205_soc_properties[] = {
+-    DEFINE_PROP_STRING("cpu-type", STM32F205State, cpu_type),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+ static void stm32f205_soc_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = stm32f205_soc_realize;
+-    device_class_set_props(dc, stm32f205_soc_properties);
++    /* No vmstate or reset required: device has no internal state */
+ }
+ 
+ static const TypeInfo stm32f205_soc_info = {
 -- 
-2.40.1
+2.41.0
 

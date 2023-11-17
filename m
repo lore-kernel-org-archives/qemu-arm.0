@@ -1,143 +1,173 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp35851ejb;
-        Thu, 16 Nov 2023 15:27:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF7DBC3rptFtKL23kgQLVPEjH+eTFyLjnefEyjSg5dw8JBP8Zfj/hV4PZ9wqW6AzFGLnJWD
-X-Received: by 2002:a05:620a:3901:b0:777:5d7:d62 with SMTP id qr1-20020a05620a390100b0077705d70d62mr11807920qkn.13.1700177273925;
-        Thu, 16 Nov 2023 15:27:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700177273; cv=none;
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp90866ejb;
+        Thu, 16 Nov 2023 17:34:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHb57jnDlySPB5Imgd/DhS5OKHNHELEAMd1K4LexTd8AuE3kD+TW5Z4MBSS00xwZpEghLLN
+X-Received: by 2002:a05:6358:8810:b0:16b:c640:9c82 with SMTP id hv16-20020a056358881000b0016bc6409c82mr8495653rwb.20.1700184842646;
+        Thu, 16 Nov 2023 17:34:02 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1700184842; cv=pass;
         d=google.com; s=arc-20160816;
-        b=WRFBxNdYqNtMCbFb1acDaGw7A4bWGj4CluLjgZOxVLoL6kZwynVN1cm5sFSuaKeNO9
-         meqmu7fLNlWMILBGlYagEukM5s0DtTiewwQ9Wy/1vlu2/sIawfItuPjrkcy6kZh9Opu7
-         R+aFNAQJDVANwMeQfA2pJCRxneVx0wln3fhBwJJ58WOmLWhoxNexsVmgYfFkd2tZblcu
-         6PE0aMaheo/1f3Gj1E6jIAqOKezCxZyYi8wpacV94GjGgog6DDHaBw7kXhBnsbBFLIHm
-         RBqcIPuzK2UQj+hqjv8LFQTrsGUrNVSn6w56wVyeG3v1A/YrvJF4kCPGwO6o6fuiLTIr
-         vIdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=gxv9sGFzxsweCgWafYofMUeT2ziG9z62TWwC6S+mqLyXstw1O1Kf1TWU3qD0xuTMmF
+         mhQx6Ns0jewB5GeaHnAZs/tno0o284qb7TyL1CFJBunHF8LG7b4jopYjaUy8MRNBdVT5
+         1b/fKce+tF/rCc3lRgpC/xT4jP90LwFMzr9ynAu7GDsZiZryr17LjJKk4zu3i0++p3iG
+         nf0j9FL2EPiFH/JDuMboR0zN/WEZlCUa9/ZzbsaLpDI4FGk0KjCi4ULp/Hal2idanKml
+         QWZFdDtM/F+3aiXm+wufIVsxL9vHJeOfnV8BwxtRzIgKbAu8uPAQBKFitGDPeBxbJ4Ex
+         UkkA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=bsVUf95nsvz8HsXCQuGgq3Eei7P+SUSqTDa5H9h4TAs=;
-        fh=a7pXOaTBsSHAOcDhqYGjai0RHNA6jEApxyxU387OqdQ=;
-        b=ImbRulCLUslC2LJBRhIjbfNcdTJ9cZy17DLqy/+6vgikAt2X7c/wMkLBMi4drcmFvB
-         hgoRSjcgJ3Q17fQ//R7/CLAAyoSgHlEKK9hNmmZNrfyoZ13FX9/0lGFWEzr1FdFMekfz
-         o3wg2fCMxkUiGOCUpAcZIGaOG5ob2K87z0/BXE9EaNwBAF/1ILjCevrmGcjX5aSXq0Pq
-         /lfDBrp8LuKvmz8WduM9BGB/GiUo+5MfQ8BO1X0K9U29UA5zKKguIIuKQrFDwJS/NOg3
-         iXDkihS6++qkOlsygD8IygiwlGMiJTWc4GPr3tsk7e5jZdTsTQ59pxtJ2mfA5LMjEz6i
-         fliw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GncoRWWW;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=5mqW4i3PJrCa+DJExIIF7f3QNjV/bsmML5DQMxdP8E8=;
+        fh=P6VPziF17Jq0Mx4O71XfQzuRZoEbU2qK55OIIpJGdaU=;
+        b=Tof1Jfghi86dfBgtHaL+rJfr6+6sh3CUjOW8uOkdtZY9iTptsLTgsuC25T2boCZamM
+         gIoerYQ1/rRIPgks/tcm+oUvcqMTKLg/+sWkZIlGcEW4bbo8THxC8Ah8aiy9x1lH6hSD
+         F54ZItzj8t7boJ/oU0gRkLTKiG0FXvFhOWvlpY83569DjlMl79COt+uJIfZ5jp7YtUSQ
+         /h1uxzWHDfSQC3ebylKKQQoe/Xf9ht8sFkkTuta5cwxZULQRCwliKKLsCYQa1TLVZWIn
+         27ZVsQpqiDnA7YvNEbaYkTPGfjCuTTyFFiE1n8JbqHeQdYrts+vrdEc5uLRMXUJPLbKy
+         /NJg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@nuvoton.com header.s=selector1 header.b=Z9D11qlf;
+       arc=pass (i=1 spf=pass spfdomain=nuvoton.com dkim=pass dkdomain=nuvoton.com dmarc=pass fromdomain=nuvoton.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nuvoton.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pi26-20020a05620a379a00b007758fab8c64si471046qkn.518.2023.11.16.15.27.53
+        by mx.google.com with ESMTPS id u6-20020ac858c6000000b00421a084839esi663670qta.33.2023.11.16.17.34.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Nov 2023 15:27:53 -0800 (PST)
+        Thu, 16 Nov 2023 17:34:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GncoRWWW;
+       dkim=pass header.i=@nuvoton.com header.s=selector1 header.b=Z9D11qlf;
+       arc=pass (i=1 spf=pass spfdomain=nuvoton.com dkim=pass dkdomain=nuvoton.com dmarc=pass fromdomain=nuvoton.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nuvoton.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r3llR-0005kH-R7; Thu, 16 Nov 2023 18:27:13 -0500
+	id 1r3njf-0002vw-Ki; Thu, 16 Nov 2023 20:33:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r3llQ-0005jw-FL
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 18:27:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <KFTING@nuvoton.com>)
+ id 1r3njX-0002su-C0; Thu, 16 Nov 2023 20:33:24 -0500
+Received: from mail-tyzapc01on20600.outbound.protection.outlook.com
+ ([2a01:111:f403:2011::600]
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r3llO-000399-Od
- for qemu-arm@nongnu.org; Thu, 16 Nov 2023 18:27:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700177229;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bsVUf95nsvz8HsXCQuGgq3Eei7P+SUSqTDa5H9h4TAs=;
- b=GncoRWWWLsKVCCvVH2ZjTj6G7kf2P/ROh2kX7psMEccwp0nM/CfLy1/+8dG5z1Wdx9e+Ma
- aQEhKAEZw+jGiAYr4zrx7Ir4pb5qSh7cZveMzotMnhM+Plns5SjOZtO6pdcZ8FaJderb2l
- yGWPwnP4Bix5HdeL1NCuxhLZFwZ6i6A=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-379-Gd7H5LHOP5OmDx7-DzKyYw-1; Thu, 16 Nov 2023 18:27:08 -0500
-X-MC-Unique: Gd7H5LHOP5OmDx7-DzKyYw-1
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-1ce5b6ec63cso4507955ad.3
- for <qemu-arm@nongnu.org>; Thu, 16 Nov 2023 15:27:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700177227; x=1700782027;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bsVUf95nsvz8HsXCQuGgq3Eei7P+SUSqTDa5H9h4TAs=;
- b=w0ltRnlXotzMIhGL3UHpy7u/shlMl4Rnkxj1whS6wIPT/I4jhJQsm+PCjDzvv3QlqQ
- A4ifMqyFLXoBM8TkePdS9yG8zTTXgZCtdJTDCWzAk3ERz6J0L3VceDGNQyIro8TklrQc
- cAOYZ2Rrr2I+ibH3x5pT6cDtivTywwTezGMaFFPEoDkAbnoZZVIhpdD+lLfHMswYfAzb
- DIT2QbM9gm3pVtn+aOIG9ulEEd9BtnYk8WXZ1DRhvr2CLkJB9E7dTVhRrC1aNlLCuiBz
- SsktdyByMea8Ir+rTDjAiO0zmBlUOp3sbsD+Jt3t+ebe5hFOULZwMg9aaoYdEIp1H/wS
- 7lEw==
-X-Gm-Message-State: AOJu0YyangiI6Ix9SgE+OLjwXWeQY3jBvnJV5Retand81NS6yr0/3cZx
- UetU7nDYoJznmI+JUHtDaVfSK/Jo6zFck1Dzt1YEc7AUEsy+OaAZjSM3Pr3XYwNQBExihQd2vv1
- +dZRy1c4XvIBc
-X-Received: by 2002:a17:902:ecc8:b0:1cc:3875:e654 with SMTP id
- a8-20020a170902ecc800b001cc3875e654mr12056118plh.26.1700177227037; 
- Thu, 16 Nov 2023 15:27:07 -0800 (PST)
-X-Received: by 2002:a17:902:ecc8:b0:1cc:3875:e654 with SMTP id
- a8-20020a170902ecc800b001cc3875e654mr12056063plh.26.1700177226745; 
- Thu, 16 Nov 2023 15:27:06 -0800 (PST)
-Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15?
- ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
- by smtp.gmail.com with ESMTPSA id
- d8-20020a170903230800b001cc0e3a29a8sm202183plh.89.2023.11.16.15.26.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Nov 2023 15:27:06 -0800 (PST)
-Message-ID: <7252553e-9ab3-4c8e-a867-55c57d0178ba@redhat.com>
-Date: Fri, 17 Nov 2023 09:26:50 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/31] Unified CPU type check
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
- pbonzini@redhat.com, peter.maydell@linaro.org, imammedo@redhat.com,
- b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com,
- kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
- rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
- laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
- edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
- aurelien@aurel32.net, jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
- chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
- ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
- jcmvbkbc@gmail.com, shan.gavin@gmail.com
-References: <20231114235628.534334-1-gshan@redhat.com>
- <efc49f7b-70f5-4ce9-8179-79e8a6abd732@linaro.org>
- <78526851-6d44-4c18-97b8-57462fb42ab7@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <78526851-6d44-4c18-97b8-57462fb42ab7@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <KFTING@nuvoton.com>)
+ id 1r3njU-0000jk-2J; Thu, 16 Nov 2023 20:33:23 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=P9tAsWs8yagIkX1gyZbf22EsoM73GRbxBLbThpgC5iccnsR90f9x6uzNGztgJ1YRNU9hlyUtKdosoVq/q5icNmSiJAwEfTPMR5P2QD/i3AnJiCZU2IggU0ckWgq2566FBwojwq1FQVHdkt5lNSW66OilsxAsyb557EAidGQf80xtXDTLu6VuX++yZ985zOTTTdIYf34CAFWrCh7zjNB3kITofJZNjsoE62I121Pd4BaBA5cvCRTEz1+w803dGq9Vafig+EFZZ3z69hAsC69DI41e7o+D33eDonR4AL7SKBkCTMwB2TCRPdRrxOeBz058/e2DM5kroNZ+shtUfK8WKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5mqW4i3PJrCa+DJExIIF7f3QNjV/bsmML5DQMxdP8E8=;
+ b=QWU8oPopj7AfMc76gU2vGSwxPR9/V81vl+MGBQAJUqs9fgfG61JBeYR1YjO7wl0YOULND9+4K/Y5vq9DLAqwwesjayhfF3q7vrX5Zqrp1JX7KOJs7IIKWkVfhY2MF0gZemnVk9+WahPj713xx2MG32epNc7t7jXvWT4v2cyBZJcx6UO1oZlCqdhN5nY4KjK1MNpllZ9eNsdsQJNRPQiaRy2W9kEcwoGJ9ql3xu9D3pABybVxoos3lFWB8qmdMqZvhqqPyEhMG/lhmxF10eHJjNWtyxbNFNLmrQeEYVoN88CM9JkhSNf0Hg3c033MNxMGsLHis4TfQK+p7rcGUk9GLQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nuvoton.com; dmarc=pass action=none header.from=nuvoton.com;
+ dkim=pass header.d=nuvoton.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nuvoton.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5mqW4i3PJrCa+DJExIIF7f3QNjV/bsmML5DQMxdP8E8=;
+ b=Z9D11qlfycuWYjCIPweXSXYJGfHEvYmoK06uhaUxPLpxDrxiNteCgp++fOP2XnUGM9Dn/IhhkIp6TBbeP75xHQuFa+W3BEht8I0RpjqTk5t8PPAJRwp49SgKtkXDD1HtO0eXU/PJ+DUp6aRYuVdHXIioQAO1lacpGX5+bVxZ6K4=
+Received: from KL1PR03MB7744.apcprd03.prod.outlook.com (2603:1096:820:ed::12)
+ by SEZPR03MB7417.apcprd03.prod.outlook.com (2603:1096:101:10e::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7002.21; Fri, 17 Nov
+ 2023 01:33:09 +0000
+Received: from KL1PR03MB7744.apcprd03.prod.outlook.com
+ ([fe80::1947:30aa:d3b2:ac3b]) by KL1PR03MB7744.apcprd03.prod.outlook.com
+ ([fe80::1947:30aa:d3b2:ac3b%5]) with mapi id 15.20.7002.019; Fri, 17 Nov 2023
+ 01:33:08 +0000
+From: "KFTING@nuvoton.com" <KFTING@nuvoton.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Nabih Estefan <nabihestefan@google.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "wuhaotsh@google.com" <wuhaotsh@google.com>, "Avi.Fishman@nuvoton.com"
+ <Avi.Fishman@nuvoton.com>, "KWLIU@nuvoton.com" <KWLIU@nuvoton.com>,
+ "tomer.maimon@nuvoton.com" <tomer.maimon@nuvoton.com>,
+ "Hila.Miranda-Kuzi@nuvoton.com" <Hila.Miranda-Kuzi@nuvoton.com>
+Subject: RE: [PATCH v5 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
+Thread-Topic: [PATCH v5 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
+Thread-Index: AQHaCP7Q61gwJ7Nz0k+5kv3ABox+AbB5IF6wgACghACAAPRM8IACi7UAgACYwFA=
+Date: Fri, 17 Nov 2023 01:33:08 +0000
+Message-ID: <KL1PR03MB7744B1E8D67CA72BCA412826DBB7A@KL1PR03MB7744.apcprd03.prod.outlook.com>
+References: <20231027175532.3601297-1-nabihestefan@google.com>
+ <20231027175532.3601297-4-nabihestefan@google.com>
+ <KL1PR03MB7744A70A81045E5DC49C8191DBB2A@KL1PR03MB7744.apcprd03.prod.outlook.com>
+ <CAFEAcA_9HT=tccyTu9RffMxq7Cm5GEanM+OcSxfkpbnJW2m6hQ@mail.gmail.com>
+ <KL1PR03MB7744B774223D04CF466EC2BEDBB1A@KL1PR03MB7744.apcprd03.prod.outlook.com>
+ <CAFEAcA98TjKa7tK+dgp7d0R4BcYv+s-jo+AwTn0L2RFYZkm09A@mail.gmail.com>
+In-Reply-To: <CAFEAcA98TjKa7tK+dgp7d0R4BcYv+s-jo+AwTn0L2RFYZkm09A@mail.gmail.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.117,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nuvoton.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KL1PR03MB7744:EE_|SEZPR03MB7417:EE_
+x-ms-office365-filtering-correlation-id: d9a0714f-0cb3-4c88-467a-08dbe70d276a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: M90zUmlXqFzO8Dkmt9qfKlimxwzxXUG9bKn9iJefKxDgQjIdWVyKbA68AvZKU6zZmpwxbVd/9wltr/oWHPBQ+DIlrcfWfZzIfqnH4nTnhEXtTfU49D8pYFwUcJ/wFH21bwAvPiYxGcBlnztkCQ2X/N+dG3PS6IIvcMm0Nxyi6YYjAvdhNsgvzijUqd+GrvZLPKPgI6pcMYjUWbrWtf54f7iveTLpA19WzGX9Bkm7TM69r41U3JQz9nLSfjuD2UXzdC7HUVJRhI2ZZEOG7lNQCtjYb1N9Uc6pInPCy4QHALYAZQbxmPbuyrkhCMZvpJeUJSFcM/q0Skx7tLDtIlJNY/IA7hqhXwZahlPXLaz0iwgEmrcmlgUqpGk1mh0stR86XAMFKOrC2YLW2cAlRCG3SD3Zx9uOLlKUHW14Z3vE+tVP4gWsbYmdXrXEuVrMxPyACx4VL/30XvFpK5nA3DbJ5016DlsPKVcB3Er96Wppimug0yNbUHh4We+8L5oVpfivfT+06uAEoqGQnLVBCBon47TxmNrVcg9KWyWDwVtDFmBoCWGqXM54ObqfVuDNsTRimKuloOTDqYRG6SS+TRQOMt9qv4+oOZ9dar7VgZkTt2RfCbihKxEb9cldkpwSFNG/FTAumH4f/GOg4pNPCjA1Hw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR03MB7744.apcprd03.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(39860400002)(396003)(346002)(136003)(366004)(376002)(230922051799003)(186009)(64100799003)(1800799009)(451199024)(15650500001)(2906002)(33656002)(41300700001)(316002)(107886003)(54906003)(66556008)(64756008)(66446008)(66476007)(55016003)(71200400001)(38070700009)(8936002)(52536014)(38100700002)(8676002)(76116006)(66946007)(6916009)(4326008)(966005)(478600001)(86362001)(5660300002)(122000001)(83380400001)(7696005)(45080400002)(6506007)(26005)(53546011)(9686003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?C4SlteNtG7olhhoZxz4kGN3RNSp3YK3yaieGARzvzdxsz7A81ZgSWE7NEUDn?=
+ =?us-ascii?Q?A4z240rcR2QOL7YalfrBTWitiVq7ClPm3LkGG/KEWndKs2tZZeyD+/92Hc3o?=
+ =?us-ascii?Q?/a02+BUB1Yiop0Sqp6gtG+IZA4+rwegoeTgAeBiHtH6f0nof4qfClPV1BJ+F?=
+ =?us-ascii?Q?wdDg4IzQPHbJ1AlOhFwE5YW771w5J6qnoGgDOoMMADSj5FpnkwMJyvFLXNOU?=
+ =?us-ascii?Q?Q9aIYhUkEpFl/NkY3ztypBcoML+MMJCV46i6lXAO2B2C49CoJtr7L8EakOho?=
+ =?us-ascii?Q?SVBAXNki/yYuIhWXiY2dHhP/fMWTAVAUoI33bElBI3HMShqnhdI1yrbpLDi5?=
+ =?us-ascii?Q?9iC+KXf5KP5qEaowj57meoLaRDyanft1tQUg2PdrpOIxcVInZOo5TNH0/w4T?=
+ =?us-ascii?Q?6MzaEIz7B2HU2pilJxvpY8wC5sKoZSQXD95a1A0B7/AxvtQ+2uSb0yS961MT?=
+ =?us-ascii?Q?UKP7ke+dKJu7DuLUN1TU8uhEE8iaYSz4sowT8MJJmACbX2bi0WSd3bxemgrD?=
+ =?us-ascii?Q?+z/SrqQHtFvByz2+r20NvUWG/nrD95sTKy5lJbBT2D2p6f8UroAXREr5Dtlm?=
+ =?us-ascii?Q?ayOD6uCM+8HFK7VHrbeFp62c2Y3yDgYDfaZmzHEWiBYnLVANe2T8CUrddJT+?=
+ =?us-ascii?Q?MrRJ6PrbJRHDNmXgy6HlEo5uTzpX2VddmmAAnJWybbKOMlwguASt2Ks26ndT?=
+ =?us-ascii?Q?9bvzv8qOQZd9VZAbmVqjIsE4+4R1QwF2SlwA+kItpg5b7Xn0RNcYn/uvRv9i?=
+ =?us-ascii?Q?ZUBtRwRI5xen2l1eXMHxHw++e7VnzGDamJ3YyksF1ezLv3BoW+5XZLiubBHA?=
+ =?us-ascii?Q?vHdiSrPM70OC6eaL4Qu62j9KqXg2NT/tUeiXAUqFtmUfEQ2uMNm4tXi/x7ig?=
+ =?us-ascii?Q?7E6BC2scy9Hf9OfM6QDPjDNTWAwNv/dGYxoo+PmvBSYx93sg58QaNEDnGd50?=
+ =?us-ascii?Q?L5knXkm/QYcO2IANjeSIUs+cDHzzNOTuNMC8qUzq2FKM8sPIxiRRF4UfINaI?=
+ =?us-ascii?Q?hYGm6qxmaoPpucGjiouQSmgtGlZk4Zzup7A94s7qfOYzawELJhSf4AYl1lHx?=
+ =?us-ascii?Q?kQaS6EEOqh0XpH8/bRvpF7s4HtSsljpD4z6nkP13kOM7vMHPgbg1YYsLdTBY?=
+ =?us-ascii?Q?2nqNMzAl+c1R44ZnXtTPjlnhu+yvFq9lrGhlrvlVEakVYbeNL4h+yglviyCa?=
+ =?us-ascii?Q?W5dPNXo2A6yEW7LcL+TXVeaOhpW7zZnL/yMBJPlNnbfscSuDHpwyzDzHdLwi?=
+ =?us-ascii?Q?Fsy1gryb3qQJ3Od6mb+gYV3yWm70tu5UOKnxYw1rsuBhFAZgMaLHj5VhXgfe?=
+ =?us-ascii?Q?K150rfslJsnxuVDAjvRznuMi7DbhgM6zd4Y1O8TxfsrzrP3F3FGb6DzcYYTR?=
+ =?us-ascii?Q?PLbCUrgwC4C2nx7KFvIXvdO6d5vAtLwfMNKtuibqapxzTpMjTMp8hmvLGUYg?=
+ =?us-ascii?Q?bGRjpYLPW9DDFecyN9vVcLaVo/0RgmHtdaE2fAZM+3Z6op0SVpuqzyF0K6Jf?=
+ =?us-ascii?Q?lka3IEW84aQhJBfHaS6Qu9jtSA8IyDRxZwQSaIGxwMdl+xfhc0aNpj4Y9npM?=
+ =?us-ascii?Q?58/W/svlKNoX5PriRATdfiU+GpGgRXMlL04sQDUB?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: nuvoton.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB7744.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d9a0714f-0cb3-4c88-467a-08dbe70d276a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Nov 2023 01:33:08.4897 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a3f24931-d403-4b4a-94f1-7d83ac638e07
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +Ll+L5RcZoBDjUrAPR/mfoKGRo0FpvNm0JGudV/1hDQksXUjNXkugRo/vpXKRuvD5Dlz1QYM0X97Ob116iB+jQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7417
+Received-SPF: pass client-ip=2a01:111:f403:2011::600;
+ envelope-from=KFTING@nuvoton.com;
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,35 +182,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bZ9dLeRQ3p+Y
+X-TUID: xY+nFH8zzKj3
 
-Hi Phil,
 
-On 11/17/23 02:20, Philippe Mathieu-Daudé wrote:
-> On 16/11/23 14:35, Philippe Mathieu-Daudé wrote:
->>
->> I'm queuing patches 1-3 & 5-23 to my cpus-next tree. No need to
->> repost them, please base them on my tree. I'll follow up with the
->> branch link when I finish my testing and push it.
-> 
-> Here are these patches queued:
-> 
->    https://github.com/philmd/qemu.git branches/cpus-next
-> 
-> I might queue more patches before the 9.0 merge window opens.
-> 
 
-Thanks for queuing these patches, but I don't see 'cpus-next' branch
-in the repository. Please let me know if I checked out the code properly.
+-----Original Message-----
+From: Peter Maydell <peter.maydell@linaro.org>
+Sent: Friday, November 17, 2023 12:25 AM
+To: CS20 KFTing <KFTING@nuvoton.com>
+Cc: Nabih Estefan <nabihestefan@google.com>; qemu-arm@nongnu.org; qemu-deve=
+l@nongnu.org; wuhaotsh@google.com; IS20 Avi Fishman <Avi.Fishman@nuvoton.co=
+m>; CS20 KWLiu <KWLIU@nuvoton.com>; IS20 Tomer Maimon <tomer.maimon@nuvoton=
+.com>; IN20 Hila Miranda-Kuzi <Hila.Miranda-Kuzi@nuvoton.com>
+Subject: Re: [PATCH v5 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
 
-$ git clone https://github.com/philmd/qemu.git philmd
-$ cd philmd
-$ git branch
-* staging
-$ git branch -a | grep cpus-next
-$ echo $?
-1
 
-Thanks,
-Gavin
 
+On Wed, 15 Nov 2023 at 01:35, KFTING@nuvoton.com <KFTING@nuvoton.com> wrote=
+:
+> Peter Maydell wrote:
+> On Tue, 14 Nov 2023 at 01:24, KFTING@nuvoton.com <KFTING@nuvoton.com> wro=
+te:
+> > Signed-off-by: Tyrone Ting <kfting@nuvoton.com>
+>
+> Hi; can you clarify what you mean with this Signed-off-by: tag?
+> Generally we use those where either you're the author of the code or else=
+ when you're taking somebody else's patch and including it in work you are =
+sending to the list, and it doesn't seem like either of those are the case =
+here.
+
+> Thank you for your comments. In the email thread " [PATCH v4 00/11]
+> Implementation of NPI Mailbox and GMAC Networking Module", it says " Hi; =
+I'm afraid this is going to miss the 8.2 release, because it is still missi=
+ng any review from Google or Nuvoton people."
+>
+> Is it okay to post "Acked by:" or "Reviewed by:" by someone from Nuvoton?
+
+If you've reviewed the code and believe it to be good (i.e., it doesn't nee=
+d any changes), then, yes, by all means please post your Reviewed-by tag. A=
+nybody who has done the work of code review on a patch can send in a Review=
+ed-by tag to say they've done it.
+
+If you've reviewed the code and think there's something that needs to be ch=
+anged or that you have a question about that, you can reply to the patch to=
+ say so.
+
+We basically follow the same process here that the Linux kernel does; you c=
+an read about the various tags here:
+https://www.kernel.org/doc/html/v4.17/process/submitting-patches.html#using=
+-reported-by-tested-by-reviewed-by-suggested-by-and-fixes
+
+The meaning of "Acked-by:" is a little more disputed; personally I use that=
+ for "I haven't reviewed this code, but as a maintainer of the subsystem I =
+don't object to it".
+
+thanks
+-- PMM
+
+Hi:
+
+Understood and I'll use the Reviewed-by tag then.
+
+Thank you for your advice.
+
+Regards,
+Tyrone
+________________________________
+________________________________
+ The privileged confidential information contained in this email is intende=
+d for use only by the addressees as indicated by the original sender of thi=
+s email. If you are not the addressee indicated in this email or are not re=
+sponsible for delivery of the email to such a person, please kindly reply t=
+o the sender indicating this fact and delete all copies of it from your com=
+puter and network server immediately. Your cooperation is highly appreciate=
+d. It is advised that any unauthorized use of confidential information of N=
+uvoton is strictly prohibited; and any information in this email irrelevant=
+ to the official business of Nuvoton shall be deemed as neither given nor e=
+ndorsed by Nuvoton.

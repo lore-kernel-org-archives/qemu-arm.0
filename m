@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp67919ejy;
-        Mon, 20 Nov 2023 13:41:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHQ3dAl/zPjN5spTjsdNqFC2blXfEkDO8smN/0hBPeC1ghJxgN/8ixKD+x7C3gJ45mg3s9s
-X-Received: by 2002:a05:6214:c88:b0:675:54ce:8436 with SMTP id r8-20020a0562140c8800b0067554ce8436mr9165975qvr.42.1700516459993;
-        Mon, 20 Nov 2023 13:40:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700516459; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp68015ejy;
+        Mon, 20 Nov 2023 13:41:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHUjWNSTZ+SlSF9n68CudLRMk+Sq7MTyPSrnuHojkE6otzCbXl02NJXCRvUIU5GcuEFwj7h
+X-Received: by 2002:a05:6358:892:b0:16b:c401:4ee4 with SMTP id m18-20020a056358089200b0016bc4014ee4mr7530462rwj.2.1700516474247;
+        Mon, 20 Nov 2023 13:41:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700516474; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eq8W1rAWRHOfRMBvweBYpgstaBbbomB8H9itoCXbA3p5imQFA7qX6rcnUpL0i4If1p
-         3J6Et8aHz+8sdBINj0/V62fGzZesT4dB+dteIrAscKuC5FvEuIcMobk1L1FKG424mF33
-         Qc33W2x45RQE1Zp1bh8v+iVQtMznZBnXMzc9Vipgv68abMFu6DN0lvKPTw0hl7rbBUxg
-         jibel+chGaa1U3RWhj7gqhPxQHrijrEorNeJyOsQi0PqPd/E3u9L5PzGhxm6soprb5WG
-         grEl8HqSC4OaEVGwL11olcTk0LeSo+tsyQXx+qPXQLWy6d+Qa1Mk3/nkxjdE6sFk8WMa
-         Rqvg==
+        b=U3LzGBbBxL7CF4NHqggWh1lj7tMCw+ujbiy//2ShKdQoo72xNt5QQUV70XQ7mFcaMS
+         TeEBOL4QVhnHP3IpDPXhmEntyV8cnNDFeCOCMU9PKuiyi4qMQjOvgyxmW/IUJIl6y6lN
+         O7rjYVvk8DV5aCucyKFlGg2dBHhg+bQ4jgYue3lkSeZPmvtm87UfKFnK8O0ZFsb4u3fM
+         rcAiBf+P2WiNSstqpflYkfJBlvY/Kl9dNsMs37VMkm6QB9lmLs/Xuu5GvhISHZttt22k
+         LoDRaAufI6gUS1rIjC+R9rnJ6rYi8Qi940UqFrQslpSl54zhXJraeDN3AXleR0upbaFC
+         SwFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3MTfYspIRofl2d+GaSi2n8kVPRZkUBrCgY4w5h7qsWI=;
+        bh=LccZbSfVbRBJBP3hDaCoexHeaPDYfSMKOISo4dOr+pE=;
         fh=toXMQ9nuJ3L4CLQ8EKaTQ8L/ltDlD3GauRZSJpgYVzU=;
-        b=g5SFI/bDCk5fMHgOZPFi5qqSHyvNUcdaFAvMgm7ukhwIc1Pdq4PR3Z/Fp0sG45ILzZ
-         CwH0X7EJropTtqezMX3ruB85+EsuJwQ13MJKdMGYdGfB+YyaiW/IC5vFlkHVQNdXtkhO
-         nBSLFxBGUv774+FgFns0+NzkARtCdFkE8X03zXPn2cAIJhXh+QYqNcmI9+xG9z/GLbL7
-         HgLdCAdpTygEh0mGVh3p/Xw0PdcfJLNTOdugdgcRQ/sDrOWHYOc4UJFZFxFXbguU/Spm
-         ugzmzGOFd78CkGHYJXskousAtZBaRhQ9ioRkM6hmQJGXZ549N2VlCyR0EOo5jnEIonzd
-         09Vw==
+        b=fQj8ltU6tw6qXkt45xrXHNmr39nhqLkNw7zlhBkiVuiVuw81H1iScyX1bV6iIDc2m9
+         lvv3erVzCcQxdmJvdpwJ4m5Qe4W2LeM+cqLaisLbvljQOIwF++UmNsJbYVJp1gO2bCTS
+         FXu0Mj4xbuj2hMNN+tQIdxjyfK2gwGhn8TgcGIVTIUjIZTEAhRkpMAo/H+nbQMNQNZJ8
+         o/V4EjlOc4vAi2INtE/1NwoRO43swij1LntEZk0h/m5q+xvusp8SeOgdaZ8qmGLvWyxg
+         pOyGmxT2n/cRbYUzkaiKgSlAGcXPBqUc1dKu8d9uHYdN9Fnc30F4aOPY+ouFKYbb7p8v
+         ZWxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rHCisfkl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MADWJtaX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3-20020ad44983000000b0065b21846028si7839493qvx.531.2023.11.20.13.40.59
+        by mx.google.com with ESMTPS id i16-20020ac85c10000000b00417ba0580b1si7923532qti.626.2023.11.20.13.41.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 13:40:59 -0800 (PST)
+        Mon, 20 Nov 2023 13:41:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rHCisfkl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MADWJtaX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r5Bvt-0005xa-NS; Mon, 20 Nov 2023 16:35:53 -0500
+	id 1r5Byx-0003Zh-SD; Mon, 20 Nov 2023 16:39:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bvr-0005dh-I5
- for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:35:51 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Byw-0003ZG-VU
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:39:03 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bvo-0004An-29
- for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:35:51 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-32df66c691dso3101499f8f.3
- for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:35:47 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Byv-0004hC-DL
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:39:02 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-332c7d4a6a7so848313f8f.2
+ for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:39:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700516146; x=1701120946; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700516339; x=1701121139; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3MTfYspIRofl2d+GaSi2n8kVPRZkUBrCgY4w5h7qsWI=;
- b=rHCisfklOOZap7cAJbGgmlFoeqKULQ+vmkXMpcqkYm1FMUQgU/uqY8C9XKoF4vJcon
- EOQClWEzXKJ2tY6eaWz7z/R0M14kcrBKyL/UP5MCMcG80eRYNepDWAI3pLooUsXP4Ay/
- CY4lariSQW5YBcH8ebqgWUKiVFq+tYlHoQxeeakHbfLX4xpB6upFB8/GEGOrO7cfUA9b
- /6+weJHKreC4kXBwZJHu1lVuo2R4Rcn5PPa1RS3Pp7YGoxdvhdJ1bJ2j5i9vSOYFNJ/H
- ssgKeIliyOmCpHjweuy/hFVETRZOL932UePeKnUuR3AJlvM7eThIZoEO6hAlE+YChpdH
- 2frg==
+ bh=LccZbSfVbRBJBP3hDaCoexHeaPDYfSMKOISo4dOr+pE=;
+ b=MADWJtaXVoHsCWOD+zESN/3a8CQwB8y6UkhtV7nLTVfXU3i2kP7GfweaI+eeaiQR3+
+ Frwu/P2NeKpWy9e4KUEAxvacAnGmHx1Q8+R4oNJh/nK8Vsm1Bz5sjCCXmbrkAUqpsUqk
+ Ur19VJKguk4i8gqRs6TR8iyjj4PLZelZ0YKUJP/lQIIMty4mKWFdamF6egri1XG7bjy0
+ v9krfBWO3Zz1H9ACxpFWzMWCdbyauTAiarahT4BL8IxHDoDeKFeXkzh+Fm9aFhBcFvyA
+ q0jYHHFpM6BRV824gmgzF3gvPhpucgOpZsnSocLyd0lpYktmZslluLmD2ZWbgYAOQLq3
+ nkCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700516146; x=1701120946;
+ d=1e100.net; s=20230601; t=1700516339; x=1701121139;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3MTfYspIRofl2d+GaSi2n8kVPRZkUBrCgY4w5h7qsWI=;
- b=FBfKuTjbAZrZi/QpVWv8cP+2YL4VeFoGJBehPqePcu/ndUPBxeaNpC02PMrVhQA8qO
- 9bM6/Q8wWjoE9R7R54RwnZSzswK/M80TQanwii1yindUUZZo2EKkDZs3q+kYJBE0klPL
- SgDOR77mGrmJkE9M/CBuE7gLxjUA2KiivVuKKol6Jg/Q3IMN+Ky5GZMN4An0HZS53H6M
- SyFTjAoWaeuYqjFcDIOn4UI+aoFDWX3WPGg86Bcx3U4o05+EwvYM19J8nbLFtJD2YxLQ
- MSv5qGBQzEaqJp51EOS08NTI4jrDwzmyC/ll+Nl5DzID7/XWza58fiMS4lTfQka+YiVP
- IXnA==
-X-Gm-Message-State: AOJu0YzIYNVPrL6cCslXHxvz7CRvFIuiPeVPL7DAce5roSdlSEV8rXS2
- zOldmt8U7t4/cR4X8kznp4WnnJZ4bvYmpKV+rk8=
-X-Received: by 2002:a5d:4012:0:b0:32d:8855:138d with SMTP id
- n18-20020a5d4012000000b0032d8855138dmr5256601wrp.66.1700516146517; 
- Mon, 20 Nov 2023 13:35:46 -0800 (PST)
+ bh=LccZbSfVbRBJBP3hDaCoexHeaPDYfSMKOISo4dOr+pE=;
+ b=td6QJmM/cms23XynU+Qx2/oGR9TRez5uQ7LPgxEWeVUeW+7F0dV+zx0rG4llv7SCTk
+ nYMNlfGQBRdXF3sH73EnWwvoSGl6t7w4lKaXCl3xnmFV5iAkTFK40YtvavdO1t1AkzDu
+ j8jHc7CRtf2GCWhAdSnRMkDayZ3QYXOhiyQpiwvbNQSfMFa0GT8imos+S+iOq3JIGiYp
+ K2risk8rprsgBelq4BQWNqypFqTlAT/yBLHsN7VktpQYtVmsTjaZbAjs5pfIXZ5KPIS/
+ j4NXOy4NeEhMkjjAKw6mFwI1dbBw+njYr54LV9NcegLvxpZ/3oli7nhQn8MMQi42ilje
+ WyKQ==
+X-Gm-Message-State: AOJu0YzmxBLVQuwBbAWOPJoWQ1Y25e0xTVSmpsnyGH39b6F34V8G7Zz8
+ 1e+RETGXiwYPUdyj3ev3XJbvi5/TKDmIaP4dI94=
+X-Received: by 2002:a5d:59a3:0:b0:332:c4ce:5347 with SMTP id
+ p3-20020a5d59a3000000b00332c4ce5347mr3132687wrr.48.1700516339396; 
+ Mon, 20 Nov 2023 13:38:59 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.190])
  by smtp.gmail.com with ESMTPSA id
- v9-20020a5d5909000000b0032f9688ea48sm12319327wrd.10.2023.11.20.13.35.41
+ z4-20020a5d6404000000b0032fc5f5abafsm12233916wru.96.2023.11.20.13.38.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Nov 2023 13:35:46 -0800 (PST)
+ Mon, 20 Nov 2023 13:38:59 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -99,18 +99,18 @@ Cc: David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Xu <peterx@redhat.com>
-Subject: [PATCH-for-9.0 14/25] backends: Use g_autofree in
- HostMemoryBackendClass::alloc() handlers
-Date: Mon, 20 Nov 2023 22:32:48 +0100
-Message-ID: <20231120213301.24349-15-philmd@linaro.org>
+Subject: [PATCH-for-9.0 23/25] hw/misc: Simplify
+ memory_region_init_ram_from_fd() calls
+Date: Mon, 20 Nov 2023 22:32:57 +0100
+Message-ID: <20231120213301.24349-24-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231120213301.24349-1-philmd@linaro.org>
 References: <20231120213301.24349-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,107 +132,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ll1ShAVRKQQZ
+X-TUID: 5kop87eENxz5
 
-In preparation of having HostMemoryBackendClass::alloc() handlers
-return a boolean, have them use g_autofree.
+Mechanical change using the following coccinelle script:
+
+@@
+expression mr, owner, arg3, arg4, arg5, arg6, arg7, errp;
+@@
+-   memory_region_init_ram_from_fd(mr, owner, arg3, arg4, arg5, arg6, arg7, &errp);
+    if (
+-       errp
++       !memory_region_init_ram_from_fd(mr, owner, arg3, arg4, arg5, arg6, arg7, &errp)
+    ) {
+        ...
+        return;
+    }
+
+and removing the local Error variable.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- backends/hostmem-epc.c   | 3 +--
- backends/hostmem-file.c  | 3 +--
- backends/hostmem-memfd.c | 3 +--
- backends/hostmem-ram.c   | 3 +--
- 4 files changed, 4 insertions(+), 8 deletions(-)
+ hw/misc/ivshmem.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
-index 4e162d6789..3ceb079f9e 100644
---- a/backends/hostmem-epc.c
-+++ b/backends/hostmem-epc.c
-@@ -20,8 +20,8 @@
- static void
- sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 0447888029..9a8b9e2fd3 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -476,7 +476,6 @@ static void setup_interrupt(IVShmemState *s, int vector, Error **errp)
+ 
+ static void process_msg_shmem(IVShmemState *s, int fd, Error **errp)
  {
-+    g_autofree char *name = NULL;
-     uint32_t ram_flags;
--    char *name;
-     int fd;
+-    Error *local_err = NULL;
+     struct stat buf;
+     size_t size;
  
-     if (!backend->size) {
-@@ -41,7 +41,6 @@ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend),
-                                    name, backend->size, ram_flags,
-                                    fd, 0, errp);
--    g_free(name);
- }
+@@ -496,10 +495,9 @@ static void process_msg_shmem(IVShmemState *s, int fd, Error **errp)
+     size = buf.st_size;
  
- static void sgx_epc_backend_instance_init(Object *obj)
-diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
-index 361d4a8103..fe8c481f8f 100644
---- a/backends/hostmem-file.c
-+++ b/backends/hostmem-file.c
-@@ -44,8 +44,8 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-                object_get_typename(OBJECT(backend)));
- #else
-     HostMemoryBackendFile *fb = MEMORY_BACKEND_FILE(backend);
-+    g_autofree gchar *name = NULL;
-     uint32_t ram_flags;
--    gchar *name;
+     /* mmap the region and map into the BAR2 */
+-    memory_region_init_ram_from_fd(&s->server_bar2, OBJECT(s), "ivshmem.bar2",
+-                                   size, RAM_SHARED, fd, 0, &local_err);
+-    if (local_err) {
+-        error_propagate(errp, local_err);
++    if (!memory_region_init_ram_from_fd(&s->server_bar2, OBJECT(s),
++                                        "ivshmem.bar2", size, RAM_SHARED,
++                                        fd, 0, errp)) {
+         return;
+     }
  
-     if (!backend->size) {
-         error_setg(errp, "can't create backend with size 0");
-@@ -89,7 +89,6 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     memory_region_init_ram_from_file(&backend->mr, OBJECT(backend), name,
-                                      backend->size, fb->align, ram_flags,
-                                      fb->mem_path, fb->offset, errp);
--    g_free(name);
- #endif
- }
- 
-diff --git a/backends/hostmem-memfd.c b/backends/hostmem-memfd.c
-index 3fc85c3db8..db28ab5a56 100644
---- a/backends/hostmem-memfd.c
-+++ b/backends/hostmem-memfd.c
-@@ -35,8 +35,8 @@ static void
- memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
- {
-     HostMemoryBackendMemfd *m = MEMORY_BACKEND_MEMFD(backend);
-+    g_autofree char *name = NULL;
-     uint32_t ram_flags;
--    char *name;
-     int fd;
- 
-     if (!backend->size) {
-@@ -57,7 +57,6 @@ memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
-     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend), name,
-                                    backend->size, ram_flags, fd, 0, errp);
--    g_free(name);
- }
- 
- static bool
-diff --git a/backends/hostmem-ram.c b/backends/hostmem-ram.c
-index b8e55cdbd0..0a670fc22a 100644
---- a/backends/hostmem-ram.c
-+++ b/backends/hostmem-ram.c
-@@ -19,8 +19,8 @@
- static void
- ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
- {
-+    g_autofree char *name = NULL;
-     uint32_t ram_flags;
--    char *name;
- 
-     if (!backend->size) {
-         error_setg(errp, "can't create backend with size 0");
-@@ -32,7 +32,6 @@ ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
-     memory_region_init_ram_flags_nomigrate(&backend->mr, OBJECT(backend), name,
-                                            backend->size, ram_flags, errp);
--    g_free(name);
- }
- 
- static void
 -- 
 2.41.0
 

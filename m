@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp67289ejy;
-        Mon, 20 Nov 2023 13:39:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEBCqhE9CCOv62/Ju5g49snsyKipMRYBiBvXVnE7U8oTcBpgq0gtsLTY64c+lqjxpI4/YLZ
-X-Received: by 2002:a0c:f152:0:b0:671:fcd3:1cc2 with SMTP id y18-20020a0cf152000000b00671fcd31cc2mr9408813qvl.65.1700516385115;
-        Mon, 20 Nov 2023 13:39:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700516385; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp67738ejy;
+        Mon, 20 Nov 2023 13:40:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEc6rk5nf/CG0kXEXXv+LCegcsAjGBrEP2sc4+tN+LqyezDLEiyStHVmF/kQqWW+AB/mzZe
+X-Received: by 2002:a05:6102:31a:b0:45d:9988:2354 with SMTP id 26-20020a056102031a00b0045d99882354mr7064429vsa.28.1700516437982;
+        Mon, 20 Nov 2023 13:40:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700516437; cv=none;
         d=google.com; s=arc-20160816;
-        b=VNMUJfUKocPqhmXm2YHjIy0XEnW7itPP8dRsSBAM9up+rlJ7fOmizA9NvKB8BTBFuI
-         7yunQzBep/M9zD9ZZKTMAPsZMD0jgGXONFAM5CLFcNg7F6GF1LEM2c3UKltPIoV+LWPY
-         01iahOjlBQQkvhcQx4cyZjdgCYRKfsnuSdCR8mi3dbuQO3X4/pMsOzQ0bRbamTQ6Mjar
-         GoB3ZbfrHYBA+/T5TSNi4JWmh7YSlsfe95ycHADbnJ/Qt9LSkB/nlp27TraIuLRwyiKj
-         lRUYj6QP5u/39w8ppnrm/ZdLifBHZ6uZ5+bUPn3EbcpcqnBzxsHU1cJddCeYnGdteYye
-         8tyw==
+        b=ZC3Ut/gqUAvrLMJISP7zj24l9SkI8e2r1riUGrLp9zOH7kfp1c73etDo1NR+AuIeCy
+         o2re/rcy9tDGi63ylHXhOo6iulHzRGdRIcf5gSvYkrgLHcMwgHBDbMJoqYb7kFtFePoj
+         nLP8G2s/QaFjrLPO8bZ0vSIoAKtAUyeXru5MTjY8m2JQGePVyAdwvBO1PGuIaP0H5fhb
+         6ezumMI7v/EacOwnUfoXK6PI6IhGy0t/XI/1NNMVX9301j19JEj5ndPptb7BdfvhUUG6
+         0f/Vj15eBUxpm8KmmRBHRzz6xGHkSPh6N1LPBLPIlP5p0mvstXUVkTvmsmWv1auk4rxu
+         IDtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3UqXJrP7Csw+EZpRSYWbaVbFeUsJSZVShG00VIsudqs=;
-        fh=1qD3b4sFO1oDZwkrl7cLi3jOgcr+jywazXyW37wM0YE=;
-        b=caUTQAQinpxUIdfN9F1Khny7e4Sv4c0CJ+abBfuLFSkC0GizlaqfCEO5+CDptQhKgg
-         uprW57XqqZC+ORtSJ0PxRydHS6x9oQD3je1vHYY+vu34ua+uItjyS674pTTcR6XZQ4RQ
-         OowoZVVnc59SJCXgzzkieIkwgaaIaULdn3h0cOrh4w/YxUrLI0GhBJMTZn2m6XixosCO
-         uWv5Qw7hv7U5PlPDt8ePh+6QtRfU2oHycQX83mBE6QojJOmMZS6JztxdYQWEM5dDzCzW
-         GmDtaPjP6EeKCUh9uHKmJTq9w8gWcM7HMRZuwYm4ZP71+I35XFNKbZxqjSOqvoMuNiJ/
-         PxCQ==
+        bh=drwtQoQ75QuwOSsjQYja6ApK0ZWyT5mWD40njjZhqyI=;
+        fh=AVTfbHsPJGg1WFQV1X+Bul2rECWTr55QornV8gS+Ss0=;
+        b=yfRdzVnu4QAHGCx+46Qbdks9Sg6bWrD9miY80DMwcvlq0rxHUon8M2NSuM/PW2qKrG
+         YLF3cCW2Lb4ajQ+NVilZjIBauPn1E/OX8prgeABj/THei8Pq+goV4oank2z0HzSW8u2Z
+         tNZ86E6LyU8JBTyalemc7ElWzRsTQ/eMDD3Q6MpFVavaFkEaVphBfzdjk7SnSCOTGYt2
+         73retp3/uCoSVCU7y9YPL7MNxbfiWdBmywZrCJ1/gfPgzJ8YaoZihLpLaa2qaaMvrFER
+         OgQRs9DXYGo+TD4ECd1fKl38kj6mT4I+PdU5F0whMoTS8ef00xyyF3tiy8Foh/eD5gBR
+         AiiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m0sVu+6m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OCPuesFL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f9-20020a05620a12e900b00779d04f3836si7370078qkl.599.2023.11.20.13.39.44
+        by mx.google.com with ESMTPS id pt18-20020a056214049200b006707430cd6bsi8660724qvb.270.2023.11.20.13.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 13:39:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Nov 2023 13:40:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m0sVu+6m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OCPuesFL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r5ByS-0002jE-FS; Mon, 20 Nov 2023 16:38:32 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r5BzC-0004UC-NB; Mon, 20 Nov 2023 16:39:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5ByH-0002YJ-6x
- for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:26 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5BzA-0004Oq-LX
+ for qemu-arm@nongnu.org; Mon, 20 Nov 2023 16:39:17 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5ByD-0004Z6-Iw
- for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:20 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-40a46ea95f0so22421165e9.2
- for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:38:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bz9-0004iV-58
+ for qemu-arm@nongnu.org; Mon, 20 Nov 2023 16:39:16 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-40b27b498c3so1335855e9.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Nov 2023 13:39:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700516295; x=1701121095; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700516353; x=1701121153; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3UqXJrP7Csw+EZpRSYWbaVbFeUsJSZVShG00VIsudqs=;
- b=m0sVu+6mWbTSb3y7RENxTOq7Y65Ex7Ref2Sua35bbHUNhnSydXjpYMlBwRni/pnRnS
- DpkR9lP0caM3pNn5Qqbc2glVVBCeOVBhept1NmXBI0e/7/Xeb/laDoj9bnPV3rRP0A1v
- PegaPx26rjoFpqVXNqFfJxwki17r9yqDKQ1PkDlPjyxwmp0i88CH9CrhFPLttVU1l1c9
- qDbJJu8GS0kL71b/p+uA7Ob8cocNM3l0S+tusTfM2qnyPuL8SNxS/d3AFu5bVSyzwU4d
- nx8n2kKGqqI04YoJR9SyVt/MocXC/r2TxP1zaANjlAQIHRwEvEKcyWYOoE8lQ0OW2JxN
- 1cjA==
+ bh=drwtQoQ75QuwOSsjQYja6ApK0ZWyT5mWD40njjZhqyI=;
+ b=OCPuesFLnTny55vzGzN+ysvm91sZbnROQwfte0JO5Gk66U7AKVXMKdtwt7N/OmkFys
+ cv3pDJEiO/Y3u/ODWVguBZMdXICZHB8Gsl1V37ecb5anAE88UAcJoz45fODwVqBVqyu8
+ roMUyJ8vEZWJqHAi0UzqGwOQeRdUgGNL4RSOwoZ7rBMafuaespdfEehdZaTOcu0llogk
+ iH9fSkyDBcKfjH9Xc15/AjTn2muCysSPwlaWnKLluoxinrfzRhcM8Qy0cPGE+ule24S6
+ 1Z9oPYqK6ZwQnIdUPzWhOSPFFT/rZN1Rls4pQ+48xnkPJ5+KVd1igulUJdCc9DBAlrNi
+ IIZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700516295; x=1701121095;
+ d=1e100.net; s=20230601; t=1700516353; x=1701121153;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3UqXJrP7Csw+EZpRSYWbaVbFeUsJSZVShG00VIsudqs=;
- b=gX5l2Q8C/X9WZxSmXgddhkPHJW8XUpQieVqqo7hpLy5z0cJ5JPczdTv/szBab8qTqw
- lcMmyLvPkVLeh0mo8lFKUvKbrSPMigjbMwumIlqVqqSmE/EpKBk6hcTQzY9Q/NvU8//5
- W64RbMt+22UhL32gLejBpZ9NNb7FtqyZ5Yap+cmUYOVhVAyuoxwj4l/P47qqqKzau/hF
- yewX47q3vg2WwklNHNHHg5bf4Uw9AoNdn5Cg3G/Cx8FuOzod63DAoBixxeABl8oq+Mda
- +s1cNEl/TZA22LJf4zCVNaCIYPJ7Oo3N2SbhjaV0qf9oqT8TXXSfx7bLCmhrfA+o/mDr
- DOvA==
-X-Gm-Message-State: AOJu0Ywhc3O4X9YEa84BTUx6g9VMhHUCOo4Uvc2dT0C+7b2VYCvGH3hj
- c3WHwNnlt3wc8Kt/V4aVMF+o+Eyamx0hpU4g+Rk=
-X-Received: by 2002:a5d:54d1:0:b0:32f:b407:5b77 with SMTP id
- x17-20020a5d54d1000000b0032fb4075b77mr4653144wrv.64.1700516294438; 
- Mon, 20 Nov 2023 13:38:14 -0800 (PST)
+ bh=drwtQoQ75QuwOSsjQYja6ApK0ZWyT5mWD40njjZhqyI=;
+ b=rfQmOb3SuG9e67AznLFGi1fJmKHUhN7PaD2YN7a6/KqF3spgM9alGkvpm/h3CQH+gD
+ yJiswnXB7pAvM6InKdIlhUnmaJrgl34rUOrRZfrlSAM3If7sVhGNXZvS9n4cEs77/T3Q
+ BNmrd0bIb2j/WGX3AuX/KP2AwbSF186JOZfo36P6C0m8FwGnfWr4zObm109xUFnMK9jA
+ P44W+gjy2dw7TBpJqklMQ8G6w62tyCRuJv9lBlgucXtd3sj6xLPdAI1oAiazljnmh79m
+ 5Qv7XQ33kbeRbtI7ahgVByq38GR3QcX+PXtlV4s6bmJFRuAAE0lwEf2LTbyD0p6TgoDG
+ iooQ==
+X-Gm-Message-State: AOJu0YwLAmFK9KULIy6worSVbcMlGzz+pakO9xRNCPvULkRQHCvyMgi3
+ 57l54xExyhQ2g7iLlN7e5+4gLA==
+X-Received: by 2002:a05:6000:18ad:b0:32d:b06c:d30b with SMTP id
+ b13-20020a05600018ad00b0032db06cd30bmr6850326wri.55.1700516353594; 
+ Mon, 20 Nov 2023 13:39:13 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.190])
  by smtp.gmail.com with ESMTPSA id
- s15-20020adfea8f000000b00323287186aasm12332571wrm.32.2023.11.20.13.38.04
+ r12-20020adfda4c000000b003232380ffd7sm12279698wrl.102.2023.11.20.13.39.09
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Nov 2023 13:38:14 -0800 (PST)
+ Mon, 20 Nov 2023 13:39:13 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -98,18 +98,19 @@ Cc: David Hildenbrand <david@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>, Jean-Christophe Dubois <jcd@tribudubois.net>
-Subject: [PATCH-for-9.0 21/25] hw/arm: Simplify memory_region_init_rom() calls
-Date: Mon, 20 Nov 2023 22:32:55 +0100
-Message-ID: <20231120213301.24349-22-philmd@linaro.org>
+ Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>
+Subject: [PATCH-for-9.0 24/25] hw/nvram: Simplify
+ memory_region_init_rom_device() calls
+Date: Mon, 20 Nov 2023 22:32:58 +0100
+Message-ID: <20231120213301.24349-25-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231120213301.24349-1-philmd@linaro.org>
 References: <20231120213301.24349-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,30 +119,30 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jraCssiJrW8x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FF3pm8WItd2B
 
 Mechanical change using the following coccinelle script:
 
 @@
-expression mr, owner, arg3, arg4, errp;
+expression mr, owner, arg3, arg4, arg5, arg6, errp;
 @@
--   memory_region_init_rom(mr, owner, arg3, arg4, &errp);
+-   memory_region_init_rom_device(mr, owner, arg3, arg4, arg5, arg6, &errp);
     if (
 -       errp
-+       !memory_region_init_rom(mr, owner, arg3, arg4, &errp)
++       !memory_region_init_rom_device(mr, owner, arg3, arg4, arg5, arg6, &errp)
     ) {
         ...
         return;
@@ -151,120 +152,28 @@ and removing the local Error variable.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/fsl-imx25.c | 13 ++++---------
- hw/arm/fsl-imx31.c | 13 ++++---------
- hw/arm/fsl-imx6.c  | 13 ++++---------
- 3 files changed, 12 insertions(+), 27 deletions(-)
+ hw/nvram/nrf51_nvm.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index b15435ccaf..9d2fb75a68 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -81,7 +81,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/nvram/nrf51_nvm.c b/hw/nvram/nrf51_nvm.c
+index 7f1db8c423..7b25becd49 100644
+--- a/hw/nvram/nrf51_nvm.c
++++ b/hw/nvram/nrf51_nvm.c
+@@ -336,12 +336,9 @@ static void nrf51_nvm_init(Object *obj)
+ static void nrf51_nvm_realize(DeviceState *dev, Error **errp)
  {
-     FslIMX25State *s = FSL_IMX25(dev);
-     uint8_t i;
+     NRF51NVMState *s = NRF51_NVM(dev);
 -    Error *err = NULL;
  
-     if (!qdev_realize(DEVICE(&s->cpu), NULL, errp)) {
-         return;
-@@ -281,18 +280,14 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-                                                        FSL_IMX25_WDT_IRQ));
- 
-     /* initialize 2 x 16 KB ROM */
--    memory_region_init_rom(&s->rom[0], OBJECT(dev), "imx25.rom0",
--                           FSL_IMX25_ROM0_SIZE, &err);
+-    memory_region_init_rom_device(&s->flash, OBJECT(dev), &flash_ops, s,
+-        "nrf51_soc.flash", s->flash_size, &err);
 -    if (err) {
 -        error_propagate(errp, err);
-+    if (!memory_region_init_rom(&s->rom[0], OBJECT(dev), "imx25.rom0",
-+                                FSL_IMX25_ROM0_SIZE, errp)) {
++    if (!memory_region_init_rom_device(&s->flash, OBJECT(dev), &flash_ops, s,
++                                       "nrf51_soc.flash", s->flash_size, errp)) {
          return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX25_ROM0_ADDR,
-                                 &s->rom[0]);
--    memory_region_init_rom(&s->rom[1], OBJECT(dev), "imx25.rom1",
--                           FSL_IMX25_ROM1_SIZE, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_rom(&s->rom[1], OBJECT(dev), "imx25.rom1",
-+                                FSL_IMX25_ROM1_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX25_ROM1_ADDR,
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index 1d5dcd51e8..c0584e4dfc 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -63,7 +63,6 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
- {
-     FslIMX31State *s = FSL_IMX31(dev);
-     uint16_t i;
--    Error *err = NULL;
- 
-     if (!qdev_realize(DEVICE(&s->cpu), NULL, errp)) {
-         return;
-@@ -188,20 +187,16 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, FSL_IMX31_WDT_ADDR);
- 
-     /* On a real system, the first 16k is a `secure boot rom' */
--    memory_region_init_rom(&s->secure_rom, OBJECT(dev), "imx31.secure_rom",
--                           FSL_IMX31_SECURE_ROM_SIZE, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_rom(&s->secure_rom, OBJECT(dev), "imx31.secure_rom",
-+                                FSL_IMX31_SECURE_ROM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX31_SECURE_ROM_ADDR,
-                                 &s->secure_rom);
- 
-     /* There is also a 16k ROM */
--    memory_region_init_rom(&s->rom, OBJECT(dev), "imx31.rom",
--                           FSL_IMX31_ROM_SIZE, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_rom(&s->rom, OBJECT(dev), "imx31.rom",
-+                                FSL_IMX31_ROM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX31_ROM_ADDR,
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 58f37e7c11..b2153022c0 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -109,7 +109,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-     MachineState *ms = MACHINE(qdev_get_machine());
-     FslIMX6State *s = FSL_IMX6(dev);
-     uint16_t i;
--    Error *err = NULL;
-     unsigned int smp_cpus = ms->smp.cpus;
- 
-     if (smp_cpus > FSL_IMX6_NUM_CPUS) {
-@@ -423,20 +422,16 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
      }
  
-     /* ROM memory */
--    memory_region_init_rom(&s->rom, OBJECT(dev), "imx6.rom",
--                           FSL_IMX6_ROM_SIZE, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_rom(&s->rom, OBJECT(dev), "imx6.rom",
-+                                FSL_IMX6_ROM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_ROM_ADDR,
-                                 &s->rom);
- 
-     /* CAAM memory */
--    memory_region_init_rom(&s->caam, OBJECT(dev), "imx6.caam",
--                           FSL_IMX6_CAAM_MEM_SIZE, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_rom(&s->caam, OBJECT(dev), "imx6.caam",
-+                                FSL_IMX6_CAAM_MEM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_CAAM_MEM_ADDR,
 -- 
 2.41.0
 

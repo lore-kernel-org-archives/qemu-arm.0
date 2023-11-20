@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n23-20020a7bcbd7000000b004064ac107cfsm13599341wmi.39.2023.11.20.07.08.35
+        by smtp.gmail.com with ESMTPSA id e29-20020adfa45d000000b0033169451a84sm11501414wra.29.2023.11.20.07.08.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 20 Nov 2023 07:08:38 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E0A3765778;
+	by draig.lan (Postfix) with ESMTP id CD30865777;
 	Mon, 20 Nov 2023 15:08:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -29,69 +29,40 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 10/14] testing: move arm system tests into their own folder
-Date: Mon, 20 Nov 2023 15:08:29 +0000
-Message-Id: <20231120150833.2552739-11-alex.bennee@linaro.org>
+Subject: [PATCH v2 09/14] hw/core: skip loading debug on all failures
+Date: Mon, 20 Nov 2023 15:08:28 +0000
+Message-Id: <20231120150833.2552739-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231120150833.2552739-1-alex.bennee@linaro.org>
 References: <20231120150833.2552739-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Witelvkyn6c/
+X-TUID: ejXfmANT+mkM
 
-Prepare for expanding the arm system tests by cleaning up the test
-directory.
+ELF_LOAD_FAILED is one of many negative return codes we can have. Lets
+treat any positive size_t as a success for loading.
 
-Message-Id: <20231115205542.3092038-9-alex.bennee@linaro.org>
+Message-Id: <20231115205542.3092038-8-alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/arm/Makefile.softmmu-target           | 5 ++---
- tests/tcg/arm/{ => system}/test-armv6m-undef.S  | 0
- tests/tcg/arm/{ => system}/test-armv6m-undef.ld | 0
- 3 files changed, 2 insertions(+), 3 deletions(-)
- rename tests/tcg/arm/{ => system}/test-armv6m-undef.S (100%)
- rename tests/tcg/arm/{ => system}/test-armv6m-undef.ld (100%)
+ hw/core/loader.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 8b546e2aa3..7857ab9324 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -3,7 +3,7 @@
- # ARM SoftMMU tests - included from tests/tcg/Makefile
- #
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 3c79283777..e7a9b3775b 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -505,7 +505,7 @@ ssize_t load_elf_ram_sym(const char *filename,
+                          clear_lsb, data_swab, as, load_rom, sym_cb);
+     }
  
--ARM_SRC=$(SRC_PATH)/tests/tcg/arm
-+ARM_SRC=$(SRC_PATH)/tests/tcg/arm/system
+-    if (ret != ELF_LOAD_FAILED) {
++    if (ret > 0) {
+         debuginfo_report_elf(filename, fd, 0);
+     }
  
- # Set search path for all sources
- VPATH 		+= $(ARM_SRC)
-@@ -12,7 +12,6 @@ ARM_TESTS=test-armv6m-undef
- 
- TESTS += $(ARM_TESTS)
- 
--CFLAGS+=-Wl,--build-id=none -x assembler-with-cpp
- LDFLAGS+=-nostdlib -N -static
- 
- %: %.S %.ld
-@@ -20,7 +19,7 @@ LDFLAGS+=-nostdlib -N -static
- 
- # Specific Test Rules
- 
--test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0 -mfloat-abi=soft
-+test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0 -mfloat-abi=soft -Wl,--build-id=none -x assembler-with-cpp
- 
- run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
- 
-diff --git a/tests/tcg/arm/test-armv6m-undef.S b/tests/tcg/arm/system/test-armv6m-undef.S
-similarity index 100%
-rename from tests/tcg/arm/test-armv6m-undef.S
-rename to tests/tcg/arm/system/test-armv6m-undef.S
-diff --git a/tests/tcg/arm/test-armv6m-undef.ld b/tests/tcg/arm/system/test-armv6m-undef.ld
-similarity index 100%
-rename from tests/tcg/arm/test-armv6m-undef.ld
-rename to tests/tcg/arm/system/test-armv6m-undef.ld
 -- 
 2.39.2

@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp67862ejy;
-        Mon, 20 Nov 2023 13:40:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEuWJRyCgcElv4Swc+/hOpVgdKxwOnc3f3QENcddLlwi5KlEUJyqJU08fH4O9xps7Z/xNs6
-X-Received: by 2002:a05:690c:2d0e:b0:5ca:697e:ee17 with SMTP id eq14-20020a05690c2d0e00b005ca697eee17mr3252601ywb.38.1700516453257;
-        Mon, 20 Nov 2023 13:40:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700516453; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp67919ejy;
+        Mon, 20 Nov 2023 13:41:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHQ3dAl/zPjN5spTjsdNqFC2blXfEkDO8smN/0hBPeC1ghJxgN/8ixKD+x7C3gJ45mg3s9s
+X-Received: by 2002:a05:6214:c88:b0:675:54ce:8436 with SMTP id r8-20020a0562140c8800b0067554ce8436mr9165975qvr.42.1700516459993;
+        Mon, 20 Nov 2023 13:40:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700516459; cv=none;
         d=google.com; s=arc-20160816;
-        b=T6EF8YoEq6CBJiGT7paVo+zzsUW4QnRifd4NHOpVg7MQF2o6cjOoYqGXhqOp13RvUN
-         QSRAbBxNB6d4gQY+ZW3bbeDWWN/Kz2i6TF6BomwBUaE/V87OW68+Zrj9KiB3wiR6RbA2
-         Kcveu4QgPNrySMELtd8FtZn+XK0VN3Yc5XPWLERFLAXWiWwd6uxcuXq6KIh1qRmQUcBf
-         n2dN/RVpmZMHZIwEpUgWME/HNwby/U/rikc13TaODQjtzLgXR4kiDDIsGoLOeqY1CRmD
-         el7lEz7qdEX3w87IJwMPMaz2u8rWcSgdkdCQtGRrjUhrCxyZrG/uVLpW8B/Lj0FHOhcG
-         ZSrg==
+        b=Eq8W1rAWRHOfRMBvweBYpgstaBbbomB8H9itoCXbA3p5imQFA7qX6rcnUpL0i4If1p
+         3J6Et8aHz+8sdBINj0/V62fGzZesT4dB+dteIrAscKuC5FvEuIcMobk1L1FKG424mF33
+         Qc33W2x45RQE1Zp1bh8v+iVQtMznZBnXMzc9Vipgv68abMFu6DN0lvKPTw0hl7rbBUxg
+         jibel+chGaa1U3RWhj7gqhPxQHrijrEorNeJyOsQi0PqPd/E3u9L5PzGhxm6soprb5WG
+         grEl8HqSC4OaEVGwL11olcTk0LeSo+tsyQXx+qPXQLWy6d+Qa1Mk3/nkxjdE6sFk8WMa
+         Rqvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JQm9clEeaAsqfkXJ+UfY2CLg9Wh2rq/brUmgmj9iQWU=;
-        fh=+TurtUsHIdF/4xSdnHQWj5edECWDRYwYAQ9W5oDsKf8=;
-        b=p/T1cqMHjZjRYJQ30ksyMysrxZ7ivQExQZJDQ9WTviRLCrqExLH534Zftdb3U50jC8
-         MCMr6HwUSUWqqryeiU7Ma7jDBf+JikbQc9pzASQHg1BeEnM7ghGFe72Gt5p2PcUVSVVO
-         s5ZHNfMGsn+fstTRGwYSkj2MXxtH1OZBsguJ20JQGCUqCHmrSOYBdwEQSIL/b3SSmXHS
-         PQOZrPYSJvQhqzhnAjg5eWKhso9EOWjGcbzeML2s43w9ZEceyzb1j7sKeid2jXKVV1aL
-         6Haf4gqcsDx/3SEZPAKLIPAgH/UHYP4X3CscflbHXFaIjzMo5k81uJVK74V30yWmORZ/
-         HYyw==
+        bh=3MTfYspIRofl2d+GaSi2n8kVPRZkUBrCgY4w5h7qsWI=;
+        fh=toXMQ9nuJ3L4CLQ8EKaTQ8L/ltDlD3GauRZSJpgYVzU=;
+        b=g5SFI/bDCk5fMHgOZPFi5qqSHyvNUcdaFAvMgm7ukhwIc1Pdq4PR3Z/Fp0sG45ILzZ
+         CwH0X7EJropTtqezMX3ruB85+EsuJwQ13MJKdMGYdGfB+YyaiW/IC5vFlkHVQNdXtkhO
+         nBSLFxBGUv774+FgFns0+NzkARtCdFkE8X03zXPn2cAIJhXh+QYqNcmI9+xG9z/GLbL7
+         HgLdCAdpTygEh0mGVh3p/Xw0PdcfJLNTOdugdgcRQ/sDrOWHYOc4UJFZFxFXbguU/Spm
+         ugzmzGOFd78CkGHYJXskousAtZBaRhQ9ioRkM6hmQJGXZ549N2VlCyR0EOo5jnEIonzd
+         09Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KP4Ln2Sa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rHCisfkl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iw15-20020a0562140f2f00b00679e5717bc8si1235759qvb.532.2023.11.20.13.40.53
+        by mx.google.com with ESMTPS id u3-20020ad44983000000b0065b21846028si7839493qvx.531.2023.11.20.13.40.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 13:40:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Nov 2023 13:40:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KP4Ln2Sa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rHCisfkl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5BxC-00019V-F0; Mon, 20 Nov 2023 16:37:14 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r5Bvt-0005xa-NS; Mon, 20 Nov 2023 16:35:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bx8-0000sN-JB
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 16:37:12 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bvr-0005dh-I5
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:35:51 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bx4-0004Ku-Sn
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 16:37:09 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-32f7abbb8b4so3235687f8f.0
- for <qemu-arm@nongnu.org>; Mon, 20 Nov 2023 13:36:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bvo-0004An-29
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:35:51 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-32df66c691dso3101499f8f.3
+ for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:35:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700516207; x=1701121007; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700516146; x=1701120946; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JQm9clEeaAsqfkXJ+UfY2CLg9Wh2rq/brUmgmj9iQWU=;
- b=KP4Ln2SakrW4m3VdApZ55sn1c3oTkKI/7IP9rdjOCjqN3IwqAMJ5HZmxAvtQ1CUM+H
- /IqvsS4hOkb5vxBl/TmRMokPoVrT42sxcaRdsOI+qXB+jQdPYKBm4RmIu7JYFbB2tnpY
- zpbRoDvj5Bi+9ZesauwbFRrJCKBTqhGuKCbLNjqo0IflVBT7UHIUsifmo7F1asY0NyUR
- yxrcjomfe8wfdXSJVdL+oRMYDq7hIICL/07w1K46ycJd2C5ggcbaMZA3aB4O3QrY5R60
- Dd7F0MybFiTgWixbmJFvPtjx5qUYwmjAZ6u181yjY6wwvipOOYXQyUvW+tVYVOFibKJt
- cLTQ==
+ bh=3MTfYspIRofl2d+GaSi2n8kVPRZkUBrCgY4w5h7qsWI=;
+ b=rHCisfklOOZap7cAJbGgmlFoeqKULQ+vmkXMpcqkYm1FMUQgU/uqY8C9XKoF4vJcon
+ EOQClWEzXKJ2tY6eaWz7z/R0M14kcrBKyL/UP5MCMcG80eRYNepDWAI3pLooUsXP4Ay/
+ CY4lariSQW5YBcH8ebqgWUKiVFq+tYlHoQxeeakHbfLX4xpB6upFB8/GEGOrO7cfUA9b
+ /6+weJHKreC4kXBwZJHu1lVuo2R4Rcn5PPa1RS3Pp7YGoxdvhdJ1bJ2j5i9vSOYFNJ/H
+ ssgKeIliyOmCpHjweuy/hFVETRZOL932UePeKnUuR3AJlvM7eThIZoEO6hAlE+YChpdH
+ 2frg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700516207; x=1701121007;
+ d=1e100.net; s=20230601; t=1700516146; x=1701120946;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JQm9clEeaAsqfkXJ+UfY2CLg9Wh2rq/brUmgmj9iQWU=;
- b=KjlC0w5v1CsLgJ7nhYEKChS/bsGPwkzeS6eUDWJuAjIGY9qreSOH3IFoXWDYqJ+LjE
- oRNzsGOgm3ss1t4VcwR2gz2UFRL9alhGoARknyPufpMUTxwiZIapWfZrD19U85Vb44yo
- dDElkAC0dUHQwRgN8shuKGF5h72fIBMjeBx1qfrAV6NM7y9YXRJ5gr1Pe7PW62zMAS/d
- YDI+EMtsX3teusa+ufkL+sAWMUU+16TAz5GT8lHT8JJmv8f6itZmWhwnN9s/p9wc9axs
- JIzVI2tiKqW9nnK3GGAahzovAtJxFTWQ14RN6tAmWE1Q6O68mLdxsymLrHBbJVOJ03gJ
- GYvQ==
-X-Gm-Message-State: AOJu0Yw2OJ++98qUiTlr3Vrl8OgVjQRRK/cuTWiZIasjoHDutylEMpg8
- iqQi+vtaP7eN7kkmmMeWRAR99A==
-X-Received: by 2002:a05:6000:381:b0:332:c593:16c with SMTP id
- u1-20020a056000038100b00332c593016cmr4272767wrf.45.1700516207758; 
- Mon, 20 Nov 2023 13:36:47 -0800 (PST)
+ bh=3MTfYspIRofl2d+GaSi2n8kVPRZkUBrCgY4w5h7qsWI=;
+ b=FBfKuTjbAZrZi/QpVWv8cP+2YL4VeFoGJBehPqePcu/ndUPBxeaNpC02PMrVhQA8qO
+ 9bM6/Q8wWjoE9R7R54RwnZSzswK/M80TQanwii1yindUUZZo2EKkDZs3q+kYJBE0klPL
+ SgDOR77mGrmJkE9M/CBuE7gLxjUA2KiivVuKKol6Jg/Q3IMN+Ky5GZMN4An0HZS53H6M
+ SyFTjAoWaeuYqjFcDIOn4UI+aoFDWX3WPGg86Bcx3U4o05+EwvYM19J8nbLFtJD2YxLQ
+ MSv5qGBQzEaqJp51EOS08NTI4jrDwzmyC/ll+Nl5DzID7/XWza58fiMS4lTfQka+YiVP
+ IXnA==
+X-Gm-Message-State: AOJu0YzIYNVPrL6cCslXHxvz7CRvFIuiPeVPL7DAce5roSdlSEV8rXS2
+ zOldmt8U7t4/cR4X8kznp4WnnJZ4bvYmpKV+rk8=
+X-Received: by 2002:a5d:4012:0:b0:32d:8855:138d with SMTP id
+ n18-20020a5d4012000000b0032d8855138dmr5256601wrp.66.1700516146517; 
+ Mon, 20 Nov 2023 13:35:46 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.190])
  by smtp.gmail.com with ESMTPSA id
- r15-20020a5d6c6f000000b00332cb17f87csm2549410wrz.5.2023.11.20.13.36.39
+ v9-20020a5d5909000000b0032f9688ea48sm12319327wrd.10.2023.11.20.13.35.41
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Nov 2023 13:36:47 -0800 (PST)
+ Mon, 20 Nov 2023 13:35:46 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -98,19 +98,19 @@ Cc: David Hildenbrand <david@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH-for-9.0 18/25] util/oslib: Have qemu_prealloc_mem() handler
- return a boolean
-Date: Mon, 20 Nov 2023 22:32:52 +0100
-Message-ID: <20231120213301.24349-19-philmd@linaro.org>
+ Peter Xu <peterx@redhat.com>
+Subject: [PATCH-for-9.0 14/25] backends: Use g_autofree in
+ HostMemoryBackendClass::alloc() handlers
+Date: Mon, 20 Nov 2023 22:32:48 +0100
+Message-ID: <20231120213301.24349-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231120213301.24349-1-philmd@linaro.org>
 References: <20231120213301.24349-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,116 +119,120 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CLR6gXP78AFq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ll1ShAVRKQQZ
 
-Following the example documented since commit e3fe3988d7 ("error:
-Document Error API usage rules"), have cpu_exec_realizefn()
-return a boolean indicating whether an error is set or not.
+In preparation of having HostMemoryBackendClass::alloc() handlers
+return a boolean, have them use g_autofree.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qemu/osdep.h | 4 +++-
- util/oslib-posix.c   | 7 +++++--
- util/oslib-win32.c   | 4 +++-
- 3 files changed, 11 insertions(+), 4 deletions(-)
+ backends/hostmem-epc.c   | 3 +--
+ backends/hostmem-file.c  | 3 +--
+ backends/hostmem-memfd.c | 3 +--
+ backends/hostmem-ram.c   | 3 +--
+ 4 files changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 475a1c62ff..9a405bed89 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -678,8 +678,10 @@ typedef struct ThreadContext ThreadContext;
-  * memory area starting at @area with the size of @sz. After a successful call,
-  * each page in the area was faulted in writable at least once, for example,
-  * after allocating file blocks for mapped files.
-+ *
-+ * Return: true on success, else false setting @errp with error.
-  */
--void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-+bool qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-                        ThreadContext *tc, Error **errp);
- 
- /**
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index e86fd64e09..7c297003b9 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -497,7 +497,7 @@ static bool madv_populate_write_possible(char *area, size_t pagesize)
-            errno != EINVAL;
- }
- 
--void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-+bool qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-                        ThreadContext *tc, Error **errp)
+diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
+index 4e162d6789..3ceb079f9e 100644
+--- a/backends/hostmem-epc.c
++++ b/backends/hostmem-epc.c
+@@ -20,8 +20,8 @@
+ static void
+ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
  {
-     static gsize initialized;
-@@ -506,6 +506,7 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-     size_t numpages = DIV_ROUND_UP(sz, hpagesize);
-     bool use_madv_populate_write;
-     struct sigaction act;
-+    bool rv = true;
++    g_autofree char *name = NULL;
+     uint32_t ram_flags;
+-    char *name;
+     int fd;
  
-     /*
-      * Sense on every invocation, as MADV_POPULATE_WRITE cannot be used for
-@@ -534,7 +535,7 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-             qemu_mutex_unlock(&sigbus_mutex);
-             error_setg_errno(errp, errno,
-                 "qemu_prealloc_mem: failed to install signal handler");
--            return;
-+            return false;
-         }
-     }
- 
-@@ -544,6 +545,7 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-     if (ret) {
-         error_setg_errno(errp, -ret,
-                          "qemu_prealloc_mem: preallocating memory failed");
-+        rv = false;
-     }
- 
-     if (!use_madv_populate_write) {
-@@ -555,6 +557,7 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-         }
-         qemu_mutex_unlock(&sigbus_mutex);
-     }
-+    return rv;
+     if (!backend->size) {
+@@ -41,7 +41,6 @@ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend),
+                                    name, backend->size, ram_flags,
+                                    fd, 0, errp);
+-    g_free(name);
  }
  
- char *qemu_get_pid_name(pid_t pid)
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index 55b0189dc3..c4a5f05a49 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -264,7 +264,7 @@ int getpagesize(void)
-     return system_info.dwPageSize;
+ static void sgx_epc_backend_instance_init(Object *obj)
+diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
+index 361d4a8103..fe8c481f8f 100644
+--- a/backends/hostmem-file.c
++++ b/backends/hostmem-file.c
+@@ -44,8 +44,8 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+                object_get_typename(OBJECT(backend)));
+ #else
+     HostMemoryBackendFile *fb = MEMORY_BACKEND_FILE(backend);
++    g_autofree gchar *name = NULL;
+     uint32_t ram_flags;
+-    gchar *name;
+ 
+     if (!backend->size) {
+         error_setg(errp, "can't create backend with size 0");
+@@ -89,7 +89,6 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     memory_region_init_ram_from_file(&backend->mr, OBJECT(backend), name,
+                                      backend->size, fb->align, ram_flags,
+                                      fb->mem_path, fb->offset, errp);
+-    g_free(name);
+ #endif
  }
  
--void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-+bool qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-                        ThreadContext *tc, Error **errp)
+diff --git a/backends/hostmem-memfd.c b/backends/hostmem-memfd.c
+index 3fc85c3db8..db28ab5a56 100644
+--- a/backends/hostmem-memfd.c
++++ b/backends/hostmem-memfd.c
+@@ -35,8 +35,8 @@ static void
+ memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
  {
-     int i;
-@@ -274,6 +274,8 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-     for (i = 0; i < sz / pagesize; i++) {
-         memset(area + pagesize * i, 0, 1);
-     }
-+
-+    return true;
+     HostMemoryBackendMemfd *m = MEMORY_BACKEND_MEMFD(backend);
++    g_autofree char *name = NULL;
+     uint32_t ram_flags;
+-    char *name;
+     int fd;
+ 
+     if (!backend->size) {
+@@ -57,7 +57,6 @@ memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
+     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend), name,
+                                    backend->size, ram_flags, fd, 0, errp);
+-    g_free(name);
  }
  
- char *qemu_get_pid_name(pid_t pid)
+ static bool
+diff --git a/backends/hostmem-ram.c b/backends/hostmem-ram.c
+index b8e55cdbd0..0a670fc22a 100644
+--- a/backends/hostmem-ram.c
++++ b/backends/hostmem-ram.c
+@@ -19,8 +19,8 @@
+ static void
+ ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+ {
++    g_autofree char *name = NULL;
+     uint32_t ram_flags;
+-    char *name;
+ 
+     if (!backend->size) {
+         error_setg(errp, "can't create backend with size 0");
+@@ -32,7 +32,6 @@ ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
+     memory_region_init_ram_flags_nomigrate(&backend->mr, OBJECT(backend), name,
+                                            backend->size, ram_flags, errp);
+-    g_free(name);
+ }
+ 
+ static void
 -- 
 2.41.0
 

@@ -1,142 +1,134 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp1218113ejb;
-        Sat, 18 Nov 2023 09:37:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGbxFM6sIgwvMsED03BLQX9ykPRwclhQ8S9EjGDGkpintpVY0rt/E2w/e8SOk11Ef6kO3He
-X-Received: by 2002:a05:6214:b69:b0:626:f3d:9e46 with SMTP id ey9-20020a0562140b6900b006260f3d9e46mr3507900qvb.18.1700329022615;
-        Sat, 18 Nov 2023 09:37:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700329022; cv=none;
-        d=google.com; s=arc-20160816;
-        b=RNtjN4jzi64x/M6YU4LLiWcQ9J+N/b8tx4lOd6DJVoWYMuA7/zbNetnUfieZAOgG/Z
-         zClzh/A+PJpDO665kha8AfilVpH8vYFyRH4M6DCp6EzmUlcvbKaflfF4WThYOwkS0yvg
-         dpHENq2iPJev7/McN0TVTbLEdrfdOnC+KTw3AJ1dIFT66HbOhAYtw9yYDok2Q5Sezd07
-         pRtfdE+8vZL6g86qTvNgHBIKQhF7kCL6weZjR+5Q4ubcDrHHukEQNxLf3Ygu5j6aqJfd
-         CQxIOhyWs0QnE8guFpI6YFsig911fNUSOsdItsmWQwT/Wg4k+nBUL6UoblQRg/7xIe9B
-         5FAA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=DC2MaIfS6LlWkY/Yuul9WyhF96mD7ttUTd+lMSh2lXs=;
-        fh=prcxYYbx+RM02aNBYXa1Zw568hdCKvxWihZ3BRWh01Q=;
-        b=xHV4kQSUs3hRdZ0VP7FcRsg5n3SYIPr1dYXNO61U4cp17mDp8QJxu5CP0imQVFg5RI
-         I0l6pgRiVXlV6MmUvv4qjLUdXGSpGNBoTjKZi7weXNNpe5gLQT1qg/GDireN8yfc9bRE
-         fe69wqpThPgMW8HncvPLZARPWnlynyUaL3Q2LDnqL50Rvx1XEvN9QspDNxNmSnJjYKBK
-         SX5wGeBu/Z1PKn7K07bbwgkxj8Hb0ancIMXEYLRmdqMM48K2iBoG0eRlQhGNNE3OOG8J
-         0SoBR745237LkqIf2Xt5NYloUwcfWWSUI1dCUQa7q9kfHMn8JpGUtAFxoqhLH/+dEeBe
-         Adag==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nhSL55NB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6-20020a05621405c600b006714e71c204si3958422qvz.499.2023.11.18.09.37.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 Nov 2023 09:37:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nhSL55NB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r4PFM-0003Y1-5L; Sat, 18 Nov 2023 12:36:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r4PFK-0003SJ-3N
- for qemu-arm@nongnu.org; Sat, 18 Nov 2023 12:36:42 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r4PFH-0008J8-9u
- for qemu-arm@nongnu.org; Sat, 18 Nov 2023 12:36:41 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-9d0b4dfd60dso397040766b.1
- for <qemu-arm@nongnu.org>; Sat, 18 Nov 2023 09:36:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700328996; x=1700933796; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=DC2MaIfS6LlWkY/Yuul9WyhF96mD7ttUTd+lMSh2lXs=;
- b=nhSL55NBw+/zxoZu7++M6Y4W473Bbsx42juoKUbJK2zoDGo60gmZAjhd/DgPuyw+Md
- +5RfX3xyPWJ7BxbAshzRzNXf2XwiySZQqE6Ojj+K1Tu0Ep0HR3soqzJIdTYMiQPhVDIH
- xDviTZ7CP4RRK9VURaOcznrwkOd2MMy8Yq+ePogP3FBgl593XrCUdri93TKl8hFGzzrl
- oNdETAc69HG5stKgIvDObDTa7yN8paat5UEk9nKabR2qRzpi3WwTGJpiO7W6qfzPSE//
- bPZQGN/JRiyV9Se6rxO5imPNWytTNiEdETrcjFD03kGN9+b6WvbsG8mw2fp676mx3muB
- w99w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700328996; x=1700933796;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DC2MaIfS6LlWkY/Yuul9WyhF96mD7ttUTd+lMSh2lXs=;
- b=E/T5vxuoFy5FlBzE/DVaSwOFS2XH8MS7/T0Y5m6F4ltOjkqyB7KXDagiI9awyaqhL+
- 4WTVPQ72ODVJKWqz5RGEmmnKabAUNwFixZQAHFuRHfCmRqVWQrx9YZ4Qz20JOpG6q0PQ
- OFTMeCDBKxNFKIBxcb12JBc7n5s+62atRg6jAtLs4U6Z5jBo9ln8lX9xKsPd/mTB+cOX
- T0k4+8wAOoE4/n0f0jgg6qn8ghtIwSTU2F4RIMejzja9hnK6/t2szhn9JI+oYnOtZKE4
- 9melE0zsKQRYMpRRYak5CWZt9wULMehJI9qsfGdpO1T5C3iUoDPFDOIFb7kjXl3CBWhK
- m/Jg==
-X-Gm-Message-State: AOJu0YxdrQ6bvjwQhzHrI8FjCRpmqkRTTedi/75FU5PqLfVlUzqURArt
- 38l87ku5k4A+QNkDaAV4vUDfjQ==
-X-Received: by 2002:a17:907:7b92:b0:9be:6ccb:6a8f with SMTP id
- ne18-20020a1709077b9200b009be6ccb6a8fmr3005941ejc.48.1700328995593; 
- Sat, 18 Nov 2023 09:36:35 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.211.152])
- by smtp.gmail.com with ESMTPSA id
- um16-20020a170906cf9000b009b913aa7cdasm2086267ejb.92.2023.11.18.09.36.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Nov 2023 09:36:35 -0800 (PST)
-Message-ID: <e6f3b219-5e81-4a28-82b9-ab3e30046032@linaro.org>
-Date: Sat, 18 Nov 2023 18:36:33 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id f6-20020a7bc8c6000000b004030e8ff964sm17695496wml.34.2023.11.20.07.08.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 07:08:34 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id F15A0655DF;
+	Mon, 20 Nov 2023 15:08:33 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-s390x@nongnu.org,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-arm@nongnu.org,
+	devel@lists.libvirt.org,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Marek Vasut <marex@denx.de>,
+	Thomas Huth <thuth@redhat.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Nicholas Piggin <npiggin@gmail.com>
+Subject: [PATCH v2 00/14] random fixes for 8.2 pre-PR (tests, plugins, docs, semihosting)
+Date: Mon, 20 Nov 2023 15:08:19 +0000
+Message-Id: <20231120150833.2552739-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-8.2] target/arm: Fix SME FMOPA (16-bit), BFMOPA
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org
-References: <20231117193135.1180657-1-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231117193135.1180657-1-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oR7/vCgrUwXC
+X-TUID: mNX/QC0tpQlg
 
-On 17/11/23 20:31, Richard Henderson wrote:
-> Perform the loop increment unconditionally, not nested
-> within the predication.
-> 
-> Cc: qemu-stable@nongnu.org
-> Fixes: 3916841ac75 ("target/arm: Implement FMOPA, FMOPS (widening)")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1985
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/tcg/sme_helper.c | 10 ++++------
->   1 file changed, 4 insertions(+), 6 deletions(-)
+I've just been trying to clear some of the bugs against various
+subsystems. These are mostly testing changes and a minor tweak I found
+while checking up on semihosting behaviour. Enabling arm-softmmu
+check-tcg tests expands our testing abilities slightly for the 32 bit
+side of the family.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+For v2
+------
 
+ - fixed up register test for ppc64/s390x
+ - added gdbstub doc patch
+ - review comments for arm-softmmu testing
+ - changed handling of "native" cross for linux-user
+
+I intend to roll the PR on Wednesday.
+
+The following need still review:
+
+  tests/tcg: finesse the registers check for "hidden" regs
+  configure: don't try a "native" cross for linux-user
+  tests/tcg: enable semiconsole test for Arm
+  tests/tcg: enable arm softmmu tests
+  docs/system: clarify limits of using gdbstub in system emulation
+  docs/emulation: expand warning about semihosting
+  tests/tcg: fixup Aarch64 semiconsole test
+
+Alex Bennée (10):
+  tests/docker: merge debian-native with debian-amd64
+  tests/tcg: fixup Aarch64 semiconsole test
+  docs/emulation: expand warning about semihosting
+  docs/system: clarify limits of using gdbstub in system emulation
+  hw/core: skip loading debug on all failures
+  testing: move arm system tests into their own folder
+  tests/tcg: enable arm softmmu tests
+  tests/tcg: enable semiconsole test for Arm
+  configure: don't try a "native" cross for linux-user
+  tests/tcg: finesse the registers check for "hidden" regs
+
+Daniel P. Berrangé (1):
+  tests/docker: replace fedora-i386 with debian-i686
+
+Greg Manning (1):
+  plugins: fix win plugin tests on cross compile
+
+Philippe Mathieu-Daudé (2):
+  .gitlab-ci.d/cirrus: Upgrade macOS to 13 (Ventura)
+  target/nios2: Deprecate the Nios II architecture
+
+ docs/about/deprecated.rst                     |  15 +
+ docs/about/emulation.rst                      |   5 +-
+ docs/system/gdb.rst                           |  13 +-
+ configure                                     |  27 +-
+ hw/core/loader.c                              |   2 +-
+ hw/nios2/10m50_devboard.c                     |   1 +
+ hw/nios2/generic_nommu.c                      |   1 +
+ tests/tcg/arm/system/semiconsole.c            |  42 +++
+ .gitlab-ci.d/buildtest.yml                    |  12 +-
+ .gitlab-ci.d/cirrus.yml                       |   6 +-
+ .../cirrus/{macos-12.vars => macos-13.vars}   |   2 +-
+ .gitlab-ci.d/container-cross.yml              |  11 +-
+ .gitlab-ci.d/containers.yml                   |   2 +-
+ .gitlab-ci.d/crossbuilds.yml                  |  14 +-
+ contrib/plugins/Makefile                      |   2 +-
+ plugins/meson.build                           |   2 +-
+ tests/docker/Makefile.include                 |   3 -
+ .../dockerfiles/debian-i686-cross.docker      | 182 +++++++++++
+ tests/docker/dockerfiles/debian-native.docker |  54 ----
+ .../{debian-amd64.docker => debian.docker}    |   7 +-
+ .../dockerfiles/fedora-i386-cross.docker      |  40 ---
+ tests/lcitool/refresh                         |  18 +-
+ tests/plugin/meson.build                      |   3 +-
+ tests/tcg/aarch64/Makefile.softmmu-target     |   5 +-
+ tests/tcg/arm/Makefile.softmmu-target         |  76 ++++-
+ tests/tcg/arm/system/boot.S                   | 301 ++++++++++++++++++
+ tests/tcg/arm/system/kernel.ld                |  24 ++
+ .../tcg/arm/{ => system}/test-armv6m-undef.S  |   0
+ .../tcg/arm/{ => system}/test-armv6m-undef.ld |   0
+ tests/tcg/multiarch/gdbstub/registers.py      |  87 +++--
+ tests/tcg/ppc64/Makefile.target               |   7 -
+ tests/tcg/s390x/Makefile.target               |   4 -
+ 32 files changed, 775 insertions(+), 193 deletions(-)
+ create mode 100644 tests/tcg/arm/system/semiconsole.c
+ rename .gitlab-ci.d/cirrus/{macos-12.vars => macos-13.vars} (95%)
+ create mode 100644 tests/docker/dockerfiles/debian-i686-cross.docker
+ delete mode 100644 tests/docker/dockerfiles/debian-native.docker
+ rename tests/docker/dockerfiles/{debian-amd64.docker => debian.docker} (96%)
+ delete mode 100644 tests/docker/dockerfiles/fedora-i386-cross.docker
+ create mode 100644 tests/tcg/arm/system/boot.S
+ create mode 100644 tests/tcg/arm/system/kernel.ld
+ rename tests/tcg/arm/{ => system}/test-armv6m-undef.S (100%)
+ rename tests/tcg/arm/{ => system}/test-armv6m-undef.ld (100%)
+
+-- 
+2.39.2

@@ -1,78 +1,79 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2347706ejb;
-        Mon, 20 Nov 2023 09:25:16 -0800 (PST)
-X-Received: by 2002:a17:906:1859:b0:9e8:2c4d:40d4 with SMTP id w25-20020a170906185900b009e82c4d40d4mr7545184eje.30.1700501116048;
-        Mon, 20 Nov 2023 09:25:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700501116; cv=none;
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2348476ejb;
+        Mon, 20 Nov 2023 09:26:21 -0800 (PST)
+X-Received: by 2002:aa7:da92:0:b0:53d:bc68:633a with SMTP id q18-20020aa7da92000000b0053dbc68633amr71409eds.5.1700501181407;
+        Mon, 20 Nov 2023 09:26:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700501181; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWCgdhIjvpaiGTjexQ3LP+OYkzLrX/eJZuWU00+WWkKQhX642rfm7IxMOVIdTs1Mxq
-         6to82eOKU0lbkaQYRdMrFxGBV1Ah2usF8bxpn7BTF6WWpGXAuHtLWIMN7AXMQfG4PZyD
-         sBuadO7zLLUIB1eUDNgtu5aIPtD1x7GNjXNZsonIFau0aGWDK2Oblqnmmk+p0fuQA+9x
-         is+or0zAvrceS9VZd/saO8J8Gylqe0hXJ+elsIe1ipqQrCvuUfY3Fl8hldAFMp6P23Kq
-         yu2BT96zIyRWgB3e6jQQQHEUYLZtDxVHB6nhuIk31mDvC1yUcFaSCmcKNQmeQV0yysSA
-         ek9A==
+        b=tY4+xpbZGDT1xqXXddL9qPQWfvJ53PKYaxqbFvI0g9no8eZAROAYORTrWa46iTJbq+
+         3L0ToJ+ZOnRCRNvYKVXxt9fuzvumxm82E8NWcFKEUZJG1Dre7HcbxuQ2wTD7lR9pHQvC
+         uj17h4ZbUBieJ66K5A2dljDIsTCSlt3M2kRzm+Lz8ABdz3D+uAOIuavfA4R3BJPOqWwO
+         3De+kKDT8A5juSeNXX5kgT55XrQ1xbAY/COEKCitu2Pzj5mJ/jR1qZ64ajRfo1YRQNeB
+         F0NoQmkp9pCW4wYxQTvIK9Bvrv2e0FsfyfbEPynaBsW/qTVC2qEnWrMmX7ybih/S98Iw
+         pruQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Rt6yvIhC3Ev+7ooito66m4fp8ulzbX39qgkqxP3R/Fg=;
+        bh=PW/m+doSsfC1tDv8iaxMIsedk/4LD5Ru6zO6xuPKDM8=;
         fh=/UlhpyZbq2zH+qA+avu/2OTfcdlQj9UMJPfDI/YBVak=;
-        b=kEXvUAlbrutjej2Bmiqn6vO6ur6b/9/5DkGhORdmgMXEARYOEAG53Kc5JN8tsbYeoq
-         QiCd8/W25+Xxz7bOdqBIugjnmbYSPrYJzOEbtTUOZihVr6hHdEB0GKE9d5t8/V6p1nN2
-         oM6gDscTWcQu4+LtjsiKK8WfyH6IeLW2ukEEOH57gL/dSz9zw2op7IJ557rDYlS1NgYj
-         MX3afgpNXc6ANtJs3igkDpsTKd1UNzNzmaGmRc/aTpzv2szmJgcqWlFq3orvBQ/KkYtf
-         0cc/PtSlPyfPcpWAILQdEGT9IdgNtk/d0/bvADTHBpmofqchg36+1BoJKYucF2F4kS3r
-         mQfg==
+        b=PStXXB4OXMoFiVayfWnTqtgBcbBgnqWgAFi2nfHQ5M2/bQfy2bxNRw2D7irviPGYrh
+         ANaDWZ6b1MI3ATRN9moQKFvpXXEDZMNb9wIHVhHOmLjBtQ5eAs/lF+mhWvMuH+FnkokU
+         mBK4KPOe1u3lD/XMfFHsk+K8Iz/bMM17ntqdBbHy3ywraSCGdsA1FH7YDg+supmrvZtp
+         qWm/PIkw7xGs2876nhK8KdEi7HV+U8fsCof808iXjcHKeSVKohWwAYCW5hLz9bvOctfV
+         pJpgRTi1Uan3MljBA1tbyXFevXWVQAfFAeny1SHAcfeiy6tu4baH5Uy9EMNlzT5Rmlkg
+         UsgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="aPxn/7Uv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RIwAchFi;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e27-20020a170906749b00b009fb0888b203sor1370247ejl.18.2023.11.20.09.25.15
+        by mx.google.com with SMTPS id ec27-20020a0564020d5b00b005254ba9451bsor27293edb.1.2023.11.20.09.26.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 20 Nov 2023 09:25:16 -0800 (PST)
+        Mon, 20 Nov 2023 09:26:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="aPxn/7Uv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RIwAchFi;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700501115; x=1701105915; darn=linaro.org;
+        d=linaro.org; s=google; t=1700501181; x=1701105981; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Rt6yvIhC3Ev+7ooito66m4fp8ulzbX39qgkqxP3R/Fg=;
-        b=aPxn/7UvYbSFRuHNYlpKtxmC1pCt0p5+YPLlmlIyqXpizIGWOLk1HGzqjHaLePLJdA
-         3rMtfFHXHraTp/ZD4p1J38WFeSmCoq5L4lFmfvBlY+A2EcxT2PKva7KFwdWF75vA2tXL
-         Vly6RYE9/T83tfz1YgS1vgQd7Hfead9wCw8rcchkia8Dmq6QBEkSLfhi+N7IM7NdyjYL
-         sEXLFQByJYj8vXw1xJnOkwLlbEnEG9EjMvChLQJOfk0tiqVAn6g/JRHWtdn5jpL8bojn
-         AtHnGsA+mYpCX8yxukpCBVRKujSjZzUSF/+/PxkBeiPFSnpeuwoT7t5QW3Dil9jhDEnD
-         hPNQ==
+        bh=PW/m+doSsfC1tDv8iaxMIsedk/4LD5Ru6zO6xuPKDM8=;
+        b=RIwAchFiqgbByRuJVSWHq3UkDbHLv/mmjCMzAyGYRE/b7NNxMGe4xSPpaC+d8cYFsb
+         DVjNzNp98XM7D1/h9CFAuQUir/dwmB3I7x9X9R/zqjOuVj+XKzjnGig6YL6v42+e16Zl
+         A1KMaN+2pqfJ+L7I3yVD7/fdJeRR40HMryZiaFCG20yXQSm9C/EseBcJfJTWXcX3Ozyt
+         L7emprlTZG85kWcNzRHJmhBdPKiWQ8gUjjf3U9cUs7NqV8v6+4hN6PUBeRys+70gWKkR
+         nSKW0QrYrZ293BspFTjgwi0v61LuleKbnMCif84sU2xl8JaLROb3g3OW316B6Z7izM6K
+         /X0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700501115; x=1701105915;
+        d=1e100.net; s=20230601; t=1700501181; x=1701105981;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Rt6yvIhC3Ev+7ooito66m4fp8ulzbX39qgkqxP3R/Fg=;
-        b=Idna5GE7OhfG2MTLl7O4cAjhM56Wl/U0JfWbd5Wiqw+6v59SX0oWaLjcw/1evaTeK5
-         CdYWGego3m19N5oc0AB6YrJL2AELtfVz01OYN6l57syoplfYeltRBwuTQs3sq1W5EUEX
-         T6zEel+kW8nRF1vi4tpzrdyszARjY8ppvt26hoKplACfPiUCrEEilnb/mbfBGNAO51T3
-         6RGuNMPl+SllzTh4A7+S0VsLeu7XiFGb0JSqfftqYTrSrpL/mFrpi/2rSs92NIm8Oag9
-         kneaSPTF8IUMbWO0Ce91YWCCgiqA4VA1ha1IWfn7r5kJvAEKSNjVUMWjohTJ8ykwn+Lx
-         l9VQ==
-X-Gm-Message-State: AOJu0Yze5gWM+zlh8SL+Lgm0tTCGqiI6cIaXVej37M82PbR5qIVt5N7a
-	tBpiST6cu4Vt60g2o0V7Zgv2IsxpV7hNcvPIR2GP5BxoRnOM0EoqR/U=
-X-Google-Smtp-Source: AGHT+IHUPzvuL4D5bW87jvt9+3tI9CkZu1gwEXCUgdaVDL8WlhPbVavuyUvtrEYJRofrLc/NHtSqA3dIg0mB2JPZKzk=
-X-Received: by 2002:a05:6402:688:b0:543:52be:e6ad with SMTP id
- f8-20020a056402068800b0054352bee6admr68352edy.5.1700501115673; Mon, 20 Nov
- 2023 09:25:15 -0800 (PST)
+        bh=PW/m+doSsfC1tDv8iaxMIsedk/4LD5Ru6zO6xuPKDM8=;
+        b=na2Hm+XwcJ8veN04pwLr8gWxtaNKNXtEEtBzu9M1ICrEsqvY78fAr0Mniia53EI31o
+         SEf1J2WUMiRcKE30vYzyOkJXXHcBGctYzkG4DN455m9BcnbuBcytcLpVLxYEWHFszaM5
+         i+tYFLdXdaVR9Q5R+NXLtc77+jcjGEIDfYlOxWiEso0lf8KtA+KKM9xLxTTyyDjyyOtO
+         q1yQb1kLCIUA8Sne3i8rwq6hTPAFWur0rG/JSk+AwNiWsQRv31VnrAIYt7dJ9bActMkU
+         hjmMfCOjVSwQrSweBneYJPdk9lcV2joG67g03fM1X8/3VM+tmyZUNCefDZk/8xBTWa9q
+         4aYQ==
+X-Gm-Message-State: AOJu0YyqtYlp4qsySOMdvlfOKyGlm1d7n+BQfowjDYa65NydU+CjODxG
+	OGmp++eLrQB7U1eJoIXTZdahsU1dHk8Gf+mTzOb5lm779z13vKyRL0U=
+X-Google-Smtp-Source: AGHT+IHv7i9e38rfFjRA1pZ+oR+DEuzKU77OFXNetiLLG1xsefvr3Sg219ZgLRFuezyPzjTYIZfiHo6cetQgD8rKZn4=
+X-Received: by 2002:a05:6402:797:b0:548:af73:6747 with SMTP id
+ d23-20020a056402079700b00548af736747mr36231edy.38.1700501181058; Mon, 20 Nov
+ 2023 09:26:21 -0800 (PST)
 MIME-Version: 1.0
-References: <20231120150833.2552739-1-alex.bennee@linaro.org> <20231120150833.2552739-12-alex.bennee@linaro.org>
-In-Reply-To: <20231120150833.2552739-12-alex.bennee@linaro.org>
+References: <20231120150833.2552739-1-alex.bennee@linaro.org> <20231120150833.2552739-9-alex.bennee@linaro.org>
+In-Reply-To: <20231120150833.2552739-9-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Nov 2023 17:25:04 +0000
-Message-ID: <CAFEAcA_QP7QZb04Op-U_jYGpVckSkzgQrFnJghywLK1NgX6sxQ@mail.gmail.com>
-Subject: Re: [PATCH v2 11/14] tests/tcg: enable arm softmmu tests
+Date: Mon, 20 Nov 2023 17:26:10 +0000
+Message-ID: <CAFEAcA-oYNZ=kNJ8C6FkGi==H4cHoTJ5xo3PC6P1RRH+0A3Zow@mail.gmail.com>
+Subject: Re: [PATCH v2 08/14] docs/system: clarify limits of using gdbstub in
+ system emulation
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
 	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -85,48 +86,65 @@ Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>, Nicholas Piggin <npiggin@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: xRpo+jdlK/dp
+X-TUID: /YV5BFEgcLlU
 
 On Mon, 20 Nov 2023 at 15:08, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
-> To make it easier to test 32 bit Arm softmmu issues implement a basic
-> boot.S so we can build the multiarch tests. Currently CHECK_UNALIGNED
-> is disabled as I haven't got the right magic set for it to work.
+> It seems some users will try and use the gdbstub to debug userspace
+> inside a system emulation. While possible clarify the limitations of
+> this approach and direct the users to a less head scratching way of
+> debugging user-space.
 >
-> Message-Id: <20231115205542.3092038-10-alex.bennee@linaro.org>
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-
-> +# Running
-> +QEMU_BASE_MACHINE=3D-M virt -cpu max -display none
-> +QEMU_OPTS+=3D$(QEMU_BASE_MACHINE) -semihosting-config enable=3Don,target=
-=3Dnative,chardev=3Doutput -kernel
+> Clarifies: https://gitlab.com/qemu-project/qemu/-/issues/1274
+> ---
+>  docs/system/gdb.rst | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+>
+> diff --git a/docs/system/gdb.rst b/docs/system/gdb.rst
+> index 9906991b84..c0cc0c9c7e 100644
+> --- a/docs/system/gdb.rst
+> +++ b/docs/system/gdb.rst
+> @@ -60,7 +60,7 @@ As TCG cannot track all memory accesses in user-mode th=
+ere is no
+>  support for watchpoints.
+>
+>  Relocating code
+> ----------------
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>  On modern kernels confusion can be caused by code being relocated by
+>  features such as address space layout randomisation. To avoid
+> @@ -68,6 +68,17 @@ confusion when debugging such things you either need t=
+o update gdb's
+>  view of where things are in memory or perhaps more trivially disable
+>  ASLR when booting the system.
+>
+> +Debugging user-space in system emulation
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
 > +
+> +While technically possible to debug a user-space program running
 
-A minor thing, but I just ran into an awkwardness in the
-equivalent set of variables in the aarch64 subdirectory:
-if you ever want to define a different machine type then
-there's no convenient way to say "give me the standard
-options but a different machine", because the QEMU_OPTS
-has the base machine in it and there's no variable with
-just the semihosting etc options in it. For aarch64 I opted for:
+"While it is"
 
-+QEMU_BASE_ARGS=3D-semihosting-config enable=3Don,target=3Dnative,chardev=
-=3Doutput
-+QEMU_OPTS+=3D$(QEMU_BASE_MACHINE) $(QEMU_BASE_ARGS) -kernel
+> +inside a system image it does present challenges. Kernel preemption
 
-because then you can have a particular test do something like
-+QEMU_EL2_MACHINE=3D-machine virt,virtualization=3Don,gic-version=3D2 -cpu
-cortex-a57 -smp 4
-+run-vtimer: QEMU_OPTS=3D$(QEMU_EL2_MACHINE) $(QEMU_BASE_ARGS) -kernel
+"image, "
 
-You could argue about whether '-display none' should be in
-QEMU_BASE_ARGS. I figure -kernel should not be because it
-has the weird "must go last" property.
+> +and execution mode changes between kernel and user mode can make it
+> +hard to follow whats going on. Unless you are specifically trying to
 
-(These tweaks to the aarch64 makefile coming soon in a different
-patch...)
+"what's"
+
+> +debug some interaction between kernel and user-space you are better
+> +off running your guest program with gdb either in the guest or using
+> +a gdbserver exposed via a port to the outside world.
+> +
+>  Debugging multicore machines
+>  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D
 
 thanks
 -- PMM

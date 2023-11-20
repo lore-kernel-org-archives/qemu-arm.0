@@ -1,119 +1,78 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2291160ejb;
-        Mon, 20 Nov 2023 08:08:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IExVOAHBl+SdBcCKWrshxq3OJbpoNYz4BrcrJNTSR/YA54Wds6ZMkeESj5U/jclXw8jP6W8
-X-Received: by 2002:a05:6214:1247:b0:658:997f:79b7 with SMTP id r7-20020a056214124700b00658997f79b7mr12193495qvv.3.1700496533995;
-        Mon, 20 Nov 2023 08:08:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700496533; cv=none;
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2310899ejb;
+        Mon, 20 Nov 2023 08:35:18 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFrDjDGl2kzdbs+WEV7OqQJzvRRyk1Pg5J+gXxP10ZrcHTuwyy3zaYOxh4YVCsnvtg8uHzT
+X-Received: by 2002:a05:620a:850a:b0:76f:5b9:3f32 with SMTP id pe10-20020a05620a850a00b0076f05b93f32mr8076128qkn.19.1700498118427;
+        Mon, 20 Nov 2023 08:35:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700498118; cv=none;
         d=google.com; s=arc-20160816;
-        b=hHpsHuos5nDtrOCpgIiTZqC3VMLymJ70jN9LZyXH9gKr6cLdUuGMSuK2E2ffpKjmQ/
-         Me32oyWq6as88V2VpI5OIJVZbFaPVy62XhppKV86rffhXA4Susi+0nKoK9xOiuXqVbjK
-         he02qF+lMyHLzSIVjhPPhYo70V2ppWKXPFDG9eBHjy7UYWu1y+y+RqhhslE2ymeeu9/P
-         A1tG8xFa8bOMbr0lT0t6T5UwdoL5s4SfF9SVcIXAlLxjbjlxxlcPNeuODLQQr7xzea9C
-         l+rdaE4YHBldTkiI2Jr2AMDN6YUMd3DRpFP4/MMroxNq/xCCT0b4AcP/wUjH8TvL0miU
-         Y0+Q==
+        b=t7lCxa3sK6ZDAx7Zudr9umDBFfcugvcczHD4RQOiTddJ4P+6ddAvQVyzxkieLtkhkC
+         Hz1vTFFAhqHm0BxC+xWuXwIU5JJCILdRoskgTjYvUHEfDXSBVVqo4gdy8/8rxKGNPZvl
+         KNSzGx0sbNVSls/4tB2rmLZdYSikH1kUBmlUcUfWlJMD+4unpUnmJFe23BkXsEvI26BT
+         eg4cCMeq67q7B27+7EhqXyL8Zpn9+sJfRJjQh/FayeWmOh39kmr1oV61Wf+DgiaWTWv7
+         /V/9hr/pFej1aasUd/qfcWNcS91cTpKKxBkz7yDCUIHR8RdPa2z8VzCavqrujiganBTe
+         PKHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=spY+bVUctbutBFaAWliQ/V61LM81iYfTCR6LfYrcRI8=;
-        fh=PRoHjD/djUAHQXeMIrzpgUv27otx4sratw48fpw7M0k=;
-        b=gWQm/oe2lv74xB6mdE/wjast0HXVT0kzmNyu5AOkF4Q/You2inoG2wuhLYpAFyWVIe
-         AqGo5OmT2NhWHntOigm4RedDzjeaUdkbF5q5Y+s76UPJnAv5azCeUb8zvgMYUHjKmQ7C
-         85w5Q1fecAqXFQ2QhFvEmMnxXIc2eZOC16vsanWfdmSZHonP5Gy7gUat4kujyjv8lo1q
-         HwLRI60GTPznSd6tqTSi1dCdsFHkS0FSFg1P9xEAcp5TkhC/7cDPowFXtDlKKzMxYScK
-         wfV3TbTvjgALYoXlHq1OMViRWWUkcwS2Fmg3PV+bhUBmjG7Iys+S94gOgYEzZ4QSXxVi
-         bljw==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:cc:to:message-id:subject:mime-version
+         :date:from;
+        bh=JXafBXstucjnjLtKdYU0FyB2SK0xQ49Ajyvy7cZuzbI=;
+        fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
+        b=CpifLrRk3gYNtqtF1RI3tqxzZFpbGiTvRjfZuGGw0w+mdwaIHZl0H0HsFSqC6nKWXC
+         Qe0Rv7fzJ+6acAQ6UN75NqNnEN6KjHbTAuYsQcOR+lDDdInck7SUN+A6zAjzcaMh73nH
+         rgscHKS9l03/mKirxz2fkHDt2hVaVLkO53iLmzbm88DEWPo2e3y12uEFvbzkU6+YYmSr
+         PhWyFtMLaaCSJl7FZ76Hn9Qlie+FnCqiWXRUF5215jnH2h+HY6UxyBycvplrfQ6U4msb
+         LArdgBFQSHKroMa8yjUnc/MKnxlMn9AMHkv1llLRuQK/cxskWPbkjg37H8aTzNwiPzEy
+         Udtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EGUtEXa1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17-20020a0ccd91000000b0066d0a9f4d0fsi7537599qvm.527.2023.11.20.08.08.53
+        by mx.google.com with ESMTPS id dx1-20020a05620a608100b0077573d5c255si7682457qkb.607.2023.11.20.08.35.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 08:08:53 -0800 (PST)
+        Mon, 20 Nov 2023 08:35:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EGUtEXa1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r56p8-0007pZ-Gi; Mon, 20 Nov 2023 11:08:34 -0500
+	id 1r57Ev-000178-Mn; Mon, 20 Nov 2023 11:35:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r56p6-0007nl-DT
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 11:08:33 -0500
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r56p4-00062k-Pe
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 11:08:32 -0500
-Received: by mail-lj1-x231.google.com with SMTP id
- 38308e7fff4ca-2c874286f4dso22690421fa.0
- for <qemu-arm@nongnu.org>; Mon, 20 Nov 2023 08:08:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700496508; x=1701101308; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=spY+bVUctbutBFaAWliQ/V61LM81iYfTCR6LfYrcRI8=;
- b=EGUtEXa1Qanh+NhfZ1n8cANciZGW4Cpu6ZnzQp63/4LIFmcGlF61Qc+bPe4p/HSGQ+
- wF7LJnISMCDl7CvmahvBqS/3pMPbbMee5tEwX+etx3PyBEpOeutIu7FSm31Jqe7L2/DB
- EVw9esgw3XVfDWv+R2ZQg8DjZ+SyZ3H+Qu/TJigwoql7kokrpT91wNQko99uWOjZNv9W
- u8vShho9c7dEeehdfScd2rAg7NIB5V3YLVvfNq+dAgU0s6jcn1hV5skW4f5mMmqIni0V
- 6XSxWcSfn0b8bVR8x4/gWoG/USaXoZXrf93HBojKbtyq0Ojd/h0S/ub9tnhJ7E+1RU/k
- 1twQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700496508; x=1701101308;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=spY+bVUctbutBFaAWliQ/V61LM81iYfTCR6LfYrcRI8=;
- b=KEpNGJea4LB3H4acZjA8FA5owT4poSzDh1bMmJAmrhw/RV57s+kGoVZQDqKBAnnzV3
- VNDpfjVyNjQNg0XTCUxiZgURhXC4sGQNwXshRZ7amgjm6c5uZQVY/yGlmgTMAqoU9feK
- MvxvEg+ebyefK4t7lXWd5cUERfZQPP9u49rF+0igH2UbmHSXyi3emZ+dIhl4EepevZn8
- q3DmNRFw8sHeCt6uTu0nPlPKA2RYOZH9uJrYIwqFA2yD78frrYkbLwOjqvtuKlu3HQTx
- e8EE8IBrxWrZSyhAninYCmQCPbTTZ8rOs3nLA0p5BPLOsl86N6sXcu2EqF2BncmPQ6n4
- /J/A==
-X-Gm-Message-State: AOJu0YyMtQg2zXEUtC1QngG23clCqoLAtuYeh29Lc3Yy0GwObt95JsO8
- 2FbsqQqTxILtE88VikxsADfD6Q==
-X-Received: by 2002:a2e:a367:0:b0:2c8:8479:51ff with SMTP id
- i7-20020a2ea367000000b002c8847951ffmr949726ljn.26.1700496508024; 
- Mon, 20 Nov 2023 08:08:28 -0800 (PST)
-Received: from [192.168.174.227] ([91.223.100.4])
- by smtp.gmail.com with ESMTPSA id
- r13-20020a2e994d000000b002b9e5fe86dasm1059373ljj.81.2023.11.20.08.08.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Nov 2023 08:08:27 -0800 (PST)
-Message-ID: <8960014b-9f2e-469d-8e6c-5c44d26c2304@linaro.org>
-Date: Mon, 20 Nov 2023 08:08:20 -0800
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1r57Es-00016B-VG; Mon, 20 Nov 2023 11:35:11 -0500
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1r57Eq-0006yz-K0; Mon, 20 Nov 2023 11:35:10 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id EB68C11F04C;
+ Mon, 20 Nov 2023 16:35:04 +0000 (UTC)
+From: ~inesvarhol <inesvarhol@git.sr.ht>
+Date: Mon, 20 Nov 2023 16:35:04 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-8.2] target/arm: Set IL bit for pauth, SVE access, BTI
- trap syndromes
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-References: <20231120150121.3458408-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231120150121.3458408-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::231;
- envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x231.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Subject: [PATCH RFC v3 0/2] hw/arm: Add minimal support for the B-L475E-IOT01A
+ board
+Message-ID: <170049810484.22920.612074576971878323-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, alistair@alistair23.me, philmd@linaro.org,
+ peter.maydell@linaro.org, ines.varhol@telecom-paris.fr,
+ arnaud.minier@telecom-paris.fr
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,34 +85,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~inesvarhol <inesvarhol@proton.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cTvFCo/9V1SR
+X-TUID: aVlvqpFxY7Vw
 
-On 11/20/23 07:01, Peter Maydell wrote:
-> The syndrome register value always has an IL field at bit 25, which
-> is 0 for a trap on a 16 bit instruction, and 1 for a trap on a 32
-> bit instruction (or for exceptions which aren't traps on a known
-> instruction, like PC alignment faults). This means that our
-> syn_*() functions should always either take an is_16bit argument to
-> determine whether to set the IL bit, or else unconditionally set it.
-> 
-> We missed setting the IL bit for the syndrome for three kinds of trap:
->   * an SVE access exception
->   * a pointer authentication check failure
->   * a BTI (branch target identification) check failure
-> 
-> All of these traps are AArch64 only, and so the instruction causing
-> the trap is always 64 bit. This means we can unconditionally set
-> the IL bit in the syn_*() function.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-stable@nongnu.org
-> ---
->   target/arm/syndrome.h | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+This patch allows to emulate the B-L475E-IOT01A ARM Cortex-M4 board.
+This is RFC since the implementation isn't complete yet, there are no
+implemented
+peripherals, and it's a first contribution to QEMU.
+The changes from v1 follow the reviews from Philippe Mathieu-Daud=C3=A9.
+We additionally changed the parent of the stm32l4x5 SoC from Device to
+SysBusDevice.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Details of v2 to v3 changes :
+- moved the initialization of armv7m from the SoC initfn method to the
+SoC realize method
+- embedded the flash sizes of different SoC types in the class_init
+methods (removing macros)
 
+Details of v1 to v2 changes :
+- replaced 'stm32l475vg' by 'stm32l4x5'
 
-r~
+In the *_soc.c file :
+- added support for the stm32l4x5xe and stm32l4x5xc
+- used ERRP_GUARD() instead of propagating err to errp
+- renamed memory regions
+- hard-coded the cpu type in the realize method
+- used DEFINE_TYPES() is preferred over type_init()
+- added a SPDX tag
+
+In the *_soc.h file :
+- included "hw/qdev-core.h" and "exec/memory.h"
+- removed <private/public> lines
+- exported the different flash sizes
+- moved the SRAM and flash addresses, SRAM sizes to the *_soc.c
+- added a SPDX tag
+
+In the board file  :
+- enforced the CPU type (using 'valid_cpu_types' instead of
+'default_cpu_type')
+- added a SPDX tag
+
+In=C3=A8s Varhol (2):
+  hw/arm: Add minimal support for the STM32L4x5 SoC
+  hw/arm: Add minimal support for the B-L475E-IOT01A board
+
+ configs/devices/arm-softmmu/default.mak |   1 +
+ hw/arm/Kconfig                          |  11 +
+ hw/arm/b-l475e-iot01a.c                 |  77 +++++++
+ hw/arm/meson.build                      |   2 +
+ hw/arm/stm32l4x5_soc.c                  | 275 ++++++++++++++++++++++++
+ include/hw/arm/stm32l4x5_soc.h          |  63 ++++++
+ 6 files changed, 429 insertions(+)
+ create mode 100644 hw/arm/b-l475e-iot01a.c
+ create mode 100644 hw/arm/stm32l4x5_soc.c
+ create mode 100644 include/hw/arm/stm32l4x5_soc.h
+
+--=20
+2.38.5

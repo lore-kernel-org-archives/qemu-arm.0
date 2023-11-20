@@ -1,245 +1,150 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2181172ejb;
-        Mon, 20 Nov 2023 05:37:47 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF/GFLtC6DmzwsQRxYYfyOLGL0/pUnz+GI/Qykc2l66+jaPf1PXUJRR6Qe+j3Z6Psturbwo
-X-Received: by 2002:ad4:574f:0:b0:677:fb25:ceff with SMTP id q15-20020ad4574f000000b00677fb25ceffmr10912454qvx.54.1700487467347;
-        Mon, 20 Nov 2023 05:37:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700487467; cv=none;
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2181278ejb;
+        Mon, 20 Nov 2023 05:37:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGNP7ZfaAAhYHlmySjtn4pcW+35LFzoQcAEQ9jzF6JJDYWXCcvj/pNmzplv0xN56bB8JAMS
+X-Received: by 2002:a05:622a:1884:b0:41c:d1e7:27b5 with SMTP id v4-20020a05622a188400b0041cd1e727b5mr6894533qtc.25.1700487477817;
+        Mon, 20 Nov 2023 05:37:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700487477; cv=none;
         d=google.com; s=arc-20160816;
-        b=H+VrzU1LG8rAHsAWKlTuchQjuvAdzym4JhL7XcLH/pOGKQETWoyy4TwMCcu9bQYO2a
-         mnpXPx6gpUDfBl5hcHLKta9gc7NoxynonrxcXumBthhTg/3mNgd30wnWdlshVSDUusVR
-         qc6/1eDxa7Q2yQcy1fMKwPEiH+0eS0J+O8RDrhrO6nLTfVNKnTwwpNSBsI9LQRGbmDA4
-         2e5o3RlP7VICNhj0nCsSMhtu5u4f54S+HLp6Chr1ocao/eu4cfkJSmPVPqtbp/0ZVikx
-         zEQ2kdNznEwGHn06PccYbGu7yl8q/GOYwXPwY1RSIko5eYLf6xIkSLafVHxlA1biJN8o
-         hcxg==
+        b=nlM3X05mASZXKVyzs2r22LSTJunES+jRgCfInqPbU2JCcj0g4fOo4KbYlj7zM4PhoH
+         K69DfQFPhTPglZXXvO5Jv+pqFworZqRbDgO5GsgN7b1rCzQ69lZZ/vyOL0Q27r8vfhQV
+         CaqEjIuZwB+2QTmMvcoMQ3fB2mR/0L8zSnWDIbIWusb9thaonw3IEdg7DsOOdNtptazL
+         T4wlKok4nQ0i0U2jcgpbWeJkAZ++UW4IcNGXq8D67SUsJfdKA3wgakpEc9jt3jn5Aq0u
+         sGvJS2dAVbrUBhX7v9FKS1RFh0JsxJIa1O8hojqcytXbTG5VAZCaPUXuMbwlsT1Ub55N
+         rVUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:mime-version
-         :subject:date:from;
-        bh=NaX3Nof0Y8PhB0TVr9Ir2nsLVl+vDv7VIssBg7DLJ7w=;
-        fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
-        b=tZZdSQ9ajgK/M0XBf//8O/9QR4i97LclQO8avpNYVoKrShiBw6y9rI7DI8FcEd7NCO
-         ydvzPRJ/lY55PksjvLuUgqAqHVC5kwGeyod1R4HZuZnS203DBvkE/1lTGGpCTDG7bAYM
-         x1gp1DFQ23BzuAQrXVxergmtDySVoj6jQfLNdN9EX9Lb6pRAwdwnIxcewEGfSFjj89a5
-         n2xTsFL5Iqf4Cxcxs02emDME3+0aoYdah+crOqXdCju+Uh3YO3sm0jhXQnKDQnAaKCYB
-         6mwcS/hVM3a7XIkRy07+iW7IlVQVKv19qV6NahP7/OcQ+UsxpMvR5wt6zYupiolY4rOu
-         M+yA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=NtKlazPp0iTgnh4ebXcT7yEof+LWTyqM4DYya5SuJaM=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=pDyIB4BtCgLxW0g0RnVdxGePKTzQJWeUYHQk7Wyg+l9EWRaXZAsw+4ttOtuoP4FrIW
+         WUUx7tRgtTWxV3uiXSodERueGvadem7HECo0hUANQdzzNi3fQNzMdheRQ8WuMcxtFbF/
+         H516nFx5FT61jwRG6zOzPHWBT9/MoDcN8C0vKWcAZtkSs0c0yLia+9oPCjd9vOIr7L+k
+         j/4t84+bnCpfd/alBYtkt8ZTp+IS3Nk986DNGkuvt6KbxqmWOtvjS5ruadsu37UAF6Y4
+         sGPQzmw57C/BYpROX40aYV7V9CoPUa/m9AvupAUXSptC+qjnYLW10xxpRaFzUw8L6bx+
+         FjrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ednA2H6w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ou30-20020a05620a621e00b00773c2e5bbfbsi7031965qkn.530.2023.11.20.05.37.47
+        by mx.google.com with ESMTPS id bp39-20020a05622a1ba700b0041814c12507si7317810qtb.383.2023.11.20.05.37.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 05:37:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Nov 2023 05:37:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ednA2H6w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r54T3-00050f-07; Mon, 20 Nov 2023 08:37:37 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r54Sy-0004zq-Uw; Mon, 20 Nov 2023 08:37:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1r50jU-0005Kf-JG; Mon, 20 Nov 2023 04:38:20 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1r50jS-0008CW-0T; Mon, 20 Nov 2023 04:38:20 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 62A9511EFFA;
- Mon, 20 Nov 2023 09:38:15 +0000 (UTC)
-From: ~inesvarhol <inesvarhol@git.sr.ht>
-Date: Wed, 15 Nov 2023 09:04:50 +0100
-Subject: [PATCH RFC v2 2/2] hw/arm: Add minimal support for the B-L475E-IOT01A
- board
+ (Exim 4.90_1) (envelope-from <mahalakshmib200011@gmail.com>)
+ id 1r52wx-0004os-Q4
+ for qemu-arm@nongnu.org; Mon, 20 Nov 2023 07:00:23 -0500
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mahalakshmib200011@gmail.com>)
+ id 1r52ws-0002vq-Kq
+ for qemu-arm@nongnu.org; Mon, 20 Nov 2023 07:00:23 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-280351c32afso3447127a91.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Nov 2023 04:00:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1700481613; x=1701086413; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=NtKlazPp0iTgnh4ebXcT7yEof+LWTyqM4DYya5SuJaM=;
+ b=ednA2H6w3vDipr5eRG5hU7W1mS4UldHcI5m2fq5KzYGQVz/hsXDVVqzqzuRimi7SRv
+ 7d3PhvYKhhi6piN1jdNw2fs0e2mcAqqEgnyl6X4q6wTXLmxFooN9mI653LawtU2CoTY+
+ DF1KyxpEYrf7ayd1sWTBNcuho8wrx+2snAUsXvThLVyOqsUxY1RgwxL0Pxl+bPQDOj1O
+ nLG7BRLVXRWi3ynBJclYZCUnT0Bs0fUIeReFDDTyZSfT0U9WS73lt22T8FiVPEf3KnEh
+ nW4XM7L2fN57GE8q0jeZQdEHR3NhdPr0c0usoolgVeElny7UAzUIEqF2KQI+yI9clUA0
+ qd/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700481613; x=1701086413;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=NtKlazPp0iTgnh4ebXcT7yEof+LWTyqM4DYya5SuJaM=;
+ b=V3onF8Wac+3UwJ2YgEWWl7Jr1r93rR+zhGd06eJMZOs6iv3x/SQwptkWENEnyvjQQA
+ J/7oN9v1HAgPhjsH2CVgmoo8b+vbtAjY94dS+mrglQyzZHTmh83g0DVpdXro4b2kCcC/
+ EBQISxXog5IwXZEoXQO1igC/B9c7OcTZaYim+rH4FRWkiH/oYOlg05uzRK2GkYO+rGCV
+ J/f8bRwO3/6+22BiOS+4Yss0x1J3JCiHplJp1Akj5RGi2hu8j4xGdf1rAShFtAg2I+F8
+ 05Wwx3SKHVe/hOqKBUDcI9QEWDmMN467OAWcAcMxkK/VvlPFSTW3VIY6ho21AZWjHysN
+ wC6Q==
+X-Gm-Message-State: AOJu0Yw7XKhMM1/lb0UcZeBsuDzmTalZGO+AOKx1zlzkLTb/hJgCtszn
+ l77am5zwCgzDqV7QuYqUbQIgch3uyg1dx6CjR27aTdJTTiw=
+X-Received: by 2002:a17:90a:356:b0:27d:4ede:75b0 with SMTP id
+ 22-20020a17090a035600b0027d4ede75b0mr7331172pjf.16.1700481613342; Mon, 20 Nov
+ 2023 04:00:13 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <170047309499.17129.4986209009679789101-2@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <170047309499.17129.4986209009679789101-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, philmd@linaro.org,
- peter.maydell@linaro.org, ines.varhol@telecom-paris.fr,
- arnaud.minier@telecom-paris.fr
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 15
-X-Spam_score: 1.5
-X-Spam_bar: +
-X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+From: Mahalakshmi B <mahalakshmib200011@gmail.com>
+Date: Mon, 20 Nov 2023 17:30:02 +0530
+Message-ID: <CAK6G2r58Aoz0M71Xskui+zf_Y++He8q1AAxVFhU-v9Tqn4=Kcw@mail.gmail.com>
+Subject: Unable to get guest OS console from Qemu monitor console
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000082ac03060a943ad7"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=mahalakshmib200011@gmail.com; helo=mail-pj1-x1035.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 20 Nov 2023 08:37:36 -0500
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Mon, 20 Nov 2023 08:37:27 -0500
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: ~inesvarhol <inesvarhol@proton.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kGcfEpLxQvK1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AZmkX7kTnSyH
 
-From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+--00000000000082ac03060a943ad7
+Content-Type: text/plain; charset="UTF-8"
 
-This commit adds a new B-L475E-IOT01A board using the STM32L475VG SoC.
-The implementation is derived from the Netduino Plus 2 machine.
-There are no peripherals implemented, only memory regions.
+Hi all,
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+new qemu user here.
 
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- configs/devices/arm-softmmu/default.mak |  1 +
- hw/arm/Kconfig                          |  6 ++
- hw/arm/b-l475e-iot01a.c                 | 75 +++++++++++++++++++++++++
- hw/arm/meson.build                      |  1 +
- 4 files changed, 83 insertions(+)
- create mode 100644 hw/arm/b-l475e-iot01a.c
+I am not able to get the guest OS console, i am able to boot it until qemu
+monitor console
+I am trying to
+-boot qemu with arm OS, my host machine is standard 64-bit Ubuntu 20.04.6
 
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-so=
-ftmmu/default.mak
-index 980c48a7d9..023faa2f75 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -19,6 +19,7 @@ CONFIG_ARM_VIRT=3Dy
- # CONFIG_NSERIES=3Dn
- # CONFIG_STELLARIS=3Dn
- # CONFIG_STM32VLDISCOVERY=3Dn
-+# CONFIG_B_L475E_IOT01A=3Dn
- # CONFIG_REALVIEW=3Dn
- # CONFIG_VERSATILE=3Dn
- # CONFIG_VEXPRESS=3Dn
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index d2b94d9a47..7520dc5cc0 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -448,6 +448,12 @@ config STM32F405_SOC
-     select STM32F4XX_SYSCFG
-     select STM32F4XX_EXTI
-=20
-+config B_L475E_IOT01A
-+    bool
-+    default y
-+    depends on TCG && ARM
-+    select STM32L4X5_SOC
-+
- config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-new file mode 100644
-index 0000000000..8d878d0f9e
---- /dev/null
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -0,0 +1,75 @@
-+/*
-+ * B-L475E-IOT01A Discovery Kit machine
-+ * (B-L475E-IOT01A IoT Node)
-+ *
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-+ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2023 Ines Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a c=
-opy
-+ * of this software and associated documentation files (the "Software"), to =
-deal
-+ * in the Software without restriction, including without limitation the rig=
-hts
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING F=
-ROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/stm32l4x5_soc.h"
-+#include "hw/arm/boot.h"
-+
-+/* B-L475E-IOT01A implementation is derived from netduinoplus2 */
-+
-+/* Main SYSCLK frequency in Hz (80MHz) */
-+#define SYSCLK_FRQ 80000000ULL
-+
-+static void b_l475e_iot01a_init(MachineState *machine)
-+{
-+    DeviceState *dev;
-+    Clock *sysclk;
-+
-+    /* This clock doesn't need migration because it is fixed-frequency */
-+    sysclk =3D clock_new(OBJECT(machine), "SYSCLK");
-+    clock_set_hz(sysclk, SYSCLK_FRQ);
-+
-+    dev =3D qdev_new(TYPE_STM32L4X5XG_SOC);
-+    qdev_connect_clock_in(dev, "sysclk", sysclk);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       0, STM32L4x5xG_SOC_FLASH_SIZE);
-+}
-+
-+static void b_l475e_iot01a_machine_init(MachineClass *mc)
-+{
-+    static const char *machine_valid_cpu_types[] =3D {
-+        ARM_CPU_TYPE_NAME("cortex-m4"),
-+        NULL};
-+    mc->desc =3D "B-L475E-IOT01A Discovery Kit (Cortex-M4)";
-+    mc->init =3D b_l475e_iot01a_init;
-+    mc->valid_cpu_types =3D machine_valid_cpu_types;
-+
-+    /* SRAM pre-allocated as part of the SoC instantiation */
-+    mc->default_ram_size =3D 0;
-+}
-+
-+DEFINE_MACHINE("b-l475e-iot01a", b_l475e_iot01a_machine_init)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 9766da10c4..bb92b27db3 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -42,6 +42,7 @@ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c'=
-, 'raspi.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
-+arm_ss.add(when: 'CONFIG_B_L475E_IOT01A', if_true: files('b-l475e-iot01a.c'))
- arm_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_soc.c'))
- arm_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c', '=
-xlnx-zcu102.c'))
- arm_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal.c', 'xlnx=
--versal-virt.c'))
---=20
-2.38.5
+Thanks for the help in advance!
+
+ Regards,
+Mahalakshmi
+
+--00000000000082ac03060a943ad7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div>Hi all,=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">new q=
+emu user here.</div><div dir=3D"auto"><br></div><div dir=3D"auto">I am not =
+able to get the guest OS console, i am able to boot it until qemu monitor c=
+onsole</div><div dir=3D"auto">I am trying to=C2=A0
+=C2=A0=C2=A0</div><div dir=3D"auto">-boot qemu with arm OS, my host machine=
+ is standard 64-bit Ubuntu 20.04.6=C2=A0=C2=A0</div><div dir=3D"auto"><br><=
+/div><div dir=3D"auto">Thanks for the help in advance!
+
+=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">=C2=A0Regards,=C2=
+=A0</div><div dir=3D"auto">Mahalakshmi</div>
+
+--00000000000082ac03060a943ad7--

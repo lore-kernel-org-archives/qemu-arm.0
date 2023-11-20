@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp68242ejy;
-        Mon, 20 Nov 2023 13:41:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEQsgUC5sZw6ac0cdd4Ls8G/IaQ1jmRDYMT7UhOcuoJ9gPINHZ93gnp6JPmLWi6vf6ffkUX
-X-Received: by 2002:a05:6214:76c:b0:65b:21c8:2d74 with SMTP id f12-20020a056214076c00b0065b21c82d74mr7852613qvz.6.1700516501761;
-        Mon, 20 Nov 2023 13:41:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700516501; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp68307ejy;
+        Mon, 20 Nov 2023 13:41:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF3rIccGh5Vr8hi2vm0NBW7prVWLTgzkUvfVTjHNEKtSHeqGa1CQOzfiCmb+ddyw2vaRUg6
+X-Received: by 2002:a81:5754:0:b0:5c9:9815:b8ef with SMTP id l81-20020a815754000000b005c99815b8efmr6589842ywb.49.1700516512117;
+        Mon, 20 Nov 2023 13:41:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700516512; cv=none;
         d=google.com; s=arc-20160816;
-        b=V8WX6adLuqPk8W6VUNyD5Q31YrIbI32RvX1c2kwzv5p+D77AaAVzJqbX26qtT4hu41
-         1rwxrkpdH2UL/INdkg0qZBY6DP15mMj5kuoc/FQLV7lc74gcg1xLCUUorlaAS1XrrqK9
-         i4FxsmU6Z1bTZ6BsXlsy1ratUfLnhR3QDbuDLU+GTmzQPPaTcAY/3YGdJ1Wi04mElyAj
-         m1QqtjwSpUkPzxoB9ZTCFTT/L83t+TzuriYPFFlOv6BiyiNljdSgeZGFDG2Jysgy4ijm
-         J3Q61X1bGA7GTKkzWiQbeGMRGkH2xsfudOAGqdd0IvZLBMCrcL3rxU8lcvJgZqtwTW/4
-         W6UQ==
+        b=uGDy1iBFzC18qNL1jcp6hKpAZDgkE0QP1u/E/zmaiFL7o64go1mAHwqdncRV6M4kqD
+         ivFZflRNhYUhCzxMPUyME2T9KEdkzVsyimSycdAWIChNfhWMkUef+qvCYijD6lHoYWfy
+         FGWUr6nNjO5qE4x1sIn2eBUhr2F2cCXAqe4G00r/pzXPZxqShQ8x0CdGuftiWTuPilP5
+         20+86ubfz7aa1jibeCIdU+uNPv3kjMX8I3l09E7mDG6HiYkLmx6X7Y+zMltwPj+9ke0o
+         wXXovqHlVIJAQsTeG1GBKtwWuhmzIREjX/ef3xEIW6DrhJfdJ+2v/IJQCgwnNW8YE75J
+         30Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UraS1TRuHZYl48d9Wxp+wjyyWyHIh0UIpS4MHa3Y4jk=;
-        fh=rUszpa2YpjdvUAMKOD3mDbyHjgGDQouMV1c9PSiGDnY=;
-        b=gx299UCDV2STpbLI7aAj5Ur46kvKdjMoNyWivHVy6OTn9vaCfqY6rKQg9i1buInWRi
-         JdRqIHhc5BQPVQjRUOy3eTnaDzhHPf8TfPBnWM5sOQPtHpCq4qVTTwb+ueI6wOIn3HD/
-         zidfxY7nmianAz+gYJFiHf/B92n7rVkWdXT0n6j3HTfqUfZoMyFK1Gs7E8mCouBiswD/
-         ya9cro2lAo7voAcJ6ccsBq5em3IkEqBv+JU8Kv9j0hYA03iDDzi27ZpWTBlXzcy4SF3k
-         cPGqNtgtHLSKAWM2F4ou8TXqV/XlVoKab/L+gDhjHOY/Pni/PQb4OC7URNKQSAFF9Y/p
-         XT9A==
+        bh=8LHC78QDU4+0JLufBJAoefD8kTg7PvgbK0ho9KjVegA=;
+        fh=s6i+mAokLmqoXWCAhv1lYNsf7BrryeHt5KKeg2phT8I=;
+        b=Mxql2Tt0CDezgUYRdqiYi3F+3yNmTnZylGmJ+KuGvdb3uiMcW/+L4KLLycQyB0atBK
+         yi9A1fdsUKjGE2UnJkMLNXGHUeSIQ29lzoybUn7rId0bJqIw7K1HqFU1Yy2sMpC5XN8j
+         Ijzl7Uu4mVq9qjrK7CxKOtwQ0PEI8JBMkrLrWzSDhrT0Hq0YZHmv75+g80oT/Q7Et6fc
+         ypmCI83ADQogXSmTwt8a5Xws98EOuxzq1b9GhfJz6zYVfehbMWqWyI8X24KRZQgv8yXg
+         hNeiJUgLu3nXXB3FbfZ0V94cWaek22GTocXRQR2XtNR95CTSqjWBIQ6zo1sF/0LN11B8
+         AQ+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EMBorPeM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qzi0CUJy;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e16-20020ad450d0000000b00679df30ae2csi1973201qvq.81.2023.11.20.13.41.41
+        by mx.google.com with ESMTPS id bs7-20020a05620a470700b0077b94c18fe3si8364410qkb.625.2023.11.20.13.41.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 13:41:41 -0800 (PST)
+        Mon, 20 Nov 2023 13:41:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EMBorPeM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qzi0CUJy;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r5ByQ-0002Uj-2b; Mon, 20 Nov 2023 16:38:30 -0500
+	id 1r5Byp-0003YA-7Z; Mon, 20 Nov 2023 16:38:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5By2-0002N0-0L
- for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:09 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Byo-0003XQ-14
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:54 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bxx-0004WU-CC
- for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:05 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-32f737deedfso3157413f8f.3
- for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:38:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Byl-0004gA-Bp
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:53 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-407da05f05aso17766385e9.3
+ for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:38:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700516280; x=1701121080; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700516330; x=1701121130; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UraS1TRuHZYl48d9Wxp+wjyyWyHIh0UIpS4MHa3Y4jk=;
- b=EMBorPeMlRr1txEOH2gF6Y2X6k8m5nwJHO2cE97N0IBuKfrGw6qCArNBVTLJa5tWo7
- OwHA6UtPfeW3u6RsiBiIwwbR4o6XKiMTBLjRQZIhiiQSqIqCVNzVvI1wKBkIDtBYcKou
- xB8/JVrRaPmEBqMy58X6it2Tb8Z1qmZPvterG/f6in38nit0ttgDraeF+IGtzgz5G3ur
- 6Ph/QFd+iZoOP2+ZvbfhIw8qvFdQbd9XcfNpEIdMkTwqTFuET2ZnggYh/eY4w+M0P+Rf
- W5XUhDXCqEC8HlruRVB+2hYJFtOh+4fKECjkh6oTuVzN8+Q/ZcEbsD40Sz4VJ9wb/onM
- fTiQ==
+ bh=8LHC78QDU4+0JLufBJAoefD8kTg7PvgbK0ho9KjVegA=;
+ b=Qzi0CUJy5vFEW51MbnKXvOnzW1PbT8WAk6OB6U5ziwXRW5LgmhunKmofFAGb4RxRtZ
+ Q3bQb3nmPKsPynLun2+eRtuR720M6Y7zwOACVWRQtNXHdaYq5b2o+OAGmHlISyQ+X2Su
+ IXJKN950Je2wUUawN2gCFm3uXtu2YLeTJZz8hkClmUNZqGTZj2e10Ql5XAW/LOSlPVrM
+ 0WF9qsT1SraZ7l3QxumhbgG27g2IvJAcX6n+rVKDPbL7Rc7kQf0HaGhRnqv+xObEAiUm
+ bzl6E/xwxOukTNEEc7PhYp8kTz5eVIvCtXZXx38SvMPEIUQzLtOT/4LRJmAJuwztujYD
+ 2tkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700516280; x=1701121080;
+ d=1e100.net; s=20230601; t=1700516330; x=1701121130;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UraS1TRuHZYl48d9Wxp+wjyyWyHIh0UIpS4MHa3Y4jk=;
- b=QzjSSSc2So31IYwUiLuy3+Q65GHnhRHqYFkhjuWaft1k/gpzfVRVaHLuwydfL2eqDw
- Qsicd1xVsKZkf4aei2MXEp8UKA3UzgDNRO68inexflStqUoZUfthzWqBrTKw2ZEf42Np
- Yr9vW7zpajGKjCCcJvBcOj/g/NlGQD7z2V4mCicy8IhRvMafeVmP/7+hekh/8zsHfscy
- BUS0aj/BoK2WpfK/xGPBGjcDW+7WeffdsCELYLvmegVlXoocDDBqdsTMDcD6DB9rwzoA
- NFawDA9uXcck2eLyNk8ENYzTue2JdsgSKWIFC2HnlN7odhQjPzS4VL9XhZI1YxAercNk
- 2sPw==
-X-Gm-Message-State: AOJu0YxA4VAgI+l3E4kX5zIM+qVr/TuB5dDscs8v5sV0yvgkwrJY3xMI
- ki8oUXrzTPptA0KI8c1ruJwVCWkWBzfY/AQ+5aE=
-X-Received: by 2002:a5d:5f88:0:b0:331:3425:b84d with SMTP id
- dr8-20020a5d5f88000000b003313425b84dmr6763766wrb.12.1700516279757; 
- Mon, 20 Nov 2023 13:37:59 -0800 (PST)
+ bh=8LHC78QDU4+0JLufBJAoefD8kTg7PvgbK0ho9KjVegA=;
+ b=ni3DqRwVawUerfGZlSr3PtFLYu60C12Fyf2LdFNEKK3Ob5PRqZ2hqtXCSkSbEZ220H
+ 3WyoWDdXIpu4HniA41r/cillpFMjaz5DfhGfbRFBVkZjypR82sCqqYgKq6Pzf0aCYA+I
+ FI/usT7XSQk/VL8SWc1H5gzdC+Q7kIgIe5BF4R5M0rdhPHX9ryhooOYD/3jtDR4UkujZ
+ XIG0g6Oe4FCSNmFQG8Ik0iVz9AXhPjDN9hrqjkw11cGM7/r65Kf3u/3eKCs0IKB3zjSX
+ zX8zxhma97SsHMYLf4NbRMV1ZyTHOhhBWCKgUra/IhU1kNeV2zwLk4orC2x6FBDDb9r6
+ smlQ==
+X-Gm-Message-State: AOJu0Yzg4UHoZBemdzPGKfWLetM/LqfeahHfWAsJf7zQKGPl2Owe3nve
+ INk8C2UA41wBEIIgaeb9Rbs7xGJ8k1nLHU6t424=
+X-Received: by 2002:a05:600c:2246:b0:408:3975:e225 with SMTP id
+ a6-20020a05600c224600b004083975e225mr7404513wmm.40.1700516329774; 
+ Mon, 20 Nov 2023 13:38:49 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.190])
  by smtp.gmail.com with ESMTPSA id
- d16-20020adffbd0000000b003313902cef5sm12291345wrs.93.2023.11.20.13.37.56
+ z17-20020a1c4c11000000b0040a44179a88sm18670392wmf.42.2023.11.20.13.38.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Nov 2023 13:37:59 -0800 (PST)
+ Mon, 20 Nov 2023 13:38:49 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -98,21 +98,19 @@ Cc: David Hildenbrand <david@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PATCH-for-9.0 20/25] hw: Simplify memory_region_init_ram() calls
-Date: Mon, 20 Nov 2023 22:32:54 +0100
-Message-ID: <20231120213301.24349-21-philmd@linaro.org>
+ Peter Xu <peterx@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PATCH-for-9.0 22/25] hw/sparc: Simplify
+ memory_region_init_ram_nomigrate() calls
+Date: Mon, 20 Nov 2023 22:32:56 +0100
+Message-ID: <20231120213301.24349-23-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231120213301.24349-1-philmd@linaro.org>
 References: <20231120213301.24349-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,17 +132,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xqPAV5pR9f3z
+X-TUID: zIBFHS5ZuNgF
 
 Mechanical change using the following coccinelle script:
 
 @@
 expression mr, owner, arg3, arg4, errp;
 @@
--   memory_region_init_ram(mr, owner, arg3, arg4, &errp);
+-   memory_region_init_ram_nomigrate(mr, owner, arg3, arg4, &errp);
     if (
 -       errp
-+       !memory_region_init_ram(mr, owner, arg3, arg4, &errp)
++       !memory_region_init_ram_nomigrate(mr, owner, arg3, arg4, &errp)
     ) {
         ...
         return;
@@ -154,184 +152,77 @@ and removing the local Error variable.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/aspeed_ast2400.c | 6 ++----
- hw/arm/aspeed_ast2600.c | 6 ++----
- hw/arm/fsl-imx25.c      | 6 ++----
- hw/arm/fsl-imx31.c      | 6 ++----
- hw/arm/fsl-imx6.c       | 6 ++----
- hw/arm/integratorcp.c   | 7 ++-----
- hw/arm/nrf51_soc.c      | 7 ++-----
- hw/ppc/rs6000_mc.c      | 7 ++-----
- 8 files changed, 16 insertions(+), 35 deletions(-)
+ hw/sparc/sun4m.c   | 20 ++++++--------------
+ hw/sparc64/sun4u.c |  7 ++-----
+ 2 files changed, 8 insertions(+), 19 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index a4334c81b8..0baa2ff96e 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -247,7 +247,6 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
-     Aspeed2400SoCState *a = ASPEED2400_SOC(dev);
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    Error *err = NULL;
-     g_autofree char *sram_name = NULL;
- 
-     /* Default boot region (SPI memory or ROMs) */
-@@ -276,9 +275,8 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
- 
-     /* SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
-+                                errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index b965fbab5e..3a9a303ab8 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -282,7 +282,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     Aspeed2600SoCState *a = ASPEED2600_SOC(dev);
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    Error *err = NULL;
-     qemu_irq irq;
-     g_autofree char *sram_name = NULL;
- 
-@@ -355,9 +354,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
- 
-     /* SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
-+                                errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 9aabbf7f58..b15435ccaf 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -299,10 +299,8 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-                                 &s->rom[1]);
- 
-     /* initialize internal RAM (128 KB) */
--    memory_region_init_ram(&s->iram, NULL, "imx25.iram", FSL_IMX25_IRAM_SIZE,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->iram, NULL, "imx25.iram",
-+                                FSL_IMX25_IRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX25_IRAM_ADDR,
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index def27bb913..1d5dcd51e8 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -208,10 +208,8 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
-                                 &s->rom);
- 
-     /* initialize internal RAM (16 KB) */
--    memory_region_init_ram(&s->iram, NULL, "imx31.iram", FSL_IMX31_IRAM_SIZE,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->iram, NULL, "imx31.iram",
-+                                FSL_IMX31_IRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX31_IRAM_ADDR,
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 7dc42cbfe6..58f37e7c11 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -443,10 +443,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                                 &s->caam);
- 
-     /* OCRAM memory */
--    memory_region_init_ram(&s->ocram, NULL, "imx6.ocram", FSL_IMX6_OCRAM_SIZE,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->ocram, NULL, "imx6.ocram",
-+                                FSL_IMX6_OCRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_OCRAM_ADDR,
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index d176e9af7e..bb722fd46f 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -291,12 +291,9 @@ static void integratorcm_realize(DeviceState *d, Error **errp)
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 17bf5f2879..fcf3782068 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -577,12 +577,9 @@ static void idreg_realize(DeviceState *ds, Error **errp)
  {
-     IntegratorCMState *s = INTEGRATOR_CM(d);
-     SysBusDevice *dev = SYS_BUS_DEVICE(d);
+     IDRegState *s = MACIO_ID_REGISTER(ds);
+     SysBusDevice *dev = SYS_BUS_DEVICE(ds);
 -    Error *local_err = NULL;
  
--    memory_region_init_ram(&s->flash, OBJECT(d), "integrator.flash", 0x100000,
--                           &local_err);
+-    memory_region_init_ram_nomigrate(&s->mem, OBJECT(ds), "sun4m.idreg",
+-                                     sizeof(idreg_data), &local_err);
 -    if (local_err) {
 -        error_propagate(errp, local_err);
-+    if (!memory_region_init_ram(&s->flash, OBJECT(d), "integrator.flash",
-+                                0x100000, errp)) {
++    if (!memory_region_init_ram_nomigrate(&s->mem, OBJECT(ds), "sun4m.idreg",
++                                          sizeof(idreg_data), errp)) {
          return;
      }
  
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index 34da0d62f0..ac53441630 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -58,7 +58,6 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+@@ -631,11 +628,9 @@ static void afx_realize(DeviceState *ds, Error **errp)
  {
-     NRF51State *s = NRF51_SOC(dev_soc);
-     MemoryRegion *mr;
--    Error *err = NULL;
-     uint8_t i = 0;
-     hwaddr base_addr = 0;
- 
-@@ -92,10 +91,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
- 
-     memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
- 
--    memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
-+                                errp)) {
-         return;
-     }
-     memory_region_add_subregion(&s->container, NRF51_SRAM_BASE, &s->sram);
-diff --git a/hw/ppc/rs6000_mc.c b/hw/ppc/rs6000_mc.c
-index c0bc212e92..0bf9cb9c47 100644
---- a/hw/ppc/rs6000_mc.c
-+++ b/hw/ppc/rs6000_mc.c
-@@ -143,7 +143,6 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
-     RS6000MCState *s = RS6000MC(dev);
-     int socket = 0;
-     unsigned int ram_size = s->ram_size / MiB;
+     AFXState *s = TCX_AFX(ds);
+     SysBusDevice *dev = SYS_BUS_DEVICE(ds);
 -    Error *local_err = NULL;
  
-     while (socket < 6) {
-         if (ram_size >= 64) {
-@@ -165,10 +164,8 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
-         if (s->simm_size[socket]) {
-             char name[] = "simm.?";
-             name[5] = socket + '0';
--            memory_region_init_ram(&s->simm[socket], OBJECT(dev), name,
--                                   s->simm_size[socket] * MiB, &local_err);
--            if (local_err) {
--                error_propagate(errp, local_err);
-+            if (!memory_region_init_ram(&s->simm[socket], OBJECT(dev), name,
-+                                        s->simm_size[socket] * MiB, errp)) {
-                 return;
-             }
-             memory_region_add_subregion_overlap(get_system_memory(), 0,
+-    memory_region_init_ram_nomigrate(&s->mem, OBJECT(ds), "sun4m.afx", 4,
+-                                     &local_err);
+-    if (local_err) {
++    if (!memory_region_init_ram_nomigrate(&s->mem, OBJECT(ds), "sun4m.afx",
++                                          4, errp)) {
+         error_propagate(errp, local_err);
+         return;
+     }
+@@ -715,12 +710,9 @@ static void prom_realize(DeviceState *ds, Error **errp)
+ {
+     PROMState *s = OPENPROM(ds);
+     SysBusDevice *dev = SYS_BUS_DEVICE(ds);
+-    Error *local_err = NULL;
+ 
+-    memory_region_init_ram_nomigrate(&s->prom, OBJECT(ds), "sun4m.prom",
+-                                     PROM_SIZE_MAX, &local_err);
+-    if (local_err) {
+-        error_propagate(errp, local_err);
++    if (!memory_region_init_ram_nomigrate(&s->prom, OBJECT(ds), "sun4m.prom",
++                                          PROM_SIZE_MAX, errp)) {
+         return;
+     }
+ 
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index c871170378..24d53bf5fd 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -454,12 +454,9 @@ static void prom_realize(DeviceState *ds, Error **errp)
+ {
+     PROMState *s = OPENPROM(ds);
+     SysBusDevice *dev = SYS_BUS_DEVICE(ds);
+-    Error *local_err = NULL;
+ 
+-    memory_region_init_ram_nomigrate(&s->prom, OBJECT(ds), "sun4u.prom",
+-                                     PROM_SIZE_MAX, &local_err);
+-    if (local_err) {
+-        error_propagate(errp, local_err);
++    if (!memory_region_init_ram_nomigrate(&s->prom, OBJECT(ds), "sun4u.prom",
++                                          PROM_SIZE_MAX, errp)) {
+         return;
+     }
+ 
 -- 
 2.41.0
 

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f6-20020a7bc8c6000000b004030e8ff964sm17695496wml.34.2023.11.20.07.08.34
+        by smtp.gmail.com with ESMTPSA id 1-20020a05600c230100b003fefb94ccc9sm13477072wmo.11.2023.11.20.07.08.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 20 Nov 2023 07:08:34 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F15A0655DF;
-	Mon, 20 Nov 2023 15:08:33 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 6132B65758;
+	Mon, 20 Nov 2023 15:08:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -28,107 +28,93 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Chris Wulff <crwulff@gmail.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 00/14] random fixes for 8.2 pre-PR (tests, plugins, docs, semihosting)
-Date: Mon, 20 Nov 2023 15:08:19 +0000
-Message-Id: <20231120150833.2552739-1-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>,
+	Greg Manning <gmanning@rapitasystems.com>
+Subject: [PATCH v2 04/14] plugins: fix win plugin tests on cross compile
+Date: Mon, 20 Nov 2023 15:08:23 +0000
+Message-Id: <20231120150833.2552739-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231120150833.2552739-1-alex.bennee@linaro.org>
+References: <20231120150833.2552739-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: mNX/QC0tpQlg
+X-TUID: zSRSTrLrjVvs
 
-I've just been trying to clear some of the bugs against various
-subsystems. These are mostly testing changes and a minor tweak I found
-while checking up on semihosting behaviour. Enabling arm-softmmu
-check-tcg tests expands our testing abilities slightly for the 32 bit
-side of the family.
+From: Greg Manning <gmanning@rapitasystems.com>
 
-For v2
-------
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1972
 
- - fixed up register test for ppc64/s390x
- - added gdbstub doc patch
- - review comments for arm-softmmu testing
- - changed handling of "native" cross for linux-user
+Cross compile gcc is more picky about argument order than msys. Changed
+the meson command to take the (now renamed) libqemu_plugin_api.a as a
+lib, rather than an object. This puts it in the right place on both
+native and cross compile gcc commands
 
-I intend to roll the PR on Wednesday.
+Reenable plugins on crossbuilds
 
-The following need still review:
+Signed-off-by: Greg Manning <gmanning@rapitasystems.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20231109124326.21106-2-gmanning@rapitasystems.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ .gitlab-ci.d/crossbuilds.yml | 2 +-
+ contrib/plugins/Makefile     | 2 +-
+ plugins/meson.build          | 2 +-
+ tests/plugin/meson.build     | 3 ++-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
 
-  tests/tcg: finesse the registers check for "hidden" regs
-  configure: don't try a "native" cross for linux-user
-  tests/tcg: enable semiconsole test for Arm
-  tests/tcg: enable arm softmmu tests
-  docs/system: clarify limits of using gdbstub in system emulation
-  docs/emulation: expand warning about semihosting
-  tests/tcg: fixup Aarch64 semiconsole test
-
-Alex Bennée (10):
-  tests/docker: merge debian-native with debian-amd64
-  tests/tcg: fixup Aarch64 semiconsole test
-  docs/emulation: expand warning about semihosting
-  docs/system: clarify limits of using gdbstub in system emulation
-  hw/core: skip loading debug on all failures
-  testing: move arm system tests into their own folder
-  tests/tcg: enable arm softmmu tests
-  tests/tcg: enable semiconsole test for Arm
-  configure: don't try a "native" cross for linux-user
-  tests/tcg: finesse the registers check for "hidden" regs
-
-Daniel P. Berrangé (1):
-  tests/docker: replace fedora-i386 with debian-i686
-
-Greg Manning (1):
-  plugins: fix win plugin tests on cross compile
-
-Philippe Mathieu-Daudé (2):
-  .gitlab-ci.d/cirrus: Upgrade macOS to 13 (Ventura)
-  target/nios2: Deprecate the Nios II architecture
-
- docs/about/deprecated.rst                     |  15 +
- docs/about/emulation.rst                      |   5 +-
- docs/system/gdb.rst                           |  13 +-
- configure                                     |  27 +-
- hw/core/loader.c                              |   2 +-
- hw/nios2/10m50_devboard.c                     |   1 +
- hw/nios2/generic_nommu.c                      |   1 +
- tests/tcg/arm/system/semiconsole.c            |  42 +++
- .gitlab-ci.d/buildtest.yml                    |  12 +-
- .gitlab-ci.d/cirrus.yml                       |   6 +-
- .../cirrus/{macos-12.vars => macos-13.vars}   |   2 +-
- .gitlab-ci.d/container-cross.yml              |  11 +-
- .gitlab-ci.d/containers.yml                   |   2 +-
- .gitlab-ci.d/crossbuilds.yml                  |  14 +-
- contrib/plugins/Makefile                      |   2 +-
- plugins/meson.build                           |   2 +-
- tests/docker/Makefile.include                 |   3 -
- .../dockerfiles/debian-i686-cross.docker      | 182 +++++++++++
- tests/docker/dockerfiles/debian-native.docker |  54 ----
- .../{debian-amd64.docker => debian.docker}    |   7 +-
- .../dockerfiles/fedora-i386-cross.docker      |  40 ---
- tests/lcitool/refresh                         |  18 +-
- tests/plugin/meson.build                      |   3 +-
- tests/tcg/aarch64/Makefile.softmmu-target     |   5 +-
- tests/tcg/arm/Makefile.softmmu-target         |  76 ++++-
- tests/tcg/arm/system/boot.S                   | 301 ++++++++++++++++++
- tests/tcg/arm/system/kernel.ld                |  24 ++
- .../tcg/arm/{ => system}/test-armv6m-undef.S  |   0
- .../tcg/arm/{ => system}/test-armv6m-undef.ld |   0
- tests/tcg/multiarch/gdbstub/registers.py      |  87 +++--
- tests/tcg/ppc64/Makefile.target               |   7 -
- tests/tcg/s390x/Makefile.target               |   4 -
- 32 files changed, 775 insertions(+), 193 deletions(-)
- create mode 100644 tests/tcg/arm/system/semiconsole.c
- rename .gitlab-ci.d/cirrus/{macos-12.vars => macos-13.vars} (95%)
- create mode 100644 tests/docker/dockerfiles/debian-i686-cross.docker
- delete mode 100644 tests/docker/dockerfiles/debian-native.docker
- rename tests/docker/dockerfiles/{debian-amd64.docker => debian.docker} (96%)
- delete mode 100644 tests/docker/dockerfiles/fedora-i386-cross.docker
- create mode 100644 tests/tcg/arm/system/boot.S
- create mode 100644 tests/tcg/arm/system/kernel.ld
- rename tests/tcg/arm/{ => system}/test-armv6m-undef.S (100%)
- rename tests/tcg/arm/{ => system}/test-armv6m-undef.ld (100%)
-
+diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
+index c2af6c7f44..d19d98cde0 100644
+--- a/.gitlab-ci.d/crossbuilds.yml
++++ b/.gitlab-ci.d/crossbuilds.yml
+@@ -165,7 +165,7 @@ cross-win32-system:
+     job: win32-fedora-cross-container
+   variables:
+     IMAGE: fedora-win32-cross
+-    EXTRA_CONFIGURE_OPTS: --enable-fdt=internal --disable-plugins
++    EXTRA_CONFIGURE_OPTS: --enable-fdt=internal
+     CROSS_SKIP_TARGETS: alpha-softmmu avr-softmmu hppa-softmmu m68k-softmmu
+                         microblazeel-softmmu mips64el-softmmu nios2-softmmu
+   artifacts:
+diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
+index 1783750cf6..0b64d2c1e3 100644
+--- a/contrib/plugins/Makefile
++++ b/contrib/plugins/Makefile
+@@ -49,7 +49,7 @@ all: $(SONAMES)
+ 	$(CC) $(CFLAGS) $(PLUGIN_CFLAGS) -c -o $@ $<
+ 
+ ifeq ($(CONFIG_WIN32),y)
+-lib%$(SO_SUFFIX): %.o win32_linker.o ../../plugins/qemu_plugin_api.lib
++lib%$(SO_SUFFIX): %.o win32_linker.o ../../plugins/libqemu_plugin_api.a
+ 	$(CC) -shared -o $@ $^ $(LDLIBS)
+ else ifeq ($(CONFIG_DARWIN),y)
+ lib%$(SO_SUFFIX): %.o
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 40d24529c0..6b2d7a9292 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -28,7 +28,7 @@ if get_option('plugins')
+     # then use dlltool to assemble a delaylib.
+     win32_qemu_plugin_api_lib = configure_file(
+       input: win32_plugin_def,
+-      output: 'qemu_plugin_api.lib',
++      output: 'libqemu_plugin_api.a',
+       command: [dlltool, '--input-def', '@INPUT@',
+                 '--output-delaylib', '@OUTPUT@', '--dllname', 'qemu.exe']
+     )
+diff --git a/tests/plugin/meson.build b/tests/plugin/meson.build
+index 528bb9d86c..28a929dbcc 100644
+--- a/tests/plugin/meson.build
++++ b/tests/plugin/meson.build
+@@ -4,7 +4,8 @@ if get_option('plugins')
+     if targetos == 'windows'
+       t += shared_module(i, files(i + '.c') + '../../contrib/plugins/win32_linker.c',
+                         include_directories: '../../include/qemu',
+-                        objects: [win32_qemu_plugin_api_lib],
++                        link_depends: [win32_qemu_plugin_api_lib],
++                        link_args: ['-Lplugins', '-lqemu_plugin_api'],
+                         dependencies: glib)
+ 
+     else
 -- 
 2.39.2

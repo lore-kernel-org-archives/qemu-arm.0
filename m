@@ -1,179 +1,121 @@
-Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2239430ejb;
-        Mon, 20 Nov 2023 07:01:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHSFmjaefVjj5X3ANeL1gZdPwFMMA+W8HSEZ+8ru8pg4K+7DUHaabNK3Gbz9YsKCRxe5W7v
-X-Received: by 2002:ac8:5dd4:0:b0:41c:e92a:c604 with SMTP id e20-20020ac85dd4000000b0041ce92ac604mr10344766qtx.59.1700492504716;
-        Mon, 20 Nov 2023 07:01:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700492504; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gCpvASKZsyJgMHbqaxArQ6U2kYGGTWOvKjEdXv15LW7LSSO+oSASwVPEWyv/v53SRO
-         wxNuJTFOakdgyD9zfcR3dxTqHulZQIAhTDUmZVnu2iDCZ0hE7GzhmR+6NwnX6Z5VfbLh
-         5GU6nySpGzfMwO1c12vZjmGeGu31SdFoK+89v8X8T4RjYUXqgVBa/P3YRKN9/05tihxi
-         5e5fU1KPBTdPlArLSr4gOdSzk7nvyG6AJe9j30BNIwJpTVaT+7UnlG+aGJBkwxuA9r2f
-         YCv9Y18NxtZVZq5em/EDv5+WDErc9VgWi/K+Kien53jIg+hPPqMZCfsN6HuTTXXs+63L
-         n49w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AonQASN02H39ayyy5tLjqfhpjijh85lAG7GVs3CstAI=;
-        fh=spbD1uAOw2hCQBb83uSlqZAKTOl6wvNX+k1rxl9UBCg=;
-        b=jmtLodLoPLg8ehJRRy3l9muBIg8R5d/PLd7MvXKm/d+AgGkXxVyK+TAm0O3l4A0Z8N
-         i7/kkTSwh9hGREsByWs/lfq1dVmUSNwU57Cdx+BVq267I1bv1lf8UrBDwNMnt7CI95hO
-         r3bd8Pk0/3k2aWDq9qo4uGkDfyimNvlS+4YmVe6rF3//qd2SNs6DhjSOgZfm/fxFHZiQ
-         kfwBKNlkPeqA7Fg5GFu5W2Iy1ewr/2hhAxovNwkm2a81fry6e1bY88lvTRz+qvrkuCBg
-         Tp0vGE0vCQA/sbbhF9uI3jPqXZZT6P2Rq1VxW7DwJ9jc9x+9iy9mN7qvzgqVOIVJ4Ae/
-         Lhmg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f8iVlsAT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9-20020ac85889000000b004134681883esi7728876qta.601.2023.11.20.07.01.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 07:01:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f8iVlsAT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r55mG-00017R-2F; Mon, 20 Nov 2023 10:01:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r55mE-000177-37
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 10:01:31 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r55mA-00050l-Tr
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 10:01:29 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4084095722aso19082475e9.1
- for <qemu-arm@nongnu.org>; Mon, 20 Nov 2023 07:01:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700492484; x=1701097284; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=AonQASN02H39ayyy5tLjqfhpjijh85lAG7GVs3CstAI=;
- b=f8iVlsATKwJcXwoFP7N2FuL78jOrG2XjSJjd5p5P3PRlfiX5+dCbiIm2CgXAh3tMpo
- SYaXELRWrrZuFdHKakP6GVd/1xSqausvSkgxbNQKgObB1ppfhi6pnqh8sfvI8VHp/EHW
- 4u0H3eEDmMJ8SLSUCyhZ5UGlHe8hqKep/P+dYvEZiID7osV7AOQveP284rprsvdFiLQa
- guRMxPCqDlpS85uILIwoc4w++ugDR/E3dZ5biLf2huBpvkAmDQ9RcrhWaZjl4E5mzCJU
- oLXkHyNTBgYcP1MIHl0LqKAP5Xl55YWkT+7uD2JckAIkjwRe8LswN/5YzItINm9Lp7fb
- Uatg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700492484; x=1701097284;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=AonQASN02H39ayyy5tLjqfhpjijh85lAG7GVs3CstAI=;
- b=AvFgUuyDKTXJsin3PPdZfr/ZQ/AXtIY/NS9vPbFPjBXxUdYviOmeDjeNm1J1iIx0Dc
- Pm+q1lQs3JCKYFsiXgq6uXH6AF2SbOQZMAJviF+c0I/XKMFxYMjFktoDHyohWMH0FZyN
- mIJeFClw9nyMyGDrt/+F+WQNwfnJtv5J++0L1ga0bb27KH9P176pVqIu6zQWtJc8bU3H
- kr2NRMha/04y8HihQMhowYpaLgWwhMiXodXvHzLycrEyn54igYRSGgb6hvXiMY+/0l1U
- Gk+MAAyMHGSWLaV0iZUZ5f2BqR3QWaozilbdLUONkYJB5a2mQMGgepKQDokWGMy81Vbf
- FcDw==
-X-Gm-Message-State: AOJu0YxzMWDW8EyqQKU4BgDX/J0znEmEN8sp0JqfUZI1eL5PIVSUiqdG
- NTSZXSeu7wQHAviuOZ4jW0N9TYx+WsVgAJNU+yM=
-X-Received: by 2002:a5d:5cd1:0:b0:32d:9df1:6f68 with SMTP id
- cg17-20020a5d5cd1000000b0032d9df16f68mr4646025wrb.22.1700492482801; 
- Mon, 20 Nov 2023 07:01:22 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- z4-20020a5d6404000000b0032fc5f5abafsm11389045wru.96.2023.11.20.07.01.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Nov 2023 07:01:22 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-Subject: [PATCH for-8.2] target/arm: Set IL bit for pauth, SVE access,
- BTI trap syndromes
-Date: Mon, 20 Nov 2023 15:01:21 +0000
-Message-Id: <20231120150121.3458408-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id f3-20020a056000036300b003316ddedb6esm9699177wrf.22.2023.11.20.07.08.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Nov 2023 07:08:34 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 2EFE565752;
+	Mon, 20 Nov 2023 15:08:34 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-s390x@nongnu.org,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-arm@nongnu.org,
+	devel@lists.libvirt.org,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Marek Vasut <marex@denx.de>,
+	Thomas Huth <thuth@redhat.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 02/14] .gitlab-ci.d/cirrus: Upgrade macOS to 13 (Ventura)
+Date: Mon, 20 Nov 2023 15:08:21 +0000
+Message-Id: <20231120150833.2552739-3-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231120150833.2552739-1-alex.bennee@linaro.org>
+References: <20231120150833.2552739-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1Wbyng6WPGiH
+X-TUID: l5s3A38JOT4E
 
-The syndrome register value always has an IL field at bit 25, which
-is 0 for a trap on a 16 bit instruction, and 1 for a trap on a 32
-bit instruction (or for exceptions which aren't traps on a known
-instruction, like PC alignment faults). This means that our
-syn_*() functions should always either take an is_16bit argument to
-determine whether to set the IL bit, or else unconditionally set it.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-We missed setting the IL bit for the syndrome for three kinds of trap:
- * an SVE access exception
- * a pointer authentication check failure
- * a BTI (branch target identification) check failure
+macOS 14 "Sonoma" was released on September 2023 [1].
 
-All of these traps are AArch64 only, and so the instruction causing
-the trap is always 64 bit. This means we can unconditionally set
-the IL bit in the syn_*() function.
+According to QEMU's support policy, we stop supporting the
+previous major release two years after the the new major
+release has been published. Replace the macOS 12 (Monterey)
+testing by macOS 13 (Ventura, released on October 2022, [2]).
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-stable@nongnu.org
+Refresh the generated files by running:
+
+  $ make lcitool-refresh
+
+[1] https://www.apple.com/newsroom/2023/09/macos-sonoma-is-available-today/
+[2] https://www.apple.com/newsroom/2022/10/macos-ventura-is-now-available/
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20231108162022.76189-1-philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/syndrome.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .gitlab-ci.d/cirrus.yml                              | 6 +++---
+ .gitlab-ci.d/cirrus/{macos-12.vars => macos-13.vars} | 2 +-
+ tests/lcitool/refresh                                | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+ rename .gitlab-ci.d/cirrus/{macos-12.vars => macos-13.vars} (95%)
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 5d34755508d..95454b5b3bb 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -216,7 +216,7 @@ static inline uint32_t syn_simd_access_trap(int cv, int cond, bool is_16bit)
+diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
+index e7f1f83c2c..07dc6edae1 100644
+--- a/.gitlab-ci.d/cirrus.yml
++++ b/.gitlab-ci.d/cirrus.yml
+@@ -59,13 +59,13 @@ x64-freebsd-13-build:
+     INSTALL_COMMAND: pkg install -y
+     TEST_TARGETS: check
  
- static inline uint32_t syn_sve_access_trap(void)
- {
--    return EC_SVEACCESSTRAP << ARM_EL_EC_SHIFT;
-+    return (EC_SVEACCESSTRAP << ARM_EL_EC_SHIFT) | ARM_EL_IL;
- }
+-aarch64-macos-12-base-build:
++aarch64-macos-13-base-build:
+   extends: .cirrus_build_job
+   variables:
+-    NAME: macos-12
++    NAME: macos-13
+     CIRRUS_VM_INSTANCE_TYPE: macos_instance
+     CIRRUS_VM_IMAGE_SELECTOR: image
+-    CIRRUS_VM_IMAGE_NAME: ghcr.io/cirruslabs/macos-monterey-base:latest
++    CIRRUS_VM_IMAGE_NAME: ghcr.io/cirruslabs/macos-ventura-base:latest
+     CIRRUS_VM_CPUS: 12
+     CIRRUS_VM_RAM: 24G
+     UPDATE_COMMAND: brew update
+diff --git a/.gitlab-ci.d/cirrus/macos-12.vars b/.gitlab-ci.d/cirrus/macos-13.vars
+similarity index 95%
+rename from .gitlab-ci.d/cirrus/macos-12.vars
+rename to .gitlab-ci.d/cirrus/macos-13.vars
+index 5f3fb346d1..534f029956 100644
+--- a/.gitlab-ci.d/cirrus/macos-12.vars
++++ b/.gitlab-ci.d/cirrus/macos-13.vars
+@@ -1,6 +1,6 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool variables macos-12 qemu
++#  $ lcitool variables macos-13 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
- /*
-@@ -242,12 +242,12 @@ static inline uint32_t syn_pacfail(bool data, int keynumber)
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 10c54a377c..7c211eba2e 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -203,7 +203,7 @@ try:
+     # Cirrus packages lists for GitLab
+     #
+     generate_cirrus("freebsd-13")
+-    generate_cirrus("macos-12")
++    generate_cirrus("macos-13")
  
- static inline uint32_t syn_pactrap(void)
- {
--    return EC_PACTRAP << ARM_EL_EC_SHIFT;
-+    return (EC_PACTRAP << ARM_EL_EC_SHIFT) | ARM_EL_IL;
- }
- 
- static inline uint32_t syn_btitrap(int btype)
- {
--    return (EC_BTITRAP << ARM_EL_EC_SHIFT) | btype;
-+    return (EC_BTITRAP << ARM_EL_EC_SHIFT) | ARM_EL_IL | btype;
- }
- 
- static inline uint32_t syn_bxjtrap(int cv, int cond, int rm)
+     #
+     # VM packages lists
 -- 
-2.34.1
-
+2.39.2

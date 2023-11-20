@@ -1,478 +1,242 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id b11-20020a05600010cb00b00332c0d256c5sm6570827wrx.80.2023.11.20.07.08.38
+Received: by 2002:a17:907:1006:b0:9d0:bf65:29fa with SMTP id ox6csp2354963ejb;
+        Mon, 20 Nov 2023 09:35:07 -0800 (PST)
+X-Received: by 2002:adf:ea08:0:b0:32f:7c15:2ad7 with SMTP id q8-20020adfea08000000b0032f7c152ad7mr4949464wrm.38.1700501707780;
+        Mon, 20 Nov 2023 09:35:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700501707; cv=none;
+        d=google.com; s=arc-20160816;
+        b=g/+wq6icJbEI2cK4r9Jvlj8GRCcsdTzgFaLJNkIrJvLd9utOHPm/oFvZ/DTc0dGdpB
+         tNPtN3rQZ5TOg1MqRlR65f1BzzI/iJ91TX5ROn8vx75d0lu+Ima3pSXsWaHZ3WyIC8Ef
+         vpTz59LM8yOZHWGrbTvoDxVcNOhQFk1QopcWTKe2vR40IYVbewjHrvvMumgQZL8mBTOT
+         wFaQqpnhlybWm8M933hawmECxmnGht+lRj/YLgjvQPBEq5OZjt40P1WEb8ZSc6zIKBVv
+         8GWQnP0p2bd51kckqNjTTHhe8rKRbqithe2iJqpL0Dk76zmDV56Wktq3vO7lojwKGM3a
+         03Eg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=pxDVMDGr8B4qXH0/pCUMU+JxzeY5WrCdtQLxJO9oIRQ=;
+        fh=KlbSfc2y1lBwVVuHB14St4FwSXfiQlN4tPIehUx9AdU=;
+        b=WIjjYHvm+5RDk1bZb9hWr20u4JlGcT0GntCbyfIFhp+8rt0T0ZnGxYfR/WMu6Mg4uh
+         IlW4kqTXro8GFuim3DEZhvEL+mFNcy2KmMfj7D9U6m3IUMAKn44q0PhahiinQt0ZeMZl
+         G5vzZZIUC0PS8n7KiODQMdosSaY4l4hV8cJYoGG/rejQ6gFIwQVBmmZ5J2PkAZnJXpR3
+         NqrKmRs9DYerUT4N/fdtvUBQnoGHk4gBySK84NaPXIagMGfTRYQ3GcHDDICe13NETefr
+         5fCbk0uBM9kNxBvTAvfkMocIdQbJh5Adk/ez/2IxG2cFOF70lXrJRLeqcyzDu8hGOn8X
+         YAjg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kmISzOTc;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d5-20020adf9c85000000b0032fe005dee4sor1835965wre.0.2023.11.20.09.35.07
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 20 Nov 2023 09:35:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kmISzOTc;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700501707; x=1701106507; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pxDVMDGr8B4qXH0/pCUMU+JxzeY5WrCdtQLxJO9oIRQ=;
+        b=kmISzOTcpQDVsvOE9d0zRY/V1ZtmFxeNYPBWPdIZ7LjEfcPuehAn3wh/p2aaYx8VC1
+         zEiI/t5MMxwcGlo4v9Ns3iUk6O5hv7Djgfl8lp62Rq+J6KP7W8ygSuxLiccU3JTdl5bH
+         b45Qe7js6Ld3vbxNM9RBbPr+ggvcO5WTQ7Fsnr1xxLgluVCGKV7gLb2R4KUGKuIUwPC8
+         967m7CVGiQCCW4TRP3gxA78Idzfr8elFIVyZApG1CaO//BHqX+UqEqaaHb6WTR/k/SnH
+         yOJw0ycKdyQYqQLizvW6QNi9DieM8gJwz4Qu79fe/hQfvF2pdjdA5U1a47fV2mQ6EtUn
+         Rhzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700501707; x=1701106507;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pxDVMDGr8B4qXH0/pCUMU+JxzeY5WrCdtQLxJO9oIRQ=;
+        b=k2HaSZSycOoucs/iAQ2fR1PFT0yk4U7fBHNEYGFEAlU81u+Fr6qSCNOaQ7VKtkzC6v
+         sHmcbZHI1hyLZYXZq5sbVFiXs3dTlxLeKe62Jo0xJQ1wkSl72POxy6xWyWBYiJs4XmzY
+         fQyfNXGTrfd8sF8OG77+s8PJRHZvsyc58Fex8eLXwZWzp55NHSah2PyA89SAsPQZgnNv
+         X7sXDMfAA71oWD5l/NhsTZPywWK/4RBLXE5jndXBemSsd/nabk4a8Wm4ehSM9fhzEvkE
+         U7WjjO95FkxiEJAvaTAgBq+OWVm8syNw+h0w6tLzuV+EnXuNyKKe0gErmIRCHSUsC//p
+         da3w==
+X-Gm-Message-State: AOJu0Yyk0ZvJ+5Bi4wE68yR5V7ZqlChd6XIN39h76lYcAgaK6i0gsUpr
+	28yX0CIYN/zCG3LQ6HUKOVs61AHa
+X-Google-Smtp-Source: AGHT+IHExRr+cegkf+W+Lwh470/nAIdg6gPffpWZXS/EEXp6XKSx4MPA4sYtw0hOSBAPLNHp3+ZwVg==
+X-Received: by 2002:a5d:5f56:0:b0:332:c9ed:cc2c with SMTP id cm22-20020a5d5f56000000b00332c9edcc2cmr2339234wrb.3.1700501707346;
+        Mon, 20 Nov 2023 09:35:07 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id d5-20020adfef85000000b0032fb46812c2sm11850633wro.12.2023.11.20.09.35.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 07:08:42 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0279F655DF;
-	Mon, 20 Nov 2023 15:08:35 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-s390x@nongnu.org,
-	Beraldo Leal <bleal@redhat.com>,
-	qemu-arm@nongnu.org,
-	devel@lists.libvirt.org,
-	qemu-ppc@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Marek Vasut <marex@denx.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 11/14] tests/tcg: enable arm softmmu tests
-Date: Mon, 20 Nov 2023 15:08:30 +0000
-Message-Id: <20231120150833.2552739-12-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231120150833.2552739-1-alex.bennee@linaro.org>
-References: <20231120150833.2552739-1-alex.bennee@linaro.org>
+        Mon, 20 Nov 2023 09:35:07 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Leonid Komarianskyi <leonid_komarianskyi@epam.com>
+Subject: [PATCH for-8.2] target/arm: Handle overflow in calculation of next timer tick
+Date: Mon, 20 Nov 2023 17:35:06 +0000
+Message-Id: <20231120173506.3729884-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9mN0YTNDAprl
+X-TUID: BlQLIeDvFaV8
 
-To make it easier to test 32 bit Arm softmmu issues implement a basic
-boot.S so we can build the multiarch tests. Currently CHECK_UNALIGNED
-is disabled as I haven't got the right magic set for it to work.
+In commit edac4d8a168 back in 2015 when we added support for
+the virtual timer offset CNTVOFF_EL2, we didn't correctly update
+the timer-recalculation code that figures out when the timer
+interrupt is next going to change state. We got it wrong in
+two ways:
+ * for the 0->1 transition, we didn't notice that gt->cval + offset
+   can overflow a uint64_t
+ * for the 1->0 transition, we didn't notice that the transition
+   might now happen before the count rolls over, if offset > count
 
-Message-Id: <20231115205542.3092038-10-alex.bennee@linaro.org>
+In the former case, we end up trying to set the next interrupt
+for a time in the past, which results in QEMU hanging as the
+timer fires continuously.
+
+In the latter case, we would fail to update the interrupt
+status when we are supposed to.
+
+Fix the calculations in both cases.
+
+The test case is Alex Bennée's from the bug report, and tests
+the 0->1 transition overflow case.
+
+Fixes: edac4d8a168 ("target-arm: Add CNTVOFF_EL2")
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/60
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-v2
-  - use endf macro for global function symbols in boot.S
+Thanks to Leonid for his recent patch which prodded me
+into looking at this again. I preferred to fix both halves
+of the if(), rather than just one, and I have thrown in
+Alex's test case since it was conveniently to hand.
 ---
- tests/tcg/arm/Makefile.softmmu-target |  64 +++++-
- tests/tcg/arm/system/boot.S           | 301 ++++++++++++++++++++++++++
- tests/tcg/arm/system/kernel.ld        |  24 ++
- 3 files changed, 379 insertions(+), 10 deletions(-)
- create mode 100644 tests/tcg/arm/system/boot.S
- create mode 100644 tests/tcg/arm/system/kernel.ld
+ target/arm/helper.c                       | 25 ++++++++++--
+ tests/tcg/aarch64/system/vtimer.c         | 48 +++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.softmmu-target |  7 +++-
+ 3 files changed, 75 insertions(+), 5 deletions(-)
+ create mode 100644 tests/tcg/aarch64/system/vtimer.c
 
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 7857ab9324..aadc12767e 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -8,20 +8,64 @@ ARM_SRC=$(SRC_PATH)/tests/tcg/arm/system
- # Set search path for all sources
- VPATH 		+= $(ARM_SRC)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ff1970981ee..0430ae55edf 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2646,11 +2646,28 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+         gt->ctl = deposit32(gt->ctl, 2, 1, istatus);
  
--ARM_TESTS=test-armv6m-undef
-+# Specific Test Rules
- 
--TESTS += $(ARM_TESTS)
-+test-armv6m-undef: test-armv6m-undef.S
-+	$(CC) -mcpu=cortex-m0 -mfloat-abi=soft \
-+		-Wl,--build-id=none -x assembler-with-cpp \
-+		$< -o $@ -nostdlib -N -static \
-+		-T $(ARM_SRC)/$@.ld
- 
--LDFLAGS+=-nostdlib -N -static
-+run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
- 
--%: %.S %.ld
--	$(CC) $(CFLAGS) $(ASFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) -T $(ARM_SRC)/$@.ld
-+ARM_TESTS+=test-armv6m-undef
- 
--# Specific Test Rules
-+# These objects provide the basic boot code and helper functions for all tests
-+CRT_OBJS=boot.o
- 
--test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0 -mfloat-abi=soft -Wl,--build-id=none -x assembler-with-cpp
-+ARM_TEST_SRCS=$(wildcard $(ARM_SRC)/*.c)
-+ARM_TESTS+=$(patsubst $(ARM_SRC)/%.c, %, $(ARM_TEST_SRCS))
- 
--run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
-+CRT_PATH=$(ARM_SRC)
-+LINK_SCRIPT=$(ARM_SRC)/kernel.ld
-+LDFLAGS=-Wl,-T$(LINK_SCRIPT)
-+CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+LDFLAGS+=-static -nostdlib -N $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
-+
-+# building head blobs
-+.PRECIOUS: $(CRT_OBJS)
-+
-+%.o: $(ARM_SRC)/%.S
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -x assembler-with-cpp -c $< -o $@
-+
-+# Build and link the tests
-+%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
-+
-+memory: CFLAGS+=-DCHECK_UNALIGNED=0
-+
-+# Running
-+QEMU_BASE_MACHINE=-M virt -cpu max -display none
-+QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
-+
-+# Simple Record/Replay Test
-+.PHONY: memory-record
-+run-memory-record: memory-record memory
-+	$(call run-test, $<, \
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  -icount shift=5$(COMMA)rr=record$(COMMA)rrfile=record.bin \
-+		  $(QEMU_OPTS) memory)
-+
-+.PHONY: memory-replay
-+run-memory-replay: memory-replay run-memory-record
-+	$(call run-test, $<, \
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  -icount shift=5$(COMMA)rr=replay$(COMMA)rrfile=record.bin \
-+		  $(QEMU_OPTS) memory)
-+
-+EXTRA_RUNS+=run-memory-replay
- 
--# We don't currently support the multiarch system tests
--undefine MULTIARCH_TESTS
-+TESTS += $(ARM_TESTS) $(MULTIARCH_TESTS)
-+EXTRA_RUNS+=$(MULTIARCH_RUNS)
-diff --git a/tests/tcg/arm/system/boot.S b/tests/tcg/arm/system/boot.S
+         if (istatus) {
+-            /* Next transition is when count rolls back over to zero */
+-            nexttick = UINT64_MAX;
++            /*
++             * Next transition is when (count - offset) rolls back over to 0.
++             * If offset > count then this is when count == offset;
++             * if offset <= count then this is when count == offset + UINT64_MAX
++             * For the latter case we set nexttick to an "as far in future
++             * as possible" value and let the code below handle it.
++             */
++            if (offset > count) {
++                nexttick = offset;
++            } else {
++                nexttick = UINT64_MAX;
++            }
+         } else {
+-            /* Next transition is when we hit cval */
+-            nexttick = gt->cval + offset;
++            /*
++             * Next transition is when (count - offset) == cval, i.e.
++             * when count == (cval + offset).
++             * If that would overflow, then again we set up the next interrupt
++             * for "as far in the future as possible" for the code below.
++             */
++            if (uadd64_overflow(gt->cval, offset, &nexttick)) {
++                nexttick = UINT64_MAX;
++            }
+         }
+         /*
+          * Note that the desired next expiry time might be beyond the
+diff --git a/tests/tcg/aarch64/system/vtimer.c b/tests/tcg/aarch64/system/vtimer.c
 new file mode 100644
-index 0000000000..7915502ae4
+index 00000000000..42f2f7796c7
 --- /dev/null
-+++ b/tests/tcg/arm/system/boot.S
-@@ -0,0 +1,301 @@
++++ b/tests/tcg/aarch64/system/vtimer.c
+@@ -0,0 +1,48 @@
 +/*
-+ * Minimal ArmV7 system boot code.
++ * Simple Virtual Timer Test
 + *
-+ * Using semihosting for serial output and exit functions.
++ * Copyright (c) 2020 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+/*
-+ * Semihosting interface on ARM AArch32
-+ * R0 - semihosting call number
-+ * R1 - semihosting parameter
-+ */
-+#define semihosting_call svc 0x123456
-+#define SYS_WRITEC	0x03	/* character to debug channel */
-+#define SYS_WRITE0	0x04	/* string to debug channel */
-+#define SYS_EXIT	0x18
++#include <inttypes.h>
++#include <minilib.h>
 +
-+#define ADP_Stopped_ApplicationExit	0x20026
-+#define ADP_Stopped_InternalError	0x20024
++/* grabbed from Linux */
++#define __stringify_1(x...) #x
++#define __stringify(x...)   __stringify_1(x)
 +
-+/*
-+ * Helper macro for the linker calling subroutines from the C code.
-+ */
-+.macro 	endf 	name
-+	.global	\name
-+	.type	\name, %function
-+	.size	\name, . - \name
-+.endm
++#define read_sysreg(r) ({                                           \
++            uint64_t __val;                                         \
++            asm volatile("mrs %0, " __stringify(r) : "=r" (__val)); \
++            __val;                                                  \
++})
 +
-+	.section	.interrupt_vector, "ax"
-+	.align	5
++#define write_sysreg(r, v) do {                     \
++        uint64_t __val = (uint64_t)(v);             \
++        asm volatile("msr " __stringify(r) ", %x0"  \
++                 : : "rZ" (__val));                 \
++} while (0)
 +
-+vector_table:
-+	b   reset		/* reset vector */
-+	b   undef_instr        /* undefined instruction vector */
-+	b   software_intr    	/* software interrupt vector */
-+	b   prefetch_abort		/* prefetch abort vector */
-+	b   data_abort	        /* data abort vector */
-+	nop			            /* reserved */
-+	b   IRQ_handler        	/* IRQ vector */
-+	b   FIQ_handler        	/* FIQ vector */
-+
-+	.text
-+__start:
-+	ldr  	r0, =vector_table
-+	mcr  	p15, 0, r0, c12, c0, 0  /* Set up VBAR */
-+
-+	ldr	sp, =stack_end		/* Set up the stack */
-+	bl	mmu_setup		/* Set up the MMU */
-+	bl	main			/* Jump to main */
-+
-+endf	__start
-+
-+_exit:
-+	cmp r0, #0
-+	ite EQ  // if-then-else. "EQ" is for if equal, else otherwise
-+	ldreq r1, =ADP_Stopped_ApplicationExit // if r0 == 0
-+	ldrne r1, =ADP_Stopped_InternalError   // else
-+	mov r0, #SYS_EXIT
-+	semihosting_call
-+
-+endf	_exit
-+
-+	/*
-+ * Helper Functions
-+ */
-+
-+mmu_setup:
-+	/*
-+  	 * The MMU setup for this is very simple using two stage one
-+	 * translations. The first 1Mb section points to the text
-+	 * section and the second points to the data and rss.
-+         * Currently the fattest test only needs ~50k for that so we
-+ 	 * have plenty of space.
-+	 *
-+	 * The short descriptor Section format is as follows:
-+	 *
-+	 *  PA[31:20] - Section Base Address
-+	 *  NS[19] - Non-secure bit
-+	 *  0[18] - Section (1 for Super Section)
-+	 *  nG[17] - Not global bit
-+	 *  S[16] - Shareable
-+	 *  TEX[14:12] - Memory Region Attributes
-+	 *  AP[15, 11:10] - Access Permission Bits
-+	 *  IMPDEF[9]
-+	 *  Domain[8:5]
-+	 *  XN[4] - Execute never bit
-+	 *  C[3] - Memory Region Attributes
-+	 *  B[2] - Memory Region Attributes
-+	 *  1[1]
-+	 *  PXN[0] - Privileged Execute Never
-+	 *
-+	 * r0 - point at the table
-+	 * r1 - address
-+	 * r2 - entry
-+	 * r3 - common section bits
-+	 * r4 - scratch
-+	 */
-+
-+	/*
-+	 * Memory Region Bits
-+	 *
-+	 *   TEX[14:12] = 000
-+	 *     C[3]     = 1
-+	 *     B[2]     = 1
-+	 *
-+	 * Outer and Inner WB, no write allocate
-+	 */
-+	mov r3, #0
-+	ldr r4, =(3 << 2)
-+	orr r3, r4, r4
-+
-+	/* Section bit */
-+	orr r3, r3, #2
-+
-+	/* Page table setup (identity mapping). */
-+	ldr r0, =ttb
-+
-+	/* First block: .text/RO/execute enabled */
-+	ldr r1, =.text
-+	ldr r2, =0xFFF00000  			/* 1MB block alignment */
-+	and r2, r1, r2
-+	orr r2, r2, r3				/* common bits */
-+	orr r2, r2, #(1 << 15)			/* AP[2] = 1 */
-+	orr r2, r2, #(1 << 10)			/* AP[0] = 1 => RO @ PL1 */
-+
-+	lsr r4, r2, #(20 - 2)
-+	str r2, [r0, r4, lsl #0]		/* write entry */
-+
-+	/* Second block: .data/RW/no execute */
-+	ldr r1, =.data
-+	ldr r2, =0xFFF00000  			/* 1MB block alignment */
-+	and r2, r1, r2
-+	orr r2, r2, r3				/* common bits */
-+	orr r2, r2, #(1 << 10)			/* AP[0] = 1 => RW @ PL1 */
-+	orr r2, r2, #(1 << 4)			/* XN[4] => no execute */
-+
-+	lsr r4, r2, #(20 - 2)
-+	str r2, [r0, r4, lsl #0]		/* write entry */
-+
-+	/*
-+	 * DACR - Domain Control
-+	 *
-+	 * Enable client mode for domain 0 (we don't use any others)
-+	 */
-+	ldr r0, =0x1
-+	mcr p15, 0, r0, c3, c0, 0
-+
-+	/*
-+	 * TTCBR - Translation Table Base Control Register
-+	 *
-+	 * EAE[31] = 0, 32-bit translation, short descriptor format
-+	 * N[2:0] = 5 ( TTBRO uses 31:14-5 => 9 bit lookup stage )
-+	 */
-+	ldr r0, =0x5
-+	mcr p15, 0, r0, c1, c0, 2
-+
-+	/*
-+	 * TTBR0 -Translation Table Base Register 0
-+	 *
-+	 * [31:9] = Base address of table
-+	 *
-+	 * QEMU doesn't really care about the cache sharing
-+	 * attributes so we don't need to either.
-+	 */
-+	ldr r0, =ttb
-+	mcr p15, 0, r0, c2, c0, 0
-+
-+	/*
-+	 * SCTLR- System Control Register
-+	 *
-+   	 * TE[30] = 0, exceptions to A32 state
-+	 * AFE[29] = 0, AP[0] is the access permissions bit
-+	 * EE[25] = 0, Little-endian
-+	 * WXN[19] = 0 = no effect, Write does not imply XN (execute never)
-+	 * I[12] = Instruction cachability control
-+	 * C[2] = Data cachability control
-+	 * M[0] = 1, enable stage 1 address translation for EL0/1
-+         *
-+	 * At this point virtual memory is enabled.
-+	 */
-+	ldr r0, =0x1005
-+	mcr p15, 0, r0, c1, c0, 0
-+
-+	isb
-+
-+	mov  pc, lr  /* done, return to caller */
-+
-+/* Output a single character to serial port */
-+__sys_outc:
-+	STMFD sp!, {r0-r1}  // push r0, r1 onto stack
-+	mov r1, sp
-+	mov r0, #SYS_WRITEC
-+	semihosting_call
-+	LDMFD sp!, {r0-r1}  // pop r0, r1 from stack
-+	bx lr
-+
-+endf __sys_outc
-+
-+reset:
-+	ldr	r1, =reset_error
-+	b exception_handler
-+
-+undef_instr:
-+	ldr	r1, =undef_intr_error
-+	b exception_handler
-+
-+software_intr:
-+	ldr	r1, =software_intr_error
-+	b exception_handler
-+
-+prefetch_abort:
-+	ldr	r1, =prefetch_abort_error
-+	b exception_handler
-+
-+data_abort:
-+	ldr	r1, =data_abort_error
-+	b exception_handler
-+
-+IRQ_handler:
-+	ldr	r1, =irq_error
-+	b exception_handler
-+
-+FIQ_handler:
-+	ldr	r1, =fiq_error
-+	b exception_handler
-+
-+/*
-+ * Initiate a exit semihosting call whenever there is any exception
-+ * r1 already holds the string.
-+ */
-+exception_handler:
-+	mov	r0, #SYS_WRITE0
-+	semihosting_call
-+	mov	r0, #SYS_EXIT
-+	mov	r1, #1
-+	semihosting_call
-+
-+endf	exception_handler
-+
-+/*
-+ * We implement a stub raise() function which errors out as tests
-+ * shouldn't trigger maths errors.
-+ */
-+	.global raise
-+raise:
-+	mov	r0, #SYS_WRITE0
-+	ldr	r1, =maths_error
-+	semihosting_call
-+	mov	r0, #SYS_EXIT
-+	ldr	r1, =ADP_Stopped_InternalError
-+	semihosting_call
-+
-+endf raise
-+
-+	.data
-+
-+.data
-+
-+reset_error:
-+	.ascii "Reset exception occurred.\n\0"
-+
-+undef_intr_error:
-+	.ascii "Undefined Instruction Exception Occurred.\n\0"
-+
-+software_intr_error:
-+	.ascii "Software Interrupt Occurred.\n\0"
-+
-+prefetch_abort_error:
-+	.ascii "Prefetch Abort Occurred.\n\0"
-+
-+data_abort_error:
-+	.ascii "Data Abort Occurred.\n\0"
-+
-+irq_error:
-+	.ascii "IRQ exception occurred.\n\0"
-+
-+fiq_error:
-+	.ascii "FIQ exception occurred.\n\0"
-+
-+maths_error:
-+	.ascii "Software maths exception.\n\0"
-+
-+
-+	/*
-+	 * 1st Stage Translation table
-+	 * 4096 entries, indexed by [31:20]
-+	 * each entry covers 1Mb of address space
-+	 * aligned on 16kb
-+	 */
-+	.align	15
-+ttb:
-+	.space	(4096 * 4), 0
-+
-+	.align	12
-+
-+	/* Space for stack */
-+	.align	5
-+	.section .bss
-+stack:
-+	.space 65536, 0
-+stack_end:
-diff --git a/tests/tcg/arm/system/kernel.ld b/tests/tcg/arm/system/kernel.ld
-new file mode 100644
-index 0000000000..7b3a76dcbf
---- /dev/null
-+++ b/tests/tcg/arm/system/kernel.ld
-@@ -0,0 +1,24 @@
-+ENTRY(__start)
-+
-+SECTIONS
++int main(void)
 +{
-+    /* virt machine, RAM starts at 1gb */
-+    . = (1 << 30);
-+    .text : {
-+        *(.text)
++    int i;
++
++    ml_printf("VTimer Test\n");
++
++    write_sysreg(cntvoff_el2, 1);
++    write_sysreg(cntv_cval_el0, -1);
++    write_sysreg(cntv_ctl_el0, 1);
++
++    ml_printf("cntvoff_el2=%lx\n", read_sysreg(cntvoff_el2));
++    ml_printf("cntv_cval_el0=%lx\n", read_sysreg(cntv_cval_el0));
++    ml_printf("cntv_ctl_el0=%lx\n", read_sysreg(cntv_ctl_el0));
++
++    /* Now read cval a few times */
++    for (i = 0; i < 10; i++) {
++        ml_printf("%d: cntv_cval_el0=%lx\n", i, read_sysreg(cntv_cval_el0));
 +    }
-+    .rodata : {
-+        *(.rodata)
-+    }
-+    /* align r/w section to next 2mb */
-+    . = ALIGN(1 << 21);
-+    .data : {
-+        *(.data)
-+    }
-+    .bss : {
-+        *(.bss)
-+    }
-+    /DISCARD/ : {
-+        *(.ARM.attributes)
-+    }
++
++    return 0;
 +}
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index b74a2534e38..d71659cc226 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -45,7 +45,8 @@ TESTS+=memory-sve
+ 
+ # Running
+ QEMU_BASE_MACHINE=-M virt -cpu max -display none
+-QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
++QEMU_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output
++QEMU_OPTS+=$(QEMU_BASE_MACHINE) $(QEMU_BASE_ARGS) -kernel
+ 
+ # console test is manual only
+ QEMU_SEMIHOST=-chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
+@@ -55,6 +56,10 @@ run-semiconsole: semiconsole
+ run-plugin-semiconsole-with-%: semiconsole
+ 	$(call skip-test, $<, "MANUAL ONLY")
+ 
++# vtimer test needs EL2
++QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
++run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_BASE_ARGS) -kernel
++
+ # Simple Record/Replay Test
+ .PHONY: memory-record
+ run-memory-record: memory-record memory
 -- 
-2.39.2
+2.34.1

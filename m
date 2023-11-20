@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp68164ejy;
-        Mon, 20 Nov 2023 13:41:32 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHfIYN5Vb7UPSix46YYBhhgSGNxmN+sivOZlkg1j9JYrIgG0ydddkecVfihx+lfjpoMRyWU
-X-Received: by 2002:a0c:e00e:0:b0:66d:1624:2203 with SMTP id j14-20020a0ce00e000000b0066d16242203mr8393886qvk.20.1700516492027;
-        Mon, 20 Nov 2023 13:41:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700516492; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp68242ejy;
+        Mon, 20 Nov 2023 13:41:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEQsgUC5sZw6ac0cdd4Ls8G/IaQ1jmRDYMT7UhOcuoJ9gPINHZ93gnp6JPmLWi6vf6ffkUX
+X-Received: by 2002:a05:6214:76c:b0:65b:21c8:2d74 with SMTP id f12-20020a056214076c00b0065b21c82d74mr7852613qvz.6.1700516501761;
+        Mon, 20 Nov 2023 13:41:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700516501; cv=none;
         d=google.com; s=arc-20160816;
-        b=YoXQkxBlZzUXA12kQZHffEM6KjDO6/OGG9ebksoOALtqHYtUF7ylGOfkYfv9idWR8k
-         ++JXEqnodsj/TB/7iwpVyU5k/g/t02YgVtWbLEwaH1aCR0EuSFAHxERpuhuSjjY/l5u8
-         ZSdHi+4lYVnd1iMDI+1pfBSR3IUUwSlDtrHtIoMajoLbiNP5/6zAhc2RWtlY1J/kkS/R
-         1Lj1c/tDTJqqclwtE6KYeswy8pbo2xIQhJ9pRbWXxXBu659TX7AzFd2ke6fHTVgN7U2X
-         wytdyC6VsopIFouuTCc39+1g8xBflcBkPxUipXhXLzO6QVKkWZ63X33IfwjRpPMqZZod
-         T8nw==
+        b=V8WX6adLuqPk8W6VUNyD5Q31YrIbI32RvX1c2kwzv5p+D77AaAVzJqbX26qtT4hu41
+         1rwxrkpdH2UL/INdkg0qZBY6DP15mMj5kuoc/FQLV7lc74gcg1xLCUUorlaAS1XrrqK9
+         i4FxsmU6Z1bTZ6BsXlsy1ratUfLnhR3QDbuDLU+GTmzQPPaTcAY/3YGdJ1Wi04mElyAj
+         m1QqtjwSpUkPzxoB9ZTCFTT/L83t+TzuriYPFFlOv6BiyiNljdSgeZGFDG2Jysgy4ijm
+         J3Q61X1bGA7GTKkzWiQbeGMRGkH2xsfudOAGqdd0IvZLBMCrcL3rxU8lcvJgZqtwTW/4
+         W6UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Pno/XIMEfv6sc1E+e58IOA0UG1tXfCuf040vsihGJmc=;
-        fh=Ljpz67KUguUCIBLeiOnmYlxWTfvg6mMKNzxYzt1oXKw=;
-        b=nsuAL22cpV8hq11LHOUgAiyYZEonSF4ViDI79KrIanbEeypzlJ85qGDh7J58y4NflW
-         H1IY3NTPHJMU03o8s5pm59/2N/Ubqm+5qGlDnzsryN9PT9UdA2oZ6pZOhjc7MQ7djKHb
-         u3H4hpqThjYOBZA8PyZkxMYYei9IRCZI0nB/zrk5FIAIGbaCgss1mdMm6T5e0ARIU6d0
-         z5cI0hj3HuTV41VXc9iQxFPA3hVTdxMEA9UiTI1mgpuHqwmCKXHaF4heCN1bJ6cLDfhG
-         MK7wW6p2fxuna+q6QOjSmG9+gPWqGVW3URgnjUHsFkaGA8uBhxy/iyfISIGXUaDjACsT
-         YPTw==
+        bh=UraS1TRuHZYl48d9Wxp+wjyyWyHIh0UIpS4MHa3Y4jk=;
+        fh=rUszpa2YpjdvUAMKOD3mDbyHjgGDQouMV1c9PSiGDnY=;
+        b=gx299UCDV2STpbLI7aAj5Ur46kvKdjMoNyWivHVy6OTn9vaCfqY6rKQg9i1buInWRi
+         JdRqIHhc5BQPVQjRUOy3eTnaDzhHPf8TfPBnWM5sOQPtHpCq4qVTTwb+ueI6wOIn3HD/
+         zidfxY7nmianAz+gYJFiHf/B92n7rVkWdXT0n6j3HTfqUfZoMyFK1Gs7E8mCouBiswD/
+         ya9cro2lAo7voAcJ6ccsBq5em3IkEqBv+JU8Kv9j0hYA03iDDzi27ZpWTBlXzcy4SF3k
+         cPGqNtgtHLSKAWM2F4ou8TXqV/XlVoKab/L+gDhjHOY/Pni/PQb4OC7URNKQSAFF9Y/p
+         XT9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CF5RL0zU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EMBorPeM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6-20020a05620a450600b00767468da8f2si8247970qkp.350.2023.11.20.13.41.31
+        by mx.google.com with ESMTPS id e16-20020ad450d0000000b00679df30ae2csi1973201qvq.81.2023.11.20.13.41.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Nov 2023 13:41:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Nov 2023 13:41:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CF5RL0zU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EMBorPeM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5BzK-0004YP-W1; Mon, 20 Nov 2023 16:39:27 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r5ByQ-0002Uj-2b; Mon, 20 Nov 2023 16:38:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5BzJ-0004Y3-V0
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 16:39:25 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5By2-0002N0-0L
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:09 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5BzI-0004jn-Ea
- for qemu-arm@nongnu.org; Mon, 20 Nov 2023 16:39:25 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-32df66c691dso3102944f8f.3
- for <qemu-arm@nongnu.org>; Mon, 20 Nov 2023 13:39:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Bxx-0004WU-CC
+ for qemu-devel@nongnu.org; Mon, 20 Nov 2023 16:38:05 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-32f737deedfso3157413f8f.3
+ for <qemu-devel@nongnu.org>; Mon, 20 Nov 2023 13:38:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700516362; x=1701121162; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700516280; x=1701121080; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Pno/XIMEfv6sc1E+e58IOA0UG1tXfCuf040vsihGJmc=;
- b=CF5RL0zUzCIFvd25ju57WC06acxPFagk0euQB638guaostgYaiLpfOgwgmAJRGdFZV
- 0oR4IYmsELKTWdHuvUVeKMVhfYq6bpOom/TUGX3rRKKX/Jr1gbqz8BFcm/MjtCGHSneA
- URwaSPLB4K8ONTDvNImP4UZ2oE3ps9RK5fWeZVVLrKX9XQ/qcvoeKDxHz8u+3KGgX9SK
- qcyk2ipAMYF7VHyQmn39y3cISyR72kYPFQgJZQOi+1IkHMTic/vh1eKFEz1wqfsOkvOT
- tvtYysFZGzWlvJZaO+vvoyesgoftXzVcdRaBLfEzn5G+DU8ZIiQsV753M9sEjDVG9S7z
- X7Eg==
+ bh=UraS1TRuHZYl48d9Wxp+wjyyWyHIh0UIpS4MHa3Y4jk=;
+ b=EMBorPeMlRr1txEOH2gF6Y2X6k8m5nwJHO2cE97N0IBuKfrGw6qCArNBVTLJa5tWo7
+ OwHA6UtPfeW3u6RsiBiIwwbR4o6XKiMTBLjRQZIhiiQSqIqCVNzVvI1wKBkIDtBYcKou
+ xB8/JVrRaPmEBqMy58X6it2Tb8Z1qmZPvterG/f6in38nit0ttgDraeF+IGtzgz5G3ur
+ 6Ph/QFd+iZoOP2+ZvbfhIw8qvFdQbd9XcfNpEIdMkTwqTFuET2ZnggYh/eY4w+M0P+Rf
+ W5XUhDXCqEC8HlruRVB+2hYJFtOh+4fKECjkh6oTuVzN8+Q/ZcEbsD40Sz4VJ9wb/onM
+ fTiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700516362; x=1701121162;
+ d=1e100.net; s=20230601; t=1700516280; x=1701121080;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Pno/XIMEfv6sc1E+e58IOA0UG1tXfCuf040vsihGJmc=;
- b=MIrA2jYeKZTBgXUdIbXKseZJXK3rpDgyry05SlafqGGll53/Bdpm0XvNaGjhsuaHZv
- L3BWrSxpch3JEa2Bx6Dcwu2/ni7d3UUEuDyCXn5xCagKkqS0twzOBr5M170iJ09kBtAE
- Ode5Ui/SKU9226/g5I8ehek1d5yLxZMdjw88GNzTRQ/dEX4IbG8rDUGm6j/tB4Mrxzvx
- pUjdazvip4MsWs4glwcBY319USLjacW7qf5iLETZ5yPfuRULbxk1t5ETW7AJBv5RFFT7
- TT49eqpyTHsq7O28yL/AlfbadFjeqPxH3dyK4+E0XRVFXNugLRtiEWB1EJU8oe9Py/py
- Xozg==
-X-Gm-Message-State: AOJu0YwohrkmSsVrtr/747YuZhNtHJhZw5cXBE5HH95aT14+Pn7O1CmI
- DtAKPd97790cJpgV7O4nqUliCQ==
-X-Received: by 2002:a5d:4012:0:b0:32d:8855:138d with SMTP id
- n18-20020a5d4012000000b0032d8855138dmr5261429wrp.66.1700516362036; 
- Mon, 20 Nov 2023 13:39:22 -0800 (PST)
+ bh=UraS1TRuHZYl48d9Wxp+wjyyWyHIh0UIpS4MHa3Y4jk=;
+ b=QzjSSSc2So31IYwUiLuy3+Q65GHnhRHqYFkhjuWaft1k/gpzfVRVaHLuwydfL2eqDw
+ Qsicd1xVsKZkf4aei2MXEp8UKA3UzgDNRO68inexflStqUoZUfthzWqBrTKw2ZEf42Np
+ Yr9vW7zpajGKjCCcJvBcOj/g/NlGQD7z2V4mCicy8IhRvMafeVmP/7+hekh/8zsHfscy
+ BUS0aj/BoK2WpfK/xGPBGjcDW+7WeffdsCELYLvmegVlXoocDDBqdsTMDcD6DB9rwzoA
+ NFawDA9uXcck2eLyNk8ENYzTue2JdsgSKWIFC2HnlN7odhQjPzS4VL9XhZI1YxAercNk
+ 2sPw==
+X-Gm-Message-State: AOJu0YxA4VAgI+l3E4kX5zIM+qVr/TuB5dDscs8v5sV0yvgkwrJY3xMI
+ ki8oUXrzTPptA0KI8c1ruJwVCWkWBzfY/AQ+5aE=
+X-Received: by 2002:a5d:5f88:0:b0:331:3425:b84d with SMTP id
+ dr8-20020a5d5f88000000b003313425b84dmr6763766wrb.12.1700516279757; 
+ Mon, 20 Nov 2023 13:37:59 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.181.190])
  by smtp.gmail.com with ESMTPSA id
- f10-20020adfdb4a000000b0032da35baf7bsm12234102wrj.113.2023.11.20.13.39.19
+ d16-20020adffbd0000000b003313902cef5sm12291345wrs.93.2023.11.20.13.37.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 20 Nov 2023 13:39:21 -0800 (PST)
+ Mon, 20 Nov 2023 13:37:59 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -98,69 +98,240 @@ Cc: David Hildenbrand <david@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PATCH-for-9.0 25/25] hw/pci-host/raven: Propagate error in
- raven_realize()
-Date: Mon, 20 Nov 2023 22:32:59 +0100
-Message-ID: <20231120213301.24349-26-philmd@linaro.org>
+Subject: [PATCH-for-9.0 20/25] hw: Simplify memory_region_init_ram() calls
+Date: Mon, 20 Nov 2023 22:32:54 +0100
+Message-ID: <20231120213301.24349-21-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231120213301.24349-1-philmd@linaro.org>
 References: <20231120213301.24349-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YNGa6OFnoDPs
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xqPAV5pR9f3z
 
-When an Error** reference is available, it is better to
-propagate local errors, rather then using generic ones,
-which might terminate the whole QEMU process.
+Mechanical change using the following coccinelle script:
+
+@@
+expression mr, owner, arg3, arg4, errp;
+@@
+-   memory_region_init_ram(mr, owner, arg3, arg4, &errp);
+    if (
+-       errp
++       !memory_region_init_ram(mr, owner, arg3, arg4, &errp)
+    ) {
+        ...
+        return;
+    }
+
+and removing the local Error variable.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/pci-host/raven.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/arm/aspeed_ast2400.c | 6 ++----
+ hw/arm/aspeed_ast2600.c | 6 ++----
+ hw/arm/fsl-imx25.c      | 6 ++----
+ hw/arm/fsl-imx31.c      | 6 ++----
+ hw/arm/fsl-imx6.c       | 6 ++----
+ hw/arm/integratorcp.c   | 7 ++-----
+ hw/arm/nrf51_soc.c      | 7 ++-----
+ hw/ppc/rs6000_mc.c      | 7 ++-----
+ 8 files changed, 16 insertions(+), 35 deletions(-)
 
-diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
-index 86c3a49087..e34ce47874 100644
---- a/hw/pci-host/raven.c
-+++ b/hw/pci-host/raven.c
-@@ -345,8 +345,10 @@ static void raven_realize(PCIDevice *d, Error **errp)
-     d->config[PCI_LATENCY_TIMER] = 0x10;
-     d->config[PCI_CAPABILITY_LIST] = 0x00;
+diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+index a4334c81b8..0baa2ff96e 100644
+--- a/hw/arm/aspeed_ast2400.c
++++ b/hw/arm/aspeed_ast2400.c
+@@ -247,7 +247,6 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+     Aspeed2400SoCState *a = ASPEED2400_SOC(dev);
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+-    Error *err = NULL;
+     g_autofree char *sram_name = NULL;
  
--    memory_region_init_rom_nomigrate(&s->bios, OBJECT(s), "bios", BIOS_SIZE,
--                                     &error_fatal);
-+    if (!memory_region_init_rom_nomigrate(&s->bios, OBJECT(s), "bios",
-+                                          BIOS_SIZE, errp)) {
-+        return;
-+    }
-     memory_region_add_subregion(get_system_memory(), (uint32_t)(-BIOS_SIZE),
-                                 &s->bios);
-     if (s->bios_name) {
+     /* Default boot region (SPI memory or ROMs) */
+@@ -276,9 +275,8 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
+ 
+     /* SRAM */
+     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
+-    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
++                                errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index b965fbab5e..3a9a303ab8 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -282,7 +282,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     Aspeed2600SoCState *a = ASPEED2600_SOC(dev);
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+-    Error *err = NULL;
+     qemu_irq irq;
+     g_autofree char *sram_name = NULL;
+ 
+@@ -355,9 +354,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+ 
+     /* SRAM */
+     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
+-    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
++                                errp)) {
+         return;
+     }
+     memory_region_add_subregion(s->memory,
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 9aabbf7f58..b15435ccaf 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -299,10 +299,8 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                 &s->rom[1]);
+ 
+     /* initialize internal RAM (128 KB) */
+-    memory_region_init_ram(&s->iram, NULL, "imx25.iram", FSL_IMX25_IRAM_SIZE,
+-                           &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_ram(&s->iram, NULL, "imx25.iram",
++                                FSL_IMX25_IRAM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX25_IRAM_ADDR,
+diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
+index def27bb913..1d5dcd51e8 100644
+--- a/hw/arm/fsl-imx31.c
++++ b/hw/arm/fsl-imx31.c
+@@ -208,10 +208,8 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
+                                 &s->rom);
+ 
+     /* initialize internal RAM (16 KB) */
+-    memory_region_init_ram(&s->iram, NULL, "imx31.iram", FSL_IMX31_IRAM_SIZE,
+-                           &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_ram(&s->iram, NULL, "imx31.iram",
++                                FSL_IMX31_IRAM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX31_IRAM_ADDR,
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 7dc42cbfe6..58f37e7c11 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -443,10 +443,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                 &s->caam);
+ 
+     /* OCRAM memory */
+-    memory_region_init_ram(&s->ocram, NULL, "imx6.ocram", FSL_IMX6_OCRAM_SIZE,
+-                           &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_ram(&s->ocram, NULL, "imx6.ocram",
++                                FSL_IMX6_OCRAM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX6_OCRAM_ADDR,
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index d176e9af7e..bb722fd46f 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -291,12 +291,9 @@ static void integratorcm_realize(DeviceState *d, Error **errp)
+ {
+     IntegratorCMState *s = INTEGRATOR_CM(d);
+     SysBusDevice *dev = SYS_BUS_DEVICE(d);
+-    Error *local_err = NULL;
+ 
+-    memory_region_init_ram(&s->flash, OBJECT(d), "integrator.flash", 0x100000,
+-                           &local_err);
+-    if (local_err) {
+-        error_propagate(errp, local_err);
++    if (!memory_region_init_ram(&s->flash, OBJECT(d), "integrator.flash",
++                                0x100000, errp)) {
+         return;
+     }
+ 
+diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+index 34da0d62f0..ac53441630 100644
+--- a/hw/arm/nrf51_soc.c
++++ b/hw/arm/nrf51_soc.c
+@@ -58,7 +58,6 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+ {
+     NRF51State *s = NRF51_SOC(dev_soc);
+     MemoryRegion *mr;
+-    Error *err = NULL;
+     uint8_t i = 0;
+     hwaddr base_addr = 0;
+ 
+@@ -92,10 +91,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+ 
+     memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
+ 
+-    memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
+-                           &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
++                                errp)) {
+         return;
+     }
+     memory_region_add_subregion(&s->container, NRF51_SRAM_BASE, &s->sram);
+diff --git a/hw/ppc/rs6000_mc.c b/hw/ppc/rs6000_mc.c
+index c0bc212e92..0bf9cb9c47 100644
+--- a/hw/ppc/rs6000_mc.c
++++ b/hw/ppc/rs6000_mc.c
+@@ -143,7 +143,6 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
+     RS6000MCState *s = RS6000MC(dev);
+     int socket = 0;
+     unsigned int ram_size = s->ram_size / MiB;
+-    Error *local_err = NULL;
+ 
+     while (socket < 6) {
+         if (ram_size >= 64) {
+@@ -165,10 +164,8 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
+         if (s->simm_size[socket]) {
+             char name[] = "simm.?";
+             name[5] = socket + '0';
+-            memory_region_init_ram(&s->simm[socket], OBJECT(dev), name,
+-                                   s->simm_size[socket] * MiB, &local_err);
+-            if (local_err) {
+-                error_propagate(errp, local_err);
++            if (!memory_region_init_ram(&s->simm[socket], OBJECT(dev), name,
++                                        s->simm_size[socket] * MiB, errp)) {
+                 return;
+             }
+             memory_region_add_subregion_overlap(get_system_memory(), 0,
 -- 
 2.41.0
 

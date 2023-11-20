@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l5-20020a5d4bc5000000b00332c4055faesm4984373wrt.87.2023.11.20.07.08.35
+        by smtp.gmail.com with ESMTPSA id fc16-20020a05600c525000b004054dcbf92asm13671291wmb.20.2023.11.20.07.08.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 20 Nov 2023 07:08:38 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8D8DD65774;
+	by draig.lan (Postfix) with ESMTP id 7A66665773;
 	Mon, 20 Nov 2023 15:08:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -29,43 +29,93 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v2 06/14] tests/tcg: fixup Aarch64 semiconsole test
-Date: Mon, 20 Nov 2023 15:08:25 +0000
-Message-Id: <20231120150833.2552739-7-alex.bennee@linaro.org>
+Subject: [PATCH v2 05/14] target/nios2: Deprecate the Nios II architecture
+Date: Mon, 20 Nov 2023 15:08:24 +0000
+Message-Id: <20231120150833.2552739-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231120150833.2552739-1-alex.bennee@linaro.org>
 References: <20231120150833.2552739-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: a3XGttkrHS3N
+X-TUID: 3Z5P/Ro28ADR
 
-We need to ensure we squash the serial port if we want to hand craft
-our muxed input. As a bonus emit the example with a V=1 build to make
-it easier for people to figure out.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+See commit 9ba1caf510 ("MAINTAINERS: Mark the Nios II CPU as orphan"),
+last contribution from Chris was in 2012 [1] and Marek in 2018 [2].
+
+[1] https://lore.kernel.org/qemu-devel/1352607539-10455-2-git-send-email-crwulff@gmail.com/
+[2] https://lore.kernel.org/qemu-devel/805fc7b5-03f0-56d4-abfd-ed010d4fa769@denx.de/
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Acked-by: Marek Vasut <marex@denx.de>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231117070250.32932-1-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/aarch64/Makefile.softmmu-target | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ docs/about/deprecated.rst | 15 +++++++++++++++
+ hw/nios2/10m50_devboard.c |  1 +
+ hw/nios2/generic_nommu.c  |  1 +
+ 3 files changed, 17 insertions(+)
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index b74a2534e3..77c5018e02 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -48,10 +48,11 @@ QEMU_BASE_MACHINE=-M virt -cpu max -display none
- QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 6c84db90b5..2e15040246 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -236,6 +236,16 @@ it. Since all recent x86 hardware from the past >10 years is capable of the
+ 64-bit x86 extensions, a corresponding 64-bit OS should be used instead.
  
- # console test is manual only
--QEMU_SEMIHOST=-chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
--run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST)  -kernel
-+QEMU_SEMIHOST=-serial none -chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
-+run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST) -kernel
- run-semiconsole: semiconsole
- 	$(call skip-test, $<, "MANUAL ONLY")
-+	$(if $(V),@printf "  %-7s %s %s\n" "TO RUN" $(notdir $(QEMU)) "$(QEMU_OPTS) $<")
- run-plugin-semiconsole-with-%: semiconsole
- 	$(call skip-test, $<, "MANUAL ONLY")
  
++System emulator CPUs
++--------------------
++
++Nios II CPU (since 8.2)
++'''''''''''''''''''''''
++
++The Nios II architecture is orphan. The ``nios2`` guest CPU support is
++deprecated and will be removed in a future version of QEMU.
++
++
+ System emulator machines
+ ------------------------
+ 
+@@ -254,6 +264,11 @@ These old machine types are quite neglected nowadays and thus might have
+ various pitfalls with regards to live migration. Use a newer machine type
+ instead.
+ 
++Nios II ``10m50-ghrd`` and ``nios2-generic-nommu`` machines (since 8.2)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++The Nios II architecture is orphan.
++
+ 
+ Backend options
+ ---------------
+diff --git a/hw/nios2/10m50_devboard.c b/hw/nios2/10m50_devboard.c
+index 952a0dc33e..6cb32f777b 100644
+--- a/hw/nios2/10m50_devboard.c
++++ b/hw/nios2/10m50_devboard.c
+@@ -160,6 +160,7 @@ static void nios2_10m50_ghrd_class_init(ObjectClass *oc, void *data)
+     mc->desc = "Altera 10M50 GHRD Nios II design";
+     mc->init = nios2_10m50_ghrd_init;
+     mc->is_default = true;
++    mc->deprecation_reason = "Nios II architecture is deprecated";
+ 
+     object_class_property_add_bool(oc, "vic", get_vic, set_vic);
+     object_class_property_set_description(oc, "vic",
+diff --git a/hw/nios2/generic_nommu.c b/hw/nios2/generic_nommu.c
+index 48edb3ae37..defa16953f 100644
+--- a/hw/nios2/generic_nommu.c
++++ b/hw/nios2/generic_nommu.c
+@@ -95,6 +95,7 @@ static void nios2_generic_nommu_machine_init(struct MachineClass *mc)
+ {
+     mc->desc = "Generic NOMMU Nios II design";
+     mc->init = nios2_generic_nommu_init;
++    mc->deprecation_reason = "Nios II architecture is deprecated";
+ }
+ 
+ DEFINE_MACHINE("nios2-generic-nommu", nios2_generic_nommu_machine_init);
 -- 
 2.39.2

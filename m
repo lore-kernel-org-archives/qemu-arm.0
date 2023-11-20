@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r14-20020a05600c35ce00b004094d4292aesm13683058wmq.18.2023.11.20.07.08.34
+        by smtp.gmail.com with ESMTPSA id l6-20020a05600c4f0600b004068495910csm18174146wmq.23.2023.11.20.07.08.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Nov 2023 07:08:34 -0800 (PST)
+        Mon, 20 Nov 2023 07:08:38 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4951065755;
+	by draig.lan (Postfix) with ESMTP id B663565776;
 	Mon, 20 Nov 2023 15:08:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,237 +28,59 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Chris Wulff <crwulff@gmail.com>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v2 03/14] tests/docker: merge debian-native with debian-amd64
-Date: Mon, 20 Nov 2023 15:08:22 +0000
-Message-Id: <20231120150833.2552739-4-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>
+Subject: [PATCH v2 08/14] docs/system: clarify limits of using gdbstub in system emulation
+Date: Mon, 20 Nov 2023 15:08:27 +0000
+Message-Id: <20231120150833.2552739-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231120150833.2552739-1-alex.bennee@linaro.org>
 References: <20231120150833.2552739-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 6FgoMRLBiWI6
+X-TUID: 6w/7nuJ99/j+
 
-debian-native isn't really needed and suffers from the problem of
-tracking a distros dependencies rather than the projects. With a
-little surgery we can make the debian-amd64 container architecture
-neutral and allow people to use it to build a native QEMU.
-
-Rename it so it follows the same non-arch pattern of the other distro
-containers.
+It seems some users will try and use the gdbstub to debug userspace
+inside a system emulation. While possible clarify the limitations of
+this approach and direct the users to a less head scratching way of
+debugging user-space.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Anders Roxell <anders.roxell@linaro.org>
+Clarifies: https://gitlab.com/qemu-project/qemu/-/issues/1274
 ---
- .gitlab-ci.d/buildtest.yml                    | 12 ++---
- .gitlab-ci.d/containers.yml                   |  2 +-
- tests/docker/Makefile.include                 |  3 --
- tests/docker/dockerfiles/debian-native.docker | 54 -------------------
- .../{debian-amd64.docker => debian.docker}    |  7 ++-
- tests/lcitool/refresh                         |  9 ++--
- 6 files changed, 18 insertions(+), 69 deletions(-)
- delete mode 100644 tests/docker/dockerfiles/debian-native.docker
- rename tests/docker/dockerfiles/{debian-amd64.docker => debian.docker} (96%)
+ docs/system/gdb.rst | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index da72f7c690..7f9af83b10 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -70,7 +70,7 @@ build-system-debian:
-   needs:
-     job: amd64-debian-container
-   variables:
--    IMAGE: debian-amd64
-+    IMAGE: debian
-     CONFIGURE_ARGS: --with-coroutine=sigaltstack
-     TARGETS: arm-softmmu i386-softmmu riscv64-softmmu sh4eb-softmmu
-       sparc-softmmu xtensa-softmmu
-@@ -82,7 +82,7 @@ check-system-debian:
-     - job: build-system-debian
-       artifacts: true
-   variables:
--    IMAGE: debian-amd64
-+    IMAGE: debian
-     MAKE_CHECK_ARGS: check
+diff --git a/docs/system/gdb.rst b/docs/system/gdb.rst
+index 9906991b84..c0cc0c9c7e 100644
+--- a/docs/system/gdb.rst
++++ b/docs/system/gdb.rst
+@@ -60,7 +60,7 @@ As TCG cannot track all memory accesses in user-mode there is no
+ support for watchpoints.
  
- avocado-system-debian:
-@@ -91,7 +91,7 @@ avocado-system-debian:
-     - job: build-system-debian
-       artifacts: true
-   variables:
--    IMAGE: debian-amd64
-+    IMAGE: debian
-     MAKE_CHECK_ARGS: check-avocado
-     AVOCADO_TAGS: arch:arm arch:i386 arch:riscv64 arch:sh4 arch:sparc arch:xtensa
+ Relocating code
+----------------
++===============
  
-@@ -101,7 +101,7 @@ crash-test-debian:
-     - job: build-system-debian
-       artifacts: true
-   variables:
--    IMAGE: debian-amd64
-+    IMAGE: debian
-   script:
-     - cd build
-     - make NINJA=":" check-venv
-@@ -589,7 +589,7 @@ build-tools-and-docs-debian:
-     # when running on 'master' we use pre-existing container
-     optional: true
-   variables:
--    IMAGE: debian-amd64
-+    IMAGE: debian
-     MAKE_CHECK_ARGS: check-unit ctags TAGS cscope
-     CONFIGURE_ARGS: --disable-system --disable-user --enable-docs --enable-tools
-     QEMU_JOB_PUBLISH: 1
-@@ -609,7 +609,7 @@ build-tools-and-docs-debian:
- # of what topic branch they're currently using
- pages:
-   extends: .base_job_template
--  image: $CI_REGISTRY_IMAGE/qemu/debian-amd64:$QEMU_CI_CONTAINER_TAG
-+  image: $CI_REGISTRY_IMAGE/qemu/debian:$QEMU_CI_CONTAINER_TAG
-   stage: test
-   needs:
-     - job: build-tools-and-docs-debian
-diff --git a/.gitlab-ci.d/containers.yml b/.gitlab-ci.d/containers.yml
-index 8637a13d86..ae79d4c58b 100644
---- a/.gitlab-ci.d/containers.yml
-+++ b/.gitlab-ci.d/containers.yml
-@@ -11,7 +11,7 @@ amd64-debian-container:
-   extends: .container_job_template
-   stage: containers
-   variables:
--    NAME: debian-amd64
-+    NAME: debian
+ On modern kernels confusion can be caused by code being relocated by
+ features such as address space layout randomisation. To avoid
+@@ -68,6 +68,17 @@ confusion when debugging such things you either need to update gdb's
+ view of where things are in memory or perhaps more trivially disable
+ ASLR when booting the system.
  
- amd64-ubuntu2204-container:
-   extends: .container_job_template
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index cd4688bf07..5ba5b50ab9 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -88,9 +88,6 @@ DOCKER_PARTIAL_IMAGES += debian-s390x-cross
- DOCKER_PARTIAL_IMAGES += fedora
- endif
++Debugging user-space in system emulation
++========================================
++
++While technically possible to debug a user-space program running
++inside a system image it does present challenges. Kernel preemption
++and execution mode changes between kernel and user mode can make it
++hard to follow whats going on. Unless you are specifically trying to
++debug some interaction between kernel and user-space you are better
++off running your guest program with gdb either in the guest or using
++a gdbserver exposed via a port to the outside world.
++
+ Debugging multicore machines
+ ============================
  
--# The native build should never use the registry
--docker-image-debian-native: DOCKER_REGISTRY=
--
- # alpine has no adduser
- docker-image-alpine: NOUSER=1
- 
-diff --git a/tests/docker/dockerfiles/debian-native.docker b/tests/docker/dockerfiles/debian-native.docker
-deleted file mode 100644
-index abac7d7cd7..0000000000
---- a/tests/docker/dockerfiles/debian-native.docker
-+++ /dev/null
-@@ -1,54 +0,0 @@
--#
--# Docker Debian Native
--#
--# This is intended to build QEMU on native host systems. Debian is
--# chosen due to the broadest range on supported host systems for QEMU.
--#
--# This docker target is based on the docker.io Debian Bullseye base
--# image rather than QEMU's base because we would otherwise confuse the
--# build grabbing stuff from the registry built for other
--# architectures.
--#
--FROM docker.io/library/debian:bullseye-slim
--MAINTAINER Alex Bennée <alex.bennee@linaro.org>
--
--# Duplicate deb line as deb-src
--RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
--
--# Install common build utilities
--RUN apt update && \
--    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata
--
--RUN apt update && \
--    DEBIAN_FRONTEND=noninteractive eatmydata \
--    apt build-dep -yy --arch-only qemu
--
--RUN apt update && \
--    DEBIAN_FRONTEND=noninteractive eatmydata \
--    apt install -y --no-install-recommends \
--        cscope \
--        genisoimage \
--        exuberant-ctags \
--        global \
--        libbz2-dev \
--        liblzo2-dev \
--        libgcrypt20-dev \
--        libfdt-dev \
--        librdmacm-dev \
--        libsasl2-dev \
--        libsnappy-dev \
--        libvte-dev \
--        netcat-openbsd \
--        ninja-build \
--        openssh-client \
--        python3-numpy \
--        python3-opencv \
--        python3-venv
--
--ENV QEMU_CONFIGURE_OPTS $QEMU_CONFIGURE_OPTS
--ENV DEF_TARGET_LIST "none"
--# As a final step configure the user (if env is defined)
--ARG USER
--ARG UID
--RUN if [ "${USER}" ]; then \
--  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian.docker
-similarity index 96%
-rename from tests/docker/dockerfiles/debian-amd64.docker
-rename to tests/docker/dockerfiles/debian.docker
-index 9b50fb2f63..b5e642d5b6 100644
---- a/tests/docker/dockerfiles/debian-amd64.docker
-+++ b/tests/docker/dockerfiles/debian.docker
-@@ -155,10 +155,13 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-   apt install -y --no-install-recommends \
-   cscope\
-   global\
--  linux-headers-amd64
-+  linux-headers-generic
- RUN git clone https://github.com/luigirizzo/netmap.git /usr/src/netmap
- RUN cd /usr/src/netmap && git checkout v11.3
--RUN cd /usr/src/netmap/LINUX && ./configure --no-drivers --no-apps --kernel-dir=$(ls -d /usr/src/linux-headers-*-amd64) && make install
-+RUN cd /usr/src/netmap/LINUX && \
-+  ./configure --no-drivers --no-apps \
-+  --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \
-+  && make install
- ENV QEMU_CONFIGURE_OPTS --enable-netmap
- # As a final step configure the user (if env is defined)
- ARG USER
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 7c211eba2e..993683cf48 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -99,10 +99,13 @@ debian12_extras = [
-     "  apt install -y --no-install-recommends \\\n",
-     "  cscope\\\n",
-     "  global\\\n",
--    "  linux-headers-amd64\n",
-+    "  linux-headers-generic\n",
-     "RUN git clone https://github.com/luigirizzo/netmap.git /usr/src/netmap\n",
-     "RUN cd /usr/src/netmap && git checkout v11.3\n",
--    "RUN cd /usr/src/netmap/LINUX && ./configure --no-drivers --no-apps --kernel-dir=$(ls -d /usr/src/linux-headers-*-amd64) && make install\n",
-+    "RUN cd /usr/src/netmap/LINUX && \\\n",
-+    "  ./configure --no-drivers --no-apps \\\n",
-+    "  --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \\\n",
-+    "  && make install\n",
-     "ENV QEMU_CONFIGURE_OPTS --enable-netmap\n"
- ]
- 
-@@ -123,7 +126,7 @@ try:
-     #
-     generate_dockerfile("alpine", "alpine-318")
-     generate_dockerfile("centos8", "centos-stream-8")
--    generate_dockerfile("debian-amd64", "debian-12",
-+    generate_dockerfile("debian", "debian-12",
-                         trailer="".join(debian12_extras))
-     generate_dockerfile("fedora", "fedora-38")
-     generate_dockerfile("opensuse-leap", "opensuse-leap-15")
 -- 
 2.39.2

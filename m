@@ -1,193 +1,198 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp398619ejy;
-        Tue, 21 Nov 2023 03:32:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEMwbHGqS0DlKrdemXKgGdSXjISVgz80E+MYD8wzkbNAk9yBNd89PCoE6Pw2WM3iX5a4Jhk
-X-Received: by 2002:a05:6358:5e1a:b0:16d:a0d3:d285 with SMTP id q26-20020a0563585e1a00b0016da0d3d285mr13322721rwn.18.1700566348967;
-        Tue, 21 Nov 2023 03:32:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700566348; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp414511ejy;
+        Tue, 21 Nov 2023 04:03:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGME3XzyxjJ5ILqjTyDxErHnb9/O8O1bIUeF0ViXXHvkyX9eGRdu1c075+RfpI8ayEPkc7f
+X-Received: by 2002:a05:620a:1669:b0:77b:bfc4:4e13 with SMTP id d9-20020a05620a166900b0077bbfc44e13mr3402972qko.18.1700568232893;
+        Tue, 21 Nov 2023 04:03:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700568232; cv=none;
         d=google.com; s=arc-20160816;
-        b=ycIGnP+JfsVVC1mug0HSF5GQEtoPckuwNLb1qAZlbGKSIuOEGa6OYhxjvEYld8s4Y2
-         E3mOu1ppf8j3t+Ct1arIgxEImZ9kvDHZP+ZtI0z8fPVwm1hZ8lcroSn1TNvQMiDQ0ewk
-         3T6/J47zwJY1Oyk7diyS6T49eCv+ixGaFzCapb01wSFmAAlabn367frIpDS8/LTL2hGO
-         /GIujKqtvPCXDXSVSuuPXrbbD//NKjo0naCe0fUMpPYXCflfedojkUV2UhGgBz9wPUNR
-         fr6fY5HbHrZ6zTn99m3OnZ16xd9TM9wsSKiWiw8FnFCw744cshToMbw0SGEWbuhSMm3v
-         Vbww==
+        b=mrLqE+33Bk9SrjoCoOraxvjnU/hgj5dkDVhFaxfcxgQGGObFSAfGmWYGvLFFmLPDMx
+         64WAhPw1trfzcDJMGedaPP2XDVcTNpUcLNMwZi/R1bdqPDKcq4lihPxL6hrBrqirH5iF
+         Wyx4+pVuWBFsYZgkqI1IRxOHh63VeUpF7rnPD8dIOSNKLXol7hRaOH+f3ugWVDSSc3Q9
+         Pfbd3ZowevJnFrq6S8IP1p0tuY2obv8ZyLOZ0XnMTZd0K6FQAsHTTZHTN5DoB6roz54a
+         BuMd6uhyR7HdwkHJGRh8TIb+RPlEiSUkk3dn5phHHFUZysD+PqJa3g+SjjjzDhVCzzqj
+         qHgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=hY2aGxpeVJsT0VErWWSEtagjKTuIsspwi6gCRiPrujw=;
-        fh=pODzPtP5vkqu6viCOmJj6TaCO1xbYuWlUc0Y8bYJVRc=;
-        b=aoeH+Tu0Mb27Vx74ZQLiWZRfNuGtv4k54a6a5BejMQpS6e7loIci5WPRjo5PxgQCVq
-         7WOu+EFnIM9giaMGVtn68eeX+eSNlaHOWLHdGPUeNGYJeAbutqQO0khYCnTvLkwsVDfE
-         z4Hv8Ot7TBqxDhezBAgYaPsuBT/+t2l47QsgHgHhXEGE1VrMZUth62qn2UonaFKZpAIS
-         D6lh81nwic8Z++uTQMZJ8ZbcEinBKcCeUCq8rPb0d/3C8LQsDyF2S5jKK83qBvi7E9cS
-         51GBnLOtUJudXRnzEOasM8E6rEtXa0V4VBQ+4T89UrWQIHAloiORulDtKRBIZQwZ1QeJ
-         5usg==
+         :mime-version:message-id:in-reply-to:references:user-agent:subject
+         :cc:to:from:date:dkim-signature;
+        bh=bGW2vxLm7g1qtpfBccUqInrEwdq3kJsYsbttZX1AwHY=;
+        fh=A6d4BJTkcO4Tb4V34rr2mSX3341RstIj7VsNiQUca0w=;
+        b=O0i8kUivkLTgJsXpqyAIdcwE1xNCCRhCitqMf9Au0JoozMAaFIJZswRbLyOYjMumgr
+         +mziPePA2iX3f8xRaxR4f2wuwccgtFXtLwqMmPunRs1W/KyvfDx9ISorOvlDME3P+Cvp
+         qNPL6XH3fjb5gPJboXA8zvmiJp3lpHxGDgkdVSAd0uLZa2qNzGvsw4UuURYn8o9VZ/Si
+         /vOguWVRmKk1Hm89MbpJwe8QI4v0emJDsGQrpIhEdxlGJLvY20iOWBRx3TrsxRwxsVVr
+         ylTbM+r8LLIC2g9BPIB1vvnmTBKvtkg7D5MTowtJ30ftErpYdzQWtJkqdr8chfxtFptd
+         7LOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V7JSNzmt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bvMTV18j;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl18-20020a05620a1a9200b00773e066060csi9437591qkb.296.2023.11.21.03.32.28
+        by mx.google.com with ESMTPS id c27-20020a05620a269b00b0077bb3e29089si717166qkp.473.2023.11.21.04.03.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 03:32:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Nov 2023 04:03:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V7JSNzmt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bvMTV18j;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5Oyx-00033b-SO; Tue, 21 Nov 2023 06:31:55 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r5PTO-00057e-MK; Tue, 21 Nov 2023 07:03:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Oyw-000332-RU
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 06:31:54 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1r5PSj-0004ta-T6
+ for qemu-devel@nongnu.org; Tue, 21 Nov 2023 07:02:45 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Oyt-0007Nc-TJ
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 06:31:54 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3316d3d11e1so2219009f8f.0
- for <qemu-arm@nongnu.org>; Tue, 21 Nov 2023 03:31:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1r5PSh-0006gp-0f
+ for qemu-devel@nongnu.org; Tue, 21 Nov 2023 07:02:41 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-40839807e82so17302715e9.0
+ for <qemu-devel@nongnu.org>; Tue, 21 Nov 2023 04:02:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700566309; x=1701171109; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hY2aGxpeVJsT0VErWWSEtagjKTuIsspwi6gCRiPrujw=;
- b=V7JSNzmthuFaGOaWx05CA69HIaO/7bg3jHxCEjJzWvlagotzOll5KoC+E3bmohKWFd
- eFHkDX4dzzqN6DLTEmo2LwhmkcubAXiG9lCJcrY/s6NV2NzC1nYhA8o+9tUEQpWL7sQG
- K9yhbO7MgWgQmZAirm6k49L4C9IIFefRVaQPzm/u8asUR5u95rgx6zjLPP2kIyw9WtU8
- hDmkKRXgw5w2BOnyhXhaJ5Geuj/qwCtxlReicZfY/XlKZYgWYiQCySToYm7ZMsX3hz6b
- umJE04Di88ET4iQKvMJ7zvijB/V00TkJUk5UYzyrxx+OM0xP8c+D5jLNggqdHy6VTvII
- Ykvw==
+ d=linaro.org; s=google; t=1700568157; x=1701172957; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=bGW2vxLm7g1qtpfBccUqInrEwdq3kJsYsbttZX1AwHY=;
+ b=bvMTV18jQxq4OCAr0hwOXbRjIef7V8RtlHaLTLkyuDXI3VYn6bKxcjtEr7IkYekwmM
+ m2+PcDISIPrhK+q4t4oOYAcaqcy0fhv6eTu6Is82RTzyPSof7pxN26Ki5+o1agiU8MX1
+ RrbF0rx5B2dT1hLIiLCLcB3trlJ4CLVWNvWxpGks8/Dr7ZAorG4q26UqVsvYi6mBkXDp
+ r5Wiy+LDsh3onS+XpAAu3j8ZiCOi1b3kXf8VhlPOVNcrqWefMggULXkLPZW1khYJidRs
+ 73I3NMoYdUoOaHTYMW+iDgR/RzbV9mOjt+frJnswyRJB11AeCGGmO/SKl34D9+8Xm6qV
+ 6rpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700566309; x=1701171109;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hY2aGxpeVJsT0VErWWSEtagjKTuIsspwi6gCRiPrujw=;
- b=qq5tNFuyrR1u/yNc4MRpYhkrIZcQCuhKQK9PWGElw3/kBAGePEH6L+MFQIDPqptIg6
- vU/D5xhwgdRu8CXl0PnS901bNKhPyJ7HpvbLmAPhUyAVLzue4br6sFhiN9ot/69//Zmc
- gFK3Ky4NXBcyjicqmSyS9D+YTVl1jgXewo4VCT98XZAnebb1W3dcckhktLaYr0jWAAa0
- eTPYffkAr7G1bxv9HEgTpwaLJ3guqNhp7lcYBApVfef/1xLRp5IqxqmT+YrmUKm/v7tn
- jZnlDz5hfRRZfA5lH3mLulm/zDrlI6Ilr9MzBAFZrWEWRSpGrfcLUwik3s6Lk0K5neRy
- ctQg==
-X-Gm-Message-State: AOJu0YyRfDQShsA8ENkIYINvC3VvDLKSlPUjWFaSNRuIUdvlXWfbbOQn
- H4VwWNjYnQb+oHhS7Kxz+rYE+Q==
-X-Received: by 2002:a5d:6c67:0:b0:32d:d973:b546 with SMTP id
- r7-20020a5d6c67000000b0032dd973b546mr1826159wrz.0.1700566309474; 
- Tue, 21 Nov 2023 03:31:49 -0800 (PST)
-Received: from [192.168.69.100] (lgp44-h02-176-184-8-219.dsl.sta.abo.bbox.fr.
- [176.184.8.219]) by smtp.gmail.com with ESMTPSA id
- f6-20020a7bcd06000000b0040a463cf09dsm20797127wmj.33.2023.11.21.03.31.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Nov 2023 03:31:49 -0800 (PST)
-Message-ID: <954cf4a9-ebdd-428d-a703-4fde1490db71@linaro.org>
-Date: Tue, 21 Nov 2023 12:31:46 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 22/25] hw/sparc: Simplify
- memory_region_init_ram_nomigrate() calls
-Content-Language: en-US
-To: qemu-devel@nongnu.org
+ d=1e100.net; s=20230601; t=1700568157; x=1701172957;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=bGW2vxLm7g1qtpfBccUqInrEwdq3kJsYsbttZX1AwHY=;
+ b=SDI7TD+03NferQlL7yFRM9GfUEoQz+0zmV1psleJVgmG+wMpP9zLO6jEXRPjX/lbEu
+ rXmsBGl/tsvcuUL38e3Mw/lzRLo6+xYQsiQmoNC2xdEt5QvMg1XIYpIbvthrTE9Vs/s6
+ ncpZjnCnEqWSpxn6O0/OLnD0P6Pmqqc9QQNF4YLFqSa8576qKd3rIDnw4ExuWzraX8EL
+ prlO+o/VKdfVFrQI8BF8uZtkDQswcNF1PM4ks8FaQT7xdGZgpTsWbd5ve0oIPbABYYxQ
+ Z+8rDdsw6tkOAtp5cDzS4h0QH67SJH8NsPqc6Src1O8hc2sToqV+2Z1eeJdRB+iU2YWx
+ cQgg==
+X-Gm-Message-State: AOJu0YzddBVtoPJKYWin2uqTH5i6ySpEqOczuDAPNfyTvQLk6lx7DcNz
+ SR89ARcJfU29r27OJDeea8lMYg==
+X-Received: by 2002:a1c:7518:0:b0:40b:2afd:1a9 with SMTP id
+ o24-20020a1c7518000000b0040b2afd01a9mr1127222wmc.15.1700568156228; 
+ Tue, 21 Nov 2023 04:02:36 -0800 (PST)
+Received: from meli.delivery (adsl-75.109.242.226.tellas.gr. [109.242.226.75])
+ by smtp.gmail.com with ESMTPSA id
+ v12-20020a05600c214c00b004065daba6casm20994041wml.46.2023.11.21.04.02.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Nov 2023 04:02:35 -0800 (PST)
+Date: Tue, 21 Nov 2023 13:54:27 +0200
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-arm@nongnu.org,
+ Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Xu <peterx@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
+ C=?UTF-8?B?w6k=?= dric Le Goater <clg@kaod.org>,
+ Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
+ Peter Xu <peterx@redhat.com>
+Bcc: 
+Subject: Re: [PATCH-for-9.0 02/25] memory: Have
+ memory_region_init_ram_nomigrate() handler return a boolean
+User-Agent: meli 0.8.2
 References: <20231120213301.24349-1-philmd@linaro.org>
- <20231120213301.24349-23-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231120213301.24349-23-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20231120213301.24349-3-philmd@linaro.org>
+In-Reply-To: <20231120213301.24349-3-philmd@linaro.org>
+Message-ID: <4h2s9.5sthh644d88o@linaro.org>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9/ejO+TXNkbZ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QvJpbohqDv8e
 
-On 20/11/23 22:32, Philippe Mathieu-Daudé wrote:
-> Mechanical change using the following coccinelle script:
+On Mon, 20 Nov 2023 23:32, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>Following the example documented since commit e3fe3988d7 ("error:
+>Document Error API usage rules"), have cpu_exec_realizefn()
+>return a boolean indicating whether an error is set or not.
+>
+>Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>---
+> include/exec/memory.h | 4 +++-
+> system/memory.c       | 5 +++--
+> 2 files changed, 6 insertions(+), 3 deletions(-)
+>
+>diff --git a/include/exec/memory.h b/include/exec/memory.h
+>index f038a7e5cf..4140eb0c95 100644
+>--- a/include/exec/memory.h
+>+++ b/include/exec/memory.h
+>@@ -1288,8 +1288,10 @@ void memory_region_init_io(MemoryRegion *mr,
+>  *
+>  * Note that this function does not do anything to cause the data in the
+>  * RAM memory region to be migrated; that is the responsibility of the caller.
+>+ *
+>+ * Return: true on success, else false setting @errp with error.
+>  */
+>-void memory_region_init_ram_nomigrate(MemoryRegion *mr,
+>+bool memory_region_init_ram_nomigrate(MemoryRegion *mr,
+>                                       Object *owner,
+>                                       const char *name,
+>                                       uint64_t size,
+>diff --git a/system/memory.c b/system/memory.c
+>index 313dbb2544..337b12a674 100644
+>--- a/system/memory.c
+>+++ b/system/memory.c
+>@@ -1574,13 +1574,14 @@ void memory_region_init_io(MemoryRegion *mr,
+>     mr->terminates = true;
+> }
 > 
-> @@
-> expression mr, owner, arg3, arg4, errp;
-> @@
-> -   memory_region_init_ram_nomigrate(mr, owner, arg3, arg4, &errp);
->      if (
-> -       errp
-> +       !memory_region_init_ram_nomigrate(mr, owner, arg3, arg4, &errp)
->      ) {
->          ...
->          return;
->      }
+>-void memory_region_init_ram_nomigrate(MemoryRegion *mr,
+>+bool memory_region_init_ram_nomigrate(MemoryRegion *mr,
+>                                       Object *owner,
+>                                       const char *name,
+>                                       uint64_t size,
+>                                       Error **errp)
+> {
+>-    memory_region_init_ram_flags_nomigrate(mr, owner, name, size, 0, errp);
+>+    return memory_region_init_ram_flags_nomigrate(mr, owner, name,
+>+                                                  size, 0, errp);
+> }
 > 
-> and removing the local Error variable.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/sparc/sun4m.c   | 20 ++++++--------------
->   hw/sparc64/sun4u.c |  7 ++-----
->   2 files changed, 8 insertions(+), 19 deletions(-)
+> bool memory_region_init_ram_flags_nomigrate(MemoryRegion *mr,
+>-- 
+>2.41.0
+>
+
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
 
-> @@ -631,11 +628,9 @@ static void afx_realize(DeviceState *ds, Error **errp)
->   {
->       AFXState *s = TCX_AFX(ds);
->       SysBusDevice *dev = SYS_BUS_DEVICE(ds);
-> -    Error *local_err = NULL;
->   
-> -    memory_region_init_ram_nomigrate(&s->mem, OBJECT(ds), "sun4m.afx", 4,
-> -                                     &local_err);
-> -    if (local_err) {
-> +    if (!memory_region_init_ram_nomigrate(&s->mem, OBJECT(ds), "sun4m.afx",
-> +                                          4, errp)) {
->           error_propagate(errp, local_err);
-
-I forgot to remove this error_propagate() line.
-
->           return;
->       }
-> @@ -715,12 +710,9 @@ static void prom_realize(DeviceState *ds, Error **errp)
->   {
->       PROMState *s = OPENPROM(ds);
->       SysBusDevice *dev = SYS_BUS_DEVICE(ds);
-> -    Error *local_err = NULL;
->   
-> -    memory_region_init_ram_nomigrate(&s->prom, OBJECT(ds), "sun4m.prom",
-> -                                     PROM_SIZE_MAX, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> +    if (!memory_region_init_ram_nomigrate(&s->prom, OBJECT(ds), "sun4m.prom",
-> +                                          PROM_SIZE_MAX, errp)) {
->           return;
->       }
 

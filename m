@@ -1,224 +1,169 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp582484ejy;
-        Tue, 21 Nov 2023 08:08:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFqt6zahVjepp28gtTkgWlRNBJhcwdIxA+WKef4Ff88+KDPIN7+mqbWigb1zAmjZ0z6HLfv
-X-Received: by 2002:a05:622a:553:b0:412:964c:c4d2 with SMTP id m19-20020a05622a055300b00412964cc4d2mr12358736qtx.0.1700582929625;
-        Tue, 21 Nov 2023 08:08:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700582929; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp691312ejy;
+        Tue, 21 Nov 2023 10:51:03 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IELg6MMe2eI/wN1hfTqZp6Y19TO4gzecjpRDbRuDt66phAyOK5y6SwP5FML3yySb1IYuY6k
+X-Received: by 2002:ac8:5b96:0:b0:410:8cb9:8dea with SMTP id a22-20020ac85b96000000b004108cb98deamr65097qta.6.1700592663328;
+        Tue, 21 Nov 2023 10:51:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700592663; cv=none;
         d=google.com; s=arc-20160816;
-        b=MxaxwTes1fBMC+FLQ8+Sdz6LijHS6xtRP8VXwinhqCr5JbnZeqSi03ZhFmDu1n2pcq
-         lwFYzWC5eVYMW6YwHe0hia4DZ4Nm6sxGUWhJEzrGkl3e8DyN3HqnSe+/4K2zk1L/1el8
-         zyYgRs+NGkzVW+mOzFhHgsMLsbVLnoZSJFn+7gZwUneGlHYtzJof+FLRZkesHxEgKMCQ
-         k/tlftSLg6eYA2aPINEs5QrWX8YZtY6U8VKtHN4KkQpIMqu/GMjJBiBix3/0q7qQ7evK
-         jRbj+93v914IuBDHqdnd0M8+reI/8eY0a9EpUyKNQ/B2vAYi29lIZBsJ9gKFE2p0aGzf
-         rVAA==
+        b=b19EJKPrHbT1HmsttMdY09xLKTuugps6aopvOiQev5AbdiotPO4eyJwiIWwa+4jrs/
+         47zAUzXKKIkMEpHu0QWIdwrQ66FP7VxV4v8hNBP7C4J9JTcVWMfhrskxqpjxX+fH6h0x
+         PbWXODJXJ2is/i8/J2HW4km44Tp8n32o5BF8KaqZey+C7lpEh6Ynw7pz644k0Y3dZ2zX
+         gzWf/zCjgtDoiRPSDbwei/7YkO4zk25Ivk4HSj8irR8wKY+cbttTZSX6cxz/GcSWpEh6
+         ID4NWWmB8vM/C3KXYPlPAZ/EjKf79mxxfovJZPCKAmp0uwpXs0mA4dQ7dbPium/RS3FU
+         7Aag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=k0wFm5EK4/ld2kZkumlKGAXhj9GyIivcRy2zIbMehLs=;
-        fh=++VMAZ/GIHlO0IYU/NZo/BYe9bUu2vGKalfxnpPe1iE=;
-        b=OZmD1k+9gs/msGj3Ug8TC7usGA9mNkLsiSRhRU1mpyBYxGNHiJlLneZMIqQzuS4U5c
-         40q94Buia9Kulru14KxzaKykcmwcZVzexzYRVE9VWN7BeRCcw2rGhYtTjwyGvBqLXOng
-         852NWC+IuiIqqWfay6o8wRcYibs2NGOoDcqj3ctptHCwryaQfEJGY9r68Y0h8wuBUGQa
-         T86Sf9qw2Zf8IvxHeN2z5a1PZSq3T0cURfC0/mBxpV1ffc+Nv05C84KJb5QQJ9cZ3/bf
-         I2Qyyj1hCl9/PxrqkvITteB0BUpXvnu6f+zKgd5ZVUQrx/aSEy3+dhoUbTwM20MX9mVd
-         ECIg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lNnPXcYVLt7Wr01bAS2uF3p1vIC/3B/3HyaD/sLeMK8=;
+        fh=7ioxn6LWsCzgGR12WMVU/wASROmAygH/3PvRDFKIzPw=;
+        b=kfLxLks+ncQzOrQe21APJZP4ovQfAGdEykol4F2a2e/M9XgfHw8uxfP58OCQLSFKoA
+         mlSi1BtXpFU1ZE0YzsEywxzVRjm54ymM0g+ZsqLJhfebVyJx839r5/0VZ/XAu+7Jcz3a
+         0+wZFWy9syTfplxXQ5KBenpaXN2e+5wwsU+MMF6kinZT5qh2ifE5ksoRcQwHHHDjFgil
+         kBYUK+hYHmVn/f78ln6TJz/mH2JmykGUlprh9pNqmfLzrSeU6gxajjMZwtGe8Urkcvf9
+         MPHqfxAkHJ5qUcKWnoXIAW9yx89yrFD6rix/S3txXF4VEWni/jF1EqjqYQsUPkjKdZy5
+         GNBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ArFzHDfk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=O7aum+VJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4-20020ac87f04000000b00419785d97c8si9663301qtk.564.2023.11.21.08.08.49
+        by mx.google.com with ESMTPS id fg20-20020a05622a581400b004237557fe23si936286qtb.699.2023.11.21.10.51.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 08:08:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Nov 2023 10:51:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ArFzHDfk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=O7aum+VJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5TIV-0003QG-Lp; Tue, 21 Nov 2023 11:08:23 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r5Vpc-0001PX-FG; Tue, 21 Nov 2023 13:50:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1r5TIT-0003PD-Ny
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 11:08:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1r5TIR-0005VU-Bp
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 11:08:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700582898;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=k0wFm5EK4/ld2kZkumlKGAXhj9GyIivcRy2zIbMehLs=;
- b=ArFzHDfkD1DA2uXHmXFTChL9KUFooSjlA2+3KlXlxO9Ik8bXHZKyaHRbFDoNS595dA7gC3
- YnU9R2r7q6SAg7y+lyze+N0Kjv0grkHcUUIN7nNtlM5gu9UM0nktC12Por5ADeCqJxtZzv
- aCUS3qHbo8LVhOM1ZQoOloIfjeCK73Y=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-175-vhU-WqJXOmCqezATCmplbA-1; Tue,
- 21 Nov 2023 11:08:14 -0500
-X-MC-Unique: vhU-WqJXOmCqezATCmplbA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65DC3280AA22;
- Tue, 21 Nov 2023 16:08:14 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.105])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 41814492BE0;
- Tue, 21 Nov 2023 16:08:11 +0000 (UTC)
-Date: Tue, 21 Nov 2023 16:08:08 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, Alexander Graf <graf@amazon.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Eric Blake <eblake@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Ard Biesheuvel <ardb@kernel.org>, mimoja@mimoja.de
-Subject: Re: [PATCH 00/16] hw/uefi: add uefi variable service
-Message-ID: <ZVzV6Au_FYK6Rav6@redhat.com>
-References: <20231115151242.184645-1-kraxel@redhat.com>
- <9db15906-9474-4a6e-82a9-5275c72cf2b4@amazon.com>
- <nxzed5dhgjpn3fafjttocvxe6ztxxf5xhghaqncpdxup6y7o7y@47i3eyoehio2>
- <7bfb52e6-3698-7c44-5927-31d47d031d57@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1r5Vpb-0001P9-1B
+ for qemu-devel@nongnu.org; Tue, 21 Nov 2023 13:50:43 -0500
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1r5VpZ-0007Xu-Kb
+ for qemu-devel@nongnu.org; Tue, 21 Nov 2023 13:50:42 -0500
+Received: by mail-ot1-x332.google.com with SMTP id
+ 46e09a7af769-6ce2c71c61fso3139846a34.1
+ for <qemu-devel@nongnu.org>; Tue, 21 Nov 2023 10:50:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1700592640; x=1701197440; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lNnPXcYVLt7Wr01bAS2uF3p1vIC/3B/3HyaD/sLeMK8=;
+ b=O7aum+VJ13oxb6+gEPzA42By4mflD3UaFgRZkLFa4WRo5smJqMZxkVhDULvHB12RQm
+ oyVuRORhfhSY//RV9Qz3Mri6z8BUzBJhyazB2VuZLKkIRZcvUWogFcGDBoOP/3zhJmfe
+ qOOKegAOvdevMNXdQ3bAXL9dw/SVNGJsfkvKBLhUDAHUa49ub/RnYdCWyda/7ejQiSOC
+ P3onN4/DVCN/mIAApxrqanwp17o+v8CFoxQOdYF+mJNd/DnWVIl/Dfp0zBCCVfkVyZac
+ c5TrpndQYZQ3Vd7Eq4CY6GJLWI+CL95mNKmvWIvvy6FHenQnW1BChrEM6+npYV2gNP6R
+ csMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700592640; x=1701197440;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lNnPXcYVLt7Wr01bAS2uF3p1vIC/3B/3HyaD/sLeMK8=;
+ b=jsAduqsAyBOiS76D+hkIZ9UVR5xiVnelYuKLUjfBOU4v4qHrPrPZNJYGPVWFrcWoT1
+ zeRyQYMDrq88okvnMYKDteiah41Yz8Bn0Of6Di+xJF/RAW7f4ccpKu1ghBj/6oJIC6Ej
+ COJ0k+xNyjI49QofVPCVK9H48hlHBcCH4AVY2W1KUD3H1EiRMZD4JnSKNo+6LQP9YGKr
+ duRSePK7C7zCak1F0kHr9PaA8va3pGWYnrxpqe/ii2XzKx17BL4lNDkqi8OQQoGUaLkK
+ qMNBOFpAuXuIMNIT1k2qZuz5A3asIzwmbXVTpAsJ9mqzq5NJ6m++8gOkDrtpKcCDeGQS
+ OXsQ==
+X-Gm-Message-State: AOJu0YwihWnvxMGdXWH7UZfCdsB/4vzZfmuyHU8omS7Cz7JMnWPQwjGr
+ 0q8rWLodSul0CW113K2Ix9Pk7A==
+X-Received: by 2002:a05:6871:459c:b0:1f9:352c:c213 with SMTP id
+ nl28-20020a056871459c00b001f9352cc213mr152143oab.37.1700592640206; 
+ Tue, 21 Nov 2023 10:50:40 -0800 (PST)
+Received: from [172.20.7.39] ([187.217.227.247])
+ by smtp.gmail.com with ESMTPSA id
+ d14-20020a9d51ce000000b006b9443ce478sm1609593oth.27.2023.11.21.10.50.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Nov 2023 10:50:39 -0800 (PST)
+Message-ID: <958391d5-b1b5-43bf-b3d1-a6071e77b5cd@linaro.org>
+Date: Tue, 21 Nov 2023 12:50:36 -0600
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <7bfb52e6-3698-7c44-5927-31d47d031d57@redhat.com>
-User-Agent: Mutt/2.2.10 (2023-03-25)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-9.0 04/25] memory: Simplify
+ memory_region_init_rom_nomigrate() calls
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Xu <peterx@redhat.com>
+References: <20231120213301.24349-1-philmd@linaro.org>
+ <20231120213301.24349-5-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20231120213301.24349-5-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x332.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qCQVgw0W6teI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OHudGp7s8KoT
 
-On Tue, Nov 21, 2023 at 04:58:44PM +0100, Laszlo Ersek wrote:
-> On 11/20/23 17:50, Gerd Hoffmann wrote:
-> > On Mon, Nov 20, 2023 at 12:53:45PM +0100, Alexander Graf wrote:
-> >> Hey Gerd!
-> >>
-> >> On 15.11.23 16:12, Gerd Hoffmann wrote:
-> >>> This patch adds a virtual device to qemu which the uefi firmware can use
-> >>> to store variables.  This moves the UEFI variable management from
-> >>> privileged guest code (managing vars in pflash) to the host.  Main
-> >>> advantage is that the need to have privilege separation in the guest
-> >>> goes away.
-> >>>
-> >>> On x86 privileged guest code runs in SMM.  It's supported by kvm, but
-> >>> not liked much by various stakeholders in cloud space due to the
-> >>> complexity SMM emulation brings.
-> >>>
-> >>> On arm privileged guest code runs in el3 (aka secure world).  This is
-> >>> not supported by kvm, which is unlikely to change anytime soon given
-> >>> that even el2 support (nested virt) is being worked on for years and is
-> >>> not yet in mainline.
-> >>>
-> >>> The design idea is to reuse the request serialization protocol edk2 uses
-> >>> for communication between SMM and non-SMM code, so large chunks of the
-> >>> edk2 variable driver stack can be used unmodified.  Only the driver
-> >>> which traps into SMM mode must be replaced by a driver which talks to
-> >>> qemu instead.
-> >>
-> >>
-> >> I'm not sure I like the split :). If we cut things off at the SMM
-> >> communication layer, we still have a lot of code inside the Runtime Services
-> >> (RTS) code that is edk2 specific which means we're tying ourselves tightly
-> >> to the edk2 data format.
-> > 
-> > Which data format?
-> > 
-> > Request serialization format?  Yes.  I can't see what is wrong with
-> > that.
+On 11/20/23 15:32, Philippe Mathieu-Daudé wrote:
+> Mechanical change using the following coccinelle script:
 > 
-> ... I can't even see what's wrong with *that*. Realistically /
-> practically, I think only edk2 has been considered as guest UEFI
-> firmware for QEMU/KVM virtual machines, as far as upstream projects go.
-> It's certainly edk2 that's bundled with QEMU.
-> 
-> My understanding is that firmware is just considered a part of the
-> virtualization platform, so teaching edk2 specifics to QEMU doesn't seem
-> wrong. (As long as we have the personpower to maintain interoperability.)
-> 
-> > We need one anyway, and I don't see why inventing a new one is
-> > any better than the one we already have in edk2.
-> > 
-> > Variable storage format?  Nope, that is not the case.  The variable
-> > driver supports a cache, which I think is a read-only mapping of the
-> > variable store, so using that might imply we have to use edk2 storage
-> > format.  Didn't check in detail through.  The cache is optional, can be
-> > disabled at compile time using PcdEnableVariableRuntimeCache=FALSE, and
-> > I intentionally do not use the cache feature, exactly to avoid unwanted
-> > constrains to the host side implementation.
-> > 
-> >> It also means we can not easily expose UEFI
-> >> variables that QEMU owns,
-> > 
-> > Qemu owning variables should be no problem.  Adding monitor commands to
-> > read/write UEFI variables should be possible too.
-> 
-> This patch set is actually an improvement towards QEMU-owned variables.
-> Right now, all variables are internal to the guest; QEMU only has a
-> pflash-level view.
+> @@
+> expression mr, owner, arg3, arg4, errp;
+> @@
+> -   memory_region_init_rom_nomigrate(mr, owner, arg3, arg4, &errp);
+>      if (
+> -       errp
+> +       !memory_region_init_rom_nomigrate(mr, owner, arg3, arg4, &errp)
 
-To throw confidental computing into the mix....
+This coccinelle script doesn't quite match...
 
-Right now for SEV-SNP/TDX, the EDK2 builds are stateless so that
-variables are thrown away at poweroff.
+> @@ -3628,11 +3628,8 @@ void memory_region_init_rom(MemoryRegion *mr,
+>                               Error **errp)
+>   {
+>       DeviceState *owner_dev;
+> -    Error *err = NULL;
+>   
+> -    memory_region_init_rom_nomigrate(mr, owner, name, size, &err);
 
-Long term though there's interest in having the ability to (optionally)
-offer persistence of variables to confidential computing too.
+... this?
 
-The key issue is that the host QEMU is not trusted so it would not be
-viable to let QEMU receive the variables in plain text.
+That said, the actual code change is good.
 
-One option I've illustrated before is that have SVSM (or equiv)
-expose an encrypted storage service to EDK2. Given the proposed EDK2
-side protocol/modifications for variable storage, I wonder if it is
-viable for SVSM (or equiv) to replace QEMU in providing the backend
-storage impl ?  IOW, host QEMU would expose a pflash to the guest,
-to which SVSM would apply full disk encryption, and then store the
-EFI variables in it
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
+r~

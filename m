@@ -1,114 +1,112 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp573362ejy;
-        Tue, 21 Nov 2023 07:59:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG30lW+SsccL+gvUvT61dPTGzbD2iKr5QPEjjWIFrKB7q75zTBKe5zJF6oMtovPnvFI5rq5
-X-Received: by 2002:a05:622a:4d0:b0:41e:1777:b474 with SMTP id q16-20020a05622a04d000b0041e1777b474mr14992883qtx.31.1700582356645;
-        Tue, 21 Nov 2023 07:59:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700582356; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp476348ejy;
+        Tue, 21 Nov 2023 05:43:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHqHa334Brup6vR5432aPs87mOYK0G6gjeNz69g7Z8QUGytLRosd2wipjPYYZCgGXo8DFRN
+X-Received: by 2002:a05:622a:54f:b0:41c:c68c:1df2 with SMTP id m15-20020a05622a054f00b0041cc68c1df2mr4217225qtx.5.1700574184777;
+        Tue, 21 Nov 2023 05:43:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700574184; cv=none;
         d=google.com; s=arc-20160816;
-        b=t5iUnh+x+ShwhRAhlA2FjKKfnFlZImti3hLYHc7l1G8wuJXP0lfuNfTVXUpzSolt24
-         s2mvJcd6DPS9z5qNit6jNxMHfAtP5gYkp5szlA+KrfR9eDYzQ+C1HJcfYuS0wCIwelqY
-         rjXzUWKQNCZCeZVhhGG2e8ZFs2wxhEHqytoHq1FKcxe8ECCVIB2QGYQzlg4hQ3gr/kzd
-         IXWbhKOFjf9JmzCB065B3vsAhjXEP60qFViPQJ4t8Uu4v0GFZuJFdRq8VXTMUkFpv/qQ
-         5/P4Vp+4HBEMUxPubEzC8xIJca/pFERpZ5FYEzzoXIniDVM5CH591D8GkA+qKjBN87GF
-         2QvQ==
+        b=KAAYeEPEeM/XqwUe4NUymE2a2Sf4qS7lmFIoDZ2ifpRSZj6S9rHonC+Ylo3/fuDt6Y
+         fIjS08kxC9J1LUu/sY8WyEmkRWGWaKnsVUod4wrV8Hqd6uIsHIOvPeEfC8ox/4Lyauz5
+         rIO+o7tkmYa8G/TIuDU8GImSpSpQYquzTPPnKz6rouqQC2R5qVJhKiaC7c1JvDvjBg4b
+         B0vrlxt/W63GODiYyh/pjBKMR63zIQ8G82xdW8pO4NPn04APJnDSo4RKK/IPq1zPe2Vz
+         CiJoolK0SYsP6BF86FWedQr5mhiKeFHNbg2h0iCdBigeR15dL0qop1ZY8kj9CKrJopFt
+         2rIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :mime-version:date:message-id:dkim-signature;
-        bh=70uEnos1LtUHQycomLB7LmE7flP2sa30VGj6fzwRMr4=;
-        fh=LpEy1i6ou8Nc8Ns7OctsU7tgpRhzp097gcvaAekkwiM=;
-        b=nuhVVYeCRHGBpVcCmzmiyROa+45MD597EGFUx2qDCsOEGru89fGUjWHLPxCW3jrxkW
-         qq53ukGGzRa1PxyGlVfyDiSeeV1XajfyFRfJgVen+s6dt8RkyyGZmF5B+BvuRbvXUtcj
-         /tpFGG2JlkK+l5TAP8IJzQ8pJg35Jnifw21iYaJJecbH6Be42NU6PkLtyb5C0kiOOEUy
-         Ob0HtOAWjx4jMLYAn3r5QtnlI/Ysl61DV297fYaFLNAffLW7b9I7teOQRlIVP3ZFZyxG
-         xaDd71ZwYO5N+VVrcXwFqSlOhwdtCSCOIEpHe1DBKqw48LKtzmmUhhbj6twXzpKgiZYa
-         kLyw==
+        bh=wlYFEnNEXuVJ2jK7hLi5DVjd0cJwAVcEOEnl2hBsrZ4=;
+        fh=WaOdKrDWYJFCjpd9XuplKfhY5PHSKebwZLQ9Fcuj1Yw=;
+        b=Qcy9eiONuFzARt39My7LbgvhvcJYp0Qcgoi4CZ0Sq+rGZw/HmQKbcuzblND+/9ToCh
+         VEWYQ8dVd+BK8mVh4XasntPSCgq3L5JJTG0PakC8tCbFSRnev4afgixmxqhOhYCMvlaX
+         FT4vbBkNm5gbp19b+lhY9RTsnLUuT4G5hl9W9wGYEENiga8xNeSK6hV+4SJtA3NjvMu0
+         /Dd3xlVmkqJo8aL+4fMUlsjWlxYSpwzAgQzbul2JzL2R3lXw9RcCOp3H/tAA0JRKkD5Y
+         zMfcyXLG70XofHUJWpaUHjTXU0wz+z9YYNUzOSBQU5NOV0BjzlmY2we1kVdMscANYHjk
+         oSdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VKo27bGd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SdgZvVKj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bz14-20020a05622a1e8e00b004236fc110a4si1525151qtb.152.2023.11.21.07.59.16
+        by mx.google.com with ESMTPS id l16-20020a05622a051000b004181aa26b1esi9088235qtx.196.2023.11.21.05.43.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 07:59:16 -0800 (PST)
+        Tue, 21 Nov 2023 05:43:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VKo27bGd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SdgZvVKj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5T9Y-0006Ul-B8; Tue, 21 Nov 2023 10:59:09 -0500
+	id 1r5R1V-00073a-5T; Tue, 21 Nov 2023 08:42:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r5T9R-0006Qj-Iq
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 10:59:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r5R1T-00073I-Om
+ for qemu-arm@nongnu.org; Tue, 21 Nov 2023 08:42:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r5T9O-0002xc-9H
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 10:59:01 -0500
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r5R1N-0000S2-9H
+ for qemu-arm@nongnu.org; Tue, 21 Nov 2023 08:42:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700582332;
+ s=mimecast20190719; t=1700574152;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=70uEnos1LtUHQycomLB7LmE7flP2sa30VGj6fzwRMr4=;
- b=VKo27bGdBgTw+Bi3T84PkjBTsJt/0Ztif3UIQSr50Wz3AXb0J1Wv//BSck1eRkmQtmTKKy
- pyKSkzN1Db7Vm7u0NpLntgvizPx98cYSEZKADIUXg+dOfShF+CK52Ntz7vyUroHlG2Prpy
- yH0B5C/CD07wxgn5gvLPCFWtk+IpkLY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-55-Jm74miNnO-OtgT52YHRjKQ-1; Tue, 21 Nov 2023 10:58:49 -0500
-X-MC-Unique: Jm74miNnO-OtgT52YHRjKQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ bh=wlYFEnNEXuVJ2jK7hLi5DVjd0cJwAVcEOEnl2hBsrZ4=;
+ b=SdgZvVKjafba0pOBT5N+cxZ39+hST3E4pH9ASHXuIq86DDd96rJ8bldEQQTNdDnuvvi5Xy
+ VrPIcjLOZUaJDmW3n52j9yEDjg+ei9rBSdzwnAGbVLcL/AfiZfgH5RtQYLYP+I7LHJgYck
+ 4aVNwL6cMDbzQRUXFnUxRGvRlz8Y9ys=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-582-HdwqmlDdOd6fFc4o8RuQKQ-1; Tue,
+ 21 Nov 2023 08:42:28 -0500
+X-MC-Unique: HdwqmlDdOd6fFc4o8RuQKQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8F66E811E7B;
- Tue, 21 Nov 2023 15:58:48 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7BCDA3814EA4;
+ Tue, 21 Nov 2023 13:42:28 +0000 (UTC)
 Received: from [10.39.194.228] (unknown [10.39.194.228])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 059B5492BE0;
- Tue, 21 Nov 2023 15:58:45 +0000 (UTC)
-Message-ID: <7bfb52e6-3698-7c44-5927-31d47d031d57@redhat.com>
-Date: Tue, 21 Nov 2023 16:58:44 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 09E141121306;
+ Tue, 21 Nov 2023 13:42:25 +0000 (UTC)
+Message-ID: <4cdfaae2-1f9d-33b1-ccf9-eeba7d5e0b8e@redhat.com>
+Date: Tue, 21 Nov 2023 14:42:24 +0100
 MIME-Version: 1.0
-Subject: Re: [PATCH 00/16] hw/uefi: add uefi variable service
+Subject: Re: [PATCH 04/16] hw/uefi: add var-service-guid.c
 Content-Language: en-US
-To: Gerd Hoffmann <kraxel@redhat.com>, Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Eric Blake
- <eblake@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, graf@amazon.com,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Ard Biesheuvel <ardb@kernel.org>,
- mimoja@mimoja.de
+ Markus Armbruster <armbru@redhat.com>
 References: <20231115151242.184645-1-kraxel@redhat.com>
- <9db15906-9474-4a6e-82a9-5275c72cf2b4@amazon.com>
- <nxzed5dhgjpn3fafjttocvxe6ztxxf5xhghaqncpdxup6y7o7y@47i3eyoehio2>
+ <20231115151242.184645-5-kraxel@redhat.com>
 From: Laszlo Ersek <lersek@redhat.com>
-In-Reply-To: <nxzed5dhgjpn3fafjttocvxe6ztxxf5xhghaqncpdxup6y7o7y@47i3eyoehio2>
+In-Reply-To: <20231115151242.184645-5-kraxel@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=lersek@redhat.com;
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=lersek@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,218 +121,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y5yk2AgAlUPk
+X-TUID: rMlKYWwTXMSd
 
-On 11/20/23 17:50, Gerd Hoffmann wrote:
-> On Mon, Nov 20, 2023 at 12:53:45PM +0100, Alexander Graf wrote:
->> Hey Gerd!
->>
->> On 15.11.23 16:12, Gerd Hoffmann wrote:
->>> This patch adds a virtual device to qemu which the uefi firmware can use
->>> to store variables.  This moves the UEFI variable management from
->>> privileged guest code (managing vars in pflash) to the host.  Main
->>> advantage is that the need to have privilege separation in the guest
->>> goes away.
->>>
->>> On x86 privileged guest code runs in SMM.  It's supported by kvm, but
->>> not liked much by various stakeholders in cloud space due to the
->>> complexity SMM emulation brings.
->>>
->>> On arm privileged guest code runs in el3 (aka secure world).  This is
->>> not supported by kvm, which is unlikely to change anytime soon given
->>> that even el2 support (nested virt) is being worked on for years and is
->>> not yet in mainline.
->>>
->>> The design idea is to reuse the request serialization protocol edk2 uses
->>> for communication between SMM and non-SMM code, so large chunks of the
->>> edk2 variable driver stack can be used unmodified.  Only the driver
->>> which traps into SMM mode must be replaced by a driver which talks to
->>> qemu instead.
->>
->>
->> I'm not sure I like the split :). If we cut things off at the SMM
->> communication layer, we still have a lot of code inside the Runtime Services
->> (RTS) code that is edk2 specific which means we're tying ourselves tightly
->> to the edk2 data format.
+On 11/15/23 16:12, Gerd Hoffmann wrote:
+> Add variables for a bunch of GUIDs we will need.
 > 
-> Which data format?
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> ---
+>  hw/uefi/var-service-guid.c | 61 ++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 61 insertions(+)
+>  create mode 100644 hw/uefi/var-service-guid.c
 > 
-> Request serialization format?  Yes.  I can't see what is wrong with
-> that.
+> diff --git a/hw/uefi/var-service-guid.c b/hw/uefi/var-service-guid.c
+> new file mode 100644
+> index 000000000000..afdc15c4e7e6
+> --- /dev/null
+> +++ b/hw/uefi/var-service-guid.c
+> @@ -0,0 +1,61 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * uefi vars device - GUIDs
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "sysemu/dma.h"
+> +
+> +#include "hw/uefi/var-service.h"
+> +
+> +/* variable namespaces */
+> +
+> +QemuUUID EfiGlobalVariable = {
+> +    .data = UUID_LE(0x8be4df61, 0x93ca, 0x11d2, 0xaa, 0x0d,
+> +                    0x00, 0xe0, 0x98, 0x03, 0x2b, 0x8c)
+> +};
 
-... I can't even see what's wrong with *that*. Realistically /
-practically, I think only edk2 has been considered as guest UEFI
-firmware for QEMU/KVM virtual machines, as far as upstream projects go.
-It's certainly edk2 that's bundled with QEMU.
+(1) should have asked under patch#3:
 
-My understanding is that firmware is just considered a part of the
-virtualization platform, so teaching edk2 specifics to QEMU doesn't seem
-wrong. (As long as we have the personpower to maintain interoperability.)
+can we constify these?
 
-> We need one anyway, and I don't see why inventing a new one is
-> any better than the one we already have in edk2.
-> 
-> Variable storage format?  Nope, that is not the case.  The variable
-> driver supports a cache, which I think is a read-only mapping of the
-> variable store, so using that might imply we have to use edk2 storage
-> format.  Didn't check in detail through.  The cache is optional, can be
-> disabled at compile time using PcdEnableVariableRuntimeCache=FALSE, and
-> I intentionally do not use the cache feature, exactly to avoid unwanted
-> constrains to the host side implementation.
-> 
->> It also means we can not easily expose UEFI
->> variables that QEMU owns,
-> 
-> Qemu owning variables should be no problem.  Adding monitor commands to
-> read/write UEFI variables should be possible too.
+> +
+> +QemuUUID EfiImageSecurityDatabase = {
+> +    .data = UUID_LE(0xd719b2cb, 0x3d3a, 0x4596, 0xa3, 0xbc,
+> +                    0xda, 0xd0, 0x0e, 0x67, 0x65, 0x6f)
+> +};
+> +
+> +QemuUUID EfiCustomModeEnable = {
+> +    .data = UUID_LE(0xc076ec0c, 0x7028, 0x4399, 0xa0, 0x72,
+> +                    0x71, 0xee, 0x5c, 0x44, 0x8b, 0x9f)
+> +};
+> +
+> +QemuUUID EfiSecureBootEnableDisable = {
+> +    .data = UUID_LE(0xf0a30bc7, 0xaf08, 0x4556, 0x99, 0xc4,
+> +                    0x0, 0x10, 0x9, 0xc9, 0x3a, 0x44)
+> +};
+> +
+> +/* protocols */
+> +
+> +QemuUUID EfiSmmVariableProtocolGuid = {
+> +    .data = UUID_LE(0xed32d533, 0x99e6, 0x4209, 0x9c, 0xc0,
+> +                    0x2d, 0x72, 0xcd, 0xd9, 0x98, 0xa7)
+> +};
+> +
+> +QemuUUID VarCheckPolicyLibMmiHandlerGuid = {
+> +    .data = UUID_LE(0xda1b0d11, 0xd1a7, 0x46c4, 0x9d, 0xc9,
+> +                    0xf3, 0x71, 0x48, 0x75, 0xc6, 0xeb)
+> +};
 
-This patch set is actually an improvement towards QEMU-owned variables.
-Right now, all variables are internal to the guest; QEMU only has a
-pflash-level view.
+This isn't really a  protocol, but a GUID for "mm_header.guid".
 
-> 
->> which can come in very handy when implementing MOR
->> - another feature that depends on SMM today.
-> 
-> Have a pointer for me?  Google finds me
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/device-guard-requirements,
-> which describes the variable behavior (which I think should be no
-> problem to implement), but doesn't say a word about what exactly gets
-> locked when enabled ...
+gEfiSmmVariableProtocolGuid is a bit messy in edk2 because (IIUC) it is
+used for *three* purposes:
 
-See:
+(a) it's an actual SMM protocol GUID (MmVariableServiceInitialize() --
+MdeModulePkg/Universal/Variable/RuntimeDxe/VariableSmm.c),
 
-  TCG PC Client Platform
-  Reset Attack Mitigation Specification
+(b) it's used as "mm_header.guid" (see the MmiHandlerRegister call in
+the same location), i.e. basically an SMI "upcall" identifier
 
-My copy is
+(c) it's used as a NULL interface DXE protocol GUID for notification
+purposes (VariableNotifySmmReady() --
+MdeModulePkg/Universal/Variable/RuntimeDxe/VariableTraditionalMm.c).
 
-  Family “2.0”
-  Version 1.10 Revision 17
-  January 21, 2019
-  Published
+So calling gEfiSmmVariableProtocolGuid a "protocol" in this header file
+is relatively justified. But calling "VarCheckPolicyLibMmiHandlerGuid" a
+protocol doesn't seem justified, because (I think) it only qualifies for
+usage (b).
 
-You should find it somewhere in the download area of
-<https://trustedcomputinggroup.org>.
+> +
+> +/* events */
 
-E.g....
-<https://www.trustedcomputinggroup.org/wp-content/uploads/Platform-Reset-Attack-Mitigation-Specification.pdf>
+More precisely, this would be "event groups"; but peaking ahead to the
+next patch, I think all five of these GUIDs (protocols + events) are
+just "mm_header.guid" values.
+
+So here's what I propose:
+
+(2) replace
+
+  /* protocols */
+
+with
+
+  /* mm_header.guid values that the guest DXE/BDS phases use for
+   * sending requests to management mode
+   */
+
+and
+
+(3) replace
+
+  /* events */
+
+with
+
+  /* mm_header.guid values that the guest DXE/BDS phases use for
+   * reporting event groups being signaled to management mode
+   */
+
+> +
+> +QemuUUID EfiEndOfDxeEventGroupGuid = {
+> +    .data = UUID_LE(0x02CE967A, 0xDD7E, 0x4FFC, 0x9E, 0xE7,
+> +                    0x81, 0x0C, 0xF0, 0x47, 0x08, 0x80)
+> +};
+
+(4) I suggest consistently using either the lowercase hex characters
+[a-f] or the uppercase ones [A-F] across all GUID constants in this header.
 
 
-In the past we've had a bunch of discussions / patches around this. Some
-examples:
+> +
+> +QemuUUID EfiEventReadyToBootGuid = {
+> +    .data = UUID_LE(0x7CE88FB3, 0x4BD7, 0x4679, 0x87, 0xA8,
+> +                    0xA8, 0xD8, 0xDE, 0xE5, 0x0D, 0x2B)
+> +};
+> +
+> +QemuUUID EfiEventExitBootServicesGuid = {
+> +    .data = UUID_LE(0x27ABF055, 0xB1B8, 0x4C26, 0x80, 0x48,
+> +                    0x74, 0x8F, 0x37, 0xBA, 0xA2, 0xDF)
+> +};
 
-- [edk2] multiple levels of support for MOR / MORLock
+I've made an effort to verify the constants themselves; they look good.
 
-http://mid.mail-archive.com/039cf353-80fb-9f20-6ad2-f52517ab4de7@redhat.com
-
-- https://bugzilla.tianocore.org/show_bug.cgi?id=727
-
-(see edk2 commit range listed there, too)
-
-- commit 704b71d7e11f115a3b5b03471d6420a7a70f1585
-
-- commit d20ae95a13e851d56c6618108b18c93526505ca2
-
-- https://bugzilla.redhat.com/show_bug.cgi?id=1854212
-
-- https://bugzilla.redhat.com/show_bug.cgi?id=1498159
-
-
-> 
->> In EC2, we are simply serializing all variable RTS calls to the hypervisor,
-> 
-> The edk2 code effectively does the same (with PcdEnableVariableRuntimeCache=FALSE).
-> 
->> similar to the Xen implementation
->> (https://www.youtube.com/watch?v=jiR8khaECEk).
-> 
-> Is the Xen implementation upstream?  Can't see a xen variable driver in
-> OvmfPkg.  The video is from 2019.  What is the state of this?
-
-Not sure about the current state, but when that presentation came out,
-we discussed it briefly internally. I don't have time to review that old
-discussion now for the sake of potentially publishing it inside this
-discussion, but for interested Red Hatters, I can provide a pointer:
-
-  [virt-devel] Securing Secure Boot on Xen | FOSDEM'19
-  Date: Fri, 8 Feb 2019 20:46:46 +0100
-  msgid: <37382312-986c-4ce4-1ba3-942697738d65@redhat.com>
-
-> 
->> The edk2 side code we have built is here:
->> https://github.com/aws/uefi/tree/main/edk2-stable202211 (see anything with
->> VarStore in the name).
-
-Well... why was this never upstreamed to edk2? (Side question, of course.)
-
-> 
-> Ok, so it's just the variables.  The edk2 variant also sends variable
-> policy requests (see Edk2VariablePolicyProtocol,
-> https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Library/VariablePolicyLib/ReadMe.md).
-> And it can easily be extended should the need arise in the future (all
-> requests are tagged with a protocol/event guid).
-> 
->> Given that we deal with untrusted input, I would strongly prefer if we could
->> move it to a Rust implementation instead though.
-> 
-> Valid point.
-
-Agree that the point is valid.
-
-(And this was one of my concerns, if not my main concern, in the above
-internal discussion, about Xen varstored.)
-
-Especially due to the heavy crypto that the final version is supposed to
-have.
-
-Even during the present patch review, while going through only the
-headers thus far, I've already said at least twice that we're going to
-have to be super careful about integer overflows and buffer overflows.
-Any such problem is no longer a guest<->guest privilege boundary breach
-but a guest<->host one.
-
-Not sure if the suggested remedy ("write it in Rust") is practical.
-
-> 
-> I've started in C because I have next no to experience with rust (yet),
-> so getting a test-able / demo-able implementation done was much easier
-> for me.  Also I think we don't have any rust infrastructure in qemu
-> (yet?).  Being able to use the qapi / qobject support to read/write the
-> variable store in json format is nice too.
-> 
-> But I'm open to discuss other options.
-
-A selfish aspect: given that I've been reviewing this set, should I
-consider it a proof of concept / prototype, or something we might want
-to build upon, i.e., should I assume we'd put these foundations into
-production at some point? I've been reviewing the series with the latter
-in mind, but if that's not correct, I should probably adjust my pedantry
-knob.
-
-> 
->> We started a Rust
->> reimplementation of it that interface that can build as a library with C
->> bindings which QEMU could then link against:
->>
->>   https://github.com/Mimoja/rs-uefi-varstore/tree/for_main
->>
->> The code never went beyond the initial stages,
-> 
-> Hmm.  Why not?
-
-And I'm a bit annoyed that you had to write ~2500 lines of QEMU code
-(not counting edk2) for qemu-devel to learn about these initiatives. :/
-
-> 
->> but if we're pulling the variable store to QEMU, this would be the
->> best path forward IMHO.
-> 
-> Ok, so you are trying to sell me a prototype as solution?
-> /me looks a bit skeptical ...
-
-at least with virtiofsd, we had gone with a C impl first, and only then
-with a Rust impl...
-
+Thanks
 Laszlo
 

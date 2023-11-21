@@ -1,129 +1,114 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp422729ejy;
-        Tue, 21 Nov 2023 04:17:03 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFibwDbLpt+K+Uy3UjClSNzvB1ItxcZakAW34ThyhGRwRCuVpv8dqH1PCoEl/inDurJb+A/
-X-Received: by 2002:a9d:7445:0:b0:6cd:8c3:5b4c with SMTP id p5-20020a9d7445000000b006cd08c35b4cmr11772168otk.16.1700569023370;
-        Tue, 21 Nov 2023 04:17:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700569023; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp573362ejy;
+        Tue, 21 Nov 2023 07:59:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG30lW+SsccL+gvUvT61dPTGzbD2iKr5QPEjjWIFrKB7q75zTBKe5zJF6oMtovPnvFI5rq5
+X-Received: by 2002:a05:622a:4d0:b0:41e:1777:b474 with SMTP id q16-20020a05622a04d000b0041e1777b474mr14992883qtx.31.1700582356645;
+        Tue, 21 Nov 2023 07:59:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700582356; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IOypaupvm0If3knxXsmGTFVrvh7/UBvjBDX7Aduv2ODPz+/D1sqXqWNQgOOmS8M97
-         F/VqdfpfTxvIj0nWwZyvbEavtl+401QIgV4OfrxZo8VNruQlASleOQWUhoMKFGQvDbuB
-         WQsgsGTaiVFlWAQmGit3cBX24vpTuboglKj48XM1h2gQ+oLxWFWNyeJSC76rpyydTo1R
-         2NZ9NOfIlSc70vX2nkA5uwuAGu/eSavboeTvDQNEhMLAk0Z4YEzEXiRy9VUwWsaVOqgx
-         sjrBVuAK+Lk/csMhqQoqqvWYWTPcI1mSgZStPr8YiyLdfd9utvFNiOQMfTskDd/JX3wm
-         186Q==
+        b=t5iUnh+x+ShwhRAhlA2FjKKfnFlZImti3hLYHc7l1G8wuJXP0lfuNfTVXUpzSolt24
+         s2mvJcd6DPS9z5qNit6jNxMHfAtP5gYkp5szlA+KrfR9eDYzQ+C1HJcfYuS0wCIwelqY
+         rjXzUWKQNCZCeZVhhGG2e8ZFs2wxhEHqytoHq1FKcxe8ECCVIB2QGYQzlg4hQ3gr/kzd
+         IXWbhKOFjf9JmzCB065B3vsAhjXEP60qFViPQJ4t8Uu4v0GFZuJFdRq8VXTMUkFpv/qQ
+         5/P4Vp+4HBEMUxPubEzC8xIJca/pFERpZ5FYEzzoXIniDVM5CH591D8GkA+qKjBN87GF
+         2QvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:in-reply-to:references:user-agent:subject
-         :cc:to:from:date:dkim-signature;
-        bh=JDxv8dF0rBA/MejO/JqkJYni6H0QlKaA2vRRm7RNVKs=;
-        fh=A6d4BJTkcO4Tb4V34rr2mSX3341RstIj7VsNiQUca0w=;
-        b=jnFuMCAyhVVQk6xTw+q7rLw4CvRqVKQBYjZg3BBfpofCZT5c8xLkmZ0r6fSWGwswG7
-         wjf/DjTrXD6t5M5UMdDJXhgtpzqVWoYiaNjTWL5fsMCYNbPprGwaqBc6Z9+WVIjHdtuN
-         K8D354mY4scznhmKH1X8O5uqVRJZtrHiO1dN69cmQ0XauWKopUAL0gRCzCDjPTsvOZsT
-         dvORf8Zbu2wEMJyoYJdL5pctq9QK2SXZFJrnk00je3ikAioSmgohuN7grDqT/EWYodl6
-         X9Hldw4WQRd79JaasGlYuO1nzeXZxxui1W127MwDT+GEHaS87YF2gLkkaBDwLrF5r4jc
-         q+IA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :mime-version:date:message-id:dkim-signature;
+        bh=70uEnos1LtUHQycomLB7LmE7flP2sa30VGj6fzwRMr4=;
+        fh=LpEy1i6ou8Nc8Ns7OctsU7tgpRhzp097gcvaAekkwiM=;
+        b=nuhVVYeCRHGBpVcCmzmiyROa+45MD597EGFUx2qDCsOEGru89fGUjWHLPxCW3jrxkW
+         qq53ukGGzRa1PxyGlVfyDiSeeV1XajfyFRfJgVen+s6dt8RkyyGZmF5B+BvuRbvXUtcj
+         /tpFGG2JlkK+l5TAP8IJzQ8pJg35Jnifw21iYaJJecbH6Be42NU6PkLtyb5C0kiOOEUy
+         Ob0HtOAWjx4jMLYAn3r5QtnlI/Ysl61DV297fYaFLNAffLW7b9I7teOQRlIVP3ZFZyxG
+         xaDd71ZwYO5N+VVrcXwFqSlOhwdtCSCOIEpHe1DBKqw48LKtzmmUhhbj6twXzpKgiZYa
+         kLyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xuUUQ8mO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VKo27bGd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8-20020ae9e908000000b007765135d96asi8446920qkf.390.2023.11.21.04.17.03
+        by mx.google.com with ESMTPS id bz14-20020a05622a1e8e00b004236fc110a4si1525151qtb.152.2023.11.21.07.59.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 04:17:03 -0800 (PST)
+        Tue, 21 Nov 2023 07:59:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xuUUQ8mO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VKo27bGd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5PgA-0004Q5-LR; Tue, 21 Nov 2023 07:16:35 -0500
+	id 1r5T9Y-0006Ul-B8; Tue, 21 Nov 2023 10:59:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1r5Pfv-0004LT-8h
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 07:16:22 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1r5Pfs-0002nz-6P
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 07:16:18 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-40839652b97so22632685e9.3
- for <qemu-arm@nongnu.org>; Tue, 21 Nov 2023 04:16:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700568974; x=1701173774; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=JDxv8dF0rBA/MejO/JqkJYni6H0QlKaA2vRRm7RNVKs=;
- b=xuUUQ8mOYbccJQH5xD4XXvcC3Kh0wow4/fqAyxr5kfjj71FDo2rCRyRNJb2lsBqL2P
- quTSwRP5bU17vMoW7fi8yp/z/N5cAj6fqpkbVb64s0OR+wBt64AwXzzh9yvLHgXMLEXO
- +nrA7cm4CUYvTKhikDuyvOnWUHnXoG/peBia3Ctj8sSs+AAnPdbwTbKvtc0yH0Oaydqs
- QrLhDOX7Cb/a4Znm8xyaSGr5rTblPD219obRidwIS7VIJJsDF+RqnoRjnPvd+Pbz16+o
- jr8Y8x0yfnSJywpegVGCVDkXNbHP+ZH8NBsB5s3e+RX04y5p961ZMdkkmdSv6UDS3QSM
- QgHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700568974; x=1701173774;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=JDxv8dF0rBA/MejO/JqkJYni6H0QlKaA2vRRm7RNVKs=;
- b=KBnfPJfTXRWCgu31CZwYEdVMO+sT/P5m0v77EIq09r10aAR+v+al/5Taz8XjbODm0w
- m5aXo3R//D/X/iPWeijRLCsBxG7sB5g70nrckExZrl7xqSxKmCahQ0wy1dVC/EYW+nK0
- h9ADUtCEX9NFlrbW+OjSVSbmBR/z/541gwXXDNWHwUTN5L1aBIoVcD6OhV3zws0hhFp+
- hLEGlp5WzADw+/v8yyo8abnHnx7Il3+7V0KgLj/SYVQxubaKAwwP5FbkDslMhC+qnE8f
- 0sert+yxINL9LH+HCQWNjOkUysfKna1TaCOBGJET+aboe5cYLyZDtLWlLBrVuMF5QRYw
- nz2A==
-X-Gm-Message-State: AOJu0YwOFzaE2st/IC/wiPqPlCCIzLNjfV1VLk3GyWOGIAX67r397NBs
- 2nQtg3WbEFxoN2wtVvUYumpOOGUWWAppvjDPEbSAIg==
-X-Received: by 2002:adf:fec5:0:b0:332:cddc:24fb with SMTP id
- q5-20020adffec5000000b00332cddc24fbmr1510386wrs.26.1700568974435; 
- Tue, 21 Nov 2023 04:16:14 -0800 (PST)
-Received: from meli.delivery (adsl-195.37.6.2.tellas.gr. [37.6.2.195])
- by smtp.gmail.com with ESMTPSA id
- m5-20020a5d6a05000000b0032d2489a399sm14070970wru.49.2023.11.21.04.16.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Nov 2023 04:16:14 -0800 (PST)
-Date: Tue, 21 Nov 2023 14:15:09 +0200
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-arm@nongnu.org,
- Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
- C=?UTF-8?B?w6k=?= dric Le Goater <clg@kaod.org>,
- Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>
-Bcc: 
-Subject: Re: [PATCH-for-9.0 07/25] memory: Have memory_region_init_rom()
- handler return a boolean
-User-Agent: meli 0.8.2
-References: <20231120213301.24349-1-philmd@linaro.org>
- <20231120213301.24349-8-philmd@linaro.org>
-In-Reply-To: <20231120213301.24349-8-philmd@linaro.org>
-Message-ID: <4h3f0.gab1yddmsk3r@linaro.org>
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r5T9R-0006Qj-Iq
+ for qemu-arm@nongnu.org; Tue, 21 Nov 2023 10:59:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1r5T9O-0002xc-9H
+ for qemu-arm@nongnu.org; Tue, 21 Nov 2023 10:59:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1700582332;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=70uEnos1LtUHQycomLB7LmE7flP2sa30VGj6fzwRMr4=;
+ b=VKo27bGdBgTw+Bi3T84PkjBTsJt/0Ztif3UIQSr50Wz3AXb0J1Wv//BSck1eRkmQtmTKKy
+ pyKSkzN1Db7Vm7u0NpLntgvizPx98cYSEZKADIUXg+dOfShF+CK52Ntz7vyUroHlG2Prpy
+ yH0B5C/CD07wxgn5gvLPCFWtk+IpkLY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-55-Jm74miNnO-OtgT52YHRjKQ-1; Tue, 21 Nov 2023 10:58:49 -0500
+X-MC-Unique: Jm74miNnO-OtgT52YHRjKQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8F66E811E7B;
+ Tue, 21 Nov 2023 15:58:48 +0000 (UTC)
+Received: from [10.39.194.228] (unknown [10.39.194.228])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 059B5492BE0;
+ Tue, 21 Nov 2023 15:58:45 +0000 (UTC)
+Message-ID: <7bfb52e6-3698-7c44-5927-31d47d031d57@redhat.com>
+Date: Tue, 21 Nov 2023 16:58:44 +0100
 MIME-Version: 1.0
+Subject: Re: [PATCH 00/16] hw/uefi: add uefi variable service
+Content-Language: en-US
+To: Gerd Hoffmann <kraxel@redhat.com>, Alexander Graf <graf@amazon.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Eric Blake
+ <eblake@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Ard Biesheuvel <ardb@kernel.org>,
+ mimoja@mimoja.de
+References: <20231115151242.184645-1-kraxel@redhat.com>
+ <9db15906-9474-4a6e-82a9-5275c72cf2b4@amazon.com>
+ <nxzed5dhgjpn3fafjttocvxe6ztxxf5xhghaqncpdxup6y7o7y@47i3eyoehio2>
+From: Laszlo Ersek <lersek@redhat.com>
+In-Reply-To: <nxzed5dhgjpn3fafjttocvxe6ztxxf5xhghaqncpdxup6y7o7y@47i3eyoehio2>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=utf-8; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x330.google.com
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,15 +123,218 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gQU4TYXEQp4U
+X-TUID: y5yk2AgAlUPk
 
-On Mon, 20 Nov 2023 23:32, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->Following the example documented since commit e3fe3988d7 ("error:
->Document Error API usage rules"), have cpu_exec_realizefn()
->return a boolean indicating whether an error is set or not.
->
->Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->---
-> include/exec/memory.h | 4 +++-
+On 11/20/23 17:50, Gerd Hoffmann wrote:
+> On Mon, Nov 20, 2023 at 12:53:45PM +0100, Alexander Graf wrote:
+>> Hey Gerd!
+>>
+>> On 15.11.23 16:12, Gerd Hoffmann wrote:
+>>> This patch adds a virtual device to qemu which the uefi firmware can use
+>>> to store variables.  This moves the UEFI variable management from
+>>> privileged guest code (managing vars in pflash) to the host.  Main
+>>> advantage is that the need to have privilege separation in the guest
+>>> goes away.
+>>>
+>>> On x86 privileged guest code runs in SMM.  It's supported by kvm, but
+>>> not liked much by various stakeholders in cloud space due to the
+>>> complexity SMM emulation brings.
+>>>
+>>> On arm privileged guest code runs in el3 (aka secure world).  This is
+>>> not supported by kvm, which is unlikely to change anytime soon given
+>>> that even el2 support (nested virt) is being worked on for years and is
+>>> not yet in mainline.
+>>>
+>>> The design idea is to reuse the request serialization protocol edk2 uses
+>>> for communication between SMM and non-SMM code, so large chunks of the
+>>> edk2 variable driver stack can be used unmodified.  Only the driver
+>>> which traps into SMM mode must be replaced by a driver which talks to
+>>> qemu instead.
+>>
+>>
+>> I'm not sure I like the split :). If we cut things off at the SMM
+>> communication layer, we still have a lot of code inside the Runtime Services
+>> (RTS) code that is edk2 specific which means we're tying ourselves tightly
+>> to the edk2 data format.
+> 
+> Which data format?
+> 
+> Request serialization format?  Yes.  I can't see what is wrong with
+> that.
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+... I can't even see what's wrong with *that*. Realistically /
+practically, I think only edk2 has been considered as guest UEFI
+firmware for QEMU/KVM virtual machines, as far as upstream projects go.
+It's certainly edk2 that's bundled with QEMU.
+
+My understanding is that firmware is just considered a part of the
+virtualization platform, so teaching edk2 specifics to QEMU doesn't seem
+wrong. (As long as we have the personpower to maintain interoperability.)
+
+> We need one anyway, and I don't see why inventing a new one is
+> any better than the one we already have in edk2.
+> 
+> Variable storage format?  Nope, that is not the case.  The variable
+> driver supports a cache, which I think is a read-only mapping of the
+> variable store, so using that might imply we have to use edk2 storage
+> format.  Didn't check in detail through.  The cache is optional, can be
+> disabled at compile time using PcdEnableVariableRuntimeCache=FALSE, and
+> I intentionally do not use the cache feature, exactly to avoid unwanted
+> constrains to the host side implementation.
+> 
+>> It also means we can not easily expose UEFI
+>> variables that QEMU owns,
+> 
+> Qemu owning variables should be no problem.  Adding monitor commands to
+> read/write UEFI variables should be possible too.
+
+This patch set is actually an improvement towards QEMU-owned variables.
+Right now, all variables are internal to the guest; QEMU only has a
+pflash-level view.
+
+> 
+>> which can come in very handy when implementing MOR
+>> - another feature that depends on SMM today.
+> 
+> Have a pointer for me?  Google finds me
+> https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/device-guard-requirements,
+> which describes the variable behavior (which I think should be no
+> problem to implement), but doesn't say a word about what exactly gets
+> locked when enabled ...
+
+See:
+
+  TCG PC Client Platform
+  Reset Attack Mitigation Specification
+
+My copy is
+
+  Family “2.0”
+  Version 1.10 Revision 17
+  January 21, 2019
+  Published
+
+You should find it somewhere in the download area of
+<https://trustedcomputinggroup.org>.
+
+E.g....
+<https://www.trustedcomputinggroup.org/wp-content/uploads/Platform-Reset-Attack-Mitigation-Specification.pdf>
+
+
+In the past we've had a bunch of discussions / patches around this. Some
+examples:
+
+- [edk2] multiple levels of support for MOR / MORLock
+
+http://mid.mail-archive.com/039cf353-80fb-9f20-6ad2-f52517ab4de7@redhat.com
+
+- https://bugzilla.tianocore.org/show_bug.cgi?id=727
+
+(see edk2 commit range listed there, too)
+
+- commit 704b71d7e11f115a3b5b03471d6420a7a70f1585
+
+- commit d20ae95a13e851d56c6618108b18c93526505ca2
+
+- https://bugzilla.redhat.com/show_bug.cgi?id=1854212
+
+- https://bugzilla.redhat.com/show_bug.cgi?id=1498159
+
+
+> 
+>> In EC2, we are simply serializing all variable RTS calls to the hypervisor,
+> 
+> The edk2 code effectively does the same (with PcdEnableVariableRuntimeCache=FALSE).
+> 
+>> similar to the Xen implementation
+>> (https://www.youtube.com/watch?v=jiR8khaECEk).
+> 
+> Is the Xen implementation upstream?  Can't see a xen variable driver in
+> OvmfPkg.  The video is from 2019.  What is the state of this?
+
+Not sure about the current state, but when that presentation came out,
+we discussed it briefly internally. I don't have time to review that old
+discussion now for the sake of potentially publishing it inside this
+discussion, but for interested Red Hatters, I can provide a pointer:
+
+  [virt-devel] Securing Secure Boot on Xen | FOSDEM'19
+  Date: Fri, 8 Feb 2019 20:46:46 +0100
+  msgid: <37382312-986c-4ce4-1ba3-942697738d65@redhat.com>
+
+> 
+>> The edk2 side code we have built is here:
+>> https://github.com/aws/uefi/tree/main/edk2-stable202211 (see anything with
+>> VarStore in the name).
+
+Well... why was this never upstreamed to edk2? (Side question, of course.)
+
+> 
+> Ok, so it's just the variables.  The edk2 variant also sends variable
+> policy requests (see Edk2VariablePolicyProtocol,
+> https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Library/VariablePolicyLib/ReadMe.md).
+> And it can easily be extended should the need arise in the future (all
+> requests are tagged with a protocol/event guid).
+> 
+>> Given that we deal with untrusted input, I would strongly prefer if we could
+>> move it to a Rust implementation instead though.
+> 
+> Valid point.
+
+Agree that the point is valid.
+
+(And this was one of my concerns, if not my main concern, in the above
+internal discussion, about Xen varstored.)
+
+Especially due to the heavy crypto that the final version is supposed to
+have.
+
+Even during the present patch review, while going through only the
+headers thus far, I've already said at least twice that we're going to
+have to be super careful about integer overflows and buffer overflows.
+Any such problem is no longer a guest<->guest privilege boundary breach
+but a guest<->host one.
+
+Not sure if the suggested remedy ("write it in Rust") is practical.
+
+> 
+> I've started in C because I have next no to experience with rust (yet),
+> so getting a test-able / demo-able implementation done was much easier
+> for me.  Also I think we don't have any rust infrastructure in qemu
+> (yet?).  Being able to use the qapi / qobject support to read/write the
+> variable store in json format is nice too.
+> 
+> But I'm open to discuss other options.
+
+A selfish aspect: given that I've been reviewing this set, should I
+consider it a proof of concept / prototype, or something we might want
+to build upon, i.e., should I assume we'd put these foundations into
+production at some point? I've been reviewing the series with the latter
+in mind, but if that's not correct, I should probably adjust my pedantry
+knob.
+
+> 
+>> We started a Rust
+>> reimplementation of it that interface that can build as a library with C
+>> bindings which QEMU could then link against:
+>>
+>>   https://github.com/Mimoja/rs-uefi-varstore/tree/for_main
+>>
+>> The code never went beyond the initial stages,
+> 
+> Hmm.  Why not?
+
+And I'm a bit annoyed that you had to write ~2500 lines of QEMU code
+(not counting edk2) for qemu-devel to learn about these initiatives. :/
+
+> 
+>> but if we're pulling the variable store to QEMU, this would be the
+>> best path forward IMHO.
+> 
+> Ok, so you are trying to sell me a prototype as solution?
+> /me looks a bit skeptical ...
+
+at least with virtiofsd, we had gone with a C impl first, and only then
+with a Rust impl...
+
+Laszlo
+

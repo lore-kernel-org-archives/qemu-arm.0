@@ -1,119 +1,120 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp647748ejy;
-        Tue, 21 Nov 2023 09:42:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFGQvAUQNer8cLa329YI1GIlbs4IYV7wDQ7WQcYhYTVCrsCgIgbgpY5VmuOWhqsje0jmEZA
-X-Received: by 2002:a05:620a:2455:b0:774:11fe:26fb with SMTP id h21-20020a05620a245500b0077411fe26fbmr13491025qkn.43.1700588536897;
-        Tue, 21 Nov 2023 09:42:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700588536; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp648007ejy;
+        Tue, 21 Nov 2023 09:42:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGNHBM2ST/EhkzUZ+WSD6OLKv8h1XgVCrUKAAz0okvDWFAQSN4jQrebHA/c8eEXMvKr+3o+
+X-Received: by 2002:a05:620a:890a:b0:779:f544:a45f with SMTP id ql10-20020a05620a890a00b00779f544a45fmr13834941qkn.49.1700588562656;
+        Tue, 21 Nov 2023 09:42:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700588562; cv=none;
         d=google.com; s=arc-20160816;
-        b=yoDCqJkxSlFggZJj4Y+VibdDZl9uH7tZfxJM+eEZRe0brlDrh2Y/g1PCXUp6izX6O+
-         3vyAJMcrmW+Pm1WsQE7oPzjtZeQN0LeB1eqoUQ7woujZEhHh8hnsD1ukF3c+Dxm+8NQE
-         n+bOpaLtI6Row+SVRMvW0AFA0WAM5228M8DB/7xKBdDFNGVkmmPY6zXidOlRvLaoNsbe
-         fiFwvzsw+ng0xro/1M96s6rWcAFJnDyLMktzLZc5GKD80T5AiCy0F0nHZ8leyIjCUUaE
-         j0jfc27GTg9DiMpCCFR/QTfCkSnXAwz9zCrVwxE+9QywG6xehEnVom3grd41UBjPoAAZ
-         ztdg==
+        b=PsEv6ZlVcvQ3JstfOJTU6pNp7+AglsTovlyzTrWq5w4HSLAHV4xIaxPVPizYvUjxkt
+         at92L3fkc8MboM9vgfyqteBqAAatMVpSaOg2fgaeuwRoHLFCQGKvSn+hoOwkZL5DH4iG
+         ZHeqJ8fZTwQ0uTi/ax5/eOitpUqrmb+qC8Z4/CXrKyS+CpxCdoqJQtPezSy0iAoRn1OR
+         h7qNx9dI/cmCE7ql7OyEMLXgnJYFQSfx78R+K/fQFigk5SnsLnvEHhtlOcjxYinvK5KM
+         LtwbB2P2/XTB7UoV64EbFaff1K6SSNzpy5RY3ksF0yJ5nMOwX4jUUhARLSuZwe2DP2b1
+         pgAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wLvcXpQco99sa0+Z1Qj96SBcGgbn4oS7DYVe2UC+AGE=;
-        fh=m9pdibqEaBwE4nbZ1bdBlX5QKqVA9BdvTndDUPs5mJs=;
-        b=BZ4r5pamfIz7HU1Uo1kvwBdnfIC/P5tAr1aR+3V/OrQXbrR2xb9OvnX8AhArVSALuz
-         Hf9pzzZ465ZhbBQR3robq+cwFOJuQlPihaGGH7sQgZHN+D+zaPU4baXJlkmadz1Zh+hq
-         ZZGITBrk9lNhLlqM2+55sTTo/PYT4nP8gkF/ufeVJBYCVEdXN2whWXsBqUEYrsXxzNwd
-         iXjUxz8e18yJ4LMeQR2WBcq0QgZPldAgB6fyWZwJtj3y3fzD1oLK8kY6ilRs54YF/97T
-         HQUODwd2B1qhMFMLvLiy/ZOcJnKIHl3xmZUz14xZ+Juibj+LJZtB3lTMaQslso8xsDNy
-         4j1A==
+        bh=gXPnP9OotZkXe8sn/bINkpH4C8HDZjSGF7IOUTkUbPk=;
+        fh=cL0kZojwLp2/+GG3A9WvbPyWHrvsxnhr8acLawhZl1M=;
+        b=UbcTjjEjD0I40b6oHcXRNLq8gfviAJEHgqkqypPwhcwTni0zipeVFJqipIk3sb83KS
+         3ig+Mej56MZS/4LDBRad+7bhDplTcIUSLcdNqotAmIGAWHzxTDlBSY+zRgnAw5CSF2hX
+         fDoR7QxTdnffneymv1ofD6yuqcssIzZckcVA9mfCGTaNieuXuhKpY9x27UsWthsdAVqU
+         Uais8OY0JnQvigdP0r4cMUig4sdU/Zaw/jCvOooUcCdDYhdMAX489TPTDl+MgB/DlMWW
+         Y87eXzpgLVgTDlD1kDozLqd1wi+oGMn2o38QW2m2A4pNr/ad5CAwTw6aZCr46YXG40yj
+         Na6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lN9xlfjc;
+       dkim=pass header.i=@linaro.org header.s=google header.b="pfCxfaM/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5-20020a05620a034500b00776b91c0b1esi9515278qkm.23.2023.11.21.09.42.16
+        by mx.google.com with ESMTPS id p1-20020a05620a112100b0077438f60e5esi865743qkk.211.2023.11.21.09.42.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 09:42:16 -0800 (PST)
+        Tue, 21 Nov 2023 09:42:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lN9xlfjc;
+       dkim=pass header.i=@linaro.org header.s=google header.b="pfCxfaM/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r5Ukg-0008Uc-1G; Tue, 21 Nov 2023 12:41:34 -0500
+	id 1r5UkW-0008JW-VL; Tue, 21 Nov 2023 12:41:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Uke-0008Ty-MW
- for qemu-devel@nongnu.org; Tue, 21 Nov 2023 12:41:32 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5UkV-0008Gy-O0
+ for qemu-devel@nongnu.org; Tue, 21 Nov 2023 12:41:23 -0500
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5Ukc-0001Kn-4l
- for qemu-devel@nongnu.org; Tue, 21 Nov 2023 12:41:32 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4083f613272so31617495e9.1
- for <qemu-devel@nongnu.org>; Tue, 21 Nov 2023 09:41:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5UkT-0001I6-0a
+ for qemu-devel@nongnu.org; Tue, 21 Nov 2023 12:41:23 -0500
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2c5071165d5so72868311fa.0
+ for <qemu-devel@nongnu.org>; Tue, 21 Nov 2023 09:41:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700588488; x=1701193288; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700588477; x=1701193277; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wLvcXpQco99sa0+Z1Qj96SBcGgbn4oS7DYVe2UC+AGE=;
- b=lN9xlfjc+TqtWvYl4GApf6dvwQJ5fKLq8/U8Qh/fqepQD3cKIecXgYv9T0MzOR4rRd
- /qbKPF+D7/kbDdM4vULD8vXkkwa+GSxf9/R3ummYrKO9mOfSHT4HbCzhHvcGC3Nz8J2N
- BiHvmkztAXbBOvADszrT4ZfmGq++SKms7FadSiVG52URDskt7n/zyAWBqysadS/WfaAf
- d/jRn10MfZ9e7K2Q1rRxnZZShShgZGHYOJtGFlmS4T+1fkjzGHbH20zB1XZb6CRusjn9
- fneXW1VpDrKeT3pABhDWEQ99s2Qg56wf6sEj6cY14QWMNKaMUP4m+pcmHhXscGQw+UBh
- agLg==
+ bh=gXPnP9OotZkXe8sn/bINkpH4C8HDZjSGF7IOUTkUbPk=;
+ b=pfCxfaM/Iu4cjgXIz6vPbUyg3Xiuntw3jkcVU6Az9/mEJLI/Kd7Katklybn/Vx0xhc
+ 8l9SaDCzDXKAx+f/0uUpdM3Qfxye1fKYXeDsGtjf9Q0qf2QC+iIWdGmg7fb3OT17Ksn0
+ peZqedRvrxtDH++swZa8ULdVJczFpr30yEJmDLGy8jadHR0G6OzFaNmiO0rXtXLfMpuF
+ 3HJTplHXmyg7FB86KUacgD2ul7aoNFhnAJ97Io50KXVQDCneHhWplI6uMyxLgw9xhs07
+ Eq4F0z04lwFK70mWo6owotPCnmGRIFXAM5+bcmqzH++nt2GI0rSUlngkbMQ4fpc5KoEK
+ 3CKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700588488; x=1701193288;
+ d=1e100.net; s=20230601; t=1700588477; x=1701193277;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=wLvcXpQco99sa0+Z1Qj96SBcGgbn4oS7DYVe2UC+AGE=;
- b=JC02pJhZfda6+qgKr6KQb1CAik4ocpqT4lOM9QE/LapRxpU8oH+ecZ33dM2NKIMNra
- L7gQKcDZi+BFOYXon4kZ0KihNqXYKHMvPcaX3ZWM3Zd20UNJFMtShRd3D9M5hC91HSSA
- 6z/DSjGUcbW1TNlVNRFIrvcVmE+2J+IoR1zWXSUfQp4eHqTrvoUV63suFDAgzJV77u8B
- tvy1etJx7kOpfSM0hgz7IIJ7+xI0n6bV9C4qRVfMWx6Ra+3Vf3eQNgG1e5YjMwYIkE2Y
- 3ZU9RniCi5BL9g5ca5pGXxRcfF+Sc/br4UEH8pEzYENtIFfiqDqyAXpW7mtkmOHJ3BEn
- 5UZg==
-X-Gm-Message-State: AOJu0YzkAj5vjZSrtHSH8cDKfKY9dEGPeHNOTZaWHAurREwa+2btFQnb
- ydGUDZEvAw6S/JzcDCSNuN+LxV/E8M1JaUmZWzQ=
-X-Received: by 2002:a05:600c:35c9:b0:40b:2a20:3d3 with SMTP id
- r9-20020a05600c35c900b0040b2a2003d3mr32186wmq.30.1700588488447; 
- Tue, 21 Nov 2023 09:41:28 -0800 (PST)
+ bh=gXPnP9OotZkXe8sn/bINkpH4C8HDZjSGF7IOUTkUbPk=;
+ b=tvVkbJtUHY1SmzteHocdPkt7hegt+JLvE0k+8Rg08/hvwxSNuGCQhYX4BIc4fF0Z4R
+ WUCb0nDEWkEJUNZbbgy3x5jHDin9ja0QsdaKaYcarR5RD0HWGC5NGy6MY10ep2GHpgnj
+ j7KI2n6h/RAfzacUiaBHtJSO7gEemxbrhThvHmBxXbAk24ireyo3VKdbzuE+U63mw4x3
+ 6sxu/aC84WzsmOW+jfQdZiiGwvm0whoCZUGRQc9SfbLM3iF0Wras1Q7nCaMcye4D07PJ
+ SYAjbwaMZdk7n22HkTUFdz69FJr/NLuo+oL5yyZ4EWlXDFv0o/Y+IRi0Bb1P48NH18RJ
+ oPlQ==
+X-Gm-Message-State: AOJu0YxPDhllJ87zKF4uFVwikNZ2cW5rUCvnph0dDr/fDSqNeJFjv2vD
+ cMcLMZfF3dEeAAfiO06AeGw+HlbfdF3cQRX4uIY=
+X-Received: by 2002:a2e:9b95:0:b0:2c1:9a8b:f67 with SMTP id
+ z21-20020a2e9b95000000b002c19a8b0f67mr6777111lji.1.1700588477006; 
+ Tue, 21 Nov 2023 09:41:17 -0800 (PST)
 Received: from m1x-phil.lan (lgp44-h02-176-184-8-219.dsl.sta.abo.bbox.fr.
  [176.184.8.219]) by smtp.gmail.com with ESMTPSA id
- h18-20020a05600c351200b004063ea92492sm18045128wmq.22.2023.11.21.09.41.27
+ q3-20020a05600c46c300b0040b2b9bf321sm1973474wmo.9.2023.11.21.09.41.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Nov 2023 09:41:27 -0800 (PST)
+ Tue, 21 Nov 2023 09:41:16 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-8.2 6/6] hw/input/stellaris_gamepad: Free
- StellarisGamepad::keycodes[] array
-Date: Tue, 21 Nov 2023 18:40:51 +0100
-Message-ID: <20231121174051.63038-7-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-stable@nongnu.org
+Subject: [PATCH-for-8.2? 4/6] hw/nvram/xlnx-efuse: Free XlnxEFuse::ro_bits[]
+ array on finalize()
+Date: Tue, 21 Nov 2023 18:40:49 +0100
+Message-ID: <20231121174051.63038-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231121174051.63038-1-philmd@linaro.org>
 References: <20231121174051.63038-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,7 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hbjDFOPLkJbj
+X-TUID: 8L2L8xoxS+Zw
 
 Commit 0be6bfac62 ("qdev: Implement variable length array properties")
 added the DEFINE_PROP_ARRAY() macro with the following comment:
@@ -136,46 +137,47 @@ added the DEFINE_PROP_ARRAY() macro with the following comment:
   * It is the responsibility of the device deinit code to free the
   * @_arrayfield memory.
 
-Commit a75f336b97 added:
+Commit 68fbcc344e added:
 
-  DEFINE_PROP_ARRAY("keycodes", StellarisGamepad, num_buttons,
-                    keycodes, qdev_prop_uint32, uint32_t),
+  DEFINE_PROP_ARRAY("read-only", XlnxEFuse, ro_bits_cnt, ro_bits,
+                    qdev_prop_uint32, uint32_t),
 
-but forgot to free the 'keycodes' array. Do it in the instance_finalize
+but forgot to free the 'ro_bits' array. Do it in the instance_finalize
 handler.
 
-Fixes: a75f336b97 ("hw/input/stellaris_input: Convert to qdev")
+Cc: qemu-stable@nongnu.org
+Fixes: 68fbcc344e ("hw/nvram: Introduce Xilinx eFuse QOM") # v6.2.0+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/input/stellaris_gamepad.c | 8 ++++++++
+ hw/nvram/xlnx-efuse.c | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
-index 06a0c0ce83..9dfa620e29 100644
---- a/hw/input/stellaris_gamepad.c
-+++ b/hw/input/stellaris_gamepad.c
-@@ -63,6 +63,13 @@ static void stellaris_gamepad_realize(DeviceState *dev, Error **errp)
-     qemu_input_handler_register(dev, &stellaris_gamepad_handler);
+diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
+index 655c40b8d1..f7b849f7de 100644
+--- a/hw/nvram/xlnx-efuse.c
++++ b/hw/nvram/xlnx-efuse.c
+@@ -224,6 +224,13 @@ static void efuse_realize(DeviceState *dev, Error **errp)
+     }
  }
  
-+static void stellaris_gamepad_finalize(Object *obj)
++static void efuse_finalize(Object *obj)
 +{
-+    StellarisGamepad *s = STELLARIS_GAMEPAD(obj);
++    XlnxEFuse *s = XLNX_EFUSE(obj);
 +
-+    g_free(s->keycodes);
++    g_free(s->ro_bits);
 +}
 +
- static void stellaris_gamepad_reset_enter(Object *obj, ResetType type)
+ static void efuse_prop_set_drive(Object *obj, Visitor *v, const char *name,
+                                  void *opaque, Error **errp)
  {
-     StellarisGamepad *s = STELLARIS_GAMEPAD(obj);
-@@ -92,6 +99,7 @@ static const TypeInfo stellaris_gamepad_info[] = {
-         .name = TYPE_STELLARIS_GAMEPAD,
-         .parent = TYPE_SYS_BUS_DEVICE,
-         .instance_size = sizeof(StellarisGamepad),
-+        .instance_finalize = stellaris_gamepad_finalize,
-         .class_init = stellaris_gamepad_class_init,
-     },
+@@ -280,6 +287,7 @@ static const TypeInfo efuse_info = {
+     .name          = TYPE_XLNX_EFUSE,
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(XlnxEFuse),
++    .instance_finalize = efuse_finalize,
+     .class_init    = efuse_class_init,
  };
+ 
 -- 
 2.41.0
 

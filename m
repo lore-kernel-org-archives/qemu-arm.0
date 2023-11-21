@@ -1,452 +1,235 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp765531ejy;
-        Tue, 21 Nov 2023 13:08:34 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFZFrL7Ato811aJfR4OxlVtBpMWLskJADseqsmP2aC7fvlT6kAqjc6s8v6uP2xNQPkl/BiB
-X-Received: by 2002:ae9:e90a:0:b0:76c:da86:3169 with SMTP id x10-20020ae9e90a000000b0076cda863169mr212271qkf.40.1700600914523;
-        Tue, 21 Nov 2023 13:08:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700600914; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp796744ejy;
+        Tue, 21 Nov 2023 14:11:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHOauOGUXUt5Qhdn7iykX4IfaVnKq2ti3jcExJ5gpVUX25nl1KRxEXBRiAet++Tw3bHj+le
+X-Received: by 2002:a05:6358:9226:b0:16b:c64b:5dad with SMTP id d38-20020a056358922600b0016bc64b5dadmr562325rwb.10.1700604688965;
+        Tue, 21 Nov 2023 14:11:28 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1700604688; cv=pass;
         d=google.com; s=arc-20160816;
-        b=aczR3pFZuISC4AC4eI+mpckdhMYNM5C8BQMDYRdf0b2a3ontd3UqzqyusszdmZ6Y7a
-         mBGcDdG2+hXLCR38pTPkUCqQoeToxGHiwaJca4imoc4lOL0QtJNzF+XN7squDAOiD4U9
-         Yx1f5Yd19n6fMnqf9513V/NK25Jjt7FDQ/rJTNVG1RYDOV9FQSPnlpooqEyh5Ijns3Ru
-         GMYS1fLR/KzSfJmmQVoAEInQvNIkxcu4kAGjpP9M6Wpi8v0BBX3XBuE0CnkPtjF9e2gq
-         ADR6ZjhWsLFnvHlM5NYXlh53JR6juiv0Q4FsWOwWXs1tIo7xzXqXIDsTHSwGgk8lZTRl
-         KUuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=tPKqb8f8+49+lHrnnlJ07ucfdsznSotqAMCyY07uJ3SbEPXdoot22OJ5OPnAvn4XcA
+         6TvYe5umpNWWEVKvgvk6o9u5/cGT+uVjMC82mDqWgvh5W4AHZkD3vV7e2XLDBqa99doO
+         ofbpHFVAjygZ9sXJT+GNlCicPJk6mpqUPA/Upeec8J1jOagkWho3oW63Gtif/QOjo4pV
+         gmvqlJRF+nRbxolS4ipTg9RG+xlvoi1GEwz1sRcvOlj7q/kzGYgaCOM6LvbSzxXM3mLu
+         aOp2XD0NCoUD74d12yzKY0rVfkXZcHIvEfxyXbGXDhnh5rswalh2qiR3Nthfxhv7XIF8
+         n7Pw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BaCFQVPsPU3RWyl13jVTgaxGiUbz/jYJ6BXu8Y7EwM8=;
-        fh=mpzg524onBGw0fZSRMli08hWKwAeIeqR7IpNI+lnWTE=;
-        b=sBkmbsPB+TFGYcAmUmncUXaN82fyk1iSKEEkd2c5NnBBY3WnajKP4xeLgJFh2a9Ram
-         nUH5YuDkWG20PLJjER0IryqfGcSuPYRWK7z7546yu11Vs0O/ILu/trGarNVpqXL6COaC
-         J3Qh9E8hRln/1BfWPmWGp8CO674rFdFsGbiCgOhWRjjcPpLaBe8fmHYStDqacBrgBAIV
-         lDp2iyWY7ONnCZrgdFwbkmQpmG6Wr8pb51yNPpEey5c5uhZ9g98jmz6lhKeIKWwtAmen
-         KFlCutf+JoiUhrO2c8ETPkBwTs2vR9P4QlLBGDbyWvM1vXaqXnHuDCPPmcExuha3oAEf
-         zc4g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sMCIz+zk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=CaOBkFCMmuEScm/QQeDLhJOz4phbpzFdrHGi97vhBfA=;
+        fh=SxWWhi21VyJFZ2EPQxF3vtRjCiArERjmzsHMawGZma8=;
+        b=u834JkKhrN52qv8CJauzAsarn7teFXDfkehITxZW9kIoFT40B++gpu5CyMaxSziweo
+         h9HE+zE4PUNBjDmpOk1Fp34b/EuoxDqBNUdpwv8LtEQFoZcw7/eo0B3aGhDpoQIcvwIB
+         TVLo6VTZnKTOqGuno0rv+mLMrX2TzQQPy96turiQFfnV52FHLnYFr2+xTaBEuoqHkITH
+         WbWRUCE1sYdvVV4ifE1wTPyqabXsh5SQlayytLTneTiQxd5C6I3UF2Pg2WdVqWdylDhc
+         NbUJ+Dvy59aiyc6j8fnjEhHxhUmbcAH8RncsWlIcFehg5id4tnAnh4LOYAJ3o+ivror6
+         qHJA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@epam.com header.s=selector2 header.b=mXIHPiTz;
+       arc=pass (i=1 spf=pass spfdomain=epam.com dkim=pass dkdomain=epam.com dmarc=pass fromdomain=epam.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=epam.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dw12-20020a05620a600c00b00779da0028d3si10550596qkb.654.2023.11.21.13.08.34
+        by mx.google.com with ESMTPS id f14-20020ac859ce000000b004197623ef46si9905940qtf.784.2023.11.21.14.11.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 13:08:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Nov 2023 14:11:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sMCIz+zk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@epam.com header.s=selector2 header.b=mXIHPiTz;
+       arc=pass (i=1 spf=pass spfdomain=epam.com dkim=pass dkdomain=epam.com dmarc=pass fromdomain=epam.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=epam.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5XyN-0006OA-Qf; Tue, 21 Nov 2023 16:07:56 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r5YxF-0005Wq-Q4; Tue, 21 Nov 2023 17:10:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5XyM-0006Np-Iz
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 16:07:54 -0500
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5XyK-0005jC-8v
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 16:07:54 -0500
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-9ffb5a4f622so320580766b.0
- for <qemu-arm@nongnu.org>; Tue, 21 Nov 2023 13:07:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700600869; x=1701205669; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BaCFQVPsPU3RWyl13jVTgaxGiUbz/jYJ6BXu8Y7EwM8=;
- b=sMCIz+zkWtdnfGr+pEyi5L04EaaQJjds2u79JWjrcQliN2B9QS5dkr8mYHIWdyotsJ
- 8Lk6gGwWH+iny0w8C7UrThkWiRWmfPYEvPBST7IhbXmO1M2yPGN4t6HVY+N9d9CHGu1v
- K7Vp4sq/oyJvCdsnKBajgKiYGI8FfEg2l0FGxyGhBv1kPGdpWf4MKGidRnhZ2vU/48/p
- R5q4pvOHrD93zltYZPPcKAFaIGuYzYuGRu+QLz+0n9k+ZmBSgPlruzbXvGlqkquPxkeY
- pqg4IGVk7MYDCILQECe59DCRkMcsExyzsb1Eg+Y3JKC3bC0rFmh76SXOXvpGuNPeOPxd
- PmyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700600869; x=1701205669;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BaCFQVPsPU3RWyl13jVTgaxGiUbz/jYJ6BXu8Y7EwM8=;
- b=pMPBH+Or7/b9eF4MjejWJvcWosbJeFl/PR74SBgZVrpxPTtQTrnkU7E2HGsr8NyEcA
- 7HQxExJRtXTezARIwaecRLBlL4fMmezsjD8jqRFeSjrozH8YHWNbyzzhp3NceNoddz5W
- eY+YiC/0k1J95o2l7UhfpwZAIuTYxQEK1x5jGNhcpoC5yqPCceNHEtHU2LYMhpQixkk8
- QYyF6VVPBKb5LqgmC6nGwf3kH7uTTT50dmBwH5w5Eh+peFj2ZsYs6b4TyFEB3mZGw6wl
- wDeY+H7O4lAChWo+j/LVH0fdBUrK+voNyf3my39cb0DHSYJi8VAby1gmNPtY6xdYjtSs
- jesA==
-X-Gm-Message-State: AOJu0Yz61BVJfoEjGtKV8n0zc6HQhoVv9hZVv8m1+B6H7ahGRn13Xy9J
- f3IhFZnD0EH8o5lulKJ6Fpj2+K4DbeWU97gt4QU=
-X-Received: by 2002:a17:907:130d:b0:a02:14d6:424e with SMTP id
- vj13-20020a170907130d00b00a0214d6424emr52844ejb.56.1700600869526; 
- Tue, 21 Nov 2023 13:07:49 -0800 (PST)
-Received: from [192.168.69.100] (lgp44-h02-176-184-8-219.dsl.sta.abo.bbox.fr.
- [176.184.8.219]) by smtp.gmail.com with ESMTPSA id
- p20-20020a170906a01400b009adc77fe164sm5671160ejy.66.2023.11.21.13.07.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Nov 2023 13:07:49 -0800 (PST)
-Message-ID: <f0448a90-7096-4534-a75b-76f7e3dfc342@linaro.org>
-Date: Tue, 21 Nov 2023 22:07:47 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH qemu 1/1] Implement STM32L4x5 EXTI
+ (Exim 4.90_1)
+ (envelope-from <prvs=5689374ac6=volodymyr_babchuk@epam.com>)
+ id 1r5YxD-0005S9-Hl; Tue, 21 Nov 2023 17:10:47 -0500
+Received: from mx0a-0039f301.pphosted.com ([148.163.133.242])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <prvs=5689374ac6=volodymyr_babchuk@epam.com>)
+ id 1r5YxA-0001bK-9f; Tue, 21 Nov 2023 17:10:47 -0500
+Received: from pps.filterd (m0174679.ppops.net [127.0.0.1])
+ by mx0a-0039f301.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 3ALJcd1F031085; Tue, 21 Nov 2023 22:10:37 GMT
+Received: from eur03-am7-obe.outbound.protection.outlook.com
+ (mail-am7eur03lp2233.outbound.protection.outlook.com [104.47.51.233])
+ by mx0a-0039f301.pphosted.com (PPS) with ESMTPS id 3uh0hhgrv3-6
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 21 Nov 2023 22:10:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gKAcpyAEZXDE16zBn8ggH2w5dEMvrBkgdFvNLD2b4E+dxSPkPB7lpE+amKlUT+Y4ZB9fVgUWpTCkRENcRIOFGlo5n1Ed97r0GY45YcKDS2HsF1Gcll44smexJO7Sx3fT6J+g1X8bAa4tE0q9RJhlCC+ifskQD5qMQUrA4dQYvp4yOdO+0+gKPUmlk76aaAxPZ7+kr5dSm3obsngj7nHvsh9uWdfCO3eRDYNRvSjjaygG5GtRUqjwri3WtL6jneKrDP9M5AOm8UBXNlOps7f2zy8S5Y9mhn2hSov9FtETOSezWTh+SoPrbCOsBJY3IJ3IjyJyRAFN7/yZPrlzHS/KUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CaOBkFCMmuEScm/QQeDLhJOz4phbpzFdrHGi97vhBfA=;
+ b=G/yWGX3OftUthpyj9GUQkcwShxm8YyJi68LqKIy3MPAPCxZcfV6I+pG0ZtCk7dtrsFWasE3rDh3hHDUPXIpvIjyBDaDukPJM45jMJR7Mhi6a9xBRbO3g/dC7Zvc+rBa20Z2D6oJNsDzhfa47gVPeX9CJXUmRlXXvhsAwvY/V1u1TNukCDFNRsSGWM722giyHYFQWJNw+lFOPKfIOsxImbFQTQfuSoMhi4d+/phF2+aZmVhYjNk/LYD9qePjf2/E/O55IfhR+iXzcRGTRD0JUztPX/WaUSQJp4vU+2mNHoSPAWWws2yj4moC2DD5lqYKbSdNXZO+b6PXEGOCkVGbyPQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=epam.com; dmarc=pass action=none header.from=epam.com;
+ dkim=pass header.d=epam.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=epam.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CaOBkFCMmuEScm/QQeDLhJOz4phbpzFdrHGi97vhBfA=;
+ b=mXIHPiTzVzKXyqgAWbpkLKhh7Kdz3CMEtxv7QjpnCIvArbG6cSgZ+fKBYGNA8PhDHdBbTBx6HQRlMwYP0IfWn1EGKN+8oNnD4pOf9NQPhOAwG3l7BPfT9a4u6wYvzNREiOrdYhhyNu7lxFQJ00x3OL9wHUVs7BRpDlOWNOrTerfmJru4u3ulHJQs3x+eBMN4isOKp1JciU4k0bTC4TXlANUCSoq2RcS1xlGbVjUghq4TdJtOi1QO1zXHDmGUoQvCMwTXSrHbJWFK2KoBVyh3rpYAg6mTN0yY+hXEG/XuHSPYQaxNQrYUgUfoJhlysT2Z8s8cThRzz5htbQWlnIMF8Q==
+Received: from VI1PR03MB3710.eurprd03.prod.outlook.com (2603:10a6:803:31::18)
+ by DU0PR03MB8836.eurprd03.prod.outlook.com (2603:10a6:10:40c::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7002.28; Tue, 21 Nov
+ 2023 22:10:29 +0000
+Received: from VI1PR03MB3710.eurprd03.prod.outlook.com
+ ([fe80::8e03:368:1fd7:1822]) by VI1PR03MB3710.eurprd03.prod.outlook.com
+ ([fe80::8e03:368:1fd7:1822%6]) with mapi id 15.20.7002.028; Tue, 21 Nov 2023
+ 22:10:29 +0000
+From: Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: David Woodhouse <dwmw@amazon.co.uk>, Stefano Stabellini
+ <sstabellini@kernel.org>, Julien Grall <julien@xen.org>,
+ Oleksandr Tyshchenko <Oleksandr_Tyshchenko@epam.com>, Volodymyr Babchuk
+ <Volodymyr_Babchuk@epam.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: [PATCH v2 5/6] xen_arm: Set mc->max_cpus to GUEST_MAX_VCPUS in
+ xen_arm_init()
+Thread-Topic: [PATCH v2 5/6] xen_arm: Set mc->max_cpus to GUEST_MAX_VCPUS in
+ xen_arm_init()
+Thread-Index: AQHaHMeJPOinN/4s8Ua2FsufYnZh4A==
+Date: Tue, 21 Nov 2023 22:10:28 +0000
+Message-ID: <20231121221023.419901-6-volodymyr_babchuk@epam.com>
+References: <20231121221023.419901-1-volodymyr_babchuk@epam.com>
+In-Reply-To: <20231121221023.419901-1-volodymyr_babchuk@epam.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: ~aminier <arnaud.minier@telecom-paris.fr>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, peter.maydell@linaro.org,
- ines.varhol@telecom-paris.fr
-References: <170057856467.12935.6421900912319796560-1@git.sr.ht>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <170057856467.12935.6421900912319796560-1@git.sr.ht>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x634.google.com
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: git-send-email 2.42.0
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: VI1PR03MB3710:EE_|DU0PR03MB8836:EE_
+x-ms-office365-filtering-correlation-id: cf6a73ab-b075-41e2-c84a-08dbeadeac0c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: tZ0c6sTf1f0ONpg+Ms52egNa76AgDXSbLzbMYM4bqlh4ooToHYP1mb74EN5tw/gW1rP/pFCmGBj2xk6iT8tWTuT7BiotafC7qBDhZSAdUXERsGahPGujpm3p5HM8YHPz00frDYzCYNeORxWh2ZjHsh4wlmFg2YgWbyJobllkRWMMnQT8tWL8nPEBiIn100KANcWHsp+qTpQIHqlvt6jtRFl+6jJzML0PFSJ0cMg1mBZzuhp/xXROmohZG7kQWAKzHt9yJ7U1h9TlSsFfEsWZ37h2fTQC6LFJSzgco33+Ld+DR41irx1UWqFfnflnRxZ6weH8Dv9StyjMg0EKxL6l6I1AkMUZVIIBJfEwVwG1bVKE+9FCCDpqIsrlxgbIlteCsFAQNZU9pG1MINkiiFDPJPo5NBWPz0Io3rPTkp3ZZHuaRZFYI67axmJPp6PxXynU81qGcgAruu3gkjlw4Wwpyu/rNfUq9thbqqcADyV0tRnhHH93r3GGoW9fQFfwcyq5+o2U6Q9otxMrro90IIARRp8Wh5fMS6xSltmJa3iYyPzRBMPmzj+vc2rE2xmEvhQCSMM2LjhP0BG9M1OTm+3vJPxtCZuaFf/XdmdoIlMYBp/+PJi5K7UX0VJ+XEaPjBGi
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR03MB3710.eurprd03.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(396003)(136003)(39860400002)(376002)(346002)(230922051799003)(451199024)(186009)(1800799012)(64100799003)(41300700001)(86362001)(36756003)(5660300002)(2906002)(38070700009)(122000001)(6512007)(2616005)(6506007)(55236004)(6486002)(83380400001)(71200400001)(1076003)(478600001)(26005)(38100700002)(91956017)(66556008)(66446008)(316002)(66946007)(6916009)(64756008)(54906003)(4326008)(8676002)(66476007)(76116006)(8936002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?uXpwSJVWgS01gHJc7j1HShLyJTjJVcx3NBppdhsHKtP0nLNZ8OY0Wkh10c?=
+ =?iso-8859-1?Q?Z2gThefyfXgwpV6dGf7Qs/LOGErZ5VcdM1h/Zwkxga0rsCob51al4942Eo?=
+ =?iso-8859-1?Q?ihSpLuA9ClBp+VPodnNsflSt4jOd1yU+Ow2V7WtDO6Um60YofZ8Ksulo59?=
+ =?iso-8859-1?Q?G2JRTftIT8a/HcsM0UodOhiouxcgE6UqGb0vR7PO5SlNA1A/9uoAU2IszF?=
+ =?iso-8859-1?Q?wa6TAEfizAtyRNdiY1NCB06z4aTfmxSRKs6dtO/SlxlBbCFcCnj8KZSO/k?=
+ =?iso-8859-1?Q?qsyvtvrDBb5SBDzpa6ptgma5WAUlepzgntlur1mIBKyPUl6bjS6gWl0Hwb?=
+ =?iso-8859-1?Q?cE3hFuZsXPW3lg4jPqckDNF2y/QH5sNF4N1FlFNjapSmLuCrcP0v99MQ7Q?=
+ =?iso-8859-1?Q?5ItMOB0Ih6VZNB6ZBZy6y4sXFx3i5jv6MZgWRVeAD1KnBs7hSyRGFUmo7s?=
+ =?iso-8859-1?Q?HcwHZ77gUP1R7zVm0XR5bEx58EK20RjRXNOMsylIio0/TMG7rLbXue0aMG?=
+ =?iso-8859-1?Q?oCFex+gGWJwFiH3eQBvpt6Mss1+s7CQS0OpwH3t7nQ+6mlih1UruKIFDiJ?=
+ =?iso-8859-1?Q?jUYuc6W40GHVHppb7dpo6e0lARSjWeQXyRfUHDdelvICYUEmb0JK+wseEV?=
+ =?iso-8859-1?Q?fEZ1LRLxg1bUUzY557iyfhBzdL5ZokyTwmVL8lQNGa0Zmc+uSG4ZsQbgBk?=
+ =?iso-8859-1?Q?ozkMCpARdg5KvPPdTZaqJrzjMuGKyGPeFIURhsSTHuvw27n3uHy570JAb7?=
+ =?iso-8859-1?Q?bIPEz41f6vgmJM+yq4ydh1c5rqqoYZLwjJpG4AO3o21tY6qbn+iy6PtTXi?=
+ =?iso-8859-1?Q?bkJEz94e4M6SQ12veNWfpXw4zYdtgiJlJUbZJYEUW43VQ2N5RadUItloJ5?=
+ =?iso-8859-1?Q?vB3i3Y7gJKMFnRstVl/1j7wKzs93oyunc/j3GqYtthX/C6mk8TTc+tOlGu?=
+ =?iso-8859-1?Q?YXl9o0Yt7ZUNCiv/rHfojoO/B0Lfa4EVxfmbfk/M17KsNjaNxjRJF+yMwV?=
+ =?iso-8859-1?Q?DY2a1CfV+TJJl6pzaJWoPw8PCz8++3eBs+pYXbmGvs849Fz6P9wT7MAHVm?=
+ =?iso-8859-1?Q?jk+sRqz8R8rcuRjhbwQP6aZ/mHV+y/GQ4a3nZ3JD5KHniMRgFTnDvzhvid?=
+ =?iso-8859-1?Q?myS/U0n3OBG4OjCfXHGwsfFRwYqw6HuRGj7b6Cftu/YReQVVGEQftFj+20?=
+ =?iso-8859-1?Q?SCvkuoaKLYgO2LdA8R+88XYElGXkxycb3o5kzZv7vV+OqihcuY7A3B6987?=
+ =?iso-8859-1?Q?DtAOenNaaAVUfN2GVEOrTuWA10goWdQMfbKh/CHT7JPYbK0WJ7DtmLJNhk?=
+ =?iso-8859-1?Q?bqbkbpC6prrFKc+l89vLMMV3CYxMGHEmGorsr5y3y0Zs5DjabR1FFhI1kk?=
+ =?iso-8859-1?Q?EP9FlSkTyovRjBF86I/0q0iGqGjg2T6E0gdDOxA6AePXVI0vEM0IqtePtN?=
+ =?iso-8859-1?Q?la9WWwz0+7Rw8vyTc9txuxWziDy/zPT0sutRgIByzXbJ5WpFfQ2TyXRDv/?=
+ =?iso-8859-1?Q?YPPM69pp06gprkHodwV6YbP3v97D4asbJJE+d5+1h+ZzSTUFN72QEB/cRu?=
+ =?iso-8859-1?Q?Dxf2d9/lpTqD7bCH0zeXzLJbPTphldZ0HSU0fvcq1hP1Zwjg73kTraWSGh?=
+ =?iso-8859-1?Q?Ld+cw0rBsNIdyNMzSSbpGvhnEWpHhX6ZaOQvOIZbIGlMOvr1Ir5OXV/Q?=
+ =?iso-8859-1?Q?=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: epam.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR03MB3710.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cf6a73ab-b075-41e2-c84a-08dbeadeac0c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2023 22:10:28.4682 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b41b72d0-4e9f-4c26-8a69-f949f367c91d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ij2NdnIf/X4e0quBWY/QuS4bRPK0Dj04HZtqxU0pSZYYGMDo8ZaKuxM6fecacZPhVpx1c4CmXev+yxLKSSKzooi/a388Oo5gLcQPiFU48H0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR03MB8836
+X-Proofpoint-GUID: jyXU3_qtO9KUIEeBKVo1c3iN_2BWT4-0
+X-Proofpoint-ORIG-GUID: jyXU3_qtO9KUIEeBKVo1c3iN_2BWT4-0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-21_12,2023-11-21_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 suspectscore=0
+ phishscore=0 adultscore=0 priorityscore=1501 lowpriorityscore=0
+ mlxlogscore=999 bulkscore=0 impostorscore=0 spamscore=0 mlxscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311210173
+Received-SPF: pass client-ip=148.163.133.242;
+ envelope-from=prvs=5689374ac6=volodymyr_babchuk@epam.com;
+ helo=mx0a-0039f301.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8FPyW7FW8Yx+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: l9Em1IrxInNS
 
-Hi Arnaud,
+From: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
 
-On 11/11/23 15:33, ~aminier wrote:
-> From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> 
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
-> ---
->   hw/arm/Kconfig                    |   1 +
->   hw/arm/stm32l4x5_soc.c            |  65 +++++-
->   hw/misc/Kconfig                   |   3 +
->   hw/misc/meson.build               |   1 +
->   hw/misc/stm32l4x5_exti.c          | 329 ++++++++++++++++++++++++++++++
->   hw/misc/trace-events              |   5 +
->   include/hw/arm/stm32l4x5_soc.h    |   3 +
->   include/hw/misc/stm32l4x5_exti.h  |  64 ++++++
->   tests/qtest/meson.build           |   5 +
->   tests/qtest/stm32l4x5_exti-test.c | 102 +++++++++
->   10 files changed, 576 insertions(+), 2 deletions(-)
->   create mode 100644 hw/misc/stm32l4x5_exti.c
->   create mode 100644 include/hw/misc/stm32l4x5_exti.h
->   create mode 100644 tests/qtest/stm32l4x5_exti-test.c
+The number of vCPUs used for the IOREQ configuration (machine->smp.cpus)
+should really match the system value as for each vCPU we setup a dedicated
+evtchn for the communication with Xen at the runtime. This is needed
+for the IOREQ to be properly configured and work if the involved domain
+has more than one vCPU assigned.
 
+Set the number of current supported guest vCPUs here (128) which is
+defined in public header arch-arm.h. And the toolstack should then
+pass max_vcpus using "-smp" arg.
 
-> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-> index 198d3f6d3e..6f2a1b34b3 100644
-> --- a/hw/arm/stm32l4x5_soc.c
-> +++ b/hw/arm/stm32l4x5_soc.c
-> @@ -43,10 +43,51 @@
->   #define SRAM2_BASE_ADDRESS 0x10000000
->   #define SRAM2_SIZE (32 * KiB)
->   
-> +static const hwaddr exti_addr = 0x40010400;
-
-Why not a #define?
-
-> +#define NUM_EXTI_IRQ 40
-
-
-> diff --git a/hw/misc/stm32l4x5_exti.c b/hw/misc/stm32l4x5_exti.c
-
-
-> +static void stm32l4x5_exti_set_irq(void *opaque, int irq, int level)
-> +{
-> +    Stm32l4x5ExtiState *s = opaque;
-> +
-> +    trace_stm32l4x5_exti_set_irq(irq, level);
-> +
-> +    if (irq >= NUM_INTERRUPT_OUT_LINES) {
-> +        return;
-
-This can not happen. If you are unsure, this would be a programming
-error, thus aborting is better, but nothing needed IMO.
-
-> +    }
-> +
-> +    if (irq < 32) {
-> +        if (((1 << irq) & s->exti_rtsr1) && level) {
-> +            /* Rising Edge */
-> +            s->exti_pr1 |= 1 << irq;
-> +        }
-> +
-> +        if (((1 << irq) & s->exti_ftsr1) && !level) {
-> +            /* Falling Edge */
-> +            s->exti_pr1 |= 1 << irq;
-> +        }
-> +
-> +        if (!((1 << irq) & s->exti_imr1)) {
-> +            /* Interrupt is masked */
-> +            return;
-> +        }
-> +    } else {
-> +        /* Shift the value to enable access in x2 registers*/
-> +        int irq_x2 = irq - 32;
-> +        if (((1 << irq_x2) & s->exti_rtsr2) && level) {
-> +            /* Rising Edge */
-> +            s->exti_pr2 |= 1 << irq_x2;
-> +        }
-> +
-> +        if (((1 << irq_x2) & s->exti_ftsr2) && !level) {
-> +            /* Falling Edge */
-> +            s->exti_pr2 |= 1 << irq_x2;
-> +        }
-> +
-> +        if (!((1 << irq_x2) & s->exti_imr2)) {
-> +            /* Interrupt is masked */
-> +            return;
-> +        }
-> +    }
-> +    qemu_irq_pulse(s->irq[irq]);
-> +}
-
-Could be simpler avoiding duplication, as:
-
+Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+Signed-off-by: Volodymyr Babchuk <volodymyr_babchuk@epam.com>
 ---
-static void stm32l4x5_exti_set_irq(void *opaque, int irq, int level)
-{
-     Stm32l4x5ExtiState *s = opaque;
-     int oirq = irq;
-     uint32_t *rtsr;
-     uint32_t *ftsr;
-     uint32_t *pr;
-     uint32_t *imr;
+ hw/arm/xen_arm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-     trace_stm32l4x5_exti_set_irq(irq, level);
-
-     if (irq < 32) {
-         rtsr = &s->exti_rtsr1;
-         ftsr = &s->exti_ftsr1;
-         pr = &s->exti_pr1;
-         imr = &s->exti_imr1;
-     } else {
-         rtsr = &s->exti_rtsr2;
-         ftsr = &s->exti_ftsr2;
-         pr = &s->exti_pr2;
-         imr = &s->exti_imr2;
-         /* Shift the value to enable access in x2 registers. */
-         irq -= 32;
-     }
-
-     if (((1 << irq) & *rtsr) && level) {
-         /* Rising Edge */
-         *pr |= 1 << irq;
-     }
-
-     if (((1 << irq) & *ftsr) && !level) {
-         /* Falling Edge */
-         *pr |= 1 << irq;
-     }
-
-     if (!((1 << irq) & *imr)) {
-         /* Interrupt is masked */
-         return;
-     }
-
-     qemu_irq_pulse(s->irq[oirq]);
-}
----
-
-But changing Stm32l4x5ExtiState as:
-
----
-struct Stm32l4x5ExtiState {
-     SysBusDevice parent_obj;
-
-     MemoryRegion mmio;
-
-     uint32_t imr[2];
-     uint32_t emr[2];
-     uint32_t rtsr[2];
-     uint32_t ftsr[2];
-     uint32_t swier[2];
-     uint32_t pr[2];
-
-     qemu_irq irq[NUM_INTERRUPT_OUT_LINES];
-};
----
-
-We get even simpler:
-
----
-static void stm32l4x5_exti_set_irq(void *opaque, int irq, int level)
-{
-     Stm32l4x5ExtiState *s = opaque;
-     unsigned n = irq >= 32;
-     int oirq = irq;
-
-     trace_stm32l4x5_exti_set_irq(irq, level);
-
-     if (irq >= 32) {
-         /* Shift the value to enable access in x2 registers. */
-         irq -= 32;
-     }
-
-     if (((1 << irq) & s->rtsr[n]) && level) {
-         /* Rising Edge */
-         s->pr[n] |= 1 << irq;
-     }
-
-     if (((1 << irq) & s->ftsr[n]) && !level) {
-         /* Falling Edge */
-         s->pr[n] |= 1 << irq;
-     }
-
-     if (!((1 << irq) & s->imr[n])) {
-         /* Interrupt is masked */
-         return;
-     }
-
-     qemu_irq_pulse(s->irq[oirq]);
-}
----
-
-(code untested).
-
-> +
-> +static uint64_t stm32l4x5_exti_read(void *opaque, hwaddr addr,
-> +                                    unsigned int size)
-> +{
-> +    Stm32l4x5ExtiState *s = opaque;
-> +    uint32_t r = 0;
-
-        unsigned n = addr >= EXTI_IMR2;
-> +
-> +    switch (addr) {
-> +    case EXTI_IMR1:
-> +        r = s->exti_imr1;
-> +        break;
-
-This becomes:
-
-        case EXTI_IMR1:
-        case EXTI_IMR2:
-            r = s->exti_imr[n];
-            break;
-        ...
-
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "STM32L4X5_exti_read: Bad offset %x\n", (int)addr);
-
-Please use '0x' prefix for hexadecimal.
-
-> +        break;
-> +    }
-> +
-> +    trace_stm32l4x5_exti_read(addr, r);
-> +
-> +    return r;
-> +}
-
-
-> +static const MemoryRegionOps stm32l4x5_exti_ops = {
-> +    .read = stm32l4x5_exti_read,
-> +    .write = stm32l4x5_exti_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-
-Your implementation is 32-bit wide (all your registers are),
-so:
-
-        .impl.min_access_size = 4,
-        .impl.max_access_size = 4,
-
-What are the allowed accesses? any 8/16/32/64 bits?
-(This is what happens when .valid fields aren't set).
-
-> +};
-
-
-> +static void stm32l4x5_exti_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->reset = stm32l4x5_exti_reset;
-
-Better set a ResettableClass handler. DeviceClass::reset will soon
-be deprecated.
-
-> +    dc->vmsd = &vmstate_stm32l4x5_exti;
-> +}
-
-
-> +static void stm32l4x5_exti_register_types(void)
-> +{
-> +    type_register_static(&stm32l4x5_exti_info);
-> +}
-
-Preferably use the DEFINE_TYPES() macro.
-
-> +type_init(stm32l4x5_exti_register_types)
-
-
-> diff --git a/include/hw/misc/stm32l4x5_exti.h b/include/hw/misc/stm32l4x5_exti.h
-> new file mode 100644
-> index 0000000000..4305e7fcbb
-> --- /dev/null
-> +++ b/include/hw/misc/stm32l4x5_exti.h
-> @@ -0,0 +1,64 @@
-> +/*
-> + * STM32L4x5 SoC family EXTI
-
-
-"STM32L4x5 EXTI (Extended interrupts and events controller)"
-
-
-> +#define NUM_GPIO_EVENT_IN_LINES 16
-
-Since not used externally, NUM_GPIO_EVENT_IN_LINES could be
-restricted to the source.
-
-> +#define NUM_INTERRUPT_OUT_LINES 40
-> +
-> +struct Stm32l4x5ExtiState {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion mmio;
-> +
-> +    uint32_t exti_imr1;
-> +    uint32_t exti_emr1;
-> +    uint32_t exti_rtsr1;
-> +    uint32_t exti_ftsr1;
-> +    uint32_t exti_swier1;
-> +    uint32_t exti_pr1;
-> +    uint32_t exti_imr2;
-> +    uint32_t exti_emr2;
-> +    uint32_t exti_rtsr2;
-> +    uint32_t exti_ftsr2;
-> +    uint32_t exti_swier2;
-> +    uint32_t exti_pr2;
-
-See previous suggestion for Stm32l4x5ExtiState. Besides, no
-need to use the cumbersome 'exti_' prefix.
-
-> +    qemu_irq irq[NUM_INTERRUPT_OUT_LINES];
-> +};
-> +
-> +#endif
-
-Good patch quality, looking forward for v2!
-
-Regards,
-
-Phil.
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+index a5631529d0..b9c3ae14b6 100644
+--- a/hw/arm/xen_arm.c
++++ b/hw/arm/xen_arm.c
+@@ -231,7 +231,7 @@ static void xen_arm_machine_class_init(ObjectClass *oc,=
+ void *data)
+     MachineClass *mc =3D MACHINE_CLASS(oc);
+     mc->desc =3D "Xen Para-virtualized PC";
+     mc->init =3D xen_arm_init;
+-    mc->max_cpus =3D 1;
++    mc->max_cpus =3D GUEST_MAX_VCPUS;
+     mc->default_machine_opts =3D "accel=3Dxen";
+     /* Set explicitly here to make sure that real ram_size is passed */
+     mc->default_ram_size =3D 0;
+--=20
+2.42.0

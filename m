@@ -1,149 +1,224 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp547637ejy;
-        Tue, 21 Nov 2023 07:20:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEc/80vW+9Q5HN1obHn9rI+P5Gdt83LVAQWlxjLovLhRZv9iMVDl9ya84HzCW4iz5gbBnft
-X-Received: by 2002:a05:620a:298f:b0:778:1c6e:a6f1 with SMTP id r15-20020a05620a298f00b007781c6ea6f1mr12798085qkp.57.1700580024332;
-        Tue, 21 Nov 2023 07:20:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700580024; cv=none;
+Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp582484ejy;
+        Tue, 21 Nov 2023 08:08:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFqt6zahVjepp28gtTkgWlRNBJhcwdIxA+WKef4Ff88+KDPIN7+mqbWigb1zAmjZ0z6HLfv
+X-Received: by 2002:a05:622a:553:b0:412:964c:c4d2 with SMTP id m19-20020a05622a055300b00412964cc4d2mr12358736qtx.0.1700582929625;
+        Tue, 21 Nov 2023 08:08:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700582929; cv=none;
         d=google.com; s=arc-20160816;
-        b=aHTfO0gC5LxSQ+dH5Upm50kRGDGd8zltu3RwSIa0nxWLhPzXe4vakejYE7Ik2cnEPC
-         JraoKS9sefk9CkDD71MH0q1qWuZkd4cDfNfjaG3LQ+dTK6Dm9etkukd9XQ8qUT2UgUAO
-         2vy9P1J8FYVc2mIsqfZVtQpbV5OUeaaPKhQ4XRWd11nq1aJlfx1nKTNW6KNbi3oqSLta
-         ApbENgzzsn1S+Z0BL8FgknjpXQJ79y4A1aD991RYqXlcuP4/cWuYsuY4nIQL4yY8rH6S
-         6NzZgS5s9norYtBsXkdtr1OtnGQZ0yObHA1WZJNZSzFQBzvuDIq1XIPZ4zI/QAJOZIzQ
-         or1Q==
+        b=MxaxwTes1fBMC+FLQ8+Sdz6LijHS6xtRP8VXwinhqCr5JbnZeqSi03ZhFmDu1n2pcq
+         lwFYzWC5eVYMW6YwHe0hia4DZ4Nm6sxGUWhJEzrGkl3e8DyN3HqnSe+/4K2zk1L/1el8
+         zyYgRs+NGkzVW+mOzFhHgsMLsbVLnoZSJFn+7gZwUneGlHYtzJof+FLRZkesHxEgKMCQ
+         k/tlftSLg6eYA2aPINEs5QrWX8YZtY6U8VKtHN4KkQpIMqu/GMjJBiBix3/0q7qQ7evK
+         jRbj+93v914IuBDHqdnd0M8+reI/8eY0a9EpUyKNQ/B2vAYi29lIZBsJ9gKFE2p0aGzf
+         rVAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=plXSaAJeCcI2SIfP89xH8yGBgIsf5mBO0zaRCC1psVs=;
-        fh=mpzg524onBGw0fZSRMli08hWKwAeIeqR7IpNI+lnWTE=;
-        b=Oi2sA/D1WJHISrLNbsNwu3KuPxCq/bcE20tn8zKPcPLh1ME1KnBQ1mHyaZe9t+LEXx
-         BXzhLNsI4xEXUY52IqdjMqoOpIOu+cSGd3UM/SZ9sG13terjo4t2w8wK+L75kQTpDvlh
-         lA5CZowCtJ+Ij/P1PwSQybXa+3Afw1uIe8NwTC3d4eAAPkMD+mw6krAKD1ejHeh5Trc0
-         zo/eelk5KL6gIQdb1Sr3dl56yDp1UqEH4uiZzfVmvFwGa6zlSWQmLkNLLGwuod+vn/QV
-         k3/OSVBRB4sy7v04XZLXgOUfls9Yz+b3E5UYJ3rYMh3oSXHp7xXsJShBRYLS548Igf9j
-         avpQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=k0wFm5EK4/ld2kZkumlKGAXhj9GyIivcRy2zIbMehLs=;
+        fh=++VMAZ/GIHlO0IYU/NZo/BYe9bUu2vGKalfxnpPe1iE=;
+        b=OZmD1k+9gs/msGj3Ug8TC7usGA9mNkLsiSRhRU1mpyBYxGNHiJlLneZMIqQzuS4U5c
+         40q94Buia9Kulru14KxzaKykcmwcZVzexzYRVE9VWN7BeRCcw2rGhYtTjwyGvBqLXOng
+         852NWC+IuiIqqWfay6o8wRcYibs2NGOoDcqj3ctptHCwryaQfEJGY9r68Y0h8wuBUGQa
+         T86Sf9qw2Zf8IvxHeN2z5a1PZSq3T0cURfC0/mBxpV1ffc+Nv05C84KJb5QQJ9cZ3/bf
+         I2Qyyj1hCl9/PxrqkvITteB0BUpXvnu6f+zKgd5ZVUQrx/aSEy3+dhoUbTwM20MX9mVd
+         ECIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RLuBZfhb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ArFzHDfk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6-20020a05620a248600b0076dabcceb44si9772343qkn.378.2023.11.21.07.20.24
+        by mx.google.com with ESMTPS id f4-20020ac87f04000000b00419785d97c8si9663301qtk.564.2023.11.21.08.08.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 07:20:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Nov 2023 08:08:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RLuBZfhb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ArFzHDfk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r5SXk-00063k-Mh; Tue, 21 Nov 2023 10:20:04 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r5TIV-0003QG-Lp; Tue, 21 Nov 2023 11:08:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5SXi-000636-TB
- for qemu-devel@nongnu.org; Tue, 21 Nov 2023 10:20:03 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r5SXg-0001A4-Am
- for qemu-devel@nongnu.org; Tue, 21 Nov 2023 10:20:02 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-40b26d6f7dbso9574145e9.2
- for <qemu-devel@nongnu.org>; Tue, 21 Nov 2023 07:19:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700579998; x=1701184798; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=plXSaAJeCcI2SIfP89xH8yGBgIsf5mBO0zaRCC1psVs=;
- b=RLuBZfhbQuJAQq3azLJdKC+Mo1IWDhu8mlC+pZoq1Pbzhii+kWxujrhaF8+K11Nn06
- 9u5x5akaR+N+NJU25NFhPB16Gu3dobJiZjXgnfO7nFFPfditR8faiHCYnvnqPZyuAzYU
- Uo8w1vkDFjlm9OwVGdlDCvk4P6Bkp6pQbCD+XIMALRoSr71Zcab9ZyGWEP4WOg/9s47a
- ViuBi2ipBkyOz9sM5ozO1RBoFe2kZ67tizdfmmwYlzSZrpF4vnm98gvLYbrQN8KTDOen
- 02sZIRPrBRLbua85Ftsgi6DOeif9tcH9wSiNu3vr61naZQunCI/fvEhc7tvWq2fKgftr
- wbFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700579998; x=1701184798;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=plXSaAJeCcI2SIfP89xH8yGBgIsf5mBO0zaRCC1psVs=;
- b=ZPZYSJzS/WOlQxGfW6fabjAM8T9nLGgJlNYOxtpvvI34lXsop+VYTHj/i/0HN/XtC3
- 0ZhADv+Ap9zfYlHrEl8cyRqIMxvp3m+D7MAOMjGFlsuojstovT3oGyvd00wn7oMtaWmP
- 7KWB4xZrQJQvopqpvP2zs2tjBqeohKKOWvlqzbPT4b6WPS2jDKaAiNiW1eKpI/5O3hx0
- JEnIsgThMbOsHbVeok9NH9usd3LB5cEA9zYRK1XMymNwoNgRQj4i5223lFEP7gsHgYa7
- I33yoPFk3VxkGG2IG7DJ1NmtOdFZAYib0jlTXjkWFdXqIxm0vW3yNDt2jyZei8m9pyzS
- azzg==
-X-Gm-Message-State: AOJu0Yxhrq0vqjrqv8b2QY3BlJB1OAz7RQctjyBOhVpfNJuCDNuemNGh
- GJ/ZAvhbxc1i48FQbx6XYhJeTQ==
-X-Received: by 2002:a05:600c:548c:b0:409:325:e499 with SMTP id
- iv12-20020a05600c548c00b004090325e499mr9116633wmb.32.1700579998285; 
- Tue, 21 Nov 2023 07:19:58 -0800 (PST)
-Received: from [192.168.69.100] (lgp44-h02-176-184-8-219.dsl.sta.abo.bbox.fr.
- [176.184.8.219]) by smtp.gmail.com with ESMTPSA id
- n21-20020a7bc5d5000000b003fbe4cecc3bsm21246474wmk.16.2023.11.21.07.19.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Nov 2023 07:19:57 -0800 (PST)
-Message-ID: <db7080bf-1530-4515-b23b-78863efcda06@linaro.org>
-Date: Tue, 21 Nov 2023 16:19:56 +0100
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1r5TIT-0003PD-Ny
+ for qemu-arm@nongnu.org; Tue, 21 Nov 2023 11:08:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1r5TIR-0005VU-Bp
+ for qemu-arm@nongnu.org; Tue, 21 Nov 2023 11:08:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1700582898;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=k0wFm5EK4/ld2kZkumlKGAXhj9GyIivcRy2zIbMehLs=;
+ b=ArFzHDfkD1DA2uXHmXFTChL9KUFooSjlA2+3KlXlxO9Ik8bXHZKyaHRbFDoNS595dA7gC3
+ YnU9R2r7q6SAg7y+lyze+N0Kjv0grkHcUUIN7nNtlM5gu9UM0nktC12Por5ADeCqJxtZzv
+ aCUS3qHbo8LVhOM1ZQoOloIfjeCK73Y=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-175-vhU-WqJXOmCqezATCmplbA-1; Tue,
+ 21 Nov 2023 11:08:14 -0500
+X-MC-Unique: vhU-WqJXOmCqezATCmplbA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65DC3280AA22;
+ Tue, 21 Nov 2023 16:08:14 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.105])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 41814492BE0;
+ Tue, 21 Nov 2023 16:08:11 +0000 (UTC)
+Date: Tue, 21 Nov 2023 16:08:08 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, Alexander Graf <graf@amazon.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Ard Biesheuvel <ardb@kernel.org>, mimoja@mimoja.de
+Subject: Re: [PATCH 00/16] hw/uefi: add uefi variable service
+Message-ID: <ZVzV6Au_FYK6Rav6@redhat.com>
+References: <20231115151242.184645-1-kraxel@redhat.com>
+ <9db15906-9474-4a6e-82a9-5275c72cf2b4@amazon.com>
+ <nxzed5dhgjpn3fafjttocvxe6ztxxf5xhghaqncpdxup6y7o7y@47i3eyoehio2>
+ <7bfb52e6-3698-7c44-5927-31d47d031d57@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH qemu 0/1] Implement the STM32L4x5 EXTI device
-Content-Language: en-US
-To: ~aminier <arnaud.minier@telecom-paris.fr>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, peter.maydell@linaro.org,
- ines.varhol@telecom-paris.fr
-References: <170057856467.12935.6421900912319796560-0@git.sr.ht>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <170057856467.12935.6421900912319796560-0@git.sr.ht>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <7bfb52e6-3698-7c44-5927-31d47d031d57@redhat.com>
+User-Agent: Mutt/2.2.10 (2023-03-25)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dhi6SDsKdLT1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qCQVgw0W6teI
 
-Hi Arnaud,
-
-On 21/11/23 15:56, ~aminier wrote:
-> This patch allows to emulate the STM32L4x5 EXTI device.
-> It implements register access and software interruptions.
-
-
-> Based-on: <170049810484.22920.612074576971878323-0@git.sr.ht>
-> ([RFC v3 2/2] hw/arm: Add minimal support for the B-L475E-IOT01A board)
+On Tue, Nov 21, 2023 at 04:58:44PM +0100, Laszlo Ersek wrote:
+> On 11/20/23 17:50, Gerd Hoffmann wrote:
+> > On Mon, Nov 20, 2023 at 12:53:45PM +0100, Alexander Graf wrote:
+> >> Hey Gerd!
+> >>
+> >> On 15.11.23 16:12, Gerd Hoffmann wrote:
+> >>> This patch adds a virtual device to qemu which the uefi firmware can use
+> >>> to store variables.  This moves the UEFI variable management from
+> >>> privileged guest code (managing vars in pflash) to the host.  Main
+> >>> advantage is that the need to have privilege separation in the guest
+> >>> goes away.
+> >>>
+> >>> On x86 privileged guest code runs in SMM.  It's supported by kvm, but
+> >>> not liked much by various stakeholders in cloud space due to the
+> >>> complexity SMM emulation brings.
+> >>>
+> >>> On arm privileged guest code runs in el3 (aka secure world).  This is
+> >>> not supported by kvm, which is unlikely to change anytime soon given
+> >>> that even el2 support (nested virt) is being worked on for years and is
+> >>> not yet in mainline.
+> >>>
+> >>> The design idea is to reuse the request serialization protocol edk2 uses
+> >>> for communication between SMM and non-SMM code, so large chunks of the
+> >>> edk2 variable driver stack can be used unmodified.  Only the driver
+> >>> which traps into SMM mode must be replaced by a driver which talks to
+> >>> qemu instead.
+> >>
+> >>
+> >> I'm not sure I like the split :). If we cut things off at the SMM
+> >> communication layer, we still have a lot of code inside the Runtime Services
+> >> (RTS) code that is edk2 specific which means we're tying ourselves tightly
+> >> to the edk2 data format.
+> > 
+> > Which data format?
+> > 
+> > Request serialization format?  Yes.  I can't see what is wrong with
+> > that.
 > 
-> (We got the message id from
-> https://patchew.org/QEMU/170047309499.17129.4986209009679789101-0@git.sr.ht/
-> but don't really the standard procedure to get it. Sorry if this is
-> incorrect.)
+> ... I can't even see what's wrong with *that*. Realistically /
+> practically, I think only edk2 has been considered as guest UEFI
+> firmware for QEMU/KVM virtual machines, as far as upstream projects go.
+> It's certainly edk2 that's bundled with QEMU.
+> 
+> My understanding is that firmware is just considered a part of the
+> virtualization platform, so teaching edk2 specifics to QEMU doesn't seem
+> wrong. (As long as we have the personpower to maintain interoperability.)
+> 
+> > We need one anyway, and I don't see why inventing a new one is
+> > any better than the one we already have in edk2.
+> > 
+> > Variable storage format?  Nope, that is not the case.  The variable
+> > driver supports a cache, which I think is a read-only mapping of the
+> > variable store, so using that might imply we have to use edk2 storage
+> > format.  Didn't check in detail through.  The cache is optional, can be
+> > disabled at compile time using PcdEnableVariableRuntimeCache=FALSE, and
+> > I intentionally do not use the cache feature, exactly to avoid unwanted
+> > constrains to the host side implementation.
+> > 
+> >> It also means we can not easily expose UEFI
+> >> variables that QEMU owns,
+> > 
+> > Qemu owning variables should be no problem.  Adding monitor commands to
+> > read/write UEFI variables should be possible too.
+> 
+> This patch set is actually an improvement towards QEMU-owned variables.
+> Right now, all variables are internal to the guest; QEMU only has a
+> pflash-level view.
 
-This is the correct tag and msg-id :)
+To throw confidental computing into the mix....
 
-> Arnaud Minier (1):
->    Implement STM32L4x5 EXTI
+Right now for SEV-SNP/TDX, the EDK2 builds are stateless so that
+variables are thrown away at poweroff.
+
+Long term though there's interest in having the ability to (optionally)
+offer persistence of variables to confidential computing too.
+
+The key issue is that the host QEMU is not trusted so it would not be
+viable to let QEMU receive the variables in plain text.
+
+One option I've illustrated before is that have SVSM (or equiv)
+expose an encrypted storage service to EDK2. Given the proposed EDK2
+side protocol/modifications for variable storage, I wonder if it is
+viable for SVSM (or equiv) to replace QEMU in providing the backend
+storage impl ?  IOW, host QEMU would expose a pflash to the guest,
+to which SVSM would apply full disk encryption, and then store the
+EFI variables in it
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp533019ejx;
-        Wed, 22 Nov 2023 10:31:18 -0800 (PST)
-X-Received: by 2002:a05:600c:3555:b0:40b:351b:fcc2 with SMTP id i21-20020a05600c355500b0040b351bfcc2mr122214wmq.19.1700677878277;
-        Wed, 22 Nov 2023 10:31:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700677878; cv=none;
+Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp533088ejx;
+        Wed, 22 Nov 2023 10:31:23 -0800 (PST)
+X-Received: by 2002:a05:6512:3ba3:b0:502:afea:dfdd with SMTP id g35-20020a0565123ba300b00502afeadfddmr3226679lfv.13.1700677883624;
+        Wed, 22 Nov 2023 10:31:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700677883; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hftpec+4NVbc4qgkKQFhhhFDIT5n1h2Dq3qe34fTRPUioAzKjH7n+yDytcbWnypdcT
-         +Sf2BYbAYQLhP0ZXLRu2WUPWoDujaswnEk5DICgu8xHMfKjdqG/UakpcHr7xy5YE3cIe
-         cglte0qJcybFSakOSS8QyR4VDAbyKHTGoBYrtzhMZZVbtydT58h0skzDJIXRqi/Iwdv6
-         ZO8oKInSMAaIJCDviXWhLzRwrRPOqibaDUPvsHabLq7FnNvO8xmaJX+4mpGAGtyjGe9g
-         8PwwMCiH2ubprbZtnUhtLEenDrZXJUcuklqd2S0Ci8w2MaL+C2kMQi4/4KAVbaQClLxl
-         DM8Q==
+        b=FVEiqrTB3Fvigkc14LYFUStmjgQsi6iiDcJ11fFIoFLPiMZ7Qgp3PCdVLsiav+JECj
+         18nO7SaIjZRj49AZQXD3AOQ5hVmLrpIEsizPebv0VlMy5NOthHXNZqylFfY2ImPM6NRL
+         ux0ptj/9uTGEMglKiRuptntJfKNb9LCf8VBaKWLlfkoIpJGpQPUmB1RjZzhSp66PlU0a
+         kOrv6Oe+2upSNa3xshFDBFbdesIY5+9sXbg0r1NBC6GB7gHwKvFIa8sKrSGaSf//OI4B
+         rfnnAKUb0gT0Oh4kwfoTP2DfbaFA4krGMuErCjJR24RSBduEWilU19lK8XaJnR2AvGv9
+         HnJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=emiroLvN4ZFzV0iGKy2RcqyAnliELrYGvZjH5AAzbJU=;
+        bh=wy7RMjyw0Q7UvKTe0+LJtz1uxwDhQNO7f4wPUgjAVa0=;
         fh=aTzmneatFEDiKMS1saCdxZb39+p//OutFupiUjvLGTw=;
-        b=Gv+lR4NOc4bZaXN7eQutSVtViYhuX0F/JI6dZU3KRGELDTv0PaCioTSyGX6eCtTZ9c
-         DD/2p8TQNKRo70ur4pFlyYHNhdw8Kd4KvgEJiCyABR1jYVKqYjBrh1ATAHWnvwAIU7jf
-         pPWYxUg9NphGMqNRlqpeqfCy6LfIqN03e0s+zLIbvV+D2ClcJO6tmLBNXsd535RkdvYY
-         aAvuX7Lmjbn8BtrL+FKrvsEuQ8Z5cj5etqx+sJuAopUT9wiJeZnIet1d2WxJ4oCuenPv
-         s5mU9P/JBZxZaYf8SdQmrnHk7+tvzqnoJD/t797b2IyVh4uMTxROAg0I3JPpZNVhzdFx
-         O+gg==
+        b=vRCVbHi7FAccI+odvDn6A6KzsSiF1DIzCMRqP2+3Qkvd9rKwqDvCHkg1GMkOzPfTli
+         ecyvd5SKWinmhaYT06/jwmvfMQJzHeD5SiZXsd3HJw7DuxsXyJE7kAVFLm4PKyhoMMXu
+         77SIvmpwHlq2pq0EBbfoh1CTool4kr0ch0M+o62CYmXRssYPbcvN7wBSvNj+hH+kEQUQ
+         h0XQ/OzNM1K/JQncCP3hk4nBFjd7Kzp4p7UDvaTXQyCTj7dpj0o48yWgdRjbDSmvrkT8
+         7FXVqq+RCJ/5EPkQdP+Oe9/E1xUkkMiiThH6qHjpuWA1nuEkzxvrzMwXkHw5lzscoB23
+         Ey6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lafbPDlX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ahnVzQeC;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 11-20020a05600c028b00b0040788f225e6sor24078wmk.12.2023.11.22.10.31.18
+        by mx.google.com with SMTPS id x9-20020a056512046900b0050a76406a8asor3259983lfd.23.2023.11.22.10.31.23
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 22 Nov 2023 10:31:18 -0800 (PST)
+        Wed, 22 Nov 2023 10:31:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lafbPDlX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ahnVzQeC;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700677878; x=1701282678; darn=linaro.org;
+        d=linaro.org; s=google; t=1700677883; x=1701282683; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=emiroLvN4ZFzV0iGKy2RcqyAnliELrYGvZjH5AAzbJU=;
-        b=lafbPDlXhEijQSISX8u91N7hhgVFZtiqt4udOhlwXXQXnnMAt7/tAlsnJrctoBFqoE
-         NU/r94kJRsXdlDDYKxHHS5l2WD7xNucaIqlJJV9X/fpZ8G20nY4SYPdzHjVXT8lCdLGx
-         LzdIEbYyK1acZZ7qIE2oIwvzI5OMDOFDFc8cYLCYacWuW5CBYlDoXw1A80LoblHco8RG
-         QybPUuL9rtO8UGVS0CSmq+/CIawhQK4ne299uMdzOPyLDo5HsVL6ZTwwpmavQLp09rQH
-         qeaShFvxrbQ7lWVAgqap6x6T5Y1MKKQEt0RhlJ2Bif/KiwSyzJaDpJhJm1CpzB8HB/l/
-         4sEw==
+        bh=wy7RMjyw0Q7UvKTe0+LJtz1uxwDhQNO7f4wPUgjAVa0=;
+        b=ahnVzQeCyNZ/Sv4LlE3uS0DJk+/X4kE1/wMyM937BxwqpoBTSWwt8xHcpSsCpJsmBE
+         fhoMZXrvz210IIPJlTpSUPzm/Iei64P3mZYQefzYlUy+cDoLZbrYY5wTdD2jNDEnUeTd
+         VOePuQ+hVoiBuH8KYRbOKfNIa80qN+Nd5heYJqP21GDXQ3xVV7Q5E+eF8DRW2BHQj1aC
+         rCfgD81inatT1pSz8a023pYwa/npwzXE91l7JwVaDxNSWJskOY6MaeFLOZvSrD5htibi
+         ucjS9S+xTlqH6kxdzVsHf2iAE7++X1813jgQb7o22XSqerMdE5fglsvMIuKPWS4IHlJZ
+         PP3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700677878; x=1701282678;
+        d=1e100.net; s=20230601; t=1700677883; x=1701282683;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=emiroLvN4ZFzV0iGKy2RcqyAnliELrYGvZjH5AAzbJU=;
-        b=OQAD5sgOSqoQhGn6urOi6kHIVoblMd3kg79wBKFmejrAuCUhOQdTt/W7rWnUHUIwWv
-         Ik0CAoSRwzlyVesRQfWXk1XsyEGSnBb6BN62839ueYT9xj54ClPbLAQY7RXRfWhXTZlu
-         BHkUUpdbwwBG/kM2tHxTW/bpk653ZHfG5KZRUwzwlqupe6XDq+QvlfOtSQMXDAtezHFE
-         +Ap+jfFA56GVMZRjK084j8RMARXOqQxFtXOI4e6VYA5tUFKj/4ZAloNqk9ptPrMQsatT
-         9rJfp8Ipf1mhkDtmWbza4a69vJkH7ese5hIiwOMR6INZMZ8bBYRJKFvdJJOpA0VeoOXo
-         nHQw==
-X-Gm-Message-State: AOJu0YyMblKl+VUa4D83aX8aZkr0uQwssZdNV7PjPv399u4DhLVIvzKQ
-	NBE/UwkGU+Dwx1n1H447Ikde8tZvXgCMiTcCfm6Zng==
-X-Google-Smtp-Source: AGHT+IFNMJbi2etXsf890GglUiuNpOGjNqWpIB4o2PtsfSGyJ5b4d+uqJysxjW5ginkWipADtZqyPw==
-X-Received: by 2002:adf:cc82:0:b0:331:6976:c8c7 with SMTP id p2-20020adfcc82000000b003316976c8c7mr2198011wrj.38.1700677877918;
-        Wed, 22 Nov 2023 10:31:17 -0800 (PST)
+        bh=wy7RMjyw0Q7UvKTe0+LJtz1uxwDhQNO7f4wPUgjAVa0=;
+        b=ceZFsjtCPGmSREtLeEBRQhW1byklYpz0DnX2a4PXqRGXNsV4lFOB+eIGLdoS6WkwXC
+         DRzK9/o/qcCsZSK+O3QkFaLnekD04E+qITN/vvubVHPlseEf1vECXmwLDPbLZEhhTHN/
+         ZGwN3p+PPoAOHZMqLHXYqqgd0mC/Grgc+AMgsPMWVNErkalpT7m4VR8Z7oPpw/iYEZA/
+         l8Pjbb6jOqZLKUVlChBjE/ErPCx5VE6+Q/ofM23CMbSSI/UsKqC/+x/q1fcBbCKIG1xC
+         HelZhmF4lRITo1on2khKMFEUbCDbGPuSRbDx1BVOXfif0yQRQwBhL9scb0bWNaEa6jbu
+         gNBA==
+X-Gm-Message-State: AOJu0Yzn9bATWK+3ekyAKr5vNSBaxhWNgP06PAzUiWOXRH9iThL9HNyD
+	NwjcUHvdVmYCWn528iGWjxqiXFMN
+X-Google-Smtp-Source: AGHT+IEmMQjXUiyiLKGtUufCPQsRblLgydZGbL1JsNZSAIzcHo454I3CyBFJaRr1B79zPj8koxrWfA==
+X-Received: by 2002:a05:6512:158e:b0:507:a766:ad27 with SMTP id bp14-20020a056512158e00b00507a766ad27mr3346315lfb.16.1700677883188;
+        Wed, 22 Nov 2023 10:31:23 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (pas38-h02-176-184-5-64.dsl.sta.abo.bbox.fr. [176.184.5.64])
-        by smtp.gmail.com with ESMTPSA id t3-20020a5d6903000000b0032da49e18fasm66146wru.23.2023.11.22.10.31.16
+        by smtp.gmail.com with ESMTPSA id n17-20020a5d6b91000000b003140f47224csm67155wrx.15.2023.11.22.10.31.22
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 22 Nov 2023 10:31:17 -0800 (PST)
+        Wed, 22 Nov 2023 10:31:22 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -82,91 +82,51 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH-for-9.0 05/11] target/arm: Move GTIMER definitions to 'cpu-defs.h'
-Date: Wed, 22 Nov 2023 19:30:41 +0100
-Message-ID: <20231122183048.17150-6-philmd@linaro.org>
+Subject: [PATCH-for-9.0 06/11] hw/arm/bcm2836: Simplify use of 'reset-cbar' property
+Date: Wed, 22 Nov 2023 19:30:42 +0100
+Message-ID: <20231122183048.17150-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231122183048.17150-1-philmd@linaro.org>
 References: <20231122183048.17150-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: E4lHx8aRWc7M
+X-TUID: UVcMs6/pfk8B
 
-To allow GTIMER_* definitions to be used by non-ARM specific
-hardware models, move them to a new target agnostic "cpu-defs.h"
-header.
+bcm2836_realize() is called by
+
+ - bcm2836_class_init() which sets:
+
+    bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a7")
+
+ - bcm2837_class_init() which sets:
+
+    bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a53")
+
+Both Cortex-A7 / A53 have the ARM_FEATURE_CBAR set. If it isn't,
+then this is a programming error: use &error_abort.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/cpu-defs.h | 19 +++++++++++++++++++
- target/arm/cpu.h      |  8 +-------
- hw/arm/bcm2836.c      |  1 +
- 3 files changed, 21 insertions(+), 7 deletions(-)
- create mode 100644 target/arm/cpu-defs.h
+ hw/arm/bcm2836.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu-defs.h b/target/arm/cpu-defs.h
-new file mode 100644
-index 0000000000..1ad76aff14
---- /dev/null
-+++ b/target/arm/cpu-defs.h
-@@ -0,0 +1,19 @@
-+/*
-+ * ARM "target agnostic" CPU definitions
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#ifndef ARM_CPU_DEFS_H
-+#define ARM_CPU_DEFS_H
-+
-+#define GTIMER_PHYS     0
-+#define GTIMER_VIRT     1
-+#define GTIMER_HYP      2
-+#define GTIMER_SEC      3
-+#define GTIMER_HYPVIRT  4
-+#define NUM_GTIMERS     5
-+
-+#endif
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 124d829742..8107e4d446 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -24,6 +24,7 @@
- #include "qemu/cpu-float.h"
- #include "hw/registerfields.h"
- #include "cpu-qom.h"
-+#include "target/arm/cpu-defs.h"
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
- 
-@@ -154,13 +155,6 @@ typedef struct ARMGenericTimer {
-     uint64_t ctl; /* Timer Control register */
- } ARMGenericTimer;
- 
--#define GTIMER_PHYS     0
--#define GTIMER_VIRT     1
--#define GTIMER_HYP      2
--#define GTIMER_SEC      3
--#define GTIMER_HYPVIRT  4
--#define NUM_GTIMERS     5
--
- #define VTCR_NSW (1u << 29)
- #define VTCR_NSA (1u << 30)
- #define VSTCR_SW VTCR_NSW
 diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 166dc896c0..6986b71cb4 100644
+index 6986b71cb4..055c909e95 100644
 --- a/hw/arm/bcm2836.c
 +++ b/hw/arm/bcm2836.c
-@@ -15,6 +15,7 @@
- #include "hw/arm/bcm2836.h"
- #include "hw/arm/raspi_platform.h"
- #include "hw/sysbus.h"
-+#include "target/arm/cpu-defs.h"
+@@ -132,10 +132,8 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+         s->cpu[n].core.mp_affinity = (bc->clusterid << 8) | n;
  
- struct BCM283XClass {
-     /*< private >*/
+         /* set periphbase/CBAR value for CPU-local registers */
+-        if (!object_property_set_int(OBJECT(&s->cpu[n].core), "reset-cbar",
+-                                     bc->peri_base, errp)) {
+-            return;
+-        }
++        object_property_set_int(OBJECT(&s->cpu[n].core), "reset-cbar",
++                                bc->peri_base, &error_abort);
+ 
+         /* start powered off if not enabled */
+         if (!object_property_set_bool(OBJECT(&s->cpu[n].core),
 -- 
 2.41.0

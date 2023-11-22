@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp532690ejx;
-        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
-X-Received: by 2002:a05:600c:3510:b0:40b:3519:824f with SMTP id h16-20020a05600c351000b0040b3519824fmr161209wmq.26.1700677856460;
-        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700677856; cv=none;
+Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp532780ejx;
+        Wed, 22 Nov 2023 10:31:02 -0800 (PST)
+X-Received: by 2002:a2e:83c5:0:b0:2c8:7224:b988 with SMTP id s5-20020a2e83c5000000b002c87224b988mr1700415ljh.44.1700677862290;
+        Wed, 22 Nov 2023 10:31:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700677862; cv=none;
         d=google.com; s=arc-20160816;
-        b=h3CIVI7WVBlBTXh5lIdHw/YReivQPEJ3Apd3iJpRoDEECXK9hP5jKADVgJlRIam5Yz
-         KZq0V3eNFETUszeu/RErqyd+FduKfVrDHprWGBKV9UbIAs6KQGbazoJVoLrNHjJDb1DN
-         j0M93SvpdNRqx2ZakArRONSvTmMx5+Py4RPNOk/nQ7f2Vjv/Zk0hQZ0ZWeOSOMjZKT38
-         SV6nSRlKrc1LwCNgX8xEkuQJRCGSVB98NZEEasSVaMbpGJaK9FjMdmRbAMyaB3c05fZj
-         FGW7s/Cne7PjjfYSy5UuIM1p+A+dX3tsYrzzLOCEZQhWs/MWBMxEp0wfsfGRFGpRiLLx
-         bNxg==
+        b=EhbNkj9nbx68GW+dxRDciFTPOKFWWUUkofCCXb3cc8RBuK63NhJ04qK5zSY+f+hn8b
+         rYogV5X5cim/QzIudI5dYkjweFfvUr8J5LasOQXfaAYb3336LkZjT99o55NQ02PpNCZd
+         ALstYjFhLglYpQn4jGwf6/W1t4KHGrLISOqmPFk6WemvKPSwHbtrtfyIarAmO99grmju
+         vnu8cRscP6SK/7iUg8I8bzBC0x3UsuylctaFa//o5R9KZXaQAVQ66JtDiYs376UtrTxL
+         SXqAHg+6RiB9SIa7b33PSWJqR7IbkXaoBufrDT+haIEfVpzRbSDK+SGoYh5qAGtu2e+R
+         OHUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lSl3SvKqQCH/74SE8sqRcfeJMBZmOK/fR4uLmHCWg/A=;
+        bh=E7103XOFxT5bJSMqrbJRnaAZtCqt8Oh3G3I/DOAsQEM=;
         fh=aTzmneatFEDiKMS1saCdxZb39+p//OutFupiUjvLGTw=;
-        b=DsdaTvnRoC5fYNOujbNmm8s75zGrh9Yt40ShIkSM5yTsClFJBb3laqbAB/084M7i+j
-         j/JL1BNLaAVLZaaGOD+KfYj6yNbquk3fFxJFxf+ezSpDJ4ev0RshvMP4IyqYnDYlVkDF
-         RxQwETEv1a0keMS0YCexvzX6O7cZ6pIDVhgMw7JXPCWydy6emWGgdtP92Ls43+3d7ZWf
-         rsax3Y8RFtRZZ2yQA4P4Qt30pS6jtpK3PVQ6ZbayqXBRLyUAe9BdKb+XUcYGXa5R70gm
-         zmms+Yxc9bnbo5MhHDVrk5vOuVl/kqxdRv3JSUKYWP0bCc5M5knRk4EtpuRS5NazO6cB
-         XOVw==
+        b=Pd0BUec+UQfb5jVQuDw45zo4ryVu99Uh4GSYSlxhkT+ZtXAfa1wp/LPE5h1BL4qcWT
+         ZP7aJsDpRhhxRJ1r/PkD15crdIamEWf+IQYUst/ykYqvRH46oQ7JYlLlYEehamuFZfRN
+         Y+UUjBIxhehK0wSYZYVQH9KrgZo1vH6d5CjW2GfUgoEuOPsx3KbfMuXclBDNY1ZwIyIG
+         zNZI1LkYtSN/LEqJKFMc+JYSif4pTFNv44ZnQrAXUBQkay5Nat3a0rb/qyD55jTE+BZW
+         rebmHIzc35psSUgJ9tt5mDFIyrIUbsdg1I11yOY9hrPp+f/FleJB7d8cdqaZaMwqwVTz
+         3BRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zlCpbN/b";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QlAhd93U;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j42-20020a05600c1c2a00b0040b2c1b0f71sor27385wms.5.2023.11.22.10.30.56
+        by mx.google.com with SMTPS id m10-20020a2eb6ca000000b002c6edf0a87fsor38746ljo.4.2023.11.22.10.31.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
+        Wed, 22 Nov 2023 10:31:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zlCpbN/b";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QlAhd93U;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700677856; x=1701282656; darn=linaro.org;
+        d=linaro.org; s=google; t=1700677862; x=1701282662; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lSl3SvKqQCH/74SE8sqRcfeJMBZmOK/fR4uLmHCWg/A=;
-        b=zlCpbN/bBZ8gzAZBPmHE9mcVyIMssvffed9fJ4KZokw3ciNjcrrmhtvkzmGVetD6kw
-         zJNO3PWCEMGApSz/5Ff6JZN1sFTFOipLIKnGKW76FUSTZyz9yBI5qXg0CFRJJhEP2CUm
-         Jv0JKHJlkblHq4Gl8MZ91PoTozR1/XJrEebrQSUgDG/xckhdX6b53r8J7NQoSIlgijru
-         9as5L6VdD7SWpZMb48J66avRwaRBtZ629vOBh+2W/r2BvBgf4YpFdaniPxp0skufODUK
-         tBvAaZzfqGinfwgzY1NoY7IeuUTaf1yJRcvFGvcaJ0+vPItEidiEjBF1tBkxjl4y3otw
-         qnnQ==
+        bh=E7103XOFxT5bJSMqrbJRnaAZtCqt8Oh3G3I/DOAsQEM=;
+        b=QlAhd93UA1R7Rn+UG8FmMDtagUB9GaUc4/AbjpzztE0phLsGg+K8usohPQaS6jyCGg
+         NKjEDBN1hJGayvkI0BGKmjVrHEahzjRk3lWbjRSY17p/u/E9yYsAbq4+NjvknoUXAhYG
+         hXST6WCoh+mhFzvGyTnnrwXefy8XjYiQEnsi31TSxYaZBHnXaH00OYL/hmCf61r/TEM8
+         IYCKTYeg4NS/Nf435xddtb5cTYYAQ4SpCJ3y5Xvr51/bmSavVraIFcFoDo/RosQd8RVJ
+         JN8namriMxJ33456mWIoS1p8cx2ultCJrtFWFGvBmmnaMC/R9JVwv39WO8vgV0rvzmFE
+         cg9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700677856; x=1701282656;
+        d=1e100.net; s=20230601; t=1700677862; x=1701282662;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lSl3SvKqQCH/74SE8sqRcfeJMBZmOK/fR4uLmHCWg/A=;
-        b=N1bhlhQmhaORraBY8mhAoPHNX8+H+W3OZkYIS0MrdDpvF6tyNW18YF1oqWwI9IIyBU
-         gVkPaEoTBQnsSi9lyzHT/nRjQa1rPWiJFJimPZaWIBksIcWBruwjaFoCaHId0E+6k9LA
-         uA8dCXJtpYSPEpZBswJGt0dsFFd1lG6UyQqgSGrVjzC/buqaZtlMvbC6ackAeFXHFfGi
-         oVccVx7W5xtGI/HgSXo78Yng+Mt5+aNtAJoefW/KCBHdVY7WfNAIOEgTH4pks7K4W7H8
-         p7X0mYnDcTBzGxIPyDQw8HRnwIfgvYp7L9oa1s0KbV2Q53w4Kkg2DAPtTVzO8Cjz0gLd
-         rXLQ==
-X-Gm-Message-State: AOJu0Ywjhl+spgz/WRhAHmf8SMO2znYcd7sI+ywyVHxSEcqptk/e3sN1
-	KvXcyOtzNDe8i2O4fmSQjjGvCZu+
-X-Google-Smtp-Source: AGHT+IG+lom2T2L1G6ppR4LSOkVj0+z1J919Ft7QO7x8s0p9VZICGrYQcWydldiJjYb9B55ciEXU+g==
-X-Received: by 2002:a05:600c:1991:b0:408:53ac:141f with SMTP id t17-20020a05600c199100b0040853ac141fmr2507005wmq.24.1700677856143;
-        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
+        bh=E7103XOFxT5bJSMqrbJRnaAZtCqt8Oh3G3I/DOAsQEM=;
+        b=Wbjb1cnRwlUN8C1bDKgkYClV8pbgAxPSP5Kbom95WfwuFv4DJ0NwQVfnuqopV/Bt4g
+         sdhmuSJE7k+lS2ZjnMq55ukNVHUwt0VUryzzsxGpZ7bO5YZMeG1NxXkrX+unX6b3InrV
+         O9P7OMqvOlscUtWGTJ80oQ+l5Zc2lWchBg3BWdpiOzQXY55bZtTRtMUC5SljXy5ClQpb
+         Xty03RP/BliRCPXnG7GAa9A+j051Hq8YS0chKK2Zhae0+uuf9+1hO26LkENshmzMUVzk
+         poi1kjZBBRcfKvg/kzl/h+tvY6WH4SlKp0i0t1EZMJ0P9ipw52U8Vo5HWNNcvyool+I0
+         l8tg==
+X-Gm-Message-State: AOJu0YyK6yVpmtI38NuD79GzYqlvIV0SnNRzlbSNb5M4wJqDwDKeTe2Z
+	KfehutpStzlyXomVzrTqdHwG9AMe
+X-Google-Smtp-Source: AGHT+IHIV10IErfFC07Es1yMjpQsHxoU13Fz1+eiamPARf56zp7ZGthltp+wH8DZLOe8g00EO/RHvQ==
+X-Received: by 2002:a05:651c:21a:b0:2c8:7c22:97e2 with SMTP id y26-20020a05651c021a00b002c87c2297e2mr2064877ljn.45.1700677861838;
+        Wed, 22 Nov 2023 10:31:01 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (pas38-h02-176-184-5-64.dsl.sta.abo.bbox.fr. [176.184.5.64])
-        by smtp.gmail.com with ESMTPSA id p21-20020a05600c431500b00403b63e87f2sm176451wme.32.2023.11.22.10.30.55
+        by smtp.gmail.com with ESMTPSA id f3-20020a05600c43c300b003fc0505be19sm176312wmn.37.2023.11.22.10.31.00
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 22 Nov 2023 10:30:55 -0800 (PST)
+        Wed, 22 Nov 2023 10:31:01 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -82,61 +82,55 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH-for-9.0 01/11] qom: Introduce the TypeInfo::can_register() handler
-Date: Wed, 22 Nov 2023 19:30:37 +0100
-Message-ID: <20231122183048.17150-2-philmd@linaro.org>
+Subject: [RFC PATCH-for-9.0 02/11] target/arm: Add target_aarch64_available() helper
+Date: Wed, 22 Nov 2023 19:30:38 +0100
+Message-ID: <20231122183048.17150-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231122183048.17150-1-philmd@linaro.org>
 References: <20231122183048.17150-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: QPEfJ7cNSQqg
+X-TUID: VqPIWtSi+KTf
 
-Add a helper to decide at runtime whether a type can
-be registered to the QOM framework or not.
+We want to build HW models once, but don't want to
+register types when all prerequisites are satisfied. Add
+the target_aarch64_available() to know at runtime whether
+TARGET_AARCH64 is built-in.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qom/object.h | 4 ++++
- qom/object.c         | 3 +++
- 2 files changed, 7 insertions(+)
+ target/arm/cpu-qom.h | 2 ++
+ target/arm/cpu.c     | 9 +++++++++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/include/qom/object.h b/include/qom/object.h
-index afccd24ca7..0d42fe17de 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -372,6 +372,8 @@ struct Object
-  * struct TypeInfo:
-  * @name: The name of the type.
-  * @parent: The name of the parent type.
-+ * @can_register: This optional function is called before a type is registered.
-+ *   If it exists and returns false, the type is not registered.
-  * @instance_size: The size of the object (derivative of #Object).  If
-  *   @instance_size is 0, then the size of the object will be the size of the
-  *   parent object.
-@@ -414,6 +416,8 @@ struct TypeInfo
-     const char *name;
-     const char *parent;
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 02b914c876..bf6b3604ed 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -33,4 +33,6 @@ typedef struct AArch64CPUClass AArch64CPUClass;
+ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+                        TYPE_AARCH64_CPU)
  
-+    bool (*can_register)(void);
++bool target_aarch64_available(void);
 +
-     size_t instance_size;
-     size_t instance_align;
-     void (*instance_init)(Object *obj);
-diff --git a/qom/object.c b/qom/object.c
-index 95c0dc8285..f09b6b5a92 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -150,6 +150,9 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
- TypeImpl *type_register(const TypeInfo *info)
- {
-     assert(info->parent);
-+    if (info->can_register && !info->can_register()) {
-+        return NULL;
-+    }
-     return type_register_internal(info);
+ #endif
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 25e9d2ae7b..1990c04089 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2548,3 +2548,12 @@ static void arm_cpu_register_types(void)
  }
  
+ type_init(arm_cpu_register_types)
++
++bool target_aarch64_available(void)
++{
++#ifdef TARGET_AARCH64
++    return true;
++#else
++    return false;
++#endif
++}
 -- 
 2.41.0

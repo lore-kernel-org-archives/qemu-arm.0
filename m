@@ -1,203 +1,314 @@
-Received: by 2002:a17:906:b00f:b0:9d0:bf65:29fa with SMTP id v15csp678756ejy;
-        Tue, 21 Nov 2023 10:29:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFr/8lBx3TC33hdF3B4YG9Bqgdj6e2dj3F5hrH6trxE0E9j6yAB0KlA669vqyH1umUbsAbA
-X-Received: by 2002:a05:620a:5627:b0:775:6dfb:874b with SMTP id vv7-20020a05620a562700b007756dfb874bmr12170449qkn.51.1700591384823;
-        Tue, 21 Nov 2023 10:29:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700591384; cv=none;
+Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp221440ejx;
+        Wed, 22 Nov 2023 02:31:43 -0800 (PST)
+X-Received: by 2002:a05:6808:6d0:b0:3ae:e79d:7984 with SMTP id m16-20020a05680806d000b003aee79d7984mr1926567oih.55.1700649103459;
+        Wed, 22 Nov 2023 02:31:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700649103; cv=none;
         d=google.com; s=arc-20160816;
-        b=j5BO7yOjiG2EftBiXXPCuqpVfe7By7Dlsjdp7kwPpuqz8dfUVP2hX9kMaeCZCiVPkP
-         QQq/hUqW9Wk/3k8QH9ElZB++NFqf4EMdowt3LNCWtQIs/JfpDgROvE2UdpMUcdSVk2eD
-         FyO28XzHmMJnwPinelxYMw5wz2/hVyDr6LLyjihMxyazdbILdBx6dE+6tgO9JeWoSPym
-         nWAmKvkQbcdoY1lLsX0DrZwLwvQVzHE4djOkYcFKsIqouM8dPXkPiVCX8Usa+YBF4ugB
-         2jDhTPaitpWc07Y/HGrkclu+UesbJJDrzeX3ZjG5snQZxP0gVf2AkqMzQ1wjHS00khAj
-         0ETA==
+        b=nr23cMN1z6AvjMOIM6LXF3Csb72uCZ7x7c/92+nYslcRczSRh1FcopHtyT4dDLMTBy
+         0s0CpG2G9McJjiLIYgZ514G7LNJ3rzZVzH7R9/c9D9VCMe4UYnCFe4iC5Mrl3lp+fjei
+         jkvv3O7GISlOLEj8tyFEIW211fUSccIrg1z1ifg1hqnxviXTockeDBvDWmGoMmAh2pZc
+         za5DNmnjmQI9Q+ojKWNogJuhN4peQjNmjW4OJXgAgPqDh80VJZjwbP+X2fvLS/ty5/N/
+         eF1URP9eiLCKRsiotGE93xhiWNgDsoswxZFOPna+rBHSDIcrgFokUDZDQSyWbqVntMr5
+         W+CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=jJaVI7eFQSumVnEyWm3N6x8y85gR6jqngXrsofoKTB4=;
-        fh=NQVDX/oNQNGA1T+ZxY48aI2mkvtdUIqL/7CLR2qKNKA=;
-        b=nTnu0XoQ/3aWUiUte0Ncpu+H/4gU3sWmggNUvKKGKB/p9xBJ+p1NyMIL17oTcQ2G0F
-         BVFUXBKCy7LCuGqADM5zIMvzyf8iDs/F1N/H8YUgqgYfbRuuf14qTusObD0a8bFHToDN
-         T6mnFCoKrncwum6tMX7/CynSqsKupwBR1JB4t0DEYL52Tvg89lCvP1cTRRs/gR09he7/
-         o6sZF8Mzj8mmt66vkD3UQ8P7cnaihjgVwSBGDI1HX0iT/kyJNdZgAdH71BnIUILjyKNM
-         RXGIwmfrNujGdpc4ciDoMlcgSkWBEImZDWSu6EZpbOEDoX0VfE6OOZs/FAtJW3vPWxn3
-         hOqg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=6xRnJgX5BPvayGYI69im8tUAMArxnMA1xQvESA9sv6s=;
+        fh=QyFayFpbXpt0YAfXiJQMGkKX9CFZ89z+3bSEStTpyG4=;
+        b=gW0MECLZbPLxFmXt30XtID4y09a4MmVrQkhT0Ea6S+5BPIWkM6ze2Ku51TZgyAVCNu
+         RCpgdm8cc6GGY5Nzbq+jBQPYRTSXoZHj8H8edxi0nveZ+TH8OorcJBBtMKzVI8Cmo7U9
+         GM9Q8+ahX+HFdfCIJtK7w08wTxpJUscwQy3RGG5dU4EMJDq5qxANJi1dBB59hnU781XB
+         JmhWoUO135YJ2RddYOAUqIer8QXPN9dz8K4ZI6i/S4E898C0pWCGD1DN6N17JSmZVcMp
+         CeLdBTBQONpGtvLK7f6oy6CVZI8JAP4cCGtWAUDakw5qB9eAA+/tszXjmbUbgwExht2u
+         GXbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hioSv4wt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15-20020a05620a004f00b0077d632369c8si60720qkt.172.2023.11.21.10.29.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Nov 2023 10:29:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AyDvaKI6;
+       spf=pass (google.com: domain of marcandre.lureau@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcandre.lureau@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <marcandre.lureau@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e22-20020aca2316000000b003b83d616ddesor692076oie.11.2023.11.22.02.31.43
+        (Google Transport Security);
+        Wed, 22 Nov 2023 02:31:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of marcandre.lureau@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hioSv4wt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5VUd-0006iw-FT; Tue, 21 Nov 2023 13:29:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r5VUX-0006fQ-Qc
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 13:28:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r5VUV-0003Ps-MQ
- for qemu-arm@nongnu.org; Tue, 21 Nov 2023 13:28:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700591333;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jJaVI7eFQSumVnEyWm3N6x8y85gR6jqngXrsofoKTB4=;
- b=hioSv4wtb4mSUvH3zPkACQ8+pM8RcOQqkYxNV30BmLXy2rLh0jWbtyYePA2H511l7q3Li2
- gk9rDqG6qqmWPe6jZB6DxneRwEd10pUCroj9QurdSzRVwK7+tEe59fe7tgsbRldw82QaQa
- plOvFnRNWksX2S++CjxOE3MJfweTTSA=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-516-X_vRnSh0OdCcXFB4cpEA5w-1; Tue, 21 Nov 2023 13:28:51 -0500
-X-MC-Unique: X_vRnSh0OdCcXFB4cpEA5w-1
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-778a455f975so735413085a.1
- for <qemu-arm@nongnu.org>; Tue, 21 Nov 2023 10:28:51 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AyDvaKI6;
+       spf=pass (google.com: domain of marcandre.lureau@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcandre.lureau@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1700649102; x=1701253902; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6xRnJgX5BPvayGYI69im8tUAMArxnMA1xQvESA9sv6s=;
+        b=AyDvaKI6rKlsf4Tbjy/KnCT7m6OMkMXcyrih5Ao29UXk6S5FHs3RkVisJXXrZ+wEu7
+         Ny29HftzbP6r575bmWVr2w6qNrI3VfAFjw3amPLb45Nxm3Zay6ccNUHGKGi16kTjuJRY
+         1oDr0lGsg07Ko5FMlbOa3hsV6nnJ0Vy0aNMs0W5bn4sU9GZsIKUZiKbDjcCCBoVSILV2
+         DRDxxnTElGWftK+Fx+IQiY+vXC8AxeEJAgjR+f/kjoaDwkJWU9lGMQu0Y/9HIhnK2lQn
+         LXP1YqqcSPfWhwDJLDqyN1BD9fOSkFGbH/f0ZpXL/me1RzW3vEWkpqOsawWVWpwqlbEi
+         T6iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700591331; x=1701196131;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jJaVI7eFQSumVnEyWm3N6x8y85gR6jqngXrsofoKTB4=;
- b=RmMBEX0qY+a3XQyeyonVFHMkHkuRGu8pbFKL4r4t24eS7IGGudejxYTHc11AMkxtt9
- cNzVvaz2BZjL18FPbhxweO8wThtwvJ+txau6EJfYQ+7kXQI8/qHzUwhfpPFUIfLtfVag
- 8OwXL95Ir4GuaPnfAoU7ey3/hA65P99hJxUhEDtZlRD5qjqQ+OxC2vdQ3NwiFZYxSD2h
- LzuONuoyIs6K9xuZ1SGmK1iF2uw5QeyjnbAU9lGRXiaTAeKAy2CAEXKqe/36r38ftB1N
- Zpbj4avdQAek6BIJ8M7NrFjyK2IUAVpDYYaOGokvly4A1xbL86ghNOU4dNLZkdTJ5Fvx
- usug==
-X-Gm-Message-State: AOJu0YxZgPUGVbnhL/HUZ4BYfBfP7kH6lnn2IQVhG4Jy9ub6YjAt6TrI
- 8zfe7paBd0LgM4LaUr0rlzjG1Vac9G0HCe6b2DrVMjt7iVL9KaFkljLhPR/h4iSuO3JOpe1Deuh
- 18rT5lJekUyG2
-X-Received: by 2002:a05:620a:8e03:b0:778:8da0:a6a2 with SMTP id
- re3-20020a05620a8e0300b007788da0a6a2mr10219341qkn.28.1700591331046; 
- Tue, 21 Nov 2023 10:28:51 -0800 (PST)
-X-Received: by 2002:a05:620a:8e03:b0:778:8da0:a6a2 with SMTP id
- re3-20020a05620a8e0300b007788da0a6a2mr10219322qkn.28.1700591330738; 
- Tue, 21 Nov 2023 10:28:50 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- q11-20020a05620a0d8b00b0076cbcf8ad3bsm3774009qkl.55.2023.11.21.10.28.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Nov 2023 10:28:50 -0800 (PST)
-Message-ID: <4775da43-e188-4d37-b869-a4084cfeaa23@redhat.com>
-Date: Tue, 21 Nov 2023 19:28:47 +0100
+        d=1e100.net; s=20230601; t=1700649102; x=1701253902;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=6xRnJgX5BPvayGYI69im8tUAMArxnMA1xQvESA9sv6s=;
+        b=uZGLOCRRRL7PE99nYKmFvlmdb2xiIhpstNoD5p67t5yux+ywpHUmYabRHNx4TM29TU
+         uDWo3Foqsr/yAiZuVAqjB9PqoogxpfdzijvWbQcEcLnDVaIh4RvLCUKZykyXzyZ/pUcl
+         HPH7rwHpPNeGYRYThh9FhrXDzb6+2afpbx6ZH1YnYu9vGJXHOhTK95SjDXJecZ+LveAJ
+         SdkF+TOhhA7o+n+ZTkXfhHL92DHBx6DaLzToJfV17iWeh62idQk9Y6RDf/nGfdB/EnHA
+         zOyd0kKlPAlUsh3vPN7gE2mVkYyRKT6wv788S13Dljdd04PJV/RDWSZaXAG7+0ecEtpp
+         lToQ==
+X-Gm-Message-State: AOJu0YwYwtHxqLF93tD+z3FUDgR2jX5u6neC5uzjKGbc4ZLEmEh/njdp
+	QcP5V7YU8gNdSvj540Xm0cOTsrK8XBtUmGh96OUs4nJsyYI=
+X-Google-Smtp-Source: AGHT+IFSwZ2tVyIF7zDmPQqBmcY/48fFavbAi8KvvI7Pu2yJI9yCB9NML+rb2KQb1fUHDiV2Gx5j/U7gCxqeKmm5Q0E=
+X-Received: by 2002:a05:6870:8a0a:b0:1d5:eb1:c587 with SMTP id
+ p10-20020a0568708a0a00b001d50eb1c587mr2457857oaq.19.1700649101745; Wed, 22
+ Nov 2023 02:31:41 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-8.2? 2/6] hw/virtio: Free
- VirtIOIOMMUPCI::vdev.reserved_regions[] on finalize()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-stable@nongnu.org
-References: <20231121174051.63038-1-philmd@linaro.org>
- <20231121174051.63038-3-philmd@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20231121174051.63038-3-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SfyhBB4oqB5u
+References: <20231109192814.95977-1-philmd@linaro.org> <20231109192814.95977-11-philmd@linaro.org>
+In-Reply-To: <20231109192814.95977-11-philmd@linaro.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Wed, 22 Nov 2023 14:31:29 +0400
+Message-ID: <CAJ+F1CKFFU_VEA4nhgWw9RLDgc_gD0h-FPfvSP4LaFC1j4pP6Q@mail.gmail.com>
+Subject: Re: [PATCH-for-8.2 v4 10/10] hw/char/pl011: Implement TX FIFO
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Maydell <peter.maydell@linaro.org>, 
+	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org, 
+	Mikko Rapeli <mikko.rapeli@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 6qEMuqcjYQu2
 
-Hi Phil,
+Hi
 
-On 11/21/23 18:40, Philippe Mathieu-Daudé wrote:
-> Commit 0be6bfac62 ("qdev: Implement variable length array properties")
-> added the DEFINE_PROP_ARRAY() macro with the following comment:
+On Thu, Nov 9, 2023 at 11:30=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
 >
->   * It is the responsibility of the device deinit code to free the
->   * @_arrayfield memory.
+> If the UART back-end chardev doesn't drain data as fast as stdout
+> does or blocks, buffer in the TX FIFO to try again later.
 >
-> Commit 8077b8e549 added:
+> This avoids having the IO-thread busy waiting on chardev back-ends,
+> reported recently when testing the Trusted Reference Stack and
+> using the socket backend:
+> https://linaro.atlassian.net/browse/TRS-149?focusedCommentId=3D149574
 >
->   DEFINE_PROP_ARRAY("reserved-regions", VirtIOIOMMUPCI,
->                     vdev.nb_reserved_regions, vdev.reserved_regions,
->                     qdev_prop_reserved_region, ReservedRegion),
->
-> but forgot to free the 'vdev.reserved_regions' array. Do it in the
-> instance_finalize() handler.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: 8077b8e549 ("virtio-iommu-pci: Add array of Interval properties") # v5.1.0+
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Implement registering a front-end 'watch' callback on back-end
+> events, so we can resume transmitting when the back-end is writable
+> again, not blocking the main loop.
 
-Eric
+I do not have access to that Jira issue.
+
+In general, chardev backends should have some buffering already
+(socket, files etc).
+
+If we want more, or extra control over buffering, maybe this should be
+implemented at the chardev level, rather than each frontend implement
+its own extra buffering logic...
+
+Regardless, I think frontends should have an option to "drop" data
+when the chardev/buffer is full, rather than hanging.
+
+
+>
+> Similarly to the RX FIFO path, FIFO level selection is not
+> implemented (interrupt is triggered when a single byte is available
+> in the FIFO).
+>
+> We only migrate the TX FIFO if it is in use.
+>
+> Reported-by: Mikko Rapeli <mikko.rapeli@linaro.org>
+> Suggested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->  hw/virtio/virtio-iommu-pci.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  hw/char/pl011.c      | 107 ++++++++++++++++++++++++++++++++++++++++---
+>  hw/char/trace-events |   4 ++
+>  2 files changed, 105 insertions(+), 6 deletions(-)
 >
-> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-> index 9459fbf6ed..cbdfe4c591 100644
-> --- a/hw/virtio/virtio-iommu-pci.c
-> +++ b/hw/virtio/virtio-iommu-pci.c
-> @@ -95,10 +95,18 @@ static void virtio_iommu_pci_instance_init(Object *obj)
->                                  TYPE_VIRTIO_IOMMU);
->  }
->  
-> +static void virtio_iommu_pci_instance_finalize(Object *obj)
-> +{
-> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(obj);
+> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> index f474f56780..a14ece4f07 100644
+> --- a/hw/char/pl011.c
+> +++ b/hw/char/pl011.c
+> @@ -57,6 +57,9 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Ch=
+ardev *chr)
+>  /* Data Register, UARTDR */
+>  #define DR_BE   (1 << 10)
+>
+> +/* Receive Status Register/Error Clear Register, UARTRSR/UARTECR */
+> +#define RSR_OE  (1 << 3)
 > +
-> +    g_free(dev->vdev.prop_resv_regions);
+>  /* Interrupt status bits in UARTRIS, UARTMIS, UARTIMSC */
+>  #define INT_OE (1 << 10)
+>  #define INT_BE (1 << 9)
+> @@ -156,6 +159,68 @@ static void pl011_reset_tx_fifo(PL011State *s)
+>      fifo8_reset(&s->xmit_fifo);
+>  }
+>
+> +static gboolean pl011_drain_tx(PL011State *s)
+> +{
+> +    trace_pl011_fifo_tx_drain(fifo8_num_used(&s->xmit_fifo));
+> +    pl011_reset_tx_fifo(s);
+> +    s->rsr &=3D ~RSR_OE;
+> +    return G_SOURCE_REMOVE;
 > +}
 > +
->  static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info = {
->      .generic_name  = TYPE_VIRTIO_IOMMU_PCI,
->      .instance_size = sizeof(VirtIOIOMMUPCI),
->      .instance_init = virtio_iommu_pci_instance_init,
-> +    .instance_finalize = virtio_iommu_pci_instance_finalize,
->      .class_init    = virtio_iommu_pci_class_init,
->  };
->  
+> +static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *op=
+aque)
+> +{
+> +    PL011State *s =3D opaque;
+> +    int ret;
+> +    const uint8_t *buf;
+> +    uint32_t buflen;
+> +    uint32_t count;
+> +    bool tx_enabled;
+> +
+> +    tx_enabled =3D (s->cr & CR_UARTEN) && (s->cr & CR_TXE);
+> +    if (!tx_enabled) {
+> +        /*
+> +         * If TX is disabled, nothing to do.
+> +         * Keep the potentially used FIFO as is.
+> +         */
+> +        return G_SOURCE_REMOVE;
+> +    }
+> +
+> +    if (!qemu_chr_fe_backend_connected(&s->chr)) {
+> +        /* Instant drain the fifo when there's no back-end */
+> +        return pl011_drain_tx(s);
+> +    }
+> +
+> +    count =3D fifo8_num_used(&s->xmit_fifo);
+> +    if (count < 1) {
+> +        /* FIFO empty */
+> +        return G_SOURCE_REMOVE;
+> +    }
+> +
+> +    /* Transmit as much data as we can */
+> +    buf =3D fifo8_peek_buf(&s->xmit_fifo, count, &buflen);
+> +    ret =3D qemu_chr_fe_write(&s->chr, buf, buflen);
+> +    if (ret >=3D 0) {
+> +        /* Pop the data we could transmit */
+> +        trace_pl011_fifo_tx_xmit(ret);
+> +        fifo8_pop_buf(&s->xmit_fifo, ret, NULL);
+> +        s->int_level |=3D INT_TX;
+> +    }
+> +
+> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
+> +        /* Reschedule another transmission if we couldn't transmit all *=
+/
+> +        guint r =3D qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
+> +                                        pl011_xmit, s);
+> +        if (!r) {
+> +            /* Error in back-end? */
+> +            return pl011_drain_tx(s);
+> +        }
+> +    }
+> +
+> +    pl011_update(s);
+> +
+> +    return G_SOURCE_REMOVE;
+> +}
+> +
+>  static void pl011_write_txdata(PL011State *s, uint8_t data)
+>  {
+>      if (!(s->cr & CR_UARTEN)) {
+> @@ -165,11 +230,25 @@ static void pl011_write_txdata(PL011State *s, uint8=
+_t data)
+>          qemu_log_mask(LOG_GUEST_ERROR, "PL011 data written to disabled T=
+X UART\n");
+>      }
+>
+> -    /* XXX this blocks entire thread. Rewrite to use
+> -     * qemu_chr_fe_write and background I/O callbacks */
+> -    qemu_chr_fe_write_all(&s->chr, &data, 1);
+> -    s->int_level |=3D INT_TX;
+> -    pl011_update(s);
+> +    if (fifo8_is_full(&s->xmit_fifo)) {
+> +        /*
+> +         * The FIFO contents remain valid because no more data is
+> +         * written when the FIFO is full, only the contents of the
+> +         * shift register are overwritten. The CPU must now read
+> +         * the data, to empty the FIFO.
+> +         */
+> +        trace_pl011_fifo_tx_overrun();
+> +        s->rsr |=3D RSR_OE;
+> +        return;
+> +    }
+> +
+> +    trace_pl011_fifo_tx_put(data);
+> +    fifo8_push(&s->xmit_fifo, data);
+> +    if (fifo8_is_full(&s->xmit_fifo)) {
+> +        s->flags |=3D PL011_FLAG_TXFF;
+> +    }
+> +
+> +    pl011_xmit(NULL, G_IO_OUT, s);
+>  }
+>
+>  static uint32_t pl011_read_rxdata(PL011State *s)
+> @@ -331,10 +410,21 @@ static void pl011_write(void *opaque, hwaddr offset=
+,
+>          s->lcr =3D value;
+>          pl011_set_read_trigger(s);
+>          break;
+> -    case 12: /* UARTCR */
+> +    case 12: /* UARTCR */ {
+> +        uint16_t en_bits =3D s->cr & (CR_UARTEN | CR_TXE | CR_RXE);
+> +        uint16_t dis_bits =3D value & (CR_UARTEN | CR_TXE | CR_RXE);
+> +        if (en_bits ^ dis_bits && !fifo8_is_empty(&s->xmit_fifo)) {
+> +            /*
+> +             * If the UART is disabled in the middle of transmission
+> +             * or reception, it completes the current character before
+> +             * stopping.
+> +             */
+> +            pl011_xmit(NULL, G_IO_OUT, s);
+> +        }
+>          /* ??? Need to implement the enable and loopback bits.  */
+>          s->cr =3D value;
+>          break;
+> +    }
+>      case 13: /* UARTIFS */
+>          s->ifl =3D value;
+>          pl011_set_read_trigger(s);
+> @@ -477,6 +567,11 @@ static int pl011_post_load(void *opaque, int version=
+_id)
+>          s->read_pos =3D 0;
+>      }
+>
+> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
+> +        /* Reschedule another transmission */
+> +        qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP, pl011_xmit, =
+s);
+> +    }
+> +
+>      return 0;
+>  }
+>
+> diff --git a/hw/char/trace-events b/hw/char/trace-events
+> index bc9e84261f..ee00af0c66 100644
+> --- a/hw/char/trace-events
+> +++ b/hw/char/trace-events
+> @@ -60,6 +60,10 @@ pl011_write(uint32_t addr, uint32_t value, const char =
+*regname) "addr 0x%03x val
+>  pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR 0x%08x read_=
+count %d returning %d"
+>  pl011_fifo_rx_put(uint32_t c, int read_count) "new char 0x%02x read_coun=
+t now %d"
+>  pl011_fifo_rx_full(void) "RX FIFO now full, RXFF set"
+> +pl011_fifo_tx_put(uint8_t byte) "TX FIFO push [0x%02x]"
+> +pl011_fifo_tx_xmit(int count) "TX FIFO pop %d"
+> +pl011_fifo_tx_overrun(void) "TX FIFO overrun"
+> +pl011_fifo_tx_drain(unsigned drained) "TX FIFO draining %u"
+>  pl011_baudrate_change(unsigned int baudrate, uint64_t clock, uint32_t ib=
+rd, uint32_t fbrd) "new baudrate %u (clk: %" PRIu64 "hz, ibrd: %" PRIu32 ",=
+ fbrd: %" PRIu32 ")"
+>
+>  # cmsdk-apb-uart.c
+> --
+> 2.41.0
+>
+>
 
+
+--
+Marc-Andr=C3=A9 Lureau

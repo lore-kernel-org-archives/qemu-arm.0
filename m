@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp395108ejx;
-        Wed, 22 Nov 2023 07:12:57 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEr3LcFc2T0PKk8d4Gd3ra6cUh0388c/HrjJeu4Uw/1sC0Lyni5CXxSYvc9pY13nvpZ/YAP
-X-Received: by 2002:a05:6871:8791:b0:1f5:cd37:34e with SMTP id td17-20020a056871879100b001f5cd37034emr3495602oab.20.1700665976966;
-        Wed, 22 Nov 2023 07:12:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700665976; cv=none;
+Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp451132ejx;
+        Wed, 22 Nov 2023 08:30:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEMYdMJk20aBPBlJT1mJF46sXV4BomLixj+v6fd5QItkSMNlRI4V9ElsbR99ZP0rCbH1ijh
+X-Received: by 2002:a1f:6284:0:b0:4af:fd28:975 with SMTP id w126-20020a1f6284000000b004affd280975mr3211198vkb.5.1700670649753;
+        Wed, 22 Nov 2023 08:30:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700670649; cv=none;
         d=google.com; s=arc-20160816;
-        b=wP7OKFqTx83cTm4U17haB4NQHbQmMl3ED+ruTeyikEKodEG4mlLtDcMs9a+zqC32oC
-         mYwHLvoJlNpNQ6He6XE6D8e4MuawFSoFnzclUm9LSFg0XkYIQt9MfWlKuyi3NLQLfGkR
-         G1ZUuBsj2sPDviXJx54oGJOAfDCxNTgmG250CVOPcMQiyfPJ/WVTzUSjPDB4fyq4BQ3/
-         OcEMgmH+5CDOpTUl1+751UYx7zqCbTBVRhfFqxnYWEUIse7ieCfGDMp4ggovczLrXX6p
-         uJ8yqsTqmT1ndlkqT8NkelG2n8aeV90TrebM0KEQc2aY7DvQKsLF2OLzbCwH7MRF8ki4
-         xRYw==
+        b=esW5j6WvcqNdmHfQ12mj3/6hYu2Av7YUIZmyr9MIiJEiA1m4lCDiJug3ABEOfXPxJI
+         zpeqU0fcS9y4HlWd61tFoKQB/XdJ6KCkFoKeb4KiLX9WK0vu+vH9ROG7riB63Cew2H2q
+         n4xiH2hq9AbYH/0cQ3OqGdS3b3VsCZcxfH2mv5lYv3xZlAFjwLxze5Um6juJkVVVBwjB
+         UwMfXS4dw8Yx0zRVxt6/bWZRKuvi5w3VytVTsfySgv/F6SevKQadTX45GfGfvgxc+i4q
+         EKbMSTkbixkFkJ4YaELNSOGnOFSsM9pk9zTP4s7Z3Eh3dMPIVUQqkbhEWJG2rtbL/Zm7
+         /4Zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=kaXj/mWXJ9iD6nKFimcOBcHU6CqgZmufrMLvMDqaLPM=;
+        bh=JF0Z1k/2QhltBjvoo/3A69boZrm7eAUB3hK32VTyTj0=;
         fh=u1OL3lTxKNcHh3ZqJ4jjdO7Qp3gj9LMM8m5qOmodkrY=;
-        b=r84WqEIkmNk3lNfv9Lb7AyI/G0znBr+1keO+M5fSGQ219hPKRsv6XGTrQAYp1hvgR0
-         RICDQA/aX8yFAioWMNYjkgyUUV49AyafYS3LKaWVpoXrIhObWmBaof6dwpwBswEvYlrD
-         cWAPz/A5uq5uB6mrEjJKNvvpDt3hgEyfPGUhcpzU/Pn8oLbM8uiuKVor90y5FGQXIvzq
-         UbEenhV3ZnP0kghH88rzEIWdrlDS/bHkExRu72wZQu91evMSgzq1wGKx5V1P5yOd6kk/
-         paHNmtQ9mKLqg0zvkS5UkHhkgtqejBqi7wlOpfiV4OnzFT6oVD1+zRJfXAGDYxVQj7zq
-         nRCQ==
+        b=nBpxnklaZBhIe1SmLDo7DuMRj2XnRpMdt+4G8yHpwi5R5xQ/U+MbvWZvPFzjoQJLWx
+         kTjtKasVMMNWrqHnLQMKccz9i+Krt75jUePFQhaafSYZOwvXiD9dateRZZx1aoNfXAyW
+         K/MsMtquw3JlfpGCv7RMLXoF7CYmAmH9B2Ct6JrzQ7PIU4w3t6N3HSuFKqw0UfOKx1RD
+         DqXnX7I85QQ9DASfpJAyIJsYM/ocp/7bbW/5WuckOy6laxJH75O+55Jc/r978E8OeuWV
+         HM9hXvT1i5hWyibGQi8GcA6oDGcLKRVCA8f9mQLGBr7On41yXKfbuCwIc/RoB6kC37ZO
+         //7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hQs0t5oT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F++yCkG8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c11-20020a67f8cb000000b004528a8104b4si2404516vsp.334.2023.11.22.07.12.56
+        by mx.google.com with ESMTPS id v62-20020a1fc541000000b0048c1cc740ebsi2827004vkf.178.2023.11.22.08.30.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Nov 2023 07:12:56 -0800 (PST)
+        Wed, 22 Nov 2023 08:30:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hQs0t5oT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F++yCkG8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5ouC-0006N4-6Z; Wed, 22 Nov 2023 10:12:44 -0500
+	id 1r5q7b-0005Qc-VP; Wed, 22 Nov 2023 11:30:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r5ou9-0006Mm-S7
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 10:12:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r5q7Z-0005PT-0G
+ for qemu-arm@nongnu.org; Wed, 22 Nov 2023 11:30:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r5ou7-0006EV-Mc
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 10:12:41 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r5q7X-0005UU-0G
+ for qemu-arm@nongnu.org; Wed, 22 Nov 2023 11:30:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700665958;
+ s=mimecast20190719; t=1700670633;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=kaXj/mWXJ9iD6nKFimcOBcHU6CqgZmufrMLvMDqaLPM=;
- b=hQs0t5oTBn/EwXu5iSShkdjDbYRS+AQT5OruinJMKkq+6hM0VA6EE1H2XKg87D5hNeo+qB
- lGVGxvsZMDHK7N2JWqZsABq6DKSfZZaRjOy1PQFe1aj4s36+/ZuWThQ/snrqMu/SnN7KnT
- 9jwBRA2PWtfazilC4I95ZfqlY9cjylk=
+ bh=JF0Z1k/2QhltBjvoo/3A69boZrm7eAUB3hK32VTyTj0=;
+ b=F++yCkG8GwK2kPUg+70I+/DsM6NrEhJqsqm2BPdHvNlYptdJnrBKgfZXKL2mQESGwzwb2m
+ NgcyPNccX6AI5qCbs3xdbFioPkZFfutjTBfjQq2u1bggl2ya1Iob3JN952pbwxtimoJJ7Z
+ SNRgVz/5Pyc/LMBtj7wDZNkuYlCwYbo=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-157-GpoKonhKM6KOL43AwHj2SQ-1; Wed,
- 22 Nov 2023 10:12:34 -0500
-X-MC-Unique: GpoKonhKM6KOL43AwHj2SQ-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-212-eVNTe0QXM5apCRItOQqxrw-1; Wed,
+ 22 Nov 2023 11:30:28 -0500
+X-MC-Unique: eVNTe0QXM5apCRItOQqxrw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 002C7280AA28;
- Wed, 22 Nov 2023 15:12:34 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D466C1C0140B;
+ Wed, 22 Nov 2023 16:30:22 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.193.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B1C4D492BFA;
- Wed, 22 Nov 2023 15:12:33 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D3CD1121306;
+ Wed, 22 Nov 2023 16:30:22 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 6F4031800394; Wed, 22 Nov 2023 16:12:32 +0100 (CET)
-Date: Wed, 22 Nov 2023 16:12:32 +0100
+ id 4E0611800394; Wed, 22 Nov 2023 17:30:21 +0100 (CET)
+Date: Wed, 22 Nov 2023 17:30:21 +0100
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: Laszlo Ersek <lersek@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
@@ -88,26 +88,26 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, graf@amazon.com, 
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH 03/16] hw/uefi: add include/hw/uefi/var-service.h
-Message-ID: <gwrbpgv2ylc5fdfy4f6pjctft3kf3w75ksxvxocyc2whdtruvf@suvmqrdwbghb>
+Subject: Re: [PATCH 05/16] hw/uefi: add var-service-core.c
+Message-ID: <asxz5xxm5yjrwamdpqglseayy6q2uy24gpwf6pp26ged2ynt7k@g3nvpumuen5c>
 References: <20231115151242.184645-1-kraxel@redhat.com>
- <20231115151242.184645-4-kraxel@redhat.com>
- <a41a545b-c78e-f261-6f8e-e4d7ffe94767@redhat.com>
+ <20231115151242.184645-6-kraxel@redhat.com>
+ <f3794048-d8b9-7f53-d191-3ffbe75cee82@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <a41a545b-c78e-f261-6f8e-e4d7ffe94767@redhat.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+In-Reply-To: <f3794048-d8b9-7f53-d191-3ffbe75cee82@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.058,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,91 +122,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XvW/u4ueLmW6
+X-TUID: FfjQ7rDEiIhH
 
   Hi,
 
-> > +struct uefi_var_policy {
-> > +    variable_policy_entry             *entry;
-> > +    uint32_t                          entry_size;
-> > +    uint16_t                          *name;
-> > +    uint32_t                          name_size;
-> > +    uint32_t                          hashmarks;
-> > +    QTAILQ_ENTRY(uefi_var_policy)     next;
-> > +};
-> 
-> - I wonder if the size fields should be size_t. uint32_t is not wrong
-> either; we'll just have to be careful when doing comparisons etc.
+> - in general, we should filter out surrogate code points, for any use.
+> any UCS2 string from the guest that contains a surrogate code point
+> should be considered invalid, and the request should be rejected based
+> just on that.
 
-I can't store size_t in vmstate ...
+Something like this?
 
-> - care to explain (in a comment) hashmarks? I think it's related to the
-> wildcard policy stuff, but a hint would be appreciated.
+edk2 seems to be inconsistent with strings, sometimes they are expected
+to include a terminating '\0' char (most of the time), sometimes not
+(in variable policies for example).
 
-Yes.  It's the number of hashmarks, used when sorting entries by
-priority.  Most specific match, i.e. smallest number of wildcard
-characters, goes first.
+gboolean uefi_str_is_valid(const uint16_t *str, size_t len,
+                           gboolean must_be_null_terminated)
+{
+    size_t pos = 0;
 
-I'll add a comment.
-
-> > +struct uefi_vars_state {
-> > +    MemoryRegion                      mr;
-> > +    uint16_t                          sts;
-> > +    uint32_t                          buf_size;
-> > +    uint32_t                          buf_addr_lo;
-> > +    uint32_t                          buf_addr_hi;
-> 
-> spelling out endianness here would be useful IMO
-
-Don't think this is needed, qemu handles this for us.  The memory
-region is declared to be little endian, qemu will convert reads/writes
-to native endian for us, so there are no endian worries for the register
-interface (the transfer buffer in guest ram is a different story).
-
-> > +    /* boot phases */
-> > +    bool                              end_of_dxe;
-> > +    bool                              ready_to_boot;
-> > +    bool                              exit_boot_service;
-> 
-> There are some variations of the 8 possible that don't make sense. at
-> the same time, a single enum could be too limiting. depends on what the
-> code will do with these.
-
-end-of-dxe: used by variable policies (they are enforced only after that
-event).
-
-ready-to-boot: not used yet (other than setting it when the event arrives).
-
-exit-boot-service: access control (RT vs. BT etc).
-
-> > +/* vars-service-guid.c */
-> > +extern QemuUUID EfiGlobalVariable;
-> > +extern QemuUUID EfiImageSecurityDatabase;
-> > +extern QemuUUID EfiCustomModeEnable;
-> > +extern QemuUUID EfiSecureBootEnableDisable;
-> > +extern QemuUUID EfiSmmVariableProtocolGuid;
-> > +extern QemuUUID VarCheckPolicyLibMmiHandlerGuid;
-> > +extern QemuUUID EfiEndOfDxeEventGroupGuid;
-> > +extern QemuUUID EfiEventReadyToBootGuid;
-> > +extern QemuUUID EfiEventExitBootServicesGuid;
-> 
-> the spelling of these names appears a bit questionable:
-> 
-> - camelcase is idiomatic in edk2, but (I think?) not in QEMU, for variables
-> 
-> - the "Guid" suffix is inconsistently used / carried over from edk2
-
-Yes.  It's carried over from edk2.
-
-We don't have to keep the names in qemu, in fact I've renamed the
-structs because that would have been too much of a contrast to the
-qemu code style, so the edk2 name is only noted in a comment in the
-vars-service-edk2.h header file.
-
-For the #defines and GUIDs I've kept the edk2 names as-is, so it's
-easier to follow the control flow for people which are familiar with
-edk2.  We have already have simliar stuff else, for example the struct
-names in hw/usb/desc.h follow the usb spec not qemu code style.
+    for (;;) {
+        if (pos == len) {
+            if (must_be_null_terminated) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        switch (str[pos]) {
+        case 0:
+            /* end of string */
+            return true;
+            ;;
+        case 0xd800 ... 0xdfff:
+            /* outlaw surrogates */
+            return false;
+        default:
+            /* char is good, check next */
+            break;
+        }
+        pos++;
+    }
+}
 
 take care,
   Gerd

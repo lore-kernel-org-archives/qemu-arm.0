@@ -1,171 +1,142 @@
-Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp451132ejx;
-        Wed, 22 Nov 2023 08:30:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEMYdMJk20aBPBlJT1mJF46sXV4BomLixj+v6fd5QItkSMNlRI4V9ElsbR99ZP0rCbH1ijh
-X-Received: by 2002:a1f:6284:0:b0:4af:fd28:975 with SMTP id w126-20020a1f6284000000b004affd280975mr3211198vkb.5.1700670649753;
-        Wed, 22 Nov 2023 08:30:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700670649; cv=none;
+Received: by 2002:a17:906:3119:b0:a04:79f0:9a0e with SMTP id 25csp532690ejx;
+        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
+X-Received: by 2002:a05:600c:3510:b0:40b:3519:824f with SMTP id h16-20020a05600c351000b0040b3519824fmr161209wmq.26.1700677856460;
+        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700677856; cv=none;
         d=google.com; s=arc-20160816;
-        b=esW5j6WvcqNdmHfQ12mj3/6hYu2Av7YUIZmyr9MIiJEiA1m4lCDiJug3ABEOfXPxJI
-         zpeqU0fcS9y4HlWd61tFoKQB/XdJ6KCkFoKeb4KiLX9WK0vu+vH9ROG7riB63Cew2H2q
-         n4xiH2hq9AbYH/0cQ3OqGdS3b3VsCZcxfH2mv5lYv3xZlAFjwLxze5Um6juJkVVVBwjB
-         UwMfXS4dw8Yx0zRVxt6/bWZRKuvi5w3VytVTsfySgv/F6SevKQadTX45GfGfvgxc+i4q
-         EKbMSTkbixkFkJ4YaELNSOGnOFSsM9pk9zTP4s7Z3Eh3dMPIVUQqkbhEWJG2rtbL/Zm7
-         /4Zg==
+        b=h3CIVI7WVBlBTXh5lIdHw/YReivQPEJ3Apd3iJpRoDEECXK9hP5jKADVgJlRIam5Yz
+         KZq0V3eNFETUszeu/RErqyd+FduKfVrDHprWGBKV9UbIAs6KQGbazoJVoLrNHjJDb1DN
+         j0M93SvpdNRqx2ZakArRONSvTmMx5+Py4RPNOk/nQ7f2Vjv/Zk0hQZ0ZWeOSOMjZKT38
+         SV6nSRlKrc1LwCNgX8xEkuQJRCGSVB98NZEEasSVaMbpGJaK9FjMdmRbAMyaB3c05fZj
+         FGW7s/Cne7PjjfYSy5UuIM1p+A+dX3tsYrzzLOCEZQhWs/MWBMxEp0wfsfGRFGpRiLLx
+         bNxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=JF0Z1k/2QhltBjvoo/3A69boZrm7eAUB3hK32VTyTj0=;
-        fh=u1OL3lTxKNcHh3ZqJ4jjdO7Qp3gj9LMM8m5qOmodkrY=;
-        b=nBpxnklaZBhIe1SmLDo7DuMRj2XnRpMdt+4G8yHpwi5R5xQ/U+MbvWZvPFzjoQJLWx
-         kTjtKasVMMNWrqHnLQMKccz9i+Krt75jUePFQhaafSYZOwvXiD9dateRZZx1aoNfXAyW
-         K/MsMtquw3JlfpGCv7RMLXoF7CYmAmH9B2Ct6JrzQ7PIU4w3t6N3HSuFKqw0UfOKx1RD
-         DqXnX7I85QQ9DASfpJAyIJsYM/ocp/7bbW/5WuckOy6laxJH75O+55Jc/r978E8OeuWV
-         HM9hXvT1i5hWyibGQi8GcA6oDGcLKRVCA8f9mQLGBr7On41yXKfbuCwIc/RoB6kC37ZO
-         //7Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=lSl3SvKqQCH/74SE8sqRcfeJMBZmOK/fR4uLmHCWg/A=;
+        fh=aTzmneatFEDiKMS1saCdxZb39+p//OutFupiUjvLGTw=;
+        b=DsdaTvnRoC5fYNOujbNmm8s75zGrh9Yt40ShIkSM5yTsClFJBb3laqbAB/084M7i+j
+         j/JL1BNLaAVLZaaGOD+KfYj6yNbquk3fFxJFxf+ezSpDJ4ev0RshvMP4IyqYnDYlVkDF
+         RxQwETEv1a0keMS0YCexvzX6O7cZ6pIDVhgMw7JXPCWydy6emWGgdtP92Ls43+3d7ZWf
+         rsax3Y8RFtRZZ2yQA4P4Qt30pS6jtpK3PVQ6ZbayqXBRLyUAe9BdKb+XUcYGXa5R70gm
+         zmms+Yxc9bnbo5MhHDVrk5vOuVl/kqxdRv3JSUKYWP0bCc5M5knRk4EtpuRS5NazO6cB
+         XOVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F++yCkG8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v62-20020a1fc541000000b0048c1cc740ebsi2827004vkf.178.2023.11.22.08.30.49
+       dkim=pass header.i=@linaro.org header.s=google header.b="zlCpbN/b";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id j42-20020a05600c1c2a00b0040b2c1b0f71sor27385wms.5.2023.11.22.10.30.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Nov 2023 08:30:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F++yCkG8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r5q7b-0005Qc-VP; Wed, 22 Nov 2023 11:30:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r5q7Z-0005PT-0G
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 11:30:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1r5q7X-0005UU-0G
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 11:30:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700670633;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=JF0Z1k/2QhltBjvoo/3A69boZrm7eAUB3hK32VTyTj0=;
- b=F++yCkG8GwK2kPUg+70I+/DsM6NrEhJqsqm2BPdHvNlYptdJnrBKgfZXKL2mQESGwzwb2m
- NgcyPNccX6AI5qCbs3xdbFioPkZFfutjTBfjQq2u1bggl2ya1Iob3JN952pbwxtimoJJ7Z
- SNRgVz/5Pyc/LMBtj7wDZNkuYlCwYbo=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-212-eVNTe0QXM5apCRItOQqxrw-1; Wed,
- 22 Nov 2023 11:30:28 -0500
-X-MC-Unique: eVNTe0QXM5apCRItOQqxrw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D466C1C0140B;
- Wed, 22 Nov 2023 16:30:22 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.193.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D3CD1121306;
- Wed, 22 Nov 2023 16:30:22 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 4E0611800394; Wed, 22 Nov 2023 17:30:21 +0100 (CET)
-Date: Wed, 22 Nov 2023 17:30:21 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Eric Blake <eblake@redhat.com>, Thomas Huth <thuth@redhat.com>, 
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, graf@amazon.com, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH 05/16] hw/uefi: add var-service-core.c
-Message-ID: <asxz5xxm5yjrwamdpqglseayy6q2uy24gpwf6pp26ged2ynt7k@g3nvpumuen5c>
-References: <20231115151242.184645-1-kraxel@redhat.com>
- <20231115151242.184645-6-kraxel@redhat.com>
- <f3794048-d8b9-7f53-d191-3ffbe75cee82@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="zlCpbN/b";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1700677856; x=1701282656; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lSl3SvKqQCH/74SE8sqRcfeJMBZmOK/fR4uLmHCWg/A=;
+        b=zlCpbN/bBZ8gzAZBPmHE9mcVyIMssvffed9fJ4KZokw3ciNjcrrmhtvkzmGVetD6kw
+         zJNO3PWCEMGApSz/5Ff6JZN1sFTFOipLIKnGKW76FUSTZyz9yBI5qXg0CFRJJhEP2CUm
+         Jv0JKHJlkblHq4Gl8MZ91PoTozR1/XJrEebrQSUgDG/xckhdX6b53r8J7NQoSIlgijru
+         9as5L6VdD7SWpZMb48J66avRwaRBtZ629vOBh+2W/r2BvBgf4YpFdaniPxp0skufODUK
+         tBvAaZzfqGinfwgzY1NoY7IeuUTaf1yJRcvFGvcaJ0+vPItEidiEjBF1tBkxjl4y3otw
+         qnnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700677856; x=1701282656;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lSl3SvKqQCH/74SE8sqRcfeJMBZmOK/fR4uLmHCWg/A=;
+        b=N1bhlhQmhaORraBY8mhAoPHNX8+H+W3OZkYIS0MrdDpvF6tyNW18YF1oqWwI9IIyBU
+         gVkPaEoTBQnsSi9lyzHT/nRjQa1rPWiJFJimPZaWIBksIcWBruwjaFoCaHId0E+6k9LA
+         uA8dCXJtpYSPEpZBswJGt0dsFFd1lG6UyQqgSGrVjzC/buqaZtlMvbC6ackAeFXHFfGi
+         oVccVx7W5xtGI/HgSXo78Yng+Mt5+aNtAJoefW/KCBHdVY7WfNAIOEgTH4pks7K4W7H8
+         p7X0mYnDcTBzGxIPyDQw8HRnwIfgvYp7L9oa1s0KbV2Q53w4Kkg2DAPtTVzO8Cjz0gLd
+         rXLQ==
+X-Gm-Message-State: AOJu0Ywjhl+spgz/WRhAHmf8SMO2znYcd7sI+ywyVHxSEcqptk/e3sN1
+	KvXcyOtzNDe8i2O4fmSQjjGvCZu+
+X-Google-Smtp-Source: AGHT+IG+lom2T2L1G6ppR4LSOkVj0+z1J919Ft7QO7x8s0p9VZICGrYQcWydldiJjYb9B55ciEXU+g==
+X-Received: by 2002:a05:600c:1991:b0:408:53ac:141f with SMTP id t17-20020a05600c199100b0040853ac141fmr2507005wmq.24.1700677856143;
+        Wed, 22 Nov 2023 10:30:56 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (pas38-h02-176-184-5-64.dsl.sta.abo.bbox.fr. [176.184.5.64])
+        by smtp.gmail.com with ESMTPSA id p21-20020a05600c431500b00403b63e87f2sm176451wme.32.2023.11.22.10.30.55
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 22 Nov 2023 10:30:55 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH-for-9.0 01/11] qom: Introduce the TypeInfo::can_register() handler
+Date: Wed, 22 Nov 2023 19:30:37 +0100
+Message-ID: <20231122183048.17150-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231122183048.17150-1-philmd@linaro.org>
+References: <20231122183048.17150-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f3794048-d8b9-7f53-d191-3ffbe75cee82@redhat.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.058,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FfjQ7rDEiIhH
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: QPEfJ7cNSQqg
 
-  Hi,
+Add a helper to decide at runtime whether a type can
+be registered to the QOM framework or not.
 
-> - in general, we should filter out surrogate code points, for any use.
-> any UCS2 string from the guest that contains a surrogate code point
-> should be considered invalid, and the request should be rejected based
-> just on that.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/qom/object.h | 4 ++++
+ qom/object.c         | 3 +++
+ 2 files changed, 7 insertions(+)
 
-Something like this?
-
-edk2 seems to be inconsistent with strings, sometimes they are expected
-to include a terminating '\0' char (most of the time), sometimes not
-(in variable policies for example).
-
-gboolean uefi_str_is_valid(const uint16_t *str, size_t len,
-                           gboolean must_be_null_terminated)
-{
-    size_t pos = 0;
-
-    for (;;) {
-        if (pos == len) {
-            if (must_be_null_terminated) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-        switch (str[pos]) {
-        case 0:
-            /* end of string */
-            return true;
-            ;;
-        case 0xd800 ... 0xdfff:
-            /* outlaw surrogates */
-            return false;
-        default:
-            /* char is good, check next */
-            break;
-        }
-        pos++;
-    }
-}
-
-take care,
-  Gerd
-
+diff --git a/include/qom/object.h b/include/qom/object.h
+index afccd24ca7..0d42fe17de 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -372,6 +372,8 @@ struct Object
+  * struct TypeInfo:
+  * @name: The name of the type.
+  * @parent: The name of the parent type.
++ * @can_register: This optional function is called before a type is registered.
++ *   If it exists and returns false, the type is not registered.
+  * @instance_size: The size of the object (derivative of #Object).  If
+  *   @instance_size is 0, then the size of the object will be the size of the
+  *   parent object.
+@@ -414,6 +416,8 @@ struct TypeInfo
+     const char *name;
+     const char *parent;
+ 
++    bool (*can_register)(void);
++
+     size_t instance_size;
+     size_t instance_align;
+     void (*instance_init)(Object *obj);
+diff --git a/qom/object.c b/qom/object.c
+index 95c0dc8285..f09b6b5a92 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -150,6 +150,9 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
+ TypeImpl *type_register(const TypeInfo *info)
+ {
+     assert(info->parent);
++    if (info->can_register && !info->can_register()) {
++        return NULL;
++    }
+     return type_register_internal(info);
+ }
+ 
+-- 
+2.41.0

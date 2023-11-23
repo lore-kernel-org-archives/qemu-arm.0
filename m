@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp149931ejj;
-        Wed, 22 Nov 2023 20:44:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGoSxvxlwui+SxvpwhKGM9wSF7vNJ8nMiEcgkrx0FMvKsuTXbIP0UNojaqx6WPMDEru1KTP
-X-Received: by 2002:a05:622a:2683:b0:423:8b9c:cfbc with SMTP id kd3-20020a05622a268300b004238b9ccfbcmr556811qtb.8.1700714650486;
-        Wed, 22 Nov 2023 20:44:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700714650; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp150020ejj;
+        Wed, 22 Nov 2023 20:44:26 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHEH7sb/UDM3UjMRyLvis3aSSYQvJPw+yToIdasYEFktuV609VJp09z/hqS3PEvPrH31TmK
+X-Received: by 2002:a05:622a:650:b0:41c:dbd9:ad3e with SMTP id a16-20020a05622a065000b0041cdbd9ad3emr5046747qtb.57.1700714666561;
+        Wed, 22 Nov 2023 20:44:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700714666; cv=none;
         d=google.com; s=arc-20160816;
-        b=W/BkKgFcsq62ADEKQmrjh4cmNxnSPER2fNnXykSgkkaaZMQIWaEKJqyN3piudTYBAh
-         rxv70SXR9+4kXgBJsm7OwoOTtmxGx1iHHeUEddLAC1+Cr4C9fR7Z1ZLnQMc3uWvPCm70
-         cmAUdjcqVhsqFgfZahKKqzAByxNIAhaeKBEInntWmEZuoqR7K/HA84vUar2hhPfO9So+
-         srdZe2gT+BXXYaOATlMvirHknEPO9DUSq37iNiqs6v+bvKZzGwTSwHlhYiV52IwQGTO/
-         ruigo4fu5W1sh1VOgUB7JSQ4kWSXIXgLAeX6J/g1U+hQWacYBHLVafSqzwSXvqMec4aK
-         wN0Q==
+        b=djNDqYSUOvZmupwioqX//rZ71TqHljuIfrI+DnnXBE0a+7f7fKiFiiMzqm0oHLlbdl
+         HJp3NZRoK4jq6+ifFuB6JimcKjtnW4T4fHSNFwD21/XHX6tGtsMeJfcoTSRMk61A0rLo
+         Hcs21bebMnXypnOevKtrVzOPaz2aCu9exF1LdV7KOcvWNqWIJxBUbyu3LEQVT+Av4+uu
+         B9LHY0zEgC+NlBauXFA/9xQPO/oe5fFhCzW1hf1COPn9amI/TCjZuOxkkP5spDW50+gB
+         YMKS+X6Qn+MWp+2blzvMk8NTT7JDW2kdJeVFW3UbIaPaAd8MUlnzZb82mNSKDv13LmqA
+         /Awg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2iSZMQtowpDEmNjGPUjOpszRYxZbjV35t/gkG9vRYI4=;
+        bh=j7rKkgtczML1NQeakIsfiyCwMRWbdPg9sIsXXpiAu1I=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=rkobg8Mb+lLrcfVxJr3mi4vfRt+muaIu4YxPkHG6fpHpZxFqk4eBy+GASL3zds+Nrf
-         2EUVtj1eIYfWZxUYYqhoiRb/7ijZMyg1evdDN/cN7wyn/Ey9f4eu+J0ACWgBPpnouPUd
-         bynv4xs7Yj4AfB8WfLZrFhECuWQRGBicB6oXC8RG9MB4iww33cNsU5BSR3DJ4uUv14kj
-         Yx09V+JYF/Ex9QDoX+UHfVJqGjFgN+zFDmgyO+37pRQmgSkQg5D6KLYlHC2e4TGdznEv
-         3mJZZ7fPO/Yg1ZXTQEToyQY8slBnrQCIOKNy/N1mXl0dccRdLX3VWQ5F+aOz0eEE9wjJ
-         vEfw==
+        b=w+tl1w0jNkl6IwMJNN2qzNJt0R9P0AJmu5+Now3SqjXx6fJ8gRxPrSJUaAJ6WHvQap
+         x8nDTIPnGGq3zxmhr173eQBhM3HtMAnTIYF4u4MzVexifj9JH82AoG8T65g5LDkn6lJv
+         pN7XqQkcshY5bohKTD53/mW5ZA/A+ACvMgkp++q1gYU8f2iKByYkB6/PdvP9BNuUbfSm
+         rCuFKIdlG1ZQfT5QPOFRVVnyg45aAhAOVHO+6lQLMrPt45es1BMqAKl+B7T0IR8MnboA
+         7ltWj2vq5LDrfsSODyJZFzTBv1njxTVkuSYnYyvzEYzqTF5nK4bceNR7BymlVzI4XbiX
+         p0bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="W9L/RIqo";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JzqWrOQu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f10-20020ac87f0a000000b004238b1fc9a2si432038qtk.609.2023.11.22.20.44.10
+        by mx.google.com with ESMTPS id x2-20020a05620a0b4200b007759f944c0fsi392234qkg.156.2023.11.22.20.44.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Nov 2023 20:44:10 -0800 (PST)
+        Wed, 22 Nov 2023 20:44:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="W9L/RIqo";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JzqWrOQu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r61YY-0006op-8z; Wed, 22 Nov 2023 23:43:14 -0500
+	id 1r61Y4-0006Ox-KV; Wed, 22 Nov 2023 23:42:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Y6-0006Rp-Q6
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:48 -0500
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+ id 1r61Xr-0006LY-1L
+ for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:31 -0500
+Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Y2-0006Gf-Aa
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:45 -0500
-Received: by mail-oi1-x22b.google.com with SMTP id
- 5614622812f47-3b842e28917so287698b6e.1
- for <qemu-arm@nongnu.org>; Wed, 22 Nov 2023 20:42:41 -0800 (PST)
+ id 1r61Xo-00065o-0N
+ for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:30 -0500
+Received: by mail-oo1-xc31.google.com with SMTP id
+ 006d021491bc7-586753b0ab0so280556eaf.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Nov 2023 20:42:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700714560; x=1701319360; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700714546; x=1701319346; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2iSZMQtowpDEmNjGPUjOpszRYxZbjV35t/gkG9vRYI4=;
- b=W9L/RIqoAQBzuw3sum3jbM5n8l3KwBU/9ZPt4lG/XoKM9rBq6Yz+832Fo/6dqhIcoN
- xK1WHQkafAMXV79EFuoW18iY+nGhSeZPTGZvG2YPfisIl6WKmf6yWs0L6ATSwKo3CXDH
- QLGQxoC00Wq2xjFrNTqpQ/Q7ivAMJmAuhSxl0Iv7WdMThomPT1BpaXoOuyyU6nQEm5QK
- 1jlez+wjoU4mVZa3z0fNQIok0Mz6MHpHEPzTHKom10ZH2+YBeRfiDfObja2qHWY3Fh85
- OUGL4hl4zKhttK0MOjCOsGidqHqlTlBarb2oLQW8DR8Xz/f7E+/Z4VgYRvk5uFDlHY3R
- zvGw==
+ bh=j7rKkgtczML1NQeakIsfiyCwMRWbdPg9sIsXXpiAu1I=;
+ b=JzqWrOQuRz/RP8kncI5n7BjiX+ETLw7ampPShW0MlwkWZ2pvHiqcTjbd7oVNZQLexu
+ UM5mIN4M6TdjXzXF4X0Uy1qYH6deAYLMhssdlM8VH930E1W8fJcHMk15AjyjIAcy0n+4
+ M9l6a2AM8JCG26hte7iUD1vsOIYrSY9hDRA0VR/YxpT5VgMCk01M5sezzW8k9ot8GHIl
+ G6tOTn/WsceUXR8nVr13KxAbQG3QKsturgPAR1rbmYhJgrH02V8aZTT8jlHn/Hr2p7r8
+ r3suwswTb0ESk4xVzOy+kaSt/cHfgvKLfXDYLulesAkILo7YpfRYgU4GIa+j+0M49Q4B
+ DxIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700714560; x=1701319360;
+ d=1e100.net; s=20230601; t=1700714546; x=1701319346;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2iSZMQtowpDEmNjGPUjOpszRYxZbjV35t/gkG9vRYI4=;
- b=bnko33gw3G7SK26QNciRoAmVrKfRH3wUtetwmIIk/IvjihAkdIBVHA5Qd+FlYBqSvT
- 8kZyODE6fgIIycmQgPsl9v9dv1x/lX3jOX5l6LkqAL1r4+mEQmgoBIcV98nvDsZT6b74
- 3JLXfiLqz5ZeGkTreC8cyxO9lBKQHGIDWDGWuc5ZXKBEeJgQHfkiPAbcuJXdqZYFBUgT
- hL0D20ClwwU9emu/ZDIrrb20EGP/VEDMTpHNPZxLEBw28VBNPQDnhm/8ECOZ9OaSb9ly
- WSjXj0h9FatPjGQsoTm7zAYTVRZTzltaSjq0+t/Ey1AfKki4fn2CZs3ARb+4zb2jvNeE
- V3RA==
-X-Gm-Message-State: AOJu0YwlKE7i9l0cnrfBdf26RwEDIGnTglQWsuAc5MpAjCgd4SYkNQpj
- e4JSsPzhWWlr09UFCwX5AMiVoHSN5H6Fqi9Xp5G86yto
-X-Received: by 2002:a05:6808:1247:b0:3b2:dd32:2fe9 with SMTP id
- o7-20020a056808124700b003b2dd322fe9mr4916802oiv.35.1700714559780; 
- Wed, 22 Nov 2023 20:42:39 -0800 (PST)
+ bh=j7rKkgtczML1NQeakIsfiyCwMRWbdPg9sIsXXpiAu1I=;
+ b=wLRFDEc5e3PfShnkltAJTZlr/wT1kMrZ6K6qjKFiM/NVYGXjK/ZbGPWF2yY4bl/klG
+ XmfkC0+EiLXmXW0KTx/FP364sazQX9TgNwl5oZqCLEgF7wdXc1xKFqhFMbr4EOQfycYY
+ OWFHda84xfKjaccGr3MbvWGCIoJ/i4UHmaPXA1/zLjf4Um8ZKMCQzGzj0PVG5ZG5OgJr
+ m5WnZOa3TnA8VkdXYc0CRDzTgTyRNFVX96QxnUKtfypg3OSgEiAf7fweqGmRibXJgKph
+ mLdKHzEcnebLZHAZIGrfjckToO9irt8yZaa4/OMOVXjWphKunh52oEs4f9CUPl3eNIjP
+ kACg==
+X-Gm-Message-State: AOJu0YyzejN3DJlv+cs+rBG7WwhEdKSWfGvjBteRU7xrvyTw0VN6Nb5F
+ rBDcxjBQ+04hGLr2rcY2OX5IG67x/FslpTdz4Cqvvjwy
+X-Received: by 2002:a05:6870:44d2:b0:1f5:ef2a:9dee with SMTP id
+ t18-20020a05687044d200b001f5ef2a9deemr6246529oai.37.1700714546373; 
+ Wed, 22 Nov 2023 20:42:26 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.39
+ i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Nov 2023 20:42:39 -0800 (PST)
+ Wed, 22 Nov 2023 20:42:26 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 18/21] target/arm/kvm: Init cap_has_inject_serror_esr in
- kvm_arch_init
-Date: Wed, 22 Nov 2023 22:42:16 -0600
-Message-Id: <20231123044219.896776-19-richard.henderson@linaro.org>
+Subject: [PATCH 05/21] target/arm/kvm: Move kvm_arm_copy_hw_debug_data and
+ unexport
+Date: Wed, 22 Nov 2023 22:42:03 -0600
+Message-Id: <20231123044219.896776-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231123044219.896776-1-richard.henderson@linaro.org>
 References: <20231123044219.896776-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22b;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c31;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc31.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -124,74 +124,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nKy7KGouKKs7
-
-There is no need to do this in kvm_arch_init_vcpu per vcpu.
-Inline kvm_arm_init_serror_injection rather than keep separate.
+X-TUID: BFfI42MKAkQy
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/kvm_arm.h |  8 --------
- target/arm/kvm.c     | 13 ++++---------
- 2 files changed, 4 insertions(+), 17 deletions(-)
+ target/arm/kvm_arm.h | 10 ----------
+ target/arm/kvm.c     | 24 ++++++++++++++++++++++++
+ target/arm/kvm64.c   | 17 -----------------
+ 3 files changed, 24 insertions(+), 27 deletions(-)
 
 diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 350ba6cb96..1ec2476de7 100644
+index bb284a47de..207b7f21b0 100644
 --- a/target/arm/kvm_arm.h
 +++ b/target/arm/kvm_arm.h
-@@ -98,14 +98,6 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
+@@ -462,14 +462,4 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit);
   */
- void kvm_arm_reset_vcpu(ARMCPU *cpu);
+ bool kvm_arm_hw_debug_active(CPUState *cs);
  
 -/**
-- * kvm_arm_init_serror_injection:
-- * @cs: CPUState
+- * kvm_arm_copy_hw_debug_data:
+- * @ptr: kvm_guest_debug_arch structure
 - *
-- * Check whether KVM can set guest SError syndrome.
+- * Copy the architecture specific debug registers into the
+- * kvm_guest_debug ioctl structure.
 - */
--void kvm_arm_init_serror_injection(CPUState *cs);
+-struct kvm_guest_debug_arch;
+-void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
 -
- /**
-  * kvm_get_vcpu_events:
-  * @cpu: ARMCPU
+ #endif
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index bc4ba7628b..3250919273 100644
+index 696bc63e86..2898e680fc 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -96,12 +96,6 @@ static int kvm_arm_vcpu_finalize(CPUState *cs, int feature)
-     return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_FINALIZE, &feature);
+@@ -1021,6 +1021,30 @@ int kvm_arch_process_async_events(CPUState *cs)
+     return 0;
  }
  
--void kvm_arm_init_serror_injection(CPUState *cs)
++/**
++ * kvm_arm_copy_hw_debug_data:
++ * @ptr: kvm_guest_debug_arch structure
++ *
++ * Copy the architecture specific debug registers into the
++ * kvm_guest_debug ioctl structure.
++ */
++static void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr)
++{
++    int i;
++    memset(ptr, 0, sizeof(struct kvm_guest_debug_arch));
++
++    for (i = 0; i < max_hw_wps; i++) {
++        HWWatchpoint *wp = get_hw_wp(i);
++        ptr->dbg_wcr[i] = wp->wcr;
++        ptr->dbg_wvr[i] = wp->wvr;
++    }
++    for (i = 0; i < max_hw_bps; i++) {
++        HWBreakpoint *bp = get_hw_bp(i);
++        ptr->dbg_bcr[i] = bp->bcr;
++        ptr->dbg_bvr[i] = bp->bvr;
++    }
++}
++
+ void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
+ {
+     if (kvm_sw_breakpoints_active(cs)) {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 7d937e2539..ac3120adaf 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -73,23 +73,6 @@ void kvm_arch_remove_all_hw_breakpoints(void)
+     }
+ }
+ 
+-void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr)
 -{
--    cap_has_inject_serror_esr = kvm_check_extension(cs->kvm_state,
--                                    KVM_CAP_ARM_INJECT_SERROR_ESR);
+-    int i;
+-    memset(ptr, 0, sizeof(struct kvm_guest_debug_arch));
+-
+-    for (i = 0; i < max_hw_wps; i++) {
+-        HWWatchpoint *wp = get_hw_wp(i);
+-        ptr->dbg_wcr[i] = wp->wcr;
+-        ptr->dbg_wvr[i] = wp->wvr;
+-    }
+-    for (i = 0; i < max_hw_bps; i++) {
+-        HWBreakpoint *bp = get_hw_bp(i);
+-        ptr->dbg_bcr[i] = bp->bcr;
+-        ptr->dbg_bvr[i] = bp->bvr;
+-    }
 -}
 -
- bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-                                       int *fdarray,
-                                       struct kvm_vcpu_init *init)
-@@ -562,6 +556,10 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
- 
-     cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
- 
-+    /* Check whether user space can specify guest syndrome value */
-+    cap_has_inject_serror_esr =
-+        kvm_check_extension(s, KVM_CAP_ARM_INJECT_SERROR_ESR);
-+
-     if (ms->smp.cpus > 256 &&
-         !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)) {
-         error_report("Using more than 256 vcpus requires a host kernel "
-@@ -1948,9 +1946,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     }
-     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
- 
--    /* Check whether user space can specify guest syndrome value */
--    kvm_arm_init_serror_injection(cs);
--
-     return kvm_arm_init_cpreg_list(cpu);
- }
- 
+ bool kvm_arm_hw_debug_active(CPUState *cs)
+ {
+     return ((cur_hw_wps > 0) || (cur_hw_bps > 0));
 -- 
 2.34.1
 

@@ -1,84 +1,92 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp494773ejj;
-        Thu, 23 Nov 2023 08:03:12 -0800 (PST)
-X-Received: by 2002:a05:600c:4ed0:b0:40a:4436:e037 with SMTP id g16-20020a05600c4ed000b0040a4436e037mr22889wmq.35.1700755392381;
-        Thu, 23 Nov 2023 08:03:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700755392; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp510430ejj;
+        Thu, 23 Nov 2023 08:24:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFbrGfBc5YOezp8FkEMEjX+8nP7vPcQR1QV1ijY+kLL9EJ6hUrLots0Y4IxFdLDDdGKtOR8
+X-Received: by 2002:a05:6870:ebc6:b0:1dd:651a:72ce with SMTP id cr6-20020a056870ebc600b001dd651a72cemr8018799oab.33.1700756697027;
+        Thu, 23 Nov 2023 08:24:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700756697; cv=none;
         d=google.com; s=arc-20160816;
-        b=smUZE2GN9FTK3rUzK5lrE12Z7OwQwT+ABYBBAAro7LtYBIdw1OindNSTL3MWLCGdEU
-         pwGA983W1fB0rhAt3S/HKtJRZkC80vMyl2glbbMJ7IAHYdDwkZl0uPMeEhE9Entmyp5l
-         hb1NGadg1RFOoKGtH7sgeGlbprg+tMYQt0EW/SiuB9ZJZrD1iWjyJvCIKDU8Nwaq3eEn
-         P3w0GGUUgasn/cxBQq4toASk/riYs+fQ5bV2LOboYpHOuh13N4QerYO62Z9aRGagl5Ot
-         +jv2DXDaruUlQAtSv00l8sQg7rBFjc5oo5gB84BaPgA00WU9E5ZWrozLrg65szmA1Z6F
-         jKrA==
+        b=IAHd5VVIXf/V7UPwDlFlMNOgeWZi88Wwzyw1weXBI4MVTmEDzVRudUesXVXynF6Jyz
+         yC+UN4rFPRv0gDK3yXL3KajCDXcKEsJX/cAvFdwyW3v+lNN/CwT1zrISWTqLJi4WwRrm
+         7IokRiYcb5jfL4fhrHFRscuOhvE/yU2N7oHK9CGjQJuVXfoapiZXrixqfJKQgnNYiB1+
+         Z8n2Fer08DC9qo/mIJ7GkVFz02/+HwIrT6eE2sRc2+pfnzYdODIvhB0+e1nUWnrPXdlc
+         JEcmd4wJvlpuQe8ed4PElWeX1Q+JXHy1Yps+41dOD6+uSwNdsGNcCTxJvIi8H5Cxl9Tw
+         Dzpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=nlWRT+PrdlAnCO9FQl/pWIQPvdcP9ZXH3YCgK+oWzOc=;
-        fh=H0nqUa7Ulf/BqP3c1BifvbjuBsZ1G7kNIIYfL+u1Lbo=;
-        b=NFc7Xtpnu4+sQY4OCuxZtfpOGI8xiI2/onJKeGxN+Om2NprcQhyIgzznEzMV+5ABtj
-         UZ3qkBQ00ayxXhDBXDgP5qjxTzAu/yM3M6dz6QmIOcP2zcXiMINs0b2tTrgSvIZe1k5H
-         BS8mbUyAaeG9RyCrCIeD9bpgOCGeu06jQuakIoRHPhfngyZT7Jx1bJV8ZlbUdRYCeMdy
-         UB0+/5oTHiWNXp9PT9NQkEfHX7mJ/R9n/RnRqLBd8YJ9UXVw6hMT3/Z7W3cDcdjpkZw4
-         o6flBJP5hKlqd0fSBxJ9uTmzYoiZCNwlfSDaOOI41P+QLnQmCKAEWDFUq57ZWZd2iCBX
-         qmfQ==
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=RkZr6Uzf2YD+cyAlhzAAYwdyvQokQG5lkbLuX195xcw=;
+        fh=n8Ta741eZfcJnUmcfO3cNkLSctKDnt3KsR4oS0yc4SY=;
+        b=TrWGRCjEY4huxcsSKhc6t6buNZa2hA5XVeMEkHoz4ZNJIPG2DeUHpSHgu9EOyL5a3Z
+         YxUXZjAk7y7v9roBvQNa/XtgoTCVk5o4vKpsqF9w8h5f7WU9ISArN2pkitlekCisoDY4
+         NNzTq0Sp683TMo07aAizjwsw8EN4fAltxWzvVhQmCpZZtfKFPNeWMFJF0dmREYMeYi3B
+         yGGU2DMwgT/nd3xu3XFv8UBwSTfmyKkO8YPmKbUvHe566t0jqGI317TShrXDk7N3ixi7
+         rOQtfquYDxAXL8hJUw0AKvClClQLldrdq7idImbq/YKZhVHcIzY1Bj5CrmIY4nq/25gM
+         J4GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uGPgc+xV;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 15-20020a05600c22cf00b003fef8272b2fsor395081wmg.9.2023.11.23.08.03.12
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YAgDGrmB;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id c3-20020ac85a83000000b0041cbf904b67si1343400qtc.89.2023.11.23.08.24.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 23 Nov 2023 08:03:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Nov 2023 08:24:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uGPgc+xV;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1700755392; x=1701360192; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=nlWRT+PrdlAnCO9FQl/pWIQPvdcP9ZXH3YCgK+oWzOc=;
-        b=uGPgc+xVvRnZqXQU8QhIEYod463GDZETbEy1n6CM97xRmg0GpevUTjsGITvu1rkxrj
-         XWd1UsUYhIpH7zkdLTx7nowmaRPSxCAxHLOhfyU+0mFGgWjgC35k8gHRgKqYg+5R5aP4
-         7Ud9rFNzZ515Oueu5NLZYIZ7N42SYw5n1ARn2n9+Zn9H/w0fK8Kbpv57+U3FavowtC3W
-         +oJv1/+NmmJlQwldFXOj5pg1hXpGJ3RGfHl0SWVJVNLoO/X72s//O2fMuJtqp72MWTaC
-         JS+Twyv8roNbtRkcaL4sw4tKWzBGR0plYN1XcWck4vGqU5se/6uDkRijqmtNt0YDGe/P
-         hbYQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YAgDGrmB;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1700756696;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=RkZr6Uzf2YD+cyAlhzAAYwdyvQokQG5lkbLuX195xcw=;
+	b=YAgDGrmBj80DSuZO33U4qu9PT6b2VCaGFlJeJGARgr02uKmZc+tWJzYgzj6LjecdZ2qQAN
+	mifWR58qy8PLwDmb1daX2sUTsOS4sDct/NUU0BtY+KKla6iFz/qD+zqBEaasQ0HcbqTtHV
+	oN4UwMvTip/vyZUCgqGqaU2RWJsRl1Y=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-504-b11QYmCUNKa-1AXkaN2wiw-1; Thu, 23 Nov 2023 11:24:55 -0500
+X-MC-Unique: b11QYmCUNKa-1AXkaN2wiw-1
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-6707401e1aeso11633396d6.0
+        for <alex.bennee@linaro.org>; Thu, 23 Nov 2023 08:24:55 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700755392; x=1701360192;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1700756695; x=1701361495;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nlWRT+PrdlAnCO9FQl/pWIQPvdcP9ZXH3YCgK+oWzOc=;
-        b=nklBPW4AJua08LN8AWB9jZSxt2/1nk15RwhnABCqsJaDR+eV7fuuzM/M60yg6++tak
-         DHSZBXgypVEq4t9WBCm5vcruke23CENvKxj9lkTr32U1XloXYBczJ0+pC/OpzRUgzNTy
-         4xgzSzgGMQC2QGw44SLKLdkeDxQ9lyyjpwpHC6pw56yLF3Tn2DOGevz1oYePlxY1pO5o
-         x4l3YFWqrjsaTymblKFmwQ38x2n/ATVzEsVoO49oAQpS0Z7wzAl/Hb6xGGhnQ+2Yzrn8
-         l2oZvnvxSz8bbenaGaT2e54JjdcZrhdddV+z7pa6z9QoZpATX1P2m5gCf+3LBlVVI0rP
-         jtLQ==
-X-Gm-Message-State: AOJu0YxUcMTqlxQB5BVpSDIg/iwmjWUlwHW/JNcMLshXncckRIL9guF8
-	OknbHz1XMFqpgoFfJ0YcTObioKCEmgPutAV5PwoZ4Q==
-X-Google-Smtp-Source: AGHT+IFrcAhQ06va4+kUpXiNVcPAw4CyiJLcTkfkLlezdYY5IBg3POYV4oKXUus9mAMHeN8UcTwn3g==
-X-Received: by 2002:a05:600c:314c:b0:40b:369e:6951 with SMTP id h12-20020a05600c314c00b0040b369e6951mr21612wmo.28.1700755391752;
-        Thu, 23 Nov 2023 08:03:11 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.176.165.237])
-        by smtp.gmail.com with ESMTPSA id v9-20020adfe4c9000000b00332c6f1beccsm1958128wrm.66.2023.11.23.08.03.10
+        bh=RkZr6Uzf2YD+cyAlhzAAYwdyvQokQG5lkbLuX195xcw=;
+        b=B7lc/OWx6n2AsNSRPxxcfllxxkXx3nx4jC4D3vmxSe1r3wz6Lyp4ESzsMQed+6OlrH
+         h5ZF+zJ5Vsn1Wb0bf8gwlf6zWIuwWUEf9fd17Mi2GXbW6aikxJc47vqCaYgpOvDvMkmk
+         Ye2M9eyikhfZxA24VNADKwUtALGZpzunCvz6KGR4/jzjgcOBnX4pgrN1eEVc0P3Ed/0/
+         FzUM4mkyEpLz59D4xpDLfjiKwPkxaQovaYb38UHth/WnrNo5cB6lPTJ2Kjausdq5LzvG
+         bFcu2uDnPjlEYE3E7zdwLAC/vNIleEbjNgK8fjnmmNsF4UVz9X0JFE+obJlsi4ky4/tz
+         +8YA==
+X-Gm-Message-State: AOJu0Yz8FKjWJvaV6cN0p4on6/trTesmRBwQzWiM/JP3GL2HzvDrfLFw
+	Ekxjwn9RslpOxJ95BibFPHy/eAveYafnS0l2hU9jh2KvC6DYmRcSU9qpA8cFwA2VZIVdHva+L4w
+	C7duMDEQJDtIZ3sRH
+X-Received: by 2002:ad4:5042:0:b0:66f:b857:cbbb with SMTP id m2-20020ad45042000000b0066fb857cbbbmr33117qvq.12.1700756694872;
+        Thu, 23 Nov 2023 08:24:54 -0800 (PST)
+X-Received: by 2002:ad4:5042:0:b0:66f:b857:cbbb with SMTP id m2-20020ad45042000000b0066fb857cbbbmr33093qvq.12.1700756694565;
+        Thu, 23 Nov 2023 08:24:54 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.6] (ip-109-43-176-233.web.vodafone.de. [109.43.176.233])
+        by smtp.gmail.com with ESMTPSA id g18-20020a05620a109200b007778503ebf4sm565692qkk.16.2023.11.23.08.24.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Nov 2023 08:03:11 -0800 (PST)
-Message-ID: <59101052-6446-443c-8934-581b90a9bd2b@linaro.org>
-Date: Thu, 23 Nov 2023 17:03:08 +0100
+        Thu, 23 Nov 2023 08:24:53 -0800 (PST)
+Message-ID: <010c573d-17e6-43be-bb8f-6c3ff934bf4a@redhat.com>
+Date: Thu, 23 Nov 2023 17:24:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH-for-9.0 01/11] qom: Introduce the
  TypeInfo::can_register() handler
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>,
@@ -89,167 +97,157 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 References: <20231122183048.17150-1-philmd@linaro.org>
  <20231122183048.17150-2-philmd@linaro.org>
  <dc8664c2-c1d4-4e11-8bcd-9465a2d97174@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <dc8664c2-c1d4-4e11-8bcd-9465a2d97174@redhat.com>
+ <59101052-6446-443c-8934-581b90a9bd2b@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <59101052-6446-443c-8934-581b90a9bd2b@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: yu++ABUUwY+m
+X-TUID: 1vBowBr1TTYj
 
-On 23/11/23 16:09, Thomas Huth wrote:
-> On 22/11/2023 19.30, Philippe Mathieu-Daudé wrote:
->> Add a helper to decide at runtime whether a type can
->> be registered to the QOM framework or not.
+On 23/11/2023 17.03, Philippe Mathieu-Daudé wrote:
+> On 23/11/23 16:09, Thomas Huth wrote:
+>> On 22/11/2023 19.30, Philippe Mathieu-Daudé wrote:
+>>> Add a helper to decide at runtime whether a type can
+>>> be registered to the QOM framework or not.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   include/qom/object.h | 4 ++++
+>>>   qom/object.c         | 3 +++
+>>>   2 files changed, 7 insertions(+)
+>>>
+>>> diff --git a/include/qom/object.h b/include/qom/object.h
+>>> index afccd24ca7..0d42fe17de 100644
+>>> --- a/include/qom/object.h
+>>> +++ b/include/qom/object.h
+>>> @@ -372,6 +372,8 @@ struct Object
+>>>    * struct TypeInfo:
+>>>    * @name: The name of the type.
+>>>    * @parent: The name of the parent type.
+>>> + * @can_register: This optional function is called before a type is 
+>>> registered.
+>>> + *   If it exists and returns false, the type is not registered.
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/qom/object.h | 4 ++++
->>   qom/object.c         | 3 +++
->>   2 files changed, 7 insertions(+)
+>> The second sentence is quite hard to parse, since it is not quite clear 
+>> what "it" refers to (type or function) and what "registered" means in this 
+>> context (you don't mention type_register() here).
 >>
->> diff --git a/include/qom/object.h b/include/qom/object.h
->> index afccd24ca7..0d42fe17de 100644
->> --- a/include/qom/object.h
->> +++ b/include/qom/object.h
->> @@ -372,6 +372,8 @@ struct Object
->>    * struct TypeInfo:
->>    * @name: The name of the type.
->>    * @parent: The name of the parent type.
->> + * @can_register: This optional function is called before a type is 
->> registered.
->> + *   If it exists and returns false, the type is not registered.
+>> Maybe rather something like:
+>>
+>> If set, type_register() uses this function to decide whether the type can 
+>> be registered or not.
+>>
+>> ?
+>>
+>>>    * @instance_size: The size of the object (derivative of #Object).  If
+>>>    *   @instance_size is 0, then the size of the object will be the size 
+>>> of the
+>>>    *   parent object.
+>>> @@ -414,6 +416,8 @@ struct TypeInfo
+>>>       const char *name;
+>>>       const char *parent;
+>>> +    bool (*can_register)(void);
+>>> +
+>>>       size_t instance_size;
+>>>       size_t instance_align;
+>>>       void (*instance_init)(Object *obj);
+>>> diff --git a/qom/object.c b/qom/object.c
+>>> index 95c0dc8285..f09b6b5a92 100644
+>>> --- a/qom/object.c
+>>> +++ b/qom/object.c
+>>> @@ -150,6 +150,9 @@ static TypeImpl *type_register_internal(const 
+>>> TypeInfo *info)
+>>>   TypeImpl *type_register(const TypeInfo *info)
+>>>   {
+>>>       assert(info->parent);
+>>> +    if (info->can_register && !info->can_register()) {
+>>> +        return NULL;
+>>> +    }
+>>
+>> I have to say that I don't like it too much, since you're trying to fix a 
+>> problem here in common code that clearly belongs to the code in hw/arm/ 
+>> instead.
+>>
+>> What about dropping it, and changing your last patch to replace the 
+>> DEFINE_TYPES(raspi_machine_types) in hw/arm/raspi.c with your own 
+>> implementation of type_register_static_array() that checks the condition 
+>> there?
 > 
-> The second sentence is quite hard to parse, since it is not quite clear 
-> what "it" refers to (type or function) and what "registered" means in 
-> this context (you don't mention type_register() here).
+> This isn't ARM specific, it happens I started to unify ARM/aarch64
+> binaries.
 > 
-> Maybe rather something like:
+> Types can be registered depending on build-time (config/host specific)
+> definitions and runtime ones. How can we check for runtime if not via
+> this simple helper?
 > 
-> If set, type_register() uses this function to decide whether the type 
-> can be registered or not.
-> 
-> ?
-> 
->>    * @instance_size: The size of the object (derivative of #Object).  If
->>    *   @instance_size is 0, then the size of the object will be the 
->> size of the
->>    *   parent object.
->> @@ -414,6 +416,8 @@ struct TypeInfo
->>       const char *name;
->>       const char *parent;
->> +    bool (*can_register)(void);
->> +
->>       size_t instance_size;
->>       size_t instance_align;
->>       void (*instance_init)(Object *obj);
->> diff --git a/qom/object.c b/qom/object.c
->> index 95c0dc8285..f09b6b5a92 100644
->> --- a/qom/object.c
->> +++ b/qom/object.c
->> @@ -150,6 +150,9 @@ static TypeImpl *type_register_internal(const 
->> TypeInfo *info)
->>   TypeImpl *type_register(const TypeInfo *info)
->>   {
->>       assert(info->parent);
->> +    if (info->can_register && !info->can_register()) {
->> +        return NULL;
->> +    }
-> 
-> I have to say that I don't like it too much, since you're trying to fix 
-> a problem here in common code that clearly belongs to the code in 
-> hw/arm/ instead.
-> 
-> What about dropping it, and changing your last patch to replace the 
-> DEFINE_TYPES(raspi_machine_types) in hw/arm/raspi.c with your own 
-> implementation of type_register_static_array() that checks the condition 
-> there?
+> Still ARM, but as example what I have then is (module meson):
+...
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 1e9c6c85ae..c3b7e5666c 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -744,7 +744,8 @@ static void aarch64_max_initfn(Object *obj)
+>   static const ARMCPUInfo aarch64_cpus[] = {
+>       { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
+>       { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
+> -    { .name = "max",                .initfn = aarch64_max_initfn },
+> +    { .name = "max",                .initfn = aarch64_max_initfn,
+> +                                    .can_register = 
+> target_aarch64_available },
+>   #if defined(CONFIG_KVM) || defined(CONFIG_HVF)
+>       { .name = "host",               .initfn = aarch64_host_initfn },
+>   #endif
 
-This isn't ARM specific, it happens I started to unify ARM/aarch64
-binaries.
+Picking this one as an example, I think I'd rather modify the for-loop in
+aarch64_cpu_register_types() to check for the availability there... sounds 
+much easier to understand for me than having a callback function.
 
-Types can be registered depending on build-time (config/host specific)
-definitions and runtime ones. How can we check for runtime if not via
-this simple helper?
+Anyway, that's just my personal taste - if others agree with your solution 
+instead, I won't insist on my idea.
 
-Still ARM, but as example what I have then is (module meson):
-
--- >8 --
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9e8f033f59..e7f566f05d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1102,6 +1102,7 @@ typedef struct ARMCPUInfo {
-      const char *name;
-      void (*initfn)(Object *obj);
-      void (*class_init)(ObjectClass *oc, void *data);
-+    bool (*can_register)(void);
-  } ARMCPUInfo;
-
-  /**
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 558a85e6d7..109fb160b5 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2512,6 +2512,7 @@ void arm_cpu_register(const ARMCPUInfo *info)
-          .instance_init = arm_cpu_instance_init,
-          .class_init = info->class_init ?: cpu_register_class_init,
-          .class_data = (void *)info,
-+        .can_register = info->can_register,
-      };
-
-      type_info.name = g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 1e9c6c85ae..c3b7e5666c 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -744,7 +744,8 @@ static void aarch64_max_initfn(Object *obj)
-  static const ARMCPUInfo aarch64_cpus[] = {
-      { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-      { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
--    { .name = "max",                .initfn = aarch64_max_initfn },
-+    { .name = "max",                .initfn = aarch64_max_initfn,
-+                                    .can_register = 
-target_aarch64_available },
-  #if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-      { .name = "host",               .initfn = aarch64_host_initfn },
-  #endif
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index d9e0e2a4dd..dcad399a60 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -1049,7 +1049,6 @@ static void arm_v7m_class_init(ObjectClass *oc, 
-void *data)
-      cc->gdb_core_xml_file = "arm-m-profile.xml";
-  }
-
--#ifndef TARGET_AARCH64
-  /*
-   * -cpu max: a CPU with as many features enabled as our emulation 
-supports.
-   * The version of '-cpu max' for qemu-system-aarch64 is defined in 
-cpu64.c;
-@@ -1112,7 +1111,11 @@ static void arm_max_initfn(Object *obj)
-      cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
-  #endif
-  }
--#endif /* !TARGET_AARCH64 */
-+
-+static bool aa32_only(void)
-+{
-+    return !target_aarch64_available();
-+}
-
-  static const ARMCPUInfo arm_tcg_cpus[] = {
-      { .name = "arm926",      .initfn = arm926_initfn },
-@@ -1162,9 +1165,8 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
-      { .name = "pxa270-b1",   .initfn = pxa270b1_initfn },
-      { .name = "pxa270-c0",   .initfn = pxa270c0_initfn },
-      { .name = "pxa270-c5",   .initfn = pxa270c5_initfn },
--#ifndef TARGET_AARCH64
--    { .name = "max",         .initfn = arm_max_initfn },
--#endif
-+    { .name = "max",         .initfn = arm_max_initfn,
-+                             .can_register = aa32_only },
-  #ifdef CONFIG_USER_ONLY
-      { .name = "any",         .initfn = arm_max_initfn },
-  #endif
----
+  Thomas

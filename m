@@ -1,107 +1,108 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp150168ejj;
-        Wed, 22 Nov 2023 20:44:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFyQttLWMq3nCzbNtGVX9aeA/sbJtiW0zXYevvESzUrGp8PbmlZOeVq/FbdAHEY+F3brxHl
-X-Received: by 2002:a25:a2cb:0:b0:da0:3c22:8374 with SMTP id c11-20020a25a2cb000000b00da03c228374mr4127999ybn.5.1700714694544;
-        Wed, 22 Nov 2023 20:44:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700714694; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp150185ejj;
+        Wed, 22 Nov 2023 20:44:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG6N9CH94Xkt/iznpJG9KswJ9M516AWIXQqHrmxKgPqyNN5Q4w0mP0cbOjYsjGqdLFR8CZ4
+X-Received: by 2002:a05:620a:108a:b0:778:8dc1:bb7b with SMTP id g10-20020a05620a108a00b007788dc1bb7bmr4766984qkk.27.1700714697675;
+        Wed, 22 Nov 2023 20:44:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700714697; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pwlqf+x5XbubHB/uf7OknspCxEC8IsLTYR2nKQYREOvNxuhLmgnuO4UBJcAofw0KNq
-         1aDQZmlC3hZj/JdIetT4R3aRck8lFKmkrdMu6/EMD3VGmRT+i3hz1TPG8hPaPzhRI5zB
-         snSoMJTg9nKj1e9FMw2nvdhsfznWZBvfv/ClROt6LceLWKm9tX39Ki71XGroOVunqkqs
-         +Bx81cdv/6/6NQf8dqYa29aWZvd00MrKbzggs61y+GQaWaHFKVVb7J87Ca2pPA5743Vy
-         iZH9FtgnWVzzf26Gptympq266re5bGcj7bLzl6DjRqBzTBOwsho6qp07fADyAJgaPK3F
-         JsZw==
+        b=lcFDEQQJWhwwEdfz+ZNLb9n5/FwOWfgdLJOwd31KvlbzYLkgid8l4zE9D3YeWBgpEZ
+         5fUoJBrnww3PzBMuVBaZ9NJmuoMzjkZFjs+VLgpY8Eurre1xijQrBXsm23fTnVHICmn9
+         eT4Q9ysea9nrVQGT7AW/yUlLRKL7EEFo5tlag48xRqsvDXGP79NXm9EKI3n+VzrLNyQW
+         mnjZpMcm60bC3mepKHvHOzNSvZni5pPoOPutFpWWjUO4U14dLxtE3ZRAyhcUSTwQAPxJ
+         mqZta6ROHS4Q1Cj7RCx73ftVmh+LuKy3h9lSpf1WnLoa7Ts0yE+WoTjlxnvzAY2siQ40
+         TcDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=okagnWg4RiqPvXVssy7I/tpmDkLttXZFA5jqAhyzY9s=;
+        bh=2QBUYGi1dCGuCWeKJkTo8B8CyzeEK53NkIvMTOE0ZEA=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=EEfKweNyiJMmZkre6XbKblamFZilOC+68NntENI9muf3Uw6Sbg1U9nbR5LBpX2R4eH
-         ISH1ZWRRKJO/R3+XQNdUygvsKYsGe+dx1xEwX/0Qy0N2/BO/FulF6fM3ibVgK9bVgXKm
-         jMcz2MPQpGw7oi2YrwFnBeZ98OmeT5eUmqqCDbwBRzZOg0qYimNX5IIc+4ZM2kpXQxIQ
-         7gEwNK1YIv3SJxzUJ7RsWs6WwRFdcghbXk4XBV8EItV1bIC/9J/Rk3vLoEgsxi4Zw7OV
-         A8FdbP6Bf2SpmsZ4LzwKTNujLvMTtVOUP1ZwJZaqrpvJcHm2NXHBaPRrMihRQ1GwN+hE
-         jVNg==
+        b=dp30vDObKmd3izwQDZWq+JT8pN1siKbEvOOnsk8qGqjfc+8QpAydX72c8aqsJXa0mT
+         ZyriWMgvnRvr75+/dsngaUJmsUIhVrED5f22Aq4afzNxpcd7nsX5oo/VDJZbhVog2yWg
+         fBOB2sp1TRdFjX0rlR+lFekahVtlB4bZ+Etms0+p3dc7XaQ/OyEBmVC42XoclFky9Qre
+         W4RoxPFSCWjkeC1TVuNw9O+d0wBs51pnSfWMpetcLRglVZSIpr55suEmGs2PGhK57Xxz
+         7WFxEUjzGjju1rBiWMQSXXjathHWkOi30DMIwqoFfGcGjd72yqTRcvuXShXUl2yLNH+I
+         fS9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jNbJDXQJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WvYHzCuD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2-20020ad440c2000000b00679e2cd191asi447297qvp.174.2023.11.22.20.44.54
+        by mx.google.com with ESMTPS id z20-20020a05620a08d400b0077d6b9db8f0si384755qkz.745.2023.11.22.20.44.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Nov 2023 20:44:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Nov 2023 20:44:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jNbJDXQJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WvYHzCuD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r61YJ-0006ac-49; Wed, 22 Nov 2023 23:42:59 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r61YI-0006ZG-0m; Wed, 22 Nov 2023 23:42:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Xv-0006NP-5r
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:36 -0500
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
+ id 1r61Xx-0006Ns-01
+ for qemu-devel@nongnu.org; Wed, 22 Nov 2023 23:42:38 -0500
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Xs-00069b-RG
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:34 -0500
-Received: by mail-oi1-x235.google.com with SMTP id
- 5614622812f47-3b565e35fedso338108b6e.2
- for <qemu-arm@nongnu.org>; Wed, 22 Nov 2023 20:42:31 -0800 (PST)
+ id 1r61Xt-0006AI-DT
+ for qemu-devel@nongnu.org; Wed, 22 Nov 2023 23:42:36 -0500
+Received: by mail-oi1-x22c.google.com with SMTP id
+ 5614622812f47-3b52360cdf0so282937b6e.2
+ for <qemu-devel@nongnu.org>; Wed, 22 Nov 2023 20:42:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700714550; x=1701319350; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700714552; x=1701319352; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=okagnWg4RiqPvXVssy7I/tpmDkLttXZFA5jqAhyzY9s=;
- b=jNbJDXQJc0jmuTonRgh96lNAnP9Hv27YUQKbSoUWjCxOkhZzRx2nJNsuTZzUzKBwPw
- EVy2IeulkJYJPSVwSOpFR6uzlLV8lgB4O+aUkWaYmTrq5mjT8dVCPi3ZP5nVn9Xz01ig
- b9d8roIdQJhekLCkUPRFa/G1KkulxuJ5sXv7Dkv14Hy4KFxIHevk1UxxFrjEgWkky2Hj
- Zo1E/yUy54v7fDa09wCDf/GQPKYqNnm9ZN1fNBdlMckwjQRvCKjrRwrQJiqkqyc4LW/q
- FjNR7yJxQshPbpyeKEGp2B0TXXTBWZcXAtiDcK+PvTtf9A1h4hjlLTpJJEkfuAFL34He
- Kaxw==
+ bh=2QBUYGi1dCGuCWeKJkTo8B8CyzeEK53NkIvMTOE0ZEA=;
+ b=WvYHzCuDyGqhGq40wOLVix4Sv8b+hK7I2sqaWcJAvVgsQURg0N2LLnQXaKax2ogRqK
+ 5P234hj6bbr/LsXdpvw9fWZ9XLLzJ9BTonqcUMrH8GGyy/wnZ/+smBWv6vgCPuDfGKMv
+ 43EbvDK/3ZFykJajb6Syo+kkVkzga8tUPQeLxmBdeWUIfB36pYW6xvNW7RrqgaEGZ80k
+ 3MR11LeYM6cHI4weAY/5wOQwX68JU/supEke+YoyI4Nak4fk9e25B7MKRh32KMTxPcDI
+ JH4NxMHXkGaawQOdLokj/hEi6VCCqbhasAfdKEYh52sHJGKX7WCfmklkb3RZJhUCADtF
+ cmuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700714550; x=1701319350;
+ d=1e100.net; s=20230601; t=1700714552; x=1701319352;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=okagnWg4RiqPvXVssy7I/tpmDkLttXZFA5jqAhyzY9s=;
- b=Dzg029kPAefo0ZVdOVRsi8H1Xvi3F732Q7IVQ5kAVJPSv2jGROKRAgLxx335qA+liG
- YjoOxq1mOx+eL/6uvFByIk1NzbC4OrRdg1RqO4Wo0az4IPjUvfVKUs1+F/ghbn+CbHif
- kPHfhfX7Otv2XCP1zLLv9UI41DqRtYWd3SixbFxC3crMPERTk26Yt56BUm8btxS16vOI
- ghAAXf/VsamY7yjKz6NgD760CF34v2SJqc8GIFNXNjbbwIWypBS/auM7vWVh5ZJQe8SN
- 3h764fL6HiNqMd6ICadm91DDuErWmz+nq3OIEDkVoT7kvqRbhVLaBMLGcGgN0DLmGfB0
- 3rFA==
-X-Gm-Message-State: AOJu0YwmAUvl06mzqd8fqbZlUR1W05V8QKOs4pe4exT2q3rvBlnz3C6N
- c1L5EDVH9lm631KjZts8wPl6l+XC3KTPlbSXP9nix0CH
-X-Received: by 2002:a05:6808:b1c:b0:3b5:6462:3191 with SMTP id
- s28-20020a0568080b1c00b003b564623191mr4849132oij.48.1700714550558; 
- Wed, 22 Nov 2023 20:42:30 -0800 (PST)
+ bh=2QBUYGi1dCGuCWeKJkTo8B8CyzeEK53NkIvMTOE0ZEA=;
+ b=VjH2rXRc1l76ELhs+0jFY4TkYzH8o+xzNl+fBKn6y/m+9Lc2sZfbuHY+/H566XRlAh
+ 2AjKBJuRIJsgzWQ11xllciUTG+5G9J645ctsf91jOT4yOzWNMF++ydZqPnvOOqoVQShL
+ LWfqF9GscfSnAxeDaeiuYTCRFigC78adtn19RwiMEBhD7OYIQ4A6Str7AEBpFLznM24u
+ Lvq+UxiI8TTBby2A9jG+P+j2FptvvRSkiQCxjcHO6bCRAl05d2FzEA8EZag7j8UgscKS
+ iDDSUu8+o/npRY8ApOhn5VZEaK6ZKFVIf/eAAxork6On3kTWPNvFi+WWeZzNaPQkt0Iw
+ uc/A==
+X-Gm-Message-State: AOJu0YyT0GEHi4Em33gVgqRHY8mBbXl7fx6gX9ET1iawLPufdd0LygP8
+ FB/zSywDHF7ZPaboHsciSaWoSpHNr2/PAeSFPFHyDg/C
+X-Received: by 2002:a05:6808:1383:b0:3ab:83fe:e182 with SMTP id
+ c3-20020a056808138300b003ab83fee182mr5257542oiw.1.1700714551802; 
+ Wed, 22 Nov 2023 20:42:31 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.29
+ i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Nov 2023 20:42:30 -0800 (PST)
+ Wed, 22 Nov 2023 20:42:31 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 09/21] target/arm/kvm: Inline kvm_arm_steal_time_supported
-Date: Wed, 22 Nov 2023 22:42:07 -0600
-Message-Id: <20231123044219.896776-10-richard.henderson@linaro.org>
+Subject: [PATCH 10/21] target/arm/kvm: Move kvm_arm_get_host_cpu_features and
+ unexport
+Date: Wed, 22 Nov 2023 22:42:08 -0600
+Message-Id: <20231123044219.896776-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231123044219.896776-1-richard.henderson@linaro.org>
 References: <20231123044219.896776-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::235;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x235.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22c.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -110,85 +111,609 @@ X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nGvKkB3jG/+c
-
-This function is only used once, and is quite simple.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wS2b+3Eu6dyl
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/kvm_arm.h | 13 -------------
- target/arm/kvm64.c   |  7 +------
- 2 files changed, 1 insertion(+), 19 deletions(-)
+ target/arm/kvm_arm.h |  22 ----
+ target/arm/kvm.c     | 265 +++++++++++++++++++++++++++++++++++++++++++
+ target/arm/kvm64.c   | 254 -----------------------------------------
+ 3 files changed, 265 insertions(+), 276 deletions(-)
 
 diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index e7c32f6ed0..58c087207f 100644
+index 58c087207f..e59d713973 100644
 --- a/target/arm/kvm_arm.h
 +++ b/target/arm/kvm_arm.h
-@@ -274,14 +274,6 @@ void kvm_arm_add_vcpu_properties(Object *obj);
+@@ -214,28 +214,6 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
   */
- void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
+ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
  
 -/**
-- * kvm_arm_steal_time_supported:
-- *
-- * Returns: true if KVM can enable steal time reporting
-- * and false otherwise.
+- * ARMHostCPUFeatures: information about the host CPU (identified
+- * by asking the host kernel)
 - */
--bool kvm_arm_steal_time_supported(void);
+-typedef struct ARMHostCPUFeatures {
+-    ARMISARegisters isar;
+-    uint64_t features;
+-    uint32_t target;
+-    const char *dtb_compatible;
+-} ARMHostCPUFeatures;
+-
+-/**
+- * kvm_arm_get_host_cpu_features:
+- * @ahcf: ARMHostCPUClass to fill in
+- *
+- * Probe the capabilities of the host kernel's preferred CPU and fill
+- * in the ARMHostCPUClass struct accordingly.
+- *
+- * Returns true on success and false otherwise.
+- */
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
 -
  /**
-  * kvm_arm_aarch32_supported:
-  *
-@@ -374,11 +366,6 @@ static inline bool kvm_arm_sve_supported(void)
-     return false;
+  * kvm_arm_sve_get_vls:
+  * @cs: CPUState
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 84f300c602..ffe0db4293 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -41,6 +41,17 @@ static bool cap_has_mp_state;
+ static bool cap_has_inject_serror_esr;
+ static bool cap_has_inject_ext_dabt;
+ 
++/**
++ * ARMHostCPUFeatures: information about the host CPU (identified
++ * by asking the host kernel)
++ */
++typedef struct ARMHostCPUFeatures {
++    ARMISARegisters isar;
++    uint64_t features;
++    uint32_t target;
++    const char *dtb_compatible;
++} ARMHostCPUFeatures;
++
+ static ARMHostCPUFeatures arm_host_cpu_features;
+ 
+ int kvm_arm_vcpu_init(CPUState *cs)
+@@ -167,6 +178,260 @@ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray)
+     }
  }
  
--static inline bool kvm_arm_steal_time_supported(void)
--{
--    return false;
--}
--
- /*
-  * These functions should never actually be called without KVM support.
-  */
++static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
++{
++    uint64_t ret;
++    struct kvm_one_reg idreg = { .id = id, .addr = (uintptr_t)&ret };
++    int err;
++
++    assert((id & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U64);
++    err = ioctl(fd, KVM_GET_ONE_REG, &idreg);
++    if (err < 0) {
++        return -1;
++    }
++    *pret = ret;
++    return 0;
++}
++
++static int read_sys_reg64(int fd, uint64_t *pret, uint64_t id)
++{
++    struct kvm_one_reg idreg = { .id = id, .addr = (uintptr_t)pret };
++
++    assert((id & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U64);
++    return ioctl(fd, KVM_GET_ONE_REG, &idreg);
++}
++
++static bool kvm_arm_pauth_supported(void)
++{
++    return (kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_ADDRESS) &&
++            kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC));
++}
++
++static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
++{
++    /* Identify the feature bits corresponding to the host CPU, and
++     * fill out the ARMHostCPUClass fields accordingly. To do this
++     * we have to create a scratch VM, create a single CPU inside it,
++     * and then query that CPU for the relevant ID registers.
++     */
++    int fdarray[3];
++    bool sve_supported;
++    bool pmu_supported = false;
++    uint64_t features = 0;
++    int err;
++
++    /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
++     * we know these will only support creating one kind of guest CPU,
++     * which is its preferred CPU type. Fortunately these old kernels
++     * support only a very limited number of CPUs.
++     */
++    static const uint32_t cpus_to_try[] = {
++        KVM_ARM_TARGET_AEM_V8,
++        KVM_ARM_TARGET_FOUNDATION_V8,
++        KVM_ARM_TARGET_CORTEX_A57,
++        QEMU_KVM_ARM_TARGET_NONE
++    };
++    /*
++     * target = -1 informs kvm_arm_create_scratch_host_vcpu()
++     * to use the preferred target
++     */
++    struct kvm_vcpu_init init = { .target = -1, };
++
++    /*
++     * Ask for SVE if supported, so that we can query ID_AA64ZFR0,
++     * which is otherwise RAZ.
++     */
++    sve_supported = kvm_arm_sve_supported();
++    if (sve_supported) {
++        init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
++    }
++
++    /*
++     * Ask for Pointer Authentication if supported, so that we get
++     * the unsanitized field values for AA64ISAR1_EL1.
++     */
++    if (kvm_arm_pauth_supported()) {
++        init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
++                             1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
++    }
++
++    if (kvm_arm_pmu_supported()) {
++        init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
++        pmu_supported = true;
++    }
++
++    if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
++        return false;
++    }
++
++    ahcf->target = init.target;
++    ahcf->dtb_compatible = "arm,arm-v8";
++
++    err = read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr0,
++                         ARM64_SYS_REG(3, 0, 0, 4, 0));
++    if (unlikely(err < 0)) {
++        /*
++         * Before v4.15, the kernel only exposed a limited number of system
++         * registers, not including any of the interesting AArch64 ID regs.
++         * For the most part we could leave these fields as zero with minimal
++         * effect, since this does not affect the values seen by the guest.
++         *
++         * However, it could cause problems down the line for QEMU,
++         * so provide a minimal v8.0 default.
++         *
++         * ??? Could read MIDR and use knowledge from cpu64.c.
++         * ??? Could map a page of memory into our temp guest and
++         *     run the tiniest of hand-crafted kernels to extract
++         *     the values seen by the guest.
++         * ??? Either of these sounds like too much effort just
++         *     to work around running a modern host kernel.
++         */
++        ahcf->isar.id_aa64pfr0 = 0x00000011; /* EL1&0, AArch64 only */
++        err = 0;
++    } else {
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr1,
++                              ARM64_SYS_REG(3, 0, 0, 4, 1));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64smfr0,
++                              ARM64_SYS_REG(3, 0, 0, 4, 5));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr0,
++                              ARM64_SYS_REG(3, 0, 0, 5, 0));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr1,
++                              ARM64_SYS_REG(3, 0, 0, 5, 1));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar0,
++                              ARM64_SYS_REG(3, 0, 0, 6, 0));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar1,
++                              ARM64_SYS_REG(3, 0, 0, 6, 1));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar2,
++                              ARM64_SYS_REG(3, 0, 0, 6, 2));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr0,
++                              ARM64_SYS_REG(3, 0, 0, 7, 0));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr1,
++                              ARM64_SYS_REG(3, 0, 0, 7, 1));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr2,
++                              ARM64_SYS_REG(3, 0, 0, 7, 2));
++
++        /*
++         * Note that if AArch32 support is not present in the host,
++         * the AArch32 sysregs are present to be read, but will
++         * return UNKNOWN values.  This is neither better nor worse
++         * than skipping the reads and leaving 0, as we must avoid
++         * considering the values in every case.
++         */
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr0,
++                              ARM64_SYS_REG(3, 0, 0, 1, 0));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr1,
++                              ARM64_SYS_REG(3, 0, 0, 1, 1));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_dfr0,
++                              ARM64_SYS_REG(3, 0, 0, 1, 2));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr0,
++                              ARM64_SYS_REG(3, 0, 0, 1, 4));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr1,
++                              ARM64_SYS_REG(3, 0, 0, 1, 5));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr2,
++                              ARM64_SYS_REG(3, 0, 0, 1, 6));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr3,
++                              ARM64_SYS_REG(3, 0, 0, 1, 7));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar0,
++                              ARM64_SYS_REG(3, 0, 0, 2, 0));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar1,
++                              ARM64_SYS_REG(3, 0, 0, 2, 1));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar2,
++                              ARM64_SYS_REG(3, 0, 0, 2, 2));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar3,
++                              ARM64_SYS_REG(3, 0, 0, 2, 3));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar4,
++                              ARM64_SYS_REG(3, 0, 0, 2, 4));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar5,
++                              ARM64_SYS_REG(3, 0, 0, 2, 5));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr4,
++                              ARM64_SYS_REG(3, 0, 0, 2, 6));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar6,
++                              ARM64_SYS_REG(3, 0, 0, 2, 7));
++
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr0,
++                              ARM64_SYS_REG(3, 0, 0, 3, 0));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr1,
++                              ARM64_SYS_REG(3, 0, 0, 3, 1));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr2,
++                              ARM64_SYS_REG(3, 0, 0, 3, 2));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr2,
++                              ARM64_SYS_REG(3, 0, 0, 3, 4));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_dfr1,
++                              ARM64_SYS_REG(3, 0, 0, 3, 5));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr5,
++                              ARM64_SYS_REG(3, 0, 0, 3, 6));
++
++        /*
++         * DBGDIDR is a bit complicated because the kernel doesn't
++         * provide an accessor for it in 64-bit mode, which is what this
++         * scratch VM is in, and there's no architected "64-bit sysreg
++         * which reads the same as the 32-bit register" the way there is
++         * for other ID registers. Instead we synthesize a value from the
++         * AArch64 ID_AA64DFR0, the same way the kernel code in
++         * arch/arm64/kvm/sys_regs.c:trap_dbgidr() does.
++         * We only do this if the CPU supports AArch32 at EL1.
++         */
++        if (FIELD_EX32(ahcf->isar.id_aa64pfr0, ID_AA64PFR0, EL1) >= 2) {
++            int wrps = FIELD_EX64(ahcf->isar.id_aa64dfr0, ID_AA64DFR0, WRPS);
++            int brps = FIELD_EX64(ahcf->isar.id_aa64dfr0, ID_AA64DFR0, BRPS);
++            int ctx_cmps =
++                FIELD_EX64(ahcf->isar.id_aa64dfr0, ID_AA64DFR0, CTX_CMPS);
++            int version = 6; /* ARMv8 debug architecture */
++            bool has_el3 =
++                !!FIELD_EX32(ahcf->isar.id_aa64pfr0, ID_AA64PFR0, EL3);
++            uint32_t dbgdidr = 0;
++
++            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, WRPS, wrps);
++            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, BRPS, brps);
++            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, CTX_CMPS, ctx_cmps);
++            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, VERSION, version);
++            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, NSUHD_IMP, has_el3);
++            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, SE_IMP, has_el3);
++            dbgdidr |= (1 << 15); /* RES1 bit */
++            ahcf->isar.dbgdidr = dbgdidr;
++        }
++
++        if (pmu_supported) {
++            /* PMCR_EL0 is only accessible if the vCPU has feature PMU_V3 */
++            err |= read_sys_reg64(fdarray[2], &ahcf->isar.reset_pmcr_el0,
++                                  ARM64_SYS_REG(3, 3, 9, 12, 0));
++        }
++
++        if (sve_supported) {
++            /*
++             * There is a range of kernels between kernel commit 73433762fcae
++             * and f81cb2c3ad41 which have a bug where the kernel doesn't
++             * expose SYS_ID_AA64ZFR0_EL1 via the ONE_REG API unless the VM has
++             * enabled SVE support, which resulted in an error rather than RAZ.
++             * So only read the register if we set KVM_ARM_VCPU_SVE above.
++             */
++            err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
++                                  ARM64_SYS_REG(3, 0, 0, 4, 4));
++        }
++    }
++
++    kvm_arm_destroy_scratch_host_vcpu(fdarray);
++
++    if (err < 0) {
++        return false;
++    }
++
++    /*
++     * We can assume any KVM supporting CPU is at least a v8
++     * with VFPv4+Neon; this in turn implies most of the other
++     * feature bits.
++     */
++    features |= 1ULL << ARM_FEATURE_V8;
++    features |= 1ULL << ARM_FEATURE_NEON;
++    features |= 1ULL << ARM_FEATURE_AARCH64;
++    features |= 1ULL << ARM_FEATURE_PMU;
++    features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
++
++    ahcf->features = features;
++
++    return true;
++}
++
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
 diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 6b6db9374c..fca4864b73 100644
+index fca4864b73..504526b24c 100644
 --- a/target/arm/kvm64.c
 +++ b/target/arm/kvm64.c
-@@ -399,7 +399,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
- 
- void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
- {
--    bool has_steal_time = kvm_arm_steal_time_supported();
-+    bool has_steal_time = kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
- 
-     if (cpu->kvm_steal_time == ON_OFF_AUTO_AUTO) {
-         if (!has_steal_time || !arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-@@ -437,11 +437,6 @@ bool kvm_arm_sve_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+@@ -143,260 +143,6 @@ void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
+     }
  }
  
--bool kvm_arm_steal_time_supported(void)
+-static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
 -{
--    return kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
+-    uint64_t ret;
+-    struct kvm_one_reg idreg = { .id = id, .addr = (uintptr_t)&ret };
+-    int err;
+-
+-    assert((id & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U64);
+-    err = ioctl(fd, KVM_GET_ONE_REG, &idreg);
+-    if (err < 0) {
+-        return -1;
+-    }
+-    *pret = ret;
+-    return 0;
 -}
 -
- QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
- 
- uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+-static int read_sys_reg64(int fd, uint64_t *pret, uint64_t id)
+-{
+-    struct kvm_one_reg idreg = { .id = id, .addr = (uintptr_t)pret };
+-
+-    assert((id & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U64);
+-    return ioctl(fd, KVM_GET_ONE_REG, &idreg);
+-}
+-
+-static bool kvm_arm_pauth_supported(void)
+-{
+-    return (kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_ADDRESS) &&
+-            kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC));
+-}
+-
+-bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+-{
+-    /* Identify the feature bits corresponding to the host CPU, and
+-     * fill out the ARMHostCPUClass fields accordingly. To do this
+-     * we have to create a scratch VM, create a single CPU inside it,
+-     * and then query that CPU for the relevant ID registers.
+-     */
+-    int fdarray[3];
+-    bool sve_supported;
+-    bool pmu_supported = false;
+-    uint64_t features = 0;
+-    int err;
+-
+-    /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
+-     * we know these will only support creating one kind of guest CPU,
+-     * which is its preferred CPU type. Fortunately these old kernels
+-     * support only a very limited number of CPUs.
+-     */
+-    static const uint32_t cpus_to_try[] = {
+-        KVM_ARM_TARGET_AEM_V8,
+-        KVM_ARM_TARGET_FOUNDATION_V8,
+-        KVM_ARM_TARGET_CORTEX_A57,
+-        QEMU_KVM_ARM_TARGET_NONE
+-    };
+-    /*
+-     * target = -1 informs kvm_arm_create_scratch_host_vcpu()
+-     * to use the preferred target
+-     */
+-    struct kvm_vcpu_init init = { .target = -1, };
+-
+-    /*
+-     * Ask for SVE if supported, so that we can query ID_AA64ZFR0,
+-     * which is otherwise RAZ.
+-     */
+-    sve_supported = kvm_arm_sve_supported();
+-    if (sve_supported) {
+-        init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
+-    }
+-
+-    /*
+-     * Ask for Pointer Authentication if supported, so that we get
+-     * the unsanitized field values for AA64ISAR1_EL1.
+-     */
+-    if (kvm_arm_pauth_supported()) {
+-        init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
+-                             1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
+-    }
+-
+-    if (kvm_arm_pmu_supported()) {
+-        init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+-        pmu_supported = true;
+-    }
+-
+-    if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
+-        return false;
+-    }
+-
+-    ahcf->target = init.target;
+-    ahcf->dtb_compatible = "arm,arm-v8";
+-
+-    err = read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr0,
+-                         ARM64_SYS_REG(3, 0, 0, 4, 0));
+-    if (unlikely(err < 0)) {
+-        /*
+-         * Before v4.15, the kernel only exposed a limited number of system
+-         * registers, not including any of the interesting AArch64 ID regs.
+-         * For the most part we could leave these fields as zero with minimal
+-         * effect, since this does not affect the values seen by the guest.
+-         *
+-         * However, it could cause problems down the line for QEMU,
+-         * so provide a minimal v8.0 default.
+-         *
+-         * ??? Could read MIDR and use knowledge from cpu64.c.
+-         * ??? Could map a page of memory into our temp guest and
+-         *     run the tiniest of hand-crafted kernels to extract
+-         *     the values seen by the guest.
+-         * ??? Either of these sounds like too much effort just
+-         *     to work around running a modern host kernel.
+-         */
+-        ahcf->isar.id_aa64pfr0 = 0x00000011; /* EL1&0, AArch64 only */
+-        err = 0;
+-    } else {
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 4, 1));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64smfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 4, 5));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 5, 0));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64dfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 5, 1));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar0,
+-                              ARM64_SYS_REG(3, 0, 0, 6, 0));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar1,
+-                              ARM64_SYS_REG(3, 0, 0, 6, 1));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar2,
+-                              ARM64_SYS_REG(3, 0, 0, 6, 2));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 7, 0));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 7, 1));
+-        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr2,
+-                              ARM64_SYS_REG(3, 0, 0, 7, 2));
+-
+-        /*
+-         * Note that if AArch32 support is not present in the host,
+-         * the AArch32 sysregs are present to be read, but will
+-         * return UNKNOWN values.  This is neither better nor worse
+-         * than skipping the reads and leaving 0, as we must avoid
+-         * considering the values in every case.
+-         */
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 0));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 1));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_dfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 2));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 4));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 5));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr2,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 6));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr3,
+-                              ARM64_SYS_REG(3, 0, 0, 1, 7));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar0,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 0));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar1,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 1));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar2,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 2));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar3,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 3));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar4,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 4));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar5,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 5));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr4,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 6));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar6,
+-                              ARM64_SYS_REG(3, 0, 0, 2, 7));
+-
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr0,
+-                              ARM64_SYS_REG(3, 0, 0, 3, 0));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 3, 1));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr2,
+-                              ARM64_SYS_REG(3, 0, 0, 3, 2));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr2,
+-                              ARM64_SYS_REG(3, 0, 0, 3, 4));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_dfr1,
+-                              ARM64_SYS_REG(3, 0, 0, 3, 5));
+-        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr5,
+-                              ARM64_SYS_REG(3, 0, 0, 3, 6));
+-
+-        /*
+-         * DBGDIDR is a bit complicated because the kernel doesn't
+-         * provide an accessor for it in 64-bit mode, which is what this
+-         * scratch VM is in, and there's no architected "64-bit sysreg
+-         * which reads the same as the 32-bit register" the way there is
+-         * for other ID registers. Instead we synthesize a value from the
+-         * AArch64 ID_AA64DFR0, the same way the kernel code in
+-         * arch/arm64/kvm/sys_regs.c:trap_dbgidr() does.
+-         * We only do this if the CPU supports AArch32 at EL1.
+-         */
+-        if (FIELD_EX32(ahcf->isar.id_aa64pfr0, ID_AA64PFR0, EL1) >= 2) {
+-            int wrps = FIELD_EX64(ahcf->isar.id_aa64dfr0, ID_AA64DFR0, WRPS);
+-            int brps = FIELD_EX64(ahcf->isar.id_aa64dfr0, ID_AA64DFR0, BRPS);
+-            int ctx_cmps =
+-                FIELD_EX64(ahcf->isar.id_aa64dfr0, ID_AA64DFR0, CTX_CMPS);
+-            int version = 6; /* ARMv8 debug architecture */
+-            bool has_el3 =
+-                !!FIELD_EX32(ahcf->isar.id_aa64pfr0, ID_AA64PFR0, EL3);
+-            uint32_t dbgdidr = 0;
+-
+-            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, WRPS, wrps);
+-            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, BRPS, brps);
+-            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, CTX_CMPS, ctx_cmps);
+-            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, VERSION, version);
+-            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, NSUHD_IMP, has_el3);
+-            dbgdidr = FIELD_DP32(dbgdidr, DBGDIDR, SE_IMP, has_el3);
+-            dbgdidr |= (1 << 15); /* RES1 bit */
+-            ahcf->isar.dbgdidr = dbgdidr;
+-        }
+-
+-        if (pmu_supported) {
+-            /* PMCR_EL0 is only accessible if the vCPU has feature PMU_V3 */
+-            err |= read_sys_reg64(fdarray[2], &ahcf->isar.reset_pmcr_el0,
+-                                  ARM64_SYS_REG(3, 3, 9, 12, 0));
+-        }
+-
+-        if (sve_supported) {
+-            /*
+-             * There is a range of kernels between kernel commit 73433762fcae
+-             * and f81cb2c3ad41 which have a bug where the kernel doesn't
+-             * expose SYS_ID_AA64ZFR0_EL1 via the ONE_REG API unless the VM has
+-             * enabled SVE support, which resulted in an error rather than RAZ.
+-             * So only read the register if we set KVM_ARM_VCPU_SVE above.
+-             */
+-            err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64zfr0,
+-                                  ARM64_SYS_REG(3, 0, 0, 4, 4));
+-        }
+-    }
+-
+-    kvm_arm_destroy_scratch_host_vcpu(fdarray);
+-
+-    if (err < 0) {
+-        return false;
+-    }
+-
+-    /*
+-     * We can assume any KVM supporting CPU is at least a v8
+-     * with VFPv4+Neon; this in turn implies most of the other
+-     * feature bits.
+-     */
+-    features |= 1ULL << ARM_FEATURE_V8;
+-    features |= 1ULL << ARM_FEATURE_NEON;
+-    features |= 1ULL << ARM_FEATURE_AARCH64;
+-    features |= 1ULL << ARM_FEATURE_PMU;
+-    features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+-
+-    ahcf->features = features;
+-
+-    return true;
+-}
+-
+ void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+ {
+     bool has_steal_time = kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
 -- 
 2.34.1
 

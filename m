@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp439392ejj;
-        Thu, 23 Nov 2023 06:40:01 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFJDujqBDXDEiGsV1p0bkG8MvNMCDh6K3cP72JT8YH7tCF9Wd0OsipKvdPaYpk5vh9AEdSU
-X-Received: by 2002:a05:620a:9449:b0:778:8e28:363b with SMTP id sm9-20020a05620a944900b007788e28363bmr4688680qkn.17.1700750401058;
-        Thu, 23 Nov 2023 06:40:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700750401; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp439416ejj;
+        Thu, 23 Nov 2023 06:40:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGNwR//OsM+dssRcvRn0yEjRU6OJUUZW2+AhfiDMy+ATnyoSUJrVOi6SozS8Gzc8IoNB/PX
+X-Received: by 2002:a05:6870:31c8:b0:1e9:b599:1aab with SMTP id x8-20020a05687031c800b001e9b5991aabmr6557495oac.58.1700750404373;
+        Thu, 23 Nov 2023 06:40:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700750404; cv=none;
         d=google.com; s=arc-20160816;
-        b=dLXJONkXaF0mxchK2Z5QeotvuHVmiHrQGw8oNHlk6vSKZCErzGE5JcxwnG8x5YE3dT
-         u+SutHQSS+M+TAXBIvFNsNdhKPOUjMGnsxenx9b+d1znMc5/ajc17p2GCxXKjWhYiuX5
-         3TrTj5W+6LPz5SYHqeoKduO4NhhD2o9iZI42fHPd0axjH5Iya1oEF3o8RYv/BAJqQf24
-         6JSyY9R8TQ3Lv3K4tz+WumVlxjMbx1trlU7eHanLY8nKxrRYOevUzxpsLmjLjRjqnatA
-         5GDe2dcfPT1eSoiuHj3uQd4UluRQqNezz/ua8BqYnNosb5hFvkOj6CScwyeVjUAF7zn8
-         pJ7Q==
+        b=Jddzjnmp0hecFKqon8zymvXlSaSYCzSMBG6qJhVo9vw7rkD1esedUyQ2c4ZMvFk6xA
+         4cw3r1FH9me+Q21OYRnEkFyxPFB7G85gFgez6fwslhnLLK9JQxe6+JYKJHfN0dVRXxo2
+         IhAqYypo48NkkM7faexjQu77hWYfaQpyC3vGbRHRlA/j0LEzLMFbazbistHixj32pZYB
+         JaAExqcmJZ+sA7gTuwZXnmp6qjPWuIQ9YCiD2iJ9MEj/KFLLQAD6mCKZ90KFa7YJHnpl
+         kHHnCVUsYO2KP7yG772H6o58ycRRPIM2ByjZXZFT5CKH9NQukNrOqhHQCgNRhZl4bHUN
+         6PyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UVWcie4bmzaB0d5l/X4mRechmHi5GyH0Jpi7gVis3Lc=;
+        bh=dGiTJB8vH4At7R/cLAjNpyQTepWZvh1pzfnI30rm26o=;
         fh=xd8Hqo+FyqINTpmMuSlnP3D7Rh8IYP9KQ4AY72o61pU=;
-        b=S+KdkFswev9WvK0+yWhCZRqHewJIDna8ICBrVH/jLzPMGd//arv4NfqB1Vf745gyhF
-         mDFdDNSfnURsQuCDS9sz3v3p8x65DzOs2A2HvwSB17x2i41U4f+4BMfAZ+fFva3Uei8V
-         M50I3jskCmzmsTs3VqCH33k2Ubx6ZjgePwfeY6tRXXJ408oGuKwopSQo7g3n03/JOncw
-         sUr9xI0EGB9GF4ngUqXreuH+/zrYPz7cpgKLXzHiBp0gDiwdAUd5tZQ/nirAuwIa7sFp
-         bhotttCmcpi4iuSYRwtOEe5XyNVEHmZG1S279HZ9OKllpWFnH8mIFUSDfMlotR4EzLyi
-         VPnA==
+        b=A+revtB6ufj8P+jIVbVhW6smkwwj6qqgRK+QHNjUTNqMwlig9XchZ3y6TdoxCVTsL6
+         fprvdsl0IjdVFRpqdfi6wWX6qvsUjDqVKgt6YXLNovgm+rfGF7FjjW/tUIo1Kg62/N1D
+         ikFh2G2zXcesRn2yjwqKp0qjAr54JCdcnKjqAWEfElpj0its0BhTSXDM/dhakCFCbjYS
+         O44jwuBujIkYfk1LR9Jkh6PSEQEdFsKPinD9+NM8dgXfcttqiVFszdjLp+qyA/xQ1blZ
+         EQGqMiz5+c8Lh7CeUVigReup7A5WgZ4mn/XPnZ7hNJkjGZrNp1ATdl7W0SfmFFC4xjJV
+         l6Bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cV4vnLZb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=a4rnnAa7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7-20020a05620a290700b0077417e7fd27si1238155qkp.290.2023.11.23.06.40.00
+        by mx.google.com with ESMTPS id t4-20020a05620a0b0400b0076da614eba1si1200968qkg.170.2023.11.23.06.40.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Nov 2023 06:40:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Nov 2023 06:40:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cV4vnLZb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=a4rnnAa7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r6ArN-0002JL-VA; Thu, 23 Nov 2023 09:39:18 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r6Arm-0002ng-PB; Thu, 23 Nov 2023 09:39:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6Ar1-00025Y-Rw
- for qemu-devel@nongnu.org; Thu, 23 Nov 2023 09:38:56 -0500
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6ArH-0002Gw-V9
+ for qemu-arm@nongnu.org; Thu, 23 Nov 2023 09:39:13 -0500
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6Aqy-0002UD-D7
- for qemu-devel@nongnu.org; Thu, 23 Nov 2023 09:38:55 -0500
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-332e7630a9dso15056f8f.1
- for <qemu-devel@nongnu.org>; Thu, 23 Nov 2023 06:38:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6ArE-0002Vr-Vz
+ for qemu-arm@nongnu.org; Thu, 23 Nov 2023 09:39:11 -0500
+Received: by mail-lj1-x232.google.com with SMTP id
+ 38308e7fff4ca-2c83d37a492so12016191fa.3
+ for <qemu-arm@nongnu.org>; Thu, 23 Nov 2023 06:39:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700750331; x=1701355131; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700750347; x=1701355147; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UVWcie4bmzaB0d5l/X4mRechmHi5GyH0Jpi7gVis3Lc=;
- b=cV4vnLZbO9huW2/0n7GwE6JNt5TGVEc9H4KNmIBe2yDGOAnioOGg/wH1BvZvRgstaZ
- iY9+1GbMNvuHbJsnf7Ps54zcJDZ4PilBznk+u4zZ+URiMOhGsNfw11iGxajHlfyn/DSs
- 1oZjsJ2bmMbXuvGvufVtEF6kberlgmNqkZWh8Y9afhzTCG+U12bQ2Es7MItguJ+1KUVx
- X+DBK+dJkKTxOpWsNAf4TM5TZhzC58KSsz/Y8DxmLqjFgGSKIqOCNBdFvNHIJvKYZcb/
- hy/FN4r10h+77JyPYlCM04chEsNLx+1lYdJbGBGkMVupHcE3MRqqnzTU/n9OaYtfTd0f
- LUbg==
+ bh=dGiTJB8vH4At7R/cLAjNpyQTepWZvh1pzfnI30rm26o=;
+ b=a4rnnAa7w1+vrwFNFCdho6mZBoQJx9Cmlz9oa5gkUMbcN46fPNbWuP5vIi5l54KCmz
+ O73nY0jl2DnvnUjC0bGF5uaFSKI7ZyVIXJQGEOzEwAOHHKcFhPtYmtRqZEy986WnI8JJ
+ LTssH2/8tYEar04i0K7QgopFFnmCHdDzEOkRy+coY/CKl/QFC8bjjJuJ1A4vHNj1YFrC
+ uE1xNMqGICKxuxwm+pbF/eYnRkwN2dkIhAKDhEg/pWDCL+z/TUXxg61/SL0tsj4Cg1RO
+ XIIwmy4K/yhY7/2X4Ydsqo5u6olDF+bGP3obXWTaF0pg1DuCRxZMJoqStp5gUdB6B520
+ iCow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700750331; x=1701355131;
+ d=1e100.net; s=20230601; t=1700750347; x=1701355147;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UVWcie4bmzaB0d5l/X4mRechmHi5GyH0Jpi7gVis3Lc=;
- b=k82Bw/PCUCZKYYOYIHh2tZxbcovLoPqIRB2oCBSY4xu4h5l/JG1D8ktt/OThyYdCmC
- o6dRe4N7vxcwJJZEDGKsSNi8sknTPs+vrnXzmppxAv6dVUkqk/N1M4WQtBq0iGuZeRvL
- bTF7zfIMJhTs3DmCI4nCJINZs6FShf3IiO6HXxpMDyQ9qxTNN5NApELp/7ziTicuF3lp
- 3Usq2A5u121cmZBa9wJbmRIOtmw2ZQfc2n31TSubS73lThvScdFBYnI0GI0B7bFGO1rM
- MczZJ/pBjiSmwsOEdl9rA3Rz9nxXq4Ju8/E316XTpqiOgJZNaaIP1TScs8RNOgGwM8dK
- GwKg==
-X-Gm-Message-State: AOJu0YxhFg+aZuOACoNCfE7NtLCRhclfb1RbQgSsKU3HxNXz8Io2dVkO
- NxHZ4NWso1YFqQEVOscbYorigQ==
-X-Received: by 2002:a5d:5644:0:b0:32d:81fe:7104 with SMTP id
- j4-20020a5d5644000000b0032d81fe7104mr3649375wrw.63.1700750330739; 
- Thu, 23 Nov 2023 06:38:50 -0800 (PST)
+ bh=dGiTJB8vH4At7R/cLAjNpyQTepWZvh1pzfnI30rm26o=;
+ b=fzY3MqRYqgwiDZOnC9Wp86AIEL4CiSb/QvZBJTI3qv/grjWA+mDB6tTsDwae45Vp9F
+ zYDWqLXat9H4lw5I+q5OT8BegOo4GgeumMtWy3B8kDy9s8xAXQqsa3DikpzTHxUTFHdy
+ 2NFnP0yx32fDhvQF6+ZlFOmWxW2I0jiGfb0wbnuQR3VLsxtIFtq/SwEMlkEdAXy4J1Jr
+ wl5PgtOi0w0dghdVTFipazuiSXUuMBVvNEMapYZr/uaajRzpUF/dprueqJuWibB679h7
+ 4pWgiO9rOc7j4jslGf7EZcUxnpZittSqOUruTd2gvkUqXRiGlStdnJST75454uj6X71F
+ EVKA==
+X-Gm-Message-State: AOJu0Yzipa9NnQWrXARDTb7+jPJMwrazsTT+WIvDehqIifuyGqfOTCaB
+ 6mKUe6W85byUNNciVOo14NHTVw==
+X-Received: by 2002:a05:651c:19a4:b0:2c8:3888:bbb2 with SMTP id
+ bx36-20020a05651c19a400b002c83888bbb2mr4569717ljb.38.1700750347065; 
+ Thu, 23 Nov 2023 06:39:07 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.165.237])
  by smtp.gmail.com with ESMTPSA id
- cr6-20020a05600004e600b00332cc24a59bsm1802540wrb.109.2023.11.23.06.38.47
+ d5-20020a05600c34c500b0040b349c91acsm2922438wmq.16.2023.11.23.06.39.03
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Nov 2023 06:38:50 -0800 (PST)
+ Thu, 23 Nov 2023 06:39:06 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
@@ -119,18 +119,18 @@ Cc: Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH-for-9.0 v2 4/8] hw: Simplify accesses to the
- CPUState::'start-powered-off' property
-Date: Thu, 23 Nov 2023 15:38:08 +0100
-Message-ID: <20231123143813.42632-5-philmd@linaro.org>
+Subject: [PATCH-for-9.0 v2 6/8] hw: Simplify uses of qdev_prop_set_bit(dev,
+ 'start-powered-off')
+Date: Thu, 23 Nov 2023 15:38:10 +0100
+Message-ID: <20231123143813.42632-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231123143813.42632-1-philmd@linaro.org>
 References: <20231123143813.42632-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,144 +139,114 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3dnE2JAwA9n/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +OdmDkAIZ7qb
 
-The 'start-powered-off' property has been added to ARM CPUs in
-commit 5de164304a ("arm: Allow secondary KVM CPUs to be booted
-via PSCI"), then eventually got generalized to all CPUs in commit
-c1b701587e ("target/arm: Move start-powered-off property to generic
-CPUState"). Since all CPUs have it, no need to check whether it is
-available. Updating this property can't fail, so use &error_abort.
+Simplify few qdev_prop_set_bit("start-powered-off") and re-indent.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/armsse.c  | 6 ++----
- hw/arm/armv7m.c  | 8 ++------
- hw/arm/bcm2836.c | 8 ++------
- hw/mips/cps.c    | 7 +++----
- hw/ppc/e500.c    | 2 +-
- hw/sparc/sun4m.c | 2 +-
- 6 files changed, 11 insertions(+), 22 deletions(-)
+ hw/arm/allwinner-h3.c  |  3 +--
+ hw/arm/allwinner-r40.c |  3 +--
+ hw/arm/bcm2836.c       |  4 ++--
+ hw/arm/fsl-imx6.c      |  4 +---
+ hw/arm/fsl-imx7.c      | 12 +++++-------
+ 5 files changed, 10 insertions(+), 16 deletions(-)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 31acbf7347..4672df180f 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -1022,10 +1022,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-          * later if necessary.
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+index f05afddf7e..593244464a 100644
+--- a/hw/arm/allwinner-h3.c
++++ b/hw/arm/allwinner-h3.c
+@@ -251,8 +251,7 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+          * Disable secondary CPUs. Guest EL3 firmware will start
+          * them via CPU reset control registers.
           */
-         if (extract32(info->cpuwait_rst, i, 1)) {
--            if (!object_property_set_bool(cpuobj, "start-powered-off", true,
--                                          errp)) {
--                return;
--            }
-+            object_property_set_bool(cpuobj, "start-powered-off", true,
-+                                     &error_abort);
-         }
-         if (!s->cpu_fpu[i]) {
-             if (!object_property_set_bool(cpuobj, "vfp", false, errp)) {
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index d10abb36a8..cbaebe9bf8 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -318,12 +318,6 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
--    if (object_property_find(OBJECT(s->cpu), "start-powered-off")) {
--        if (!object_property_set_bool(OBJECT(s->cpu), "start-powered-off",
--                                      s->start_powered_off, errp)) {
--            return;
--        }
--    }
-     if (object_property_find(OBJECT(s->cpu), "vfp")) {
-         if (!object_property_set_bool(OBJECT(s->cpu), "vfp", s->vfp, errp)) {
-             return;
-@@ -334,6 +328,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
-+    object_property_set_bool(OBJECT(s->cpu), "start-powered-off",
-+                             s->start_powered_off, &error_abort);
+-        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
+-                          i > 0);
++        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off", i > 0);
  
-     /*
-      * Real M-profile hardware can be configured with a different number of
+         /* All exception levels required */
+         qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el3", true);
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index a0d367c60d..202a158fb8 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -304,8 +304,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+          * Disable secondary CPUs. Guest EL3 firmware will start
+          * them via CPU reset control registers.
+          */
+-        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
+-                          i > 0);
++        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off", i > 0);
+ 
+         /* All exception levels required */
+         qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el3", true);
 diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 289c30e6b6..b0674a22a6 100644
+index 1fdc3be6bb..03e6eb2fb2 100644
 --- a/hw/arm/bcm2836.c
 +++ b/hw/arm/bcm2836.c
-@@ -135,12 +135,8 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
-                                 bc->peri_base, &error_abort);
+@@ -99,9 +99,9 @@ static void bcm2835_realize(DeviceState *dev, Error **errp)
  
-         /* start powered off if not enabled */
--        if (!object_property_set_bool(OBJECT(&s->cpu[n].core),
--                                      "start-powered-off",
--                                      n >= s->enabled_cpus,
--                                      errp)) {
--            return;
+     /* Connect irq/fiq outputs from the interrupt controller. */
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
+-            qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_IRQ));
++                       qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_IRQ));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
+-            qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_FIQ));
++                       qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_FIQ));
+ }
+ 
+ static void bcm2836_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 17c399a37e..b7f1738a89 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -127,9 +127,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+         }
+ 
+         /* All CPU but CPU 0 start in power off mode */
+-        if (i) {
+-            qdev_prop_set_bit(DEVICE(&s->cpu[i]), "start-powered-off", true);
 -        }
-+        object_property_set_bool(OBJECT(&s->cpu[n].core), "start-powered-off",
-+                                 n >= s->enabled_cpus, &error_abort);
++        qdev_prop_set_bit(DEVICE(&s->cpu[i]), "start-powered-off", i > 0);
  
-         if (!qdev_realize(DEVICE(&s->cpu[n].core), NULL, errp)) {
+         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
              return;
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index b6612c1762..4f12e23ab5 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -78,10 +78,9 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-         CPUMIPSState *env = &cpu->env;
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 3138ffeb08..451801f7e8 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -187,13 +187,11 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+                                     &error_abort);
+         }
  
-         /* All VPs are halted on reset. Leave powering up to CPC. */
--        if (!object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
--                                      errp)) {
--            return;
+-        if (i) {
+-            /*
+-             * Secondary CPUs start in powered-down state (and can be
+-             * powered up via the SRC system reset controller)
+-             */
+-            qdev_prop_set_bit(DEVICE(o), "start-powered-off", true);
 -        }
-+        object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
-+                                 &error_abort);
-+
-         /* All cores use the same clock tree */
-         qdev_connect_clock_in(DEVICE(cpu), "clk-in", s->clock);
++        /*
++         * Secondary CPUs start in powered-down state (and can be
++         * powered up via the SRC system reset controller)
++         */
++        qdev_prop_set_bit(DEVICE(o), "start-powered-off", i > 0);
  
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 384226296b..566f1200dd 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -955,7 +955,7 @@ void ppce500_init(MachineState *machine)
-          * when implementing non-kernel boot.
-          */
-         object_property_set_bool(OBJECT(cs), "start-powered-off", i != 0,
--                                 &error_fatal);
-+                                 &error_abort);
-         qdev_realize_and_unref(DEVICE(cs), NULL, &error_fatal);
- 
-         if (!firstenv) {
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 17bf5f2879..64895aebe3 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -804,7 +804,7 @@ static void cpu_devinit(const char *cpu_type, unsigned int id,
- 
-     qemu_register_reset(sun4m_cpu_reset, cpu);
-     object_property_set_bool(OBJECT(cpu), "start-powered-off", id != 0,
--                             &error_fatal);
-+                             &error_abort);
-     qdev_realize_and_unref(DEVICE(cpu), NULL, &error_fatal);
-     cpu_sparc_set_id(env, id);
-     *cpu_irqs = qemu_allocate_irqs(cpu_set_irq, cpu, MAX_PILS);
+         qdev_realize(DEVICE(o), NULL, &error_abort);
+     }
 -- 
 2.41.0
 

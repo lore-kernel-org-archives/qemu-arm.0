@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp150119ejj;
-        Wed, 22 Nov 2023 20:44:47 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHDiv57mPoAuJvbHspBiE4QRtzF+N01Xbz8pK46x02z4hQ8SrNOUh4q+5PZvT0hCF0dmX8X
-X-Received: by 2002:a05:6214:1c86:b0:670:b327:c86f with SMTP id ib6-20020a0562141c8600b00670b327c86fmr1898402qvb.17.1700714687685;
-        Wed, 22 Nov 2023 20:44:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700714687; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp150128ejj;
+        Wed, 22 Nov 2023 20:44:48 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH5EOWW85Ppz4xSBmtwAySw/9v9Ef9F84pb+vQSzhP0Ip05nIOXH/0RkJhIAOLRDfBw4Noy
+X-Received: by 2002:a05:622a:1048:b0:423:83a1:7bbf with SMTP id f8-20020a05622a104800b0042383a17bbfmr2755029qte.28.1700714688472;
+        Wed, 22 Nov 2023 20:44:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700714688; cv=none;
         d=google.com; s=arc-20160816;
-        b=nuHQnWigUeDt9Kl2bHJ9556rInvHos8gp2jcpGZKZnpD5SKkCr6lsHolM8XdEnG7VV
-         /Lwy+fE722B/ZylKRgU8daTPuv9NrDgGY7jp53EtWTcCpjsyUJqfP9GbpW8A9OFndZ5k
-         iXA32a2jXXMDMgmfrniSnT0cu/vmp8NxdMQjaW1M8umT4FQrtymhPTrnE3inAPgnTEh4
-         4TmZCKuajtl0NUGT+gnURT4756pNZWQrI3GablailRo/ZbgSrzjSYDUZYENHKkKQ+BDp
-         hEG9nKKfY7vc8U3wZBg2mafp4ayz0irfowlmcLu69I5a0Y7ZZZPJluIvlURTCeIHMPRJ
-         6glQ==
+        b=PoUCmHDS4BdStluPLpVOPAUxt5RDlDiwZcxa286b/nbQWD4r7BNCDg9WyMXz9WitYK
+         UO25EzXYQ0UgGsmZNy/T7S2Bc1UrMXd4oIMiXQnFoc8sqDmn6OJUCSqbHvD3gh7ItDsZ
+         mk9YL3Z35pBXER2YmMUeAgJcofuISU7p9nTo3L+QoWdi5330iOoP5yYU6O1qmCLAYuRJ
+         7Zp7kfjXuzTn31Mran/mm86ny8a86xyok6JI7asrIo8OF0HSMv8BOZM2ZuReXsWrfgzc
+         UOACqx/lJL3eP1XL9ym8wtxNsHxHflF4VGZcywB7DksP0QpxiqOptpBEU/cIMUw3UO6Y
+         nN0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=z9sYIWas5f3L9LVklxkBAZhldZmGtqlfaE/Pn9tmcPw=;
+        bh=f0csjBzUKQmzo27GffQhvUdSife+3bvwrwa84N7+vIM=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=SWkJNRpGpIxJQdkMHx7I52grSlti2/n8en0Iikn9DmWWoRPa0I+T/0UJRIoz9DtgPg
-         y18yR1MI5+LVhy3/WFXdOpSfY0BQ39+UIEPyeKphe9TC05P2Kdei7z25QwLsEFZsLAwa
-         Ct71h5CjlTMmY+RWjKa/qch/X9quFhHOQecxXs2JRuSyOTBlRiURoD5GERVMmtIbcY+u
-         TVbiFpEtzZmVmiCiKk4xxEb1rUHnaM0CdJXifZsqx0rgAluHQlW1X9L/PXjn/S6/oqed
-         Q5TpnzjwMWbjJzmOlS/CJXckstOCcW9zMIkD813W2UlT99Cv9CUeg182H1VTlIsOtJ86
-         VPhw==
+        b=HtavNeFLB3pti0HcCk0G0fvHf4urokiLHExz1AZQhwAp0+P+DPmKAWFbGvUiM8lVwk
+         SdGEpRZySDaek/qe9rbF5szStCEwkhhWI4LA0VqrbD8HpssOjwC8jlMIuGBHaz7sb2Rv
+         /sQ+jmL994gh5o4O3OOU6f8nvDWqKxmBEFTDu1Qbhj3iTtHSwEkP4bsa5MCftkloIEEB
+         STHsShQCSH0LW9DEFdw9CDMeSJ7HhKLFuHiv8/H93pWiqlZ4mswwKzzKxXjvTDy1bljc
+         AMrniBQH6L0wximRy+dIUKZskS9ZKfqwyhiY1NC/PlkbRyqEJJfox3kBmaecQkM5tNH5
+         jQhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="aJRXV/Ty";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=S6Gx1+Mc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17-20020a0cec51000000b0066d07dcdcebsi418789qvq.475.2023.11.22.20.44.47
+        by mx.google.com with ESMTPS id d14-20020a05622a05ce00b004236f8a06a0si417338qtb.75.2023.11.22.20.44.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Nov 2023 20:44:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Nov 2023 20:44:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="aJRXV/Ty";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=S6Gx1+Mc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r61YP-0006fI-7c; Wed, 22 Nov 2023 23:43:05 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r61YJ-0006bF-RI; Wed, 22 Nov 2023 23:42:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Y4-0006PT-Va
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:46 -0500
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+ id 1r61Y0-0006OM-T3
+ for qemu-devel@nongnu.org; Wed, 22 Nov 2023 23:42:44 -0500
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Y0-0006EX-KH
- for qemu-arm@nongnu.org; Wed, 22 Nov 2023 23:42:44 -0500
-Received: by mail-oi1-x234.google.com with SMTP id
- 5614622812f47-3b6cfc62514so258826b6e.0
- for <qemu-arm@nongnu.org>; Wed, 22 Nov 2023 20:42:38 -0800 (PST)
+ id 1r61Xw-0006BL-MM
+ for qemu-devel@nongnu.org; Wed, 22 Nov 2023 23:42:39 -0500
+Received: by mail-oi1-x230.google.com with SMTP id
+ 5614622812f47-3b833b54f14so252090b6e.1
+ for <qemu-devel@nongnu.org>; Wed, 22 Nov 2023 20:42:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700714557; x=1701319357; darn=nongnu.org;
+ d=linaro.org; s=google; t=1700714554; x=1701319354; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=z9sYIWas5f3L9LVklxkBAZhldZmGtqlfaE/Pn9tmcPw=;
- b=aJRXV/Ty+5lgI16quwOq0JbaOvc3Qcfp1rJsLB5GCVW1pD+ce52Y50FH3yFgQLZmLR
- Ca0TiuKrNl/5SUpsHnozh1g90bUJd2bxMLKOEsHnDUJCmWSSKw2VCM/GcwOPgWOH61Ba
- IWhNqkQqNzbbf77Hxf6Oxf4bqAOcRcbVrAwSVtJwGih3G3jx1dntz2GM8lnfdBKBUZE7
- CIfBiUYw62axht9dIOJuvzVhE2UBt0zrZWU1pVD9u0SUsTgT7I4tLmT843k/XxrZfxpH
- 1JCRbyhHngj9usP3CsGzVUSL+ETkqLPpZET9ls4aumybJ+LaKHc8KSp+26I4QhHy0LSI
- xsOA==
+ bh=f0csjBzUKQmzo27GffQhvUdSife+3bvwrwa84N7+vIM=;
+ b=S6Gx1+McceoIk4xJkUX9rJm41OLdLbr8Ra+QlV8LBa9+1VYWHLZQ2XsJz1my2+FfjA
+ lEYabSfnFF0kRs08JDghCpi1bq4gJ2RwNUSC9fVCadQLpV1qrOfWFqNrPKjXLowaYlNB
+ EAg99865AXp33esyj6l+jM96vXGvVnjgptAjlqEondHjdQTzFmpCNPrJUZpxxuXgkvex
+ 8PYlsd3mzGw5uXUrkLkttC0kKsrsg+u/2HRslWmj+TMBtuJ4eKjWmu/n4sNhoCiKRef/
+ Vv/dSdZhpqDQ77YNmM46FbMitQx6ygcXcDcn8dQzc6cbrkN8ohZ0BqRDgONEf3j2DHKX
+ 9QFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700714557; x=1701319357;
+ d=1e100.net; s=20230601; t=1700714554; x=1701319354;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=z9sYIWas5f3L9LVklxkBAZhldZmGtqlfaE/Pn9tmcPw=;
- b=XBN5dBq0l0KUfllUdbJ+SOR4J/rhvnZ37sEg1zRP7h/zEt/qUxeEr1akonxpoYwvaq
- 42V5txmeNG0hn6pgQ8AeS2BxJvA+UB28k1IPeGDMWIdCaftoWCTPnyQgptnyKZVIKXZ+
- IvFKtE7SiIXjevgU2YxvJ1t8yVk8H/2yyxTGQjR525rFeFyclTocckzsdy6kHlF9MQEi
- AKMe11mMhRUZGF897GhMB9bH2CS69WXXNSFGUwo6Sh05vc7VBP5jToUObEYgMWJegBED
- KfZvJsF/QhDX60sN26JOkntff97vQt3c+JzcFVlWnkoBmXXuAiWUoYiDFyqqrcfjpqrT
- ZNsA==
-X-Gm-Message-State: AOJu0YzJ3w4m8hGzi1PRak2KV+dntdfHnRypFNtT4XuPwl+gzAExgzoi
- mJ8It7SgA4W9HhRhudPfe/WXsohUiIoEzz1zZi+bDfbB
-X-Received: by 2002:a05:6808:209b:b0:3af:a80c:420 with SMTP id
- s27-20020a056808209b00b003afa80c0420mr850846oiw.7.1700714557171; 
- Wed, 22 Nov 2023 20:42:37 -0800 (PST)
+ bh=f0csjBzUKQmzo27GffQhvUdSife+3bvwrwa84N7+vIM=;
+ b=OhQ8CiBCwWeKiDZLtgT+jpud8tGFcrb3Xo5yDv1Sk1hIWYEQ8eM1Uj3+Op8Mk7WGdv
+ Wv4Cclt8wA0PEmWEAhhQ/RjlYU7Hsn/Lad3Vi1idz8YrHO7B80GvUlgRfggZjrmntVTf
+ xhi5H0kYoRF5i8UOZXCeTXj5KPfk4N4m9U6FwO0J5CLH+46ESoGpd5Ov0BkdJqGD94vC
+ rfzHtQdHyaZesxHtzaeR9sP/ROvyKujVa6IFX9LI4XbUPmMWytJtzpG7OHzcAiZLTtg/
+ IhHCmOl4o2CtpxQBDAFJVexvfuJe2Awhw0BmPSJp5NADwUMp18hGJvE7I09l5kYQyLTe
+ pqmQ==
+X-Gm-Message-State: AOJu0YwFPzgAUqCseimGlnJrzYIYA9Y0ytaeVBKyjuj4GzH0VCJ188AF
+ M3Klv8lwLjw4UZKftQWVHJsfBGGYJ/ORgoQd7ytDtEVx
+X-Received: by 2002:a05:6808:f92:b0:3b8:33d1:806d with SMTP id
+ o18-20020a0568080f9200b003b833d1806dmr736999oiw.22.1700714553754; 
+ Wed, 22 Nov 2023 20:42:33 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.36
+ i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Nov 2023 20:42:36 -0800 (PST)
+ Wed, 22 Nov 2023 20:42:33 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 15/21] target/arm/kvm: Unexport kvm_arm_vcpu_init
-Date: Wed, 22 Nov 2023 22:42:13 -0600
-Message-Id: <20231123044219.896776-16-richard.henderson@linaro.org>
+Subject: [PATCH 12/21] target/arm/kvm: Move kvm_arm_cpreg_level and unexport
+Date: Wed, 22 Nov 2023 22:42:10 -0600
+Message-Id: <20231123044219.896776-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231123044219.896776-1-richard.henderson@linaro.org>
 References: <20231123044219.896776-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x234.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::230;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x230.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -110,73 +110,107 @@ X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zlf0ogxwHt18
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NnEvlAQjmJAY
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/kvm_arm.h | 12 ------------
- target/arm/kvm.c     | 12 +++++++++++-
- 2 files changed, 11 insertions(+), 13 deletions(-)
+ target/arm/kvm_arm.h |  9 ---------
+ target/arm/kvm.c     | 22 ++++++++++++++++++++++
+ target/arm/kvm64.c   | 15 ---------------
+ 3 files changed, 22 insertions(+), 24 deletions(-)
 
 diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 1043123cc7..b96ff35e34 100644
+index e59d713973..2755ee8366 100644
 --- a/target/arm/kvm_arm.h
 +++ b/target/arm/kvm_arm.h
-@@ -18,18 +18,6 @@
- #define KVM_ARM_VGIC_V2   (1 << 0)
- #define KVM_ARM_VGIC_V3   (1 << 1)
+@@ -87,15 +87,6 @@ int kvm_arm_init_cpreg_list(ARMCPU *cpu);
+  */
+ bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx);
  
 -/**
-- * kvm_arm_vcpu_init:
-- * @cs: CPUState
+- * kvm_arm_cpreg_level:
+- * @regidx: KVM register index
 - *
-- * Initialize (or reinitialize) the VCPU by invoking the
-- * KVM_ARM_VCPU_INIT ioctl with the CPU type and feature
-- * bitmask specified in the CPUState.
-- *
-- * Returns: 0 if success else < 0 error code
+- * Return the level of this coprocessor/system register.  Return value is
+- * either KVM_PUT_RUNTIME_STATE, KVM_PUT_RESET_STATE, or KVM_PUT_FULL_STATE.
 - */
--int kvm_arm_vcpu_init(CPUState *cs);
+-int kvm_arm_cpreg_level(uint64_t regidx);
 -
  /**
-  * kvm_arm_vcpu_finalize:
-  * @cs: CPUState
+  * write_list_to_kvmstate:
+  * @cpu: ARMCPU
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 466b848156..a864d0852f 100644
+index ffe0db4293..dadc3fd755 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -58,7 +58,17 @@ typedef struct ARMHostCPUFeatures {
+@@ -817,6 +817,28 @@ out:
+     return ret;
+ }
  
- static ARMHostCPUFeatures arm_host_cpu_features;
- 
--int kvm_arm_vcpu_init(CPUState *cs)
 +/**
-+ * kvm_arm_vcpu_init:
-+ * @cs: CPUState
++ * kvm_arm_cpreg_level:
++ * @regidx: KVM register index
 + *
-+ * Initialize (or reinitialize) the VCPU by invoking the
-+ * KVM_ARM_VCPU_INIT ioctl with the CPU type and feature
-+ * bitmask specified in the CPUState.
-+ *
-+ * Returns: 0 if success else < 0 error code
++ * Return the level of this coprocessor/system register.  Return value is
++ * either KVM_PUT_RUNTIME_STATE, KVM_PUT_RESET_STATE, or KVM_PUT_FULL_STATE.
 + */
-+static int kvm_arm_vcpu_init(CPUState *cs)
++static int kvm_arm_cpreg_level(uint64_t regidx)
++{
++    /*
++     * All system registers are assumed to be level KVM_PUT_RUNTIME_STATE.
++     * If a register should be written less often, you must add it here
++     * with a state of either KVM_PUT_RESET_STATE or KVM_PUT_FULL_STATE.
++     */
++    switch (regidx) {
++    case KVM_REG_ARM_TIMER_CNT:
++    case KVM_REG_ARM_PTIMER_CNT:
++        return KVM_PUT_FULL_STATE;
++    }
++    return KVM_PUT_RUNTIME_STATE;
++}
++
+ bool write_kvmstate_to_list(ARMCPU *cpu)
  {
-     ARMCPU *cpu = ARM_CPU(cs);
-     struct kvm_vcpu_init init;
+     CPUState *cs = CPU(cpu);
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 61fb9dbde0..a184cca4dc 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -361,21 +361,6 @@ bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx)
+     }
+ }
+ 
+-int kvm_arm_cpreg_level(uint64_t regidx)
+-{
+-    /*
+-     * All system registers are assumed to be level KVM_PUT_RUNTIME_STATE.
+-     * If a register should be written less often, you must add it here
+-     * with a state of either KVM_PUT_RESET_STATE or KVM_PUT_FULL_STATE.
+-     */
+-    switch (regidx) {
+-    case KVM_REG_ARM_TIMER_CNT:
+-    case KVM_REG_ARM_PTIMER_CNT:
+-        return KVM_PUT_FULL_STATE;
+-    }
+-    return KVM_PUT_RUNTIME_STATE;
+-}
+-
+ /* Callers must hold the iothread mutex lock */
+ static void kvm_inject_arm_sea(CPUState *c)
+ {
 -- 
 2.34.1
 

@@ -1,164 +1,148 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp149816ejj;
-        Wed, 22 Nov 2023 20:43:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHr7TlV9l35wnkf8h6DFazRUThLdC2pwky3399IVjTTGNZKMyOldkdS13H6th8unIY/EgIc
-X-Received: by 2002:a05:620a:4626:b0:778:b30b:9834 with SMTP id br38-20020a05620a462600b00778b30b9834mr5124502qkb.33.1700714632342;
-        Wed, 22 Nov 2023 20:43:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700714632; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp272971ejj;
+        Thu, 23 Nov 2023 02:00:51 -0800 (PST)
+X-Received: by 2002:a05:6000:18a4:b0:332:d48d:3414 with SMTP id b4-20020a05600018a400b00332d48d3414mr3313962wri.50.1700733650900;
+        Thu, 23 Nov 2023 02:00:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700733650; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hzj3l4DVQhMvHodSQ3QcoX11xlJb0Pfn4kIaQ0a3PnY7F4h6UcUQvxy8kWGgGyPkNp
-         jkGaJnOJIgI3+HTTezWQwgQgkOVgOpPtCuHdY6URHvUQMTl1tkyEGkHUIxOnluBjJk25
-         B+ooEYod8FS8Fg4tt0M9P4IFzs7tallDMLEp3RCy8o/XJlvznOQWMcjGP/+ge9G5SrZX
-         LpbdqBW4DPPgHsjZLCGZpKao2U/4XfBnDWcJ07LPBs4xpER/CN5DcPkcq/74k5y5wLCQ
-         zdHEtiT63k7xTnN7Kp3vj5Og2LUtBhZyxwYsDyXMw2WJHjXZ4TnGirqdnTdySRbfEqTa
-         A/Zg==
+        b=JSDVVA5vspes8DtcXUjJzQt9DDmQn425AazNIb8ZWP9XRq1FnH2ePvWVVC/30gSNGx
+         OI0/DaK5A2z1JC5PgKbpaNw3TMc47tkvRrzpOXs8wvSaN/DYBwD6fCkao3Ft0aMBcJEZ
+         CZwu1vRwj/+5RQdG8fVkps2UzqG4uAe6IVoBgHjSmFrhz5MB6Zb8P6Y/WBWAllyrIxKX
+         74tSe1GHhFbDEdl6/6CbhsPDn5+abd5jgewd59pNk/ZPgx0jme/yqjRQkoRxECgdvpBQ
+         Z1mh6isHGRt/63GyTCFMHEFCIHzhN5949T5SyX9om3+qZ9prPrbK7AYTNA+cfQPOjTQq
+         bGyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/RJe0+6jbJTwAypT42FH4DkgaN/bD8EpjoaWzgOvMn0=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=lPLdrWADBpMtAbvuiVymKIjpTPXUzxVOMpa03VqCIp2ulgI+QdQwpzBYT27Jkdg31w
-         PkZHrBjuBdW/g/9y3yGu63ICdwdmI0snS9vfTsdPbh/h5Gby5VGDAURIqF55pULzB3/o
-         GzQwerApgYp1JnEmCealY5ikz6Qok8fNtRMSsYW/jh7ZJdzRwR18bhVQq12+trWjShPy
-         xD8nb/bHha/letaPu2K7oTza6AHFlAvrIqfbeLMZGsHMuxls4jOmnuft39rCxQPCLlOE
-         HlH8PQdbH2Sj/VpLYBKNMo9VETzWgbnCb8975FeD00K5/xkB6W1iIeWbiqD9SNdOCAHa
-         Xurg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=uhF8UjaKtMa3szBB3PYJ7CaLfrF8gURumFjUK6ZS6vo=;
+        fh=/Jij6XHzk97EGjn8kiPNQAHV5Sa0Deqi0/ecY0NYlF8=;
+        b=Zs/KvJCoBA8E1XdSw54m9Izym8JOh29FWldWAZEc5tnMw1/Z1wpgTxG5Sk5pVSwpoH
+         9IMRYBPyufZaUO0gKBpiPLm6b0Cc9vqX5jBptLaO+o/o8LOgJ1awBECJoi+5WwiwKFAp
+         SxqTrYfDqjJC5PYxi9/elhQ4qqDDz6yLQBA0dRvGP0euNJbce7iHyZ4q+NlEpxn1dKk6
+         n3zrSluUsWbtLQwU/Nb73Zxuvi51lX8/+ESZJxri47LRubEmXcs78xv/7RGZpf+JiOer
+         7RDBQsSdXIWTFPCxj6anQqi3NqKQislKm7gdypQVfLfxINpJ/kAeJOfKF5FMkuqXtlw6
+         rv0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jvi96HjX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pyaIeGF1;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7-20020ac87d07000000b0042378de29ebsi427052qtb.649.2023.11.22.20.43.52
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q3-20020adf9dc3000000b00332ddd885b5sor210105wre.0.2023.11.23.02.00.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Nov 2023 20:43:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 23 Nov 2023 02:00:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jvi96HjX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=pyaIeGF1;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r61Xw-0006N2-P7; Wed, 22 Nov 2023 23:42:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Xp-0006LF-TQ
- for qemu-devel@nongnu.org; Wed, 22 Nov 2023 23:42:30 -0500
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r61Xk-00064l-Ne
- for qemu-devel@nongnu.org; Wed, 22 Nov 2023 23:42:29 -0500
-Received: by mail-oi1-x235.google.com with SMTP id
- 5614622812f47-3b6d80daae8so348328b6e.2
- for <qemu-devel@nongnu.org>; Wed, 22 Nov 2023 20:42:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700714541; x=1701319341; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=/RJe0+6jbJTwAypT42FH4DkgaN/bD8EpjoaWzgOvMn0=;
- b=Jvi96HjXt/ojTtHeGJcBcqc7x2psBNMrlmAAar1nw8xjZpmuiS80oehG5EfO26BxeS
- Vhc0Lu/BII3Rp1hwDDNxMCIcDj2fcW5kmTw92JHwRtLXIeivDeWXxWX0XRVq7DH5VCjt
- mtVirJ0N1aUr/izEFGa20hV/IztQAbpacVZTvhq9QksMifPFVZygYG9TDWL1GeTcdkXK
- Q9CU/pcZfcfMPppDEnLo/CcUptEEZCmVXqzg/dkwfYOu/8i1lBTI/69bJIhjryNhCyrY
- 0/9EOgPqxktAa+zVhFGoE+SBxxS3JRooUGdCDgw1b5B5oZm30HxME11nH4VZhZFAZkcK
- DQuQ==
+        d=linaro.org; s=google; t=1700733650; x=1701338450; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uhF8UjaKtMa3szBB3PYJ7CaLfrF8gURumFjUK6ZS6vo=;
+        b=pyaIeGF1wlwmEfhJW/UaXAvMN80OfBQhhCVpXh5wqXg3/QT7VGiRIxLzErcb6HvIlg
+         3DYC+2P2M6KVCfKx6fRvvcK7cmChswsKVgATcah6KtUTUMl/MKqRURwOlZi4vCKSbekj
+         qCfB+PEhzoOER0/5ZtpMlRIoJm3qlxpoD84NgqzkDnm9dT6BMliHHKeta5vXHMVjRQRg
+         5ml5bHoRC4jsZzjeh6Wdm/v/Ago0aQUzK/Or5SxPiM9utIlUK2Rjk5oKCBEhRGcpSsES
+         5+OyI1aH0vKjk8WEL4unHmfEiv+Qj69QOQrvgmVWUN5JKwBGjREMwpOiU1Fc/ORENO3V
+         oDdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700714541; x=1701319341;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/RJe0+6jbJTwAypT42FH4DkgaN/bD8EpjoaWzgOvMn0=;
- b=h4B+bjMQ36K6+y7KzO5U+yePwabfrZOBZoztvxTJQ3DtD1Y6zgac7Eprn1wDyKjBh5
- SjsZMn/FmGQvL+FF7tOn0SXmAxOOmDZkG958NPaSNFQASrT69veYasKYpCnkkLXZJxxi
- yvGeXa0kUa/YljfeFKlq4NvUtYgRkYyk+rdgsjYOdvZ5rEk7A2JlO9czrcrrn2GjWH59
- WPpIHNaH99tIgAUeHdjWXQYaDYyjHfjFOdG8ezg42rlASYFPVrBn8e0v74dx9OGf1W4r
- Ym+gLP6KNOI1HO9fmjMmJa4WTWC9h50MEG8nx/4Wyhn0SWILM3V7aNnoJZuw0gi9YijZ
- FiXA==
-X-Gm-Message-State: AOJu0YwUxQvb9JvgxdS8D5ArWIf74Nh3jqqXGSp4YXRjMXaeZpHR1+jz
- 2QHZaIoJf/zSsrp0VPADVzcDKZWe8JDL6Ttq61xyRY93
-X-Received: by 2002:aca:100f:0:b0:3b6:d665:4938 with SMTP id
- 15-20020aca100f000000b003b6d6654938mr4993813oiq.43.1700714541522; 
- Wed, 22 Nov 2023 20:42:21 -0800 (PST)
-Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- i7-20020a056808030700b003b8347de3c2sm73888oie.19.2023.11.22.20.42.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Nov 2023 20:42:21 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH for-9.0 00/21] target/arm: kvm cleanups
-Date: Wed, 22 Nov 2023 22:41:58 -0600
-Message-Id: <20231123044219.896776-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1700733650; x=1701338450;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uhF8UjaKtMa3szBB3PYJ7CaLfrF8gURumFjUK6ZS6vo=;
+        b=gGAtnvJFLMqbMctdfxHwL9WsjYXmHAbfWk/fpVvvtRLC0Kf5KYOncujOq4oT+wvFPv
+         zt1U3FzSX6RO9xWPHYyw9gfJAARSet7EFpbxEIqE3tTt2UkimthXVNlFAV2ZQUuEFGlB
+         JYgyjvGWIjW6OBvOgH/UgALy5YmsLEproynLCT4ylRHnxjMTJ/Usvrogj81/V3Y+B4Uz
+         Zx/pthqltBFXqv78pNMLBFgfMWpDPKME5ol0PfOYeneH5tTC4P0fjSZaYWLdCF372ErK
+         OugD4ADsyCTdhrcqV381Y5IVGp4sWEZhuvmhymJUJF9JqY1PO6j/7Ies5gM5Gd1HjIv+
+         rMxQ==
+X-Gm-Message-State: AOJu0Ywm62PZVjhGggk0aFwi1jZD6EGD6k8S9EAFUO467S4h5ypayaD2
+	1QdC9bJDHvdQd+/F3c7xcihzdeJH
+X-Google-Smtp-Source: AGHT+IHx+SD/0zkpuvOSADdw6ceWWuFrh9u4dDRlbXzg8816flrF3uNsgv9Mzcp+b+WTVscveXh0yA==
+X-Received: by 2002:a05:600c:3108:b0:409:703c:b9b1 with SMTP id g8-20020a05600c310800b00409703cb9b1mr3507739wmo.40.1700733649821;
+        Thu, 23 Nov 2023 02:00:49 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.165.237])
+        by smtp.gmail.com with ESMTPSA id f18-20020a05600c4e9200b00403b63e87f2sm1430208wmq.32.2023.11.23.02.00.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Nov 2023 02:00:49 -0800 (PST)
+Message-ID: <4b89c690-1a21-439d-ab30-0fa5bc7bb038@linaro.org>
+Date: Thu, 23 Nov 2023 11:00:46 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH-for-9.0 02/11] target/arm: Add
+ target_aarch64_available() helper
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20231122183048.17150-1-philmd@linaro.org>
+ <20231122183048.17150-3-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231122183048.17150-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::235;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x235.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9ca2psnGdvvc
+X-TUID: FeA+m8fTJpq4
 
-This is primarily concerned with merging kvm64.c with kvm.c
-and then unexporting everything that is not required outside.
+On 22/11/23 19:30, Philippe Mathieu-Daudé wrote:
+> We want to build HW models once, but don't want to
+> register types when all prerequisites are satisfied. Add
+> the target_aarch64_available() to know at runtime whether
+> TARGET_AARCH64 is built-in.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/arm/cpu-qom.h | 2 ++
+>   target/arm/cpu.c     | 9 +++++++++
+>   2 files changed, 11 insertions(+)
+> 
+> diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+> index 02b914c876..bf6b3604ed 100644
+> --- a/target/arm/cpu-qom.h
+> +++ b/target/arm/cpu-qom.h
+> @@ -33,4 +33,6 @@ typedef struct AArch64CPUClass AArch64CPUClass;
+>   DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+>                          TYPE_AARCH64_CPU)
+>   
+> +bool target_aarch64_available(void);
+> +
+>   #endif
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 25e9d2ae7b..1990c04089 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2548,3 +2548,12 @@ static void arm_cpu_register_types(void)
+>   }
+>   
+>   type_init(arm_cpu_register_types)
+> +
+> +bool target_aarch64_available(void)
+> +{
+> +#ifdef TARGET_AARCH64
+> +    return true;
+> +#else
+> +    return false;
+> +#endif
+> +}
 
-r~
+I forgot to precise here, what was discussed during the previous 2
+years. Eventually qemu-system-arm is absorbed by qemu-system-aarch64,
+but to keep backward compatibility we add a new qemu-system-arm wrapper
+which simply calls 'qemu-system-aarch64 --32bit-only' (or better named
+option) forwarding the same command line. target_aarch64_available()
+then becomes:
 
-Chao Du (1):
-  target/arm: kvm64: remove a redundant KVM_CAP_SET_GUEST_DEBUG probe
-
-Richard Henderson (20):
-  accel/kvm: Make kvm_has_guest_debug static
-  target/arm/kvm: Merge kvm_arm_init_debug into kvm_arch_init
-  target/arm/kvm: Move kvm_arm_verify_ext_dabt_pending and unexport
-  target/arm/kvm: Move kvm_arm_copy_hw_debug_data and unexport
-  target/arm/kvm: Move kvm_arm_hw_debug_active and unexport
-  target/arm/kvm: Move kvm_arm_handle_debug and unexport
-  target/arm/kvm: Unexport kvm_arm_{get,put}_virtual_time
-  target/arm/kvm: Inline kvm_arm_steal_time_supported
-  target/arm/kvm: Move kvm_arm_get_host_cpu_features and unexport
-  target/arm/kvm: Use a switch for kvm_arm_cpreg_level
-  target/arm/kvm: Move kvm_arm_cpreg_level and unexport
-  target/arm/kvm: Move kvm_arm_reg_syncs_via_cpreg_list and unexport
-  target/arm/kvm: Merge kvm64.c into kvm.c
-  target/arm/kvm: Unexport kvm_arm_vcpu_init
-  target/arm/kvm: Unexport kvm_arm_vcpu_finalize
-  target/arm/kvm: Unexport kvm_arm_init_cpreg_list
-  target/arm/kvm: Init cap_has_inject_serror_esr in kvm_arch_init
-  target/arm/kvm: Unexport kvm_{get,put}_vcpu_events
-  target/arm/kvm: Unexport and tidy kvm_arm_sync_mpstate_to_{kvm,qemu}
-  target/arm/kvm: Unexport kvm_arm_vm_state_change
-
- target/arm/kvm_arm.h   |  203 ------
- accel/kvm/kvm-all.c    |    2 +-
- target/arm/kvm.c       | 1372 +++++++++++++++++++++++++++++++++++++++-
- target/arm/kvm64.c     | 1290 -------------------------------------
- target/arm/meson.build |    2 +-
- 5 files changed, 1345 insertions(+), 1524 deletions(-)
- delete mode 100644 target/arm/kvm64.c
-
--- 
-2.34.1
-
+   bool target_aarch64_available(void)
+   {
+     return option_32bit_only == false;
+   }

@@ -1,172 +1,223 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1225834ejj;
-        Fri, 24 Nov 2023 06:20:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHH4pG3PdlyxIyi3QZEkpvH4IWYvAB4i3t+fGWuqFJmGmCRunpBKiJ6JLnwsFqm25smIeZR
-X-Received: by 2002:a05:620a:4084:b0:772:63d9:6e69 with SMTP id f4-20020a05620a408400b0077263d96e69mr10452776qko.35.1700835652847;
-        Fri, 24 Nov 2023 06:20:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700835652; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1240036ejj;
+        Fri, 24 Nov 2023 06:36:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFhzO6vRtRh8mFrXwCo3oaTU4IDjTOzV1X004R/zEU1058Ns8j3JYZ5WU+JBuipiLwDGTQx
+X-Received: by 2002:a05:620a:6088:b0:77d:6802:8455 with SMTP id dx8-20020a05620a608800b0077d68028455mr3227053qkb.26.1700836582956;
+        Fri, 24 Nov 2023 06:36:22 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1700836582; cv=pass;
         d=google.com; s=arc-20160816;
-        b=apiiNc+QV/duqLZ09saDFpXDVRgF2SxgK3RgxuUUz5GAtBHOsWVLNRUTVp+BcCOi7u
-         kbJXiEtb57EnKpOe9Qj5ktplb5/iI4uXxk4OwUxES3nwsc0euA15IOSpqxY4D4aB6q51
-         i9zJaeuqv1zvnyxpi48lUbnSrQDUPJ96oTamHUiL8UblciR80c2eaNXSNthH8UmjKuxy
-         pPWhPJcuIbLeDLPqcm8TJSWAL6avGOrZh7gOBA3tC8IekbgPGrw+GozF5AmveTRNetuV
-         g0TZoDJN2rP05ciWrZpCbZjfk8KJE95krxRFlERx+rLrGpejCF+W+KMRevuS6PmvvD4S
-         kksg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=WTKV6OEsy6m8PvThuLjAJxOw/15CMWf5C183Zc3nApo=;
-        fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
-        b=WlOxMRuRKHPb2qEWTiZ5cPCgil8OYL2g8NXQE2fTWHv0pnY8BbP+GpjSb3HcN5WBw8
-         uOOWdYj7b19AImVp3J6abbGgY8T1L/1X/77R8qwoojEiHydrXlcH7N+MoZhuWDHnVXRD
-         f9m2E+YsXz4cifVWSgRi3uOMtgRYlz2h946X/Gy38dgrPS0n2HMu92bR0+Pq7GWmVKIw
-         YkPoy41DyKPhaZ9R0lVbj/7W5CUYXlwBx6UdraRwS4PKa51Snj9vCyBqMHorrZGdBSPb
-         OJKEYOFeLfKCgZibi4xBwe/C5YN5Tgp+LsBCXmEFxeq64VlCJi+MvQgZ5JnFUXSi2oWu
-         J4cA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtuIwPWG;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ea13-20020a05620a488d00b0077d783c7ee9si2757718qkb.193.2023.11.24.06.20.52
+        b=wyhZSqdibz5g6ruDuVhgVsEkTEhXHKbXQa6WEStYlWy7kYUOeiERRn76FhywJZzEmR
+         xdBD8pqFalwZPDnavVGAy21VEBJYeWeDtFi+IlWQqDWPJB5qqmAlrq8anmlRXJop+oBk
+         xQfH48KXQNiVb0UQ7sO4/ovGmQRYRFQ/50LGN8l9Y6hm2/e/b+M0TLE1F+WhQrxt2LNL
+         FthzpG2FHCSr3NMBG2CwhVpdSvVsz2tN/sF1wmsi6ZUaUYmSrKrb5ZqRa/g+Yhl0K3ha
+         gLuODCoicNS/navrjWrgiZaLFh2T/S7UsEet63rKRKOzvZBjwVh01RBMWEsbIg5ck4SA
+         3Giw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=YDojrg7fMzIGXpt9VTQdu1Ag5EoGwKCyUwEKmToMJGs=;
+        fh=1FmVCV+NP1SeXSMIQreKXYunTTb4/Ijoxigf8TMTOZU=;
+        b=PJ+yjF4nLcIL1hJlNFOmI/vMJGLDGuccZ0+fSnbWBM5OOSDiP4NQXTBaTc9AiwWGQy
+         Gdu00XF1To9LSZmHgu7s5+9Uc40y+smu2nGbBwFTRhNyDOb36WQczghMmhf7HaDcl7o8
+         KvoUok1mOfeu3LvwX++RFXiqEf3WTYFXZT1zODiMDTyV8iuTesxswAgvWhTMjrFlJp6d
+         NDYWG10VQTU/ycohHLWVSyg5OQNUnPF3HKKUArlTi8ArqtAoHUOPtM1mFutvc+veEvMC
+         ZWhrduwnkAJQCZf3A3kofvsrA0vridgUXhhU56+4Iws9R4/e3gvdtr+ahR1Hzs/fFzJ4
+         aOpA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=aedSujlZ;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ay38-20020a05620a17a600b0077422d8fdd7si3493896qkb.235.2023.11.24.06.36.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 06:20:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 24 Nov 2023 06:36:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtuIwPWG;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1700835652;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WTKV6OEsy6m8PvThuLjAJxOw/15CMWf5C183Zc3nApo=;
-	b=QtuIwPWGaP7915dZrWk6o62fqU9XNes2bIIITGiOzvkEeRBhogBF9OItwHUBmY0lMkmAVJ
-	4H4vsnAiB0MV9//EWY4d/u1NaWT8gsLobOz++dlekgWwunj1tHVQGveYI5L5kAaZFzpPj6
-	TZXVUaJQWUIRXpKrwCCA8qy8OrfTIeU=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-646-wjHdG0GvOW6fu6aeSLNXww-1; Fri, 24 Nov 2023 09:20:51 -0500
-X-MC-Unique: wjHdG0GvOW6fu6aeSLNXww-1
-Received: by mail-ed1-f71.google.com with SMTP id 4fb4d7f45d1cf-548cf45e962so1391138a12.2
-        for <alex.bennee@linaro.org>; Fri, 24 Nov 2023 06:20:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700835650; x=1701440450;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vegpZ4SEXUpYZ9JFohP3hK+vi7e/r3dObUb4fKl4quY=;
-        b=K7V/VZZFEkzJ4r9FnR6ErkdkCqrt5YSZnRaxJLhy5Id/BUwoTm7+hB11D2AL06+Bin
-         vv9LbOuAn08FCa0Rx/IpQkPBnedSi0Apn7MwL4ijB3yDkRJBH/+5V53fyxve0B8zhH+Q
-         UDynM6GCcPae/0LuNbmVn6C8jXkIPt/Xe1AlWE5gjOmWFeMrQ4QqkWr17Dnn0GJll4VV
-         UJGfm8WOeDqbGbCLwQTTxtK0N01yUNdOgFptM9A33hIlwdGXx/NYHzAqKfgz8m0eMY13
-         zCZd1sLwrwxjtrClL6JL46LGrMvMejMkbv3jTRF/6m5fYO6ziYsGSTNL5FsyPW3oIv9u
-         370Q==
-X-Gm-Message-State: AOJu0Yxu6S+briPZospy+qSo3A0NFBOqbX22x1btfP1QSdYPJSib+9SG
-	qGimg7K0Ra5IrPvIn3k9jbbHN0+OjUzH8J8ZXcZF0F/6qVx2VxLWy4fes2JTht5X4+IrWvgw/Ym
-	qaoblQ8KBpYYKO6jj
-X-Received: by 2002:a50:d55e:0:b0:53d:b839:2045 with SMTP id f30-20020a50d55e000000b0053db8392045mr2358129edj.25.1700835650037;
-        Fri, 24 Nov 2023 06:20:50 -0800 (PST)
-X-Received: by 2002:a50:d55e:0:b0:53d:b839:2045 with SMTP id f30-20020a50d55e000000b0053db8392045mr2358072edj.25.1700835649658;
-        Fri, 24 Nov 2023 06:20:49 -0800 (PST)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
-        by smtp.gmail.com with ESMTPSA id u11-20020aa7db8b000000b00543525d9fddsm1798204edt.21.2023.11.24.06.20.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 06:20:49 -0800 (PST)
-Date: Fri, 24 Nov 2023 15:20:47 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
- <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
- <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
- <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
- <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
- <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
- <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
- <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
- <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
- <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
- <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
- <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
- <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
- <lixianglai@loongson.cn>, <linuxarm@huawei.com>
-Subject: Re: [PATCH V7 2/8] hw/acpi: Move CPU ctrl-dev MMIO region len macro
- to common header file
-Message-ID: <20231124152047.1160a5af@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231113201236.30668-3-salil.mehta@huawei.com>
-References: <20231113201236.30668-1-salil.mehta@huawei.com>
-	<20231113201236.30668-3-salil.mehta@huawei.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=aedSujlZ;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r6XHc-0007vm-0l; Fri, 24 Nov 2023 09:35:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Frederic.Konrad@amd.com>)
+ id 1r6XHU-0007uF-4s; Fri, 24 Nov 2023 09:35:44 -0500
+Received: from mail-mw2nam10on20615.outbound.protection.outlook.com
+ ([2a01:111:f400:7e89::615]
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Frederic.Konrad@amd.com>)
+ id 1r6XHS-00071C-5a; Fri, 24 Nov 2023 09:35:43 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CzTjFQQ0OoEgtMbRIoW4SEJaVK+sh9DGzZ5E9XstXVYk7EIgYsQHMXuKTjEmFH5vLxoCqZn/fe0nCA9Vz8ScTwCIJUUjO6mX3pq4hoC6R3wWjr5pqKhqD+qVPXMr1iar34otCm25cdWFfNI2bcd2vMhZqB4wvHP4IC78gSX2Gb2+RfCNdLWjUWbaulD+4hD9hBfPoJz/EMtwemWMOzp/2999tYugU183y8bOcqVpDLE8Uzv+rZ0uDfbrdTVHYQybuNfnrdkNreOODg4nBUNocQgxagJUwf9AdoGn54PNFfAafC5erGHIwQueDyGYCVhlobIQ9aE600FK4QpfNbAywg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YDojrg7fMzIGXpt9VTQdu1Ag5EoGwKCyUwEKmToMJGs=;
+ b=TdNVQvKX678cggI7s04C5qPDebQ/IUhg8QiEB8SxO0eKLjTY9A397wUiol9IqEPLt4BgvdKvQNkcuScjrWNxj/IXmTYnArPbQkSsmJd2SVSqG2ZRAdOLiTwZ6u9BM7kRqHqqEATOjJO0zSP4LnXZcytq5LWRVdbAJVWfWGuhAHmxY1h63TsHtvux0NGru6ic/vU5IGpTWPVzaV3ApvTcXw/MYeXER7hM3KVpWAkmLwmHXX1d+uLM8wrQILzGqHD3fWityeipcrBjsX0cm/fd1zdQS4Zla3F2to8CbNpWZ8sbinlIUgRwJjLlsbpKr9Y3iP/qGOMIdvulsmYBpmGdcA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YDojrg7fMzIGXpt9VTQdu1Ag5EoGwKCyUwEKmToMJGs=;
+ b=aedSujlZZJdbZDSo5u8PFhFoXynaUgW8V2TE1Ros1Nulcf+4blxKXzThEruNb3rh4+rM8FkAGqrEKxcggNDsmg4yg60G83NT0yf22YujoLsyxj9ykAOyArT7jjdHJOJXtCL9ye+fEDH5BcXpVfvtY7ueLRejxaO5+blUUt3rvj4=
+Received: from DM6PR18CA0011.namprd18.prod.outlook.com (2603:10b6:5:15b::24)
+ by DS0PR12MB7770.namprd12.prod.outlook.com (2603:10b6:8:138::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.18; Fri, 24 Nov
+ 2023 14:35:37 +0000
+Received: from DS2PEPF00003447.namprd04.prod.outlook.com
+ (2603:10b6:5:15b:cafe::15) by DM6PR18CA0011.outlook.office365.com
+ (2603:10b6:5:15b::24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.21 via Frontend
+ Transport; Fri, 24 Nov 2023 14:35:37 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ DS2PEPF00003447.mail.protection.outlook.com (10.167.17.74) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7025.12 via Frontend Transport; Fri, 24 Nov 2023 14:35:37 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Fri, 24 Nov
+ 2023 08:35:37 -0600
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Fri, 24 Nov
+ 2023 06:35:36 -0800
+Received: from xdcsswbld02.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.34 via Frontend
+ Transport; Fri, 24 Nov 2023 08:35:35 -0600
+From: Frederic Konrad <fkonrad@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, <francisco.iglesias@amd.com>,
+ <peter.maydell@linaro.org>, <edgar.iglesias@gmail.com>,
+ <alistair@alistair23.me>, <luc.michel@amd.com>, <fkonrad@amd.com>
+Subject: [PATCH v1 3/3] hw/dma/xlnx_csu_dma: don't throw guest errors when
+ stopping the SRC DMA
+Date: Fri, 24 Nov 2023 14:35:05 +0000
+Message-ID: <20231124143505.1493184-4-fkonrad@amd.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231124143505.1493184-1-fkonrad@amd.com>
+References: <20231124143505.1493184-1-fkonrad@amd.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: fYvBooq7pAnc
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PEPF00003447:EE_|DS0PR12MB7770:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0976beca-6f93-4bbb-94ab-08dbecfaa024
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Y0Ow/m4JEUMSL/PJnyzjuZPDxb2t0GX82Vi9U9cEtvcQE3wzEdy9yqjZ+ECtZBK1IYEXlxv41sENPbS47i+KOWiFmdUsIKtlRD1JYMCksM7elFl0ihuArkcnr1s7nVqsn4ENthI/UBPc7lWvCYL1YFKRjAQkfKMneRRWFQd49aAOb9EU2gNNudboY26hT15/2JnqzFumemeDOl8jl7rEkMDsf6kqCLUsB9tEMwTthti5j8Ars3Lu9qKqOUNak33jhrbGSGnwjWUXv+nf0v3cnjrPh5ACTr57X9JHLpSuLor+Jyu8lMT9y5i7Btm3JbkvV6OrTgik7zblnV+gpoB/m1o2SK88TDF1O9xmh0yLy2SwUmrupU8Ob1xEbxSTOhroCJGLfUthLwGFKlAFcqn69cgZQQgA/DWyq6HhxoPLhIDNBZV6ilOR9xEONlCZN0jjiFSHJX5pLHpELIGt6oZW3YCa7PvcuqYDnfce3ObXrUuVODezzURFlDzTNIXTrz/Mqqqc1MHBC6qsCtk037xFvr3ZIl//vSPuigxcfpAacC95ZGSmf0Zh8dZYklK1MSAWwvriYZwYin2riDabl0H0KnQxbwiXSIGNjAgC+5LShfWjA+vmBNaOfarX+/yxhGrW9wQAZLZKcCRZo01UUb5wlDvj8uQB6Uq6Lkq3McXtNtV3l4IlL3EK2Cxlr90FCCKeBl0a0YET6JPztP5OzLSQlBXzs7lr3kijMwfKW9Nu4c5Oqt+3dl1tcd7UFdv8eP98is6V6WK1VAJ83Vfhi2z+cw==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(376002)(39860400002)(136003)(396003)(346002)(230922051799003)(1800799012)(82310400011)(451199024)(186009)(64100799003)(46966006)(40470700004)(36840700001)(5660300002)(2906002)(41300700001)(4326008)(8936002)(316002)(70206006)(8676002)(70586007)(6916009)(6666004)(40480700001)(966005)(478600001)(2616005)(26005)(54906003)(1076003)(426003)(83380400001)(336012)(40460700003)(36860700001)(81166007)(82740400003)(47076005)(36756003)(356005)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2023 14:35:37.5006 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0976beca-6f93-4bbb-94ab-08dbecfaa024
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003447.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7770
+Received-SPF: softfail client-ip=2a01:111:f400:7e89::615;
+ envelope-from=Frederic.Konrad@amd.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yr/mjaQXwpl4
 
-On Mon, 13 Nov 2023 20:12:30 +0000
-Salil Mehta <salil.mehta@huawei.com> wrote:
+UG1087 states for the source channel that: if SIZE is programmed to 0, and the
+DMA is started, the interrupts DONE and MEM_DONE will be asserted.
 
-> CPU ctrl-dev MMIO region length could be used in ACPI GED and various oth=
-er
-> architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
-> appropriate common header file.
->=20
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Reviewed-by: David Hildenbrand <david@redhat.com>
-> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> Tested-by: Xianglai Li <lixianglai@loongson.cn>
-> Tested-by: Miguel Luis <miguel.luis@oracle.com>
-> ---
->  hw/acpi/cpu.c                 | 2 +-
->  include/hw/acpi/cpu_hotplug.h | 2 ++
+This implies that it is allowed for the guest to stop the source DMA by writing
+a size of 0 to the SIZE register, so remove the LOG_GUEST_ERROR in that case.
 
-the header holds legacy stuff (mostly) and I'd say is destined for removal.
+While at it remove the comment marking the SIZE register as write-only.
 
-include/hw/acpi/cpu.h  would be a better place for it.
+See: https://docs.xilinx.com/r/en-US/ug1087-zynq-ultrascale-registers/CSUDMA_SRC_SIZE-CSUDMA-Register
 
+Signed-off-by: Frederic Konrad <fkonrad@amd.com>
+---
+ hw/dma/xlnx_csu_dma.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
->  2 files changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-> index 011d2c6c2d..4b24a25003 100644
-> --- a/hw/acpi/cpu.c
-> +++ b/hw/acpi/cpu.c
-> @@ -1,13 +1,13 @@
->  #include "qemu/osdep.h"
->  #include "migration/vmstate.h"
->  #include "hw/acpi/cpu.h"
-> +#include "hw/acpi/cpu_hotplug.h"
->  #include "hw/core/cpu.h"
->  #include "qapi/error.h"
->  #include "qapi/qapi-events-acpi.h"
->  #include "trace.h"
->  #include "sysemu/numa.h"
-> =20
-> -#define ACPI_CPU_HOTPLUG_REG_LEN 12
->  #define ACPI_CPU_SELECTOR_OFFSET_WR 0
->  #define ACPI_CPU_FLAGS_OFFSET_RW 4
->  #define ACPI_CPU_CMD_OFFSET_WR 5
-> diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.=
-h
-> index 3b932abbbb..48b291e45e 100644
-> --- a/include/hw/acpi/cpu_hotplug.h
-> +++ b/include/hw/acpi/cpu_hotplug.h
-> @@ -19,6 +19,8 @@
->  #include "hw/hotplug.h"
->  #include "hw/acpi/cpu.h"
-> =20
-> +#define ACPI_CPU_HOTPLUG_REG_LEN 12
-> +
->  typedef struct AcpiCpuHotplug {
->      Object *device;
->      MemoryRegion io;
+diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+index 531013f35a..bc1505aade 100644
+--- a/hw/dma/xlnx_csu_dma.c
++++ b/hw/dma/xlnx_csu_dma.c
+@@ -39,7 +39,7 @@
+ REG32(ADDR, 0x0)
+     FIELD(ADDR, ADDR, 2, 30) /* wo */
+ REG32(SIZE, 0x4)
+-    FIELD(SIZE, SIZE, 2, 27) /* wo */
++    FIELD(SIZE, SIZE, 2, 27)
+     FIELD(SIZE, LAST_WORD, 0, 1) /* rw, only exists in SRC */
+ REG32(STATUS, 0x8)
+     FIELD(STATUS, DONE_CNT, 13, 3) /* wtc */
+@@ -335,10 +335,14 @@ static uint64_t addr_pre_write(RegisterInfo *reg, uint64_t val)
+ static uint64_t size_pre_write(RegisterInfo *reg, uint64_t val)
+ {
+     XlnxCSUDMA *s = XLNX_CSU_DMA(reg->opaque);
++    uint64_t size = val & R_SIZE_SIZE_MASK;
+ 
+     if (s->regs[R_SIZE] != 0) {
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: Starting DMA while already running.\n", __func__);
++        if (size || s->is_dst) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Starting DMA while already running.\n",
++                          __func__);
++        }
+     }
+ 
+     if (!s->is_dst) {
+@@ -346,7 +350,7 @@ static uint64_t size_pre_write(RegisterInfo *reg, uint64_t val)
+     }
+ 
+     /* Size is word aligned */
+-    return val & R_SIZE_SIZE_MASK;
++    return size;
+ }
+ 
+ static uint64_t size_post_read(RegisterInfo *reg, uint64_t val)
+-- 
+2.25.1
+

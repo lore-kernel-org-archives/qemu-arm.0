@@ -1,299 +1,202 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1166207ejj;
-        Fri, 24 Nov 2023 05:13:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFH5v45yeKGjVm3Pe8dabZ7aovVjH52yY9JoGZ4+kIEk7yWpe0TzUHTi8z564scLthnS8BM
-X-Received: by 2002:a05:6214:927:b0:66d:59da:d225 with SMTP id dk7-20020a056214092700b0066d59dad225mr3207241qvb.15.1700831626139;
-        Fri, 24 Nov 2023 05:13:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700831626; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1173622ejj;
+        Fri, 24 Nov 2023 05:21:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGNqDBUimNoTqS0MDtwa1a2xN5xn0to+arT51VRFGUb3hacXU6Qnvedu6RRmiP8eavtRm6z
+X-Received: by 2002:a05:6102:5086:b0:462:aaa2:ba52 with SMTP id bl6-20020a056102508600b00462aaa2ba52mr3057732vsb.34.1700832104216;
+        Fri, 24 Nov 2023 05:21:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700832104; cv=none;
         d=google.com; s=arc-20160816;
-        b=eZO+oyScnQiI0hBzFPqVGvYDePBokFuu1AQfbzAT84VySBRVomAlLQDBSuhPS86c4E
-         6ddOWPpx6w4TKjpP0JtaxTsWk29TFFu730fY6xLMwtJWDgMlRtQK4JF5tTvAStECkHTC
-         lYYvtjRfOoFZDuFtY6vnxq9GrBB10esW5+5/alX1WzMMO7WQT5sLtP960bSmqtjHcvRw
-         WNqKZBDk5dRNjx1gus0EPmuHnyPmmZFfyDqGaxE/nkwLc0Z7ZFsJzLU5LwQGVY1Nefk+
-         UQKDnzTQDZ5Qe9UJQTkkeI7fAgBCX9kJD+IHMrf0tPIFPCf+RmH9V+gJHz6PTm0A09ZF
-         VWVQ==
+        b=N+mAV00VVkcGAL5hUweT71LSGX+oRLaoT6wmLFsQ+MTkzczlZKz9CYEaWJZlSVRMvP
+         7n+ZXl2rq41JNorhANu7OoQSqfeK8gRIqefwCfuF+lV46NQH2vxuq2Jr0EuIdcMm9pFs
+         7tg7T67ndPHP+ETHknPCzF7AsAJcHjKke9aCnu7s8cwN/gEu9mCElJ1Iv4P3vhz18AlI
+         czjo5aiwdaRGVZjk8BdAtvjYboExv3UAZWzXOhYxkop05Gu7by8Rd7ujz1kvl2qzM9Hm
+         AAYgzB+vzvkpcW1kEf7I0wZZUJ46GMIrfDI2q/wb+tCtOgZp+lwiqa55Vyj3SWOsRXBi
+         dZjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=JtKOKYDPw9PaTcVRoYq2NeTmiRsDSB0p4DffXoS/qRA=;
-        fh=1vk2+w9U1JqEUqWZ1ZAZUSVacmJv32u3oQG4Y2Xz4r0=;
-        b=rmGszMKn1empZg+6IQ8k68CNqQH3YnOaDKUv07rJoXgT7MFeKDb2acH/IS5fAF2aNH
-         ULIzCW1Wd3xSxt5KM+1i/S+17QlAG/BLMhHDyU/EEwmCb/SaUfm7wZ6nXYyWqWwlm1Cc
-         ikdj8pTPUArrMz+RaJ/3PJkIJpUUqKffSNO5QG66wwFbdep2bhadjrZiCMxVQ0XbfH1W
-         QTn0zjhU99fLxAho+FB7HhyPRt6xlD8M1CbsYNq9yNljXkkFubSHaYfMoJCU3MgKatXh
-         E9N/Y1nfFz4TadOjmcqpbsNbg8kHILiXYhoVWyNQF+4poWBB8COFsvhru/+hZ5+Ba1UF
-         HIyA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=GOkyeM2jH1GdpIo1SYMnTDDwqne+Zqb05ASn+zO5s4Y=;
+        fh=LAwbg7fFJtwQ2XrkYA7rEVw5rlGtyBIwAkR19jkVKX8=;
+        b=wa5b+kd1XrBin9ovYuTlDLVf9j3bNDOFQWIZfn/8IPOSny6z2+9UBlqkHsVWYN1rO9
+         s6GT3v53UwMKIoWo6YjQH6Kjc23lJqnp1DFV3ax+CwU5+PKuMi7tyAz7CU+zHJ0m0VG1
+         I0sh4vaoWRx2V/Gt7sD/q+r0lkMOFGjWOhggDN8gi1+QYGGybpVdWrPlkAFRZrPLnsUk
+         Bf3q+Zg60RzAO3c25QKhiN35+Bn+cU8R6+Ch2qKVsqoKg19DLTVHfZbzFOqPJSEMV5Y0
+         WgOLVcOQtmNrosaxd01A26KwcKY3sNYwIhdOfwJhOLqybX9i+egqWGhvx/yJa6kk3qKD
+         149w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YA5dkllq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=FO4x1yhV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14-20020a0cface000000b0067a203afa72si192502qvo.419.2023.11.24.05.13.45
+        by mx.google.com with ESMTPS id c14-20020a0561023a4e00b0045d3b2402e8si837427vsu.718.2023.11.24.05.21.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Nov 2023 05:13:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Nov 2023 05:21:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YA5dkllq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=FO4x1yhV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r6Vzi-0003Fo-6w; Fri, 24 Nov 2023 08:13:18 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r6W7l-0005QB-Ck; Fri, 24 Nov 2023 08:21:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1r6Vzb-0003EM-Us
- for qemu-arm@nongnu.org; Fri, 24 Nov 2023 08:13:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1r6VzZ-0005DF-WE
- for qemu-arm@nongnu.org; Fri, 24 Nov 2023 08:13:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700831588;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JtKOKYDPw9PaTcVRoYq2NeTmiRsDSB0p4DffXoS/qRA=;
- b=YA5dkllqQteWt0An5qEPejgoyDYzKdPZSgZeL164jBvRzu+UDXZw99LLNIzNOuDTNF921i
- AndKykc1c681T4ljxqrH4PkdEVtpEmORBdgiDMWj+Xe1+1AEmOE4vW0RBYxIn++Ke9z0Y+
- 8Jtmc8qc/9tv5qEjHiQk67eodynoTYo=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-691-Z9deuj9yOfCZJ2AaRfwr-A-1; Fri, 24 Nov 2023 08:13:05 -0500
-X-MC-Unique: Z9deuj9yOfCZJ2AaRfwr-A-1
-Received: by mail-ed1-f70.google.com with SMTP id
- 4fb4d7f45d1cf-544c2881bf3so1164818a12.0
- for <qemu-arm@nongnu.org>; Fri, 24 Nov 2023 05:13:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6W7k-0005Pt-8c
+ for qemu-devel@nongnu.org; Fri, 24 Nov 2023 08:21:36 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6W7h-0007yD-HG
+ for qemu-devel@nongnu.org; Fri, 24 Nov 2023 08:21:35 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4079ed65471so14068515e9.1
+ for <qemu-devel@nongnu.org>; Fri, 24 Nov 2023 05:21:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1700832091; x=1701436891; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GOkyeM2jH1GdpIo1SYMnTDDwqne+Zqb05ASn+zO5s4Y=;
+ b=FO4x1yhVHfX1tRQZ/wfUjccma1nWFPu2099qyU2KykZZ/0/eJJ+QvPYK5x7e0KexCx
+ b4RJndAdk/cPs91qBZkyKyNtbyIlRgPHtfip7QOCZ1eaiGgWq1IrlIRFzzUAcVM7OjrU
+ 1949LEjw0dis7oeWG6lWPPLRWTePwBB2bW3i7y2eFySGGSM/a/D0ChCwTyIAQDBR1Xe2
+ KYUnkdkOvXv25ZOEN7guc8gIZYbeQbNenG4XYKz7+1Bq+xF6P8IEPEAP2LHLsE5uF6Tz
+ Kl7SI5UH8rVke2fjsXA8OyR7in4I2Kfkr7xihaZCHD0MnJKNTbfmQPzxvBoekmB9zfa6
+ GaZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700831584; x=1701436384;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=JtKOKYDPw9PaTcVRoYq2NeTmiRsDSB0p4DffXoS/qRA=;
- b=bSkaV9NdguSu9/5rxhVxkb59SJvWgjde0Bv+KOX6Tq/Ccb8Han9yQtLtdd+iW5dcmu
- vIsvCYCdjKu8KR6yodbRiKDk7VC50HpEegcxIwxt9tH57/U3Swrbh9LoGOeZBUFVbY5G
- ahES93ZMNCCpatlulDXgWJvydPVoGQ/cUDo1mshfuQiOlME30z2Pq7Z0TLlz6u8D2iNP
- o+qvm3K4q8Flnh5n+GBNOpZGJ5mFIR+c5suaIygBRAx/WnSr5mEXMWZdZzkhE4ETwX1k
- IWbWabkNv/QUZsCxpU0WqJ0Yj/b7wk3D27QfQo3iCYs/+3cS9YmOZHcQy6TsC1T0s+HD
- ygtg==
-X-Gm-Message-State: AOJu0Yxyj9+8IMxtxFyr6n3EDzDCnlpNsWFpLSuvOVOf8LmceI6+WWlj
- OvKhyUzJ7KPPX0YTxYbqT5o095tDZmzxym6VALHctMfkKKna73jQ73m3kkSDo8Cr7WmthGoe22e
- uvn1nOK+vk4Xs
-X-Received: by 2002:a50:d091:0:b0:540:2b93:af85 with SMTP id
- v17-20020a50d091000000b005402b93af85mr2029688edd.26.1700831583873; 
- Fri, 24 Nov 2023 05:13:03 -0800 (PST)
-X-Received: by 2002:a50:d091:0:b0:540:2b93:af85 with SMTP id
- v17-20020a50d091000000b005402b93af85mr2029657edd.26.1700831583360; 
- Fri, 24 Nov 2023 05:13:03 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+ d=1e100.net; s=20230601; t=1700832091; x=1701436891;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GOkyeM2jH1GdpIo1SYMnTDDwqne+Zqb05ASn+zO5s4Y=;
+ b=XJKY2XpJHJMT5eJ38+KbhBbLoVtgRKkzOrnO3UQVDxWeCn3eQIF/ClyCD+tjESU3hf
+ tOdMFWiLIQIA/XeyHIkUDMziw5JwUuCbfAxmFz4teV16rn4FSs8uDj+xtQ4sDvduqBwu
+ F94vtjJJAh3Wlv+rd7TrZZoxBVboHAU74xNN5ZGLZTtJW0yz3lCDDzrgrijwny6X8bCR
+ EiMSGd79t29g0uBpet8XhGZ5lOPjzVj4oxvWoeJm/y2lvkZpSRE9lkpZnCtw0ZilOgpc
+ OozlE6468/Ql9xOECc0imHKMBGuOmpkvF1f5z1gSKP3wYC4aeUrJ5LK7LXkMenRbVhpw
+ 3H1w==
+X-Gm-Message-State: AOJu0YzFHoAfxhC2D01xZli0GTSmZX4in/uGmLXOrCWU6PVHa+iCnQ1E
+ ptcONKRYSC1cCmj4nwlwYSAdJQ==
+X-Received: by 2002:a05:600c:310c:b0:3fe:1232:93fa with SMTP id
+ g12-20020a05600c310c00b003fe123293famr2131296wmo.22.1700832091387; 
+ Fri, 24 Nov 2023 05:21:31 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.218.17])
  by smtp.gmail.com with ESMTPSA id
- e7-20020a056402104700b00542db304680sm1759051edu.63.2023.11.24.05.13.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Nov 2023 05:13:02 -0800 (PST)
-Date: Fri, 24 Nov 2023 14:13:01 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, Laurent Vivier
- <laurent@vivier.eu>, Tyrone Ting <kfting@nuvoton.com>, Hao Wu
- <wuhaotsh@google.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Felipe Balbi <balbi@kernel.org>, qemu-arm@nongnu.org, =?UTF-8?B?SW7DqHM=?=
- Varhol <ines.varhol@telecom-paris.fr>, Alistair Francis
- <alistair@alistair23.me>, Yanan Wang <wangyanan55@huawei.com>, Richard
- Henderson <richard.henderson@linaro.org>, Eduardo Habkost
- <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>, Helge
- Deller <deller@gmx.de>, Subbaraya Sundeep <sbhatta@marvell.com>, Alexandre
- Iooss <erdnaxe@crans.org>, Gavin Shan <gshan@redhat.com>
+ 24-20020a05600c231800b0040b36050f1bsm4978142wmo.44.2023.11.24.05.21.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Nov 2023 05:21:30 -0800 (PST)
+Message-ID: <ab62f61e-bf41-42d6-a2fd-d693918aef84@linaro.org>
+Date: Fri, 24 Nov 2023 14:21:27 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH-for-8.2? v2 2/4] hw/arm/stm32f405: Report error when
  incorrect CPU is used
-Message-ID: <20231124141301.5e03527b@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231117071704.35040-3-philmd@linaro.org>
+Content-Language: en-US
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Laurent Vivier <laurent@vivier.eu>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Felipe Balbi <balbi@kernel.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Helge Deller <deller@gmx.de>,
+ Subbaraya Sundeep <sbhatta@marvell.com>, Alexandre Iooss
+ <erdnaxe@crans.org>, Gavin Shan <gshan@redhat.com>
 References: <20231117071704.35040-1-philmd@linaro.org>
  <20231117071704.35040-3-philmd@linaro.org>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ <20231124141301.5e03527b@imammedo.users.ipa.redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231124141301.5e03527b@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HChvZCmhbD4O
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xJ8X8zaP1pu1
 
-On Fri, 17 Nov 2023 08:17:02 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+Hi Igor,
 
-> Both 'netduinoplus2' and 'olimex-stm32-h405' machines ignore the
-> CPU type requested by the command line. This might confuse users,
-> since the following will create a machine with a Cortex-M4 CPU:
->=20
->   $ qemu-system-aarch64 -M netduinoplus2 -cpu cortex-r5f
->=20
-> Set the MachineClass::valid_cpu_types field (introduced in commit
-> c9cf636d48 "machine: Add a valid_cpu_types property").
-> Remove the now unused MachineClass::default_cpu_type field.
+On 24/11/23 14:13, Igor Mammedov wrote:
+> On Fri, 17 Nov 2023 08:17:02 +0100
+> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+> 
+>> Both 'netduinoplus2' and 'olimex-stm32-h405' machines ignore the
+>> CPU type requested by the command line. This might confuse users,
+>> since the following will create a machine with a Cortex-M4 CPU:
+>>
+>>    $ qemu-system-aarch64 -M netduinoplus2 -cpu cortex-r5f
+>>
+>> Set the MachineClass::valid_cpu_types field (introduced in commit
+>> c9cf636d48 "machine: Add a valid_cpu_types property").
+>> Remove the now unused MachineClass::default_cpu_type field.
+> 
+> Why default_cpu_type is removed?
 
-Why default_cpu_type is removed?
-what if user didn't user -cpu at all?
+"Since the SoC family can only use Cortex-M4 CPUs, hard-code the
+  CPU type name at the SoC level"
 
->=20
-> We now get:
->=20
->   $ qemu-system-aarch64 -M netduinoplus2 -cpu cortex-r5f
->   qemu-system-aarch64: Invalid CPU type: cortex-r5f-arm-cpu
->   The valid types are: cortex-m4-arm-cpu
->=20
-> Since the SoC family can only use Cortex-M4 CPUs, hard-code the
-> CPU type name at the SoC level, removing the QOM property
-> entirely.
->=20
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  include/hw/arm/stm32f405_soc.h | 4 ----
->  hw/arm/netduinoplus2.c         | 7 ++++++-
->  hw/arm/olimex-stm32-h405.c     | 8 ++++++--
->  hw/arm/stm32f405_soc.c         | 8 +-------
->  4 files changed, 13 insertions(+), 14 deletions(-)
->=20
-> diff --git a/include/hw/arm/stm32f405_soc.h b/include/hw/arm/stm32f405_so=
-c.h
-> index c968ce3ab2..d15c03c4b5 100644
-> --- a/include/hw/arm/stm32f405_soc.h
-> +++ b/include/hw/arm/stm32f405_soc.h
-> @@ -51,11 +51,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(STM32F405State, STM32F405_S=
-OC)
->  #define CCM_SIZE (64 * 1024)
-> =20
->  struct STM32F405State {
-> -    /*< private >*/
->      SysBusDevice parent_obj;
-> -    /*< public >*/
-> -
-> -    char *cpu_type;
-> =20
->      ARMv7MState armv7m;
-> =20
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> index 515c081605..2e58984947 100644
-> --- a/hw/arm/netduinoplus2.c
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -44,7 +44,6 @@ static void netduinoplus2_init(MachineState *machine)
->      clock_set_hz(sysclk, SYSCLK_FRQ);
-> =20
->      dev =3D qdev_new(TYPE_STM32F405_SOC);
-> -    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4")=
-);
->      qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> =20
-> @@ -55,8 +54,14 @@ static void netduinoplus2_init(MachineState *machine)
-> =20
->  static void netduinoplus2_machine_init(MachineClass *mc)
->  {
-> +    static const char * const valid_cpu_types[] =3D {
-> +        ARM_CPU_TYPE_NAME("cortex-m4"),
-> +        NULL
-> +    };
-> +
->      mc->desc =3D "Netduino Plus 2 Machine (Cortex-M4)";
->      mc->init =3D netduinoplus2_init;
-> +    mc->valid_cpu_types =3D valid_cpu_types;
->  }
-> =20
->  DEFINE_MACHINE("netduinoplus2", netduinoplus2_machine_init)
-> diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
-> index 3aa61c91b7..d793de7c97 100644
-> --- a/hw/arm/olimex-stm32-h405.c
-> +++ b/hw/arm/olimex-stm32-h405.c
-> @@ -47,7 +47,6 @@ static void olimex_stm32_h405_init(MachineState *machin=
-e)
->      clock_set_hz(sysclk, SYSCLK_FRQ);
-> =20
->      dev =3D qdev_new(TYPE_STM32F405_SOC);
-> -    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4")=
-);
->      qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> =20
-> @@ -58,9 +57,14 @@ static void olimex_stm32_h405_init(MachineState *machi=
-ne)
-> =20
->  static void olimex_stm32_h405_machine_init(MachineClass *mc)
->  {
-> +    static const char * const valid_cpu_types[] =3D {
-> +        ARM_CPU_TYPE_NAME("cortex-m4"),
-> +        NULL
-> +    };
-> +
->      mc->desc =3D "Olimex STM32-H405 (Cortex-M4)";
->      mc->init =3D olimex_stm32_h405_init;
-> -    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-m4");
-> +    mc->valid_cpu_types =3D valid_cpu_types;
-> =20
->      /* SRAM pre-allocated as part of the SoC instantiation */
->      mc->default_ram_size =3D 0;
-> diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-> index cef23d7ee4..a65bbe298d 100644
-> --- a/hw/arm/stm32f405_soc.c
-> +++ b/hw/arm/stm32f405_soc.c
-> @@ -149,7 +149,7 @@ static void stm32f405_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-> =20
->      armv7m =3D DEVICE(&s->armv7m);
->      qdev_prop_set_uint32(armv7m, "num-irq", 96);
-> -    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
-> +    qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m=
-4"));
->      qdev_prop_set_bit(armv7m, "enable-bitband", true);
->      qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
->      qdev_connect_clock_in(armv7m, "refclk", s->refclk);
-> @@ -287,17 +287,11 @@ static void stm32f405_soc_realize(DeviceState *dev_=
-soc, Error **errp)
->      create_unimplemented_device("RNG",         0x50060800, 0x400);
->  }
-> =20
-> -static Property stm32f405_soc_properties[] =3D {
-> -    DEFINE_PROP_STRING("cpu-type", STM32F405State, cpu_type),
-> -    DEFINE_PROP_END_OF_LIST(),
-> -};
-> -
->  static void stm32f405_soc_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> =20
->      dc->realize =3D stm32f405_soc_realize;
-> -    device_class_set_props(dc, stm32f405_soc_properties);
->      /* No vmstate or reset required: device has no internal state */
->  }
-> =20
+> what if user didn't user -cpu at all?
+
+The CPU is hardcoded, default value is not used.
+
+qemu-system-arm -M olimex-stm32-h405 -S -monitor stdio
+QEMU 8.1.91 monitor - type 'help' for more information
+(qemu) info qtree
+...
+   dev: armv7m, id ""
+     gpio-in "NMI" 1
+     gpio-out "SYSRESETREQ" 1
+     gpio-in "" 96
+     clock-in "cpuclk" freq_hz=168 MHz
+     clock-in "refclk" freq_hz=21 MHz
+     cpu-type = "cortex-m4-arm-cpu"
+     ...
+
+> 
+>>
+>> We now get:
+>>
+>>    $ qemu-system-aarch64 -M netduinoplus2 -cpu cortex-r5f
+>>    qemu-system-aarch64: Invalid CPU type: cortex-r5f-arm-cpu
+>>    The valid types are: cortex-m4-arm-cpu
+>>
+>> Since the SoC family can only use Cortex-M4 CPUs, hard-code the
+>> CPU type name at the SoC level, removing the QOM property
+>> entirely.
+>>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   include/hw/arm/stm32f405_soc.h | 4 ----
+>>   hw/arm/netduinoplus2.c         | 7 ++++++-
+>>   hw/arm/olimex-stm32-h405.c     | 8 ++++++--
+>>   hw/arm/stm32f405_soc.c         | 8 +-------
+>>   4 files changed, 13 insertions(+), 14 deletions(-)
 

@@ -1,76 +1,499 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e15-20020a056000120f00b0032da35baf7bsm3925756wrx.113.2023.11.24.02.24.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 02:24:19 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A69255F7AA;
-	Fri, 24 Nov 2023 10:24:18 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-  qemu-devel@nongnu.org,
-  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Gavin
- Shan
- <gshan@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Evgeny Iakovlev
- <eiakovlev@linux.microsoft.com>,  qemu-arm@nongnu.org
-Subject: Re: [PATCH-for-8.2 v4 00/10] hw/char/pl011: Implement TX (async)
- FIFO to avoid blocking the main loop
-In-Reply-To: <CAFEAcA_0BfGVDZWJUPs8hwYRKS8FmzppQgY+s83qxBXHjLJvnw@mail.gmail.com>
-	(Peter Maydell's message of "Mon, 13 Nov 2023 13:11:22 +0000")
-References: <20231109192814.95977-1-philmd@linaro.org>
-	<CAFEAcA8MJeX1Jk_-ONP1nNgHYadL7Oa8P3jGQXwNoofQnJWk8g@mail.gmail.com>
-	<4ffed8f5-6624-4488-a74f-567cbd926b78@linaro.org>
-	<CAFEAcA_0BfGVDZWJUPs8hwYRKS8FmzppQgY+s83qxBXHjLJvnw@mail.gmail.com>
-User-Agent: mu4e 1.11.25; emacs 29.1
-Date: Fri, 24 Nov 2023 10:24:18 +0000
-Message-ID: <87jzq7cuul.fsf@draig.linaro.org>
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1130705ejj;
+        Fri, 24 Nov 2023 04:31:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH6NaiVyvDGPHPLTc+KChgntsIZ0l7zp9KStGLfHPXQKIiKVlZgjRoCgcYziH1nDM4blf5n
+X-Received: by 2002:a05:620a:842f:b0:77d:5f1d:f3cc with SMTP id pc47-20020a05620a842f00b0077d5f1df3ccmr2637702qkn.1.1700829061763;
+        Fri, 24 Nov 2023 04:31:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700829061; cv=none;
+        d=google.com; s=arc-20160816;
+        b=llQ7lD2xtv1nPNMTMwZjcZTlevoZyTJBm0EdDZucelkmaQ9aXCtV3JTCP2h/0r3y8v
+         R+1BVyOOCCH8+NUtmseR6xpCjq0JU1acbG/obxtrPawGWAa6I8y/Y/YM/H1ybht/Ynpg
+         CjNnV1t0ut7eqrgzaWuaCMGuIP1kBQK8FMzNaXnd0AQ120g9Q7EMJHZbfZ+lQkfnoTpL
+         fj7DuOxZcslQqh90sFt0+qsJPXey6h8kxcW/NDpci31YEcoplJyqm0qnKOCQq/WMGO/n
+         HxwMRSJ7/mObVQjGQkwhjaGZX87rJjl259g0vy4yEpxF6vZBQRbl16wiAhijX8ipqgPS
+         a2tQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=SOnQZJiPoycuaOOjIvzYkhhazzVkk/CroKuGK8Q3kS4=;
+        fh=HIlyraCYfvKdEoXNHSGLvFYYfC9kUlhb6wk9GCwb0Sc=;
+        b=Advi+cZIpModAFqPZFMIk55mJ9HgxGmrSaHyYm1ysIkiksVH3yMAFl3RDVoNMt8Nn5
+         4W0fUW2alSlel2ZMbA24lKhW9m/a0RkExJebz9zDPSJFehIWnf93b2+LdOOK7GHmU7Ft
+         OMJdYBJFXtHdA0BYvXCSecm+31Ce+GtSFlkXQkFbG07ELo/kW2jjAaQwRRC7dzswZBFq
+         fWo6BSwk10q5mLKTIkyEuBnENRyyiRS7dBWFsxTDZ93R5LLVqruH0lxjo2t50rX+/x1J
+         w0+62ImIieRoxumclZEfriOFoRpKrXPe3UG6jbiPm25yP478oOzZ7XIkkWk5rapIVM2z
+         em0g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EMhi0IVH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h9-20020a37c449000000b00770f3ea254fsi3016070qkm.171.2023.11.24.04.31.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 24 Nov 2023 04:31:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EMhi0IVH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r6VKQ-0003BW-9n; Fri, 24 Nov 2023 07:30:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1r6VKO-0003BC-Ky
+ for qemu-arm@nongnu.org; Fri, 24 Nov 2023 07:30:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1r6VKM-0000A9-1U
+ for qemu-arm@nongnu.org; Fri, 24 Nov 2023 07:30:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1700829032;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SOnQZJiPoycuaOOjIvzYkhhazzVkk/CroKuGK8Q3kS4=;
+ b=EMhi0IVHf+TTvqryj3L+HFy7U2v+qWUEQwuyN56/JFiaXlS0e5AKvQBwfK36zMlLM/KkCq
+ d5DuZ4mpR15z8H7tGXCaUU9ZakfYywaSrO+JSrXLU6RpslDNOD7y0UFZFW+VWqvPQSuFb5
+ 0aoOVanSxstglhcCiwjGwX/ugws6XgY=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-679-PFCLHrXHNgePiXETljcwgg-1; Fri, 24 Nov 2023 07:30:30 -0500
+X-MC-Unique: PFCLHrXHNgePiXETljcwgg-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-9fd0a58549bso212631266b.0
+ for <qemu-arm@nongnu.org>; Fri, 24 Nov 2023 04:30:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700829029; x=1701433829;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=SOnQZJiPoycuaOOjIvzYkhhazzVkk/CroKuGK8Q3kS4=;
+ b=oeSioHSjHolexbvU80PrYYEa+AG9oVvp+lqPYHIbMB3KRZ7F5H2fjkEoD4b9fiU23T
+ 1igE1gRZBWZlt/s/R0bpsPMP8mRlUhf0xQF3Ba7Lhz4AbGueUIp4MgQU7wZiASbcFdvC
+ FeZ500czdc8H/jWfxLnWi2fF/GCt7/rSgpb4xtMnV0lUNPlLYqsMTsAtrWz0fdrBSMnh
+ 5dt0VC4B97Bt5tbav41XBY8hHtC1XYdtwuKf6RouJLYo88+a2Srx4Owj1E90b9mmbgrZ
+ ub+2A/CNmqHi+UJ95nDy0jwkGejCMnkMn7LypNfIGibEgY6kW3tAL/Zx51Q+ZuxpBU1f
+ ATEg==
+X-Gm-Message-State: AOJu0YzcF5MhjAC2SoRDx09e50qf9ng8qL6iieXmsQioIYs/wy9Zc+5l
+ ohn4lU+o0iUE8b41WIkVtGxi+DVsRnYZE8Bic/js2wPH+UJF8iLpwFO0R34nRaumk9OJtqUbuBF
+ FvLFRYOEAIsrG
+X-Received: by 2002:a17:906:5308:b0:a01:bd67:d2fb with SMTP id
+ h8-20020a170906530800b00a01bd67d2fbmr5048525ejo.0.1700829029729; 
+ Fri, 24 Nov 2023 04:30:29 -0800 (PST)
+X-Received: by 2002:a17:906:5308:b0:a01:bd67:d2fb with SMTP id
+ h8-20020a170906530800b00a01bd67d2fbmr5048504ejo.0.1700829029358; 
+ Fri, 24 Nov 2023 04:30:29 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+ by smtp.gmail.com with ESMTPSA id
+ z2-20020a170906074200b009d268e3b801sm2005640ejb.37.2023.11.24.04.30.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Nov 2023 04:30:28 -0800 (PST)
+Date: Fri, 24 Nov 2023 13:30:28 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, David Woodhouse
+ <dwmw@amazon.co.uk>, Stefano Stabellini <sstabellini@kernel.org>, Julien
+ Grall <julien@xen.org>, Oleksandr Tyshchenko
+ <Oleksandr_Tyshchenko@epam.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, "open list:X86 Xen CPUs"
+ <xen-devel@lists.xenproject.org>
+Subject: Re: [PATCH v2 6/6] xen_arm: Add virtual PCIe host bridge support
+Message-ID: <20231124133028.72ba1d6e@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20231121221023.419901-7-volodymyr_babchuk@epam.com>
+References: <20231121221023.419901-1-volodymyr_babchuk@epam.com>
+ <20231121221023.419901-7-volodymyr_babchuk@epam.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: LxBQKe/wdiBN
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lCvQJa+qM9Jb
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On Tue, 21 Nov 2023 22:10:28 +0000
+Volodymyr Babchuk <Volodymyr_Babchuk@epam.com> wrote:
 
-> On Thu, 9 Nov 2023 at 20:59, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
-rg> wrote:
->>
->> Hi Peter,
->>
->> On 9/11/23 20:29, Peter Maydell wrote:
->> > On Thu, 9 Nov 2023 at 19:28, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
-o.org> wrote:
->> >>
->> >> Missing review: #10
->> >>
->> >> Hi,
->> >>
->> >> This series add support for (async) FIFO on the transmit path
->> >> of the PL011 UART.
->> >
->> > Hi; what's the rationale for the "for-8.2" targeting here?
->> > What bug are we fixing?
->>
->> The bug is on Trusted Substrate when the ZynqMP machine is used:
->> https://linaro.atlassian.net/browse/TRS-149?focusedCommentId=3D149574
->
-> And have we confirmed that the async FIFO support fixes that problem?
-> That bug report seems to have mostly just speculation in it that
-> maybe this XXX comment is why...
+> From: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+> 
+> The bridge is needed for virtio-pci support, as QEMU can emulate the
+> whole bridge with any virtio-pci devices connected to it.
+> 
+> This patch provides a flexible way to configure PCIe brige resources
+> with xenstore. We made this for several reasons:
+> 
+> - We don't want to clash with vPCI devices, so we need information
+>   from Xen toolstack on which PCI bus to use.
+> - The guest memory layout that describes these resources is not stable
+>   and may vary between guests, so we cannot rely on static resources
+>   to be always the same for both ends.
+> - Also the device-models which run in different domains and serve
+>   virtio-pci devices for the same guest should use different host
+>   bridge resources for Xen to distinguish. The rule for the guest
+>   device-tree generation is one PCI host bridge per backend domain.
+> 
+> Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+> Signed-off-by: Volodymyr Babchuk <volodymyr_babchuk@epam.com>
+> 
+> ---
+> 
+> Changes from v1:
+> 
+>  - Renamed virtio_pci_host to pcie_host entries in XenStore, because
+>  there is nothing specific to virtio-pci: any PCI device can be
+>  emulated via this newly created bridge.
+> ---
+>  hw/arm/xen_arm.c            | 186 ++++++++++++++++++++++++++++++++++++
+>  hw/xen/xen-hvm-common.c     |   9 +-
+>  include/hw/xen/xen_native.h |   8 +-
+>  3 files changed, 200 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+> index b9c3ae14b6..d506d55d0f 100644
+> --- a/hw/arm/xen_arm.c
+> +++ b/hw/arm/xen_arm.c
+> @@ -22,6 +22,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/qapi-commands-migration.h"
+>  #include "qapi/visitor.h"
+> @@ -34,6 +35,9 @@
+>  #include "hw/xen/xen-hvm-common.h"
+>  #include "sysemu/tpm.h"
+>  #include "hw/xen/arch_hvm.h"
+> +#include "exec/address-spaces.h"
+> +#include "hw/pci-host/gpex.h"
+> +#include "hw/virtio/virtio-pci.h"
+>  
+>  #define TYPE_XEN_ARM  MACHINE_TYPE_NAME("xenpvh")
+>  OBJECT_DECLARE_SIMPLE_TYPE(XenArmState, XEN_ARM)
+> @@ -58,6 +62,11 @@ struct XenArmState {
+>      struct {
+>          uint64_t tpm_base_addr;
+>      } cfg;
+> +
+> +    MemMapEntry pcie_mmio;
+> +    MemMapEntry pcie_ecam;
+> +    MemMapEntry pcie_mmio_high;
+> +    int         pcie_irq;
+>  };
+>  
+>  static MemoryRegion ram_lo, ram_hi;
+> @@ -73,6 +82,7 @@ static MemoryRegion ram_lo, ram_hi;
+>  #define NR_VIRTIO_MMIO_DEVICES   \
+>     (GUEST_VIRTIO_MMIO_SPI_LAST - GUEST_VIRTIO_MMIO_SPI_FIRST)
+>  
+> +/* TODO It should be xendevicemodel_set_pci_intx_level() for PCI interrupts. */
+>  static void xen_set_irq(void *opaque, int irq, int level)
+>  {
+>      if (xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level)) {
+> @@ -129,6 +139,176 @@ static void xen_init_ram(MachineState *machine)
+>      }
+>  }
+>  
+> +static void xen_create_pcie(XenArmState *xam)
+> +{
+> +    MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
+> +    MemoryRegion *ecam_alias, *ecam_reg;
+> +    DeviceState *dev;
+> +    int i;
+> +
+> +    dev = qdev_new(TYPE_GPEX_HOST);
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> +
+> +    /* Map ECAM space */
+> +    ecam_alias = g_new0(MemoryRegion, 1);
+> +    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+> +    memory_region_init_alias(ecam_alias, OBJECT(dev), "pcie-ecam",
+> +                             ecam_reg, 0, xam->pcie_ecam.size);
+> +    memory_region_add_subregion(get_system_memory(), xam->pcie_ecam.base,
+> +                                ecam_alias);
+> +
+> +    /* Map the MMIO space */
+> +    mmio_alias = g_new0(MemoryRegion, 1);
+> +    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
+> +    memory_region_init_alias(mmio_alias, OBJECT(dev), "pcie-mmio",
+> +                             mmio_reg,
+> +                             xam->pcie_mmio.base,
+> +                             xam->pcie_mmio.size);
+> +    memory_region_add_subregion(get_system_memory(), xam->pcie_mmio.base,
+> +                                mmio_alias);
+> +
+> +    /* Map the MMIO_HIGH space */
+> +    mmio_alias_high = g_new0(MemoryRegion, 1);
+> +    memory_region_init_alias(mmio_alias_high, OBJECT(dev), "pcie-mmio-high",
+> +                             mmio_reg,
+> +                             xam->pcie_mmio_high.base,
+> +                             xam->pcie_mmio_high.size);
+> +    memory_region_add_subregion(get_system_memory(), xam->pcie_mmio_high.base,
+> +                                mmio_alias_high);
+> +
+> +    /* Legacy PCI interrupts (#INTA - #INTD) */
+> +    for (i = 0; i < GPEX_NUM_IRQS; i++) {
+> +        qemu_irq irq = qemu_allocate_irq(xen_set_irq, NULL,
+> +                                         xam->pcie_irq + i);
+> +
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, irq);
+> +        gpex_set_irq_num(GPEX_HOST(dev), i, xam->pcie_irq + i);
+> +    }
+> +
 
-I've been fighting with numerous issues with the TRS build over the last
-week so I can confirm I have seen a) a lock up with pl011_write blocking
-everything under the BQL because data wasn't read fast enough and b) the
-problem goes away with Philippe's patches. So have a:
+> +    DPRINTF("Created PCIe host bridge\n");
+replace DPRINTFs with trace_foo(), see 885f380f7be for example
 
-Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> +}
+> +
+> +static bool xen_read_pcie_prop(XenArmState *xam, unsigned int xen_domid,
+> +                               const char *prop_name, unsigned long *data)
+> +{
+> +    char path[128], *value = NULL;
+> +    unsigned int len;
+> +    bool ret = true;
+> +
+> +    snprintf(path, sizeof(path), "device-model/%d/pcie_host/%s",
+> +             xen_domid, prop_name);
 
-for the series.
+try to avoid usage of snprintf() in series
+see d2fe2264679 as an example
 
->
-> -- PMM
+> +    value = xs_read(xam->state->xenstore, XBT_NULL, path, &len);
+maybe use g_autofree
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> +
+> +    if (qemu_strtou64(value, NULL, 16, data)) {
+> +        error_report("xenpv: Failed to get 'pcie_host/%s' prop",
+> +                     prop_name);
+
+if it's error, then better would be to use error_fatal so qemu would exit
+on the 1st encounter.
+
+> +        ret = false;
+> +    }
+> +
+> +    free(value);
+> +
+> +    return ret;
+> +}
+> +
+> +static int xen_get_pcie_params(XenArmState *xam)
+> +{
+> +    char path[128], *value = NULL, **entries = NULL;
+> +    unsigned int len, tmp;
+> +    int rc = -1;
+> +
+> +    snprintf(path, sizeof(path), "device-model/%d/pcie_host",
+> +             xen_domid);
+> +    entries = xs_directory(xam->state->xenstore, XBT_NULL, path, &len);
+> +    if (entries == NULL) {
+> +        error_report("xenpv: 'pcie_host' dir is not present");
+> +        return -1;
+> +    }
+> +    free(entries);
+
+maybe use g_autofree for strings in this function
+
+> +    if (len != 9) {
+> +        error_report("xenpv: Unexpected number of entries in 'pcie_host' dir");
+> +        goto out;
+> +    }
+> +
+> +    snprintf(path, sizeof(path), "device-model/%d/pcie_host/id",
+> +             xen_domid);
+> +    value = xs_read(xam->state->xenstore, XBT_NULL, path, &len);
+> +    if (qemu_strtoui(value, NULL, 10, &tmp)) {
+> +        error_report("xenpv: Failed to get 'pcie_host/id' prop");
+> +        goto out;
+> +    }
+> +    free(value);
+
+> +    value = NULL;
+and then get rid of pointless assignment 
+
+> +    if (tmp > 0xffff) {
+> +        error_report("xenpv: Wrong 'pcie_host/id' value %u", tmp);
+> +        goto out;
+> +    }
+> +    xen_pci_segment = tmp;
+> +
+> +    if (!xen_read_pcie_prop(xam, xen_domid, "ecam_base",
+> +                            &xam->pcie_ecam.base)) {
+> +        goto out;
+> +    }
+> +
+> +    if (!xen_read_pcie_prop(xam, xen_domid, "ecam_size",
+> +                            &xam->pcie_ecam.size)) {
+> +        goto out;
+> +    }
+> +
+> +    if (!xen_read_pcie_prop(xam, xen_domid, "mem_base",
+> +                            &xam->pcie_mmio.base)) {
+> +        goto out;
+> +    }
+> +
+> +    if (!xen_read_pcie_prop(xam, xen_domid, "mem_size",
+> +                            &xam->pcie_mmio.base)) {
+> +        goto out;
+> +    }
+> +
+> +    if (!xen_read_pcie_prop(xam, xen_domid, "prefetch_mem_base",
+> +                            &xam->pcie_mmio_high.base)) {
+> +        goto out;
+> +    }
+> +
+> +    if (!xen_read_pcie_prop(xam, xen_domid, "prefetch_mem_size",
+> +                            &xam->pcie_mmio_high.size)) {
+> +        goto out;
+> +    }
+> +
+> +    snprintf(path, sizeof(path), "device-model/%d/pcie_host/irq_first",
+> +             xen_domid);
+> +    value = xs_read(xam->state->xenstore, XBT_NULL, path, &len);
+> +    if (qemu_strtoi(value, NULL, 10, &xam->pcie_irq)) {
+> +        error_report("xenpv: Failed to get 'pcie_host/irq_first' prop");
+> +        goto out;
+> +    }
+> +    free(value);
+> +    value = NULL;
+> +    DPRINTF("PCIe host bridge: irq_first %u\n", xam->pcie_irq);
+> +
+> +    snprintf(path, sizeof(path), "device-model/%d/pcie_host/num_irqs",
+> +             xen_domid);
+> +    value = xs_read(xam->state->xenstore, XBT_NULL, path, &len);
+> +    if (qemu_strtoui(value, NULL, 10, &tmp)) {
+> +        error_report("xenpv: Failed to get 'pcie_host/num_irqs' prop");
+> +        goto out;
+> +    }
+> +    free(value);
+> +    value = NULL;
+> +    if (tmp != GPEX_NUM_IRQS) {
+> +        error_report("xenpv: Wrong 'pcie_host/num_irqs' value %u", tmp);
+> +        goto out;
+> +    }
+> +    DPRINTF("PCIe host bridge: num_irqs %u\n", tmp);
+> +
+> +    rc = 0;
+> +out:
+> +    if (value) {
+> +        free(value);
+> +    }
+> +
+> +    return rc;
+> +}
+> +
+>  void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+>  {
+>      hw_error("Invalid ioreq type 0x%x\n", req->type);
+> @@ -189,6 +369,12 @@ static void xen_arm_init(MachineState *machine)
+>      xen_register_ioreq(xam->state, machine->smp.cpus, &xen_memory_listener);
+>  
+>      xen_create_virtio_mmio_devices(xam);
+> +    if (!xen_get_pcie_params(xam)) {
+> +        xen_create_pcie(xam);
+> +    } else {
+> +        DPRINTF("PCIe host bridge is not available,"
+> +                "only virtio-mmio can be used\n");
+
+so if something went wrong, it will be just ignored.
+Is it really expected behavior?
+
+> +    }
+>  
+>  #ifdef CONFIG_TPM
+>      if (xam->cfg.tpm_base_addr) {
+> diff --git a/hw/xen/xen-hvm-common.c b/hw/xen/xen-hvm-common.c
+> index 565dc39c8f..0f78f15057 100644
+> --- a/hw/xen/xen-hvm-common.c
+> +++ b/hw/xen/xen-hvm-common.c
+> @@ -47,6 +47,8 @@ void xen_ram_alloc(ram_addr_t ram_addr, ram_addr_t size, MemoryRegion *mr,
+>      g_free(pfn_list);
+>  }
+>  
+> +uint16_t xen_pci_segment;
+> +
+>  static void xen_set_memory(struct MemoryListener *listener,
+>                             MemoryRegionSection *section,
+>                             bool add)
+> @@ -382,7 +384,12 @@ static void cpu_ioreq_config(XenIOState *state, ioreq_t *req)
+>      }
+>  
+>      QLIST_FOREACH(xendev, &state->dev_list, entry) {
+> -        if (xendev->sbdf != sbdf) {
+> +        /*
+> +         * As we append xen_pci_segment just before forming dm_op in
+> +         * xen_map_pcidev() we need to check with appended xen_pci_segment
+> +         * here as well.
+> +         */
+> +        if ((xendev->sbdf | (xen_pci_segment << 16)) != sbdf) {
+>              continue;
+>          }
+>  
+> diff --git a/include/hw/xen/xen_native.h b/include/hw/xen/xen_native.h
+> index 6f09c48823..2b1debaff4 100644
+> --- a/include/hw/xen/xen_native.h
+> +++ b/include/hw/xen/xen_native.h
+> @@ -431,6 +431,8 @@ static inline void xen_unmap_io_section(domid_t dom,
+>                                                      0, start_addr, end_addr);
+>  }
+>  
+> +extern uint16_t xen_pci_segment;
+> +
+>  static inline void xen_map_pcidev(domid_t dom,
+>                                    ioservid_t ioservid,
+>                                    PCIDevice *pci_dev)
+> @@ -441,7 +443,8 @@ static inline void xen_map_pcidev(domid_t dom,
+>  
+>      trace_xen_map_pcidev(ioservid, pci_dev_bus_num(pci_dev),
+>                           PCI_SLOT(pci_dev->devfn), PCI_FUNC(pci_dev->devfn));
+> -    xendevicemodel_map_pcidev_to_ioreq_server(xen_dmod, dom, ioservid, 0,
+> +    xendevicemodel_map_pcidev_to_ioreq_server(xen_dmod, dom, ioservid,
+> +                                              xen_pci_segment,
+>                                                pci_dev_bus_num(pci_dev),
+>                                                PCI_SLOT(pci_dev->devfn),
+>                                                PCI_FUNC(pci_dev->devfn));
+> @@ -457,7 +460,8 @@ static inline void xen_unmap_pcidev(domid_t dom,
+>  
+>      trace_xen_unmap_pcidev(ioservid, pci_dev_bus_num(pci_dev),
+>                             PCI_SLOT(pci_dev->devfn), PCI_FUNC(pci_dev->devfn));
+> -    xendevicemodel_unmap_pcidev_from_ioreq_server(xen_dmod, dom, ioservid, 0,
+> +    xendevicemodel_unmap_pcidev_from_ioreq_server(xen_dmod, dom, ioservid,
+> +                                                  xen_pci_segment,
+>                                                    pci_dev_bus_num(pci_dev),
+>                                                    PCI_SLOT(pci_dev->devfn),
+>                                                    PCI_FUNC(pci_dev->devfn));
+

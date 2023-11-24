@@ -1,267 +1,194 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1331727ejj;
-        Fri, 24 Nov 2023 08:17:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFHEkCE7eBkIEhjYC4iCgt9SFaLajemPbp18WUqn+VlG4uOszcwz+J75NSbRRgN/e4I+nY6
-X-Received: by 2002:a05:6830:18e1:b0:6c6:4843:2abc with SMTP id d1-20020a05683018e100b006c648432abcmr3780685otf.18.1700842643969;
-        Fri, 24 Nov 2023 08:17:23 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1700842643; cv=pass;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1337532ejj;
+        Fri, 24 Nov 2023 08:24:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGCZEff56ppK3NZn7XFw0sDFLrs4uLUYZD6DfbswWHOkn9GjDAuM02MMWvq0OWtni96Aq3R
+X-Received: by 2002:a05:6871:e7c3:b0:1ea:406:4dff with SMTP id qc3-20020a056871e7c300b001ea04064dffmr4787786oac.50.1700843055724;
+        Fri, 24 Nov 2023 08:24:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700843055; cv=none;
         d=google.com; s=arc-20160816;
-        b=IlkoDO0GmmUPBkw/rBtJWe1/yaB40awURjwz8ENUfuUpb3+cvbAGsilb4fg/uVPnNw
-         +z8PGimtSdMKVTZ/GxKQm7ziVzxiewWwgW3mm6qtx8VRYTxJXMTrSI1EJOhNots/yUIh
-         1mypLM3wP8LiHTJxxdxmTx0CJNLkiYE2X+YiavQjMFLeggNGYvx5ykrdGx9mTfdYvs37
-         oXuE6z2mHYAZ4MU8dbGGI1EvLZa/evUPGyKDp9R9yMPVp4GgRsMSvVN8PZrzKXAw7Nbi
-         9zCu6HwIzT0Sw+kvj7UEkCqurerdATH2KBOnQz7FgwHcr5ewr9n5dGmbGrdgmkeSKJaM
-         +wjA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature;
-        bh=xiWEPUTw8RAJfz42vj5dRyOCNa0rvwjoJgzDPny6EvQ=;
-        fh=LBX8mk1WKsMj2mwEnbJa13xD2EQJtwmzv8Q96eDq61E=;
-        b=sy8nhItWztEkgDnxpb6ayrTWIozjvpqSe0jV3WJuf82sINo3BRiXP2YlzsSsAbSNMC
-         P+KirEPRAdvwdoYtdNjOPcY7e1BS6TlYCtMyD8h83XgJ7/fjq665CI+MglgCsrBIOkry
-         DOv+McSEmb+Qoxm7LtTwpuU4dPtD6ObWBMI6EAyxevo1N4ZfBBdnDlU8klShqDIOoUlY
-         +O2ZmChhsFZP9eneHl/cgl1w9OVlP910r+1wSQ7wBXq+dg+jdDBVYIPGDtR2cGW2aIJN
-         2XUcBsfw6iBn3HUTS+4ZXai57lDZxoVwYmF0uVlWyh7dlFoPQ05NHBDl+8fcfo+ALUoe
-         xTtA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=GJ8Dy4HM;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o2-20020a056102236200b00452649edf23si1113941vsa.282.2023.11.24.08.17.23
+        b=ERyjT7UPqgWcpY2CjxprWdXj5E2oBG62FHEXF38zer425esxuSADS2BbKtQ9ijUz88
+         mxejsFqGB3CHTRmzCHg1BHyhBmdaqAsJhywZh+Be5cHFsOdzh845Iqc/MTQT3FjbivKJ
+         CAIYZVAiQXS7FP3unXMznKi4gih5Ohocrtpw7YIQkG3k2SKUuFcxUeXJ2ooysj+T1x6K
+         6BQIKJTPwjLIGtYL3a3XVloy2jkB5Q80U0EjjxHj/wTzUAe9rNv+vSAnetPDJLRhqZRH
+         R7XHCmtNGvMvEyip9B0KfSbJyrt3/1PY9he+wzf6nkhofVfZrjB9uIqVFYbnYYMzn/CY
+         AGVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=XvZLC1a3doCjwxJXe9wXGBy327RrszPAUGwfEDg92j8=;
+        fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
+        b=JK9CaWOedHiFIdEgneM8Ar1iBht86Co8WI/tZnSm18yhdDT51ukU7wzp1FK4XWmyc5
+         ySMy65UXOXn0mSWCyHZt8f/ClksKJULkVjo+qGN6UV5j9bgzLukNbpcXrv9NOE4zCtaa
+         vN0s8ZwkCz1k/RyLducvz+xorwhNzDOGZOMsGPKGqGTdsiSL7uru9SO8WPL2OiAn8C7M
+         khdjqOzs+7PEzU0rCokoCVFQs3sGf4aG4RC9gxlgCIw0Q+PAb4BdgYGcbUK4CwLOaTuD
+         tx9kkxkWTb7d5YtYlEsHLwSYfCPoI9T7NDoIMWeF/xH9Pl2uFJuWYCN9PaVwBZdY4BYY
+         zEMw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=APMGRqqD;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id w28-20020a05610205fc00b004527acf43c5si880287vsf.534.2023.11.24.08.24.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Nov 2023 08:17:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Nov 2023 08:24:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=GJ8Dy4HM;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r6Yrq-0006mS-Nm; Fri, 24 Nov 2023 11:17:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
- id 1r6Yrp-0006mE-Vp; Fri, 24 Nov 2023 11:17:22 -0500
-Received: from mail-bn7nam10on20614.outbound.protection.outlook.com
- ([2a01:111:f400:7e8a::614]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
- id 1r6Yrm-0002Pu-TO; Fri, 24 Nov 2023 11:17:21 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Yd8QlZQC5DErB9JogD21f1RNyX7Lb0NKNpdA6Nmy1WebiRHDRGVU11vWXuhp1b4SQc2XA9n4AZurTIUifHBHSSpkEcw2FPAbUDPvRFcLTaYNRdnxtTKF+LVetkx9BRxlbfU9pgoeVn3CCkoICG+wOTuO18ad0sPBgCNXwaPdSDDtWHIoBTMEY+hs4qn3SEwhPvG2p1GgeGMErU+iEYZ4AeSfaM8h29u//ec2nkaOYdj6Cgv5i+UnetVrsZak4ppzqfHDt6WB4iNjrsiiE0hOfyt/+JE7wFnRPntk49EfxZ4oWbm1Z41sRvStjR8/+aUJ6Eye67+5CkaJEDzVH74CNA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xiWEPUTw8RAJfz42vj5dRyOCNa0rvwjoJgzDPny6EvQ=;
- b=WM5eKYqLNWQhJorzIaIJidDyzrfZ70eT2zy0ayCHxA3zOGTUXPelB1zKojpmYQe2uJxTE3bFrtjJeaXvXri3Hat7OyQWgeYBXEJfLDIZgyw9relDAfLIQUpXYuBz4/ZXd0J4cKrsZBds22SiEw/Wm8l4NpfHTHQg4JiTiXDCncaVjqtl1WZ69DmHMb8LK00Ag2RQniNAfDwZoKvF7V6TfMgRuT3ry9FE8z2Na01fGURhg47plWQzFrg/ktPkiKNA5tYRJSrhrM8Gpc7Tcm4IbSem42oIC7n26xgscSK/4aPa9c82oOvVwoZi/Ms5qyql2Yw9tU7b2k0rO5ddgxwx0g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xiWEPUTw8RAJfz42vj5dRyOCNa0rvwjoJgzDPny6EvQ=;
- b=GJ8Dy4HM4mQMFhiSRtaqY4LtUevO34EvSARXS/1aHTRTCtY+VBnIG/GTTuBz9fPtRk+a825V8W+lMYdEGwN8viY1qZayUBU7U8tIhZsAwX24wBZml6cJx0ddM8tFf+E50CAcvCOVb6tfW6Eqs24R+btXdxtykbmgZP4+SyiGVkI=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from SJ2PR12MB8739.namprd12.prod.outlook.com (2603:10b6:a03:549::10)
- by IA0PR12MB8325.namprd12.prod.outlook.com (2603:10b6:208:407::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.21; Fri, 24 Nov
- 2023 16:17:12 +0000
-Received: from SJ2PR12MB8739.namprd12.prod.outlook.com
- ([fe80::5f66:ae33:b947:c68b]) by SJ2PR12MB8739.namprd12.prod.outlook.com
- ([fe80::5f66:ae33:b947:c68b%7]) with mapi id 15.20.7025.020; Fri, 24 Nov 2023
- 16:17:12 +0000
-Message-ID: <38686d55-552f-4312-8c30-e76942553a5f@amd.com>
-Date: Fri, 24 Nov 2023 17:17:06 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/3] fix some url for amd / xilinx models
-Content-Language: en-US
-To: Frederic Konrad <fkonrad@amd.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, edgar.iglesias@gmail.com,
- alistair@alistair23.me, luc.michel@amd.com
-References: <20231124143505.1493184-1-fkonrad@amd.com>
- <20231124143505.1493184-3-fkonrad@amd.com>
-From: Francisco Iglesias <francisco.iglesias@amd.com>
-In-Reply-To: <20231124143505.1493184-3-fkonrad@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: PR1P264CA0031.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:102:19f::18) To SJ2PR12MB8739.namprd12.prod.outlook.com
- (2603:10b6:a03:549::10)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=APMGRqqD;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1700843055;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XvZLC1a3doCjwxJXe9wXGBy327RrszPAUGwfEDg92j8=;
+	b=APMGRqqDpMVcpBHnuPrixwL1w9LFsQH4f0ZRBariEWOIHsb+UnaR1H8Jy8vbKtDvOyO6f3
+	V7i3N6fXnU+NrAFcBhSPR4qaGIahKh0fJmH/YxDy6/LH8kFL+k0QDg+A+tu36W7QSDgen6
+	UEuVTyWaMfI+Wab7AVruwGQLM+Drv8A=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-190-pGU1C-MXOwiZJee1jZSkaw-1; Fri, 24 Nov 2023 11:24:14 -0500
+X-MC-Unique: pGU1C-MXOwiZJee1jZSkaw-1
+Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-a02ccc2fb53so144137566b.1
+        for <alex.bennee@linaro.org>; Fri, 24 Nov 2023 08:24:13 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700843053; x=1701447853;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XvZLC1a3doCjwxJXe9wXGBy327RrszPAUGwfEDg92j8=;
+        b=GJdw+Nhy6LT5CN7kweCuBHwDc0sCKB1wC+3Iw7ZAKF+Swgyvu1GRsoFm34sN5SIzlQ
+         h4CTvX619NTrU4gozxsBilbhb3uMvEybJtf4/HIsv50xwc3T8h3bXeONGwj32PPW5Mhn
+         fKdQxRjcnJ6pR2xxIUfqTAw8KFepeNNqB5XQyRoU4BUKfj69nKwA+mfk1hv8dUODWSet
+         xdMW7ck9wieHTdqEkL8dv4e21ThdoVQX0RkcjtBXkHf3PxEQzAjY17mM/4S9wI4nrIL4
+         7598NaMrGveLKEwbu6T5Kfg64ADEF/wDq0Z5GKnxHVJVXYv3wdItsyOa0ZCJFzwqiEoI
+         RVvQ==
+X-Gm-Message-State: AOJu0YxCVq0Ic4r7TWoWQ3R5hx6Iov/tQHRhf/mlRbDzEfGDbV9zETPo
+	pwJGGSxzx9tawOk9ud5WfWGQTuW4mNgnX2ET0bSK7qjqe9Sj262zsAwCM9wmSvgC3mqiD2Gq/Rh
+	yb2C0oKWx676yZ+Wo
+X-Received: by 2002:a17:906:6809:b0:9fe:42aa:425d with SMTP id k9-20020a170906680900b009fe42aa425dmr2564498ejr.76.1700843052864;
+        Fri, 24 Nov 2023 08:24:12 -0800 (PST)
+X-Received: by 2002:a17:906:6809:b0:9fe:42aa:425d with SMTP id k9-20020a170906680900b009fe42aa425dmr2564471ejr.76.1700843052504;
+        Fri, 24 Nov 2023 08:24:12 -0800 (PST)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+        by smtp.gmail.com with ESMTPSA id qx23-20020a170906fcd700b009d2eb40ff9dsm2249210ejb.33.2023.11.24.08.24.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Nov 2023 08:24:12 -0800 (PST)
+Date: Fri, 24 Nov 2023 17:24:10 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
+ <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
+ <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
+ <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
+ <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
+ <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
+ <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
+ <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+ <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+ <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
+ <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
+ <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
+ <lixianglai@loongson.cn>, <linuxarm@huawei.com>
+Subject: Re: [PATCH V7 4/8] hw/acpi: Update GED _EVT method AML with CPU
+ scan
+Message-ID: <20231124172410.327865fd@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20231113201236.30668-5-salil.mehta@huawei.com>
+References: <20231113201236.30668-1-salil.mehta@huawei.com>
+	<20231113201236.30668-5-salil.mehta@huawei.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR12MB8739:EE_|IA0PR12MB8325:EE_
-X-MS-Office365-Filtering-Correlation-Id: 81a640b1-7842-49a2-cd4c-08dbed08d0b1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: c+0K40L6auyKQxDCPqzFXAa/YEuXXzmydQWjaukq+7E3Q81L93/94xtWmN3NFhUNhiBXdxM/4Db5NYz+WV+Q/mkLiIHFZ0oNhETqGHWheFsieFFSbl1OiqOeZObwCsSNIz/tbRJJUtDn/if5iVSnstEg9PMnxWgMAUOlCFFr1FoOcFhwxEW/rwUWZhFmtbb2C7xXwSmRy3GZZbui52NpG2PDgQ5eJieS9HrKkMFqcQMJ+REx1TNGuMmpt3mp2On0DeU4oidv2A3ZU4zcfKksSuGvsJBk7MoxFMJ693MkeAD9D1klLOiohhUTHeYoUiqjnBC66OhJPgKIBChB8P7iWwuaG8zJjvzUodVgxiXGySfzVDAzqemkK1bUOc8iXijB+v4WFb2puQWZyYAp5IHVGd4UzJbzgCOC1Yv+/2XRZ5y0QI+XMUI1vMX4slA29ItEvnqhxjcb2yPiKIokBfE85c6fgDnKCqBbZyaLIKvZsK8wZhyKUO8QOHuiziIwTDZ3KnaB+jjXESYAzzzx3dcwzri+6KNXEDoPONLRkJls6sV1u4PrfT14ABmGwFOkOSk/jTUwN0KQGPjwyrnhRAxZPLM3ETwWpLSm19qM0NHtE8HYG31M06FJ2JIBwvn2P66tKKz0K4AFhDa/aoivFX+rqflEvMl2XPZTO2B4YnHqVqhlsSdL0tIr417TjTec4tWYCj6viSOuykYjJ2rJkuNV0g==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ2PR12MB8739.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(39860400002)(376002)(136003)(366004)(346002)(396003)(230922051799003)(451199024)(186009)(1800799012)(64100799003)(41300700001)(36756003)(4001150100001)(2906002)(44832011)(31696002)(86362001)(5660300002)(6512007)(6666004)(53546011)(6506007)(26005)(2616005)(83380400001)(478600001)(966005)(6486002)(38100700002)(8936002)(316002)(66946007)(66556008)(66476007)(31686004)(4326008)(8676002)(170073001)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?M2xYLzltVmFZRnFic0VpeWdabFc3cUxMTGdKazVic0thdGhpOGxNcEtrYzJY?=
- =?utf-8?B?cmpwc01OQWRwY1EwMTJoenh3UkJqS0JPQmp0enYwS1pnaWdJZGkraVBJN05k?=
- =?utf-8?B?MklWRUkvMHl5YXMzUEpDWGFDTTBCcXRYd3puMi9mRzZOMHIrcXA5M1BNb2tC?=
- =?utf-8?B?YVVmVHZwcjRmd1dMRHZjdUUvWnlxT0c5RTVoWVBkUXFkZmZPK3N1d0N2VzB3?=
- =?utf-8?B?cVVJZFpZUDBWOFcxUTBEU0hiNzIxSTlISm51T1FJSW5iQlcwMjFhVGVZMHBN?=
- =?utf-8?B?RjdtQUVoY051V3Q1Tm9Qams4MFVZbFFjZGhjMUdtb3V5SDRkd2F3OUhRWTQ0?=
- =?utf-8?B?d1liT0RjLy9wWmNhSklvNWw1VVhTaDNJS2RLRjZKbnhCdGhsQlJ2bjdPbEkw?=
- =?utf-8?B?WlJDQkRWbVVQTnhueWFBNE1VVS9BV2l0c3BxZXRvSy9KMjJodnV0NVJqTGJM?=
- =?utf-8?B?K0J5L2NNTkhDVUVVd3NDQXRLSXRpemI0QWhuaml0azBiZnZVZDUrZkpBSWZt?=
- =?utf-8?B?MHQ4azhiYjRHZXo0ekJmRm1HUm1rQ3ZWQW1GdE85RE93NzYxVzdwaUl6LzlD?=
- =?utf-8?B?azZwV1B1Y1dPR0UrZWVoMmh2QTE3ZWh1QTZieVdJM3FVMjJ3RnV3K1VUU0dO?=
- =?utf-8?B?SDZQRVFCbDBXcDhDUU11UHEwSXlydndqRy9rYXY5dUNHRGNtR0ZRZEF1K1BX?=
- =?utf-8?B?OFE4L0x2VlJHSHh5aXlwckdzQTdWTG5SeFl6czZUaWVJOVVVYmpqQUZwRUtz?=
- =?utf-8?B?VEVzVUxnVHExWEtnQzlXcEpuTkNrMVpoTEYydlkrOTRqNVJPaHloYWgvQkRy?=
- =?utf-8?B?KytOZUFJYmRwRDUzc0RyRnNSK3BmVzJDcy93SFVIN0RaZE9JNU1nN2JXeW9s?=
- =?utf-8?B?N29CV3pqMXZjSng4azJGOFJ0RGJHa0xyZytQUTEzYWI3a1o2NVhlbHRtZ1dt?=
- =?utf-8?B?Z3ZwOVA1VHNObnk3ZlAzekczc1Y3S056c3NSV0VxZk5wa1MvUFFZYlU5d2NT?=
- =?utf-8?B?a2o2ZXlBMy9sZkhpdGxrMmlYai93czVZWEZIcWtjV2dQT3A5Y2JCbFB4SUV4?=
- =?utf-8?B?dkp6LzVBN2FGOSsyc1lkOWxNdU8wdVU4YkJleHdLbS83K3V5VWNMbldqRGl1?=
- =?utf-8?B?TTJLd0VZYTFIeHdqMmZ6ckJ1cWdtVWtTcXFqWU00NitoMktNQ28vSDdiOStD?=
- =?utf-8?B?Z2tJTS9GNzluWGovNFEyNjBSSmZ5Uk1UMFNVVVhCMUtsVHN3Vjg2V05mMld6?=
- =?utf-8?B?UkhpSGlaZ1JhRnhkTzJLSVhmRlZUWkcwVWhjemlGMkRRNndmYjI2RGRJQkFF?=
- =?utf-8?B?eVlKTjRtSVBtSGtEOGNZUEhKUXpWMythNCt0eG1NajdtbFhObDNCd0RHWkd3?=
- =?utf-8?B?ZHZBN01xWTVwNHgzL25aN1ljcUVpMmZGTTlscFZqeHpPdWkyMm8wQldXbmZ2?=
- =?utf-8?B?ZlpjNkM3d3JVWEFtUG81QWRhVkV1Y3BvaTk1SEgrVFRxcDJ1b0dlTDRXOHFm?=
- =?utf-8?B?SzI0cTlBNWVTaEpaTHFReElDRWZQSlYvUnFsN3VCc2FCc2gvZnJTdFdUUzRl?=
- =?utf-8?B?WWQzcXo2WEZVS0NQMVFSdmFBck1xcDloSC95bnB1R1M4TENmemd6QllzNTJ1?=
- =?utf-8?B?QW05STRqWllzSFpSUWY3SUVRTVVFeVRTd2FXbWVITktSNlBWMTltcEVWbTFJ?=
- =?utf-8?B?bjdzYVZURW14alIvYm44RkwvVWJwazQwMTBZeWwvVU5tY3hNTS96Vk8zVHd4?=
- =?utf-8?B?ZU1JZnhpZm1scldiM01uWm5qMlNNSGFidmdJZkZDQjNnc0JINzJ5R2xRd3dx?=
- =?utf-8?B?d1lEQVAyZnVjaURuY1ljTkYybTF4amNlaldBWUliM0xPMm8wd0s4Z3VTUVZ3?=
- =?utf-8?B?QlJ6RlhKeHVxZC94Y0FtLzV2amNybmNUYzArS3VqbWo3TG1wTjdLVXBoRU1q?=
- =?utf-8?B?ZDRROFlnRGZZa0h4QkpJQjA4TURJUVZZVzFxT1dhOEpUbi81THlTN29NTlp1?=
- =?utf-8?B?TWtyK2tUbURCOUI4WkYyOTJYV3haV0Y2MEFrRStWcmliRm1ubnd5eDNvc2F6?=
- =?utf-8?B?S1hVMnZTRFRRVGVBMm9FK2prMkpVcjBpQno3Q2YzMFluVWwwaUVpSGcvQ2Nh?=
- =?utf-8?Q?wIA6rl1TNnt46W8lIpxaZnCwC?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81a640b1-7842-49a2-cd4c-08dbed08d0b1
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR12MB8739.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2023 16:17:12.2435 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4AAqJwiNlblu/u2DxeJl/1iPRxWtoZ/ZOWtDt4ZT3y3encnhUiDK57CmzuB/++ghXuLgkHS00JRhFHpZDdi8Ag==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8325
-Received-SPF: softfail client-ip=2a01:111:f400:7e8a::614;
- envelope-from=francisco.iglesias@amd.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A6ZW4w4d5Elg
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: vahdpgPHU8P7
 
+On Mon, 13 Nov 2023 20:12:32 +0000
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-
-On 2023-11-24 15:35, Frederic Konrad wrote:
-> It seems that the url changed a bit, and it triggers an error.  Fix the URLs so
-> the documentation can be reached again.
+> OSPM evaluates _EVT method to map the event. The CPU hotplug event eventually
+> results in start of the CPU scan. Scan figures out the CPU and the kind of
+> event(plug/unplug) and notifies it back to the guest. Update the GED AML _EVT
+> method with the call to \\_SB.CPUS.CSCN
 > 
-> Signed-off-by: Frederic Konrad <fkonrad@amd.com>
-Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> Also, macro CPU_SCAN_METHOD might be referred in other places like during GED
+> intialization so it makes sense to have its definition placed in some common
+> header file like cpu_hotplug.h. But doing this can cause compilation break
 
+hw/acpi/cpu.h  would be a better place for it
 
+Also, I'd rather rename w/acpi/cpu_hotplug.c:CPU_SCAN_METHOD to LEGACY_CPU_SCAN_METHOD
+while keeping newer CPU_SCAN_METHOD as is and making it public.
+
+> because of the conflicting macro definitions present in cpu.c and cpu_hotplug.c
+> and because both these files get compiled due to historic reasons of x86 world
+> i.e. decision to use legacy(GPE.2)/modern(GED) CPU hotplug interface happens
+> during runtime [1]. To mitigate above, for now, declare a new common macro
+> ACPI_CPU_SCAN_METHOD for CPU scan method instead.
+> (This needs a separate discussion later on for clean-up)
+> 
+> Reference:
+> [1] https://lore.kernel.org/qemu-devel/1463496205-251412-24-git-send-email-imammedo@redhat.com/
+> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
 > ---
->   hw/dma/xlnx_csu_dma.c                      | 2 +-
->   include/hw/misc/xlnx-versal-cframe-reg.h   | 2 +-
->   include/hw/misc/xlnx-versal-cfu.h          | 2 +-
->   include/hw/misc/xlnx-versal-pmc-iou-slcr.h | 2 +-
->   include/hw/ssi/xlnx-versal-ospi.h          | 2 +-
->   5 files changed, 5 insertions(+), 5 deletions(-)
+>  hw/acpi/cpu.c                  | 2 +-
+>  hw/acpi/generic_event_device.c | 4 ++++
+>  include/hw/acpi/cpu_hotplug.h  | 2 ++
+>  3 files changed, 7 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
-> index e89089821a..531013f35a 100644
-> --- a/hw/dma/xlnx_csu_dma.c
-> +++ b/hw/dma/xlnx_csu_dma.c
-> @@ -33,7 +33,7 @@
->   
->   /*
->    * Ref: UG1087 (v1.7) February 8, 2019
-> - * https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
-> + * https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers
->    * CSUDMA Module section
->    */
->   REG32(ADDR, 0x0)
-> diff --git a/include/hw/misc/xlnx-versal-cframe-reg.h b/include/hw/misc/xlnx-versal-cframe-reg.h
-> index a14fbd7fe4..0091505246 100644
-> --- a/include/hw/misc/xlnx-versal-cframe-reg.h
-> +++ b/include/hw/misc/xlnx-versal-cframe-reg.h
-> @@ -12,7 +12,7 @@
->    *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
->    *
->    * [2] Versal ACAP Register Reference,
-> - *     https://www.xilinx.com/htmldocs/registers/am012/am012-versal-register-reference.html
-> + *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/CFRAME_REG-Module
->    */
->   #ifndef HW_MISC_XLNX_VERSAL_CFRAME_REG_H
->   #define HW_MISC_XLNX_VERSAL_CFRAME_REG_H
-> diff --git a/include/hw/misc/xlnx-versal-cfu.h b/include/hw/misc/xlnx-versal-cfu.h
-> index 86fb841053..be62bab8c8 100644
-> --- a/include/hw/misc/xlnx-versal-cfu.h
-> +++ b/include/hw/misc/xlnx-versal-cfu.h
-> @@ -12,7 +12,7 @@
->    *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
->    *
->    * [2] Versal ACAP Register Reference,
-> - *     https://www.xilinx.com/htmldocs/registers/am012/am012-versal-register-reference.html
-> + *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/CFU_CSR-Module
->    */
->   #ifndef HW_MISC_XLNX_VERSAL_CFU_APB_H
->   #define HW_MISC_XLNX_VERSAL_CFU_APB_H
-> diff --git a/include/hw/misc/xlnx-versal-pmc-iou-slcr.h b/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
-> index f7d24c93c4..0c4a4fd66d 100644
-> --- a/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
-> +++ b/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
-> @@ -34,7 +34,7 @@
->    *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
->    *
->    * [2] Versal ACAP Register Reference,
-> - *     https://www.xilinx.com/html_docs/registers/am012/am012-versal-register-reference.html#mod___pmc_iop_slcr.html
-> + *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/PMC_IOP_SLCR-Module
->    *
->    * QEMU interface:
->    * + sysbus MMIO region 0: MemoryRegion for the device's registers
-> diff --git a/include/hw/ssi/xlnx-versal-ospi.h b/include/hw/ssi/xlnx-versal-ospi.h
-> index 5d131d351d..4ac975aa2f 100644
-> --- a/include/hw/ssi/xlnx-versal-ospi.h
-> +++ b/include/hw/ssi/xlnx-versal-ospi.h
-> @@ -34,7 +34,7 @@
->    *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
->    *
->    * [2] Versal ACAP Register Reference,
-> - *     https://www.xilinx.com/html_docs/registers/am012/am012-versal-register-reference.html#mod___ospi.html
-> + *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/OSPI-Module
->    *
->    *
->    * QEMU interface:
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 4b24a25003..de1f9295dc 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -323,7 +323,7 @@ const VMStateDescription vmstate_cpu_hotplug = {
+>  #define CPUHP_RES_DEVICE  "PRES"
+>  #define CPU_LOCK          "CPLK"
+>  #define CPU_STS_METHOD    "CSTA"
+> -#define CPU_SCAN_METHOD   "CSCN"
+> +#define CPU_SCAN_METHOD   ACPI_CPU_SCAN_METHOD
+>  #define CPU_NOTIFY_METHOD "CTFY"
+>  #define CPU_EJECT_METHOD  "CEJ0"
+>  #define CPU_OST_METHOD    "COST"
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 57b0c2815b..f547b96d74 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -109,6 +109,10 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+>                  aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
+>                                               MEMORY_SLOT_SCAN_METHOD));
+>                  break;
+> +            case ACPI_GED_CPU_HOTPLUG_EVT:
+> +                aml_append(if_ctx, aml_call0(ACPI_CPU_CONTAINER "."
+> +                                             ACPI_CPU_SCAN_METHOD));
+> +                break;
+>              case ACPI_GED_PWR_DOWN_EVT:
+>                  aml_append(if_ctx,
+>                             aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+> diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
+> index 48b291e45e..ef631750b4 100644
+> --- a/include/hw/acpi/cpu_hotplug.h
+> +++ b/include/hw/acpi/cpu_hotplug.h
+> @@ -20,6 +20,8 @@
+>  #include "hw/acpi/cpu.h"
+>  
+>  #define ACPI_CPU_HOTPLUG_REG_LEN 12
+> +#define ACPI_CPU_SCAN_METHOD "CSCN"
+> +#define ACPI_CPU_CONTAINER "\\_SB.CPUS"
+>  
+>  typedef struct AcpiCpuHotplug {
+>      Object *device;

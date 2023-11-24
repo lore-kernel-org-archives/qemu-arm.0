@@ -1,84 +1,84 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1370825ejj;
-        Fri, 24 Nov 2023 09:06:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE9Ouk+vs4ZnDzY3e6ENOUGZ9oK+arVKAx+rKRVmdDJrompweEw1eijsw9cvTMkCyzMj30y
-X-Received: by 2002:a0c:ef89:0:b0:67a:1e5e:f6af with SMTP id w9-20020a0cef89000000b0067a1e5ef6afmr1534275qvr.43.1700845578626;
-        Fri, 24 Nov 2023 09:06:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700845578; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1381436ejj;
+        Fri, 24 Nov 2023 09:17:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEj9u8Ves7KP4+XGy+p0B8+3lK/ctGtFdW/KRXIE2cDgaDFBenouHjlO9QAPBnn+dIkLpdH
+X-Received: by 2002:ac8:5992:0:b0:423:93e3:cd0c with SMTP id e18-20020ac85992000000b0042393e3cd0cmr4191549qte.44.1700846228853;
+        Fri, 24 Nov 2023 09:17:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700846228; cv=none;
         d=google.com; s=arc-20160816;
-        b=e+NIwQuqyuFB9mmUm43fU6YLA9snyBHdoLdBLCa1OXjSxJGn76kxArTDeTvqdXAzAD
-         BLauCNnB7/augATh0Q/+NAtlKG2WVi2AcgefRQu8M6i7txzTEAipcWHYawga/7GhJ29W
-         ySWGH8I4/7iM51yetGi9aJbZ9Ehfy6Di1TwlEHgnAFbIYuVHstseTo/t4SMJ3YZEU9yD
-         uI0clB8iDpMMyVqNChJdaQy9UdmyDO/CqtgdilnY8D8G3krqo9YbuuCWt2AZN0H+iRlP
-         fEP0FTnzBGOo7o03Stcut2TqJn0Ssa2MCGX2VojRaFpstPKw00WmIogclLuafJsjBTxY
-         sLjw==
+        b=TFnwWt5Ty5UTwIRXm1QoCWvPKFPUvWpkip0Hr1LeW18h6ymG/JHzgvvH1tou3H0ypy
+         I2bnxI0xqH8cky/xtkQQNNoLRJ8R7s/yl2V6FfvYOgOPZzxarFzgytCAEiImRCTKRNIa
+         Rm2OcOjqxd5WWPYd2qENopvtd1OaHBn3hL3cW9eTmxIOUvo2Yx11K2ORs7CRif9sPNpz
+         FGI+A0hhONfgLvdZ4dh+eRaB9ZMdwFt/pEXQSy4fM7KwSMvr37zogpxJi/zdiRzPCsqi
+         1lkxDRxwEwFeOHbMJw3V/x75STU6+7bSdUZa+lXJn3EVqwDoPzL7F2uPFMSiYBE6Xrj7
+         5x8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=xtTS7VWZZodDkEoGcaQwdr9ldk1hufKS+IMIeCB9hzo=;
+        bh=TjvOfBBy3CB1xDCiGei6x+xk0Ap+v5S7gV9mrBinp1E=;
         fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
-        b=fEMBvlJ4s4kythK7eOUCEQ56uYBPZFXl16k82eijWMdCTSRJxqh3sH/V6+5Z7h1u6G
-         SwhZQsJdO+IGw/3j/A6nswC8yg9NM5FGudRToAd5dG3gzDor8nPqc3njn40y+C52nS8l
-         ThEpM2H7GXku9qe6KJEzd7eUT1BFmmkjblOIC9iB3xdak0QBzgHup6RuzJiC80no9Wxk
-         EJo+eWYpkwW8w+MUkpGwpVn1WRkN/Of7gc7p+G5zQwuzxFroYh/MG5Vn44l1DeIZmR2g
-         gdxVQXplp02ScX/vV9ybwRGnpRk8UbKw9WyhuUaPTC9tPwDYD+3+GWthmXJ8hihzPir/
-         kyRA==
+        b=xpxMQAA/7EeAfNRi9SbpWapBQKZiRCoUapwl/dB+KrRPqPYAXS5b7pnPh08T5FBzLu
+         j48jl0E4/BkqVjk8+uP7dHCBEOh8tKGD3vw/wiqvjinruwB8yPulnJEhvMszj/72b/B1
+         yOUEP/JZbSH0O7CqWF6qO+11ZgDZUsnQGtNvGxuR3iHeSVicy4zPlHAZjhYxIiRr/bmo
+         gktbfEEBvyRDH93A4DsLqNgl6b7gAxxmUYBS4uICmiI3cD0HysPTMQug0JkfrjNzVH6k
+         sI5sjj766oWpYAiGKWpm9lrbU7MszrkVUX/0jyD7RWYLLPd0CWitU6zSS7ID+xsUsrVs
+         zQVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jv34bNqw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GB0Z2k1U;
        spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id o7-20020ad45c87000000b00678e7ff706csi4114720qvh.171.2023.11.24.09.06.18
+        by mx.google.com with ESMTPS id j16-20020ac85c50000000b0042383d91459si3620894qtj.33.2023.11.24.09.17.08
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 09:06:18 -0800 (PST)
+        Fri, 24 Nov 2023 09:17:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jv34bNqw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GB0Z2k1U;
        spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1700845578;
+	s=mimecast20190719; t=1700846228;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=xtTS7VWZZodDkEoGcaQwdr9ldk1hufKS+IMIeCB9hzo=;
-	b=Jv34bNqwRCOXCi+18CS9S0eMuxKSgmswoHFI9uxFl8LDh3GT+132hlhkBfgBCWx0Wwt/Cv
-	96X7WH5RoSB+fd9FeWRJ0JHUP0LJ5oLtfcZW5tq32o0HtP9koSkO++Ij3H/18xNr9clszd
-	J9aklphqsoNLXb2QHrByzlMnTdKR6ys=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=TjvOfBBy3CB1xDCiGei6x+xk0Ap+v5S7gV9mrBinp1E=;
+	b=GB0Z2k1Utf6p5ynvLAnj33phRzVp/e85fs7WTS70UpzZ/sWE6HfBJnVOcgf0Qih1dd+q2n
+	EhCT4ah6oww3o3e1EhdWfed7zlOf0D5CglOHztgaXLpFCn3sTBpCS5AD52y2Hn8u141zyX
+	knOSlquSaJVe2VHmd9x4B+XUHbw3gsc=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-510-HCLB2YGqPweISJv4scGC-w-1; Fri, 24 Nov 2023 12:06:17 -0500
-X-MC-Unique: HCLB2YGqPweISJv4scGC-w-1
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-679f44810d9so20212996d6.0
-        for <alex.bennee@linaro.org>; Fri, 24 Nov 2023 09:06:17 -0800 (PST)
+ us-mta-164--16Id778PSCJ1Sv4hh-1XA-1; Fri, 24 Nov 2023 12:17:06 -0500
+X-MC-Unique: -16Id778PSCJ1Sv4hh-1XA-1
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-77d78b44f19so221069185a.3
+        for <alex.bennee@linaro.org>; Fri, 24 Nov 2023 09:17:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1700845576; x=1701450376;
+        d=1e100.net; s=20230601; t=1700846225; x=1701451025;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xtTS7VWZZodDkEoGcaQwdr9ldk1hufKS+IMIeCB9hzo=;
-        b=K4nDFQFUOEzUhPpp9FTpO5m8+7krFV/Pl3cc6/Zmz/7mdADv3ydQn3ILSpWeFnNLq6
-         3qrQogRiGrZ6O+qpQ/sC+hkqznSBzM/k9mmKBOCrttIkxAm6QvFr6CBe/OjuK92khQCl
-         m0biMFW+yl+Vgrt9EazVgKnDqDNHqaY9lYY6h/AOXVqGbG0pOF3ROM+9MXZZAvzd0bw+
-         1EnBD96HueoHnzdhJEyCcK3ezugS9VbGF86YkTw2XwLiIEuabSOmGhoIx7CAf1VV6mOa
-         9R8n/S3KRHGcs/j1vMdXoCvSBSqwIb1hxU0frYPeSRJAwWPphKnOGEunwOLYMfWzE3Rv
-         7OVA==
-X-Gm-Message-State: AOJu0YzwB1UY9aePwCqc/E1KGeYbU8BYlfJN8t7NYSvl8bnxkAcWYwiY
-	i6DZlVrc7/fDcoznGp548W8w34nJ5oPJ5S6V8fxN4M+GBLomYHQzWSU0h81vPQiIBYDW44RdBJi
-	uEpU5tyWESlhouIz/
-X-Received: by 2002:ad4:4dc6:0:b0:66d:fac:33f9 with SMTP id cw6-20020ad44dc6000000b0066d0fac33f9mr3532908qvb.11.1700845576787;
-        Fri, 24 Nov 2023 09:06:16 -0800 (PST)
-X-Received: by 2002:ad4:4dc6:0:b0:66d:fac:33f9 with SMTP id cw6-20020ad44dc6000000b0066d0fac33f9mr3532870qvb.11.1700845576574;
-        Fri, 24 Nov 2023 09:06:16 -0800 (PST)
+        bh=TjvOfBBy3CB1xDCiGei6x+xk0Ap+v5S7gV9mrBinp1E=;
+        b=BQDkNBp3Pvf4dFdrr/NxClTgU1iY04dpv6AVY59Tn16SNicFoqkgFKXrX0oILe7gI6
+         Nhyv1Isn9SqZukTQguYuWlr8FLzTgB3p0HMcqJ7pB0XWX3X9tZ0BzbdntgH9qtO7MVKb
+         Pk8Hm7Hr7Vu336U0TpLlXyoYgG/McwSZj61LNT0bIASWHJJXELa+9EIUXtDLWoFVfr5g
+         c9Ztw6HT2i86w9dUXbUyAUyIK1tLaxHTNYiMw3CIkBSM037sn/1CdaWQFkFw2WupUOtt
+         FjcZ10C7Wf30W4z4JxcunTxVbRGfJA5HSwCQEBzAOl4+gPJR5QP+b54/Mu9Mg/pDViyK
+         MJdQ==
+X-Gm-Message-State: AOJu0YxN4lFG4KQmy/6CrccCXDS4lzH73zT42sPWsSfK14SmcWtBlt4v
+	H6R4weT/pJBkD+gH5JvkVP0oxcuCUKMVBly7BO7n6WmFuS8DtUrQKqbTaol8NSSRrEN44/edFZB
+	JtGAfil7vcnyek2ml
+X-Received: by 2002:a05:620a:8414:b0:77b:b1d2:9586 with SMTP id pc20-20020a05620a841400b0077bb1d29586mr3527005qkn.39.1700846225732;
+        Fri, 24 Nov 2023 09:17:05 -0800 (PST)
+X-Received: by 2002:a05:620a:8414:b0:77b:b1d2:9586 with SMTP id pc20-20020a05620a841400b0077bb1d29586mr3526991qkn.39.1700846225505;
+        Fri, 24 Nov 2023 09:17:05 -0800 (PST)
 Return-Path: <imammedo@redhat.com>
 Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
-        by smtp.gmail.com with ESMTPSA id pc13-20020a056214488d00b0067a22357681sm115081qvb.59.2023.11.24.09.06.09
+        by smtp.gmail.com with ESMTPSA id z17-20020a05620a261100b0077d85b1d45dsm226840qko.72.2023.11.24.09.16.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Nov 2023 09:06:15 -0800 (PST)
-Date: Fri, 24 Nov 2023 18:06:08 +0100
+        Fri, 24 Nov 2023 09:17:05 -0800 (PST)
+Date: Fri, 24 Nov 2023 18:16:58 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Salil Mehta <salil.mehta@huawei.com>
 Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
@@ -95,47 +95,30 @@ Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
  <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
  <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
  <lixianglai@loongson.cn>, <linuxarm@huawei.com>
-Subject: Re: [PATCH V7 8/8] docs/specs/acpi_hw_reduced_hotplug: Add the CPU
- Hotplug Event Bit
-Message-ID: <20231124180608.25b7f75e@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20231113201236.30668-9-salil.mehta@huawei.com>
+Subject: Re: [PATCH V7 0/8] Add architecture agnostic code to support vCPU
+ Hotplug
+Message-ID: <20231124181658.4385fdac@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20231113201236.30668-1-salil.mehta@huawei.com>
 References: <20231113201236.30668-1-salil.mehta@huawei.com>
-	<20231113201236.30668-9-salil.mehta@huawei.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: KXnIHfspb4AI
+X-TUID: lu9tCR1EkrYj
 
-On Mon, 13 Nov 2023 20:12:36 +0000
+On Mon, 13 Nov 2023 20:12:28 +0000
 Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> GED interface is used by many hotplug events like memory hotplug, NVDIMM hotplug
-> and non-hotplug events like system power down event. Each of these can be
-> selected using a bit in the 32 bit GED IO interface. A bit has been reserved for
-> the CPU hotplug event.
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+[...]
+>   physmem: Add helper function to destroy CPU AddressSpace
+>   gdbstub: Add helper function to unregister GDB register space
+[...]
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+above patches look like potential bugfixes (modulo they aren't getting used actually),
+only commit messages do not mention adverse effects (which they should do).
 
-> ---
->  docs/specs/acpi_hw_reduced_hotplug.rst | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
-> index 0bd3f9399f..3acd6fcd8b 100644
-> --- a/docs/specs/acpi_hw_reduced_hotplug.rst
-> +++ b/docs/specs/acpi_hw_reduced_hotplug.rst
-> @@ -64,7 +64,8 @@ GED IO interface (4 byte access)
->         0: Memory hotplug event
->         1: System power down event
->         2: NVDIMM hotplug event
-> -    3-31: Reserved
-> +       3: CPU hotplug event
-> +    4-31: Reserved
->  
->  **write_access:**
->  
+Question is:
+    do un-destroyed/registered CPU AS and GDB RS affect machines that
+    already support cpu hot-unplug? (x86/s380/spapr)

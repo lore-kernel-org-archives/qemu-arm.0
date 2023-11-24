@@ -1,142 +1,145 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1240040ejj;
-        Fri, 24 Nov 2023 06:36:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF+noUGkHVCFkIok6RfLFHdHLFEHVVVUP1pROAJ5LZWrzIKsXFF/eFiI+HLe1Tk05DyaQ5x
-X-Received: by 2002:a81:6c82:0:b0:5cc:9ef4:b01d with SMTP id h124-20020a816c82000000b005cc9ef4b01dmr5121137ywc.21.1700836583058;
-        Fri, 24 Nov 2023 06:36:23 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1700836583; cv=pass;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1240073ejj;
+        Fri, 24 Nov 2023 06:36:26 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHnpWxCYbfRqkPUeBDaO0qCRzLptPZK3P48fpC5nVdT4y5tCSH/Wirifd8biHhnhzHtjd8+
+X-Received: by 2002:a05:620a:6192:b0:77b:c57b:9f14 with SMTP id or18-20020a05620a619200b0077bc57b9f14mr3512291qkn.39.1700836585781;
+        Fri, 24 Nov 2023 06:36:25 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1700836585; cv=pass;
         d=google.com; s=arc-20160816;
-        b=DtMC2Uxs8/xaSp1irzE9bRD+r/KrwohjgdJZmMs6d508VYIixtg0oUs2lO0olj3nW4
-         6wUrpZ6pbgUlWX8SYtyBNSpUtpckFkhGXn2QoW8kCfhEck1xYD5SC7kfkAqAcrTET3nu
-         J3fql2ltdiUpox3nGWR9tua8VfkV8Jf92+fg6T5gxCUcrMHqeJn4/+A2ExXWrGVdXikc
-         hWjblmlTEHUJ7fvjaVOisWeyVtl8HFQaVPDFRT3DxUczMM8dldAOd7J3q5guvtkG8HKc
-         1PUtXNxdTQsNEB0JW0k86k+j5AL10yANgB3z9RHJJll2yIOE3cAaKkmbNlFvAi6d4kPC
-         cNhw==
+        b=dcxtxFFZOwNEyMvosi2zG+3Sqfakxi28OdgrgYqbXUmU8I9P5+X06JwCBCnSq3Ydd8
+         jDB0HAasz5758FKBNKv/gLEjsSlqiN68+lGYbNbe35RGaVzcilzB1qnTtzhO7+JfCb1Y
+         XUDqQllp0jqxN3y/Pogu3eWWhkL6OQ53cbaIy7MdI6T0D2sRgBjOGsrAmQULL5dzAi6g
+         5bn6VXEwL4Y1nymlUzeXCRyI8T5OWNXU8QjrTYZypJRzXL3RJBtJUYejeON2KNZnW/pj
+         btPrfvHGmRHhmJVXm4RTbEZp59ScIPh0mIeRhTKaf9LXGmNO3iB3wbKcF1T80p+boNk/
+         ISPQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=G5nllDb9jj2UCJ0CmFxKFDuIQKzJQPr91TWgm3T5Lqo=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=YGJ0ngFxcPwqdEA54FWd9cpmIgU9Oyv8OYZ4rpULu0k=;
         fh=1FmVCV+NP1SeXSMIQreKXYunTTb4/Ijoxigf8TMTOZU=;
-        b=n1pZdSIilrmN3l4ADgNLinr2n73EA1NQpSRFQ1TLWJ3wxtigvfPt19OBnPft+a0LDl
-         k5mboX8x3bD6CRteTGCBc0OsEByoATSJ/G09XRAyq8KExArX3Fs+wUiRCYMemkNvppd9
-         pJiTkhSfbtjvs+t0G9BjJBNVfvAadgEcv6vmfUI1kIwZOQH7en+LkF2RVYTyaxvrkzgB
-         G0rnTj4ZtMm0UHQjB7Izyn7qWRqKMcajzLJecGp9GKKiTaBDvGQVAOlye/vqc7w4tR+K
-         dVOTtgj0FmSl8UroCiSg3Q9PMXa4dhkM3qWinnxc5bihuk+s8wLGveiqP7aLf0842bwj
-         OVLg==
+        b=nfajT0Wy/81ho+xKSxm2DEcEZ05ifX/OiX0RyMY7D1pQ7a7mZSdobC0ryiZXyz/1Hj
+         nrW+nXieY96eNWx3jLdg9VSKH6hFzrtOb7ElfnDFYiGbKUQ1Ii6/J8qehjcCvTg6b3Uw
+         HOC5CWKAOK4z1tMnik5lpFCXdDWp8eykTogbUYtqKGKY+WpK22AFunGfgmAANLBZkAQm
+         HVWa8dy0/zErUbn7JK5EB9r6H/oJmyG7dwsB7g539OwHM4uWjpWhvEI+C49van4TGuLK
+         jPquvQQZuRRyxPaEbgoAdKR913yBC7H3CJRMxrkj8boK8JGd+gpOiJpeo+kNtWdlkW9G
+         XZZQ==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=rnhkkOpb;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=tbIChjPQ;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cs9-20020a05690c0ec900b005898783d42csi2582474ywb.552.2023.11.24.06.36.22
+        by mx.google.com with ESMTPS id a9-20020a05620a02e900b0077d5f42210bsi2578772qko.261.2023.11.24.06.36.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Nov 2023 06:36:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Nov 2023 06:36:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=rnhkkOpb;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=tbIChjPQ;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r6XHP-0007t5-6l; Fri, 24 Nov 2023 09:35:40 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r6XHV-0007uN-Hu; Fri, 24 Nov 2023 09:35:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Frederic.Konrad@amd.com>)
- id 1r6XHM-0007rW-Bn; Fri, 24 Nov 2023 09:35:36 -0500
-Received: from mail-bn8nam11on20600.outbound.protection.outlook.com
- ([2a01:111:f400:7eae::600]
- helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+ id 1r6XHS-0007u0-Ua; Fri, 24 Nov 2023 09:35:42 -0500
+Received: from mail-dm6nam11on20629.outbound.protection.outlook.com
+ ([2a01:111:f400:7eaa::629]
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Frederic.Konrad@amd.com>)
- id 1r6XHH-0006y7-N0; Fri, 24 Nov 2023 09:35:34 -0500
+ id 1r6XHQ-00070o-QS; Fri, 24 Nov 2023 09:35:42 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Yxuzkpa67ud0LXXySLHfdw3G3r8JhaXCkwUWWj55n3PYJsnE9O+8MKpk/e/tNeF5Yjz14Movw6EEDzheRGoBzURpacjLvr6ceZ1m4wfpwsKHH/EzokX/jeH8i/XY8jbtmGqhPPPuqB156oAhKLLGIFAw6K8PLrQit4qL9OOMp9wSgMVgJTJHnl581FRBMe/zPNLYXXfiefDhGQHubMIkQ6ISCNcMC+g+hsgC+xLuzVWh8oPplPddCiWkAsvfsPkdINbAjVkWVgT1iCEkWATqcoKtx7CFeSFXqIOvbQGJ1v/70EwMo2Ksj+muQ1sLXxrk5WPM6kGXCq4KL5c6SydTBg==
+ b=IdHI22sxaPYV2vw3lg9LJffEgxHzm7qm2cK0ulM59CcXoZxgvzIv7hrGAXxOtJm1qMQ10f9Sv7DQ7asRltXPYNaJWo3XIatgeGuPLJQwEEJSma6jHXrV85tyaoWycle9kBu6Ri+gIHIzxbTiODMCEAp1yebaitDHje9Jm9/WlbM8ryc6Hz6kwto/ngg/OVGvR0GWmqWe87h6JRG1CrTDyF0FA0lY9PUc/Ru4fnuwSYh4NUIgI0Q+7VCwm2och4dqwRJ5RvcBvHBe1/B0uewEH1mQeh+rj04z3/UjmHXe/mhCnfJYzb5GUxX4IhHmUiJyeLo9UrsDE1llrYTgmApRKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=G5nllDb9jj2UCJ0CmFxKFDuIQKzJQPr91TWgm3T5Lqo=;
- b=aOhPXWlyGM/ORGKmuoMNl5x/VmwYfC1rbSZNTO9R8qQiPNc5J3h2H5YJupOl+ZBBs3oarARl8IMtebqZaX4/UGl9og7wvx04ofj6VRaqjw33/vCQU0R3dCChYxdwVU8h/piYaB909lguPH71ab5Cii9caUNfeL94mbTPVYLCMK9TIVA0vg9S4ZmuBQKPO7XVtFPMVTIPMjS70LkWTR65iPTzq/qLhH+ahtmqnWtUFYBxDEUkoCVewG0MHBnzgVoFEXttJ0kY1D3Lnml1zFMYR3NtRB6TH0Dz6gLbe5fQ+hCmcQJXqPoU4D074jQhnCWH/n0gvHeR2pl9g6icAn8k3A==
+ bh=YGJ0ngFxcPwqdEA54FWd9cpmIgU9Oyv8OYZ4rpULu0k=;
+ b=OMQQhvihYMj8U0H5Oj01vtp/umUKpGS93B0ZLT1J2JnvWoehLkom/eE8BK7tNxWhMI05tvhRl0Zru2uJn6PwJgQUtPIyj/pZHdIjkJJl+t9kQFB8iCq0EcSdaEVRZs5MBECrturErmL/26VgQFgLNLo56OXoo3Qu5hh9mF6nDLrLW5HUH7tMxoq4ZIoQvxO3Cq/R3J7kg6GvOeyHX+qb0Q+pZHP2oS9vTwts1/PVYrJm7g7ECqqohP3/t7qaeQHk0rERgV2IoxUvVg5x4J3ZKom4Le4ldZZE4uw6b1FlYYxXJTm5t8+u4glnoniqGgA+BSBoep84ANY9jR40Ezuilg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=G5nllDb9jj2UCJ0CmFxKFDuIQKzJQPr91TWgm3T5Lqo=;
- b=rnhkkOpbMNCqQd1C2XUE3JgggdeIx7hr+soGQeDnXBhC3arLs27c8SoZRamfwD7gJKf3kF1PQhMAwkhTsPbNjTkBNCScKr6fumIFfDRISnPsHsz8tDhtmtBIfl+zO49DY+1eZ++ZMavf+Rti8Y+dvo5lfck7MzF5rfUAWY+zPGw=
-Received: from CH2PR10CA0018.namprd10.prod.outlook.com (2603:10b6:610:4c::28)
- by SA1PR12MB9002.namprd12.prod.outlook.com (2603:10b6:806:38b::14)
+ bh=YGJ0ngFxcPwqdEA54FWd9cpmIgU9Oyv8OYZ4rpULu0k=;
+ b=tbIChjPQ8BbzQmwyKWfYeWG+0lHfCk9tXPUC6+6ooDRl/WvTvGEyym40qLfXGnfkHJDtIFRMXjI45gsCHQcODLxSSaQLd9RIChjnIPnipMe6jz+rIlrTymBO73agZKUZcVFwVp7mT9GkBJh0ls7CTptgATDawf5m2EbkRpSJvJ8=
+Received: from BN1PR12CA0010.namprd12.prod.outlook.com (2603:10b6:408:e1::15)
+ by SA1PR12MB8600.namprd12.prod.outlook.com (2603:10b6:806:257::19)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.20; Fri, 24 Nov
- 2023 14:35:24 +0000
-Received: from DS2PEPF00003442.namprd04.prod.outlook.com
- (2603:10b6:610:4c:cafe::9d) by CH2PR10CA0018.outlook.office365.com
- (2603:10b6:610:4c::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.22; Fri, 24 Nov
+ 2023 14:35:35 +0000
+Received: from SN1PEPF0002636A.namprd02.prod.outlook.com
+ (2603:10b6:408:e1:cafe::7a) by BN1PR12CA0010.outlook.office365.com
+ (2603:10b6:408:e1::15) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.19 via Frontend
- Transport; Fri, 24 Nov 2023 14:35:23 +0000
+ Transport; Fri, 24 Nov 2023 14:35:35 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
 Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- DS2PEPF00003442.mail.protection.outlook.com (10.167.17.69) with Microsoft
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ SN1PEPF0002636A.mail.protection.outlook.com (10.167.241.135) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7025.13 via Frontend Transport; Fri, 24 Nov 2023 14:35:23 +0000
-Received: from SATLEXMB06.amd.com (10.181.40.147) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.7025.12 via Frontend Transport; Fri, 24 Nov 2023 14:35:34 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Fri, 24 Nov
- 2023 08:35:23 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB06.amd.com
- (10.181.40.147) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Fri, 24 Nov
- 2023 08:35:22 -0600
+ 2023 08:35:33 -0600
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Fri, 24 Nov
+ 2023 06:35:33 -0800
 Received: from xdcsswbld02.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.34 via Frontend
- Transport; Fri, 24 Nov 2023 08:35:22 -0600
+ Transport; Fri, 24 Nov 2023 08:35:32 -0600
 From: Frederic Konrad <fkonrad@amd.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, <francisco.iglesias@amd.com>,
  <peter.maydell@linaro.org>, <edgar.iglesias@gmail.com>,
  <alistair@alistair23.me>, <luc.michel@amd.com>, <fkonrad@amd.com>
-Subject: [PATCH v1 0/3] ZynqMP / Versal: various fixes
-Date: Fri, 24 Nov 2023 14:35:02 +0000
-Message-ID: <20231124143505.1493184-1-fkonrad@amd.com>
+Subject: [PATCH v1 2/3] fix some url for amd / xilinx models
+Date: Fri, 24 Nov 2023 14:35:04 +0000
+Message-ID: <20231124143505.1493184-3-fkonrad@amd.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231124143505.1493184-1-fkonrad@amd.com>
+References: <20231124143505.1493184-1-fkonrad@amd.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PEPF00003442:EE_|SA1PR12MB9002:EE_
-X-MS-Office365-Filtering-Correlation-Id: b1ef4d51-30bd-4ceb-d965-08dbecfa97ec
+X-MS-TrafficTypeDiagnostic: SN1PEPF0002636A:EE_|SA1PR12MB8600:EE_
+X-MS-Office365-Filtering-Correlation-Id: e957f861-2451-463b-09e6-08dbecfa9e80
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Ud3y6U8WieJd6Swhui2fgpOACIp0o82vVK7rL8/xX5TfH2rHfD9EvzQpzokIMQ3GXO4T/Kt+RAXqaWrG7dPJcUuagO11W7TWgFI2VsKWoTdmhZoM2/WHzj3SP/89k/icSeHRfXb5SLtWdT2jG6lzIQ7uw0YX1F+kWqt87ngAjuHebNQbSPLnjk0AVBCGmIuYRlgITwbVGijhC1jqOplFaBUoEUaC4/ZBlitBTelchje7MT25beTMkNe7zb2SJujpcmS673nicVo4yLEq/O1wnk9U2O7s/8/FhebJ75R5bS9Dawio0PxvkXWv/nGViFh/tvCHBcOKoYPDx6d2kiwasBGojNP2kczzpfRdnresWBpFzpjeCmiNZ7lEuKnY4IRLZxS2IUHGh3TWHh0z2gMQqGLE/9LkEmZSmxPItqB4Vu8kVk8AS1VeMdICxMtTUagBnZjou5SY56G+pSjVQgmU7L6rfkI+KFVGo05lsn1WGnE536P6wzw35FmL1Sn7IyJcdHA17r9l5G3ngx4xyUt5JumI+tc/HBELXpp0qskGosrCHYWAFimFUiI+n3V9try3OyhhJqNrAZXrTOMOtammTdvsyubO/lZSIjUQ6HfQKikRcNim7hKzd9uXvNWfR4XzcKyHMcVLv3exO+jZOInJZshd1GuaumuWvhe5SstUHS8Ob3xbIi9iwZMxkAfSTayu9lWiF07CCxA9sNiBvCyu/xSf8mmHPb+6BGx54shOEW0EcW8pOhnQFXrnj+q5El8CRsHzWb1GhFWJk/VvHOFo2g==
+X-Microsoft-Antispam-Message-Info: rwQXuTpgOP3Ytmc42zo7LjyuWEg1kpMw8+Ev1zZhUcNfy75OU9Vea+nG53Muj161ZR0KOl+QkfZhxQkaFW3o6Em+26Dhzm2CxCq4IkdV9iK2u2s6/tfvG0FdzQ60Jo0bEdtmNUK4tI0OpkuWHvnAS8Hvw/sDh/XA9vULGX893vGlouosZ5ze0Emd7H+8krcviFzoSh4YBV2HZ0QYarQzthswZ3IM8PvgeThzGDybd0gNnKADgzeSSO3twdAu7+ChZvvUaMCsPbNtgbz+YOvDBJDv4NJ+bRSDQaCwBYZ5F1KRlUV4UjplmlxSdQTUk2sjjq40lF9IjPOkArhl6IulKfulY9jOc++Mh3IomJlwTB4X8kB2/W7ue3c3H68Ch1MRVM6JgIQm+A9blHNNvJJalhiYDA0wTMJHQzMf85jvbJy7b0CEjLGHagg2uWvucSoS5lYZIcFnaZX3DRuhzhqtXAhB2duZbiZOZ1bOmZDg61a/IaTnERF3V1LL8twb5YjMnyNEm3w7CAIa3UnL2FRW2LqNGq5y0XKrBOmYx68hZvf7jn+IOzK3E7Cr2hlC7+S6+ZwTFeDqTO1rnLiAJNf04DXBpfTKBXgz78e63v8pEr5zbv0+wNp23mSoKOE9d2Q2sSXUzc3jtiPeJDc1xyYlfdb+IpNvfq5S3FA51qGAEdQANdTr7bslvvO8ca8WYhJFUxuWjPIXSxmloVxklwKvifyIWyhA13o+qYn36rJO+RlbzyNoDnOvAbmdkCRkVfoeL9I9jIFZ5krrZ7XJ20nUbKwzUI+rrGKGTtuUHK+9XyZ+66THWf6ixymkk+6COkaDjoz+pDF67skhwMt9xDZjmg==
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(346002)(39860400002)(136003)(396003)(376002)(230922051799003)(1800799012)(186009)(64100799003)(451199024)(82310400011)(46966006)(40470700004)(36840700001)(336012)(426003)(83380400001)(81166007)(356005)(82740400003)(47076005)(40460700003)(36860700001)(70206006)(54906003)(70586007)(316002)(6916009)(8676002)(4326008)(8936002)(41300700001)(5660300002)(4744005)(2906002)(1076003)(36756003)(2616005)(40480700001)(26005)(6666004)(478600001)(36900700001);
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(396003)(39860400002)(136003)(376002)(346002)(230922051799003)(451199024)(186009)(82310400011)(64100799003)(1800799012)(40470700004)(36840700001)(46966006)(40460700003)(316002)(6916009)(54906003)(83380400001)(47076005)(36860700001)(4326008)(8676002)(8936002)(5660300002)(478600001)(82740400003)(966005)(36756003)(40480700001)(41300700001)(2616005)(356005)(81166007)(6666004)(1076003)(70586007)(70206006)(426003)(336012)(2906002)(26005)(170073001)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2023 14:35:23.7136 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b1ef4d51-30bd-4ceb-d965-08dbecfa97ec
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2023 14:35:34.7758 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e957f861-2451-463b-09e6-08dbecfa9e80
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003442.namprd04.prod.outlook.com
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002636A.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB9002
-Received-SPF: softfail client-ip=2a01:111:f400:7eae::600;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB8600
+Received-SPF: softfail client-ip=2a01:111:f400:7eaa::629;
  envelope-from=Frederic.Konrad@amd.com;
- helo=NAM11-BN8-obe.outbound.protection.outlook.com
+ helo=NAM11-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,46 +148,98 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xo1SqFDTSyXb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NtZzk9jb7elO
 
-Hi,
+It seems that the url changed a bit, and it triggers an error.  Fix the URLs so
+the documentation can be reached again.
 
-Those are various simple fixes for ZynqMP:
-  * 1: fixes a possible out of bound access in the SPI model.
-  * 2: is a trivial fix for documentation url.
-  * 3: is a log guest error fix for the CSU DMA.
+Signed-off-by: Frederic Konrad <fkonrad@amd.com>
+---
+ hw/dma/xlnx_csu_dma.c                      | 2 +-
+ include/hw/misc/xlnx-versal-cframe-reg.h   | 2 +-
+ include/hw/misc/xlnx-versal-cfu.h          | 2 +-
+ include/hw/misc/xlnx-versal-pmc-iou-slcr.h | 2 +-
+ include/hw/ssi/xlnx-versal-ospi.h          | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-Best Regards,
-Fred
-
-Frederic Konrad (3):
-  hw/ssi/xilinx_spips: fix an out of bound access
-  fix some url for amd / xilinx models
-  hw/dma/xlnx_csu_dma: don't throw guest errors when stopping the SRC
-    DMA
-
- hw/dma/xlnx_csu_dma.c                      | 14 +++++++++-----
- hw/ssi/xilinx_spips.c                      |  7 ++++++-
- include/hw/misc/xlnx-versal-cframe-reg.h   |  2 +-
- include/hw/misc/xlnx-versal-cfu.h          |  2 +-
- include/hw/misc/xlnx-versal-pmc-iou-slcr.h |  2 +-
- include/hw/ssi/xilinx_spips.h              |  3 +++
- include/hw/ssi/xlnx-versal-ospi.h          |  2 +-
- 7 files changed, 22 insertions(+), 10 deletions(-)
-
+diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+index e89089821a..531013f35a 100644
+--- a/hw/dma/xlnx_csu_dma.c
++++ b/hw/dma/xlnx_csu_dma.c
+@@ -33,7 +33,7 @@
+ 
+ /*
+  * Ref: UG1087 (v1.7) February 8, 2019
+- * https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
++ * https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers
+  * CSUDMA Module section
+  */
+ REG32(ADDR, 0x0)
+diff --git a/include/hw/misc/xlnx-versal-cframe-reg.h b/include/hw/misc/xlnx-versal-cframe-reg.h
+index a14fbd7fe4..0091505246 100644
+--- a/include/hw/misc/xlnx-versal-cframe-reg.h
++++ b/include/hw/misc/xlnx-versal-cframe-reg.h
+@@ -12,7 +12,7 @@
+  *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
+  *
+  * [2] Versal ACAP Register Reference,
+- *     https://www.xilinx.com/htmldocs/registers/am012/am012-versal-register-reference.html
++ *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/CFRAME_REG-Module
+  */
+ #ifndef HW_MISC_XLNX_VERSAL_CFRAME_REG_H
+ #define HW_MISC_XLNX_VERSAL_CFRAME_REG_H
+diff --git a/include/hw/misc/xlnx-versal-cfu.h b/include/hw/misc/xlnx-versal-cfu.h
+index 86fb841053..be62bab8c8 100644
+--- a/include/hw/misc/xlnx-versal-cfu.h
++++ b/include/hw/misc/xlnx-versal-cfu.h
+@@ -12,7 +12,7 @@
+  *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
+  *
+  * [2] Versal ACAP Register Reference,
+- *     https://www.xilinx.com/htmldocs/registers/am012/am012-versal-register-reference.html
++ *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/CFU_CSR-Module
+  */
+ #ifndef HW_MISC_XLNX_VERSAL_CFU_APB_H
+ #define HW_MISC_XLNX_VERSAL_CFU_APB_H
+diff --git a/include/hw/misc/xlnx-versal-pmc-iou-slcr.h b/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
+index f7d24c93c4..0c4a4fd66d 100644
+--- a/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
++++ b/include/hw/misc/xlnx-versal-pmc-iou-slcr.h
+@@ -34,7 +34,7 @@
+  *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
+  *
+  * [2] Versal ACAP Register Reference,
+- *     https://www.xilinx.com/html_docs/registers/am012/am012-versal-register-reference.html#mod___pmc_iop_slcr.html
++ *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/PMC_IOP_SLCR-Module
+  *
+  * QEMU interface:
+  * + sysbus MMIO region 0: MemoryRegion for the device's registers
+diff --git a/include/hw/ssi/xlnx-versal-ospi.h b/include/hw/ssi/xlnx-versal-ospi.h
+index 5d131d351d..4ac975aa2f 100644
+--- a/include/hw/ssi/xlnx-versal-ospi.h
++++ b/include/hw/ssi/xlnx-versal-ospi.h
+@@ -34,7 +34,7 @@
+  *     https://www.xilinx.com/support/documentation/architecture-manuals/am011-versal-acap-trm.pdf
+  *
+  * [2] Versal ACAP Register Reference,
+- *     https://www.xilinx.com/html_docs/registers/am012/am012-versal-register-reference.html#mod___ospi.html
++ *     https://docs.xilinx.com/r/en-US/am012-versal-register-reference/OSPI-Module
+  *
+  *
+  * QEMU interface:
 -- 
 2.25.1
 

@@ -1,116 +1,156 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp613615ejj;
-        Thu, 23 Nov 2023 11:15:13 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHvq1FR2+r21KjwDUBfIW4a6FnrwO0tu/q05XZx8l8WLzG7pAMntMgDLs6BVApvjoCY48jn
-X-Received: by 2002:ad4:4d86:0:b0:67a:fde:271a with SMTP id cv6-20020ad44d86000000b0067a0fde271amr503573qvb.40.1700766913752;
-        Thu, 23 Nov 2023 11:15:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1700766913; cv=none;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp992967ejj;
+        Fri, 24 Nov 2023 00:54:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH/VTaHZWbiC9MiAD0JBnpTfB3rb6oBeDSq1wg6nWohAA2p/9HiZwa0stDFsdoCBYfqXfbl
+X-Received: by 2002:a05:6214:30f:b0:672:ab2:d9ec with SMTP id i15-20020a056214030f00b006720ab2d9ecmr2219918qvu.28.1700816070285;
+        Fri, 24 Nov 2023 00:54:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700816070; cv=none;
         d=google.com; s=arc-20160816;
-        b=zlsixMOfQi+ks9854hkuesddmASX7LYAiY7kcmmvfRiicjDhgCe02HIsuWCogv63eU
-         G0wcRG8lhXedhXMKdn6G9ZWTmC0bt6DrXM1aoVlIdaPOtQ6ZjFFpb0rvuJsJb20GIFle
-         fEj0SvYOFM6VjmEfR6CyhcBrTg1evcI4YGnS3NJu4ZNq1kmG8KOcvR/3Dxem/NUlvt0p
-         MQr6fqmONPcEE7ynSuuWBAcPQo7vKzgB+gXNrebpUvkVRe7h3q34ZAL1nJ4XWFL7Yg5s
-         3efQ3Uz9mIxxIj3RzAYhtPZ+SVaRyoynh9dXMNSOZoIGa8d7qYbrUdvFejUxxaKr3cr+
-         6AIA==
+        b=GN7Zgpj0SRDBVS+g4bsQhpeWEZ1cW8e89uiQ/w5Qj+xEbGsZiWDgSLlL2xGNu4mXBn
+         dNWd9DEWnT41UHxA/IOiTuhdk5brgB1hpHX08hl0hlkQyP35j0Qkb53x2iTEokKqKoft
+         NeadcCQ7l7Hz6CItW0D39DAr05pt+J1fjdOnngT/NZZna86RC4t8Br6CNAOWAPe2vgd5
+         EWMBFEL9r6mDKeF1BBrtI3Ic8fbkn3lPzLB0od/KzVOnJuWranewb5KcKvM56AGCdQyr
+         iD32yq1weCi25+5mkLD6iANR2L6OErq02A+xm+U/OFP1tuDhpg99DgRasMKAvau6RDUJ
+         54Rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=yAnPvEHxfnwIrQ4YjZXX0tgE5jPkVwCpov/iR2R1Eg0=;
-        fh=UMlouvVl3Ph4Ne7UvGTvosqVcNxKyKMHDiGsZppDwks=;
-        b=sOIGtKeIe/hDh+ajgEZpdgQvLEIm6E3ixbQmrHH+OgkCTQkR/DwBFoxJa60xTEbOqZ
-         Q36BmM/EFG7RC1/DL4pVw7YQcMDkTM4dJlu3uGHhXwNyK3PvDQvti9wNEmvT3IXzwpxI
-         Bk1fuMmrM7u3MLtPltt4prhnaQHxnrzI2BR2prlP7bykz4mNT/aDHlUcsF80Fd9IiBjk
-         yB8h0B8RppSQXivR/kELwm+jpIXBePfoIWKuc2J+kSzOLnpXR387MUFTGQfP85hqU1G8
-         qg/Ga1UQPCHLD5P4rSvMH4QrQDK5vHDDwLJhQkqG+jl2TV/aajnkM6oFzRjJXwzxM+PS
-         LOww==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
+         :dkim-signature;
+        bh=SCQCF58NO4iW/xec60yY9zHWpISygL31KuLq2lvcDgs=;
+        fh=oVErwpH31SbS3bDaocpAM8nD5IDVG3HOKLBcNcYbyrY=;
+        b=0ZdID+8QoPxmNH/ZRgHTpzKTM7mxDclAvHp2/Z+uVnbH2ugMWku51ZwoyDnNdGoizH
+         zxp8l3Tt0CDXydFDY7bxq4Iq7N3hezgHJbe42LZmn1iaPVIeggZX7y+Z3gIWeYrAsBpP
+         7N4whm0C/YY7fXRxCXKuXidzEkUWfTGH3R4H1M8ZZpSulNZX9daJDW0tFd5Kg66DQGdL
+         JFnlWz11z6DICXBLOOsKfSk5S+3V2RiQFHROWA6WB2yrAaHzp9OAzkvKiH6fVo+jnPjU
+         43nubtyi+YAL8R6iGLePd6Sk80UIqFNy6zC/t1Ek5lDfTdthzVQnhbuLVUVYbciJMvBJ
+         ZObQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FNlH4TkC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zr5k5Dgc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7-20020a0cc347000000b006582d848419si1720911qvi.246.2023.11.23.11.15.13
+        by mx.google.com with ESMTPS id c9-20020ad44309000000b006780052a8ccsi2796753qvs.86.2023.11.24.00.54.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Nov 2023 11:15:13 -0800 (PST)
+        Fri, 24 Nov 2023 00:54:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FNlH4TkC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zr5k5Dgc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r6FAF-00081o-P6; Thu, 23 Nov 2023 14:15:04 -0500
+	id 1r6RwI-0000ZZ-Nr; Fri, 24 Nov 2023 03:53:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6FAD-000819-Ds
- for qemu-arm@nongnu.org; Thu, 23 Nov 2023 14:15:01 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6FAB-0002kI-CB
- for qemu-arm@nongnu.org; Thu, 23 Nov 2023 14:15:00 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4079ed65582so7818375e9.1
- for <qemu-arm@nongnu.org>; Thu, 23 Nov 2023 11:14:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700766896; x=1701371696; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=yAnPvEHxfnwIrQ4YjZXX0tgE5jPkVwCpov/iR2R1Eg0=;
- b=FNlH4TkCH/g7DlATiNIjuBQDYiYkDGiwibXCJysfUANbHXtQxdj0/YeF7LOOsveSs6
- acuNXQ4/RcKxE+d6CK2Y9WuFO0RM28XXH94TG90dLJI3sHEtJnT+Uy26mgKB9mY6T0gY
- cv1+bCxzC7W0EQFZrAMmX/nA9U1wh1B7oACsrKr2cwWMLmadmIfPOk1jIpvO8wwgytJo
- 8PKzb9C/Kq/beJRorlZkzBPrOYWUjVVkAND6tLSFQwPYY5oN8d9QZ8R+a02hDcTK6z+s
- xXKG0/VUAtfMJ9DhmZEz1aog9n+VT9zyxVoQbLcw5Iaew1o0zgpGd4CQc79N1rnBn3JH
- sKJA==
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1r6RwG-0000ZC-L9
+ for qemu-arm@nongnu.org; Fri, 24 Nov 2023 03:53:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1r6RwC-00069i-Tt
+ for qemu-arm@nongnu.org; Fri, 24 Nov 2023 03:53:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1700816003;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SCQCF58NO4iW/xec60yY9zHWpISygL31KuLq2lvcDgs=;
+ b=Zr5k5DgcaChByom3MT+lsxQ4JnlGL2nyHyAr2m5WA/F/svS8rUINFztx2sKTSlLsU3y4wp
+ h5lO++S4X5YN3dMl+ArqWBKQCsahs6gfaooRK56/YHM8+5ND7ln7q1W7tl1PpXm01MrEaS
+ RyUQssObJ02w8dV4kre7P2HUHQyq91c=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-421-XH3_sS18MiK18I0OF-M5jg-1; Fri, 24 Nov 2023 03:53:21 -0500
+X-MC-Unique: XH3_sS18MiK18I0OF-M5jg-1
+Received: by mail-pl1-f198.google.com with SMTP id
+ d9443c01a7336-1cf8890752dso18782755ad.0
+ for <qemu-arm@nongnu.org>; Fri, 24 Nov 2023 00:53:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700766896; x=1701371696;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yAnPvEHxfnwIrQ4YjZXX0tgE5jPkVwCpov/iR2R1Eg0=;
- b=hjZ0ppZNWKkqX/xS7WHvsN5sSzNhpMjAOy0g5GMeOKv12Yel7Xh37vSL0d6HZ5bW8M
- jTMeQ63O0dVDchtihLXqhnCaHkQdj+aAz8RDexisU8hc5LHgcATRlJ9TbY2aeQxs2rB1
- oGMphQ0zuOTR1+Pw9EtzG3MiXIdcMBhojCVQMkfCkAEa8urnmX/WP5rA72X+OcHvCtsv
- NhF8GZRrjRWkgbD0N1WrubsZ6F4yv/auEEWeNCX9OrFwDDA2xewr8msFEJlfLoto2e/I
- /zMgOjNAo+2gVQLS4cp/7XdPnPFIPbB+QxRH26THOHYoFdJrFwmkTwQ/MdQePaR5e8vM
- H7sw==
-X-Gm-Message-State: AOJu0Yz8sOAmBrNuLt29SKEi6/5zgYdVkWuTMkAzBz2Mybpn3B8iqV/B
- 9mQuOkmR1UqnP3/OBH4lO97EyVqZzZUn9i+kUH8=
-X-Received: by 2002:a05:600c:4690:b0:406:872d:7725 with SMTP id
- p16-20020a05600c469000b00406872d7725mr427029wmo.1.1700766896336; 
- Thu, 23 Nov 2023 11:14:56 -0800 (PST)
-Received: from [192.168.69.100] ([176.176.165.237])
+ d=1e100.net; s=20230601; t=1700816001; x=1701420801;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=QpZLoA1Yp3BpSIq7Vg0mNJhT6k5y3Avb0lGT7TS3uLk=;
+ b=h4HWalT6aoJNHJ/9V8eihmsgq8HIq78+e0NoZemAx8EIbQHacolXHG4hs6a5zOg2mP
+ yWxWk40v59hhbIN2nlTBdEWDxcyU7jroGJs2gOH4QGa6lfGw7xLsyCiVVRtTipFqgd7F
+ SJxtnEPxSYO70EbUjZ1Sz/VOtqAyx0OU90A8dKi6pnfdjYM0T1CdQ7owmin94N2udCmh
+ DrOXAeu4OveOzAhIbaRNsA1ccX02sRD0bxLDHWKKizOXrEwhZztkZI0878lWJ5zpyt9T
+ +Idmb2GZURY5u2ML3t2fAie9JernP7pzWFa7LQVpBa/924HCJ3VzwGyl/xdzOVwz1MTm
+ N08Q==
+X-Gm-Message-State: AOJu0YyPS4UHR54Sq13qNhwJUSm0JPYHmFUtsRyL0HpDFS1102XxaNuD
+ BxUyOaWjlmpdu8ISQzoQJ9rah3mttZk4MilEQ/nSIMBbUomd9oyn4sXE4QI7DHE2E7L7L41SQ1y
+ K3U5gN5VdASd4
+X-Received: by 2002:a17:902:e84f:b0:1cc:4a47:1fe5 with SMTP id
+ t15-20020a170902e84f00b001cc4a471fe5mr2358073plg.59.1700816000611; 
+ Fri, 24 Nov 2023 00:53:20 -0800 (PST)
+X-Received: by 2002:a17:902:e84f:b0:1cc:4a47:1fe5 with SMTP id
+ t15-20020a170902e84f00b001cc4a471fe5mr2358036plg.59.1700816000046; 
+ Fri, 24 Nov 2023 00:53:20 -0800 (PST)
+Received: from smtpclient.apple ([115.96.136.90])
  by smtp.gmail.com with ESMTPSA id
- n8-20020a05600c3b8800b0040b398f0585sm330965wms.9.2023.11.23.11.14.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Nov 2023 11:14:55 -0800 (PST)
-Message-ID: <00133b79-fd3b-4b5c-96a5-55e94de0bf46@linaro.org>
-Date: Thu, 23 Nov 2023 20:14:54 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.0 00/21] target/arm: kvm cleanups
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20231123044219.896776-1-richard.henderson@linaro.org>
- <cb8808dd-00bd-4569-be15-9d8f2e20b1f1@linaro.org>
-In-Reply-To: <cb8808dd-00bd-4569-be15-9d8f2e20b1f1@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ h7-20020a170902748700b001c5dea67c26sm2656419pll.233.2023.11.24.00.53.10
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 24 Nov 2023 00:53:19 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.200.91.1.1\))
+Subject: Re: [PATCH-for-9.0 v2 5/8] hw: Prefer qdev_prop_set_bit over
+ object_property_set_bool for QDev
+From: Ani Sinha <anisinha@redhat.com>
+In-Reply-To: <20231123143813.42632-6-philmd@linaro.org>
+Date: Fri, 24 Nov 2023 14:22:59 +0530
+Cc: Markus Armbruster <armbru@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-ppc@nongnu.org, Hao Wu <wuhaotsh@google.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>
+Message-Id: <40C51DEA-D556-4B97-A142-E49A32F97BF2@redhat.com>
+References: <20231123143813.42632-1-philmd@linaro.org>
+ <20231123143813.42632-6-philmd@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: Apple Mail (2.3774.200.91.1.1)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.058,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,26 +165,754 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6mCX5Wea/2Vv
+X-TUID: uTPWPFF2HjMj
 
-On 23/11/23 18:40, Philippe Mathieu-Daudé wrote:
-> On 23/11/23 05:41, Richard Henderson wrote:
->> This is primarily concerned with merging kvm64.c with kvm.c
->> and then unexporting everything that is not required outside.
-> 
-> 
->>   target/arm/kvm_arm.h   |  203 ------
-> 
-> Unrelated to this series goal, but I notice half of the API takes
-> CPUState, the other ARMCPU...
-> 
-> $ git grep -F 'CPUState *' target/arm/kvm_arm.h | wc -l
->        16
-> $ git grep -F 'ARMCPU *' target/arm/kvm_arm.h | wc -l
->        14
-> 
-> Since this is ARM specific, I'd expect it always take ARMCPU, and
-> call the generic KVM API casting with the CPU() macro.
 
-API clarification done here:
-https://lore.kernel.org/qemu-devel/20231123183518.64569-1-philmd@linaro.org/
+
+> On 23-Nov-2023, at 8:08=E2=80=AFPM, Philippe Mathieu-Daud=C3=A9 <philmd@l=
+inaro.org> wrote:
+>=20
+> The QOM API is lower level than the QDev one. When an instance is
+> QDev and setting the property can not fail (using &error_abort),
+> prefer qdev_prop_set_bit() over object_property_set_bool().
+>=20
+> Mechanical transformation using the following coccinelle patch:
+>=20
+>  @@
+>  expression o, p, v;
+>  @@
+>  -            object_property_set_bool(OBJECT(o), p, v, &error_abort)
+>  +            qdev_prop_set_bit(DEVICE(o), p, v)
+>  @@@@
+>  -            object_property_set_bool(o, p, v, &error_abort)
+>  +            qdev_prop_set_bit(DEVICE(o), p, v)
+>=20
+> manually adding the missing "hw/qdev-properties.h" header.
+>=20
+> In hw/arm/armsse.c we use the available 'cpudev' instead of 'cpuobj'.
+>=20
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+> hw/acpi/cpu_hotplug.c               |  7 +++----
+> hw/acpi/ich9.c                      |  4 ++--
+> hw/acpi/piix4.c                     |  4 ++--
+
+For the acpi bits,
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
+
+> hw/arm/armsse.c                     |  3 +--
+> hw/arm/armv7m.c                     |  3 +--
+> hw/arm/aspeed_ast2400.c             |  3 +--
+> hw/arm/aspeed_ast2600.c             |  9 +++------
+> hw/arm/bcm2835_peripherals.c        |  3 +--
+> hw/arm/bcm2836.c                    |  4 ++--
+> hw/arm/boot.c                       |  4 ++--
+> hw/arm/fsl-imx25.c                  |  3 +--
+> hw/arm/fsl-imx31.c                  |  3 +--
+> hw/arm/fsl-imx6.c                   | 12 ++++--------
+> hw/arm/fsl-imx6ul.c                 |  8 ++++----
+> hw/arm/fsl-imx7.c                   | 10 ++++------
+> hw/arm/npcm7xx.c                    |  9 +++------
+> hw/arm/xlnx-versal.c                |  9 +++------
+> hw/arm/xlnx-zynqmp.c                |  9 +++------
+> hw/core/bus.c                       |  2 +-
+> hw/core/qdev.c                      |  2 +-
+> hw/i386/pc_piix.c                   | 19 ++++++-------------
+> hw/microblaze/petalogix_ml605_mmu.c |  5 ++---
+> hw/microblaze/xlnx-zynqmp-pmu.c     | 18 +++++++-----------
+> hw/mips/cps.c                       |  3 +--
+> hw/ppc/e500.c                       |  3 +--
+> hw/ppc/spapr_pci.c                  |  3 +--
+> hw/rx/rx-gdbsim.c                   |  4 ++--
+> hw/sparc/sun4m.c                    |  3 +--
+> 28 files changed, 64 insertions(+), 105 deletions(-)
+>=20
+> diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
+> index 634bbecb31..1338c037b5 100644
+> --- a/hw/acpi/cpu_hotplug.c
+> +++ b/hw/acpi/cpu_hotplug.c
+> @@ -12,6 +12,7 @@
+> #include "qemu/osdep.h"
+> #include "hw/acpi/cpu_hotplug.h"
+> #include "qapi/error.h"
+> +#include "hw/qdev-properties.h"
+> #include "hw/core/cpu.h"
+> #include "hw/i386/pc.h"
+> #include "hw/pci/pci.h"
+> @@ -41,8 +42,7 @@ static void cpu_status_write(void *opaque, hwaddr addr,=
+ uint64_t data,
+>      */
+>     if (addr =3D=3D 0 && data =3D=3D 0) {
+>         AcpiCpuHotplug *cpus =3D opaque;
+> -        object_property_set_bool(cpus->device, "cpu-hotplug-legacy", fal=
+se,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(cpus->device), "cpu-hotplug-legacy", fa=
+lse);
+>     }
+> }
+>=20
+> @@ -66,8 +66,7 @@ static void acpi_set_cpu_present_bit(AcpiCpuHotplug *g,=
+ CPUState *cpu)
+>=20
+>     cpu_id =3D k->get_arch_id(cpu);
+>     if ((cpu_id / 8) >=3D ACPI_GPE_PROC_LEN) {
+> -        object_property_set_bool(g->device, "cpu-hotplug-legacy", false,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(g->device), "cpu-hotplug-legacy", false=
+);
+>         return;
+>     }
+>=20
+> diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+> index 25e2c7243e..64b00673fe 100644
+> --- a/hw/acpi/ich9.c
+> +++ b/hw/acpi/ich9.c
+> @@ -30,6 +30,7 @@
+> #include "hw/pci/pci.h"
+> #include "migration/vmstate.h"
+> #include "qemu/timer.h"
+> +#include "hw/qdev-properties.h"
+> #include "hw/core/cpu.h"
+> #include "sysemu/reset.h"
+> #include "sysemu/runstate.h"
+> @@ -197,8 +198,7 @@ static bool vmstate_test_use_cpuhp(void *opaque)
+> static int vmstate_cpuhp_pre_load(void *opaque)
+> {
+>     ICH9LPCPMRegs *s =3D opaque;
+> -    Object *obj =3D OBJECT(s->gpe_cpu.device);
+> -    object_property_set_bool(obj, "cpu-hotplug-legacy", false, &error_ab=
+ort);
+> +    qdev_prop_set_bit(DEVICE(s->gpe_cpu.device), "cpu-hotplug-legacy", f=
+alse);
+>     return 0;
+> }
+>=20
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index dd523d2e4c..215929ac6a 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -203,8 +203,8 @@ static bool vmstate_test_use_cpuhp(void *opaque)
+>=20
+> static int vmstate_cpuhp_pre_load(void *opaque)
+> {
+> -    Object *obj =3D OBJECT(opaque);
+> -    object_property_set_bool(obj, "cpu-hotplug-legacy", false, &error_ab=
+ort);
+> +    DeviceState *dev =3D DEVICE(opaque);
+> +    qdev_prop_set_bit(dev, "cpu-hotplug-legacy", false);
+>     return 0;
+> }
+>=20
+> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+> index 4672df180f..546b15e658 100644
+> --- a/hw/arm/armsse.c
+> +++ b/hw/arm/armsse.c
+> @@ -1022,8 +1022,7 @@ static void armsse_realize(DeviceState *dev, Error =
+**errp)
+>          * later if necessary.
+>          */
+>         if (extract32(info->cpuwait_rst, i, 1)) {
+> -            object_property_set_bool(cpuobj, "start-powered-off", true,
+> -                                     &error_abort);
+> +            qdev_prop_set_bit(cpudev, "start-powered-off", true);
+>         }
+>         if (!s->cpu_fpu[i]) {
+>             if (!object_property_set_bool(cpuobj, "vfp", false, errp)) {
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index cbaebe9bf8..3a6d72b0f3 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -328,8 +328,7 @@ static void armv7m_realize(DeviceState *dev, Error **=
+errp)
+>             return;
+>         }
+>     }
+> -    object_property_set_bool(OBJECT(s->cpu), "start-powered-off",
+> -                             s->start_powered_off, &error_abort);
+> +    qdev_prop_set_bit(DEVICE(s->cpu), "start-powered-off", s->start_powe=
+red_off);
+>=20
+>     /*
+>      * Real M-profile hardware can be configured with a different number =
+of
+> diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+> index a4334c81b8..4a247bfcbb 100644
+> --- a/hw/arm/aspeed_ast2400.c
+> +++ b/hw/arm/aspeed_ast2400.c
+> @@ -420,8 +420,7 @@ static void aspeed_ast2400_soc_realize(DeviceState *d=
+ev, Error **errp)
+>=20
+>     /* Net */
+>     for (i =3D 0; i < sc->macs_num; i++) {
+> -        object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", tru=
+e,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->ftgmac100[i]), "aspeed", true);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->ftgmac100[i]), errp)) {
+>             return;
+>         }
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index b965fbab5e..5ec8ad73cd 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -317,10 +317,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
+dev, Error **errp)
+>=20
+>         object_property_set_int(OBJECT(&a->cpu[i]), "cntfrq", 1125000000,
+>                                 &error_abort);
+> -        object_property_set_bool(OBJECT(&a->cpu[i]), "neon", false,
+> -                                &error_abort);
+> -        object_property_set_bool(OBJECT(&a->cpu[i]), "vfp-d32", false,
+> -                                &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&a->cpu[i]), "neon", false);
+> +        qdev_prop_set_bit(DEVICE(&a->cpu[i]), "vfp-d32", false);
+>         object_property_set_link(OBJECT(&a->cpu[i]), "memory",
+>                                  OBJECT(s->memory), &error_abort);
+>=20
+> @@ -500,8 +498,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
+ev, Error **errp)
+>=20
+>     /* Net */
+>     for (i =3D 0; i < sc->macs_num; i++) {
+> -        object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", tru=
+e,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->ftgmac100[i]), "aspeed", true);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->ftgmac100[i]), errp)) {
+>             return;
+>         }
+> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+> index 0233038b95..c07ca8817b 100644
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -303,8 +303,7 @@ static void bcm2835_peripherals_realize(DeviceState *=
+dev, Error **errp)
+>                              &error_abort);
+>     object_property_set_uint(OBJECT(&s->sdhci), "capareg",
+>                              BCM2835_SDHC_CAPAREG, &error_abort);
+> -    object_property_set_bool(OBJECT(&s->sdhci), "pending-insert-quirk", =
+true,
+> -                             &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->sdhci), "pending-insert-quirk", true);
+>     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdhci), errp)) {
+>         return;
+>     }
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index b0674a22a6..1fdc3be6bb 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -135,8 +135,8 @@ static void bcm2836_realize(DeviceState *dev, Error *=
+*errp)
+>                                 bc->peri_base, &error_abort);
+>=20
+>         /* start powered off if not enabled */
+> -        object_property_set_bool(OBJECT(&s->cpu[n].core), "start-powered=
+-off",
+> -                                 n >=3D s->enabled_cpus, &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->cpu[n].core), "start-powered-off",
+> +                          n >=3D s->enabled_cpus);
+>=20
+>         if (!qdev_realize(DEVICE(&s->cpu[n].core), NULL, errp)) {
+>             return;
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 84ea6a807a..ebed887e5e 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -12,6 +12,7 @@
+> #include "qemu/error-report.h"
+> #include "qapi/error.h"
+> #include <libfdt.h>
+> +#include "hw/qdev-properties.h"
+> #include "hw/arm/boot.h"
+> #include "hw/arm/linux-boot-if.h"
+> #include "sysemu/kvm.h"
+> @@ -1287,8 +1288,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms,=
+ struct arm_boot_info *info)
+>              * CPU.
+>              */
+>             if (cs !=3D first_cpu) {
+> -                object_property_set_bool(cpuobj, "start-powered-off", tr=
+ue,
+> -                                         &error_abort);
+> +                qdev_prop_set_bit(DEVICE(cpuobj), "start-powered-off", t=
+rue);
+>             }
+>         }
+>     }
+> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+> index 9aabbf7f58..fc6a7c8a8b 100644
+> --- a/hw/arm/fsl-imx25.c
+> +++ b/hw/arm/fsl-imx25.c
+> @@ -272,8 +272,7 @@ static void fsl_imx25_realize(DeviceState *dev, Error=
+ **errp)
+>     }
+>=20
+>     /* Watchdog */
+> -    object_property_set_bool(OBJECT(&s->wdt), "pretimeout-support", true=
+,
+> -                             &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->wdt), "pretimeout-support", true);
+>     sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_abort);
+>     sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, FSL_IMX25_WDT_ADDR);
+>     sysbus_connect_irq(SYS_BUS_DEVICE(&s->wdt), 0,
+> diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
+> index def27bb913..71f50ca802 100644
+> --- a/hw/arm/fsl-imx31.c
+> +++ b/hw/arm/fsl-imx31.c
+> @@ -171,8 +171,7 @@ static void fsl_imx31_realize(DeviceState *dev, Error=
+ **errp)
+>             { FSL_IMX31_GPIO3_ADDR, FSL_IMX31_GPIO3_IRQ }
+>         };
+>=20
+> -        object_property_set_bool(OBJECT(&s->gpio[i]), "has-edge-sel", fa=
+lse,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->gpio[i]), "has-edge-sel", false);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio[i]), errp)) {
+>             return;
+>         }
+> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+> index 7dc42cbfe6..17c399a37e 100644
+> --- a/hw/arm/fsl-imx6.c
+> +++ b/hw/arm/fsl-imx6.c
+> @@ -128,8 +128,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error =
+**errp)
+>=20
+>         /* All CPU but CPU 0 start in power off mode */
+>         if (i) {
+> -            object_property_set_bool(OBJECT(&s->cpu[i]), "start-powered-=
+off",
+> -                                     true, &error_abort);
+> +            qdev_prop_set_bit(DEVICE(&s->cpu[i]), "start-powered-off", t=
+rue);
+>         }
+>=20
+>         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+> @@ -288,10 +287,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error=
+ **errp)
+>             },
+>         };
+>=20
+> -        object_property_set_bool(OBJECT(&s->gpio[i]), "has-edge-sel", tr=
+ue,
+> -                                 &error_abort);
+> -        object_property_set_bool(OBJECT(&s->gpio[i]), "has-upper-pin-irq=
+",
+> -                                 true, &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->gpio[i]), "has-edge-sel", true);
+> +        qdev_prop_set_bit(DEVICE(&s->gpio[i]), "has-upper-pin-irq", true=
+);
+>         if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio[i]), errp)) {
+>             return;
+>         }
+> @@ -412,8 +409,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error =
+**errp)
+>             FSL_IMX6_WDOG2_IRQ,
+>         };
+>=20
+> -        object_property_set_bool(OBJECT(&s->wdt[i]), "pretimeout-support=
+",
+> -                                 true, &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->wdt[i]), "pretimeout-support", true=
+);
+>         sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), &error_abort);
+>=20
+>         sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0, FSL_IMX6_WDOGn_ADD=
+R[i]);
+> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> index e37b69a5e1..4f4f2a6f41 100644
+> --- a/hw/arm/fsl-imx6ul.c
+> +++ b/hw/arm/fsl-imx6ul.c
+> @@ -410,8 +410,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Erro=
+r **errp)
+>      * and we have to set all properties before calling sysbus_realize().
+>      */
+>     for (i =3D 0; i < FSL_IMX6UL_NUM_ETHS; i++) {
+> -        object_property_set_bool(OBJECT(&s->eth[i]), "phy-connected",
+> -                                 s->phy_connected[i], &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->eth[i]), "phy-connected",
+> +                          s->phy_connected[i]);
+>         /*
+>          * If the MDIO bus on this controller is not connected, assume th=
+e
+>          * other controller provides support for it.
+> @@ -542,8 +542,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Erro=
+r **errp)
+>             FSL_IMX6UL_WDOG3_IRQ,
+>         };
+>=20
+> -        object_property_set_bool(OBJECT(&s->wdt[i]), "pretimeout-support=
+",
+> -                                 true, &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->wdt[i]), "pretimeout-support",
+> +                          true);
+>         sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), &error_abort);
+>=20
+>         sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0,
+> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+> index 474cfdc87c..3138ffeb08 100644
+> --- a/hw/arm/fsl-imx7.c
+> +++ b/hw/arm/fsl-imx7.c
+> @@ -192,8 +192,7 @@ static void fsl_imx7_realize(DeviceState *dev, Error =
+**errp)
+>              * Secondary CPUs start in powered-down state (and can be
+>              * powered up via the SRC system reset controller)
+>              */
+> -            object_property_set_bool(o, "start-powered-off", true,
+> -                                     &error_abort);
+> +            qdev_prop_set_bit(DEVICE(o), "start-powered-off", true);
+>         }
+>=20
+>         qdev_realize(DEVICE(o), NULL, &error_abort);
+> @@ -424,8 +423,8 @@ static void fsl_imx7_realize(DeviceState *dev, Error =
+**errp)
+>      * and we have to set all properties before calling sysbus_realize().
+>      */
+>     for (i =3D 0; i < FSL_IMX7_NUM_ETHS; i++) {
+> -        object_property_set_bool(OBJECT(&s->eth[i]), "phy-connected",
+> -                                 s->phy_connected[i], &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->eth[i]), "phy-connected",
+> +                          s->phy_connected[i]);
+>         /*
+>          * If the MDIO bus on this controller is not connected, assume th=
+e
+>          * other controller provides support for it.
+> @@ -513,8 +512,7 @@ static void fsl_imx7_realize(DeviceState *dev, Error =
+**errp)
+>             FSL_IMX7_WDOG4_IRQ,
+>         };
+>=20
+> -        object_property_set_bool(OBJECT(&s->wdt[i]), "pretimeout-support=
+",
+> -                                 true, &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->wdt[i]), "pretimeout-support", true=
+);
+>         sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), &error_abort);
+>=20
+>         sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt[i]), 0, FSL_IMX7_WDOGn_ADD=
+R[i]);
+> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+> index 15ff21d047..7022df3cfa 100644
+> --- a/hw/arm/npcm7xx.c
+> +++ b/hw/arm/npcm7xx.c
+> @@ -478,12 +478,10 @@ static void npcm7xx_realize(DeviceState *dev, Error=
+ **errp)
+>                                 &error_abort);
+>         object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
+>                                 NPCM7XX_GIC_CPU_IF_ADDR, &error_abort);
+> -        object_property_set_bool(OBJECT(&s->cpu[i]), "reset-hivecs", tru=
+e,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->cpu[i]), "reset-hivecs", true);
+>=20
+>         /* Disable security extensions. */
+> -        object_property_set_bool(OBJECT(&s->cpu[i]), "has_el3", false,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->cpu[i]), "has_el3", false);
+>=20
+>         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+>             return;
+> @@ -613,8 +611,7 @@ static void npcm7xx_realize(DeviceState *dev, Error *=
+*errp)
+>     }
+>=20
+>     /* USB Host */
+> -    object_property_set_bool(OBJECT(&s->ehci), "companion-enable", true,
+> -                             &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->ehci), "companion-enable", true);
+>     sysbus_realize(SYS_BUS_DEVICE(&s->ehci), &error_abort);
+>     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci), 0, NPCM7XX_EHCI_BA);
+>     sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci), 0,
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 9600551c44..e3b730f5f5 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -48,8 +48,7 @@ static void versal_create_apu_cpus(Versal *s)
+>         obj =3D OBJECT(&s->fpd.apu.cpu[i]);
+>         if (i) {
+>             /* Secondary CPUs start in powered-down state */
+> -            object_property_set_bool(obj, "start-powered-off", true,
+> -                                     &error_abort);
+> +            qdev_prop_set_bit(DEVICE(obj), "start-powered-off", true);
+>         }
+>=20
+>         object_property_set_int(obj, "core-count", ARRAY_SIZE(s->fpd.apu.=
+cpu),
+> @@ -150,8 +149,7 @@ static void versal_create_rpu_cpus(Versal *s)
+>                                 "rpu-cpu[*]", &s->lpd.rpu.cpu[i],
+>                                 XLNX_VERSAL_RCPU_TYPE);
+>         obj =3D OBJECT(&s->lpd.rpu.cpu[i]);
+> -        object_property_set_bool(obj, "start-powered-off", true,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(obj), "start-powered-off", true);
+>=20
+>         object_property_set_int(obj, "mp-affinity", 0x100 | i, &error_abo=
+rt);
+>         object_property_set_int(obj, "core-count", ARRAY_SIZE(s->lpd.rpu.=
+cpu),
+> @@ -536,8 +534,7 @@ static void versal_create_ospi(Versal *s, qemu_irq *p=
+ic)
+>                             &s->pmc.iou.ospi.dma_src,
+>                             TYPE_XLNX_CSU_DMA);
+>=20
+> -    object_property_set_bool(OBJECT(&s->pmc.iou.ospi.dma_src), "is-dst",
+> -                             false, &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->pmc.iou.ospi.dma_src), "is-dst", false)=
+;
+>=20
+>     object_property_set_link(OBJECT(&s->pmc.iou.ospi.dma_src),
+>                             "dma", OBJECT(mr_dac), &error_abort);
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 5905a33015..f3ca3a7527 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -237,14 +237,12 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms=
+, XlnxZynqMPState *s,
+>             /*
+>              * Secondary CPUs start in powered-down state.
+>              */
+> -            object_property_set_bool(OBJECT(&s->rpu_cpu[i]),
+> -                                     "start-powered-off", true, &error_a=
+bort);
+> +            qdev_prop_set_bit(DEVICE(&s->rpu_cpu[i]), "start-powered-off=
+", true);
+>         } else {
+>             s->boot_cpu_ptr =3D &s->rpu_cpu[i];
+>         }
+>=20
+> -        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), "reset-hivecs",=
+ true,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(&s->rpu_cpu[i]), "reset-hivecs", true);
+>         if (!qdev_realize(DEVICE(&s->rpu_cpu[i]), NULL, errp)) {
+>             return;
+>         }
+> @@ -518,8 +516,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Err=
+or **errp)
+>             /*
+>              * Secondary CPUs start in powered-down state.
+>              */
+> -            object_property_set_bool(OBJECT(&s->apu_cpu[i]),
+> -                                     "start-powered-off", true, &error_a=
+bort);
+> +            qdev_prop_set_bit(DEVICE(&s->apu_cpu[i]), "start-powered-off=
+", true);
+>         } else {
+>             s->boot_cpu_ptr =3D &s->apu_cpu[i];
+>         }
+> diff --git a/hw/core/bus.c b/hw/core/bus.c
+> index c7831b5293..a24ebe5886 100644
+> --- a/hw/core/bus.c
+> +++ b/hw/core/bus.c
+> @@ -176,7 +176,7 @@ bool qbus_realize(BusState *bus, Error **errp)
+>=20
+> void qbus_unrealize(BusState *bus)
+> {
+> -    object_property_set_bool(OBJECT(bus), "realized", false, &error_abor=
+t);
+> +    qdev_prop_set_bit(DEVICE(bus), "realized", false);
+> }
+>=20
+> static bool bus_get_realized(Object *obj, Error **errp)
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index 43d863b0c5..f4aa99ed77 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -303,7 +303,7 @@ bool qdev_realize_and_unref(DeviceState *dev, BusStat=
+e *bus, Error **errp)
+>=20
+> void qdev_unrealize(DeviceState *dev)
+> {
+> -    object_property_set_bool(OBJECT(dev), "realized", false, &error_abor=
+t);
+> +    qdev_prop_set_bit(dev, "realized", false);
+> }
+>=20
+> static int qdev_assert_realized_properly_cb(Object *obj, void *opaque)
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index eace854335..6733652120 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -263,20 +263,13 @@ static void pc_init1(MachineState *machine,
+>         size_t i;
+>=20
+>         pci_dev =3D pci_new_multifunction(-1, pcms->south_bridge);
+> -        object_property_set_bool(OBJECT(pci_dev), "has-usb",
+> -                                 machine_usb(machine), &error_abort);
+> -        object_property_set_bool(OBJECT(pci_dev), "has-acpi",
+> -                                 x86_machine_is_acpi_enabled(x86ms),
+> -                                 &error_abort);
+> -        object_property_set_bool(OBJECT(pci_dev), "has-pic", false,
+> -                                 &error_abort);
+> -        object_property_set_bool(OBJECT(pci_dev), "has-pit", false,
+> -                                 &error_abort);
+> -        qdev_prop_set_uint32(DEVICE(pci_dev), "smb_io_base", 0xb100);
+> -        object_property_set_bool(OBJECT(pci_dev), "smm-enabled",
+> -                                 x86_machine_is_smm_enabled(x86ms),
+> -                                 &error_abort);
+>         dev =3D DEVICE(pci_dev);
+> +        qdev_prop_set_bit(dev, "has-usb", machine_usb(machine));
+> +        qdev_prop_set_bit(dev, "has-acpi", x86_machine_is_acpi_enabled(x=
+86ms));
+> +        qdev_prop_set_bit(dev, "has-pic", false);
+> +        qdev_prop_set_bit(dev, "has-pit", false);
+> +        qdev_prop_set_uint32(DEVICE(pci_dev), "smb_io_base", 0xb100);
+> +        qdev_prop_set_bit(dev, "smm-enabled", x86_machine_is_smm_enabled=
+(x86ms));
+>         for (i =3D 0; i < ISA_NUM_IRQS; i++) {
+>             qdev_connect_gpio_out_named(dev, "isa-irqs", i, x86ms->gsi[i]=
+);
+>         }
+> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogi=
+x_ml605_mmu.c
+> index fb7889cf67..626f9b0b56 100644
+> --- a/hw/microblaze/petalogix_ml605_mmu.c
+> +++ b/hw/microblaze/petalogix_ml605_mmu.c
+> @@ -88,9 +88,8 @@ petalogix_ml605_init(MachineState *machine)
+>      * root instructions
+>      */
+>     object_property_set_int(OBJECT(cpu), "use-fpu", 1, &error_abort);
+> -    object_property_set_bool(OBJECT(cpu), "dcache-writeback", true,
+> -                             &error_abort);
+> -    object_property_set_bool(OBJECT(cpu), "endianness", true, &error_abo=
+rt);
+> +    qdev_prop_set_bit(DEVICE(cpu), "dcache-writeback", true);
+> +    qdev_prop_set_bit(DEVICE(cpu), "endianness", true);
+>     qdev_realize(DEVICE(cpu), NULL, &error_abort);
+>=20
+>     /* Attach emulated BRAM through the LMB.  */
+> diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-=
+pmu.c
+> index 5a2016672a..19cc5efee3 100644
+> --- a/hw/microblaze/xlnx-zynqmp-pmu.c
+> +++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+> @@ -18,6 +18,7 @@
+> #include "qemu/osdep.h"
+> #include "qapi/error.h"
+> #include "exec/address-spaces.h"
+> +#include "hw/qdev-properties.h"
+> #include "hw/boards.h"
+> #include "cpu.h"
+> #include "boot.h"
+> @@ -79,19 +80,14 @@ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *=
+dev, Error **errp)
+>=20
+>     object_property_set_uint(OBJECT(&s->cpu), "base-vectors",
+>                              XLNX_ZYNQMP_PMU_ROM_ADDR, &error_abort);
+> -    object_property_set_bool(OBJECT(&s->cpu), "use-stack-protection", tr=
+ue,
+> -                             &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->cpu), "use-stack-protection", true);
+>     object_property_set_uint(OBJECT(&s->cpu), "use-fpu", 0, &error_abort)=
+;
+>     object_property_set_uint(OBJECT(&s->cpu), "use-hw-mul", 0, &error_abo=
+rt);
+> -    object_property_set_bool(OBJECT(&s->cpu), "use-barrel", true,
+> -                             &error_abort);
+> -    object_property_set_bool(OBJECT(&s->cpu), "use-msr-instr", true,
+> -                             &error_abort);
+> -    object_property_set_bool(OBJECT(&s->cpu), "use-pcmp-instr", true,
+> -                             &error_abort);
+> -    object_property_set_bool(OBJECT(&s->cpu), "use-mmu", false, &error_a=
+bort);
+> -    object_property_set_bool(OBJECT(&s->cpu), "endianness", true,
+> -                             &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->cpu), "use-barrel", true);
+> +    qdev_prop_set_bit(DEVICE(&s->cpu), "use-msr-instr", true);
+> +    qdev_prop_set_bit(DEVICE(&s->cpu), "use-pcmp-instr", true);
+> +    qdev_prop_set_bit(DEVICE(&s->cpu), "use-mmu", false);
+> +    qdev_prop_set_bit(DEVICE(&s->cpu), "endianness", true);
+>     object_property_set_str(OBJECT(&s->cpu), "version", "8.40.b",
+>                             &error_abort);
+>     object_property_set_uint(OBJECT(&s->cpu), "pvr", 0, &error_abort);
+> diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+> index 4f12e23ab5..ee2a8d5563 100644
+> --- a/hw/mips/cps.c
+> +++ b/hw/mips/cps.c
+> @@ -78,8 +78,7 @@ static void mips_cps_realize(DeviceState *dev, Error **=
+errp)
+>         CPUMIPSState *env =3D &cpu->env;
+>=20
+>         /* All VPs are halted on reset. Leave powering up to CPC. */
+> -        object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(cpu), "start-powered-off", true);
+>=20
+>         /* All cores use the same clock tree */
+>         qdev_connect_clock_in(DEVICE(cpu), "clk-in", s->clock);
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index 566f1200dd..a63d48c512 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -954,8 +954,7 @@ void ppce500_init(MachineState *machine)
+>          * Secondary CPU starts in halted state for now. Needs to change
+>          * when implementing non-kernel boot.
+>          */
+> -        object_property_set_bool(OBJECT(cs), "start-powered-off", i !=3D=
+ 0,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(DEVICE(cs), "start-powered-off", i !=3D 0);
+>         qdev_realize_and_unref(DEVICE(cs), NULL, &error_fatal);
+>=20
+>         if (!firstenv) {
+> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+> index 6760823e13..266cf6c9e6 100644
+> --- a/hw/ppc/spapr_pci.c
+> +++ b/hw/ppc/spapr_pci.c
+> @@ -2490,8 +2490,7 @@ static int spapr_switch_one_vga(DeviceState *dev, v=
+oid *opaque)
+>         || object_dynamic_cast(OBJECT(dev), "secondary-vga")
+>         || object_dynamic_cast(OBJECT(dev), "bochs-display")
+>         || object_dynamic_cast(OBJECT(dev), "virtio-vga")) {
+> -        object_property_set_bool(OBJECT(dev), "big-endian-framebuffer", =
+be,
+> -                                 &error_abort);
+> +        qdev_prop_set_bit(dev, "big-endian-framebuffer", be);
+>     }
+>     return 0;
+> }
+> diff --git a/hw/rx/rx-gdbsim.c b/hw/rx/rx-gdbsim.c
+> index 47c17026c7..53d3d560c8 100644
+> --- a/hw/rx/rx-gdbsim.c
+> +++ b/hw/rx/rx-gdbsim.c
+> @@ -21,6 +21,7 @@
+> #include "qemu/error-report.h"
+> #include "qemu/guest-random.h"
+> #include "qapi/error.h"
+> +#include "hw/qdev-properties.h"
+> #include "hw/loader.h"
+> #include "hw/rx/rx62n.h"
+> #include "sysemu/qtest.h"
+> @@ -103,8 +104,7 @@ static void rx_gdbsim_init(MachineState *machine)
+>                              &error_abort);
+>     object_property_set_uint(OBJECT(&s->mcu), "xtal-frequency-hz",
+>                              rxc->xtal_freq_hz, &error_abort);
+> -    object_property_set_bool(OBJECT(&s->mcu), "load-kernel",
+> -                             kernel_filename !=3D NULL, &error_abort);
+> +    qdev_prop_set_bit(DEVICE(&s->mcu), "load-kernel", kernel_filename !=
+=3D NULL);
+>=20
+>     if (!kernel_filename) {
+>         if (machine->firmware) {
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 64895aebe3..d631d555d8 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -803,8 +803,7 @@ static void cpu_devinit(const char *cpu_type, unsigne=
+d int id,
+>     env =3D &cpu->env;
+>=20
+>     qemu_register_reset(sun4m_cpu_reset, cpu);
+> -    object_property_set_bool(OBJECT(cpu), "start-powered-off", id !=3D 0=
+,
+> -                             &error_abort);
+> +    qdev_prop_set_bit(DEVICE(cpu), "start-powered-off", id !=3D 0);
+>     qdev_realize_and_unref(DEVICE(cpu), NULL, &error_fatal);
+>     cpu_sparc_set_id(env, id);
+>     *cpu_irqs =3D qemu_allocate_irqs(cpu_set_irq, cpu, MAX_PILS);
+> --=20
+> 2.41.0
+>=20
+

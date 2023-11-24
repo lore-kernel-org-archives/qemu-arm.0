@@ -1,251 +1,310 @@
-Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1240219ejj;
-        Fri, 24 Nov 2023 06:36:35 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGU6LRWfC/yp8otUZWADUQv2Sfb5+Z7Gu9MAMI7PiqVuTrIDezpAqpROOuisqdWRmTjwZOf
-X-Received: by 2002:a25:cf0e:0:b0:db3:52de:1d96 with SMTP id f14-20020a25cf0e000000b00db352de1d96mr5083679ybg.15.1700836595380;
-        Fri, 24 Nov 2023 06:36:35 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1700836595; cv=pass;
+Received: by 2002:a17:906:3fc4:b0:a04:79f0:9a0e with SMTP id k4csp1315817ejj;
+        Fri, 24 Nov 2023 08:02:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEpsWcEkLyCZxUGbfyWbE2tOnLQcezjFVqyvPLMurC8h8LBgoRV34f1kqsloMu1XIgz0OCB
+X-Received: by 2002:a05:6214:e89:b0:67a:1ef4:af81 with SMTP id hf9-20020a0562140e8900b0067a1ef4af81mr1564319qvb.17.1700841744229;
+        Fri, 24 Nov 2023 08:02:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1700841744; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xqf3DcN3VRGKmq6JAdY+y7/pXlSz+pTbLStOZ4B8FrDr+t8EGiTiimz5Voo6PVpeDE
-         5vkyklMNkZ3K2X5k8E5OmFK/2JfEuEHJ4DcwEacKNnlMqTjTAqopjz7pCLNOG8rOqDnx
-         npMOfdgGppg2ZDt/RwLFjlt/7HkfP1cOBJtlJh5cVRlQbXewxEFKpHfgCcxws6TvrPcU
-         lNflO+si6L3YReKbNmz9KyPH6kxaCG/beuMXWgU0cu1m1Df73dStvTixC8Qcfs4jLWFt
-         6hxMVbuNvQgcvcRg8eIYJlR/lEc07XB+RRsE1NMrLTwxBtCaAa9cIjAyJRD7Ktxgdm/X
-         tvLw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=0gUDrkNNF1NhIW+YDTppB7l7BtdzkNpoSiaOr/zDyX0=;
-        fh=1FmVCV+NP1SeXSMIQreKXYunTTb4/Ijoxigf8TMTOZU=;
-        b=T0bIQGCgCTT+Fbt6Qbq5z2dDcjXDwuQhMGLvnoTUTtyUrACc3iT4Ux5GMJM7jkk3Fl
-         5JwVDoWktXJtIb7OpLTPEX6QwUTLSsA06AvYKtoNe+CPuPdg89SdK/kLP8JoBI+nGgkP
-         yBldBqNMZs4Di6C5kMLifbaNbC0k8dlnOGN6kL+7Se5Y5x9itPtp8zDkqLzY5DlEq7Ky
-         bTAoN/4ABVqVk5tSfmAvWTS/JCoqO4b+yr4JXK6GsAs9RS03Mj5I+5xE6Vwo3D7u3JPa
-         zUM9PEcmyVV4qEVbKbq3jLqzx7ZOXqhMekkcllR9scR55/6MdFAK4gCrdKoLH1JStQQb
-         7WcA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="zHXjO93/";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c186-20020a25c0c3000000b00db4123aaac5si2143989ybf.467.2023.11.24.06.36.35
+        b=Tw6lpJkJRj1DtSjmlClDNqIear+/lcL8CxX7tFJh76ibgLuafNA1wVct3faSdu8GVa
+         muVa+PpZInauzJmh1G5RBYG4mS7/Q4sPHGmOtGr3QDWXpR3GAZLpes6PTueQzgNyGHnc
+         16guIkHmMBUYIJaKONCa5EZ/AS3Q2dOJH5ZJURLqi0LiqOQ8BmpdvKfPN/YN5wPG6fWh
+         sLY4RNsfxOPEP2GBsPcVpRRi3b9gs9t2rgj9LXdt4RD9DRRc5ay3KAEOh/AkZLdmPofT
+         hxoLhbTrFlpksZqVT2TZe8lBhPQv9yqfwjfeaa+2NgtmSw1bhFQz6m1IIssn23rPHijm
+         a83w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=8P0KL1fEY9kxdqndJJeI7mDazu1N0fp4Dqr+BGe7acQ=;
+        fh=yBg5jTax3bX/nm/oKv3FgmG4/dEof1Pt7099yXc4tJI=;
+        b=Os7FWMkBGUx89DtYY29VF2oGuZPA5kmXikMnbmOM/ngl6akoJOB44eiMgDnE20+h13
+         inF2b3k57iFcfSPz8R+rz2XKBAP0+/vOdELgTzU3mEGkhXSsu38/ekfhuVyeOQZEju1N
+         IxiRYlrx0pRWjcJeX9y1Hsbo3bIEdNykYz4qkUL/pWeIVveXjO6lRAeD7YDIHhTnc7wT
+         deEKinPdgIbw22uQ+SdZgHJNElueC0uAZ1TT6jdmUC/HxXCcBlvFzRP5dcOWCmmd4/rP
+         QKRr3b75nuHkyM10BWzpEWM/1EQgTBsDmFoQS+mojepjy45hlbefTlk6hzEiocbF7zrs
+         NRiQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K8wcjnJ1;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id qj16-20020a05620a881000b0077d760d55fdsi3028708qkn.17.2023.11.24.08.02.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Nov 2023 06:36:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Nov 2023 08:02:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="zHXjO93/";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r6XHT-0007u8-3Q; Fri, 24 Nov 2023 09:35:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Frederic.Konrad@amd.com>)
- id 1r6XHO-0007sK-6v; Fri, 24 Nov 2023 09:35:38 -0500
-Received: from mail-bn7nam10on20626.outbound.protection.outlook.com
- ([2a01:111:f400:7e8a::626]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Frederic.Konrad@amd.com>)
- id 1r6XHL-0006ye-TH; Fri, 24 Nov 2023 09:35:37 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lpdZVZprRNob5S6MaJpsoNDDE1j6RD1aRj498i+gw4gqdzu8W3gfnBRdogUoVZd5q6Iy27TmjurJWs+LCtsBHrhI8h7ZBj39bL1KkzImzOMUh/QvzZ1g6ccafAs53HDaF12/CmaPhCZdOgnibAq1zdwM2jCrBwnkw/6bO4/g/2aGn860bWMe/0ea782ncHlvIvugb7/VkM3e3z/86Ad/K+cwPihHIpW5W3EDhD8bbrcEb8wGs2kwRArl+M+f7pcxU7Coe/Knh5MhyK1QMaFqhlz1DhsWSmrqUTkzf7YmBW1kH2bq4C78sRJXqVICQq80Mefin15Gylpswz5a1bADAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0gUDrkNNF1NhIW+YDTppB7l7BtdzkNpoSiaOr/zDyX0=;
- b=bKW8G+OZJcwG1mG0AMPfMdSN6oGHc2PGYaHi/oF7lHT+SoNTfIjwxVSMlKIMI0ruKgbFUumyKCbM2C5nutmvlAvxiw2zeAcfEDY5zES4wA3BLaLJyJVUZ599jOWMOGdeMcFdcWuf7qDxImFijgVbULitNqCpNQ5U3Q1rBGdv2CnpjsPIthIHT0afHvJGWY9DvcII1Uh7H92sTInRJfSsFo51lT0Iia21BStj+buBOKwpbDSqJt3G/YYGXHLDP81IMxqTTnD7klq/xlgZwg90rk2afC6eZpEZUYY/buGs1met9H/SUcfO5znGzTJH7pWC3Y5mBmIqdLNXZFYSnU7r6Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0gUDrkNNF1NhIW+YDTppB7l7BtdzkNpoSiaOr/zDyX0=;
- b=zHXjO93/ZZHph7whbTTCG+mMJWw1n7W9i44JG72tsIg/z30l4ccDyslEOw/bSIACdYjZZjGjAoROwSWdNCJDLp6FWBVRXk9tHfnsNB/ZNKouX82fwxdU/QzsWR3KqI12d/zIXJwpCgGhDrzKCNl2+Vq9e363Sv/bPFP8feNELjo=
-Received: from CH2PR10CA0013.namprd10.prod.outlook.com (2603:10b6:610:4c::23)
- by BL1PR12MB5077.namprd12.prod.outlook.com (2603:10b6:208:310::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.21; Fri, 24 Nov
- 2023 14:35:29 +0000
-Received: from DS2PEPF00003442.namprd04.prod.outlook.com
- (2603:10b6:610:4c:cafe::71) by CH2PR10CA0013.outlook.office365.com
- (2603:10b6:610:4c::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.20 via Frontend
- Transport; Fri, 24 Nov 2023 14:35:29 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- DS2PEPF00003442.mail.protection.outlook.com (10.167.17.69) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7025.13 via Frontend Transport; Fri, 24 Nov 2023 14:35:28 +0000
-Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Fri, 24 Nov
- 2023 08:35:28 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
- (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Fri, 24 Nov
- 2023 06:35:28 -0800
-Received: from xdcsswbld02.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.34 via Frontend
- Transport; Fri, 24 Nov 2023 08:35:27 -0600
-From: Frederic Konrad <fkonrad@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-arm@nongnu.org>, <francisco.iglesias@amd.com>,
- <peter.maydell@linaro.org>, <edgar.iglesias@gmail.com>,
- <alistair@alistair23.me>, <luc.michel@amd.com>, <fkonrad@amd.com>
-Subject: [PATCH v1 1/3] hw/ssi/xilinx_spips: fix an out of bound access
-Date: Fri, 24 Nov 2023 14:35:03 +0000
-Message-ID: <20231124143505.1493184-2-fkonrad@amd.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20231124143505.1493184-1-fkonrad@amd.com>
-References: <20231124143505.1493184-1-fkonrad@amd.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K8wcjnJ1;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1700841743;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8P0KL1fEY9kxdqndJJeI7mDazu1N0fp4Dqr+BGe7acQ=;
+	b=K8wcjnJ1oOOZLsOyfnkoGTcIhhycAWI/bp4rvLIE6g674JTo8Wot3ApIdarnvqeEDg7CV3
+	0FSbvXX5s/DecwhoIzeM4IusZurOc4XahRoRmd8KcTDJLZ/g8cxO0ZFKNp2py7occ7DdVa
+	46KT9dfzX9dXeoJ+Zx3MklNBfPxIdug=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-387-hBOnztpANC-6HOKVLsz4sA-1; Fri, 24 Nov 2023 11:02:22 -0500
+X-MC-Unique: hBOnztpANC-6HOKVLsz4sA-1
+Received: by mail-ed1-f69.google.com with SMTP id 4fb4d7f45d1cf-548cf45e962so1452425a12.2
+        for <alex.bennee@linaro.org>; Fri, 24 Nov 2023 08:02:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1700841741; x=1701446541;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8P0KL1fEY9kxdqndJJeI7mDazu1N0fp4Dqr+BGe7acQ=;
+        b=MlvLDMArofp2t/3QEpouk3FhHeDjlSNxFnBaptlzrcaMdgV95qKX6rycM4RcPXl7kQ
+         RndiFcVkTWWRVKr6i8J/vrVo8WHRPBYDkxxBQrYieGNFChTgSXYdn1UcQ2doLqfl1+kG
+         bGV9tOOY3gI5i3sQFNNCf6aUvnb2Jijalssqtz7bgvJTwfVlTJsCeGavPprXO2k7pXMY
+         hbKQ2XINBrMXVHIpTmXUp75dzng41mNv4PilVX8c1Q/dJWi7UDY7eIwdkVTj0ehrLUW3
+         5iccQ9CTI3QshY1q8H4PjAZdBu5FnCKMYmwLT6PJEsa/rZZld6W1I1yshzVWJx+0iB8y
+         0Cdw==
+X-Gm-Message-State: AOJu0YyGXA+lU2UCnfh2ulmBbETRBuMgnl4S6CgKotDysrpLV/xgFT87
+	FJWXHQh4Gm/t9LconVdlPQRNJWgrLttYhBjVYVKYKJlgSHWEYgKumXPbEVn4iTEQZMIUkuTCsb6
+	G36bNi1J1gYsQqx2H
+X-Received: by 2002:a05:6402:514a:b0:54b:a7b:8198 with SMTP id n10-20020a056402514a00b0054b0a7b8198mr832016edd.17.1700841741347;
+        Fri, 24 Nov 2023 08:02:21 -0800 (PST)
+X-Received: by 2002:a05:6402:514a:b0:54b:a7b:8198 with SMTP id n10-20020a056402514a00b0054b0a7b8198mr831955edd.17.1700841740604;
+        Fri, 24 Nov 2023 08:02:20 -0800 (PST)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+        by smtp.gmail.com with ESMTPSA id v28-20020aa7cd5c000000b00548d649f638sm1929571edw.96.2023.11.24.08.02.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Nov 2023 08:02:20 -0800 (PST)
+Date: Fri, 24 Nov 2023 17:02:17 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
+ <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
+ <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
+ <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
+ <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
+ <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
+ <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
+ <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+ <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+ <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
+ <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
+ <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
+ <lixianglai@loongson.cn>, <linuxarm@huawei.com>
+Subject: Re: [PATCH V7 1/8] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Message-ID: <20231124170217.40165579@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20231113201236.30668-2-salil.mehta@huawei.com>
+References: <20231113201236.30668-1-salil.mehta@huawei.com>
+	<20231113201236.30668-2-salil.mehta@huawei.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PEPF00003442:EE_|BL1PR12MB5077:EE_
-X-MS-Office365-Filtering-Correlation-Id: 52c04aed-1bff-4849-5004-08dbecfa9b10
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: AXdTe7VfChfJguJN+Ev36N5ClOUJ4H6CGutFzHMRIMScbj7kjEEc3DTV6bNdD5W1EpqR0oiDG+34Tpcgwq7oVBRkNAluRCaEs21z30WUp8YuVrytAzCuVeVTljSQ4+uaDfCJ7pADg45gtMeyJQEcNJYkt9epTJmzXp3F44XjoJ+jJaFAOUbCC+NUvcXAZhOUm3Nqi6ZdCIzum1lIKG9EaP+WyE4z7T4P5Ji1Qel9HoCKEMWAch4CdTiO/DcZZ74N6TOnPmkZWYg1SBDOiJw3eqdowAXcsk78wcM7qqcfNNU0HBZvhlOK9gYlmA3udlXdBq8wr42wA2OWAAIFvDkzXyFH+cUfu7iOl/VxrwdY9c+VqUABs7N7XBEFa4eqdtlLWcxCQwSib+IrmKnISyXDoSoELE8bBDxQ6d7GPOdwJ3lnC2tYK9GeSI/aIctbE+QyPpOCYiad9AB0rU+Lmh9mLuhdn+OQnvLY2sG/WaDnPRZmKyypzI9dtFXB7PjMfXpOwxPTKkyKfMfsL2cYg6rXLhgXtKXGvZdUPWRiyZH0lCXPPBrVjuJf8W6qzkGyuNyXMUIOco2mxKzyg6nsBN6VhehxdfixC67JBmL/AZcBSqswNzGt9HIj8akO3+kgW8LtaoJRVS0lPAA0IATbMmkUyl76tkewR0i7zrVFwN3SAJPbRqvYCD55FybXAuozK2hoWZKYU4f9X7KbT593TfJfKUCrOOxKEEZY4e+bhpTb/qVo+K8KbTJubl6T84fdi3RRvsfKvjv3SnwWvbTTMXED6w==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(136003)(396003)(39850400004)(346002)(376002)(230922051799003)(451199024)(1800799012)(64100799003)(186009)(82310400011)(40470700004)(36840700001)(46966006)(1076003)(2906002)(5660300002)(26005)(2616005)(47076005)(40460700003)(70206006)(70586007)(6666004)(54906003)(6916009)(36756003)(40480700001)(36860700001)(83380400001)(81166007)(4326008)(316002)(8676002)(8936002)(41300700001)(478600001)(336012)(356005)(82740400003)(426003)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2023 14:35:28.9792 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 52c04aed-1bff-4849-5004-08dbecfa9b10
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003442.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5077
-Received-SPF: softfail client-ip=2a01:111:f400:7e8a::626;
- envelope-from=Frederic.Konrad@amd.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2E+kZjW9CMem
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: lHzMdInUuagW
 
-The spips, qspips, and zynqmp-qspips share the same realize function
-(xilinx_spips_realize) and initialize their io memory region with different
-mmio_ops passed through the class.  The size of the memory region is set to
-the largest area (0x200 bytes for zynqmp-qspips) thus it is possible to write
-out of s->regs[addr] in xilinx_spips_write for spips and qspips.
+On Mon, 13 Nov 2023 20:12:29 +0000
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-This fixes that wrong behavior.
+> KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
+> is spawned. This is common to all the architectures as of now.
+> 
+> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
+> corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
+> support vCPU removal. Therefore, its representative KVM vCPU object/context in
+> Qemu is parked.
+> 
+> Refactor architecture common logic so that some APIs could be reused by vCPU
+> Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
+> with trace events instead of DPRINTF. No functional change is intended here.
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
 
-Reviewed-by: Luc Michel <luc.michel@amd.com>
-Signed-off-by: Frederic Konrad <fkonrad@amd.com>
----
- hw/ssi/xilinx_spips.c         | 7 ++++++-
- include/hw/ssi/xilinx_spips.h | 3 +++
- 2 files changed, 9 insertions(+), 1 deletion(-)
+even though it will used by arm and loongarch later on with respective cpu hotplug  series,
+it doesn't justify including refactoring without actual user.
+(Put yourself in shoes of someone looking at git history and not finding a single user)
 
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index a3955c6c50..0bdfad7e2e 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -973,6 +973,8 @@ static void xilinx_spips_write(void *opaque, hwaddr addr,
- 
-     DB_PRINT_L(0, "addr=" HWADDR_FMT_plx " = %x\n", addr, (unsigned)value);
-     addr >>= 2;
-+    assert(addr < XLNX_SPIPS_R_MAX);
-+
-     switch (addr) {
-     case R_CONFIG:
-         mask = ~(R_CONFIG_RSVD | MAN_START_COM);
-@@ -1299,7 +1301,7 @@ static void xilinx_spips_realize(DeviceState *dev, Error **errp)
-     }
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), xsc->reg_ops, s,
--                          "spi", XLNX_ZYNQMP_SPIPS_R_MAX * 4);
-+                          "spi", xsc->reg_size);
-     sysbus_init_mmio(sbd, &s->iomem);
- 
-     s->irqline = -1;
-@@ -1435,6 +1437,7 @@ static void xilinx_qspips_class_init(ObjectClass *klass, void * data)
- 
-     dc->realize = xilinx_qspips_realize;
-     xsc->reg_ops = &qspips_ops;
-+    xsc->reg_size = XLNX_SPIPS_R_MAX * 4;
-     xsc->rx_fifo_size = RXFF_A_Q;
-     xsc->tx_fifo_size = TXFF_A_Q;
- }
-@@ -1450,6 +1453,7 @@ static void xilinx_spips_class_init(ObjectClass *klass, void *data)
-     dc->vmsd = &vmstate_xilinx_spips;
- 
-     xsc->reg_ops = &spips_ops;
-+    xsc->reg_size = XLNX_SPIPS_R_MAX * 4;
-     xsc->rx_fifo_size = RXFF_A;
-     xsc->tx_fifo_size = TXFF_A;
- }
-@@ -1464,6 +1468,7 @@ static void xlnx_zynqmp_qspips_class_init(ObjectClass *klass, void * data)
-     dc->vmsd = &vmstate_xlnx_zynqmp_qspips;
-     device_class_set_props(dc, xilinx_zynqmp_qspips_properties);
-     xsc->reg_ops = &xlnx_zynqmp_qspips_ops;
-+    xsc->reg_size = XLNX_ZYNQMP_SPIPS_R_MAX * 4;
-     xsc->rx_fifo_size = RXFF_A_Q;
-     xsc->tx_fifo_size = TXFF_A_Q;
- }
-diff --git a/include/hw/ssi/xilinx_spips.h b/include/hw/ssi/xilinx_spips.h
-index 1386d5ac8f..7a754bf67a 100644
---- a/include/hw/ssi/xilinx_spips.h
-+++ b/include/hw/ssi/xilinx_spips.h
-@@ -33,7 +33,9 @@
- 
- typedef struct XilinxSPIPS XilinxSPIPS;
- 
-+/* For SPIPS, QSPIPS.  */
- #define XLNX_SPIPS_R_MAX        (0x100 / 4)
-+/* For ZYNQMP_QSPIPS.  */
- #define XLNX_ZYNQMP_SPIPS_R_MAX (0x200 / 4)
- 
- /* Bite off 4k chunks at a time */
-@@ -125,6 +127,7 @@ struct XilinxSPIPSClass {
-     SysBusDeviceClass parent_class;
- 
-     const MemoryRegionOps *reg_ops;
-+    uint64_t reg_size;
- 
-     uint32_t rx_fifo_size;
-     uint32_t tx_fifo_size;
--- 
-2.25.1
+I'd suggest to include this patch in both (ARM & Loongson) CPU hotplug series,
+this way, whichever is merged 1st will get this patch in without causing conflicts.
 
+> ---
+>  accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
+>  accel/kvm/trace-events |  4 +++
+>  include/sysemu/kvm.h   | 16 +++++++++++
+>  3 files changed, 69 insertions(+), 15 deletions(-)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 72e1d1141c..bfa7816aaa 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
+>  #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+>  
+>  static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
+> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
+>  
+>  static inline void kvm_resample_fd_remove(int gsi)
+>  {
+> @@ -320,14 +321,53 @@ err:
+>      return ret;
+>  }
+>  
+> +void kvm_park_vcpu(CPUState *cpu)
+> +{
+> +    struct KVMParkedVcpu *vcpu;
+> +
+> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+> +
+> +    vcpu = g_malloc0(sizeof(*vcpu));
+> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+> +    vcpu->kvm_fd = cpu->kvm_fd;
+> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +}
+> +
+> +int kvm_create_vcpu(CPUState *cpu)
+> +{
+> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
+> +    KVMState *s = kvm_state;
+> +    int kvm_fd;
+> +
+> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+> +
+> +    /* check if the KVM vCPU already exist but is parked */
+> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
+> +    if (kvm_fd < 0) {
+> +        /* vCPU not parked: create a new KVM vCPU */
+> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
+> +        if (kvm_fd < 0) {
+> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
+> +            return kvm_fd;
+> +        }
+> +    }
+> +
+> +    cpu->kvm_fd = kvm_fd;
+> +    cpu->kvm_state = s;
+> +    cpu->vcpu_dirty = true;
+> +    cpu->dirty_pages = 0;
+> +    cpu->throttle_us_per_full = 0;
+> +
+> +    return 0;
+> +}
+> +
+>  static int do_kvm_destroy_vcpu(CPUState *cpu)
+>  {
+>      KVMState *s = kvm_state;
+>      long mmap_size;
+> -    struct KVMParkedVcpu *vcpu = NULL;
+>      int ret = 0;
+>  
+> -    DPRINTF("kvm_destroy_vcpu\n");
+> +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+>  
+>      ret = kvm_arch_destroy_vcpu(cpu);
+>      if (ret < 0) {
+> @@ -353,10 +393,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+>          }
+>      }
+>  
+> -    vcpu = g_malloc0(sizeof(*vcpu));
+> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+> -    vcpu->kvm_fd = cpu->kvm_fd;
+> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +    kvm_park_vcpu(cpu);
+>  err:
+>      return ret;
+>  }
+> @@ -377,6 +414,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+>          if (cpu->vcpu_id == vcpu_id) {
+>              int kvm_fd;
+>  
+> +            trace_kvm_get_vcpu(vcpu_id);
+> +
+>              QLIST_REMOVE(cpu, node);
+>              kvm_fd = cpu->kvm_fd;
+>              g_free(cpu);
+> @@ -384,7 +423,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+>          }
+>      }
+>  
+> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
+> +    return -ENOENT;
+>  }
+>  
+>  int kvm_init_vcpu(CPUState *cpu, Error **errp)
+> @@ -395,19 +434,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+>  
+>      trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+>  
+> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
+> +    ret = kvm_create_vcpu(cpu);
+>      if (ret < 0) {
+> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
+> +        error_setg_errno(errp, -ret,
+> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
+>                           kvm_arch_vcpu_id(cpu));
+>          goto err;
+>      }
+>  
+> -    cpu->kvm_fd = ret;
+> -    cpu->kvm_state = s;
+> -    cpu->vcpu_dirty = true;
+> -    cpu->dirty_pages = 0;
+> -    cpu->throttle_us_per_full = 0;
+> -
+>      mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+>      if (mmap_size < 0) {
+>          ret = mmap_size;
+> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+> index 399aaeb0ec..cdd0c95c09 100644
+> --- a/accel/kvm/trace-events
+> +++ b/accel/kvm/trace-events
+> @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
+>  kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
+>  kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
+>  kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+> +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+> +kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
+> +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+> +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+>  kvm_irqchip_commit_routes(void) ""
+>  kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
+>  kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index ee9025f8e9..8137e6a44c 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -465,6 +465,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+>  int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+>                                         hwaddr *phys_addr);
+>  
+> +/**
+> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
+> + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
+> + *
+> + * @returns: 0 when success, errno (<0) when failed.
+> + */
+> +int kvm_create_vcpu(CPUState *cpu);
+> +
+> +/**
+> + * kvm_park_vcpu - Park QEMU KVM vCPU context
+> + * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
+> + *
+> + * @returns: none
+> + */
+> +void kvm_park_vcpu(CPUState *cpu);
+> +
+>  #endif /* NEED_CPU_H */
+>  
+>  void kvm_cpu_synchronize_state(CPUState *cpu);

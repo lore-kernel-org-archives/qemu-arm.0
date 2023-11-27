@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp750801ejt;
-        Sun, 26 Nov 2023 20:22:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEioHDUoudLal0vH3pTBz5rYE+QK8TG7QJqfnhv2IYjkP9VYd3HfUjhv0w3QHJfTEKaWA+M
-X-Received: by 2002:a05:6402:1659:b0:543:5852:2f1d with SMTP id s25-20020a056402165900b0054358522f1dmr7564248edx.37.1701058935706;
-        Sun, 26 Nov 2023 20:22:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701058935; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp751505ejt;
+        Sun, 26 Nov 2023 20:24:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGuHjcgkMicGgkwBnnaoYnmrfUb9H3H3PG5K645PjON4qA8fsvWJRKjDdSd1V/+A/7hiMZi
+X-Received: by 2002:a05:620a:851d:b0:775:d031:a0c9 with SMTP id pe29-20020a05620a851d00b00775d031a0c9mr9529317qkn.2.1701059084198;
+        Sun, 26 Nov 2023 20:24:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701059084; cv=none;
         d=google.com; s=arc-20160816;
-        b=GdtXByEzEGuWsrGDBqmDEKfyFpXuMnxpDnFuTBdM3QilFs1fpx1g1f3lAO64qyo+KK
-         oSBsKbFmG5v7wB+SWw6xUXH7/HRhXRa8JxyeGCKHj2Lve4lIQqa2G8pdVYqCzMMtLABl
-         l8CGFmIh4lg80Gj5fGfnnklSM/W6dLEi0JDDfyoeDotHXFbaVvZBILR3o5x6S6bnm3v2
-         SY2/iSkoQ+zukYx7eQUCBA7aR7l9d3GSNlmfv8/HkjS+lbhvitqv5/J7buwc/5c+CueQ
-         WX6eA5qUMNfZzQTxMwYoLXtJpA5GEIoIfaKnBPnb9g2bpWJxZapO1BiW/J/gDy8Wqs9e
-         Z9bQ==
+        b=LGNrnJg42cnCUHhZIZ5gUddzPG5EuAdfetxtKCCmfLUrx5XoJrc6GX4VOnjdwopf+6
+         gn4v05YMp8QcyPQuVXzrJa5TwaEAAaEW1FlrzTCVpzm1ZNTWBPSYCczglw7gCqKa8Jx5
+         qK1LGNwoaIYD/mvPL2ZMgMLtyUqGyYdz1VPOXPOoO2H3g/RY2iZGLI36OaX0AXCK71pM
+         2+YV74z/vM6jEYe68KGPLuTEey1gL+gJCQOhQJkzKmTz/2TLClJYIvw1DnqgOuiIJ+WF
+         OfEv4jnehrjCyOncE/ayENa2rDUcMBYTTH/fCqZSrx9tvaNUaWkipXLReeSdq4nXMAC1
+         CD3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=/nhwhp1t2bW5Fo7bLOGwpFSKPeOVuScueoe5eRS0QQw=;
+        bh=bzPDIBNHl9MOltvsq0mdaA199GFM+p4KPfAkED3jE+o=;
         fh=YIs6fi4xux502Hus2tOT+Pch2Mum+BNamOXX0MbPDX4=;
-        b=ih2RgElyupiZm6LTnllH487pIOUZ3ODBIYUrXoA0ejR3X6djPds5w39rALtLfQeday
-         j/1pS6kJN44ay8SsbzT1pyoCIfc0Qu+0GTNeRn9LqIhQEKGh5eQyKNC1uMWeNfvbYKyD
-         yZzqMk/3wjTq2/UL9QckASC1cnkqo2fNXzq0QqFwU8BBQ7PDnu+xVVZHNEF2rxKnlv3P
-         QI7jdx/SVXrbMsjaMdoI5nnjIepOwbEIQj2pyQ8prYllQ5MPjGinplTkEAGIOHYrLuzo
-         CTtJQBGwTFbwBSuWAI3bBa2uPV91PImB3iciarvIPI/CZ8kQZLXEyjPEuxFTCzJJb/qU
-         mkNA==
+        b=OY2jbKqt5/1kxrDyNtxelLcyNktzbfwx1g/D+cp7UymUOknOKLuOThWTJxkrYpeuv8
+         b/j0cJKzjO7FUdgAjX+/4ROnHhUK28gR5PyAsBFqm8RZ44tY2wRKOUV/PMpcv4gNXIHO
+         DIhDJ4ObXiiFccJ8KI8yHQbSgHRMWdDqTZgf/bC8a2HBQ/lGfp4OJpS4c4xs+yJeOZmb
+         M97I0ztNRVmVrmZu73bBtUdpo/pHUqCJ9rtgbqB7hVvNwjkP1lDJ5YfvvS7qwRS+oKec
+         ok4VvS+mvdcym/oXnTbDh2OB1ejaJSlPjrqW71wQQVICI0z5fCrT8/V/V/zNkSI0w6TA
+         zH5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hSmXNFgK;
-       spf=pass (google.com: domain of kvm+bounces-2475-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-2475-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TvmuOIf8;
+       spf=pass (google.com: domain of kvm+bounces-2476-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-2476-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-2475-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id e15-20020a50a68f000000b00546d6e1d32esi4481211edc.84.2023.11.26.20.22.15
+Return-Path: <kvm+bounces-2476-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id h14-20020a37de0e000000b0077da484038csi2139140qkj.579.2023.11.26.20.24.44
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Nov 2023 20:22:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-2475-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Sun, 26 Nov 2023 20:24:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-2476-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hSmXNFgK;
-       spf=pass (google.com: domain of kvm+bounces-2475-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-2475-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TvmuOIf8;
+       spf=pass (google.com: domain of kvm+bounces-2476-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-2476-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 620771F20A9D
-	for <alex.bennee@linaro.org>; Mon, 27 Nov 2023 04:22:15 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id D6AD91C2084D
+	for <alex.bennee@linaro.org>; Mon, 27 Nov 2023 04:24:43 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 478FF524B;
-	Mon, 27 Nov 2023 04:22:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 48FD45382;
+	Mon, 27 Nov 2023 04:24:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="hSmXNFgK"
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="TvmuOIf8"
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8E529F0
-	for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:22:08 -0800 (PST)
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D540712D
+	for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:24:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701058927;
+	s=mimecast20190719; t=1701059076;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/nhwhp1t2bW5Fo7bLOGwpFSKPeOVuScueoe5eRS0QQw=;
-	b=hSmXNFgKzNTKWu+ySKTjOfgvZ9sRGx88w/QyCoWZ8v8vwUJ7BiiqBXSwCLgNJ1x9YtSWdV
-	H5jYhXZB6DmGn/ABuCoiSjzyj7sekQ5Mr6ZqbALO9NJk90NiJr6MfAYzD1Sh3FZGaB1MV6
-	/igEV6DNGZVwSuGv7/JrKC6GtSCoSHw=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=bzPDIBNHl9MOltvsq0mdaA199GFM+p4KPfAkED3jE+o=;
+	b=TvmuOIf8gJnw6MVUszLE88kYPgpYlm//RkBcCmVDrPzqbDBWOd7sozAfmEM/fzsbExiBzI
+	wOSjmeuduUT/hsBZaXp3nZykYvQSHHVvK5wVp82V3/3GZ/ELRNEbS54O7ApGcbuR/TUm/Y
+	ZP9pmznusoJfXTStFDObJU4mzNB0m94=
+Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
+ [209.85.210.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-607-5aagSRbvMXWAD4uDx9TR1g-1; Sun, 26 Nov 2023 23:22:05 -0500
-X-MC-Unique: 5aagSRbvMXWAD4uDx9TR1g-1
-Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1cfcf1e9442so6684785ad.3
-        for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:22:05 -0800 (PST)
+ us-mta-671-HYowTSKZOPqrCwwBdsFYHA-1; Sun, 26 Nov 2023 23:24:35 -0500
+X-MC-Unique: HYowTSKZOPqrCwwBdsFYHA-1
+Received: by mail-ot1-f71.google.com with SMTP id 46e09a7af769-6cd0a9b5a90so4541303a34.0
+        for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:24:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701058924; x=1701663724;
+        d=1e100.net; s=20230601; t=1701059074; x=1701663874;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/nhwhp1t2bW5Fo7bLOGwpFSKPeOVuScueoe5eRS0QQw=;
-        b=E3ugrucDGTQdkb9na7gd3u5SUpw/B8VG+5CwgetuRL92Ny62ROjoMmHAzncdIX/f5r
-         bHw+9nYpuCfZePPckjKwsCgK4bVZNe8GQr6jA4p0NZ1t62xcvZho8sCzugf4jWtDh3fT
-         hwbl7RBQ/gKg4LqG7GQ1aIDC/iUdE/ppxUL8iUrOqbthP/1V3woQ1Dl3AVKei2Ke3uot
-         I86t2pR7dOwLxF9EBfkk2GxE87gHvlumM704qnhSGZJZPn7PMDQZsrwPo9q7Sb4oUdMB
-         44ZYMuOuTeqai9v8fbvjrrFnTipiXfaUS429WCHjmTTGQ8XTNqkBox5yp1UDlMsfkO0M
-         KLqQ==
-X-Gm-Message-State: AOJu0Yw8fjt6zHAVMtHNYUeC0qTp+I9H/v7Ie7CkIe9ay5vOoFLl1c1q
-	RALarXzx82fU3uBwCXJLcFzSafZ0aiyzcTN3mxGzhj/6nMkZ+nfA4xIn791qGEfSWaN/+29w2h3
-	+v+bG+Cnc7Prj
-X-Received: by 2002:a17:902:9898:b0:1cf:cf43:303a with SMTP id s24-20020a170902989800b001cfcf43303amr1786947plp.64.1701058924751;
-        Sun, 26 Nov 2023 20:22:04 -0800 (PST)
-X-Received: by 2002:a17:902:9898:b0:1cf:cf43:303a with SMTP id s24-20020a170902989800b001cfcf43303amr1786940plp.64.1701058924515;
-        Sun, 26 Nov 2023 20:22:04 -0800 (PST)
+        bh=bzPDIBNHl9MOltvsq0mdaA199GFM+p4KPfAkED3jE+o=;
+        b=vHZ/tL884uifQb5rqEg2jUf74HaOX3ha/suPXHWAj6ajSnslVla96JzHFxUdh0ZqKf
+         3z8LP1Wudj0mUyH9NlAGWcareY7nrzlMkzi1M/WmIc40ep/zkeS8Ut0dbfkUNzN1O3vt
+         SrDgFfw2euk58xlvdYVFuNxGQWLBpfClWbceBsFrJkcyRDd5FKTUdcHa3erUL00AXKhY
+         o5w0nXDRZTwOcsm3LsM6LANQP317lyI0pOAr8TIZdWjo3uSnv7BdS3dbTKA6p8p8yFDA
+         9tm3vV28UK1GgwfB1RGBF46fXU2DxNVWIxR2oWR1C5DQwSSqOPz6/rlWRtV5+ljKuV/V
+         paIg==
+X-Gm-Message-State: AOJu0Yy5wQyGIvqrB6/mVA/m4XIvZIudbuHgarSgp/sJy9uJfwLEuhRA
+	0bUsvkyjM3v8ZjDpQ9zS2L5JWDaNaxgeNxOSXbhzHBkHHuahn/RNAHCefV7j2YnpLvRHJkN3QD7
+	Ebu1yNKVJXeMr
+X-Received: by 2002:a05:6871:e70f:b0:1fa:132a:9b00 with SMTP id qa15-20020a056871e70f00b001fa132a9b00mr11727291oac.1.1701059074747;
+        Sun, 26 Nov 2023 20:24:34 -0800 (PST)
+X-Received: by 2002:a05:6871:e70f:b0:1fa:132a:9b00 with SMTP id qa15-20020a056871e70f00b001fa132a9b00mr11727285oac.1.1701059074542;
+        Sun, 26 Nov 2023 20:24:34 -0800 (PST)
 Received: from [192.168.68.51] ([43.252.115.3])
-        by smtp.gmail.com with ESMTPSA id q8-20020a17090311c800b001cf57ea953csm7140277plh.290.2023.11.26.20.22.01
+        by smtp.gmail.com with ESMTPSA id m22-20020aa78a16000000b00692cb1224casm6337813pfa.183.2023.11.26.20.24.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Nov 2023 20:22:04 -0800 (PST)
-Message-ID: <6d1cdfc7-803f-438f-b210-1eddb34aeba7@redhat.com>
-Date: Mon, 27 Nov 2023 15:21:59 +1100
+        Sun, 26 Nov 2023 20:24:34 -0800 (PST)
+Message-ID: <903f8425-3c49-4f21-80e9-24f208045c96@redhat.com>
+Date: Mon, 27 Nov 2023 15:24:29 +1100
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -100,20 +100,20 @@ List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 09/16] target/arm/kvm: Have kvm_arm_pmu_set_irq
- take a ARMCPU argument
+Subject: Re: [PATCH-for-9.0 10/16] target/arm/kvm: Have kvm_arm_vcpu_init take
+ a ARMCPU argument
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  kvm@vger.kernel.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20231123183518.64569-1-philmd@linaro.org>
- <20231123183518.64569-10-philmd@linaro.org>
+ <20231123183518.64569-11-philmd@linaro.org>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20231123183518.64569-10-philmd@linaro.org>
+In-Reply-To: <20231123183518.64569-11-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: QXZGparY1kbF
+X-TUID: STs+g9/6cg4F
 
 
 On 11/24/23 05:35, Philippe Mathieu-Daudé wrote:
@@ -123,11 +123,9 @@ On 11/24/23 05:35, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/arm/kvm_arm.h | 4 ++--
->   hw/arm/virt.c        | 2 +-
->   target/arm/kvm.c     | 6 +++---
->   3 files changed, 6 insertions(+), 6 deletions(-)
-> 
+>   target/arm/kvm.c | 11 +++++------
+>   1 file changed, 5 insertions(+), 6 deletions(-)
+>
 
 Reviewed-by: Gavin Shan <gshan@redhat.com>
 

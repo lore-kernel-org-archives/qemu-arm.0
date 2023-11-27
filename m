@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp745077ejt;
-        Sun, 26 Nov 2023 20:05:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH74VzHm/qBqkgyLKK2zjpnbfRUuRnirtt0r3Cgqp+p3S8iTkriktg8fYvJBEZkuoy7kXhJ
-X-Received: by 2002:a05:6a00:2296:b0:6cb:735c:67af with SMTP id f22-20020a056a00229600b006cb735c67afmr14309213pfe.0.1701057928973;
-        Sun, 26 Nov 2023 20:05:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701057928; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp745939ejt;
+        Sun, 26 Nov 2023 20:07:48 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGS/81U8gycIMhgXRP0ZN91dQRhyCTpT9FjIe3JNAINjU2p0L8gkKuC9vJnkppWWHHddWDl
+X-Received: by 2002:a05:620a:4c96:b0:77d:5f33:b3d8 with SMTP id to22-20020a05620a4c9600b0077d5f33b3d8mr7086380qkn.2.1701058068615;
+        Sun, 26 Nov 2023 20:07:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701058068; cv=none;
         d=google.com; s=arc-20160816;
-        b=dMAw9s13o9iJltoc9xNlVDlHmDv6PtLYVtdbRB3m4EUmHZ3PsDCHwDRTCxZ5PNQtg0
-         84wNT3exFrlVP9Gva5rpYfphFA1QHE1E4ZrT4R1p1nGstDmRWrII2RybjD3omChXNaJP
-         aMgSOvWevkXQLn2Zgc3/PAfDrnUe5L02D8W9P7D1FA5DLHQEYWwV1SuShHdFgJhjMcUX
-         tXhZhDxHpn4+ZdtgP6nNZ3Z9pKCZZHsobsFTcIE10GjXaOiCZGy2vKbJVrtpYoh4vuGX
-         GQPV+yQtwHcpRAgYBigT3YXmpYrLGhmYz43FU05g5/IfuGC550rPtB3FwA1RsI8xdRab
-         0DzQ==
+        b=iLwNAb8/1QznuTrcOFPKJBo1CEro79G0p5oqD1rUIm8wL7LG7z8If/KKyKkQrwOziy
+         8+6ecS84/DG6NpNqqhXffmAkV+ZmcxUjjJnNyLvaAt8u53/HlNUf8zm9p/8bsQR/ivDZ
+         I34rve6YQNkQ1cg5TgElsCr6qcq0dL8vHPXh8mKX+KOxaEocnxO7Di0r3YLTjVdtCX5o
+         Ul++PUtCrYYN2w4OcAuMm1zaRufUBjglF291gWxecvKozlUV6U5ZayvOGfLSwl5oEt7o
+         2rmMiq8mzTa9TKM+2YK0qRxVH1PsMj+5cYZgRXI0KqWQ1irljBW2mfaAkMZKuQKMBemJ
+         lKcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=hsPrLRr4JtnyZHwPvSCPAzP5Lsw6mGAeuHQscrepkcM=;
+        bh=uOi5ccQjIN+8+wBdKqclzhUw5sb2VuINIekNHHuIl1I=;
         fh=YIs6fi4xux502Hus2tOT+Pch2Mum+BNamOXX0MbPDX4=;
-        b=MboNEE1mwG4n5Mq3CUG5q+qNoYgtg1JTFRr+1ynWi3nGUPrXHguPQ/xA01aJ31IWBq
-         lWBlw6VCMONqjmg9lsGQbwQnoxpMg4Y2FgNtR1EBVIVk7D8MFwmGCf7MmV72GWFZy2dg
-         0nLf+rsMmeltY5Epdi47aybR/r9pDe9Pc0dN8KRszyRTmePeGUfmv9PCWJfFyg+U3SoS
-         lH06+j0ccJQi8VmCxgzscWmlCd+01J+nU4drEgQTGO8TQ5JxAp0Dd9RIyUlR39hBdm4P
-         OBKIms74VNJnJLCHctKjZyNAb3xpdvfMnVBxLtR9AbE503xFCL9E6PmYF8s9q/B4+qsQ
-         RrKQ==
+        b=JC8ws0hIjgeya398PK9U7qZDr3u1hwkFsTXnDB/GkJF5nFrZjIUOwXZ+8QEy+Jce+Q
+         K6vcpSj8iYMHWE5cc13yk32qyc5hdkLT63RYN9PjQa/hL9gY/XeOdEz8jDOu3X4X20Gm
+         5evPk+F2GsqXK4FSenEjz3YFXxugKULvpSZ/UPV149PFbgbUOtIhvChOHGGe3OfDMO3a
+         VT3Wf/z8UxapH7ApcnRmqkAujn4EyNSdaHkiF1rGg/E/ib2BUsl6IQ0if+cNgUUp1pQh
+         R5hm5mZrKGSXx33BRq8P7T4PqKIya6lmTy4B1K9ihnqhAA6aVubx7UgkIzsiheNMGxho
+         r0dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AyrfaEgN;
-       spf=pass (google.com: domain of kvm+bounces-2468-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-2468-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dKnmJSXy;
+       spf=pass (google.com: domain of kvm+bounces-2470-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-2470-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-2468-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
-        by mx.google.com with ESMTPS id y16-20020a056a00191000b006cbeff5ae49si7901468pfi.3.2023.11.26.20.05.28
+Return-Path: <kvm+bounces-2470-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id dw11-20020a05620a600b00b007777245ad07si9035036qkb.480.2023.11.26.20.07.48
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Nov 2023 20:05:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-2468-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
+        Sun, 26 Nov 2023 20:07:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-2470-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AyrfaEgN;
-       spf=pass (google.com: domain of kvm+bounces-2468-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-2468-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dKnmJSXy;
+       spf=pass (google.com: domain of kvm+bounces-2470-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-2470-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id B04DFB20A3A
-	for <alex.bennee@linaro.org>; Mon, 27 Nov 2023 04:05:26 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 43D9C1C2089B
+	for <alex.bennee@linaro.org>; Mon, 27 Nov 2023 04:07:48 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 140C346B1;
-	Mon, 27 Nov 2023 04:05:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EC05846B6;
+	Mon, 27 Nov 2023 04:07:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="AyrfaEgN"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D646312D
-	for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:05:18 -0800 (PST)
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="dKnmJSXy"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2BD85E8
+	for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:07:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701057917;
+	s=mimecast20190719; t=1701058061;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=hsPrLRr4JtnyZHwPvSCPAzP5Lsw6mGAeuHQscrepkcM=;
-	b=AyrfaEgNzrjJbx2N6k7UWO3ozst3HbdUzJ5ZBWd4NNARN+47AvXMMrL2B/rfgWD0XQrJcl
-	PXBPrW1Qz5tdudp5WBm1uoYdMfIVP5LPS/A3JBhcTV6bbzNcRcZh6iSnpYBrnviroTmSRi
-	QljG2CVj0kTLewNMUoLGMmdXffqyw2o=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=uOi5ccQjIN+8+wBdKqclzhUw5sb2VuINIekNHHuIl1I=;
+	b=dKnmJSXyes823TfATwR0WRtgmKZYtmNUrcr9xB0oLZzWV1xVZii1TLUbEmacP+OC4wFXYw
+	2DxwQnDK9ebjgHHVvPkzV3AR8gKE/U8g58H6mRZjntEybiLycgq6mOZ4Hv4CIsqWz5tQ6C
+	7mA9aJMHvBbYLXOQ4FNLPk0Ws2YIoj4=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-205-5l2wIYIJPJKg8rXQRfKTTA-1; Sun, 26 Nov 2023 23:05:15 -0500
-X-MC-Unique: 5l2wIYIJPJKg8rXQRfKTTA-1
-Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-1cfc2a7e382so13243785ad.0
-        for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:05:15 -0800 (PST)
+ us-mta-342-UYChvTTcM--Ss08wPbMtZg-1; Sun, 26 Nov 2023 23:07:40 -0500
+X-MC-Unique: UYChvTTcM--Ss08wPbMtZg-1
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1cfba9f385aso20723675ad.0
+        for <kvm@vger.kernel.org>; Sun, 26 Nov 2023 20:07:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701057914; x=1701662714;
+        d=1e100.net; s=20230601; t=1701058053; x=1701662853;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hsPrLRr4JtnyZHwPvSCPAzP5Lsw6mGAeuHQscrepkcM=;
-        b=NEtVvce4mXg+ANygoUGJp002DG6LolPX3iFrcG3FJ45/Opm5XIv7yQYh87dYABGiTp
-         unU9TWOLNK7+1p/ecwF/o8nZCrMLdpFOYfgsoYqVDeM6Cs08fdaK6V2fKiBMfdGFxY0G
-         jmcxe0gFsuwcHGk7Y8d2JA/Z9zVJ7AT6wOgp+30FPDMk/IgDZXX7z4BZZZ5siACdMwJw
-         L+8kOpa12red+laSNAsuLHydV53OvqYjBaB06E/AeP8bLuyBW2LLCWVqjOFD5Dt9wWg3
-         qsgYWvnTbYRwLY+NQfAeai4P2NMIyY+Z3LqRW8vAs9D9OgdejZGAqwxMC6hWl20kIbPf
-         NMVA==
-X-Gm-Message-State: AOJu0YzNzaPpN1TJ954pYqPwWiWPCp45UV+HyRmGZYkl3SBfds0c+cDl
-	fo9LwlooluzWLBDSqo1/qq7+bM1atmyIS4cZQET98dHoWLL3Ugh5dXyLGGwXzF/UurYspohCeg3
-	DweJ/GE8k/D/E
-X-Received: by 2002:a17:902:c40d:b0:1cf:59ad:9637 with SMTP id k13-20020a170902c40d00b001cf59ad9637mr20268648plk.22.1701057914668;
-        Sun, 26 Nov 2023 20:05:14 -0800 (PST)
-X-Received: by 2002:a17:902:c40d:b0:1cf:59ad:9637 with SMTP id k13-20020a170902c40d00b001cf59ad9637mr20268627plk.22.1701057914327;
-        Sun, 26 Nov 2023 20:05:14 -0800 (PST)
+        bh=uOi5ccQjIN+8+wBdKqclzhUw5sb2VuINIekNHHuIl1I=;
+        b=qXgBMEAFx7aH/71BlrGxVtXdGJynAJkBNXp4Wi8UgNkcZbBHQ+prdB1XfV7mbRZYLr
+         PmSaYdlSC0qipysPqMX16pNRvrKTON1ckMC832RbOIFLo6hlNFd7Wea8XJjPPb56n49q
+         O+TA73IhfQ5AO6ERVof6e3zyV4CGwaMMLhcl5r1qAnhn1aXiqnRC4sMUMEfuDAJB0vh6
+         iFFT6aILaT1DVjaFsl4PNYDtWQPqxda/4950pYXPNwUL11rFt9XdWpEkLPPdig3y3vZS
+         JDbpbeqMElMUfctQGOHtbTTBO31hp0vmJlHVrcAGy+1nwhZabFAOQbtzm4da/8vbQVe6
+         Webg==
+X-Gm-Message-State: AOJu0Ywb3NiIjB7IJnXhL/uSznBNvLByFrNYiGhRBctbYJD1Is9pS0ca
+	5tMb+4KMV5eooNn8L5u0KIoqWM6bhexIIfv+HHZD0XE5Fml0NQanpwueQP+kuEvYpgQl8W99Hy3
+	RCGxBxwSjNEBBXJhYIlxz
+X-Received: by 2002:a17:903:244a:b0:1cf:c5db:937b with SMTP id l10-20020a170903244a00b001cfc5db937bmr4165720pls.48.1701058053728;
+        Sun, 26 Nov 2023 20:07:33 -0800 (PST)
+X-Received: by 2002:a17:903:244a:b0:1cf:c5db:937b with SMTP id l10-20020a170903244a00b001cfc5db937bmr4165699pls.48.1701058053473;
+        Sun, 26 Nov 2023 20:07:33 -0800 (PST)
 Received: from [192.168.68.51] ([43.252.115.3])
-        by smtp.gmail.com with ESMTPSA id c1-20020a170902d48100b001c9c8d761a3sm7102998plg.131.2023.11.26.20.05.11
+        by smtp.gmail.com with ESMTPSA id d14-20020a170902728e00b001cfd2c76338sm489163pll.197.2023.11.26.20.07.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Nov 2023 20:05:14 -0800 (PST)
-Message-ID: <52cf8040-b134-4dc6-b6ce-1d51a3dc13ef@redhat.com>
-Date: Mon, 27 Nov 2023 15:05:09 +1100
+        Sun, 26 Nov 2023 20:07:33 -0800 (PST)
+Message-ID: <215ac168-2717-499c-91b3-a2fb01e636f5@redhat.com>
+Date: Mon, 27 Nov 2023 15:07:28 +1100
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -100,22 +100,20 @@ List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 03/16] target/arm/kvm: Have
- kvm_arm_add_vcpu_properties take a ARMCPU argument
+Subject: Re: [PATCH-for-9.0 04/16] target/arm/kvm: Have kvm_arm_sve_set_vls
+ take a ARMCPU argument
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  kvm@vger.kernel.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20231123183518.64569-1-philmd@linaro.org>
- <20231123183518.64569-4-philmd@linaro.org>
+ <20231123183518.64569-5-philmd@linaro.org>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20231123183518.64569-4-philmd@linaro.org>
+In-Reply-To: <20231123183518.64569-5-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: RILcDY83XABt
-
-Hi Phil,
+X-TUID: 2VsCqyLacE+Q
 
 On 11/24/23 05:35, Philippe Mathieu-Daudé wrote:
 > Unify the "kvm_arm.h" API: All functions related to ARM vCPUs
@@ -124,79 +122,9 @@ On 11/24/23 05:35, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/arm/kvm_arm.h | 4 ++--
->   target/arm/cpu.c     | 2 +-
->   target/arm/kvm.c     | 4 ++--
->   3 files changed, 5 insertions(+), 5 deletions(-)
+>   target/arm/kvm.c | 7 +++----
+>   1 file changed, 3 insertions(+), 4 deletions(-)
 > 
 
-With the following comments resolved:
-
 Reviewed-by: Gavin Shan <gshan@redhat.com>
-
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 50967f4ae9..6fb8a5f67e 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -153,7 +153,7 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
->    * Add all KVM specific CPU properties to the CPU object. These
->    * are the CPU properties with "kvm-" prefixed names.
->    */
-> -void kvm_arm_add_vcpu_properties(Object *obj);
-> +void kvm_arm_add_vcpu_properties(ARMCPU *cpu);
->   
-
-The function's description needs to be modified since @obj has been
-renamed to @cpu?
-
-   /**
-    * kvm_arm_add_vcpu_properties:
-    * @obj: The CPU object to add the properties to
-    *
-    */
-
->   /**
->    * kvm_arm_steal_time_finalize:
-> @@ -243,7 +243,7 @@ static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
->       g_assert_not_reached();
->   }
->   
-> -static inline void kvm_arm_add_vcpu_properties(Object *obj)
-> +static inline void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->   {
->       g_assert_not_reached();
->   }
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 25e9d2ae7b..97081e0c70 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1686,7 +1686,7 @@ void arm_cpu_post_init(Object *obj)
->       }
->   
->       if (kvm_enabled()) {
-> -        kvm_arm_add_vcpu_properties(obj);
-> +        kvm_arm_add_vcpu_properties(cpu);
->       }
->   
->   #ifndef CONFIG_USER_ONLY
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 6e3fea1879..03195f5627 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -495,10 +495,10 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
->   }
->   
->   /* KVM VCPU properties should be prefixed with "kvm-". */
-> -void kvm_arm_add_vcpu_properties(Object *obj)
-> +void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->   {
-> -    ARMCPU *cpu = ARM_CPU(obj);
->       CPUARMState *env = &cpu->env;
-> +    Object *obj = OBJECT(cpu);
->   
->       if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
->           cpu->kvm_adjvtime = true;
-
-Thanks,
-Gavin
 

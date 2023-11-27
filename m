@@ -1,150 +1,134 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1228489ejt;
-        Mon, 27 Nov 2023 08:59:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHzCU0tHAgX0Dz0riFGjNRjwiiZwVB7so47cjN1R/AuoOu4s7ffbp321bMCE/BGsprcPfh9
-X-Received: by 2002:a05:6830:6b42:b0:6bb:1c30:6f3c with SMTP id dc2-20020a0568306b4200b006bb1c306f3cmr15795414otb.0.1701104349329;
-        Mon, 27 Nov 2023 08:59:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701104349; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1467497ejt;
+        Mon, 27 Nov 2023 14:58:19 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGZqi3HOriOJ1TVpPmybdlah+GPSmJPhEpnEf1G/4Yas3l8Q7IjFkuy3LP0DrT+l0A0/m1+
+X-Received: by 2002:a05:6214:558b:b0:67a:590a:10d8 with SMTP id mi11-20020a056214558b00b0067a590a10d8mr11092qvb.52.1701125899472;
+        Mon, 27 Nov 2023 14:58:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701125899; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ioi7spwIvb9eybbh+mvd7xxoP7ASeeW1MKeFe3iQ/UZUKauFnttPHPcuGCHT00NelV
-         iakVkCxKGBEEmV2NXTA2AVTZr98w3KXmsFd8G7P5Z54FT0fq/B8MzRAfHXqbL/+CKdfB
-         6tcVx9cNNH0EhO23J0Q+0M2Y3d6QJV3FLtgv5kBg6ORoBThuRvHRL2XagzjUAYd0+gtj
-         XwjaNEi7IIhmAA+8J7YLHl6F7GVoFZ0PnKqR114uPJMNX3PM6EjfxD+ic/Yg1WuqDQLw
-         Uo+F3XYsJczITS9KHtMVPkUeYf4EUVauZOY9qIoEoznCu1d9rLY00Sc9EwI48VYlIprH
-         yTLA==
+        b=mxpKhew83jbW3UiJ1XeFeFT1Id8mC3MYoWkFZ6NG3/sPTaqBZLsQsBaa2gREnvM32h
+         EpjPVKdi55WsQFxXq4MXbLEhe6XdWlaZUp1hKkxheFCdGs4Z1Ligahqthv8irPRCeUlE
+         iLYoyL/cXj6tChS+/wFQ6gl/yB4cyri2OurdIkHXUG+XiV+g5qjUNGt9BtSJAyy3o+wb
+         u1D+TnlI6CvS0iQghjDOdlV6cBAEAN7WitOtIQv6MBhjbDQttdrvVYDNYWyfqgGIIwBY
+         /OBUw6eFrrV2A65kbL/Wqsjjf8TLR722eHR+fp1H0mFYAoE2fUb5W13FKtH4SSGbO4H6
+         vk2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=Sg0DDbuymi++WbzGDQsfcymNNTEk8vno1HHizEVvSkE=;
-        fh=Zcq0JbCdP3ufDBrGVcMezb+Z09otguYcJBxp6Klg+Kg=;
-        b=JAN2oYqzcmrUiZB7HUyA6BBONgeEdKAkawKpZ59+uGaH5TMk74AOmJ/0u6r+ROmC/I
-         eBGgQuUlwCTDhkeWI5SSnAaXijAt5xo6VNId/NValJH03yb1DdbZjTfucoYfbsGXQyU4
-         gt4Uc6R+PQJmmd5mceBp7GlIZNGIb1QmhoTx3dPhT4Z6MknI7vFO1x+eyR7YggKnui8S
-         K0I6rRQDFIRlZmQsGnpgL3N32GIT5btb+fvA11k8WwXnZyxQ4a7zzCpYASaLPdmQBy8p
-         dJetR12bLsuvAEm9M48jaCndJN5ghE/zv/4+PZaVNqHZjP6PvLYn1YWoQuMK/02Ibtuw
-         SIjw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=gTlu0aOGE1bV6w881vRHPnLuuvyOM4DDe/rTu2ULrOk=;
+        fh=ZftObK+2z/ll+cIQlw/fAvGNCvvxjQv77lBZlDvPVoo=;
+        b=dfw0TsMXp4pGNF2kgwZE8jpM2EWB7VmbPCxvqZHchJeAot1WYjukTiEaY9O0dqUr7d
+         aXqH3DiVacreeP4kjyyz/PEgMmDGBEhU6+63P0+fIoZa1NvDjIjKRlgr6PPp1tjV7KiL
+         /eSqDryz7mtOhbR+WU8pDXt74vqiyNrxi3eucxs06Bo5Xfg6/vko+cpAvFdeWGZW6ij0
+         1lnZp1i23cHsVl82D1tRkuVFBg0IAs28xOSoonSRTMhdJbfR3cHXARWI47ydqU0btdIx
+         DC3d2M6uj+luUu0xap4lv6aCrNram89Bglgmy6n5GUTiLh9uDai+c0eOiAwT3MbWXeVG
+         Y7wA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=fGSPY8CF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZrAz8ma3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fk10-20020a05622a558a00b004238e50730dsi9388447qtb.73.2023.11.27.08.59.09
+        by mx.google.com with ESMTPS id eu13-20020ad44f4d000000b00677ae6209afsi9932212qvb.437.2023.11.27.14.58.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Nov 2023 08:59:09 -0800 (PST)
+        Mon, 27 Nov 2023 14:58:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=fGSPY8CF;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZrAz8ma3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r7ewA-0000qk-3Y; Mon, 27 Nov 2023 11:58:22 -0500
+	id 1r7kYK-0006Ct-Td; Mon, 27 Nov 2023 17:58:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
- id 1r7ew8-0000q5-FO; Mon, 27 Nov 2023 11:58:20 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1r7kYJ-0006CS-PG
+ for qemu-arm@nongnu.org; Mon, 27 Nov 2023 17:58:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
- id 1r7ew6-0002h3-T0; Mon, 27 Nov 2023 11:58:20 -0500
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3ARGN2wN006728; Mon, 27 Nov 2023 16:57:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=Sg0DDbuymi++WbzGDQsfcymNNTEk8vno1HHizEVvSkE=;
- b=fGSPY8CFIM7x2Y31OJnH8epTYMQL/mZGQg2Tat3ap8zC0itot/n5yQAwtkTw+hoGwe0P
- kUjCEPBLar86tK8RsOGk05CVqlD4K6IEARlQkezW4OYzxOOszP2S78N3T1Xvq6mpAtEV
- ZnYw9NBQq/2plIvqu/GVELFdPjUdWN5HEe25vpRohGvjTWtfnjMnQXD+Y61iZWEwBa6s
- 4+3wZasAR0QDPd1KYQMKKpfbwGSrdF6gcYFWuoUjNqNTW22+DAlFpdZQp/mdABBGYr4v
- 9/a6VLsrZTcu8eKeiQpWOfeorFB98JvwGkfwEybjZJ9jnwLxntCLfV+ml9T/thsmvoC0 ag== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3umxd51ec4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Nov 2023 16:57:39 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3ARGf5hZ023804;
- Mon, 27 Nov 2023 16:57:39 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3umxd51ebv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Nov 2023 16:57:39 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3ARGqbQ7009557; Mon, 27 Nov 2023 16:57:38 GMT
-Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3ukv8na0r9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Nov 2023 16:57:38 +0000
-Received: from smtpav03.wdc07v.mail.ibm.com (smtpav03.wdc07v.mail.ibm.com
- [10.39.53.230])
- by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 3ARGvboM21103224
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Nov 2023 16:57:37 GMT
-Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5BADE58062;
- Mon, 27 Nov 2023 16:57:37 +0000 (GMT)
-Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E6B3E5805A;
- Mon, 27 Nov 2023 16:57:34 +0000 (GMT)
-Received: from li-479af74c-31f9-11b2-a85c-e4ddee11713b.ibm.com (unknown
- [9.61.23.212]) by smtpav03.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 27 Nov 2023 16:57:34 +0000 (GMT)
-Message-ID: <da385a33c43f7396f7e60f96c3c983efe5e8ffc0.camel@linux.ibm.com>
-Subject: Re: [PATCH for-9.0] hw: Add compat machines for 9.0
-From: Eric Farman <farman@linux.ibm.com>
-To: Cornelia Huck <cohuck@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang
- <wangyanan55@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
- Nicholas Piggin <npiggin@gmail.com>, Daniel Henrique Barboza
- <danielhb413@gmail.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
- <clg@kaod.org>, David Gibson <david@gibson.dropbear.id.au>, Harsh Prateek
- Bora <harshpb@linux.ibm.com>, David Hildenbrand <david@redhat.com>, Ilya
- Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, Halil
- Pasic <pasic@linux.ibm.com>, Christian Borntraeger
- <borntraeger@linux.ibm.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
-Date: Mon, 27 Nov 2023 11:57:34 -0500
-In-Reply-To: <20231120094259.1191804-1-cohuck@redhat.com>
-References: <20231120094259.1191804-1-cohuck@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1r7kYF-0004pw-SE
+ for qemu-arm@nongnu.org; Mon, 27 Nov 2023 17:58:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1701125883;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gTlu0aOGE1bV6w881vRHPnLuuvyOM4DDe/rTu2ULrOk=;
+ b=ZrAz8ma3AN1ngXYQ4jlXRtuQDa0aaresemgM6iHMluwLHAoAZ63VE49tIc6xUbhCW9YS81
+ CVQygm5SRhqG7OadBCxCvvOLmeOddDp+wqwvoJH+/vH0Kf3Qr0g4+lmJgZDs7yySKY2yyN
+ Rvf/zT8wzf21KT9WQlPcqvdsAObiI78=
+Received: from mail-ot1-f72.google.com (mail-ot1-f72.google.com
+ [209.85.210.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-529-bddrmOVNMnSwMTvNI6Hfzw-1; Mon, 27 Nov 2023 17:58:01 -0500
+X-MC-Unique: bddrmOVNMnSwMTvNI6Hfzw-1
+Received: by mail-ot1-f72.google.com with SMTP id
+ 46e09a7af769-6ce0c99f117so5166762a34.2
+ for <qemu-arm@nongnu.org>; Mon, 27 Nov 2023 14:58:01 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1701125881; x=1701730681;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gTlu0aOGE1bV6w881vRHPnLuuvyOM4DDe/rTu2ULrOk=;
+ b=KNnChBtPuALl+Rn30gKXguG+ulRH62+10IS+Qu2Cog2NZu8+AtdRymeKTu85/kiJiG
+ bG0L5VPiT64IvnGT0gWvVBuI26P1pbttWX2ANaZkX8AoXQHw1/DbHVi13SgrGVVZTGgK
+ hfRmRVjm/mE78Q1BNCzIP0URWdJJ1qfD0TK+SV0N7U6VyNcj4Jv6JW7p+SAeIsi5lR2d
+ qJgbM1U+OnZlLlcMIn4KrF140FykG7upBHUP77DyM7AUYKnkfXt5NmmxFSipy5emmP0A
+ gTinA1jHaC5hD5PoJeAnc4rc6ME8EoiRDjY1OKQwM505j8wIFhNhP5BylUgofdidu0l0
+ 7lmg==
+X-Gm-Message-State: AOJu0YyyEOEzDUbxRnJbXfv7RioM2iL0Id54kfmhXuu6n/Ytp4+j3y1/
+ GCT1eTiO04riZrk+QI1TrtYdaiZI4Zl8k5RC6BKhmGs/Il6ngt4pWXxjGb6AfknHpXplwwej5SB
+ VNE3fknQAGwx8
+X-Received: by 2002:a05:6830:4390:b0:6d8:1889:72af with SMTP id
+ s16-20020a056830439000b006d8188972afmr8056033otv.2.1701125880889; 
+ Mon, 27 Nov 2023 14:58:00 -0800 (PST)
+X-Received: by 2002:a05:6830:4390:b0:6d8:1889:72af with SMTP id
+ s16-20020a056830439000b006d8188972afmr8055995otv.2.1701125880587; 
+ Mon, 27 Nov 2023 14:58:00 -0800 (PST)
+Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
+ v10-20020a056830140a00b006d834fd3399sm199108otp.59.2023.11.27.14.57.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Nov 2023 14:58:00 -0800 (PST)
+Date: Mon, 27 Nov 2023 15:57:58 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: <ankita@nvidia.com>
+Cc: <jgg@nvidia.com>, <clg@redhat.com>, <shannon.zhaosl@gmail.com>,
+ <peter.maydell@linaro.org>, <ani@anisinha.ca>, <berrange@redhat.com>,
+ <eduardo@habkost.net>, <imammedo@redhat.com>, <mst@redhat.com>,
+ <eblake@redhat.com>, <armbru@redhat.com>, <david@redhat.com>,
+ <gshan@redhat.com>, <Jonathan.Cameron@huawei.com>, <aniketa@nvidia.com>,
+ <cjia@nvidia.com>, <kwankhede@nvidia.com>, <targupta@nvidia.com>,
+ <vsethi@nvidia.com>, <acurrid@nvidia.com>, <dnigam@nvidia.com>,
+ <udhoke@nvidia.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v4 2/2] hw/acpi: Implement the SRAT GI affinity structure
+Message-ID: <20231127155758.54066105.alex.williamson@redhat.com>
+In-Reply-To: <20231119130111.761-3-ankita@nvidia.com>
+References: <20231119130111.761-1-ankita@nvidia.com>
+ <20231119130111.761-3-ankita@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: jvrrmPRfsNNZySUSOC9FcpiZLeqk-ukC
-X-Proofpoint-GUID: 560ox74gE2x8e4WuHcsbDhejmQouES6T
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.987,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-27_15,2023-11-27_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1011
- suspectscore=0 bulkscore=0 priorityscore=1501 malwarescore=0
- mlxlogscore=549 mlxscore=0 phishscore=0 spamscore=0 adultscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311270117
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=farman@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,21 +143,244 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jlWSdyd+MsyD
+X-TUID: XQlmtWhLEIrC
 
-T24gTW9uLCAyMDIzLTExLTIwIGF0IDEwOjQyICswMTAwLCBDb3JuZWxpYSBIdWNrIHdyb3RlOgo+
-IEFkZCA5LjAgbWFjaGluZSB0eXBlcyBmb3IgYXJtL2k0NDBmeC9tNjhrL3EzNS9zMzkweC9zcGFw
-ci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBDb3JuZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4K
-PiAtLS0KPiDCoGh3L2FybS92aXJ0LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgOSAr
-KysrKysrKy0KPiDCoGh3L2NvcmUvbWFjaGluZS5jwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAzICsr
-Kwo+IMKgaHcvaTM4Ni9wYy5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMyArKysK
-PiDCoGh3L2kzODYvcGNfcGlpeC5jwqDCoMKgwqDCoMKgwqDCoMKgIHwgMTcgKysrKysrKysrKysr
-KystLS0KPiDCoGh3L2kzODYvcGNfcTM1LmPCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDEzICsrKysr
-KysrKysrKy0KPiDCoGh3L202OGsvdmlydC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA5
-ICsrKysrKysrLQo+IMKgaHcvcHBjL3NwYXByLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAx
-NSArKysrKysrKysrKysrLS0KPiDCoGh3L3MzOTB4L3MzOTAtdmlydGlvLWNjdy5jIHwgMTQgKysr
-KysrKysrKysrKy0KPiDCoGluY2x1ZGUvaHcvYm9hcmRzLmjCoMKgwqDCoMKgwqDCoCB8wqAgMyAr
-KysKPiDCoGluY2x1ZGUvaHcvaTM4Ni9wYy5owqDCoMKgwqDCoMKgIHzCoCAzICsrKwo+IMKgMTAg
-ZmlsZXMgY2hhbmdlZCwgODAgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKCkFja2VkLWJ5
-OiBFcmljIEZhcm1hbiA8ZmFybWFuQGxpbnV4LmlibS5jb20+ICAjIHMzOTB4Cgo=
+On Sun, 19 Nov 2023 18:31:11 +0530
+<ankita@nvidia.com> wrote:
+
+> From: Ankit Agrawal <ankita@nvidia.com>
+>=20
+> ACPI spec provides a scheme to associate "Generic Initiators" [1]
+> (e.g. heterogeneous processors and accelerators, GPUs, and I/O devices wi=
+th
+> integrated compute or DMA engines GPUs) with Proximity Domains. This is
+> achieved using Generic Initiator Affinity Structure in SRAT. During bootu=
+p,
+> Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NU=
+MA
+> node for each unique PXM ID encountered. Qemu currently do not implement
+> these structures while building SRAT.
+>=20
+> Add GI structures while building VM ACPI SRAT. The association between
+> devices and nodes are stored using acpi-generic-initiator object. Lookup
+> presence of all such objects and use them to build these structures.
+>=20
+> The structure needs a PCI device handle [2] that consists of the device B=
+DF.
+> The vfio-pci device corresponding to the acpi-generic-initiator object is
+> located to determine the BDF.
+>=20
+> [1] ACPI Spec 6.3, Section 5.2.16.6
+> [2] ACPI Spec 6.3, Table 5.80
+>=20
+> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
+> ---
+>  hw/acpi/acpi-generic-initiator.c         | 100 +++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c                 |   3 +
+>  include/hw/acpi/acpi-generic-initiator.h |  26 ++++++
+>  3 files changed, 129 insertions(+)
+>=20
+> diff --git a/hw/acpi/acpi-generic-initiator.c b/hw/acpi/acpi-generic-init=
+iator.c
+> index 5ea51cb81e..a9222438ec 100644
+> --- a/hw/acpi/acpi-generic-initiator.c
+> +++ b/hw/acpi/acpi-generic-initiator.c
+> @@ -16,6 +16,7 @@
+>  #include "hw/pci/pci_device.h"
+>  #include "sysemu/numa.h"
+>  #include "hw/acpi/acpi-generic-initiator.h"
+> +#include "qemu/error-report.h"
+> =20
+>  OBJECT_DEFINE_TYPE_WITH_INTERFACES(AcpiGenericInitiator, acpi_generic_in=
+itiator,
+>                     ACPI_GENERIC_INITIATOR, OBJECT,
+> @@ -82,3 +83,102 @@ static void acpi_generic_initiator_class_init(ObjectC=
+lass *oc, void *data)
+>          acpi_generic_initiator_set_host_nodes,
+>          NULL, NULL);
+>  }
+> +
+> +static int acpi_generic_initiator_list(Object *obj, void *opaque)
+> +{
+> +    GSList **list =3D opaque;
+> +
+> +    if (object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
+> +        *list =3D g_slist_append(*list, ACPI_GENERIC_INITIATOR(obj));
+> +    }
+> +
+> +    object_child_foreach(obj, acpi_generic_initiator_list, opaque);
+> +    return 0;
+> +}
+> +
+> +/*
+> + * Identify Generic Initiator objects and link them into the list which =
+is
+> + * returned to the caller.
+> + *
+> + * Note: it is the caller's responsibility to free the list to avoid
+> + * memory leak.
+> + */
+> +static GSList *acpi_generic_initiator_get_list(void)
+> +{
+> +    GSList *list =3D NULL;
+> +
+> +    object_child_foreach(object_get_root(), acpi_generic_initiator_list,=
+ &list);
+> +    return list;
+> +}
+> +
+> +/*
+> + * ACPI 6.3:
+> + * Table 5-78 Generic Initiator Affinity Structure
+> + */
+> +static
+> +void build_srat_generic_pci_initiator_affinity(GArray *table_data, int n=
+ode,
+> +                                               PCIDeviceHandle *handle)
+> +{
+> +    uint8_t index;
+> +
+> +    build_append_int_noprefix(table_data, 5, 1);  /* Type */
+> +    build_append_int_noprefix(table_data, 32, 1); /* Length */
+> +    build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
+> +    build_append_int_noprefix(table_data, 1, 1);  /* Device Handle Type:=
+ PCI */
+> +    build_append_int_noprefix(table_data, node, 4);  /* Proximity Domain=
+ */
+> +
+> +    /* Device Handle - PCI */
+> +    build_append_int_noprefix(table_data, handle->segment, 2);
+> +    build_append_int_noprefix(table_data, handle->bdf, 2);
+> +    for (index =3D 0; index < 12; index++) {
+> +        build_append_int_noprefix(table_data, 0, 1);
+> +    }
+> +
+> +    build_append_int_noprefix(table_data, GEN_AFFINITY_ENABLED, 4); /* F=
+lags */
+> +    build_append_int_noprefix(table_data, 0, 4);     /* Reserved */
+> +}
+> +
+> +void build_srat_generic_pci_initiator(GArray *table_data)
+> +{
+> +    GSList *gi_list, *list =3D acpi_generic_initiator_get_list();
+> +    AcpiGenericInitiator *gi;
+> +
+> +    for (gi_list =3D list; gi_list; gi_list =3D gi_list->next) {
+> +        Object *o;
+> +        uint16List *l;
+> +        PCIDevice *pci_dev;
+> +        bool node_specified =3D false;
+> +
+> +        gi =3D gi_list->data;
+> +
+> +        /* User fails to provide a device. */
+> +        g_assert(gi->device);
+> +
+> +        o =3D object_resolve_path_type(gi->device, TYPE_PCI_DEVICE, NULL=
+);
+> +        if (!o) {
+> +            error_printf("Specified device must be a PCI device.\n");
+> +            g_assert(o);
+> +        }
+> +        pci_dev =3D PCI_DEVICE(o);
+> +
+> +        for (l =3D gi->nodelist; l; l =3D l->next) {
+> +            PCIDeviceHandle dev_handle;
+> +            dev_handle.segment =3D 0;
+> +            dev_handle.bdf =3D PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci=
+_dev)),
+> +                                                       pci_dev->devfn);
+> +            build_srat_generic_pci_initiator_affinity(table_data,
+> +                                                      l->value, &dev_han=
+dle);
+> +            node_specified =3D true;
+> +        }
+> +
+> +        if (!node_specified) {
+> +            error_report("Generic Initiator device 0:%x:%x.%x has no ass=
+ociated"
+> +                         " NUMA node.", pci_bus_num(pci_get_bus(pci_dev)=
+),
+> +                         PCI_SLOT(pci_dev->devfn), PCI_FUNC(pci_dev->dev=
+fn));
+> +            error_printf("Specify NUMA node with -nodelist option.\n");
+
+No such option, -nodelist?
+
+> +            g_assert(node_specified);
+
+I won't claim expertise in QEMU error handling, but an assert is a
+pretty harsh way to handle failures.  Thanks,
+
+Alex
+
+
+> +        }
+> +    }
+> +
+> +    g_slist_free(list);
+> +}
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 8bc35a483c..00d77327e0 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -58,6 +58,7 @@
+>  #include "migration/vmstate.h"
+>  #include "hw/acpi/ghes.h"
+>  #include "hw/acpi/viot.h"
+> +#include "hw/acpi/acpi-generic-initiator.h"
+> =20
+>  #define ARM_SPI_BASE 32
+> =20
+> @@ -558,6 +559,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+>          }
+>      }
+> =20
+> +    build_srat_generic_pci_initiator(table_data);
+> +
+>      if (ms->nvdimms_state->is_enabled) {
+>          nvdimm_build_srat(table_data);
+>      }
+> diff --git a/include/hw/acpi/acpi-generic-initiator.h b/include/hw/acpi/a=
+cpi-generic-initiator.h
+> index db3ed02c80..6fdaf887cd 100644
+> --- a/include/hw/acpi/acpi-generic-initiator.h
+> +++ b/include/hw/acpi/acpi-generic-initiator.h
+> @@ -27,4 +27,30 @@ typedef struct AcpiGenericInitiatorClass {
+>          ObjectClass parent_class;
+>  } AcpiGenericInitiatorClass;
+> =20
+> +/*
+> + * ACPI 6.3:
+> + * Table 5-81 Flags =E2=80=93 Generic Initiator Affinity Structure
+> + */
+> +typedef enum {
+> +    GEN_AFFINITY_ENABLED =3D (1 << 0), /*
+> +                                      * If clear, the OSPM ignores the c=
+ontents
+> +                                      * of the Generic Initiator/Port Af=
+finity
+> +                                      * Structure. This allows system fi=
+rmware
+> +                                      * to populate the SRAT with a stat=
+ic
+> +                                      * number of structures, but only e=
+nable
+> +                                      * them as necessary.
+> +                                      */
+> +} GenericAffinityFlags;
+> +
+> +/*
+> + * ACPI 6.3:
+> + * Table 5-80 Device Handle - PCI
+> + */
+> +typedef struct PCIDeviceHandle {
+> +    uint16_t segment;
+> +    uint16_t bdf;
+> +} PCIDeviceHandle;
+> +
+> +void build_srat_generic_pci_initiator(GArray *table_data);
+> +
+>  #endif
 

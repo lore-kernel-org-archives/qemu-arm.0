@@ -1,113 +1,88 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1151665ejt;
-        Mon, 27 Nov 2023 07:28:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGkQl0EwBP2StAIxVKCYC6DngQIkTc6UtcNG+3AZAYz0QV/G2QVlMfYxRazl3A+dT7xSxvF
-X-Received: by 2002:a05:620a:3954:b0:773:aa77:91d5 with SMTP id qs20-20020a05620a395400b00773aa7791d5mr22228261qkn.33.1701098917340;
-        Mon, 27 Nov 2023 07:28:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701098917; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1183885ejt;
+        Mon, 27 Nov 2023 08:05:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGg2zCUXpxs//WR2auCuEkOP8/oRQMGU1LXpMFPzxMl/97qLv3hHCqBJNx9nTpwaboln6Cj
+X-Received: by 2002:a81:e947:0:b0:5cb:14bb:377c with SMTP id e7-20020a81e947000000b005cb14bb377cmr9841179ywm.38.1701101142962;
+        Mon, 27 Nov 2023 08:05:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701101142; cv=none;
         d=google.com; s=arc-20160816;
-        b=zRJ2chlUyyu0Tyy6sDWaH2gdZAFbn1UM6zJECNqu1Rmu0EjJSfVWQAJ4x43eI0DF17
-         GczSCgo85pKNOdDyMs0keYywpukK5UnbtkUQlQ0GQhuA+H7TGw67N/LXyM2ZELcv2ACn
-         ZAGASL9lQl2tIeh+I9xeOG3RtkXjKRe8FrOMkFU1mdf5vrsXrY6fZ3xf8fctaHVHRxNh
-         euxVW0Nr9R9JkIklLDJH2PHh5SfOMKTdKyXufJX1POOrlCMD2rknpW3NFNu0dUuuONW6
-         mpySruKh+JVXPmsZPVlbIoQqzfTKWf8rDhF5a30AMXieezCjLkRdpYFkqkO+lAFRq+g/
-         1Ehg==
+        b=eSLUAGKvvrBQxYjAdDnMSkje0/1Dck1RNonvB52zA+ySPyphuR5pIV20C48cXFQjGD
+         fTBCsQXvOdkUWv93Ksw0V5r3BJ7AfCwLuRvf8C+pyIjxjZRaTVrkiO8psiC7tQ7THPgx
+         APkrCPEhi6Qrmh411LSU0RIDOz0kN3JgT1HNrKVJQ5Hp/n2u00Qp80PWTz3A/jpQvU6B
+         v3OyTsV5BZEMb8RFnPcm5i2b+J0nwoECjFIqYBbRGpUyV98tnqXaJSQfsuWpx6hXbj9z
+         yvD299VE94ki+6bX0/ar5HFCvvtinX4sYmXc8Er3GO9gx8lluW/doVZmnAQ3StbtAbx0
+         Jmfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=NTiLm7FDOYgVyvB+1MRn5MRXQ5p38RB29/sXJrRP5t8=;
-        fh=HXY0anWwRc5lFbFmbTyLIp+NZT61wARIoJcVaUYT18U=;
-        b=bIiFjf/TJYtMoN+4DDukzyw1qJApDiyuWZTxfxkoFCJOhj+Ug/kET4HHXKtY9S4KjG
-         tydoYQVY5/ormiZKAs6wurj2qQKmtvDsKR3I9vUex6W/WMpzZa2nMm9yED1ne/YW8y/B
-         btWVRjpVxS+94jIGV21Y95Y1ru7dzxuH795skspVkPdHZlhxuiah84uCfE9epgpmO0z8
-         A5kd7hRf46QeXeHLNCFeoTH0cbbWz9Dp/zcWQBl9GgQkUBVGfm8Exz5pUzGyr849hJZt
-         mpZU/AmRIqT3MDSEyYtGW21iI/0YSYr+FbLh9CVo/be4nRkN6YoH5w70g5iTTEE9GDA9
-         bGlg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=wGsQZaTYQyBP8o33p6BGX+e3gdAcjq+h4RlUrupOQPQ=;
+        fh=XjeWluILof3f/t2RMU9x5kUMQdajlxelk3b+5+95bRU=;
+        b=PhX1juw+rOQV/WwdxRlb67Mf+itG6gKEkBnOnQa6N8net2qej4eCdd3aVddjFz3Wjo
+         XLTTMPchU7Dk62KUuMBqMC0Hq3NeDlORclqMBbSaM6czNL/zS3VX6YjbGguaMOg+Kunk
+         ou+6i3cimR7Rrk3EkBXNXePrgO26P8Y2cnL8MkY29RXe+V7KwffEgytsVWz04ioCwR9L
+         kU8GEhoXE1DJjx8o0bN4GJKHBaCv4Dz1RS2i1HU34RG8gQYwZ60Brgm8F4LxHU02gD6p
+         HeCZKeJCDTFIuXgGO80DxUkRLYNlBp5l/7Po9SOvcpRcjb9ICcW6Xlq+Zr+VsuO8LXf+
+         aqUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ezxSa4XA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e7-20020a056122022700b0049d6bd9c98dsi2619681vko.293.2023.11.27.07.28.37
+        by mx.google.com with ESMTPS id m81-20020a817154000000b0058cc7adcbe6si6296764ywc.526.2023.11.27.08.05.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Nov 2023 07:28:37 -0800 (PST)
+        Mon, 27 Nov 2023 08:05:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ezxSa4XA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r7dXC-0004yk-Ns; Mon, 27 Nov 2023 10:28:31 -0500
+	id 1r7e72-0003aY-S1; Mon, 27 Nov 2023 11:05:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r7dX8-0004xT-N9
- for qemu-arm@nongnu.org; Mon, 27 Nov 2023 10:28:26 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r7dX7-00034Q-7F
- for qemu-arm@nongnu.org; Mon, 27 Nov 2023 10:28:26 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-54b532b261bso1804200a12.1
- for <qemu-arm@nongnu.org>; Mon, 27 Nov 2023 07:28:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701098904; x=1701703704; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NTiLm7FDOYgVyvB+1MRn5MRXQ5p38RB29/sXJrRP5t8=;
- b=ezxSa4XAxhrOv/2mNEXteTb5Z5C9LNWDa0x2xSsGo2qUO6In+MNlOXv5Vb62K6Ix7I
- B753DY/4L9x7zz86FxTqEhFzlb4hrM9d8L8nx4hKSQvx5r0Tl/3TaAwNqq6IL116X3oT
- D18JnltiPyoPs2ztSn7iNE0TItPFmUxAgsOWM7eH8ULgayIFqgbWrVtQFzW4q72jHBXx
- VnuJzzovtA1D3kDDD4TaVId01Z1uzrL6S73RB9DR06iZc6thtBLEY2CLo63gbDci+MfD
- NzapSxFZ5eskHyzEmZHiouZm3MURkGhchxEtDhSwhhheSqhciRJnFuT856flSwKZPR0x
- yZiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701098904; x=1701703704;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=NTiLm7FDOYgVyvB+1MRn5MRXQ5p38RB29/sXJrRP5t8=;
- b=Mv06Ol+Ey9gD7S0aG5keXlwfNzCZ/lJHRUpc3Li4FCIzwzH2oEHKNSv3QjldsRfKgY
- raoqcxK8pgJxclzhnq0X6vmMGVOgtO/AuZVl6IBv+EAP/cYZkwRbsqQvaEWHMBq4xL9K
- l9/znyiaK+iKhnQLN7vNL4bQG9oHb7GZ0mZPaRs+ARfQp71qO13J3ONURGi//tISs8bU
- tYgLK6kySNV9422pYX4RwOk0eaQZ4iUetXhNq7r4Pk2ilBnqLdbesZWFbbopsA1CqObb
- J5wbp5XNant8Yv/mu1J48EB7q+fCsVMMZ/WJGpkWdSoWYFnt2DZFAVkrgWIASxMsstV6
- 5GBA==
-X-Gm-Message-State: AOJu0YzELUvDAVsjXMMeGnJZxJQPZKzUYe38u1cW5nk540V9Og53CgPm
- ANco3t99SJZnaTSKIoFYEAZWYtx4msKgvyvk7WtSsQ==
-X-Received: by 2002:a50:8e42:0:b0:543:bd27:f4a9 with SMTP id
- 2-20020a508e42000000b00543bd27f4a9mr8963153edx.12.1701098903837; Mon, 27 Nov
- 2023 07:28:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <SRS0=5Qwu=HI=kaod.org=clg@ozlabs.org>)
+ id 1r7e6v-0003Sd-QY; Mon, 27 Nov 2023 11:05:27 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=5Qwu=HI=kaod.org=clg@ozlabs.org>)
+ id 1r7e6s-0001Xp-PH; Mon, 27 Nov 2023 11:05:25 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Sf9Qw3DzMz4xPf;
+ Tue, 28 Nov 2023 03:05:12 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Sf9Qm667Mz4wc0;
+ Tue, 28 Nov 2023 03:05:04 +1100 (AEDT)
+Message-ID: <145edc6c-2684-45bd-a4e7-399c98e2a3dc@kaod.org>
+Date: Mon, 27 Nov 2023 17:04:58 +0100
 MIME-Version: 1.0
-References: <20231121174051.63038-1-philmd@linaro.org>
-In-Reply-To: <20231121174051.63038-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Nov 2023 15:28:12 +0000
-Message-ID: <CAFEAcA8qz=785qBAxwaDmyPkWbMbiYA=vzSS1Lnf8jvRgxBktQ@mail.gmail.com>
-Subject: Re: [PATCH-for-8.2 0/6] hw: Free DEFINE_PROP_ARRAY()'s arrays in
- instance_finalize()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 01/10] hw/fsi: Introduce IBM's Local bus
+Content-Language: en-US
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
+References: <20231026164741.1184058-1-ninad@linux.ibm.com>
+ <20231026164741.1184058-2-ninad@linux.ibm.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20231026164741.1184058-2-ninad@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=5Qwu=HI=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,22 +98,225 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J9P6GUXkKpdw
+X-TUID: h5zQNZMjwHby
 
-On Tue, 21 Nov 2023 at 17:40, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> In few places we forget to free the array allocated by the
-> DEFINE_PROP_ARRAY() macro handlers. Fix that.
->
-> Philippe Mathieu-Daud=C3=A9 (6):
->   hw/virtio: Add VirtioPCIDeviceTypeInfo::instance_finalize field
->   hw/virtio: Free VirtIOIOMMUPCI::vdev.reserved_regions[] on finalize()
->   hw/misc/mps2-scc: Free MPS2SCC::oscclk[] array on finalize()
->   hw/nvram/xlnx-efuse: Free XlnxEFuse::ro_bits[] array on finalize()
->   hw/nvram/xlnx-efuse-ctrl: Free XlnxVersalEFuseCtrl[] "pg0-lock" array
->   hw/input/stellaris_gamepad: Free StellarisGamepad::keycodes[] array
+On 10/26/23 18:47, Ninad Palsule wrote:
+> This is a part of patchset where IBM's Flexible Service Interface is
+> introduced.
+> 
+> The LBUS is modelled to maintain the qdev bus hierarchy and to take
+> advantage of the object model to automatically generate the CFAM
+> configuration block. The configuration block presents engines in the
+> order they are attached to the CFAM's LBUS. Engine implementations
+> should subclass the LBusDevice and set the 'config' member of
+> LBusDeviceClass to match the engine's type.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+> ---
+> v2:
+> - Incorporated Joel's review comments.
+> v5:
+> - Incorporated review comments by Cedric.
+> v6:
+> - Incorporated review comments by Cedric & Daniel.
+> v7:
+> - Incorporated review comments by Philippe.
+> ---
+>   include/hw/fsi/lbus.h | 43 +++++++++++++++++++++++++
+>   hw/fsi/lbus.c         | 74 +++++++++++++++++++++++++++++++++++++++++++
+>   hw/Kconfig            |  1 +
+>   hw/fsi/Kconfig        |  2 ++
+>   hw/fsi/meson.build    |  1 +
+>   hw/meson.build        |  1 +
+>   6 files changed, 122 insertions(+)
+>   create mode 100644 include/hw/fsi/lbus.h
+>   create mode 100644 hw/fsi/lbus.c
+>   create mode 100644 hw/fsi/Kconfig
+>   create mode 100644 hw/fsi/meson.build
+> 
+> diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
+> new file mode 100644
+> index 0000000000..4fa696bbdb
+> --- /dev/null
+> +++ b/include/hw/fsi/lbus.h
+> @@ -0,0 +1,43 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * IBM Local bus and connected device structures.
+> + */
+> +#ifndef FSI_LBUS_H
+> +#define FSI_LBUS_H
+> +
+> +#include "exec/memory.h"
+> +#include "hw/qdev-core.h"
+> +
+> +#define TYPE_FSI_LBUS_DEVICE "fsi.lbus.device"
+> +OBJECT_DECLARE_TYPE(FSILBusDevice, FSILBusDeviceClass, FSI_LBUS_DEVICE)
+> +
+> +#define FSI_LBUS_MEM_REGION_SIZE  (2 * 1024 * 1024)
+> +#define FSI_LBUSDEV_IOMEM_SIZE    0x400
+> +
+> +typedef struct FSILBusDevice {
+> +    DeviceState parent;
+> +
+> +    MemoryRegion iomem;
+> +    uint32_t address;
 
-Applied to target-arm.next, thanks.
+This is address attribute is not useful. Models/HW unit generally do not
+know where their MMIO regions are mmapped in the address space.
 
--- PMM
+> +} FSILBusDevice;
+> +
+> +typedef struct FSILBusDeviceClass {
+> +    DeviceClass parent;
+> +
+> +    uint32_t config;
+> +} FSILBusDeviceClass;
+> +
+> +#define TYPE_FSI_LBUS "fsi.lbus"
+> +OBJECT_DECLARE_SIMPLE_TYPE(FSILBus, FSI_LBUS)
+> +
+> +typedef struct FSILBus {
+> +    BusState bus;
+> +
+> +    MemoryRegion mr;
+> +} FSILBus;
+> +
+> +DeviceState *lbus_create_device(FSILBus *bus, const char *type, uint32_t addr);
+> +int lbus_add_device(FSILBus *bus, FSILBusDevice *dev);
+> +#endif /* FSI_LBUS_H */
+> diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
+> new file mode 100644
+> index 0000000000..3a7335dde5
+> --- /dev/null
+> +++ b/hw/fsi/lbus.c
+> @@ -0,0 +1,74 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * IBM Local bus where FSI slaves are connected
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/fsi/lbus.h"
+> +
+> +#include "hw/qdev-properties.h"
+> +
+> +static void lbus_init(Object *o)
+> +{
+> +    FSILBus *lbus = FSI_LBUS(o);
+> +
+> +    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_FSI_LBUS,
+> +                       FSI_LBUS_MEM_REGION_SIZE - FSI_LBUSDEV_IOMEM_SIZE);
+> +}
+> +
+> +static const TypeInfo lbus_info = {
+> +    .name = TYPE_FSI_LBUS,
+> +    .parent = TYPE_BUS,
+> +    .instance_init = lbus_init,
+> +    .instance_size = sizeof(FSILBus),
+> +};
+> +
+> +static Property lbus_device_props[] = {
+> +    DEFINE_PROP_UINT32("address", FSILBusDevice, address, 0),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+
+Please remove lbus_device_props
+
+> +DeviceState *lbus_create_device(FSILBus *bus, const char *type, uint32_t addr)
+
+This routine is only used once in a realize handler which could propagate
+a possible error. Please remove.
+
+> +{
+> +    DeviceState *ds;
+> +    BusState *state = BUS(bus);
+> +    FSILBusDevice *dev;
+> +
+> +    ds = qdev_new(type);
+> +    qdev_prop_set_uint32(ds, "address", addr);
+> +    qdev_realize_and_unref(ds, state, &error_fatal);
+> +
+> +    dev = FSI_LBUS_DEVICE(ds);
+> +    memory_region_add_subregion(&bus->mr, dev->address,
+> +                                &dev->iomem);
+> +
+> +    return ds;
+> +}
+> +
+> +static void lbus_device_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->bus_type = TYPE_FSI_LBUS;
+> +    device_class_set_props(dc, lbus_device_props);
+> +}
+> +
+> +static const TypeInfo lbus_device_type_info = {
+> +    .name = TYPE_FSI_LBUS_DEVICE,
+> +    .parent = TYPE_DEVICE,
+> +    .instance_size = sizeof(FSILBusDevice),
+> +    .abstract = true,
+> +    .class_init = lbus_device_class_init,
+> +    .class_size = sizeof(FSILBusDeviceClass),
+> +};
+> +
+> +static void lbus_register_types(void)
+> +{
+> +    type_register_static(&lbus_info);
+> +    type_register_static(&lbus_device_type_info);
+> +}
+> +
+> +type_init(lbus_register_types);
+> diff --git a/hw/Kconfig b/hw/Kconfig
+> index 9ca7b38c31..2c00936c28 100644
+> --- a/hw/Kconfig
+> +++ b/hw/Kconfig
+> @@ -9,6 +9,7 @@ source core/Kconfig
+>   source cxl/Kconfig
+>   source display/Kconfig
+>   source dma/Kconfig
+> +source fsi/Kconfig
+>   source gpio/Kconfig
+>   source hyperv/Kconfig
+>   source i2c/Kconfig
+> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+> new file mode 100644
+> index 0000000000..e650c660f0
+> --- /dev/null
+> +++ b/hw/fsi/Kconfig
+> @@ -0,0 +1,2 @@
+> +config FSI_LBUS
+> +    bool
+> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+> new file mode 100644
+> index 0000000000..4074d3a7d2
+> --- /dev/null
+> +++ b/hw/fsi/meson.build
+> @@ -0,0 +1 @@
+> +system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
+> diff --git a/hw/meson.build b/hw/meson.build
+> index f01fac4617..463d702683 100644
+> --- a/hw/meson.build
+> +++ b/hw/meson.build
+> @@ -44,6 +44,7 @@ subdir('virtio')
+>   subdir('watchdog')
+>   subdir('xen')
+>   subdir('xenpv')
+> +subdir('fsi')
+>   
+>   subdir('alpha')
+>   subdir('arm')
+
+The meson.build file is not modified which means the new files are compiled.
+
+Thanks,
+
+C.
+

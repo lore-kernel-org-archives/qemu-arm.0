@@ -1,80 +1,114 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp393569ejt;
-        Sun, 26 Nov 2023 06:43:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE4kZ3o4NUFf7FNg78proJvhaWT/rxMkovZVYHPUTdGGPtAZtJxs+MdtX1GY9pQ+U4HaRsM
-X-Received: by 2002:a05:6808:d51:b0:3b8:5f6c:955c with SMTP id w17-20020a0568080d5100b003b85f6c955cmr4945606oik.26.1701009822209;
-        Sun, 26 Nov 2023 06:43:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701009822; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1151665ejt;
+        Mon, 27 Nov 2023 07:28:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGkQl0EwBP2StAIxVKCYC6DngQIkTc6UtcNG+3AZAYz0QV/G2QVlMfYxRazl3A+dT7xSxvF
+X-Received: by 2002:a05:620a:3954:b0:773:aa77:91d5 with SMTP id qs20-20020a05620a395400b00773aa7791d5mr22228261qkn.33.1701098917340;
+        Mon, 27 Nov 2023 07:28:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701098917; cv=none;
         d=google.com; s=arc-20160816;
-        b=ftA0oiXLrc3UGfikMYsqSSo+OLa9ZCneOO/fKNoBhCcwAefcYd22i3Qi3MXhAwsbBb
-         FfYUHf92ibTg1SRn/Ho382vk7M/a5d8SwbB14tJmiWFAZRhLa2VVMkMM7XMj40nPYk0u
-         xNfGpFnnNRCCmaW3rgscn/+gqRgj3K7Gt0nUnz/1T0S29jTVer7Ir9ZjrghmKOft8p1d
-         zDlQCim0+S1xLCdXmo2KbspdiXgK4IWb8fdDsaxLNPFXYAoy0Wl9Gnlw4vE5m1OWPBq7
-         Fc4zxkWpkgzOzXm648oKC1zTvSVufjlRJzM6myjxKcPUP7p1YOdA3Gt3UAtdftcdG6eA
-         uPJw==
+        b=zRJ2chlUyyu0Tyy6sDWaH2gdZAFbn1UM6zJECNqu1Rmu0EjJSfVWQAJ4x43eI0DF17
+         GczSCgo85pKNOdDyMs0keYywpukK5UnbtkUQlQ0GQhuA+H7TGw67N/LXyM2ZELcv2ACn
+         ZAGASL9lQl2tIeh+I9xeOG3RtkXjKRe8FrOMkFU1mdf5vrsXrY6fZ3xf8fctaHVHRxNh
+         euxVW0Nr9R9JkIklLDJH2PHh5SfOMKTdKyXufJX1POOrlCMD2rknpW3NFNu0dUuuONW6
+         mpySruKh+JVXPmsZPVlbIoQqzfTKWf8rDhF5a30AMXieezCjLkRdpYFkqkO+lAFRq+g/
+         1Ehg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:mime-version
-         :subject:date:from;
-        bh=UmrO/ngo3tngtKbM2Sz9lwnMYWTyNhkO8vdYMib9GKo=;
-        fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
-        b=CMymyLOf5Y6E5n0N+zcsBbaPCk9465GPP8LvDZYYhl0Ca1KAeRSFkymXfPquOMbg3S
-         q+B55nbinDokE6f0QQjjY/l3e6evWL1HrD5GuSpad7J5sAZEIUGF76l49i/N1hy2nhQd
-         dw7lsUV2fmNHYbR9xzVTPIiaQiI9Fhd0ZB7novwQOw7J/PZzd98zEdfl6b8UPw8+wlWN
-         j3Jng2tHLuxGKXqEzKYtP+GyTDCjs+lrFmvw2h9FKGwkEx3QMv5ZwYI4tYh4m2xT1SD3
-         w24lqF0BZU1yY1TTv8bvcl25/I18cqsY1gwfeuuJO3904oFHQgEmXlZK6OVdD6YEE1dl
-         KIrg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=NTiLm7FDOYgVyvB+1MRn5MRXQ5p38RB29/sXJrRP5t8=;
+        fh=HXY0anWwRc5lFbFmbTyLIp+NZT61wARIoJcVaUYT18U=;
+        b=bIiFjf/TJYtMoN+4DDukzyw1qJApDiyuWZTxfxkoFCJOhj+Ug/kET4HHXKtY9S4KjG
+         tydoYQVY5/ormiZKAs6wurj2qQKmtvDsKR3I9vUex6W/WMpzZa2nMm9yED1ne/YW8y/B
+         btWVRjpVxS+94jIGV21Y95Y1ru7dzxuH795skspVkPdHZlhxuiah84uCfE9epgpmO0z8
+         A5kd7hRf46QeXeHLNCFeoTH0cbbWz9Dp/zcWQBl9GgQkUBVGfm8Exz5pUzGyr849hJZt
+         mpZU/AmRIqT3MDSEyYtGW21iI/0YSYr+FbLh9CVo/be4nRkN6YoH5w70g5iTTEE9GDA9
+         bGlg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ezxSa4XA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10-20020ad451ca000000b0067a24d32783si3592988qvq.50.2023.11.26.06.43.42
+        by mx.google.com with ESMTPS id e7-20020a056122022700b0049d6bd9c98dsi2619681vko.293.2023.11.27.07.28.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Nov 2023 06:43:42 -0800 (PST)
+        Mon, 27 Nov 2023 07:28:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ezxSa4XA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r7GLe-0003HS-3Y; Sun, 26 Nov 2023 09:43:02 -0500
+	id 1r7dXC-0004yk-Ns; Mon, 27 Nov 2023 10:28:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1r7GLI-0003Ft-69; Sun, 26 Nov 2023 09:42:43 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1r7GLF-0006XR-GH; Sun, 26 Nov 2023 09:42:39 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id F249011EF6A;
- Sun, 26 Nov 2023 14:42:33 +0000 (UTC)
-From: ~inesvarhol <inesvarhol@git.sr.ht>
-Date: Wed, 15 Nov 2023 09:04:50 +0100
-Subject: [PATCH qemu 2/2] hw/arm: Add minimal support for the B-L475E-IOT01A
- board
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1r7dX8-0004xT-N9
+ for qemu-arm@nongnu.org; Mon, 27 Nov 2023 10:28:26 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1r7dX7-00034Q-7F
+ for qemu-arm@nongnu.org; Mon, 27 Nov 2023 10:28:26 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-54b532b261bso1804200a12.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Nov 2023 07:28:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1701098904; x=1701703704; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NTiLm7FDOYgVyvB+1MRn5MRXQ5p38RB29/sXJrRP5t8=;
+ b=ezxSa4XAxhrOv/2mNEXteTb5Z5C9LNWDa0x2xSsGo2qUO6In+MNlOXv5Vb62K6Ix7I
+ B753DY/4L9x7zz86FxTqEhFzlb4hrM9d8L8nx4hKSQvx5r0Tl/3TaAwNqq6IL116X3oT
+ D18JnltiPyoPs2ztSn7iNE0TItPFmUxAgsOWM7eH8ULgayIFqgbWrVtQFzW4q72jHBXx
+ VnuJzzovtA1D3kDDD4TaVId01Z1uzrL6S73RB9DR06iZc6thtBLEY2CLo63gbDci+MfD
+ NzapSxFZ5eskHyzEmZHiouZm3MURkGhchxEtDhSwhhheSqhciRJnFuT856flSwKZPR0x
+ yZiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1701098904; x=1701703704;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=NTiLm7FDOYgVyvB+1MRn5MRXQ5p38RB29/sXJrRP5t8=;
+ b=Mv06Ol+Ey9gD7S0aG5keXlwfNzCZ/lJHRUpc3Li4FCIzwzH2oEHKNSv3QjldsRfKgY
+ raoqcxK8pgJxclzhnq0X6vmMGVOgtO/AuZVl6IBv+EAP/cYZkwRbsqQvaEWHMBq4xL9K
+ l9/znyiaK+iKhnQLN7vNL4bQG9oHb7GZ0mZPaRs+ARfQp71qO13J3ONURGi//tISs8bU
+ tYgLK6kySNV9422pYX4RwOk0eaQZ4iUetXhNq7r4Pk2ilBnqLdbesZWFbbopsA1CqObb
+ J5wbp5XNant8Yv/mu1J48EB7q+fCsVMMZ/WJGpkWdSoWYFnt2DZFAVkrgWIASxMsstV6
+ 5GBA==
+X-Gm-Message-State: AOJu0YzELUvDAVsjXMMeGnJZxJQPZKzUYe38u1cW5nk540V9Og53CgPm
+ ANco3t99SJZnaTSKIoFYEAZWYtx4msKgvyvk7WtSsQ==
+X-Received: by 2002:a50:8e42:0:b0:543:bd27:f4a9 with SMTP id
+ 2-20020a508e42000000b00543bd27f4a9mr8963153edx.12.1701098903837; Mon, 27 Nov
+ 2023 07:28:23 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <170100975340.4879.5844108484092111139-2@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <170100975340.4879.5844108484092111139-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, philmd@linaro.org,
- peter.maydell@linaro.org, ines.varhol@telecom-paris.fr,
- arnaud.minier@telecom-paris.fr
-Content-Type: text/plain; charset="utf-8"
+References: <20231121174051.63038-1-philmd@linaro.org>
+In-Reply-To: <20231121174051.63038-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Nov 2023 15:28:12 +0000
+Message-ID: <CAFEAcA8qz=785qBAxwaDmyPkWbMbiYA=vzSS1Lnf8jvRgxBktQ@mail.gmail.com>
+Subject: Re: [PATCH-for-8.2 0/6] hw: Free DEFINE_PROP_ARRAY()'s arrays in
+ instance_finalize()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 15
-X-Spam_score: 1.5
-X-Spam_bar: +
-X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,181 +121,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: ~inesvarhol <inesvarhol@proton.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qgHkUg9dpZDl
+X-TUID: J9P6GUXkKpdw
 
-From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+On Tue, 21 Nov 2023 at 17:40, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> In few places we forget to free the array allocated by the
+> DEFINE_PROP_ARRAY() macro handlers. Fix that.
+>
+> Philippe Mathieu-Daud=C3=A9 (6):
+>   hw/virtio: Add VirtioPCIDeviceTypeInfo::instance_finalize field
+>   hw/virtio: Free VirtIOIOMMUPCI::vdev.reserved_regions[] on finalize()
+>   hw/misc/mps2-scc: Free MPS2SCC::oscclk[] array on finalize()
+>   hw/nvram/xlnx-efuse: Free XlnxEFuse::ro_bits[] array on finalize()
+>   hw/nvram/xlnx-efuse-ctrl: Free XlnxVersalEFuseCtrl[] "pg0-lock" array
+>   hw/input/stellaris_gamepad: Free StellarisGamepad::keycodes[] array
 
-This commit adds a new B-L475E-IOT01A board using the STM32L475VG SoC.
-The implementation is derived from the Netduino Plus 2 machine.
-There are no peripherals implemented yet, only memory regions.
+Applied to target-arm.next, thanks.
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- MAINTAINERS                             |  7 +++
- configs/devices/arm-softmmu/default.mak |  1 +
- hw/arm/Kconfig                          |  6 ++
- hw/arm/b-l475e-iot01a.c                 | 79 +++++++++++++++++++++++++
- hw/arm/meson.build                      |  1 +
- 5 files changed, 94 insertions(+)
- create mode 100644 hw/arm/b-l475e-iot01a.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 32458d41dd..6ae9ca3ef4 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1130,6 +1130,13 @@ S: Maintained
- F: hw/arm/stm32l4x5_soc.c
- F: include/hw/arm/stm32l4x5_soc.h
-=20
-+B-L475E-IOT01A IoT Node
-+M: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+M: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/arm/b-l475e-iot01a.c
-+
- SmartFusion2
- M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-so=
-ftmmu/default.mak
-index 980c48a7d9..023faa2f75 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -19,6 +19,7 @@ CONFIG_ARM_VIRT=3Dy
- # CONFIG_NSERIES=3Dn
- # CONFIG_STELLARIS=3Dn
- # CONFIG_STM32VLDISCOVERY=3Dn
-+# CONFIG_B_L475E_IOT01A=3Dn
- # CONFIG_REALVIEW=3Dn
- # CONFIG_VERSATILE=3Dn
- # CONFIG_VEXPRESS=3Dn
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index d2b94d9a47..7520dc5cc0 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -448,6 +448,12 @@ config STM32F405_SOC
-     select STM32F4XX_SYSCFG
-     select STM32F4XX_EXTI
-=20
-+config B_L475E_IOT01A
-+    bool
-+    default y
-+    depends on TCG && ARM
-+    select STM32L4X5_SOC
-+
- config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-new file mode 100644
-index 0000000000..16e49871cd
---- /dev/null
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -0,0 +1,79 @@
-+/*
-+ * B-L475E-IOT01A Discovery Kit machine
-+ * (B-L475E-IOT01A IoT Node)
-+ *
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2023 Ines Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a c=
-opy
-+ * of this software and associated documentation files (the "Software"), to =
-deal
-+ * in the Software without restriction, including without limitation the rig=
-hts
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING F=
-ROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ *
-+ * Heavily inspired by the netduinoplus2 by Alistair Francis.
-+ * The reference used is the STMicroElectronics UM2153 User manual
-+ * Discovery kit for IoT node, multi-channel communication with STM32L4.
-+ * https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html#documentation
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/stm32l4x5_soc.h"
-+#include "hw/arm/boot.h"
-+
-+/* Main SYSCLK frequency in Hz (80MHz) */
-+#define SYSCLK_FRQ 80000000ULL
-+
-+static void b_l475e_iot01a_init(MachineState *machine)
-+{
-+    const Stm32l4x5SocClass *sc;
-+    DeviceState *dev;
-+    Clock *sysclk;
-+
-+    /* This clock doesn't need migration because it is fixed-frequency */
-+    sysclk =3D clock_new(OBJECT(machine), "SYSCLK");
-+    clock_set_hz(sysclk, SYSCLK_FRQ);
-+
-+    dev =3D qdev_new(TYPE_STM32L4X5XG_SOC);
-+    sc =3D STM32L4X5_SOC_GET_CLASS(dev);
-+    qdev_connect_clock_in(dev, "sysclk", sysclk);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       0, sc->flash_size);
-+}
-+
-+static void b_l475e_iot01a_machine_init(MachineClass *mc)
-+{
-+    static const char *machine_valid_cpu_types[] =3D {
-+        ARM_CPU_TYPE_NAME("cortex-m4"),
-+        NULL};
-+    mc->desc =3D "B-L475E-IOT01A Discovery Kit (Cortex-M4)";
-+    mc->init =3D b_l475e_iot01a_init;
-+    mc->valid_cpu_types =3D machine_valid_cpu_types;
-+
-+    /* SRAM pre-allocated as part of the SoC instantiation */
-+    mc->default_ram_size =3D 0;
-+}
-+
-+DEFINE_MACHINE("b-l475e-iot01a", b_l475e_iot01a_machine_init)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 9766da10c4..bb92b27db3 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -42,6 +42,7 @@ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c'=
-, 'raspi.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
-+arm_ss.add(when: 'CONFIG_B_L475E_IOT01A', if_true: files('b-l475e-iot01a.c'))
- arm_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_soc.c'))
- arm_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp.c', '=
-xlnx-zcu102.c'))
- arm_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal.c', 'xlnx=
--versal-virt.c'))
---=20
-2.38.5
+-- PMM

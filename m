@@ -1,68 +1,66 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1183885ejt;
-        Mon, 27 Nov 2023 08:05:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGg2zCUXpxs//WR2auCuEkOP8/oRQMGU1LXpMFPzxMl/97qLv3hHCqBJNx9nTpwaboln6Cj
-X-Received: by 2002:a81:e947:0:b0:5cb:14bb:377c with SMTP id e7-20020a81e947000000b005cb14bb377cmr9841179ywm.38.1701101142962;
-        Mon, 27 Nov 2023 08:05:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701101142; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1188506ejt;
+        Mon, 27 Nov 2023 08:10:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGL0E+jh3f8nQ/D9MNPYdqd92X53mQWOzCfaJCvtb2mYyIjLnlYFItB++1GwYxNJR1OJY8s
+X-Received: by 2002:a05:620a:244a:b0:77d:944d:f347 with SMTP id h10-20020a05620a244a00b0077d944df347mr8091690qkn.2.1701101401714;
+        Mon, 27 Nov 2023 08:10:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701101401; cv=none;
         d=google.com; s=arc-20160816;
-        b=eSLUAGKvvrBQxYjAdDnMSkje0/1Dck1RNonvB52zA+ySPyphuR5pIV20C48cXFQjGD
-         fTBCsQXvOdkUWv93Ksw0V5r3BJ7AfCwLuRvf8C+pyIjxjZRaTVrkiO8psiC7tQ7THPgx
-         APkrCPEhi6Qrmh411LSU0RIDOz0kN3JgT1HNrKVJQ5Hp/n2u00Qp80PWTz3A/jpQvU6B
-         v3OyTsV5BZEMb8RFnPcm5i2b+J0nwoECjFIqYBbRGpUyV98tnqXaJSQfsuWpx6hXbj9z
-         yvD299VE94ki+6bX0/ar5HFCvvtinX4sYmXc8Er3GO9gx8lluW/doVZmnAQ3StbtAbx0
-         Jmfg==
+        b=PnvVcYQEY7L4ShmYyGWFxxpy9Vq0yS1atAVH6IwSARHvcm1lHOsPzrN5mM7JliwrgM
+         gGt3F7t3iYKVeVEYrScvqWtjdiT1Eq2tQ8DeiA/fhmvgj9XUVZWlInceA1wC+/JSqgO2
+         B9cwRVV6AsDtAL3AyfJRyLF1o6NtxvzYKhglqctyzSyqLaJrKt1VFQeCdHREReyyg6I6
+         SLWm0Ex2XSQHK5T0Jrma/Z/JSuMz7fwCFfHuhr0oBylELLvnkgVi/DRKstQ9vzNpJJHE
+         /STQrDNRFl4olhvneUIJwOkPw9EXmWYVOHUzqbfSeuarBd0z/L2UGM++Qo24lqDbTIkJ
+         XFpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=wGsQZaTYQyBP8o33p6BGX+e3gdAcjq+h4RlUrupOQPQ=;
+        bh=61Wv2LdDa5g0x8G37AZypqYrikSxulxRQu6+/GE2flk=;
         fh=XjeWluILof3f/t2RMU9x5kUMQdajlxelk3b+5+95bRU=;
-        b=PhX1juw+rOQV/WwdxRlb67Mf+itG6gKEkBnOnQa6N8net2qej4eCdd3aVddjFz3Wjo
-         XLTTMPchU7Dk62KUuMBqMC0Hq3NeDlORclqMBbSaM6czNL/zS3VX6YjbGguaMOg+Kunk
-         ou+6i3cimR7Rrk3EkBXNXePrgO26P8Y2cnL8MkY29RXe+V7KwffEgytsVWz04ioCwR9L
-         kU8GEhoXE1DJjx8o0bN4GJKHBaCv4Dz1RS2i1HU34RG8gQYwZ60Brgm8F4LxHU02gD6p
-         HeCZKeJCDTFIuXgGO80DxUkRLYNlBp5l/7Po9SOvcpRcjb9ICcW6Xlq+Zr+VsuO8LXf+
-         aqUg==
+        b=y9p2xNpls4C7noWpqyKF5n3nFYeWFuqNaEnAOaj0n+ESQHE1fzbmxyewBe7Fq5HN1t
+         0Q9vOFBr6ZSHf6FxLW/mfYTjfaJu+R1DIpAE1qZ1p+dURepFE1Cj6M2a+SAzwxx9UL2T
+         F9E3YqhdzViNQrL+uXNMOuLWZ1mOui5gLQs/4jKS0OMNYw67gNO2SK4zGG4HAP9Mv6Jk
+         uDThXeECRuo8n+8DXxxEVL5z9qM4ycq4TP5lYXInylHj1oesbATaGUpnclqxtvc1YsB3
+         U1+DeffoABLPTNPj2vL/1fb0ffI8tVVS9DM264gJveKfM6aCkFeDVvm786A0vqkGRBSV
+         gA8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m81-20020a817154000000b0058cc7adcbe6si6296764ywc.526.2023.11.27.08.05.42
+        by mx.google.com with ESMTPS id f12-20020a05620a280c00b0077573d5c234si4700996qkp.456.2023.11.27.08.10.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Nov 2023 08:05:42 -0800 (PST)
+        Mon, 27 Nov 2023 08:10:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r7e72-0003aY-S1; Mon, 27 Nov 2023 11:05:33 -0500
+	id 1r7eB9-0005kj-Hc; Mon, 27 Nov 2023 11:09:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5Qwu=HI=kaod.org=clg@ozlabs.org>)
- id 1r7e6v-0003Sd-QY; Mon, 27 Nov 2023 11:05:27 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1r7eB7-0005kE-Vo; Mon, 27 Nov 2023 11:09:45 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5Qwu=HI=kaod.org=clg@ozlabs.org>)
- id 1r7e6s-0001Xp-PH; Mon, 27 Nov 2023 11:05:25 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Sf9Qw3DzMz4xPf;
- Tue, 28 Nov 2023 03:05:12 +1100 (AEDT)
+ id 1r7eB5-000297-KI; Mon, 27 Nov 2023 11:09:45 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Sf9X26Tlvz4xNG;
+ Tue, 28 Nov 2023 03:09:38 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Sf9Qm667Mz4wc0;
- Tue, 28 Nov 2023 03:05:04 +1100 (AEDT)
-Message-ID: <145edc6c-2684-45bd-a4e7-399c98e2a3dc@kaod.org>
-Date: Mon, 27 Nov 2023 17:04:58 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Sf9Wx4Th9z4wb0;
+ Tue, 28 Nov 2023 03:09:33 +1100 (AEDT)
+Message-ID: <edf7f3f9-c758-40a0-bcdc-d1f2607cbdbc@kaod.org>
+Date: Mon, 27 Nov 2023 17:09:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 01/10] hw/fsi: Introduce IBM's Local bus
+Subject: Re: [PATCH v7 02/10] hw/fsi: Introduce IBM's scratchpad
 Content-Language: en-US
 To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
  peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
@@ -70,20 +68,19 @@ To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
  thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
 Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
 References: <20231026164741.1184058-1-ninad@linux.ibm.com>
- <20231026164741.1184058-2-ninad@linux.ibm.com>
+ <20231026164741.1184058-3-ninad@linux.ibm.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231026164741.1184058-2-ninad@linux.ibm.com>
+In-Reply-To: <20231026164741.1184058-3-ninad@linux.ibm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=5Qwu=HI=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,18 +95,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h5zQNZMjwHby
+X-TUID: ESPOlVt5N8wE
 
 On 10/26/23 18:47, Ninad Palsule wrote:
-> This is a part of patchset where IBM's Flexible Service Interface is
-> introduced.
+> This is a part of patchset where scratchpad is introduced.
 > 
-> The LBUS is modelled to maintain the qdev bus hierarchy and to take
-> advantage of the object model to automatically generate the CFAM
-> configuration block. The configuration block presents engines in the
-> order they are attached to the CFAM's LBUS. Engine implementations
-> should subclass the LBusDevice and set the 'config' member of
-> LBusDeviceClass to match the engine's type.
+> The scratchpad provides a set of non-functional registers. The firmware
+> is free to use them, hardware does not support any special management
+> support. The scratchpad registers can be read or written from LBUS
+> slave.
+> 
+> In this model, The LBUS device is parent for the scratchpad.
 > 
 > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 > Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
@@ -119,204 +115,251 @@ On 10/26/23 18:47, Ninad Palsule wrote:
 > v5:
 > - Incorporated review comments by Cedric.
 > v6:
-> - Incorporated review comments by Cedric & Daniel.
+> - Incorporated review comments by Daniel.
 > v7:
 > - Incorporated review comments by Philippe.
+> - Cleaned up unused bits.
 > ---
->   include/hw/fsi/lbus.h | 43 +++++++++++++++++++++++++
->   hw/fsi/lbus.c         | 74 +++++++++++++++++++++++++++++++++++++++++++
->   hw/Kconfig            |  1 +
->   hw/fsi/Kconfig        |  2 ++
->   hw/fsi/meson.build    |  1 +
->   hw/meson.build        |  1 +
->   6 files changed, 122 insertions(+)
->   create mode 100644 include/hw/fsi/lbus.h
->   create mode 100644 hw/fsi/lbus.c
->   create mode 100644 hw/fsi/Kconfig
->   create mode 100644 hw/fsi/meson.build
+>   meson.build                        |  1 +
+>   hw/fsi/trace.h                     |  1 +
+>   include/hw/fsi/engine-scratchpad.h | 27 +++++++++
+>   include/hw/fsi/fsi.h               | 16 +++++
+>   hw/fsi/engine-scratchpad.c         | 93 ++++++++++++++++++++++++++++++
+>   hw/fsi/Kconfig                     |  4 ++
+>   hw/fsi/meson.build                 |  1 +
+>   hw/fsi/trace-events                |  2 +
+>   8 files changed, 145 insertions(+)
+>   create mode 100644 hw/fsi/trace.h
+>   create mode 100644 include/hw/fsi/engine-scratchpad.h
+>   create mode 100644 include/hw/fsi/fsi.h
+>   create mode 100644 hw/fsi/engine-scratchpad.c
+>   create mode 100644 hw/fsi/trace-events
 > 
-> diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
+> diff --git a/meson.build b/meson.build
+> index dcef8b1e79..793c7c1f20 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3257,6 +3257,7 @@ if have_system
+>       'hw/char',
+>       'hw/display',
+>       'hw/dma',
+> +    'hw/fsi',
+
+This should be introduced in the first patch.
+
+>       'hw/hyperv',
+>       'hw/i2c',
+>       'hw/i386',
+> diff --git a/hw/fsi/trace.h b/hw/fsi/trace.h
 > new file mode 100644
-> index 0000000000..4fa696bbdb
+> index 0000000000..ee67c7fb04
 > --- /dev/null
-> +++ b/include/hw/fsi/lbus.h
-> @@ -0,0 +1,43 @@
+> +++ b/hw/fsi/trace.h
+> @@ -0,0 +1 @@
+> +#include "trace/trace-hw_fsi.h"
+> diff --git a/include/hw/fsi/engine-scratchpad.h b/include/hw/fsi/engine-scratchpad.h
+> new file mode 100644
+> index 0000000000..4ffa871965
+> --- /dev/null
+> +++ b/include/hw/fsi/engine-scratchpad.h
+
+This model is introduced to early please drop from this patch.
+
+> @@ -0,0 +1,27 @@
 > +/*
 > + * SPDX-License-Identifier: GPL-2.0-or-later
 > + * Copyright (C) 2023 IBM Corp.
 > + *
-> + * IBM Local bus and connected device structures.
+> + * IBM scratchpad engne
 > + */
-> +#ifndef FSI_LBUS_H
-> +#define FSI_LBUS_H
+> +#ifndef FSI_ENGINE_SCRATCHPAD_H
+> +#define FSI_ENGINE_SCRATCHPAD_H
 > +
-> +#include "exec/memory.h"
-> +#include "hw/qdev-core.h"
+> +#include "hw/fsi/lbus.h"
+> +#include "hw/fsi/fsi.h"
 > +
-> +#define TYPE_FSI_LBUS_DEVICE "fsi.lbus.device"
-> +OBJECT_DECLARE_TYPE(FSILBusDevice, FSILBusDeviceClass, FSI_LBUS_DEVICE)
+> +#define ENGINE_CONFIG_NEXT            BE_BIT(0)
+> +#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
+> +#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
+> +#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
 > +
-> +#define FSI_LBUS_MEM_REGION_SIZE  (2 * 1024 * 1024)
-> +#define FSI_LBUSDEV_IOMEM_SIZE    0x400
+> +#define TYPE_FSI_SCRATCHPAD "fsi.scratchpad"
+> +#define SCRATCHPAD(obj) OBJECT_CHECK(FSIScratchPad, (obj), TYPE_FSI_SCRATCHPAD)
 > +
-> +typedef struct FSILBusDevice {
-> +    DeviceState parent;
+> +typedef struct FSIScratchPad {
+> +        FSILBusDevice parent;
 > +
-> +    MemoryRegion iomem;
-> +    uint32_t address;
-
-This is address attribute is not useful. Models/HW unit generally do not
-know where their MMIO regions are mmapped in the address space.
-
-> +} FSILBusDevice;
+> +        uint32_t reg;
+> +} FSIScratchPad;
 > +
-> +typedef struct FSILBusDeviceClass {
-> +    DeviceClass parent;
-> +
-> +    uint32_t config;
-> +} FSILBusDeviceClass;
-> +
-> +#define TYPE_FSI_LBUS "fsi.lbus"
-> +OBJECT_DECLARE_SIMPLE_TYPE(FSILBus, FSI_LBUS)
-> +
-> +typedef struct FSILBus {
-> +    BusState bus;
-> +
-> +    MemoryRegion mr;
-> +} FSILBus;
-> +
-> +DeviceState *lbus_create_device(FSILBus *bus, const char *type, uint32_t addr);
-> +int lbus_add_device(FSILBus *bus, FSILBusDevice *dev);
-> +#endif /* FSI_LBUS_H */
-> diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
+> +#endif /* FSI_ENGINE_SCRATCHPAD_H */
+> diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
 > new file mode 100644
-> index 0000000000..3a7335dde5
+> index 0000000000..b08b97f62b
 > --- /dev/null
-> +++ b/hw/fsi/lbus.c
-> @@ -0,0 +1,74 @@
+> +++ b/include/hw/fsi/fsi.h
+> @@ -0,0 +1,16 @@
 > +/*
 > + * SPDX-License-Identifier: GPL-2.0-or-later
 > + * Copyright (C) 2023 IBM Corp.
 > + *
-> + * IBM Local bus where FSI slaves are connected
+> + * IBM Flexible Service Interface
+> + */
+> +#ifndef FSI_FSI_H
+> +#define FSI_FSI_H
+> +
+> +#include "qemu/bitops.h"
+> +
+> +/* Bitwise operations at the word level. */
+> +#define BE_BIT(x)           BIT(31 - (x))
+
+31 ? BITS_PER_LONG would be better I think.
+
+> +#define BE_GENMASK(hb, lb)  MAKE_64BIT_MASK((lb), ((hb) - (lb) + 1))
+> +
+> +#endif
+> diff --git a/hw/fsi/engine-scratchpad.c b/hw/fsi/engine-scratchpad.c
+> new file mode 100644
+> index 0000000000..a8887cd613
+> --- /dev/null
+> +++ b/hw/fsi/engine-scratchpad.c
+
+DRop FSIScratchPad from this patch. It should be introduced later.
+
+However, TYPE_FSI_BUS should be introcuded now because the following
+patch needs it.
+
+
+> @@ -0,0 +1,93 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * IBM scratchpad engine
 > + */
 > +
 > +#include "qemu/osdep.h"
+> +
 > +#include "qapi/error.h"
-> +#include "hw/fsi/lbus.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
 > +
-> +#include "hw/qdev-properties.h"
+> +#include "hw/fsi/engine-scratchpad.h"
 > +
-> +static void lbus_init(Object *o)
+> +static uint64_t fsi_scratchpad_read(void *opaque, hwaddr addr, unsigned size)
 > +{
-> +    FSILBus *lbus = FSI_LBUS(o);
+> +    FSIScratchPad *s = SCRATCHPAD(opaque);
 > +
-> +    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_FSI_LBUS,
-> +                       FSI_LBUS_MEM_REGION_SIZE - FSI_LBUSDEV_IOMEM_SIZE);
+> +    trace_fsi_scratchpad_read(addr, size);
+> +
+> +    if (addr) {
+> +        return 0;
+> +    }
+> +
+> +    return s->reg;
 > +}
 > +
-> +static const TypeInfo lbus_info = {
-> +    .name = TYPE_FSI_LBUS,
-> +    .parent = TYPE_BUS,
-> +    .instance_init = lbus_init,
-> +    .instance_size = sizeof(FSILBus),
-> +};
-> +
-> +static Property lbus_device_props[] = {
-> +    DEFINE_PROP_UINT32("address", FSILBusDevice, address, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-
-Please remove lbus_device_props
-
-> +DeviceState *lbus_create_device(FSILBus *bus, const char *type, uint32_t addr)
-
-This routine is only used once in a realize handler which could propagate
-a possible error. Please remove.
-
+> +static void fsi_scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
+> +                                 unsigned size)
 > +{
-> +    DeviceState *ds;
-> +    BusState *state = BUS(bus);
-> +    FSILBusDevice *dev;
+> +    FSIScratchPad *s = SCRATCHPAD(opaque);
 > +
-> +    ds = qdev_new(type);
-> +    qdev_prop_set_uint32(ds, "address", addr);
-> +    qdev_realize_and_unref(ds, state, &error_fatal);
+> +    trace_fsi_scratchpad_write(addr, size, data);
 > +
-> +    dev = FSI_LBUS_DEVICE(ds);
-> +    memory_region_add_subregion(&bus->mr, dev->address,
-> +                                &dev->iomem);
+> +    if (addr) {
+> +        return;
+> +    }
 > +
-> +    return ds;
+> +    s->reg = data;
 > +}
 > +
-> +static void lbus_device_class_init(ObjectClass *klass, void *data)
+> +static const struct MemoryRegionOps scratchpad_ops = {
+> +    .read = fsi_scratchpad_read,
+> +    .write = fsi_scratchpad_write,
+> +    .endianness = DEVICE_BIG_ENDIAN,
+> +};
+> +
+> +static void fsi_scratchpad_realize(DeviceState *dev, Error **errp)
+> +{
+> +    FSILBusDevice *ldev = FSI_LBUS_DEVICE(dev);
+> +
+> +    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
+> +                          ldev, TYPE_FSI_SCRATCHPAD, 0x400);
+> +}
+> +
+> +static void fsi_scratchpad_reset(DeviceState *dev)
+> +{
+> +    FSIScratchPad *s = SCRATCHPAD(dev);
+> +
+> +    s->reg = 0;
+> +}
+> +
+> +static void fsi_scratchpad_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    FSILBusDeviceClass *ldc = FSI_LBUS_DEVICE_CLASS(klass);
 > +
-> +    dc->bus_type = TYPE_FSI_LBUS;
-> +    device_class_set_props(dc, lbus_device_props);
+> +    dc->realize = fsi_scratchpad_realize;
+> +    dc->reset = fsi_scratchpad_reset;
+> +
+> +    ldc->config =
+> +          ENGINE_CONFIG_NEXT            | /* valid */
+> +          0x00010000                    | /* slots */
+> +          0x00001000                    | /* version */
+> +          ENGINE_CONFIG_TYPE_SCRATCHPAD | /* type */
+> +          0x00000007;                     /* crc */
 > +}
 > +
-> +static const TypeInfo lbus_device_type_info = {
-> +    .name = TYPE_FSI_LBUS_DEVICE,
-> +    .parent = TYPE_DEVICE,
-> +    .instance_size = sizeof(FSILBusDevice),
-> +    .abstract = true,
-> +    .class_init = lbus_device_class_init,
+> +static const TypeInfo fsi_scratchpad_info = {
+> +    .name = TYPE_FSI_SCRATCHPAD,
+> +    .parent = TYPE_FSI_LBUS_DEVICE,
+> +    .instance_size = sizeof(FSIScratchPad),
+> +    .class_init = fsi_scratchpad_class_init,
 > +    .class_size = sizeof(FSILBusDeviceClass),
 > +};
 > +
-> +static void lbus_register_types(void)
+> +static void fsi_scratchpad_register_types(void)
 > +{
-> +    type_register_static(&lbus_info);
-> +    type_register_static(&lbus_device_type_info);
+> +    type_register_static(&fsi_scratchpad_info);
 > +}
 > +
-> +type_init(lbus_register_types);
-> diff --git a/hw/Kconfig b/hw/Kconfig
-> index 9ca7b38c31..2c00936c28 100644
-> --- a/hw/Kconfig
-> +++ b/hw/Kconfig
-> @@ -9,6 +9,7 @@ source core/Kconfig
->   source cxl/Kconfig
->   source display/Kconfig
->   source dma/Kconfig
-> +source fsi/Kconfig
->   source gpio/Kconfig
->   source hyperv/Kconfig
->   source i2c/Kconfig
+> +type_init(fsi_scratchpad_register_types);
 > diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-> new file mode 100644
-> index 0000000000..e650c660f0
-> --- /dev/null
+> index e650c660f0..f7c7fd1b28 100644
+> --- a/hw/fsi/Kconfig
 > +++ b/hw/fsi/Kconfig
-> @@ -0,0 +1,2 @@
-> +config FSI_LBUS
+> @@ -1,2 +1,6 @@
+> +config FSI_SCRATCHPAD
 > +    bool
-> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-> new file mode 100644
-> index 0000000000..4074d3a7d2
-> --- /dev/null
-> +++ b/hw/fsi/meson.build
-> @@ -0,0 +1 @@
-> +system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
-> diff --git a/hw/meson.build b/hw/meson.build
-> index f01fac4617..463d702683 100644
-> --- a/hw/meson.build
-> +++ b/hw/meson.build
-> @@ -44,6 +44,7 @@ subdir('virtio')
->   subdir('watchdog')
->   subdir('xen')
->   subdir('xenpv')
-> +subdir('fsi')
->   
->   subdir('alpha')
->   subdir('arm')
+> +    select FSI_LBUS
+> +
+>   config FSI_LBUS
+>       bool
 
-The meson.build file is not modified which means the new files are compiled.
+
+I am not sure we need all this config option. We will see that at the end
+when the models are ready.
+
 
 Thanks,
 
 C.
+
+
+
+> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+> index 4074d3a7d2..d45a98c223 100644
+> --- a/hw/fsi/meson.build
+> +++ b/hw/fsi/meson.build
+> @@ -1 +1,2 @@
+>   system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
+> +system_ss.add(when: 'CONFIG_FSI_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
+> diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+> new file mode 100644
+> index 0000000000..c5753e2791
+> --- /dev/null
+> +++ b/hw/fsi/trace-events
+> @@ -0,0 +1,2 @@
+> +fsi_scratchpad_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+> +fsi_scratchpad_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
 

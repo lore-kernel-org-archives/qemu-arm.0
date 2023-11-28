@@ -1,178 +1,160 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1260856ejt;
-        Mon, 27 Nov 2023 09:34:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFv20WU6x1fDLAYP9Oqk76wkCl8Ua7cS/JUCIam1fPnin1ZQMUlZtR/u0zPqLBV87Fh2Shn
-X-Received: by 2002:ac8:4f4a:0:b0:423:a49d:474d with SMTP id i10-20020ac84f4a000000b00423a49d474dmr9108279qtw.21.1701106444898;
-        Mon, 27 Nov 2023 09:34:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701106444; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1799256ejt;
+        Tue, 28 Nov 2023 03:24:06 -0800 (PST)
+X-Received: by 2002:ac2:53b4:0:b0:50b:bddf:a870 with SMTP id j20-20020ac253b4000000b0050bbddfa870mr625823lfh.58.1701170646282;
+        Tue, 28 Nov 2023 03:24:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701170646; cv=none;
         d=google.com; s=arc-20160816;
-        b=W3+WGua+1cMyLRN56vJHF7GUxj/zDnhcIQ1AeC8ipOZAXJHLa69vKB6k1AKj+S6d9n
-         uCUU77IcFgWrL+wD9/INKD/HoObybEtk10ayMNF5JF+eXiDkNSomZHmqOOZdCyFKiZxg
-         p7bYp4nOoJNmNeS1qExeaRfPIZgAjKxMty72dMMfppowAGFmJSBvNvkH0olL9SzWaoHp
-         Unc/z1xwNUx0Gq3+CDgczknbujlEemzpQ/nwc4qHsgJn0Bse4JoX7LfLANFQPK6o/Aya
-         B2vGruqBAess+xGNcVY5E5AYOIJSkUaxpNfXEfa2QcJ9rJl3ypqHzoyCeiPeBKZZF4bF
-         ZWQg==
+        b=YvjpCwagB2GP2y06Ac+bYkrO+tn62QuOZIBvaodXt9S1PsH5eLxHpQSnOj74yuCPho
+         k5iRegOcfLDHElw5tQUWsaIkHBHypbe+I7C5dtdBhQ6PNUTmi5ndNqbyENRXitJNI5m9
+         Xlxu++fN7k0nQ+uZRxZzvVscfDsX6F0omrGujZUSgy/OwcFcrAijzWHoIpjt3BbYM/cf
+         nWcyE4GFNmtRZ7nYIoFPwDSzYAF4KloWd2DB3tTJjRqnRXkmRYSgKt/FXp4FmPF97g7S
+         hR9Iiviz7z6XD4i94qWDTm9s9YZSHQg+jPTzuAEb2rAMbczIwS+SqZLQMRExxhNj2yp3
+         xO4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=VTmP2SfuKtFGsLKLcYsU/86EziA+M1ZnG6uDYIkwoU0=;
-        fh=F/7X7Seg/K4ACCh75jVriQvONgYJZg8aichyAEsNj0w=;
-        b=wOFbfsklXweRSmPhXDgYAvA3kX9sDcGwfEmndHMNYkShxKmLcrANDSXWVhmrSsDCSi
-         Z0A6I0lTa3/C1vdUBOv0Erwb1C/LCPEzRc+7f4JgrtqqGFDUFGdrMROBOnBmkllBlTBk
-         eJG5KAHv279SwDhjx/Yex0MUEkxlXvfiKQyOHJjAHxwvDAV+wtqEj/dX0Cz3aQLGY/vE
-         Ru4BN5dDk9HfJaAb6eubS4Syh27yUx+TT60PGKyH6hQRzLl8VRn9ER2ZEhGe0lY9fEZT
-         tvxwS3TFJkkz/Snk4B0C/aqU/ZVYt0Cdp8hHc3OEM6Ahwx/UK4EShEwOLMFohIMytFzW
-         cANw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=lkgqpMWNN9aIWkoN208jbZ0DCwqJ9JVKRs3aY9WvOQI=;
+        fh=/0EgXGqzibNfc+P+1wXCbjIcNyE8FKF28gd2KuMh/UY=;
+        b=ZWERSbbPuRXs1H48jDkV4J5z5iMaaDOD8TTkQE6BzTQqx6Tpts7IAprvh1bViFJXZG
+         slq84Ym1owPPfzeY6jPrTVfsGI3dMwM9d0C4HUEPVWv16sMGmGyuSOzzoL5TdqiXyn+F
+         8GKqTvrKBwNl1hBQofWo0l3eFcZ5l0hyLeRzbpujrTeUixmsyO3oEWHA3U0o4gTiP2zU
+         36d/DESspS/fdi8X/4rcEqacsmvJ3pYhDYye9K7rc6G/1jGZDazOLbgtco5mPpq4P740
+         AqZh0u9M7wCv2i9sTO/NgsYmkZgYDTU89b5qb4iuHFi/ypNHQpsZ+HiPq8qruNt6vOGW
+         By+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fs8oG/5o";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZulgWhvy;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19-20020ac85913000000b00421c3b9dbe9si9326936qty.208.2023.11.27.09.34.04
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v3-20020a197403000000b0050bc05d8c46sor94280lfe.25.2023.11.28.03.24.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Nov 2023 09:34:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 28 Nov 2023 03:24:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fs8oG/5o";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZulgWhvy;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r7fU6-0003uv-NP; Mon, 27 Nov 2023 12:33:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r7fU4-0003uB-NC
- for qemu-arm@nongnu.org; Mon, 27 Nov 2023 12:33:25 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r7fU2-0000r8-Gw
- for qemu-arm@nongnu.org; Mon, 27 Nov 2023 12:33:24 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-40859dee28cso36690095e9.0
- for <qemu-arm@nongnu.org>; Mon, 27 Nov 2023 09:33:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701106400; x=1701711200; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=VTmP2SfuKtFGsLKLcYsU/86EziA+M1ZnG6uDYIkwoU0=;
- b=fs8oG/5oyyCJQTu8Ht66+THWnjlOz/oWCiQ4ImnzRGyAQTvllqCkgwX2VkaPL95X7V
- 4ItBcc1aJiAYuBBz8JaFGFi1xAUtoVJbr/IGwHguhD45cRQLyRWOnqGAE6jzsfV2+gbu
- XggGKDT8x35ezVACgoalSocDlXpF3wtqyzdrE8PUWQ205wwrBoVfSnMQ2qQh43JFvFv1
- Gb3gwE5Avxcua/5kP60Z76X2mn3eHudD4ND4MjozY7YXTfy1lYv2kpVGh825Qcw6JMF/
- lUvFQvocGIxcBR7mGU1QFEtkI7uu37TgVWLhpUHUOVchvlp0Y6AO3G4J50gB1HvdFMx6
- BxhQ==
+        d=linaro.org; s=google; t=1701170646; x=1701775446; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lkgqpMWNN9aIWkoN208jbZ0DCwqJ9JVKRs3aY9WvOQI=;
+        b=ZulgWhvyDkfZ8DP8KgPmT7VYXjQ8iNH5xROFe+u4y031wH/8sb7/XlRzSLx4d40EKP
+         x0oN5JsLzJo9J6b+XTCCCzTrD1rnXslIMvwgdSjVNyEJD3uNPaF068leSBRPxM6oyqAu
+         CVbDmliRyTwCrc4QZZ2nbrV6GT63FV+X1genDWtyUBtAbh8tJBo1yIGS1GHKoT2zooS1
+         cUpHtfKziVP55zp8cxnndXZfZBMHmduCQy0hGk/UT4qj2mWEghI03cZcv2NFezWTBSGo
+         T3Mn1P43gP5PzMxWv1jOeVyZURhpBx+w6gUTaZnGhqxusczwvU5RKQwE3ZWEECYchVCW
+         lVWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701106400; x=1701711200;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=VTmP2SfuKtFGsLKLcYsU/86EziA+M1ZnG6uDYIkwoU0=;
- b=cUbzl4hV7YJ6syTA9pS3kU7hrthvHxqQNup9AL66b3vpAt3epccaZ3wLIJVqHynoFU
- 4qTgvHOIHpu3ixiMnrNzFDOgrV6+FxJr/VwVPS5a4XXRUbK27U7K66/JWbOrgk1iHvwj
- j+yrgM8GHmBPlpR25uR1Fm/943wCNYVXBB+WQBRs1A1woVp38nd/xXiAWeHRWWez4Pke
- uQhUnhYhIGRn05roZ3jpbRod2QikvSSBZ8lxJZpb/zT2TQJ6jo0jN3IyYdz8S3uQShCS
- 55PkbNqZ4vVnreEZJbACyV982rDxLiAkAzAd6haqzx4UouGh1IDXKUWqoYP0H40J3+XV
- m0zA==
-X-Gm-Message-State: AOJu0Yz+2DvMor6TeM8XYjmipFSRU+u5HEraebD8MVHUqS9wKAGRUQhx
- WQwY8htv+aM6umv075t/i/PsbGlLmEvgmgLfl5U=
-X-Received: by 2002:a05:600c:190a:b0:40b:3fed:cbeb with SMTP id
- j10-20020a05600c190a00b0040b3fedcbebmr5769424wmq.32.1701106399879; 
- Mon, 27 Nov 2023 09:33:19 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- iv8-20020a05600c548800b004063ea92492sm14712187wmb.22.2023.11.27.09.33.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Nov 2023 09:33:19 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	qemu-stable@nongnu.org
-Subject: [PATCH for-8.2] target/arm: Disable SME if SVE is disabled
-Date: Mon, 27 Nov 2023 17:33:18 +0000
-Message-Id: <20231127173318.674758-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1701170646; x=1701775446;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lkgqpMWNN9aIWkoN208jbZ0DCwqJ9JVKRs3aY9WvOQI=;
+        b=Tm9fni6FYvsfgPu0KV4NACS9SHNGiwp8cfTJ2wNG27SOedU+PiNlJqiPfbMpiJpNcq
+         CIFSX1GDM3ykmLzIZvsDXpMlFDOELH11o3xqi1486KWy6vCahPJFLwavFlLTDj/fGb6L
+         wWIcFUdZDomC0qG+sozjo/UdUm3gIassiwJMUhSYR/Ic2cZmY5HVReCm9PSoVZ053KDT
+         vdZEU2y2NHbj3wMA1zxx5pGmjMOOyrr6WSS4+6BsURCcQ8K5LedPP4nD+3jpkIeuyW12
+         ZIGEtcSbat7zkyeLgvihYBZiCx3GwbzRIEcQFHgJcUaS4S+UzjUi5FURZvkmNsZm4Ye/
+         2+qA==
+X-Gm-Message-State: AOJu0Yz8J8aOR3iZp7OQ9hBwuirpyxs/1f1l2dWE7CiRVX0+2p4JLon5
+	3jfgszJJ7X+YTxV+b3bef+orD71GAvwked8tlnF+Nw==
+X-Google-Smtp-Source: AGHT+IGXeLI2wCQpXZNzdB4uxDCqUyCp1OJlpKs9UU+Sg1bL32mP6ZiclXPs1YQBkS3f5h9N7YLHFQ==
+X-Received: by 2002:a05:6512:3b0b:b0:509:1301:8470 with SMTP id f11-20020a0565123b0b00b0050913018470mr13302170lfv.45.1701170645773;
+        Tue, 28 Nov 2023 03:24:05 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (crb44-h02-176-184-13-61.dsl.sta.abo.bbox.fr. [176.184.13.61])
+        by smtp.gmail.com with ESMTPSA id h9-20020a05600c314900b0040b32edf626sm11521547wmo.31.2023.11.28.03.24.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Nov 2023 03:24:05 -0800 (PST)
+Message-ID: <95cc7c22-939f-4ce0-aecd-d0ff7b0e7c9c@linaro.org>
+Date: Tue, 28 Nov 2023 12:24:02 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kBzwq639j3k8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/4] target/arm: Add support for DC CVAP & DC CVADP ins
+Content-Language: en-US
+To: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ Beata Michalska <beata.michalska@linaro.org>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: quintela@redhat.com, dgilbert@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com
+References: <20191105234100.22052-1-beata.michalska@linaro.org>
+ <20191105234100.22052-5-beata.michalska@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20191105234100.22052-5-beata.michalska@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: ZTxFOnni90Y0
 
-There is no architectural requirement that SME implies SVE, but
-our implementation currently assumes it. (FEAT_SME_FA64 does
-imply SVE.) So if you try to run a CPU with eg "-cpu max,sve=off"
-you quickly run into an assert when the guest tries to write to
-SMCR_EL1:
+Hi,
 
-#6  0x00007ffff4b38e96 in __GI___assert_fail
-    (assertion=0x5555566e69cb "sm", file=0x5555566e5b24 "../../target/arm/helper.c", line=6865, function=0x5555566e82f0 <__PRETTY_FUNCTION__.31> "sve_vqm1_for_el_sm") at ./assert/assert.c:101
-#7  0x0000555555ee33aa in sve_vqm1_for_el_sm (env=0x555557d291f0, el=2, sm=false) at ../../target/arm/helper.c:6865
-#8  0x0000555555ee3407 in sve_vqm1_for_el (env=0x555557d291f0, el=2) at ../../target/arm/helper.c:6871
-#9  0x0000555555ee3724 in smcr_write (env=0x555557d291f0, ri=0x555557da23b0, value=2147483663) at ../../target/arm/helper.c:6995
-#10 0x0000555555fd1dba in helper_set_cp_reg64 (env=0x555557d291f0, rip=0x555557da23b0, value=2147483663) at ../../target/arm/tcg/op_helper.c:839
-#11 0x00007fff60056781 in code_gen_buffer ()
+On 6/11/19 00:41, Beata Michalska wrote:
+> ARMv8.2 introduced support for Data Cache Clean instructions
+> to PoP (point-of-persistence) - DC CVAP and PoDP (point-of-deep-persistence)
+> - DV CVADP. Both specify conceptual points in a memory system where all writes
+> that are to reach them are considered persistent.
+> The support provided considers both to be actually the same so there is no
+> distinction between the two. If none is available (there is no backing store
+> for given memory) both will result in Data Cache Clean up to the point of
+> coherency. Otherwise sync for the specified range shall be performed.
+> 
+> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> ---
+>   linux-user/elfload.c |  2 ++
+>   target/arm/cpu.h     | 10 ++++++++++
+>   target/arm/cpu64.c   |  1 +
+>   target/arm/helper.c  | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>   4 files changed, 69 insertions(+)
 
-Avoid this unsupported and slightly odd combination by
-disabling SME when SVE is not present.
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2005
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-'-cpu sve=off,sme=on,sme_fa64=off' crashes in the same way, so just
-turning off FA64 isn't sufficient.  Maybe we should support
-SME-no-SVE, but for 8.2 at least turning off SME is better than
-letting users hit an assertion.
----
- target/arm/cpu.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+> +#ifndef CONFIG_USER_ONLY
+> +static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
+> +                          uint64_t value)
+> +{
+> +    ARMCPU *cpu = env_archcpu(env);
+> +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
+> +    uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
+> +    uint64_t vaddr_in = (uint64_t) value;
+> +    uint64_t vaddr = vaddr_in & ~(dline_size - 1);
+> +    void *haddr;
+> +    int mem_idx = cpu_mmu_index(env, false);
+> +
+> +    /* This won't be crossing page boundaries */
+> +    haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
+> +    if (haddr) {
+> +
+> +        ram_addr_t offset;
+> +        MemoryRegion *mr;
+> +
+> +        /* RCU lock is already being held */
+> +        mr = memory_region_from_host(haddr, &offset);
+> +
+> +        if (mr) {
+> +            memory_region_do_writeback(mr, offset, dline_size);
+> +        }
+> +    }
+> +}
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 25e9d2ae7b8..0fe268ac785 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1743,6 +1743,15 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-             return;
-         }
- 
-+        /*
-+         * FEAT_SME is not architecturally dependent on FEAT_SVE (unless
-+         * FEAT_SME_FA64 is present). However our implementation currently
-+         * assumes it, so if the user asked for sve=off then turn off SME also.
-+         */
-+        if (cpu_isar_feature(aa64_sme, cpu) && !cpu_isar_feature(aa64_sve, cpu)) {
-+            object_property_set_bool(OBJECT(cpu), "sme", false, &error_abort);
-+        }
-+
-         arm_cpu_sme_finalize(cpu, &local_err);
-         if (local_err != NULL) {
-             error_propagate(errp, local_err);
--- 
-2.34.1
 
+> +#ifndef CONFIG_USER_ONLY
+> +    /* Data Cache clean instructions up to PoP */
+> +    if (cpu_isar_feature(aa64_dcpop, cpu)) {
+
+Am I correct understanding this is a TCG-only feature?
+
+
+> +        define_one_arm_cp_reg(cpu, dcpop_reg);
+> +
+> +        if (cpu_isar_feature(aa64_dcpodp, cpu)) {
+> +            define_one_arm_cp_reg(cpu, dcpodp_reg);
+> +        }
+> +    }
+> +#endif /*CONFIG_USER_ONLY*/
+>   #endif
+>   
+>       /*

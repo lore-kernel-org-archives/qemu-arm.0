@@ -1,193 +1,177 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1809454ejt;
-        Tue, 28 Nov 2023 03:45:00 -0800 (PST)
-X-Received: by 2002:a05:6402:d6b:b0:54b:1a4c:870a with SMTP id ec43-20020a0564020d6b00b0054b1a4c870amr6776884edb.5.1701171900698;
-        Tue, 28 Nov 2023 03:45:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701171900; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1976776ejt;
+        Tue, 28 Nov 2023 07:39:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IECmpom++Izepm4XDAlS3xzoWKKHh6p5OVQJZnId6t0fwTV6Jte3t6P3hv7EjCWqiokL6K6
+X-Received: by 2002:a05:6358:7206:b0:16b:f555:4c34 with SMTP id h6-20020a056358720600b0016bf5554c34mr19332752rwa.1.1701185982789;
+        Tue, 28 Nov 2023 07:39:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701185982; cv=none;
         d=google.com; s=arc-20160816;
-        b=x9jSPbEMqf2AtnYbdK1AyDYQQ5nOzPQpsImbVL4H5nqRtM5/EpVRd5PM0as0pGa4Yr
-         nJ7wENZ3+/XRMAnwnA+MCtAYr24hw01HbpV8XXdCjNFjF5TvUGKUVCxVP19m99CAoSUr
-         KwhRdo9WhqUUQHly/0lB1biWyQfG2ohiudCcrng0UlDWQX29SvfXKIir02B69SpyaPAY
-         rx0v925K6c+80o01TunMTrIMcXqIUp8Mfpe3TpnWOUniTnE93+R0DsFfqXHa/d2ILBds
-         ZVbOsH3jBi0S/IPd3S7GZcvzwdIs64rTXWPxzAkmlI/Mt95J5f2PSTEKa9RkTDZD76py
-         LTRA==
+        b=NdsoCs5xfA7zKTLhHC4amIZJ3Hu11repjutW/8IJ+hcDcTcHDSphIhcKlyWsRGwt+f
+         vOrUrgY1XN2zG3FFrQhDH1Lhb5ufNXAou4gsuO91V5/O09JmZGgYcUQXpziWRIT52/4L
+         2kkappGM6b5fpAjvU6+oXy1FqJKnX1H/ahdnyVWX+n4SwrXTVDtTfPwWHipwjaQ5YgE9
+         R4PMFviTAlcXVmN42fY9zcLdZwdyYcWgRhllc+y9sLwLKmcH4krK8ecyLGPsFugIB8nL
+         4HPgfXyWpm8i++xD5Tu9zCmankveq4XaFQY/sBxXU/oKIho6Vu11VWutLUog2Aey/G8j
+         ddSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
          :dkim-signature;
-        bh=fY+zgyNlH3HP/fcFI3nAgR1hmj5MinaOr/zzJ49EWhA=;
-        fh=YjYa/2fMB6xNWEqzY61bQryuBlH6t+BIfyO3Kax7jCY=;
-        b=Ft/6TpSJIZBp+XQv5AitZE+TGJSJ/pcadGPfoVtnhn2wIa73ROSIuE9+JAc6YQfryS
-         gYdfl3r28CopM33lVSclLTdjlTSv9ggAy116TnptcHPdlvOzyXudN8jcPRAmc65riH9g
-         REECROmfZa34/k9H+WfIByjVrvoT6RWmharVRrMgatQy1csmKt2+VJROjKFsoY6EBU6W
-         +9BWKzhygGlWbdPODYpFF4biQy/rYF5uOtX6uBNn35lzvLB4LI7ZqqVOXY3mBC/LnOZi
-         3uxvIo5LaJ3GBGM+IVvU1b9EjCfN7HlxZ1gPdLGtO23hCYTDwpN1/nomG6dNZCBxF7Kq
-         rL8w==
+        bh=FhliJe40ILRbl4h+52+3yHEmFQKJQ8NDVsRJxhwEMPA=;
+        fh=XcUvVgt+8ycBdSg3S3keW1MWJUK/R4e9mXZqnrKydcs=;
+        b=y7gHcNlDXYPEMdLF7hvcPOGECCHO6yn1OHwRu8GG4xXRxFMBtBCqxzb75V3nIuCPeK
+         rxFw+b9nLd4JDYWkG2evUigLE/B/iw2a+lh8NAel0N4Z8SlVI4NAJSFabemkKetBlNOy
+         Rs35OyyPTtJZbs4knGWpKy4DetQ4MgOvnkSJA5llLHjcCvFBsdXM2Hc/EQH4l4NC940K
+         J9nHhjjZkYcteNuoPHwLCU7w+NmbNJdimPwCuVC4OXMTygY9yRZ0G1Y/Y0LTI3m63CMV
+         HI8XGHMcWP1N+S21ZWpCjqZcP6XN36QvxL4Fs5CD4fWrANFRmy6bB0Fys7jVTCmbyHX6
+         iBfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xeYFNJq9;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o4-20020aa7dd44000000b00543597cd198sor2493940edw.8.2023.11.28.03.45.00
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cUgpV9Yx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c11-20020ab0284b000000b007c3de7bc445si3790562uaq.225.2023.11.28.07.39.42
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 28 Nov 2023 03:45:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 Nov 2023 07:39:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xeYFNJq9;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701171900; x=1701776700; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fY+zgyNlH3HP/fcFI3nAgR1hmj5MinaOr/zzJ49EWhA=;
-        b=xeYFNJq9oapb8medstgozesUMhoIERGLKVavdoLs2YZzGXFqFqpzcringJgWR3kORk
-         So7uA9rRaPchI4+03eW9k5eGe8g5tN0bvZhnDV62ak4+U/BmSGB3zGZHDba8CAJfsRYO
-         7JbSh/LIJuBdgdv92IHoYGPEiaKocFgwbGOFAkPaX5tEpYkH8pDO0CrQu0nLvHGXqVyH
-         3vMn6vDSmPiI7Eyb8OYaeBEDkWMMFmJOptZ7YkWw6ZHsO/CPapWZ6rzIN0UGvLp8njbD
-         P46s8cSqisg6MZvgm9pqgKGmhmb8Gfc8LyOKoSkgQQjnF8TNSeJQN2DkHRnSsOjCOLwQ
-         hhMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701171900; x=1701776700;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fY+zgyNlH3HP/fcFI3nAgR1hmj5MinaOr/zzJ49EWhA=;
-        b=gVQe9Cg4sMk4JiQHWRWEDu3KasXIf4J27RrRCYtAhvWRbbuGY7ACzh3Gnzn7m2uVJd
-         K4z3OKvt/4NvbYtXt5NrGPQu6CphU3jbfOM+l3MSlcxwm25+6o/xPq026HT14Cf80TfS
-         beYNSI1gUTaDph1H+reOFxn4L5F20OUm0jZVhjQOL04ib3jYm69jy+rAZvixCCvMl90n
-         CAuvrnJr5SfhO7hYvK63PekqxCz4mTWwfZLu7jLW2U91aF0ksLlsgWO04Xh0GJFU3zaE
-         t1QPsJZsCAnyNElIx2yYi5YGIOQw2QQJGBz446H27PZ3qMFTc8LjkCjnRsgY0m0TB2dE
-         ib2w==
-X-Gm-Message-State: AOJu0YwtPapc2e3nVqvVQLgbp2ujQFQP5xjXsQ+Coew1rEO0arKWsbJz
-	xn4ga4aV32ed2byEIXwQkbbkl1oh
-X-Google-Smtp-Source: AGHT+IEWu6MtBVGxT2PopjytuHZws/TRrw4z4Q/v/tur+qUVXEM1Cu3oXAVdoFiJTmoQKnWX7doj1Q==
-X-Received: by 2002:a05:6402:d6b:b0:54b:1a4c:870a with SMTP id ec43-20020a0564020d6b00b0054b1a4c870amr6776874edb.5.1701171900323;
-        Tue, 28 Nov 2023 03:45:00 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (crb44-h02-176-184-13-61.dsl.sta.abo.bbox.fr. [176.184.13.61])
-        by smtp.gmail.com with ESMTPSA id l1-20020a056402230100b00548ab6c9f12sm6279125eda.54.2023.11.28.03.44.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Nov 2023 03:45:00 -0800 (PST)
-Message-ID: <2830159e-3d6d-430b-aed7-43b1b4fce56e@linaro.org>
-Date: Tue, 28 Nov 2023 12:44:58 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cUgpV9Yx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r80B4-0000A1-H0; Tue, 28 Nov 2023 10:39:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1r80B2-00009S-Bp
+ for qemu-devel@nongnu.org; Tue, 28 Nov 2023 10:39:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1r80B0-0005IY-Lb
+ for qemu-devel@nongnu.org; Tue, 28 Nov 2023 10:39:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1701185946;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=FhliJe40ILRbl4h+52+3yHEmFQKJQ8NDVsRJxhwEMPA=;
+ b=cUgpV9YxMXV/hBwbsEQM9CgtOMRhEdp8LRaq5DghwrGr41omAwuZt9obdm4m7sy45v5FFp
+ rVj7ISWzaxRLtfpR5j90LeDBmD9vfEli0zoHbhYj20VU8fHAQP+AB8xVu9TcYWMqu4ejrr
+ xSZbleOqS+oPr3BmD7UppLtZBHwUD+8=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-649-u01nM_pON7GmwTEx2sIurg-1; Tue,
+ 28 Nov 2023 10:39:02 -0500
+X-MC-Unique: u01nM_pON7GmwTEx2sIurg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 44EB13C1E9D2;
+ Tue, 28 Nov 2023 15:39:02 +0000 (UTC)
+Received: from localhost (unknown [10.22.8.243])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D9E11C060BB;
+ Tue, 28 Nov 2023 15:39:01 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-stable@nongnu.org
+Subject: Re: [PATCH for-8.2] target/arm: Disable SME if SVE is disabled
+In-Reply-To: <20231127173318.674758-1-peter.maydell@linaro.org>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy Ross"
+References: <20231127173318.674758-1-peter.maydell@linaro.org>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Tue, 28 Nov 2023 16:39:00 +0100
+Message-ID: <877cm1yjjf.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/4] target/arm: Add support for DC CVAP & DC CVADP ins
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: richard.henderson@linaro.org, qemu-devel@nongnu.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, quintela@redhat.com,
- dgilbert@redhat.com, shameerali.kolothum.thodi@huawei.com,
- eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com
-References: <20191105234100.22052-1-beata.michalska@linaro.org>
- <20191105234100.22052-5-beata.michalska@linaro.org>
- <95cc7c22-939f-4ce0-aecd-d0ff7b0e7c9c@linaro.org>
- <CAFEAcA-G7hbnRv52btWkpDs-1rgFqyVGgRVx-hG40i7zgsykaQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA-G7hbnRv52btWkpDs-1rgFqyVGgRVx-hG40i7zgsykaQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: t5AtyB9e/CY2
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: R7EdyYsV7VVm
 
-On 28/11/23 12:34, Peter Maydell wrote:
-> On Tue, 28 Nov 2023 at 11:24, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi,
->>
->> On 6/11/19 00:41, Beata Michalska wrote:
->>> ARMv8.2 introduced support for Data Cache Clean instructions
->>> to PoP (point-of-persistence) - DC CVAP and PoDP (point-of-deep-persistence)
->>> - DV CVADP. Both specify conceptual points in a memory system where all writes
->>> that are to reach them are considered persistent.
->>> The support provided considers both to be actually the same so there is no
->>> distinction between the two. If none is available (there is no backing store
->>> for given memory) both will result in Data Cache Clean up to the point of
->>> coherency. Otherwise sync for the specified range shall be performed.
->>>
->>> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
->>> ---
->>>    linux-user/elfload.c |  2 ++
->>>    target/arm/cpu.h     | 10 ++++++++++
->>>    target/arm/cpu64.c   |  1 +
->>>    target/arm/helper.c  | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->>>    4 files changed, 69 insertions(+)
->>
->>
->>> +#ifndef CONFIG_USER_ONLY
->>> +static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
->>> +                          uint64_t value)
->>> +{
->>> +    ARMCPU *cpu = env_archcpu(env);
->>> +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
->>> +    uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
->>> +    uint64_t vaddr_in = (uint64_t) value;
->>> +    uint64_t vaddr = vaddr_in & ~(dline_size - 1);
->>> +    void *haddr;
->>> +    int mem_idx = cpu_mmu_index(env, false);
->>> +
->>> +    /* This won't be crossing page boundaries */
->>> +    haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
->>> +    if (haddr) {
->>> +
->>> +        ram_addr_t offset;
->>> +        MemoryRegion *mr;
->>> +
->>> +        /* RCU lock is already being held */
->>> +        mr = memory_region_from_host(haddr, &offset);
->>> +
->>> +        if (mr) {
->>> +            memory_region_do_writeback(mr, offset, dline_size);
->>> +        }
->>> +    }
->>> +}
->>
->>
->>> +#ifndef CONFIG_USER_ONLY
->>> +    /* Data Cache clean instructions up to PoP */
->>> +    if (cpu_isar_feature(aa64_dcpop, cpu)) {
->>
->> Am I correct understanding this is a TCG-only feature?
-> 
-> For KVM, whether the vCPU implements these cache
-> maintenance instructions is up to it -- like all insns,
-> QEMU doesn't ever see if the guest executes them or not
-> (either the host CPU just implements them, or the host
-> kernel traps and handles them). The code in this patch is
-> specifically for the QEMU TCG emulation of them.
+On Mon, Nov 27 2023, Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Thank you Peter. In this case I'm compiling HVF, but this is the
-same reasoning. I'll add #ifdef'ry similar to ats_write() (commit
-9fb005b02d "target/arm: Restrict the Address Translate write operation
-to TCG accel"):
+> There is no architectural requirement that SME implies SVE, but
+> our implementation currently assumes it. (FEAT_SME_FA64 does
+> imply SVE.) So if you try to run a CPU with eg "-cpu max,sve=off"
+> you quickly run into an assert when the guest tries to write to
+> SMCR_EL1:
+>
+> #6  0x00007ffff4b38e96 in __GI___assert_fail
+>     (assertion=0x5555566e69cb "sm", file=0x5555566e5b24 "../../target/arm/helper.c", line=6865, function=0x5555566e82f0 <__PRETTY_FUNCTION__.31> "sve_vqm1_for_el_sm") at ./assert/assert.c:101
+> #7  0x0000555555ee33aa in sve_vqm1_for_el_sm (env=0x555557d291f0, el=2, sm=false) at ../../target/arm/helper.c:6865
+> #8  0x0000555555ee3407 in sve_vqm1_for_el (env=0x555557d291f0, el=2) at ../../target/arm/helper.c:6871
+> #9  0x0000555555ee3724 in smcr_write (env=0x555557d291f0, ri=0x555557da23b0, value=2147483663) at ../../target/arm/helper.c:6995
+> #10 0x0000555555fd1dba in helper_set_cp_reg64 (env=0x555557d291f0, rip=0x555557da23b0, value=2147483663) at ../../target/arm/tcg/op_helper.c:839
+> #11 0x00007fff60056781 in code_gen_buffer ()
+>
+> Avoid this unsupported and slightly odd combination by
+> disabling SME when SVE is not present.
+>
+> Cc: qemu-stable@nongnu.org
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2005
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> '-cpu sve=off,sme=on,sme_fa64=off' crashes in the same way, so just
+> turning off FA64 isn't sufficient.  Maybe we should support
+> SME-no-SVE, but for 8.2 at least turning off SME is better than
+> letting users hit an assertion.
+> ---
+>  target/arm/cpu.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 25e9d2ae7b8..0fe268ac785 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1743,6 +1743,15 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+>              return;
+>          }
+>  
+> +        /*
+> +         * FEAT_SME is not architecturally dependent on FEAT_SVE (unless
+> +         * FEAT_SME_FA64 is present). However our implementation currently
+> +         * assumes it, so if the user asked for sve=off then turn off SME also.
+> +         */
 
--- >8 --
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 99c7da9ca4..a05e613e10 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7629,6 +7629,7 @@ static const ARMCPRegInfo rndr_reginfo[] = {
-  static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
-                            uint64_t value)
-  {
-+#ifdef CONFIG_TCG
-      ARMCPU *cpu = env_archcpu(env);
-      /* CTR_EL0 System register -> DminLine, bits [19:16] */
-      uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
-@@ -7653,6 +7654,10 @@ static void dccvap_writefn(CPUARMState *env, 
-const ARMCPRegInfo *opaque,
-          }
-  #endif /*CONFIG_USER_ONLY*/
-      }
-+#else
-+    /* Handled by hardware accelerator. */
-+    g_assert_not_reached();
-+#endif /* CONFIG_TCG */
-  }
----
+Might be worth adding a note here that KVM currently does not support
+SME anyway? It took me a moment to remember that.
 
-Regards,
+> +        if (cpu_isar_feature(aa64_sme, cpu) && !cpu_isar_feature(aa64_sve, cpu)) {
+> +            object_property_set_bool(OBJECT(cpu), "sme", false, &error_abort);
+> +        }
+> +
+>          arm_cpu_sme_finalize(cpu, &local_err);
+>          if (local_err != NULL) {
+>              error_propagate(errp, local_err);
 
-Phil.

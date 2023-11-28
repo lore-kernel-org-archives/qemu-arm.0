@@ -1,84 +1,84 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1971593ejt;
-        Tue, 28 Nov 2023 07:32:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH+aPYuFmAc26XUZaBfoCpeNcUP7NaDPo3+SUyXpTJ20cz4rTv/zOU6zoPs8kYHr+VeDrrI
-X-Received: by 2002:a05:622a:478d:b0:423:e3da:101b with SMTP id do13-20020a05622a478d00b00423e3da101bmr240328qtb.47.1701185551172;
-        Tue, 28 Nov 2023 07:32:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701185551; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1973317ejt;
+        Tue, 28 Nov 2023 07:34:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH0dI8cGg2zn13+fi9PiWn3q6m0lzmxszMiqPPSaHd76CKHS6LpSTHusm+XwmvIy3Il4JYM
+X-Received: by 2002:a05:620a:110f:b0:77d:c900:7e5e with SMTP id o15-20020a05620a110f00b0077dc9007e5emr175667qkk.76.1701185687224;
+        Tue, 28 Nov 2023 07:34:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701185687; cv=none;
         d=google.com; s=arc-20160816;
-        b=XjRtMHdFuflFm9JMUR85+2mPQaomqKtkpFne8Y6Fmo8/Y1iXNjgmjKHvKCC7POf9r5
-         bdnkAs4DTd5caH+I0fd9gKGhr/exdcqmOsMFJ8IoLm4beJAPs46lzE4C2WthsXnvKXM4
-         oft+oYVds7TWcttweHMZXCV4Lg3oBBGjGv6L16uN0Wv7+YuDMHU0va549LWpcUPIK4gv
-         PE/16gSqC3ONtj8uTbpKov34HFudN4biIArmygqp0lYR/6wWRAm63aFdCv+ktJ/XzbWj
-         iIz/CEQvK9d4R+G7fYXmh2bqsLT14Tlx92sAJkiAJWBDXmULOB5XTT7lhRRMbi1dTuW5
-         wuLA==
+        b=tmH7Yb3j9xc6npWmUudwzBMe/gq6vuWL00A3mG24i1tThUn3ujv64lIxlksFgM4IvE
+         ZMOL2prUGZ7jHE0/q91Lc+Qqb9D5+tonmd47ip/2Zp1dk4p7i5U317ZyZ9crXXht21Zf
+         Kk+iTqc7/CEvt9sPeuSySF2STf+Ou3IGUczZMYVB2RXLN/BABxf/UClnDcqNH6Prrs2/
+         +oIQy/FobqPfchQUqrZr14iRAVGYUom03X7WVagiFtgCDZk1ZJ2PZNMYTYdDMedyRw4F
+         4WIC08EBhQ0YRMjnoOyUNQMBAICDC3i8FYx1XdfvRH0BSeWCenq/SQZBRjX+7djmnKTM
+         r0iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=bv8Xp/zwSVjcKOTD+mr4DvjM72pTURLrqcD4Sj9gONM=;
+        bh=D9lOQjODNv02P43/kZH/wGQ3w31tJS9+8fDtN67uTGI=;
         fh=wV6b0TL7corVRWTR29RPx4Qkj2+2+kgqvIqkMoPpvnQ=;
-        b=JS+XsO/YNKLh4ulEqsRPcVSOaAB/r9fRNJqE0n2AUP8/mIpz0kMrHzWZp1aYAkUcDG
-         FD+pHLh8eNpMEYXmz1GY/qBnXhd2ZYfza3PNiJgzSUaoFRCjPlXvM/awGPe6uCPRNY+O
-         g+jmr12+/2nBapukG+ZYPNdj25XVeroam66mibq0rW0Bkd+SSDvu4JlxaExmL6jGicAQ
-         l4FVyA8fXxcDfG+hrn7Tvp73IL57/xwvBc9gE5QHfSRn8E/9TgJfuGmO8TooFfpdK/gQ
-         +pzmYbitPO8w9YvBTngLRLIOuvkhqs0WaQBDDEq63UL24XVMiP8hwErTLQqGyerbR3hS
-         0gxw==
+        b=liUxqHaCNeN1uyukznNvWjL6b8sEU/lSJW3xdjScwsP5L415EewFIm0FehWlISPUIc
+         ZuqvE5HT7JoqaEBW1QH48YCz1Hq2/4y5M8MvFdaMDdPm+0x5KCpXSgrqqYrQ0IyGvcZg
+         yw1ndNo8d/tolk+N+8sj2aaLqsI3HWrZrPm4QkPfLSEwPpvq19brlhsF3M6ipy364A4M
+         rmQElp5RJLS1zSko4Gm+LhmTc1BbD2nrSPm5FyLQLvhp1pDES1Oouys0aN1ZD7jvGvQk
+         2Z4bROoVrVWjMQCKqkxUHOnezMRUIrFyHP2vPDQvDtNrCPBqGCyixv7SlJ9lR8BidIhp
+         O2bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LxL1BZX7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PyOEPxYn;
        spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a8-20020ac85b88000000b00423745f1117si11318464qta.712.2023.11.28.07.32.30
+        by mx.google.com with ESMTPS id g15-20020a05620a40cf00b0077dc3ad1272si826230qko.299.2023.11.28.07.34.47
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 07:32:31 -0800 (PST)
+        Tue, 28 Nov 2023 07:34:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LxL1BZX7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PyOEPxYn;
        spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701185550;
+	s=mimecast20190719; t=1701185686;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=bv8Xp/zwSVjcKOTD+mr4DvjM72pTURLrqcD4Sj9gONM=;
-	b=LxL1BZX73t8HjAxLy65OOfBTPEzLwNfJkG680UQwGgi9iybll8kJiIF/GY64YRw4fnT4fR
-	dDc5jseXIA+ZVLpQLmY4pDBJ5Dg5rf9mS/0/XEVVZpM6TsQ4NHf6WmD7C6bCk/q0GL0uny
-	YxsEv17BX3qmsCbZespz1f6wyAQhTWE=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=D9lOQjODNv02P43/kZH/wGQ3w31tJS9+8fDtN67uTGI=;
+	b=PyOEPxYnnLmqzSt/9tGWpQWeZbZaijgME5eUxUjzcV1La8u7aUGeav94aw1fYxN7nPXd6V
+	JywmE+4xEvvWLaoPs6550t43n/2vbi7wLYIfghMMQ2IV+NK8EcE4bM+djpzhPNwLZiZnEy
+	+0Onv9V9HTZ5HoDVtQFhVDSZVeaQJW4=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-546-Zc3FHYQaPzG41Z9-ERi_Bw-1; Tue, 28 Nov 2023 10:32:29 -0500
-X-MC-Unique: Zc3FHYQaPzG41Z9-ERi_Bw-1
-Received: by mail-ed1-f69.google.com with SMTP id 4fb4d7f45d1cf-54acdd65e8cso3250618a12.1
-        for <alex.bennee@linaro.org>; Tue, 28 Nov 2023 07:32:26 -0800 (PST)
+ us-mta-248-3__ApU8ZM82rAztPV-zUlg-1; Tue, 28 Nov 2023 10:34:43 -0500
+X-MC-Unique: 3__ApU8ZM82rAztPV-zUlg-1
+Received: by mail-lf1-f69.google.com with SMTP id 2adb3069b0e04-509901ca83eso6037541e87.0
+        for <alex.bennee@linaro.org>; Tue, 28 Nov 2023 07:34:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701185545; x=1701790345;
+        d=1e100.net; s=20230601; t=1701185682; x=1701790482;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Tg6RYWeqCpwUoQCzRfUgguApc1UmfoSk7iO/0ub4xnQ=;
-        b=WM+KKeDWAQVdcbl1O3QtMtGi0Frl6C7evq4V1F4KsbWvf+4Ge5E5S9/OQSpjMRiV6b
-         z1blqufnEQyTAFafPlqzRoh5ztrSYRON/MhaWw4zUHoPP1oVrewEGO0I3SfjgoKBOSWu
-         ydkmptRo0ipuXIXLS2MEafjSuQZkvoLQgi8D9RG7neEfchbCe053R+MbHZVvMb8j5HhI
-         xh1iJ/8RCp9XWTI/uGlH+w+cosZYPsRTkULXY2bKbT8SzBho0HBK4RHbUkWkcvEH7eHq
-         65zuG35PeMmo9Zvx8fhf4UM3n9Kabsu6qbHVvnlhOwtd50U+OPOr2Nmjq/CEYTmnCgEd
-         TC4A==
-X-Gm-Message-State: AOJu0YyAxjajYsNzyhl5tvlG5ZMIkzbVO1Z7Mv0qGJvtBg+TN/G5LpCQ
-	NTunoGNc+tlBAQXcIU+muMMNRbVKF/BrF5igCuK+6WhWwLwDw40FTWeTTloTHK6KAR11Xuj53Es
-	yqqqjalp8BW7airlu
-X-Received: by 2002:a05:6402:ca9:b0:54b:8a3:33d4 with SMTP id cn9-20020a0564020ca900b0054b08a333d4mr8894215edb.21.1701185545209;
-        Tue, 28 Nov 2023 07:32:25 -0800 (PST)
-X-Received: by 2002:a05:6402:ca9:b0:54b:8a3:33d4 with SMTP id cn9-20020a0564020ca900b0054b08a333d4mr8894200edb.21.1701185544908;
-        Tue, 28 Nov 2023 07:32:24 -0800 (PST)
+        bh=D9lOQjODNv02P43/kZH/wGQ3w31tJS9+8fDtN67uTGI=;
+        b=buEVbY87WXSblxm2+Qw9F4m4RhnpUDaa7mDXefhM7gqvf9hHpMnrayB0dqx5jIY852
+         zue6Aby3uKizQ/f9cHmj9bMBxIciksnyHYk3rB5ZaTYcVYtOA4gPw8RsAiO2iMQKk/6K
+         860q94fj6eW5Ve0AmVcGGtXrK8RyzsxS7cQDHVZvzVY56Nnrw0JPg6zSx1q1ufYM+B/b
+         6w/t3BDSst0IgQqYmA3+XbuQkRt3pyf9Ubi7dC3bhyrr+ZzkUJTXZ15g8JpFXpOoLtmI
+         LU4CmlnbLOADJfnodAARgPjUzCXkniBoG/85yEzQCoUJK1NS6CDmLUJI6bc7wdMqQv6Y
+         Pi8w==
+X-Gm-Message-State: AOJu0YycC/UeYyt1w9LBimDMycUUtPStT9w7Vk8oihXgRKtCiuvvOAcN
+	o1LMaqoasEdOESLYl6Nc/MUZXM9znK1fI0YDyiN4VRTb+bgIYhBG09YQvuicbE931U0SeVcIFAt
+	lDbcHNvhK/JsinUBE
+X-Received: by 2002:ac2:4acb:0:b0:50b:ac31:28e5 with SMTP id m11-20020ac24acb000000b0050bac3128e5mr5758131lfp.65.1701185682045;
+        Tue, 28 Nov 2023 07:34:42 -0800 (PST)
+X-Received: by 2002:ac2:4acb:0:b0:50b:ac31:28e5 with SMTP id m11-20020ac24acb000000b0050bac3128e5mr5758085lfp.65.1701185681511;
+        Tue, 28 Nov 2023 07:34:41 -0800 (PST)
 Return-Path: <imammedo@redhat.com>
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id z40-20020a509e2b000000b0054b79a10c5bsm2011932ede.1.2023.11.28.07.32.22
+        by smtp.gmail.com with ESMTPSA id d11-20020a056402000b00b0054851cd28d2sm6365832edu.79.2023.11.28.07.34.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Nov 2023 07:32:24 -0800 (PST)
-Date: Tue, 28 Nov 2023 16:32:21 +0100
+        Tue, 28 Nov 2023 07:34:41 -0800 (PST)
+Date: Tue, 28 Nov 2023 16:34:38 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini
@@ -112,95 +112,81 @@ Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini
  <npiggin@gmail.com>, Greg Kurz <groug@kaod.org>, Michael Rolnik
  <mrolnik@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Markus
  Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH 01/22] target/i386: Only realize existing APIC device
-Message-ID: <20231128163221.6c91e013@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230918160257.30127-2-philmd@linaro.org>
+Subject: Re: [PATCH 02/22] hw/intc/apic: Pass CPU using QOM link property
+Message-ID: <20231128163438.3d257bdd@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230918160257.30127-3-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
-	<20230918160257.30127-2-philmd@linaro.org>
+	<20230918160257.30127-3-philmd@linaro.org>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: pxrGfJ/VrLOT
+X-TUID: UigzB0crSKXK
 
-On Mon, 18 Sep 2023 18:02:34 +0200
+On Mon, 18 Sep 2023 18:02:35 +0200
 Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-> APIC state is created under a certain condition,
-> use the same condition to realize it.
-> Having a NULL APIC state is a bug: use assert().
+> QOM objects shouldn't access each other internals fields
+> except using the QOM API.
+>=20
+> Declare the 'cpu' and 'base-addr' properties, set them
+> using object_property_set_link() and qdev_prop_set_uint32()
+> respectively.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->  target/i386/cpu-sysemu.c | 9 +++------
->  target/i386/cpu.c        | 8 +++++---
->  2 files changed, 8 insertions(+), 9 deletions(-)
+>  hw/intc/apic_common.c    |  2 ++
+>  target/i386/cpu-sysemu.c | 11 ++++++-----
+>  2 files changed, 8 insertions(+), 5 deletions(-)
 >=20
+> diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+> index 68ad30e2f5..e28f7402ab 100644
+> --- a/hw/intc/apic_common.c
+> +++ b/hw/intc/apic_common.c
+> @@ -394,6 +394,8 @@ static Property apic_properties_common[] =3D {
+>                      true),
+>      DEFINE_PROP_BOOL("legacy-instance-id", APICCommonState, legacy_insta=
+nce_id,
+>                       false),
+> +    DEFINE_PROP_LINK("cpu", APICCommonState, cpu, TYPE_X86_CPU, X86CPU *=
+),
+> +    DEFINE_PROP_UINT32("base-addr", APICCommonState, apicbase, 0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+> =20
 > diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
-> index 2375e48178..6a164d3769 100644
+> index 6a164d3769..6edfb7e2af 100644
 > --- a/target/i386/cpu-sysemu.c
 > +++ b/target/i386/cpu-sysemu.c
-> @@ -272,9 +272,7 @@ void x86_cpu_apic_create(X86CPU *cpu, Error **errp)
->      APICCommonState *apic;
+> @@ -269,7 +269,6 @@ APICCommonClass *apic_get_class(Error **errp)
+> =20
+>  void x86_cpu_apic_create(X86CPU *cpu, Error **errp)
+>  {
+> -    APICCommonState *apic;
 >      APICCommonClass *apic_class =3D apic_get_class(errp);
 > =20
-> -    if (!apic_class) {
-> -        return;
-> -    }
-> +    assert(apic_class);
-
-if errp doesn't lead to error_fatal/abort, wouldn't that effectively mask
-following error
- apic_get_class():
-      error_setg(errp, "KVM does not support userspace APIC");
-      return NULL;
-???
-
+>      assert(apic_class);
+> @@ -279,11 +278,13 @@ void x86_cpu_apic_create(X86CPU *cpu, Error **errp)
+>                                OBJECT(cpu->apic_state));
+>      object_unref(OBJECT(cpu->apic_state));
 > =20
->      cpu->apic_state =3D DEVICE(object_new_with_class(OBJECT_CLASS(apic_c=
-lass)));
->      object_property_add_child(OBJECT(cpu), "lapic",
-> @@ -293,9 +291,8 @@ void x86_cpu_apic_realize(X86CPU *cpu, Error **errp)
->      APICCommonState *apic;
->      static bool apic_mmio_map_once;
+> +    if (!object_property_set_link(OBJECT(cpu->apic_state), "cpu",
+> +                                  OBJECT(cpu), errp)) {
+> +        return;
+> +    }
+>      qdev_prop_set_uint32(cpu->apic_state, "id", cpu->apic_id);
+> -    /* TODO: convert to link<> */
+> -    apic =3D APIC_COMMON(cpu->apic_state);
+> -    apic->cpu =3D cpu;
+> -    apic->apicbase =3D APIC_DEFAULT_ADDRESS | MSR_IA32_APICBASE_ENABLE;
+> +    qdev_prop_set_uint32(cpu->apic_state, "base-addr",
+> +                         APIC_DEFAULT_ADDRESS | MSR_IA32_APICBASE_ENABLE=
+);
+>  }
 > =20
-> -    if (cpu->apic_state =3D=3D NULL) {
-> -        return;
-> -    }
-> +    assert(cpu->apic_state);
-
-it would be better to explode in one place only inside apic_get_class(),
-provided !kvm_irqchip_in_kernel() case is dealt with properly.
-
-
->      qdev_realize(DEVICE(cpu->apic_state), NULL, errp);
-> =20
->      /* Map APIC MMIO area */
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index b2a20365e1..a23d4795e0 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -7448,9 +7448,11 @@ static void x86_cpu_realizefn(DeviceState *dev, Er=
-ror **errp)
->      }
-> =20
->  #ifndef CONFIG_USER_ONLY
-> -    x86_cpu_apic_realize(cpu, &local_err);
-> -    if (local_err !=3D NULL) {
-> -        goto out;
-> +    if (cpu->env.features[FEAT_1_EDX] & CPUID_APIC || ms->smp.cpus > 1) =
-{
-> +        x86_cpu_apic_realize(cpu, &local_err);
-> +        if (local_err !=3D NULL) {
-> +            goto out;
-> +        }
-
-better move 'if (cpu->apic_state =3D=3D NULL) {' from x86_cpu_apic_realize(=
-)
-to the caller, instead of repeating test again.
-
->      }
->  #endif /* !CONFIG_USER_ONLY */
->      cpu_reset(cs);
+>  void x86_cpu_apic_realize(X86CPU *cpu, Error **errp)

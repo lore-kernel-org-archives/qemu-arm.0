@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2272254ejt;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2272265ejt;
         Tue, 28 Nov 2023 15:59:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFVoOlVbnyh4yv1yh7f9tyG1x2KxnRRPekDC+eGJXOD3TWfYZoHVeJz8CYvNTy0sIcEkss1
-X-Received: by 2002:ac8:5bcd:0:b0:417:b269:4689 with SMTP id b13-20020ac85bcd000000b00417b2694689mr20124354qtb.53.1701215947728;
-        Tue, 28 Nov 2023 15:59:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701215947; cv=none;
+X-Google-Smtp-Source: AGHT+IHkNTG/WR+/8nZL/0YN+5NGTVy3pXQlw0N7O0aJcfQ2L3bTeT0qFgc1LqZEwCZxoF1f4fMt
+X-Received: by 2002:ac8:5e0e:0:b0:41c:dbd9:ad3e with SMTP id h14-20020ac85e0e000000b0041cdbd9ad3emr21346320qtx.57.1701215948686;
+        Tue, 28 Nov 2023 15:59:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701215948; cv=none;
         d=google.com; s=arc-20160816;
-        b=aMcLqmChKf5lN6D6OZvTwVfYyfbOdRYTNBUefP2DjJh544el8NTsqL05RTGrvq7Bv8
-         DFb84PX5lPHujXVc+3ziLZQ/E9fZVZo7woIfSp1gndNtGLxB/aQBP4WyLhWgfXSbDpES
-         PaYlH4jZXBAQ+jP9Z6U6a7SUga6pK69NNiOpWP70e1FTInojt9ZcXINzYwikkbC8Lrca
-         QthF8gsUnsZRrzxng9E3SA0lKiBAs0WKIytwV11tj9tPnbs8Rw95rgMhaz395vohcSdz
-         NQLk6CqneRFCwDyEaE0cfWwDhOhgrWaXm4vOZ3MMgt0S0azaqXgZ4LszvMb7VLIU2r0G
-         FA3A==
+        b=1LdD3heRpJifHIOmAxQ7kYChL7dTmjtuRwItbdJG2j+EXKGXA3hMAzT4D6JeoJe/9h
+         r6K8SCWXXUoyzNBx6m/fzt7ExVb+AHk4DJIfH3mtPh4jepz5mirA9NjV5vDy0nz0E5Ad
+         ol/m8RW/zIBfrl1akngmcriW7y6UwkoUZ6nIcULv7JRPtTsFLcxu0XgON1zi1xG2Hv4F
+         maRZZJqw72gHPPxZOm+m3aiM6NdZzobre4L4uOtXT1a1MXd3nBLfklUJYMR/qTjsd6Rp
+         U+cVBvBLsQxxS6+uuwOIYI4T2jhQrt1udORxs+DqXMWAs3JD9pbZ9Zieb8XaHxQvuoiS
+         pogA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=s//HEKXaCoK4NRChRFqt8/QjQMAj9TrnWihuMipaNtE=;
+        bh=9xrp97GST+bZfrcoKQvPeIIEVxQGGGrlXR0jnblgPyM=;
         fh=oCcW8YgO0uPSEPLT85zmruvbAEZ25ywTEvlgBH92cAY=;
-        b=iQKQq4Fox/nT9C1gW66Kt8FPTB37Uv30rLKmToUXRftgojWuqS0uN9f98ILZzvPzjT
-         qjs8G0Im6sX2gNF/29Lte+zWL0p01AJYb0AOa0xOn5F6Tld11yNPA4bLmLP5j21GZeXk
-         2Wu5/gHgbidV3IED12NDNIRycYdmZix3iAQ0paijNahU1k/1RqAE6bkv/lHR3stIcs+d
-         C+SG1MM4WSsqxTqi8lBkKjhnqcQ18eUMJ17oYoE4mXsi1k1o9SZ0iAJGpgtFCxyVjRlO
-         NjA0qZBClX6GpLwo9EoDaEkz0fa67y+Ukpch+//tvTAGczvaNSwhuquuQZeMP2InQxqC
-         vpuA==
+        b=FhKfs61+4dkCXu1nL38vyFNyT+4Ucvcniv4gIKp05b+k+d1QjRwav+l09/ucvC4gDi
+         YJK7aH8jVVdIMbJlBcV/D7GaYN27UI/lFviJoBHTyhSW9kyM+KtioKrs2ujqh7Nq6S/H
+         RC9JxXC9wOYsn7qC1veKN7CkTWyl0VjN9jgzq9rIagEZZ7nSLCy36kHj4F5jpdxxJyDW
+         wNrimdcYuGc9aoIUOVFsm6TDhgm/qx2taSNmC+U20IF2z8NS9jp9NprU8D+M4zBKWuv3
+         2f/bZgSlv8ez3FcFWNYv4CtY4CTxRU8p/RntadLUEpQc1lBPbiWqhvrXN9F8750rcBiQ
+         QGjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=D2qYS3gF;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OXet+Tf6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cj15-20020a05622a258f00b004238a6e2f46si5756057qtb.679.2023.11.28.15.59.07
+        by mx.google.com with ESMTPS id fk10-20020a05622a558a00b004238e50730dsi12303477qtb.73.2023.11.28.15.59.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Nov 2023 15:59:07 -0800 (PST)
+        Tue, 28 Nov 2023 15:59:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=D2qYS3gF;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OXet+Tf6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r87xV-0001Lu-IW; Tue, 28 Nov 2023 18:57:41 -0500
+	id 1r87xR-0001HY-Nx; Tue, 28 Nov 2023 18:57:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1r87xP-0001HA-3D; Tue, 28 Nov 2023 18:57:35 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ id 1r87xI-0001FK-Cc; Tue, 28 Nov 2023 18:57:28 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1r87x9-0007nd-P3; Tue, 28 Nov 2023 18:57:34 -0500
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ id 1r87xG-0007rW-AD; Tue, 28 Nov 2023 18:57:27 -0500
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3ASNf4cr025584; Tue, 28 Nov 2023 23:57:07 GMT
+ 3ASNqCqd006803; Tue, 28 Nov 2023 23:57:08 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-type : content-transfer-encoding; s=pp1;
- bh=s//HEKXaCoK4NRChRFqt8/QjQMAj9TrnWihuMipaNtE=;
- b=D2qYS3gFkiLYFlT2TcUfRUEPUwEW5NMzS+WT1rL9NSsMSy7fs8e0V9C3pZ5eOyGpfgtB
- FuOsbvQ8gIYRkpGZ4pfPYBUkysv2zRdNVGMc4+yzMeP97bu7oEd8saouzyEq3/U+GHsp
- VCTjiQQvVfYKA+FB6BIenNyxTa9W0DGRmwAAMQg6KC+2+nv9eduQCuH05Stdzy4J6W49
- pz5PWwm4SFo19iiKhtO0iwYF9zdZuBEW29BGAGtnQ+6IAZMPVQOgjv4cwZEsDdx1ExYx
- qOrR7Ta86aMfUdlWJGF4HPqj7OJAgs+YSBHX0sJ6N6xIlthGd6fMcQnbAFrBzZ6Gn1kB PQ== 
+ bh=9xrp97GST+bZfrcoKQvPeIIEVxQGGGrlXR0jnblgPyM=;
+ b=OXet+Tf6cpAxZGIO1VV2Oa6MqDDzZIXNsoRdw1hKf1Sa9MSFyR+CCQaR/k9KMGWHuk/u
+ 6xszO4GS/OrO7NW1Hfnvq6M92sEvrHJ0PkHKmsU3tfzCG5YQL2ODTdS45RrONiaPR5LJ
+ 2bMi3X+Dsh4U1PgqAEN+l3JqcZz5uMpnPUbV/xJruXo/bkQVEk/oLNFwFCrZMQBsMSWf
+ kN7diQ/MTAjY1lZj6TUFbU74W+PDsdHgQrXlsGIhDxy3m4p89K2hlvGSLSJI7eZh1rnV
+ SUN5tfiKDtG/mrFoeyBqKVqgzpXi9W5aq1Lk682ZfluRBLQX7OMqOMnod4p2pELSfTzZ ww== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3unt3eg9ry-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3unt8n82nj-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Tue, 28 Nov 2023 23:57:07 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3ASNmdZa014470;
- Tue, 28 Nov 2023 23:57:06 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3unt3eg9rp-1
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3ASNsnj3011690;
+ Tue, 28 Nov 2023 23:57:07 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3unt8n82n0-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Nov 2023 23:57:06 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3ASMjaE6028346; Tue, 28 Nov 2023 23:57:05 GMT
-Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3ukv8nkp4v-1
+ Tue, 28 Nov 2023 23:57:07 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 3ASN0dlO027624; Tue, 28 Nov 2023 23:57:05 GMT
+Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3ukumykv9m-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Tue, 28 Nov 2023 23:57:05 +0000
 Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
  [10.241.53.105])
- by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 3ASNv4cc47972776
+ by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 3ASNv50X17039982
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 28 Nov 2023 23:57:04 GMT
+ Tue, 28 Nov 2023 23:57:05 GMT
 Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 62D9F58061;
+ by IMSVA (Postfix) with ESMTP id 0AAD758043;
+ Tue, 28 Nov 2023 23:57:05 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B70A958067;
  Tue, 28 Nov 2023 23:57:04 +0000 (GMT)
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F2CDA58066;
- Tue, 28 Nov 2023 23:57:03 +0000 (GMT)
 Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
  by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 28 Nov 2023 23:57:03 +0000 (GMT)
+ Tue, 28 Nov 2023 23:57:04 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
 To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
  andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
@@ -105,9 +105,9 @@ To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
  philmd@linaro.org, lvivier@redhat.com
 Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org,
  Andrew Jeffery <andrew@aj.id.au>
-Subject: [PATCH v8 03/10] hw/fsi: Introduce IBM's cfam,fsi-slave,scratchpad
-Date: Tue, 28 Nov 2023 17:56:53 -0600
-Message-Id: <20231128235700.599584-4-ninad@linux.ibm.com>
+Subject: [PATCH v8 05/10] hw/fsi: Introduce IBM's FSI master
+Date: Tue, 28 Nov 2023 17:56:55 -0600
+Message-Id: <20231128235700.599584-6-ninad@linux.ibm.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231128235700.599584-1-ninad@linux.ibm.com>
 References: <20231128235700.599584-1-ninad@linux.ibm.com>
@@ -115,24 +115,25 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 7TiL_v70-OXVHaNbfQF5jF62y--tSUJX
-X-Proofpoint-ORIG-GUID: FO1Xm-isoEQtwf_5hcsCJXQNpqFormY6
+X-Proofpoint-GUID: qBkVLAuZFRy39rUb1C9fIzgFLfRG3FiG
+X-Proofpoint-ORIG-GUID: 3iUXwgeibAkeSO54nsZGbscbXKQfs3mA
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-11-28_25,2023-11-27_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 adultscore=0
- priorityscore=1501 mlxscore=0 impostorscore=0 lowpriorityscore=0
- suspectscore=0 phishscore=0 spamscore=0 clxscore=1015 malwarescore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ clxscore=1015 adultscore=0
+ spamscore=0 malwarescore=0 mlxscore=0 bulkscore=0 suspectscore=0
+ phishscore=0 lowpriorityscore=0 impostorscore=0 mlxlogscore=999
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2311060000 definitions=main-2311280188
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -19
 X-Spam_score: -2.0
 X-Spam_bar: --
 X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -148,447 +149,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0xM6WNCxkQ9Y
+X-TUID: 2cZ//GTu6ThX
 
 This is a part of patchset where IBM's Flexible Service Interface is
 introduced.
 
-The Common FRU Access Macro (CFAM), an address space containing
-various "engines" that drive accesses on busses internal and external
-to the POWER chip. Examples include the SBEFIFO and I2C masters. The
-engines hang off of an internal Local Bus (LBUS) which is described
-by the CFAM configuration block.
+This commit models the FSI master. CFAM is hanging out of FSI master which is a bus controller.
 
-The FSI slave: The slave is the terminal point of the FSI bus for
-FSI symbols addressed to it. Slaves can be cascaded off of one
-another. The slave's configuration registers appear in address space
-of the CFAM to which it is attached.
-
-The scratchpad provides a set of non-functional registers. The firmware
-is free to use them, hardware does not support any special management
-support. The scratchpad registers can be read or written from LBUS
-slave. The scratch pad is managed under FSI CFAM state.
+The FSI master: A controller in the platform service processor (e.g.
+BMC) driving CFAM engine accesses into the POWER chip. At the
+hardware level FSI is a bit-based protocol supporting synchronous and
+DMA-driven accesses of engines in a CFAM.
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-[ clg: - moved object FSIScratchPad under FSICFAMState
-       - moved FSIScratchPad code under cfam.c
-       - introduced fsi_cfam_instance_init()
-       - reworked fsi_cfam_realize() ]
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+[ clg: - move FSICFAMState object under FSIMasterState
+       - introduced fsi_master_init()
+       - reworked fsi_master_realize()
+       - dropped FSIBus definition ]
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/fsi/cfam.h      |  45 +++++++
- include/hw/fsi/fsi-slave.h |  29 +++++
- include/hw/fsi/fsi.h       |   5 +
- hw/fsi/cfam.c              | 261 +++++++++++++++++++++++++++++++++++++
- hw/fsi/fsi-slave.c         |  78 +++++++++++
- hw/fsi/Kconfig             |   8 ++
- hw/fsi/meson.build         |   3 +-
- hw/fsi/trace-events        |  10 +-
- 8 files changed, 437 insertions(+), 2 deletions(-)
- create mode 100644 include/hw/fsi/cfam.h
- create mode 100644 include/hw/fsi/fsi-slave.h
- create mode 100644 hw/fsi/cfam.c
- create mode 100644 hw/fsi/fsi-slave.c
+ include/hw/fsi/fsi-master.h |  32 +++++++
+ hw/fsi/fsi-master.c         | 165 ++++++++++++++++++++++++++++++++++++
+ hw/fsi/meson.build          |   2 +-
+ hw/fsi/trace-events         |   2 +
+ 4 files changed, 200 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 hw/fsi/fsi-master.c
 
-diff --git a/include/hw/fsi/cfam.h b/include/hw/fsi/cfam.h
+diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
 new file mode 100644
-index 0000000000..9d3da727ff
+index 0000000000..3830869877
 --- /dev/null
-+++ b/include/hw/fsi/cfam.h
-@@ -0,0 +1,45 @@
++++ b/include/hw/fsi/fsi-master.h
+@@ -0,0 +1,32 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
++ * Copyright (C) 2019 IBM Corp.
 + *
-+ * IBM Common FRU Access Macro
++ * IBM Flexible Service Interface Master
 + */
-+#ifndef FSI_CFAM_H
-+#define FSI_CFAM_H
-+
-+#include "exec/memory.h"
-+
-+#include "hw/fsi/fsi-slave.h"
-+#include "hw/fsi/lbus.h"
-+
-+
-+#define TYPE_FSI_SCRATCHPAD "fsi.scratchpad"
-+#define SCRATCHPAD(obj) OBJECT_CHECK(FSIScratchPad, (obj), TYPE_FSI_SCRATCHPAD)
-+
-+typedef struct FSIScratchPad {
-+        FSILBusDevice parent;
-+
-+        uint32_t reg;
-+} FSIScratchPad;
-+
-+#define TYPE_FSI_CFAM "cfam"
-+#define FSI_CFAM(obj) OBJECT_CHECK(FSICFAMState, (obj), TYPE_FSI_CFAM)
-+
-+/* P9-ism */
-+#define CFAM_CONFIG_NR_REGS 0x28
-+
-+typedef struct FSICFAMState {
-+    /* < private > */
-+    FSISlaveState parent;
-+
-+    /* CFAM config address space */
-+    MemoryRegion config_iomem;
-+
-+    MemoryRegion mr;
-+    AddressSpace as;
-+
-+    FSILBus lbus;
-+    FSIScratchPad scratchpad;
-+} FSICFAMState;
-+
-+#endif /* FSI_CFAM_H */
-diff --git a/include/hw/fsi/fsi-slave.h b/include/hw/fsi/fsi-slave.h
-new file mode 100644
-index 0000000000..f5f23f4457
---- /dev/null
-+++ b/include/hw/fsi/fsi-slave.h
-@@ -0,0 +1,29 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface slave
-+ */
-+#ifndef FSI_FSI_SLAVE_H
-+#define FSI_FSI_SLAVE_H
++#ifndef FSI_FSI_MASTER_H
++#define FSI_FSI_MASTER_H
 +
 +#include "exec/memory.h"
 +#include "hw/qdev-core.h"
++#include "hw/fsi/fsi.h"
++#include "hw/fsi/cfam.h"
 +
-+#include "hw/fsi/lbus.h"
++#define TYPE_FSI_MASTER "fsi.master"
++OBJECT_DECLARE_SIMPLE_TYPE(FSIMasterState, FSI_MASTER)
 +
-+#include <stdint.h>
++#define FSI_MASTER_NR_REGS ((0x2e0 >> 2) + 1)
 +
-+#define TYPE_FSI_SLAVE "fsi.slave"
-+OBJECT_DECLARE_SIMPLE_TYPE(FSISlaveState, FSI_SLAVE)
-+
-+#define FSI_SLAVE_CONTROL_NR_REGS ((0x40 >> 2) + 1)
-+
-+typedef struct FSISlaveState {
++typedef struct FSIMasterState {
 +    DeviceState parent;
-+
 +    MemoryRegion iomem;
-+    uint32_t regs[FSI_SLAVE_CONTROL_NR_REGS];
-+} FSISlaveState;
++    MemoryRegion opb2fsi;
++
++    FSIBus bus;
++
++    uint32_t regs[FSI_MASTER_NR_REGS];
++    FSICFAMState cfam;
++} FSIMasterState;
++
 +
 +#endif /* FSI_FSI_H */
-diff --git a/include/hw/fsi/fsi.h b/include/hw/fsi/fsi.h
-index a75e3e5bdc..af39f9b4ad 100644
---- a/include/hw/fsi/fsi.h
-+++ b/include/hw/fsi/fsi.h
-@@ -8,6 +8,11 @@
- #define FSI_FSI_H
- 
- #include "hw/qdev-core.h"
-+#include "qemu/bitops.h"
-+
-+/* Bitwise operations at the word level. */
-+#define BE_BIT(x)           BIT(31 - (x))
-+#define BE_GENMASK(hb, lb)  MAKE_64BIT_MASK((lb), ((hb) - (lb) + 1))
- 
- #define TYPE_FSI_BUS "fsi.bus"
- OBJECT_DECLARE_SIMPLE_TYPE(FSIBus, FSI_BUS)
-diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
+diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
 new file mode 100644
-index 0000000000..5086a2c45c
+index 0000000000..fb80976bc3
 --- /dev/null
-+++ b/hw/fsi/cfam.c
-@@ -0,0 +1,261 @@
++++ b/hw/fsi/fsi-master.c
+@@ -0,0 +1,165 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + * Copyright (C) 2023 IBM Corp.
 + *
-+ * IBM Common FRU Access Macro
++ * IBM Flexible Service Interface master
 + */
 +
 +#include "qemu/osdep.h"
-+
-+#include "qapi/error.h"
-+#include "trace.h"
-+
-+#include "hw/fsi/cfam.h"
-+#include "hw/fsi/fsi.h"
-+
-+#include "hw/qdev-properties.h"
-+
-+#define ENGINE_CONFIG_NEXT            BE_BIT(0)
-+#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-+#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-+#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-+
-+#define TO_REG(x)                          ((x) >> 2)
-+
-+#define CFAM_ENGINE_CONFIG                 TO_REG(0x04)
-+
-+#define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
-+#define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
-+#define CFAM_CONFIG_CHIP_ID_BREAK          0xc0de0000
-+
-+static uint64_t fsi_cfam_config_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSICFAMState *cfam = FSI_CFAM(opaque);
-+    BusChild *kid;
-+    int i;
-+
-+    trace_fsi_cfam_config_read(addr, size);
-+
-+    switch (addr) {
-+    case 0x00:
-+        return CFAM_CONFIG_CHIP_ID_P9;
-+    case 0x04:
-+        return ENGINE_CONFIG_NEXT       |   /* valid */
-+               0x00010000               |   /* slots */
-+               0x00001000               |   /* version */
-+               ENGINE_CONFIG_TYPE_PEEK  |   /* type */
-+               0x0000000c;                  /* crc */
-+    case 0x08:
-+        return ENGINE_CONFIG_NEXT       |   /* valid */
-+               0x00010000               |   /* slots */
-+               0x00005000               |   /* version */
-+               ENGINE_CONFIG_TYPE_FSI   |   /* type */
-+               0x0000000a;                  /* crc */
-+        break;
-+    default:
-+        /* The config table contains different engines from 0xc onwards. */
-+        i = 0xc;
-+        QTAILQ_FOREACH(kid, &cfam->lbus.bus.children, sibling) {
-+            if (i == addr) {
-+                DeviceState *ds = kid->child;
-+                FSILBusDevice *dev = FSI_LBUS_DEVICE(ds);
-+                return FSI_LBUS_DEVICE_GET_CLASS(dev)->config;
-+            }
-+            i += size;
-+        }
-+
-+        if (i == addr) {
-+            return 0;
-+        }
-+
-+        /*
-+         * As per FSI specification, This is a magic value at address 0 of
-+         * given FSI port. This causes FSI master to send BREAK command for
-+         * initialization and recovery.
-+         */
-+        return CFAM_CONFIG_CHIP_ID_BREAK;
-+    }
-+}
-+
-+static void fsi_cfam_config_write(void *opaque, hwaddr addr, uint64_t data,
-+                                  unsigned size)
-+{
-+    FSICFAMState *cfam = FSI_CFAM(opaque);
-+
-+    trace_fsi_cfam_config_write(addr, size, data);
-+
-+    switch (TO_REG(addr)) {
-+    case CFAM_CONFIG_CHIP_ID:
-+    case CFAM_CONFIG_CHIP_ID + 4:
-+        if (data == CFAM_CONFIG_CHIP_ID_BREAK) {
-+            bus_cold_reset(BUS(&cfam->lbus));
-+        }
-+    break;
-+    default:
-+        trace_fsi_cfam_config_write_noaddr(addr, size, data);
-+    }
-+}
-+
-+static const struct MemoryRegionOps cfam_config_ops = {
-+    .read = fsi_cfam_config_read,
-+    .write = fsi_cfam_config_write,
-+    .valid.max_access_size = 4,
-+    .valid.min_access_size = 4,
-+    .impl.max_access_size = 4,
-+    .impl.min_access_size = 4,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static uint64_t fsi_cfam_unimplemented_read(void *opaque, hwaddr addr,
-+                                            unsigned size)
-+{
-+    trace_fsi_cfam_unimplemented_read(addr, size);
-+
-+    return 0;
-+}
-+
-+static void fsi_cfam_unimplemented_write(void *opaque, hwaddr addr,
-+                                         uint64_t data, unsigned size)
-+{
-+    trace_fsi_cfam_unimplemented_write(addr, size, data);
-+}
-+
-+static const struct MemoryRegionOps fsi_cfam_unimplemented_ops = {
-+    .read = fsi_cfam_unimplemented_read,
-+    .write = fsi_cfam_unimplemented_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsi_cfam_instance_init(Object *obj)
-+{
-+    FSICFAMState *s = FSI_CFAM(obj);
-+
-+    object_initialize_child(obj, "scratchpad", &s->scratchpad,
-+                            TYPE_FSI_SCRATCHPAD);
-+}
-+
-+static void fsi_cfam_realize(DeviceState *dev, Error **errp)
-+{
-+    FSICFAMState *cfam = FSI_CFAM(dev);
-+    FSISlaveState *slave = FSI_SLAVE(dev);
-+
-+    /* Each slave has a 2MiB address space */
-+    memory_region_init_io(&cfam->mr, OBJECT(cfam), &fsi_cfam_unimplemented_ops,
-+                          cfam, TYPE_FSI_CFAM, 2 * 1024 * 1024);
-+    address_space_init(&cfam->as, &cfam->mr, TYPE_FSI_CFAM);
-+
-+    qbus_init(&cfam->lbus, sizeof(cfam->lbus), TYPE_FSI_LBUS, DEVICE(cfam),
-+              NULL);
-+
-+    memory_region_init_io(&cfam->config_iomem, OBJECT(cfam), &cfam_config_ops,
-+                          cfam, TYPE_FSI_CFAM ".config", 0x400);
-+
-+    memory_region_add_subregion(&cfam->mr, 0, &cfam->config_iomem);
-+    memory_region_add_subregion(&cfam->mr, 0x800, &slave->iomem);
-+    memory_region_add_subregion(&cfam->mr, 0xc00, &cfam->lbus.mr);
-+
-+    /* Add scratchpad engine */
-+    if (!qdev_realize_and_unref(DEVICE(&cfam->scratchpad), BUS(&cfam->lbus),
-+                                errp)) {
-+        return;
-+    }
-+
-+    /* TODO: clarify scratchpad mapping */
-+    FSILBusDevice *fsi_dev = FSI_LBUS_DEVICE(&cfam->scratchpad);
-+    memory_region_add_subregion(&cfam->lbus.mr, 0, &fsi_dev->iomem);
-+}
-+
-+static void fsi_cfam_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->bus_type = TYPE_FSI_BUS;
-+    dc->realize = fsi_cfam_realize;
-+}
-+
-+static const TypeInfo fsi_cfam_info = {
-+    .name = TYPE_FSI_CFAM,
-+    .parent = TYPE_FSI_SLAVE,
-+    .instance_init = fsi_cfam_instance_init,
-+    .instance_size = sizeof(FSICFAMState),
-+    .class_init = fsi_cfam_class_init,
-+};
-+
-+static uint64_t fsi_scratchpad_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSIScratchPad *s = SCRATCHPAD(opaque);
-+
-+    trace_fsi_scratchpad_read(addr, size);
-+
-+    if (addr) {
-+        return 0;
-+    }
-+
-+    return s->reg;
-+}
-+
-+static void fsi_scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
-+                                 unsigned size)
-+{
-+    FSIScratchPad *s = SCRATCHPAD(opaque);
-+
-+    trace_fsi_scratchpad_write(addr, size, data);
-+
-+    if (addr) {
-+        return;
-+    }
-+
-+    s->reg = data;
-+}
-+
-+static const struct MemoryRegionOps scratchpad_ops = {
-+    .read = fsi_scratchpad_read,
-+    .write = fsi_scratchpad_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsi_scratchpad_realize(DeviceState *dev, Error **errp)
-+{
-+    FSILBusDevice *ldev = FSI_LBUS_DEVICE(dev);
-+
-+    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
-+                          ldev, TYPE_FSI_SCRATCHPAD, 0x400);
-+}
-+
-+static void fsi_scratchpad_reset(DeviceState *dev)
-+{
-+    FSIScratchPad *s = SCRATCHPAD(dev);
-+
-+    s->reg = 0;
-+}
-+
-+static void fsi_scratchpad_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    FSILBusDeviceClass *ldc = FSI_LBUS_DEVICE_CLASS(klass);
-+
-+    dc->realize = fsi_scratchpad_realize;
-+    dc->reset = fsi_scratchpad_reset;
-+
-+    ldc->config =
-+          ENGINE_CONFIG_NEXT            | /* valid */
-+          0x00010000                    | /* slots */
-+          0x00001000                    | /* version */
-+          ENGINE_CONFIG_TYPE_SCRATCHPAD | /* type */
-+          0x00000007;                     /* crc */
-+}
-+
-+static const TypeInfo fsi_scratchpad_info = {
-+    .name = TYPE_FSI_SCRATCHPAD,
-+    .parent = TYPE_FSI_LBUS_DEVICE,
-+    .instance_size = sizeof(FSIScratchPad),
-+    .class_init = fsi_scratchpad_class_init,
-+    .class_size = sizeof(FSILBusDeviceClass),
-+};
-+
-+static void fsi_cfam_register_types(void)
-+{
-+    type_register_static(&fsi_scratchpad_info);
-+    type_register_static(&fsi_cfam_info);
-+}
-+
-+type_init(fsi_cfam_register_types);
-diff --git a/hw/fsi/fsi-slave.c b/hw/fsi/fsi-slave.c
-new file mode 100644
-index 0000000000..70386c0bb8
---- /dev/null
-+++ b/hw/fsi/fsi-slave.c
-@@ -0,0 +1,78 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface slave
-+ */
-+
-+#include "qemu/osdep.h"
-+
 +#include "qapi/error.h"
 +#include "qemu/log.h"
 +#include "trace.h"
 +
-+#include "hw/fsi/fsi-slave.h"
-+#include "hw/fsi/fsi.h"
++#include "hw/fsi/fsi-master.h"
++
++#define TYPE_OP_BUS "opb"
 +
 +#define TO_REG(x)                               ((x) >> 2)
 +
-+static uint64_t fsi_slave_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSISlaveState *s = FSI_SLAVE(opaque);
++#define FSI_MENP0                               TO_REG(0x010)
++#define FSI_MENP32                              TO_REG(0x014)
++#define FSI_MSENP0                              TO_REG(0x018)
++#define FSI_MLEVP0                              TO_REG(0x018)
++#define FSI_MSENP32                             TO_REG(0x01c)
++#define FSI_MLEVP32                             TO_REG(0x01c)
++#define FSI_MCENP0                              TO_REG(0x020)
++#define FSI_MREFP0                              TO_REG(0x020)
++#define FSI_MCENP32                             TO_REG(0x024)
++#define FSI_MREFP32                             TO_REG(0x024)
 +
-+    trace_fsi_slave_read(addr, size);
++#define FSI_MVER                                TO_REG(0x074)
++#define FSI_MRESP0                              TO_REG(0x0d0)
++
++#define FSI_MRESB0                              TO_REG(0x1d0)
++#define   FSI_MRESB0_RESET_GENERAL              BE_BIT(0)
++#define   FSI_MRESB0_RESET_ERROR                BE_BIT(1)
++
++static uint64_t fsi_master_read(void *opaque, hwaddr addr, unsigned size)
++{
++    FSIMasterState *s = FSI_MASTER(opaque);
++
++    trace_fsi_master_read(addr, size);
 +
 +    if (addr + size > sizeof(s->regs)) {
 +        qemu_log_mask(LOG_GUEST_ERROR,
@@ -600,90 +274,139 @@ index 0000000000..70386c0bb8
 +    return s->regs[TO_REG(addr)];
 +}
 +
-+static void fsi_slave_write(void *opaque, hwaddr addr, uint64_t data,
-+                                 unsigned size)
++static void fsi_master_write(void *opaque, hwaddr addr, uint64_t data,
++                             unsigned size)
 +{
-+    FSISlaveState *s = FSI_SLAVE(opaque);
++    FSIMasterState *s = FSI_MASTER(opaque);
 +
-+    trace_fsi_slave_write(addr, size, data);
++    trace_fsi_master_write(addr, size, data);
 +
 +    if (addr + size > sizeof(s->regs)) {
 +        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds write: 0x%"HWADDR_PRIx" for %u\n",
++                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
 +                      __func__, addr, size);
 +        return;
 +    }
 +
-+    s->regs[TO_REG(addr)] = data;
++    switch (TO_REG(addr)) {
++    case FSI_MENP0:
++        s->regs[FSI_MENP0] = data;
++        break;
++    case FSI_MENP32:
++        s->regs[FSI_MENP32] = data;
++        break;
++    case FSI_MSENP0:
++        s->regs[FSI_MENP0] |= data;
++        break;
++    case FSI_MSENP32:
++        s->regs[FSI_MENP32] |= data;
++        break;
++    case FSI_MCENP0:
++        s->regs[FSI_MENP0] &= ~data;
++        break;
++    case FSI_MCENP32:
++        s->regs[FSI_MENP32] &= ~data;
++        break;
++    case FSI_MRESP0:
++        /* Perform necessary resets leave register 0 to indicate no errors */
++        break;
++    case FSI_MRESB0:
++        if (data & FSI_MRESB0_RESET_GENERAL) {
++            device_cold_reset(DEVICE(opaque));
++        }
++        if (data & FSI_MRESB0_RESET_ERROR) {
++            /* FIXME: this seems dubious */
++            device_cold_reset(DEVICE(opaque));
++        }
++        break;
++    default:
++        s->regs[TO_REG(addr)] = data;
++    }
 +}
 +
-+static const struct MemoryRegionOps fsi_slave_ops = {
-+    .read = fsi_slave_read,
-+    .write = fsi_slave_write,
++static const struct MemoryRegionOps fsi_master_ops = {
++    .read = fsi_master_read,
++    .write = fsi_master_write,
 +    .endianness = DEVICE_BIG_ENDIAN,
 +};
 +
-+static void fsi_slave_init(Object *o)
++static void fsi_master_init(Object *o)
 +{
-+    FSISlaveState *s = FSI_SLAVE(o);
++    FSIMasterState *s = FSI_MASTER(o);
 +
-+    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_slave_ops,
-+                          s, TYPE_FSI_SLAVE, 0x400);
++    object_initialize_child(o, "cfam", &s->cfam, TYPE_FSI_CFAM);
++
++    qbus_init(&s->bus, sizeof(s->bus), TYPE_FSI_BUS, DEVICE(s), NULL);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_master_ops, s,
++                          TYPE_FSI_MASTER, 0x10000000);
++    memory_region_init(&s->opb2fsi, OBJECT(s), "fsi.opb2fsi", 0x10000000);
 +}
 +
-+static const TypeInfo fsi_slave_info = {
-+    .name = TYPE_FSI_SLAVE,
++static void fsi_master_realize(DeviceState *dev, Error **errp)
++{
++    FSIMasterState *s = FSI_MASTER(dev);
++
++    if (!qdev_realize(DEVICE(&s->cfam), BUS(&s->bus), errp)) {
++        return;
++    }
++
++    /* address ? */
++    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
++}
++
++static void fsi_master_reset(DeviceState *dev)
++{
++    FSIMasterState *s = FSI_MASTER(dev);
++
++    /* ASPEED default */
++    s->regs[FSI_MVER] = 0xe0050101;
++}
++
++static void fsi_master_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->bus_type = TYPE_OP_BUS;
++    dc->desc = "FSI Master";
++    dc->realize = fsi_master_realize;
++    dc->reset = fsi_master_reset;
++}
++
++static const TypeInfo fsi_master_info = {
++    .name = TYPE_FSI_MASTER,
 +    .parent = TYPE_DEVICE,
-+    .instance_init = fsi_slave_init,
-+    .instance_size = sizeof(FSISlaveState),
++    .instance_init = fsi_master_init,
++    .instance_size = sizeof(FSIMasterState),
++    .class_init = fsi_master_class_init,
 +};
 +
-+static void fsi_slave_register_types(void)
++static void fsi_register_types(void)
 +{
-+    type_register_static(&fsi_slave_info);
++    type_register_static(&fsi_master_info);
 +}
 +
-+type_init(fsi_slave_register_types);
-diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-index f4869c209f..de1594a335 100644
---- a/hw/fsi/Kconfig
-+++ b/hw/fsi/Kconfig
-@@ -1,3 +1,11 @@
-+config FSI_CFAM
-+    bool
-+    select FSI
-+    select FSI_LBUS
-+
-+config FSI
-+    bool
-+
- config FSI
-     bool
- 
++type_init(fsi_register_types);
 diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index 487fb31cbc..cafd009c6d 100644
+index ba92881370..038c4468ee 100644
 --- a/hw/fsi/meson.build
 +++ b/hw/fsi/meson.build
-@@ -1,2 +1,3 @@
+@@ -1,4 +1,4 @@
  system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
--system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c'))
-+system_ss.add(when: 'CONFIG_FSI_CFAM', if_true: files('cfam.c'))
-+system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-slave.c'))
+ system_ss.add(when: 'CONFIG_FSI_CFAM', if_true: files('cfam.c'))
+-system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-slave.c'))
++system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-master.c','fsi-slave.c'))
+ system_ss.add(when: 'CONFIG_FSI_OPB', if_true: files('opb.c'))
 diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
-index 8b13789179..b57b2dcc86 100644
+index b57b2dcc86..89d8cd62c8 100644
 --- a/hw/fsi/trace-events
 +++ b/hw/fsi/trace-events
-@@ -1 +1,9 @@
--
-+fsi_scratchpad_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_scratchpad_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_cfam_config_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_cfam_config_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_cfam_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-+fsi_slave_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-+fsi_slave_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+@@ -7,3 +7,5 @@ fsi_cfam_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%"
+ fsi_cfam_config_write_noaddr(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+ fsi_slave_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+ fsi_slave_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
++fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
++fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
 -- 
 2.39.2
 

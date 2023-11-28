@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1898476ejt;
-        Tue, 28 Nov 2023 06:00:32 -0800 (PST)
-X-Received: by 2002:a05:6871:410b:b0:1fa:1d12:d1df with SMTP id la11-20020a056871410b00b001fa1d12d1dfmr5887470oab.19.1701180032573;
-        Tue, 28 Nov 2023 06:00:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701180032; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp1901081ejt;
+        Tue, 28 Nov 2023 06:02:53 -0800 (PST)
+X-Received: by 2002:a05:6871:799d:b0:1f4:d347:df06 with SMTP id pb29-20020a056871799d00b001f4d347df06mr18018507oac.29.1701180172867;
+        Tue, 28 Nov 2023 06:02:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701180172; cv=none;
         d=google.com; s=arc-20160816;
-        b=v8Qg3QuLqZ5GeR0gDJEz2EsjYMnotJ3lQJDNdc9RLWLwNTMuxtbjHxNw+L5KEKRfvn
-         /PZoSkHxl9N6LisWtsEJJhqlXajCAvydRLFE+8wZB54wz4h7OQ2hi8OsXLAM3S1hAze6
-         OdCxNyd2Pvs4KoLhuhCMVlxL3/XaSQ/9NF43I8TUoVQEV+oD94EdjuGPVXCH9fRIdZmA
-         l69WrNpV17FxeekSyGA/2z/zK01PdNMb4tV9JBu16fN0htRfm6XvcBaxufEx6ymsSkzF
-         xafJI//BfUWuaPoGaKVath3YRNlKEMC8Zaql88oZ3qnUhIWKwpgY8hXnFEeCfEK5Zm3s
-         tQXw==
+        b=BpshQ79Db+TObLqLrjaDLC0zw+Mec9tbeFRbF6QPlbJkavYS81XRtbTWOKlwhCVJHf
+         KdeZyECkrC8FdP7UqdGxY4v7ZkP/+IqKTOrlrNVamUe1ewg9dK0TiErF85yapVZXF/Kz
+         OjJh2cx8c7zIWP1+V652MeL+9QTBeaDeWvOKnui7zOeJrnXBNoi+WDIKwuQKnnfAB0bz
+         pqMmCpWAIxZUNBK3fRKHXEMKQt5GK6rfBgMVg0fLeaiBiSlqIT+5srQD8FTDoJQzMhKf
+         /mAkbl/aTcY5gIKeX9e6u1aZOQx9eAECeyU7PPZxS+Yjr9EuWXjD17tsgtU9KlkXlOO4
+         CDcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=NdAXHix7hNPYBXgjxbxBcDX5MGQGoqSrmEIfGMEy6Dk=;
+        bh=dec8iRgzEDFu7HMeARR9V8WSMJQftG6WNb8g4wP73b4=;
         fh=j47SlpSDusZ2mmWrSbVW2DB7/ZZUDU/502C3FK4P+uA=;
-        b=g2tYeUPWnTNzxROCJT02il/gn+Kh1K1k2mHoHiUvumH3cPcJhlaJKrXnp44D3mUTkX
-         H/T/di2wLEeTQUiBMRyv42EeJK0FC3zXa7x/geC8Qt4Bhany6qMLVPs8HANg+N8xDeTH
-         AKw7/nbw6nL5AgNNOCMqD57l0SpG9DsY3IOwH33HDMybujBtxyZrH+MWnUCPwX7TDFeX
-         yBPJkG9kUT3CMT/oe2eZlFPrgNJn+X4Veq6I8bf9bJ8R48GTH86jnHTU2U3rZUubGrvX
-         WZvEAwBgE8T3mnXTB6a/cDy9QdO+6ooEyU5Q5PXxF9ZzNXzmlPoeatUsD/HiGijFLfT/
-         rCeQ==
+        b=NBXl7XQCISViJFR1mQ6CRc6famU34RCVp9bPJpNbqJyz8BiLRB6bTYM9Etf0ff/WWy
+         rLjenuIuZmzrLdbcgyxTQyStXwG2vqxWZvrf7k6mk8dILqothCilp2KUM1FMVQlUNoBl
+         OQz7cQcbc81PuDoA9WHMJgErHR+f4+n1efGMoMnSrlN1tFqXcZQE32CpqnhdRu81Ywsj
+         u1Zf+LQNaHy0/O5IhKBcL1NBfa/dMj4ZVYb+plrO5LHdGiLtXWJptaG24vfBS0omRx6b
+         6Y3fKRxJ7og4YF5tIyJ5WFlDOWJmX9BQuNa/ZdJpIp9eGu+bHZ4FQP3Vm3k0IoEpbnUb
+         uEow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xvuQasfv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrYmpgrf;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x8-20020a9d6288000000b006cd09b59f3csor3285477otk.2.2023.11.28.06.00.32
+        by mx.google.com with SMTPS id dv13-20020a0568716e8d00b001e14ed31e63sor4186788oac.2.2023.11.28.06.02.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 28 Nov 2023 06:00:32 -0800 (PST)
+        Tue, 28 Nov 2023 06:02:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xvuQasfv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrYmpgrf;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701180032; x=1701784832; darn=linaro.org;
+        d=linaro.org; s=google; t=1701180172; x=1701784972; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=NdAXHix7hNPYBXgjxbxBcDX5MGQGoqSrmEIfGMEy6Dk=;
-        b=xvuQasfvIoNoyYgyKcMfUnQJ10XLp8VbYhXso5a134aJVztbaKehmBwISsdky6voc6
-         w5nAFRHembQ1eVI8I7/A92H/ZmLgKWRHs0pKgEHzms2sVxN9yfYSAN1nsPXNq1KRieji
-         PfSndcCP2IDc3C/r82a99Kc3IWLRRZGgGTMf5xBMu7d9y+NIub/tL84GYGR//fhPzuQs
-         y9Df+yLTfp8LDEkkXoxRyaenSbRs37FkxXG/cmQmGzFXgbSb/rpNMblJhpe80z6grE4u
-         9QOJEUeN2oS9iH5ArvFxw9i7dPuvgSNqxqhKGHT5Sy+rG5RIYom9qp62fm4VEZX2dnRx
-         xOpA==
+        bh=dec8iRgzEDFu7HMeARR9V8WSMJQftG6WNb8g4wP73b4=;
+        b=SrYmpgrfZqsuO5rVmaCaC7sB6n1DZNNm2cNALc4cZv6OMTK+whDdATEALBqEEXyPxe
+         XzgaGvIbjaC6++DQ2r8iTuPTpRIYORd+ktYEb01m6xGckpPdBz0ff9IMPL4Gq7SSpYJu
+         6ahHb8onFiAOWg+JFG8oe0Mt+W46xEMRVemP4X/u9dK7B0MXy2tjh3ovNPxNEjgPVopo
+         Inh2IocQlIj/2Dbt1XUCmQl2rMycuXvJkg2+Psa95lmgZr5W1wDP83CHRhL3kNV92JEr
+         pt+xO4HdHs1I4Ohxx3xid+QUP1xMbSWAHbsaI92o7gDslu9zSp7yMeoSwks/lCjHLmGa
+         yLxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701180032; x=1701784832;
+        d=1e100.net; s=20230601; t=1701180172; x=1701784972;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NdAXHix7hNPYBXgjxbxBcDX5MGQGoqSrmEIfGMEy6Dk=;
-        b=WRfp9j2135NOHZEzDIqFasEyv/UZ2rwL+OG/RApvDivF518aV5G0/kVoJdeXvY4eeC
-         1uSnaObtA7+9KFF3D/kF78cnqTk9wL/VU08qwoFELyRkX6EecuInUEMoQJ88TFbAepTn
-         30oCTWNiK9eDPtiEMdRBv2aFUcXUG3FlNfUW7VkR7zVyHn5D5ANJkUCpxtdia2lEVD72
-         456o8oLUzP3lxslX/LghwJVPMokZyH08YrmibZWnv1uIYShyJ030BUdLqLxoW/VAJF40
-         TfpXErg+1GSly8JEw7TQ9Avtc5JiUCsPiRzltjBT9/LMnQVw8e0wixwsIZr6GNVgp6P5
-         PPKQ==
-X-Gm-Message-State: AOJu0Yz4EAxZaRJchJwqa4v8NwGtHZGxjGpdyopwSbTw223pZz1n10pD
-	5H8OziqSF0VtOgTXN7u05Daoishf
-X-Google-Smtp-Source: AGHT+IG8SVpMS1/gpPC7RPWTPFYdxmAYmy7mWfZnX5dhoOw/XL8j4On3CMQVGnZLKCvNNhUN/uFv9g==
-X-Received: by 2002:a9d:7e8d:0:b0:6d3:1f0b:3fc7 with SMTP id m13-20020a9d7e8d000000b006d31f0b3fc7mr7654231otp.7.1701180032126;
-        Tue, 28 Nov 2023 06:00:32 -0800 (PST)
+        bh=dec8iRgzEDFu7HMeARR9V8WSMJQftG6WNb8g4wP73b4=;
+        b=Ak1eksSMuH4DPx7yYcg8LS6J5s7LDtjiKz12Ip3GRk5SdPREOkPpW7vhbxs3wU59gq
+         UeTxgrvgsQeKnJq00XLqEo/B3k3eIhl7EvPwCugsho3kEYsemNN9Fgmw52f5rLkddGmS
+         Zq+XBzDlEhhkzu0g4WqYBMKTCEelHZmHP+BOxmVsdhzVhyG674NXV0axASrU6dUMkxYa
+         wZiTqUPj57GMd7B1v4ZE6AzSun7fq3VPB8VXLoEInDn4DOHQdkrNmRJLsJ/uyKmW/I7L
+         2RSu6TQOGlqq53R6muEZY6xXHyBtJ4okyiPsbjfKnaitPI5JLY86uD6m+kMzKrf3HIO6
+         EUKw==
+X-Gm-Message-State: AOJu0YwTfCbwFl6/eAOUudqhVeUTT2XtcqfouMzjWVhXGDAGcDEIkK1J
+	dF6tLCv3eMiv5n5fiGQj+tYjss9j
+X-Google-Smtp-Source: AGHT+IGyHpa6zzVI1Dhk0/OKElxnYt3uPc/JtVQNSVfQWa4BvYN1oUz123krcf0Atey1HQVQgxfEyA==
+X-Received: by 2002:a05:6870:a70b:b0:1fa:14a2:d3b2 with SMTP id g11-20020a056870a70b00b001fa14a2d3b2mr16120417oam.55.1701180172466;
+        Tue, 28 Nov 2023 06:02:52 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [172.20.7.39] ([187.217.227.247])
-        by smtp.gmail.com with ESMTPSA id h14-20020a056830164e00b006ce2e1a6cb2sm1678579otr.44.2023.11.28.06.00.30
+        by smtp.gmail.com with ESMTPSA id ny13-20020a056871750d00b001fa1350df8esm2068309oac.2.2023.11.28.06.02.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Nov 2023 06:00:31 -0800 (PST)
-Message-ID: <7a313871-8c1d-445e-92c6-5b20918afb89@linaro.org>
-Date: Tue, 28 Nov 2023 08:00:29 -0600
+        Tue, 28 Nov 2023 06:02:52 -0800 (PST)
+Message-ID: <74fee177-71d9-4303-9692-b4a496047a03@linaro.org>
+Date: Tue, 28 Nov 2023 08:02:49 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 04/11] target/arm: Move ARM_CPU_IRQ/FIQ
- definitions to 'cpu-qom.h'
+Subject: Re: [PATCH-for-9.0 05/11] target/arm: Move GTIMER definitions to
+ 'cpu-defs.h'
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -87,25 +87,56 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-arm@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 References: <20231122183048.17150-1-philmd@linaro.org>
- <20231122183048.17150-5-philmd@linaro.org>
+ <20231122183048.17150-6-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231122183048.17150-5-philmd@linaro.org>
+In-Reply-To: <20231122183048.17150-6-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: g18XkjtfUBr0
+X-TUID: g9Z6tt28ZWUW
 
 On 11/22/23 12:30, Philippe Mathieu-Daudé wrote:
-> The ARM_CPU_IRQ/FIQ definitions are meant for the ARM CPU
-> QOM model. Move them to "cpu-qom.h" so any QOM code can
-> use them.
+> To allow GTIMER_* definitions to be used by non-ARM specific
+> hardware models, move them to a new target agnostic "cpu-defs.h"
+> header.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
-> Or do these definitions belong to cpu-defs.h?
+>   target/arm/cpu-defs.h | 19 +++++++++++++++++++
+>   target/arm/cpu.h      |  8 +-------
+>   hw/arm/bcm2836.c      |  1 +
+>   3 files changed, 21 insertions(+), 7 deletions(-)
+>   create mode 100644 target/arm/cpu-defs.h
+> 
+> diff --git a/target/arm/cpu-defs.h b/target/arm/cpu-defs.h
+> new file mode 100644
+> index 0000000000..1ad76aff14
+> --- /dev/null
+> +++ b/target/arm/cpu-defs.h
+> @@ -0,0 +1,19 @@
+> +/*
+> + * ARM "target agnostic" CPU definitions
+> + *
+> + *  Copyright (c) 2003 Fabrice Bellard
+> + *
+> + * SPDX-License-Identifier: LGPL-2.1-or-later
+> + */
+> +
+> +#ifndef ARM_CPU_DEFS_H
+> +#define ARM_CPU_DEFS_H
+> +
+> +#define GTIMER_PHYS     0
+> +#define GTIMER_VIRT     1
+> +#define GTIMER_HYP      2
+> +#define GTIMER_SEC      3
+> +#define GTIMER_HYPVIRT  4
+> +#define NUM_GTIMERS     5
+> +
+> +#endif
 
-I think they belong with the qom bits.
+Hmm.  cpu-defs.h is pretty generic.
+Without looking forward in the patch series, perhaps better as gtimer.h?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Is hw/arm/bcm2836.c really "non-arm-specific"?  Or did you mean "non-ARMCPU-specific"?
 
 
 r~

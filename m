@@ -1,104 +1,107 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2384620ejt;
-        Tue, 28 Nov 2023 20:22:48 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEnHI2DyF8SniWU/f52BYp/BzjiINUrXT37+R6EBvL8LiprkpthoOyFQCZ2b+umpAywwKO2
-X-Received: by 2002:a05:620a:8385:b0:77d:7449:df18 with SMTP id pb5-20020a05620a838500b0077d7449df18mr20305183qkn.13.1701231767821;
-        Tue, 28 Nov 2023 20:22:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701231767; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2471415ejt;
+        Wed, 29 Nov 2023 00:21:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHo4tjt/HCqay9Ap0JbX1Uh/hDOvij+Xt8T35Nf4F77y3qQ436v0yDj6mdrS1mvZb8muCOl
+X-Received: by 2002:a05:6214:29ee:b0:67a:1f77:8024 with SMTP id jv14-20020a05621429ee00b0067a1f778024mr18446720qvb.55.1701246068453;
+        Wed, 29 Nov 2023 00:21:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701246068; cv=none;
         d=google.com; s=arc-20160816;
-        b=KO8CTKgjSNVv0Xcs61QevCjlDLZF/x5c7P527gkPJKsRgnuLjjORkUmESMjMgekBF1
-         hCfKVZR2vjzoQb3PtDyi4J20yFXp/i8rNfMkY4Q8FJXhVj/Zb1Kt4+QYUohmaujF6gHz
-         QkjAkz8Qk+KNLi4Rg9Rlw+Y55Wzfvp8+1BAXl+ygmtFgalwlkvHEFDtPGkvmKHdpn6/1
-         MQmY9ZZCipSqcO7ph8M+9PRoNRNwWobMr+E4D/nqDIjN9LJAHCvuLL/fhqUglKcjiiIM
-         KI6pHJ6HlzoicZBJGq5sx9e6AXhD5e/16yFPQgwW3f+5RMMeIQl88xwHBoiwq2hLClbU
-         BaJw==
+        b=e7fAOSa5FGGNTfD3jljieNnDy7J9B3a6bQ0zTGpjW0/kT+jLymTq7Xrkhp0sf2FKji
+         2QlAelDkcEcC3hWzUh63bbl/IEYBtLkRDBliwTy2SWhv9HOGqeaZtIHODUfah8XKxjG2
+         +KK5NtJWjgpxqkIBXTgx0ml2OzRv/qDyDPXNAI4KHg828OAWaUW2UbBw7nd70mF64kfd
+         k1EG9HKF2gsliPOZnUlLbmz/UvZL9vGDq98mPQNCTTAJ+UBVMKVg/NeR4u/u1gOOXVuB
+         PO5tQwQ3I602Kpa6V4BvyRnX1p6ZvYVwpHMcoM6HBjKviQ9kF4dqyez+MvI91r2apiVX
+         eVsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:mime-version:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=JVyfjLzyQs0XZ2Tf2HNNgNKUbfHJiHRiECV6o6YVcyQ=;
-        fh=dYswejlzixW+/pN5BDGaZGk2aL8UDmDK4StoDp2TZgs=;
-        b=ghDz5ZGix99jxip3dA1yCHCoseO93jEeLFVgNYYX4Fg0ViaeASTxZz8k9HwjyD/ye7
-         LFKnZsjVhoJKpOJef/1FxnSaOKtzknccf8zsDjruQqNyDdbcT3W8bl9cLdg8l2Pzlybz
-         48RD3yyp+nES80l7/Q1tEpax0TgNdNYliHAAXiWvqY2MvrKGpUDEcfk/4sv3EqqJeRkA
-         iE2IuJmLFGOn/mAzo2rR+Wf7YJtNvVztOrbIYxEl0CXzYnDUFe/hJXr8/ilU5Z5peeaw
-         D026pdtRNV9qCZo8Mo0CEEEu5pqLhwRiTvWOypnC1FkP5g8f95tNOJmATK4twc3Xfqm3
-         Irfg==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
+         :dkim-signature;
+        bh=S/3cDfRa5LH4GWX/yLB4BmmZ5fLLYCoRPZZdEvvflmc=;
+        fh=75zwlqFzL/6p+6RamZHPcUH5lDkEJ1ziIa5FQreI2Gk=;
+        b=svF8L9WQjfq5RN5knRV21JgnaIwHvxZFX7FPj0eGQpEAiHSVsI8AwLd8Wc9+3akZys
+         EdhBHr9w3mNh56OQOJkrFbycDI09tmP+ec4JDbMWisIqqmWoovTnCDkLLBGrLzuCqkUh
+         noCUg/lrlhZTxw/WYoi3G+x06J1AZekqU4WKqnkJMux/liFWpQWlZ00LevaiVUnTBVqx
+         GXfoCl1W52ALv0Gr6uWrY92scphcFRcKVmdgdPms6hn8b+AacoZ8leyOz5r/UnW8Edr0
+         5vryvIpjeUkjaIaxZMPP+tbMX8LjiuzzcrIP7DNNYwCHUz2V5kScBx9qOQsFr+rrusqt
+         lx4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eyuwuWul;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RzvXKuKe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17-20020a05620a295100b0077dc534626fsi1918418qkp.409.2023.11.28.20.22.47
+        by mx.google.com with ESMTPS id ea16-20020ad458b0000000b00679dfa08501si12923265qvb.421.2023.11.29.00.21.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Nov 2023 20:22:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 29 Nov 2023 00:21:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eyuwuWul;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RzvXKuKe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r8C5G-0003eB-1Y; Tue, 28 Nov 2023 23:21:58 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r8FoU-0006rA-RJ; Wed, 29 Nov 2023 03:20:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r8C5E-0003VJ-VR
- for qemu-devel@nongnu.org; Tue, 28 Nov 2023 23:21:56 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r8FoS-0006qg-P0
+ for qemu-arm@nongnu.org; Wed, 29 Nov 2023 03:20:53 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r8C5D-0007S5-Cw
- for qemu-devel@nongnu.org; Tue, 28 Nov 2023 23:21:56 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r8FoR-0000fd-1a
+ for qemu-arm@nongnu.org; Wed, 29 Nov 2023 03:20:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701231714;
+ s=mimecast20190719; t=1701246048;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=JVyfjLzyQs0XZ2Tf2HNNgNKUbfHJiHRiECV6o6YVcyQ=;
- b=eyuwuWuluvo0e84lkH25QPWeMGWQC3BnxhEav+Do3sgeWJM+Td1eYDyV99sGAvApQ4IMC1
- mzihMue1s0AJGnL3Uq+n/EkrvRBLTGA6JYWO+oVPrX9Zlg2wvrgEdI4uz4c4Fk7U0SCPuB
- 2YVztU1NlUAwwrn0uU3QNoiZ7csscvw=
+ bh=S/3cDfRa5LH4GWX/yLB4BmmZ5fLLYCoRPZZdEvvflmc=;
+ b=RzvXKuKe6Y/ra+/XJ7+bRO5CeXUsMAH7YKMi8x2SX9MChnOts92aPK8e0+nVoAnboO8aaH
+ K6s0AmDS7qTL4FoyU3UC83lIpyHQj8H2911UGnhkugvi3CeXXjAGx1naCysRLySMYmjfVm
+ /wHTkj9/RCyjWACz0VLMJwxj1Tl8LhA=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-140-U9X8hXBdMli6dCpHfluznA-1; Tue, 28 Nov 2023 23:21:51 -0500
-X-MC-Unique: U9X8hXBdMli6dCpHfluznA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ us-mta-614-H-wAc1oJMQuj81Eds4H6LQ-1; Wed, 29 Nov 2023 03:20:45 -0500
+X-MC-Unique: H-wAc1oJMQuj81Eds4H6LQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 02E0380C343;
- Wed, 29 Nov 2023 04:21:50 +0000 (UTC)
-Received: from gshan.redhat.com (unknown [10.64.136.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9EB81492BE0;
- Wed, 29 Nov 2023 04:21:42 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, b.galvani@gmail.com, strahinja.p.jankovic@gmail.com,
- sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com,
- nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
- vijai@behindbytes.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com
-Subject: [PATCH v8 9/9] hw/riscv/shakti_c: Check CPU type in
- machine_run_board_init()
-Date: Wed, 29 Nov 2023 14:20:12 +1000
-Message-ID: <20231129042012.277831-10-gshan@redhat.com>
-In-Reply-To: <20231129042012.277831-1-gshan@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 30733101A529;
+ Wed, 29 Nov 2023 08:20:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.148])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E441220268D6;
+ Wed, 29 Nov 2023 08:20:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id EF53721E6A1F; Wed, 29 Nov 2023 09:20:41 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  qemu-riscv@nongnu.org,
+ peter.maydell@linaro.org,  imammedo@redhat.com,  b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com,  sundeep.lkml@gmail.com,
+ kfting@nuvoton.com,  wuhaotsh@google.com,  nieklinnenbank@gmail.com,
+ rad@semihalf.com,  quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org,  eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com,  philmd@linaro.org,  wangyanan55@huawei.com,
+ vijai@behindbytes.com,  palmer@dabbelt.com,  alistair.francis@wdc.com,
+ bin.meng@windriver.com,  liwei1518@gmail.com,  dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com,  shan.gavin@gmail.com
+Subject: Re: [PATCH v8 1/9] machine: Use error handling when CPU type is
+ checked
 References: <20231129042012.277831-1-gshan@redhat.com>
+ <20231129042012.277831-2-gshan@redhat.com>
+Date: Wed, 29 Nov 2023 09:20:41 +0100
+In-Reply-To: <20231129042012.277831-2-gshan@redhat.com> (Gavin Shan's message
+ of "Wed, 29 Nov 2023 14:20:04 +1000")
+Message-ID: <87bkbdnf6u.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -109,72 +112,90 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /zm0i9kbB2gg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 53uomU9gzsxx
 
-Set mc->valid_cpu_types so that the user specified CPU type can
-be validated in machine_run_board_init(). We needn't to do it
-by ourselves.
+Gavin Shan <gshan@redhat.com> writes:
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/riscv/shakti_c.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+> QEMU will be terminated if the specified CPU type isn't supported
+> in machine_run_board_init(). The list of supported CPU type names
+> is tracked by mc->valid_cpu_types.
 
-diff --git a/hw/riscv/shakti_c.c b/hw/riscv/shakti_c.c
-index 12ea74b032..3888034c2b 100644
---- a/hw/riscv/shakti_c.c
-+++ b/hw/riscv/shakti_c.c
-@@ -28,7 +28,6 @@
- #include "exec/address-spaces.h"
- #include "hw/riscv/boot.h"
- 
--
- static const struct MemmapEntry {
-     hwaddr base;
-     hwaddr size;
-@@ -47,12 +46,6 @@ static void shakti_c_machine_state_init(MachineState *mstate)
-     ShaktiCMachineState *sms = RISCV_SHAKTI_MACHINE(mstate);
-     MemoryRegion *system_memory = get_system_memory();
- 
--    /* Allow only Shakti C CPU for this platform */
--    if (strcmp(mstate->cpu_type, TYPE_RISCV_CPU_SHAKTI_C) != 0) {
--        error_report("This board can only be used with Shakti C CPU");
--        exit(1);
--    }
--
-     /* Initialize SoC */
-     object_initialize_child(OBJECT(mstate), "soc", &sms->soc,
-                             TYPE_RISCV_SHAKTI_SOC);
-@@ -82,9 +75,15 @@ static void shakti_c_machine_instance_init(Object *obj)
- static void shakti_c_machine_class_init(ObjectClass *klass, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(klass);
-+    static const char * const valid_cpu_types[] = {
-+        RISCV_CPU_TYPE_NAME("shakti-c"),
-+        NULL
-+    };
-+
-     mc->desc = "RISC-V Board compatible with Shakti SDK";
-     mc->init = shakti_c_machine_state_init;
-     mc->default_cpu_type = TYPE_RISCV_CPU_SHAKTI_C;
-+    mc->valid_cpu_types = valid_cpu_types;
-     mc->default_ram_id = "riscv.shakti.c.ram";
- }
- 
--- 
-2.42.0
+Suggest to drop the second sentence.
+
+> The error handling can be used to propagate error messages, to be
+> consistent how the errors are handled for other situations in the
+> same function.
+>
+> No functional change intended.
+>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> ---
+> v8: Drop @local_err and use @errp to be compatible with
+>     ERRP_GUARD()                                          (Phil)
+> ---
+>  hw/core/machine.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 0c17398141..bde7f4af6d 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -1466,15 +1466,16 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
+>  
+>          if (!machine_class->valid_cpu_types[i]) {
+>              /* The user specified CPU is not valid */
+> -            error_report("Invalid CPU type: %s", machine->cpu_type);
+> -            error_printf("The valid types are: %s",
+> -                         machine_class->valid_cpu_types[0]);
+> +            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
+> +            error_append_hint(errp, "The valid types are: %s",
+> +                              machine_class->valid_cpu_types[0]);
+>              for (i = 1; machine_class->valid_cpu_types[i]; i++) {
+> -                error_printf(", %s", machine_class->valid_cpu_types[i]);
+> +                error_append_hint(errp, ", %s",
+> +                                  machine_class->valid_cpu_types[i]);
+>              }
+> -            error_printf("\n");
+>  
+> -            exit(1);
+> +            error_append_hint(&errp, "\n");
+> +            return;
+>          }
+>      }
+
+This cleans up an anti-pattern: use of error_report() within a function that
+returns errors through an Error **errp parameter.
+
+Cleanup, not bug fix, because the only caller passes &error_abort.
+
+Suggest to start the commit message with a mention of the anti-pattern.
+Here's how I'd write it:
+
+    Functions that use an Error **errp parameter to return errors should
+    not also report them to the user, because reporting is the caller's
+    job.
+
+    machine_run_board_init() violates this principle: it calls
+    error_report(), error_printf(), and exit(1) when the machine doesn't
+    support the requested CPU type.
+
+    Clean this up by using error_setg() and error_append_hint() instead.
+    No functional change, as the only caller passes &error_fatal.
+
+Whether you use my suggestion or not:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 

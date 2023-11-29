@@ -1,73 +1,74 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2602861ejt;
-        Wed, 29 Nov 2023 05:01:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEG8osXsjMqQN1BbtoZmZyuyrBsOZfXNw4NbI0FfrrYxIQhBhj3G1FXJnH9UJUv0+i605aA
-X-Received: by 2002:a25:a306:0:b0:d99:d1b8:672f with SMTP id d6-20020a25a306000000b00d99d1b8672fmr16481771ybi.33.1701262914161;
-        Wed, 29 Nov 2023 05:01:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701262914; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2610814ejt;
+        Wed, 29 Nov 2023 05:12:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGgVP13U4qGZc/ZuQNX0ptkhGLuwopBFvj2gDFiW2arHF2EaqQm/PZT7JC67ImL482bS79H
+X-Received: by 2002:a81:6285:0:b0:5c9:12ec:5203 with SMTP id w127-20020a816285000000b005c912ec5203mr17057810ywb.32.1701263527192;
+        Wed, 29 Nov 2023 05:12:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701263527; cv=none;
         d=google.com; s=arc-20160816;
-        b=WqSjVK1ZeYb5gK+TGASvRjm34RQViEdJrjzs+P/P+1CDa7ZhRFrbgYkz7ULuXRm7Pz
-         0N205TD2Cr+EeERRLVLaaDZYM/9cTYGwzc4LEFg7NTiFV1flFv+LZt8/ZiUIIGrz9J8t
-         S6W275mZ/43I/GnY5YAq0fAuV2FFnwMGzEotppM5NZ8HOlU/OnIP8bh3MZF9lrM0kPE2
-         r4fpx3Vg1UAKNuBjV6BLZMaDeQ42+1yMC1cS0g6PpIQazAyv7faKm2bhlcpeIIy7iw7f
-         tMPLgwHJa+xHhvuIDDNRVzNPWNqbl1Bsw0YaY6ohC/DqfGQ32Nmah7BQ4U/Zw+R090sU
-         Ni+Q==
+        b=CeoTdBK01p9TlJvL+rqSZ8uihDYeBRgTvR0x8fAs4tiHKV2bbGkIyk34LezHUsQ7Pz
+         shldHJYHrinLN8NdloQ5M71QurvFldsu1nGDrB2n8R+8QXQCYId3kb50dJ/WUzXkHBJ8
+         AFBXeoTlP9EZnqdem2M5I8aYK91jujTYjqywO/tDIb66XXAu7jILc+lHyOtZ24LWSXpL
+         zx3Xay+KHLR/q92L2ORwtFszit/M/T7cGkzaPlndH7CtUqavWUY5479xeJhT2yPWKQvR
+         wvO/OC+jkFsOSqtN1y25YflqDY1DljKHMMMLzLbObBLj9rfozlovtaiywCF5td6qkJkI
+         1T1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:references:cc:to:content-language
          :subject:user-agent:mime-version:date:message-id;
-        bh=VVsxHS68cBTOy0nY9DTR82aylZif2WTRC281nwYW/TY=;
-        fh=ZKwtjLedALAsyUCvQ81dAS/TNXOv3tNCxPltbxlZpMM=;
-        b=DF3M5eZeResreFSQcBk+oz0WbOdGPuhbYC8hoSC+vHI3XTv4lHmZ7lbTzd4EQzcjwQ
-         nQYaHxSq4qnwvc3Hm1GR2xxshnX5Rdiz+1FJZAJxdxtK6kt/sxVxEueqockdP2lK/gx1
-         Hieim+0wHBD4CI3FLaaYGIONuh4hUHJXErT0U/wamyCm4f0yYQo/3FyAn8aBsR4Jz7cg
-         cDfZPrkJvbUIdWAZXoCpouUm56IDONUsn4is6U46CrbDiBOB8C7gkW0LUkjGg76kKkpW
-         oqOFV97Ny/KTKIizlNViHrTYQDySi7/4CKfhlEqMQEv6tcuZv3SjsZxwwGYHXOgDC9b0
-         65aA==
+        bh=53s/Wc+SUdhYU09dQ4ZePuTObTa5zVA+6B3oR4F1aHo=;
+        fh=PIt7Ga1iXhT86ZM9MPlWRq+/+rYNkZ+jZod3xrWh7fg=;
+        b=Qa9XjSGh2v8Mk/OJLerEwNWs0BqbacSkmtUyfqKSLzvweNLD0iWX8IoPkThgGyp7aI
+         w83eKmj6tDbdEvGMLGtSkSTpyePeBgPDBtHk5X0H2s2Gwy9Qtj8kWMSaewzvwdczDgfm
+         bCWGIkTqXt0opVdzfSy/7RGLDr0Xhg1CLnpnGG9LZdEM0T9XUe4/LrgISrW12Xro5hJb
+         /RtmVuV/uqc7LAbnZNk/lm4l2kEkN7JF/EFcx1ckDIOlB03jcRHIPuSr1P6MF2OTqn2R
+         w+npRICZnnbXGVNJ7PQjWQQnxJKFZeVtx0SHf3DpWbYe7wJhSFiWkmnG8ekoZb3InMpC
+         HK4g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5-20020a25c005000000b00d851099a291si8687836ybf.197.2023.11.29.05.01.53
+        by mx.google.com with ESMTPS id y21-20020a67e8d5000000b00462e283f49asi103541vsn.685.2023.11.29.05.12.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Nov 2023 05:01:54 -0800 (PST)
+        Wed, 29 Nov 2023 05:12:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r8KBc-0008KT-91; Wed, 29 Nov 2023 08:01:04 -0500
+	id 1r8KM8-0003LO-Ik; Wed, 29 Nov 2023 08:11:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r8KBa-0008Jk-Tu; Wed, 29 Nov 2023 08:01:02 -0500
+ id 1r8KM6-0003Kl-1h; Wed, 29 Nov 2023 08:11:55 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r8KBZ-0008Q4-31; Wed, 29 Nov 2023 08:01:02 -0500
+ id 1r8KM4-0002Yy-3D; Wed, 29 Nov 2023 08:11:53 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id ADBAD37663;
- Wed, 29 Nov 2023 16:01:19 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id AF3B837671;
+ Wed, 29 Nov 2023 16:12:11 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id C835F386C2;
- Wed, 29 Nov 2023 16:00:55 +0300 (MSK)
-Message-ID: <107a2390-2af1-4b8b-8149-5c97fc1f2668@tls.msk.ru>
-Date: Wed, 29 Nov 2023 16:00:55 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id C244D386E3;
+ Wed, 29 Nov 2023 16:11:47 +0300 (MSK)
+Message-ID: <eb792ad0-7199-4dde-95db-4b8eb7731c2e@tls.msk.ru>
+Date: Wed, 29 Nov 2023 16:11:47 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-8.2? 1/6] hw/virtio: Add
- VirtioPCIDeviceTypeInfo::instance_finalize field
+Subject: Re: [PATCH-for-8.2? 2/6] hw/virtio: Free
+ VirtIOIOMMUPCI::vdev.reserved_regions[] on finalize()
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+ Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-stable@nongnu.org
 References: <20231121174051.63038-1-philmd@linaro.org>
- <20231121174051.63038-2-philmd@linaro.org>
+ <20231121174051.63038-3-philmd@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -93,7 +94,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20231121174051.63038-2-philmd@linaro.org>
+In-Reply-To: <20231121174051.63038-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -118,48 +119,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RCSd+jA7Vp77
+X-TUID: nieEvkKBKvUR
 
-21.11.2023 20:40, Philippe Mathieu-Daudé:
-> The VirtioPCIDeviceTypeInfo structure, added in commit a4ee4c8baa
-> ("virtio: Helper for registering virtio device types") got extended
-> in commit 8ea90ee690 ("virtio: add class_size") with the @class_size
-> field. Do similarly with the @instance_finalize field.
+21.11.2023 20:40, Philippe Mathieu-Daudé пишет:
+> Commit 0be6bfac62 ("qdev: Implement variable length array properties")
+> added the DEFINE_PROP_ARRAY() macro with the following comment:
+> 
+>    * It is the responsibility of the device deinit code to free the
+>    * @_arrayfield memory.
+> 
+> Commit 8077b8e549 added:
+> 
+>    DEFINE_PROP_ARRAY("reserved-regions", VirtIOIOMMUPCI,
+>                      vdev.nb_reserved_regions, vdev.reserved_regions,
+>                      qdev_prop_reserved_region, ReservedRegion),
+> 
+> but forgot to free the 'vdev.reserved_regions' array. Do it in the
+> instance_finalize() handler.
 
-Since other patches in this series are Cc'ed to qemu-stable, and all
-uses this new field, it smells like this patch should also be picked
-up for -stable (doing that now).
+It is interesting that the actual code frees prop_resv_regions, not
+reserved_regions as the Subject says.  This is because of commit
+v8.1.0-2552-g41cc70cdf5, ""virtio-iommu: Rename reserved_regions
+into prop_resv_regions".
+
+:)
 
 /mjt
 
+> Cc: qemu-stable@nongnu.org
+> Fixes: 8077b8e549 ("virtio-iommu-pci: Add array of Interval properties") # v5.1.0+
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/hw/virtio/virtio-pci.h | 1 +
->   hw/virtio/virtio-pci.c         | 1 +
->   2 files changed, 2 insertions(+)
+>   hw/virtio/virtio-iommu-pci.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
 > 
-> diff --git a/include/hw/virtio/virtio-pci.h b/include/hw/virtio/virtio-pci.h
-> index 5a3f182f99..59d88018c1 100644
-> --- a/include/hw/virtio/virtio-pci.h
-> +++ b/include/hw/virtio/virtio-pci.h
-> @@ -246,6 +246,7 @@ typedef struct VirtioPCIDeviceTypeInfo {
->       size_t instance_size;
->       size_t class_size;
->       void (*instance_init)(Object *obj);
-> +    void (*instance_finalize)(Object *obj);
->       void (*class_init)(ObjectClass *klass, void *data);
->       InterfaceInfo *interfaces;
->   } VirtioPCIDeviceTypeInfo;
-> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-> index 205dbf24fb..e433879542 100644
-> --- a/hw/virtio/virtio-pci.c
-> +++ b/hw/virtio/virtio-pci.c
-> @@ -2391,6 +2391,7 @@ void virtio_pci_types_register(const VirtioPCIDeviceTypeInfo *t)
->           .parent        = t->parent ? t->parent : TYPE_VIRTIO_PCI,
->           .instance_size = t->instance_size,
->           .instance_init = t->instance_init,
-> +        .instance_finalize = t->instance_finalize,
->           .class_size    = t->class_size,
->           .abstract      = true,
->           .interfaces    = t->interfaces,
+> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+> index 9459fbf6ed..cbdfe4c591 100644
+> --- a/hw/virtio/virtio-iommu-pci.c
+> +++ b/hw/virtio/virtio-iommu-pci.c
+> @@ -95,10 +95,18 @@ static void virtio_iommu_pci_instance_init(Object *obj)
+>                                   TYPE_VIRTIO_IOMMU);
+>   }
+>   
+> +static void virtio_iommu_pci_instance_finalize(Object *obj)
+> +{
+> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(obj);
+> +
+> +    g_free(dev->vdev.prop_resv_regions);
+> +}
+> +
+>   static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info = {
+>       .generic_name  = TYPE_VIRTIO_IOMMU_PCI,
+>       .instance_size = sizeof(VirtIOIOMMUPCI),
+>       .instance_init = virtio_iommu_pci_instance_init,
+> +    .instance_finalize = virtio_iommu_pci_instance_finalize,
+>       .class_init    = virtio_iommu_pci_class_init,
+>   };
+>   
 

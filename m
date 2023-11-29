@@ -1,148 +1,289 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id g7-20020a05600c4ec700b0040b34409d43sm2786267wmq.11.2023.11.29.08.56.38
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2926815ejt;
+        Wed, 29 Nov 2023 13:26:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFC+r91Db1Dkarn3L0D1uSD7MOcm1tlz2hSvUM9Enzz7r5N4Q8nE+GuIsJKhhhE8VDuJQ7F
+X-Received: by 2002:a05:6214:469b:b0:67a:35f3:4408 with SMTP id or27-20020a056214469b00b0067a35f34408mr22016493qvb.31.1701293202487;
+        Wed, 29 Nov 2023 13:26:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701293202; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TgkSIgtOPy7tmuVcMubQYEufGlOF19fb3SO80ud2QjLgu+2Y7CC523JPg/cLP70OEO
+         Afc3lovOJnoWzrOrtM+vrPYawQWRX1obnrX4UGBd8N/f2pHFIRWNmEp78lmqL7TK2jLc
+         68hXwacnQay0lVMmcIcHMSRlRwd8EXFoHGwOrwuqDnOsByOsdjy9qNCud1wmMI9TUwQ1
+         Gii5ZoEAxfe7LBJJrGpCM62E883R4hDvE1p8t8gZDekxGEPEAjVaT4T3wVVo1Jyg/i7x
+         0uaRfelA+kJl5ybFYyA/uALdpezZJ1Gs9EpjRqXQwXSXla2aGP3VgqeXqoOOQ4FKVQte
+         3Svw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=qIu73bEmAYNa5+9Duiskzg7KzH7tsLGKxcaWpL0jd+U=;
+        fh=66jOpK19BNwWsQZvN6UyW7PgNiNU+OiaQoFBeggwlKE=;
+        b=C4pNfOm3fgjkLkG+bsngBi3up6xWYMmqwo8CRKEC/eE6B8TupnyiYF7EJek8fE+x1C
+         Otf/SudoyefleT4cizuBSLi4iN9xY7ynVYrrVkpgx0QoXeeEmaXF+45gezRILsFTUXMy
+         OSp9lStiAMemRR8iNLFkMBFnP/QnZog0D0CJra3sKmbuBRycAbpA6Z6jd9AFkqkY98t+
+         kKDSDcHLbWvGJAcuo1EJxYu05CuCfc7M1QfkfLfPbY7hdyNn+7/6sjPSrACybFAAMCrh
+         t2D06dtKDlSghXVGFrRgcedfyYcBx7hypz3klQmEswbfL+73SsZiPn1X8yHyYoI9Ipcz
+         +dig==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GYdWPgVG;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <stefanha@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id dt36-20020a05620a47a400b0077d716e20f9si13933225qkb.455.2023.11.29.13.26.42
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Nov 2023 08:56:38 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 32FA45F7AF;
-	Wed, 29 Nov 2023 16:56:38 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-Cc: <peter.maydell@linaro.org>,  <qemu-devel@nongnu.org>,
-  <qemu-arm@nongnu.org>,  <quic_tsoni@quicinc.com>,
-  <quic_pheragu@quicinc.com>,  <quic_eberman@quicinc.com>,
-  <quic_yvasi@quicinc.com>,  <quic_cvanscha@quicinc.com>,
-  <quic_mnalajal@quicinc.com>
-Subject: Re: [RFC/PATCH v0 03/12] gunyah: Basic support
-In-Reply-To: <20231011165234.1323725-4-quic_svaddagi@quicinc.com> (Srivatsa
-	Vaddagiri's message of "Wed, 11 Oct 2023 16:52:25 +0000")
-References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
-	<20231011165234.1323725-4-quic_svaddagi@quicinc.com>
-User-Agent: mu4e 1.11.25; emacs 29.1
-Date: Wed, 29 Nov 2023 16:56:38 +0000
-Message-ID: <87cyvs8pmh.fsf@draig.linaro.org>
+        Wed, 29 Nov 2023 13:26:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GYdWPgVG;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1701293202;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=qIu73bEmAYNa5+9Duiskzg7KzH7tsLGKxcaWpL0jd+U=;
+	b=GYdWPgVG0MMO4iNG4H1/5QIeD5EpvAVyaRAcRdJ5GUuExnK+rDA9koJ2RrlNr5116S9oAo
+	wtK++0qHxnsVtm11UdEeqGTmKBzu/M8vG6AVdcI8QnCuj9qPI1Zz9jehVnMoIaEwN1zMMN
+	+woBIbjN/dNR/9tmZznrza1C79o1fgI=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-201-jezd3L4pMveGVd7IsGPLnQ-1; Wed,
+ 29 Nov 2023 16:26:38 -0500
+X-MC-Unique: jezd3L4pMveGVd7IsGPLnQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63038381BE86;
+	Wed, 29 Nov 2023 21:26:30 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C50A02027019;
+	Wed, 29 Nov 2023 21:26:26 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Fabiano Rosas <farosas@suse.de>,
+	qemu-s390x@nongnu.org,
+	Song Gao <gaosong@loongson.cn>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Hyman Huang <yong.huang@smartx.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Paul Durrant <paul@xen.org>,
+	Jagannathan Raman <jag.raman@oracle.com>,
+	Juan Quintela <quintela@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org,
+	Jason Wang <jasowang@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Hailiang Zhang <zhanghailiang@xfusion.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Fam Zheng <fam@euphon.net>,
+	Eric Blake <eblake@redhat.com>,
+	Jiri Slaby <jslaby@suse.cz>,
+	Alexander Graf <agraf@csgraf.de>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	Stafford Horne <shorne@gmail.com>,
+	David Hildenbrand <david@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	xen-devel@lists.xenproject.org,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	qemu-riscv@nongnu.org,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	John Snow <jsnow@redhat.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Michael Roth <michael.roth@amd.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	kvm@vger.kernel.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	qemu-block@nongnu.org,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Peter Xu <peterx@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	qemu-ppc@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Leonardo Bras <leobras@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>
+Subject: [PATCH 0/6] Make Big QEMU Lock naming consistent
+Date: Wed, 29 Nov 2023 16:26:19 -0500
+Message-ID: <20231129212625.1051502-1-stefanha@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WP95h+RpHp0B
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+X-TUID: C08tEXEX1ESl
 
-Srivatsa Vaddagiri <quic_svaddagi@quicinc.com> writes:
+The Big QEMU Lock ("BQL") has two other names: "iothread lock" and "QEMU global
+mutex". The term "iothread lock" is easily confused with the unrelated --object
+iothread (iothread.c).
 
-> Add a new accelerator, gunyah, with basic functionality of creating a
-> VM. Subsequent patches will add support for other functions required to
-> run a VM.
->
-> Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
+This series updates the code and documentation to consistently use "BQL". This
+makes the code easier to understand.
 
-Hmm this failed to build:
+Stefan Hajnoczi (6):
+  system/cpus: rename qemu_mutex_lock_iothread() to qemu_bql_lock()
+  qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to QEMU_BQL_LOCK_GUARD
+  qemu/main-loop: rename qemu_cond_wait_iothread() to
+    qemu_cond_wait_bql()
+  system/cpus: rename qemu_global_mutex to qemu_bql
+  Replace "iothread lock" with "BQL" in comments
+  Rename "QEMU global mutex" to "BQL" in comments and docs
 
-  FAILED: libqemu-aarch64-softmmu.fa.p/accel_gunyah_gunyah-all.c.o=20
-  cc -m64 -mcx16 -Ilibqemu-aarch64-softmmu.fa.p -I. -I../.. -Itarget/arm -I=
-../../target/arm -Iqapi -Itrace -Iui -Iui/shader -I/usr/include/pixman-1 -I=
-/usr/include/capstone -I/usr/include/spice-server -I/usr/include/spice-1 -I=
-/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiagno=
-stics-color=3Dauto -Wall -Winvalid-pch -Werror -std=3Dgnu11 -O2 -g -fstack-=
-protector-strong -Wundef -Wwrite-strings -Wmissing-prototypes -Wstrict-prot=
-otypes -Wredundant-decls -Wold-style-declaration -Wold-style-definition -Wt=
-ype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers =
--Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wimpli=
-cit-fallthrough=3D2 -Wmissing-format-attribute -Wno-missing-include-dirs -W=
-no-shift-negative-value -Wno-psabi -Wshadow=3Dlocal -isystem /home/alex/lsr=
-c/qemu.git/linux-headers -isystem linux-headers -iquote . -iquote /home/ale=
-x/lsrc/qemu.git -iquote /home/alex/lsrc/qemu.git/include -iquote /home/alex=
-/lsrc/qemu.git/host/include/x86_64 -iquote /home/alex/lsrc/qemu.git/host/in=
-clude/generic -iquote /home/alex/lsrc/qemu.git/tcg/i386 -pthread -D_GNU_SOU=
-RCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -fno-strict-aliasing -fno-=
-common -fwrapv -fPIE -isystem../../linux-headers -isystemlinux-headers -DNE=
-ED_CPU_H '-DCONFIG_TARGET=3D"aarch64-softmmu-config-target.h"' '-DCONFIG_DE=
-VICES=3D"aarch64-softmmu-config-devices.h"' -MD -MQ libqemu-aarch64-softmmu=
-.fa.p/accel_gunyah_gunyah-all.c.o -MF libqemu-aarch64-softmmu.fa.p/accel_gu=
-nyah_gunyah-all.c.o.d -o libqemu-aarch64-softmmu.fa.p/accel_gunyah_gunyah-a=
-ll.c.o -c ../../accel/gunyah/gunyah-all.c
-  ../../accel/gunyah/gunyah-all.c:21:10: fatal error: linux-headers/linux/g=
-unyah.h: No such file or directory
-     21 | #include "linux-headers/linux/gunyah.h"
-        |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  compilation terminated.
+ docs/devel/multi-thread-tcg.rst      |   7 +-
+ docs/devel/qapi-code-gen.rst         |   2 +-
+ docs/devel/replay.rst                |   2 +-
+ docs/devel/reset.rst                 |   2 +-
+ docs/devel/multiple-iothreads.txt    |  16 ++--
+ hw/display/qxl.h                     |   2 +-
+ include/block/aio-wait.h             |   2 +-
+ include/block/blockjob.h             |   6 +-
+ include/exec/cpu-common.h            |   2 +-
+ include/exec/memory.h                |   4 +-
+ include/exec/ramblock.h              |   2 +-
+ include/io/task.h                    |   2 +-
+ include/migration/register.h         |   8 +-
+ include/qemu/coroutine-core.h        |   2 +-
+ include/qemu/coroutine.h             |   2 +-
+ include/qemu/main-loop.h             |  54 ++++++------
+ target/arm/internals.h               |   4 +-
+ accel/accel-blocker.c                |  10 +--
+ accel/dummy-cpus.c                   |   8 +-
+ accel/hvf/hvf-accel-ops.c            |   4 +-
+ accel/kvm/kvm-accel-ops.c            |   4 +-
+ accel/kvm/kvm-all.c                  |  22 ++---
+ accel/tcg/cpu-exec.c                 |  26 +++---
+ accel/tcg/cputlb.c                   |  20 ++---
+ accel/tcg/tcg-accel-ops-icount.c     |   6 +-
+ accel/tcg/tcg-accel-ops-mttcg.c      |  12 +--
+ accel/tcg/tcg-accel-ops-rr.c         |  18 ++--
+ accel/tcg/tcg-accel-ops.c            |   2 +-
+ accel/tcg/translate-all.c            |   2 +-
+ cpu-common.c                         |   4 +-
+ dump/dump.c                          |   4 +-
+ hw/block/dataplane/virtio-blk.c      |   8 +-
+ hw/block/virtio-blk.c                |   2 +-
+ hw/core/cpu-common.c                 |   6 +-
+ hw/display/virtio-gpu.c              |   2 +-
+ hw/i386/intel_iommu.c                |   6 +-
+ hw/i386/kvm/xen_evtchn.c             |  30 +++----
+ hw/i386/kvm/xen_gnttab.c             |   2 +-
+ hw/i386/kvm/xen_overlay.c            |   2 +-
+ hw/i386/kvm/xen_xenstore.c           |   2 +-
+ hw/intc/arm_gicv3_cpuif.c            |   2 +-
+ hw/intc/s390_flic.c                  |  18 ++--
+ hw/mips/mips_int.c                   |   2 +-
+ hw/misc/edu.c                        |   4 +-
+ hw/misc/imx6_src.c                   |   2 +-
+ hw/misc/imx7_src.c                   |   2 +-
+ hw/net/xen_nic.c                     |   8 +-
+ hw/ppc/pegasos2.c                    |   2 +-
+ hw/ppc/ppc.c                         |   6 +-
+ hw/ppc/spapr.c                       |   2 +-
+ hw/ppc/spapr_events.c                |   2 +-
+ hw/ppc/spapr_rng.c                   |   4 +-
+ hw/ppc/spapr_softmmu.c               |   4 +-
+ hw/remote/mpqemu-link.c              |  14 ++--
+ hw/remote/vfio-user-obj.c            |   2 +-
+ hw/s390x/s390-skeys.c                |   2 +-
+ hw/scsi/virtio-scsi-dataplane.c      |   6 +-
+ migration/block-dirty-bitmap.c       |  14 ++--
+ migration/block.c                    |  40 ++++-----
+ migration/colo.c                     |  62 +++++++-------
+ migration/dirtyrate.c                |  12 +--
+ migration/migration.c                |  54 ++++++------
+ migration/ram.c                      |  16 ++--
+ net/tap.c                            |   2 +-
+ replay/replay-internal.c             |   2 +-
+ semihosting/console.c                |   8 +-
+ stubs/iothread-lock.c                |   6 +-
+ system/cpu-throttle.c                |   6 +-
+ system/cpus.c                        |  52 ++++++------
+ system/dirtylimit.c                  |   4 +-
+ system/memory.c                      |   2 +-
+ system/physmem.c                     |  14 ++--
+ system/runstate.c                    |   2 +-
+ system/watchpoint.c                  |   4 +-
+ target/arm/arm-powerctl.c            |  14 ++--
+ target/arm/helper.c                  |   6 +-
+ target/arm/hvf/hvf.c                 |   8 +-
+ target/arm/kvm.c                     |   4 +-
+ target/arm/kvm64.c                   |   4 +-
+ target/arm/ptw.c                     |   6 +-
+ target/arm/tcg/helper-a64.c          |   8 +-
+ target/arm/tcg/m_helper.c            |   6 +-
+ target/arm/tcg/op_helper.c           |  24 +++---
+ target/arm/tcg/psci.c                |   2 +-
+ target/hppa/int_helper.c             |   8 +-
+ target/i386/hvf/hvf.c                |   6 +-
+ target/i386/kvm/hyperv.c             |   4 +-
+ target/i386/kvm/kvm.c                |  28 +++----
+ target/i386/kvm/xen-emu.c            |  16 ++--
+ target/i386/nvmm/nvmm-accel-ops.c    |   6 +-
+ target/i386/nvmm/nvmm-all.c          |  20 ++---
+ target/i386/tcg/sysemu/fpu_helper.c  |   6 +-
+ target/i386/tcg/sysemu/misc_helper.c |   4 +-
+ target/i386/whpx/whpx-accel-ops.c    |   6 +-
+ target/i386/whpx/whpx-all.c          |  24 +++---
+ target/loongarch/csr_helper.c        |   4 +-
+ target/mips/kvm.c                    |   4 +-
+ target/mips/tcg/sysemu/cp0_helper.c  |   4 +-
+ target/openrisc/sys_helper.c         |  16 ++--
+ target/ppc/excp_helper.c             |  14 ++--
+ target/ppc/helper_regs.c             |   2 +-
+ target/ppc/kvm.c                     |   4 +-
+ target/ppc/misc_helper.c             |   8 +-
+ target/ppc/timebase_helper.c         |   8 +-
+ target/riscv/cpu_helper.c            |   4 +-
+ target/s390x/kvm/kvm.c               |   4 +-
+ target/s390x/tcg/misc_helper.c       | 118 +++++++++++++--------------
+ target/sparc/int32_helper.c          |   2 +-
+ target/sparc/int64_helper.c          |   6 +-
+ target/sparc/win_helper.c            |  20 ++---
+ target/xtensa/exc_helper.c           |   8 +-
+ ui/spice-core.c                      |   6 +-
+ util/async.c                         |   2 +-
+ util/main-loop.c                     |   8 +-
+ util/rcu.c                           |  16 ++--
+ audio/coreaudio.m                    |   8 +-
+ memory_ldst.c.inc                    |  18 ++--
+ target/i386/hvf/README.md            |   2 +-
+ ui/cocoa.m                           |  56 ++++++-------
+ 119 files changed, 627 insertions(+), 628 deletions(-)
 
-Easiest solution:
-
-  add PATCH after 02 importing headers
-
-I usually add a !MERGE to the summary just to remind myself that we'll
-need to properly update the headers before we merge. e.g: linux-headers: up=
-date to v6.6-with-gunyah (!MERGE)
-
-There are some other merge failures bellow so perhaps its time to do a
-re-base and send v1?
-
-Whats the current state of the kernel merge?
-
-<snip>
-> diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-> index 9da3fe299b..0c95f79645 100644
-> --- a/scripts/meson-buildoptions.sh
-> +++ b/scripts/meson-buildoptions.sh
-> @@ -112,6 +112,7 @@ meson_options_help() {
->    printf "%s\n" '  guest-agent-msi Build MSI package for the QEMU Guest =
-Agent'
->    printf "%s\n" '  hax             HAX acceleration support'
->    printf "%s\n" '  hvf             HVF acceleration support'
-> +  printf "%s\n" '  gunyah          Gunyah acceleration support'
-
-need rebasing due to hax drop
-
->    printf "%s\n" '  iconv           Font glyph conversion support'
->    printf "%s\n" '  jack            JACK sound support'
->    printf "%s\n" '  keyring         Linux keyring support'
-> @@ -312,6 +313,8 @@ _meson_option_parse() {
->      --disable-guest-agent) printf "%s" -Dguest_agent=3Ddisabled ;;
->      --enable-guest-agent-msi) printf "%s" -Dguest_agent_msi=3Denabled ;;
->      --disable-guest-agent-msi) printf "%s" -Dguest_agent_msi=3Ddisabled =
-;;
-> +    --enable-gunyah) printf "%s" -Dgunyah=3Denabled ;;
-> +    --disable-gunyah) printf "%s" -Dgunyah=3Ddisabled ;;
-
-ditto.
-
->      --enable-hax) printf "%s" -Dhax=3Denabled ;;
->      --disable-hax) printf "%s" -Dhax=3Ddisabled ;;
->      --enable-hexagon-idef-parser) printf "%s" -Dhexagon_idef_parser=3Dtr=
-ue ;;
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 96158093cc..a712f1a3b3 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -33,6 +33,7 @@
->  #include "hw/qdev-properties.h"
->  #include "internals.h"
->  #include "cpregs.h"
-> +#include "sysemu/gunyah.h"
-
-This should be moved up next to the other accelerator includes.
-
->=20=20
->  void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->  {
-> @@ -686,7 +687,7 @@ static void aarch64_host_initfn(Object *obj)
->=20=20
->  static void aarch64_max_initfn(Object *obj)
->  {
-> -    if (kvm_enabled() || hvf_enabled()) {
-> +    if (kvm_enabled() || hvf_enabled() || gunyah_enabled()) {
->          /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
->          aarch64_host_initfn(obj);
->          return;
-> @@ -706,7 +707,7 @@ static const ARMCPUInfo aarch64_cpus[] =3D {
->      { .name =3D "cortex-a57",         .initfn =3D aarch64_a57_initfn },
->      { .name =3D "cortex-a53",         .initfn =3D aarch64_a53_initfn },
->      { .name =3D "max",                .initfn =3D aarch64_max_initfn },
-> -#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-> +#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || defined(CONFIG_GUNYAH)
->      { .name =3D "host",               .initfn =3D aarch64_host_initfn },
->  #endif
->  };
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+-- 
+2.42.0

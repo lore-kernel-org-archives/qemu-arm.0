@@ -1,65 +1,66 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2926815ejt;
-        Wed, 29 Nov 2023 13:26:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFC+r91Db1Dkarn3L0D1uSD7MOcm1tlz2hSvUM9Enzz7r5N4Q8nE+GuIsJKhhhE8VDuJQ7F
-X-Received: by 2002:a05:6214:469b:b0:67a:35f3:4408 with SMTP id or27-20020a056214469b00b0067a35f34408mr22016493qvb.31.1701293202487;
-        Wed, 29 Nov 2023 13:26:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701293202; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2926882ejt;
+        Wed, 29 Nov 2023 13:26:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH3ZhwhTgWzvXheSPv52V38ZQ0mUlKAjQl28G7X9BedVvC3MY4pAWtDrylP+mo99okD8zQg
+X-Received: by 2002:a05:6214:3005:b0:67a:45f8:c53c with SMTP id ke5-20020a056214300500b0067a45f8c53cmr16660608qvb.11.1701293210912;
+        Wed, 29 Nov 2023 13:26:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701293210; cv=none;
         d=google.com; s=arc-20160816;
-        b=TgkSIgtOPy7tmuVcMubQYEufGlOF19fb3SO80ud2QjLgu+2Y7CC523JPg/cLP70OEO
-         Afc3lovOJnoWzrOrtM+vrPYawQWRX1obnrX4UGBd8N/f2pHFIRWNmEp78lmqL7TK2jLc
-         68hXwacnQay0lVMmcIcHMSRlRwd8EXFoHGwOrwuqDnOsByOsdjy9qNCud1wmMI9TUwQ1
-         Gii5ZoEAxfe7LBJJrGpCM62E883R4hDvE1p8t8gZDekxGEPEAjVaT4T3wVVo1Jyg/i7x
-         0uaRfelA+kJl5ybFYyA/uALdpezZJ1Gs9EpjRqXQwXSXla2aGP3VgqeXqoOOQ4FKVQte
-         3Svw==
+        b=aCgLwZyPSeCaQ1HG8YhSVL05Wmej3Hk4dUQTo0hIIcctq2kZwwZNAe3+5MOs/F9tZL
+         myyuRSZFieglam1nHDQehYedM5aU318t3DMS/vd+/LhicUwmrC5xaeKJos4Jd4/2i3LH
+         6RPv2JyKCX6t7UNick0OrWK+hCEaxn5K6HFPe7oNeVcMGwPwSQUUVzcXk0AGUSzd8R+0
+         L/KTGXnbIlSIDOgO6q2Qxnvol8usVlX9aeM9B5VDp9et6JZAEO80r5Z3raHzbPLDRZBC
+         3Y4JrzKBukm+JP2oX6Uxz8aDpP+i3i8yhtg2EFwhQu6wUEn8F7OHyqd4HHC4D16pzT7P
+         EwFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=qIu73bEmAYNa5+9Duiskzg7KzH7tsLGKxcaWpL0jd+U=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=DG7+f00gCNxrB4UkczfVTSYAisk/aHQSNhsUg/07D1c=;
         fh=66jOpK19BNwWsQZvN6UyW7PgNiNU+OiaQoFBeggwlKE=;
-        b=C4pNfOm3fgjkLkG+bsngBi3up6xWYMmqwo8CRKEC/eE6B8TupnyiYF7EJek8fE+x1C
-         Otf/SudoyefleT4cizuBSLi4iN9xY7ynVYrrVkpgx0QoXeeEmaXF+45gezRILsFTUXMy
-         OSp9lStiAMemRR8iNLFkMBFnP/QnZog0D0CJra3sKmbuBRycAbpA6Z6jd9AFkqkY98t+
-         kKDSDcHLbWvGJAcuo1EJxYu05CuCfc7M1QfkfLfPbY7hdyNn+7/6sjPSrACybFAAMCrh
-         t2D06dtKDlSghXVGFrRgcedfyYcBx7hypz3klQmEswbfL+73SsZiPn1X8yHyYoI9Ipcz
-         +dig==
+        b=sj8Ghmhzf0vUrN/D4x0AO0n6AAbKfQN8rzLkFgNMSPRARlLM+aELb4lpOOtnk3KH0v
+         cGeMDp6XK2JU2m4ZpTD+WgbiL7U+gtq+x6RhZX4ddnJlA6a6edeF/ZXGV00pxMvleGKC
+         iWT8A1CHTawM/cKC8Hulk71AJnzBXmveeKQtRtk3Cu1cnowb/IdTie0HmE9Jbc3JERf5
+         6C+V8v1omy0V+5qrhSUxL9Rq/MQRQGv7QEmLc6c+fN67q0E9s+PkY2qKqZ/BT9oEoZIT
+         F4mfvAW5uQRob+RgRfCD6d8q2z0/duaQ0Qq7yb7sqQDJgDmsW/i/yoSN54atIfQZ5rCz
+         gvHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GYdWPgVG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/2pw8Dq";
        spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <stefanha@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id dt36-20020a05620a47a400b0077d716e20f9si13933225qkb.455.2023.11.29.13.26.42
+        by mx.google.com with ESMTPS id l10-20020a0ce6ca000000b0067a51a61a7esi5487530qvn.439.2023.11.29.13.26.50
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Nov 2023 13:26:42 -0800 (PST)
+        Wed, 29 Nov 2023 13:26:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GYdWPgVG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/2pw8Dq";
        spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701293202;
+	s=mimecast20190719; t=1701293210;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=qIu73bEmAYNa5+9Duiskzg7KzH7tsLGKxcaWpL0jd+U=;
-	b=GYdWPgVG0MMO4iNG4H1/5QIeD5EpvAVyaRAcRdJ5GUuExnK+rDA9koJ2RrlNr5116S9oAo
-	wtK++0qHxnsVtm11UdEeqGTmKBzu/M8vG6AVdcI8QnCuj9qPI1Zz9jehVnMoIaEwN1zMMN
-	+woBIbjN/dNR/9tmZznrza1C79o1fgI=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-201-jezd3L4pMveGVd7IsGPLnQ-1; Wed,
- 29 Nov 2023 16:26:38 -0500
-X-MC-Unique: jezd3L4pMveGVd7IsGPLnQ-1
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DG7+f00gCNxrB4UkczfVTSYAisk/aHQSNhsUg/07D1c=;
+	b=K/2pw8DqGaWKt0HgEbjPSqKnG66XzHIjncfTaoUi3mUFBg5hu7ODWzrNcu4bkmSmkbxVSO
+	mw2lIgNeX3IBJOceLktR7L8XxQjkHEUWq4m3j7gzajY1JWcFITSfOlrorep3mJ6+y90Wgq
+	OWRbZ12HXLLe/NNjMutULq1PnnNvwGY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-167-55r8XQSHMnC_rWqi5-T4vw-1; Wed, 29 Nov 2023 16:26:43 -0500
+X-MC-Unique: 55r8XQSHMnC_rWqi5-T4vw-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63038381BE86;
-	Wed, 29 Nov 2023 21:26:30 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 37B5C83DCD6;
+	Wed, 29 Nov 2023 21:26:41 +0000 (UTC)
 Received: from localhost (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C50A02027019;
-	Wed, 29 Nov 2023 21:26:26 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EE2DB2026D66;
+	Wed, 29 Nov 2023 21:26:39 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -139,151 +140,162 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Leonardo Bras <leobras@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: [PATCH 0/6] Make Big QEMU Lock naming consistent
-Date: Wed, 29 Nov 2023 16:26:19 -0500
-Message-ID: <20231129212625.1051502-1-stefanha@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+Subject: [PATCH 3/6] qemu/main-loop: rename qemu_cond_wait_iothread() to qemu_cond_wait_bql()
+Date: Wed, 29 Nov 2023 16:26:22 -0500
+Message-ID: <20231129212625.1051502-4-stefanha@redhat.com>
+In-Reply-To: <20231129212625.1051502-1-stefanha@redhat.com>
+References: <20231129212625.1051502-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-X-TUID: C08tEXEX1ESl
+X-TUID: guhq5drrRK3F
 
-The Big QEMU Lock ("BQL") has two other names: "iothread lock" and "QEMU global
-mutex". The term "iothread lock" is easily confused with the unrelated --object
-iothread (iothread.c).
+The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
+instead, it is already widely used and unambiguous.
 
-This series updates the code and documentation to consistently use "BQL". This
-makes the code easier to understand.
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ include/qemu/main-loop.h          | 8 ++++----
+ accel/tcg/tcg-accel-ops-rr.c      | 4 ++--
+ hw/display/virtio-gpu.c           | 2 +-
+ hw/ppc/spapr_events.c             | 2 +-
+ system/cpu-throttle.c             | 2 +-
+ system/cpus.c                     | 4 ++--
+ target/i386/nvmm/nvmm-accel-ops.c | 2 +-
+ target/i386/whpx/whpx-accel-ops.c | 2 +-
+ 8 files changed, 13 insertions(+), 13 deletions(-)
 
-Stefan Hajnoczi (6):
-  system/cpus: rename qemu_mutex_lock_iothread() to qemu_bql_lock()
-  qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to QEMU_BQL_LOCK_GUARD
-  qemu/main-loop: rename qemu_cond_wait_iothread() to
-    qemu_cond_wait_bql()
-  system/cpus: rename qemu_global_mutex to qemu_bql
-  Replace "iothread lock" with "BQL" in comments
-  Rename "QEMU global mutex" to "BQL" in comments and docs
-
- docs/devel/multi-thread-tcg.rst      |   7 +-
- docs/devel/qapi-code-gen.rst         |   2 +-
- docs/devel/replay.rst                |   2 +-
- docs/devel/reset.rst                 |   2 +-
- docs/devel/multiple-iothreads.txt    |  16 ++--
- hw/display/qxl.h                     |   2 +-
- include/block/aio-wait.h             |   2 +-
- include/block/blockjob.h             |   6 +-
- include/exec/cpu-common.h            |   2 +-
- include/exec/memory.h                |   4 +-
- include/exec/ramblock.h              |   2 +-
- include/io/task.h                    |   2 +-
- include/migration/register.h         |   8 +-
- include/qemu/coroutine-core.h        |   2 +-
- include/qemu/coroutine.h             |   2 +-
- include/qemu/main-loop.h             |  54 ++++++------
- target/arm/internals.h               |   4 +-
- accel/accel-blocker.c                |  10 +--
- accel/dummy-cpus.c                   |   8 +-
- accel/hvf/hvf-accel-ops.c            |   4 +-
- accel/kvm/kvm-accel-ops.c            |   4 +-
- accel/kvm/kvm-all.c                  |  22 ++---
- accel/tcg/cpu-exec.c                 |  26 +++---
- accel/tcg/cputlb.c                   |  20 ++---
- accel/tcg/tcg-accel-ops-icount.c     |   6 +-
- accel/tcg/tcg-accel-ops-mttcg.c      |  12 +--
- accel/tcg/tcg-accel-ops-rr.c         |  18 ++--
- accel/tcg/tcg-accel-ops.c            |   2 +-
- accel/tcg/translate-all.c            |   2 +-
- cpu-common.c                         |   4 +-
- dump/dump.c                          |   4 +-
- hw/block/dataplane/virtio-blk.c      |   8 +-
- hw/block/virtio-blk.c                |   2 +-
- hw/core/cpu-common.c                 |   6 +-
- hw/display/virtio-gpu.c              |   2 +-
- hw/i386/intel_iommu.c                |   6 +-
- hw/i386/kvm/xen_evtchn.c             |  30 +++----
- hw/i386/kvm/xen_gnttab.c             |   2 +-
- hw/i386/kvm/xen_overlay.c            |   2 +-
- hw/i386/kvm/xen_xenstore.c           |   2 +-
- hw/intc/arm_gicv3_cpuif.c            |   2 +-
- hw/intc/s390_flic.c                  |  18 ++--
- hw/mips/mips_int.c                   |   2 +-
- hw/misc/edu.c                        |   4 +-
- hw/misc/imx6_src.c                   |   2 +-
- hw/misc/imx7_src.c                   |   2 +-
- hw/net/xen_nic.c                     |   8 +-
- hw/ppc/pegasos2.c                    |   2 +-
- hw/ppc/ppc.c                         |   6 +-
- hw/ppc/spapr.c                       |   2 +-
- hw/ppc/spapr_events.c                |   2 +-
- hw/ppc/spapr_rng.c                   |   4 +-
- hw/ppc/spapr_softmmu.c               |   4 +-
- hw/remote/mpqemu-link.c              |  14 ++--
- hw/remote/vfio-user-obj.c            |   2 +-
- hw/s390x/s390-skeys.c                |   2 +-
- hw/scsi/virtio-scsi-dataplane.c      |   6 +-
- migration/block-dirty-bitmap.c       |  14 ++--
- migration/block.c                    |  40 ++++-----
- migration/colo.c                     |  62 +++++++-------
- migration/dirtyrate.c                |  12 +--
- migration/migration.c                |  54 ++++++------
- migration/ram.c                      |  16 ++--
- net/tap.c                            |   2 +-
- replay/replay-internal.c             |   2 +-
- semihosting/console.c                |   8 +-
- stubs/iothread-lock.c                |   6 +-
- system/cpu-throttle.c                |   6 +-
- system/cpus.c                        |  52 ++++++------
- system/dirtylimit.c                  |   4 +-
- system/memory.c                      |   2 +-
- system/physmem.c                     |  14 ++--
- system/runstate.c                    |   2 +-
- system/watchpoint.c                  |   4 +-
- target/arm/arm-powerctl.c            |  14 ++--
- target/arm/helper.c                  |   6 +-
- target/arm/hvf/hvf.c                 |   8 +-
- target/arm/kvm.c                     |   4 +-
- target/arm/kvm64.c                   |   4 +-
- target/arm/ptw.c                     |   6 +-
- target/arm/tcg/helper-a64.c          |   8 +-
- target/arm/tcg/m_helper.c            |   6 +-
- target/arm/tcg/op_helper.c           |  24 +++---
- target/arm/tcg/psci.c                |   2 +-
- target/hppa/int_helper.c             |   8 +-
- target/i386/hvf/hvf.c                |   6 +-
- target/i386/kvm/hyperv.c             |   4 +-
- target/i386/kvm/kvm.c                |  28 +++----
- target/i386/kvm/xen-emu.c            |  16 ++--
- target/i386/nvmm/nvmm-accel-ops.c    |   6 +-
- target/i386/nvmm/nvmm-all.c          |  20 ++---
- target/i386/tcg/sysemu/fpu_helper.c  |   6 +-
- target/i386/tcg/sysemu/misc_helper.c |   4 +-
- target/i386/whpx/whpx-accel-ops.c    |   6 +-
- target/i386/whpx/whpx-all.c          |  24 +++---
- target/loongarch/csr_helper.c        |   4 +-
- target/mips/kvm.c                    |   4 +-
- target/mips/tcg/sysemu/cp0_helper.c  |   4 +-
- target/openrisc/sys_helper.c         |  16 ++--
- target/ppc/excp_helper.c             |  14 ++--
- target/ppc/helper_regs.c             |   2 +-
- target/ppc/kvm.c                     |   4 +-
- target/ppc/misc_helper.c             |   8 +-
- target/ppc/timebase_helper.c         |   8 +-
- target/riscv/cpu_helper.c            |   4 +-
- target/s390x/kvm/kvm.c               |   4 +-
- target/s390x/tcg/misc_helper.c       | 118 +++++++++++++--------------
- target/sparc/int32_helper.c          |   2 +-
- target/sparc/int64_helper.c          |   6 +-
- target/sparc/win_helper.c            |  20 ++---
- target/xtensa/exc_helper.c           |   8 +-
- ui/spice-core.c                      |   6 +-
- util/async.c                         |   2 +-
- util/main-loop.c                     |   8 +-
- util/rcu.c                           |  16 ++--
- audio/coreaudio.m                    |   8 +-
- memory_ldst.c.inc                    |  18 ++--
- target/i386/hvf/README.md            |   2 +-
- ui/cocoa.m                           |  56 ++++++-------
- 119 files changed, 627 insertions(+), 628 deletions(-)
-
+diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
+index 0b6a3e4824..ec2a70f041 100644
+--- a/include/qemu/main-loop.h
++++ b/include/qemu/main-loop.h
+@@ -373,17 +373,17 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(BQLLockAuto, qemu_bql_auto_unlock)
+         = qemu_bql_auto_lock(__FILE__, __LINE__)
+ 
+ /*
+- * qemu_cond_wait_iothread: Wait on condition for the main loop mutex
++ * qemu_cond_wait_bql: Wait on condition for the main loop mutex
+  *
+  * This function atomically releases the main loop mutex and causes
+  * the calling thread to block on the condition.
+  */
+-void qemu_cond_wait_iothread(QemuCond *cond);
++void qemu_cond_wait_bql(QemuCond *cond);
+ 
+ /*
+- * qemu_cond_timedwait_iothread: like the previous, but with timeout
++ * qemu_cond_timedwait_bql: like the previous, but with timeout
+  */
+-void qemu_cond_timedwait_iothread(QemuCond *cond, int ms);
++void qemu_cond_timedwait_bql(QemuCond *cond, int ms);
+ 
+ /* internal interfaces */
+ 
+diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+index c21215a094..1e5a688085 100644
+--- a/accel/tcg/tcg-accel-ops-rr.c
++++ b/accel/tcg/tcg-accel-ops-rr.c
+@@ -111,7 +111,7 @@ static void rr_wait_io_event(void)
+ 
+     while (all_cpu_threads_idle()) {
+         rr_stop_kick_timer();
+-        qemu_cond_wait_iothread(first_cpu->halt_cond);
++        qemu_cond_wait_bql(first_cpu->halt_cond);
+     }
+ 
+     rr_start_kick_timer();
+@@ -198,7 +198,7 @@ static void *rr_cpu_thread_fn(void *arg)
+ 
+     /* wait for initial kick-off after machine start */
+     while (first_cpu->stopped) {
+-        qemu_cond_wait_iothread(first_cpu->halt_cond);
++        qemu_cond_wait_bql(first_cpu->halt_cond);
+ 
+         /* process any pending work */
+         CPU_FOREACH(cpu) {
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index b016d3bac8..67c5be1a4e 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -1512,7 +1512,7 @@ void virtio_gpu_reset(VirtIODevice *vdev)
+         g->reset_finished = false;
+         qemu_bh_schedule(g->reset_bh);
+         while (!g->reset_finished) {
+-            qemu_cond_wait_iothread(&g->reset_cond);
++            qemu_cond_wait_bql(&g->reset_cond);
+         }
+     } else {
+         virtio_gpu_reset_bh(g);
+diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
+index deb4641505..cb0eeee587 100644
+--- a/hw/ppc/spapr_events.c
++++ b/hw/ppc/spapr_events.c
+@@ -899,7 +899,7 @@ void spapr_mce_req_event(PowerPCCPU *cpu, bool recovered)
+             }
+             return;
+         }
+-        qemu_cond_wait_iothread(&spapr->fwnmi_machine_check_interlock_cond);
++        qemu_cond_wait_bql(&spapr->fwnmi_machine_check_interlock_cond);
+         if (spapr->fwnmi_machine_check_addr == -1) {
+             /*
+              * If the machine was reset while waiting for the interlock,
+diff --git a/system/cpu-throttle.c b/system/cpu-throttle.c
+index e98836311b..1d2b73369e 100644
+--- a/system/cpu-throttle.c
++++ b/system/cpu-throttle.c
+@@ -54,7 +54,7 @@ static void cpu_throttle_thread(CPUState *cpu, run_on_cpu_data opaque)
+     endtime_ns = qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + sleeptime_ns;
+     while (sleeptime_ns > 0 && !cpu->stop) {
+         if (sleeptime_ns > SCALE_MS) {
+-            qemu_cond_timedwait_iothread(cpu->halt_cond,
++            qemu_cond_timedwait_bql(cpu->halt_cond,
+                                          sleeptime_ns / SCALE_MS);
+         } else {
+             qemu_bql_unlock();
+diff --git a/system/cpus.c b/system/cpus.c
+index d5b98c11f5..eb24a4db8e 100644
+--- a/system/cpus.c
++++ b/system/cpus.c
+@@ -513,12 +513,12 @@ void qemu_bql_unlock(void)
+     qemu_mutex_unlock(&qemu_global_mutex);
+ }
+ 
+-void qemu_cond_wait_iothread(QemuCond *cond)
++void qemu_cond_wait_bql(QemuCond *cond)
+ {
+     qemu_cond_wait(cond, &qemu_global_mutex);
+ }
+ 
+-void qemu_cond_timedwait_iothread(QemuCond *cond, int ms)
++void qemu_cond_timedwait_bql(QemuCond *cond, int ms)
+ {
+     qemu_cond_timedwait(cond, &qemu_global_mutex, ms);
+ }
+diff --git a/target/i386/nvmm/nvmm-accel-ops.c b/target/i386/nvmm/nvmm-accel-ops.c
+index 387ccfcce5..0fe8a76820 100644
+--- a/target/i386/nvmm/nvmm-accel-ops.c
++++ b/target/i386/nvmm/nvmm-accel-ops.c
+@@ -48,7 +48,7 @@ static void *qemu_nvmm_cpu_thread_fn(void *arg)
+             }
+         }
+         while (cpu_thread_is_idle(cpu)) {
+-            qemu_cond_wait_iothread(cpu->halt_cond);
++            qemu_cond_wait_bql(cpu->halt_cond);
+         }
+         qemu_wait_io_event_common(cpu);
+     } while (!cpu->unplug || cpu_can_run(cpu));
+diff --git a/target/i386/whpx/whpx-accel-ops.c b/target/i386/whpx/whpx-accel-ops.c
+index 1f29346a88..d8bec46081 100644
+--- a/target/i386/whpx/whpx-accel-ops.c
++++ b/target/i386/whpx/whpx-accel-ops.c
+@@ -48,7 +48,7 @@ static void *whpx_cpu_thread_fn(void *arg)
+             }
+         }
+         while (cpu_thread_is_idle(cpu)) {
+-            qemu_cond_wait_iothread(cpu->halt_cond);
++            qemu_cond_wait_bql(cpu->halt_cond);
+         }
+         qemu_wait_io_event_common(cpu);
+     } while (!cpu->unplug || cpu_can_run(cpu));
 -- 
 2.42.0

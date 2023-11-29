@@ -1,236 +1,385 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp705534ejb;
-        Thu, 30 Nov 2023 19:33:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF9r5TrNOhPVpGYxM8Bd7Q7v0NR09jYkZHGInC50sdCoJwZcS4z416D36qoww7EVup3IKx3
-X-Received: by 2002:a05:620a:e0c:b0:77d:7570:d7ab with SMTP id y12-20020a05620a0e0c00b0077d7570d7abmr24299247qkm.33.1701401633440;
-        Thu, 30 Nov 2023 19:33:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701401633; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2926868ejt;
+        Wed, 29 Nov 2023 13:26:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEAQXmg5/6PR9jOwswKbawyHqT/cgXFc/GmNB3t7SJi8GhELjqRKbik5B3Gz0JGeQJykDDP
+X-Received: by 2002:a05:6870:8dc3:b0:1fa:1d14:2a43 with SMTP id lq3-20020a0568708dc300b001fa1d142a43mr21644901oab.24.1701293208748;
+        Wed, 29 Nov 2023 13:26:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701293208; cv=none;
         d=google.com; s=arc-20160816;
-        b=jlm9X4He1fGIw3OqPxFKv9VwRCB9N2K/1/aA+nzTwGJcjTZGe2I13wpmITSCNrdoXl
-         m2jXoWq7hcFf/uQHSpecFlDFv7ziIOjDKJ9SDFW5yjrGgQPvtB/6p4a+UyHVjzaaXc31
-         X6/UFjzC/9kH7ZojKZCiDdd1VGcyVpwsLl+TDLDYuRzQsfyausv4y3Dp/s110h5QMJfj
-         g/wu2NwOJXEA1o6/nJABh0oqv9s5Gz/sfYb2Os6P8Yo/AtfWeFqx02mSG74OWWwKXDnk
-         Mo9YHw71leQRlLWxtR5e+fwDenLBdzOXUo3DCC8EZrIxNaewdaQM3JRSwqc2dZCVy4Dx
-         26hg==
+        b=VLY7Dkv+3rGxHfXJ0U0DbO5J7YPps8uf8RvhOX0B0R96F9JqeFAgCN8KYopNKpLQsX
+         1E4szUV9eBnsqutBah7Y25bQsD1MTA5j4h+eBaQH5T8YHAPDdyJ90zUk9iFN3dBGVdL3
+         eGaKc5SVcBnndAq5JN36/yBRKjlFCDYGhjavvLX9KjG7WcnPUo2JGPE0Vexd4gDB96ly
+         8JOuokB7ndrBiWlm/FHDSmaZpRdBIUQ+E8h6tR1u5DpSO7iUQM0h037CP8tv1WJzZXof
+         c8MTcH/6BhbLmJg7xSFWxJKsK8jo1P6a+UB9pw/0gEHPrCfusirCHbBYyHvjuWEyBppG
+         E/mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pDA/YtOoP8t8dKReQnD71j9147YsvGu3IU9MGrJu/m0=;
-        fh=9cVVd8wk1Y3QsjhZV8Lm/rq5BDfMSBseCDRDhkdwzoI=;
-        b=YFYOipaP4uPuGvg5VEJtFD/yaHEn4XTMsrLoTUMCiJDWhOJwAc+Zmt2R5QHL4D1ToY
-         T5QLtDdjJAQPKQmzMxyJ462HSfkcBB2y+yWjjuPOn/n/uq1KEWJ+nHQQZ9hMCXQor9O4
-         Uta+TOkojQS8Jr9nul+VhSY+MG9qxG6rCrB5/uTiSRMqSLe5Cs0D0u2Tiww/iu2RkJt7
-         57S1Jm4u32zO0ve5EJV5lE4pAfibb6eFCO3lBXSWo00PtFwkPH5RUl3EMscXkT22yspM
-         QFoJcLixs0VfWbGMNFRhzAwEVYuxMOYpVyxHhy0sQ531nQAef5XXltFbyvpkAkD6ZgQm
-         scFA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=aRXyTaHypebwyOUnVd682fvvQLv7a/HZq8MmldgnYg0=;
+        fh=66jOpK19BNwWsQZvN6UyW7PgNiNU+OiaQoFBeggwlKE=;
+        b=wptMPv79DIW24fBqCoy6bBlW2PJtySqubU9DqSt4XalhKuVE8LNBvBV2WNoc3ojXAW
+         IvTa2SB71j7JD2ZXSfd9s9YVs2wTj2n5hBFlkMAzo51Mj/JG5n7HO7k1ApFz5Bc4oLLY
+         fTJy1huvIJumDgAHw6RRKwuj97hoBPH58FRn6V4eQ4v9jCPtXpGHsy4wn6oNl5lx+fo1
+         dAWUcXYqEjJ/aeHEEPszui3pk1eYZQXohTXg8UHLCzywW8pZqPWYsVEFukrChG7ZiU18
+         URsb6oL2Prr0SwyuLftsV5PayX+EX+rbbCpcNNlPpM1arB0d/bKhQpME3LjNw3iTVIU7
+         iwOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LUhLkzY3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QBKItb4c;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a33-20020a05620a43a100b0077d7a9c2e68si2556457qkp.528.2023.11.30.19.33.53
+Return-Path: <stefanha@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id b4-20020ac87fc4000000b00423786846bbsi14269027qtk.322.2023.11.29.13.26.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Nov 2023 19:33:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Nov 2023 13:26:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LUhLkzY3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QBKItb4c;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r8uHj-00060o-2J; Thu, 30 Nov 2023 22:33:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r8uHh-0005zs-Hr
- for qemu-arm@nongnu.org; Thu, 30 Nov 2023 22:33:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r8uHf-0007Vh-Fr
- for qemu-arm@nongnu.org; Thu, 30 Nov 2023 22:33:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701401622;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pDA/YtOoP8t8dKReQnD71j9147YsvGu3IU9MGrJu/m0=;
- b=LUhLkzY3XkEFm0ChzAeWyZNIRvofheCbwRE6yBRqe/ZcYwZ++fL5su1LH6aFYRFxfrSMs3
- 5IHh4p5pKTA1w1WOUfLGlLFM23l+930UTvnrPpRD1oa7fd7zkar8IQ25+DKuU/+ZZO7UN+
- O4uD1sgZgmnQpDvM9ni/QA2XDDlNa6A=
-Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
- [209.85.167.199]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1701293208;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=aRXyTaHypebwyOUnVd682fvvQLv7a/HZq8MmldgnYg0=;
+	b=QBKItb4cX1aKv6XUZWT0SzfMHlMDNsr7YvD2YhaC98jA4RxFh92Mtq/Sb3TkE2ySXHFYfI
+	cJJPbFfGM+uFChg5FZBlyOxEJdsmhmCqkn/4W7SmAUnNY2vcMPYd95yPMni4TwL1lJjMkV
+	qcklS6OfFxg42Ma5RIHsQGfIjnchtKw=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-342-ETACeY-NO2OTdZdEAoTEWA-1; Thu, 30 Nov 2023 22:33:39 -0500
-X-MC-Unique: ETACeY-NO2OTdZdEAoTEWA-1
-Received: by mail-oi1-f199.google.com with SMTP id
- 5614622812f47-3b2e7a8fbbdso117642b6e.1
- for <qemu-arm@nongnu.org>; Thu, 30 Nov 2023 19:33:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701401618; x=1702006418;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pDA/YtOoP8t8dKReQnD71j9147YsvGu3IU9MGrJu/m0=;
- b=fC11gKTPD4SrO94REBznb0agwn5kSBDmv6CNnrIdFe1Gie0ZEUxlBrm0nbma1nkaVD
- EFJeyxRh8HMFT3x1LhvgmgfJVTOzJWNX7a8bnUSOnKrf+Oaaul0CCQJWv8FxUa1Qve0T
- 4tbPU3+QLi2IuMcJfq01EMmP0kRcLhp5+WQ+kJaethwj9RMiO3RsVzCq0YcEKr09EQzl
- rwuHEI+x51s8caO5gFXMngWODIPnePN36Em2ita/6sQx6aDCVVSyw2tnqc4IPstF3aD4
- PvO00mng0gMFbxRUgeF4elfbFYKvqM2BVC5W2M301U+5FSpGN0mbFDdy5MaZcpfkO57U
- eVYA==
-X-Gm-Message-State: AOJu0YwopcfZ4+yspGgsFeIH8jDkZmL9pCn+huusPgA8EPb1yd6v/GIc
- 9PG6c78nrhcmu8kSo8u0KgsL3fF32YaLtvwx1LzQLK8Mj7T9jpxic2CdG3Ilk2goAujIkLWGHKE
- HlKiVQNIwN4l5
-X-Received: by 2002:a05:6808:3084:b0:3b8:6151:cacb with SMTP id
- bl4-20020a056808308400b003b86151cacbmr1895379oib.10.1701401618669; 
- Thu, 30 Nov 2023 19:33:38 -0800 (PST)
-X-Received: by 2002:a05:6808:3084:b0:3b8:6151:cacb with SMTP id
- bl4-20020a056808308400b003b86151cacbmr1895345oib.10.1701401618359; 
- Thu, 30 Nov 2023 19:33:38 -0800 (PST)
-Received: from [192.168.68.51] ([43.252.115.3])
- by smtp.gmail.com with ESMTPSA id
- b17-20020aa78ed1000000b006c06779e593sm2013549pfr.16.2023.11.30.19.33.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Nov 2023 19:33:37 -0800 (PST)
-Message-ID: <a1a3a5f9-f785-4b27-9b33-ea5b29e919b3@redhat.com>
-Date: Fri, 1 Dec 2023 14:33:26 +1100
+ us-mta-342-VPB8p9y3P4KteZhh_p8yNg-1; Wed, 29 Nov 2023 16:26:44 -0500
+X-MC-Unique: VPB8p9y3P4KteZhh_p8yNg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 58F31836EF1;
+	Wed, 29 Nov 2023 21:26:38 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 01B912166B26;
+	Wed, 29 Nov 2023 21:26:36 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Fabiano Rosas <farosas@suse.de>,
+	qemu-s390x@nongnu.org,
+	Song Gao <gaosong@loongson.cn>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Hyman Huang <yong.huang@smartx.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Paul Durrant <paul@xen.org>,
+	Jagannathan Raman <jag.raman@oracle.com>,
+	Juan Quintela <quintela@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org,
+	Jason Wang <jasowang@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Hailiang Zhang <zhanghailiang@xfusion.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Fam Zheng <fam@euphon.net>,
+	Eric Blake <eblake@redhat.com>,
+	Jiri Slaby <jslaby@suse.cz>,
+	Alexander Graf <agraf@csgraf.de>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Eric Farman <farman@linux.ibm.com>,
+	Stafford Horne <shorne@gmail.com>,
+	David Hildenbrand <david@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	xen-devel@lists.xenproject.org,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	qemu-riscv@nongnu.org,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	John Snow <jsnow@redhat.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Michael Roth <michael.roth@amd.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	kvm@vger.kernel.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	qemu-block@nongnu.org,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Peter Xu <peterx@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	qemu-ppc@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Leonardo Bras <leobras@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>
+Subject: [PATCH 2/6] qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to QEMU_BQL_LOCK_GUARD
+Date: Wed, 29 Nov 2023 16:26:21 -0500
+Message-ID: <20231129212625.1051502-3-stefanha@redhat.com>
+In-Reply-To: <20231129212625.1051502-1-stefanha@redhat.com>
+References: <20231129212625.1051502-1-stefanha@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 1/9] machine: Use error handling when CPU type is
- checked
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- peter.maydell@linaro.org, imammedo@redhat.com, b.galvani@gmail.com,
- strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
- wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
- quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, vijai@behindbytes.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com
-References: <20231129042012.277831-1-gshan@redhat.com>
- <20231129042012.277831-2-gshan@redhat.com> <87bkbdnf6u.fsf@pond.sub.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <87bkbdnf6u.fsf@pond.sub.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JWs92UfYIbCn
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+X-TUID: zW9xPSKHWgvt
 
-Hi Markus,
+The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
+instead, it is already widely used and unambiguous.
 
-On 11/29/23 19:20, Markus Armbruster wrote:
-> Gavin Shan <gshan@redhat.com> writes:
-> 
->> QEMU will be terminated if the specified CPU type isn't supported
->> in machine_run_board_init(). The list of supported CPU type names
->> is tracked by mc->valid_cpu_types.
-> 
-> Suggest to drop the second sentence.
-> 
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ include/qemu/main-loop.h  | 20 ++++++++++----------
+ hw/i386/kvm/xen_evtchn.c  | 14 +++++++-------
+ hw/i386/kvm/xen_gnttab.c  |  2 +-
+ hw/mips/mips_int.c        |  2 +-
+ hw/ppc/ppc.c              |  2 +-
+ target/i386/kvm/xen-emu.c |  2 +-
+ target/ppc/excp_helper.c  |  2 +-
+ target/ppc/helper_regs.c  |  2 +-
+ target/riscv/cpu_helper.c |  4 ++--
+ 9 files changed, 25 insertions(+), 25 deletions(-)
 
-Indeed, it's not so helpful.
-
->> The error handling can be used to propagate error messages, to be
->> consistent how the errors are handled for other situations in the
->> same function.
->>
->> No functional change intended.
->>
->> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->> v8: Drop @local_err and use @errp to be compatible with
->>      ERRP_GUARD()                                          (Phil)
->> ---
->>   hw/core/machine.c | 13 +++++++------
->>   1 file changed, 7 insertions(+), 6 deletions(-)
->>
->> diff --git a/hw/core/machine.c b/hw/core/machine.c
->> index 0c17398141..bde7f4af6d 100644
->> --- a/hw/core/machine.c
->> +++ b/hw/core/machine.c
->> @@ -1466,15 +1466,16 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
->>   
->>           if (!machine_class->valid_cpu_types[i]) {
->>               /* The user specified CPU is not valid */
->> -            error_report("Invalid CPU type: %s", machine->cpu_type);
->> -            error_printf("The valid types are: %s",
->> -                         machine_class->valid_cpu_types[0]);
->> +            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
->> +            error_append_hint(errp, "The valid types are: %s",
->> +                              machine_class->valid_cpu_types[0]);
->>               for (i = 1; machine_class->valid_cpu_types[i]; i++) {
->> -                error_printf(", %s", machine_class->valid_cpu_types[i]);
->> +                error_append_hint(errp, ", %s",
->> +                                  machine_class->valid_cpu_types[i]);
->>               }
->> -            error_printf("\n");
->>   
->> -            exit(1);
->> +            error_append_hint(&errp, "\n");
->> +            return;
->>           }
->>       }
-> 
-> This cleans up an anti-pattern: use of error_report() within a function that
-> returns errors through an Error **errp parameter.
-> 
-> Cleanup, not bug fix, because the only caller passes &error_abort.
-> 
-> Suggest to start the commit message with a mention of the anti-pattern.
-> Here's how I'd write it:
-> 
->      Functions that use an Error **errp parameter to return errors should
->      not also report them to the user, because reporting is the caller's
->      job.
-> 
->      machine_run_board_init() violates this principle: it calls
->      error_report(), error_printf(), and exit(1) when the machine doesn't
->      support the requested CPU type.
-> 
->      Clean this up by using error_setg() and error_append_hint() instead.
->      No functional change, as the only caller passes &error_fatal.
-> 
-
-Thanks for the nice write-up. I will take it if v9 is needed to address
-comments from other people.
-
-> Whether you use my suggestion or not:
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> 
-
-Thanks for your review.
-
-Thanks,
-Gavin
-
+diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
+index d6f75e57bd..0b6a3e4824 100644
+--- a/include/qemu/main-loop.h
++++ b/include/qemu/main-loop.h
+@@ -344,13 +344,13 @@ void qemu_bql_lock_impl(const char *file, int line);
+ void qemu_bql_unlock(void);
+ 
+ /**
+- * QEMU_IOTHREAD_LOCK_GUARD
++ * QEMU_BQL_LOCK_GUARD
+  *
+- * Wrap a block of code in a conditional qemu_mutex_{lock,unlock}_iothread.
++ * Wrap a block of code in a conditional qemu_bql_{lock,unlock}.
+  */
+-typedef struct IOThreadLockAuto IOThreadLockAuto;
++typedef struct BQLLockAuto BQLLockAuto;
+ 
+-static inline IOThreadLockAuto *qemu_iothread_auto_lock(const char *file,
++static inline BQLLockAuto *qemu_bql_auto_lock(const char *file,
+                                                         int line)
+ {
+     if (qemu_bql_locked()) {
+@@ -358,19 +358,19 @@ static inline IOThreadLockAuto *qemu_iothread_auto_lock(const char *file,
+     }
+     qemu_bql_lock_impl(file, line);
+     /* Anything non-NULL causes the cleanup function to be called */
+-    return (IOThreadLockAuto *)(uintptr_t)1;
++    return (BQLLockAuto *)(uintptr_t)1;
+ }
+ 
+-static inline void qemu_iothread_auto_unlock(IOThreadLockAuto *l)
++static inline void qemu_bql_auto_unlock(BQLLockAuto *l)
+ {
+     qemu_bql_unlock();
+ }
+ 
+-G_DEFINE_AUTOPTR_CLEANUP_FUNC(IOThreadLockAuto, qemu_iothread_auto_unlock)
++G_DEFINE_AUTOPTR_CLEANUP_FUNC(BQLLockAuto, qemu_bql_auto_unlock)
+ 
+-#define QEMU_IOTHREAD_LOCK_GUARD() \
+-    g_autoptr(IOThreadLockAuto) _iothread_lock_auto __attribute__((unused)) \
+-        = qemu_iothread_auto_lock(__FILE__, __LINE__)
++#define QEMU_BQL_LOCK_GUARD() \
++    g_autoptr(BQLLockAuto) _bql_lock_auto __attribute__((unused)) \
++        = qemu_bql_auto_lock(__FILE__, __LINE__)
+ 
+ /*
+  * qemu_cond_wait_iothread: Wait on condition for the main loop mutex
+diff --git a/hw/i386/kvm/xen_evtchn.c b/hw/i386/kvm/xen_evtchn.c
+index 07d0ff0253..3ab686bd79 100644
+--- a/hw/i386/kvm/xen_evtchn.c
++++ b/hw/i386/kvm/xen_evtchn.c
+@@ -1127,7 +1127,7 @@ int xen_evtchn_reset_op(struct evtchn_reset *reset)
+         return -ESRCH;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     return xen_evtchn_soft_reset();
+ }
+ 
+@@ -1145,7 +1145,7 @@ int xen_evtchn_close_op(struct evtchn_close *close)
+         return -EINVAL;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     qemu_mutex_lock(&s->port_lock);
+ 
+     ret = close_port(s, close->port, &flush_kvm_routes);
+@@ -1272,7 +1272,7 @@ int xen_evtchn_bind_pirq_op(struct evtchn_bind_pirq *pirq)
+         return -EINVAL;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     if (s->pirq[pirq->pirq].port) {
+         return -EBUSY;
+@@ -1824,7 +1824,7 @@ int xen_physdev_map_pirq(struct physdev_map_pirq *map)
+         return -ENOTSUP;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     QEMU_LOCK_GUARD(&s->port_lock);
+ 
+     if (map->domid != DOMID_SELF && map->domid != xen_domid) {
+@@ -1884,7 +1884,7 @@ int xen_physdev_unmap_pirq(struct physdev_unmap_pirq *unmap)
+         return -EINVAL;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     qemu_mutex_lock(&s->port_lock);
+ 
+     if (!pirq_inuse(s, pirq)) {
+@@ -1924,7 +1924,7 @@ int xen_physdev_eoi_pirq(struct physdev_eoi *eoi)
+         return -ENOTSUP;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     QEMU_LOCK_GUARD(&s->port_lock);
+ 
+     if (!pirq_inuse(s, pirq)) {
+@@ -1956,7 +1956,7 @@ int xen_physdev_query_pirq(struct physdev_irq_status_query *query)
+         return -ENOTSUP;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     QEMU_LOCK_GUARD(&s->port_lock);
+ 
+     if (!pirq_inuse(s, pirq)) {
+diff --git a/hw/i386/kvm/xen_gnttab.c b/hw/i386/kvm/xen_gnttab.c
+index 0a24f53f20..ee5f8cf257 100644
+--- a/hw/i386/kvm/xen_gnttab.c
++++ b/hw/i386/kvm/xen_gnttab.c
+@@ -176,7 +176,7 @@ int xen_gnttab_map_page(uint64_t idx, uint64_t gfn)
+         return -EINVAL;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+     QEMU_LOCK_GUARD(&s->gnt_lock);
+ 
+     xen_overlay_do_map_page(&s->gnt_aliases[idx], gpa);
+diff --git a/hw/mips/mips_int.c b/hw/mips/mips_int.c
+index 6c32e466a3..c2454f9724 100644
+--- a/hw/mips/mips_int.c
++++ b/hw/mips/mips_int.c
+@@ -36,7 +36,7 @@ static void cpu_mips_irq_request(void *opaque, int irq, int level)
+         return;
+     }
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     if (level) {
+         env->CP0_Cause |= 1 << (irq + CP0Ca_IP);
+diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+index c8c3b43602..ce7d3692c4 100644
+--- a/hw/ppc/ppc.c
++++ b/hw/ppc/ppc.c
+@@ -47,7 +47,7 @@ void ppc_set_irq(PowerPCCPU *cpu, int irq, int level)
+     unsigned int old_pending;
+ 
+     /* We may already have the BQL if coming from the reset path */
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     old_pending = env->pending_interrupts;
+ 
+diff --git a/target/i386/kvm/xen-emu.c b/target/i386/kvm/xen-emu.c
+index f79f5d270f..be8a1fef58 100644
+--- a/target/i386/kvm/xen-emu.c
++++ b/target/i386/kvm/xen-emu.c
+@@ -581,7 +581,7 @@ static int xen_set_shared_info(uint64_t gfn)
+     uint64_t gpa = gfn << TARGET_PAGE_BITS;
+     int i, err;
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     /*
+      * The xen_overlay device tells KVM about it too, since it had to
+diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+index 0a1c942831..2122f89990 100644
+--- a/target/ppc/excp_helper.c
++++ b/target/ppc/excp_helper.c
+@@ -2222,7 +2222,7 @@ static int ppc_next_unmasked_interrupt(CPUPPCState *env)
+ void ppc_maybe_interrupt(CPUPPCState *env)
+ {
+     CPUState *cs = env_cpu(env);
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     if (ppc_next_unmasked_interrupt(env)) {
+         cpu_interrupt(cs, CPU_INTERRUPT_HARD);
+diff --git a/target/ppc/helper_regs.c b/target/ppc/helper_regs.c
+index f380342d4d..b92e3a223a 100644
+--- a/target/ppc/helper_regs.c
++++ b/target/ppc/helper_regs.c
+@@ -244,7 +244,7 @@ void cpu_interrupt_exittb(CPUState *cs)
+      * unless running with TCG.
+      */
+     if (tcg_enabled()) {
+-        QEMU_IOTHREAD_LOCK_GUARD();
++        QEMU_BQL_LOCK_GUARD();
+         cpu_interrupt(cs, CPU_INTERRUPT_EXITTB);
+     }
+ }
+diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+index e7e23b34f4..fa73bb8ce9 100644
+--- a/target/riscv/cpu_helper.c
++++ b/target/riscv/cpu_helper.c
+@@ -655,7 +655,7 @@ void riscv_cpu_interrupt(CPURISCVState *env)
+     uint64_t gein, vsgein = 0, vstip = 0, irqf = 0;
+     CPUState *cs = env_cpu(env);
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     if (env->virt_enabled) {
+         gein = get_field(env->hstatus, HSTATUS_VGEIN);
+@@ -681,7 +681,7 @@ uint64_t riscv_cpu_update_mip(CPURISCVState *env, uint64_t mask, uint64_t value)
+     /* No need to update mip for VSTIP */
+     mask = ((mask == MIP_VSTIP) && env->vstime_irq) ? 0 : mask;
+ 
+-    QEMU_IOTHREAD_LOCK_GUARD();
++    QEMU_BQL_LOCK_GUARD();
+ 
+     env->mip = (env->mip & ~mask) | (value & mask);
+ 
+-- 
+2.42.0

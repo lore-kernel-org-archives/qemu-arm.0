@@ -1,135 +1,108 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2272285ejt;
-        Tue, 28 Nov 2023 15:59:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGNJ1IM5wrkuKTDnMxd1HhNvX1OjfL8N+2mD/uqlgZ1WXBDWSeXF6afkvkUYT3sJ205RZPT
-X-Received: by 2002:a05:620a:2057:b0:77d:6b25:33b5 with SMTP id d23-20020a05620a205700b0077d6b2533b5mr19002274qka.12.1701215950767;
-        Tue, 28 Nov 2023 15:59:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701215950; cv=none;
+Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2602861ejt;
+        Wed, 29 Nov 2023 05:01:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEG8osXsjMqQN1BbtoZmZyuyrBsOZfXNw4NbI0FfrrYxIQhBhj3G1FXJnH9UJUv0+i605aA
+X-Received: by 2002:a25:a306:0:b0:d99:d1b8:672f with SMTP id d6-20020a25a306000000b00d99d1b8672fmr16481771ybi.33.1701262914161;
+        Wed, 29 Nov 2023 05:01:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701262914; cv=none;
         d=google.com; s=arc-20160816;
-        b=m07tHRf07iF5G7PWBFucSJvWc/8X70Nr0uLkbgbVrzTgbAiUDPco5pWLeWLE0RQ8tl
-         NTYkeAAG2xaK8eUsdvFRSLCWLa9WDVRFc7HmBDbX6qq2MZF1LgogQhVZDzg0hKDy24th
-         H7XHffzysc4r7qv+aOX2wgWewF5JHVOppTq0Aj462oPi6rwBp0yseAkZKjUyAvhfPqKO
-         84A4oOGLP0EnRn4AZ68PWUdaUQzCLotF1lBzRjHvrF6SSlnHtBRlEZ9m4qmuSAriqalP
-         5RLBp9XlpwAe0FAbK4eIS3Va1J/bmKjEoytStUscdr0/viMpwMtVxyxGy5tNvWTwnQ7c
-         avEg==
+        b=WqSjVK1ZeYb5gK+TGASvRjm34RQViEdJrjzs+P/P+1CDa7ZhRFrbgYkz7ULuXRm7Pz
+         0N205TD2Cr+EeERRLVLaaDZYM/9cTYGwzc4LEFg7NTiFV1flFv+LZt8/ZiUIIGrz9J8t
+         S6W275mZ/43I/GnY5YAq0fAuV2FFnwMGzEotppM5NZ8HOlU/OnIP8bh3MZF9lrM0kPE2
+         r4fpx3Vg1UAKNuBjV6BLZMaDeQ42+1yMC1cS0g6PpIQazAyv7faKm2bhlcpeIIy7iw7f
+         tMPLgwHJa+xHhvuIDDNRVzNPWNqbl1Bsw0YaY6ohC/DqfGQ32Nmah7BQ4U/Zw+R090sU
+         Ni+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=2pd9lw4wD3DVZDGwK1Bm+jHxqAc/C70QTldobg994bY=;
-        fh=xrfrdnXt6yALLaQWR1WAebrnD81q5WGqWzq5w17UyxQ=;
-        b=K7WRHPRUmPfmnvjqcPcJLMannRg7THFdeR19GlqeehMNP3fog5Xf/zqJOySLGctj9z
-         1X3TF6kMXKYBFjvIc06e3+GAeHzIrP4375jZs3avq2rMcZDH0ed4ddb+IRQ2LY10bAsL
-         CwkGewf/m1zmGMPiRMbg4pC6IfwhQDNqhDyLPTvzmvrRcvUGy5a7/wGOjlVxWmEKi5uS
-         rm/ckTHLbIzTbjNkwHIjSQBhdMQcmwq9I0Xl8sZ8TfZ9LSIPa8Vwyhs1HvqdEVAVAQi5
-         6ZjfrlYO1Up6/3jGGC0S0fPrBsQwbUP9bnjwChC80bLirCaqWNWBnnJtxapVsEdzcHYi
-         cZiQ==
+         :in-reply-to:autocrypt:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id;
+        bh=VVsxHS68cBTOy0nY9DTR82aylZif2WTRC281nwYW/TY=;
+        fh=ZKwtjLedALAsyUCvQ81dAS/TNXOv3tNCxPltbxlZpMM=;
+        b=DF3M5eZeResreFSQcBk+oz0WbOdGPuhbYC8hoSC+vHI3XTv4lHmZ7lbTzd4EQzcjwQ
+         nQYaHxSq4qnwvc3Hm1GR2xxshnX5Rdiz+1FJZAJxdxtK6kt/sxVxEueqockdP2lK/gx1
+         Hieim+0wHBD4CI3FLaaYGIONuh4hUHJXErT0U/wamyCm4f0yYQo/3FyAn8aBsR4Jz7cg
+         cDfZPrkJvbUIdWAZXoCpouUm56IDONUsn4is6U46CrbDiBOB8C7gkW0LUkjGg76kKkpW
+         oqOFV97Ny/KTKIizlNViHrTYQDySi7/4CKfhlEqMQEv6tcuZv3SjsZxwwGYHXOgDC9b0
+         65aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=KVYHSbQz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay38-20020a05620a17a600b0077422d8fdd7si7882337qkb.235.2023.11.28.15.59.10
+        by mx.google.com with ESMTPS id c5-20020a25c005000000b00d851099a291si8687836ybf.197.2023.11.29.05.01.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Nov 2023 15:59:10 -0800 (PST)
+        Wed, 29 Nov 2023 05:01:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=KVYHSbQz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r87xQ-0001HX-2Z; Tue, 28 Nov 2023 18:57:37 -0500
+	id 1r8KBc-0008KT-91; Wed, 29 Nov 2023 08:01:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1r87xK-0001Fo-6h; Tue, 28 Nov 2023 18:57:32 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r8KBa-0008Jk-Tu; Wed, 29 Nov 2023 08:01:02 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1r87xE-0007qW-K7; Tue, 28 Nov 2023 18:57:29 -0500
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3ASLFo2h024680; Tue, 28 Nov 2023 23:57:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-type :
- content-transfer-encoding; s=pp1;
- bh=2pd9lw4wD3DVZDGwK1Bm+jHxqAc/C70QTldobg994bY=;
- b=KVYHSbQzcfXpWUmdTrrkYAoLSjlMTxhwq2ksZW7iuIidtP18eQhlLlfhEFcAxviqFBne
- tvFuvbJmRVhsczc27BsGYYWpCAND6H84LCacs2yBz7IpdljpjKMIOtpsyY1fuCWNf+xT
- Zs7dOXpESHsRO7Xd0SXmQwL/ellOeGZ2ZNydac1xT5nMW4CapP2chO+xg0G03+Hq/VfE
- seTUsbanJnFtfByboGup63G7G8djE9NnIZUpF7sec5bcZ5eoZSXLn3HVVqiSGD8rjzhp
- 9KkL/llBWKG4kVg5YRjU9Ys6ThLrcgvwH4pCXSelFfeIVt7UrAxKhJYFHwKmMxoQ3O0g eg== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3unnn27p4x-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Nov 2023 23:57:06 +0000
-Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3ASNAfFk008371;
- Tue, 28 Nov 2023 23:57:05 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3unnn27p4g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Nov 2023 23:57:05 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 3ASMeBTe004908; Tue, 28 Nov 2023 23:57:04 GMT
-Received: from smtprelay03.wdc07v.mail.ibm.com ([172.16.1.70])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3ukwfk3b24-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Nov 2023 23:57:04 +0000
-Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
- [10.241.53.105])
- by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 3ASNv38N9568944
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 28 Nov 2023 23:57:03 GMT
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 520305805F;
- Tue, 28 Nov 2023 23:57:03 +0000 (GMT)
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1313258043;
- Tue, 28 Nov 2023 23:57:03 +0000 (GMT)
-Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
- by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 28 Nov 2023 23:57:03 +0000 (GMT)
-From: Ninad Palsule <ninad@linux.ibm.com>
-To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
- andrew@codeconstruct.com.au, joel@jms.id.au, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
- philmd@linaro.org, lvivier@redhat.com
-Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
-Subject: [PATCH v8 00/10] Introduce model for IBM's FSI
-Date: Tue, 28 Nov 2023 17:56:50 -0600
-Message-Id: <20231128235700.599584-1-ninad@linux.ibm.com>
-X-Mailer: git-send-email 2.39.2
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r8KBZ-0008Q4-31; Wed, 29 Nov 2023 08:01:02 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id ADBAD37663;
+ Wed, 29 Nov 2023 16:01:19 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id C835F386C2;
+ Wed, 29 Nov 2023 16:00:55 +0300 (MSK)
+Message-ID: <107a2390-2af1-4b8b-8149-5c97fc1f2668@tls.msk.ru>
+Date: Wed, 29 Nov 2023 16:00:55 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-8.2? 1/6] hw/virtio: Add
+ VirtioPCIDeviceTypeInfo::instance_finalize field
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eric Auger <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+References: <20231121174051.63038-1-philmd@linaro.org>
+ <20231121174051.63038-2-philmd@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20231121174051.63038-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 0lEtKCx5DM3fk0WksjAL0ATO30pXlFVQ
-X-Proofpoint-ORIG-GUID: SikcvjAzONSX0t5wQyzhyxqKrp3G6d_L
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-11-28_25,2023-11-27_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 impostorscore=0
- priorityscore=1501 mlxlogscore=236 malwarescore=0 adultscore=0
- lowpriorityscore=0 phishscore=0 spamscore=0 mlxscore=0 suspectscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2311280188
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -145,79 +118,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IRb8hYqdih8A
+X-TUID: RCSd+jA7Vp77
 
-Hello,
+21.11.2023 20:40, Philippe Mathieu-Daudé:
+> The VirtioPCIDeviceTypeInfo structure, added in commit a4ee4c8baa
+> ("virtio: Helper for registering virtio device types") got extended
+> in commit 8ea90ee690 ("virtio: add class_size") with the @class_size
+> field. Do similarly with the @instance_finalize field.
 
-Please review the patch-set version 8.
-I have incorporated review comments from Cedric.
-  - Fixed checkpatch failures.
-  - Fixed commit messages.
-  - Fixed LBUS memory map size.
+Since other patches in this series are Cc'ed to qemu-stable, and all
+uses this new field, it smells like this patch should also be picked
+up for -stable (doing that now).
 
-Ninad Palsule (10):
-  hw/fsi: Introduce IBM's Local bus
-  hw/fsi: Introduce IBM's FSI Bus
-  hw/fsi: Introduce IBM's cfam,fsi-slave,scratchpad
-  hw/fsi: IBM's On-chip Peripheral Bus
-  hw/fsi: Introduce IBM's FSI master
-  hw/fsi: Aspeed APB2OPB interface
-  hw/arm: Hook up FSI module in AST2600
-  hw/fsi: Added qtest
-  hw/fsi: Added FSI documentation
-  hw/fsi: Update MAINTAINER list
+/mjt
 
- MAINTAINERS                     |   8 +
- docs/specs/fsi.rst              | 138 ++++++++++++++
- docs/specs/index.rst            |   1 +
- meson.build                     |   1 +
- hw/fsi/trace.h                  |   1 +
- include/hw/arm/aspeed_soc.h     |   4 +
- include/hw/fsi/aspeed-apb2opb.h |  34 ++++
- include/hw/fsi/cfam.h           |  45 +++++
- include/hw/fsi/fsi-master.h     |  32 ++++
- include/hw/fsi/fsi-slave.h      |  29 +++
- include/hw/fsi/fsi.h            |  24 +++
- include/hw/fsi/lbus.h           |  40 ++++
- include/hw/fsi/opb.h            |  25 +++
- hw/arm/aspeed_ast2600.c         |  19 ++
- hw/fsi/aspeed-apb2opb.c         | 316 ++++++++++++++++++++++++++++++++
- hw/fsi/cfam.c                   | 261 ++++++++++++++++++++++++++
- hw/fsi/fsi-master.c             | 165 +++++++++++++++++
- hw/fsi/fsi-slave.c              |  78 ++++++++
- hw/fsi/fsi.c                    |  22 +++
- hw/fsi/lbus.c                   |  51 ++++++
- hw/fsi/opb.c                    |  36 ++++
- tests/qtest/aspeed-fsi-test.c   | 205 +++++++++++++++++++++
- hw/Kconfig                      |   1 +
- hw/arm/Kconfig                  |   1 +
- hw/fsi/Kconfig                  |  21 +++
- hw/fsi/meson.build              |   5 +
- hw/fsi/trace-events             |  13 ++
- hw/meson.build                  |   1 +
- tests/qtest/meson.build         |   1 +
- 29 files changed, 1578 insertions(+)
- create mode 100644 docs/specs/fsi.rst
- create mode 100644 hw/fsi/trace.h
- create mode 100644 include/hw/fsi/aspeed-apb2opb.h
- create mode 100644 include/hw/fsi/cfam.h
- create mode 100644 include/hw/fsi/fsi-master.h
- create mode 100644 include/hw/fsi/fsi-slave.h
- create mode 100644 include/hw/fsi/fsi.h
- create mode 100644 include/hw/fsi/lbus.h
- create mode 100644 include/hw/fsi/opb.h
- create mode 100644 hw/fsi/aspeed-apb2opb.c
- create mode 100644 hw/fsi/cfam.c
- create mode 100644 hw/fsi/fsi-master.c
- create mode 100644 hw/fsi/fsi-slave.c
- create mode 100644 hw/fsi/fsi.c
- create mode 100644 hw/fsi/lbus.c
- create mode 100644 hw/fsi/opb.c
- create mode 100644 tests/qtest/aspeed-fsi-test.c
- create mode 100644 hw/fsi/Kconfig
- create mode 100644 hw/fsi/meson.build
- create mode 100644 hw/fsi/trace-events
-
--- 
-2.39.2
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/virtio/virtio-pci.h | 1 +
+>   hw/virtio/virtio-pci.c         | 1 +
+>   2 files changed, 2 insertions(+)
+> 
+> diff --git a/include/hw/virtio/virtio-pci.h b/include/hw/virtio/virtio-pci.h
+> index 5a3f182f99..59d88018c1 100644
+> --- a/include/hw/virtio/virtio-pci.h
+> +++ b/include/hw/virtio/virtio-pci.h
+> @@ -246,6 +246,7 @@ typedef struct VirtioPCIDeviceTypeInfo {
+>       size_t instance_size;
+>       size_t class_size;
+>       void (*instance_init)(Object *obj);
+> +    void (*instance_finalize)(Object *obj);
+>       void (*class_init)(ObjectClass *klass, void *data);
+>       InterfaceInfo *interfaces;
+>   } VirtioPCIDeviceTypeInfo;
+> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+> index 205dbf24fb..e433879542 100644
+> --- a/hw/virtio/virtio-pci.c
+> +++ b/hw/virtio/virtio-pci.c
+> @@ -2391,6 +2391,7 @@ void virtio_pci_types_register(const VirtioPCIDeviceTypeInfo *t)
+>           .parent        = t->parent ? t->parent : TYPE_VIRTIO_PCI,
+>           .instance_size = t->instance_size,
+>           .instance_init = t->instance_init,
+> +        .instance_finalize = t->instance_finalize,
+>           .class_size    = t->class_size,
+>           .abstract      = true,
+>           .interfaces    = t->interfaces,
 

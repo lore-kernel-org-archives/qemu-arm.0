@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp270120ejb;
-        Thu, 30 Nov 2023 06:34:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGYvTfPuawfXTyuc230E1aXpYT4RKnIKHhy3JcGE4Jhr3T4/oREYi9XSWwYYa2Y+vrjwyc0
-X-Received: by 2002:a05:6214:d8e:b0:67a:3b18:1b1e with SMTP id e14-20020a0562140d8e00b0067a3b181b1emr17729980qve.54.1701354842405;
-        Thu, 30 Nov 2023 06:34:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354842; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp270222ejb;
+        Thu, 30 Nov 2023 06:34:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFZNWdWC5XckSKpt2xisLTwZXxUDmkTCL5u3JvCASz5Nh2cxYa4DprGGRAjG1Hske3UpEBd
+X-Received: by 2002:ac8:4dd5:0:b0:423:b622:6dd7 with SMTP id g21-20020ac84dd5000000b00423b6226dd7mr13488838qtw.6.1701354851656;
+        Thu, 30 Nov 2023 06:34:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354851; cv=none;
         d=google.com; s=arc-20160816;
-        b=SEzEOo6Twjxj68Gx2DUAI37ZP1e6mING8Hh/C+qS7KqH7+QQdNkV4AS7z06YmM17XI
-         IVB4Ino1NejDANc2x038raX7J2sxiI6Pc6JoBv/dO3UqhDCwGv8VoaQ9KrIznxNLgKLi
-         qB+qdqaUG6qx9tzPahm6QIVOM2HxXSH/KYzwybx9QZz/0P2CQsxKLjOroPAkbRh58dEj
-         VhCD7TXpoH1xSl0XU3vSoloYHA6XoZGscc7bW4k3epzKAvokHOZp/cQON1e/c9hzYZrl
-         sfnmuNIAJCzppYKTVLOE7LUCcrAJcia34tZ6xQ6jJ2CZVdwmQsxwwYh7gnhtUoKs7IfO
-         nopw==
+        b=NkwLrXCP1XTDqi41Xk7Ozf7Re/vSvtweditkcaI861MQRsaW2Tc1RS7vU2eNo4nWvK
+         WAiXGmGO4xDLmvhxVNCYEQUgJH69fgXgeTqp2ZHgwSzuWvIXTuJb9MAC8JWg+by961fA
+         UpqyvjWLeiPPkhZsUfSitkd6q4XFvVP7tN0gHTH8Me/p4lgCELZH99SZbL8vf5b5WSgA
+         fHozsYQkky0/dGbdL57pkNp4/sY6DRtJosZcemriwSMPzeBwrPxNj+amyS/Sb0mVm50N
+         NAh96ownNQ3P7SC+WNOEPPlNet3ap+C5x3I7sgRLJJLmo1/f7JFkvduwAvS8a3P38CBv
+         MoPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=isIZewBlWhHlPIRd4AOCKWvDW7hj+Xa7GjguZrlH764=;
+        bh=nFABTT5Yh+aPai95tE3eMLRSQEusNuwuwX2PUaKd0/Q=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=o1qttKrO0sanHbiKf9eW5w0WmdF1t2/VgxWaOexYcSlW9HvlG9LOipKNxnlk6Sk7HR
-         VbOj0qnvEwqcL1btuuk174b71a+mMb+Ua4hVpfmH3m96uAjujPxLFmZxUmvNJ7wPLcBP
-         oalzUHmpJeS9S4cIuvOTq3w5rhZy9mRNRZzuI5dk0ao+JtRR3r1BOJmtBiHQjUt68FJy
-         GBeVz8GhvRLNmCIeawYjMIougvXhCrRm6FRS2Pf2Kuav2NwoHn4reTa4DscluSkMNlq8
-         OvNnJn0+cRUGTLv1P8l0SC512tuosiLEkfjgrDI2p3LgYS6ECYAUaYZVfW9+riHYrYcj
-         GneQ==
+        b=euQX9D+FQkuJ00k8iTkx5bjjyDToGJhFl6VO+SXo4MtwcJffyWHbWvVGd57fQzm32m
+         M3fhxaPWSUHrwZKUUy5QNgIMAstR4eekEQp92SJzPn2RwZ5hB6vzbXJGndidkuqwFmjD
+         2FkK0iZgIXyymjM4kgVhNRL0mpXg7dPNrJz5zXK2rZkKxEDZGS2DwHaJoO3rCEgGJOKT
+         XzdciKR0mGKsIUaMwFHNFzldbVlNdKHSj54lAzugsULWPfKqtxmK3YM7/Dj7B1ao14cP
+         Kt+98xxot60qnvqo07/pORfpM9S5Jy3W3aaIadgqMMeBWU2LdNHv7JHU5cdp7QwzOels
+         qBZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=npfBwEWs;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=b51yF4Oi;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id jh3-20020a0562141fc300b0065d124684a6si1086825qvb.88.2023.11.30.06.34.01
+        by mx.google.com with ESMTPS id j7-20020ac806c7000000b00423a48ec8adsi1111841qth.103.2023.11.30.06.34.10
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:34:02 -0800 (PST)
+        Thu, 30 Nov 2023 06:34:11 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=npfBwEWs;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=b51yF4Oi;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354842; x=1732890842;
+  t=1701354851; x=1732890851;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=ojKaeiijveA4rQSsZpp2eyLul8UTXwtywNBoYac3pw0=;
-  b=npfBwEWswmS5Yfn4Uco6zXxF4JaLt+FE+79DM7e5JMLR1nPnwK6VCEdH
-   j7WoigdZOks41koEQQm4W4dCraScHUs4wZlrWZ0lvKeDas54JpDuf3vLK
-   lWKFlXEgXZOFfRma+kA0PuxNbu4WaEYYnyYIpBixOQfHKxlpofixhCcIf
-   1zPXWZSUCvFAhJlqpVMbpMpsRVruNGVR34syuRx1JcddDh+DVuDCLToYw
-   BxnbIaQtYvda/pX3j9EQtf7uuTphajgy+kDCv3tkcTgVq2WOryvDHLwst
-   plCZfJMCKgcpOwzKEfpCOz0ejh6nQdSCM38o9iBosvh8376dMc2GrGMVa
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532108"
+  bh=IhpodbfJau6szIdQazmb+IK5Vtn7KUNNpXNSlzloW+Q=;
+  b=b51yF4Oir5xZZusp7izSrF3IpwO5SQdCqrdJ7aQMK2t1m+RWMPOOXHLF
+   9p9DKeoOP0tDw5gZebKCHy1AP68kRpbFdxQEkL6xKrguzYooJeHe/igbk
+   uLJH4DbVs0X9pyiq4ursmpkAHtB47scRo+b42eMQqaaUZGeDRnJdcI2LO
+   YfGpnW+TFyBWco8eWRi8M2o66DScUBpflPaXeeR08CsOzsNJOfC+loEgP
+   LQq6NXm1D/OWG6MpZbu76+Ukr5kv0aCnFZzRXJbVid3Gucs3/DgEgxTdj
+   5wL1xL3l7Kq2NmiCZTA72W8Ime3NnPk/QEiS8C1eFh2prN9RCdSDZkHB8
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532147"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479532108"
+   d="scan'208";a="479532147"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:34:00 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:34:09 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730060"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730068"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942730060"
+   d="scan'208";a="942730068"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:33:50 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:34:00 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,105 +102,161 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 22/41] hw/cpu/cluster: Convert cpu-cluster from general device to topology device
-Date: Thu, 30 Nov 2023 22:41:44 +0800
-Message-Id: <20231130144203.2307629-23-zhao1.liu@linux.intel.com>
+Subject: [RFC 23/41] hw/cpu/die: Abstract cpu-die level as topology device
+Date: Thu, 30 Nov 2023 22:41:45 +0800
+Message-Id: <20231130144203.2307629-24-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: jTY83GgNd5gb
+X-TUID: 8rDNj/UWoWYA
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-Convert cpu-cluster to topology device then user could create cluster
-level topology from cli and later the cpu-clusters could be added into
-topology tree.
+Abstract die level as a topology device "cpu-die" to allow user to
+create die level topology from cli and later the cpu-dies could be added
+into topology tree.
 
-In addition, mark the cpu-cluster as DEVICE_CATEGORY_CPU_DEF category to
+In addition, mark the cpu-die as DEVICE_CATEGORY_CPU_DEF category to
 indicate it belongs to the basic CPU definition and should be created
 from cli before board initialization.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/cpu/cluster.c         | 11 +++++++++--
- include/hw/cpu/cluster.h |  7 +++++--
- 2 files changed, 14 insertions(+), 4 deletions(-)
+ MAINTAINERS          |  2 ++
+ hw/cpu/die.c         | 46 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/cpu/meson.build   |  2 +-
+ include/hw/cpu/die.h | 38 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 87 insertions(+), 1 deletion(-)
+ create mode 100644 hw/cpu/die.c
+ create mode 100644 include/hw/cpu/die.h
 
-diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
-index 8a666c27d151..adf0ef23e8d4 100644
---- a/hw/cpu/cluster.c
-+++ b/hw/cpu/cluster.c
-@@ -86,15 +86,21 @@ static void cpu_cluster_realize(DeviceState *dev, Error **errp)
-     if (cc->tcg_clu_ops->collect_cpus) {
-         cc->tcg_clu_ops->collect_cpus(cluster, errp);
-     }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 89e350866d6a..91d0936edb32 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1863,6 +1863,7 @@ F: hw/core/machine-smp.c
+ F: hw/core/null-machine.c
+ F: hw/core/numa.c
+ F: hw/cpu/cluster.c
++F: hw/cpu/die.c
+ F: qapi/machine.json
+ F: qapi/machine-common.json
+ F: qapi/machine-target.json
+@@ -1870,6 +1871,7 @@ F: include/hw/boards.h
+ F: include/hw/core/cpu.h
+ F: include/hw/core/cpu-topo.h
+ F: include/hw/cpu/cluster.h
++F: include/hw/cpu/die.h
+ F: include/sysemu/numa.h
+ F: tests/unit/test-smp-parse.c
+ T: git https://gitlab.com/ehabkost/qemu.git machine-next
+diff --git a/hw/cpu/die.c b/hw/cpu/die.c
+new file mode 100644
+index 000000000000..06c4f7cc8fa2
+--- /dev/null
++++ b/hw/cpu/die.c
+@@ -0,0 +1,46 @@
++/*
++ * CPU die abstract device
++ *
++ * Copyright (c) 2023 Intel Corporation
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License,
++ * or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
 +
-+    cc->parent_realize(dev, errp);
- }
- 
- static void cpu_cluster_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-+    CPUTopoClass *tc = CPU_TOPO_CLASS(klass);
-     CPUClusterClass *cc = CPU_CLUSTER_CLASS(klass);
- 
++#include "qemu/osdep.h"
++#include "hw/cpu/die.h"
++
++static void cpu_die_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    CPUTopoClass *tc = CPU_TOPO_CLASS(oc);
++
 +    set_bit(DEVICE_CATEGORY_CPU_DEF, dc->categories);
-     device_class_set_props(dc, cpu_cluster_properties);
--    dc->realize = cpu_cluster_realize;
-+    device_class_set_parent_realize(dc, cpu_cluster_realize,
-+                                    &cc->parent_realize);
-+    tc->level = CPU_TOPO_CLUSTER;
- 
- #ifdef CONFIG_TCG
-     cc->tcg_clu_ops = &common_cluster_tcg_ops;
-@@ -103,8 +109,9 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
- 
- static const TypeInfo cpu_cluster_type_info = {
-     .name = TYPE_CPU_CLUSTER,
--    .parent = TYPE_DEVICE,
-+    .parent = TYPE_CPU_TOPO,
-     .instance_size = sizeof(CPUCluster),
-+    .class_size = sizeof(CPUClusterClass),
-     .class_init = cpu_cluster_class_init,
- };
- 
-diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
-index b3185e2f2566..888993c36da4 100644
---- a/include/hw/cpu/cluster.h
-+++ b/include/hw/cpu/cluster.h
-@@ -20,6 +20,7 @@
- #ifndef HW_CPU_CLUSTER_H
- #define HW_CPU_CLUSTER_H
- 
-+#include "hw/core/cpu-topo.h"
- #include "hw/qdev-core.h"
- #include "qom/object.h"
- 
-@@ -84,11 +85,13 @@ struct TCGClusterOps {
- 
- struct CPUClusterClass {
-     /*< private >*/
--    DeviceClass parent_class;
-+    CPUTopoClass parent_class;
- 
-     /*< public >*/
-     /* when TCG is not available, this pointer is NULL */
-     const struct TCGClusterOps *tcg_clu_ops;
 +
-+    DeviceRealize parent_realize;
- };
++    tc->level = CPU_TOPO_DIE;
++}
++
++static const TypeInfo cpu_die_type_info = {
++    .name = TYPE_CPU_DIE,
++    .parent = TYPE_CPU_TOPO,
++    .class_init = cpu_die_class_init,
++    .instance_size = sizeof(CPUDie),
++};
++
++static void cpu_die_register_types(void)
++{
++    type_register_static(&cpu_die_type_info);
++}
++
++type_init(cpu_die_register_types)
+diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
+index 6d319947ca0b..e685fe1c7d8a 100644
+--- a/hw/cpu/meson.build
++++ b/hw/cpu/meson.build
+@@ -1,4 +1,4 @@
+-system_ss.add(files('core.c', 'cluster.c'))
++system_ss.add(files('core.c', 'cluster.c', 'die.c'))
  
- /**
-@@ -100,7 +103,7 @@ struct CPUClusterClass {
-  */
- struct CPUCluster {
-     /*< private >*/
--    DeviceState parent_obj;
-+    CPUTopoState parent_obj;
- 
-     /*< public >*/
-     uint32_t cluster_id;
+ system_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
+ system_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
+diff --git a/include/hw/cpu/die.h b/include/hw/cpu/die.h
+new file mode 100644
+index 000000000000..4c68786b5f2f
+--- /dev/null
++++ b/include/hw/cpu/die.h
+@@ -0,0 +1,38 @@
++/*
++ * CPU die abstract device
++ *
++ * Copyright (c) 2023 Intel Corporation
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License,
++ * or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_CPU_DIE_H
++#define HW_CPU_DIE_H
++
++#include "hw/core/cpu-topo.h"
++#include "hw/qdev-core.h"
++
++#define TYPE_CPU_DIE "cpu-die"
++
++OBJECT_DECLARE_SIMPLE_TYPE(CPUDie, CPU_DIE)
++
++struct CPUDie {
++    /*< private >*/
++    CPUTopoState obj;
++
++    /*< public >*/
++};
++
++#endif /* HW_CPU_DIE_H */
 -- 
 2.34.1

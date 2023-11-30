@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp268249ejb;
-        Thu, 30 Nov 2023 06:31:35 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH9my0mPukrg7aRWyylAT4+JZ00Fx3Fh7Fp6rPxd41vD2Eq7oa0HlZYxUdD87nkFLXtNci9
-X-Received: by 2002:a05:622a:309:b0:41e:1a9a:780 with SMTP id q9-20020a05622a030900b0041e1a9a0780mr27311794qtw.66.1701354695009;
-        Thu, 30 Nov 2023 06:31:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354694; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp268372ejb;
+        Thu, 30 Nov 2023 06:31:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEHxMBxKh1fL8mTwtNp69PAvK9GdNJ99V4Q+Xbuv2upZxIjyCBqEkU53ShN6cLGWWkFZjBS
+X-Received: by 2002:a0c:f989:0:b0:670:f55e:573b with SMTP id t9-20020a0cf989000000b00670f55e573bmr24187130qvn.12.1701354704399;
+        Thu, 30 Nov 2023 06:31:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354704; cv=none;
         d=google.com; s=arc-20160816;
-        b=YewkqEJN2vl+u8csxXrUrfZ6va510AU0o7hmE0sgxAsepFFr2z+YhzRB7zXH089KSU
-         J3uOfK4X2tFRwZ4xbuzL1w8Eo/kgbwJy/5gHol7b5VSGDWheANyEyt6TuoeeVzNhb/K/
-         e3VvUY4Gcg675oF6fA6g6heDb6CiqkWMQm8y3AiDB7ozkphDqbjrJPnGSaQ42XVLjDqg
-         SK0dtmfuHNUsJQfD56tJcm1Tiy8mJU/nYJPnQYz/7yjq9IUrZwE1JADd3sqTS+e7ABlk
-         oF5GwYc+5vjWsVAqJ6jXvoteL+/04ElXCC/iZ7eslVr8OnA+9bSpcoX8L51pd93OBuC7
-         CKJw==
+        b=Xw/cL5xIGjGA2/3Wjt4fD4zQea0NWi0yxTG8kSklQRV1p67ctX9zc5GgjrEAQCQP1x
+         vhKDD6AFFUw27b/7oTSBFaa7aMdtzPS+Y4FJoRzN7svCWvm8MhhEqFqAi8N15QtrbHlm
+         yDMcprXTiAui2iSGI5Av5+vMRHUo1419QuacDaWN9pI34f7IqOFS7tq7rVOJy0flyKgu
+         8uiv1qdkDf44334ORoP6Ne2AQYo5Cx5HNY02byPP6gVRwz35LMu0apxBBAyw111OBH/k
+         ebto+GklDuDgfdPVcXBEKVA5rUJZws3Q7WU+IZqrxbD3Wg3e87WBiLrDcsP49u+YNdH2
+         s52g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=y1KluPvB6T6+FK2U/+G/V/aKTIFxa1bokHonKpE74aM=;
+        bh=+QZbTWlSEbbogh5qu4EzEaVMOn+hl4OCPZwl+YIqUvQ=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=rgOET+d5kaZm8d3iNtfY58GWQ4Ugwna1JkaAZoVrbJYRUOLFYwBxKR3UP65fkiup6f
-         Il1RngFtKT0CSFcheg8ZzqPVZ0Frgz20aCCpZXyUnId4d5dBXLWzWFwpwvFEw0x5OE2l
-         4hsbTiBrE+vznQxMh17FObtKPJ3P+XXtJTHBIkzWfPdDXpvpK7PTEwAzpPGU9D1F5R+v
-         P+bA7yn675Hz7mMRmiE5ni31WCx0Ws5dw/hljU0jgpaU9YjRUyEdATUwE9xP9apIodw5
-         M2szIFimoPs6g6OQt72CLj5O6bd+4Dgv8a6qCRHOyjc6DwDtB0f/cJ6mPcsjJVYFGrpo
-         k0rA==
+        b=nqx1FEHVideS+P5R7m7TJ3kKJzyhZcwnD7zg+kJRJhvzoYToxrsRlhJfDp9Ts5h3J/
+         Q/W+q0UgyPFU2do8fVBlUhYw7c9GVMlLHzeGuH3s51OiQ0seNK8NgTbO+OJsURoYYERL
+         1xy09hRWAFtTGOI1xmswEmoIbnWbsp3LXjnW0JY99gmQVCFVZr6Q2zm7pS6JJ+SSdmHF
+         FhAVQnaFZvm5MIBuC2aqwNF9ybtdyFdegjaKDPg69sOlot9ZL+Kh152MUnSKk4w2iWAu
+         uVLKR7nieTnxxBvIXzFYJaqzTAPKncFKSd177rEGRkisYqulrZeNEbiBmrgHPyrfm+hS
+         j7JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="Kt/2N9Y3";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=cM7kXOMH;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id 19-20020ac85913000000b00423e85ef5fasi1182364qty.497.2023.11.30.06.31.33
+        by mx.google.com with ESMTPS id j16-20020a0cf9d0000000b0065cfed59386si1092242qvo.338.2023.11.30.06.31.43
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:31:34 -0800 (PST)
+        Thu, 30 Nov 2023 06:31:44 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="Kt/2N9Y3";
+       dkim=pass header.i=@intel.com header.s=Intel header.b=cM7kXOMH;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354694; x=1732890694;
+  t=1701354704; x=1732890704;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=50lNzU4oWEfgKNc9gIKf0MEOC0NyWyVi0AxeNokOwXU=;
-  b=Kt/2N9Y3v/DtmsKN2swIPZRAC9T6INcdp8i6Tk0gM14FtaHo8CQr/Rqk
-   D9iv4V5Hg7c0oQ8c2oSfwTEO59KpfRMsyJa6+SyVkdiT8LHN8DG7YpZ4b
-   0MvuRs6UFWN33dQ2il/EBmNqmhwG/mWWd5wYNEetLUdIOdqPeSOwK925L
-   XVVSnQ5nDPE+Nmk4jEWPbr+m1LbuSzpUGcIQlH4o3XcMiufIAMrNzcqUV
-   jYLg4kZBJ7aYY6PTlY625UxgR3K3DT7dBjGtimW0LN9YNP+Bh/7qm9g+g
-   EWnTEELIeArwyr+2wtBdRDTIbogVddkq4H94QYISEymDv/3nYUzYei284
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479530954"
+  bh=q8av5JpkyS6FnEIeBR5gNojelDu9V7STUz/Dtf8UH7E=;
+  b=cM7kXOMHVhJi7KKNa/0z7pQXWHMOKmItPKsu0AcxGg7SY2eesXNCMXz5
+   HpgeDrimTmi0ZpQN3neGgvbNSZHrNb4+i/rySHD3blHt/eQfX2odJonEi
+   hQ9gCDTrAU2rWOyB9+L7HKA/Weg6rmx35k4RTKn51bLPakvjgMQtEhjEL
+   LAaUS+pgtLs1hvtU7HiW4SojZkGKIwv35WNpUNo3gTciMoB7AZBQ0zlJ/
+   Go42lAspooR8AnT60pWlp+gkSzgFhW/9oedrX1USB9c0Mhirc1eovN3p6
+   Qs6Oxuse9+8f3HJxWUOrU0TgVYLLJukqsi9wTzGV8x4Wmw3pF5DTK+8oH
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531055"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479530954"
+   d="scan'208";a="479531055"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:31:01 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:31:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729615"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729632"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942729615"
+   d="scan'208";a="942729632"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:30:52 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:31:01 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,124 +102,84 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 03/41] system: Create base category devices from cli before board initialization
-Date: Thu, 30 Nov 2023 22:41:25 +0800
-Message-Id: <20231130144203.2307629-4-zhao1.liu@linux.intel.com>
+Subject: [RFC 04/41] qom/object: Introduce helper to resolve path from non-direct parent
+Date: Thu, 30 Nov 2023 22:41:26 +0800
+Message-Id: <20231130144203.2307629-5-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: B/I1yiuEvNmE
+X-TUID: nX8B8zcSxrKT
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-Topology devices are required to complete CPU topology building before
-*_init_cpus() in MachineClass.init().
+When we support child<> property creation from cli, the peripheral
+container (/machine/peripheral) may not be the direct parent of the
+devices created from cli.
 
-Add a qemu_create_cli_base_devices() before board initialization to
-help create and realize topology devices from cli early.
+For this case, add a helper to resolve path from non-direct parent.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- system/vl.c | 51 ++++++++++++++++++++++++++++++++++-----------------
- 1 file changed, 34 insertions(+), 17 deletions(-)
+ include/qom/object.h | 15 +++++++++++++++
+ qom/object.c         | 18 ++++++++++++++++++
+ 2 files changed, 33 insertions(+)
 
-diff --git a/system/vl.c b/system/vl.c
-index 0be155b530b4..65add2fb2460 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1197,8 +1197,9 @@ static int device_help_func(void *opaque, QemuOpts *opts, Error **errp)
- static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
- {
-     DeviceState *dev;
-+    long *category = opaque;
+diff --git a/include/qom/object.h b/include/qom/object.h
+index afccd24ca7ab..494eef801be3 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -1562,6 +1562,21 @@ Object *object_resolve_path_type(const char *path, const char *typename,
+  */
+ Object *object_resolve_path_at(Object *parent, const char *path);
  
--    dev = qdev_device_add(opts, NULL, errp);
-+    dev = qdev_device_add(opts, category, errp);
-     if (!dev && *errp) {
-         error_report_err(*errp);
-         return -1;
-@@ -2617,25 +2618,13 @@ static void qemu_init_board(void)
-     realtime_init();
++/**
++ * object_resolve_path_from:
++ * @parent: the object from which to resolve the path
++ * @path: the path to resolve
++ * @ambiguous: returns true if the path resolution failed because of an
++ *   ambiguous match
++ *
++ * This is like object_resolve_path_at(), except @parent may be the
++ * partial parent of @path.
++ *
++ * Returns: The resolved object or NULL on path lookup failure.
++ */
++Object *object_resolve_path_from(Object *parent, const char *path,
++                                 bool *ambiguous);
++
+ /**
+  * object_resolve_path_component:
+  * @parent: the object in which to resolve the path
+diff --git a/qom/object.c b/qom/object.c
+index 95c0dc8285fe..da29e88816b5 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -2192,6 +2192,24 @@ Object *object_resolve_path_at(Object *parent, const char *path)
+     return object_resolve_abs_path(parent, parts, TYPE_OBJECT);
  }
  
--static void qemu_create_cli_devices(void)
-+static void qemu_create_cli_devices(long *category)
- {
-     DeviceOption *opt;
- 
--    soundhw_init();
--
--    qemu_opts_foreach(qemu_find_opts("fw_cfg"),
--                      parse_fw_cfg, fw_cfg_find(), &error_fatal);
--
--    /* init USB devices */
--    if (machine_usb(current_machine)) {
--        if (foreach_device_config(DEV_USB, usb_parse) < 0)
--            exit(1);
--    }
--
--    /* init generic devices */
-     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_DEVICE);
-     qemu_opts_foreach(qemu_find_opts("device"),
--                      device_init_func, NULL, &error_fatal);
-+                      device_init_func, category, &error_fatal);
-     QTAILQ_FOREACH(opt, &device_opts, next) {
-         DeviceState *dev;
-         loc_push_restore(&opt->loc);
-@@ -2646,13 +2635,40 @@ static void qemu_create_cli_devices(void)
-          * from the start, so call qdev_device_add_from_qdict() directly for
-          * now.
-          */
--        dev = qdev_device_add_from_qdict(opt->opts, NULL, true, &error_fatal);
-+        dev = qdev_device_add_from_qdict(opt->opts, category,
-+                                         true, &error_fatal);
-         object_unref(OBJECT(dev));
-         loc_pop(&opt->loc);
-     }
-     rom_reset_order_override();
- }
- 
-+static void qemu_create_cli_base_devices(void)
++Object *object_resolve_path_from(Object *parent, const char *path,
++                                 bool *ambiguousp)
 +{
-+    long category = DEVICE_CATEGORY_CPU_DEF;
++    g_auto(GStrv) parts = NULL;
++    bool ambiguous = false;
++    Object *obj;
 +
-+    qemu_opts_foreach(qemu_find_opts("fw_cfg"),
-+                      parse_fw_cfg, fw_cfg_find(), &error_fatal);
++    parts = g_strsplit(path, "/", 0);
++    assert(parts);
 +
-+    /* init CPU topology devices which don't support hotplug. */
-+    qemu_create_cli_devices(&category);
-+}
-+
-+static void qemu_create_cli_periphery_devices(void)
-+{
-+    soundhw_init();
-+
-+    /* init USB devices */
-+    if (machine_usb(current_machine)) {
-+        if (foreach_device_config(DEV_USB, usb_parse) < 0) {
-+            exit(1);
-+        }
++    obj = object_resolve_partial_path(parent, parts, TYPE_OBJECT,
++                                      &ambiguous);
++    if (ambiguousp) {
++        *ambiguousp = ambiguous;
 +    }
-+
-+    /* init generic devices */
-+    qemu_create_cli_devices(NULL);
++    return obj;
 +}
 +
- static void qemu_machine_creation_done(void)
+ typedef struct StringProperty
  {
-     MachineState *machine = MACHINE(qdev_get_machine());
-@@ -2701,8 +2717,9 @@ void qmp_x_exit_preconfig(Error **errp)
-         return;
-     }
- 
-+    qemu_create_cli_base_devices();
-     qemu_init_board();
--    qemu_create_cli_devices();
-+    qemu_create_cli_periphery_devices();
-     qemu_machine_creation_done();
- 
-     if (loadvm) {
+     char *(*get)(Object *, Error **);
 -- 
 2.34.1

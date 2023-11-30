@@ -1,204 +1,330 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp272396ejb;
-        Thu, 30 Nov 2023 06:37:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFRDv/evCvlVw+9tPk8z8fQWlbrtWQGXn7f0gUZwvxbAONbkRe0AhIsLM2cxEap0g5qBN9/
-X-Received: by 2002:a05:6214:b0c:b0:66d:a12f:7140 with SMTP id u12-20020a0562140b0c00b0066da12f7140mr19587617qvj.18.1701355023931;
-        Thu, 30 Nov 2023 06:37:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701355023; cv=none;
-        d=google.com; s=arc-20160816;
-        b=R0l7J3keqQX6ej9CFO6NGuELypp09RCmBFBOu0t/Tz9tSYw99fi+uf+ONlxgBdnO2k
-         h7+qjDGk3EhMcdn6rNx7U6QDA8ibJp8VFEHujiy1baJMgPIXCm2w8/8IGvyUyPjysref
-         OvM+sozSPiLAHq95P21bXGvW2PDdXQEmbOqP455IY5GRQ6h2O9iHy2Ru/xG+Ab5V/Jmc
-         FRKxJsH6wrzbmkdiKhsZhUUNtkDZoq00N7HWsk0Dmj616As0vRAHL7+mZU8lMG8jee6b
-         t5iHzxizA6FsIeqm5byLCIZZ4c+nhghZXICmnNSvxdDuE4idHqO+HLvTrhP0guAAW9QI
-         bzvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=g6G1a8dTSfFyn165wf6V29FA7Uk+L81d2NzpIDerB8A=;
-        fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=DkjhEUs8nRtzRVGSHtsylWVmKmZ43hJD3bAQh98r6JEk6LOG6Pu8iCtWKgUXu8A9gK
-         h/6n5FVWmKP259PZlu3tfk46YQBeY3vgCCt7XiOntW79GOdKDP0xsvNjhL6Fm3yYFSst
-         rXqScJSlkE2RXymaVUBsf7XqCNSKa5ZSsn6vVRuU0NgHsTmT4MW2XxheY5EAnDaVPur4
-         8RgZSXUamAj4JV96QwLe6lybu13AB35DN+PbUV1SgbNgibN3Q+fG6K1+bVF8CownJ+1i
-         fRXKeOISEYIXsS1vQP/ji7E+sMb8+DISL4etoIQSEpVkGtog4cZ5M20QEVtiQkkDujsH
-         wC3w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=dLbeM7UV;
-       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@linux.intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id 4-20020a0562140cc400b0066d1d01e982si2867qvx.148.2023.11.30.06.37.02
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:37:03 -0800 (PST)
-Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=dLbeM7UV;
-       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701355023; x=1732891023;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=1TBuBuayUq5ep3LedB2XG6MRM6nllhfykxLgfM/A+kw=;
-  b=dLbeM7UV6w2dyWlKQ3TqdHLB5jTeKdQWC0WcaMa+O35ALAbNRd05mD+S
-   1BAOdmy9YEYx/mGbDal/e/oEx3Yx/nGKR9EpUjv2IYA5w6Na4faoUn6PC
-   ssH35CLPREl+I6scBRnuB++MrBb9A+z46rLD4VqGM7Tm1SQZP8mPk54jJ
-   WE7FNo1XgCCdLrns1iITcD+KoMQnujasbVVj+215hrCHzTB2rySspMGV/
-   twXWTmr8QfOWpM1zq8x4EEp8cTKoSTlMIL6jWA3k6z/trKKOsMh7s0HJk
-   QNoiQ53oQt5ytQmVEyAKSNK+XIPIPyZNhAIJcDR3GdXxT6PsEVEvRD6UG
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532889"
-X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479532889"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:37:01 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730622"
-X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942730622"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:36:52 -0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id e12-20020adfe38c000000b00332fd9b2b52sm1829283wrm.104.2023.11.30.07.33.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Nov 2023 07:33:34 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id D11295FB53;
+	Thu, 30 Nov 2023 15:33:33 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eric Farman <farman@linux.ibm.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	xen-devel@lists.xenproject.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Eric Auger <eric.auger@redhat.com>,
 	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org
-Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Zhiyuan Lv <zhiyuan.lv@intel.com>,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 41/41] hw/i386: Cleanup non-QOM topology support
-Date: Thu, 30 Nov 2023 22:42:03 +0800
-Message-Id: <20231130144203.2307629-42-zhao1.liu@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
-References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
+	Peter Maydell <peter.maydell@linaro.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	qemu-s390x@nongnu.org,
+	Beraldo Leal <bleal@redhat.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 3/3] gitlab: add optional job to run flaky avocado tests
+Date: Thu, 30 Nov 2023 15:33:33 +0000
+Message-Id: <20231130153333.2424775-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231130153333.2424775-1-alex.bennee@linaro.org>
+References: <20231130153333.2424775-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ULJ/iRBV7Im4
+X-TUID: Xsx2vWbgiMiE
 
-From: Zhao Liu <zhao1.liu@intel.com>
+One problem with flaky tests is they often only fail under CI
+conditions which makes it hard to debug. We add an optional allow_fail
+job so developers can trigger the only the flaky tests in the CI
+environment if they are debugging.
 
-After i386 supports QOM topology, drop original topology logic.
-
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/i386/x86.c | 52 +++++++++++----------------------------------------
- 1 file changed, 11 insertions(+), 41 deletions(-)
+ docs/devel/testing.rst                   | 15 ++++++------
+ .gitlab-ci.d/buildtest.yml               | 30 ++++++++++++++++++++++++
+ tests/avocado/boot_linux.py              |  2 ++
+ tests/avocado/boot_linux_console.py      |  1 +
+ tests/avocado/intel_iommu.py             |  1 +
+ tests/avocado/linux_initrd.py            |  2 ++
+ tests/avocado/machine_aspeed.py          |  2 ++
+ tests/avocado/machine_mips_malta.py      |  2 ++
+ tests/avocado/machine_rx_gdbsim.py       |  2 ++
+ tests/avocado/machine_s390_ccw_virtio.py |  1 +
+ tests/avocado/replay_kernel.py           |  2 ++
+ tests/avocado/reverse_debugging.py       |  2 ++
+ tests/avocado/smmu.py                    |  1 +
+ tests/avocado/tuxrun_baselines.py        |  1 +
+ 14 files changed, 57 insertions(+), 7 deletions(-)
 
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index 99f6c502de43..cba8b806cdb6 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -118,7 +118,8 @@ out:
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 579d1837e0..fec8f06c09 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -1386,17 +1386,18 @@ below:
+   def test(self):
+       do_something()
  
- void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
- {
--    int i;
-+    CPUCore *core;
-+    int i, cpu_index = 0, core_idx = 0;
-     const CPUArchIdList *possible_cpus;
-     MachineState *ms = MACHINE(x86ms);
-     MachineClass *mc = MACHINE_GET_CLASS(x86ms);
-@@ -153,34 +154,17 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
- 
-     possible_cpus = mc->possible_cpu_arch_ids(ms);
- 
--    /*
--     * possible_cpus_qom_granu means the QOM topology support.
--     *
--     * TODO: Drop the "!mc->smp_props.possible_cpus_qom_granu" case when
--     * i386 completes QOM topology support.
--     */
--    if (mc->smp_props.possible_cpus_qom_granu) {
--        CPUCore *core;
--        int cpu_index = 0;
--        int core_idx = 0;
--
--        MACHINE_CORE_FOREACH(ms, core) {
--            for (i = 0; i < core->plugged_threads; i++) {
--                x86_cpu_new(x86ms, possible_cpus->cpus[cpu_index].arch_id,
--                            OBJECT(core), cpu_index, &error_fatal);
--                cpu_index++;
--            }
--
--            if (core->plugged_threads < core->nr_threads) {
--                cpu_index += core->nr_threads - core->plugged_threads;
--            }
--            core_idx++;
-+    MACHINE_CORE_FOREACH(ms, core) {
-+        for (i = 0; i < core->plugged_threads; i++) {
-+            x86_cpu_new(x86ms, possible_cpus->cpus[cpu_index].arch_id,
-+                        OBJECT(core), cpu_index, &error_fatal);
-+            cpu_index++;
-         }
--    } else {
--        for (i = 0; i < ms->smp.cpus; i++) {
--            x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id,
--                        NULL, i, &error_fatal);
++You can also add ``:avocado: tags=flaky`` to the test meta-data so
++only the flaky tests can be run as a group:
 +
-+        if (core->plugged_threads < core->nr_threads) {
-+            cpu_index += core->nr_threads - core->plugged_threads;
-         }
-+        core_idx++;
-     }
- }
++.. code::
++
++   env QEMU_TEST_FLAKY_TESTS=1 ./pyvenv/bin/avocado \
++      run tests/avocado -filter-by-tags=flaky
++
+ Tests should not live in this state forever and should either be fixed
+ or eventually removed. If you move a test into this category please
+ consider raising a bug to track progress towards a fix.
  
-@@ -460,20 +444,6 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-         return;
-     }
- 
--    /*
--     * possible_cpus_qom_granu means the QOM topology support.
--     *
--     * TODO: Drop the "!mc->smp_props.possible_cpus_qom_granu" case when
--     * i386 completes QOM topology support.
--     */
--    if (!mc->smp_props.possible_cpus_qom_granu) {
--        x86_topo_ids_from_apicid(cpu->apic_id, &topo_info, &topo_ids);
--        x86_cpu_assign_topo_id(cpu, &topo_ids, errp);
--        if (*errp) {
--            return;
--        }
--    }
+-To run such tests locally you will need to set the environment
+-variable. For example:
 -
-     if (hyperv_feat_enabled(cpu, HYPERV_FEAT_VPINDEX) &&
-         kvm_enabled() && !kvm_hv_vpindex_settable()) {
-         error_setg(errp, "kernel doesn't allow setting HyperV VP_INDEX");
+-.. code::
+-
+-   env QEMU_TEST_FLAKY_TESTS=1 ./pyvenv/bin/avocado run \
+-      tests/avocado/boot_linux.py:BootLinuxPPC64.test_pseries_tcg
+ 
+ Uninstalling Avocado
+ ~~~~~~~~~~~~~~~~~~~~
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 7f9af83b10..1624518d6c 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -217,6 +217,36 @@ avocado-system-opensuse:
+     MAKE_CHECK_ARGS: check-avocado
+     AVOCADO_TAGS: arch:s390x arch:x86_64 arch:aarch64
+ 
++#
++# Flaky tests. We don't run these by default and they are allow fail
++# but often the CI system is the only way to trigger the failures.
++#
++
++build-system-flaky:
++  extends:
++    - .native_build_job_template
++    - .native_build_artifact_template
++  needs:
++    job: amd64-debian-container
++  variables:
++    IMAGE: debian
++    QEMU_JOB_OPTIONAL: 1
++    TARGETS: arm-softmmu mips64el-softmmu rx-softmmu s390x-softmmu
++      sh4-softmmu x86_64-softmmu 
++    MAKE_CHECK_ARGS: check-build
++
++avocado-system-flaky:
++  extends: .avocado_test_job_template
++  needs:
++    - job: build-system-flaky
++      artifacts: true
++  allow_failure: true
++  variables:
++    IMAGE: debian
++    MAKE_CHECK_ARGS: check-avocado
++    QEMU_JOB_OPTIONAL: 1
++    QEMU_TEST_FLAKY_TESTS: 1
++    AVOCADO_TAGS: flaky
+ 
+ # This jobs explicitly disable TCG (--disable-tcg), KVM is detected by
+ # the configure script. The container doesn't contain Xen headers so
+diff --git a/tests/avocado/boot_linux.py b/tests/avocado/boot_linux.py
+index 9e9773e6e1..7c4769904e 100644
+--- a/tests/avocado/boot_linux.py
++++ b/tests/avocado/boot_linux.py
+@@ -99,6 +99,7 @@ def test_pseries_tcg(self):
+         """
+         :avocado: tags=machine:pseries
+         :avocado: tags=accel:tcg
++        :avocado: tags=flaky
+         """
+         self.require_accelerator("tcg")
+         self.vm.add_args("-accel", "tcg")
+@@ -118,6 +119,7 @@ def test_s390_ccw_virtio_tcg(self):
+         """
+         :avocado: tags=machine:s390-ccw-virtio
+         :avocado: tags=accel:tcg
++        :avocado: tags=flaky
+         """
+         self.require_accelerator("tcg")
+         self.vm.add_args("-accel", "tcg")
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 231b4f68e5..3f0180e1f8 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -1425,6 +1425,7 @@ def test_sh4_r2d(self):
+         """
+         :avocado: tags=arch:sh4
+         :avocado: tags=machine:r2d
++        :avocado: tags=flaky
+         """
+         tar_hash = 'fe06a4fd8ccbf2e27928d64472939d47829d4c7e'
+         self.vm.add_args('-append', 'console=ttySC1')
+diff --git a/tests/avocado/intel_iommu.py b/tests/avocado/intel_iommu.py
+index 2dd11a6346..f04ee1cf9d 100644
+--- a/tests/avocado/intel_iommu.py
++++ b/tests/avocado/intel_iommu.py
+@@ -22,6 +22,7 @@ class IntelIOMMU(LinuxTest):
+     :avocado: tags=machine:q35
+     :avocado: tags=accel:kvm
+     :avocado: tags=intel_iommu
++    :avocado: tags=flaky
+     """
+ 
+     IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
+diff --git a/tests/avocado/linux_initrd.py b/tests/avocado/linux_initrd.py
+index c40a987bd1..aad5b19bd9 100644
+--- a/tests/avocado/linux_initrd.py
++++ b/tests/avocado/linux_initrd.py
+@@ -57,6 +57,8 @@ def test_with_2gib_file_should_exit_error_msg_with_linux_v3_6(self):
+ 
+     def test_with_2gib_file_should_work_with_linux_v4_16(self):
+         """
++        :avocado: tags=flaky
++
+         QEMU has supported up to 4 GiB initrd for recent kernel
+         Expect guest can reach 'Unpacking initramfs...'
+         """
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 258fb50c47..6fa5459a07 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -317,6 +317,7 @@ def test_arm_ast2500_evb_sdk(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:ast2500-evb
++        :avocado: tags=flaky
+         """
+ 
+         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+@@ -336,6 +337,7 @@ def test_arm_ast2600_evb_sdk(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:ast2600-evb
++        :avocado: tags=flaky
+         """
+ 
+         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+diff --git a/tests/avocado/machine_mips_malta.py b/tests/avocado/machine_mips_malta.py
+index 959dcf5602..99bee49e9a 100644
+--- a/tests/avocado/machine_mips_malta.py
++++ b/tests/avocado/machine_mips_malta.py
+@@ -109,6 +109,7 @@ def test_mips_malta_i6400_framebuffer_logo_7cores(self):
+         :avocado: tags=machine:malta
+         :avocado: tags=cpu:I6400
+         :avocado: tags=mips:smp
++        :avocado: tags=flaky
+         """
+         self.do_test_i6400_framebuffer_logo(7)
+ 
+@@ -120,6 +121,7 @@ def test_mips_malta_i6400_framebuffer_logo_8cores(self):
+         :avocado: tags=machine:malta
+         :avocado: tags=cpu:I6400
+         :avocado: tags=mips:smp
++        :avocado: tags=flaky
+         """
+         self.do_test_i6400_framebuffer_logo(8)
+ 
+diff --git a/tests/avocado/machine_rx_gdbsim.py b/tests/avocado/machine_rx_gdbsim.py
+index 350a73fbbb..412a7a5089 100644
+--- a/tests/avocado/machine_rx_gdbsim.py
++++ b/tests/avocado/machine_rx_gdbsim.py
+@@ -31,6 +31,7 @@ def test_uboot(self):
+         :avocado: tags=arch:rx
+         :avocado: tags=machine:gdbsim-r5f562n8
+         :avocado: tags=endian:little
++        :avocado: tags=flaky
+         """
+         uboot_url = ('https://acc.dl.osdn.jp/users/23/23888/u-boot.bin.gz')
+         uboot_hash = '9b78dbd43b40b2526848c0b1ce9de02c24f4dcdb'
+@@ -56,6 +57,7 @@ def test_linux_sash(self):
+         :avocado: tags=arch:rx
+         :avocado: tags=machine:gdbsim-r5f562n7
+         :avocado: tags=endian:little
++        :avocado: tags=flaky
+         """
+         dtb_url = ('https://acc.dl.osdn.jp/users/23/23887/rx-virt.dtb')
+         dtb_hash = '7b4e4e2c71905da44e86ce47adee2210b026ac18'
+diff --git a/tests/avocado/machine_s390_ccw_virtio.py b/tests/avocado/machine_s390_ccw_virtio.py
+index 61e75d8f9e..26e938c9e9 100644
+--- a/tests/avocado/machine_s390_ccw_virtio.py
++++ b/tests/avocado/machine_s390_ccw_virtio.py
+@@ -167,6 +167,7 @@ def test_s390x_fedora(self):
+         :avocado: tags=device:virtio-gpu
+         :avocado: tags=device:virtio-crypto
+         :avocado: tags=device:virtio-net
++        :avocado: tags=flaky
+         """
+ 
+         kernel_url = ('https://archives.fedoraproject.org/pub/archive'
+diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
+index a60f1d1e54..010d7644c2 100644
+--- a/tests/avocado/replay_kernel.py
++++ b/tests/avocado/replay_kernel.py
+@@ -87,6 +87,7 @@ def test_x86_64_pc(self):
+         """
+         :avocado: tags=arch:x86_64
+         :avocado: tags=machine:pc
++        :avocado: tags=flaky
+         """
+         kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
+                       '/linux/releases/29/Everything/x86_64/os/images/pxeboot'
+@@ -185,6 +186,7 @@ def test_arm_cubieboard_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
++        :avocado: tags=flaky
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+                    'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
+index 9a468321e5..4cce5a5598 100644
+--- a/tests/avocado/reverse_debugging.py
++++ b/tests/avocado/reverse_debugging.py
+@@ -255,6 +255,7 @@ def test_ppc64_pseries(self):
+         """
+         :avocado: tags=arch:ppc64
+         :avocado: tags=machine:pseries
++        :avocado: tags=flaky
+         """
+         # SLOF branches back to its entry point, which causes this test
+         # to take the 'hit a breakpoint again' path. That's not a problem,
+@@ -269,6 +270,7 @@ def test_ppc64_powernv(self):
+         """
+         :avocado: tags=arch:ppc64
+         :avocado: tags=machine:powernv
++        :avocado: tags=flaky
+         """
+         self.endian_is_le = False
+         self.reverse_debugging()
+diff --git a/tests/avocado/smmu.py b/tests/avocado/smmu.py
+index 05b34418a5..21ff030ca7 100644
+--- a/tests/avocado/smmu.py
++++ b/tests/avocado/smmu.py
+@@ -22,6 +22,7 @@ class SMMU(LinuxTest):
+     :avocado: tags=machine:virt
+     :avocado: tags=distro:fedora
+     :avocado: tags=smmu
++    :avocado: tags=flaky
+     """
+ 
+     IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
+diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
+index 5f859f4e6f..a936a3b780 100644
+--- a/tests/avocado/tuxrun_baselines.py
++++ b/tests/avocado/tuxrun_baselines.py
+@@ -561,6 +561,7 @@ def test_sh4(self):
+         :avocado: tags=image:zImage
+         :avocado: tags=root:sda
+         :avocado: tags=console:ttySC1
++        :avocado: tags=flaky
+         """
+         sums = { "rootfs.ext4.zst" :
+                  "3592a7a3d5a641e8b9821449e77bc43c9904a56c30d45da0694349cfd86743fd",
 -- 
-2.34.1
+2.39.2

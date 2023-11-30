@@ -1,151 +1,82 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp309315ejb;
-        Thu, 30 Nov 2023 07:26:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH/Fg418q9PUV0RTy9nZbjlBpeoeIj2QkXobnAT33XXOVTExfYC4HGV/75mFgs3T5J7dqRh
-X-Received: by 2002:a05:620a:4894:b0:767:82e8:eb88 with SMTP id ea20-20020a05620a489400b0076782e8eb88mr26200839qkb.7.1701357969549;
-        Thu, 30 Nov 2023 07:26:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701357969; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rYPACskOM+hUOBvdIAjoiOZjkFEtyXGYwzYy4FHEHmY1h0sI/08Ahm8otAquuVOvCc
-         T8pxDg2t4oWObHlhqwRH70opd9TpzlYLNjbL+iCfm+Et1xcGy8K8xb8peymvbbUTys+J
-         1tw/RAf0MUx7zVNt9OgMk70qth0YwINMUXF5u3YHg/G+fQd0Zus5LshxNOsC42iVPJAC
-         4CNaauwqv5qCIYtJ38F/MStwKsB6i/5SmrOip+0SUHcnEG1oUZCkSuDvm/ydYpSLemBM
-         txVkTUtMnfD3M1RX0D7qwhx4WChu6dLs0oT3aGS6EA66IGJMx1frmx4fXTXiP0zzJFCH
-         kS8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Q1sYlCR+h46u7F8BXbMBUaK/bgTyBE5IwIsbR3noZPA=;
-        fh=8FjEjYou3jgeV63mJYcLEmdkH7l2ZkXE1WL0tDpZFUM=;
-        b=AXafjSWDN4gxYejbbAdvzrzD/flFwAA4memwlvQ4GJzXOVnuF0acPyFn6yWXuvP1KK
-         HaGCVbNXnL5rfBO7b/M6eDdC2c6BboUwChS6vXvzoeUAUgx53LUDr+hfX1qtXjgnsWkZ
-         p3u599jgc5XUpuQOxRrAPJnDOPrG7bkfoBImkypTlg0SiV8eEYWn1ZoV7ls5AhSz5h3V
-         N5vBNXqY9Kbu6Y9sJRKEefZm6ySLkse/baH878tSe5sLJ7z6Rndt1pIRNRcUKrXQvF+d
-         z8v2GfErnPXsL99qTBxTr3a7RV0aFOE/ktL2qczaNAMQ/rSSMUa/yVwgqdeca9qbdb7O
-         PI9g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jyifrbv9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id du49-20020a05620a47f100b0077d75093ef3si1136626qkb.606.2023.11.30.07.26.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Nov 2023 07:26:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jyifrbv9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r8iux-00037N-Nj; Thu, 30 Nov 2023 10:25:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r8iuu-00036D-Dw
- for qemu-arm@nongnu.org; Thu, 30 Nov 2023 10:25:29 -0500
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r8iur-0003JI-Sg
- for qemu-arm@nongnu.org; Thu, 30 Nov 2023 10:25:27 -0500
-Received: by mail-oi1-x230.google.com with SMTP id
- 5614622812f47-3b86f3cdca0so604905b6e.3
- for <qemu-arm@nongnu.org>; Thu, 30 Nov 2023 07:25:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701357924; x=1701962724; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Q1sYlCR+h46u7F8BXbMBUaK/bgTyBE5IwIsbR3noZPA=;
- b=Jyifrbv96izDrD/PDQxDMoVBX97eLQBETycHz8DJVw1QZngaPzAXjoAEK089VVkl5k
- zwG8QoZvFwDpb8GrYEjf6VIpeTsFwNRP8fyHHrWBNfidvvJfjEcazm6MNkyJsDECUMv6
- a2DGZi8WpcHPzkI7+kROVnL2PFOej651l9XPU1Y/ioEIOD5fWylKRIKlYwradIGbiKKh
- yZQaigxR/gqrcniWwggAXhHVxfSZrG5Ijh4ybEwdbDYxKT2QxX/qgQbh8V04zBYvvsVg
- POgWW+TQ1ifkMZZ3T6P+JRN8SnLHSQhS01KkRzXo9jed0LwEHuWpu7isdMAUWNgbGlk+
- wGXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701357924; x=1701962724;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Q1sYlCR+h46u7F8BXbMBUaK/bgTyBE5IwIsbR3noZPA=;
- b=X4N1R2pRpU3tnvzlmSa7lQriYU0JVyri1wbBC19xhD3wU7YUfVMZtER9PcZPlyVpzZ
- TBP5mFEyLkVTBYIp25ZIC03zxljQ7dwbV/I4hD7QdXaGrJVrJkyB2CjyKHAi1oziI+uv
- VzfwVmD6BGWTPch1vTMdStS1GSfhg6lxqh3+5mVqtIgvubASa/ArIpQ/+L6PnGGyHofF
- nige+GtusPzycT9PJHdO8FIqN52r5cwxqvrg/KTjNQ4LHUwIXd6lfUY7pqNDob7aXHL7
- vBs7SZtUqPsA/yneN0mAh5C+k2DqgKDvG61c9lSMtMASux5tW/lwHn5K5mASkvxluDDc
- 63Vg==
-X-Gm-Message-State: AOJu0YxIPQg/xuPVpeiBKpRN+31J4HOu928Rhrm+Z06Uy7TaXrOiwsw3
- JcseKvkJyIVdP7lKzxtBhDMo5w==
-X-Received: by 2002:a05:6808:1211:b0:3b8:43fe:96d9 with SMTP id
- a17-20020a056808121100b003b843fe96d9mr31743671oil.35.1701357921497; 
- Thu, 30 Nov 2023 07:25:21 -0800 (PST)
-Received: from ?IPV6:2607:fb90:f2e0:8450:be70:af46:b71a:41bf?
- ([2607:fb90:f2e0:8450:be70:af46:b71a:41bf])
- by smtp.gmail.com with ESMTPSA id
- bf6-20020a056808190600b003a43759b9cdsm207572oib.29.2023.11.30.07.25.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Nov 2023 07:25:21 -0800 (PST)
-Message-ID: <6db88fca-9ca7-4aa7-90ae-0dba182dda0e@linaro.org>
-Date: Thu, 30 Nov 2023 09:25:18 -0600
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id q15-20020adff50f000000b00332eaede976sm1822881wro.86.2023.11.30.07.33.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Nov 2023 07:33:33 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 869325FB4F;
+	Thu, 30 Nov 2023 15:33:33 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eric Farman <farman@linux.ibm.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Eric Auger <eric.auger@redhat.com>,
+	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	qemu-s390x@nongnu.org,
+	Beraldo Leal <bleal@redhat.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Luis Machado <luis.machado@arm.com>
+Subject: [PATCH 1/3] gdbstub: use a better signal when we halt for IO reasons
+Date: Thu, 30 Nov 2023 15:33:31 +0000
+Message-Id: <20231130153333.2424775-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231130153333.2424775-1-alex.bennee@linaro.org>
+References: <20231130153333.2424775-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 0/3] target/arm/tcg: Few non-TCG cleanups
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20231130142519.28417-1-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231130142519.28417-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::230;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x230.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KIaofVhmc2Yq
+X-TUID: IZ1XCvuXpZd7
 
-On 11/30/23 08:25, Philippe Mathieu-Daudé wrote:
-> Few non-TCG cleanups extracted from a bigger rework.
-> 
-> Philippe Mathieu-Daudé (3):
->    target/arm: Restrict TCG specific helpers
->    target/arm: Restrict DC CVAP & DC CVADP instructions to TCG accel
->    target/arm/tcg: Including missing 'exec/exec-all.h' header
-> 
->   target/arm/helper.c            | 60 +++-------------------------------
->   target/arm/tcg/op_helper.c     | 55 +++++++++++++++++++++++++++++++
->   target/arm/tcg/translate-a64.c |  1 +
->   3 files changed, 61 insertions(+), 55 deletions(-)
-> 
+The gdb description GDB_SIGNAL_IO is "I/O possible" and by default gdb
+will try and restart the guest, getting us nowhere. Report
+GDB_SIGNAL_STOP instead which should at least halt the session at the
+failure point.
 
-Series:
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Luis Machado <luis.machado@arm.com>
+Message-Id: <20231123131905.2640498-1-alex.bennee@linaro.org>
+---
+ gdbstub/internals.h | 1 +
+ gdbstub/system.c    | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-
-r~
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 465c24b36e..5c0c725e54 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -24,6 +24,7 @@ enum {
+     GDB_SIGNAL_TRAP = 5,
+     GDB_SIGNAL_ABRT = 6,
+     GDB_SIGNAL_ALRM = 14,
++    GDB_SIGNAL_STOP = 17,
+     GDB_SIGNAL_IO = 23,
+     GDB_SIGNAL_XCPU = 24,
+     GDB_SIGNAL_UNKNOWN = 143
+diff --git a/gdbstub/system.c b/gdbstub/system.c
+index 783ac140b9..83fd452800 100644
+--- a/gdbstub/system.c
++++ b/gdbstub/system.c
+@@ -183,7 +183,7 @@ static void gdb_vm_state_change(void *opaque, bool running, RunState state)
+         break;
+     case RUN_STATE_IO_ERROR:
+         trace_gdbstub_hit_io_error();
+-        ret = GDB_SIGNAL_IO;
++        ret = GDB_SIGNAL_STOP;
+         break;
+     case RUN_STATE_WATCHDOG:
+         trace_gdbstub_hit_watchdog();
+-- 
+2.39.2

@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp269182ejb;
-        Thu, 30 Nov 2023 06:32:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF0R4R+YQyolqdko5KNqe3aw8Bl6JYCxQjjxSL8lLWFYT70wZev2uS+CueRcfPIHvJpG/iv
-X-Received: by 2002:a05:622a:209:b0:41e:29ac:1300 with SMTP id b9-20020a05622a020900b0041e29ac1300mr26618397qtx.27.1701354766185;
-        Thu, 30 Nov 2023 06:32:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354766; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp269315ejb;
+        Thu, 30 Nov 2023 06:32:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGlzUTAAwqYmtR8VA4LqiePFvCT46CnVBD2xrRlZW084JitAla1R5ZPGFhkf/his1g/D2ZR
+X-Received: by 2002:a05:620a:6186:b0:77d:59d9:bc00 with SMTP id or6-20020a05620a618600b0077d59d9bc00mr26947959qkn.69.1701354776440;
+        Thu, 30 Nov 2023 06:32:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354776; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pw/9aTYxRe+5PEyHBJlgJPHCvAk/zBWXOluwT7w+tij6BXNqJR6ctf79kVNQ2nfGG/
-         kgNa92g9oXhNHxNTDZZqp9ekdsyKe3MA053muq+51JFRLVgJlm1kMJFRw11r6FpmIJpE
-         FeYKNDHS9VEuVTAR+MxmXdj+SfJiQgdZ60pcIKPO0aeKfDOaed/AaUaew7zPiPCnt9IR
-         mbALkAX6mZITo3djtQe1tZXMNzAC0r9Pzgla7QpBt2mYTKkdnzQbrCsH+ufXhqSoXFRF
-         e901xMNBLDD7cQ+g5/T7DA9aM3bzuW2Qb8tPDfPDw9BAtLf1+/tRYJQrfE2SXCCWsZTX
-         5p0g==
+        b=svbeh497w0mGkee3aT+kNJWXUDCfhkRbxUAv7JcAV88kWmTrfoiZ5YEYZsykZnXgFa
+         lwf/4hLHr8hQ7RbLdRY2pZCBwh2Vml78F/hzJsl8p2fxqcQObxrSQyCjNeN9z++rcNvL
+         rnvUVqWJDNl9+cKwQtUJ/MI5LHqkmCD9wXi2b8Qqbyp6UqiQ/BDYk1ky6zWYvppshdQQ
+         UiPyx1EoY5LFvHsx4SPnYoin4Yey5ItnTIpINMRNwXS0r1+Rs95nMKeFq+cD6FBLl6Wn
+         Xs08C/eH/IqMdi+ZwnYhpDk85/RBF0ef/R4KAMY4IYYF6b42EHBBmQ9dB9qbXwHIfwl6
+         daXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8fHZmOwnvs/K8ZQ2CmExFFPXoErkUG0bXhl59nNixrE=;
+        bh=mcfNavNIfJF1Jh8YROim1Zq1MWbjYV/5adwJH68M0GU=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=a5xgK7RNKvFMLhfUW2niu6f5miCPZio0zHmwJn6oNmSRSNK6G8hod3ZPV04gFN8A7D
-         UQS8wGmMcMbIMb12xKQ2aXru4CBJA78Qt1Twmb/4a5b8bS+ewsiZWLt+sgIh/CPP4Kl7
-         MSqEm8qh1D3omSEhLOyaBP3ff+rTvVNBu3DvsaEOThZvQIr6zTV8gHtDqasHCF5oCZoj
-         TH9F5HYGrvdYk+i31e9gsux1+4DPCDEqyMxpYL8f1rAyHPt2MGdvQ7koTmw5sJwy5h3e
-         0OaWjTQA5vtN1P6Qxve5BqfNHiTmZ5A1MLwK4Mk3enuTIlgSfuLVntZIuH33mZAk4kTA
-         GHEg==
+        b=QVYG+Dj1amk1KpLllvKyw9SubibKgXRO0k3mVbS4sM0HlF2brcY+nN6tpf82FMBmPf
+         PYJXv7SUl+EWeUK19pzSh2CvRk/xyATRbTGv1/ZcDBed9O68N1a3kTcyugC7BHatzN4L
+         BTcvrIX/2VTMb+63ceaBxecEhB1l47pOKf/l3pVofQUZ+N2e8vZxMxuTVQn03peozdUI
+         JRIcjqwdJILBIoxmEzb3LWCdxECEi6WQOh4MRoZQ2YS1PQyl7LYtuaSMq2KCSzMwT4rN
+         YIDMJ3g3otP+3TEzlRk1cVfNpGbrKOKxe+7WRxXXacEXwg+B7l/KPwa9LLdXXuDwrnAT
+         1Mkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=mZ8qI8ub;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ZrqAURBX;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id v6-20020a05622a130600b00423e77b183fsi1200560qtk.710.2023.11.30.06.32.39
+        by mx.google.com with ESMTPS id f19-20020a37ad13000000b0077da9bb9868si1095369qkm.446.2023.11.30.06.32.55
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:32:46 -0800 (PST)
+        Thu, 30 Nov 2023 06:32:56 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=mZ8qI8ub;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ZrqAURBX;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354765; x=1732890765;
+  t=1701354776; x=1732890776;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=giqm05kbC3tYOPrffoLra7vHI+bWgR59/qNt+YCSQ+8=;
-  b=mZ8qI8ub3MMMskDdP7+C3sRyGHhe3sCp61bSKMM5w726qOPQO93UL0K9
-   4D4dQEX/UigaEkqMbjY2MFz4fzvmPXmjRhcdsoI0Ua7UdjtvcWR5YjgXP
-   q6ejxTVjeSWtOVBnU770FySTrQurqpG1vwwNtzX6e6QkarHtLN2OgYpR1
-   IQp1vEU2JWG4o+QRL/PDty+51XkuAlLAV51Czis1kc1BBMrCmZMi6zSAF
-   WW3zQbHUcShd4de4p9ve+6HmPGXra52WhitZT5BCcTv8n7Js4VDhHHAHw
-   g2qPK1q2uy9s+N2W7D7JdbzM+JRcD6oUQecHC3jqHB8OKp+5ZPqDOtYic
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531665"
+  bh=rj2qhjfojWttufVsjPIiSdC7tmdmcTNlZ7nywO+2iko=;
+  b=ZrqAURBX0AU04eDmngRZe0Tm4HxrshGk39Uniu7fzVwHURWac3W7nAfC
+   Fy9DTnNdsW031zljCZm8FDq1La1xuXA9Uzuz39cJG3hei7upRCwOek11g
+   8nDfQNX5zfffOHvi4wpTe10qsKOdqlHESGsxi0s7TpWwMjZUl7t3ZIE7+
+   tWd8E9bQqEbZF0hiLOAZHJ7ljbosclMaUZpKpr3rhhgzLHd1XozpsT6jv
+   NpnRrhloxKnXBxZM9xm6pKMId5z3+5T/DLjXGhBkVkmH8rxLxet7+uafT
+   GpyYXDoV5xXQmvlMZhOa4JQAl+8IyU6/wtCLlNCiPC3CvZ7n3vHrIcIcF
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531707"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479531665"
+   d="scan'208";a="479531707"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:32:26 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:32:36 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729853"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729870"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942729853"
+   d="scan'208";a="942729870"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:32:17 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:32:26 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,99 +102,169 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 12/41] hw/core/topo: Add helpers to traverse the CPU topology tree
-Date: Thu, 30 Nov 2023 22:41:34 +0800
-Message-Id: <20231130144203.2307629-13-zhao1.liu@linux.intel.com>
+Subject: [RFC 13/41] hw/core/cpu: Convert CPU from general device to topology device
+Date: Thu, 30 Nov 2023 22:41:35 +0800
+Message-Id: <20231130144203.2307629-14-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: bvBnMC3HWWm7
+X-TUID: 8jmjkuKR/P0R
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-The topology devices will be organized as a topology tree. Each topology
-device may have many topology children with lower topology level.
+Convert CPU to topology device then its parent topology devices could
+count the number of CPUs when new CPUs are added into topology tree.
 
-Add the helpers to traverse the CPU topology tree.
+Note since CPUs are created from *_init_cpus() in MachineClass.init() or
+added from hotplug way, it depends on board initialization. Thus CPU
+topology device isn't marked as DEVICE_CATEGORY_CPU_DEF and it will only
+be created after board initialization.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/core/cpu-topo.c         | 41 ++++++++++++++++++++++++++++++++++++++
- include/hw/core/cpu-topo.h | 13 ++++++++++++
- 2 files changed, 54 insertions(+)
+ accel/kvm/kvm-all.c   |  4 ++--
+ hw/core/cpu-common.c  | 25 +++++++++++++++++++++----
+ include/hw/core/cpu.h |  8 ++++++--
+ 3 files changed, 29 insertions(+), 8 deletions(-)
 
-diff --git a/hw/core/cpu-topo.c b/hw/core/cpu-topo.c
-index cba2dc747e74..687a4cc566ec 100644
---- a/hw/core/cpu-topo.c
-+++ b/hw/core/cpu-topo.c
-@@ -318,3 +318,44 @@ static void cpu_topo_register_types(void)
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index e39a810a4e92..2eee3eb95907 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -3953,7 +3953,7 @@ static void query_stats(StatsResultList **result, StatsTarget target,
+         break;
+     case STATS_TARGET_VCPU:
+         add_stats_entry(result, STATS_PROVIDER_KVM,
+-                        cpu->parent_obj.canonical_path,
++                        DEVICE(cpu)->canonical_path,
+                         stats_list);
+         break;
+     default:
+@@ -4045,7 +4045,7 @@ static void query_stats_cb(StatsResultList **result, StatsTarget target,
+         stats_args.names = names;
+         stats_args.errp = errp;
+         CPU_FOREACH(cpu) {
+-            if (!apply_str_list_filter(cpu->parent_obj.canonical_path, targets)) {
++            if (!apply_str_list_filter(DEVICE(cpu)->canonical_path, targets)) {
+                 continue;
+             }
+             query_stats_vcpu(cpu, &stats_args);
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 82dae51a550b..e9ed84ff5386 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -195,6 +195,16 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+ {
+     CPUState *cpu = CPU(dev);
+     Object *machine = qdev_get_machine();
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    /*
++     * The parent topology realize() must be completed before cpu_resume()
++     * where the CPU starts to run.
++     */
++    cc->parent_realize(dev, errp);
++    if (*errp) {
++        return;
++    }
+ 
+     /* qdev_get_machine() can return something that's not TYPE_MACHINE
+      * if this is one of the user-only emulators; in that case there's
+@@ -225,6 +235,7 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+ static void cpu_common_unrealizefn(DeviceState *dev)
+ {
+     CPUState *cpu = CPU(dev);
++    CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+     /* Call the plugin hook before clearing the cpu is fully unrealized */
+     if (tcg_enabled()) {
+@@ -233,6 +244,7 @@ static void cpu_common_unrealizefn(DeviceState *dev)
+ 
+     /* NOTE: latest generic point before the cpu is fully unrealized */
+     cpu_exec_unrealizefn(cpu);
++    cc->parent_unrealize(dev);
  }
  
- type_init(cpu_topo_register_types)
-+
-+static int do_cpu_topo_child_foreach(CPUTopoState *topo,
-+                                     unsigned long *levels,
-+                                     topo_fn fn, void *opaque,
-+                                     bool recurse)
-+{
-+    CPUTopoState *child;
-+    int ret = TOPO_FOREACH_CONTINUE;
-+
-+    QTAILQ_FOREACH(child, &topo->children, sibling) {
-+        if (!levels || (levels && test_bit(CPU_TOPO_LEVEL(child), levels))) {
-+            ret = fn(child, opaque);
-+            if (ret == TOPO_FOREACH_END || ret == TOPO_FOREACH_ERR) {
-+                break;
-+            } else if (ret == TOPO_FOREACH_SIBLING) {
-+                continue;
-+            }
-+        }
-+
-+        if (recurse) {
-+            ret = do_cpu_topo_child_foreach(child, levels, fn, opaque, recurse);
-+            if (ret != TOPO_FOREACH_CONTINUE) {
-+                break;
-+            }
-+        }
-+    }
-+    return ret;
-+}
-+
-+int cpu_topo_child_foreach(CPUTopoState *topo, unsigned long *levels,
-+                           topo_fn fn, void *opaque)
-+{
-+    return do_cpu_topo_child_foreach(topo, levels, fn, opaque, false);
-+}
-+
-+int cpu_topo_child_foreach_recursive(CPUTopoState *topo,
-+                                     unsigned long *levels,
-+                                     topo_fn fn, void *opaque)
-+{
-+    return do_cpu_topo_child_foreach(topo, levels, fn, opaque, true);
-+}
-diff --git a/include/hw/core/cpu-topo.h b/include/hw/core/cpu-topo.h
-index 1ffdb0be6d38..453bacbb558b 100644
---- a/include/hw/core/cpu-topo.h
-+++ b/include/hw/core/cpu-topo.h
-@@ -90,4 +90,17 @@ struct CPUTopoState {
+ static void cpu_common_initfn(Object *obj)
+@@ -275,6 +287,7 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
++    CPUTopoClass *tc = CPU_TOPO_CLASS(klass);
+     CPUClass *k = CPU_CLASS(klass);
  
- #define CPU_TOPO_LEVEL(topo)    (CPU_TOPO_GET_CLASS(topo)->level)
+     k->parse_features = cpu_common_parse_features;
+@@ -282,9 +295,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->has_work = cpu_common_has_work;
+     k->gdb_read_register = cpu_common_gdb_read_register;
+     k->gdb_write_register = cpu_common_gdb_write_register;
+-    set_bit(DEVICE_CATEGORY_CPU, dc->categories);
+-    dc->realize = cpu_common_realizefn;
+-    dc->unrealize = cpu_common_unrealizefn;
+     rc->phases.hold = cpu_common_reset_hold;
+     cpu_class_init_props(dc);
+     /*
+@@ -292,11 +302,18 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+      * IRQs, adding reset handlers, halting non-first CPUs, ...
+      */
+     dc->user_creatable = false;
++    /* CPU is the minimum granularity for hotplug. */
++    dc->hotpluggable = true;
++    device_class_set_parent_realize(dc, cpu_common_realizefn,
++                                    &k->parent_realize);
++    device_class_set_parent_unrealize(dc, cpu_common_unrealizefn,
++                                      &k->parent_unrealize);
++    tc->level = CPU_TOPO_THREAD;
+ }
  
-+#define TOPO_FOREACH_SIBLING         2
-+#define TOPO_FOREACH_END             1
-+#define TOPO_FOREACH_CONTINUE        0
-+#define TOPO_FOREACH_ERR             -1
+ static const TypeInfo cpu_type_info = {
+     .name = TYPE_CPU,
+-    .parent = TYPE_DEVICE,
++    .parent = TYPE_CPU_TOPO,
+     .instance_size = sizeof(CPUState),
+     .instance_init = cpu_common_initfn,
+     .instance_finalize = cpu_common_finalize,
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index c0c8320413e5..a700f7c39140 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -20,6 +20,7 @@
+ #ifndef QEMU_CPU_H
+ #define QEMU_CPU_H
+ 
++#include "hw/core/cpu-topo.h"
+ #include "hw/qdev-core.h"
+ #include "disas/dis-asm.h"
+ #include "exec/cpu-common.h"
+@@ -146,7 +147,7 @@ struct SysemuCPUOps;
+  */
+ struct CPUClass {
+     /*< private >*/
+-    DeviceClass parent_class;
++    CPUTopoClass parent_class;
+     /*< public >*/
+ 
+     ObjectClass *(*class_by_name)(const char *cpu_model);
+@@ -191,6 +192,9 @@ struct CPUClass {
+     int reset_dump_flags;
+     int gdb_num_core_regs;
+     bool gdb_stop_before_watchpoint;
 +
-+typedef int (*topo_fn)(CPUTopoState *topo, void *opaque);
-+
-+int cpu_topo_child_foreach(CPUTopoState *topo, unsigned long *levels,
-+                           topo_fn fn, void *opaque);
-+int cpu_topo_child_foreach_recursive(CPUTopoState *topo,
-+                                     unsigned long *levels,
-+                                     topo_fn fn, void *opaque);
-+
- #endif /* CPU_TOPO_H */
++    DeviceRealize parent_realize;
++    DeviceUnrealize parent_unrealize;
+ };
+ 
+ /*
+@@ -456,7 +460,7 @@ struct qemu_work_item;
+  */
+ struct CPUState {
+     /*< private >*/
+-    DeviceState parent_obj;
++    CPUTopoState parent_obj;
+     /* cache to avoid expensive CPU_GET_CLASS */
+     CPUClass *cc;
+     /*< public >*/
 -- 
 2.34.1

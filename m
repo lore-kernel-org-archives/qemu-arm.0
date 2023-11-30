@@ -1,171 +1,137 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp375381ejb;
-        Thu, 30 Nov 2023 08:57:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH7N7m0qwbe7oSFxb8IdRJ45hCYSjhBL19iU89h5x1kC0FZmxINU2rck1O91L6f0WkwOpbP
-X-Received: by 2002:a05:600c:4e11:b0:40b:4e67:6ab3 with SMTP id b17-20020a05600c4e1100b0040b4e676ab3mr30203wmq.30.1701363424003;
-        Thu, 30 Nov 2023 08:57:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701363423; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MzBBItIkEsK9SzT0meDXrxWhCy/+fw7JIhamQIRC5YHLDrFtzDzu5OEzgQecOlHMWs
-         WnsErv6VBzv6QDvrJbZ2Yp1ikUESnFPaDiH/KG2wUnwSYTafpYKIC5RD2HAlQ3Luy9XD
-         Iam35AwDvzM7DZD3rgegNiJRTMwF117dNiXoK14GxCK7DEPJxYNQVr+LaaRdewXp64yj
-         0Ayv1l33nmiuZlfiljhtmdsTnI80y7tlP8O5/Y6sbu33Co+/tXZGRO+QKYlPiJkiSGBI
-         jCrRqljB90XEFdR0m9y4nPAkLz33s1KUtB/zECro+lAw98WKhuJB+TOff0y+3Huq4big
-         YsQw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date:dkim-signature;
-        bh=KtoN2ZvhcuCaqON5ck8JufGVlPbWB5udZtZepLtMMXU=;
-        fh=7gXdyJLnbE1UuCmRMEXbQum0op1V9WizCRD7WDENq7o=;
-        b=ke+8MLpscjqiSVesRUYwKIZyIamxz0gPu42sUfSmYJ7lO3zWgzAQXci/4BfDp2yWu6
-         KIh1puegke8ZKrxMgMxDvO2IN1IEFLROtBUIvmR2BI8v+AkiZhyxzrtu99I/dpP9bZ2p
-         lii4dj+bEHHgLFfQSk1PfuGVo1anPSq64505bfJoA2xbhM7r7Bct0hevC2PkoxJd8Onk
-         cHWcZzcaA/XqCAI2McFMpGrqZUB7oMm3dcW2wExNKwKOYjHH10oDQLp553s0cKG0MS/1
-         gNhoBY1PIYJWQ92W/wSACX0goB+FeR786xRv4GdUfWSde8dV2XAnuGzQRYXHBDnBttPF
-         p+LA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MDOJlR5C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18-20020adfe392000000b00317849b3de7si832373wrm.195.2023.11.30.08.57.03
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Nov 2023 08:57:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MDOJlR5C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r8kKY-0005QB-Ku; Thu, 30 Nov 2023 11:56:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1r8kKX-0005Pj-1N
- for qemu-devel@nongnu.org; Thu, 30 Nov 2023 11:56:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1r8kKV-0002mR-Mw
- for qemu-devel@nongnu.org; Thu, 30 Nov 2023 11:56:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701363358;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=KtoN2ZvhcuCaqON5ck8JufGVlPbWB5udZtZepLtMMXU=;
- b=MDOJlR5CbzOdtprQ3/zQumI/lsQUC68Fbt1Xh4KnVENfS59yyHnSSMbXnJ3+4ywpR3ZBu8
- PeHORyhSV6ERTyAoVLQhMD3NZ9Pmk81XgXMnxkOp/mjTfZ7GydfmLQGA6VoSQE68KUedU2
- CdXH34dPVByZpIXMAa/0N8SgHR0q2T4=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-52-9RIqJiVpNnqgwLwgPFMNLw-1; Thu, 30 Nov 2023 11:55:56 -0500
-X-MC-Unique: 9RIqJiVpNnqgwLwgPFMNLw-1
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-67a5617dfdaso13011756d6.2
- for <qemu-devel@nongnu.org>; Thu, 30 Nov 2023 08:55:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701363355; x=1701968155;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KtoN2ZvhcuCaqON5ck8JufGVlPbWB5udZtZepLtMMXU=;
- b=FcA2LzpYGhw6jUkhYZnBNJJ5PA/41Y1YBvn/EqhybTzgSxjKSNXdq1ZdijhVZoVdBr
- DkFEVB5CYQzdS81rvUgJGVpvkUDrQQ8AQ3AESfHNwnNr8knv80tVWvbXMZrTLEehO+0m
- 1xRGESF0IphbSuzxcbgm3NJdJrXjkaFDXj88aR3ujjVm0dv6Dz2HKIj5t+61wEiXJtgs
- WZ8ixwc2izHqLifoR0bkJgk9FvBYNPzuHUb1maSArGuF3ps0gos89AzZslqfrODYv9Pw
- NC8eJzSgB8w9q+P7p56XSrBFuXF0brkLx+9a84dy0g3V4Q8WEis6wXtKoQau0K21WXWt
- Ijsg==
-X-Gm-Message-State: AOJu0YxehCg33SD7HhJbJFZl3r2PIAQDXuDVA6dKySH+PNt0w5GKAMtJ
- aWa35b6Eb7CeeqwhRWEeivth8cdWPFhpzSkGs1d0LjXl+vsPXPCh+rmWPtW+dCvAqquKbrqpyf7
- TKnaY82mOf3WPtcg=
-X-Received: by 2002:ad4:5988:0:b0:67a:8873:5f31 with SMTP id
- ek8-20020ad45988000000b0067a88735f31mr1563750qvb.31.1701363355543; 
- Thu, 30 Nov 2023 08:55:55 -0800 (PST)
-X-Received: by 2002:ad4:5988:0:b0:67a:8873:5f31 with SMTP id
- ek8-20020ad45988000000b0067a88735f31mr1563741qvb.31.1701363355342; 
- Thu, 30 Nov 2023 08:55:55 -0800 (PST)
-Received: from rh (p200300c93f306f0016d68197cd5f6027.dip0.t-ipconnect.de.
- [2003:c9:3f30:6f00:16d6:8197:cd5f:6027])
- by smtp.gmail.com with ESMTPSA id
- d22-20020a0caa16000000b0067a17f65a9csm656796qvb.21.2023.11.30.08.55.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Nov 2023 08:55:55 -0800 (PST)
-Date: Thu, 30 Nov 2023 17:55:50 +0100 (CET)
-From: Sebastian Ott <sebott@redhat.com>
-To: Shaoqin Huang <shahuang@redhat.com>
-cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org, 
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v3] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-In-Reply-To: <20231129030827.2657755-1-shahuang@redhat.com>
-Message-ID: <58b1095a-839d-0838-24df-f4cd532233be@redhat.com>
-References: <20231129030827.2657755-1-shahuang@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id n4-20020a05600c3b8400b0040b40468c98sm6211232wms.10.2023.11.30.08.59.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Nov 2023 08:59:56 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 00C9F5FB51;
+	Thu, 30 Nov 2023 16:59:55 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,  Eric Farman <farman@linux.ibm.com>,  Cleber Rosa
+ <crosa@redhat.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,  Wainer
+ dos Santos Moschetta <wainersm@redhat.com>,  Philippe =?utf-8?Q?Mathieu-D?=
+ =?utf-8?Q?aud=C3=A9?=
+ <philmd@linaro.org>,  Yoshinori Sato <ysato@users.sourceforge.jp>,
+  =?utf-8?Q?C=C3=A9dric?=
+ Le Goater <clg@kaod.org>,  Eric Auger <eric.auger@redhat.com>,
+  qemu-arm@nongnu.org,  Halil Pasic <pasic@linux.ibm.com>,  Pavel Dovgalyuk
+ <pavel.dovgaluk@ispras.ru>,  Aurelien Jarno <aurelien@aurel32.net>,
+  qemu-s390x@nongnu.org,  Beraldo Leal <bleal@redhat.com>,  Joel Stanley
+ <joel@jms.id.au>,  Paolo Bonzini <pbonzini@redhat.com>,  Christian
+ Borntraeger <borntraeger@linux.ibm.com>,  Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 2/3] docs/devel: rationalise unstable gitlab tests under
+ FLAKY_TESTS
+In-Reply-To: <CAFEAcA91HawkhdxmQmz-+t1favfWmzJCpgAy6xr_1+AEomEXNg@mail.gmail.com>
+	(Peter Maydell's message of "Thu, 30 Nov 2023 16:40:06 +0000")
+References: <20231130153333.2424775-1-alex.bennee@linaro.org>
+	<20231130153333.2424775-3-alex.bennee@linaro.org>
+	<CAFEAcA91HawkhdxmQmz-+t1favfWmzJCpgAy6xr_1+AEomEXNg@mail.gmail.com>
+User-Agent: mu4e 1.11.25; emacs 29.1
+Date: Thu, 30 Nov 2023 16:59:55 +0000
+Message-ID: <87jzpz6ut0.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vUnmcI/za9/H
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Z7zjur7CKaZq
 
-On Tue, 28 Nov 2023, Shaoqin Huang wrote:
-> +static void kvm_arm_pmu_filter_init(CPUState *cs)
-> +{
-> +    static bool pmu_filter_init = false;
-> +    struct kvm_pmu_event_filter filter;
-> +    struct kvm_device_attr attr = {
-> +        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
-> +        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
-> +        .addr       = (uint64_t)&filter,
-> +    };
-> +    KVMState *kvm_state = cs->kvm_state;
-> +    char *tmp;
-> +    char *str, act;
-> +
-> +    if (!kvm_state->kvm_pmu_filter)
-> +        return;
-> +
-> +    if (kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr)) {
-> +        error_report("The kernel doesn't support the pmu event filter!\n");
-> +        abort();
-> +    }
-> +
-> +    /* The filter only needs to be initialized for 1 vcpu. */
-> +    if (!pmu_filter_init)
-> +        pmu_filter_init = true;
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Imho this is missing an else to bail out. Or the shorter version
+> On Thu, 30 Nov 2023 at 15:33, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+>>
+>> It doesn't make sense to have two classes of flaky tests. While it may
+>> take the constrained environment of CI to trigger failures easily it
+>> doesn't mean they don't occasionally happen on developer machines. As
+>> CI is the gating factor to passing there is no point developers
+>> running the tests locally anyway unless they are trying to fix things.
+>>
+>> While we are at it update the language in the docs to discourage the
+>> QEMU_TEST_FLAKY_TESTS becoming a permanent solution.
+>>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>  docs/devel/testing.rst                   | 31 +++++++++++++++---------
+>>  tests/avocado/boot_linux.py              |  8 +++---
+>>  tests/avocado/boot_linux_console.py      |  5 ++--
+>>  tests/avocado/intel_iommu.py             |  5 ++--
+>>  tests/avocado/linux_initrd.py            |  5 ++--
+>>  tests/avocado/machine_aspeed.py          |  8 +++---
+>>  tests/avocado/machine_mips_malta.py      |  8 +++---
+>>  tests/avocado/machine_rx_gdbsim.py       |  8 +++---
+>>  tests/avocado/machine_s390_ccw_virtio.py |  2 +-
+>>  tests/avocado/replay_kernel.py           |  5 ++--
+>>  tests/avocado/reverse_debugging.py       | 14 +++++++----
+>>  tests/avocado/smmu.py                    |  5 ++--
+>>  tests/avocado/tuxrun_baselines.py        |  4 +--
+>>  13 files changed, 67 insertions(+), 41 deletions(-)
+>>
+>> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+>> index 22218dbedb..579d1837e0 100644
+>> --- a/docs/devel/testing.rst
+>> +++ b/docs/devel/testing.rst
+>> @@ -1371,23 +1371,32 @@ conditions. For example, tests that take longer =
+to execute when QEMU is
+>>  compiled with debug flags. Therefore, the ``AVOCADO_TIMEOUT_EXPECTED`` =
+variable
+>>  has been used to determine whether those tests should run or not.
+>>
+>> -GITLAB_CI
+>> -^^^^^^^^^
+>> -A number of tests are flagged to not run on the GitLab CI. Usually beca=
+use
+>> -they proved to the flaky or there are constraints on the CI environment=
+ which
+>> -would make them fail. If you encounter a similar situation then use that
+>> -variable as shown on the code snippet below to skip the test:
+>> +QEMU_TEST_FLAKY_TESTS
+>> +^^^^^^^^^^^^^^^^^^^^^
+>> +Some tests are not working reliably and thus are disabled by default.
+>> +This includes tests that don't run reliably on GitLab's CI which
+>> +usually expose real issues that are rarely seen on developer machines
+>> +due to the constraints of the CI environment. If you encounter a
+>> +similar situation then mark the test as shown on the code snippet
+>> +below:
+>>
+>>  .. code::
+>>
+>> -  @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+>> +  @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on =
+GitLab')
+>>    def test(self):
+>>        do_something()
+>
+> Can we also say here that when marking a test as flaky:
+>  * we should raise a github issue giving details of what goes wrong
+>  * the URL of that issue should be in a comment above the @skipUnless
+>    line ?
+>
+> That way we have a history of why we disabled the test and we
+> might even manage to fix it some day, in which case we'll know
+> we are able to unmark it as flaky...
 
- 	if (pmu_filter_init)
- 		return;
+Good idea, I'll update.
 
- 	pmu_filter_init = true;
+>
+>> +To run such tests locally you will need to set the environment
+>> +variable. For example:
+>> +
+>> +.. code::
+>> +
+>> +   env QEMU_TEST_FLAKY_TESTS=3D1 ./pyvenv/bin/avocado run \
+>> +      tests/avocado/boot_linux.py:BootLinuxPPC64.test_pseries_tcg
+>
+> The "env" here is unnecessary (assuming a standard Posix shell);
+> "VAR=3Dvalue foo" will run "foo" with VAR set to 'value' only
+> for the duration of that command.
 
-which could also move above the other tests.
+Ahh I habit I've picked up from running a fish shell. Do we want to
+assume everyone's interactive shell is Posix compatible?
 
-Sebastian
+>
+> thanks
+> -- PMM
 
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

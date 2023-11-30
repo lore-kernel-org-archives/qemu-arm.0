@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp267622ejb;
-        Thu, 30 Nov 2023 06:30:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHhjTT6R8fchUoChKPNZwJFwhHbA/bfSFKvk7/TjnsDdHBDu9caOC/kzP1DFn+fngHzmMmL
-X-Received: by 2002:a0c:f808:0:b0:67a:a36:7cff with SMTP id r8-20020a0cf808000000b0067a0a367cffmr22554945qvn.40.1701354654585;
-        Thu, 30 Nov 2023 06:30:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354654; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp268249ejb;
+        Thu, 30 Nov 2023 06:31:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH9my0mPukrg7aRWyylAT4+JZ00Fx3Fh7Fp6rPxd41vD2Eq7oa0HlZYxUdD87nkFLXtNci9
+X-Received: by 2002:a05:622a:309:b0:41e:1a9a:780 with SMTP id q9-20020a05622a030900b0041e1a9a0780mr27311794qtw.66.1701354695009;
+        Thu, 30 Nov 2023 06:31:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354694; cv=none;
         d=google.com; s=arc-20160816;
-        b=l8jMlyxM59ESIK0uRpxety2Ee13RZxJqI+AnZq/7W/1Swi5FrDBmVRkSmWsjD8Dgy8
-         7/3i8YvrE2Yqs0E+LweSFhb0UYI3CQS1fNWK/Y36k+qqwpVEAk0eFABlluD27rOjnHvD
-         DWzXfOHrSzGhQN3HF2InttC+XdLZruQpjA6wUnMBUslxH/cnRXSe8uPyGY7rkuPkDbvJ
-         kagjlrXGrjScz5aZRXTKP8QAyCBtHzj+rDqyt3xGSdhx+cLh8jGlKb3o5bWXOLCfejv1
-         rrPS0bYhpev4Pt5ADXUrncz0vzS/55+A8qgXEx9fTVm0cAx7Gi66jixnV42TK+0ZCl+W
-         gVVg==
+        b=YewkqEJN2vl+u8csxXrUrfZ6va510AU0o7hmE0sgxAsepFFr2z+YhzRB7zXH089KSU
+         J3uOfK4X2tFRwZ4xbuzL1w8Eo/kgbwJy/5gHol7b5VSGDWheANyEyt6TuoeeVzNhb/K/
+         e3VvUY4Gcg675oF6fA6g6heDb6CiqkWMQm8y3AiDB7ozkphDqbjrJPnGSaQ42XVLjDqg
+         SK0dtmfuHNUsJQfD56tJcm1Tiy8mJU/nYJPnQYz/7yjq9IUrZwE1JADd3sqTS+e7ABlk
+         oF5GwYc+5vjWsVAqJ6jXvoteL+/04ElXCC/iZ7eslVr8OnA+9bSpcoX8L51pd93OBuC7
+         CKJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Zlk6YC8xpWCO7VeZ16JtsW/aS23EN62LOIPiqtyPtGk=;
+        bh=y1KluPvB6T6+FK2U/+G/V/aKTIFxa1bokHonKpE74aM=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=UWhxvFBGY+5WnhhyrzfI7HASUFPflHAXgiLoifYwevNIPxGvBn7Idxx/5uUOn44jkz
-         t/1miqyfuwBLsMsDqnqNL4vzxo/Rt3h6M5qcHHWKSVn3wxfO8jhyiK0GZoDjsKp8jFKM
-         11kXvhdW/+k0CvXpje0zH6Kq6UDxOWXZWPgAvCj+CzP5lCVpENpLl5DKTp9WurrKrEZm
-         JOtuRzDz7QjA1PRbA+1GcrVKPE5ukYbKDJ4aVXL01FoDGZMoOQqiiQwZBmolLc6tpuKT
-         MXgLM8fX1zmMA93kcx8DWO0CHF5MovZFlFvaje2oAb9PFt6j+rLrfcJSS9cnzFdUjmy0
-         IB5Q==
+        b=rgOET+d5kaZm8d3iNtfY58GWQ4Ugwna1JkaAZoVrbJYRUOLFYwBxKR3UP65fkiup6f
+         Il1RngFtKT0CSFcheg8ZzqPVZ0Frgz20aCCpZXyUnId4d5dBXLWzWFwpwvFEw0x5OE2l
+         4hsbTiBrE+vznQxMh17FObtKPJ3P+XXtJTHBIkzWfPdDXpvpK7PTEwAzpPGU9D1F5R+v
+         P+bA7yn675Hz7mMRmiE5ni31WCx0Ws5dw/hljU0jgpaU9YjRUyEdATUwE9xP9apIodw5
+         M2szIFimoPs6g6OQt72CLj5O6bd+4Dgv8a6qCRHOyjc6DwDtB0f/cJ6mPcsjJVYFGrpo
+         k0rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=V6UG72gs;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="Kt/2N9Y3";
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id s8-20020a0cf648000000b0067a235052a2si1096576qvm.404.2023.11.30.06.30.53
+        by mx.google.com with ESMTPS id 19-20020ac85913000000b00423e85ef5fasi1182364qty.497.2023.11.30.06.31.33
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:30:54 -0800 (PST)
+        Thu, 30 Nov 2023 06:31:34 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=V6UG72gs;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="Kt/2N9Y3";
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354654; x=1732890654;
+  t=1701354694; x=1732890694;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=LfXluGcV2XSbwSzs1A7j8csA0H78Hr7rImWxVfjhw/E=;
-  b=V6UG72gsbeGYESC94oLSnMkVPRcFWSBkNUTMWl8YiamJ0Eq94IdgTOM3
-   UDr9QsLyRzHbbvwe0bwcorUsJGsh6HKiYt26dpL3ufjfZlX+IlQgFJe4J
-   z2c+Ssl66EGv6eqMoLO48uafxSABwwt3iMG6uh9V4yINF05ob9aiMWwP2
-   uuQHU5ekK8aCw5uyTCrYVIRskRp7siWXhYKWyDatMXliKKZObrcyvoyi6
-   EgdvGrU3cwEgVVfAI9JF1JdNP5LiV1ZkA1InGgNtb58cCqgMrzdHN0bm1
-   qvGpAQtTPz31naWKuW0ERZvlcrlV37lQgps5YFCf9tE6fgk087yu383f2
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479530882"
+  bh=50lNzU4oWEfgKNc9gIKf0MEOC0NyWyVi0AxeNokOwXU=;
+  b=Kt/2N9Y3v/DtmsKN2swIPZRAC9T6INcdp8i6Tk0gM14FtaHo8CQr/Rqk
+   D9iv4V5Hg7c0oQ8c2oSfwTEO59KpfRMsyJa6+SyVkdiT8LHN8DG7YpZ4b
+   0MvuRs6UFWN33dQ2il/EBmNqmhwG/mWWd5wYNEetLUdIOdqPeSOwK925L
+   XVVSnQ5nDPE+Nmk4jEWPbr+m1LbuSzpUGcIQlH4o3XcMiufIAMrNzcqUV
+   jYLg4kZBJ7aYY6PTlY625UxgR3K3DT7dBjGtimW0LN9YNP+Bh/7qm9g+g
+   EWnTEELIeArwyr+2wtBdRDTIbogVddkq4H94QYISEymDv/3nYUzYei284
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479530954"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479530882"
+   d="scan'208";a="479530954"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:30:52 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:31:01 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729606"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729615"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942729606"
+   d="scan'208";a="942729615"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:30:42 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:30:52 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,144 +102,124 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 02/41] qdev: Allow qdev_device_add() to add specific category device
-Date: Thu, 30 Nov 2023 22:41:24 +0800
-Message-Id: <20231130144203.2307629-3-zhao1.liu@linux.intel.com>
+Subject: [RFC 03/41] system: Create base category devices from cli before board initialization
+Date: Thu, 30 Nov 2023 22:41:25 +0800
+Message-Id: <20231130144203.2307629-4-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: YnUJPfk8tA8F
+X-TUID: B/I1yiuEvNmE
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-Topology devices need to be created and realized before board
-initialization.
+Topology devices are required to complete CPU topology building before
+*_init_cpus() in MachineClass.init().
 
-Allow qdev_device_add() to specify category to help create topology
-devices early.
+Add a qemu_create_cli_base_devices() before board initialization to
+help create and realize topology devices from cli early.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/net/virtio-net.c    |  2 +-
- hw/usb/xen-usb.c       |  3 ++-
- include/monitor/qdev.h |  4 ++--
- system/qdev-monitor.c  | 12 ++++++++----
- system/vl.c            |  4 ++--
- 5 files changed, 15 insertions(+), 10 deletions(-)
+ system/vl.c | 51 ++++++++++++++++++++++++++++++++++-----------------
+ 1 file changed, 34 insertions(+), 17 deletions(-)
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 80c56f0cfcf1..fc225049ee30 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -965,7 +965,7 @@ static void failover_add_primary(VirtIONet *n, Error **errp)
-         return;
-     }
- 
--    dev = qdev_device_add_from_qdict(n->primary_opts,
-+    dev = qdev_device_add_from_qdict(n->primary_opts, NULL,
-                                      n->primary_opts_from_json,
-                                      &err);
-     if (err) {
-diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
-index 09ec326aeae5..bc00d47ff021 100644
---- a/hw/usb/xen-usb.c
-+++ b/hw/usb/xen-usb.c
-@@ -766,7 +766,8 @@ static void usbback_portid_add(struct usbback_info *usbif, unsigned port,
-     qdict_put_str(qdict, "hostport", portname);
-     opts = qemu_opts_from_qdict(qemu_find_opts("device"), qdict,
-                                 &error_abort);
--    usbif->ports[port - 1].dev = USB_DEVICE(qdev_device_add(opts, &local_err));
-+    usbif->ports[port - 1].dev = USB_DEVICE(
-+                                     qdev_device_add(opts, NULL, &local_err));
-     if (!usbif->ports[port - 1].dev) {
-         qobject_unref(qdict);
-         xen_pv_printf(&usbif->xendev, 0,
-diff --git a/include/monitor/qdev.h b/include/monitor/qdev.h
-index 1d57bf657794..f5fd6e6c1ffc 100644
---- a/include/monitor/qdev.h
-+++ b/include/monitor/qdev.h
-@@ -8,8 +8,8 @@ void hmp_info_qdm(Monitor *mon, const QDict *qdict);
- void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp);
- 
- int qdev_device_help(QemuOpts *opts);
--DeviceState *qdev_device_add(QemuOpts *opts, Error **errp);
--DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-+DeviceState *qdev_device_add(QemuOpts *opts, long *category, Error **errp);
-+DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
-                                         bool from_json, Error **errp);
- 
- /**
-diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
-index 0f163b2d0310..7ee33a50142a 100644
---- a/system/qdev-monitor.c
-+++ b/system/qdev-monitor.c
-@@ -617,7 +617,7 @@ const char *qdev_set_id(DeviceState *dev, char *id, Error **errp)
-     return prop->name;
- }
- 
--DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-+DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
-                                         bool from_json, Error **errp)
- {
-     ERRP_GUARD();
-@@ -639,6 +639,10 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-         return NULL;
-     }
- 
-+    if (category && !test_bit(*category, dc->categories)) {
-+        return NULL;
-+    }
-+
-     /* find bus */
-     path = qdict_get_try_str(opts, "bus");
-     if (path != NULL) {
-@@ -731,12 +735,12 @@ err_del_dev:
- }
- 
- /* Takes ownership of @opts on success */
--DeviceState *qdev_device_add(QemuOpts *opts, Error **errp)
-+DeviceState *qdev_device_add(QemuOpts *opts, long *category, Error **errp)
- {
-     QDict *qdict = qemu_opts_to_qdict(opts, NULL);
-     DeviceState *ret;
- 
--    ret = qdev_device_add_from_qdict(qdict, false, errp);
-+    ret = qdev_device_add_from_qdict(qdict, category, false, errp);
-     if (ret) {
-         qemu_opts_del(opts);
-     }
-@@ -858,7 +862,7 @@ void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp)
-         qemu_opts_del(opts);
-         return;
-     }
--    dev = qdev_device_add(opts, errp);
-+    dev = qdev_device_add(opts, NULL, errp);
- 
-     /*
-      * Drain all pending RCU callbacks. This is done because
 diff --git a/system/vl.c b/system/vl.c
-index 2bcd9efb9a64..0be155b530b4 100644
+index 0be155b530b4..65add2fb2460 100644
 --- a/system/vl.c
 +++ b/system/vl.c
-@@ -1198,7 +1198,7 @@ static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
+@@ -1197,8 +1197,9 @@ static int device_help_func(void *opaque, QemuOpts *opts, Error **errp)
+ static int device_init_func(void *opaque, QemuOpts *opts, Error **errp)
  {
      DeviceState *dev;
++    long *category = opaque;
  
--    dev = qdev_device_add(opts, errp);
-+    dev = qdev_device_add(opts, NULL, errp);
+-    dev = qdev_device_add(opts, NULL, errp);
++    dev = qdev_device_add(opts, category, errp);
      if (!dev && *errp) {
          error_report_err(*errp);
          return -1;
-@@ -2646,7 +2646,7 @@ static void qemu_create_cli_devices(void)
+@@ -2617,25 +2618,13 @@ static void qemu_init_board(void)
+     realtime_init();
+ }
+ 
+-static void qemu_create_cli_devices(void)
++static void qemu_create_cli_devices(long *category)
+ {
+     DeviceOption *opt;
+ 
+-    soundhw_init();
+-
+-    qemu_opts_foreach(qemu_find_opts("fw_cfg"),
+-                      parse_fw_cfg, fw_cfg_find(), &error_fatal);
+-
+-    /* init USB devices */
+-    if (machine_usb(current_machine)) {
+-        if (foreach_device_config(DEV_USB, usb_parse) < 0)
+-            exit(1);
+-    }
+-
+-    /* init generic devices */
+     rom_set_order_override(FW_CFG_ORDER_OVERRIDE_DEVICE);
+     qemu_opts_foreach(qemu_find_opts("device"),
+-                      device_init_func, NULL, &error_fatal);
++                      device_init_func, category, &error_fatal);
+     QTAILQ_FOREACH(opt, &device_opts, next) {
+         DeviceState *dev;
+         loc_push_restore(&opt->loc);
+@@ -2646,13 +2635,40 @@ static void qemu_create_cli_devices(void)
           * from the start, so call qdev_device_add_from_qdict() directly for
           * now.
           */
--        dev = qdev_device_add_from_qdict(opt->opts, true, &error_fatal);
-+        dev = qdev_device_add_from_qdict(opt->opts, NULL, true, &error_fatal);
+-        dev = qdev_device_add_from_qdict(opt->opts, NULL, true, &error_fatal);
++        dev = qdev_device_add_from_qdict(opt->opts, category,
++                                         true, &error_fatal);
          object_unref(OBJECT(dev));
          loc_pop(&opt->loc);
      }
+     rom_reset_order_override();
+ }
+ 
++static void qemu_create_cli_base_devices(void)
++{
++    long category = DEVICE_CATEGORY_CPU_DEF;
++
++    qemu_opts_foreach(qemu_find_opts("fw_cfg"),
++                      parse_fw_cfg, fw_cfg_find(), &error_fatal);
++
++    /* init CPU topology devices which don't support hotplug. */
++    qemu_create_cli_devices(&category);
++}
++
++static void qemu_create_cli_periphery_devices(void)
++{
++    soundhw_init();
++
++    /* init USB devices */
++    if (machine_usb(current_machine)) {
++        if (foreach_device_config(DEV_USB, usb_parse) < 0) {
++            exit(1);
++        }
++    }
++
++    /* init generic devices */
++    qemu_create_cli_devices(NULL);
++}
++
+ static void qemu_machine_creation_done(void)
+ {
+     MachineState *machine = MACHINE(qdev_get_machine());
+@@ -2701,8 +2717,9 @@ void qmp_x_exit_preconfig(Error **errp)
+         return;
+     }
+ 
++    qemu_create_cli_base_devices();
+     qemu_init_board();
+-    qemu_create_cli_devices();
++    qemu_create_cli_periphery_devices();
+     qemu_machine_creation_done();
+ 
+     if (loadvm) {
 -- 
 2.34.1

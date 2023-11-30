@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp272089ejb;
-        Thu, 30 Nov 2023 06:36:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFHSEOWRicI/a8Kb5/UKCS/4QFqXDmzy4K+rqrOYdaZ2/Vjh62v9O5MblpIN071DG2uB3Dv
-X-Received: by 2002:a05:620a:22ad:b0:77d:896a:cdb7 with SMTP id p13-20020a05620a22ad00b0077d896acdb7mr18163576qkh.33.1701354999752;
-        Thu, 30 Nov 2023 06:36:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354999; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp272119ejb;
+        Thu, 30 Nov 2023 06:36:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFKE02OTaF4hKaspVpl633Xy0nTHqKcOgH+m6iIQpPY6U3qU0QvhKKwdY+TyYTUGchc2Hq0
+X-Received: by 2002:a05:620a:3f4a:b0:77d:d041:a235 with SMTP id ty10-20020a05620a3f4a00b0077dd041a235mr4038746qkn.2.1701355001974;
+        Thu, 30 Nov 2023 06:36:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701355001; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hl4NRIGxMBi9QjzZBuDYL28NvE8R6HtJDzZe07pYjVsrKo9jHZLS7MAwvTWklsEBIY
-         TwmM+R7/uiXaHI3cwe+Zjtx16fGtPR9ntfE7mWSEcrCTv2hyCqNtdHA2yU8e/fWfZF0C
-         HJfiazOeLjyQTn25YKfaSdZ6Y2Me/mhwTggcRSi/v6vNdcKpCgmdTblBJfa8D+3AYRWP
-         vi+InRpZI2M7gkfv9Ku5uOux6LtaK6Y1IA0NNUX34l/h+vmngJBJC0RqyG6C8QgdvMxO
-         5IO7XAK6z10F9/DMfAVCNl4m3yY/4rgivzdca8QMauAcKMdYq/ZjV1+ty33S28L8wLYn
-         kFuw==
+        b=H+KOsk8v0FnXWD6WBgtveKEZb6o1ZEbZFCe9sbw/OLQ324qmpCokUB76NqOAlu7KXH
+         o/65YxsLORP/jxc8HtADWP8waC6QZI0iFgMrt8zswZiQW20QNuhqQDiOS0frP7qHYRUB
+         UDZeStQ1ix5DNm0mUM5grOtR0QB8AuBexDUzlVwqcSUikmzsDGZab9PrCE1vA2+GWWGg
+         LMHLeS90BJn6TIfS4eP94lmlltIFzf/43//3/I66/hiXhw+ycwr3A7m59z47a5TzpNTH
+         /vEEtcv+Pz41dZG6om6Jsi4mHV4KPTGCOF4xMynYt7uhSGsvG9qlFjOxRwWc2JmWvFjJ
+         8ouQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hOnyms6Xj8MOjTu0mLFaVeWY9Z44zv8sVi+MLJlL2D8=;
+        bh=p12BeQhcmKSgnkJJJQ3ZDkbTcZ5sKuxF+tV1dPV93lU=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=Xm3J5Dg94Kp2SspDsV5aRhf3XRn4w1GU2xh9N+Dk7FpDJTI97fpw1MX99469Is2bJn
-         shkuLEudxNcFVaxwRzVIhV8tJr86baOACpA1pe6HjIUrd7huiUX+gJF8K6yu4qlaypLI
-         J8h1Re4wXIu93LuNHSsuTDoOuZfvz0QgYYKuQDNNZ56Z0NcPa4uslu9s5tQZPGw1Kmdz
-         CCxX14Ug0tA4PdbbNUjOnfgXxg9SW87N2fK6RtxHcsIlMPU9KDw3z8uCGKPC0h7YEJh0
-         ozSACAjoRDu+gmCFb6Pb4OAXJC0bnb5p6OegSlp+5hYEE7xvzNFEirGXRmIuqsO6ST+y
-         44Kw==
+        b=uJmh9YDeaX8bTaiCM86fx/H275l9JyyBiIV/Zq4ExJ1FArPJGLsL677CEVth7yHHos
+         StdnQS/9HSk+ztxM9AFxeiXjd6uiFKk7Jcx4woinbffNHLeCJnHVscTZnKM+NLf8ZoXT
+         vAJT8O33ZFqOJEZ7Yf2PcCQIuYGw8uidw4Py6lVvK6uQmUVPHqr6MafyfwnZwI9s5WsN
+         tqDT9pMiOIj+WHenUALbL0D//8Red9ZAIGL+NfeOy99uh+JWbMH9SROa3Wt55eZhSlSX
+         FhrFnXNiZgJqZ332UqnknLIW017BOAAPY5Xn/Kx/nYXeVRCdQAfW6h++zSyCq7vGDYzj
+         nYxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=JvALYlC7;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=GzrGyTaL;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id p9-20020a05620a22a900b0077a2952b4a0si1103260qkh.696.2023.11.30.06.36.38
+        by mx.google.com with ESMTPS id p9-20020a05620a22a900b0077a2952b4a0si1103260qkh.696.2023.11.30.06.36.40
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:36:39 -0800 (PST)
+        Thu, 30 Nov 2023 06:36:41 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=JvALYlC7;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=GzrGyTaL;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354999; x=1732890999;
+  t=1701355001; x=1732891001;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=xvYlraOGB3zayUrWIK0PscKH2Ic2SrgqXJLGzTM1XXI=;
-  b=JvALYlC72IcjOZ3ZWf/3ovn6exdWPh00GuwbuBEtSugd+bIr0N/E4TNV
-   YObAkqUxh7thq9HbZmP40RucmiW2mN1DZAaaAF2dlmp8cG7sXHmiioe9Q
-   S5sODGQKsT5Y43HZeW5kV1SmNTXISyDHmGhH7iAI2Uz4P5ptb9hw2CdOA
-   LD65pZoj2ARjwy4tC4Q5L83ZP6SCjy+xw1epSL8Cq84Sgq8t/3oa/aPTm
-   iCc7X4ThaITLWmx3BgnN46A2Ir+TNCAmx6PkAPoj+o9teeXcJOoJzKHDh
-   meRDUnPs0A56xPM2UYhlGVQ+b0L8QbnBZtF3Y3scGcyn1VXGCcZja9Etj
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532646"
+  bh=lndGadsp6lchipVix45sBuugJYcXf54DoIQPmPepLjo=;
+  b=GzrGyTaLqfRnzGQrsf/BD6vINM25sd3CLD90mm0Pvn4Rciw3A19rJv9K
+   B1+Kj5YA6/hmvhMULRLwbpa2d14M7JEEsBzJT6V3rJthAHEbLB/U9wIAx
+   zCSYp1ejvEy0IjRGntzpTtksuZVGDzOYSvS8RbksD3R+K9yX9Qj2Cot0b
+   PIggf4JvPRbDPuC5aEmNNsJYeGC3bl815LqL4qLHWwkcznayqwmcb086e
+   d/lOHxTYA+LYtibSo74jOuf8ARm/Ivfcm1duiXhs203ZuT6TiI6iQ0dn3
+   UGtJf/1xOsa5H11lOY8zO91+SNlfQb1Xr+Y+Axb2bIw8N6w7jDiE2njhR
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532689"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479532646"
+   d="scan'208";a="479532689"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:36:16 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:36:24 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730473"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730506"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942730473"
+   d="scan'208";a="942730506"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:36:03 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:36:14 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,64 +102,69 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 36/41] hw/i386: Allow x86_cpu_new() to specify parent for new CPU
-Date: Thu, 30 Nov 2023 22:41:58 +0800
-Message-Id: <20231130144203.2307629-37-zhao1.liu@linux.intel.com>
+Subject: [RFC 37/41] hw/i386: Allow i386 to create new CPUs from QOM topology
+Date: Thu, 30 Nov 2023 22:41:59 +0800
+Message-Id: <20231130144203.2307629-38-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: gko98yc0a0Q0
+X-TUID: O4ALG0ie+Tob
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-For QOM topology, CPU should be inserted under its parent core.
+For QOM topology, maximum number of CPUs and the number of plugged CPUs
+are configured in core level.
 
-Extend x86_cpu_new() to allow caller to specify topology parent.
+Iterate through all the cpu-cores to determine how many CPUs should be
+created in each cpu-core.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/i386/x86.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ hw/i386/x86.c | 32 +++++++++++++++++++++++++++++---
+ 1 file changed, 29 insertions(+), 3 deletions(-)
 
 diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index d9293846db64..3c99f4c3ab51 100644
+index 3c99f4c3ab51..febffed92a83 100644
 --- a/hw/i386/x86.c
 +++ b/hw/i386/x86.c
-@@ -94,15 +94,22 @@ uint32_t x86_cpu_apic_id_from_index(X86MachineState *x86ms,
-     return x86_apicid_from_cpu_idx(&topo_info, cpu_index);
- }
- 
--
- static void x86_cpu_new(X86MachineState *x86ms, int64_t apic_id,
--                        Error **errp)
-+                        Object *parent, int index, Error **errp)
- {
--    Object *cpu = object_new(MACHINE(x86ms)->cpu_type);
-+    const char *cpu_type = MACHINE(x86ms)->cpu_type;
-+    Object *cpu = object_new(cpu_type);
- 
-     if (!object_property_set_uint(cpu, "apic-id", apic_id, errp)) {
-         goto out;
+@@ -152,9 +152,35 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
      }
-+
-+    if (parent) {
-+        char *name = g_strdup_printf("%s[%d]", cpu_type, index);
-+        object_property_add_child(parent, name, cpu);
-+        g_free(name);
-+    }
-+
-     qdev_realize(DEVICE(cpu), NULL, errp);
- 
- out:
-@@ -146,7 +153,8 @@ void x86_cpus_init(X86MachineState *x86ms, int default_cpu_version)
  
      possible_cpus = mc->possible_cpu_arch_ids(ms);
-     for (i = 0; i < ms->smp.cpus; i++) {
--        x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id, &error_fatal);
-+        x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id,
-+                    NULL, i, &error_fatal);
+-    for (i = 0; i < ms->smp.cpus; i++) {
+-        x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id,
+-                    NULL, i, &error_fatal);
++
++    /*
++     * possible_cpus_qom_granu means the QOM topology support.
++     *
++     * TODO: Drop the "!mc->smp_props.possible_cpus_qom_granu" case when
++     * i386 completes QOM topology support.
++     */
++    if (mc->smp_props.possible_cpus_qom_granu) {
++        CPUCore *core;
++        int cpu_index = 0;
++        int core_idx = 0;
++
++        MACHINE_CORE_FOREACH(ms, core) {
++            for (i = 0; i < core->plugged_threads; i++) {
++                x86_cpu_new(x86ms, possible_cpus->cpus[cpu_index].arch_id,
++                            OBJECT(core), cpu_index, &error_fatal);
++                cpu_index++;
++            }
++
++            if (core->plugged_threads < core->nr_threads) {
++                cpu_index += core->nr_threads - core->plugged_threads;
++            }
++            core_idx++;
++        }
++    } else {
++        for (i = 0; i < ms->smp.cpus; i++) {
++            x86_cpu_new(x86ms, possible_cpus->cpus[i].arch_id,
++                        NULL, i, &error_fatal);
++        }
      }
  }
  

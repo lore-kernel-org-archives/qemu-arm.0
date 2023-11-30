@@ -1,266 +1,252 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp78685ejb;
-        Thu, 30 Nov 2023 01:02:46 -0800 (PST)
-X-Received: by 2002:a17:906:340c:b0:9be:fc31:8cd3 with SMTP id c12-20020a170906340c00b009befc318cd3mr13977195ejb.17.1701334966577;
-        Thu, 30 Nov 2023 01:02:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701334966; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp85897ejb;
+        Thu, 30 Nov 2023 01:15:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IERowCfyF+HfjWfvwowDAlAifNmDKWZUUFWOnHfNuq7KC8Fkp//6hoLHzarry4Pa0c4anMU
+X-Received: by 2002:a5e:c111:0:b0:7b3:6e29:c32f with SMTP id v17-20020a5ec111000000b007b36e29c32fmr18185052iol.18.1701335734236;
+        Thu, 30 Nov 2023 01:15:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701335734; cv=none;
         d=google.com; s=arc-20160816;
-        b=gH34CibLBFn0kKKtBmGCUK+0KlYFPQmHWJG8r6XYbn4p/1Nn3kkgoJMMEpouot4wIn
-         4G6xZa2afYk3w4tYIWgtc1k47lFPcD2NE2hzfkA3RDYzuLQNhBKhQA5QgS2OAP02Lc8h
-         ptBi47zzjxMc7yelVyODdZ2qCN2tAcyHbjjKOe0ipQO3r71Wivru4+kxZl6Ic97FMFmi
-         cLF27Xy0GL7zgUWAbNR4uCRMAMMo26AXBpVYRJwHQmUD8sqCIuMCvxZWZdHFJ/yLNh4C
-         44LM/b++AairjwQoid6CUpgUy1zvIDrAHu0KzUtmi6krOaIM44jJAqzKOpntMgKtn9xf
-         nlLQ==
+        b=pmZN/aHIGMpKuPiyq61kHCw+oGKD0EdpP6By7+y+n2AAMXR6j5mS8ozvqQW2Vzu48V
+         nEL+i4kdniDa5tywId+fHbfuiSl0P8D5z91BMWdb8KpoRCg5DmxcBbJ58ySq3/pWQUO8
+         juZJ2pRDQVvxtGBWtXLNcMxPYFlD/BBNPydP2On/PVjCzc/TG9GfRMqmKafEItfAUXeP
+         97aIBefPR/TMTssy249fG/00KN+X7XMW7Rbd41dsnSioUzAi+Bsv7u9ui0QP6qvL6/KY
+         hUU4VLAV5kO6zBIJs/MT6j43quz5ksFZlmSRhtcSNfqI5kiG9OkkwgbRVNFj+qE80Vbz
+         F4OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:dkim-signature;
-        bh=dN4djQbmfKsEe8CLCBFczIlNB941kshQNbbSdFz94k8=;
-        fh=6nAzhoAXHalBwI7r8HAtyQCRHjPDlLK1O6MeKCMUP9E=;
-        b=LzMJGBXlfvT20zEyrqJZAocyQnCNcSQagflnat9EE1nPJDPtCC1bCV7gy9TOr7r5WJ
-         ipgSBgYAdkJaVVhGleeS4VkEH1P56ZtjCJuGSyr8q/ZJPTi6nA44oiKGdCQrZBcI4zUp
-         iWnNg89zYfCwHmUHcp52RVjbyZEPymvYxltCRGypLSrQx5hJdclXR+8UbU05Vn2zcrOF
-         pgyr1wmbORPuNIqN1xrIryB9kCoMxL673DLVNnRn5CqcvGMYYrbD/h8lXFrF063qFEaa
-         gURA0kyIrs36FAtnRqlAD1muaYgBkWWo128ZXxWnL00gKKU1HN+9aCOQZJiI/LstIuGk
-         fDXQ==
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=U7xhAiXyHYuSi9gQG6NV4CZH7LkdmdMB32D1ZOqvl2E=;
+        fh=ZU6DfU29xeuOc7RZGcw8SL/6sVo72owshW2QysJLysc=;
+        b=fG4/P4aK3h+efIbf4n/oks8V1fVBJfZUH7eeSTqvSJggnydTuuwJshyWhHN1dlLTz2
+         dqRgFyNkE1HNjbheL7BzWU8vAGA6qNJTIZ+YMTzozU2mdv1JUFDugHwL3o3C6DMr/jeZ
+         oKUvhqxkL83wEv9r6l5boiVEZvPoFovK/AcIGl9wFX78sidBu5Mm+Du3Ye7LD84aV+hH
+         RCedjNhF7mGdg2QRIWLJ3m1p9i4K4PP8ztmsq/qCsrjxPyADkAyu100kVJRz9NZYYgWY
+         PliX8otmZXieyNWJjx7PlrW5jXW//zZDrO0fzRtbooccaW6hCy1Zt8TJ1hhr8SQcsvnS
+         RTFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="eM/1YFYE";
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <xadimgnik@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 8-20020a170906208800b00a1631f4cfc5sor257985ejq.19.2023.11.30.01.02.46
-        (Google Transport Security);
-        Thu, 30 Nov 2023 01:02:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=AFBdvLer;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id dj16-20020a0566384b9000b004664b9040c2si311628jab.144.2023.11.30.01.15.33
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 30 Nov 2023 01:15:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="eM/1YFYE";
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701334966; x=1701939766; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dN4djQbmfKsEe8CLCBFczIlNB941kshQNbbSdFz94k8=;
-        b=eM/1YFYENV4wPWrFvIPfBZIWPNwMOTlsQXgmgDNobp5kiVNJcpvpPQ4JFmi2vCEkZl
-         PXQFGWT1ILR5GxStgEHhCSbU90CLiWxL5/z5krbsNQqw2xqijQ6b3FQYOWyQTEbCA7oU
-         BbWmr3q24I6UhAIu3YrUKY04gS21Y0Vbk2RQRK+5spHFSV0hNPNhfTaNxTogTssE1GYe
-         hL8bqwe2jSNQkIRcEED5bI5vWVqMVfQuelAtURDMvnZfbKA8EWL5U3hClOMzxavUPlVV
-         QU7Njt2g14p+EqcucfPbJ+4+folQk3gOZ/aOZ2R8aetxh3ORJ6mAFXLVBJt4Tu68GFC8
-         hMgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701334966; x=1701939766;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dN4djQbmfKsEe8CLCBFczIlNB941kshQNbbSdFz94k8=;
-        b=nRVAgGZQjVM9zLZ8qyL/Sxc1hM2mK9qQiL2B5X1kZ9VTlQvxZpbPOANdm5LewPDqwC
-         XDDNFpiWQTvkuQWF/l9OQmK4YVxEZ0J10harL8kLpYbkfnMIUorqQozbqmbTyI+LsuL7
-         LgLdsdhrNcqvlv87Bq76tWM2BVhDAYioNlRRM2nNYEq2y/mduRacHP5MflO6jbp3MepF
-         w5Nss5Cy/YoptToWdwxyH/p0KFfw3xs+elWUA15w8EGwzpWFhadLj/4kRVn7rtkf4QkE
-         2hpls25zkZfic/S3fuG5+GWqbjc53dfJNm5+8qk0QpMOdEkO+ngXA1keDx2VUMa/M6tj
-         v9EQ==
-X-Gm-Message-State: AOJu0YwdKkIwORrWXS5BbmB3Agz86uje3DjR11W3xoTipCgSIx4/exUS
-	yANe7lNmhUz8Vmft/KWz6tWbGc2JI83ml3yN
-X-Google-Smtp-Source: AGHT+IFWDX/X0nWdxhdyMpsksBOB56iEUyavnywH1etzd7/ikoUkMx/LzyNe6VUbK0/ejUiaEoLuHw==
-X-Received: by 2002:a17:906:abd2:b0:a18:91d0:c58e with SMTP id kq18-20020a170906abd200b00a1891d0c58emr796124ejb.52.1701334965913;
-        Thu, 30 Nov 2023 01:02:45 -0800 (PST)
-Return-Path: <xadimgnik@gmail.com>
-Received: from [192.168.17.21] (54-240-197-238.amazon.com. [54.240.197.238])
-        by smtp.gmail.com with ESMTPSA id i16-20020a1709061cd000b009b2cc87b8c3sm438680ejh.52.2023.11.30.01.02.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Nov 2023 01:02:45 -0800 (PST)
-From: Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: Paul Durrant <paul@xen.org>
-Message-ID: <9b189639-5477-4c48-98a2-3ba55417de01@xen.org>
-Date: Thu, 30 Nov 2023 09:02:35 +0000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: paul@xen.org
-Subject: Re: [PATCH 1/6] system/cpus: rename qemu_mutex_lock_iothread() to
- qemu_bql_lock()
-Content-Language: en-US
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=AFBdvLer;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AU9CGNH028745;
+	Thu, 30 Nov 2023 09:14:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=U7xhAiXyHYuSi9gQG6NV4CZH7LkdmdMB32D1ZOqvl2E=;
+ b=AFBdvLera18ekFkEDQHSP2T6dJxy+bj5KW/jP/YQxVyqxiHZtRJXrFC+0ntnZuEvmXMl
+ m5dICRXNSmZBGnKsumVVgBAXL4u0dvBZSGFJjow9KpyWozqGgg5e9lV0A3P1DYtJVgrk
+ fcIAkenPAVxLZnA9inVImJFIRFFp84wVlNbQYq2PnUAD94eddwhNGmE1WEaq+o2oyHt9
+ lgMLNpBO+kPcZI3+78p/T21qN3TQ/nrMIklnS6Mpmi8dOIQR1PJPM8F2VFLdmlnmfYt2
+ bNGyD4yvrGuvjfFw260kty5gkpovVQqcuoFvY7pDIz7evPqH74AstesKRFOdN22SZxO6 0g== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3upqj4g6aa-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 30 Nov 2023 09:14:59 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3AU9CSaJ029884;
+	Thu, 30 Nov 2023 09:14:58 GMT
+Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3upqj4g684-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 30 Nov 2023 09:14:58 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 3AU7Xw9A030737;
+	Thu, 30 Nov 2023 09:14:55 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3uku8tddeu-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 30 Nov 2023 09:14:55 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 3AU9EqIJ6750948
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 30 Nov 2023 09:14:52 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 6F14720043;
+	Thu, 30 Nov 2023 09:14:52 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 2CB6D20040;
+	Thu, 30 Nov 2023 09:14:48 +0000 (GMT)
+Received: from [9.171.32.92] (unknown [9.171.32.92])
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Thu, 30 Nov 2023 09:14:48 +0000 (GMT)
+Message-ID: <c3ac8d9c2b9d611e84672436ce1a96aedcaacf5e.camel@linux.ibm.com>
+Subject: Re: [PATCH 2/6] qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to
+ QEMU_BQL_LOCK_GUARD
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
- Fabiano Rosas <farosas@suse.de>, qemu-s390x@nongnu.org,
- Song Gao <gaosong@loongson.cn>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Hyman Huang <yong.huang@smartx.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Artyom Tarasenko
- <atar4qemu@gmail.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Jagannathan Raman <jag.raman@oracle.com>, Juan Quintela
- <quintela@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, qemu-arm@nongnu.org, Jason Wang
- <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Huacai Chen <chenhuacai@kernel.org>,
- Fam Zheng <fam@euphon.net>, Eric Blake <eblake@redhat.com>,
- Jiri Slaby <jslaby@suse.cz>, Alexander Graf <agraf@csgraf.de>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Weiwei Li <liwei1518@gmail.com>,
- Eric Farman <farman@linux.ibm.com>, Stafford Horne <shorne@gmail.com>,
- David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Reinoud Zandijk <reinoud@netbsd.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- John Snow <jsnow@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- Michael Roth <michael.roth@amd.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Bin Meng <bin.meng@windriver.com>,
- Stefano Stabellini <sstabellini@kernel.org>, kvm@vger.kernel.org,
- qemu-block@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Peter Xu <peterx@redhat.com>, Anthony Perard <anthony.perard@citrix.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Leonardo Bras
- <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>
+        Fabiano Rosas
+ <farosas@suse.de>, qemu-s390x@nongnu.org,
+        Song Gao <gaosong@loongson.cn>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Thomas Huth
+ <thuth@redhat.com>, Hyman Huang <yong.huang@smartx.com>,
+        Marcelo Tosatti
+ <mtosatti@redhat.com>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Andrey
+ Smirnov <andrew.smirnov@gmail.com>,
+        Peter Maydell
+ <peter.maydell@linaro.org>,
+        Kevin Wolf <kwolf@redhat.com>, Artyom Tarasenko
+ <atar4qemu@gmail.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Alistair Francis
+ <alistair.francis@wdc.com>,
+        Paul Durrant <paul@xen.org>, Jagannathan Raman
+ <jag.raman@oracle.com>,
+        Juan Quintela <quintela@redhat.com>,
+        "Daniel P."
+ =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>,
+        qemu-arm@nongnu.org, Jason Wang <jasowang@redhat.com>,
+        Gerd Hoffmann <kraxel@redhat.com>, Hanna
+ Reitz <hreitz@redhat.com>,
+        =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
+ <marcandre.lureau@redhat.com>,
+        BALATON Zoltan <balaton@eik.bme.hu>,
+        Daniel
+ Henrique Barboza <danielhb413@gmail.com>,
+        Elena Ufimtseva
+ <elena.ufimtseva@oracle.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Hailiang Zhang <zhanghailiang@xfusion.com>,
+        Roman Bolshakov
+ <rbolshakov@ddn.com>,
+        Huacai Chen <chenhuacai@kernel.org>, Fam Zheng
+ <fam@euphon.net>,
+        Eric Blake <eblake@redhat.com>, Jiri Slaby
+ <jslaby@suse.cz>,
+        Alexander Graf <agraf@csgraf.de>,
+        Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,
+        Weiwei Li <liwei1518@gmail.com>, Eric
+ Farman <farman@linux.ibm.com>,
+        Stafford Horne <shorne@gmail.com>,
+        David
+ Hildenbrand <david@redhat.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org,
+        Pavel
+ Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org,
+        Aleksandar
+ Rikalo <aleksandar.rikalo@syrmia.com>,
+        John Snow <jsnow@redhat.com>,
+        Sunil
+ Muthuswamy <sunilmut@microsoft.com>,
+        Michael Roth <michael.roth@amd.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        "Michael S. Tsirkin"
+ <mst@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Bin
+ Meng <bin.meng@windriver.com>,
+        Stefano Stabellini <sstabellini@kernel.org>, kvm@vger.kernel.org,
+        qemu-block@nongnu.org, Halil Pasic
+ <pasic@linux.ibm.com>,
+        Peter Xu <peterx@redhat.com>,
+        Anthony Perard
+ <anthony.perard@citrix.com>,
+        Harsh Prateek Bora <harshpb@linux.ibm.com>,
+        Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Eduardo Habkost
+ <eduardo@habkost.net>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+        =?ISO-8859-1?Q?C=E9dric?=
+ Le Goater <clg@kaod.org>,
+        qemu-ppc@nongnu.org,
+        Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        Christian Borntraeger
+ <borntraeger@linux.ibm.com>,
+        Akihiko Odaki <akihiko.odaki@daynix.com>,
+        Leonardo Bras <leobras@redhat.com>,
+        Nicholas Piggin <npiggin@gmail.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>
+Date: Thu, 30 Nov 2023 10:14:47 +0100
+In-Reply-To: <20231129212625.1051502-3-stefanha@redhat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-2-stefanha@redhat.com>
-Organization: Xen Project
-In-Reply-To: <20231129212625.1051502-2-stefanha@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: //ClXQ106qpx
+	 <20231129212625.1051502-3-stefanha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+MIME-Version: 1.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: k5g-bglZZ81amYqAueJeLCJOKEKz4uGW
+X-Proofpoint-GUID: hyHEB3c1P1gBAyQsdYHk4l82Bt-Qzmtx
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-30_07,2023-11-29_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ malwarescore=0 mlxscore=0 bulkscore=0 adultscore=0 spamscore=0
+ lowpriorityscore=0 suspectscore=0 clxscore=1011 impostorscore=0
+ phishscore=0 mlxlogscore=810 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2311060000 definitions=main-2311300068
+X-TUID: wTluOKuVtLYA
 
-On 29/11/2023 21:26, Stefan Hajnoczi wrote:
-> The Big QEMU Lock (BQL) has many names and they are confusing. The
-> actual QemuMutex variable is called qemu_global_mutex but it's commonly
-> referred to as the BQL in discussions and some code comments. The
-> locking APIs, however, are called qemu_mutex_lock_iothread() and
-> qemu_mutex_unlock_iothread().
-> 
-> The "iothread" name is historic and comes from when the main thread was
-> split into into KVM vcpu threads and the "iothread" (now called the main
-> loop thread). I have contributed to the confusion myself by introducing
-> a separate --object iothread, a separate concept unrelated to the BQL.
-> 
-> The "iothread" name is no longer appropriate for the BQL. Rename the
-> locking APIs to:
-> - void qemu_bql_lock(void)
-> - void qemu_bql_unlock(void)
-> - bool qemu_bql_locked(void)
-> 
-> There are more APIs with "iothread" in their names. Subsequent patches
-> will rename them. There are also comments and documentation that will be
-> updated in later patches.
-> 
+On Wed, 2023-11-29 at 16:26 -0500, Stefan Hajnoczi wrote:
+> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
+> instead, it is already widely used and unambiguous.
+>=20
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->   include/block/aio-wait.h             |   2 +-
->   include/qemu/main-loop.h             |  26 +++---
->   accel/accel-blocker.c                |  10 +--
->   accel/dummy-cpus.c                   |   8 +-
->   accel/hvf/hvf-accel-ops.c            |   4 +-
->   accel/kvm/kvm-accel-ops.c            |   4 +-
->   accel/kvm/kvm-all.c                  |  22 ++---
->   accel/tcg/cpu-exec.c                 |  26 +++---
->   accel/tcg/cputlb.c                   |  16 ++--
->   accel/tcg/tcg-accel-ops-icount.c     |   4 +-
->   accel/tcg/tcg-accel-ops-mttcg.c      |  12 +--
->   accel/tcg/tcg-accel-ops-rr.c         |  14 ++--
->   accel/tcg/tcg-accel-ops.c            |   2 +-
->   accel/tcg/translate-all.c            |   2 +-
->   cpu-common.c                         |   4 +-
->   dump/dump.c                          |   4 +-
->   hw/core/cpu-common.c                 |   6 +-
->   hw/i386/intel_iommu.c                |   6 +-
->   hw/i386/kvm/xen_evtchn.c             |  16 ++--
->   hw/i386/kvm/xen_overlay.c            |   2 +-
->   hw/i386/kvm/xen_xenstore.c           |   2 +-
->   hw/intc/arm_gicv3_cpuif.c            |   2 +-
->   hw/intc/s390_flic.c                  |  18 ++--
->   hw/misc/edu.c                        |   4 +-
->   hw/misc/imx6_src.c                   |   2 +-
->   hw/misc/imx7_src.c                   |   2 +-
->   hw/net/xen_nic.c                     |   8 +-
->   hw/ppc/pegasos2.c                    |   2 +-
->   hw/ppc/ppc.c                         |   4 +-
->   hw/ppc/spapr.c                       |   2 +-
->   hw/ppc/spapr_rng.c                   |   4 +-
->   hw/ppc/spapr_softmmu.c               |   4 +-
->   hw/remote/mpqemu-link.c              |  12 +--
->   hw/remote/vfio-user-obj.c            |   2 +-
->   hw/s390x/s390-skeys.c                |   2 +-
->   migration/block-dirty-bitmap.c       |   4 +-
->   migration/block.c                    |  16 ++--
->   migration/colo.c                     |  60 +++++++-------
->   migration/dirtyrate.c                |  12 +--
->   migration/migration.c                |  52 ++++++------
->   migration/ram.c                      |  12 +--
->   replay/replay-internal.c             |   2 +-
->   semihosting/console.c                |   8 +-
->   stubs/iothread-lock.c                |   6 +-
->   system/cpu-throttle.c                |   4 +-
->   system/cpus.c                        |  28 +++----
->   system/dirtylimit.c                  |   4 +-
->   system/memory.c                      |   2 +-
->   system/physmem.c                     |   8 +-
->   system/runstate.c                    |   2 +-
->   system/watchpoint.c                  |   4 +-
->   target/arm/arm-powerctl.c            |  14 ++--
->   target/arm/helper.c                  |   4 +-
->   target/arm/hvf/hvf.c                 |   8 +-
->   target/arm/kvm.c                     |   4 +-
->   target/arm/kvm64.c                   |   4 +-
->   target/arm/ptw.c                     |   6 +-
->   target/arm/tcg/helper-a64.c          |   8 +-
->   target/arm/tcg/m_helper.c            |   4 +-
->   target/arm/tcg/op_helper.c           |  24 +++---
->   target/arm/tcg/psci.c                |   2 +-
->   target/hppa/int_helper.c             |   8 +-
->   target/i386/hvf/hvf.c                |   6 +-
->   target/i386/kvm/hyperv.c             |   4 +-
->   target/i386/kvm/kvm.c                |  28 +++----
->   target/i386/kvm/xen-emu.c            |  14 ++--
->   target/i386/nvmm/nvmm-accel-ops.c    |   4 +-
->   target/i386/nvmm/nvmm-all.c          |  20 ++---
->   target/i386/tcg/sysemu/fpu_helper.c  |   6 +-
->   target/i386/tcg/sysemu/misc_helper.c |   4 +-
->   target/i386/whpx/whpx-accel-ops.c    |   4 +-
->   target/i386/whpx/whpx-all.c          |  24 +++---
->   target/loongarch/csr_helper.c        |   4 +-
->   target/mips/kvm.c                    |   4 +-
->   target/mips/tcg/sysemu/cp0_helper.c  |   4 +-
->   target/openrisc/sys_helper.c         |  16 ++--
->   target/ppc/excp_helper.c             |  12 +--
->   target/ppc/kvm.c                     |   4 +-
->   target/ppc/misc_helper.c             |   8 +-
->   target/ppc/timebase_helper.c         |   8 +-
->   target/s390x/kvm/kvm.c               |   4 +-
->   target/s390x/tcg/misc_helper.c       | 118 +++++++++++++--------------
->   target/sparc/int32_helper.c          |   2 +-
->   target/sparc/int64_helper.c          |   6 +-
->   target/sparc/win_helper.c            |  20 ++---
->   target/xtensa/exc_helper.c           |   8 +-
->   ui/spice-core.c                      |   4 +-
->   util/async.c                         |   2 +-
->   util/main-loop.c                     |   8 +-
->   util/rcu.c                           |  14 ++--
->   audio/coreaudio.m                    |   4 +-
->   memory_ldst.c.inc                    |  18 ++--
->   target/i386/hvf/README.md            |   2 +-
->   ui/cocoa.m                           |  50 ++++++------
->   94 files changed, 502 insertions(+), 502 deletions(-)
-> 
+> =C2=A0include/qemu/main-loop.h=C2=A0 | 20 ++++++++++----------
+> =C2=A0hw/i386/kvm/xen_evtchn.c=C2=A0 | 14 +++++++-------
+> =C2=A0hw/i386/kvm/xen_gnttab.c=C2=A0 |=C2=A0 2 +-
+> =C2=A0hw/mips/mips_int.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0 2 +-
+> =C2=A0hw/ppc/ppc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 2 +-
+> =C2=A0target/i386/kvm/xen-emu.c |=C2=A0 2 +-
+> =C2=A0target/ppc/excp_helper.c=C2=A0 |=C2=A0 2 +-
+> =C2=A0target/ppc/helper_regs.c=C2=A0 |=C2=A0 2 +-
+> =C2=A0target/riscv/cpu_helper.c |=C2=A0 4 ++--
+> =C2=A09 files changed, 25 insertions(+), 25 deletions(-)
+>=20
+> diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
+> index d6f75e57bd..0b6a3e4824 100644
+> --- a/include/qemu/main-loop.h
+> +++ b/include/qemu/main-loop.h
+> @@ -344,13 +344,13 @@ void qemu_bql_lock_impl(const char *file, int
+> line);
+> =C2=A0void qemu_bql_unlock(void);
+> =C2=A0
+> =C2=A0/**
+> - * QEMU_IOTHREAD_LOCK_GUARD
+> + * QEMU_BQL_LOCK_GUARD
+> =C2=A0 *
+> - * Wrap a block of code in a conditional
+> qemu_mutex_{lock,unlock}_iothread.
+> + * Wrap a block of code in a conditional qemu_bql_{lock,unlock}.
+> =C2=A0 */
+> -typedef struct IOThreadLockAuto IOThreadLockAuto;
+> +typedef struct BQLLockAuto BQLLockAuto;
+> =C2=A0
+> -static inline IOThreadLockAuto *qemu_iothread_auto_lock(const char
+> *file,
+> +static inline BQLLockAuto *qemu_bql_auto_lock(const char *file,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int line)
 
-Reviewed-by: Paul Durrant <paul@xen.org>
+The padding is not correct anymore.
+
+Other than this:
+
+Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>

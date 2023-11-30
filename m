@@ -1,51 +1,82 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp215931ejb;
-        Thu, 30 Nov 2023 05:21:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF5DE7vUBBKVEm8q25jHcRJsFD2YOm4M3MilS8CRnyaJxHIP2OXBOV/rOf6+zNVFUX4lvdM
-X-Received: by 2002:a17:902:ce88:b0:1d0:220b:f24d with SMTP id f8-20020a170902ce8800b001d0220bf24dmr5188188plg.31.1701350471895;
-        Thu, 30 Nov 2023 05:21:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701350471; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp227597ejb;
+        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
+X-Received: by 2002:a05:600c:458d:b0:40b:3fc7:c88a with SMTP id r13-20020a05600c458d00b0040b3fc7c88amr10440628wmo.39.1701351413608;
+        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701351413; cv=none;
         d=google.com; s=arc-20160816;
-        b=iXrM4Zj/5m9EtZlQBPFvwBpmrsgU3vSAdjuXU8rtaZ/85U+y1FHfYlhnTkHJWPbCcf
-         v/mBe1T2FdYVnhmJj6iQiAA0UZxG6DbUEXTjs/JI9VLyc9jTerRWysvmKGfdY7+NXIxs
-         p6mLUBpgG+XkRP9qSoEmMVUjnmUbgCyGJFFtnRsGtbYTn5pfApwzK7U+8aw0Ki2p3J48
-         IDift8JBR2+TirSEkpWQxn+57J2kxsC3QLkNrIbWxBJGt/CoR+aJM6LJhhA1GHLuNeDl
-         4l1HN2cwDm/1uRW6o3SYwbzTP/4/Cl/WzQu/LrYzrFwBaR+NG/sEt/nSkTc7rfO1m297
-         ebbQ==
+        b=DCMeDm62gL6myytj0uqDm2ENExDZby+yXxGtJD+aiQVREx88M7hetvGaQ0eDofqBNW
+         QequNBijQXOAixbzmNrgzLzBvp4X/sZSq7acgmN2W4/mwvyIEueQOm1QEOhYaCjc4gcW
+         Vk7T8/vR7Wt4oNgNGhoWCxW+FG/fKeZ27o5E/MFcsE9Dijqgnh0s8yUXxDW3UWFywrSG
+         5IABOqHXXm39fUc+MK5S5JKSL1ZrrPP6PJ0ND2Jik6ACZjl3VK5YboyMWAgHf/2+Ry6r
+         gvMDcRNBNvaA4WKALdpY/ao0l1VIPJm6qjT9Z5Jzcss2edi5I0CNLZNh1pKomDOom8wr
+         PUoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=wHSDFM4hN86iYi7TnWJUmg7D5J+4PM70pmexxIgHETY=;
-        fh=hh8iIRMxqXsh63WkBtfgaM2/SexR5FVGIZD55sUt70c=;
-        b=kez/7ZyT0e/COahAJMOH7o2Ud66CsrMnDRmEaXyUFDE0cwgEUNtmce1EtP5X280hLR
-         48B9NVgHA6E8EZvB7sTKCBh2uOlEPtwYrBP19OLB59z545M6gBcHh+kXanO6ubplEr8d
-         Pq/82CalbImZPjOvMwZ/rEysB9tnhk0wnOVoTU/H39r31SHnNV5pxBHAEzPby505yuVR
-         knHT0QGzcS8nuSy0ohaUkcY8/vHBRSxWDbUy8qnWrAHDYovgTkCPrZZsWeou6KUGYeKs
-         MfZkY2xRFfdFqzVTKYX/GXKHEC818UW2ebo6ZW8/l+698YP20HyO5rFyRYv6CwzkHNC4
-         2NhQ==
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=92EVl/+kAJa1w133nRnLwZdbri5T/CNJ+OGiI8vF/hc=;
+        fh=vq6TxQ5MccBz0KdbaF/bByy5+pn65vn8lyysQZcYMWE=;
+        b=xug9h0SgWydooJ7JRjyd5keLvqFV+EZ1fzBgAVW32/T81basQeP1l2jgMKoccM5Uzd
+         4rmDFGP0HUAClmd2rbV6X44H6f1lfjEZVRDk/lprPt7GL0cthe8z9/4jMAv/Nr0+9Ss+
+         MHA0b9vgrWzMd6SwVyQn8r2w13GLa2bZfXrXm8jXcubevgGxft5jkSTwmLD6t+ak22RG
+         FCw4l4iZtVTL+uAGyXewzjoUYnmM+kd8ktH07vo86c4mCLg+/3VucdqGMdwmxabZSSyy
+         wKprBWhtYktDWi2ivgvMNhmQqCg48safg9QJV6B7Q6f0pJI8CZYMhROzkvnt/gO1VJHd
+         QzbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of srs0=tvl7=hl=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=Tvl7=HL=kaod.org=clg@ozlabs.org"
-Return-Path: <SRS0=Tvl7=HL=kaod.org=clg@ozlabs.org>
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
-        by mx.google.com with ESMTPS id b7-20020a170902650700b001cfb1dab1b0si1108859plk.589.2023.11.30.05.21.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 05:21:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=tvl7=hl=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
+       dkim=pass header.i=@linaro.org header.s=google header.b="jG/M/p+p";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p5-20020a5d4585000000b00332ee157193sor283521wrq.7.2023.11.30.05.36.53
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of srs0=tvl7=hl=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=Tvl7=HL=kaod.org=clg@ozlabs.org"
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4SgxfF5JRqz4xhb;
-	Fri,  1 Dec 2023 00:21:09 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4SgxdL6Gzsz4xdZ;
-	Fri,  1 Dec 2023 00:20:22 +1100 (AEDT)
-Message-ID: <d9164828-22fb-42a4-b71a-5ae14a172d50@kaod.org>
-Date: Thu, 30 Nov 2023 14:20:17 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b="jG/M/p+p";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1701351413; x=1701956213; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=92EVl/+kAJa1w133nRnLwZdbri5T/CNJ+OGiI8vF/hc=;
+        b=jG/M/p+pTn+xSjPZ1SD6IipJK7AQ4R8QpL2tKk3ipT74YNrExwe3qK35XiftchbaoJ
+         LUQZlUOLa9uFHZlgwzsZGD6hF4ihv7yqPTmxTEpQcTJfFgi027vjqbdfUFo0qUnDQWlJ
+         b6TUNuA2XjelP4tDYhNiQv49U1Glbk1jtgg3kdKQzAEzxiAr3HTxvTe1HJHSUBfOlTso
+         9LXvQ9eC35eCluNvCanFmHCwXDRuHdQtsvYrVbiIyopImND5cTIy73VN4g1gBAh3ASaz
+         3nH5Y+T+42WcXHnM6javDIQyoo/ZU1ugtM1EsF8wYJfIwNkXVs+k+rEk+ywxulSTwtEI
+         MxaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701351413; x=1701956213;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=92EVl/+kAJa1w133nRnLwZdbri5T/CNJ+OGiI8vF/hc=;
+        b=Xn7Lr2Xycc8TS6+NeFZ52u/YyjX8BXJ3MVaaMjVPbZ1tG/TO4mIZjo0zL5I+VpLYxR
+         8Sq1L7Xe6COj/4vKJ4XZ3bSyhQF3EL9NGyNWV/NDfahSgBMKnlcmOlTryxWOmhJMg6XT
+         7dbFBGSXbzmrv1SVfrxXf75ppvgsLV0Bs4Kg8ev/vEc1wQm+hzlD8bfvlx2omsyXkES7
+         JpCv03xROfdWmt1ws8ncLwa8Js2E82wd/D/y4XrMVu1LrBf5nEENL9mrrzzSJlEwnEum
+         +gH7USWN9cSh32SuvHbGhLXO76i3w7ExZaXEvi9AHj/PQ2+KoneQK2uY6YUkSD+8gnqr
+         Hh/g==
+X-Gm-Message-State: AOJu0YyfBfKxUeg2sPOW6wji3TOAD0cb24R4m1zhwB+vPtYpjA1Nid1i
+	CM+TD0ryfG2lr6MC/T+p8bWPMe5T
+X-Google-Smtp-Source: AGHT+IGzSdlgStqYT69A2lG9GtqRHhg/niB3F/uN4GK5nKt0eJM7WDiZHR6K1BVe40jqO9Y7LSdkKg==
+X-Received: by 2002:a05:6000:10c:b0:333:2be6:860e with SMTP id o12-20020a056000010c00b003332be6860emr238311wrx.71.1701351413167;
+        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (sev93-h02-176-184-17-116.dsl.sta.abo.bbox.fr. [176.184.17.116])
+        by smtp.gmail.com with ESMTPSA id i2-20020adffc02000000b003330aede2aesm1559297wrr.112.2023.11.30.05.36.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Nov 2023 05:36:52 -0800 (PST)
+Message-ID: <ce8686c9-ac4b-4bb8-a181-af536ef1097a@linaro.org>
+Date: Thu, 30 Nov 2023 14:36:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] system/cpus: rename qemu_global_mutex to qemu_bql
+Subject: Re: [PATCH 3/6] qemu/main-loop: rename qemu_cond_wait_iothread() to
+ qemu_cond_wait_bql()
 Content-Language: en-US
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -94,32 +125,33 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
  Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- qemu-ppc@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
  Akihiko Odaki <akihiko.odaki@daynix.com>, Leonardo Bras
  <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-5-stefanha@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231129212625.1051502-5-stefanha@redhat.com>
+ <20231129212625.1051502-4-stefanha@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231129212625.1051502-4-stefanha@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: wlOY02UDv58R
+X-TUID: v3leVcjPxMsS
 
-On 11/29/23 22:26, Stefan Hajnoczi wrote:
-> The APIs using qemu_global_mutex now follow the Big QEMU Lock (BQL)
-> nomenclature. It's a little strange that the actual QemuMutex variable
-> that embodies the BQL is called qemu_global_mutex instead of qemu_bql.
-> Rename it for consistency.
+On 29/11/23 22:26, Stefan Hajnoczi wrote:
+> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
+> instead, it is already widely used and unambiguous.
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>   include/qemu/main-loop.h          | 8 ++++----
+>   accel/tcg/tcg-accel-ops-rr.c      | 4 ++--
+>   hw/display/virtio-gpu.c           | 2 +-
+>   hw/ppc/spapr_events.c             | 2 +-
+>   system/cpu-throttle.c             | 2 +-
+>   system/cpus.c                     | 4 ++--
+>   target/i386/nvmm/nvmm-accel-ops.c | 2 +-
+>   target/i386/whpx/whpx-accel-ops.c | 2 +-
+>   8 files changed, 13 insertions(+), 13 deletions(-)
 
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp269659ejb;
-        Thu, 30 Nov 2023 06:33:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHmN0VgLqsPwfzqhH/uTxWgO5kuyijhXnGa2S8KcvL/P0LXvMo5v0lTRjLg7IXDow3C0ZiH
-X-Received: by 2002:ad4:4147:0:b0:67a:2426:260f with SMTP id z7-20020ad44147000000b0067a2426260fmr19345968qvp.53.1701354805330;
-        Thu, 30 Nov 2023 06:33:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354805; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp269781ejb;
+        Thu, 30 Nov 2023 06:33:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG2K24D1ovQ+vtsge7vrM7yAS8d1l9NLg5D7JUKxkNVylFU573MXoHzRsW+uvpD7DPExBaZ
+X-Received: by 2002:a05:622a:1344:b0:423:781d:1601 with SMTP id w4-20020a05622a134400b00423781d1601mr30214539qtk.2.1701354815333;
+        Thu, 30 Nov 2023 06:33:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354815; cv=none;
         d=google.com; s=arc-20160816;
-        b=LHKzhMU+DGNt9pNdbiUCUxSC0kmgMVeb01WzFHtYoCITX0IyvEqGtt8xKGGtrefi2P
-         S3QSKll6lKsPzODsFq67xETLLaIxdQajcFuoS5YRK+TeDiRJWD9n4br8TDoy2T7r5gVr
-         N0nRQzcVS3CzkVyZPzyVKI7vN7Scchx4SXFcmfpaPaKlFB3dikgm4XWu8WgG1E7EQV+a
-         qtcY0XJ3dgOKu5HPR/0MZ+SSYEwvpm2nQQxIuRDOkY/glm3JJyY++tIcd1yq3spDgQrJ
-         +ONUbWknHFttRKjvGoUWPjB64+jDnuYmYOEVEhkQzD35lXGERlk0S3M2KzS+PrPjCCMy
-         1vMQ==
+        b=CaVlKZA6lWk9P2+HsYJG6zsls4od/YUQcWbN0DIQm6b4bqZDwpwW2zme6XtP8SwDwW
+         egPC5nbMrxne3AyOkdMHbXJfi5GCn9c8Pmb0g9ZlC/fc0IRDEtugJ5sEbSZ7EA2adhSL
+         o7RtEsw1kl7pl257EsNzXr0U62G+B73PrAzyB2cM6fG7tLDfpzxLYy3PeCRNNVDNmP6h
+         jzGZRF/QUDXYgbDSyXeXGxIMPlaJZIOOAWuWCi1fqLK4Kcyj2MzWXxsZvS15vWRH9p8t
+         uYga7XZ9xOwKuWgQuIbdho60SH3uyJK/ws86XOKwDE0Nnc8BpaJ0Peps2+5vHaEZYznx
+         wGjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CB8r908FrVkxhhiNR7F1JCgcJK/De5QasJhN4UUCdLo=;
+        bh=otuZ4A5xDRsI78OdpqRPKGDlC2fBE+12r54swMx5LHw=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=k+WATXzluBXBKjb0sle2ctZhTTQnCKvQImnFGpx0f8WzKfdL+UGG95gE+LxDkVn93k
-         z+2bs8fFKmEJH5OOkkLhGUEuUvfjbiTgOlwwP6+EmtQV7ovsAQ5PfhVyvVNaxkzCLzGs
-         pYhP4F71V2mLq16n6MMoEVuW5MKZtqjv0n9OfYkdT9v7HpM/M/jnTuKijuubemVh2N6X
-         ApXejOlsx5dAjTCWWG60FFc10JSQOQvw4ZmI14ZjtHyjnftFQrulDx+J68dpoEgbQERx
-         XaqVDQaWQAhyJ3hgB68X2u1/nGxl2dZKD7xprcCeOIFd2R1lQNHofdtsq91H3sZLZBpX
-         Oy6A==
+        b=nDN3DAUHC7T9LFoBLfZwg8xvBVmjWUhwqRjzbsbZqFjj1OdKm1HeKGjDwSdLD0kkte
+         ivlFd/4T9PuY7817KQRSgh+G1cplGGv19l09zziEYpbwPNwgRd+JzDxg5V+3PcK5gIEk
+         YVR5cPld14b09U2h8s/a7RhUMqhcVH0q9LUUZZs1MyXydidwqbrq35osmTwJL/nVAu0T
+         4hVpw1/8rvIG3t2zayzC331OOrDIqCIeZBpPaQnk9TzZ6qdzULCDIZutZiqMN4NhLb0m
+         AdWNLG/b5ZCjLNuevf3RMhDkRZaAPGYSTdC9gNWnmOmKyBb+a0u+dylNQD/VZIkwxQOw
+         tq5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BibP+vG+;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=EUdqHfiN;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id x18-20020a0cfe12000000b0067a8e21aa5fsi307546qvr.573.2023.11.30.06.33.24
+        by mx.google.com with ESMTPS id b13-20020a05622a020d00b004237122a898si1221091qtx.512.2023.11.30.06.33.34
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:33:25 -0800 (PST)
+        Thu, 30 Nov 2023 06:33:35 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=BibP+vG+;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=EUdqHfiN;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354805; x=1732890805;
+  t=1701354815; x=1732890815;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=UIctuJN57ff0cGtb6JQuQGzOnsVqrF/BvG/lcB/CLAU=;
-  b=BibP+vG+yTKo1aVZHkGErA51pYvbsfiKOJyvHmetA4Urf/T/oYqHECgb
-   1bxE+9u7MS9cB6O8QjEXW626eZNVZAklOhwkQbdpSKrXsBXaUB3BeH9gC
-   /zi/WZn8IvNXQDkx417mS6aznz50A1HhauewTQz1Wr9KIK5d/8anvSx9H
-   AlKvnv2F/dVv5ngNgWMZpEHh2vQzJ4ZX6Oq2Oao6UFFtx1Q9PqBm0/Hxg
-   50VlICOD6t6SCALEjDH3ZUmces5sOnxQJpBCA1PZPogdwgXxi/MdD6/QO
-   G8O7WBT4qiB0IQEVLUx6+Yo/kcqTeBrgw0/ckvpO91f5H/YGnEkeUt+h6
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531933"
+  bh=ewTMs2u73zZUV2zJblGAkkri1EYaJm+RSs7ZWl9w7g8=;
+  b=EUdqHfiNb81QTjztEqMn97WsYXV9fIS1XSOYkotObz72W8cHULesx/Wb
+   ScN9ZoyP3MIgzjjca0Q7d4JI6M3mgh8qOXoEcDQxevss0WI+ei2kqJXe+
+   tIdgm5c4zAcXubSWqgeZb+Q0JtGhgaJGvJapyEKN5IacrUJMcq0mgIc9t
+   2VTpMPM+1a2PK55L1npZK5qJ9GU4qElzcvBWb/EFHwdgNrFeOQJJKgVqN
+   PzOCxFA8tidVZbXTdAKdDRvXmCuqbBvAUJoJywNyrk5OJOmYd+jmR37aK
+   EL1WtTmo0fxtuvsRGHyGlBXxZbI9yvBUlBv8aLSAVVnLExTZX7wS1Z93F
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531973"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479531933"
+   d="scan'208";a="479531973"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:33:22 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:33:32 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730016"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730032"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942730016"
+   d="scan'208";a="942730032"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:33:13 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:33:22 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,191 +102,150 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 18/41] hw/cpu/cluster: Rename CPUClusterState to CPUCluster
-Date: Thu, 30 Nov 2023 22:41:40 +0800
-Message-Id: <20231130144203.2307629-19-zhao1.liu@linux.intel.com>
+Subject: [RFC 19/41] hw/cpu/cluster: Wrap TCG related ops and props into CONFIG_TCG
+Date: Thu, 30 Nov 2023 22:41:41 +0800
+Message-Id: <20231130144203.2307629-20-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: QA9AYSHY9cAp
+X-TUID: zk0Mdon/XSgZ
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-To keep the same naming style as cpu-core, rename CPUClusterState to
-CPUCluster.
+Currenltly cpu-cluster is used in TCG case to organize CPUs with the
+same type.
+
+Wrap 2 things into TCG specific areas:
+1. cluster-id:
+
+   The cluster-id in TCG case is global, since no higher topology
+   container above cluster. To simplify the logic of cluster topology
+   in virtualization, move the cluster-id into CONFIG_TCG, then it
+   won't be exposed in cli.
+
+2. CPU collection in realize():
+
+   In TCG case, the CPUs are added into cluster directly via child<>
+   property. But in virtualization case, the CPU topology will be built
+   via topology tree. Thus, wrap CPU collection as the TCG operation.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- gdbstub/system.c                   | 2 +-
- hw/cpu/cluster.c                   | 8 ++++----
- include/hw/arm/armsse.h            | 2 +-
- include/hw/arm/xlnx-versal.h       | 4 ++--
- include/hw/arm/xlnx-zynqmp.h       | 4 ++--
- include/hw/cpu/cluster.h           | 6 +++---
- include/hw/riscv/microchip_pfsoc.h | 4 ++--
- include/hw/riscv/sifive_u.h        | 4 ++--
- 8 files changed, 17 insertions(+), 17 deletions(-)
+ hw/cpu/cluster.c         | 30 +++++++++++++++++++++++++-----
+ include/hw/cpu/cluster.h | 22 ++++++++++++++++++++--
+ 2 files changed, 45 insertions(+), 7 deletions(-)
 
-diff --git a/gdbstub/system.c b/gdbstub/system.c
-index 783ac140b982..1c0b55d3ebe7 100644
---- a/gdbstub/system.c
-+++ b/gdbstub/system.c
-@@ -277,7 +277,7 @@ static int find_cpu_clusters(Object *child, void *opaque)
- {
-     if (object_dynamic_cast(child, TYPE_CPU_CLUSTER)) {
-         GDBState *s = (GDBState *) opaque;
--        CPUClusterState *cluster = CPU_CLUSTER(child);
-+        CPUCluster *cluster = CPU_CLUSTER(child);
-         GDBProcess *process;
- 
-         s->processes = g_renew(GDBProcess, s->processes, ++s->process_num);
 diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
-index 61289a840d46..fd978a543e40 100644
+index fd978a543e40..340cfad9f8f1 100644
 --- a/hw/cpu/cluster.c
 +++ b/hw/cpu/cluster.c
-@@ -26,12 +26,12 @@
+@@ -26,7 +26,9 @@
  #include "qapi/error.h"
  
  static Property cpu_cluster_properties[] = {
--    DEFINE_PROP_UINT32("cluster-id", CPUClusterState, cluster_id, 0),
-+    DEFINE_PROP_UINT32("cluster-id", CPUCluster, cluster_id, 0),
++#ifdef CONFIG_TCG
+     DEFINE_PROP_UINT32("cluster-id", CPUCluster, cluster_id, 0),
++#endif
      DEFINE_PROP_END_OF_LIST()
  };
  
- typedef struct CallbackData {
--    CPUClusterState *cluster;
-+    CPUCluster *cluster;
-     int cpu_count;
- } CallbackData;
+@@ -47,18 +49,17 @@ static int add_cpu_to_cluster(Object *obj, void *opaque)
+     return 0;
+ }
  
-@@ -50,7 +50,7 @@ static int add_cpu_to_cluster(Object *obj, void *opaque)
- static void cpu_cluster_realize(DeviceState *dev, Error **errp)
+-static void cpu_cluster_realize(DeviceState *dev, Error **errp)
++static void cpu_cluster_common_collect_cpus(CPUCluster *cluster, Error **errp)
  {
      /* Iterate through all our CPU children and set their cluster_index */
--    CPUClusterState *cluster = CPU_CLUSTER(dev);
-+    CPUCluster *cluster = CPU_CLUSTER(dev);
-     Object *cluster_obj = OBJECT(dev);
+-    CPUCluster *cluster = CPU_CLUSTER(dev);
+-    Object *cluster_obj = OBJECT(dev);
++    Object *cluster_obj = OBJECT(cluster);
      CallbackData cbdata = {
          .cluster = cluster,
-@@ -87,7 +87,7 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+         .cpu_count = 0,
+     };
+ 
+-    if (cluster->cluster_id >= MAX_CLUSTERS) {
+-        error_setg(errp, "cluster-id must be less than %d", MAX_CLUSTERS);
++    if (cluster->cluster_id >= MAX_TCG_CLUSTERS) {
++        error_setg(errp, "cluster-id must be less than %d", MAX_TCG_CLUSTERS);
+         return;
+     }
+ 
+@@ -73,15 +74,34 @@ static void cpu_cluster_realize(DeviceState *dev, Error **errp)
+     assert(cbdata.cpu_count > 0);
+ }
+ 
++static const struct TCGClusterOps common_cluster_tcg_ops = {
++    .collect_cpus = cpu_cluster_common_collect_cpus,
++};
++
++static void cpu_cluster_realize(DeviceState *dev, Error **errp)
++{
++    CPUCluster *cluster = CPU_CLUSTER(dev);
++    CPUClusterClass *cc = CPU_CLUSTER_GET_CLASS(dev);
++
++    if (cc->tcg_clu_ops->collect_cpus) {
++        cc->tcg_clu_ops->collect_cpus(cluster, errp);
++    }
++}
++
+ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    CPUClusterClass *cc = CPU_CLUSTER_CLASS(klass);
+ 
+     device_class_set_props(dc, cpu_cluster_properties);
+     dc->realize = cpu_cluster_realize;
+ 
+     /* This is not directly for users, CPU children must be attached by code */
+     dc->user_creatable = false;
++
++#ifdef CONFIG_TCG
++    cc->tcg_clu_ops = &common_cluster_tcg_ops;
++#endif
+ }
+ 
  static const TypeInfo cpu_cluster_type_info = {
-     .name = TYPE_CPU_CLUSTER,
-     .parent = TYPE_DEVICE,
--    .instance_size = sizeof(CPUClusterState),
-+    .instance_size = sizeof(CPUCluster),
-     .class_init = cpu_cluster_class_init,
- };
- 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 88b3b759c5a8..886586a3bed4 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -153,7 +153,7 @@ struct ARMSSE {
- 
-     /*< public >*/
-     ARMv7MState armv7m[SSE_MAX_CPUS];
--    CPUClusterState cluster[SSE_MAX_CPUS];
-+    CPUCluster cluster[SSE_MAX_CPUS];
-     IoTKitSecCtl secctl;
-     TZPPC apb_ppc[NUM_INTERNAL_PPCS];
-     TZMPC mpc[IOTS_NUM_MPC];
-diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-index b24fa64557fd..61bde52b6af5 100644
---- a/include/hw/arm/xlnx-versal.h
-+++ b/include/hw/arm/xlnx-versal.h
-@@ -58,7 +58,7 @@ struct Versal {
-     struct {
-         struct {
-             MemoryRegion mr;
--            CPUClusterState cluster;
-+            CPUCluster cluster;
-             ARMCPU cpu[XLNX_VERSAL_NR_ACPUS];
-             GICv3State gic;
-         } apu;
-@@ -88,7 +88,7 @@ struct Versal {
-             MemoryRegion mr;
-             MemoryRegion mr_ps_alias;
- 
--            CPUClusterState cluster;
-+            CPUCluster cluster;
-             ARMCPU cpu[XLNX_VERSAL_NR_RCPUS];
-         } rpu;
- 
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 96358d51ebb7..5eea765ea76c 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -98,8 +98,8 @@ struct XlnxZynqMPState {
-     DeviceState parent_obj;
- 
-     /*< public >*/
--    CPUClusterState apu_cluster;
--    CPUClusterState rpu_cluster;
-+    CPUCluster apu_cluster;
-+    CPUCluster rpu_cluster;
-     ARMCPU apu_cpu[XLNX_ZYNQMP_NUM_APU_CPUS];
-     ARMCPU rpu_cpu[XLNX_ZYNQMP_NUM_RPU_CPUS];
-     GICState gic;
 diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
-index 53fbf36af542..644b87350268 100644
+index 644b87350268..c038f05ddc9f 100644
 --- a/include/hw/cpu/cluster.h
 +++ b/include/hw/cpu/cluster.h
-@@ -55,7 +55,7 @@
+@@ -55,13 +55,31 @@
   */
  
  #define TYPE_CPU_CLUSTER "cpu-cluster"
--OBJECT_DECLARE_SIMPLE_TYPE(CPUClusterState, CPU_CLUSTER)
-+OBJECT_DECLARE_SIMPLE_TYPE(CPUCluster, CPU_CLUSTER)
+-OBJECT_DECLARE_SIMPLE_TYPE(CPUCluster, CPU_CLUSTER)
++OBJECT_DECLARE_TYPE(CPUCluster, CPUClusterClass, CPU_CLUSTER)
  
  /*
   * This limit is imposed by TCG, which puts the cluster ID into an
-@@ -64,13 +64,13 @@ OBJECT_DECLARE_SIMPLE_TYPE(CPUClusterState, CPU_CLUSTER)
- #define MAX_CLUSTERS 255
+  * 8 bit field (and uses all-1s for the default "not in any cluster").
+  */
+-#define MAX_CLUSTERS 255
++#define MAX_TCG_CLUSTERS 255
++
++struct TCGClusterOps {
++    /**
++     * @collect_cpus: Iterate children CPUs and set cluser_index.
++     *
++     * Called when the cluster is realized.
++     */
++    void (*collect_cpus)(CPUCluster *cluster, Error **errp);
++};
++
++struct CPUClusterClass {
++    /*< private >*/
++    DeviceClass parent_class;
++
++    /*< public >*/
++    /* when TCG is not available, this pointer is NULL */
++    const struct TCGClusterOps *tcg_clu_ops;
++};
  
  /**
-- * CPUClusterState:
-+ * CPUCluster:
-  * @cluster_id: The cluster ID. This value is for internal use only and should
-  *   not be exposed directly to the user or to the guest.
-  *
-  * State of a CPU cluster.
-  */
--struct CPUClusterState {
-+struct CPUCluster {
-     /*< private >*/
-     DeviceState parent_obj;
- 
-diff --git a/include/hw/riscv/microchip_pfsoc.h b/include/hw/riscv/microchip_pfsoc.h
-index daef086da602..c9ac14e35625 100644
---- a/include/hw/riscv/microchip_pfsoc.h
-+++ b/include/hw/riscv/microchip_pfsoc.h
-@@ -38,8 +38,8 @@ typedef struct MicrochipPFSoCState {
-     DeviceState parent_obj;
- 
-     /*< public >*/
--    CPUClusterState e_cluster;
--    CPUClusterState u_cluster;
-+    CPUCluster e_cluster;
-+    CPUCluster u_cluster;
-     RISCVHartArrayState e_cpus;
-     RISCVHartArrayState u_cpus;
-     DeviceState *plic;
-diff --git a/include/hw/riscv/sifive_u.h b/include/hw/riscv/sifive_u.h
-index 0696f8594277..fda4a708e960 100644
---- a/include/hw/riscv/sifive_u.h
-+++ b/include/hw/riscv/sifive_u.h
-@@ -40,8 +40,8 @@ typedef struct SiFiveUSoCState {
-     DeviceState parent_obj;
- 
-     /*< public >*/
--    CPUClusterState e_cluster;
--    CPUClusterState u_cluster;
-+    CPUCluster e_cluster;
-+    CPUCluster u_cluster;
-     RISCVHartArrayState e_cpus;
-     RISCVHartArrayState u_cpus;
-     DeviceState *plic;
+  * CPUCluster:
 -- 
 2.34.1

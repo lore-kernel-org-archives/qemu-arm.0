@@ -1,115 +1,121 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp254784ejb;
-        Thu, 30 Nov 2023 06:13:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEe5c+5dRXczZY9ahVjvObKmYYmr96e6cA9qVo6YJpbd4cDg4tbtDIyrCMqcyhjHy3Hudi1
-X-Received: by 2002:a05:6870:2b1c:b0:1d5:a72e:154e with SMTP id ld28-20020a0568702b1c00b001d5a72e154emr27464170oab.36.1701353593970;
-        Thu, 30 Nov 2023 06:13:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701353593; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp258670ejb;
+        Thu, 30 Nov 2023 06:17:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGjbdwFDGFpguDlg+slCs3k1ZgRyyfXuMuYyU7fXFYbyE8n7WqFMd6BX6hR6VFRY+HMVlhZ
+X-Received: by 2002:a1f:c582:0:b0:4ab:da7a:c573 with SMTP id v124-20020a1fc582000000b004abda7ac573mr16585714vkf.8.1701353872437;
+        Thu, 30 Nov 2023 06:17:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701353872; cv=none;
         d=google.com; s=arc-20160816;
-        b=H/oRm36FrtSGx1VwMU9ECD6yXZgZTZZvxyCn9pDaOvFtiAbK/zIP3Lr5K7ovSVe3Dj
-         tOt79hXz/j5toree3OLsOGVfcLg+hCPh303nzjvnFttl4Wb6nki5AtIKGZaVtjLnSMzF
-         CnDsdOpFgYv/6pZtDHCSjr22VR3HKRsRKyuYlACIQur/gGSz62/9m3fANtwCqj7Ir2ll
-         UcPdcmcr5LP6BktbuxzTUFPIiTqARvxc7TlYIxH6mX+5m34ZZITr4Xv2kLoLCe17IOUt
-         OxFjAY6iM/L4cbolek/pncBamBk3oAFQ8ipLxt7fSWtv8G4HL2ICURaEfweXzbVys6Iv
-         /n7w==
+        b=MiGCzSP6VcewlvyqTfRKv0ZudtezfDq8D5gyzoeOa3/hAFpoxdqebLNuy/H+PWpsoY
+         2sS07gDNIWfeYvqc6EiYQX2oIgXJcpm7tkDfZNwYXT/fYisbQOTVXU5lv50NY6H+UjnL
+         9jNjbm37joG9vXckgN/yvFKBhGcQ/1zfzy0dvEdJyWRJpZuXytxUfzi8jLfmLGrEjyGQ
+         RaalVWpvB7mC2sfo37y9zH9+1n6hH1aXTrgwP9kpb/62UzUJOzyzXXEwKEI2LACiX92e
+         kWljCzga6jfAN5gaB/AhTydmsEMvKJkPuqPpRmiAIkfAMt4QLWjBrtaMNQ+a5ab2Uq2s
+         gm8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=w3fdkzfweZTD6YGstxa31NKA8kNnBNCgcS0bXodlPXU=;
-        fh=yb4b79XAGCI30noH8GSpCr9rwvQW/pGoAYpupm/Cfyc=;
-        b=HsgZX5qKHR0OrU/dYhc7smsf2/fOb0ceyb9d7SEOQCj9Mum+7E3EZTveg+TiyWDzA+
-         91o6JWRWCSA63K0xFEFipDXJCS9rqO6hNIbv/OxRnQHr4yAchDkLfU0fkY+MBUvujn8q
-         JXXA4uGL/AZnII0Swzj7Nb8rDtEyVx2eCNQve8NuYFQ0XPsZgwRf6KAC8H24k4hkldaD
-         OoE/z54bWMlvJBMrq7rFCSkSWwnvPAawVpT9sckunmWW0sy3uswl3jKBqXvMXIFVLtS9
-         PHi0d18Q19ONE1Tw+0PtxzdWLxM9UrwDR2+nhdnBFrZaTQBtX9Y8xoDBkEZLVk/3ax3b
-         kLlw==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=iE0L2PBpD7A8D7EdmmkrkVJlqT3HME9PzZ68CZ71OeY=;
+        fh=J8KwvaKtpwczpnD84kmf0av2Mbyb1RVhd3GkiZrBUw0=;
+        b=EJ52ZSQGbnkhb4d/0LA8LNJzuCqJaaQO5PJRNJjdOwhWYAueAvdtU62Z/iAB4csJKk
+         gh7XeSKaBZV0u1fG+xRHovcXcftouuYDTEBN0+RDAZnIwE0pPS8vgsCZ5qJ4fS1QHoGW
+         jV0KvTUN55rGRhR1PegPGrcEo/dsF/GVAdf59dL5ML4Ri/buQXkHDXtPoRNaXIHTXCH0
+         VUXhHWsxwlCxBKplGVLJMlvITILNnYdkkvnh89NowVLAetwCRtI/DatjkrlbzFY7Sj+L
+         NuhdfggaWdO6CMK2C87+W7PO3m22nHbdNCMjddEnbGHZWd/++k+jwQxrUpwEEKJWfgQb
+         8SKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFbA06lN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QxY94e1e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11-20020a67f04b000000b004608806ee18si165264vsm.646.2023.11.30.06.13.13
+        by mx.google.com with ESMTPS id n2-20020a056122068200b004b292ad9b8esi157374vkq.283.2023.11.30.06.17.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Nov 2023 06:13:13 -0800 (PST)
+        Thu, 30 Nov 2023 06:17:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FFbA06lN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QxY94e1e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r8hmv-0006pv-4X; Thu, 30 Nov 2023 09:13:09 -0500
+	id 1r8hrH-00013Q-Of; Thu, 30 Nov 2023 09:17:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r8hmn-0006iO-Ti
- for qemu-arm@nongnu.org; Thu, 30 Nov 2023 09:13:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1r8hmi-0005br-3b
- for qemu-arm@nongnu.org; Thu, 30 Nov 2023 09:12:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701353570;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=w3fdkzfweZTD6YGstxa31NKA8kNnBNCgcS0bXodlPXU=;
- b=FFbA06lNLgYaYM3OTXNO5s4DUsOnHy1J5Zx1M948/UM1S5U4rrAChUMZTT72QyWkLmkL14
- 1/ak8uftnPAazbdqauGTQZgwHxtOGGI9+LoPlgwkOW3CmATMDo+5U6UF3y7ZD19uS4yJS+
- ATaZLbcMmB2uv0sbinwBzueZKHHXvnE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-320-jYuJgzNPOuGn4TkwvVr93g-1; Thu, 30 Nov 2023 09:12:43 -0500
-X-MC-Unique: jYuJgzNPOuGn4TkwvVr93g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 662928007B3;
- Thu, 30 Nov 2023 14:12:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.148])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2574410EA1;
- Thu, 30 Nov 2023 14:12:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 27CED21E6A1F; Thu, 30 Nov 2023 15:12:41 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: <ankita@nvidia.com>
-Cc: <jgg@nvidia.com>,  <alex.williamson@redhat.com>,  <clg@redhat.com>,
- <shannon.zhaosl@gmail.com>,  <peter.maydell@linaro.org>,
- <ani@anisinha.ca>,  <berrange@redhat.com>,  <eduardo@habkost.net>,
- <imammedo@redhat.com>,  <mst@redhat.com>,  <eblake@redhat.com>,
- <david@redhat.com>,  <gshan@redhat.com>,  <Jonathan.Cameron@huawei.com>,
- <aniketa@nvidia.com>,  <cjia@nvidia.com>,  <kwankhede@nvidia.com>,
- <targupta@nvidia.com>,  <vsethi@nvidia.com>,  <acurrid@nvidia.com>,
- <dnigam@nvidia.com>,  <udhoke@nvidia.com>,  <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v4 2/2] hw/acpi: Implement the SRAT GI affinity structure
-References: <20231119130111.761-1-ankita@nvidia.com>
- <20231119130111.761-3-ankita@nvidia.com>
-Date: Thu, 30 Nov 2023 15:12:41 +0100
-In-Reply-To: <20231119130111.761-3-ankita@nvidia.com> (ankita@nvidia.com's
- message of "Sun, 19 Nov 2023 18:31:11 +0530")
-Message-ID: <87o7fb72jq.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r8hrF-00013A-R4
+ for qemu-arm@nongnu.org; Thu, 30 Nov 2023 09:17:37 -0500
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r8hrD-0006nv-Lr
+ for qemu-arm@nongnu.org; Thu, 30 Nov 2023 09:17:37 -0500
+Received: by mail-lf1-x133.google.com with SMTP id
+ 2adb3069b0e04-50bc4fe8158so1490954e87.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Nov 2023 06:17:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1701353854; x=1701958654; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=iE0L2PBpD7A8D7EdmmkrkVJlqT3HME9PzZ68CZ71OeY=;
+ b=QxY94e1e+ZDdV4P09xi8MYhYdMR4oMlkZYwcM47hklItV39zg6BoeA+4pbDnoiA/9m
+ Ijiw9wKlGOcDpFuSN0EJqFNshQpm73/979vTvnVquhLHVLK63QTRofLS8119vyclbIzW
+ obB5rLd8qqGrHLole6Y/HxppfY5K4yTSH/w17YQyJ6GGXtR9KzX13YkSmBHtoTGajSGA
+ f43oEecisHbSRNQ3sDUwSBH3jYSwjBKVvsJRsYQYkUyMNmB+7u7JatFcMjne18C+cgce
+ kpY9feosSdO3gy5seD+6qBHGpR41pUt4/3eMb/tT1WKX1x9kSsZRoRluudTNqS5fWJNC
+ Yv/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1701353854; x=1701958654;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=iE0L2PBpD7A8D7EdmmkrkVJlqT3HME9PzZ68CZ71OeY=;
+ b=WmaQmv3vUxbWHeG7WSn7p3u13c+u+jO89meF0VhcXfQLXtr64UyvY9Q+JDP5oSrkKO
+ BWkne0+4cF+/9DjEB8iT0oDKrK6g5dglX1q7+9L/vy0bY7uDIbK0/oAtl5NjHnP2//72
+ 0jim5s2OJm9zgOuz2+mB80zzu1idRdB5W7vIJwHIUqCq08m1tvbO5SWGBCOhDMG64Tg1
+ kGMd9c84yGq1mtNM0MPwc9wHI1EXnvoIVm8t8+EVEpBbMCVJw4gleCtlaBmZUzoIaxca
+ iVZ9KZJg4oQHNusLctadwHL3LDTQtVTaz7TTldOdsqYKlh688fCIKy5Ybxub4HQO7DhA
+ jqzg==
+X-Gm-Message-State: AOJu0YxnlMV1m3oQBLmuBRrkS5ycaSQF/w6+g8zvT+pyHkWQyivhVbtx
+ rs+ap3/f4Lj99H2ts/jLY2mA9Q==
+X-Received: by 2002:a05:6512:3087:b0:50b:c9e7:2941 with SMTP id
+ z7-20020a056512308700b0050bc9e72941mr2397950lfd.29.1701353853684; 
+ Thu, 30 Nov 2023 06:17:33 -0800 (PST)
+Received: from [192.168.69.100] (sev93-h02-176-184-17-116.dsl.sta.abo.bbox.fr.
+ [176.184.17.116]) by smtp.gmail.com with ESMTPSA id
+ l21-20020a170906231500b00a0b6541b592sm722657eja.88.2023.11.30.06.17.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Nov 2023 06:17:33 -0800 (PST)
+Message-ID: <0ae7ffb0-a0af-4afc-ad29-384daff52484@linaro.org>
+Date: Thu, 30 Nov 2023 15:17:30 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 04/10] hvf: Add Apple Silicon support
+Content-Language: en-US
+To: Alexander Graf <agraf@csgraf.de>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ Peter Collingbourne <pcc@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20210916155404.86958-1-agraf@csgraf.de>
+ <20210916155404.86958-5-agraf@csgraf.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20210916155404.86958-5-agraf@csgraf.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::133;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,276 +131,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y9uOIBC01cpV
+X-TUID: UmiNMNDEPBC9
 
-<ankita@nvidia.com> writes:
+Hi,
 
-> From: Ankit Agrawal <ankita@nvidia.com>
->
-> ACPI spec provides a scheme to associate "Generic Initiators" [1]
-> (e.g. heterogeneous processors and accelerators, GPUs, and I/O devices wi=
-th
-> integrated compute or DMA engines GPUs) with Proximity Domains. This is
-> achieved using Generic Initiator Affinity Structure in SRAT. During bootu=
-p,
-> Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NU=
-MA
-> node for each unique PXM ID encountered. Qemu currently do not implement
-> these structures while building SRAT.
->
-> Add GI structures while building VM ACPI SRAT. The association between
-> devices and nodes are stored using acpi-generic-initiator object. Lookup
-> presence of all such objects and use them to build these structures.
->
-> The structure needs a PCI device handle [2] that consists of the device B=
-DF.
-> The vfio-pci device corresponding to the acpi-generic-initiator object is
-> located to determine the BDF.
->
-> [1] ACPI Spec 6.3, Section 5.2.16.6
-> [2] ACPI Spec 6.3, Table 5.80
->
-> Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
+On 16/9/21 17:53, Alexander Graf wrote:
+> With Apple Silicon available to the masses, it's a good time to add support
+> for driving its virtualization extensions from QEMU.
+> 
+> This patch adds all necessary architecture specific code to get basic VMs
+> working, including save/restore.
+> 
+> Known limitations:
+> 
+>    - WFI handling is missing (follows in later patch)
+>    - No watchpoint/breakpoint support
+> 
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> Reviewed-by: Sergio Lopez <slp@redhat.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+
 > ---
->  hw/acpi/acpi-generic-initiator.c         | 100 +++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c                 |   3 +
->  include/hw/acpi/acpi-generic-initiator.h |  26 ++++++
->  3 files changed, 129 insertions(+)
->
-> diff --git a/hw/acpi/acpi-generic-initiator.c b/hw/acpi/acpi-generic-init=
-iator.c
-> index 5ea51cb81e..a9222438ec 100644
-> --- a/hw/acpi/acpi-generic-initiator.c
-> +++ b/hw/acpi/acpi-generic-initiator.c
-> @@ -16,6 +16,7 @@
->  #include "hw/pci/pci_device.h"
->  #include "sysemu/numa.h"
->  #include "hw/acpi/acpi-generic-initiator.h"
-> +#include "qemu/error-report.h"
->=20=20
->  OBJECT_DEFINE_TYPE_WITH_INTERFACES(AcpiGenericInitiator, acpi_generic_in=
-itiator,
->                     ACPI_GENERIC_INITIATOR, OBJECT,
-> @@ -82,3 +83,102 @@ static void acpi_generic_initiator_class_init(ObjectC=
-lass *oc, void *data)
->          acpi_generic_initiator_set_host_nodes,
->          NULL, NULL);
->  }
-> +
-> +static int acpi_generic_initiator_list(Object *obj, void *opaque)
+>   MAINTAINERS                 |   5 +
+>   accel/hvf/hvf-accel-ops.c   |   9 +
+>   include/sysemu/hvf_int.h    |  10 +-
+>   meson.build                 |   1 +
+>   target/arm/hvf/hvf.c        | 794 ++++++++++++++++++++++++++++++++++++
+>   target/arm/hvf/trace-events |  10 +
+>   target/i386/hvf/hvf.c       |   5 +
+>   7 files changed, 833 insertions(+), 1 deletion(-)
+>   create mode 100644 target/arm/hvf/hvf.c
+>   create mode 100644 target/arm/hvf/trace-events
+
+
+> +int hvf_arch_init_vcpu(CPUState *cpu)
 > +{
-> +    GSList **list =3D opaque;
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+> +    CPUARMState *env = &arm_cpu->env;
+> +    uint32_t sregs_match_len = ARRAY_SIZE(hvf_sreg_match);
+> +    uint32_t sregs_cnt = 0;
+> +    uint64_t pfr;
+> +    hv_return_t ret;
+> +    int i;
 > +
-> +    if (object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
-> +        *list =3D g_slist_append(*list, ACPI_GENERIC_INITIATOR(obj));
+> +    env->aarch64 = 1;
+> +    asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
+> +
+> +    /* Allocate enough space for our sysreg sync */
+> +    arm_cpu->cpreg_indexes = g_renew(uint64_t, arm_cpu->cpreg_indexes,
+> +                                     sregs_match_len);
+> +    arm_cpu->cpreg_values = g_renew(uint64_t, arm_cpu->cpreg_values,
+> +                                    sregs_match_len);
+> +    arm_cpu->cpreg_vmstate_indexes = g_renew(uint64_t,
+> +                                             arm_cpu->cpreg_vmstate_indexes,
+> +                                             sregs_match_len);
+> +    arm_cpu->cpreg_vmstate_values = g_renew(uint64_t,
+> +                                            arm_cpu->cpreg_vmstate_values,
+> +                                            sregs_match_len);
+> +
+> +    memset(arm_cpu->cpreg_values, 0, sregs_match_len * sizeof(uint64_t));
+> +
+> +    /* Populate cp list for all known sysregs */
+> +    for (i = 0; i < sregs_match_len; i++) {
+> +        const ARMCPRegInfo *ri;
+> +        uint32_t key = hvf_sreg_match[i].key;
+> +
+> +        ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
+> +        if (ri) {
+> +            assert(!(ri->type & ARM_CP_NO_RAW));
+> +            hvf_sreg_match[i].cp_idx = sregs_cnt;
+> +            arm_cpu->cpreg_indexes[sregs_cnt++] = cpreg_to_kvm_id(key);
+
+So this hash ...:
+
+     /*
+      * Convert a truncated 32 bit hashtable key into the full
+      * 64 bit KVM register ID.
+      */
+     static uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+     {
+         uint64_t kvmid;
+
+         if (cpregid & CP_REG_AA64_MASK) {
+             kvmid = cpregid & ~CP_REG_AA64_MASK;
+             kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM64;
+         } else {
+             kvmid = cpregid & ~(1 << 15);
+             if (cpregid & (1 << 15)) {
+                 kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM;
+             } else {
+                 kvmid |= CP_REG_SIZE_U32 | CP_REG_ARM;
+             }
+         }
+         return kvmid;
+     }
+
+... just happens to work the same way for HVF?
+
+> +        } else {
+> +            hvf_sreg_match[i].cp_idx = -1;
+> +        }
 > +    }
+> +    arm_cpu->cpreg_array_len = sregs_cnt;
+> +    arm_cpu->cpreg_vmstate_array_len = sregs_cnt;
 > +
-> +    object_child_foreach(obj, acpi_generic_initiator_list, opaque);
+> +    assert(write_cpustate_to_list(arm_cpu, false));
+> +
+> +    /* Set CP_NO_RAW system registers on init */
+> +    ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, HV_SYS_REG_MIDR_EL1,
+> +                              arm_cpu->midr);
+> +    assert_hvf_ok(ret);
+> +
+> +    ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, HV_SYS_REG_MPIDR_EL1,
+> +                              arm_cpu->mp_affinity);
+> +    assert_hvf_ok(ret);
+> +
+> +    ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_ID_AA64PFR0_EL1, &pfr);
+> +    assert_hvf_ok(ret);
+> +    pfr |= env->gicv3state ? (1 << 24) : 0;
+> +    ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
+> +    assert_hvf_ok(ret);
+> +
+> +    /* We're limited to underlying hardware caps, override internal versions */
+> +    ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_ID_AA64MMFR0_EL1,
+> +                              &arm_cpu->isar.id_aa64mmfr0);
+> +    assert_hvf_ok(ret);
+> +
 > +    return 0;
 > +}
-> +
-> +/*
-> + * Identify Generic Initiator objects and link them into the list which =
-is
-> + * returned to the caller.
-> + *
-> + * Note: it is the caller's responsibility to free the list to avoid
-> + * memory leak.
-> + */
-> +static GSList *acpi_generic_initiator_get_list(void)
-> +{
-> +    GSList *list =3D NULL;
-> +
-> +    object_child_foreach(object_get_root(), acpi_generic_initiator_list,=
- &list);
-
-Long line.
-
-> +    return list;
-> +}
-> +
-> +/*
-> + * ACPI 6.3:
-> + * Table 5-78 Generic Initiator Affinity Structure
-> + */
-> +static
-> +void build_srat_generic_pci_initiator_affinity(GArray *table_data, int n=
-ode,
-> +                                               PCIDeviceHandle *handle)
-
-Style nitpick: bad line break.
-
-We traditionally format like
-
-   static void build_srat_generic_pci_initiator_affinity(GArray *table_data,
-                                                         int node,
-                                                         PCIDeviceHandle *h=
-andle)
-
-or, to avoid the long line
-
-   static void build_srat_generic_pci_initiator_affinity(GArray *table_data,
-                                   int node, PCIDeviceHandle *handle)
-
-but there's also precedence for
-
-   static void
-   build_srat_generic_pci_initiator_affinity(GArray *table_data, int node,
-                                             PCIDeviceHandle *handle)
-
-> +{
-> +    uint8_t index;
-> +
-> +    build_append_int_noprefix(table_data, 5, 1);  /* Type */
-> +    build_append_int_noprefix(table_data, 32, 1); /* Length */
-> +    build_append_int_noprefix(table_data, 0, 1);  /* Reserved */
-> +    build_append_int_noprefix(table_data, 1, 1);  /* Device Handle Type:=
- PCI */
-> +    build_append_int_noprefix(table_data, node, 4);  /* Proximity Domain=
- */
-> +
-> +    /* Device Handle - PCI */
-> +    build_append_int_noprefix(table_data, handle->segment, 2);
-> +    build_append_int_noprefix(table_data, handle->bdf, 2);
-> +    for (index =3D 0; index < 12; index++) {
-> +        build_append_int_noprefix(table_data, 0, 1);
-> +    }
-> +
-> +    build_append_int_noprefix(table_data, GEN_AFFINITY_ENABLED, 4); /* F=
-lags */
-> +    build_append_int_noprefix(table_data, 0, 4);     /* Reserved */
-> +}
-> +
-> +void build_srat_generic_pci_initiator(GArray *table_data)
-> +{
-> +    GSList *gi_list, *list =3D acpi_generic_initiator_get_list();
-> +    AcpiGenericInitiator *gi;
-> +
-> +    for (gi_list =3D list; gi_list; gi_list =3D gi_list->next) {
-> +        Object *o;
-> +        uint16List *l;
-> +        PCIDevice *pci_dev;
-> +        bool node_specified =3D false;
-> +
-> +        gi =3D gi_list->data;
-> +
-> +        /* User fails to provide a device. */
-> +        g_assert(gi->device);
-
-Assertions are for programming errors, not for diagnosing or reporting
-user errors.  Instead
-
-           if (!gi->device) {
-               error_report(...);
-               exit(1);
-           }
-
-This assumes the function can only ever run duting initial startup.  If
-that's not ensured, exit(1) is wrong, and you need to return failure
-instead, so the callers can do the right thing.
-
-> +
-> +        o =3D object_resolve_path_type(gi->device, TYPE_PCI_DEVICE, NULL=
-);
-> +        if (!o) {
-> +            error_printf("Specified device must be a PCI device.\n");
-> +            g_assert(o);
-
-Likewise.
-
-> +        }
-> +        pci_dev =3D PCI_DEVICE(o);
-> +
-> +        for (l =3D gi->nodelist; l; l =3D l->next) {
-> +            PCIDeviceHandle dev_handle;
-> +            dev_handle.segment =3D 0;
-> +            dev_handle.bdf =3D PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci=
-_dev)),
-> +                                                       pci_dev->devfn);
-> +            build_srat_generic_pci_initiator_affinity(table_data,
-> +                                                      l->value, &dev_han=
-dle);
-> +            node_specified =3D true;
-> +        }
-> +
-> +        if (!node_specified) {
-> +            error_report("Generic Initiator device 0:%x:%x.%x has no ass=
-ociated"
-> +                         " NUMA node.", pci_bus_num(pci_get_bus(pci_dev)=
-),
-> +                         PCI_SLOT(pci_dev->devfn), PCI_FUNC(pci_dev->dev=
-fn));
-> +            error_printf("Specify NUMA node with -nodelist option.\n");
-> +            g_assert(node_specified);
-
-Likewise.
-
-> +        }
-> +    }
-> +
-> +    g_slist_free(list);
-> +}
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 8bc35a483c..00d77327e0 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -58,6 +58,7 @@
->  #include "migration/vmstate.h"
->  #include "hw/acpi/ghes.h"
->  #include "hw/acpi/viot.h"
-> +#include "hw/acpi/acpi-generic-initiator.h"
->=20=20
->  #define ARM_SPI_BASE 32
->=20=20
-> @@ -558,6 +559,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
->          }
->      }
->=20=20
-> +    build_srat_generic_pci_initiator(table_data);
-> +
->      if (ms->nvdimms_state->is_enabled) {
->          nvdimm_build_srat(table_data);
->      }
-> diff --git a/include/hw/acpi/acpi-generic-initiator.h b/include/hw/acpi/a=
-cpi-generic-initiator.h
-> index db3ed02c80..6fdaf887cd 100644
-> --- a/include/hw/acpi/acpi-generic-initiator.h
-> +++ b/include/hw/acpi/acpi-generic-initiator.h
-> @@ -27,4 +27,30 @@ typedef struct AcpiGenericInitiatorClass {
->          ObjectClass parent_class;
->  } AcpiGenericInitiatorClass;
->=20=20
-> +/*
-> + * ACPI 6.3:
-> + * Table 5-81 Flags =E2=80=93 Generic Initiator Affinity Structure
-> + */
-> +typedef enum {
-> +    GEN_AFFINITY_ENABLED =3D (1 << 0), /*
-> +                                      * If clear, the OSPM ignores the c=
-ontents
-> +                                      * of the Generic Initiator/Port Af=
-finity
-> +                                      * Structure. This allows system fi=
-rmware
-> +                                      * to populate the SRAT with a stat=
-ic
-> +                                      * number of structures, but only e=
-nable
-> +                                      * them as necessary.
-> +                                      */
-> +} GenericAffinityFlags;
-> +
-> +/*
-> + * ACPI 6.3:
-> + * Table 5-80 Device Handle - PCI
-> + */
-> +typedef struct PCIDeviceHandle {
-> +    uint16_t segment;
-> +    uint16_t bdf;
-> +} PCIDeviceHandle;
-> +
-> +void build_srat_generic_pci_initiator(GArray *table_data);
-> +
->  #endif
 

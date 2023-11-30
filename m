@@ -1,163 +1,252 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp79485ejb;
-        Thu, 30 Nov 2023 01:04:07 -0800 (PST)
-X-Received: by 2002:a17:906:194f:b0:a04:3f97:f3f1 with SMTP id b15-20020a170906194f00b00a043f97f3f1mr16050706eje.58.1701335046962;
-        Thu, 30 Nov 2023 01:04:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701335046; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp180450ejb;
+        Thu, 30 Nov 2023 04:26:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEC+yCsUGRjI8n6FcegVmS+CnGnyj7XqxfQV42RuDjI/k/8LaUC9ueBeTCVgdN3l3GdQOfJ
+X-Received: by 2002:a05:600c:25a:b0:408:4f50:9602 with SMTP id 26-20020a05600c025a00b004084f509602mr17702360wmj.12.1701347181159;
+        Thu, 30 Nov 2023 04:26:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701347181; cv=none;
         d=google.com; s=arc-20160816;
-        b=nKV9HnslNvmDIzYzYj1zgvb2ZEpT1jenR0UvqKWaYs2Ziq9FZ+TE6EFD+H5QajeDna
-         h7tISuWG2z0O5/uLfhy/8D1Qxa0vHivtw/zeLdGeyA/K9vQDM6kWIOWTCQAQKbk6DrIk
-         8yJEIVY+l2gej042GN6LXetTWjwbwCX/a7Z4Rb6zGu1sbd49Lcju8ABozzrdJUlEoIO0
-         5hGN9V923+fxUpSAAGsklPvFMoO56AU7TZ1V4+zi6zF5kkmFeo2iCWjGmUip78wwRKlz
-         Uzz7yVOu/v1rUqlQlLoKI8Ty9VZ8DPUFEul00lC+vFcBmC0JUY403qffWe1+S0gbcKWg
-         Tldg==
+        b=RYR1+RhaxUoK8N3hFSn0/SlJ5ztlGmNYD05PMqQuOZO06+Q9OPq+4gXREXRCDsCzuc
+         qdgw5XyRJVXFWlPtC6/xOQIWY/nnBiaE+A5UyDYuwuDr77y3ns8xnFSDHC0IBS70WHaK
+         aZW9M9WVSaM+1wDnMWim+uWXE4R0RJQV31wNOGvrIwelP/7XSVbUpqnmokqglKZZ+9hJ
+         vSz/Kt8YXzfi1r1gUkgMmGiK9Oj1Mxq9y6js8NnlTtWLiR3OluY2A0Qk37QKrUzCAz1q
+         eNpB6kA3l1mJgdRAnFiXNzX6D5jsdc2zk1svwaIwlrMKPgEU6X2EWGlD47jNtxY5WuRV
+         tcbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:dkim-signature;
-        bh=rDG0LfrN9KzuY1dutbAJHJsyvk/SVEQtsaapgDeTQgk=;
-        fh=6nAzhoAXHalBwI7r8HAtyQCRHjPDlLK1O6MeKCMUP9E=;
-        b=eA7lVwXLhCcUiScR8wDix5/LtuVzxcP7K2qEBpr4VqEGfzGwG+kNMWhezIYpKmaf+u
-         BQzond3QQ42EZQk1l67J8VkDWkwuHiEHoUZEyZ7ydXT3rimnIKTwZUXWhSGOul4cXTWP
-         s9DejXdZR0E1z6hhuRJn09RK5cz9brMEGPxxr7bTpYSaniJ/fXfHsAb3WwTIQ6pKE/o7
-         NEbl85dWIO4zNwckhI9Bbn3Iqnvfcm7jHIRTo4L6DcPk7V25AsoJ4NwR9n03D71hUsY0
-         IyN8aaJjo7BG6O3Al84KXVxjDWAxRv4bIsEcCdRZ8jn4e8MtoQ091R9NjYdSuuT+U0fd
-         yXnA==
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=KYs+w9tX5xQvYgwt77gAisciicGwhphGbHCAn2v/kV4=;
+        fh=vdFGlySSzPfjjaFiRK/L9U4N+dm7//WYhcybsOOXIMk=;
+        b=U1m/2sUS9mtkEZ0mtWX+t49FWAs4safelGcflMxNHpxAraV3m/m4vEx96VypghFo5A
+         +x/5fgUimXIhiEWcoC9ywst6ZzU5op5KkTXvZgyGunSr5Q1U7ebiTw8xxCdieqnIdbgr
+         WUWqzif5kPQ6pY0BgzOrZifzK2jAyuUBEz2mByilroYCdUY6HteB7LmHh2ZdFiOLusJr
+         LsbpwNSSjvNaiN/OxUyUrne5SRfFwIRQH8ZEx3xxXw9AhOr2Kbhr4FvXbDvbWEh2IJvj
+         7fHdJERG31SrH1edLzVg/k3OdB0x5Mmet8u5xw9/4LgToyNeXzGFL2TbI6dBtRHcn2eC
+         4JbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YDeZEk4I;
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <xadimgnik@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e3-20020a170906748300b00a1839fce9c3sor264160ejl.5.2023.11.30.01.04.06
-        (Google Transport Security);
-        Thu, 30 Nov 2023 01:04:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ngZpcOH3;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+bcb5a996c0d123d1f7ff+7403+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+bcb5a996c0d123d1f7ff+7403+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id je9-20020a05600c1f8900b0040b379e850asi1901820wmb.218.2023.11.30.04.26.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Nov 2023 04:26:21 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YDeZEk4I;
-       spf=pass (google.com: domain of xadimgnik@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=xadimgnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1701335046; x=1701939846; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=rDG0LfrN9KzuY1dutbAJHJsyvk/SVEQtsaapgDeTQgk=;
-        b=YDeZEk4IKSIX2tIOIM8Rfi+cLEaw8lG//vlKGHgoHFlQQkbLF8he7iJiV2k81dXOpU
-         vFzJQbydD60EGMdG72g1Z6ah5QVS6MRSovOtJDDCRJLUMIgkjQkyobP5iVfHmxlXVglE
-         PovG02xYHxPAYMBwB4F4RouAwghNZ83b04YFcb24uOTqXBLL+ih/SomxDN3q50+48b9I
-         nPKK+RoEXAVYd/aeyNxXCnpvq9El7Gft674pPAYprbArE+QtLTiwvtqDG/egHpa7LNtB
-         btkqkNyGe1qRf7tXhilaj+0peS4AyuISlFrvpFcoSncfppdvZiXXMtsbOWUSxypSc43o
-         X5WQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701335046; x=1701939846;
-        h=content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rDG0LfrN9KzuY1dutbAJHJsyvk/SVEQtsaapgDeTQgk=;
-        b=nnaWBqSkrGYjpXokoIxWMmO4j3BKK5v8wNQZndD2Zy3pCknTl32iNME9TtnM5s2foN
-         FndYsg4X5zrFE+lI6aNq+Ky6tEyw7gGnLCdaF4o6Lgt85t5g3chaXCHQW/NBQ0TvHcTt
-         3CXZou3fioVTf5Uoo+dMt73Z65VItZM+GdPIuJ9LolkQZ2V5COMVE4ZlHQplyhPdXtyr
-         vHwTfzcBgUinZxypciskEzueZCeXqCvBKxUbDUXHr9P8a9vOF2/ZL6Aux6+dLP/nmF+l
-         8h3NZhwq7BbLeVPsGTCmsBaKv+Tvz5qcrxC+doW6+nKPkLmH9LL5kAiJF+JVe0U/n9x9
-         ++lg==
-X-Gm-Message-State: AOJu0Yy9p8cB7PjrlFqZkvfIIO6npg26wxp122DMhis6Uz2aeY8mm2dF
-	qZkf7zLPMnI59E3jikvSRNc=
-X-Google-Smtp-Source: AGHT+IH62q365iHhXfNeCdgPZMilj33GjyyKhNs3sjPFImh+k7bvQx+U/QmZwntDvSzeLzApdBDisw==
-X-Received: by 2002:a17:906:197:b0:a02:9987:dc3b with SMTP id 23-20020a170906019700b00a029987dc3bmr14284857ejb.15.1701335046283;
-        Thu, 30 Nov 2023 01:04:06 -0800 (PST)
-Return-Path: <xadimgnik@gmail.com>
-Received: from [192.168.17.21] (54-240-197-238.amazon.com. [54.240.197.238])
-        by smtp.gmail.com with ESMTPSA id i16-20020a1709061cd000b009b2cc87b8c3sm438680ejh.52.2023.11.30.01.04.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Nov 2023 01:04:05 -0800 (PST)
-From: Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: Paul Durrant <paul@xen.org>
-Message-ID: <67642c0a-4c2d-4f0b-90e8-9b125647af6c@xen.org>
-Date: Thu, 30 Nov 2023 09:03:58 +0000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: paul@xen.org
-Subject: Re: [PATCH 2/6] qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to
- QEMU_BQL_LOCK_GUARD
-Content-Language: en-US
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ngZpcOH3;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+bcb5a996c0d123d1f7ff+7403+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=KYs+w9tX5xQvYgwt77gAisciicGwhphGbHCAn2v/kV4=; b=ngZpcOH3dJpNLUOSKBwf1E2n+G
+	8QT3esymnfG8dUxodXc5C3c4YTVwZzZMlgZkhJ74gyplw+tNd0xiD0CjPUhovdcNWPjRKOelRjZ91
+	D99Hb2Iqlj6w/PHXzdUQ9JV3sPdpceIXzN9VQxczSF5Hvtq1jKnqRFMhO0hBViduj+EllH/NssRsS
+	m9/5V6Wjl5VnqKyMxv/2GnU84wGU1K9D3y7RN6afL5iqLyLIv7v2kw02NoqByan5e1rPcveR+5Zv+
+	Y4JBehm66YoUXqZSHyllcNdBLYp+ztqcGsBaepLwOrOL39VzN9yHAB20GDI0XZw7WmUcYTUsQJtUw
+	XeyZyyvQ==;
+Received: from [2001:8b0:10b:5:743c:af97:a7e4:d38e] (helo=u3832b3a9db3152.ant.amazon.com)
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1r8g6u-00EQu0-JO; Thu, 30 Nov 2023 12:25:40 +0000
+Message-ID: <84cf6f6cfa498491eb37599f1f992aefafaa46d1.camel@infradead.org>
+Subject: Re: [PATCH 1/6] system/cpus: rename qemu_mutex_lock_iothread() to
+ qemu_bql_lock()
+From: David Woodhouse <dwmw2@infradead.org>
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
- Fabiano Rosas <farosas@suse.de>, qemu-s390x@nongnu.org,
- Song Gao <gaosong@loongson.cn>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Hyman Huang <yong.huang@smartx.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Artyom Tarasenko
- <atar4qemu@gmail.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Jagannathan Raman <jag.raman@oracle.com>, Juan Quintela
- <quintela@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Fabiano Rosas
+ <farosas@suse.de>, qemu-s390x@nongnu.org, Song Gao <gaosong@loongson.cn>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth
+ <thuth@redhat.com>, Hyman Huang <yong.huang@smartx.com>,  Marcelo Tosatti
+ <mtosatti@redhat.com>, Andrey Smirnov <andrew.smirnov@gmail.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>, Ilya
+ Leoshkevich <iii@linux.ibm.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Max Filippov
+ <jcmvbkbc@gmail.com>, Alistair Francis <alistair.francis@wdc.com>, Paul
+ Durrant <paul@xen.org>, Jagannathan Raman <jag.raman@oracle.com>, Juan
+ Quintela <quintela@redhat.com>, "Daniel P." =?ISO-8859-1?Q?Berrang=E9?=
  <berrange@redhat.com>, qemu-arm@nongnu.org, Jason Wang
- <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Hailiang Zhang <zhanghailiang@xfusion.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, Huacai Chen <chenhuacai@kernel.org>,
- Fam Zheng <fam@euphon.net>, Eric Blake <eblake@redhat.com>,
- Jiri Slaby <jslaby@suse.cz>, Alexander Graf <agraf@csgraf.de>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Weiwei Li <liwei1518@gmail.com>,
- Eric Farman <farman@linux.ibm.com>, Stafford Horne <shorne@gmail.com>,
- David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ <jasowang@redhat.com>,  Gerd Hoffmann <kraxel@redhat.com>, Hanna Reitz
+ <hreitz@redhat.com>, =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
+ <marcandre.lureau@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>, Daniel
+ Henrique Barboza <danielhb413@gmail.com>, Elena Ufimtseva
+ <elena.ufimtseva@oracle.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Hailiang Zhang <zhanghailiang@xfusion.com>, Roman Bolshakov
+ <rbolshakov@ddn.com>, Huacai Chen <chenhuacai@kernel.org>, Fam Zheng
+ <fam@euphon.net>,  Eric Blake <eblake@redhat.com>, Jiri Slaby
+ <jslaby@suse.cz>, Alexander Graf <agraf@csgraf.de>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, Weiwei Li <liwei1518@gmail.com>, Eric
+ Farman <farman@linux.ibm.com>, Stafford Horne <shorne@gmail.com>, David
+ Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Reinoud Zandijk <reinoud@netbsd.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- John Snow <jsnow@redhat.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- Michael Roth <michael.roth@amd.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Bin Meng <bin.meng@windriver.com>,
- Stefano Stabellini <sstabellini@kernel.org>, kvm@vger.kernel.org,
- qemu-block@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Peter Xu <peterx@redhat.com>, Anthony Perard <anthony.perard@citrix.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Leonardo Bras
- <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org, Pavel
+ Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org, Aleksandar
+ Rikalo <aleksandar.rikalo@syrmia.com>, John Snow <jsnow@redhat.com>, Sunil
+ Muthuswamy <sunilmut@microsoft.com>, Michael Roth <michael.roth@amd.com>,
+ David Gibson <david@gibson.dropbear.id.au>, "Michael S. Tsirkin"
+ <mst@redhat.com>,  Richard Henderson <richard.henderson@linaro.org>, Bin
+ Meng <bin.meng@windriver.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ kvm@vger.kernel.org, qemu-block@nongnu.org, Halil Pasic
+ <pasic@linux.ibm.com>, Peter Xu <peterx@redhat.com>, Anthony Perard
+ <anthony.perard@citrix.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, Eduardo Habkost
+ <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>, Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  =?ISO-8859-1?Q?C=E9dric?=
+ Le Goater <clg@kaod.org>, qemu-ppc@nongnu.org, Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>,  Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Leonardo Bras <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
+Date: Thu, 30 Nov 2023 12:25:38 +0000
+In-Reply-To: <20231129212625.1051502-2-stefanha@redhat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-3-stefanha@redhat.com>
-Organization: Xen Project
-In-Reply-To: <20231129212625.1051502-3-stefanha@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: Ig2vzqKCn16I
+	 <20231129212625.1051502-2-stefanha@redhat.com>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-eME1UhoVVowc+xoRrBDG"
+User-Agent: Evolution 3.44.4-0ubuntu2 
+MIME-Version: 1.0
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: h1DCU4uzXpOm
 
-On 29/11/2023 21:26, Stefan Hajnoczi wrote:
-> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
-> instead, it is already widely used and unambiguous.
-> 
+
+--=-eME1UhoVVowc+xoRrBDG
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, 2023-11-29 at 16:26 -0500, Stefan Hajnoczi wrote:
+> The Big QEMU Lock (BQL) has many names and they are confusing. The
+> actual QemuMutex variable is called qemu_global_mutex but it's commonly
+> referred to as the BQL in discussions and some code comments. The
+> locking APIs, however, are called qemu_mutex_lock_iothread() and
+> qemu_mutex_unlock_iothread().
+>=20
+> The "iothread" name is historic and comes from when the main thread was
+> split into into KVM vcpu threads and the "iothread" (now called the main
+> loop thread). I have contributed to the confusion myself by introducing
+> a separate --object iothread, a separate concept unrelated to the BQL.
+>=20
+> The "iothread" name is no longer appropriate for the BQL. Rename the
+> locking APIs to:
+> - void qemu_bql_lock(void)
+> - void qemu_bql_unlock(void)
+> - bool qemu_bql_locked(void)
+>=20
+> There are more APIs with "iothread" in their names. Subsequent patches
+> will rename them. There are also comments and documentation that will be
+> updated in later patches.
+>=20
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->   include/qemu/main-loop.h  | 20 ++++++++++----------
->   hw/i386/kvm/xen_evtchn.c  | 14 +++++++-------
->   hw/i386/kvm/xen_gnttab.c  |  2 +-
->   hw/mips/mips_int.c        |  2 +-
->   hw/ppc/ppc.c              |  2 +-
->   target/i386/kvm/xen-emu.c |  2 +-
->   target/ppc/excp_helper.c  |  2 +-
->   target/ppc/helper_regs.c  |  2 +-
->   target/riscv/cpu_helper.c |  4 ++--
->   9 files changed, 25 insertions(+), 25 deletions(-)
-> 
 
-Reviewed-by: Paul Durrant <paul@xen.org>
+Acked-by: David Woodhouse <dwmw@amazon.co.uk>
+
+--=-eME1UhoVVowc+xoRrBDG
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTMwMTIyNTM4WjAvBgkqhkiG9w0BCQQxIgQgtzrvguLa
+kRL7lR/xcpvxo6y89HLUGNUdvRMSvQChYEIwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBz4YWm6l8v3l/jd7rf2QVbitkvjxYlUmOk
+Bv7BgJcXvVjueDWAUUs1b6WfoC4+7WMsGb2HAb3nKvbfbyso+S0tYr76NI+DcU7TMSc8Nx22FNH5
+59Vb1QAuFSZ1FRNE7mve+Y6NZUwk6rNenJ4IHJIGtXqfZXUKsG4Cd4Ni1lMOfZ03UXVCl2RDJofO
+Oi2YoBLEWFsWBdPVVz2d7899AosPuR2Fcjt1UrpZ4+d41fuTKulLw3xDfysSmuxnsoQ/vSEOIfPF
+E03OdHAZqz7o5z4hJIRv513F901TM+UTTfHLzmTT9leHI2CVe9I42LEDz8rDVEKFTCjag3TgXXAU
+r7Ydqc9IqvkvCO4sac+4zQNyg2T32P1MIfHqOJZLUN8321CliP+CTNnHaxbwlMegIt5BlboTHIMo
+vkefpXjE7bkoq7haZwkrbZWqtDjC2xNln7gHiyhjoOwDTWkTOq4Z5A5ZE9Cymo6kLn5TQ7zaVQuH
+9uMzaiU4sw96KnZ1KhC62NNHthuvpBHWRcWdExzu/8NDJK1X57+OzTgEyM8c1KxN19FB8I4y7C3t
+Biz3e2Z5Xo2/2u8YjcX9xT/jZ7ZXm9E7vgtqC6hfXGK7pJkojSVzUi05upkc+4WgL8AXF3sS9rOE
+EgZnIM7VF/Bw2/Nr20CFQA+om655lBlvsrlwt1qWgQAAAAAAAA==
+
+
+--=-eME1UhoVVowc+xoRrBDG--

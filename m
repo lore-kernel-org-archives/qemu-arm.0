@@ -1,55 +1,55 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp180450ejb;
-        Thu, 30 Nov 2023 04:26:21 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEC+yCsUGRjI8n6FcegVmS+CnGnyj7XqxfQV42RuDjI/k/8LaUC9ueBeTCVgdN3l3GdQOfJ
-X-Received: by 2002:a05:600c:25a:b0:408:4f50:9602 with SMTP id 26-20020a05600c025a00b004084f509602mr17702360wmj.12.1701347181159;
-        Thu, 30 Nov 2023 04:26:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701347181; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp180604ejb;
+        Thu, 30 Nov 2023 04:26:40 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG3UEHaB1JlTGhRIFTwDcEzxTMMNLqcvy6MhyE6grF3Rij/ikKuOIZjTQnzUvIoohuUCqd8
+X-Received: by 2002:adf:eac5:0:b0:332:ce79:cffe with SMTP id o5-20020adfeac5000000b00332ce79cffemr13310891wrn.35.1701347199854;
+        Thu, 30 Nov 2023 04:26:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701347199; cv=none;
         d=google.com; s=arc-20160816;
-        b=RYR1+RhaxUoK8N3hFSn0/SlJ5ztlGmNYD05PMqQuOZO06+Q9OPq+4gXREXRCDsCzuc
-         qdgw5XyRJVXFWlPtC6/xOQIWY/nnBiaE+A5UyDYuwuDr77y3ns8xnFSDHC0IBS70WHaK
-         aZW9M9WVSaM+1wDnMWim+uWXE4R0RJQV31wNOGvrIwelP/7XSVbUpqnmokqglKZZ+9hJ
-         vSz/Kt8YXzfi1r1gUkgMmGiK9Oj1Mxq9y6js8NnlTtWLiR3OluY2A0Qk37QKrUzCAz1q
-         eNpB6kA3l1mJgdRAnFiXNzX6D5jsdc2zk1svwaIwlrMKPgEU6X2EWGlD47jNtxY5WuRV
-         tcbA==
+        b=YsyiVF5y5LZgUOdPkfGKaltQ+x677SruHP6cVo5WLlyDviEdj+UcGYbDhRl7VMGmZ+
+         CYhyebP/q+kFOzThKafYQAGPJZFnx0oogbvqoMLEWUvCtm+oJAU1wYGLF7Xh7MbNSxly
+         8oJuxohfuTtTRzdz7G+61LoVYIh9zYJeUXALUAaKCQ0vEldrI64qYi2Xta/yKrX52+a9
+         +lLYKFMQETPdqS5xi+LIujdcGYW+hQiZn+5p4MP671UAk04PhHatuxQprMQ14UtXmKZQ
+         lfe6XuIG0dMMVaxA/E3BAVQHYTjgWhl1XkzI5YQQVKe/46+i0WvmShVGBXjl4/IL+mK7
+         Bweg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
          :subject:message-id:dkim-signature;
-        bh=KYs+w9tX5xQvYgwt77gAisciicGwhphGbHCAn2v/kV4=;
+        bh=FBDxkNw6Ln+R3ihPw6WrfsB10vPfKpisd0f6KWHydVo=;
         fh=vdFGlySSzPfjjaFiRK/L9U4N+dm7//WYhcybsOOXIMk=;
-        b=U1m/2sUS9mtkEZ0mtWX+t49FWAs4safelGcflMxNHpxAraV3m/m4vEx96VypghFo5A
-         +x/5fgUimXIhiEWcoC9ywst6ZzU5op5KkTXvZgyGunSr5Q1U7ebiTw8xxCdieqnIdbgr
-         WUWqzif5kPQ6pY0BgzOrZifzK2jAyuUBEz2mByilroYCdUY6HteB7LmHh2ZdFiOLusJr
-         LsbpwNSSjvNaiN/OxUyUrne5SRfFwIRQH8ZEx3xxXw9AhOr2Kbhr4FvXbDvbWEh2IJvj
-         7fHdJERG31SrH1edLzVg/k3OdB0x5Mmet8u5xw9/4LgToyNeXzGFL2TbI6dBtRHcn2eC
-         4JbA==
+        b=wdhXTbMt4RCG4awWyi3foUlUwp4EEwiNW+MBNQvA2dij0sxRAEgujY378bLEJgaL5+
+         L2ViR8nkWrcXKjGzHre5HiyyJq+nhbMCqz35You57uqlpDkwB0tolXVStV7K3WC66eJy
+         b4bc6GveRb70ho/AdzNiAWAJIw3J83unVSTQ2oFuvZgUmcP7FEd1vUek67peHmIZ5ssg
+         SWAJNP5fWa6AgdvFPDJ+Bo70C5u+osFKXMDlKHJPROPmZ/K2tgp1A0+qr7xAIGBJVqx2
+         loENDeLEZe7kmFOiYszxQeoQZ4BH/g4e4sksl5OF3TBLlsBVCFLJld8U5TSSQZLSmEQl
+         PW+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ngZpcOH3;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=GKIKInfq;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+bcb5a996c0d123d1f7ff+7403+infradead.org+dwmw2@casper.srs.infradead.org
 Return-Path: <BATV+bcb5a996c0d123d1f7ff+7403+infradead.org+dwmw2@casper.srs.infradead.org>
 Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by mx.google.com with ESMTPS id je9-20020a05600c1f8900b0040b379e850asi1901820wmb.218.2023.11.30.04.26.20
+        by mx.google.com with ESMTPS id j9-20020a5d4529000000b003330aede2b6si531645wra.629.2023.11.30.04.26.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 04:26:21 -0800 (PST)
+        Thu, 30 Nov 2023 04:26:39 -0800 (PST)
 Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ngZpcOH3;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=GKIKInfq;
        spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+bcb5a996c0d123d1f7ff+7403+infradead.org+dwmw2@casper.srs.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
 	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=KYs+w9tX5xQvYgwt77gAisciicGwhphGbHCAn2v/kV4=; b=ngZpcOH3dJpNLUOSKBwf1E2n+G
-	8QT3esymnfG8dUxodXc5C3c4YTVwZzZMlgZkhJ74gyplw+tNd0xiD0CjPUhovdcNWPjRKOelRjZ91
-	D99Hb2Iqlj6w/PHXzdUQ9JV3sPdpceIXzN9VQxczSF5Hvtq1jKnqRFMhO0hBViduj+EllH/NssRsS
-	m9/5V6Wjl5VnqKyMxv/2GnU84wGU1K9D3y7RN6afL5iqLyLIv7v2kw02NoqByan5e1rPcveR+5Zv+
-	Y4JBehm66YoUXqZSHyllcNdBLYp+ztqcGsBaepLwOrOL39VzN9yHAB20GDI0XZw7WmUcYTUsQJtUw
-	XeyZyyvQ==;
+	bh=FBDxkNw6Ln+R3ihPw6WrfsB10vPfKpisd0f6KWHydVo=; b=GKIKInfqE5y+INkZFrdVqJKh0U
+	iiiyAhC/Aw31u14bO05XgO9VybheZyH4Pyc4f4IXntoIIZZAi3xLF4Imj+tNJ1Pi8O4frxnRqpYz6
+	fgrzIr/j2cpNBXA6NJ2wrmevLq9u6jqbpgQCBrh2O3r2PU+pZGzQaPwbo423Wpg6xZI5dtCTVZeZr
+	9aigcneTGlBu4K0JD5tR3/Svli+MZVE4EuShe0EuLCQGoV6cF/Vz+NMn2vR7zE2pfgtd/Jey8cDdo
+	WMD3NaRP4sG2r6/L2li1qivb1MLpuVXZRaRJgcGGwf6/aasTNC0DsuEeKAAko5BqTTtBwRJHwTjfV
+	NqAb4IPQ==;
 Received: from [2001:8b0:10b:5:743c:af97:a7e4:d38e] (helo=u3832b3a9db3152.ant.amazon.com)
 	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1r8g6u-00EQu0-JO; Thu, 30 Nov 2023 12:25:40 +0000
-Message-ID: <84cf6f6cfa498491eb37599f1f992aefafaa46d1.camel@infradead.org>
-Subject: Re: [PATCH 1/6] system/cpus: rename qemu_mutex_lock_iothread() to
- qemu_bql_lock()
+	id 1r8g7W-00EQw5-Sm; Thu, 30 Nov 2023 12:26:19 +0000
+Message-ID: <0e9f2e68a8ffec356183d574132e96726878eff3.camel@infradead.org>
+Subject: Re: [PATCH 2/6] qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to
+ QEMU_BQL_LOCK_GUARD
 From: David Woodhouse <dwmw2@infradead.org>
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Fabiano Rosas
@@ -95,49 +95,31 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Fabiano Rosas
  <borntraeger@linux.ibm.com>,  Akihiko Odaki <akihiko.odaki@daynix.com>,
  Leonardo Bras <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
-Date: Thu, 30 Nov 2023 12:25:38 +0000
-In-Reply-To: <20231129212625.1051502-2-stefanha@redhat.com>
+Date: Thu, 30 Nov 2023 12:26:17 +0000
+In-Reply-To: <20231129212625.1051502-3-stefanha@redhat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
-	 <20231129212625.1051502-2-stefanha@redhat.com>
+	 <20231129212625.1051502-3-stefanha@redhat.com>
 Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
-	boundary="=-eME1UhoVVowc+xoRrBDG"
+	boundary="=-kNE0zp3pKgLeGAn1Bayc"
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
-X-TUID: h1DCU4uzXpOm
+X-TUID: LRQF9CGYxaTH
 
 
---=-eME1UhoVVowc+xoRrBDG
+--=-kNE0zp3pKgLeGAn1Bayc
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 On Wed, 2023-11-29 at 16:26 -0500, Stefan Hajnoczi wrote:
-> The Big QEMU Lock (BQL) has many names and they are confusing. The
-> actual QemuMutex variable is called qemu_global_mutex but it's commonly
-> referred to as the BQL in discussions and some code comments. The
-> locking APIs, however, are called qemu_mutex_lock_iothread() and
-> qemu_mutex_unlock_iothread().
->=20
-> The "iothread" name is historic and comes from when the main thread was
-> split into into KVM vcpu threads and the "iothread" (now called the main
-> loop thread). I have contributed to the confusion myself by introducing
-> a separate --object iothread, a separate concept unrelated to the BQL.
->=20
-> The "iothread" name is no longer appropriate for the BQL. Rename the
-> locking APIs to:
-> - void qemu_bql_lock(void)
-> - void qemu_bql_unlock(void)
-> - bool qemu_bql_locked(void)
->=20
-> There are more APIs with "iothread" in their names. Subsequent patches
-> will rename them. There are also comments and documentation that will be
-> updated in later patches.
+> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
+> instead, it is already widely used and unambiguous.
 >=20
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 
 Acked-by: David Woodhouse <dwmw@amazon.co.uk>
 
---=-eME1UhoVVowc+xoRrBDG
+--=-kNE0zp3pKgLeGAn1Bayc
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -229,24 +211,24 @@ IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
 dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
 NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
 xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTMwMTIyNTM4WjAvBgkqhkiG9w0BCQQxIgQgtzrvguLa
-kRL7lR/xcpvxo6y89HLUGNUdvRMSvQChYEIwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTMwMTIyNjE3WjAvBgkqhkiG9w0BCQQxIgQgwOS7ZfbP
+pcahGESlSsrnLXOQh3E3FjXQ3TUj6LqBFOEwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
 A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
 dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
 DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
 MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
 Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgBz4YWm6l8v3l/jd7rf2QVbitkvjxYlUmOk
-Bv7BgJcXvVjueDWAUUs1b6WfoC4+7WMsGb2HAb3nKvbfbyso+S0tYr76NI+DcU7TMSc8Nx22FNH5
-59Vb1QAuFSZ1FRNE7mve+Y6NZUwk6rNenJ4IHJIGtXqfZXUKsG4Cd4Ni1lMOfZ03UXVCl2RDJofO
-Oi2YoBLEWFsWBdPVVz2d7899AosPuR2Fcjt1UrpZ4+d41fuTKulLw3xDfysSmuxnsoQ/vSEOIfPF
-E03OdHAZqz7o5z4hJIRv513F901TM+UTTfHLzmTT9leHI2CVe9I42LEDz8rDVEKFTCjag3TgXXAU
-r7Ydqc9IqvkvCO4sac+4zQNyg2T32P1MIfHqOJZLUN8321CliP+CTNnHaxbwlMegIt5BlboTHIMo
-vkefpXjE7bkoq7haZwkrbZWqtDjC2xNln7gHiyhjoOwDTWkTOq4Z5A5ZE9Cymo6kLn5TQ7zaVQuH
-9uMzaiU4sw96KnZ1KhC62NNHthuvpBHWRcWdExzu/8NDJK1X57+OzTgEyM8c1KxN19FB8I4y7C3t
-Biz3e2Z5Xo2/2u8YjcX9xT/jZ7ZXm9E7vgtqC6hfXGK7pJkojSVzUi05upkc+4WgL8AXF3sS9rOE
-EgZnIM7VF/Bw2/Nr20CFQA+om655lBlvsrlwt1qWgQAAAAAAAA==
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCyS5mZ/f10CzR4ca1vgv1Z0GyUt84C2XUF
+VBWslHgL92N/XbiXaVlmfe1674kxjxvve2RnQFCR2bWxf9ALXRDKhbzPYCYK5tJQox+oE+hc9+Ba
+NU7MhuOLprObRia6wjDZYSxnL5G8bdrpBjuauGTRvn6UBl5DgIbcg1c4I+zn2UGpnA+nJHiEF1UK
+s8BTSlD/m4joVQa/buGIcC1EWUGy+w/SNkW0q7tvw6RpoCwoiTc/tbvxvxzXRDwKas72rNm/bI7x
+FG3mVf4N3D0KbB45wGiaTkgKcY+yQq8EuBS+jkGJUWiOFccSyLgk66IUkyoC5vaP23+claAoARCa
+Cg+5GIzUewmgLr5ppBSAFTwLgrVuDBS5pD22j8fifmINmncrpiNYM87v5+chFxTzEzfJVevFJ73x
+L7yD1uN5D+6gbdesYnKD3ewXinQ2nAU7jJSVWpDvXXw3xwi3/buBa25s3Pn5L2sWbrmJxYX5jel+
+tQHOkeYcNnfnV46u0ZnYK/mq1mmX6BSrVRA8Hf9sI+OHO9b/UunpCiLRiu/zaRktZbNC8sVswrGl
+NSp92Aso92yuBModab3x+5ykn2N4o1J4WwSBfqV9l1kxmgarhEN9Gi8XlbFbErTmTNNd1yCoweKF
+IGtOxZt2h7imUfiNlHT0R1fcjzyGfGH3FHc2oiUhxQAAAAAAAA==
 
 
---=-eME1UhoVVowc+xoRrBDG--
+--=-kNE0zp3pKgLeGAn1Bayc--

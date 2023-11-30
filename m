@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp272145ejb;
-        Thu, 30 Nov 2023 06:36:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFsFA7czW/Ff4jD81yZJ04SvKEzRPzAR6yy03POmXOVZIYkYBF5Wc0W6gfxrfqQiUo9MzxD
-X-Received: by 2002:a05:620a:8006:b0:77d:8bc0:477a with SMTP id ee6-20020a05620a800600b0077d8bc0477amr24443890qkb.40.1701355003979;
-        Thu, 30 Nov 2023 06:36:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701355003; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp272174ejb;
+        Thu, 30 Nov 2023 06:36:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFIVfF4Ehu7ZOXhNcoj3KH4/Y1dSGDBtvMoqUFr77bx+DuR5tdoUbuNFaLByRi+YMN9XxHr
+X-Received: by 2002:a05:620a:2811:b0:77b:aafe:dca2 with SMTP id f17-20020a05620a281100b0077baafedca2mr28096767qkp.40.1701355006156;
+        Thu, 30 Nov 2023 06:36:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701355006; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sb07XlQfdMit72ZajWr9klqC/GoHWDTVD1dOUlio4JuhYlPmNvtmVyO1gzBL6DL4KB
-         dASujKD8LkXrW84vKtBK/W2idfyUrPCigjg4Ubpt2Y3aQNnti2kxvCWSYM4H/oMBXnUl
-         9GIWGkY5+ROnqusgx+fgB2VuoPAgZPnpysf98g4iGHZ7/RjOl5s7/TyY9a7f2XMcrgpF
-         1vz0/HC5ZtoNJ31jsDxdac+8euvwNYxzUbNIQkLCD125yQT7z/WWVD3K7cWeffZn5KRP
-         9nv9yFTRD0A+HVlZLjVHsaVrbhaqpT62gFPvbBswOMW0Cnv+1vg3qSjdCKjwFRs3IZQm
-         r6Tw==
+        b=Rv2tJjZCUuZi+uWKQ8lhP8UBpJanRJPlWeC++0Osca6vk0mJowv5Lu57dmNyUevybP
+         +8QqljFGErftD72mQmFSkoA+/GFHYSYy9ys+doQ9WwUKnXM2gLmGH2a7OYu/Bu2Dc6iP
+         XxXsVx9rl8zguqpTa5LZG0VFeXTlVbWAsw8wTs8TZUiHtCQbm0YlgTkkqUMJP7dg8uTS
+         M29zxxwnR5LZtqqMzf2DuXaSBoDj8ObWTCVdbKBBnDvmGvMo1jOKcUp+LcK/ScHCT+ZH
+         AqCDRVaoJMqk8XbJKGWrwGh2XCsyWqUNo/RIXwqJE2eTrtR9WhgAmEwfFMc8/zG1yxOA
+         /MAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cnGSAwofHH4yKER93kwGtV9lmYaeZyjZriv6vXVyWyo=;
+        bh=Z4L3nI7wR/SVhNHr/XVqJtZAzytK6Ic2h7XDN6tz6YM=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=BHiJiq8fI6aSp4xkmC9iqJZ42/gsuuonj8R75vK2QFXg4H+P/z+KlEiJxsds8wHY/+
-         47l0+2YWXrvOeVBz4vDl8/boF3aBj8Y7WVZzeDjh+2rYlHczfQaxKmAMpjA8u9lg8KYy
-         opVudSD4/89ND/iAfNNAc3uMiT1H2KwwB60HpID3H1xjWbH0LL4QOlXoz/JZOmwFQ3/v
-         Bg7L/nUfTi2DUjKG+FXMWrlcjcalVlGPX6sdJ70at4ZyHT+nwGlJwNA049crIaYbGwqM
-         i10vqOWjuWJZLkGvX30ZQOHyRFldRfVIx3OHPmPn7rj3ib91wSzmtKFxeCEYqj2W66Wh
-         yTdA==
+        b=MQfqlc0Xdl5doKs3PMij48RVThQbQlOJ3ThrmXvEpjPCood4ImWiz5MXtQF0GuB5es
+         STQ7YM/2nxZ2LnBAQmlO7z/qXvRypAgNlITuovEP21q2T8CCwiZaD1xANBdW5diOWMkt
+         tjIBB14VSC2LF8u3MlJ9qMrgnj1Sa9m55HV/XGc0+t7EdYQJs1/YD3JrQKyqvkGi8IBt
+         5I0ePNY5Jz3Cyi7+j0XvVXx93tPg2Xu3ynlOzYUnfKM8zaEsebtjKryPPDT/DnAJI16N
+         zEqP4sIgVQDgk6Tufvvp2TRigVGltd8mNScYip1KafrGKPUladN/2oJdkT4P2x3ioSRE
+         YvVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=G3N9dKrJ;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=I2Zpp7Yf;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id p9-20020a05620a22a900b0077a2952b4a0si1103260qkh.696.2023.11.30.06.36.42
+        by mx.google.com with ESMTPS id p9-20020a05620a22a900b0077a2952b4a0si1103260qkh.696.2023.11.30.06.36.45
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:36:43 -0800 (PST)
+        Thu, 30 Nov 2023 06:36:46 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=G3N9dKrJ;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=I2Zpp7Yf;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701355003; x=1732891003;
+  t=1701355005; x=1732891005;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=RjfOv7ECY6GXSAStu2RlCVg7nYnpovILbpK6PYk0aaQ=;
-  b=G3N9dKrJ30FzhYjN91aotKNcJB3hwkODcoyjQqHB/DWYJrn0Muk03/8Z
-   WEdKLIQD8BQpVZxPTJ+C8zemoBFd4yxtEwmX2QKWbjkiKGZGqhgiQWJ9W
-   +GQmLAZZ0w+COB4pdylve2WWCPYvXpNUpnpcUqHx2xnp+PhsQCWnTy2ew
-   Ee+hIG06YqG+QxJK0lWMjl87cMJDt+EYbIcIIEU4Z3vYqBYMbSSEsoMEe
-   nP0cR5UmZgzGM91jaOIK9vMllhEaX9xiJZPSsIDhwlvUaLy3yfE7XMGaH
-   gBbMVEdi1nsiiWFthyvuuC0fJLrpLcJuPboBoPRiWsGPP00ne++HbkHux
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532716"
+  bh=q0lEBoFOr9b0x5amAD6sBLj9mxt45Se06XmWgm72SHY=;
+  b=I2Zpp7YfKafKc+4uvKI8wb5m2sbw2DBaNkKbjkebWHu6uP60+DGO6EiB
+   hjRGH4Kq2qoPWZ2aREu+Ee9svZVtMHQm2XYaLqsC8Fr+IfmMQsegrjL7Q
+   0BoqxjLrzcKPXRHCFVdH71eae8PvGqTijXkyBdJ5ycz4FCYMUDaXWw+9Z
+   QepGwSLS0BsMQOImCKm10AvPZR5iUmXeHW7Xo+HRql/hYn5GB79fjZHdl
+   Gr++MZLnFQjL+nWOhcQm80vOBrcDd3eqtxcMFsFVxUZtlnoenuZqs+eHl
+   84fGA1prnqvmrWM8eex/NFp79c/6FahW32xdGQ8nqbJsqpYbOZlGTi32u
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479532781"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479532716"
+   d="scan'208";a="479532781"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:36:34 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:36:43 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730519"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942730530"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942730519"
+   d="scan'208";a="942730530"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:36:24 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:36:33 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,234 +102,193 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 38/41] hw/i386: Wrap apic id and topology sub ids assigning as helpers
-Date: Thu, 30 Nov 2023 22:42:00 +0800
-Message-Id: <20231130144203.2307629-39-zhao1.liu@linux.intel.com>
+Subject: [RFC 39/41] hw/i386: Add the interface to search parent for QOM topology
+Date: Thu, 30 Nov 2023 22:42:01 +0800
+Message-Id: <20231130144203.2307629-40-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: TFni6bi8Mvvu
+X-TUID: goK05fgIH8x2
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-For QOM topology, these 2 helpers are needed for hotplugged CPU to
-verify its topology sub indexes and then search its parent core.
+QOM topology needs to search parent cpu-core for hotplugged CPU to
+create topology child<> property in qdev_set_id().
+
+This process is before x86_cpu_pre_plug(), thus place 2 helpers
+x86_cpu_assign_apic_id() and x86_cpu_assign_topo_id() in
+x86_cpu_search_parent_pre_plug() to help get the correct topology sub
+indexes. Then x86_cpu_search_parent_pre_plug() searches the parent
+cpu-core with these sub indexes.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/i386/x86.c | 173 ++++++++++++++++++++++++++++----------------------
- 1 file changed, 96 insertions(+), 77 deletions(-)
+ hw/i386/x86.c         | 128 +++++++++++++++++++++++++++++++++++++++---
+ include/hw/i386/x86.h |   3 +
+ 2 files changed, 122 insertions(+), 9 deletions(-)
 
 diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index febffed92a83..04edd6de6aeb 100644
+index 04edd6de6aeb..595d4365fdd1 100644
 --- a/hw/i386/x86.c
 +++ b/hw/i386/x86.c
-@@ -306,6 +306,98 @@ void x86_cpu_unplug_cb(HotplugHandler *hotplug_dev,
-     error_propagate(errp, local_err);
- }
- 
-+static void x86_cpu_assign_apic_id(MachineState *ms, X86CPU *cpu,
-+                                   X86CPUTopoIDs *topo_ids,
-+                                   X86CPUTopoInfo *topo_info,
-+                                   Error **errp)
-+{
-+    int max_socket = (ms->smp.max_cpus - 1) /
-+                     ms->smp.threads / ms->smp.cores / ms->smp.dies;
-+
-+    /*
-+     * die-id was optional in QEMU 4.0 and older, so keep it optional
-+     * if there's only one die per socket.
-+     */
-+    if (cpu->die_id < 0 && ms->smp.dies == 1) {
-+        cpu->die_id = 0;
-+    }
-+
-+    if (cpu->socket_id < 0) {
-+        error_setg(errp, "CPU socket-id is not set");
-+        return;
-+    } else if (cpu->socket_id > max_socket) {
-+        error_setg(errp, "Invalid CPU socket-id: %u must be in range 0:%u",
-+                   cpu->socket_id, max_socket);
-+        return;
-+    }
-+    if (cpu->die_id < 0) {
-+        error_setg(errp, "CPU die-id is not set");
-+        return;
-+    } else if (cpu->die_id > ms->smp.dies - 1) {
-+        error_setg(errp, "Invalid CPU die-id: %u must be in range 0:%u",
-+                   cpu->die_id, ms->smp.dies - 1);
-+        return;
-+    }
-+    if (cpu->core_id < 0) {
-+        error_setg(errp, "CPU core-id is not set");
-+        return;
-+    } else if (cpu->core_id > (ms->smp.cores - 1)) {
-+        error_setg(errp, "Invalid CPU core-id: %u must be in range 0:%u",
-+                   cpu->core_id, ms->smp.cores - 1);
-+        return;
-+    }
-+    if (cpu->thread_id < 0) {
-+        error_setg(errp, "CPU thread-id is not set");
-+        return;
-+    } else if (cpu->thread_id > (ms->smp.threads - 1)) {
-+        error_setg(errp, "Invalid CPU thread-id: %u must be in range 0:%u",
-+                   cpu->thread_id, ms->smp.threads - 1);
-+        return;
-+    }
-+
-+    topo_ids->pkg_id = cpu->socket_id;
-+    topo_ids->die_id = cpu->die_id;
-+    topo_ids->core_id = cpu->core_id;
-+    topo_ids->smt_id = cpu->thread_id;
-+    cpu->apic_id = x86_apicid_from_topo_ids(topo_info, topo_ids);
-+}
-+
-+static void x86_cpu_assign_topo_id(X86CPU *cpu,
-+                                   X86CPUTopoIDs *topo_ids,
-+                                   Error **errp)
-+{
-+    if (cpu->socket_id != -1 && cpu->socket_id != topo_ids->pkg_id) {
-+        error_setg(errp, "property socket-id: %u doesn't match set apic-id:"
-+            " 0x%x (socket-id: %u)", cpu->socket_id, cpu->apic_id,
-+            topo_ids->pkg_id);
-+        return;
-+    }
-+    cpu->socket_id = topo_ids->pkg_id;
-+
-+    if (cpu->die_id != -1 && cpu->die_id != topo_ids->die_id) {
-+        error_setg(errp, "property die-id: %u doesn't match set apic-id:"
-+            " 0x%x (die-id: %u)", cpu->die_id, cpu->apic_id, topo_ids->die_id);
-+        return;
-+    }
-+    cpu->die_id = topo_ids->die_id;
-+
-+    if (cpu->core_id != -1 && cpu->core_id != topo_ids->core_id) {
-+        error_setg(errp, "property core-id: %u doesn't match set apic-id:"
-+            " 0x%x (core-id: %u)", cpu->core_id, cpu->apic_id,
-+            topo_ids->core_id);
-+        return;
-+    }
-+    cpu->core_id = topo_ids->core_id;
-+
-+    if (cpu->thread_id != -1 && cpu->thread_id != topo_ids->smt_id) {
-+        error_setg(errp, "property thread-id: %u doesn't match set apic-id:"
-+            " 0x%x (thread-id: %u)", cpu->thread_id, cpu->apic_id,
-+            topo_ids->smt_id);
-+        return;
-+    }
-+    cpu->thread_id = topo_ids->smt_id;
-+}
-+
- void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-                       DeviceState *dev, Error **errp)
- {
-@@ -317,8 +409,6 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-     CPUX86State *env = &cpu->env;
-     MachineState *ms = MACHINE(hotplug_dev);
-     X86MachineState *x86ms = X86_MACHINE(hotplug_dev);
--    unsigned int smp_cores = ms->smp.cores;
--    unsigned int smp_threads = ms->smp.threads;
-     X86CPUTopoInfo topo_info;
- 
-     if (!object_dynamic_cast(OBJECT(cpu), ms->cpu_type)) {
-@@ -347,55 +437,10 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-      * set it based on socket/die/core/thread properties.
-      */
-     if (cpu->apic_id == UNASSIGNED_APIC_ID) {
--        int max_socket = (ms->smp.max_cpus - 1) /
--                                smp_threads / smp_cores / ms->smp.dies;
--
--        /*
--         * die-id was optional in QEMU 4.0 and older, so keep it optional
--         * if there's only one die per socket.
--         */
--        if (cpu->die_id < 0 && ms->smp.dies == 1) {
--            cpu->die_id = 0;
--        }
--
--        if (cpu->socket_id < 0) {
--            error_setg(errp, "CPU socket-id is not set");
--            return;
--        } else if (cpu->socket_id > max_socket) {
--            error_setg(errp, "Invalid CPU socket-id: %u must be in range 0:%u",
--                       cpu->socket_id, max_socket);
-+        x86_cpu_assign_apic_id(ms, cpu, &topo_ids, &topo_info, errp);
-+        if (*errp) {
-             return;
-         }
--        if (cpu->die_id < 0) {
--            error_setg(errp, "CPU die-id is not set");
--            return;
--        } else if (cpu->die_id > ms->smp.dies - 1) {
--            error_setg(errp, "Invalid CPU die-id: %u must be in range 0:%u",
--                       cpu->die_id, ms->smp.dies - 1);
--            return;
--        }
--        if (cpu->core_id < 0) {
--            error_setg(errp, "CPU core-id is not set");
--            return;
--        } else if (cpu->core_id > (smp_cores - 1)) {
--            error_setg(errp, "Invalid CPU core-id: %u must be in range 0:%u",
--                       cpu->core_id, smp_cores - 1);
--            return;
--        }
--        if (cpu->thread_id < 0) {
--            error_setg(errp, "CPU thread-id is not set");
--            return;
--        } else if (cpu->thread_id > (smp_threads - 1)) {
--            error_setg(errp, "Invalid CPU thread-id: %u must be in range 0:%u",
--                       cpu->thread_id, smp_threads - 1);
--            return;
--        }
--
--        topo_ids.pkg_id = cpu->socket_id;
--        topo_ids.die_id = cpu->die_id;
--        topo_ids.core_id = cpu->core_id;
--        topo_ids.smt_id = cpu->thread_id;
--        cpu->apic_id = x86_apicid_from_topo_ids(&topo_info, &topo_ids);
-     }
- 
-     cpu_slot = x86_find_cpu_slot(MACHINE(x86ms), cpu->apic_id, &idx);
-@@ -422,36 +467,10 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
-      * once -smp refactoring is complete and there will be CPU private
-      * CPUState::nr_cores and CPUState::nr_threads fields instead of globals */
-     x86_topo_ids_from_apicid(cpu->apic_id, &topo_info, &topo_ids);
--    if (cpu->socket_id != -1 && cpu->socket_id != topo_ids.pkg_id) {
--        error_setg(errp, "property socket-id: %u doesn't match set apic-id:"
--            " 0x%x (socket-id: %u)", cpu->socket_id, cpu->apic_id,
--            topo_ids.pkg_id);
--        return;
--    }
--    cpu->socket_id = topo_ids.pkg_id;
--
--    if (cpu->die_id != -1 && cpu->die_id != topo_ids.die_id) {
--        error_setg(errp, "property die-id: %u doesn't match set apic-id:"
--            " 0x%x (die-id: %u)", cpu->die_id, cpu->apic_id, topo_ids.die_id);
--        return;
--    }
--    cpu->die_id = topo_ids.die_id;
--
--    if (cpu->core_id != -1 && cpu->core_id != topo_ids.core_id) {
--        error_setg(errp, "property core-id: %u doesn't match set apic-id:"
--            " 0x%x (core-id: %u)", cpu->core_id, cpu->apic_id,
--            topo_ids.core_id);
--        return;
--    }
--    cpu->core_id = topo_ids.core_id;
--
--    if (cpu->thread_id != -1 && cpu->thread_id != topo_ids.smt_id) {
--        error_setg(errp, "property thread-id: %u doesn't match set apic-id:"
--            " 0x%x (thread-id: %u)", cpu->thread_id, cpu->apic_id,
--            topo_ids.smt_id);
-+    x86_cpu_assign_topo_id(cpu, &topo_ids, errp);
-+    if (*errp) {
+@@ -460,16 +460,18 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
          return;
      }
--    cpu->thread_id = topo_ids.smt_id;
+ 
+-    /* if 'address' properties socket-id/core-id/thread-id are not set, set them
+-     * so that machine_query_hotpluggable_cpus would show correct values
++    /*
++     * possible_cpus_qom_granu means the QOM topology support.
++     *
++     * TODO: Drop the "!mc->smp_props.possible_cpus_qom_granu" case when
++     * i386 completes QOM topology support.
+      */
+-    /* TODO: move socket_id/core_id/thread_id checks into x86_cpu_realizefn()
+-     * once -smp refactoring is complete and there will be CPU private
+-     * CPUState::nr_cores and CPUState::nr_threads fields instead of globals */
+-    x86_topo_ids_from_apicid(cpu->apic_id, &topo_info, &topo_ids);
+-    x86_cpu_assign_topo_id(cpu, &topo_ids, errp);
+-    if (*errp) {
+-        return;
++    if (!mc->smp_props.possible_cpus_qom_granu) {
++        x86_topo_ids_from_apicid(cpu->apic_id, &topo_info, &topo_ids);
++        x86_cpu_assign_topo_id(cpu, &topo_ids, errp);
++        if (*errp) {
++            return;
++        }
+     }
  
      if (hyperv_feat_enabled(cpu, HYPERV_FEAT_VPINDEX) &&
-         kvm_enabled() && !kvm_hv_vpindex_settable()) {
+@@ -484,6 +486,114 @@ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
+     numa_cpu_pre_plug(cpu_slot, dev, errp);
+ }
+ 
++static int x86_cpu_get_topo_id_by_level(X86CPU *cpu,
++                                        CPUTopoLevel level)
++{
++    switch (level) {
++    case CPU_TOPO_THREAD:
++        return cpu->thread_id;
++    case CPU_TOPO_CORE:
++        return cpu->core_id;
++    case CPU_TOPO_DIE:
++        return cpu->die_id;
++    case CPU_TOPO_SOCKET:
++        return cpu->socket_id;
++    default:
++        g_assert_not_reached();
++    }
++
++    return -1;
++}
++
++typedef struct SearchCoreCb {
++    X86CPU *cpu;
++    CPUTopoState *parent;
++    int id;
++} SearchCoreCb;
++
++static int x86_cpu_search_parent_core(CPUTopoState *topo,
++                                      void *opaque)
++{
++    SearchCoreCb *cb = opaque;
++    CPUTopoLevel level = CPU_TOPO_LEVEL(topo);
++
++    cb->parent = topo;
++    cb->id = x86_cpu_get_topo_id_by_level(cb->cpu, level);
++
++    if (cb->id == topo->index) {
++        if (level == CPU_TOPO_CORE) {
++            return TOPO_FOREACH_END;
++        }
++        return TOPO_FOREACH_CONTINUE;
++    }
++    return TOPO_FOREACH_SIBLING;
++}
++
++Object *x86_cpu_search_parent_pre_plug(CPUTopoState *topo,
++                                       CPUTopoState *root,
++                                       Error **errp)
++{
++    int ret;
++    SearchCoreCb cb;
++    X86CPUTopoIDs topo_ids;
++    X86CPUTopoInfo topo_info;
++    X86CPU *cpu = X86_CPU(topo);
++    CPUSlot *slot = CPU_SLOT(root);
++    MachineState *ms = slot->ms;
++    DECLARE_BITMAP(foreach_bitmap, USER_AVAIL_LEVEL_NUM);
++
++    topo_info.dies_per_pkg = ms->smp.dies;
++    topo_info.cores_per_die = ms->smp.cores;
++    topo_info.threads_per_core = ms->smp.threads;
++
++    if (cpu->apic_id == UNASSIGNED_APIC_ID) {
++        x86_cpu_assign_apic_id(ms, cpu, &topo_ids, &topo_info, errp);
++        if (*errp) {
++            return NULL;
++        }
++    } else {
++        /*
++         * if 'address' properties socket-id/core-id/thread-id are not set,
++         * set them so that machine_query_hotpluggable_cpus would show
++         * correct values.
++         *
++         * TODO: move socket_id/core_id/thread_id checks into
++         * x86_cpu_realizefn() once -smp refactoring is complete and there
++         * will be CPU private CPUState::nr_cores and CPUState::nr_threads
++         * fields instead of globals.
++         */
++        x86_topo_ids_from_apicid(cpu->apic_id, &topo_info, &topo_ids);
++    }
++
++    x86_cpu_assign_topo_id(cpu, &topo_ids, errp);
++    if (*errp) {
++        return NULL;
++    }
++
++    cb.cpu = cpu;
++    cb.parent = NULL;
++    cb.id = -1;
++    bitmap_fill(foreach_bitmap, USER_AVAIL_LEVEL_NUM);
++    clear_bit(CPU_TOPO_UNKNOWN, foreach_bitmap);
++    clear_bit(CPU_TOPO_THREAD, foreach_bitmap);
++
++    ret = cpu_topo_child_foreach_recursive(root, foreach_bitmap,
++                                           x86_cpu_search_parent_core, &cb);
++    if (ret != TOPO_FOREACH_END) {
++        g_autofree char *search_info = NULL;
++
++        search_info = !cb.parent ? g_strdup("") :
++            g_strdup_printf(" for %s level with id: %d",
++            cpu_topo_level_to_string(CPU_TOPO_LEVEL(cb.parent)), cb.id);
++        error_setg(errp, "Can't find parent%s", search_info);
++        return NULL;
++    }
++
++    /* Keep the index of CPU topology device the same as the thread_id. */
++    topo->index = cpu->thread_id;
++    return OBJECT(cb.parent);
++}
++
+ CpuInstanceProperties
+ x86_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+ {
+diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
+index 19e9f93fe286..e8c9ddc36359 100644
+--- a/include/hw/i386/x86.h
++++ b/include/hw/i386/x86.h
+@@ -104,6 +104,9 @@ int64_t x86_get_default_cpu_node_id(const MachineState *ms, int idx);
+ const CPUArchIdList *x86_possible_cpu_arch_ids(MachineState *ms);
+ CPUArchId *x86_find_cpu_slot(MachineState *ms, uint32_t id, int *idx);
+ void x86_rtc_set_cpus_count(ISADevice *rtc, uint16_t cpus_count);
++Object *x86_cpu_search_parent_pre_plug(CPUTopoState *topo,
++                                       CPUTopoState *root,
++                                       Error **errp);
+ void x86_cpu_pre_plug(HotplugHandler *hotplug_dev,
+                       DeviceState *dev, Error **errp);
+ void x86_cpu_plug(HotplugHandler *hotplug_dev,
 -- 
 2.34.1

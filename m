@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp269064ejb;
-        Thu, 30 Nov 2023 06:32:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFm4yLjjyppTqYIk4oC1YsXlIoa9irRoZKWdpAo/be9vTJl/hWB3JS/s7S35eMOe5p0lUHf
-X-Received: by 2002:a05:6808:10cd:b0:3b2:ec66:d868 with SMTP id s13-20020a05680810cd00b003b2ec66d868mr29994405ois.41.1701354756588;
-        Thu, 30 Nov 2023 06:32:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354756; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp269182ejb;
+        Thu, 30 Nov 2023 06:32:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF0R4R+YQyolqdko5KNqe3aw8Bl6JYCxQjjxSL8lLWFYT70wZev2uS+CueRcfPIHvJpG/iv
+X-Received: by 2002:a05:622a:209:b0:41e:29ac:1300 with SMTP id b9-20020a05622a020900b0041e29ac1300mr26618397qtx.27.1701354766185;
+        Thu, 30 Nov 2023 06:32:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354766; cv=none;
         d=google.com; s=arc-20160816;
-        b=0No7GhqffeYn2mN1LmjicZrztoIzqvISdwSUu9FKymuTETvlLXCr5Y4lopmg5lmSXS
-         VGnh8B6J+BQrHlM1rjNqkmfkvdzpCakBNM+IZOYc+98ByiKjUeEz5hgxFgkvo++dyCS8
-         U3SF+LTAscR47vchd+jJto48/SA5Dj7TxtIzD5OlPdyhmWfKgOG0KXZtoiYHD/8PGQjK
-         jWOqcSwPR5ZgExp+bddRg/vWqFkcTpRD1Tgh3wUwD5E6Ag5MfqRKYAPQ46PrBqMunC03
-         EdZ81O0EviHA0wMphXgVYsbzzkZLIGtYD7MsFeJszEbE1xQO70chK39xaqufWi7XAExE
-         OxvQ==
+        b=Pw/9aTYxRe+5PEyHBJlgJPHCvAk/zBWXOluwT7w+tij6BXNqJR6ctf79kVNQ2nfGG/
+         kgNa92g9oXhNHxNTDZZqp9ekdsyKe3MA053muq+51JFRLVgJlm1kMJFRw11r6FpmIJpE
+         FeYKNDHS9VEuVTAR+MxmXdj+SfJiQgdZ60pcIKPO0aeKfDOaed/AaUaew7zPiPCnt9IR
+         mbALkAX6mZITo3djtQe1tZXMNzAC0r9Pzgla7QpBt2mYTKkdnzQbrCsH+ufXhqSoXFRF
+         e901xMNBLDD7cQ+g5/T7DA9aM3bzuW2Qb8tPDfPDw9BAtLf1+/tRYJQrfE2SXCCWsZTX
+         5p0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ihp/jx5seYg7c0g5X0s3RsUl526zGV7js1rt+zrZCHs=;
+        bh=8fHZmOwnvs/K8ZQ2CmExFFPXoErkUG0bXhl59nNixrE=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=KePPMVJ2B0Mak601NDfUXTJRO2egqKAu+baSRiMAKg9xMiaqbkNAjfxGGPweDBolcv
-         iXWG8DTm1ne5V4VzsQPZ/mtoLXfKqSnqJzxaNhA3wryL+h6JaMKRZD5qAxdKiOQa3EHR
-         HAriFgLkCxtk7/pnNu3luMCGmtldyHuhN2iyxX/91qjqL0nIpZd6PsR61QyP/Dw26vfv
-         VDqUsOG2HNCpGwwKbLOi5BHCCfwooIDR6yLQe5BJ1OJjJYIDGSylcWFebf8Hn1p9JVlo
-         If+oMFQt/VgGbHdLMOLkQWsjJgvrcHyYQVQ77Yu3q4WdP/9uJT/nxdohZZJzPUoYlfty
-         iueQ==
+        b=a5xgK7RNKvFMLhfUW2niu6f5miCPZio0zHmwJn6oNmSRSNK6G8hod3ZPV04gFN8A7D
+         UQS8wGmMcMbIMb12xKQ2aXru4CBJA78Qt1Twmb/4a5b8bS+ewsiZWLt+sgIh/CPP4Kl7
+         MSqEm8qh1D3omSEhLOyaBP3ff+rTvVNBu3DvsaEOThZvQIr6zTV8gHtDqasHCF5oCZoj
+         TH9F5HYGrvdYk+i31e9gsux1+4DPCDEqyMxpYL8f1rAyHPt2MGdvQ7koTmw5sJwy5h3e
+         0OaWjTQA5vtN1P6Qxve5BqfNHiTmZ5A1MLwK4Mk3enuTIlgSfuLVntZIuH33mZAk4kTA
+         GHEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=XLB9kBVX;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=mZ8qI8ub;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id v6-20020a05622a130600b00423e77b183fsi1200560qtk.710.2023.11.30.06.32.34
+        by mx.google.com with ESMTPS id v6-20020a05622a130600b00423e77b183fsi1200560qtk.710.2023.11.30.06.32.39
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:32:36 -0800 (PST)
+        Thu, 30 Nov 2023 06:32:46 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=XLB9kBVX;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=mZ8qI8ub;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354756; x=1732890756;
+  t=1701354765; x=1732890765;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=qW0hllcBGqseRYTHsmnEpW0X6HH9DmoP+0BU5Dr4Av4=;
-  b=XLB9kBVX/3kSERjHtrnb57vUN8VMf87YrvycEkKe3yun4DiR0bYSrlvT
-   uvpt8z6DHvshgrbVmNz6/3wumQQFY7cVonZObh0usBwo+PncLjk8/g9id
-   olqdAG4aHBCs8iBU6SlnuMJnI9eXFH4XOI5mNRBlBh9YIGBlVUjkMrAM3
-   6YdV1T3QAYC5jsUiITFi9dr/AIwlkKra1Y4Ke84Z5ySQxDvuG3/8WiTpB
-   dvxmnPCx1pGzTgB1j897ZYb1Jz/AF8TcCwvGrfgNYzmeFN4K9PirKsC0Y
-   cOrpwJiawOBCPBBQFtKJBEOL4Xsc6Yx5iRPR8oA1CkJIGr9z3HyfVlH1P
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531605"
+  bh=giqm05kbC3tYOPrffoLra7vHI+bWgR59/qNt+YCSQ+8=;
+  b=mZ8qI8ub3MMMskDdP7+C3sRyGHhe3sCp61bSKMM5w726qOPQO93UL0K9
+   4D4dQEX/UigaEkqMbjY2MFz4fzvmPXmjRhcdsoI0Ua7UdjtvcWR5YjgXP
+   q6ejxTVjeSWtOVBnU770FySTrQurqpG1vwwNtzX6e6QkarHtLN2OgYpR1
+   IQp1vEU2JWG4o+QRL/PDty+51XkuAlLAV51Czis1kc1BBMrCmZMi6zSAF
+   WW3zQbHUcShd4de4p9ve+6HmPGXra52WhitZT5BCcTv8n7Js4VDhHHAHw
+   g2qPK1q2uy9s+N2W7D7JdbzM+JRcD6oUQecHC3jqHB8OKp+5ZPqDOtYic
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531665"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479531605"
+   d="scan'208";a="479531665"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:32:17 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:32:26 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729823"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729853"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942729823"
+   d="scan'208";a="942729853"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:32:07 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:32:17 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,92 +102,99 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 11/41] hw/core/topo: Add virtual method to check topology child
-Date: Thu, 30 Nov 2023 22:41:33 +0800
-Message-Id: <20231130144203.2307629-12-zhao1.liu@linux.intel.com>
+Subject: [RFC 12/41] hw/core/topo: Add helpers to traverse the CPU topology tree
+Date: Thu, 30 Nov 2023 22:41:34 +0800
+Message-Id: <20231130144203.2307629-13-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 17nmciEX8QpZ
+X-TUID: bvBnMC3HWWm7
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-When a new topology child is to be inserted into the topology tree, its
-parents (including non-direct parents) need to check if this child is
-supported.
+The topology devices will be organized as a topology tree. Each topology
+device may have many topology children with lower topology level.
 
-Add the virtual method to allow topology device to check the support for
-their topology children.
+Add the helpers to traverse the CPU topology tree.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/core/cpu-topo.c         | 22 ++++++++++++++++++++++
- include/hw/core/cpu-topo.h |  4 ++++
- 2 files changed, 26 insertions(+)
+ hw/core/cpu-topo.c         | 41 ++++++++++++++++++++++++++++++++++++++
+ include/hw/core/cpu-topo.h | 13 ++++++++++++
+ 2 files changed, 54 insertions(+)
 
 diff --git a/hw/core/cpu-topo.c b/hw/core/cpu-topo.c
-index e244f0a3564e..cba2dc747e74 100644
+index cba2dc747e74..687a4cc566ec 100644
 --- a/hw/core/cpu-topo.c
 +++ b/hw/core/cpu-topo.c
-@@ -168,6 +168,23 @@ static void cpu_topo_update_info(CPUTopoState *topo, bool is_realize)
-     }
+@@ -318,3 +318,44 @@ static void cpu_topo_register_types(void)
  }
  
-+static void cpu_topo_check_support(CPUTopoState *topo, Error **errp)
-+{
-+    CPUTopoState *parent = topo->parent;
-+    CPUTopoClass *tc;
+ type_init(cpu_topo_register_types)
 +
-+    while (parent) {
-+        tc = CPU_TOPO_GET_CLASS(parent);
-+        if (tc->check_topo_child) {
-+            tc->check_topo_child(parent, topo, errp);
-+            if (*errp) {
-+                return;
++static int do_cpu_topo_child_foreach(CPUTopoState *topo,
++                                     unsigned long *levels,
++                                     topo_fn fn, void *opaque,
++                                     bool recurse)
++{
++    CPUTopoState *child;
++    int ret = TOPO_FOREACH_CONTINUE;
++
++    QTAILQ_FOREACH(child, &topo->children, sibling) {
++        if (!levels || (levels && test_bit(CPU_TOPO_LEVEL(child), levels))) {
++            ret = fn(child, opaque);
++            if (ret == TOPO_FOREACH_END || ret == TOPO_FOREACH_ERR) {
++                break;
++            } else if (ret == TOPO_FOREACH_SIBLING) {
++                continue;
 +            }
 +        }
-+        parent = parent->parent;
++
++        if (recurse) {
++            ret = do_cpu_topo_child_foreach(child, levels, fn, opaque, recurse);
++            if (ret != TOPO_FOREACH_CONTINUE) {
++                break;
++            }
++        }
 +    }
++    return ret;
 +}
 +
- static void cpu_topo_set_parent(CPUTopoState *topo, Error **errp)
- {
-     Object *obj = OBJECT(topo);
-@@ -191,6 +208,11 @@ static void cpu_topo_set_parent(CPUTopoState *topo, Error **errp)
-     }
- 
-     if (topo->parent) {
-+        cpu_topo_check_support(topo, errp);
-+        if (*errp) {
-+            return;
-+        }
++int cpu_topo_child_foreach(CPUTopoState *topo, unsigned long *levels,
++                           topo_fn fn, void *opaque)
++{
++    return do_cpu_topo_child_foreach(topo, levels, fn, opaque, false);
++}
 +
-         cpu_topo_build_hierarchy(topo, errp);
-         if (*errp) {
-             return;
++int cpu_topo_child_foreach_recursive(CPUTopoState *topo,
++                                     unsigned long *levels,
++                                     topo_fn fn, void *opaque)
++{
++    return do_cpu_topo_child_foreach(topo, levels, fn, opaque, true);
++}
 diff --git a/include/hw/core/cpu-topo.h b/include/hw/core/cpu-topo.h
-index 79cd8606feca..1ffdb0be6d38 100644
+index 1ffdb0be6d38..453bacbb558b 100644
 --- a/include/hw/core/cpu-topo.h
 +++ b/include/hw/core/cpu-topo.h
-@@ -46,6 +46,8 @@ OBJECT_DECLARE_TYPE(CPUTopoState, CPUTopoClass, CPU_TOPO)
-  * @level: Topology level for this CPUTopoClass.
-  * @update_topo_info: Method to update topology information statistics when
-  *     new child (including direct child and non-direct child) is added.
-+ * @check_topo_child: Method to check the support for new child (including
-+ *     direct child and non-direct child) to be added.
-  */
- struct CPUTopoClass {
-     /*< private >*/
-@@ -55,6 +57,8 @@ struct CPUTopoClass {
-     CPUTopoLevel level;
-     void (*update_topo_info)(CPUTopoState *parent, CPUTopoState *child,
-                              bool is_realize);
-+    void (*check_topo_child)(CPUTopoState *parent, CPUTopoState *child,
-+                             Error **errp);
- };
+@@ -90,4 +90,17 @@ struct CPUTopoState {
  
- /**
+ #define CPU_TOPO_LEVEL(topo)    (CPU_TOPO_GET_CLASS(topo)->level)
+ 
++#define TOPO_FOREACH_SIBLING         2
++#define TOPO_FOREACH_END             1
++#define TOPO_FOREACH_CONTINUE        0
++#define TOPO_FOREACH_ERR             -1
++
++typedef int (*topo_fn)(CPUTopoState *topo, void *opaque);
++
++int cpu_topo_child_foreach(CPUTopoState *topo, unsigned long *levels,
++                           topo_fn fn, void *opaque);
++int cpu_topo_child_foreach_recursive(CPUTopoState *topo,
++                                     unsigned long *levels,
++                                     topo_fn fn, void *opaque);
++
+ #endif /* CPU_TOPO_H */
 -- 
 2.34.1

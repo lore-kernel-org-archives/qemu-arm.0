@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp268461ejb;
-        Thu, 30 Nov 2023 06:31:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEFSlgJH6KR/c0MMJsZqOAMKQAx4pmEzt4vID6Nl2oL/bNia669ejgSYBzlm+/4lD7zHkKb
-X-Received: by 2002:ac8:458d:0:b0:423:d75a:b126 with SMTP id l13-20020ac8458d000000b00423d75ab126mr8849404qtn.18.1701354712420;
-        Thu, 30 Nov 2023 06:31:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701354712; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp268607ejb;
+        Thu, 30 Nov 2023 06:32:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHJgXHSM6LcOvKweCKhVgp6RYVlMH5kaGEfpE/3BwxilHgdSLtWUyFIXna6yDwCVhZJ4Ihw
+X-Received: by 2002:ad4:58ce:0:b0:67a:220a:ad8e with SMTP id dh14-20020ad458ce000000b0067a220aad8emr19062928qvb.28.1701354721997;
+        Thu, 30 Nov 2023 06:32:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701354721; cv=none;
         d=google.com; s=arc-20160816;
-        b=v2Uf9+8zyq1lHdINmOJzLScxUFadYeUHG2Q5retwTKhf6rUctEofkVkDXBn5fA//pE
-         +H1WpK1JWECBh/h657g3SGXVTTmvVRHZz3k/ETm34j1uC7auIFsehqvbiDEDuKdqeiu5
-         6sLC31NClLmLhbK0hZYav4fMuHcQ14HpK+EcwOk6+ZlSKE6RyGavzdzJ9UV0ohl3RyDW
-         KCGpfihM8tZ7p0GvGH0PZFZNuXCJBglvnOS1JEW/SP3bi5zCI8AEyzXXthtZCBTR/qB/
-         MsJu+9jK648D42KZXHlvqvUoznJ66BbNgcsshIMMEhq27/8tkCeEh5CO9uvBmq6Jhv1O
-         l04g==
+        b=KmoKPFlDnVAZHgG83Y7K704Zrxs433UaLPWLHbniDttEB2FN0CR7GtGne9QnAn1bvJ
+         FhCEXEVfSNL1Pu2AmXdHcGZM4lRJqnRumVGOS2p+4FJii8sa3mFMzgQkl0L2B1+/oCoz
+         8BRHkgzgtrjs4LYn4X9S0qFU8CtlTiCrHfadaLPWWfVhbMEu4wpOZBQVvmCiXaqo+fUF
+         lYV7r4Z0bXC+zie1LhmhH0F+zWM7TXipfVeagjpcH1QAn9bmt2VanCLjDIIcSLMERxuO
+         eLRJXvSdC5kiLi3lO7cVwPgEhDSqSUefNeE6H4bTbIkiDpj5ptGVanCMKnpsZjQDtIIf
+         nPxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=w83/n3empgceTkPoMm4A45im5C1+QxHglZQSpg6/p7M=;
+        bh=KjSZ/wfBM79oEgKz1AQGUDHLr4Q0RYsd4RudUp23ac0=;
         fh=EvzXIS2ygU9QKs+dZ6sztfuJi5WQr5izWtbugpSw92U=;
-        b=D1pJNNU6Hw00+ylc42DdGlxuo6aZOylhJFMJEJmAD4ohyEInXkEq/Y67vKIYN/VbOg
-         dBSXUxhktaY1mEw3TvLseslar6Crderwy7rHCLAVkDqK8nFBMGeTRTPMmJEUk0XGDqvq
-         3n2tbGX3eClthQ318nDKwv2zqtzHscQ9uGk+3w7LL3Q2acFqUrK+ZDmavDDe+XKBloP7
-         R10LHF52bVBl1s1C7NeUpwk1lOMUH8XwAaoFoe2i/lyzsfsiGcyfrJTQu6QevDjMWhfI
-         iNT2OwBauEpSM3n3KnOClh7GtZWE8IJe0oQMW8CP0saO9p9WoRCBxeGLN2aSNQtnsAz4
-         GXbw==
+        b=CeHjpH2mXdSHQEGbnSvSeJXndJKt9EHhseYfek6gsx8FtB0WtS+KxgAbhmQCaCWPeH
+         gAkIowT8TTHIjoAdZV//L0l7EMjqsiHu/RucaOJZgbGsqzX3xytoddD6xk8/PfwuqKOa
+         gWkC6YSNj+6keBnsaQH1ITY0Xhp/6KzqZfY9nsa6Not/BDlkZcdmGdfwNkGE8YX15x+Y
+         Zwc5vYSXFZW1rXzurXZFWs2iULAgBDrHoUMARSQUIxBjpJbeqkSKzBN3OkSvVNwsPK7g
+         P720c7YrNfQTt+4lPji639wY57nH0bdramwXHu5SrNcdKZpVg5d6eEOgqF3XY1LJNboZ
+         31Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HtfMqBHH;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=X2Gjs1BD;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@linux.intel.com>
 Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.43])
-        by mx.google.com with ESMTPS id r5-20020ac84245000000b004239af652ccsi1123374qtm.1.2023.11.30.06.31.51
+        by mx.google.com with ESMTPS id et5-20020a056214176500b0067a3901b427si1098052qvb.270.2023.11.30.06.32.00
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 06:31:52 -0800 (PST)
+        Thu, 30 Nov 2023 06:32:01 -0800 (PST)
 Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=192.55.52.43;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HtfMqBHH;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=X2Gjs1BD;
        spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701354712; x=1732890712;
+  t=1701354721; x=1732890721;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=FvkKzJCE6FUWENQ9f97m08P62P/QoMoZpAQ1rnP03oI=;
-  b=HtfMqBHHZUN7GgJRWat9fIWsFbhJkMP4kLDyPJrkFVSgc68P71B6J9KH
-   h4MDq+Da2PJF8O8mzW2oB7HcQtW9oQaBJzWha7RJrHOxgHxUajKXquZ5+
-   k5SFchDNnnduvUwiL7l5Leg5heYe7kOS2aCbeACzpETnW/WU5jZiyR5CO
-   ZByDc/4VqhgrTLErOHeCmuc1L954soYl7YZJ6bEQwOYnmhUVkeQ9dfZDQ
-   Aj50DQIlBTJ64MBaIY+469zRzDq97JDKlDhbz187rR/cAOp7cM35d1N7y
-   5VF7AFFvaQfOsz6AT5X7J1LB9tt5XSvqXlKoIjfUcn9HOGsNw3es/4S0l
+  bh=g5Zw3I63TJXvQFrzB5uJb/WUPaoeW0TH6JE9nfaHRvc=;
+  b=X2Gjs1BDL3HcwpZbq51kOtazaSNcIHSN6lgDf+E6ZyjiTpHpy7SIO2wr
+   SRSodAr5MYGgn8BgqRCXrOQGCYFHEd8JFRA8xnH8PYxlFlf0i5yGylNvF
+   8CX+di/vhoRvTXnJ4xcah0YTjr3X6ubjzoiDTttf3tBpsRMQ6+wOApB/n
+   5oIMYIY0ziSVCCLn5gY342500hBv+Kles1jUOvD4LJaWVYjuA2Mc6Sim8
+   IhNLKMBqLOq3mDLvzf7nv83RyzmurrFBvlKPkAyZWWaS5g84eUqu0Hxio
+   G7sQn4hGV2Nroq/j4G4QEX/oH6L9c2bbJaePVGw5g+S6Xki2Me6KQ9XM8
    w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531154"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="479531248"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="479531154"
+   d="scan'208";a="479531248"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:31:20 -0800
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Nov 2023 06:31:29 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729654"
+X-IronPort-AV: E=McAfee;i="6600,9927,10910"; a="942729699"
 X-IronPort-AV: E=Sophos;i="6.04,239,1695711600"; 
-   d="scan'208";a="942729654"
+   d="scan'208";a="942729699"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:31:10 -0800
+  by orsmga005.jf.intel.com with ESMTP; 30 Nov 2023 06:31:20 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -102,67 +102,402 @@ Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>,
 	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC 05/41] qdev: Set device parent and id after setting properties
-Date: Thu, 30 Nov 2023 22:41:27 +0800
-Message-Id: <20231130144203.2307629-6-zhao1.liu@linux.intel.com>
+Subject: [RFC 06/41] qdev: Introduce user-child interface to collect devices from -device
+Date: Thu, 30 Nov 2023 22:41:28 +0800
+Message-Id: <20231130144203.2307629-7-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: WXZvxH7pk1qq
+X-TUID: wQz3T9IIxkfd
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-The properties setting does not conflict with the creation of child<>
-property.
+Topology relationship is based on child<> property, therefore introduce
+a new user-child interface to help bus-less devices create child<>
+property from cli.
 
-Pre-setting the device's properties can help the device's parent
-selection. Some topology devices (e.g., CPUs that support hotplug)
-usually define topology sub indexes as properties, and the selection of
-their parent needs to be based on these proteries.
+User-child interface works in qdev_set_id(), where the child<> property
+is created for cli devices.
 
-Move qdev_set_id() after properties setting to help the next user-child
-introduction.
+With several methods, user-child could provide the specific "parent"
+device other than the default peripheral/peripheral-anon container.
+
+The topology root (cpu-slot) could collect topology devices based on
+user-child implementation.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- system/qdev-monitor.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ MAINTAINERS                  |  2 +
+ include/monitor/user-child.h | 57 +++++++++++++++++++++++
+ include/qom/object.h         | 11 +++++
+ qom/object.c                 | 13 ++++++
+ system/meson.build           |  1 +
+ system/qdev-monitor.c        | 89 +++++++++++++++++++++++++++++++++---
+ system/user-child.c          | 72 +++++++++++++++++++++++++++++
+ 7 files changed, 239 insertions(+), 6 deletions(-)
+ create mode 100644 include/monitor/user-child.h
+ create mode 100644 system/user-child.c
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 695e0bd34fbb..fdbabaa983cc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3208,12 +3208,14 @@ F: hw/core/bus.c
+ F: hw/core/sysbus.c
+ F: include/hw/qdev*
+ F: include/monitor/qdev.h
++F: include/monitor/user-child.h
+ F: include/qom/
+ F: qapi/qom.json
+ F: qapi/qdev.json
+ F: scripts/coccinelle/qom-parent-type.cocci
+ F: scripts/qom-cast-macro-clean-cocci-gen.py
+ F: system/qdev-monitor.c
++F: system/user-child.c
+ F: stubs/qdev.c
+ F: qom/
+ F: tests/unit/check-qom-interface.c
+diff --git a/include/monitor/user-child.h b/include/monitor/user-child.h
+new file mode 100644
+index 000000000000..e246fcefe40a
+--- /dev/null
++++ b/include/monitor/user-child.h
+@@ -0,0 +1,57 @@
++/*
++ * Child configurable interface header.
++ *
++ * Copyright (c) 2023 Intel Corporation
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License,
++ * or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef USER_CHILD_H
++#define USER_CHILD_H
++
++#include "qom/object.h"
++
++#define TYPE_USER_CHILD "user-child"
++
++typedef struct UserChildClass UserChildClass;
++DECLARE_CLASS_CHECKERS(UserChildClass, USER_CHILD, TYPE_USER_CHILD)
++#define USER_CHILD(obj) INTERFACE_CHECK(UserChild, (obj), TYPE_USER_CHILD)
++
++typedef struct UserChild UserChild;
++
++/**
++ * UserChildClass:
++ * @get_parent: Method to get the default parent if user doesn't specify
++ *     the parent in cli.
++ * @get_child_name: Method to get the default device id for this device
++ *     if user doesn't specify id in cli.
++ * @check_parent: Method to check if the parent specified by user in cli
++ *     is valid.
++ */
++struct UserChildClass {
++    /* <private> */
++    InterfaceClass parent_class;
++
++    /* <public> */
++    Object *(*get_parent)(UserChild *uc, Error **errp);
++    char *(*get_child_name)(UserChild *uc, Object *parent);
++    bool (*check_parent)(UserChild *uc, Object *parent);
++};
++
++Object *uc_provide_default_parent(Object *obj, Error **errp);
++char *uc_name_future_child(Object *obj, Object *parent);
++bool uc_check_user_parent(Object *obj, Object *parent);
++
++#endif /* USER_CHILD_H */
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 494eef801be3..f725d9452c76 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -1484,6 +1484,17 @@ Object *object_get_objects_root(void);
+  */
+ Object *object_get_internal_root(void);
+ 
++/**
++ * object_is_child_from:
++ * @child: the object.
++ * @parent: the parent/non-direct parent object.
++ *
++ * Check whether @parent is the parent/non-direct parent of @child.
++ *
++ * Returns: true iff @parent is the parent/non-direct parent of @child.
++ */
++bool object_is_child_from(const Object *child, const Object *parent);
++
+ /**
+  * object_get_canonical_path_component:
+  * @obj: the object
+diff --git a/qom/object.c b/qom/object.c
+index da29e88816b5..d6f55aa59504 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -2024,6 +2024,19 @@ object_property_add_const_link(Object *obj, const char *name,
+                                 NULL, OBJ_PROP_LINK_DIRECT);
+ }
+ 
++bool object_is_child_from(const Object *child, const Object *parent)
++{
++    Object *obj = child->parent;
++
++    while (obj) {
++        if (obj == parent) {
++            return true;
++        }
++        obj = obj->parent;
++    }
++    return false;
++}
++
+ const char *object_get_canonical_path_component(const Object *obj)
+ {
+     ObjectProperty *prop = NULL;
+diff --git a/system/meson.build b/system/meson.build
+index 3a64dd89de1f..ac682a3ca9e1 100644
+--- a/system/meson.build
++++ b/system/meson.build
+@@ -24,6 +24,7 @@ system_ss.add(files(
+   'runstate-hmp-cmds.c',
+   'runstate.c',
+   'tpm-hmp-cmds.c',
++  'user-child.c',
+   'vl.c',
+ ), sdl, libpmem, libdaxctl)
+ 
 diff --git a/system/qdev-monitor.c b/system/qdev-monitor.c
-index 7ee33a50142a..107411bb50cc 100644
+index 107411bb50cc..0261937b8462 100644
 --- a/system/qdev-monitor.c
 +++ b/system/qdev-monitor.c
-@@ -700,14 +700,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
-         }
-     }
+@@ -22,6 +22,7 @@
+ #include "monitor/hmp.h"
+ #include "monitor/monitor.h"
+ #include "monitor/qdev.h"
++#include "monitor/user-child.h"
+ #include "sysemu/arch_init.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-qdev.h"
+@@ -585,26 +586,93 @@ static BusState *qbus_find(const char *path, Error **errp)
+     return bus;
+ }
  
--    /*
--     * set dev's parent and register its id.
--     * If it fails it means the id is already taken.
--     */
-     id = g_strdup(qdict_get_try_str(opts, "id"));
--    if (!qdev_set_id(dev, id, errp)) {
--        goto err_del_dev;
--    }
- 
-     /* set properties */
-     dev->opts = qdict_clone_shallow(opts);
-@@ -721,6 +714,14 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
-         goto err_del_dev;
-     }
- 
-+    /*
-+     * set dev's parent and register its id.
-+     * If it fails it means the id is already taken.
-+     */
-+    if (!qdev_set_id(dev, id, errp)) {
-+        goto err_del_dev;
++static Object *qdev_find_peripheral_parent(DeviceState *dev,
++                                           Error **errp)
++{
++    Object *parent_obj, *obj = OBJECT(dev);
++
++    parent_obj = uc_provide_default_parent(obj, errp);
++    if (*errp) {
++        return NULL;
 +    }
 +
-     if (!qdev_realize(dev, bus, errp)) {
-         goto err_del_dev;
++    if (parent_obj) {
++        /*
++         * Non-anonymous parents (under "/peripheral") are allowed to
++         * be accessed to create child<> properties.
++         */
++        if (object_is_child_from(parent_obj, qdev_get_peripheral())) {
++            return parent_obj;
++        }
++    }
++
++    return NULL;
++}
++
++static bool qdev_pre_check_device_id(char *id, Error **errp)
++{
++    bool ambiguous = false;
++    Object *obj;
++
++    if (!id) {
++        return true;
++    }
++
++    obj = object_resolve_path_from(qdev_get_peripheral(), id, &ambiguous);
++    if (obj || ambiguous) {
++        error_setg(errp, "Duplicate device default ID '%s'. "
++                   "Please specify another 'id'", id);
++        return false;
++    }
++    return true;
++}
++
+ /* Takes ownership of @id, will be freed when deleting the device */
+ const char *qdev_set_id(DeviceState *dev, char *id, Error **errp)
+ {
++    Object *parent_obj = NULL;
+     ObjectProperty *prop;
++    UserChild *uc;
+ 
+     assert(!dev->id && !dev->realized);
+ 
++    uc = (UserChild *)object_dynamic_cast(OBJECT(dev), TYPE_USER_CHILD);
++
++    if (uc) {
++        parent_obj = qdev_find_peripheral_parent(dev, errp);
++        if (*errp) {
++            goto err;
++        }
++
++        if (!id && parent_obj) {
++            /*
++             * Covert anonymous device with user-child interface to
++             * non-anonymous, then it will be insert under "/peripheral"
++             * path.
++             */
++            id = uc_name_future_child(OBJECT(dev), parent_obj);
++            if (!qdev_pre_check_device_id(id, errp)) {
++                goto err;
++            }
++        }
++    }
++
+     /*
+      * object_property_[try_]add_child() below will assert the device
+      * has no parent
+      */
+     if (id) {
+-        prop = object_property_try_add_child(qdev_get_peripheral(), id,
++        if (!parent_obj) {
++            parent_obj = qdev_get_peripheral();
++        }
++
++        prop = object_property_try_add_child(parent_obj, id,
+                                              OBJECT(dev), NULL);
+         if (prop) {
+             dev->id = id;
+         } else {
+             error_setg(errp, "Duplicate device ID '%s'", id);
+-            g_free(id);
+-            return NULL;
++            goto err;
+         }
+     } else {
+         static int anon_count;
+@@ -615,6 +683,9 @@ const char *qdev_set_id(DeviceState *dev, char *id, Error **errp)
      }
+ 
+     return prop->name;
++err:
++    g_free(id);
++    return NULL;
+ }
+ 
+ DeviceState *qdev_device_add_from_qdict(const QDict *opts, long *category,
+@@ -885,12 +956,18 @@ void qmp_device_add(QDict *qdict, QObject **ret_data, Error **errp)
+ 
+ static DeviceState *find_device_state(const char *id, Error **errp)
+ {
+-    Object *obj = object_resolve_path_at(qdev_get_peripheral(), id);
++    bool ambiguous = false;
+     DeviceState *dev;
++    Object *obj;
+ 
++    obj = object_resolve_path_from(qdev_get_peripheral(), id, &ambiguous);
+     if (!obj) {
+-        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
+-                  "Device '%s' not found", id);
++        if (ambiguous) {
++            error_setg(errp, "Device ID '%s' is ambiguous", id);
++        } else {
++            error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
++                      "Device '%s' not found", id);
++        }
+         return NULL;
+     }
+ 
+diff --git a/system/user-child.c b/system/user-child.c
+new file mode 100644
+index 000000000000..1e667f09cc87
+--- /dev/null
++++ b/system/user-child.c
+@@ -0,0 +1,72 @@
++/*
++ * Child configurable interface.
++ *
++ * Copyright (c) 2023 Intel Corporation
++ * Author: Zhao Liu <zhao1.liu@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License,
++ * or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++
++#include "monitor/user-child.h"
++
++Object *uc_provide_default_parent(Object *obj, Error **errp)
++{
++    UserChild *uc = USER_CHILD(obj);
++    UserChildClass *ucc = USER_CHILD_GET_CLASS(uc);
++
++    if (ucc->get_parent) {
++        return ucc->get_parent(uc, errp);
++    }
++
++    return NULL;
++}
++
++char *uc_name_future_child(Object *obj, Object *parent)
++{
++    UserChild *uc = USER_CHILD(obj);
++    UserChildClass *ucc = USER_CHILD_GET_CLASS(uc);
++
++    if (ucc->get_child_name) {
++        return ucc->get_child_name(uc, parent);
++    }
++
++    return NULL;
++}
++
++bool uc_check_user_parent(Object *obj, Object *parent)
++{
++    UserChild *uc = USER_CHILD(obj);
++    UserChildClass *ucc = USER_CHILD_GET_CLASS(uc);
++
++    if (ucc->check_parent) {
++        ucc->check_parent(uc, parent);
++    }
++
++    return true;
++}
++
++static const TypeInfo user_child_interface_info = {
++    .name          = TYPE_USER_CHILD,
++    .parent        = TYPE_INTERFACE,
++    .class_size = sizeof(UserChildClass),
++};
++
++static void user_child_register_types(void)
++{
++    type_register_static(&user_child_interface_info);
++}
++
++type_init(user_child_register_types)
 -- 
 2.34.1

@@ -1,82 +1,81 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp227597ejb;
-        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
-X-Received: by 2002:a05:600c:458d:b0:40b:3fc7:c88a with SMTP id r13-20020a05600c458d00b0040b3fc7c88amr10440628wmo.39.1701351413608;
-        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701351413; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp232396ejb;
+        Thu, 30 Nov 2023 05:44:15 -0800 (PST)
+X-Received: by 2002:adf:ecd0:0:b0:332:d8d3:6add with SMTP id s16-20020adfecd0000000b00332d8d36addmr15930425wro.0.1701351855072;
+        Thu, 30 Nov 2023 05:44:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701351855; cv=none;
         d=google.com; s=arc-20160816;
-        b=DCMeDm62gL6myytj0uqDm2ENExDZby+yXxGtJD+aiQVREx88M7hetvGaQ0eDofqBNW
-         QequNBijQXOAixbzmNrgzLzBvp4X/sZSq7acgmN2W4/mwvyIEueQOm1QEOhYaCjc4gcW
-         Vk7T8/vR7Wt4oNgNGhoWCxW+FG/fKeZ27o5E/MFcsE9Dijqgnh0s8yUXxDW3UWFywrSG
-         5IABOqHXXm39fUc+MK5S5JKSL1ZrrPP6PJ0ND2Jik6ACZjl3VK5YboyMWAgHf/2+Ry6r
-         gvMDcRNBNvaA4WKALdpY/ao0l1VIPJm6qjT9Z5Jzcss2edi5I0CNLZNh1pKomDOom8wr
-         PUoQ==
+        b=dcCrIwR/OoSaKNsKVOu9m7o7nwkSQMF/4Rd45Uj0QpSyBtjvjJRiDaeldmUFku+x0+
+         rvqp6Yp5g1XoT4TslHeWqCyXZQzeF3o8pF+hpPZIElbyB7H+IuuCnjF3cUTkfOmLr3Ui
+         nU17tfxSEWaJGiDkSEM9XfjDsUxONQDQlPBclop24zdIQ8/4GzCZ4YpIqCZKNNW+6TUi
+         sGdks/PCao+7ywABqQIMEUvdMI98qoN2QGAqNxOCE4NCv2EMOIodUX9J13761sLD/5nA
+         nSxIU9IKLPHkm6JHx92xAEfTa/BcBkMgQ7vCPnPMlxBUzA9t2tBycRxyQUvSA/Sv85nx
+         QZpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=92EVl/+kAJa1w133nRnLwZdbri5T/CNJ+OGiI8vF/hc=;
+        bh=0mf7eH2hS0c3P4+d2fQms4pu9zEXfWtMcluTCO73qZ4=;
         fh=vq6TxQ5MccBz0KdbaF/bByy5+pn65vn8lyysQZcYMWE=;
-        b=xug9h0SgWydooJ7JRjyd5keLvqFV+EZ1fzBgAVW32/T81basQeP1l2jgMKoccM5Uzd
-         4rmDFGP0HUAClmd2rbV6X44H6f1lfjEZVRDk/lprPt7GL0cthe8z9/4jMAv/Nr0+9Ss+
-         MHA0b9vgrWzMd6SwVyQn8r2w13GLa2bZfXrXm8jXcubevgGxft5jkSTwmLD6t+ak22RG
-         FCw4l4iZtVTL+uAGyXewzjoUYnmM+kd8ktH07vo86c4mCLg+/3VucdqGMdwmxabZSSyy
-         wKprBWhtYktDWi2ivgvMNhmQqCg48safg9QJV6B7Q6f0pJI8CZYMhROzkvnt/gO1VJHd
-         QzbA==
+        b=SC4EXpXEjknOF3YwHHjLGWWtIriSi2UP9DPZlgnHeurmalg4itv6kuGgI3EmB0DYy0
+         nTsah2D0psl6IIA7QSXZ9MUN9r5vQnQ0PGXicYvtQinKl/VGZPRBZmPfOveXZKk+8YT1
+         AAhQNh4BQaimgFmMuWlVWnBkgmTTQ59VzWP4uFt4h2Bf0zRKmWi75yfBJ+026wHfhFRB
+         9C0qlovfarD1mU7nBKDHqJkRWFQYSRH9dxh963Dzz+iNGQ3XTHRIR7KCymdUWlQyGCok
+         wNOwfcBfSK47drozQj3IJiGjZDI6cz0kXq6LBaRCPulnixqaA8Oh6LjrKkYlvjlrHtIk
+         m7NQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="jG/M/p+p";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kx2V2pft;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p5-20020a5d4585000000b00332ee157193sor283521wrq.7.2023.11.30.05.36.53
+        by mx.google.com with SMTPS id q3-20020adf9dc3000000b0032fe50dd5bcsor308170wre.10.2023.11.30.05.44.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
+        Thu, 30 Nov 2023 05:44:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="jG/M/p+p";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kx2V2pft;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701351413; x=1701956213; darn=linaro.org;
+        d=linaro.org; s=google; t=1701351855; x=1701956655; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=92EVl/+kAJa1w133nRnLwZdbri5T/CNJ+OGiI8vF/hc=;
-        b=jG/M/p+pTn+xSjPZ1SD6IipJK7AQ4R8QpL2tKk3ipT74YNrExwe3qK35XiftchbaoJ
-         LUQZlUOLa9uFHZlgwzsZGD6hF4ihv7yqPTmxTEpQcTJfFgi027vjqbdfUFo0qUnDQWlJ
-         b6TUNuA2XjelP4tDYhNiQv49U1Glbk1jtgg3kdKQzAEzxiAr3HTxvTe1HJHSUBfOlTso
-         9LXvQ9eC35eCluNvCanFmHCwXDRuHdQtsvYrVbiIyopImND5cTIy73VN4g1gBAh3ASaz
-         3nH5Y+T+42WcXHnM6javDIQyoo/ZU1ugtM1EsF8wYJfIwNkXVs+k+rEk+ywxulSTwtEI
-         MxaQ==
+        bh=0mf7eH2hS0c3P4+d2fQms4pu9zEXfWtMcluTCO73qZ4=;
+        b=kx2V2pftRNu7BhKpVNjYSUUW0t77zuyN0NIiAgYkBe/Umw6CEWZkah34yuVZqzx9Qu
+         jM1ipnmN949GllFPfWi+NnNByvambEKdtYowcBdp8BX9Jdwizi09Il0w3eayA2FOZOxm
+         C5peF1C5JW6OakG007F44EgPbZ1vWb8hhcq5jRDStIShPC+/iBdY9EQONTZ9AZYReJ+Q
+         uy7yaUWeSP7DLAHnaEYNWchPBxuc2097j/cD9TZbvjgnJRoKVwDDVaPEWvK7bYNS0H53
+         jWYyixTtAV8rJxkJntS1vlYZPDRWtR+hWpAZHycQdIRG+AcDGth/WGKuY3FsoZTBJrOy
+         0l8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701351413; x=1701956213;
+        d=1e100.net; s=20230601; t=1701351855; x=1701956655;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=92EVl/+kAJa1w133nRnLwZdbri5T/CNJ+OGiI8vF/hc=;
-        b=Xn7Lr2Xycc8TS6+NeFZ52u/YyjX8BXJ3MVaaMjVPbZ1tG/TO4mIZjo0zL5I+VpLYxR
-         8Sq1L7Xe6COj/4vKJ4XZ3bSyhQF3EL9NGyNWV/NDfahSgBMKnlcmOlTryxWOmhJMg6XT
-         7dbFBGSXbzmrv1SVfrxXf75ppvgsLV0Bs4Kg8ev/vEc1wQm+hzlD8bfvlx2omsyXkES7
-         JpCv03xROfdWmt1ws8ncLwa8Js2E82wd/D/y4XrMVu1LrBf5nEENL9mrrzzSJlEwnEum
-         +gH7USWN9cSh32SuvHbGhLXO76i3w7ExZaXEvi9AHj/PQ2+KoneQK2uY6YUkSD+8gnqr
-         Hh/g==
-X-Gm-Message-State: AOJu0YyfBfKxUeg2sPOW6wji3TOAD0cb24R4m1zhwB+vPtYpjA1Nid1i
-	CM+TD0ryfG2lr6MC/T+p8bWPMe5T
-X-Google-Smtp-Source: AGHT+IGzSdlgStqYT69A2lG9GtqRHhg/niB3F/uN4GK5nKt0eJM7WDiZHR6K1BVe40jqO9Y7LSdkKg==
-X-Received: by 2002:a05:6000:10c:b0:333:2be6:860e with SMTP id o12-20020a056000010c00b003332be6860emr238311wrx.71.1701351413167;
-        Thu, 30 Nov 2023 05:36:53 -0800 (PST)
+        bh=0mf7eH2hS0c3P4+d2fQms4pu9zEXfWtMcluTCO73qZ4=;
+        b=kLo/G4p9PF68uCt55WrsHUSD6P7xYRFXxcWHe37ew14vomeUI/KqGalIK+Hkm5l/gd
+         C3JCwj0pynRS5+AezdUWIctEfSW9ln67hkxrcBfY8F2nvwCGVbMo+MDlcJmpTCj3ba1L
+         a8f0bFRQGvRUcs2Gx5060oZawrqDc4UnWZMHWCOFFYfHBMGmCku1NKZSRTBLcF5GHKSa
+         bqbuF/O++YBMUCdrg94oMPdI3RDfRlrpV8jssFVjoqNTntI+HdfeW8J3Az0SIJL9AwUZ
+         CTxiJCfpBp61HBLBx0t3IvjvA18ByEssmYC0li0dtsMOkSIG2RvvejGPY/CSY/kg2BCG
+         mazA==
+X-Gm-Message-State: AOJu0Yz1ilWmlv5512sKy7p96MQeoXssG0JeEdKHEffZHcPN/NcETb4l
+	Fj4WCYSKZD8iOeF4WkWpQX7vqo1K
+X-Google-Smtp-Source: AGHT+IFUGjlT2U8pG1QuxMF95YCA0GrMa8IF7sX8GSSN6+0zFOCS7e4DUVfFAG6PfrkSgylNqNXNlw==
+X-Received: by 2002:adf:ff88:0:b0:333:a2f:e674 with SMTP id j8-20020adfff88000000b003330a2fe674mr6201850wrr.25.1701351854659;
+        Thu, 30 Nov 2023 05:44:14 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (sev93-h02-176-184-17-116.dsl.sta.abo.bbox.fr. [176.184.17.116])
-        by smtp.gmail.com with ESMTPSA id i2-20020adffc02000000b003330aede2aesm1559297wrr.112.2023.11.30.05.36.47
+        by smtp.gmail.com with ESMTPSA id cw18-20020a056000091200b00332fa6cc8acsm1576506wrb.87.2023.11.30.05.44.08
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Nov 2023 05:36:52 -0800 (PST)
-Message-ID: <ce8686c9-ac4b-4bb8-a181-af536ef1097a@linaro.org>
-Date: Thu, 30 Nov 2023 14:36:46 +0100
+        Thu, 30 Nov 2023 05:44:14 -0800 (PST)
+Message-ID: <01ebd72d-affc-4b03-b491-f40964520f1c@linaro.org>
+Date: Thu, 30 Nov 2023 14:44:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] qemu/main-loop: rename qemu_cond_wait_iothread() to
- qemu_cond_wait_bql()
+Subject: Re: [PATCH 4/6] system/cpus: rename qemu_global_mutex to qemu_bql
 Content-Language: en-US
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -131,27 +130,155 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
  <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-4-stefanha@redhat.com>
+ <20231129212625.1051502-5-stefanha@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231129212625.1051502-4-stefanha@redhat.com>
+In-Reply-To: <20231129212625.1051502-5-stefanha@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: v3leVcjPxMsS
+X-TUID: 5zCgTV8AkFSf
+
+Hi Stefan,
 
 On 29/11/23 22:26, Stefan Hajnoczi wrote:
-> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
-> instead, it is already widely used and unambiguous.
+> The APIs using qemu_global_mutex now follow the Big QEMU Lock (BQL)
+> nomenclature. It's a little strange that the actual QemuMutex variable
+> that embodies the BQL is called qemu_global_mutex instead of qemu_bql.
+> Rename it for consistency.
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->   include/qemu/main-loop.h          | 8 ++++----
->   accel/tcg/tcg-accel-ops-rr.c      | 4 ++--
->   hw/display/virtio-gpu.c           | 2 +-
->   hw/ppc/spapr_events.c             | 2 +-
->   system/cpu-throttle.c             | 2 +-
->   system/cpus.c                     | 4 ++--
->   target/i386/nvmm/nvmm-accel-ops.c | 2 +-
->   target/i386/whpx/whpx-accel-ops.c | 2 +-
->   8 files changed, 13 insertions(+), 13 deletions(-)
+>   system/cpus.c | 20 ++++++++++----------
+>   1 file changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/system/cpus.c b/system/cpus.c
+> index eb24a4db8e..138720a540 100644
+> --- a/system/cpus.c
+> +++ b/system/cpus.c
+> @@ -65,7 +65,7 @@
+>   
+>   #endif /* CONFIG_LINUX */
+>   
+> -static QemuMutex qemu_global_mutex;
+> +static QemuMutex qemu_bql;
 
+I thought we were using _cond/_sem/_mutex suffixes, but
+this is not enforced:
+
+$ git grep -hE 'Qemu(Cond|Mutex|Semaphore) [a-zA-Z]' \
+   | sed -e 's/static //' -e 's/extern //' -e 's/^ *//' \
+   | sort -u
+QemuCond comp_done_cond;
+QemuCond cond;
+QemuCond decomp_done_cond;
+QemuCond event_complete_cond;
+QemuCond exclusive_cond;
+QemuCond exclusive_resume;
+QemuCond fwnmi_machine_check_interlock_cond;
+QemuCond handle_apdu_cond;
+QemuCond init_done_cond;    /* is thread initialization done? */
+QemuCond key_cond;
+QemuCond mutex_cond;
+QemuCond page_cond;
+QemuCond page_request_cond;
+QemuCond qemu_cpu_cond;
+QemuCond qemu_pause_cond;
+QemuCond qemu_work_cond;
+QemuCond request_cond;
+QemuCond reset_cond;
+QemuCond thr_cond;
+QemuCond thread_cond;
+QemuCond worker_stopped;
+QemuMutex active_timers_lock;
+QemuMutex aio_context_list_lock;
+QemuMutex bitmap_mutex;
+QemuMutex blkio_lock;
+QemuMutex chr_write_lock;
+QemuMutex cmdq_mutex;
+QemuMutex colo_compare_mutex;
+QemuMutex comp_done_lock;
+QemuMutex counts_mutex;
+QemuMutex decomp_done_lock;
+QemuMutex dirty_bitmap_mutex;
+QemuMutex dirtylimit_mutex;
+QemuMutex error_mutex;
+QemuMutex event_list_mutex;
+QemuMutex event_mtx;
+QemuMutex evlock;
+QemuMutex free_page_lock;
+QemuMutex global_mutex;
+QemuMutex gnt_lock;
+QemuMutex handle_apdu_mutex;
+QemuMutex handlers_mutex;
+QemuMutex init_done_lock;
+QemuMutex intp_mutex; /* protect the intp_list IRQ state */
+QemuMutex io_mutex;
+QemuMutex iommu_lock;
+QemuMutex irq_level_lock[REMOTE_IOHUB_NB_PIRQS];
+QemuMutex job_mutex;
+QemuMutex key_mutex;
+QemuMutex kml_slots_lock;
+QemuMutex lock;
+QemuMutex m;
+QemuMutex map_client_list_lock;
+QemuMutex migration_threads_lock;
+QemuMutex mon_fdsets_lock;
+QemuMutex mon_lock;
+QemuMutex monitor_lock;
+QemuMutex mutex;
+QemuMutex output_mutex;
+QemuMutex page_mutex;
+QemuMutex page_request_mutex;
+QemuMutex pending_out_mutex;
+QemuMutex port_lock;
+QemuMutex postcopy_prio_thread_mutex;
+QemuMutex qemu_cpu_list_lock;
+QemuMutex qemu_file_lock;
+QemuMutex qemu_global_mutex;
+QemuMutex qemu_sigp_mutex;
+QemuMutex qjack_shutdown_lock;
+QemuMutex qmp_queue_lock;
+QemuMutex queue_mutex;
+QemuMutex queued_requests_lock; /* protects queued_requests */
+QemuMutex ram_block_discard_disable_mutex;
+QemuMutex rcu_registry_lock;
+QemuMutex rcu_sync_lock;
+QemuMutex readdir_mutex_L;
+QemuMutex reqs_lock;
+QemuMutex requests_lock;
+QemuMutex rp_mutex;    /* We send replies from multiple threads */
+QemuMutex rsp_mutex;
+QemuMutex rx_queue_lock;
+QemuMutex sigbus_mutex;
+QemuMutex sint_routes_mutex;
+QemuMutex src_page_req_mutex;
+QemuMutex start_lock;
+QemuMutex target_fd_trans_lock;
+QemuMutex thr_mutex;
+QemuMutex thread_lock;
+QemuMutex vdev_mutex;
+QemuMutex vmstop_lock;
+QemuMutex vreader_mutex; /* and guest_apdu_list mutex */
+QemuMutex work_mutex;
+QemuMutex xen_timers_lock;
+QemuMutex yank_lock;
+QemuSemaphore channels_ready;
+QemuSemaphore colo_exit_sem;
+QemuSemaphore colo_incoming_sem;
+QemuSemaphore init_done_sem; /* is thread init done? */
+QemuSemaphore pause_sem;
+QemuSemaphore postcopy_pause_sem;
+QemuSemaphore postcopy_pause_sem_dst;
+QemuSemaphore postcopy_pause_sem_fast_load;
+QemuSemaphore postcopy_pause_sem_fault;
+QemuSemaphore postcopy_qemufile_dst_done;
+QemuSemaphore postcopy_qemufile_src_sem;
+QemuSemaphore rate_limit_sem;
+QemuSemaphore rp_pong_acks;
+QemuSemaphore rp_sem;
+QemuSemaphore sem;
+QemuSemaphore sem_sync;
+QemuSemaphore sem_thread;
+QemuSemaphore wait_unplug_sem;
+
+So:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

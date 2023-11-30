@@ -1,201 +1,232 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp499027ejb;
-        Thu, 30 Nov 2023 12:08:57 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGrrOT55zywCLfAJ8+FlwJAp9NSuNShTaXjWJYY1qff6BO6sUk14Lk3+KOXAh9J4RJK7D7O
-X-Received: by 2002:ac8:7c46:0:b0:423:789c:659b with SMTP id o6-20020ac87c46000000b00423789c659bmr23965586qtv.60.1701374937165;
-        Thu, 30 Nov 2023 12:08:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701374937; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp551203ejb;
+        Thu, 30 Nov 2023 13:49:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFKymWxKKVUTcZFbVl9mDy34gYbRSBd1kAAS4IGVT7M8ceRfV1lVbT36VYPCLAjm/eXwHi5
+X-Received: by 2002:a6b:f914:0:b0:7b3:de34:95e2 with SMTP id j20-20020a6bf914000000b007b3de3495e2mr9217863iog.17.1701380961765;
+        Thu, 30 Nov 2023 13:49:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701380961; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fx9kA4p0I7n3No+hA6oA1fDsdaNz8hTomUZ35q9BDPN65sYRig87qorHmLMlHCm8fM
-         C/iK0pg6qXC7YrmO5DNWotc9U5CEffiYjuBdilSWMyq1GGszlJ4go+SS/f8YL8DxI1Jw
-         1N/eJ4zOCltNzKrnunPu3iDHdOIwtx2XLRLaLiRjMR+6SisKgusPT1etv1XLLT2Qe4js
-         gTeQqO5cx5yU2L/Uopc0+jsifXsd9vRRgEFkP1KNPtvwZBSrFAZ0ebOq7klak5BE1XS4
-         cs2KVp6Z2KQpgnW50lVyc+6/ptfFgC9XwSWQta6pE2GriM8wzNPwdxI0NUd8sPmGQRPz
-         3Zww==
+        b=rUSxr3MkP1xMjDjRWfEa5azeS0RcfqFcoZDsSG0k/EHb2X3/MD1N2tVwdfm8LPeCPF
+         wAL9ojLFTMMhTZVioKJDG6iDUe4pT7vJK1AdehtZBmG62K35SzZhLcD+zds81XfIecTU
+         QCsnnhpr8m7LT8PG8qQXzEgj26df0mgVwjA9n9BBR9nY+0cvyraxbJEdcqG3h6LHC7ZR
+         xVSB22WX4X4+sy/oRmFLXsMWntK0fKF+QVONNBBQ9ZZRoOK4SpwLLfUwLXPG0eg54HXn
+         gHvYzMzCjP2SEjMr9Gzs6ZWR+8NMSZu7DFjomtqins5TpObzmnmojwV2VNJ31p6XtQAV
+         dsZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=vQ5m3o7+UqdtWYSDU6QubOO0VIH9lcTK3EaDyGHvbxw=;
-        fh=BROLpBsjE8l0PO+4K7bFkU/eo6Z8LYjlwxVafCKoxFE=;
-        b=JPCqtUHoxtYBv6SP5uyK/sZWNhPMucOVjGJtQ1YW4JTta5fr2efpt3vI9cb+DRyfdr
-         qmYIRAnL3zywpXq8SZpidg133TZ9QN9a/0pSbbtgBMJhq9uvtxx6R8LONxMy2uk3VNT8
-         NJxg9PST4ovrbGkWlhGnaRH0qI2koJkjgscZKoI2a5FZTvR5OoeoJnLAsE+izpULll+X
-         ghD8wbTLJvuiu+9mtr0Md/smaKGavb07gOVY2a9adwkYljwkppOWJGR4pubFmJfZ4/Up
-         LKcfW/pcg9JtH3Q679FmWQk7k8QZb3K4lcQr4Bj3PVUAp6W9FqI2Dj2V6sTY0sUuKi19
-         UOXw==
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=3Lkv/02q48e2jWfrLkO6fctRZOAuJaxGyH4fdQWyo74=;
+        fh=fKPYdzZB8bxyWBqPtRMak1unANaffwjp3yab7CdHg/U=;
+        b=x07hkxoHDY9KMaB9wf8jbWrThQKaBhugjgr7WN27/Jb/T1j6tUJdUkx96HGddAg7B4
+         LpypZyfiS7euisLQn1tyjGNzoTB5tkhsXMpgLO+ylBdIiEWUJ4nZ6JK6doVup85/DiDB
+         Yt0yxbOEPWuCFgySWHARkkGEe5C5zfHb4eFS1d229SQdE6cHIJ0Ax0YaSyQ+1xiTHHL3
+         pIgCeLWV10SIFFjJ1i5Zhq0si7BPs2pfw74PcpGOxbam0eykKyFKBOWm2g5eKXj5kj65
+         EGBaETSMTEZkDqRSnihZL2M1BmDF18VA9OjyM8FpbjA3w8IJQR8LusutFh1VO7FWarpK
+         0XQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Mtct1fO/";
-       spf=pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=peterx@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <peterx@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bc9-20020a05622a1cc900b0042399654f71si1925107qtb.218.2023.11.30.12.08.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 12:08:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Z8j3SiJo;
+       spf=pass (google.com: domain of farman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=farman@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <farman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id y12-20020a05663824cc00b004667a2d69desi1016934jat.34.2023.11.30.13.49.21
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 30 Nov 2023 13:49:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of farman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Mtct1fO/";
-       spf=pass (google.com: domain of peterx@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=peterx@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701374936;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vQ5m3o7+UqdtWYSDU6QubOO0VIH9lcTK3EaDyGHvbxw=;
-	b=Mtct1fO/ctWsHPFB+5wB3YkKWIi/8kY27OjH8kRwmuhYOoj/9W0NoGoJs1A18gtogaCYUD
-	vRffEee1eUh+KlaA+W6L6CSktX+K5UIEAVyUr+LBUSgmdRbz278lk3afFfDrj6OZVBpOpg
-	eBP1oeEHCSNxEordsBYKyhvdgJ8WBVU=
-Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
- [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-618-e1T6Z2CQOkGH9WlhHP8Y-Q-1; Thu, 30 Nov 2023 15:08:55 -0500
-X-MC-Unique: e1T6Z2CQOkGH9WlhHP8Y-Q-1
-Received: by mail-oo1-f71.google.com with SMTP id 006d021491bc7-58dba38a819so212699eaf.0
-        for <alex.bennee@linaro.org>; Thu, 30 Nov 2023 12:08:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701374935; x=1701979735;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vQ5m3o7+UqdtWYSDU6QubOO0VIH9lcTK3EaDyGHvbxw=;
-        b=MngRohWZKw0flbmcyK5E4/ijsqsGKd3HUmJeqOPljMsXqyqBcOdd3/DAhsNWlXOEUA
-         jTx9wKpQhdrt5EuHN+vXbsZbq08rQ+AnyzKfTkHffGBGPgWOJy3og+JStnHt08ZxGb6B
-         SZtHnUi/cov9k67Lbv2qRRUfIaLTm+SyGNlQbbCLiu85PS3DnfUZsS6fEkFFNQb1QQ9f
-         +w8pdkgWLFHU9BEoU/pUOC4iE5r2rfNIuwReZ1QBXFuWhKX5HlCdZH+NBUhMKyOI5IBT
-         maygoaXaxCR9BpVkcyTeg65RiV6HTt0zUpVH6K1snPAYW7Li2qAyvkdW3QolSID7RBz8
-         5KUQ==
-X-Gm-Message-State: AOJu0YzvEZMFRLU7jE7tUyDilQYDAWE/68gwujSFDya+qvvOleeCRehT
-	8n5vvLV6JQGea16R54PkB6laFCBNYOqSu9WNi+j3Qlpb304EcsqBARCZ9FLjUKXWT6pkALv3u9H
-	HLx5YK6qR1/gIcgVe
-X-Received: by 2002:a05:6820:a8f:b0:58d:e3d3:ec72 with SMTP id de15-20020a0568200a8f00b0058de3d3ec72mr3219661oob.0.1701374934933;
-        Thu, 30 Nov 2023 12:08:54 -0800 (PST)
-X-Received: by 2002:a05:6820:a8f:b0:58d:e3d3:ec72 with SMTP id de15-20020a0568200a8f00b0058de3d3ec72mr3219606oob.0.1701374934634;
-        Thu, 30 Nov 2023 12:08:54 -0800 (PST)
-Return-Path: <peterx@redhat.com>
-Received: from x1n (cpe688f2e2cb7c3-cm688f2e2cb7c0.cpe.net.cable.rogers.com. [99.254.121.117])
-        by smtp.gmail.com with ESMTPSA id qr13-20020a05620a390d00b0077d5e1e4edesm790071qkn.57.2023.11.30.12.08.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 12:08:54 -0800 (PST)
-Date: Thu, 30 Nov 2023 15:08:49 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Fabiano Rosas <farosas@suse.de>, qemu-s390x@nongnu.org,
-	Song Gao <gaosong@loongson.cn>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Thomas Huth <thuth@redhat.com>, Hyman Huang <yong.huang@smartx.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Kevin Wolf <kwolf@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Paul Durrant <paul@xen.org>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	Juan Quintela <quintela@redhat.com>,
-	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
-	qemu-arm@nongnu.org, Jason Wang <jasowang@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Hailiang Zhang <zhanghailiang@xfusion.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Huacai Chen <chenhuacai@kernel.org>, Fam Zheng <fam@euphon.net>,
-	Eric Blake <eblake@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
-	Alexander Graf <agraf@csgraf.de>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Weiwei Li <liwei1518@gmail.com>, Eric Farman <farman@linux.ibm.com>,
-	Stafford Horne <shorne@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	John Snow <jsnow@redhat.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Michael Roth <michael.roth@amd.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Bin Meng <bin.meng@windriver.com>,
-	Stefano Stabellini <sstabellini@kernel.org>, kvm@vger.kernel.org,
-	qemu-block@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	qemu-ppc@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Leonardo Bras <leobras@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Z8j3SiJo;
+       spf=pass (google.com: domain of farman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=farman@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3AULeDZS027517;
+	Thu, 30 Nov 2023 21:48:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=3Lkv/02q48e2jWfrLkO6fctRZOAuJaxGyH4fdQWyo74=;
+ b=Z8j3SiJoFgCBPPyg5iDaUlsJsboZQYhHZhQ/LoTMST1r78wFU8m1R06sJ5BSv8lRVYRb
+ zdzOM64m3u1M54Dt2eJDNnuNfvUHViaxPTuf1S8xZXZap7aL83BZ5TM2XEL3MuFSKQC5
+ VD9ArDJVODobePvT62TaDdnHvZn0bIHtYeKF6DIwlezQf+qFTJ6VkL9dOQru1TqlEDOi
+ Ia5rg6qPY/IBdVBfvOY1MEiWurDCD5G9wJkxyQ7XD12QqfiRmQeLCs1JcAfacuAlVlso
+ eJNxsB8Obgz7MsFBJxjno31QAspoKCWlAtg/0r6dBBNXFkfiX6qx8MLNl4KtoeFnPTN3 yg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3uq28arjre-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 30 Nov 2023 21:48:52 +0000
+Received: from m0353728.ppops.net (m0353728.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3AULglYD002887;
+	Thu, 30 Nov 2023 21:48:52 GMT
+Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3uq28arjr8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 30 Nov 2023 21:48:52 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 3AUJhQMe029858;
+	Thu, 30 Nov 2023 21:48:50 GMT
+Received: from smtprelay03.dal12v.mail.ibm.com ([172.16.1.5])
+	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3ukvrm0y2s-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 30 Nov 2023 21:48:50 +0000
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com [10.39.53.231])
+	by smtprelay03.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 3AULmngv13828844
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 30 Nov 2023 21:48:49 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id F13CE58052;
+	Thu, 30 Nov 2023 21:48:48 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 9F86658050;
+	Thu, 30 Nov 2023 21:48:41 +0000 (GMT)
+Received: from li-479af74c-31f9-11b2-a85c-e4ddee11713b.ibm.com (unknown [9.61.95.112])
+	by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+	Thu, 30 Nov 2023 21:48:41 +0000 (GMT)
+Message-ID: <05f53a0e5d65287fa9fdf03ca67e5cf186b8d858.camel@linux.ibm.com>
 Subject: Re: [PATCH 1/6] system/cpus: rename qemu_mutex_lock_iothread() to
  qemu_bql_lock()
-Message-ID: <ZWjr0TKxihlpd1jm@x1n>
-References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-2-stefanha@redhat.com>
-MIME-Version: 1.0
+From: Eric Farman <farman@linux.ibm.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+        Fabiano Rosas
+ <farosas@suse.de>, qemu-s390x@nongnu.org,
+        Song Gao <gaosong@loongson.cn>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Thomas Huth
+ <thuth@redhat.com>, Hyman Huang <yong.huang@smartx.com>,
+        Marcelo Tosatti
+ <mtosatti@redhat.com>,
+        David Woodhouse <dwmw2@infradead.org>,
+        Andrey
+ Smirnov <andrew.smirnov@gmail.com>,
+        Peter Maydell
+ <peter.maydell@linaro.org>,
+        Kevin Wolf <kwolf@redhat.com>, Ilya Leoshkevich
+ <iii@linux.ibm.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Max Filippov
+ <jcmvbkbc@gmail.com>,
+        Alistair Francis <alistair.francis@wdc.com>,
+        Paul
+ Durrant <paul@xen.org>, Jagannathan Raman <jag.raman@oracle.com>,
+        Juan
+ Quintela <quintela@redhat.com>,
+        "Daniel P." =?ISO-8859-1?Q?Berrang=E9?=
+ <berrange@redhat.com>,
+        qemu-arm@nongnu.org, Jason Wang
+ <jasowang@redhat.com>,
+        Gerd Hoffmann <kraxel@redhat.com>, Hanna Reitz
+ <hreitz@redhat.com>,
+        =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
+ <marcandre.lureau@redhat.com>,
+        BALATON Zoltan <balaton@eik.bme.hu>,
+        Daniel
+ Henrique Barboza <danielhb413@gmail.com>,
+        Elena Ufimtseva
+ <elena.ufimtseva@oracle.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Hailiang Zhang <zhanghailiang@xfusion.com>,
+        Roman Bolshakov
+ <rbolshakov@ddn.com>,
+        Huacai Chen <chenhuacai@kernel.org>, Fam Zheng
+ <fam@euphon.net>,
+        Eric Blake <eblake@redhat.com>, Jiri Slaby
+ <jslaby@suse.cz>,
+        Alexander Graf <agraf@csgraf.de>,
+        Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,
+        Weiwei Li <liwei1518@gmail.com>, Stafford
+ Horne <shorne@gmail.com>,
+        David Hildenbrand <david@redhat.com>,
+        Markus
+ Armbruster <armbru@redhat.com>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org,
+        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        John Snow <jsnow@redhat.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Michael Roth <michael.roth@amd.com>,
+        David Gibson
+ <david@gibson.dropbear.id.au>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Bin Meng
+ <bin.meng@windriver.com>,
+        Stefano Stabellini <sstabellini@kernel.org>, kvm@vger.kernel.org,
+        qemu-block@nongnu.org, Halil Pasic
+ <pasic@linux.ibm.com>,
+        Peter Xu <peterx@redhat.com>,
+        Anthony Perard
+ <anthony.perard@citrix.com>,
+        Harsh Prateek Bora <harshpb@linux.ibm.com>,
+        Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Eduardo Habkost
+ <eduardo@habkost.net>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+        =?ISO-8859-1?Q?C=E9dric?=
+ Le Goater <clg@kaod.org>,
+        qemu-ppc@nongnu.org,
+        Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        Christian Borntraeger
+ <borntraeger@linux.ibm.com>,
+        Akihiko Odaki <akihiko.odaki@daynix.com>,
+        Leonardo Bras <leobras@redhat.com>,
+        Nicholas Piggin <npiggin@gmail.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>
+Date: Thu, 30 Nov 2023 16:48:41 -0500
 In-Reply-To: <20231129212625.1051502-2-stefanha@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-X-TUID: r7oTIGXznmbC
+References: <20231129212625.1051502-1-stefanha@redhat.com>
+	 <20231129212625.1051502-2-stefanha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+MIME-Version: 1.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 425_reiecxV4wDHgNFADyvMsZGA6fbvk
+X-Proofpoint-ORIG-GUID: L2MIErO798SVE0kwCrDtReSEksriyd8b
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-30_22,2023-11-30_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ adultscore=0 mlxscore=0 lowpriorityscore=0 malwarescore=0 bulkscore=0
+ phishscore=0 clxscore=1011 impostorscore=0 mlxlogscore=827 spamscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311300160
+X-TUID: FCuE90omHUjI
 
-On Wed, Nov 29, 2023 at 04:26:20PM -0500, Stefan Hajnoczi wrote:
+On Wed, 2023-11-29 at 16:26 -0500, Stefan Hajnoczi wrote:
 > The Big QEMU Lock (BQL) has many names and they are confusing. The
-> actual QemuMutex variable is called qemu_global_mutex but it's commonly
+> actual QemuMutex variable is called qemu_global_mutex but it's
+> commonly
 > referred to as the BQL in discussions and some code comments. The
 > locking APIs, however, are called qemu_mutex_lock_iothread() and
 > qemu_mutex_unlock_iothread().
-> 
-> The "iothread" name is historic and comes from when the main thread was
-> split into into KVM vcpu threads and the "iothread" (now called the main
-> loop thread). I have contributed to the confusion myself by introducing
-> a separate --object iothread, a separate concept unrelated to the BQL.
-> 
+>=20
+> The "iothread" name is historic and comes from when the main thread
+> was
+> split into into KVM vcpu threads and the "iothread" (now called the
+> main
+> loop thread). I have contributed to the confusion myself by
+> introducing
+> a separate --object iothread, a separate concept unrelated to the
+> BQL.
+>=20
 > The "iothread" name is no longer appropriate for the BQL. Rename the
 > locking APIs to:
 > - void qemu_bql_lock(void)
 > - void qemu_bql_unlock(void)
 > - bool qemu_bql_locked(void)
-> 
-> There are more APIs with "iothread" in their names. Subsequent patches
-> will rename them. There are also comments and documentation that will be
+>=20
+> There are more APIs with "iothread" in their names. Subsequent
+> patches
+> will rename them. There are also comments and documentation that will
+> be
 > updated in later patches.
-> 
+>=20
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Acked-by: Peter Xu <peterx@redhat.com>
-
-Two nickpicks:
-
-  - BQL contains "QEMU" as the 2nd character, so maybe easier to further
-    rename qemu_bql into bql_?
-
-  - Could we keep the full spell of BQL at some places, so people can still
-    reference it if not familiar?  IIUC most of the BQL helpers will root
-    back to the major three functions (_lock, _unlock, _locked), perhaps
-    add a comment of "BQL stands for..." over these three functions as
-    comment?
-
-Please take or ignore these nitpicks; my ACK will stand irrelevant.
-
-Thanks,
-
--- 
-Peter Xu
+Acked-by: Eric Farman <farman@linux.ibm.com>

@@ -1,52 +1,51 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp215622ejb;
-        Thu, 30 Nov 2023 05:20:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG3+5Z8Yy6jcbk+nEZ3LTA4OEvrDLuk+C+QSfZGEDFaX9hrIIJWXfnfWWaVa9trD5L4l60E
-X-Received: by 2002:a17:902:ee55:b0:1cf:bd01:1c9c with SMTP id 21-20020a170902ee5500b001cfbd011c9cmr20856500plo.4.1701350444824;
-        Thu, 30 Nov 2023 05:20:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701350444; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp215931ejb;
+        Thu, 30 Nov 2023 05:21:12 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF5DE7vUBBKVEm8q25jHcRJsFD2YOm4M3MilS8CRnyaJxHIP2OXBOV/rOf6+zNVFUX4lvdM
+X-Received: by 2002:a17:902:ce88:b0:1d0:220b:f24d with SMTP id f8-20020a170902ce8800b001d0220bf24dmr5188188plg.31.1701350471895;
+        Thu, 30 Nov 2023 05:21:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701350471; cv=none;
         d=google.com; s=arc-20160816;
-        b=yYPercBJeEZDABFBSvPjNKcX9gP3rviqNKYmri5McE6AufNkUMJlcXWhgmRbm+XYtv
-         lAtHwFCggUxtSUCU1q/xTrFhQ683zEJSdESFUu+qs/xOsZp4Ni68L9Pk+ecvwH6xdgYl
-         H06Nh85LEk0b0wk5W8TTTs7eWsfhVpsiqnGvkn89tm9MrCvC7swnMLRvWB2IrbU5bJ9x
-         Iu5GKjxWL1SBFXWCsWYbijkVzD/MOpE11bA5Zl8CPQ/dyZVKpkCuXlbe/6frq433R7Uc
-         AI/HzxuH81bShkcGWxRiyPZ3BIy/EXPmqL6UAqIxLgUj1Zk+mVA4qWV2btcSJ/0U9oYW
-         uWDQ==
+        b=iXrM4Zj/5m9EtZlQBPFvwBpmrsgU3vSAdjuXU8rtaZ/85U+y1FHfYlhnTkHJWPbCcf
+         v/mBe1T2FdYVnhmJj6iQiAA0UZxG6DbUEXTjs/JI9VLyc9jTerRWysvmKGfdY7+NXIxs
+         p6mLUBpgG+XkRP9qSoEmMVUjnmUbgCyGJFFtnRsGtbYTn5pfApwzK7U+8aw0Ki2p3J48
+         IDift8JBR2+TirSEkpWQxn+57J2kxsC3QLkNrIbWxBJGt/CoR+aJM6LJhhA1GHLuNeDl
+         4l1HN2cwDm/1uRW6o3SYwbzTP/4/Cl/WzQu/LrYzrFwBaR+NG/sEt/nSkTc7rfO1m297
+         ebbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=JazEB41gcRwBgZxV564L5fkGpE18QOb0brdHFsRUYjE=;
+        bh=wHSDFM4hN86iYi7TnWJUmg7D5J+4PM70pmexxIgHETY=;
         fh=hh8iIRMxqXsh63WkBtfgaM2/SexR5FVGIZD55sUt70c=;
-        b=nHWZVb78C+qxcWdTtewE6j+feUiGGxQe0yEgbdtTsOcFXsGzPN+tGUOsK5EQiTfozI
-         jy15fTQsUGQxHByGERYQxnEQqxn+pAo3lS0lvl/DHEYS9iVqFJlhIMg/X//qDnyl0CUM
-         j+BH6xypp6ScTk09L8t81c9lBKmjWsKbiuH7C8yykqaovj3tnyPUcGbgskAs1h8Xvaai
-         HY0pXa0FgfxSFCbnaT5KZ3M1du7TXX8SasHJ5iChoBHiYTbLZeHk1izMtm+YFWpIsG0w
-         cGBEfhaz4TUaVbMKCFIt+pDqD8n4hy+iMYFSuZgQFmWsv2rbii6cS3HUJ3H3uUUWoWT6
-         Egnw==
+        b=kez/7ZyT0e/COahAJMOH7o2Ud66CsrMnDRmEaXyUFDE0cwgEUNtmce1EtP5X280hLR
+         48B9NVgHA6E8EZvB7sTKCBh2uOlEPtwYrBP19OLB59z545M6gBcHh+kXanO6ubplEr8d
+         Pq/82CalbImZPjOvMwZ/rEysB9tnhk0wnOVoTU/H39r31SHnNV5pxBHAEzPby505yuVR
+         knHT0QGzcS8nuSy0ohaUkcY8/vHBRSxWDbUy8qnWrAHDYovgTkCPrZZsWeou6KUGYeKs
+         MfZkY2xRFfdFqzVTKYX/GXKHEC818UW2ebo6ZW8/l+698YP20HyO5rFyRYv6CwzkHNC4
+         2NhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of srs0=tvl7=hl=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=Tvl7=HL=kaod.org=clg@ozlabs.org"
 Return-Path: <SRS0=Tvl7=HL=kaod.org=clg@ozlabs.org>
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
-        by mx.google.com with ESMTPS id iw14-20020a170903044e00b001cfc419e609si1145101plb.67.2023.11.30.05.20.44
+        by mx.google.com with ESMTPS id b7-20020a170902650700b001cfb1dab1b0si1108859plk.589.2023.11.30.05.21.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 05:20:44 -0800 (PST)
+        Thu, 30 Nov 2023 05:21:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of srs0=tvl7=hl=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of srs0=tvl7=hl=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=Tvl7=HL=kaod.org=clg@ozlabs.org"
-Received: from gandalf.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4Sgxdj5bkSz4xjY;
-	Fri,  1 Dec 2023 00:20:41 +1100 (AEDT)
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4SgxfF5JRqz4xhb;
+	Fri,  1 Dec 2023 00:21:09 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4Sgxck69gcz4xW7;
-	Fri,  1 Dec 2023 00:19:50 +1100 (AEDT)
-Message-ID: <f9b6941c-15b9-40ec-bc17-a154678d1a1c@kaod.org>
-Date: Thu, 30 Nov 2023 14:19:44 +0100
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4SgxdL6Gzsz4xdZ;
+	Fri,  1 Dec 2023 00:20:22 +1100 (AEDT)
+Message-ID: <d9164828-22fb-42a4-b71a-5ae14a172d50@kaod.org>
+Date: Thu, 30 Nov 2023 14:20:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] qemu/main-loop: rename qemu_cond_wait_iothread() to
- qemu_cond_wait_bql()
+Subject: Re: [PATCH 4/6] system/cpus: rename qemu_global_mutex to qemu_bql
 Content-Language: en-US
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -101,16 +100,18 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
  <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-4-stefanha@redhat.com>
+ <20231129212625.1051502-5-stefanha@redhat.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231129212625.1051502-4-stefanha@redhat.com>
+In-Reply-To: <20231129212625.1051502-5-stefanha@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Qb0Jsjx5wY6t
+X-TUID: wlOY02UDv58R
 
 On 11/29/23 22:26, Stefan Hajnoczi wrote:
-> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
-> instead, it is already widely used and unambiguous.
+> The APIs using qemu_global_mutex now follow the Big QEMU Lock (BQL)
+> nomenclature. It's a little strange that the actual QemuMutex variable
+> that embodies the BQL is called qemu_global_mutex instead of qemu_bql.
+> Rename it for consistency.
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 

@@ -1,330 +1,218 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e12-20020adfe38c000000b00332fd9b2b52sm1829283wrm.104.2023.11.30.07.33.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 07:33:34 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D11295FB53;
-	Thu, 30 Nov 2023 15:33:33 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Eric Farman <farman@linux.ibm.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Eric Auger <eric.auger@redhat.com>,
-	qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	qemu-s390x@nongnu.org,
-	Beraldo Leal <bleal@redhat.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 3/3] gitlab: add optional job to run flaky avocado tests
-Date: Thu, 30 Nov 2023 15:33:33 +0000
-Message-Id: <20231130153333.2424775-4-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231130153333.2424775-1-alex.bennee@linaro.org>
-References: <20231130153333.2424775-1-alex.bennee@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp347497ejb;
+        Thu, 30 Nov 2023 08:14:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHOh25Bq7mNuFQH8nBJUMrDBsXPHMDUoni+e4lBIBMR6jedJg66OkKnCQTTLhjwYRFuRXUz
+X-Received: by 2002:a05:6102:9c2:b0:464:6008:72b9 with SMTP id g2-20020a05610209c200b00464600872b9mr1110337vsi.7.1701360882482;
+        Thu, 30 Nov 2023 08:14:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701360882; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VXrrahuW51hnkaIYIHqqmVzw+MKJeo+c+mh2OyfyIs0lK3bX9QHj8O2niKdy4ef3tN
+         YD6F7n7CDtVqQvflYZpe+j8PYFoRAwJbRTtxUqg34U9invgXz9gGBB7W1OM5UWjISccP
+         Nd3GBHQQuAHUxLtSw6E3PdF1lL48XAZPAMqNX08dgEGqu+fiQI3UfymsnGv588UGhr0H
+         mbAlNaFcno/KNuqysoJbRpCbteU9XHr9BL/SyHetrRMzXucOJS/+uZb+V74jZlaRLXPT
+         gRGy3558J9YX/+A1WWe9+MHbi13I9l1Mo+c4lMGjdFZITwNBJWg0uCeRu5+kviNS4I1w
+         mD8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature;
+        bh=PzgD9NSDt1wLFQ6Fe6/x6CsYPeUumeQ1FyYdCSEk1v0=;
+        fh=cgAQA+XUIsr4IqXjvxsNSbu6yUfPNOKZue5KQ1lizTE=;
+        b=Je/GRZQYwyWTYXsf0I2tG2RMAE5F9tR7iTRWlKu/2nr/6Tn5x7mnZoP00DE4sziupk
+         zWWOg4Glrq9JsuJzTZ4aiDl0drejPN4SaNJRa0gnfwH4xgm8Qy7KDbQOtCL90OG6qhkm
+         x4juCw6itr8UQYP0oG3IWtnK1Kvr5p0lLggY6A3XqQfJh7vZQAQfDhoBypzl4sOOOO1s
+         LiVV+8sl/lll2bGWENr2/8XejIToh5YWVCbZvIqKgNUGeslNti/oShMJ7MHe1g4sHH4y
+         d672jLe/vet1ClZNjAr/bM5Q2JaHTk4+cbLgNPxsnZwcg7DVRZxiF8wS8QAovtJvjXWp
+         z1BQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=NNbXkdkc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s25-20020a67e359000000b004644f3e9896si265087vsm.598.2023.11.30.08.14.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Nov 2023 08:14:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=NNbXkdkc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r8jgN-0006X2-4w; Thu, 30 Nov 2023 11:14:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1r8jgL-0006WZ-V4; Thu, 30 Nov 2023 11:14:30 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1r8jgJ-0003tx-NJ; Thu, 30 Nov 2023 11:14:29 -0500
+Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 3AUFpvBH024284; Thu, 30 Nov 2023 16:14:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=PzgD9NSDt1wLFQ6Fe6/x6CsYPeUumeQ1FyYdCSEk1v0=;
+ b=NNbXkdkcUy3rFpaav//xasoFHIaPkll5qqo63SbgRLknolKLdVQN4C4UdvZJaB+yf4QL
+ Q2o6iiRtM+ku9PA/E+k40FDUtF/KCpirhNtZTPb3wO5m21BPilCGlHfUNYxx09i6bupk
+ HcWl7Dcav+4ZRDG+RrHfLB1dyBDpgBPKptgzZEd+KgxFXVzYVLIOsR7g5Tc6kmPyvJ0n
+ 3CxD2/AVeMv3Po8Ql/JEJJzU5urYyIvKQddA58GMv0Yj42gjbFqF+dAc0/jtZI7V/smb
+ r49bZb6Rj16CR/+v25Yq7YSxHwMFFxkp/UrbUQI2PWDo6uUDKpk7zx7vKlbdY39Bmk/E DQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3upwdkgtgb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 30 Nov 2023 16:14:13 +0000
+Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3AUFrLmX028479;
+ Thu, 30 Nov 2023 16:14:12 GMT
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3upwdkgtef-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 30 Nov 2023 16:14:12 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 3AUDn2pt022155; Thu, 30 Nov 2023 16:14:11 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3uku8tfeqs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 30 Nov 2023 16:14:11 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 3AUGEA0A4915874
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 30 Nov 2023 16:14:10 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 587D358063;
+ Thu, 30 Nov 2023 16:14:10 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0B2CD58043;
+ Thu, 30 Nov 2023 16:14:09 +0000 (GMT)
+Received: from [9.24.12.86] (unknown [9.24.12.86])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 30 Nov 2023 16:14:08 +0000 (GMT)
+Message-ID: <6733edbd-3e4c-40ef-b239-6f4180f40cb8@linux.ibm.com>
+Date: Thu, 30 Nov 2023 10:14:08 -0600
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 00/10] Introduce model for IBM's FSI
+Content-Language: en-US
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20231026164741.1184058-1-ninad@linux.ibm.com>
+ <417e8a68-2f35-4315-b694-892f78c811b6@kaod.org>
+ <a1fbfc7b-6f5a-44c4-9af4-65dac15763b6@linux.ibm.com>
+ <1f2a6342-5d14-4549-bd44-1fe51f84f18d@kaod.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <1f2a6342-5d14-4549-bd44-1fe51f84f18d@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: cugjMBQozFNyU9vA1fPgwL4AesKHSqSi
+X-Proofpoint-ORIG-GUID: OE8wTowrAgjT2ZD_EeIq8Vqn8Qx1JIoL
 Content-Transfer-Encoding: 8bit
-X-TUID: Xsx2vWbgiMiE
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-11-30_16,2023-11-30_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 mlxlogscore=901
+ lowpriorityscore=0 suspectscore=0 spamscore=0 impostorscore=0
+ clxscore=1015 malwarescore=0 bulkscore=0 priorityscore=1501 adultscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2311300118
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Im/9fEcF+oWt
 
-One problem with flaky tests is they often only fail under CI
-conditions which makes it hard to debug. We add an optional allow_fail
-job so developers can trigger the only the flaky tests in the CI
-environment if they are debugging.
+Hello Cedric,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- docs/devel/testing.rst                   | 15 ++++++------
- .gitlab-ci.d/buildtest.yml               | 30 ++++++++++++++++++++++++
- tests/avocado/boot_linux.py              |  2 ++
- tests/avocado/boot_linux_console.py      |  1 +
- tests/avocado/intel_iommu.py             |  1 +
- tests/avocado/linux_initrd.py            |  2 ++
- tests/avocado/machine_aspeed.py          |  2 ++
- tests/avocado/machine_mips_malta.py      |  2 ++
- tests/avocado/machine_rx_gdbsim.py       |  2 ++
- tests/avocado/machine_s390_ccw_virtio.py |  1 +
- tests/avocado/replay_kernel.py           |  2 ++
- tests/avocado/reverse_debugging.py       |  2 ++
- tests/avocado/smmu.py                    |  1 +
- tests/avocado/tuxrun_baselines.py        |  1 +
- 14 files changed, 57 insertions(+), 7 deletions(-)
-
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 579d1837e0..fec8f06c09 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -1386,17 +1386,18 @@ below:
-   def test(self):
-       do_something()
- 
-+You can also add ``:avocado: tags=flaky`` to the test meta-data so
-+only the flaky tests can be run as a group:
-+
-+.. code::
-+
-+   env QEMU_TEST_FLAKY_TESTS=1 ./pyvenv/bin/avocado \
-+      run tests/avocado -filter-by-tags=flaky
-+
- Tests should not live in this state forever and should either be fixed
- or eventually removed. If you move a test into this category please
- consider raising a bug to track progress towards a fix.
- 
--To run such tests locally you will need to set the environment
--variable. For example:
--
--.. code::
--
--   env QEMU_TEST_FLAKY_TESTS=1 ./pyvenv/bin/avocado run \
--      tests/avocado/boot_linux.py:BootLinuxPPC64.test_pseries_tcg
- 
- Uninstalling Avocado
- ~~~~~~~~~~~~~~~~~~~~
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 7f9af83b10..1624518d6c 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -217,6 +217,36 @@ avocado-system-opensuse:
-     MAKE_CHECK_ARGS: check-avocado
-     AVOCADO_TAGS: arch:s390x arch:x86_64 arch:aarch64
- 
-+#
-+# Flaky tests. We don't run these by default and they are allow fail
-+# but often the CI system is the only way to trigger the failures.
-+#
-+
-+build-system-flaky:
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-+  needs:
-+    job: amd64-debian-container
-+  variables:
-+    IMAGE: debian
-+    QEMU_JOB_OPTIONAL: 1
-+    TARGETS: arm-softmmu mips64el-softmmu rx-softmmu s390x-softmmu
-+      sh4-softmmu x86_64-softmmu 
-+    MAKE_CHECK_ARGS: check-build
-+
-+avocado-system-flaky:
-+  extends: .avocado_test_job_template
-+  needs:
-+    - job: build-system-flaky
-+      artifacts: true
-+  allow_failure: true
-+  variables:
-+    IMAGE: debian
-+    MAKE_CHECK_ARGS: check-avocado
-+    QEMU_JOB_OPTIONAL: 1
-+    QEMU_TEST_FLAKY_TESTS: 1
-+    AVOCADO_TAGS: flaky
- 
- # This jobs explicitly disable TCG (--disable-tcg), KVM is detected by
- # the configure script. The container doesn't contain Xen headers so
-diff --git a/tests/avocado/boot_linux.py b/tests/avocado/boot_linux.py
-index 9e9773e6e1..7c4769904e 100644
---- a/tests/avocado/boot_linux.py
-+++ b/tests/avocado/boot_linux.py
-@@ -99,6 +99,7 @@ def test_pseries_tcg(self):
-         """
-         :avocado: tags=machine:pseries
-         :avocado: tags=accel:tcg
-+        :avocado: tags=flaky
-         """
-         self.require_accelerator("tcg")
-         self.vm.add_args("-accel", "tcg")
-@@ -118,6 +119,7 @@ def test_s390_ccw_virtio_tcg(self):
-         """
-         :avocado: tags=machine:s390-ccw-virtio
-         :avocado: tags=accel:tcg
-+        :avocado: tags=flaky
-         """
-         self.require_accelerator("tcg")
-         self.vm.add_args("-accel", "tcg")
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 231b4f68e5..3f0180e1f8 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -1425,6 +1425,7 @@ def test_sh4_r2d(self):
-         """
-         :avocado: tags=arch:sh4
-         :avocado: tags=machine:r2d
-+        :avocado: tags=flaky
-         """
-         tar_hash = 'fe06a4fd8ccbf2e27928d64472939d47829d4c7e'
-         self.vm.add_args('-append', 'console=ttySC1')
-diff --git a/tests/avocado/intel_iommu.py b/tests/avocado/intel_iommu.py
-index 2dd11a6346..f04ee1cf9d 100644
---- a/tests/avocado/intel_iommu.py
-+++ b/tests/avocado/intel_iommu.py
-@@ -22,6 +22,7 @@ class IntelIOMMU(LinuxTest):
-     :avocado: tags=machine:q35
-     :avocado: tags=accel:kvm
-     :avocado: tags=intel_iommu
-+    :avocado: tags=flaky
-     """
- 
-     IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
-diff --git a/tests/avocado/linux_initrd.py b/tests/avocado/linux_initrd.py
-index c40a987bd1..aad5b19bd9 100644
---- a/tests/avocado/linux_initrd.py
-+++ b/tests/avocado/linux_initrd.py
-@@ -57,6 +57,8 @@ def test_with_2gib_file_should_exit_error_msg_with_linux_v3_6(self):
- 
-     def test_with_2gib_file_should_work_with_linux_v4_16(self):
-         """
-+        :avocado: tags=flaky
-+
-         QEMU has supported up to 4 GiB initrd for recent kernel
-         Expect guest can reach 'Unpacking initramfs...'
-         """
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 258fb50c47..6fa5459a07 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -317,6 +317,7 @@ def test_arm_ast2500_evb_sdk(self):
-         """
-         :avocado: tags=arch:arm
-         :avocado: tags=machine:ast2500-evb
-+        :avocado: tags=flaky
-         """
- 
-         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-@@ -336,6 +337,7 @@ def test_arm_ast2600_evb_sdk(self):
-         """
-         :avocado: tags=arch:arm
-         :avocado: tags=machine:ast2600-evb
-+        :avocado: tags=flaky
-         """
- 
-         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-diff --git a/tests/avocado/machine_mips_malta.py b/tests/avocado/machine_mips_malta.py
-index 959dcf5602..99bee49e9a 100644
---- a/tests/avocado/machine_mips_malta.py
-+++ b/tests/avocado/machine_mips_malta.py
-@@ -109,6 +109,7 @@ def test_mips_malta_i6400_framebuffer_logo_7cores(self):
-         :avocado: tags=machine:malta
-         :avocado: tags=cpu:I6400
-         :avocado: tags=mips:smp
-+        :avocado: tags=flaky
-         """
-         self.do_test_i6400_framebuffer_logo(7)
- 
-@@ -120,6 +121,7 @@ def test_mips_malta_i6400_framebuffer_logo_8cores(self):
-         :avocado: tags=machine:malta
-         :avocado: tags=cpu:I6400
-         :avocado: tags=mips:smp
-+        :avocado: tags=flaky
-         """
-         self.do_test_i6400_framebuffer_logo(8)
- 
-diff --git a/tests/avocado/machine_rx_gdbsim.py b/tests/avocado/machine_rx_gdbsim.py
-index 350a73fbbb..412a7a5089 100644
---- a/tests/avocado/machine_rx_gdbsim.py
-+++ b/tests/avocado/machine_rx_gdbsim.py
-@@ -31,6 +31,7 @@ def test_uboot(self):
-         :avocado: tags=arch:rx
-         :avocado: tags=machine:gdbsim-r5f562n8
-         :avocado: tags=endian:little
-+        :avocado: tags=flaky
-         """
-         uboot_url = ('https://acc.dl.osdn.jp/users/23/23888/u-boot.bin.gz')
-         uboot_hash = '9b78dbd43b40b2526848c0b1ce9de02c24f4dcdb'
-@@ -56,6 +57,7 @@ def test_linux_sash(self):
-         :avocado: tags=arch:rx
-         :avocado: tags=machine:gdbsim-r5f562n7
-         :avocado: tags=endian:little
-+        :avocado: tags=flaky
-         """
-         dtb_url = ('https://acc.dl.osdn.jp/users/23/23887/rx-virt.dtb')
-         dtb_hash = '7b4e4e2c71905da44e86ce47adee2210b026ac18'
-diff --git a/tests/avocado/machine_s390_ccw_virtio.py b/tests/avocado/machine_s390_ccw_virtio.py
-index 61e75d8f9e..26e938c9e9 100644
---- a/tests/avocado/machine_s390_ccw_virtio.py
-+++ b/tests/avocado/machine_s390_ccw_virtio.py
-@@ -167,6 +167,7 @@ def test_s390x_fedora(self):
-         :avocado: tags=device:virtio-gpu
-         :avocado: tags=device:virtio-crypto
-         :avocado: tags=device:virtio-net
-+        :avocado: tags=flaky
-         """
- 
-         kernel_url = ('https://archives.fedoraproject.org/pub/archive'
-diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
-index a60f1d1e54..010d7644c2 100644
---- a/tests/avocado/replay_kernel.py
-+++ b/tests/avocado/replay_kernel.py
-@@ -87,6 +87,7 @@ def test_x86_64_pc(self):
-         """
-         :avocado: tags=arch:x86_64
-         :avocado: tags=machine:pc
-+        :avocado: tags=flaky
-         """
-         kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora'
-                       '/linux/releases/29/Everything/x86_64/os/images/pxeboot'
-@@ -185,6 +186,7 @@ def test_arm_cubieboard_initrd(self):
-         """
-         :avocado: tags=arch:arm
-         :avocado: tags=machine:cubieboard
-+        :avocado: tags=flaky
-         """
-         deb_url = ('https://apt.armbian.com/pool/main/l/'
-                    'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
-diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
-index 9a468321e5..4cce5a5598 100644
---- a/tests/avocado/reverse_debugging.py
-+++ b/tests/avocado/reverse_debugging.py
-@@ -255,6 +255,7 @@ def test_ppc64_pseries(self):
-         """
-         :avocado: tags=arch:ppc64
-         :avocado: tags=machine:pseries
-+        :avocado: tags=flaky
-         """
-         # SLOF branches back to its entry point, which causes this test
-         # to take the 'hit a breakpoint again' path. That's not a problem,
-@@ -269,6 +270,7 @@ def test_ppc64_powernv(self):
-         """
-         :avocado: tags=arch:ppc64
-         :avocado: tags=machine:powernv
-+        :avocado: tags=flaky
-         """
-         self.endian_is_le = False
-         self.reverse_debugging()
-diff --git a/tests/avocado/smmu.py b/tests/avocado/smmu.py
-index 05b34418a5..21ff030ca7 100644
---- a/tests/avocado/smmu.py
-+++ b/tests/avocado/smmu.py
-@@ -22,6 +22,7 @@ class SMMU(LinuxTest):
-     :avocado: tags=machine:virt
-     :avocado: tags=distro:fedora
-     :avocado: tags=smmu
-+    :avocado: tags=flaky
-     """
- 
-     IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-index 5f859f4e6f..a936a3b780 100644
---- a/tests/avocado/tuxrun_baselines.py
-+++ b/tests/avocado/tuxrun_baselines.py
-@@ -561,6 +561,7 @@ def test_sh4(self):
-         :avocado: tags=image:zImage
-         :avocado: tags=root:sda
-         :avocado: tags=console:ttySC1
-+        :avocado: tags=flaky
-         """
-         sums = { "rootfs.ext4.zst" :
-                  "3592a7a3d5a641e8b9821449e77bc43c9904a56c30d45da0694349cfd86743fd",
--- 
-2.39.2
+On 11/29/23 15:29, Cédric Le Goater wrote:
+> On 11/29/23 15:56, Ninad Palsule wrote:
+>> Hello Cedric,
+>>
+>> On 11/27/23 10:31, Cédric Le Goater wrote:
+>>> Hello Ninad,
+>>>
+>>> On 10/26/23 18:47, Ninad Palsule wrote:
+>>>> Hello,
+>>>>
+>>>> Please review the patch-set version 7.
+>>>> I have incorporated review comments from Cedric, Philippe and Thomas.
+>>>
+>>>
+>>> I reworked v7 with the suggestions I made in patches 1-6. Please 
+>>> check :
+>>>
+>>>   https://github.com/legoater/qemu/commits/aspeed-8.2
+>>>
+>>> I will have more questions on the mappings because some parts are 
+>>> really
+>>> unclear.
+>>>
+>> I forgot to mention in my last mail. If I build against your 
+>> aspeed-8.2 branch then rainier machine is failing to boot.
+>>
+>> The same images are working with qemu master branch.
+>>
+>> fsi/qemu-system-arm -M rainier-bmc -nographic -kernel 
+>> ./fitImage-linux.bin -dtb ./aspeed-bmc-ibm-rainier.dtb -initrd 
+>> ./obmc-phosphor-initramfs.rootfs.cpio.xz -drive 
+>> file=./obmc-phosphor-image.rootfs.wic.qcow2,if=sd,index=2 -append 
+>> 'rootwait console=ttyS4,115200n8 root=PARTLABEL=rofs-a' -net nic -net 
+>> user,hostfwd=:127.0.0.1:3222-:22,hostfwd=:127.0.0.1:2234-:1234 -trace 
+>> 'fsi*'
+>>                          |
+>>                          |
+>> Starting systemd-udevd version 254^
+>> [   50.630407] /dev/disk/by-partlabel/rofs-a: Can't open blockdev
+>> mount: mounting /dev/disk/by-partlabel/rofs-a on /mnt/rofs failed: No 
+>> such file or directory
+>> /bin/sh: can't access tty; job control turned off
+>
+> Hello,
+>
+> Please try with  '-M rainier-bmc,boot-emmc=false' to avoid using the
+> boot emmc mode which is the default for the rainier machine.
+>
+> I just updated the aspeed-8.2 branch to take into account the -kernel
+> option when booting the rainier.
+That worked. Thanks!
+>
+>
+> Thanks,
+>
+> C.
+>
+>
+>

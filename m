@@ -1,81 +1,82 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp234856ejb;
-        Thu, 30 Nov 2023 05:47:57 -0800 (PST)
-X-Received: by 2002:adf:ec52:0:b0:332:d319:5955 with SMTP id w18-20020adfec52000000b00332d3195955mr14675428wrn.35.1701352077240;
-        Thu, 30 Nov 2023 05:47:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701352077; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp236081ejb;
+        Thu, 30 Nov 2023 05:49:56 -0800 (PST)
+X-Received: by 2002:a2e:8049:0:b0:2c9:b84a:1482 with SMTP id p9-20020a2e8049000000b002c9b84a1482mr5068078ljg.17.1701352196353;
+        Thu, 30 Nov 2023 05:49:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701352196; cv=none;
         d=google.com; s=arc-20160816;
-        b=pLpDrU88OxwpBRCnhUB0rUUSmFc/aUZPjEikmfibsD6U8UNZB5CJGzMw/QPvXNNavx
-         dnHrjgIUAYTNJMv20CS/LVhCbMcycUhBl7kDqMZpRyMfueWeAzMGb8WooFsF2nfp5jYj
-         Xctuk8ydt6749niuGha7ets3e6MeCQQRw9m59DaldH9Ek4W1B6T8rRbd0TdXnRsueE8r
-         rKT5GaFDgwUxi1FX6BWCahKv1OjlBzmMt0CUFUE4r+aIv7p09CwBnxX4/oWaqKsAeSSS
-         tRZGaVJcEmMNV92ZXEmOMkxmUK56bLZ8+WM1WTkhy39GbQ7vDGq3KXrzABCZRXoS/qw2
-         PXvQ==
+        b=ZQ6mZAN3Sk0OBL5qOvZoiXQm6YA/IjAW5sQaJm8JgiqhbaVT92+BDt6MXyCMhKyHgp
+         PappPXfxLIJGWzEkCrkzrEY7596NLDBtMK4jOrHv98y7iI9AN6uZAZC708vRB1u+6lH2
+         C+hu/KiTLTlie5Ds2gDLATXer3gmqTk//6b0W6awzVx/yfcuzpT6NCua5YCTrRYCO/gw
+         kuhUxI0B4OS5MkPnrWe1c4j1YFXKJrmon+1RpcjTV4ViDpVKm1XXU2QYwVl9uHE/uq5/
+         Cqh6NH4SbI4qxKkYCNrwzHZXqqMipHz8xKJej9RbwHFhnGXALSIXAjaFdqfyE1ye4cMf
+         +wpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=rzryK5Ovxx7DOgDxZdQ36NxzgykTz4w4Mydj5qAA+DE=;
+        bh=MzXC86kI/230MRmOExolGBgQpce+zyW7qougvXLVSk8=;
         fh=vq6TxQ5MccBz0KdbaF/bByy5+pn65vn8lyysQZcYMWE=;
-        b=VfOlaBJh8BQTMZxZ1DuIHZYDqLmEV1VxJavZhM3W/lvcIoR8rI/0gy8ms7l+TwDVqz
-         vQRJ5bc0+K1d/T0AVdNvfIlrX8j4c9kwQfFmDqaK/KyuUkJUpjh6sJMecZ6KOe8gP1Kk
-         XqV4VdElbZz3DSi8upYDgPw6puNa6JSUlhdOeZCEu0OiiuiZVzupqyjPJv4o+kPvAL7m
-         SyIvnQj1+ws7zcI67Z4VpXkfkpaR0T56MG/cvN9LAuMlhd3byWLcoU2yBFAfaTitzVeE
-         Ag1IK1LJDSw7MVwLXLF/UzTeIstPpVSlfybdUu58XNwrQGhXlAtz423sabQPyr58uJSO
-         +YeQ==
+        b=oiWCUhFz1BXmDWeaXM3KhgBjEzQcZbfwWCFuCQhmZMkkWE9WwqO+WK8p8H4Iq2PDFg
+         HrXZ3XeibIJIj03Q9OyX7jyZjSb3fRclpO4v+7mxigmZDPkqWRusFh/ixlqv1WM7CtUy
+         yHjERKkRfenCksiJkydQoAf+Ga6fyHyMzd97J0J22xcrFBPShgNduTb9cIlHcX+IpJaB
+         x31VsKxiM5QQ0mN6muUVp/K3vpvq3IhuSTHFzaRgb5j82i2qVbaMYy/KjdGZct3XTNlv
+         ui88aD+JI7X5SSNz5kfCPtlpTYyZEPStU9Mu0vcE99Ub1xlu3k/3udfm3nLJ3dx8XOBY
+         V2eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T1gUg2ZE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=e57stsaJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id je14-20020a05600c1f8e00b00405d99620eesor412093wmb.1.2023.11.30.05.47.57
+        by mx.google.com with SMTPS id d18-20020a05600c34d200b003fef8272b2fsor382849wmq.9.2023.11.30.05.49.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 30 Nov 2023 05:47:57 -0800 (PST)
+        Thu, 30 Nov 2023 05:49:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T1gUg2ZE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=e57stsaJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701352077; x=1701956877; darn=linaro.org;
+        d=linaro.org; s=google; t=1701352196; x=1701956996; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=rzryK5Ovxx7DOgDxZdQ36NxzgykTz4w4Mydj5qAA+DE=;
-        b=T1gUg2ZE4LpW0ug3oJ2xv/FFTSZY01iqu0VPbQTou4MEVj7ZUxnQcMSm9Dk2sK4C+n
-         Z/oZ5bRO/h9SWWpTIZwPbE2ilXYYnrkcS8mIkmF9SZmfZ5vzDSL8eX67WzhR3E6HZPkC
-         FAaL/VgbeDXf596mrEPcZWsNiaAfxgzVFZvnLje0Tx6Ls18LhFv0r8fcW2fM8rd9jSRb
-         UmNacR7lO/vg8d38z7MubCY6N6R8s8g4XnWYqx5Sr3ENcOfATSGkHLmDFz1dDv/QMQH8
-         Xp2t32SIxD5MpD4wMjt/BgFrx6Yp6ppUG83PtH0yQROrcSEbOZ3ScEubpcZwIdKNf9DO
-         0BMA==
+        bh=MzXC86kI/230MRmOExolGBgQpce+zyW7qougvXLVSk8=;
+        b=e57stsaJHyWH1yrMZjkp+HRYSDrfZFPZ5HbaRSYg4UUFDiv2vOr8Jvk7Akngh/iJjw
+         4gEoxbbS3pU9z0cM9nMyDRWhTghXHCThwMNmw/R5NQmQ1/5vZfnd2ISo3i0N3V+D0Wfm
+         VLd95WVIie/7VhMpvyiYhc7mMvxGKXXevbkVyJ2q8LgbCRUwgg6oBx1L3goS3YmAtSiA
+         40tx/sCu4mbmL0MjvgnR3rmpdjJiUtUpPMbA+zP19C1Ug7N9+I//3NijAbUg7JfiRlMr
+         Brmn5z96rN/zGlLmAmFRgJTTkBfCGasEivWK7ooNFAUfnCvTACPMlOuQBno5QMJza33v
+         Gp2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701352077; x=1701956877;
+        d=1e100.net; s=20230601; t=1701352196; x=1701956996;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rzryK5Ovxx7DOgDxZdQ36NxzgykTz4w4Mydj5qAA+DE=;
-        b=amZOmYLJ3o2rn1788cSCegcUpPtUkNQ5c2jUe5309gUuaN0m99zup4GUk+JhvYarrT
-         rUFMRVmFNlNhg8mUPjtPCoIZ0aQOC4iAB+J0JgXZCNx8XRTY7+4+oIPFDbN5ITdX2j1A
-         lq8PbYX5TCVISNmXQFNwHRWDr1jlSXvX+JveOY66ggOPjJ2D3+vhUFe+yQL1MaLwsLs3
-         czeSHdMwdjXzrMUUdfOuyay98uwa3JbwlFDWft12eY1DGotY67OOgIHhbQE4Ta+zrgvB
-         8KQPCvhi7o9SD0qsNPbLPI8LtuxaCPWkhoZVzpG541ydS8GnH6iyWZKeCHgN6GYyLH+x
-         c7xg==
-X-Gm-Message-State: AOJu0Yzlb7w/mFrljGnnEfLK0pct4SiRQ0vIaFMrz4cEc0OpeSM2rnmc
-	uXf953AXRWV0rZT42HDkQOnjf+Wy
-X-Google-Smtp-Source: AGHT+IEVx+BgPGgvtoGgXlS2ma7+soUtQpvgW6i96U/5dPN3399XP3o/9uLj4S+iHyFoPGNahzok1g==
-X-Received: by 2002:a05:600c:3c8a:b0:40b:4da4:b985 with SMTP id bg10-20020a05600c3c8a00b0040b4da4b985mr6336852wmb.38.1701352076590;
-        Thu, 30 Nov 2023 05:47:56 -0800 (PST)
+        bh=MzXC86kI/230MRmOExolGBgQpce+zyW7qougvXLVSk8=;
+        b=baQ7tUs+kbV1v6ZbFW4LPo1ZeZg5FxDoAUGpbGQIfCwtlBhMP689faXjen32kDnbbo
+         R3wUUwUwWdVjfnNijifgDCOb3H3xlEHwSBtHI5Zq32QeC/Jgdvn63bIajrZLid8NZbYv
+         rdu5HaRjgQdaZw561S6zjTD4qMEsPa4/JITCaj7Lvh3jPtGuMemdzgK4aL3MTOykqpyE
+         lWtQlaiEB2GhLZlZUM7LCxTHC+Xa2QT7W6kht8A02j7PLy2yz6+fBi/T/32IBSFIOvF0
+         24DENQyvJWw9oODk4tj3MRvDhofsfG7IwpoVMHxj9BTvSMocIsw2hNEHbhqq1un/5okR
+         Zrpw==
+X-Gm-Message-State: AOJu0YwNEcDs8hUefakwa/9Qncfgs+w4STB1QT5KMXZm9s1cLLne2ZOy
+	BDR1wQc6qHBsFnuoAxasK0B4PEWe
+X-Google-Smtp-Source: AGHT+IGEZM/F60lbKf+pyOaxLGJZDqngSEf0GXts+oJS0AF+AGOPuKqrMqfmt5a2LHBk+wqKglvvAA==
+X-Received: by 2002:adf:f588:0:b0:332:eb19:9530 with SMTP id f8-20020adff588000000b00332eb199530mr14573473wro.32.1701352195915;
+        Thu, 30 Nov 2023 05:49:55 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (sev93-h02-176-184-17-116.dsl.sta.abo.bbox.fr. [176.184.17.116])
-        by smtp.gmail.com with ESMTPSA id n26-20020a05600c3b9a00b0040b34409d43sm2099005wms.11.2023.11.30.05.47.50
+        by smtp.gmail.com with ESMTPSA id h1-20020adfe981000000b00332f6202b82sm1595392wrm.9.2023.11.30.05.49.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Nov 2023 05:47:56 -0800 (PST)
-Message-ID: <9c305a84-fd86-42fe-98ae-9297d480acd6@linaro.org>
-Date: Thu, 30 Nov 2023 14:47:49 +0100
+        Thu, 30 Nov 2023 05:49:55 -0800 (PST)
+Message-ID: <fcaff24d-0ced-4547-898f-a9b8bf49be45@linaro.org>
+Date: Thu, 30 Nov 2023 14:49:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/6] Replace "iothread lock" with "BQL" in comments
+Subject: Re: [PATCH 6/6] Rename "QEMU global mutex" to "BQL" in comments and
+ docs
 Content-Language: en-US
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -130,81 +131,74 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
  <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-6-stefanha@redhat.com>
+ <20231129212625.1051502-7-stefanha@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231129212625.1051502-6-stefanha@redhat.com>
+In-Reply-To: <20231129212625.1051502-7-stefanha@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: bX20q0ACaAES
-
-Hi Stefan,
+X-TUID: iVy+P+8KoPuf
 
 On 29/11/23 22:26, Stefan Hajnoczi wrote:
-> The term "iothread lock" is obsolete. The APIs use Big QEMU Lock (BQL)
-> in their names. Update the code comments to use "BQL" instead of
-> "iothread lock".
+> The term "QEMU global mutex" is identical to the more widely used Big
+> QEMU Lock ("BQL"). Update the code comments and documentation to use
+> "BQL" instead of "QEMU global mutex".
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->   docs/devel/reset.rst             |  2 +-
->   hw/display/qxl.h                 |  2 +-
->   include/exec/cpu-common.h        |  2 +-
->   include/exec/memory.h            |  4 ++--
->   include/exec/ramblock.h          |  2 +-
->   include/migration/register.h     |  8 ++++----
->   target/arm/internals.h           |  4 ++--
->   accel/tcg/cputlb.c               |  4 ++--
->   accel/tcg/tcg-accel-ops-icount.c |  2 +-
->   hw/remote/mpqemu-link.c          |  2 +-
->   migration/block-dirty-bitmap.c   | 10 +++++-----
->   migration/block.c                | 24 ++++++++++++------------
->   migration/colo.c                 |  2 +-
->   migration/migration.c            |  2 +-
->   migration/ram.c                  |  4 ++--
->   system/physmem.c                 |  6 +++---
->   target/arm/helper.c              |  2 +-
->   target/arm/tcg/m_helper.c        |  2 +-
->   ui/spice-core.c                  |  2 +-
->   util/rcu.c                       |  2 +-
->   audio/coreaudio.m                |  4 ++--
->   ui/cocoa.m                       |  6 +++---
->   22 files changed, 49 insertions(+), 49 deletions(-)
+>   docs/devel/multi-thread-tcg.rst   |  7 +++----
+>   docs/devel/qapi-code-gen.rst      |  2 +-
+>   docs/devel/replay.rst             |  2 +-
+>   docs/devel/multiple-iothreads.txt | 16 ++++++++--------
+>   include/block/blockjob.h          |  6 +++---
+>   include/io/task.h                 |  2 +-
+>   include/qemu/coroutine-core.h     |  2 +-
+>   include/qemu/coroutine.h          |  2 +-
+>   hw/block/dataplane/virtio-blk.c   |  8 ++++----
+>   hw/block/virtio-blk.c             |  2 +-
+>   hw/scsi/virtio-scsi-dataplane.c   |  6 +++---
+>   net/tap.c                         |  2 +-
+>   12 files changed, 28 insertions(+), 29 deletions(-)
 
 
-> diff --git a/include/exec/ramblock.h b/include/exec/ramblock.h
-> index 69c6a53902..a2bc0a345d 100644
-> --- a/include/exec/ramblock.h
-> +++ b/include/exec/ramblock.h
-> @@ -34,7 +34,7 @@ struct RAMBlock {
->       ram_addr_t max_length;
->       void (*resized)(const char*, uint64_t length, void *host);
->       uint32_t flags;
-> -    /* Protected by iothread lock.  */
-> +    /* Protected by BQL.  */
+> diff --git a/include/block/blockjob.h b/include/block/blockjob.h
+> index e594c10d23..b2bc7c04d6 100644
+> --- a/include/block/blockjob.h
+> +++ b/include/block/blockjob.h
+> @@ -54,7 +54,7 @@ typedef struct BlockJob {
+>   
+>       /**
+>        * Speed that was set with @block_job_set_speed.
+> -     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
+> +     * Always modified and read under BQL (GLOBAL_STATE_CODE).
 
-There is only one single BQL, so preferably:
+"under the BQL"
 
-"by the BQL"
+>        */
+>       int64_t speed;
+>   
+> @@ -66,7 +66,7 @@ typedef struct BlockJob {
+>   
+>       /**
+>        * Block other operations when block job is running.
+> -     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
+> +     * Always modified and read under BQL (GLOBAL_STATE_CODE).
 
->       char idstr[256];
->       /* RCU-enabled, writes protected by the ramlist lock */
->       QLIST_ENTRY(RAMBlock) next;
+Ditto,
 
+>        */
+>       Error *blocker;
+>   
+> @@ -89,7 +89,7 @@ typedef struct BlockJob {
+>   
+>       /**
+>        * BlockDriverStates that are involved in this block job.
+> -     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
+> +     * Always modified and read under BQL (GLOBAL_STATE_CODE).
 
+Ditto.
 
-
-> -/* Called with iothread lock taken.  */
-> +/* Called with BQL taken.  */
-
-"with the BQL" (other uses)
-
-Otherwise,
+>        */
+>       GSList *nodes;
+>   } BlockJob;
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
->   static void dirty_bitmap_do_save_cleanup(DBMSaveState *s)
->   {
->       SaveBitmapState *dbms;
-> @@ -479,7 +479,7 @@ static void dirty_bitmap_do_save_cleanup(DBMSaveState *s)
->       }
->   }

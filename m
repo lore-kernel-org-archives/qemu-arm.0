@@ -1,435 +1,139 @@
-Received: by 2002:a17:906:494d:b0:a0d:e0d9:b5bf with SMTP id f13csp2926925ejt;
-        Wed, 29 Nov 2023 13:26:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGILUrjlnUS3kmaXPxSF99umqPfWiez3ktnMGqHnFkc0cVDmNBTof9v2jFesrRxlvOG3+1X
-X-Received: by 2002:a05:620a:6405:b0:779:d0a6:2e4c with SMTP id pz5-20020a05620a640500b00779d0a62e4cmr23049796qkn.34.1701293214463;
-        Wed, 29 Nov 2023 13:26:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701293214; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp34452ejb;
+        Wed, 29 Nov 2023 23:18:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH4hg2yXTW1tY51w6rkRzAwuOb0FwAQJYovcu5BxljkzZ/CqiJPC0TUWehKMYbcc+T3gcWT
+X-Received: by 2002:ac5:c7c3:0:b0:4b2:960d:d9b4 with SMTP id e3-20020ac5c7c3000000b004b2960dd9b4mr3098351vkn.1.1701328683956;
+        Wed, 29 Nov 2023 23:18:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701328683; cv=none;
         d=google.com; s=arc-20160816;
-        b=KSJXJT5MA6HunvS2NdjCyQBKj9avtNUnupvFlQJCAWiy4Gz91habnJakLr+9xT6+0S
-         Ms1COG+lMhnZ3tM/6uaaFX9ijA9si8GzNEAyNX5/X5r8uPhk9zrkW7LSRcSCiLBcpPLg
-         g56z2fwoIGksdaUfGo8bNbYcccLRGg/hR4J5nAFlxaw3cB5uf8MM9yj5u1RxSOtk07nP
-         ++H3DDUZRT4CzT6HNr7VvopWsdu/GH2BgZLVOGcAqhGWMDsIxJYPZGbFP6MFel1RS/UG
-         YMP2wFp24AamLg17kRNo4XbyVNMTaiKI1BHG8jkfSt9JCT5H+en9Os1x/oZ5RQRydhOw
-         RM7A==
+        b=mACFf1AnYKGtkUSWEYm2lbfhKJ8OJugdDAVz/kH9/P/BBFg4f1wTrNu+MAMDJ8wfTT
+         paSjvaA9gPA3L3vZaZ51HX3m0C6db52PVMl4gn/J3mI2GyaxH75R3cZ/kto9DaAHKsKE
+         FiVY2Fm9lp37eulWwVyanXrUrPs0SKMEoaKgylUd2u/cqztQ3rnz9j8PV4kpr9f/LuNN
+         vU8FAj+mNnGx537DFt/OXxW2Bu8Z1MMW0a7hRQA3uGKdIgPQAVuAYaGFUP6f0qVjCF7N
+         Oc6GjAqsM0eqhSmHufy7+OHLF0HrTdr8RkQ94sQXHfQfz5umasDB7EhkpiYJpzSq82qJ
+         YwyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BpLNXxP4Yehpq7UvX9OuyGYKLdha9NvrROrpeAtoX0o=;
-        fh=66jOpK19BNwWsQZvN6UyW7PgNiNU+OiaQoFBeggwlKE=;
-        b=GAB4+OgYs+itKMmqVYB6ynHnjFNP+bWE/T1ZTwlUpl0kFOgXhrzrZh9JYJcd8QTC1J
-         kJnKSX2GmWryu4XV2TKSd/wKFkl5JhuPEe4SzvJ36O5kfBJOvcq+Q3hu6BErO2ISp9th
-         3wbpE0eaoYrrt+J715xs1OBBFkeysIPKd6K/FEUgka9BzsP1edk9JAvBM9O2OqZbDKLS
-         cEKROueESnMiWLUoBwuc44J3z8jZA7Xw+FwpC7naKdPpuqDSyJDdR168cnbwz/wKE8w0
-         fSXUb89qvUzs2sA5W18/b07RN36CRORSp0I5ouF1e+qTy+GDlfZ5MJ09/GsjpxE5lglc
-         KKSQ==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=2p1/yCCqE7V/A9ix7GiHFBqyRKKVluWD2OXS34K6s/4=;
+        fh=WgoSm14IW75gvpUx5RxZbWQ0I6GLX3YCUm1/f3vzI2w=;
+        b=j1XYasnXpy3pUodkwEBbjlM/3qt3xv/VS0YLgmH5X4JN7E5S7kgpTYXBIt+RjwEAOm
+         ryqsi9jY1otUK10cOmuKLWxKMXy6yZ5W35qDmTlnpXiHhUPa3IIjTpzRJdUi9bUvd38f
+         54KMrK0fFiGzHnyFLJMn9vtbk1vtV8aPqr3f2Pg19shD+L3LnBEUNton9UyhwAKQR0ts
+         asAq6aTzGc4Q+XEE2O52wliWUEV0l5CtbNQcoM063MVa/03Iodp6LZPXAxgGwMoXx1Vp
+         Upt19TYHGGkcfYh0ljbmJgxvWlO2KR4VomGUVpAN0mayKCc6FCWw8gqW7tdr76DRdp7l
+         S9Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gu8Ymmv4;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSIXV831;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bm41-20020a05620a19a900b0077da5d013d3si7978747qkb.639.2023.11.29.13.26.54
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id df10-20020a05622a0eca00b0042395ddd29dsi482192qtb.761.2023.11.29.23.18.03
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Nov 2023 13:26:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Wed, 29 Nov 2023 23:18:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gu8Ymmv4;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSIXV831;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701293214;
+	s=mimecast20190719; t=1701328683;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=BpLNXxP4Yehpq7UvX9OuyGYKLdha9NvrROrpeAtoX0o=;
-	b=Gu8Ymmv44Elij5mK8jFXcUituPCnDLYAJpD9KXKFLVX9MubljpeNOfIwTcsSvP9jqYTB1P
-	LoyVPmeqlu8HMZqSUUsezu+7M6v0GUxt0cKJNErFjcdaKZYaG1Qhrje96yCL7jQiJ2WsVf
-	C4GQj6L64KW/yT8mcvzvDN1y5Fb5OHc=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-120-FSUOmW5LOtChOrGn_QBs1g-1; Wed,
- 29 Nov 2023 16:26:51 -0500
-X-MC-Unique: FSUOmW5LOtChOrGn_QBs1g-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
+	bh=2p1/yCCqE7V/A9ix7GiHFBqyRKKVluWD2OXS34K6s/4=;
+	b=GSIXV831uxaXHpruBNyqBb/s15vlMX3lUSDF72n8zCWgtxoC9o2VQAbN69DWOQ2PjDxpr3
+	RO1GOF2Q2o1rpmFjAHLuCS2lxYn4RHx2HNup4NADrRYwTD6Csf/VI/9AjrKZ0SCIVDXiMk
+	E9HUPItz9sT/c6KBk3vrWzexKIjTzlM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-605-faJQaflrONWae7UjryOpGg-1; Thu, 30 Nov 2023 02:17:58 -0500
+X-MC-Unique: faJQaflrONWae7UjryOpGg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63A1138049F9;
-	Wed, 29 Nov 2023 21:26:49 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 41F60492BE0;
-	Wed, 29 Nov 2023 21:26:48 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Fabiano Rosas <farosas@suse.de>,
-	qemu-s390x@nongnu.org,
-	Song Gao <gaosong@loongson.cn>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Hyman Huang <yong.huang@smartx.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Paul Durrant <paul@xen.org>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	Juan Quintela <quintela@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Hailiang Zhang <zhanghailiang@xfusion.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Fam Zheng <fam@euphon.net>,
-	Eric Blake <eblake@redhat.com>,
-	Jiri Slaby <jslaby@suse.cz>,
-	Alexander Graf <agraf@csgraf.de>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Eric Farman <farman@linux.ibm.com>,
-	Stafford Horne <shorne@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Cameron Esfahani <dirty@apple.com>,
-	xen-devel@lists.xenproject.org,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	qemu-riscv@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	John Snow <jsnow@redhat.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Michael Roth <michael.roth@amd.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Bin Meng <bin.meng@windriver.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	kvm@vger.kernel.org,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	qemu-block@nongnu.org,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Peter Xu <peterx@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	qemu-ppc@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Leonardo Bras <leobras@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: [PATCH 6/6] Rename "QEMU global mutex" to "BQL" in comments and docs
-Date: Wed, 29 Nov 2023 16:26:25 -0500
-Message-ID: <20231129212625.1051502-7-stefanha@redhat.com>
-In-Reply-To: <20231129212625.1051502-1-stefanha@redhat.com>
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AF742811001;
+	Thu, 30 Nov 2023 07:17:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.148])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D59D40C6EB9;
+	Thu, 30 Nov 2023 07:17:55 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 90DFA21E6A1F; Thu, 30 Nov 2023 08:17:54 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org,  Jean-Christophe Dubois <jcd@tribudubois.net>,
+  Fabiano Rosas <farosas@suse.de>,  qemu-s390x@nongnu.org,  Song Gao
+ <gaosong@loongson.cn>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+  Thomas Huth <thuth@redhat.com>,  Hyman Huang <yong.huang@smartx.com>,
+  Marcelo Tosatti <mtosatti@redhat.com>,  David Woodhouse
+ <dwmw2@infradead.org>,  Andrey Smirnov <andrew.smirnov@gmail.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Kevin Wolf <kwolf@redhat.com>,  Ilya
+ Leoshkevich <iii@linux.ibm.com>,  Artyom Tarasenko <atar4qemu@gmail.com>,
+  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Max Filippov
+ <jcmvbkbc@gmail.com>,  Alistair Francis <alistair.francis@wdc.com>,  Paul
+ Durrant <paul@xen.org>,  Jagannathan Raman <jag.raman@oracle.com>,  Juan
+ Quintela <quintela@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+  qemu-arm@nongnu.org,  Jason Wang <jasowang@redhat.com>,  Gerd Hoffmann
+ <kraxel@redhat.com>,  Hanna Reitz <hreitz@redhat.com>,  =?utf-8?Q?Marc-An?=
+ =?utf-8?Q?dr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  BALATON Zoltan <balaton@eik.bme.hu>,
+  Daniel Henrique Barboza <danielhb413@gmail.com>,  Elena Ufimtseva
+ <elena.ufimtseva@oracle.com>,  Aurelien Jarno <aurelien@aurel32.net>,
+  Hailiang Zhang <zhanghailiang@xfusion.com>,  Roman Bolshakov
+ <rbolshakov@ddn.com>,  Huacai Chen <chenhuacai@kernel.org>,  Fam Zheng
+ <fam@euphon.net>,  Eric Blake <eblake@redhat.com>,  Jiri Slaby
+ <jslaby@suse.cz>,  Alexander Graf <agraf@csgraf.de>,  Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>,  Weiwei Li <liwei1518@gmail.com>,  Eric
+ Farman <farman@linux.ibm.com>,  Stafford Horne <shorne@gmail.com>,  David
+ Hildenbrand <david@redhat.com>,  Markus Armbruster <armbru@redhat.com>,
+  Reinoud Zandijk <reinoud@netbsd.org>,  Palmer Dabbelt
+ <palmer@dabbelt.com>,  Cameron Esfahani <dirty@apple.com>,
+  xen-devel@lists.xenproject.org,  Pavel Dovgalyuk
+ <pavel.dovgaluk@ispras.ru>,  qemu-riscv@nongnu.org,  Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,  John Snow <jsnow@redhat.com>,  Sunil
+ Muthuswamy <sunilmut@microsoft.com>,  Michael Roth <michael.roth@amd.com>,
+  David Gibson <david@gibson.dropbear.id.au>,  "Michael S. Tsirkin"
+ <mst@redhat.com>,  Richard Henderson <richard.henderson@linaro.org>,  Bin
+ Meng <bin.meng@windriver.com>,  Stefano Stabellini
+ <sstabellini@kernel.org>,  kvm@vger.kernel.org,  qemu-block@nongnu.org,
+  Halil Pasic <pasic@linux.ibm.com>,  Peter Xu <peterx@redhat.com>,
+  Anthony Perard <anthony.perard@citrix.com>,  Harsh Prateek Bora
+ <harshpb@linux.ibm.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Eduardo
+ Habkost <eduardo@habkost.net>,  Paolo Bonzini <pbonzini@redhat.com>,
+  Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  =?utf-8?Q?C?=
+ =?utf-8?Q?=C3=A9dric?= Le
+ Goater <clg@kaod.org>,  qemu-ppc@nongnu.org,  Philippe =?utf-8?Q?Mathieu-?=
+ =?utf-8?Q?Daud=C3=A9?=
+ <philmd@linaro.org>,  Christian Borntraeger <borntraeger@linux.ibm.com>,
+  Akihiko Odaki <akihiko.odaki@daynix.com>,  Leonardo Bras
+ <leobras@redhat.com>,  Nicholas Piggin <npiggin@gmail.com>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>
+Subject: Re: [PATCH 6/6] Rename "QEMU global mutex" to "BQL" in comments and
+ docs
 References: <20231129212625.1051502-1-stefanha@redhat.com>
+	<20231129212625.1051502-7-stefanha@redhat.com>
+Date: Thu, 30 Nov 2023 08:17:54 +0100
+In-Reply-To: <20231129212625.1051502-7-stefanha@redhat.com> (Stefan Hajnoczi's
+	message of "Wed, 29 Nov 2023 16:26:25 -0500")
+Message-ID: <874jh3g15p.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-X-TUID: k8z/v/0yFSKv
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+X-TUID: WmjVBf1YzazD
 
-The term "QEMU global mutex" is identical to the more widely used Big
-QEMU Lock ("BQL"). Update the code comments and documentation to use
-"BQL" instead of "QEMU global mutex".
+Stefan Hajnoczi <stefanha@redhat.com> writes:
 
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
----
- docs/devel/multi-thread-tcg.rst   |  7 +++----
- docs/devel/qapi-code-gen.rst      |  2 +-
- docs/devel/replay.rst             |  2 +-
- docs/devel/multiple-iothreads.txt | 16 ++++++++--------
- include/block/blockjob.h          |  6 +++---
- include/io/task.h                 |  2 +-
- include/qemu/coroutine-core.h     |  2 +-
- include/qemu/coroutine.h          |  2 +-
- hw/block/dataplane/virtio-blk.c   |  8 ++++----
- hw/block/virtio-blk.c             |  2 +-
- hw/scsi/virtio-scsi-dataplane.c   |  6 +++---
- net/tap.c                         |  2 +-
- 12 files changed, 28 insertions(+), 29 deletions(-)
+> The term "QEMU global mutex" is identical to the more widely used Big
+> QEMU Lock ("BQL"). Update the code comments and documentation to use
+> "BQL" instead of "QEMU global mutex".
+>
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index c9541a7b20..7302c3bf53 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -226,10 +226,9 @@ instruction. This could be a future optimisation.
- Emulated hardware state
- -----------------------
- 
--Currently thanks to KVM work any access to IO memory is automatically
--protected by the global iothread mutex, also known as the BQL (Big
--QEMU Lock). Any IO region that doesn't use global mutex is expected to
--do its own locking.
-+Currently thanks to KVM work any access to IO memory is automatically protected
-+by the BQL (Big QEMU Lock). Any IO region that doesn't use the BQL is expected
-+to do its own locking.
- 
- However IO memory isn't the only way emulated hardware state can be
- modified. Some architectures have model specific registers that
-diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
-index 7f78183cd4..ea8228518c 100644
---- a/docs/devel/qapi-code-gen.rst
-+++ b/docs/devel/qapi-code-gen.rst
-@@ -594,7 +594,7 @@ blocking the guest and other background operations.
- Coroutine safety can be hard to prove, similar to thread safety.  Common
- pitfalls are:
- 
--- The global mutex isn't held across ``qemu_coroutine_yield()``, so
-+- The BQL isn't held across ``qemu_coroutine_yield()``, so
-   operations that used to assume that they execute atomically may have
-   to be more careful to protect against changes in the global state.
- 
-diff --git a/docs/devel/replay.rst b/docs/devel/replay.rst
-index 0244be8b9c..effd856f0c 100644
---- a/docs/devel/replay.rst
-+++ b/docs/devel/replay.rst
-@@ -184,7 +184,7 @@ modes.
- Reading and writing requests are created by CPU thread of QEMU. Later these
- requests proceed to block layer which creates "bottom halves". Bottom
- halves consist of callback and its parameters. They are processed when
--main loop locks the global mutex. These locks are not synchronized with
-+main loop locks the BQL. These locks are not synchronized with
- replaying process because main loop also processes the events that do not
- affect the virtual machine state (like user interaction with monitor).
- 
-diff --git a/docs/devel/multiple-iothreads.txt b/docs/devel/multiple-iothreads.txt
-index a3e949f6b3..828e5527a3 100644
---- a/docs/devel/multiple-iothreads.txt
-+++ b/docs/devel/multiple-iothreads.txt
-@@ -5,7 +5,7 @@ the COPYING file in the top-level directory.
- 
- 
- This document explains the IOThread feature and how to write code that runs
--outside the QEMU global mutex.
-+outside the BQL.
- 
- The main loop and IOThreads
- ---------------------------
-@@ -29,13 +29,13 @@ scalability bottleneck on hosts with many CPUs.  Work can be spread across
- several IOThreads instead of just one main loop.  When set up correctly this
- can improve I/O latency and reduce jitter seen by the guest.
- 
--The main loop is also deeply associated with the QEMU global mutex, which is a
--scalability bottleneck in itself.  vCPU threads and the main loop use the QEMU
--global mutex to serialize execution of QEMU code.  This mutex is necessary
--because a lot of QEMU's code historically was not thread-safe.
-+The main loop is also deeply associated with the BQL, which is a
-+scalability bottleneck in itself.  vCPU threads and the main loop use the BQL
-+to serialize execution of QEMU code.  This mutex is necessary because a lot of
-+QEMU's code historically was not thread-safe.
- 
- The fact that all I/O processing is done in a single main loop and that the
--QEMU global mutex is contended by all vCPU threads and the main loop explain
-+BQL is contended by all vCPU threads and the main loop explain
- why it is desirable to place work into IOThreads.
- 
- The experimental virtio-blk data-plane implementation has been benchmarked and
-@@ -66,7 +66,7 @@ There are several old APIs that use the main loop AioContext:
- 
- Since they implicitly work on the main loop they cannot be used in code that
- runs in an IOThread.  They might cause a crash or deadlock if called from an
--IOThread since the QEMU global mutex is not held.
-+IOThread since the BQL is not held.
- 
- Instead, use the AioContext functions directly (see include/block/aio.h):
-  * aio_set_fd_handler() - monitor a file descriptor
-@@ -105,7 +105,7 @@ used in the block layer and can lead to hangs.
- 
- There is currently no lock ordering rule if a thread needs to acquire multiple
- AioContexts simultaneously.  Therefore, it is only safe for code holding the
--QEMU global mutex to acquire other AioContexts.
-+BQL to acquire other AioContexts.
- 
- Side note: the best way to schedule a function call across threads is to call
- aio_bh_schedule_oneshot().  No acquire/release or locking is needed.
-diff --git a/include/block/blockjob.h b/include/block/blockjob.h
-index e594c10d23..b2bc7c04d6 100644
---- a/include/block/blockjob.h
-+++ b/include/block/blockjob.h
-@@ -54,7 +54,7 @@ typedef struct BlockJob {
- 
-     /**
-      * Speed that was set with @block_job_set_speed.
--     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
-+     * Always modified and read under BQL (GLOBAL_STATE_CODE).
-      */
-     int64_t speed;
- 
-@@ -66,7 +66,7 @@ typedef struct BlockJob {
- 
-     /**
-      * Block other operations when block job is running.
--     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
-+     * Always modified and read under BQL (GLOBAL_STATE_CODE).
-      */
-     Error *blocker;
- 
-@@ -89,7 +89,7 @@ typedef struct BlockJob {
- 
-     /**
-      * BlockDriverStates that are involved in this block job.
--     * Always modified and read under QEMU global mutex (GLOBAL_STATE_CODE).
-+     * Always modified and read under BQL (GLOBAL_STATE_CODE).
-      */
-     GSList *nodes;
- } BlockJob;
-diff --git a/include/io/task.h b/include/io/task.h
-index dc7d32ebd0..0b5342ee84 100644
---- a/include/io/task.h
-+++ b/include/io/task.h
-@@ -149,7 +149,7 @@ typedef void (*QIOTaskWorker)(QIOTask *task,
-  * lookups) to be easily run non-blocking. Reporting the
-  * results in the main thread context means that the caller
-  * typically does not need to be concerned about thread
-- * safety wrt the QEMU global mutex.
-+ * safety wrt the BQL.
-  *
-  * For example, the socket_listen() method will block the caller
-  * while DNS lookups take place if given a name, instead of IP
-diff --git a/include/qemu/coroutine-core.h b/include/qemu/coroutine-core.h
-index 230bb56517..503bad6e0e 100644
---- a/include/qemu/coroutine-core.h
-+++ b/include/qemu/coroutine-core.h
-@@ -22,7 +22,7 @@
-  * rather than callbacks, for operations that need to give up control while
-  * waiting for events to complete.
-  *
-- * These functions are re-entrant and may be used outside the global mutex.
-+ * These functions are re-entrant and may be used outside the BQL.
-  *
-  * Functions that execute in coroutine context cannot be called
-  * directly from normal functions.  Use @coroutine_fn to mark such
-diff --git a/include/qemu/coroutine.h b/include/qemu/coroutine.h
-index a65be6697f..e6aff45301 100644
---- a/include/qemu/coroutine.h
-+++ b/include/qemu/coroutine.h
-@@ -26,7 +26,7 @@
-  * rather than callbacks, for operations that need to give up control while
-  * waiting for events to complete.
-  *
-- * These functions are re-entrant and may be used outside the global mutex.
-+ * These functions are re-entrant and may be used outside the BQL.
-  *
-  * Functions that execute in coroutine context cannot be called
-  * directly from normal functions.  Use @coroutine_fn to mark such
-diff --git a/hw/block/dataplane/virtio-blk.c b/hw/block/dataplane/virtio-blk.c
-index f83bb0f116..eafc573407 100644
---- a/hw/block/dataplane/virtio-blk.c
-+++ b/hw/block/dataplane/virtio-blk.c
-@@ -47,7 +47,7 @@ void virtio_blk_data_plane_notify(VirtIOBlockDataPlane *s, VirtQueue *vq)
-     virtio_notify_irqfd(s->vdev, vq);
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- bool virtio_blk_data_plane_create(VirtIODevice *vdev, VirtIOBlkConf *conf,
-                                   VirtIOBlockDataPlane **dataplane,
-                                   Error **errp)
-@@ -100,7 +100,7 @@ bool virtio_blk_data_plane_create(VirtIODevice *vdev, VirtIOBlkConf *conf,
-     return true;
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_blk_data_plane_destroy(VirtIOBlockDataPlane *s)
- {
-     VirtIOBlock *vblk;
-@@ -117,7 +117,7 @@ void virtio_blk_data_plane_destroy(VirtIOBlockDataPlane *s)
-     g_free(s);
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- int virtio_blk_data_plane_start(VirtIODevice *vdev)
- {
-     VirtIOBlock *vblk = VIRTIO_BLK(vdev);
-@@ -261,7 +261,7 @@ static void virtio_blk_data_plane_stop_bh(void *opaque)
-     }
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_blk_data_plane_stop(VirtIODevice *vdev)
- {
-     VirtIOBlock *vblk = VIRTIO_BLK(vdev);
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index a1f8e15522..2a5f6544cc 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -1500,7 +1500,7 @@ static void virtio_blk_resize(void *opaque)
-     VirtIODevice *vdev = VIRTIO_DEVICE(opaque);
- 
-     /*
--     * virtio_notify_config() needs to acquire the global mutex,
-+     * virtio_notify_config() needs to acquire the BQL,
-      * so it can't be called from an iothread. Instead, schedule
-      * it to be run in the main context BH.
-      */
-diff --git a/hw/scsi/virtio-scsi-dataplane.c b/hw/scsi/virtio-scsi-dataplane.c
-index 1e684beebe..56ecc5b12e 100644
---- a/hw/scsi/virtio-scsi-dataplane.c
-+++ b/hw/scsi/virtio-scsi-dataplane.c
-@@ -20,7 +20,7 @@
- #include "scsi/constants.h"
- #include "hw/virtio/virtio-bus.h"
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_scsi_dataplane_setup(VirtIOSCSI *s, Error **errp)
- {
-     VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(s);
-@@ -93,7 +93,7 @@ static void virtio_scsi_dataplane_stop_bh(void *opaque)
-     }
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- int virtio_scsi_dataplane_start(VirtIODevice *vdev)
- {
-     int i;
-@@ -191,7 +191,7 @@ fail_guest_notifiers:
-     return -ENOSYS;
- }
- 
--/* Context: QEMU global mutex held */
-+/* Context: BQL held */
- void virtio_scsi_dataplane_stop(VirtIODevice *vdev)
- {
-     BusState *qbus = qdev_get_parent_bus(DEVICE(vdev));
-diff --git a/net/tap.c b/net/tap.c
-index c23d0323c2..c698b70475 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -219,7 +219,7 @@ static void tap_send(void *opaque)
- 
-         /*
-          * When the host keeps receiving more packets while tap_send() is
--         * running we can hog the QEMU global mutex.  Limit the number of
-+         * running we can hog the BQL.  Limit the number of
-          * packets that are processed per tap_send() callback to prevent
-          * stalling the guest.
-          */
--- 
-2.42.0
+For QAPI
+Acked-by: Markus Armbruster <armbru@redhat.com>

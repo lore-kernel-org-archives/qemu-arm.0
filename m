@@ -1,66 +1,66 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp511764ejb;
-        Thu, 30 Nov 2023 12:31:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHMv+nS5CllrH9ZEYb7IghIHCpT7LpVSeWA3nsX1/aY79LDM8N0IP03OjAW0ACvm5HDtskM
-X-Received: by 2002:a05:622a:1b09:b0:423:98ce:48e with SMTP id bb9-20020a05622a1b0900b0042398ce048emr23831191qtb.22.1701376302125;
-        Thu, 30 Nov 2023 12:31:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701376302; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp514439ejb;
+        Thu, 30 Nov 2023 12:36:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGn1aN97gLiKQwp4BRG+VGH82WjU9d9UUOaKznw9MKWxdxNRgopoSaTHo9JNiX3Qm6caWR+
+X-Received: by 2002:a0c:ea22:0:b0:67a:8e21:aa63 with SMTP id t2-20020a0cea22000000b0067a8e21aa63mr2172211qvp.18.1701376601407;
+        Thu, 30 Nov 2023 12:36:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701376601; cv=none;
         d=google.com; s=arc-20160816;
-        b=U5wuH6Qc+16MeOlvK5O527+aTfquP0TXO6Klgsq6nTM9CD9ENb1vOJyBST6HrbYRsD
-         ZeeEyhscTz1jhnkHL6h9XUhYOajwYRmbKpCOD2I22/GXC29cOUGQhcuMlvMXcvQQy8u3
-         gsrip6XDaFbHpMNd/R3tzJW6XeHvgX/5mwAunOnsypBvocAIvyzPlxdAE7MNwZmaXWo0
-         GR66q4jSDkkiUIuept8nMV5JMUCTClmpu0d/EOBTuFyeXpOmIpzHZT+d4rt827Wq4Ug4
-         aAyJA7x/tV+jXfKk1enmGx8hQuU5XINFuw4mj7wsVqfJ00R5DIOY2im45ApzXGUUTCAM
-         p8hg==
+        b=k2XTmKEKy9YOfohUCldNhPPmc19RRedT0xaXKiadaq+HMksCI2aDmeDc91J6OU5saI
+         A+XXDIWXBmNfJ0voMlMATRfdfb+S3FsQ4pbjG/zP3bVBDp2r7eavMEuDoeDIqPlZxPtJ
+         JBRxrsWCg8fumTusrvBVBiDwI95XLHIdBkirJT4vdPBcIsKPq317N2D+xYRtPOnHRVSB
+         tpI5wMWKFZcwMYGrLDlHE3ttpyX12kPv5fq7VJesFVYo6utpYISOAUTkTTfvFAxAfet+
+         Acebki2+/Df9X47CnelwOzh5JbptG2gFG9liq0UXNQ/5hx0o3NHwM5029ApeKTuXT7sk
+         BqUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=8KFoHugi6jgybVjDl52fW0YxT+ePBaAxcnqZf4SllrU=;
+        bh=eYEi0Y5+QQuaOwHuJk++/9L4d3OIIjWT68mwc8kKwmY=;
         fh=8lxqBE7p9mgiLJKD4NyLDJPEyrE1pJEhfPLw80kY4h4=;
-        b=fzpPevEG4Y362nGZOa4XbLXwjCeJFpoyvZRYEDhK6fumeBuoEot4uzY0HZW6gCAB3A
-         TI6aaICYf6D8/wsH1rpj/BBbvwjJQ4lipzqfBIOm7A6Ywxi00htNDqONgXYMn9P13zLf
-         Ay9NfLqlTqE6nqgy2FpsJhJDkUZmOQACmqEN1hvgZJvJfHu9CLwjcn1nfMTBdaIfOrG/
-         wnL5jRUfZzS/5mhmniWsaM/HkBQOleHesKiwBFJy3luQDaC5WTK0HyyJNuTdTGwU2Sqj
-         G0ZYnGRbrKOSfubOr3snda3X7CAAf+yMdaMmyRxI3cjYEnEVsXoF6UoCDM5EDsu46DMP
-         FGDA==
+        b=rKyH/6Arg8G9OzLF+KzF7qjZcZfO3GcCI1RiStc0RK9HcgVN2cBSsfRA2U8EwHfM4U
+         cxz2lAjK4m+sd/g4ysFhnbhL3kawJK+ZM/rdsjzo84BfjMbqvKP0OBO/uRyWPiW/N7iu
+         UU5Ob6Cl5vUcp0wn8hFTBUUn+/xv7uHsq3bnMbsz2hdkpICBhuRbaLBLoiEjpzB9qa75
+         iofaJc/I6ZMjMvKOFzTahbURylgqY4RMi7b4OFpTjv0vL8+UffLANfFlWgDIpdbDhYig
+         vA0rikEbn5axRqOWv1bvCqB7fNX9FUiMDWzS+QuvrYGtjNIQ28KSoQrxa1kVTsgUYXhg
+         xGWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fhdvEOJx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cAQnwILG;
        spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <stefanha@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id fi4-20020a05622a58c400b00423e7b995b5si1804855qtb.585.2023.11.30.12.31.41
+        by mx.google.com with ESMTPS id h24-20020ae9ec18000000b00773fe581c18si1629228qkg.463.2023.11.30.12.36.41
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Nov 2023 12:31:42 -0800 (PST)
+        Thu, 30 Nov 2023 12:36:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fhdvEOJx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cAQnwILG;
        spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1701376301;
+	s=mimecast20190719; t=1701376600;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=8KFoHugi6jgybVjDl52fW0YxT+ePBaAxcnqZf4SllrU=;
-	b=fhdvEOJx3Puzl4tYDkHZC6B+2XgHZP4o1jVjkc47bJKWi37ginuMZ6uk7PxwuWvT/sD+w7
-	R//V4jVx/hGbet1jOwN5g+EBMJ2K482iWwA/5X1s1/OFmbEYKjhnVFmkJ9m+2+60Y2eVsD
-	jCU+MQtvnoHK0gbMThsLzBTHEyTyTAU=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-145-88dqJ2RNNwmoiXaZzWJvUg-1; Thu, 30 Nov 2023 15:31:37 -0500
-X-MC-Unique: 88dqJ2RNNwmoiXaZzWJvUg-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
+	bh=eYEi0Y5+QQuaOwHuJk++/9L4d3OIIjWT68mwc8kKwmY=;
+	b=cAQnwILGmfgO65glKMuQvUYQ8FCcmiK+wEVsxi9EqtVyZE/ChYDI7jh5IVgj7mukEN50NU
+	pOBWKE7g1LoOMNY5scQUl5+5T5pFKn5R6vqJPRs3Fa5EZv7eEz+UXCq8t0gU4fiukInHiK
+	XbOruYVVANcxEqhq0oIIketIgdbzG4k=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-SIexcsI8MJKCO3SfmX55Dg-1; Thu,
+ 30 Nov 2023 15:36:38 -0500
+X-MC-Unique: SIexcsI8MJKCO3SfmX55Dg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7F70582BA82;
-	Thu, 30 Nov 2023 20:31:34 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F3AB4280666F;
+	Thu, 30 Nov 2023 20:36:35 +0000 (UTC)
 Received: from localhost (unknown [10.39.192.46])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 768DF492BE0;
-	Thu, 30 Nov 2023 20:31:33 +0000 (UTC)
-Date: Thu, 30 Nov 2023 15:31:32 -0500
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7B9DD2166B26;
+	Thu, 30 Nov 2023 20:36:34 +0000 (UTC)
+Date: Thu, 30 Nov 2023 15:36:33 -0500
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -126,74 +126,105 @@ Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Leonardo Bras <leobras@redhat.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: Re: [PATCH 4/6] system/cpus: rename qemu_global_mutex to qemu_bql
-Message-ID: <20231130203132.GB1184658@fedora>
+Subject: Re: [PATCH 5/6] Replace "iothread lock" with "BQL" in comments
+Message-ID: <20231130203633.GC1184658@fedora>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-5-stefanha@redhat.com>
- <01ebd72d-affc-4b03-b491-f40964520f1c@linaro.org>
+ <20231129212625.1051502-6-stefanha@redhat.com>
+ <9c305a84-fd86-42fe-98ae-9297d480acd6@linaro.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="sn71hyyf1gpGKJP8"
+	protocol="application/pgp-signature"; boundary="ADMBXqBOX1KM7dkn"
 Content-Disposition: inline
-In-Reply-To: <01ebd72d-affc-4b03-b491-f40964520f1c@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-X-TUID: lAurJEV/oCzk
+In-Reply-To: <9c305a84-fd86-42fe-98ae-9297d480acd6@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+X-TUID: aCQOkeeHdQLW
 
 
---sn71hyyf1gpGKJP8
+--ADMBXqBOX1KM7dkn
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Nov 30, 2023 at 02:44:07PM +0100, Philippe Mathieu-Daud=E9 wrote:
+On Thu, Nov 30, 2023 at 02:47:49PM +0100, Philippe Mathieu-Daud=E9 wrote:
 > Hi Stefan,
 >=20
 > On 29/11/23 22:26, Stefan Hajnoczi wrote:
-> > The APIs using qemu_global_mutex now follow the Big QEMU Lock (BQL)
-> > nomenclature. It's a little strange that the actual QemuMutex variable
-> > that embodies the BQL is called qemu_global_mutex instead of qemu_bql.
-> > Rename it for consistency.
+> > The term "iothread lock" is obsolete. The APIs use Big QEMU Lock (BQL)
+> > in their names. Update the code comments to use "BQL" instead of
+> > "iothread lock".
 > >=20
 > > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > > ---
-> >   system/cpus.c | 20 ++++++++++----------
-> >   1 file changed, 10 insertions(+), 10 deletions(-)
-> >=20
-> > diff --git a/system/cpus.c b/system/cpus.c
-> > index eb24a4db8e..138720a540 100644
-> > --- a/system/cpus.c
-> > +++ b/system/cpus.c
-> > @@ -65,7 +65,7 @@
-> >   #endif /* CONFIG_LINUX */
-> > -static QemuMutex qemu_global_mutex;
-> > +static QemuMutex qemu_bql;
+> >   docs/devel/reset.rst             |  2 +-
+> >   hw/display/qxl.h                 |  2 +-
+> >   include/exec/cpu-common.h        |  2 +-
+> >   include/exec/memory.h            |  4 ++--
+> >   include/exec/ramblock.h          |  2 +-
+> >   include/migration/register.h     |  8 ++++----
+> >   target/arm/internals.h           |  4 ++--
+> >   accel/tcg/cputlb.c               |  4 ++--
+> >   accel/tcg/tcg-accel-ops-icount.c |  2 +-
+> >   hw/remote/mpqemu-link.c          |  2 +-
+> >   migration/block-dirty-bitmap.c   | 10 +++++-----
+> >   migration/block.c                | 24 ++++++++++++------------
+> >   migration/colo.c                 |  2 +-
+> >   migration/migration.c            |  2 +-
+> >   migration/ram.c                  |  4 ++--
+> >   system/physmem.c                 |  6 +++---
+> >   target/arm/helper.c              |  2 +-
+> >   target/arm/tcg/m_helper.c        |  2 +-
+> >   ui/spice-core.c                  |  2 +-
+> >   util/rcu.c                       |  2 +-
+> >   audio/coreaudio.m                |  4 ++--
+> >   ui/cocoa.m                       |  6 +++---
+> >   22 files changed, 49 insertions(+), 49 deletions(-)
 >=20
-> I thought we were using _cond/_sem/_mutex suffixes, but
-> this is not enforced:
+>=20
+> > diff --git a/include/exec/ramblock.h b/include/exec/ramblock.h
+> > index 69c6a53902..a2bc0a345d 100644
+> > --- a/include/exec/ramblock.h
+> > +++ b/include/exec/ramblock.h
+> > @@ -34,7 +34,7 @@ struct RAMBlock {
+> >       ram_addr_t max_length;
+> >       void (*resized)(const char*, uint64_t length, void *host);
+> >       uint32_t flags;
+> > -    /* Protected by iothread lock.  */
+> > +    /* Protected by BQL.  */
+>=20
+> There is only one single BQL, so preferably:
+>=20
+> "by the BQL"
+>=20
+> >       char idstr[256];
+> >       /* RCU-enabled, writes protected by the ramlist lock */
+> >       QLIST_ENTRY(RAMBlock) next;
+>=20
+>=20
+>=20
+>=20
+> > -/* Called with iothread lock taken.  */
+> > +/* Called with BQL taken.  */
+>=20
+> "with the BQL" (other uses)
 
-I'm open to alternative names. Here are some I can think of:
-- big_qemu_lock (although grepping for "bql" won't find it)
-- qemu_bql_mutex
+I will try to change these for v2. It's a pre-existing issue though
+because there was only ever one "iothread lock" too.
 
-If there is no strong feeling about this then let's leave it at
-qemu_bql. Otherwise, please discuss.
-
-Thanks,
 Stefan
 
---sn71hyyf1gpGKJP8
+--ADMBXqBOX1KM7dkn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmVo8SQACgkQnKSrs4Gr
-c8j+pAf/bHckak+kCTFY6THF9fWYuY9tKxDh1TAsmCqS02YPBAPs1z0YH+99X3km
-es2S24gx5+JuX1lEM4Cq3AGZibmA2Vrs+TcKe6DyN6hT5mtNrfeoTcFLiUGNHFVx
-s+czVZPIfsxatmrt9FobrI2Ih51wyLzqPPI9ibJTSbz849aMGdjCfB+///3zKHW5
-JsvpwUhaL7gomsRHXZZSyQq9f/yJrxcl7BP/tM4eJhLul0Q/3xsdQsme8PS4ImLz
-srpkocFet7WKPXnBwXpDaZ21znv5VvTybFpRqCXpFJlQoWwZR5m+bF/Jo1vdCKBU
-R3KRE4Yg7YPFP70oH/H5T7bSCUiOKg==
-=zmh7
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmVo8lEACgkQnKSrs4Gr
+c8inmQf8CHG08Gjf/Xbq1d507Sf6BOzXT42zcBsMdkGeul6WorzG8oHfr1SMVJgi
+Fkex2GIeIAH3TjLTtiXePxp/7MXVrArmRxUltKaaZZAcD48aA8VXeOylS3pnZnU+
+2cqukgamf6tOSIc43sr1ZX06y154qL7xAMQ8Xl0sUu3ERaJob0bzyfPKf2xgjnas
+wVfsXUS7nEcRMJVi94oT9ST1WpJPbA9yDVyVX3LwtX0KECWoYIiN9or7jTlP2TnA
+9/GXVa9I8R/eA0P2xLU2RpfNNNY9A9+MZvgHSU75u9C9jN4/CR59W8EjyBTl+/fA
+KHaDBsL7B4GbwgONA8VDLiAbIN/g3Q==
+=Ause
 -----END PGP SIGNATURE-----
 
---sn71hyyf1gpGKJP8--
+--ADMBXqBOX1KM7dkn--

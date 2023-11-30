@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q15-20020adff50f000000b00332eaede976sm1822881wro.86.2023.11.30.07.33.33
+        by smtp.gmail.com with ESMTPSA id w3-20020a05600c474300b0040b36050f1bsm2331660wmo.44.2023.11.30.07.33.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 30 Nov 2023 07:33:33 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 869325FB4F;
+	by draig.lan (Postfix) with ESMTP id 718D55F794;
 	Thu, 30 Nov 2023 15:33:33 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -27,56 +27,47 @@ Cc: Eric Farman <farman@linux.ibm.com>,
 	Joel Stanley <joel@jms.id.au>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Luis Machado <luis.machado@arm.com>
-Subject: [PATCH 1/3] gdbstub: use a better signal when we halt for IO reasons
-Date: Thu, 30 Nov 2023 15:33:31 +0000
-Message-Id: <20231130153333.2424775-2-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 0/3] final fixes for 8.2
+Date: Thu, 30 Nov 2023 15:33:30 +0000
+Message-Id: <20231130153333.2424775-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231130153333.2424775-1-alex.bennee@linaro.org>
-References: <20231130153333.2424775-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: IZ1XCvuXpZd7
+X-TUID: 0hkzqxdDltmK
 
-The gdb description GDB_SIGNAL_IO is "I/O possible" and by default gdb
-will try and restart the guest, getting us nowhere. Report
-GDB_SIGNAL_STOP instead which should at least halt the session at the
-failure point.
+8.2 is looking fairly stable but I do have one bug fix for gdbstub
+which I came across while debugging something else. The changes for
+avocado rationalise all flaky tests under the QEMU_TEST_FLAKY_TESTS
+environment variable. The final patch re-adds the flaky tests to the
+CI as a manually run allow_fail job so we can still attempt to debug
+their failure in the place they tend to fall over.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Luis Machado <luis.machado@arm.com>
-Message-Id: <20231123131905.2640498-1-alex.bennee@linaro.org>
----
- gdbstub/internals.h | 1 +
- gdbstub/system.c    | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+Alex.
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 465c24b36e..5c0c725e54 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -24,6 +24,7 @@ enum {
-     GDB_SIGNAL_TRAP = 5,
-     GDB_SIGNAL_ABRT = 6,
-     GDB_SIGNAL_ALRM = 14,
-+    GDB_SIGNAL_STOP = 17,
-     GDB_SIGNAL_IO = 23,
-     GDB_SIGNAL_XCPU = 24,
-     GDB_SIGNAL_UNKNOWN = 143
-diff --git a/gdbstub/system.c b/gdbstub/system.c
-index 783ac140b9..83fd452800 100644
---- a/gdbstub/system.c
-+++ b/gdbstub/system.c
-@@ -183,7 +183,7 @@ static void gdb_vm_state_change(void *opaque, bool running, RunState state)
-         break;
-     case RUN_STATE_IO_ERROR:
-         trace_gdbstub_hit_io_error();
--        ret = GDB_SIGNAL_IO;
-+        ret = GDB_SIGNAL_STOP;
-         break;
-     case RUN_STATE_WATCHDOG:
-         trace_gdbstub_hit_watchdog();
+Alex Bennée (3):
+  gdbstub: use a better signal when we halt for IO reasons
+  docs/devel: rationalise unstable gitlab tests under FLAKY_TESTS
+  gitlab: add optional job to run flaky avocado tests
+
+ docs/devel/testing.rst                   | 32 ++++++++++++++++--------
+ gdbstub/internals.h                      |  1 +
+ gdbstub/system.c                         |  2 +-
+ .gitlab-ci.d/buildtest.yml               | 30 ++++++++++++++++++++++
+ tests/avocado/boot_linux.py              | 10 +++++---
+ tests/avocado/boot_linux_console.py      |  6 +++--
+ tests/avocado/intel_iommu.py             |  6 +++--
+ tests/avocado/linux_initrd.py            |  7 ++++--
+ tests/avocado/machine_aspeed.py          | 10 +++++---
+ tests/avocado/machine_mips_malta.py      | 10 +++++---
+ tests/avocado/machine_rx_gdbsim.py       | 10 +++++---
+ tests/avocado/machine_s390_ccw_virtio.py |  3 ++-
+ tests/avocado/replay_kernel.py           |  7 ++++--
+ tests/avocado/reverse_debugging.py       | 16 ++++++++----
+ tests/avocado/smmu.py                    |  6 +++--
+ tests/avocado/tuxrun_baselines.py        |  5 ++--
+ 16 files changed, 119 insertions(+), 42 deletions(-)
+
 -- 
 2.39.2

@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp232396ejb;
-        Thu, 30 Nov 2023 05:44:15 -0800 (PST)
-X-Received: by 2002:adf:ecd0:0:b0:332:d8d3:6add with SMTP id s16-20020adfecd0000000b00332d8d36addmr15930425wro.0.1701351855072;
-        Thu, 30 Nov 2023 05:44:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701351855; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp234856ejb;
+        Thu, 30 Nov 2023 05:47:57 -0800 (PST)
+X-Received: by 2002:adf:ec52:0:b0:332:d319:5955 with SMTP id w18-20020adfec52000000b00332d3195955mr14675428wrn.35.1701352077240;
+        Thu, 30 Nov 2023 05:47:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701352077; cv=none;
         d=google.com; s=arc-20160816;
-        b=dcCrIwR/OoSaKNsKVOu9m7o7nwkSQMF/4Rd45Uj0QpSyBtjvjJRiDaeldmUFku+x0+
-         rvqp6Yp5g1XoT4TslHeWqCyXZQzeF3o8pF+hpPZIElbyB7H+IuuCnjF3cUTkfOmLr3Ui
-         nU17tfxSEWaJGiDkSEM9XfjDsUxONQDQlPBclop24zdIQ8/4GzCZ4YpIqCZKNNW+6TUi
-         sGdks/PCao+7ywABqQIMEUvdMI98qoN2QGAqNxOCE4NCv2EMOIodUX9J13761sLD/5nA
-         nSxIU9IKLPHkm6JHx92xAEfTa/BcBkMgQ7vCPnPMlxBUzA9t2tBycRxyQUvSA/Sv85nx
-         QZpA==
+        b=pLpDrU88OxwpBRCnhUB0rUUSmFc/aUZPjEikmfibsD6U8UNZB5CJGzMw/QPvXNNavx
+         dnHrjgIUAYTNJMv20CS/LVhCbMcycUhBl7kDqMZpRyMfueWeAzMGb8WooFsF2nfp5jYj
+         Xctuk8ydt6749niuGha7ets3e6MeCQQRw9m59DaldH9Ek4W1B6T8rRbd0TdXnRsueE8r
+         rKT5GaFDgwUxi1FX6BWCahKv1OjlBzmMt0CUFUE4r+aIv7p09CwBnxX4/oWaqKsAeSSS
+         tRZGaVJcEmMNV92ZXEmOMkxmUK56bLZ8+WM1WTkhy39GbQ7vDGq3KXrzABCZRXoS/qw2
+         PXvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=0mf7eH2hS0c3P4+d2fQms4pu9zEXfWtMcluTCO73qZ4=;
+        bh=rzryK5Ovxx7DOgDxZdQ36NxzgykTz4w4Mydj5qAA+DE=;
         fh=vq6TxQ5MccBz0KdbaF/bByy5+pn65vn8lyysQZcYMWE=;
-        b=SC4EXpXEjknOF3YwHHjLGWWtIriSi2UP9DPZlgnHeurmalg4itv6kuGgI3EmB0DYy0
-         nTsah2D0psl6IIA7QSXZ9MUN9r5vQnQ0PGXicYvtQinKl/VGZPRBZmPfOveXZKk+8YT1
-         AAhQNh4BQaimgFmMuWlVWnBkgmTTQ59VzWP4uFt4h2Bf0zRKmWi75yfBJ+026wHfhFRB
-         9C0qlovfarD1mU7nBKDHqJkRWFQYSRH9dxh963Dzz+iNGQ3XTHRIR7KCymdUWlQyGCok
-         wNOwfcBfSK47drozQj3IJiGjZDI6cz0kXq6LBaRCPulnixqaA8Oh6LjrKkYlvjlrHtIk
-         m7NQ==
+        b=VfOlaBJh8BQTMZxZ1DuIHZYDqLmEV1VxJavZhM3W/lvcIoR8rI/0gy8ms7l+TwDVqz
+         vQRJ5bc0+K1d/T0AVdNvfIlrX8j4c9kwQfFmDqaK/KyuUkJUpjh6sJMecZ6KOe8gP1Kk
+         XqV4VdElbZz3DSi8upYDgPw6puNa6JSUlhdOeZCEu0OiiuiZVzupqyjPJv4o+kPvAL7m
+         SyIvnQj1+ws7zcI67Z4VpXkfkpaR0T56MG/cvN9LAuMlhd3byWLcoU2yBFAfaTitzVeE
+         Ag1IK1LJDSw7MVwLXLF/UzTeIstPpVSlfybdUu58XNwrQGhXlAtz423sabQPyr58uJSO
+         +YeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kx2V2pft;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T1gUg2ZE;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q3-20020adf9dc3000000b0032fe50dd5bcsor308170wre.10.2023.11.30.05.44.15
+        by mx.google.com with SMTPS id je14-20020a05600c1f8e00b00405d99620eesor412093wmb.1.2023.11.30.05.47.57
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 30 Nov 2023 05:44:15 -0800 (PST)
+        Thu, 30 Nov 2023 05:47:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kx2V2pft;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T1gUg2ZE;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701351855; x=1701956655; darn=linaro.org;
+        d=linaro.org; s=google; t=1701352077; x=1701956877; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0mf7eH2hS0c3P4+d2fQms4pu9zEXfWtMcluTCO73qZ4=;
-        b=kx2V2pftRNu7BhKpVNjYSUUW0t77zuyN0NIiAgYkBe/Umw6CEWZkah34yuVZqzx9Qu
-         jM1ipnmN949GllFPfWi+NnNByvambEKdtYowcBdp8BX9Jdwizi09Il0w3eayA2FOZOxm
-         C5peF1C5JW6OakG007F44EgPbZ1vWb8hhcq5jRDStIShPC+/iBdY9EQONTZ9AZYReJ+Q
-         uy7yaUWeSP7DLAHnaEYNWchPBxuc2097j/cD9TZbvjgnJRoKVwDDVaPEWvK7bYNS0H53
-         jWYyixTtAV8rJxkJntS1vlYZPDRWtR+hWpAZHycQdIRG+AcDGth/WGKuY3FsoZTBJrOy
-         0l8A==
+        bh=rzryK5Ovxx7DOgDxZdQ36NxzgykTz4w4Mydj5qAA+DE=;
+        b=T1gUg2ZE4LpW0ug3oJ2xv/FFTSZY01iqu0VPbQTou4MEVj7ZUxnQcMSm9Dk2sK4C+n
+         Z/oZ5bRO/h9SWWpTIZwPbE2ilXYYnrkcS8mIkmF9SZmfZ5vzDSL8eX67WzhR3E6HZPkC
+         FAaL/VgbeDXf596mrEPcZWsNiaAfxgzVFZvnLje0Tx6Ls18LhFv0r8fcW2fM8rd9jSRb
+         UmNacR7lO/vg8d38z7MubCY6N6R8s8g4XnWYqx5Sr3ENcOfATSGkHLmDFz1dDv/QMQH8
+         Xp2t32SIxD5MpD4wMjt/BgFrx6Yp6ppUG83PtH0yQROrcSEbOZ3ScEubpcZwIdKNf9DO
+         0BMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701351855; x=1701956655;
+        d=1e100.net; s=20230601; t=1701352077; x=1701956877;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0mf7eH2hS0c3P4+d2fQms4pu9zEXfWtMcluTCO73qZ4=;
-        b=kLo/G4p9PF68uCt55WrsHUSD6P7xYRFXxcWHe37ew14vomeUI/KqGalIK+Hkm5l/gd
-         C3JCwj0pynRS5+AezdUWIctEfSW9ln67hkxrcBfY8F2nvwCGVbMo+MDlcJmpTCj3ba1L
-         a8f0bFRQGvRUcs2Gx5060oZawrqDc4UnWZMHWCOFFYfHBMGmCku1NKZSRTBLcF5GHKSa
-         bqbuF/O++YBMUCdrg94oMPdI3RDfRlrpV8jssFVjoqNTntI+HdfeW8J3Az0SIJL9AwUZ
-         CTxiJCfpBp61HBLBx0t3IvjvA18ByEssmYC0li0dtsMOkSIG2RvvejGPY/CSY/kg2BCG
-         mazA==
-X-Gm-Message-State: AOJu0Yz1ilWmlv5512sKy7p96MQeoXssG0JeEdKHEffZHcPN/NcETb4l
-	Fj4WCYSKZD8iOeF4WkWpQX7vqo1K
-X-Google-Smtp-Source: AGHT+IFUGjlT2U8pG1QuxMF95YCA0GrMa8IF7sX8GSSN6+0zFOCS7e4DUVfFAG6PfrkSgylNqNXNlw==
-X-Received: by 2002:adf:ff88:0:b0:333:a2f:e674 with SMTP id j8-20020adfff88000000b003330a2fe674mr6201850wrr.25.1701351854659;
-        Thu, 30 Nov 2023 05:44:14 -0800 (PST)
+        bh=rzryK5Ovxx7DOgDxZdQ36NxzgykTz4w4Mydj5qAA+DE=;
+        b=amZOmYLJ3o2rn1788cSCegcUpPtUkNQ5c2jUe5309gUuaN0m99zup4GUk+JhvYarrT
+         rUFMRVmFNlNhg8mUPjtPCoIZ0aQOC4iAB+J0JgXZCNx8XRTY7+4+oIPFDbN5ITdX2j1A
+         lq8PbYX5TCVISNmXQFNwHRWDr1jlSXvX+JveOY66ggOPjJ2D3+vhUFe+yQL1MaLwsLs3
+         czeSHdMwdjXzrMUUdfOuyay98uwa3JbwlFDWft12eY1DGotY67OOgIHhbQE4Ta+zrgvB
+         8KQPCvhi7o9SD0qsNPbLPI8LtuxaCPWkhoZVzpG541ydS8GnH6iyWZKeCHgN6GYyLH+x
+         c7xg==
+X-Gm-Message-State: AOJu0Yzlb7w/mFrljGnnEfLK0pct4SiRQ0vIaFMrz4cEc0OpeSM2rnmc
+	uXf953AXRWV0rZT42HDkQOnjf+Wy
+X-Google-Smtp-Source: AGHT+IEVx+BgPGgvtoGgXlS2ma7+soUtQpvgW6i96U/5dPN3399XP3o/9uLj4S+iHyFoPGNahzok1g==
+X-Received: by 2002:a05:600c:3c8a:b0:40b:4da4:b985 with SMTP id bg10-20020a05600c3c8a00b0040b4da4b985mr6336852wmb.38.1701352076590;
+        Thu, 30 Nov 2023 05:47:56 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (sev93-h02-176-184-17-116.dsl.sta.abo.bbox.fr. [176.184.17.116])
-        by smtp.gmail.com with ESMTPSA id cw18-20020a056000091200b00332fa6cc8acsm1576506wrb.87.2023.11.30.05.44.08
+        by smtp.gmail.com with ESMTPSA id n26-20020a05600c3b9a00b0040b34409d43sm2099005wms.11.2023.11.30.05.47.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Nov 2023 05:44:14 -0800 (PST)
-Message-ID: <01ebd72d-affc-4b03-b491-f40964520f1c@linaro.org>
-Date: Thu, 30 Nov 2023 14:44:07 +0100
+        Thu, 30 Nov 2023 05:47:56 -0800 (PST)
+Message-ID: <9c305a84-fd86-42fe-98ae-9297d480acd6@linaro.org>
+Date: Thu, 30 Nov 2023 14:47:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] system/cpus: rename qemu_global_mutex to qemu_bql
+Subject: Re: [PATCH 5/6] Replace "iothread lock" with "BQL" in comments
 Content-Language: en-US
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
@@ -130,155 +130,81 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
  <leobras@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>
 References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-5-stefanha@redhat.com>
+ <20231129212625.1051502-6-stefanha@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231129212625.1051502-5-stefanha@redhat.com>
+In-Reply-To: <20231129212625.1051502-6-stefanha@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 5zCgTV8AkFSf
+X-TUID: bX20q0ACaAES
 
 Hi Stefan,
 
 On 29/11/23 22:26, Stefan Hajnoczi wrote:
-> The APIs using qemu_global_mutex now follow the Big QEMU Lock (BQL)
-> nomenclature. It's a little strange that the actual QemuMutex variable
-> that embodies the BQL is called qemu_global_mutex instead of qemu_bql.
-> Rename it for consistency.
+> The term "iothread lock" is obsolete. The APIs use Big QEMU Lock (BQL)
+> in their names. Update the code comments to use "BQL" instead of
+> "iothread lock".
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->   system/cpus.c | 20 ++++++++++----------
->   1 file changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/system/cpus.c b/system/cpus.c
-> index eb24a4db8e..138720a540 100644
-> --- a/system/cpus.c
-> +++ b/system/cpus.c
-> @@ -65,7 +65,7 @@
->   
->   #endif /* CONFIG_LINUX */
->   
-> -static QemuMutex qemu_global_mutex;
-> +static QemuMutex qemu_bql;
+>   docs/devel/reset.rst             |  2 +-
+>   hw/display/qxl.h                 |  2 +-
+>   include/exec/cpu-common.h        |  2 +-
+>   include/exec/memory.h            |  4 ++--
+>   include/exec/ramblock.h          |  2 +-
+>   include/migration/register.h     |  8 ++++----
+>   target/arm/internals.h           |  4 ++--
+>   accel/tcg/cputlb.c               |  4 ++--
+>   accel/tcg/tcg-accel-ops-icount.c |  2 +-
+>   hw/remote/mpqemu-link.c          |  2 +-
+>   migration/block-dirty-bitmap.c   | 10 +++++-----
+>   migration/block.c                | 24 ++++++++++++------------
+>   migration/colo.c                 |  2 +-
+>   migration/migration.c            |  2 +-
+>   migration/ram.c                  |  4 ++--
+>   system/physmem.c                 |  6 +++---
+>   target/arm/helper.c              |  2 +-
+>   target/arm/tcg/m_helper.c        |  2 +-
+>   ui/spice-core.c                  |  2 +-
+>   util/rcu.c                       |  2 +-
+>   audio/coreaudio.m                |  4 ++--
+>   ui/cocoa.m                       |  6 +++---
+>   22 files changed, 49 insertions(+), 49 deletions(-)
 
-I thought we were using _cond/_sem/_mutex suffixes, but
-this is not enforced:
 
-$ git grep -hE 'Qemu(Cond|Mutex|Semaphore) [a-zA-Z]' \
-   | sed -e 's/static //' -e 's/extern //' -e 's/^ *//' \
-   | sort -u
-QemuCond comp_done_cond;
-QemuCond cond;
-QemuCond decomp_done_cond;
-QemuCond event_complete_cond;
-QemuCond exclusive_cond;
-QemuCond exclusive_resume;
-QemuCond fwnmi_machine_check_interlock_cond;
-QemuCond handle_apdu_cond;
-QemuCond init_done_cond;    /* is thread initialization done? */
-QemuCond key_cond;
-QemuCond mutex_cond;
-QemuCond page_cond;
-QemuCond page_request_cond;
-QemuCond qemu_cpu_cond;
-QemuCond qemu_pause_cond;
-QemuCond qemu_work_cond;
-QemuCond request_cond;
-QemuCond reset_cond;
-QemuCond thr_cond;
-QemuCond thread_cond;
-QemuCond worker_stopped;
-QemuMutex active_timers_lock;
-QemuMutex aio_context_list_lock;
-QemuMutex bitmap_mutex;
-QemuMutex blkio_lock;
-QemuMutex chr_write_lock;
-QemuMutex cmdq_mutex;
-QemuMutex colo_compare_mutex;
-QemuMutex comp_done_lock;
-QemuMutex counts_mutex;
-QemuMutex decomp_done_lock;
-QemuMutex dirty_bitmap_mutex;
-QemuMutex dirtylimit_mutex;
-QemuMutex error_mutex;
-QemuMutex event_list_mutex;
-QemuMutex event_mtx;
-QemuMutex evlock;
-QemuMutex free_page_lock;
-QemuMutex global_mutex;
-QemuMutex gnt_lock;
-QemuMutex handle_apdu_mutex;
-QemuMutex handlers_mutex;
-QemuMutex init_done_lock;
-QemuMutex intp_mutex; /* protect the intp_list IRQ state */
-QemuMutex io_mutex;
-QemuMutex iommu_lock;
-QemuMutex irq_level_lock[REMOTE_IOHUB_NB_PIRQS];
-QemuMutex job_mutex;
-QemuMutex key_mutex;
-QemuMutex kml_slots_lock;
-QemuMutex lock;
-QemuMutex m;
-QemuMutex map_client_list_lock;
-QemuMutex migration_threads_lock;
-QemuMutex mon_fdsets_lock;
-QemuMutex mon_lock;
-QemuMutex monitor_lock;
-QemuMutex mutex;
-QemuMutex output_mutex;
-QemuMutex page_mutex;
-QemuMutex page_request_mutex;
-QemuMutex pending_out_mutex;
-QemuMutex port_lock;
-QemuMutex postcopy_prio_thread_mutex;
-QemuMutex qemu_cpu_list_lock;
-QemuMutex qemu_file_lock;
-QemuMutex qemu_global_mutex;
-QemuMutex qemu_sigp_mutex;
-QemuMutex qjack_shutdown_lock;
-QemuMutex qmp_queue_lock;
-QemuMutex queue_mutex;
-QemuMutex queued_requests_lock; /* protects queued_requests */
-QemuMutex ram_block_discard_disable_mutex;
-QemuMutex rcu_registry_lock;
-QemuMutex rcu_sync_lock;
-QemuMutex readdir_mutex_L;
-QemuMutex reqs_lock;
-QemuMutex requests_lock;
-QemuMutex rp_mutex;    /* We send replies from multiple threads */
-QemuMutex rsp_mutex;
-QemuMutex rx_queue_lock;
-QemuMutex sigbus_mutex;
-QemuMutex sint_routes_mutex;
-QemuMutex src_page_req_mutex;
-QemuMutex start_lock;
-QemuMutex target_fd_trans_lock;
-QemuMutex thr_mutex;
-QemuMutex thread_lock;
-QemuMutex vdev_mutex;
-QemuMutex vmstop_lock;
-QemuMutex vreader_mutex; /* and guest_apdu_list mutex */
-QemuMutex work_mutex;
-QemuMutex xen_timers_lock;
-QemuMutex yank_lock;
-QemuSemaphore channels_ready;
-QemuSemaphore colo_exit_sem;
-QemuSemaphore colo_incoming_sem;
-QemuSemaphore init_done_sem; /* is thread init done? */
-QemuSemaphore pause_sem;
-QemuSemaphore postcopy_pause_sem;
-QemuSemaphore postcopy_pause_sem_dst;
-QemuSemaphore postcopy_pause_sem_fast_load;
-QemuSemaphore postcopy_pause_sem_fault;
-QemuSemaphore postcopy_qemufile_dst_done;
-QemuSemaphore postcopy_qemufile_src_sem;
-QemuSemaphore rate_limit_sem;
-QemuSemaphore rp_pong_acks;
-QemuSemaphore rp_sem;
-QemuSemaphore sem;
-QemuSemaphore sem_sync;
-QemuSemaphore sem_thread;
-QemuSemaphore wait_unplug_sem;
+> diff --git a/include/exec/ramblock.h b/include/exec/ramblock.h
+> index 69c6a53902..a2bc0a345d 100644
+> --- a/include/exec/ramblock.h
+> +++ b/include/exec/ramblock.h
+> @@ -34,7 +34,7 @@ struct RAMBlock {
+>       ram_addr_t max_length;
+>       void (*resized)(const char*, uint64_t length, void *host);
+>       uint32_t flags;
+> -    /* Protected by iothread lock.  */
+> +    /* Protected by BQL.  */
 
-So:
+There is only one single BQL, so preferably:
+
+"by the BQL"
+
+>       char idstr[256];
+>       /* RCU-enabled, writes protected by the ramlist lock */
+>       QLIST_ENTRY(RAMBlock) next;
+
+
+
+
+> -/* Called with iothread lock taken.  */
+> +/* Called with BQL taken.  */
+
+"with the BQL" (other uses)
+
+Otherwise,
+
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+>   static void dirty_bitmap_do_save_cleanup(DBMSaveState *s)
+>   {
+>       SaveBitmapState *dbms;
+> @@ -479,7 +479,7 @@ static void dirty_bitmap_do_save_cleanup(DBMSaveState *s)
+>       }
+>   }

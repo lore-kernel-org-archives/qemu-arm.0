@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f17-20020a05600c155100b004083729fc14sm8491006wmg.20.2023.12.01.01.36.34
+        by smtp.gmail.com with ESMTPSA id o9-20020a5d58c9000000b00332e1c46dddsm3662260wrf.98.2023.12.01.01.36.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 01 Dec 2023 01:36:34 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3D5945FB65;
+	by draig.lan (Postfix) with ESMTP id 51E915FB67;
 	Fri,  1 Dec 2023 09:36:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,62 +30,71 @@ Cc: Eric Farman <farman@linux.ibm.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Cleber Rosa <crosa@redhat.com>,
 	Joel Stanley <joel@jms.id.au>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [PATCH v2 3/7] tests/avocado: drop BootLinuxConsole.test_mips_malta_cpio test
-Date: Fri,  1 Dec 2023 09:36:29 +0000
-Message-Id: <20231201093633.2551497-4-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 4/7] tests/avocado: drop malta yamon tests
+Date: Fri,  1 Dec 2023 09:36:30 +0000
+Message-Id: <20231201093633.2551497-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231201093633.2551497-1-alex.bennee@linaro.org>
 References: <20231201093633.2551497-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DAVpohPH5ILx
+X-TUID: R66bVVGEp/fX
 
-The assets are no longer archived by Debian so we can't run this on
-CI. While some people may still have the test in their cache we do
-have more recent images from tuxrun so this isn't a great loss.
+The assets are no longer available on the website so these are
+blocking CI.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>
 Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/avocado/boot_linux_console.py | 22 ----------------------
- 1 file changed, 22 deletions(-)
+ tests/avocado/machine_mips_malta.py | 37 -----------------------------
+ 1 file changed, 37 deletions(-)
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 231b4f68e5..5d978f6dd0 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -116,28 +116,6 @@ def test_x86_64_pc(self):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
--    def test_mips_malta(self):
--        """
--        :avocado: tags=arch:mips
--        :avocado: tags=machine:malta
--        :avocado: tags=endian:big
--        """
--        deb_url = ('http://snapshot.debian.org/archive/debian/'
--                   '20130217T032700Z/pool/main/l/linux-2.6/'
--                   'linux-image-2.6.32-5-4kc-malta_2.6.32-48_mips.deb')
--        deb_hash = 'a8cfc28ad8f45f54811fc6cf74fc43ffcfe0ba04'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
--        kernel_path = self.extract_from_deb(deb_path,
--                                            '/boot/vmlinux-2.6.32-5-4kc-malta')
+diff --git a/tests/avocado/machine_mips_malta.py b/tests/avocado/machine_mips_malta.py
+index 959dcf5602..3a1ec85c20 100644
+--- a/tests/avocado/machine_mips_malta.py
++++ b/tests/avocado/machine_mips_malta.py
+@@ -122,40 +122,3 @@ def test_mips_malta_i6400_framebuffer_logo_8cores(self):
+         :avocado: tags=mips:smp
+         """
+         self.do_test_i6400_framebuffer_logo(8)
+-
+-class MaltaMachine(QemuSystemTest):
+-
+-    def do_test_yamon(self):
+-        rom_url = ('http://www.imgtec.com/tools/mips-tools/downloads/'
+-                   'yamon/yamon-bin-02.22.zip')
+-        rom_hash = '8da7ecddbc5312704b8b324341ee238189bde480'
+-        zip_path = self.fetch_asset(rom_url, asset_hash=rom_hash)
+-
+-        archive.extract(zip_path, self.workdir)
+-        yamon_path = os.path.join(self.workdir, 'yamon-02.22.bin')
 -
 -        self.vm.set_console()
--        kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=ttyS0'
--        self.vm.add_args('-kernel', kernel_path,
--                         '-append', kernel_command_line)
+-        self.vm.add_args('-bios', yamon_path)
 -        self.vm.launch()
--        console_pattern = 'Kernel command line: %s' % kernel_command_line
--        self.wait_for_console_pattern(console_pattern)
 -
-     def test_mips64el_malta(self):
-         """
-         This test requires the ar tool to extract "data.tar.gz" from
+-        prompt =  'YAMON>'
+-        pattern = 'YAMON ROM Monitor'
+-        interrupt_interactive_console_until_pattern(self, pattern, prompt)
+-        wait_for_console_pattern(self, prompt)
+-        self.vm.shutdown()
+-
+-    def test_mipsel_malta_yamon(self):
+-        """
+-        :avocado: tags=arch:mipsel
+-        :avocado: tags=machine:malta
+-        :avocado: tags=endian:little
+-        """
+-        self.do_test_yamon()
+-
+-    def test_mips64el_malta_yamon(self):
+-        """
+-        :avocado: tags=arch:mips64el
+-        :avocado: tags=machine:malta
+-        :avocado: tags=endian:little
+-        """
+-        self.do_test_yamon()
 -- 
 2.39.2

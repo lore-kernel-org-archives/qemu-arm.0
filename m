@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id j6-20020a5d5646000000b0033307ffb193sm3716885wrw.29.2023.12.01.01.36.35
+        by smtp.gmail.com with ESMTPSA id f12-20020adfdb4c000000b00332d3b89561sm3710366wrj.97.2023.12.01.01.36.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 01 Dec 2023 01:36:37 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 7BB945FB6B;
+	by draig.lan (Postfix) with ESMTP id 658B65FB69;
 	Fri,  1 Dec 2023 09:36:34 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -31,37 +31,36 @@ Cc: Eric Farman <farman@linux.ibm.com>,
 	Cleber Rosa <crosa@redhat.com>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 6/7] gitlab: build the correct microblaze target
-Date: Fri,  1 Dec 2023 09:36:32 +0000
-Message-Id: <20231201093633.2551497-7-alex.bennee@linaro.org>
+Subject: [PATCH v2 5/7] tests/avocado: tag sbsa tests as tcg only
+Date: Fri,  1 Dec 2023 09:36:31 +0000
+Message-Id: <20231201093633.2551497-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231201093633.2551497-1-alex.bennee@linaro.org>
 References: <20231201093633.2551497-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: A4pUkoaMxiRM
+X-TUID: eXBVRoOXON3v
 
-We inadvertently built the LE target for BE tests.
+As firmware runs at a higher privilege level than the hypervisor we
+can only run these tests under TCG emulation.
 
-Fixes: 78ebc00b06 (gitlab: shuffle some targets and reduce avocado noise)
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/avocado/machine_aarch64_sbsaref.py | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 7f9af83b10..62b5379a5e 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -41,7 +41,7 @@ build-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     CONFIGURE_ARGS: --enable-docs
--    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
-+    TARGETS: alpha-softmmu microblaze-softmmu mips64el-softmmu
-     MAKE_CHECK_ARGS: check-build
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index bdd1efc768..c25a691b64 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -20,6 +20,7 @@ class Aarch64SbsarefMachine(QemuSystemTest):
+     """
+     :avocado: tags=arch:aarch64
+     :avocado: tags=machine:sbsa-ref
++    :avocado: tags=accel:tcg
+     """
  
- check-system-ubuntu:
+     timeout = 180
 -- 
 2.39.2

@@ -1,222 +1,157 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp879997ejb;
-        Fri, 1 Dec 2023 02:33:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFoBIEDyjA1P8hc87rQ0l8MUHuFHDiok04KpmdIQWATwDphfwgwCDK5CRwyUNlhvyfS9jMy
-X-Received: by 2002:a81:af4a:0:b0:5d4:180:9fe1 with SMTP id x10-20020a81af4a000000b005d401809fe1mr1973989ywj.12.1701426820234;
-        Fri, 01 Dec 2023 02:33:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701426820; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp881163ejb;
+        Fri, 1 Dec 2023 02:36:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF1TE+Lo2ku/LtkXTKskF4c/YFP0rDjxtBP8JQgwLBI3ZzJssi0EUlD1fRfP9g4L/sp0kgI
+X-Received: by 2002:a05:6602:1238:b0:7b3:4ddc:bff7 with SMTP id z24-20020a056602123800b007b34ddcbff7mr24923847iot.10.1701426963945;
+        Fri, 01 Dec 2023 02:36:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701426963; cv=none;
         d=google.com; s=arc-20160816;
-        b=x9TijWFCWLzkuYX9n3HTKQVlU/I8QFX4qIdQa1Ni2xZQWt1YJpgGw3tiSoKmAW5FZF
-         T4L+Jlwai3zT1VaEVHDjpod8LfAZWSzB6aX9U0e0cznfhJu+62+2aaLjPxkhhsW8x+gP
-         leGMMachnAn5Mfue1TIFB13CoUlKjJ0+L/7PlZpihcAhy9gKpM5tIBKWnPM5513ihNnO
-         FMHD0GZL3TfiRu9P3qfDeOv4F5mphL0rcnFVLxbHadr/R7UhoVbDxM95t0GDPGwf2GRn
-         9WMBnF62YR2FB9l/KZesLoMX2Olgy3ENld/JiDC/mB92Z1DSLubmanzDbcewngX+lARL
-         3www==
+        b=R7aIle8OudbOkgoaFFe+vJXHPbXLKSqavL+IJiN7GDkw+dB/is5cQAHvZ8EUZBCPP3
+         6LMa8yTBV+c4Oh/YnFnBxpjy4KqIsmWSusYJg0ct4G+YpMeepvbdZirzWvNTuJVVlFO9
+         nDFSMVQ2v9tU9cmP6Ubaq5YXUrRDJjXVTUXb/y7IQnLUi0CN4hPcIranIWix2QpmKf1l
+         S7VSkxT8LF53pfdwppip+HzhKactYONF9bYVf6/3DWuUab4h65IA0CIDyEJ+wb3ZJEm6
+         SKLm1CH2Bxzo0OyOGjFFhevbryiUiz5CeBO8MD1/qiNfngH665e9hTw8DbejhRUcX6Nr
+         ZQ9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:reply-to:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=UsPMtwDMpayYl8/dOMFeRUz7N00zDhDCQqHAxG3FEPg=;
+        bh=yu4d0GWHikch8xGl0PGozqyWCRDt9ZlGerfwRrP4sGs=;
         fh=vhPMCmGgZiJTNpuzF6hMxOtoX+XXeSf+1Fextxu1VJQ=;
-        b=JUhBAOR1Q0XGFW+6ieUqTuryoFCvrn31ZLt6DNTTJptX/ap7xKv6jQF84/XGesA/Io
-         oRQCxHWWO8iWeZ2c/xJyBhjbHF1NsH+4on2fTJYt5W68/G84w2YMnsWT1wwOTwVtQNPT
-         sWOAuDVD5EmmDHM4xZH6zgC7qm9ARyGnaYSEBjxIlQ9bYtR9CmgEuarW+uOBgTXrPnul
-         +TxBidgPcxMLHtiR2+8pQjgZyzNXNTq78SdxRofsL4O03E3NwWzsAHav045ltumEbJkM
-         SMkesYzJKBbSuHzm/moOLgym3mXbmNEUmHtCbFlxn0a9omfaMy1MsbM/RxM+B/aIr+qq
-         z/1Q==
+        b=zc1hm/8roa3q/uqIrYvcDn2i8vxJCldnIBN3GUe3bPSiliGdWa8eMdY4B8SRgJVTTD
+         pYM1wqJDPKTQRDDHtWEaKIkp29/wxeBht79grl5u/JKtvhyPDUMfYvBQQdfJF7qib8mJ
+         KjojffP4ghV5QICJZGl4J2ixDl3pJ80zvpsKdQLkMq4UGFcnvXdcUaU1r8MsOmAbFSun
+         5japYeYygzKQe4/8SUnQK1//iWix+9gSCsGYx06/PwczztC0T8OEplf00PSZgDlXHdwo
+         MdbbQzXsykdw8RSTr53FF88ZiKCu5lK127PS8hAypPNTdW/REBCZWu1ebZVjPbiQXMTw
+         X3kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=k3J3MxgJ;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="WbWp/bOo";
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <quic_svaddagi@quicinc.com>
-Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
-        by mx.google.com with ESMTPS id l85-20020a815758000000b005d38bef8d0esi1537691ywb.131.2023.12.01.02.33.38
+Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
+        by mx.google.com with ESMTPS id q11-20020a6b710b000000b007b3611ac5ebsi1382358iog.84.2023.12.01.02.36.03
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Dec 2023 02:33:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
+        Fri, 01 Dec 2023 02:36:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=k3J3MxgJ;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="WbWp/bOo";
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B18tGXE028222;
-	Fri, 1 Dec 2023 10:33:38 GMT
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B17eXir007524;
+	Fri, 1 Dec 2023 10:36:03 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
  cc : subject : message-id : reply-to : references : mime-version :
  content-type : content-transfer-encoding : in-reply-to; s=qcppdkim1;
- bh=UsPMtwDMpayYl8/dOMFeRUz7N00zDhDCQqHAxG3FEPg=;
- b=k3J3MxgJajmDEewCy6PiF+H9knjqyzhEhEsuwBvL4rzbhDf9I2r8KGCoO/gr9gvauwwf
- QFFaMgZvPz9NIoGB9oGH7lGvea/1oDSMVAVCnULK0qpJ18GuoeelJNiJDevV4ez+FELG
- u8k4ccPe/W/AAhppe2lPDgzAz9swI75/0gea6Mwxsfbs0el6FlU1xqlbbT6JG2WzDKuX
- hTPBpxkvuyXNtxJFa0JZiTzDyPOEeBZ4NZ1Vo+Mpqn/BrS7ETXf9k588nxY/mhnj4FIa
- gvJ5YjybTGRfi9ylmmsK/clXspwDXMa0zgitB9toXrvEdtgKIc2lsgDWDOMA1nSwoJY0 aw== 
+ bh=yu4d0GWHikch8xGl0PGozqyWCRDt9ZlGerfwRrP4sGs=;
+ b=WbWp/bOoeBKMCN0rbbUYLioXaGQK44qtOsKR+mosK/JzFys+lMM2K2U55YozLjaX3AbO
+ 5BDQz8G8IUuYGwgoCPOYPEhSCbOmj6exU3MI3BNjdEgscIoztkd03wdPf3Tf7ydlNLaJ
+ y+vsWHnNzIAfnBpE1/rK1D4GY/kjy/vKhsQITc2FXJOJsGJoEltvSIwW3jcUjnAno2kf
+ xM1o7/1VIpdeGuXUEF7SmfGKqu37CUX9PNhe00wpZHPyGeaGv5asRyoocX+VOdBVMBWL
+ dOaalM0MiejrVTA9S3+9vKC7CKnrEe5DTfUzl0Kpc5VIBz3w9JCD6EkJl78wDlfK4vrX Fg== 
 Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uq9hygp5j-1
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3uq79h8uyr-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 01 Dec 2023 10:33:38 +0000
+	Fri, 01 Dec 2023 10:36:02 +0000
 Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B1AXbxR008636
+	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3B1Aa2Bs012125
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 1 Dec 2023 10:33:37 GMT
+	Fri, 1 Dec 2023 10:36:02 GMT
 Received: from quicinc.com (10.80.80.8) by nalasex01b.na.qualcomm.com
  (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.40; Fri, 1 Dec
- 2023 02:33:33 -0800
-Date: Fri, 1 Dec 2023 16:03:29 +0530
+ 2023 02:35:58 -0800
+Date: Fri, 1 Dec 2023 16:05:54 +0530
 From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 To: Alex Benn?e <alex.bennee@linaro.org>
 CC: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <quic_tsoni@quicinc.com>, <quic_pheragu@quicinc.com>,
         <quic_eberman@quicinc.com>, <quic_yvasi@quicinc.com>,
         <quic_cvanscha@quicinc.com>, <quic_mnalajal@quicinc.com>
-Subject: Re: [RFC/PATCH v0 03/12] gunyah: Basic support
-Message-ID: <20231201103329.GA3618015@quicinc.com>
+Subject: Re: [RFC/PATCH v0 02/12] update-linux-headers: Include gunyah.h
+Message-ID: <20231201103554.GB3618015@quicinc.com>
 Reply-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-4-quic_svaddagi@quicinc.com>
- <87cyvs8pmh.fsf@draig.linaro.org>
+ <20231011165234.1323725-3-quic_svaddagi@quicinc.com>
+ <87leag8q7d.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <87cyvs8pmh.fsf@draig.linaro.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87leag8q7d.fsf@draig.linaro.org>
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nalasex01b.na.qualcomm.com (10.47.209.197)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: OwWqypnBFXG9j72tMbU5CVOLJKnEe6fZ
-X-Proofpoint-ORIG-GUID: OwWqypnBFXG9j72tMbU5CVOLJKnEe6fZ
+X-Proofpoint-ORIG-GUID: t9_dsA67UNi1xozs_4kYnfQR0AbkKQ7f
+X-Proofpoint-GUID: t9_dsA67UNi1xozs_4kYnfQR0AbkKQ7f
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-01_06,2023-11-30_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 impostorscore=0
- lowpriorityscore=0 bulkscore=0 phishscore=0 priorityscore=1501
- mlxlogscore=851 spamscore=0 suspectscore=0 adultscore=0 malwarescore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2312010068
-X-TUID: OdXyPuHoZ8Uc
+ definitions=2023-12-01_08,2023-11-30_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 bulkscore=0
+ impostorscore=0 malwarescore=0 lowpriorityscore=0 priorityscore=1501
+ adultscore=0 mlxscore=0 phishscore=0 suspectscore=0 spamscore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311060000 definitions=main-2312010069
+X-TUID: Kpl6O0dFsfh6
 
-* Alex Benn?e <alex.bennee@linaro.org> [2023-11-29 16:56:38]:
+* Alex Benn?e <alex.bennee@linaro.org> [2023-11-29 16:44:06]:
 
 > Srivatsa Vaddagiri <quic_svaddagi@quicinc.com> writes:
->=20
-> > Add a new accelerator, gunyah, with basic functionality of creating a
-> > VM. Subsequent patches will add support for other functions required to
-> > run a VM.
+> 
+> > gunyah.h containts UAPI definitions exported by Gunyah Linux kernel
+> > driver. This file will be referenced by Gunyah accelerator driver in
+> > Qemu.
+> >
+> > Note: Gunyah Linux kernel driver is not yet merged in Linux kernel.
+> > v14 of the patch series has been posted on mailing lists.
+> >
+> > https://lore.kernel.org/lkml/20230613172054.3959700-1-quic_eberman@quicinc.com/
+> >
+> > One of the subsequent versions of the patch is expected to be merged
+> > upstream soon, after this this change to 'update-linux-headers' can be
+> > run against the main Linux kernel source repository from kernel.org.
+> >
+> > In the meantime, a version of Gunyah kernel driver is available in
+> > Android kernel repository, against which this change can be run.
+> >
+> > https://android.googlesource.com/kernel/common
+> > Branch: android14-6.1
 > >
 > > Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
->=20
-> Hmm this failed to build:
->=20
->   FAILED: libqemu-aarch64-softmmu.fa.p/accel_gunyah_gunyah-all.c.o=20
->   cc -m64 -mcx16 -Ilibqemu-aarch64-softmmu.fa.p -I. -I../.. -Itarget/arm =
--I../../target/arm -Iqapi -Itrace -Iui -Iui/shader -I/usr/include/pixman-1 =
--I/usr/include/capstone -I/usr/include/spice-server -I/usr/include/spice-1 =
--I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -fdiag=
-nostics-color=3Dauto -Wall -Winvalid-pch -Werror -std=3Dgnu11 -O2 -g -fstac=
-k-protector-strong -Wundef -Wwrite-strings -Wmissing-prototypes -Wstrict-pr=
-ototypes -Wredundant-decls -Wold-style-declaration -Wold-style-definition -=
-Wtype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifier=
-s -Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wimp=
-licit-fallthrough=3D2 -Wmissing-format-attribute -Wno-missing-include-dirs =
--Wno-shift-negative-value -Wno-psabi -Wshadow=3Dlocal -isystem /home/alex/l=
-src/qemu.git/linux-headers -isystem linux-headers -iquote . -iquote /home/a=
-lex/lsrc/qemu.git -iquote /home/alex/lsrc/qemu.git/include -iquote /home/al=
-ex/lsrc/qemu.git/host/include/x86_64 -iquote /home/alex/lsrc/qemu.git/host/=
-include/generic -iquote /home/alex/lsrc/qemu.git/tcg/i386 -pthread -D_GNU_S=
-OURCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -fno-strict-aliasing -fn=
-o-common -fwrapv -fPIE -isystem../../linux-headers -isystemlinux-headers -D=
-NEED_CPU_H '-DCONFIG_TARGET=3D"aarch64-softmmu-config-target.h"' '-DCONFIG_=
-DEVICES=3D"aarch64-softmmu-config-devices.h"' -MD -MQ libqemu-aarch64-softm=
-mu.fa.p/accel_gunyah_gunyah-all.c.o -MF libqemu-aarch64-softmmu.fa.p/accel_=
-gunyah_gunyah-all.c.o.d -o libqemu-aarch64-softmmu.fa.p/accel_gunyah_gunyah=
--all.c.o -c ../../accel/gunyah/gunyah-all.c
->   ../../accel/gunyah/gunyah-all.c:21:10: fatal error: linux-headers/linux=
-/gunyah.h: No such file or directory
->      21 | #include "linux-headers/linux/gunyah.h"
->         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->   compilation terminated.
->=20
-> Easiest solution:
->=20
->   add PATCH after 02 importing headers
->=20
-> I usually add a !MERGE to the summary just to remind myself that we'll
-> need to properly update the headers before we merge. e.g: linux-headers: =
-update to v6.6-with-gunyah (!MERGE)
+> 
+> with fix:
+> 
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> although it will need another fixup on rebase due to other headers being
+> added. Maybe now is the time to sort the header list to lessen the
+> chance of clashes in future?
 
-I had run update-linux-headers.sh after Patch 02 before trying to compile r=
-est of
-the patch series. It was run against a Linux kernel tree having the Gunyah
-patches. If it helps, I can include the actual header itself as a Patch (wi=
-th
-!MERGE noted), so that it saves some trouble.
-
-> There are some other merge failures bellow so perhaps its time to do a
-> re-base and send v1?
-
-Yes working on v1. I have tested virtio-pci working I think, testing SMP no=
-w after
-which will send out v1 (hopefully early next week).
-
-> Whats the current state of the kernel merge?
-
-The kernel patches are being reworked to avoid pinning of memory and to all=
-ow
-on-demand allocation of VM memory. That should address the major feedback
-received. We expect the next version of kernel patches to be published later
-this month, and a potential merge in kernel.org hopefully before April (6.9=
-)?!
-
-It will also require some rework in Qemu support to use the new guest
-memfd APIs for allocating VM memory (for confidential VMs). I will publish
-support for it in v2 (could be a month away I think).
-
-> <snip>
-> > diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions=
-=2Esh
-> > index 9da3fe299b..0c95f79645 100644
-> > --- a/scripts/meson-buildoptions.sh
-> > +++ b/scripts/meson-buildoptions.sh
-> > @@ -112,6 +112,7 @@ meson_options_help() {
-> >    printf "%s\n" '  guest-agent-msi Build MSI package for the QEMU Gues=
-t Agent'
-> >    printf "%s\n" '  hax             HAX acceleration support'
-> >    printf "%s\n" '  hvf             HVF acceleration support'
-> > +  printf "%s\n" '  gunyah          Gunyah acceleration support'
->=20
-> need rebasing due to hax drop
->=20
-> >    printf "%s\n" '  iconv           Font glyph conversion support'
-> >    printf "%s\n" '  jack            JACK sound support'
-> >    printf "%s\n" '  keyring         Linux keyring support'
-> > @@ -312,6 +313,8 @@ _meson_option_parse() {
-> >      --disable-guest-agent) printf "%s" -Dguest_agent=3Ddisabled ;;
-> >      --enable-guest-agent-msi) printf "%s" -Dguest_agent_msi=3Denabled =
-;;
-> >      --disable-guest-agent-msi) printf "%s" -Dguest_agent_msi=3Ddisable=
-d ;;
-> > +    --enable-gunyah) printf "%s" -Dgunyah=3Denabled ;;
-> > +    --disable-gunyah) printf "%s" -Dgunyah=3Ddisabled ;;
->=20
-> ditto.
->=20
-> >      --enable-hax) printf "%s" -Dhax=3Denabled ;;
-> >      --disable-hax) printf "%s" -Dhax=3Ddisabled ;;
-> >      --enable-hexagon-idef-parser) printf "%s" -Dhexagon_idef_parser=3D=
-true ;;
-> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> > index 96158093cc..a712f1a3b3 100644
-> > --- a/target/arm/cpu64.c
-> > +++ b/target/arm/cpu64.c
-> > @@ -33,6 +33,7 @@
-> >  #include "hw/qdev-properties.h"
-> >  #include "internals.h"
-> >  #include "cpregs.h"
-> > +#include "sysemu/gunyah.h"
->=20
-> This should be moved up next to the other accelerator includes.
-
-Sure thanks for this feedback. Will incorporate them in v1.
+Sure will suggest sorted header list in my next revision!
 
 - vatsa
+
+ 
+> > ---
+> >  scripts/update-linux-headers.sh | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
+> > index 35a64bb501..3f3608bcbe 100755
+> > --- a/scripts/update-linux-headers.sh
+> > +++ b/scripts/update-linux-headers.sh
+> > @@ -161,7 +161,8 @@ done
+> >  rm -rf "$output/linux-headers/linux"
+> >  mkdir -p "$output/linux-headers/linux"
+> >  for header in const.h stddef.h kvm.h vfio.h vfio_ccw.h vfio_zdev.h vhost.h \
+> > -              psci.h psp-sev.h userfaultfd.h memfd.h mman.h nvme_ioctl.h vduse.h; do
+> > +              psci.h psp-sev.h userfaultfd.h memfd.h mman.h nvme_ioctl.h \
+> > +              vduse.h gunyah.h; do
+> >      cp "$tmpdir/include/linux/$header" "$output/linux-headers/linux"
+> >  done
+> 
+> -- 
+> Alex Bennée
+> Virtualisation Tech Lead @ Linaro

@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp1023663ejb;
-        Fri, 1 Dec 2023 06:32:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFu34opK9Pt88bF2mrcEUw+AvqPKOkMJkG8rnNlN9X1/YFnp0qmZMU5AxSV4oYXfVpKcqhU
-X-Received: by 2002:a05:6a00:1d0d:b0:6cd:fa15:8d86 with SMTP id a13-20020a056a001d0d00b006cdfa158d86mr4118874pfx.2.1701441136824;
-        Fri, 01 Dec 2023 06:32:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701441136; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp1023742ejb;
+        Fri, 1 Dec 2023 06:32:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFRjoa0mCjn0ktPpgQx1kcJfWh+SNoavc8ShQi202Fv5ilL1xT/bCUs04A9xRaysCYVYHz4
+X-Received: by 2002:ac8:5f13:0:b0:423:77e2:6fb6 with SMTP id x19-20020ac85f13000000b0042377e26fb6mr32671544qta.30.1701441144002;
+        Fri, 01 Dec 2023 06:32:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701441143; cv=none;
         d=google.com; s=arc-20160816;
-        b=gabU8UeIrKKurq4FvD1hdKVmV+uhFFCYE8qH5wSvZie9nqP3fsJRVm7+PfJ1A9Dj1g
-         iaL2VSGNkXYCP5o04aMvmK2bo/Np+4JaJ/yb4Gfm4GMjRa21l5utm9BO2KRxaY8SazT8
-         /HyfBX8HnT2i/O5vAkUjCAC7cQYuHO7owPYV1J7V8mQC4qUr7lVAayjwsx6+E0dNJ8rV
-         mAfZLTJkkRhkr12WrEmKkxGeDo+pFm1AQgZvbaoGpW5WKSeg1ewhXy2nbCHduCPLmXof
-         YQ5Zwm2dfDE/2MeFVPH/f163XMtITauWhckZPsH/CfMJz/UNkxbC8GBYLE5mXLj7Gd9I
-         Mmkg==
+        b=U/m9oFSM0R6tQXjPZqOunxvOKdhYW5nd10h3wZfzr0TDySyaHoZGg8hxoMY+vV3BCu
+         B7SbZIx5nIcdk9axYuX5tyimoMH41fqllczib6H6fsog0nafbH1uXewvjhLqcho008a4
+         d+wR/6OumKyNQILw6r8kJx2IiD8VVzQDWOP8zKElue57NnkpAuGI8+vJHVaKD327TWs4
+         oq9pXkZS0JXqv7aeknuTZZSoSqRfks1XwSZ9MzVWB+1rmQxO7JYREONR9ChfA5o/dp1D
+         nHGEsGTTi4VyA1eIlCTPIM8X7T0Hgozoqf3myb4dxb/C0Gp1/G+kZKbd+PuHGOC7dbjh
+         2jNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=H2r7iA7OoHYzxctfj3egfbT+slVUvULOjb8ti2ra+So=;
+        bh=lzQsYOZx1lby/03o6yhLAnKTrunXv93oPFAjodmUZ7Q=;
         fh=o3lfIpO1LiWB5YaKx2qN0pZoVgkt08VAmJbZ6Wpmxfk=;
-        b=aCSIGdf8c8RYCxJ7sGKcvfaXpNBFPAEh7nZkGx9tpExwWG+N0YAliXZtec8PcT6tX1
-         tt1b967UZw5K/M56KtZ+Ol98SV8fUOOiwycLYzae6CmRsAajzQEfI/Tdj3jy83PtwR24
-         UqqAehIYV7UvEaD8/SPi9htAo7dDxw+KaJiClUSsFB+k727lJXBfvD09zNH2ChIk0Tjr
-         +C871PHLKAOh0eiZ/tSUzcdAeOG5fl5JWSH2SRCnKW1O5gHHKdSN/uzB0TRwmWQQdDFv
-         AQBFLAdqfrouQ+7JIEzQmYAdX6qi4MwqAWJsrMRYU1vF1lU24Fy3QwN4pyNzyn8bMsTN
-         BmVw==
+        b=xJ0j5S03DKBRFCeAYdX/wRrXfr0Hz2ETNo0u10f8VRsdnqdUPpl4gRAJ0fslw0s958
+         MStbsuIXIZhJfhxFb17wEzYLM3a2TRY7vxdIWAhbaOItK3PKLNt3zLii99+soTZFjxWE
+         469VScDD57MjUfpIW1qDwARpMx3+iS9+bjd4RF62XVnBDvZGiumCtrmq3nGdQHnwxsRk
+         O8+MtEYsiVK20M3KRcqBMF7DV0k4J4mEnXCnZB8uG2ZNkazEC7XSfVS+UPq+JxA4dLva
+         XQTPe6USpf/vVwIgqgpRcd5R3TLyFfp7f85Lc27Ju7omMJE8L/emUrfgCTh2/88X0j+k
+         A2tQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P7b4dJv2;
-       spf=pass (google.com: domain of kvm+bounces-3126-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-3126-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DbDilatH;
+       spf=pass (google.com: domain of kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-3126-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id f21-20020a056a00229500b006cbeff5ae49si3453648pfe.3.2023.12.01.06.32.16
+Return-Path: <kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id y11-20020a05622a164b00b00423e4453177si3483335qtj.691.2023.12.01.06.32.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Dec 2023 06:32:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-3126-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 01 Dec 2023 06:32:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P7b4dJv2;
-       spf=pass (google.com: domain of kvm+bounces-3126-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-3126-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DbDilatH;
+       spf=pass (google.com: domain of kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 34EB0281C00
-	for <alex.bennee@linaro.org>; Fri,  1 Dec 2023 14:32:16 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A44EA1C20F54
+	for <alex.bennee@linaro.org>; Fri,  1 Dec 2023 14:32:23 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2EA154A9A9;
-	Fri,  1 Dec 2023 14:32:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EA4122575F;
+	Fri,  1 Dec 2023 14:32:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="P7b4dJv2"
-Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com [IPv6:2a00:1450:4864:20::435])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id CF32510F3
-	for <kvm@vger.kernel.org>; Fri,  1 Dec 2023 06:32:10 -0800 (PST)
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-32f8441dfb5so1561772f8f.0
-        for <kvm@vger.kernel.org>; Fri, 01 Dec 2023 06:32:10 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="DbDilatH"
+Received: from mail-lf1-x12d.google.com (mail-lf1-x12d.google.com [IPv6:2a00:1450:4864:20::12d])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4C1B410F3
+	for <kvm@vger.kernel.org>; Fri,  1 Dec 2023 06:32:16 -0800 (PST)
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-50bccc2e3efso2826897e87.0
+        for <kvm@vger.kernel.org>; Fri, 01 Dec 2023 06:32:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701441129; x=1702045929; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1701441134; x=1702045934; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=H2r7iA7OoHYzxctfj3egfbT+slVUvULOjb8ti2ra+So=;
-        b=P7b4dJv2A4PESequfg7QwbL5HJVLLRDbyK96r1Iwz8fGtccCwWiB0tJRSb9EMYd7yS
-         Gt6BWCE18E8TUKThpAsnZbnvX7dOlJ6/1EtOxFMKEnLUobgy4IW5Hn3vrgrdTkjBdAC/
-         qZAuIoStGlsfK1hogiQecZfSLSnwEAgdpNpu4tqasofhZbrtcW3fp3Btyh08/4YrvVQu
-         xCjPpM3s+sbQ13U8hV9nG4dGA1mQrGXfIk+nNf9nO0wVJXm2e6dZdMKLyJ4JVZF4B6z/
-         Twd0QC0yr2w+gOfW1nJd8+mKkDGUUoKvKWzvztR8RN+XFeX8FRX6hIGjP4V3PehFtGkD
-         MaRw==
+        bh=lzQsYOZx1lby/03o6yhLAnKTrunXv93oPFAjodmUZ7Q=;
+        b=DbDilatHQBQcO1yJhbm354RNR5X9Y87QGZF4YZXStJ5M8CApPHf7qdIt96UO2QdcNK
+         +8jOpWLIge2Zqhyr6kFALbM22SJwBEDXCD1+fZqPGH0jqPrUhr+SWkcKXqhAIwT/LiYq
+         dWO7JQJyicRB+Drl9GMLaEADM4qtZCtYpuvu3hR7yXgTc+fF2pDPI4yZvpTZAtHzkFEZ
+         dg2MrMus7Qe30k6EvpeHNjM96Z3C5VdPwxVNld075skzBb+T3zJkYBPksMhC0NBt0N3b
+         Jm1tuNkRTwOQnVBNQYOznECfAjUO+Xm81QgG5iOE7yFtdhfMy0Jva3tUixhnXWUwauMv
+         8BWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701441129; x=1702045929;
+        d=1e100.net; s=20230601; t=1701441134; x=1702045934;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=H2r7iA7OoHYzxctfj3egfbT+slVUvULOjb8ti2ra+So=;
-        b=TxkxSbtOZz6cXIVux0U4zlIOR/62B7WzuWfoNnRQOOJh62S2G2sbbRGomIvE6P4H9U
-         02hJNITxvidYwSiFOJ2dEH3/LsWe3CRukaCZKcpNZOQH6U/8a+g3RTrzNqWS8y2C47ZL
-         nBrbtb8ZOGb6dLw7YU8I6XQ9cl4WeOFK6e1BBQs0YYF9J9/JQoXVBuIkrGfsHaX0sLsv
-         GTPqrs1FtMZ2xBTeA7W+klgGYvdjAVZmF5iZEp0844EWkAY8VxSMBzjOs+9HaGKWVD0j
-         XVMIpEXOBlErFXzhHzy2BSlQSHqJSoobAjxQ+COkeJe6TRJdS2kPCTblSmMY+TL+ShrM
-         VmcQ==
-X-Gm-Message-State: AOJu0Yxw2LkWyZMVZG8t6etyRC6/lZDiOX3Ow7lJHDFVzUntUdGuiW/I
-	OG5AxrlCyhis9RrEfwgPf0CdvA==
-X-Received: by 2002:a5d:4e8b:0:b0:333:85e:a11f with SMTP id e11-20020a5d4e8b000000b00333085ea11fmr889298wru.59.1701441129295;
-        Fri, 01 Dec 2023 06:32:09 -0800 (PST)
+        bh=lzQsYOZx1lby/03o6yhLAnKTrunXv93oPFAjodmUZ7Q=;
+        b=XtttBxr2hVKFJ6oIH5U2yf0vyC9+eHcnJp/niOE8lR290vVv/2Me5/SbtyLAW+OMPe
+         l1qTEzzx6Mq7guO+Id7PaIM/lXk8aklIeb9BOnz+esp5MNkWA1aHtEzeOfSF4PkxwpIc
+         ODfcV2Fr2bVdOlyZPCee0cYbNlcBGRykJ5zBbWHWSAKNavz0Xjcn/0SkCrYsjr03JO8S
+         q7mRF+hen5cqrBo/xY5jjjJuPkxEqvnqQIoOKQoEtvWxRjzo9qiboVhHLC7LW34Jv32n
+         NFgROMduTk6PmiJ0fmwhpD1Mz6HoSpbes5+niElhHYin76dH28qLSmgKaLnXEwdod5wG
+         Gu1Q==
+X-Gm-Message-State: AOJu0Yx5OrsTKiDgYfp/f+D5EGtAsZBsUh5jtmwr/I86XwAnhTcBlLsl
+	/GETfM7ZHPhqQ5pVm5bebSVvFg==
+X-Received: by 2002:a05:6512:1598:b0:50b:d763:fe35 with SMTP id bp24-20020a056512159800b0050bd763fe35mr1096852lfb.80.1701441134581;
+        Fri, 01 Dec 2023 06:32:14 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.160.225])
-        by smtp.gmail.com with ESMTPSA id dq4-20020a0560000cc400b00332e7f9e2a8sm4277513wrb.68.2023.12.01.06.32.08
+        by smtp.gmail.com with ESMTPSA id d9-20020a056000114900b00332e8dd713fsm4350612wrx.74.2023.12.01.06.32.13
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 01 Dec 2023 06:32:08 -0800 (PST)
+        Fri, 01 Dec 2023 06:32:14 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -92,9 +92,9 @@ Cc: qemu-arm@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	kvm@vger.kernel.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 1/2] accel/kvm: Expose kvm_supports_guest_debug() prototype
-Date: Fri,  1 Dec 2023 15:32:00 +0100
-Message-ID: <20231201143201.40182-2-philmd@linaro.org>
+Subject: [PATCH-for-9.0 2/2] target/arm/kvm: Use generic kvm_supports_guest_debug()
+Date: Fri,  1 Dec 2023 15:32:01 +0100
+Message-ID: <20231201143201.40182-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231201143201.40182-1-philmd@linaro.org>
 References: <20231201143201.40182-1-philmd@linaro.org>
@@ -106,41 +106,51 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3JxwvkAy4F5z
+X-TUID: Xj7n2kdRu5qH
 
-kvm_supports_guest_debug() should be accessible by KVM
-implementations.
+Do not open-code the generic kvm_supports_guest_debug().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- accel/kvm/kvm-cpus.h | 1 -
- include/sysemu/kvm.h | 1 +
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ target/arm/kvm64.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/accel/kvm/kvm-cpus.h b/accel/kvm/kvm-cpus.h
-index ca40add32c..a232348c91 100644
---- a/accel/kvm/kvm-cpus.h
-+++ b/accel/kvm/kvm-cpus.h
-@@ -18,7 +18,6 @@ void kvm_destroy_vcpu(CPUState *cpu);
- void kvm_cpu_synchronize_post_reset(CPUState *cpu);
- void kvm_cpu_synchronize_post_init(CPUState *cpu);
- void kvm_cpu_synchronize_pre_loadvm(CPUState *cpu);
--bool kvm_supports_guest_debug(void);
- int kvm_insert_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
- int kvm_remove_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
- void kvm_remove_all_breakpoints(CPUState *cpu);
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index d614878164..6ed18f2d6a 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -206,6 +206,7 @@ int kvm_has_gsi_routing(void);
-  */
- bool kvm_arm_supports_user_irq(void);
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 3c175c93a7..031d20ad92 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -32,13 +32,8 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ghes.h"
  
-+bool kvm_supports_guest_debug(void);
+-static bool have_guest_debug;
+-
+ void kvm_arm_init_debug(KVMState *s)
+ {
+-    have_guest_debug = kvm_check_extension(s,
+-                                           KVM_CAP_SET_GUEST_DEBUG);
+-
+     max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
+     hw_watchpoints = g_array_sized_new(true, true,
+                                        sizeof(HWWatchpoint), max_hw_wps);
+@@ -1141,7 +1136,7 @@ static const uint32_t brk_insn = 0xd4200000;
  
- int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- int kvm_on_sigbus(int code, void *addr);
+ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+-    if (have_guest_debug) {
++    if (kvm_supports_guest_debug()) {
+         if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
+             cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
+             return -EINVAL;
+@@ -1157,7 +1152,7 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     static uint32_t brk;
+ 
+-    if (have_guest_debug) {
++    if (kvm_supports_guest_debug()) {
+         if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk, 4, 0) ||
+             brk != brk_insn ||
+             cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 1)) {
 -- 
 2.41.0
 

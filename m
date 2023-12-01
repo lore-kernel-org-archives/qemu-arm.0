@@ -1,236 +1,208 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp790159ejb;
-        Thu, 30 Nov 2023 23:16:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEz/VksWuLwgAdNgqyDQmiX2agj99ibbCoyft7lTlw0o66xZ7wPljScL0TdtrRnGLZ63OLj
-X-Received: by 2002:a05:6602:22cb:b0:7b3:5c87:263 with SMTP id e11-20020a05660222cb00b007b35c870263mr29577568ioe.5.1701414970562;
-        Thu, 30 Nov 2023 23:16:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701414970; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp854955ejb;
+        Fri, 1 Dec 2023 01:40:26 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEO07kznRBhFF91ipdGE2x3OOox6HEO+o/ciOPnFl18if5zhOczD5PiqM/7NgrX0RWsKQ1n
+X-Received: by 2002:ac8:4e51:0:b0:41e:1a89:2534 with SMTP id e17-20020ac84e51000000b0041e1a892534mr29349079qtw.53.1701423626742;
+        Fri, 01 Dec 2023 01:40:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701423626; cv=none;
         d=google.com; s=arc-20160816;
-        b=tXTy+zeY44V7zbG2rn0CexeM0Uq45yx2awbiiiEQoVVyW+KoJY1e8O2p/qJq2LcqzK
-         5S+wR1/njhyZ8jeqlbDV5b+635uEU+ey2JcU6o36pRYjWL11miunku7PjPjagfCOgXXu
-         KR68tjrVewOmJOSpHgnz3/mg/QQStyjPzdfvrbR48OkynN/xlI7ThemTWtBjSrGFMzai
-         Wo9CZf+K2bgQCyeOBHhVP1Zp3hhSw5strJV8IJ3XBlx+t29jIxWwGw025lcxxBSbb8pB
-         F7o9rclMfIt9j3QtN4EZOyNhZPwrnAv3aUx76IBmzqeAxxu90wdWAASAXYHxvojy+tAw
-         BbHA==
+        b=Gom9FKOMPxmHPkWy3Lc9ELz9Z74RXAuBFWXkNxy6vL7ltj9cpEzx0QOV3c8FUCvM9I
+         PojTxUwdgjShgyjBl+YVjeMcUMHbtwH2iXeWr3o2YDI32pRCNuLwEiv76FSE4GQpBhbn
+         mlFbuQt1iDrgLCo7UpqcpO7ZLZlOiO2GikjvDJiNSoMaY1v3izT/Kj+F+S/J8Bqt6Kfy
+         i5xef9PTZNj3Nr0mu1/my8dtD6nWq0xkpAfmkPRvlc9u5SPKja/PN6hcK7NhQr4yvr9N
+         a6UJ7Mib2ImQtTpOzEaXuq6b0bA0+3sPi0sS434qUo0fVqmVZyd22Qkvx/BlBuMf6Fi9
+         XIXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=BzkqJ/jGQ8feZTMTV7kBM2CKnfMMKrkrySy6iUP9EuY=;
-        fh=BK+6VGVNx4qaaKeQGrEDqV1i3EWXj8uJqOxPGamw9rw=;
-        b=ODCoYAZcto6RlfZ1Bvebc3LOO1XFfKIAI+g0lJbZdoY4tAORqaq/zBKJgQmMJvFww1
-         AbtA+f1CWqW5y6ACY0nH5AoYDsQCmKM+4DsFQ1mNfFHemi4LEC3OcGnLJVc9WQLt/LE9
-         EKgase5N+Dfvoo/IEj3yFglRtJPad9Z8n8gHw3SZ8AYA0SwbHtUwdHGX02KyKln9XnSg
-         oWfUhjkvgHLBvbx9PpSunLJtaIzjpa9Vma20ejkHlZtVbtYDnvWw/fCPRt9IVqvwXts0
-         lsgSwsEGonbpK/kUZKj4KxyC5ykXu55PpFxvnxVHSDms0WCz7fjZd7oDOxp/PFiwHZJ+
-         nwlg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=QR1GkLR1LdmLBEGjBxKJNk8usgI5Aqx7LU6sJpXPQ50=;
+        fh=6LTpBlQFGsO2JFDrsYZqqe3IoxGRxGn4U3eyQr4hw/M=;
+        b=JEgw4M3iJQMWE3Cm+L/dd62rqCDslzO8B0/yiz20Qq0ghwOQk844CoicjQ5eS1L+Nl
+         M+3hhZlCEYp+GJpFcoZp+gqnmUSrlzXFl0ZYthClwy5ry65Aq7j7/FNGIToZROecbda7
+         6tXTrLlivO99UdFZG+86sqy0I8FufFc8RfRMVVGzgtwa+SbuqVa6IaVq+VuBWhgV8wDd
+         yZreDsLgl7B1ftQXPEYYKhD68QmjJgABBuYKedk13jOtZKlxduNbIOqhf0dOzEIE3bvw
+         wwwbS+2ZqELwW/vmf+RbjrEtNYujwECKOIZL5aCAoc8r5qDeAxs2Zo8fkQE3VkLfWVvj
+         x/dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=b+xga7mw;
-       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <harshpb@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id u12-20020a6be90c000000b007b0c32858ccsi1354096iof.117.2023.11.30.23.16.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Nov 2023 23:16:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bv16-20020a05622a0a1000b004238e50730dsi3030570qtb.73.2023.12.01.01.40.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 01 Dec 2023 01:40:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=b+xga7mw;
-       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 3B1725a0004180;
-	Fri, 1 Dec 2023 07:15:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=BzkqJ/jGQ8feZTMTV7kBM2CKnfMMKrkrySy6iUP9EuY=;
- b=b+xga7mwfs1rp6LEevn9sUHSCU1lMKC/Z/EnZFVSkTZqk7CHQROyPzsnuQdIM07JAGOd
- ya+rGqq00S4Crr3b2meBlGLmSR+zVLKt6N0RKDFEL0B0+PyddOMnJ1Oo3KMNYy0V45Tp
- zQl06ERE0CoEmNthAoELlOyVtJJ5tOVa5/qwQCWWe44HfrE8ufDG2+WNPURfGtiA7LjI
- gEQQwLy0ElzkEJ/RfK3dlxHsbtQvtJbXCubTiiy4RG3biUGoEqTvt7IqDZAaduT8B7ug
- IPbSIbm/F1XOJB6WbUJbwyRiB0naqI1VwIbtR2szxG9CAwjLNMBiE/wFu+M9Q33M+Xk/ eA== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3uqar7gaus-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 01 Dec 2023 07:15:41 +0000
-Received: from m0353728.ppops.net (m0353728.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3B17FebO014948;
-	Fri, 1 Dec 2023 07:15:40 GMT
-Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3uqar7ga27-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 01 Dec 2023 07:15:40 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 3B16Ye5v029654;
-	Fri, 1 Dec 2023 07:11:06 GMT
-Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
-	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3ukv8p3h96-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 01 Dec 2023 07:11:06 +0000
-Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com [10.39.53.231])
-	by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 3B17B5Ah30016124
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 1 Dec 2023 07:11:05 GMT
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 2A81A58052;
-	Fri,  1 Dec 2023 07:11:05 +0000 (GMT)
-Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 8CEAB58054;
-	Fri,  1 Dec 2023 07:10:35 +0000 (GMT)
-Received: from [9.43.126.227] (unknown [9.43.126.227])
-	by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Fri,  1 Dec 2023 07:10:35 +0000 (GMT)
-Message-ID: <6debe854-55df-e901-e154-5ed390178c74@linux.ibm.com>
-Date: Fri, 1 Dec 2023 12:40:33 +0530
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r900U-0001IC-Iv; Fri, 01 Dec 2023 04:40:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1r900Q-0001HE-VQ; Fri, 01 Dec 2023 04:40:19 -0500
+Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1r900O-0004qr-RS; Fri, 01 Dec 2023 04:40:18 -0500
+Received: from [0.0.0.0] (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com
+ [3.122.114.9]) by csgraf.de (Postfix) with ESMTPSA id D6BD46080030;
+ Fri,  1 Dec 2023 10:40:05 +0100 (CET)
+Message-ID: <614c035f-8382-40c9-b2ab-d20a9dc5570e@csgraf.de>
+Date: Fri, 1 Dec 2023 10:40:05 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH 2/6] qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to
- QEMU_BQL_LOCK_GUARD
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 04/10] hvf: Add Apple Silicon support
 Content-Language: en-US
-To: Stefan Hajnoczi <stefanha@redhat.com>,
-        Ilya Leoshkevich <iii@linux.ibm.com>
-Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
-        Fabiano Rosas <farosas@suse.de>, qemu-s390x@nongnu.org,
-        Song Gao <gaosong@loongson.cn>,
-        Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,
-        Thomas Huth <thuth@redhat.com>, Hyman Huang <yong.huang@smartx.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Andrey Smirnov <andrew.smirnov@gmail.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Kevin Wolf <kwolf@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Alistair Francis <alistair.francis@wdc.com>,
-        Paul Durrant <paul@xen.org>, Jagannathan Raman <jag.raman@oracle.com>,
-        Juan Quintela
- <quintela@redhat.com>,
-        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>,
-        qemu-arm@nongnu.org, Jason Wang
- <jasowang@redhat.com>,
-        Gerd Hoffmann <kraxel@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
-        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-        BALATON Zoltan <balaton@eik.bme.hu>,
-        Daniel Henrique Barboza <danielhb413@gmail.com>,
-        Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Hailiang Zhang <zhanghailiang@xfusion.com>,
-        Roman Bolshakov <rbolshakov@ddn.com>,
-        Huacai Chen <chenhuacai@kernel.org>, Fam Zheng <fam@euphon.net>,
-        Eric Blake <eblake@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
-        Alexander Graf <agraf@csgraf.de>,
-        Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-        Weiwei Li <liwei1518@gmail.com>, Eric Farman <farman@linux.ibm.com>,
-        Stafford Horne <shorne@gmail.com>,
-        David Hildenbrand <david@redhat.com>,
-        Markus Armbruster <armbru@redhat.com>,
-        Reinoud Zandijk <reinoud@netbsd.org>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Cameron Esfahani <dirty@apple.com>, xen-devel@lists.xenproject.org,
-        Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-riscv@nongnu.org,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        John Snow <jsnow@redhat.com>,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Michael Roth <michael.roth@amd.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Bin Meng <bin.meng@windriver.com>,
-        Stefano Stabellini <sstabellini@kernel.org>, kvm@vger.kernel.org,
-        qemu-block@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
-        Peter Xu <peterx@redhat.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-        Eduardo Habkost <eduardo@habkost.net>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Akihiko Odaki <akihiko.odaki@daynix.com>,
-        Leonardo Bras
- <leobras@redhat.com>,
-        Nicholas Piggin <npiggin@gmail.com>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>
-References: <20231129212625.1051502-1-stefanha@redhat.com>
- <20231129212625.1051502-3-stefanha@redhat.com>
- <c3ac8d9c2b9d611e84672436ce1a96aedcaacf5e.camel@linux.ibm.com>
- <20231130202732.GA1184658@fedora>
-From: Harsh Prateek Bora <harshpb@linux.ibm.com>
-In-Reply-To: <20231130202732.GA1184658@fedora>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ Peter Collingbourne <pcc@google.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20210916155404.86958-1-agraf@csgraf.de>
+ <20210916155404.86958-5-agraf@csgraf.de>
+ <0ae7ffb0-a0af-4afc-ad29-384daff52484@linaro.org>
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <0ae7ffb0-a0af-4afc-ad29-384daff52484@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: S1sEqcNGAK1f1yUwyiWHNf41PAnYA7MY
-X-Proofpoint-GUID: B-XJS9KsqjYFS8Hl-N4F0TWzVhOEzlLk
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-12-01_04,2023-11-30_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 bulkscore=0
- impostorscore=0 lowpriorityscore=0 malwarescore=0 suspectscore=0
- priorityscore=1501 phishscore=0 adultscore=0 mlxlogscore=778 spamscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311060000 definitions=main-2312010044
-X-TUID: 0IZFzjH5D1Is
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8B3uKwlA3X5e
 
 
-
-On 12/1/23 01:57, Stefan Hajnoczi wrote:
-> On Thu, Nov 30, 2023 at 10:14:47AM +0100, Ilya Leoshkevich wrote:
->> On Wed, 2023-11-29 at 16:26 -0500, Stefan Hajnoczi wrote:
->>> The name "iothread" is overloaded. Use the term Big QEMU Lock (BQL)
->>> instead, it is already widely used and unambiguous.
->>>
->>> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
->>> ---
->>>   include/qemu/main-loop.h  | 20 ++++++++++----------
->>>   hw/i386/kvm/xen_evtchn.c  | 14 +++++++-------
->>>   hw/i386/kvm/xen_gnttab.c  |  2 +-
->>>   hw/mips/mips_int.c        |  2 +-
->>>   hw/ppc/ppc.c              |  2 +-
->>>   target/i386/kvm/xen-emu.c |  2 +-
->>>   target/ppc/excp_helper.c  |  2 +-
->>>   target/ppc/helper_regs.c  |  2 +-
->>>   target/riscv/cpu_helper.c |  4 ++--
->>>   9 files changed, 25 insertions(+), 25 deletions(-)
->>>
->>> diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
->>> index d6f75e57bd..0b6a3e4824 100644
->>> --- a/include/qemu/main-loop.h
->>> +++ b/include/qemu/main-loop.h
->>> @@ -344,13 +344,13 @@ void qemu_bql_lock_impl(const char *file, int
->>> line);
->>>   void qemu_bql_unlock(void);
->>>   
->>>   /**
->>> - * QEMU_IOTHREAD_LOCK_GUARD
->>> + * QEMU_BQL_LOCK_GUARD
->>>    *
->>> - * Wrap a block of code in a conditional
->>> qemu_mutex_{lock,unlock}_iothread.
->>> + * Wrap a block of code in a conditional qemu_bql_{lock,unlock}.
->>>    */
->>> -typedef struct IOThreadLockAuto IOThreadLockAuto;
->>> +typedef struct BQLLockAuto BQLLockAuto;
->>>   
->>> -static inline IOThreadLockAuto *qemu_iothread_auto_lock(const char
->>> *file,
->>> +static inline BQLLockAuto *qemu_bql_auto_lock(const char *file,
->>>                                                           int line)
+On 30.11.23 15:17, Philippe Mathieu-Daudé wrote:
+> Hi,
+>
+> On 16/9/21 17:53, Alexander Graf wrote:
+>> With Apple Silicon available to the masses, it's a good time to add 
+>> support
+>> for driving its virtualization extensions from QEMU.
 >>
->> The padding is not correct anymore.
-> 
-> Good point, I didn't check the formatting after search-and-replace. I
-> will fix this across the patch series in v2.
-> 
+>> This patch adds all necessary architecture specific code to get basic 
+>> VMs
+>> working, including save/restore.
+>>
+>> Known limitations:
+>>
+>>    - WFI handling is missing (follows in later patch)
+>>    - No watchpoint/breakpoint support
+>>
+>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+>> Reviewed-by: Sergio Lopez <slp@redhat.com>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+>
+>> ---
+>>   MAINTAINERS                 |   5 +
+>>   accel/hvf/hvf-accel-ops.c   |   9 +
+>>   include/sysemu/hvf_int.h    |  10 +-
+>>   meson.build                 |   1 +
+>>   target/arm/hvf/hvf.c        | 794 ++++++++++++++++++++++++++++++++++++
+>>   target/arm/hvf/trace-events |  10 +
+>>   target/i386/hvf/hvf.c       |   5 +
+>>   7 files changed, 833 insertions(+), 1 deletion(-)
+>>   create mode 100644 target/arm/hvf/hvf.c
+>>   create mode 100644 target/arm/hvf/trace-events
+>
+>
+>> +int hvf_arch_init_vcpu(CPUState *cpu)
+>> +{
+>> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+>> +    CPUARMState *env = &arm_cpu->env;
+>> +    uint32_t sregs_match_len = ARRAY_SIZE(hvf_sreg_match);
+>> +    uint32_t sregs_cnt = 0;
+>> +    uint64_t pfr;
+>> +    hv_return_t ret;
+>> +    int i;
+>> +
+>> +    env->aarch64 = 1;
+>> +    asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
+>> +
+>> +    /* Allocate enough space for our sysreg sync */
+>> +    arm_cpu->cpreg_indexes = g_renew(uint64_t, arm_cpu->cpreg_indexes,
+>> +                                     sregs_match_len);
+>> +    arm_cpu->cpreg_values = g_renew(uint64_t, arm_cpu->cpreg_values,
+>> +                                    sregs_match_len);
+>> +    arm_cpu->cpreg_vmstate_indexes = g_renew(uint64_t,
+>> + arm_cpu->cpreg_vmstate_indexes,
+>> +                                             sregs_match_len);
+>> +    arm_cpu->cpreg_vmstate_values = g_renew(uint64_t,
+>> + arm_cpu->cpreg_vmstate_values,
+>> +                                            sregs_match_len);
+>> +
+>> +    memset(arm_cpu->cpreg_values, 0, sregs_match_len * 
+>> sizeof(uint64_t));
+>> +
+>> +    /* Populate cp list for all known sysregs */
+>> +    for (i = 0; i < sregs_match_len; i++) {
+>> +        const ARMCPRegInfo *ri;
+>> +        uint32_t key = hvf_sreg_match[i].key;
+>> +
+>> +        ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
+>> +        if (ri) {
+>> +            assert(!(ri->type & ARM_CP_NO_RAW));
+>> +            hvf_sreg_match[i].cp_idx = sregs_cnt;
+>> +            arm_cpu->cpreg_indexes[sregs_cnt++] = cpreg_to_kvm_id(key);
+>
+> So this hash ...:
+>
+>     /*
+>      * Convert a truncated 32 bit hashtable key into the full
+>      * 64 bit KVM register ID.
+>      */
+>     static uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+>     {
+>         uint64_t kvmid;
+>
+>         if (cpregid & CP_REG_AA64_MASK) {
+>             kvmid = cpregid & ~CP_REG_AA64_MASK;
+>             kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM64;
+>         } else {
+>             kvmid = cpregid & ~(1 << 15);
+>             if (cpregid & (1 << 15)) {
+>                 kvmid |= CP_REG_SIZE_U64 | CP_REG_ARM;
+>             } else {
+>                 kvmid |= CP_REG_SIZE_U32 | CP_REG_ARM;
+>             }
+>         }
+>         return kvmid;
+>     }
+>
+> ... just happens to work the same way for HVF?
 
-Yeh, some comments in 5/6 and 6/6 can also make full use of 80 char 
-width after search-replace effect.
 
-regards,
-Harsh
+It never feeds into HVF - we only use these values as unique identifiers 
+inside QEMU, no? See write_cpustate_to_list() and 
+write_list_to_cpustate() for reference.
 
-> Stefan
+
+Alex
+
+

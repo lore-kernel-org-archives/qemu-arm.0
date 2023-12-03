@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2329565ejb;
-        Sun, 3 Dec 2023 13:34:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHpTWsws9q6rIpWmPjK/rTU8ieSKnSOOM6pPtKFAhxmmike5NkuzHNshNXO3BWjTDWcpzIE
-X-Received: by 2002:a05:6808:bcc:b0:3b8:b063:8248 with SMTP id o12-20020a0568080bcc00b003b8b0638248mr3729946oik.74.1701639258694;
-        Sun, 03 Dec 2023 13:34:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701639258; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2329577ejb;
+        Sun, 3 Dec 2023 13:34:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFOdB5t/4U9QTwT5bTqUPm3DlVwblmEq+XhiQuB5+SYaDm02tif0fT7UXs/RdVagv0Sazvw
+X-Received: by 2002:a05:620a:6013:b0:76f:1a6b:571 with SMTP id dw19-20020a05620a601300b0076f1a6b0571mr4376329qkb.27.1701639260963;
+        Sun, 03 Dec 2023 13:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701639260; cv=none;
         d=google.com; s=arc-20160816;
-        b=pzg9gQ1A79mh8rxFYmGRaQBE/r/DJ12+PkjigSan0uM+Rst4DQnFvm/IqqBeEAsO+b
-         STvpLh8XB+SnsPGkGcPNEcZwoY1shId0sGHeakS7z60cniY3FbBY9ba3WQQXqYXXeZvt
-         +UjCxgGddNYwzFuFZp5f/6nf1TTkpo+PffHWyUXIAGlIMWqaJ+sZGzLQ00M71+D3M9b8
-         m/AoqvBVFEImQXYyamKDibnvDpuowxHpZNavhghdsdyYeCo5jRzF7pevmoNT668W1Ge7
-         rMUflqivKdepqL6YXVgWnl9Xu74nIENRkWcnn2Zhx0IPv2mHVw7odxyIL4qKENBUoLU1
-         ikfA==
+        b=CaXOfGqNsRu5WduQCpsf334kwXrq2VuKMRpuHTi7ebokc9fvm7+VahjWTtEkBRqMBe
+         lHm/BHsBpgQlho7QT/C44Vlq9QgDvqKyyAmZMxCNqdK8sXb+hG2Mw3JYas/u2iDZYfzP
+         vSB50c1hjKNVftmZPEnFr8uabMlFQC+nEwe+CbDsOP+mYXcGi+xAYHtsHfZW46HKCyiD
+         Vs7QJsXwpOBonaNPY53/Kd6grjGq6xHuqJhodp33I3gwVnrTsCN5zqpQI2YDbeaX+fep
+         vVDGJx1OIoW7TaZK9FhUqKk9X8+f23H9Gqlbo4Hu7klEPM0HSJWY2VGDqfuYmzlovoJt
+         vj/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=y/krSYU1BfE52MIIAgN9xYHAgzoYPsQ2UC+lvFrcJE0=;
+        bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=LYo6rGiRg5acjc0u5lbqWDoV+kSv2C091g8EZLSNSQ/m+SQmCd9dGh/D1uZ3eWAOqo
-         9KRypIwtBQ9geFwl7CXy3NJIWBHIELaHSvLvMc+MAzgsM5h95nm1PQs7cWFVkEDIZsvf
-         9Go5xaa/sI5d8RUMC1sYcidMUpDkDqkntUk7xI7FsJ0TxLpFeBXPYpoS7Xfeo0T/zTx3
-         3K9zXzL/RGkW6VsBRGuMAlIE2Bl5+MduCuHKyvd1aQ1rGNDDKNaNfknBDpCfcPu/MOE+
-         i5bT4x3aTYiQ/ZNjzQmcSbZqEklmd/JwbQXtDmZRWynAvrFHWj47XkzJ+W+Le7LDAfMZ
-         9b2A==
+        b=D71eNVAEwWQcL/u/3QOgPYkjxRlqgpBZmoBX+YLT2zGt9DwqJA0lhUqwr9iEn9NrhY
+         20T5vmg0yRmvQE/HU9jaz28bjh5mxyq82KMnq2W7tyedeqYljz+v0bjW28hXbc8wtzVD
+         xrfrKPK7lwltBk3/5e2dkVNloH8MU7it+ljPfIikCJkTvwqKjMV38JKc3zQUVIw3grRG
+         wTnbSwGTQ8KG5KSxiVzeRwPGhlkMA5Tsux/3bzitu7epzaxDX8Nqnsu6WiVdx8yvs7lM
+         rJn4ueQUw4twdxWyYYk6pSpSfgdur4RJITELT/fViHJMmKq9u0Bw9Ywn76KUHFFVhzKJ
+         zIjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="QgDPIid/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JZQcGgNJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bn29-20020a05620a2add00b0077d77cca35fsi7639107qkb.526.2023.12.03.13.34.18
+        by mx.google.com with ESMTPS id de7-20020a05620a370700b0077f07aa2ed0si2132015qkb.575.2023.12.03.13.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:34:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 13:34:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="QgDPIid/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JZQcGgNJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9u2E-00022z-M2; Sun, 03 Dec 2023 16:29:54 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9u2F-00023g-5Y; Sun, 03 Dec 2023 16:29:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u2A-0001gb-VB; Sun, 03 Dec 2023 16:29:50 -0500
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ id 1r9u25-0001Xd-VU; Sun, 03 Dec 2023 16:29:46 -0500
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u29-0005Xp-8G; Sun, 03 Dec 2023 16:29:50 -0500
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-daf7ed42ea6so2000198276.0; 
- Sun, 03 Dec 2023 13:29:47 -0800 (PST)
+ id 1r9u24-0005WP-FB; Sun, 03 Dec 2023 16:29:45 -0500
+Received: by mail-yb1-xb2a.google.com with SMTP id
+ 3f1490d57ef6-da7ea62e76cso2173423276.3; 
+ Sun, 03 Dec 2023 13:29:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701638987; x=1702243787; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701638983; x=1702243783; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=y/krSYU1BfE52MIIAgN9xYHAgzoYPsQ2UC+lvFrcJE0=;
- b=QgDPIid/lDeYY31sxAj7V/uWr6WIO6NqX7gH8JH+AiG8cmHZ7LK87eIu7796523nJd
- j6ADKHOfuC776+OPJZx0kJlAvCpiQXXMeEBihVZAsFm0hOC4eKaM7ULXN+P/fPRDxIrQ
- 0TsCUfMxC21vClqcVdcsB3kbTDI+oooLdyZEbl3iA2EbXAy9FFL7pEHhNimF/J4ssmMK
- Nt7iugrH+QdNvnqoq7HOwokcMY+/VbxyQAVpbcjBolyeHX1zISO/In3Ri1YsrO48SLOQ
- 5dOE6grP2z9R2kwm5ogAsxodknlnRJhLlrSOJIFLEpBJF4n/O9eIX2Bc0SFfqUPz/0To
- zMCw==
+ bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
+ b=JZQcGgNJGkZ40inncOzr+0iVYEdE6ggHiXHhvHWqPd5zobWRxPAXb59iQWcJ7F6cfI
+ QgPZ0LcB3Dsk7T4iChW6I+mp/24OruWWWbPmV4FyeOlJYli+YTXQp/QuYsWPYIqUoNoe
+ fRtHkhdIRk1oiJEbEiO7/zumMbEZuskBHIpP8TWogwrLzQvgMooejhYuxCC3irzAKteo
+ CficW6XWEh1AN4b9auSwU/DePx8+I419lL3ssQm6DT7/SNZ8KH1TwQWDpWd1HipX79W7
+ 6MF4C0jIA/nACxRa6FxDArBjnR/TQr2QjvG+gJZGB3kkQVE2l6BBiHuuRrbUIRJp4dO6
+ 6ntw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701638987; x=1702243787;
+ d=1e100.net; s=20230601; t=1701638983; x=1702243783;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=y/krSYU1BfE52MIIAgN9xYHAgzoYPsQ2UC+lvFrcJE0=;
- b=lwqKzp4Pmyw45kLaUtDetRnwF3/W0YpWVuo95+1+qKX+h9BYzoi67i7v2hw8mmLmUO
- JDhHt6NtBb6HGiAdf6D9c1wbDHlJa3GUDqnUpfulTm/VHNBbNuFoRV8xfVKHRjBznO46
- g4zep2ktLHlyJU3pdW7pEnrpQ/MonVlMuBV4giJnL0QZCF1dkC/6lInhUwaCnHCxcS6g
- j844opdnaLSJKWJe9+mx8hGtRiQ9ehmlOdsUEFJYmz16muqZnaXYDmWEtyf/vNCh6YlG
- rLDplZhpo9oEzLrQw/3HyTm6LVbLvnR8MuxV76u7cDUeUGcdnkhU0z/hnwaOkIoDRUfW
- 4Hyw==
-X-Gm-Message-State: AOJu0YxvOUS7pJrfLua+K9g7pqEyvaRD7KlU5HNAVpsUH6KiBEmNbGmZ
- QsF1i4jp3OD+/mp0zpChuANnd8PTA5iOBw==
-X-Received: by 2002:a25:ca03:0:b0:db7:dacf:61f6 with SMTP id
- a3-20020a25ca03000000b00db7dacf61f6mr1998546ybg.72.1701638987166; 
- Sun, 03 Dec 2023 13:29:47 -0800 (PST)
+ bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
+ b=DXg5yCYvWz4CLwNr91WG4hfvjCChs8hXqTMB6Bh62yg1vvz5XPKKFDqK5GRjIPU4z3
+ zQOvT3yYiVFE/uxCJXeEd/7zkS7kNnY3m1ov1gFJrTFw2IzzGaYPXwQ3fWTc4YhETA6G
+ qYhR0nPAEUL+8d28vi4RbR5ihagLeU6vROl1Nc3DxXExwHWKYp+hEE4yMC5ssWNCff4U
+ EFPf2W9esIZ12K7gWPegqebhbXTg1GRQXvd8Vx00bNRf3H8nfzIsSS1BomJVTWPjqpk6
+ 2gNvJS++jRD06w3EQOWB+VMSaSaTb5GaI79ygS2aq27aQjXjCS8DuUVgIG81wFzpd2vS
+ 81nQ==
+X-Gm-Message-State: AOJu0YxjaHMokGOmatqVGVSbSRlGxA2vUypIp4RA2cRkfHh4oVUZiySP
+ kagSuIhIfwWAWjfIU6hrs3bo8EfuFv4Kbg==
+X-Received: by 2002:a25:2182:0:b0:da0:b36c:1af1 with SMTP id
+ h124-20020a252182000000b00da0b36c1af1mr1654545ybh.62.1701638982999; 
+ Sun, 03 Dec 2023 13:29:42 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.46
+ c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:29:46 -0800 (PST)
+ Sun, 03 Dec 2023 13:29:42 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 37/45] Add mailbox tests tags. Part 1
-Date: Sun,  3 Dec 2023 15:28:57 -0600
-Message-Id: <20231203212905.1364036-38-sergey.kambalin@auriga.com>
+Subject: [PATCH 33/45] Connect RNG200, PCIE and GENET to GIC
+Date: Sun,  3 Dec 2023 15:28:53 -0600
+Message-Id: <20231203212905.1364036-34-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203212905.1364036-37-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203212905.1364036-33-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-2-sergey.kambalin@auriga.com>
@@ -132,14 +132,10 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-31-sergey.kambalin@auriga.com>
  <20231203212905.1364036-32-sergey.kambalin@auriga.com>
  <20231203212905.1364036-33-sergey.kambalin@auriga.com>
- <20231203212905.1364036-34-sergey.kambalin@auriga.com>
- <20231203212905.1364036-35-sergey.kambalin@auriga.com>
- <20231203212905.1364036-36-sergey.kambalin@auriga.com>
- <20231203212905.1364036-37-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=serg.oker@gmail.com; helo=mail-yb1-xb35.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
+ envelope-from=serg.oker@gmail.com; helo=mail-yb1-xb2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -148,241 +144,77 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: miF/klfieW7U
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6dn5WOYBHI4h
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.h | 195 +++++++++++++++++++++++++++++++++-
- 1 file changed, 190 insertions(+), 5 deletions(-)
+ hw/arm/bcm2838.c                     | 19 +++++++++++++++++++
+ include/hw/arm/bcm2838_peripherals.h |  2 ++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
-index 8acc4bd2ff..04472fe23d 100644
---- a/tests/qtest/bcm2838-mailbox.h
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -147,13 +147,21 @@
- /* Used to test stubs that don't perform actual work */
- #define DUMMY_VALUE 0x12345678
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+index 89cd9d5d8c..83f84b22ad 100644
+--- a/hw/arm/bcm2838.c
++++ b/hw/arm/bcm2838.c
+@@ -210,6 +210,10 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->dwc2), 0,
+                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DWC2));
  
--REG32(MBOX_WRITE_REG, 0)
-+REG32(MBOX_WRITE_REG,          0)
- FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
--FIELD(MBOX_WRITE_REG, DATA, 4, 28)
-+FIELD(MBOX_WRITE_REG, DATA,    4, 28)
++    /* Connect RNG200 to the interrupt controller */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->rng200), 0,
++                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_RNG200));
++
+     /* Connect DMA 0-6 to the interrupt controller */
+     for (int_n = GIC_SPI_INTERRUPT_DMA_0; int_n <= GIC_SPI_INTERRUPT_DMA_6;
+          int_n++) {
+@@ -232,6 +236,21 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out(dma_9_10_irq_orgate, 0,
+                           qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DMA_9_10));
  
--REG32(MBOX_SIZE_STAT, 0)
--FIELD(MBOX_WRITE_REG, SIZE, 0, 30)
--FIELD(MBOX_WRITE_REG, SUCCESS, 30, 1)
-+REG32(MBOX_SIZE_STAT,          0)
-+FIELD(MBOX_SIZE_STAT, SIZE,    0, 30)
-+FIELD(MBOX_SIZE_STAT, SUCCESS, 30, 1)
++    /* Connect PCIe host bridge to the interrupt controller */
++    for (n = 0; n < BCM2838_PCIE_NUM_IRQS; n++) {
++        int_n = GIC_SPI_INTERRUPT_PCI_INT_A + n;
++        sysbus_connect_irq(SYS_BUS_DEVICE(&ps->pcie_host), n,
++                           qdev_get_gpio_in(gicdev, int_n));
++        bcm2838_pcie_host_set_irq_num(BCM2838_PCIE_HOST(&ps->pcie_host), n,
++                                      int_n);
++    }
 +
-+REG32(SET_DEVICE_POWER_STATE_CMD,        0)
-+FIELD(SET_DEVICE_POWER_STATE_CMD, EN,    0, 1)
-+FIELD(SET_DEVICE_POWER_STATE_CMD, WAIT,  1, 1)
++    /* Connect Gigabit Ethernet controller to the interrupt controller */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 0,
++                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_A));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 1,
++                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_B));
 +
-+REG32(GET_CLOCK_STATE_CMD,        0)
-+FIELD(GET_CLOCK_STATE_CMD, EN,    0, 1)
-+FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
+     /* Pass through inbound GPIO lines to the GIC */
+     qdev_init_gpio_in(dev, bcm2838_gic_set_irq, GIC_NUM_IRQS);
  
- typedef struct {
-     uint32_t size;
-@@ -176,6 +184,183 @@ typedef struct {                                                        \
-     };                                                                  \
- } TypeName
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 1cfcf5dcce..cdeb892f04 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -17,6 +17,8 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/gpio/bcm2838_gpio.h"
  
-+DECLARE_TAG_TYPE(TAG_GET_FIRMWARE_REVISION_t,
-+    struct {},
-+    struct {
-+        uint32_t revision;
-+    });
++#define GENET_OFFSET            0x1580000
 +
-+DECLARE_TAG_TYPE(TAG_GET_FIRMWARE_VARIANT_t,
-+    struct {},
-+    struct {
-+        uint32_t variant;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_BOARD_REVISION_t,
-+    struct {},
-+    struct {
-+        uint32_t revision;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_ARM_MEMORY_t,
-+    struct {},
-+    struct {
-+        uint32_t base;
-+        uint32_t size;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_VC_MEMORY_t,
-+    struct {},
-+    struct {
-+        uint32_t base;
-+        uint32_t size;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_SET_DEVICE_POWER_STATE_t,
-+    struct {
-+        uint32_t device_id;
-+        uint32_t cmd;
-+    },
-+    struct {
-+        uint32_t device_id;
-+        uint32_t cmd;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_CLOCK_STATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t cmd;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_CLOCK_RATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t rate;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_MAX_CLOCK_RATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t rate;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_MIN_CLOCK_RATE_t,
-+    struct {
-+        uint32_t clock_id;
-+    },
-+    struct {
-+        uint32_t clock_id;
-+        uint32_t rate;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_CLOCKS_t,
-+    struct {},
-+    struct {
-+        uint32_t root_clock;
-+        uint32_t arm_clock;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_TEMPERATURE_t,
-+    struct {
-+        uint32_t temperature_id;
-+    },
-+    struct {
-+        uint32_t temperature_id;
-+        uint32_t temperature;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_MAX_TEMPERATURE_t,
-+    struct {
-+        uint32_t temperature_id;
-+    },
-+    struct {
-+        uint32_t temperature_id;
-+        uint32_t temperature;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_ALLOCATE_BUFFER_t,
-+    struct {
-+        uint32_t alignment;
-+    },
-+    struct {
-+        uint32_t base;
-+        uint32_t size;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_RELEASE_FRAMEBUFFER_t,
-+    struct {},
-+    struct {});
-+
-+DECLARE_TAG_TYPE(TAG_BLANK_FRAMEBUFFER_t,
-+    struct {
-+        uint32_t on;
-+    },
-+    struct {
-+        uint32_t on;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_FB_PHYS_WIDTH_t,
-+    struct {},
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_TEST_FB_PHYS_WIDTH_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_SET_FB_PHYS_WIDTH_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_GET_FB_VIRT_WIDTH_t,
-+    struct {},
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_TEST_FB_VIRT_WIDTH_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
-+
-+DECLARE_TAG_TYPE(TAG_SET_FB_VIRT_WIDTH_t,
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    },
-+    struct {
-+        uint32_t width;
-+        uint32_t height;
-+    });
- 
- int mbox0_has_data(void);
- void mbox0_read_message(uint8_t channel, void *msgbuf, size_t msgbuf_size);
+ /* SPI */
+ #define GIC_SPI_INTERRUPT_MBOX         33
+ #define GIC_SPI_INTERRUPT_MPHI         40
 -- 
 2.34.1
 

@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2371495ejb;
-        Sun, 3 Dec 2023 15:48:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFpdxWsEZvUTqPHNS/dAuFeq9AZ6ei8p5+6eBfLFGnzoFD6Aym63/TjMdhzaO3a4W+W4M/H
-X-Received: by 2002:a05:622a:13d0:b0:423:85a0:fb79 with SMTP id p16-20020a05622a13d000b0042385a0fb79mr4956670qtk.3.1701647287468;
-        Sun, 03 Dec 2023 15:48:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647287; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2371520ejb;
+        Sun, 3 Dec 2023 15:48:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFuMtsGNSp1LDkWbb7wtfNWGqG2nPldp4OixqZ4QZZVTkCb51Wv4zFgUAGkwMSl/V06jGdB
+X-Received: by 2002:a05:620a:190e:b0:77e:fba3:9383 with SMTP id bj14-20020a05620a190e00b0077efba39383mr4609808qkb.101.1701647292892;
+        Sun, 03 Dec 2023 15:48:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647292; cv=none;
         d=google.com; s=arc-20160816;
-        b=u1iXLB9njxNZFg5QWLmZ0PaqYv5RyjDt4WQVmtrkGYPd5upvK46d6AjYzYeDu7hxDS
-         YxtuAmJomoRQtvJ94dxxvmomQkpKXfR3zPTmYI/ehGqrjRLz4JsQZrYGAAFc2UThWmYY
-         zTcpUhjlhBFv5urqiYGp6VM4AmRpzePMMV1NY5IWgZtSD//UhL974LuY3TGz5Zn+hw9+
-         XyM4PfxEW2LsFZQF6aeWQNHqkb4wcdHyYKHxmydBdGNlg0T32GZ0GXSqLpmkVm33DLMW
-         DIf42KjbvhzI+aM1ZzNqxTVhTkjQ+kZYOim5HhGllijSaRwBjIfIHWYXdKp7qAQ1Cei4
-         7Vzw==
+        b=Fap9pecQFXOmRxhJtwZHmDz+VGT5kEjUC/wv8Dz7DdyCj3bJU3O6kFawyLdipZK07t
+         JxmAQOFiIrS7gjKhFIFr7HNvI8Bx8glZK+Wvg+SIGN2aLQbswIr9Tbdwz0Mwp5JZBw5b
+         IKZtzlo3uzRsoGzqyygLducSpssTEpWDLnZrloDgOngWWsTZ1Ak0qWw+uqdYFjC4ODTp
+         vBLp5WEgqX6NxR2MenJ3l7pyjP4sI4fWf4nvcdFwDlNNXfR2ZUk1W1Dzn/NNvCtVXaIw
+         uRZQkTZXrWEDqhg7PNjwdcFaq8YjS5Nq7cMszcIyNuy8PgBt/rzbiONsMD/2L6en9qvT
+         yZ0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=pjKhO+PzqqrLoVjDzrdEJqubBSeVITy6r+qEgUKg3Ec=;
+        bh=fVH9O9un+zwSeBPQSL0IeMDZWUWBtxU0cSyYzIJS41g=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=kAw8N8GUWOOoPc4JtPb5mWFGlQo7KDUecNDNviy4yfglsr6UB4XJ9hCZS+Fvtwpz+A
-         YJ7bzO9omXLqVFccNIeEQ08lnckkZ8/gF/Ds2MtA7LNqMi39H/dctQy77GQJpxgiesWx
-         6+5FA6ZT4mdf4z5Zr9rKDi85M2ovBTyGdb3j5B1E0Jby4uy6dYFnmPOnNhXDS77mbnpR
-         WcbQOoQdSDChbJIV0cnllOyHSPEY1TuqzWbgd0/nHJlrGO0FKEBsDUqfCRZj1x9rjiSA
-         5ORQrB6dy6LEqY42MOHrMgbSotXy+h9MLyWsXg7AZYp8RLSnLHb63/UWeE9TPLB1u6rH
-         OgrA==
+        b=MBpuBrOeDcuscD68cPT/KG0MeeXeAmHY9wcrvjYQX3YYhPF1juX9Whi43DxYrN9mHO
+         K6d/qckXjPK8a7ydbSz2VoO80HzveAx8M8jukfUm7hUmiH21xItCdnOvU0sm/xQNuYG2
+         SA8WHLX/64WqkjOmKsmqD+XFWfazMmmZkmZEGr6RJVUHP7xRsOGZJXd/6C/skj1A3opD
+         VsEXU8cK0AKUjqZtfXTsO8a0+aUUC7m9xTfO47fG6baB+oSRc4Ruxe+5lh4c/QItu1hc
+         wpnW85agHVQpab5UunYV2nJ7Q22H0rZk7wt4VnhvD3DTW8blo5/H0BuoqNllHKtdtlx4
+         5TCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=artuqTEQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iTKoSINs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m18-20020ac86892000000b0041cc2ac0f45si8016802qtq.72.2023.12.03.15.48.07
+        by mx.google.com with ESMTPS id os41-20020a05620a812900b0077f01ebbf45si3253487qkn.465.2023.12.03.15.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:48:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 15:48:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=artuqTEQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=iTKoSINs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9w82-0000o6-T9; Sun, 03 Dec 2023 18:44:03 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9w6l-00075D-Qr; Sun, 03 Dec 2023 18:42:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w7N-0007Z1-3t; Sun, 03 Dec 2023 18:43:29 -0500
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ id 1r9w6d-0006u2-Hk; Sun, 03 Dec 2023 18:42:35 -0500
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w7E-0002u8-5z; Sun, 03 Dec 2023 18:43:20 -0500
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-5d6b9143782so21063187b3.0; 
- Sun, 03 Dec 2023 15:43:11 -0800 (PST)
+ id 1r9w6b-0002kC-GN; Sun, 03 Dec 2023 18:42:35 -0500
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-5c85e8fdd2dso42792937b3.2; 
+ Sun, 03 Dec 2023 15:42:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646991; x=1702251791; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646951; x=1702251751; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pjKhO+PzqqrLoVjDzrdEJqubBSeVITy6r+qEgUKg3Ec=;
- b=artuqTEQXqK6HQDjiRX4EQTeJNoRgKtIFrIXEMkvidWlwsXmIPQqdsDCbC2m24uYPO
- y7v43TfnBNt9kX54BaTNh8uRz+hSZhdkmVlaeRkJUfg9pNLf+NE9JgFBaCEPkOTv2w1m
- v9L8XMN26KfyWxuFc1K4+QtDNgqXCnL5F+uCTpGD9bfixNWlwnEZpYbkj3dnN2xVaGAB
- 6Ig0G/jJlbzrAnWr31UqErqQTJSzGjXDnYLPybomfkHp9CWtR5Cyk92xr4X/bMglUmtj
- PcSAhfozNQlMxTCvcPHAqDNHRPguclLNLG+LmJU38sdas/+XxXjzqP13eHCWvpQNH1Xz
- e5Jw==
+ bh=fVH9O9un+zwSeBPQSL0IeMDZWUWBtxU0cSyYzIJS41g=;
+ b=iTKoSINs9m2xIKArXNUQY7OT4n8sG5MIOE3eRGpDV/4mBNoGWEzf2vfvr/cqsbcMeL
+ vPkShiY9cbeOnijbvu6HsbZ2RbXg+U1IMFZ2Yq7t/uY9rDRMWfaUmlh92OGtKnHWB5QZ
+ QpxUVuzo48ccK2IFVjUbPb+wNDjc8hg8vn3QTUdbrAtzVtmbxZ5py6UBXpvqzZujHUig
+ E35PnSl1Fcp6M5rsoCYuRE5LIToUBXE9K23H/XhAl0qJWDRcy4e9xOwa/8ZdwokJQjiB
+ KoQwdAMthFXtde1cd8hSIEOUX18PNgCh1EH+90TxPZ5woxY4WaextO6kcmPzcnqgujnh
+ TRww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646991; x=1702251791;
+ d=1e100.net; s=20230601; t=1701646951; x=1702251751;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pjKhO+PzqqrLoVjDzrdEJqubBSeVITy6r+qEgUKg3Ec=;
- b=dytRGiHcAlkGFgSasGyhDeGewZFWgRBrJ+Bwt8sGKxj6aGDwU3NtiYtfjPXmAS/Z6G
- pifC25JuGqUS+Snp4rsK4VnqULHASg4fRZzVyg74viBAmDTEttLZR1z1ZiVsbNoWTusp
- 175gOpmIFEPLyejbu2cP/q9LW11cwkI9MsDe0GNucueOx4wCVojwZY5ZZjxfoMqJfLt5
- fv5mlh3e/PDhC/nHSHovtXCZvl1uBp1yzICQz8nTKv4HnBirgRDe63fEQEVQyKCZYwsu
- xsi7/gfyPjVYhBMU3EDdoY6cC6CAlTISNHa3wK0aiWWR4Y8Rb2mEb3sU+fNCBzTXxb3J
- MQdg==
-X-Gm-Message-State: AOJu0YzMzY9vvwVNfwlszKfXK0rJz68DDKuGxsjEgzvizRScRa9QCvoy
- RLo4DHdZuS1po9FnHm2XnGgVnm/3RpweAA==
-X-Received: by 2002:a81:4e82:0:b0:5d7:34a4:3143 with SMTP id
- c124-20020a814e82000000b005d734a43143mr2043034ywb.12.1701646990878; 
- Sun, 03 Dec 2023 15:43:10 -0800 (PST)
+ bh=fVH9O9un+zwSeBPQSL0IeMDZWUWBtxU0cSyYzIJS41g=;
+ b=hKqtLwxZp7wdgcRp1Nsh+UWdoCOLVXVSsLnlophV8QD4aE+SEGCCQE7bSq4p7y6mYI
+ AtdvI6wNxkXhVyCDEnFjAkbhoKmWjv67xx5j2AV5JqBHMAwTrHFpRHIwdPKuegOTs29T
+ DFN1y8SDjIQtMoaMCPFIsNBxRULMNyIxE7j+bBqeUIyn8izL3gac5cdXN/yW7cC6yzE0
+ rJSu7OG9ohWM4ayJbMiDW40hTxteThvi6P9uf4MCDg51wFtW7kkHXPj7bCPSeJX4VviR
+ CoVFK7mpbywioSAaBmgUKCuTMV/CHB9iMBfnvMtSu3Ds/9TRhkSShfSFAn/WFgYyf9uU
+ 2WtA==
+X-Gm-Message-State: AOJu0YzJ1gr5cpkly085upEkEzB4h29BOUTRgWXRX7Y1ao7xRP3C6uwJ
+ zGz+epz81rYYTcmY0PE1XqF3/BhQfOyk5Q==
+X-Received: by 2002:a05:690c:f85:b0:5d7:1940:dd60 with SMTP id
+ df5-20020a05690c0f8500b005d71940dd60mr2083145ywb.54.1701646951333; 
+ Sun, 03 Dec 2023 15:42:31 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.43.10
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:43:10 -0800 (PST)
+ Sun, 03 Dec 2023 15:42:31 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 44/45] Append added properties to mailbox test
-Date: Sun,  3 Dec 2023 17:42:12 -0600
-Message-Id: <20231203234213.1366214-45-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 13/45] Add memory region for BCM2837 RPiVid ASB
+Date: Sun,  3 Dec 2023 17:41:41 -0600
+Message-Id: <20231203234213.1366214-14-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,87 +111,73 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5uFzXGqGX0IZ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tlu8mqszShsC
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mbox-property-test.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
+ hw/arm/bcm2838_peripherals.c         | 3 +++
+ include/hw/arm/bcm2838_peripherals.h | 3 ++-
+ include/hw/arm/raspi_platform.h      | 1 +
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
-index 1b4a2ed9cb..3a2e7f9194 100644
---- a/tests/qtest/bcm2838-mbox-property-test.c
-+++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -269,6 +269,12 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
-     tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
- }
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+index 196fb890a2..d3b42cf25b 100644
+--- a/hw/arm/bcm2838_peripherals.c
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -182,6 +182,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
  
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCKS) {
-+    g_assert_cmphex(tag->response.value.root_clock, ==, CLOCK_ID_ROOT);
-+    g_assert_cmphex(tag->response.value.arm_clock, ==, CLOCK_ID_ARM);
-+}
+     object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
 +
- /*----------------------------------------------------------------------------*/
- DECLARE_TEST_CASE(GET_TEMPERATURE) {
-     g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-@@ -535,17 +541,19 @@ DECLARE_TEST_CASE(GET_COMMANDLINE) {
-     /* No special checks are needed for this test case */
++    /* BCM2838 RPiVid ASB must be mapped to prevent kernel crash */
++    create_unimp(s_base, &s->asb, "bcm2838-asb", RPI4B_ASB_OFFSET, 0x24);
  }
  
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_THROTTLED) {
-+    g_assert_cmpint(tag->response.value.throttled, ==, 0);
-+}
+ static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 0a87645e01..af085934c9 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -64,12 +64,13 @@ struct BCM2838PeripheralState {
+     MemoryRegion mphi_mr_alias;
+ 
+     SDHCIState emmc2;
+-    UnimplementedDeviceState clkisp;
+     BCM2838GpioState gpio;
+ 
+     OrIRQState mmc_irq_orgate;
+     OrIRQState dma_7_8_irq_orgate;
+     OrIRQState dma_9_10_irq_orgate;
 +
- /*----------------------------------------------------------------------------*/
- DECLARE_TEST_CASE(GET_NUM_DISPLAYS) {
-     g_assert_cmpint(tag->response.value.num_displays, ==, 1);
- }
++    UnimplementedDeviceState asb;
+ };
  
- /*----------------------------------------------------------------------------*/
--DECLARE_TEST_CASE(SET_PITCH) {
--    /* No special checks are needed for this test case */
--}
--DECLARE_TEST_CASE_SETUP(SET_PITCH) {
--    tag->request.value.pitch = DUMMY_VALUE;
-+DECLARE_TEST_CASE(INITIALIZE_VCHIQ) {
-+    g_assert_cmpint(tag->response.value.zero, ==, 0);
- }
- 
- /*----------------------------------------------------------------------------*/
-@@ -571,6 +579,7 @@ int main(int argc, char **argv)
-     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
-     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
-     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_CLOCKS);
-     QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
-     QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
-     QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
-@@ -604,8 +613,9 @@ int main(int argc, char **argv)
-     QTEST_ADD_TEST_CASE(SET_OVERSCAN);
-     QTEST_ADD_TEST_CASE(GET_DMA_CHANNELS);
-     QTEST_ADD_TEST_CASE(GET_COMMANDLINE);
-+    QTEST_ADD_TEST_CASE(GET_THROTTLED);
-     QTEST_ADD_TEST_CASE(GET_NUM_DISPLAYS);
--    QTEST_ADD_TEST_CASE(SET_PITCH);
-+    QTEST_ADD_TEST_CASE(INITIALIZE_VCHIQ);
- 
-     return g_test_run();
- }
+ struct BCM2838PeripheralClass {
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 0db146e592..537fc6b4af 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -74,6 +74,7 @@ uint64_t board_ram_size(uint32_t board_rev);
+ #define DMA_OFFSET              0x7000   /* DMA controller, channels 0-14 */
+ #define ARBA_OFFSET             0x9000
+ #define BRDG_OFFSET             0xa000
++#define RPI4B_ASB_OFFSET        0xa000   /* BCM2838 (BCM2711) RPiVid ASB */
+ #define ARM_OFFSET              0xB000   /* ARM control block */
+ #define ARMCTRL_OFFSET          (ARM_OFFSET + 0x000)
+ #define ARMCTRL_IC_OFFSET       (ARM_OFFSET + 0x200) /* Interrupt controller */
 -- 
 2.34.1
 

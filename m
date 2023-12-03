@@ -1,156 +1,233 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp1023742ejb;
-        Fri, 1 Dec 2023 06:32:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFRjoa0mCjn0ktPpgQx1kcJfWh+SNoavc8ShQi202Fv5ilL1xT/bCUs04A9xRaysCYVYHz4
-X-Received: by 2002:ac8:5f13:0:b0:423:77e2:6fb6 with SMTP id x19-20020ac85f13000000b0042377e26fb6mr32671544qta.30.1701441144002;
-        Fri, 01 Dec 2023 06:32:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701441143; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2360134ejb;
+        Sun, 3 Dec 2023 15:13:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGlzhusjuuv/E2M65WvnCNkE3NduGubiIRay485O6j92IBaB0XsQ7F4CIEe0nULYVe+TebC
+X-Received: by 2002:a05:6358:7206:b0:16f:f398:1dd7 with SMTP id h6-20020a056358720600b0016ff3981dd7mr2683351rwa.29.1701645238356;
+        Sun, 03 Dec 2023 15:13:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701645238; cv=none;
         d=google.com; s=arc-20160816;
-        b=U/m9oFSM0R6tQXjPZqOunxvOKdhYW5nd10h3wZfzr0TDySyaHoZGg8hxoMY+vV3BCu
-         B7SbZIx5nIcdk9axYuX5tyimoMH41fqllczib6H6fsog0nafbH1uXewvjhLqcho008a4
-         d+wR/6OumKyNQILw6r8kJx2IiD8VVzQDWOP8zKElue57NnkpAuGI8+vJHVaKD327TWs4
-         oq9pXkZS0JXqv7aeknuTZZSoSqRfks1XwSZ9MzVWB+1rmQxO7JYREONR9ChfA5o/dp1D
-         nHGEsGTTi4VyA1eIlCTPIM8X7T0Hgozoqf3myb4dxb/C0Gp1/G+kZKbd+PuHGOC7dbjh
-         2jNQ==
+        b=cT5gGIKrqrbwLtgadBsTtpbBMjMBLL+qkDr7qzz6RH/dNhaP1sJUWgYi8VdfMKkz1m
+         WiumzGd20OPCqkzObCGJ+qOQqD3gFsP3HpXpsxxKiSaUePwN+g+b+yUwrDy1y/iWilgc
+         9Glwf8O0t/SYnuIOwgIJn5Nd/M3cGez3XsW0D/b9paaR8tMSPPjVVjvG+05E1TyD7wce
+         Wbd/VVw3tMSQOPuk1LQhCUrwEJPSP8VnuEM4QwbSqXkir0x1D5MDSEUIZgK9lvImZ6dS
+         1ExTaqrLdVKYmpCYxJrmBpevBDVsdgP+wypDitzQflgi6jyEggGYekT3Nge1ig/+gsJc
+         5b3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=lzQsYOZx1lby/03o6yhLAnKTrunXv93oPFAjodmUZ7Q=;
-        fh=o3lfIpO1LiWB5YaKx2qN0pZoVgkt08VAmJbZ6Wpmxfk=;
-        b=xJ0j5S03DKBRFCeAYdX/wRrXfr0Hz2ETNo0u10f8VRsdnqdUPpl4gRAJ0fslw0s958
-         MStbsuIXIZhJfhxFb17wEzYLM3a2TRY7vxdIWAhbaOItK3PKLNt3zLii99+soTZFjxWE
-         469VScDD57MjUfpIW1qDwARpMx3+iS9+bjd4RF62XVnBDvZGiumCtrmq3nGdQHnwxsRk
-         O8+MtEYsiVK20M3KRcqBMF7DV0k4J4mEnXCnZB8uG2ZNkazEC7XSfVS+UPq+JxA4dLva
-         XQTPe6USpf/vVwIgqgpRcd5R3TLyFfp7f85Lc27Ju7omMJE8L/emUrfgCTh2/88X0j+k
-         A2tQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=AddhGMlN52/YRv1w4anICuPDpCboCFFpiOkqpWi288Y=;
+        fh=EAfdOT7QKaCr63VZMncVOAz/x0cmxf4toYqRCJ9Km4E=;
+        b=bGTnjz3ihrBq39Jy78wP6HM+5/5jJlqdu966Ri+CouCCOeeEez1B7WE9AF6EQbXYwD
+         euz90qIZ2PRLxggJhfC5avxfy485wmKDQ5LCUzdBRSdfU1ck9Fe+5qUah1DQxzbnN2lZ
+         o7RAb69NxN+9HqcHDYaB/mn0pnSuglaT4b6kiII1xwIbCAy8C0S9oxSA1KUgguvcJgYL
+         iS2HjYZykaZkckwlpz/HbWyKSISkXfLikkGjczog4h1hExAGUCIKcfc+1y2u1roIfqY+
+         B9VN46ECS6QXLKSPXGVeIkegQDSMCJGY/Jgh8w4z5DkfCe9L2z3PswdlvirLWMoErkID
+         /sHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DbDilatH;
-       spf=pass (google.com: domain of kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id y11-20020a05622a164b00b00423e4453177si3483335qtj.691.2023.12.01.06.32.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Kl/wJYHY";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c7-20020ad44307000000b0067a98d42519si6336160qvs.33.2023.12.03.15.13.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Dec 2023 06:32:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 03 Dec 2023 15:13:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DbDilatH;
-       spf=pass (google.com: domain of kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-3127-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id A44EA1C20F54
-	for <alex.bennee@linaro.org>; Fri,  1 Dec 2023 14:32:23 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id EA4122575F;
-	Fri,  1 Dec 2023 14:32:22 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="DbDilatH"
-Received: from mail-lf1-x12d.google.com (mail-lf1-x12d.google.com [IPv6:2a00:1450:4864:20::12d])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4C1B410F3
-	for <kvm@vger.kernel.org>; Fri,  1 Dec 2023 06:32:16 -0800 (PST)
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-50bccc2e3efso2826897e87.0
-        for <kvm@vger.kernel.org>; Fri, 01 Dec 2023 06:32:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1701441134; x=1702045934; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lzQsYOZx1lby/03o6yhLAnKTrunXv93oPFAjodmUZ7Q=;
-        b=DbDilatHQBQcO1yJhbm354RNR5X9Y87QGZF4YZXStJ5M8CApPHf7qdIt96UO2QdcNK
-         +8jOpWLIge2Zqhyr6kFALbM22SJwBEDXCD1+fZqPGH0jqPrUhr+SWkcKXqhAIwT/LiYq
-         dWO7JQJyicRB+Drl9GMLaEADM4qtZCtYpuvu3hR7yXgTc+fF2pDPI4yZvpTZAtHzkFEZ
-         dg2MrMus7Qe30k6EvpeHNjM96Z3C5VdPwxVNld075skzBb+T3zJkYBPksMhC0NBt0N3b
-         Jm1tuNkRTwOQnVBNQYOznECfAjUO+Xm81QgG5iOE7yFtdhfMy0Jva3tUixhnXWUwauMv
-         8BWw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Kl/wJYHY";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r9veJ-00085b-AW; Sun, 03 Dec 2023 18:13:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r9veH-00084s-Hl
+ for qemu-arm@nongnu.org; Sun, 03 Dec 2023 18:13:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r9veF-0006ve-GH
+ for qemu-arm@nongnu.org; Sun, 03 Dec 2023 18:13:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1701645193;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AddhGMlN52/YRv1w4anICuPDpCboCFFpiOkqpWi288Y=;
+ b=Kl/wJYHYvY0sFMyzpgJJ5haVd97/giD1K/Da7lnsU4XlmrOzrczV8nLvPGIdPffU5u+P/M
+ 43fowZp+r4Gaf5W/7DOhzKQhILPVknjATAnDLc9WfCzHAf2Lazqk6AGE5WZdulxzSwqV/w
+ 0B3P7IyznCXRAZAaQxHAeYUs81/ijn0=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-98-qcFxQaCgNES5UPHziL8OHQ-1; Sun, 03 Dec 2023 18:13:12 -0500
+X-MC-Unique: qcFxQaCgNES5UPHziL8OHQ-1
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-2868fb54e3eso1321815a91.3
+ for <qemu-arm@nongnu.org>; Sun, 03 Dec 2023 15:13:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1701441134; x=1702045934;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lzQsYOZx1lby/03o6yhLAnKTrunXv93oPFAjodmUZ7Q=;
-        b=XtttBxr2hVKFJ6oIH5U2yf0vyC9+eHcnJp/niOE8lR290vVv/2Me5/SbtyLAW+OMPe
-         l1qTEzzx6Mq7guO+Id7PaIM/lXk8aklIeb9BOnz+esp5MNkWA1aHtEzeOfSF4PkxwpIc
-         ODfcV2Fr2bVdOlyZPCee0cYbNlcBGRykJ5zBbWHWSAKNavz0Xjcn/0SkCrYsjr03JO8S
-         q7mRF+hen5cqrBo/xY5jjjJuPkxEqvnqQIoOKQoEtvWxRjzo9qiboVhHLC7LW34Jv32n
-         NFgROMduTk6PmiJ0fmwhpD1Mz6HoSpbes5+niElhHYin76dH28qLSmgKaLnXEwdod5wG
-         Gu1Q==
-X-Gm-Message-State: AOJu0Yx5OrsTKiDgYfp/f+D5EGtAsZBsUh5jtmwr/I86XwAnhTcBlLsl
-	/GETfM7ZHPhqQ5pVm5bebSVvFg==
-X-Received: by 2002:a05:6512:1598:b0:50b:d763:fe35 with SMTP id bp24-20020a056512159800b0050bd763fe35mr1096852lfb.80.1701441134581;
-        Fri, 01 Dec 2023 06:32:14 -0800 (PST)
-Received: from m1x-phil.lan ([176.176.160.225])
-        by smtp.gmail.com with ESMTPSA id d9-20020a056000114900b00332e8dd713fsm4350612wrx.74.2023.12.01.06.32.13
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 01 Dec 2023 06:32:14 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	kvm@vger.kernel.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 2/2] target/arm/kvm: Use generic kvm_supports_guest_debug()
-Date: Fri,  1 Dec 2023 15:32:01 +0100
-Message-ID: <20231201143201.40182-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231201143201.40182-1-philmd@linaro.org>
-References: <20231201143201.40182-1-philmd@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1701645191; x=1702249991;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=AddhGMlN52/YRv1w4anICuPDpCboCFFpiOkqpWi288Y=;
+ b=nDcyUi8X+qaZTXGH9LVCKVUg2XvlZ6gaPQPiGbreOIh3zv1fXveLEzlP8fZfRFmkP6
+ 7tEXygl4ClAuGeUFF3fvEV/t+8XKpD/V6nOIsvjXG49xa9z6bjhbmNYXOxUmDE+7PjTo
+ rmm9SqJ9xMijH1o0Ndc0669DE2oDUrrfJgYdVLFNCv0YFCRdESO7WgnW5ijZi+oYi2g7
+ 2S+9sTKyWseKROGHtkp/xiBTHotitwNjFvyrjOC+u4zk7rLfD9SOA96uomb9syKygl7e
+ DBioCkGKwkLPSnwCsZ/QC6OJmXLkCnsCQWE0Q/wjrAC+x3gijfXSfXSRULX10/7kv9kf
+ Fojw==
+X-Gm-Message-State: AOJu0YyCr2PDqmWyKVwSy5USrWjB4ujAWMbgYSvGTPXhzrq5i3wnDhg9
+ QG2AZqR3nB1ZsQ5eifaxe3W2i6LqdWKhZCua+ITv64zm0fHGZhEiaODuuiRfsH90YmGFfWs0opT
+ D8/nCiwmgI8SG
+X-Received: by 2002:a17:90a:30f:b0:286:9bc6:c95b with SMTP id
+ 15-20020a17090a030f00b002869bc6c95bmr880575pje.2.1701645191393; 
+ Sun, 03 Dec 2023 15:13:11 -0800 (PST)
+X-Received: by 2002:a17:90a:30f:b0:286:9bc6:c95b with SMTP id
+ 15-20020a17090a030f00b002869bc6c95bmr880565pje.2.1701645191092; 
+ Sun, 03 Dec 2023 15:13:11 -0800 (PST)
+Received: from [192.168.68.51] ([43.252.115.3])
+ by smtp.gmail.com with ESMTPSA id
+ p7-20020a17090a348700b00280c285f878sm7252609pjb.55.2023.12.03.15.13.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 03 Dec 2023 15:13:10 -0800 (PST)
+Message-ID: <c9f68946-2824-48a5-a0a1-290d7ddba178@redhat.com>
+Date: Mon, 4 Dec 2023 09:13:00 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 2/9] machine: Introduce helper is_cpu_type_supported()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, b.galvani@gmail.com, strahinja.p.jankovic@gmail.com,
+ sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com,
+ nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, vijai@behindbytes.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com
+References: <20231129042012.277831-1-gshan@redhat.com>
+ <20231129042012.277831-3-gshan@redhat.com>
+ <fd8715af-ef1c-4ccc-b602-25776a56fc76@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <fd8715af-ef1c-4ccc-b602-25776a56fc76@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Xj7n2kdRu5qH
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W9rT0H6KLpbK
 
-Do not open-code the generic kvm_supports_guest_debug().
+Hi Phil,
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/kvm64.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+On 12/1/23 20:53, Philippe Mathieu-Daudé wrote:
+> On 29/11/23 05:20, Gavin Shan wrote:
+>> The logic, to check if the specified CPU type is supported in
+>> machine_run_board_init(), is independent enough. Factor it out into
+>> helper is_cpu_type_supported(). machine_run_board_init() looks a bit
+>> clean with this. Since we're here, @machine_class is renamed to @mc to
+>> avoid multiple line spanning of code. The comments are tweaked a bit
+>> either.
+>>
+>> No functional change intended.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>> ---
+>> v8: Move the precise message hint to PATCH[v8 3/9]        (Gavin)
+>> ---
+>>   hw/core/machine.c | 83 +++++++++++++++++++++++++----------------------
+>>   1 file changed, 45 insertions(+), 38 deletions(-)
+>>
+>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>> index bde7f4af6d..1797e002f9 100644
+>> --- a/hw/core/machine.c
+>> +++ b/hw/core/machine.c
+>> @@ -1387,13 +1387,53 @@ out:
+>>       return r;
+>>   }
+>> +static bool is_cpu_type_supported(const MachineState *machine, Error **errp)
+>> +{
+>> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+>> +    ObjectClass *oc = object_class_by_name(machine->cpu_type);
+>> +    CPUClass *cc;
+>> +    int i;
+>> +
+>> +    /*
+>> +     * Check if the user specified CPU type is supported when the valid
+>> +     * CPU types have been determined. Note that the user specified CPU
+>> +     * type is provided through '-cpu' option.
+>> +     */
+>> +    if (mc->valid_cpu_types && machine->cpu_type) {
+>> +        for (i = 0; mc->valid_cpu_types[i]; i++) {
+>> +            if (object_class_dynamic_cast(oc, mc->valid_cpu_types[i])) {
+>> +                break;
+>> +            }
+>> +        }
+>> +
+>> +        /* The user specified CPU type isn't valid */
+>> +        if (!mc->valid_cpu_types[i]) {
+>> +            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
+>> +            error_append_hint(errp, "The valid types are: %s",
+>> +                              mc->valid_cpu_types[0]);
+>> +            for (i = 1; mc->valid_cpu_types[i]; i++) {
+>> +                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
+>> +            }
+>> +
+>> +            error_append_hint(errp, "\n");
+>> +            return false;
+>> +        }
+>> +    }
+>> +
+>> +    /* Check if CPU type is deprecated and warn if so */
+>> +    cc = CPU_CLASS(oc);
+>> +    if (cc && cc->deprecation_note) {
+> 
+> cc can't be NULL, right? Otherwise,
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 3c175c93a7..031d20ad92 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -32,13 +32,8 @@
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/ghes.h"
- 
--static bool have_guest_debug;
--
- void kvm_arm_init_debug(KVMState *s)
- {
--    have_guest_debug = kvm_check_extension(s,
--                                           KVM_CAP_SET_GUEST_DEBUG);
--
-     max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
-     hw_watchpoints = g_array_sized_new(true, true,
-                                        sizeof(HWWatchpoint), max_hw_wps);
-@@ -1141,7 +1136,7 @@ static const uint32_t brk_insn = 0xd4200000;
- 
- int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
- {
--    if (have_guest_debug) {
-+    if (kvm_supports_guest_debug()) {
-         if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
-             cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
-             return -EINVAL;
-@@ -1157,7 +1152,7 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
- {
-     static uint32_t brk;
- 
--    if (have_guest_debug) {
-+    if (kvm_supports_guest_debug()) {
-         if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk, 4, 0) ||
-             brk != brk_insn ||
-             cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 1)) {
--- 
-2.41.0
+machine->cpu_type is either mc->default_cpu_type or returned from parse_cpu_option().
+It can be NULL if mc->default_cpu_type is invalid, which is a program error. So
+assert(cc != NULL) should be used instead. I will fold the change to PATCH[v9 3/9]
+
+>> +        warn_report("CPU model %s is deprecated -- %s",
+>> +                    machine->cpu_type, cc->deprecation_note);
+>> +    }
+>> +
+>> +    return true;
+>> +}
+> 
+
+Thanks,
+Gavin
 

@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2329775ejb;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2329779ejb;
         Sun, 3 Dec 2023 13:35:03 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGLloK61iXt2KZ/5JgMtVBXvgx3a0upYWqUtxIuKEPoCXn5zd7GguHcy396B8hqUl//cXoz
-X-Received: by 2002:a05:622a:12:b0:425:4043:1db1 with SMTP id x18-20020a05622a001200b0042540431db1mr5551332qtw.132.1701639303163;
+X-Google-Smtp-Source: AGHT+IEl7L6peZ4WdXdh409HPO436ysX5Cj5AMNUnxPe8dOJFnW10/5H4rsDbo3XChPEd6q2UvTB
+X-Received: by 2002:ad4:4042:0:b0:67a:94a9:4746 with SMTP id r2-20020ad44042000000b0067a94a94746mr4346409qvp.6.1701639303652;
         Sun, 03 Dec 2023 13:35:03 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1701639303; cv=none;
         d=google.com; s=arc-20160816;
-        b=CThrEn5d7iM++vPiOQUWE/bUrPGAt/7bRadfWN17QMMSTx3q48a2SPb+igWMJHSCTN
-         u/8GHSw8enIPbahX5J2s8hChgRHWNwPe6OBQS+K7WG5oF65kMUN6LgLPynITghgWDgpy
-         qnjFASE46t9xfxo7osGD0tdAa60P7WS5HQgC8QdsJQWoITIN4m7Lrdo0AG/OkaFoMSJ4
-         Iwi491ZL0oYiPRg1iClfa5tRXsHDU8udNw4b3adQdVf8lTgVIRUJ8XXU7BrS4qClPHbE
-         DPpadDRzNzxgG06x83bLabM9AVwbXdMw/XKJTWPv0cK8iQVwLBV0mbnVlNi03gwDNMrk
-         bFVA==
+        b=Bd6vaGbT7x0Ln27P5wxtyMvhWjPhKPe4vCxS7BMEqtE+pbpM/ZEaYLkGnJydBoX82w
+         HMfuGhPxddxOm675Jw7ydyROlNbSJKIwFA/ZlH4Ryp9Q8ZunQWRFeMpmtQUEKBuABoTy
+         OeaH8AYN+9BjgvwxWv8sAWiASF/xsMAlIqIStxUMk031HtfP4Ld0j1WTqGCxJ4pcfiHI
+         A9srJCTvi8fIUSnqIpmfCu8sYQRKP9+rOp/CXb2mYhjbmDBFy0kJeK2dtOd0ATiKh3jY
+         2TDpXiDwIZSdO5jZv5XwmH/xWa+T8M1sE5omZAqet2UyVGkHxah1L6b1TMR5NHQFMPMf
+         J5Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
+        bh=FgtBxKk/YnE0/ZchwODTjsH1Cpkh2DZnmTE8Tpp7q3Y=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=kgsXN2bjkjEm8BXAuLUDuFboMxKlT9+2EJmmJp+m9qb5+hIROMzfOIMfre8zlVRq51
-         ObtO2xoSqN+FJdwu6PI9Pp9xnsf7xAyXX3GOTmjSvAm8esw7JKCMAx8VBSwlMHSb4zti
-         vPwxtg8iEPOZfrlCPkAjfyqTaJKaIGdUPHuMpbAJMmijkeTyjYItGO7NBdBvl2homnwL
-         SrkhMdgWmMtSo38aakJdGddFHNqSsLpWKJGhwZnEkIglLk6fxjpQkUEaqujThWwnKM8c
-         5PBWLOZi3JljdA1cHCnaLPmId5EIwYND7xc3saBsV6InkoJcKQRde6AmepfzdrPCox/L
-         sHgA==
+        b=W5F5hD2nMskLEptJOP1L0Ss0tQeFieTzlUZMAe4zrpoOLRBPfS0Zdb3ARP9i7pVsVc
+         anuab/PsT01Zr5tQXPQ9tibh971izGAQcklAk3fdxBaDziE6Q4HmufPj8BxbOEKMKF4Q
+         AMkxelVftMP9kR3aN1PTBzcem2BQ3SpvdGG23MaNofuj88+5nkcEmeldTDQxXkvN/vr0
+         vaD88Y4/hVIoNYN/ITbnJzXcCoSSjlNi2C/6ZEhg12EBXIg+Wr85DBGS6WBHPzunjTAn
+         /wACbvRis7jRHpxxfEoxRD2No5d+larZ38X7z3KHjxD5WaZ8FbOObZ7x/MAqfP2Zj/3g
+         EY6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ToHTxLzf;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="WL/GMVtH";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fj22-20020a05622a551600b00417dd658ebesi8345744qtb.686.2023.12.03.13.35.03
+        by mx.google.com with ESMTPS id cm5-20020a05622a250500b004238bee0809si8793289qtb.61.2023.12.03.13.35.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 03 Dec 2023 13:35:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ToHTxLzf;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="WL/GMVtH";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9u2J-0002En-MD; Sun, 03 Dec 2023 16:29:59 -0500
+	id 1r9u2K-0002Fm-1R; Sun, 03 Dec 2023 16:30:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u21-0001Uh-Ae; Sun, 03 Dec 2023 16:29:42 -0500
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+ id 1r9u25-0001XL-4k; Sun, 03 Dec 2023 16:29:46 -0500
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u1y-0005UB-Ij; Sun, 03 Dec 2023 16:29:39 -0500
-Received: by mail-yb1-xb2e.google.com with SMTP id
- 3f1490d57ef6-d9beb865a40so2067279276.1; 
- Sun, 03 Dec 2023 13:29:37 -0800 (PST)
+ id 1r9u23-0005W4-GE; Sun, 03 Dec 2023 16:29:44 -0500
+Received: by mail-yb1-xb31.google.com with SMTP id
+ 3f1490d57ef6-db54ec0c7b8so1828654276.0; 
+ Sun, 03 Dec 2023 13:29:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701638976; x=1702243776; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701638982; x=1702243782; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
- b=ToHTxLzfokRByjyeX53nZWoTl5uBue0ng2hDfUsf6ktGOZXZTV3cPexsiWNKlLh+ge
- MOGFAZ8pJYByCQ3YCBMXjsur+ygxVF35gvMiWYk7m4n8jGuqUZbf4zeBknOaxm789aMf
- xsjQVQELgYLXpd8LeGFG7CEIHAMmztzAxv7/jY1oWQBgIPfexz251KpNRphevXeyBx5r
- uNmYDSXj6Di00aIf6R69qbbvvHiNu7DpIVcXfZVmuFzMr1qnGBy4qPWvgVpEYeIMB7Nw
- QmoYn542GvrMSCsAOgpITv3bpS1ZxJqJAFgHIl4JJgvD5uDDM4WnB5aNY5x6aE97foab
- 9Y2w==
+ bh=FgtBxKk/YnE0/ZchwODTjsH1Cpkh2DZnmTE8Tpp7q3Y=;
+ b=WL/GMVtHbLnryvwIt6la21AZG/TjoU1eba1HAxSL/zns4WJXpDvGrscnkWVezge4jh
+ kMMfTWecTUOuiUyfo0zamI4lSPo2XeVmNc19BOSOwSWiVa9puHL6WBUI6bLJDQxl7H/f
+ q110G2IM5/YFUz91JvFeF3ZEH5UbV2P0xjOGwqu1lqNyY3OhzvraoGaYzInZafUbNql7
+ m5Sn6BXfn5l+803EtbYdcNYuYcJtAJyrLrGzOzKG9qKb4I4u3oXBPyZz6sc4DERToM8S
+ d5JMveJVaW4gk4fp9g3Rv2UBRbxodkm0gAYHVWxVeYi5iAelsLVg0MAa7+c+ZQvEO0L8
+ 057g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701638976; x=1702243776;
+ d=1e100.net; s=20230601; t=1701638982; x=1702243782;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
- b=NJgBCkduOlRfNwWalRXCDFU0p+JW5ZhkfXiWF206N5Uo9j1+ULQviEyFNkIT6/H7w3
- qhY0VoAgBCN30iuIs8JNtyMrrAV9n0zRJv4GyrQyQWIGO5cw/UOfyA5+VlbEm9/UuDB4
- 80lb6d359/JXnWQVgcfqXoDKWTTnRvPcVOeY45Q+yospIAHUTXUdXXwuVdUXmCY06ENu
- lJnOB9NoWYCwZyS28hANhpYZyOmuH+ta8O4pEy061rdS3ez65xTLiJN28nJDiB3nb3uF
- /v+DuFUwXI6/OfD07MJEUyMrc+RSiue0op+TJ7W6UifOc3q6t+PteMqzx/btlI1rpViR
- t2LQ==
-X-Gm-Message-State: AOJu0YxsXLko5hZo91+0r6bfxQKeNlRJZq8h/8Hl26Imx9NtAgkzCb3n
- VyjGlWKMtHM5wN+6He9xdh9wsNEtz63a8Q==
-X-Received: by 2002:a25:cb0a:0:b0:db7:dacf:3fc2 with SMTP id
- b10-20020a25cb0a000000b00db7dacf3fc2mr1821696ybg.111.1701638975994; 
- Sun, 03 Dec 2023 13:29:35 -0800 (PST)
+ bh=FgtBxKk/YnE0/ZchwODTjsH1Cpkh2DZnmTE8Tpp7q3Y=;
+ b=VaHQOjGgowUN8EkP41yP7hpgERWRw2De0bVJbQo4kTYdAvM2ATgtq4WAUdznQEtB+X
+ +G2w+lbmOBPpGxOOTIWC4a6pzriWPjInkiHKa7Ts48aEi/JzdUqUwzs+t4l5Do/HCMig
+ J6zlQ9UCDC2TWl2CBN+Dyuj6RgqRirxPr1vp0gY0t8YVrsypNNNRgBfymqI85YJAeoZ+
+ v8+Y+YIsWg9eoabjuczQ2hWW/Xi9Pm3B/L6a/pjoFbzRn6VouNWMT7M8Z+e+1dSne38W
+ hKXIand+a+7fveZEduC9D56YR/8729KeVCfLVeJk9gdC6/zCukS0lYD0nWdv8qr51V2T
+ QAxA==
+X-Gm-Message-State: AOJu0Yx8rypW8ZZpb/uggD/TxNns2lqSQvXNlwWUboGNyQvnGa5o1Hqa
+ XDhSLzxiOIf/2rHWdtub970R5g6l3TUhxA==
+X-Received: by 2002:a05:6902:18c3:b0:db7:d3f9:add7 with SMTP id
+ ck3-20020a05690218c300b00db7d3f9add7mr2124041ybb.31.1701638981962; 
+ Sun, 03 Dec 2023 13:29:41 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.35
+ c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:29:35 -0800 (PST)
+ Sun, 03 Dec 2023 13:29:41 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 26/45] Add GENET register structs. Part 4
-Date: Sun,  3 Dec 2023 15:28:46 -0600
-Message-Id: <20231203212905.1364036-27-sergey.kambalin@auriga.com>
+Subject: [PATCH 32/45] Enable BCM2838 GENET controller
+Date: Sun,  3 Dec 2023 15:28:52 -0600
+Message-Id: <20231203212905.1364036-33-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203212905.1364036-26-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203212905.1364036-32-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-2-sergey.kambalin@auriga.com>
@@ -125,10 +125,16 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-24-sergey.kambalin@auriga.com>
  <20231203212905.1364036-25-sergey.kambalin@auriga.com>
  <20231203212905.1364036-26-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-27-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-28-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-29-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-30-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-31-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-32-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2e;
- envelope-from=serg.oker@gmail.com; helo=mail-yb1-xb2e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=serg.oker@gmail.com; helo=mail-yb1-xb31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -150,75 +156,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QKlhRSxwYhrm
+X-TUID: 1KiMqC/LgoYP
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- include/hw/net/bcm2838_genet.h | 37 ++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ hw/arm/bcm2838_peripherals.c         | 16 ++++++++++++++++
+ hw/arm/raspi4b.c                     | 17 -----------------
+ include/hw/arm/bcm2838_peripherals.h |  2 ++
+ 3 files changed, 18 insertions(+), 17 deletions(-)
 
-diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
-index 1bd004785a..94c2f3ebca 100644
---- a/include/hw/net/bcm2838_genet.h
-+++ b/include/hw/net/bcm2838_genet.h
-@@ -25,6 +25,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
- #define BCM2838_GENET_HFB_FILTER_CNT      48
- #define BCM2838_GENET_HFB_FILTER_SIZE     128
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+index 65a659c15c..d962999daf 100644
+--- a/hw/arm/bcm2838_peripherals.c
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -47,6 +47,15 @@ static void bcm2838_peripherals_init(Object *obj)
+     object_initialize_child(obj, "pcie-host", &s->pcie_host,
+                             TYPE_BCM2838_PCIE_HOST);
  
-+#define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
-+#define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
++    /* Gigabit Ethernet */
++    object_initialize_child(obj, "genet", &s->genet, TYPE_BCM2838_GENET);
++    for (int i = 0; i < nb_nics; i++) {
++        if ((nd_table[i].used && nd_table[i].model) && !strcmp(nd_table[i].model, "bcmgenet")) {
++            qdev_set_nic_properties(DEVICE(&s->genet), &nd_table[i]);
++            break;
++        }
++    }
 +
-+#define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
-+#define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
-+
- typedef struct {
-     uint32_t rev_ctrl;
-     uint32_t port_ctrl;
-@@ -273,6 +279,34 @@ typedef struct {
-     uint16_t rdb_data;
- } BCM2838GenetPhyRegs;
+     /* Extended Mass Media Controller 2 */
+     object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
  
-+typedef struct {
-+    uint16_t reserved_0_2[3];
-+    uint16_t clk_ctl;
-+    uint16_t scr2;
-+    uint16_t scr3;
-+    uint16_t reserved_6_9[4];
-+    uint16_t apd;
-+    uint16_t rgmii_mode;
-+    uint16_t reserved_12;
-+    uint16_t leds1;
-+    uint16_t reserved_14_18[5];
-+    uint16_t _100fx_ctrl;
-+    uint16_t ssd;
-+    uint16_t reserved_21_30[10];
-+    uint16_t mode;
-+} BCM2838GenetPhyShdRegs;
-+
-+typedef struct {
-+    uint16_t auxctl;
-+    uint16_t reserved_1_6[BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE - 2];
-+    uint16_t misc;
-+} BCM2838GenetPhyAuxShdRegs;
-+
-+typedef struct {
-+    uint16_t regs[BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT]
-+                 [BCM2838_GENET_PHY_EXP_SHD_REGS_CNT];
-+} BCM2838GenetPhyExpShdRegs;
-+
- struct BCM2838GenetState {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -284,6 +318,9 @@ struct BCM2838GenetState {
+@@ -231,6 +240,13 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
+                                 &s->pcie_mmio_alias);
  
-     BCM2838GenetRegs regs;
-     BCM2838GenetPhyRegs phy_regs;
-+    BCM2838GenetPhyShdRegs phy_shd_regs;
-+    BCM2838GenetPhyAuxShdRegs phy_aux_ctl_shd_regs;
-+    BCM2838GenetPhyExpShdRegs phy_exp_shd_regs;
++    /* Gigabit Ethernet */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->genet), errp)) {
++        return;
++    }
++    regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->genet), 0);
++    memory_region_add_subregion(&s->peri_low_mr, GENET_OFFSET, regs_mr);
++
+     create_unimp(s_base, &s->clkisp, "bcm2835-clkisp", CLOCK_ISP_OFFSET,
+                  CLOCK_ISP_SIZE);
  
-     qemu_irq irq_default;
-     qemu_irq irq_prio;
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index fda27d36cb..8aa8dfb087 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -64,23 +64,6 @@ static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
+ 
+ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+ {
+-
+-    /* Temporarily disable following devices until they are implemented*/
+-    const char *to_be_removed_from_dt_as_wa[] = {
+-        "brcm,bcm2711-genet-v5",
+-    };
+-
+-    for (int i = 0; i < ARRAY_SIZE(to_be_removed_from_dt_as_wa); i++) {
+-        const char *dev_str = to_be_removed_from_dt_as_wa[i];
+-
+-        int offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
+-        if (offset >= 0) {
+-            if (!fdt_nop_node(fdt, offset)) {
+-                warn_report("bcm2711 dtc: %s has been disabled!", dev_str);
+-            }
+-        }
+-    }
+-
+     uint64_t ram_size = board_ram_size(info->board_id);
+ 
+     if (info->ram_size > UPPER_RAM_BASE) {
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 20b7d1eb67..1cfcf5dcce 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -13,6 +13,7 @@
+ #include "hw/misc/bcm2838_rng200.h"
+ #include "hw/misc/bcm2838_thermal.h"
+ #include "hw/arm/bcm2838_pcie.h"
++#include "hw/net/bcm2838_genet.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/gpio/bcm2838_gpio.h"
+ 
+@@ -73,6 +74,7 @@ struct BCM2838PeripheralState {
+     UnimplementedDeviceState clkisp;
+     BCM2838PcieHostState pcie_host;
+     BCM2838GpioState gpio;
++    BCM2838GenetState genet;
+ 
+     OrIRQState mmc_irq_orgate;
+     OrIRQState dma_7_8_irq_orgate;
 -- 
 2.34.1
 

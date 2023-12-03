@@ -1,355 +1,365 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370464ejb;
-        Sun, 3 Dec 2023 15:44:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEADJvAyPaPQ/txyE3AgwfG4TEG5d/TukmOGyG3t9xXsKLdDn3cONa7gJl/6chZjrX4RLMr
-X-Received: by 2002:a05:6214:8ce:b0:67a:98bc:4b45 with SMTP id da14-20020a05621408ce00b0067a98bc4b45mr5447735qvb.25.1701647088935;
-        Sun, 03 Dec 2023 15:44:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647088; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370487ejb;
+        Sun, 3 Dec 2023 15:44:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFY/+LlnWLGfH8zfDQoUhc4sYC/QPRxpUvqW4W4LVbCm74szUEw3Bk2ErWyZnggR3zWrKz0
+X-Received: by 2002:a05:6214:b0d:b0:67a:a721:f323 with SMTP id u13-20020a0562140b0d00b0067aa721f323mr3481501qvj.99.1701647093824;
+        Sun, 03 Dec 2023 15:44:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647093; cv=none;
         d=google.com; s=arc-20160816;
-        b=a7O3oA57AhKhnuT0R5tUNcWeYNGXPMbU6a6GPpwTOI0W2uv82uzmE4nn8izIrr+Uk6
-         8DPWu6NWj9dF5siTUWryBo8FgVB89F0TzPeTCy9A5FKsAf51MEqsIVZFjSpiixemnG/H
-         UhY0IL9ppIW3fZb0lOSLsY0xcxsqrBHQJML80tU4EZcTtJdRalYdOJdzmVrMdEXaUoVr
-         kOCYREHXG+rCI6gDqnbJB1PoPlMM2ybiyuRKeveC/cQdOXNQvVolIZzKeR/geX4R2PPM
-         oz6NQJo1X9CjHOZijinBCZQhgFQSfPty5Jp8nCNf4VUF2GhreqBpY+B2M+ENWppqpwkl
-         B3RQ==
+        b=Jx0KgMW8JhIrbSul6OH0Dyx2nctVUR/uWE2ON/GeZCQGOAGjLZualN/O5FATGt8QgX
+         C0qzeEL4xjpE4G7Fth5CtIQqKf2VaSQn2sHE4uoO56dblpfp8Tlh538NCB5rMHF5B7PC
+         h3GZaNjMNttIWSEY3DLnZjbShVf0VRXhH6Ec7KHhWvxZ/HPa1ATGSvVKz+tdrnIp8ej0
+         P+7C4KCFl1Wvd6ynq9OB+Udr7pJWm9WfethCvKGY34ydkF8APf/MKj3pN151zXQiTnjL
+         aaSGa9Ett14acs/eBRk2rIU6mOTLxSL1VLyZdygyau7PNeXewLYFGaBc+gXlFb+jgnQS
+         PhUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+        bh=QIUscvz7pf1VFtRN5hHqsbtj5B7mCmCi2M+oBvF9ZJ8=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=WT9PKtOhJCIwTWEVB/JZoEQPT1vFoCYlx6gF5nF8mEpNhTzBBF/8DAcdVouLBNUM8/
-         VghB77YxkW0USgTc/v83v3WclwnDtmaLaY+AkVKemNliIhX/G9JkgJukx/3M/rtJJY5f
-         myQaUKFh+cpNCEEFIgeTherDDjhcNSXA4/hsMg8f2HxajxoFXak6VhZiNiHvPXQByUq+
-         tnAC29d6lWEWZxCsfYFfKqYXSezO4roe87qNo2J4rR3lqEp4eEHKUzXqZhg6mUhhLdkj
-         V5qz6VXh1MxIZcrxnwA7iIt3LxcF+IAQ6i8ZNwKUt6aKXEhcB9ub8oqI4YobY7D3AaU7
-         16mg==
+        b=LFrJvvNLzOU2LTAJkuzNiC4QQ9bWL4WreNccU61OMIfGHXwvRCjncV35tq4ik1kBja
+         S00vii/SuL07b7qyHliBlCId8ZcDd7bwGLlcPddGT2xiErOf2t6FoZjRob4FS7RVOSZ1
+         XBhIk3tnRf5hHGJQDln/E+B6txbzuerSLus5/tR4a0/rD84nIB7GL7FrXh0u7aY3HoJr
+         bdPYbnxYpfh+4ALwofzl3xNrQbtqO/pR0CK/gSK9M40LuVzUT669f95OTchRGlkn4OGl
+         G2bPt2TQ0fW5sRyjTz5+q+x19XmjHwSNBJWr2+yIBgurZ6/3HcPhObUwsqbXIikyWyUD
+         k1UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D4N79DNc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="FyzCs/HX";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v12-20020a0cf90c000000b0067a9a7a845esi6251503qvn.174.2023.12.03.15.44.48
+        by mx.google.com with ESMTPS id gi4-20020a056214248400b0067ac4b8a125si1534901qvb.39.2023.12.03.15.44.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:44:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 15:44:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D4N79DNc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="FyzCs/HX";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9w85-00011d-Nf; Sun, 03 Dec 2023 18:44:05 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9w85-0000w5-K7; Sun, 03 Dec 2023 18:44:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w7H-0007Xk-8b; Sun, 03 Dec 2023 18:43:15 -0500
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ id 1r9w7G-0007Xi-S0; Sun, 03 Dec 2023 18:43:15 -0500
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w7E-0002tp-2r; Sun, 03 Dec 2023 18:43:15 -0500
-Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-59b5484fbe6so43981447b3.1; 
- Sun, 03 Dec 2023 15:43:10 -0800 (PST)
+ id 1r9w7D-0002tt-Dn; Sun, 03 Dec 2023 18:43:13 -0500
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-5d3758fdd2eso34253827b3.0; 
+ Sun, 03 Dec 2023 15:43:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646987; x=1702251787; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646989; x=1702251789; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
- b=D4N79DNcCTe9tpyQ/d8k0ExWn1YWIxIXmXqetTOK9g1/I3caGnxnhI+PWLmHAl+ZQS
- 9woV2DUtmkJcCbbbw5Y8hYUOY/oeIXuP/eTWh2pZ0nsMp76+SvlpmceSkDJsEWZa5f/Q
- R0WSEyMpdsnI9/7oHvGfkBPwUWODdTy356+bWQuRh/9HjBOX0ZzJsAnHKpg6/qjXnLou
- IHKrbi97do0TqYwH2XNuY9x3O5wjsIqXnsQPqkv311jHchr7353TXr1kfuzFYgWOTAmK
- aiHBuy53L/N5gT0dP3tMrm3DFFOJiccDIqjNfLPXn7YvigOyIUMtd3NqJbyZwT7/yk83
- BxnQ==
+ bh=QIUscvz7pf1VFtRN5hHqsbtj5B7mCmCi2M+oBvF9ZJ8=;
+ b=FyzCs/HXPxKB4yWFNBqH5cd14Z3fkw+DvRYn+m10/rpXzOcGVANS0Hm74URE5sEPMc
+ 1qOBRpBhw55DYxXPEwv8M5oKwn3dM1/9yQn+6Ilkq9cvBzQZ9d5Z37MZVXjMEan0FUQ3
+ PJn6i92eySGA064Ai4HG/w605F7ntD39rlhZSkMaW2JBOCukexCDb1zwFb/QIsxha1K+
+ VYul4ta6YOexIXFs2F23sOMLcXGvOHk5YiYJAT9GMm63c7ebtL95pqRNohNkpPJm386F
+ PhBiKUXDfiK3YQr00D1tMc9Uj9y9EZcfR6782fLaMAeMphX0IeCjoiEk8LJyPI2YdAor
+ O3PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646987; x=1702251787;
+ d=1e100.net; s=20230601; t=1701646989; x=1702251789;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
- b=Najy7ynd6t4g+LIqa/7H1PI9zaFvRCxkDJf+Xm0M4+5rHr6cI/zBpfOuoWrjciJ4aa
- rJVp1Pc+sF1EAeTqiHXo3uUSPNs2Gcu+CvHjt/cBICzA+eBi/CtX0zkm8AJop7sqZZaP
- mxYXnYt7qOok7xiEBXzMkhYaNUtBqvftDpE0Ar9/JcY9zWUCbLEtswBmHY4fQtT5jc3x
- A70059y39ptMr1hG5bqmTQaHW0VH+VbYQjokWiOd7y1nyg+/YLqo6AIA8wVb+vEtyZ8v
- 7IywXdH0xEidHLcmTD6dO4XaIO2vRk33N1DjaDxewcm/qu9FwMaYFaYYLPDh4geZGNUH
- V30Q==
-X-Gm-Message-State: AOJu0Yx5yzGhyve5ZGxH8rSTSt90XRowFkfZx8VBg3FjFo9WyJISfLBt
- Hj1Bn+FxQU6euyuNTvd0PWOWkzXCpmzFEg==
-X-Received: by 2002:a81:ae0f:0:b0:5d7:1940:b36a with SMTP id
- m15-20020a81ae0f000000b005d71940b36amr2611473ywh.54.1701646987470; 
- Sun, 03 Dec 2023 15:43:07 -0800 (PST)
+ bh=QIUscvz7pf1VFtRN5hHqsbtj5B7mCmCi2M+oBvF9ZJ8=;
+ b=EWnIkF4drId4RkfF6r7eD0Nfym4OpBG0loCd6BFnNGdZx923eL3S1ku4lbd/mYSH1j
+ 3bF3voTwiAPzwi+0PHX82Xv9R09j+zWUJvcEBr5R0LAddPulNqBpJhx9rFh6sZyL2UeL
+ 3XYJU447jGQu1f5yyq7AZS3ELg1RLQPPIgyct7F6j9xNFLFcQnLxSsiufufXfTzf0OnR
+ wIt8qtf1ReiJG4Dv/el3qfcfRM6+6cz02W5T9uVpP6JopdBrzl6+xdhP2gXz2DJVuAje
+ OcPJ+2IZI3QjCFSVH37fw+/+YeKPpFTuNWCNemdv9ROXqAH1Zm0v0DHuXZZYnEi8H2rk
+ FHTg==
+X-Gm-Message-State: AOJu0YxxYYBIsbh0Q6B3exVvoSGkC/rR13Z/N5yRti3XLB04dzhgUajV
+ hqCIOtTQU0FS31dd7Lwe+by68jFDYme+7g==
+X-Received: by 2002:a81:b70c:0:b0:5d5:429d:bc73 with SMTP id
+ v12-20020a81b70c000000b005d5429dbc73mr1585688ywh.8.1701646988743; 
+ Sun, 03 Dec 2023 15:43:08 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.43.01
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.43.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:43:02 -0800 (PST)
+ Sun, 03 Dec 2023 15:43:08 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 41/45] Add mailbox property tests. Part 2
-Date: Sun,  3 Dec 2023 17:42:09 -0600
-Message-Id: <20231203234213.1366214-42-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 42/45] Add mailbox property tests. Part 3
+Date: Sun,  3 Dec 2023 17:42:10 -0600
+Message-Id: <20231203234213.1366214-43-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
+ T_PDS_OTHER_BAD_TLD=0.01, T_SCC_BODY_TEXT_LINE=-0.01,
  UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qY0ADjFrbe/n
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yRd77cX10x9b
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mbox-property-test.c | 196 ++++++++++++++++++++++-
- 1 file changed, 195 insertions(+), 1 deletion(-)
+ tests/qtest/bcm2838-mbox-property-test.c | 213 ++++++++++++++++++++++-
+ 1 file changed, 212 insertions(+), 1 deletion(-)
 
 diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
-index 80746dbb95..5322c563a0 100644
+index 5322c563a0..1b4a2ed9cb 100644
 --- a/tests/qtest/bcm2838-mbox-property-test.c
 +++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -49,7 +49,8 @@ FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
-                       (TEST_TAG_TYPE(testname) * tag);                         \
-     static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-                              (TEST_TAG_TYPE(testname) *tag);                   \
--    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
-+    static void TEST_FN_NAME(testname, __VA_ARGS__)(void)                      \
-+    {                                                                          \
-         struct {                                                               \
-             MboxBufHeader header;                                              \
-             TEST_TAG_TYPE(testname) tag;                                       \
-@@ -188,6 +189,179 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
+@@ -361,7 +361,194 @@ DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
+     tag->request.value.height = 600;
  }
  
- /*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
+-//==============================================================================
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_DEPTH) {
++    g_assert_cmpint(tag->response.value.bpp, ==, DUMMY_VALUE);
 +}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
++DECLARE_TEST_CASE_SETUP(TEST_FB_DEPTH) {
++    tag->request.value.bpp = DUMMY_VALUE;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
++DECLARE_TEST_CASE(GET_FB_DEPTH) {
++    g_assert_cmpint(tag->response.value.bpp, ==, 16);
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++DECLARE_TEST_CASE(SET_FB_DEPTH) {
++    g_assert_cmpint(tag->response.value.bpp, ==, 24);
 +}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
++DECLARE_TEST_CASE_SETUP(SET_FB_DEPTH) {
++    tag->request.value.bpp = 24;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++DECLARE_TEST_CASE(TEST_PIXEL_ORDER) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, DUMMY_VALUE);
 +}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
++DECLARE_TEST_CASE_SETUP(TEST_PIXEL_ORDER) {
++    tag->request.value.pixel_order = DUMMY_VALUE;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++DECLARE_TEST_CASE(GET_PIXEL_ORDER) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_RGB);
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++DECLARE_TEST_CASE(SET_PIXEL_ORDER, BGR) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_BGR);
 +}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++DECLARE_TEST_CASE_SETUP(SET_PIXEL_ORDER, BGR) {
++    tag->request.value.pixel_order = PIXEL_ORDER_BGR;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_TEMPERATURE) {
-+    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-+    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC);
++DECLARE_TEST_CASE(SET_PIXEL_ORDER, RGB) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_BGR);
 +}
-+DECLARE_TEST_CASE_SETUP(GET_TEMPERATURE) {
-+    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_TEMPERATURE) {
-+    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-+    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC_MAX);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_TEMPERATURE) {
-+    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++DECLARE_TEST_CASE_SETUP(SET_PIXEL_ORDER, RGB) {
++    tag->request.value.pixel_order = PIXEL_ORDER_BGR;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(ALLOCATE_BUFFER) {
-+    g_assert_cmphex(tag->response.value.base, ==, VC_FB_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, VC_FB_SIZE);
++DECLARE_TEST_CASE(TEST_FB_ALPHA_MODE) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, DUMMY_VALUE);
 +}
-+DECLARE_TEST_CASE_SETUP(ALLOCATE_BUFFER) {
-+    tag->request.value.alignment = ALIGN_4K;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(RELEASE_FRAMEBUFFER) { 
-+    /* No special checks are needed for this test */
++DECLARE_TEST_CASE_SETUP(TEST_FB_ALPHA_MODE) {
++    tag->request.value.alpha_mode = DUMMY_VALUE;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(BLANK_FRAMEBUFFER) {
-+    g_assert_cmphex(tag->response.value.on, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(BLANK_FRAMEBUFFER) {
-+    tag->request.value.on = 0;
++DECLARE_TEST_CASE(GET_FB_ALPHA_MODE) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_IGNORED);
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_PHYS_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, ENABLED) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_ENABLED);
 +}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_PHYS_WIDTH) {
-+    tag->request.value.width = DUMMY_VALUE;
-+    tag->request.value.height = DUMMY_VALUE;
++DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, ENABLED) {
++    tag->request.value.alpha_mode = ALPHA_MODE_ENABLED;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL) {
-+    g_assert_cmpint(tag->response.value.width, ==, 640);
-+    g_assert_cmpint(tag->response.value.height, ==, 480);
++DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, REVERSED) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_REVERSED);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, REVERSED) {
++    tag->request.value.alpha_mode = ALPHA_MODE_REVERSED;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_PHYS_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, 800);
-+    g_assert_cmpint(tag->response.value.height, ==, 600);
++DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, IGNORED) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_IGNORED);
 +}
-+DECLARE_TEST_CASE_SETUP(SET_FB_PHYS_WIDTH) {
-+    tag->request.value.width = 800;
-+    tag->request.value.height = 600;
++DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, IGNORED) {
++    tag->request.value.alpha_mode = ALPHA_MODE_IGNORED;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_VIRT_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_VIRT_WIDTH) {
-+    tag->request.value.width = DUMMY_VALUE;
-+    tag->request.value.height = DUMMY_VALUE;
++DECLARE_TEST_CASE(GET_PITCH) {
++    g_assert_cmpint(tag->response.value.pitch, ==, 1280);
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL) {
-+    g_assert_cmpint(tag->response.value.width, ==, 640);
-+    g_assert_cmpint(tag->response.value.height, ==, 480);
++DECLARE_TEST_CASE(TEST_VIRTUAL_OFFSET) {
++    g_assert_cmpint(tag->response.value.x, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.y, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_VIRTUAL_OFFSET) {
++    tag->request.value.x = DUMMY_VALUE;
++    tag->request.value.y = DUMMY_VALUE;
 +}
 +
 +/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_VIRT_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, 800);
-+    g_assert_cmpint(tag->response.value.height, ==, 600);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
-+    tag->request.value.width = 800;
-+    tag->request.value.height = 600;
++DECLARE_TEST_CASE(GET_VIRTUAL_OFFSET) {
++    g_assert_cmpint(tag->response.value.x, ==, 0);
++    g_assert_cmpint(tag->response.value.y, ==, 0);
 +}
 +
-+//==============================================================================
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_VIRTUAL_OFFSET, _0_) {
++    g_assert_cmpint(tag->response.value.x, ==, 0);
++    g_assert_cmpint(tag->response.value.y, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(SET_VIRTUAL_OFFSET, _0_) {
++    tag->request.value.x = 0;
++    tag->request.value.y = 0;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_VIRTUAL_OFFSET, _42_) {
++    g_assert_cmpint(tag->response.value.x, ==, 42);
++    g_assert_cmpint(tag->response.value.y, ==, 42);
++}
++DECLARE_TEST_CASE_SETUP(SET_VIRTUAL_OFFSET, _42_) {
++    tag->request.value.x = 42;
++    tag->request.value.y = 42;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_OVERSCAN) {
++    g_assert_cmpint(tag->response.value.top, ==, 0);
++    g_assert_cmpint(tag->response.value.bottom, ==, 0);
++    g_assert_cmpint(tag->response.value.left, ==, 0);
++    g_assert_cmpint(tag->response.value.right, ==, 0);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_OVERSCAN) {
++    g_assert_cmpint(tag->response.value.top, ==, 0);
++    g_assert_cmpint(tag->response.value.bottom, ==, 0);
++    g_assert_cmpint(tag->response.value.left, ==, 0);
++    g_assert_cmpint(tag->response.value.right, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(TEST_OVERSCAN) {
++    tag->request.value.top = DUMMY_VALUE;
++    tag->request.value.bottom = DUMMY_VALUE;
++    tag->request.value.left = DUMMY_VALUE;
++    tag->request.value.right = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_OVERSCAN) {
++    g_assert_cmpint(tag->response.value.top, ==, 0);
++    g_assert_cmpint(tag->response.value.bottom, ==, 0);
++    g_assert_cmpint(tag->response.value.left, ==, 0);
++    g_assert_cmpint(tag->response.value.right, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(SET_OVERSCAN) {
++    tag->request.value.top = DUMMY_VALUE;
++    tag->request.value.bottom = DUMMY_VALUE;
++    tag->request.value.left = DUMMY_VALUE;
++    tag->request.value.right = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_DMA_CHANNELS) {
++    g_assert_cmphex(tag->response.value.mask, ==, GPIO_MASK);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_COMMANDLINE) {
++    /* No special checks are needed for this test case */
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_NUM_DISPLAYS) {
++    g_assert_cmpint(tag->response.value.num_displays, ==, 1);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_PITCH) {
++    /* No special checks are needed for this test case */
++}
++DECLARE_TEST_CASE_SETUP(SET_PITCH) {
++    tag->request.value.pitch = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
  int main(int argc, char **argv)
  {
      g_test_init(&argc, &argv, NULL);
-@@ -201,6 +375,26 @@ int main(int argc, char **argv)
-     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
-     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
-     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
-+    QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
-+    QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
-+    QTEST_ADD_TEST_CASE(RELEASE_FRAMEBUFFER);
-+    QTEST_ADD_TEST_CASE(BLANK_FRAMEBUFFER);
-+    QTEST_ADD_TEST_CASE(TEST_FB_PHYS_WIDTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL);
-+    QTEST_ADD_TEST_CASE(SET_FB_PHYS_WIDTH);
-+    QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
-+    QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
+@@ -395,6 +582,30 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
+     QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
+     QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
++    QTEST_ADD_TEST_CASE(TEST_FB_DEPTH);
++    QTEST_ADD_TEST_CASE(GET_FB_DEPTH);
++    QTEST_ADD_TEST_CASE(SET_FB_DEPTH);
++    QTEST_ADD_TEST_CASE(TEST_PIXEL_ORDER);
++    QTEST_ADD_TEST_CASE(GET_PIXEL_ORDER);
++    QTEST_ADD_TEST_CASE(SET_PIXEL_ORDER, BGR);
++    QTEST_ADD_TEST_CASE(SET_PIXEL_ORDER, RGB);
++    QTEST_ADD_TEST_CASE(TEST_FB_ALPHA_MODE);
++    QTEST_ADD_TEST_CASE(GET_FB_ALPHA_MODE);
++    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, ENABLED);
++    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, REVERSED);
++    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, IGNORED);
++    QTEST_ADD_TEST_CASE(GET_PITCH);
++    QTEST_ADD_TEST_CASE(TEST_VIRTUAL_OFFSET);
++    QTEST_ADD_TEST_CASE(GET_VIRTUAL_OFFSET);
++    QTEST_ADD_TEST_CASE(SET_VIRTUAL_OFFSET, _0_);
++    QTEST_ADD_TEST_CASE(SET_VIRTUAL_OFFSET, _42_);
++    QTEST_ADD_TEST_CASE(GET_OVERSCAN);
++    QTEST_ADD_TEST_CASE(TEST_OVERSCAN);
++    QTEST_ADD_TEST_CASE(SET_OVERSCAN);
++    QTEST_ADD_TEST_CASE(GET_DMA_CHANNELS);
++    QTEST_ADD_TEST_CASE(GET_COMMANDLINE);
++    QTEST_ADD_TEST_CASE(GET_NUM_DISPLAYS);
++    QTEST_ADD_TEST_CASE(SET_PITCH);
  
      return g_test_run();
  }

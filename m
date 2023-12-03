@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370900ejb;
-        Sun, 3 Dec 2023 15:46:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGBcfTti44eDmeEqkdXa+U+GKHKQJQfLKd9KqN81QHJMh+aPNZvFUjbke+0Ipl/thnLVcHY
-X-Received: by 2002:a05:6214:4c0a:b0:67a:a721:9ea4 with SMTP id qh10-20020a0562144c0a00b0067aa7219ea4mr3389652qvb.85.1701647170653;
-        Sun, 03 Dec 2023 15:46:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647170; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370917ejb;
+        Sun, 3 Dec 2023 15:46:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGMmpBrJPCThunG+9pxc0ENgOOxo+7b36g/rEHW6J9bQ6e5mmxjw4FdxOuOb1ROE+t3xAIz
+X-Received: by 2002:a05:6214:1111:b0:67a:6041:6f94 with SMTP id e17-20020a056214111100b0067a60416f94mr4268023qvs.24.1701647173086;
+        Sun, 03 Dec 2023 15:46:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647173; cv=none;
         d=google.com; s=arc-20160816;
-        b=ytNiiYmXjKqo9xY4xJR2ztXqjOuYN/BnSHI+M4Gz/HA29E1YaiHKE6YxLODZyNSael
-         bU6G3TVJ1qXb0NGcBhqskOi29QmJQlU2g4Y5iZYqvu/xHce2aLDOsZ2mMTOFffI7xiZv
-         67S6vwQFwPf0R+f3j49chuJapFfhO0lSNEHaVR6TvCvc/Vv8FoRKBcbq8eAAff5dD5wa
-         Zr1KSpVMyD9VBGqGAOpUH9WQ8zzE9ir3eXtdui0YApA6qkd8Qq8KpWi8WY5DR/7fCodO
-         PbwZOk5TQTQZETV1aFsgbtCyFGNAg2AGQvcz4+Rmpx2YFyOtGEDFTtlA+bquRNrEV3Mo
-         fZow==
+        b=ruKbrv3K7e4qZ9gH7kdCDvTthtAPZZ+l/GXxgw2WRSfRsfKJ2tMM5BhPZCj0eFwPCT
+         g+RGaS4IB718HAtI6qrXj3O193lXBHwg4eRyHffq0VWSAGjd5ULQZOS9XuoSxmhZDREB
+         JGIPmlLBnhrYknbZf7LQV8gWOWlfJb2Vx01FzBpzYnaOdUcM8mcB7vyqjmGPtSuitcQO
+         AxyXRAr99fH+SZoDqVwwBpeGV5ewDdF41jAyGkmtKgw0MzInwpxBRaL4NXVsGV+gIOt5
+         xidX5P/iOhTAjpMrH00Y1awnGGwWS4CX2umppAcZxcPkp/0kQp1YMu8Js8tpEZcQqds+
+         DorQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Xkr/gnxxaICGpe6iHiYAh3AvCqlJB8T1ravIgTidKoY=;
+        bh=wFeuloyQQG/pWB1qNvNMADuHoBFz7/WggqgaHUnwlWg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=C10MpP0EcFrjQ8bO+GVVeNYyQ+MwilIyAOXy9OgwRzIqWFH7gPXxTRpWeYq/RU4jFV
-         Hk7K55aPAnyMgbGtcVx26QnvN+zGYBDNEikdSG26ryjch0dcHojRlleyRpccBpOiCAHu
-         IXMDTOzJc7WlUiWzL+9ChFbYH0tqBUuVUf7V7jL2ZfINxfWidVYkdFymqfhxEhou1co1
-         bJ+rnMN5DAJ+GdkBa4SADofBS6ypD/MAhYmXowsin72c4RDhk4VL0X+E5hpwyCuBzCMV
-         4SFTpom2h1uNrmrTJO3DpXWiSu2baIjXiPfg+9ZZsbQLEd/7Ywl+sl7F+KtsGCiM7Rvt
-         ZXdg==
+        b=z+u4vWbotudjLYs9H+MLunDvSiwHd5DvnMyJF9oob2BqIWSYN2TByH5cbQGiowI/Yu
+         8l/YJjwJrxYcv6NszEMIqi0xEVt4zvpzNVsuHxv0RH9AhL2woB8pkuKJOX70g+l1NT72
+         an1ZsswtaWfxZ4h0GV5lb7VBj952DEJ0s21QCNDnOqVKFfriRqSqxLq/17tUlL9FCd6r
+         tzvmTxL9eSPXWf6WncHs21/RI12d3xe+3cn37yqMTTvkY9cQef7z0WTwtfoTCFvdF9JQ
+         jGQkVUg/NENsfg4Gv/vC2EGr5S3o3jv+8EQ6zc69QNB6qggum3i90LQE1mEAjXYGBlg7
+         6KrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cD+yL4y4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JDDyJ+0h;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id et15-20020a056214176f00b0067aa2d85180si5173495qvb.309.2023.12.03.15.46.10
+        by mx.google.com with ESMTPS id v12-20020a0cf90c000000b0067a9a7a845esi6253404qvn.174.2023.12.03.15.46.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:46:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 15:46:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cD+yL4y4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JDDyJ+0h;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9w6s-0007Ba-Vw; Sun, 03 Dec 2023 18:42:51 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9w6i-00070b-It; Sun, 03 Dec 2023 18:42:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6p-00079C-Rz; Sun, 03 Dec 2023 18:42:47 -0500
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+ id 1r9w6e-0006ub-7P; Sun, 03 Dec 2023 18:42:36 -0500
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6n-0002n4-2j; Sun, 03 Dec 2023 18:42:47 -0500
-Received: by mail-ot1-x335.google.com with SMTP id
- 46e09a7af769-6d8769552a7so1204495a34.1; 
- Sun, 03 Dec 2023 15:42:44 -0800 (PST)
+ id 1r9w6c-0002ke-9O; Sun, 03 Dec 2023 18:42:35 -0500
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-5d34f8f211fso38760467b3.0; 
+ Sun, 03 Dec 2023 15:42:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646962; x=1702251762; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646952; x=1702251752; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Xkr/gnxxaICGpe6iHiYAh3AvCqlJB8T1ravIgTidKoY=;
- b=cD+yL4y4sf8COEe920b4c4qy6+Sdgi5+KwvGqYZCW0AEehDlQs6c0LaJdOXiPGODyH
- WD+zR4JpXhh0PWWYW+y7CRUGvVnwnJxAo6gSZKiftoHTqbHUyyI86jEiaAP4eqatTLBd
- ntXLdW5IYY611jRfJrkuC+FMWQYat6zZiWnaoz720hSDf+iRLH5zQkzey6XNfPBgSQVk
- 3vU90Q75WQviDewQ4BAghnm4LyabQQ6PWrd/NMeP5xVfe0XLg+6Sd3uRqTnIkcmRxDKZ
- U8NdqswE3FvmpthXZvMtlp+mFY63x707kN6YC/DR/iyXe1srlEuwzV/ysNMic6vxErQH
- C+kw==
+ bh=wFeuloyQQG/pWB1qNvNMADuHoBFz7/WggqgaHUnwlWg=;
+ b=JDDyJ+0hknN+FqpsO2XB8mrrAyY7Yve+mkwpocxVcU+pfM5m1Qg/4kqKwxTbUejDQj
+ yP8ifwvISDs0AmWprggp9NZvi1FjS5ZlPcfL3d0a4cID+O7pJNHLxcC44uPCfkRPKWzy
+ Dh0grA26hOFbv2E+Q+iSu+6OcB6Nn8PoKDJyrRejfnxyAggNwcahwAEYJXb1Rliox2zm
+ XXewKgsD3Im1ekSVD2EhJABjh7GFuzR14ivtbAvDvslkw11W1rH12vruXWkgywJDYfu+
+ m6CS/npM97LSDOWVEjlaEEt3MLvUrGQM6RsIsLe3Ss3BH3Z8YwDurFSqxCqgM/j18cUU
+ rO7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646962; x=1702251762;
+ d=1e100.net; s=20230601; t=1701646952; x=1702251752;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Xkr/gnxxaICGpe6iHiYAh3AvCqlJB8T1ravIgTidKoY=;
- b=XtgXyREE83sr+0lzIwqC16Q7lSiUZ7BV31soyMQxeJw+N2i1z3A/29M3zQ6KOGTiY0
- jFP1BncdqBHSCAMVOoX/5wJTltOILGXPHvygAXBIirfqYuY6rBWZQzAxQap6G6TAu4bY
- NxDSV/zkQLqBxXpGDwrsZaiC5EnHbRkWlOi8wdEo3LfOlnPOCSXyvGAFjiPv1ZcaigfL
- LqkjLzMm/Ilvs7F2rx8Ndc6eoJQR6Bd6/Gob0ufn4zZEcBG6VqS1gZ29FT5L6O9cRJzG
- qOvTCdbXSWVVC9yqqki0iPJrtmyHCacaqhbHuS3hFTvUIyfArXiTdNjjb2fG0dYQ2cyb
- 6SXw==
-X-Gm-Message-State: AOJu0YwiMruWW3XvJRJAuyea/AgIecHFPs9A393fC2LpAs/SlyQh8cno
- lo5tMDp39Pcve8bOXYm7uT7ywnSGtosW5A==
-X-Received: by 2002:a05:6830:13c7:b0:6d8:74e2:6f34 with SMTP id
- e7-20020a05683013c700b006d874e26f34mr2802454otq.48.1701646962033; 
- Sun, 03 Dec 2023 15:42:42 -0800 (PST)
+ bh=wFeuloyQQG/pWB1qNvNMADuHoBFz7/WggqgaHUnwlWg=;
+ b=GR+XXiLfDTknolBh8U7ZF+7DfzWPJV7zj0g0PGaOtOXhhg52PUcrXBOXB8mTb7m5+p
+ K1NZKwVsgMOx+zuXGiMcW3BmOT01hQf00t+JwVrjMvfDPIcvQs474u4+OIbTJMqQUDJ7
+ DuYcnXmxfcazfywR1BPNlXCKyKfwg4nRKfvJk04Manl4KK21TBvVcTd0OfVPkUgqcijF
+ YzN+TGofJQHDWsvuc4yTEd4xephorRJ4hI1EEYKzy1kmTM1ri+NYwq3u6tkuGMYt934t
+ /2GC2x2NcAXFV43O/4nldXLuka5l5I3Z4tOZIFshf/mW7Fij/5E5/Cro5z36Td4E0bKE
+ kuoA==
+X-Gm-Message-State: AOJu0YyXJj8cXpaZhLPeRPW673lX04Zxbd9inaolS77ZwPl1ewkumkqZ
+ MwptuaA/tI41PQoh+jlaXmGO/ZwlY+5G+g==
+X-Received: by 2002:a81:a142:0:b0:5d7:1940:53d9 with SMTP id
+ y63-20020a81a142000000b005d7194053d9mr2265628ywg.81.1701646952412; 
+ Sun, 03 Dec 2023 15:42:32 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.41
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:42:41 -0800 (PST)
+ Sun, 03 Dec 2023 15:42:32 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 23/45] Add GENET register structs. Part 1
-Date: Sun,  3 Dec 2023 17:41:51 -0600
-Message-Id: <20231203234213.1366214-24-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 14/45] Add BCM2838 PCIE Root Complex
+Date: Sun,  3 Dec 2023 17:41:42 -0600
+Message-Id: <20231203234213.1366214-15-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=serg.oker@gmail.com; helo=mail-ot1-x335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,166 +111,200 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fyQGQ0vke/Ci
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p3ZfpsjReAo3
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/net/bcm2838_genet.c         | 37 ++++++++++++++++
- include/hw/net/bcm2838_genet.h | 77 +++++++++++++++++++++++++++++++++-
- 2 files changed, 113 insertions(+), 1 deletion(-)
+ hw/arm/bcm2838_pcie.c         | 74 +++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build            |  5 ++-
+ hw/arm/trace-events           |  4 ++
+ include/hw/arm/bcm2838_pcie.h | 53 +++++++++++++++++++++++++
+ 4 files changed, 135 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/bcm2838_pcie.c
+ create mode 100644 include/hw/arm/bcm2838_pcie.h
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index 4420486e00..0d98d1b30e 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -15,9 +15,46 @@
- #include "hw/irq.h"
- #include "net/checksum.h"
- #include "sysemu/dma.h"
-+#include "hw/registerfields.h"
- #include "hw/net/bcm2838_genet.h"
- #include "trace.h"
+diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
+new file mode 100644
+index 0000000000..3b4373c6a6
+--- /dev/null
++++ b/hw/arm/bcm2838_pcie.c
+@@ -0,0 +1,74 @@
++/*
++ * BCM2838 PCIe Root Complex emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "hw/irq.h"
++#include "hw/pci-host/gpex.h"
++#include "hw/qdev-properties.h"
++#include "migration/vmstate.h"
++#include "qemu/module.h"
++#include "hw/arm/bcm2838_pcie.h"
++#include "trace.h"
++
++/*
++ * RC root part (D0:F0)
++ */
++
++static void bcm2838_pcie_root_reg_reset(PCIDevice *dev)
++{
++    BCM2838PcieRootState *s = BCM2838_PCIE_ROOT(dev);
++    memset(s->regs, 0xFF, sizeof(s->regs));
++}
++
++static void bcm2838_pcie_root_realize(PCIDevice *dev, Error **errp) {
++    bcm2838_pcie_root_reg_reset(dev);
++}
++
++static void bcm2838_pcie_root_init(Object *obj)
++{
++    PCIBridge *br = PCI_BRIDGE(obj);
++    br->bus_name = "pcie.1";
++}
++
++static void bcm2838_pcie_root_class_init(ObjectClass *class, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(class);
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(class);
++    BCM2838PcieRootClass *brpc = BCM2838_PCIE_ROOT_CLASS(class);
++
++    dc->desc = "BCM2711 PCIe Bridge";
++    /*
++     * PCI-facing part of the host bridge, not usable without the host-facing
++     * part, which can't be device_add'ed.
++     */
++    dc->user_creatable = false;
++    k->vendor_id = BCM2838_PCIE_VENDOR_ID;
++    k->device_id = BCM2838_PCIE_DEVICE_ID;
++    k->revision = BCM2838_PCIE_REVISION;
++    brpc->parent_obj.exp_offset = BCM2838_PCIE_EXP_CAP_OFFSET;
++    brpc->parent_obj.aer_offset = BCM2838_PCIE_AER_CAP_OFFSET;
++    brpc->parent_realize = k->realize;
++    k->realize = bcm2838_pcie_root_realize;
++}
++
++static const TypeInfo bcm2838_pcie_root_info = {
++    .name = TYPE_BCM2838_PCIE_ROOT,
++    .parent = TYPE_PCIE_ROOT_PORT,
++    .instance_size = sizeof(BCM2838PcieRootState),
++    .instance_init = bcm2838_pcie_root_init,
++    .class_init = bcm2838_pcie_root_class_init,
++};
++
++static void bcm2838_pcie_register(void)
++{
++    type_register_static(&bcm2838_pcie_root_info);
++}
++
++type_init(bcm2838_pcie_register)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 27e6797de2..b26ed13c6f 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -39,7 +39,10 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubi
+ arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
+ arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
+ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
+-arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c', 'raspi4b.c'))
++arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files(
++  'bcm2838.c',
++  'bcm2838_pcie.c',
++  'raspi4b.c'))
+ arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 4f0167e638..6cfab31539 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -55,5 +55,9 @@ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s
+ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+ smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint16_t vmid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
  
-+REG32(GENET_SYS_REV_CTRL,              0)
-+FIELD(GENET_SYS_REV_CTRL, GPHY_REV,    0, 16)
-+FIELD(GENET_SYS_REV_CTRL, MINOR_REV,   16, 4)
-+FIELD(GENET_SYS_REV_CTRL, RSVD_20_23,  20, 4)
-+FIELD(GENET_SYS_REV_CTRL, MAJOR_REV,   24, 4)
-+FIELD(GENET_SYS_REV_CTRL, RSVD_28_31,  28, 4)
++# bcm2838_pcie.c
++bcm2838_pcie_host_read(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
++bcm2838_pcie_host_write(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
 +
-+REG32(GENET_INTRL_0,                0)
-+FIELD(GENET_INTRL_0, SCB,           0, 1)
-+FIELD(GENET_INTRL_0, EPHY,          1, 1)
-+FIELD(GENET_INTRL_0, PHY_DET_R,     2, 1)
-+FIELD(GENET_INTRL_0, PHY_DET_F,     3, 1)
-+FIELD(GENET_INTRL_0, LINK_UP,       4, 1)
-+FIELD(GENET_INTRL_0, LINK_DOWN,     5, 1)
-+FIELD(GENET_INTRL_0, UMAC,          6, 1)
-+FIELD(GENET_INTRL_0, UMAC_TSV,      7, 1)
-+FIELD(GENET_INTRL_0, TBUF_UNDERRUN, 8, 1)
-+FIELD(GENET_INTRL_0, RBUF_OVERFLOW, 9, 1)
-+FIELD(GENET_INTRL_0, HFB_SM,        10, 1)
-+FIELD(GENET_INTRL_0, HFB_MM,        11, 1)
-+FIELD(GENET_INTRL_0, MPD_R,         12, 1)
-+FIELD(GENET_INTRL_0, RXDMA_MBDONE,  13, 1)
-+FIELD(GENET_INTRL_0, RXDMA_PDONE,   14, 1)
-+FIELD(GENET_INTRL_0, RXDMA_BDONE,   15, 1)
-+FIELD(GENET_INTRL_0, TXDMA_MBDONE,  16, 1)
-+FIELD(GENET_INTRL_0, TXDMA_PDONE,   17, 1)
-+FIELD(GENET_INTRL_0, TXDMA_BDONE,   18, 1)
-+FIELD(GENET_INTRL_0, RSVD_19_22,    19, 4)
-+FIELD(GENET_INTRL_0, MDIO_DONE,     23, 1)
-+FIELD(GENET_INTRL_0, MDIO_ERROR,    24, 1)
-+FIELD(GENET_INTRL_0, RSVD_25_31,    25, 4)
+ # bcm2838.c
+ bcm2838_gic_set_irq(int irq, int level) "gic irq:%d lvl:%d"
+diff --git a/include/hw/arm/bcm2838_pcie.h b/include/hw/arm/bcm2838_pcie.h
+new file mode 100644
+index 0000000000..39828f817f
+--- /dev/null
++++ b/include/hw/arm/bcm2838_pcie.h
+@@ -0,0 +1,53 @@
++/*
++ * BCM2838 PCIe Root Complex emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+REG32(GENET_INTRL_1,              0)
-+FIELD(GENET_INTRL_1, TX_INTRS,    0, 16)
-+FIELD(GENET_INTRL_1, RX_INTRS,    16, 16)
++#ifndef BCM2838_PCIE_H
++#define BCM2838_PCIE_H
 +
- 
- static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
- {
-diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
-index d166a5c24c..f583818399 100644
---- a/include/hw/net/bcm2838_genet.h
-+++ b/include/hw/net/bcm2838_genet.h
-@@ -19,7 +19,82 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
- #define BCM2838_GENET_REV_MINOR         0
- 
- typedef struct {
--    uint8_t stub_area[0x10000]; /* temporary stub */
-+    uint32_t rev_ctrl;
-+    uint32_t port_ctrl;
-+    uint32_t rbuf_flush_ctrl;
-+    uint32_t tbuf_flush_ctrl;
-+    uint32_t reserved_0x10[12];
-+} BCM2838GenetRegsSys;
++#include "exec/hwaddr.h"
++#include "hw/sysbus.h"
++#include "hw/pci/pci.h"
++#include "hw/pci/pcie_host.h"
++#include "hw/pci/pcie_port.h"
++#include "qom/object.h"
 +
-+typedef struct {
-+    uint32_t reserved_0x0[16];
-+} BCM2838GenetRegsGrBridge;
++#define TYPE_BCM2838_PCIE_ROOT "bcm2838-pcie-root"
++OBJECT_DECLARE_TYPE(BCM2838PcieRootState, BCM2838PcieRootClass,
++                    BCM2838_PCIE_ROOT)
 +
-+typedef struct {
-+    uint32_t pwr_mgmt;
-+    uint32_t reserved_0x4[2];
-+    uint32_t rgmii_oob_ctrl;
-+    uint32_t reserved_0x10[3];
-+    uint32_t gphy_ctrl;
-+    uint32_t reserved_0x20[24];
-+} BCM2838GenetRegsExt;
++#define BCM2838_PCIE_VENDOR_ID      0x14E4
++#define BCM2838_PCIE_DEVICE_ID      0x2711
++#define BCM2838_PCIE_REVISION       20
 +
-+typedef struct {
-+    uint32_t stat;
-+    uint32_t set;
-+    uint32_t clear;
-+    uint32_t mask_status;
-+    uint32_t mask_set;
-+    uint32_t mask_clear;
-+    uint32_t reserved_0x18[10];
-+} BCM2838GenetRegsIntrl0;
++#define BCM2838_PCIE_REGS_SIZE      0x9310
++#define BCM2838_PCIE_NUM_IRQS       4
 +
-+typedef struct {
-+    uint32_t stat;
-+    uint32_t set;
-+    uint32_t clear;
-+    uint32_t mask_status;
-+    uint32_t mask_set;
-+    uint32_t mask_clear;
-+    uint32_t reserved_0x18[10];
-+} BCM2838GenetRegsIntrl1;
++#define BCM2838_PCIE_EXP_CAP_OFFSET 0xAC
++#define BCM2838_PCIE_AER_CAP_OFFSET 0x100
 +
-+typedef struct {
-+    uint32_t ctrl;
-+    uint32_t reserved_0x4[2];
-+    uint32_t status;
-+    uint32_t reserved_0x10;
-+    uint32_t chk_ctrl;
-+    uint32_t reserved_0x18[31];
-+    uint32_t ovfl_cnt;
-+    uint32_t err_cnt;
-+    uint32_t energy_ctrl;
-+    uint32_t reserved_0xA0[5];
-+    uint32_t size_ctrl;
-+    uint32_t reserved_0xB8[18];
-+} BCM2838GenetRegsRbuf;
++#define BCM2838_PCIE_EXT_CFG_DATA   0x8000
++#define BCM2838_PCIE_EXT_CFG_INDEX  0x9000
 +
-+typedef struct {
-+    uint32_t ctrl;
-+    uint32_t reserved_0x4[2];
-+    uint32_t bp_mc;
-+    uint32_t reserved_0x10;
-+    uint32_t energy_ctrl;
-+    uint32_t reserved_0x18[58];
-+} BCM2838GenetRegsTbuf;
++struct BCM2838PcieRootState {
++    /*< private >*/
++    PCIESlot parent_obj;
 +
-+typedef struct {
-+    BCM2838GenetRegsSys sys;
-+    BCM2838GenetRegsGrBridge gr_bridge;
-+    BCM2838GenetRegsExt ext;
-+    uint32_t reserved_0x100[64];
-+    BCM2838GenetRegsIntrl0 intrl0;
-+    BCM2838GenetRegsIntrl1 intrl1;
-+    uint32_t reserved_0x280[32];
-+    BCM2838GenetRegsRbuf rbuf;
-+    uint32_t reserved_0x400[128];
-+    BCM2838GenetRegsTbuf tbuf;
-+    uint32_t reserved_0x700[64];
- } BCM2838GenetRegs;
- 
- struct BCM2838GenetState {
++    /*< public >*/
++    uint8_t regs[BCM2838_PCIE_REGS_SIZE - PCIE_CONFIG_SPACE_SIZE];
++};
++
++struct BCM2838PcieRootClass {
++    /*< private >*/
++    PCIERootPortClass parent_obj;
++
++    /*< public >*/
++    void (*parent_realize)(PCIDevice *dev, Error **errp);
++};
++
++
++#endif /* BCM2838_PCIE_H */
 -- 
 2.34.1
 

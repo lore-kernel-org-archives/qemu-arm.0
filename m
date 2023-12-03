@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334365ejb;
-        Sun, 3 Dec 2023 13:51:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE5e+Ki4ECfIeZhv3/pF69eoywjZc4Gh2gd4tDRlXWs5E/epiLZJGihc4nEqI0iAzwa9My9
-X-Received: by 2002:a5b:48c:0:b0:db5:37c7:a0cb with SMTP id n12-20020a5b048c000000b00db537c7a0cbmr2524670ybp.11.1701640289139;
-        Sun, 03 Dec 2023 13:51:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701640289; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334384ejb;
+        Sun, 3 Dec 2023 13:51:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE2eW4Iaxde8YQ7YQdqBKmVJA3NdZ+BKeMOF+gZWHHSh9kqx46xAEK3j65danEaI4jh4gxn
+X-Received: by 2002:a05:620a:800f:b0:77e:fba3:3e63 with SMTP id ee15-20020a05620a800f00b0077efba33e63mr5652166qkb.44.1701640293438;
+        Sun, 03 Dec 2023 13:51:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701640293; cv=none;
         d=google.com; s=arc-20160816;
-        b=BO30B7kxgtm6IfzJMeY6jpFj5T1UNMqSfl/LaxJpuJymHRpjwgyXaD8KN55ySnmLKc
-         CIf6nwCroujuNkzf61IW7Zpqt7x5gLzji04qniwNrrxPXkCFbK/juCp6d9WDaFAWJwIv
-         zFQYafGswsXuUUGpygT8Z3gsRHKD0sbxUryC79dtG5nuGPORkYCmTt1pCnzgiFX0hajI
-         TK8YUYir/aatDE3kNgLCO1ACpbOCch6+bmGVsf6c3LibZTiL3LFYpPbo0lhGuSnDPgMQ
-         3BWwqDlaL3XERosGHktHnEqkjwNiF2/daEHMKdsqplWftAwteTV8v5QRsAasaSdmNQgt
-         YUMg==
+        b=M1i0eMDsqpMuGymYmphVPS0KMU4r4Nam8GvZpB4kNpyN4swSSgdYznwfSIyktHQNbA
+         p2F9uARLpjMpB/SsVKQ6BIbwApuDo4KEa6kNs7HhQyNUg89JDTEffQkD/38HhG1zkHju
+         yJZR4wPZ/KiL7+twr/cQEd0yR3Ii8mw5Fa78ldT3UepPEmudYWt7NulQmKQ6hqW+x+B0
+         q7Tvqsn6xUp44tr1j1hEMuZh2JCW2WprLzxUqoADQd+ifPmilfmnVGvsTDBZgX3jRU4X
+         RYZIIEZm+W3+5loGUV3rMvBVNfVBpu+GrgSy341eLIsxCdbbXaMKcAjdOQVHg2J6fV1R
+         wxrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KEcoat7SC4jN+C9La2rhXqQ9NFVHbLoJsMPiUtjdyFI=;
+        bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=vKSEfix8FUkuFND/M0PdQHIBDcPIwtguHzao+hgD+BBiPj4gdHkNOFp2pvrDhmCt0v
-         SrozW5ochtddF8lMffox0F2orcIOZ7Hb+BCGIiWTMisJqN6XdQKi33WwkM4zxu2j+Tbo
-         VtGY89bFcZDXgP+nQqH0EI0QU45Y/67jeaDreosospX82/SKREMePRiADhei/GAIT2qS
-         DFpkJFVjQRFgP71oECENRGyjNG0ga8m6nqyM0XKkwqMmyzbOF3FGLv+Yanr3rLm2DcyL
-         dP9KhOpOOkwq3PmGrSqqvjQZgzrkPnvyhu49ytMKVN9xmZMp8Fmpk5G4n91ga1MsOUv7
-         pP5w==
+        b=VEhW6gPaavbDf+sKOk6EeY0lzVobjDZKO2nVphFPjdC+wEHMwWt5fQOe58/ZJz5a1v
+         UfXPSyUbOB6kw7apRGYEbw7Nh48EzjnX8IsS8+4Dg8XnjjpgAAiWeXOvTF2BLXHZ54f9
+         BZ9BRTZP4vccSRCZ1ulO6iwXRXIV/7ypRZnQBszxYpYmN0RRj/4egG+j7SKJ3x27ohdD
+         BDrqVJznzc7KfZQRqq/jPNJmXnO3wuS3PYfDdJsBYmywM2jmp5BlzO7AP36IRgI1YsAP
+         Q5QG5cc4VeL+FNJ6zrqNBPX83ZRTxD/UDerNa/V5L8AJ5+rC/+1bfEVOWteU1bhPWESu
+         uteQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ieQ497c9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lAKGaC8l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq27-20020a05622a1c1b00b00423a2b349b6si8699245qtb.346.2023.12.03.13.51.28
+        by mx.google.com with ESMTPS id t11-20020a05620a450b00b0077dbbba4973si8734107qkp.147.2023.12.03.13.51.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:51:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 13:51:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ieQ497c9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lAKGaC8l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9uLl-0003fQ-At; Sun, 03 Dec 2023 16:50:05 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r9uLd-0003UJ-Hc; Sun, 03 Dec 2023 16:49:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLj-0003bO-Cs; Sun, 03 Dec 2023 16:50:03 -0500
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ id 1r9uLb-0003RH-Jm; Sun, 03 Dec 2023 16:49:55 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLg-0008Sr-SR; Sun, 03 Dec 2023 16:50:03 -0500
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-5d7a47d06eeso10987757b3.1; 
- Sun, 03 Dec 2023 13:50:00 -0800 (PST)
+ id 1r9uLZ-0008Qa-Vw; Sun, 03 Dec 2023 16:49:55 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-5d40c728fc4so18874517b3.1; 
+ Sun, 03 Dec 2023 13:49:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701640199; x=1702244999; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701640192; x=1702244992; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KEcoat7SC4jN+C9La2rhXqQ9NFVHbLoJsMPiUtjdyFI=;
- b=ieQ497c9S1FrRFXimiufMqvpDj/WkfZ6TdeYv7QvQBgLuVU2KUvmNuKVOiID9PaOKk
- b8qu/jKx6CvXUILYLNo1UaHds95eIuL5z90kq8ODzV6X4nN0EVfbzfO61cR+D0EWZtC8
- IzXfkyJ0BhB3n5cUmkeLarW7SmD+29QHboBoZI0TIuVWWuTUL5InC564y5Tq5NOnGdqG
- i0GkJkTzJCq+6bRYGLH0R5RT9QYYDyJKz044rCiXALlSYQKRCwz8Ni/wSlZ3m18ws4B1
- 9ghauNh0EiJ56qFmq7UskCfrfB7WFk6oE+Lpk1TI8Zmm1fDjze6CyPLR2H2xKclSBeVH
- vBhg==
+ bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
+ b=lAKGaC8lgskvCZPR1ARTLa2JKPifGGemByfzeQi0QTOiKnaUgrUMn3BINUZxuGbtUY
+ uT+DQF0xYDjdWTFo2bYyE+FLxzaqJ2z8a42x2J+i/Uvi2zVrvqwdY+LrztN0Ckuhm9GW
+ SstFQxzwHhFcW8ySbGVrmpbRlV/0UpJA2nwyTHg4s7cn36adFEPcnVlIdOv3ARJ7S6sq
+ NJe8vC1rz1rkOQMBlXP8XRZMo6RClTLoLp1QflZdztAQnTs3Ywtm+hZTQDKlt2rcN4iH
+ nDGw5qtRCoUe6ZDQlDSDhfuAXlmzqAMbKplq3kfJ/UsYnRUor5tzu2HaEwW5+Ziq3neD
+ /l7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701640199; x=1702244999;
+ d=1e100.net; s=20230601; t=1701640192; x=1702244992;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KEcoat7SC4jN+C9La2rhXqQ9NFVHbLoJsMPiUtjdyFI=;
- b=CcO+Npam6iPbC7QqxP4GGxQPU7c2m5uxM2YGHwpha0k1iKTl9yf+G549p1n8izSzn6
- eiVzirBSLbYAaiVtREcl7fiPYPsTL31ictT55ShNAAqSFhh+jFuPexnjf8duog63hsSB
- P5b/Xc8gDtc7vK2F6yKsrhQ9iRs4h0A6npf6uPBhkrsrXcjBqYgIQztOOzVhXHMq38Mg
- ROD6pWTl1uxN4WXki7iwTG1N0sbCMKGNdynZl00xfAmpMYz2KS//673sYbUyfLrfIusn
- k4NkYCN8V3hFOkRG1xwYvDrX/CDmbbkw4yPjIYzI3Nt12TPqx13OS35hqA4Tkqn8deDx
- OzNw==
-X-Gm-Message-State: AOJu0YxV1berYX6kqDhB2IVub4yI5OGRROl9LerzntjJY42zpE9/s4u8
- f3ixUfPMlKgurNiqMXZc3LVMI/dwThyTPw==
-X-Received: by 2002:a81:bd4d:0:b0:5d7:f8da:c190 with SMTP id
- n13-20020a81bd4d000000b005d7f8dac190mr1043861ywk.92.1701640199452; 
- Sun, 03 Dec 2023 13:49:59 -0800 (PST)
+ bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
+ b=WaMIMjRPURCIdsvup/AeAkOMQunt+Ico9eS+kTrkEbsa9dHkKWVzQpJZ9O2aF25EpE
+ 0NjvxcxkdthRuJ142rECUty867RdxAtJdIFXHlgHemJJZak0FlWaSc53i14jEUKbSp0G
+ tmGk9vhV/FMnyTBZqoq/b6dTkJ7PoCnq4M7Kni94XBnm395zHazjEw9WHCSLMm2lNve6
+ noLykRplYs1XLjAEHsBYOBgOxEfAb+IZL3jTLtiwdIoGNIpElK9+R721izeXhEd4n+ms
+ DSivEtN6GfoCNMUyrogDX+RyOnQDynOcVNWYc95Aag0cCXI3fT/J/rdUpVPN3bTio1sI
+ x8oA==
+X-Gm-Message-State: AOJu0Yz3+jAx2dXwiqU7bapvVVOiQ3oFKj/bII3/9e2+kSRF+9d3xXWz
+ RRszK/ngu8vrZwRKCFnVDZ7ObIcYuqXBGQ==
+X-Received: by 2002:a81:9955:0:b0:5d6:2ebb:3b5d with SMTP id
+ q82-20020a819955000000b005d62ebb3b5dmr1887999ywg.21.1701640192348; 
+ Sun, 03 Dec 2023 13:49:52 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.58
+ z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:49:59 -0800 (PST)
+ Sun, 03 Dec 2023 13:49:52 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 40/45] Add mailbox property tests. Part 1
-Date: Sun,  3 Dec 2023 15:49:05 -0600
-Message-Id: <20231203214910.1364468-41-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 33/45] Connect RNG200, PCIE and GENET to GIC
+Date: Sun,  3 Dec 2023 15:48:58 -0600
+Message-Id: <20231203214910.1364468-34-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203214910.1364468-40-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203214910.1364468-33-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-2-sergey.kambalin@auriga.com>
@@ -132,17 +132,10 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-31-sergey.kambalin@auriga.com>
  <20231203214910.1364468-32-sergey.kambalin@auriga.com>
  <20231203214910.1364468-33-sergey.kambalin@auriga.com>
- <20231203214910.1364468-34-sergey.kambalin@auriga.com>
- <20231203214910.1364468-35-sergey.kambalin@auriga.com>
- <20231203214910.1364468-36-sergey.kambalin@auriga.com>
- <20231203214910.1364468-37-sergey.kambalin@auriga.com>
- <20231203214910.1364468-38-sergey.kambalin@auriga.com>
- <20231203214910.1364468-39-sergey.kambalin@auriga.com>
- <20231203214910.1364468-40-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -151,362 +144,77 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SaTSoZZFUsY1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wSGZZDeL9y1a
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.c            |  34 ++--
- tests/qtest/bcm2838-mailbox.h            |  18 +-
- tests/qtest/bcm2838-mbox-property-test.c | 206 +++++++++++++++++++++++
- tests/qtest/meson.build                  |   2 +-
- 4 files changed, 220 insertions(+), 40 deletions(-)
- create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
+ hw/arm/bcm2838.c                     | 19 +++++++++++++++++++
+ include/hw/arm/bcm2838_peripherals.h |  2 ++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/tests/qtest/bcm2838-mailbox.c b/tests/qtest/bcm2838-mailbox.c
-index 2edc24e15e..4b160cd56c 100644
---- a/tests/qtest/bcm2838-mailbox.c
-+++ b/tests/qtest/bcm2838-mailbox.c
-@@ -12,6 +12,10 @@
- #include "libqtest-single.h"
- #include "bcm2838-mailbox.h"
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+index 89cd9d5d8c..83f84b22ad 100644
+--- a/hw/arm/bcm2838.c
++++ b/hw/arm/bcm2838.c
+@@ -210,6 +210,10 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->dwc2), 0,
+                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DWC2));
  
-+REG32(MBOX_EXCHNG_REG,          0)
-+FIELD(MBOX_EXCHNG_REG, CHANNEL, 0, 4)
-+FIELD(MBOX_EXCHNG_REG, DATA,    4, 28)
++    /* Connect RNG200 to the interrupt controller */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->rng200), 0,
++                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_RNG200));
 +
+     /* Connect DMA 0-6 to the interrupt controller */
+     for (int_n = GIC_SPI_INTERRUPT_DMA_0; int_n <= GIC_SPI_INTERRUPT_DMA_6;
+          int_n++) {
+@@ -232,6 +236,21 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out(dma_9_10_irq_orgate, 0,
+                           qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DMA_9_10));
  
- static uint32_t qtest_mbox0_read_reg32(QTestState *s, uint32_t offset)
- {
-@@ -25,47 +29,33 @@ static void qtest_mbox1_write_reg32(QTestState *s, uint32_t offset, uint32_t val
++    /* Connect PCIe host bridge to the interrupt controller */
++    for (n = 0; n < BCM2838_PCIE_NUM_IRQS; n++) {
++        int_n = GIC_SPI_INTERRUPT_PCI_INT_A + n;
++        sysbus_connect_irq(SYS_BUS_DEVICE(&ps->pcie_host), n,
++                           qdev_get_gpio_in(gicdev, int_n));
++        bcm2838_pcie_host_set_irq_num(BCM2838_PCIE_HOST(&ps->pcie_host), n,
++                                      int_n);
++    }
++
++    /* Connect Gigabit Ethernet controller to the interrupt controller */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 0,
++                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_A));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 1,
++                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_B));
++
+     /* Pass through inbound GPIO lines to the GIC */
+     qdev_init_gpio_in(dev, bcm2838_gic_set_irq, GIC_NUM_IRQS);
  
- static void qtest_mbox1_write(QTestState *s, uint8_t channel, uint32_t data)
- {
--    uint32_t reg;
-+    uint32_t mbox_reg = 0;
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 1cfcf5dcce..cdeb892f04 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -17,6 +17,8 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/gpio/bcm2838_gpio.h"
  
--    reg = FIELD_DP32(reg, MBOX_WRITE_REG, CHANNEL, channel);
--    reg = FIELD_DP32(reg, MBOX_WRITE_REG, DATA, data);
--    qtest_mbox1_write_reg32(s, MBOX_REG_WRITE, reg);
-+    mbox_reg = FIELD_DP32(mbox_reg, MBOX_EXCHNG_REG, CHANNEL, channel);
-+    mbox_reg = FIELD_DP32(mbox_reg, MBOX_EXCHNG_REG, DATA, data);
-+    qtest_mbox1_write_reg32(s, MBOX_REG_WRITE, mbox_reg);
- }
- 
- int qtest_mbox0_has_data(QTestState *s) {
-     return !(qtest_mbox0_read_reg32(s, MBOX_REG_STATUS) & MBOX_READ_EMPTY);
- }
- 
--int mbox0_has_data(void) {
--    return qtest_mbox0_has_data(global_qtest);
--}
--
- void qtest_mbox0_read_message(QTestState *s,
-                               uint8_t channel,
-                               void *msgbuf,
-                               size_t msgbuf_size)
- {
--    uint32_t reg;
-+    uint32_t mbox_reg;
-     uint32_t msgaddr;
- 
-     g_assert(qtest_mbox0_has_data(s));
--    reg = qtest_mbox0_read_reg32(s, MBOX_REG_READ);
--    g_assert_cmphex(FIELD_EX32(reg, MBOX_WRITE_REG, CHANNEL), ==, channel);
--    msgaddr = FIELD_EX32(reg, MBOX_WRITE_REG, DATA) << 4;
-+    mbox_reg = qtest_mbox0_read_reg32(s, MBOX_REG_READ);
-+    g_assert_cmphex(FIELD_EX32(mbox_reg, MBOX_EXCHNG_REG, CHANNEL), ==, channel);
-+    msgaddr = FIELD_EX32(mbox_reg, MBOX_EXCHNG_REG, DATA) << 4;
-     qtest_memread(s, msgaddr, msgbuf, msgbuf_size);
- }
- 
--void mbox0_read_message(uint8_t channel, void *msgbuf, size_t msgbuf_size) {
--    qtest_mbox0_read_message(global_qtest, channel, msgbuf, msgbuf_size);
--}
--
- void qtest_mbox1_write_message(QTestState *s, uint8_t channel, uint32_t msg_addr)
- {
-     qtest_mbox1_write(s, channel, msg_addr >> 4);
- }
--
--
--void mbox1_write_message(uint8_t channel, uint32_t msg_addr)
--{
--    qtest_mbox1_write_message(global_qtest, channel, msg_addr);
--}
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
-index 2b140a5d32..7e660e65a7 100644
---- a/tests/qtest/bcm2838-mailbox.h
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -77,7 +77,7 @@
- #define TAG_SET_GPIO_STATE         0x00038041
- #define TAG_INITIALIZE_VCHIQ       0x00048010
- 
--#define BOARD_REVISION    11546898
-+#define BOARD_REVISION    0xB03115
- #define FIRMWARE_REVISION 346337
- #define FIRMWARE_VARIANT  0x77777777 /* TODO: Find the real value */
- 
-@@ -147,22 +147,6 @@
- /* Used to test stubs that don't perform actual work */
- #define DUMMY_VALUE 0x12345678
- 
--REG32(MBOX_WRITE_REG,          0)
--FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
--FIELD(MBOX_WRITE_REG, DATA,    4, 28)
--
--REG32(MBOX_SIZE_STAT,          0)
--FIELD(MBOX_SIZE_STAT, SIZE,    0, 30)
--FIELD(MBOX_SIZE_STAT, SUCCESS, 30, 1)
--
--REG32(SET_DEVICE_POWER_STATE_CMD,        0)
--FIELD(SET_DEVICE_POWER_STATE_CMD, EN,    0, 1)
--FIELD(SET_DEVICE_POWER_STATE_CMD, WAIT,  1, 1)
--
--REG32(GET_CLOCK_STATE_CMD,        0)
--FIELD(GET_CLOCK_STATE_CMD, EN,    0, 1)
--FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
--
- typedef struct {
-     uint32_t size;
-     uint32_t req_resp_code;
-diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
-new file mode 100644
-index 0000000000..80746dbb95
---- /dev/null
-+++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -0,0 +1,206 @@
-+/*
-+ * Tests set for BCM2838 mailbox property interface.
-+ *
-+ * Copyright (c) 2022 Auriga
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
++#define GENET_OFFSET            0x1580000
 +
-+#include "qemu/osdep.h"
-+#include "hw/registerfields.h"
-+#include "libqtest-single.h"
-+#include "bcm2838-mailbox.h"
-+
-+REG32(MBOX_SIZE_STAT,          0)
-+FIELD(MBOX_SIZE_STAT, SIZE,    0, 31)
-+FIELD(MBOX_SIZE_STAT, SUCCESS, 31, 1)
-+
-+REG32(SET_DEVICE_POWER_STATE_CMD,        0)
-+FIELD(SET_DEVICE_POWER_STATE_CMD, EN,    0, 1)
-+FIELD(SET_DEVICE_POWER_STATE_CMD, WAIT,  1, 1)
-+
-+REG32(GET_CLOCK_STATE_CMD,        0)
-+FIELD(GET_CLOCK_STATE_CMD, EN,    0, 1)
-+FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
-+
-+#define MBOX_TEST_MESSAGE_ADDRESS 0x10000000
-+
-+#define TEST_TAG(x) TAG_ ## x
-+#define TEST_TAG_TYPE(x) TAG_##x##_t
-+
-+#define TEST_FN_NAME(test, subtest) \
-+    test ## _ ## subtest ## _test
-+
-+#define SETUP_FN_NAME(test, subtest) \
-+    test ## _ ## subtest ## _setup
-+
-+#define CHECK_FN_NAME(test, subtest) \
-+    test ## _ ## subtest ## _spec_check
-+
-+#define DECLARE_TEST_CASE_SETUP(testname, ...)              \
-+    void SETUP_FN_NAME(testname, __VA_ARGS__)               \
-+                             (TEST_TAG_TYPE(testname) * tag)
-+
-+/*----------------------------------------------------------------------------*/
-+#define DECLARE_TEST_CASE(testname, ...)                                       \
-+    __attribute__((weak))                                                      \
-+    void SETUP_FN_NAME(testname, __VA_ARGS__)                                  \
-+                      (TEST_TAG_TYPE(testname) * tag);                         \
-+    static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-+                             (TEST_TAG_TYPE(testname) *tag);                   \
-+    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
-+        struct {                                                               \
-+            MboxBufHeader header;                                              \
-+            TEST_TAG_TYPE(testname) tag;                                       \
-+            uint32_t end_tag;                                                  \
-+        } mailbox_buffer = { 0 };                                              \
-+                                                                               \
-+        QTestState *qts = qtest_init("-machine raspi4b-2g");                   \
-+                                                                               \
-+        mailbox_buffer.header.size = sizeof(mailbox_buffer);                   \
-+        mailbox_buffer.header.req_resp_code = MBOX_PROCESS_REQUEST;            \
-+                                                                               \
-+        mailbox_buffer.tag.id = TEST_TAG(testname);                            \
-+        mailbox_buffer.tag.value_buffer_size = MAX(                            \
-+            sizeof(mailbox_buffer.tag.request.value),                          \
-+            sizeof(mailbox_buffer.tag.response.value));                        \
-+        mailbox_buffer.tag.request.zero = 0;                                   \
-+                                                                               \
-+        mailbox_buffer.end_tag = TAG_END;                                      \
-+                                                                               \
-+        if (SETUP_FN_NAME(testname, __VA_ARGS__)) {                            \
-+            SETUP_FN_NAME(testname, __VA_ARGS__)(&mailbox_buffer.tag);         \
-+        }                                                                      \
-+                                                                               \
-+        qtest_memwrite(qts, MBOX_TEST_MESSAGE_ADDRESS,                         \
-+                    &mailbox_buffer, sizeof(mailbox_buffer));                  \
-+        qtest_mbox1_write_message(qts, MBOX_CHANNEL_ID_PROPERTY,               \
-+                            MBOX_TEST_MESSAGE_ADDRESS);                        \
-+                                                                               \
-+        qtest_mbox0_read_message(qts, MBOX_CHANNEL_ID_PROPERTY,                \
-+                            &mailbox_buffer, sizeof(mailbox_buffer));          \
-+                                                                               \
-+        g_assert_cmphex(mailbox_buffer.header.req_resp_code, ==, MBOX_SUCCESS);\
-+                                                                               \
-+        g_assert_cmphex(mailbox_buffer.tag.id, ==, TEST_TAG(testname));        \
-+                                                                               \
-+        uint32_t size = FIELD_EX32(mailbox_buffer.tag.response.size_stat,      \
-+                                   MBOX_SIZE_STAT, SIZE);                      \
-+        uint32_t success = FIELD_EX32(mailbox_buffer.tag.response.size_stat,   \
-+                                      MBOX_SIZE_STAT, SUCCESS);                \
-+        g_assert_cmpint(size, ==, sizeof(mailbox_buffer.tag.response.value));  \
-+        g_assert_cmpint(success, ==, 1);                                       \
-+                                                                               \
-+        CHECK_FN_NAME(testname, __VA_ARGS__)(&mailbox_buffer.tag);             \
-+                                                                               \
-+        qtest_quit(qts);                                                       \
-+    }                                                                          \
-+    static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-+                             (TEST_TAG_TYPE(testname) * tag)
-+
-+/*----------------------------------------------------------------------------*/
-+
-+#define QTEST_ADD_TEST_CASE(testname, ...)                                     \
-+    qtest_add_func(stringify(/bcm2838/mbox/property/                           \
-+                   TEST_FN_NAME(testname, __VA_ARGS__)-test),                  \
-+                   TEST_FN_NAME(testname, __VA_ARGS__))
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FIRMWARE_REVISION) {
-+    g_assert_cmpint(tag->response.value.revision, ==, FIRMWARE_REVISION);
-+}
-+
-+// /*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_BOARD_REVISION) {
-+    g_assert_cmpint(tag->response.value.revision, ==, BOARD_REVISION);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_ARM_MEMORY) {
-+    g_assert_cmphex(tag->response.value.base, ==, ARM_MEMORY_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, ARM_MEMORY_SIZE);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_VC_MEMORY) {
-+    g_assert_cmphex(tag->response.value.base, ==, VC_MEMORY_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, VC_MEMORY_SIZE);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_DEVICE_POWER_STATE) {
-+    uint32_t enabled =
-+        FIELD_EX32(tag->response.value.cmd, SET_DEVICE_POWER_STATE_CMD, EN);
-+    uint32_t wait =
-+        FIELD_EX32(tag->response.value.cmd, SET_DEVICE_POWER_STATE_CMD, WAIT);
-+    g_assert_cmphex(tag->response.value.device_id, ==, DEVICE_ID_UART0);
-+    g_assert_cmpint(enabled, ==, 1);
-+    g_assert_cmpint(wait, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_DEVICE_POWER_STATE) {
-+    tag->request.value.device_id = DEVICE_ID_UART0;
-+    tag->response.value.cmd =
-+        FIELD_DP32(tag->response.value.cmd, SET_DEVICE_POWER_STATE_CMD, EN, 1);
-+    tag->response.value.cmd =
-+        FIELD_DP32(tag->response.value.cmd, SET_DEVICE_POWER_STATE_CMD, WAIT, 1);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_STATE) {
-+    uint32_t enabled =
-+        FIELD_EX32(tag->response.value.cmd, GET_CLOCK_STATE_CMD, EN);
-+    uint32_t not_present =
-+        FIELD_EX32(tag->response.value.cmd, GET_CLOCK_STATE_CMD, NPRES);
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(enabled, ==, 1);
-+    g_assert_cmphex(not_present, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_STATE) {
-+   tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, EMMC) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, EMMC) {
-+    tag->request.value.clock_id = CLOCK_ID_EMMC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, EMMC) {
-+    tag->request.value.clock_id = CLOCK_ID_EMMC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
-+    tag->request.value.clock_id = CLOCK_ID_EMMC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    QTEST_ADD_TEST_CASE(GET_FIRMWARE_REVISION);
-+    QTEST_ADD_TEST_CASE(GET_BOARD_REVISION);
-+    QTEST_ADD_TEST_CASE(GET_ARM_MEMORY);
-+    QTEST_ADD_TEST_CASE(GET_VC_MEMORY);
-+    QTEST_ADD_TEST_CASE(SET_DEVICE_POWER_STATE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_STATE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 92eba5ac99..2351e99fd5 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -217,7 +217,7 @@ qtests_aarch64 = \
-     ['tpm-tis-device-test', 'tpm-tis-device-swtpm-test'] : []) +                                         \
-   (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test', 'xlnx-versal-trng-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
-+  (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test', 'bcm2838-mbox-property-test'] : []) +  \
-   (config_all.has_key('CONFIG_TCG') and                                            \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
-   ['arm-cpu-features',
+ /* SPI */
+ #define GIC_SPI_INTERRUPT_MBOX         33
+ #define GIC_SPI_INTERRUPT_MPHI         40
 -- 
 2.34.1
 

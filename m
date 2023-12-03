@@ -1,115 +1,143 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2333879ejb;
-        Sun, 3 Dec 2023 13:49:58 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFkGWZjYQQWL/QP69+s76v1z+XJeecHBWEKxb1pkSIwZGJVoWp7EwGLuaFbIBhXusFsriZX
-X-Received: by 2002:ac8:580a:0:b0:425:4043:1895 with SMTP id g10-20020ac8580a000000b0042540431895mr5907279qtg.72.1701640197783;
-        Sun, 03 Dec 2023 13:49:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701640197; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2333973ejb;
+        Sun, 3 Dec 2023 13:50:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE+sB7EoAyyLs94cKzVGHAJak4KXt0Vcp9IP/3dT6HKWkT5HM2G+Z86IG/wsEy4C6esXxoN
+X-Received: by 2002:ac8:6b57:0:b0:423:b70d:ebd5 with SMTP id x23-20020ac86b57000000b00423b70debd5mr22686029qts.60.1701640211159;
+        Sun, 03 Dec 2023 13:50:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701640211; cv=none;
         d=google.com; s=arc-20160816;
-        b=UdVpFlWk5UAbBTMN/6Ki4QgVao4hySD669HoZHrBMRZ6RfxCW1X8N1AKznUrhKsYL0
-         4jQsK6LXAC1ABXXmxeSJYUOQY0KJcn2LU2732kiKieqbPqRU5vi48u8x8pw0XyxviqoF
-         OoM4aRQenAhAvFPF4o0VMZdKQE/NerM1DrM+kJRppPy3ir1dGvGFNHpnGXuIF4zBBbnW
-         UcCjUaCETW4NgihCkQYYHyNDdfzHWmXixWwpJk2CdE7ZdJ6RHfzq/QHQEbk80SNG6ilr
-         SMEhXgQro5Bq0yjhLB+F/W0nlA+obUabz8RVLKEHyL6OcX+fl2ImgjqsKrU5UYN3CUm1
-         K3yw==
+        b=xHrDiRoCQc2DtnmopCh3HYkzh73XJSTShCWjITCtlutMQdmojl43Uzp54ly7bpndez
+         x3F3kZjQNUFG8sSkP9Yn4+2XQIFR437U9tZW9cotUqdVE6Ar0YCpkPWmSQL+vBBHZuZ6
+         iW6zs08CEa7LNkRQyCkXIw+avYKUkU0diu/EnthpwzrUt069e0KLmbeGGjRtA8JBXUdg
+         bIUpRsboqYmbffF4NG2b/eUx5sybx9ussA2jSjEMjJRIy8gQCW3ihox7MnEuXEufG7mt
+         B21ZuHy/WQ2FjJKuar3rueIPaOx18nS0bh5NnjV6UnoOEMjStssfST5yuJ2IyipL0pSD
+         eOXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vjJI0cIxkRTZ5OWIw3bVVRHcwjcOeypwu8X8iyLqwmA=;
+        bh=A0Jk5tssg+pczQf+sURfDosRQjtzzg5NlLkdIkk5IGA=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=UzHtu3a+vfKG4JCCrLtLxNNPfbTVhzv9ObI5yfk5S811y5SE7fc9msRX0EupxEtjAx
-         bxoA5B0dFxK+IMLfVQ0vYinEpN9YF92cPEGr4M2GftbN2BJo4SjyGujpP47z+/OjBsXp
-         OsG7ytat8hkBL1RW/hhtMXpAOtPuST3HyCHsFD5GAWpnUpr7rh3ZLvXIEk1/5c7f797g
-         0amMXnvf+vZkdnP28PeYoGixaVCarGeLVkIB11EVp4bpB9hPJAx1REB3kKRZzR+PXy2G
-         5zvLIAyRfXTpqgAkWmUS3FUFmSmnmQrO80u40Waol7ed1S/+w4ecMPans7mqMCWovE7o
-         WAZA==
+        b=YmArbxSNNrABuJb9Kco8xBHhv924qnr/642+T5z46vHiVNAhQY3YTUD20lR0qAM90W
+         5dYEXHiTNTkWBahcODyHk1lGVetPF8t37n+SbY9tnANIa5Z9/mnKxksbq4tNWH2JAaND
+         YriEiwGpjgDoakLE45PFT0KoTgkFqpQTTLh9rfxGOieOWql12TV7k/JNNxE5JKkT7gYO
+         +bN4vyPruoo3bdUc/iih0bFuiHfSxnun2usmt4VkTHwj5QpXTP+ZcFcnpX/FbtvQY2PY
+         alpR2xpYLFTLE7RyyNpJL8WRuWTAkw181FFeriPwdIfw9497zGPT4qANFzXtuFZVHlLl
+         JaZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OWXLZ7ho;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ipcEWF0m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bw17-20020a05622a099100b0041cbafcc5a6si8624650qtb.16.2023.12.03.13.49.57
+        by mx.google.com with ESMTPS id kd16-20020a05622a269000b004236f52e8ffsi7499981qtb.343.2023.12.03.13.50.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:49:57 -0800 (PST)
+        Sun, 03 Dec 2023 13:50:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OWXLZ7ho;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ipcEWF0m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9uL1-0002q9-7O; Sun, 03 Dec 2023 16:49:19 -0500
+	id 1r9uLW-0003Hp-9N; Sun, 03 Dec 2023 16:49:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uL0-0002pw-DX; Sun, 03 Dec 2023 16:49:18 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1r9uLV-0003GE-15; Sun, 03 Dec 2023 16:49:49 -0500
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uKy-0008Hh-LW; Sun, 03 Dec 2023 16:49:18 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-5d34f8f211fso38041247b3.0; 
- Sun, 03 Dec 2023 13:49:16 -0800 (PST)
+ id 1r9uLT-0008P1-B0; Sun, 03 Dec 2023 16:49:48 -0500
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-5d8cb0e3b5eso582117b3.0; 
+ Sun, 03 Dec 2023 13:49:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701640155; x=1702244955; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701640186; x=1702244986; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vjJI0cIxkRTZ5OWIw3bVVRHcwjcOeypwu8X8iyLqwmA=;
- b=OWXLZ7hopVimcmy6e0JkLjT7jNDBTTSjR5M2rWFnl537aRUHAde3MW4Bipo8fx8WKO
- xlk1yIInUhkDcyJjODN5Meg7fO744UrqWZVBxs6sYsh/FyuthUoO10JaRg79on8Dzyp6
- 1gn+ZJI2WRQKA2KD/rqBGNuEZEpFN7bSKT9nuhdc/bs0vRpdC0uCWpHUEjpdMTCcBWGm
- bDizYaNF/iiHBryC37jKC5lbnbp7AzzE7A/W4aVauuocqqysjGVdlr6bt/cCrnWLxSud
- 2pgH+R8ak1f56ZEfppBg2STR5rQgLFbx32QIUPGmKNNe7Ec9sanc4wuNAzdaAo0AGSTX
- 4iUw==
+ bh=A0Jk5tssg+pczQf+sURfDosRQjtzzg5NlLkdIkk5IGA=;
+ b=ipcEWF0m4Ap6to0oUucJ+wOqqmYNOAzqHmD7i4hGVZPI9QQ3JSTJsVX4bJQVpeC1OR
+ a5Xg0eA1DjrDo+2pcOZ0Ac64MyN7DPnAE2G8lTDWBXhlGvRAW0qSd+ei9BXh+4OzR6wo
+ OfapESr/8vi/Rt8A1X8RPW84rSb2kUu2Izygqjgs46l10nmdlw8Tl8RqVgtV+72hpeEx
+ U0uSy17gr4mS4zaMuJnCmOEi/t2W/Xxu8vQce/Er4+TEU/QdosGDF3Qe7g9u5MW/g27o
+ jA7Jzh8B35fWiRqYoBhRe/ayBUtHPlTTNgtzkSiRHw31sEqdbTyOtgFnTope+xdCO9gC
+ /Euw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701640155; x=1702244955;
+ d=1e100.net; s=20230601; t=1701640186; x=1702244986;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vjJI0cIxkRTZ5OWIw3bVVRHcwjcOeypwu8X8iyLqwmA=;
- b=lNTUBCLtcJVeyXeT8JmOEybmlfd+0pfW4Y7fBfI9jwKSwA0tjB8NMSssMSZs8Zh0Jv
- kAPh2odjeoAbvCn3I37H0/iOUxJk1iu6OPkblGzeMXfUaBUlwvDyeMlAsw0mXygFW3ND
- z01MhMcs94oQS9zIo01NtPJR8OBcf/S0gDKG46neJ+ozyQQ52Z6Gg7xcUl0y0dxzXtEX
- YIsIUic1ODObzUbgD+UkhSLZLh1mai2Vjz8QTxoA83Y3aaB5AvY91Uw8R8kgoY9+yLOV
- fcNgDddcfqwlFgi6k7fFBeT3oRVhM7XCCPMxQpNl4UslVzT2jlu45nzz+IJAU79YrdSd
- l0mw==
-X-Gm-Message-State: AOJu0YwjPvuHnEXVPfy3jNFovEm+MbP3+9kjPzpTo4Scr9f2tqQoKb7Q
- qyW18SCavyJsvWVBR+WjrgJoPTswHXMy6Q==
-X-Received: by 2002:a81:f011:0:b0:5d7:1940:53ef with SMTP id
- p17-20020a81f011000000b005d7194053efmr1664325ywm.103.1701640154770; 
- Sun, 03 Dec 2023 13:49:14 -0800 (PST)
+ bh=A0Jk5tssg+pczQf+sURfDosRQjtzzg5NlLkdIkk5IGA=;
+ b=PhjePaAPoGbflUPlMILXk9DIEXuHBKwHZMybMTL6GpmWyX/cZxDtRQWiE89GcBJPyF
+ 1Px5HwuobmIt2fiOcxJuQzRBPRJdru1hG8l/VeQNcXJZ5IybWpeVFd0zJb8HccfWy4cp
+ sdj/oInuNeDW5CrIcz2xIh7evy/KcWBt+v7ODNtWbxM12VHXA9feA7ZJHq9oH/LxMRYj
+ GS3rWf7BbXk5VPGMhPSRodEJmZr94+hhLCsw9KSOw+FCIr4HRRqLStQS29PEknQFyyDA
+ bT+a3GaKJwuma4Yz8EtGBuw8Gerrd01o/dmHR5DSHh5nD9LgPEsksO002YxEakGVOl9s
+ 7I+g==
+X-Gm-Message-State: AOJu0YwoBciK6UuF7ZxRSDGGXiQJG/dQs3eXE6UqC1hUufMJZTLwmAKM
+ md9vV6liGMGhQEQQW5SbQ2sxJ9SBAUVrNg==
+X-Received: by 2002:a05:690c:808:b0:5d7:1940:b390 with SMTP id
+ bx8-20020a05690c080800b005d71940b390mr2627318ywb.92.1701640185986; 
+ Sun, 03 Dec 2023 13:49:45 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.13
+ z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:49:14 -0800 (PST)
+ Sun, 03 Dec 2023 13:49:45 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 00/45] Raspberry Pi 4B machine
-Date: Sun,  3 Dec 2023 15:48:25 -0600
-Message-Id: <20231203214910.1364468-1-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 27/45] Add GENET register access macros
+Date: Sun,  3 Dec 2023 15:48:52 -0600
+Message-Id: <20231203214910.1364468-28-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203214910.1364468-27-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-1-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-2-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-3-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-4-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-5-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-6-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-7-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-8-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-9-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-10-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-11-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-12-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-13-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-14-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-15-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-16-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-17-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-18-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-19-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-20-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-21-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-22-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-23-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-24-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-25-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-26-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-27-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,140 +152,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IBJw1nZdGRjl
+X-TUID: OxoXwFdGi+6Y
 
-Introducing Raspberry Pi 4B model.
-It contains new BCM2838 SoC, PCIE subsystem,
-RNG200, Thermal sensor and Genet network controller.
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+---
+ include/hw/net/bcm2838_genet.h | 76 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 76 insertions(+)
 
-It can work with recent linux kernels 6.x.x.
-Two avocado tests was added to check that.
-
-Unit tests has been made as read/write operations
-via mailbox properties.
-
-Genet integration test is under development.
-
-Every single commit
-1) builds without errors
-2) passes regression tests
-3) passes style check*
-*the only exception is bcm2838-mbox-property-test.c file
-containing heavy macros usage which cause a lot of
-false-positives of checkpatch.pl.
-
-I did my best to keep the commits less than 200 changes,
-but had to make some of them a bit more in order to
-keep their integrity.
-
-This is v2 patchset with the most of v1 remarks fixed.
-I named it as 'v3' because of mistakes while attempts to send v2 patchset.
-Please remove all other v1 and v2 patchsets except the very first one.
-
-Sergey Kambalin (45):
-  Split out common part of BCM283X classes
-  Split out common part of peripherals
-  Split out raspi machine common part
-  Introduce BCM2838 SoC
-  Add GIC-400 to BCM2838 SoC
-  Add BCM2838 GPIO stub
-  Implement BCM2838 GPIO functionality
-  Connect SD controller to BCM2838 GPIO
-  Add GPIO and SD to BCM2838 periph
-  Add BCM2838 checkpoint support
-  Introduce Raspberry PI 4 machine
-  Temporarily disable unimplemented rpi4b devices
-  Add memory region for BCM2837 RPiVid ASB
-  Add BCM2838 PCIE Root Complex
-  Add BCM2838 PCIE host
-  Enable BCM2838 PCIE
-  Add RNG200 skeleton
-  Add RNG200 RNG and RBG
-  Get rid of RNG200 timer
-  Implement BCM2838 thermal sensor
-  Add clock_isp stub
-  Add GENET stub
-  Add GENET register structs. Part 1
-  Add GENET register structs. Part 2
-  Add GENET register structs. Part 3
-  Add GENET register structs. Part 4
-  Add GENET register access macros
-  Implement GENET register ops
-  Implement GENET MDIO
-  Implement GENET TX path
-  Implement GENET RX path
-  Enable BCM2838 GENET controller
-  Connect RNG200, PCIE and GENET to GIC
-  Add Rpi4b boot tests
-  Add mailbox test stub
-  Add mailbox test constants
-  Add mailbox tests tags. Part 1
-  Add mailbox tests tags. Part 2
-  Add mailbox tests tags. Part 3
-  Add mailbox property tests. Part 1
-  Add mailbox property tests. Part 2
-  Add mailbox property tests. Part 3
-  Add missed BCM2835 properties
-  Append added properties to mailbox test
-  Add RPi4B to paspi4.rst
-
- docs/system/arm/raspi.rst                |   11 +-
- hw/arm/bcm2835_peripherals.c             |  218 +++--
- hw/arm/bcm2836.c                         |  116 ++-
- hw/arm/bcm2838.c                         |  288 ++++++
- hw/arm/bcm2838_pcie.c                    |  289 ++++++
- hw/arm/bcm2838_peripherals.c             |  292 ++++++
- hw/arm/meson.build                       |    8 +-
- hw/arm/raspi.c                           |  131 +--
- hw/arm/raspi4b.c                         |  112 +++
- hw/arm/trace-events                      |    6 +
- hw/gpio/bcm2838_gpio.c                   |  389 ++++++++
- hw/gpio/meson.build                      |    5 +-
- hw/misc/bcm2835_property.c               |   47 +
- hw/misc/bcm2838_rng200.c                 |  420 +++++++++
- hw/misc/bcm2838_thermal.c                |   98 ++
- hw/misc/meson.build                      |    2 +
- hw/misc/trace-events                     |    9 +
- hw/net/bcm2838_genet.c                   | 1088 ++++++++++++++++++++++
- hw/net/meson.build                       |    2 +
- hw/net/trace-events                      |   16 +
- include/hw/arm/bcm2835_peripherals.h     |   29 +-
- include/hw/arm/bcm2836.h                 |   27 +-
- include/hw/arm/bcm2838.h                 |   31 +
- include/hw/arm/bcm2838_pcie.h            |   75 ++
- include/hw/arm/bcm2838_peripherals.h     |   97 ++
- include/hw/arm/raspberrypi-fw-defs.h     |   12 +-
- include/hw/arm/raspi_platform.h          |   37 +
- include/hw/display/bcm2835_fb.h          |    2 +
- include/hw/gpio/bcm2838_gpio.h           |   45 +
- include/hw/misc/bcm2838_rng200.h         |   43 +
- include/hw/misc/bcm2838_thermal.h        |   24 +
- include/hw/net/bcm2838_genet.h           |  426 +++++++++
- tests/avocado/boot_linux_console.py      |   92 ++
- tests/qtest/bcm2838-mailbox.c            |   61 ++
- tests/qtest/bcm2838-mailbox.h            |  584 ++++++++++++
- tests/qtest/bcm2838-mbox-property-test.c |  621 ++++++++++++
- tests/qtest/meson.build                  |    3 +-
- 37 files changed, 5551 insertions(+), 205 deletions(-)
- create mode 100644 hw/arm/bcm2838.c
- create mode 100644 hw/arm/bcm2838_pcie.c
- create mode 100644 hw/arm/bcm2838_peripherals.c
- create mode 100644 hw/arm/raspi4b.c
- create mode 100644 hw/gpio/bcm2838_gpio.c
- create mode 100644 hw/misc/bcm2838_rng200.c
- create mode 100644 hw/misc/bcm2838_thermal.c
- create mode 100644 hw/net/bcm2838_genet.c
- create mode 100644 include/hw/arm/bcm2838.h
- create mode 100644 include/hw/arm/bcm2838_pcie.h
- create mode 100644 include/hw/arm/bcm2838_peripherals.h
- create mode 100644 include/hw/gpio/bcm2838_gpio.h
- create mode 100644 include/hw/misc/bcm2838_rng200.h
- create mode 100644 include/hw/misc/bcm2838_thermal.h
- create mode 100644 include/hw/net/bcm2838_genet.h
- create mode 100644 tests/qtest/bcm2838-mailbox.c
- create mode 100644 tests/qtest/bcm2838-mailbox.h
- create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
-
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 94c2f3ebca..e7a76cda81 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -22,9 +22,85 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_DMA_RING_CNT      17
+ #define BCM2838_GENET_DMA_RING_DEFAULT  (BCM2838_GENET_DMA_RING_CNT - 1)
+ 
++#define BCM2838_GENET_HFB_FILTER_REGS     offsetof(BCM2838GenetRegs, hfb)
++#define BCM2838_GENET_HFB_FILTER_REG(reg) (BCM2838_GENET_HFB_FILTER_REGS \
++                                           + offsetof(BCM2838GenetRegsHfb, reg))
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
+ 
++#define BCM2838_GENET_INTRL0_REG(reg)   (offsetof(BCM2838GenetRegs, intrl0) \
++                                        + offsetof(BCM2838GenetRegsIntrl0, reg))
++#define BCM2838_GENET_INTRL0_SET        BCM2838_GENET_INTRL0_REG(set)
++#define BCM2838_GENET_INTRL0_CLEAR      BCM2838_GENET_INTRL0_REG(clear)
++#define BCM2838_GENET_INTRL0_MASK_SET   BCM2838_GENET_INTRL0_REG(mask_set)
++#define BCM2838_GENET_INTRL0_MASK_CLEAR BCM2838_GENET_INTRL0_REG(mask_clear)
++
++#define BCM2838_GENET_INTRL1_REG(reg)   (offsetof(BCM2838GenetRegs, intrl1) \
++                                        + offsetof(BCM2838GenetRegsIntrl1, reg))
++#define BCM2838_GENET_INTRL1_SET        BCM2838_GENET_INTRL1_REG(set)
++#define BCM2838_GENET_INTRL1_CLEAR      BCM2838_GENET_INTRL1_REG(clear)
++#define BCM2838_GENET_INTRL1_MASK_SET   BCM2838_GENET_INTRL1_REG(mask_set)
++#define BCM2838_GENET_INTRL1_MASK_CLEAR BCM2838_GENET_INTRL1_REG(mask_clear)
++
++#define BCM2838_GENET_UMAC_REG(reg)     (offsetof(BCM2838GenetRegs, umac) \
++                                         + offsetof(BCM2838GenetRegsUmac, reg))
++#define BCM2838_GENET_UMAC_CMD          BCM2838_GENET_UMAC_REG(cmd)
++#define BCM2838_GENET_UMAC_MAC0         BCM2838_GENET_UMAC_REG(mac0)
++#define BCM2838_GENET_UMAC_MAC1         BCM2838_GENET_UMAC_REG(mac1)
++#define BCM2838_GENET_UMAC_MDIO_CMD     BCM2838_GENET_UMAC_REG(mdio_cmd)
++
++#define BCM2838_GENET_TDMA_REGS         offsetof(BCM2838GenetRegs, tdma)
++#define BCM2838_GENET_TDMA_REG(reg)     (BCM2838_GENET_TDMA_REGS \
++                                         + offsetof(BCM2838GenetRegsTdma, reg))
++#define BCM2838_GENET_TDMA_RINGS        BCM2838_GENET_TDMA_REG(rings)
++#define BCM2838_GENET_TDMA_RING_CFG     BCM2838_GENET_TDMA_REG(ring_cfg)
++#define BCM2838_GENET_TDMA_CTRL         BCM2838_GENET_TDMA_REG(ctrl)
++
++#define BCM2838_GENET_RDMA_REGS         offsetof(BCM2838GenetRegs, rdma)
++#define BCM2838_GENET_RDMA_REG(reg)     (BCM2838_GENET_RDMA_REGS \
++                                         + offsetof(BCM2838GenetRegsRdma, reg))
++#define BCM2838_GENET_RDMA_RINGS        BCM2838_GENET_RDMA_REG(rings)
++#define BCM2838_GENET_RDMA_RING_CFG     BCM2838_GENET_RDMA_REG(ring_cfg)
++#define BCM2838_GENET_RDMA_CTRL         BCM2838_GENET_RDMA_REG(ctrl)
++
++#define BCM2838_GENET_TRING_REG(reg)    offsetof(BCM2838GenetTdmaRing, reg)
++#define BCM2838_GENET_TRING_WRITE_PTR BCM2838_GENET_TRING_REG(write_ptr)
++#define BCM2838_GENET_TRING_WRITE_PTR_HI BCM2838_GENET_TRING_REG(write_ptr_hi)
++#define BCM2838_GENET_TRING_PROD_INDEX BCM2838_GENET_TRING_REG(prod_index)
++#define BCM2838_GENET_TRING_CONS_INDEX BCM2838_GENET_TRING_REG(cons_index)
++#define BCM2838_GENET_TRING_RING_BUF_SIZE BCM2838_GENET_TRING_REG(ring_buf_size)
++#define BCM2838_GENET_TRING_RING_START_ADDR BCM2838_GENET_TRING_REG(start_addr)
++#define BCM2838_GENET_TRING_RING_START_ADDR_HI BCM2838_GENET_TRING_REG(start_addr_hi)
++#define BCM2838_GENET_TRING_RING_END_ADDR BCM2838_GENET_TRING_REG(end_addr)
++#define BCM2838_GENET_TRING_RING_END_ADDR_HI BCM2838_GENET_TRING_REG(end_addr_hi)
++#define BCM2838_GENET_TRING_RING_MBUF_DONE_TRESH BCM2838_GENET_TRING_REG(mbuf_done_tresh)
++#define BCM2838_GENET_TRING_RING_FLOW_PERIOD BCM2838_GENET_TRING_REG(flow_period)
++#define BCM2838_GENET_TRING_RING_READ_PTR BCM2838_GENET_TRING_REG(read_ptr)
++#define BCM2838_GENET_TRING_RING_READ_PTR_HI BCM2838_GENET_TRING_REG(read_ptr_hi)
++
++#define BCM2838_GENET_RRING_REG(reg)    offsetof(BCM2838GenetRdmaRing, reg)
++#define BCM2838_GENET_RRING_WRITE_PTR BCM2838_GENET_RRING_REG(write_ptr)
++#define BCM2838_GENET_RRING_WRITE_PTR_HI BCM2838_GENET_RRING_REG(write_ptr_hi)
++#define BCM2838_GENET_RRING_PROD_INDEX BCM2838_GENET_RRING_REG(prod_index)
++#define BCM2838_GENET_RRING_CONS_INDEX BCM2838_GENET_RRING_REG(cons_index)
++#define BCM2838_GENET_RRING_RING_BUF_SIZE BCM2838_GENET_RRING_REG(ring_buf_size)
++#define BCM2838_GENET_RRING_RING_START_ADDR BCM2838_GENET_RRING_REG(start_addr)
++#define BCM2838_GENET_RRING_RING_START_ADDR_HI BCM2838_GENET_RRING_REG(start_addr_hi)
++#define BCM2838_GENET_RRING_RING_END_ADDR BCM2838_GENET_RRING_REG(end_addr)
++#define BCM2838_GENET_RRING_RING_END_ADDR_HI BCM2838_GENET_RRING_REG(end_addr_hi)
++#define BCM2838_GENET_RRING_RING_MBUF_DONE_TRESH BCM2838_GENET_RRING_REG(mbuf_done_tresh)
++#define BCM2838_GENET_RRING_RING_XON_XOFF_TRESH BCM2838_GENET_RRING_REG(xon_xoff_tresh)
++#define BCM2838_GENET_RRING_RING_READ_PTR BCM2838_GENET_RRING_REG(read_ptr)
++#define BCM2838_GENET_RRING_RING_READ_PTR_HI BCM2838_GENET_RRING_REG(read_ptr_hi)
++
++
++#define BCM2838_GENET_PHY_REG(reg)      (offsetof(BCM2838GenetPhyRegs, reg) / 2)
++#define BCM2838_GENET_PHY_BMCR          BCM2838_GENET_PHY_REG(bmcr)
++#define BCM2838_GENET_PHY_AUX_CTL       BCM2838_GENET_PHY_REG(aux_ctl)
++#define BCM2838_GENET_PHY_SHD           BCM2838_GENET_PHY_REG(shd)
++#define BCM2838_GENET_EXP_DATA          BCM2838_GENET_PHY_REG(exp_data)
++#define BCM2838_GENET_EXP_SEL           BCM2838_GENET_PHY_REG(exp_ctrl)
++
+ #define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
+ #define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
+ 
 -- 
 2.34.1
 

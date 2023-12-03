@@ -1,115 +1,115 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2371116ejb;
-        Sun, 3 Dec 2023 15:46:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFXC3YUQlI0ZPvrT6CTB4crdTQMMFyHnYpM7++yse2bHZUdnH0K/1tNT2RGZqzG1LKjf42h
-X-Received: by 2002:a05:620a:890a:b0:77e:fba3:8204 with SMTP id ql10-20020a05620a890a00b0077efba38204mr4218757qkn.154.1701647210528;
-        Sun, 03 Dec 2023 15:46:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647210; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2371137ejb;
+        Sun, 3 Dec 2023 15:46:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEDOVYpUA5L9uWlq0RAwXkTpE4c7n49uGiPF3yDeGHHWqSpvkuUr1hUdKe/OUrOU5O5WG3R
+X-Received: by 2002:ad4:4eab:0:b0:66c:fe0f:7cdd with SMTP id ed11-20020ad44eab000000b0066cfe0f7cddmr6071715qvb.14.1701647215546;
+        Sun, 03 Dec 2023 15:46:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647215; cv=none;
         d=google.com; s=arc-20160816;
-        b=aBigpatMzXHmjs7NDSRHlyaegz+H6P3F1bMyZCkYfl+axW8pO3tE+oecDMSSjm8+Ax
-         4emrJqFtcfJUBoDRXoPdXm1UBrEOd2vFjFW8eEMZSfo27ruuDS1T+0Ml/11vKJnK7KZf
-         IBIIDl3W/yl9fdcWH9Jg5PGJR0Xl8kArTEBzykudCplNv6GgicV6dPDcTwE28dlJH89o
-         BQGLEPGvWOLzv1xDcGQgB6YtpWTbuQOeAjhoxHpv98YvgBp7U31VzqAYhbBZ4UJTIhhs
-         8nDQLmnUE3MJDvuirNGUUewHbem+M/dGA6oLbn0LmDdiNtWpQ7Ot6laYdeTq/IWPBGLc
-         U30g==
+        b=wlSb8ErrYAxxfuiOaB1oNTMkBow+2oLNYB9rTSUhnS3RwG7NFA+FDp0JxItSX7Q8q5
+         0FioTwwG+ePJXXjU7HIKeB8sNsCpgMPoksNVpXozD0/OqXW/xbDdW+vM6ubk6Mg32Bzd
+         5e65d8aLmTRYU2yZDPwvrN4+nXOtMgMSfuiunl+Udm3rPVP3aEMSIZjKzq8gagG35CbK
+         9n+1S3gVbRR6FOCurwy/O/6VwAkrJ+8ZnOc1jIQVhYH8wJQpxE8t4ZItzjK1qPAGpxZ3
+         ekb/UUkQJGV/FOhfafSqnuX2PAVB4dZELmJ0IFOpZX1M4KQpGhY8m+a0VMLv8xISRRz3
+         mhOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hlzqq1rIcBw375iNxsrI6JHCl35tGrND0ZoDvB52ZmE=;
+        bh=+Rjbw5RYP1TnoKVdXAKQhTrSFNyGeuEqSS68XHm6tGg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=Rf1Ryp8VNwdZIPKHe38ou2PaIekPWOTy761rh8wgDcbflvnotSjKYELxApVZuRiXDl
-         gywfpB3oPXg9werhXpdv+T8Rc9ThgKe0nhcVZ4jk1iRSLO95grNqC/qpTQGse40FIMgf
-         1vJ8/LD8tyl+I/ypphba9rUPOrXmrtO8uGl9l2ML/kPohjwdq5EqoO0rZ4oZTnW9jPmv
-         NTX9V85cDX1PuvivJ3C+uqSRu8rwegVB5+uWEzSAE5D/xjwX378hJ5jfVGx15A/s6cRI
-         ZPRcr1Htq10jLH/UVx+Wj6T6LbpG7hfj5i0O6mPOK370sJY0LxfJ46SLE9JMbfNFLxAj
-         7oXQ==
+        b=eJSxaM2Vn8WA/2BrKj6X85nKBcTUXXnmfAMYTRzyq3o41CbiDqCyeOdGReiJHJ3m7m
+         xVSQeCQ7MO2AyXEDybY4m15ctcmZLb7Epn9Rq17ltGEuB8570juGYsQhzrZVqLvd8dp4
+         luHrgsXQGnp5TvunwI34u1AEx5bo+g4ptrUoTuBAU6d21sGkkhCCtzUqRDd+9Ad5Hrt/
+         CUIEc9NJcocOuHILQUD+hrmJ8ccQYOUwqQAiPeL+L0SD2JqmLf7RdFnl4BHUumj5L9CY
+         kBzQJhrr7u4eN2t0vsEh6c6+unOVJAYq5+3eF4sPROZysoUoP70WmfZVvScp/C8OLqZ2
+         3t2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BZ05SGdl;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nWCnE3zL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g13-20020a05620a40cd00b0076caee4b64esi8999145qko.262.2023.12.03.15.46.50
+        by mx.google.com with ESMTPS id r2-20020a0cf802000000b0067aa3bf06e2si5109579qvn.272.2023.12.03.15.46.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:46:50 -0800 (PST)
+        Sun, 03 Dec 2023 15:46:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BZ05SGdl;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nWCnE3zL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9w6q-00079Y-EK; Sun, 03 Dec 2023 18:42:48 -0500
+	id 1r9w6v-0007Ct-F0; Sun, 03 Dec 2023 18:42:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6j-00071c-8j; Sun, 03 Dec 2023 18:42:41 -0500
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1r9w6q-00079b-Gw; Sun, 03 Dec 2023 18:42:48 -0500
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6e-0002l4-6V; Sun, 03 Dec 2023 18:42:40 -0500
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-59b5484fbe6so43977887b3.1; 
- Sun, 03 Dec 2023 15:42:35 -0800 (PST)
+ id 1r9w6m-0002nI-Lb; Sun, 03 Dec 2023 18:42:48 -0500
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-5d7a47d06eeso11692867b3.1; 
+ Sun, 03 Dec 2023 15:42:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646954; x=1702251754; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646963; x=1702251763; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hlzqq1rIcBw375iNxsrI6JHCl35tGrND0ZoDvB52ZmE=;
- b=BZ05SGdlq3Mpb17z31+a/Zb3tiGBCJZttNAnpNW8s3zRXgMFLFcuiwoVQsZycOoPQL
- mCbaDRpteCz0Y6SoeTTaTAu3VPU/g5+OkOVZ5gHc00BpsrAwlUAsu/nyQynJy3izQ8od
- JpRqYUvF+EzzEUOOjUgs10M7yLJfoPQGjRW1n3Q9ZWldj5WRsHZbmUAWFDa52MtlncVr
- bjlUhtFVUJjJG0bPRS1Q/Hn92N6RXUDolBBVFCR0lRJ4wnbgtKl5OrteJFa7SVZHZK5a
- Dr2HKLUWnbdPEWSXdKdQSKyeFoVkaARnEl8tyQFNjIAdexMbj3RZ4999GuCmFZW1eyKU
- CadA==
+ bh=+Rjbw5RYP1TnoKVdXAKQhTrSFNyGeuEqSS68XHm6tGg=;
+ b=nWCnE3zLxTftLO35Vv9hZKxtEypGB+JubNFQ41uMl7cUR902FGjgGxfZONirL77Plw
+ l+MlVJQGVF38nHxp+zgUeiV57q6a8b1IJyKnCuziLvl0vMXptp5XNLuJ4VI2mWftUvZj
+ 3jTrASdjKJOrNLTmi744Euti7tz3TnjkEIQBQJonyeDcD2OXSBzitJzLkCZdCF+Rgv0W
+ doEoZnI8ul2BkIa2anE7bevakDLcMDgA51Ip/LN/QhvjS7uXQ/0i4sKKHTtM8VW3m+vc
+ zlJaUxyEKjoU5PdM1WQ06ySlvz6VMhcpRiyuWUVkkePXfuJqcDz/4qqp73yLxDvxwiMn
+ M7nA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646954; x=1702251754;
+ d=1e100.net; s=20230601; t=1701646963; x=1702251763;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=hlzqq1rIcBw375iNxsrI6JHCl35tGrND0ZoDvB52ZmE=;
- b=q27iQ+EuW+MNTtlulzNtWC8MxACUYdHxQqyLNQBFRCfhDIhKh1EIhLbswObT1/3Gb2
- yfKJUb4iJMhpaqIIQLxCWiDyPLsfiCLVJYWfPn3kmlddxNujuqMGTW5jDtOzsKTX8eg4
- yhhEDicm0wmdF/hIAwzKZpCvE+ssjBcBONxSsB5RWZNLmg6MgsZV/V/Tp1TponFKv1Da
- 5784LZiHOL6n7ym1tFU/bPP/NnilIKCeCGYk5k/zkuiHkD6nqugepMvHrSLLM1J6zgUt
- VimJKGa2iFbixMMVsvq08RbkpmddYCHEXSAxUvNIY/UJHa5PxA1uJYqlrcP6k5hjInUg
- Z2WA==
-X-Gm-Message-State: AOJu0Ywb7Zi407yBJ4DQwzf2RwFS4u1iSRfUl9Y2htwuJX+k10Z7WoRU
- yEJ33TDAcRYAkTY8qtSIZACGP4L4R0B1cA==
-X-Received: by 2002:a81:8886:0:b0:5cc:3695:6afd with SMTP id
- y128-20020a818886000000b005cc36956afdmr2959710ywf.38.1701646954625; 
- Sun, 03 Dec 2023 15:42:34 -0800 (PST)
+ bh=+Rjbw5RYP1TnoKVdXAKQhTrSFNyGeuEqSS68XHm6tGg=;
+ b=WnhIqqAocC7G2c9ag1K2wpdSW87qBjAjMMrf/Nr+7vHaN0snxmejflTLmfrcCOaxz/
+ AmrS5CI50/ZJTCeRO1bSLU+uoO3XCDUkgg1Ja87E/g8aAecl5GvPtoEQdxs+Zr1RMSxE
+ XYA2HNnNs4obMAt13aYZ5C8jS1T/LJNtD8l3FP2sY0uIECr0tiEMlaze4X4/UVGNmoqJ
+ 6r2qVGlGCWgCnNmSMzJdHwSd26OdrpvV4x99PQVeDD2RWPlYMERe+k8U5wsXk7wCjBeL
+ u0aT6cIG/fh9RIRg3nP6q7fjmb9i4F+F9Ps+q2E5AITIgrgNU0og8Na6jZJKbm9+2okc
+ 6HhQ==
+X-Gm-Message-State: AOJu0YxJBloj99O+r5qr/H9/9I2jN8+pTZz9vZBNNm1KJOK4tDx8T3l6
+ Q/rFZ6E7wZcLbe8iZDAza4lEEAOy3FSLXg==
+X-Received: by 2002:a81:99d4:0:b0:5d7:1940:f3f1 with SMTP id
+ q203-20020a8199d4000000b005d71940f3f1mr2133832ywg.89.1701646963053; 
+ Sun, 03 Dec 2023 15:42:43 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.33
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:42:34 -0800 (PST)
+ Sun, 03 Dec 2023 15:42:42 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 16/45] Enable BCM2838 PCIE
-Date: Sun,  3 Dec 2023 17:41:44 -0600
-Message-Id: <20231203234213.1366214-17-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 24/45] Add GENET register structs. Part 2
+Date: Sun,  3 Dec 2023 17:41:52 -0600
+Message-Id: <20231203234213.1366214-25-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,149 +124,235 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qDrjYNnNtgrT
+X-TUID: 8YzG+RrXKwwo
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_pcie.c                |  3 +++
- hw/arm/bcm2838_peripherals.c         | 26 ++++++++++++++++++++++++++
- hw/arm/meson.build                   |  7 ++++---
- hw/arm/raspi4b.c                     |  1 -
- include/hw/arm/bcm2838_peripherals.h |  3 +++
- 5 files changed, 36 insertions(+), 4 deletions(-)
+ hw/net/bcm2838_genet.c         | 89 ++++++++++++++++++++++++++++++++++
+ include/hw/net/bcm2838_genet.h | 89 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 178 insertions(+)
 
-diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
-index 75146d6c2e..8e046d0ac7 100644
---- a/hw/arm/bcm2838_pcie.c
-+++ b/hw/arm/bcm2838_pcie.c
-@@ -239,6 +239,9 @@ static void bcm2838_pcie_root_reg_reset(PCIDevice *dev)
- }
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+index 0d98d1b30e..9a99f34c4a 100644
+--- a/hw/net/bcm2838_genet.c
++++ b/hw/net/bcm2838_genet.c
+@@ -19,6 +19,7 @@
+ #include "hw/net/bcm2838_genet.h"
+ #include "trace.h"
  
- static void bcm2838_pcie_root_realize(PCIDevice *dev, Error **errp) {
-+    BCM2838PcieRootClass *brpc = BCM2838_PCIE_ROOT_GET_CLASS(dev);
++/* GENET layouts */
+ REG32(GENET_SYS_REV_CTRL,              0)
+ FIELD(GENET_SYS_REV_CTRL, GPHY_REV,    0, 16)
+ FIELD(GENET_SYS_REV_CTRL, MINOR_REV,   16, 4)
+@@ -55,6 +56,94 @@ REG32(GENET_INTRL_1,              0)
+ FIELD(GENET_INTRL_1, TX_INTRS,    0, 16)
+ FIELD(GENET_INTRL_1, RX_INTRS,    16, 16)
+ 
++REG32(GENET_UMAC_CMD,                  0)
++FIELD(GENET_UMAC_CMD, TX_EN,           0, 1)
++FIELD(GENET_UMAC_CMD, RX_EN,           1, 1)
++FIELD(GENET_UMAC_CMD, SPEED,           2, 2)
++FIELD(GENET_UMAC_CMD, PROMISC,         4, 1)
++FIELD(GENET_UMAC_CMD, PAD_EN,          5, 1)
++FIELD(GENET_UMAC_CMD, CRC_FWD,         6, 1)
++FIELD(GENET_UMAC_CMD, PAUSE_FWD,       7, 1)
++FIELD(GENET_UMAC_CMD, RX_PAUSE_IGNORE, 8, 1)
++FIELD(GENET_UMAC_CMD, TX_ADDR_INS,     9, 1)
++FIELD(GENET_UMAC_CMD, HD_EN,           10, 1)
++FIELD(GENET_UMAC_CMD, SW_RESET_OLD,    11, 1)
++FIELD(GENET_UMAC_CMD, RSVD_12,         12, 1)
++FIELD(GENET_UMAC_CMD, SW_RESET,        13, 1)
++FIELD(GENET_UMAC_CMD, RSVD_14,         14, 1)
++FIELD(GENET_UMAC_CMD, LCL_LOOP_EN,     15, 1)
++FIELD(GENET_UMAC_CMD, RSVD_16_21,      16, 6)
++FIELD(GENET_UMAC_CMD, AUTO_CONFIG,     22, 1)
++FIELD(GENET_UMAC_CMD, CNTL_FRM_EN,     23, 1)
++FIELD(GENET_UMAC_CMD, NO_LEN_CHK,      24, 1)
++FIELD(GENET_UMAC_CMD, RMT_LOOP_EN,     25, 1)
++FIELD(GENET_UMAC_CMD, RX_ERR_DISC,     26, 1)
++FIELD(GENET_UMAC_CMD, PRBL_EN,         27, 1)
++FIELD(GENET_UMAC_CMD, TX_PAUSE_IGNORE, 28, 1)
++FIELD(GENET_UMAC_CMD, TX_RX_EN,        29, 1)
++FIELD(GENET_UMAC_CMD, RUNT_FILTER_DIS, 30, 1)
++FIELD(GENET_UMAC_CMD, RSVD_31,         31, 1)
 +
-+    brpc->parent_realize(dev, errp);
-     bcm2838_pcie_root_reg_reset(dev);
- }
- 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index d3b42cf25b..ee06214715 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -12,6 +12,11 @@
- #include "hw/arm/raspi_platform.h"
- #include "hw/arm/bcm2838_peripherals.h"
- 
-+#define PCIE_RC_OFFSET          0x1500000
-+#define PCIE_MMIO_OFFSET        0xc0000000
-+#define PCIE_MMIO_ARM_OFFSET    0x600000000
-+#define PCIE_MMIO_SIZE          0x40000000
++REG32(GENET_UMAC_MAC_0,         0)
++FIELD(GENET_UMAC_MAC_0, ADDR_3, 0,  8)
++FIELD(GENET_UMAC_MAC_0, ADDR_2, 8,  8)
++FIELD(GENET_UMAC_MAC_0, ADDR_1, 16, 8)
++FIELD(GENET_UMAC_MAC_0, ADDR_0, 24, 8)
 +
- /* Lower peripheral base address on the VC (GPU) system bus */
- #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
- 
-@@ -29,6 +34,10 @@ static void bcm2838_peripherals_init(Object *obj)
-                        bc->peri_low_size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
- 
-+    /* PCIe Host Bridge */
-+    object_initialize_child(obj, "pcie-host", &s->pcie_host,
-+                            TYPE_BCM2838_PCIE_HOST);
++REG32(GENET_UMAC_MAC_1,             0)
++FIELD(GENET_UMAC_MAC_1, ADDR_5,     0,  8)
++FIELD(GENET_UMAC_MAC_1, ADDR_4,     8,  8)
++FIELD(GENET_UMAC_MAC_1, RSVD_16_31, 16, 8)
 +
-     /* Extended Mass Media Controller 2 */
-     object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
- 
-@@ -61,6 +70,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     MemoryRegion *mphi_mr;
-     BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
-     BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
-+    MemoryRegion *regs_mr;
-+    MemoryRegion *mmio_mr;
++REG32(GENET_UMAC_MDIO_CMD,             0)
++FIELD(GENET_UMAC_MDIO_CMD, REG_DATA,   0, 16)
++FIELD(GENET_UMAC_MDIO_CMD, REG_ID,     16, 5)
++FIELD(GENET_UMAC_MDIO_CMD, PHY_ID,     21, 5)
++FIELD(GENET_UMAC_MDIO_CMD, WR,         26, 1)
++FIELD(GENET_UMAC_MDIO_CMD, RD,         27, 1)
++FIELD(GENET_UMAC_MDIO_CMD, RD_FAIL,    28, 1)
++FIELD(GENET_UMAC_MDIO_CMD, START_BUSY, 29, 1)
++FIELD(GENET_UMAC_MDIO_CMD, RSVD_30_31, 30, 2)
 +
-     int n;
++REG32(GENET_DMA_RING_CFG,             0)
++FIELD(GENET_DMA_RING_CFG, EN,         0, 17)
++FIELD(GENET_DMA_RING_CFG, RSVD_17_31, 17, 14)
++
++REG32(GENET_DMA_CTRL,              0)
++FIELD(GENET_DMA_CTRL, EN,          0, 1)
++FIELD(GENET_DMA_CTRL, RING_BUF_EN, 1, 17)
++FIELD(GENET_DMA_CTRL, RSVD_18_19,  18, 2)
++FIELD(GENET_DMA_CTRL, TSB_SWAP_EN, 20, 1)
++FIELD(GENET_DMA_CTRL, RSVD_21_31,  21, 11)
++
++REG32(GENET_DMA_PROD_INDEX,              0)
++FIELD(GENET_DMA_PROD_INDEX, INDEX,       0, 16)
++FIELD(GENET_DMA_PROD_INDEX, DISCARD_CNT, 16, 16)
++
++REG32(GENET_DMA_CONS_INDEX,             0)
++FIELD(GENET_DMA_CONS_INDEX, INDEX,      0, 16)
++FIELD(GENET_DMA_CONS_INDEX, RSVD_16_31, 16, 16)
++
++REG32(GENET_DMA_STATUS,                     0)
++FIELD(GENET_DMA_STATUS, DISABLED,           0, 1)
++FIELD(GENET_DMA_STATUS, DESC_RAM_INIT_BUSY, 1, 1)
++FIELD(GENET_DMA_STATUS, RSVD_2_31,          2, 30)
++
++REG32(GENET_RDMA_LENGTH_STATUS,             0)
++FIELD(GENET_RDMA_LENGTH_STATUS, OVERRUN,    0, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, CRC_ERROR,  1, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, RXERR,      2, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, NO,         3, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, LG,         4, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, MULTICAST,  5, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, BROADCAST,  6, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, RSVD_7_11,  7, 5)
++FIELD(GENET_RDMA_LENGTH_STATUS, WRAP,       12, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, SOP,        13, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, EOP,        14, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, OWN,        15, 1)
++FIELD(GENET_RDMA_LENGTH_STATUS, BUFLENGTH,  16, 12)
++FIELD(GENET_RDMA_LENGTH_STATUS, RSVD_28_31, 29, 4)
  
-     bcm_soc_peripherals_common_realize(dev, errp);
-@@ -172,6 +184,20 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-                              BCM2838_MPHI_SIZE);
-     memory_region_add_subregion(&s_base->peri_mr, BCM2838_MPHI_OFFSET,
-                                 &s->mphi_mr_alias);
-+    /* PCIe Root Complex */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pcie_host), errp)) {
-+        return;
-+    }
-+    /* RC registers region */
-+    regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 0);
-+    memory_region_add_subregion(&s->peri_low_mr, PCIE_RC_OFFSET, regs_mr);
-+    /* MMIO region */
-+    mmio_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pcie_host), 1);
-+    memory_region_init_alias(&s->pcie_mmio_alias, OBJECT(&s->pcie_host),
-+                             "pcie-mmio", mmio_mr, PCIE_MMIO_OFFSET,
-+                             PCIE_MMIO_SIZE);
-+    memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
-+                                &s->pcie_mmio_alias);
+ static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
+ {
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index f583818399..736b4d1757 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -18,6 +18,10 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_REV_MAJOR         6
+ #define BCM2838_GENET_REV_MINOR         0
  
-     /* GPIO */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index b26ed13c6f..69d199b73e 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -41,7 +41,6 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bana
- arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
- arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files(
-   'bcm2838.c',
--  'bcm2838_pcie.c',
-   'raspi4b.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
-@@ -72,8 +71,10 @@ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
++#define BCM2838_GENET_DMA_DESC_CNT      256
++#define BCM2838_GENET_DMA_RING_CNT      17
++#define BCM2838_GENET_DMA_RING_DEFAULT  (BCM2838_GENET_DMA_RING_CNT - 1)
++
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -83,6 +87,88 @@ typedef struct {
+     uint32_t reserved_0x18[58];
+ } BCM2838GenetRegsTbuf;
  
- system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
--system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
--system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
-+system_ss.add(when: 'CONFIG_RASPI', if_true: files(
-+    'bcm2835_peripherals.c',
-+    'bcm2838_peripherals.c',
-+    'bcm2838_pcie.c'))
- system_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
++typedef struct {
++    uint32_t reserved_0x0;
++    uint32_t hd_bkp_ctrl;
++    uint32_t cmd;
++    uint32_t mac0;
++    uint32_t mac1;
++    uint32_t max_frame_len;
++    uint32_t pause_quanta;
++    uint32_t reserved_0x1C[10];
++    uint32_t mode;
++    uint32_t frm_tag0;
++    uint32_t frm_tag1;
++    uint32_t reserved_0x50[3];
++    uint32_t tx_ipg_len;
++    uint32_t reserved_0x60;
++    uint32_t eee_ctrl;
++    uint32_t eee_lpi_timer;
++    uint32_t eee_wake_timer;
++    uint32_t eee_ref_count;
++    uint32_t reserved_0x74;
++    uint32_t rx_ipg_inv;
++    uint32_t reserved_0x7C[165];
++    uint32_t macsec_prog_tx_crc;
++    uint32_t macsec_ctrl;
++    uint32_t reserved_0x318[6];
++    uint32_t pause_ctrl;
++    uint32_t tx_flush;
++    uint32_t rx_fifo_status;
++    uint32_t tx_fifo_status;
++    uint32_t reserved_0x340[48];
++    uint32_t mib[96];
++    uint32_t mib_ctrl;
++    uint32_t reserved_0x584[36];
++    uint32_t mdio_cmd;
++    uint32_t reserved_0x618[2];
++    uint32_t mpd_ctrl;
++    uint32_t mpd_pw_ms;
++    uint32_t mpd_pw_ls;
++    uint32_t reserved_0x62C[3];
++    uint32_t mdf_err_cnt;
++    uint32_t reserved_0x63C[5];
++    uint32_t mdf_ctrl;
++    uint32_t mdf_addr;
++    uint32_t reserved_0x658[106];
++} BCM2838GenetRegsUmac;
++
++typedef struct {
++    uint32_t length_status;
++    uint32_t address_lo;
++    uint32_t address_hi;
++} BCM2838GenetRdmaDesc;
++
++typedef struct {
++    uint32_t write_ptr;
++    uint32_t write_ptr_hi;
++    uint32_t prod_index;
++    uint32_t cons_index;
++    uint32_t ring_buf_size;
++    uint32_t start_addr;
++    uint32_t start_addr_hi;
++    uint32_t end_addr;
++    uint32_t end_addr_hi;
++    uint32_t mbuf_done_tresh;
++    uint32_t xon_xoff_tresh;
++    uint32_t read_ptr;
++    uint32_t read_ptr_hi;
++    uint32_t reserved_0x34[3];
++} BCM2838GenetRdmaRing;
++
++typedef struct {
++    BCM2838GenetRdmaDesc descs[BCM2838_GENET_DMA_DESC_CNT];
++    BCM2838GenetRdmaRing rings[BCM2838_GENET_DMA_RING_CNT];
++    uint32_t ring_cfg;
++    uint32_t ctrl;
++    uint32_t status;
++    uint32_t scb_burst_size;
++    uint32_t reserved_0x1050[7];
++    uint32_t ring_timeout[17];
++    uint32_t index2ring[8];
++    uint32_t reserved_0x10D0[972];
++} BCM2838GenetRegsRdma;
++
+ typedef struct {
+     BCM2838GenetRegsSys sys;
+     BCM2838GenetRegsGrBridge gr_bridge;
+@@ -95,6 +181,9 @@ typedef struct {
+     uint32_t reserved_0x400[128];
+     BCM2838GenetRegsTbuf tbuf;
+     uint32_t reserved_0x700[64];
++    BCM2838GenetRegsUmac umac;
++    uint32_t reserved_0x1000[1024];
++    BCM2838GenetRegsRdma rdma;
+ } BCM2838GenetRegs;
  
- hw_arch += {'arm': arm_ss}
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 10376b62dc..2e8474e1c5 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -67,7 +67,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
- 
-     /* Temporarily disable following devices until they are implemented*/
-     const char *to_be_removed_from_dt_as_wa[] = {
--        "brcm,bcm2711-pcie",
-         "brcm,bcm2711-rng200",
-         "brcm,bcm2711-thermal",
-         "brcm,bcm2711-genet-v5",
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index af085934c9..2af96df1c6 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -10,6 +10,7 @@
- #define BCM2838_PERIPHERALS_H
- 
- #include "hw/arm/bcm2835_peripherals.h"
-+#include "hw/arm/bcm2838_pcie.h"
- #include "hw/sd/sdhci.h"
- #include "hw/gpio/bcm2838_gpio.h"
- 
-@@ -62,8 +63,10 @@ struct BCM2838PeripheralState {
-     MemoryRegion peri_low_mr;
-     MemoryRegion peri_low_mr_alias;
-     MemoryRegion mphi_mr_alias;
-+    MemoryRegion pcie_mmio_alias;
- 
-     SDHCIState emmc2;
-+    BCM2838PcieHostState pcie_host;
-     BCM2838GpioState gpio;
- 
-     OrIRQState mmc_irq_orgate;
+ struct BCM2838GenetState {
 -- 
 2.34.1
 

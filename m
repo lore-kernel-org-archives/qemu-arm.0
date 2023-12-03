@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334546ejb;
-        Sun, 3 Dec 2023 13:52:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHH1LpqVyTPAmacL9CjLxCrVu5TUvNrJEMMNGtkz7suVZKn6ceX1bNtrlM10KO3m7CkcuGj
-X-Received: by 2002:a05:622a:199f:b0:423:7326:515f with SMTP id u31-20020a05622a199f00b004237326515fmr5373344qtc.11.1701640326668;
-        Sun, 03 Dec 2023 13:52:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701640326; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334597ejb;
+        Sun, 3 Dec 2023 13:52:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE/AcZDsIesdoZj6VRvnsuTvy3KwmY7JRmZeywMmdzQsO6sZEy7i1t72IqSz4YgHtsAVb3R
+X-Received: by 2002:a05:622a:258e:b0:423:ec1b:6226 with SMTP id cj14-20020a05622a258e00b00423ec1b6226mr5656544qtb.62.1701640336692;
+        Sun, 03 Dec 2023 13:52:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701640336; cv=none;
         d=google.com; s=arc-20160816;
-        b=MaAEGuVeOH7l3oXqgd7d2qWi65UncyDw0cQ4Kaci9jFUv3oERgc2Aojn3b46nYETkM
-         J1z89kDZodkjxtzUxPelMGxru+bQD7xDiBn6sWxJ34NKzjnWDe430JcMExjptEPK06ZT
-         afQN5TyeFGn2OxMkJoLCVFU+SIL0fAOq5e4QJpACjrOLXjBb/GW218s5Jv+N1tXwLMhf
-         k+/jps76xJQ3VwnmToRQnZceAsxBEDuZHVuJU3IesiCRe6aTNCczjRhj0cELnQ9pP3/3
-         4RWRPrgvmsajUOY/r85nhhgeKuXg72KYoXc3DopeVuPcrziLL5nio0xDe/jyItO1sQB2
-         zGwQ==
+        b=PTQQPe2ctxaIXxP47FZKJUk1MFiANZwRo4OoBGSkHuKnJ32/21nhOJG5xBiLSUqwKf
+         I/klG+uVlyTqHkOP1ZuXWyDZKMwUibqzw8icutdNYUmPQV8RkXW3Bidzhv2ZWK+r15h2
+         MyIjUIvdlqZNQRxQ00EUX87VRsb2YuhS86gWKE81+0/kQgUWiuvL5LtA9RVeVBQyJlVK
+         Z6ABwRjEEVllsaL1qcAJIML2X7XDpqFF5J0ai/V7zixM2ELowHveKywpXZQryPuPcMxZ
+         9sAtSpEwKPR19wURf679hRkcXiJvNZvF4L4O8ctctmxX5hoJzGy6AYAb9R8x89yhXpU8
+         /MBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+        bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=sFJ9sw5b9XR8O8AO5Ne/+RyM5fDRUUREMsHfJaJWA0770OV2GHNW9XimuxjmoEgtTJ
-         w0MAWjZWQgsSbAwRbrKZkZuXiPRm3FqmZlmWxzHCgUVsWzQEjOmuU6uoA/K9i7gY76Zv
-         GPml6SHYyBsTNCCTafM+7238ux38Zc758qw/J5WI6fe0mHjFD/sO4/eFhvnlDXiN250Y
-         INjvwzA5glQvv27ofemD3RqzX29+r5mmXEwcbmF9Yl47W65Mabs2/wv1L5LUxNG8eZob
-         RoPW1Nh+yvimSnf6FrOSAtdDzKAG+wRzLiaVcD7qQRYnOL/z/UCPPG6CMnMO27qNP1ej
-         TvUA==
+        b=evVmGa+XwkU+UNel8VY1i07XPz6Z7KBq+xHTKt0loN4lj5mp83r6FJhaurtEY41RRS
+         /x9rrqnwsTOp80S97GiSLbzpglnt7wYYMAPaciTFq7RmoRdH5GWJnnRiuVziZL+vP9Ma
+         YV6WFfEGb2EZTzohh4dSZzyBNz7JJ0QZ5sGU6XfVf0ChBEKmTGljZpzW9V+FUUMKGAmg
+         PJdCq9peAUnkM72SnexEyOC8qLIHHv+JsIOeHvqbGgQ9MCEzjdsl75L0hYFNgIfuD3Kx
+         PNP8cKoOM1ZEYURSdBrNp9L1twQ8jv2hAtAzbzqH0y32tvGHrZzbkCjwLi6eLdW7VAIA
+         tt9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TOY5ss6g;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=P69KpKYP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3-20020ac80503000000b0042383c851a2si7688188qtg.282.2023.12.03.13.52.06
+        by mx.google.com with ESMTPS id l8-20020ac848c8000000b00423997c64f4si7677459qtr.687.2023.12.03.13.52.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:52:06 -0800 (PST)
+        Sun, 03 Dec 2023 13:52:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TOY5ss6g;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=P69KpKYP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9uLm-0003h7-K7; Sun, 03 Dec 2023 16:50:06 -0500
+	id 1r9uLi-0003a4-Qa; Sun, 03 Dec 2023 16:50:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLk-0003ev-QL; Sun, 03 Dec 2023 16:50:04 -0500
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ id 1r9uLe-0003WA-D4; Sun, 03 Dec 2023 16:49:58 -0500
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLi-0008T4-Lr; Sun, 03 Dec 2023 16:50:04 -0500
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-5c85e8fdd2dso42124587b3.2; 
- Sun, 03 Dec 2023 13:50:01 -0800 (PST)
+ id 1r9uLc-0008Rl-NT; Sun, 03 Dec 2023 16:49:58 -0500
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-5d3c7ef7b31so29053117b3.3; 
+ Sun, 03 Dec 2023 13:49:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701640200; x=1702245000; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701640195; x=1702244995; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
- b=TOY5ss6g0kPDKy1DyVGDA5o02DWjFchK7nqKgDlo2EpdswZO9N0yfHvBNRMp+ivcTl
- eFQ+JZ498x84izvltnSye8OuWlWSXZpDuM7ZJ0PUr+7lDfS3KgD4QeDqbbkAJrQ5Svz3
- YBYu2kDQ+2teG5HSG8KzmpouNdx41geUJoguaWfatmkX2EdOnse3Jjfr0+rXB/OkfONW
- Rc56E0bJwxt6zWPKa4juv2vVtx869Wo1Ae0LF3qA6c39KrMcP5X9OcrM6r2ct+U7gVNq
- 8zt3jn3GiKQ2BF9y1ad89tzr3gVcBM61f+JIoKKGtcLEPpyrbjvGsD4KUtnahsmWMWWl
- gtgg==
+ bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
+ b=P69KpKYP/7wFhubqKiORzlxS88HxIskTgYoCsOmAYLbg5qBHEli+s1K3xu/mvCtiKX
+ zuM3RnvhtGhNXNh3pE1bVIfXF1A8uM5AmHSL3qc25EFEbwcfAHWan9tsBk/LOpoGAyc3
+ JedJKAwraViLjemh+yF7IHkGmQgeWE6E2wouYj6pN466F/peutB1I6SgcVNoNHzJtzXZ
+ FhFde7WVEKS84NeybqQHZvvHc4lIDCEFr0Igon5eP3in82ZS7pYBF8k19MHvkAiJhH3F
+ xEsrfrzkwUOzqEse3p3yJCyEi+Y/T0o1gPpTNe9PKWxH6OqlEjYaQ0xs6WVCSXnw5tEk
+ 6BdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701640200; x=1702245000;
+ d=1e100.net; s=20230601; t=1701640195; x=1702244995;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
- b=Q2lbhEVvyP+pz1a07lqcMvMy9A6tbp8aaS16V6MOxY9KRhagY+4YsPC+Vn2PKcfuyr
- ca+Lu7uZ7uzuntxt8juyIdihp7m01NQYqVkBDMsckYscjIm5jwwvK5f5EpIL+DkW9lCl
- bR47jwc9jHTwFAyCpBbwmUZG0HuPVIJckN9AChfSV63t9wJJV7v3SSgu7gPyz4Ej89ee
- d25ueuduTsAxCnQQ2GoJv21lfpfsYw4yoCbQ9cnrX/JlNjQFW1fjvFvIjn3657DqWfOw
- LLF88AqZ4Bj8h6ZJlzvMU8QkmjJ3LcF/80ipI1s4PsFloEcVTKURXBmUi6NmcEWrui9m
- vwsA==
-X-Gm-Message-State: AOJu0Yz4mGUyzsPCdMOmhmpgwpn9Z6d6ZpQY8L1lTZei6T6vs9/+G+De
- Z26ycdqP5xjoxXTrwVHN/Kp6PBSpRI4lfw==
-X-Received: by 2002:a81:b60c:0:b0:5d4:2407:df21 with SMTP id
- u12-20020a81b60c000000b005d42407df21mr4943127ywh.30.1701640200399; 
- Sun, 03 Dec 2023 13:50:00 -0800 (PST)
+ bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
+ b=MgbqERgXUciFKHAETtnl1526imowDHvXdU4xyh3bTeWO/WyJYfcXXnQp4wf1ri/yLh
+ lXptVMF33FjoQ5FVteJLtKDq6AQBRxtznGVVjePLtEsWaHDDoVi8lEPc7wWf5rYrm8T+
+ R2ZG1tgbx78Nrg+VnkFfyosgvya2wJ54AvJCVSAxUZKkOKS7xd6zOUMhwYgh7w8y7jTf
+ MtbtzRUZh81aev0EBMqWN6mu/1AdYu/aP2C0HxiYg53KLdSvE7etI1Gk5Fe2b47l2+SJ
+ 7QV3Kk72M8pDBEH7NN/+a4r/eSooNbvZXjc5oSi0r0cuH01l1fq9g6+H60ef/uSad0CU
+ lD5w==
+X-Gm-Message-State: AOJu0YwagSf3i66KSMfH8i/7cOAqcx8n4rBiUiR5bAq+2YBcLvo0lW45
+ ZXX5wn8cEkloxat9wDdeo5Xk/T0sdxwCRA==
+X-Received: by 2002:a81:ac5b:0:b0:5d7:1941:3550 with SMTP id
+ z27-20020a81ac5b000000b005d719413550mr1485117ywj.55.1701640195405; 
+ Sun, 03 Dec 2023 13:49:55 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.59
+ z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:50:00 -0800 (PST)
+ Sun, 03 Dec 2023 13:49:55 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 41/45] Add mailbox property tests. Part 2
-Date: Sun,  3 Dec 2023 15:49:06 -0600
-Message-Id: <20231203214910.1364468-42-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 36/45] Add mailbox test constants
+Date: Sun,  3 Dec 2023 15:49:01 -0600
+Message-Id: <20231203214910.1364468-37-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203214910.1364468-41-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203214910.1364468-36-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-2-sergey.kambalin@auriga.com>
@@ -135,23 +135,17 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-34-sergey.kambalin@auriga.com>
  <20231203214910.1364468-35-sergey.kambalin@auriga.com>
  <20231203214910.1364468-36-sergey.kambalin@auriga.com>
- <20231203214910.1364468-37-sergey.kambalin@auriga.com>
- <20231203214910.1364468-38-sergey.kambalin@auriga.com>
- <20231203214910.1364468-39-sergey.kambalin@auriga.com>
- <20231203214910.1364468-40-sergey.kambalin@auriga.com>
- <20231203214910.1364468-41-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,234 +160,163 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OPmYsiXOHMel
+X-TUID: KaH6E5qlIi8e
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mbox-property-test.c | 196 ++++++++++++++++++++++-
- 1 file changed, 195 insertions(+), 1 deletion(-)
+ tests/qtest/bcm2838-mailbox.h | 139 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 139 insertions(+)
 
-diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
-index 80746dbb95..5322c563a0 100644
---- a/tests/qtest/bcm2838-mbox-property-test.c
-+++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -49,7 +49,8 @@ FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
-                       (TEST_TAG_TYPE(testname) * tag);                         \
-     static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-                              (TEST_TAG_TYPE(testname) *tag);                   \
--    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
-+    static void TEST_FN_NAME(testname, __VA_ARGS__)(void)                      \
-+    {                                                                          \
-         struct {                                                               \
-             MboxBufHeader header;                                              \
-             TEST_TAG_TYPE(testname) tag;                                       \
-@@ -188,6 +189,179 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
- }
+diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
+index 1d02ca9c2c..8acc4bd2ff 100644
+--- a/tests/qtest/bcm2838-mailbox.h
++++ b/tests/qtest/bcm2838-mailbox.h
+@@ -7,6 +7,145 @@
+  * See the COPYING file in the top-level directory.
+  */
  
- /*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
-+}
++#define MBOX0_BASE 0xFE00B880
++#define MBOX1_BASE 0xFE00B8A0
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
-+}
++#define MBOX_REG_READ   0x00
++#define MBOX_REG_WRITE  0x00
++#define MBOX_REG_PEEK   0x10
++#define MBOX_REG_SENDER 0x14
++#define MBOX_REG_STATUS 0x18
++#define MBOX_REG_CONFIG 0x1C
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
-+}
++#define MBOX_READ_EMPTY 0x40000000
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
++#define MBOX_CHANNEL_ID_PROPERTY 8
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
++#define MBOX_PROCESS_REQUEST      0x00000000
++#define MBOX_SUCCESS              0x80000000
++#define MBOX_ERROR_PARSING_BUFFER 0x80000001
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
++#define TAG_END                    0x00000000
++#define TAG_GET_FIRMWARE_REVISION  0x00000001
++#define TAG_GET_FIRMWARE_VARIANT   0x00000002
++#define TAG_GET_BOARD_REVISION     0x00010002
++#define TAG_GET_ARM_MEMORY         0x00010005
++#define TAG_GET_VC_MEMORY          0x00010006
++#define TAG_SET_DEVICE_POWER_STATE 0x00028001
++#define TAG_GET_CLOCK_STATE        0x00030001
++#define TAG_GET_CLOCK_RATE         0x00030002
++#define TAG_GET_MAX_CLOCK_RATE     0x00030004
++#define TAG_GET_MIN_CLOCK_RATE     0x00030007
++#define TAG_GET_CLOCKS             0x00010007
++#define TAG_GET_TEMPERATURE        0x00030006
++#define TAG_GET_MAX_TEMPERATURE    0x0003000a
++#define TAG_ALLOCATE_BUFFER        0x00040001
++#define TAG_RELEASE_FRAMEBUFFER    0x00048001
++#define TAG_BLANK_FRAMEBUFFER      0x00040002
++#define TAG_GET_FB_PHYS_WIDTH      0x00040003
++#define TAG_TEST_FB_PHYS_WIDTH     0x00044003
++#define TAG_SET_FB_PHYS_WIDTH      0x00048003
++#define TAG_GET_FB_VIRT_WIDTH      0x00040004
++#define TAG_TEST_FB_VIRT_WIDTH     0x00044004
++#define TAG_SET_FB_VIRT_WIDTH      0x00048004
++#define TAG_GET_FB_DEPTH           0x00040005
++#define TAG_TEST_FB_DEPTH          0x00044005
++#define TAG_SET_FB_DEPTH           0x00048005
++#define TAG_GET_PIXEL_ORDER        0x00040006
++#define TAG_TEST_PIXEL_ORDER       0x00044006
++#define TAG_SET_PIXEL_ORDER        0x00048006
++#define TAG_GET_FB_ALPHA_MODE      0x00040007
++#define TAG_TEST_FB_ALPHA_MODE     0x00044007
++#define TAG_SET_FB_ALPHA_MODE      0x00048007
++#define TAG_GET_PITCH              0x00040008
++#define TAG_SET_PITCH              0x00048008
++#define TAG_GET_VIRTUAL_OFFSET     0x00040009
++#define TAG_TEST_VIRTUAL_OFFSET    0x00044009
++#define TAG_SET_VIRTUAL_OFFSET     0x00048009
++#define TAG_GET_OVERSCAN           0x0004000a
++#define TAG_TEST_OVERSCAN          0x0004400a
++#define TAG_SET_OVERSCAN           0x0004800a
++#define TAG_SET_PALETTE            0x0004800b
++#define TAG_GET_COMMANDLINE        0x00050001
++#define TAG_GET_DMA_CHANNELS       0x00060001
++#define TAG_GET_THROTTLED          0x00030046
++#define TAG_GET_NUM_DISPLAYS       0x00040013
++#define TAG_GET_DISPLAY_SETTINGS   0x00040014
++#define TAG_GET_GPIO_CONFIG        0x00030043
++#define TAG_SET_GPIO_CONFIG        0x00038043
++#define TAG_GET_GPIO_STATE         0x00030041
++#define TAG_SET_GPIO_STATE         0x00038041
++#define TAG_INITIALIZE_VCHIQ       0x00048010
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
++#define BOARD_REVISION    11546898
++#define FIRMWARE_REVISION 346337
++#define FIRMWARE_VARIANT  0x77777777 /* TODO: Find the real value */
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
++#define ARM_MEMORY_BASE 0x00000000
++#define ARM_MEMORY_SIZE 0x3c000000
++#define VC_MEMORY_BASE  0x3c000000
++#define VC_MEMORY_SIZE  0x04000000
++#define VC_FB_BASE      0x3c100000
++#define VC_FB_SIZE      0x00096000
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
++#define CLOCK_ID_ROOT      0x00000000
++#define CLOCK_ID_EMMC      0x00000001
++#define CLOCK_ID_UART      0x00000002
++#define CLOCK_ID_ARM       0x00000003
++#define CLOCK_ID_CORE      0x00000004
++#define CLOCK_ID_UNDEFINED 0x12345678
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_TEMPERATURE) {
-+    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-+    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_TEMPERATURE) {
-+    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
-+}
++#define CLOCK_RATE_EMMC 50000000
++#define CLOCK_RATE_UART 3000000
++#define CLOCK_RATE_CORE 350000000
++#define CLOCK_RATE_ANY  700000000
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_TEMPERATURE) {
-+    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-+    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC_MAX);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_TEMPERATURE) {
-+    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
-+}
++#define DEVICE_ID_SD_CARD   0x00000000
++#define DEVICE_ID_UART0     0x00000001
++#define DEVICE_ID_UART1     0x00000002
++#define DEVICE_ID_USB HCD   0x00000003
++#define DEVICE_ID_I2C0      0x00000004
++#define DEVICE_ID_I2C1      0x00000005
++#define DEVICE_ID_I2C2      0x00000006
++#define DEVICE_ID_SPI       0x00000007
++#define DEVICE_ID_CCP2TX    0x00000008
++#define DEVICE_ID_UNKNOWN_0 0x00000009
++#define DEVICE_ID_UNKNOWN_1 0x0000000a
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(ALLOCATE_BUFFER) {
-+    g_assert_cmphex(tag->response.value.base, ==, VC_FB_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, VC_FB_SIZE);
-+}
-+DECLARE_TEST_CASE_SETUP(ALLOCATE_BUFFER) {
-+    tag->request.value.alignment = ALIGN_4K;
-+}
++#define TEMPERATURE_ID_SOC 0x00000000
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(RELEASE_FRAMEBUFFER) { 
-+    /* No special checks are needed for this test */
-+}
++#define TEMPERATURE_SOC     25000
++#define TEMPERATURE_SOC_MAX 99000
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(BLANK_FRAMEBUFFER) {
-+    g_assert_cmphex(tag->response.value.on, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(BLANK_FRAMEBUFFER) {
-+    tag->request.value.on = 0;
-+}
++#define ALIGN_4K 4096
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_PHYS_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_PHYS_WIDTH) {
-+    tag->request.value.width = DUMMY_VALUE;
-+    tag->request.value.height = DUMMY_VALUE;
-+}
++#define PIXEL_ORDER_BGR 0
++#define PIXEL_ORDER_RGB 1
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL) {
-+    g_assert_cmpint(tag->response.value.width, ==, 640);
-+    g_assert_cmpint(tag->response.value.height, ==, 480);
-+}
++#define ALPHA_MODE_ENABLED  0
++#define ALPHA_MODE_REVERSED 1
++#define ALPHA_MODE_IGNORED  2
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_PHYS_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, 800);
-+    g_assert_cmpint(tag->response.value.height, ==, 600);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_PHYS_WIDTH) {
-+    tag->request.value.width = 800;
-+    tag->request.value.height = 600;
-+}
++#define GPIO_MASK 0x003c
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_VIRT_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_VIRT_WIDTH) {
-+    tag->request.value.width = DUMMY_VALUE;
-+    tag->request.value.height = DUMMY_VALUE;
-+}
++#define GPIO_0 0x00000080
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL) {
-+    g_assert_cmpint(tag->response.value.width, ==, 640);
-+    g_assert_cmpint(tag->response.value.height, ==, 480);
-+}
++#define GPIO_DIRECTION_IN  0
++#define GPIO_DIRECTION_OUT 1
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_VIRT_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, 800);
-+    g_assert_cmpint(tag->response.value.height, ==, 600);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
-+    tag->request.value.width = 800;
-+    tag->request.value.height = 600;
-+}
++#define GPIO_TERMINATION_DISABLED 0
++#define GPIO_TERMINATION_ENABLED  1
 +
-+//==============================================================================
- int main(int argc, char **argv)
- {
-     g_test_init(&argc, &argv, NULL);
-@@ -201,6 +375,26 @@ int main(int argc, char **argv)
-     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
-     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
-     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
-+    QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
-+    QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
-+    QTEST_ADD_TEST_CASE(RELEASE_FRAMEBUFFER);
-+    QTEST_ADD_TEST_CASE(BLANK_FRAMEBUFFER);
-+    QTEST_ADD_TEST_CASE(TEST_FB_PHYS_WIDTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL);
-+    QTEST_ADD_TEST_CASE(SET_FB_PHYS_WIDTH);
-+    QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
-+    QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
++#define GPIO_TERMINATION_PULLUP_DISABLED 0
++#define GPIO_TERMINATION_PULLUP_ENABLED  1
++
++#define GPIO_POLARITY_LOW  0
++#define GPIO_POLARITY_HIGH 1
++
++#define GPIO_STATE_DOWN 0
++
++/* Used to test stubs that don't perform actual work */
++#define DUMMY_VALUE 0x12345678
  
-     return g_test_run();
- }
+ REG32(MBOX_WRITE_REG, 0)
+ FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
 -- 
 2.34.1
 

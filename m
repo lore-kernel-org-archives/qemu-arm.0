@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334384ejb;
-        Sun, 3 Dec 2023 13:51:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE2eW4Iaxde8YQ7YQdqBKmVJA3NdZ+BKeMOF+gZWHHSh9kqx46xAEK3j65danEaI4jh4gxn
-X-Received: by 2002:a05:620a:800f:b0:77e:fba3:3e63 with SMTP id ee15-20020a05620a800f00b0077efba33e63mr5652166qkb.44.1701640293438;
-        Sun, 03 Dec 2023 13:51:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701640293; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334448ejb;
+        Sun, 3 Dec 2023 13:51:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH8KgXnkenbSzM35FIovLC5vIrRH9u0Z5eXfbYcl3oZc0Yo/AjLXfsDT4dB3qy3V8IY73E2
+X-Received: by 2002:a05:620a:cef:b0:77d:51b3:208b with SMTP id c15-20020a05620a0cef00b0077d51b3208bmr28154004qkj.4.1701640306729;
+        Sun, 03 Dec 2023 13:51:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701640306; cv=none;
         d=google.com; s=arc-20160816;
-        b=M1i0eMDsqpMuGymYmphVPS0KMU4r4Nam8GvZpB4kNpyN4swSSgdYznwfSIyktHQNbA
-         p2F9uARLpjMpB/SsVKQ6BIbwApuDo4KEa6kNs7HhQyNUg89JDTEffQkD/38HhG1zkHju
-         yJZR4wPZ/KiL7+twr/cQEd0yR3Ii8mw5Fa78ldT3UepPEmudYWt7NulQmKQ6hqW+x+B0
-         q7Tvqsn6xUp44tr1j1hEMuZh2JCW2WprLzxUqoADQd+ifPmilfmnVGvsTDBZgX3jRU4X
-         RYZIIEZm+W3+5loGUV3rMvBVNfVBpu+GrgSy341eLIsxCdbbXaMKcAjdOQVHg2J6fV1R
-         wxrQ==
+        b=PM89O0ktjygwhOC5yrL3lYb2m5UFy1Ef1ifZ2Y+k4NncA+bShcA6Y0oW1Lw8Q4oCAC
+         eJjZEIASG3cYXU7sm5Ab92HtirO2I0k8Fg1GCGa5L+vIFBgBGmnV3S6B0IWEb/cyEusN
+         vYQZnPpZkM/ju9v3BXREHXhjIunT+UDPDEB2qABRRUilL0lTEJ2QB1VL+qpfC+1RYu1s
+         B8SgOqBVoxEpASgcXeU3XFNZujsnMC1YlLL4zXoHICksNNj6Ncgi6p2GgtHG2uLFgGfU
+         mqJIDhGajGhSTexNHe/6AejcAR1T//JpavZMSMex+kp8OHuQ8ZPBaK8DEaEGdG8x9wn4
+         jooQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
+        bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=VEhW6gPaavbDf+sKOk6EeY0lzVobjDZKO2nVphFPjdC+wEHMwWt5fQOe58/ZJz5a1v
-         UfXPSyUbOB6kw7apRGYEbw7Nh48EzjnX8IsS8+4Dg8XnjjpgAAiWeXOvTF2BLXHZ54f9
-         BZ9BRTZP4vccSRCZ1ulO6iwXRXIV/7ypRZnQBszxYpYmN0RRj/4egG+j7SKJ3x27ohdD
-         BDrqVJznzc7KfZQRqq/jPNJmXnO3wuS3PYfDdJsBYmywM2jmp5BlzO7AP36IRgI1YsAP
-         Q5QG5cc4VeL+FNJ6zrqNBPX83ZRTxD/UDerNa/V5L8AJ5+rC/+1bfEVOWteU1bhPWESu
-         uteQ==
+        b=Z7OhoR48xOclJ+F0X7Wrx+h7rRDOf3YN77cIMQolA4hi/KBFJ7VjrYtdh6fCdPCA/A
+         sgkslY6bz79qBeCFHBDQd3pBMbXWGWSa/dSfe4AuzSuevvkJGpvhmMorZG/3540TCV7f
+         sLxK7873Q6vgKbLOBrfxTgjn3bQtg43rp8SUsZy4AUp/axkMqe+nVtEmqoyaoQeXf/Tm
+         CekWqPsHOmjavT0S1XGz3xPq6qYd7RWXZtdv8p0+s74YG9xonhnsnsWevDr9O0KDd/SS
+         LiCYm9kfZGGTy3m7fF3GhJXU9lLifQGcNrdkKz3sRf2E9EpU0Wmq9yZ1KaVdxua46kV5
+         tONw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lAKGaC8l;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C3GG103D;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t11-20020a05620a450b00b0077dbbba4973si8734107qkp.147.2023.12.03.13.51.33
+        by mx.google.com with ESMTPS id i4-20020a05620a27c400b0077a5f8df089si8275472qkp.559.2023.12.03.13.51.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:51:33 -0800 (PST)
+        Sun, 03 Dec 2023 13:51:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lAKGaC8l;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C3GG103D;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9uLd-0003UJ-Hc; Sun, 03 Dec 2023 16:49:57 -0500
+	id 1r9uLh-0003Zn-FQ; Sun, 03 Dec 2023 16:50:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLb-0003RH-Jm; Sun, 03 Dec 2023 16:49:55 -0500
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ id 1r9uLc-0003Sp-Oe; Sun, 03 Dec 2023 16:49:56 -0500
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLZ-0008Qa-Vw; Sun, 03 Dec 2023 16:49:55 -0500
-Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-5d40c728fc4so18874517b3.1; 
- Sun, 03 Dec 2023 13:49:53 -0800 (PST)
+ id 1r9uLa-0008R1-TY; Sun, 03 Dec 2023 16:49:56 -0500
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-5d8cb0e3b5eso582667b3.0; 
+ Sun, 03 Dec 2023 13:49:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701640192; x=1702244992; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701640193; x=1702244993; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
- b=lAKGaC8lgskvCZPR1ARTLa2JKPifGGemByfzeQi0QTOiKnaUgrUMn3BINUZxuGbtUY
- uT+DQF0xYDjdWTFo2bYyE+FLxzaqJ2z8a42x2J+i/Uvi2zVrvqwdY+LrztN0Ckuhm9GW
- SstFQxzwHhFcW8ySbGVrmpbRlV/0UpJA2nwyTHg4s7cn36adFEPcnVlIdOv3ARJ7S6sq
- NJe8vC1rz1rkOQMBlXP8XRZMo6RClTLoLp1QflZdztAQnTs3Ywtm+hZTQDKlt2rcN4iH
- nDGw5qtRCoUe6ZDQlDSDhfuAXlmzqAMbKplq3kfJ/UsYnRUor5tzu2HaEwW5+Ziq3neD
- /l7g==
+ bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
+ b=C3GG103D2m4KmgVTH5gNHgMGXga+dM+ebd1hWh/VyOiFKsldqsL6TO59m9ePFkfwCt
+ LVkGAxX9Zcai912N8NPdEam5ggsczezF9ITO1roFanLcQG6nzXrx7dcyMivBTC7nTFVD
+ IJsZQh6QO9zslRTYFgI05awIeJnWnRkWl34u01IftULCzKQGjQwsNYSaQHl7+GBj37zM
+ y3KS4TPEWgP6qEMDG32lDCeEjKX/iS9YD3MrTWmJKNNCqrIVw5UXvIJMps3NGYPe6EWK
+ aQpgMyJfu9Igm9Nmdd7t8S0qiDmuq1K0z3+uCvY8KDxMrK5YG6P7CiPQ4HziSMm9kiD7
+ c8dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701640192; x=1702244992;
+ d=1e100.net; s=20230601; t=1701640193; x=1702244993;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jt9YUbIlO6FMtWaTdWEGV74ka7r2AOm7LpJmnrybMmM=;
- b=WaMIMjRPURCIdsvup/AeAkOMQunt+Ico9eS+kTrkEbsa9dHkKWVzQpJZ9O2aF25EpE
- 0NjvxcxkdthRuJ142rECUty867RdxAtJdIFXHlgHemJJZak0FlWaSc53i14jEUKbSp0G
- tmGk9vhV/FMnyTBZqoq/b6dTkJ7PoCnq4M7Kni94XBnm395zHazjEw9WHCSLMm2lNve6
- noLykRplYs1XLjAEHsBYOBgOxEfAb+IZL3jTLtiwdIoGNIpElK9+R721izeXhEd4n+ms
- DSivEtN6GfoCNMUyrogDX+RyOnQDynOcVNWYc95Aag0cCXI3fT/J/rdUpVPN3bTio1sI
- x8oA==
-X-Gm-Message-State: AOJu0Yz3+jAx2dXwiqU7bapvVVOiQ3oFKj/bII3/9e2+kSRF+9d3xXWz
- RRszK/ngu8vrZwRKCFnVDZ7ObIcYuqXBGQ==
-X-Received: by 2002:a81:9955:0:b0:5d6:2ebb:3b5d with SMTP id
- q82-20020a819955000000b005d62ebb3b5dmr1887999ywg.21.1701640192348; 
- Sun, 03 Dec 2023 13:49:52 -0800 (PST)
+ bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
+ b=Y+9T3hWu/rI8QsFFNiKQ4Yre5nZyI+IZVJmnjfNb5QRVv4ufpdexMWjD0t2OY8HByE
+ dizclUucoQMO1ZZPWxe7gBKR73/zJ88EsCvozmUnprUnMKDHfopY/M6BGXj+HT1qiT3g
+ vRQ2OpvA2jYXSjgYhit5KGfbq9kJm9QEZSOfXqanYRZuJgYSpZh4V1RllkBje+ZYNEaU
+ o9Cwgi2/tUoDr+iA3FdiyGYRRHwD9Y4Mdztn0vc+6IaCZwyw4jfr0Z+kY46JrMW3PRZq
+ ih2lMUjHfG5fllL4X9QkGAF0PmSuaNlkcZf3MYGg3Bsg8tMbXLW0LmxgT+l1bKBEqIvy
+ OWHw==
+X-Gm-Message-State: AOJu0YyotIz5RoQiD++tLgzht8nmXCMD/WGbxgFoaxpVi1SPCsYtPGur
+ IDqKCOcacQR5kjgs87FMNBMia4CLa7cZ8Q==
+X-Received: by 2002:a81:4e96:0:b0:5d7:387d:50e8 with SMTP id
+ c144-20020a814e96000000b005d7387d50e8mr2660446ywb.25.1701640193380; 
+ Sun, 03 Dec 2023 13:49:53 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.51
+ z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:49:52 -0800 (PST)
+ Sun, 03 Dec 2023 13:49:53 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 33/45] Connect RNG200, PCIE and GENET to GIC
-Date: Sun,  3 Dec 2023 15:48:58 -0600
-Message-Id: <20231203214910.1364468-34-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 34/45] Add Rpi4b boot tests
+Date: Sun,  3 Dec 2023 15:48:59 -0600
+Message-Id: <20231203214910.1364468-35-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203214910.1364468-33-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203214910.1364468-34-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-2-sergey.kambalin@auriga.com>
@@ -132,10 +132,11 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-31-sergey.kambalin@auriga.com>
  <20231203214910.1364468-32-sergey.kambalin@auriga.com>
  <20231203214910.1364468-33-sergey.kambalin@auriga.com>
+ <20231203214910.1364468-34-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -157,64 +158,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wSGZZDeL9y1a
+X-TUID: GuRWfSM9V49I
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838.c                     | 19 +++++++++++++++++++
- include/hw/arm/bcm2838_peripherals.h |  2 ++
- 2 files changed, 21 insertions(+)
+ tests/avocado/boot_linux_console.py | 92 +++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
 
-diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
-index 89cd9d5d8c..83f84b22ad 100644
---- a/hw/arm/bcm2838.c
-+++ b/hw/arm/bcm2838.c
-@@ -210,6 +210,10 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&ps_base->dwc2), 0,
-                        qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DWC2));
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 6eab515718..62aac02bbb 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -501,6 +501,98 @@ def test_arm_raspi2_initrd(self):
+         # Wait for VM to shut down gracefully
+         self.vm.wait()
  
-+    /* Connect RNG200 to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->rng200), 0,
-+                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_RNG200));
++    def test_arm_raspi4(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi4b2g
++        :avocado: tags=device:pl011
++        :avocado: tags=accel:tcg
++        :avocado: tags=rpi4b
 +
-     /* Connect DMA 0-6 to the interrupt controller */
-     for (int_n = GIC_SPI_INTERRUPT_DMA_0; int_n <= GIC_SPI_INTERRUPT_DMA_6;
-          int_n++) {
-@@ -232,6 +236,21 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
-     qdev_connect_gpio_out(dma_9_10_irq_orgate, 0,
-                           qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_DMA_9_10));
- 
-+    /* Connect PCIe host bridge to the interrupt controller */
-+    for (n = 0; n < BCM2838_PCIE_NUM_IRQS; n++) {
-+        int_n = GIC_SPI_INTERRUPT_PCI_INT_A + n;
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&ps->pcie_host), n,
-+                           qdev_get_gpio_in(gicdev, int_n));
-+        bcm2838_pcie_host_set_irq_num(BCM2838_PCIE_HOST(&ps->pcie_host), n,
-+                                      int_n);
-+    }
++        The kernel can be rebuilt using the kernel source referenced
++        and following the instructions on the on:
++        https://www.raspberrypi.org/documentation/linux/kernel/building.md
++        """
 +
-+    /* Connect Gigabit Ethernet controller to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 0,
-+                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_A));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&ps->genet), 1,
-+                       qdev_get_gpio_in(gicdev, GIC_SPI_INTERRUPT_GENET_B));
++        deb_url = ('http://archive.raspberrypi.org/debian/'
++            'pool/main/r/raspberrypi-firmware/'
++            'raspberrypi-kernel_1.20230106-1_arm64.deb')
++        deb_hash = '08dc55696535b18a6d4fe6fa10d4c0d905cbb2ed'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel8.img')
++        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2711-rpi-4-b.dtb')
 +
-     /* Pass through inbound GPIO lines to the GIC */
-     qdev_init_gpio_in(dev, bcm2838_gic_set_irq, GIC_NUM_IRQS);
- 
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 1cfcf5dcce..cdeb892f04 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -17,6 +17,8 @@
- #include "hw/sd/sdhci.h"
- #include "hw/gpio/bcm2838_gpio.h"
- 
-+#define GENET_OFFSET            0x1580000
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,mmio32,0xfe201000 ' +
++                               'console=ttyAMA0,115200 ' +
++                               'root=/dev/mmcblk1p2 rootwait ' +
++                               'dwc_otg.fiq_fsm_enable=0')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-append', kernel_command_line,
++                         '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
++                         '-device', 'usb-kbd,bus=xhci.0')
++        self.vm.launch()
++        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        self.wait_for_console_pattern(console_pattern)
++        console_pattern = 'Product: QEMU USB Keyboard'
++        self.wait_for_console_pattern(console_pattern)
 +
- /* SPI */
- #define GIC_SPI_INTERRUPT_MBOX         33
- #define GIC_SPI_INTERRUPT_MPHI         40
++
++    def test_arm_raspi4_initrd(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi4b2g
++        :avocado: tags=device:pl011
++        :avocado: tags=accel:tcg
++        :avocado: tags=rpi4b
++
++        The kernel can be rebuilt using the kernel source referenced
++        and following the instructions on the on:
++        https://www.raspberrypi.org/documentation/linux/kernel/building.md
++        """
++        deb_url = ('http://archive.raspberrypi.org/debian/'
++            'pool/main/r/raspberrypi-firmware/'
++            'raspberrypi-kernel_1.20230106-1_arm64.deb')
++        deb_hash = '08dc55696535b18a6d4fe6fa10d4c0d905cbb2ed'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel8.img')
++        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2711-rpi-4-b.dtb')
++
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '86b2be1384d41c8c388e63078a847f1e1c4cb1de/rootfs/'
++                      'arm64/rootfs.cpio.gz')
++        initrd_hash = 'f3d4f9fa92a49aa542f1b44d34be77bbf8ca5b9d'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.gzip_uncompress(initrd_path_gz, initrd_path)
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,mmio32,0xfe201000 ' +
++                               'console=ttyAMA0,115200 ' +
++                               'panic=-1 noreboot ' +
++                               'dwc_otg.fiq_fsm_enable=0')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-initrd', initrd_path,
++                         '-append', kernel_command_line,
++                         '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
++                         '-device', 'usb-kbd,bus=xhci.0',
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
++
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'BCM2835')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'cprman@7e101000')
++        exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
++        # TODO: Raspberry Pi4 doesn't shut down properly with recent kernels
++        # Wait for VM to shut down gracefully
++        #self.vm.wait()
++
+     def test_arm_exynos4210_initrd(self):
+         """
+         :avocado: tags=arch:arm
 -- 
 2.34.1
 

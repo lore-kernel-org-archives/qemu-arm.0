@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2330325ejb;
-        Sun, 3 Dec 2023 13:36:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFx9u7WNUPgqPK0eMUIMJ+3RgBaZQ5laDXUtCJxyCtgDDtIetN4CuMYf3wdSZMlJo2souVc
-X-Received: by 2002:a05:6830:90b:b0:6d8:74e2:b005 with SMTP id v11-20020a056830090b00b006d874e2b005mr5327768ott.67.1701639412938;
-        Sun, 03 Dec 2023 13:36:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701639412; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2330351ejb;
+        Sun, 3 Dec 2023 13:36:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHFr39NjNz00n/Xj2LUCkEPlJUOmUrvMask8JnEW3Tz55LT3PA1ONAh0E3080CDoDF6A76t
+X-Received: by 2002:ac8:5f83:0:b0:423:75a2:331b with SMTP id j3-20020ac85f83000000b0042375a2331bmr5476793qta.59.1701639417490;
+        Sun, 03 Dec 2023 13:36:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701639417; cv=none;
         d=google.com; s=arc-20160816;
-        b=I0TICc6QjaOBSJpd3wW+EcY19Vy6ZOLjKyvYdOQqWAK5BGHT7yWyl0F4ANou2B6QMx
-         ivCLqeCfUpjwv2xMDKiG2L+h9DPweV9MBiuwmiujI//pGnVVHdW3A0AH2hHf9F0jN9Tz
-         zZI7hmluR8ME0TngSoy8t5+m2BHQhc8XNBr4KQlAk1KhNpLVgWKgoaMq4PFX4r9hm0zz
-         QuWSijJbhZh6kxDre6A6rvUCvcsGDsTyXwobGfi90YH0IbPQDs6IBwCsdPF178hWcItW
-         CtfJXwz1kT6bRFjquyvE9nmvIDnX2V8qj6h7K2TM+yTo5FeVhgUd+w6h6+gHFt4Y1Z9J
-         XT7A==
+        b=KSfSVMn7zDhi0Sx1YXl0h4lTUd/I8ma1/b2xl4yy+Tj/4bZoL+f9jB2MraxAbaAIBk
+         0GBP1MGZWUQ9o54ziy4N38eegV4D3Zh1+QEKryLDDWbKlb+5FDP8wuZDAq06D3khwJrd
+         Y/58oZ0/fd3J5B5qslqt31ifhBG7byAiQqS/lbYqh4ThKMj9gzZMIbVBxlIesxf6hGX8
+         5dgHcEyZBCWeJGsbfJonKSYi6hvhFjhtuJWCbqKinXWsmUPLj2aMZ9mgj6Fj+qmjTkRx
+         Lc1Lsyx6BDhxfvT4GpCFpV+pOCaMif8zD204nQtGOeSFzQkfDQvkCEGrzTeRqu0fJxSm
+         mJMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ceI73nY+WORMm25Lfb079HY3yTTZKu7+HhKvNA+xgeM=;
+        bh=T2+RqTI992Z6aHpF/YzHyQQsizepG5slMHL58oIyT+w=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=Z2K4HdvJGUqTi5EB6zdGviIb+bfCCdcR3rJQ/5ImEKDBAy2ATwHTMF/4jS695LYU+r
-         ePX1Q+fvOyEfwo6RyQThlEFY1M6nxaNNdKj2WfuEfmve8e7EiXlO3BpmQId12mEYFRfX
-         Sf+N3WXaC1zSigy1SK/l4F8mULGgZjCD+jxHx8b4rzkQ5L5nM++GTy9vei28Hju98oIK
-         05ZPBHQ/Avibt6lSUaocuvt+on8uW8MvZQzuED/ryK9TFqtcRhbUK/hqPUi54JD/mia9
-         X3UpO+nlBbrZLrzr6IVbXV/gr6P/VxopkH9mGy1SqETieACS0IG6BBVk2Cj9oMaNYrkT
-         qd+Q==
+        b=RZHYrIzJuSEdXbBuIdHEStUEWVtpvQN5MDrsFMTLN1Sidbr+VZZ9r85M7STQkfOqiw
+         k3w0PE6lC9BxwianVFxKLLq235DngO9Jpio3Ciz6nnJdV/wRo4blA3hDnqL0wbhNJCVZ
+         9Yv9H0I/YeoC21hJ0p4Z4HnmIf76MvfqXjeiGdBTi754RKSkHvrnHu0yH/0m0bZs04Nl
+         2V1gTr6AWye8ARJZxiSPgEzF+BDCqWeuEL16iIBsCu1Hrd82hXbFSCUPi00FcDBUxk04
+         p97lTWhFWsgInq4s8boSPQbStIIr7JJUxMoASWAeBf/dDkYs+VezvV9XDuo4k51Hi0Iu
+         jB7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Oah9CitJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nMM0GJjA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ga26-20020a05622a591a00b004237b2a0930si8902242qtb.130.2023.12.03.13.36.52
+        by mx.google.com with ESMTPS id fw3-20020a05622a4a8300b0042540224e49si4735865qtb.605.2023.12.03.13.36.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:36:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 13:36:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Oah9CitJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nMM0GJjA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9u1h-0001Ok-Le; Sun, 03 Dec 2023 16:29:21 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r9u2H-0002Br-NA; Sun, 03 Dec 2023 16:29:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u1f-0001NJ-Rq; Sun, 03 Dec 2023 16:29:19 -0500
+ id 1r9u1s-0001S6-0U; Sun, 03 Dec 2023 16:29:40 -0500
 Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u1e-0005Ot-0k; Sun, 03 Dec 2023 16:29:19 -0500
+ id 1r9u1p-0005SB-9G; Sun, 03 Dec 2023 16:29:31 -0500
 Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-db3a09e96daso2128170276.3; 
- Sun, 03 Dec 2023 13:29:17 -0800 (PST)
+ 3f1490d57ef6-db54611b920so1855798276.3; 
+ Sun, 03 Dec 2023 13:29:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701638956; x=1702243756; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701638968; x=1702243768; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ceI73nY+WORMm25Lfb079HY3yTTZKu7+HhKvNA+xgeM=;
- b=Oah9CitJ13UctO801oTxnEqWVER/3t97+ofgoWHYh+tGj1gaUwCboryjM/xgNi7ebG
- mtkMQBIkFXgOwmP0gMEATjZc3GsDE84Bn6321ysB8Gla/BRwkOExjGfpRApGUbpsX11k
- 5SuMad2IxoyNE8ZT9TkRWVDWGX2LI2YyYBXFG/FwVsEOBk6SzDV5vsFtiJel22VnP3Rf
- P9zkkhUvpQ2V3m6zKcQa1QsJ2bUZK/0zdVXvtf8WrSyEelEudThVmqijLNnlMoTYqAFp
- WOcUfK6w2B0fp52mlnX2xz8nL7SgpRbW2ZMgpg1/E9HAlD7zRJ+MwhrHnLqBnk8AjA7h
- yIZA==
+ bh=T2+RqTI992Z6aHpF/YzHyQQsizepG5slMHL58oIyT+w=;
+ b=nMM0GJjA+OyGMSbrJuesGzQ1IIJI8LBZtudhl3mp2p2RhmPJlfbhHlccjbuA04K5Hk
+ sY3+b9KbJFUh8j+yaomHMWm+NuJKlBi3EOGDUQkJQ4f2lHlpSttj+8mbd9hNdZ15454i
+ eAZ8HFZdn5LweKa0DUzn4woJnJ8sEUThmsvx4LRTxg+GtEYWYBCSJCl4KJs+PhZ6qsn3
+ Qxs+l6mxiQ58+BVsYkjSgC981Y4lyrgz7ZuXpImUkRYqugcxr7xapTSuiSFlC1ctSJmq
+ cTEOu3DCmzEo0G9FPGIN3glYeYZ/yXHx1FukE1U3JDN4/gJ7xSGCzN6G6mYBAjS1YjDH
+ fdEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701638956; x=1702243756;
+ d=1e100.net; s=20230601; t=1701638968; x=1702243768;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ceI73nY+WORMm25Lfb079HY3yTTZKu7+HhKvNA+xgeM=;
- b=dpRRHVDgbhWnIYCHzxBbk3XeidfAPARuB20ODlfLxIjjY5Q5PvF82GHxJyS5aWZ3ik
- wY7R60915MViGM+clMmcAyuf1flZmRNGrbRTySAp7LQk8eigeJElqzYK6P+B0Zv57ONa
- LSwzHSINuzbG1kdrwx8emYxb1hRmlItJYalMjxzw9gdeDjWRfnJ4haPS0qp77tJKYOPR
- oiJ+2uEw7RLp4sRnyLyjHiyuX8T0BXYRWcof5mr+MWW7Q5bgubFTdsbScKRDqAxWr4aT
- fIdFeqteVshBF56ltqhq7oSULA4A9KRKD/VuSRD8OcbEs0mVG3XkxKk6B4muH7jOe3p0
- g8lQ==
-X-Gm-Message-State: AOJu0YyCN4PBugk6QVbRXolrj/NS7RMo3OfZZraQB+V7nrFRx58kIetb
- iuLj0CLpjsPs/mx/CDW6fw805ThX1wH49g==
-X-Received: by 2002:a05:6902:1008:b0:db7:dad0:60d8 with SMTP id
- w8-20020a056902100800b00db7dad060d8mr2269016ybt.101.1701638956524; 
- Sun, 03 Dec 2023 13:29:16 -0800 (PST)
+ bh=T2+RqTI992Z6aHpF/YzHyQQsizepG5slMHL58oIyT+w=;
+ b=dJ1WnVod/ebg4NWXV+TA8sf5oRFIHQifWHWly2QYdJ/O1XXLHoMGtnTgLRBlOPr2cE
+ E08I4DOg3j7b5a6svZAlXU7OXmr3c0JRCpawKsN/bera3Bz5tF5KLHAY8u57hcIu0SKa
+ F6KYd9UNQ4mFdR8AjcZ1Zrska2mxq0TC90xYDDzXNEuqdu4AvbDVxfUrEPJC/EoncbUi
+ mTrszy9VGonFWp3QKRNFcyflX6GyZKh5nvyGvwy4Vkwf2oVl6SMjcJT79nIJQzqzaT94
+ QJpfoJVwqP5B734hiEhd6kdaZbzaddHFT+z6KZ27Yi5E6iG+4iNWQfc34Kj974wCLsiM
+ FCMg==
+X-Gm-Message-State: AOJu0YxxPrUyfX62iOIU++v0kZl5llRiOm12FTXolgUdukjSX9b8ESEo
+ oErj4bjvh4/S65r8pqTwxS16abyE0P70xA==
+X-Received: by 2002:a25:5f44:0:b0:db5:c77d:1fae with SMTP id
+ h4-20020a255f44000000b00db5c77d1faemr3552035ybm.29.1701638967698; 
+ Sun, 03 Dec 2023 13:29:27 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.15
+ c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:29:16 -0800 (PST)
+ Sun, 03 Dec 2023 13:29:27 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 07/45] Implement BCM2838 GPIO functionality
-Date: Sun,  3 Dec 2023 15:28:27 -0600
-Message-Id: <20231203212905.1364036-8-sergey.kambalin@auriga.com>
+Subject: [PATCH 18/45] Add RNG200 RNG and RBG
+Date: Sun,  3 Dec 2023 15:28:38 -0600
+Message-Id: <20231203212905.1364036-19-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203212905.1364036-7-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203212905.1364036-18-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-2-sergey.kambalin@auriga.com>
@@ -106,6 +106,17 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-5-sergey.kambalin@auriga.com>
  <20231203212905.1364036-6-sergey.kambalin@auriga.com>
  <20231203212905.1364036-7-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-8-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-9-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-10-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-11-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-12-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-13-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-14-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-15-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-16-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-17-sergey.kambalin@auriga.com>
+ <20231203212905.1364036-18-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
@@ -118,256 +129,406 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bIrlTUtWc20Z
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hUeXCS5FKGsr
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/gpio/bcm2838_gpio.c | 192 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 189 insertions(+), 3 deletions(-)
+ hw/misc/bcm2838_rng200.c         | 292 +++++++++++++++++++++++++++++--
+ include/hw/misc/bcm2838_rng200.h |  10 +-
+ 2 files changed, 275 insertions(+), 27 deletions(-)
 
-diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
-index 15b66cb559..51eb55b00a 100644
---- a/hw/gpio/bcm2838_gpio.c
-+++ b/hw/gpio/bcm2838_gpio.c
-@@ -19,6 +19,7 @@
- #include "hw/sysbus.h"
+diff --git a/hw/misc/bcm2838_rng200.c b/hw/misc/bcm2838_rng200.c
+index 8f64e6a20f..f91ea0754c 100644
+--- a/hw/misc/bcm2838_rng200.c
++++ b/hw/misc/bcm2838_rng200.c
+@@ -8,25 +8,56 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "qapi/error.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/bcm2838_rng200.h"
++#include "hw/registerfields.h"
  #include "migration/vmstate.h"
- #include "hw/gpio/bcm2838_gpio.h"
-+#include "hw/irq.h"
+ #include "trace.h"
  
- #define GPFSEL0   0x00
- #define GPFSEL1   0x04
-@@ -57,14 +58,139 @@
- #define RESET_VAL_CNTRL_REG2 0x50AAA95A;
- #define RESET_VAL_CNTRL_REG3 0x00055555;
+-static const VMStateDescription vmstate_bcm2838_rng200_regs = {
+-    .name = "bcm2838_rng200_regs",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_UINT32(ctrl, BCM2838_rng_regs_t),
+-        VMSTATE_UINT32(int_status, BCM2838_rng_regs_t),
+-        VMSTATE_UINT32(fifo_count, BCM2838_rng_regs_t),
+-        VMSTATE_UINT32(fifo_count_threshold, BCM2838_rng_regs_t),
+-        VMSTATE_UINT32(total_bit_count_threshold, BCM2838_rng_regs_t),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
++/* RNG200 registers */
++REG32(RNG_CTRL,               0x00)
++    FIELD(RNG_CTRL, RBG_ENABLE,   0 , 1)
++    FIELD(RNG_CTRL, RSVD,         1 , 12)
++    FIELD(RNG_CTRL, DIV,         13 , 8)
++
++REG32(RNG_SOFT_RESET,                0x04)
++REG32(RBG_SOFT_RESET,                0x08)
++REG32(RNG_TOTAL_BIT_COUNT,           0x0C)
++REG32(RNG_TOTAL_BIT_COUNT_THRESHOLD, 0x10)
++
++REG32(RNG_INT_STATUS,                               0x18)
++    FIELD(RNG_INT_STATUS, TOTAL_BITS_COUNT_IRQ,         0, 1)
++    FIELD(RNG_INT_STATUS, RSVD0,                        1, 4)
++    FIELD(RNG_INT_STATUS, NIST_FAIL_IRQ,                5, 1)
++    FIELD(RNG_INT_STATUS, RSVD1,                        6, 11)
++    FIELD(RNG_INT_STATUS, STARTUP_TRANSITIONS_MET_IRQ,  17, 1)
++    FIELD(RNG_INT_STATUS, RSVD2,                        18, 13)
++    FIELD(RNG_INT_STATUS, MASTER_FAIL_LOCKOUT_IRQ,      30, 1)
++
++REG32(RNG_INT_ENABLE,                               0x1C)
++    FIELD(RNG_INT_ENABLE, TOTAL_BITS_COUNT_IRQ,         0, 1)
++    FIELD(RNG_INT_ENABLE, RSVD0,                        1, 4)
++    FIELD(RNG_INT_ENABLE, NIST_FAIL_IRQ,                5, 1)
++    FIELD(RNG_INT_ENABLE, RSVD1,                        6, 11)
++    FIELD(RNG_INT_ENABLE, STARTUP_TRANSITIONS_MET_IRQ,  17, 1)
++    FIELD(RNG_INT_ENABLE, RSVD2,                        18, 13)
++    FIELD(RNG_INT_ENABLE, MASTER_FAIL_LOCKOUT_IRQ,      30, 1)
++
++REG32(RNG_FIFO_DATA, 0x20)
++
++REG32(RNG_FIFO_COUNT,              0x24)
++    FIELD(RNG_FIFO_COUNT, COUNT,       0, 8)
++    FIELD(RNG_FIFO_COUNT, THRESHOLD,   8, 8)
++
++
++#define RNG_WARM_UP_PERIOD_ELAPSED           17
++
++#define SOFT_RESET    1
++#define IRQ_PENDING   1
++
++#define BCM2838_RNG200_PTIMER_POLICY         (PTIMER_POLICY_CONTINUOUS_TRIGGER)
  
-+#define NUM_FSELN_IN_GPFSELN 10
-+#define NUM_BITS_FSELN       3
-+#define MASK_FSELN           0x7
-+
- #define BYTES_IN_WORD        4
+ static const VMStateDescription vmstate_bcm2838_rng200 = {
+     .name = "bcm2838_rng200",
+@@ -37,33 +68,253 @@ static const VMStateDescription vmstate_bcm2838_rng200 = {
+         VMSTATE_UINT32(rng_fifo_cap, BCM2838Rng200State),
+         VMSTATE_BOOL(use_timer, BCM2838Rng200State),
  
-+static uint32_t gpfsel_get(BCM2838GpioState *s, uint8_t reg)
+-        VMSTATE_STRUCT(regs, BCM2838Rng200State, 0, vmstate_bcm2838_rng200_regs,
+-                       BCM2838_rng_regs_t),
++        VMSTATE_ARRAY(regs, BCM2838Rng200State, N_BCM2838_RNG200_REGS, 0,
++                      vmstate_info_uint32, uint32_t),
+ 
+         VMSTATE_END_OF_LIST()
+     }
+ };
+ 
+-static void bcm2838_rng200_rng_reset(BCM2838Rng200State *state)
++static bool is_rbg_enabled(BCM2838Rng200State *s)
 +{
-+    int i;
-+    uint32_t value = 0;
-+    for (i = 0; i < NUM_FSELN_IN_GPFSELN; i++) {
-+        uint32_t index = NUM_FSELN_IN_GPFSELN * reg + i;
-+        if (index < sizeof(s->fsel)) {
-+            value |= (s->fsel[index] & MASK_FSELN) << (NUM_BITS_FSELN * i);
-+        }
-+    }
-+    return value;
++    return FIELD_EX32(s->regs[R_RNG_CTRL], RNG_CTRL, RBG_ENABLE);
 +}
 +
-+static void gpfsel_set(BCM2838GpioState *s, uint8_t reg, uint32_t value)
-+{
-+    int i;
-+    for (i = 0; i < NUM_FSELN_IN_GPFSELN; i++) {
-+        uint32_t index = NUM_FSELN_IN_GPFSELN * reg + i;
-+        if (index < sizeof(s->fsel)) {
-+            int fsel = (value >> (NUM_BITS_FSELN * i)) & MASK_FSELN;
-+            s->fsel[index] = fsel;
-+        }
-+    }
++static void increment_bit_counter_by(BCM2838Rng200State *s, uint32_t inc_val) {
++    s->regs[R_RNG_TOTAL_BIT_COUNT] += inc_val;
 +}
 +
-+static int gpfsel_is_out(BCM2838GpioState *s, int index)
-+{
-+    if (index >= 0 && index < BCM2838_GPIO_NUM) {
-+        return s->fsel[index] == 1;
-+    }
-+    return 0;
++static void bcm2838_rng200_update_irq(BCM2838Rng200State *s)
++{ 
++    qemu_set_irq(s->irq,
++                !!(s->regs[R_RNG_INT_ENABLE] & s->regs[R_RNG_INT_STATUS]));
 +}
 +
-+static void gpset(BCM2838GpioState *s, uint32_t val, uint8_t start,
-+                  uint8_t count, uint32_t *lev)
-+{
-+    uint32_t changes = val & ~*lev;
-+    uint32_t cur = 1;
-+
-+    int i;
-+    for (i = 0; i < count; i++) {
-+        if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-+            qemu_set_irq(s->out[start + i], 1);
-+        }
-+        cur <<= 1;
-+    }
-+
-+    *lev |= val;
-+}
-+
-+static void gpclr(BCM2838GpioState *s, uint32_t val, uint8_t start,
-+                  uint8_t count, uint32_t *lev)
-+{
-+    uint32_t changes = val & *lev;
-+    uint32_t cur = 1;
-+
-+    int i;
-+    for (i = 0; i < count; i++) {
-+        if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-+            qemu_set_irq(s->out[start + i], 0);
-+        }
-+        cur <<= 1;
-+    }
-+
-+    *lev &= ~val;
-+}
-+
- static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
++static void bcm2838_rng200_update_fifo(void *opaque, const void *buf,
++                                       size_t size)
  {
-+    BCM2838GpioState *s = (BCM2838GpioState *)opaque;
-     uint64_t value = 0;
- 
--    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
--                  TYPE_BCM2838_GPIO, __func__, offset);
-+    switch (offset) {
-+    case GPFSEL0:
-+    case GPFSEL1:
-+    case GPFSEL2:
-+    case GPFSEL3:
-+    case GPFSEL4:
-+    case GPFSEL5:
-+        value = gpfsel_get(s, offset / BYTES_IN_WORD);
-+        break;
-+    case GPSET0:
-+    case GPSET1:
-+    case GPCLR0:
-+    case GPCLR1:
-+        /* Write Only */
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: Attempt reading from write only"
-+                      " register. %lu will be returned. Address 0x%"HWADDR_PRIx
-+                      ", size %u\n", TYPE_BCM2838_GPIO, __func__, value, offset,
-+                      size);
-+        break;
-+    case GPLEV0:
-+        value = s->lev0;
-+        break;
-+    case GPLEV1:
-+        value = s->lev1;
-+        break;
-+    case GPEDS0:
-+    case GPEDS1:
-+    case GPREN0:
-+    case GPREN1:
-+    case GPFEN0:
-+    case GPFEN1:
-+    case GPHEN0:
-+    case GPHEN1:
-+    case GPLEN0:
-+    case GPLEN1:
-+    case GPAREN0:
-+    case GPAREN1:
-+    case GPAFEN0:
-+    case GPAFEN1:
-+        /* Not implemented */
-+        qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-+                      TYPE_BCM2838_GPIO, __func__, offset);
-+        break;
-+    case GPIO_PUP_PDN_CNTRL_REG0:
-+    case GPIO_PUP_PDN_CNTRL_REG1:
-+    case GPIO_PUP_PDN_CNTRL_REG2:
-+    case GPIO_PUP_PDN_CNTRL_REG3:
-+        value = s->pup_cntrl_reg[(offset - GPIO_PUP_PDN_CNTRL_REG0)
-+                                 / sizeof(s->pup_cntrl_reg[0])];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: bad offset %"HWADDR_PRIx"\n",
-+                      TYPE_BCM2838_GPIO, __func__, offset);
-+        break;
-+    }
- 
-     return value;
- }
-@@ -72,14 +198,74 @@ static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
- static void bcm2838_gpio_write(void *opaque, hwaddr offset, uint64_t value,
-                                unsigned size)
- {
--    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-+    BCM2838GpioState *s = (BCM2838GpioState *)opaque;
+-    state->regs.ctrl = 0;
++    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
++    Fifo8 *fifo = &s->fifo;
++    size_t num = MIN(size, fifo8_num_free(fifo));
++    uint32_t num_bits = num * 8;
++    uint32_t bit_threshold_left = 0;
++    uint32_t bit_count = 0;
++    uint32_t bit_count_thld = 0;
++    uint32_t fifo_thld = 0;
 +
-+    switch (offset) {
-+    case GPFSEL0:
-+    case GPFSEL1:
-+    case GPFSEL2:
-+    case GPFSEL3:
-+    case GPFSEL4:
-+    case GPFSEL5:
-+        gpfsel_set(s, offset / BYTES_IN_WORD, value);
-+        break;
-+    case GPSET0:
-+        gpset(s, value, 0, 32, &s->lev0);
-+        break;
-+    case GPSET1:
-+        gpset(s, value, 32, 22, &s->lev1);
-+        break;
-+    case GPCLR0:
-+        gpclr(s, value, 0, 32, &s->lev0);
-+        break;
-+    case GPCLR1:
-+        gpclr(s, value, 32, 22, &s->lev1);
-+        break;
-+    case GPLEV0:
-+    case GPLEV1:
-+        /* Read Only */
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: Attempt writing %lu to read "
-+                      "only register. Ignored. Address 0x%"HWADDR_PRIx", size "
-+                      "%u\n", TYPE_BCM2838_GPIO, __func__, value, offset, size);
-+        break;
-+    case GPEDS0:
-+    case GPEDS1:
-+    case GPREN0:
-+    case GPREN1:
-+    case GPFEN0:
-+    case GPFEN1:
-+    case GPHEN0:
-+    case GPHEN1:
-+    case GPLEN0:
-+    case GPLEN1:
-+    case GPAREN0:
-+    case GPAREN1:
-+    case GPAFEN0:
-+    case GPAFEN1:
-+        /* Not implemented */
-+        qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-+                      TYPE_BCM2838_GPIO, __func__, offset);
-+        break;
-+    case GPIO_PUP_PDN_CNTRL_REG0:
-+    case GPIO_PUP_PDN_CNTRL_REG1:
-+    case GPIO_PUP_PDN_CNTRL_REG2:
-+    case GPIO_PUP_PDN_CNTRL_REG3:
-+        s->pup_cntrl_reg[(offset - GPIO_PUP_PDN_CNTRL_REG0)
-+                         / sizeof(s->pup_cntrl_reg[0])] = value;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: bad offset %"HWADDR_PRIx"\n",
-                   TYPE_BCM2838_GPIO, __func__, offset);
++    increment_bit_counter_by(s, num_bits);
++
++    bit_count = s->regs[R_RNG_TOTAL_BIT_COUNT];
++    bit_count_thld = s->regs[R_RNG_TOTAL_BIT_COUNT_THRESHOLD];
++
++    bit_threshold_left = (bit_count < bit_count_thld)
++                       ? bit_count_thld - bit_count
++                       : 0;
++
++    if (bit_threshold_left < num_bits) {
++        num_bits -= bit_threshold_left;
++    } else {
++        num_bits = 0;
 +    }
-+    return;
++
++    num = num_bits / 8;
++    if ((num == 0) && (num_bits > 0)) {
++        num = 1;
++    }
++    if (num > 0) {
++        fifo8_push_all(fifo, buf, num);
++
++
++        fifo_thld = FIELD_EX32(s->regs[R_RNG_FIFO_COUNT],
++                               RNG_FIFO_COUNT, THRESHOLD);
++
++        if (fifo8_num_used(fifo) > fifo_thld) {
++            s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
++                                                   RNG_INT_STATUS,
++                                                   TOTAL_BITS_COUNT_IRQ, 1);
++        }
++    }
++
++    s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
++                                           RNG_FIFO_COUNT,
++                                           COUNT,
++                                           fifo8_num_used(fifo) >> 2);
++    bcm2838_rng200_update_irq(s);
++    trace_bcm2838_rng200_update_fifo(num, fifo8_num_used(fifo));
++}
++
++static void bcm2838_rng200_fill_fifo(BCM2838Rng200State *s)
++{
++    rng_backend_request_entropy(s->rng, fifo8_num_free(&s->fifo),
++                                bcm2838_rng200_update_fifo, s);
++}
++
++/* This function will be implemnented in upcoming commits */
++static void bcm2838_rng200_disable_rbg(BCM2838Rng200State *s
++                                       __attribute__((unused)))
++{
++    trace_bcm2838_rng200_disable_rbg();
++}
++
++static void bcm2838_rng200_enable_rbg(BCM2838Rng200State *s)
++{
++    s->regs[R_RNG_TOTAL_BIT_COUNT] = RNG_WARM_UP_PERIOD_ELAPSED;
++
++    bcm2838_rng200_fill_fifo(s);
++
++    trace_bcm2838_rng200_enable_rbg();
++}
++
++static void bcm2838_rng200_rng_reset(BCM2838Rng200State *s)
++{
++    memset(s->regs, 0, sizeof(s->regs));
++    s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
++                                           RNG_INT_STATUS,
++                                           STARTUP_TRANSITIONS_MET_IRQ,
++                                           IRQ_PENDING);
++    fifo8_reset(&s->fifo);
+ 
+     trace_bcm2838_rng200_rng_soft_reset();
  }
  
- static void bcm2838_gpio_reset(DeviceState *dev)
- {
-     BCM2838GpioState *s = BCM2838_GPIO(dev);
- 
-+    memset(s->fsel, 0, sizeof(s->fsel));
++static void bcm2838_rng200_rbg_reset(BCM2838Rng200State *s)
++{
++    trace_bcm2838_rng200_rbg_soft_reset();
++}
 +
-     s->lev0 = 0;
-     s->lev1 = 0;
++static uint32_t bcm2838_rng200_read_fifo_data(BCM2838Rng200State *s)
++{
++    Fifo8 *fifo = &s->fifo;
++    const uint8_t *buf;
++    uint32_t ret = 0;
++    uint32_t num = 0;
++    uint32_t max = MIN(fifo8_num_used(fifo), sizeof(ret));
++
++    if (max > 0) {
++        buf = fifo8_pop_buf(fifo, max, &num);
++        if ((buf != NULL) && (num > 0)) {
++            memcpy(&ret, buf, num);
++        }
++    } else {
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "bcm2838_rng200_read_fifo_data: FIFO is empty\n"
++        );
++    }
++
++    s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
++                                           RNG_FIFO_COUNT,
++                                           COUNT,
++                                           fifo8_num_used(fifo) >> 2);
++
++    bcm2838_rng200_fill_fifo(s);
++
++    return ret;
++}
++
++static void bcm2838_rng200_ctrl_write(BCM2838Rng200State *s, uint32_t value)
++{
++    bool currently_enabled = is_rbg_enabled(s);
++    bool enable_requested = FIELD_EX32(value, RNG_CTRL, RBG_ENABLE);
++
++    s->regs[R_RNG_CTRL] = value;
++
++    if (!currently_enabled && enable_requested) {
++        bcm2838_rng200_enable_rbg(s);
++    } else if (currently_enabled && !enable_requested) {
++        bcm2838_rng200_disable_rbg(s);
++    }
++}
++
+ static uint64_t bcm2838_rng200_read(void *opaque, hwaddr offset,
+                                     unsigned size)
+ {
++    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
+     uint32_t res = 0;
  
+-    /* will be implemented in upcoming commits */
++    switch (offset) {
++    case A_RNG_CTRL:
++        res = s->regs[R_RNG_CTRL];
++        break;
++    case A_RNG_SOFT_RESET:
++    case A_RBG_SOFT_RESET:
++        break;
++    case A_RNG_INT_STATUS:
++        res = s->regs[R_RNG_INT_STATUS];
++        break;
++    case A_RNG_INT_ENABLE:
++        res = s->regs[R_RNG_INT_ENABLE];
++        break;
++    case A_RNG_FIFO_DATA:
++        res = bcm2838_rng200_read_fifo_data(s);
++        break;
++    case A_RNG_FIFO_COUNT:
++        res = s->regs[R_RNG_FIFO_COUNT];
++        break;
++    case A_RNG_TOTAL_BIT_COUNT:
++        res = s->regs[R_RNG_TOTAL_BIT_COUNT];
++        break;
++    case A_RNG_TOTAL_BIT_COUNT_THRESHOLD:
++        res = s->regs[R_RNG_TOTAL_BIT_COUNT_THRESHOLD];
++        break;
++    default:
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "bcm2838_rng200_read: Bad offset 0x%" HWADDR_PRIx "\n",
++            offset
++        );
++        res = 0;
++        break;
++    }
++
++    trace_bcm2838_rng200_read(offset, size, res);
+     return res;
+ }
+ 
+ static void bcm2838_rng200_write(void *opaque, hwaddr offset,
+                                  uint64_t value, unsigned size)
+ {
+-    /* will be implemented in upcoming commits */
++    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
++
++    trace_bcm2838_rng200_write(offset, value, size);
++
++    switch (offset) {
++    case A_RNG_CTRL:
++        bcm2838_rng200_ctrl_write(s, value);
++        break;
++    case A_RNG_SOFT_RESET:
++        if (value & SOFT_RESET) {
++            bcm2838_rng200_rng_reset(s);
++        }
++        break;
++    case A_RBG_SOFT_RESET:
++        if (value & SOFT_RESET) {
++            bcm2838_rng200_rbg_reset(s);
++        }
++        break;
++    case A_RNG_INT_STATUS:
++        s->regs[R_RNG_INT_STATUS] &= ~value;
++        bcm2838_rng200_update_irq(s);
++        break;
++    case A_RNG_INT_ENABLE:
++        s->regs[R_RNG_INT_ENABLE] = value;
++        bcm2838_rng200_update_irq(s);
++        break;
++    case A_RNG_FIFO_COUNT:
++        s->regs[R_RNG_FIFO_COUNT] = value;
++        break;
++    case A_RNG_TOTAL_BIT_COUNT_THRESHOLD:
++        s->regs[R_RNG_TOTAL_BIT_COUNT_THRESHOLD] = value;
++        s->regs[R_RNG_TOTAL_BIT_COUNT] = value + 1;
++        break;
++    default:
++        qemu_log_mask(
++            LOG_GUEST_ERROR,
++            "bcm2838_rng200_write: Bad offset 0x%" HWADDR_PRIx "\n",
++            offset
++        );
++        break;
++    }
+ }
+ 
+ static const MemoryRegionOps bcm2838_rng200_ops = {
+@@ -87,6 +338,7 @@ static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
+                                  errp);
+     }
+ 
++    fifo8_create(&s->fifo, s->rng_fifo_cap);
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+ }
+ 
+@@ -116,6 +368,8 @@ static void bcm2838_rng200_init(Object *obj)
+ static void bcm2838_rng200_reset(DeviceState *dev)
+ {
+     BCM2838Rng200State *s = BCM2838_RNG200(dev);
++
++    bcm2838_rng200_rbg_reset(s);
+     bcm2838_rng200_rng_reset(s);
+ }
+ 
+diff --git a/include/hw/misc/bcm2838_rng200.h b/include/hw/misc/bcm2838_rng200.h
+index c9c52f84be..46fdba48da 100644
+--- a/include/hw/misc/bcm2838_rng200.h
++++ b/include/hw/misc/bcm2838_rng200.h
+@@ -22,13 +22,7 @@
+ #define TYPE_BCM2838_RNG200 "bcm2838-rng200"
+ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838Rng200State, BCM2838_RNG200)
+ 
+-typedef struct {
+-    uint32_t ctrl;
+-    uint32_t int_status;
+-    uint32_t fifo_count;
+-    uint32_t fifo_count_threshold;
+-    uint32_t total_bit_count_threshold;
+-} BCM2838_rng_regs_t;
++#define N_BCM2838_RNG200_REGS 9
+ 
+ struct BCM2838Rng200State {
+     SysBusDevice busdev;
+@@ -45,7 +39,7 @@ struct BCM2838Rng200State {
+     Fifo8    fifo;
+     qemu_irq irq;
+ 
+-    BCM2838_rng_regs_t regs;
++    uint32_t regs[N_BCM2838_RNG200_REGS];
+ };
+ 
+ #endif /* BCM2838_RNG200_H */
 -- 
 2.34.1
 

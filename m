@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370138ejb;
-        Sun, 3 Dec 2023 15:43:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE0a+1KPu9ZYS4LmSsQ58pb2/xz9SsMFr3ptdMVlnIo2S4mEpfrkMeYCGNNS+zpoKF006Qa
-X-Received: by 2002:a05:622a:1715:b0:423:f6b7:fd82 with SMTP id h21-20020a05622a171500b00423f6b7fd82mr5237143qtk.34.1701647017524;
-        Sun, 03 Dec 2023 15:43:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647017; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370147ejb;
+        Sun, 3 Dec 2023 15:43:40 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGOIiGYB8nRU7thTmAJ8atXiQrrga3II91xo+WX87w/4dOMwwT/WKE6d+Dd3Hi3N6ebo8ZV
+X-Received: by 2002:a05:6214:2b3:b0:67a:a951:7fc2 with SMTP id m19-20020a05621402b300b0067aa9517fc2mr3802373qvv.119.1701647020483;
+        Sun, 03 Dec 2023 15:43:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647020; cv=none;
         d=google.com; s=arc-20160816;
-        b=s/c2FtdsbwG21WA+nHi4AT8+NY71DMAf1QCmPKfsTE9pr1zirWShoKBD8xuZRrFZoF
-         XY5qRN6dsG/Cc3ouHET0qdJyoRt1L022y0IybOp4YJ5WcFzYN3kHA8sKJ6YRYvVWo5qa
-         zWRy0OW8f5whZ4MMTVgoikUQzfyonCrHIXOAkxN13pAA6xRjUvGP/QS75U9TBiEcJwVA
-         3kkuIL33R08G7napH79/bS/I7YEeNTeWIdnynYQsxZn1Z6ujzYgdPEgQJteS9bwu34zy
-         Q5Q1KDfV+o7SHy3/BBThTjsoJw6NeY5haoahTyzvm8sXZEIhJRanh1bpiIkZDMhJbHh/
-         fRBQ==
+        b=RlmQR2OSrxmi2ijcC29IfNO4wFHy1MgPD+yDYF4SWsgt8vJaDD51gvbI1awZbrCKJq
+         X35ki+6mu1l+w2h37RCXwa4Rrgk5sKF5ZxsArbKJToypl1V4HRO+ySvkOQc04tBDAQ9k
+         ljR+qiQsUmuzC/MCTVJ7eagE1OgqKshOaQ+MUrDdvKjVYFClJtqRU7M9MbOm4TUf+o0r
+         xgSOlJAvGhVQ/AbtLBmJZWSOZe/ZZBEbJ06V6Uc1OaiwSxfFFI0d2+bajiaKp2yze6OS
+         mUkC5G7dxAu7DQqHLZFN38UcItu37ItXu6utHaEa4wYPLcdo4rSSTCS9DY2qv5BGuI8H
+         VClg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=T2+RqTI992Z6aHpF/YzHyQQsizepG5slMHL58oIyT+w=;
+        bh=I0abax01Jn7TA0fY2P1fUcZE3FFcwoH4EKqmrD+AUDY=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=FOuEdBAbQvZWGkmVMys9yBFgCCEFn2AItpyFTj5l9fA3voceNG0JPVrAuTTdl/DsvG
-         I5iDWT8e02y6yt5i7alugHq0/LR9uEsHSXYeTlxfQTe41vAS9ef34I4zEM5bEfv313dr
-         uwUEIQSyrrCjO/1fw3bdghIbCQd7Ib/ZScaOs/pqSobhqmr1V+WpkJf380SHlO/h8iyB
-         7VszJuQ+eTzh5vpSNCjZFyB7UHQBkZWqYk8UIdo7kKmoP5I2Y+y+8dNRz6wVADyX9nSL
-         N+yM7FbH3XN76FGhEwS/ZUY2UU6xjegfKrs5aC90QzxaTJ83v5Fx3BXG0+Kz+jRpgTIi
-         ISYA==
+        b=Lcx2aQHaksJJh0+cFVubrHDMHTht0HU7l34zSRt/BirlnOd0dS6fURXrsrmRrbZ4Xm
+         siLhV/9llRyviAIIKTGpGkdix06X7Lc1Re49VsbKH/D66MST7JkP8lRKAxOukfBXiwHS
+         wr3qjQdwBrZ12I5/c2QPmPcxL1xuiHlCJRI04UTknHgPKsNWD8bBISfWBHHO9C6Jk53L
+         Op81udz164TCZeu5aSrR7egSqEjex5Cjb6lCTRaulRgydf2Zqiu3W8ViZ+FBuzTYy6Kc
+         R2vqLzluQMd28R58H0Gvd6PbmAl7ETsZCAqCrBUNm+wmNyZCFs3hyN2/bGi/u69hAV4I
+         lljg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WnDD567T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=POxRQsB6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ge21-20020a05622a5c9500b00423e5b3d9c7si8880625qtb.156.2023.12.03.15.43.37
+        by mx.google.com with ESMTPS id do1-20020a056214096100b0067a956cb61csi3446656qvb.46.2023.12.03.15.43.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:43:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 15:43:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WnDD567T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=POxRQsB6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9w6m-00075y-6u; Sun, 03 Dec 2023 18:42:44 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9w6c-0006sE-3Y; Sun, 03 Dec 2023 18:42:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6i-00070x-PT; Sun, 03 Dec 2023 18:42:40 -0500
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ id 1r9w6W-0006nj-63; Sun, 03 Dec 2023 18:42:28 -0500
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6g-0002lr-GI; Sun, 03 Dec 2023 18:42:40 -0500
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-5d400779f16so19867627b3.0; 
- Sun, 03 Dec 2023 15:42:37 -0800 (PST)
+ id 1r9w6S-0002ht-CD; Sun, 03 Dec 2023 18:42:27 -0500
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-5d74186170fso11419757b3.3; 
+ Sun, 03 Dec 2023 15:42:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646957; x=1702251757; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646942; x=1702251742; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T2+RqTI992Z6aHpF/YzHyQQsizepG5slMHL58oIyT+w=;
- b=WnDD567TLOzpsBqZmg6v3wLR1ym6izl0L9ukr3mv3ATQYywwDWvGlCMDHDNDDgggdT
- /pFcxsZpm9pIgvYpwc7Xo6nRswmf5BH7Afs0ZqdsemCcrq6v6i8WXzOeQ+wHdwpPH3j7
- 7QJjoAwuMTTtmWyU1O55wiqnhMnpX8QMLhRIQHUxOV3phtN4sPFUwcpZbz0WgMGWcuWQ
- 75ZDCgcw0GXrcyA1HSAK4jP9puj5aKAX3qPhXNlzzqWyyST2ynQmFSr01rOXprFsrFWP
- 3+c5JTTZIzBFAARnZD+yGdRJq8gZjYn27p07lvPeyCUJAUoEn6pr73IH+vRe8jflVpJz
- Hlhw==
+ bh=I0abax01Jn7TA0fY2P1fUcZE3FFcwoH4EKqmrD+AUDY=;
+ b=POxRQsB6MOq5Hk9SgqVd9d+KSS1bLmHvhM5OoFppSLLctYyMFpwgS2o1gxWM/L95Hv
+ 5iXC4qLktl+4LSQjuu9w3ljE9dKKeV021+XU2KOYovttpnmVwVgLDUl+I5rkNpvhrFA0
+ Cu73i5P5qDe4flPtEIrJNcuasFqlM9OK/T+tDHaipjUo6GOprD8kondMf4r8rsBcOaym
+ e4+mmfr2SQsZnhzUBQcMTOzvSCLkmNtIX4dpkXDAvVydNMfhq7rT7l72p3antdWlVxzS
+ UgK/j72+lmZWWhE22iYoXKHXXh+Ibr5mJJ+jMIJ7C0wSkebQmPor8UwKtm4sS9UPprCT
+ V+ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646957; x=1702251757;
+ d=1e100.net; s=20230601; t=1701646942; x=1702251742;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=T2+RqTI992Z6aHpF/YzHyQQsizepG5slMHL58oIyT+w=;
- b=c14W72pPhstl/+MvMQmATdVqMKs9fWMQc6sLrfyN+EikUwCQjDWH01xgwWXhMbH41t
- +3IQdwj+3fgElHnF5b8qDAeh96wmhVti85fgjOWjkHgvI0TCt2cUO4wwjT4OBbcFgHAX
- 0L3HgNBV2OyvMTmJCA5lTXn2UVO2YnZwGeNZZ/jwIOEemAPmuAMtcjs32litdYFcIY0V
- TOp+3k50CwH8gCtlS/4h7C6aKLNR9SK/nWqqr4e0iO1qtcQsf4QpgCcU28Qz8TZ+VQaz
- 8UVEDfAcygRoDC+bGYI/cv+fL60qQ9nxu2TDS/XGuL0YxaFb82r5e2+5tYuc06Zo/qw5
- g6kw==
-X-Gm-Message-State: AOJu0YwrkiLJdTDqfp8Cbz+nGRs9Gk9Ye2oJ7EakZFVf62IeIMFLYjqk
- kXDrdlQzniC4pnLvjj013YvClbfmwFouOA==
-X-Received: by 2002:a81:914d:0:b0:5d7:5267:6ae with SMTP id
- i74-20020a81914d000000b005d7526706aemr1633943ywg.11.1701646956981; 
- Sun, 03 Dec 2023 15:42:36 -0800 (PST)
+ bh=I0abax01Jn7TA0fY2P1fUcZE3FFcwoH4EKqmrD+AUDY=;
+ b=VoXlB67VAl1j+LepfwUn8fMYX6/gu34PhnASytSgy+TQFXmDlDAAdxQlubIpdHda5T
+ pXXYzYEmeZhTUWPwcHswvXZ+dVCFr6gzvqohtKaz+lf3WWwP7QjbKam1XR9IFIq9pzkW
+ +0oFc2jdPLjZotjNhzKUfiJeZyzjuEWv6WwzB5tHe2cqjLjKTEqdrC/jPVBTotVaarnE
+ +A8RZeeh2SrDRLbznUib4nnfM336SBjeo17WY78w89na0W7fi3EUTGHg3vOqUgcAdTQ8
+ wofakgse7Q95LKsVbqGz1/7w26DzRUWogw/HrIGXc58NEXc5TtxmADQ5tl9tjmbOUp+e
+ yf5w==
+X-Gm-Message-State: AOJu0Yzqm2KW4pxB/8fKHGYFEgr1R3TOWil1mqiIkBl6Ea2AkEA7Dn0q
+ c12dIR+tWrfDOiU/03+i7y01jmyLYO4IJg==
+X-Received: by 2002:a05:690c:d91:b0:5d7:9201:c513 with SMTP id
+ da17-20020a05690c0d9100b005d79201c513mr1595275ywb.43.1701646942071; 
+ Sun, 03 Dec 2023 15:42:22 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.36
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:42:36 -0800 (PST)
+ Sun, 03 Dec 2023 15:42:21 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 18/45] Add RNG200 RNG and RBG
-Date: Sun,  3 Dec 2023 17:41:46 -0600
-Message-Id: <20231203234213.1366214-19-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 04/45] Introduce BCM2838 SoC
+Date: Sun,  3 Dec 2023 17:41:32 -0600
+Message-Id: <20231203234213.1366214-5-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,406 +111,315 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cDrkgKfKY7qY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +F9Vb5tSsgae
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/misc/bcm2838_rng200.c         | 292 +++++++++++++++++++++++++++++--
- include/hw/misc/bcm2838_rng200.h |  10 +-
- 2 files changed, 275 insertions(+), 27 deletions(-)
+ hw/arm/bcm2838.c                     | 100 +++++++++++++++++++++++++++
+ hw/arm/bcm2838_peripherals.c         |  72 +++++++++++++++++++
+ hw/arm/meson.build                   |   2 +
+ include/hw/arm/bcm2838.h             |  29 ++++++++
+ include/hw/arm/bcm2838_peripherals.h |  36 ++++++++++
+ 5 files changed, 239 insertions(+)
+ create mode 100644 hw/arm/bcm2838.c
+ create mode 100644 hw/arm/bcm2838_peripherals.c
+ create mode 100644 include/hw/arm/bcm2838.h
+ create mode 100644 include/hw/arm/bcm2838_peripherals.h
 
-diff --git a/hw/misc/bcm2838_rng200.c b/hw/misc/bcm2838_rng200.c
-index 8f64e6a20f..f91ea0754c 100644
---- a/hw/misc/bcm2838_rng200.c
-+++ b/hw/misc/bcm2838_rng200.c
-@@ -8,25 +8,56 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "qapi/error.h"
- #include "hw/qdev-properties.h"
- #include "hw/misc/bcm2838_rng200.h"
-+#include "hw/registerfields.h"
- #include "migration/vmstate.h"
- #include "trace.h"
- 
--static const VMStateDescription vmstate_bcm2838_rng200_regs = {
--    .name = "bcm2838_rng200_regs",
--    .version_id = 1,
--    .minimum_version_id = 1,
--    .fields = (VMStateField[]) {
--        VMSTATE_UINT32(ctrl, BCM2838_rng_regs_t),
--        VMSTATE_UINT32(int_status, BCM2838_rng_regs_t),
--        VMSTATE_UINT32(fifo_count, BCM2838_rng_regs_t),
--        VMSTATE_UINT32(fifo_count_threshold, BCM2838_rng_regs_t),
--        VMSTATE_UINT32(total_bit_count_threshold, BCM2838_rng_regs_t),
--        VMSTATE_END_OF_LIST()
--    }
--};
-+/* RNG200 registers */
-+REG32(RNG_CTRL,               0x00)
-+    FIELD(RNG_CTRL, RBG_ENABLE,   0 , 1)
-+    FIELD(RNG_CTRL, RSVD,         1 , 12)
-+    FIELD(RNG_CTRL, DIV,         13 , 8)
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+new file mode 100644
+index 0000000000..c61c59661b
+--- /dev/null
++++ b/hw/arm/bcm2838.c
+@@ -0,0 +1,100 @@
++/*
++ * BCM2838 SoC emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+REG32(RNG_SOFT_RESET,                0x04)
-+REG32(RBG_SOFT_RESET,                0x08)
-+REG32(RNG_TOTAL_BIT_COUNT,           0x0C)
-+REG32(RNG_TOTAL_BIT_COUNT_THRESHOLD, 0x10)
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/raspi_platform.h"
++#include "hw/sysbus.h"
++#include "hw/arm/bcm2838.h"
++#include "trace.h"
 +
-+REG32(RNG_INT_STATUS,                               0x18)
-+    FIELD(RNG_INT_STATUS, TOTAL_BITS_COUNT_IRQ,         0, 1)
-+    FIELD(RNG_INT_STATUS, RSVD0,                        1, 4)
-+    FIELD(RNG_INT_STATUS, NIST_FAIL_IRQ,                5, 1)
-+    FIELD(RNG_INT_STATUS, RSVD1,                        6, 11)
-+    FIELD(RNG_INT_STATUS, STARTUP_TRANSITIONS_MET_IRQ,  17, 1)
-+    FIELD(RNG_INT_STATUS, RSVD2,                        18, 13)
-+    FIELD(RNG_INT_STATUS, MASTER_FAIL_LOCKOUT_IRQ,      30, 1)
++#define VIRTUAL_PMU_IRQ 7
 +
-+REG32(RNG_INT_ENABLE,                               0x1C)
-+    FIELD(RNG_INT_ENABLE, TOTAL_BITS_COUNT_IRQ,         0, 1)
-+    FIELD(RNG_INT_ENABLE, RSVD0,                        1, 4)
-+    FIELD(RNG_INT_ENABLE, NIST_FAIL_IRQ,                5, 1)
-+    FIELD(RNG_INT_ENABLE, RSVD1,                        6, 11)
-+    FIELD(RNG_INT_ENABLE, STARTUP_TRANSITIONS_MET_IRQ,  17, 1)
-+    FIELD(RNG_INT_ENABLE, RSVD2,                        18, 13)
-+    FIELD(RNG_INT_ENABLE, MASTER_FAIL_LOCKOUT_IRQ,      30, 1)
-+
-+REG32(RNG_FIFO_DATA, 0x20)
-+
-+REG32(RNG_FIFO_COUNT,              0x24)
-+    FIELD(RNG_FIFO_COUNT, COUNT,       0, 8)
-+    FIELD(RNG_FIFO_COUNT, THRESHOLD,   8, 8)
-+
-+
-+#define RNG_WARM_UP_PERIOD_ELAPSED           17
-+
-+#define SOFT_RESET    1
-+#define IRQ_PENDING   1
-+
-+#define BCM2838_RNG200_PTIMER_POLICY         (PTIMER_POLICY_CONTINUOUS_TRIGGER)
- 
- static const VMStateDescription vmstate_bcm2838_rng200 = {
-     .name = "bcm2838_rng200",
-@@ -37,33 +68,253 @@ static const VMStateDescription vmstate_bcm2838_rng200 = {
-         VMSTATE_UINT32(rng_fifo_cap, BCM2838Rng200State),
-         VMSTATE_BOOL(use_timer, BCM2838Rng200State),
- 
--        VMSTATE_STRUCT(regs, BCM2838Rng200State, 0, vmstate_bcm2838_rng200_regs,
--                       BCM2838_rng_regs_t),
-+        VMSTATE_ARRAY(regs, BCM2838Rng200State, N_BCM2838_RNG200_REGS, 0,
-+                      vmstate_info_uint32, uint32_t),
- 
-         VMSTATE_END_OF_LIST()
-     }
- };
- 
--static void bcm2838_rng200_rng_reset(BCM2838Rng200State *state)
-+static bool is_rbg_enabled(BCM2838Rng200State *s)
++static void bcm2838_init(Object *obj)
 +{
-+    return FIELD_EX32(s->regs[R_RNG_CTRL], RNG_CTRL, RBG_ENABLE);
++    BCM2838State *s = BCM2838(obj);
++
++    object_initialize_child(obj, "peripherals", &s->peripherals,
++                            TYPE_BCM2838_PERIPHERALS);
++    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
++                              "board-rev");
++    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
++                              "vcram-size");
++    object_property_add_alias(obj, "command-line", OBJECT(&s->peripherals),
++                              "command-line");
 +}
 +
-+static void increment_bit_counter_by(BCM2838Rng200State *s, uint32_t inc_val) {
-+    s->regs[R_RNG_TOTAL_BIT_COUNT] += inc_val;
-+}
++static void bcm2838_realize(DeviceState *dev, Error **errp)
++{
++    int n;
++    BCM2838State *s = BCM2838(dev);
++    BCM283XBaseState *s_base = BCM283X_BASE(dev);
++    BCM283XBaseClass *bc_base = BCM283X_BASE_GET_CLASS(dev);
++    BCM2838PeripheralState *ps = BCM2838_PERIPHERALS(&s->peripherals);
++    BCMSocPeripheralBaseState *ps_base =
++        BCM_SOC_PERIPHERALS_BASE(&s->peripherals);
 +
-+static void bcm2838_rng200_update_irq(BCM2838Rng200State *s)
-+{ 
-+    qemu_set_irq(s->irq,
-+                !!(s->regs[R_RNG_INT_ENABLE] & s->regs[R_RNG_INT_STATUS]));
-+}
-+
-+static void bcm2838_rng200_update_fifo(void *opaque, const void *buf,
-+                                       size_t size)
- {
--    state->regs.ctrl = 0;
-+    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
-+    Fifo8 *fifo = &s->fifo;
-+    size_t num = MIN(size, fifo8_num_free(fifo));
-+    uint32_t num_bits = num * 8;
-+    uint32_t bit_threshold_left = 0;
-+    uint32_t bit_count = 0;
-+    uint32_t bit_count_thld = 0;
-+    uint32_t fifo_thld = 0;
-+
-+    increment_bit_counter_by(s, num_bits);
-+
-+    bit_count = s->regs[R_RNG_TOTAL_BIT_COUNT];
-+    bit_count_thld = s->regs[R_RNG_TOTAL_BIT_COUNT_THRESHOLD];
-+
-+    bit_threshold_left = (bit_count < bit_count_thld)
-+                       ? bit_count_thld - bit_count
-+                       : 0;
-+
-+    if (bit_threshold_left < num_bits) {
-+        num_bits -= bit_threshold_left;
-+    } else {
-+        num_bits = 0;
++    if (!bcm283x_common_realize(dev, ps_base, errp)) {
++        return;
 +    }
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(ps), 1, BCM2838_PERI_LOW_BASE, 1);
 +
-+    num = num_bits / 8;
-+    if ((num == 0) && (num_bits > 0)) {
-+        num = 1;
++    /* bcm2836 interrupt controller (and mailboxes, etc.) */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s_base->control), errp)) {
++        return;
 +    }
-+    if (num > 0) {
-+        fifo8_push_all(fifo, buf, num);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s_base->control), 0, bc_base->ctrl_base);
 +
++    /* Create cores */
++    for (n = 0; n < bc_base->core_count; n++) {
++        /* TODO: this should be converted to a property of ARM_CPU */
++        s_base->cpu[n].core.mp_affinity = (bc_base->clusterid << 8) | n;
 +
-+        fifo_thld = FIELD_EX32(s->regs[R_RNG_FIFO_COUNT],
-+                               RNG_FIFO_COUNT, THRESHOLD);
++        /* start powered off if not enabled */
++        if (!object_property_set_bool(OBJECT(&s_base->cpu[n].core),
++                                      "start-powered-off",
++                                      n >= s_base->enabled_cpus,
++                                      errp)) {
++            return;
++        }
 +
-+        if (fifo8_num_used(fifo) > fifo_thld) {
-+            s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
-+                                                   RNG_INT_STATUS,
-+                                                   TOTAL_BITS_COUNT_IRQ, 1);
++        if (!qdev_realize(DEVICE(&s_base->cpu[n].core), NULL, errp)) {
++            return;
 +        }
 +    }
-+
-+    s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
-+                                           RNG_FIFO_COUNT,
-+                                           COUNT,
-+                                           fifo8_num_used(fifo) >> 2);
-+    bcm2838_rng200_update_irq(s);
-+    trace_bcm2838_rng200_update_fifo(num, fifo8_num_used(fifo));
 +}
 +
-+static void bcm2838_rng200_fill_fifo(BCM2838Rng200State *s)
++static void bcm2838_class_init(ObjectClass *oc, void *data)
 +{
-+    rng_backend_request_entropy(s->rng, fifo8_num_free(&s->fifo),
-+                                bcm2838_rng200_update_fifo, s);
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM283XBaseClass *bc_base = BCM283X_BASE_CLASS(oc);
++
++    bc_base->cpu_type = ARM_CPU_TYPE_NAME("cortex-a72");
++    bc_base->core_count = BCM283X_NCPUS;
++    bc_base->peri_base = 0xfe000000;
++    bc_base->ctrl_base = 0xff800000;
++    bc_base->clusterid = 0x0;
++    dc->realize = bcm2838_realize;
 +}
 +
-+/* This function will be implemnented in upcoming commits */
-+static void bcm2838_rng200_disable_rbg(BCM2838Rng200State *s
-+                                       __attribute__((unused)))
++static const TypeInfo bcm2838_type = {
++    .name           = TYPE_BCM2838,
++    .parent         = TYPE_BCM283X_BASE,
++    .instance_size  = sizeof(BCM2838State),
++    .instance_init  = bcm2838_init,
++    .class_size     = sizeof(BCM283XBaseClass),
++    .class_init     = bcm2838_class_init,
++};
++
++static void bcm2838_register_types(void)
 +{
-+    trace_bcm2838_rng200_disable_rbg();
++    type_register_static(&bcm2838_type);
 +}
 +
-+static void bcm2838_rng200_enable_rbg(BCM2838Rng200State *s)
++type_init(bcm2838_register_types);
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+new file mode 100644
+index 0000000000..06110c724f
+--- /dev/null
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -0,0 +1,72 @@
++/*
++ * BCM2838 peripherals emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/raspi_platform.h"
++#include "hw/arm/bcm2838_peripherals.h"
++
++/* Lower peripheral base address on the VC (GPU) system bus */
++#define BCM2838_VC_PERI_LOW_BASE 0x7c000000
++
++static void bcm2838_peripherals_init(Object *obj)
 +{
-+    s->regs[R_RNG_TOTAL_BIT_COUNT] = RNG_WARM_UP_PERIOD_ELAPSED;
++    BCM2838PeripheralState *s = BCM2838_PERIPHERALS(obj);
++    BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_GET_CLASS(obj);
 +
-+    bcm2838_rng200_fill_fifo(s);
++    /* Lower memory region for peripheral devices (exported to the Soc) */
++    memory_region_init(&s->peri_low_mr, obj, "bcm2838-peripherals",
++                       bc->peri_low_size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
 +
-+    trace_bcm2838_rng200_enable_rbg();
 +}
 +
-+static void bcm2838_rng200_rng_reset(BCM2838Rng200State *s)
++static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
 +{
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
-+                                           RNG_INT_STATUS,
-+                                           STARTUP_TRANSITIONS_MET_IRQ,
-+                                           IRQ_PENDING);
-+    fifo8_reset(&s->fifo);
- 
-     trace_bcm2838_rng200_rng_soft_reset();
- }
- 
-+static void bcm2838_rng200_rbg_reset(BCM2838Rng200State *s)
-+{
-+    trace_bcm2838_rng200_rbg_soft_reset();
++    BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
++    BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
++
++    bcm_soc_peripherals_common_realize(dev, errp);
++
++    /* Map lower peripherals into the GPU address space */
++    memory_region_init_alias(&s->peri_low_mr_alias, OBJECT(s),
++                             "bcm2838-peripherals", &s->peri_low_mr, 0,
++                             memory_region_size(&s->peri_low_mr));
++    memory_region_add_subregion_overlap(&s_base->gpu_bus_mr,
++                                        BCM2838_VC_PERI_LOW_BASE,
++                                        &s->peri_low_mr_alias, 1);
++
 +}
 +
-+static uint32_t bcm2838_rng200_read_fifo_data(BCM2838Rng200State *s)
++static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
 +{
-+    Fifo8 *fifo = &s->fifo;
-+    const uint8_t *buf;
-+    uint32_t ret = 0;
-+    uint32_t num = 0;
-+    uint32_t max = MIN(fifo8_num_used(fifo), sizeof(ret));
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_CLASS(oc);
++    BCMSocPeripheralBaseClass *bc_base = BCM_SOC_PERIPHERALS_BASE_CLASS(oc);
 +
-+    if (max > 0) {
-+        buf = fifo8_pop_buf(fifo, max, &num);
-+        if ((buf != NULL) && (num > 0)) {
-+            memcpy(&ret, buf, num);
-+        }
-+    } else {
-+        qemu_log_mask(
-+            LOG_GUEST_ERROR,
-+            "bcm2838_rng200_read_fifo_data: FIFO is empty\n"
-+        );
-+    }
-+
-+    s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
-+                                           RNG_FIFO_COUNT,
-+                                           COUNT,
-+                                           fifo8_num_used(fifo) >> 2);
-+
-+    bcm2838_rng200_fill_fifo(s);
-+
-+    return ret;
++    bc->peri_low_size = 0x2000000;
++    bc_base->peri_size = 0x1800000;
++    dc->realize = bcm2838_peripherals_realize;
 +}
 +
-+static void bcm2838_rng200_ctrl_write(BCM2838Rng200State *s, uint32_t value)
++static const TypeInfo bcm2838_peripherals_type_info = {
++    .name = TYPE_BCM2838_PERIPHERALS,
++    .parent = TYPE_BCM_SOC_PERIPHERALS_BASE,
++    .instance_size = sizeof(BCM2838PeripheralState),
++    .instance_init = bcm2838_peripherals_init,
++    .class_size = sizeof(BCM2838PeripheralClass),
++    .class_init = bcm2838_peripherals_class_init,
++};
++
++static void bcm2838_peripherals_register_types(void)
 +{
-+    bool currently_enabled = is_rbg_enabled(s);
-+    bool enable_requested = FIELD_EX32(value, RNG_CTRL, RBG_ENABLE);
-+
-+    s->regs[R_RNG_CTRL] = value;
-+
-+    if (!currently_enabled && enable_requested) {
-+        bcm2838_rng200_enable_rbg(s);
-+    } else if (currently_enabled && !enable_requested) {
-+        bcm2838_rng200_disable_rbg(s);
-+    }
++    type_register_static(&bcm2838_peripherals_type_info);
 +}
 +
- static uint64_t bcm2838_rng200_read(void *opaque, hwaddr offset,
-                                     unsigned size)
- {
-+    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
-     uint32_t res = 0;
++type_init(bcm2838_peripherals_register_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 68245d3ad1..551ab6abf5 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -39,6 +39,7 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubi
+ arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
+ arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
+ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
++arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c'))
+ arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
+@@ -69,6 +70,7 @@ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
++system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
+ system_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
  
--    /* will be implemented in upcoming commits */
-+    switch (offset) {
-+    case A_RNG_CTRL:
-+        res = s->regs[R_RNG_CTRL];
-+        break;
-+    case A_RNG_SOFT_RESET:
-+    case A_RBG_SOFT_RESET:
-+        break;
-+    case A_RNG_INT_STATUS:
-+        res = s->regs[R_RNG_INT_STATUS];
-+        break;
-+    case A_RNG_INT_ENABLE:
-+        res = s->regs[R_RNG_INT_ENABLE];
-+        break;
-+    case A_RNG_FIFO_DATA:
-+        res = bcm2838_rng200_read_fifo_data(s);
-+        break;
-+    case A_RNG_FIFO_COUNT:
-+        res = s->regs[R_RNG_FIFO_COUNT];
-+        break;
-+    case A_RNG_TOTAL_BIT_COUNT:
-+        res = s->regs[R_RNG_TOTAL_BIT_COUNT];
-+        break;
-+    case A_RNG_TOTAL_BIT_COUNT_THRESHOLD:
-+        res = s->regs[R_RNG_TOTAL_BIT_COUNT_THRESHOLD];
-+        break;
-+    default:
-+        qemu_log_mask(
-+            LOG_GUEST_ERROR,
-+            "bcm2838_rng200_read: Bad offset 0x%" HWADDR_PRIx "\n",
-+            offset
-+        );
-+        res = 0;
-+        break;
-+    }
+ hw_arch += {'arm': arm_ss}
+diff --git a/include/hw/arm/bcm2838.h b/include/hw/arm/bcm2838.h
+new file mode 100644
+index 0000000000..bddc25ca9a
+--- /dev/null
++++ b/include/hw/arm/bcm2838.h
+@@ -0,0 +1,29 @@
++/*
++ * BCM2838 SoC emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+    trace_bcm2838_rng200_read(offset, size, res);
-     return res;
- }
- 
- static void bcm2838_rng200_write(void *opaque, hwaddr offset,
-                                  uint64_t value, unsigned size)
- {
--    /* will be implemented in upcoming commits */
-+    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
++#ifndef BCM2838_H
++#define BCM2838_H
 +
-+    trace_bcm2838_rng200_write(offset, value, size);
++#include "hw/arm/bcm2836.h"
++#include "hw/arm/bcm2838_peripherals.h"
 +
-+    switch (offset) {
-+    case A_RNG_CTRL:
-+        bcm2838_rng200_ctrl_write(s, value);
-+        break;
-+    case A_RNG_SOFT_RESET:
-+        if (value & SOFT_RESET) {
-+            bcm2838_rng200_rng_reset(s);
-+        }
-+        break;
-+    case A_RBG_SOFT_RESET:
-+        if (value & SOFT_RESET) {
-+            bcm2838_rng200_rbg_reset(s);
-+        }
-+        break;
-+    case A_RNG_INT_STATUS:
-+        s->regs[R_RNG_INT_STATUS] &= ~value;
-+        bcm2838_rng200_update_irq(s);
-+        break;
-+    case A_RNG_INT_ENABLE:
-+        s->regs[R_RNG_INT_ENABLE] = value;
-+        bcm2838_rng200_update_irq(s);
-+        break;
-+    case A_RNG_FIFO_COUNT:
-+        s->regs[R_RNG_FIFO_COUNT] = value;
-+        break;
-+    case A_RNG_TOTAL_BIT_COUNT_THRESHOLD:
-+        s->regs[R_RNG_TOTAL_BIT_COUNT_THRESHOLD] = value;
-+        s->regs[R_RNG_TOTAL_BIT_COUNT] = value + 1;
-+        break;
-+    default:
-+        qemu_log_mask(
-+            LOG_GUEST_ERROR,
-+            "bcm2838_rng200_write: Bad offset 0x%" HWADDR_PRIx "\n",
-+            offset
-+        );
-+        break;
-+    }
- }
- 
- static const MemoryRegionOps bcm2838_rng200_ops = {
-@@ -87,6 +338,7 @@ static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
-                                  errp);
-     }
- 
-+    fifo8_create(&s->fifo, s->rng_fifo_cap);
-     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
- }
- 
-@@ -116,6 +368,8 @@ static void bcm2838_rng200_init(Object *obj)
- static void bcm2838_rng200_reset(DeviceState *dev)
- {
-     BCM2838Rng200State *s = BCM2838_RNG200(dev);
++#define BCM2838_PERI_LOW_BASE 0xfc000000
++#define BCM2838_GIC_BASE 0x40000
 +
-+    bcm2838_rng200_rbg_reset(s);
-     bcm2838_rng200_rng_reset(s);
- }
- 
-diff --git a/include/hw/misc/bcm2838_rng200.h b/include/hw/misc/bcm2838_rng200.h
-index c9c52f84be..46fdba48da 100644
---- a/include/hw/misc/bcm2838_rng200.h
-+++ b/include/hw/misc/bcm2838_rng200.h
-@@ -22,13 +22,7 @@
- #define TYPE_BCM2838_RNG200 "bcm2838-rng200"
- OBJECT_DECLARE_SIMPLE_TYPE(BCM2838Rng200State, BCM2838_RNG200)
- 
--typedef struct {
--    uint32_t ctrl;
--    uint32_t int_status;
--    uint32_t fifo_count;
--    uint32_t fifo_count_threshold;
--    uint32_t total_bit_count_threshold;
--} BCM2838_rng_regs_t;
-+#define N_BCM2838_RNG200_REGS 9
- 
- struct BCM2838Rng200State {
-     SysBusDevice busdev;
-@@ -45,7 +39,7 @@ struct BCM2838Rng200State {
-     Fifo8    fifo;
-     qemu_irq irq;
- 
--    BCM2838_rng_regs_t regs;
-+    uint32_t regs[N_BCM2838_RNG200_REGS];
- };
- 
- #endif /* BCM2838_RNG200_H */
++#define TYPE_BCM2838 "bcm2838"
++
++OBJECT_DECLARE_TYPE(BCM2838State, BCM2838Class, BCM2838)
++
++struct BCM2838State {
++    /*< private >*/
++    BCM283XBaseState parent_obj;
++    /*< public >*/
++    BCM2838PeripheralState peripherals;
++};
++
++#endif /* BCM2838_H */
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+new file mode 100644
+index 0000000000..7039b67cc9
+--- /dev/null
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -0,0 +1,36 @@
++/*
++ * BCM2838 peripherals emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef BCM2838_PERIPHERALS_H
++#define BCM2838_PERIPHERALS_H
++
++#include "hw/arm/bcm2835_peripherals.h"
++
++
++#define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
++OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
++                    BCM2838_PERIPHERALS)
++
++struct BCM2838PeripheralState {
++    /*< private >*/
++    BCMSocPeripheralBaseState parent_obj;
++
++    /*< public >*/
++    MemoryRegion peri_low_mr;
++    MemoryRegion peri_low_mr_alias;
++    MemoryRegion mphi_mr_alias;
++};
++
++struct BCM2838PeripheralClass {
++    /*< private >*/
++    BCMSocPeripheralBaseClass parent_class;
++    /*< public >*/
++    uint64_t peri_low_size; /* Peripheral lower range size */
++};
++
++#endif /* BCM2838_PERIPHERALS_H */
 -- 
 2.34.1
 

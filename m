@@ -1,153 +1,112 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334216ejb;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2334224ejb;
         Sun, 3 Dec 2023 13:50:59 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEG0WpOalON0JSin3sTsILJ2eCpkn53/77SpqXJGDlGeKGMG+S2RaP0xMLRb66WPMGycpt1
-X-Received: by 2002:a05:620a:1656:b0:77d:6194:e41 with SMTP id c22-20020a05620a165600b0077d61940e41mr4201606qko.17.1701640259060;
+X-Google-Smtp-Source: AGHT+IGNfz5cBx8FjIlVcyP8yKD7ahses3SoUhN/Yh2/7GO/d6MMgAzO9w+gc7IjYJse04CG91+A
+X-Received: by 2002:a05:622a:1344:b0:423:6f69:95e7 with SMTP id w4-20020a05622a134400b004236f6995e7mr38362511qtk.43.1701640259766;
         Sun, 03 Dec 2023 13:50:59 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1701640259; cv=none;
         d=google.com; s=arc-20160816;
-        b=0buKU9mt6pEpBSgNjd+d2ybNwwkW1NnZFHlyhGf4LByXzed3E31ff42HFD+79NMc1G
-         uFASVfokdaWV85uf1RI56KFiRR8c5F6KkNxdG8XwCTbuLn6/mImoVCAklKoAvokRA3IQ
-         9rrL4kFns0yXpxk5IjqbjQdbtkCMCEEyv162EFVHwP2NoyxSipMOy/m92k/9k7MNL6A8
-         gaS+UWm5VtPoM2gJjVW7UbEISAey251p6LEEMVx+39JCHi3ob1Ohdz3TT7tBIc/r4/C7
-         VeFwxhODP7jirJ1GJRZW0NssAIOjtMEQpOus3Km7Q7/OE69Fj/dP7EM5VIsDUcxQQQBh
-         E6wA==
+        b=XTRIcWBHSR8uK3fqxJpI1C+dyWVlEOOLpx0rQcxONdI1h42kyte48956O0Wqt1foVv
+         ScINKV5O4i+PsutzxA7Ex4dAe2/mM/HuaeYSwHZAQdwtAfmoL35iKJjI32rZMI3DM0Id
+         NeUCYKfSlOFG1HNpB9wA7uGhepibX0MCvegnIe1UcptUXaQ2wtQ99Hh8uLzcEHdo6xG1
+         3YeHukTA+UM6pwzScZfpCWEFlbqTZfDSxquIZiFSPolL356fRk98f+f2dGcddUa9+pr3
+         BqRfJt8htfHWmHRGtr4Era+pTT0TIFt/H7jrBq7r5/oszkky5bhd6jgwzIsGhLnLlZJo
+         JpUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=igayQuYX/F7iH3RNFaYv1D/3MuPEz8Ua3kpb9vPSfPs=;
+        bh=I0abax01Jn7TA0fY2P1fUcZE3FFcwoH4EKqmrD+AUDY=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=yehJkvkFSjyMDs/pSQZYcCkOnYN13A96iicW73DrXkkarDUqwSoYnpYPVchFv3NI3H
-         UvbHpGchGGbyhLANHhc14XdPUV6AxMm0q9uCZzX8vHsYM4S2n4ap37iCNNcBfXPYdTj5
-         KoM6FEk/mwGSYJGzzy5jrVjn+wPDP2tGag2GuJJyDNbeJu1NadvK7HVhzfg96p4nFxz7
-         QwncZCn4aQBpY84nzAgZR6y59ULQAP4RaaVEI0MBCF6XfxqJj+nIVijSRM5keD00s2fw
-         oGo3WKaSJb5qjMLqOFFWcS67zoJRUd16WjvfJs/6d4BYfPPEXtPJYcSurQEYxn1WFH1b
-         BFlg==
+        b=MwomCMOQL1VGReDRtlsQJkV78mtqoGLRsPHIk+6GHHvdAT3Elv6fI0GHrnxpUwRd+g
+         oLKkl4r99bnaIJvoxjOJsgR87AmolCwszMXbE+nZ7xeYbUFmja+II9XE5O/P7sI3fKaJ
+         /1QY9rXx/Q9gVxY/jD6tA2bjPHTbI8v2jDwWProW+D6fWXSLdFOhAUJnGO4iCvyzLAxs
+         /I1qiKkotfsWUHn/udwG45eXza/fdlN96fg/3c/DRGBnQXNLjK6Gh3AgUOXz0QMZ2yuO
+         KKYreDfxhvHx0/g0cN2m3n3B/6ZNC7QqLRvBqcUixr2mB+iUWgPMidtzufpxUNMyCfEG
+         5Mqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kaOF7Ifa;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nDdLjl4O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z23-20020a05620a261700b0077f0229e08esi3563013qko.94.2023.12.03.13.50.58
+        by mx.google.com with ESMTPS id i7-20020a05622a08c700b00425525e7db8si1645793qte.461.2023.12.03.13.50.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 03 Dec 2023 13:50:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=kaOF7Ifa;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=nDdLjl4O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9uM5-0003wC-8x; Sun, 03 Dec 2023 16:50:26 -0500
+	id 1r9uLG-0002uX-5N; Sun, 03 Dec 2023 16:49:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLo-0003iZ-2t; Sun, 03 Dec 2023 16:50:08 -0500
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ id 1r9uL5-0002rW-LL; Sun, 03 Dec 2023 16:49:23 -0500
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9uLm-0000Gh-A8; Sun, 03 Dec 2023 16:50:07 -0500
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-5d400779f16so19483547b3.0; 
- Sun, 03 Dec 2023 13:50:05 -0800 (PST)
+ id 1r9uL3-0008IO-7r; Sun, 03 Dec 2023 16:49:23 -0500
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-5d33574f64eso41005337b3.3; 
+ Sun, 03 Dec 2023 13:49:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701640204; x=1702245004; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701640159; x=1702244959; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=igayQuYX/F7iH3RNFaYv1D/3MuPEz8Ua3kpb9vPSfPs=;
- b=kaOF7IfaIOXV+JKgdFMzHVAFjiRvNofVcYYbyUfksxM8GS3SJ08iruFZjnzUB4i7/j
- TGYZLXeZffSRw9cltwFic7eWHwNyqActuk2RLh+21+R7gyvv7xATcl32saodMrnvsSbf
- UHTbwfKDClcuNMv5IFGT7l4BooHxTKpmuVjkYvxX6I0pBIeMdYHnOZrv7hzkfcOf+f/r
- C0ZBkXIzFpU2cjU0Y3ts9DbQC9sZvYywU3YEtPwod7wGY/ePJd/wTeaxjxcp6O3dpHxN
- eYYLAwlsqYkESf906PXWTJme32igY3jfjhXdG0zKPSIUXgzrTY0fwavLhvxLo14N9Ydw
- IjRg==
+ bh=I0abax01Jn7TA0fY2P1fUcZE3FFcwoH4EKqmrD+AUDY=;
+ b=nDdLjl4OuxIEiNWL87meXhh/gDuhM8EOTtMzyH8xI0RGAVcUvWCCdAGSxYbHRh0POR
+ Y87GneNOsh0s4f/pocJRjfTlZ0lq+0a5WUWgoYWn48Xd+5fH1kOwVDyUkm4WC59H2sQA
+ Ge2vP+zx3h9Ddc7SL/cHw5jgBOYv72mfL1gwDq30ldYNuUEU5biuC9vjkeu4obkSEDij
+ 033bp4FTzue6Ec+f6naS/waXmCUUXvipoefgys59Tfmmkh6tEJ26U9m8Yn0GwWm+DRYy
+ Gm//iMrCHH6ALh8CpKZi44wY0YnjvpZbejb+Afq+i7CgLfBhAyU+IqqDhE08xEojSSN0
+ zZTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701640204; x=1702245004;
+ d=1e100.net; s=20230601; t=1701640159; x=1702244959;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=igayQuYX/F7iH3RNFaYv1D/3MuPEz8Ua3kpb9vPSfPs=;
- b=ft68T2WyaL76dQtY8n1blcERnAJW8LSNmChjwc9naxX6m1XQM9qv+i71hmMzHqLvGL
- Q+rI8u45dXfhn2Bu6SJ37wT6FJF+chU/8TRfwj4u076PKrg5G4Uy1j3Y7JDVJytExQ9c
- WnNFd4dA4i6oTQtAi79iq0ApzERfYEY5fFl3r+NjBok9KUPTKG+K/BzCdtvCnM99LbP6
- LUYhkomSldmCwcN8MFRtmnB77N5Koi4IsmmFbQ+ZlBFy5qcqMnNYBW65yb2UGrSoo5OD
- h2ZBbdWKwLj652IE9BLcXzbUBUNlIxfNqV6Kmewu3ML2wA49MwDbU3IpaKDokhG95awm
- Qubg==
-X-Gm-Message-State: AOJu0YxrggQsJ8S0rJ28Wp6rSJm2Bat9Yd03rN/QSq4cDEhuhWhXB7Vi
- pOSuA/+ENM3Ki7CNQqLbKFnJ3H/iy8l1rQ==
-X-Received: by 2002:a81:7bd5:0:b0:5d7:307f:3efd with SMTP id
- w204-20020a817bd5000000b005d7307f3efdmr1454247ywc.25.1701640204510; 
- Sun, 03 Dec 2023 13:50:04 -0800 (PST)
+ bh=I0abax01Jn7TA0fY2P1fUcZE3FFcwoH4EKqmrD+AUDY=;
+ b=ZPiVHn105y8AMO1pOXqmR4IMrsZnHctHkoNoDjB/teDTppWWi5wW7eKIJ2oP6lcpKj
+ mJkK+DvRZz1Ew9SEGwvE8bLESvQnH8uWL+jd1NdIOzAEACsoJfnMc3Q2n26sGQ3IxLbJ
+ Lp7ekIOrw0ECPQ8rhXy55rGAvmhhBaH/SvBV24v34wKb6VWM2VopzewKe+6g3GwrHgXV
+ eG2n6Pz6TWk6D1e9XdKTRoxA6sl7H8zuRkaGQdfaX+fvGUgjO7SjZH9lGFRYvc72wB3r
+ Ut6ar5sXsVFm7b+8qNuxcdju3tkUEs0k/Day3ETJLiJ74629D2Zwql91sDSkO5OwcZsA
+ oIZQ==
+X-Gm-Message-State: AOJu0YyRgF7mJurBLlEXQcjJ3IT3a9xa0W61PJOpsB2Sh8g5lRjwWHz4
+ 4F4Z3DTeB/wrC+iHkZZPrHSeux6wuqKWSg==
+X-Received: by 2002:a81:ad57:0:b0:5d7:1940:b37e with SMTP id
+ l23-20020a81ad57000000b005d71940b37emr2492413ywk.74.1701640159365; 
+ Sun, 03 Dec 2023 13:49:19 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.50.03
+ z2-20020a816502000000b00597e912e67esm2832788ywb.131.2023.12.03.13.49.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:50:04 -0800 (PST)
+ Sun, 03 Dec 2023 13:49:19 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 45/45] Add RPi4B to paspi4.rst
-Date: Sun,  3 Dec 2023 15:49:10 -0600
-Message-Id: <20231203214910.1364468-46-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 04/45] Introduce BCM2838 SoC
+Date: Sun,  3 Dec 2023 15:48:29 -0600
+Message-Id: <20231203214910.1364468-5-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203214910.1364468-45-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203214910.1364468-4-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-1-sergey.kambalin@auriga.com>
  <20231203214910.1364468-2-sergey.kambalin@auriga.com>
  <20231203214910.1364468-3-sergey.kambalin@auriga.com>
  <20231203214910.1364468-4-sergey.kambalin@auriga.com>
- <20231203214910.1364468-5-sergey.kambalin@auriga.com>
- <20231203214910.1364468-6-sergey.kambalin@auriga.com>
- <20231203214910.1364468-7-sergey.kambalin@auriga.com>
- <20231203214910.1364468-8-sergey.kambalin@auriga.com>
- <20231203214910.1364468-9-sergey.kambalin@auriga.com>
- <20231203214910.1364468-10-sergey.kambalin@auriga.com>
- <20231203214910.1364468-11-sergey.kambalin@auriga.com>
- <20231203214910.1364468-12-sergey.kambalin@auriga.com>
- <20231203214910.1364468-13-sergey.kambalin@auriga.com>
- <20231203214910.1364468-14-sergey.kambalin@auriga.com>
- <20231203214910.1364468-15-sergey.kambalin@auriga.com>
- <20231203214910.1364468-16-sergey.kambalin@auriga.com>
- <20231203214910.1364468-17-sergey.kambalin@auriga.com>
- <20231203214910.1364468-18-sergey.kambalin@auriga.com>
- <20231203214910.1364468-19-sergey.kambalin@auriga.com>
- <20231203214910.1364468-20-sergey.kambalin@auriga.com>
- <20231203214910.1364468-21-sergey.kambalin@auriga.com>
- <20231203214910.1364468-22-sergey.kambalin@auriga.com>
- <20231203214910.1364468-23-sergey.kambalin@auriga.com>
- <20231203214910.1364468-24-sergey.kambalin@auriga.com>
- <20231203214910.1364468-25-sergey.kambalin@auriga.com>
- <20231203214910.1364468-26-sergey.kambalin@auriga.com>
- <20231203214910.1364468-27-sergey.kambalin@auriga.com>
- <20231203214910.1364468-28-sergey.kambalin@auriga.com>
- <20231203214910.1364468-29-sergey.kambalin@auriga.com>
- <20231203214910.1364468-30-sergey.kambalin@auriga.com>
- <20231203214910.1364468-31-sergey.kambalin@auriga.com>
- <20231203214910.1364468-32-sergey.kambalin@auriga.com>
- <20231203214910.1364468-33-sergey.kambalin@auriga.com>
- <20231203214910.1364468-34-sergey.kambalin@auriga.com>
- <20231203214910.1364468-35-sergey.kambalin@auriga.com>
- <20231203214910.1364468-36-sergey.kambalin@auriga.com>
- <20231203214910.1364468-37-sergey.kambalin@auriga.com>
- <20231203214910.1364468-38-sergey.kambalin@auriga.com>
- <20231203214910.1364468-39-sergey.kambalin@auriga.com>
- <20231203214910.1364468-40-sergey.kambalin@auriga.com>
- <20231203214910.1364468-41-sergey.kambalin@auriga.com>
- <20231203214910.1364468-42-sergey.kambalin@auriga.com>
- <20231203214910.1364468-43-sergey.kambalin@auriga.com>
- <20231203214910.1364468-44-sergey.kambalin@auriga.com>
- <20231203214910.1364468-45-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -169,50 +128,302 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Sw0pCVl+MY18
+X-TUID: CURz9vFreube
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- docs/system/arm/raspi.rst | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ hw/arm/bcm2838.c                     | 100 +++++++++++++++++++++++++++
+ hw/arm/bcm2838_peripherals.c         |  72 +++++++++++++++++++
+ hw/arm/meson.build                   |   2 +
+ include/hw/arm/bcm2838.h             |  29 ++++++++
+ include/hw/arm/bcm2838_peripherals.h |  36 ++++++++++
+ 5 files changed, 239 insertions(+)
+ create mode 100644 hw/arm/bcm2838.c
+ create mode 100644 hw/arm/bcm2838_peripherals.c
+ create mode 100644 include/hw/arm/bcm2838.h
+ create mode 100644 include/hw/arm/bcm2838_peripherals.h
 
-diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
-index 922fe375a6..db9e0949ef 100644
---- a/docs/system/arm/raspi.rst
-+++ b/docs/system/arm/raspi.rst
-@@ -1,5 +1,5 @@
--Raspberry Pi boards (``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b``)
--======================================================================================
-+Raspberry Pi boards (``raspi0``, ``raspi1ap``, ``raspi2b``, ``raspi3ap``, ``raspi3b``, ``raspi4b-2g``)
-+======================================================================================================
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+new file mode 100644
+index 0000000000..c61c59661b
+--- /dev/null
++++ b/hw/arm/bcm2838.c
+@@ -0,0 +1,100 @@
++/*
++ * BCM2838 SoC emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/raspi_platform.h"
++#include "hw/sysbus.h"
++#include "hw/arm/bcm2838.h"
++#include "trace.h"
++
++#define VIRTUAL_PMU_IRQ 7
++
++static void bcm2838_init(Object *obj)
++{
++    BCM2838State *s = BCM2838(obj);
++
++    object_initialize_child(obj, "peripherals", &s->peripherals,
++                            TYPE_BCM2838_PERIPHERALS);
++    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
++                              "board-rev");
++    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
++                              "vcram-size");
++    object_property_add_alias(obj, "command-line", OBJECT(&s->peripherals),
++                              "command-line");
++}
++
++static void bcm2838_realize(DeviceState *dev, Error **errp)
++{
++    int n;
++    BCM2838State *s = BCM2838(dev);
++    BCM283XBaseState *s_base = BCM283X_BASE(dev);
++    BCM283XBaseClass *bc_base = BCM283X_BASE_GET_CLASS(dev);
++    BCM2838PeripheralState *ps = BCM2838_PERIPHERALS(&s->peripherals);
++    BCMSocPeripheralBaseState *ps_base =
++        BCM_SOC_PERIPHERALS_BASE(&s->peripherals);
++
++    if (!bcm283x_common_realize(dev, ps_base, errp)) {
++        return;
++    }
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(ps), 1, BCM2838_PERI_LOW_BASE, 1);
++
++    /* bcm2836 interrupt controller (and mailboxes, etc.) */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s_base->control), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s_base->control), 0, bc_base->ctrl_base);
++
++    /* Create cores */
++    for (n = 0; n < bc_base->core_count; n++) {
++        /* TODO: this should be converted to a property of ARM_CPU */
++        s_base->cpu[n].core.mp_affinity = (bc_base->clusterid << 8) | n;
++
++        /* start powered off if not enabled */
++        if (!object_property_set_bool(OBJECT(&s_base->cpu[n].core),
++                                      "start-powered-off",
++                                      n >= s_base->enabled_cpus,
++                                      errp)) {
++            return;
++        }
++
++        if (!qdev_realize(DEVICE(&s_base->cpu[n].core), NULL, errp)) {
++            return;
++        }
++    }
++}
++
++static void bcm2838_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM283XBaseClass *bc_base = BCM283X_BASE_CLASS(oc);
++
++    bc_base->cpu_type = ARM_CPU_TYPE_NAME("cortex-a72");
++    bc_base->core_count = BCM283X_NCPUS;
++    bc_base->peri_base = 0xfe000000;
++    bc_base->ctrl_base = 0xff800000;
++    bc_base->clusterid = 0x0;
++    dc->realize = bcm2838_realize;
++}
++
++static const TypeInfo bcm2838_type = {
++    .name           = TYPE_BCM2838,
++    .parent         = TYPE_BCM283X_BASE,
++    .instance_size  = sizeof(BCM2838State),
++    .instance_init  = bcm2838_init,
++    .class_size     = sizeof(BCM283XBaseClass),
++    .class_init     = bcm2838_class_init,
++};
++
++static void bcm2838_register_types(void)
++{
++    type_register_static(&bcm2838_type);
++}
++
++type_init(bcm2838_register_types);
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+new file mode 100644
+index 0000000000..06110c724f
+--- /dev/null
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -0,0 +1,72 @@
++/*
++ * BCM2838 peripherals emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/raspi_platform.h"
++#include "hw/arm/bcm2838_peripherals.h"
++
++/* Lower peripheral base address on the VC (GPU) system bus */
++#define BCM2838_VC_PERI_LOW_BASE 0x7c000000
++
++static void bcm2838_peripherals_init(Object *obj)
++{
++    BCM2838PeripheralState *s = BCM2838_PERIPHERALS(obj);
++    BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_GET_CLASS(obj);
++
++    /* Lower memory region for peripheral devices (exported to the Soc) */
++    memory_region_init(&s->peri_low_mr, obj, "bcm2838-peripherals",
++                       bc->peri_low_size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
++
++}
++
++static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
++{
++    BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
++    BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
++
++    bcm_soc_peripherals_common_realize(dev, errp);
++
++    /* Map lower peripherals into the GPU address space */
++    memory_region_init_alias(&s->peri_low_mr_alias, OBJECT(s),
++                             "bcm2838-peripherals", &s->peri_low_mr, 0,
++                             memory_region_size(&s->peri_low_mr));
++    memory_region_add_subregion_overlap(&s_base->gpu_bus_mr,
++                                        BCM2838_VC_PERI_LOW_BASE,
++                                        &s->peri_low_mr_alias, 1);
++
++}
++
++static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_CLASS(oc);
++    BCMSocPeripheralBaseClass *bc_base = BCM_SOC_PERIPHERALS_BASE_CLASS(oc);
++
++    bc->peri_low_size = 0x2000000;
++    bc_base->peri_size = 0x1800000;
++    dc->realize = bcm2838_peripherals_realize;
++}
++
++static const TypeInfo bcm2838_peripherals_type_info = {
++    .name = TYPE_BCM2838_PERIPHERALS,
++    .parent = TYPE_BCM_SOC_PERIPHERALS_BASE,
++    .instance_size = sizeof(BCM2838PeripheralState),
++    .instance_init = bcm2838_peripherals_init,
++    .class_size = sizeof(BCM2838PeripheralClass),
++    .class_init = bcm2838_peripherals_class_init,
++};
++
++static void bcm2838_peripherals_register_types(void)
++{
++    type_register_static(&bcm2838_peripherals_type_info);
++}
++
++type_init(bcm2838_peripherals_register_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 68245d3ad1..551ab6abf5 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -39,6 +39,7 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubi
+ arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
+ arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
+ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
++arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c'))
+ arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
+@@ -69,6 +70,7 @@ arm_ss.add(when: 'CONFIG_XEN', if_true: files('xen_arm.c'))
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
++system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
+ system_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
  
- 
- QEMU provides models of the following Raspberry Pi boards:
-@@ -12,12 +12,13 @@ QEMU provides models of the following Raspberry Pi boards:
-   Cortex-A53 (4 cores), 512 MiB of RAM
- ``raspi3b``
-   Cortex-A53 (4 cores), 1 GiB of RAM
--
-+``raspi4b-2g``
-+  Cortex-A72 (4 cores), 2 GiB of RAM
- 
- Implemented devices
- -------------------
- 
-- * ARM1176JZF-S, Cortex-A7 or Cortex-A53 CPU
-+ * ARM1176JZF-S, Cortex-A7, Cortex-A53 or Cortex-A72 CPU
-  * Interrupt controller
-  * DMA controller
-  * Clock and reset controller (CPRMAN)
-@@ -33,6 +34,8 @@ Implemented devices
-  * USB2 host controller (DWC2 and MPHI)
-  * MailBox controller (MBOX)
-  * VideoCore firmware (property)
-+ * PCIE Root Port (raspi4b-2g)
-+ * GENET Ethernet Controller (raspi4b-2g)
- 
- 
- Missing devices
+ hw_arch += {'arm': arm_ss}
+diff --git a/include/hw/arm/bcm2838.h b/include/hw/arm/bcm2838.h
+new file mode 100644
+index 0000000000..bddc25ca9a
+--- /dev/null
++++ b/include/hw/arm/bcm2838.h
+@@ -0,0 +1,29 @@
++/*
++ * BCM2838 SoC emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef BCM2838_H
++#define BCM2838_H
++
++#include "hw/arm/bcm2836.h"
++#include "hw/arm/bcm2838_peripherals.h"
++
++#define BCM2838_PERI_LOW_BASE 0xfc000000
++#define BCM2838_GIC_BASE 0x40000
++
++#define TYPE_BCM2838 "bcm2838"
++
++OBJECT_DECLARE_TYPE(BCM2838State, BCM2838Class, BCM2838)
++
++struct BCM2838State {
++    /*< private >*/
++    BCM283XBaseState parent_obj;
++    /*< public >*/
++    BCM2838PeripheralState peripherals;
++};
++
++#endif /* BCM2838_H */
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+new file mode 100644
+index 0000000000..7039b67cc9
+--- /dev/null
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -0,0 +1,36 @@
++/*
++ * BCM2838 peripherals emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef BCM2838_PERIPHERALS_H
++#define BCM2838_PERIPHERALS_H
++
++#include "hw/arm/bcm2835_peripherals.h"
++
++
++#define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
++OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
++                    BCM2838_PERIPHERALS)
++
++struct BCM2838PeripheralState {
++    /*< private >*/
++    BCMSocPeripheralBaseState parent_obj;
++
++    /*< public >*/
++    MemoryRegion peri_low_mr;
++    MemoryRegion peri_low_mr_alias;
++    MemoryRegion mphi_mr_alias;
++};
++
++struct BCM2838PeripheralClass {
++    /*< private >*/
++    BCMSocPeripheralBaseClass parent_class;
++    /*< public >*/
++    uint64_t peri_low_size; /* Peripheral lower range size */
++};
++
++#endif /* BCM2838_PERIPHERALS_H */
 -- 
 2.34.1
 

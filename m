@@ -1,101 +1,101 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2371622ejb;
-        Sun, 3 Dec 2023 15:48:28 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEdENkPx+Zys9yH3Noiy4hvVIssr8O8+u5MR77xMETzinYNMuXfiEhrhcK/WPJv9+dbJf2J
-X-Received: by 2002:a05:6214:2584:b0:67a:3564:fb96 with SMTP id fq4-20020a056214258400b0067a3564fb96mr4211567qvb.27.1701647307884;
-        Sun, 03 Dec 2023 15:48:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647307; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2371716ejb;
+        Sun, 3 Dec 2023 15:48:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEImjaNEoVHoN49OS939FYUkNw58N1qKDzVq0ocRN9MlwO8xM8DlGaX/LMx9xxbMlfdJPPX
+X-Received: by 2002:a05:620a:1589:b0:77f:eee:db6f with SMTP id d9-20020a05620a158900b0077f0eeedb6fmr657909qkk.120.1701647324791;
+        Sun, 03 Dec 2023 15:48:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647324; cv=none;
         d=google.com; s=arc-20160816;
-        b=pr0IgNFg9ugNF84Yvuz+NwTkzOMbZZ6fjbL2oIKYxLg0ef7DfSVsoDJzl2N55Fy64x
-         pEhdugnQfKdLW4P3a05a8rLMyTAZybayw5OlXJ3ANe04CGktuB4sz7rKVi+//aDdzkVY
-         dlEmaVCfoNWWdvU0MYaykpDPVJVY/8MpsyymusYVYlOS6WykJewNOrrdUWEBisdGOIHN
-         OPjK8qHp8PTv/OYshaFjPkz5KaDAV0cPG/vBVnwOhTZo6FYP1qgXK2yIqEc3QUQI4052
-         22xpEI3rDXp9gHNdXaER1EaqxkyAs1ynBLCvJ+j58M27u1v4I2md/J6freqG7DmpyPPZ
-         534w==
+        b=H8UxCxx2etxPsk9lurrQa+PufK2rWBaKcvLA4MhyLP3hiIoLjZIY1v8J6Y5tJTug4r
+         3egzXghvlkJgc03CsMuuuglEE2I91ABs9YG/P2LKkX5cQSJGfju5MyIaRjBYUc8SqRP+
+         9k9025mGhw4QdNjvO3EGRCKQ6mh5OIOUxCMlfC8weP+GV5oQrRGk7f8IpP4AT+IovziS
+         /YqGFsHrdYtw6MdbBaX5rfvngv13NJ2wm+ZC5+dek6R35eXfxZJShwxi9Bib4AMHRsTB
+         LHmtz7m6Z7sQWfHpP6/N4D1W+YUytccCb7/FOo/emVDJTAtIb52GdSGRM8WcS2oJr9r2
+         3tiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
+        bh=imxvMsz0CNvo8nrzFvIRSqzHEH+HatWQq7mvnvZiPnw=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=P6UF/tsOxZ9f50511Qxg67TlElGMyurjcDYgPlVVD3H9vb40KP+DNnLbw644/fRaHi
-         KpJULacoXlzuRkFDLIaaJ2vUTFBnh7GdrINoWnPy6leXzHA+x7K0z0F60uC/dkJzwmVT
-         52PDK2RanVWhnM/0Nxr9XXluSCn3R8L3ZvIy+u65eF/WU77OSBF5uSgxUm6f8jzEL53U
-         UQBpqdQEpUBMq8PwCX+sTU+DNiS8H9zOMpov2FSYEuAz00bJJ2pOODnD9azK9Yxk+twz
-         oowSjj4um2Kqc/i0XsCS2KQCFGLyhGEQ8T2tkbiFfNYnZNI+6SfHHbOn86ynUidlPr7r
-         gzsg==
+        b=s9MCvDVQlDQTQINkBzT5Z3Nyh2EEZxxVQaQZjMxT2xvY+zy9kt5DokvOnrcHTC+WOX
+         AINuy1e2S7kvCIEPjjbM1vpxDrmqxw+H7OvTzqlKAxPs5pQOde7n981Z9D8lwIsjtcTc
+         mECZNcBAYFylbco1evAgtP9uJ0kDpTnAAuLaHzhlYppLKumuWqvZJLsDmz/ziT9F3YLa
+         p7i8/yDTJPLtS6/ThQz2ZAFaUpOnOCmBkzphYB/Wpvxy+sjUpybFBWnKFwmB7Tlxaj4B
+         ZqR89upZ5GGRZHHdBsYLxKSIU/Yp9u1qQaUQ6tNLPRmUEf4dkVogPpJixTI/fA1N8BE1
+         uSxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Jb9KeIDx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HfB6PFFB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fb5-20020a05622a480500b004254e6fa552si2612916qtb.339.2023.12.03.15.48.27
+        by mx.google.com with ESMTPS id qs20-20020a05620a395400b0077435408a12si8478059qkn.400.2023.12.03.15.48.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:48:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 15:48:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Jb9KeIDx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HfB6PFFB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9w7f-0007jo-Td; Sun, 03 Dec 2023 18:43:39 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r9w6e-0006uu-DB; Sun, 03 Dec 2023 18:42:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w73-0007PV-I1; Sun, 03 Dec 2023 18:43:01 -0500
+ id 1r9w6Y-0006oC-0a; Sun, 03 Dec 2023 18:42:30 -0500
 Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w70-0002qF-TA; Sun, 03 Dec 2023 18:43:01 -0500
+ id 1r9w6U-0002iQ-9F; Sun, 03 Dec 2023 18:42:29 -0500
 Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-5d77a1163faso8094267b3.0; 
- Sun, 03 Dec 2023 15:42:58 -0800 (PST)
+ 00721157ae682-5cece20f006so45766487b3.3; 
+ Sun, 03 Dec 2023 15:42:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646977; x=1702251777; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646944; x=1702251744; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
- b=Jb9KeIDxmAcooYX2SGiqW/g1YWqOoI36DORPU1OArN2zGgLTNlyAC7cVYU5nlEjkoW
- 7xgfolxCTrQV3pnz35mxn1Uc1Exig0p5kCew5M5mf4x2UMFSrfgUhlX+xWqtv4iqYvs+
- vo6qmhLv6dhpRqJO1pljsFXTdMXxsvt7FhQ84oFORWmmJQHIZkpm0Eqf1VjYeiS+aQmG
- jmaSQWLaO+lkEFRQVySj7nTLY8nnKDn3fLvpbgpEcA2UqI+Jvd3k6ayh7Crc1yILn7XR
- M5CZKJojK/WaF+60JZ3JLEuiwbXGxOjnJYYS3T0DcwB13gd6D2tYlA4J7ANQqGVqOywl
- lg8w==
+ bh=imxvMsz0CNvo8nrzFvIRSqzHEH+HatWQq7mvnvZiPnw=;
+ b=HfB6PFFBkAuMUlnuIw535Kle6pjHkWzKDXC0DIm1qx1lHr/cpAiOUQ1Q299i5OdTH0
+ 8uHba4EBJXT0dx64XIzl15wlOIn7x0lkm9OG49Bp2SD5iQTqeI2lduriy5Jr4bsER32i
+ sUi3d9NNDsmu90VvQylPzGynosy7PRjpOvQdwOgHr39cTCSHpfsP6haQ2U40rpHpIhzf
+ RdilQE8G7fsAyyGj9+4iW7lECll7VVqia7kxCsjgSSu8xFm4LyklsDLAIRC7Ojcx7g/R
+ M3CnSvTQybo1G38gpNuexFRtdBQa/X550fuEZabbJuZ6AtkH3FE2cSUmiAM9zihIvFa9
+ RAxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646977; x=1702251777;
+ d=1e100.net; s=20230601; t=1701646944; x=1702251744;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
- b=DtLaafsUPVqS/vMil3eA1Dl+YmewtxC/woIXN1DJhcp0iMPZp0bVkWcWpTxOHplTMM
- y0GUUOrknkmIfRDrDVO9KQu0spFMOU0ddEgd9Q8qZQLZkI2la0jkz9zgh+TMP7g3VOso
- 3qwHsLnFCvAi/eNLZqmOMu/RO7paqjp8mFLWd+4bJPYrnmk4HEfm3yeocyczziuET33c
- uUlFhICy0ZtNBt/6p7b57/T/socR+1I7XuZZKUeafKbgCwes7EaDMTG7uOPdAMy0k+9z
- FkeyKLJ+c7qeYR7J+FqtiQCtne3Ktz2Lm/BIRvteAuxokMWkR9CSI3+WxkqJ6PemH2Ad
- WYuw==
-X-Gm-Message-State: AOJu0Ywy0FsiPaOUzREO2c5ySrsTccdQ/Eyu9iUSOZsIcgptcB3efSyd
- Fwt7LAoZbW+/MlYtZcsbE63ZU49Zg6euRA==
-X-Received: by 2002:a81:914d:0:b0:5d7:5267:6ae with SMTP id
- i74-20020a81914d000000b005d7526706aemr1634053ywg.11.1701646977241; 
- Sun, 03 Dec 2023 15:42:57 -0800 (PST)
+ bh=imxvMsz0CNvo8nrzFvIRSqzHEH+HatWQq7mvnvZiPnw=;
+ b=WLehhG7cAzyW0SxSeQPx3aO7mNbN6iPiN7cWy1T1J9bLNoGGTYuGZXa7BxlftZnSL/
+ GWhANXgk0fW6F1RF6Bl9Y/d4eS6AKb/5EPXC0e43sYQwX4hXF0cq+cCrkxFdgU3CpN6t
+ CuWpP3Bnhx+zsREdEWNTctIQbOkamSiOLcKQ/B7tkBetQ3xJyj2M6YGzKrNbkdhbs1Hl
+ IDYc/voCDzLo0cwnWUpdVU9GGLx1Nqf/porL2pnEMH62p3IQj9+8+1RwVrlhaPvsazbt
+ jP3FQS/LQXZqfYSift1xKWuRb8DcODb67ZCclcRpadvsJQNCiDAuMNOJ7kPRuRq0+P8t
+ WrtQ==
+X-Gm-Message-State: AOJu0YxkV1IF3NMRj3SG/1qabLsd0C+vg+TNWmaIC/WEGDQDbcwqSqLr
+ i9p229Yi2qb8chFpkkS6JCBOCwZFUgFZKQ==
+X-Received: by 2002:a81:bd4d:0:b0:5d7:f8da:c190 with SMTP id
+ n13-20020a81bd4d000000b005d7f8dac190mr1133677ywk.92.1701646944108; 
+ Sun, 03 Dec 2023 15:42:24 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.56
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:42:57 -0800 (PST)
+ Sun, 03 Dec 2023 15:42:23 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 36/45] Add mailbox test constants
-Date: Sun,  3 Dec 2023 17:42:04 -0600
-Message-Id: <20231203234213.1366214-37-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 06/45] Add BCM2838 GPIO stub
+Date: Sun,  3 Dec 2023 17:41:34 -0600
+Message-Id: <20231203234213.1366214-7-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
@@ -111,176 +111,286 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ynibSKgVb1ts
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aqKgHVpiNe9u
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.h | 139 ++++++++++++++++++++++++++++++++++
- 1 file changed, 139 insertions(+)
+ hw/arm/bcm2838.c                     |   4 +-
+ hw/gpio/bcm2838_gpio.c               | 152 +++++++++++++++++++++++++++
+ hw/gpio/meson.build                  |   5 +-
+ include/hw/arm/bcm2838_peripherals.h |   2 -
+ include/hw/gpio/bcm2838_gpio.h       |  40 +++++++
+ 5 files changed, 198 insertions(+), 5 deletions(-)
+ create mode 100644 hw/gpio/bcm2838_gpio.c
+ create mode 100644 include/hw/gpio/bcm2838_gpio.h
 
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
-index 1d02ca9c2c..8acc4bd2ff 100644
---- a/tests/qtest/bcm2838-mailbox.h
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -7,6 +7,145 @@
-  * See the COPYING file in the top-level directory.
-  */
+diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+index 042e543006..8925957c6c 100644
+--- a/hw/arm/bcm2838.c
++++ b/hw/arm/bcm2838.c
+@@ -14,7 +14,7 @@
+ #include "hw/arm/bcm2838.h"
+ #include "trace.h"
  
-+#define MBOX0_BASE 0xFE00B880
-+#define MBOX1_BASE 0xFE00B8A0
-+
-+#define MBOX_REG_READ   0x00
-+#define MBOX_REG_WRITE  0x00
-+#define MBOX_REG_PEEK   0x10
-+#define MBOX_REG_SENDER 0x14
-+#define MBOX_REG_STATUS 0x18
-+#define MBOX_REG_CONFIG 0x1C
-+
-+#define MBOX_READ_EMPTY 0x40000000
-+
-+#define MBOX_CHANNEL_ID_PROPERTY 8
-+
-+#define MBOX_PROCESS_REQUEST      0x00000000
-+#define MBOX_SUCCESS              0x80000000
-+#define MBOX_ERROR_PARSING_BUFFER 0x80000001
-+
-+#define TAG_END                    0x00000000
-+#define TAG_GET_FIRMWARE_REVISION  0x00000001
-+#define TAG_GET_FIRMWARE_VARIANT   0x00000002
-+#define TAG_GET_BOARD_REVISION     0x00010002
-+#define TAG_GET_ARM_MEMORY         0x00010005
-+#define TAG_GET_VC_MEMORY          0x00010006
-+#define TAG_SET_DEVICE_POWER_STATE 0x00028001
-+#define TAG_GET_CLOCK_STATE        0x00030001
-+#define TAG_GET_CLOCK_RATE         0x00030002
-+#define TAG_GET_MAX_CLOCK_RATE     0x00030004
-+#define TAG_GET_MIN_CLOCK_RATE     0x00030007
-+#define TAG_GET_CLOCKS             0x00010007
-+#define TAG_GET_TEMPERATURE        0x00030006
-+#define TAG_GET_MAX_TEMPERATURE    0x0003000a
-+#define TAG_ALLOCATE_BUFFER        0x00040001
-+#define TAG_RELEASE_FRAMEBUFFER    0x00048001
-+#define TAG_BLANK_FRAMEBUFFER      0x00040002
-+#define TAG_GET_FB_PHYS_WIDTH      0x00040003
-+#define TAG_TEST_FB_PHYS_WIDTH     0x00044003
-+#define TAG_SET_FB_PHYS_WIDTH      0x00048003
-+#define TAG_GET_FB_VIRT_WIDTH      0x00040004
-+#define TAG_TEST_FB_VIRT_WIDTH     0x00044004
-+#define TAG_SET_FB_VIRT_WIDTH      0x00048004
-+#define TAG_GET_FB_DEPTH           0x00040005
-+#define TAG_TEST_FB_DEPTH          0x00044005
-+#define TAG_SET_FB_DEPTH           0x00048005
-+#define TAG_GET_PIXEL_ORDER        0x00040006
-+#define TAG_TEST_PIXEL_ORDER       0x00044006
-+#define TAG_SET_PIXEL_ORDER        0x00048006
-+#define TAG_GET_FB_ALPHA_MODE      0x00040007
-+#define TAG_TEST_FB_ALPHA_MODE     0x00044007
-+#define TAG_SET_FB_ALPHA_MODE      0x00048007
-+#define TAG_GET_PITCH              0x00040008
-+#define TAG_SET_PITCH              0x00048008
-+#define TAG_GET_VIRTUAL_OFFSET     0x00040009
-+#define TAG_TEST_VIRTUAL_OFFSET    0x00044009
-+#define TAG_SET_VIRTUAL_OFFSET     0x00048009
-+#define TAG_GET_OVERSCAN           0x0004000a
-+#define TAG_TEST_OVERSCAN          0x0004400a
-+#define TAG_SET_OVERSCAN           0x0004800a
-+#define TAG_SET_PALETTE            0x0004800b
-+#define TAG_GET_COMMANDLINE        0x00050001
-+#define TAG_GET_DMA_CHANNELS       0x00060001
-+#define TAG_GET_THROTTLED          0x00030046
-+#define TAG_GET_NUM_DISPLAYS       0x00040013
-+#define TAG_GET_DISPLAY_SETTINGS   0x00040014
-+#define TAG_GET_GPIO_CONFIG        0x00030043
-+#define TAG_SET_GPIO_CONFIG        0x00038043
-+#define TAG_GET_GPIO_STATE         0x00030041
-+#define TAG_SET_GPIO_STATE         0x00038041
-+#define TAG_INITIALIZE_VCHIQ       0x00048010
-+
-+#define BOARD_REVISION    11546898
-+#define FIRMWARE_REVISION 346337
-+#define FIRMWARE_VARIANT  0x77777777 /* TODO: Find the real value */
-+
-+#define ARM_MEMORY_BASE 0x00000000
-+#define ARM_MEMORY_SIZE 0x3c000000
-+#define VC_MEMORY_BASE  0x3c000000
-+#define VC_MEMORY_SIZE  0x04000000
-+#define VC_FB_BASE      0x3c100000
-+#define VC_FB_SIZE      0x00096000
-+
-+#define CLOCK_ID_ROOT      0x00000000
-+#define CLOCK_ID_EMMC      0x00000001
-+#define CLOCK_ID_UART      0x00000002
-+#define CLOCK_ID_ARM       0x00000003
-+#define CLOCK_ID_CORE      0x00000004
-+#define CLOCK_ID_UNDEFINED 0x12345678
-+
-+#define CLOCK_RATE_EMMC 50000000
-+#define CLOCK_RATE_UART 3000000
-+#define CLOCK_RATE_CORE 350000000
-+#define CLOCK_RATE_ANY  700000000
-+
-+#define DEVICE_ID_SD_CARD   0x00000000
-+#define DEVICE_ID_UART0     0x00000001
-+#define DEVICE_ID_UART1     0x00000002
-+#define DEVICE_ID_USB HCD   0x00000003
-+#define DEVICE_ID_I2C0      0x00000004
-+#define DEVICE_ID_I2C1      0x00000005
-+#define DEVICE_ID_I2C2      0x00000006
-+#define DEVICE_ID_SPI       0x00000007
-+#define DEVICE_ID_CCP2TX    0x00000008
-+#define DEVICE_ID_UNKNOWN_0 0x00000009
-+#define DEVICE_ID_UNKNOWN_1 0x0000000a
-+
-+#define TEMPERATURE_ID_SOC 0x00000000
-+
-+#define TEMPERATURE_SOC     25000
-+#define TEMPERATURE_SOC_MAX 99000
-+
-+#define ALIGN_4K 4096
-+
-+#define PIXEL_ORDER_BGR 0
-+#define PIXEL_ORDER_RGB 1
-+
-+#define ALPHA_MODE_ENABLED  0
-+#define ALPHA_MODE_REVERSED 1
-+#define ALPHA_MODE_IGNORED  2
-+
-+#define GPIO_MASK 0x003c
-+
-+#define GPIO_0 0x00000080
-+
-+#define GPIO_DIRECTION_IN  0
-+#define GPIO_DIRECTION_OUT 1
-+
-+#define GPIO_TERMINATION_DISABLED 0
-+#define GPIO_TERMINATION_ENABLED  1
-+
-+#define GPIO_TERMINATION_PULLUP_DISABLED 0
-+#define GPIO_TERMINATION_PULLUP_ENABLED  1
-+
-+#define GPIO_POLARITY_LOW  0
-+#define GPIO_POLARITY_HIGH 1
-+
-+#define GPIO_STATE_DOWN 0
-+
-+/* Used to test stubs that don't perform actual work */
-+#define DUMMY_VALUE 0x12345678
+-#define GIC400_MAINTAINANCE_IRQ      9
++#define GIC400_MAINTENANCE_IRQ      9
+ #define GIC400_TIMER_NS_EL2_IRQ     10
+ #define GIC400_TIMER_VIRT_IRQ       11
+ #define GIC400_LEGACY_FIQ           12
+@@ -163,7 +163,7 @@ static void bcm2838_realize(DeviceState *dev, Error **errp)
  
- REG32(MBOX_WRITE_REG, 0)
- FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), n + 4 * BCM283X_NCPUS,
+                            qdev_get_gpio_in(gicdev,
+-                                            PPI(n, GIC400_MAINTAINANCE_IRQ)));
++                                            PPI(n, GIC400_MAINTENANCE_IRQ)));
+ 
+         /* Connect timers from the CPU to the interrupt controller */
+         qdev_connect_gpio_out(cpudev, GTIMER_PHYS,
+diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
+new file mode 100644
+index 0000000000..15b66cb559
+--- /dev/null
++++ b/hw/gpio/bcm2838_gpio.c
+@@ -0,0 +1,152 @@
++/*
++ * Raspberry Pi (BCM2838) GPIO Controller
++ * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
++ *
++ * Copyright (c) 2022 Auriga LLC
++ *
++ * Authors:
++ *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "qapi/error.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "hw/gpio/bcm2838_gpio.h"
++
++#define GPFSEL0   0x00
++#define GPFSEL1   0x04
++#define GPFSEL2   0x08
++#define GPFSEL3   0x0C
++#define GPFSEL4   0x10
++#define GPFSEL5   0x14
++#define GPSET0    0x1C
++#define GPSET1    0x20
++#define GPCLR0    0x28
++#define GPCLR1    0x2C
++#define GPLEV0    0x34
++#define GPLEV1    0x38
++#define GPEDS0    0x40
++#define GPEDS1    0x44
++#define GPREN0    0x4C
++#define GPREN1    0x50
++#define GPFEN0    0x58
++#define GPFEN1    0x5C
++#define GPHEN0    0x64
++#define GPHEN1    0x68
++#define GPLEN0    0x70
++#define GPLEN1    0x74
++#define GPAREN0   0x7C
++#define GPAREN1   0x80
++#define GPAFEN0   0x88
++#define GPAFEN1   0x8C
++
++#define GPIO_PUP_PDN_CNTRL_REG0 0xE4
++#define GPIO_PUP_PDN_CNTRL_REG1 0xE8
++#define GPIO_PUP_PDN_CNTRL_REG2 0xEC
++#define GPIO_PUP_PDN_CNTRL_REG3 0xF0
++
++#define RESET_VAL_CNTRL_REG0 0xAAA95555;
++#define RESET_VAL_CNTRL_REG1 0xA0AAAAAA;
++#define RESET_VAL_CNTRL_REG2 0x50AAA95A;
++#define RESET_VAL_CNTRL_REG3 0x00055555;
++
++#define BYTES_IN_WORD        4
++
++static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t value = 0;
++
++    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
++                  TYPE_BCM2838_GPIO, __func__, offset);
++
++    return value;
++}
++
++static void bcm2838_gpio_write(void *opaque, hwaddr offset, uint64_t value,
++                               unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
++                  TYPE_BCM2838_GPIO, __func__, offset);
++}
++
++static void bcm2838_gpio_reset(DeviceState *dev)
++{
++    BCM2838GpioState *s = BCM2838_GPIO(dev);
++
++    s->lev0 = 0;
++    s->lev1 = 0;
++
++    s->pup_cntrl_reg[0] = RESET_VAL_CNTRL_REG0;
++    s->pup_cntrl_reg[1] = RESET_VAL_CNTRL_REG1;
++    s->pup_cntrl_reg[2] = RESET_VAL_CNTRL_REG2;
++    s->pup_cntrl_reg[3] = RESET_VAL_CNTRL_REG3;
++}
++
++static const MemoryRegionOps bcm2838_gpio_ops = {
++    .read = bcm2838_gpio_read,
++    .write = bcm2838_gpio_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_bcm2838_gpio = {
++    .name = "bcm2838_gpio",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(fsel, BCM2838GpioState, BCM2838_GPIO_NUM),
++        VMSTATE_UINT32(lev0, BCM2838GpioState),
++        VMSTATE_UINT32(lev1, BCM2838GpioState),
++        VMSTATE_UINT8(sd_fsel, BCM2838GpioState),
++        VMSTATE_UINT32_ARRAY(pup_cntrl_reg, BCM2838GpioState,
++                             GPIO_PUP_PDN_CNTRL_NUM),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2838_gpio_init(Object *obj)
++{
++    BCM2838GpioState *s = BCM2838_GPIO(obj);
++    DeviceState *dev = DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2838_gpio_ops, s,
++                          "bcm2838_gpio", BCM2838_GPIO_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++    qdev_init_gpio_out(dev, s->out, BCM2838_GPIO_NUM);
++}
++
++static void bcm2838_gpio_realize(DeviceState *dev, Error **errp)
++{
++    /* Temporary stub. Do nothing */
++}
++
++static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_bcm2838_gpio;
++    dc->realize = &bcm2838_gpio_realize;
++    dc->reset = &bcm2838_gpio_reset;
++}
++
++static const TypeInfo bcm2838_gpio_info = {
++    .name          = TYPE_BCM2838_GPIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2838GpioState),
++    .instance_init = bcm2838_gpio_init,
++    .class_init    = bcm2838_gpio_class_init,
++};
++
++static void bcm2838_gpio_register_types(void)
++{
++    type_register_static(&bcm2838_gpio_info);
++}
++
++type_init(bcm2838_gpio_register_types)
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 066ea96480..8a8d03d885 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -9,6 +9,9 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
+-system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_gpio.c'))
++system_ss.add(when: 'CONFIG_RASPI', if_true: files(
++    'bcm2835_gpio.c',
++    'bcm2838_gpio.c'
++))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 5a72355183..d07831753a 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -11,8 +11,6 @@
+ 
+ #include "hw/arm/bcm2835_peripherals.h"
+ 
+-#define GENET_OFFSET            0x1580000
+-
+ /* SPI */
+ #define GIC_SPI_INTERRUPT_MBOX         33
+ #define GIC_SPI_INTERRUPT_MPHI         40
+diff --git a/include/hw/gpio/bcm2838_gpio.h b/include/hw/gpio/bcm2838_gpio.h
+new file mode 100644
+index 0000000000..06d48e0c19
+--- /dev/null
++++ b/include/hw/gpio/bcm2838_gpio.h
+@@ -0,0 +1,40 @@
++/*
++ * Raspberry Pi (BCM2838) GPIO Controller
++ * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
++ *
++ * Copyright (c) 2022 Auriga LLC
++ *
++ * Authors:
++ *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2838_GPIO_H
++#define BCM2838_GPIO_H
++
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_BCM2838_GPIO "bcm2838-gpio"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GpioState, BCM2838_GPIO)
++
++#define BCM2838_GPIO_REGS_SIZE 0x1000
++#define BCM2838_GPIO_NUM       58
++#define GPIO_PUP_PDN_CNTRL_NUM 4
++
++struct BCM2838GpioState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++
++    uint8_t fsel[BCM2838_GPIO_NUM];
++    uint32_t lev0, lev1;
++    uint8_t sd_fsel;
++    qemu_irq out[BCM2838_GPIO_NUM];
++    uint32_t pup_cntrl_reg[GPIO_PUP_PDN_CNTRL_NUM];
++};
++
++#endif
 -- 
 2.34.1
 

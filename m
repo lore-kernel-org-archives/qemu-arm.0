@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2329783ejb;
-        Sun, 3 Dec 2023 13:35:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFlzoJdlp1I0uG062xwf1u+mNNOvP4xnhxYrxcyNE6qCgapCf0RceordvuVZFAEPSucpGOM
-X-Received: by 2002:a05:6808:1701:b0:3b8:b063:a1c1 with SMTP id bc1-20020a056808170100b003b8b063a1c1mr4737440oib.75.1701639304154;
-        Sun, 03 Dec 2023 13:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701639304; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2329815ejb;
+        Sun, 3 Dec 2023 13:35:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGPPePgyJW1cdJP2L5db6AkI3St47KcNKGbqDRo2RlPcLbLKRQkPzYXhgmiDZdBH/tFDrf3
+X-Received: by 2002:a05:6808:3022:b0:3b8:b063:a1bd with SMTP id ay34-20020a056808302200b003b8b063a1bdmr5464661oib.71.1701639306606;
+        Sun, 03 Dec 2023 13:35:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701639306; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rj7EtmrTaQc7vFZQcgW30xYlDZSOsX5wrVr4RZ/HLZw6afFYCfg1hpXnqLSuDkoVnk
-         mgCPhT8YhfWrbGlDZku2hxgnmLJvVNLdwO2lWwZU/Sx9OW2Oiqnlp1zFxF/fBLu0jx+x
-         daumqIY3NM3+7FIg2Uossd3BVPYmzIzhdC3JIvbRJcg1+OOHV5xXgdhZk/hPifi8a4GC
-         MdKrgiOxT/JB4VzCE4Uz1VwfMi4L3gU0zgyze0tmZ8h2pT4Us6Kon0zbUsYFeBJhvLER
-         w2yrWm1A0ABPLc8OXDDf0U03NXx1SM0j+XQmcM58K9ypcP6ZTGQ28ayARwUA6ZgFx8la
-         v3zA==
+        b=r7+jpKlbap2/s4+KeL4MOugjDwhDbvT52TpbYOKPpdny38Z8kWn9FWa86SSx8ZUQvK
+         zSWP//wH32R4BFn0R13NpCKU639HWIAH0N4/u0f5y+Uh22GJgysa1V4ca97WFgEWFLbY
+         1+X7ZcCrt6Ebg7cXMxg5EglxPtm1+MKYaw8qiLvqTadjmn9aJC/c6ljkg/g8ST1iY/dx
+         Qgloxez81wiJDfpDgsfW4NqJqo+8c6Y+UIiLmaG1IOF4aO61b2GzduWbgbdE3xlBirxQ
+         EIX6MFb8TEHRONfvn+PQCMNlH6saTP+CMxDCaaQj9k5KaBPmGQo/VmJOvxrrlv8xICIf
+         Hu7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=QIUscvz7pf1VFtRN5hHqsbtj5B7mCmCi2M+oBvF9ZJ8=;
+        bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=faRW9sTlLxnrxFXB+mORkny8hMpsZJ82CnZltBHt6lhU8SOTdZ+g7bu0EIelUfzlcv
-         FpyfCZGc6eyVSwnvGTztXBSaSwl2wzlqtwK0GGqg/xT6WYmIN2yMh/pYQygBipyLTaXg
-         9EtsmUpmjHcMK9ZHQpJ51SM9GB3QM9fzWCgzMnTySs0V1Viq1djiFUtLfcGTMR3c0FxV
-         kAEWuQS1oBkSSJEyFnXDwwjEkkAx0UKCqbjO5+R2NgoU6SFlacnxyXNdo81mcILO94h7
-         kEVpfKEk7VnFIbdpE93562DUb/lsunW5CcZl4+kQZ1P0tbyqNt2rN8c5UXvx+8Frj9um
-         WLZA==
+        b=NYPxPmbgcLGsCjUljILodPuE8dwu/hAIwnO0u2i02rFkS6jwdpW5z455K2eJ5Gv20a
+         CUpgij3uEz5kUJgj3AJVP5uK7T0ZbskarjMGNhSZCUBTTiXK+J7fcyT4i12TFfms2kTQ
+         BRVLFwZpHxqUKGMllxPJ5hJp4kafupJJHAVf573ibAdkfcHaqzbugDbmI3KPO1zOgXFE
+         hMFfOu/zH3lPH1XRTd8S5dmQn+eGgiJo0wRSnGmhOWw8AECxCOLdNm8+J3zLRWKitviJ
+         2LDg/Z4+rA/iMjmqDQE7u1T9kKo2ErD4QhxGs/85g6DcahdpW1h7Q/hS2kNmS3AI1tgd
+         U3mA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VJ5jrEuk;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EH08Mf+m;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e29-20020a05620a015d00b00779ff037ff4si7940193qkn.203.2023.12.03.13.35.03
+        by mx.google.com with ESMTPS id pa36-20020a05620a832400b0077dd0a1107asi7830817qkn.215.2023.12.03.13.35.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:35:04 -0800 (PST)
+        Sun, 03 Dec 2023 13:35:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VJ5jrEuk;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EH08Mf+m;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9u2L-0002Im-Oh; Sun, 03 Dec 2023 16:30:01 -0500
+	id 1r9u2S-0002Vz-FI; Sun, 03 Dec 2023 16:30:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u2F-00025C-Lc; Sun, 03 Dec 2023 16:29:55 -0500
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+ id 1r9u29-0001fy-80; Sun, 03 Dec 2023 16:29:50 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u2D-0005Zk-O9; Sun, 03 Dec 2023 16:29:55 -0500
-Received: by mail-yb1-xb2c.google.com with SMTP id
- 3f1490d57ef6-db3fa47c2f7so2142964276.0; 
- Sun, 03 Dec 2023 13:29:53 -0800 (PST)
+ id 1r9u25-0005Wy-PQ; Sun, 03 Dec 2023 16:29:47 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id
+ 3f1490d57ef6-db3a09e96daso2128364276.3; 
+ Sun, 03 Dec 2023 13:29:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701638992; x=1702243792; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701638984; x=1702243784; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=QIUscvz7pf1VFtRN5hHqsbtj5B7mCmCi2M+oBvF9ZJ8=;
- b=VJ5jrEukI5fM8WIPuCd/nTk2Jbj8pmRe2dpMo3QgkmhIJoWW/4fORhAcUpYCXq5pbI
- Z2y1jK4WIPaaSVcoLh/z+GufxbA/8s0mG0Ekn2L5vjRG+ch7eg290k2/LLjPy1MVKC/v
- UzT9/KHm44dCTryfzButL4XKgPxjqZZcIHP3yHEiqhOT6FEeVzWKuvb2DIU3XmKyuO0/
- /QwqQ0+UrTcCBCdOmF1Tuq4bh8rC/Qh1K6qkkrm10hYreevOIeY3wLaWSWQHxmlup3Qf
- INjUoHs6E5uqtzdY6zvrFcMEmOE2eDwBifiS7cmNMfIH+XGijwq44ZuOk2o2dr70FfbX
- bj4g==
+ bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
+ b=EH08Mf+m+DfFBWiIhjb0gKzZFAVN/boP2AgHg/fPVIUzqQW0i1tVJnJNqL9U+s6FNs
+ atcwpUpnY8I8DLMwiw3kqddyi6IdzhJgTF4l72F1BbxUVStx3Mefjrv61zF62fNmrQDv
+ dDwYd5a+ULIdDyU7tfBX21K7g/xEa51Lkvuskw2yWJda1PfvRnLe/L0rlnNgUVfvEYEq
+ kJS5m8I98SbZBpmQt08aVuLcP6huam9wf8mJ/5B5jyneH2uR/N9IAQ4+4dR5VPQiaVtD
+ Ai6+XcBCMh2CQls20T4oMmBG+kOpEXNoaNCm6OaK6z1x7AGP43YSksU9i8m/5rWH+lR1
+ 6CrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701638992; x=1702243792;
+ d=1e100.net; s=20230601; t=1701638984; x=1702243784;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=QIUscvz7pf1VFtRN5hHqsbtj5B7mCmCi2M+oBvF9ZJ8=;
- b=ZZPw9K2H78L3UGW2mBcabvrgPY5l6hfWfCrFuAgxCroyLX5v6Q6yl6ViHe186m7vBT
- hLoJTR/0ufAVsvabbxJVvhRX8zCRy19vl8qGwQTReZf1Z+iLqujxkD9Uri67UCyOzZoo
- HtUwzVmBGA0h+eS3CgGPdMPQSLHEEE8boPzsuvKATeGhp0UZtE8VV58IDdIN/PS1HQUA
- D95Cp93RtRIAKO7FB9K2E0dn4yAMhWdSbl85xB1R4a34AjQcdawEpKTeUC7VQncIGGy5
- yfNgClPhhtz1NpGgPvvA0ZqVcZQ1Qxz6F2fr5xyCMEXIqV7PpAchQ0i42FCBtkzIFj43
- Y0Qg==
-X-Gm-Message-State: AOJu0Yw3U0yXXcLxGfcwxNej0Whs219XL60KmlTnDwwsJ6ZxaVwIjZBr
- 4mVxG8e3YlK57ZvLfnHKAcL9UD8I5wAebA==
-X-Received: by 2002:a05:6902:188d:b0:db7:dad0:60df with SMTP id
- cj13-20020a056902188d00b00db7dad060dfmr2078955ybb.108.1701638992305; 
- Sun, 03 Dec 2023 13:29:52 -0800 (PST)
+ bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
+ b=jzYL5fBENXB2lmIpl0uC28+UltCLDsQbj7jihOG9tA0mwG1w9GQboYH2iNbxAPH/XU
+ npP9wextHOKNTq1a7m5vwzPLDwb3cxmDsD1ARdoxe/s2amuRqADLuNx4axjwbGAhOzQC
+ qE3x5ztw/mu5wKdMw2FBOVxUeg1d57fcCgPN9RZNKyLi/3qewrsZbXiolnxNvBS6rJPn
+ x44ZxVNmAQgnlnMHUAJgT9HVU3XifwiMCa41YfkQJT+inTNxp2qxLmdexrAdSWpUX/A0
+ zMGRxmPaQVrTjIwqIIKFrchdib07L8s8u/Up1AsZb6xhXJoeeHAaHKWXYPBV1fgKE26N
+ L9jw==
+X-Gm-Message-State: AOJu0Yxd2wEz5Q3Gx/89tutwUG7eu95MAcERlcfjaqB+dW9maPNDMFfM
+ OSErWi607Jp3aHb18TWvKa3NKoi8Wd7M4g==
+X-Received: by 2002:a25:d0e:0:b0:db7:dad0:60c0 with SMTP id
+ 14-20020a250d0e000000b00db7dad060c0mr1743781ybn.77.1701638984197; 
+ Sun, 03 Dec 2023 13:29:44 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.51
+ c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:29:52 -0800 (PST)
+ Sun, 03 Dec 2023 13:29:43 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 42/45] Add mailbox property tests. Part 3
-Date: Sun,  3 Dec 2023 15:29:02 -0600
-Message-Id: <20231203212905.1364036-43-sergey.kambalin@auriga.com>
+Subject: [PATCH 34/45] Add Rpi4b boot tests
+Date: Sun,  3 Dec 2023 15:28:54 -0600
+Message-Id: <20231203212905.1364036-35-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203212905.1364036-42-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203212905.1364036-34-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-2-sergey.kambalin@auriga.com>
@@ -133,26 +133,17 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-32-sergey.kambalin@auriga.com>
  <20231203212905.1364036-33-sergey.kambalin@auriga.com>
  <20231203212905.1364036-34-sergey.kambalin@auriga.com>
- <20231203212905.1364036-35-sergey.kambalin@auriga.com>
- <20231203212905.1364036-36-sergey.kambalin@auriga.com>
- <20231203212905.1364036-37-sergey.kambalin@auriga.com>
- <20231203212905.1364036-38-sergey.kambalin@auriga.com>
- <20231203212905.1364036-39-sergey.kambalin@auriga.com>
- <20231203212905.1364036-40-sergey.kambalin@auriga.com>
- <20231203212905.1364036-41-sergey.kambalin@auriga.com>
- <20231203212905.1364036-42-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2c;
- envelope-from=serg.oker@gmail.com; helo=mail-yb1-xb2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=serg.oker@gmail.com; helo=mail-yb1-xb30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_PDS_OTHER_BAD_TLD=0.01, T_SCC_BODY_TEXT_LINE=-0.01,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -167,244 +158,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zWJrFJTFD/68
+X-TUID: /Ydpp+Zn45J+
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mbox-property-test.c | 213 ++++++++++++++++++++++-
- 1 file changed, 212 insertions(+), 1 deletion(-)
+ tests/avocado/boot_linux_console.py | 92 +++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
 
-diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
-index 5322c563a0..1b4a2ed9cb 100644
---- a/tests/qtest/bcm2838-mbox-property-test.c
-+++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -361,7 +361,194 @@ DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
-     tag->request.value.height = 600;
- }
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 6eab515718..62aac02bbb 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -501,6 +501,98 @@ def test_arm_raspi2_initrd(self):
+         # Wait for VM to shut down gracefully
+         self.vm.wait()
  
--//==============================================================================
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_DEPTH) {
-+    g_assert_cmpint(tag->response.value.bpp, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_DEPTH) {
-+    tag->request.value.bpp = DUMMY_VALUE;
-+}
++    def test_arm_raspi4(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi4b2g
++        :avocado: tags=device:pl011
++        :avocado: tags=accel:tcg
++        :avocado: tags=rpi4b
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_DEPTH) {
-+    g_assert_cmpint(tag->response.value.bpp, ==, 16);
-+}
++        The kernel can be rebuilt using the kernel source referenced
++        and following the instructions on the on:
++        https://www.raspberrypi.org/documentation/linux/kernel/building.md
++        """
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_DEPTH) {
-+    g_assert_cmpint(tag->response.value.bpp, ==, 24);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_DEPTH) {
-+    tag->request.value.bpp = 24;
-+}
++        deb_url = ('http://archive.raspberrypi.org/debian/'
++            'pool/main/r/raspberrypi-firmware/'
++            'raspberrypi-kernel_1.20230106-1_arm64.deb')
++        deb_hash = '08dc55696535b18a6d4fe6fa10d4c0d905cbb2ed'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel8.img')
++        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2711-rpi-4-b.dtb')
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_PIXEL_ORDER) {
-+    g_assert_cmphex(tag->response.value.pixel_order, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_PIXEL_ORDER) {
-+    tag->request.value.pixel_order = DUMMY_VALUE;
-+}
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,mmio32,0xfe201000 ' +
++                               'console=ttyAMA0,115200 ' +
++                               'root=/dev/mmcblk1p2 rootwait ' +
++                               'dwc_otg.fiq_fsm_enable=0')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-append', kernel_command_line,
++                         '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
++                         '-device', 'usb-kbd,bus=xhci.0')
++        self.vm.launch()
++        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        self.wait_for_console_pattern(console_pattern)
++        console_pattern = 'Product: QEMU USB Keyboard'
++        self.wait_for_console_pattern(console_pattern)
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_PIXEL_ORDER) {
-+    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_RGB);
-+}
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_PIXEL_ORDER, BGR) {
-+    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_BGR);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_PIXEL_ORDER, BGR) {
-+    tag->request.value.pixel_order = PIXEL_ORDER_BGR;
-+}
++    def test_arm_raspi4_initrd(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi4b2g
++        :avocado: tags=device:pl011
++        :avocado: tags=accel:tcg
++        :avocado: tags=rpi4b
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_PIXEL_ORDER, RGB) {
-+    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_BGR);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_PIXEL_ORDER, RGB) {
-+    tag->request.value.pixel_order = PIXEL_ORDER_BGR;
-+}
++        The kernel can be rebuilt using the kernel source referenced
++        and following the instructions on the on:
++        https://www.raspberrypi.org/documentation/linux/kernel/building.md
++        """
++        deb_url = ('http://archive.raspberrypi.org/debian/'
++            'pool/main/r/raspberrypi-firmware/'
++            'raspberrypi-kernel_1.20230106-1_arm64.deb')
++        deb_hash = '08dc55696535b18a6d4fe6fa10d4c0d905cbb2ed'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel8.img')
++        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2711-rpi-4-b.dtb')
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_ALPHA_MODE) {
-+    g_assert_cmphex(tag->response.value.alpha_mode, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_ALPHA_MODE) {
-+    tag->request.value.alpha_mode = DUMMY_VALUE;
-+}
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '86b2be1384d41c8c388e63078a847f1e1c4cb1de/rootfs/'
++                      'arm64/rootfs.cpio.gz')
++        initrd_hash = 'f3d4f9fa92a49aa542f1b44d34be77bbf8ca5b9d'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.gzip_uncompress(initrd_path_gz, initrd_path)
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_ALPHA_MODE) {
-+    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_IGNORED);
-+}
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,mmio32,0xfe201000 ' +
++                               'console=ttyAMA0,115200 ' +
++                               'panic=-1 noreboot ' +
++                               'dwc_otg.fiq_fsm_enable=0')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-initrd', initrd_path,
++                         '-append', kernel_command_line,
++                         '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
++                         '-device', 'usb-kbd,bus=xhci.0',
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, ENABLED) {
-+    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_ENABLED);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, ENABLED) {
-+    tag->request.value.alpha_mode = ALPHA_MODE_ENABLED;
-+}
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'BCM2835')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'cprman@7e101000')
++        exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
++        # TODO: Raspberry Pi4 doesn't shut down properly with recent kernels
++        # Wait for VM to shut down gracefully
++        #self.vm.wait()
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, REVERSED) {
-+    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_REVERSED);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, REVERSED) {
-+    tag->request.value.alpha_mode = ALPHA_MODE_REVERSED;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, IGNORED) {
-+    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_IGNORED);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, IGNORED) {
-+    tag->request.value.alpha_mode = ALPHA_MODE_IGNORED;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_PITCH) {
-+    g_assert_cmpint(tag->response.value.pitch, ==, 1280);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_VIRTUAL_OFFSET) {
-+    g_assert_cmpint(tag->response.value.x, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.y, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_VIRTUAL_OFFSET) {
-+    tag->request.value.x = DUMMY_VALUE;
-+    tag->request.value.y = DUMMY_VALUE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_VIRTUAL_OFFSET) {
-+    g_assert_cmpint(tag->response.value.x, ==, 0);
-+    g_assert_cmpint(tag->response.value.y, ==, 0);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_VIRTUAL_OFFSET, _0_) {
-+    g_assert_cmpint(tag->response.value.x, ==, 0);
-+    g_assert_cmpint(tag->response.value.y, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_VIRTUAL_OFFSET, _0_) {
-+    tag->request.value.x = 0;
-+    tag->request.value.y = 0;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_VIRTUAL_OFFSET, _42_) {
-+    g_assert_cmpint(tag->response.value.x, ==, 42);
-+    g_assert_cmpint(tag->response.value.y, ==, 42);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_VIRTUAL_OFFSET, _42_) {
-+    tag->request.value.x = 42;
-+    tag->request.value.y = 42;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_OVERSCAN) {
-+    g_assert_cmpint(tag->response.value.top, ==, 0);
-+    g_assert_cmpint(tag->response.value.bottom, ==, 0);
-+    g_assert_cmpint(tag->response.value.left, ==, 0);
-+    g_assert_cmpint(tag->response.value.right, ==, 0);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_OVERSCAN) {
-+    g_assert_cmpint(tag->response.value.top, ==, 0);
-+    g_assert_cmpint(tag->response.value.bottom, ==, 0);
-+    g_assert_cmpint(tag->response.value.left, ==, 0);
-+    g_assert_cmpint(tag->response.value.right, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_OVERSCAN) {
-+    tag->request.value.top = DUMMY_VALUE;
-+    tag->request.value.bottom = DUMMY_VALUE;
-+    tag->request.value.left = DUMMY_VALUE;
-+    tag->request.value.right = DUMMY_VALUE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_OVERSCAN) {
-+    g_assert_cmpint(tag->response.value.top, ==, 0);
-+    g_assert_cmpint(tag->response.value.bottom, ==, 0);
-+    g_assert_cmpint(tag->response.value.left, ==, 0);
-+    g_assert_cmpint(tag->response.value.right, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_OVERSCAN) {
-+    tag->request.value.top = DUMMY_VALUE;
-+    tag->request.value.bottom = DUMMY_VALUE;
-+    tag->request.value.left = DUMMY_VALUE;
-+    tag->request.value.right = DUMMY_VALUE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_DMA_CHANNELS) {
-+    g_assert_cmphex(tag->response.value.mask, ==, GPIO_MASK);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_COMMANDLINE) {
-+    /* No special checks are needed for this test case */
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_NUM_DISPLAYS) {
-+    g_assert_cmpint(tag->response.value.num_displays, ==, 1);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_PITCH) {
-+    /* No special checks are needed for this test case */
-+}
-+DECLARE_TEST_CASE_SETUP(SET_PITCH) {
-+    tag->request.value.pitch = DUMMY_VALUE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
- int main(int argc, char **argv)
- {
-     g_test_init(&argc, &argv, NULL);
-@@ -395,6 +582,30 @@ int main(int argc, char **argv)
-     QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
-     QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
-     QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
-+    QTEST_ADD_TEST_CASE(TEST_FB_DEPTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_DEPTH);
-+    QTEST_ADD_TEST_CASE(SET_FB_DEPTH);
-+    QTEST_ADD_TEST_CASE(TEST_PIXEL_ORDER);
-+    QTEST_ADD_TEST_CASE(GET_PIXEL_ORDER);
-+    QTEST_ADD_TEST_CASE(SET_PIXEL_ORDER, BGR);
-+    QTEST_ADD_TEST_CASE(SET_PIXEL_ORDER, RGB);
-+    QTEST_ADD_TEST_CASE(TEST_FB_ALPHA_MODE);
-+    QTEST_ADD_TEST_CASE(GET_FB_ALPHA_MODE);
-+    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, ENABLED);
-+    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, REVERSED);
-+    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, IGNORED);
-+    QTEST_ADD_TEST_CASE(GET_PITCH);
-+    QTEST_ADD_TEST_CASE(TEST_VIRTUAL_OFFSET);
-+    QTEST_ADD_TEST_CASE(GET_VIRTUAL_OFFSET);
-+    QTEST_ADD_TEST_CASE(SET_VIRTUAL_OFFSET, _0_);
-+    QTEST_ADD_TEST_CASE(SET_VIRTUAL_OFFSET, _42_);
-+    QTEST_ADD_TEST_CASE(GET_OVERSCAN);
-+    QTEST_ADD_TEST_CASE(TEST_OVERSCAN);
-+    QTEST_ADD_TEST_CASE(SET_OVERSCAN);
-+    QTEST_ADD_TEST_CASE(GET_DMA_CHANNELS);
-+    QTEST_ADD_TEST_CASE(GET_COMMANDLINE);
-+    QTEST_ADD_TEST_CASE(GET_NUM_DISPLAYS);
-+    QTEST_ADD_TEST_CASE(SET_PITCH);
- 
-     return g_test_run();
- }
+     def test_arm_exynos4210_initrd(self):
+         """
+         :avocado: tags=arch:arm
 -- 
 2.34.1
 

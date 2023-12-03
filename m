@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2328829ejb;
-        Sun, 3 Dec 2023 13:31:40 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEQNACBJq8AB53aUrxxWkTkEb90F60kWwFLmtXTU5dIkTCMWFzA/mNKdZW2VKClmwANbASu
-X-Received: by 2002:a81:834e:0:b0:5d7:1940:dd91 with SMTP id t75-20020a81834e000000b005d71940dd91mr1713034ywf.103.1701639100382;
-        Sun, 03 Dec 2023 13:31:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701639100; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2328951ejb;
+        Sun, 3 Dec 2023 13:32:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFM1QwM4fJ8nE9Di6bNaGbEsUlw5E47McEoIVZQ0DRZMLFfCYAvfzjY5+0sylJUqSDg0KwY
+X-Received: by 2002:ac8:4e8b:0:b0:423:a4f6:9aac with SMTP id 11-20020ac84e8b000000b00423a4f69aacmr4037783qtp.14.1701639126612;
+        Sun, 03 Dec 2023 13:32:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701639126; cv=none;
         d=google.com; s=arc-20160816;
-        b=cDiDvU/G5XQyyFp83Mjw1MMz2RE0EHwn03Dc6Jy86+5J69ECC7tCho4MwBRuD2qqXU
-         2tJjmJvk/Iv4zI+m0pb9pU5Y/uB7AEQTFMPJYSC2p4y+es2obEmBZJ0jP9URNsQP59hJ
-         krDscb3sq/oaQrNxansNIa96NJFiWPyJZ+AeCBS4jdoTUd97I6h4I1NXA8gcbzOKkhNy
-         VMb37Z9vlcO2kEYxI5koWueTt12thMU0FQWLlaJ5c2M3lSP9l3PZIG6b+56SAGuDjrzW
-         VATs3i20n//le7X2SHT3QKj6l09WF8KBymgNOSKxDcHX0y87+uzR20crGEwPNu6UPJiw
-         4WhA==
+        b=oHXfn9lAV2KL3mdQUs5XlYuGXadZ2EalEPk7wIhRKtLEV8bj3l9OgUO8YuynTRXvgb
+         9vxBmNk+Yrln7RWPvowu5lTushju/VgkG/aj4LX/OoBXZMC061nOXtDmL/ZZ7wn6kIhg
+         Rwp3YDGsS2LmZ2CESFC0qu+IfkiCVwQUs1qEGwRDgfYMjG2Jf0ViU/5ILXPj/MRvJdD7
+         csyW2gJ7C6S/F5zDbzledxNRGVmq8RYEM+Ev0/ADV6vOpSYPud5JOv14aK2+Yk2T8z88
+         0W3W2MNqj07sN1CY2GLP5SmAfb39LCBJfCivA44RJxylCz9hNdQ8Z3Ezf5mpXybjLrS7
+         k0mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
+        bh=B9Nhv49pbU7bZ8mzot2h9NoKamHuW2o0gQPpPceL6vk=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=pavjbgbbjJEdXQKSevoE3p10vimtOsdp1PPBntRFLCPIqQ1kfJx/B9L5Zvvxx/9XMC
-         T3sNW2r/RmM5i9lMhLAx2skWqHkna6zVEt241C28LxyOUn4ckjG4kenNq/Ulc70nMbRD
-         bbCYhNUAQ/DQGJ2X4etk2wWiblJYL0PBGD9fN2y6BZsyByNoxCRMMkZ5m0Tj0fiEpL6j
-         DNaIPZBoanA9sRVVHuvAx4W2mYpfms6+Oesjs2k+n20BZbvzfoYo8n0Z+nxubziJwfRE
-         ItwMiMkf9bx9CeUWUtRB/w5p4rBVeSQlnQGJtzJe6iuwwXG6wuMdn1if0fH6dyDe2tlq
-         3PmQ==
+        b=DfOrOB/tAN5yCmciuiVzPXQm+pybO5sE6aJjsHx0f3I3TsHEekl8wtqr3qhicNjhLw
+         VhZ79GGbGfGjdkoaaQeBdTBR84UV37agF25JN+/UjdetsI9Jworp532o6BA/TtHoqT0z
+         WWUtuPL7h8/0Dsm4sWxwyeBfBKHhMHcn6hiDyjMJfQyih7obukChaQZvOZpXGNWBImWM
+         wKttw862CZDwtwmCPqx/x9kkm8IdeMuawKhKdUmVi38ZZfJ5wC8iioWAI0gSvHnyyvP3
+         TsTFELeGFbk6bHzH63LIcisqD+pQFHJsYRKFt8YacGXmpDaaCAaDSVHE4HmaKvL28dyo
+         EHGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QngOXQxy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XO2v3NCB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a0cea47000000b0067aa69dd97bsi4558014qvp.486.2023.12.03.13.31.40
+        by mx.google.com with ESMTPS id ch11-20020a05622a40cb00b0042551dce746si1731315qtb.44.2023.12.03.13.32.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 13:31:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 13:32:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QngOXQxy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XO2v3NCB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9u2J-0002El-Lm; Sun, 03 Dec 2023 16:29:59 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9u2L-0002HW-43; Sun, 03 Dec 2023 16:30:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u2A-0001gI-ND; Sun, 03 Dec 2023 16:29:50 -0500
+ id 1r9u24-0001Wg-Oq; Sun, 03 Dec 2023 16:29:44 -0500
 Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9u28-0005XV-Gk; Sun, 03 Dec 2023 16:29:50 -0500
+ id 1r9u22-0005Ve-J1; Sun, 03 Dec 2023 16:29:44 -0500
 Received: by mail-yb1-xb29.google.com with SMTP id
- 3f1490d57ef6-db8892a5f96so844580276.2; 
- Sun, 03 Dec 2023 13:29:46 -0800 (PST)
+ 3f1490d57ef6-db4364ecd6aso1305336276.2; 
+ Sun, 03 Dec 2023 13:29:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701638986; x=1702243786; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701638981; x=1702243781; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
- b=QngOXQxy6GQow+aDt1SQKeQpD/gWxkMeYFbC5I/YZb78VOPx3tMu+IY6SHCKmkYx60
- 6ofDSOMJTI7L52GbKbjVbTh/OIizMdBxfdLzNNfCE4QVv9pVoU17iOvHQKGBLoXntL6C
- eXMyDkCr4CCL+EsmjE6iSpFIqu5NEF8NwmeTPrWMnh7DJJ5jTRNQ9wh6wQR4viq872rF
- ubbKldh2sM3DhVk5zDNEfkeYDCJj559LdIlQn67g61GKFgU7tttSnR2Q0rGpUdk6CIOe
- feLSlyIn3tFM38cHGzfAskVQOpMqZhsh1YaDsilE5FDit/xCGsZN3+9ISlydW0mmn2vB
- WFjQ==
+ bh=B9Nhv49pbU7bZ8mzot2h9NoKamHuW2o0gQPpPceL6vk=;
+ b=XO2v3NCB7p/YwhRcFGhX+VlO/bGgXnsm+8B6zE0ehPl184Qb2wr9nZApTKVRrsOAi0
+ 9noulvaWKAFvrOEHiwWI8yssmRJnLpDGVyV+Btr4z2HLHsdi5qpPNYtyZmm6uccbMlur
+ mQ7NWNo8/+pT7pvr7S0NvcNU3dmfZGvEm0uRKHXFxVidxnuH7cB4TLOLUxNMwWghPGc1
+ s0pD9Fq+ih0b3XdQThLo7y/cf2hhwvWxh6wXKBchnGp5OCjSUZXHrQ8SPT3h+FZj4Fje
+ eBEp46/4rlytGpfK1xqm1TJsrShm3BS/l635XQjgOdd1i9a/2eMQqaBmV5CvL4LnjZ+K
+ LCHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701638986; x=1702243786;
+ d=1e100.net; s=20230601; t=1701638981; x=1702243781;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
- b=UMYkZXHOXrdw5LkGdiHvUhySiNdCXfrlDEEPsrhoNWenURKVvnkzPAP3emKmiUk1Dd
- cIOWDYmegc6cG1jUoqmQ3KflwIXyd+VNEaOA9f4HBdCtpWrw7vEJuHqr05WmK/TRx0lg
- nJDwT1Hrve0DVEe8FOE1Z5uVQ5/W/upYtqrKzrcP994h54ekfFZyDzTwXemaaKThPR6Z
- anARoV+EFAY4rHb7QwcJFsfrpVU8Sc4J+7Dg3NmlCfx3ZKH9LVK2hmjaiuXxplWKwhOV
- DAOPNmtQHuWPME33ViaQ5Bg9smh1SSw8ryGFax4YsVWCP2VIxjbn8NKM32afpJxwohHL
- RbpQ==
-X-Gm-Message-State: AOJu0YzYPcGO1+aAZar5jIZ2IYA/f1Te/9hLLo1hVUUrWGQzuhjqxQV/
- nyA1Aqc9q/kArj3+JqKGyP2qonMSEmrQLw==
-X-Received: by 2002:a25:293:0:b0:db7:dacf:620a with SMTP id
- 141-20020a250293000000b00db7dacf620amr1612840ybc.92.1701638986135; 
- Sun, 03 Dec 2023 13:29:46 -0800 (PST)
+ bh=B9Nhv49pbU7bZ8mzot2h9NoKamHuW2o0gQPpPceL6vk=;
+ b=VlsFsnTFaO+XzPgIbnlyHEiyGUEEXArdSzJXW+davy2ZDIic0FB3r+JN340jLJ8NB8
+ uJcaJJQ8zHxzNCV3qON1eCDfMDeL0j1WjeuQsQ1Z0qOD47P9vnSsIdwK89iBSqtLA1Sj
+ Kd42Aavn0JqKiehiLJyxGFESn3H7fMsNgQJwjqIvCuPXHqW1jKifS/+wpDAZpoijjVS/
+ v+GBxVgJBv5/nzAg9g6vmjsXr6VX9DK36KVCIPbq2eaRo4HShR1ICcziDLTtH8N3CxYA
+ MfhVf3h6PdQhfQABs5wfOUAFwi9bPfocV6wlje3hdl2DYxtaRD2sGRNJdIzTwGvRXbQk
+ Crzw==
+X-Gm-Message-State: AOJu0YxNrEJXP0y4QZKMRxi59iXGVXE45LPs5THUmu5Q7CL/W70urtjb
+ C3gdLxuR8YK6mcYyFP/v9FqYPnBGw3la3A==
+X-Received: by 2002:a25:cad0:0:b0:db7:dacf:4d52 with SMTP id
+ a199-20020a25cad0000000b00db7dacf4d52mr786191ybg.78.1701638980966; 
+ Sun, 03 Dec 2023 13:29:40 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.45
+ c17-20020a25a291000000b00d9cc606c78csm1807318ybi.41.2023.12.03.13.29.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 13:29:45 -0800 (PST)
+ Sun, 03 Dec 2023 13:29:40 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 36/45] Add mailbox test constants
-Date: Sun,  3 Dec 2023 15:28:56 -0600
-Message-Id: <20231203212905.1364036-37-sergey.kambalin@auriga.com>
+Subject: [PATCH 31/45] Implement GENET RX path
+Date: Sun,  3 Dec 2023 15:28:51 -0600
+Message-Id: <20231203212905.1364036-32-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231203212905.1364036-36-sergey.kambalin@auriga.com>
+In-Reply-To: <20231203212905.1364036-31-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-2-sergey.kambalin@auriga.com>
@@ -130,11 +130,6 @@ References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
  <20231203212905.1364036-29-sergey.kambalin@auriga.com>
  <20231203212905.1364036-30-sergey.kambalin@auriga.com>
  <20231203212905.1364036-31-sergey.kambalin@auriga.com>
- <20231203212905.1364036-32-sergey.kambalin@auriga.com>
- <20231203212905.1364036-33-sergey.kambalin@auriga.com>
- <20231203212905.1364036-34-sergey.kambalin@auriga.com>
- <20231203212905.1364036-35-sergey.kambalin@auriga.com>
- <20231203212905.1364036-36-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
@@ -147,176 +142,331 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jtuQmWyl+li5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 47Eh8VkxO+wf
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.h | 139 ++++++++++++++++++++++++++++++++++
- 1 file changed, 139 insertions(+)
+ hw/net/bcm2838_genet.c         | 265 ++++++++++++++++++++++++++++++++-
+ include/hw/net/bcm2838_genet.h |   1 +
+ 2 files changed, 265 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
-index 1d02ca9c2c..8acc4bd2ff 100644
---- a/tests/qtest/bcm2838-mailbox.h
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -7,6 +7,145 @@
-  * See the COPYING file in the top-level directory.
-  */
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+index 4c9b39a3ca..61c1981e10 100644
+--- a/hw/net/bcm2838_genet.c
++++ b/hw/net/bcm2838_genet.c
+@@ -511,6 +511,25 @@ static bool bcm2838_genet_tdma_ring_active(BCM2838GenetState *s,
+     return active;
+ }
  
-+#define MBOX0_BASE 0xFE00B880
-+#define MBOX1_BASE 0xFE00B8A0
++static bool bcm2838_genet_rdma_ring_active(BCM2838GenetState *s,
++                                           unsigned int ring_index)
++{
++    uint32_t ring_mask = 1 << ring_index;
 +
-+#define MBOX_REG_READ   0x00
-+#define MBOX_REG_WRITE  0x00
-+#define MBOX_REG_PEEK   0x10
-+#define MBOX_REG_SENDER 0x14
-+#define MBOX_REG_STATUS 0x18
-+#define MBOX_REG_CONFIG 0x1C
++    bool dma_en = FIELD_EX32(s->regs.rdma.ctrl, GENET_DMA_CTRL, EN) != 0;
++    bool ring_en = (FIELD_EX32(s->regs.rdma.ring_cfg, GENET_DMA_RING_CFG, EN)
++                    & ring_mask) != 0;
++    bool ring_buf_en = (FIELD_EX32(s->regs.rdma.ctrl,
++                                   GENET_DMA_CTRL, RING_BUF_EN)
++                        & ring_mask) != 0;
++    bool active = dma_en && ring_en && ring_buf_en;
 +
-+#define MBOX_READ_EMPTY 0x40000000
++    trace_bcm2838_genet_rx_dma_ring_active(ring_index,
++                                           active ? "active" : "halted");
 +
-+#define MBOX_CHANNEL_ID_PROPERTY 8
++    return active;
++}
 +
-+#define MBOX_PROCESS_REQUEST      0x00000000
-+#define MBOX_SUCCESS              0x80000000
-+#define MBOX_ERROR_PARSING_BUFFER 0x80000001
-+
-+#define TAG_END                    0x00000000
-+#define TAG_GET_FIRMWARE_REVISION  0x00000001
-+#define TAG_GET_FIRMWARE_VARIANT   0x00000002
-+#define TAG_GET_BOARD_REVISION     0x00010002
-+#define TAG_GET_ARM_MEMORY         0x00010005
-+#define TAG_GET_VC_MEMORY          0x00010006
-+#define TAG_SET_DEVICE_POWER_STATE 0x00028001
-+#define TAG_GET_CLOCK_STATE        0x00030001
-+#define TAG_GET_CLOCK_RATE         0x00030002
-+#define TAG_GET_MAX_CLOCK_RATE     0x00030004
-+#define TAG_GET_MIN_CLOCK_RATE     0x00030007
-+#define TAG_GET_CLOCKS             0x00010007
-+#define TAG_GET_TEMPERATURE        0x00030006
-+#define TAG_GET_MAX_TEMPERATURE    0x0003000a
-+#define TAG_ALLOCATE_BUFFER        0x00040001
-+#define TAG_RELEASE_FRAMEBUFFER    0x00048001
-+#define TAG_BLANK_FRAMEBUFFER      0x00040002
-+#define TAG_GET_FB_PHYS_WIDTH      0x00040003
-+#define TAG_TEST_FB_PHYS_WIDTH     0x00044003
-+#define TAG_SET_FB_PHYS_WIDTH      0x00048003
-+#define TAG_GET_FB_VIRT_WIDTH      0x00040004
-+#define TAG_TEST_FB_VIRT_WIDTH     0x00044004
-+#define TAG_SET_FB_VIRT_WIDTH      0x00048004
-+#define TAG_GET_FB_DEPTH           0x00040005
-+#define TAG_TEST_FB_DEPTH          0x00044005
-+#define TAG_SET_FB_DEPTH           0x00048005
-+#define TAG_GET_PIXEL_ORDER        0x00040006
-+#define TAG_TEST_PIXEL_ORDER       0x00044006
-+#define TAG_SET_PIXEL_ORDER        0x00048006
-+#define TAG_GET_FB_ALPHA_MODE      0x00040007
-+#define TAG_TEST_FB_ALPHA_MODE     0x00044007
-+#define TAG_SET_FB_ALPHA_MODE      0x00048007
-+#define TAG_GET_PITCH              0x00040008
-+#define TAG_SET_PITCH              0x00048008
-+#define TAG_GET_VIRTUAL_OFFSET     0x00040009
-+#define TAG_TEST_VIRTUAL_OFFSET    0x00044009
-+#define TAG_SET_VIRTUAL_OFFSET     0x00048009
-+#define TAG_GET_OVERSCAN           0x0004000a
-+#define TAG_TEST_OVERSCAN          0x0004400a
-+#define TAG_SET_OVERSCAN           0x0004800a
-+#define TAG_SET_PALETTE            0x0004800b
-+#define TAG_GET_COMMANDLINE        0x00050001
-+#define TAG_GET_DMA_CHANNELS       0x00060001
-+#define TAG_GET_THROTTLED          0x00030046
-+#define TAG_GET_NUM_DISPLAYS       0x00040013
-+#define TAG_GET_DISPLAY_SETTINGS   0x00040014
-+#define TAG_GET_GPIO_CONFIG        0x00030043
-+#define TAG_SET_GPIO_CONFIG        0x00038043
-+#define TAG_GET_GPIO_STATE         0x00030041
-+#define TAG_SET_GPIO_STATE         0x00038041
-+#define TAG_INITIALIZE_VCHIQ       0x00048010
-+
-+#define BOARD_REVISION    11546898
-+#define FIRMWARE_REVISION 346337
-+#define FIRMWARE_VARIANT  0x77777777 /* TODO: Find the real value */
-+
-+#define ARM_MEMORY_BASE 0x00000000
-+#define ARM_MEMORY_SIZE 0x3c000000
-+#define VC_MEMORY_BASE  0x3c000000
-+#define VC_MEMORY_SIZE  0x04000000
-+#define VC_FB_BASE      0x3c100000
-+#define VC_FB_SIZE      0x00096000
-+
-+#define CLOCK_ID_ROOT      0x00000000
-+#define CLOCK_ID_EMMC      0x00000001
-+#define CLOCK_ID_UART      0x00000002
-+#define CLOCK_ID_ARM       0x00000003
-+#define CLOCK_ID_CORE      0x00000004
-+#define CLOCK_ID_UNDEFINED 0x12345678
-+
-+#define CLOCK_RATE_EMMC 50000000
-+#define CLOCK_RATE_UART 3000000
-+#define CLOCK_RATE_CORE 350000000
-+#define CLOCK_RATE_ANY  700000000
-+
-+#define DEVICE_ID_SD_CARD   0x00000000
-+#define DEVICE_ID_UART0     0x00000001
-+#define DEVICE_ID_UART1     0x00000002
-+#define DEVICE_ID_USB HCD   0x00000003
-+#define DEVICE_ID_I2C0      0x00000004
-+#define DEVICE_ID_I2C1      0x00000005
-+#define DEVICE_ID_I2C2      0x00000006
-+#define DEVICE_ID_SPI       0x00000007
-+#define DEVICE_ID_CCP2TX    0x00000008
-+#define DEVICE_ID_UNKNOWN_0 0x00000009
-+#define DEVICE_ID_UNKNOWN_1 0x0000000a
-+
-+#define TEMPERATURE_ID_SOC 0x00000000
-+
-+#define TEMPERATURE_SOC     25000
-+#define TEMPERATURE_SOC_MAX 99000
-+
-+#define ALIGN_4K 4096
-+
-+#define PIXEL_ORDER_BGR 0
-+#define PIXEL_ORDER_RGB 1
-+
-+#define ALPHA_MODE_ENABLED  0
-+#define ALPHA_MODE_REVERSED 1
-+#define ALPHA_MODE_IGNORED  2
-+
-+#define GPIO_MASK 0x003c
-+
-+#define GPIO_0 0x00000080
-+
-+#define GPIO_DIRECTION_IN  0
-+#define GPIO_DIRECTION_OUT 1
-+
-+#define GPIO_TERMINATION_DISABLED 0
-+#define GPIO_TERMINATION_ENABLED  1
-+
-+#define GPIO_TERMINATION_PULLUP_DISABLED 0
-+#define GPIO_TERMINATION_PULLUP_ENABLED  1
-+
-+#define GPIO_POLARITY_LOW  0
-+#define GPIO_POLARITY_HIGH 1
-+
-+#define GPIO_STATE_DOWN 0
-+
-+/* Used to test stubs that don't perform actual work */
-+#define DUMMY_VALUE 0x12345678
+ static void bcm2838_genet_tdma(BCM2838GenetState *s, hwaddr offset,
+                                uint64_t value)
+ {
+@@ -721,9 +740,251 @@ static const MemoryRegionOps bcm2838_genet_ops = {
+     .valid = {.min_access_size = 4},
+ };
  
- REG32(MBOX_WRITE_REG, 0)
- FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
++static int32_t bcm2838_genet_filter(BCM2838GenetState *s, const void *buf,
++                                    size_t size)
++{
++    qemu_log_mask(LOG_UNIMP,
++                  "Packet filtration with HFB isn't implemented yet");
++    return -1;
++}
++
++static int32_t bcm2838_genet_filter2ring(BCM2838GenetState *s,
++                                         uint32_t filter_idx)
++{
++    qemu_log_mask(LOG_UNIMP,
++                  "Packet filtration with HFB isn't implemented yet");
++    return -1;
++}
++
++static bool is_packet_broadcast(const uint8_t *buf, size_t size)
++{
++    static const uint8_t bcst_addr[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
++
++    if (size < sizeof(bcst_addr)) {
++        return false;
++    }
++
++    return !memcmp(buf, bcst_addr, sizeof(bcst_addr));
++}
++
++static bool is_packet_multicast(const uint8_t *buf, size_t size)
++{
++    return !!(buf[0] & 0x01);
++}
++
++static ssize_t bcm2838_genet_rdma(BCM2838GenetState *s, uint32_t ring_idx,
++                                  const void *buf, size_t size)
++{
++    const size_t DESC_WORD_SIZE =
++        sizeof(BCM2838GenetRdmaDesc) / sizeof(uint32_t);
++
++    ssize_t len = 0;
++    BCM2838GenetRegsRdma *rdma = &s->regs.rdma;
++    BCM2838GenetRdmaRing *ring = &rdma->rings[ring_idx];
++    hwaddr write_index =
++        (ring->write_ptr + ((hwaddr)ring->write_ptr_hi << 32)) / DESC_WORD_SIZE;
++    BCM2838GenetRdmaDesc *desc = &rdma->descs[write_index];
++
++    const hwaddr START_INDEX =
++        (ring->start_addr + ((hwaddr)ring->start_addr_hi << 32))
++            / DESC_WORD_SIZE;
++    const hwaddr END_INDEX =
++        (ring->end_addr + ((hwaddr)ring->end_addr_hi << 32)) / DESC_WORD_SIZE;
++
++    if (!bcm2838_genet_rdma_ring_active(s, ring_idx)) {
++        return -1;
++    }
++
++    desc->length_status = FIELD_DP32(desc->length_status,
++                                     GENET_RDMA_LENGTH_STATUS, SOP, 1);
++
++    while (len < size) {
++        size_t l = size - len;
++        size_t buf_size = ring->ring_buf_size & 0xffff;
++        uint8_t *dma_buf = s->rx_packet;
++        hwaddr dma_buf_addr =
++            desc->address_lo + ((hwaddr)desc->address_hi << 32);
++        MemTxResult mem_tx_result = MEMTX_OK;
++        uint8_t *frame_buf = dma_buf + sizeof(BCM2838GenetXmitStatus) + 2;
++        BCM2838GenetXmitStatus *xmit_status = (BCM2838GenetXmitStatus *)dma_buf;
++        struct iovec iov;
++        bool isip4, isip6;
++        size_t l3hdr_off, l4hdr_off, l5hdr_off;
++        eth_ip6_hdr_info ip6hdr_info;
++        eth_ip4_hdr_info ip4hdr_info;
++        eth_l4_hdr_info  l4hdr_info;
++
++        bool crc_fwd = FIELD_EX32(s->regs.umac.cmd, GENET_UMAC_CMD, CRC_FWD);
++        size_t buflength;
++        uint32_t prod_index;
++
++        if (l > ring->ring_buf_size) {
++            l = ring->ring_buf_size;
++        }
++
++        memcpy(frame_buf, buf + len, l);
++        iov.iov_base = frame_buf;
++        iov.iov_len = l;
++        eth_get_protocols(&iov, 1, 0,
++                          &isip4, &isip6,
++                          &l3hdr_off, &l4hdr_off, &l5hdr_off,
++                          &ip6hdr_info, &ip4hdr_info, &l4hdr_info);
++
++        len += l;
++
++        desc->length_status = FIELD_DP32(desc->length_status,
++                                         GENET_RDMA_LENGTH_STATUS,
++                                         EOP, !!(len >= size));
++
++        buflength = l + sizeof(BCM2838GenetXmitStatus) + 2;
++        if (crc_fwd) {
++            buflength += 4;
++        }
++
++        desc->length_status = FIELD_DP32(desc->length_status,
++                                         GENET_RDMA_LENGTH_STATUS,
++                                         BUFLENGTH, buflength);
++
++        desc->length_status = FIELD_DP32(desc->length_status,
++                                         GENET_RDMA_LENGTH_STATUS,
++                                         BROADCAST,
++                                         !!is_packet_broadcast(frame_buf, l));
++        desc->length_status = FIELD_DP32(desc->length_status,
++                                         GENET_RDMA_LENGTH_STATUS,
++                                         MULTICAST,
++                                         !!is_packet_multicast(frame_buf, l));
++
++        xmit_status->rx_csum = 0;
++        if (isip4) {
++            xmit_status->rx_csum = ip4hdr_info.ip4_hdr.ip_sum;
++        }
++        xmit_status->length_status = desc->length_status;
++
++        mem_tx_result = address_space_write(&s->dma_as, dma_buf_addr,
++                                            MEMTXATTRS_UNSPECIFIED,
++                                            dma_buf, buf_size);
++        if (mem_tx_result != MEMTX_OK) {
++            desc->length_status = FIELD_DP32(desc->length_status,
++                                             GENET_RDMA_LENGTH_STATUS,
++                                             RXERR, 1);
++        }
++
++        if (FIELD_EX32(desc->length_status,
++                       GENET_RDMA_LENGTH_STATUS, RXERR) != 0) {
++            break;
++        }
++
++        prod_index = FIELD_EX32(ring->prod_index, GENET_DMA_PROD_INDEX, INDEX);
++        ring->prod_index = FIELD_DP32(ring->prod_index,
++                                      GENET_DMA_PROD_INDEX,
++                                      INDEX, ++prod_index);
++        if (++write_index > END_INDEX) {
++            write_index = START_INDEX;
++        }
++        desc = &rdma->descs[write_index];
++        ring->write_ptr = write_index * DESC_WORD_SIZE;
++        ring->write_ptr_hi = ((hwaddr)write_index * DESC_WORD_SIZE) >> 32;
++    }
++
++    if (ring_idx == BCM2838_GENET_DMA_RING_DEFAULT) {
++        s->regs.intrl0.stat = FIELD_DP32(s->regs.intrl0.stat,
++                                         GENET_INTRL_0, RXDMA_MBDONE, 1);
++    } else {
++        uint32_t rx_intrs =
++            FIELD_EX32(s->regs.intrl1.stat, GENET_INTRL_1, RX_INTRS);
++        rx_intrs |= 1 << ring_idx;
++
++        s->regs.intrl1.stat = FIELD_DP32(s->regs.intrl1.stat,
++                                         GENET_INTRL_1, RX_INTRS, rx_intrs);
++    }
++
++    return len;
++}
++
++static ssize_t bcm2838_genet_receive(NetClientState *nc, const uint8_t *buf,
++                                     size_t size)
++{
++    BCM2838GenetState *s = (BCM2838GenetState *)qemu_get_nic_opaque(nc);
++    ssize_t bytes_received = -1;
++    int32_t filter_index = -1;
++    int32_t ring_index = -1;
++
++    if (FIELD_EX32(s->regs.rdma.ctrl, GENET_DMA_CTRL, EN) != 0) {
++        filter_index = bcm2838_genet_filter(s, buf, size);
++
++        if (filter_index >= 0) {
++            ring_index = bcm2838_genet_filter2ring(s, filter_index);
++        } else {
++            ring_index = BCM2838_GENET_DMA_RING_CNT - 1;
++        }
++
++        if (size <= MAX_PACKET_SIZE) {
++            bytes_received = bcm2838_genet_rdma(s, ring_index, buf, size);
++        }
++    }
++
++    bcm2838_genet_set_irq_default(s);
++    bcm2838_genet_set_irq_prio(s);
++
++    return bytes_received;
++}
++
++static void bcm2838_genet_phy_update_link(BCM2838GenetState *s)
++{
++    bool qemu_link_down = qemu_get_queue(s->nic)->link_down != 0;
++
++    bool lstatus = FIELD_EX32(s->phy_regs.bmsr, GENET_PHY_BMSR, LSTATUS) != 0;
++
++    if (qemu_link_down && lstatus) {
++        trace_bcm2838_genet_phy_update_link("down");
++
++        s->phy_regs.bmsr = FIELD_DP32(s->phy_regs.bmsr,
++                                      GENET_PHY_BMSR, ANEGCOMPLETE, 0);
++        s->phy_regs.bmsr = FIELD_DP32(s->phy_regs.bmsr,
++                                      GENET_PHY_BMSR, LSTATUS, 0);
++        s->regs.intrl0.stat = FIELD_DP32(s->regs.intrl0.stat,
++                                         GENET_INTRL_0, LINK_DOWN, 1);
++    } else if (!qemu_link_down && !lstatus) {
++        trace_bcm2838_genet_phy_update_link("up");
++
++        /*
++         * Complete auto-negotiation (fixed link partner's abilities for now:
++         * 1Gbps with flow control)
++         */
++        s->phy_regs.stat1000 = FIELD_DP32(s->phy_regs.stat1000,
++                                          GENET_PHY_STAT_1000, HALF, 1);
++        s->phy_regs.stat1000 = FIELD_DP32(s->phy_regs.stat1000,
++                                          GENET_PHY_STAT_1000, FULL, 1);
++
++        s->phy_regs.lpa = FIELD_DP32(s->phy_regs.lpa,
++                                     GENET_PHY_LPA, PAUSE_CAP, 1);
++        s->phy_regs.lpa = FIELD_DP32(s->phy_regs.lpa,
++                                     GENET_PHY_LPA, PAUSE_ASYM, 1);
++        s->phy_regs.lpa = FIELD_DP32(s->phy_regs.lpa, GENET_PHY_LPA, LPACK, 1);
++
++        s->phy_regs.bmsr = FIELD_DP32(s->phy_regs.bmsr,
++                                      GENET_PHY_BMSR, ANEGCOMPLETE, 1);
++        s->phy_regs.bmsr = FIELD_DP32(s->phy_regs.bmsr,
++                                      GENET_PHY_BMSR, LSTATUS, 1);
++
++        s->regs.intrl0.stat = FIELD_DP32(s->regs.intrl0.stat,
++                                         GENET_INTRL_0, LINK_UP, 1);
++    }
++
++    bcm2838_genet_set_irq_default(s);
++}
++static void bcm2838_genet_set_link(NetClientState *nc)
++{
++    BCM2838GenetState *s = qemu_get_nic_opaque(nc);
++
++    bcm2838_genet_phy_update_link(s);
++}
++
+ static NetClientInfo bcm2838_genet_client_info = {
+     .type = NET_CLIENT_DRIVER_NIC,
+-    .size = sizeof(NICState)
++    .size = sizeof(NICState),
++    .receive = bcm2838_genet_receive,
++    .link_status_changed = bcm2838_genet_set_link,
+ };
+ 
+ static void bcm2838_genet_realize(DeviceState *dev, Error **errp)
+@@ -777,6 +1038,8 @@ static void bcm2838_genet_phy_reset(BCM2838GenetState *s)
+     s->phy_aux_ctl_shd_regs.misc = 0x1E;
+ 
+     trace_bcm2838_genet_phy_reset("done");
++
++    bcm2838_genet_phy_update_link(s);
+ }
+ 
+ static void bcm2838_genet_reset(DeviceState *d)
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index f96ea3a145..f044d0d17e 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -420,6 +420,7 @@ struct BCM2838GenetState {
+     qemu_irq irq_prio;
+ 
+     uint8_t tx_packet[MAX_FRAME_SIZE];
++    uint8_t rx_packet[MAX_FRAME_SIZE];
+ };
+ 
+ #endif /* BCM2838_GENET_H */
 -- 
 2.34.1
 

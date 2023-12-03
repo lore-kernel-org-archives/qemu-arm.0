@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370223ejb;
-        Sun, 3 Dec 2023 15:43:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFH03EDMYDQEnF63+i+WX12VfV74aQwPPOsCjdCdxve0vFnT68agyxeU1o3lqxm0sm8rj4E
-X-Received: by 2002:a05:6808:bc4:b0:3b8:b063:6665 with SMTP id o4-20020a0568080bc400b003b8b0636665mr2955841oik.92.1701647036453;
-        Sun, 03 Dec 2023 15:43:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701647036; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2370233ejb;
+        Sun, 3 Dec 2023 15:43:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEPf34OZ7O5S2qwu0z1peUm1ZQ2lm6/FArZoIzuCcuyO/94de3Aof4R1itn03Il0Z02CSH0
+X-Received: by 2002:a05:620a:123a:b0:77d:c2bb:fa7f with SMTP id v26-20020a05620a123a00b0077dc2bbfa7fmr16558943qkj.2.1701647038373;
+        Sun, 03 Dec 2023 15:43:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701647038; cv=none;
         d=google.com; s=arc-20160816;
-        b=vlLsl7C9OYnvqPJxd0owlqdHLwCxGgNqwPw4BMB/1lS24jrRH5d5eWK/yQyQMXJTTY
-         Ve+1r81Q5Gli07gNplU0So/i9BcWaL42AXe9au0vIDDQKda3Ov98PaOsuKF+hgshYCkn
-         UZTqrRxFbw+mhuIvIJc4/DNTcEK73RObbDFIVFHvOKMzTjGrX+Zo8SU0WHqm5MaZi175
-         nCw6w01YLEg0Pfh30EjuJ5sYvZgXBS1y4u7j/GQ79a+h/lhyQJ4tAbCsZ/T2ucJ8/gtd
-         iaRj1f5HYFZKcNNV4vBZgtsRAvHdxND1gnAiUZSoNnrGWtWt8piir+xd2rwID9grpA80
-         1I/A==
+        b=QZl5WiBcIFTui8A05qz8/OYa019uPLT6AfhNhGWjiL3V+p7gIJdvKuusg4rDtqhs86
+         iJWQ8HDSDbLdZgPdULrAipaVawvK/uGGJ7ooaQ5KMtxSXKzEirSs/MGoQMwWEm2AIc5j
+         NNV9bNakFrMi+YbFrPuaSM7C7yY0u7583ZEbI5CD05I5PbC6U/vp6mBrOElCfjexJkI7
+         jC68m+4QlxMj9WWhasV4uNe40YT3+l7IL/gC7cyh74UMAP/E4F4Mchg0X+ZgaPFwLbyS
+         D5xGJD6BYgLru2J/hy30g87dp0ocpftwjoNgSZCXr+5CNDXg7KqX4cOvshSJrQjIS9BJ
+         80sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tcKM0zsaUF6OxJgIAQHfOevQ93BKCzxRx4ONFnlRnhk=;
+        bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=0f53PgbxmT1avyh/L95/p3dMXhxuBbF1ptufTw3xSuA8S+yK2SCb9OOejpL0n/T76S
-         WuIAy1A12qFZBnuhcEHjCZgdonzzxVSUlMBXkar69h2aDUqk9/OnJ5fmjQ/Zb5XspFNV
-         BKY31GwYMXOTGLkL4j7kk+snKK+Fxj1S2PsdqgIXqM+I8HTczyTAKAz6d30WSah9Holk
-         uERArnAnZBLcodNuAdSdlE+hQjOrEt892IAiYKw7qHgnNAzeljwSx1svzvBzBBGGBQY6
-         tM9YX5EkGV0RkeFOHpmq3K3G+/Z4Aojt7uyM3zOXartvmXsz151A6d2LBfGz1av9R8PY
-         ilEQ==
+        b=S+MjvlAwqKfoT0F1k1GN9Lxvq2+aDnWHeitsq6Hsg5w+eUI/0ICuLx9F2Qkxv0WQad
+         a76ecgQeGMP455ac9Og7bpeNjVsWNl4RX5wPURVVsBCCKgrBQMOVjBSSCFVX/xioV7cL
+         pBXB/bQ6wnFroXPzM+eaXfEhQCQPCF9OF/zru/N8sXv4YoH47j0vQH/HXhZfo2F/iHEX
+         L6qP9/MRP0GXf43JGyrzEZ4RdMWAEPdabw+uymlnpN2vg9wt8avGE+U3Kpnz4DHaf8s7
+         rT4737vWwurD2w1P/fAEkP0500F4fViiHL87+yZE0NwM5NC9Lc+lRyslBdnx1osopq/v
+         aiuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="JF4//J9G";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LTsSf1DY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19-20020a05620a0bd300b0077d7b6e079dsi8497525qki.404.2023.12.03.15.43.56
+        by mx.google.com with ESMTPS id az7-20020a05620a170700b0077d6baddf8csi8959640qkb.246.2023.12.03.15.43.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:43:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 15:43:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="JF4//J9G";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LTsSf1DY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9w6r-0007A0-Dw; Sun, 03 Dec 2023 18:42:49 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1r9w6w-0007Ec-8Q; Sun, 03 Dec 2023 18:42:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6k-00073w-A7; Sun, 03 Dec 2023 18:42:43 -0500
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+ id 1r9w6r-00079z-7r; Sun, 03 Dec 2023 18:42:49 -0500
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9w6i-0002lz-0e; Sun, 03 Dec 2023 18:42:41 -0500
-Received: by mail-ot1-x335.google.com with SMTP id
- 46e09a7af769-6d9a1a2fb22so259301a34.0; 
- Sun, 03 Dec 2023 15:42:39 -0800 (PST)
+ id 1r9w6p-0002nl-NK; Sun, 03 Dec 2023 18:42:48 -0500
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-59b5484fbe6so43978697b3.1; 
+ Sun, 03 Dec 2023 15:42:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701646958; x=1702251758; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701646965; x=1702251765; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tcKM0zsaUF6OxJgIAQHfOevQ93BKCzxRx4ONFnlRnhk=;
- b=JF4//J9GvHzynok0hQHxLhXN1agiTx3/WIJT4MawszLvAJIB9jB6P+C5IKqWl/yBSb
- 1Xm1g8XdeiCcdchUOaQt7TuBkuKBJi8CihfLAO8ljhhR2Elpp13Ec/L6oDpVTwuH6O+4
- Iq/7FkxqYqtsW7/20Ip6eK+uAud4x4bWCKNUJh3qmXko46QDCLxcFJKiBz6xdVDDNgRA
- 3uw+3t10JjEegTXkA35Ab/QG8HRMRR+iGHDe0mDrpxqd4hiOD+JmPh1LEamq5Nq0/M15
- sw9CNUIzG3iBWn/7ooFeACs3GgZHRiu85C5hUJ8GFojBh+6gmj3mpH3G/KdFHVXHph6U
- M5LQ==
+ bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
+ b=LTsSf1DYSUvNG+IJ2emVXzrwsAa12GRy8fisqj3xjLhfnrNkFL+qhMeNKO9Uj0M06l
+ 5ZZQPuJ9Uz+/f7XzqLhaCu3HShXpog1HHUvS8YQz64ol+ASEjtrtJHvn4ADXQMkX/Myo
+ +SIRLnrrsZ/kJgr6rIdfqiQxsiL9RdtsK1VdLZYgcEAd8pwICYb9cADlP/kPKrdCi7di
+ iF8bhpU5svc6Vafp161hyY7KWWT4+v4/vwjiTbtETQkdmefLGCMk3AxQoUOdvoq9uaxe
+ S51LemVKUECdQXJ8lF8Igi5Xe3qQ3cgV3avjaDlKPDUstV9sQlp1fcSdBcpncNLv4J/l
+ Befg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646958; x=1702251758;
+ d=1e100.net; s=20230601; t=1701646965; x=1702251765;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tcKM0zsaUF6OxJgIAQHfOevQ93BKCzxRx4ONFnlRnhk=;
- b=jhAsMySFF1R9fzwJqTaLio5wd+0LA6POSw6ikRXzaW3LOOgITyJh/VcISvv3WrW5rX
- kKVTuP6aa8gYmXGO+5WBJNlV6YzViUhxoydiXZ9pLcyHpwkCyeXaHKVeDmB6g8vYpwHs
- J/5108g+J/nopli2cEOfXpqdcgDID4jq7c/qaFRzY7BxWcpPFnswoSsyLWlRoGr0UFQI
- BA9Dvt4QXaArqlL9M8ARQCmumBaxQ1NReeGVqObxEgLOeeku5gVjAqGB0qu22bdk08b0
- eu7cfTeFR3KfDFKkK+upYunBvtsTVmDd/T35VvInv1kHxXHyP/TmOjc9Qypxnid/VZL5
- rNRg==
-X-Gm-Message-State: AOJu0YzfJkAQF1SUK5BQlZ8I72JH+J00P6RbthBR019UvRHvVoWsUywq
- jgROlqYyyY6lGn0nLfqY5i76b0kObhbLgg==
-X-Received: by 2002:a05:6830:3493:b0:6d9:a191:404 with SMTP id
- c19-20020a056830349300b006d9a1910404mr754558otu.36.1701646958000; 
- Sun, 03 Dec 2023 15:42:38 -0800 (PST)
+ bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
+ b=MKOTwWvaflVr09VDaf1lhgypiwAljdnEkCotiVYbgro5kS8LpAbKvwHL5h7jE15r26
+ Q5iuBrNwFyxnNW+2Ah6Ndz+T3JCG4Uu3iOZk1kLBjJ9PViK+9IICjbyZ0o63gVpo33Ns
+ jWw3uBNtPHmqxhg/gwTS9MnLwMGYfykajxS54gB82TdIJcN/jZW0h75RGP73tcmEXoKY
+ IWIdcSPh5mdZoFKXDuxsPIi4IGxR67AzLutMpP+6efDAFN1d0VRootYOXYgOosiFNf5P
+ G+wDH6jFSvvMVUIFZCLtcploKIrlEVAMsR6uHm/IPg8Q+rztPx1FDa3AW197POeH9H1L
+ l5lQ==
+X-Gm-Message-State: AOJu0YxGWfdoEGtC0xCMu2Eu6N/XBWmASP3OnW2/gaH5cGAfKQwNsUv/
+ Lwk9LioKLRmvJ+4FUQoIJvfcECZV4v+JEg==
+X-Received: by 2002:a81:5b06:0:b0:5bf:f907:e07c with SMTP id
+ p6-20020a815b06000000b005bff907e07cmr3498387ywb.33.1701646965234; 
+ Sun, 03 Dec 2023 15:42:45 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.37
+ c126-20020a0dda84000000b005d718fff165sm1536299ywe.78.2023.12.03.15.42.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 15:42:37 -0800 (PST)
+ Sun, 03 Dec 2023 15:42:45 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 19/45] Get rid of RNG200 timer
-Date: Sun,  3 Dec 2023 17:41:47 -0600
-Message-Id: <20231203234213.1366214-20-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 26/45] Add GENET register structs. Part 4
+Date: Sun,  3 Dec 2023 17:41:54 -0600
+Message-Id: <20231203234213.1366214-27-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
- envelope-from=serg.oker@gmail.com; helo=mail-ot1-x335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,275 +111,88 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NbQhOCocHi9h
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: on42IUkIOY++
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_peripherals.c         | 14 +++++
- hw/arm/raspi4b.c                     |  1 -
- hw/misc/bcm2838_rng200.c             | 78 ++++++++++++++++------------
- include/hw/arm/bcm2838_peripherals.h |  2 +
- include/hw/misc/bcm2838_rng200.h     |  4 +-
- 5 files changed, 63 insertions(+), 36 deletions(-)
+ include/hw/net/bcm2838_genet.h | 37 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index ee06214715..7c489c8e8a 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -34,6 +34,9 @@ static void bcm2838_peripherals_init(Object *obj)
-                        bc->peri_low_size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 1bd004785a..94c2f3ebca 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -25,6 +25,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
  
-+    /* Random Number Generator */
-+    object_initialize_child(obj, "rng200", &s->rng200, TYPE_BCM2838_RNG200);
++#define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
++#define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
 +
-     /* PCIe Host Bridge */
-     object_initialize_child(obj, "pcie-host", &s->pcie_host,
-                             TYPE_BCM2838_PCIE_HOST);
-@@ -85,6 +88,17 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-                                         BCM2838_VC_PERI_LOW_BASE,
-                                         &s->peri_low_mr_alias, 1);
- 
-+    /* Random Number Generator */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->rng200), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(
-+        &s_base->peri_mr, RNG_OFFSET,
-+        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng200), 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0,
-+        qdev_get_gpio_in_named(DEVICE(&s_base->ic), BCM2835_IC_GPU_IRQ,
-+                               INTERRUPT_RNG));
++#define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
++#define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
 +
-     /* Extended Mass Media Controller 2 */
-     object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
-                              &error_abort);
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 2e8474e1c5..7b5385b8dd 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -67,7 +67,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -273,6 +279,34 @@ typedef struct {
+     uint16_t rdb_data;
+ } BCM2838GenetPhyRegs;
  
-     /* Temporarily disable following devices until they are implemented*/
-     const char *to_be_removed_from_dt_as_wa[] = {
--        "brcm,bcm2711-rng200",
-         "brcm,bcm2711-thermal",
-         "brcm,bcm2711-genet-v5",
-     };
-diff --git a/hw/misc/bcm2838_rng200.c b/hw/misc/bcm2838_rng200.c
-index f91ea0754c..1b334b94d5 100644
---- a/hw/misc/bcm2838_rng200.c
-+++ b/hw/misc/bcm2838_rng200.c
-@@ -9,6 +9,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/log.h"
-+#include "qom/object_interfaces.h"
- #include "qapi/error.h"
- #include "hw/qdev-properties.h"
- #include "hw/misc/bcm2838_rng200.h"
-@@ -64,10 +65,7 @@ static const VMStateDescription vmstate_bcm2838_rng200 = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(rbg_period, BCM2838Rng200State),
-         VMSTATE_UINT32(rng_fifo_cap, BCM2838Rng200State),
--        VMSTATE_BOOL(use_timer, BCM2838Rng200State),
--
-         VMSTATE_ARRAY(regs, BCM2838Rng200State, N_BCM2838_RNG200_REGS, 0,
-                       vmstate_info_uint32, uint32_t),
- 
-@@ -90,6 +88,15 @@ static void bcm2838_rng200_update_irq(BCM2838Rng200State *s)
-                 !!(s->regs[R_RNG_INT_ENABLE] & s->regs[R_RNG_INT_STATUS]));
- }
- 
-+static void bcm2838_rng200_update_rbg_period(void *opaque, ClockEvent event)
-+{
-+    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
++typedef struct {
++    uint16_t reserved_0_2[3];
++    uint16_t clk_ctl;
++    uint16_t scr2;
++    uint16_t scr3;
++    uint16_t reserved_6_9[4];
++    uint16_t apd;
++    uint16_t rgmii_mode;
++    uint16_t reserved_12;
++    uint16_t leds1;
++    uint16_t reserved_14_18[5];
++    uint16_t _100fx_ctrl;
++    uint16_t ssd;
++    uint16_t reserved_21_30[10];
++    uint16_t mode;
++} BCM2838GenetPhyShdRegs;
 +
-+    ptimer_transaction_begin(s->ptimer);
-+    ptimer_set_period_from_clock(s->ptimer, s->clock, s->rng_fifo_cap * 8);
-+    ptimer_transaction_commit(s->ptimer);
-+}
++typedef struct {
++    uint16_t auxctl;
++    uint16_t reserved_1_6[BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE - 2];
++    uint16_t misc;
++} BCM2838GenetPhyAuxShdRegs;
 +
- static void bcm2838_rng200_update_fifo(void *opaque, const void *buf,
-                                        size_t size)
- {
-@@ -121,18 +128,17 @@ static void bcm2838_rng200_update_fifo(void *opaque, const void *buf,
-     if ((num == 0) && (num_bits > 0)) {
-         num = 1;
-     }
--    if (num > 0) {
--        fifo8_push_all(fifo, buf, num);
- 
-+    fifo8_push_all(fifo, buf, num);
- 
--        fifo_thld = FIELD_EX32(s->regs[R_RNG_FIFO_COUNT],
--                               RNG_FIFO_COUNT, THRESHOLD);
- 
--        if (fifo8_num_used(fifo) > fifo_thld) {
--            s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
--                                                   RNG_INT_STATUS,
--                                                   TOTAL_BITS_COUNT_IRQ, 1);
--        }
-+    fifo_thld = FIELD_EX32(s->regs[R_RNG_FIFO_COUNT],
-+                            RNG_FIFO_COUNT, THRESHOLD);
++typedef struct {
++    uint16_t regs[BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT]
++                 [BCM2838_GENET_PHY_EXP_SHD_REGS_CNT];
++} BCM2838GenetPhyExpShdRegs;
 +
-+    if (fifo8_num_used(fifo) > fifo_thld) {
-+        s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
-+                                                RNG_INT_STATUS,
-+                                                TOTAL_BITS_COUNT_IRQ, 1);
-     }
+ struct BCM2838GenetState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -284,6 +318,9 @@ struct BCM2838GenetState {
  
-     s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
-@@ -149,9 +155,7 @@ static void bcm2838_rng200_fill_fifo(BCM2838Rng200State *s)
-                                 bcm2838_rng200_update_fifo, s);
- }
+     BCM2838GenetRegs regs;
+     BCM2838GenetPhyRegs phy_regs;
++    BCM2838GenetPhyShdRegs phy_shd_regs;
++    BCM2838GenetPhyAuxShdRegs phy_aux_ctl_shd_regs;
++    BCM2838GenetPhyExpShdRegs phy_exp_shd_regs;
  
--/* This function will be implemnented in upcoming commits */
--static void bcm2838_rng200_disable_rbg(BCM2838Rng200State *s
--                                       __attribute__((unused)))
-+static void bcm2838_rng200_disable_rbg(void)
- {
-     trace_bcm2838_rng200_disable_rbg();
- }
-@@ -184,23 +188,21 @@ static void bcm2838_rng200_rbg_reset(BCM2838Rng200State *s)
- 
- static uint32_t bcm2838_rng200_read_fifo_data(BCM2838Rng200State *s)
- {
--    Fifo8 *fifo = &s->fifo;
-     const uint8_t *buf;
-+    Fifo8 *fifo = &s->fifo;
-+    uint32_t to_read = MIN(fifo8_num_used(fifo), 4);
-+    uint8_t byte_buf[4] = {};
-+    uint8_t *p = byte_buf;
-     uint32_t ret = 0;
-     uint32_t num = 0;
--    uint32_t max = MIN(fifo8_num_used(fifo), sizeof(ret));
- 
--    if (max > 0) {
--        buf = fifo8_pop_buf(fifo, max, &num);
--        if ((buf != NULL) && (num > 0)) {
--            memcpy(&ret, buf, num);
--        }
--    } else {
--        qemu_log_mask(
--            LOG_GUEST_ERROR,
--            "bcm2838_rng200_read_fifo_data: FIFO is empty\n"
--        );
-+    while (to_read) {
-+        buf = fifo8_pop_buf(fifo, to_read, &num);
-+        memcpy(p, buf, num);
-+        p += num;
-+        to_read -= num;
-     }
-+    ret = ldl_le_p(byte_buf);
- 
-     s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
-                                            RNG_FIFO_COUNT,
-@@ -222,7 +224,7 @@ static void bcm2838_rng200_ctrl_write(BCM2838Rng200State *s, uint32_t value)
-     if (!currently_enabled && enable_requested) {
-         bcm2838_rng200_enable_rbg(s);
-     } else if (currently_enabled && !enable_requested) {
--        bcm2838_rng200_disable_rbg(s);
-+        bcm2838_rng200_disable_rbg();
-     }
- }
- 
-@@ -321,6 +323,14 @@ static const MemoryRegionOps bcm2838_rng200_ops = {
-     .read = bcm2838_rng200_read,
-     .write = bcm2838_rng200_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .max_access_size = 4,
-+        .min_access_size = 4,
-+    },
-+    .valid = {
-+        .max_access_size = 4,
-+        .min_access_size = 4
-+    },
- };
- 
- static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
-@@ -330,6 +340,13 @@ static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
-     if (s->rng == NULL) {
-         Object *default_backend = object_new(TYPE_RNG_BUILTIN);
- 
-+        if (!user_creatable_complete(USER_CREATABLE(default_backend),
-+                                     errp)) {
-+            object_unref(default_backend);
-+            error_setg(errp, "Failed to create user creatable RNG backend");
-+            return;
-+        }
-+
-         object_property_add_child(OBJECT(dev), "default-backend",
-                                   default_backend);
-         object_unref(default_backend);
-@@ -347,13 +364,10 @@ static void bcm2838_rng200_init(Object *obj)
-     BCM2838Rng200State *s = BCM2838_RNG200(obj);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
--    s->rbg_period = 250;
--    s->use_timer = true;
--
-     s->rng_fifo_cap = 128;
- 
-     s->clock = qdev_init_clock_in(DEVICE(s), "rbg-clock",
--                                  NULL, s,
-+                                  bcm2838_rng200_update_rbg_period, s,
-                                   ClockPreUpdate);
-     if (s->clock == NULL) {
-         error_setg(&error_fatal, "Failed to init RBG clock");
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 2af96df1c6..317df005bf 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -10,6 +10,7 @@
- #define BCM2838_PERIPHERALS_H
- 
- #include "hw/arm/bcm2835_peripherals.h"
-+#include "hw/misc/bcm2838_rng200.h"
- #include "hw/arm/bcm2838_pcie.h"
- #include "hw/sd/sdhci.h"
- #include "hw/gpio/bcm2838_gpio.h"
-@@ -65,6 +66,7 @@ struct BCM2838PeripheralState {
-     MemoryRegion mphi_mr_alias;
-     MemoryRegion pcie_mmio_alias;
- 
-+    BCM2838Rng200State rng200;
-     SDHCIState emmc2;
-     BCM2838PcieHostState pcie_host;
-     BCM2838GpioState gpio;
-diff --git a/include/hw/misc/bcm2838_rng200.h b/include/hw/misc/bcm2838_rng200.h
-index 46fdba48da..8e084b7254 100644
---- a/include/hw/misc/bcm2838_rng200.h
-+++ b/include/hw/misc/bcm2838_rng200.h
-@@ -32,11 +32,9 @@ struct BCM2838Rng200State {
-     RngBackend *rng;
-     Clock *clock;
- 
--    uint32_t rbg_period;
-     uint32_t rng_fifo_cap;
--    bool use_timer;
--
-     Fifo8    fifo;
-+
-     qemu_irq irq;
- 
-     uint32_t regs[N_BCM2838_RNG200_REGS];
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
 -- 
 2.34.1
 

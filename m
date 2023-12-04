@@ -1,115 +1,116 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2385951ejb;
-        Sun, 3 Dec 2023 16:28:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEc+etC2RNOl7YEclqOrlh/OUDkbtfm1WignXuJST9YocMxB5rvpn804f/pVQEYDxjwj2hr
-X-Received: by 2002:a0c:fe69:0:b0:67a:a721:cb12 with SMTP id b9-20020a0cfe69000000b0067aa721cb12mr3496951qvv.115.1701649735143;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2385958ejb;
+        Sun, 3 Dec 2023 16:28:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFT9cPzDB7SRB7+FLyDJZJee2Mx0Efn9N1czX9HvLz+u9apu/Tx4VGUcOTFEAUK4NOFap4j
+X-Received: by 2002:ac8:59c1:0:b0:425:4043:96d9 with SMTP id f1-20020ac859c1000000b00425404396d9mr5598821qtf.102.1701649735778;
         Sun, 03 Dec 2023 16:28:55 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1701649735; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qouwf1xpb5VOG5EWhsy9oNZkL57chDv4yQuFMtCxe3C7jCalITDNxYzQInOOHt+ODJ
-         Wy1hWEyUkGmm8+gqilnPtwShrHQ8wo/8u18HGTIHxJGiPkwaVSTbT6Q/bV48nFjcG0Wx
-         KrOBunV6XNMJo0W8+XFYGXDoD7W2q+UcBwtfjTqsIaVQRT89BoVt5dx/ceOMwF190XJI
-         pb9bg7B1foSEuKRbQbcNwdtyQD3filfQAIwffpx8HojVCzugsuMSKnmbm7nRA65/JqGf
-         a8o2n+xe4ODSNZJW1IVBBLVvqsuQuP5uANQnTijpkTDz+8bYUe/Wyiwds1jqxiX4uEjb
-         OUdQ==
+        b=qCrbM6lzgUt9iJl01cVawl7q6POZtZEmyn2ak6zwWLVMRI0kLm3J9USp4zQTjL2ygP
+         BKXoqL9KwQrg8H/4RTYG9lK71goxj39Az3CBpmZ80X7z+FboPXaZUtBX8N4vA/ujbOrr
+         l1EN5kO0DH+zjY/DJPp7jYPU0T+4w239FrjpM/MCCnBNMh1iXA2Xq44T0bM8Tw5U7ExO
+         kN7yC2w7yU6hxWbjyto+Jy6VoUKDbyojHoNWF8Zeyha2/WxDSUq2VHu9rVuWuiOShKVt
+         g4t2oCA2ZZxS3j1QqKqdoip0n+YMdJpsk183KvEY7amyosGJ6jP7xdH+FpnP8z0n4gEP
+         b0oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wFeuloyQQG/pWB1qNvNMADuHoBFz7/WggqgaHUnwlWg=;
+        bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=TplT/drPTdaBYUe9mdMKg7IGj1q6vc0iPfcYhu0+hwlhQ3GLOypFzMdsc0ajI9ODTX
-         qtUgDBHw70V2jfDP5dDFDLggSMZD4F8+0fqTc7D5uoGABvM+xLcPXio8YtcJmcEWdUPE
-         V2IlUQk74OLfMDEI9jzuTB8KOrwX1E4Vp5OTipvhOCq7XqTjIOIEqjLzQaV7P6uiQKNx
-         y3YasAh72GQxKMrREPVt94YJVLQssJY8rPwVcPlxPA/CU1XY7UWRqwuooKDpfP7lOKLp
-         2hswKcpZf+njdOBfVDiC81oeq5+H54/e39D4OXp85uqPSIDsXVsl5cnsoOAdePAqKBTE
-         CMZA==
+        b=cJr9SXg2KiSRikV92g63VuiBYKKPRu2/K1pUxgXYCwnVZR4hRgp6ygZRekWTu+aSIl
+         IwfYh+4O1rBzZ5htkWDMPFUewmjDvYMY7hpr3mCij0ISDP7xJ12plX0F1ZpN5sFlCEF8
+         IBAwqcRI6XYQXOM1S3FOx0J8TiPQ9AiA+ZTVHf4WDU8c7LgkuW+KgvlWrXmWl6MdIyEI
+         7YgSw4M7wFN44ovWEGm0bRcNmM8VaS1ALHxI8XZ2H9EKhWlSwD12NSF48VpYk3cDXVfV
+         HPrGxK38CeYjgKKqgUL3ZD0Mu89Mb2g2YZDRkV3DxJQHfbnSlPUvyhtddlmZNrxxaPcF
+         V0dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="e/ZBryg1";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Jf81Eg7U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dg15-20020a056214084f00b0067a92f50991si7056897qvb.170.2023.12.03.16.28.54
+        by mx.google.com with ESMTPS id bw23-20020a05622a099700b00423a1b4b235si9029801qtb.319.2023.12.03.16.28.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 03 Dec 2023 16:28:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="e/ZBryg1";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Jf81Eg7U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9wnq-0004qv-MY; Sun, 03 Dec 2023 19:27:14 -0500
+	id 1r9woQ-0006tr-MZ; Sun, 03 Dec 2023 19:27:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnR-0004YC-G7; Sun, 03 Dec 2023 19:26:56 -0500
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ id 1r9wnx-0004yB-FK; Sun, 03 Dec 2023 19:27:21 -0500
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnL-00009U-8W; Sun, 03 Dec 2023 19:26:49 -0500
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-5d4f71f7e9fso24240317b3.0; 
- Sun, 03 Dec 2023 16:26:42 -0800 (PST)
+ id 1r9wnt-0000K3-9u; Sun, 03 Dec 2023 19:27:20 -0500
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-5d7346442d4so10658537b3.2; 
+ Sun, 03 Dec 2023 16:27:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701649601; x=1702254401; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701649636; x=1702254436; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wFeuloyQQG/pWB1qNvNMADuHoBFz7/WggqgaHUnwlWg=;
- b=e/ZBryg1JikJ+RSrg+aymvJeaoRhP282WxYxGSZgd+tQ+/eteOeYYBz7MtsMgPx0Pr
- KPbthe4gRayTIW23ZWNLvHxULRhYNzjTcsfJNHu9lHCtyfgOP40AGY7brs1e7alYYDgu
- AzM3d7Ea/hqsJJsDblzJiCr3wNv4oSwOnYKtdcWQkcuJfN/HsOX7RyadUYcTw0kQRs5N
- W6KSvR3Wn+4Simy3fXWRGY+azmGZl5bbtySPz9cRrRty0JXCvXJGyalT5Qzm+1bv6I/T
- bOQY5MQmjzPsyMlkvhFdEFk/Z8knDcrNk6imIu0wTNL6SvJ5lWzDCUtIIQ6Yf94rR02e
- hUqQ==
+ bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+ b=Jf81Eg7UfolFd1uskGhHdmPwt2P4Id9lz6E/PNC6qesQqw6ERmttFQ8rsY3aD2aMY1
+ fxp9bz3n33cVH4T+ry0X5REJ0nRXgZA0AnLPTFK8tnQ72F/NxW3k0bQd05Tyq4JPi0fF
+ ZaY8ZGECZU97owqKFQvvr1PnlU6swnRSkpwGrfL/TciIqzDkllxSyOOYhpO5vaB5nfJ1
+ smlTEw09wnzSk+xo3eQIV+ZUCXfvoTp4QZQBkyMRhgtrYqdrpTNosq4iVjKmGERP8ySW
+ jt3H/o/SE7JNKIcIxanBT6YDn4wplj7qZvUO/GHqkRohv9t8wzL1KviVCNfqQnoF3/oB
+ 5low==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701649601; x=1702254401;
+ d=1e100.net; s=20230601; t=1701649636; x=1702254436;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=wFeuloyQQG/pWB1qNvNMADuHoBFz7/WggqgaHUnwlWg=;
- b=CFVDjSf9Y4GqLdfY6utUw3+TgnSgl9nB9WMH49FIW38ZOKIj44NcY4od4aZvhTpCm1
- 2APsFsK+9kKNDv/VZQnXjX5/5Cg5KbFgh1A3cNnJ0tqwl/JiahI6clalaLmL3GNdR0+V
- NNVHZAgF7sY2Ren5eEbaj1ubBgChH9Fbm8sFIyVkrAp8PxEWzjxQn9MKtt/YcCc0sQBc
- d2DQ5qrgxyJjHFVSGWz/c0KPuSgarPmQ8RxznptEjhLdFsPg2Vn5ecV+WamGoGoORPoN
- 8TUvNFTi4A14QAFt+f9i5+RY0IwRf0LrKam4linOCcmUT/VUojGCp898iM8qp7Rns8gX
- zkmw==
-X-Gm-Message-State: AOJu0YwO2ISQgitd93LOl2zzHLya5PHusNCsagB+o6KT2/CR4vgIibFC
- xjwkJ5UnECkwZLcWFyIRjDof/Q/jf87mJg==
-X-Received: by 2002:a0d:df8c:0:b0:5d7:1940:dd89 with SMTP id
- i134-20020a0ddf8c000000b005d71940dd89mr1999765ywe.95.1701649601507; 
- Sun, 03 Dec 2023 16:26:41 -0800 (PST)
+ bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+ b=K8dnx+BRB3gz5mLWhU05zrnfV0WueLJWoS5BKyRZq2P0SVxK6aCYr2k0cYjfBpuSUW
+ EtZ6e4hASLYP1w10jlTmK9qQ8wsFWKVfv8EfeWCv2SzEMSQhVWk2y7EHbq81+7rcNBkL
+ iCrV/WxJCrxkYPHfI+57tIsV360O5vsCdmbociY8wc4By5T9xf0534jkq+X+T/uKDgER
+ zxC14vOzldRzTBRG5WeF/f4Ue0DAQ4MEKMcVFHdeIABRIJMcFkmjk7J82GgyfZHDoDlf
+ w02N2tGcc/hgEhYhDpaKj86Q1f9W1rvkUAXgsFZ0PJRFDvZ4/fFYdzD5Zu26tTciAAWG
+ Rntg==
+X-Gm-Message-State: AOJu0YwudLoYb98U+FUSSi71jWHug3kH0syHiJ/kf1eedem2YOThEfCX
+ fez5eP+QYcw8rMvEsfKySjuEqVpEAM+1cQ==
+X-Received: by 2002:a0d:ddd1:0:b0:5d7:1941:3557 with SMTP id
+ g200-20020a0dddd1000000b005d719413557mr1619535ywe.62.1701649635818; 
+ Sun, 03 Dec 2023 16:27:15 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.40
+ l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.27.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 16:26:41 -0800 (PST)
+ Sun, 03 Dec 2023 16:27:15 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 14/45] Add BCM2838 PCIE Root Complex
-Date: Sun,  3 Dec 2023 18:25:48 -0600
-Message-Id: <20231204002619.1367044-15-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 41/45] Add mailbox property tests. Part 2
+Date: Sun,  3 Dec 2023 18:26:15 -0600
+Message-Id: <20231204002619.1367044-42-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 References: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,187 +125,234 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BLG8a+/Q2Ght
+X-TUID: IFc9V5xdggoh
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_pcie.c         | 74 +++++++++++++++++++++++++++++++++++
- hw/arm/meson.build            |  5 ++-
- hw/arm/trace-events           |  4 ++
- include/hw/arm/bcm2838_pcie.h | 53 +++++++++++++++++++++++++
- 4 files changed, 135 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/bcm2838_pcie.c
- create mode 100644 include/hw/arm/bcm2838_pcie.h
+ tests/qtest/bcm2838-mbox-property-test.c | 196 ++++++++++++++++++++++-
+ 1 file changed, 195 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/bcm2838_pcie.c b/hw/arm/bcm2838_pcie.c
-new file mode 100644
-index 0000000000..3b4373c6a6
---- /dev/null
-+++ b/hw/arm/bcm2838_pcie.c
-@@ -0,0 +1,74 @@
-+/*
-+ * BCM2838 PCIe Root Complex emulation
-+ *
-+ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "hw/irq.h"
-+#include "hw/pci-host/gpex.h"
-+#include "hw/qdev-properties.h"
-+#include "migration/vmstate.h"
-+#include "qemu/module.h"
-+#include "hw/arm/bcm2838_pcie.h"
-+#include "trace.h"
-+
-+/*
-+ * RC root part (D0:F0)
-+ */
-+
-+static void bcm2838_pcie_root_reg_reset(PCIDevice *dev)
-+{
-+    BCM2838PcieRootState *s = BCM2838_PCIE_ROOT(dev);
-+    memset(s->regs, 0xFF, sizeof(s->regs));
-+}
-+
-+static void bcm2838_pcie_root_realize(PCIDevice *dev, Error **errp) {
-+    bcm2838_pcie_root_reg_reset(dev);
-+}
-+
-+static void bcm2838_pcie_root_init(Object *obj)
-+{
-+    PCIBridge *br = PCI_BRIDGE(obj);
-+    br->bus_name = "pcie.1";
-+}
-+
-+static void bcm2838_pcie_root_class_init(ObjectClass *class, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(class);
-+    PCIDeviceClass *k = PCI_DEVICE_CLASS(class);
-+    BCM2838PcieRootClass *brpc = BCM2838_PCIE_ROOT_CLASS(class);
-+
-+    dc->desc = "BCM2711 PCIe Bridge";
-+    /*
-+     * PCI-facing part of the host bridge, not usable without the host-facing
-+     * part, which can't be device_add'ed.
-+     */
-+    dc->user_creatable = false;
-+    k->vendor_id = BCM2838_PCIE_VENDOR_ID;
-+    k->device_id = BCM2838_PCIE_DEVICE_ID;
-+    k->revision = BCM2838_PCIE_REVISION;
-+    brpc->parent_obj.exp_offset = BCM2838_PCIE_EXP_CAP_OFFSET;
-+    brpc->parent_obj.aer_offset = BCM2838_PCIE_AER_CAP_OFFSET;
-+    brpc->parent_realize = k->realize;
-+    k->realize = bcm2838_pcie_root_realize;
-+}
-+
-+static const TypeInfo bcm2838_pcie_root_info = {
-+    .name = TYPE_BCM2838_PCIE_ROOT,
-+    .parent = TYPE_PCIE_ROOT_PORT,
-+    .instance_size = sizeof(BCM2838PcieRootState),
-+    .instance_init = bcm2838_pcie_root_init,
-+    .class_init = bcm2838_pcie_root_class_init,
-+};
-+
-+static void bcm2838_pcie_register(void)
-+{
-+    type_register_static(&bcm2838_pcie_root_info);
-+}
-+
-+type_init(bcm2838_pcie_register)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 27e6797de2..b26ed13c6f 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -39,7 +39,10 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubi
- arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
- arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
- arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
--arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c', 'raspi4b.c'))
-+arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files(
-+  'bcm2838.c',
-+  'bcm2838_pcie.c',
-+  'raspi4b.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 4f0167e638..6cfab31539 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -55,5 +55,9 @@ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
- smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint16_t vmid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
+diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
+index 80746dbb95..5322c563a0 100644
+--- a/tests/qtest/bcm2838-mbox-property-test.c
++++ b/tests/qtest/bcm2838-mbox-property-test.c
+@@ -49,7 +49,8 @@ FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
+                       (TEST_TAG_TYPE(testname) * tag);                         \
+     static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
+                              (TEST_TAG_TYPE(testname) *tag);                   \
+-    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
++    static void TEST_FN_NAME(testname, __VA_ARGS__)(void)                      \
++    {                                                                          \
+         struct {                                                               \
+             MboxBufHeader header;                                              \
+             TEST_TAG_TYPE(testname) tag;                                       \
+@@ -188,6 +189,179 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
+ }
  
-+# bcm2838_pcie.c
-+bcm2838_pcie_host_read(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
-+bcm2838_pcie_host_write(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04"PRIx64": 0x%016"PRIx64
+ /*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
 +
- # bcm2838.c
- bcm2838_gic_set_irq(int irq, int level) "gic irq:%d lvl:%d"
-diff --git a/include/hw/arm/bcm2838_pcie.h b/include/hw/arm/bcm2838_pcie.h
-new file mode 100644
-index 0000000000..39828f817f
---- /dev/null
-+++ b/include/hw/arm/bcm2838_pcie.h
-@@ -0,0 +1,53 @@
-+/*
-+ * BCM2838 PCIe Root Complex emulation
-+ *
-+ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
 +
-+#ifndef BCM2838_PCIE_H
-+#define BCM2838_PCIE_H
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
 +
-+#include "exec/hwaddr.h"
-+#include "hw/sysbus.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pcie_host.h"
-+#include "hw/pci/pcie_port.h"
-+#include "qom/object.h"
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
 +
-+#define TYPE_BCM2838_PCIE_ROOT "bcm2838-pcie-root"
-+OBJECT_DECLARE_TYPE(BCM2838PcieRootState, BCM2838PcieRootClass,
-+                    BCM2838_PCIE_ROOT)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
 +
-+#define BCM2838_PCIE_VENDOR_ID      0x14E4
-+#define BCM2838_PCIE_DEVICE_ID      0x2711
-+#define BCM2838_PCIE_REVISION       20
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
 +
-+#define BCM2838_PCIE_REGS_SIZE      0x9310
-+#define BCM2838_PCIE_NUM_IRQS       4
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
 +
-+#define BCM2838_PCIE_EXP_CAP_OFFSET 0xAC
-+#define BCM2838_PCIE_AER_CAP_OFFSET 0x100
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
 +
-+#define BCM2838_PCIE_EXT_CFG_DATA   0x8000
-+#define BCM2838_PCIE_EXT_CFG_INDEX  0x9000
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
 +
-+struct BCM2838PcieRootState {
-+    /*< private >*/
-+    PCIESlot parent_obj;
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_TEMPERATURE) {
++    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
++    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC);
++}
++DECLARE_TEST_CASE_SETUP(GET_TEMPERATURE) {
++    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++}
 +
-+    /*< public >*/
-+    uint8_t regs[BCM2838_PCIE_REGS_SIZE - PCIE_CONFIG_SPACE_SIZE];
-+};
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_TEMPERATURE) {
++    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
++    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC_MAX);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_TEMPERATURE) {
++    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++}
 +
-+struct BCM2838PcieRootClass {
-+    /*< private >*/
-+    PCIERootPortClass parent_obj;
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(ALLOCATE_BUFFER) {
++    g_assert_cmphex(tag->response.value.base, ==, VC_FB_BASE);
++    g_assert_cmphex(tag->response.value.size, ==, VC_FB_SIZE);
++}
++DECLARE_TEST_CASE_SETUP(ALLOCATE_BUFFER) {
++    tag->request.value.alignment = ALIGN_4K;
++}
 +
-+    /*< public >*/
-+    void (*parent_realize)(PCIDevice *dev, Error **errp);
-+};
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(RELEASE_FRAMEBUFFER) { 
++    /* No special checks are needed for this test */
++}
 +
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(BLANK_FRAMEBUFFER) {
++    g_assert_cmphex(tag->response.value.on, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(BLANK_FRAMEBUFFER) {
++    tag->request.value.on = 0;
++}
 +
-+#endif /* BCM2838_PCIE_H */
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_PHYS_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_FB_PHYS_WIDTH) {
++    tag->request.value.width = DUMMY_VALUE;
++    tag->request.value.height = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL) {
++    g_assert_cmpint(tag->response.value.width, ==, 640);
++    g_assert_cmpint(tag->response.value.height, ==, 480);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_PHYS_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, 800);
++    g_assert_cmpint(tag->response.value.height, ==, 600);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_PHYS_WIDTH) {
++    tag->request.value.width = 800;
++    tag->request.value.height = 600;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_VIRT_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_FB_VIRT_WIDTH) {
++    tag->request.value.width = DUMMY_VALUE;
++    tag->request.value.height = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL) {
++    g_assert_cmpint(tag->response.value.width, ==, 640);
++    g_assert_cmpint(tag->response.value.height, ==, 480);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_VIRT_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, 800);
++    g_assert_cmpint(tag->response.value.height, ==, 600);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
++    tag->request.value.width = 800;
++    tag->request.value.height = 600;
++}
++
++//==============================================================================
+ int main(int argc, char **argv)
+ {
+     g_test_init(&argc, &argv, NULL);
+@@ -201,6 +375,26 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
+     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
+     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
++    QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
++    QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
++    QTEST_ADD_TEST_CASE(RELEASE_FRAMEBUFFER);
++    QTEST_ADD_TEST_CASE(BLANK_FRAMEBUFFER);
++    QTEST_ADD_TEST_CASE(TEST_FB_PHYS_WIDTH);
++    QTEST_ADD_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL);
++    QTEST_ADD_TEST_CASE(SET_FB_PHYS_WIDTH);
++    QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
++    QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
++    QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
+ 
+     return g_test_run();
+ }
 -- 
 2.34.1
 

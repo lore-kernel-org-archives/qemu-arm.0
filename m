@@ -1,194 +1,232 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2366113ejb;
-        Sun, 3 Dec 2023 15:31:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHzHnRbA7dai856tgKrZko50ap8YnDz39LrdX+xErNfht2HR/stXBGkSFBnGy2lv1xO1jds
-X-Received: by 2002:ad4:4986:0:b0:66d:5d31:999e with SMTP id u6-20020ad44986000000b0066d5d31999emr3931448qvx.43.1701646292850;
-        Sun, 03 Dec 2023 15:31:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701646292; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2392310ejb;
+        Sun, 3 Dec 2023 16:48:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF3Ie39wciitJ0zon9RzI9ELslHVfSOm6KjXF+42/eNks9VpiS7wPAFicdUzlLJLAmfM0B3
+X-Received: by 2002:ad4:5852:0:b0:67a:aa74:6a32 with SMTP id de18-20020ad45852000000b0067aaa746a32mr4709133qvb.110.1701650914531;
+        Sun, 03 Dec 2023 16:48:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701650914; cv=none;
         d=google.com; s=arc-20160816;
-        b=QrSyOyoq/VxqNZSh212uF3Rz8Wu1B+OjlNv+A1mK4bRCobaYxzk3TX1GIT7fFCjWKe
-         BgDAR+JO2gI/CegdEx8mUtKqi5K4bkM1TmSrRVHp4cvABUl60Vvbn3/0Arc9dkBYdmjq
-         H/dk6dO8QpaXQQsU9tfs7hsAgYFArLFH3Dpgyia1J5LG08BpWRps9TX/TMAq3pdkhR7/
-         LmmEV9xXGHbR7xWBH3fcZ+Aqp+ZHeQBHeOsvwjlYLt9G+g55dg1hUPHEIQ2TLTeoX1Sw
-         ctaAeCF4DSGPAM2qq5L+55MTvXXCBylN2RRpPCHL/dTvnyIN0J9APyvPpHUkYdBRFV3h
-         NLXQ==
+        b=WCKKgI4XT2clT7UTz9iVyDPOdMkLXFSnPtDtEawbWGCEkcci5YLq5vJIalNiGp5VwN
+         CO4msK5md5WiL6jKnJ1NYtU/cf4Pq9713ClDZOPx+8/sHtnvpZyTLTla5nutqUD+r7E8
+         Ym0DVYihOVMcwGralKJQTMVKcycyOe3POFXtoF0I2uils7TmP6YCH14Sy0R1AvyN7U2d
+         4XdzfLG/F6wtbOVseSgROuI0HOfnU/jwoinFd7nHLRb8kE6pIRQMD7fyKFx6dMYyRsNR
+         dTDV7LGC6uQfbcl2X9UyNPXSzIPpkbWsImYUg0mSXi3Keori6h5yWPrhp8elxqXzxWVx
+         C5Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4sLLt6RkTxm9WrXH5ATrYIbizpJhKLEMffigQpTnVYU=;
-        fh=EAfdOT7QKaCr63VZMncVOAz/x0cmxf4toYqRCJ9Km4E=;
-        b=io1lWb4hxUCc29clmRIWsBFdnbhcyWpA+j1slE0s3Focqobp2E5O6An5AYayLViHwE
-         Pz+zDzUXMpmojxWC47rgCjqA5i9+aKpFdT44k51Mp1wYX4WqTCXiZ3PGJ1V41w6k9ZuN
-         w8ZYx2jMWHh+GpQ9arz5VE2ArUjP/lKfukVtq9j0xdhK8XniiBHmjQ/GtTdxTfPNeeC7
-         aNEsNtje2voV2ku+kqhOHz3RwDsxz6o61LGZhsXAcqiqXqXFe3vT3khVv5DwZ+h8ukWz
-         aZ1/Sli4nUVw3Ra7YlGDYuYIaPGVYcKRPQQOFyNX7liodmqVA4SD5gHxrhWcZeIc9Xko
-         HVow==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=wqV49eQwtKIBLiG5qLWYmBON0hlLvH3bmdEmtYFl3lE=;
+        fh=iuLTZZ1fjCI8LjSgJoBa8MYZ2BtgjMRkSSF1C0uH4/8=;
+        b=rm39XxOy+mzYHRjSI85KCYzEsAz+/QAYFq2ATqC3usmiwtMWMhc+TAAH62sUoNQEVs
+         OZ2cqi+RtOCTdBkjPk5281Z4EAO1IzqgQ83actQQM0JnLBMJ2CnbkSaEl1hCw8ZLSXYI
+         K3qxj+/GgAFI/OxjmekUUfIKh3xMQRmBFzIE3ipW5Ru1vI/BJjeziOeFZ0L/UmYKIxu3
+         flZbc/Na46XN8S9RFZj64gHwsTcGPsuPPrLqJZuMcn0PsDAV1F8P8isiNUP/0geBcGVN
+         tJEPIJVROvsaP8j0tNrppzyHvppD+ZlIT6bqT6ovMPJg9t4oxK/TPLTtIiKK1FOUcPEE
+         SmBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Png+uRPC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Dy/JI+O3";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c10-20020a0cd60a000000b0066cf06339c8si5321507qvj.197.2023.12.03.15.31.32
+        by mx.google.com with ESMTPS id w20-20020a05620a0e9400b0077bd0142498si7967019qkm.756.2023.12.03.16.48.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 15:31:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 16:48:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Png+uRPC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Dy/JI+O3";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9vvk-0004Ox-Oo; Sun, 03 Dec 2023 18:31:20 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9x7x-0004ej-I0; Sun, 03 Dec 2023 19:48:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r9vvZ-0004Na-HG
- for qemu-arm@nongnu.org; Sun, 03 Dec 2023 18:31:10 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r9x7u-0004e0-9o
+ for qemu-devel@nongnu.org; Sun, 03 Dec 2023 19:47:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r9vvW-0004rW-Op
- for qemu-arm@nongnu.org; Sun, 03 Dec 2023 18:31:09 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1r9x7s-0000We-Fu
+ for qemu-devel@nongnu.org; Sun, 03 Dec 2023 19:47:58 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701646265;
+ s=mimecast20190719; t=1701650876;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4sLLt6RkTxm9WrXH5ATrYIbizpJhKLEMffigQpTnVYU=;
- b=Png+uRPCdbLPnm6zBGkr/jcxNKiz6aD0bMY0IDFPk4fs9+9fEwkUxFCj0olV/kKVHSIzHc
- tf+oVvSd7l/X0rpTSFQKm4BovzgC/42x2Gno6InUhybQznBn5OpQz+aScCjZQ2ks7n7fK2
- 5j9zry8BIc0PuDOf47v8PErKjcHoijs=
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wqV49eQwtKIBLiG5qLWYmBON0hlLvH3bmdEmtYFl3lE=;
+ b=Dy/JI+O3IO9kaV9Fu9MkkN3HUfW/+f+jJs56CBBlwKvuGLKz7N7qd4LtysxFU5s9wSuPHb
+ tVze86BIBSNgslLGB3AioRmOMMlBAlK97DgMjPawAAb5YA6RYsIJfNij8uKpx0nQLhTMlA
+ uHVSF6D/RHy/U5c5DMpn1N3WPm+7SxU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-509-PFY3WjhQNc2A9XYGTAp5ug-1; Sun, 03 Dec 2023 18:31:02 -0500
-X-MC-Unique: PFY3WjhQNc2A9XYGTAp5ug-1
-Received: by mail-oi1-f200.google.com with SMTP id
- 5614622812f47-3b2e7ae47d1so3885286b6e.0
- for <qemu-arm@nongnu.org>; Sun, 03 Dec 2023 15:31:02 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701646261; x=1702251061;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4sLLt6RkTxm9WrXH5ATrYIbizpJhKLEMffigQpTnVYU=;
- b=RXhJmRZ59yUrpHC6oJkxiPDLD/WMS4eocYpiwbBQd7xJLxHmlhS7RBVLBIpKMrBSOc
- Zs1HLExIbN7dX240EstIhsZmK7zCfIuZYXSfwIrKVObHPvg1mpnrdlVVsQKLb1Vlo1Pn
- DTGkhaBQQ5AvlkSU1VHhyBV/ZnBgKr+3MHzTrKeMur94tGzOLuEfTEqLX8ffNNqIPng8
- xMyAqS1tUrjjwtevjQRF/3TtwQf3683l1s5evCiprAPT7dWFbtmrjAjW7FRWOJOSSGbe
- Ovl9pTqc/8V28uU5PKbTaIQjK9Ddh0y449H2Hfk1KO6YVt9LOfWbZfjsNehQwuha2UGJ
- VykQ==
-X-Gm-Message-State: AOJu0Yxvv6z/dscgA1/GvvHh4j82OqxWlVumAwrwHUKThgVwt6Db2os2
- rdjrpZGwHPQRIRHzuay9yaFAoIGbaDpMn8+Hq7b7N672p3mTzY4VJQXpVjOrzJb9Ks1QjOrX7zn
- eon1eIUcorJr8
-X-Received: by 2002:a05:6808:208d:b0:3b8:b063:8240 with SMTP id
- s13-20020a056808208d00b003b8b0638240mr3976550oiw.66.1701646261757; 
- Sun, 03 Dec 2023 15:31:01 -0800 (PST)
-X-Received: by 2002:a05:6808:208d:b0:3b8:b063:8240 with SMTP id
- s13-20020a056808208d00b003b8b0638240mr3976534oiw.66.1701646261562; 
- Sun, 03 Dec 2023 15:31:01 -0800 (PST)
-Received: from [192.168.68.51] ([43.252.115.3])
- by smtp.gmail.com with ESMTPSA id
- x21-20020aa793b5000000b006ce4c7ba43fsm1046633pff.120.2023.12.03.15.30.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Dec 2023 15:31:01 -0800 (PST)
-Message-ID: <fbcf6473-9961-4d42-a961-d87e99e46351@redhat.com>
-Date: Mon, 4 Dec 2023 09:30:51 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 3/9] machine: Improve is_cpu_type_supported()
+ us-mta-644-mKJZJdgeNFqf648IlC0_Bw-1; Sun, 03 Dec 2023 19:47:50 -0500
+X-MC-Unique: mKJZJdgeNFqf648IlC0_Bw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8A5F8185A780;
+ Mon,  4 Dec 2023 00:47:49 +0000 (UTC)
+Received: from gshan.redhat.com (unknown [10.64.136.61])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A511A492BE0;
+ Mon,  4 Dec 2023 00:47:40 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
+To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, b.galvani@gmail.com, strahinja.p.jankovic@gmail.com,
- sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com,
- nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, vijai@behindbytes.com,
+ b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, imammedo@redhat.com,
+ kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ armbru@redhat.com, wangyanan55@huawei.com, vijai@behindbytes.com,
  palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
  liwei1518@gmail.com, dbarboza@ventanamicro.com,
  zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com
-References: <20231129042012.277831-1-gshan@redhat.com>
- <20231129042012.277831-4-gshan@redhat.com>
- <83046c42-1df3-499e-b202-b123391d39cb@linaro.org>
- <fa0e8be7-8f18-4d74-ad5d-6dc44d375d2d@redhat.com>
-In-Reply-To: <fa0e8be7-8f18-4d74-ad5d-6dc44d375d2d@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: [PATCH v9 0/9] Unified CPU type check
+Date: Mon,  4 Dec 2023 10:47:17 +1000
+Message-ID: <20231204004726.483558-1-gshan@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D7k4vg1LsxPm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ijSZYPuMUvpF
 
-Hi Phil,
+This series bases on Phil's repository because the prepatory commits
+have been queued to the branch.
 
-On 12/4/23 09:20, Gavin Shan wrote:
-> On 12/1/23 20:57, Philippe Mathieu-Daudé wrote:
->> On 29/11/23 05:20, Gavin Shan wrote:
->>> It's no sense to check the CPU type when mc->valid_cpu_types[0] is
->>> NULL.
->>
->> This case is a programming error, right? We should simply:
->>
->>   assert(!mc->valid_cpu_types || *mc->valid_cpu_types);
->>
-> 
-> Yes, assert() should be used instead. I will do this like below:
-> 
->      if (mc->valid_cpu_types && machine->cpu_type) {
->          assert(mc->valid_cpu_types[1] != NULL);
-> 
+  https://gitlab.com/philmd/qemu.git (branch: cpus-next)
 
-I meant assert(mc->valid_cpu_types[0] != NULL) and sorry for the confusion.
+There are two places where the user specified CPU type is checked to see
+if it's supported or allowed by the board: machine_run_board_init() and
+mc->init(). We don't have to maintain two duplicate sets of logic. This
+series intends to move the check to machine_run_board_init() so that we
+have unified CPU type check.
 
-       if (mc->valid_cpu_types && machine->cpu_type) {
-           assert(mc->valid_cpu_types[0] != NULL);
-           :
-       }
+This series can be checked out from:
 
-> 
->>> So the check is skipped for this particular case. The constraint
->>> has been taken when the error messags are appended.
->>>
->>> A precise hint for the error message is given when mc->valid_cpu_types[0]
->>> is the only valid entry. Besides, enumeration on mc->valid_cpu_types[0]
->>> when we have mutiple valid entries there is avoided to increase the code
->>> readability, as suggested by Philippe Mathieu-Daudé.
->>>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>>   hw/core/machine.c | 18 ++++++++++++------
->>>   1 file changed, 12 insertions(+), 6 deletions(-)
->>
+  git@github.com:gwshan/qemu.git (branch: kvm/cpu-type)
 
-Thanks,
-Gavin
+PATCH[1-4] refactors and improves the logic to validate CPU type in
+           machine_run_board_init()
+PATCH[5-9] validates the CPU type in machine_run_board_init() for the
+           individual boards
+
+v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00302.html
+v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00528.html
+v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-09/msg00157.html
+v4: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00005.html
+v5: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00611.html
+v6: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg00768.html
+v7: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg01045.html
+v8: https://lists.nongnu.org/archive/html/qemu-arm/2023-11/msg01168.html
+
+Testing
+=======
+
+Before the series is applied:
+
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M virt -cpu cortex-a8
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M sbsa-ref -cpu cortex-a53
+  qemu-system-aarch64: sbsa-ref: CPU type cortex-a53-arm-cpu not supported
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M sbsa-ref -cpu sa1100
+  qemu-system-aarch64: sbsa-ref: CPU type sa1100-arm-cpu not supported
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M sbsa-ref -cpu host
+  qemu-system-aarch64: unable to find CPU model 'host'
+
+After the series is applied:
+
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M virt -cpu cortex-a8
+  qemu-system-aarch64: Invalid CPU model: cortex-a8
+  The valid models are: cortex-a7, cortex-a15, cortex-a35, cortex-a55,     \
+                        cortex-a72, cortex-a76, cortex-a710, a64fx,        \
+                        neoverse-n1, neoverse-v1, neoverse-n2, cortex-a53, \
+                        cortex-a57, max
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M sbsa-ref -cpu cortex-a53
+  qemu-system-aarch64: Invalid CPU model: cortex-a53
+  The valid models are: cortex-a57, cortex-a72, neoverse-n1, neoverse-v1,  \
+                        neoverse-n2, max
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M sbsa-ref -cpu sa1100
+  qemu-system-aarch64: Invalid CPU model: sa1100
+  The valid models are: cortex-a57, cortex-a72, neoverse-n1, neoverse-v1,  \
+                        neoverse-n2, max
+  [gshan@gshan q]$ ./build/qemu-system-aarch64 -M sbsa-ref -cpu host
+  qemu-system-aarch64: unable to find CPU model 'host'
+
+Changelog
+=========
+v9:
+  * Pick r-bs from Markus and Phil                               (Gavin)
+  * Improved change log for PATCH[v9 1/9]                        (Markus)
+  * assert(mc->valid_cpu_types[0] != NULL) and assert(cc != NULL)
+    in is_cpu_type_supported() of PATCH[v9 3/9]                  (Phil)
+v8:
+  * Pick r-bs from Phil                                          (Gavin)
+  * Drop @local_err and use @errp in machine_run_board_init()    (Phil)
+  * Add PATCH[v8 3/9] to improve is_cpu_type_supported()         (Phil)
+  * Use g_autofree and replace 'type' with 'model' for the
+    error messages in is_cpu_type_supported()                    (Phil)
+v7:
+  * Add 'return' after error_propagate() in machine_run_board_init()
+    to avoid calling mc->init() in the failing case              (Marcin)
+v6:
+  * Drop PATCH[v5 01-23], queued by Phil                         (Phil)
+  * Clearer hint if only one CPU type is supported and have
+    'const MachineState *' in is_cpu_type_supported()            (Phil)
+  * Move valid_cpu_types[] to board's class_init() function      (Phil)
+
+Gavin Shan (9):
+  machine: Use error handling when CPU type is checked
+  machine: Introduce helper is_cpu_type_supported()
+  machine: Improve is_cpu_type_supported()
+  machine: Print CPU model name instead of CPU type
+  hw/arm/virt: Hide host CPU model for tcg
+  hw/arm/virt: Check CPU type in machine_run_board_init()
+  hw/arm/sbsa-ref: Check CPU type in machine_run_board_init()
+  hw/arm: Check CPU type in machine_run_board_init()
+  hw/riscv/shakti_c: Check CPU type in machine_run_board_init()
+
+ hw/arm/bananapi_m2u.c   | 12 +++---
+ hw/arm/cubieboard.c     | 12 +++---
+ hw/arm/mps2-tz.c        | 26 +++++++++---
+ hw/arm/mps2.c           | 26 +++++++++---
+ hw/arm/msf2-som.c       | 12 +++---
+ hw/arm/musca.c          | 12 +++---
+ hw/arm/npcm7xx_boards.c | 12 +++---
+ hw/arm/orangepi.c       | 12 +++---
+ hw/arm/sbsa-ref.c       | 36 +++++-----------
+ hw/arm/virt.c           | 60 ++++++++++----------------
+ hw/core/machine.c       | 94 +++++++++++++++++++++++++----------------
+ hw/riscv/shakti_c.c     | 13 +++---
+ 12 files changed, 170 insertions(+), 157 deletions(-)
+
+-- 
+2.42.0
 

@@ -1,104 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2385236ejb;
-        Sun, 3 Dec 2023 16:26:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGpZ3C3EaiZV689R28+Ps3zxZx3yCPQ2RJm9w9qkCW+BEp19edUhKAZ16GOPkPD3fBaY0cW
-X-Received: by 2002:a67:fb09:0:b0:464:8cbd:42ff with SMTP id d9-20020a67fb09000000b004648cbd42ffmr356210vsr.19.1701649599128;
-        Sun, 03 Dec 2023 16:26:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701649599; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2385265ejb;
+        Sun, 3 Dec 2023 16:26:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFs6N+72SGqQR/kzEOjiKvPuUezZcY2vi8Ivb+DYnDzxZmkvSRXlYcfg/z0EpZsGyyHhXlt
+X-Received: by 2002:a05:622a:1908:b0:425:4043:29cf with SMTP id w8-20020a05622a190800b00425404329cfmr6294051qtc.74.1701649605870;
+        Sun, 03 Dec 2023 16:26:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701649605; cv=none;
         d=google.com; s=arc-20160816;
-        b=OFhjOer0OYk7DCbeEXVBUSagZv9KexloGF76qcT4Dd8XyqZrSm6uih5Zk7dMobKGja
-         /wDYJQM3NZuJDJcwDbcfZ0kxxE2AgBhQyM4hRV2zUGLnFp0GNIScRh//lzGTeCKgHDeB
-         zoj5+XeiQC7NigmFx7zrIhLbVVaL2J6fRVOSg+uWvDPg7Q739SYrlZdPufptJPbxt93l
-         X7k5NZ2eV951VGFNdy1K1/s7Y1vEnuCIszZ+/cTxVSF4a3N42xBIGeeJ7Mr97nMs0cif
-         l8ULrPMa90+XIkqPm0B2GDWS3/llzpeenxXrCBOincRIkN+vz6d9XMI8SYJchOxJQNxb
-         cJPQ==
+        b=VONG4eXz4XDH4Dsg3FaaFxZJKO+X4HixZqL7x0AV7pcB62CI8IG7QEy1UoywI9k/To
+         TmjXppDDmn2vst/EOA9jHacsH2uupeZPfM4uiah8iReLTZLF+HZuOoA7VVTXKM/bS+rU
+         hnWb4dtJuPEWwUWAQc3kWFzChBoh7XvTvGVt3ZjJHQt8PwnphNRzZGQlmQUR+F2Jbeow
+         A+imyocnjaCvYvszXg32yZMSdA2fa8DtvCp6wLX7iFnn7dHhq09N0hWaVCmOD/ErSdld
+         3eVye7rhxJ2cIf8UAIEDjlhT6aN053RbZGL/zaoJurvaxJ+Oaq9/9W1ANya8rxC6P+jV
+         RbFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vjJI0cIxkRTZ5OWIw3bVVRHcwjcOeypwu8X8iyLqwmA=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=7mb12SLyYKgE+GLLI/c9J/vANlZ3FBQt3OE84lYGKOg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=stszEx5ssvBpYmkmDfebwvd5qi3RuQM2hwXAJygxehzLKRd4Ses/RCYjjg/iVMm1zj
-         A5OEpLagRzPIgTnxcKFXMoYN7z8G8WuDhBKqOXYouwxnF/ZtUDIj5J9p0TVP57tLNjSB
-         MAqV9zG2EqujxQNaA/mJZEIhanopYY/32hBXF+Frd18AEqvQ1adsBWuPdvwV5S96+RWr
-         fAy9BDSUrbzQcr0TeCjMtQOgqhjvnI0OnccgNNYVKVpnMTcVpl9LYQVR51UbX7qbUeYk
-         CryVdfZ/gAWex5QaVAOVHdKwf8SGI9K8sGXi520NtgaiNueD4g0oNiQM7hank8NYpLjz
-         wdOA==
+        b=atz4V6hKTaxUmo6SpAlV/uUxEdaWfsmFgM2oxK1MTbrK6tfxogP8FVzbo3Du9jSayt
+         uTP6kgofLIpJBm2wJkuo7Kllerp+C/Tded3qLXgDz994eYaDrGiKzYNIc8O+F+wKFZ0H
+         FXbnHAGMJPcPmJ0AYUUcSCP3qMhqZs8Bu1W7b/AJxGQeqH9asASpMl6KhA1NgAcXCwla
+         7Tz4vfNm58IzaBLEUBWO/wY0x9eAHUdzNtfru14PGkSfBCntavR/AfiO8Qk33DjiDBZp
+         /abodaPvM7oKt9Mr8noSehLNSfEIzXOr5BcTOC2zwwBY8w+BZ7m5u90d9POUBwgWC6MG
+         HBcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="R/rIPDZh";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=F4X1ZIlU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3-20020ad45223000000b0067a360ada6esi8341879qvq.255.2023.12.03.16.26.38
+        by mx.google.com with ESMTPS id ci18-20020a05622a261200b00423d2eb0b37si8997052qtb.21.2023.12.03.16.26.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 16:26:39 -0800 (PST)
+        Sun, 03 Dec 2023 16:26:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="R/rIPDZh";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=F4X1ZIlU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9wn9-0004QS-3o; Sun, 03 Dec 2023 19:26:31 -0500
+	id 1r9wnG-0004S5-9S; Sun, 03 Dec 2023 19:26:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wn7-0004Q3-M8; Sun, 03 Dec 2023 19:26:29 -0500
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ id 1r9wnC-0004Qm-8q; Sun, 03 Dec 2023 19:26:34 -0500
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wn4-00004z-4p; Sun, 03 Dec 2023 19:26:29 -0500
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-5d3687a6574so37194987b3.2; 
- Sun, 03 Dec 2023 16:26:25 -0800 (PST)
+ id 1r9wn8-00005i-Nk; Sun, 03 Dec 2023 19:26:33 -0500
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-5d8d2b5d1b5so180167b3.0; 
+ Sun, 03 Dec 2023 16:26:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701649584; x=1702254384; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=vjJI0cIxkRTZ5OWIw3bVVRHcwjcOeypwu8X8iyLqwmA=;
- b=R/rIPDZhhmSmjdBTh60Ab/IEvdsOvCFw55iQHl6QJtUttjRZE5CwJAatfjK2jXj3ry
- MBWyPqxJqEbIwIrS6+LSpX+6cBHppmRrJTD9VoidymSmLbb9Va8tSKLr030aRcaL7mNQ
- 2TtmabE2qGbeoGJGE/ybPyitR1I1wIbe6SXYGa3SDcglM3DgUxFowyGcT1Ny+EmrteK7
- GhcEGTz2tEtOimtaxW0gONC/uAHYxzUTNWRL29BBoFmjyQdFN1kVHGSYcUpQAfzw597p
- M71DVfQphgNJWpu5IF9LXaM1DXsuzwJbST3RDIxl7hEUM+xF6okJBDz7hG6NS9OFRkoR
- MGDg==
+ d=gmail.com; s=20230601; t=1701649588; x=1702254388; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=7mb12SLyYKgE+GLLI/c9J/vANlZ3FBQt3OE84lYGKOg=;
+ b=F4X1ZIlUJA7tZX7qenq1nOuLacPKX+q8gR2+ZLz8C0su0MpPTolzY4cKt2IJPnpP6r
+ j/re4B5qkKQNSPXtrjnPL5ldT1CE+xvcSfCLWPZTZ1Hd88tEhpwIlQiNXay0fwP7QsvP
+ oZ99xq8/t7k5OANLN7Q03W+pi1AuyrKEpasTjzp9qaWM6veqnuKOo9lUZ5xk0jvh+qgY
+ PpE27tnuslx/X6au4gOP8bUNe45Hq9m81zCnuJzsQiPnaWsCSlt63Y4JzS6GpWPJumq/
+ QKt8R2sqM8mxosSzE40kEYsSXkY9GAW+oQ7mupfiDQREZdHvAk7s0kNdvyeMXY56Hlbx
+ ydGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701649584; x=1702254384;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=vjJI0cIxkRTZ5OWIw3bVVRHcwjcOeypwu8X8iyLqwmA=;
- b=oCdvAdogWFGcGpUBKgFNA78A4UYM3xv0qFwgcL5RawJRSPhI3O3xbecnz+2hMPS+ut
- mL6CIexh9zSf3pMTdUBi/qxqYfEP5oUYujZ7wdiIxkimRnfO4Sd1j+qOfQk6Z4ZIhAN6
- efUAE8UL7+dblJvYcOxsqGbtsxq5C5tqa+fYCjhqCdTnq9zIvoJwZXE1t4ZTrpxs9OUu
- GZqhZ1tEDFtYt33ZkuFnKLq6pT2hmKoddWefKRnHkwTpGKUeOEhAF+6Cy0ayfirgTDSh
- olI1JUR8PITU81hYVprTyMiIdtIjP8lsKhDSwMB+hSLzVQBa5uoFa1+ZPq3KRtmHVlmj
- 5WIA==
-X-Gm-Message-State: AOJu0YwXxgxX9cQWMJL3LJcfHSfSk/iD81jKBiA4pA928+9yJD9gpGCq
- cthmNmmyGtiGk/X7+NvU/Zv7AJEZcSZA/w==
-X-Received: by 2002:a05:690c:350d:b0:5d8:df11:a672 with SMTP id
- fq13-20020a05690c350d00b005d8df11a672mr109320ywb.3.1701649582467; 
- Sun, 03 Dec 2023 16:26:22 -0800 (PST)
+ d=1e100.net; s=20230601; t=1701649588; x=1702254388;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7mb12SLyYKgE+GLLI/c9J/vANlZ3FBQt3OE84lYGKOg=;
+ b=b8ZbsQfLx/QFamCkeqjRtoc7FKb9OzaBb8s9Ud0yT6H2j62kab1LikTt7Z9qMO4ZOi
+ OYLQV+xWUtCXybjWhUgWm6ZvI/9NhWBKcweMHtBuemzKu5MH5GZrXpXikJQKwNG9owDo
+ nqoI7JbWsJSW2ftDUKjAytM2pP0F+dmEeYEqBpKIQPAsJZoXwxmyUKz7HhtFO/viNINv
+ OXiKSfHOoFob+OCxFm+XTvCr2Q8+GY2DnbUkeYpD3K9o2rxh7jhkl1XvkGWJijPr6nbx
+ QXZc3CzfXDe3ygG3BVUsgDhcIay+yuDBqPmKnYTUlawTFKR9BPHc46WtTFKtDWPhOdUG
+ LfGw==
+X-Gm-Message-State: AOJu0Yz4KGP/Q9iBBhWaze3+VMv+6VVmEp/e3ahaTAHS5/G9dlWhlgn0
+ 57lAsLe7O9KJ4ihmlUxQY1Vq1SrHIx22Iw==
+X-Received: by 2002:a81:ad14:0:b0:5ca:8f2c:28c5 with SMTP id
+ l20-20020a81ad14000000b005ca8f2c28c5mr656171ywh.8.1701649588199; 
+ Sun, 03 Dec 2023 16:26:28 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.21
+ l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 16:26:21 -0800 (PST)
+ Sun, 03 Dec 2023 16:26:27 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 00/45] Raspberry Pi 4B machine
-Date: Sun,  3 Dec 2023 18:25:34 -0600
-Message-Id: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 03/45] Split out raspi machine common part
+Date: Sun,  3 Dec 2023 18:25:37 -0600
+Message-Id: <20231204002619.1367044-4-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
+References: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,140 +124,292 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ql95zg/tGCv0
+X-TUID: KE4tLa74YaHh
 
-Introducing Raspberry Pi 4B model.
-It contains new BCM2838 SoC, PCIE subsystem,
-RNG200, Thermal sensor and Genet network controller.
+Pre-setup for raspberry pi 4 introduction
 
-It can work with recent linux kernels 6.x.x.
-Two avocado tests was added to check that.
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+---
+ hw/arm/raspi.c                  | 112 ++++++++++++++++++--------------
+ include/hw/arm/raspi_platform.h |  21 ++++++
+ 2 files changed, 85 insertions(+), 48 deletions(-)
 
-Unit tests has been made as read/write operations
-via mailbox properties.
-
-Genet integration test is under development.
-
-Every single commit
-1) builds without errors
-2) passes regression tests
-3) passes style check*
-*the only exception is bcm2838-mbox-property-test.c file
-containing heavy macros usage which cause a lot of
-false-positives of checkpatch.pl.
-
-I did my best to keep the commits less than 200 changes,
-but had to make some of them a bit more in order to
-keep their integrity.
-
-This is v2 patchset with the most of v1 remarks fixed.
-I named it as 'v3' because of mistakes while attempts to send v2 patchset.
-Please remove all other v1 and v2 patchsets except the very first one.
-
-Sergey Kambalin (45):
-  Split out common part of BCM283X classes
-  Split out common part of peripherals
-  Split out raspi machine common part
-  Introduce BCM2838 SoC
-  Add GIC-400 to BCM2838 SoC
-  Add BCM2838 GPIO stub
-  Implement BCM2838 GPIO functionality
-  Connect SD controller to BCM2838 GPIO
-  Add GPIO and SD to BCM2838 periph
-  Add BCM2838 checkpoint support
-  Introduce Raspberry PI 4 machine
-  Temporarily disable unimplemented rpi4b devices
-  Add memory region for BCM2837 RPiVid ASB
-  Add BCM2838 PCIE Root Complex
-  Add BCM2838 PCIE host
-  Enable BCM2838 PCIE
-  Add RNG200 skeleton
-  Add RNG200 RNG and RBG
-  Get rid of RNG200 timer
-  Implement BCM2838 thermal sensor
-  Add clock_isp stub
-  Add GENET stub
-  Add GENET register structs. Part 1
-  Add GENET register structs. Part 2
-  Add GENET register structs. Part 3
-  Add GENET register structs. Part 4
-  Add GENET register access macros
-  Implement GENET register ops
-  Implement GENET MDIO
-  Implement GENET TX path
-  Implement GENET RX path
-  Enable BCM2838 GENET controller
-  Connect RNG200, PCIE and GENET to GIC
-  Add Rpi4b boot tests
-  Add mailbox test stub
-  Add mailbox test constants
-  Add mailbox tests tags. Part 1
-  Add mailbox tests tags. Part 2
-  Add mailbox tests tags. Part 3
-  Add mailbox property tests. Part 1
-  Add mailbox property tests. Part 2
-  Add mailbox property tests. Part 3
-  Add missed BCM2835 properties
-  Append added properties to mailbox test
-  Add RPi4B to paspi4.rst
-
- docs/system/arm/raspi.rst                |   11 +-
- hw/arm/bcm2835_peripherals.c             |  218 +++--
- hw/arm/bcm2836.c                         |  116 ++-
- hw/arm/bcm2838.c                         |  288 ++++++
- hw/arm/bcm2838_pcie.c                    |  289 ++++++
- hw/arm/bcm2838_peripherals.c             |  292 ++++++
- hw/arm/meson.build                       |    8 +-
- hw/arm/raspi.c                           |  131 +--
- hw/arm/raspi4b.c                         |  112 +++
- hw/arm/trace-events                      |    6 +
- hw/gpio/bcm2838_gpio.c                   |  389 ++++++++
- hw/gpio/meson.build                      |    5 +-
- hw/misc/bcm2835_property.c               |   47 +
- hw/misc/bcm2838_rng200.c                 |  420 +++++++++
- hw/misc/bcm2838_thermal.c                |   98 ++
- hw/misc/meson.build                      |    2 +
- hw/misc/trace-events                     |    9 +
- hw/net/bcm2838_genet.c                   | 1088 ++++++++++++++++++++++
- hw/net/meson.build                       |    2 +
- hw/net/trace-events                      |   16 +
- include/hw/arm/bcm2835_peripherals.h     |   29 +-
- include/hw/arm/bcm2836.h                 |   27 +-
- include/hw/arm/bcm2838.h                 |   31 +
- include/hw/arm/bcm2838_pcie.h            |   75 ++
- include/hw/arm/bcm2838_peripherals.h     |   97 ++
- include/hw/arm/raspberrypi-fw-defs.h     |   12 +-
- include/hw/arm/raspi_platform.h          |   37 +
- include/hw/display/bcm2835_fb.h          |    2 +
- include/hw/gpio/bcm2838_gpio.h           |   45 +
- include/hw/misc/bcm2838_rng200.h         |   43 +
- include/hw/misc/bcm2838_thermal.h        |   24 +
- include/hw/net/bcm2838_genet.h           |  426 +++++++++
- tests/avocado/boot_linux_console.py      |   92 ++
- tests/qtest/bcm2838-mailbox.c            |   61 ++
- tests/qtest/bcm2838-mailbox.h            |  584 ++++++++++++
- tests/qtest/bcm2838-mbox-property-test.c |  621 ++++++++++++
- tests/qtest/meson.build                  |    3 +-
- 37 files changed, 5551 insertions(+), 205 deletions(-)
- create mode 100644 hw/arm/bcm2838.c
- create mode 100644 hw/arm/bcm2838_pcie.c
- create mode 100644 hw/arm/bcm2838_peripherals.c
- create mode 100644 hw/arm/raspi4b.c
- create mode 100644 hw/gpio/bcm2838_gpio.c
- create mode 100644 hw/misc/bcm2838_rng200.c
- create mode 100644 hw/misc/bcm2838_thermal.c
- create mode 100644 hw/net/bcm2838_genet.c
- create mode 100644 include/hw/arm/bcm2838.h
- create mode 100644 include/hw/arm/bcm2838_pcie.h
- create mode 100644 include/hw/arm/bcm2838_peripherals.h
- create mode 100644 include/hw/gpio/bcm2838_gpio.h
- create mode 100644 include/hw/misc/bcm2838_rng200.h
- create mode 100644 include/hw/misc/bcm2838_thermal.h
- create mode 100644 include/hw/net/bcm2838_genet.h
- create mode 100644 tests/qtest/bcm2838-mailbox.c
- create mode 100644 tests/qtest/bcm2838-mailbox.h
- create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
-
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index af866ebce2..7d04734cd2 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -18,6 +18,7 @@
+ #include "qapi/error.h"
+ #include "hw/arm/boot.h"
+ #include "hw/arm/bcm2836.h"
++#include "hw/arm/raspi_platform.h"
+ #include "hw/registerfields.h"
+ #include "qemu/error-report.h"
+ #include "hw/boards.h"
+@@ -25,6 +26,9 @@
+ #include "hw/arm/boot.h"
+ #include "qom/object.h"
+ 
++#define TYPE_RASPI_MACHINE  MACHINE_TYPE_NAME("raspi-common")
++OBJECT_DECLARE_SIMPLE_TYPE(RaspiMachineState, RASPI_MACHINE)
++
+ #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
+ #define MVBAR_ADDR      0x400 /* secure vectors */
+ #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
+@@ -37,25 +41,10 @@
+ 
+ struct RaspiMachineState {
+     /*< private >*/
+-    MachineState parent_obj;
++    RaspiBaseMachineState parent_obj;
+     /*< public >*/
+     BCM283XState soc;
+-    struct arm_boot_info binfo;
+-};
+-typedef struct RaspiMachineState RaspiMachineState;
+-
+-struct RaspiMachineClass {
+-    /*< private >*/
+-    MachineClass parent_obj;
+-    /*< public >*/
+-    uint32_t board_rev;
+ };
+-typedef struct RaspiMachineClass RaspiMachineClass;
+-
+-#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
+-DECLARE_OBJ_CHECKERS(RaspiMachineState, RaspiMachineClass,
+-                     RASPI_MACHINE, TYPE_RASPI_MACHINE)
+-
+ 
+ /*
+  * Board revision codes:
+@@ -83,6 +72,11 @@ static const struct {
+     [PROCESSOR_ID_BCM2837] = {TYPE_BCM2837, BCM283X_NCPUS},
+ };
+ 
++static void raspi_base_machine_init(MachineState *machine,
++                             BCM283XBaseState *soc);
++static void raspi_machine_class_common_init(MachineClass *mc,
++                                     uint32_t board_rev);
++
+ static uint64_t board_ram_size(uint32_t board_rev)
+ {
+     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
+@@ -200,13 +194,12 @@ static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+     cpu_set_pc(cs, info->smp_loader_start);
+ }
+ 
+-static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
+-                       size_t ram_size)
++static void setup_boot(MachineState *machine, ARMCPU *cpu,
++                       RaspiProcessorId processor_id, size_t ram_size)
+ {
+-    RaspiMachineState *s = RASPI_MACHINE(machine);
++    RaspiBaseMachineState *s = RASPI_BASE_MACHINE(machine);
+     int r;
+ 
+-    s->binfo.board_id = MACH_TYPE_BCM2708;
+     s->binfo.ram_size = ram_size;
+ 
+     if (processor_id <= PROCESSOR_ID_BCM2836) {
+@@ -252,13 +245,13 @@ static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
+         s->binfo.firmware_loaded = true;
+     }
+ 
+-    arm_load_kernel(&s->soc.parent_obj.cpu[0].core, machine, &s->binfo);
++    arm_load_kernel(cpu, machine, &s->binfo);
+ }
+ 
+-static void raspi_machine_init(MachineState *machine)
++static void raspi_base_machine_init(MachineState *machine,
++                             BCM283XBaseState *soc)
+ {
+-    RaspiMachineClass *mc = RASPI_MACHINE_GET_CLASS(machine);
+-    RaspiMachineState *s = RASPI_MACHINE(machine);
++    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
+     uint32_t board_rev = mc->board_rev;
+     uint64_t ram_size = board_ram_size(board_rev);
+     uint32_t vcram_size;
+@@ -279,19 +272,17 @@ static void raspi_machine_init(MachineState *machine)
+                                         machine->ram, 0);
+ 
+     /* Setup the SOC */
+-    object_initialize_child(OBJECT(machine), "soc", &s->soc,
+-                            board_soc_type(board_rev));
+-    object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(machine->ram));
+-    object_property_set_int(OBJECT(&s->soc), "board-rev", board_rev,
++    object_property_add_const_link(OBJECT(soc), "ram", OBJECT(machine->ram));
++    object_property_set_int(OBJECT(soc), "board-rev", board_rev,
+                             &error_abort);
+-    object_property_set_str(OBJECT(&s->soc), "command-line",
++    object_property_set_str(OBJECT(soc), "command-line",
+                             machine->kernel_cmdline, &error_abort);
+-    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
++    qdev_realize(DEVICE(soc), NULL, &error_fatal);
+ 
+     /* Create and plug in the SD cards */
+     di = drive_get(IF_SD, 0, 0);
+     blk = di ? blk_by_legacy_dinfo(di) : NULL;
+-    bus = qdev_get_child_bus(DEVICE(&s->soc), "sd-bus");
++    bus = qdev_get_child_bus(DEVICE(soc), "sd-bus");
+     if (bus == NULL) {
+         error_report("No SD bus found in SOC object");
+         exit(1);
+@@ -300,19 +291,32 @@ static void raspi_machine_init(MachineState *machine)
+     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
+     qdev_realize_and_unref(carddev, bus, &error_fatal);
+ 
+-    vcram_size = object_property_get_uint(OBJECT(&s->soc), "vcram-size",
++    vcram_size = object_property_get_uint(OBJECT(soc), "vcram-size",
+                                           &error_abort);
+-    setup_boot(machine, board_processor_id(mc->board_rev),
++    setup_boot(machine, &soc->cpu[0].core, board_processor_id(board_rev),
+                machine->ram_size - vcram_size);
+ }
+ 
+-static void raspi_machine_class_common_init(MachineClass *mc,
+-                                            uint32_t board_rev)
++static void raspi_machine_init(MachineState *machine)
++{
++    RaspiMachineState *s = RASPI_MACHINE(machine);
++    RaspiBaseMachineState *s_base = RASPI_BASE_MACHINE(machine);
++    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
++    BCM283XState *soc = &s->soc;
++
++    s_base->binfo.board_id = MACH_TYPE_BCM2708;
++
++    object_initialize_child(OBJECT(machine), "soc", soc,
++                            board_soc_type(mc->board_rev));
++    raspi_base_machine_init(machine, &soc->parent_obj);
++}
++
++void raspi_machine_class_common_init(MachineClass *mc,
++                                     uint32_t board_rev)
+ {
+     mc->desc = g_strdup_printf("Raspberry Pi %s (revision 1.%u)",
+                                board_type(board_rev),
+                                FIELD_EX32(board_rev, REV_CODE, REVISION));
+-    mc->init = raspi_machine_init;
+     mc->block_default_type = IF_SD;
+     mc->no_parallel = 1;
+     mc->no_floppy = 1;
+@@ -322,50 +326,57 @@ static void raspi_machine_class_common_init(MachineClass *mc,
+     mc->default_ram_id = "ram";
+ };
+ 
++static void raspi_machine_class_init(MachineClass *mc,
++                                     uint32_t board_rev)
++{
++    raspi_machine_class_common_init(mc, board_rev);
++    mc->init = raspi_machine_init;
++};
++
+ static void raspi0_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+ 
+     rmc->board_rev = 0x920092; /* Revision 1.2 */
+-    raspi_machine_class_common_init(mc, rmc->board_rev);
++    raspi_machine_class_init(mc, rmc->board_rev);
+ };
+ 
+ static void raspi1ap_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+ 
+     rmc->board_rev = 0x900021; /* Revision 1.1 */
+-    raspi_machine_class_common_init(mc, rmc->board_rev);
++    raspi_machine_class_init(mc, rmc->board_rev);
+ };
+ 
+ static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+ 
+     rmc->board_rev = 0xa21041;
+-    raspi_machine_class_common_init(mc, rmc->board_rev);
++    raspi_machine_class_init(mc, rmc->board_rev);
+ };
+ 
+ #ifdef TARGET_AARCH64
+ static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+ 
+     rmc->board_rev = 0x9020e0; /* Revision 1.0 */
+-    raspi_machine_class_common_init(mc, rmc->board_rev);
++    raspi_machine_class_init(mc, rmc->board_rev);
+ };
+ 
+ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
++    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+ 
+     rmc->board_rev = 0xa02082;
+-    raspi_machine_class_common_init(mc, rmc->board_rev);
++    raspi_machine_class_init(mc, rmc->board_rev);
+ };
+ #endif /* TARGET_AARCH64 */
+ 
+@@ -394,9 +405,14 @@ static const TypeInfo raspi_machine_types[] = {
+ #endif
+     }, {
+         .name           = TYPE_RASPI_MACHINE,
+-        .parent         = TYPE_MACHINE,
++        .parent         = TYPE_RASPI_BASE_MACHINE,
+         .instance_size  = sizeof(RaspiMachineState),
+-        .class_size     = sizeof(RaspiMachineClass),
++        .abstract       = true,
++    }, {
++        .name           = TYPE_RASPI_BASE_MACHINE,
++        .parent         = TYPE_MACHINE,
++        .instance_size  = sizeof(RaspiBaseMachineState),
++        .class_size     = sizeof(RaspiBaseMachineClass),
+         .abstract       = true,
+     }
+ };
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index ede98e63c3..3018e8fcf3 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -28,6 +28,27 @@
+ #ifndef HW_ARM_RASPI_PLATFORM_H
+ #define HW_ARM_RASPI_PLATFORM_H
+ 
++#include "hw/boards.h"
++#include "hw/arm/boot.h"
++
++#define TYPE_RASPI_BASE_MACHINE MACHINE_TYPE_NAME("raspi-base")
++OBJECT_DECLARE_TYPE(RaspiBaseMachineState, RaspiBaseMachineClass,
++                    RASPI_BASE_MACHINE)
++
++struct RaspiBaseMachineState {
++    /*< private >*/
++    MachineState parent_obj;
++    /*< public >*/
++    struct arm_boot_info binfo;
++};
++
++struct RaspiBaseMachineClass {
++    /*< private >*/
++    MachineClass parent_obj;
++    /*< public >*/
++    uint32_t board_rev;
++};
++
+ #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
+ #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
+ #define INTE_OFFSET             0x2000   /* VC Interrupt controller */
 -- 
 2.34.1
 

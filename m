@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2387629ejb;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2387630ejb;
         Sun, 3 Dec 2023 16:33:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGIZT1VKQcC1rVPW+qdmYv+DgKdafPPDTPu7vDoCSla2OZJ4i+7udRIpj2zMmWi9tivmlEz
-X-Received: by 2002:a25:2517:0:b0:db7:dacf:ed80 with SMTP id l23-20020a252517000000b00db7dacfed80mr1795204ybl.97.1701650021281;
+X-Google-Smtp-Source: AGHT+IG9xtMZUdEvI22Gq+/7o+55qVI/xC6jCXrPl1fehyXETTjmXRGAs1e+RugFUBVaYRDF2E9S
+X-Received: by 2002:ac8:580b:0:b0:403:a8fa:b4f5 with SMTP id g11-20020ac8580b000000b00403a8fab4f5mr4915160qtg.4.1701650021313;
         Sun, 03 Dec 2023 16:33:41 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1701650021; cv=none;
         d=google.com; s=arc-20160816;
-        b=geZ9eiV2/W9FImj+Wb1qRhCC0vwdgk2Rwefj7qni9C9xm31T5V3zOKTWCCCkGRW8LD
-         F+58ZL0j5H8bD4uBjK+dkRzGZd1VCPS/2jSWqA/ANq4QXK2R21lvkeha9Ph8fgjSWZDZ
-         E4rFKCvXSaOAoRMoeXcgHF34ziaBgB0l/s46mMDmZU+OOcVSSwzg1YLSumfw5oO4J5+A
-         3bLoUgz06Gq+MzFpZedIUN9rPMHIxvsFOeaBL/q8CypVH+b/P4PRkw8W9t+a4zBdX895
-         vNyOrQqBEaNIjbKOQop3BsVBknuSf72Qrmwptx685wbehg3jWQ76zilkXam8CapZypnV
-         AugQ==
+        b=ubGjgFDT6fd+auxashrZ9/Y8d5PIJWEeELday1pLMDUw7yImRb0czoxZHOs6u8JiOD
+         84i4YTv1GZX5X+K6hc0r6r/le+YLEMXshSvgonHwt0hUYQFaKMbP38a0OPqZ3qrKv9dJ
+         BNIzOMGk1xQBPR6HVkPkDIBI1NM3qBmG8L1tgMWkmTcbcEBXl8HoZn9+LzXtxN2S6Thl
+         a8fkhG4CY7oEE9Ipo4sUOfCpydi0B8e6V7eyLnFTt5aybWtVUVtVVXt/SyQnveyQ6H+V
+         L0ZKFsFpS/XlIdfywqmKegG8myBa03fAVPjB7Dzl5ukUiRgxSvK9VxAK8EVKVk2PEeIn
+         EODw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Wh1QnDZocCaPOy/8crynrl25nM9IxATZq1B+Q2/YqWE=;
+        bh=3uN6I/0hgCFTTQOiKlRUms5E1PdG9Gf9E46rNDtv+HU=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=QldoI6sdHDc3tR93EiVKviXxDpohmdu8zkKWvCS8vyVQKg+lComANwYANFT+w56sO8
-         U6bG8UKFerL+MRKFBxSPWUFBoDvBzwZlskX/sS7rukSDVWBZq+cVK5Oui8t6V3JZyHwb
-         kG7pfMnwUqDNQTinlRlYQoyIlNigOQnhHgDXkb8rKw8T9Lze7qYDqSypTLzMD72piCLr
-         7DRSFPujtCM4+abvEmLjOQUugiXR12haqKY6iav0kbSaOrDfoEYRiG8itbMm3yI25nkR
-         DQvU/bfDcdddNo4BQybZuTfrqu1avQKzEnlwthXFa3NaVOYEhjMxoanX7iw6aOvzuSP6
-         E7PA==
+        b=dBNWUcAhVNuAFt24CBavZAbq1Aq1YgqbrOa8YG21+pP24meKUXQLcaKDIsM5ldOTyy
+         FWpk9lsQnN3Yp/09tVNy7ZFijn7bdS2NxrvgLh07uZxmGAsDEsYpz3P0zahM8jpqtXNy
+         h6fALhBbPMn/8pBbZzSbAvJMyWxUxOdOGvzeg1CcpBSYR0tv/2EGktljtata+fQOfD/p
+         RIiPDqv7VxhaPVX/zbwhe7lGUSd/VsM0cIUxt7d+W5I2DvKtF78k4JwH5029KT439k2B
+         ojJrTp6jNjiS+3KZSgwGCA4/NdegfWP49eTYltVUe0o89Ukza+9TsLs4B7+ojm7t7m3D
+         1EQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ck3n9HSC;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="iHIoJI/v";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g18-20020ac870d2000000b0042375b6b2c4si8046699qtp.771.2023.12.03.16.33.41
+        by mx.google.com with ESMTPS id bt9-20020ac86909000000b004254853d3d4si3681723qtb.265.2023.12.03.16.33.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 03 Dec 2023 16:33:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ck3n9HSC;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="iHIoJI/v";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9wnq-0004qo-Fo; Sun, 03 Dec 2023 19:27:14 -0500
+	id 1r9woN-0006bk-3I; Sun, 03 Dec 2023 19:27:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnW-0004YS-Li; Sun, 03 Dec 2023 19:26:56 -0500
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1r9wnn-0004mN-N8; Sun, 03 Dec 2023 19:27:11 -0500
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnT-0000BF-Ix; Sun, 03 Dec 2023 19:26:53 -0500
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-5d747dbf81eso10813467b3.1; 
- Sun, 03 Dec 2023 16:26:50 -0800 (PST)
+ id 1r9wnm-0000Hz-00; Sun, 03 Dec 2023 19:27:11 -0500
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-59b5484fbe6so44198147b3.1; 
+ Sun, 03 Dec 2023 16:27:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701649610; x=1702254410; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701649628; x=1702254428; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Wh1QnDZocCaPOy/8crynrl25nM9IxATZq1B+Q2/YqWE=;
- b=ck3n9HSCwwyqar7+iwQKV8wTcix74G3eIzy4yME6CWC/pk0OGBzHZbu8pcNICn4iP1
- qpiTP/MZXr7WgYVCwFI6M5BRA/PqL66w2wozM7Y0wKp1lyliBhzSP/F6gtH2+VNM7DPy
- l1DWHwxu8xIu26vmbSX3aYH1MqqTKCpBvZg8/LYeYe6a3jLXJRFn4+KgoR0iLg540Z9G
- ygaeWYjDHx0JrpwnGJ/9mZxF9kUk4pGdABzj8qeRalQhEIGL8WbZRKUGnF5ZQQvH7N4o
- IkMCAGGd/yGxAy02NAJ/riEKVbVixLcADExaRaZj0WyY7D+O9QThkHuMrGS272HzqEz7
- YY7Q==
+ bh=3uN6I/0hgCFTTQOiKlRUms5E1PdG9Gf9E46rNDtv+HU=;
+ b=iHIoJI/vWjWXZl6xrmg8Zkx88FdX813ngKtNX/4IQ35kdoz6V3sQl7nKp1d68sw4/5
+ coOZ0R6dlXsyme23FT+OryqD1sXG29154us8RLPFBlpulAU1Z9tMJcKsI9bJXGuesUZI
+ x2pgHDnXdgkXpyybTYm3ULtBUPfsuMuEiOK+ekL8wmyD4SJ0zzf6ONyEjID7+Vacf4B2
+ iQ6qrbFa29qqFYiEGq1o/WTj4Pg/xKAn1pZNEC6wIAALYeiAVjeyXGH/iaXxdbB1oysb
+ 4DF92czCZYjLM7uMhNvjQS4Tr9ayZlA2OzjgflijBES0qwLJrYENHH3GAC2fPJs1Nzhe
+ IRqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701649610; x=1702254410;
+ d=1e100.net; s=20230601; t=1701649628; x=1702254428;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Wh1QnDZocCaPOy/8crynrl25nM9IxATZq1B+Q2/YqWE=;
- b=Y8LV2sfkm05Vgzudb/xr0hpPh8rNNZu8V/JV/JM4m+nykr3D7INv6DqYFkLavNxWsy
- tNX2TwZy19PXIZ7OfCHhw3dpcKroqnxp0kUkCNblAKWW6QW3TeEv8QbKYzh75OoqGBXm
- 9lEnZfkGTkiy/EkIJkYK0zo7eJ6MzdTHKgiXv0VDVzfOeeyEex5Ow1B2QdK1lK/XrxxJ
- ye8P72GtL7MyE/ReVxNKRNejl19ZkbcJYQd6j2DuwiR/y4WXih9mgZBzIapStflWcAbu
- 382WeB5Cz01FZBHjrVqxqabIYjiymVMoezk0VCsRbd5CfhEyXLXvoGZYmR16f9QjYLEP
- lA2Q==
-X-Gm-Message-State: AOJu0YwlDP5N1fIXtTKEio4PMXRFI3MN27E9PUNGqtXVszUatyx346bC
- ArI1jG8NHKjOsxD0hfJHM5SgyQfJ51FTmA==
-X-Received: by 2002:a81:830f:0:b0:5d7:1941:ac9 with SMTP id
- t15-20020a81830f000000b005d719410ac9mr2211587ywf.100.1701649609980; 
- Sun, 03 Dec 2023 16:26:49 -0800 (PST)
+ bh=3uN6I/0hgCFTTQOiKlRUms5E1PdG9Gf9E46rNDtv+HU=;
+ b=g5C9VGrOGsdkgSYJmyMf2J8/hunNWBjTqbIlQaVM8ENmTQJ9F+EOAk/0UFBM77U1y8
+ FyZzwmayocEpcjCm7ME13v9bq+zr0XPYed1CzEUP+Csz8TW8K6LKU9d9k9simdGKSQlP
+ nhjhkqzQTvhzLt0EeKGGvcn5AhRar+y6O3oz+6zg6sV7f6gCWoiWQp0ZAr6SSIU89svH
+ vAq0zcI6fBMRUc6VYXuiu3xO0UmpWBMzNvGkXCwa47dRkmM5gnj0PuhgQcBFbGHqysDw
+ 3Za5q5/0ssQ6e0OnMGriVlgWzjVJL0qMvcL4YKDnjGERaXB294/8BcSHnpTu+DgramhZ
+ mKdQ==
+X-Gm-Message-State: AOJu0YyoWXZzVB6FD8Tf9GSDMDgouDwfHL1TjJH/U1RB5xCtSqNacS5y
+ pWPHXO/91Ry/l+lrwAn3lHwEH/GB6+hQJA==
+X-Received: by 2002:a81:8485:0:b0:5d7:1940:b381 with SMTP id
+ u127-20020a818485000000b005d71940b381mr2853019ywf.77.1701649628354; 
+ Sun, 03 Dec 2023 16:27:08 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.48
+ l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.27.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 16:26:49 -0800 (PST)
+ Sun, 03 Dec 2023 16:27:07 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 21/45] Add clock_isp stub
-Date: Sun,  3 Dec 2023 18:25:55 -0600
-Message-Id: <20231204002619.1367044-22-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 35/45] Add mailbox test stub
+Date: Sun,  3 Dec 2023 18:26:09 -0600
+Message-Id: <20231204002619.1367044-36-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 References: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,50 +124,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HQU8Yy2O0WKq
+X-TUID: wUYZ+lTKPRei
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_peripherals.c         | 6 ++++++
- include/hw/arm/bcm2838_peripherals.h | 1 +
- 2 files changed, 7 insertions(+)
+ include/hw/arm/bcm2838_peripherals.h |  2 +
+ tests/qtest/bcm2838-mailbox.c        | 71 ++++++++++++++++++++++++++++
+ tests/qtest/bcm2838-mailbox.h        | 46 ++++++++++++++++++
+ tests/qtest/meson.build              |  1 +
+ 4 files changed, 120 insertions(+)
+ create mode 100644 tests/qtest/bcm2838-mailbox.c
+ create mode 100644 tests/qtest/bcm2838-mailbox.h
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index e9c6d47ba6..65a659c15c 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -17,6 +17,9 @@
- #define PCIE_MMIO_ARM_OFFSET    0x600000000
- #define PCIE_MMIO_SIZE          0x40000000
- 
-+#define CLOCK_ISP_OFFSET        0xc11000
-+#define CLOCK_ISP_SIZE          0x100
-+
- /* Lower peripheral base address on the VC (GPU) system bus */
- #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
- 
-@@ -228,6 +231,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
-                                 &s->pcie_mmio_alias);
- 
-+    create_unimp(s_base, &s->clkisp, "bcm2835-clkisp", CLOCK_ISP_OFFSET,
-+                 CLOCK_ISP_SIZE);
-+
-     /* GPIO */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-         return;
 diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index 0e8465ba34..20b7d1eb67 100644
+index cdeb892f04..2b97e55048 100644
 --- a/include/hw/arm/bcm2838_peripherals.h
 +++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -70,6 +70,7 @@ struct BCM2838PeripheralState {
-     BCM2838Rng200State rng200;
-     Bcm2838ThermalState thermal;
-     SDHCIState emmc2;
-+    UnimplementedDeviceState clkisp;
-     BCM2838PcieHostState pcie_host;
-     BCM2838GpioState gpio;
+@@ -56,6 +56,8 @@
+ #define BCM2838_MPHI_OFFSET     0xb200
+ #define BCM2838_MPHI_SIZE       0x200
  
++#define GENET_OFFSET            0x1580000
++
+ #define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
+ OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
+                     BCM2838_PERIPHERALS)
+diff --git a/tests/qtest/bcm2838-mailbox.c b/tests/qtest/bcm2838-mailbox.c
+new file mode 100644
+index 0000000000..2edc24e15e
+--- /dev/null
++++ b/tests/qtest/bcm2838-mailbox.c
+@@ -0,0 +1,71 @@
++/*
++ * Helper functions to work with BCM2838 mailbox via qtest interface.
++ *
++ * Copyright (c) 2023 Auriga LLC
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/registerfields.h"
++#include "libqtest-single.h"
++#include "bcm2838-mailbox.h"
++
++
++static uint32_t qtest_mbox0_read_reg32(QTestState *s, uint32_t offset)
++{
++    return qtest_readl(s, MBOX0_BASE + offset);
++}
++
++static void qtest_mbox1_write_reg32(QTestState *s, uint32_t offset, uint32_t value)
++{
++    return qtest_writel(s, MBOX1_BASE + offset, value);
++}
++
++static void qtest_mbox1_write(QTestState *s, uint8_t channel, uint32_t data)
++{
++    uint32_t reg;
++
++    reg = FIELD_DP32(reg, MBOX_WRITE_REG, CHANNEL, channel);
++    reg = FIELD_DP32(reg, MBOX_WRITE_REG, DATA, data);
++    qtest_mbox1_write_reg32(s, MBOX_REG_WRITE, reg);
++}
++
++int qtest_mbox0_has_data(QTestState *s) {
++    return !(qtest_mbox0_read_reg32(s, MBOX_REG_STATUS) & MBOX_READ_EMPTY);
++}
++
++int mbox0_has_data(void) {
++    return qtest_mbox0_has_data(global_qtest);
++}
++
++void qtest_mbox0_read_message(QTestState *s,
++                              uint8_t channel,
++                              void *msgbuf,
++                              size_t msgbuf_size)
++{
++    uint32_t reg;
++    uint32_t msgaddr;
++
++    g_assert(qtest_mbox0_has_data(s));
++    reg = qtest_mbox0_read_reg32(s, MBOX_REG_READ);
++    g_assert_cmphex(FIELD_EX32(reg, MBOX_WRITE_REG, CHANNEL), ==, channel);
++    msgaddr = FIELD_EX32(reg, MBOX_WRITE_REG, DATA) << 4;
++    qtest_memread(s, msgaddr, msgbuf, msgbuf_size);
++}
++
++void mbox0_read_message(uint8_t channel, void *msgbuf, size_t msgbuf_size) {
++    qtest_mbox0_read_message(global_qtest, channel, msgbuf, msgbuf_size);
++}
++
++void qtest_mbox1_write_message(QTestState *s, uint8_t channel, uint32_t msg_addr)
++{
++    qtest_mbox1_write(s, channel, msg_addr >> 4);
++}
++
++
++void mbox1_write_message(uint8_t channel, uint32_t msg_addr)
++{
++    qtest_mbox1_write_message(global_qtest, channel, msg_addr);
++}
+diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
+new file mode 100644
+index 0000000000..1d02ca9c2c
+--- /dev/null
++++ b/tests/qtest/bcm2838-mailbox.h
+@@ -0,0 +1,46 @@
++/*
++ * Declarations for BCM2838 mailbox test.
++ *
++ * Copyright (c) 2023 Auriga LLC
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++
++REG32(MBOX_WRITE_REG, 0)
++FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
++FIELD(MBOX_WRITE_REG, DATA, 4, 28)
++
++REG32(MBOX_SIZE_STAT, 0)
++FIELD(MBOX_WRITE_REG, SIZE, 0, 30)
++FIELD(MBOX_WRITE_REG, SUCCESS, 30, 1)
++
++typedef struct {
++    uint32_t size;
++    uint32_t req_resp_code;
++} MboxBufHeader;
++
++#define DECLARE_TAG_TYPE(TypeName, RequestValueType, ResponseValueType) \
++typedef struct {                                                        \
++    uint32_t id;                                                        \
++    uint32_t value_buffer_size;                                         \
++    union {                                                             \
++        struct {                                                        \
++            uint32_t zero;                                              \
++            RequestValueType value;                                     \
++        } request;                                                      \
++        struct {                                                        \
++            uint32_t size_stat;                                         \
++            ResponseValueType value;                                    \
++        } response;                                                     \
++    };                                                                  \
++} TypeName
++
++
++int mbox0_has_data(void);
++void mbox0_read_message(uint8_t channel, void *msgbuf, size_t msgbuf_size);
++void mbox1_write_message(uint8_t channel, uint32_t msg_addr);
++int qtest_mbox0_has_data(QTestState *s);
++void qtest_mbox0_read_message(QTestState *s, uint8_t channel, void *msgbuf, size_t msgbuf_size);
++void qtest_mbox1_write_message(QTestState *s, uint8_t channel, uint32_t msg_addr);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 47dabf91d0..92eba5ac99 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -321,6 +321,7 @@ qtests = {
+   'virtio-net-failover': files('migration-helpers.c'),
+   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
+   'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
++  'bcm2838-mbox-property-test' : files('bcm2838-mailbox.c'),
+ }
+ 
+ if vnc.found()
 -- 
 2.34.1
 

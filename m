@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2386574ejb;
-        Sun, 3 Dec 2023 16:30:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHLp1KphHDmHwwlzvaiDmSwETU1PKAAe6qbXCXqcxlyQH08yh11/Pr3BhLvQcm5HL/zFCFv
-X-Received: by 2002:ad4:4183:0:b0:67a:a721:cb04 with SMTP id e3-20020ad44183000000b0067aa721cb04mr4643492qvp.101.1701649843191;
-        Sun, 03 Dec 2023 16:30:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701649843; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2386823ejb;
+        Sun, 3 Dec 2023 16:31:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH8kE5wyIdHmsqjc2poZrw4SQ0HMr+K5f/IoiRcGPnYxMcv52G6v9ZFsLVNAyjeDQkx8r+J
+X-Received: by 2002:a05:620a:8b87:b0:77e:fba3:93bb with SMTP id qx7-20020a05620a8b8700b0077efba393bbmr3110489qkn.157.1701649882521;
+        Sun, 03 Dec 2023 16:31:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701649882; cv=none;
         d=google.com; s=arc-20160816;
-        b=u11LHVm105S0BBX3kKv2lW1GFXDGFIpnJKnxq6/+GbGUvvJjBa0O7XY6yuQyEjbnH4
-         AiN/CPYjlu10LOytifYPqJHJ5cCPSBrnnWgcfyZD/hUUcC1yux6swOq2+P/3XT+SvA54
-         9+oIfh+OfO+cSYGf3xbN3J/0m9SHZ5JlOknGTF5tZnukdYiXOVPHjW5SiJp3BpEflKmv
-         ufly172ufF171j9XPNedoJiDUFwerSh+SBma+LwVvDK0+Om7UFh2iZVRkVunrL1ZN0Qe
-         wwghaz0aPo5SlJMrfGiqa3/ccQ2ptmiFID4lJjHMRERd0Hkhf+zBIJYGkySFQ6qWnVs8
-         kJgQ==
+        b=K9NPYDap4UAlGV8XxBLNXH7l1cw+m397iHo+HWLoxSxTjlKe0wGolbPVLE/0n/9IiT
+         Uy0i5FVWbPIaIoE/0Wkpv5/WGlcODm76DNmVQO/gdeT+6S6KK5hleUREYpjMsDpAr/e9
+         Ww3XDrNe6k+D2+tMZ2riBeShnep/92ia3EWbu5OMEdMwLbpBOnUVGaJ2zl1+6y262Xq5
+         /JiSgTcSGwrD7K7XMzPKO1Cv/nyPPGoksfCUiZf+gZMcUxt29AgWUxJFGkuSvkOUvJEn
+         puUR5/794Xu7ToO4/vZXwde6dda9c1Hntitfc9780EkH+hVqzMLdvnphHE2QHkqtWY9q
+         0D2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
+        bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=W1pMx3VuOZRfDE5NFqm5TWRjPN7CJfEqgpGPxdPytqFhaxdfL4mvw024iM383g7002
-         CAi3FY2gVIcxdQtMUvb9ADuhwOXoM1qKJyJNv9RVvMtHPuejY1JGtg6kIXcvzfXYc6Vy
-         jbgeG77TOl63xyK1t1g80UT8MxzayGxvTmHYP5Jl1H9U9J7EYt0N7gNxtCH++wZKdMvv
-         B3YLo7vDxzwAUENwqU6pN2G9ZAW6qKjRQB15sJMjQnTeckRscpNB+JCImWNh1Fgfx6J3
-         iKtf9lCJdpH2RsIVRtIlUHpCQ04LK4l5se3QWGwQscyAcDYCbhHcSHk6CP5lJLb2zceO
-         bx1g==
+        b=Qrl7iK3AT3SqcxYZ5RT40CzNCoTfgLvW/WJ+1iBhww5GNj/7QO/PqC/8c9o9GUxAZv
+         kVfLi8n3/fG8pys7YY9Dtms/Pp2Nmdv+EEs9mQIKarelLkQejW8/WLmNGmMOMAY7iJwG
+         scNQ1eKsv1Zw3KuyBh5acWwi9b3jHYN6hHIucmOIPWet1oGN6lhR6Vz5rBVxzy/OpNWL
+         69FTy7iUSRT23xbkHHQTGsjWVOSZJIE94gcWRV0g9of3PA5d1Xg0kvkQAMPU7fG/tA6x
+         v6mT7PQLbjP9tvJs8yh7fqkNvcj09HOIgkcdFEGDlySa/ijBAvLTqm7S1XMnA/LguXxf
+         woyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Rf/kJkD+";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Z4DLMcLU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l16-20020ad44450000000b006593aafe254si3914323qvt.97.2023.12.03.16.30.43
+        by mx.google.com with ESMTPS id qc12-20020a05620a654c00b0077efb9691a0si4336021qkn.189.2023.12.03.16.31.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 16:30:43 -0800 (PST)
+        Sun, 03 Dec 2023 16:31:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Rf/kJkD+";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Z4DLMcLU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9woH-0005rI-1e; Sun, 03 Dec 2023 19:27:41 -0500
+	id 1r9woH-0005s5-3k; Sun, 03 Dec 2023 19:27:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnq-0004qO-9g; Sun, 03 Dec 2023 19:27:14 -0500
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1r9wnq-0004qX-FT; Sun, 03 Dec 2023 19:27:14 -0500
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnn-0000IV-FI; Sun, 03 Dec 2023 19:27:13 -0500
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-5d226f51f71so42973607b3.3; 
- Sun, 03 Dec 2023 16:27:10 -0800 (PST)
+ id 1r9wnk-0000Hl-TJ; Sun, 03 Dec 2023 19:27:14 -0500
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-5d4f71f7e9fso24242957b3.0; 
+ Sun, 03 Dec 2023 16:27:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701649630; x=1702254430; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701649627; x=1702254427; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
- b=Rf/kJkD+WtG7rzFz/3Rd6oMe5GcJJE4iJAEvYxmNW0IY7SehmHy1msq6pntEQW+NZp
- 4TMZZy2HzZ+SunBjEm0gGOYqHzQ2qb4vxNJv5SERzM25N33btTQUx+3tXUncO+4og2oy
- J92eL7UV/s6otOvk5p5L0VoBjNkLptJFY354iIxOudYLq9704Fgp/+kanE4cjDyt7fkc
- RvBweutB/G1Lhk2P8QZ4sqyWbDf0lmjJ0WXipjn+2W1ZGz8oSQFKuOSLjrjha+SHFxrF
- cI/6IED6QGj9OcyKFbD5BzY4mgSO3GxO4Oa6x00fuP3rtY8XEng0mJFLLw8lyfdLguNt
- f8bQ==
+ bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
+ b=Z4DLMcLUJwiSYZyohWg5T7LgHjVcHcn2KmhzgZuJ/KSDwcDbbsCLzL1mP5xjCCkttc
+ DqHAs6qWNeCGjtrFDWnHoXpM0K9IyaY260c5Yfvyr0WAvai45aXzcaISPpYK72z9yDnl
+ 7neAJ+hxcIukXnF6VIdjXSSlMbfFWMtyj50atw6ppgy/KTaZlAAI668mD8G42bLk9D4t
+ 3TB7bp8CRMvbCj2XAFh62j+AjjX1dS+4hTpN4bok8ROXzF+hiFfccpCgmKtLWVPvagBZ
+ TijOHCqH6Byw46XIP+jNxek3SFiXatLQJOK2sE72mIhRaqsp6pDFlaR7BX62NsfBQOc7
+ Vpng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701649630; x=1702254430;
+ d=1e100.net; s=20230601; t=1701649627; x=1702254427;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KE00WoL8kxJ8pW7oRCni4sp/uw+yPOzo+IEwlEl9WAg=;
- b=UMw+YQb0piM5RAdrARoLJ9t7oFbPr1C4DbPYONapKXPlfUW/901YhQiA18V7hC6MuP
- 1SwZfoE5rIRySAu6xPcdfJbJe1ioMg37t/Ie4adnVpbwrlQTvrut1HD1F1NPeWqohsc0
- dclXXNhVUm223CbYuv1IDGoXnphVug9U/HvJgkGD7QZ+LqqkrDjNBap1OScE39fROtqB
- cDgWVcj/+cTF4EZzQFrsWo0/hyOcRfx77TEOXDnWu9+j0859M1vPbcdG35ZLs1NUOkoT
- jGkB4ijEhtRwD4Is2vc5FABoMShILrLkXfqGaVq7mxkm+CoIfyU0h/IF989NEGuIK0jB
- lcQg==
-X-Gm-Message-State: AOJu0Yw9GHNmgGXVZPOlzyC+DM9ghkYDWmtWe0tkBzgIDcPtjv8BiK7i
- wLK3F+uDsIPy2bMUe9joj7rToByfomUdtw==
-X-Received: by 2002:a0d:dfc4:0:b0:5d7:1940:dd93 with SMTP id
- i187-20020a0ddfc4000000b005d71940dd93mr1961095ywe.105.1701649629779; 
- Sun, 03 Dec 2023 16:27:09 -0800 (PST)
+ bh=mcF9QghvfuN/SOxiRcej/fFnaurGCk30s1qkfL8vZWQ=;
+ b=HYK3m4CFuxk0T+fjVtXxhEIRqVM0pvGrcWPt8oQREAE7AAz3G9+ZG1cizWN389vpuk
+ SwSNN+S9C8kStmgY+F0eLMcqSwowWuOxM7LJste5oPwZ8A2EL9G2jRj3jLsB7WNXpAz8
+ QDd7RExZ8RP3EqGNmhqnLcP2+KU2F2OE9x9OCz9PsKmDRPUqAQR83ElOpYypYEDL8uQ0
+ Scm2G9H3hA3rHP/v7L1Jizyygpy3g35izwB597r5GzGCC8uEQxl8s8K0DoVxeR++I2tG
+ /h6rcwsj/ZVkVuG/aY/YqBSTVf+JD0o+IuIaA04md98NDkQfE5jfizCp1cn6rL8hZxEI
+ u7xg==
+X-Gm-Message-State: AOJu0Yy3+3qAXXQinPxmbzZm3J29JFFm9Jz0K281wOkPwVlqn6cBCs6z
+ t/xJ+g9vqVhkOj8neihFvkYuQK04MyrA0w==
+X-Received: by 2002:a81:ac48:0:b0:5d7:1940:dd74 with SMTP id
+ z8-20020a81ac48000000b005d71940dd74mr1930294ywj.74.1701649627201; 
+ Sun, 03 Dec 2023 16:27:07 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.27.08
+ l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.27.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 16:27:09 -0800 (PST)
+ Sun, 03 Dec 2023 16:27:06 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 36/45] Add mailbox test constants
-Date: Sun,  3 Dec 2023 18:26:10 -0600
-Message-Id: <20231204002619.1367044-37-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 34/45] Add Rpi4b boot tests
+Date: Sun,  3 Dec 2023 18:26:08 -0600
+Message-Id: <20231204002619.1367044-35-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 References: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,163 +124,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nlz/Ikq8Slp0
+X-TUID: tMsup7VcZKfT
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mailbox.h | 139 ++++++++++++++++++++++++++++++++++
- 1 file changed, 139 insertions(+)
+ tests/avocado/boot_linux_console.py | 92 +++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
 
-diff --git a/tests/qtest/bcm2838-mailbox.h b/tests/qtest/bcm2838-mailbox.h
-index 1d02ca9c2c..8acc4bd2ff 100644
---- a/tests/qtest/bcm2838-mailbox.h
-+++ b/tests/qtest/bcm2838-mailbox.h
-@@ -7,6 +7,145 @@
-  * See the COPYING file in the top-level directory.
-  */
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 6eab515718..62aac02bbb 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -501,6 +501,98 @@ def test_arm_raspi2_initrd(self):
+         # Wait for VM to shut down gracefully
+         self.vm.wait()
  
-+#define MBOX0_BASE 0xFE00B880
-+#define MBOX1_BASE 0xFE00B8A0
++    def test_arm_raspi4(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi4b2g
++        :avocado: tags=device:pl011
++        :avocado: tags=accel:tcg
++        :avocado: tags=rpi4b
 +
-+#define MBOX_REG_READ   0x00
-+#define MBOX_REG_WRITE  0x00
-+#define MBOX_REG_PEEK   0x10
-+#define MBOX_REG_SENDER 0x14
-+#define MBOX_REG_STATUS 0x18
-+#define MBOX_REG_CONFIG 0x1C
++        The kernel can be rebuilt using the kernel source referenced
++        and following the instructions on the on:
++        https://www.raspberrypi.org/documentation/linux/kernel/building.md
++        """
 +
-+#define MBOX_READ_EMPTY 0x40000000
++        deb_url = ('http://archive.raspberrypi.org/debian/'
++            'pool/main/r/raspberrypi-firmware/'
++            'raspberrypi-kernel_1.20230106-1_arm64.deb')
++        deb_hash = '08dc55696535b18a6d4fe6fa10d4c0d905cbb2ed'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel8.img')
++        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2711-rpi-4-b.dtb')
 +
-+#define MBOX_CHANNEL_ID_PROPERTY 8
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,mmio32,0xfe201000 ' +
++                               'console=ttyAMA0,115200 ' +
++                               'root=/dev/mmcblk1p2 rootwait ' +
++                               'dwc_otg.fiq_fsm_enable=0')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-append', kernel_command_line,
++                         '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
++                         '-device', 'usb-kbd,bus=xhci.0')
++        self.vm.launch()
++        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        self.wait_for_console_pattern(console_pattern)
++        console_pattern = 'Product: QEMU USB Keyboard'
++        self.wait_for_console_pattern(console_pattern)
 +
-+#define MBOX_PROCESS_REQUEST      0x00000000
-+#define MBOX_SUCCESS              0x80000000
-+#define MBOX_ERROR_PARSING_BUFFER 0x80000001
 +
-+#define TAG_END                    0x00000000
-+#define TAG_GET_FIRMWARE_REVISION  0x00000001
-+#define TAG_GET_FIRMWARE_VARIANT   0x00000002
-+#define TAG_GET_BOARD_REVISION     0x00010002
-+#define TAG_GET_ARM_MEMORY         0x00010005
-+#define TAG_GET_VC_MEMORY          0x00010006
-+#define TAG_SET_DEVICE_POWER_STATE 0x00028001
-+#define TAG_GET_CLOCK_STATE        0x00030001
-+#define TAG_GET_CLOCK_RATE         0x00030002
-+#define TAG_GET_MAX_CLOCK_RATE     0x00030004
-+#define TAG_GET_MIN_CLOCK_RATE     0x00030007
-+#define TAG_GET_CLOCKS             0x00010007
-+#define TAG_GET_TEMPERATURE        0x00030006
-+#define TAG_GET_MAX_TEMPERATURE    0x0003000a
-+#define TAG_ALLOCATE_BUFFER        0x00040001
-+#define TAG_RELEASE_FRAMEBUFFER    0x00048001
-+#define TAG_BLANK_FRAMEBUFFER      0x00040002
-+#define TAG_GET_FB_PHYS_WIDTH      0x00040003
-+#define TAG_TEST_FB_PHYS_WIDTH     0x00044003
-+#define TAG_SET_FB_PHYS_WIDTH      0x00048003
-+#define TAG_GET_FB_VIRT_WIDTH      0x00040004
-+#define TAG_TEST_FB_VIRT_WIDTH     0x00044004
-+#define TAG_SET_FB_VIRT_WIDTH      0x00048004
-+#define TAG_GET_FB_DEPTH           0x00040005
-+#define TAG_TEST_FB_DEPTH          0x00044005
-+#define TAG_SET_FB_DEPTH           0x00048005
-+#define TAG_GET_PIXEL_ORDER        0x00040006
-+#define TAG_TEST_PIXEL_ORDER       0x00044006
-+#define TAG_SET_PIXEL_ORDER        0x00048006
-+#define TAG_GET_FB_ALPHA_MODE      0x00040007
-+#define TAG_TEST_FB_ALPHA_MODE     0x00044007
-+#define TAG_SET_FB_ALPHA_MODE      0x00048007
-+#define TAG_GET_PITCH              0x00040008
-+#define TAG_SET_PITCH              0x00048008
-+#define TAG_GET_VIRTUAL_OFFSET     0x00040009
-+#define TAG_TEST_VIRTUAL_OFFSET    0x00044009
-+#define TAG_SET_VIRTUAL_OFFSET     0x00048009
-+#define TAG_GET_OVERSCAN           0x0004000a
-+#define TAG_TEST_OVERSCAN          0x0004400a
-+#define TAG_SET_OVERSCAN           0x0004800a
-+#define TAG_SET_PALETTE            0x0004800b
-+#define TAG_GET_COMMANDLINE        0x00050001
-+#define TAG_GET_DMA_CHANNELS       0x00060001
-+#define TAG_GET_THROTTLED          0x00030046
-+#define TAG_GET_NUM_DISPLAYS       0x00040013
-+#define TAG_GET_DISPLAY_SETTINGS   0x00040014
-+#define TAG_GET_GPIO_CONFIG        0x00030043
-+#define TAG_SET_GPIO_CONFIG        0x00038043
-+#define TAG_GET_GPIO_STATE         0x00030041
-+#define TAG_SET_GPIO_STATE         0x00038041
-+#define TAG_INITIALIZE_VCHIQ       0x00048010
++    def test_arm_raspi4_initrd(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi4b2g
++        :avocado: tags=device:pl011
++        :avocado: tags=accel:tcg
++        :avocado: tags=rpi4b
 +
-+#define BOARD_REVISION    11546898
-+#define FIRMWARE_REVISION 346337
-+#define FIRMWARE_VARIANT  0x77777777 /* TODO: Find the real value */
++        The kernel can be rebuilt using the kernel source referenced
++        and following the instructions on the on:
++        https://www.raspberrypi.org/documentation/linux/kernel/building.md
++        """
++        deb_url = ('http://archive.raspberrypi.org/debian/'
++            'pool/main/r/raspberrypi-firmware/'
++            'raspberrypi-kernel_1.20230106-1_arm64.deb')
++        deb_hash = '08dc55696535b18a6d4fe6fa10d4c0d905cbb2ed'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path, '/boot/kernel8.img')
++        dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2711-rpi-4-b.dtb')
 +
-+#define ARM_MEMORY_BASE 0x00000000
-+#define ARM_MEMORY_SIZE 0x3c000000
-+#define VC_MEMORY_BASE  0x3c000000
-+#define VC_MEMORY_SIZE  0x04000000
-+#define VC_FB_BASE      0x3c100000
-+#define VC_FB_SIZE      0x00096000
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '86b2be1384d41c8c388e63078a847f1e1c4cb1de/rootfs/'
++                      'arm64/rootfs.cpio.gz')
++        initrd_hash = 'f3d4f9fa92a49aa542f1b44d34be77bbf8ca5b9d'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.gzip_uncompress(initrd_path_gz, initrd_path)
 +
-+#define CLOCK_ID_ROOT      0x00000000
-+#define CLOCK_ID_EMMC      0x00000001
-+#define CLOCK_ID_UART      0x00000002
-+#define CLOCK_ID_ARM       0x00000003
-+#define CLOCK_ID_CORE      0x00000004
-+#define CLOCK_ID_UNDEFINED 0x12345678
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,mmio32,0xfe201000 ' +
++                               'console=ttyAMA0,115200 ' +
++                               'panic=-1 noreboot ' +
++                               'dwc_otg.fiq_fsm_enable=0')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-initrd', initrd_path,
++                         '-append', kernel_command_line,
++                         '-device', 'qemu-xhci,bus=pcie.1,id=xhci',
++                         '-device', 'usb-kbd,bus=xhci.0',
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
 +
-+#define CLOCK_RATE_EMMC 50000000
-+#define CLOCK_RATE_UART 3000000
-+#define CLOCK_RATE_CORE 350000000
-+#define CLOCK_RATE_ANY  700000000
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'BCM2835')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'cprman@7e101000')
++        exec_command_and_wait_for_pattern(self, 'halt', 'reboot: System halted')
++        # TODO: Raspberry Pi4 doesn't shut down properly with recent kernels
++        # Wait for VM to shut down gracefully
++        #self.vm.wait()
 +
-+#define DEVICE_ID_SD_CARD   0x00000000
-+#define DEVICE_ID_UART0     0x00000001
-+#define DEVICE_ID_UART1     0x00000002
-+#define DEVICE_ID_USB HCD   0x00000003
-+#define DEVICE_ID_I2C0      0x00000004
-+#define DEVICE_ID_I2C1      0x00000005
-+#define DEVICE_ID_I2C2      0x00000006
-+#define DEVICE_ID_SPI       0x00000007
-+#define DEVICE_ID_CCP2TX    0x00000008
-+#define DEVICE_ID_UNKNOWN_0 0x00000009
-+#define DEVICE_ID_UNKNOWN_1 0x0000000a
-+
-+#define TEMPERATURE_ID_SOC 0x00000000
-+
-+#define TEMPERATURE_SOC     25000
-+#define TEMPERATURE_SOC_MAX 99000
-+
-+#define ALIGN_4K 4096
-+
-+#define PIXEL_ORDER_BGR 0
-+#define PIXEL_ORDER_RGB 1
-+
-+#define ALPHA_MODE_ENABLED  0
-+#define ALPHA_MODE_REVERSED 1
-+#define ALPHA_MODE_IGNORED  2
-+
-+#define GPIO_MASK 0x003c
-+
-+#define GPIO_0 0x00000080
-+
-+#define GPIO_DIRECTION_IN  0
-+#define GPIO_DIRECTION_OUT 1
-+
-+#define GPIO_TERMINATION_DISABLED 0
-+#define GPIO_TERMINATION_ENABLED  1
-+
-+#define GPIO_TERMINATION_PULLUP_DISABLED 0
-+#define GPIO_TERMINATION_PULLUP_ENABLED  1
-+
-+#define GPIO_POLARITY_LOW  0
-+#define GPIO_POLARITY_HIGH 1
-+
-+#define GPIO_STATE_DOWN 0
-+
-+/* Used to test stubs that don't perform actual work */
-+#define DUMMY_VALUE 0x12345678
- 
- REG32(MBOX_WRITE_REG, 0)
- FIELD(MBOX_WRITE_REG, CHANNEL, 0, 4)
+     def test_arm_exynos4210_initrd(self):
+         """
+         :avocado: tags=arch:arm
 -- 
 2.34.1
 

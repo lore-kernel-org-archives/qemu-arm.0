@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2386844ejb;
-        Sun, 3 Dec 2023 16:31:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEsvij8SsywvYUd53W5KDNITqzVk1UIakvCsKS4PczA++y3OmEw0O0B1ZHfg136aviHehMG
-X-Received: by 2002:ad4:4d4e:0:b0:67a:a721:b1af with SMTP id m14-20020ad44d4e000000b0067aa721b1afmr3763850qvm.106.1701649884653;
-        Sun, 03 Dec 2023 16:31:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701649884; cv=none;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2386889ejb;
+        Sun, 3 Dec 2023 16:31:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGwBTbKYF0kXG4RyBEsJGDAhsSX49cGSX2G0nPhP5hHhU+rJ9+jBxa4YxMPiN5Tpdovfgvx
+X-Received: by 2002:ac8:5bc6:0:b0:425:4043:5f1d with SMTP id b6-20020ac85bc6000000b0042540435f1dmr5305896qtb.91.1701649892204;
+        Sun, 03 Dec 2023 16:31:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701649892; cv=none;
         d=google.com; s=arc-20160816;
-        b=EeNfFocj7vgckRYrTIfzDVu/L16TV8OYb2gOIuTySS4SZVXM8Reo2BqCkv203y6gR8
-         cv4HMAYWxJ1s/rPMHlh+CCZeNzZbBrbpiJnNyCnl88YkK3AXhN2WGr+885mLj2bQHraL
-         Cwasnss7yzGSs5ILUYSbJexHSuchiiCk+j05VDiKJeMFF21EMTmCZHtOQvOc1mWQ1E0M
-         RBZl1nDOpUGD4wKsxtSKQIHCu7kkYzKi7gklIyf8NCLp/iVKTAuvcgexax1kmqK425HM
-         tHFY+GaWIAkATshU1FikcxiKz15Tq3fCSwZjSeA1PwxUOnUPuClAW9G6MCy7pqCHnyy8
-         AsjQ==
+        b=dIixfSu0Ecl+GFbVw+8xjOmQuB52+T+PJHE7JjAU7qNg5pYWr5SYv4umL5d17bBHmZ
+         zCM0qJgtK81TmkRSOUMKwzqGm5aNr6QTm1EoIE75bTyAlHg70vYRRMTAgTF8BbTv1tYn
+         8APbxK7Jt9MxfEJ8+cp9ahpugtoh5qqgVuRqmWV368nZIadJHaWxQklCBgOtmxSNtQiZ
+         rdU9i/CZdXUyANkyix3w7iKMTyBJ8y3xBP+RGSZOEAFM2/0Bttffk+kFVhI74mrvnish
+         Kh8bDqK8vVgnUWzQDA7tXTcfu0nOisFukhIDabI8uJfD+R6Bzr0mISqrlCNwwIw1AFhd
+         w8eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=eUhfHOrUd6d5xBzm5sqO9HHOnia+nQ7EbvYxlC8xMp8=;
+        bh=pjKhO+PzqqrLoVjDzrdEJqubBSeVITy6r+qEgUKg3Ec=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=X/olwFHrSZgleKhmq36RMA2b3dm3L6nQTRRE40zvHb5QOAIj0cdQMwZ4aZLfhgUusw
-         JjmDXMnZ0lyM2mbAQIz9J1IDzYTHho9Tjpe8WEdf82wHbhganG4DnmNy2HgR0zH1jya4
-         4Y4j7X9oHrt/ONEphqObK6K9igPoM2F4CDWTue2sSKkOxeBWJIEY4wuLeyNEH4rM5p3F
-         1hPL9jucyRpcH6isaJpmaocTr7oC6WE6y5OrojsMuOY24vS4tGzgdxSh82qYllBHL+45
-         9LSOtD0hVQcV+cKHWApEREcEAuBf0SLyoVKXhordP38DSVU7Opl9ouWFBA4yPwexPbp1
-         VK4g==
+        b=jSMXAs8cfYKbVBPq6JyhGzm8v3SlebolLbH1G5JO/tnCnvAwScFKzJIW/A4IddIaRH
+         zOkuIto5uKoWGOGsY7uUuHK40t3RLbSXbuk4mQ9OmBQLumZpfZBZNcjWaMk3faNADDDd
+         zGyz7dWFj6EYaY/isD5ysoQkypAq0B9GoD4QlJhddxjX7IiWQ0q7xFg/Qlhm7b8cuU+H
+         gT/T8X6+UWSBxFTAGNWvsybB+0GbAim6us0xo0Qw45XOZgbv40vMhqhSpgauSFs5+zKK
+         T4/qiDjYLgUkro2794A8hDpAOGVMolmoDJIy0COfOb5HkrwJgbCVrmHMCmrZg/c7UNrF
+         oR/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JyMcH7yL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="cpBst/ZY";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qf24-20020a0562144b9800b0067ab557459fsi3253280qvb.305.2023.12.03.16.31.24
+        by mx.google.com with ESMTPS id d8-20020ac80608000000b0041803fe8db8si7814477qth.293.2023.12.03.16.31.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 16:31:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 03 Dec 2023 16:31:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JyMcH7yL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="cpBst/ZY";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1r9wni-0004fN-NA; Sun, 03 Dec 2023 19:27:07 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1r9woS-00077b-3W; Sun, 03 Dec 2023 19:27:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnK-0004Ue-6K; Sun, 03 Dec 2023 19:26:43 -0500
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ id 1r9wny-00051b-HG; Sun, 03 Dec 2023 19:27:24 -0500
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnF-00007i-BX; Sun, 03 Dec 2023 19:26:39 -0500
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-59b5484fbe6so44195457b3.1; 
- Sun, 03 Dec 2023 16:26:36 -0800 (PST)
+ id 1r9wnw-0000Kq-VV; Sun, 03 Dec 2023 19:27:22 -0500
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-5cbcfdeaff3so46283097b3.0; 
+ Sun, 03 Dec 2023 16:27:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701649595; x=1702254395; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701649639; x=1702254439; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=eUhfHOrUd6d5xBzm5sqO9HHOnia+nQ7EbvYxlC8xMp8=;
- b=JyMcH7yLPDvFMdpHLXeOr73ZsXu7peuDnH4takITdUnFNRE45ngJ2iu9gEREqeVxaM
- DqOx2YyWp0D/gK8EPQprmqP60Z+LGWATo4aUA2QdPEyxRa+d1BCobCk/GKAJIZKHFn5d
- 8dVz9qgpM6YlC05QmxDl60UpTYmkp+lTFfCHyVl0Dk0gsbpMYAm+zA8Ik67S6MXeK16I
- jOnCWK2D/EbJyweJKWAfYYKfZzaTlojKUrdV1SVZ4V/zsi2NNJ2bJnKD40qvjO4aLH69
- 0+UauyZbQlz5P6YBRDVq4XLe1jJa+/TwW1LC3HPygkxu8c27/kAag0uel2G3APtsAn4S
- x9aw==
+ bh=pjKhO+PzqqrLoVjDzrdEJqubBSeVITy6r+qEgUKg3Ec=;
+ b=cpBst/ZYSaL9c7a6DR+/F784kiHlijwZcFysNqFZZwBIGx4cBYkm7drmRUu/5BqjWA
+ GBKTr4x2Hk7+IhRM7XAxt06Jbced7RGmnlLC4troO7mQdFyl67/tVWGOZhnWUFgYvuuQ
+ 6mwSc9+yUl86pobgL+BJZvrPsgySLkFluorYSET0vC+3/+Skj9k+S2faac3z/+LOataJ
+ xBxNOIeiLMdTwBh8P5Qo4mimt05b795SMjQwJH/qtkOjeeDoyQxHOPcZYJSoUHxANWQN
+ ScosK403tfKx+QmLjViXxA7CNHKxrVGZGkfV0uncqX5rxj8F8SXj0N2B4FAniMERul/U
+ g0nQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701649595; x=1702254395;
+ d=1e100.net; s=20230601; t=1701649639; x=1702254439;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eUhfHOrUd6d5xBzm5sqO9HHOnia+nQ7EbvYxlC8xMp8=;
- b=cteoixhRd+/wbSpTQ80TPvMWt+0v3amiRcS+zZIkfJM0h81NuQvxP6+97Nde3aWa/L
- b6BNRhM499RNd3O8t9D+L9UhnpKJM85LvEs8GZm9a0j5BxlDuIrIfWNZOcSiHtdwCdUp
- Qb5fcdvJVjJprPnvbfBHodMpI1xsVTucGN8M7KlnoyqtClIl+M5UzUYhzWu1xaHWB4nT
- yrq7YUy6w/4GvJSHh64feQww+HZkCkwrMOVPGY9jPZLgkELRfWsq2On4mbssUzW3SaBS
- tY9HZQopPPrdQeusFx6iQvMoyn2shU+GXorpai8dh4e7RO9Zi2hj3KpdJwtxb8cQ78NF
- l5gA==
-X-Gm-Message-State: AOJu0YzvaSWu/bpoGzJkf9n6XzkLNITm1wwqD08vzYQXWJX3m/bw20Cn
- j1OUPMSeJeXgajkS0tp9r1GsKD3LsUBYsQ==
-X-Received: by 2002:a05:690c:350c:b0:5d7:3463:e66c with SMTP id
- fq12-20020a05690c350c00b005d73463e66cmr2741021ywb.89.1701649595358; 
- Sun, 03 Dec 2023 16:26:35 -0800 (PST)
+ bh=pjKhO+PzqqrLoVjDzrdEJqubBSeVITy6r+qEgUKg3Ec=;
+ b=IvQtqeNHZtjCV9jySPqAzguyrgc+NLZBBltdCUmNb1/T4QUI93RK5lkSgQe5bAB8jP
+ GzXbBuoihdCSjGj+f9DNojk5VFEyNlVbmirOY6aO13Tpebpuqah2mzALLgdHRN0+kiiD
+ zMOTKHvnhEMymWUDgJhUmR/1Be09tAGEJVVbfr8K+JWeilXMuVZC8WflI0PQPAcc1RYY
+ haBWiz+Na/A6PrjBcoDTiVZmBAQxgJHjh2Adi+8HFQeuMnTU1PvbYozvKFlKSEbmWErX
+ sgKYMZuWKs6lH0zOX8qks/VhoZ+w2btU9U1xANG/S1NIVFJvAtJpkKmH8vGeZvM/jgcR
+ 2WPA==
+X-Gm-Message-State: AOJu0YxPfOYmzhnBDbG17bcrf72zH5BjSSwE201tjMpzcCjc/4NomefZ
+ 6VDChSaBoEGJOcxdomfpgsZlllr0llnkLA==
+X-Received: by 2002:a81:4325:0:b0:5d7:1940:f3dc with SMTP id
+ q37-20020a814325000000b005d71940f3dcmr2489624ywa.68.1701649639384; 
+ Sun, 03 Dec 2023 16:27:19 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.34
+ l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.27.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 16:26:34 -0800 (PST)
+ Sun, 03 Dec 2023 16:27:19 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 09/45] Add GPIO and SD to BCM2838 periph
-Date: Sun,  3 Dec 2023 18:25:43 -0600
-Message-Id: <20231204002619.1367044-10-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 44/45] Append added properties to mailbox test
+Date: Sun,  3 Dec 2023 18:26:18 -0600
+Message-Id: <20231204002619.1367044-45-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 References: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,235 +111,87 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E73AzlMsYFdp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0g6plUaZSOUw
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_peripherals.c         | 140 +++++++++++++++++++++++++++
- include/hw/arm/bcm2838_peripherals.h |   9 ++
- 2 files changed, 149 insertions(+)
+ tests/qtest/bcm2838-mbox-property-test.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index 06110c724f..c147b6e453 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -15,22 +15,53 @@
- /* Lower peripheral base address on the VC (GPU) system bus */
- #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
- 
-+/* Capabilities for SD controller: no DMA, high-speed, default clocks etc. */
-+#define BCM2835_SDHC_CAPAREG 0x52134b4
-+
- static void bcm2838_peripherals_init(Object *obj)
- {
-     BCM2838PeripheralState *s = BCM2838_PERIPHERALS(obj);
-     BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_GET_CLASS(obj);
-+    RaspiPeripheralBaseState *s_base = RASPI_PERIPHERALS_BASE(obj);
- 
-     /* Lower memory region for peripheral devices (exported to the Soc) */
-     memory_region_init(&s->peri_low_mr, obj, "bcm2838-peripherals",
-                        bc->peri_low_size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
- 
-+    /* Extended Mass Media Controller 2 */
-+    object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
-+
-+    /* GPIO */
-+    object_initialize_child(obj, "gpio", &s->gpio, TYPE_BCM2838_GPIO);
-+
-+    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
-+                                   OBJECT(&s_base->sdhci.sdbus));
-+    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhost",
-+                                   OBJECT(&s_base->sdhost.sdbus));
-+
-+    object_initialize_child(obj, "mmc_irq_orgate", &s->mmc_irq_orgate,
-+                            TYPE_OR_IRQ);
-+    object_property_set_int(OBJECT(&s->mmc_irq_orgate), "num-lines", 2,
-+                            &error_abort);
-+
-+    object_initialize_child(obj, "dma_7_8_irq_orgate", &s->dma_7_8_irq_orgate,
-+                            TYPE_OR_IRQ);
-+    object_property_set_int(OBJECT(&s->dma_7_8_irq_orgate), "num-lines", 2,
-+                            &error_abort);
-+
-+    object_initialize_child(obj, "dma_9_10_irq_orgate", &s->dma_9_10_irq_orgate,
-+                            TYPE_OR_IRQ);
-+    object_property_set_int(OBJECT(&s->dma_9_10_irq_orgate), "num-lines", 2,
-+                            &error_abort);
+diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
+index 1b4a2ed9cb..3a2e7f9194 100644
+--- a/tests/qtest/bcm2838-mbox-property-test.c
++++ b/tests/qtest/bcm2838-mbox-property-test.c
+@@ -269,6 +269,12 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
+     tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
  }
  
- static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
- {
-+    MemoryRegion *mphi_mr;
-     BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
-     BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
-+    int n;
- 
-     bcm_soc_peripherals_common_realize(dev, errp);
- 
-@@ -42,6 +73,115 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-                                         BCM2838_VC_PERI_LOW_BASE,
-                                         &s->peri_low_mr_alias, 1);
- 
-+    /* Extended Mass Media Controller 2 */
-+    object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
-+                             &error_abort);
-+    object_property_set_uint(OBJECT(&s->emmc2), "capareg",
-+                             BCM2835_SDHC_CAPAREG, &error_abort);
-+    object_property_set_bool(OBJECT(&s->emmc2), "pending-insert-quirk", true,
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->emmc2), errp)) {
-+        return;
-+    }
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCKS) {
++    g_assert_cmphex(tag->response.value.root_clock, ==, CLOCK_ID_ROOT);
++    g_assert_cmphex(tag->response.value.arm_clock, ==, CLOCK_ID_ARM);
++}
 +
-+    memory_region_add_subregion(
-+        &s_base->peri_mr, EMMC2_OFFSET,
-+        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->emmc2), 0));
-+
-+    /* According to DTS, EMMC and EMMC2 share one irq */
-+    if (!qdev_realize(DEVICE(&s->mmc_irq_orgate), NULL, errp)) {
-+        return;
-+    }
-+
-+    DeviceState *mmc_irq_orgate = DEVICE(&s->mmc_irq_orgate);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc2), 0,
-+                        qdev_get_gpio_in(mmc_irq_orgate, 0));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->sdhci), 0,
-+                        qdev_get_gpio_in(mmc_irq_orgate, 1));
-+
-+   /* Connect EMMC and EMMC2 to the interrupt controller */
-+    qdev_connect_gpio_out(mmc_irq_orgate, 0,
-+                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                 BCM2835_IC_GPU_IRQ,
-+                                                 INTERRUPT_ARASANSDIO));
-+
-+    /* Connect DMA 0-6 to the interrupt controller */
-+    for (n = 0; n < 7; n++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), n,
-+                           qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                  BCM2835_IC_GPU_IRQ,
-+                                                  GPU_INTERRUPT_DMA0 + n));
-+    }
-+
-+   /* According to DTS, DMA 7 and 8 share one irq */
-+    if (!qdev_realize(DEVICE(&s->dma_7_8_irq_orgate), NULL, errp)) {
-+        return;
-+    }
-+    DeviceState *dma_7_8_irq_orgate = DEVICE(&s->dma_7_8_irq_orgate);
-+
-+    /* Connect DMA 7-8 to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 7,
-+                       qdev_get_gpio_in(dma_7_8_irq_orgate, 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 8,
-+                       qdev_get_gpio_in(dma_7_8_irq_orgate, 1));
-+
-+    qdev_connect_gpio_out(dma_7_8_irq_orgate, 0,
-+                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                 BCM2835_IC_GPU_IRQ,
-+                                                 GPU_INTERRUPT_DMA7_8));
-+
-+     /* According to DTS, DMA 9 and 10 share one irq */
-+    if (!qdev_realize(DEVICE(&s->dma_9_10_irq_orgate), NULL, errp)) {
-+        return;
-+    }
-+    DeviceState *dma_9_10_irq_orgate = DEVICE(&s->dma_9_10_irq_orgate);
-+
-+   /* Connect DMA 9-10 to the interrupt controller */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 9,
-+                       qdev_get_gpio_in(dma_9_10_irq_orgate, 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 10,
-+                       qdev_get_gpio_in(dma_9_10_irq_orgate, 1));
-+
-+    qdev_connect_gpio_out(dma_9_10_irq_orgate, 0,
-+                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                 BCM2835_IC_GPU_IRQ,
-+                                                 GPU_INTERRUPT_DMA9_10));
-+
-+    /* Connect DMA 11-14 to the interrupt controller */
-+    for (n = 11; n < 15; n++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), n,
-+                           qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                                  BCM2835_IC_GPU_IRQ,
-+                                                  GPU_INTERRUPT_DMA11 + n
-+                                                  - 11));
-+    }
-+
-+    /*
-+     * Connect DMA 15 to the interrupt controller, it is physically removed
-+     * from other DMA channels and exclusively used by the GPU
-+     */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), 15,
-+                        qdev_get_gpio_in_named(DEVICE(&s_base->ic),
-+                                               BCM2835_IC_GPU_IRQ,
-+                                               GPU_INTERRUPT_DMA15));
-+
-+    /* Map MPHI to BCM2838 memory map */
-+    mphi_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s_base->mphi), 0);
-+    memory_region_init_alias(&s->mphi_mr_alias, OBJECT(s), "mphi", mphi_mr, 0,
-+                             BCM2838_MPHI_SIZE);
-+    memory_region_add_subregion(&s_base->peri_mr, BCM2838_MPHI_OFFSET,
-+                                &s->mphi_mr_alias);
-+
-+    /* GPIO */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(
-+        &s_base->peri_mr, GPIO_OFFSET,
-+        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
-+
-+    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
+ /*----------------------------------------------------------------------------*/
+ DECLARE_TEST_CASE(GET_TEMPERATURE) {
+     g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
+@@ -535,17 +541,19 @@ DECLARE_TEST_CASE(GET_COMMANDLINE) {
+     /* No special checks are needed for this test case */
  }
  
- static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index d07831753a..0a87645e01 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -10,6 +10,8 @@
- #define BCM2838_PERIPHERALS_H
- 
- #include "hw/arm/bcm2835_peripherals.h"
-+#include "hw/sd/sdhci.h"
-+#include "hw/gpio/bcm2838_gpio.h"
- 
- /* SPI */
- #define GIC_SPI_INTERRUPT_MBOX         33
-@@ -45,6 +47,9 @@
- #define GPU_INTERRUPT_DMA14     28
- #define GPU_INTERRUPT_DMA15     31
- 
-+#define BCM2838_MPHI_OFFSET     0xb200
-+#define BCM2838_MPHI_SIZE       0x200
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_THROTTLED) {
++    g_assert_cmpint(tag->response.value.throttled, ==, 0);
++}
 +
- #define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
- OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
-                     BCM2838_PERIPHERALS)
-@@ -58,6 +63,10 @@ struct BCM2838PeripheralState {
-     MemoryRegion peri_low_mr_alias;
-     MemoryRegion mphi_mr_alias;
+ /*----------------------------------------------------------------------------*/
+ DECLARE_TEST_CASE(GET_NUM_DISPLAYS) {
+     g_assert_cmpint(tag->response.value.num_displays, ==, 1);
+ }
  
-+    SDHCIState emmc2;
-+    UnimplementedDeviceState clkisp;
-+    BCM2838GpioState gpio;
-+
-     OrIRQState mmc_irq_orgate;
-     OrIRQState dma_7_8_irq_orgate;
-     OrIRQState dma_9_10_irq_orgate;
+ /*----------------------------------------------------------------------------*/
+-DECLARE_TEST_CASE(SET_PITCH) {
+-    /* No special checks are needed for this test case */
+-}
+-DECLARE_TEST_CASE_SETUP(SET_PITCH) {
+-    tag->request.value.pitch = DUMMY_VALUE;
++DECLARE_TEST_CASE(INITIALIZE_VCHIQ) {
++    g_assert_cmpint(tag->response.value.zero, ==, 0);
+ }
+ 
+ /*----------------------------------------------------------------------------*/
+@@ -571,6 +579,7 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
+     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
+     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_CLOCKS);
+     QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
+     QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
+     QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
+@@ -604,8 +613,9 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(SET_OVERSCAN);
+     QTEST_ADD_TEST_CASE(GET_DMA_CHANNELS);
+     QTEST_ADD_TEST_CASE(GET_COMMANDLINE);
++    QTEST_ADD_TEST_CASE(GET_THROTTLED);
+     QTEST_ADD_TEST_CASE(GET_NUM_DISPLAYS);
+-    QTEST_ADD_TEST_CASE(SET_PITCH);
++    QTEST_ADD_TEST_CASE(INITIALIZE_VCHIQ);
+ 
+     return g_test_run();
+ }
 -- 
 2.34.1
 

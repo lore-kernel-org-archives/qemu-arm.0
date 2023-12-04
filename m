@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2385699ejb;
+Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2385705ejb;
         Sun, 3 Dec 2023 16:28:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH8eKxDQHWfiNrQ7tEALCjToo7TB++GbYxz/4Tl2J+BvWVrZy7K1q3pMeJYXuLbr2fHd/RX
-X-Received: by 2002:a05:620a:4627:b0:77d:99c3:a2da with SMTP id br39-20020a05620a462700b0077d99c3a2damr5243713qkb.78.1701649686965;
-        Sun, 03 Dec 2023 16:28:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701649686; cv=none;
+X-Google-Smtp-Source: AGHT+IEDZJUEMQ3+/P3kRusFdUfOC3eWiszlWzEjkP5RRr7MokOzWRs+4P0uow07XSp/KwVCIlDf
+X-Received: by 2002:a0c:ea34:0:b0:67a:bb12:d538 with SMTP id t20-20020a0cea34000000b0067abb12d538mr3117713qvp.22.1701649687399;
+        Sun, 03 Dec 2023 16:28:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701649687; cv=none;
         d=google.com; s=arc-20160816;
-        b=XDRX4K/wMtQ/2Stxk+zJNK1a3Eq1uQQfUZ1/tBeye6qhtOj0B4gvN8tJ3wZaQmb2Gi
-         2hXX91plfv56shl8OApRqyM4xH9HB6OoV6NbpGJAXwgJJ7j4+PA0TfXzMdIhu+W0W2QF
-         0rImPY/YYjZTjPk14c4ruHnDDbTRb7aBCPtquqC7OHNJ9ZgrRtZ0SSO1uVCOBjJ3145J
-         31O5U6/MZ6z1uhzGDD3rGeftM/dnNrn5coj9/ofLOsM0hhRcUIpyXfPfmrBYW8Y/OMWC
-         ql6iobEANId8c1Z4GNd1cPxZiiqwQemiNfOr4X0X2pBTfGEttSu9k6qqmRiXPpwns964
-         hAOg==
+        b=vitPwaH/7ho5e4nJVwQJjBYOL31LsiPjC2glom/JkEESmYvrOreE7YhLWTxUTzytEq
+         xz4p1gH7cG0Ds7pyCwpxk3uSvZd5k6BDJYDh9ym2SAHJh5GecsfYwU2FdZasiJ6DVNKQ
+         TWvVydutXBvWKyhoXXyYGsZn68w/jmAcUlu/RIhrYiotw/LOt4hPbK+sz0IeQPUNW9Ru
+         hrJ0FbqBfCE4tgIfzre51dLq3gsm2RYTzz4FYu/LCY5ykH439DZDBgUYp+gY1KT83oXI
+         onGNuuLrnFBsvS/G4aO71pvsFk8AAQaDNaONuep9UEXa20zihssLnKtxiRDYfg2bq/jI
+         7+UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ceI73nY+WORMm25Lfb079HY3yTTZKu7+HhKvNA+xgeM=;
+        bh=SeehPYggDOCcHjfK2XNOqzeVs5Qppe8XOO7Nk1MU9CE=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=SeaLy1bmej64B50mh5yNqbbWILMIx+DNiD+fo0ku7J4LMEDmJ//k+fgA/n1+ZmbMT2
-         WZ6IBu8zskCnJoGNfW5q/cH5r5TwOP8Fpija/KCz+pPkv/PieGwJ3oV9Ztw9csbUYroG
-         qBEP8xLg6/7txYCB8Juw+OHliMsNOjiv+woMCdcrFwRiY0oZvR1aLlc1gYb8rx8sqMIR
-         ya8AsXfs1JH7UJSB3viYEoGE2UZHzeq/lU9eyYnQabuREp7BZqBpcs+YShmWvEHOEIlC
-         HZ5j1HxoVdSr83CphsY+RbiA1TCIugZUm/Cmm55b2207K50EcWD98ts1ztpSWkv5IB1I
-         PLOA==
+        b=J8r8FVAPCt6ziFqC/eFZ+Hz0MMOaz3+033kKcNUMf4WCIIUh2v4CgxBzYjfs+Y5O7Z
+         aLXUSHbXYDBDos5vJUlMTrXtleksHqW1ww6mpsNqynXN2DFdpGs9FUiqNbuTB4FwdxDs
+         SQtr1Zg091hGgKDSTBwppB+YLnvCGMKUlM1nCYioGq8rcE3IO1iGXdv43LPdTAJdMEOD
+         L2QOJjKjAtTLbPW5gKNnK1Bp6/fuVlMQWoJ1tFLEYnooR/t4SUMjfmo9yhPFwVOznaNJ
+         /Dyxv7m6xIh+3Zf0HfC6n5HBx8qX01y6JOPnIbKsfllT8YHreEnRI9N2r4az8ZgWbDee
+         Fs3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XcWI9bM5;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JJLHLzDo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f22-20020a05620a12f600b0077419b27784si7793200qkl.21.2023.12.03.16.28.06
+        by mx.google.com with ESMTPS id k4-20020a0cebc4000000b0067a9f9a251dsi5681523qvq.51.2023.12.03.16.28.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 16:28:06 -0800 (PST)
+        Sun, 03 Dec 2023 16:28:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XcWI9bM5;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JJLHLzDo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1r9wnQ-0004Xy-4y; Sun, 03 Dec 2023 19:26:48 -0500
+	id 1r9wnO-0004Xe-1S; Sun, 03 Dec 2023 19:26:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnG-0004SR-Hg; Sun, 03 Dec 2023 19:26:39 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1r9wn9-0004QU-RR; Sun, 03 Dec 2023 19:26:32 -0500
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1r9wnD-000077-3Q; Sun, 03 Dec 2023 19:26:36 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-5d7346442d4so10653477b3.2; 
- Sun, 03 Dec 2023 16:26:34 -0800 (PST)
+ id 1r9wn6-00005I-RR; Sun, 03 Dec 2023 19:26:31 -0500
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-5d77a1163faso8243277b3.0; 
+ Sun, 03 Dec 2023 16:26:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701649593; x=1702254393; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701649587; x=1702254387; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ceI73nY+WORMm25Lfb079HY3yTTZKu7+HhKvNA+xgeM=;
- b=XcWI9bM5MpaH1J+zTGWjZ9VFbfi4bubMKNUuFtrXXC5XWuux3wuXb9oNNmp8n5tt4W
- ffrc+S/ChNeY+EjLatE93/iV+r92yWNVHw5RKx61QL4MKTcgPeAIQ/ltJOyHayNz3nKa
- H/ma33KgukCvklCq0NIsmJSETd7MN6WvKI+KOpOfX2AALZ8+ck9VkIuI5FOSH4h7sHSj
- Z7OGnzPmBkePAnWfzmKXRcfmaXWHqb3Y87PY2hU051jHMvo7IOJv2rmu164LsNsx+eXY
- dWcSppYXUE0tg+neI/Ul68Mf/nH4YFzn+tPTnehR2qzc32/skfZjrhLpCGtTc+Ov0wRb
- q0Og==
+ bh=SeehPYggDOCcHjfK2XNOqzeVs5Qppe8XOO7Nk1MU9CE=;
+ b=JJLHLzDoN5tl+3OF0/4xUfjUhwZOkhcOiPVjg3gLx+GdRG4dyYbwfrrmkh9V8BBcLn
+ h6AImZCC4SVbMm0xRWX+OZIEVqQThMUoekCR3znmlqUZmmMSp6z2jY8y+owRnU3TQLfH
+ HqIhz1ZQLeRdBwMeT7RGPnvREC3oluPyrRaWBy/LsHsIKIcfwu8VooaY4662WHfxbS0A
+ 80aOutt+0WKBjQNK7/MSqpZYK52bF6ShtFB4CjYjbYIiGVeP0f8OeVvkzHys4sMFCWFz
+ KqHpugS5g+NkFgRb8+q4m1xZ36zTRKygO74HBkyNteGz1tWNiGAXbEizWn2pfG++dmpC
+ VswQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701649593; x=1702254393;
+ d=1e100.net; s=20230601; t=1701649587; x=1702254387;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ceI73nY+WORMm25Lfb079HY3yTTZKu7+HhKvNA+xgeM=;
- b=K5VjSm2Geo1/XfgLEGNPqBXaSb3FhSqQg8uOyS/MfEpDv+876s10iMRqYze4ArdHZP
- fOmbByIhdXGPvurRDvR2kerU3UJPVFgQvWBWBxy1BbdUptQ78sZ/gdrmYUvRkCvmrVgn
- BAnGuI16cfb6WklCAXEraVgyjesrBAyy+Z2ZFFl3bjXwOJahq/OuFtlfmS2LqPtM3n/v
- 9Y5oj7XFgAyrSX6zuFThTBkfzGz+YVdSgRWB7Q9ru1Cer1cFgZCbE4SqmBzAhDcwrYL9
- IK6C9Q21fZAK488UTTg+xdN954l4q50Zfm/F/r0fgaRVnHSWIfD5UWeewL6BlChS336d
- r6Vw==
-X-Gm-Message-State: AOJu0YxI+DPvb78MulMFFkUSLbb2vyGSnv8pe6I3DfgEUzROEweHBonO
- IeOsfcmNXAeBmUTBAMhJpwDxPQPkuvShNA==
-X-Received: by 2002:a81:8181:0:b0:59d:d85e:795d with SMTP id
- r123-20020a818181000000b0059dd85e795dmr29353352ywf.51.1701649593051; 
- Sun, 03 Dec 2023 16:26:33 -0800 (PST)
+ bh=SeehPYggDOCcHjfK2XNOqzeVs5Qppe8XOO7Nk1MU9CE=;
+ b=uiuj6xrMxrOnJfkvcPXar7DMB4kqmqV5xg6MRdQ5wOZgA+0AGRVaFAGy1ZQwFOXIvf
+ 8Wk6sQzVnH4iDmfipc4RHRnJEf6DSrbgXsR4/MecA9O6eolXL8M35b45Y572F+nn+0fb
+ aFB8Q+BaYlRK1NE9oV7+nFeIIhrDHkw2LhgNBMjc9TZmq0Juu9616skXqapLg8SHzMDn
+ YTyotv32V/nU3Ylp6nKUeOnCe/iQpE9+xZ8xejEbk1E5et3AQq+pD6w8YZ/YTb9kUWxm
+ zm5d3Zaa8Y+qYAOtDT8Odi1aFbFGbfeyG300CxML3shBz4dTztk4wT9rJAXXfkWCs1MA
+ sLFg==
+X-Gm-Message-State: AOJu0YyZ9oFJnm1B/XU/ejvkFlxMO2VFr4jRsh2gQUqp69qd4Vd9Znvi
+ ocHLMyH0Htr5PhTUQwDkwWYXuCTo+jwslw==
+X-Received: by 2002:a05:690c:f0e:b0:5d7:1a33:5ae3 with SMTP id
+ dc14-20020a05690c0f0e00b005d71a335ae3mr2030495ywb.48.1701649586886; 
+ Sun, 03 Dec 2023 16:26:26 -0800 (PST)
 Received: from localhost.localdomain ([201.206.180.22])
  by smtp.gmail.com with ESMTPSA id
- l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.32
+ l63-20020a0de242000000b005d3e6ce07e7sm2443187ywe.6.2023.12.03.16.26.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Dec 2023 16:26:32 -0800 (PST)
+ Sun, 03 Dec 2023 16:26:26 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v3 07/45] Implement BCM2838 GPIO functionality
-Date: Sun,  3 Dec 2023 18:25:41 -0600
-Message-Id: <20231204002619.1367044-8-sergey.kambalin@auriga.com>
+Subject: [PATCH v3 02/45] Split out common part of peripherals
+Date: Sun,  3 Dec 2023 18:25:36 -0600
+Message-Id: <20231204002619.1367044-3-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 References: <20231204002619.1367044-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=serg.oker@gmail.com; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=serg.oker@gmail.com; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,243 +124,432 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GGEuoq4L+/o9
+X-TUID: yeJGfCxp4QEf
+
+Pre-setup for BCM2838 introduction
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/gpio/bcm2838_gpio.c | 192 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 189 insertions(+), 3 deletions(-)
+ hw/arm/bcm2835_peripherals.c         | 198 +++++++++++++++------------
+ hw/arm/bcm2836.c                     |  24 ++--
+ include/hw/arm/bcm2835_peripherals.h |  29 +++-
+ include/hw/arm/bcm2836.h             |   3 +-
+ 4 files changed, 154 insertions(+), 100 deletions(-)
 
-diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
-index 15b66cb559..51eb55b00a 100644
---- a/hw/gpio/bcm2838_gpio.c
-+++ b/hw/gpio/bcm2838_gpio.c
-@@ -19,6 +19,7 @@
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "hw/gpio/bcm2838_gpio.h"
-+#include "hw/irq.h"
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 0233038b95..fd70cde123 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -30,9 +30,9 @@
+ #define SEPARATE_DMA_IRQ_MAX 10
+ #define ORGATED_DMA_IRQ_COUNT 4
  
- #define GPFSEL0   0x00
- #define GPFSEL1   0x04
-@@ -57,14 +58,139 @@
- #define RESET_VAL_CNTRL_REG2 0x50AAA95A;
- #define RESET_VAL_CNTRL_REG3 0x00055555;
- 
-+#define NUM_FSELN_IN_GPFSELN 10
-+#define NUM_BITS_FSELN       3
-+#define MASK_FSELN           0x7
-+
- #define BYTES_IN_WORD        4
- 
-+static uint32_t gpfsel_get(BCM2838GpioState *s, uint8_t reg)
-+{
-+    int i;
-+    uint32_t value = 0;
-+    for (i = 0; i < NUM_FSELN_IN_GPFSELN; i++) {
-+        uint32_t index = NUM_FSELN_IN_GPFSELN * reg + i;
-+        if (index < sizeof(s->fsel)) {
-+            value |= (s->fsel[index] & MASK_FSELN) << (NUM_BITS_FSELN * i);
-+        }
-+    }
-+    return value;
-+}
-+
-+static void gpfsel_set(BCM2838GpioState *s, uint8_t reg, uint32_t value)
-+{
-+    int i;
-+    for (i = 0; i < NUM_FSELN_IN_GPFSELN; i++) {
-+        uint32_t index = NUM_FSELN_IN_GPFSELN * reg + i;
-+        if (index < sizeof(s->fsel)) {
-+            int fsel = (value >> (NUM_BITS_FSELN * i)) & MASK_FSELN;
-+            s->fsel[index] = fsel;
-+        }
-+    }
-+}
-+
-+static int gpfsel_is_out(BCM2838GpioState *s, int index)
-+{
-+    if (index >= 0 && index < BCM2838_GPIO_NUM) {
-+        return s->fsel[index] == 1;
-+    }
-+    return 0;
-+}
-+
-+static void gpset(BCM2838GpioState *s, uint32_t val, uint8_t start,
-+                  uint8_t count, uint32_t *lev)
-+{
-+    uint32_t changes = val & ~*lev;
-+    uint32_t cur = 1;
-+
-+    int i;
-+    for (i = 0; i < count; i++) {
-+        if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-+            qemu_set_irq(s->out[start + i], 1);
-+        }
-+        cur <<= 1;
-+    }
-+
-+    *lev |= val;
-+}
-+
-+static void gpclr(BCM2838GpioState *s, uint32_t val, uint8_t start,
-+                  uint8_t count, uint32_t *lev)
-+{
-+    uint32_t changes = val & *lev;
-+    uint32_t cur = 1;
-+
-+    int i;
-+    for (i = 0; i < count; i++) {
-+        if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-+            qemu_set_irq(s->out[start + i], 0);
-+        }
-+        cur <<= 1;
-+    }
-+
-+    *lev &= ~val;
-+}
-+
- static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
+-static void create_unimp(BCM2835PeripheralState *ps,
+-                         UnimplementedDeviceState *uds,
+-                         const char *name, hwaddr ofs, hwaddr size)
++void create_unimp(BCMSocPeripheralBaseState *ps,
++                  UnimplementedDeviceState *uds,
++                  const char *name, hwaddr ofs, hwaddr size)
  {
-+    BCM2838GpioState *s = (BCM2838GpioState *)opaque;
-     uint64_t value = 0;
+     object_initialize_child(OBJECT(ps), name, uds, TYPE_UNIMPLEMENTED_DEVICE);
+     qdev_prop_set_string(DEVICE(uds), "name", name);
+@@ -45,9 +45,36 @@ static void create_unimp(BCM2835PeripheralState *ps,
+ static void bcm2835_peripherals_init(Object *obj)
+ {
+     BCM2835PeripheralState *s = BCM2835_PERIPHERALS(obj);
++    BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(obj);
++
++    /* Random Number Generator */
++    object_initialize_child(obj, "rng", &s->rng, TYPE_BCM2835_RNG);
++
++    /* Thermal */
++    object_initialize_child(obj, "thermal", &s->thermal, TYPE_BCM2835_THERMAL);
++
++    /* GPIO */
++    object_initialize_child(obj, "gpio", &s->gpio, TYPE_BCM2835_GPIO);
++
++    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
++                                   OBJECT(&s_base->sdhci.sdbus));
++    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhost",
++                                   OBJECT(&s_base->sdhost.sdbus));
++
++    /* Gated DMA interrupts */
++    object_initialize_child(obj, "orgated-dma-irq",
++                            &s_base->orgated_dma_irq, TYPE_OR_IRQ);
++    object_property_set_int(OBJECT(&s_base->orgated_dma_irq), "num-lines",
++                            ORGATED_DMA_IRQ_COUNT, &error_abort);
++}
++
++static void raspi_peripherals_base_init(Object *obj)
++{
++    BCMSocPeripheralBaseState *s = BCM_SOC_PERIPHERALS_BASE(obj);
++    BCMSocPeripheralBaseClass *bc = BCM_SOC_PERIPHERALS_BASE_GET_CLASS(obj);
  
--    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
--                  TYPE_BCM2838_GPIO, __func__, offset);
-+    switch (offset) {
-+    case GPFSEL0:
-+    case GPFSEL1:
-+    case GPFSEL2:
-+    case GPFSEL3:
-+    case GPFSEL4:
-+    case GPFSEL5:
-+        value = gpfsel_get(s, offset / BYTES_IN_WORD);
-+        break;
-+    case GPSET0:
-+    case GPSET1:
-+    case GPCLR0:
-+    case GPCLR1:
-+        /* Write Only */
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: Attempt reading from write only"
-+                      " register. %lu will be returned. Address 0x%"HWADDR_PRIx
-+                      ", size %u\n", TYPE_BCM2838_GPIO, __func__, value, offset,
-+                      size);
-+        break;
-+    case GPLEV0:
-+        value = s->lev0;
-+        break;
-+    case GPLEV1:
-+        value = s->lev1;
-+        break;
-+    case GPEDS0:
-+    case GPEDS1:
-+    case GPREN0:
-+    case GPREN1:
-+    case GPFEN0:
-+    case GPFEN1:
-+    case GPHEN0:
-+    case GPHEN1:
-+    case GPLEN0:
-+    case GPLEN1:
-+    case GPAREN0:
-+    case GPAREN1:
-+    case GPAFEN0:
-+    case GPAFEN1:
-+        /* Not implemented */
-+        qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-+                      TYPE_BCM2838_GPIO, __func__, offset);
-+        break;
-+    case GPIO_PUP_PDN_CNTRL_REG0:
-+    case GPIO_PUP_PDN_CNTRL_REG1:
-+    case GPIO_PUP_PDN_CNTRL_REG2:
-+    case GPIO_PUP_PDN_CNTRL_REG3:
-+        value = s->pup_cntrl_reg[(offset - GPIO_PUP_PDN_CNTRL_REG0)
-+                                 / sizeof(s->pup_cntrl_reg[0])];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: bad offset %"HWADDR_PRIx"\n",
-+                      TYPE_BCM2838_GPIO, __func__, offset);
-+        break;
+     /* Memory region for peripheral devices, which we export to our parent */
+-    memory_region_init(&s->peri_mr, obj,"bcm2835-peripherals", 0x1000000);
++    memory_region_init(&s->peri_mr, obj, "bcm2835-peripherals", bc->peri_size);
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_mr);
+ 
+     /* Internal memory region for peripheral bus addresses (not exported) */
+@@ -98,9 +125,6 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->property), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr));
+ 
+-    /* Random Number Generator */
+-    object_initialize_child(obj, "rng", &s->rng, TYPE_BCM2835_RNG);
+-
+     /* Extended Mass Media Controller */
+     object_initialize_child(obj, "sdhci", &s->sdhci, TYPE_SYSBUS_SDHCI);
+ 
+@@ -110,25 +134,9 @@ static void bcm2835_peripherals_init(Object *obj)
+     /* DMA Channels */
+     object_initialize_child(obj, "dma", &s->dma, TYPE_BCM2835_DMA);
+ 
+-    object_initialize_child(obj, "orgated-dma-irq",
+-                            &s->orgated_dma_irq, TYPE_OR_IRQ);
+-    object_property_set_int(OBJECT(&s->orgated_dma_irq), "num-lines",
+-                            ORGATED_DMA_IRQ_COUNT, &error_abort);
+-
+     object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr));
+ 
+-    /* Thermal */
+-    object_initialize_child(obj, "thermal", &s->thermal, TYPE_BCM2835_THERMAL);
+-
+-    /* GPIO */
+-    object_initialize_child(obj, "gpio", &s->gpio, TYPE_BCM2835_GPIO);
+-
+-    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
+-                                   OBJECT(&s->sdhci.sdbus));
+-    object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhost",
+-                                   OBJECT(&s->sdhost.sdbus));
+-
+     /* Mphi */
+     object_initialize_child(obj, "mphi", &s->mphi, TYPE_BCM2835_MPHI);
+ 
+@@ -148,7 +156,72 @@ static void bcm2835_peripherals_init(Object *obj)
+ 
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+ {
++    MemoryRegion *mphi_mr;
+     BCM2835PeripheralState *s = BCM2835_PERIPHERALS(dev);
++    BCMSocPeripheralBaseState *s_base = BCM_SOC_PERIPHERALS_BASE(dev);
++    int n;
++
++    bcm_soc_peripherals_common_realize(dev, errp);
++
++    /* Extended Mass Media Controller */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->sdhci), 0,
++        qdev_get_gpio_in_named(DEVICE(&s_base->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_ARASANSDIO));
++
++     /* Connect DMA 0-12 to the interrupt controller */
++    for (n = 0; n <= SEPARATE_DMA_IRQ_MAX; n++) {
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma), n,
++                           qdev_get_gpio_in_named(DEVICE(&s_base->ic),
++                                                  BCM2835_IC_GPU_IRQ,
++                                                  INTERRUPT_DMA0 + n));
 +    }
++
++    if (!qdev_realize(DEVICE(&s_base->orgated_dma_irq), NULL, errp)) {
++        return;
++    }
++    for (n = 0; n < ORGATED_DMA_IRQ_COUNT; n++) {
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s_base->dma),
++                           SEPARATE_DMA_IRQ_MAX + 1 + n,
++                           qdev_get_gpio_in(DEVICE(&s_base->orgated_dma_irq), n));
++    }
++    qdev_connect_gpio_out(DEVICE(&s_base->orgated_dma_irq), 0,
++                          qdev_get_gpio_in_named(DEVICE(&s_base->ic),
++                              BCM2835_IC_GPU_IRQ,
++                              INTERRUPT_DMA0 + SEPARATE_DMA_IRQ_MAX + 1));
++
++    /* Random Number Generator */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->rng), errp)) {
++        return;
++    }
++    memory_region_add_subregion(
++        &s_base->peri_mr, RNG_OFFSET,
++        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
++
++    /* THERMAL */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->thermal), errp)) {
++        return;
++    }
++    memory_region_add_subregion(&s_base->peri_mr, THERMAL_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0));
++
++    /* Map MPHI to the peripherals memory map */
++    mphi_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s_base->mphi), 0);
++    memory_region_add_subregion(&s_base->peri_mr, MPHI_OFFSET, mphi_mr);
++
++    /* GPIO */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
++        return;
++    }
++    memory_region_add_subregion(
++        &s_base->peri_mr, GPIO_OFFSET,
++        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
++
++    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
++}
++
++void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
++{
++    BCMSocPeripheralBaseState *s = BCM_SOC_PERIPHERALS_BASE(dev);
+     Object *obj;
+     MemoryRegion *ram;
+     Error *err = NULL;
+@@ -281,14 +354,6 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
+                       qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PROPERTY));
  
-     return value;
+-    /* Random Number Generator */
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->rng), errp)) {
+-        return;
+-    }
+-
+-    memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
+-                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
+-
+     /* Extended Mass Media Controller
+      *
+      * Compatible with:
+@@ -311,9 +376,6 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+ 
+     memory_region_add_subregion(&s->peri_mr, EMMC1_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sdhci), 0));
+-    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
+-        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+-                               INTERRUPT_ARASANSDIO));
+ 
+     /* SDHOST */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdhost), errp)) {
+@@ -336,49 +398,11 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->peri_mr, DMA15_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dma), 1));
+ 
+-    for (n = 0; n <= SEPARATE_DMA_IRQ_MAX; n++) {
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), n,
+-                           qdev_get_gpio_in_named(DEVICE(&s->ic),
+-                                                  BCM2835_IC_GPU_IRQ,
+-                                                  INTERRUPT_DMA0 + n));
+-    }
+-    if (!qdev_realize(DEVICE(&s->orgated_dma_irq), NULL, errp)) {
+-        return;
+-    }
+-    for (n = 0; n < ORGATED_DMA_IRQ_COUNT; n++) {
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma),
+-                           SEPARATE_DMA_IRQ_MAX + 1 + n,
+-                           qdev_get_gpio_in(DEVICE(&s->orgated_dma_irq), n));
+-    }
+-    qdev_connect_gpio_out(DEVICE(&s->orgated_dma_irq), 0,
+-                          qdev_get_gpio_in_named(DEVICE(&s->ic),
+-                              BCM2835_IC_GPU_IRQ,
+-                              INTERRUPT_DMA0 + SEPARATE_DMA_IRQ_MAX + 1));
+-
+-    /* THERMAL */
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->thermal), errp)) {
+-        return;
+-    }
+-    memory_region_add_subregion(&s->peri_mr, THERMAL_OFFSET,
+-                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0));
+-
+-    /* GPIO */
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
+-        return;
+-    }
+-
+-    memory_region_add_subregion(&s->peri_mr, GPIO_OFFSET,
+-                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
+-
+-    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
+-
+     /* Mphi */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->mphi), errp)) {
+         return;
+     }
+ 
+-    memory_region_add_subregion(&s->peri_mr, MPHI_OFFSET,
+-                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mphi), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mphi), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_HOSTPORT));
+@@ -421,21 +445,27 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
++    BCMSocPeripheralBaseClass *bc = BCM_SOC_PERIPHERALS_BASE_CLASS(oc);
+ 
++    bc->peri_size = 0x1000000;
+     dc->realize = bcm2835_peripherals_realize;
  }
-@@ -72,14 +198,74 @@ static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
- static void bcm2838_gpio_write(void *opaque, hwaddr offset, uint64_t value,
-                                unsigned size)
- {
--    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-+    BCM2838GpioState *s = (BCM2838GpioState *)opaque;
-+
-+    switch (offset) {
-+    case GPFSEL0:
-+    case GPFSEL1:
-+    case GPFSEL2:
-+    case GPFSEL3:
-+    case GPFSEL4:
-+    case GPFSEL5:
-+        gpfsel_set(s, offset / BYTES_IN_WORD, value);
-+        break;
-+    case GPSET0:
-+        gpset(s, value, 0, 32, &s->lev0);
-+        break;
-+    case GPSET1:
-+        gpset(s, value, 32, 22, &s->lev1);
-+        break;
-+    case GPCLR0:
-+        gpclr(s, value, 0, 32, &s->lev0);
-+        break;
-+    case GPCLR1:
-+        gpclr(s, value, 32, 22, &s->lev1);
-+        break;
-+    case GPLEV0:
-+    case GPLEV1:
-+        /* Read Only */
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: Attempt writing %lu to read "
-+                      "only register. Ignored. Address 0x%"HWADDR_PRIx", size "
-+                      "%u\n", TYPE_BCM2838_GPIO, __func__, value, offset, size);
-+        break;
-+    case GPEDS0:
-+    case GPEDS1:
-+    case GPREN0:
-+    case GPREN1:
-+    case GPFEN0:
-+    case GPFEN1:
-+    case GPHEN0:
-+    case GPHEN1:
-+    case GPLEN0:
-+    case GPLEN1:
-+    case GPAREN0:
-+    case GPAREN1:
-+    case GPAFEN0:
-+    case GPAFEN1:
-+        /* Not implemented */
-+        qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-+                      TYPE_BCM2838_GPIO, __func__, offset);
-+        break;
-+    case GPIO_PUP_PDN_CNTRL_REG0:
-+    case GPIO_PUP_PDN_CNTRL_REG1:
-+    case GPIO_PUP_PDN_CNTRL_REG2:
-+    case GPIO_PUP_PDN_CNTRL_REG3:
-+        s->pup_cntrl_reg[(offset - GPIO_PUP_PDN_CNTRL_REG0)
-+                         / sizeof(s->pup_cntrl_reg[0])] = value;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s: bad offset %"HWADDR_PRIx"\n",
-                   TYPE_BCM2838_GPIO, __func__, offset);
+ 
+-static const TypeInfo bcm2835_peripherals_type_info = {
+-    .name = TYPE_BCM2835_PERIPHERALS,
+-    .parent = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(BCM2835PeripheralState),
+-    .instance_init = bcm2835_peripherals_init,
+-    .class_init = bcm2835_peripherals_class_init,
++static const TypeInfo bcm2835_peripherals_types[] = {
++    {
++        .name = TYPE_BCM2835_PERIPHERALS,
++        .parent = TYPE_BCM_SOC_PERIPHERALS_BASE,
++        .instance_size = sizeof(BCM2835PeripheralState),
++        .instance_init = bcm2835_peripherals_init,
++        .class_init = bcm2835_peripherals_class_init,
++    }, {
++        .name = TYPE_BCM_SOC_PERIPHERALS_BASE,
++        .parent = TYPE_SYS_BUS_DEVICE,
++        .instance_size = sizeof(BCMSocPeripheralBaseState),
++        .instance_init = raspi_peripherals_base_init,
++        .class_size = sizeof(BCMSocPeripheralBaseClass),
++        .abstract = true,
 +    }
-+    return;
+ };
+ 
+-static void bcm2835_peripherals_register_types(void)
+-{
+-    type_register_static(&bcm2835_peripherals_type_info);
+-}
+-
+-type_init(bcm2835_peripherals_register_types)
++DEFINE_TYPES(bcm2835_peripherals_types)
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 66a2b57b38..18675c896c 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -66,10 +66,10 @@ static void bcm283x_init(Object *obj)
+                               "vcram-size");
  }
  
- static void bcm2838_gpio_reset(DeviceState *dev)
+-bool bcm283x_common_realize(DeviceState *dev, Error **errp)
++bool bcm283x_common_realize(DeviceState *dev, BCMSocPeripheralBaseState *ps,
++                            Error **errp)
  {
-     BCM2838GpioState *s = BCM2838_GPIO(dev);
+-    BCM283XState *s = BCM283X(dev);
+-    BCM283XBaseState *s_base = BCM283X_BASE(dev);
++    BCM283XBaseState *s = BCM283X_BASE(dev);
+     BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(dev);
+     Object *obj;
  
-+    memset(s->fsel, 0, sizeof(s->fsel));
+@@ -77,17 +77,15 @@ bool bcm283x_common_realize(DeviceState *dev, Error **errp)
+ 
+     obj = object_property_get_link(OBJECT(dev), "ram", &error_abort);
+ 
+-    object_property_add_const_link(OBJECT(&s->peripherals), "ram", obj);
++    object_property_add_const_link(OBJECT(ps), "ram", obj);
+ 
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peripherals), errp)) {
++    if (!sysbus_realize(SYS_BUS_DEVICE(ps), errp)) {
+         return false;
+     }
+ 
+-    object_property_add_alias(OBJECT(s_base), "sd-bus",
+-                              OBJECT(&s->peripherals), "sd-bus");
++    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(ps), "sd-bus");
+ 
+-    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals),
+-                            0, bc->peri_base, 1);
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(ps), 0, bc->peri_base, 1);
+     return true;
+ }
+ 
+@@ -95,8 +93,10 @@ static void bcm2835_realize(DeviceState *dev, Error **errp)
+ {
+     BCM283XState *s = BCM283X(dev);
+     BCM283XBaseState *s_base = BCM283X_BASE(dev);
++    BCMSocPeripheralBaseState *ps_base
++        = BCM_SOC_PERIPHERALS_BASE(&s->peripherals);
+ 
+-    if (!bcm283x_common_realize(dev, errp)) {
++    if (!bcm283x_common_realize(dev, ps_base, errp)) {
+         return;
+     }
+ 
+@@ -117,8 +117,10 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+     BCM283XState *s = BCM283X(dev);
+     BCM283XBaseState *s_base = BCM283X_BASE(dev);
+     BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(dev);
++    BCMSocPeripheralBaseState *ps_base
++        = BCM_SOC_PERIPHERALS_BASE(&s->peripherals);
+ 
+-    if (!bcm283x_common_realize(dev, errp)) {
++    if (!bcm283x_common_realize(dev, ps_base, errp)) {
+         return;
+     }
+ 
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index d724a2fc28..2644735d52 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -34,10 +34,13 @@
+ #include "hw/misc/unimp.h"
+ #include "qom/object.h"
+ 
++#define TYPE_BCM_SOC_PERIPHERALS_BASE "bcm-soc-peripherals-base"
++OBJECT_DECLARE_TYPE(BCMSocPeripheralBaseState, BCMSocPeripheralBaseClass,
++                    BCM_SOC_PERIPHERALS_BASE)
+ #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
+ OBJECT_DECLARE_SIMPLE_TYPE(BCM2835PeripheralState, BCM2835_PERIPHERALS)
+ 
+-struct BCM2835PeripheralState {
++struct BCMSocPeripheralBaseState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+     /*< public >*/
+@@ -59,12 +62,9 @@ struct BCM2835PeripheralState {
+     OrIRQState orgated_dma_irq;
+     BCM2835ICState ic;
+     BCM2835PropertyState property;
+-    BCM2835RngState rng;
+     BCM2835MboxState mboxes;
+     SDHCIState sdhci;
+     BCM2835SDHostState sdhost;
+-    BCM2835GpioState gpio;
+-    Bcm2835ThermalState thermal;
+     UnimplementedDeviceState i2s;
+     UnimplementedDeviceState spi[1];
+     UnimplementedDeviceState i2c[3];
+@@ -78,4 +78,25 @@ struct BCM2835PeripheralState {
+     UnimplementedDeviceState sdramc;
+ };
+ 
++struct BCMSocPeripheralBaseClass {
++    /*< private >*/
++    SysBusDeviceClass parent_class;
++    /*< public >*/
++    uint64_t peri_size; /* Peripheral range size */
++};
 +
-     s->lev0 = 0;
-     s->lev1 = 0;
++struct BCM2835PeripheralState {
++    /*< private >*/
++    BCMSocPeripheralBaseState parent_obj;
++    /*< public >*/
++    BCM2835RngState rng;
++    Bcm2835ThermalState thermal;
++    BCM2835GpioState gpio;
++};
++
++void create_unimp(BCMSocPeripheralBaseState *ps,
++                  UnimplementedDeviceState *uds,
++                  const char *name, hwaddr ofs, hwaddr size);
++void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp);
++
+ #endif /* BCM2835_PERIPHERALS_H */
+diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+index 5a6717ca91..918fb3bf14 100644
+--- a/include/hw/arm/bcm2836.h
++++ b/include/hw/arm/bcm2836.h
+@@ -64,6 +64,7 @@ struct BCM283XState {
+     BCM2835PeripheralState peripherals;
+ };
  
+-bool bcm283x_common_realize(DeviceState *dev, Error **errp);
++bool bcm283x_common_realize(DeviceState *dev, BCMSocPeripheralBaseState *ps,
++                            Error **errp);
+ 
+ #endif /* BCM2836_H */
 -- 
 2.34.1
 

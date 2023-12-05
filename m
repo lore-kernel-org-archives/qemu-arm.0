@@ -1,134 +1,154 @@
-Received: by 2002:a17:906:3657:b0:a0d:e0d9:b5bf with SMTP id r23csp2475062ejb;
-        Sun, 3 Dec 2023 21:07:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG4IgDF0CWpMAcnufyYc5e99swM89tWvGT3BM/b5zqRB3Qcv1Ib9kftE0yJk4SO+yhaXGid
-X-Received: by 2002:a05:620a:1189:b0:77f:28e:17c0 with SMTP id b9-20020a05620a118900b0077f028e17c0mr3280776qkk.98.1701666458620;
-        Sun, 03 Dec 2023 21:07:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701666458; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp52963ejb;
+        Tue, 5 Dec 2023 01:51:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHzrjfvrOnrfrP7p5F8MfUav0Ll36fq9a8Irwj3WagK+8d4XE0mByfvWg8KaKByyeyWHoc7
+X-Received: by 2002:a25:dc41:0:b0:d9a:5f91:c615 with SMTP id y62-20020a25dc41000000b00d9a5f91c615mr2766807ybe.18.1701769876722;
+        Tue, 05 Dec 2023 01:51:16 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1701769876; cv=pass;
         d=google.com; s=arc-20160816;
-        b=uRZ7EXJA/3bAXhdEaJeFY6SvQ0j40FPIGc0TT4zB3gbMEYZ9iJK0XsF07C3y4/xJPg
-         RtdCleadw3ZQUFWv4/2an1Nd/0/ITtFW/gGSXAppY887Hu0yIkdFkYyPcRS2Tvvp/q5W
-         ogXL5HmJoFGjejTacGUg4qkIXb+IqSA4H+D5ypYiRGRYROanGq5uzZRGFUtwbxZ6JNXS
-         Pbe87OuyIXZ2SxZ1iiYGYlwYZeHuh2WqJoK/mJiLkj5OCdSXl+hRMhxyW3Rs6+Y7dE0h
-         EfApELFS+MN7EDstO1/E5Kh0trbjEvJmT1jSPxYyLifoK7VqCMCK+fhWTFpvr0BdpIdG
-         9W9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=lCepSUGXBD6vXJbUGHKuOY+4ibKZHzrN1HLx/SXSFBEn3XnlWmgF9uxd+pBVC01JhB
+         MVvvC9YQVpJKpO3mzA+zckFSz/7hSpEgNZgyooMMekwKlpIeGzW5QJ0GLEff1VrqD5n/
+         k8O8IqUUrVwlOo4HGiLQH61ZH2qGoun7NhOKtSHfzxnSToKE7Dr/fRfaKA7j1rSk2Por
+         Bf/ALKUQNYm/KQi0/3X8MXd8MqU4VhqGKp5jyqLZa1auHB20i7ViO/4ItmnajiLoIpV3
+         2obNTGnd/GRH4h2vYZBctHujxWBR4izQ0d/s15GUla7N9iG3GtGZFhTrLOGwxMBfG3KB
+         Zfew==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=WGnIUK3zSJXAxMdd7aMNLjAWeg7/5KSLFErHzAl47Us=;
-        fh=wNVsHX33rtlNsfcIRu7HE2C+HLDFGyJ8WHvp6XTm43k=;
-        b=t/1A2gqIMDv5g6rIlMHx8gDYsL30i31jATZwRqWDKqnI6cqpKMe8lxX7zBPeFv06S3
-         iWnt7+dmh+52hcM61/yAvENnAO5Wbq9o7NLpzFildepKI761HOC8Ha6l0BYuhotF1dTM
-         kW1Cr8GmA2OLQsv6QoK98QLH4fPlYL85/sqwqOU7/P3KZNC+uVyvg4jtfJnAe94lWMOJ
-         7TsCLaM/GEaR480nuKCeQQ8tfHAN5I6pos7hGJEdFudAaodVehH/+B+B3k5gIIIxtBFy
-         XtgSdPCHyej3Em2TOYg5PMma1m30Ram4LI4bR2lbdtb3TAB9p3hjwZ6k2Lyq+EdPJzOT
-         +X0g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BJmMAWh3;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=sz1cnUiVTv94tT6QFK+z3UwvPSZIx1UHPOxAhsMZlrU=;
+        fh=ZA9aJobNwvCsDIwC4jJ9MrZu+AKWwyzjuJBQaAdFiwU=;
+        b=NqDQcBOR9KofdImj+dxLpnKYQamgWr4uW0EOZf+BGvBy6QZ0S3YhocdIdpuoHZOtHv
+         92NEdmAGomgSBLGzZmeFBlaTWP3JtFJwWcOo1UB2Fgr1CcY/f3CRnwMLjgVhYi2wSLzK
+         H/fOanzccPr/hd2sX4FYP6HmU0YWjoiJd09L6VIdM3gBHvqcYXrYvRW5JYBs6gDpH5Iw
+         enispvGpQyuCIwwhprsaZY7iNmoAus/RdvHvhScSMuPm4mpMWqeTk3wuII3YVpply3Wr
+         HL5BKTqJcN1gRx3vmSvRXrLYzMZMJ6PWf1eUwmA9cEZULUVDYokJgst3L00q9oTQfhte
+         GpVg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=IW5UgHin;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y19-20020a05620a44d300b00779df1bedbdsi9350751qkp.310.2023.12.03.21.07.38
+        by mx.google.com with ESMTPS id dk11-20020a056214092b00b0067a9bf7c05csi8676631qvb.280.2023.12.05.01.51.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Dec 2023 21:07:38 -0800 (PST)
+        Tue, 05 Dec 2023 01:51:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BJmMAWh3;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=IW5UgHin;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rA1Ak-0006AS-Jo; Mon, 04 Dec 2023 00:07:11 -0500
+	id 1rAS4h-0006Fi-Qx; Tue, 05 Dec 2023 04:50:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1rA17F-000479-1k
- for qemu-arm@nongnu.org; Mon, 04 Dec 2023 00:03:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1rAS4W-0006AQ-4X; Tue, 05 Dec 2023 04:50:32 -0500
+Received: from mail-mw2nam10on2060f.outbound.protection.outlook.com
+ ([2a01:111:f400:7e89::60f]
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1rA170-0001lR-8V
- for qemu-arm@nongnu.org; Mon, 04 Dec 2023 00:03:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701666197;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WGnIUK3zSJXAxMdd7aMNLjAWeg7/5KSLFErHzAl47Us=;
- b=BJmMAWh3vEpKa8YUuW7KyY/IiKPY9dY8tP5eY4rDBSH7NWzz3YE2SjZJCtZRHO9APRj3yB
- pBo3mbxTJYIirYLNy45s1v9gmgFq6XiQYCF6jIgHi4zztAIN59hfNnX7oLGZwECKM3OxVy
- ql73BiyWkilFklrxHugccxaF78Emebs=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-349-fZqt331PMFyYEStMhzqNxQ-1; Mon, 04 Dec 2023 00:03:13 -0500
-X-MC-Unique: fZqt331PMFyYEStMhzqNxQ-1
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-1d053282390so13538865ad.2
- for <qemu-arm@nongnu.org>; Sun, 03 Dec 2023 21:03:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701666193; x=1702270993;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WGnIUK3zSJXAxMdd7aMNLjAWeg7/5KSLFErHzAl47Us=;
- b=eCIB+RUJ3DJdCw7ISSMg5e1KsFNu64THN7NybWp3BbHvtJxwImuxVczfE9LrcKlXZ+
- VVDIcPBQCzQpa39EaqpGT4gfAR2AVXytxtCQDyNxrxKCQZqI/PWqgJ3Kr6CMhaTkAG4o
- CE7XmMoB864D4UqSTNRlASctmey4Nf1I6wfX0wE53UpsZfglZnjULgcGyC1y9VKpsq0J
- HTZ9g1WAacNsi3rcf8UNO0rkY/CK6ABCrB4rTj8cQGSuNLRZD4YwDEfOV5mrOw0a0kKG
- kTKtuKtTUc5+G/T1r5TYTTREbfhZqRV+k6VqNwZFveJXktcfly7IpOatAWv/IWeTr6Wj
- 4yaA==
-X-Gm-Message-State: AOJu0YyX0VasgcAbZz5VBKy4hWfdXuMIWIYBYk1zshdS+C79If8PzfLr
- QgU0tw8oWA8VghlP8Dfp6fbPZ8wX55lUErryQMPdud0ZlBCLYIvFzIn9cp3qRQ0sxoZDeUpm1yX
- JO0YGCveZf0Uz
-X-Received: by 2002:a17:902:9048:b0:1d0:6ffd:f223 with SMTP id
- w8-20020a170902904800b001d06ffdf223mr917891plz.121.1701666192984; 
- Sun, 03 Dec 2023 21:03:12 -0800 (PST)
-X-Received: by 2002:a17:902:9048:b0:1d0:6ffd:f223 with SMTP id
- w8-20020a170902904800b001d06ffdf223mr917887plz.121.1701666192677; 
- Sun, 03 Dec 2023 21:03:12 -0800 (PST)
-Received: from [192.168.68.51] ([43.252.115.3])
- by smtp.gmail.com with ESMTPSA id
- h21-20020a170902f7d500b001d058ad8770sm5298193plw.306.2023.12.03.21.03.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Dec 2023 21:03:12 -0800 (PST)
-Message-ID: <d49e9d47-09e1-497f-9da9-11b0a181edd8@redhat.com>
-Date: Mon, 4 Dec 2023 15:03:07 +1000
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1rAS4S-0005Ec-GZ; Tue, 05 Dec 2023 04:50:31 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XHJ1Dr+pMv/ToyLBAJmHfEFrjc+WXp8h8mGi1r34bZe30MEHYS2meEpqxJvRMnen8Ne1nfPClDBm15v7mJOYVWF+g21KKQz/tjRRMSbrwIPaUfvWlpGuduObOy4q/pRCsYlHyYthNrfMcfHvsEsLgXFbF7YP3i40OTEmXAW/8eSUwMI17BmL0zIRggQize/nGJItmeTB/Nrk6LcZbyKucPIZXvE+b/t1FTvwrbG8z7VwIem6BMb+tgTlKIZfxvgt70Q7j78dbigFSs7065Zj0jrTCxlpc9Emv9tGdhcH0xQx80JAB9Tbg6OZuEy8XPK/tIjQydDEvAryvgHXZm4y3A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sz1cnUiVTv94tT6QFK+z3UwvPSZIx1UHPOxAhsMZlrU=;
+ b=jFIe7zcIpByrj+Xq1UypTkYI0m6rKXpYBR3WaJWSxBAi2jC0B7QTryX3anejJGsLf5Hzl1a700P5/ra+j6ddilY/l75VdbY7Hw0QrSdMnSe7q26eR/+GPv/dOZf1XzjL6yrOpKgvv3UOslou5eCDCPKg+9OhfLen2FhckpvfzIMyhZuEMtDIUWVhq2VeZqvGqbr0bF6PSljhThwvaVWhZqdmeFt4MpyZzq2+gYBDnQ2yNnxBBsqcl9Fh86psVfVWIyHw0TkRs8pCQKXHuY0TfWKVIKpRqPRwhpQ2DG9WHdylvpHhvTp1bjrKC9EduvgZ6qwI3poZcDXfSp6xDhwUSg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sz1cnUiVTv94tT6QFK+z3UwvPSZIx1UHPOxAhsMZlrU=;
+ b=IW5UgHinRyoJDmGH9tPRmmGeU445xfhAtUs5kiJAE+4o/+sKBgKn/LbnSQBkWzei6AhM/F9Fr17YyEnDxg+Mg6uMoetMsZa0B4CylCWUbVFNmwuC1eaLmMiJdWNNYQfj8xV4ix3bIW58615yy4Kt8aOSQfub5hLir1Xk8f4Hhbc=
+Received: from BLAPR03CA0110.namprd03.prod.outlook.com (2603:10b6:208:32a::25)
+ by BN9PR12MB5242.namprd12.prod.outlook.com (2603:10b6:408:11f::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.34; Tue, 5 Dec
+ 2023 09:50:23 +0000
+Received: from BL6PEPF0001AB51.namprd04.prod.outlook.com
+ (2603:10b6:208:32a:cafe::ce) by BLAPR03CA0110.outlook.office365.com
+ (2603:10b6:208:32a::25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.33 via Frontend
+ Transport; Tue, 5 Dec 2023 09:50:23 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ BL6PEPF0001AB51.mail.protection.outlook.com (10.167.242.75) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7068.20 via Frontend Transport; Tue, 5 Dec 2023 09:50:23 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.34; Tue, 5 Dec
+ 2023 03:50:23 -0600
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Tue, 5 Dec
+ 2023 01:50:22 -0800
+Received: from xhdvaralaxm41.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.34 via
+ Frontend Transport; Tue, 5 Dec 2023 03:50:20 -0600
+From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>, Alistair Francis
+ <alistair@alistair23.me>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>, <saipavanboddu@gmail.com>
+Subject: [PATCH 1/1] xlnx-versal-ospi: disable reentrancy detection for
+ iomem_dac
+Date: Tue, 5 Dec 2023 15:18:02 +0530
+Message-ID: <20231205094802.2683581-2-sai.pavan.boddu@amd.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231205094802.2683581-1-sai.pavan.boddu@amd.com>
+References: <20231205094802.2683581-1-sai.pavan.boddu@amd.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 24/25] hw/nvram: Simplify
- memory_region_init_rom_device() calls
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-arm@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Xu <peterx@redhat.com>, Joel Stanley <joel@jms.id.au>
-References: <20231120213301.24349-1-philmd@linaro.org>
- <20231120213301.24349-25-philmd@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20231120213301.24349-25-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB51:EE_|BN9PR12MB5242:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0db4ad49-236e-4e4c-8d8e-08dbf57799d2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 8gmC+WE0xyM352ijwdXZuczaesv6irC4zQDuziYxP5keW9FKWLg83zbFlDPNwHsQE4JY4ND1vTAj4/iPqkzWS8OIBJIWuZ8LBe7WurquZf3mFmxdB2xp7oDCTnkz+M4lx8qj3ApNcQP0folVzPxIGoDIGQ4U2o9V3qSMkVgeKTdDQmqsqNjfrjCQLvFChS0qPxS4jYBZub2WCKYtvIVtEbVNE5TAcxxxhvcgPBUJy3qAQQkFSQeu3JVvU7ncqZ496y4fR3ON4IsZrUuCkd8sUVjvTp0PZPpUL4MQeQUHgYBg4PEK/YcEqj2OARM9xMBra3NVWjgkDsYFYSAAjVvDrB+AMogfXZDrYkfNkOFGBHg7UdNOUWqEi8D+Pd0FbhgKBsOB3j8/hhq9uzoFHh1OFajFE8i4C8CeQFCsrj5ix2QdxNGos/pPVpSzjyvsEiCypdzvEEHPGMYUDH0StZEl2tcf/GsX5qesn9h7ywJOKRJxVKcMidGN3z80Zen3wP3tliVn+BP/Y+mxNJlaEvcA6sBJLPCyEhurQjE3gal8Lf+aCf8/y++j39RhE5f48peHiTmsvyKsB7Hn7538y3zvkvmOFyV1C+MYyxIfV7JZR2HUMNO4jDR+w8Z6stNPCmAEWtFdEnm7UFbr/j9W4EBod7Bic4njUpyaNs5rscYgEOw9ZTlJ+PzrFnButpvo9027jF93NDpzPADehZom85KnewxHBXG66kM1FZH5M88Eg7kzRLBwJzlupyrdWXlehs3rQ20DFel10kkMt9kuV8AkQg==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(136003)(39860400002)(346002)(376002)(396003)(230922051799003)(186009)(64100799003)(82310400011)(1800799012)(451199024)(36840700001)(46966006)(40470700004)(4744005)(40480700001)(36860700001)(103116003)(2906002)(316002)(6916009)(54906003)(86362001)(70206006)(8676002)(70586007)(41300700001)(36756003)(4326008)(8936002)(356005)(47076005)(5660300002)(82740400003)(81166007)(83380400001)(478600001)(40460700003)(426003)(336012)(1076003)(26005)(6666004)(2616005)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Dec 2023 09:50:23.3214 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0db4ad49-236e-4e4c-8d8e-08dbf57799d2
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB51.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5242
+Received-SPF: softfail client-ip=2a01:111:f400:7e89::60f;
+ envelope-from=sai.pavan.boddu@amd.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,29 +163,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jqIW7Qc3xH5l
+X-TUID: PIotVAeeFsrx
 
-On 11/21/23 07:32, Philippe Mathieu-Daudé wrote:
-> Mechanical change using the following coccinelle script:
-> 
-> @@
-> expression mr, owner, arg3, arg4, arg5, arg6, errp;
-> @@
-> -   memory_region_init_rom_device(mr, owner, arg3, arg4, arg5, arg6, &errp);
->      if (
-> -       errp
-> +       !memory_region_init_rom_device(mr, owner, arg3, arg4, arg5, arg6, &errp)
->      ) {
->          ...
->          return;
->      }
-> 
-> and removing the local Error variable.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/nvram/nrf51_nvm.c | 7 ++-----
->   1 file changed, 2 insertions(+), 5 deletions(-)
-> 
-Reviewed-by: Gavin Shan <gshan@redhat.com>
+The OSPI DMA reads flash data through the OSPI linear address space (the
+iomem_dac region), because of this the reentrancy guard introduced in
+commit a2e1753b ("memory: prevent dma-reentracy issues") is disabled for
+the memory region.
+
+Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+---
+ hw/ssi/xlnx-versal-ospi.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/ssi/xlnx-versal-ospi.c b/hw/ssi/xlnx-versal-ospi.c
+index 1a61679c2f..5123e7dde7 100644
+--- a/hw/ssi/xlnx-versal-ospi.c
++++ b/hw/ssi/xlnx-versal-ospi.c
+@@ -1772,6 +1772,7 @@ static void xlnx_versal_ospi_init(Object *obj)
+     memory_region_init_io(&s->iomem_dac, obj, &ospi_dac_ops, s,
+                           TYPE_XILINX_VERSAL_OSPI "-dac", 0x20000000);
+     sysbus_init_mmio(sbd, &s->iomem_dac);
++    s->iomem_dac.disable_reentrancy_guard = true;
+ 
+     sysbus_init_irq(sbd, &s->irq);
+ 
+-- 
+2.25.1
 

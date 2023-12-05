@@ -1,94 +1,94 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp418186ejb;
-        Tue, 5 Dec 2023 11:59:32 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF+kuOuY9Rg1USio6iYdxcspBSzdmNLa9s9O9LfnX31HIit7ytcAZMqwJX7Jx1KZQ/cQVZN
-X-Received: by 2002:ad4:4d4e:0:b0:67a:a721:b1af with SMTP id m14-20020ad44d4e000000b0067aa721b1afmr1700323qvm.106.1701806372215;
-        Tue, 05 Dec 2023 11:59:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701806372; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp457157ejb;
+        Tue, 5 Dec 2023 13:13:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEqgBafaRAnXZXYb+Bcv5eP7e03gyyi77a6REGkFRGi/o3XpclqnVkgu/eTqVRyHTrY/55l
+X-Received: by 2002:a05:6870:1694:b0:1fb:75b:12ee with SMTP id j20-20020a056870169400b001fb075b12eemr7656802oae.64.1701810804541;
+        Tue, 05 Dec 2023 13:13:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701810804; cv=none;
         d=google.com; s=arc-20160816;
-        b=y+K4rsHHXDK4oJg1liMxFf9sE5750iK5PZMpHvOyQ+CKerMHlztUg/n94YZ/uy95F2
-         XvAUo2OTRXGLMIsCEt4WVMtO+hNAEQ42CY8EjbcmtyWZdsFcmOq7zdInrvB8CqxDAACD
-         d01gH6keSXhggXRH4srdyxMap9uhwuLXipd/zyOHiLm/r7RyIyAGRvWK0RUywQIRWiK0
-         I4bS1qZs1xMmC7VQM6x7e2EbY/EW219Lm/yQHbjz++e+IcsgPaVZQbaR3q/5lndBgLw1
-         dFouIkPKZ7RwqbyYGT4QhKCsdRsntuRTdJYETlF+pjrJddYmTDG83UcFAc6NDuguqmya
-         QXqQ==
+        b=eYJiXyGX5cRkjWmYLs7lPzEHh+aPyYqe/xSSIPX5HnhIXmb2F8LFDTY4cNHbuDezPX
+         v0qv7tqSEtJCTeNs6DZKCQrhQmT0U5PgjJVOGAa7bhWwLw23TOrprZ3jTWbJyvLJaZWi
+         6ZooJ5i+uGkC8HtY16aCSPSdyMpjzLEDUlF3xeuggb1sAks2q6xOg6lqeRWwrF93LD6N
+         fr7XkFneobiu9FuYqCw87oqQxr5OX3C6opk+XEV8WL0b5GGVtwJPoMSJsB5tlN7K1rrT
+         JxxYdiIkRG5Wg0U/PNufUGWkXO3MeZsAmOS0BSbWRAwmKArnDPzGmu5KYFOQWz8PuWkm
+         voaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=DONy33HVQoYe8nBI7bz9dVQwsdTfkcWQcQcHaJxluDk=;
+        bh=Vg6vzoFsNKxfiUEYJ1FNgFnml/SyvhQ4XQv0nwtbyOg=;
         fh=RUvd7+rNuK560dO7rvuzvV5zrBUHecFwvDuWjdbhUXQ=;
-        b=hGdBQgobzcUXImBbhaUJPmIBbQqoqMiuNB5FMV2cOlB6pxnfC5xYDSeoEOF+fVOYnv
-         UcbEfWprx1+iELQPAb9crQLNyAuMi8fqAC06ONIqd5CUr1PvDZsiTiSHfDu6qSp44gfF
-         Apqow9JJxESkat7vA01gZZdfxqcs7jzSsrfV8LbfxKBerHzR1b5bPGzN4M/R6o4dGvRJ
-         lg3kZIU0KkIWxsq2qpy/teW+lZc7cyemZoH7BhequsUDOELioEcH0VJ2Cwvt4ke1nkma
-         w0ZQMWAu2Kwdev8Z4hLRjyobcZrDZzSQ8aonTNw4Mc2MQ61JoiIsHEpQSalYZD3pgE8o
-         Vt5w==
+        b=jliZb1MiK36tTzOwuo0TJ3/jJHJs9f083OG65ofc3VX2MstiVguAVXginQ2MP7c3Jd
+         l4VZsYl5siy16vGfqI/PzRAM1XjzEFWVomHR7aMm8Mi9xrGHwWCsN2FXuu0XnM9saTa1
+         Pjx8my8pvckDD2YyiI2Bs8R2a/s1Ex7wpQgcwAYJ8hWSOP0HL6De4sH3fghxNbOe24gr
+         de5k38WNYzc0uR9bd8Nyqo7M2hkt6eM5wBATHQa6W1jNwKxMcQ397zHLPwLQaTU/Llag
+         9aiQA9qEWKjwy6fn8Gq2SsGq1jYI9ZE5Z737SfLjsWVtz8I3CqNBfPbB1LtneUcn4VD9
+         mpMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WJKYJzJK;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UUjC75TB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id di8-20020ad458e8000000b0067aa6d85941si8495787qvb.61.2023.12.05.11.59.32
+        by mx.google.com with ESMTPS id x18-20020a0cfe12000000b0067a8e21aa5fsi11515676qvr.573.2023.12.05.13.13.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Dec 2023 11:59:32 -0800 (PST)
+        Tue, 05 Dec 2023 13:13:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WJKYJzJK;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UUjC75TB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rAbZL-00073P-0O; Tue, 05 Dec 2023 14:58:59 -0500
+	id 1rAcjB-00025Q-SX; Tue, 05 Dec 2023 16:13:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1rAbZJ-00072r-W2; Tue, 05 Dec 2023 14:58:58 -0500
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ id 1rAcjA-00024S-8M; Tue, 05 Dec 2023 16:13:12 -0500
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1rAbZI-00069C-Gg; Tue, 05 Dec 2023 14:58:57 -0500
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-50bf69afa99so3481306e87.3; 
- Tue, 05 Dec 2023 11:58:55 -0800 (PST)
+ id 1rAcj5-0002gF-AT; Tue, 05 Dec 2023 16:13:11 -0500
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-2c9fbb846b7so35643451fa.2; 
+ Tue, 05 Dec 2023 13:13:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701806333; x=1702411133; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701810783; x=1702415583; darn=nongnu.org;
  h=user-agent:in-reply-to:content-disposition:mime-version:references
  :message-id:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DONy33HVQoYe8nBI7bz9dVQwsdTfkcWQcQcHaJxluDk=;
- b=WJKYJzJKitWUV2yIs/AhayQaVXHm3nvXG0Trvhsj9g8TCbf8ZXLdcAC+DPwoQLz1PP
- nKBYM2BoPCa7neFdzzOFWJ9LhJGvdfpz4MQNiLDeHYEH5Gdg6JjhqEEE+vloT0rCeLDx
- zSMLde34MYP2i91l1B2aPU1blODWs3k11sdf8Klhs1/f42gDMuDJ884saL4YhhzoyBtj
- iha6bLRxBk2R2Qtej7pIJsomO2cRcyAMfWqE3/2Jid+iWyUwZnsiDXOM+c9UsojK2lLQ
- vfEY/N7hMQ5mmLNY8W8u2PSleb+U5oZbnS3mVrUDoHfXv9lJlGXHC5ZOTK+XfjvjzOaA
- dEtw==
+ bh=Vg6vzoFsNKxfiUEYJ1FNgFnml/SyvhQ4XQv0nwtbyOg=;
+ b=UUjC75TBAS4gTDEV33VUvfIfIUhuyE2C+GGOiWkRqr/cNwTKRyaVz+IrxDLQ8eciDl
+ 6meEiJKEi0TthbJ6v8F4HZzJc9xBiEzH1OO/7na8EwkcUlP5Rv8w1I2kz0luB8MET/XS
+ 2o592vH1dSn9J4Kx41h+kvBXU4cpBz3CNPw7JgY6nSmpvfpV9BK9eh6fY/rS70GmeAaI
+ arto6/qNkXFv/eUmJOXUpVQN9a25Pb+pGZj7N0fO9KW2p8di6aPrqihM0091LCpbmJ/L
+ zPhIyfPYNOCbW7qsD4EUHhTQF27kY3GpaijFdeDUG23GZYi0TObcQCXBS1+zTlE0C6OZ
+ REzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701806333; x=1702411133;
+ d=1e100.net; s=20230601; t=1701810783; x=1702415583;
  h=user-agent:in-reply-to:content-disposition:mime-version:references
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DONy33HVQoYe8nBI7bz9dVQwsdTfkcWQcQcHaJxluDk=;
- b=b6+CHIfCuKfjsWyK3Qpau7MAX5oZGtY7CpSXVBeYdY4m/Modo1rNjtA8jtz+h+eO4H
- ucnntCktMeKXv4PF+8uJInXGC7Ho4VPSbC3Sd0IQ1YnFLRBsH125Pmo24DgV0Sw3o6SV
- h1QT5LB9Hf4oM0zeI6OkJ8WCPg9T8T3TK1yVVx87BKcrRlHszW3SOLD2HXSfgYIWfO7E
- Wntl6OjAloDMNxyS2iPLNS+a/YyxbF8A+yC6zshX8EbBB0i2aONiJO7Ihs3TiKxnVVh6
- HApmO69Mo0vXgr6v9SnHok9yQ3iTD5TIRmKC7nrojUgDDzEqB4Yw3+f78Jv+Xy2KMR4y
- fg9Q==
-X-Gm-Message-State: AOJu0YwKHD7Mh2o/sVIB+4wDctzX0xWZreZ1KkMv+Fmo4/DABFsLYnnR
- EQwJ+88NriD7KHdoh3YAqTE=
-X-Received: by 2002:ac2:548f:0:b0:50b:f486:88b3 with SMTP id
- t15-20020ac2548f000000b0050bf48688b3mr2338892lfk.106.1701806333382; 
- Tue, 05 Dec 2023 11:58:53 -0800 (PST)
+ bh=Vg6vzoFsNKxfiUEYJ1FNgFnml/SyvhQ4XQv0nwtbyOg=;
+ b=laTF5anze3Q/2NC8XKWvK/GxCWAq+uyzqVRalkACczSdMjUKqrApLxcmeiUsXzCVK9
+ cFEziVkCTAFQnvSveYk1wmQiPwN6f6YiPaip0unTGXb5dK6pJjZCrgRg7rwzysz025t6
+ kf92voWt1rKwXSPDKzOdNSQX0+SUFSkmQ6GYDynblnM+NbE+EzbjRZ7rAIv9UYOXb8vz
+ ka93J++E/YUfaGs6DdgjkWQzIBqoFY2sRRuB5Dzev8EdxKEx63C9bvPyYd5I6dpehS1i
+ 3FCz+9KIQJL6Vag4Lh08PQ0cjf58zV7UJ44giwIbdbkGkzBQae4m4qZodP/tcgvXvQUG
+ o09Q==
+X-Gm-Message-State: AOJu0YxKdRj04969NoqGtnEtXgNmyNCpk+tkF/+fjqnwaFeU0TAwneg5
+ bSxNPvK4EvzPQW//hTlM2yo=
+X-Received: by 2002:a05:6512:e95:b0:50c:d80:85e6 with SMTP id
+ bi21-20020a0565120e9500b0050c0d8085e6mr805853lfb.54.1701810783336; 
+ Tue, 05 Dec 2023 13:13:03 -0800 (PST)
 Received: from fralle-msi (217-76-87-105.cust.bredband2.com. [217.76.87.105])
  by smtp.gmail.com with ESMTPSA id
- y22-20020a197516000000b0050bfbde3901sm570049lfe.297.2023.12.05.11.58.52
+ f25-20020a193819000000b00507987ff761sm920405lfa.56.2023.12.05.13.13.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Dec 2023 11:58:52 -0800 (PST)
-Date: Tue, 5 Dec 2023 20:58:51 +0100
+ Tue, 05 Dec 2023 13:13:02 -0800 (PST)
+Date: Tue, 5 Dec 2023 22:13:01 +0100
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
@@ -96,25 +96,24 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Kevin Wolf <kwolf@redhat.com>, saipavanboddu@gmail.com
-Subject: Re: [PATCH 1/1] xlnx-versal-ospi: disable reentrancy detection for
- iomem_dac
-Message-ID: <20231205195850.GA9927@fralle-msi>
-References: <20231205094802.2683581-1-sai.pavan.boddu@amd.com>
- <20231205094802.2683581-2-sai.pavan.boddu@amd.com>
+Subject: Re: [PATCH 1/2] block: m25p80: Add support of mt35xu02gbba
+Message-ID: <20231205211300.GB9927@fralle-msi>
+References: <20231205095226.2688032-1-sai.pavan.boddu@amd.com>
+ <20231205095226.2688032-2-sai.pavan.boddu@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231205094802.2683581-2-sai.pavan.boddu@amd.com>
+In-Reply-To: <20231205095226.2688032-2-sai.pavan.boddu@amd.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x229.google.com
 X-Spam_score_int: -1020
 X-Spam_score: -102.1
 X-Spam_bar: ---------------------------------------------------
 X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01, USER_IN_WELCOMELIST=-0.01,
  USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,37 +129,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PCAgtamdL/DL
+X-TUID: Cobs2U2Aw4+m
 
-On [2023 Dec 05] Tue 15:18:02, Sai Pavan Boddu wrote:
-> The OSPI DMA reads flash data through the OSPI linear address space (the
-> iomem_dac region), because of this the reentrancy guard introduced in
-> commit a2e1753b ("memory: prevent dma-reentracy issues") is disabled for
-> the memory region.
+On [2023 Dec 05] Tue 15:22:25, Sai Pavan Boddu wrote:
+> Add Micro 2Gb OSPI flash part with sfdp data.
 > 
 > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Tested-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 
 > ---
->  hw/ssi/xlnx-versal-ospi.c | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/block/m25p80_sfdp.h |  1 +
+>  hw/block/m25p80.c      |  3 +++
+>  hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+>  3 files changed, 40 insertions(+)
 > 
-> diff --git a/hw/ssi/xlnx-versal-ospi.c b/hw/ssi/xlnx-versal-ospi.c
-> index 1a61679c2f..5123e7dde7 100644
-> --- a/hw/ssi/xlnx-versal-ospi.c
-> +++ b/hw/ssi/xlnx-versal-ospi.c
-> @@ -1772,6 +1772,7 @@ static void xlnx_versal_ospi_init(Object *obj)
->      memory_region_init_io(&s->iomem_dac, obj, &ospi_dac_ops, s,
->                            TYPE_XILINX_VERSAL_OSPI "-dac", 0x20000000);
->      sysbus_init_mmio(sbd, &s->iomem_dac);
-> +    s->iomem_dac.disable_reentrancy_guard = true;
+> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+> index 011a880f66..1733b56950 100644
+> --- a/hw/block/m25p80_sfdp.h
+> +++ b/hw/block/m25p80_sfdp.h
+> @@ -16,6 +16,7 @@
+>  #define M25P80_SFDP_MAX_SIZE  (1 << 24)
 >  
->      sysbus_init_irq(sbd, &s->irq);
+>  uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+> +uint8_t m25p80_sfdp_mt35xu02g(uint32_t addr);
 >  
+>  uint8_t m25p80_sfdp_mx25l25635e(uint32_t addr);
+>  uint8_t m25p80_sfdp_mx25l25635f(uint32_t addr);
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index afc3fdf4d6..c8c7f6c1c3 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -267,6 +267,9 @@ static const FlashPartInfo known_devices[] = {
+>      { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+>      { INFO_STACKED("mt35xu01g", 0x2c5b1b, 0x104100, 128 << 10, 1024,
+>                     ER_4K | ER_32K, 2) },
+> +    { INFO_STACKED("mt35xu02gbba", 0x2c5b1c, 0x104100, 128 << 10, 2048,
+> +                   ER_4K | ER_32K, 4),
+> +                   .sfdp_read = m25p80_sfdp_mt35xu02g },
+>      { INFO_STACKED("n25q00",    0x20ba21, 0x1000, 64 << 10, 2048, ER_4K, 4) },
+>      { INFO_STACKED("n25q00a",   0x20bb21, 0x1000, 64 << 10, 2048, ER_4K, 4) },
+>      { INFO_STACKED("mt25ql01g", 0x20ba21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
+> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+> index b33811a4f5..6ee2cfaf11 100644
+> --- a/hw/block/m25p80_sfdp.c
+> +++ b/hw/block/m25p80_sfdp.c
+> @@ -57,6 +57,42 @@ static const uint8_t sfdp_n25q256a[] = {
+>  };
+>  define_sfdp_read(n25q256a);
+>  
+> +static const uint8_t sfdp_mt35xu02g[] = {
+> +    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
+> +    0x00, 0x06, 0x01, 0x10, 0x30, 0x00, 0x00, 0xff,
+> +    0x84, 0x00, 0x01, 0x02, 0x80, 0x00, 0x00, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xe5, 0x20, 0x8a, 0xff, 0xff, 0xff, 0xff, 0x7f,
+> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+> +    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
+> +    0xff, 0xff, 0x00, 0x00, 0x0c, 0x20, 0x11, 0xd8,
+> +    0x0f, 0x52, 0x00, 0x00, 0x24, 0x5a, 0x99, 0x00,
+> +    0x8b, 0x8e, 0x03, 0xe1, 0xac, 0x01, 0x27, 0x38,
+> +    0x7a, 0x75, 0x7a, 0x75, 0xfb, 0xbd, 0xd5, 0x5c,
+> +    0x00, 0x00, 0x70, 0xff, 0x81, 0xb0, 0x38, 0x36,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0x43, 0x0e, 0xff, 0xff, 0x21, 0xdc, 0x5c, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +};
+> +
+> +define_sfdp_read(mt35xu02g);
+>  
+>  /*
+>   * Matronix
 > -- 
 > 2.25.1
-> 
 > 

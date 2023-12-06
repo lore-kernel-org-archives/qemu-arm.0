@@ -1,199 +1,185 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp548272ejb;
-        Tue, 5 Dec 2023 16:17:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHFQpWIF//cl3Vlo5e2wkN5ZOXS4mSTo8jeESsBrPStxW0ZdKqJRdcVlYxGNV4tdQJI7fDx
-X-Received: by 2002:a05:6870:4724:b0:1fa:2fbc:59ab with SMTP id b36-20020a056870472400b001fa2fbc59abmr8829oaq.51.1701821840013;
-        Tue, 05 Dec 2023 16:17:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701821839; cv=none;
+Received: by 2002:a05:7022:4195:b0:70:a3b7:dfe7 with SMTP id i21csp2997550dli;
+        Wed, 6 Dec 2023 08:56:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHQtTZjfrXLQMLVdX+2ALdFRiWvWzeQS03kImVu/0yOrQMioHZJs1mojp3ZAbXZ+k6ls5eD
+X-Received: by 2002:a05:6870:7a18:b0:1fa:ef56:70e9 with SMTP id hf24-20020a0568707a1800b001faef5670e9mr1310647oab.26.1701881810071;
+        Wed, 06 Dec 2023 08:56:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701881810; cv=none;
         d=google.com; s=arc-20160816;
-        b=m11nb3S233cd7xRqXzObq9MktKSrN8aT6SHwx4GVXndPeEuGAW9n4z/JDE+WhuH4wC
-         JCEjtJLOFK8Wp960f2dFnbu3vvX49MPE3mAX0CH/N6JL1ARgUy2BHH7pNaHMSWrmxwGn
-         uP1LOxPFaBIwzK9U13DUBQFfCliL/ab03B5Esf8wZyDfw8Uv+Pz5XSfSS1PBS0LN4ZPh
-         5th3R41tY5y1/KIPnMeZA4MMmLifshZGD2UbBEYchbKOE1gPaTj24KzyBckasd5kI+BO
-         OndmVor/LtKJbaR7ettb84rujEIh837YTNyWc26rEU/c/nzgyO5ZUiSg5OIRALW3gcn5
-         LD/w==
+        b=fv21zYPzER0mJy16nJ4eU5kKmENdNDf0H3mzH5DStZ5bawjGux0X+0iNh7eCg9EHBr
+         V6Frb4V/dEXKwLEXQCikNXqxPUdPbs54MPqsn2p1dKFn/djPTVpBRrI8rmQjeAAGWc0j
+         //drEoGrmb2+4N1ZnrnGFaNfwxpjw8t06TVxORM+3PWdPlP3T8Jfq33qtZ7qVQqNoTQw
+         PDkWGjXPvErq/b29hPH1ObCB/I2789sGLvC8HJ/zjCQyB82ZmRTNqIWYa1OIFOxndfUD
+         cpd2OboI/Dooo2xlDc9pgIwFWXrCInvxVca7ZuLGga6nB09fPOzPd/X170hEpCf9hSFi
+         ECUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Oz8vm05NI6Iz3sES+BWF1x9oyxrk0h7YmaWZb+kkWfY=;
-        fh=5toIyTGcO3oNm83lrr25BUJVXW2ql9uqfwVJwGG38Hk=;
-        b=gdKSU4nBNqEIoORtSk4zyYFfgX9PxwWjL1dVRHLLjJcA4moZgLNSRnmC1wMdqsi+24
-         qdVBRJAsCsMnmeWgtgQ4U+Q2RQc0oDGEUtcJYiposyushh4nlZtz7hngshU1+GBpHNAU
-         IAIdzkGthjrYdQIKWer66gB0WIcX3GNLjzXRKVkH53PxR8dj8d2tk0mvBbut2R4ITr1d
-         hYS1h2bE6K8R0cgMOGWDcm72CFWlHTfaIxRzoyjZ2MDKVfSwgySVO+cIus6An0+7GsLv
-         /hMujTwUrOCJ9CIA3BxHSAEFzImJh1jYH2PtGlIyFl5CrR3dhbr1Dd56QZrzAUw/ZNvK
-         2Daw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=0XpGf3XU2uzIbfwuzx3Kh1lAURm8G/x83dw3KBm3PcU=;
+        fh=nHXCxAu9yzvsZfHVth69sEU95KCk0t//YoILpnfCoG4=;
+        b=B0nn7z3PsYSWvks+pKLzwDsqFY3tM6oJWIwOlb81wVq+gmKYS5kh2DXvkcFSvNLbKW
+         o78O66V+d4FAbG3kjDAdHcTwmkHicuRU3QmdZ25zXt/yPzMkmhEEYdgjkqeXvoI29Qds
+         B9ncT0iwmjRxeoeBPAX6o6TubRFfNMSimb0sxahqQMOoaLihX5S6YcsjSEk0v/ArvV8E
+         WX7x0kD2VzMHnTfVZaY6k80Qlm21itIQlPxBvJNekcKJOVg5nhQg1OuHQJ/aIrBPF7KK
+         miLHX0Ei10v6avHNdWo7vhX5lkRaNSEPL/c0v4rZsbyB1VXw7laDpmuKp1iEVHYvbVW/
+         5dMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S9Henz9b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8-20020a056214020800b0067a49f7a0d5si13166478qvt.549.2023.12.05.16.17.19
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Dec 2023 16:17:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=YF5gQuHB;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.93])
+        by mx.google.com with ESMTPS id d3-20020a0ce703000000b0067a9779cc1fsi282416qvn.366.2023.12.06.08.56.48
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 06 Dec 2023 08:56:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=S9Henz9b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rAfbG-0004qj-UR; Tue, 05 Dec 2023 19:17:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rAfbE-0004q6-2y; Tue, 05 Dec 2023 19:17:12 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rAfb8-0006eH-Ih; Tue, 05 Dec 2023 19:17:11 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-54c74b3cd4cso692137a12.1; 
- Tue, 05 Dec 2023 16:17:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701821824; x=1702426624; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Oz8vm05NI6Iz3sES+BWF1x9oyxrk0h7YmaWZb+kkWfY=;
- b=S9Henz9bkC1c8mzqUvPuBhPrnIYAPGd8NUexOvkik4gwZp3/XOTef7yJri8Jqwnbrf
- D8OVDwBBKug7lXaAUlVB2RuYOi3Fk0NgprDugSO2xeikmt2/XOtu3PDpCtpazRWkORQw
- 1YfKVny1rw0gVdsok9Kvyw1JkrT/iL1AdEWLgRf08ZyJCZi5m9J5xR0cfFdfX6aRf5AF
- WwHh7zTqi1B6F1tfi2ZW8pZ/y355ylDFBe9VtzhtKReBiKcz0GEkVo+VnTjIfnwbFR66
- Q68CPufzLf6FVwhScvjN00zMdNeJT1t0aNALPDrW5Clk/wgqPm7G9zOiX/8BNUDBAhTf
- 0yPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701821824; x=1702426624;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Oz8vm05NI6Iz3sES+BWF1x9oyxrk0h7YmaWZb+kkWfY=;
- b=cRr4iJ2aG8PKhR1XfH0LOqB+OWGWCaStydw0WbTiJWrrSl0mEEl9YBUOg5LDjE1Hkr
- DwJ83k3WSHzKhjYnBPgIu5hIaqKv9XgNoPdTloYyoUxEuc6keQatZwm/b6CmXbmTI/CU
- ql/381hWMjGXlxyCMH5TaV3L6Mrz6RiKfQtG+3KFUElJp7sBKRAzPfmY/09x0wBR/nkP
- fp/SgpuWOb0iEx0vD6WLeLZUC61+ehUohCfJoJXbQ8LofT6zn370rIke/DpE76GDSnGY
- 7qKo8FaFwcJi5/ZhsfC8Cse8CAoy1cW7CaBVj95UwV3zg3P+L1t5LRAJ8BO6s7m5AEgW
- el2A==
-X-Gm-Message-State: AOJu0YybRS1HZaJPlR8zE8bjyq+pJgRs0i+kGhyL/8HkIdUwY56XKZh3
- xkm4fFuK94GB4De0sWB74KEp5zqIX78IBUr6W5bD+RHQP7vhoQ==
-X-Received: by 2002:a50:8e5c:0:b0:54c:b72b:93 with SMTP id
- 28-20020a508e5c000000b0054cb72b0093mr40050edx.25.1701821824317; 
- Tue, 05 Dec 2023 16:17:04 -0800 (PST)
+       dkim=pass header.i=@intel.com header.s=Intel header.b=YF5gQuHB;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1701881809; x=1733417809;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=NKRjgHaEJWXCNvOaNv7NW1iG2Gx8MCRVSiENZF8b5oI=;
+  b=YF5gQuHBsIi1JfIfUPjPLCjszRgLNfyN645gvkN5yUxN0wcRVeCi3TpU
+   3OEn/IsGBY2zFjl1/CSKOsdae1vGgtqtcyO8J50nIx/Bsgq23ZpFA0L7U
+   wUW5gBWMWjYxx3lwlOTQoLz+PUDjF6uGgp9jzyeeVsxJnQzQmAPTqEDXH
+   BOG+btVZRV4rUTdCXQLKIMJhE6oMjqnfLOBdGwumSHUNYEE0ECP6JJ4WD
+   jr9R2pwU4zHpVA7SCkNSziCqnUwauDkwB27MLdDJVNw+/3ELE7YgQMgwF
+   vI5XDp9rHxGRptiQg7zcf5j+yggH2/ykG8TptyBfuJpHqLnzCN3oxaw4y
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="391259272"
+X-IronPort-AV: E=Sophos;i="6.04,255,1695711600"; 
+   d="scan'208";a="391259272"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Dec 2023 08:56:42 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="1018628339"
+X-IronPort-AV: E=Sophos;i="6.04,255,1695711600"; 
+   d="scan'208";a="1018628339"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by fmsmga006.fm.intel.com with ESMTP; 06 Dec 2023 08:56:35 -0800
+Date: Thu, 7 Dec 2023 01:08:55 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+	lpieralisi@kernel.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, imammedo@redhat.com,
+	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
+	mst@redhat.com, will@kernel.org, gshan@redhat.com,
+	rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+	lixianglai@loongson.cn, linuxarm@huawei.com
+Subject: Re: [PATCH V7 3/8] hw/acpi: Update ACPI GED framework to support
+ vCPU Hotplug
+Message-ID: <ZXCqp32ggIFvUweu@intel.com>
+References: <20231113201236.30668-1-salil.mehta@huawei.com>
+ <20231113201236.30668-4-salil.mehta@huawei.com>
 MIME-Version: 1.0
-References: <20231124143505.1493184-1-fkonrad@amd.com>
- <20231124143505.1493184-4-fkonrad@amd.com>
-In-Reply-To: <20231124143505.1493184-4-fkonrad@amd.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Dec 2023 10:16:37 +1000
-Message-ID: <CAKmqyKPKwEap=DZEza=GmeVTwoGMDW=CgQeToJUKr4Ny_F03Gg@mail.gmail.com>
-Subject: Re: [PATCH v1 3/3] hw/dma/xlnx_csu_dma: don't throw guest errors when
- stopping the SRC DMA
-To: Frederic Konrad <fkonrad@amd.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, francisco.iglesias@amd.com, 
- peter.maydell@linaro.org, edgar.iglesias@gmail.com, alistair@alistair23.me, 
- luc.michel@amd.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=alistair23@gmail.com; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VcjntJZiKXR2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231113201236.30668-4-salil.mehta@huawei.com>
+X-TUID: ZPNEBL9PqjXB
 
-On Sat, Nov 25, 2023 at 1:36=E2=80=AFAM Frederic Konrad <fkonrad@amd.com> w=
-rote:
->
-> UG1087 states for the source channel that: if SIZE is programmed to 0, an=
-d the
-> DMA is started, the interrupts DONE and MEM_DONE will be asserted.
->
-> This implies that it is allowed for the guest to stop the source DMA by w=
-riting
-> a size of 0 to the SIZE register, so remove the LOG_GUEST_ERROR in that c=
-ase.
->
-> While at it remove the comment marking the SIZE register as write-only.
->
-> See: https://docs.xilinx.com/r/en-US/ug1087-zynq-ultrascale-registers/CSU=
-DMA_SRC_SIZE-CSUDMA-Register
->
-> Signed-off-by: Frederic Konrad <fkonrad@amd.com>
+Hi Salil,
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+On Mon, Nov 13, 2023 at 08:12:31PM +0000, Salil Mehta via wrote:
+> Date: Mon, 13 Nov 2023 20:12:31 +0000
+> From: Salil Mehta via <qemu-devel@nongnu.org>
+> Subject: [PATCH V7 3/8] hw/acpi: Update ACPI GED framework to support vCPU
+>  Hotplug
+> X-Mailer: git-send-email 2.8.3
+> 
 
-Alistair
+[snip]
 
-> ---
->  hw/dma/xlnx_csu_dma.c | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
-> index 531013f35a..bc1505aade 100644
-> --- a/hw/dma/xlnx_csu_dma.c
-> +++ b/hw/dma/xlnx_csu_dma.c
-> @@ -39,7 +39,7 @@
->  REG32(ADDR, 0x0)
->      FIELD(ADDR, ADDR, 2, 30) /* wo */
->  REG32(SIZE, 0x4)
-> -    FIELD(SIZE, SIZE, 2, 27) /* wo */
-> +    FIELD(SIZE, SIZE, 2, 27)
->      FIELD(SIZE, LAST_WORD, 0, 1) /* rw, only exists in SRC */
->  REG32(STATUS, 0x8)
->      FIELD(STATUS, DONE_CNT, 13, 3) /* wtc */
-> @@ -335,10 +335,14 @@ static uint64_t addr_pre_write(RegisterInfo *reg, u=
-int64_t val)
->  static uint64_t size_pre_write(RegisterInfo *reg, uint64_t val)
->  {
->      XlnxCSUDMA *s =3D XLNX_CSU_DMA(reg->opaque);
-> +    uint64_t size =3D val & R_SIZE_SIZE_MASK;
->
->      if (s->regs[R_SIZE] !=3D 0) {
-> -        qemu_log_mask(LOG_GUEST_ERROR,
-> -                      "%s: Starting DMA while already running.\n", __fun=
-c__);
-> +        if (size || s->is_dst) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: Starting DMA while already running.\n",
-> +                          __func__);
-> +        }
->      }
->
->      if (!s->is_dst) {
-> @@ -346,7 +350,7 @@ static uint64_t size_pre_write(RegisterInfo *reg, uin=
-t64_t val)
->      }
->
->      /* Size is word aligned */
-> -    return val & R_SIZE_SIZE_MASK;
-> +    return size;
+> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
+>      memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
+>                            TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
+>      sysbus_init_mmio(sbd, &ged_st->regs);
+> +
+> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
+> +                       ACPI_CPU_HOTPLUG_REG_LEN);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
+> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+> +                        &s->cpuhp_state, 0);
+
+I find this cpu_hotplug_hw_init() can still cause qtest errors on x86
+platforms as you mentioned in v6: https://lore.kernel.org/qemu-devel/15e70616-6abb-63a4-17d0-820f4a254607@opnsrc.net/T/#m108f102b2fe92b7dd7218f2f942f7b233a9d6af3
+
+IIUC, microvm machine has its own 'possible_cpus_arch_ids' and that is
+inherited from its parent x86 machine.
+
+The above error is because device-introspect-test sets the none-machine:
+
+# starting QEMU: exec ./qemu-system-i386 -qtest unix:/tmp/qtest-3094820.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-3094820.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -nodefaults -machine none -accel qtest
+
+So what about just checking mc->possible_cpu_arch_ids instead of an
+assert in cpu_hotplug_hw_init()?
+
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 4b24a2500361..303f1f1f57bc 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -221,7 +221,10 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+     const CPUArchIdList *id_list;
+     int i;
+
+-    assert(mc->possible_cpu_arch_ids);
++    if (!mc->possible_cpu_arch_ids) {
++        return;
++    }
++
+     id_list = mc->possible_cpu_arch_ids(machine);
+     state->dev_count = id_list->len;
+     state->devs = g_new0(typeof(*state->devs), state->dev_count);
+
+This check seems to be acceptable in the general code path? Not all machines
+have possible_cpu_arch_ids, after all.
+
+Thanks,
+Zhao
+
 >  }
->
->  static uint64_t size_post_read(RegisterInfo *reg, uint64_t val)
-> --
-> 2.25.1
->
->
+>  
+>  static void acpi_ged_class_init(ObjectClass *class, void *data)
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> index ba84ce0214..90fc41cbb8 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -60,6 +60,7 @@
+>  #define HW_ACPI_GENERIC_EVENT_DEVICE_H
+>  
+>  #include "hw/sysbus.h"
+> +#include "hw/acpi/cpu_hotplug.h"
+>  #include "hw/acpi/memory_hotplug.h"
+>  #include "hw/acpi/ghes.h"
+>  #include "qom/object.h"
+> @@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+>  #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+>  #define ACPI_GED_PWR_DOWN_EVT      0x2
+>  #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+> +#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
+>  
+>  typedef struct GEDState {
+>      MemoryRegion evt;
+> @@ -106,6 +108,8 @@ struct AcpiGedState {
+>      SysBusDevice parent_obj;
+>      MemHotplugState memhp_state;
+>      MemoryRegion container_memhp;
+> +    CPUHotplugState cpuhp_state;
+> +    MemoryRegion container_cpuhp;
+>      GEDState ged_state;
+>      uint32_t ged_event_bitmap;
+>      qemu_irq irq;
+> -- 
+> 2.34.1
+> 
+> 

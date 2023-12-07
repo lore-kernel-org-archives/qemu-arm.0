@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp1704424ejb;
-        Thu, 7 Dec 2023 07:47:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFGUDHLNNykJ7sXJEsj6O8HkqRmt9ImUJz7dxls2H1fpyjDiK3cYjw1t6SQPvt/sxQtXE4h
-X-Received: by 2002:a05:6830:616:b0:6d9:da23:9532 with SMTP id w22-20020a056830061600b006d9da239532mr1095451oti.5.1701964043345;
-        Thu, 07 Dec 2023 07:47:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701964043; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp1704456ejb;
+        Thu, 7 Dec 2023 07:47:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG+/mWU0U1bo2BCNpmq+jZxFOMWEpW8PzPHwm8/uh8H+Zj4CCy1hrYERc99nHKOmq2y9Hh+
+X-Received: by 2002:a05:622a:2cb:b0:425:4043:764b with SMTP id a11-20020a05622a02cb00b004254043764bmr3457778qtx.115.1701964045646;
+        Thu, 07 Dec 2023 07:47:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701964045; cv=none;
         d=google.com; s=arc-20160816;
-        b=WuX0mQbNVxL//j7/C1FOsC/7Jqvv9bBxC8c2nqK8BfinRKcPx7lWJ/h10pPqvvmCYN
-         kN2axrRJZ1PeRNcXd/TwDbCc0zCL932RGj8eK+OAzSq1FTE7oFA2V4hB9H7dY4Pgp5QT
-         /M1KuXPXCbwjSGvjSTEbIVxuX64UA14MxDf+yqWePDC6N18PLzlt46qtUkeT+WWjeHmT
-         1YwhKpJdOU1+EeOF9kbV8wL4JK+sPkbn9toS9+nWhLkF8fGQIWlYOwCCFXgOyR7cz/XP
-         Uq1P4IIteG+1rvQLexTQyMlsMHdrQGltHYgxptf+SUjgy+Y1IG2rbHrYiwOvR5vqxCoz
-         VsnQ==
+        b=zkNUTcsUfF7uQbVjaizlVADRhEcsQK8eypQeO2y3e+0SFF0xhpq7bIvi3SVlZibnEg
+         InvIwHrEXqaiB0AMk9spD4OcStFcKXz7EsdCWTvg1KOFTL49zd+U+e/9cEc/nxb8l+57
+         dbYAn0DpJxH5cj0BFh6W0D2DZkIK5FBumjFk68Bxtl0jUoVWRmZQTZ1G9rNr0ZLnyJEh
+         7yFapyvcmfTgI45gNKeD/Bnq+MjTJ1gP8C2E4QHWvQKjwhDGaJ2kooMsCDu534zqymPJ
+         XyCWOPPhVOlft0UUsILBpgBuJOm7oJ0E5C3kk3EeN0P6F9tpq2Udn/VZkZ8W/0O1p3Al
+         TkAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aTaowFnx2H+uQC34ffSxi316ffYwhZaQm2jWOVPrZuQ=;
+        bh=kHtbNbE33I2d0hjrmbCtkemMmPZQwimW4EDhg2VKvrs=;
         fh=A8ftaDMzewcMA0xKw++MSYMuCBPymoWdeCEx+9KcU8w=;
-        b=dVHtUL7Epj7UtbvmL5ft/PNteDG6MH00X9Bh87uce088R8dwF7n0jVUwwiPz6ydnqq
-         IRroL9v3BedojhPiz0jMBNteE/v7oD+cMI9OEbtOnP+gcSFlAaZbQ0/76RJy/CW2HL8v
-         CHf7WpoB/DHx9dHJzStrOzr0B7iR7LAwbX3W0cytdKCKk73Rfz15WjCe6VtQF9WIewPK
-         NQV+GPMADnxCSNDXIIo+4v63L0dad3ecYX0fRhV50E4ji43/C035ijACxAAXQIZuDY3n
-         23bQvVO1kGmANYYGjd5BW+4J7xn+KEgNdNS74k1AJne7M7GD4uIzb+rlV3LGKslSLGor
-         8HFg==
+        b=HkmtrVl0fMYyCAMCFQUvoPAYeEUDXOzqpOQbmQZx63ljGcDVE0vJzu4xTAUY9QYc48
+         n8w43yDNhBjEEnHleV+o4KYq5f92CZVjUtvCDpxmgqUjmQXThDtuUvMeKI+JRGV+foKY
+         ctOOhgc/wF4HUQCdSF7ciXdELduw/yNSF6sBBbDtQk7M0A3E7lI7lRFg9ezGsm1odyCN
+         W5uFCRkn6v4LqYvQ42uR4ISurSkwlfWBySjbI581eJIKAOtgFUsCetPhhWp5pFCTqIqm
+         k+UTxElf7re9QPnh7uJxd9EdOSfAmAp91C8dlutk1dCn4/nZQZ93miqYsFBm8aEkMonm
+         cuCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yh5s31wD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oi9JjzOs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020a67b403000000b0046447285292si15666vsl.733.2023.12.07.07.47.23
+        by mx.google.com with ESMTPS id fi3-20020a05622a58c300b0042581cabe98si67590qtb.139.2023.12.07.07.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Dec 2023 07:47:23 -0800 (PST)
+        Thu, 07 Dec 2023 07:47:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yh5s31wD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oi9JjzOs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rBGaM-0000xz-Me; Thu, 07 Dec 2023 10:46:46 -0500
+	id 1rBGa2-0000m5-MG; Thu, 07 Dec 2023 10:46:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBGa5-0000p7-P7
- for qemu-devel@nongnu.org; Thu, 07 Dec 2023 10:46:29 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBGZl-0000fo-UW
+ for qemu-devel@nongnu.org; Thu, 07 Dec 2023 10:46:13 -0500
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBGa0-0002DI-Ou
- for qemu-devel@nongnu.org; Thu, 07 Dec 2023 10:46:29 -0500
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-9fa2714e828so133733766b.1
- for <qemu-devel@nongnu.org>; Thu, 07 Dec 2023 07:46:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBGZk-00029g-9w
+ for qemu-devel@nongnu.org; Thu, 07 Dec 2023 10:46:09 -0500
+Received: by mail-lj1-x22d.google.com with SMTP id
+ 38308e7fff4ca-2c9bd3ec4f6so11245181fa.2
+ for <qemu-devel@nongnu.org>; Thu, 07 Dec 2023 07:46:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701963983; x=1702568783; darn=nongnu.org;
+ d=linaro.org; s=google; t=1701963965; x=1702568765; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aTaowFnx2H+uQC34ffSxi316ffYwhZaQm2jWOVPrZuQ=;
- b=yh5s31wDOyOF69MMOHFk5N1Yuz/QkIM0x8+nouKPuEf1N+MUIw5DvpsJpj/oOc8RIS
- gpEK4PcJarN+HE47Fp5Y+kQud2B2VixnnD9OtsWbYS6tbSt40HRdBV0MuPkVjgArGxhH
- pjaUvwFpRT4FRJFzWGi1hP2f6GBOo1A8QKlebqyUC6DK7FSFW90Xs6K21lKNLQwf/llq
- KehMGuudxFvSpudp3ht1Cxm5cdEq7ckOENm8E2MzF/hX4wzrW8N2krn9SYTHiQ2X+HXS
- ED095M3kblTqgd0A/IDXCArk8JuCsqYfDDRv/kfqQdEINahnipyNTPZ3/ikopK17cNHi
- JGZw==
+ bh=kHtbNbE33I2d0hjrmbCtkemMmPZQwimW4EDhg2VKvrs=;
+ b=Oi9JjzOsES0KBiBWv3TCkSa9CbLU48Vr+amo1RFXZEO9ALxrx+OO2w1e3Y4f9eVfvP
+ r40OvDTDi/8jyJ615cKRYXpjgpaXtB0QLn+gMwdgZ50rb+ZYEfXRTkpWYG69BbG11hlj
+ Z5YzUlaevHvj+EyLKVkF4fEc8pBIdeoxZ5BwvC2yq9Pr1lhOR9WkbR1M6BPrsPmoYX0/
+ xh2KEPxnhcz9V3fk2ex/gFs/R74AUERDqjaLPoEjQd7/VS8W0UCk4LS8FdeHHz9MYqdo
+ Do2ni5hDFlIaS1pWyHPoIE38ryryyM8KQyO7pDuGBF7xr6eHMXxdyZUdc9lXE/I1f7uJ
+ pFfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701963983; x=1702568783;
+ d=1e100.net; s=20230601; t=1701963965; x=1702568765;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=aTaowFnx2H+uQC34ffSxi316ffYwhZaQm2jWOVPrZuQ=;
- b=JhsQNqrSx4NUNoVG/kC2wMAaArFOp3EzrJVOvraHOv7voEAm8qFVy+QhkUw5laNDYx
- 2m6DokBC93nb3gZk5vjKApTj7cxTP2Eepy3aS6Gd/q4BOu+R2MM2+v7QCc/evBYQguIQ
- dJtsOw9AB+183wS7CCaSmeTpDWWogCZ7DTi14GDvOSByl2pjjR0R3cQpxLUoGFoDpyUP
- uujrtqVecLfdkf7v839VpiARhbgRGXMwy+1i9TibWEmsEbN1B5wNPRJtjaA1keS1JtU2
- oMln+p0/dhdiFHhoIJ8tpHX+8ZhPlBhFO1nITfHy50eAaVXTaENco29GDoKr5uHxnDeN
- 0sig==
-X-Gm-Message-State: AOJu0Yxm48shGUaRrshj9LV+cxyOdARUou/s6DmI7jSnqdWi8qulqrAU
- mu5K16t2ve7Uf6Ia9tOfanz7uJfoOFS/OTwIoDY=
-X-Received: by 2002:a17:906:2c47:b0:a1d:15ac:14fc with SMTP id
- f7-20020a1709062c4700b00a1d15ac14fcmr1319786ejh.22.1701963982824; 
- Thu, 07 Dec 2023 07:46:22 -0800 (PST)
+ bh=kHtbNbE33I2d0hjrmbCtkemMmPZQwimW4EDhg2VKvrs=;
+ b=GlAw4naClmCLChDTdV0PgAgL8Rh6vuMOhDjzVIIClS1AmKDk+I5Znh/RY6JLMnggvY
+ zV6eML/UBTqjdchjWZVvwkvnwo66Bod3cgRCCy5YOUGFkq3AN3vBS+IJwsHe4KhaAN0b
+ lK0+oGnXlqsCp9ts2LpQ8F5wr70ZzVDOkA/ccavBxXDqwFiIDgDkZB3tK1igwMgNfatw
+ mMOPq3PjSt1IMObrNQbPsbTflXol/Z15A1PP69rOuCJP5DrAZzLpBHNnMkzLuCPsE1aY
+ vsOfmnmHXmN2viFsKctYtuLrKi2+bcER1BB050e8OvWa6zdoRHDRZ3Cpe6S4fekWCzBJ
+ qg0A==
+X-Gm-Message-State: AOJu0Yz0+VGl1Lcs+qvzs8BE+DKQHJnesDY23v0mXDXB2jxR6NMencxu
+ nk382vRIIsp3FEzWk1rYhmXoZ0J5hpVfELpHi1Q=
+X-Received: by 2002:a19:ad44:0:b0:50b:f84a:5398 with SMTP id
+ s4-20020a19ad44000000b0050bf84a5398mr916528lfd.89.1701963965573; 
+ Thu, 07 Dec 2023 07:46:05 -0800 (PST)
 Received: from m1x-phil.lan ([176.187.202.111])
  by smtp.gmail.com with ESMTPSA id
- u13-20020a17090626cd00b00a1e8fa8b1f1sm973463ejc.79.2023.12.07.07.46.21
+ e6-20020a1709067e0600b00a19afc16d23sm971415ejr.104.2023.12.07.07.46.04
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 07 Dec 2023 07:46:22 -0800 (PST)
+ Thu, 07 Dec 2023 07:46:05 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
@@ -96,17 +96,18 @@ Cc: qemu-arm@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 5/5] sysemu/replay: Restrict icount to system emulation
-Date: Thu,  7 Dec 2023 16:45:50 +0100
-Message-ID: <20231207154550.65087-6-philmd@linaro.org>
+Subject: [PATCH v2 2/5] target/arm: Ensure icount is enabled when emulating
+ INST_RETIRED
+Date: Thu,  7 Dec 2023 16:45:47 +0100
+Message-ID: <20231207154550.65087-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231207154550.65087-1-philmd@linaro.org>
 References: <20231207154550.65087-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,102 +129,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hg6lMLqBbfnC
+X-TUID: 6mJmc1FV5EDE
+
+pmu_init() register its event checking the pm_event::supported()
+handler. For INST_RETIRED, the event is only registered and the
+bit enabled in the PMU Common Event Identification register when
+icount is enabled as ICOUNT_PRECISE.
+
+Assert the pm_event::get_count() and pm_event::ns_per_count()
+handler will only be called under this icount mode.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/sysemu/cpu-timers.h |  2 +-
- include/sysemu/replay.h     | 11 ++++++++---
- stubs/icount.c              | 19 -------------------
- 3 files changed, 9 insertions(+), 23 deletions(-)
+ target/arm/helper.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/include/sysemu/cpu-timers.h b/include/sysemu/cpu-timers.h
-index e909ffae47..25dfc76599 100644
---- a/include/sysemu/cpu-timers.h
-+++ b/include/sysemu/cpu-timers.h
-@@ -30,7 +30,7 @@ typedef enum {
-     ICOUNT_ADAPTATIVE = 2,
- } ICountMode;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index adb0960bba..333fd5f4bf 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -940,11 +940,13 @@ static bool instructions_supported(CPUARMState *env)
  
--#ifdef CONFIG_TCG
-+#if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
- extern ICountMode use_icount;
- #define icount_enabled() (use_icount)
- #else
-diff --git a/include/sysemu/replay.h b/include/sysemu/replay.h
-index 08aae5869f..8102fa54f0 100644
---- a/include/sysemu/replay.h
-+++ b/include/sysemu/replay.h
-@@ -1,6 +1,3 @@
--#ifndef SYSEMU_REPLAY_H
--#define SYSEMU_REPLAY_H
--
- /*
-  * QEMU replay (system interface)
-  *
-@@ -11,6 +8,12 @@
-  * See the COPYING file in the top-level directory.
-  *
-  */
-+#ifndef SYSEMU_REPLAY_H
-+#define SYSEMU_REPLAY_H
-+
-+#ifdef CONFIG_USER_ONLY
-+#error Cannot include this header from user emulation
-+#endif
- 
- #include "exec/replay-core.h"
- #include "qapi/qapi-types-misc.h"
-@@ -79,12 +82,14 @@ int64_t replay_save_clock(ReplayClockKind kind, int64_t clock,
- int64_t replay_read_clock(ReplayClockKind kind, int64_t raw_icount);
- /*! Saves or reads the clock depending on the current replay mode. */
- #define REPLAY_CLOCK(clock, value)                                      \
-+    !icount_enabled() ? (value) :                                       \
-     (replay_mode == REPLAY_MODE_PLAY                                    \
-         ? replay_read_clock((clock), icount_get_raw())                  \
-         : replay_mode == REPLAY_MODE_RECORD                             \
-             ? replay_save_clock((clock), (value), icount_get_raw())     \
-             : (value))
- #define REPLAY_CLOCK_LOCKED(clock, value)                               \
-+    !icount_enabled() ? (value) :                                       \
-     (replay_mode == REPLAY_MODE_PLAY                                    \
-         ? replay_read_clock((clock), icount_get_raw_locked())           \
-         : replay_mode == REPLAY_MODE_RECORD                             \
-diff --git a/stubs/icount.c b/stubs/icount.c
-index b060b03a73..9a29084ecc 100644
---- a/stubs/icount.c
-+++ b/stubs/icount.c
-@@ -5,30 +5,11 @@
- 
- ICountMode use_icount = ICOUNT_DISABLED;
- 
--void icount_update(CPUState *cpu)
--{
--    abort();
--}
- int64_t icount_get_raw(void)
+ static uint64_t instructions_get_count(CPUARMState *env)
  {
-     abort();
-     return 0;
++    assert(icount_enabled() == ICOUNT_PRECISE);
+     return (uint64_t)icount_get_raw();
  }
--int64_t icount_get(void)
--{
--    abort();
--    return 0;
--}
--int64_t icount_to_ns(int64_t icount)
--{
--    abort();
--    return 0;
--}
--int64_t icount_round(int64_t count)
--{
--    abort();
--    return 0;
--}
- void icount_start_warp_timer(void)
+ 
+ static int64_t instructions_ns_per(uint64_t icount)
  {
-     abort();
++    assert(icount_enabled() == ICOUNT_PRECISE);
+     return icount_to_ns((int64_t)icount);
+ }
+ #endif
 -- 
 2.41.0
 

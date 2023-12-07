@@ -1,185 +1,165 @@
-Received: by 2002:a05:7022:4195:b0:70:a3b7:dfe7 with SMTP id i21csp2997550dli;
-        Wed, 6 Dec 2023 08:56:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHQtTZjfrXLQMLVdX+2ALdFRiWvWzeQS03kImVu/0yOrQMioHZJs1mojp3ZAbXZ+k6ls5eD
-X-Received: by 2002:a05:6870:7a18:b0:1fa:ef56:70e9 with SMTP id hf24-20020a0568707a1800b001faef5670e9mr1310647oab.26.1701881810071;
-        Wed, 06 Dec 2023 08:56:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1701881810; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp1400119ejb;
+        Wed, 6 Dec 2023 22:08:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IERkem4bxtVyReEbY3A/y6uNTY0/WSt9uF+wD3ppbNbkNlSzrqbexiyeEVK5t/VpsdAhlww
+X-Received: by 2002:a17:906:559:b0:a1a:4e3:dfdc with SMTP id k25-20020a170906055900b00a1a04e3dfdcmr981605eja.77.1701929290088;
+        Wed, 06 Dec 2023 22:08:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1701929290; cv=none;
         d=google.com; s=arc-20160816;
-        b=fv21zYPzER0mJy16nJ4eU5kKmENdNDf0H3mzH5DStZ5bawjGux0X+0iNh7eCg9EHBr
-         V6Frb4V/dEXKwLEXQCikNXqxPUdPbs54MPqsn2p1dKFn/djPTVpBRrI8rmQjeAAGWc0j
-         //drEoGrmb2+4N1ZnrnGFaNfwxpjw8t06TVxORM+3PWdPlP3T8Jfq33qtZ7qVQqNoTQw
-         PDkWGjXPvErq/b29hPH1ObCB/I2789sGLvC8HJ/zjCQyB82ZmRTNqIWYa1OIFOxndfUD
-         cpd2OboI/Dooo2xlDc9pgIwFWXrCInvxVca7ZuLGga6nB09fPOzPd/X170hEpCf9hSFi
-         ECUA==
+        b=qRa6E7hn4u62tnFd06uoXJHHisNZ9ndToX0M3Q2SyfCmLPotGzTFJZ+g6LxvPS6CJh
+         XLYal1E1RgkjZFzSneUSwQNM8CoXvFjOd6j4ypGT902yWasVzAcbzTznepT7feTfsh73
+         Xk5NUnqDmhzfz5uijXLFoOsoGKbDibZXrWaZnpy0/HMVwyIHbY89mi94PC4ERJL1L6N8
+         9TfqZeO9dtEKV4Op0xU6b+e1P9EwrmU0KTAp8tL4/dhq/A+lJadvDmrv+kCBcHwTbxVw
+         2tLp1JqwXrTrsOTYFyggjKkMybQR2Z+Rrs2scOxJ1JXdy+sB5uCwR57dSn9cLQQq9q4s
+         1Uvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=0XpGf3XU2uzIbfwuzx3Kh1lAURm8G/x83dw3KBm3PcU=;
-        fh=nHXCxAu9yzvsZfHVth69sEU95KCk0t//YoILpnfCoG4=;
-        b=B0nn7z3PsYSWvks+pKLzwDsqFY3tM6oJWIwOlb81wVq+gmKYS5kh2DXvkcFSvNLbKW
-         o78O66V+d4FAbG3kjDAdHcTwmkHicuRU3QmdZ25zXt/yPzMkmhEEYdgjkqeXvoI29Qds
-         B9ncT0iwmjRxeoeBPAX6o6TubRFfNMSimb0sxahqQMOoaLihX5S6YcsjSEk0v/ArvV8E
-         WX7x0kD2VzMHnTfVZaY6k80Qlm21itIQlPxBvJNekcKJOVg5nhQg1OuHQJ/aIrBPF7KK
-         miLHX0Ei10v6avHNdWo7vhX5lkRaNSEPL/c0v4rZsbyB1VXw7laDpmuKp1iEVHYvbVW/
-         5dMA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=qw4XDLQo4MCt+2ReNaxe2DS0wIgZKbs7S68Q4dp+iCM=;
+        fh=F+1M/u4+OWd/Jws6qqrpnBCdhs28VjTbslVeAj12ZGM=;
+        b=sibXjMIzAo/7jF5eoWqSHrh8Bt23iojW3RwxDm4ogjyyfj6C0CK2Gjx7Buu0M/1Dzi
+         i3l9EU7HMWcU2peDedcctoZ4tEq2KT0JCcUv24TWU/fpu8dNI9iRm0uL0RmjE+Uwijkf
+         LvLtMn4d2rikwfRRVB7FHjPLF+/c+6tFdx7uVraE8T6ZY6LAjxuzSKOgEf3oP/SQuMkL
+         OryJw7boeznkuM0gTtGVmsATkcEPM7caAs8TMOqVExdbGXYtNUg8wigiLLGSUvfGwQbv
+         nYDwtC/qSTyu2qmve91F+W3nacpfWQiEhSmGat4vroNe18P+LMY/FNXK4M0SkFwoZmmk
+         1h8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=YF5gQuHB;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.55.52.93])
-        by mx.google.com with ESMTPS id d3-20020a0ce703000000b0067a9779cc1fsi282416qvn.366.2023.12.06.08.56.48
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Dec 2023 08:56:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LTnzLhD8;
+       spf=pass (google.com: domain of kvm+bounces-3795-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-3795-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-3795-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id x26-20020a170906135a00b00a1e3254ef1csi302886ejb.242.2023.12.06.22.08.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Dec 2023 22:08:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-3795-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=YF5gQuHB;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1701881809; x=1733417809;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NKRjgHaEJWXCNvOaNv7NW1iG2Gx8MCRVSiENZF8b5oI=;
-  b=YF5gQuHBsIi1JfIfUPjPLCjszRgLNfyN645gvkN5yUxN0wcRVeCi3TpU
-   3OEn/IsGBY2zFjl1/CSKOsdae1vGgtqtcyO8J50nIx/Bsgq23ZpFA0L7U
-   wUW5gBWMWjYxx3lwlOTQoLz+PUDjF6uGgp9jzyeeVsxJnQzQmAPTqEDXH
-   BOG+btVZRV4rUTdCXQLKIMJhE6oMjqnfLOBdGwumSHUNYEE0ECP6JJ4WD
-   jr9R2pwU4zHpVA7SCkNSziCqnUwauDkwB27MLdDJVNw+/3ELE7YgQMgwF
-   vI5XDp9rHxGRptiQg7zcf5j+yggH2/ykG8TptyBfuJpHqLnzCN3oxaw4y
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="391259272"
-X-IronPort-AV: E=Sophos;i="6.04,255,1695711600"; 
-   d="scan'208";a="391259272"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Dec 2023 08:56:42 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="1018628339"
-X-IronPort-AV: E=Sophos;i="6.04,255,1695711600"; 
-   d="scan'208";a="1018628339"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmsmga006.fm.intel.com with ESMTP; 06 Dec 2023 08:56:35 -0800
-Date: Thu, 7 Dec 2023 01:08:55 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
-	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
-	lpieralisi@kernel.org, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, imammedo@redhat.com,
-	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
-	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
-	mst@redhat.com, will@kernel.org, gshan@redhat.com,
-	rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
-	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
-	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
-	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
-	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
-	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
-	lixianglai@loongson.cn, linuxarm@huawei.com
-Subject: Re: [PATCH V7 3/8] hw/acpi: Update ACPI GED framework to support
- vCPU Hotplug
-Message-ID: <ZXCqp32ggIFvUweu@intel.com>
-References: <20231113201236.30668-1-salil.mehta@huawei.com>
- <20231113201236.30668-4-salil.mehta@huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LTnzLhD8;
+       spf=pass (google.com: domain of kvm+bounces-3795-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-3795-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id C64FE1F2121E
+	for <alex.bennee@linaro.org>; Thu,  7 Dec 2023 06:08:09 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4492B13FF1;
+	Thu,  7 Dec 2023 06:08:05 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="LTnzLhD8"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 417EBD4B
+	for <kvm@vger.kernel.org>; Wed,  6 Dec 2023 22:08:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1701929281;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qw4XDLQo4MCt+2ReNaxe2DS0wIgZKbs7S68Q4dp+iCM=;
+	b=LTnzLhD8QrNXwcUekx+R9A4pgY6bi4Xv7HdhKv30qoqovzpCWBjCrl1k92c06Fg+UvbTNe
+	b+tpSPaNwP8F7TSS8ZQnRab7QbXhtjviH0cWHgOc++kL1sihow47fxDqblABubHhZmbPHo
+	mpOrr5lGi9A6a9l5hqWDXAx3QWXhbBc=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-687-NTht9RhCPwyVLUPhwzCQyg-1; Thu, 07 Dec 2023 01:07:59 -0500
+X-MC-Unique: NTht9RhCPwyVLUPhwzCQyg-1
+Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-2864977ba2dso180242a91.0
+        for <kvm@vger.kernel.org>; Wed, 06 Dec 2023 22:07:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701929278; x=1702534078;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qw4XDLQo4MCt+2ReNaxe2DS0wIgZKbs7S68Q4dp+iCM=;
+        b=ILh0Tevb1jUOPRGB4e8+BEYzGPZF2ZnxCCL02pdyka3HVmO9bjtWV2ukPFjFllj6g0
+         lNszanfMxybGcu+cB+HcodfCYsX85H3D46d2ZpyS/JvFPpuWgrSWiA3H3Eq1Yja4CWSp
+         sf3tKMr5MLfeXbOzHqgHTt1ZbCiBD4CmFN6LQkRyqOCrb9AQ6+Rd7lkz1l79ZwfUeb+r
+         KL9BU3KeANu8qAJKdLqMnQTWDFJgPQL3eRZZHLq3uWE219UAqPFatNaqV9RvYzqRlab9
+         ePRts0h9e4YGtOlx2hZeH4qb5Vi/CqjjRmLZidgnOcgl0Y3QHiplDFz4WNp4Zz1xzOAg
+         h/cw==
+X-Gm-Message-State: AOJu0YwBBCcGixGBYC5GfQDScUbQU09c2tF6cx4UL9cBe8KQiwj9Jq7D
+	9xA4DSmKDZUtrYXAQo+o8kHIXa4WGb6cd8c1xBrhomsMn0BJM478+owVYMTInjoz2MUUv8dXXnn
+	aiIkOtfX0oZG+
+X-Received: by 2002:a17:90a:780e:b0:286:6955:6754 with SMTP id w14-20020a17090a780e00b0028669556754mr4112570pjk.0.1701929278700;
+        Wed, 06 Dec 2023 22:07:58 -0800 (PST)
+X-Received: by 2002:a17:90a:780e:b0:286:6955:6754 with SMTP id w14-20020a17090a780e00b0028669556754mr4112560pjk.0.1701929278371;
+        Wed, 06 Dec 2023 22:07:58 -0800 (PST)
+Received: from [10.66.61.39] ([43.228.180.230])
+        by smtp.gmail.com with ESMTPSA id g10-20020a17090adb0a00b002887e7ca212sm431673pjv.18.2023.12.06.22.07.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 06 Dec 2023 22:07:57 -0800 (PST)
+Message-ID: <6f46b96b-93ac-894b-7dca-fead6829d396@redhat.com>
+Date: Thu, 7 Dec 2023 14:07:53 +0800
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231113201236.30668-4-salil.mehta@huawei.com>
-X-TUID: ZPNEBL9PqjXB
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v3] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
+Content-Language: en-US
+To: Sebastian Ott <sebott@redhat.com>
+Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, kvm@vger.kernel.org, qemu-devel@nongnu.org
+References: <20231129030827.2657755-1-shahuang@redhat.com>
+ <58b1095a-839d-0838-24df-f4cd532233be@redhat.com>
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <58b1095a-839d-0838-24df-f4cd532233be@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: j43QVX0w2NPV
 
-Hi Salil,
 
-On Mon, Nov 13, 2023 at 08:12:31PM +0000, Salil Mehta via wrote:
-> Date: Mon, 13 Nov 2023 20:12:31 +0000
-> From: Salil Mehta via <qemu-devel@nongnu.org>
-> Subject: [PATCH V7 3/8] hw/acpi: Update ACPI GED framework to support vCPU
->  Hotplug
-> X-Mailer: git-send-email 2.8.3
+
+On 12/1/23 00:55, Sebastian Ott wrote:
+> On Tue, 28 Nov 2023, Shaoqin Huang wrote:
+>> +static void kvm_arm_pmu_filter_init(CPUState *cs)
+>> +{
+>> +    static bool pmu_filter_init = false;
+>> +    struct kvm_pmu_event_filter filter;
+>> +    struct kvm_device_attr attr = {
+>> +        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
+>> +        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
+>> +        .addr       = (uint64_t)&filter,
+>> +    };
+>> +    KVMState *kvm_state = cs->kvm_state;
+>> +    char *tmp;
+>> +    char *str, act;
+>> +
+>> +    if (!kvm_state->kvm_pmu_filter)
+>> +        return;
+>> +
+>> +    if (kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr)) {
+>> +        error_report("The kernel doesn't support the pmu event 
+>> filter!\n");
+>> +        abort();
+>> +    }
+>> +
+>> +    /* The filter only needs to be initialized for 1 vcpu. */
+>> +    if (!pmu_filter_init)
+>> +        pmu_filter_init = true;
+> 
+> Imho this is missing an else to bail out. Or the shorter version
+> 
+>      if (pmu_filter_init)
+>          return;
+> 
+>      pmu_filter_init = true;
 > 
 
-[snip]
+Yes. This is what I want to do. Thanks for fixing it.
 
-> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
->      memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
->                            TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
->      sysbus_init_mmio(sbd, &ged_st->regs);
-> +
-> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
-> +                       ACPI_CPU_HOTPLUG_REG_LEN);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
-> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
-> +                        &s->cpuhp_state, 0);
-
-I find this cpu_hotplug_hw_init() can still cause qtest errors on x86
-platforms as you mentioned in v6: https://lore.kernel.org/qemu-devel/15e70616-6abb-63a4-17d0-820f4a254607@opnsrc.net/T/#m108f102b2fe92b7dd7218f2f942f7b233a9d6af3
-
-IIUC, microvm machine has its own 'possible_cpus_arch_ids' and that is
-inherited from its parent x86 machine.
-
-The above error is because device-introspect-test sets the none-machine:
-
-# starting QEMU: exec ./qemu-system-i386 -qtest unix:/tmp/qtest-3094820.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-3094820.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -nodefaults -machine none -accel qtest
-
-So what about just checking mc->possible_cpu_arch_ids instead of an
-assert in cpu_hotplug_hw_init()?
-
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 4b24a2500361..303f1f1f57bc 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -221,7 +221,10 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-     const CPUArchIdList *id_list;
-     int i;
-
--    assert(mc->possible_cpu_arch_ids);
-+    if (!mc->possible_cpu_arch_ids) {
-+        return;
-+    }
-+
-     id_list = mc->possible_cpu_arch_ids(machine);
-     state->dev_count = id_list->len;
-     state->devs = g_new0(typeof(*state->devs), state->dev_count);
-
-This check seems to be acceptable in the general code path? Not all machines
-have possible_cpu_arch_ids, after all.
-
-Thanks,
-Zhao
-
->  }
->  
->  static void acpi_ged_class_init(ObjectClass *class, void *data)
-> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-> index ba84ce0214..90fc41cbb8 100644
-> --- a/include/hw/acpi/generic_event_device.h
-> +++ b/include/hw/acpi/generic_event_device.h
-> @@ -60,6 +60,7 @@
->  #define HW_ACPI_GENERIC_EVENT_DEVICE_H
->  
->  #include "hw/sysbus.h"
-> +#include "hw/acpi/cpu_hotplug.h"
->  #include "hw/acpi/memory_hotplug.h"
->  #include "hw/acpi/ghes.h"
->  #include "qom/object.h"
-> @@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
->  #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
->  #define ACPI_GED_PWR_DOWN_EVT      0x2
->  #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
-> +#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
->  
->  typedef struct GEDState {
->      MemoryRegion evt;
-> @@ -106,6 +108,8 @@ struct AcpiGedState {
->      SysBusDevice parent_obj;
->      MemHotplugState memhp_state;
->      MemoryRegion container_memhp;
-> +    CPUHotplugState cpuhp_state;
-> +    MemoryRegion container_cpuhp;
->      GEDState ged_state;
->      uint32_t ged_event_bitmap;
->      qemu_irq irq;
-> -- 
-> 2.34.1
+> which could also move above the other tests.
 > 
+> Sebastian
 > 
+
+-- 
+Shaoqin
+

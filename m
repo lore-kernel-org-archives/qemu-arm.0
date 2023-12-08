@@ -1,227 +1,179 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2047144ejb;
-        Thu, 7 Dec 2023 18:41:29 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEeGXljDiWslAql6Q7Go93SUMK6WzzYdIwl33/OKMKh2l/Wl/WGew1O3sqSqGAWxJDs2msi
-X-Received: by 2002:ac8:7fd2:0:b0:425:4043:50c0 with SMTP id b18-20020ac87fd2000000b00425404350c0mr4021576qtk.79.1702003289557;
-        Thu, 07 Dec 2023 18:41:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702003289; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2227544ejb;
+        Fri, 8 Dec 2023 02:37:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF5UfvdKD6huX01seNdICr20SQzO8+PYymIgwJ0+g2BbdzyJuja4xKFKHamWXcojb+/Jk0p
+X-Received: by 2002:a05:620a:2d91:b0:77f:370b:6011 with SMTP id tr17-20020a05620a2d9100b0077f370b6011mr2177962qkn.129.1702031825960;
+        Fri, 08 Dec 2023 02:37:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702031825; cv=none;
         d=google.com; s=arc-20160816;
-        b=qoUKr/6usf+ClM5RpqtUKxE+UaXYu0mRwKuNWt3J9ZtOhEcT0tQiDAUSEYTRS5Am3C
-         oecUdoTL1EjkgNUnpbHajjfU9y0vEtFa5LHNDTcImiKfcq+O8xxzq3560GecUL83t7Xf
-         hTzMW7CNI+hp0VHScbQS4idC3YDvfoaQYzNbemTE8mViMqVlhABLOmpAOa+Z3U3kolIa
-         E6Kw7pKI151MB5/wg9FOepPFWgOtfVIjVnRql0wRVSmjILwXnGtafxauHLfmaEnF0bP3
-         N72Z06HxZW62A/DTQ+KjSB5ZEoCvWiFcUozO+cnmR2/PBW5L/lPMx9H/JBXKcuztW+LY
-         JTxw==
+        b=Z1Jm42GDkn2gM1BpJjwmAMJ9Vq3EAZQktprhWqAgRI6yVgrbc8KhsVeD6tBa8Tbg10
+         ZN06CNMPoZmjYnR58kRa7iXAfKt9GQf+7UK+PnDv9V3AoovM9ZxzW07BbF5PqgzyVTdR
+         GrcGJsSxhXua5yxqpI+mNJzxLutBrZxrVBwaFuhijwC7uGaA73ecBTTMvKPAcH67Czja
+         fGeta/Fa3F7K25O+lD2K+E54nwPnb4lNZfo6zNGhEpLHqxsotlKzlR7HDSuUhCWt78v2
+         mfFCgwLBJKVIBxsmdMwGmP2AWfdXH8FVWS2cb8NyyhNsufLNnSymjBUsutVuSfE8fq7Q
+         E0ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=A0Jk5tssg+pczQf+sURfDosRQjtzzg5NlLkdIkk5IGA=;
-        fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=sFE3nBLatGWbX1aEZgL9LmFqhC5klAmW0iT5ce5/iwfhlWxmEaDaYB2lrV7D+wa3qg
-         J9t6ueVPkCXZsOm26INWuuX3jaoRGnE3b1D4jDjVpQ4oTlbF8+eLEK/wTu1RZX04oy8l
-         vbwocfHftfNizfBYNKCbOze5JLMqZIdrtoZUQ9cZw2sQRxEn9YOpIycXguZvvxo8HbyO
-         0suRnePBj8mlUExRGL8GooXQhacDB1jRRdWje4uE2kpKucN9YxwU7rqjqpQeIMQl9kqu
-         OHOTHQsxW6/nS68ifixcRHotbG71MM4YZ1B15xuljcQSGeeVPuF0Nlms6SbejJqmb5N+
-         GnCg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=F3mSKFF9tA29R4ffI67DQveh1811FkFatia/cRa4Umc=;
+        fh=TglVjbdv4KthQ7XZVB89zr9VQFRw0u+3ZdS9fQJGaFk=;
+        b=Rffi8wkGruj/F2Ed300uctdeNLww+CQ/Wq1f23SBkF/hTO9omubJLu8qHyQz/wCgmI
+         hcTRxnzrJ4ZA+aSDV9ZskblN4/J4ec2DSxYZkYNR/ey+B7CBp+bnL3czMZ6PxdljvyQP
+         KfWsg0GmhykzE6qpN5mLzvbK0Q8XFxPo/ir4FcBRv6gm00hg2rAGD+JHSZRyaf/B92yP
+         rfJuOc6Krzr4PSvqX0iz7YvxvT9nRcIyY8WJAXamtPzsO5mqFzSl9LgV9k96llw5AJhw
+         eD2cyI9+24fxgDBZSdylLpvBcIZoqNv78Fchgy+3wR7NQ4DekPg48MDy4B6oAc4v/7nk
+         co/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=esvsuXX3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=EDVsiVxv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ki23-20020a05622a771700b0042560e940dfsi1110158qtb.138.2023.12.07.18.41.29
+        by mx.google.com with ESMTPS id j2-20020a05620a410200b0077f0d2ac498si1932060qko.623.2023.12.08.02.37.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Dec 2023 18:41:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Dec 2023 02:37:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=esvsuXX3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=EDVsiVxv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rBQgU-000638-VY; Thu, 07 Dec 2023 21:33:47 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rBYDK-0006Cu-UZ; Fri, 08 Dec 2023 05:36:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQgG-0005SM-3l; Thu, 07 Dec 2023 21:33:32 -0500
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBYDK-0006CQ-2i
+ for qemu-arm@nongnu.org; Fri, 08 Dec 2023 05:36:10 -0500
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQgD-0002cG-VT; Thu, 07 Dec 2023 21:33:31 -0500
-Received: by mail-lj1-x22f.google.com with SMTP id
- 38308e7fff4ca-2c9f572c4c5so22566741fa.2; 
- Thu, 07 Dec 2023 18:33:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBYDG-00022u-2g
+ for qemu-arm@nongnu.org; Fri, 08 Dec 2023 05:36:09 -0500
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-50bf7bc38c0so2120471e87.2
+ for <qemu-arm@nongnu.org>; Fri, 08 Dec 2023 02:36:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702002807; x=1702607607; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=A0Jk5tssg+pczQf+sURfDosRQjtzzg5NlLkdIkk5IGA=;
- b=esvsuXX3VRqOhO8Nk1oIjhAulL8FtS49MpTUlEOAEeMirpPq/SUBbywmbifVyHsedY
- myaCRFLdeGjC7rLy9crd6K3+EIEngJuHe5QBAXN3a1v0n89Ta/q65bMqlkjeN9lgzHN6
- kQzWfqQFx+kZHKTdy8I6C6BnYrTgi4GBGQ1/FxzhqrCAk6v0zDmnCJ0Py2DjxwZW2Osl
- xwM1jYZcc5sFjboX5PTr/Sk29tgsa1SI0i3CLdFnffJ0ez0UxYEtPHn6VFkn0ucGIf9s
- 0rC0rI1pumt5NNih4N9ZSukbuT3LmWSw3/IoPHVavKVeJeKEK5+vL8TFO3qjaz6ZrGef
- Yx5A==
+ d=linaro.org; s=google; t=1702031764; x=1702636564; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=F3mSKFF9tA29R4ffI67DQveh1811FkFatia/cRa4Umc=;
+ b=EDVsiVxvxNGkrVxtPxpqy4FsSggzVhgET8TchznNHqq0+E6envCrVDsGTgYx1YDa7Z
+ iJdDLgs8Kp3tqaJLyCXbGScIS+NvinfWECgGMzJGzQAjvngHcohRzuKUmitec+NTZ2wr
+ zwoPHgtBOjBIXNFbEOv3Ck1dXW06MJYeN2dW3p7NdJDgVY+7ehXX3D2rH67JtWKS728Y
+ EBpICnXHFXm6Cx/ZYbanJj/KqobpFgi0rxpEQIkjDXl+pHdC87N9E0mU7GzkPMw7Q0Pu
+ Q1+XsNdoJg2FlXhMDbo9oM+406TNOxSJK0AzKlCNu3O0r5s1wWWfNOZ6Stiw1voIT0c+
+ eEJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702002807; x=1702607607;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=A0Jk5tssg+pczQf+sURfDosRQjtzzg5NlLkdIkk5IGA=;
- b=HKQAP9wBY6ZbzadVSOcygFcLkTRQsjk+1kr1fC+xohqjjgoSHY56B4qOKI70cBo/H0
- No62EEtkelO9aJpjYnpTeX1Yfnyqj8LXko7Ev7oioKrwhOw1RMRRyp2awQVgxUjrFGcX
- ruxFExCWRXMrrZP5E9od0TKfLFBNJgeo9ffNqSeuVHCBvZTm9XIQ2fo5Dy9k6DMeGr27
- LO9T3gjZZ33od2C5VthlZrBfmf1VI35ra1p8Ttb39h8aTXMcvTDPFEn3UaKKLxSFI2XU
- xieExiBwULeBKXDyL3pvZzErtnMlX7m4DQqnWKkG7hoZbAbSeRqX5fLhz/8WWWw/OcV6
- xTwg==
-X-Gm-Message-State: AOJu0YzffFeWcvfA7AiHPqaAYddikigTZJR07Q+01dICDp/o7846gcJa
- nkqk9FkX7LertIG1cSh6EgVgnzjoBlmQtA==
-X-Received: by 2002:a2e:860a:0:b0:2c9:f1a2:c396 with SMTP id
- a10-20020a2e860a000000b002c9f1a2c396mr2117267lji.101.1702002807218; 
- Thu, 07 Dec 2023 18:33:27 -0800 (PST)
-Received: from localhost.localdomain ([185.200.240.39])
+ d=1e100.net; s=20230601; t=1702031764; x=1702636564;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=F3mSKFF9tA29R4ffI67DQveh1811FkFatia/cRa4Umc=;
+ b=ClepHeizz56Z1yxkqj5x/prG1MiUNszqT2dUPbrXoP+NxkdUulyp7gJ3gekg4jvg4Y
+ sl4+YaADZ6wewPTSTSJcTjf2ONSpBBlbXJoscJCfoDf2C4F7wuVjVkTI2bJqFn6dTaMH
+ b65URaMlD2genK7mm8HyYYHIytXfkkAJjWzlcnKiEt9BxD1pghTd0tHwqNrLVPqipcMK
+ jw5X1kmKUfOy6rvQwV481U+TUm6QoMu8tojcaW/Wvv86k/tQVdPlELlz9efiG2mgnHyg
+ o/KxzXe57m4YdR9uXUDH4wPBTgQbljzSaijbcY64ESq2WU/2URG6L9EnjssWE2KhcEiO
+ tSQQ==
+X-Gm-Message-State: AOJu0YwDRxe5W1iORGPHOgPvIQMr9uucAN0yH6epBhlbcDx+Cpbme1Gt
+ dyULpPAt0PqV0+/FZAHxSDzWGA==
+X-Received: by 2002:a05:6512:158e:b0:50c:6b:f180 with SMTP id
+ bp14-20020a056512158e00b0050c006bf180mr2113994lfb.56.1702031763978; 
+ Fri, 08 Dec 2023 02:36:03 -0800 (PST)
+Received: from [192.168.69.100] ([176.176.146.181])
  by smtp.gmail.com with ESMTPSA id
- r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.33.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Dec 2023 18:33:26 -0800 (PST)
-From: Sergey Kambalin <serg.oker@gmail.com>
-X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v4 27/45] Add GENET register access macros
-Date: Thu,  7 Dec 2023 20:31:27 -0600
-Message-Id: <20231208023145.1385775-28-sergey.kambalin@auriga.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
-References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
+ cy13-20020a0564021c8d00b0054c52a78f56sm678084edb.56.2023.12.08.02.36.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Dec 2023 02:36:03 -0800 (PST)
+Message-ID: <323be810-5f4e-4218-812a-7c0ebc858599@linaro.org>
+Date: Fri, 8 Dec 2023 11:36:00 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/5] target/arm: Ensure icount is enabled when
+ emulating INST_RETIRED
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Fam Zheng <fam@euphon.net>, Stefan Hajnoczi <stefanha@redhat.com>,
+ qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20231207154550.65087-1-philmd@linaro.org>
+ <20231207154550.65087-3-philmd@linaro.org>
+ <9508bf5e-a554-468f-ba94-4d6f1a5be7bf@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <9508bf5e-a554-468f-ba94-4d6f1a5be7bf@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
- envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9LjzOe12dubP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qs62W4MCtw2l
 
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
----
- include/hw/net/bcm2838_genet.h | 76 ++++++++++++++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
+On 7/12/23 23:12, Richard Henderson wrote:
+> On 12/7/23 07:45, Philippe Mathieu-Daudé wrote:
+>> pmu_init() register its event checking the pm_event::supported()
+>> handler. For INST_RETIRED, the event is only registered and the
+>> bit enabled in the PMU Common Event Identification register when
+>> icount is enabled as ICOUNT_PRECISE.
+>>
+>> Assert the pm_event::get_count() and pm_event::ns_per_count()
+>> handler will only be called under this icount mode.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   target/arm/helper.c | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index adb0960bba..333fd5f4bf 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -940,11 +940,13 @@ static bool instructions_supported(CPUARMState 
+>> *env)
+>>   static uint64_t instructions_get_count(CPUARMState *env)
+>>   {
+>> +    assert(icount_enabled() == ICOUNT_PRECISE);
+>>       return (uint64_t)icount_get_raw();
+>>   }
+>>   static int64_t instructions_ns_per(uint64_t icount)
+>>   {
+>> +    assert(icount_enabled() == ICOUNT_PRECISE);
+>>       return icount_to_ns((int64_t)icount);
+>>   }
+>>   #endif
+> 
+> I don't think an assert is required -- that's exactly what the 
+> .supported field is for. If you think this needs additional 
+> clarification, a comment is sufficient.
 
-diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
-index 94c2f3ebca..e7a76cda81 100644
---- a/include/hw/net/bcm2838_genet.h
-+++ b/include/hw/net/bcm2838_genet.h
-@@ -22,9 +22,85 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
- #define BCM2838_GENET_DMA_RING_CNT      17
- #define BCM2838_GENET_DMA_RING_DEFAULT  (BCM2838_GENET_DMA_RING_CNT - 1)
- 
-+#define BCM2838_GENET_HFB_FILTER_REGS     offsetof(BCM2838GenetRegs, hfb)
-+#define BCM2838_GENET_HFB_FILTER_REG(reg) (BCM2838_GENET_HFB_FILTER_REGS \
-+                                           + offsetof(BCM2838GenetRegsHfb, reg))
- #define BCM2838_GENET_HFB_FILTER_CNT      48
- #define BCM2838_GENET_HFB_FILTER_SIZE     128
- 
-+#define BCM2838_GENET_INTRL0_REG(reg)   (offsetof(BCM2838GenetRegs, intrl0) \
-+                                        + offsetof(BCM2838GenetRegsIntrl0, reg))
-+#define BCM2838_GENET_INTRL0_SET        BCM2838_GENET_INTRL0_REG(set)
-+#define BCM2838_GENET_INTRL0_CLEAR      BCM2838_GENET_INTRL0_REG(clear)
-+#define BCM2838_GENET_INTRL0_MASK_SET   BCM2838_GENET_INTRL0_REG(mask_set)
-+#define BCM2838_GENET_INTRL0_MASK_CLEAR BCM2838_GENET_INTRL0_REG(mask_clear)
-+
-+#define BCM2838_GENET_INTRL1_REG(reg)   (offsetof(BCM2838GenetRegs, intrl1) \
-+                                        + offsetof(BCM2838GenetRegsIntrl1, reg))
-+#define BCM2838_GENET_INTRL1_SET        BCM2838_GENET_INTRL1_REG(set)
-+#define BCM2838_GENET_INTRL1_CLEAR      BCM2838_GENET_INTRL1_REG(clear)
-+#define BCM2838_GENET_INTRL1_MASK_SET   BCM2838_GENET_INTRL1_REG(mask_set)
-+#define BCM2838_GENET_INTRL1_MASK_CLEAR BCM2838_GENET_INTRL1_REG(mask_clear)
-+
-+#define BCM2838_GENET_UMAC_REG(reg)     (offsetof(BCM2838GenetRegs, umac) \
-+                                         + offsetof(BCM2838GenetRegsUmac, reg))
-+#define BCM2838_GENET_UMAC_CMD          BCM2838_GENET_UMAC_REG(cmd)
-+#define BCM2838_GENET_UMAC_MAC0         BCM2838_GENET_UMAC_REG(mac0)
-+#define BCM2838_GENET_UMAC_MAC1         BCM2838_GENET_UMAC_REG(mac1)
-+#define BCM2838_GENET_UMAC_MDIO_CMD     BCM2838_GENET_UMAC_REG(mdio_cmd)
-+
-+#define BCM2838_GENET_TDMA_REGS         offsetof(BCM2838GenetRegs, tdma)
-+#define BCM2838_GENET_TDMA_REG(reg)     (BCM2838_GENET_TDMA_REGS \
-+                                         + offsetof(BCM2838GenetRegsTdma, reg))
-+#define BCM2838_GENET_TDMA_RINGS        BCM2838_GENET_TDMA_REG(rings)
-+#define BCM2838_GENET_TDMA_RING_CFG     BCM2838_GENET_TDMA_REG(ring_cfg)
-+#define BCM2838_GENET_TDMA_CTRL         BCM2838_GENET_TDMA_REG(ctrl)
-+
-+#define BCM2838_GENET_RDMA_REGS         offsetof(BCM2838GenetRegs, rdma)
-+#define BCM2838_GENET_RDMA_REG(reg)     (BCM2838_GENET_RDMA_REGS \
-+                                         + offsetof(BCM2838GenetRegsRdma, reg))
-+#define BCM2838_GENET_RDMA_RINGS        BCM2838_GENET_RDMA_REG(rings)
-+#define BCM2838_GENET_RDMA_RING_CFG     BCM2838_GENET_RDMA_REG(ring_cfg)
-+#define BCM2838_GENET_RDMA_CTRL         BCM2838_GENET_RDMA_REG(ctrl)
-+
-+#define BCM2838_GENET_TRING_REG(reg)    offsetof(BCM2838GenetTdmaRing, reg)
-+#define BCM2838_GENET_TRING_WRITE_PTR BCM2838_GENET_TRING_REG(write_ptr)
-+#define BCM2838_GENET_TRING_WRITE_PTR_HI BCM2838_GENET_TRING_REG(write_ptr_hi)
-+#define BCM2838_GENET_TRING_PROD_INDEX BCM2838_GENET_TRING_REG(prod_index)
-+#define BCM2838_GENET_TRING_CONS_INDEX BCM2838_GENET_TRING_REG(cons_index)
-+#define BCM2838_GENET_TRING_RING_BUF_SIZE BCM2838_GENET_TRING_REG(ring_buf_size)
-+#define BCM2838_GENET_TRING_RING_START_ADDR BCM2838_GENET_TRING_REG(start_addr)
-+#define BCM2838_GENET_TRING_RING_START_ADDR_HI BCM2838_GENET_TRING_REG(start_addr_hi)
-+#define BCM2838_GENET_TRING_RING_END_ADDR BCM2838_GENET_TRING_REG(end_addr)
-+#define BCM2838_GENET_TRING_RING_END_ADDR_HI BCM2838_GENET_TRING_REG(end_addr_hi)
-+#define BCM2838_GENET_TRING_RING_MBUF_DONE_TRESH BCM2838_GENET_TRING_REG(mbuf_done_tresh)
-+#define BCM2838_GENET_TRING_RING_FLOW_PERIOD BCM2838_GENET_TRING_REG(flow_period)
-+#define BCM2838_GENET_TRING_RING_READ_PTR BCM2838_GENET_TRING_REG(read_ptr)
-+#define BCM2838_GENET_TRING_RING_READ_PTR_HI BCM2838_GENET_TRING_REG(read_ptr_hi)
-+
-+#define BCM2838_GENET_RRING_REG(reg)    offsetof(BCM2838GenetRdmaRing, reg)
-+#define BCM2838_GENET_RRING_WRITE_PTR BCM2838_GENET_RRING_REG(write_ptr)
-+#define BCM2838_GENET_RRING_WRITE_PTR_HI BCM2838_GENET_RRING_REG(write_ptr_hi)
-+#define BCM2838_GENET_RRING_PROD_INDEX BCM2838_GENET_RRING_REG(prod_index)
-+#define BCM2838_GENET_RRING_CONS_INDEX BCM2838_GENET_RRING_REG(cons_index)
-+#define BCM2838_GENET_RRING_RING_BUF_SIZE BCM2838_GENET_RRING_REG(ring_buf_size)
-+#define BCM2838_GENET_RRING_RING_START_ADDR BCM2838_GENET_RRING_REG(start_addr)
-+#define BCM2838_GENET_RRING_RING_START_ADDR_HI BCM2838_GENET_RRING_REG(start_addr_hi)
-+#define BCM2838_GENET_RRING_RING_END_ADDR BCM2838_GENET_RRING_REG(end_addr)
-+#define BCM2838_GENET_RRING_RING_END_ADDR_HI BCM2838_GENET_RRING_REG(end_addr_hi)
-+#define BCM2838_GENET_RRING_RING_MBUF_DONE_TRESH BCM2838_GENET_RRING_REG(mbuf_done_tresh)
-+#define BCM2838_GENET_RRING_RING_XON_XOFF_TRESH BCM2838_GENET_RRING_REG(xon_xoff_tresh)
-+#define BCM2838_GENET_RRING_RING_READ_PTR BCM2838_GENET_RRING_REG(read_ptr)
-+#define BCM2838_GENET_RRING_RING_READ_PTR_HI BCM2838_GENET_RRING_REG(read_ptr_hi)
-+
-+
-+#define BCM2838_GENET_PHY_REG(reg)      (offsetof(BCM2838GenetPhyRegs, reg) / 2)
-+#define BCM2838_GENET_PHY_BMCR          BCM2838_GENET_PHY_REG(bmcr)
-+#define BCM2838_GENET_PHY_AUX_CTL       BCM2838_GENET_PHY_REG(aux_ctl)
-+#define BCM2838_GENET_PHY_SHD           BCM2838_GENET_PHY_REG(shd)
-+#define BCM2838_GENET_EXP_DATA          BCM2838_GENET_PHY_REG(exp_data)
-+#define BCM2838_GENET_EXP_SEL           BCM2838_GENET_PHY_REG(exp_ctrl)
-+
- #define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
- #define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
- 
--- 
-2.34.1
+Without this I'm getting this link failure with TCG disabled:
+
+ld: Undefined symbols:
+   _icount_to_ns, referenced from:
+       _instructions_ns_per in target_arm_helper.c.o
+clang: error: linker command failed with exit code 1 (use -v to see 
+invocation)
 

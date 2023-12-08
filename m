@@ -1,66 +1,66 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2537105ejb;
-        Fri, 8 Dec 2023 11:09:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGuM4ZdU1kfMUvXK5NNuqx+FjFg75Rf6608Sa17uY8Aa10GuM6asqhiQ0WkCgI/iDbX634Y
-X-Received: by 2002:a0c:f746:0:b0:67a:a721:b1b1 with SMTP id e6-20020a0cf746000000b0067aa721b1b1mr483521qvo.108.1702062591209;
-        Fri, 08 Dec 2023 11:09:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702062591; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2537127ejb;
+        Fri, 8 Dec 2023 11:09:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH4kwRpBNI5pdTu8eHadtpvTlikdqqFHpLa1kpK2ip/KRm6qPFzqG8QVegcsTk7/1O/y81u
+X-Received: by 2002:a05:622a:1792:b0:425:4043:5f43 with SMTP id s18-20020a05622a179200b0042540435f43mr641766qtk.129.1702062593417;
+        Fri, 08 Dec 2023 11:09:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702062593; cv=none;
         d=google.com; s=arc-20160816;
-        b=kmXbQHiOUyWlJyMIWV+lprPdPytTHcpYXwGJbnYRwJre0kpfkdUowozQoxRrqU3e5y
-         iIM99EHkTsVookLOHDKCaqKkMB9H37CD7/sZ77OPuhaiYT7h7v+Z0uplHe2y3N8onHrd
-         Dv33Q0yhYeJ+y6QxasQbuRfqOieiMih2FT+AdFpiGfQOyBw+TvjNbq9cFPyBRIwtF6Jg
-         ODDbwEdNYB4yLTlGZ59iikaAlsXvaEjK8S54aN4xag/fodZf8HIcoHOz0+Xlx7FNvMm2
-         w+mbUPOQ+1wG74GDd2abfMbswRFQCcPFQ92C9/u3c2OJX0i5X5IflctGZ0XLdY7k/cPu
-         Y60w==
+        b=0m/iQ2N7rM2mEXsobUz2JMxH2A6H2Ke7fO95EtzdHh88nV2UXGMTUcRH63aetUF5cB
+         wnN+UH54uxqGBJZag+MKi28OwmHvKzSWzsKGQ0eOoYWU2E6ZKA4JojCQZz7ZbNizxofk
+         uuR2l+J+R5RSg9DQwkEpd14AOVcO0u6YGp7e7A9Y0i8jM/tYSD1/kprbUBUnfzxrqVvj
+         7jXAzUtGEY5BgjEDWroTDNcysPBPS0rI27M7m3u1Dtp0H8ZtRw8/f3UcRL8s4zjllYzX
+         iWJLWT0e9R5IzSIuAlQhow5huoR0hdM1B5F0mO3tvvfjotWQT8nwkZ9rwrw63YmEjewA
+         LX2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AmGLkTWwFQFYqZRcdZPvYJBBBCt8tOcHxSrPZZ9IGpU=;
+        bh=6KemJUkWyU9r+J/jwN6os/ZXFpgsYC5/aEWfNA4odDs=;
         fh=1DyVogfZItUndw0AQLC0GXn3EIhIcJypmHHdywm+J34=;
-        b=RclAWlaohG8p/F9FxbeHz+JgdFqIrvzvbXaYHJaSa9mQg6FpjmhttmSuyNfQrhzIES
-         1ltJ8KQ6w5Bp4DpjOAwKujvRg/l3C2zkeXlUdD54aI5xk1EjSf5JF7X5TVDXY2yyrgwL
-         /cwoVXsaYv/Cj352hcxeWTTZNbdy1Zm8As+WwHRuOLP30IwDLjjW28wqHl4NHbDKFxVM
-         GqA8jfk/imQX/N8iBK24LXzJ6Orixppi+AY3hw+QsreovRbhsK0/epns8GPvTBRiM4YG
-         LiOwbal8xTYDYpBDyzTL8b/OjR53bBzjSlkZQ/ewYBhDq4Sx7L9pguIyjlkeNYHiwzcZ
-         xcFg==
+        b=LAwimBVMby+Elnwf5bG4U5CHrOxR5nBUpq4hA1Zp7p2+OLWNTCtfM2yOH55SBxPIXw
+         FhHsHx9o5ZqvAS76wAoVVSiVotQNQvFYgn4KXvBVJHHO3aTvBkW+ePHs9JJZ+yZvMuL+
+         +IoWH5n0t9HMdNrEenWY/Rv+fCS+0Nt0bkxxlXZRJ0dO7CIoztRdlVkBXkykmHai6smR
+         qfj5ocE4BuIETCOGUVpc18Onp2vGviQXQSV5vsGcSh12z93GQ1l+/8RQLTSA/ZiL37/E
+         wggngkRW+IaqGWbjSX1EoOWjAqxhXWBEajCNcK+l/8uAxoYzyBKOniKnY7Ealkcz+BcV
+         aWPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dWXDTN1K;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmr7cIrV;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id c13-20020a056214004d00b0067cc92d5957si2709305qvr.260.2023.12.08.11.09.50
+        by mx.google.com with ESMTPS id eh15-20020a05622a578f00b00423751a51edsi3021476qtb.284.2023.12.08.11.09.53
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Dec 2023 11:09:51 -0800 (PST)
+        Fri, 08 Dec 2023 11:09:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dWXDTN1K;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmr7cIrV;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702062590;
+	s=mimecast20190719; t=1702062593;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=AmGLkTWwFQFYqZRcdZPvYJBBBCt8tOcHxSrPZZ9IGpU=;
-	b=dWXDTN1KsazEzXcNGR/cQ0JR2+pfSvxJqdeLmsWQgvg3aQTJbpDBhWixMev+11qBZOLlr7
-	0CHlIlHgfGyxgOxplWSXzcum6/ii2UPL5erVmQVPfL19TOzJai93aIg2I0ZOTzb3jdu9Gn
-	wXl+1ZrBOuW7OpuGYFGKKgUACHfn4/8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-402-BBdazSDrOnOS10C4y7b7oQ-1; Fri, 08 Dec 2023 14:09:45 -0500
-X-MC-Unique: BBdazSDrOnOS10C4y7b7oQ-1
+	bh=6KemJUkWyU9r+J/jwN6os/ZXFpgsYC5/aEWfNA4odDs=;
+	b=hmr7cIrVoycPzPT/dksuocK8bejCYcg4ydr2XrKkVJJCA/lhzkytXic1vG0JDimnWHsJhs
+	yV4vi5zZgzZSUoafglQmooc0HzPM8yke0ZEKpaXH3Fr9N/Yievcib+7MeT0+mGW1FFzBIC
+	mK35c1OUku4oFbTjavfsAefsf+taCiY=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-620-blH1v5GyMemL3aM-9qkpaw-1; Fri,
+ 08 Dec 2023 14:09:48 -0500
+X-MC-Unique: blH1v5GyMemL3aM-9qkpaw-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 76559102F220;
-	Fri,  8 Dec 2023 19:09:44 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C15A11C05AD8;
+	Fri,  8 Dec 2023 19:09:47 +0000 (UTC)
 Received: from p1.localdomain.com (ovpn-114-104.gru2.redhat.com [10.97.114.104])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7169B111E404;
-	Fri,  8 Dec 2023 19:09:41 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id BD471111E406;
+	Fri,  8 Dec 2023 19:09:44 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
@@ -80,51 +80,50 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Cleber Rosa <crosa@redhat.com>,
 	David Woodhouse <dwmw2@infradead.org>
-Subject: [PATCH 07/10] testa/avocado: test_arm_emcraft_sf2: handle RW requirements for asset
-Date: Fri,  8 Dec 2023 14:09:08 -0500
-Message-ID: <20231208190911.102879-8-crosa@redhat.com>
+Subject: [PATCH 08/10] tests/avocado/boot_xen.py: merge base classes
+Date: Fri,  8 Dec 2023 14:09:09 -0500
+Message-ID: <20231208190911.102879-9-crosa@redhat.com>
 In-Reply-To: <20231208190911.102879-1-crosa@redhat.com>
 References: <20231208190911.102879-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-X-TUID: MLY0RaMb6RK2
+X-TUID: ZITYrTCfhXWs
 
-The asset used in the mentioned test gets truncated before it's used
-in the test.  This means that the file gets modified, and thus the
-asset's expected hash doesn't match anymore.  This causes cache misses
-and re-downloads every time the test is re-run.
+While it's a good practice to have reusable base classes, in this
+specific case there's no other user of the BootXenBase class.
 
-Let's make a copy of the asset so that the one in the cache is
-preserved and the cache sees a hit on re-runs.
+By unifying the class used in this test, we can improve readability
+and have the opportunity to add some future improvements in a clearer
+fashion.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/boot_linux_console.py | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ tests/avocado/boot_xen.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index f5c5d647a4..e2e928e703 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -414,14 +414,16 @@ def test_arm_emcraft_sf2(self):
-                    'fe371d32e50ca682391e1e70ab98c2942aeffb01/spi.bin')
-         spi_hash = '65523a1835949b6f4553be96dec1b6a38fb05501'
-         spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash)
-+        spi_path_rw = os.path.join(self.workdir, os.path.basename(spi_path))
-+        shutil.copy(spi_path, spi_path_rw)
+diff --git a/tests/avocado/boot_xen.py b/tests/avocado/boot_xen.py
+index fc2faeedb5..f80cbcb8fb 100644
+--- a/tests/avocado/boot_xen.py
++++ b/tests/avocado/boot_xen.py
+@@ -17,7 +17,7 @@
+ from boot_linux_console import LinuxKernelTest
  
--        file_truncate(spi_path, 16 << 20) # Spansion S25FL128SDPBHICO is 16 MiB
-+        file_truncate(spi_path_rw, 16 << 20) # Spansion S25FL128SDPBHICO is 16 MiB
  
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE
-         self.vm.add_args('-kernel', uboot_path,
-                          '-append', kernel_command_line,
--                         '-drive', 'file=' + spi_path + ',if=mtd,format=raw',
-+                         '-drive', 'file=' + spi_path_rw + ',if=mtd,format=raw',
-                          '-no-reboot')
-         self.vm.launch()
-         self.wait_for_console_pattern('Enter \'help\' for a list')
+-class BootXenBase(LinuxKernelTest):
++class BootXen(LinuxKernelTest):
+     """
+     Boots a Xen hypervisor with a Linux DomU kernel.
+     """
+@@ -59,9 +59,6 @@ def launch_xen(self, xen_path):
+         console_pattern = 'VFS: Cannot open root device'
+         wait_for_console_pattern(self, console_pattern, "Panic on CPU 0:")
+ 
+-
+-class BootXen(BootXenBase):
+-
+     def test_arm64_xen_411_and_dom0(self):
+         """
+         :avocado: tags=arch:aarch64
 -- 
 2.43.0

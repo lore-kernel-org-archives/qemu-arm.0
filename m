@@ -1,121 +1,123 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2246848ejb;
-        Fri, 8 Dec 2023 03:17:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEh802HrwsfsPDQ9zD6uQg/F0htDacnWcdOLXBN53+Yk+sWDDLW+wLckJ6oAj3DmS+57E6T
-X-Received: by 2002:a05:620a:2146:b0:77f:2cae:c6aa with SMTP id m6-20020a05620a214600b0077f2caec6aamr2876276qkm.119.1702034265772;
-        Fri, 08 Dec 2023 03:17:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702034265; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2249819ejb;
+        Fri, 8 Dec 2023 03:24:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHBgJRypm4nho/c7ffZ6eZudwWzVuEvP2M0H1yKgDGXDgA16ZUW05QnjaF3P3LUlb2hwbtu
+X-Received: by 2002:a05:6808:331a:b0:3b8:b063:a1ce with SMTP id ca26-20020a056808331a00b003b8b063a1cemr4790586oib.88.1702034657293;
+        Fri, 08 Dec 2023 03:24:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702034657; cv=none;
         d=google.com; s=arc-20160816;
-        b=GG8/PcgXpvE+CbV8zdz6uUIuQTC+YstityZeRLkfzl8cNBO0OV5BKKHvheLKqNmwEF
-         R9V65NUci0VNM4yBYjf4OHK6VyopzZwZOcJhgM0VIz4yiBNW0HhV+dqX+icDoN0OEXs4
-         rawzHVqVuoXtTpBSMkHkRBGYXeT5thUjDj+EMFCXdrTOcNFj8QhBDDeuYhIHl38DKw5p
-         ExDykZM/NjrATsEdvwJh3qqpQEkEYpCFqy+4xGdmtCHAmTDh82iGxFXL0TUKRaur0DHo
-         +vfRt33qSkJDseh+gqc3fdK7OYbTq+wAwmrFKxxcqyGfquXMNtxF1+VAh3X4LjCUZXy4
-         sWFg==
+        b=L3KHszetG0sNvvQyS7HKHAtrmhjfcDYpnUVCePHD7igCZIFlS49KsruitHqx8c0bSz
+         6pVUEvxqMQu6M+9sC6Fb5yr2FCIO4BnK4a8EWJLgJxbxT3OayoyeHCVAAuSvp1oX1+C0
+         lx7EApGVFF1+W+29VrU28GPFfyWR3IiWEaIXWuVdOATGwUl9q4VEmvEn/rNjv8LXoDqQ
+         JTSAWOf/NHvwaS82C35cjN9dwKdaYaZcJFQOA1ZJ4SuBKxidbBNzsnZDRqlnOpDmmJ2p
+         xp5uu1h2B81w8s4FTWjSXWRbispNaFFSuvKDS+sKyPmjcBszcjWIFrvKQ07FqNffrQir
+         gkHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=liPitGupZmn0k45YRnLxeP/+73+0AA8+GG9ZhJMaDYs=;
-        fh=vlyiCuRd7nih/ZAoOYbOrx9frFSGjbuW4CV6w9CgBNw=;
-        b=U4HSZZiAd+/QtZ9SHgkJDc9fVg+N+ucmsivS5flCSWBtrYhbu7/6m7JQKfculqLj/9
-         vrL0lmqrnmcG/TVieYS+z5JFKfp1PXdkeVgs19PkVpxIqJRI+4yQAi9HAO/fDvnX9n4J
-         tIxkVt0NXRTF7ZrXkfYPN/MI/K3p2BGHR/PvwHbqKeejIzhu0LOjarBDkm7ATXkj+w+g
-         HlhBdMuB0a5NrOQiYCsxZQSsq4PU+cOyGuZvsVdogP5yH3utprFHw+eOFf7oXGR30V1q
-         tGqR60wR0wyOk4zx4iFykbIaevKgqaN44cPjNFcXKqfftmiwTDFvzRxJTlY++rZG5B+t
-         76eg==
+        bh=qNVGWd8M2aCkU3dGvUkbMxYSa3kvH5ZoIFVWrcrU9X4=;
+        fh=ca4p6yFRkPQsVyu5SIX/DQkWvVGZGavZxXh702tPLHI=;
+        b=GO1ANPgm0pEGDjaJVshibtYN7nATW3BGtl1c2xzeJMjuE77F1IOuzw3AE3S68X5fDI
+         MVaIAQGcQR/+2t9Dk6ohD/8Q7g/xPZtuRI/OJY1se9YLir0nglBczJJyFVWXXqdEBBmy
+         d38wEG1TEJVBC0f3BApaUplZyihWOOVcbggU/IV7tEiymRF3iuYm32hkrnn1nYr55tyT
+         nGmi93y7PB1FY3f6axiqwnxzR525Vv1g6Cz3KtUFI4rB5xijnPhXcoykesIGVPVuZtej
+         rsgzVvQpcOxfoH/HMP+fVjb7eFSildRQ5oa3V80QFO1cRWuoSUbRo/90EYElBSESq5eg
+         KFnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wzr3six7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EjtDRNQN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3-20020a05620a404300b0077dcddbb964si1867943qko.313.2023.12.08.03.17.45
+        by mx.google.com with ESMTPS id ov11-20020a05620a628b00b0077dc5361975si1980471qkn.671.2023.12.08.03.24.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Dec 2023 03:17:45 -0800 (PST)
+        Fri, 08 Dec 2023 03:24:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wzr3six7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EjtDRNQN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rBYrO-0007Ut-9n; Fri, 08 Dec 2023 06:17:34 -0500
+	id 1rBYxT-0000YK-Qj; Fri, 08 Dec 2023 06:23:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBYrM-0007Uk-Ub
- for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:17:32 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBYxR-0000XG-2h
+ for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:23:49 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBYrG-00036N-OP
- for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:17:32 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40c25973988so20998175e9.2
- for <qemu-arm@nongnu.org>; Fri, 08 Dec 2023 03:17:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBYxP-0004SA-Gv
+ for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:23:48 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-40c05ce04a8so22565835e9.0
+ for <qemu-arm@nongnu.org>; Fri, 08 Dec 2023 03:23:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702034245; x=1702639045; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702034625; x=1702639425; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=liPitGupZmn0k45YRnLxeP/+73+0AA8+GG9ZhJMaDYs=;
- b=wzr3six7/6RSh+snLzwCj9nPs5wuFkPrT8+kgG6ph5xc7BZlUAMw6q+6CUcZFKCAcZ
- ihH2rK+OfJLFdSBBhpMerMs4rbir0sZlIY+XTHdr8H93j+mMDuS4U179HXRa+zaRm1g3
- f80w0mIQTtl+6xR3AiKlTmA1/iyH7yNxT2zRFP02IRcJdr936MYAkT+YI4VyK6fHL+0z
- zUCFTVEeYbmfGrRV6TBvDSKnYCYwxdzwtit9J4bjSTdFWmrHlQORcMS6JTcnCW1uJG37
- LiBWWDAEXVjvyip2xB4PoHrqna3ioYKJDCHWVoSwr8kaHzCIcg8DVUWBhdtyqlie7H1/
- es5g==
+ bh=qNVGWd8M2aCkU3dGvUkbMxYSa3kvH5ZoIFVWrcrU9X4=;
+ b=EjtDRNQNzyEgzEdUi5iAU5rTnwMDAO8ybu448lQsQNOSxZdFusp520pXmmIJj91tmN
+ iyPCh2XUxMpD0Rt9QK54J4IXttds2EYXAjBrxck3nB9HvKDUk8m5Ib/wZ70UgrhohPV3
+ cUnVPtKrFcRvSPz7rBOyoQkwwBr3XlQcB+9rBXr2+rvutdLzn7CoTDMAl+3vIyQ2YIDd
+ GxXgbaJPcOzycDqejHhdCFWX8dnGJdU9XxunDX8Kv+yiH++q7RY+/b6xf0pTgkPG1e8A
+ 0nSERdRkYiGVA4ZGnvfzKMQeT43TEXcv19Bb+j0Xn/PWB93OfmQPWnJingdxQ8xdIO9t
+ N9sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702034245; x=1702639045;
+ d=1e100.net; s=20230601; t=1702034625; x=1702639425;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=liPitGupZmn0k45YRnLxeP/+73+0AA8+GG9ZhJMaDYs=;
- b=AjxDqVpWF3Fl3UWSqsz+OBUAMwaJzq+lq1+H/jhA3i/BMZv7KeJ1OOuBl9MAat1OSI
- xuUPdS++T5H4j09ek+aAwggGioGZy5gA51Tntg2/GgF/8hp6la9AgIj8uG5U/ULOiCFp
- bQtSMF2st1UAAaF6CfHNYR1WOvZGLV/kkmFZcXHog8ubctZw9wUT51k7AYzNHuafAvwh
- wWmWB7a1wQAVn5wzU+sHTAtwRrBH0XCnqCuihds5Vcfe2baq+s8PH4Vx7pQGjf2n232R
- EsOTxcWDJRymXXVjYhsMFUim3uqe1spxqb4TBh+T2i4deA5kZp9BKlUMtiAO4ygLLO0I
- fVoQ==
-X-Gm-Message-State: AOJu0Yxl+W1aM87kPvi9+zFMre4eISFUotTGNKIocQqLwJDNi+ibKLQ7
- wHAdE6X8nmZEvWWs7olTF5YOlw==
-X-Received: by 2002:a05:600c:1906:b0:402:e68f:8896 with SMTP id
- j6-20020a05600c190600b00402e68f8896mr2353407wmq.0.1702034244906; 
- Fri, 08 Dec 2023 03:17:24 -0800 (PST)
+ bh=qNVGWd8M2aCkU3dGvUkbMxYSa3kvH5ZoIFVWrcrU9X4=;
+ b=T8lpeqByw0qdeHK+zOksbQNmPnGZVDO+Ud46P4DuNsLdYLjLgy0SvYvXmxReSj88Uj
+ Bsjl3Ry7kS9i181SYm1cWHo3tQEpAPQgZ2iua/5a4uO8Q7Fdl0rCSwRfrZPQAoW7XPIr
+ w7XC2HatWbX3tbU6MmrakUJUxsB8fhPY25zFnUBYQxDp2zEjiAU7KM5sFy1KTM9//m3H
+ GCDvRf198nQsKsbpfd101ieQRT8IgN8tzOovtW+pHo9YccCJ/N+DSaHO96Uv82mAR8FZ
+ i81oWjnIowSPT+SZejjNlvAGB7cJU4xT3vCKiC9ldMk0ESP3u0XFbvY1JGJelIH3gKd0
+ +z4w==
+X-Gm-Message-State: AOJu0YwsWmtYD34mScDFn+SgZSKxk453g6q1Z7+cTfaMYYH0sNGplsqA
+ nddJ8nCksfmXtlkgzZBhB7WwBg==
+X-Received: by 2002:a05:600c:22c9:b0:40c:237a:3f73 with SMTP id
+ 9-20020a05600c22c900b0040c237a3f73mr1001152wmg.201.1702034624808; 
+ Fri, 08 Dec 2023 03:23:44 -0800 (PST)
 Received: from [192.168.69.100] ([176.176.146.181])
  by smtp.gmail.com with ESMTPSA id
- ay35-20020a05600c1e2300b0040b2b38a1fasm2601162wmb.4.2023.12.08.03.17.23
+ a18-20020a5d5092000000b00333415503a7sm1817812wrt.22.2023.12.08.03.23.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Dec 2023 03:17:24 -0800 (PST)
-Message-ID: <0c5b33a6-3f0d-4bc2-9627-da04d202b5aa@linaro.org>
-Date: Fri, 8 Dec 2023 12:17:21 +0100
+ Fri, 08 Dec 2023 03:23:44 -0800 (PST)
+Message-ID: <793e3c8f-497f-468e-b6b5-accc79e2bef0@linaro.org>
+Date: Fri, 8 Dec 2023 12:23:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/5] system/vl: Restrict icount to TCG emulation
+Subject: Re: [PATCH v2 2/5] target/arm: Ensure icount is enabled when
+ emulating INST_RETIRED
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
  Fam Zheng <fam@euphon.net>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+ qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20231207154550.65087-1-philmd@linaro.org>
- <20231207154550.65087-5-philmd@linaro.org>
- <83f260a3-68e5-4041-9e92-d8250c327cf8@linaro.org>
+ <20231207154550.65087-3-philmd@linaro.org>
+ <9508bf5e-a554-468f-ba94-4d6f1a5be7bf@linaro.org>
+ <323be810-5f4e-4218-812a-7c0ebc858599@linaro.org>
+ <CAFEAcA-HVf8vWLzmdStEo2NrSKQdZV612rBjiaj-gLW4vXyvpA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <83f260a3-68e5-4041-9e92-d8250c327cf8@linaro.org>
+In-Reply-To: <CAFEAcA-HVf8vWLzmdStEo2NrSKQdZV612rBjiaj-gLW4vXyvpA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,75 +132,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZNhDj/a3k+F7
+X-TUID: DUL9BmGYskn3
 
-On 7/12/23 23:38, Richard Henderson wrote:
-> On 12/7/23 07:45, Philippe Mathieu-Daudé wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   stubs/icount.c | 6 ------
->>   system/vl.c    | 6 +++++-
->>   2 files changed, 5 insertions(+), 7 deletions(-)
+Hi Peter,
+
+On 8/12/23 11:59, Peter Maydell wrote:
+> On Fri, 8 Dec 2023 at 10:36, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 >>
->> diff --git a/stubs/icount.c b/stubs/icount.c
->> index a5202e2dd9..b060b03a73 100644
->> --- a/stubs/icount.c
->> +++ b/stubs/icount.c
->> @@ -1,5 +1,4 @@
->>   #include "qemu/osdep.h"
->> -#include "qapi/error.h"
->>   #include "sysemu/cpu-timers.h"
->>   /* icount - Instruction Counter API */
->> @@ -10,11 +9,6 @@ void icount_update(CPUState *cpu)
->>   {
->>       abort();
->>   }
->> -void icount_configure(QemuOpts *opts, Error **errp)
->> -{
->> -    /* signal error */
->> -    error_setg(errp, "cannot configure icount, TCG support not 
->> available");
->> -}
->>   int64_t icount_get_raw(void)
->>   {
->>       abort();
->> diff --git a/system/vl.c b/system/vl.c
->> index 2bcd9efb9a..8c99c5f681 100644
->> --- a/system/vl.c
->> +++ b/system/vl.c
->> @@ -2270,7 +2270,11 @@ static void user_register_global_props(void)
->>   static int do_configure_icount(void *opaque, QemuOpts *opts, Error 
->> **errp)
->>   {
->> -    icount_configure(opts, errp);
->> +    if (tcg_enabled()) {
->> +        icount_configure(opts, errp);
->> +    } else {
->> +        error_setg(errp, "cannot configure icount, TCG support not 
->> available");
->> +    }
->>       return 0;
->>   }
+>> On 7/12/23 23:12, Richard Henderson wrote:
+>>> On 12/7/23 07:45, Philippe Mathieu-Daudé wrote:
+>>>> pmu_init() register its event checking the pm_event::supported()
+>>>> handler. For INST_RETIRED, the event is only registered and the
+>>>> bit enabled in the PMU Common Event Identification register when
+>>>> icount is enabled as ICOUNT_PRECISE.
+>>>>
+>>>> Assert the pm_event::get_count() and pm_event::ns_per_count()
+>>>> handler will only be called under this icount mode.
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>> ---
+>>>>    target/arm/helper.c | 2 ++
+>>>>    1 file changed, 2 insertions(+)
+>>>>
+>>>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>>>> index adb0960bba..333fd5f4bf 100644
+>>>> --- a/target/arm/helper.c
+>>>> +++ b/target/arm/helper.c
+>>>> @@ -940,11 +940,13 @@ static bool instructions_supported(CPUARMState
+>>>> *env)
+>>>>    static uint64_t instructions_get_count(CPUARMState *env)
+>>>>    {
+>>>> +    assert(icount_enabled() == ICOUNT_PRECISE);
+>>>>        return (uint64_t)icount_get_raw();
+>>>>    }
+>>>>    static int64_t instructions_ns_per(uint64_t icount)
+>>>>    {
+>>>> +    assert(icount_enabled() == ICOUNT_PRECISE);
+>>>>        return icount_to_ns((int64_t)icount);
+>>>>    }
+>>>>    #endif
+>>>
+>>> I don't think an assert is required -- that's exactly what the
+>>> .supported field is for. If you think this needs additional
+>>> clarification, a comment is sufficient.
+>>
+>> Without this I'm getting this link failure with TCG disabled:
+>>
+>> ld: Undefined symbols:
+>>     _icount_to_ns, referenced from:
+>>         _instructions_ns_per in target_arm_helper.c.o
+>> clang: error: linker command failed with exit code 1 (use -v to see
+>> invocation)
 > 
-> This is called before the accelerator is chosen -- even before the set 
-> of available accelerators is even found.  Indeed, that's the very next 
-> thing that configure_accelerators does.
-> 
-> OTOH, I don't see why icount_configure is being called so early.
+> I think we should fix this earlier by not trying to enable
+> these TCG-only PMU event types in a non-TCG config.
 
-See commit 7f8b6126e7:
+I agree... but (as discussed yesterday on IRC), this is a bigger rework.
 
-     vl: move icount configuration earlier
+This icount cleanup blocks 60+ patches on top :/ Since I have a v3
+addressing Richard's comments already done, I'll post it, mentioning the
+PMU issue in the cover; then see if cleaning it isn't too invasive.
+If I end in another rabbit hole, I'll suggest to accept this current
+patch and clean the technical debt later, again.
 
-     Once qemu_tcg_configure is turned into a QOM property setter,
-     it will not be able to set a default value for mttcg_enabled.
-     Setting the default will move to the TCG instance_init function,
-     which currently runs before "-icount" is processed.
+Thanks,
 
-     However, it is harmless to do configure_icount for all accelerators;
-     we will just fail later if a non-TCG accelerator is selected.  So do
-     that.
-
-But few commits after we have 28a0961757 ("vl: merge -accel processing
-into configure_accelerators"), so it shouldn't be an issue now. I'll
-consolidate.
+Phil.

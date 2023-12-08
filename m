@@ -1,358 +1,385 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2044866ejb;
-        Thu, 7 Dec 2023 18:34:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFbNEzUGQbyucwvnfvXLwMI+Tmut3hIjXXrkYn8IqcYIuj7PfWBdxVIdzlbV6klo/w5znn0
-X-Received: by 2002:ac8:4e51:0:b0:423:85b0:bca0 with SMTP id e17-20020ac84e51000000b0042385b0bca0mr5087819qtw.37.1702002891361;
-        Thu, 07 Dec 2023 18:34:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702002891; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2044902ejb;
+        Thu, 7 Dec 2023 18:34:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGsqxB1QLldmBcuLaULqFEJOPWxGojxqG9MGFbT1DNhVmU7V3IEtGHl7Eg3opA5wHSKvCsn
+X-Received: by 2002:a05:622a:cf:b0:425:9920:add3 with SMTP id p15-20020a05622a00cf00b004259920add3mr1245926qtw.33.1702002899467;
+        Thu, 07 Dec 2023 18:34:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702002899; cv=none;
         d=google.com; s=arc-20160816;
-        b=g0y+Cb95TjWkdxrSuPgRDo7ZJ1HTeiDxk64mqulV/S4kyoj2N2DqGidxjKmEiAmPQm
-         IsxQvMwU35MK9rWtVBdzVi7qEFAX6gEBKwOF6Yr7adZmFtO8Kjn8L/O9jETrrDJzzhzV
-         Dj6/qt4a58bhihvuHdo9oBR/rZI5Bwcwdkmfh/XoCUn3vw0RETawWNrfeN7J+PeTtwH9
-         hr47mcf3FoE3n/JFXkIswNbSQnGMfIlwwx9IJ5zwlSgQo2JYXc9GFtCTwKO88KmLKH34
-         EEas9U9k+JiAheQbBv/69M7o2cddBrHCtg7uP3Ry1gZy4MG/MkwA8DMRpSWma8lHG6gR
-         ld3Q==
+        b=NNe/cm25TaXK+EKBBmssAM549IuUXffzbrUIiGecIya1q6JqagY3LtRSrVtYucsOx7
+         GMadypENvzGSLXnn/8fSLa4uVoj+FdErj2/B64td0N6PqkFzLLUxtxlyaOcUw5haafRl
+         5QMbsENfEWEgrg1fH+9iLepwMLN0zubBllYZ3joN8AJ4uOdrV4xpTMkUewkKOdh/ih0F
+         JY9+lS9NCiHCesSgQFIEKIQs3oXUCPuzwv4WLmScg3Cm2pLjyTK7hgKaKC0lR2rK2a5s
+         jXfvK3pLWBL0RdXm3OtjHZoAqrq8WeSJQm5G7FYco94e5lHIII/8GOqUiMmns0YR6mLq
+         YBHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+        bh=tcKM0zsaUF6OxJgIAQHfOevQ93BKCzxRx4ONFnlRnhk=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=PBoidRvPU5hPXGO3FwdF92HTxPBpEFFx6xTMKlizWMQxyHyfKvG02v1RUXagTteID0
-         w5BUZ14u1GLp9jKupt0/iCBOdyXhpkyOFz37D4q4gKuYocnLy6jL37VEbRGqQSxz4QSX
-         YSGRCZlpZwYuip2IKs6/S0ZP8UthO9JE8QBaGfGuTP+zY3KKXMw/m4bOWfwLUXm+pDI3
-         t0xfbWNXW/kE95JLxhWuc4JLiG2JB/50ckVWepxTSXEPc7VbLOTocTc198+zuNFwBMb8
-         Ur7kHkXzgWOjLFreVAZlNEITis2IC5vXKPDkdppap5wX/qxR+1W/pt3YKk7BNBfy2Y/Z
-         0+Lg==
+        b=GGqVqNZfdOmKXBrjeLpfqOgi8R4oE88r1aTFqvDIKX3apKEnqCUlwcnYFVQiK/L54+
+         0y/d5VMGsIMfqBoRAZwPiQTPvB6Bmzj+cC1PFKnbocTP2qyopGFxMjwyhKiM9ea4W9z5
+         xB4jtwbuFpeQMcj7hz6gPoFs8tcfpEiWOu+MBUCVD1/MJl7LNg2Io+LAEbVIWDLnDHKo
+         7delygJ5jBwO/boe8oNQHiCr8FNstrz4wtj3bha7IQTltKYounwzKdRow6JmUY9bBeUq
+         UEIOcoN1MLn4H3K69ERtaKrn4vrrI59gThJRDqqHgMRDNLvQIOVRjjZkvSwIzCs5sv+B
+         6xzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AroPjQu4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dSKyKaZc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bw13-20020a05622a098d00b00425896deb15si1309053qtb.1.2023.12.07.18.34.51
+        by mx.google.com with ESMTPS id ku6-20020a05622a0a8600b00423c1566aa0si1098825qtb.466.2023.12.07.18.34.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Dec 2023 18:34:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Dec 2023 18:34:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AroPjQu4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dSKyKaZc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rBQh8-0001vV-RH; Thu, 07 Dec 2023 21:34:26 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rBQfy-0004lA-WD; Thu, 07 Dec 2023 21:33:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQh6-0001YV-Cf; Thu, 07 Dec 2023 21:34:24 -0500
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ id 1rBQfm-0004PM-Tb; Thu, 07 Dec 2023 21:33:04 -0500
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQh4-0002rM-63; Thu, 07 Dec 2023 21:34:24 -0500
-Received: by mail-lj1-x22a.google.com with SMTP id
- 38308e7fff4ca-2c9efa1ab7fso19469201fa.0; 
- Thu, 07 Dec 2023 18:34:21 -0800 (PST)
+ id 1rBQfk-0002Xn-L9; Thu, 07 Dec 2023 21:33:02 -0500
+Received: by mail-lj1-x22c.google.com with SMTP id
+ 38308e7fff4ca-2c9f62fca3bso20103331fa.0; 
+ Thu, 07 Dec 2023 18:32:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702002860; x=1702607660; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702002777; x=1702607577; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
- b=AroPjQu449gucj2k6pDlNnoCi9OyzvwoNsjJ6xwCeVMvOHGyi3do+c09a4ptjQ7SQj
- WhKhof4TIv3/SPOIq7aOCLnZlKVJYM7Klt4doggiQ9PokMuv+sSE0AWzjXbmMe1eupCy
- OZHoEyadeOUoVIvdnNGeKPmpEgC6hMPDAdOKkMelL4+6pQcSSisxvGUWLdDNx1764ptQ
- LQckwEWK2A51gk9VY2FundlXTQVlLUiCjxE7vIBce1VX6uO0wUhCgXn1jnfwBbkRxySt
- VLFqgeHjeIhc6MqfcmeuPAZ4OQzsy6tijuKL4baB8gizsk8Z+lmxp1dDeXFv96i4Fu/G
- 8ojQ==
+ bh=tcKM0zsaUF6OxJgIAQHfOevQ93BKCzxRx4ONFnlRnhk=;
+ b=dSKyKaZcm/oCrZx97W6pen6FL/ZeERP7cBwKa0HXwbmFEfGn1h9tVhs8Zhno0+9Op3
+ DqYlPe2Uaz2w6Y/wR7vkb8sOr39IEPBJjjh8VVTCunn0QVN9XEMQj6G04uoAn59LWu3T
+ Zwo3Qpu2s5hQqIiv9a/34dGQSYUzEm1Id21wTppdCNii1wHgrAacbtDvwp2SAL4jKBy6
+ FtUokDBTAr8jtBVosiO0bdxNu12xN54tTyPbGeFBzIwOZxyfXplJXsC1rwPkMIlIo8jp
+ R26mJp5aGFgZvwLr7MieRuoD+ZGNkDYlbxuS75D6prwQwfqhwiuYlV7YIKEWpkg5i0lQ
+ 2rNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702002860; x=1702607660;
+ d=1e100.net; s=20230601; t=1702002777; x=1702607577;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
- b=hbrykEYrR8omW+phmqCcIBloiBKAP4Tz1alwx0GVpUP1gWxWbys/sDhu4cksBaRotD
- oLlhwkme8DjlYjWAsWOTbX6Slq+htaxIN+VqhRHRE44YeAG+igLvKAeY9tB1g6qLpG6k
- Aodwz5ruCUrXea2+aHIenmq237FRBbWDKxzt2806l2JX86tdgaU7OD/FLw8akQ4RjXpo
- 1PzeUG2doiTHqNwsEbOm51P93VgPAMm5v1kdueN+jDUWw6zeprcjVKKHtDpWCSeMJq/S
- sE4jFbZha5m0RrpsobrYg4u8QG6miSjD5EwMDELIqH11DegZuwltlKt1cg60Z8Z00HQB
- P4hA==
-X-Gm-Message-State: AOJu0YzvzjdRfUKOHFWR6WxSpBdoHk+Gb7xDyN3vwvzWG+d9gpYaa5Ig
- 2mB3MBd9fvcN8PcF0WjWavo9sAKMYPbkVA==
-X-Received: by 2002:a05:651c:117:b0:2c9:faa4:92ff with SMTP id
- a23-20020a05651c011700b002c9faa492ffmr965885ljb.42.1702002859757; 
- Thu, 07 Dec 2023 18:34:19 -0800 (PST)
+ bh=tcKM0zsaUF6OxJgIAQHfOevQ93BKCzxRx4ONFnlRnhk=;
+ b=VPxLoNxCi8WwAkJxaoBFa1YzNqfOYAZ7dHG4b5i1Ybongmnp1Ulgt8mV6Jc8iPtqYw
+ uVybozdc1ZeKiIdNR0yP2l4SIxpJsYCuyE5JYLlPDUwMfWuaX+FSzNi26Lxp8EwMx12y
+ qWY1sjt0pnzQ420oQj9yTHvcpI8s4slZXwxN/E8BfL4q9WBf8BjHyYJTmoI/W0PM/mMf
+ llfxUaTRna1J6oQdXSPoXRGDu6YMyIsM+xl9cCaKROx26roTFjiCFtlH2TTlSAgA57r3
+ hxe/9O+wt5rneCzaXcFSzxjcSP/KeH7/YmDysa/MSz7XPumXDj1ZjMerVWFKskC1VzNx
+ 2CSQ==
+X-Gm-Message-State: AOJu0YyTOiBuSAKzjc9myGTNt8XudtuYppvDkEqKLM9FpIsHVBgc1Ef5
+ kHN4aher7Vqaye3gqVU+hS79kYp5dVkNTQ==
+X-Received: by 2002:a2e:9854:0:b0:2ca:959:d28d with SMTP id
+ e20-20020a2e9854000000b002ca0959d28dmr2221794ljj.100.1702002777480; 
+ Thu, 07 Dec 2023 18:32:57 -0800 (PST)
 Received: from localhost.localdomain ([185.200.240.39])
  by smtp.gmail.com with ESMTPSA id
- r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.34.16
+ r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.32.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Dec 2023 18:34:18 -0800 (PST)
+ Thu, 07 Dec 2023 18:32:56 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v4 41/45] Add mailbox property tests. Part 2
-Date: Thu,  7 Dec 2023 20:31:41 -0600
-Message-Id: <20231208023145.1385775-42-sergey.kambalin@auriga.com>
+Subject: [PATCH v4 19/45] Get rid of RNG200 timer
+Date: Thu,  7 Dec 2023 20:31:19 -0600
+Message-Id: <20231208023145.1385775-20-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
 References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JvCnogh4sAe6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5U+P8UJtacF+
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- tests/qtest/bcm2838-mbox-property-test.c | 196 ++++++++++++++++++++++-
- 1 file changed, 195 insertions(+), 1 deletion(-)
+ hw/arm/bcm2838_peripherals.c         | 14 +++++
+ hw/arm/raspi4b.c                     |  1 -
+ hw/misc/bcm2838_rng200.c             | 78 ++++++++++++++++------------
+ include/hw/arm/bcm2838_peripherals.h |  2 +
+ include/hw/misc/bcm2838_rng200.h     |  4 +-
+ 5 files changed, 63 insertions(+), 36 deletions(-)
 
-diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
-index 80746dbb95..5322c563a0 100644
---- a/tests/qtest/bcm2838-mbox-property-test.c
-+++ b/tests/qtest/bcm2838-mbox-property-test.c
-@@ -49,7 +49,8 @@ FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
-                       (TEST_TAG_TYPE(testname) * tag);                         \
-     static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
-                              (TEST_TAG_TYPE(testname) *tag);                   \
--    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
-+    static void TEST_FN_NAME(testname, __VA_ARGS__)(void)                      \
-+    {                                                                          \
-         struct {                                                               \
-             MboxBufHeader header;                                              \
-             TEST_TAG_TYPE(testname) tag;                                       \
-@@ -188,6 +189,179 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+index ee06214715..7c489c8e8a 100644
+--- a/hw/arm/bcm2838_peripherals.c
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -34,6 +34,9 @@ static void bcm2838_peripherals_init(Object *obj)
+                        bc->peri_low_size);
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
+ 
++    /* Random Number Generator */
++    object_initialize_child(obj, "rng200", &s->rng200, TYPE_BCM2838_RNG200);
++
+     /* PCIe Host Bridge */
+     object_initialize_child(obj, "pcie-host", &s->pcie_host,
+                             TYPE_BCM2838_PCIE_HOST);
+@@ -85,6 +88,17 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+                                         BCM2838_VC_PERI_LOW_BASE,
+                                         &s->peri_low_mr_alias, 1);
+ 
++    /* Random Number Generator */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->rng200), errp)) {
++        return;
++    }
++    memory_region_add_subregion(
++        &s_base->peri_mr, RNG_OFFSET,
++        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng200), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng200), 0,
++        qdev_get_gpio_in_named(DEVICE(&s_base->ic), BCM2835_IC_GPU_IRQ,
++                               INTERRUPT_RNG));
++
+     /* Extended Mass Media Controller 2 */
+     object_property_set_uint(OBJECT(&s->emmc2), "sd-spec-version", 3,
+                              &error_abort);
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index 2e8474e1c5..7b5385b8dd 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -67,7 +67,6 @@ static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
+ 
+     /* Temporarily disable following devices until they are implemented*/
+     const char *to_be_removed_from_dt_as_wa[] = {
+-        "brcm,bcm2711-rng200",
+         "brcm,bcm2711-thermal",
+         "brcm,bcm2711-genet-v5",
+     };
+diff --git a/hw/misc/bcm2838_rng200.c b/hw/misc/bcm2838_rng200.c
+index f91ea0754c..1b334b94d5 100644
+--- a/hw/misc/bcm2838_rng200.c
++++ b/hw/misc/bcm2838_rng200.c
+@@ -9,6 +9,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
++#include "qom/object_interfaces.h"
+ #include "qapi/error.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/bcm2838_rng200.h"
+@@ -64,10 +65,7 @@ static const VMStateDescription vmstate_bcm2838_rng200 = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_UINT32(rbg_period, BCM2838Rng200State),
+         VMSTATE_UINT32(rng_fifo_cap, BCM2838Rng200State),
+-        VMSTATE_BOOL(use_timer, BCM2838Rng200State),
+-
+         VMSTATE_ARRAY(regs, BCM2838Rng200State, N_BCM2838_RNG200_REGS, 0,
+                       vmstate_info_uint32, uint32_t),
+ 
+@@ -90,6 +88,15 @@ static void bcm2838_rng200_update_irq(BCM2838Rng200State *s)
+                 !!(s->regs[R_RNG_INT_ENABLE] & s->regs[R_RNG_INT_STATUS]));
  }
  
- /*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
++static void bcm2838_rng200_update_rbg_period(void *opaque, ClockEvent event)
++{
++    BCM2838Rng200State *s = (BCM2838Rng200State *)opaque;
++
++    ptimer_transaction_begin(s->ptimer);
++    ptimer_set_period_from_clock(s->ptimer, s->clock, s->rng_fifo_cap * 8);
++    ptimer_transaction_commit(s->ptimer);
 +}
 +
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, UART) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, UART) {
-+    tag->request.value.clock_id = CLOCK_ID_UART;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, CORE) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, CORE) {
-+    tag->request.value.clock_id = CLOCK_ID_CORE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, ANY) {
-+    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
-+    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
-+    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_TEMPERATURE) {
-+    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-+    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_TEMPERATURE) {
-+    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_MAX_TEMPERATURE) {
-+    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
-+    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC_MAX);
-+}
-+DECLARE_TEST_CASE_SETUP(GET_MAX_TEMPERATURE) {
-+    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(ALLOCATE_BUFFER) {
-+    g_assert_cmphex(tag->response.value.base, ==, VC_FB_BASE);
-+    g_assert_cmphex(tag->response.value.size, ==, VC_FB_SIZE);
-+}
-+DECLARE_TEST_CASE_SETUP(ALLOCATE_BUFFER) {
-+    tag->request.value.alignment = ALIGN_4K;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(RELEASE_FRAMEBUFFER) { 
-+    /* No special checks are needed for this test */
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(BLANK_FRAMEBUFFER) {
-+    g_assert_cmphex(tag->response.value.on, ==, 0);
-+}
-+DECLARE_TEST_CASE_SETUP(BLANK_FRAMEBUFFER) {
-+    tag->request.value.on = 0;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_PHYS_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_PHYS_WIDTH) {
-+    tag->request.value.width = DUMMY_VALUE;
-+    tag->request.value.height = DUMMY_VALUE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL) {
-+    g_assert_cmpint(tag->response.value.width, ==, 640);
-+    g_assert_cmpint(tag->response.value.height, ==, 480);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_PHYS_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, 800);
-+    g_assert_cmpint(tag->response.value.height, ==, 600);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_PHYS_WIDTH) {
-+    tag->request.value.width = 800;
-+    tag->request.value.height = 600;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(TEST_FB_VIRT_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
-+    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
-+}
-+DECLARE_TEST_CASE_SETUP(TEST_FB_VIRT_WIDTH) {
-+    tag->request.value.width = DUMMY_VALUE;
-+    tag->request.value.height = DUMMY_VALUE;
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL) {
-+    g_assert_cmpint(tag->response.value.width, ==, 640);
-+    g_assert_cmpint(tag->response.value.height, ==, 480);
-+}
-+
-+/*----------------------------------------------------------------------------*/
-+DECLARE_TEST_CASE(SET_FB_VIRT_WIDTH) {
-+    g_assert_cmpint(tag->response.value.width, ==, 800);
-+    g_assert_cmpint(tag->response.value.height, ==, 600);
-+}
-+DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
-+    tag->request.value.width = 800;
-+    tag->request.value.height = 600;
-+}
-+
-+//==============================================================================
- int main(int argc, char **argv)
+ static void bcm2838_rng200_update_fifo(void *opaque, const void *buf,
+                                        size_t size)
  {
-     g_test_init(&argc, &argv, NULL);
-@@ -201,6 +375,26 @@ int main(int argc, char **argv)
-     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
-     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
-     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, UART);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, CORE);
-+    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
-+    QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
-+    QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
-+    QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
-+    QTEST_ADD_TEST_CASE(RELEASE_FRAMEBUFFER);
-+    QTEST_ADD_TEST_CASE(BLANK_FRAMEBUFFER);
-+    QTEST_ADD_TEST_CASE(TEST_FB_PHYS_WIDTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL);
-+    QTEST_ADD_TEST_CASE(SET_FB_PHYS_WIDTH);
-+    QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
-+    QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
-+    QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
+@@ -121,18 +128,17 @@ static void bcm2838_rng200_update_fifo(void *opaque, const void *buf,
+     if ((num == 0) && (num_bits > 0)) {
+         num = 1;
+     }
+-    if (num > 0) {
+-        fifo8_push_all(fifo, buf, num);
  
-     return g_test_run();
++    fifo8_push_all(fifo, buf, num);
+ 
+-        fifo_thld = FIELD_EX32(s->regs[R_RNG_FIFO_COUNT],
+-                               RNG_FIFO_COUNT, THRESHOLD);
+ 
+-        if (fifo8_num_used(fifo) > fifo_thld) {
+-            s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
+-                                                   RNG_INT_STATUS,
+-                                                   TOTAL_BITS_COUNT_IRQ, 1);
+-        }
++    fifo_thld = FIELD_EX32(s->regs[R_RNG_FIFO_COUNT],
++                            RNG_FIFO_COUNT, THRESHOLD);
++
++    if (fifo8_num_used(fifo) > fifo_thld) {
++        s->regs[R_RNG_INT_STATUS] = FIELD_DP32(s->regs[R_RNG_INT_STATUS],
++                                                RNG_INT_STATUS,
++                                                TOTAL_BITS_COUNT_IRQ, 1);
+     }
+ 
+     s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
+@@ -149,9 +155,7 @@ static void bcm2838_rng200_fill_fifo(BCM2838Rng200State *s)
+                                 bcm2838_rng200_update_fifo, s);
  }
+ 
+-/* This function will be implemnented in upcoming commits */
+-static void bcm2838_rng200_disable_rbg(BCM2838Rng200State *s
+-                                       __attribute__((unused)))
++static void bcm2838_rng200_disable_rbg(void)
+ {
+     trace_bcm2838_rng200_disable_rbg();
+ }
+@@ -184,23 +188,21 @@ static void bcm2838_rng200_rbg_reset(BCM2838Rng200State *s)
+ 
+ static uint32_t bcm2838_rng200_read_fifo_data(BCM2838Rng200State *s)
+ {
+-    Fifo8 *fifo = &s->fifo;
+     const uint8_t *buf;
++    Fifo8 *fifo = &s->fifo;
++    uint32_t to_read = MIN(fifo8_num_used(fifo), 4);
++    uint8_t byte_buf[4] = {};
++    uint8_t *p = byte_buf;
+     uint32_t ret = 0;
+     uint32_t num = 0;
+-    uint32_t max = MIN(fifo8_num_used(fifo), sizeof(ret));
+ 
+-    if (max > 0) {
+-        buf = fifo8_pop_buf(fifo, max, &num);
+-        if ((buf != NULL) && (num > 0)) {
+-            memcpy(&ret, buf, num);
+-        }
+-    } else {
+-        qemu_log_mask(
+-            LOG_GUEST_ERROR,
+-            "bcm2838_rng200_read_fifo_data: FIFO is empty\n"
+-        );
++    while (to_read) {
++        buf = fifo8_pop_buf(fifo, to_read, &num);
++        memcpy(p, buf, num);
++        p += num;
++        to_read -= num;
+     }
++    ret = ldl_le_p(byte_buf);
+ 
+     s->regs[R_RNG_FIFO_COUNT] = FIELD_DP32(s->regs[R_RNG_FIFO_COUNT],
+                                            RNG_FIFO_COUNT,
+@@ -222,7 +224,7 @@ static void bcm2838_rng200_ctrl_write(BCM2838Rng200State *s, uint32_t value)
+     if (!currently_enabled && enable_requested) {
+         bcm2838_rng200_enable_rbg(s);
+     } else if (currently_enabled && !enable_requested) {
+-        bcm2838_rng200_disable_rbg(s);
++        bcm2838_rng200_disable_rbg();
+     }
+ }
+ 
+@@ -321,6 +323,14 @@ static const MemoryRegionOps bcm2838_rng200_ops = {
+     .read = bcm2838_rng200_read,
+     .write = bcm2838_rng200_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .max_access_size = 4,
++        .min_access_size = 4,
++    },
++    .valid = {
++        .max_access_size = 4,
++        .min_access_size = 4
++    },
+ };
+ 
+ static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
+@@ -330,6 +340,13 @@ static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
+     if (s->rng == NULL) {
+         Object *default_backend = object_new(TYPE_RNG_BUILTIN);
+ 
++        if (!user_creatable_complete(USER_CREATABLE(default_backend),
++                                     errp)) {
++            object_unref(default_backend);
++            error_setg(errp, "Failed to create user creatable RNG backend");
++            return;
++        }
++
+         object_property_add_child(OBJECT(dev), "default-backend",
+                                   default_backend);
+         object_unref(default_backend);
+@@ -347,13 +364,10 @@ static void bcm2838_rng200_init(Object *obj)
+     BCM2838Rng200State *s = BCM2838_RNG200(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+ 
+-    s->rbg_period = 250;
+-    s->use_timer = true;
+-
+     s->rng_fifo_cap = 128;
+ 
+     s->clock = qdev_init_clock_in(DEVICE(s), "rbg-clock",
+-                                  NULL, s,
++                                  bcm2838_rng200_update_rbg_period, s,
+                                   ClockPreUpdate);
+     if (s->clock == NULL) {
+         error_setg(&error_fatal, "Failed to init RBG clock");
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 2af96df1c6..317df005bf 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -10,6 +10,7 @@
+ #define BCM2838_PERIPHERALS_H
+ 
+ #include "hw/arm/bcm2835_peripherals.h"
++#include "hw/misc/bcm2838_rng200.h"
+ #include "hw/arm/bcm2838_pcie.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/gpio/bcm2838_gpio.h"
+@@ -65,6 +66,7 @@ struct BCM2838PeripheralState {
+     MemoryRegion mphi_mr_alias;
+     MemoryRegion pcie_mmio_alias;
+ 
++    BCM2838Rng200State rng200;
+     SDHCIState emmc2;
+     BCM2838PcieHostState pcie_host;
+     BCM2838GpioState gpio;
+diff --git a/include/hw/misc/bcm2838_rng200.h b/include/hw/misc/bcm2838_rng200.h
+index 46fdba48da..8e084b7254 100644
+--- a/include/hw/misc/bcm2838_rng200.h
++++ b/include/hw/misc/bcm2838_rng200.h
+@@ -32,11 +32,9 @@ struct BCM2838Rng200State {
+     RngBackend *rng;
+     Clock *clock;
+ 
+-    uint32_t rbg_period;
+     uint32_t rng_fifo_cap;
+-    bool use_timer;
+-
+     Fifo8    fifo;
++
+     qemu_irq irq;
+ 
+     uint32_t regs[N_BCM2838_RNG200_REGS];
 -- 
 2.34.1
 

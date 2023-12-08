@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2044398ejb;
-        Thu, 7 Dec 2023 18:33:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFVKdcQSA9nzESM8y/kzj+1OHxA+mpekhjL4YV6gc6URvZgRISxQ/NDgiOg3HKeXf3vCAzj
-X-Received: by 2002:a05:620a:4c95:b0:77d:7843:a06b with SMTP id to21-20020a05620a4c9500b0077d7843a06bmr2126890qkn.4.1702002824080;
-        Thu, 07 Dec 2023 18:33:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702002824; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2044460ejb;
+        Thu, 7 Dec 2023 18:33:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHGFjUQhyZNsHWaHCD4f9GVt/kaiNaKwIal3pqjvFccSOiBKPecPefNVNURboV/baBQa1B0
+X-Received: by 2002:a05:620a:4d86:b0:77d:bdc4:486 with SMTP id uw6-20020a05620a4d8600b0077dbdc40486mr1938222qkn.55.1702002830661;
+        Thu, 07 Dec 2023 18:33:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702002830; cv=none;
         d=google.com; s=arc-20160816;
-        b=bycoQHZ8PUlJRXFw2orJJ9FJL1Ms+dmsQ0Ea9imeTBm8dJ3LiOR5YLak2D4kei5JlU
-         LUlsa9njVf5skAsf0FthIQXgpQPLL55jq8AlKwh/cCI4I2Q4/auvWmljYmsyVbEg0oyv
-         K3mFumaF/OqaGx+bZjYOdMWHD6+Rsg+ahy6ADR6qYzUKxQlbdWKGmF6guc2nw3GtsTRN
-         nFRO+EuOKQ24BxRJrnbAUSfowgjwuo67Om7dlIZvYS+iBE2KNYZbywvkG2NBR48qxA71
-         sF+C9QVK+3jIV7zMMT5zKIghEECfSyP22ONuy99yZIWN/96eYwwPBfZct0jGoqy3c1SE
-         iH4A==
+        b=UZQkc2UgH+2oyiGLjk/lKy7I+CMj5NbwvDPJ9EIsJVFArnT9/J8yeFNLnpCHIb2Z4y
+         DACVAm3owkrkHywDw3Hd9Q0UPvnub5FgJ3uymyoGvRqS3wo1G+IJ3kJfU8WV9V4UKEFu
+         DVVKtsFTGwaKR/itFRXxi7BkT0QP5oNdHyoh/q8r1IG8gj53kXTNXKQ6kJq6VP5M3ePp
+         UcKAmNv+fD4nExYZoexGdNIe9MEBn3Go1faPQOk23BrGfVlaqXZDQIU929vxJuMUyWTT
+         TM+d/yRkWM10nTEZ9tGPRyAk60OYCWtLY7P2Mz+1mnRQIwpfGNYi8QzPqBS9xi97jlSQ
+         kEvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=U3q6AiL1mbxBiKidAQHbdRXxykNtox5744GvYZOpg/0=;
+        bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=zgzEKSgGaW+8Ohdn7HSqlWfftmGJ11mcypqEIGSoweu/EXrbJuhOrJLBQG36DtiCzi
-         sYfz8fNOYv/xBsBiyRmB37roUHTt+PGpJh+eIyMUoPfVZpzKyNHFeRYk/GjLSEEiUmYY
-         8cD0NKGfHy3MG3v5KkheMQl8kPfdPNjr8+611GRIQL4U3liWlctdPvDnC6wV3XZtwiyb
-         rcuD3/FGHeSrv+HH+V5NE1dQgBpNJ3gVCnxhB8zgDhqxOJHeaet5V79ZuGeT80qRjXcA
-         NEFaQHqZPmyX6LdaWpPY6PIthcXDus5NKYrkOrITz/6vvr/3b77Oiaib0Uk0+AsvByCT
-         X6hg==
+        b=dmHFPBrfGeo5zj2X35kSl94UjVQSH2dOVy7CRz9MvbK+PJJGTxI/6PqeJBZlX3MvZx
+         BdH4t02bIYi7sz1ODZHnT5DcLjREsT23gXGRRToJt3fCGU99B/SKtM6x6159mOTf/HoH
+         8IYpdml6ATsed09ulLXJJdXECrL7OenWAgyikd/LjzdDFxom9Tpzc5caUlqlUL1rmJOX
+         VJJV96AYOQAiJKhCla5itmFUZSYSfgYxchMPRwMWtR7zi++hUrrr4fYgyOqUBO578mAH
+         R2q4OvKDCmR4KrGYCFmOKHK/9j8hnnAJ1sFX0JR7PwmwGltWg6Jw7DFTlTlZRNcxtXYl
+         WsAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=d2hPdb41;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WGcayJ2x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4-20020a05620a284400b0077db734a0desi1160859qkp.125.2023.12.07.18.33.43
+        by mx.google.com with ESMTPS id x10-20020a05620a258a00b0077d6c50a665si1132637qko.214.2023.12.07.18.33.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Dec 2023 18:33:44 -0800 (PST)
+        Thu, 07 Dec 2023 18:33:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=d2hPdb41;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WGcayJ2x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rBQfm-0004PB-Nr; Thu, 07 Dec 2023 21:33:04 -0500
+	id 1rBQgF-0005R1-GR; Thu, 07 Dec 2023 21:33:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQfe-0004MF-Ry; Thu, 07 Dec 2023 21:32:55 -0500
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ id 1rBQgC-0005DH-Aw; Thu, 07 Dec 2023 21:33:29 -0500
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQfc-0002WZ-1P; Thu, 07 Dec 2023 21:32:54 -0500
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2c9ea37ac87so21349071fa.3; 
- Thu, 07 Dec 2023 18:32:51 -0800 (PST)
+ id 1rBQgA-0002bS-Ll; Thu, 07 Dec 2023 21:33:28 -0500
+Received: by mail-lj1-x230.google.com with SMTP id
+ 38308e7fff4ca-2c9f62fca3bso20106651fa.0; 
+ Thu, 07 Dec 2023 18:33:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702002770; x=1702607570; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702002803; x=1702607603; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=U3q6AiL1mbxBiKidAQHbdRXxykNtox5744GvYZOpg/0=;
- b=d2hPdb41iWESWGo/Rxtm2rvuVZEOl6uAlSFCVw9CCQ0YPGxqKXgqbC3HRHi4fGabPY
- 0FslzBGYB1ysoTfHRrT33wVa55RXyFR02KAdVkF/m1/nrgP7hbCe2aedus4YXcOb/RPt
- LaBdFbPBvugh01t8xhFdvU/CJpWQXcoeCUvFHtV7Y7uTu0ngF+DQf9L5BlU2FhG7XMNZ
- cNt62tdr2Epc2okcWSEV3289mod7AgKxmdGdAz6POt1Qoh+RNC0nbfqsCNGlRoRR29Gk
- quCQp9WKeoIwlqoHvMj2C0l+02JqjOZy9++vx1QgYa8SSDtz1sxl79xYPcVt3j9ucWYR
- OV6A==
+ bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
+ b=WGcayJ2x31Xs1m36jAFECj4W2GMZgRep0UBIJ01ec8PrKBKbjrhYSC32YDVzKBJJ4R
+ 5w4wV/G6pmq+aomNwtXQIAgjFUX/76PPGPa/VRqf2h+8Mm6lUAcHMCb42bwm3nP+4QLa
+ +R2jsx1L7SBK+TqSo9f5N4qLg7BAygxp53b9PgJBpkiVg57Xt+GujqAZc2aOADxlDrxY
+ gKhKFjku0ar1VRyUfd6lAHRG4DOHbvnDgn2npl/Wnv5WYKHVqFQB+mgjbnUSpxKlLZ3p
+ u4DeE9ECovHIRlAP/2gx3iZUG1uLI5Tmid/PVYksTeI0QJWtEqz9B7TfQ8CuC/X3kl81
+ 55lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702002770; x=1702607570;
+ d=1e100.net; s=20230601; t=1702002803; x=1702607603;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=U3q6AiL1mbxBiKidAQHbdRXxykNtox5744GvYZOpg/0=;
- b=Q8qPu1XEaxsxNbX0quOzX8OvaFwBpxIFe5LYPbf6+xi8ER5Pv6u3dLnv3pq0dYlIsv
- UHcTgJas4pU8OvejVENqKaqAzjfZ04+1WNrcnvZV2E4zjIMiip+XnqQ3/elAfQ9j7Lts
- Ty5gR0wUsW3LWb74Qxp/Jh0LMJ7X+buH7a9VLtAm3LzWd7NawSJAFsZIc68kD/EkRJAz
- oQEnVKEzqnkjp9du5BFSxAfm2TRZ0Wc+TUGsaDy8z1ZNf2bZ6lU1kFCvKshpRSi/DQtH
- amHcBdMWjjFtNok4yAdDvayzlvsP0CnJroJVG1XT2fwOcmCR3jNtT3FwcU4hTgZ2Yldl
- XhOQ==
-X-Gm-Message-State: AOJu0YxWOmwSYAt/T4KUalkvUeKgxDUeI5y+locc2KUOEi/YREQjaTEq
- sdZZtij2YrlvkPF9lE7XGDmrKXs0hklJPQ==
-X-Received: by 2002:a2e:b781:0:b0:2ca:2bd:3cf1 with SMTP id
- n1-20020a2eb781000000b002ca02bd3cf1mr1892212ljo.8.1702002769810; 
- Thu, 07 Dec 2023 18:32:49 -0800 (PST)
+ bh=m35zG+ajLJL60pM6bIM9adMNO13lGgmKjK7XnKNpmk8=;
+ b=Pq/96h5OBsWTIqDY+GUoRxZTXOk9zY+MkDNC4xZr8viDuL90ddQVCO88OO2xn2kE3c
+ uTsk/r17mvigBdr9WZfH4pBIsYqsmBhuPXeSoi4JgMp4et3T5/pS3Zr00PV1Fax1jCQm
+ FHFfy0Hja6o2GrbakPh5E825NYZWRZ/W6aJupcvyuJFYFf9rYwh3hpJg0XcIx6eqImz2
+ hUjmbs672NyhCR0Uu4kzjrP56myhsc0vSKVzKJqMLFjRBxIYFXZ/VoOu2I2bhmz1M4a+
+ ckCzU3TGIYrzI5B0y6AP3f7r8yReoyHSmnDaaOcYU4ZRQeWW0a5BYPInvStMo1VNDWXc
+ Cg7A==
+X-Gm-Message-State: AOJu0YxCBwHnKQgLTH6km841VKx/BVCwD2iHJ3otIpZ6wyF4xCobaaMx
+ XzRi2eGa9rUEVnkP1gj2bXac/rVBimnXjg==
+X-Received: by 2002:a2e:9990:0:b0:2ca:68:acf6 with SMTP id
+ w16-20020a2e9990000000b002ca0068acf6mr1977133lji.88.1702002803520; 
+ Thu, 07 Dec 2023 18:33:23 -0800 (PST)
 Received: from localhost.localdomain ([185.200.240.39])
  by smtp.gmail.com with ESMTPSA id
- r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.32.47
+ r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.33.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Dec 2023 18:32:49 -0800 (PST)
+ Thu, 07 Dec 2023 18:33:22 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v4 17/45] Add RNG200 skeleton
-Date: Thu,  7 Dec 2023 20:31:17 -0600
-Message-Id: <20231208023145.1385775-18-sergey.kambalin@auriga.com>
+Subject: [PATCH v4 26/45] Add GENET register structs. Part 4
+Date: Thu,  7 Dec 2023 20:31:26 -0600
+Message-Id: <20231208023145.1385775-27-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
 References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::230;
+ envelope-from=serg.oker@gmail.com; helo=mail-lj1-x230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,262 +124,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hf5sgdLR4K2R
+X-TUID: C+O18r+YayKe
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/misc/bcm2838_rng200.c         | 152 +++++++++++++++++++++++++++++++
- hw/misc/meson.build              |   1 +
- hw/misc/trace-events             |   9 ++
- include/hw/misc/bcm2838_rng200.h |  51 +++++++++++
- 4 files changed, 213 insertions(+)
- create mode 100644 hw/misc/bcm2838_rng200.c
- create mode 100644 include/hw/misc/bcm2838_rng200.h
+ include/hw/net/bcm2838_genet.h | 37 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/hw/misc/bcm2838_rng200.c b/hw/misc/bcm2838_rng200.c
-new file mode 100644
-index 0000000000..8f64e6a20f
---- /dev/null
-+++ b/hw/misc/bcm2838_rng200.c
-@@ -0,0 +1,152 @@
-+/*
-+ * BCM2838 Random Number Generator emulation
-+ *
-+ * Copyright (C) 2022 Sergey Pushkarev <sergey.pushkarev@auriga.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 1bd004785a..94c2f3ebca 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -25,6 +25,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
+ 
++#define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
++#define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/bcm2838_rng200.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
++#define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
++#define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
 +
-+static const VMStateDescription vmstate_bcm2838_rng200_regs = {
-+    .name = "bcm2838_rng200_regs",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(ctrl, BCM2838_rng_regs_t),
-+        VMSTATE_UINT32(int_status, BCM2838_rng_regs_t),
-+        VMSTATE_UINT32(fifo_count, BCM2838_rng_regs_t),
-+        VMSTATE_UINT32(fifo_count_threshold, BCM2838_rng_regs_t),
-+        VMSTATE_UINT32(total_bit_count_threshold, BCM2838_rng_regs_t),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const VMStateDescription vmstate_bcm2838_rng200 = {
-+    .name = "bcm2838_rng200",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(rbg_period, BCM2838Rng200State),
-+        VMSTATE_UINT32(rng_fifo_cap, BCM2838Rng200State),
-+        VMSTATE_BOOL(use_timer, BCM2838Rng200State),
-+
-+        VMSTATE_STRUCT(regs, BCM2838Rng200State, 0, vmstate_bcm2838_rng200_regs,
-+                       BCM2838_rng_regs_t),
-+
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void bcm2838_rng200_rng_reset(BCM2838Rng200State *state)
-+{
-+    state->regs.ctrl = 0;
-+
-+    trace_bcm2838_rng200_rng_soft_reset();
-+}
-+
-+static uint64_t bcm2838_rng200_read(void *opaque, hwaddr offset,
-+                                    unsigned size)
-+{
-+    uint32_t res = 0;
-+
-+    /* will be implemented in upcoming commits */
-+    return res;
-+}
-+
-+static void bcm2838_rng200_write(void *opaque, hwaddr offset,
-+                                 uint64_t value, unsigned size)
-+{
-+    /* will be implemented in upcoming commits */
-+}
-+
-+static const MemoryRegionOps bcm2838_rng200_ops = {
-+    .read = bcm2838_rng200_read,
-+    .write = bcm2838_rng200_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void bcm2838_rng200_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2838Rng200State *s = BCM2838_RNG200(dev);
-+
-+    if (s->rng == NULL) {
-+        Object *default_backend = object_new(TYPE_RNG_BUILTIN);
-+
-+        object_property_add_child(OBJECT(dev), "default-backend",
-+                                  default_backend);
-+        object_unref(default_backend);
-+
-+        object_property_set_link(OBJECT(dev), "rng", default_backend,
-+                                 errp);
-+    }
-+
-+    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-+}
-+
-+static void bcm2838_rng200_init(Object *obj)
-+{
-+    BCM2838Rng200State *s = BCM2838_RNG200(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+
-+    s->rbg_period = 250;
-+    s->use_timer = true;
-+
-+    s->rng_fifo_cap = 128;
-+
-+    s->clock = qdev_init_clock_in(DEVICE(s), "rbg-clock",
-+                                  NULL, s,
-+                                  ClockPreUpdate);
-+    if (s->clock == NULL) {
-+        error_setg(&error_fatal, "Failed to init RBG clock");
-+        return;
-+    }
-+
-+    memory_region_init_io(&s->iomem, obj, &bcm2838_rng200_ops, s,
-+                          TYPE_BCM2838_RNG200, 0x28);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void bcm2838_rng200_reset(DeviceState *dev)
-+{
-+    BCM2838Rng200State *s = BCM2838_RNG200(dev);
-+    bcm2838_rng200_rng_reset(s);
-+}
-+
-+static Property bcm2838_rng200_properties[] = {
-+    DEFINE_PROP_LINK("rng", BCM2838Rng200State, rng,
-+                     TYPE_RNG_BACKEND, RngBackend *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void bcm2838_rng200_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = bcm2838_rng200_realize;
-+    dc->reset = bcm2838_rng200_reset;
-+    dc->vmsd = &vmstate_bcm2838_rng200;
-+
-+    device_class_set_props(dc, bcm2838_rng200_properties);
-+}
-+
-+static const TypeInfo bcm2838_rng200_info = {
-+    .name          = TYPE_BCM2838_RNG200,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2838Rng200State),
-+    .class_init    = bcm2838_rng200_class_init,
-+    .instance_init = bcm2838_rng200_init,
-+};
-+
-+static void bcm2838_rng200_register_types(void)
-+{
-+    type_register_static(&bcm2838_rng200_info);
-+}
-+
-+type_init(bcm2838_rng200_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 36c20d5637..b899e6b596 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -91,6 +91,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
-   'bcm2835_thermal.c',
-   'bcm2835_cprman.c',
-   'bcm2835_powermgt.c',
-+  'bcm2838_rng200.c'
- ))
- system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 05ff692441..5e5d3fe61a 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -330,3 +330,12 @@ djmemc_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRI
- # iosb.c
- iosb_read(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
- iosb_write(int reg, uint64_t value, unsigned int size) "reg=0x%x value=0x%"PRIx64" size=%u"
-+# bcm2838_rng200.c
-+bcm2838_rng200_rng_soft_reset(void) "RNumG soft reset"
-+bcm2838_rng200_rbg_soft_reset(void) "RBitG soft reset"
-+bcm2838_rng200_enable_rbg(void)     "RBitG enabled"
-+bcm2838_rng200_disable_rbg(void)    "RBitG disabled"
-+bcm2838_rng200_update_fifo(uint32_t len, uint32_t fifo_len)    "len %u, fifo_len %u"
-+bcm2838_rng200_fifo_full(void) "RNumG FIFO full"
-+bcm2838_rng200_write(uint64_t addr, uint64_t value, unsigned size) "addr: 0x%"PRIx64" value: 0x%016" PRIx64 " size: %u"
-+bcm2838_rng200_read(uint64_t addr, unsigned size, uint64_t value) "addr: 0x%"PRIx64" size: %u value: 0x%016" PRIx64
-diff --git a/include/hw/misc/bcm2838_rng200.h b/include/hw/misc/bcm2838_rng200.h
-new file mode 100644
-index 0000000000..c9c52f84be
---- /dev/null
-+++ b/include/hw/misc/bcm2838_rng200.h
-@@ -0,0 +1,51 @@
-+/*
-+ * BCM2838 Random Number Generator emulation
-+ *
-+ * Copyright (C) 2022 Sergey Pushkarev <sergey.pushkarev@auriga.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef BCM2838_RNG200_H
-+#define BCM2838_RNG200_H
-+
-+#include <stdbool.h>
-+#include "qom/object.h"
-+#include "qemu/fifo8.h"
-+#include "sysemu/rng.h"
-+#include "hw/sysbus.h"
-+#include "hw/ptimer.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/irq.h"
-+
-+#define TYPE_BCM2838_RNG200 "bcm2838-rng200"
-+OBJECT_DECLARE_SIMPLE_TYPE(BCM2838Rng200State, BCM2838_RNG200)
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -273,6 +279,34 @@ typedef struct {
+     uint16_t rdb_data;
+ } BCM2838GenetPhyRegs;
+ 
++typedef struct {
++    uint16_t reserved_0_2[3];
++    uint16_t clk_ctl;
++    uint16_t scr2;
++    uint16_t scr3;
++    uint16_t reserved_6_9[4];
++    uint16_t apd;
++    uint16_t rgmii_mode;
++    uint16_t reserved_12;
++    uint16_t leds1;
++    uint16_t reserved_14_18[5];
++    uint16_t _100fx_ctrl;
++    uint16_t ssd;
++    uint16_t reserved_21_30[10];
++    uint16_t mode;
++} BCM2838GenetPhyShdRegs;
 +
 +typedef struct {
-+    uint32_t ctrl;
-+    uint32_t int_status;
-+    uint32_t fifo_count;
-+    uint32_t fifo_count_threshold;
-+    uint32_t total_bit_count_threshold;
-+} BCM2838_rng_regs_t;
++    uint16_t auxctl;
++    uint16_t reserved_1_6[BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE - 2];
++    uint16_t misc;
++} BCM2838GenetPhyAuxShdRegs;
 +
-+struct BCM2838Rng200State {
-+    SysBusDevice busdev;
-+    MemoryRegion iomem;
++typedef struct {
++    uint16_t regs[BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT]
++                 [BCM2838_GENET_PHY_EXP_SHD_REGS_CNT];
++} BCM2838GenetPhyExpShdRegs;
 +
-+    ptimer_state *ptimer;
-+    RngBackend *rng;
-+    Clock *clock;
-+
-+    uint32_t rbg_period;
-+    uint32_t rng_fifo_cap;
-+    bool use_timer;
-+
-+    Fifo8    fifo;
-+    qemu_irq irq;
-+
-+    BCM2838_rng_regs_t regs;
-+};
-+
-+#endif /* BCM2838_RNG200_H */
+ struct BCM2838GenetState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -284,6 +318,9 @@ struct BCM2838GenetState {
+ 
+     BCM2838GenetRegs regs;
+     BCM2838GenetPhyRegs phy_regs;
++    BCM2838GenetPhyShdRegs phy_shd_regs;
++    BCM2838GenetPhyAuxShdRegs phy_aux_ctl_shd_regs;
++    BCM2838GenetPhyExpShdRegs phy_exp_shd_regs;
+ 
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
 -- 
 2.34.1
 

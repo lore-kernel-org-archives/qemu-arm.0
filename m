@@ -1,115 +1,116 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2044851ejb;
-        Thu, 7 Dec 2023 18:34:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEnDeJHQ/hh3TE+w4vfHpoMF1bPnUMElXyKDHijkvBvZGvO/8crByheLN0AQLMPL12snhsF
-X-Received: by 2002:a81:5753:0:b0:5d8:d93:f054 with SMTP id l80-20020a815753000000b005d80d93f054mr3306399ywb.23.1702002889818;
-        Thu, 07 Dec 2023 18:34:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702002889; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2044866ejb;
+        Thu, 7 Dec 2023 18:34:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFbNEzUGQbyucwvnfvXLwMI+Tmut3hIjXXrkYn8IqcYIuj7PfWBdxVIdzlbV6klo/w5znn0
+X-Received: by 2002:ac8:4e51:0:b0:423:85b0:bca0 with SMTP id e17-20020ac84e51000000b0042385b0bca0mr5087819qtw.37.1702002891361;
+        Thu, 07 Dec 2023 18:34:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702002891; cv=none;
         d=google.com; s=arc-20160816;
-        b=sw5cZnC60a10nOz2oh7jLD5DDCZlrR5kN29mjn59yXyJ0jzGr2NNPIhIMVDoEJHE6V
-         v5CxQ2hABM9WoR5la91GCDON2lkednwyCv8RtU9Pw6xNjt6nZJrL/jvaI1joMjJMxWWY
-         iawyvsKbhblFIJ86D3jizPMqpMvOgDDMVQKes7DWF6B96AdDn9O4Yg6RtYJGHUCj0BhQ
-         Bm5W2MgmlaRvEvkwq+fy1yH2uIK42jlbNMgAKSEjH0ZTua+RpugfVsQjHMZ1Umk174Et
-         xlocmMc2MMPqm7QUdWkI2xaoaX0wTfYjciSiTJfY67GUB1dFkmft36ISDyE7HlnIlQEF
-         H+uw==
+        b=g0y+Cb95TjWkdxrSuPgRDo7ZJ1HTeiDxk64mqulV/S4kyoj2N2DqGidxjKmEiAmPQm
+         IsxQvMwU35MK9rWtVBdzVi7qEFAX6gEBKwOF6Yr7adZmFtO8Kjn8L/O9jETrrDJzzhzV
+         Dj6/qt4a58bhihvuHdo9oBR/rZI5Bwcwdkmfh/XoCUn3vw0RETawWNrfeN7J+PeTtwH9
+         hr47mcf3FoE3n/JFXkIswNbSQnGMfIlwwx9IJ5zwlSgQo2JYXc9GFtCTwKO88KmLKH34
+         EEas9U9k+JiAheQbBv/69M7o2cddBrHCtg7uP3Ry1gZy4MG/MkwA8DMRpSWma8lHG6gR
+         ld3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3GUF+BYnLIFgUYZSAH+PcH4wY20N6XyOgpSpQ20MSSg=;
+        bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
         fh=1CWWAdYo81brd4jeYOgzhc83mN/ncVbe89i2SJzFql0=;
-        b=CE/rCobGBv8puDxhNfTZEOoGFoE6K3iba5+q2Zax1JYcYk8zPv6f2a+kxpDn+o0s+6
-         mdiMRXHBHuga2xKNDosKh67Khdgi+R8rQ718wMQhm/UHxApROtYXd7ASKkUgqVSrwqh3
-         d19g6q7hvLbT+srnhI6snKY0n90kEf448y4ZXHm1ZCuq459rJDVSsbJFpcJsgVsmwEgc
-         s4eqhyBAfm2Pv/BmWOsM6FbdI5F/kea+5d783+bjshAJCBVjaMPJodnQl04raesE559V
-         yAN6aYFZ4buTzF4Vfqx0olUh7rMZtDBMCZh5Q+LlY5TirZnOgw1Znn+Szd7uH7OqmSJm
-         bdig==
+        b=PBoidRvPU5hPXGO3FwdF92HTxPBpEFFx6xTMKlizWMQxyHyfKvG02v1RUXagTteID0
+         w5BUZ14u1GLp9jKupt0/iCBOdyXhpkyOFz37D4q4gKuYocnLy6jL37VEbRGqQSxz4QSX
+         YSGRCZlpZwYuip2IKs6/S0ZP8UthO9JE8QBaGfGuTP+zY3KKXMw/m4bOWfwLUXm+pDI3
+         t0xfbWNXW/kE95JLxhWuc4JLiG2JB/50ckVWepxTSXEPc7VbLOTocTc198+zuNFwBMb8
+         Ur7kHkXzgWOjLFreVAZlNEITis2IC5vXKPDkdppap5wX/qxR+1W/pt3YKk7BNBfy2Y/Z
+         0+Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Vy75fnJX;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AroPjQu4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ca18-20020a05622a1f1200b00423e4984f60si1288148qtb.462.2023.12.07.18.34.49
+        by mx.google.com with ESMTPS id bw13-20020a05622a098d00b00425896deb15si1309053qtb.1.2023.12.07.18.34.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Dec 2023 18:34:49 -0800 (PST)
+        Thu, 07 Dec 2023 18:34:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Vy75fnJX;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AroPjQu4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rBQgS-0005oz-QT; Thu, 07 Dec 2023 21:33:45 -0500
+	id 1rBQh8-0001vV-RH; Thu, 07 Dec 2023 21:34:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQg7-0004uf-VK; Thu, 07 Dec 2023 21:33:24 -0500
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+ id 1rBQh6-0001YV-Cf; Thu, 07 Dec 2023 21:34:24 -0500
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1rBQg5-0002af-Vc; Thu, 07 Dec 2023 21:33:23 -0500
-Received: by mail-lj1-x22e.google.com with SMTP id
- 38308e7fff4ca-2c9f7fe6623so18882291fa.3; 
- Thu, 07 Dec 2023 18:33:21 -0800 (PST)
+ id 1rBQh4-0002rM-63; Thu, 07 Dec 2023 21:34:24 -0500
+Received: by mail-lj1-x22a.google.com with SMTP id
+ 38308e7fff4ca-2c9efa1ab7fso19469201fa.0; 
+ Thu, 07 Dec 2023 18:34:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702002799; x=1702607599; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702002860; x=1702607660; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3GUF+BYnLIFgUYZSAH+PcH4wY20N6XyOgpSpQ20MSSg=;
- b=Vy75fnJX1YMOu8Z9xI0WcNW/YFDncFt8T0YycWVk4xmXUFfDVGYWHFwZlu0yQk6J7z
- ozFoWru0U9Qt5DBKTbJjBvcxHvJmq5/7OXsQPVR/7qxl5s5OTVdyF3SYldqMiiJhNrol
- qehnra0KEMoei/gk1XpyjHZVjpTL7YtWUxIbf4BqBPlL5iTrHmkXPmlaHrByn5gg5M9B
- V9JEV/GXU0/D4npWU94mgoIqr/ygsr5itk5JShyFvJ8hAWtRlF+ZLAn+YzrTmjnaRtKJ
- vbVJ6kocREm9BU/jH0LD6ANlKRYC/y9hZSi5e19Ps8Q1dUUvPJo9jd5/G6JUWtiHd6I4
- upfw==
+ bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+ b=AroPjQu449gucj2k6pDlNnoCi9OyzvwoNsjJ6xwCeVMvOHGyi3do+c09a4ptjQ7SQj
+ WhKhof4TIv3/SPOIq7aOCLnZlKVJYM7Klt4doggiQ9PokMuv+sSE0AWzjXbmMe1eupCy
+ OZHoEyadeOUoVIvdnNGeKPmpEgC6hMPDAdOKkMelL4+6pQcSSisxvGUWLdDNx1764ptQ
+ LQckwEWK2A51gk9VY2FundlXTQVlLUiCjxE7vIBce1VX6uO0wUhCgXn1jnfwBbkRxySt
+ VLFqgeHjeIhc6MqfcmeuPAZ4OQzsy6tijuKL4baB8gizsk8Z+lmxp1dDeXFv96i4Fu/G
+ 8ojQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702002799; x=1702607599;
+ d=1e100.net; s=20230601; t=1702002860; x=1702607660;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3GUF+BYnLIFgUYZSAH+PcH4wY20N6XyOgpSpQ20MSSg=;
- b=vsQCNrnbCbO1kRvCCQ5oiv/hRPAW7dJa6fis2vL6creqsg1g2YyTx0FiQRKCeH7TJT
- yqlMNkUna9zxTwAqOgX6qjGZmtjuUWIHBZ+bHHIT75+/1/HJjUt6oToALTIhr/TECC74
- q4v5drXvKISamJ3fb1r5ESmdmn0QKkkm960g2g4BGSz5A5/vT2x5//+Ve7wbeLshuffl
- +K4mJTk64J0SXf0nezWKME0d5LE3Mlle01r32/7PedLKOM38UrsUR8Yaax3g8w3FBWEy
- PFFLlxBzGHDWDc2Cp1KTbU8aGWoNXQ3bytv90DL03jDQ4MhlMK8nqsS7r43GbsPVQM8x
- xFWA==
-X-Gm-Message-State: AOJu0YyX4PPgMjZCv24QAmNaVjVeNnv63gRkaTxsOfB3HOt/HOUWhyO3
- TlXJYynOqiu4wyYIAXJnNuS9wXXxwktHSA==
-X-Received: by 2002:a2e:87d4:0:b0:2c9:f3d5:689d with SMTP id
- v20-20020a2e87d4000000b002c9f3d5689dmr1521596ljj.9.1702002799521; 
- Thu, 07 Dec 2023 18:33:19 -0800 (PST)
+ bh=VOsDq4GO7J9Ybd/9mWWm7M2ltcuRdDgkXqPddf6YrXg=;
+ b=hbrykEYrR8omW+phmqCcIBloiBKAP4Tz1alwx0GVpUP1gWxWbys/sDhu4cksBaRotD
+ oLlhwkme8DjlYjWAsWOTbX6Slq+htaxIN+VqhRHRE44YeAG+igLvKAeY9tB1g6qLpG6k
+ Aodwz5ruCUrXea2+aHIenmq237FRBbWDKxzt2806l2JX86tdgaU7OD/FLw8akQ4RjXpo
+ 1PzeUG2doiTHqNwsEbOm51P93VgPAMm5v1kdueN+jDUWw6zeprcjVKKHtDpWCSeMJq/S
+ sE4jFbZha5m0RrpsobrYg4u8QG6miSjD5EwMDELIqH11DegZuwltlKt1cg60Z8Z00HQB
+ P4hA==
+X-Gm-Message-State: AOJu0YzvzjdRfUKOHFWR6WxSpBdoHk+Gb7xDyN3vwvzWG+d9gpYaa5Ig
+ 2mB3MBd9fvcN8PcF0WjWavo9sAKMYPbkVA==
+X-Received: by 2002:a05:651c:117:b0:2c9:faa4:92ff with SMTP id
+ a23-20020a05651c011700b002c9faa492ffmr965885ljb.42.1702002859757; 
+ Thu, 07 Dec 2023 18:34:19 -0800 (PST)
 Received: from localhost.localdomain ([185.200.240.39])
  by smtp.gmail.com with ESMTPSA id
- r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.33.16
+ r1-20020a2e94c1000000b002c9e6cbf78esm99062ljh.19.2023.12.07.18.34.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Dec 2023 18:33:18 -0800 (PST)
+ Thu, 07 Dec 2023 18:34:18 -0800 (PST)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v4 25/45] Add GENET register structs. Part 3
-Date: Thu,  7 Dec 2023 20:31:25 -0600
-Message-Id: <20231208023145.1385775-26-sergey.kambalin@auriga.com>
+Subject: [PATCH v4 41/45] Add mailbox property tests. Part 2
+Date: Thu,  7 Dec 2023 20:31:41 -0600
+Message-Id: <20231208023145.1385775-42-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
 References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
- envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
+ envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,235 +125,234 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t4y19M7aHHr0
+X-TUID: JvCnogh4sAe6
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/net/bcm2838_genet.c         | 88 ++++++++++++++++++++++++++++++++++
- include/hw/net/bcm2838_genet.h | 88 ++++++++++++++++++++++++++++++++++
- 2 files changed, 176 insertions(+)
+ tests/qtest/bcm2838-mbox-property-test.c | 196 ++++++++++++++++++++++-
+ 1 file changed, 195 insertions(+), 1 deletion(-)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index 9a99f34c4a..be899b68f8 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -145,6 +145,94 @@ FIELD(GENET_RDMA_LENGTH_STATUS, OWN,        15, 1)
- FIELD(GENET_RDMA_LENGTH_STATUS, BUFLENGTH,  16, 12)
- FIELD(GENET_RDMA_LENGTH_STATUS, RSVD_28_31, 29, 4)
+diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
+index 80746dbb95..5322c563a0 100644
+--- a/tests/qtest/bcm2838-mbox-property-test.c
++++ b/tests/qtest/bcm2838-mbox-property-test.c
+@@ -49,7 +49,8 @@ FIELD(GET_CLOCK_STATE_CMD, NPRES, 1, 1)
+                       (TEST_TAG_TYPE(testname) * tag);                         \
+     static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
+                              (TEST_TAG_TYPE(testname) *tag);                   \
+-    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
++    static void TEST_FN_NAME(testname, __VA_ARGS__)(void)                      \
++    {                                                                          \
+         struct {                                                               \
+             MboxBufHeader header;                                              \
+             TEST_TAG_TYPE(testname) tag;                                       \
+@@ -188,6 +189,179 @@ DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
+ }
  
-+REG32(GENET_TDMA_LENGTH_STATUS,             0)
-+FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_0_3,   0, 4)
-+FIELD(GENET_TDMA_LENGTH_STATUS, DO_CSUM,    4, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, OW_CRC,     5, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, APPEND_CRC, 6, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_7_8,   7, 2)
-+FIELD(GENET_TDMA_LENGTH_STATUS, UNDERRUN,   9, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_10_11, 10, 2)
-+FIELD(GENET_TDMA_LENGTH_STATUS, WRAP,       12, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, SOP,        13, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, EOP,        14, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, OWN,        15, 1)
-+FIELD(GENET_TDMA_LENGTH_STATUS, BUFLENGTH,  16, 12)
-+FIELD(GENET_TDMA_LENGTH_STATUS, RSVD_28_31, 29, 4)
+ /*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
 +
-+REG16(GENET_PHY_BMCR,            0)
-+FIELD(GENET_PHY_BMCR, RSVD_0_5,  0, 6)
-+FIELD(GENET_PHY_BMCR, SPEED1000, 6, 1)
-+FIELD(GENET_PHY_BMCR, CTST,      7, 1)
-+FIELD(GENET_PHY_BMCR, FULLDPLX,  8, 1)
-+FIELD(GENET_PHY_BMCR, ANRESTART, 9, 1)
-+FIELD(GENET_PHY_BMCR, ISOLATE,   10, 1)
-+FIELD(GENET_PHY_BMCR, PDOWN,     11, 1)
-+FIELD(GENET_PHY_BMCR, AENABLE,   12, 1)
-+FIELD(GENET_PHY_BMCR, SPEED100,  13, 1)
-+FIELD(GENET_PHY_BMCR, LOOPBACK,  14, 1)
-+FIELD(GENET_PHY_BMCR, RESET,     15, 1)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
 +
-+REG16(GENET_PHY_BMSR,               0)
-+FIELD(GENET_PHY_BMSR, ERCAP,        0, 1)
-+FIELD(GENET_PHY_BMSR, JCD,          1, 1)
-+FIELD(GENET_PHY_BMSR, LSTATUS,      2, 1)
-+FIELD(GENET_PHY_BMSR, ANEGCAPABLE,  3, 1)
-+FIELD(GENET_PHY_BMSR, RFAULT,       4, 1)
-+FIELD(GENET_PHY_BMSR, ANEGCOMPLETE, 5, 1)
-+FIELD(GENET_PHY_BMSR, RSVD_6_7,     6, 2)
-+FIELD(GENET_PHY_BMSR, ESTATEN,      8, 1)
-+FIELD(GENET_PHY_BMSR, _100HALF2,    9, 1)
-+FIELD(GENET_PHY_BMSR, _100FULL2,    10, 1)
-+FIELD(GENET_PHY_BMSR, _10HALF,      11, 1)
-+FIELD(GENET_PHY_BMSR, _10FULL,      12, 1)
-+FIELD(GENET_PHY_BMSR, _100HALF,     13, 1)
-+FIELD(GENET_PHY_BMSR, _100FULL,     14, 1)
-+FIELD(GENET_PHY_BMSR, _10BASE4,     15, 1)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, UART) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UART);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_UART);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, UART) {
++    tag->request.value.clock_id = CLOCK_ID_UART;
++}
 +
-+REG16(GENET_PHY_LPA,                           0)
-+FIELD(GENET_PHY_LPA, SLCT,                     0, 5)
-+FIELD(GENET_PHY_LPA, _10HALF_1000XFULL,        5, 1)
-+FIELD(GENET_PHY_LPA, _10FULL_1000XHALF,        6, 1)
-+FIELD(GENET_PHY_LPA, _100HALF_1000XPAUSE,      7, 1)
-+FIELD(GENET_PHY_LPA, _100FULL_1000XPAUSE_ASYM, 8, 1)
-+FIELD(GENET_PHY_LPA, _100BASE4,                9, 1)
-+FIELD(GENET_PHY_LPA, PAUSE_CAP,                10, 1)
-+FIELD(GENET_PHY_LPA, PAUSE_ASYM,               11, 1)
-+FIELD(GENET_PHY_LPA, RSVD_12,                  12, 1)
-+FIELD(GENET_PHY_LPA, RFAULT,                   13, 1)
-+FIELD(GENET_PHY_LPA, LPACK,                    14, 1)
-+FIELD(GENET_PHY_LPA, NPAGE,                    15, 1)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
 +
-+REG16(GENET_PHY_STAT_1000,            0)
-+FIELD(GENET_PHY_STAT_1000, RSVD_0_9,  0, 10)
-+FIELD(GENET_PHY_STAT_1000, HALF,      10, 1)
-+FIELD(GENET_PHY_STAT_1000, FULL,      11, 1)
-+FIELD(GENET_PHY_STAT_1000, REMRXOK,   12, 1)
-+FIELD(GENET_PHY_STAT_1000, LOCALRXOK, 13, 1)
-+FIELD(GENET_PHY_STAT_1000, MSRES,     14, 1)
-+FIELD(GENET_PHY_STAT_1000, MSFAIL,    15, 1)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
 +
-+REG16(GENET_PHY_AUX_CTRL_0,              0)
-+FIELD(GENET_PHY_AUX_CTRL_0, REG_ID_MASK, 0, 3)
-+FIELD(GENET_PHY_AUX_CTRL_0, RSVD_3,      3, 1)
-+FIELD(GENET_PHY_AUX_CTRL_0, REG_DATA,    4, 8)
-+FIELD(GENET_PHY_AUX_CTRL_0, REG_ID,      12, 3)
-+FIELD(GENET_PHY_AUX_CTRL_0, MISC_WREN,   15, 1)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, CORE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_CORE);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, CORE) {
++    tag->request.value.clock_id = CLOCK_ID_CORE;
++}
 +
-+REG16(GENET_PHY_AUX_CTRL_1,           0)
-+FIELD(GENET_PHY_AUX_CTRL_1, RSVD_0_3, 0, 4)
-+FIELD(GENET_PHY_AUX_CTRL_1, REG_DATA, 4, 12)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
 +
-+REG16(GENET_PHY_SHADOW,           0)
-+FIELD(GENET_PHY_SHADOW, REG_DATA, 0, 10)
-+FIELD(GENET_PHY_SHADOW, REG_ID,   10, 5)
-+FIELD(GENET_PHY_SHADOW, WR,       15, 1)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
 +
-+REG16(GENET_PHY_EXP_SEL,           0)
-+FIELD(GENET_PHY_EXP_SEL, REG_ID,   0, 8)
-+FIELD(GENET_PHY_EXP_SEL, BLOCK_ID, 8, 8)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, ANY) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_UNDEFINED);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_ANY);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, ANY) {
++    tag->request.value.clock_id = CLOCK_ID_UNDEFINED;
++}
 +
- static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_TEMPERATURE) {
++    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
++    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC);
++}
++DECLARE_TEST_CASE_SETUP(GET_TEMPERATURE) {
++    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_TEMPERATURE) {
++    g_assert_cmphex(tag->response.value.temperature_id, ==, TEMPERATURE_ID_SOC);
++    g_assert_cmpint(tag->response.value.temperature, ==, TEMPERATURE_SOC_MAX);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_TEMPERATURE) {
++    tag->request.value.temperature_id = TEMPERATURE_ID_SOC;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(ALLOCATE_BUFFER) {
++    g_assert_cmphex(tag->response.value.base, ==, VC_FB_BASE);
++    g_assert_cmphex(tag->response.value.size, ==, VC_FB_SIZE);
++}
++DECLARE_TEST_CASE_SETUP(ALLOCATE_BUFFER) {
++    tag->request.value.alignment = ALIGN_4K;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(RELEASE_FRAMEBUFFER) { 
++    /* No special checks are needed for this test */
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(BLANK_FRAMEBUFFER) {
++    g_assert_cmphex(tag->response.value.on, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(BLANK_FRAMEBUFFER) {
++    tag->request.value.on = 0;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_PHYS_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_FB_PHYS_WIDTH) {
++    tag->request.value.width = DUMMY_VALUE;
++    tag->request.value.height = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL) {
++    g_assert_cmpint(tag->response.value.width, ==, 640);
++    g_assert_cmpint(tag->response.value.height, ==, 480);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_PHYS_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, 800);
++    g_assert_cmpint(tag->response.value.height, ==, 600);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_PHYS_WIDTH) {
++    tag->request.value.width = 800;
++    tag->request.value.height = 600;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_VIRT_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.height, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_FB_VIRT_WIDTH) {
++    tag->request.value.width = DUMMY_VALUE;
++    tag->request.value.height = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL) {
++    g_assert_cmpint(tag->response.value.width, ==, 640);
++    g_assert_cmpint(tag->response.value.height, ==, 480);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_VIRT_WIDTH) {
++    g_assert_cmpint(tag->response.value.width, ==, 800);
++    g_assert_cmpint(tag->response.value.height, ==, 600);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
++    tag->request.value.width = 800;
++    tag->request.value.height = 600;
++}
++
++//==============================================================================
+ int main(int argc, char **argv)
  {
-     uint64_t value = ~0;
-diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
-index 736b4d1757..1bd004785a 100644
---- a/include/hw/net/bcm2838_genet.h
-+++ b/include/hw/net/bcm2838_genet.h
-@@ -22,6 +22,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
- #define BCM2838_GENET_DMA_RING_CNT      17
- #define BCM2838_GENET_DMA_RING_DEFAULT  (BCM2838_GENET_DMA_RING_CNT - 1)
+     g_test_init(&argc, &argv, NULL);
+@@ -201,6 +375,26 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
+     QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
+     QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, UART);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, CORE);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, ANY);
++    QTEST_ADD_TEST_CASE(GET_TEMPERATURE);
++    QTEST_ADD_TEST_CASE(GET_MAX_TEMPERATURE);
++    QTEST_ADD_TEST_CASE(ALLOCATE_BUFFER);
++    QTEST_ADD_TEST_CASE(RELEASE_FRAMEBUFFER);
++    QTEST_ADD_TEST_CASE(BLANK_FRAMEBUFFER);
++    QTEST_ADD_TEST_CASE(TEST_FB_PHYS_WIDTH);
++    QTEST_ADD_TEST_CASE(GET_FB_PHYS_WIDTH, INITIAL);
++    QTEST_ADD_TEST_CASE(SET_FB_PHYS_WIDTH);
++    QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
++    QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
++    QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
  
-+#define BCM2838_GENET_HFB_FILTER_CNT      48
-+#define BCM2838_GENET_HFB_FILTER_SIZE     128
-+
- typedef struct {
-     uint32_t rev_ctrl;
-     uint32_t port_ctrl;
-@@ -169,6 +172,53 @@ typedef struct {
-     uint32_t reserved_0x10D0[972];
- } BCM2838GenetRegsRdma;
- 
-+typedef struct {
-+    uint32_t length_status;
-+    uint32_t address_lo;
-+    uint32_t address_hi;
-+} BCM2838GenetTdmaDesc;
-+
-+typedef struct {
-+    uint32_t read_ptr;
-+    uint32_t read_ptr_hi;
-+    uint32_t cons_index;
-+    uint32_t prod_index;
-+    uint32_t ring_buf_size;
-+    uint32_t start_addr;
-+    uint32_t start_addr_hi;
-+    uint32_t end_addr;
-+    uint32_t end_addr_hi;
-+    uint32_t mbuf_done_tresh;
-+    uint32_t flow_period;
-+    uint32_t write_ptr;
-+    uint32_t write_ptr_hi;
-+    uint32_t reserved_0x34[3];
-+} BCM2838GenetTdmaRing;
-+
-+typedef struct {
-+    BCM2838GenetTdmaDesc descs[BCM2838_GENET_DMA_DESC_CNT];
-+    BCM2838GenetTdmaRing rings[BCM2838_GENET_DMA_RING_CNT];
-+    uint32_t ring_cfg;
-+    uint32_t ctrl;
-+    uint32_t status;
-+    uint32_t scb_burst_size;
-+    uint32_t reserved_0x1050[7];
-+    uint32_t arb_ctrl;
-+    uint32_t priority[3];
-+    uint32_t reserved_0x10D0[993];
-+} BCM2838GenetRegsTdma;
-+
-+typedef struct {
-+    uint8_t flt[BCM2838_GENET_HFB_FILTER_CNT * BCM2838_GENET_HFB_FILTER_SIZE
-+        * sizeof(uint32_t)];
-+    uint32_t reserved_0x6000[1792];
-+    uint32_t ctrl;
-+    uint32_t flt_enable[2];
-+    uint32_t reserved_0x7C0C[4];
-+    uint32_t flt_len[BCM2838_GENET_HFB_FILTER_CNT / sizeof(uint32_t)];
-+    uint32_t reserved_0x7C4C[237];
-+} BCM2838GenetRegsHfb;
-+
- typedef struct {
-     BCM2838GenetRegsSys sys;
-     BCM2838GenetRegsGrBridge gr_bridge;
-@@ -184,8 +234,45 @@ typedef struct {
-     BCM2838GenetRegsUmac umac;
-     uint32_t reserved_0x1000[1024];
-     BCM2838GenetRegsRdma rdma;
-+    BCM2838GenetRegsTdma tdma;
-+    uint32_t reserved_0x6000[2048];
-+    BCM2838GenetRegsHfb hfb;
- } BCM2838GenetRegs;
- 
-+typedef struct {
-+    uint16_t bmcr;
-+    uint16_t bmsr;
-+    uint16_t sid1;
-+    uint16_t sid2;
-+    uint16_t advertise;
-+    uint16_t lpa;
-+    uint16_t expansion;
-+    uint16_t next_page;
-+    uint16_t lpa_next_page;
-+    uint16_t ctrl1000;
-+    uint16_t stat1000;
-+    uint16_t reserved_11_12[2];
-+    uint16_t mmd_ctrl;
-+    uint16_t mmd_data;
-+    uint16_t estatus;
-+    uint16_t ecr;
-+    uint16_t esr;
-+    uint16_t dcounter;
-+    uint16_t fcscounter;
-+    uint16_t nwaytest;
-+    uint16_t exp_data;
-+    uint16_t srevision;
-+    uint16_t exp_ctrl;
-+    uint16_t aux_ctl;
-+    uint16_t phyaddr;
-+    uint16_t isr;
-+    uint16_t imr;
-+    uint16_t shd;
-+    uint16_t reserved_29;
-+    uint16_t rdb_addr;
-+    uint16_t rdb_data;
-+} BCM2838GenetPhyRegs;
-+
- struct BCM2838GenetState {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -196,6 +283,7 @@ struct BCM2838GenetState {
-     AddressSpace dma_as;
- 
-     BCM2838GenetRegs regs;
-+    BCM2838GenetPhyRegs phy_regs;
- 
-     qemu_irq irq_default;
-     qemu_irq irq_prio;
+     return g_test_run();
+ }
 -- 
 2.34.1
 

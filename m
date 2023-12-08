@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2256251ejb;
-        Fri, 8 Dec 2023 03:37:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH3aLNkMHy/GCaCWZiZ9QIIlv2uoihl/QRwOQESysl/QF72s8+iXvZLqYRUpXnQgyCbKqpn
-X-Received: by 2002:a0c:e802:0:b0:67e:aa84:b094 with SMTP id y2-20020a0ce802000000b0067eaa84b094mr928927qvn.2.1702035474744;
-        Fri, 08 Dec 2023 03:37:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702035474; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2256297ejb;
+        Fri, 8 Dec 2023 03:38:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IExteuziCQi7gCqXHn4UzQzzvuCs7Mb88gkO23u4ntX3YjXHdk2vD27UR1bTxqU1t7VKNbG
+X-Received: by 2002:a05:6808:124c:b0:3b8:b063:9b71 with SMTP id o12-20020a056808124c00b003b8b0639b71mr4945564oiv.99.1702035480868;
+        Fri, 08 Dec 2023 03:38:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702035480; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rn8i2Zc8fnwa/mr669E3unDqdiEzw+BAluzCDCEO86+cUIB+y9piLBpFMcE8hMUzJM
-         xnfFaQnhiLHu/MIS7vA28ndCjlf5pJgp8Pc1DT0xWy7pf1OFXgSKA55tCdHtFqaPnOZ1
-         Lk67nZMXQQZU+YSNbjSz8xq1bWdO6Io87h7O6lmk/8wiClSAZ4JMKvUF0GwlAtCHeP9p
-         OASiJKjW1kk4okshef5f+z2gwLr44sDGuZ8jhSg7Z3nbHDbqElDw6gFks4QxRnL8rg38
-         DRrJBhYtgaJSrxYXR+7E8UC6FTYESekeSEqsJ54vVUK1GvB3DW8HuZ5ZzshhcLWn16xt
-         ObSw==
+        b=IERHXl1z25z68Qnm/IJgrJ9vtVovxbsToS+CAPTGPy1V76F9frIaVB4dqMLpyDWaRF
+         hmgGb5n5e3rReoWqwQrRvXhmEbK5XkWVvSO1HNz66P4CX2qZYL9ySRUQcWPy723dwxau
+         Y0BpLZ+mYTQsVMdETb02lRv+cESMIyhy88JH2yMMe+6W6CHFGOozJmzCohFwyXOkJF5Q
+         1EWxbJlVZbZn9qXB8MKmwdpkdNqMCCsS0+dO+TMohWyZGPAmZM9vVrUKf5EUpDxNNDoe
+         gl7RC66fyk9zE0VBWbikufhRG0zY8YXb6WH/7b1dhgvj/f9wh6+R739jlz/NGQCMyiOK
+         VkUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aounwOxU0stD+ad14X4lh0j79a9byd2e5HWz5wFCDts=;
+        bh=uzEnAxgAgPgAskKIL5lE29mKmqmzfiARuWbhtCikfuI=;
         fh=QdevGGL2LydCvB/btUcdJnXEA7h6h6ICE8REXL8PVZU=;
-        b=juQvj0xTOj9Y88m4GdjsRP5ZPPT7Y/I9AIT9brdPwLNnryYsbAad7e9K5RNxIWbFXD
-         ELPCOhYSI7gq1RVAe28ljkHcXE/SawcxzKbgI3izGtcGCdg2oMqBsNCNiPO3pPGzIyJG
-         6sTM4WeilqbtFuWzegJWHUUawBRLeQF0VTyJQdqGQRA2Go7V76T4BYS51y8Y5m+a0hwa
-         ts3/VBp3WXMFAZy1TTbpEIdIqwjgdBc7jVR0TYjEqFyxU/eqiGG8TAYt9Ivevc8cjBLD
-         UrVoP/rbwTutfxgiNmslMBLsWyZbd8wVHyo7VeF71bQnDS/i5dVsV/OyyODVXJ/ghfP1
-         b8vw==
+        b=krsmAJNkQX3h35/Xno88/tbOEGls63zM5ST86INEZeT9Zy7OfYm88hbzjZ/zoUmaBK
+         /Dtzoz9uh3IgukV2XSNbi6hQZqaqLqo/Rcot7qPSlJDUI9LNeusf0nKpKyhUm5O7t98D
+         +numiYxcAUOpuv8MARuyumiwLy4RpguHvLG9Y5xhtd4dgVha+k9UJqb9lUdDubaVH/4X
+         SJsX8duClOHVr2HaH1ZZXnr4Oe+J51co4HxGp9zAYRYQ8wzBNF8N8Bpgfm/anuallt21
+         wR+M6DElV27kF8SxBDz/AXPfdZoGW32dbrQYXJ92jJdHwTpt1Q0YFapbS8PDaIdcTYbw
+         sAhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EvNTH9tw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FKIVQFC8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z14-20020a0cfc0e000000b0067acdb383cbsi1896806qvo.444.2023.12.08.03.37.54
+        by mx.google.com with ESMTPS id x15-20020a05620a258f00b0077d7b4fe557si1879640qko.127.2023.12.08.03.38.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Dec 2023 03:37:54 -0800 (PST)
+        Fri, 08 Dec 2023 03:38:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EvNTH9tw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FKIVQFC8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rBZ9E-000490-QA; Fri, 08 Dec 2023 06:36:00 -0500
+	id 1rBZ9E-00048l-KT; Fri, 08 Dec 2023 06:36:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBZ9C-00044d-Tj
- for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:35:59 -0500
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBZ9B-00040Y-0M
+ for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:35:57 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBZ8u-0003Yx-3l
- for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:35:58 -0500
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-50c0478f970so1998982e87.3
- for <qemu-arm@nongnu.org>; Fri, 08 Dec 2023 03:35:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBZ96-0003w9-RL
+ for qemu-arm@nongnu.org; Fri, 08 Dec 2023 06:35:56 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-40c31f18274so9201545e9.0
+ for <qemu-arm@nongnu.org>; Fri, 08 Dec 2023 03:35:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702035338; x=1702640138; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702035350; x=1702640150; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aounwOxU0stD+ad14X4lh0j79a9byd2e5HWz5wFCDts=;
- b=EvNTH9twEsScSKn1OjJ1xRaVbMZ88AGPDcZHfBCcndbZkhMv3gmjRJzsQ6FBIFCQy3
- A7iy0LB/1D6UzcaHUkGTfs8ziOFaTmpKsk+pX49uBEVzcLXQqvFMZIF6fT3FsZNPbxd8
- JLUULaK33byWx931ZVlKiE9AB8U7CFuGX33XypSz0HccjKmUIgiEeoOmiNYOepHdtM9O
- qTfeYDRiFS75qqdYMhxMjU4geGawkJzq+Cg7OyPEr08nvlr+SWf25n9EwGrtLT7vkKCV
- VxwBHEBnLCRDBSZHeAF8263WKdYI/d2WF+zv52B8QacrLj/UOYYBnoPYc6KxXV3LiJSH
- jL3w==
+ bh=uzEnAxgAgPgAskKIL5lE29mKmqmzfiARuWbhtCikfuI=;
+ b=FKIVQFC8wFMkd03omRC6fsPjmQMGrR8U5mT7SDKZC/ZWQXO+zHKgkinPdQtg702yZy
+ TvUebPTnurPsFfuBcfY3xsJ8imYYo6TYfpPbl6JbV2fukaaVCoPcFfnavLw2S+loARy8
+ 07r9jFHV5yDNzKQOk7nX9BtIKGy8EaWPKUxHMVTid4JwBgU4QMmdSTsk4uDX0ZYK6+ga
+ FLWQb1VGsgWa1LjDr9cdj7g7lGcJfSclEk49THY6n3obfVh5tCKMVTU0aK1L/+s8sd/O
+ b0RgN00IEorN2Qs+TUWt8tezjvZaSMxR9YGng5UEBhverVMER97xvNtKjcLbs9Og0k0I
+ Qusw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702035338; x=1702640138;
+ d=1e100.net; s=20230601; t=1702035350; x=1702640150;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=aounwOxU0stD+ad14X4lh0j79a9byd2e5HWz5wFCDts=;
- b=hGNS46g5qbh13M3larQIW0tXfHnueskpsS1tqieGDnGeCI7qYhko6ONkDV3YnfGT/L
- JQNcl2vr1xK7jF9h+/wuwdy7Ii1wUkgDcwJLbRaflvK+9GPTprz/U7884v5kdIY9NvL2
- gFmuq+Ic1+cFzMykxcoHTToQR7lPrnyDqlb+iIHeZoeeIbC9tjXrOdF7nVXVB6x8JhBp
- hdactV0Td8U2eFl04KmaroXSX6ngnjX8aq/GRq8Nx20SL+SzQ30rXKxZBG9l9dOxyDR2
- vymPuXG8Y7x9Kw6fY1Z+zxbwbTMKnm+tK7ug5DpkDGrkF8yaA38/KGiXce0mQ1/PpSfv
- BHUQ==
-X-Gm-Message-State: AOJu0YxwslI+5wqdvihhTMssT1H6XICceUG4ZIYMhYx323lcweO2unYi
- EjvPAs9K3q6oBiLLcsY0OwK2Zg==
-X-Received: by 2002:a05:6512:3b84:b0:50d:15d0:6337 with SMTP id
- g4-20020a0565123b8400b0050d15d06337mr409575lfv.56.1702035338141; 
- Fri, 08 Dec 2023 03:35:38 -0800 (PST)
+ bh=uzEnAxgAgPgAskKIL5lE29mKmqmzfiARuWbhtCikfuI=;
+ b=Py8+yvG9qKTBoATgd3Lwuaynb6XSCwfpM8CNTsNxTAqRyAVLQpgI0lpz/6jz9ms84b
+ nEcuJcV/764HfmN9NWWPk9BJEGNjdrT3XNawwofzOcf/pPSOtI0aROnW9YWCdVquiCna
+ KanuC+Yx9pz9Wa8HuEW4eFAoQM6UUMMjOejoVRqMLWciKHJE5SndwTbgvqnS+4PIkIx+
+ 47EZKOEsopVO4KrmkFBJWq9sMa5n7p7V5vTBNHSrHOMMLFxYIL/fcRneAinvfr9Ra3Iv
+ SofN1W9Rxpv4kQntWedtazAlzG4zmk/ppV7PH55DmpVfRHl4wel0o6aX5wnxMqtOxdcr
+ CG+g==
+X-Gm-Message-State: AOJu0Yw0b94FpTrW3oKJRFJyHz+flh9lYgbe2QCTEsevtsXjT9vsUa0y
+ Rz2jQyEcmNbXJOd9QGX7neM0iQ==
+X-Received: by 2002:a05:600c:6025:b0:40c:2a2a:1169 with SMTP id
+ az37-20020a05600c602500b0040c2a2a1169mr1350259wmb.115.1702035350029; 
+ Fri, 08 Dec 2023 03:35:50 -0800 (PST)
 Received: from m1x-phil.lan ([176.176.146.181])
  by smtp.gmail.com with ESMTPSA id
- o12-20020a5d474c000000b003333dd777a4sm1856171wrs.46.2023.12.08.03.35.36
+ n10-20020a5d4c4a000000b003333abf3edfsm1832772wrt.47.2023.12.08.03.35.48
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 08 Dec 2023 03:35:37 -0800 (PST)
+ Fri, 08 Dec 2023 03:35:49 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Stefan Hajnoczi <stefanha@redhat.com>,
@@ -96,18 +96,17 @@ Cc: Stefan Hajnoczi <stefanha@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 1/6] sysemu/cpu-timers: Have icount_configure() return a
- boolean
-Date: Fri,  8 Dec 2023 12:35:23 +0100
-Message-ID: <20231208113529.74067-2-philmd@linaro.org>
+Subject: [PATCH v3 3/6] sysemu/cpu-timers: Introduce ICountMode enumerator
+Date: Fri,  8 Dec 2023 12:35:25 +0100
+Message-ID: <20231208113529.74067-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231208113529.74067-1-philmd@linaro.org>
 References: <20231208113529.74067-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,137 +128,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R+EZkFQ9gpdm
+X-TUID: ArYZ38d18i3V
 
-Following the example documented since commit e3fe3988d7 ("error:
-Document Error API usage rules"), have icount_configure()
-return a boolean indicating whether an error is set or not.
+Rather than having to lookup for what the 0, 1, 2, ...
+icount values are, use a enum definition.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/sysemu/cpu-timers.h | 10 ++++++++--
- accel/tcg/icount-common.c   | 16 +++++++++-------
- stubs/icount.c              |  4 +++-
- system/vl.c                 |  3 +--
- 4 files changed, 21 insertions(+), 12 deletions(-)
+ include/sysemu/cpu-timers.h | 20 +++++++++++++-------
+ accel/tcg/icount-common.c   | 16 +++++++---------
+ stubs/icount.c              |  2 +-
+ system/cpu-timers.c         |  2 +-
+ target/arm/helper.c         |  3 ++-
+ 5 files changed, 24 insertions(+), 19 deletions(-)
 
 diff --git a/include/sysemu/cpu-timers.h b/include/sysemu/cpu-timers.h
-index 2e786fe7fb..b70dc7692d 100644
+index b70dc7692d..3f05f29b10 100644
 --- a/include/sysemu/cpu-timers.h
 +++ b/include/sysemu/cpu-timers.h
-@@ -50,8 +50,14 @@ int64_t icount_get(void);
-  */
- int64_t icount_to_ns(int64_t icount);
+@@ -17,18 +17,24 @@ void cpu_timers_init(void);
  
--/* configure the icount options, including "shift" */
--void icount_configure(QemuOpts *opts, Error **errp);
+ /* icount - Instruction Counter API */
+ 
+-/*
+- * icount enablement state:
 +/**
-+ * icount_configure: configure the icount options, including "shift"
-+ * @opts: Options to parse
-+ * @errp: pointer to a NULL-initialized error object
-+ *
-+ * Return: true on success, else false setting @errp with error
-+ */
-+bool icount_configure(QemuOpts *opts, Error **errp);
++ * ICountMode: icount enablement state:
+  *
+- * 0 = Disabled - Do not count executed instructions.
+- * 1 = Enabled - Fixed conversion of insn to ns via "shift" option
+- * 2 = Enabled - Runtime adaptive algorithm to compute shift
++ * @ICOUNT_DISABLED: Disabled - Do not count executed instructions.
++ * @ICOUNT_PRECISE: Enabled - Fixed conversion of insn to ns via "shift" option
++ * @ICOUNT_ADAPTATIVE: Enabled - Runtime adaptive algorithm to compute shift
+  */
++typedef enum {
++    ICOUNT_DISABLED = 0,
++    ICOUNT_PRECISE,
++    ICOUNT_ADAPTATIVE,
++} ICountMode;
++
+ #ifdef CONFIG_TCG
+-extern int use_icount;
++extern ICountMode use_icount;
+ #define icount_enabled() (use_icount)
+ #else
+-#define icount_enabled() 0
++#define icount_enabled() ICOUNT_DISABLED
+ #endif
  
- /* used by tcg vcpu thread to calc icount budget */
- int64_t icount_round(int64_t count);
+ /*
 diff --git a/accel/tcg/icount-common.c b/accel/tcg/icount-common.c
-index ec57192be8..dc69d6a4c6 100644
+index dc69d6a4c6..f0f8fc7f1c 100644
 --- a/accel/tcg/icount-common.c
 +++ b/accel/tcg/icount-common.c
-@@ -419,7 +419,7 @@ void icount_account_warp_timer(void)
-     icount_warp_rt();
- }
+@@ -49,21 +49,19 @@ static bool icount_sleep = true;
+ /* Arbitrarily pick 1MIPS as the minimum allowable speed.  */
+ #define MAX_ICOUNT_SHIFT 10
  
--void icount_configure(QemuOpts *opts, Error **errp)
-+bool icount_configure(QemuOpts *opts, Error **errp)
+-/*
+- * 0 = Do not count executed instructions.
+- * 1 = Fixed conversion of insn to ns via "shift" option
+- * 2 = Runtime adaptive algorithm to compute shift
+- */
+-int use_icount;
++/* Do not count executed instructions */
++ICountMode use_icount = ICOUNT_DISABLED;
+ 
+ static void icount_enable_precise(void)
  {
-     const char *option = qemu_opt_get(opts, "shift");
-     bool sleep = qemu_opt_get_bool(opts, "sleep", true);
-@@ -429,27 +429,28 @@ void icount_configure(QemuOpts *opts, Error **errp)
-     if (!option) {
-         if (qemu_opt_get(opts, "align") != NULL) {
-             error_setg(errp, "Please specify shift option when using align");
-+            return false;
-         }
--        return;
-+        return true;
-     }
- 
-     if (align && !sleep) {
-         error_setg(errp, "align=on and sleep=off are incompatible");
--        return;
-+        return false;
-     }
- 
-     if (strcmp(option, "auto") != 0) {
-         if (qemu_strtol(option, NULL, 0, &time_shift) < 0
-             || time_shift < 0 || time_shift > MAX_ICOUNT_SHIFT) {
-             error_setg(errp, "icount: Invalid shift value");
--            return;
-+            return false;
-         }
-     } else if (icount_align_option) {
-         error_setg(errp, "shift=auto and align=on are incompatible");
--        return;
-+        return false;
-     } else if (!icount_sleep) {
-         error_setg(errp, "shift=auto and sleep=off are incompatible");
--        return;
-+        return false;
-     }
- 
-     icount_sleep = sleep;
-@@ -463,7 +464,7 @@ void icount_configure(QemuOpts *opts, Error **errp)
-     if (time_shift >= 0) {
-         timers_state.icount_time_shift = time_shift;
-         icount_enable_precise();
--        return;
-+        return true;
-     }
- 
-     icount_enable_adaptive();
-@@ -491,6 +492,7 @@ void icount_configure(QemuOpts *opts, Error **errp)
-     timer_mod(timers_state.icount_vm_timer,
-                    qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-                    NANOSECONDS_PER_SECOND / 10);
-+    return true;
+-    use_icount = 1;
++    /* Fixed conversion of insn to ns via "shift" option */
++    use_icount = ICOUNT_PRECISE;
  }
  
- void icount_notify_exit(void)
+ static void icount_enable_adaptive(void)
+ {
+-    use_icount = 2;
++    /* Runtime adaptive algorithm to compute shift */
++    use_icount = ICOUNT_ADAPTATIVE;
+ }
+ 
+ /*
+@@ -256,7 +254,7 @@ static void icount_warp_rt(void)
+         int64_t warp_delta;
+ 
+         warp_delta = clock - timers_state.vm_clock_warp_start;
+-        if (icount_enabled() == 2) {
++        if (icount_enabled() == ICOUNT_ADAPTATIVE) {
+             /*
+              * In adaptive mode, do not let QEMU_CLOCK_VIRTUAL run too far
+              * ahead of real time (it might already be ahead so careful not
 diff --git a/stubs/icount.c b/stubs/icount.c
-index 6df8c2bf7d..85c381a0ea 100644
+index 014ae5d8e4..7055c13725 100644
 --- a/stubs/icount.c
 +++ b/stubs/icount.c
-@@ -10,10 +10,12 @@ void icount_update(CPUState *cpu)
- {
-     abort();
- }
--void icount_configure(QemuOpts *opts, Error **errp)
-+bool icount_configure(QemuOpts *opts, Error **errp)
- {
-     /* signal error */
-     error_setg(errp, "cannot configure icount, TCG support not available");
-+
-+    return false;
- }
- int64_t icount_get_raw(void)
- {
-diff --git a/system/vl.c b/system/vl.c
-index 2bcd9efb9a..17234012d4 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -2270,8 +2270,7 @@ static void user_register_global_props(void)
+@@ -3,7 +3,7 @@
  
- static int do_configure_icount(void *opaque, QemuOpts *opts, Error **errp)
+ /* icount - Instruction Counter API */
+ 
+-int use_icount;
++ICountMode use_icount = ICOUNT_DISABLED;
+ 
+ void icount_update(CPUState *cpu)
  {
--    icount_configure(opts, errp);
--    return 0;
-+    return !icount_configure(opts, errp);
+diff --git a/system/cpu-timers.c b/system/cpu-timers.c
+index 7452d97b67..6befb82e48 100644
+--- a/system/cpu-timers.c
++++ b/system/cpu-timers.c
+@@ -154,7 +154,7 @@ static bool adjust_timers_state_needed(void *opaque)
+ 
+ static bool icount_shift_state_needed(void *opaque)
+ {
+-    return icount_enabled() == 2;
++    return icount_enabled() == ICOUNT_ADAPTATIVE;
  }
  
- static int accelerator_set_property(void *opaque,
+ /*
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 2746d3fdac..adb0960bba 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -934,7 +934,8 @@ static int64_t cycles_ns_per(uint64_t cycles)
+ 
+ static bool instructions_supported(CPUARMState *env)
+ {
+-    return icount_enabled() == 1; /* Precise instruction counting */
++    /* Precise instruction counting */
++    return icount_enabled() == ICOUNT_PRECISE;
+ }
+ 
+ static uint64_t instructions_get_count(CPUARMState *env)
 -- 
 2.41.0
 

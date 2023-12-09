@@ -1,129 +1,211 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2537127ejb;
-        Fri, 8 Dec 2023 11:09:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH4kwRpBNI5pdTu8eHadtpvTlikdqqFHpLa1kpK2ip/KRm6qPFzqG8QVegcsTk7/1O/y81u
-X-Received: by 2002:a05:622a:1792:b0:425:4043:5f43 with SMTP id s18-20020a05622a179200b0042540435f43mr641766qtk.129.1702062593417;
-        Fri, 08 Dec 2023 11:09:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702062593; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp2877756ejb;
+        Sat, 9 Dec 2023 02:47:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGOWiKaPfr6CBhLyoCESxqRB75vwTR7JfOBpoBSg6c410FA+iWyBn2+T1VtjTNVokaOjAEW
+X-Received: by 2002:ad4:4f06:0:b0:67a:a721:f341 with SMTP id fb6-20020ad44f06000000b0067aa721f341mr1322755qvb.129.1702118866767;
+        Sat, 09 Dec 2023 02:47:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702118866; cv=none;
         d=google.com; s=arc-20160816;
-        b=0m/iQ2N7rM2mEXsobUz2JMxH2A6H2Ke7fO95EtzdHh88nV2UXGMTUcRH63aetUF5cB
-         wnN+UH54uxqGBJZag+MKi28OwmHvKzSWzsKGQ0eOoYWU2E6ZKA4JojCQZz7ZbNizxofk
-         uuR2l+J+R5RSg9DQwkEpd14AOVcO0u6YGp7e7A9Y0i8jM/tYSD1/kprbUBUnfzxrqVvj
-         7jXAzUtGEY5BgjEDWroTDNcysPBPS0rI27M7m3u1Dtp0H8ZtRw8/f3UcRL8s4zjllYzX
-         iWJLWT0e9R5IzSIuAlQhow5huoR0hdM1B5F0mO3tvvfjotWQT8nwkZ9rwrw63YmEjewA
-         LX2g==
+        b=FeWBTrbvURHjXAcqCueEoHh9SF/nGhckSBOCV5EXyag1YGsyZ66zybOO8sLsv3SSSJ
+         5o/usGpA7JvPEJfZS/iqtF4zrKC38pyNS844XYCuaTFCe2Up/6PVf39AUEmFnekBPcqD
+         3IgC0CL2ZmIaum91D0/Vj784HOhYTmNuXqYq0OwhOwiOZ0iE7WLjaNxxFD1nUDS1qKmM
+         sIVrx1Kj3d0K3V6KfqMO14p+me3dAmzwIM7Nr8FS/SHXN9fz9fTLWKUpZIn7DvqFtlTG
+         pVryaNIahK65/f0E//SfTIC8yHehsbYdbrcWjMg9s/vC9Kd/xSm44U6wChFrEiu3uRhR
+         dfkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6KemJUkWyU9r+J/jwN6os/ZXFpgsYC5/aEWfNA4odDs=;
-        fh=1DyVogfZItUndw0AQLC0GXn3EIhIcJypmHHdywm+J34=;
-        b=LAwimBVMby+Elnwf5bG4U5CHrOxR5nBUpq4hA1Zp7p2+OLWNTCtfM2yOH55SBxPIXw
-         FhHsHx9o5ZqvAS76wAoVVSiVotQNQvFYgn4KXvBVJHHO3aTvBkW+ePHs9JJZ+yZvMuL+
-         +IoWH5n0t9HMdNrEenWY/Rv+fCS+0Nt0bkxxlXZRJ0dO7CIoztRdlVkBXkykmHai6smR
-         qfj5ocE4BuIETCOGUVpc18Onp2vGviQXQSV5vsGcSh12z93GQ1l+/8RQLTSA/ZiL37/E
-         wggngkRW+IaqGWbjSX1EoOWjAqxhXWBEajCNcK+l/8uAxoYzyBKOniKnY7Ealkcz+BcV
-         aWPA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=B0745HwPGaf8LJudLxxai9MHr04sbyDf8Frov0s+qp4=;
+        fh=4T1CYAkBMP7kEbyO4JJNOfXVp6ykeJWZALJAUC5xl9s=;
+        b=ppKpM719UaV+717SonQ7SZrgp3qtsY+mLudVlHTwgbdi4BdejBJxcBdhsXUW22xnk5
+         c1uhowyXahoJ2XrbFZdHJTY66p8t/sWV7B3PAKzhgMKIE3Q9qzHg56rQRdW9xLXZ/EcZ
+         Uf5y+NujCqcL0JkGgce9frp8GxFftwjO77Yc26lvVWnq7gbkFHZE/gJ0fCkVKgjxUWfw
+         Gowb/cbOuwp2JIAuofcqfaL9PSWGZJ1VEQusS6O36mkrVWZyQ+LQU+7GgCfmSf+HPi6a
+         4QWzI7K3rtDKxd8P+YPO+KxrUFvi/UkiFdOdwxDoqLHFoMRZ2rjw6JSoWlRl/gcbJqo8
+         ri2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmr7cIrV;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id eh15-20020a05622a578f00b00423751a51edsi3021476qtb.284.2023.12.08.11.09.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=S3Lr0kOM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n14-20020a0cfbce000000b0067a39cb25f1si3910036qvp.363.2023.12.09.02.47.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Dec 2023 11:09:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 09 Dec 2023 02:47:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmr7cIrV;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702062593;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6KemJUkWyU9r+J/jwN6os/ZXFpgsYC5/aEWfNA4odDs=;
-	b=hmr7cIrVoycPzPT/dksuocK8bejCYcg4ydr2XrKkVJJCA/lhzkytXic1vG0JDimnWHsJhs
-	yV4vi5zZgzZSUoafglQmooc0HzPM8yke0ZEKpaXH3Fr9N/Yievcib+7MeT0+mGW1FFzBIC
-	mK35c1OUku4oFbTjavfsAefsf+taCiY=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-620-blH1v5GyMemL3aM-9qkpaw-1; Fri,
- 08 Dec 2023 14:09:48 -0500
-X-MC-Unique: blH1v5GyMemL3aM-9qkpaw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C15A11C05AD8;
-	Fri,  8 Dec 2023 19:09:47 +0000 (UTC)
-Received: from p1.localdomain.com (ovpn-114-104.gru2.redhat.com [10.97.114.104])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BD471111E406;
-	Fri,  8 Dec 2023 19:09:44 +0000 (UTC)
-From: Cleber Rosa <crosa@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Paul Durrant <paul@xen.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Beraldo Leal <bleal@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>
-Subject: [PATCH 08/10] tests/avocado/boot_xen.py: merge base classes
-Date: Fri,  8 Dec 2023 14:09:09 -0500
-Message-ID: <20231208190911.102879-9-crosa@redhat.com>
-In-Reply-To: <20231208190911.102879-1-crosa@redhat.com>
-References: <20231208190911.102879-1-crosa@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=S3Lr0kOM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rBurc-0007Hk-PB; Sat, 09 Dec 2023 05:47:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBurb-0007HN-Ak
+ for qemu-arm@nongnu.org; Sat, 09 Dec 2023 05:47:15 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rBurY-0005xY-B9
+ for qemu-arm@nongnu.org; Sat, 09 Dec 2023 05:47:15 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3334d9b57adso2089574f8f.1
+ for <qemu-arm@nongnu.org>; Sat, 09 Dec 2023 02:47:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1702118830; x=1702723630; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=B0745HwPGaf8LJudLxxai9MHr04sbyDf8Frov0s+qp4=;
+ b=S3Lr0kOMTeHvrHyabP77uSuCsfaw2EZTHX/rJCFlBkznIowFTq7sAuUMWwq/hs5d45
+ 4YVh3+Ep1yQ/bnQ8MWesk4rMbc0EEB+M6RQ4bHHJpS1OJzvtfPNX/MjJSpzdaP1A58Cx
+ 56SD5Ws86GjUvUqEi63CwNO31KmeN1Q5mRDC7V3RWIVLzOurLdRR+ZQqeyzCHSLnU5Mk
+ +5nSMf9IWMXV+iKVVXTqQSyOmYtn3ajv6htkHaLXzBhVrdICZlFE9jvdvKPlMUPNscQR
+ V/mhHKXrvuFHn5bmBN8bDCFLZY/b0SOGQju92A2NzpMUxxJq43JLCv0bT9OrM75ehqTS
+ BAkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1702118830; x=1702723630;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=B0745HwPGaf8LJudLxxai9MHr04sbyDf8Frov0s+qp4=;
+ b=Y58Ed6vSEE6yygVbHAbSPbO8MbRu5BPhUUpkfgwYsh186bd4EvAqZNKnsy+XbzRzi4
+ 3Y6mb4/7n7VtAysPRyYETbC78Gc/ebzdRl8PAQKm1N5wfEO8bOjPfBI4pNGtDc5JK0b1
+ sxgUn4nxs3gRmPHzeBSaLAtcWOEkqe6L3cvG2p9Yuz0tO97WshoiWUZ+eXn6cUJ2G05m
+ rM2JVus3R11/QxnA8NrXcVdIc2cK8f25lVy2WdPJ9ZMPsy/aI+O9EDOh1Fio0vthH5Fh
+ +E0A9RVeNMlN05NwtuLdULy6bv1RH9/d/u8f7qW88edrk7O9rKXzaYAoZIorOlLlqs9P
+ 5RWw==
+X-Gm-Message-State: AOJu0YyErUyHBaU3hD3b+WYRwAo66vMiqhO5lKl6bU9MnFtjbfovG5xh
+ kfSDTqulVdsEkGwBq5T6NnYv7Q==
+X-Received: by 2002:a5d:58d4:0:b0:333:2fd2:8160 with SMTP id
+ o20-20020a5d58d4000000b003332fd28160mr713978wrf.125.1702118830429; 
+ Sat, 09 Dec 2023 02:47:10 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.218.54])
+ by smtp.gmail.com with ESMTPSA id
+ rd12-20020a170907a28c00b00a11b2677acbsm2049956ejc.163.2023.12.09.02.47.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 09 Dec 2023 02:47:10 -0800 (PST)
+Message-ID: <364000d5-433f-4356-823f-1a4be43a4c8d@linaro.org>
+Date: Sat, 9 Dec 2023 11:47:07 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-X-TUID: ZITYrTCfhXWs
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/45] Raspberry Pi 4B machine
+Content-Language: en-US
+To: Sergey Kambalin <serg.oker@gmail.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Sergey Kambalin <sergey.kambalin@auriga.com>
+References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iM2/mSguN+Do
 
-While it's a good practice to have reusable base classes, in this
-specific case there's no other user of the BootXenBase class.
+Hi Sergey,
 
-By unifying the class used in this test, we can improve readability
-and have the opportunity to add some future improvements in a clearer
-fashion.
+On 8/12/23 03:31, Sergey Kambalin wrote:
+> Introducing Raspberry Pi 4B model.
+> It contains new BCM2838 SoC, PCIE subsystem,
+> RNG200, Thermal sensor and Genet network controller.
+> 
+> It can work with recent linux kernels 6.x.x.
+> Two avocado tests was added to check that.
+> 
+> Unit tests has been made as read/write operations
+> via mailbox properties.
+> 
+> Genet integration test is under development.
+> 
+> Every single commit
+> 1) builds without errors
+> 2) passes regression tests
+> 3) passes style check*
+> *the only exception is bcm2838-mbox-property-test.c file
+> containing heavy macros usage which cause a lot of
+> false-positives of checkpatch.pl.
+> 
+> I did my best to keep the commits less than 200 changes,
+> but had to make some of them a bit more in order to
+> keep their integrity.
+> 
+> This is v2 patchset with the most of v1 remarks fixed.
+> I named it as 'v4' because of mistakes while attempts to send previous patchsets
+> Please ignore all other v1...v3 patchsets except the very first one.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
----
- tests/avocado/boot_xen.py | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+I really want to review your series, but I have been busy and
+won't have time to look at it the next 2 weeks :/
 
-diff --git a/tests/avocado/boot_xen.py b/tests/avocado/boot_xen.py
-index fc2faeedb5..f80cbcb8fb 100644
---- a/tests/avocado/boot_xen.py
-+++ b/tests/avocado/boot_xen.py
-@@ -17,7 +17,7 @@
- from boot_linux_console import LinuxKernelTest
- 
- 
--class BootXenBase(LinuxKernelTest):
-+class BootXen(LinuxKernelTest):
-     """
-     Boots a Xen hypervisor with a Linux DomU kernel.
-     """
-@@ -59,9 +59,6 @@ def launch_xen(self, xen_path):
-         console_pattern = 'VFS: Cannot open root device'
-         wait_for_console_pattern(self, console_pattern, "Panic on CPU 0:")
- 
--
--class BootXen(BootXenBase):
--
-     def test_arm64_xen_411_and_dom0(self):
-         """
-         :avocado: tags=arch:aarch64
--- 
-2.43.0
+Thanks Peter for reviewing the previous version :)
+
+> Sergey Kambalin (45):
+>    Split out common part of BCM283X classes
+>    Split out common part of peripherals
+>    Split out raspi machine common part
+>    Introduce BCM2838 SoC
+>    Add GIC-400 to BCM2838 SoC
+>    Add BCM2838 GPIO stub
+>    Implement BCM2838 GPIO functionality
+>    Connect SD controller to BCM2838 GPIO
+>    Add GPIO and SD to BCM2838 periph
+>    Add BCM2838 checkpoint support
+>    Introduce Raspberry PI 4 machine
+>    Temporarily disable unimplemented rpi4b devices
+>    Add memory region for BCM2837 RPiVid ASB
+>    Add BCM2838 PCIE Root Complex
+>    Add BCM2838 PCIE host
+>    Enable BCM2838 PCIE
+>    Add RNG200 skeleton
+>    Add RNG200 RNG and RBG
+>    Get rid of RNG200 timer
+>    Implement BCM2838 thermal sensor
+>    Add clock_isp stub
+>    Add GENET stub
+>    Add GENET register structs. Part 1
+>    Add GENET register structs. Part 2
+>    Add GENET register structs. Part 3
+>    Add GENET register structs. Part 4
+>    Add GENET register access macros
+>    Implement GENET register ops
+>    Implement GENET MDIO
+>    Implement GENET TX path
+>    Implement GENET RX path
+>    Enable BCM2838 GENET controller
+>    Connect RNG200, PCIE and GENET to GIC
+>    Add Rpi4b boot tests
+>    Add mailbox test stub
+>    Add mailbox test constants
+>    Add mailbox tests tags. Part 1
+>    Add mailbox tests tags. Part 2
+>    Add mailbox tests tags. Part 3
+>    Add mailbox property tests. Part 1
+>    Add mailbox property tests. Part 2
+>    Add mailbox property tests. Part 3
+>    Add missed BCM2835 properties
+>    Append added properties to mailbox test
+>    Add RPi4B to paspi4.rst
+

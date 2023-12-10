@@ -1,38 +1,38 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp3597479ejb;
-        Sun, 10 Dec 2023 11:05:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHKNCODiblyIld1bHuVaOP/Ubs7mHutIAyDgok+IPZQT7J/KSyJ2o/uIsKnb982BExB9ojY
-X-Received: by 2002:ad4:52c2:0:b0:67a:cf30:dc22 with SMTP id p2-20020ad452c2000000b0067acf30dc22mr3861721qvs.4.1702235156772;
-        Sun, 10 Dec 2023 11:05:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702235156; cv=none;
+Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp3597538ejb;
+        Sun, 10 Dec 2023 11:06:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHwdLycwLaciuSYa9O/Qbug73tCHZFsBCMUjuzrAz/YRJMq8wI+q/lCyRtDxp5Uy0AzkFYm
+X-Received: by 2002:a05:620a:2406:b0:77d:87dd:17e1 with SMTP id d6-20020a05620a240600b0077d87dd17e1mr4548179qkn.48.1702235164868;
+        Sun, 10 Dec 2023 11:06:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702235164; cv=none;
         d=google.com; s=arc-20160816;
-        b=mJJX0Io6tNbViVAv5zhNiV7dDsbYZ3529B+WhfsL61YWU1twmqnhSz9adV9QioU29D
-         Zp9WSIOg1NXSTynZzYCaqRP2/LcEfiXgaEQkdt02S+5in1/1jMd/fD65YPcxr7ycWbHC
-         ZYLbXwZEYr6ctB1twFmIv2fXGdUmBG9f9bPXORnt4d391jdemY0RSLUAXnkWGdc+PKLb
-         W7/+3AyH498MEGvLFinotA+unvmr39mmIozhFIgPD/30sIZufUsu/EZKYQR+hM9Ubxiz
-         V1BkE04iBtps+/PiQvFeDmjob6lETJgLvSRUQimhcXrDQQ00Sie24az3cBg9qM50flZI
-         reCA==
+        b=epx49y0b2jbe71/3zxCJhk/J1U5SWr04xGzM8E8BXlL73IsZdezJkYtjfS3LEOE9Gk
+         GT0KMFHKglussxVSHx8Iv6YuJA+1tQptFJDG15j+dWMpyEFfe5pcSj3W8GLRVChfSKuv
+         83pnAhegMzclbOXxP2RpAZJYYc9Yw/QwON0uz7Z4KE1Z68DfwDhVjUXllaXIhrimjVFj
+         vlr37OlEexuJh5YiIBu3gkrhFQXRCXrkFelSN8C2NsTLeIfRFqtLAq1x3OAbxivLOMFu
+         OPLV2OKIb80sf9rHjVUL1G+Bh7x/dTW2W2Z6wpDbGnlg8mq+qEDLzP8zCbZ63+ve5Aph
+         0SrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:mime-version
-         :subject:date:from;
-        bh=GC00WdC1IDebOq/siXncQ0ln4/vbq2bZzAk1qcnygRo=;
+         :content-transfer-encoding:cc:to:message-id:subject:mime-version
+         :date:from;
+        bh=rbYg5Yz9Itj79eWRBAVlP3g40pckEvWzywsLwOwMryA=;
         fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
-        b=aycveHAu3HdOMDJOtM8ppU+Sq/RmMlcDR7yD2IR3Nn+s884ejUIirNtSCX/MLmvRap
-         DgCnFOgU6OlV0thlcDkoOtSskRAwcVV/BqnT0pp2/Yr3s5YL3+xrfUWtlwU+pUvcOUMY
-         xDgNjrlFfrtXS7DmKiT9kTet+HLTvaIWpjc/krcD/xIWSalsuVrITSVowUGojQa4lsEE
-         xcQyN09VbsMGAgBSR2Jd0XhtRjokqpnu3vZSx8V5mwmS3Ak0uRHK6ojDlLtWWG+1Ph5H
-         9dnEaVKbwdcZBJINiLaA81LwXTiEUA77o+t9Hk9UqVjSE87xC7d4zCXXHGaDmqNPshHY
-         Fttw==
+        b=p5snQ9qSO+VrHLDwiwFo4iM0SdA0z7W4q1/RW+ld4P8T95oUNq7fu6fsctGa5lM7FR
+         ovG1sADGp29qwpLy0pN2pP1wDdhUa+6y9uxfxxvRKLRTAaSH9ng5xPfrwMFMTBLQjmbZ
+         vS0fDtMaFuVZuB7+cAzEh/gJnRAi/sz6PQh0vynMYySAZgc0XJjIgGkSF4CmK3e5e4KV
+         aK3XBxI0v8WPbqG9kzOIW1rFyPOzo14GWCv24eNaodFyXHT6BKMqNOG9Hh7bIbJtOcpx
+         qzxraUbVn7zV4DL18fuNOxixmYVlgsnhQcaUYN3rUpuM5dBTm4GjCRAdTGhfuIRkitOp
+         w5SQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kj28-20020a056214529c00b0067a956d98d7si7257879qvb.358.2023.12.10.11.05.56
+        by mx.google.com with ESMTPS id x14-20020a05620a14ae00b00773e4b0d065si6412874qkj.532.2023.12.10.11.06.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Dec 2023 11:05:56 -0800 (PST)
+        Sun, 10 Dec 2023 11:06:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -40,26 +40,25 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rCP73-0007Cw-FZ; Sun, 10 Dec 2023 14:05:13 -0500
+	id 1rCP73-0007Cv-53; Sun, 10 Dec 2023 14:05:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rCP71-0007C8-Ii; Sun, 10 Dec 2023 14:05:11 -0500
+ id 1rCP71-0007C9-Jp; Sun, 10 Dec 2023 14:05:11 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rCP6z-0000jt-Cs; Sun, 10 Dec 2023 14:05:11 -0500
+ id 1rCP6z-0000jW-SM; Sun, 10 Dec 2023 14:05:11 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 159E311F029;
- Sun, 10 Dec 2023 19:05:07 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 943FF11EEAC;
+ Sun, 10 Dec 2023 19:05:06 +0000 (UTC)
 From: ~inesvarhol <inesvarhol@git.sr.ht>
-Date: Sun, 10 Dec 2023 19:06:50 +0100
-Subject: [PATCH qemu 3/3] hw/arm: Connect STM32L4xx SYSCFG to STM32L4x5 SoC
+Date: Sun, 10 Dec 2023 19:05:06 +0000
 MIME-Version: 1.0
-Message-ID: <170223510627.13579.3191933474458037037-3@git.sr.ht>
+Subject: [PATCH qemu 0/3] [PATCH qemu 0/3] hw/arm: Add device STM32L4x5 SYSCFG
+Message-ID: <170223510627.13579.3191933474458037037-0@git.sr.ht>
 X-Mailer: git.sr.ht
-In-Reply-To: <170223510627.13579.3191933474458037037-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alistair@alistair23.me, philmd@linaro.org,
  peter.maydell@linaro.org, ines.varhol@telecom-paris.fr,
@@ -88,116 +87,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: ~inesvarhol <inesvarhol@proton.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8I+3zjX8MnsM
+X-TUID: 5w+mq7pxd19H
 
-From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+This patch adds a new SYSCFG peripheral used by the STM32L4x5 SoC.
+The implementation is inspired from the STM32F4xx SYSCFG, the device
+registers however aren't the same.
+
+The patch is split up in 3 commits :
+- implementing the SYSCFG device
+- adding tests (that fail in this commit)
+- connecting the SYSCFG device to the SoC (the tests pass in this
+commit)
+
+Based-on: <170198462199.32162.284497577253427308-0@git.sr.ht>
+([PATCH qemu 0/3] hw/arm: Add device STM32L4x5 EXTI)
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- hw/arm/Kconfig                 |  1 +
- hw/arm/stm32l4x5_soc.c         | 24 ++++++++++++++++--------
- include/hw/arm/stm32l4x5_soc.h |  2 ++
- 3 files changed, 19 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 9c9d5bb541..ea77977d4b 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -458,6 +458,7 @@ config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-     select OR_IRQ
-+    select STM32L4XX_SYSCFG
-     select STM32L4X5_EXTI
-=20
- config XLNX_ZYNQMP_ARM
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index cf786eac1d..9b45a9e606 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -46,6 +46,7 @@
- #define SRAM2_SIZE (32 * KiB)
-=20
- #define EXTI_ADDR 0x40010400
-+#define SYSCFG_ADDR 0x40010000
-=20
- #define NUM_EXTI_IRQ 40
- /* Match exti line connections with their CPU IRQ number */
-@@ -90,6 +91,8 @@ static void stm32l4x5_soc_initfn(Object *obj)
-=20
-     object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-=20
-+    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4XX_SYSCFG=
-);
-+
-     s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-     s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
- }
-@@ -167,6 +170,15 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, =
-Error **errp)
-         return;
-     }
-=20
-+    /* System configuration controller */
-+    dev =3D DEVICE(&s->syscfg);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->syscfg), errp)) {
-+        return;
-+    }
-+    busdev =3D SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
-+
-+    /* EXTI device */
-     dev =3D DEVICE(&s->exti);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
-         return;
-@@ -178,13 +190,10 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc,=
- Error **errp)
-         sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[i]));
-     }
-=20
--    /*
--     * Uncomment when Syscfg is implemented
--     * for (i =3D 0; i < 16; i++) {
--     *     qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
--     *                           qdev_get_gpio_in(dev, i));
--     * }
--     */
-+    for (i =3D 0; i < 16; i++) {
-+        qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
-+                              qdev_get_gpio_in(dev, i));
-+    }
-=20
-     /* APB1 BUS */
-     create_unimplemented_device("TIM2",      0x40000000, 0x400);
-@@ -223,7 +232,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
-     /* RESERVED:    0x40009800, 0x6800 */
-=20
-     /* APB2 BUS */
--    create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
-     create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
-     create_unimplemented_device("COMP",      0x40010200, 0x200);
-     /* RESERVED:    0x40010800, 0x1400 */
-diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_soc.h
-index ac47158596..5ff757f15b 100644
---- a/include/hw/arm/stm32l4x5_soc.h
-+++ b/include/hw/arm/stm32l4x5_soc.h
-@@ -37,6 +37,7 @@
- #include "qemu/units.h"
- #include "hw/qdev-core.h"
- #include "hw/arm/armv7m.h"
-+#include "hw/misc/stm32l4xx_syscfg.h"
- #include "hw/misc/stm32l4x5_exti.h"
- #include "qom/object.h"
-=20
-@@ -52,6 +53,7 @@ struct Stm32l4x5SocState {
-     ARMv7MState armv7m;
-=20
-     Stm32l4x5ExtiState exti;
-+    STM32L4xxSyscfgState syscfg;
-=20
-     MemoryRegion sram1;
-     MemoryRegion sram2;
+In=C3=A8s Varhol (3):
+  hw/misc: Implement STM32L4xx SYSCFG
+  tests/qtest: Add STM32L4xx SYSCFG QTest testcase
+  hw/arm: Connect STM32L4xx SYSCFG to STM32L4x5 SoC
+
+ hw/arm/Kconfig                      |   1 +
+ hw/arm/stm32l4x5_soc.c              |  24 +-
+ hw/misc/Kconfig                     |   3 +
+ hw/misc/meson.build                 |   1 +
+ hw/misc/stm32l4xx_syscfg.c          | 277 +++++++++++++++++++
+ hw/misc/trace-events                |   6 +
+ include/hw/arm/stm32l4x5_soc.h      |   2 +
+ include/hw/misc/stm32l4xx_syscfg.h  |  62 +++++
+ tests/qtest/meson.build             |   3 +-
+ tests/qtest/stm32l4xx_syscfg-test.c | 408 ++++++++++++++++++++++++++++
+ 10 files changed, 778 insertions(+), 9 deletions(-)
+ create mode 100644 hw/misc/stm32l4xx_syscfg.c
+ create mode 100644 include/hw/misc/stm32l4xx_syscfg.h
+ create mode 100644 tests/qtest/stm32l4xx_syscfg-test.c
+
 --=20
 2.38.5

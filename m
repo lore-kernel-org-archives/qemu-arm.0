@@ -1,38 +1,38 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp714381eji;
-        Mon, 18 Dec 2023 03:16:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGqfZVQUpmxMB/OxTMEnrUuJHAC+7Kj8dsrRIE04VMnO45Zit5+Cvu82pi8drtyhOwZj8cb
-X-Received: by 2002:ad4:4eaa:0:b0:67f:4128:ed14 with SMTP id ed10-20020ad44eaa000000b0067f4128ed14mr2448642qvb.129.1702898212401;
-        Mon, 18 Dec 2023 03:16:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702898212; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp714403eji;
+        Mon, 18 Dec 2023 03:16:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF0xiM3uakisiavsLmd+du64oZexngVun3muOXnbSXIv9H/R5jE6Kku5MlkzmrL0pID07P+
+X-Received: by 2002:ad4:5ec9:0:b0:67f:3d47:5a82 with SMTP id jm9-20020ad45ec9000000b0067f3d475a82mr3393561qvb.78.1702898214818;
+        Mon, 18 Dec 2023 03:16:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702898214; cv=none;
         d=google.com; s=arc-20160816;
-        b=n+FlfD9Bn2RRW2A97WILgKxtQig3e7HttXZ3FVKzVtn3/5iVxWJcvkEEI1SBBDzn6V
-         eutoJmoxMbegKnTRG/GT97pfGbWXnJoPyJUUrghWCFiXGBrGNBsHqARG6BiUdjoqAAKM
-         Ngun9IeQ+9qg0evODkVG4v2sBTS8BQ7C8ADvKRCqD6W5tO+W60IG+6DUPPMmaxOIFITy
-         v1enI3b65As26pWg5k9vfpc90DL3kavsRZk1G8EGfp+7v/r8V3BajkZTxXESoyuUKwQX
-         REwN7BeN5uEFMo+tDPhcrPVg+PcGkns7pveyrvuxQ0jifB+wiL/KeGCFk/pm07N5Sdth
-         tYUw==
+        b=JOVYAMJTp2KYDiUrrNlGJNNe7zGOrqTpWDz4VOBNZcdhCkRfgeHiDuYn+9tPDSEgxd
+         /vh3vCiyE8jLpZSQa8PC0jPdG+fmQcPaJ1Xzi0SDRuOrwf/JNXDlpwsRQzMgwbB4QLJe
+         h2TBSAHjpM9zsP2KTmpH3oiGTD8q/ZNhKClBaFwho6/ec/ai9IaB78PqBMJcurTFZT1G
+         HoSRtkiv5htoDZDdF2HMhjKRsCZsWHfVldul+J1OavuoAhrXvl51wHoAeJSPXSlQ696m
+         Lg6pxgys7NuaScj6hPzHESzvofLUKUrFeMpnmpNHwdLcdK855fK4VWt8/nN2K35qsgJZ
+         OCmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:cc:to:in-reply-to:message-id:mime-version
          :subject:date:from;
-        bh=zIGoksOgSPCjHAb0qPzT9OVAOsxY+/iUXr3ca3C72I0=;
+        bh=2NPSvRjjaS2LsT+llnehHUHvaQ5vPrNpzSffzlgcsaU=;
         fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
-        b=RrXOfqQmyBEo4/m8sZthQ49lgPC8nN5C2Sfv8S9bXf7kG/6KmX++dJ+5XEwklF9vxt
-         mP5vK8n/Oi21NVORpQHRDYDkexYaF+Bt0skRnb/pSlSbkLKE5lUq4EfbhmQ/ZQlcOvrJ
-         +uWCB1sX9LwGC4qJBO6ATNk+q25JTu91zEbZAB1ND1KDm1xJjoIDx65QLXm3gNI2m/uj
-         2ZX9EHJpUCI6TXxgu+m33T1hd204GaPGvTfrEoDWEoGx7oQhySgDI/7NGW1zRFfTpCgE
-         9fYvReDG8lEP2ssI5LLdTWjeYN19YWYpqFXXDv5siFlzIbnAYufoiT9ijN5XzQiVvPc0
-         8zog==
+        b=W+HfHlJqL18ShoxmIfsqX6r52oZaQYFavmvIx7iilh3Pf9/9vtbShV+duY6yMYIeOA
+         YHRxPQwgUxjkPVkocW/TOjbi16IiXhw4aCbHRYPGkxWkg34ixa7AroeJgFKfGdCrZW1N
+         pD3mimV4KZFgqtUpxKXF6pqYuh7HKxpCZs5ELifbvKMoknjBanTBLnqv62puJGtI0t2S
+         44ldRw6soUZQbIvmpkpTrDCrhNkMb4M96r1GtYK/Q9bOh83B/vFKoeTcpkd20tgP0tRg
+         6tpJYmROUxgi8ommKps99T30O618iRrd/KIff2aBlHpJ/WhUEOEwa1DLssaB5y8LHKks
+         V1Rw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020a0ce243000000b0067f2558d75fsi5710491qvl.558.2023.12.18.03.16.52
+        by mx.google.com with ESMTPS id h8-20020a0cf408000000b0067f28c68f6fsi5179521qvl.513.2023.12.18.03.16.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:16:52 -0800 (PST)
+        Mon, 18 Dec 2023 03:16:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -40,24 +40,24 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rFBb8-00072r-Ub; Mon, 18 Dec 2023 06:15:46 -0500
+	id 1rFBbD-00073r-HR; Mon, 18 Dec 2023 06:15:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rFBb4-00071J-LP; Mon, 18 Dec 2023 06:15:42 -0500
+ id 1rFBb5-00071X-7v; Mon, 18 Dec 2023 06:15:43 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rFBb2-0008IU-Oo; Mon, 18 Dec 2023 06:15:42 -0500
+ id 1rFBb2-0008IP-Mc; Mon, 18 Dec 2023 06:15:42 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 6881F11F00F;
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 3BF3011EFD3;
  Mon, 18 Dec 2023 11:15:39 +0000 (UTC)
 From: ~inesvarhol <inesvarhol@git.sr.ht>
-Date: Sun, 10 Dec 2023 19:06:50 +0100
-Subject: [PATCH qemu v2 3/3] hw/arm: Connect STM32L4x5 SYSCFG to STM32L4x5 SoC
+Date: Sun, 10 Dec 2023 18:55:05 +0100
+Subject: [PATCH qemu v2 2/3] tests/qtest: Add STM32L4x5 SYSCFG QTest testcase
 MIME-Version: 1.0
-Message-ID: <170289813862.19159.2545029501234884208-3@git.sr.ht>
+Message-ID: <170289813862.19159.2545029501234884208-2@git.sr.ht>
 X-Mailer: git.sr.ht
 In-Reply-To: <170289813862.19159.2545029501234884208-0@git.sr.ht>
 To: qemu-devel@nongnu.org
@@ -89,119 +89,452 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Reply-To: ~inesvarhol <inesvarhol@proton.me>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DqN6EsterQ/Z
+X-TUID: GP4UIbFCc3Yz
 
 From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-The SYSCFG input GPIOs aren't connected yet. When the STM32L4x5 GPIO
-device will be implemented, its output GPIOs will be connected to the
-SYSCFG input GPIOs.
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/arm/Kconfig                 |  1 +
- hw/arm/stm32l4x5_soc.c         | 23 ++++++++++++++++++++++-
- include/hw/arm/stm32l4x5_soc.h |  2 ++
- 3 files changed, 25 insertions(+), 1 deletion(-)
+ tests/qtest/meson.build             |   3 +-
+ tests/qtest/stm32l4x5_syscfg-test.c | 408 ++++++++++++++++++++++++++++
+ 2 files changed, 410 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/stm32l4x5_syscfg-test.c
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 9c9d5bb541..e7c9470d59 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -458,6 +458,7 @@ config STM32L4X5_SOC
-     bool
-     select ARM_V7M
-     select OR_IRQ
-+    select STM32L4X5_SYSCFG
-     select STM32L4X5_EXTI
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index d5126f4d86..a2213d60b3 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -196,7 +196,8 @@ qtests_aspeed =3D \
+    'aspeed_gpio-test']
 =20
- config XLNX_ZYNQMP_ARM
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index b07593730f..45f5c2156c 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -46,6 +46,7 @@
- #define SRAM2_SIZE (32 * KiB)
+ qtests_stm32l4x5 =3D \
+-  ['stm32l4x5_exti-test']
++  ['stm32l4x5_exti-test',
++   'stm32l4x5_syscfg-test']
 =20
- #define EXTI_ADDR 0x40010400
-+#define SYSCFG_ADDR 0x40010000
-=20
- #define NUM_EXTI_IRQ 40
- /* Match exti line connections with their CPU IRQ number */
-@@ -90,6 +91,8 @@ static void stm32l4x5_soc_initfn(Object *obj)
-=20
-     object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-=20
-+    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4X5_SYSCFG=
-);
+ qtests_arm =3D \
+   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
+diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_sysc=
+fg-test.c
+new file mode 100644
+index 0000000000..3edd13b222
+--- /dev/null
++++ b/tests/qtest/stm32l4x5_syscfg-test.c
+@@ -0,0 +1,408 @@
++/*
++ * QTest testcase for STM32L4x5_SYSCFG
++ *
++ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
 +
-     s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-     s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
- }
-@@ -167,6 +170,20 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, =
-Error **errp)
-         return;
-     }
-=20
-+    /* System configuration controller */
-+    dev =3D DEVICE(&s->syscfg);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->syscfg), errp)) {
-+        return;
-+    }
-+    busdev =3D SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++
++#define SYSCFG_BASE_ADDR 0x40010000
++#define SYSCFG_MEMRMP 0x00
++#define SYSCFG_CFGR1 0x04
++#define SYSCFG_EXTICR1 0x08
++#define SYSCFG_EXTICR2 0x0C
++#define SYSCFG_EXTICR3 0x10
++#define SYSCFG_EXTICR4 0x14
++#define SYSCFG_SCSR 0x18
++#define SYSCFG_CFGR2 0x1C
++#define SYSCFG_SWPR 0x20
++#define SYSCFG_SKR 0x24
++#define SYSCFG_SWPR2 0x28
++#define INVALID_ADDR 0x2C
++
++#define EXTI_BASE_ADDR 0x40010400
++#define EXTI_IMR1 0x00
++#define EXTI_RTSR1 0x08
++#define EXTI_FTSR1 0x0C
++
++static void syscfg_writel(unsigned int offset, uint32_t value)
++{
++    writel(SYSCFG_BASE_ADDR + offset, value);
++}
++
++static uint32_t syscfg_readl(unsigned int offset)
++{
++    return readl(SYSCFG_BASE_ADDR + offset);
++}
++
++static void exti_writel(unsigned int offset, uint32_t value)
++{
++    writel(EXTI_BASE_ADDR + offset, value);
++}
++
++static void system_reset(void)
++{
++    QDict *response;
++    response =3D qtest_qmp(global_qtest, "{'execute': 'system_reset'}");
++    g_assert(qdict_haskey(response, "return"));
++    qobject_unref(response);
++}
++
++static void test_reset(void)
++{
 +    /*
-+     * TODO: when the GPIO device is implemented, connect it
-+     * to SYCFG using `qdev_connect_gpio_out`, NUM_GPIOS and
-+     * GPIO_NUM_PINS.
++     * Test that registers are initialized at the correct values
++     */
++    const uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
++    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
++
++    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
++    g_assert_cmpuint(cfgr1, =3D=3D, 0x7C000001);
++
++    const uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
++    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
++
++    const uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
++    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
++
++    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
++    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
++
++    const uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
++    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
++
++    const uint32_t scsr =3D syscfg_readl(SYSCFG_SCSR);
++    g_assert_cmpuint(scsr, =3D=3D, 0x00000000);
++
++    const uint32_t cfgr2 =3D syscfg_readl(SYSCFG_CFGR2);
++    g_assert_cmpuint(cfgr2, =3D=3D, 0x00000000);
++
++    const uint32_t swpr =3D syscfg_readl(SYSCFG_SWPR);
++    g_assert_cmpuint(swpr, =3D=3D, 0x00000000);
++
++    const uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
++    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
++
++    const uint32_t swpr2 =3D syscfg_readl(SYSCFG_SWPR2);
++    g_assert_cmpuint(swpr2, =3D=3D, 0x00000000);
++}
++
++static void test_reserved_bits(void)
++{
++    /*
++     * Test that reserved bits stay at reset value
++     * (which is 0 for all of them) by writing '1'
++     * in all reserved bits (keeping reset value for
++     * other bits) and checking that the
++     * register is still at reset value
++     */
++    syscfg_writel(SYSCFG_MEMRMP, 0xFFFFFEF8);
++    const uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
++    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_CFGR1, 0x7F00FEFF);
++    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
++    g_assert_cmpuint(cfgr1, =3D=3D, 0x7C000001);
++
++    syscfg_writel(SYSCFG_EXTICR1, 0xFFFF0000);
++    const uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
++    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_EXTICR2, 0xFFFF0000);
++    const uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
++    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_EXTICR3, 0xFFFF0000);
++    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
++    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_EXTICR4, 0xFFFF0000);
++    const uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
++    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_SKR, 0xFFFFFF00);
++    const uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
++    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
++}
++
++static void test_set_and_clear(void)
++{
++    /*
++     * Test that regular bits can be set and cleared
++     */
++    syscfg_writel(SYSCFG_MEMRMP, 0x00000107);
++    uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
++    g_assert_cmpuint(memrmp, =3D=3D, 0x00000107);
++    syscfg_writel(SYSCFG_MEMRMP, 0x00000000);
++    memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
++    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
++
++    /* cfgr1 bit 0 is clear only so we keep it set */
++    syscfg_writel(SYSCFG_CFGR1, 0xFCFF0101);
++    uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
++    g_assert_cmpuint(cfgr1, =3D=3D, 0xFCFF0101);
++    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
++    cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
++    g_assert_cmpuint(cfgr1, =3D=3D, 0x00000001);
++
++    syscfg_writel(SYSCFG_EXTICR1, 0x0000FFFF);
++    uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
++    g_assert_cmpuint(exticr1, =3D=3D, 0x0000FFFF);
++    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
++    exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
++    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_EXTICR2, 0x0000FFFF);
++    uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
++    g_assert_cmpuint(exticr2, =3D=3D, 0x0000FFFF);
++    syscfg_writel(SYSCFG_EXTICR2, 0x00000000);
++    exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
++    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_EXTICR3, 0x0000FFFF);
++    uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
++    g_assert_cmpuint(exticr3, =3D=3D, 0x0000FFFF);
++    syscfg_writel(SYSCFG_EXTICR3, 0x00000000);
++    exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
++    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_EXTICR4, 0x0000FFFF);
++    uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
++    g_assert_cmpuint(exticr4, =3D=3D, 0x0000FFFF);
++    syscfg_writel(SYSCFG_EXTICR4, 0x00000000);
++    exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
++    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
++
++    syscfg_writel(SYSCFG_SKR, 0x000000FF);
++    uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
++    g_assert_cmpuint(skr, =3D=3D, 0x000000FF);
++    syscfg_writel(SYSCFG_SKR, 0x00000000);
++    skr =3D syscfg_readl(SYSCFG_SKR);
++    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
++}
++
++static void test_clear_by_writing_1(void)
++{
++    /*
++     * Test that writing '1' doesn't set the bit
++     */
++    syscfg_writel(SYSCFG_CFGR2, 0x00000100);
++    const uint32_t cfgr2 =3D syscfg_readl(SYSCFG_CFGR2);
++    g_assert_cmpuint(cfgr2, =3D=3D, 0x00000000);
++}
++
++static void test_set_only_bits(void)
++{
++    /*
++     * Test that set only bits stay can't be cleared
++     */
++    syscfg_writel(SYSCFG_CFGR2, 0x0000000F);
++    syscfg_writel(SYSCFG_CFGR2, 0x00000000);
++    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_CFGR2);
++    g_assert_cmpuint(exticr3, =3D=3D, 0x0000000F);
++
++    syscfg_writel(SYSCFG_SWPR, 0xFFFFFFFF);
++    syscfg_writel(SYSCFG_SWPR, 0x00000000);
++    const uint32_t swpr =3D syscfg_readl(SYSCFG_SWPR);
++    g_assert_cmpuint(swpr, =3D=3D, 0xFFFFFFFF);
++
++    syscfg_writel(SYSCFG_SWPR2, 0xFFFFFFFF);
++    syscfg_writel(SYSCFG_SWPR2, 0x00000000);
++    const uint32_t swpr2 =3D syscfg_readl(SYSCFG_SWPR2);
++    g_assert_cmpuint(swpr2, =3D=3D, 0xFFFFFFFF);
++
++    system_reset();
++}
++
++static void test_clear_only_bits(void)
++{
++    /*
++     * Test that clear only bits stay can't be set
++     */
++    syscfg_writel(SYSCFG_CFGR1, 0x00000000);
++    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
++    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
++    g_assert_cmpuint(cfgr1, =3D=3D, 0x00000000);
++
++    system_reset();
++}
++
++static void test_interrupt(void)
++{
++    /*
++     * Test that GPIO rising lines result in an irq
++     * with the right configuration
++     */
++    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/exti=
+");
++    /* Enable interrupt on rising edge of GPIO PA[0] */
++    exti_writel(EXTI_IMR1, 0x00000001);
++    exti_writel(EXTI_RTSR1, 0x00000001);
++
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 1);
++
++    g_assert_true(get_irq(0));
++
++    /* Enable interrupt on rising edge of GPIO PA[15] */
++    exti_writel(EXTI_IMR1, 0x00008000);
++    exti_writel(EXTI_RTSR1, 0x00008000);
++
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 15, 1);
++
++    g_assert_true(get_irq(15));
++
++    /* Enable interrupt on rising edge of GPIO PB[1] */
++    syscfg_writel(SYSCFG_EXTICR1, 0x00000010);
++    exti_writel(EXTI_IMR1, 0x00000002);
++    exti_writel(EXTI_RTSR1, 0x00000002);
++
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 17, 1);
++
++    g_assert_true(get_irq(1));
++
++    /* Clean the test */
++    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 0);
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 15, 0);
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 17, 0);
++}
++
++static void test_irq_pin_multiplexer(void)
++{
++    /*
++     * Test that syscfg irq sets the right exti irq
 +     */
 +
-+    /* EXTI device */
-     dev =3D DEVICE(&s->exti);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
-         return;
-@@ -177,6 +194,11 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, =
-Error **errp)
-         sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[i]));
-     }
-=20
-+    for (i =3D 0; i < 16; i++) {
-+        qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
-+                              qdev_get_gpio_in(dev, i));
-+    }
++    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/exti=
+");
 +
-     /* APB1 BUS */
-     create_unimplemented_device("TIM2",      0x40000000, 0x400);
-     create_unimplemented_device("TIM3",      0x40000400, 0x400);
-@@ -214,7 +236,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
-     /* RESERVED:    0x40009800, 0x6800 */
-=20
-     /* APB2 BUS */
--    create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
-     create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
-     create_unimplemented_device("COMP",      0x40010200, 0x200);
-     /* RESERVED:    0x40010800, 0x1400 */
-diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_soc.h
-index ac47158596..230348f847 100644
---- a/include/hw/arm/stm32l4x5_soc.h
-+++ b/include/hw/arm/stm32l4x5_soc.h
-@@ -37,6 +37,7 @@
- #include "qemu/units.h"
- #include "hw/qdev-core.h"
- #include "hw/arm/armv7m.h"
-+#include "hw/misc/stm32l4x5_syscfg.h"
- #include "hw/misc/stm32l4x5_exti.h"
- #include "qom/object.h"
-=20
-@@ -52,6 +53,7 @@ struct Stm32l4x5SocState {
-     ARMv7MState armv7m;
-=20
-     Stm32l4x5ExtiState exti;
-+    Stm32l4x5SyscfgState syscfg;
-=20
-     MemoryRegion sram1;
-     MemoryRegion sram2;
++    /* Enable interrupt on rising edge of GPIO PA[0] */
++    exti_writel(EXTI_IMR1, 0x00000001);
++    exti_writel(EXTI_RTSR1, 0x00000001);
++
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 1);
++
++    /* Check that irq 0 was set and irq 15 wasn't */
++    g_assert_true(get_irq(0));
++    g_assert_false(get_irq(15));
++
++    /* Clean the test */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 0);
++
++    /* Enable interrupt on rising edge of GPIO PA[15] */
++    exti_writel(EXTI_IMR1, 0x00008000);
++    exti_writel(EXTI_RTSR1, 0x00008000);
++
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 15, 1);
++
++    /* Check that irq 15 was set and irq 0 wasn't */
++    g_assert_true(get_irq(15));
++    g_assert_false(get_irq(0));
++
++    /* Clean the test */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 15, 0);
++}
++
++static void test_irq_gpio_multiplexer(void)
++{
++    /*
++     * Test that an irq is generated only by the right GPIO
++     */
++
++    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/exti=
+");
++
++    /* Enable interrupt on rising edge of GPIO PA[0] */
++    exti_writel(EXTI_IMR1, 0x00000001);
++    exti_writel(EXTI_RTSR1, 0x00000001);
++
++    /* Check that setting rising pin GPIOA[0] generates an irq */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 1);
++
++    g_assert_true(get_irq(0));
++
++    /* Clean the test */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 0);
++
++    /* Check that setting rising pin GPIOB[0] doesn't generate an irq */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 16, 1);
++
++    g_assert_false(get_irq(0));
++
++    /* Clean the test */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 16, 0);
++
++    /* Enable interrupt on rising edge of GPIO PB[0] */
++    exti_writel(EXTI_IMR1, 0x00000001);
++    exti_writel(EXTI_RTSR1, 0x00000001);
++    syscfg_writel(SYSCFG_EXTICR1, 0x00000001);
++
++    /* Check that setting rising pin GPIOA[0] doesn't generate an irq */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 1);
++
++    g_assert_false(get_irq(0));
++
++    /* Clean the test */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 0, 0);
++
++    /* Check that setting rising pin GPIOB[0] generates an irq */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 16, 1);
++
++    g_assert_true(get_irq(0));
++
++    /* Clean the test */
++    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
++                     NULL, 16, 0);
++    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
++}
++
++int main(int argc, char **argv)
++{
++    int ret;
++
++    g_test_init(&argc, &argv, NULL);
++    g_test_set_nonfatal_assertions();
++
++    qtest_add_func("stm32l4x5/syscfg/test_reset", test_reset);
++    qtest_add_func("stm32l4x5/syscfg/test_reserved_bits",
++                   test_reserved_bits);
++    qtest_add_func("stm32l4x5/syscfg/test_set_and_clear",
++                   test_set_and_clear);
++    qtest_add_func("stm32l4x5/syscfg/test_clear_by_writing_1",
++                   test_clear_by_writing_1);
++    qtest_add_func("stm32l4x5/syscfg/test_set_only_bits",
++                   test_set_only_bits);
++    qtest_add_func("stm32l4x5/syscfg/test_clear_only_bits",
++                   test_clear_only_bits);
++    qtest_add_func("stm32l4x5/syscfg/test_interrupt",
++                   test_interrupt);
++    qtest_add_func("stm32l4x5/syscfg/test_irq_pin_multiplexer",
++                   test_irq_pin_multiplexer);
++    qtest_add_func("stm32l4x5/syscfg/test_irq_gpio_multiplexer",
++                   test_irq_gpio_multiplexer);
++
++    qtest_start("-machine b-l475e-iot01a");
++    ret =3D g_test_run();
++    qtest_end();
++
++    return ret;
++}
 --=20
 2.38.5
+

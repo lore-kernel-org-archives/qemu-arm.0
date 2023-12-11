@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p16-20020a5d48d0000000b0033616ea5a0fsm5974099wrs.45.2023.12.11.09.01.44
+        by smtp.gmail.com with ESMTPSA id h2-20020a05600c350200b0040c44b4a282sm5859487wmq.43.2023.12.11.09.47.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Dec 2023 09:01:44 -0800 (PST)
+        Mon, 11 Dec 2023 09:47:59 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B29E95FBC6;
-	Mon, 11 Dec 2023 17:01:43 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 17ED45FBC6;
+	Mon, 11 Dec 2023 17:47:59 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Cleber Rosa <crosa@redhat.com>
 Cc: qemu-devel@nongnu.org,  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Radoslaw
@@ -16,54 +16,142 @@ Cc: qemu-devel@nongnu.org,  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Radoslaw
   Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Beraldo Leal
  <bleal@redhat.com>,  Wainer dos Santos Moschetta <wainersm@redhat.com>,
   Sriram Yagnaraman <sriram.yagnaraman@est.tech>,  Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>,  David Woodhouse <dwmw2@infradead.org>,
- Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH 03/10] tests/avocado/intel_iommu.py: increase timeout
-In-Reply-To: <20231208190911.102879-4-crosa@redhat.com> (Cleber Rosa's message
-	of "Fri, 8 Dec 2023 14:09:04 -0500")
+ <marcin.juszkiewicz@linaro.org>,  David Woodhouse <dwmw2@infradead.org>
+Subject: Re: [PATCH 04/10] tests/avocado: machine aarch64: standardize
+ location and RO/RW access
+In-Reply-To: <20231208190911.102879-5-crosa@redhat.com> (Cleber Rosa's message
+	of "Fri, 8 Dec 2023 14:09:05 -0500")
 References: <20231208190911.102879-1-crosa@redhat.com>
-	<20231208190911.102879-4-crosa@redhat.com>
+	<20231208190911.102879-5-crosa@redhat.com>
 User-Agent: mu4e 1.11.26; emacs 29.1
-Date: Mon, 11 Dec 2023 17:01:43 +0000
-Message-ID: <8734w8fzbc.fsf@draig.linaro.org>
+Date: Mon, 11 Dec 2023 17:47:59 +0000
+Message-ID: <87wmtkeils.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 0cCWA5eHdu5w
+X-TUID: 7tiFq3QbzAy0
 
 Cleber Rosa <crosa@redhat.com> writes:
 
-> Based on many runs, the average run time for these 4 tests is around
-> 250 seconds, with 320 seconds being the ceiling.  In any way, the
-> default 120 seconds timeout is inappropriate in my experience.
+> The tests under machine_aarch64_virt.py do not need read-write access
+> to the ISOs.  The ones under machine_aarch64_sbsaref.py, on the other
+> hand, will need read-write access, so let's give each test an unique
+> file.
 
-I would rather see these tests updated to fix:
+I think we are making two separate changes here so probably best split
+the patch.
 
- - Don't use such an old Fedora 31 image
- - Avoid updating image packages (when will RH stop serving them?)
- - The "test" is a fairly basic check of dmesg/sysfs output
+> And while at it, let's use a single code style and hash for the ISO
+> url.
+>
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>  tests/avocado/machine_aarch64_sbsaref.py |  9 +++++++--
+>  tests/avocado/machine_aarch64_virt.py    | 14 +++++++-------
+>  2 files changed, 14 insertions(+), 9 deletions(-)
+>
+> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/mac=
+hine_aarch64_sbsaref.py
+> index 528c7d2934..6ae84d77ac 100644
+> --- a/tests/avocado/machine_aarch64_sbsaref.py
+> +++ b/tests/avocado/machine_aarch64_sbsaref.py
+> @@ -7,6 +7,7 @@
+>  # SPDX-License-Identifier: GPL-2.0-or-later
+>=20=20
+>  import os
+> +import shutil
+>=20=20
+>  from avocado import skipUnless
+>  from avocado.utils import archive
+> @@ -123,13 +124,15 @@ def boot_alpine_linux(self, cpu):
+>=20=20
+>          iso_hash =3D "5a36304ecf039292082d92b48152a9ec21009d3a62f459de62=
+3e19c4bd9dc027"
+>          iso_path =3D self.fetch_asset(iso_url, algorithm=3D"sha256", ass=
+et_hash=3Diso_hash)
+> +        iso_path_rw =3D os.path.join(self.workdir, os.path.basename(iso_=
+path))
+> +        shutil.copy(iso_path, iso_path_rw)
+>=20=20
+>          self.vm.set_console()
+>          self.vm.add_args(
+>              "-cpu",
+>              cpu,
+>              "-drive",
+> -            f"file=3D{iso_path},format=3Draw",
+> +            f"file=3D{iso_path_rw},format=3Draw",
 
-I think building a buildroot image with the tools pre-installed (with
-perhaps more testing) would be a better use of our limited test time.
+Instead of copying why not add ",snapshot=3Don" to preserve the original
+image. We don't want to persist data between tests.
 
-FWIW the runtime on my machine is:
+>              "-device",
+>              "virtio-rng-pci,rng=3Drng0",
+>              "-object",
+> @@ -170,13 +173,15 @@ def boot_openbsd73(self, cpu):
+>=20=20
+>          img_hash =3D "7fc2c75401d6f01fbfa25f4953f72ad7d7c18650056d30755c=
+44b9c129b707e5"
+>          img_path =3D self.fetch_asset(img_url, algorithm=3D"sha256", ass=
+et_hash=3Dimg_hash)
+> +        img_path_rw =3D os.path.join(self.workdir, os.path.basename(img_=
+path))
+> +        shutil.copy(img_path, img_path_rw)
+>=20=20
+>          self.vm.set_console()
+>          self.vm.add_args(
+>              "-cpu",
+>              cpu,
+>              "-drive",
+> -            f"file=3D{img_path},format=3Draw",
+> +            f"file=3D{img_path_rw},format=3Draw",
 
-=E2=9E=9C  env QEMU_TEST_FLAKY_TESTS=3D1 ./pyvenv/bin/avocado run ./tests/a=
-vocado/intel_iommu.py
-JOB ID     : 5c582ccf274f3aee279c2208f969a7af8ceb9943
-JOB LOG    : /home/alex/avocado/job-results/job-2023-12-11T16.53-5c582cc/jo=
-b.log
- (1/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu: PASS (44=
-.21 s)
- (2/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu_strict: P=
-ASS (78.60 s)
- (3/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu_strict_cm=
-: PASS (65.57 s)
- (4/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu_pt: PASS =
-(66.63 s)
-RESULTS    : PASS 4 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CA=
-NCEL 0
-JOB TIME   : 255.43 s
+ditto.
+
+
+>              "-device",
+>              "virtio-rng-pci,rng=3Drng0",
+>              "-object",
+> diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machin=
+e_aarch64_virt.py
+> index a90dc6ff4b..093d68f837 100644
+> --- a/tests/avocado/machine_aarch64_virt.py
+> +++ b/tests/avocado/machine_aarch64_virt.py
+> @@ -37,13 +37,13 @@ def test_alpine_virt_tcg_gic_max(self):
+>          :avocado: tags=3Dmachine:virt
+>          :avocado: tags=3Daccel:tcg
+>          """
+> -        iso_url =3D ('https://dl-cdn.alpinelinux.org/'
+> -                   'alpine/v3.17/releases/aarch64/'
+> -                   'alpine-standard-3.17.2-aarch64.iso')
+> +        iso_url =3D (
+> +            "https://dl-cdn.alpinelinux.org/"
+> +            "alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch6=
+4.iso"
+> +        )
+>=20=20
+> -        # Alpine use sha256 so I recalculated this myself
+> -        iso_sha1 =3D '76284fcd7b41fe899b0c2375ceb8470803eea839'
+> -        iso_path =3D self.fetch_asset(iso_url, asset_hash=3Diso_sha1)
+> +        iso_hash =3D "5a36304ecf039292082d92b48152a9ec21009d3a62f459de62=
+3e19c4bd9dc027"
+> +        iso_path =3D self.fetch_asset(iso_url, algorithm=3D"sha256", ass=
+et_hash=3Diso_hash)
+>=20=20
+>          self.vm.set_console()
+>          kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> @@ -60,7 +60,7 @@ def test_alpine_virt_tcg_gic_max(self):
+>          self.vm.add_args("-smp", "2", "-m", "1024")
+>          self.vm.add_args('-bios', os.path.join(BUILD_DIR, 'pc-bios',
+>                                                 'edk2-aarch64-code.fd'))
+> -        self.vm.add_args("-drive", f"file=3D{iso_path},format=3Draw")
+> +        self.vm.add_args("-drive",
+>          f"file=3D{iso_path},readonly=3Don,format=3Draw")
+
+Perhaps we can set ",media=3Dcdrom" here.
+
+>          self.vm.add_args('-device', 'virtio-rng-pci,rng=3Drng0')
+>          self.vm.add_args('-object', 'rng-random,id=3Drng0,filename=3D/de=
+v/urandom')
 
 --=20
 Alex Benn=C3=A9e

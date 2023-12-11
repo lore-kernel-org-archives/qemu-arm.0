@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492242ejo;
-        Mon, 11 Dec 2023 13:21:10 -0800 (PST)
-X-Received: by 2002:a17:906:608e:b0:a04:e1e7:d14c with SMTP id t14-20020a170906608e00b00a04e1e7d14cmr6105975ejj.32.1702329670143;
-        Mon, 11 Dec 2023 13:21:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329670; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492311ejo;
+        Mon, 11 Dec 2023 13:21:17 -0800 (PST)
+X-Received: by 2002:a17:906:178f:b0:a19:a19b:c6ff with SMTP id t15-20020a170906178f00b00a19a19bc6ffmr3335592eje.79.1702329677679;
+        Mon, 11 Dec 2023 13:21:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329677; cv=none;
         d=google.com; s=arc-20160816;
-        b=o9XGy91wuZMZZUU+HncGSUVeHUX4PV8HYyjGfG8blR9AZTzTO428FAS1NH5UJMHx9r
-         mo9gYGd8Je+B5QS61suKs5u5CUAXMgOXggPhVZRTjwt+6Afgom9Qn93MPMp/4o5D1IZz
-         HjxPvp+49l/cFRX4cjxdSolp02nki5Cy5r6usEH0KPHEhDqiDXf8tTYDH+njRFBG7rLQ
-         /z0nqH+liQyyljJs88YL8ab/S+9AJTl5p4V+fyy8bJljGz3NTv7gWPgWCbdEq8kJ2s6N
-         eilx4Qyy2yFVaN++OmAdONaz802g8ASEvMjBX69ZTGV21P5HztSnVdPlv0CB8dXfRSEt
-         U5jg==
+        b=Q0H5sZlcTC4xCrRrvfJiCnCGyiwu7qknh6b5xTFsINT1BHSqHqJg9KKHndYTwUKvLl
+         SiYNWPkJR9tOUC1FtrTE2sQGjZ15T2vvcZjiNHobOtZmZp7XHIKmP5ujy8VG/QOSRJZQ
+         7H9imBXCKx90SBYibJBjPHfPudTwNFXHyKZJUdBFTTTETJfvdRRBNDgJGX40sECAfwJo
+         Cq7d2IVwPhfY/qoRKv4+EgfYxPRIIoMkkxZHTQ7n7QLJ99uRp3cZkwjjYwel6Heh22gg
+         9JexlbZiMOqln5IZj9QH4wD7W/cWmWZOw1PrxDbu/ozPV2PIRy1m7gN6nYpmTElwfLBP
+         q8rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WbDQbeYc3MqbJhEQi67twemcgBt5US82mKEOXjqMt3c=;
+        bh=bTgCkgY7q586A21zu0JSDs5UTTpVyxNoAlIlHHAmSdk=;
         fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=rjZdHpot1XsQZpWpU407mt7SnLoEGnQGsVAS4jGhDakwlTbTmOLymp6B2NE2xqOEa4
-         FHKFeSIKhV1rzXS6G49VEdvGUoow9tnNBDwQE/yXmeqdO+NU8LphmUSjlafiFCmPAX3P
-         8aly85U8POv2P0KuUNcjLMJw716GHuv2MVLEFLfBUQUKn2iRSxDg5Gk2QhEDedwPdBz2
-         dFdrVTdw/zuSk6h307WNkcyCVAd3AyDlPGB6h6AolxIbyr3RtpV/lSVvFjb0muEFp3nT
-         XMHfpW3yT31PTwTaKNtjZizF715kIk6f+NPB/thYrxXEmiIasJTJemoXYL9xO+y6Itsw
-         /p8g==
+        b=IkIJQ3phARLG1m8E51RvuOhSv2wPHAVu2IeIK4F3fE7AdXYVQDBIiR7k8B5Zkizh8U
+         dr4p1sX7ypZaFp8KUnCldYaNP4sFmXZKX99tQIYb3oKjrzLBZlFB27EzqGDhma2C1PoV
+         VFkYAyGjCdUPOE7kzNqDrOFUqB5O3Hf047z+bTamt4ttPrJ/p/HrPntZKbvPmlKafDDD
+         xQ8wKzr1XOhcKWWfOt05jfrHZk/iZC1GCdeakh4+hTR0P35alMwGj58xPPR++PYGIzqt
+         IahHoKQqKZ48KvNfQyX1yeiWYrUz0ZCmKKy7lgwsVH6lvJCaipja6zlRiwOu3j09hfD8
+         PFkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kVetQXJT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=URMXznrN;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id nb41-20020a1709071ca900b00a1d558dc794sor4338329ejc.0.2023.12.11.13.21.10
+        by mx.google.com with SMTPS id a15-20020a1709063e8f00b00a1f64efa8efsor1917348ejj.14.2023.12.11.13.21.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:21:10 -0800 (PST)
+        Mon, 11 Dec 2023 13:21:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kVetQXJT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=URMXznrN;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329670; x=1702934470; darn=linaro.org;
+        d=linaro.org; s=google; t=1702329677; x=1702934477; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=WbDQbeYc3MqbJhEQi67twemcgBt5US82mKEOXjqMt3c=;
-        b=kVetQXJTT4OwMmDfFEZepxYO0DCEIPBbyTzDcCzveGMLH2lEnnttBs1RZlKLsaXyIA
-         CgN1XZLo7ERIUcEsf5Zg/nev9p9/6vSKxTh25jb0fu9EA1y+0Ooo8lmRjck6ibKzPe0K
-         CJ2zbk5/yFxqTtbeEcI0nDjy6mSTsBKdfyZUf/q4DWY8KYgVS9EemPBR4Z0TOM/P6zDZ
-         U4hKHPyEHHP9MP1lHHuajQYA7JviYYPsHHbRlvH1Cmvh/Bj4tXiFbTgqF4c1zWKMQmeo
-         eVmJQszrJcHyM3K2OwtxQwxE357Do3EvVmjrvgJUrrFBie4uVlVCPYnUni3S0DGSu8yE
-         t1mQ==
+        bh=bTgCkgY7q586A21zu0JSDs5UTTpVyxNoAlIlHHAmSdk=;
+        b=URMXznrN5jRxRSPGOLdM7SxqaqNHybNJwCCNlFQm2ILr8d+BwZqu12XgbnLPyoObdH
+         N1CndbUcpTKjGVvSaGceSkmkm5DC0L3WPkVs/TF+ztrncu+z0KvJojpM+TjxgYDITVas
+         8czB7FHGjlYObDzgPL4ClVf+i3DM91n0blTaebUAw33PazMyFpV7eJlk71nv0Me0Ktxo
+         /oh/yn8hH3e9qW3TrT6V7FGRUM9H13Aua3235d4tbOOLFDVQ9RFdy0YNFcy68OnwlysZ
+         yqfwKViS13vgdOD/NBVDxrLWnttSb5FXQsKPi7ITeIvKGi3TuD6enRDzP+vYmc6S6Mlj
+         4KbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329670; x=1702934470;
+        d=1e100.net; s=20230601; t=1702329677; x=1702934477;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WbDQbeYc3MqbJhEQi67twemcgBt5US82mKEOXjqMt3c=;
-        b=cQ3W+6P0RVrU8CgY8xGTL+CGE1/SkSavdxB3lUwWyW4t4172PWB7A/7a2+S0Xt2v22
-         HUQvI27ESxOTeC1+g9/WCL16Lt/FppmuvhukixtZXYuYnszsNqrF+zY3BzcPji+YjPyz
-         6VsOJRe9Adlsg8MSUn6gwvuKYS7jt3ABS+LO7xgA21OBEIS5dUUDVLiHE/noitLfSRFD
-         6ZgeHqEmLxcOLU3MzgYnhZ1sivgc1PiKx4pWJk/douCjXdGbsuqJa3JZ7iKD3nqExImG
-         aMyfSEsfJg4kw0BPZRUKTQSnSx/4a9EmTO+z3JQenudQZ2J8Ilxq64ISbN/RAqG87P/A
-         tscQ==
-X-Gm-Message-State: AOJu0YzUYAc2eir/18yBQ7MniplFAhv0sn4386JgdLFq6MpMv2hVuypa
-	KQekLiPGsn4UbImr+XTqfwDQKcMx
-X-Google-Smtp-Source: AGHT+IHqm4UZ94oft03ymzOFSZfr6wL2NQDR25w3u0JiNetMo2FIb4m6lHXBdEO0USlv9SICLLe3wg==
-X-Received: by 2002:a17:907:c08:b0:a1f:9842:5a4b with SMTP id ga8-20020a1709070c0800b00a1f98425a4bmr3691271ejc.66.1702329669925;
-        Mon, 11 Dec 2023 13:21:09 -0800 (PST)
+        bh=bTgCkgY7q586A21zu0JSDs5UTTpVyxNoAlIlHHAmSdk=;
+        b=jQRv71lvOwHve6BR+ut6d3073D5+ZK3+u1k4O60D2LdwV4p6gPYS9BqcCoLZnA7UGK
+         nF6WIr9u8bXC8R9Bi9Oz02Qa6UyshhniQHHXlbER9kKSxb5GAnXHm2dzob3OsR2EyPHg
+         D1l0LL1W2zUHHu4yUUXXk8S/JuguxqgA8iWZblk4hKO2yBl4mtzPP7Ak0WBlBYbcUCxJ
+         g2nG8I9YAiXshEB3G91OjgAvA8DHl7VKJ3RWu8f1R8vsHLyjF5GNFQ9euaiTvuZiWE39
+         h5TIRpSLv9fQe23pvC1KMXeOkGgc4vBVAA143XObm93pmr2k+dtyYeHZh+7tsNvnFFXK
+         YLIw==
+X-Gm-Message-State: AOJu0Yz1wBAo66HzXvY/u/E+OXO30SFEusa7gdBIUoU1rfcD4x+Zh/WU
+	Ts4kRF51geLQkdIOJ0Sa8fAMrksw
+X-Google-Smtp-Source: AGHT+IE7u8ErDB3qbkoxcWJBZGHg9TNyGS0VK2dx6Y5oKzk/mTl8UNR2B14GFHxyP9kq57rEnK1Ndw==
+X-Received: by 2002:a17:906:738b:b0:a1f:84ea:d8da with SMTP id f11-20020a170906738b00b00a1f84ead8damr2472617ejl.45.1702329677390;
+        Mon, 11 Dec 2023 13:21:17 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id vh9-20020a170907d38900b00a1d18c142eesm5352528ejc.59.2023.12.11.13.21.07
+        by smtp.gmail.com with ESMTPSA id tk3-20020a170907c28300b00a1cd54ec021sm5361923ejc.57.2023.12.11.13.21.14
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:21:09 -0800 (PST)
+        Mon, 11 Dec 2023 13:21:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -93,39 +93,60 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 07/24] host/load-extract: Include missing 'qemu/atomic.h' and 'qemu/int128.h'
-Date: Mon, 11 Dec 2023 22:19:44 +0100
-Message-ID: <20231211212003.21686-8-philmd@linaro.org>
+Subject: [PATCH 08/24] host/atomic128: Include missing 'qemu/atomic.h' header
+Date: Mon, 11 Dec 2023 22:19:45 +0100
+Message-ID: <20231211212003.21686-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
 References: <20231211212003.21686-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: FPGK0gdYY0gE
+X-TUID: P2/CVNgwQPo0
 
-int128_make128(), int128_getlo() and int128_urshift() are
-declared in "qemu/int128.h". qatomic_read__nocheck() is
-declared in "qemu/atomic.h".
+qatomic_cmpxchg__nocheck(), qatomic_read__nocheck(),
+qatomic_set__nocheck() are defined in "qemu/atomic.h".
+Include it in order to avoid:
+
+  In file included from include/exec/helper-proto.h:10:
+  In file included from include/exec/helper-proto-common.h:10:
+  In file included from include/qemu/atomic128.h:61:
+  In file included from host/include/aarch64/host/atomic128-cas.h:16:
+  host/include/generic/host/atomic128-cas.h:23:11: error: call to undeclared function 'qatomic_cmpxchg__nocheck'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    r.i = qatomic_cmpxchg__nocheck(ptr_align, c.i, n.i);
+          ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- host/include/generic/host/load-extract-al16-al8.h | 3 +++
- 1 file changed, 3 insertions(+)
+ host/include/generic/host/atomic128-cas.h  | 2 ++
+ host/include/generic/host/atomic128-ldst.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/host/include/generic/host/load-extract-al16-al8.h b/host/include/generic/host/load-extract-al16-al8.h
-index d95556130f..6b47339b57 100644
---- a/host/include/generic/host/load-extract-al16-al8.h
-+++ b/host/include/generic/host/load-extract-al16-al8.h
-@@ -8,6 +8,9 @@
- #ifndef HOST_LOAD_EXTRACT_AL16_AL8_H
- #define HOST_LOAD_EXTRACT_AL16_AL8_H
+diff --git a/host/include/generic/host/atomic128-cas.h b/host/include/generic/host/atomic128-cas.h
+index 6b40cc2271..4824f14659 100644
+--- a/host/include/generic/host/atomic128-cas.h
++++ b/host/include/generic/host/atomic128-cas.h
+@@ -11,6 +11,8 @@
+ #ifndef HOST_ATOMIC128_CAS_H
+ #define HOST_ATOMIC128_CAS_H
  
 +#include "qemu/atomic.h"
-+#include "qemu/int128.h"
 +
- /**
-  * load_atom_extract_al16_or_al8:
-  * @pv: host address
+ #if defined(CONFIG_ATOMIC128)
+ static inline Int128 ATTRIBUTE_ATOMIC128_OPT
+ atomic16_cmpxchg(Int128 *ptr, Int128 cmp, Int128 new)
+diff --git a/host/include/generic/host/atomic128-ldst.h b/host/include/generic/host/atomic128-ldst.h
+index 691e6a8531..12e4aca2da 100644
+--- a/host/include/generic/host/atomic128-ldst.h
++++ b/host/include/generic/host/atomic128-ldst.h
+@@ -11,6 +11,8 @@
+ #ifndef HOST_ATOMIC128_LDST_H
+ #define HOST_ATOMIC128_LDST_H
+ 
++#include "qemu/atomic.h"
++
+ #if defined(CONFIG_ATOMIC128)
+ # define HAVE_ATOMIC128_RO 1
+ # define HAVE_ATOMIC128_RW 1
 -- 
 2.41.0

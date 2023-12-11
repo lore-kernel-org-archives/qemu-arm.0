@@ -1,513 +1,600 @@
-Received: by 2002:a17:906:fa94:b0:a1c:d2de:9065 with SMTP id lt20csp3728472ejb;
-        Sun, 10 Dec 2023 17:49:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHMBLD3T5zKwh5xlWssjN0EbakQz1+2ZNh4OrNt4KVgMqqOfa8WqrHsWR2LzfwmP8toybvR
-X-Received: by 2002:a2e:9a83:0:b0:2c9:f778:e0b7 with SMTP id p3-20020a2e9a83000000b002c9f778e0b7mr1493182lji.102.1702259384461;
-        Sun, 10 Dec 2023 17:49:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702259384; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp196514ejo;
+        Mon, 11 Dec 2023 05:24:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHljbwwcmtf+1pE21ndLskv6zNlVx/KtV2rQHTZj4vSV5Fj9iIBVcHW55Gqf+OQNmwV5MRR
+X-Received: by 2002:a05:6358:2919:b0:16d:bbe2:d4f9 with SMTP id y25-20020a056358291900b0016dbbe2d4f9mr2367313rwb.4.1702301044280;
+        Mon, 11 Dec 2023 05:24:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702301044; cv=none;
         d=google.com; s=arc-20160816;
-        b=V8lW6ajQtcCdVV4d/fh6vcvjDAndWSPA2tODl6MAvUv7wXGxVdPLLrrkvM23Jnmwnr
-         D56uxm1612HX6gA2l9i1dnh/LXZyYqgE1HiOidEfDC2rlAsQooUU6N56ZDWOincp0bLP
-         oh82znc52Cm069W3iRzphYUqPqbKx04Sgi2rAOl/6zXp9lLMgRyJOsDQ1FU6f9RFr5Vk
-         kuf6+MgKb9Hcm3JImE71zbhox0ekRDkhY3MSPNZGBO5Lb+fS3mLad3MxeM7ObrOHLRMT
-         ym8/SvNoqYvo0zQf1hq+Q4C1CmO7fFzRx++k1yP94V8xIZMG5p6dj6Xxipqv8fxqT6mj
-         86cQ==
+        b=J6zIXN/wxCBCjjzWTesP1P9M4f/VR9TX/EhF1CfLrQOPUDsgx3Wu7402gDSZg+QZ4q
+         OBEKzr5+ok+FzTgMM6YiyqmAa6vktVPZodRSqw02msm6IoKFrm3I0FxdSgY+ZN6ZJUXk
+         JC6LR0Rt6crJabWlhouQpWLA2DKs+Zao9MQdirC4O49/IgLJak0+l0lvRqPs7a3TFElg
+         0pH8iIA9XSgyAZpssb7Yqp2wFvGbPa80OegYzGUj/2Kb3pyUDmrgk5mO4uvLZ/slkmUn
+         4was/jJF5Z5df/7JxuEml/kOp0Z7d86lhBZxTXV3dIxu82F9oYlyAJjmm22BJEvMnxlZ
+         mX3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=TCqBfZ1HkhWwkB06lkoTIk7CqVAPs8Ua9cElNqaoVPI=;
-        fh=025PSnTyo7VWGEdrIcFa+hEJQfn+RCNry6UayjD56nw=;
-        b=V6PM+VD2rHTQYBG9wvmqFqudHfiJetuFOcjtG/5sCWEmK4yTefOdG+90VOiik9LfLm
-         eqzKOuXqVIAkLMeQFF2ojMNMm9rvk9ZbRXUX760+3Umf5j9uCc+y3UASL5Dp+GlzD7DT
-         Y4YCEdIiyKQC2dDiWWHO1mhZuZfqj2MLeDRXlLW48Fd8QTJuq8TPCwBWSPx5WSZqDMEp
-         Ce2qLhuHrHm6ljZbndF1li1ssZAiufNlidCqUG1BChRHEg4QDWz1M7i2GaTBn4BmoKAJ
-         II87Adf3LTOcUA58ZKm7prMrafXLCIsiQB0ro04ABJG++y0t33k8XRZCutzeaVU/GBMt
-         1qwA==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=4R6WrawisskpE/yfvx0SV1npv62cHUlfEv74wAZ/tNU=;
+        fh=tkACxniSAcfAc6RaRC8a/SLdJY5wuiAW4EHyJqp2e8k=;
+        b=r2TMKzQ1xk0TyzsdmnSSXc5BSiGgSK3QSRodp5x/4+qmHWKBP7VUkrt49LFaRcXyRS
+         mRwLc7Hx7OfwabPYt7US4tpi5eKOlU5GkFeVe0edy+5GZyHNwQDyGH2ne5EU5Gc/l0Cv
+         PvyD20GvWH34pLeLHIPduO67d0zJKPIb4CNsJ18b0wvBd+rwFI8yG/j7TpzmLEp03ov2
+         rbuub5Li/XhozIgZDs9wxTJzyyrnM8MMsu4BYG+O5bNSAQPTWpVtAwV0kCaqWF5NgUSJ
+         aNPL64Q63p/b0APEKKT+V3wwgzvUOG6ZMtADJ2IYdbrPtDa/bZ7uPt9j1id88QyraAps
+         Y2WA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QQA0cR+9;
-       spf=pass (google.com: domain of kvm+bounces-4010-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-4010-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-4010-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id g7-20020a170906348700b00a1da5a4e2d8si3101189ejb.262.2023.12.10.17.49.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 10 Dec 2023 17:49:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-4010-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=jQ4j7pjh;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@linux.intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.9])
+        by mx.google.com with ESMTPS id cs4-20020ad44c44000000b0067aaf2e75aesi8210434qvb.251.2023.12.11.05.24.03
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Dec 2023 05:24:04 -0800 (PST)
+Received-SPF: none (google.com: linux.intel.com does not designate permitted sender hosts) client-ip=198.175.65.9;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QQA0cR+9;
-       spf=pass (google.com: domain of kvm+bounces-4010-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-4010-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 009E01F20F96
-	for <alex.bennee@linaro.org>; Mon, 11 Dec 2023 01:49:44 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2A07610A36;
-	Mon, 11 Dec 2023 01:49:39 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="QQA0cR+9"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D7613BD
-	for <kvm@vger.kernel.org>; Sun, 10 Dec 2023 17:49:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702259373;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=TCqBfZ1HkhWwkB06lkoTIk7CqVAPs8Ua9cElNqaoVPI=;
-	b=QQA0cR+9AQRMONg+OPJuHOJ8VGvrIBA4PRQG3hxSIueEU9hvLYEHh05cnfgHJAIu3P7fi/
-	YctYGIK0Snh75vcMPJI79/HGcD2CNDe2QmcELauohDFZ9RreEwbhSw83wtxIVQUASQN/Nj
-	JuJiTLY28u1jEgLTc5RelEebB5EtqAQ=
-Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
- [209.85.167.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-10-57e9S2R0Ojy5ti9czLJTSw-1; Sun, 10 Dec 2023 20:49:31 -0500
-X-MC-Unique: 57e9S2R0Ojy5ti9czLJTSw-1
-Received: by mail-oi1-f199.google.com with SMTP id 5614622812f47-3b9fe44d7daso2372512b6e.1
-        for <kvm@vger.kernel.org>; Sun, 10 Dec 2023 17:49:31 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702259370; x=1702864170;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TCqBfZ1HkhWwkB06lkoTIk7CqVAPs8Ua9cElNqaoVPI=;
-        b=exWw4/0xAz+VkGFLeD8bYZ84RX0w/UPBFKDZO4dmPu9AkbM0894MkAicPXiiBIBgAr
-         JRBvKvMiDc52SA7rFkIFlWl0kLY2gQ13qdW8mFoRVU/Rq9jMmOH3EVPd6VaxSV9J+1TK
-         +buhJSfQwrHZGhZsr2LKFRwSAew6h5cudNFFk8qQp1beYaOBK7NIk4RCO4CQbPhdmW+i
-         gTNWWM/5JGaUhk4MIYR6SD0JCBI3gmZIny4T7ZUdCm8qmtYdWBKf65dxuRVsrj2Rkzsl
-         kJkHlpDNbCBFeFwyZDVqxftg8xwKd2gyZjcMJImhAamR/3SzeGKM8qfFFnTFaLFRjVta
-         OV1A==
-X-Gm-Message-State: AOJu0Yw37X08dqvjRBSd4qLupJOoawf70i8gdlYr9LxydZPVA4JxuBDE
-	xKNjV3r+r45oH1ksil/ev5GyTt2y0fjro/AxKc3E0wUk/QPks/y+k0YzuTKQ6j5NzPjMCdEXvQJ
-	ebppMO1NPmd5/
-X-Received: by 2002:a05:6808:128b:b0:3b9:dd5e:86f2 with SMTP id a11-20020a056808128b00b003b9dd5e86f2mr5208176oiw.13.1702259369668;
-        Sun, 10 Dec 2023 17:49:29 -0800 (PST)
-X-Received: by 2002:a05:6808:128b:b0:3b9:dd5e:86f2 with SMTP id a11-20020a056808128b00b003b9dd5e86f2mr5208144oiw.13.1702259368919;
-        Sun, 10 Dec 2023 17:49:28 -0800 (PST)
-Received: from [192.168.68.51] ([43.252.115.3])
-        by smtp.gmail.com with ESMTPSA id ff16-20020a056a002f5000b006ce742b6b1fsm5141241pfb.63.2023.12.10.17.49.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 10 Dec 2023 17:49:28 -0800 (PST)
-Message-ID: <47d6fd0e-5ad8-4290-b064-ecb76ca8576c@redhat.com>
-Date: Mon, 11 Dec 2023 11:49:23 +1000
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=jQ4j7pjh;
+       spf=none (google.com: linux.intel.com does not designate permitted sender hosts) smtp.mailfrom=zhao1.liu@linux.intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1702301044; x=1733837044;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=kJqa5cHPgyxdSm3IILicVo1CXg7C3blKA3Wa2hGYEP4=;
+  b=jQ4j7pjhPuYKp3jg5tsesmHa0HOtnft3lyY4Fntk0+2vGEd+EN4urqxN
+   dmbYCLMiG7Da8BQyx08/h764TG4KRknwKhlzG7stf/x+JnRLUE/e06hTb
+   6d+KpaRBXFtgr/NVyXDvbmJ4CE33JQW99oknPZc53MXvxNU5bXkiMoSnR
+   53Ac/eybatpUFPoGc3H3AaIg4rQsWEgKvU9v6uEbPc1xTkCWxv7uERpZR
+   FxS1MpjdlUj9P4MdRfsD3fOPUdNNqwCilM+kA+D4p+gM7Kpu9O7s3Va+N
+   K/Lxkb9KN/SZwzxjt4OOyaiMXYKQKVswxincTHoeLjpBVfRrO29RF9T5d
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10920"; a="13340124"
+X-IronPort-AV: E=Sophos;i="6.04,267,1695711600"; 
+   d="scan'208";a="13340124"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2023 05:24:02 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10920"; a="807299246"
+X-IronPort-AV: E=Sophos;i="6.04,267,1695711600"; 
+   d="scan'208";a="807299246"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orsmga001.jf.intel.com with ESMTP; 11 Dec 2023 05:23:52 -0800
+Date: Mon, 11 Dec 2023 21:36:14 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	=?iso-8859-1?Q?Fr=E9d=E9ric?= Barrat <fbarrat@linux.ibm.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>, Gerd Hoffmann <kraxel@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+	xen-devel@lists.xenproject.org, qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Cc: Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>, Zhiyuan Lv <zhiyuan.lv@intel.com>,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [RFC 00/41] qom-topo: Abstract Everything about CPU Topology
+Message-ID: <ZXcQTvoESEI6www0@intel.com>
+References: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Content-Language: en-US
-To: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org
-Cc: Eric Auger <eauger@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org
-References: <20231207103648.2925112-1-shahuang@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20231207103648.2925112-1-shahuang@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: t0Q9k5OX31/3
+Content-Type: text/plain; charset=gb2312
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231130144203.2307629-1-zhao1.liu@linux.intel.com>
+X-TUID: 0vqh4TYU6Xgu
 
-Hi Shaoqin,
+Hi maintainers,
 
-On 12/7/23 20:36, Shaoqin Huang wrote:
-> The KVM_ARM_VCPU_PMU_V3_FILTER provide the ability to let the VMM decide
-                                  ^^^^^^^
-                                  provides
-> which PMU events are provided to the guest. Add a new option
-> `pmu-filter` as -accel sub-option to set the PMU Event Filtering.
-                   ^^^^^^
-                   '-accel kvm'
+Just a ping. Welcome your feedbacks!
 
-> Without the filter, the KVM will expose all events from the host to
-> guest by default.
-
-Without the filter, all PMU events are exposed from host to guest by
-default.
-
-> 
-> The `pmu-filter` has such format:
-> 
->    pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-> 
-> The A means "allow" and D means "deny", start is the first event of the
-> range and the end is the last one. The first registered range defines
-> the global policy(global ALLOW if the first @action is DENY, global DENY
-> if the first @action is ALLOW). The start and end only support hex
-> format now. For example:
-> 
->    pmu-filter="A:0x11-0x11;A:0x23-0x3a;D:0x30-0x30"
-> 
-> Since the first action is allow, we have a global deny policy. It
-> will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-> also allowed except the event 0x30 is denied, and all the other events
-> are disallowed.
-> 
-
-The section explaining how 'pmu-filter' is used has been well documented
-in qemu-options.hx. So it can be dropped Instead, it can be mentioned in
-the commit message, something like below.
-
-The usage of the new sub-option can be found from the updated document
-(qemu-options.hx).
-
-> Here is an real example shows how to use the PMU Event Filtering, when
-           ^^^^^^^^^^^^^^^
-           an example
-> we launch a guest by use kvm, add such command line:
-> 
->    # qemu-system-aarch64 \
-> 	-accel kvm,pmu-filter="D:0x11-0x11"
-> 
-> Since the first action is deny, we have a global allow policy. This
-> disables the filtering of the cycle counter (event 0x11 being CPU_CYCLES).
-> 
-> And then in guest, use the perf to count the cycle:
-> 
->    # perf stat sleep 1
-> 
->     Performance counter stats for 'sleep 1':
-> 
->                1.22 msec task-clock                       #    0.001 CPUs utilized
->                   1      context-switches                 #  820.695 /sec
->                   0      cpu-migrations                   #    0.000 /sec
->                  55      page-faults                      #   45.138 K/sec
->     <not supported>      cycles
->             1128954      instructions
->              227031      branches                         #  186.323 M/sec
->                8686      branch-misses                    #    3.83% of all branches
-> 
->         1.002492480 seconds time elapsed
-> 
->         0.001752000 seconds user
->         0.000000000 seconds sys
-> 
-> As we can see, the cycle counter has been disabled in the guest, but
-> other pmu events are still work.
-> 
-> Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
-> ---
-> v3->v4:
->    - Fix the wrong check for pmu_filter_init.            [Sebastian]
->    - Fix multiple alignment issue.                       [Gavin]
->    - Report error by warn_report() instead of error_report(), and don't use
->    abort() since the PMU Event Filter is an add-on and best-effort feature.
->                                                          [Gavin]
->    - Add several missing {  } for single line of code.   [Gavin]
->    - Use the g_strsplit() to replace strtok().           [Gavin]
-> 
-> v2->v3:
->    - Improve commits message, use kernel doc wording, add more explaination on
->      filter example, fix some typo error.                [Eric]
->    - Add g_free() in kvm_arch_set_pmu_filter() to prevent memory leak. [Eric]
->    - Add more precise error message report.              [Eric]
->    - In options doc, add pmu-filter rely on KVM_ARM_VCPU_PMU_V3_FILTER support in
->      KVM.                                                [Eric]
-> 
-> v1->v2:
->    - Add more description for allow and deny meaning in
->      commit message.                                     [Sebastian]
->    - Small improvement.                                  [Sebastian]
-> 
-> v2: https://lore.kernel.org/all/20231117060838.39723-1-shahuang@redhat.com/
-> v1: https://lore.kernel.org/all/20231113081713.153615-1-shahuang@redhat.com/
-> ---
->   include/sysemu/kvm_int.h |  1 +
->   qemu-options.hx          | 21 +++++++++++
->   target/arm/kvm.c         | 23 ++++++++++++
->   target/arm/kvm64.c       | 75 ++++++++++++++++++++++++++++++++++++++++
->   4 files changed, 120 insertions(+)
-> 
-I would simplify the commit message like below, for your reference.
-
----
-
-The KVM_ARM_VCPU_PMU_V3_FILTER provides the ability letting the VMM
-to decide which PMU events are present to the guest. Add a new option
-`pmu-filter` as '-accel kvm' sub-option to set the PMU Event Filtering.
-The usage of the new sub-option can be found from the updated docuement
-(qemu-options.hx).
-
-Here is an example shows how to use the PMU Event Filtering.
-
-   # qemu-system-aarch64 -accel kvm,pmu-filter="D:0x11-0x11"
-
-Since the first action is deny, we have a global allow policy. This
-disables the filtering of the cycle counter (event 0x11). In the
-guest, we use the perf to count the CPU cycles. The PMU event has
-been disabled, but other events are still present.
-
-   # perf stat sleep 1
-   Performance counter stats for 'sleep 1':
-               1.22 msec task-clock         #   0.001 CPUs utilized
-                  1      context-switches   # 820.695 /sec
-                  0      cpu-migrations     #   0.000 /sec
-                 55      page-faults        #  45.138 K/sec
-    <not supported>      cycles
-            1128954      instructions
-             227031      branches           #  186.323 M/sec
-               8686      branch-misses      #  3.83% of all branches
-
-     1.002492480 seconds time elapsed
-     0.001752000 seconds user
-     0.000000000 seconds sys
-
-> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-> index fd846394be..8f4601474f 100644
-> --- a/include/sysemu/kvm_int.h
-> +++ b/include/sysemu/kvm_int.h
-> @@ -120,6 +120,7 @@ struct KVMState
->       uint32_t xen_caps;
->       uint16_t xen_gnttab_max_frames;
->       uint16_t xen_evtchn_max_pirq;
-> +    char *kvm_pmu_filter;
->   };
->   
->   void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 42fd09e4de..054865ba0d 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -187,6 +187,7 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
->       "                tb-size=n (TCG translation block cache size)\n"
->       "                dirty-ring-size=n (KVM dirty ring GFN count, default 0)\n"
->       "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
-> +    "                pmu-filter={A,D}:start-end[;{A,D}:start-end...] (KVM PMU Event Filter, default no filter. ARM only)\n"
->       "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
->       "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
->   SRST
-> @@ -259,6 +260,26 @@ SRST
->           impact on the memory. By default, this feature is disabled
->           (eager-split-size=0).
->   
-> +    ``pmu-filter={A,D}:start-end[;{A,D}:start-end...]``
-> +        KVM implements PMU Event Filtering to prevent a guest from being able to
-> +        sample certain events. It depends on the KVM_ARM_VCPU_PMU_V3_FILTER
-> +        attribute supported in KVM. It has the following format:
-> +
-> +        pmu-filter="{A,D}:start-end[;{A,D}:start-end...]"
-> +
-> +        The A means "allow" and D means "deny", start is the first event of the
-> +        range and the end is the last one. The first registered range defines
-> +        the global policy(global ALLOW if the first @action is DENY, global DENY
-> +        if the first @action is ALLOW). The start and end only support hex
-                                                                           ^^^
-                                                                           hexadecimal
-> +        format now. For example:
-> +
-> +        pmu-filter="A:0x11-0x11;A:0x23-0x3a;D:0x30-0x30"
-> +
-> +        Since the first action is allow, we have a global deny policy. It
-> +        will allow event 0x11 (The cycle counter), events 0x23 to 0x3a is
-> +        also allowed except the event 0x30 is denied, and all the other events
-> +        are disallowed.
-> +
->       ``notify-vmexit=run|internal-error|disable,notify-window=n``
->           Enables or disables notify VM exit support on x86 host and specify
->           the corresponding notify window to trigger the VM exit if enabled.
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 7903e2ddde..1f73b83674 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1108,6 +1108,22 @@ static void kvm_arch_set_eager_split_size(Object *obj, Visitor *v,
->       s->kvm_eager_split_size = value;
->   }
->   
-> +static char *kvm_arch_get_pmu_filter(Object *obj, Error **errp)
-> +{
-> +    KVMState *s = KVM_STATE(obj);
-> +
-> +    return g_strdup(s->kvm_pmu_filter);
-> +}
-> +
-> +static void kvm_arch_set_pmu_filter(Object *obj, const char *pmu_filter,
-> +                                    Error **errp)
-> +{
-> +    KVMState *s = KVM_STATE(obj);
-> +
-> +    g_free(s->kvm_pmu_filter);
-> +    s->kvm_pmu_filter = g_strdup(pmu_filter);
-> +}
-> +
->   void kvm_arch_accel_class_init(ObjectClass *oc)
->   {
->       object_class_property_add(oc, "eager-split-size", "size",
-> @@ -1116,4 +1132,11 @@ void kvm_arch_accel_class_init(ObjectClass *oc)
->   
->       object_class_property_set_description(oc, "eager-split-size",
->           "Eager Page Split chunk size for hugepages. (default: 0, disabled)");
-> +
-> +    object_class_property_add_str(oc, "pmu-filter",
-> +                                  kvm_arch_get_pmu_filter,
-> +                                  kvm_arch_set_pmu_filter);
-> +
-> +    object_class_property_set_description(oc, "pmu-filter",
-> +        "PMU Event Filtering description for guest PMU. (default: NULL, disabled)");
->   }
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 3c175c93a7..0ed6744057 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -10,6 +10,7 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include <asm-arm64/kvm.h>
->   #include <sys/ioctl.h>
->   #include <sys/ptrace.h>
->   
-> @@ -131,6 +132,77 @@ static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
->       return true;
->   }
->   
-> +static void kvm_arm_pmu_filter_init(CPUState *cs)
-> +{
-> +    KVMState *kvm_state = cs->kvm_state;
-> +    static bool pmu_filter_init = false;
-
-Needn't to initialize it to the default value, which is false.
-
-        static bool pmu_filter_init;
-
-> +    struct kvm_pmu_event_filter filter;
-> +    struct kvm_device_attr attr = {
-> +        .group      = KVM_ARM_VCPU_PMU_V3_CTRL,
-> +        .attr       = KVM_ARM_VCPU_PMU_V3_FILTER,
-> +        .addr       = (uint64_t)&filter,
-> +    };
-> +    char act;
-> +    int i;
-> +    gchar **event_filters;
-> +
-> +    if (!kvm_state->kvm_pmu_filter)
-> +        return;
-> +
-
-Missed { }
-
-> +    if (kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, &attr)) {
-> +        warn_report("The kernel doesn't support the PMU Event Filter!\n");
-> +        return;
-> +    }
-> +
-
-Need to drop "\n", no new line is allowed for warn_report().
-
-The followup call to kvm_arm_set_device_attr() already had the check. So the
-duplicate check isn't needed here.
-
-> +    /* The filter only needs to be initialized for 1 vcpu. */
-                                                       ^^
-                                                       one vCPU
-
-> +    if (pmu_filter_init) {
-> +        return;
-> +    }
-> +    pmu_filter_init = true;
-> +
-> +    event_filters = g_strsplit(kvm_state->kvm_pmu_filter, ";", -1);
-> +
-> +    for (i = 0; event_filters[i]; i++) {
-
-I would remove these empty lines, to:
-
-        if (pmu_filter_init) {
-            return;
-        }
-
-        pmu_filter_init = true;
-        event_filters = g_strsplit(kvm_state->kvm_pmu_filter, ";", -1);
-        for (...) {
-
-> +        unsigned short start = 0, end = 0;
-> +
-> +        sscanf(event_filters[i], "%c:%hx-%hx", &act, &start, &end);
-> +        if ((act != 'A' && act != 'D') || (!start && !end)) {
-> +            warn_report("Skipping invalid PMU filter %s\n", event_filters[i]);
-> +            continue;
-> +        }
-> +
-
-"\n" needs to be dropped and it breaks 80-chars in one line:
-
-            warn_report("Skipping invalid PMU filter %s",
-                        event_filter[i]);
-
-> +        filter = (struct kvm_pmu_event_filter) {
-> +            .base_event     = start,
-> +            .nevents        = end - start + 1,
-> +            .action         = act == 'A' ? KVM_PMU_EVENT_ALLOW :
-> +                                           KVM_PMU_EVENT_DENY,
-> +        };
-> +
-
-Suggest to access to @filter directly. Otherwise, there is another unnecessary
-and temporary struct in the stack if the tool-chain isn't smart enough, leading
-to memory waste in the stack.
-
-            filter.base_event = start;
-            filter.nevents = end - start + 1;
-            filter.act = (act == 'A') ? KVM_PMU_EVENT_ALLOW :
-                                        KVM_PMU_EVENT_DENY;
-
-> +        if (!kvm_arm_set_device_attr(cs, &attr, "PMU Event Filter")) {
-> +            if (errno == EINVAL) {
-> +                warn_report("Invalid PMU filter range [0x%x-0x%x]. "
-> +                             "ARMv8.0 support 10 bits event space, "
-> +                             "ARMv8.1 support 16 bits event space",
-> +                             start, end);
-> +            }
-> +            else if (errno == ENODEV) {
-> +                warn_report("GIC not initialized");
-> +            }
-> +            else if (errno == ENXIO) {
-> +                warn_report("PMUv3 not properly configured or in-kernel irqchip "
-> +                            "not configured.");
-> +            }
-> +            else if (errno == EBUSY) {
-> +                warn_report("PMUv3 already initialized or a VCPU has already run");
-> +            }
-> +
-> +            break;
-> +        }
-
-"} else if {" is needed.
-
-The last warn_report() line breaks 80-chars in a line.
-
-I'm wandering if we really need these explicit messages, which are usually a intrest
-to developers. They still need look into kernel space to figure out the cause. There
-already has a error_report() raised for the failing case in kvm_arm_set_device_attr().
-So I would suggest to drop all of them and bail for simplicity.
-
-            if (!kvm_arm_set_device_attr(cs, &attr, "PMU Event Filter")) {
-                break;
-            }
-
-> +    }
-> +
-> +    g_strfreev(event_filters);
-> +}
-> +
->   void kvm_arm_pmu_init(CPUState *cs)
->   {
->       struct kvm_device_attr attr = {
-> @@ -141,6 +213,9 @@ void kvm_arm_pmu_init(CPUState *cs)
->       if (!ARM_CPU(cs)->has_pmu) {
->           return;
->       }
-> +
-> +    kvm_arm_pmu_filter_init(cs);
-> +
->       if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
->           error_report("failed to init PMU");
->           abort();
+We wonder if the current RFC is an appropriate attempt towards the final
+hybrid topology.
 
 Thanks,
-Gavin
+Zhao
 
+On Thu, Nov 30, 2023 at 10:41:22PM +0800, Zhao Liu wrote:
+> Date: Thu, 30 Nov 2023 22:41:22 +0800
+> From: Zhao Liu <zhao1.liu@linux.intel.com>
+> Subject: [RFC 00/41] qom-topo: Abstract Everything about CPU Topology
+> X-Mailer: git-send-email 2.34.1
+> 
+> From: Zhao Liu <zhao1.liu@intel.com>
+> 
+> Hi list,
+> 
+> This series is our latest attempt after the previous RFC [1] about
+> hybrid topology support, which is based on the commit 4705fc0c8511
+> ("Merge tag 'pull-for-8.2-fixes-231123-1' of https://gitlab.com/
+> stsquad/qemu into staging") with our previous cleanup (patches link:
+> https://lore.kernel.org/all/20231127145611.925817-1-zhao1.liu@linux.intel.com/).
+> 
+> In the previous RFC, Daniel suggested [2] us to use the modern QOM
+> approach to define CPU topology, and based on this way, defining hybrid
+> topology through cli is natural. (Thanks Daniel!)
+> 
+> About why we chose -device other than -object, please see the chapter.3
+> "History of QOM Topology".
+> 
+> In fact, S390x already implements heterogeneity at the CPU level with
+> QOM CPUs, i.e., different CPUs have different entitlements [3]. However,
+> for more thorough heterogeneity, i.e., heterogeneous cores, clusters,
+> dies, caches and even more, we still need to go farther in the QOM
+> direction.
+> 
+> With these background, we propose this series to implement QOM "smp"
+> topology in QEMU, and it's also the first step towards the heterogeneous
+> topology (including CPU & cache topology) for virtualization case.
+> 
+> The overall goal is to both use QOM "smp" topology to be compatible with
+> current -smp behavior, and to take into account different architectural
+> setups/requirements for CPU topology (even including different designs
+> for CPU hotplug and possible_cpus[] implementation), and ultimately to
+> extend QEMU's ability to define CPU topology via -device even without
+> -smp.
+> 
+> The current remining issue, mainly related to PPC, as it chose to build
+> the pssible_cpus[] list at core granularity. Please see chapter.5 "Open
+> Questions" for more thoughts on this issue.
+> 
+> For other architectures that build possible_cpus[] at CPU granularity,
+> the transition to QOM topology will be similar to what was done for i386
+> in this patchset (please feel free to point out any issues I've missed).
+> 
+> There's a lot of work, and the devil is in the details.
+> 
+> 
+> Welcome your feedbacks!
+> 
+> 
+> 1. Summary about What We Did?
+> =============================
+> 
+> This series implements the basics of QOM topology and supports QOM
+> topology for the i386 as the example:
+> 
+> * Introduce the general topology device and abstract all CPU topology
+>   levels to topology devices:
+> 
+>     - including "cpu", "cpu-core", "cpu-cluster", "cpu-die",
+>       "cpu-socket", "cpu-book", "cpu-drawer", and a special topology
+>       root "cpu-slot" to manage topology tree.
+> 
+> * Allow user to create "smp" CPU topology via "-device", for example:
+> 
+>     The topology with 8 CPUs:
+> 
+>     -accel kvm -cpu host \
+>     -device cpu-socket,id=sock0 \
+>     -device cpu-die,id=die0,parent=sock0 \
+>     -device cpu-core,id=core0,parent=die0,nr-threads=2 \
+>     -device cpu-core,id=core1,parent=die0,nr-threads=2,plugged-threads=1 \
+>     -device cpu-core,id=core2,parent=die0,nr-threads=2,plugged-threads=2 \
+>     -device cpu-core,id=core3,parent=die0,nr-threads=2 \
+>     -device host-x86_64-cpu,socket-id=0,die-id=0,core-id=1,thread-id=1 \
+> 
+> * Build a topology tree under machine, for example:
+> 
+>     One of the above CPUs:
+> 
+>     {
+>         "props": {
+>             "core-id": 0,
+>             "socket-id": 0,
+>             "thread-id": 0
+>         },
+>         "qom-path": "/machine/peripheral/cpu-slot/sock0/die0/core0/host-x86_64-cpu[0]",
+>         "type": "host-x86_64-cpu",
+>         "vcpus-count": 1
+>     }
+> 
+> * Convert topology information configured via -smp into a QOM "smp"
+>   topology tree (if the arch supports QOM topology).
+> 
+> 
+> 2. What's the Problem?
+> ======================
+> 
+> As computer architectures continue to innovate, the need for
+> heterogeneous topology of virtual machine in QEMU is growing.
+> 
+> On the one hand, there is the need for heterogeneous CPU topology
+> support. Heterogeneous CPU topology refers to systems that use more than
+> one kind of processor or cores [4], the typical example is intel hybrid
+> architecture with 2 core types [5], which will even have heterogeneous
+> die topology [6]. And we can see that not only Intel, but also ARM and
+> AMD's heterogeneous platforms will have the ability to support
+> virtualization.
+> 
+> On the other hand, there is also a growing need for heterogeneous cache
+> topology in QEMU. Not only will Intel's hybrid platforms introduce
+> complex heterogeneous cache topology, but more platforms have aslo seen
+> the strong demand for heterogeneous cache topology definition (e.g. ARM
+> [7]). Although cache topology is strictly speaking a separate topology
+> from CPU topology, in terms of the actual processor build process and
+> the current QEMU's way to define cache topology (e.g., i386 [8] & ARM
+> [9]), cache topology is and should be dependent on CPU topology to be
+> defined.
+> 
+> With this background of increasing interest in heterogeneous computing,
+> we need a flexible way (for accel) to define a wide variety of CPU
+> topologies in QEMU.
+> 
+> Obviously, -smp is not enough, so here we propose a way to define CPU
+> topology based on -device, in the hope that this will greatly expand the
+> flexibility of QEMU's CPU topology definition.
+> 
+> 
+> 3. History of QOM Topology
+> ==========================
+> 
+> The intent of QOM topology is not to stop at QOM CPUs, but to abstract
+> more CPU topology levels.
+> 
+> In fact, it's not a new term.
+> 
+> Back in 2014, Fan proposed [10] a hierarchical tree based on QOM node,
+> QOM sockets, QOM cores and QOM cpu. Andreas also propsed [11] socket/
+> core/thread QOM model to create hierarchical topology in place. From
+> the discussion at that time, the hierarchy topology tree representation
+> was what people (Igor said [12]) wanted. However, this work was not
+> continued.
+> 
+> Then Bharata abstracted [13] the cpu-core to support core granularity
+> hotplug in spapr. Until now, the only user of cpu-core is still spapr.
+> 
+> Cpu-cluster was introduced by Luc [14] to organize CPUs in different
+> containers to support GDB for TCG case. Though this abstraction was
+> descripted as: "mainly an internal QEMU representation and does not
+> necessarily match with the notion of clusters on the real hardware",
+> its name and function actually make it easy to correspond to the
+> physical cluster/smp cluster (the difference, of course, is that TCG
+> cluster collects CPUs directly, while the cluster as a CPU topology
+> level collect cores, but this difference is not the impediment gap to
+> converting "TCG " cluster to "general" cluster).
+> 
+> As CPU architectures evolve, QEMU has supported more topology levels
+> (clusters, die, book and drawer) for virtualization case, while the
+> existing cpu-core and cpu-cluster abstractions become fragmented.
+> 
+> And now, the need for defining hybrid topology has prompted us to
+> rethink the QOM topology.
+> 
+> Daniel suggested [2] to use -object interfaces to define CPU topology,
+> and we absorbed his design idea. But in practice we found that -device
+> looked like a better approach to take advantage of the current QOM CPU
+> device, cpu-core device and cpu-cluster device.
+> 
+> 
+> 4. Design Overview
+> ==================
+> 
+> 4.1. General Topology Device
+> ============================
+> 
+> We introduce a new topology device as the basic abstraction, then all
+> levels of the CPU topology are derived from this general topology device
+> type.
+> 
+> This topology device is the basic unit for building the topology tree.
+> Children topology devices are inserted into the queue of the parent, and
+> the child<> property is created between the children and their parent.
+> 
+> As the root of the topology tree, we introduce a special topology device
+> "cpu-slot". It is created by the machine at machine's initialization and
+> collects the topology devices created by the user from the cli, and thus
+> builds the topology tree.
+> 
+> The cpu-slot is also responsible for statistics on global topology
+> information, and whenever there is a new topology child, the cpu-slot as
+> root is notified to update topology informantion. In addition, different
+> architectures have different requirements for topology (e.g., support
+> for different levels), and such limitations/properties are applied to
+> cpu-slot, which is checked when adding the new child topology unit in
+> topology tree.
+> 
+> 
+> 4.2. Derived QOM Topology Devices
+> =================================
+> 
+> Based on the new general topology device type, we convert CPU, cpu-core
+> and cpu-cluster from general devices to topology devices.
+> 
+> And we also abstract cpu-die, cpu-socket, cpu-book and cpu-drawer as
+> topology devices.
+> 
+> 
+> 4.3. New Device Category "DEVICE_CATEGORY_CPU_DEF"
+> ==================================================
+> 
+> The topology devices can be divided into two general categories:
+> 
+> * One, as the basic topology components, should be created before board
+>   initialization, to predefine the basic topology structure for the
+>   system, and is used to initialize MachineState.possible_cpus at
+>   machine's initialization. This category doesn't support hotplug, such
+>   as:
+> 
+>     cpu-core (non-PPC core), cpu-cluster, cpu-die, cpu-socket, cpu-book
+>     and cpu-drawer.
+> 
+>   Thus, we introduce the new device category "DEVICE_CATEGORY_CPU_DEF"
+>   to mark these devices and create them from cli before board
+>   initialization.
+> 
+> * The other are CPU and PPC core, which are the granularity of
+>   MachineState.possible_cpus.
+> 
+>   They're created from MachineState.possible_cpus in place during
+>   machine initialization or are plugged into MachineState.possible_cpus
+>   through hotplug way.
+> 
+>   For these devices, they could be created from cli only after board
+>   initialization.
+> 
+> 
+> 4.4. User-child Interface to Build Child<> from Cli
+> ===================================================
+> 
+> Topology device is bus-less device, and needs child<> to build topology
+> hierarchical relationship like:
+> 
+> /machine/peripheral/cpu-slot/sock*/die*/core*/cpu*
+> 
+> Therefore, we introduce a new user-child interface to insert hooks into
+> device_add path to get/specify object parent for topology devices.
+> 
+> If a topology device specify "parent" option in -device, it will be add
+> to the corresponding topology parent with child<> property.
+> 
+> If no "parent" option, the topology device will have the default parent
+> "cpu-slot". This ensures cpu-slot could collect all topology units to
+> build complete topology tree.
+> 
+> 
+> 5. Open Questions
+> =================
+> 
+> There's a special case, user could define topology via -device without
+> -smp (that's the future hybrid topology case!).
+> 
+> In the design of current QOM topology, the numbers of maximum CPUs and
+> pre plugged CPUs could be collected during core devices realize.
+> 
+> For the (non-PPC) architectures which build possible_cpus[] at CPU
+> granularity, the cores will be created before possible_cpus[]
+> initialization and then CPU slot could know how many maximum CPUs will
+> be supported to fill possible_cpus[].
+> 
+> But for PPC, the possible_cpus[] is at core granularity and PPC core
+> could only be created after possible_cpus[] initialization, so that
+> CPU slot cannot know the the numbers of maximum CPUs (PPC cores) and pre
+> plugged CPUs (PPC cores). So for PPC, the "-smp" is necessary and cannot
+> be omitted.
+> 
+> For PPC this potential impact, i.e., even though QOM topology is
+> supported in PPC, it is not possible to omit -smp to create the topology
+> only via -device as for i386, and since PPC does not currently support
+> heterogeneous topology, this potential impact might be acceptable?
+> 
+> 
+> 6. Future TODOs
+> ===============
+> 
+> The current QOM topology RFC is only the very first step to introduce
+> the most basic QOM support, and it tries to be as compatible as possible
+> with existing SMP facilities.
+> 
+> The ultimate goal is to completely replace the current smp-related
+> topology structures with cpu-slot.
+> 
+> There are many TODOs:
+> 
+> * Add unit tests.
+> * Support QOM topology for all architectures.
+> * Get rid of MachineState.smp and MachineClass.smp_props with cpu-slot.
+> * Extend QOM topology to hybrid topology.
+> * Introduce "-device-set" which is derived from Daniel's "-object-set"
+>   idea [2] to create multiple duplicate devices.
+> ...
+> 
+> 
+> 7. Patch Summary
+> ================
+> 
+> Patch  1- 3: Create DEVICE_CATEGORY_CPU_DEF devices before board
+>              initialization.
+> Patch  4- 7: Support child<> creation from cli.
+> Ptach  8-12: Introduce general topology device.
+> Patch 13-26: Abstract all topology levels to topology devices.
+> Patch 27-34: Introduce cpu-slot to manage the CPU topology of machine.
+> Patch 35-41: Convert i386's CPU creation & hotplug to be based on QOM
+>              topology.
+> 
+> 
+> 8. Reference
+> ============
+> 
+> [1]:  Hybrid topology RFC:
+>       https://mail.gnu.org/archive/html/qemu-devel/2023-02/msg03205.html
+> [2]:  Daniel's suggestion about QOM topology:
+>       https://mail.gnu.org/archive/html/qemu-devel/2023-02/msg03320.html
+> [3]:  S390x topology document (by Nina):
+>       https://lists.gnu.org/archive/html/qemu-devel/2023-10/msg04842.html
+> [4]:  Heterogeneous computing:
+>       https://en.wikipedia.org/wiki/Heterogeneous_computing
+> [5]:  12th gen¡¯s Intel hybrid technology:
+>       https://www.intel.com/content/www/us/en/support/articles/000091896/processors.html
+> [6]:  Intel Meteor Lake (14th gen) architecture overview:
+>       https://www.intel.com/content/www/us/en/content-details/788851/meteor-lake-architecture-overview.html
+> [7]:  Need of ARM heterogeneous cache topology (by Yanan):
+>       https://mail.gnu.org/archive/html/qemu-devel/2023-02/msg05139.html
+> [8]:  Cache topology implementation for i386:
+>       https://lists.gnu.org/archive/html/qemu-devel/2023-10/msg08251.html
+> [9]:  Cluster for ARM to define shared L2 cache and L3 tag (by Yanan):
+>       https://lore.kernel.org/all/20211228092221.21068-1-wangyanan55@huawei.com/
+> [10]: [PATCH v1 0/4] prebuild cpu QOM tree /machine/node/socket/core
+>       ->link-cpu (by Fan):
+>       https://lore.kernel.org/all/cover.1395217538.git.chen.fan.fnst@cn.fujitsu.com/
+> [11]: [PATCH RFC 0/4] target-i386: PC socket/core/thread modeling,
+>       part 1 (by Andreas):
+>       https://lore.kernel.org/all/1427131923-4670-1-git-send-email-afaerber@suse.de/
+> [12]: "Now we want to have similar QOM tree for introspection which
+>       helps express topology as well" (by Igor):
+>       https://lore.kernel.org/all/20150407170734.51faac90@igors-macbook-pro.local/
+> [13]: [for-2.7 PATCH v3 06/15] cpu: Abstract CPU core type (by Bharata)
+>       https://lore.kernel.org/all/1463024905-28401-7-git-send-email-bharata@linux.vnet.ibm.com/
+> [14]: [PATCH v8 01/16] hw/cpu: introduce CPU clusters (by Luc):
+>       https://lore.kernel.org/all/20181207090135.7651-2-luc.michel@greensocs.com/
+> 
+> Thanks and Best Regards,
+> Zhao
+> 
+> ---
+> Zhao Liu (41):
+>   qdev: Introduce new device category to cover basic topology device
+>   qdev: Allow qdev_device_add() to add specific category device
+>   system: Create base category devices from cli before board
+>     initialization
+>   qom/object: Introduce helper to resolve path from non-direct parent
+>   qdev: Set device parent and id after setting properties
+>   qdev: Introduce user-child interface to collect devices from -device
+>   qdev: Introduce parent option in -device
+>   hw/core/topo: Introduce CPU topology device abstraction
+>   hw/core/topo: Support topology index for topology device
+>   hw/core/topo: Add virtual method to update topology info for parent
+>   hw/core/topo: Add virtual method to check topology child
+>   hw/core/topo: Add helpers to traverse the CPU topology tree
+>   hw/core/cpu: Convert CPU from general device to topology device
+>   PPC/ppc-core: Offload core-id to PPC specific core abstarction
+>   hw/cpu/core: Allow to configure plugged threads for cpu-core
+>   PPC/ppc-core: Limit plugged-threads and nr-threads to be equal
+>   hw/cpu/core: Convert cpu-core from general device to topology device
+>   hw/cpu/cluster: Rename CPUClusterState to CPUCluster
+>   hw/cpu/cluster: Wrap TCG related ops and props into CONFIG_TCG
+>   hw/cpu/cluster: Descript cluster is not only used for TCG in comment
+>   hw/cpu/cluster: Allow cpu-cluster to be created by -device
+>   hw/cpu/cluster: Convert cpu-cluster from general device to topology
+>     device
+>   hw/cpu/die: Abstract cpu-die level as topology device
+>   hw/cpu/socket: Abstract cpu-socket level as topology device
+>   hw/cpu/book: Abstract cpu-book level as topology device
+>   hw/cpu/drawer: Abstract cpu-drawer level as topology device
+>   hw/core/slot: Introduce CPU slot as the root of CPU topology
+>   hw/core/slot: Maintain the core queue in CPU slot
+>   hw/core/slot: Statistics topology information in CPU slot
+>   hw/core/slot: Check topology child to be added under CPU slot
+>   hw/machine: Plug cpu-slot into machine to maintain topology tree
+>   hw/machine: Build smp topology tree from -smp
+>   hw/machine: Validate smp topology tree without -smp
+>   hw/core/topo: Implement user-child to collect topology device from cli
+>   hw/i386: Make x86_cpu_new() private in x86.c
+>   hw/i386: Allow x86_cpu_new() to specify parent for new CPU
+>   hw/i386: Allow i386 to create new CPUs from QOM topology
+>   hw/i386: Wrap apic id and topology sub ids assigning as helpers
+>   hw/i386: Add the interface to search parent for QOM topology
+>   hw/i386: Support QOM topology
+>   hw/i386: Cleanup non-QOM topology support
+> 
+>  MAINTAINERS                        |  16 +
+>  accel/kvm/kvm-all.c                |   4 +-
+>  gdbstub/system.c                   |   2 +-
+>  hw/core/cpu-common.c               |  25 +-
+>  hw/core/cpu-slot.c                 | 605 +++++++++++++++++++++++++++++
+>  hw/core/cpu-topo.c                 | 399 +++++++++++++++++++
+>  hw/core/machine-smp.c              |   9 +
+>  hw/core/machine.c                  |  10 +
+>  hw/core/meson.build                |   2 +
+>  hw/cpu/book.c                      |  46 +++
+>  hw/cpu/cluster.c                   |  50 ++-
+>  hw/cpu/core.c                      |  72 ++--
+>  hw/cpu/die.c                       |  46 +++
+>  hw/cpu/drawer.c                    |  46 +++
+>  hw/cpu/meson.build                 |   2 +-
+>  hw/cpu/socket.c                    |  46 +++
+>  hw/i386/x86.c                      | 319 ++++++++++-----
+>  hw/net/virtio-net.c                |   2 +-
+>  hw/ppc/meson.build                 |   1 +
+>  hw/ppc/pnv.c                       |   6 +-
+>  hw/ppc/pnv_core.c                  |  17 +-
+>  hw/ppc/ppc_core.c                  | 102 +++++
+>  hw/ppc/spapr.c                     |  28 +-
+>  hw/ppc/spapr_cpu_core.c            |  19 +-
+>  hw/usb/xen-usb.c                   |   3 +-
+>  hw/xen/xen-legacy-backend.c        |   2 +-
+>  include/hw/arm/armsse.h            |   2 +-
+>  include/hw/arm/xlnx-versal.h       |   4 +-
+>  include/hw/arm/xlnx-zynqmp.h       |   4 +-
+>  include/hw/boards.h                |  13 +
+>  include/hw/core/cpu-slot.h         | 108 +++++
+>  include/hw/core/cpu-topo.h         | 111 ++++++
+>  include/hw/core/cpu.h              |   8 +-
+>  include/hw/cpu/book.h              |  38 ++
+>  include/hw/cpu/cluster.h           |  51 ++-
+>  include/hw/cpu/core.h              |  26 +-
+>  include/hw/cpu/die.h               |  38 ++
+>  include/hw/cpu/drawer.h            |  38 ++
+>  include/hw/cpu/socket.h            |  38 ++
+>  include/hw/i386/x86.h              |   5 +-
+>  include/hw/ppc/pnv_core.h          |  11 +-
+>  include/hw/ppc/ppc_core.h          |  58 +++
+>  include/hw/ppc/spapr_cpu_core.h    |  12 +-
+>  include/hw/qdev-core.h             |   1 +
+>  include/hw/riscv/microchip_pfsoc.h |   4 +-
+>  include/hw/riscv/sifive_u.h        |   4 +-
+>  include/monitor/qdev.h             |   7 +-
+>  include/monitor/user-child.h       |  57 +++
+>  include/qom/object.h               |  26 ++
+>  qom/object.c                       |  31 ++
+>  system/meson.build                 |   1 +
+>  system/qdev-monitor.c              | 141 ++++++-
+>  system/user-child.c                |  72 ++++
+>  system/vl.c                        |  53 ++-
+>  target/i386/cpu.c                  |   4 +
+>  tests/unit/meson.build             |   5 +-
+>  56 files changed, 2607 insertions(+), 243 deletions(-)
+>  create mode 100644 hw/core/cpu-slot.c
+>  create mode 100644 hw/core/cpu-topo.c
+>  create mode 100644 hw/cpu/book.c
+>  create mode 100644 hw/cpu/die.c
+>  create mode 100644 hw/cpu/drawer.c
+>  create mode 100644 hw/cpu/socket.c
+>  create mode 100644 hw/ppc/ppc_core.c
+>  create mode 100644 include/hw/core/cpu-slot.h
+>  create mode 100644 include/hw/core/cpu-topo.h
+>  create mode 100644 include/hw/cpu/book.h
+>  create mode 100644 include/hw/cpu/die.h
+>  create mode 100644 include/hw/cpu/drawer.h
+>  create mode 100644 include/hw/cpu/socket.h
+>  create mode 100644 include/hw/ppc/ppc_core.h
+>  create mode 100644 include/monitor/user-child.h
+>  create mode 100644 system/user-child.c
+> 
+> -- 
+> 2.34.1
+> 
+> 

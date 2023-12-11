@@ -1,275 +1,172 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp491802ejo;
-        Mon, 11 Dec 2023 13:20:10 -0800 (PST)
-X-Received: by 2002:a17:906:6a27:b0:a1f:6551:6405 with SMTP id qw39-20020a1709066a2700b00a1f65516405mr6100020ejc.37.1702329610774;
-        Mon, 11 Dec 2023 13:20:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329610; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp407756ejo;
+        Mon, 11 Dec 2023 10:44:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGP8cr/P/VOR/up/mqteXC95hCe/5SyBlqitbVc5/QETzhTl+5iwTqpz4b82TaHyWtpWOBg
+X-Received: by 2002:ac8:5c01:0:b0:425:4043:41c9 with SMTP id i1-20020ac85c01000000b00425404341c9mr6630815qti.117.1702320246139;
+        Mon, 11 Dec 2023 10:44:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702320243; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltTgAjErVxeihlrxu5URI8SYPbkZZPGdR1sqF0ySucf9Hsl7f1oV0urnAiEbhYThm6
-         as6yWqwIyGO2RobF/GDp4Dj+cvwW8hXURrFeKTQQCvfLJWFxd60XPLc/aeVD9IOcdhW3
-         Yi3uyeeC2u4z5mr0lIJQ9YF2cReEmSC6IUkMA81vM9XuOrLdDCjL4hQUjfbKNti/+/HR
-         gQlu6LIeEAHXswFTRNCte7Uf4OuGpInDU/gPfcoK4HxEjwlLed/eMBKNnBrZopGgjI45
-         QdbgjIndSuXxyrpQ70a8ta8pP/00BDZ1HWZgspkNYoNhu6ArwrxnFYfBbp+LhpAKRUG+
-         5HHg==
+        b=OoIBQ7sbt/sTgflClkWMnY/qTD4eEDH/9zO53TIbL+HTWKxrbPVA7qhlSf+JLC+rgU
+         gy50FJ3dDsFEewaADN4xjbPAXFtFt/NZgM6GpIDw6gosKGcuPuNPbXaRhhcxTTHd4A6j
+         Lk5DkrICPVJgvT1XhrJYgUS5e9RfEw+03v/c3ABgBQCVLL0C7xOAcMohp3PB2FzswLXJ
+         96BeZZkAvOSdkJR6CX0d5ww42K4BQIgRrSBXry4pFUBY7UyCuYVOgYbZS6Wgw3o2ptNG
+         WIE3peepXgQ0rMbGBWJSkD+AViPa8w7T7xtz6oOJsdFljCbaq1cdNILp0TCAQ285PfP9
+         6Y2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=zyD776fcn4JziH1GJLbJJRuMyU18zRNqnHFMyBj+0TA=;
-        fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=q6YbKUeFra/Lm7eRbBGkpvg66DBCyvP34lWaczIsd97r5yawVjVmmk838TWgoKmgmZ
-         KCQ6yjQLOJOtqORAZniQWDry5cAKAwwzjxKeQKiBqR3f1/8cnECyNrHEsfAwy2NH4Ozm
-         r2WPJjXim4iPYUZa2qJBS9x5S4VvaFDECYirJbxwHnSji0sWJp8nv3zsJggvWbapGglG
-         WsCbH9J94ekfFm8eREttuzIISGnwUFuLWwFfb85D0qoocTWb6Z91TDkcOqNbxOsWcNFn
-         GaA74P9+CaZ8pf2qq8YbEsPbMtw9SERZJs9/O1nYVMkrrJEccdNotS1wkoExvz6GiKjh
-         Ogqw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=i9+ixsVKbFewyO8T5y7IJG5l5rCev7TzkGLfE7lxh4Q=;
+        fh=FyEPJOfEzBlcvjG6K4WIMekwqw3HaAAbn1BoyUjurYc=;
+        b=frmoqtfYI1vc5fHlOBrwTIv0tdZKQ92anE+5xrSz1nxqAQvjitQnCx0zlyhoI2WD0L
+         ZQE2rZWpYWm3D7OrNPUZGNrSz12WCrThWY4KuIwPKZYCh5YXJxQBxN0OQuKUHd+v5klw
+         ESBXAU1VxWrDdbUlAOAKRNcB6JU7+OvBysoEHxkNu5xv3X2AQOA6cDOUu2vaB+bkzwp4
+         i+bBYWoSE3qRPwNWUufH7NYUw3ydB7ry32Aj6Tyj2OY3Ae6P99mb1qAHnyhV1yVJQwsI
+         fVAGQMgq7yuZ0MeYtOoPAELOW5axryE3lzP7y0aJsm3j+MfgLz6lvNfEDs/W9ouPYWU6
+         Evxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gg2rdFjc;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vmhGcxdG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jx6-20020a170907760600b00a1908ecc5e6sor3330254ejc.0.2023.12.11.13.20.10
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b26-20020ac8679a000000b004181abf57fbsi8087206qtp.3.2023.12.11.10.44.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 11 Dec 2023 13:20:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 Dec 2023 10:44:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gg2rdFjc;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vmhGcxdG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rClFW-0003ve-AU; Mon, 11 Dec 2023 13:43:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rClFO-0003tC-Dt
+ for qemu-devel@nongnu.org; Mon, 11 Dec 2023 13:43:18 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rClFK-00010o-7C
+ for qemu-devel@nongnu.org; Mon, 11 Dec 2023 13:43:18 -0500
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-336221efdceso995324f8f.3
+ for <qemu-devel@nongnu.org>; Mon, 11 Dec 2023 10:43:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329610; x=1702934410; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zyD776fcn4JziH1GJLbJJRuMyU18zRNqnHFMyBj+0TA=;
-        b=Gg2rdFjcTWfL1psVBTAQYbUHLxrA+yZZCylKOiwJoF/sJFEDezHik2Dq/FYgs9L9TE
-         PjHJDa29Z/ftXRgvr0dlg2zq8Ko2RXwjXjAf8nNFXJwvELPBoqOwWH1zJBPcGEmjVPAO
-         tfNFNj+vHcaR/KyG1E4BlSj1XKznX+AbFt4JAUDZ5tk+DcpRbXsa4RjjsXB4TA0aSZiM
-         7mop3DBszdmx3d1Es2oRsPCVtzXM83MbVLuBOCuF89owcMtVwnhdqOa/9c77LK8/zy4z
-         3AGMGxiaH+NNQoVT4kcBfsp9jlFJpkc0EPfrqGhX9QW7akU2UxuqVb/Bq+mjedQQpD7S
-         uXYA==
+ d=linaro.org; s=google; t=1702320191; x=1702924991; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=i9+ixsVKbFewyO8T5y7IJG5l5rCev7TzkGLfE7lxh4Q=;
+ b=vmhGcxdGshCpVU4fBGRtj73lKmXT0PAJy4Q7OXWXXTjtJ3tfwmStcyC57Gzg1kQBkj
+ ZiaTiu1BFFX7JHKqagnL59bgBzJqK1yNOLX9esj+nVbJfp3pzGzMogMLp+c4dIwi3PtH
+ 1L4DLWqWIPCv/jwVGknLT10fQW2VsZcbc2rhwNCWtAA5d57mdR1eM3gygCVjeRaPn4EC
+ pXS7GLiqn0x7UtzrSn7Oar8105U5BTKy42g6aE4VPJtTEfmFfxb6kCtQ56ZoMb6lwhPF
+ YseadvUlufp8l86FIwhmEszuJq4JYCxPXN+DD62qCsCPcRGR33ldRtqXd7AKywVxBgb7
+ 5c/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329610; x=1702934410;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zyD776fcn4JziH1GJLbJJRuMyU18zRNqnHFMyBj+0TA=;
-        b=BmN5vyeomIvAK4xOx6cbxRa2D0fTEStW/lY3DDA2as05fxB8AXoGUWjb7hl8G1OwF8
-         LEKIFl+JLTZ1eXT5GO/QrHyNulrQhua7Dm4/N5JVEV3r53QO5K/qmB4SxnqpLlu20ule
-         1T9ipsLParUSbFRCqf2hBnG/HkT6TBE2zWbu+gUjC1pYi2LnGpsVRQxueF9oMoGco4+I
-         b7KyG/Ziu1hl2DdYRyyiDhbR6uTnGQ0esi91Yj3+sgJWV04gYxlEmh8B9M5xDx9gQdQR
-         tu3YYp5kLjtRuM3w7oKcb53iwXAKVKxh0c/c8eW0DfsElpCHfssN3k8CRlj+ricjAjIO
-         45ug==
-X-Gm-Message-State: AOJu0Yw8qNYBpS9jpK9XhcgxRFsRfSs8NW3WZJyj2fE0RpGM0OdHXT5B
-	yY5VB8i6LVYelgVUznBMvemGPbAt
-X-Google-Smtp-Source: AGHT+IHeiRtafPqQMB1v6Lk/OrgDkhsDHVwqcnGopmK3HPUNpMBDgB7R0kuY1RJDNUkzKnKzGMRX9g==
-X-Received: by 2002:a17:906:13:b0:9a9:f0e6:904e with SMTP id 19-20020a170906001300b009a9f0e6904emr3955274eja.16.1702329610416;
-        Mon, 11 Dec 2023 13:20:10 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id tm8-20020a170907c38800b00a1e30528af3sm5268706ejc.47.2023.12.11.13.20.04
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:20:09 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
-	Peter Xu <peterx@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-ppc@nongnu.org,
-	qemu-s390x@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	qemu-riscv@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	Warner Losh <imp@bsdimp.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Brian Cain <bcain@quicinc.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/24] exec: Rework of various headers (user focused)
-Date: Mon, 11 Dec 2023 22:19:37 +0100
-Message-ID: <20231211212003.21686-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+ d=1e100.net; s=20230601; t=1702320191; x=1702924991;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=i9+ixsVKbFewyO8T5y7IJG5l5rCev7TzkGLfE7lxh4Q=;
+ b=Y/NyfesBsYTGzGw8GqJsgrsHs3h2sS/X4fbSB2JfcilsBhq+CDxdTCCS4tvvhR++/G
+ T46Y0cC5LiH/E3H3AwqLcfLA+0AzNRAhZ7q3r9AluorSYyfUCxLqG32BEWPG+sRfTR+j
+ DelOtqsJ8ssgD8XUNUV829zOaz6dY9Y25sV1P8jHjCyugfswf+LCKiaAyq/irW82XW1n
+ lf7h7C/v60d9ynRnZYcQjbHc4bfhXsBCqr4WlQdf/SWFrlhgSrWWzDFkT6hgA5z/+Jhz
+ W3yJFc5FvcXjlTm9q7jDqhm+sTbF7fd7pyiVrrbzbbjFrUqJFYZsrBLXenCHI8br0PuI
+ OH8A==
+X-Gm-Message-State: AOJu0YwrvqsvOn+zqImksRuM3TguVA0N8eehxhf/L2NDNmQ2Jjt1xOTQ
+ /2IkL0Xp+ztWKKMi3oaiTrX6JA==
+X-Received: by 2002:a5d:6189:0:b0:333:5461:d8c8 with SMTP id
+ j9-20020a5d6189000000b003335461d8c8mr1140804wru.266.1702320190993; 
+ Mon, 11 Dec 2023 10:43:10 -0800 (PST)
+Received: from [192.168.69.100] (cor91-h02-176-184-30-150.dsl.sta.abo.bbox.fr.
+ [176.184.30.150]) by smtp.gmail.com with ESMTPSA id
+ f8-20020adff448000000b0033344666878sm9151217wrp.91.2023.12.11.10.43.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Dec 2023 10:43:10 -0800 (PST)
+Message-ID: <8cd2093f-dc74-469b-8bac-d290206af116@linaro.org>
+Date: Mon, 11 Dec 2023 19:43:08 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 18/21] target/arm/kvm: Init cap_has_inject_serror_esr in
+ kvm_arch_init
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20231123044219.896776-1-richard.henderson@linaro.org>
+ <20231123044219.896776-19-richard.henderson@linaro.org>
+ <4889143b-e15e-4834-af2f-ddea2dd63cb6@linaro.org>
+ <3c2d3736-4cae-4034-973b-568e80cbf0c3@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <3c2d3736-4cae-4034-973b-568e80cbf0c3@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: gFM2D5Odvlze
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vuQ5QdFec5p7
 
-Hi,
+On 11/12/23 18:09, Richard Henderson wrote:
+> On 11/24/23 03:54, Philippe Mathieu-Daudé wrote:
+>> On 23/11/23 05:42, Richard Henderson wrote:
+>>> There is no need to do this in kvm_arch_init_vcpu per vcpu.
+>>> Inline kvm_arm_init_serror_injection rather than keep separate.
+>>>
+>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>>> ---
+>>>   target/arm/kvm_arm.h |  8 --------
+>>>   target/arm/kvm.c     | 13 ++++---------
+>>>   2 files changed, 4 insertions(+), 17 deletions(-)
+>>
+>>
+>>> @@ -562,6 +556,10 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>>>       cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+>>> +    /* Check whether user space can specify guest syndrome value */
+>>> +    cap_has_inject_serror_esr =
+>>> +        kvm_check_extension(s, KVM_CAP_ARM_INJECT_SERROR_ESR);
+>>> +
+>>>       if (ms->smp.cpus > 256 &&
+>>>           !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)) {
+>>>           error_report("Using more than 256 vcpus requires a host 
+>>> kernel "
+>>> @@ -1948,9 +1946,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>>       }
+>>>       cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>>> -    /* Check whether user space can specify guest syndrome value */
+>>> -    kvm_arm_init_serror_injection(cs);
+>>> -
+>>>       return kvm_arm_init_cpreg_list(cpu);
+>>>   }
+>>
+>>
+>> Just checking, in a heterogeneous setup we still want to keep
+>> these 2 calls per-vCPU, right?
+> 
+> There is no hetrogeneous kvm -- every vcpu must match the host cpu.
 
-These patches are extracted from a bigger work where
-"exec/{exec,cpu,translate}-all.h" are split in various
-specific APIs. This helped:
-  - differenciate/build:
-      . user VS system
-      . target-specific VS generic
-    which is necessary for heterogeneous build
-  - reduced header pressure
-  - clarify APIs
-
-This series is focused on user (vs system) cleanups.
-More useful changes will come after.
-
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (24):
-  exec: Include 'cpu.h' before validating CPUArchState placement
-  exec: Expose 'target_page.h' API to user emulation
-  target: Define TCG_GUEST_DEFAULT_MO in 'cpu-param.h'
-  accel: Include missing 'exec/cpu_ldst.h' header
-  semihosting/uaccess: Avoid including 'cpu.h'
-  semihosting/guestfd: Remove unused 'semihosting/uaccess.h' header
-  host/load-extract: Include missing 'qemu/atomic.h' and 'qemu/int128.h'
-  host/atomic128: Include missing 'qemu/atomic.h' header
-  hw/ppc/spapr_hcall: Remove unused 'exec/exec-all.h' included header
-  hw/misc/mips_itu: Remove unnecessary 'exec/exec-all.h' header
-  hw/s390x/ipl: Remove unused 'exec/exec-all.h' included header
-  target/i386: Include missing 'exec/exec-all.h' header
-  accel/tcg: Include missing 'hw/core/cpu.h' header
-  gdbstub: Include missing 'hw/core/cpu.h' header
-  exec/cpu-all: Remove unused headers
-  exec/cpu-all: Reduce 'qemu/rcu.h' header inclusion
-  target/ppc/excp_helper: Avoid 'abi_ptr' in system emulation
-  accel/tcg: Un-inline retaddr helpers to 'user-retaddr.h'
-  exec/user: Do not include 'cpu.h' in 'abitypes.h'
-  exec: Declare abi_ptr type in its own 'tcg/abi_ptr.h' header
-  exec/cpu_ldst: Avoid including 'cpu.h'
-  exec/cpu-all: Restrict inclusion of 'exec/user/guest-base.h'
-  exec/cpu-all: Extract page-protection definitions to
-    page-prot-common.h
-  target: Restrict 'sysemu/reset.h' to system emulation
-
- meson.build                                   |  2 +-
- accel/tcg/user-retaddr.h                      | 28 ++++++++++
- bsd-user/bsd-mem.h                            |  1 +
- bsd-user/qemu.h                               |  1 +
- host/include/generic/host/atomic128-cas.h     |  2 +
- host/include/generic/host/atomic128-ldst.h    |  2 +
- .../generic/host/load-extract-al16-al8.h      |  3 ++
- include/exec/cpu-all.h                        | 50 +++---------------
- include/exec/cpu_ldst.h                       | 51 ++++---------------
- include/exec/exec-all.h                       |  1 +
- include/exec/page-prot-common.h               | 38 ++++++++++++++
- include/exec/ram_addr.h                       |  1 +
- include/exec/translator.h                     |  5 +-
- include/exec/user/abitypes.h                  |  9 +++-
- include/exec/user/guest-base.h                |  6 +++
- include/semihosting/uaccess.h                 |  3 +-
- include/tcg/abi_ptr.h                         | 32 ++++++++++++
- target/alpha/cpu-param.h                      |  3 ++
- target/alpha/cpu.h                            |  3 --
- target/arm/cpu-param.h                        |  8 +--
- target/arm/cpu.h                              |  4 +-
- target/avr/cpu-param.h                        |  2 +
- target/avr/cpu.h                              |  2 -
- target/hppa/cpu-param.h                       |  6 +++
- target/hppa/cpu.h                             |  6 ---
- target/i386/cpu-param.h                       |  3 ++
- target/i386/cpu.h                             |  3 --
- target/loongarch/cpu-param.h                  |  2 +
- target/loongarch/cpu.h                        |  2 -
- target/microblaze/cpu-param.h                 |  3 ++
- target/microblaze/cpu.h                       |  3 --
- target/mips/cpu-param.h                       |  2 +
- target/mips/cpu.h                             |  2 -
- target/openrisc/cpu-param.h                   |  2 +
- target/openrisc/cpu.h                         |  2 -
- target/ppc/cpu-param.h                        |  2 +
- target/ppc/cpu.h                              |  2 -
- target/ppc/internal.h                         |  1 +
- target/ppc/mmu-radix64.h                      |  2 +
- target/riscv/cpu-param.h                      |  2 +
- target/riscv/cpu.h                            |  2 -
- target/s390x/cpu-param.h                      |  6 +++
- target/s390x/cpu.h                            |  3 --
- target/sparc/cpu-param.h                      | 23 +++++++++
- target/sparc/cpu.h                            | 23 ---------
- target/xtensa/cpu-param.h                     |  3 ++
- target/xtensa/cpu.h                           |  3 --
- accel/tcg/cpu-exec.c                          |  3 ++
- accel/tcg/cputlb.c                            |  2 +
- accel/tcg/tb-maint.c                          |  1 +
- accel/tcg/tcg-accel-ops.c                     |  2 +
- accel/tcg/translator.c                        |  1 +
- accel/tcg/user-exec.c                         |  2 +
- bsd-user/main.c                               |  1 +
- bsd-user/mmap.c                               |  1 +
- bsd-user/signal.c                             |  1 +
- cpu-target.c                                  |  1 +
- gdbstub/gdbstub.c                             |  1 +
- hw/misc/mips_itu.c                            |  3 +-
- hw/ppc/ppc440_bamboo.c                        |  1 +
- hw/ppc/sam460ex.c                             |  1 +
- hw/ppc/spapr_hcall.c                          |  1 -
- hw/ppc/virtex_ml507.c                         |  1 +
- hw/s390x/ipl.c                                |  1 -
- linux-user/arm/cpu_loop.c                     |  1 +
- linux-user/elfload.c                          |  2 +
- linux-user/main.c                             |  1 +
- linux-user/mmap.c                             |  1 +
- linux-user/nios2/cpu_loop.c                   |  1 +
- linux-user/signal.c                           |  1 +
- linux-user/syscall.c                          |  1 +
- page-target.c                                 | 43 ++++++++++++++++
- semihosting/guestfd.c                         |  1 -
- system/physmem.c                              | 36 +------------
- target/alpha/helper.c                         |  1 +
- target/arm/ptw.c                              |  1 +
- target/arm/tcg/m_helper.c                     |  1 +
- target/arm/tcg/mte_helper.c                   |  1 +
- target/arm/tcg/sve_helper.c                   |  1 +
- target/avr/helper.c                           |  1 +
- target/cris/mmu.c                             |  1 +
- target/hexagon/translate.c                    |  1 +
- target/hppa/mem_helper.c                      |  1 +
- target/hppa/translate.c                       |  1 +
- target/i386/cpu.c                             |  2 +-
- target/i386/tcg/fpu_helper.c                  |  1 +
- target/i386/tcg/sysemu/excp_helper.c          |  1 +
- target/loongarch/cpu.c                        |  2 +
- target/loongarch/tlb_helper.c                 |  1 +
- target/m68k/helper.c                          |  1 +
- target/microblaze/cpu.c                       |  1 +
- target/microblaze/helper.c                    |  1 +
- target/microblaze/mmu.c                       |  1 +
- target/microblaze/translate.c                 |  1 +
- target/mips/sysemu/physaddr.c                 |  1 +
- target/mips/tcg/sysemu/tlb_helper.c           |  1 +
- target/nios2/helper.c                         |  1 +
- target/nios2/mmu.c                            |  1 +
- target/nios2/translate.c                      |  1 +
- target/openrisc/mmu.c                         |  1 +
- target/ppc/excp_helper.c                      |  2 +-
- target/ppc/mmu-hash32.c                       |  1 +
- target/ppc/mmu-hash64.c                       |  1 +
- target/ppc/mmu-radix64.c                      |  1 +
- target/ppc/mmu_common.c                       |  1 +
- target/ppc/mmu_helper.c                       |  1 +
- target/riscv/cpu_helper.c                     |  1 +
- target/riscv/pmp.c                            |  1 +
- target/riscv/vector_helper.c                  |  1 +
- target/rx/cpu.c                               |  1 +
- target/s390x/mmu_helper.c                     |  1 +
- target/s390x/tcg/mem_helper.c                 |  1 +
- target/sh4/helper.c                           |  1 +
- target/sparc/ldst_helper.c                    |  1 +
- target/sparc/mmu_helper.c                     |  1 +
- target/tricore/helper.c                       |  1 +
- target/xtensa/mmu_helper.c                    |  1 +
- target/xtensa/op_helper.c                     |  1 +
- 118 files changed, 332 insertions(+), 192 deletions(-)
- create mode 100644 accel/tcg/user-retaddr.h
- create mode 100644 include/exec/page-prot-common.h
- create mode 100644 include/tcg/abi_ptr.h
- create mode 100644 page-target.c
-
--- 
-2.41.0
+So big.LITTLE will never be a KVM thing?

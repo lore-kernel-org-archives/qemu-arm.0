@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492583ejo;
-        Mon, 11 Dec 2023 13:21:50 -0800 (PST)
-X-Received: by 2002:a17:906:c7:b0:a1f:84ea:d8ce with SMTP id 7-20020a17090600c700b00a1f84ead8cemr1287170eji.44.1702329710291;
-        Mon, 11 Dec 2023 13:21:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329710; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492656ejo;
+        Mon, 11 Dec 2023 13:21:57 -0800 (PST)
+X-Received: by 2002:a05:6512:a8a:b0:50b:df3e:ee79 with SMTP id m10-20020a0565120a8a00b0050bdf3eee79mr2667130lfu.101.1702329717580;
+        Mon, 11 Dec 2023 13:21:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329717; cv=none;
         d=google.com; s=arc-20160816;
-        b=VHxvOnAbdOxNDQUBl9h3bEvtD/fazOTU7AVCgagUaDbim+09pIZuEgk27Y2uaSVj38
-         KH7wnMBcFQuTXHT3r8snPCDCNolzajxD7XvQIdqslRB7DChIZwhF1OYqy1mFa0FXN1DQ
-         usRwupOOhyJ7cwZgCm6mN4ws+DeQdSirKpJaH1bg99MfMOfI+kZmxNrUoIUULJ1y6Awj
-         sxmwXnkXIeR/3anrXp1Kpr5dkxDpa3fCRLiOodD0p2ZzZGp1fHdpTGTYjU+UnWu/eQRT
-         Rx9nBRoRw5+42tcrWTACZ5FUiv8UIY30+V0wOdgzjxUUy1bQl5GDMC4FD49b7q4XGpBv
-         6chA==
+        b=mooyB+ff3PW3ZNoE/9HhVK1X176jg6nIBYKqGN9r/IamEnUI0yySMOyCuWAvkXHUyr
+         8WefT3dmO6rWfqhYsmZxMt3vSMA8gRIYshjUP44rXxeRJMacK8YJdhj+kfdNRnXyxf6M
+         rRTnTgz5WqRMcp9JikyX8J92GfI1rrljzYXk+9ZfVxhAOeOmoMnhby5vkqi2wpm0Np3t
+         5BY5wfnZqGtyXo/nH4GQnfa1BUQ7uXVgmseXg5t/Jv2MNFMJ3SZV/BhhCfd2WlDgbF1r
+         2468hJIn/jH28ZYR5YPMTEdZRhQzHZ2KyZ4QBQir1ou6TwMzKsqEV0uSocLYSy62fVnY
+         5xQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ctY48Y/OwHlinQy0HeLOez7IoCqO19a0AzhAC5KFtJo=;
+        bh=Sxk2B1Wo2pXRo42/SYBVVIycoetyzxarj96J9gTlCqc=;
         fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=QwKZtRB8xuK/A353RgmADgMhtZQlBtt22txsgqFu9WlFHLq3tQMoAxhxt8AqUcvcJB
-         iQbWZNrQyTbcy1nnmJjiGIhSPJtOTkIlQK3+8KK0m6j8nQjgDyLELUsfHiq2ee+MMPUd
-         d9jrQj06OshFpmNI/8l3Bp6rheaDBF2YPHfVDZkb1dH2uyywSyqfj4jmY472O+fxgCSE
-         TjfhwMPSHJns7B36FAdoiB5NgPfmdl+egp0Y4mdlWBmJW2Yk5FPFUlSLRHFvKTJD/uNm
-         Db1SHDUknOt1wtKW8xdL3RlkRrhwOn0fMw4wImN1yiMWWxp9/3/iujArOyec8s/Hp9G6
-         FH4g==
+        b=OJnnuSnc8zcv7mN+0iCpYufG9OdlzBg1GuFFOYzYYR95r1ZBRO71xq8w8qZkjMOf2L
+         dvxO9oQtnNOSC/knDzcDpshVOmcX0HY6ChWZczWjmorERCCTGPhSGzcvyc4sXE+trHsF
+         T7/qWcTBLMl36pAn0BT72MRsn/KLUrYWubYBpDJ0X42V6CIScA2CFYhMWDo++oKZTrbq
+         fVmnfbjCU9Le0g/iQY+PfS2905acYgFgxztn/8Sbx3asW9jQvq/yLzkwDsglUhJC7fFK
+         snJH+FI+VYegKXBHOzCtLLvo69cEhQ3CFO4opkD/nh2Y+O+CnemUIvATXwnphkTDatqi
+         jfMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W3aMASx5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dyHQIk75;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ci23-20020a170907267700b00a1f6eadc110sor1510368ejc.13.2023.12.11.13.21.50
+        by mx.google.com with SMTPS id i13-20020a0565123e0d00b0050d185975cdsor1250623lfv.1.2023.12.11.13.21.57
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:21:50 -0800 (PST)
+        Mon, 11 Dec 2023 13:21:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W3aMASx5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dyHQIk75;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329710; x=1702934510; darn=linaro.org;
+        d=linaro.org; s=google; t=1702329717; x=1702934517; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ctY48Y/OwHlinQy0HeLOez7IoCqO19a0AzhAC5KFtJo=;
-        b=W3aMASx522hB9VRJ5ArV/fNjf/9EjY6O/66joq1pRV4SDUh+TggD7b2eEdw89SQakG
-         Axdf8e1W1wmok6F2cLm1pmjfyjufcQPVqcbX6GTM2BZVe1+TETlmUW24ZL34Z9OJilql
-         LBukvW6RJN1CKwnZfnJzHWfY5gO3aX/KOFFJTNmtpoyuuQl3Wdsn/beCgf9/fqPL9XZ9
-         OpDAVNXqKOULdRIKN9JWKTOinaPYmZv8WQ5sISjHqETxrdrPEMvCgbfFwqhqw7ttwv6A
-         rMe+JQ6qHmjn2kKCqQ5Ig86z+rSc0m01fU0goLYst2MKmXmHfDYJ1oeu0hocnheAtf67
-         RJYA==
+        bh=Sxk2B1Wo2pXRo42/SYBVVIycoetyzxarj96J9gTlCqc=;
+        b=dyHQIk75lCzZBXUvOTgN/pN0nd7zkgB2JOqo3xTCFhuqJPvS32daVg7O2MwFownyVr
+         v8ZP13KXSQxHcKABxSkGG+SOYYoc/s0+g+2t7d5aA3h8aZmZSKJEv4c8vz7w7WERBBSG
+         LWTaULa0A1NXRfnElY3nNJB+fABlM/eVw5c1236sq/kuHMiygrsK8agtfdfNs4p0oKYk
+         iEIS8dyZw+/YkQpzyV4QHTggPJNKOsHEE5ZhsBi1jY0/hs24Wc5GB0nJwst7z5oBJu4C
+         jueTmPv5YaxNs6l/FexXVdyvfLBbGDFTUfrIWX7SfbdG42yBqWlPdrlbftlDBsuZw3qU
+         frpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329710; x=1702934510;
+        d=1e100.net; s=20230601; t=1702329717; x=1702934517;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ctY48Y/OwHlinQy0HeLOez7IoCqO19a0AzhAC5KFtJo=;
-        b=G1LN2BflhO4i0jpAcAjLEh6BXwLk3J5UWjiR6+8sYKm/MnsqXEZUmeTYHrw3qUyRxv
-         w9TEYxd5w80yNUSrwxIYnBRNnZii3C1PeShYQoh88Glh106ezb2LmFHUgvQR1v/pEDtR
-         c6ybS8YWZ+50MTN5m0KYoY1bxbkixIZvCrYJeIZWh8Stftn0Blcjludp6uRAMFGaTAlm
-         NthCBC+UyjM4jhI2u/Dzccx2ZKRMsxpCLi6fuQfyYFHEhCOy8B3o/7iQjLwuj53NpFx/
-         gdOJSHkb8tCNnflW23QxBzeGj7lyb0niq5fPcrdB9j/tkzR+LRPxgmFPp1/o1sJ3k6sz
-         TRlg==
-X-Gm-Message-State: AOJu0YwuEOHlxgQK5L+IWkpX0uebdt70GlRH8GLwUbjyfnLyEhqeSFKY
-	8zjjilUpgxVs06+wzmMBWbYWvBZm
-X-Google-Smtp-Source: AGHT+IGCuHPmu7XBcoyZGbS/1vv337vHf9v2rTtqCVC+z2TYZobgtGzbWjHW3TEMn/IMi+AiZLh79Q==
-X-Received: by 2002:a17:907:94d4:b0:a1a:8399:e12d with SMTP id dn20-20020a17090794d400b00a1a8399e12dmr1806037ejc.64.1702329710085;
-        Mon, 11 Dec 2023 13:21:50 -0800 (PST)
+        bh=Sxk2B1Wo2pXRo42/SYBVVIycoetyzxarj96J9gTlCqc=;
+        b=Z8iKc+1np/Nvmg3Yf8+kIEi8Uu52Eg34dNUNF5wVNmbLQKuOEeOxKW35k3+mcCxx0Y
+         i0nmUQI4Hu7MEP2KsHfMbVBZtZfwam8MJdyqhKWPxA9PqXQXxHxbJ/nvyenlx6cpsUPc
+         XF5zL0BicnyVM2B0C2WUznpKGiEExVgIkqa4VplWjSEPxIPJjmQ3l1EHmyv0qCtPye25
+         AOD53J1L8UODBw1/UisMu5AMAiWi6xoZmOgKUbkNXIxQgcQBpqCPgm9OGFN1JbpheHbV
+         SWgWv1S5J8vHIN66WgpSpF5japKbNutwvVIjJiKdjzcYERopU52kA2jUA3E/fATrNxh/
+         D9Ew==
+X-Gm-Message-State: AOJu0YxkU8jTURytTVbrIBozoef2DQQLid0/EWIhdRVQpt0t6dnOvqfi
+	lTCGhzt8o+8IVSiCT/SBaAgEOp5YVknrjIm836kHXZsg
+X-Google-Smtp-Source: AGHT+IHDtXevlZvMNcceTNwUeCFzqJEEEwa7JQhvUomywLsfSZUsIRjfVyrIBQtVafs/CsiHw3FjpA==
+X-Received: by 2002:a05:6512:b22:b0:50c:c8b8:6689 with SMTP id w34-20020a0565120b2200b0050cc8b86689mr2383978lfu.12.1702329717143;
+        Mon, 11 Dec 2023 13:21:57 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id wb8-20020a170907d50800b00a1cb351dd4fsm5350843ejc.9.2023.12.11.13.21.46
+        by smtp.gmail.com with ESMTPSA id vh2-20020a170907d38200b00a1be80a0b69sm5333806ejc.58.2023.12.11.13.21.54
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:21:49 -0800 (PST)
+        Mon, 11 Dec 2023 13:21:56 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -93,36 +93,37 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 12/24] target/i386: Include missing 'exec/exec-all.h' header
-Date: Mon, 11 Dec 2023 22:19:49 +0100
-Message-ID: <20231211212003.21686-13-philmd@linaro.org>
+Subject: [PATCH 13/24] accel/tcg: Include missing 'hw/core/cpu.h' header
+Date: Mon, 11 Dec 2023 22:19:50 +0100
+Message-ID: <20231211212003.21686-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
 References: <20231211212003.21686-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jBWPMtnw2+Ys
+X-TUID: q6Z3Qo/f82Gw
 
-The XRSTOR instruction ends calling tlb_flush(), declared
-in "exec/exec-all.h".
+tcg_cpu_init_cflags() accesses CPUState fields, so requires
+"hw/core/cpu.h" to get its structure definition.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/tcg/fpu_helper.c | 1 +
- 1 file changed, 1 insertion(+)
+ accel/tcg/tcg-accel-ops.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/i386/tcg/fpu_helper.c b/target/i386/tcg/fpu_helper.c
-index 4430d3d380..3bb018fbae 100644
---- a/target/i386/tcg/fpu_helper.c
-+++ b/target/i386/tcg/fpu_helper.c
-@@ -21,6 +21,7 @@
- #include <math.h>
- #include "cpu.h"
- #include "tcg-cpu.h"
-+#include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
- #include "exec/helper-proto.h"
- #include "fpu/softfloat.h"
+diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+index 1b57290682..58806e2d7f 100644
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -37,6 +37,8 @@
+ #include "exec/tb-flush.h"
+ #include "exec/gdbstub.h"
+ 
++#include "hw/core/cpu.h"
++
+ #include "tcg-accel-ops.h"
+ #include "tcg-accel-ops-mttcg.h"
+ #include "tcg-accel-ops-rr.h"
 -- 
 2.41.0

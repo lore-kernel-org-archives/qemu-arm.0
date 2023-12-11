@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp491860ejo;
-        Mon, 11 Dec 2023 13:20:18 -0800 (PST)
-X-Received: by 2002:adf:a1d8:0:b0:333:3b91:19c0 with SMTP id v24-20020adfa1d8000000b003333b9119c0mr2475484wrv.129.1702329618395;
-        Mon, 11 Dec 2023 13:20:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329618; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp491921ejo;
+        Mon, 11 Dec 2023 13:20:27 -0800 (PST)
+X-Received: by 2002:a05:6512:406:b0:50b:f400:ab3 with SMTP id u6-20020a056512040600b0050bf4000ab3mr1476111lfk.108.1702329627256;
+        Mon, 11 Dec 2023 13:20:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329627; cv=none;
         d=google.com; s=arc-20160816;
-        b=XalGuN2j/WHp3cft0vTLWgJ1U/zoOlFFa5ng++DpxWyM/KxEiIPn7G4ykHP5LYpU3v
-         Gq8ClGZsMdceZmQpRG/rzGdvaZK1py1NhxzzMc6r4JQSR3Rb9G1gg1ODIXe9DbOQkyVI
-         vkB5bnjxF1EpmJwzlIE95Kqv1pGnYnHJ0VwPSKlymyDedg42jUQ39RR2t4z1rApTlUK9
-         IzFp/CG+kCxeHgkAdbUQia8RhRzQz8LkRD5UwDeNUMGweogjppHYtMZeTTKpxA6NMfO1
-         lYzhzU4DGXwIRgx7jgEJS/DBlCoC5FgW5sWmrvU1oUSC1ZOgv0hg3FNxpTdYP+SoeW2/
-         X3cQ==
+        b=I0ugHuoR4aKaGKxa6BBEQf+QsRiNstlMUMs90KsRLAZf6Rnh22kIEa39wOL42nxANu
+         vDZtR7ltk3uCDecl5O8Oel07NX66eiUEpJbO8ZYjtai73hX8R79RBOS+YxRh/XuT37Hv
+         77zglkQbyVyeVfcZgfyEx3dBSBu4X735dZuN4nRWZW7Ll7arfMj7QgjWO3lx6uJdaczk
+         o5uEWdAAjG0F/fPZaA1xhD6s59MKr0WopdoMQHdIplPgKjFNWgurhVT34cZmTEEkzRRd
+         8Oo9kIFp6SPAVtTBOvuloHG1eOhLI5uIf5qUGFCoKx6BH4iuLZl2VwwBwGa1yZ4JZcst
+         lDHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+O6qsD4iSikKX7LlQ9zhnH8XNtR1+Zg+F3UQkLugJvM=;
-        fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=K9Vn4cQcI3MdGxJrIUJZGVjWxXpJbhM2eIr4BQkB5WX4aD2PeUYduB1reaGmOIqzxT
-         UcjPBFb6vzPacSZhwHoE3d5BrSis4rmfmWnaczlMzecGApiJth6VVTbNVZxjUa7LUR7b
-         60JwmVFaI/++araZXNLcZWT5xjUtAY9IpWST64QrhWT2l2tZ+FWd4XCasaXSYFtwZeLQ
-         tRlvwn+4/zOjUHxYgWH77Uwd1GERbTzdaCwMes51crrYDjVFmiQ+e3EuplNganRxGuEg
-         2bCHGLaDhBOZA9fWeww5Vp+65a95jSaUgMI58DBwcIPi66GsiFzXivjEsBfcmAJNMonH
-         cEpQ==
+        bh=wgiAOK8BuLaD0cXDs62KfIAvV8sc/YA5HaZCqiUDiy0=;
+        fh=jr6BeAjRBF2hKKiijQk6ZwQLKxSmFaSzke8XrKLKGCU=;
+        b=a+/Rxme2L48hx8ZQbgJeefUpY1Pd3wA4m/fxLMXXGcZ5kSk0qSlnYo6wgzSq61YWBx
+         yh5XpzSbGlD9/k3rh3AAmT3IbsJUxf/AhFbGLB3vEICwRuK+900rpfPr1AtaEP05b9tN
+         5gXiuCBpltHgeMdq60C6GNjPl1fc5m6h6IC/KfnvgPROauzzLAQ1GlBvvTCdRXh3FRf+
+         y8OOqjQmn1WBRLFdDNdM2DAurbCsFVB2BiM78GYipXl9ryXo7xgBNd940HwAJP8bj2OQ
+         ANXFVc/UXWa5WB10l/pd4mjlsjV7ucDvRpmjvM4o5D6slvIXX7R+YwzFRPbLf6qzFMuO
+         EAeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LJLuoXD4;
+       dkim=pass header.i=@linaro.org header.s=google header.b="q/UbsMqq";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a13-20020adfed0d000000b003333bd93dd6sor2189839wro.6.2023.12.11.13.20.18
+        by mx.google.com with SMTPS id i27-20020a198c5b000000b0050beaf49110sor1249302lfj.23.2023.12.11.13.20.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:20:18 -0800 (PST)
+        Mon, 11 Dec 2023 13:20:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LJLuoXD4;
+       dkim=pass header.i=@linaro.org header.s=google header.b="q/UbsMqq";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329618; x=1702934418; darn=linaro.org;
+        d=linaro.org; s=google; t=1702329627; x=1702934427; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+O6qsD4iSikKX7LlQ9zhnH8XNtR1+Zg+F3UQkLugJvM=;
-        b=LJLuoXD4YUffT7BzFT+jieY2dxvVsFRjiBCc4wYRTcrp1cLKq0hrsSiHFhpRYiyiqV
-         AybkJ1U8+59v5/CCKax6HneeA7BU+24SHLoR9KPGVOl1kn2JhLfMphBznDbp1b3yIZW5
-         pcIfhisS+AeYktFAX/OZIF5V9d8pM1fWHxlWSWK+/6+ouZ1jYuCcZvHyry4+vli7e3or
-         CeTgn46S2p6L85p9Y4FnQ+lKj1PRQsvu1DeRJ9iZzZfd9XcJ/XYQO0dXg/TBEPyzOmKN
-         UOK4KWiTvSjeMUaYHgQ1tV4o+Aj8/XAbZhcdilhw2418Nyq4fDwT+Za9Iul6GTOMlTjp
-         FIkQ==
+        bh=wgiAOK8BuLaD0cXDs62KfIAvV8sc/YA5HaZCqiUDiy0=;
+        b=q/UbsMqqzxHUclLfgoySLUllKJ1NQas9G+f4YabGlo65TGayC+Z6p5F40jFTZ3nuRK
+         CQ6U5VSQfQsgdZ3eEOG4m03/QgrpCXwzCwMB0nYw0FDGKA0Tnkux4qMtgnNkf8AztzAY
+         OQpAeFcfPaykw0PvHTwMb/o3prxgyfBn68tils/H7ouBz2foIPlJSN26J3lzqzKdbC0C
+         Rzv2JXBmCpjxfaL+IyOwInEa+KIds9WC69dRpO5/Tyfn3aN0wKLSA+oEy3Hsxu24Dbsg
+         i7OzzRFFaDdbQY+SKiGsTzS5vxLVgzqo85msWGOoMUpFWXACde+WYSzYFKxaPyTMVcJ9
+         92yA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329618; x=1702934418;
+        d=1e100.net; s=20230601; t=1702329627; x=1702934427;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=+O6qsD4iSikKX7LlQ9zhnH8XNtR1+Zg+F3UQkLugJvM=;
-        b=C7V8tymLKhP3wTAh2bdRyZQEf3BRvpL6yiIWMwT3Bbnz1aTdSgw3UebLb9OQWHokKM
-         SaIiz/HLsAS3WqwNtK97/RB5X1VOgflNQI1HNr8jRhpzuC1u0pW9JGw5sM5TPLLZDI6y
-         MGAdapUcQK5UmS/TxRwwN8d1iycmd+GEKA1BtbxWMdDhpiEfm86l4o9MABCvaP3jZokA
-         M5Rcl7ZEY7LxPljs9fJ1gB9tKzoeWyeWeDyJ4K7IXSy243ULpkk/2KhbHcu5/ZVuvdHl
-         oRx+ycqGOlAHt7dmUWgjRCJzi2YlNx2vdbGr/5trxOu1lVZKmo2nEm3oAA/tB0PUVyQa
-         PvVw==
-X-Gm-Message-State: AOJu0YyKdyCLjceDpbzq5Zkfk/EWFJIsEZTgxxPjMnEsIW0POO+MxjBL
-	tuYqoHnjZIaszqbOpz4VuwmvT1qZ
-X-Google-Smtp-Source: AGHT+IEGytrQy7Ystfv6RnhfSOauiZ+iRUKsQm3VCDpsIUm30ILiQ4RfEMueOEJ4nTVHKHcn3ji8CQ==
-X-Received: by 2002:a5d:4d8e:0:b0:334:b24d:c18 with SMTP id b14-20020a5d4d8e000000b00334b24d0c18mr2975705wru.2.1702329617610;
-        Mon, 11 Dec 2023 13:20:17 -0800 (PST)
+        bh=wgiAOK8BuLaD0cXDs62KfIAvV8sc/YA5HaZCqiUDiy0=;
+        b=hSBodp4baZXLlzMLTfV+rHTQI8wPXfcImtZVO0H6Rq/Oh6p30KX0iGGbUFe6KcwkYv
+         snDSor7b3MKo0KTwrBR/5yX1/hdP/EeFEWGtkhl74ZgCUYznYiUrm4oi8cueafrdR0st
+         ldXSqm/F6fgLTErwpetx+tGqpN7r0D0if89Wc1JzPyVj96XmquGj+5wLwOkgi0r0yaV8
+         XTpWwCPLtY7RsMa93KojcYHdtTZT4V2L/Sb3bkrh9NzUXbSOReM3eTtMpSvQI3fiWBH3
+         LFt/YylmbC+SfbwLZbp89zIvvqjOWAejIxAJL5g323VjvPhJNA1F4zXPuFJPhaN8dC4p
+         cIyQ==
+X-Gm-Message-State: AOJu0YxbJFnOtkXhvDd3AicVHxDV8sfABSknoq2NwqKvPYbrggq5zttJ
+	/szIPsCIePG5kLUtRABnZMEHppEJ
+X-Google-Smtp-Source: AGHT+IEs4f16yITKu9ESGF3sYemei7SRIH+ratgBSuKGdsJp+f7TQSU4vhxmpbCTPj2yD2qXXhIKpQ==
+X-Received: by 2002:ac2:5f59:0:b0:50b:f300:204 with SMTP id 25-20020ac25f59000000b0050bf3000204mr1399873lfz.70.1702329626915;
+        Mon, 11 Dec 2023 13:20:26 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id le9-20020a170907170900b00a1e2aa3d090sm5264476ejc.206.2023.12.11.13.20.14
+        by smtp.gmail.com with ESMTPSA id cf8-20020a0564020b8800b0054cfef2fe21sm4026966edb.41.2023.12.11.13.20.23
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:20:17 -0800 (PST)
+        Mon, 11 Dec 2023 13:20:26 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -92,50 +92,137 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 01/24] exec: Include 'cpu.h' before validating CPUArchState placement
-Date: Mon, 11 Dec 2023 22:19:38 +0100
-Message-ID: <20231211212003.21686-2-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH 02/24] exec: Expose 'target_page.h' API to user emulation
+Date: Mon, 11 Dec 2023 22:19:39 +0100
+Message-ID: <20231211212003.21686-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
 References: <20231211212003.21686-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kfmd7uVzwXPz
+X-TUID: 0aLmoN8TnSfK
 
-CPUArchState 'env' field is defined within the ArchCPU structure,
-so we need to include each target "cpu.h" header which defines it.
+User-only objects might benefit from the "exec/target_page.h"
+API, which allows to build some objects once for all targets.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cpu-all.h | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ meson.build      |  2 +-
+ page-target.c    | 43 +++++++++++++++++++++++++++++++++++++++++++
+ system/physmem.c | 35 -----------------------------------
+ 3 files changed, 44 insertions(+), 36 deletions(-)
+ create mode 100644 page-target.c
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 5340907cfd..9a7b5737d3 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -411,10 +411,6 @@ static inline bool tlb_hit(uint64_t tlb_addr, vaddr addr)
- /* accel/tcg/cpu-exec.c */
- int cpu_exec(CPUState *cpu);
+diff --git a/meson.build b/meson.build
+index d2c4c2adb3..5fdc4ef8db 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3488,7 +3488,7 @@ if get_option('b_lto')
+   pagevary = declare_dependency(link_with: pagevary)
+ endif
+ common_ss.add(pagevary)
+-specific_ss.add(files('page-vary-target.c'))
++specific_ss.add(files('page-target.c', 'page-vary-target.c'))
  
--/* Validate correct placement of CPUArchState. */
--QEMU_BUILD_BUG_ON(offsetof(ArchCPU, parent_obj) != 0);
--QEMU_BUILD_BUG_ON(offsetof(ArchCPU, env) != sizeof(CPUState));
--
- /**
-  * env_archcpu(env)
-  * @env: The architecture environment
-@@ -437,4 +433,9 @@ static inline CPUState *env_cpu(CPUArchState *env)
-     return (void *)env - sizeof(CPUState);
+ subdir('backends')
+ subdir('disas')
+diff --git a/page-target.c b/page-target.c
+new file mode 100644
+index 0000000000..d286e2d58b
+--- /dev/null
++++ b/page-target.c
+@@ -0,0 +1,43 @@
++/*
++ * QEMU page values getters (target independent)
++ *
++ *  Copyright (c) 2003 Fabrice Bellard
++ *
++ * SPDX-License-Identifier: LGPL-2.1-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "exec/target_page.h"
++#include "exec/cpu-defs.h"
++#include "exec/cpu-all.h"
++
++size_t qemu_target_page_size(void)
++{
++    return TARGET_PAGE_SIZE;
++}
++
++int qemu_target_page_mask(void)
++{
++    return TARGET_PAGE_MASK;
++}
++
++int qemu_target_page_bits(void)
++{
++    return TARGET_PAGE_BITS;
++}
++
++int qemu_target_page_bits_min(void)
++{
++    return TARGET_PAGE_BITS_MIN;
++}
++
++/* Convert target pages to MiB (2**20). */
++size_t qemu_target_pages_to_MiB(size_t pages)
++{
++    int page_bits = TARGET_PAGE_BITS;
++
++    /* So far, the largest (non-huge) page size is 64k, i.e. 16 bits. */
++    g_assert(page_bits < 20);
++
++    return pages >> (20 - page_bits);
++}
+diff --git a/system/physmem.c b/system/physmem.c
+index a63853a7bc..4bdb3d0592 100644
+--- a/system/physmem.c
++++ b/system/physmem.c
+@@ -3422,41 +3422,6 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
+     return 0;
  }
  
-+/* Validate correct placement of CPUArchState. */
-+#include "cpu.h"
-+QEMU_BUILD_BUG_ON(offsetof(ArchCPU, parent_obj) != 0);
-+QEMU_BUILD_BUG_ON(offsetof(ArchCPU, env) != sizeof(CPUState));
-+
- #endif /* CPU_ALL_H */
+-/*
+- * Allows code that needs to deal with migration bitmaps etc to still be built
+- * target independent.
+- */
+-size_t qemu_target_page_size(void)
+-{
+-    return TARGET_PAGE_SIZE;
+-}
+-
+-int qemu_target_page_mask(void)
+-{
+-    return TARGET_PAGE_MASK;
+-}
+-
+-int qemu_target_page_bits(void)
+-{
+-    return TARGET_PAGE_BITS;
+-}
+-
+-int qemu_target_page_bits_min(void)
+-{
+-    return TARGET_PAGE_BITS_MIN;
+-}
+-
+-/* Convert target pages to MiB (2**20). */
+-size_t qemu_target_pages_to_MiB(size_t pages)
+-{
+-    int page_bits = TARGET_PAGE_BITS;
+-
+-    /* So far, the largest (non-huge) page size is 64k, i.e. 16 bits. */
+-    g_assert(page_bits < 20);
+-
+-    return pages >> (20 - page_bits);
+-}
+-
+ bool cpu_physical_memory_is_io(hwaddr phys_addr)
+ {
+     MemoryRegion*mr;
 -- 
 2.41.0

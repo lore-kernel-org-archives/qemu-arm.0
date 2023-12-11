@@ -1,121 +1,115 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp348839ejo;
-        Mon, 11 Dec 2023 09:09:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEUfQMeBZLk3py7AmEgy5U1YjXpThSZP49t/hK4W63XvGZ3JCX2RiYCGEl0BXV73nR0qsHH
-X-Received: by 2002:a05:6808:3a0f:b0:3b9:e5c0:f474 with SMTP id gr15-20020a0568083a0f00b003b9e5c0f474mr7219827oib.12.1702314592239;
-        Mon, 11 Dec 2023 09:09:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702314592; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp362265ejo;
+        Mon, 11 Dec 2023 09:30:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH/3+JhttPfexZqwtkizChbwlxJjL5W/9zx4oRpwN5LjS5c77Ni87S5aEKCAb3T0YkWpwpM
+X-Received: by 2002:a05:6122:4b05:b0:4b2:d188:2255 with SMTP id fc5-20020a0561224b0500b004b2d1882255mr3841239vkb.22.1702315832846;
+        Mon, 11 Dec 2023 09:30:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702315832; cv=none;
         d=google.com; s=arc-20160816;
-        b=EMiE4Qk5m/P5LozhpGLMSUKZOVYrEOOrFu3A6I6jsmKymkwd5H7Ke2WqoDAXFG6iB/
-         Kxc7dVZxS8OiidzrVN+U+y8lNG0VI3s906NkyuNwIUNCfDtf1rn3G3xNnaIN2IFpsCYX
-         YiXCbbeXnteY5b4gARUsO2mX42u61gbDPnx7uJsufmrQO8jAcxUzc0Ewtw8/VF+1Rqxy
-         gekev3LlVlpboClVZzh2DEVnUw5+VCulQBuAPqUvH5UIY5i4SgrE1lzJ65a3fFpRon/b
-         c/4zyjQfTsVfZAznCX1xaFeKjqzSBwBxka2NJWd0jyjUNHVJp+jk0xGD1eZGLyEGvWR8
-         OgTw==
+        b=njIqQKI0pgIAJz/YAdFnfkQ9ttCXMWlZECnXCZWoqBYwPSaHEj8vHMpYb3MEY82n3o
+         EXPQyvmTpsQ6zhdaDeP75NvSHRi6n/EXAND4obgQRfH5FizJVCsrFHMW43/vl75UEhH6
+         L7oAM8kZOsZu5Tr8v4ClnN7lhK4yu/lSo2VS9863MYjaAFsIJOwjta5j3IsoegrcpYyU
+         DY8HB0S3SzKZLforkZgApU6U5ol41gJKc4tDgVQEkisQaXqscYOMMBVkum7f6pQsmKSB
+         F5ndGm5bMtfY5QLG5TWZToalW4jdokbKKL7xesJhXABi4le7w631VToytl2taR5f8t9+
+         JYSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=sc1qgl70OVlwSYNp8DPvzNbv+pahk/dG2J+Svd8VVm4=;
-        fh=slGESwP/hltSNUyhGZ2JL7LfxQpDkSgitqep8rykOnM=;
-        b=v/AdZhD/8R6jcjwguL9vIkDjw1p0nBpgMAYeTD6oSFxoG+ErwhezmNN7uTzCZErGCc
-         pWwQxM9BXJePfh9Qik2rCWiKxtz/OreLsASFMChAmE0UAMtE2chgGe7LkLpNl3IsnU7L
-         mRcLwSAynd98TiZzt2q8J99cR5mteahM3/kpixbi960k68+WIq8aCLmuJquOk+108fBq
-         ZmMv5rSLoO1wan3koPTb0XCii8iJUkXG7DOF8rrJPvsMHtBIliqNhlwqAQ7TzL0kNbPj
-         tjpYDYtDEjW6mEYorxAUS1DqbJv7YcV8fWNDkJd5aT72wodB0EWzsekx25DAy0RU9LFv
-         lwHw==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=5JLWmGN1YtJFcZD4A27y487SNCjmUIhzf9njtpghJTk=;
+        fh=jnbnc+JA8os8BNrWArfY9mDntgDud8nPmN5Do23zP6g=;
+        b=bmo05mqT/6tCTer+WR3My1G2M2dAplhVhbz9kOZqusMJYR+u1TGPO3dkMXPZtUnQSD
+         fhNben71uTaAg+hb9r4+Rj0L23IxugNIFQv8ZXrOISY92Y4iKSe0gPci2pXFKUCiwBVm
+         STQCVnmvAfU4Tl3BZExQSGsUV+dkk4BVZ8uE4wOicAx05vZeYrzIDQAt+niOzp2lSKJf
+         2nWCefP1jXX81ah6Brm0XMJbY3Mdki28zJl8xzOMGJCmKzC82DmTOK0JUL9zw73DvI9O
+         mKrFx6tCtJH1bft+JxeQyDnvrQ+4m4TePWc+SmmzxUkmbJHKE3bjnlKSWxXrI/hgKjN5
+         kJNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PmWJ0X4Y;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=hv6FjIV7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5-20020a67fe85000000b0046480cf3f99si1422419vsr.631.2023.12.11.09.09.52
+        by mx.google.com with ESMTPS id a16-20020ab03450000000b007c5ae29d74csi1436253uaq.75.2023.12.11.09.30.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Dec 2023 09:09:52 -0800 (PST)
+        Mon, 11 Dec 2023 09:30:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PmWJ0X4Y;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=hv6FjIV7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rCjmf-0001gY-AA; Mon, 11 Dec 2023 12:09:33 -0500
+	id 1rCk6i-0000Zo-2V; Mon, 11 Dec 2023 12:30:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rCjme-0001g5-2y
- for qemu-arm@nongnu.org; Mon, 11 Dec 2023 12:09:32 -0500
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ (Exim 4.90_1) (envelope-from
+ <3G0d3ZQwKCLglYZgfcqrcdYlemmejc.amkocks-Ypklmlels.mpe@flex--nabihestefan.bounces.google.com>)
+ id 1rCk6Z-0000YA-2e
+ for qemu-arm@nongnu.org; Mon, 11 Dec 2023 12:30:07 -0500
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rCjma-0000UH-67
- for qemu-arm@nongnu.org; Mon, 11 Dec 2023 12:09:31 -0500
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-6ceba6c4b8dso3617026b3a.1
- for <qemu-arm@nongnu.org>; Mon, 11 Dec 2023 09:09:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from
+ <3G0d3ZQwKCLglYZgfcqrcdYlemmejc.amkocks-Ypklmlels.mpe@flex--nabihestefan.bounces.google.com>)
+ id 1rCk6X-0004er-JJ
+ for qemu-arm@nongnu.org; Mon, 11 Dec 2023 12:30:06 -0500
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-db402e6f61dso5132767276.3
+ for <qemu-arm@nongnu.org>; Mon, 11 Dec 2023 09:30:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702314566; x=1702919366; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sc1qgl70OVlwSYNp8DPvzNbv+pahk/dG2J+Svd8VVm4=;
- b=PmWJ0X4YEpZU37N4vYCBLJmqQFQKBwIU5bg36j/EB2VuPsA82f6RoES3JxLbvm6vYw
- o3RfI41YaCwkpQJh0EdIbipA5mKdjPQqbXAWQiG6L593aD3zHWYvfCD9qHroesx74hhU
- V8ZYO/HJ0+4Mo0To31pGCEMs4AuH70O2cKljUMsGDXXv7T7njiHlvOYd4ijKuZkVWLhe
- s0H4AUTjk6xEA74L0FJv9pWE/31dAwnix5P1PV4h2+kB1LMRePTaWdYIqW4mP6Jakukb
- 5t19icptZ/6oZRQbVijujY4Z4SgbChL4/+T0/8S+7lO18AzsJYQR5pF01jrrAiCHiVYV
- 6Fww==
+ d=google.com; s=20230601; t=1702315803; x=1702920603; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=5JLWmGN1YtJFcZD4A27y487SNCjmUIhzf9njtpghJTk=;
+ b=hv6FjIV7rDPPJBiAFNe5VVD28WSgYmcUTyceSROIQcH4M4Z1gfLrHjRE1mAxvcrjVY
+ U1s5bcHAkaRmEtiK4dzFMEj/nBjsZBdleX9WzU41i51g8fT1gR2xCiW/Fbu/IObedeFR
+ rDroXuyh2gOjYy55XNN3av3/WALrupjnAAlJPDZMGTiyDAayfwBWYZFBA299Fh8wln/q
+ Ubop8AymbuV/59T5s+7pVij4ys8UFDqeAQxuforHh/GYV4VZBdcwccUYeQJzE2CT66v5
+ KT6HUu0jQROnJ7ctSf3Ne/Hmlnu8NFdNISy+lQOqlf5At1hUT8eAZ7w6/0WuSYfuwpR1
+ sM7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702314566; x=1702919366;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sc1qgl70OVlwSYNp8DPvzNbv+pahk/dG2J+Svd8VVm4=;
- b=PjjlBixAabn5iUBqKEt/QfLIcWN8M9RdrthywZv1tcL3+SIqGb5kcLMs0/huwWNsxH
- 32Ydv8q2geKSxmBRDJeVKS7hPGcivSQFPcnxZihggQJBzNsgyJbrdfd7ZLkaqK4asKBN
- OU373ALLYr+q6p7hyS4RJGFPLxPBDFOet06JMbKYHga2f4ejtpZ/0RDjKtPzAxbM7HQ8
- vBvbWMIPO4hzSFq1h0NKlNf83Toj4IGHW/0jO7ztmJD0RXiCvKgsTPBJohLNMjtsdqUu
- SKhifyXLxCL1dp3Ikor9cNRBAH8F8I65LjUKYtZsjGs3VchEwfTipcmN1zsT2p+lUdBg
- mcHQ==
-X-Gm-Message-State: AOJu0YwJGkmRWJzuUU8yfKFJw65qzfSd85NKyOoXvUIJ0pThZ/YET5gP
- r01pO/9XRBpfGqU0Cgdj2c7HHg==
-X-Received: by 2002:a05:6a00:194d:b0:6ce:4927:2811 with SMTP id
- s13-20020a056a00194d00b006ce49272811mr5640987pfk.22.1702314566032; 
- Mon, 11 Dec 2023 09:09:26 -0800 (PST)
-Received: from [192.168.0.4] ([71.212.149.95])
- by smtp.gmail.com with ESMTPSA id
- w2-20020a654102000000b005c65ed23b65sm5546397pgp.94.2023.12.11.09.09.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Dec 2023 09:09:25 -0800 (PST)
-Message-ID: <3c2d3736-4cae-4034-973b-568e80cbf0c3@linaro.org>
-Date: Mon, 11 Dec 2023 09:09:23 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/21] target/arm/kvm: Init cap_has_inject_serror_esr in
- kvm_arch_init
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20231123044219.896776-1-richard.henderson@linaro.org>
- <20231123044219.896776-19-richard.henderson@linaro.org>
- <4889143b-e15e-4834-af2f-ddea2dd63cb6@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <4889143b-e15e-4834-af2f-ddea2dd63cb6@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ d=1e100.net; s=20230601; t=1702315803; x=1702920603;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5JLWmGN1YtJFcZD4A27y487SNCjmUIhzf9njtpghJTk=;
+ b=pJD9kWuaUc9aVNjtb35P7YE9VIeByju5yc8323zc3ze+8dwIVHJ9G5VXWnMNx8VMF1
+ Ch7qrgxSZFeffKa9phxEIdK5weoNQ410AGQ1deiiAdRVpJ5uLnApB9wyUwz0iE2OfTup
+ 0NgFeabPSxrpIXiQJ2+09URFjh0UVH5xL2joQKs0f4FSEcCJAUUcVLCaXdQkYQAfGDTK
+ zbu+LgRM2gLsSQwLekmcdnVEHJHg4fgHIRC+8Tp0307cnd40vlRp2bp3GjF97YNkK5/5
+ d6lvvc9JO+ptzidqzAwdESoo9jvUQnxfB7K3Vsy3g8iOjcAp+O/4pkQ/eKlokDNwY86C
+ y1Ig==
+X-Gm-Message-State: AOJu0YwDhVobEHpO85Vp3fSZY1o1m3Hl6g1chNK56Vo5Hsx+d3nzP62g
+ WGFFpGtcOzuGbh3rS9tWMO97FDmBspewSGx2FDo=
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a05:6902:9:b0:db5:382f:3997 with SMTP
+ id l9-20020a056902000900b00db5382f3997mr31219ybh.11.1702315803048; Mon, 11
+ Dec 2023 09:30:03 -0800 (PST)
+Date: Mon, 11 Dec 2023 17:29:41 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+Message-ID: <20231211172953.3164357-1-nabihestefan@google.com>
+Subject: [PATCH v6 00/11] Implementation of NPI Mailbox and GMAC Networking
+ Module
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
+ nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
+ Hila.Miranda-Kuzi@nuvoton.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3G0d3ZQwKCLglYZgfcqrcdYlemmejc.amkocks-Ypklmlels.mpe@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,56 +124,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mvhBYHgaoQli
+X-TUID: 8ANQi9BDMwi5
 
-On 11/24/23 03:54, Philippe Mathieu-Daudé wrote:
-> On 23/11/23 05:42, Richard Henderson wrote:
->> There is no need to do this in kvm_arch_init_vcpu per vcpu.
->> Inline kvm_arm_init_serror_injection rather than keep separate.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/kvm_arm.h |  8 --------
->>   target/arm/kvm.c     | 13 ++++---------
->>   2 files changed, 4 insertions(+), 17 deletions(-)
-> 
-> 
->> @@ -562,6 +556,10 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->>       cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
->> +    /* Check whether user space can specify guest syndrome value */
->> +    cap_has_inject_serror_esr =
->> +        kvm_check_extension(s, KVM_CAP_ARM_INJECT_SERROR_ESR);
->> +
->>       if (ms->smp.cpus > 256 &&
->>           !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)) {
->>           error_report("Using more than 256 vcpus requires a host kernel "
->> @@ -1948,9 +1946,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>       }
->>       cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
->> -    /* Check whether user space can specify guest syndrome value */
->> -    kvm_arm_init_serror_injection(cs);
->> -
->>       return kvm_arm_init_cpreg_list(cpu);
->>   }
-> 
-> 
-> Just checking, in a heterogeneous setup we still want to keep
-> these 2 calls per-vCPU, right?
+From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-There is no hetrogeneous kvm -- every vcpu must match the host cpu.
+[Changes since v5]
+Undid remove of some qtests that seem to have been caused by a merge
+conflict.
 
+[Changes since v4]
+Added Signed-off-by tag and fixed patch 4 commit message as suggested by
+Peter Maydell (peter.maydell@linaro.org)
 
-r~
+[Changes since v3]
+Fixed comments from Hao Wu (wuhaotsh@google.com)
 
+[Changes since v2]
+Fixed bugs related to the RC functionality of the GMAC. Added and
+squashed patches related to that.
 
->      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
->          cpu->psci_version = QEMU_PSCI_VERSION_0_2;
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
->      }
-> 
->      if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
->          cpu->has_pmu = false;
->      }
+[Changes since v1]
+Fixed some errors in formatting.
+Fixed a merge error that I didn't see in v1.
+Removed Nuvoton 8xx references since that is a separate patch set.
 
+[Original Cover]
+Creates NPI Mailbox Module with data verification for read and write (internal and external),
+wiring to the Nuvoton SoC, and QTests.
 
+Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
+and registers. Also includes QTests for the different functionalities.
+
+Hao Wu (5):
+  hw/misc: Add Nuvoton's PCI Mailbox Module
+  hw/arm: Add PCI mailbox module to Nuvoton SoC
+  hw/misc: Add qtest for NPCM7xx PCI Mailbox
+  hw/net: Add NPCMXXX GMAC device
+  hw/arm: Add GMAC devices to NPCM7XX SoC
+
+Nabih Estefan Diaz (6):
+  tests/qtest: Creating qtest for GMAC Module
+  include/hw/net: Implemented Classes and Masks for GMAC Descriptors
+  hw/net: General GMAC Implementation
+  hw/net: GMAC Rx Implementation
+  hw/net: GMAC Tx Implementation
+  tests/qtest: Adding PCS Module test to GMAC Qtest
+
+ docs/system/arm/nuvoton.rst         |   2 +
+ hw/arm/npcm7xx.c                    |  53 +-
+ hw/misc/meson.build                 |   1 +
+ hw/misc/npcm7xx_pci_mbox.c          | 324 ++++++++++
+ hw/misc/trace-events                |   5 +
+ hw/net/meson.build                  |   2 +-
+ hw/net/npcm_gmac.c                  | 942 ++++++++++++++++++++++++++++
+ hw/net/trace-events                 |  19 +
+ include/hw/arm/npcm7xx.h            |   4 +
+ include/hw/misc/npcm7xx_pci_mbox.h  |  81 +++
+ include/hw/net/npcm_gmac.h          | 340 ++++++++++
+ tests/qtest/meson.build             |   3 +
+ tests/qtest/npcm7xx_pci_mbox-test.c | 238 +++++++
+ tests/qtest/npcm_gmac-test.c        | 341 ++++++++++
+ 14 files changed, 2351 insertions(+), 4 deletions(-)
+ create mode 100644 hw/misc/npcm7xx_pci_mbox.c
+ create mode 100644 hw/net/npcm_gmac.c
+ create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
+ create mode 100644 include/hw/net/npcm_gmac.h
+ create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
+ create mode 100644 tests/qtest/npcm_gmac-test.c
+
+-- 
+2.43.0.472.g3155946c3a-goog
 

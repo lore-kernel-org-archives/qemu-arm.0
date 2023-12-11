@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492115ejo;
-        Mon, 11 Dec 2023 13:20:54 -0800 (PST)
-X-Received: by 2002:a17:906:1783:b0:a19:329c:55d5 with SMTP id t3-20020a170906178300b00a19329c55d5mr2437811eje.64.1702329654111;
-        Mon, 11 Dec 2023 13:20:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329654; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492147ejo;
+        Mon, 11 Dec 2023 13:21:01 -0800 (PST)
+X-Received: by 2002:a05:600c:3423:b0:40c:224b:a72 with SMTP id y35-20020a05600c342300b0040c224b0a72mr1762543wmp.147.1702329660920;
+        Mon, 11 Dec 2023 13:21:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329660; cv=none;
         d=google.com; s=arc-20160816;
-        b=U8wjdQw1khnI81+9ElPMGZrwXcnBGwo7AjYI14ywKgNApFOc29KGx55oDya4SXCAE0
-         YUWW6r32AhSoEKVXbLghpn93qcrA1MHd7gRhXjlIhf7gHiaAJyyLi/3AS9Jva34sZzur
-         1oOJXqWUJh0tZGjmhUYp4OQs41OuXkaFLZbeNEiUK4p6GcZNmcNUiR7A/+h1pImGCcSR
-         b0EZmR6iOHVKmzYN2Bk9b4MLiDhMQUKBL/bs9HY4G8oPyCr/cYr1GuvGvvBGzAZSPGiy
-         Ol1gvrUK7FFMOcgrPWYFYoW8SX4fATIXdl5FWWqVRTqQN8eSklH95KZPjpo4nTAptlCm
-         b36g==
+        b=bL0JNsz351/T4ION7mmEjeN9gQlbx808lHmKshhIWICqaGoJgqEwXruQZBBK0COHho
+         Gm+yotekUJsZgkTg2DXBPSbGVfWkIiXZGc+bKRsBB14Oosyt+E8GUO9YDe0ay292Wj0x
+         d/k6yFFZlRLqDEEqCju/4SSbHS8uJMIW1Qoq8/3zn5mIyRNd3XlSLowPd0KEGjP3308i
+         8dlo/pc0s6wMn8WK6C0MuqBgllTrTXItFlkGuSql79O3ZJezaz46KqtuhGctXCRj32nj
+         Bmxgh3Hr5f5oC48QggwTDUIr3mzayr1B1MJJhxGtXLOunRyezy251ZI0k9v07Y0q5hZU
+         TmGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Hdtduscqdl7lWoQvL5DT94RvR1c94dCnz5Zm14mzbGM=;
+        bh=y/4S5uEaEhG14FzKfAgbneY+HkdmgvAL2IyWQ5CT/QM=;
         fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=E15FSrZINDj3VwBIYc9MqWGMaua7CXbjLNu+ZA4vKP87bx6MoyFIag2SlmUl/IvPxn
-         knOZyF00MdwMEmNial3PjJh9mQtMsDYJIUS8IT+6dFqKVd9coJjek0Wt5up3TcR1ccvj
-         WpUM7neLqnw0nN1qaNitLJTqsWe2e/yrlrMyRmoi8B9CNh4rH61Fgbta4spFUDZJhAW0
-         WL3GPWsbyXqImDX6vcKE46QSaFN1ssKBrmZBu7YM+nMt1c/pcDvFwLHjqa7yVxMbrTAL
-         tU4UGbGFZeOwcBmzrX6iKplvKZgBo0atPWJg6vCqZITj6uYKRxPJ9E0+zhma2AvZMyWk
-         Z0mQ==
+        b=d6x8tuqHACy/vx8kj8Mox9yW9dUYS+VoWIY2sP5V3S+qPLGCtH2r1ZmD07lpGHzJ8s
+         W59DX5m1m19FLAKbwBwhgvKvKI5JNWPw9V8Rz6wBYcHKo4vMP6OKNlaHNp6n9JlCuuQF
+         6hJPsswIcNeC/mN3/THGiff/Z7VtR0eYBO1PqQvxlxDsBgIVL0UZuyqIWno8jgqvgbDm
+         6+pjhhrBiVe8CpIGKfzU5tcllc7E/W5i25omCdixto6py9NfaHebmNvaUuJAs9bS+szb
+         0DNifz7a785QeBTjCAWnv1EvW8uhNg/OlNqJBneoWwGr7roDn+fZqTtIah6J9rhTA12L
+         SB4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HRoTXTPx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Pc1Sb1gi;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id mm11-20020a170906cc4b00b00a1dec186adfsor1119945ejb.7.2023.12.11.13.20.54
+        by mx.google.com with SMTPS id en5-20020a17090728c500b00a192ff92d2csor1520192ejc.5.2023.12.11.13.21.00
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:20:54 -0800 (PST)
+        Mon, 11 Dec 2023 13:21:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HRoTXTPx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Pc1Sb1gi;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329654; x=1702934454; darn=linaro.org;
+        d=linaro.org; s=google; t=1702329660; x=1702934460; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Hdtduscqdl7lWoQvL5DT94RvR1c94dCnz5Zm14mzbGM=;
-        b=HRoTXTPxJGinBZlAvK+qc7PSACHB7U/6FQF8A3RHNZ5WFNgkm/lZY0CAdZ6oDQ3qY4
-         LMQPknRDDpzoX3ErYIl2DZB/0+Dx0ZZ9lsTySRKKV7yex0oLiUJsA1yIiSvOwG/ylbEq
-         vGjY6X8OTDmiAolvrjkTsqIWnmmlbYvqJIQy22WGOJ6oOBKEH0u2Ny0tTjtXbZamrqJR
-         2EOoIPH2zm7seUzQGPYjCrA6U7ou6nrAGWYOYx11C24CFG6ua4p9vtQxCHx1tr/lSKM1
-         D/h46zjPE6VfCuAvsS1M1UIcldrrcVFO0jm4cCe/Sd9lMI49LHEhhPW0hrez9XfNry/V
-         zKDg==
+        bh=y/4S5uEaEhG14FzKfAgbneY+HkdmgvAL2IyWQ5CT/QM=;
+        b=Pc1Sb1giJGtEXKo4c0glGpvxj8nQsI2QqhIRVZ/s4Gl2FntzVXguy9DrocduZeHGa/
+         itwye0pXwLb7LsHhgKKRTx0q86RC3ouolKP0CaEBMk0pPoDVVK73ByRLODbUGL9A7GcA
+         DoTPCRfZkLMr30/SWgCtYHJaD/JU6pfLeHFrF4BWLHiRXRViI8GS/BCB/4xA4u8u4ZIt
+         cniaZOCAtAtle1/ScpfVYqlrdrpzY4zWzA+TQP2xC7Ww4hb+OTn2Szxz05WMornjato+
+         oc5sxXD/PdVE5wXZqJZfuXQt/Q6G8Ez1vFyMvalkkSkeb8LFFwwOFETaC0rFsfaVq5Nz
+         rNmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329654; x=1702934454;
+        d=1e100.net; s=20230601; t=1702329660; x=1702934460;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Hdtduscqdl7lWoQvL5DT94RvR1c94dCnz5Zm14mzbGM=;
-        b=F6tFrwS1a2SLHC0VrIWi+F6HioQr95l9rbvdhQ4bOX+zMgtrW5Jl7h7185u6IkNlsz
-         +1WqNTNhfHtp9JcNw48urKjlsx07luYG+XG7OatDVqQMMSdSfzhCSDlT6ZW+vNp2Elbm
-         rilW2pzdSTZcUQIYZqsNm1CG3tz48k3Lc8CjFihmrfmwDr6Ve4WvuzM7Hm2/X5lPYhUL
-         iulMUmPZy55IuHBsPscH9waYaDLRmJlAoiQ7FUPiz8HwP/ckciNMY3C8gxZOL+3gmA2l
-         +Gggg6rd0xJ4xTJC0xB+2HuTczvcPtmTXMQO/znNl4auOaFvCXb85ULsOdXzlYLLMXXz
-         3IBQ==
-X-Gm-Message-State: AOJu0YwqEWnBZ7FpVj/h3X2pzpBHxWl/ysFhwEjLz/otQJqwwvKlt67s
-	6daSyXZEV5NALyNQ8ae6esCW/E0h
-X-Google-Smtp-Source: AGHT+IGSU6orrfEyQw8281nABb2ziCc9amYnSK9sAmfW+hjeDzK/Oj1EjnbDpucqQCNSeee/4ucj7Q==
-X-Received: by 2002:a17:906:2207:b0:a1f:9f16:2cfd with SMTP id s7-20020a170906220700b00a1f9f162cfdmr1332861ejs.63.1702329653881;
-        Mon, 11 Dec 2023 13:20:53 -0800 (PST)
+        bh=y/4S5uEaEhG14FzKfAgbneY+HkdmgvAL2IyWQ5CT/QM=;
+        b=n0S6m5e0WJHlLcN7Qtw3Iqcjez5QPMbJSRtt9od0GBxDkYVqo/PCdcI5X+36YbCf8S
+         p+7qVuzZHRTo9KGTOYJy5IO+uev4ZQZol47eXcDv9pG38QK24X/LUvB3CsMF/XjtL8v9
+         JeoFNfovRc/VbQF99bpEhDghX/wRGJHtbjYhXY5bJDuiAd3VEshwn7W847fUdT5mSxrP
+         ajDCg+onTV/rBmRLwT9lCrg4u9FX11WO9X91u9pHUeNqISO1PRySMzOnarOvAL7e+gun
+         iZiBT2EnzI8UcY5kH8hflIhyzQczglexhdBPMM1gi0nXzR4qwHAUoj82N3Jl29p41vTz
+         YzWQ==
+X-Gm-Message-State: AOJu0Yw213keqm80OsCeW8U9PIkXZwbh+9GnO5+Owj8Kpaw5mQsnIJkl
+	xDTNJ9CipLOxLqvp8H4AcmPjT702
+X-Google-Smtp-Source: AGHT+IG2Vm9+9nZozqmpyx0to/UIe7Qixe2bQihK4D/rfYN6NuV3VFVlogSlogUpRJvEdJfYdlLdmQ==
+X-Received: by 2002:a17:907:7f94:b0:9e5:ee70:5da1 with SMTP id qk20-20020a1709077f9400b009e5ee705da1mr1827163ejc.53.1702329660720;
+        Mon, 11 Dec 2023 13:21:00 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id tm6-20020a170907c38600b00a1db955c809sm5304903ejc.73.2023.12.11.13.20.50
+        by smtp.gmail.com with ESMTPSA id rf20-20020a1709076a1400b00a1d1b8a088esm5331871ejc.92.2023.12.11.13.20.58
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:20:53 -0800 (PST)
+        Mon, 11 Dec 2023 13:21:00 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -93,37 +93,35 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 05/24] semihosting/uaccess: Avoid including 'cpu.h'
-Date: Mon, 11 Dec 2023 22:19:42 +0100
-Message-ID: <20231211212003.21686-6-philmd@linaro.org>
+Subject: [PATCH 06/24] semihosting/guestfd: Remove unused 'semihosting/uaccess.h' header
+Date: Mon, 11 Dec 2023 22:19:43 +0100
+Message-ID: <20231211212003.21686-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
 References: <20231211212003.21686-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xyjV+2e8oMBF
+X-TUID: wVTVb2G0r0b9
 
-"semihosting/uaccess.h" only requires declarations
-from "exec/cpu-defs.h". Avoid including the huge "cpu.h".
+Nothing in guestfd.c requires "semihosting/uaccess.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/semihosting/uaccess.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ semihosting/guestfd.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/semihosting/uaccess.h b/include/semihosting/uaccess.h
-index 3963eafc3e..6c8835fbcb 100644
---- a/include/semihosting/uaccess.h
-+++ b/include/semihosting/uaccess.h
-@@ -14,7 +14,7 @@
- #error Cannot include semihosting/uaccess.h from user emulation
+diff --git a/semihosting/guestfd.c b/semihosting/guestfd.c
+index 955c2efbd0..fd7e609790 100644
+--- a/semihosting/guestfd.c
++++ b/semihosting/guestfd.c
+@@ -15,7 +15,6 @@
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
+ #else
+-#include "semihosting/uaccess.h"
+ #include CONFIG_DEVICES
  #endif
  
--#include "cpu.h"
-+#include "exec/cpu-defs.h"
- 
- #define get_user_u64(val, addr)                                         \
-     ({ uint64_t val_ = 0;                                               \
 -- 
 2.41.0

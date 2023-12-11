@@ -1,121 +1,169 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp244769ejo;
-        Mon, 11 Dec 2023 06:36:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG7hsyqXDb9KuLZlYoLdllYW8Z70DkSNkqAf16ODUvScnn2GBMQcgoKIvT8KTqCuVzCKzCD
-X-Received: by 2002:a17:906:cc53:b0:a17:d879:7f06 with SMTP id mm19-20020a170906cc5300b00a17d8797f06mr5751637ejb.4.1702305414943;
-        Mon, 11 Dec 2023 06:36:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702305414; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp289524ejo;
+        Mon, 11 Dec 2023 07:41:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHmDcYPwT0LQdieHaOxjkxHphzoRen8abMW4a46JjoBX6OVbcxGGk0H3yel1hx1t6lKuxU+
+X-Received: by 2002:a05:620a:3:b0:77f:3535:87ca with SMTP id j3-20020a05620a000300b0077f353587camr6025391qki.106.1702309314850;
+        Mon, 11 Dec 2023 07:41:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702309314; cv=none;
         d=google.com; s=arc-20160816;
-        b=w2QlyKDGuj5jC6SPuBr8hRO1owSK8NEHDL4uAUE2m3FnzGD1W6yicmpF4Fw0n7YqDs
-         bKlqh5VgWSDH0jEfH00NzheS5s8i7RVz7Synr79KMGkMxEjKC+mGtRzyvFTaPhDQvoiY
-         7mM3bqQs4GHh5nofL3G70ADPL9diLRg7P5rL1huYX1lEGMnQQJ4vX9apb+sOZuRRh425
-         GKwdzHwMHkJJhqyl4emZMqx0qb3l2XiI1y9cLVV/lQsecXAKuXpxejo9/mZzZ20i91T4
-         GcNHlj0aCbcG5a8LYwzQ/anDAwohRTGSjBQoHXjdK5fZ9j09ODG9MJQAwMe3f5FtP2oW
-         Ef5g==
+        b=W5WzOMRFBCMNE5fssITd3vlwwRy1eDLaFxURxLsGe2FVjj9bmLFSIOY7a2sT/zZUUD
+         4kvmUidzkJqfiPFERHp08V3Bdbe+c0gGvvfUJ0QjREojcBQSwE05qAiuL/6mJmzvuX8U
+         v0JO6Xr/hBRAl2dJIa9H+QyDrrMjzv7U2LtA31x2Ri0h4VC32/Mq5kBDzzrzb7QZDIyj
+         AS9rQ5j0qIs6SLngKB3FpOm4cgmOu2zo3PkZceeGAFMvHf/+PiYZV0ngPGLJgOVpdB5m
+         c1QovBO97Ic6PykF44NstxNYOrucCPsWENbMLh+QYZTqxkvJ+AGsBG1bzm15lZwbZ3Ec
+         TBOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:list-unsubscribe:list-subscribe
-         :list-id:precedence:dkim-signature;
-        bh=hnlDRuUqfo4QrqddI/qWEwk9SWh3sjr/XXfcP2vUeRg=;
-        fh=eoQB7mYEuRt05nElmkj3IN/dFmrbGZnIdf4aRaj90HM=;
-        b=o/GzkqJtlE1mSpuQRMGQlaKPVMuTcTjEiG1U+pJhV/J7pg3wW6dbnyeDDuOVhNJ/sK
-         AhXV0YHdG2dANNOrcs75z2OCXdoo35bY/RFFFBl7AP+qj3jeuFHpRfkd8G3cnIEhw4zu
-         PCTCsGoUtLx67U8x2UPc22wOWWJ77tCiznw+IcenbeuTwYcrcT1Pee/+l+JFcXtCiHZF
-         CNgNxqZFFM6VEGHuQf90O+2t5qc0m7bsKcxtO3ckafE1gGO/hGggMOZZAGAgQmbc97b+
-         tqFcYOMvhgN/DSlX4WsE2HRkfdd9m2SbrM58Q+S7T5+8tTcnm302eYGIKAvByj55gvoj
-         YnFQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=jR2GEF0BnAY6HyvVJuXTO6tJSvNHXRwQ8RHT+QBI1Do=;
+        fh=Fynti4igEyd80lPm5jsUDnPPmXGC+AeBht9O6m1eJ68=;
+        b=YXUxXo2KeG7QKRjR5N4CO9jaecerDO9DgCtbazTgVXrmYYA6vYvGOOmPOWFndM/gm4
+         Fq1pQEGDDy2MR9R8d9pifkEjaS2p2iZGRxmpvasqy8aTYuU/ttaOHXtkc4NaGL86L0L5
+         d+F56U6b/4yAh3cbB2TwGgkjkVCnA6RJRTFZ6xCG2NMWfw2Ghi5ByC1VX1/NnkTcufTM
+         AYydVULbaU/h6MeekCH8kQaPtctBSGj8J9Pwrjn7h1KZmvFvp4DUEYpD/FtMSEYlZnH7
+         mZoeexeozTk5kX88PIG+y9h59py3LgwKIbEdoPb+4OCaER9sEgVviOf3W7fO6a+uyZgN
+         l3Bw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wNDq9+Wr;
-       spf=pass (google.com: domain of kvm+bounces-4051-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-4051-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mbqPT5T0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-4051-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id lz20-20020a170906fb1400b00a1d42df69c8si3516907ejb.760.2023.12.11.06.36.54
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 10-20020a05620a040a00b0077d7da0e988si8177526qkp.337.2023.12.11.07.41.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Dec 2023 06:36:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-4051-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 Dec 2023 07:41:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wNDq9+Wr;
-       spf=pass (google.com: domain of kvm+bounces-4051-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-4051-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mbqPT5T0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8CF5C1F2144B
-	for <alex.bennee@linaro.org>; Mon, 11 Dec 2023 14:36:54 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id EC75148CF6;
-	Mon, 11 Dec 2023 14:36:48 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="wNDq9+Wr"
-Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com [IPv6:2a00:1450:4864:20::52c])
-	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 850A59F
-	for <kvm@vger.kernel.org>; Mon, 11 Dec 2023 06:36:45 -0800 (PST)
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-54f4b31494fso6414899a12.1
-        for <kvm@vger.kernel.org>; Mon, 11 Dec 2023 06:36:45 -0800 (PST)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rCiPN-000550-Uk; Mon, 11 Dec 2023 10:41:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rCiPJ-00054B-VC
+ for qemu-arm@nongnu.org; Mon, 11 Dec 2023 10:41:21 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rCiPE-0007vv-IM
+ for qemu-arm@nongnu.org; Mon, 11 Dec 2023 10:41:20 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-54cfb03f1a8so6220097a12.2
+ for <qemu-arm@nongnu.org>; Mon, 11 Dec 2023 07:41:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702305404; x=1702910204; darn=vger.kernel.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hnlDRuUqfo4QrqddI/qWEwk9SWh3sjr/XXfcP2vUeRg=;
-        b=wNDq9+Wr1V/HEJknxRt5wJ39c6fqZQJoapUFfPupvT/mBI5VPM9lQbMQ5PghILgRGm
-         3i7HefGl7RhoQaIMDcP/kbMTFtQy10WM09EHg86s89q2oQpgPMOsBSNEpCl9mzrxsdZU
-         971L7IGAu+hrbLr056jftKzDW/yadD/PgA6SIpMQ1vYV2whrePMzYHdTMacWAmiDDBoP
-         NYdoK+pPYT/lKbaU2Mnh4k5ekUoT8QieZ5s/k4NumzSpdKAYAj+81LEPlw+kc9GWsz8w
-         tKQ2H6vDJq5Fu9YWVj/CMdw2igQZVzbwv6cLL3sYUqC8c+Jzr/b+JFvXFjyQOCCR2ZY4
-         JRiw==
+ d=linaro.org; s=google; t=1702309275; x=1702914075; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=jR2GEF0BnAY6HyvVJuXTO6tJSvNHXRwQ8RHT+QBI1Do=;
+ b=mbqPT5T0AMbD1V8CWCiis//WEDNedUQ1QSfwK3YFaaDOwZgKp7gG7L7IxPsnxNLYdA
+ CoUX3yYcVjYa6xCAf2jDZjSCMPCRPs9XvmDAZlwaVBVjvV+U9DQQM83ajE3V/FApGiT3
+ VFyo9d5NmKft4TcYagvlZsYaKZT4edKWs3lSwFFUlJlizGr11IFOl6eoKN3b6BZThLmf
+ Qgdzmd+svw3I9kqh7Xoer85IHGDR7CY3R0FMpXCdiF+sPM0/ku/3tlp4tBR1/j61h41a
+ ClcbJAZbI8uu/dU6a3reFuBYf76nDkWgulfyGZYaFJPMjyd8ez+pE8A1rJtvCiuVMH04
+ zgYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702305404; x=1702910204;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hnlDRuUqfo4QrqddI/qWEwk9SWh3sjr/XXfcP2vUeRg=;
-        b=mfYgVeDJ/Oe6266+NnDsv+DJGGj8byLyCeGG6DXIjAf0OxsDLz60LKWt/MNoFymljs
-         A9UYRD2xkwldYzYJRoe4lMq8K46fwvD7SfSiZnQD12PkejvIOQzR9shZztVCKJnt/dLO
-         oR62/6fXVFrHLR58+o/7fbZGi4AlTZQywogLvtgvy/p63UYaL3DgdyD0da9GdrJbcEe9
-         Akd9BYEnAXMaMlUChOf0OZelZrqzUDlJDTPmITnrVeuvbmIKw8uF7kZSULhogKAJcw4Y
-         Y2Gi0HHcsnOIarL0rXwpYIHD0RoXoC4ibXu266JfAK6HYtsfUu5D0KtMmfbMo3s1rGyC
-         Ogww==
-X-Gm-Message-State: AOJu0YxgPIkGLIt+j9HK1SExeb/nxVt3eJKjA9Lxo4otieQQu+g+LXkT
-	g7utG9//ofojqmz0XNbG5jU2J3WjF2vI87SzcsEiVQ==
-X-Received: by 2002:a50:ef17:0:b0:54b:38f:7263 with SMTP id
- m23-20020a50ef17000000b0054b038f7263mr5484022eds.8.1702305403990; Mon, 11 Dec
- 2023 06:36:43 -0800 (PST)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1702309275; x=1702914075;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jR2GEF0BnAY6HyvVJuXTO6tJSvNHXRwQ8RHT+QBI1Do=;
+ b=EDXFCWr+iTlgDuAQtZLLLhwS2JsgZEIbDxmcBWQCB4juAgcOVgMDcgyxaciEnuCIrw
+ yRSOvRPORH2GProDlcLTR2xjhkqxg/hGVyrdAuREgz8NzgILgBy3JSBrBc4yX5uxkaUc
+ 0LkryS+VLiKlEtSH3vABmgZVulfVeqp8Zl7/C3In9eoym90lALR7CztSaw05ZaEEnKxG
+ i5mwDkw/9+XWw0WAlP6/oy0MexAAWDjGCIZ2QSFGGmuxXCCJeUnHo3fgLnTUnR/fbQAC
+ ytNGSldaa+NvOHjkc01Ww46qr+HN8CMXgN+E/JFy/JK26B+GgcCbjHkwhdTc95emSZ1p
+ +KGQ==
+X-Gm-Message-State: AOJu0YzJjgW0B//MXN5J4XWA4DxEPX6aafmf3rlKv5iS9IVsQIuUZZD2
+ IM7lI4gfxiLoOffpO8+FqN/Bty4Q+5SSvSBS6FwD9Q==
+X-Received: by 2002:a50:bb49:0:b0:54b:d16:4c4b with SMTP id
+ y67-20020a50bb49000000b0054b0d164c4bmr2678625ede.19.1702309274900; Mon, 11
+ Dec 2023 07:41:14 -0800 (PST)
 MIME-Version: 1.0
-References: <20231123183518.64569-1-philmd@linaro.org>
-In-Reply-To: <20231123183518.64569-1-philmd@linaro.org>
+References: <20231027175532.3601297-1-nabihestefan@google.com>
+ <20231027175532.3601297-7-nabihestefan@google.com>
+In-Reply-To: <20231027175532.3601297-7-nabihestefan@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Dec 2023 14:36:33 +0000
-Message-ID: <CAFEAcA8S7Ug8uFpvDO9FarLpLhTr_236H8gOK=dEOWQZe-3zgg@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 00/16] target/arm/kvm: Unify kvm_arm_FOO() API
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org, 
-	Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 11 Dec 2023 15:41:03 +0000
+Message-ID: <CAFEAcA8ABPROeGEp+eEiBVzDj-NMbX7Extwv=ZAziZygwCYDrw@mail.gmail.com>
+Subject: Re: [PATCH v5 06/11] tests/qtest: Creating qtest for GMAC Module
+To: Nabih Estefan <nabihestefan@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
+ kwliu@nuvoton.com, tomer.maimon@nuvoton.com, Hila.Miranda-Kuzi@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 3FuvNvXqt4t4
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kcP0ZqDVBo/o
 
-On Thu, 23 Nov 2023 at 18:35, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+On Fri, 27 Oct 2023 at 18:55, Nabih Estefan <nabihestefan@google.com> wrote:
 >
-> Half of the API takes CPUState, the other ARMCPU...
+> From: Nabih Estefan Diaz <nabihestefan@google.com>
 >
-> $ git grep -F 'CPUState *' target/arm/kvm_arm.h | wc -l
->       16
-> $ git grep -F 'ARMCPU *' target/arm/kvm_arm.h | wc -l
->       14
+>  - Created qtest to check initialization of registers in GMAC Module.
+>  - Implemented test into Build File.
 >
-> Since this is ARM specific, have it always take ARMCPU, and
-> call the generic KVM API casting with the CPU() macro.
+> Change-Id: Ib0e07f6dacc1266b62b4926873ccd912250cf89d
+> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
+> ---
+>  tests/qtest/meson.build      |   7 +-
+>  tests/qtest/npcm_gmac-test.c | 209 +++++++++++++++++++++++++++++++++++
+>  2 files changed, 211 insertions(+), 5 deletions(-)
+>  create mode 100644 tests/qtest/npcm_gmac-test.c
+>
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index daec219a32..205c60aadc 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -205,9 +205,6 @@ qtests_arm = \
+>    (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed : []) + \
+>    (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
+>    (config_all_devices.has_key('CONFIG_GENERIC_LOADER') ? ['hexloader-test'] : []) + \
+> -  (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+> -  (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
+> -  (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
+>    ['arm-cpu-features',
+>     'boot-serial-test']
+>
+> @@ -219,8 +216,8 @@ qtests_aarch64 = \
+>    (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
+> -  (config_all.has_key('CONFIG_TCG') and                                            \
+> -   config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+> +  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed : []) + \
+> +  (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
+>    ['arm-cpu-features',
+>     'numa-test',
+>     'boot-serial-test',
 
+Why does this patch remove a bunch of existing tests for non-npcm
+board types ?
 
-
-Applied to target-arm.next for 9.0, thanks.
-
+thanks
 -- PMM

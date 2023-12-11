@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp491995ejo;
-        Mon, 11 Dec 2023 13:20:39 -0800 (PST)
-X-Received: by 2002:a2e:bcc9:0:b0:2cc:2b1a:57e3 with SMTP id z9-20020a2ebcc9000000b002cc2b1a57e3mr28365ljp.88.1702329639127;
-        Mon, 11 Dec 2023 13:20:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329639; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492042ejo;
+        Mon, 11 Dec 2023 13:20:45 -0800 (PST)
+X-Received: by 2002:a17:907:6d1d:b0:a1e:eecd:6f88 with SMTP id sa29-20020a1709076d1d00b00a1eeecd6f88mr3154409ejc.77.1702329645623;
+        Mon, 11 Dec 2023 13:20:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329645; cv=none;
         d=google.com; s=arc-20160816;
-        b=n3AqK0arf1Ap+kKgSJhEeKLjuiGzzd1RJZUHkKtkYrR9d1nq2VInbnj31+1aGMg6dw
-         KcKOdRQ2TJ63lptsLUJn5805VTTZpxKNNaxsPG7DaeoPoMrK4svbeC1Bf3Tvu6MWlCX7
-         XtgIqs6hKbucbw6W8RPHHFM5x8YBZiTT5npyiA9QJRa/qcLLp2dISNlW3x5YQExotQ36
-         vsl+ftDo/+T0r96faBOWfM41iS+/TA8PntSAc1GARnTr+MkLLN76Fdn0jy5vQLjvWjbH
-         mAGG675Sbv7a7FBhpPejwEEMjubySPanzSTIycn/pebMgch5Gz/BNHtTFooXtUTCfynz
-         ASpw==
+        b=htjj4rvHkJH/GZQJtDXTUsGVTLJ4Q3VV5gWb8mzhwJ0hPpGEEkLA07uoqMKdZCPhLY
+         7PQnf4v07YogLOx+vH8ovv5nnV+ZjlYuKg2ML+IjnBvgCv3gAb62O9pEDISlsXyy4GFl
+         lhr+mC1T/1GHkOEM4l9jDXP84Zg1T2a9oJgNRM01p+5LUEN1tH6yr+9CjcUJk1GUylgf
+         7Z/ur28Wc4bFZn24jV/oeVqYIYqt9ZXkhcs5S17YlD8VKeLkebiI5tflyAiQzzqSdxjh
+         wvA4Halg3n1OeG3b1RlMMdluJDhDm/Jac8aA3gB5tJcXyAsZ+0KJ4ncTij9CjltHnf9I
+         Y3NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LE+pAT5eOraZQypD/hJ2MWwgMdewzhE5rLiStCzLeZU=;
-        fh=maUM8bI93AUwqA1DXvK6kYzdDa5LpS5xH/i8BcETBKw=;
-        b=bjmzjL3+bmPYe68h8FHAGy2IE0JaLNXGXDacd00jP/mWrohrB0dZNLrKJDmjwKbULN
-         xVH2u3zc6dZjGGt+pRipsUbnKJ8fR9oZXKbnA9cKDDCF2elyhqBoqrg7tIDo2qHgoHQJ
-         vnVT24ZoFXAFu8bxiw2v38OZQAyRqWhwn62bv9bDSkmV5fD5/xXojY1ky2NrZiGYuT6P
-         nUHg8HtLVt9LoAS5rMo8lH1ZEEkgWRC76ezj/8cVbEeYXBKa7elOU6WqV96NdC4Tprbv
-         HkMVNShjfCoZN451Avq8TYIUo/P0leMfp4vVkKFsvEKWfl81t/4TRpRpQaJJ90Jhusdd
-         kRPw==
+        bh=+33Nr6gIzIhUPCwLsBvRZhZAyU1ywCj1cKlsVdoDYyo=;
+        fh=FIFGVIYXk9KJtQPgL9lL2Fk0MJdNDskMwQ9IfapQKgw=;
+        b=W98WUjzUblrK/E7pheP4GdUfyJNN9GYcR95MqP2nOOklz5vJ+MoMyEdIIJQqessKHo
+         +20NLRSRFKd7Wbgjztch9FjhlAoP4gSmMcbbZs0OPvYeXWcZ0qr0uwbgt2M4lkEsFHmD
+         J4vSM3JqoEsRkYRcRjACpMytsbEu/VWtSUHhfhmpepmsUvkoItV/GsSZEzWohvat3pf0
+         O66I7mj6S+g5pa249QUduLgNl6Uyx5MXfztolQMSmgtAxO6D84G41FGcJtY2zMzrM1IL
+         LXu8a6FsjsSBR3pSO4GdQwmjeld7UvHy9W5KeeP+eP+JRp5AEmzRTesjFUpaLR23lA4h
+         sqRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZtzdTpKs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q651UpTi;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a8-20020a50c308000000b0054f3a29d03fsor1153157edb.12.2023.12.11.13.20.39
+        by mx.google.com with SMTPS id jl19-20020a17090775d300b00a03470b2d25sor1789263ejc.3.2023.12.11.13.20.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:20:39 -0800 (PST)
+        Mon, 11 Dec 2023 13:20:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZtzdTpKs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q651UpTi;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329639; x=1702934439; darn=linaro.org;
+        d=linaro.org; s=google; t=1702329645; x=1702934445; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LE+pAT5eOraZQypD/hJ2MWwgMdewzhE5rLiStCzLeZU=;
-        b=ZtzdTpKsVo8zBS9xMhdxj/v+VWu33m0k/OA7kZ8ow8draNqoTb7pHJ2Eaeyrw/C8qO
-         kxrzXyqo/OGY5d4OFGB0SiXmEs3OW4R6gAhV8mpTWOagihChEwbI/IfIIQ6fzpNTSdac
-         nxLynN4U3O+psh+3tyXckM+82cJiHcME3TIVoafRzaYLhj2HndNj9k6z/Js1Q93VvHgJ
-         NCnRol643bX5ipFlBz2hjOA9Ka6gDCK6u18cEjNt5I6UDycCkSdbyX6T96GI1yuwMxHq
-         yeyj/69IyE1hEVkZuQxbV4W4bNFMgwwNVAu/gPJdLsINGcZ15KB1yYgPPOLCQ4C7zeeW
-         Yr/Q==
+        bh=+33Nr6gIzIhUPCwLsBvRZhZAyU1ywCj1cKlsVdoDYyo=;
+        b=q651UpTiXZ24hzL32OgKhzC3+PLD5drFY5fNnaAZC9BnLEV0R7eN5MX9mxNj4d87iL
+         2FZcLNwQvwfJzSDQ04+Yi1RIzsezEJQDJjIbVA+jWDDGd1GMnARWMw57sGiDbdBFJ1Yk
+         TKEAusqMEPaGGl6yxwEO2BjvNTLP7DMU26rz0/FTBt/OPR6UqZ5rPXlhQs3nBZHxWPqZ
+         vmSYpLImlnRwQ5aNo26Ap2Il41qwy+sXFyIG3i+ImZorJqHN9uh97LA7wThf5Tym0YkZ
+         v3xdkxzGugLYr/ZQbDaOLmalexULMsG1phURBavpzUhVwaaJC9XVqJa3G4W6+W3GZJ1/
+         VYww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329639; x=1702934439;
+        d=1e100.net; s=20230601; t=1702329645; x=1702934445;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LE+pAT5eOraZQypD/hJ2MWwgMdewzhE5rLiStCzLeZU=;
-        b=tHaGXRq+m+1jju5VjCabpISyR2sO4pbFWCJu1NwwFTb2voYGPe+DboFrQaEatibnNk
-         MTfDtdCK86f4odbBxYostgX+pWGytl5N6B0dcLzsSaYeEFYYMpgsCJhMNgnAsd6IFOnw
-         gRGCHpIJnTbWK2q3D0JTFn4tOp6xxVr4sc2gn7HyX/U3YtPmqJw+BmaIDwycjv+yoMlT
-         P6n/bzz0Hq8ZL9horKN3Vr9umE7X8xfXRrcVRbNHeiuG9JCWrWgBgTqDyx2vK1DlybKk
-         G+i9reK43iY3AkzmQEsSNBd8Wjy5UNCsTL+0037AlIjA6INqHnxbtkKXYi+1wBQO6TXw
-         7hIw==
-X-Gm-Message-State: AOJu0YxOpLzdC+8LFNmhEQ5p0SZwn7SbbfwC7lXnVZxn+5vK/7vK83gz
-	NK7fBWOBGCgT7G9NJmt+vfb+g/a2
-X-Google-Smtp-Source: AGHT+IFlYl15nNOGNvzOLW/BCenakcS6ayEng3hnAs39Us9MJmDVooSRKqf9Mi9lowbkrQsfnaDXpA==
-X-Received: by 2002:a50:8d43:0:b0:54c:4837:9054 with SMTP id t3-20020a508d43000000b0054c48379054mr3813133edt.76.1702329638778;
-        Mon, 11 Dec 2023 13:20:38 -0800 (PST)
+        bh=+33Nr6gIzIhUPCwLsBvRZhZAyU1ywCj1cKlsVdoDYyo=;
+        b=qBgaR9vHCBf109sUk+nyiQ57eN2+ZkNLRtE3Jio2N8W9O7utAfq1Yo1n5qr/1FcmeL
+         8XPsA+74rmpojPIhfRAIfpvRYVpSbn4gIw01FuM6PYwKbnj4Xhw/hSNuTYFghhU/Fi/G
+         NMzeoDCwIBoYpg3FbgDN8cKmViPH/DvLPLtgA0Lw3nVKjQlxAiCSVuyndvGT+CT8j6iR
+         X9U9YlFZxKt+xUXpHYmY4oOVCYdNk+nh3SaVEOxiJQ/0YiqT9Ql6tcZwfebpn1VlIB2h
+         +NlfVW2Qtl9HaCBzrMp33p/78j6E64dhSEUn9okLpwuNWeKEeuDhl3FWye7npNduyJSq
+         sZ3A==
+X-Gm-Message-State: AOJu0Yxgm7Nhy3NSirHlSzqlN4qnn8U3d6bxDl/zJht8aIXXFADv24TK
+	wohKCgceDCD4MNAKcaXdTEgtazIl
+X-Google-Smtp-Source: AGHT+IGP260sklW8SrHdq22yOUtbknlqztMe93MGgqTfX8ATVzXMGH+5zD2rskJoqWCw5Df+cqNKpA==
+X-Received: by 2002:a17:906:20d0:b0:a1f:b493:f725 with SMTP id c16-20020a17090620d000b00a1fb493f725mr773668ejc.106.1702329645408;
+        Mon, 11 Dec 2023 13:20:45 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id ck9-20020a0564021c0900b0054f4097fea2sm4035574edb.0.2023.12.11.13.20.31
+        by smtp.gmail.com with ESMTPSA id rf20-20020a1709076a1400b00a1d1b8a088esm5331661ejc.92.2023.12.11.13.20.43
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:20:38 -0800 (PST)
+        Mon, 11 Dec 2023 13:20:45 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -93,488 +93,91 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Song Gao <gaosong@loongson.cn>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH 03/24] target: Define TCG_GUEST_DEFAULT_MO in 'cpu-param.h'
-Date: Mon, 11 Dec 2023 22:19:40 +0100
-Message-ID: <20231211212003.21686-4-philmd@linaro.org>
+	Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>
+Subject: [PATCH 04/24] accel: Include missing 'exec/cpu_ldst.h' header
+Date: Mon, 11 Dec 2023 22:19:41 +0100
+Message-ID: <20231211212003.21686-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
 References: <20231211212003.21686-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: QaFowody52zo
+X-TUID: 4PfuHB95godH
 
-accel/tcg/ files requires the following definitions:
-
-  - TARGET_LONG_BITS
-  - TARGET_PAGE_BITS
-  - TARGET_PHYS_ADDR_SPACE_BITS
-  - TCG_GUEST_DEFAULT_MO
-
-The first 3 are defined in "cpu-param.h". The last one
-in "cpu.h", with a bunch of definitions irrelevant for
-TCG. By moving the TCG_GUEST_DEFAULT_MO definition to
-"cpu-param.h", we can simplify various accel/tcg includes.
+Theses files call cpu_ldl_code() which is declared
+in "exec/cpu_ldst.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/alpha/cpu-param.h      |  3 +++
- target/alpha/cpu.h            |  3 ---
- target/arm/cpu-param.h        |  8 +++++---
- target/arm/cpu.h              |  3 ---
- target/avr/cpu-param.h        |  2 ++
- target/avr/cpu.h              |  2 --
- target/hppa/cpu-param.h       |  6 ++++++
- target/hppa/cpu.h             |  6 ------
- target/i386/cpu-param.h       |  3 +++
- target/i386/cpu.h             |  3 ---
- target/loongarch/cpu-param.h  |  2 ++
- target/loongarch/cpu.h        |  2 --
- target/microblaze/cpu-param.h |  3 +++
- target/microblaze/cpu.h       |  3 ---
- target/mips/cpu-param.h       |  2 ++
- target/mips/cpu.h             |  2 --
- target/openrisc/cpu-param.h   |  2 ++
- target/openrisc/cpu.h         |  2 --
- target/ppc/cpu-param.h        |  2 ++
- target/ppc/cpu.h              |  2 --
- target/riscv/cpu-param.h      |  2 ++
- target/riscv/cpu.h            |  2 --
- target/s390x/cpu-param.h      |  6 ++++++
- target/s390x/cpu.h            |  3 ---
- target/sparc/cpu-param.h      | 23 +++++++++++++++++++++++
- target/sparc/cpu.h            | 23 -----------------------
- target/xtensa/cpu-param.h     |  3 +++
- target/xtensa/cpu.h           |  3 ---
- 28 files changed, 64 insertions(+), 62 deletions(-)
+ accel/tcg/translator.c        | 1 +
+ target/hexagon/translate.c    | 1 +
+ target/microblaze/cpu.c       | 1 +
+ target/microblaze/translate.c | 1 +
+ target/nios2/translate.c      | 1 +
+ 5 files changed, 5 insertions(+)
 
-diff --git a/target/alpha/cpu-param.h b/target/alpha/cpu-param.h
-index 68c46f7998..419e454702 100644
---- a/target/alpha/cpu-param.h
-+++ b/target/alpha/cpu-param.h
-@@ -15,4 +15,7 @@
- #define TARGET_PHYS_ADDR_SPACE_BITS  44
- #define TARGET_VIRT_ADDR_SPACE_BITS  (30 + TARGET_PAGE_BITS)
- 
-+/* Alpha processors have a weak memory model */
-+#define TCG_GUEST_DEFAULT_MO      (0)
-+
- #endif
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index d672e911dd..5d9aa09ed9 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -24,9 +24,6 @@
- #include "exec/cpu-defs.h"
- #include "qemu/cpu-float.h"
- 
--/* Alpha processors have a weak memory model */
--#define TCG_GUEST_DEFAULT_MO      (0)
--
- #define ICACHE_LINE_SIZE 32
- #define DCACHE_LINE_SIZE 32
- 
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index f9b462a98f..59a5f9e480 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -23,14 +23,16 @@
- # ifdef TARGET_AARCH64
- #  define TARGET_TAGGED_ADDRESSES
- # endif
--#else
-+#else /* !CONFIG_USER_ONLY */
- /*
-  * ARMv7 and later CPUs have 4K pages minimum, but ARMv5 and v6
-  * have to support 1K tiny pages.
-  */
- # define TARGET_PAGE_BITS_VARY
- # define TARGET_PAGE_BITS_MIN  10
--
--#endif
-+#endif /* !CONFIG_USER_ONLY */
-+
-+/* ARM processors have a weak memory model */
-+#define TCG_GUEST_DEFAULT_MO      (0)
- 
- #endif
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a0282e0d28..ea5c8660dc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -27,9 +27,6 @@
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
- 
--/* ARM processors have a weak memory model */
--#define TCG_GUEST_DEFAULT_MO      (0)
--
- #ifdef TARGET_AARCH64
- #define KVM_HAVE_MCE_INJECTION 1
- #endif
-diff --git a/target/avr/cpu-param.h b/target/avr/cpu-param.h
-index 9a92bc74fc..93c2f470d0 100644
---- a/target/avr/cpu-param.h
-+++ b/target/avr/cpu-param.h
-@@ -32,4 +32,6 @@
- #define TARGET_PHYS_ADDR_SPACE_BITS 24
- #define TARGET_VIRT_ADDR_SPACE_BITS 24
- 
-+#define TCG_GUEST_DEFAULT_MO 0
-+
- #endif
-diff --git a/target/avr/cpu.h b/target/avr/cpu.h
-index 7960c5c57a..02a787b4f3 100644
---- a/target/avr/cpu.h
-+++ b/target/avr/cpu.h
-@@ -30,8 +30,6 @@
- 
- #define CPU_RESOLVING_TYPE TYPE_AVR_CPU
- 
--#define TCG_GUEST_DEFAULT_MO 0
--
- /*
-  * AVR has two memory spaces, data & code.
-  * e.g. both have 0 address
-diff --git a/target/hppa/cpu-param.h b/target/hppa/cpu-param.h
-index bb3d7ef6f7..4548103a18 100644
---- a/target/hppa/cpu-param.h
-+++ b/target/hppa/cpu-param.h
-@@ -21,4 +21,10 @@
- 
- #define TARGET_PAGE_BITS 12
- 
-+/* PA-RISC 1.x processors have a strong memory model.  */
-+/* ??? While we do not yet implement PA-RISC 2.0, those processors have
-+   a weak memory model, but with TLB bits that force ordering on a per-page
-+   basis.  It's probably easier to fall back to a strong memory model.  */
-+#define TCG_GUEST_DEFAULT_MO        TCG_MO_ALL
-+
- #endif
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 8be45c69c9..6b10ab20ba 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -25,12 +25,6 @@
- #include "qemu/cpu-float.h"
- #include "qemu/interval-tree.h"
- 
--/* PA-RISC 1.x processors have a strong memory model.  */
--/* ??? While we do not yet implement PA-RISC 2.0, those processors have
--   a weak memory model, but with TLB bits that force ordering on a per-page
--   basis.  It's probably easier to fall back to a strong memory model.  */
--#define TCG_GUEST_DEFAULT_MO        TCG_MO_ALL
--
- #define MMU_ABS_W_IDX     6
- #define MMU_ABS_IDX       7
- #define MMU_KERNEL_IDX    8
-diff --git a/target/i386/cpu-param.h b/target/i386/cpu-param.h
-index 911b4cd51b..5e15335203 100644
---- a/target/i386/cpu-param.h
-+++ b/target/i386/cpu-param.h
-@@ -24,4 +24,7 @@
- #endif
- #define TARGET_PAGE_BITS 12
- 
-+/* The x86 has a strong memory model with some store-after-load re-ordering */
-+#define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
-+
- #endif
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index cd2e295bd6..852adf35db 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -30,9 +30,6 @@
- 
- #define XEN_NR_VIRQS 24
- 
--/* The x86 has a strong memory model with some store-after-load re-ordering */
--#define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
--
- #define KVM_HAVE_MCE_INJECTION 1
- 
- /* support for self modifying code even if the modified instruction is
-diff --git a/target/loongarch/cpu-param.h b/target/loongarch/cpu-param.h
-index cfe195db4e..db5ad1c69f 100644
---- a/target/loongarch/cpu-param.h
-+++ b/target/loongarch/cpu-param.h
-@@ -14,4 +14,6 @@
- 
- #define TARGET_PAGE_BITS 12
- 
-+#define TCG_GUEST_DEFAULT_MO (0)
-+
- #endif
-diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
-index 00d1fba597..dd1ab75ce9 100644
---- a/target/loongarch/cpu.h
-+++ b/target/loongarch/cpu.h
-@@ -39,8 +39,6 @@
- 
- #define IOCSR_MEM_SIZE          0x428
- 
--#define TCG_GUEST_DEFAULT_MO (0)
--
- #define FCSR0_M1    0x1f         /* FCSR1 mask, Enables */
- #define FCSR0_M2    0x1f1f0000   /* FCSR2 mask, Cause and Flags */
- #define FCSR0_M3    0x300        /* FCSR3 mask, Round Mode */
-diff --git a/target/microblaze/cpu-param.h b/target/microblaze/cpu-param.h
-index 9770b0eb52..e530fead1c 100644
---- a/target/microblaze/cpu-param.h
-+++ b/target/microblaze/cpu-param.h
-@@ -29,4 +29,7 @@
- /* FIXME: MB uses variable pages down to 1K but linux only uses 4k.  */
- #define TARGET_PAGE_BITS 12
- 
-+/* MicroBlaze is always in-order. */
-+#define TCG_GUEST_DEFAULT_MO  TCG_MO_ALL
-+
- #endif
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index b5374365f5..943bae67d1 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -24,9 +24,6 @@
- #include "exec/cpu-defs.h"
- #include "qemu/cpu-float.h"
- 
--/* MicroBlaze is always in-order. */
--#define TCG_GUEST_DEFAULT_MO  TCG_MO_ALL
--
- typedef struct CPUArchState CPUMBState;
- #if !defined(CONFIG_USER_ONLY)
- #include "mmu.h"
-diff --git a/target/mips/cpu-param.h b/target/mips/cpu-param.h
-index 594c91a156..6f6ac1688f 100644
---- a/target/mips/cpu-param.h
-+++ b/target/mips/cpu-param.h
-@@ -30,4 +30,6 @@
- #define TARGET_PAGE_BITS_MIN 12
- #endif
- 
-+#define TCG_GUEST_DEFAULT_MO (0)
-+
- #endif
-diff --git a/target/mips/cpu.h b/target/mips/cpu.h
-index 52f13f0363..620db820f8 100644
---- a/target/mips/cpu.h
-+++ b/target/mips/cpu.h
-@@ -10,8 +10,6 @@
- #include "hw/clock.h"
- #include "mips-defs.h"
- 
--#define TCG_GUEST_DEFAULT_MO (0)
--
- typedef struct CPUMIPSTLBContext CPUMIPSTLBContext;
- 
- /* MSA Context */
-diff --git a/target/openrisc/cpu-param.h b/target/openrisc/cpu-param.h
-index 3f08207485..fbfc0f568b 100644
---- a/target/openrisc/cpu-param.h
-+++ b/target/openrisc/cpu-param.h
-@@ -13,4 +13,6 @@
- #define TARGET_PHYS_ADDR_SPACE_BITS 32
- #define TARGET_VIRT_ADDR_SPACE_BITS 32
- 
-+#define TCG_GUEST_DEFAULT_MO (0)
-+
- #endif
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index dedeb89f8e..e757e84caf 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -24,8 +24,6 @@
- #include "exec/cpu-defs.h"
- #include "fpu/softfloat-types.h"
- 
--#define TCG_GUEST_DEFAULT_MO (0)
--
- /**
-  * OpenRISCCPUClass:
-  * @parent_realize: The parent class' realize handler.
-diff --git a/target/ppc/cpu-param.h b/target/ppc/cpu-param.h
-index 0a0416e0a8..c5565beae2 100644
---- a/target/ppc/cpu-param.h
-+++ b/target/ppc/cpu-param.h
-@@ -33,4 +33,6 @@
- #endif
- #define TARGET_PAGE_BITS 12
- 
-+#define TCG_GUEST_DEFAULT_MO 0
-+
- #endif
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index f8101ffa29..f21d8de6ff 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -29,8 +29,6 @@
- 
- #define CPU_RESOLVING_TYPE TYPE_POWERPC_CPU
- 
--#define TCG_GUEST_DEFAULT_MO 0
--
- #define TARGET_PAGE_BITS_64K 16
- #define TARGET_PAGE_BITS_16M 24
- 
-diff --git a/target/riscv/cpu-param.h b/target/riscv/cpu-param.h
-index b2a9396dec..1fbd64939d 100644
---- a/target/riscv/cpu-param.h
-+++ b/target/riscv/cpu-param.h
-@@ -28,4 +28,6 @@
-  *  - M mode HLV/HLVX/HSV 0b111
-  */
- 
-+#define TCG_GUEST_DEFAULT_MO 0
-+
- #endif
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index d74b361be6..01cddf5180 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -42,8 +42,6 @@ typedef struct CPUArchState CPURISCVState;
- # define TYPE_RISCV_CPU_BASE            TYPE_RISCV_CPU_BASE64
- #endif
- 
--#define TCG_GUEST_DEFAULT_MO 0
--
- /*
-  * RISC-V-specific extra insn start words:
-  * 1: Original instruction opcode
-diff --git a/target/s390x/cpu-param.h b/target/s390x/cpu-param.h
-index 84ca08626b..11d23b600d 100644
---- a/target/s390x/cpu-param.h
-+++ b/target/s390x/cpu-param.h
-@@ -13,4 +13,10 @@
- #define TARGET_PHYS_ADDR_SPACE_BITS 64
- #define TARGET_VIRT_ADDR_SPACE_BITS 64
- 
-+/*
-+ * The z/Architecture has a strong memory model with some
-+ * store-after-load re-ordering.
-+ */
-+#define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
-+
- #endif
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index fa3aac4f97..10a63821b5 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -33,9 +33,6 @@
- 
- #define ELF_MACHINE_UNAME "S390X"
- 
--/* The z/Architecture has a strong memory model with some store-after-load re-ordering */
--#define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
--
- #define TARGET_HAS_PRECISE_SMC
- 
- #define TARGET_INSN_START_EXTRA_WORDS 2
-diff --git a/target/sparc/cpu-param.h b/target/sparc/cpu-param.h
-index cb11980404..82293fb844 100644
---- a/target/sparc/cpu-param.h
-+++ b/target/sparc/cpu-param.h
-@@ -23,4 +23,27 @@
- # define TARGET_VIRT_ADDR_SPACE_BITS 32
- #endif
- 
-+/*
-+ * From Oracle SPARC Architecture 2015:
-+ *
-+ *   Compatibility notes: The PSO memory model described in SPARC V8 and
-+ *   SPARC V9 compatibility architecture specifications was never implemented
-+ *   in a SPARC V9 implementation and is not included in the Oracle SPARC
-+ *   Architecture specification.
-+ *
-+ *   The RMO memory model described in the SPARC V9 specification was
-+ *   implemented in some non-Sun SPARC V9 implementations, but is not
-+ *   directly supported in Oracle SPARC Architecture 2015 implementations.
-+ *
-+ * Therefore always use TSO in QEMU.
-+ *
-+ * D.5 Specification of Partial Store Order (PSO)
-+ *   ... [loads] are followed by an implied MEMBAR #LoadLoad | #LoadStore.
-+ *
-+ * D.6 Specification of Total Store Order (TSO)
-+ *   ... PSO with the additional requirement that all [stores] are followed
-+ *   by an implied MEMBAR #StoreStore.
-+ */
-+#define TCG_GUEST_DEFAULT_MO  (TCG_MO_LD_LD | TCG_MO_LD_ST | TCG_MO_ST_ST)
-+
- #endif
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 6999a10a40..10b04d37c6 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -6,29 +6,6 @@
- #include "exec/cpu-defs.h"
- #include "qemu/cpu-float.h"
- 
--/*
-- * From Oracle SPARC Architecture 2015:
-- *
-- *   Compatibility notes: The PSO memory model described in SPARC V8 and
-- *   SPARC V9 compatibility architecture specifications was never implemented
-- *   in a SPARC V9 implementation and is not included in the Oracle SPARC
-- *   Architecture specification.
-- *
-- *   The RMO memory model described in the SPARC V9 specification was
-- *   implemented in some non-Sun SPARC V9 implementations, but is not
-- *   directly supported in Oracle SPARC Architecture 2015 implementations.
-- *
-- * Therefore always use TSO in QEMU.
-- *
-- * D.5 Specification of Partial Store Order (PSO)
-- *   ... [loads] are followed by an implied MEMBAR #LoadLoad | #LoadStore.
-- *
-- * D.6 Specification of Total Store Order (TSO)
-- *   ... PSO with the additional requirement that all [stores] are followed
-- *   by an implied MEMBAR #StoreStore.
-- */
--#define TCG_GUEST_DEFAULT_MO  (TCG_MO_LD_LD | TCG_MO_LD_ST | TCG_MO_ST_ST)
--
- #if !defined(TARGET_SPARC64)
- #define TARGET_DPREGS 16
- #else
-diff --git a/target/xtensa/cpu-param.h b/target/xtensa/cpu-param.h
-index b1da0555de..0000725f2f 100644
---- a/target/xtensa/cpu-param.h
-+++ b/target/xtensa/cpu-param.h
-@@ -17,4 +17,7 @@
- #define TARGET_VIRT_ADDR_SPACE_BITS 32
- #endif
- 
-+/* Xtensa processors have a weak memory model */
-+#define TCG_GUEST_DEFAULT_MO      (0)
-+
- #endif
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 8a423706d8..ca32657041 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -34,9 +34,6 @@
- #include "hw/clock.h"
- #include "xtensa-isa.h"
- 
--/* Xtensa processors have a weak memory model */
--#define TCG_GUEST_DEFAULT_MO      (0)
--
- enum {
-     /* Additional instructions */
-     XTENSA_OPTION_CODE_DENSITY,
+diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
+index 38c34009a5..5b019a0852 100644
+--- a/accel/tcg/translator.c
++++ b/accel/tcg/translator.c
+@@ -12,6 +12,7 @@
+ #include "qemu/error-report.h"
+ #include "exec/exec-all.h"
+ #include "exec/translator.h"
++#include "exec/cpu_ldst.h"
+ #include "exec/plugin-gen.h"
+ #include "tcg/tcg-op-common.h"
+ #include "internal-target.h"
+diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
+index 666c061180..744dc4fc3f 100644
+--- a/target/hexagon/translate.c
++++ b/target/hexagon/translate.c
+@@ -23,6 +23,7 @@
+ #include "exec/helper-gen.h"
+ #include "exec/helper-proto.h"
+ #include "exec/translation-block.h"
++#include "exec/cpu_ldst.h"
+ #include "exec/log.h"
+ #include "internal.h"
+ #include "attribs.h"
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index bbb3335cad..91d7cd9061 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -28,6 +28,7 @@
+ #include "qemu/module.h"
+ #include "hw/qdev-properties.h"
+ #include "exec/exec-all.h"
++#include "exec/cpu_ldst.h"
+ #include "exec/gdbstub.h"
+ #include "fpu/softfloat-helpers.h"
+ #include "tcg/tcg.h"
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 49bfb4a0ea..1c9a364c2b 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -22,6 +22,7 @@
+ #include "cpu.h"
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
++#include "exec/cpu_ldst.h"
+ #include "tcg/tcg-op.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index e806623594..a74eb6909f 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -25,6 +25,7 @@
+ #include "cpu.h"
+ #include "tcg/tcg-op.h"
+ #include "exec/exec-all.h"
++#include "exec/cpu_ldst.h"
+ #include "disas/disas.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
 -- 
 2.41.0

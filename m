@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp493118ejo;
-        Mon, 11 Dec 2023 13:23:00 -0800 (PST)
-X-Received: by 2002:a05:6512:b12:b0:50c:f4ab:d192 with SMTP id w18-20020a0565120b1200b0050cf4abd192mr3423228lfu.62.1702329780309;
-        Mon, 11 Dec 2023 13:23:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329780; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp493151ejo;
+        Mon, 11 Dec 2023 13:23:07 -0800 (PST)
+X-Received: by 2002:a17:906:2cb:b0:a1d:3511:6674 with SMTP id 11-20020a17090602cb00b00a1d35116674mr4812837ejk.13.1702329787265;
+        Mon, 11 Dec 2023 13:23:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329787; cv=none;
         d=google.com; s=arc-20160816;
-        b=0GwvjMpnqdlWxoI1XiG/7/jzQ2fAqeCGKglQUh1DQhE3sMs0zf4Agncn47cqiJ3gMk
-         j7HGlFxzg9x2464EaljYhRwzZ1CWqx8yWw34xLLkgRhKgcmBeXVwTi5YA1ZrI0NB53uB
-         Uhuqrjg+NUh9ebrYgK/ndaXOHHkZ1ZskC95Mk4967oU2cfXQ0JEWgo+Ifbx9jUqejR3Z
-         9N/H42T5m/qRSG3/MSnoyvcn8peUgIuoivk02EZhzyrokMd8xDUJHeAHkYibvcmhFuV0
-         f6HJuOn2m3Nbq4yDfBWdjtfJ5OqpG7zJYQwyB0jEFl9pKQgC4puTM74tUcLkjjJqY3Cw
-         xqtw==
+        b=qUhnsGekXDQLYvhHfvgNuNYozeGLMC28vMolMzNUBn4tthR/lMbySmz/Ot9hHDXv5i
+         zvqTeRmqARuvOUpI745+Wp89yUjw16x15wz3AG4iouoxJ6U73TbjvDRulkUvaAeGhYhs
+         UH+/4SXohZRImVZKAm+BEQH4BiZZNpEERuFwwBvGd36Rf4RgwddexR5BZDruQlXiBW5I
+         qk+Y9Lvh8DqM5H6FV5aZDt2OBCAWnUNP802+xCtOGAYzlEccJKCTZhl+wSxiCE2cYNHI
+         ZyoEeYhkTRh9ma3CrmPpM4xVL5fJMx/8yV0lgogaAFuOIND/E88/tUvLdGs+yJQ0DCBW
+         7R2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6IVD0fP181N6yKPURwFJTLnTnzSvk7D9idiGLSO6/Cw=;
-        fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=gWe9rMRiylPt8gs2HbnxKYWe8O384cwZV7b/ksDh5UAeQSqlspgoth83qVSg0bjVoa
-         0WVRttue9uyAW+vxSeZTYAvL3KoH+4oP5bzcXLKS7oTvGPhN5aks9aoDBXKEoD41jMpE
-         ZlznKsvGZB+jN5urZfsELL4XLdB0SeXBC8SYCdjVby/Qh3Y3IPdhblsdEIhvBskdn16D
-         zRLVKH/hNGM1oWiSR9h5nPWWEKbyUpt7U8QYtBoZGuETcZZiAU3uz/1m2ANiXrXVDrmR
-         ELpQ1gVh83vX+regwzrka7Jv86rZjzB2gKjpYVQH7doZlPPl6ljCL/561FWLJyMCkCJR
-         +DTA==
+        bh=fz8HKxM7VVSIi3osZUv3wojb8Ys1Hua/IsYgZ7swcCg=;
+        fh=ogyy/JNPeEdVnpId/GDwwe0pe92olXpzP0mQGo1nC0s=;
+        b=SolAwzX9FVjw+q/57iWSp80fYsCZRtQ8UhKKDjlUvY6YdIvmWnJJpYpiZ0FA1mwS9I
+         xqQfWqQy8S5MT/HITddRQvKNH0wit7wxVIHepUqqoBcejK5IwfYdHWJup83TRzREpu1k
+         g94WQZXoEAGQloUWPrnicm5c0FLlIYt/ZtgMDFaGhjormiMcbw4fpd8koD8Y12NFGTcW
+         yzlhF6TaRBhdYvpdilWKnVxEBzzEfni18OFmgDwz+/83r8F15bu8+SmnGts4/jlqpTJa
+         pE9Bt8f0p0o6n7OkgZ20rMHovxXMooHiFWuEpA3spv1MrOLGThnRoDttZuxUTu+jpybC
+         J68Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cGicRza8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dz4xYDxL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f3-20020ac24983000000b0050bf90839e2sor1948889lfl.31.2023.12.11.13.23.00
+        by mx.google.com with SMTPS id mm8-20020a170906cc4800b00a22e073f9ccsor182004ejb.6.2023.12.11.13.23.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:23:00 -0800 (PST)
+        Mon, 11 Dec 2023 13:23:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cGicRza8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dz4xYDxL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329780; x=1702934580; darn=linaro.org;
+        d=linaro.org; s=google; t=1702329787; x=1702934587; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6IVD0fP181N6yKPURwFJTLnTnzSvk7D9idiGLSO6/Cw=;
-        b=cGicRza8n/f/7aAa9VcP82xVVvHIRwIjMilcrDds2cOWnIjIEu2f6eH4rTZjKMGW5j
-         JzUL/fAnL+DUMymClGZT0Ud8n8uPMFYXWNyiF8RANYIaYR0OccaV234OmWZz40JSoq9r
-         0JlcBGlt5n5yL16U9Ooa9mXu+nXaGuawMmt3QwTs5Yslzq7h1MiBvDKL0iOj9+tOnBIN
-         nFh1NJDKZ2y90bmUmWxwNN04pH/thx9LyHMIT5fZbpH9nIPh/KsIFUHWO4VTK7fs98Fe
-         KWmTY0uuP+2mTD+F5/j+3+u6K4SgJG0KAYd4VORjYAEZ3k0AzAbj6uBc5IrFCj9jR0x6
-         +keQ==
+        bh=fz8HKxM7VVSIi3osZUv3wojb8Ys1Hua/IsYgZ7swcCg=;
+        b=Dz4xYDxLbbDwbf7f4bnhq+lPqhUdGcviYtdKYE7LyRb0V/XZ7Pzh7QZ+jS0SBp7Qfi
+         aaIBU+zWOC7n8sIQSA/0IBwCxcKAaThYMuXclhsbqGfOjz9wvM+GnlMTe+Dsj/ButWtH
+         RGKj1X3Z2MN1p1mQ2AXtZdOrWl6xWrfMV4dPeJzmmmyfP40k7PkSd2mUNplSRH9rT7i9
+         4jVPEHKolM/GCxzlF+bF5a4w+dTd8vJWpvpgIZk4iAxegV9KOJ1jzNIjqcXmuhsQlTra
+         CjDz6qsLCIIGl6dpTY7J9aTCrv5lI/8E8O9CDxxNT+KAN4Q0raXd0V8Cp+3S5gOciAQl
+         2ALg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329780; x=1702934580;
+        d=1e100.net; s=20230601; t=1702329787; x=1702934587;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=6IVD0fP181N6yKPURwFJTLnTnzSvk7D9idiGLSO6/Cw=;
-        b=ITl/yQWhOV7aNYKyLxuySz2kKyBOe/KPv4H6LTZuMKIy6R/DVTebJ+WGckFE6gNMb6
-         Cx/LbsIHsC8TTq8bbM8dh5zfz7NTyVVOe6KzJDk5Qwo2Y9FbhTdKKVY55F1rIN+B9lJR
-         ISK/DbuCWujOwv5XEQPOYRzkgBscfquMy8oZgmGi7zlt+eRutWxztXqW/3U7Pma2fhLI
-         7a1wVh+MgGZY6LAZwaEqFRsKEQ1vpId7qn3gVhzPdjubPdXXYdKlDbJPAxFCl/5Gv7hM
-         wN/g2msPmY6kSIHRx7CpxBukPFDTIb6aIhucmqjOxh9a+ti/UElT8ijK2dm1FHmaG0SF
-         BUXg==
-X-Gm-Message-State: AOJu0Yx/bM+xDgqdyVOqajNRZ0eai0MWbtuj0fVIVnfNiG2Ccm6SqhQV
-	BQGN1pTkfsALCaReDJHQX4Kx2eWV
-X-Google-Smtp-Source: AGHT+IGImOxVOWgtEtRNbTpMP3VyoEVtcVk7T/kTyJSDnJhEjGlDz85TYtGNSnv9pwyCRPaMJL33wQ==
-X-Received: by 2002:a05:6512:610:b0:50b:fbbb:2035 with SMTP id b16-20020a056512061000b0050bfbbb2035mr2542678lfe.97.1702329779237;
-        Mon, 11 Dec 2023 13:22:59 -0800 (PST)
+        bh=fz8HKxM7VVSIi3osZUv3wojb8Ys1Hua/IsYgZ7swcCg=;
+        b=BqUJ3AhzUllr/ILZyI+1Z1xQ1iSB9JilecoRCQcL7hMgA25T2EBRdiAPhFxvAExOmF
+         0uL0LTWBwOM4TSERT6kynvoCl72owHyWw8O9NvyPD1Q3hDbHg6naKAxTLOZPkcvYhSDC
+         N0UVmiGQ7L/17Pce+UTGGNoqM+I9Mu0w/9UdkY0s6oohwZ4MLoltHz4f3IkExoO7dhkM
+         WNWxNj3XW9mfkxOLJgA6DR+HwuZRRqteNJoSITI4OhSVd4xHpnusEz8q9/20NmzVDp74
+         SsOzaS0WHSS0+FX5RudXeFnP8PQTDlYnznMl1FlNeBQpJExslqE/BTMnxLQ02oiLL1uR
+         IUqw==
+X-Gm-Message-State: AOJu0Yz7ImGRYbU+d70ca2gG+jYsCgk6am5j1a88d9/G0svn3yX6yq3W
+	S0ZQz5wGZPRZcjV/hgFaEbMdtJqv
+X-Google-Smtp-Source: AGHT+IEqSygAcNwC+o5B672MJ7q2nrXQaLih0XxOY9Iv/XLw9Z61UiqNUbCr3QSxyrAi+85OAHMOjg==
+X-Received: by 2002:a17:907:2723:b0:a1f:8149:558c with SMTP id d3-20020a170907272300b00a1f8149558cmr4160576ejl.30.1702329787041;
+        Mon, 11 Dec 2023 13:23:07 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id vb5-20020a170907d04500b00a1d885359d6sm5283778ejc.46.2023.12.11.13.22.56
+        by smtp.gmail.com with ESMTPSA id qo14-20020a170907874e00b00a1f6737be65sm5109488ejc.82.2023.12.11.13.23.04
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:22:58 -0800 (PST)
+        Mon, 11 Dec 2023 13:23:06 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -92,51 +92,102 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 21/24] exec/cpu_ldst: Avoid including 'cpu.h'
-Date: Mon, 11 Dec 2023 22:19:58 +0100
-Message-ID: <20231211212003.21686-22-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Kyle Evans <kevans@freebsd.org>,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 22/24] exec/cpu-all: Restrict inclusion of 'exec/user/guest-base.h'
+Date: Mon, 11 Dec 2023 22:19:59 +0100
+Message-ID: <20231211212003.21686-23-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
 References: <20231211212003.21686-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hYNVMjzBEy/l
+X-TUID: zZf+S0gZUwog
 
-"exec/cpu_ldst.h" doesn't need to huge "cpu.h" header,
-but simply:
-
- - exec/cpu-defs.h
- - exec/tlb-common.h
- - exec/user/abitypes.h
- - exec/user/guest-base.h
+Declare 'have_guest_base' in "exec/user/guest-base.h".
+Very few files require this header, so explicitly include
+it there instead of "exec/cpu-all.h" which is used in many
+source files.
+Assert this user-specific header is only included from user
+emulation.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cpu_ldst.h | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ include/exec/cpu-all.h         | 3 ---
+ include/exec/user/guest-base.h | 6 ++++++
+ bsd-user/main.c                | 1 +
+ linux-user/elfload.c           | 1 +
+ linux-user/main.c              | 1 +
+ 5 files changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index c69f02b699..a115553ee8 100644
---- a/include/exec/cpu_ldst.h
-+++ b/include/exec/cpu_ldst.h
-@@ -64,11 +64,15 @@
- 
- #include "exec/memopidx.h"
- #include "qemu/int128.h"
--#include "cpu.h"
-+#include "exec/cpu-defs.h"
-+#include "exec/tlb-common.h"
- #include "tcg/abi_ptr.h"
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 2d568ae4f0..5b75d04ff6 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -74,9 +74,6 @@
  
  #if defined(CONFIG_USER_ONLY)
+ #include "exec/user/abitypes.h"
+-#include "exec/user/guest-base.h"
+-
+-extern bool have_guest_base;
  
-+#include "exec/user/abitypes.h"
-+#include "exec/user/guest-base.h"
+ /*
+  * If non-zero, the guest virtual address space is a contiguous subset
+diff --git a/include/exec/user/guest-base.h b/include/exec/user/guest-base.h
+index afe2ab7fbb..cf40151360 100644
+--- a/include/exec/user/guest-base.h
++++ b/include/exec/user/guest-base.h
+@@ -7,6 +7,12 @@
+ #ifndef EXEC_USER_GUEST_BASE_H
+ #define EXEC_USER_GUEST_BASE_H
+ 
++#ifndef CONFIG_USER_ONLY
++#error Cannot include this header from system emulation
++#endif
 +
- #ifndef TARGET_TAGGED_ADDRESSES
- static inline abi_ptr cpu_untagged_addr(CPUState *cs, abi_ptr x)
- {
+ extern uintptr_t guest_base;
+ 
++extern bool have_guest_base;
++
+ #endif
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index e6014f517e..c331d727e1 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -36,6 +36,7 @@
+ #include "qemu/help_option.h"
+ #include "qemu/module.h"
+ #include "exec/exec-all.h"
++#include "exec/user/guest-base.h"
+ #include "tcg/startup.h"
+ #include "qemu/timer.h"
+ #include "qemu/envlist.h"
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index cf9e74468b..f9e9ac1760 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -6,6 +6,7 @@
+ #include <sys/shm.h>
+ 
+ #include "qemu.h"
++#include "exec/user/guest-base.h"
+ #include "user-internals.h"
+ #include "signal-common.h"
+ #include "loader.h"
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 0cdaf30d34..84691d707b 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -38,6 +38,7 @@
+ #include "qemu/help_option.h"
+ #include "qemu/module.h"
+ #include "qemu/plugin.h"
++#include "exec/user/guest-base.h"
+ #include "exec/exec-all.h"
+ #include "exec/gdbstub.h"
+ #include "gdbstub/user.h"
 -- 
 2.41.0

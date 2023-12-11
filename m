@@ -1,134 +1,150 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492704ejo;
-        Mon, 11 Dec 2023 13:22:06 -0800 (PST)
-X-Received: by 2002:a17:906:3f19:b0:a1a:bb89:e2ef with SMTP id c25-20020a1709063f1900b00a1abb89e2efmr2759726ejj.16.1702329725912;
-        Mon, 11 Dec 2023 13:22:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702329725; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp492757ejo;
+        Mon, 11 Dec 2023 13:22:12 -0800 (PST)
+X-Received: by 2002:a17:906:2411:b0:a19:a19b:78be with SMTP id z17-20020a170906241100b00a19a19b78bemr3048049eja.129.1702329731997;
+        Mon, 11 Dec 2023 13:22:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702329731; cv=none;
         d=google.com; s=arc-20160816;
-        b=hbKz3GotS5eBXQC8sYCQ1KcLs59Jw188JCbJO/UoJgXxk9AdDInawyZXJqEvSQX5Nq
-         EGYqWASLOjmK4qUw0R1VFnizPBXvCIQPj8sZ/0J5YfyurDHQ4i8G4ESlwIfYAAkeBThR
-         Ysz27RQ5uTuGJTbLpc2+L2af2iUmeIuwx/Hduk3Bj27wiGSdLJnpEuziXl7BbL3ycgE0
-         6TpY8bHVUflONkVCwyHxofFL4Wm/eB+1S/WX48Fog492n6oq2eZXnDdjmDPE0QOsFGLf
-         FkxMhfu1CNh1bli9QdG8rcmcEoGWP31Vhs127f65KsIXEaBfeZkq1fvzvoYvVvcyCSRw
-         jbag==
+        b=Zm53U0UCQXpOkBe30z50Qo7qHCfdXki8ZR1bw+ppB8uyfe3GYFcQCJvlsvaQF0LBpc
+         gjmFr9wWK3pTsU8ZTB4RIG6GWb+tYzYl4RHnvp562E9I9bCQVdSCVmkgM/ljhp3MHYFu
+         gzCfPQ8H2OlE77IXiIA8wL37PUuffhJHBCna0X0kphXX/JFQF8pCzdBxRHHC+k2F09PQ
+         Jsb5PaXoMLeeWeNz6h5wQDCgEXZl4UkfOtMZ9nF0A6XY2ZMK7XjtrxeIpliN/lLeUFJT
+         rS+sWZrHjMc/Q76IG/bSnsXYlgP1su6xxzOZaRPk1+d9ir3RxGil0jXWqInl0LhxSwOz
+         B0/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=U3EU22bNfiIc1b+ZyOtnWaIQVzLfNzz6gZyDB25Dnbs=;
-        fh=6uA3yvXeN55FEhLQ+7xhayEyGzy+Y3z2qOYV5oRrcR8=;
-        b=jL95GwVb+U811kTfL+acUdinaZe5RpPLrvfDLZRuSyVp571TwozNOa0JnCQKshuqMj
-         qAwTKG0umDrpLpDi5t99+jS7cCi7lVisrEKPCBv+ldWcD1XUfNhFbmK23pqOwlgMgclu
-         QHJ3sw8KpdD8lD+3min6Za3ZA8iSg5MaUGrkdi3NcpWE9yZLQDuNWUkffehrnUdJt+Z6
-         VRjvFtRrwzfi3duJcMr+DERn/6FEts5pUuVu/+/CJAsN0e1s69VSOx6ZfgQabEDF6mk7
-         uABqtP09Z4M1Bt9Ze4my5F67ai1jXhbJDNtmZpdYGCs44PoHURVIO3z5toZgW+k3ifWE
-         ssUA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=pHOOtAnxrumGhcPX3MIHrVqNAKP2pZj98HD0RrLMt7c=;
+        fh=APZiOVChRq1pbb4M0/vHIaQNkwwJ07v2IkPexBj2Xsk=;
+        b=EmHFww8BYhAIp2sunvQqdnb77q3/aK2QCJOElolgr5Nxw2Amasa1ap1JBKDvD9fKTj
+         +SnPnv54qpDQKBv9bqm7wPPlyVrvFjIETpiup7mydP9jxv7B4b2LU+eO2TVOQgRK2Ndy
+         PS+/mYX5Il8+UzUTvZ+z0Ad0U60bS8FpDlzhlSNkcv8I8AiTt2ZTSnEHaawTB4s8ez+F
+         v/Tlts+sX1AncFsVbTrqxooiBY2K3uPK+Z5gqpj6RTXmLiXCcpli53etqtujfqxDBxch
+         vJqINgaZpwv2hZOkyVQ5wU9+gYRqrT+PDxQZFJ7uldFCBISnO2hZjlDSk6v29zit33Wh
+         69bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Hcy2WyDn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DOYwCK9k;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jx15-20020a170907760f00b00a0d7291f034sor1992901ejc.7.2023.12.11.13.22.05
+        by mx.google.com with SMTPS id hy3-20020a1709068a6300b00a0e3a21fe9fsor1946108ejc.4.2023.12.11.13.22.11
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 11 Dec 2023 13:22:05 -0800 (PST)
+        Mon, 11 Dec 2023 13:22:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Hcy2WyDn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DOYwCK9k;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702329725; x=1702934525; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=U3EU22bNfiIc1b+ZyOtnWaIQVzLfNzz6gZyDB25Dnbs=;
-        b=Hcy2WyDnH8n3buk0kul0imYAE1TxRHm8sklYbaPQbhWWqxPKuTOD7k2WVXJyiaLkM0
-         zCDGwRT4alK2MQirNCSOq5ure+NOi65mhlctZX1BAwfe4HLUjOat0cufVAMQPgbWUl3G
-         mKtcRtaZMAatrc7B5vKfhe0yv/NluVATCXFu8n5qqHuQSyfhOl/EpQmV2rY5yrHdyxxu
-         e3uaTYcV0o4FKvbbYqF8L9pHFHADgvaRObtn8e8dJs//4cwmkVWptYMZec2/2IN2YlTP
-         o6gg6MLQ4VHrKxGZ1w2KuzS/2uMMDEJeMeS8t0rE18tUiTuZtMCWfLf1k8ognbBd/WPa
-         O5BQ==
+        d=linaro.org; s=google; t=1702329731; x=1702934531; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=pHOOtAnxrumGhcPX3MIHrVqNAKP2pZj98HD0RrLMt7c=;
+        b=DOYwCK9kfod/dmOE8EMZ4Z2sOy/A9cqynEVIzQrR9wq5DvCY9lnpf3jwvPY0jK+kjN
+         +gwvtqKu9N/8cBEUc0nRETENFe0IRuxQi6cNmLkF8kt4magx8vBziw0gxQCykES2rJI+
+         7BRhJk07o3DL+VobrFd6VQ+3KvvmdWMb3POhFM2NsrlibPWRBaCW/dPzsM6sVibc/IPK
+         taeN5D6vAH1xij/UgCU7n1zQ/2b4wuqD/IYETottXPfW5ObFwRZNcPBd0MwDpZwoT6oj
+         1882KtixH2uvAZHZMH1wBUQ/+eSfkG21jE859ek9nAfjyq3GEeBnhzrvW5h6w5GJ+Hx5
+         8pxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702329725; x=1702934525;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=U3EU22bNfiIc1b+ZyOtnWaIQVzLfNzz6gZyDB25Dnbs=;
-        b=PIV3WJK3y/WmQVIqBxGu7llvOMRVwzlwRoSBShPHssO/X3Cp+7mNbEB5FT+93Gu5F9
-         WooQN4KBi26b9zs1UaGocfRpM3jj3g5e3yeawJ8kRziOx0UNFjDkTo53IGk03/l3IjD5
-         hllLRWUsPIWMNZK88DvU230Zej3inknBr32ldbvPnhTfiE+0S4R+6CH1NxlFLouKyqD3
-         yHon0K/tX1TWzyp86sbPUornKXpcJqsT+Y9kI4JbPwHlTHgmfGCgtiI5ju0FViVBewRX
-         GWzIfE0C/1obo/KwTlqLCiWwUlpSEvnkOg5YMltyfpdt3XQXRrHVuLJf6YMvHVS0HguE
-         eusQ==
-X-Gm-Message-State: AOJu0YzZyrtRUIMRQUT8BWQZfhwbqLrRC70xvRmCOEwE8beClwAMyJ6C
-	4CaJAwT3k9FbA2JPbBzmT/5WHsOK
-X-Google-Smtp-Source: AGHT+IGzl3xQjm7C+9LNWEf4YaTjOxsCCunkMYfPCy1U1wU+AE7F8A7uN4M+yUT3A/jdokc1MR9z5A==
-X-Received: by 2002:a17:906:c2d6:b0:a1c:1f65:f4b6 with SMTP id ch22-20020a170906c2d600b00a1c1f65f4b6mr3223070ejb.144.1702329725658;
-        Mon, 11 Dec 2023 13:22:05 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702329731; x=1702934531;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pHOOtAnxrumGhcPX3MIHrVqNAKP2pZj98HD0RrLMt7c=;
+        b=wvCfwDFDCQ/aZduVLLJ9ZTLj4TvKh2KR3h2EnoTH2Q+c2ermzMjthvXh9mgPOsrIy8
+         5bUg2+M73E3WII/jGxJ1fnaivRaMOIouJtxH5cvTlF/fyvHr8NIh41fjg5JNMoN5dk1B
+         0TkF7ytKoHWaeRvG+8AhUGG45uQUDkMd0ozRAK0xKqAwcwHDgYz8uCkwMhF/Hb7Voiiz
+         Kd8wL+Zxek/ns/JU3fi4dxfhFmzgyLD5m9YGag9hys8K5Q0Cm8sU58Htu/LsDAkDxbjj
+         6Z75YvFYpF9J/Lb4qPsO0YsLy42NSiE92MTrL3eYLAhWYbAx2eMp1IvxrmFGCLs2R1UF
+         pTUQ==
+X-Gm-Message-State: AOJu0YyyaWeiGgFg7pnyHmt/vOBd6xScjutE0Kgfyy2lwp1Z1mtnxv52
+	a0hmJkHpwqN9jGGxAcJIIZIlb3nr
+X-Google-Smtp-Source: AGHT+IFfbsKA8wfC8skTB/yoF3/ySzTZdf5W7q0m1rGxxrtoSwlumHzcEZ+qPSObAal65lz1rrWhJg==
+X-Received: by 2002:a17:907:9057:b0:a1f:786c:1b6a with SMTP id az23-20020a170907905700b00a1f786c1b6amr2301410ejc.52.1702329731750;
+        Mon, 11 Dec 2023 13:22:11 -0800 (PST)
 Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id rm6-20020a1709076b0600b00a1db194b777sm5310183ejc.78.2023.12.11.13.22.03
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 11 Dec 2023 13:22:05 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>,
-	Peter Xu <peterx@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-ppc@nongnu.org,
-	qemu-s390x@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	qemu-riscv@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	Warner Losh <imp@bsdimp.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Brian Cain <bcain@quicinc.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 14/24] gdbstub: Include missing 'hw/core/cpu.h' header
-Date: Mon, 11 Dec 2023 22:19:51 +0100
-Message-ID: <20231211212003.21686-15-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
-References: <20231211212003.21686-1-philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.175.193])
+        by smtp.gmail.com with ESMTPSA id tj7-20020a170907c24700b00a1c522990ccsm5332007ejc.85.2023.12.11.13.22.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 11 Dec 2023 13:22:11 -0800 (PST)
+Message-ID: <b977d019-52cb-47d3-88c1-b354db8b330d@linaro.org>
+Date: Mon, 11 Dec 2023 22:22:08 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/24] exec: Rework of various headers (user focused)
+Content-Language: en-US
+To: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>,
+ Alessandro Di Federico <ale@rev.ng>
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, qemu-riscv@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ Claudio Fontana <cfontana@suse.de>, Brian Cain <bcain@quicinc.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+References: <20231211212003.21686-1-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231211212003.21686-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Fk1CCTsCXDqL
+X-TUID: 8KK+diF32u7w
 
-Functions such gdb_get_cpu_pid() dereference CPUState so
-require the structure declaration from "hw/core/cpu.h":
+(Forgot to Cc rev.ng folks)
 
-  static uint32_t gdb_get_cpu_pid(CPUState *cpu)
-  {
-    ...
-    return cpu->cluster_index + 1;
-  }
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- gdbstub/gdbstub.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 46d752bbc2..034a4ac211 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -37,6 +37,7 @@
- #include "hw/cpu/cluster.h"
- #include "hw/boards.h"
- #endif
-+#include "hw/core/cpu.h"
- 
- #include "sysemu/hw_accel.h"
- #include "sysemu/runstate.h"
--- 
-2.41.0
+On 11/12/23 22:19, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> These patches are extracted from a bigger work where
+> "exec/{exec,cpu,translate}-all.h" are split in various
+> specific APIs. This helped:
+>    - differenciate/build:
+>        . user VS system
+>        . target-specific VS generic
+>      which is necessary for heterogeneous build
+>    - reduced header pressure
+>    - clarify APIs
+> 
+> This series is focused on user (vs system) cleanups.
+> More useful changes will come after.
+> 
+> Regards,
+> 
+> Phil.
+> 
+> Philippe Mathieu-Daudé (24):
+>    exec: Include 'cpu.h' before validating CPUArchState placement
+>    exec: Expose 'target_page.h' API to user emulation
+>    target: Define TCG_GUEST_DEFAULT_MO in 'cpu-param.h'
+>    accel: Include missing 'exec/cpu_ldst.h' header
+>    semihosting/uaccess: Avoid including 'cpu.h'
+>    semihosting/guestfd: Remove unused 'semihosting/uaccess.h' header
+>    host/load-extract: Include missing 'qemu/atomic.h' and 'qemu/int128.h'
+>    host/atomic128: Include missing 'qemu/atomic.h' header
+>    hw/ppc/spapr_hcall: Remove unused 'exec/exec-all.h' included header
+>    hw/misc/mips_itu: Remove unnecessary 'exec/exec-all.h' header
+>    hw/s390x/ipl: Remove unused 'exec/exec-all.h' included header
+>    target/i386: Include missing 'exec/exec-all.h' header
+>    accel/tcg: Include missing 'hw/core/cpu.h' header
+>    gdbstub: Include missing 'hw/core/cpu.h' header
+>    exec/cpu-all: Remove unused headers
+>    exec/cpu-all: Reduce 'qemu/rcu.h' header inclusion
+>    target/ppc/excp_helper: Avoid 'abi_ptr' in system emulation
+>    accel/tcg: Un-inline retaddr helpers to 'user-retaddr.h'
+>    exec/user: Do not include 'cpu.h' in 'abitypes.h'
+>    exec: Declare abi_ptr type in its own 'tcg/abi_ptr.h' header
+>    exec/cpu_ldst: Avoid including 'cpu.h'
+>    exec/cpu-all: Restrict inclusion of 'exec/user/guest-base.h'
+>    exec/cpu-all: Extract page-protection definitions to
+>      page-prot-common.h
+>    target: Restrict 'sysemu/reset.h' to system emulation

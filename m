@@ -1,135 +1,226 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp858844ejo;
-        Tue, 12 Dec 2023 04:24:31 -0800 (PST)
-X-Received: by 2002:a17:906:dff2:b0:a19:656c:8ebe with SMTP id lc18-20020a170906dff200b00a19656c8ebemr3449024ejc.39.1702383871659;
-        Tue, 12 Dec 2023 04:24:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702383871; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp864464ejo;
+        Tue, 12 Dec 2023 04:34:20 -0800 (PST)
+X-Received: by 2002:a05:6512:128f:b0:50b:eee3:2391 with SMTP id u15-20020a056512128f00b0050beee32391mr3337279lfs.128.1702384460251;
+        Tue, 12 Dec 2023 04:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702384460; cv=none;
         d=google.com; s=arc-20160816;
-        b=j48FJVYkoOMsAaITWs8Z7u4w3bknXp0dSLEJv+qdLe8jxxHWS5ATRljFf5mAOFbpGS
-         JQNVN+3Hi19aMXNFP+V3AYC4EYIGERLZc3+Oc7r3zoU8eMSm/LjBXuL95d0hDTmxZqul
-         BLjyPBL1cR/IP+rZ7Ui9BxDs0NPC/R8FAeq3WbpbRLPxfCeCwaPzIZl5+Zm2KkQR5n7Y
-         SqCjN02QGYDBk9/20a4c3ehtL2t6/YnPZ1cOJWtexv0EOH+LWY9nG0scZCh4eNqfXJkf
-         MvZQdRPffZHnGs1kfbhceljCNxEFj6Irsl/KbvEKc6XOsucliYAWvwZrCapqu86FXvo3
-         BpIA==
+        b=xiV906rtG9cai37x8uu5qVKvtV3SikDF3vKpqfgDJixkgfd1g+PsEcaUZAXrHVulo3
+         SoymZ/oM4czU2nF2qRPRDkdmx0xRSd8GgrlKDyfc3qy57RSEkVC4B7cjJNdo+wN2Ofi2
+         0A0a8bk+YPTHIn6wDUhVMtFczs4b35/g0u5lObH78+I8iTwmBa3K8O4GxMkxKuyeAySi
+         JAhGnlth05vKoD8L0AQRK2FFhVJHk1TW5dcg4HX/uCFUN2KMD9UxbQrBUelD4Z/7WMkO
+         ZX9yHtYvcLwtKGej5XYoFCs6x24WSqD4WB9Gck542j2Mw2sJ1lJVs8g0ryfPx955rt8l
+         FPFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=lc0kMqhhyTL0/ED+GsijVzAfaP8VzTIUwqo3zggCI8k=;
-        fh=KI+4/+ia1bE4Zq5H7ezmhgosSFBCz/Zq4TIFQpLQMXs=;
-        b=KDKl8ZnvYwskLNhxERz89XS8Y4NAxznXXtOk9qC3AYY6HeGl5c5MHNOq3a2sXNEZb9
-         XgZpmnD9LbiFOE33CZxhwA0SXzNFOAxwzLzCytjmbxgN5tCbVAbBA1UeWpsCu1eYNucy
-         utOJPOBtgOYwkPYx4WUcFlEJqoH31zRg1jOMkrqw0rOS8qd9+L7phRIBY3GPzDhQv+w1
-         K1mQ81vCJ0rZyW2CpTpnzjG3puocJtuiJkTSBJaE4KMMeTHcOi9GCnRdnN8N5Fpj06al
-         uhvNyu6fxMhz5zB26L7HBSVHZ85vxPyIB2CknHZkQACJzQtAiNWqqxhHr5BIPSqE3EiY
-         iKPw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=NDQDiSIXlkgjP0mASXiCW1Z5PDJEfauay7W7xh/vCZQ=;
+        fh=L9+xlWXyKm6KsUaf8nJ3E7Oku33KOKYECsFhykRkiiE=;
+        b=sjjqIHT6tC2+UUbikMOKEwLnm/pkI4mClu/akIuCLkJ4E4cEJIpiDrFvYncSLGzmTZ
+         QrBW5gw3PWh/ZvoC4kNKBlDlsfGCjuWEcXeWXQ2344u31GWvobySCLlpd3mMZLImLEPK
+         RLZ9xwYe+vqpwC1A4hzHnZ7CXMMBUFtas7Bm9W/TyakL4oRq6Rh6nZYAhubMVFmAXqwI
+         gHlLa5DPQ0qzHm3vImyQ7XbjoyCkr1jZmJu/MO93hMv1pO+/HrEgC96iInlOY1Ln/r7b
+         dqigQ/JR0s/o4Dzk6GxBgmu4DGHKjG50tT3Btewwix5wUGkaZYtAmF3Qvns/dF5kXuvY
+         1JVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T206phGw;
+       dkim=pass header.i=@linaro.org header.s=google header.b="b/9v6VtL";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id gs38-20020a1709072d2600b00a0e0b72f9d6sor2273495ejc.19.2023.12.12.04.24.31
+        by mx.google.com with SMTPS id n17-20020a170906379100b00a1844763fcfsor2293281ejc.20.2023.12.12.04.34.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Dec 2023 04:24:31 -0800 (PST)
+        Tue, 12 Dec 2023 04:34:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T206phGw;
+       dkim=pass header.i=@linaro.org header.s=google header.b="b/9v6VtL";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702383871; x=1702988671; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lc0kMqhhyTL0/ED+GsijVzAfaP8VzTIUwqo3zggCI8k=;
-        b=T206phGwNlkk60/lhouU8rtp8Xo0XugCV7ABSrnanTtPUx+HvlshSRwPYxRjwF0pUH
-         na5hLJgM9XbV7MWQdq7bd4o3o7T7nts4DuFHOgh/bMEPTEL5yee/7f6UKLAe9yX7SNq6
-         ZYdtwLbqV+7Vz5EVoe/3y61e8j1coDRnscejeyy0fnMN3KOhkjxPXI6AX4ELboLt7MEn
-         HF9q0wmUx7pDvc3wSgJR202Sz8a+IYndWUOhvo+Bn9SFlaNdBlur0pBgqmocBtzml3kE
-         Ap9KvzLl4f7YdbQLmWncNScRld8VV6NYeV35DA9r+5DGqGLkBVmB/sle0aNiVoYN/rs9
-         TiUg==
+        d=linaro.org; s=google; t=1702384460; x=1702989260; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NDQDiSIXlkgjP0mASXiCW1Z5PDJEfauay7W7xh/vCZQ=;
+        b=b/9v6VtLrIsrNbMFKC/RLyOSRDkzo42YnZtylz9goQj0UCM5XSn+fZDvpPef+oL3rM
+         vftr6Jjz1teVGShtkR08/mjA+Q5EmADUNK3J3Glw7BZEWI3DaAzs21b87W3x+1qnGZPM
+         Kyge89f8bJfE41k+5i6iN8NZc05a22HFrzpKZMZUVxyOQ9wAQU8XNVJhUMoGKDw8q0Mm
+         MtuEB2PGh5dyoMbfpv6cd0N/VAP+LYF+BTEQ750mO/5U1UMrmwAiX2EGBgBjeSxUZuBp
+         ryWIFH6dD/4TzrxDDFPB8L/fO4tw16jmsfLT8jtaVdzt9/V05IIl9hJfl75YYRHGDGoc
+         vVLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702383871; x=1702988671;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lc0kMqhhyTL0/ED+GsijVzAfaP8VzTIUwqo3zggCI8k=;
-        b=hVzpGbqqDvMQUrHul7Y8LvNs4imnM3DBimcZrttjQ3YRBd357Pj1eTZFK8Vg7yoBU8
-         mvofWMX22dsb6Pazv7RbbqXB6N/rs8Vvaq8CZz1h6vZrF8zCZcGqZ0glR+AYCWZkXkdC
-         cNTHcN6Q7qCPG6UNAeWEFvdXiSvlmvjBPJGsTQIgUWUEKEo9Yt+NzttsiANtAWQa3Lwg
-         bGuxqML6UsPW6bvVCTrn8+izbqu/t2JTUigUqaTo3ljpPF8Ql3GA4VoaAJu6oBXsbmOM
-         vGO3RBiFpGxk1VbDPPfK3FZX1RFDFMrUnjtWcCCZz5Y2od/m/Vctr4iOf7zo8T8BzWUS
-         d9dw==
-X-Gm-Message-State: AOJu0Yx5uAC40WeKm5ybI/+7B/jfEQ2rbpCe/scWLVPF0ffLptW4TFx9
-	fJcmPkHBLoKkqeTlOvDdT++zvJFZ
-X-Google-Smtp-Source: AGHT+IGOoeb7O8ekBg4UDFmGttrgQBh/uwJUUJ8aZVHDuCegDl1qawbyQj0ZFGDfX6+1yvx0B1N+dA==
-X-Received: by 2002:a17:906:c14e:b0:a19:a19b:5603 with SMTP id dp14-20020a170906c14e00b00a19a19b5603mr3779457ejc.147.1702383871197;
-        Tue, 12 Dec 2023 04:24:31 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702384460; x=1702989260;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NDQDiSIXlkgjP0mASXiCW1Z5PDJEfauay7W7xh/vCZQ=;
+        b=C9qiZy2RQOmTBRav5C9LWUogaLff9g3VQGhE7OYjdrXwCletcq/ChRZA83F4U3JGbA
+         igsbQaB6Ag9mKVd5UE+d0rJs+qRRPRHv4KnGfAkWfJiQRF0+z+iTnctXCuvlyajXZ5UM
+         ITCQEO7vnTTh3pnLNX0tzFF9PplCrCSQzlaEnV4nsd9AIVAU9dssexSdjkoDpUYoR5bg
+         I1G/W7FGX9wav8o24Gbfu+nnnj6ou1hCh+e1eEHz1S1CPnv8U2o7uuvUg5d+W98HZxmU
+         SJyMNNwOXFudVUg1KxuiOhdkVT6Zf8ikX299LyiTbKhj+1bRbyvunLRiifW0bMWpSOED
+         NXiQ==
+X-Gm-Message-State: AOJu0YxM27zRV5uafzVwdtdQysWAX1ggJKn89KmXUIRackoBk2mM+Jhc
+	fVX3twWLmmCb95EWGkV70zWLsskf
+X-Google-Smtp-Source: AGHT+IGrAKWazBmkRMdjtf5u/OosF1/95f731ICTz5WW04wb8ZG5X/7DPApb4EFzSdlFdmwtRgbyWw==
+X-Received: by 2002:a17:906:74cf:b0:a1a:7568:1d4d with SMTP id z15-20020a17090674cf00b00a1a75681d4dmr3498417ejl.27.1702384459881;
+        Tue, 12 Dec 2023 04:34:19 -0800 (PST)
 Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id sa16-20020a1709076d1000b00a1da72b8752sm6171897ejc.212.2023.12.12.04.24.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Dec 2023 04:24:30 -0800 (PST)
-Message-ID: <3e62416d-c014-403f-ad51-8fd109821dac@linaro.org>
-Date: Tue, 12 Dec 2023 13:24:26 +0100
+Received: from m1x-phil.lan ([176.176.175.193])
+        by smtp.gmail.com with ESMTPSA id ub27-20020a170907c81b00b00a1df4387f16sm6285128ejc.95.2023.12.12.04.34.17
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 12 Dec 2023 04:34:19 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Claudio Fontana <cfontana@suse.de>,
+	qemu-ppc@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-riscv@nongnu.org,
+	Brian Cain <bcain@quicinc.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anton Johansson <anjo@rev.ng>,
+	Warner Losh <imp@bsdimp.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	David Hildenbrand <david@redhat.com>
+Subject: [PATCH v2 02/23] exec: Expose 'target_page.h' API to user emulation
+Date: Tue, 12 Dec 2023 13:33:38 +0100
+Message-ID: <20231212123401.37493-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231212123401.37493-1-philmd@linaro.org>
+References: <20231212123401.37493-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/24] exec/cpu-all: Remove unused headers
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>, Warner Losh <imp@bsdimp.com>,
- Claudio Fontana <cfontana@suse.de>, Brian Cain <bcain@quicinc.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Thomas Huth <thuth@redhat.com>
-References: <20231211212003.21686-1-philmd@linaro.org>
- <20231211212003.21686-16-philmd@linaro.org>
- <488571cb-7770-4183-a760-ae4bd6549531@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <488571cb-7770-4183-a760-ae4bd6549531@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IK6PJnxXRMV6
+X-TUID: 5lZWXOn4MEId
 
-On 12/12/23 00:16, Richard Henderson wrote:
-> On 12/11/23 13:19, Philippe Mathieu-Daudé wrote:
->> Nothing is required from the "qemu/thread.h" and
->> "hw/core/cpu.h" headers.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/exec/cpu-all.h | 2 --
->>   1 file changed, 2 deletions(-)
->>
->> diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
->> index 9a7b5737d3..b1e293a08f 100644
->> --- a/include/exec/cpu-all.h
->> +++ b/include/exec/cpu-all.h
->> @@ -22,8 +22,6 @@
->>   #include "exec/cpu-common.h"
->>   #include "exec/memory.h"
->>   #include "exec/tswap.h"
->> -#include "qemu/thread.h"
->> -#include "hw/core/cpu.h"
-> 
-> While thread.h is fine, I'm not sure removing hw/core/cpu.h from 
-> cpu-all.h is a good idea, and would explain the rather surprising 
-> changes to add core/cpu.h to other files.
+User-only objects might benefit from the "exec/target_page.h"
+API, which allows to build some objects once for all targets.
 
-"hw/core/cpu.h" defines the CPUState structure. Any code that
-deref CPUState needs to include its definition from "hw/core/cpu.h".
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ meson.build      |  2 +-
+ page-target.c    | 43 +++++++++++++++++++++++++++++++++++++++++++
+ system/physmem.c | 35 -----------------------------------
+ 3 files changed, 44 insertions(+), 36 deletions(-)
+ create mode 100644 page-target.c
 
-Similarly, files that don't deref CPUState/CPUClass/cpu_foo methods
-shouldn't be polluted by its declarations.
-
-This series focuses on useremu, next comes sysemu and "exec/cpu-all.h"
-is split. I'll see if I can postpone this change.
+diff --git a/meson.build b/meson.build
+index d2c4c2adb3..5fdc4ef8db 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3488,7 +3488,7 @@ if get_option('b_lto')
+   pagevary = declare_dependency(link_with: pagevary)
+ endif
+ common_ss.add(pagevary)
+-specific_ss.add(files('page-vary-target.c'))
++specific_ss.add(files('page-target.c', 'page-vary-target.c'))
+ 
+ subdir('backends')
+ subdir('disas')
+diff --git a/page-target.c b/page-target.c
+new file mode 100644
+index 0000000000..d286e2d58b
+--- /dev/null
++++ b/page-target.c
+@@ -0,0 +1,43 @@
++/*
++ * QEMU page values getters (target independent)
++ *
++ *  Copyright (c) 2003 Fabrice Bellard
++ *
++ * SPDX-License-Identifier: LGPL-2.1-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "exec/target_page.h"
++#include "exec/cpu-defs.h"
++#include "exec/cpu-all.h"
++
++size_t qemu_target_page_size(void)
++{
++    return TARGET_PAGE_SIZE;
++}
++
++int qemu_target_page_mask(void)
++{
++    return TARGET_PAGE_MASK;
++}
++
++int qemu_target_page_bits(void)
++{
++    return TARGET_PAGE_BITS;
++}
++
++int qemu_target_page_bits_min(void)
++{
++    return TARGET_PAGE_BITS_MIN;
++}
++
++/* Convert target pages to MiB (2**20). */
++size_t qemu_target_pages_to_MiB(size_t pages)
++{
++    int page_bits = TARGET_PAGE_BITS;
++
++    /* So far, the largest (non-huge) page size is 64k, i.e. 16 bits. */
++    g_assert(page_bits < 20);
++
++    return pages >> (20 - page_bits);
++}
+diff --git a/system/physmem.c b/system/physmem.c
+index a63853a7bc..4bdb3d0592 100644
+--- a/system/physmem.c
++++ b/system/physmem.c
+@@ -3422,41 +3422,6 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
+     return 0;
+ }
+ 
+-/*
+- * Allows code that needs to deal with migration bitmaps etc to still be built
+- * target independent.
+- */
+-size_t qemu_target_page_size(void)
+-{
+-    return TARGET_PAGE_SIZE;
+-}
+-
+-int qemu_target_page_mask(void)
+-{
+-    return TARGET_PAGE_MASK;
+-}
+-
+-int qemu_target_page_bits(void)
+-{
+-    return TARGET_PAGE_BITS;
+-}
+-
+-int qemu_target_page_bits_min(void)
+-{
+-    return TARGET_PAGE_BITS_MIN;
+-}
+-
+-/* Convert target pages to MiB (2**20). */
+-size_t qemu_target_pages_to_MiB(size_t pages)
+-{
+-    int page_bits = TARGET_PAGE_BITS;
+-
+-    /* So far, the largest (non-huge) page size is 64k, i.e. 16 bits. */
+-    g_assert(page_bits < 20);
+-
+-    return pages >> (20 - page_bits);
+-}
+-
+ bool cpu_physical_memory_is_io(hwaddr phys_addr)
+ {
+     MemoryRegion*mr;
+-- 
+2.41.0

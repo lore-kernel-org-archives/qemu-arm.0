@@ -1,298 +1,156 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp988711ejo;
-        Tue, 12 Dec 2023 07:39:19 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEhwYFuYhWZVnRHni6QAICljRh0ZuRikm3f7S68rnhiT8rSi/fly3dHPc8IWacIJRKvQWZL
-X-Received: by 2002:a05:620a:4950:b0:77d:cda9:60ec with SMTP id vz16-20020a05620a495000b0077dcda960ecmr6657113qkn.26.1702395559435;
-        Tue, 12 Dec 2023 07:39:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702395559; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1033479ejo;
+        Tue, 12 Dec 2023 08:42:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF2dMEO6DA+3M6qVQ++aXFzGakzNkhD2np9s+7OdGuWx84hwDCLfQVUavxDQHEN1bhhZYib
+X-Received: by 2002:a05:620a:2048:b0:77d:77cc:a36d with SMTP id d8-20020a05620a204800b0077d77cca36dmr9194983qka.6.1702399377337;
+        Tue, 12 Dec 2023 08:42:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702399377; cv=none;
         d=google.com; s=arc-20160816;
-        b=cn8MZvOtn1Pp/ILBMtIfQ0vBm94hWuJ6kaQK4slkjM72VyPsHZ8ssYsgQdH8LLM3vu
-         j9O4QW0YD05CW2f6621l1JCXZ8aFuM+pn1JVNUK+Y81qqNjnXiOFh6X8euo4ECd9YyiO
-         QDlZw1JFfI+131BVAGFXZw/23iBEkYxTXB/DL2Osu8MOsy+wghnQGhYG+EZVIBmB6HcS
-         EKvrDYfi+7rrZeg+MyRshSedjkZRHsN26F+uPfJ99egulBJzxXvM0oFURpuJ2FBrfD+v
-         Z6juqnUr64t/VbxvXZMZ9XndCI1U0Cgg+ppqGoBctDf4+3sLYvtis7VmCqjd0Ytb72nF
-         aqKA==
+        b=g3ybut72Nx8lbkgBIyo33fTA+sZDXeYC39dkcK8l0RJmz2MeutvPZJF5h0NaacIMJO
+         BC27SWZaXuueOgUXmhuI367ADZynN6ez4/42HolvlSe3Yy4WtieAVBMetxzlnQPMF69P
+         dSPbTFko9JqysAOuXGxAUHDa02vTqkDxqg0vzAnUdjgR9TwQZkzBTTid3jY1GH/sVMrn
+         LEUTz94qxdhRi8IM6lRblKvFfcfdCHie4MSN3Uno5/99e/xX8LHifs/JvLPL+KV4Pldz
+         gcwDYWsV5ru4CFglagoWs8fNFzXsWjoxKjZ6x88RuAQNDByNo2bWmHOAOLfJvuRGzXqe
+         /gLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=mhd5PyZ3DXbsV3qmdtVMB6yuzeux7oigKl5JGcj9MXo=;
-        fh=bZKlkMU9C1iGNzA+/zdVtYyDn5BmXePmdZPp4GNAcqQ=;
-        b=LDhd0odbzfM31Ud0wUeiQ3xrgqAC+8MNlcCjMcxQ2Fdgn71dFSd3/S0TSjcv/mvD7V
-         3KXVntS8uWCX8XnD7CJksvlbiQncfQXju2npdu2Tvq5DlsSssunzGct+p4r2qCW1thru
-         2nX7t62pYUZxCsVht6C61gnaTsddkyAmB79h0qjn486IByexzNd31OhWgDhNSuSNyYuE
-         HWNhIw0gtFArDWmtzFXfACss/kpiFZjFACtqofydvcQdYOxKSbs2q53XZfDpKVS3F2Qx
-         16AJlQrmZFghpH4Qt2lef0yflFzteI7Snbovsg56NnoSkddGQ4R4CHevPoD8MJeZcwzL
-         mR/A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=6V3XEQ7dCz9Oc4xHbCPWCUQ4m1Buvb3dGtaqJs6JjpQ=;
+        fh=OvxsSc1PGY5Z5ELrkbN1hqRsN7mMM/aB5TwiNUvax40=;
+        b=C420vrra10FU1S8WnLZonCoYZXrPC4hqs+7y55HaEZaxcss/33W+kYwgaX5dbCxr28
+         GtegHTErbYt1/T24Ze4PQt5tdPbAzpVcbynJm6PjjhEopkI7bPZpUXxVY4kvcK0DKp6A
+         ab2Ca7kFJG8XFZnXffBY5akis1hQ2k1s6MfWBoJ/dmZ5ipZC+iV8iGW0TuM9ENz85fXL
+         fDphhvYiKG9GR6YArkDI2fAriW92RFcBkqeVldd28IPUe7fnI6L9FmJPuAp7uJCuAnoD
+         OIoAdqrC3Hungx0ZtmWhPLf+sywd3Vl2WfsPK7Yq7v35eDYOdr+tPWJbj7WD4p+jKGPH
+         iegg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EsjQKdeD;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id q23-20020ae9e417000000b0077da299a4d0si10427233qkc.775.2023.12.12.07.39.19
+       dkim=pass header.i=@linaro.org header.s=google header.b=VAmm3vbL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w12-20020a05620a444c00b0076f1797fa7csi8006371qkp.534.2023.12.12.08.42.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Dec 2023 07:39:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Dec 2023 08:42:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EsjQKdeD;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702395559;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=mhd5PyZ3DXbsV3qmdtVMB6yuzeux7oigKl5JGcj9MXo=;
-	b=EsjQKdeD1G2/IqDJtT6IsqND4u9xIXHy2ejqVwvl1gFrFWeGWLiiHuNLtagBpWs2ldr4QP
-	gH3JfYwU1nWNvaA7cvzMGDo3K1kH5lOpad70CAQRroLt6ghvPNudpoMnUXKbsQRwh/53H6
-	MMoN3DG3VCAGTlEh/RVFCHFB0hPdrWA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-oXKjbKZqPLi5HX1YCXpYaQ-1; Tue,
- 12 Dec 2023 10:39:14 -0500
-X-MC-Unique: oXKjbKZqPLi5HX1YCXpYaQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B28B42806403;
-	Tue, 12 Dec 2023 15:39:11 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.220])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 922F32026D66;
-	Tue, 12 Dec 2023 15:39:06 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Paul Durrant <paul@xen.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Jagannathan Raman <jag.raman@oracle.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Hailiang Zhang <zhanghailiang@xfusion.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Peter Xu <peterx@redhat.com>,
-	Hyman Huang <yong.huang@smartx.com>,
-	Fam Zheng <fam@euphon.net>,
-	Song Gao <gaosong@loongson.cn>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Leonardo Bras <leobras@redhat.com>,
-	Jiri Slaby <jslaby@suse.cz>,
-	Eric Farman <farman@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Cameron Esfahani <dirty@apple.com>,
-	qemu-ppc@nongnu.org,
-	John Snow <jsnow@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	qemu-s390x@nongnu.org,
-	qemu-block@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	kvm@vger.kernel.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-riscv@nongnu.org,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Juan Quintela <quintela@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Eric Blake <eblake@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	xen-devel@lists.xenproject.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 0/5] Make Big QEMU Lock naming consistent
-Date: Tue, 12 Dec 2023 10:38:59 -0500
-Message-ID: <20231212153905.631119-1-stefanha@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=VAmm3vbL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rD5q1-0002KP-9I; Tue, 12 Dec 2023 11:42:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rD5py-0002Jr-9t
+ for qemu-arm@nongnu.org; Tue, 12 Dec 2023 11:42:26 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rD5pt-0004MC-JW
+ for qemu-arm@nongnu.org; Tue, 12 Dec 2023 11:42:25 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-54cde11d0f4so8235565a12.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Dec 2023 08:42:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1702399340; x=1703004140; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=6V3XEQ7dCz9Oc4xHbCPWCUQ4m1Buvb3dGtaqJs6JjpQ=;
+ b=VAmm3vbLMPJggSTX6imGVkE6L8nTck7IBL+T4S/q4VwIvzXd/ZueHh5u62Ex42no1a
+ x9+YY/l4yqi6NG0fmjIUMb3GiF9roZkfB5GC92R2UB+hoaVVIcO4a+TxEyBnMAuduvOA
+ 6pKZpQodgs2lAVA4euIQmBOZihHQ7QiryTN1rXSNhTnT34rCnvsTSCyE3Rd2/qeWjNcN
+ giVFqFpflBO169E0M/oiCh2OMJR8l0qw5GnzLSYJiv+YLl8VK2bWri8giUY/o41RjXLT
+ vfSScnyyt3xUai5hJazq1yxp4kB6u8lyjnX/05E9kOJ1ifOmUg2NsNAfb8GPNC4UnSQT
+ RZKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1702399340; x=1703004140;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6V3XEQ7dCz9Oc4xHbCPWCUQ4m1Buvb3dGtaqJs6JjpQ=;
+ b=vocCC3gO0ZTrdkenK3ijCUghNP6rY1gPXVIm0TWNZ+Ab5VssHvWBd2XRzYMX4qDCNs
+ 40zS3vRkWyn10aE+neWFzL8F8opSDVD2h3sip2FBJLCCmySwtymDTdEZRX9pnT+FLX+g
+ /rTbJUJMAYlIleM3VTmU0BCEQiCkdp9zA5veXY6qoTXeTBcLottpvWjtLWcgWSP+AsxF
+ 0JVtlsJ8g5lmgsNwaKv08Rr3WDsnIvoK39bhAzCq1Xti65TmG912+w1O9bNsHAZNKDyx
+ A0vDzbMBToMxWtX2/bI20LgjteeJw2Qv+aH+qF4CzHgPlWSGzrIwBqnhTRhIlcJ1efK+
+ hkpg==
+X-Gm-Message-State: AOJu0YwOWdPqQXkX5yO7XMSvBE/VIs34AUeM9PT1x+HIBC060bCyDL59
+ 9zn0nBH1fdNTpcE0B/NrKwZ0FHZ88RChnSpTezaD3w==
+X-Received: by 2002:a50:c94d:0:b0:54b:fea4:c57f with SMTP id
+ p13-20020a50c94d000000b0054bfea4c57fmr3959506edh.25.1702399339992; Tue, 12
+ Dec 2023 08:42:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-X-TUID: 7evUX43wDJXr
+References: <20231205100802.2705561-1-sai.pavan.boddu@amd.com>
+ <20231205100802.2705561-2-sai.pavan.boddu@amd.com>
+In-Reply-To: <20231205100802.2705561-2-sai.pavan.boddu@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Dec 2023 16:42:08 +0000
+Message-ID: <CAFEAcA_gyAEs5PmTy6Edfep5HrwG6Prgij18MT1PeysV++=3Tw@mail.gmail.com>
+Subject: Re: [PATCH 1/1] xlnx-versal-ospi: disable reentrancy detection for
+ iomem_dac
+To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org, 
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Francisco Iglesias <frasse.iglesias@gmail.com>,
+ saipavanboddu@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mKbKC65bTv1t
 
-v2:
-- Rename APIs bql_*() [PeterX]
-- Spell out "Big QEMU Lock (BQL)" in doc comments [PeterX]
-- Rename "iolock" variables in hw/remote/mpqemu-link.c [Harsh]
-- Fix bql_auto_lock() indentation in Patch 2 [Ilya]
-- "with BQL taken" -> "with the BQL taken" [Philippe]
-- "under BQL" -> "under the BQL" [Philippe]
+On Tue, 5 Dec 2023 at 10:08, Sai Pavan Boddu <sai.pavan.boddu@amd.com> wrote:
+>
+> The OSPI DMA reads flash data through the OSPI linear address space (the
+> iomem_dac region), because of this the reentrancy guard introduced in
+> commit a2e1753b ("memory: prevent dma-reentracy issues") is disabled for
+> the memory region.
+>
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+> ---
+>  hw/ssi/xlnx-versal-ospi.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/ssi/xlnx-versal-ospi.c b/hw/ssi/xlnx-versal-ospi.c
+> index 1a61679c2f..5123e7dde7 100644
+> --- a/hw/ssi/xlnx-versal-ospi.c
+> +++ b/hw/ssi/xlnx-versal-ospi.c
+> @@ -1772,6 +1772,7 @@ static void xlnx_versal_ospi_init(Object *obj)
+>      memory_region_init_io(&s->iomem_dac, obj, &ospi_dac_ops, s,
+>                            TYPE_XILINX_VERSAL_OSPI "-dac", 0x20000000);
+>      sysbus_init_mmio(sbd, &s->iomem_dac);
+> +    s->iomem_dac.disable_reentrancy_guard = true;
 
-The Big QEMU Lock ("BQL") has two other names: "iothread lock" and "QEMU global
-mutex". The term "iothread lock" is easily confused with the unrelated --object
-iothread (iothread.c).
+Where we set this flag we should have a comment explaining why
+we need to do it, please.
 
-This series updates the code and documentation to consistently use "BQL". This
-makes the code easier to understand.
+PS: for a single patch you don't need to use a separate cover letter;
+cover letters are only needed for multi-patch series.
 
-Stefan Hajnoczi (5):
-  system/cpus: rename qemu_mutex_lock_iothread() to bql_lock()
-  qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to BQL_LOCK_GUARD
-  qemu/main-loop: rename qemu_cond_wait_iothread() to
-    qemu_cond_wait_bql()
-  Replace "iothread lock" with "BQL" in comments
-  Rename "QEMU global mutex" to "BQL" in comments and docs
-
- docs/devel/multi-thread-tcg.rst      |   7 +-
- docs/devel/qapi-code-gen.rst         |   2 +-
- docs/devel/replay.rst                |   2 +-
- docs/devel/reset.rst                 |   2 +-
- docs/devel/multiple-iothreads.txt    |  16 ++--
- hw/display/qxl.h                     |   2 +-
- include/block/aio-wait.h             |   2 +-
- include/block/blockjob.h             |   6 +-
- include/exec/cpu-common.h            |   2 +-
- include/exec/memory.h                |   4 +-
- include/exec/ramblock.h              |   2 +-
- include/io/task.h                    |   2 +-
- include/migration/register.h         |   8 +-
- include/qemu/coroutine-core.h        |   2 +-
- include/qemu/coroutine.h             |   2 +-
- include/qemu/main-loop.h             |  69 ++++++++--------
- include/qemu/thread.h                |   2 +-
- target/arm/internals.h               |   4 +-
- accel/accel-blocker.c                |  10 +--
- accel/dummy-cpus.c                   |   8 +-
- accel/hvf/hvf-accel-ops.c            |   4 +-
- accel/kvm/kvm-accel-ops.c            |   4 +-
- accel/kvm/kvm-all.c                  |  22 ++---
- accel/tcg/cpu-exec.c                 |  26 +++---
- accel/tcg/cputlb.c                   |  20 ++---
- accel/tcg/tcg-accel-ops-icount.c     |   6 +-
- accel/tcg/tcg-accel-ops-mttcg.c      |  12 +--
- accel/tcg/tcg-accel-ops-rr.c         |  18 ++--
- accel/tcg/tcg-accel-ops.c            |   2 +-
- accel/tcg/translate-all.c            |   2 +-
- cpu-common.c                         |   4 +-
- dump/dump.c                          |   4 +-
- hw/block/dataplane/virtio-blk.c      |   8 +-
- hw/block/virtio-blk.c                |   2 +-
- hw/core/cpu-common.c                 |   6 +-
- hw/display/virtio-gpu.c              |   2 +-
- hw/i386/intel_iommu.c                |   6 +-
- hw/i386/kvm/xen_evtchn.c             |  30 +++----
- hw/i386/kvm/xen_gnttab.c             |   2 +-
- hw/i386/kvm/xen_overlay.c            |   2 +-
- hw/i386/kvm/xen_xenstore.c           |   2 +-
- hw/intc/arm_gicv3_cpuif.c            |   2 +-
- hw/intc/s390_flic.c                  |  18 ++--
- hw/mips/mips_int.c                   |   2 +-
- hw/misc/edu.c                        |   4 +-
- hw/misc/imx6_src.c                   |   2 +-
- hw/misc/imx7_src.c                   |   2 +-
- hw/net/xen_nic.c                     |   8 +-
- hw/ppc/pegasos2.c                    |   2 +-
- hw/ppc/ppc.c                         |   6 +-
- hw/ppc/spapr.c                       |   2 +-
- hw/ppc/spapr_events.c                |   2 +-
- hw/ppc/spapr_rng.c                   |   4 +-
- hw/ppc/spapr_softmmu.c               |   4 +-
- hw/remote/mpqemu-link.c              |  22 ++---
- hw/remote/vfio-user-obj.c            |   2 +-
- hw/s390x/s390-skeys.c                |   2 +-
- hw/scsi/virtio-scsi-dataplane.c      |   6 +-
- migration/block-dirty-bitmap.c       |  14 ++--
- migration/block.c                    |  40 ++++-----
- migration/colo.c                     |  62 +++++++-------
- migration/dirtyrate.c                |  12 +--
- migration/migration.c                |  54 ++++++------
- migration/ram.c                      |  16 ++--
- net/tap.c                            |   2 +-
- replay/replay-internal.c             |   2 +-
- semihosting/console.c                |   8 +-
- stubs/iothread-lock.c                |   6 +-
- system/cpu-throttle.c                |   6 +-
- system/cpus.c                        |  55 +++++++------
- system/dirtylimit.c                  |   4 +-
- system/memory.c                      |   2 +-
- system/physmem.c                     |  14 ++--
- system/runstate.c                    |   2 +-
- system/watchpoint.c                  |   4 +-
- target/arm/arm-powerctl.c            |  14 ++--
- target/arm/helper.c                  |   6 +-
- target/arm/hvf/hvf.c                 |   8 +-
- target/arm/kvm.c                     |   4 +-
- target/arm/kvm64.c                   |   4 +-
- target/arm/ptw.c                     |   6 +-
- target/arm/tcg/helper-a64.c          |   8 +-
- target/arm/tcg/m_helper.c            |   6 +-
- target/arm/tcg/op_helper.c           |  24 +++---
- target/arm/tcg/psci.c                |   2 +-
- target/hppa/int_helper.c             |   8 +-
- target/i386/hvf/hvf.c                |   6 +-
- target/i386/kvm/hyperv.c             |   4 +-
- target/i386/kvm/kvm.c                |  28 +++----
- target/i386/kvm/xen-emu.c            |  16 ++--
- target/i386/nvmm/nvmm-accel-ops.c    |   6 +-
- target/i386/nvmm/nvmm-all.c          |  20 ++---
- target/i386/tcg/sysemu/fpu_helper.c  |   6 +-
- target/i386/tcg/sysemu/misc_helper.c |   4 +-
- target/i386/whpx/whpx-accel-ops.c    |   6 +-
- target/i386/whpx/whpx-all.c          |  24 +++---
- target/loongarch/csr_helper.c        |   4 +-
- target/mips/kvm.c                    |   4 +-
- target/mips/tcg/sysemu/cp0_helper.c  |   4 +-
- target/openrisc/sys_helper.c         |  16 ++--
- target/ppc/excp_helper.c             |  14 ++--
- target/ppc/helper_regs.c             |   2 +-
- target/ppc/kvm.c                     |   4 +-
- target/ppc/misc_helper.c             |   8 +-
- target/ppc/timebase_helper.c         |   8 +-
- target/riscv/cpu_helper.c            |   4 +-
- target/s390x/kvm/kvm.c               |   4 +-
- target/s390x/tcg/misc_helper.c       | 118 +++++++++++++--------------
- target/sparc/int32_helper.c          |   2 +-
- target/sparc/int64_helper.c          |   6 +-
- target/sparc/win_helper.c            |  20 ++---
- target/xtensa/exc_helper.c           |   8 +-
- ui/spice-core.c                      |   6 +-
- util/async.c                         |   2 +-
- util/main-loop.c                     |   8 +-
- util/qsp.c                           |   6 +-
- util/rcu.c                           |  16 ++--
- audio/coreaudio.m                    |   8 +-
- memory_ldst.c.inc                    |  18 ++--
- target/i386/hvf/README.md            |   2 +-
- ui/cocoa.m                           |  56 ++++++-------
- 121 files changed, 644 insertions(+), 645 deletions(-)
-
--- 
-2.43.0
+thanks
+-- PMM

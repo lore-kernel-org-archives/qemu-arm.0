@@ -1,77 +1,86 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp932996ejo;
-        Tue, 12 Dec 2023 06:20:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF548NIqeV4Cwjsepx7qXXl2feboQd77pwInUj4iX4sw4I8iVioPnJcwaWPIWg9jdLs47mO
-X-Received: by 2002:ac8:7e88:0:b0:425:a282:71af with SMTP id w8-20020ac87e88000000b00425a28271afmr9409926qtj.35.1702390850382;
-        Tue, 12 Dec 2023 06:20:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702390850; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp950739ejo;
+        Tue, 12 Dec 2023 06:47:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEWWkllf/nFIRE8Zw5uj6AgsWWqQ1bUGBy8x88GVe0+Wab5vVXomIP1Plra+Q7jrG5N7atF
+X-Received: by 2002:a05:620a:12c2:b0:774:1d7f:2730 with SMTP id e2-20020a05620a12c200b007741d7f2730mr4199994qkl.46.1702392458436;
+        Tue, 12 Dec 2023 06:47:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702392458; cv=none;
         d=google.com; s=arc-20160816;
-        b=GqN1gj5sHeA0+ZzHgF39lrXHgggUiX+OkbOTOaQZOmBwE2d2021t75UHERrGZ8xtjN
-         NckoAawnnsBSgueci5nXmoGIgDjSkHyXnCQU/FAHaSmGPeqWw5yec3lgtnadbOVAc5hb
-         a11nlB0g4JZu5LFR3v562nqOt4vSyX15REVazOUU5amkHSmMP5JRfC293NMLOe7yUcyC
-         XvwStN8AruiAS1AwW8nc+iAl8yq/7tSEeLYb59dNN6MOomhfhq6snErUWkVH+igB+VAY
-         LvT+VgpM5lPwxOWukaKbViRgcn+LC5SaZuLwGMJxPcnuJ/PX+Ls/XOyjudKtnCjQi5d2
-         sAbQ==
+        b=Sjcac6Wm7g4geF4S7EW86zJjGg4aGIDx8qLW7hfWR1gJh7e9c27GhyjYp9lqR8M7pm
+         ebFGTkwDUTblWZ+H1d8iGBDr/5aJBNfWgvuVbdfDDf53bPUsR4cmv3+qtQ0OfGkP6cho
+         oSuZ8iSKd3/f9y4AYMBPqV/o624dKBGoHVMIYk4IKAPWE1/Ra44UiyCxfeLnBPRg9AIP
+         HqGZo6PpCb3CLwdWGjk2u2xX6uJ1vCA1DLcXy7JQw+V+dNSwCVA/i9fRN2qrtshhPck7
+         U6TNZRfYckpTt6mR7enBtjCnResVZaiEat9q7Tv7cKkqEhJMm4XwX5V0LD3zq3mOuIws
+         k37A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:message-id:subject:mime-version
-         :date:from;
-        bh=lUB7qZYDZrT8OCT+dAHyYb1zKj7WOfJZtTLx9EYgRq8=;
-        fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
-        b=GBF3/ozDUxsAgJMWy0E3yorChMnKBuGG7eNrFNPZd3iLVZ8x5SRfWtIEGrmhOiW7LO
-         gRban9HCDxOMrTSIo/lQ7LA4Zaah2jLwxjJRAl4HX73arZaj3wAIZbWBkLN9TZTu8IKc
-         nzewGhLbNDmDCf47I9PHOxrXlZmlYG+PA8fy4v4UNNtQDBMSyj4T5xgm0mg+vLUp9o39
-         jMlPwcLWV1YnFtaYYpErobBsfbF/Orc+P8fP5mPjvtXKPkpg1tq4lEikAfqmqpieP+I1
-         cdLgdZifp7n0ZRDekYRHP4drlmWzKXkI9tONZI85RoLxi+ntZ1idwODoFSPtlrgIJRvQ
-         m8yw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:references:cc:to:subject:from
+         :user-agent:mime-version:date:message-id;
+        bh=JqAbYrAN5JUnp0q82y/1mOgMPXP9hM0rWOoLWJ0OUjo=;
+        fh=XjeWluILof3f/t2RMU9x5kUMQdajlxelk3b+5+95bRU=;
+        b=LpNwLAz7/LH6pk0WPfKO3rjo7EszLFYUPNEzV+Xg43C1hNVoB9lSsMeaDZ+dXvZ1hl
+         rpPsns55lBIHtA0uZ21pFkEHFOqOJre9lZk67MaH/9qk48xvYO1MgaX7mHLAsp19aFdd
+         1qidhhbdQW3NePRFQWpB2+G9QG+sPvTbLLjMil6H1+9wWBN1a5TxFfwZ6jNwE9ecSK51
+         FT0l343aZs2nGRmHhZp4sXBhhzRdN4lMcIoLDQYZxNtn1/YR3qH5SvO2M2XUjFpp/K//
+         X/dzw0lZI7SfttM2QtHAVfAPsOZm7GBTX40PubOsozHWlDdEl9PQWnHYGL7b4ol0VFM2
+         PN+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fe5-20020a05622a4d4500b00423788ce3aesi11545593qtb.137.2023.12.12.06.20.50
+        by mx.google.com with ESMTPS id dw14-20020a05620a600e00b0077da484038csi11076802qkb.579.2023.12.12.06.47.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Dec 2023 06:20:50 -0800 (PST)
+        Tue, 12 Dec 2023 06:47:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rD3c8-0006Sz-ND; Tue, 12 Dec 2023 09:20:00 -0500
+	id 1rD42V-00072H-4q; Tue, 12 Dec 2023 09:47:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rD3c5-0006OG-7c; Tue, 12 Dec 2023 09:19:57 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
+ (Exim 4.90_1) (envelope-from <SRS0=DDG+=HX=kaod.org=clg@ozlabs.org>)
+ id 1rD42T-00071n-Mp; Tue, 12 Dec 2023 09:47:13 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rD3bx-0001YG-Pb; Tue, 12 Dec 2023 09:19:56 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id DB86F11EE4D;
- Tue, 12 Dec 2023 14:19:47 +0000 (UTC)
-From: ~inesvarhol <inesvarhol@git.sr.ht>
-Date: Tue, 12 Dec 2023 14:19:47 +0000
+ (Exim 4.90_1) (envelope-from <SRS0=DDG+=HX=kaod.org=clg@ozlabs.org>)
+ id 1rD42R-0002Ws-07; Tue, 12 Dec 2023 09:47:12 -0500
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SqLzl4q03z4xRn;
+ Wed, 13 Dec 2023 01:46:59 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SqLzc5jfKz4xNH;
+ Wed, 13 Dec 2023 01:46:52 +1100 (AEDT)
+Message-ID: <2645397c-eacd-48d4-b452-c9d6cce83d96@kaod.org>
+Date: Tue, 12 Dec 2023 15:46:48 +0100
 MIME-Version: 1.0
-Subject: [PATCH qemu v2 0/3] Add device STM32L4x5 EXTI
-Message-ID: <170239078765.13580.4044041320624286270-0@git.sr.ht>
-X-Mailer: git.sr.ht
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, philmd@linaro.org,
- peter.maydell@linaro.org, ines.varhol@telecom-paris.fr,
- arnaud.minier@telecom-paris.fr
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Subject: Re: [PATCH v8 01/10] hw/fsi: Introduce IBM's Local bus
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
+References: <20231128235700.599584-1-ninad@linux.ibm.com>
+ <20231128235700.599584-2-ninad@linux.ibm.com>
+Content-Language: en-US
+In-Reply-To: <20231128235700.599584-2-ninad@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=DDG+=HX=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,78 +93,227 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: ~inesvarhol <inesvarhol@proton.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vvxCpl5atw0I
+X-TUID: 01BAE9zv7zB3
 
-This patch adds a new STM32L4x5 EXTI device and is part
-of a series implementing the STM32L4x5 with a few peripherals.
+On 11/29/23 00:56, Ninad Palsule wrote:
+> This is a part of patchset where IBM's Flexible Service Interface is
+> introduced.
+> 
+> The LBUS is modelled to maintain mapped memory for the devices. The
+> memory is mapped after CFAM config, peek table and FSI slave registers.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+> [ clg: - removed lbus_add_device() bc unused
+>         - removed lbus_create_device() bc used only once
+>         - removed "address" property
+>         - updated meson.build to build fsi dir
+>         - included an empty hw/fsi/trace-events ]
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>   meson.build           |  1 +
+>   hw/fsi/trace.h        |  1 +
+>   include/hw/fsi/lbus.h | 40 +++++++++++++++++++++++++++++++++
+>   hw/fsi/lbus.c         | 51 +++++++++++++++++++++++++++++++++++++++++++
+>   hw/Kconfig            |  1 +
+>   hw/fsi/Kconfig        |  2 ++
+>   hw/fsi/meson.build    |  1 +
+>   hw/fsi/trace-events   |  1 +
+>   hw/meson.build        |  1 +
+>   9 files changed, 99 insertions(+)
+>   create mode 100644 hw/fsi/trace.h
+>   create mode 100644 include/hw/fsi/lbus.h
+>   create mode 100644 hw/fsi/lbus.c
+>   create mode 100644 hw/fsi/Kconfig
+>   create mode 100644 hw/fsi/meson.build
+>   create mode 100644 hw/fsi/trace-events
+> 
+> diff --git a/meson.build b/meson.build
+> index ec01f8b138..b6556efd51 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3298,6 +3298,7 @@ if have_system
+>       'hw/char',
+>       'hw/display',
+>       'hw/dma',
+> +    'hw/fsi',
+>       'hw/hyperv',
+>       'hw/i2c',
+>       'hw/i386',
+> diff --git a/hw/fsi/trace.h b/hw/fsi/trace.h
+> new file mode 100644
+> index 0000000000..ee67c7fb04
+> --- /dev/null
+> +++ b/hw/fsi/trace.h
+> @@ -0,0 +1 @@
+> +#include "trace/trace-hw_fsi.h"
+> diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
+> new file mode 100644
+> index 0000000000..a58e33d061
+> --- /dev/null
+> +++ b/include/hw/fsi/lbus.h
+> @@ -0,0 +1,40 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * IBM Local bus and connected device structures.
+> + */
+> +#ifndef FSI_LBUS_H
+> +#define FSI_LBUS_H
+> +
+> +#include "exec/memory.h"
+> +#include "hw/qdev-core.h"
+> +
+> +#define TYPE_FSI_LBUS_DEVICE "fsi.lbus.device"
+> +OBJECT_DECLARE_TYPE(FSILBusDevice, FSILBusDeviceClass, FSI_LBUS_DEVICE)
+> +
+> +#define FSI_LBUS_MEM_REGION_SIZE  (2 * 1024 * 1024)
+> +#define FSI_LBUSDEV_IOMEM_START   0xc00 /* 3K used by CFAM config etc */
 
-Thank you Philippe for letting us know we're on your review list and
-that you're busy.
-Please take your time, in the meantime we'll make progress on more
-peripherals :-)
+I don't think sizing the local bus MMIO region exactly to the size of
+the CFAM MMIO region is necessary. The upper LBUS/CFAM addresses might
+not even be backed by device registers.
 
-Sincerely,
-Ines Varhol
+I would simplify with :
 
-Changes from non-RFC v1 to non-RFC v2:
-- correct the commit messages
-- remove a misleading comment
+#define FSI_LBUS_MEM_REGION_SIZE  (1 * MiB)
 
-Changes from v3 to non-RFC v1:
-- separating the patch in 3 commits
-- justifying in the commit message why we implement a new
-model instead of changing the existing stm32f4xx_exti
-- changed irq_raise to irq_pulse in register SWIERx write (in
-stm32l4x5_exti_write)
-to be consistent with the irq_pulse in stm32l4x5_exti_set_irq (and also
-both these interrupts
-are edge-triggered)
-- changed the license to GPL
+and forget about the offset.
 
-Changes from v2 to v3:
-- adding more tests writing/reading in exti registers
-- adding tests checking that interrupt work by reading NVIC registers
-- correcting exti_write in SWIER (so it sets an irq only when a bit goes
-from '0' to '1')
-- correcting exti_set_irq (so it never writes in PR when the relevant
-bit in IMR is '0')
 
-Changes from v1 to v2:
-- use arrays to deduplicate code and logic
-- move internal constant EXTI_NUM_GPIO_EVENT_IN_LINES from the header
-to the .c file
-- Improve copyright headers
-- replace static const with #define
-- use the DEFINE_TYPES macro
-- fill the impl and valid field of the exti's MemoryRegionOps
-- fix invalid test caused by a last minute change
+Thanks,
 
-Based-on: <170100975340.4879.5844108484092111139-0@git.sr.ht>
-([PATCH qemu 0/2] hw/arm: Add minimal support for the B-L475E-IOT01A
-board)
+C.
 
-In=C3=A8s Varhol (3):
-  hw/misc: Implement STM32L4x5 EXTI
-  tests/qtest: Add STM32L4x5 EXTI QTest testcase
-  hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
 
- hw/arm/Kconfig                    |   1 +
- hw/arm/stm32l4x5_soc.c            |  56 +++-
- hw/misc/Kconfig                   |   3 +
- hw/misc/meson.build               |   1 +
- hw/misc/stm32l4x5_exti.c          | 299 ++++++++++++++++++
- hw/misc/trace-events              |   5 +
- include/hw/arm/stm32l4x5_soc.h    |   3 +
- include/hw/misc/stm32l4x5_exti.h  |  61 ++++
- tests/qtest/meson.build           |   5 +
- tests/qtest/stm32l4x5_exti-test.c | 485 ++++++++++++++++++++++++++++++
- 10 files changed, 917 insertions(+), 2 deletions(-)
- create mode 100644 hw/misc/stm32l4x5_exti.c
- create mode 100644 include/hw/misc/stm32l4x5_exti.h
- create mode 100644 tests/qtest/stm32l4x5_exti-test.c
+   
+> +
+> +typedef struct FSILBusDevice {
+> +    DeviceState parent;
+> +
+> +    MemoryRegion iomem;
+> +} FSILBusDevice;
+> +
+> +typedef struct FSILBusDeviceClass {
+> +    DeviceClass parent;
+> +
+> +    uint32_t config;
+> +} FSILBusDeviceClass;
+> +
+> +#define TYPE_FSI_LBUS "fsi.lbus"
+> +OBJECT_DECLARE_SIMPLE_TYPE(FSILBus, FSI_LBUS)
+> +
+> +typedef struct FSILBus {
+> +    BusState bus;
+> +
+> +    MemoryRegion mr;
+> +} FSILBus;
+> +
+> +#endif /* FSI_LBUS_H */
+> diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
+> new file mode 100644
+> index 0000000000..84c46a00d7
+> --- /dev/null
+> +++ b/hw/fsi/lbus.c
+> @@ -0,0 +1,51 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * IBM Local bus where FSI slaves are connected
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/fsi/lbus.h"
+> +
+> +#include "hw/qdev-properties.h"
+> +
+> +static void lbus_init(Object *o)
+> +{
+> +    FSILBus *lbus = FSI_LBUS(o);
+> +
+> +    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_FSI_LBUS,
+> +                       FSI_LBUS_MEM_REGION_SIZE - FSI_LBUSDEV_IOMEM_START);
+> +}
+> +
+> +static const TypeInfo lbus_info = {
+> +    .name = TYPE_FSI_LBUS,
+> +    .parent = TYPE_BUS,
+> +    .instance_init = lbus_init,
+> +    .instance_size = sizeof(FSILBus),
+> +};
+> +
+> +static void lbus_device_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->bus_type = TYPE_FSI_LBUS;
+> +}
+> +
+> +static const TypeInfo lbus_device_type_info = {
+> +    .name = TYPE_FSI_LBUS_DEVICE,
+> +    .parent = TYPE_DEVICE,
+> +    .instance_size = sizeof(FSILBusDevice),
+> +    .abstract = true,
+> +    .class_init = lbus_device_class_init,
+> +    .class_size = sizeof(FSILBusDeviceClass),
+> +};
+> +
+> +static void lbus_register_types(void)
+> +{
+> +    type_register_static(&lbus_info);
+> +    type_register_static(&lbus_device_type_info);
+> +}
+> +
+> +type_init(lbus_register_types);
+> diff --git a/hw/Kconfig b/hw/Kconfig
+> index 9ca7b38c31..2c00936c28 100644
+> --- a/hw/Kconfig
+> +++ b/hw/Kconfig
+> @@ -9,6 +9,7 @@ source core/Kconfig
+>   source cxl/Kconfig
+>   source display/Kconfig
+>   source dma/Kconfig
+> +source fsi/Kconfig
+>   source gpio/Kconfig
+>   source hyperv/Kconfig
+>   source i2c/Kconfig
+> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+> new file mode 100644
+> index 0000000000..e650c660f0
+> --- /dev/null
+> +++ b/hw/fsi/Kconfig
+> @@ -0,0 +1,2 @@
+> +config FSI_LBUS
+> +    bool
+> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+> new file mode 100644
+> index 0000000000..4074d3a7d2
+> --- /dev/null
+> +++ b/hw/fsi/meson.build
+> @@ -0,0 +1 @@
+> +system_ss.add(when: 'CONFIG_FSI_LBUS', if_true: files('lbus.c'))
+> diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+> new file mode 100644
+> index 0000000000..8b13789179
+> --- /dev/null
+> +++ b/hw/fsi/trace-events
+> @@ -0,0 +1 @@
+> +
+> diff --git a/hw/meson.build b/hw/meson.build
+> index f01fac4617..463d702683 100644
+> --- a/hw/meson.build
+> +++ b/hw/meson.build
+> @@ -44,6 +44,7 @@ subdir('virtio')
+>   subdir('watchdog')
+>   subdir('xen')
+>   subdir('xenpv')
+> +subdir('fsi')
+>   
+>   subdir('alpha')
+>   subdir('arm')
 
---=20
-2.38.5

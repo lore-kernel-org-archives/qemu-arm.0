@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1026416ejo;
-        Tue, 12 Dec 2023 08:32:14 -0800 (PST)
-X-Received: by 2002:a7b:ca4a:0:b0:40c:3cc0:8612 with SMTP id m10-20020a7bca4a000000b0040c3cc08612mr3073524wml.94.1702398733955;
-        Tue, 12 Dec 2023 08:32:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702398733; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1026510ejo;
+        Tue, 12 Dec 2023 08:32:21 -0800 (PST)
+X-Received: by 2002:a05:600c:3c89:b0:40c:4a4d:b53c with SMTP id bg9-20020a05600c3c8900b0040c4a4db53cmr1482017wmb.162.1702398741219;
+        Tue, 12 Dec 2023 08:32:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702398741; cv=none;
         d=google.com; s=arc-20160816;
-        b=snMEgFe6Nm4/mKbKzJAFnoiUTr0Riv4FcGTEI6oWGSZNrnG/PmL54JyRnoCcQ4UnIj
-         fLzDJ9XPUpiCfDNcNICHQPGwAHn8gEj28t6LVP5r9qBiaDANwtiFn8pNZr1dyMNO/7CN
-         yOSd9NR04R5SLgvuuIPFsi6ygLt4Pa48jq7hyviQIJ5zEbBbn6W0nKsMFaoAhqx6UHut
-         eu4ydSXn1cDPjsoP1cxx5/Fu4wLp8OPTMAFIYifpfuzbWzUrriiHqeeTxitaIEo9YohL
-         h+XE00LD7A/Q6OMc5l2PDLPT0Uo4FFIn+BmNTFXp33/1Bf7fNEbJyGolwT7lqZZXHqPq
-         nuFg==
+        b=x2wl61f+1lkFjuVQItZCbyaNKa80O1+ix6EwAtlj0MvfXkIBAyaEj2cg4YzOOm2yKv
+         w0hhXXSJb+txSBUuOQdejoHxH534l7JpwBOz9Fup6hbl+qKyFlNDTHNGKFGSmCqTzjlh
+         xFsS8qq+gOcGYjuYzIfV9bjMDjSlhzso3TR5smx53SjxjoIkdECRfaOUX8VqsYYuaofw
+         NYK+tpWqQoWnIRWodnlocqxAJl/TU6ueSNuYKvhKxYJpudsV+Ef9dcqjoPaaMqVxUFWz
+         OBXidHbaZ61GrS+OkM4fpUK7gZBndETejMLHok42Wsh7GoVJEU6YRjD/laIXWfU8/Y19
+         LQig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LPUJ99e93udkPbt97Gx+2JACKyskq6RNq0t/1l6oyqU=;
+        bh=kzj0QIV76sF9kTXgAEz5Ob/+QDKCBIz99cjFrJTa8Ik=;
         fh=CkupYgn1Qmdh7jizui9HJgGegpqbRR5NXz1VyjRE1Hs=;
-        b=LKluM5LNRndVt0AZ/H5p71d/sOp7eXR9+Vr5pM9q0kOnl7xtX27xt3Kf825utc489J
-         +aMZpfH0LFm3Yl2iCEAmzkJKFaTWZL/HZWG32MfPb0LhonwWmCP6RyGsHSWvRUblnZIN
-         msVtfBBAZ1E8PTRYEF5E6G2wRV6vGta/V85PXfMCOHo/d77BRSb6B16v/DjdcmdtrnZs
-         G8KwXcVyuvYdwlydsgzoCa+eq8thOjOqXTz3W5h4AVEKuAS7vuG/M8jEN0cjFqCEVWMD
-         n7J0Skkc9r7/+syXdBXcMWtfIkhCkrs0tw170THwZ/hAC98dz9mey16+eMnopz8HTLB0
-         HvtA==
+        b=WzQ5tvDydI/J+kAGEWZnT/iJzKbHcvPuk91uz+YwX/OfnRNZbAqPtGP+iRPWalSvcJ
+         YJiGX29kYPgaHUr8PCo0ZrxR/eXHXEM2RS4GNVrEcred/lKy4bI1DHg+jX+0VQJGMVjh
+         lx5bTLuigkTNWCfffjwD1we9axklF2gvR5S+x9PrMlxb+fZoQFTV3bfGwkWalDVs7IWc
+         okG5DTNJSqLYVZHqBPLXBTTLJvEU5S3w9/gO7wsKBQJM8BdAN5hRSE3ZZtdUovFkveUz
+         lpbf2AWw8BFITIODRYLRa6B/XANa0m507OelZZEu/Yjrz+h0TSHrTlLt+kvnxMHC/nuw
+         VyQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GDy/GpHZ";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ledY1tGT;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l17-20020adfe9d1000000b0033630b7e5efsor422081wrn.1.2023.12.12.08.32.13
+        by mx.google.com with SMTPS id w34-20020a05600c09a200b0040c261769a3sor3683202wmp.11.2023.12.12.08.32.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Dec 2023 08:32:13 -0800 (PST)
+        Tue, 12 Dec 2023 08:32:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="GDy/GpHZ";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ledY1tGT;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702398733; x=1703003533; darn=linaro.org;
+        d=linaro.org; s=google; t=1702398741; x=1703003541; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LPUJ99e93udkPbt97Gx+2JACKyskq6RNq0t/1l6oyqU=;
-        b=GDy/GpHZBtupnM1POzND01Z/76CoJ5gOe8+/SMRqyFKIRtoN+4LnY8Kf3TkScyhndu
-         F+0fOMI1ZVdGkAv8XiX+6BqbFaaYpwJvHy2Ftg87GW+zTqE8ubjwDjS9/SufsaRRfopy
-         0HAwWOiod8OIpo32Zk0uvrHbfMpddHL+H37e1f4U381jh3v2UCdRkqecvUUfKB512JhV
-         d5Wikoip/HeRFHI8nWYFZ95UoPfWGZfFmuo6SEORalo/QpL7qyRJvjNcI9kawLFzU6bP
-         iF7f4ARIgHiuWiD/Ga3I6ss3HiN0eqruIboCJM2yNRs1A4g716ZjwT5LD9mFemf+BupA
-         lgSw==
+        bh=kzj0QIV76sF9kTXgAEz5Ob/+QDKCBIz99cjFrJTa8Ik=;
+        b=ledY1tGTnk9gg2Fsl3RWn5kj5LnQ4CTJRGb9aUNtD0O1Ma31798FgIu3HqUIZljcO/
+         Lz7MaFaufAQu4obLEOaXDzPd6tqJ0HMtnMGZqt+6CUq6dNSL/n3T+uLyin5bst/HcZzX
+         7Nk837uQWQ6S2GnjD8E/NUrsfavHW2tgsScak772e+qocnZn+M8L2H+njiO7pDbzJqM3
+         Pv1bOIEbBO3AknfcbcJHzrfip5rZ1x2cVBUtmFFZcQT3M4/sq770xOv05nJojKwlBycQ
+         E1XJMTHz3Vyy9T6ryUr5j3TT0tYSMRB7WN4wLJVnJe8aO5dfm1CxUXkDTD1GXHa9PNTB
+         H3Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702398733; x=1703003533;
+        d=1e100.net; s=20230601; t=1702398741; x=1703003541;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LPUJ99e93udkPbt97Gx+2JACKyskq6RNq0t/1l6oyqU=;
-        b=BlEddhgYJsLxfH4vWSb+W4ikdS9cil7zPHJABES0iF1KYd6xzxOf5svjTFOb1TuhCd
-         2Gv66ZLdN0bXInqpqu9O5abc+99ZevnS3VzsShAGdQcSY0DnqSjh7pZMH3+gyGrsqjG9
-         +9rI7lm3R8PsPNZrQ2VG/dNubarlHQZyH9CGbYUgzWvotoYcqRuAumgOb8hwYHZo/1Nq
-         GUDLixmzIkUAdvqbM2oZqqohGB3CDyC7Su2RkTch4duY1Ma5NNSwxEy/6TY8MgyR0m2g
-         vwloqnpqrUqKNWsNVcByE3tot6AWLvC/JtjkjtGFJfMwupiR5PjLfcqHzUDH3xrYpzU4
-         LxKA==
-X-Gm-Message-State: AOJu0YyKS/tL4VA1uDiZMyP3GsNHhgqKi9m+1XDbeYKhBykkD7mm0Jt5
-	U2XEtZSWxVdUa8hMXuR/2Xn7mWMB
-X-Google-Smtp-Source: AGHT+IEps7EKdkb5++jvaAQDg+UtZgye8JE+a9Lp+BPfBbHaJAf6QR1LQY67ntXlsyC85fmm0qc8CA==
-X-Received: by 2002:adf:ffc8:0:b0:336:3555:346d with SMTP id x8-20020adfffc8000000b003363555346dmr608972wrs.13.1702398733539;
-        Tue, 12 Dec 2023 08:32:13 -0800 (PST)
+        bh=kzj0QIV76sF9kTXgAEz5Ob/+QDKCBIz99cjFrJTa8Ik=;
+        b=jzOckRF291akG6zbuEyYF40euBLZ6wIZ8KCj2MRYiPzRc+9+yuLB6JsM/eftm+bxn9
+         bOWWZj+0+HeeENwOjYRl69kobkqnyjRMu5QM4f2g7Nsim3mGpotADH5Dmvo9hwdYjeAf
+         0REtNvLaMEaMZg1xZL9em37isqVBVz88wtrz9Rf4CzAffvOVBA2noTKGVARVnr9it718
+         obRlBdowpMK99yffZTgRwPQtxKqlSFs+ecDuMMDt0/fLwjKQNu3+Z1It0ra8rQa+MkG1
+         vO6yhgspWfnNLXVJO0UdFIiZ9sFsYWpuMeIoORDdy9Z4aCeX6cxPEG24iKcGCz0Q7bJ0
+         Uo9g==
+X-Gm-Message-State: AOJu0YwmcBvyfxe1DpnbsNkjl4giaN2ObAImCyVbQUya0a0UZeFWCjT0
+	Z9Bc7Bwnx0rIIUaGg1mEVTxMho8V
+X-Google-Smtp-Source: AGHT+IFvh0mZGIpHP1qTEcoTuOmgm6gU4WNQO3j50QB9RftB4/aBhWiHlumMR0/nxRxAF0gdqqmIug==
+X-Received: by 2002:a05:600c:1688:b0:40b:369e:6951 with SMTP id k8-20020a05600c168800b0040b369e6951mr3106268wmn.28.1702398740782;
+        Tue, 12 Dec 2023 08:32:20 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id b12-20020adff90c000000b00333359b522dsm11213469wrr.77.2023.12.12.08.32.11
+        by smtp.gmail.com with ESMTPSA id t13-20020a05600c450d00b00405c7591b09sm17152033wmo.35.2023.12.12.08.32.18
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 12 Dec 2023 08:32:13 -0800 (PST)
+        Tue, 12 Dec 2023 08:32:20 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -92,187 +92,140 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 21/33] hw/cpu/arm: Create CPUs once in MPCore parent
-Date: Tue, 12 Dec 2023 17:29:21 +0100
-Message-ID: <20231212162935.42910-22-philmd@linaro.org>
+Subject: [PATCH 22/33] hw/arm/aspeed_ast2600: Let the A7MPcore create/wire the CPU cores
+Date: Tue, 12 Dec 2023 17:29:22 +0100
+Message-ID: <20231212162935.42910-23-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231212162935.42910-1-philmd@linaro.org>
 References: <20231212162935.42910-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: F4DQbM1OR6Cy
+X-TUID: aHq1dF+15hfX
 
-Add support for creating the MPCore CPU cluster in the
-abstract TYPE_CORTEX_MPCORE_PRIV parent realize() handler.
-
-Only do so if the 'cpu-type' property is set, so current
-behavior is not modified. Boards will be converted by
-setting this property.
+Set the properties on the a7mpcore object to let it create and
+wire the CPU cores. Remove the redundant code.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/cpu/cortex_mpcore.h | 12 +++++
- hw/cpu/cortex_mpcore.c         | 88 ++++++++++++++++++++++++++++++++++
- 2 files changed, 100 insertions(+)
+ include/hw/arm/aspeed_soc.h |  1 -
+ hw/arm/aspeed_ast2600.c     | 58 ++++++++++++-------------------------
+ 2 files changed, 18 insertions(+), 41 deletions(-)
 
-diff --git a/include/hw/cpu/cortex_mpcore.h b/include/hw/cpu/cortex_mpcore.h
-index 4e1aa9f7f7..9a4fc2404e 100644
---- a/include/hw/cpu/cortex_mpcore.h
-+++ b/include/hw/cpu/cortex_mpcore.h
-@@ -16,6 +16,7 @@
- #include "hw/misc/a9scu.h"
- #include "hw/timer/a9gtimer.h"
- #include "hw/timer/arm_mptimer.h"
-+#include "target/arm/cpu-qom.h"
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 2f51d78e22..a824679b1e 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -109,7 +109,6 @@ struct Aspeed2600SoCState {
+     AspeedSoCState parent;
  
- /*
-  * This is a model of the Arm Cortex-A MPCore family of hardware.
-@@ -93,13 +94,24 @@ struct CortexMPPrivState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion container;
-+    ARMCPU *cpu[4];
-     GICState gic;
- 
-     /* Properties */
-+    uint8_t cluster_id;
-     uint32_t num_cores;
- 
-+    char *cpu_type;
-     bool cpu_has_el3;
-     bool cpu_has_el2;
-+    bool cpu_has_vfp_d32;
-+    bool cpu_has_neon;
-+    uint64_t cpu_freq_hz;
-+    uint64_t cpu_midr;
-+    uint32_t cpu_psci_conduit;
-+    uint64_t cpu_reset_cbar;
-+    bool cpu_reset_hivecs;
-+    MemoryRegion *cpu_memory;
- 
-     uint32_t gic_spi_num;
+     CortexMPPrivState a7mpcore;
+-    ARMCPU cpu[ASPEED_CPUS_NUM]; /* XXX belong to a7mpcore */
  };
-diff --git a/hw/cpu/cortex_mpcore.c b/hw/cpu/cortex_mpcore.c
-index 75324268fa..65309636d7 100644
---- a/hw/cpu/cortex_mpcore.c
-+++ b/hw/cpu/cortex_mpcore.c
-@@ -12,6 +12,7 @@
- #include "hw/cpu/cortex_mpcore.h"
- #include "hw/irq.h"
- #include "sysemu/kvm.h"
-+#include "target/arm/cpu.h"
  
- static void cortex_mpcore_priv_set_irq(void *opaque, int irq, int level)
- {
-@@ -50,6 +51,12 @@ static void cortex_mpcore_priv_realize(DeviceState *dev, Error **errp)
-         return;
+ #define TYPE_ASPEED2600_SOC "aspeed2600-soc"
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 88e2a23514..1000fac675 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -156,10 +156,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+         g_assert_not_reached();
      }
  
-+    if (s->num_cores > ARRAY_SIZE(s->cpu)) {
-+        error_setg(errp,
-+                   "At most %zu CPU cores are supported", ARRAY_SIZE(s->cpu));
-+        return;
-+    }
-+
-     qdev_prop_set_uint32(gicdev, "num-cpu", s->num_cores);
-     qdev_prop_set_uint32(gicdev, "num-irq", s->gic_spi_num);
-     if (k->gic_priority_bits) {
-@@ -75,14 +82,95 @@ static void cortex_mpcore_priv_realize(DeviceState *dev, Error **errp)
+-    for (i = 0; i < sc->num_cpus; i++) {
+-        object_initialize_child(obj, "cpu[*]", &a->cpu[i], sc->cpu_type);
+-    }
+-
+     snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
+     object_initialize_child(obj, "scu", &s->scu, typename);
+     qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
+@@ -270,11 +266,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+  *
+  * https://developer.arm.com/documentation/ddi0388/e/the-system-control-coprocessors/summary-of-system-control-coprocessor-registers/multiprocessor-affinity-register
+  */
+-static uint64_t aspeed_calc_affinity(int cpu)
+-{
+-    return (0xf << ARM_AFF1_SHIFT) | cpu;
+-}
+-
+ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+ {
+     int i;
+@@ -284,6 +275,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     Error *err = NULL;
+     qemu_irq irq;
+     g_autofree char *sram_name = NULL;
++    DeviceState *mpdev;
++    CortexMPPrivState *mppriv;
  
-     /* Pass through inbound GPIO lines to the GIC */
-     qdev_init_gpio_in(dev, cortex_mpcore_priv_set_irq, s->gic_spi_num - 32);
-+
-+
-+    /* CPU */
-+    if (!s->cpu_type) {
-+        return;
-+    }
-+    for (int i = 0; i < s->num_cores; i++) {
-+        Object *cpuobj;
-+
-+        cpuobj = object_new(s->cpu_type);
-+        object_property_add_child(OBJECT(dev), "cpu[*]", OBJECT(cpuobj));
-+        object_unref(cpuobj);
-+        s->cpu[i] = ARM_CPU(cpuobj);
-+
-+        object_property_set_bool(cpuobj, "neon", s->cpu_has_neon,
-+                                &error_abort);
-+        object_property_set_bool(cpuobj, "vfp-d32", s->cpu_has_vfp_d32,
-+                                &error_abort);
-+        if (object_property_find(cpuobj, "has_el3")) {
-+            object_property_set_bool(cpuobj, "has_el3", s->cpu_has_el3,
-+                                     &error_abort);
-+        }
-+        if (object_property_find(cpuobj, "has_el2")) {
-+            object_property_set_bool(cpuobj, "has_el2", s->cpu_has_el2,
-+                                     &error_abort);
-+        }
-+        if (s->cpu_freq_hz) {
-+            object_property_set_int(cpuobj, "cntfrq", s->cpu_freq_hz,
-+                                    &error_abort);
-+        }
-+        object_property_set_int(cpuobj, "midr", s->cpu_midr, &error_abort);
-+        object_property_set_bool(cpuobj, "reset-hivecs", s->cpu_reset_hivecs,
-+                                 &error_abort);
-+        if (s->num_cores == 1) {
-+            /* On uniprocessor, the CBAR is set to 0 */
-+        } else if (object_property_find(cpuobj, "reset-cbar")) {
-+            object_property_set_int(cpuobj, "reset-cbar",
-+                                    s->cpu_reset_cbar, &error_abort);
-+        }
-+        if (i > 0) {
-+            /*
-+             * Secondary CPUs start in powered-down state (and can be
-+             * powered up via the SRC system reset controller)
-+             */
-+            object_property_set_bool(cpuobj, "start-powered-off", true,
-+                                     &error_abort);
-+        }
-+        if (s->cluster_id) {
-+            object_property_set_int(cpuobj, "mp-affinity",
-+                                    (s->cluster_id << ARM_AFF1_SHIFT) | i,
-+                                    &error_abort);
-+        } else {
-+            object_property_set_int(cpuobj, "mp-affinity",
-+                                    arm_cpu_mp_affinity(i, s->num_cores),
-+                                    &error_abort);
-+        }
-+        object_property_set_int(cpuobj, "psci-conduit",
-+                                s->cpu_psci_conduit, &error_abort);
-+        if (s->cpu_memory) {
-+            object_property_set_link(cpuobj, "memory",
-+                                     OBJECT(s->cpu_memory), &error_abort);
-+        }
-+
-+        if (!qdev_realize(DEVICE(s->cpu[i]), NULL, errp)) {
-+            return;
-+        }
-+    }
- }
+     /* Default boot region (SPI memory or ROMs) */
+     memory_region_init(&s->spi_boot_container, OBJECT(s),
+@@ -305,42 +298,26 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                                   "aspeed.emmc-boot-controller",
+                                   sc->memmap[ASPEED_DEV_EMMC_BC], 0x1000);
  
- static Property cortex_mpcore_priv_properties[] = {
-+    DEFINE_PROP_UINT8("cluster-id", CortexMPPrivState, cluster_id, 0),
-     DEFINE_PROP_UINT32("num-cores", CortexMPPrivState, num_cores, 1),
-     DEFINE_PROP_UINT32("num-cpu", CortexMPPrivState, num_cores, 1), /* alias */
+-    /* CPU */
+-    for (i = 0; i < sc->num_cpus; i++) {
+-        if (sc->num_cpus > 1) {
+-            object_property_set_int(OBJECT(&a->cpu[i]), "reset-cbar",
+-                                    ASPEED_A7MPCORE_ADDR, &error_abort);
+-        }
+-        object_property_set_int(OBJECT(&a->cpu[i]), "mp-affinity",
+-                                aspeed_calc_affinity(i), &error_abort);
+-
+-        object_property_set_int(OBJECT(&a->cpu[i]), "cntfrq", 1125000000,
+-                                &error_abort);
+-        object_property_set_bool(OBJECT(&a->cpu[i]), "neon", false,
+-                                &error_abort);
+-        object_property_set_bool(OBJECT(&a->cpu[i]), "vfp-d32", false,
+-                                &error_abort);
+-        object_property_set_link(OBJECT(&a->cpu[i]), "memory",
+-                                 OBJECT(s->memory), &error_abort);
+-
+-        if (!qdev_realize(DEVICE(&a->cpu[i]), NULL, errp)) {
+-            return;
+-        }
+-    }
+-
+     /* A7MPCORE */
+-    object_property_set_int(OBJECT(&a->a7mpcore), "num-cores", sc->num_cpus,
+-                            &error_abort);
+-    object_property_set_int(OBJECT(&a->a7mpcore), "num-irq",
+-                            ROUND_UP(AST2600_MAX_IRQ + GIC_INTERNAL, 32),
+-                            &error_abort);
+-
++    mpdev = DEVICE(&a->a7mpcore);
++    qdev_prop_set_uint32(mpdev, "cluster-id", 0xf);
++    qdev_prop_set_uint32(mpdev, "num-cores", sc->num_cpus);
++    qdev_prop_set_string(mpdev, "cpu-type", sc->cpu_type);
++    qdev_prop_set_uint64(mpdev, "cpu-freq-hz", 1125000000);
++    qdev_prop_set_bit(mpdev, "cpu-has-neon", false);
++    qdev_prop_set_bit(mpdev, "cpu-has-vfp-d32", false);
++    qdev_prop_set_uint64(mpdev, "cpu-reset-cbar", ASPEED_A7MPCORE_ADDR);
++    object_property_set_link(OBJECT(&a->a7mpcore), "cpu-memory",
++                             OBJECT(s->memory), &error_abort);
++    qdev_prop_set_uint32(mpdev, "gic-spi-num",
++                         ROUND_UP(AST2600_MAX_IRQ + GIC_INTERNAL, 32));
+     sysbus_realize(SYS_BUS_DEVICE(&a->a7mpcore), &error_abort);
+     aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->a7mpcore), 0, ASPEED_A7MPCORE_ADDR);
++    mppriv = CORTEX_MPCORE_PRIV(&a->a7mpcore);
  
-+    DEFINE_PROP_STRING("cpu-type", CortexMPPrivState, cpu_type),
-     DEFINE_PROP_BOOL("cpu-has-el3", CortexMPPrivState, cpu_has_el3, true),
-     DEFINE_PROP_BOOL("cpu-has-el2", CortexMPPrivState, cpu_has_el2, false),
-+    DEFINE_PROP_BOOL("cpu-has-vfp-d32", CortexMPPrivState, cpu_has_vfp_d32,
-+                     true),
-+    DEFINE_PROP_BOOL("cpu-has-neon", CortexMPPrivState, cpu_has_neon, true),
-+    DEFINE_PROP_UINT64("cpu-freq-hz", CortexMPPrivState, cpu_freq_hz, 0),
-+    DEFINE_PROP_UINT64("cpu-midr", CortexMPPrivState, cpu_midr, 0),
-+    DEFINE_PROP_UINT32("cpu-psci-conduit", CortexMPPrivState, cpu_psci_conduit,
-+                       QEMU_PSCI_CONDUIT_DISABLED),
-+    DEFINE_PROP_UINT64("cpu-reset-cbar", CortexMPPrivState, cpu_reset_cbar, 0),
-+    DEFINE_PROP_BOOL("cpu-reset-hivecs", CortexMPPrivState, cpu_reset_hivecs,
-+                     false),
-+    DEFINE_PROP_LINK("cpu-memory", CortexMPPrivState, cpu_memory,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
+     for (i = 0; i < sc->num_cpus; i++) {
+         SysBusDevice *sbd = SYS_BUS_DEVICE(&a->a7mpcore);
+-        DeviceState  *d   = DEVICE(&a->cpu[i]);
++        DeviceState  *d   = DEVICE(mppriv->cpu[i]);
  
-     DEFINE_PROP_UINT32("gic-spi-num", CortexMPPrivState, gic_spi_num, 0),
-     DEFINE_PROP_UINT32("num-irq", CortexMPPrivState, gic_spi_num, 0), /* alias */
+         irq = qdev_get_gpio_in(d, ARM_CPU_IRQ);
+         sysbus_connect_irq(sbd, i, irq);
+@@ -353,7 +330,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* SRAM */
+-    sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
++    sram_name = g_strdup_printf("aspeed.sram.%d",
++                                CPU(mppriv->cpu[0])->cpu_index);
+     memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
+     if (err) {
+         error_propagate(errp, err);
 -- 
 2.41.0

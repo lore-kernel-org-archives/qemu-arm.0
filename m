@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1027172ejo;
-        Tue, 12 Dec 2023 08:33:09 -0800 (PST)
-X-Received: by 2002:a7b:cd91:0:b0:40c:3399:d5a0 with SMTP id y17-20020a7bcd91000000b0040c3399d5a0mr2776818wmj.100.1702398789773;
-        Tue, 12 Dec 2023 08:33:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702398789; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1027267ejo;
+        Tue, 12 Dec 2023 08:33:17 -0800 (PST)
+X-Received: by 2002:adf:f20e:0:b0:336:352b:c449 with SMTP id p14-20020adff20e000000b00336352bc449mr540364wro.142.1702398797643;
+        Tue, 12 Dec 2023 08:33:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702398797; cv=none;
         d=google.com; s=arc-20160816;
-        b=AINzru+rWTBYtkMz+e+OWthtf7Xwpv2hxQHDxhCe6ENafaGZ3HqA3rcq8p9nbSYrey
-         CI14ENu/5sroXXAGGOB25wi14S6FjmgmrKTn8rbjF8PIBKwrUZK+8OuZt7BAMXbTaLAf
-         023va6t6DhrkqNAKZtG6poKeOACIS933qhOZFkDij4deBrxGBw3q61LK8hYhA/dwL8DQ
-         60TtpkRVnaF3WJ2Oe+I4dQ6t3Jbsctnvy9cn44HguYGOPlRHzIrM/4vwjUM9brz8u1f6
-         q0sfRfnMgvZttfr/Z4urmhsLAOqPxyoESXUpLi9949kDXHtr5avosRC1UsN+U65jWWxO
-         E/aw==
+        b=zfGkAmFjxkYnGqNI582S/NujJuny5PXOqu6UVYQXY1b7hm8ttHtnNIWpcZmgq06KLM
+         cSER9p4loiBIoGAKDBMT+na0U9iGH3YZNA079X6FOJMjxbGdWAr6KiNREXKiGOdbVHwi
+         g6QMoCFsMBjohZX0m/jgezD3o0+KliS8t5PCxWWIGOUGI4+08u9IZCxZrusLwZR64cZd
+         kGsZoyeuGvzoXEhixBNvn7KTaXIfjEM/+VIGS6Lr2DycPt/siWXwJtl+0Eaz2ulWd73t
+         H8r8HtMV2e+99E1E6CUs75JyqhiOeKW4McnW4V0SCHd8ByWy+wjDETE6dCsw8En8+9kU
+         I0NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OPLFBqDabQLYVHbUOqNffhd0DEwyb05vaEjM8y+M+3M=;
+        bh=SFB3NxAZWWbFr7FqoB9z01YE2CJXVAN7E7QlxKJ0g+s=;
         fh=CkupYgn1Qmdh7jizui9HJgGegpqbRR5NXz1VyjRE1Hs=;
-        b=oHYwu4vc7HLeCXMTY7JOheMHs9arZ/UMKRI6JwmKmq9aqln6afJTXDs2i+r5w3hUyI
-         PSPuf5eIxN/AI3p1zxTRoZXvrMKVOpTgVMPV/tMk8w2t7ZkTbzsRdSPdHmSIaeG2g6iE
-         ZQmkFGunXzmqa8Gi9UhgsnRKBSBGSgnMrxgrqnZ5/rz6GK4xSKSWxeVJndWN3wHnoKrG
-         xqtN8q/zKOWXpcWMUVZIIRxY/zZZSnhh1cidz7tFC7VbeZQolaq46rTJtS8PgNB0a4Cb
-         omNuH0mXGwn3fS1GcLqbVcq1ncU6zOf7//Vq8IhlzWZo0LAH6H96Jj27/vRT2YtaOVqN
-         P3YA==
+        b=NSIxHpYlmb0+wvH3ynipzSZX0O8jOjAwgB3Wxwe2ve3mUlcywl0lloWqxpYYaRT+mc
+         tmR9ecAhr9nXUaTPTZq3nlk9TC27wxADAOtASiMPyt1fZvPyxcjWnYlzC9Tp5SL0sZdY
+         52VNp8QCLfv6VH6Jj2ZIW2D0vVcrAZpwxWqi0nG3hr39QVUKcT2c8lBz5mhJuWfNykA8
+         IytQhB7ZEzRs/zC8tled98GHf78pVWJ2IYoB24vIoCg+wEPkOKyTGp6ARwOfetFgbOYI
+         S4VT2nufRS1UDvMbYZyQ98aRwDEuvA6etEG+vmaQezUDOT0f2Qq3MDxo0DvDdrMcelqR
+         A5wA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yyRxCCsP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=znVEVf8J;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ay1-20020a05600c1e0100b0040c21ef86a3sor3124636wmb.8.2023.12.12.08.33.09
+        by mx.google.com with SMTPS id n7-20020a5d51c7000000b0033331a50e48sor2797860wrv.4.2023.12.12.08.33.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Dec 2023 08:33:09 -0800 (PST)
+        Tue, 12 Dec 2023 08:33:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yyRxCCsP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=znVEVf8J;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702398789; x=1703003589; darn=linaro.org;
+        d=linaro.org; s=google; t=1702398797; x=1703003597; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OPLFBqDabQLYVHbUOqNffhd0DEwyb05vaEjM8y+M+3M=;
-        b=yyRxCCsPe/sVIqcEgzjjfLa0ilt7wTDLiKK4ZuDOgwfPsGgiUw+coRP5mVN/gXJW6t
-         X2IPAXVpcIjDKR2qhlbsjkl/7Un4wFvP86ExMTbt2Qki/PAetyuNURGw5MKjwQ5LHZH3
-         N/sBf4HXk6na1D+9QeiWbYfEuamIoLM/PeENZ6sy47BNyvNj+PBnGgmCxLVfLS6W1b8H
-         rl9OQMvOOgimv54zQSBjUj0reHF5qlzZbJ17aWR5fFu6hzz72L4sv0FPgeFRtv4kX2Vd
-         nNYqlRdIphSB9SlJC3ydHsv+02013QgkHwvOLz9erdSJWxVB94+hTDCg3Cbt7dAJn9v9
-         pIRQ==
+        bh=SFB3NxAZWWbFr7FqoB9z01YE2CJXVAN7E7QlxKJ0g+s=;
+        b=znVEVf8Jha+2qJt4YYPv0FEdy0Fu7JlB88zowAGI+B+H60zbMOdwsJ01hpPkg0d8ml
+         tffT12q9pc0D2mjHkDAUtSscu2MDdU7WD7+QRhaCGNbpjgCnbpTqqtpdZqy7yggB2grA
+         D/qC7p1rQ/UcgJhsZwKWd51P3Z3TiHRq7zuUEguuFFNXEEzD+Wc1daeASUEQIVg2Klcl
+         al60ccSigzmV2ME29i5A4q1Y+t3krf/jMzq7XqqNLP0UbF6LgPIOBgmvlyaJ3UTrlNy4
+         hdmE070Vr9BGiX96UgIXiVqgoksqHNd7LIu9NLVHVmo+RGlBr01RfCOM6vPIcetMSdq8
+         aSGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702398789; x=1703003589;
+        d=1e100.net; s=20230601; t=1702398797; x=1703003597;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OPLFBqDabQLYVHbUOqNffhd0DEwyb05vaEjM8y+M+3M=;
-        b=WW+Lo2wNn25ElQd82xsi+qiCuoNLMeV18CQPW4J+L/khWqgEe0YWrKCJbJc4UVtbyY
-         HRCru8eMhjUbkG9G9GsBjfy+b9JWORpXF3MdB8z0qFh4ATj9bJNCLJ8rZe2qCqJo8Mr4
-         lOhc3PcFF14v1PcSEGGSpo/OpCQy0VP4LaW+ML09ayZE/GNd2DLZB8hn1DLEj1yaktQ+
-         xRyXO9PPgX8Lm0hR0Fh07SwRbL8BalZnsRXf/cWSM2KncRoskXhzePnbmOvfXu5VLAYJ
-         Cn1G5XKeBgubCR76E/x+jl71igmZBwXDdX6G9cUNaN9TgExHx4QO2+zmL5fAwKHor8Fr
-         Rlng==
-X-Gm-Message-State: AOJu0YzzgdbKuTqQqez8Ieu5IqQz5y9I1adh48QunHx20JIzBLYL9RAX
-	uv2hkEsM6zSxK1AdNv6tjY+OSUZG
-X-Google-Smtp-Source: AGHT+IF1Ojrl2IyYsz/84g4YWjU8+ikQLoD7mLNtZdFpFRmWCmlEXTsgd+oesNBQPzJHjvSF2faQWg==
-X-Received: by 2002:a05:600c:2a8d:b0:40c:3308:3afd with SMTP id x13-20020a05600c2a8d00b0040c33083afdmr3042997wmd.12.1702398789402;
-        Tue, 12 Dec 2023 08:33:09 -0800 (PST)
+        bh=SFB3NxAZWWbFr7FqoB9z01YE2CJXVAN7E7QlxKJ0g+s=;
+        b=a+kqodFNf3z+KCHl6A2D5j0HHnoip5TET5qX1EAL+lh2UjqNwCd+Wxp5UF7GLnoIhz
+         E4lZ45AEfvXkamwmUutogPq2fVn5CiJwbRACLUiOaqp0JZhN6nRzSry9hRKV6japtJlK
+         EnUPj8DTJSEeucXJD8P1jCz0HH8Oi8/4ihaTm5DY3SOxjOKJzLMncRzKV7rSZuKIfcUr
+         381sxOhXSby87jkNCYDk4nn7xfM/GN2yRSuyWovYxjVP7/XVXHCZj7Psi09g7SG2KZFc
+         2/EknmeEvDKWRwuLOIagxM+UIQCa3k0HrrO2WNuCezofZhg+rLRumiSX/JwNGPwsm+nD
+         xxtw==
+X-Gm-Message-State: AOJu0Yx9fluk1g8q2tDmJqRSaUCx6JKjde/5XXR6wKRkogdgKwn55PkN
+	ERljjS+jUousvmhAtF87gLCIgsmB
+X-Google-Smtp-Source: AGHT+IF/Bv+SYKqQ/vreqMkben2eOy7NiWdMzNo30Nbt3ZjnzqeGSMKoTfcP2S6EA6QlpWI0J9qLLA==
+X-Received: by 2002:adf:faca:0:b0:333:85e:a122 with SMTP id a10-20020adffaca000000b00333085ea122mr2648323wrs.7.1702398797275;
+        Tue, 12 Dec 2023 08:33:17 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id fc17-20020a05600c525100b0040c42681fcesm10272057wmb.15.2023.12.12.08.33.07
+        by smtp.gmail.com with ESMTPSA id k17-20020a5d4291000000b0033335d9dcc5sm11246500wrq.64.2023.12.12.08.33.14
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 12 Dec 2023 08:33:09 -0800 (PST)
+        Tue, 12 Dec 2023 08:33:16 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -92,72 +92,116 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 29/33] hw/arm/xilinx_zynq: Let the A9MPcore create/wire the CPU cores
-Date: Tue, 12 Dec 2023 17:29:29 +0100
-Message-ID: <20231212162935.42910-30-philmd@linaro.org>
+Subject: [PATCH 30/33] hw/arm/npcm7xx: Let the A9MPcore create/wire the CPU cores
+Date: Tue, 12 Dec 2023 17:29:30 +0100
+Message-ID: <20231212162935.42910-31-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231212162935.42910-1-philmd@linaro.org>
 References: <20231212162935.42910-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Zcyartu/S218
+X-TUID: s7X9ryo8I1j3
 
 Set the properties on the mpcore object to let it create and
 wire the CPU cores. Remove the redundant code.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/xilinx_zynq.c | 22 +++++-----------------
- 1 file changed, 5 insertions(+), 17 deletions(-)
+ include/hw/arm/npcm7xx.h |  1 -
+ hw/arm/npcm7xx.c         | 48 ++++++++++------------------------------
+ 2 files changed, 12 insertions(+), 37 deletions(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 28430dcfba..736e2115a6 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -192,22 +192,6 @@ static void zynq_init(MachineState *machine)
-         exit(EXIT_FAILURE);
-     }
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 7abbf85cbf..e0737fa4de 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -80,7 +80,6 @@ typedef struct NPCM7xxMachineClass {
+ struct NPCM7xxState {
+     DeviceState         parent;
  
--    cpu = ARM_CPU(object_new(machine->cpu_type));
--
--    /* By default A9 CPUs have EL3 enabled.  This board does not
--     * currently support EL3 so the CPU EL3 property is disabled before
--     * realization.
--     */
--    if (object_property_find(OBJECT(cpu), "has_el3")) {
--        object_property_set_bool(OBJECT(cpu), "has_el3", false, &error_fatal);
+-    ARMCPU              cpu[NPCM7XX_MAX_NUM_CPUS];
+     A9MPPrivState       a9mpcore;
+ 
+     MemoryRegion        sram;
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 5b6e968fa9..1154a0f0a5 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -363,9 +363,11 @@ static struct arm_boot_info npcm7xx_binfo = {
+ 
+ void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
+ {
++    CortexMPPrivState *mp = CORTEX_MPCORE_PRIV(&soc->a9mpcore);
++
+     npcm7xx_binfo.ram_size = machine->ram_size;
+ 
+-    arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
++    arm_load_kernel(mp->cpu[0], machine, &npcm7xx_binfo);
+ }
+ 
+ static void npcm7xx_init_fuses(NPCM7xxState *s)
+@@ -400,11 +402,6 @@ static void npcm7xx_init(Object *obj)
+     NPCM7xxState *s = NPCM7XX(obj);
+     int i;
+ 
+-    for (i = 0; i < NPCM7XX_MAX_NUM_CPUS; i++) {
+-        object_initialize_child(obj, "cpu[*]", &s->cpu[i],
+-                                ARM_CPU_TYPE_NAME("cortex-a9"));
 -    }
 -
--    object_property_set_int(OBJECT(cpu), "midr", ZYNQ_BOARD_MIDR,
--                            &error_fatal);
--    object_property_set_int(OBJECT(cpu), "reset-cbar", MPCORE_PERIPHBASE,
--                            &error_fatal);
--    qdev_realize(DEVICE(cpu), NULL, &error_fatal);
+     object_initialize_child(obj, "a9mpcore", &s->a9mpcore, TYPE_A9MPCORE_PRIV);
+     object_initialize_child(obj, "gcr", &s->gcr, TYPE_NPCM7XX_GCR);
+     object_property_add_alias(obj, "power-on-straps", OBJECT(&s->gcr),
+@@ -471,40 +468,19 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    /* CPUs */
+-    for (i = 0; i < nc->num_cpus; i++) {
+-        object_property_set_int(OBJECT(&s->cpu[i]), "mp-affinity",
+-                                arm_cpu_mp_affinity(i, NPCM7XX_MAX_NUM_CPUS),
+-                                &error_abort);
+-        object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
+-                                NPCM7XX_GIC_CPU_IF_ADDR, &error_abort);
+-        object_property_set_bool(OBJECT(&s->cpu[i]), "reset-hivecs", true,
+-                                 &error_abort);
 -
-     /* DDR remapped to address zero.  */
-     memory_region_add_subregion(address_space_mem, 0, machine->ram);
+-        /* Disable security extensions. */
+-        object_property_set_bool(OBJECT(&s->cpu[i]), "has_el3", false,
+-                                 &error_abort);
+-
+-        if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+-            return;
+-        }
+-    }
+-
+     /* A9MPCORE peripherals. Can only fail if we pass bad parameters here. */
+-    object_property_set_int(OBJECT(&s->a9mpcore), "num-cores", nc->num_cpus,
+-                            &error_abort);
+-    object_property_set_int(OBJECT(&s->a9mpcore), "num-irq", NPCM7XX_NUM_IRQ,
+-                            &error_abort);
++    qdev_prop_set_uint32(DEVICE(&s->a9mpcore), "num-cores", nc->num_cpus);
++    qdev_prop_set_string(DEVICE(&s->a9mpcore), "cpu-type",
++                         ARM_CPU_TYPE_NAME("cortex-a9"));
++    /* Disable security extensions. */
++    qdev_prop_set_bit(DEVICE(&s->a9mpcore), "cpu-has-el3", false);
++    qdev_prop_set_uint64(DEVICE(&s->a9mpcore), "cpu-reset-cbar",
++                         NPCM7XX_GIC_CPU_IF_ADDR);
++    qdev_prop_set_bit(DEVICE(&s->a9mpcore), "cpu-reset-hivecs", true);
++    qdev_prop_set_uint32(DEVICE(&s->a9mpcore), "gic-spi-num", NPCM7XX_NUM_IRQ);
+     sysbus_realize(SYS_BUS_DEVICE(&s->a9mpcore), &error_abort);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->a9mpcore), 0, NPCM7XX_CPUP_BA);
  
-@@ -239,15 +223,19 @@ static void zynq_init(MachineState *machine)
-     sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
+-    for (i = 0; i < nc->num_cpus; i++) {
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i,
+-                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_IRQ));
+-        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + nc->num_cpus,
+-                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FIQ));
+-    }
+-
+     /* L2 cache controller */
+     sysbus_create_simple("l2x0", NPCM7XX_L2C_BA, NULL);
  
-     dev = qdev_new(TYPE_A9MPCORE_PRIV);
--    qdev_prop_set_uint32(dev, "num-cpu", 1);
-+    qdev_prop_set_uint32(dev, "num-cores", 1);
-+    qdev_prop_set_string(dev, "cpu-type", machine->cpu_type);
-     /*
-      * By default A9 CPUs have EL3 enabled.  This board does not
-      * currently support EL3 so the CPU EL3 property is disabled before
-      * realization.
-      */
-     qdev_prop_set_bit(dev, "cpu-has-el3", false);
-+    qdev_prop_set_uint64(dev, "cpu-reset-cbar", MPCORE_PERIPHBASE);
-+    qdev_prop_set_uint64(dev, "cpu-midr", ZYNQ_BOARD_MIDR);
-     busdev = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(busdev, &error_fatal);
-+    cpu = CORTEX_MPCORE_PRIV(dev)->cpu[0];
-     sysbus_mmio_map(busdev, 0, MPCORE_PERIPHBASE);
-     sysbus_connect_irq(busdev, 0,
-                        qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ));
 -- 
 2.41.0

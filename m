@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1041619ejo;
-        Tue, 12 Dec 2023 08:56:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGfaEPt/+3dl/D55n6kuwMb8rEyVwCfkrhKbNKB+EuM/c+lBFxB2w2uuybTgTt1nosPojCe
-X-Received: by 2002:a05:622a:491:b0:423:711f:9813 with SMTP id p17-20020a05622a049100b00423711f9813mr7611527qtx.62.1702400178601;
-        Tue, 12 Dec 2023 08:56:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702400178; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1042013ejo;
+        Tue, 12 Dec 2023 08:57:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHl+2oXSyzT2lxrZAguxyjC7mE7deyNKsQypq4Gpq3S05o4YWlJh7d0VeaoJ3nhomDyA/ph
+X-Received: by 2002:a05:620a:4728:b0:77d:a29b:336d with SMTP id bs40-20020a05620a472800b0077da29b336dmr8515931qkb.11.1702400226045;
+        Tue, 12 Dec 2023 08:57:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702400226; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Xqg6MgpVN1EJ66BRCUWvUE9opoVDKAaGLjJWCSL+dMJL6M4I9AR1VtGAnDIHOVVti
-         z4r7qZb5uwtYlrLUKhoej3A1Fxm0aMP3XkXCriCdYRXnz1IWxTOh/gzlUcNsvssm1lCA
-         bzeJ57e6t51qhFDz/4Xo02W5oZWJSSaswCArK1iCbM/JtlAdHGESqFHz1ssicpXnLaYN
-         /ITCLwRA/2qSobU8yCKyC1t7xsOEAq6pF6aBQo2PUkW0vOeStXIqAh6TgdQUY7mh1w8S
-         aybpRiGOp3lPffFOV+ImHex7MF/OGNGYDJbfCehWIEFtq10rZQQ0SKFcbWgAB8s3u0yI
-         DCmw==
+        b=jxK9s2YjxesN4syE98zIecTQLxVG8pvYhZoSTnbu0XIngojCMX4NKqvzhEImu3d+AE
+         L+YjOx0M1nj0EZhzK70ueOdlhFg6rVI0bhADQavngniB/BNbhDz4o1DC+zyAPYTOrQgC
+         EJJXftBnMfkCF3NtPTYfKA6iciBhew9uMxmA9vMz8wqwpPSRWC4CaaFZVVe8XoQTxa4X
+         c3yNX4UM1mtkLWRx23SK4ks7FU6BwEvk+aZ+iUbbTCM6AeOCGhVYx5FrlCAbNRpa/Cnz
+         1l3RW98VZ46ynvJtzGtgM80UcHByVKSNI8tcOAt0cDclM3jvKb5U5l3a9gaeNqNirjWZ
+         65og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=NBWDk8DZrRUrfIj/FZi1QqGD/m54M27q/X3YkMT5U0I=;
+        bh=qR8gziIv2UNheMz0M1zhqTx/v25K8xFMMJfI4pJMb9A=;
         fh=oSak0SfGtiLsfNmzdEAK2zLhe/BB9IXTK0i2wATuAS4=;
-        b=xZiFWMpKMtNMqC3JdIeBkXUEMjleDGzpSDrOgV3tSEdyDRGJsZRx1iQiO8IKSrT3yK
-         Hi/GEB9Bo/kTnF4aULAJtvZtXFWCy1DzTe5+FYyrcPQZGywT0RX0YnhJSUaQXKZbUc26
-         wyJ7MWH/Qoq7/q+uiI2EvqXJW0LKCLRMzGDCtcs4tRrosGqcAQR2NCAA+B/x8Wp3YxIN
-         FLIwoQ6XfLyL1q7776p15KA7ntZKSlVD8aEXqy/OwhxTqD8amdWOLnGNZWtKmXNyfCaR
-         rbu/VG9C0rAMUYo2eR/ZJEsQr/xN5dV9SFhWuuiZYdnW+z/yalgKDXKGLtLXzUavrQi4
-         JWqg==
+        b=NZr0pRKZtqzvUqKjTLDAAjIsAA54OIB+z+sog2yFEFbOmLwS7jjFQZ5FlP3Ykotd5r
+         0f4xiFqd0Y+2SQCt3SeoePhua04bQ4xTS3dSUkfBLEeYM1dq/6oZnQ8cWAfsLd3ss8A5
+         jlasF+990+wcTgPV+2FSCnRif/4JtaAh/o/uLGenMfHXm2S+pFvjLtLUyAoWVxef2vJ+
+         MHRFvycEu/r3b/Vgyi7uIDWp9rZoB66IuA2ZgZVmGBecDZYoTcdXhqsk8jxOJSGHGIrA
+         aw4WkhXSp00vPsk+aVoLrdOmGgKsCRMlpqqufrYUchJucxEt0Hj3i93Rft5V4s133XsF
+         fD3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mZHsil0T;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NYk37VLI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11-20020ac8070b000000b00417f76c422fsi804354qth.380.2023.12.12.08.56.18
+        by mx.google.com with ESMTPS id u16-20020a05620a0c5000b0077f25ec0ad0si10621790qki.553.2023.12.12.08.57.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Dec 2023 08:56:18 -0800 (PST)
+        Tue, 12 Dec 2023 08:57:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mZHsil0T;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NYk37VLI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rD63K-0000oY-MK; Tue, 12 Dec 2023 11:56:14 -0500
+	id 1rD63y-0001Dr-OV; Tue, 12 Dec 2023 11:56:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rD63J-0000o0-G0
- for qemu-arm@nongnu.org; Tue, 12 Dec 2023 11:56:13 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1rD63x-0001Cw-CI
+ for qemu-arm@nongnu.org; Tue, 12 Dec 2023 11:56:53 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rD63G-0001n3-Of
- for qemu-arm@nongnu.org; Tue, 12 Dec 2023 11:56:13 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3362216835eso1773716f8f.3
- for <qemu-arm@nongnu.org>; Tue, 12 Dec 2023 08:56:10 -0800 (PST)
+ id 1rD63u-0001t0-Sp
+ for qemu-arm@nongnu.org; Tue, 12 Dec 2023 11:56:53 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-548f853fc9eso8098880a12.1
+ for <qemu-arm@nongnu.org>; Tue, 12 Dec 2023 08:56:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702400169; x=1703004969; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702400209; x=1703005009; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NBWDk8DZrRUrfIj/FZi1QqGD/m54M27q/X3YkMT5U0I=;
- b=mZHsil0TIkXfwjubgh6RqFgfE25BYaePuXkh3vN35Ii9D/1M/m2tw8CnSp1sCTReUe
- agQseOsmJDftcnMMyIXVAERPdQGItHxypuCW1RPJQy15bmb6KhsrG8gDMQcSfaa3w74/
- skjVL40LRoY/PM4/NUuXvro9+LexV5HD/oRAMsrB/0wtd5X9wErVsJPHBqUySInO5Y9s
- MIaZaU/VEktFrHFPLbRFFwPLYWQpxE7Of/2fSQYMQUy/0FS+vUO8TcthWPOO0/UM00qS
- 4SbqdkQLPa04aiD7SO6n6UzNpjpRvVo1aSh2rfjN3zDBNwD3h6NIkay04XLbzS2gMWUn
- xEbA==
+ bh=qR8gziIv2UNheMz0M1zhqTx/v25K8xFMMJfI4pJMb9A=;
+ b=NYk37VLIPyd9EN7UzqA3l5SRRp7HyJ7vsrt4gKTPTWoKLZUGV0kTkA2UemvKJAARo7
+ /r+ojW0H2Bw+K8wcLFnBtFks+LAjZo52z7fd0OafJ1lykqlHQPbQL+FhMRrwYpw8i/Bw
+ IAao0GjvPGQZegn9erQnPQKLHP1Pvq54H/qXw1qopk1SHiLf3vDbAIpwEgibjAdkm3IN
+ 68QJsfy8PKKTiRAH5qVK1YBLZddns9qTI/FEM61cBPvHKVVD2oZ/c1vRnghA6l0Ar6MQ
+ iRDVqSWp+Z6V0o0TP+OrKNr06BJvhLU5bRngnML3v/KxOJH93Z5EH3nbIphMpm5oiDZ3
+ fYLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702400169; x=1703004969;
+ d=1e100.net; s=20230601; t=1702400209; x=1703005009;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=NBWDk8DZrRUrfIj/FZi1QqGD/m54M27q/X3YkMT5U0I=;
- b=cish4WaU94JHuSUGrFVfb1KFzhPk3wtleNC96wbt75DZzwvCrzkuiySYEezMgf3Wvv
- ITscxLsdr+gE/Le7vGEGc8UMKWR2alkyLQ93YpvYBz9fIoVhcMtjkVLhI3uIKxXenTbH
- f3eQ4A61G6UfCECyLZGpbk2fSAXKT/dVrbjt/gH/MsnyOEF0AhrI2VpxOFD1mdtfLIlu
- 7uK1TXvxinRLpLlm8u88ZYBaXXTLBi/Dy3CdVavE1Vl8l05wDl0rYL90Odcs03J0jG8/
- skYECVjIp3DbCNc9kh0aguS/S/P3OPT0DUAbmFHycytKjhWrMcOQcO5VkETRp2BoYxEO
- DGqQ==
-X-Gm-Message-State: AOJu0YzqAyV04EWAi8I/OW7TR3NcC547/8sM7BeuP3Z117khyEi1BT9J
- wFnvJR/WgP2AEX3Hjvjk/hWP+KBmxXhj8Oq8C28dgFUzXDdc2s95
-X-Received: by 2002:a05:651c:1606:b0:2cc:1ec1:93e2 with SMTP id
- f6-20020a05651c160600b002cc1ec193e2mr3241898ljq.52.1702400148268; Tue, 12 Dec
- 2023 08:55:48 -0800 (PST)
+ bh=qR8gziIv2UNheMz0M1zhqTx/v25K8xFMMJfI4pJMb9A=;
+ b=tDp8ury8NrMkdkhBvIJyf+ry6TPCP+MuxTj6ZneFeLJNQGmjM/au0hJJE6Pzoa3DT4
+ UFGYtpzD99fqv/OGYygdbxyosOEYxTVsF7K1YcER8R0T1SQxoHGo2zp++sjriGOi+HbC
+ VtAmMfbVRW2r0peQIv4TiWW6MYg+tqyhp9FLgYmS4DEcPYkB4xpZvdbxlu1fwVGwh1kV
+ FRa95OL2DRFSEnlDFAVfzHUZNLSSXvwueP5Ru4fUkOxiZe1XaPfAhOkmp7m6Wu38QU3r
+ 3B3b+94+U6l3qKkPU+hpE04R+nQHVkUFg6OzUANnqCnC3ljbhPvJAFNMfmcc8P9rnEah
+ /fgQ==
+X-Gm-Message-State: AOJu0YxOcNvzUsuda8L3GtShdt0N+DEdhP14YwvRW0wFaN2E4oKHXYxv
+ W16lUv0VXqNbWPHXorXzu9GvghQYfqZjO6yNvlj2kA==
+X-Received: by 2002:a50:9b5c:0:b0:551:8766:7296 with SMTP id
+ a28-20020a509b5c000000b0055187667296mr414921edj.105.1702400209257; Tue, 12
+ Dec 2023 08:56:49 -0800 (PST)
 MIME-Version: 1.0
 References: <20231123143813.42632-1-philmd@linaro.org>
- <20231123143813.42632-6-philmd@linaro.org>
-In-Reply-To: <20231123143813.42632-6-philmd@linaro.org>
+ <20231123143813.42632-7-philmd@linaro.org>
+In-Reply-To: <20231123143813.42632-7-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Dec 2023 16:55:37 +0000
-Message-ID: <CAFEAcA_tzL5Z4QOWCPKMyJ2XCQ0HgkR-_Ji=vC+zEECF0yRqAQ@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 v2 5/8] hw: Prefer qdev_prop_set_bit over
- object_property_set_bool for QDev
+Date: Tue, 12 Dec 2023 16:56:38 +0000
+Message-ID: <CAFEAcA9tP+Opy0MHtHtpZa2q=ktY5vVaGZDFfMxatjT+-7E1xA@mail.gmail.com>
+Subject: Re: [PATCH-for-9.0 v2 6/8] hw: Simplify uses of qdev_prop_set_bit(dev, 
+ 'start-powered-off')
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, 
@@ -123,8 +123,8 @@ Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
  Nicholas Piggin <npiggin@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -146,95 +146,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZU/biLgZz9hy
+X-TUID: 1c8IqDhN9qOh
 
-On Thu, 23 Nov 2023 at 14:38, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+On Thu, 23 Nov 2023 at 14:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> The QOM API is lower level than the QDev one. When an instance is
-> QDev and setting the property can not fail (using &error_abort),
-> prefer qdev_prop_set_bit() over object_property_set_bool().
+> Simplify few qdev_prop_set_bit("start-powered-off") and re-indent.
 >
-> Mechanical transformation using the following coccinelle patch:
->
->   @@
->   expression o, p, v;
->   @@
->   -            object_property_set_bool(OBJECT(o), p, v, &error_abort)
->   +            qdev_prop_set_bit(DEVICE(o), p, v)
->   @@@@
->   -            object_property_set_bool(o, p, v, &error_abort)
->   +            qdev_prop_set_bit(DEVICE(o), p, v)
->
-> manually adding the missing "hw/qdev-properties.h" header.
->
-> In hw/arm/armsse.c we use the available 'cpudev' instead of 'cpuobj'.
->
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-> @@ -1287,8 +1288,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms,=
- struct arm_boot_info *info)
->               * CPU.
->               */
->              if (cs !=3D first_cpu) {
-> -                object_property_set_bool(cpuobj, "start-powered-off", tr=
-ue,
-> -                                         &error_abort);
-> +                qdev_prop_set_bit(DEVICE(cpuobj), "start-powered-off", t=
-rue);
->              }
->          }
->      }
-
-This makes this code look a bit weird. Currently we have a loop
-which has an "Object *cpuobj" which it uses to set properties,
-in both cases using the object_property_* APIs. With this change,
-we do half the job using a QOM API and the other half using
-a qdev API. It would be good to follow up by converting the
-other property-set so we can have a local Device * instead of
-the Object *.
-
-
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index eace854335..6733652120 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -263,20 +263,13 @@ static void pc_init1(MachineState *machine,
->          size_t i;
->
->          pci_dev =3D pci_new_multifunction(-1, pcms->south_bridge);
-> -        object_property_set_bool(OBJECT(pci_dev), "has-usb",
-> -                                 machine_usb(machine), &error_abort);
-> -        object_property_set_bool(OBJECT(pci_dev), "has-acpi",
-> -                                 x86_machine_is_acpi_enabled(x86ms),
-> -                                 &error_abort);
-> -        object_property_set_bool(OBJECT(pci_dev), "has-pic", false,
-> -                                 &error_abort);
-> -        object_property_set_bool(OBJECT(pci_dev), "has-pit", false,
-> -                                 &error_abort);
-> -        qdev_prop_set_uint32(DEVICE(pci_dev), "smb_io_base", 0xb100);
-> -        object_property_set_bool(OBJECT(pci_dev), "smm-enabled",
-> -                                 x86_machine_is_smm_enabled(x86ms),
-> -                                 &error_abort);
->          dev =3D DEVICE(pci_dev);
-> +        qdev_prop_set_bit(dev, "has-usb", machine_usb(machine));
-> +        qdev_prop_set_bit(dev, "has-acpi", x86_machine_is_acpi_enabled(x=
-86ms));
-> +        qdev_prop_set_bit(dev, "has-pic", false);
-> +        qdev_prop_set_bit(dev, "has-pit", false);
-> +        qdev_prop_set_uint32(DEVICE(pci_dev), "smb_io_base", 0xb100);
-
-This line also can just use "dev".
-
-> +        qdev_prop_set_bit(dev, "smm-enabled", x86_machine_is_smm_enabled=
-(x86ms));
->          for (i =3D 0; i < ISA_NUM_IRQS; i++) {
->              qdev_connect_gpio_out_named(dev, "isa-irqs", i, x86ms->gsi[i=
-]);
->          }
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

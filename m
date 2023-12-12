@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1024833ejo;
-        Tue, 12 Dec 2023 08:30:26 -0800 (PST)
-X-Received: by 2002:a05:6512:4017:b0:50e:d5f:2c9a with SMTP id br23-20020a056512401700b0050e0d5f2c9amr107667lfb.25.1702398625782;
-        Tue, 12 Dec 2023 08:30:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702398625; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1024918ejo;
+        Tue, 12 Dec 2023 08:30:32 -0800 (PST)
+X-Received: by 2002:a17:907:7251:b0:a02:54fa:4f2f with SMTP id ds17-20020a170907725100b00a0254fa4f2fmr3955392ejc.53.1702398632311;
+        Tue, 12 Dec 2023 08:30:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702398632; cv=none;
         d=google.com; s=arc-20160816;
-        b=SvFDNcKaL0/oCrtQX6kZVkAZ/psqjkphBgF7HCnS+NXT9Dxz/4lVq926YM+SbSf9KE
-         TXViQVQvforB/XQ6eNcro8Lh4Gzfp9Sd3WTSzGLGrwmlNpSUVjCId59qS5ZazlvXeCAu
-         wJhrWkEGNUFj3rFvC3r7dQCmy/sAj9bWthipS6D+BY3U025nlJIlW/GBg+8MvQ8MxoR5
-         iC/5XAOln4OddF3+pKOt8JgUoENqrS6SwRrY6Hg3umqB0FuLveY5gip0BmPyd95o/DQT
-         bmvzralMaoxQZlq6Nbe0uaUNMr7rgZQ4MzfTWyfOw8TOmShIGDNwzP3BRM2fHZjhrbt4
-         3tSQ==
+        b=KamHsX10J93lQTIaWDTK3fpq+OgC/2LDikpTtzrl43S1h0LLIkY9djNgFdfzC8nJyD
+         NZu3auwpSNny6RJfBPvu5gbRHgwktzBqYIJLPP5z7lQEO+ung5LoeztPMh1tJS3ZHDxm
+         Tnz3WAbNg2YWjcM0YZULqvFpIpW1iifbdeWmXJCrgRbAcPOC/qlsBnJA9rzUa+yFFNej
+         IIe2dT+m0whuL9xnpF9Zja481YFouJUHjClvCshVlDeP4PZiwBb2+jnqMkj0yh5AUHTW
+         PUHxFJNofuKi8MCBGwXWlEpruDghhNHkrG+8arWW8JF9UG7FJ2YrtHNNBJyqtw6hPzZ/
+         mrsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=SnL91noqzEJ/OmxDVsmRBFeCwxiwF12rVXOPGYxs90k=;
+        bh=ekMLwFEwN8A8wVtLlfYqHUo8mVDJrO6E1RnF8kOlbaw=;
         fh=CkupYgn1Qmdh7jizui9HJgGegpqbRR5NXz1VyjRE1Hs=;
-        b=ot0NTxu8+u4UYkd70nr3mekBg9i73Il2EiOUbBeRBik5WJNsh5rCYmg0pUcLK1UrbO
-         wMy8jhKPqXSaKgQsqn3y+Ma3EQQ/Fjyko+j9plUxB1gfuJ4/Um7Rf2lqS8JX/owMK+za
-         atytZhYSkK3UBWqV/qMZWI9CF8aUsx7FsvS27VWzdegc7MKMfcIm55MVWexqPDbbNmG+
-         PeH++fgEkXlqbZLPUiSETtVqUUnMLSHeSRuxueexvK07iEDp1fTncaZyv5bKOGKQhDIm
-         Nbh9Jaec+DL+6K08PYw/c8Q8wX3o9SHF0p4y/Q594QviabYqWdBugYk1LkezrFc7FZ5l
-         cqVw==
+        b=SScXzi0GhrU3fsKVv4ubOBbDMZnaGj138rgCP3fFaCu9lCsdYNvVBxX1f2fK0eTBX3
+         +VnuHQSEvU15bMcQ+uGVdQHGAMR+6+uNmTo9duvOEFVWKfBS22NEYFtc+LF5eNb5j8Ih
+         eHJaP+Ean5USSYXBPKoGebsMcVC4lxvpopc5JuOK7KzVKpIKWQmCKlW87ioV85447Mj5
+         OFLF5DL9tyZBFNr7yQOvkb6v7hfS44HatwwXHbL9raJzZvvCaIKHByIQ2UfYyV+MbDZ4
+         xqAxwOGlhEeQEfrclrgAsOrvAh3OWbK07w+2TxULlgMTHeHkv0L7ioEK7FxUFFNMecRt
+         oCEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P3+kURlx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=E3kXX6G4;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id em4-20020a170907288400b00a1f7a9f5541sor2036253ejc.13.2023.12.12.08.30.25
+        by mx.google.com with SMTPS id jy11-20020a170907762b00b00a1dec186ae2sor2591872ejc.16.2023.12.12.08.30.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Dec 2023 08:30:25 -0800 (PST)
+        Tue, 12 Dec 2023 08:30:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P3+kURlx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=E3kXX6G4;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702398625; x=1703003425; darn=linaro.org;
+        d=linaro.org; s=google; t=1702398632; x=1703003432; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SnL91noqzEJ/OmxDVsmRBFeCwxiwF12rVXOPGYxs90k=;
-        b=P3+kURlx7LnSUp1drPeGTYvMX46vobBG5ZP8Y08w+jcZn6eVrkXDpH6yxd6oOv1h4V
-         +PYhmfBlqhoodT+ayeFBdcnkFKPXroSsvo44ZVs50jMcNV+QpUnH0/IWbm/v0f+7xjbb
-         +Ro31Dqa+8Xb0e7HXVl0lUvXgviiHmWPnQGYYhy6IFcQS1BDm4MJ3jIp1k9HfBsbblhi
-         EEGmrbEKHOyu0+cMdMtdO6ap1TNpzYUDBwq+CHEaqYtoKh/LdQqYkTl19o45+7q1FOIg
-         QTLvRagpL7ynkTewEIsGSwrhQ2Ba3Ooi81E6M4/dH7MANrjGQovE0AqIFhoNseVwsgb6
-         rJuQ==
+        bh=ekMLwFEwN8A8wVtLlfYqHUo8mVDJrO6E1RnF8kOlbaw=;
+        b=E3kXX6G4mBdE16gYnLQyYlvw8Ex27FwegQ75n+gPW2Li6eeFPAqNW29+0477ykLxHK
+         EhEiy/fh9G7qKCNFI5dQyVqidnxZCVADlnP2j2D7hmNLXcKLtSzSuezCV9Fg9kPuPFBJ
+         BKC7wjXVKdT8rJ7SDcSqMolifwD2uldosWMj0NHkokolFMNv2oZOel3X+Erefh7siASf
+         VhYiVpMx6D3iqQDxQEv9doDSjsEo8jwd8JqOtD4Ra4/TI5KHlp5G+vTviYTfUKtazRJ/
+         XDlPgZ3mavFoj/dQyUIwSiL8wJkxzmxoAbUb8icNsrIYerAet4M+Om+Cdx5V2arj1ttq
+         OxZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702398625; x=1703003425;
+        d=1e100.net; s=20230601; t=1702398632; x=1703003432;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SnL91noqzEJ/OmxDVsmRBFeCwxiwF12rVXOPGYxs90k=;
-        b=syHcuETM7rm3i1k9PK+XEUxQrrz4gqlWcE32lnA7GP61OF7TDh7k6rAjWHKsQVqGLd
-         FRCKuCERJxhET2WEXYOVBYABG9kAIdBHcSUIe7BsLh/c6LUpvR6383Fd4hdnDFKGacOX
-         k/Ww8+6f6jLtL2qJWTJWVwVerPWvLSXO9BWoSgTJ7K1Sp06PVbMSMu25b1AaEdR1Y5qf
-         lSHM+LX4n0FsImlrX0ZByS7cv4yW+dckJkhz7cS0VPX9kXiMMYOhza63TXoq2AJVdRhs
-         Rpp08UQiFgw4yJYFcJweSKko687ljGYOSG2pukymOyhB4StYGTUGrNAeeTy2jSBuI9Rb
-         C2xw==
-X-Gm-Message-State: AOJu0YwWNJNuSK4v9A2XottTs8GAbdKpk4vW/zPpTG1OoPGhYMrdvWIR
-	Zt/9JVwuZxiO7HHPC2Hf9p7p4Ukr
-X-Google-Smtp-Source: AGHT+IHQSSAkWJvD36OnpNHlgnVYT2/cx6Tc6mY+U7cxpo8QxzPJuYkHa87vpl7b8J0ljfokve6hig==
-X-Received: by 2002:a17:907:7f87:b0:a17:8181:4f3 with SMTP id qk7-20020a1709077f8700b00a17818104f3mr3873447ejc.49.1702398625485;
-        Tue, 12 Dec 2023 08:30:25 -0800 (PST)
+        bh=ekMLwFEwN8A8wVtLlfYqHUo8mVDJrO6E1RnF8kOlbaw=;
+        b=ihZhYYlSEOZ6A9yBbMdSb6Iknt/B4/UqvbCwspiEEit9iCVjxDOLTKmHkoJOrHXuhI
+         Gajaf6VSsabgpzeU4iL6vz7dGMDtXAs/BODjNG85IllgJ5wRpHWIYff19dxapIH+mfiW
+         yea2Dq0FuTglYtzSt5/EJo42BghkK5v9NX05MG9JMK+E/vXW14xRYHgJ4JFzaLEBzT0K
+         ifRBQu6Rild9+E67mn5FcdDOr0WXOxYkBsqN/Czp5UNjUnHk+EneAWpHru8Ccjh6BZ1P
+         xrjzIUZhnT7tnQdGQM9UvE23jwwAe17tr1LA811Iczf3ZB56SADQSV/ENkHmhZ6lN3cN
+         4gHA==
+X-Gm-Message-State: AOJu0YxQWjFXUIEX+YizCbnVYhCA4FPLsrXXD2SGkx9kWMi+hM4CT9az
+	CUxq0vq7En2QTMb6Hp1AtGca8jGV
+X-Google-Smtp-Source: AGHT+IFgJq5DvObeP9enEnn11Zs6PcFGrLfXqca1HfwYKoKlFuI1hXrRP+1xuG2m6bHxslTLww5n1Q==
+X-Received: by 2002:a17:907:3d8e:b0:a19:a1ba:da4b with SMTP id he14-20020a1709073d8e00b00a19a1bada4bmr4130827ejc.114.1702398632039;
+        Tue, 12 Dec 2023 08:30:32 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id ll5-20020a170907190500b00a1c99f67834sm6480179ejc.70.2023.12.12.08.30.23
+        by smtp.gmail.com with ESMTPSA id vw18-20020a170907059200b00a1712cbddebsm6453045ejb.187.2023.12.12.08.30.29
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 12 Dec 2023 08:30:25 -0800 (PST)
+        Tue, 12 Dec 2023 08:30:31 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -92,75 +92,71 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 06/33] hw/cpu/arm: Rename 'busdev' -> 'gicsbd' in a15mp_priv_realize()
-Date: Tue, 12 Dec 2023 17:29:06 +0100
-Message-ID: <20231212162935.42910-7-philmd@linaro.org>
+Subject: [PATCH 07/33] hw/cpu/arm: Alias 'num-cpu' property on TYPE_REALVIEW_MPCORE
+Date: Tue, 12 Dec 2023 17:29:07 +0100
+Message-ID: <20231212162935.42910-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231212162935.42910-1-philmd@linaro.org>
 References: <20231212162935.42910-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: QoboZByGqx6R
+X-TUID: qM7xvxLFntFu
 
-'busdev' is the internal GIC as SysBus device.
-Since we already have a 'gicdev' variable for the GIC as QDev,
-rename 'busdev' as 'gicsbd' to make it clear we access the IRQ
-lines from the GIC.
+No need to duplicate and forward the 'num-cpu' property from
+TYPE_ARM11MPCORE_PRIV to TYPE_REALVIEW_MPCORE, alias it with
+QOM object_property_add_alias().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/cpu/a15mpcore.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ hw/cpu/realview_mpcore.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
-index bfd8aa5644..a40f142128 100644
---- a/hw/cpu/a15mpcore.c
-+++ b/hw/cpu/a15mpcore.c
-@@ -51,7 +51,7 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     A15MPPrivState *s = A15MPCORE_PRIV(dev);
-     DeviceState *gicdev;
--    SysBusDevice *busdev;
-+    SysBusDevice *gicsbd;
+diff --git a/hw/cpu/realview_mpcore.c b/hw/cpu/realview_mpcore.c
+index 72c792eef1..7480b38d1a 100644
+--- a/hw/cpu/realview_mpcore.c
++++ b/hw/cpu/realview_mpcore.c
+@@ -14,7 +14,6 @@
+ #include "hw/cpu/arm11mpcore.h"
+ #include "hw/intc/realview_gic.h"
+ #include "hw/irq.h"
+-#include "hw/qdev-properties.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_REALVIEW_MPCORE_RIRQ "realview_mpcore"
+@@ -68,7 +67,6 @@ static void realview_mpcore_realize(DeviceState *dev, Error **errp)
+     int n;
      int i;
-     bool has_el3;
-     bool has_el2 = false;
-@@ -78,10 +78,10 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gic), errp)) {
+ 
+-    qdev_prop_set_uint32(priv, "num-cpu", s->num_cpu);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->priv), errp)) {
          return;
      }
--    busdev = SYS_BUS_DEVICE(&s->gic);
-+    gicsbd = SYS_BUS_DEVICE(&s->gic);
+@@ -100,6 +98,7 @@ static void mpcore_rirq_init(Object *obj)
+     int i;
  
-     /* Pass through outbound IRQ lines from the GIC */
--    sysbus_pass_irq(sbd, busdev);
-+    sysbus_pass_irq(sbd, gicsbd);
+     object_initialize_child(obj, "a11priv", &s->priv, TYPE_ARM11MPCORE_PRIV);
++    object_property_add_alias(obj, "num-cpu", OBJECT(&s->priv), "num-cpu");
+     privbusdev = SYS_BUS_DEVICE(&s->priv);
+     sysbus_init_mmio(sbd, sysbus_mmio_get_region(privbusdev, 0));
  
-     /* Pass through inbound GPIO lines to the GIC */
-     qdev_init_gpio_in(dev, a15mp_priv_set_irq, s->num_irq - 32);
-@@ -126,17 +126,17 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
-      *  0x6000-0x7fff -- GIC virtual CPU interface
-      */
-     memory_region_add_subregion(&s->container, 0x1000,
--                                sysbus_mmio_get_region(busdev, 0));
-+                                sysbus_mmio_get_region(gicsbd, 0));
-     memory_region_add_subregion(&s->container, 0x2000,
--                                sysbus_mmio_get_region(busdev, 1));
-+                                sysbus_mmio_get_region(gicsbd, 1));
-     if (has_el2) {
-         memory_region_add_subregion(&s->container, 0x4000,
--                                    sysbus_mmio_get_region(busdev, 2));
-+                                    sysbus_mmio_get_region(gicsbd, 2));
-         memory_region_add_subregion(&s->container, 0x6000,
--                                    sysbus_mmio_get_region(busdev, 3));
-+                                    sysbus_mmio_get_region(gicsbd, 3));
-         for (i = 0; i < s->num_cpu; i++) {
-             hwaddr base = 0x5000 + i * 0x200;
--            MemoryRegion *mr = sysbus_mmio_get_region(busdev,
-+            MemoryRegion *mr = sysbus_mmio_get_region(gicsbd,
-                                                       4 + s->num_cpu + i);
-             memory_region_add_subregion(&s->container, base, mr);
-         }
+@@ -108,17 +107,11 @@ static void mpcore_rirq_init(Object *obj)
+     }
+ }
+ 
+-static Property mpcore_rirq_properties[] = {
+-    DEFINE_PROP_UINT32("num-cpu", mpcore_rirq_state, num_cpu, 1),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+ static void mpcore_rirq_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = realview_mpcore_realize;
+-    device_class_set_props(dc, mpcore_rirq_properties);
+ }
+ 
+ static const TypeInfo mpcore_rirq_info = {
 -- 
 2.41.0

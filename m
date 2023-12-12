@@ -1,301 +1,298 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp952399ejo;
-        Tue, 12 Dec 2023 06:50:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGPQ3eqI4BkgR1p1sEWLiYo/AtaQVRF2iuwRe60ByIt2zWrwXBs8OdvwakiHO/sJYgmTUl1
-X-Received: by 2002:a05:6122:4d18:b0:4b2:d42c:2d67 with SMTP id fi24-20020a0561224d1800b004b2d42c2d67mr4883719vkb.32.1702392636362;
-        Tue, 12 Dec 2023 06:50:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702392636; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp988711ejo;
+        Tue, 12 Dec 2023 07:39:19 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEhwYFuYhWZVnRHni6QAICljRh0ZuRikm3f7S68rnhiT8rSi/fly3dHPc8IWacIJRKvQWZL
+X-Received: by 2002:a05:620a:4950:b0:77d:cda9:60ec with SMTP id vz16-20020a05620a495000b0077dcda960ecmr6657113qkn.26.1702395559435;
+        Tue, 12 Dec 2023 07:39:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702395559; cv=none;
         d=google.com; s=arc-20160816;
-        b=XcQr3hTf8F2pmO2uHPvjgMNOay7ny6uEFO588FDyLu7bz9LU2gnqoopom7gNfVtdty
-         02L11mE9E9alQIxt5r9m522QyEgsKiNUaiQgnLMEl6ER07D2RDRLE75DmqYwZIzx0il6
-         j7rcorM5MfZ2lPfp7r7lSh9dFFF2IlGhr5Vk9+fKp15ejRKFgu7m7TumnQzaLxSgOWoh
-         z3GriRdBJqvyku3TLEhuruUUPQKrBB1BvuWG2GgK0zkhyY7bPj0WOpVdYnJ0zTbjQ165
-         8wnCU4pKpR7mjtMt6pn2ua3QhXhme2hhb8XRCe5liADUuFqtu/bMknDTEJd+EnRSTmcl
-         KtDg==
+        b=cn8MZvOtn1Pp/ILBMtIfQ0vBm94hWuJ6kaQK4slkjM72VyPsHZ8ssYsgQdH8LLM3vu
+         j9O4QW0YD05CW2f6621l1JCXZ8aFuM+pn1JVNUK+Y81qqNjnXiOFh6X8euo4ECd9YyiO
+         QDlZw1JFfI+131BVAGFXZw/23iBEkYxTXB/DL2Osu8MOsy+wghnQGhYG+EZVIBmB6HcS
+         EKvrDYfi+7rrZeg+MyRshSedjkZRHsN26F+uPfJ99egulBJzxXvM0oFURpuJ2FBrfD+v
+         Z6juqnUr64t/VbxvXZMZ9XndCI1U0Cgg+ppqGoBctDf4+3sLYvtis7VmCqjd0Ytb72nF
+         aqKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:subject:from
-         :user-agent:mime-version:date:message-id;
-        bh=xsGr9viYe194ZU6QvVDA4S//9P4Z0j5IyHQmCn81gf4=;
-        fh=XjeWluILof3f/t2RMU9x5kUMQdajlxelk3b+5+95bRU=;
-        b=FgghzmA1OuRIHFmw+qZ56GzTmXJHrWUxeB4cPJ3pOup0Bp8g4ZtXpTHTfqFjx5QDP8
-         dXTYzYkIKHUWjwSdij513J53umQo9AL4aqjSmPk5JTgY3WArqr3PosFvOPQnZv7o3BV3
-         yej+whEwumH28tRk8Bg4ydUjXgEfHTxlXFuL8EBQ7/ZS+ubfV8TQiTMb8Hxy9J6DUNTe
-         E0CeltAdW17UICHuUtzVBl6t5g9VV/6OVUtOJgRN42is+02D9QKXMnyssVi+n7MML/0/
-         qsU4AxQldO2zQRiJo5fRCo5cl0iuRoon3pYPNt4oX/9JcSwe5EZLvLvfClW/uublcVJK
-         w6XQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=mhd5PyZ3DXbsV3qmdtVMB6yuzeux7oigKl5JGcj9MXo=;
+        fh=bZKlkMU9C1iGNzA+/zdVtYyDn5BmXePmdZPp4GNAcqQ=;
+        b=LDhd0odbzfM31Ud0wUeiQ3xrgqAC+8MNlcCjMcxQ2Fdgn71dFSd3/S0TSjcv/mvD7V
+         3KXVntS8uWCX8XnD7CJksvlbiQncfQXju2npdu2Tvq5DlsSssunzGct+p4r2qCW1thru
+         2nX7t62pYUZxCsVht6C61gnaTsddkyAmB79h0qjn486IByexzNd31OhWgDhNSuSNyYuE
+         HWNhIw0gtFArDWmtzFXfACss/kpiFZjFACtqofydvcQdYOxKSbs2q53XZfDpKVS3F2Qx
+         16AJlQrmZFghpH4Qt2lef0yflFzteI7Snbovsg56NnoSkddGQ4R4CHevPoD8MJeZcwzL
+         mR/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t65-20020a1fc344000000b004b2ccee14f3si1791710vkf.236.2023.12.12.06.50.36
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EsjQKdeD;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <stefanha@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id q23-20020ae9e417000000b0077da299a4d0si10427233qkc.775.2023.12.12.07.39.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Dec 2023 06:50:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Dec 2023 07:39:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rD45f-0002GU-95; Tue, 12 Dec 2023 09:50:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=DDG+=HX=kaod.org=clg@ozlabs.org>)
- id 1rD45c-0002DK-Np; Tue, 12 Dec 2023 09:50:28 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=DDG+=HX=kaod.org=clg@ozlabs.org>)
- id 1rD45O-0004d2-BZ; Tue, 12 Dec 2023 09:50:27 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SqM3N1wz7z4xQj;
- Wed, 13 Dec 2023 01:50:08 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SqM3D2Rc6z4xS7;
- Wed, 13 Dec 2023 01:49:59 +1100 (AEDT)
-Message-ID: <b4aca87e-dea4-4d7f-af2e-79c856136b3a@kaod.org>
-Date: Tue, 12 Dec 2023 15:49:59 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EsjQKdeD;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1702395559;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=mhd5PyZ3DXbsV3qmdtVMB6yuzeux7oigKl5JGcj9MXo=;
+	b=EsjQKdeD1G2/IqDJtT6IsqND4u9xIXHy2ejqVwvl1gFrFWeGWLiiHuNLtagBpWs2ldr4QP
+	gH3JfYwU1nWNvaA7cvzMGDo3K1kH5lOpad70CAQRroLt6ghvPNudpoMnUXKbsQRwh/53H6
+	MMoN3DG3VCAGTlEh/RVFCHFB0hPdrWA=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-oXKjbKZqPLi5HX1YCXpYaQ-1; Tue,
+ 12 Dec 2023 10:39:14 -0500
+X-MC-Unique: oXKjbKZqPLi5HX1YCXpYaQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B28B42806403;
+	Tue, 12 Dec 2023 15:39:11 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.220])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 922F32026D66;
+	Tue, 12 Dec 2023 15:39:06 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Paul Durrant <paul@xen.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	Jagannathan Raman <jag.raman@oracle.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Hailiang Zhang <zhanghailiang@xfusion.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Peter Xu <peterx@redhat.com>,
+	Hyman Huang <yong.huang@smartx.com>,
+	Fam Zheng <fam@euphon.net>,
+	Song Gao <gaosong@loongson.cn>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Leonardo Bras <leobras@redhat.com>,
+	Jiri Slaby <jslaby@suse.cz>,
+	Eric Farman <farman@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	qemu-ppc@nongnu.org,
+	John Snow <jsnow@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Hanna Reitz <hreitz@redhat.com>,
+	qemu-s390x@nongnu.org,
+	qemu-block@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	kvm@vger.kernel.org,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-riscv@nongnu.org,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Fabiano Rosas <farosas@suse.de>,
+	Juan Quintela <quintela@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	qemu-arm@nongnu.org,
+	Jason Wang <jasowang@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Eric Blake <eblake@redhat.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	xen-devel@lists.xenproject.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 0/5] Make Big QEMU Lock naming consistent
+Date: Tue, 12 Dec 2023 10:38:59 -0500
+Message-ID: <20231212153905.631119-1-stefanha@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [PATCH v8 07/10] hw/arm: Hook up FSI module in AST2600
-To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@codeconstruct.com.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org, Andrew Jeffery <andrew@aj.id.au>
-References: <20231128235700.599584-1-ninad@linux.ibm.com>
- <20231128235700.599584-8-ninad@linux.ibm.com>
-Content-Language: en-US
-In-Reply-To: <20231128235700.599584-8-ninad@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=DDG+=HX=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eVoBzo83RsC7
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+X-TUID: 7evUX43wDJXr
 
-On 11/29/23 00:56, Ninad Palsule wrote:
-> This patchset introduces IBM's Flexible Service Interface(FSI).
-> 
-> Time for some fun with inter-processor buses. FSI allows a service
-> processor access to the internal buses of a host POWER processor to
-> perform configuration or debugging.
-> 
-> FSI has long existed in POWER processes and so comes with some baggage,
-> including how it has been integrated into the ASPEED SoC.
-> 
-> Working backwards from the POWER processor, the fundamental pieces of
-> interest for the implementation are:
-> 
-> 1. The Common FRU Access Macro (CFAM), an address space containing
->     various "engines" that drive accesses on buses internal and external
->     to the POWER chip. Examples include the SBEFIFO and I2C masters. The
->     engines hang off of an internal Local Bus (LBUS) which is described
->     by the CFAM configuration block.
-> 
-> 2. The FSI slave: The slave is the terminal point of the FSI bus for
->     FSI symbols addressed to it. Slaves can be cascaded off of one
->     another. The slave's configuration registers appear in address space
->     of the CFAM to which it is attached.
-> 
-> 3. The FSI master: A controller in the platform service processor (e.g.
->     BMC) driving CFAM engine accesses into the POWER chip. At the
->     hardware level FSI is a bit-based protocol supporting synchronous and
->     DMA-driven accesses of engines in a CFAM.
-> 
-> 4. The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in
->     POWER processors. This now makes an appearance in the ASPEED SoC due
->     to tight integration of the FSI master IP with the OPB, mainly the
->     existence of an MMIO-mapping of the CFAM address straight onto a
->     sub-region of the OPB address space.
-> 
-> 5. An APB-to-OPB bridge enabling access to the OPB from the ARM core in
->     the AST2600. Hardware limitations prevent the OPB from being directly
->     mapped into APB, so all accesses are indirect through the bridge.
-> 
-> The implementation appears as following in the qemu device tree:
-> 
->      (qemu) info qtree
->      bus: main-system-bus
->        type System
->        ...
->        dev: aspeed.apb2opb, id ""
->          gpio-out "sysbus-irq" 1
->          mmio 000000001e79b000/0000000000001000
->          bus: opb.1
->            type opb
->            dev: fsi.master, id ""
->              bus: fsi.bus.1
->                type fsi.bus
->                dev: cfam.config, id ""
->                dev: cfam, id ""
->                  bus: fsi.lbus.1
->                    type lbus
->                    dev: scratchpad, id ""
->                      address = 0 (0x0)
->          bus: opb.0
->            type opb
->            dev: fsi.master, id ""
->              bus: fsi.bus.0
->                type fsi.bus
->                dev: cfam.config, id ""
->                dev: cfam, id ""
->                  bus: fsi.lbus.0
->                    type lbus
->                    dev: scratchpad, id ""
->                      address = 0 (0x0)
-> 
-> The LBUS is modelled to maintain the qdev bus hierarchy and to take
-> advantage of the object model to automatically generate the CFAM
-> configuration block. The configuration block presents engines in the
-> order they are attached to the CFAM's LBUS. Engine implementations
-> should subclass the LBusDevice and set the 'config' member of
-> LBusDeviceClass to match the engine's type.
-> 
-> CFAM designs offer a lot of flexibility, for instance it is possible for
-> a CFAM to be simultaneously driven from multiple FSI links. The modeling
-> is not so complete; it's assumed that each CFAM is attached to a single
-> FSI slave (as a consequence the CFAM subclasses the FSI slave).
-> 
-> As for FSI, its symbols and wire-protocol are not modelled at all. This
-> is not necessary to get FSI off the ground thanks to the mapping of the
-> CFAM address space onto the OPB address space - the models follow this
-> directly and map the CFAM memory region into the OPB's memory region.
-> Future work includes supporting more advanced accesses that drive the
-> FSI master directly rather than indirectly via the CFAM mapping, which
-> will require implementing the FSI state machine and methods for each of
-> the FSI symbols on the slave. Further down the track we can also look at
-> supporting the bitbanged SoftFSI drivers in Linux by extending the FSI
-> slave model to resolve sequences of GPIO IRQs into FSI symbols, and
-> calling the associated symbol method on the slave to map the access onto
-> the CFAM.
-> 
-> Testing:
->      Tested by reading cfam config address 0 on rainier machine type.
-> 
->      root@p10bmc:~# pdbg -a getcfam 0x0
->      p0: 0x0 = 0xc0022d15
-> 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+v2:
+- Rename APIs bql_*() [PeterX]
+- Spell out "Big QEMU Lock (BQL)" in doc comments [PeterX]
+- Rename "iolock" variables in hw/remote/mpqemu-link.c [Harsh]
+- Fix bql_auto_lock() indentation in Patch 2 [Ilya]
+- "with BQL taken" -> "with the BQL taken" [Philippe]
+- "under BQL" -> "under the BQL" [Philippe]
 
+The Big QEMU Lock ("BQL") has two other names: "iothread lock" and "QEMU global
+mutex". The term "iothread lock" is easily confused with the unrelated --object
+iothread (iothread.c).
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+This series updates the code and documentation to consistently use "BQL". This
+makes the code easier to understand.
 
-Thanks,
+Stefan Hajnoczi (5):
+  system/cpus: rename qemu_mutex_lock_iothread() to bql_lock()
+  qemu/main-loop: rename QEMU_IOTHREAD_LOCK_GUARD to BQL_LOCK_GUARD
+  qemu/main-loop: rename qemu_cond_wait_iothread() to
+    qemu_cond_wait_bql()
+  Replace "iothread lock" with "BQL" in comments
+  Rename "QEMU global mutex" to "BQL" in comments and docs
 
-C.
+ docs/devel/multi-thread-tcg.rst      |   7 +-
+ docs/devel/qapi-code-gen.rst         |   2 +-
+ docs/devel/replay.rst                |   2 +-
+ docs/devel/reset.rst                 |   2 +-
+ docs/devel/multiple-iothreads.txt    |  16 ++--
+ hw/display/qxl.h                     |   2 +-
+ include/block/aio-wait.h             |   2 +-
+ include/block/blockjob.h             |   6 +-
+ include/exec/cpu-common.h            |   2 +-
+ include/exec/memory.h                |   4 +-
+ include/exec/ramblock.h              |   2 +-
+ include/io/task.h                    |   2 +-
+ include/migration/register.h         |   8 +-
+ include/qemu/coroutine-core.h        |   2 +-
+ include/qemu/coroutine.h             |   2 +-
+ include/qemu/main-loop.h             |  69 ++++++++--------
+ include/qemu/thread.h                |   2 +-
+ target/arm/internals.h               |   4 +-
+ accel/accel-blocker.c                |  10 +--
+ accel/dummy-cpus.c                   |   8 +-
+ accel/hvf/hvf-accel-ops.c            |   4 +-
+ accel/kvm/kvm-accel-ops.c            |   4 +-
+ accel/kvm/kvm-all.c                  |  22 ++---
+ accel/tcg/cpu-exec.c                 |  26 +++---
+ accel/tcg/cputlb.c                   |  20 ++---
+ accel/tcg/tcg-accel-ops-icount.c     |   6 +-
+ accel/tcg/tcg-accel-ops-mttcg.c      |  12 +--
+ accel/tcg/tcg-accel-ops-rr.c         |  18 ++--
+ accel/tcg/tcg-accel-ops.c            |   2 +-
+ accel/tcg/translate-all.c            |   2 +-
+ cpu-common.c                         |   4 +-
+ dump/dump.c                          |   4 +-
+ hw/block/dataplane/virtio-blk.c      |   8 +-
+ hw/block/virtio-blk.c                |   2 +-
+ hw/core/cpu-common.c                 |   6 +-
+ hw/display/virtio-gpu.c              |   2 +-
+ hw/i386/intel_iommu.c                |   6 +-
+ hw/i386/kvm/xen_evtchn.c             |  30 +++----
+ hw/i386/kvm/xen_gnttab.c             |   2 +-
+ hw/i386/kvm/xen_overlay.c            |   2 +-
+ hw/i386/kvm/xen_xenstore.c           |   2 +-
+ hw/intc/arm_gicv3_cpuif.c            |   2 +-
+ hw/intc/s390_flic.c                  |  18 ++--
+ hw/mips/mips_int.c                   |   2 +-
+ hw/misc/edu.c                        |   4 +-
+ hw/misc/imx6_src.c                   |   2 +-
+ hw/misc/imx7_src.c                   |   2 +-
+ hw/net/xen_nic.c                     |   8 +-
+ hw/ppc/pegasos2.c                    |   2 +-
+ hw/ppc/ppc.c                         |   6 +-
+ hw/ppc/spapr.c                       |   2 +-
+ hw/ppc/spapr_events.c                |   2 +-
+ hw/ppc/spapr_rng.c                   |   4 +-
+ hw/ppc/spapr_softmmu.c               |   4 +-
+ hw/remote/mpqemu-link.c              |  22 ++---
+ hw/remote/vfio-user-obj.c            |   2 +-
+ hw/s390x/s390-skeys.c                |   2 +-
+ hw/scsi/virtio-scsi-dataplane.c      |   6 +-
+ migration/block-dirty-bitmap.c       |  14 ++--
+ migration/block.c                    |  40 ++++-----
+ migration/colo.c                     |  62 +++++++-------
+ migration/dirtyrate.c                |  12 +--
+ migration/migration.c                |  54 ++++++------
+ migration/ram.c                      |  16 ++--
+ net/tap.c                            |   2 +-
+ replay/replay-internal.c             |   2 +-
+ semihosting/console.c                |   8 +-
+ stubs/iothread-lock.c                |   6 +-
+ system/cpu-throttle.c                |   6 +-
+ system/cpus.c                        |  55 +++++++------
+ system/dirtylimit.c                  |   4 +-
+ system/memory.c                      |   2 +-
+ system/physmem.c                     |  14 ++--
+ system/runstate.c                    |   2 +-
+ system/watchpoint.c                  |   4 +-
+ target/arm/arm-powerctl.c            |  14 ++--
+ target/arm/helper.c                  |   6 +-
+ target/arm/hvf/hvf.c                 |   8 +-
+ target/arm/kvm.c                     |   4 +-
+ target/arm/kvm64.c                   |   4 +-
+ target/arm/ptw.c                     |   6 +-
+ target/arm/tcg/helper-a64.c          |   8 +-
+ target/arm/tcg/m_helper.c            |   6 +-
+ target/arm/tcg/op_helper.c           |  24 +++---
+ target/arm/tcg/psci.c                |   2 +-
+ target/hppa/int_helper.c             |   8 +-
+ target/i386/hvf/hvf.c                |   6 +-
+ target/i386/kvm/hyperv.c             |   4 +-
+ target/i386/kvm/kvm.c                |  28 +++----
+ target/i386/kvm/xen-emu.c            |  16 ++--
+ target/i386/nvmm/nvmm-accel-ops.c    |   6 +-
+ target/i386/nvmm/nvmm-all.c          |  20 ++---
+ target/i386/tcg/sysemu/fpu_helper.c  |   6 +-
+ target/i386/tcg/sysemu/misc_helper.c |   4 +-
+ target/i386/whpx/whpx-accel-ops.c    |   6 +-
+ target/i386/whpx/whpx-all.c          |  24 +++---
+ target/loongarch/csr_helper.c        |   4 +-
+ target/mips/kvm.c                    |   4 +-
+ target/mips/tcg/sysemu/cp0_helper.c  |   4 +-
+ target/openrisc/sys_helper.c         |  16 ++--
+ target/ppc/excp_helper.c             |  14 ++--
+ target/ppc/helper_regs.c             |   2 +-
+ target/ppc/kvm.c                     |   4 +-
+ target/ppc/misc_helper.c             |   8 +-
+ target/ppc/timebase_helper.c         |   8 +-
+ target/riscv/cpu_helper.c            |   4 +-
+ target/s390x/kvm/kvm.c               |   4 +-
+ target/s390x/tcg/misc_helper.c       | 118 +++++++++++++--------------
+ target/sparc/int32_helper.c          |   2 +-
+ target/sparc/int64_helper.c          |   6 +-
+ target/sparc/win_helper.c            |  20 ++---
+ target/xtensa/exc_helper.c           |   8 +-
+ ui/spice-core.c                      |   6 +-
+ util/async.c                         |   2 +-
+ util/main-loop.c                     |   8 +-
+ util/qsp.c                           |   6 +-
+ util/rcu.c                           |  16 ++--
+ audio/coreaudio.m                    |   8 +-
+ memory_ldst.c.inc                    |  18 ++--
+ target/i386/hvf/README.md            |   2 +-
+ ui/cocoa.m                           |  56 ++++++-------
+ 121 files changed, 644 insertions(+), 645 deletions(-)
 
-
-> ---
->   include/hw/arm/aspeed_soc.h |  4 ++++
->   hw/arm/aspeed_ast2600.c     | 19 +++++++++++++++++++
->   2 files changed, 23 insertions(+)
-> 
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index cb832bc1ee..e452108260 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -36,6 +36,7 @@
->   #include "hw/misc/aspeed_lpc.h"
->   #include "hw/misc/unimp.h"
->   #include "hw/misc/aspeed_peci.h"
-> +#include "hw/fsi/aspeed-apb2opb.h"
->   #include "hw/char/serial.h"
->   
->   #define ASPEED_SPIS_NUM  2
-> @@ -90,6 +91,7 @@ struct AspeedSoCState {
->       UnimplementedDeviceState udc;
->       UnimplementedDeviceState sgpiom;
->       UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
-> +    AspeedAPB2OPBState fsi[2];
->   };
->   
->   #define TYPE_ASPEED_SOC "aspeed-soc"
-> @@ -214,6 +216,8 @@ enum {
->       ASPEED_DEV_SGPIOM,
->       ASPEED_DEV_JTAG0,
->       ASPEED_DEV_JTAG1,
-> +    ASPEED_DEV_FSI1,
-> +    ASPEED_DEV_FSI2,
->   };
->   
->   #define ASPEED_SOC_SPI_BOOT_ADDR 0x0
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index b965fbab5e..2273a62426 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -75,6 +75,8 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->       [ASPEED_DEV_UART12]    = 0x1E790600,
->       [ASPEED_DEV_UART13]    = 0x1E790700,
->       [ASPEED_DEV_VUART]     = 0x1E787000,
-> +    [ASPEED_DEV_FSI1]      = 0x1E79B000,
-> +    [ASPEED_DEV_FSI2]      = 0x1E79B100,
->       [ASPEED_DEV_I3C]       = 0x1E7A0000,
->       [ASPEED_DEV_SDRAM]     = 0x80000000,
->   };
-> @@ -132,6 +134,8 @@ static const int aspeed_soc_ast2600_irqmap[] = {
->       [ASPEED_DEV_ETH4]      = 33,
->       [ASPEED_DEV_KCS]       = 138,   /* 138 -> 142 */
->       [ASPEED_DEV_DP]        = 62,
-> +    [ASPEED_DEV_FSI1]      = 100,
-> +    [ASPEED_DEV_FSI2]      = 101,
->       [ASPEED_DEV_I3C]       = 102,   /* 102 -> 107 */
->   };
->   
-> @@ -264,6 +268,10 @@ static void aspeed_soc_ast2600_init(Object *obj)
->       object_initialize_child(obj, "emmc-boot-controller",
->                               &s->emmc_boot_controller,
->                               TYPE_UNIMPLEMENTED_DEVICE);
-> +
-> +    for (i = 0; i < ASPEED_FSI_NUM; i++) {
-> +        object_initialize_child(obj, "fsi[*]", &s->fsi[i], TYPE_ASPEED_APB2OPB);
-> +    }
->   }
->   
->   /*
-> @@ -625,6 +633,17 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->           return;
->       }
->       aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
-> +
-> +    /* FSI */
-> +    for (i = 0; i < ASPEED_FSI_NUM; i++) {
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->fsi[i]), errp)) {
-> +            return;
-> +        }
-> +        aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->fsi[i]), 0,
-> +                        sc->memmap[ASPEED_DEV_FSI1 + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->fsi[i]), 0,
-> +                           aspeed_soc_get_irq(s, ASPEED_DEV_FSI1 + i));
-> +    }
->   }
->   
->   static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-
+-- 
+2.43.0

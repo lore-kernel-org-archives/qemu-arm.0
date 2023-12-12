@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1026678ejo;
-        Tue, 12 Dec 2023 08:32:34 -0800 (PST)
-X-Received: by 2002:a05:600c:444c:b0:40c:2d8d:ac1f with SMTP id v12-20020a05600c444c00b0040c2d8dac1fmr3758386wmn.61.1702398754728;
-        Tue, 12 Dec 2023 08:32:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702398754; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1026763ejo;
+        Tue, 12 Dec 2023 08:32:41 -0800 (PST)
+X-Received: by 2002:a05:600c:450e:b0:40c:2b4c:ea8 with SMTP id t14-20020a05600c450e00b0040c2b4c0ea8mr3584530wmo.113.1702398761325;
+        Tue, 12 Dec 2023 08:32:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702398761; cv=none;
         d=google.com; s=arc-20160816;
-        b=VW8Z9FbAr3HK/xAdhJy1jMHZ4/8uhMWPSVQ7/KPGau4Y2KlLJPxgw3J348spnyKgjn
-         VQpA9rRevhOIKFBIZ0RgOh4Mf5WOD16dGajX2IczlXznsLKh5D8SAQG9JYyZSURU4Te+
-         k4jc+k5M/LPCcRl2W7qrFBEUM0jOXM589gi/ZJ0h/gZ3PqqtG2sT9mN6u/J7l62QSdNl
-         sC+v5+K6bb2/LdcFS97gPPozC/SuU7xxBEmhEndxRvLWTZvE/woxDmPHBWyGh4tcoyxF
-         K3KqQZ5AH/ZowE1DbxnMt0H77qUhg6QG1gyhgn8JEXN+We33B4HlJDmn1WhCWelD4/JL
-         5Iag==
+        b=tlMZ/B64TkFvHAI/0gM5m673kNcwjzmkLGr7Xokneq1hJWpphyqGgYRWhkZ/LJpT6t
+         QC44qatxYsWb8mcnzLR6OR5oG4mm0N6bd6ZR47WmHxvJGP3AmEGJoxKgDDyz7VbBdRgU
+         KL+qaFN0f9+S9o/ffZ1PU9ufEXv0ePrPZugqJOrpo61zbIzYeYma+fQhyJA0+LJTOTKc
+         RFjXZofFqYcstaSHXzGQfrPThUgKRW1mnWUKH1Obi6r+WA714CluxfP3iq9cKnporsIa
+         h1ZygSswEfRhzDkcgZTwEhFC6+MH68cp4MssbSIMiIHWQVEuSNJ8By1nNW4eSUKIV9bx
+         +dZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lnrJeszID6i8q/rfFXlglmf1g+vLhk9+fH8LuiS5wFg=;
+        bh=QBOGPnHHB3911qXPeC7joHkuSv4mKQWNp402DQT8HUM=;
         fh=CkupYgn1Qmdh7jizui9HJgGegpqbRR5NXz1VyjRE1Hs=;
-        b=tfZtwG/SI9SUna9V5mANE6JbzICAoPnDPnl13fBsb4TIoyDz1AZKKy9GgxT09diU7h
-         /MIlbXd4nOj6gIUQhDyJ1QfL+eW4lwUE9CSmBTLLpznE345oHEq5kNOFT4tIeKD1Bg7d
-         /djJ8jWnhBc0WA7RUYgRyxVpquaIcOBKG5SnpcmEBWj//hgtzwEuxZ3qqFzWPoWIiq4S
-         HzMq0bocblUtl70KLoebgzeLl+OuWgB5oPWd7IHxXk9aOWZSq2LHLazighwBtxNaWZ7A
-         CO5CoeTt0guehCeguEjTZqXhX9PkG/fTCRH8Z+roYvvLWlk2caqnBl+hoyidCG54U5J0
-         n8zA==
+        b=PKQVaOj3XYDPEgWyoo+9waSyjD/gFU3R1m+S92ua83ZqLEm/o3crQJoEp5TZ6QZy1T
+         ivnF7JHf7wAEc+Xmt68I+98lqHnQPDF1XQLkBhADTdmMNTSf3cVsqTnwBYd/AucwH+2r
+         b+ARn+HYQAJ2UVPsd6zmIdqICODf1ttePcGFQmU0GxKGKqCkkEqyzGBHCT/qGhhohqEC
+         fH9udu8TjVVt1HN/r7ACxiaO6T1TGWQTEO6C8EVQxADEt+jng6eY0bRUffP3CIIygq1S
+         6ZyjwUhp/tPQBvB1kM25vFT7rz78pSOf2lFtZwksvm/NHG01f8osSfp4s+AzIDyvCBEI
+         fErA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rUBDFGyn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dhmsw5qm;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z3-20020a05600c220300b0040c07efde7fsor3216305wml.5.2023.12.12.08.32.34
+        by mx.google.com with SMTPS id az1-20020a05600c600100b0040c243ddabasor3218162wmb.2.2023.12.12.08.32.41
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Dec 2023 08:32:34 -0800 (PST)
+        Tue, 12 Dec 2023 08:32:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rUBDFGyn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dhmsw5qm;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702398754; x=1703003554; darn=linaro.org;
+        d=linaro.org; s=google; t=1702398761; x=1703003561; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lnrJeszID6i8q/rfFXlglmf1g+vLhk9+fH8LuiS5wFg=;
-        b=rUBDFGyngt/SkyX/SJWh5T4iMY4vGyXYFHdIkHKliSFs2+BbatCRalvBGsA4QwJCkG
-         buPwaOvGLYENHD6UGw5UgitSTPZ5JNzRmhwfr+VbwB7CxalgKzPvfGC3By/2wDEbiMml
-         yUnjuEzkecMdi/LH6UB8mBem+FiPfNXJ1AlaCirgXWE2rQ1wuTbLC97TdgXz7Qube/E+
-         Aq/N5b3NdColofehcbkl5l+SwxfmoWl5PkZazdPh9UgGz3eNMqqUy37COynbapopIxwl
-         enlyF9jguI+w6BRhAD2c3Z1G3QivAR4jieAzK/e06kux9akROsAu1CBXLG+UW0HpxQWL
-         t5Og==
+        bh=QBOGPnHHB3911qXPeC7joHkuSv4mKQWNp402DQT8HUM=;
+        b=Dhmsw5qmmRHXidaGFQSneYr9jwKlbM9H7GdPTs8Qhdd1mWs2bv2UeJIQOxXg+MwoVy
+         XWFT0m0pkPikk/YG1dHa2RuF1MGkjiALA9fZRDnGcNpmzx+N5fkZC1YNNe/8qCA52uSn
+         E8O+FPB2/jApTuLV37G8qk4vrwrbN5j4WkpXiX5KQWfkgu1/0tDoYN10nxBfA7+Cn7T1
+         mvCEcrWd5KlrHgUFZZ/NhhWWXgGkvaUlFD3mXaAq+xRJrZRPATOLbgaYYQTP5pI7AHiR
+         FnLKht3OF5Xd9nhkREmvBam2x1GxldC+BpZykuPIP4NeI5/ApJIZCezwTh5vbFFLdCd4
+         E6Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702398754; x=1703003554;
+        d=1e100.net; s=20230601; t=1702398761; x=1703003561;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lnrJeszID6i8q/rfFXlglmf1g+vLhk9+fH8LuiS5wFg=;
-        b=CiLJU5/AfmCnk/OfrZhHwa9FfZM1Ymc2gQyOvCDG7EDklWDJBdOgCF1AX5XDVHp886
-         dgLU1BFRL9MzHhUDxlF5Y/x0Szfevp98S6yhwkFWHbGHe9h2E0v3cOvQtAfcrrPHTZ/J
-         4v2Zp35se3CNYAPRHENbDV/zpN6yI9CGYMTSFrT5tRBtV7rM5SwhF6OWLEC76WL8njy2
-         SV8KBrRSCIWtXs6GZ8lxNJcFtx46Uexi3rZa9HFucWB/C98xQ7q5QuKr1ZsPf/XdlUfR
-         zjXmlcEysN2efUt8NIApQ3Z6v/npJVAPU0A8BgMBHvv+FltGnOS82399p4xGickpohpa
-         0fIg==
-X-Gm-Message-State: AOJu0YxCU6ORii0t7DODCPb0UoTSNw1y9gP3moTka5RscaTvkTxEscl2
-	RZAMhdavtm6qBie8zOuOEmc+qxqM
-X-Google-Smtp-Source: AGHT+IEhW3hPy0t/OW5VOfIFyP55JLvXgdi7wpqvG7SRznYraFPkiWLXOuJE1nlKRmvwPMhtNIbh8g==
-X-Received: by 2002:a05:600c:3648:b0:40c:2671:1550 with SMTP id y8-20020a05600c364800b0040c26711550mr3735117wmq.24.1702398754443;
-        Tue, 12 Dec 2023 08:32:34 -0800 (PST)
+        bh=QBOGPnHHB3911qXPeC7joHkuSv4mKQWNp402DQT8HUM=;
+        b=YsieEckUmbtPMFh8WJiSHK5T9LdsH4ZG/4DruOzIGrJN6e9RDFbZiFuxd8PqVdtDJA
+         ilFpwskESWjxSySgJyew3AS+26yX+fHfc2o8b0k9+L6tMLLNHqrg65zEAstqomh9BSxF
+         I0pRyNm7/RnObNHB1M1RwoHSydAWfh08P+T/3R261kp2L/HwY5jVTFSYpEcuQ7wHBdow
+         PCzlsn2W9TUb+/zBM07ihpG9+HI0GPzXZdxNhinsokDQDwvJRV1DKPGuEq9gYFfKGss6
+         HwH0llFQz9DJXfehXxTRKHtPd6i9PrEa370J6O9XLu2cLeiEa892B+C+uoQdn4E5CW1I
+         Mtdw==
+X-Gm-Message-State: AOJu0YwIk0h6OP9uXGUAAQKNrkx7dbgycini3KQZUcrASEeZ97aRXSm2
+	wQWGSmfXCveQm9CQ1sCyLMVDnaxL
+X-Google-Smtp-Source: AGHT+IHdDnlbdk7OHM8tTTeyyle5mW0FYFGDZn5ZKs+vQ26Fe4J2l4AZ68x14i6EIP/rf8xO94PXYg==
+X-Received: by 2002:a05:600c:c8d:b0:40c:2b85:5b87 with SMTP id fj13-20020a05600c0c8d00b0040c2b855b87mr4315249wmb.98.1702398760868;
+        Tue, 12 Dec 2023 08:32:40 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.175.193])
-        by smtp.gmail.com with ESMTPSA id m27-20020a05600c3b1b00b0040b38292253sm19428074wms.30.2023.12.12.08.32.32
+        by smtp.gmail.com with ESMTPSA id t4-20020adff044000000b0033340937da6sm11071845wro.95.2023.12.12.08.32.38
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 12 Dec 2023 08:32:34 -0800 (PST)
+        Tue, 12 Dec 2023 08:32:40 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -92,144 +92,132 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 24/33] hw/arm/fsl-imx6: Let the A9MPcore create/wire the CPU cores
-Date: Tue, 12 Dec 2023 17:29:24 +0100
-Message-ID: <20231212162935.42910-25-philmd@linaro.org>
+Subject: [PATCH 25/33] hw/arm/fsl-imx6ul: Let the A7MPcore create/wire the CPU cores
+Date: Tue, 12 Dec 2023 17:29:25 +0100
+Message-ID: <20231212162935.42910-26-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231212162935.42910-1-philmd@linaro.org>
 References: <20231212162935.42910-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: j2BgpZmQM5vY
+X-TUID: VxitDWelvFHR
 
-Set the properties on the a9mpcore object to let it create and
+Set the properties on the a7mpcore object to let it create and
 wire the CPU cores. Remove the redundant code.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/arm/fsl-imx6.h |  4 ----
- hw/arm/fsl-imx6.c         | 47 +++++++--------------------------------
- hw/arm/sabrelite.c        |  4 +++-
- 3 files changed, 11 insertions(+), 44 deletions(-)
+ include/hw/arm/fsl-imx6ul.h |  4 ----
+ hw/arm/fsl-imx6ul.c         | 24 ++++++------------------
+ hw/arm/mcimx6ul-evk.c       |  3 ++-
+ 3 files changed, 8 insertions(+), 23 deletions(-)
 
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 21a3b035a4..643c3160c7 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -33,7 +33,6 @@
+diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
+index b37d544319..9957ab5be0 100644
+--- a/include/hw/arm/fsl-imx6ul.h
++++ b/include/hw/arm/fsl-imx6ul.h
+@@ -34,7 +34,6 @@
  #include "hw/usb/chipidea.h"
  #include "hw/usb/imx-usb-phy.h"
  #include "exec/memory.h"
 -#include "cpu.h"
  #include "qom/object.h"
+ #include "qemu/units.h"
  
- #define TYPE_FSL_IMX6 "fsl-imx6"
-@@ -51,11 +50,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX6State, FSL_IMX6)
- #define FSL_IMX6_NUM_USBS 4
+@@ -63,11 +62,8 @@ enum FslIMX6ULConfiguration {
+ };
  
- struct FslIMX6State {
+ struct FslIMX6ULState {
 -    /*< private >*/
-     DeviceState parent_obj;
+     DeviceState    parent_obj;
  
 -    /*< public >*/
--    ARMCPU         cpu[FSL_IMX6_NUM_CPUS];
-     A9MPPrivState  a9mpcore;
-     IMX6CCMState   ccm;
-     IMX6SRCState   src;
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 65c7c1a0f9..f05ea62351 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -29,6 +29,7 @@
- #include "chardev/char.h"
+-    ARMCPU             cpu;
+     CortexMPPrivState  a7mpcore;
+     IMXGPTState        gpt[FSL_IMX6UL_NUM_GPTS];
+     IMXEPITState       epit[FSL_IMX6UL_NUM_EPITS];
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 6e4343efaa..512973e3c1 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -25,6 +25,7 @@
+ #include "sysemu/sysemu.h"
  #include "qemu/error-report.h"
  #include "qemu/module.h"
-+#include "target/arm/cpu.h"
++#include "target/arm/cpu.h" /* qom */
  
- #define IMX6_ESDHC_CAPABILITIES     0x057834b4
+ #define NAME_SIZE 20
  
-@@ -36,17 +37,10 @@
- 
- static void fsl_imx6_init(Object *obj)
- {
--    MachineState *ms = MACHINE(qdev_get_machine());
-     FslIMX6State *s = FSL_IMX6(obj);
+@@ -34,9 +35,6 @@ static void fsl_imx6ul_init(Object *obj)
      char name[NAME_SIZE];
      int i;
  
--    for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX6_NUM_CPUS); i++) {
--        snprintf(name, NAME_SIZE, "cpu%d", i);
--        object_initialize_child(obj, name, &s->cpu[i],
--                                ARM_CPU_TYPE_NAME("cortex-a9"));
--    }
+-    object_initialize_child(obj, "cpu0", &s->cpu,
+-                            ARM_CPU_TYPE_NAME("cortex-a7"));
 -
-     object_initialize_child(obj, "a9mpcore", &s->a9mpcore, TYPE_A9MPCORE_PRIV);
+     /*
+      * A7MPCORE
+      */
+@@ -158,8 +156,6 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+     DeviceState *gic;
+     int i;
+     char name[NAME_SIZE];
+-    SysBusDevice *sbd;
+-    DeviceState *d;
  
-     object_initialize_child(obj, "ccm", &s->ccm, TYPE_IMX6_CCM);
-@@ -119,43 +113,18 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     if (ms->smp.cpus > 1) {
+         error_setg(errp, "%s: Only a single CPU is supported (%d requested)",
+@@ -167,26 +163,18 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
          return;
      }
  
--    for (i = 0; i < smp_cpus; i++) {
+-    qdev_realize(DEVICE(&s->cpu), NULL, &error_abort);
 -
--        /* On uniprocessor, the CBAR is set to 0 */
--        if (smp_cpus > 1) {
--            object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
--                                    FSL_IMX6_A9MPCORE_ADDR, &error_abort);
--        }
--
--        /* All CPU but CPU 0 start in power off mode */
--        if (i) {
--            object_property_set_bool(OBJECT(&s->cpu[i]), "start-powered-off",
--                                     true, &error_abort);
--        }
--
--        if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
--            return;
--        }
--    }
--
--    object_property_set_int(OBJECT(&s->a9mpcore), "num-cores", smp_cpus,
--                            &error_abort);
--
--    object_property_set_int(OBJECT(&s->a9mpcore), "num-irq",
--                            FSL_IMX6_MAX_IRQ + GIC_INTERNAL, &error_abort);
--
-+    qdev_prop_set_uint32(DEVICE(&s->a9mpcore), "num-cores", smp_cpus);
-+    qdev_prop_set_string(DEVICE(&s->a9mpcore), "cpu-type",
-+                         ARM_CPU_TYPE_NAME("cortex-a9"));
-+    qdev_prop_set_uint64(DEVICE(&s->a9mpcore), "cpu-reset-cbar",
-+                         FSL_IMX6_A9MPCORE_ADDR);
-+    qdev_prop_set_uint32(DEVICE(&s->a9mpcore), "gic-spi-num",
-+                         FSL_IMX6_MAX_IRQ + GIC_INTERNAL);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->a9mpcore), errp)) {
-         return;
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->a9mpcore), 0, FSL_IMX6_A9MPCORE_ADDR);
+     /*
+      * A7MPCORE
+      */
+-    object_property_set_int(OBJECT(&s->a7mpcore), "num-cores", 1, &error_abort);
+-    object_property_set_int(OBJECT(&s->a7mpcore), "num-irq",
+-                            FSL_IMX6UL_MAX_IRQ + GIC_INTERNAL, &error_abort);
++    qdev_prop_set_uint32(DEVICE(&s->a7mpcore), "num-cores", 1);
++    qdev_prop_set_string(DEVICE(&s->a7mpcore), "cpu-type",
++                         ARM_CPU_TYPE_NAME("cortex-a7"));
++    qdev_prop_set_uint32(DEVICE(&s->a7mpcore), "gic-spi-num",
++                         FSL_IMX6UL_MAX_IRQ + GIC_INTERNAL);
+     sysbus_realize(SYS_BUS_DEVICE(&s->a7mpcore), &error_abort);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, FSL_IMX6UL_A7MPCORE_ADDR);
+     gic = DEVICE(&s->a7mpcore);
  
--    for (i = 0; i < smp_cpus; i++) {
--        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i,
--                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_IRQ));
--        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + smp_cpus,
--                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FIQ));
--    }
+-    sbd = SYS_BUS_DEVICE(&s->a7mpcore);
+-    d = DEVICE(&s->cpu);
 -
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ccm), errp)) {
-         return;
+-    sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(d, ARM_CPU_IRQ));
+-    sysbus_connect_irq(sbd, 1, qdev_get_gpio_in(d, ARM_CPU_FIQ));
+-    sysbus_connect_irq(sbd, 2, qdev_get_gpio_in(d, ARM_CPU_VIRQ));
+-    sysbus_connect_irq(sbd, 3, qdev_get_gpio_in(d, ARM_CPU_VFIQ));
+-
+     /*
+      * A7MPCORE DAP
+      */
+diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
+index 500427e94b..a19834930f 100644
+--- a/hw/arm/mcimx6ul-evk.c
++++ b/hw/arm/mcimx6ul-evk.c
+@@ -18,6 +18,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/qtest.h"
++#include "target/arm/cpu.h" /* qom */
+ 
+ static void mcimx6ul_evk_init(MachineState *machine)
+ {
+@@ -64,7 +65,7 @@ static void mcimx6ul_evk_init(MachineState *machine)
      }
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 56f184b9ae..751053e8e3 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -99,7 +99,9 @@ static void sabrelite_init(MachineState *machine)
-     sabrelite_binfo.secondary_cpu_reset_hook = sabrelite_reset_secondary;
  
      if (!qtest_enabled()) {
--        arm_load_kernel(&s->cpu[0], machine, &sabrelite_binfo);
-+        CortexMPPrivState *mp = CORTEX_MPCORE_PRIV(&s->a9mpcore);
-+
-+        arm_load_kernel(mp->cpu[0], machine, &sabrelite_binfo);
+-        arm_load_kernel(&s->cpu, machine, &boot_info);
++        arm_load_kernel(s->a7mpcore.cpu[0], machine, &boot_info);
      }
  }
  

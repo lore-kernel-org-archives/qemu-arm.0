@@ -1,140 +1,102 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1491302ejo;
-        Wed, 13 Dec 2023 01:13:21 -0800 (PST)
-X-Received: by 2002:a05:600c:198b:b0:40c:4be1:ae11 with SMTP id t11-20020a05600c198b00b0040c4be1ae11mr2033894wmq.188.1702458800892;
-        Wed, 13 Dec 2023 01:13:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702458800; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1535429ejo;
+        Wed, 13 Dec 2023 02:59:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF4u80G/6tzC+HjTIO9JfsfPDoC4pJYQxROg4DzrLw8IvmBY01QMtkGSsSZ/IhMBVzuktxZ
+X-Received: by 2002:adf:ec51:0:b0:333:2fd2:68eb with SMTP id w17-20020adfec51000000b003332fd268ebmr3675498wrn.126.1702465145859;
+        Wed, 13 Dec 2023 02:59:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702465145; cv=none;
         d=google.com; s=arc-20160816;
-        b=PuGXVMvMVu02yWJCzk5G81LBn9kxOVJVKyZi0IEeP3pUJ19Xt3VvgOfToPSUZbmlrQ
-         ms+PBGS0rIBVwj0GzidiSio6BySFw7TqHShZnS/wfI6OMoU/EgrQVrs2GYB4TXUuY+KR
-         xN8ZpQd60bcJVPw5s6ZAWd15TztgE3Xx3BiSjIT5WFMATzAXaJQB8OkkyssCZu6HZEx2
-         aNWfKBEftrsJx23jmk74j6NA82WJWucGLSqaZ9pawxpjeoBXhoNeu1nO2ac9bmMVnSKC
-         n2OQnIPcEUxulMuJOQDU9X6iQZphYyIDhWwfuU+e1ABtOWkY/v9QiF5eHVs8hUjaXC6C
-         ccmg==
+        b=Jvv2JufItD0NIkML9dbzGcyO6sSbQYwP7tAQylwOB09dBhp/NOM1tFYM4Ai7EN9ux2
+         pMXpH+1B/6lP6eQMi3goppsmTczBcFEJ9inKtgXkp26peilJJtL0MRZ4+asK1ne6Fhz7
+         Kn/6bLaX6ztFqBB2Hjv+m0SYNR+IprURHel4Ad8iYtp1D8S3Tse7RxxYpyqG9L3AwXi+
+         adKJeHiYht0A9OFQjXAqm5xJTNL++LZJk4JNnwapspnpwd1cqKEZUYyum2HK/Lrx/WIv
+         7fQvr4X/TSJ4gjLYex1DbZY+QnSkgMGSfpPjEq0pqJ5AivXKNNo+qzIyjh2in94f+eZF
+         SmmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=3vCRBepvGDIF+h/atkNkxz5l7o+29hEqO81znVRZd54=;
-        fh=whROT/TrZZWy3SjVspV1lQ66SoXcaNqXq+BZFjesvVU=;
-        b=hc5AW+8ebFBDLqgLTw+GtT5WySA1fI9N56UiJtivA87MDld70CTOG9tdc2yfYJ4x6u
-         whLgoJNCD/+FsxQOW9drFENevX5SM/4aEfuVQN/sRdP0OtlBTmH62rWzETqKOtGrU4OD
-         bVJSvQHMJlklTvaUE28CQLSzn9rLURNLOYL13NvxOyD91/Shddlv3oY0mqRSg08cf8wi
-         8ldcZ+cOADkUZ9xVmsIlsibWx0QBHREHJTZoB4CGN1J2kzF3qyEOIF5mxMXnKwq/IunX
-         1YqQSoDUbZFslZCmQzskIrhZXMmUgcXKt5va8N8pLrY1tHUipy8tFjIVc7bjcc0ew6Wd
-         pUng==
+        bh=aEddrYkgGQER1OOkp2bRdEufjUq51d4bwJVsIHfi3MQ=;
+        fh=XLW1C7I6Sn5JpHNpLRAk07iGFZcHqLv5S3LIVLs4uik=;
+        b=OHj+i4Caa7/ljL4vqJ2RBJyE3nRVwah7FIoLUf2QHG280SbCToL4t8atam64ZnC9xA
+         Icicpjk+YxHcQpCd6WrUGNwd+s9EOpky8UKAJENoXhkfngSySu5w7sY9SsOhh8cpjmeY
+         DF+1lbr8QfAOMqA3dsXyiRgfJRJ7rsqhUJ3MA03IalbXmcfRE6I/ahJq4arf0AFFJ1ks
+         gXii/nb+b/wjnlhL9rD2Uq38460vRliCHZ5IVjsuU6wBIxUJKDXCDakEP+CBJOhLoOnI
+         meQTKSQO4mKFoEWhifqvPhAZb6wVg3R/JGWB+8C81CdMsI2Qkznpqn/4eyv5WXa0tdJ5
+         RvfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SkSEyv+N;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v6-20020adfe4c6000000b003363eddd237sor184264wrm.7.2023.12.13.01.13.20
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 13 Dec 2023 01:13:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@rev.ng header.s=dkim header.b="klMKic/q";
+       spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
+Return-Path: <anjo@rev.ng>
+Received: from rev.ng (rev.ng. [5.9.113.41])
+        by mx.google.com with ESMTPS id c12-20020adfe70c000000b0033636408e41si1160049wrm.355.2023.12.13.02.59.05
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 13 Dec 2023 02:59:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) client-ip=5.9.113.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SkSEyv+N;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702458800; x=1703063600; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3vCRBepvGDIF+h/atkNkxz5l7o+29hEqO81znVRZd54=;
-        b=SkSEyv+N/rNUkby++LDOvlAJ7aJ44LqWq3XgLWMaIFTe7NF5ZpIy8PGdLG/BuBjUyq
-         kLGaxQDKlVZG0zFnzesShzcAzmCpWIdyTgdmNxv+KWoxJBaGN5wdu0q0PPxpmcyg74GT
-         ERt15CtBZ2vox9zOEshJ5Nuc1oVNbRjSrXf+6kqZteIChV5LaznmL3jlTnUb9b7O5PL+
-         uCOUO/jqOA2RTkooIWPslPEEm5d6IDVNqBZKNoiHinLLPBcDFTFYV0cQVq3Dj6ZrcP+N
-         wxZNz07Xp9lJ7GhXuLy7RS0zxiWUVKB3DMUVYDqPJeVjxp29dN+abKfwZsieo4Q7BCQ0
-         2XIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702458800; x=1703063600;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3vCRBepvGDIF+h/atkNkxz5l7o+29hEqO81znVRZd54=;
-        b=o6VusQtEA8z042c5F0/ZmMGFnjiPKuDf9cFECnvNhAaxS7oi9F22w+rj110M7I0tfB
-         rWgzRUgb2Xu/cCDCz9ycJssHrouB8S2VSQXOx4GD24PncVn7Xlax591PmLIRtPere2e0
-         Gj1AEY4qg+E8heC2OfvHNO2lIpdq+4RL5/e3sSF9dteVsE3XvSOvVANZ2iOHrU8cv3ub
-         MjzfwoILL4do1nN/7XKSO7kFUrEKaHzYHRyQaMfslPqND3y0nSwFUjVcSJDogN4GfFmV
-         PFXDVxq6SNE5uurvBmLu6qnyvzfqnSrAvYokIQ+aLW4KYCdfzEahbjVgwHIYaGEzmM0i
-         nv0w==
-X-Gm-Message-State: AOJu0YwjVERLwAx5mPeK5ckAI7K5I52bU9IHhaMoyVqMJicm6yo7kU3b
-	4lF4wOPPEB1nHQfrqeoHMNHq5acSfTSIJwPiC27yVMcE
-X-Google-Smtp-Source: AGHT+IE9xay8x/YNBjFbm+6BzCl5z3RD+Pky9tTfGzbEVRlsBLYbIRZLUEOA+vH420pZ2xd+I5XBfw==
-X-Received: by 2002:a1c:7919:0:b0:40c:311d:c677 with SMTP id l25-20020a1c7919000000b0040c311dc677mr4091566wme.165.1702458800305;
-        Wed, 13 Dec 2023 01:13:20 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.50.175] (109.red-88-28-22.dynamicip.rima-tde.net. [88.28.22.109])
-        by smtp.gmail.com with ESMTPSA id jb4-20020a05600c54e400b0040c5cf930e6sm1139226wmb.19.2023.12.13.01.13.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Dec 2023 01:13:19 -0800 (PST)
-Message-ID: <ffc9c69b-f66b-4520-81a3-a2f125a7b7ea@linaro.org>
-Date: Wed, 13 Dec 2023 10:13:14 +0100
+       dkim=pass header.i=@rev.ng header.s=dkim header.b="klMKic/q";
+       spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
+	s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=aEddrYkgGQER1OOkp2bRdEufjUq51d4bwJVsIHfi3MQ=; b=klMKic/qtuFI8u79wdlpNv1Iua
+	JVkBVq/rElRK0qgYefUDA32irO1k8Yxf6LrZkv3/TZ7DBbm509ciOIrUdOLsFAMHwjAaEXj56dn93
+	jqtpSjipOSRzxJl4gGrluf5XpQDNZfsSDvic5Un7tjAXtrjXnSXfYv5uI4RS81jMEt7w=;
+Date: Wed, 13 Dec 2023 11:58:55 +0100
+From: Anton Johansson <anjo@rev.ng>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Claudio Fontana <cfontana@suse.de>, 
+	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, 
+	Richard Henderson <richard.henderson@linaro.org>, qemu-riscv@nongnu.org, Brian Cain <bcain@quicinc.com>, 
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	Warner Losh <imp@bsdimp.com>
+Subject: Re: [PATCH v2 07/23] semihosting/guestfd: Remove unused
+ 'semihosting/uaccess.h' header
+Message-ID: <xynfnvhe62bcihq3hsiesfen4btym626aop3anehdbfcugx2p7@nqgttxrtfpo2>
+References: <20231212123401.37493-1-philmd@linaro.org>
+ <20231212123401.37493-8-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-8.2 v4 04/10] hw/char/pl011: Extract
- pl011_write_txdata() from pl011_write()
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Peter Maydell <peter.maydell@linaro.org>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
-References: <20231109192814.95977-1-philmd@linaro.org>
- <20231109192814.95977-5-philmd@linaro.org>
- <e499f176-d882-4727-8caf-268d72e06606@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <e499f176-d882-4727-8caf-268d72e06606@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: /qy9VPOXkvUv
+In-Reply-To: <20231212123401.37493-8-philmd@linaro.org>
+X-TUID: +I0Lw8Qj0lKl
 
-On 10/11/23 00:17, Richard Henderson wrote:
-> On 11/9/23 11:28, Philippe Mathieu-Daudé wrote:
->> When implementing FIFO, this code will become more complex.
->> Start by factoring it out to a new pl011_write_txdata() function.
->> No functional change intended.
+On 12/12/23, Philippe Mathieu-Daudé wrote:
+> Nothing in guestfd.c requires "semihosting/uaccess.h" nor "qemu.h".
 > 
-> ...
->> @@ -262,19 +273,13 @@ static void pl011_write(void *opaque, hwaddr 
->> offset,
->>                           uint64_t value, unsigned size)
->>   {
->>       PL011State *s = (PL011State *)opaque;
->> -    unsigned char ch;
->>       trace_pl011_write(offset, value, pl011_regname(offset));
->>       switch (offset >> 2) {
->>       case 0: /* UARTDR */
->> -        /* ??? Check if transmitter is enabled.  */
->> -        ch = value;
->> -        /* XXX this blocks entire thread. Rewrite to use
->> -         * qemu_chr_fe_write and background I/O callbacks */
->> -        qemu_chr_fe_write_all(&s->chr, &ch, 1);
->> -        s->int_level |= INT_TX;
->> -        pl011_update(s);
->> +        s->readbuff = value;
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  semihosting/guestfd.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 > 
-> Why the write to readbuff?
+> diff --git a/semihosting/guestfd.c b/semihosting/guestfd.c
+> index 955c2efbd0..d3241434c5 100644
+> --- a/semihosting/guestfd.c
+> +++ b/semihosting/guestfd.c
+> @@ -12,10 +12,7 @@
+>  #include "gdbstub/syscalls.h"
+>  #include "semihosting/semihost.h"
+>  #include "semihosting/guestfd.h"
+> -#ifdef CONFIG_USER_ONLY
+> -#include "qemu.h"
+> -#else
+> -#include "semihosting/uaccess.h"
+> +#ifndef CONFIG_USER_ONLY
+>  #include CONFIG_DEVICES
+>  #endif
+>  
+> -- 
+> 2.41.0
+> 
 
-I think I wanted to use it when FIFO is disabled due to:
+Reviewed-by: Anton Johansson <anjo@rev.ng>
 
-https://developer.arm.com/documentation/ddi0183/g/programmers-model/register-descriptions/line-control-register--uartlcr-h?lang=en
-
-UARTLCR_H.FEN:
-
-   Enable FIFOs:
-
-   0 = FIFOs are disabled (character mode) that is, the FIFOs become
-       1-byte-deep holding registers
-
-   1 = transmit and receive FIFO buffers are enabled (FIFO mode).
-
-and we don't have a fifo8_change_capacity() method.
-
-Otherwise, not sure what for is this field... I'll see if we can
-just remove it.
+-- 
+Anton Johansson
+rev.ng Labs Srl.

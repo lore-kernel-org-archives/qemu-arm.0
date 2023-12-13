@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1563071ejo;
-        Wed, 13 Dec 2023 03:56:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IErWfIEte9bR4rKNFKdgltZtcPGL1ghgNHTf1BO7c4cYsV+NgsZjKgPG5kaHwVhZjKgrHud
-X-Received: by 2002:a05:600c:b50:b0:40b:5e26:2382 with SMTP id k16-20020a05600c0b5000b0040b5e262382mr3950542wmr.51.1702468575452;
-        Wed, 13 Dec 2023 03:56:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702468575; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1623627ejo;
+        Wed, 13 Dec 2023 05:38:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE05/ptv4Ck7HsfGXL0rgfEmoMejSFkmM0+m4gP6J40bxB3RbF6w5jpDC1oy2ad/mY05ScV
+X-Received: by 2002:a05:600c:1d1f:b0:40b:5e1a:db94 with SMTP id l31-20020a05600c1d1f00b0040b5e1adb94mr3026936wms.53.1702474704067;
+        Wed, 13 Dec 2023 05:38:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702474704; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jo2BPG+haNR903I9ecvQ3GiA9AZz28qtuOIVJ3iN5yu1OxhcxOGGbsGLHzKwlPOCtK
-         rImHZKN76OOsgnF8QZaJ8CPmdep6vipmjgbddnD8wA60AL8gFOQl0JSMaPPcLq12uavu
-         xuiOhegWMJL+zBcb2dL+rMfKGCK64V1hecLtCYIO5tueCKjmisL0SdLKTdRjTMBAeM18
-         7A0QWBiqTJy3a4UFSB6Swnhm651J705LZuc/q9QSFDMQJO7/b/vMCNDL5qYZCbz1omRC
-         rsbtVhx9AXKlApoMA1nBraj2PQ5SPzotpzAEDIMxjaF8H+zmGv6miEiQ2bKyIePlHMK6
-         05xg==
+        b=BiJopbG++6tHjJ5/FG+Tj5+F7wF7Qi0j62Htj/RAyw0jc7wxXVw0i4+8984B3eGhpi
+         KKxSAXTYSKmXBepjpz3Y+YArhN8vsxWnMsftJRZZU4/fCZrWP8qR6axO5yne/ej25tOa
+         zIgtkzIPgq8szgvfeVLhLGphe3bwfFIsvsqGtmmCnhuKO79F7O1p7+FSlyEoKHo5a2PE
+         TB2C4tYLTdaMTLJ02hlMa2UFWioa3l9EeDI40dA2K64qqX5by7bJWSydnWViHzVXQd/7
+         3R76ccr7xPXoY3ZEjhmgmaLePLpjTiSVBa0rkviEfIVxAfSDB8sQuOAKf5zhZdqK0f1v
+         c3wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=BV6K3Mm3nvgXNQo4BiKorufcdfPdeA72eRuRFOnsb0Y=;
+        bh=UUEDryXTf/4wJmlqQ++H9789dv4kj1oMrzKnsjqUFfI=;
         fh=XLW1C7I6Sn5JpHNpLRAk07iGFZcHqLv5S3LIVLs4uik=;
-        b=Ceg74IIW4+hpD8sLjhgimghbn8lVKTzkpatLE0Py+TalbpBmjbgy52yw/67fq8yHeq
-         +2WVsxb9NKh11XQ/nF6N7Bw21hDAmr4bX40QYq0ffMZpOF7hfSC4sxnITuSauAgr23Qq
-         y0MhomZ0GAgzUl3AEv6JcAGtMRddE2X7XKUaVHuvlwbSSRWGUN9Hcr+i6huagc6nCUjC
-         BbU4259CMCsUv5dVieZZ9Q6QnNQgFcZsyNAATTs7dDaqmP31Sxsrr0Faw6OiHYD9BhUe
-         Vz5sT5AaqzcBakAQxM8Dlf6p0E/CHwnBNja4d5gbViXlivRaOAIGU9k4o2P0z3OniOpk
-         PfdA==
+        b=bAL8rMleHMSWyAF/UI3iGqwjh4Y09STqnrswcJuMMp8/zdwWkRIiglo9JvPuIj/Axt
+         SIukuM5YT2lkh9kEmgOxIcBEMD2QENcJ3siNphGovGKVNwxrXgXY1ut4dzM5Hzi4GlH0
+         iu+GBqWIOP6XHOoX5A6DK0Cy0yFptthIzM3ewjhTgE3JC+w7E1Av5+6PFDIsHUZOXEEu
+         mD7/TiAVw+DUFo3JflJ5iIQ577LFQjX7AbctTl45xUkMVyHmsv+LqfF83L984FYKGf85
+         bwVisLjPx0Wh2jNF3Mq0AAVP+O1FN5wotshI+QCNzLu4cglfqKiEsR+47M0uaDXgqkAU
+         csUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rev.ng header.s=dkim header.b=fChkF+tF;
+       dkim=pass header.i=@rev.ng header.s=dkim header.b=NgYsU72U;
        spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
 Return-Path: <anjo@rev.ng>
 Received: from rev.ng (rev.ng. [5.9.113.41])
-        by mx.google.com with ESMTPS id e19-20020a05600c439300b0040b4ff99cd1si6543662wmn.163.2023.12.13.03.56.15
+        by mx.google.com with ESMTPS id u18-20020a05600c19d200b0040c5c86c26csi622076wmq.207.2023.12.13.05.38.23
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Dec 2023 03:56:15 -0800 (PST)
+        Wed, 13 Dec 2023 05:38:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) client-ip=5.9.113.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rev.ng header.s=dkim header.b=fChkF+tF;
+       dkim=pass header.i=@rev.ng header.s=dkim header.b=NgYsU72U;
        spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
@@ -43,10 +43,10 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=BV6K3Mm3nvgXNQo4BiKorufcdfPdeA72eRuRFOnsb0Y=; b=fChkF+tFvOlznkDok0k5Ld3BIS
-	s433J27x0cW1KBIpdSOJTOTPBbZeyiuqvgmWkImHptdUFvmxMPY4p0AISEfivz5VfJDjlTaUT6kVx
-	rSMeUJs+IYTG45iye/+aenpwPLkwSN1vGwd+jLWP9uwrxwI81LS/Anym4zIE3zrrx/SQ=;
-Date: Wed, 13 Dec 2023 12:56:06 +0100
+	bh=UUEDryXTf/4wJmlqQ++H9789dv4kj1oMrzKnsjqUFfI=; b=NgYsU72UFCC+I495Q//dJTEAVH
+	X1iwOxiMTBUGCHRHfRTOdzo8NKiHboOjKMH4jf3ABc5VCAYVWoWIDvu3jkx3kVrChL41r/Aw6Vf9H
+	y8Q/BUa+GbQEcVDlecqOc4ktXFl3maCIxdTpVU3WtaXPC/QWUVtBEyfi3ew9SkfITlIw=;
+Date: Wed, 13 Dec 2023 14:38:14 +0100
 From: Anton Johansson <anjo@rev.ng>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Claudio Fontana <cfontana@suse.de>, 
@@ -55,66 +55,41 @@ Cc: qemu-devel@nongnu.org, Claudio Fontana <cfontana@suse.de>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
 	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
 	Warner Losh <imp@bsdimp.com>
-Subject: Re: [PATCH v2 09/23] host/atomic128: Include missing 'qemu/atomic.h'
+Subject: Re: [PATCH v2 11/23] accel/tcg: Include missing 'hw/core/cpu.h'
  header
-Message-ID: <vzzjwfq23lhpukirvss75s5tuu4vn6djbu22mlrgwvha6em4vv@irs5cx6zy674>
+Message-ID: <i4jss7cf7mnol6va7qwxuulkkk574gocpx7zumeiqymt5f5ap4@npfce2ik7csv>
 References: <20231212123401.37493-1-philmd@linaro.org>
- <20231212123401.37493-10-philmd@linaro.org>
+ <20231212123401.37493-12-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231212123401.37493-10-philmd@linaro.org>
-X-TUID: dnPEjoNB49fb
+In-Reply-To: <20231212123401.37493-12-philmd@linaro.org>
+X-TUID: JzcYTjAoMXwK
 
 On 12/12/23, Philippe Mathieu-Daudé wrote:
-> qatomic_cmpxchg__nocheck(), qatomic_read__nocheck(),
-> qatomic_set__nocheck() are defined in "qemu/atomic.h".
-> Include it in order to avoid:
-> 
->   In file included from include/exec/helper-proto.h:10:
->   In file included from include/exec/helper-proto-common.h:10:
->   In file included from include/qemu/atomic128.h:61:
->   In file included from host/include/aarch64/host/atomic128-cas.h:16:
->   host/include/generic/host/atomic128-cas.h:23:11: error: call to undeclared function 'qatomic_cmpxchg__nocheck'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
->     r.i = qatomic_cmpxchg__nocheck(ptr_align, c.i, n.i);
->           ^
+> tcg_cpu_init_cflags() accesses CPUState fields, so requires
+> "hw/core/cpu.h" to get its structure definition.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  host/include/generic/host/atomic128-cas.h  | 2 ++
->  host/include/generic/host/atomic128-ldst.h | 2 ++
->  2 files changed, 4 insertions(+)
+>  accel/tcg/tcg-accel-ops.c | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/host/include/generic/host/atomic128-cas.h b/host/include/generic/host/atomic128-cas.h
-> index 6b40cc2271..4824f14659 100644
-> --- a/host/include/generic/host/atomic128-cas.h
-> +++ b/host/include/generic/host/atomic128-cas.h
-> @@ -11,6 +11,8 @@
->  #ifndef HOST_ATOMIC128_CAS_H
->  #define HOST_ATOMIC128_CAS_H
+> diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+> index 1b57290682..58806e2d7f 100644
+> --- a/accel/tcg/tcg-accel-ops.c
+> +++ b/accel/tcg/tcg-accel-ops.c
+> @@ -37,6 +37,8 @@
+>  #include "exec/tb-flush.h"
+>  #include "exec/gdbstub.h"
 >  
-> +#include "qemu/atomic.h"
+> +#include "hw/core/cpu.h"
 > +
->  #if defined(CONFIG_ATOMIC128)
->  static inline Int128 ATTRIBUTE_ATOMIC128_OPT
->  atomic16_cmpxchg(Int128 *ptr, Int128 cmp, Int128 new)
-> diff --git a/host/include/generic/host/atomic128-ldst.h b/host/include/generic/host/atomic128-ldst.h
-> index 691e6a8531..12e4aca2da 100644
-> --- a/host/include/generic/host/atomic128-ldst.h
-> +++ b/host/include/generic/host/atomic128-ldst.h
-> @@ -11,6 +11,8 @@
->  #ifndef HOST_ATOMIC128_LDST_H
->  #define HOST_ATOMIC128_LDST_H
->  
-> +#include "qemu/atomic.h"
-> +
->  #if defined(CONFIG_ATOMIC128)
->  # define HAVE_ATOMIC128_RO 1
->  # define HAVE_ATOMIC128_RW 1
+>  #include "tcg-accel-ops.h"
+>  #include "tcg-accel-ops-mttcg.h"
+>  #include "tcg-accel-ops-rr.h"
 > -- 
 > 2.41.0
 > 
-
-What about the int128.h includes? I guess those definitions are acquired 
-from atomic128.h that includes -cas.h/-ldst.h?
+Reviewed-by: Anton Johansson <anjo@rev.ng>

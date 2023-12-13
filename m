@@ -1,356 +1,140 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1431517ejo;
-        Tue, 12 Dec 2023 22:43:26 -0800 (PST)
-X-Received: by 2002:a05:6808:3c4c:b0:3ba:12af:8311 with SMTP id gl12-20020a0568083c4c00b003ba12af8311mr6445394oib.117.1702449806382;
-        Tue, 12 Dec 2023 22:43:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702449806; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1491302ejo;
+        Wed, 13 Dec 2023 01:13:21 -0800 (PST)
+X-Received: by 2002:a05:600c:198b:b0:40c:4be1:ae11 with SMTP id t11-20020a05600c198b00b0040c4be1ae11mr2033894wmq.188.1702458800892;
+        Wed, 13 Dec 2023 01:13:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702458800; cv=none;
         d=google.com; s=arc-20160816;
-        b=gHiVzW+iW4M2Wek54a8pXxeAmr3qhkRx7kdjbLlkZXzVNQyioF5R7SDNroskMt7JQI
-         ACrEt+gMMi61UgAu1YAPkqj315khSTHtKnA8+VAeVrcVzpSen269kkZdHcSA4ldIZ44A
-         rymdMKWMIIanDox/3KCEoRFgqfSDhnWRz3Frg9/6TCzuvFAR1JDk+C6xzn6VL4p/YRr4
-         UR/kxD3oH9wBnGW0AWKT37lewQWfY8GLMNEH2fVLQJqrm8Edjfow//hCxkTTM052cwab
-         IfBqV7bTTDR5w/9HrlrvkMtwlaDNDUB38VYugz/rvGhcn+Ei8S0adagch9KaFALkjnuF
-         zRZQ==
+        b=PuGXVMvMVu02yWJCzk5G81LBn9kxOVJVKyZi0IEeP3pUJ19Xt3VvgOfToPSUZbmlrQ
+         ms+PBGS0rIBVwj0GzidiSio6BySFw7TqHShZnS/wfI6OMoU/EgrQVrs2GYB4TXUuY+KR
+         xN8ZpQd60bcJVPw5s6ZAWd15TztgE3Xx3BiSjIT5WFMATzAXaJQB8OkkyssCZu6HZEx2
+         aNWfKBEftrsJx23jmk74j6NA82WJWucGLSqaZ9pawxpjeoBXhoNeu1nO2ac9bmMVnSKC
+         n2OQnIPcEUxulMuJOQDU9X6iQZphYyIDhWwfuU+e1ABtOWkY/v9QiF5eHVs8hUjaXC6C
+         ccmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:dkim-signature;
-        bh=Iml365b4EelzYHSZ0FulCEqGdj4H79FyvhO3q4R/Ev0=;
-        fh=HE3HFS1hEYtTzJ0gsfroCOJ69k1mn8lcAqBvf3V8Iho=;
-        b=TfJzt+IDvEZ/FyN5szuhHNEnKTdu4WE/ZAb8u2WJPC534Mvja5j068E8e3nBcfM+Tq
-         62OcOWRPQHYqMEOlHO2cyC2OxvCA48SCNE8vBtUjcMB3L/JtnbUWZlIrtVgagKA9j9gF
-         +Xj0REtg8hKHmb0c5AZxHaBlJcacDa0GEZeZNIL4zprT4HboFjvXrGq6TsuE2rC1SSLt
-         XhaojGHO8Ma6lndSq+Kmv6cZzcNFSj2sQ40hPR+zlr/XJJuKJwCNdH4H3JDmLqpvuLR1
-         lvJT0GgNOE8ENOIf2hm3l6vIpellYFDHC8TmksAQmUxQghwbtxohhzBWpYzmaN12wkos
-         zvaQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=3vCRBepvGDIF+h/atkNkxz5l7o+29hEqO81znVRZd54=;
+        fh=whROT/TrZZWy3SjVspV1lQ66SoXcaNqXq+BZFjesvVU=;
+        b=hc5AW+8ebFBDLqgLTw+GtT5WySA1fI9N56UiJtivA87MDld70CTOG9tdc2yfYJ4x6u
+         whLgoJNCD/+FsxQOW9drFENevX5SM/4aEfuVQN/sRdP0OtlBTmH62rWzETqKOtGrU4OD
+         bVJSvQHMJlklTvaUE28CQLSzn9rLURNLOYL13NvxOyD91/Shddlv3oY0mqRSg08cf8wi
+         8ldcZ+cOADkUZ9xVmsIlsibWx0QBHREHJTZoB4CGN1J2kzF3qyEOIF5mxMXnKwq/IunX
+         1YqQSoDUbZFslZCmQzskIrhZXMmUgcXKt5va8N8pLrY1tHUipy8tFjIVc7bjcc0ew6Wd
+         pUng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="NM1TDEz/";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=SkSEyv+N;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c1-20020aca1c01000000b003b8b0f7fb08sor8140084oic.17.2023.12.12.22.43.26
+        by mx.google.com with SMTPS id v6-20020adfe4c6000000b003363eddd237sor184264wrm.7.2023.12.13.01.13.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Dec 2023 22:43:26 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        Wed, 13 Dec 2023 01:13:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="NM1TDEz/";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=SkSEyv+N;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1702449806; x=1703054606; darn=linaro.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Iml365b4EelzYHSZ0FulCEqGdj4H79FyvhO3q4R/Ev0=;
-        b=NM1TDEz/daeHBmPRLVxQlf1wp+xT1dL6jM7Lnr1Nv/IYU3gp5m4grQfm78dxqcJq9b
-         4SnrvZB8wpkO7hz+WkZMWBAUJr+Q3+vgMH/RV8TX9HFjNklwH0KtHURUWJ0YLusCJcLO
-         vzheuOe/+GACii2XssZN+l/obPzyBSRodzFaB8tJbe1PqAvimbVaIgUBWGerSb+azZvu
-         E7SAqlrbredF7/oyWIGYwGuAUXqtlnRvvbQhTltDohJzIXCE/nXaMcRkSYX4hjF+rsw5
-         WYu5Fo5IpAzxl8wxewWYj4HwBz1UUjGPolZ5P/Swdz7XkNGAquI7c6LSxwew4WrAZYjW
-         CUmg==
+        d=linaro.org; s=google; t=1702458800; x=1703063600; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3vCRBepvGDIF+h/atkNkxz5l7o+29hEqO81znVRZd54=;
+        b=SkSEyv+N/rNUkby++LDOvlAJ7aJ44LqWq3XgLWMaIFTe7NF5ZpIy8PGdLG/BuBjUyq
+         kLGaxQDKlVZG0zFnzesShzcAzmCpWIdyTgdmNxv+KWoxJBaGN5wdu0q0PPxpmcyg74GT
+         ERt15CtBZ2vox9zOEshJ5Nuc1oVNbRjSrXf+6kqZteIChV5LaznmL3jlTnUb9b7O5PL+
+         uCOUO/jqOA2RTkooIWPslPEEm5d6IDVNqBZKNoiHinLLPBcDFTFYV0cQVq3Dj6ZrcP+N
+         wxZNz07Xp9lJ7GhXuLy7RS0zxiWUVKB3DMUVYDqPJeVjxp29dN+abKfwZsieo4Q7BCQ0
+         2XIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702449806; x=1703054606;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Iml365b4EelzYHSZ0FulCEqGdj4H79FyvhO3q4R/Ev0=;
-        b=EN86aPIaG4ERXW+JUFtuF+vf5UGdP91HwYsNxf1UOhxe1jt187pv7iq6wyVrn2k3+U
-         aNAiVIcnwJ+wvN1wd4jo46p2PgQmPXYs6kKk+mX6MdMCN0xIsQSkp7mFm+6RHxxnf6d8
-         A6aGQwX3MOFMsGYO57/CgOp0HQtXqFg4HPOQdwB7Na1JhvWs0ICht/+vPdAqGU/9qjgK
-         IwsK11CNLbwLstUAq0FKA4JlHqdPjW9GxpT3COMQt4CG0o3HKKKKsibLAcGR/lGlHs/W
-         likE6k9RoQjHVxn1nDcwRBYbnEITNj0puSLmW95jqvq7EYYzxiCYE0O0qE5d6X3/EhBw
-         WWmQ==
-X-Gm-Message-State: AOJu0YxvNeUwmyQawe0/csddcPMXd5MI309GQv35nbFl3scxEHCny3qf
-	AndNasA5ZC/miOcawcZ6JpQH0w==
-X-Google-Smtp-Source: AGHT+IGv72lyGgllXBf9/ZKSll3qdZFYuEo+yD89Wl5azDkiXXcV1uJzExHNYIF9Tj0phk1oHbeGGw==
-X-Received: by 2002:a05:6808:140f:b0:3b8:6274:5b8 with SMTP id w15-20020a056808140f00b003b8627405b8mr11415518oiv.37.1702449805896;
-        Tue, 12 Dec 2023 22:43:25 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([157.82.205.15])
-        by smtp.gmail.com with UTF8SMTPSA id q2-20020a17090a430200b0028a4c85a55csm8232846pjg.27.2023.12.12.22.43.18
+        d=1e100.net; s=20230601; t=1702458800; x=1703063600;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3vCRBepvGDIF+h/atkNkxz5l7o+29hEqO81znVRZd54=;
+        b=o6VusQtEA8z042c5F0/ZmMGFnjiPKuDf9cFECnvNhAaxS7oi9F22w+rj110M7I0tfB
+         rWgzRUgb2Xu/cCDCz9ycJssHrouB8S2VSQXOx4GD24PncVn7Xlax591PmLIRtPere2e0
+         Gj1AEY4qg+E8heC2OfvHNO2lIpdq+4RL5/e3sSF9dteVsE3XvSOvVANZ2iOHrU8cv3ub
+         MjzfwoILL4do1nN/7XKSO7kFUrEKaHzYHRyQaMfslPqND3y0nSwFUjVcSJDogN4GfFmV
+         PFXDVxq6SNE5uurvBmLu6qnyvzfqnSrAvYokIQ+aLW4KYCdfzEahbjVgwHIYaGEzmM0i
+         nv0w==
+X-Gm-Message-State: AOJu0YwjVERLwAx5mPeK5ckAI7K5I52bU9IHhaMoyVqMJicm6yo7kU3b
+	4lF4wOPPEB1nHQfrqeoHMNHq5acSfTSIJwPiC27yVMcE
+X-Google-Smtp-Source: AGHT+IE9xay8x/YNBjFbm+6BzCl5z3RD+Pky9tTfGzbEVRlsBLYbIRZLUEOA+vH420pZ2xd+I5XBfw==
+X-Received: by 2002:a1c:7919:0:b0:40c:311d:c677 with SMTP id l25-20020a1c7919000000b0040c311dc677mr4091566wme.165.1702458800305;
+        Wed, 13 Dec 2023 01:13:20 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.50.175] (109.red-88-28-22.dynamicip.rima-tde.net. [88.28.22.109])
+        by smtp.gmail.com with ESMTPSA id jb4-20020a05600c54e400b0040c5cf930e6sm1139226wmb.19.2023.12.13.01.13.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Dec 2023 22:43:25 -0800 (PST)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Wed, 13 Dec 2023 15:41:13 +0900
-Subject: [PATCH v17 14/14] contrib/plugins: Allow to log registers
+        Wed, 13 Dec 2023 01:13:19 -0800 (PST)
+Message-ID: <ffc9c69b-f66b-4520-81a3-a2f125a7b7ea@linaro.org>
+Date: Wed, 13 Dec 2023 10:13:14 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20231213-gdb-v17-14-777047380591@daynix.com>
-References: <20231213-gdb-v17-0-777047380591@daynix.com>
-In-Reply-To: <20231213-gdb-v17-0-777047380591@daynix.com>
-To: Peter Maydell <peter.maydell@linaro.org>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Daniel Henrique Barboza <danielhb413@gmail.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>, 
- Laurent Vivier <laurent@vivier.eu>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Yanan Wang <wangyanan55@huawei.com>, Michael Rolnik <mrolnik@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Yoshinori Sato <ysato@users.sourceforge.jp>, John Snow <jsnow@redhat.com>, 
- Cleber Rosa <crosa@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
- Mahmoud Mandour <ma.mandourr@gmail.com>, 
- Mikhail Tyutin <m.tyutin@yadro.com>, 
- Aleksandr Anenkov <a.anenkov@yadro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org, 
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, 
- 20231213-riscv-v7-0-a760156a337f@daynix.com, 
- Akihiko Odaki <akihiko.odaki@daynix.com>
-X-Mailer: b4 0.12.4
-X-TUID: KCM8tzCmwkwk
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-8.2 v4 04/10] hw/char/pl011: Extract
+ pl011_write_txdata() from pl011_write()
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
+References: <20231109192814.95977-1-philmd@linaro.org>
+ <20231109192814.95977-5-philmd@linaro.org>
+ <e499f176-d882-4727-8caf-268d72e06606@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <e499f176-d882-4727-8caf-268d72e06606@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: /qy9VPOXkvUv
 
-This demonstrates how a register can be read from a plugin.
+On 10/11/23 00:17, Richard Henderson wrote:
+> On 11/9/23 11:28, Philippe Mathieu-Daudé wrote:
+>> When implementing FIFO, this code will become more complex.
+>> Start by factoring it out to a new pl011_write_txdata() function.
+>> No functional change intended.
+> 
+> ...
+>> @@ -262,19 +273,13 @@ static void pl011_write(void *opaque, hwaddr 
+>> offset,
+>>                           uint64_t value, unsigned size)
+>>   {
+>>       PL011State *s = (PL011State *)opaque;
+>> -    unsigned char ch;
+>>       trace_pl011_write(offset, value, pl011_regname(offset));
+>>       switch (offset >> 2) {
+>>       case 0: /* UARTDR */
+>> -        /* ??? Check if transmitter is enabled.  */
+>> -        ch = value;
+>> -        /* XXX this blocks entire thread. Rewrite to use
+>> -         * qemu_chr_fe_write and background I/O callbacks */
+>> -        qemu_chr_fe_write_all(&s->chr, &ch, 1);
+>> -        s->int_level |= INT_TX;
+>> -        pl011_update(s);
+>> +        s->readbuff = value;
+> 
+> Why the write to readbuff?
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- docs/devel/tcg-plugins.rst |  10 +++-
- contrib/plugins/execlog.c  | 120 +++++++++++++++++++++++++++++++++------------
- 2 files changed, 97 insertions(+), 33 deletions(-)
+I think I wanted to use it when FIFO is disabled due to:
 
-diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
-index 81dcd43a6128..c9f8b275906c 100644
---- a/docs/devel/tcg-plugins.rst
-+++ b/docs/devel/tcg-plugins.rst
-@@ -497,6 +497,15 @@ arguments if required::
-   $ qemu-system-arm $(QEMU_ARGS) \
-     -plugin ./contrib/plugins/libexeclog.so,ifilter=st1w,afilter=0x40001808 -d plugin
- 
-+This plugin can also dump a specified register. The specification of register
-+follows `GDB standard target features <https://sourceware.org/gdb/onlinedocs/gdb/Standard-Target-Features.html>`__.
-+
-+Specify the name of the feature that contains the register and the name of the
-+register with ``rfile`` and ``reg`` options, respectively::
-+
-+  $ qemu-system-arm $(QEMU_ARGS) \
-+    -plugin ./contrib/plugins/libexeclog.so,rfile=org.gnu.gdb.arm.core,reg=sp -d plugin
-+
- - contrib/plugins/cache.c
- 
- Cache modelling plugin that measures the performance of a given L1 cache
-@@ -583,4 +592,3 @@ The following API is generated from the inline documentation in
- include the full kernel-doc annotations.
- 
- .. kernel-doc:: include/qemu/qemu-plugin.h
--
-diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
-index 82dc2f584e20..f3e714c888ff 100644
---- a/contrib/plugins/execlog.c
-+++ b/contrib/plugins/execlog.c
-@@ -15,27 +15,43 @@
- 
- #include <qemu-plugin.h>
- 
-+typedef struct CPU {
-+    /* Store last executed instruction on each vCPU as a GString */
-+    GString *last_exec;
-+    GByteArray *reg_history[2];
-+
-+    int reg;
-+} CPU;
-+
- QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
- 
--/* Store last executed instruction on each vCPU as a GString */
--static GPtrArray *last_exec;
-+static CPU *cpus;
-+static int num_cpus;
- static GRWLock expand_array_lock;
- 
- static GPtrArray *imatches;
- static GArray *amatches;
- 
-+static char *rfile_name;
-+static char *reg_name;
-+
- /*
-- * Expand last_exec array.
-+ * Expand cpu array.
-  *
-  * As we could have multiple threads trying to do this we need to
-  * serialise the expansion under a lock.
-  */
--static void expand_last_exec(int cpu_index)
-+static void expand_cpu(int cpu_index)
- {
-     g_rw_lock_writer_lock(&expand_array_lock);
--    while (cpu_index >= last_exec->len) {
--        GString *s = g_string_new(NULL);
--        g_ptr_array_add(last_exec, s);
-+    if (cpu_index >= num_cpus) {
-+        cpus = g_realloc_n(cpus, cpu_index + 1, sizeof(*cpus));
-+        while (cpu_index >= num_cpus) {
-+            cpus[num_cpus].last_exec = g_string_new(NULL);
-+            cpus[num_cpus].reg_history[0] = g_byte_array_new();
-+            cpus[num_cpus].reg_history[1] = g_byte_array_new();
-+            num_cpus++;
-+        }
-     }
-     g_rw_lock_writer_unlock(&expand_array_lock);
- }
-@@ -50,8 +66,8 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
- 
-     /* Find vCPU in array */
-     g_rw_lock_reader_lock(&expand_array_lock);
--    g_assert(cpu_index < last_exec->len);
--    s = g_ptr_array_index(last_exec, cpu_index);
-+    g_assert(cpu_index < num_cpus);
-+    s = cpus[cpu_index].last_exec;
-     g_rw_lock_reader_unlock(&expand_array_lock);
- 
-     /* Indicate type of memory access */
-@@ -77,28 +93,42 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
-  */
- static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
- {
--    GString *s;
-+    int n;
-+    int i;
- 
--    /* Find or create vCPU in array */
-     g_rw_lock_reader_lock(&expand_array_lock);
--    if (cpu_index >= last_exec->len) {
--        g_rw_lock_reader_unlock(&expand_array_lock);
--        expand_last_exec(cpu_index);
--        g_rw_lock_reader_lock(&expand_array_lock);
--    }
--    s = g_ptr_array_index(last_exec, cpu_index);
--    g_rw_lock_reader_unlock(&expand_array_lock);
- 
-     /* Print previous instruction in cache */
--    if (s->len) {
--        qemu_plugin_outs(s->str);
-+    if (cpus[cpu_index].last_exec->len) {
-+        if (cpus[cpu_index].reg >= 0) {
-+            GByteArray *current = cpus[cpu_index].reg_history[0];
-+            GByteArray *last = cpus[cpu_index].reg_history[1];
-+
-+            g_byte_array_set_size(current, 0);
-+            n = qemu_plugin_read_register(current, cpus[cpu_index].reg);
-+
-+            if (n != last->len || memcmp(current->data, last->data, n)) {
-+                g_string_append(cpus[cpu_index].last_exec, ", reg,");
-+                for (i = 0; i < n; i++) {
-+                    g_string_append_printf(cpus[cpu_index].last_exec, " %02x",
-+                                           current->data[i]);
-+                }
-+            }
-+
-+            cpus[cpu_index].reg_history[0] = last;
-+            cpus[cpu_index].reg_history[1] = current;
-+        }
-+
-+        qemu_plugin_outs(cpus[cpu_index].last_exec->str);
-         qemu_plugin_outs("\n");
-     }
- 
-     /* Store new instruction in cache */
-     /* vcpu_mem will add memory access information to last_exec */
--    g_string_printf(s, "%u, ", cpu_index);
--    g_string_append(s, (char *)udata);
-+    g_string_printf(cpus[cpu_index].last_exec, "%u, ", cpu_index);
-+    g_string_append(cpus[cpu_index].last_exec, (char *)udata);
-+
-+    g_rw_lock_reader_unlock(&expand_array_lock);
- }
- 
- /**
-@@ -167,8 +197,10 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-                                              QEMU_PLUGIN_MEM_RW, NULL);
- 
-             /* Register callback on instruction */
--            qemu_plugin_register_vcpu_insn_exec_cb(insn, vcpu_insn_exec,
--                                                   QEMU_PLUGIN_CB_NO_REGS, output);
-+            qemu_plugin_register_vcpu_insn_exec_cb(
-+                insn, vcpu_insn_exec,
-+                rfile_name ? QEMU_PLUGIN_CB_R_REGS : QEMU_PLUGIN_CB_NO_REGS,
-+                output);
- 
-             /* reset skip */
-             skip = (imatches || amatches);
-@@ -177,17 +209,33 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-     }
- }
- 
-+static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
-+{
-+    int reg = -1;
-+
-+    expand_cpu(vcpu_index);
-+
-+    if (rfile_name) {
-+        int rfile = qemu_plugin_find_register_file(vcpu_index, rfile_name);
-+        if (rfile >= 0) {
-+            reg = qemu_plugin_find_register(vcpu_index, rfile, reg_name);
-+        }
-+    }
-+
-+    g_rw_lock_writer_lock(&expand_array_lock);
-+    cpus[vcpu_index].reg = reg;
-+    g_rw_lock_writer_unlock(&expand_array_lock);
-+}
-+
- /**
-  * On plugin exit, print last instruction in cache
-  */
- static void plugin_exit(qemu_plugin_id_t id, void *p)
- {
-     guint i;
--    GString *s;
--    for (i = 0; i < last_exec->len; i++) {
--        s = g_ptr_array_index(last_exec, i);
--        if (s->str) {
--            qemu_plugin_outs(s->str);
-+    for (i = 0; i < num_cpus; i++) {
-+        if (cpus[i].last_exec->str) {
-+            qemu_plugin_outs(cpus[i].last_exec->str);
-             qemu_plugin_outs("\n");
-         }
-     }
-@@ -224,9 +272,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-      * we don't know the size before emulation.
-      */
-     if (info->system_emulation) {
--        last_exec = g_ptr_array_sized_new(info->system.max_vcpus);
--    } else {
--        last_exec = g_ptr_array_new();
-+        cpus = g_new(CPU, info->system.max_vcpus);
-     }
- 
-     for (int i = 0; i < argc; i++) {
-@@ -236,13 +282,23 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-             parse_insn_match(tokens[1]);
-         } else if (g_strcmp0(tokens[0], "afilter") == 0) {
-             parse_vaddr_match(tokens[1]);
-+        } else if (g_strcmp0(tokens[0], "rfile") == 0) {
-+            rfile_name = g_strdup(tokens[1]);
-+        } else if (g_strcmp0(tokens[0], "reg") == 0) {
-+            reg_name = g_strdup(tokens[1]);
-         } else {
-             fprintf(stderr, "option parsing failed: %s\n", opt);
-             return -1;
-         }
-     }
- 
-+    if ((!rfile_name) != (!reg_name)) {
-+        fputs("file and reg need to be set at the same time\n", stderr);
-+        return -1;
-+    }
-+
-     /* Register translation block and exit callbacks */
-+    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
-     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
-     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
- 
+https://developer.arm.com/documentation/ddi0183/g/programmers-model/register-descriptions/line-control-register--uartlcr-h?lang=en
 
--- 
-2.43.0
+UARTLCR_H.FEN:
+
+   Enable FIFOs:
+
+   0 = FIFOs are disabled (character mode) that is, the FIFOs become
+       1-byte-deep holding registers
+
+   1 = transmit and receive FIFO buffers are enabled (FIFO mode).
+
+and we don't have a fifo8_change_capacity() method.
+
+Otherwise, not sure what for is this field... I'll see if we can
+just remove it.

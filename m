@@ -1,146 +1,183 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1876651ejo;
-        Wed, 13 Dec 2023 12:08:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEU6EuRT74vGciiF62WJny/Oh9x6CYcyXBIZCDz3MRbzaf74f+FGppf48Oc/842GRxSJi8s
-X-Received: by 2002:a05:620a:1aa8:b0:77f:36b3:639f with SMTP id bl40-20020a05620a1aa800b0077f36b3639fmr9852752qkb.113.1702498131579;
-        Wed, 13 Dec 2023 12:08:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702498131; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1903143ejo;
+        Wed, 13 Dec 2023 13:02:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEhFzaYs5wQGAAmQsTV4JQhNIkVbwEamkmB1N3T9w2vHkVe/m9ye/+9GykSnEdXIAJCjln1
+X-Received: by 2002:a05:620a:8386:b0:77b:b1d2:3a2a with SMTP id pb6-20020a05620a838600b0077bb1d23a2amr10633046qkn.69.1702501324594;
+        Wed, 13 Dec 2023 13:02:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702501324; cv=none;
         d=google.com; s=arc-20160816;
-        b=xAU9D9g73bavtpQvPoV3Us/4Ary0ok8CfEiOYCzf4rZ4z8YraxFVHOWJfXh65GnkyY
-         oDydyC4ibWvC1kcZbfjFUBHKai6WRNGipy9cOmPd/9bwdode9QTbcO1L08Oqn6On5R/r
-         QfU3qz7G15xlydzbXfzD5PNbkq4QRNl8EdtyTlJMEXIfVvidKTtp9yt0jvoeDvatr8SG
-         AZP/C6WgF6d8NYBfzlmRb3uCmxoXyEG5KnPoLs08735xfCfS4+Svcq8FwBwTUxEfYfeU
-         fPeY0QQVvb8WTspqMkiXPrTMXvi5jWS0tF+F0eXr7JrmWlznIW+mml/ih8FHzFwT5Miv
-         4opg==
+        b=NxF4hMRK6XaLsifNwhXAirTuH0UUQpGFUQUt/+JpjkX8awihGKT9gaTPDZUwGaC+aJ
+         fgFdcPxxwz6JP9BxiawJA9TGpgSkopI+Q7WyexvOvVik33r8gu+VFlGvbI/oNVnlTWff
+         +Vpp5cKjFAbDVAd3Pgpx+UdJd0cgM7EttFsiyXqkrVqGhKJ2nDHHmtwzYlVFxp683Oik
+         GoispNs4RHpE8/KH0lh59/EQdAlnum7ZouSBiqgU5xz9yhZEU32C1rciQa5Eb7Yqt/YZ
+         9A46T5Ud08V8XJaY4RFQkQxCQWpCnR2/liWTAmL13Z3uuDhHFxJz0ptxB0+d0PU/92Qk
+         dbSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:references
          :in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=oaPLT/w+GJhxx6euDyuvXTKoL3tEsYpftnOe2O3RcpI=;
-        fh=C5+GZ70v8taSp7zpwLKXc8bpiBfIg8q3rcr1RGDPm8g=;
-        b=K4Wbjf6/vQluE4sXR+/pE/gU5lGkf+uRJwxIrugKVwN872jsgHA9fh82UYhe/Q6HdG
-         YQvrt7qaqiEO6bDjUz1ijkk0YfMm3NIhWm0Vt6O0UJ+m/fJ12SwG+Jn/cu47fhF857E+
-         wDzUrjglUr5Dwe/QVSejJI9CHMA6HBMlfvYUGsZ/AlP4Ki7eC+8YbP2WT/m/XJzkdmuk
-         f7DTPhV48RKV9BLfjuLB8gEulG8V5UlYEDala6g7cMHq7hHrANVoZXy+ogDrbgPFFaS2
-         JPeUZ23eewr++Fb34YHOqKtpPGyZFk6IX7q0AZOsKi++2tnOt3JfkkzUQ89f3XHvsyFp
-         yEhw==
+        bh=V9Y4tQelQotKGCNtpb33VNfk/Uf5WfNvGE9AkWeF3LY=;
+        fh=/Vlx6SRrwmuwEMWeXSojT6/YD8t+ahn9lz6Q4Ls7Vbo=;
+        b=A0tO4eM7yRdp8Sw2xfEtq7xllQk2uDpKs/JTWVcDXOxa0gvsYATx333eJpm31p4UBD
+         vs5Aw85jT2OY2SL223Akwivn4zfA/LcV2si9UxhWQzsPY7VVUbrjuRULWg8v2mbQKQKj
+         FNuGK1vPJW8pHFuNuCVrdDdgPUHa+KlhRk2wNCRf1e2cfas+DqCL4NajW2L/uw8arkPe
+         lI0UjYMMrxhlV3tC+tJWKnZhNZi7Sb2uLZKxnTzQ97vsV1sQnkVLEjjoQlpfegyjKgRG
+         PKjLVrAtarO9jP21mHR8Yh+XuMG+nNQE3gruzMHOsAifBqYKk0Wk045nkP4uimm2xL5z
+         THfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q20k+MmV;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RxYRavq8;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id j8-20020a05620a288800b0077da5cf0e36si14128944qkp.354.2023.12.13.12.08.51
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id p21-20020a05620a113500b007788d7c09f8si13324235qkk.573.2023.12.13.13.02.04
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Dec 2023 12:08:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Wed, 13 Dec 2023 13:02:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q20k+MmV;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RxYRavq8;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702498131;
+	s=mimecast20190719; t=1702501324;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=oaPLT/w+GJhxx6euDyuvXTKoL3tEsYpftnOe2O3RcpI=;
-	b=Q20k+MmVOoMixOuONEBKqYT3UtZ0OhyEnHHEUsQAzzDHLT7SOJGqLRpjY/ybIDzH9wr6oF
-	LrHsn6FURs9AFYPeJd2LCKpbRFwZoD0g/vypbKFE8HoNuuwnF9QQj9KeUDfQdoLxoet0aQ
-	PiAMi2Hh8T2LkRwbM1b9W/a26RMyN9M=
+	bh=V9Y4tQelQotKGCNtpb33VNfk/Uf5WfNvGE9AkWeF3LY=;
+	b=RxYRavq8eT757jJPnaLmmJXuG2NG6LDpUyZjZyF394EgXACXPBTx/AY44lZwg89KB+eKos
+	2XUa/wvPzxxMPuGa9hY5gyAx3ETy+BtNdOJwyWgYL9GSkdyPYg6FLLvCiypViRk/8VlBsL
+	WZLATAOa5HqL1XIdvPqm2wpY9z8veoI=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-346-tr7boWT0NyC4lFUxfgo2Cw-1; Wed, 13 Dec 2023 15:08:45 -0500
-X-MC-Unique: tr7boWT0NyC4lFUxfgo2Cw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+ us-mta-497-dF0vmdgUP1aw5h4Fi8V0kg-1; Wed, 13 Dec 2023 16:01:57 -0500
+X-MC-Unique: dF0vmdgUP1aw5h4Fi8V0kg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D00978910C2;
-	Wed, 13 Dec 2023 20:08:44 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C2D0B185A785;
+	Wed, 13 Dec 2023 21:01:56 +0000 (UTC)
 Received: from p1.localdomain.some.host.somewhere.org (ovpn-114-21.gru2.redhat.com [10.97.114.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1324C3C25;
-	Wed, 13 Dec 2023 20:08:35 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D69BF2026D66;
+	Wed, 13 Dec 2023 21:01:48 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Eric Auger
- <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, Radoslaw
- Biernacki <rad@semihalf.com>, Paul Durrant <paul@xen.org>, Akihiko Odaki
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, Radoslaw Biernacki
+ <rad@semihalf.com>, Paul Durrant <paul@xen.org>, Akihiko Odaki
  <akihiko.odaki@daynix.com>, Leif Lindholm <quic_llindhol@quicinc.com>,
  Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Beraldo Leal
- <bleal@redhat.com>, Wainer
- dos Santos Moschetta <wainersm@redhat.com>, Sriram Yagnaraman
- <sriram.yagnaraman@est.tech>, Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>, David Woodhouse <dwmw2@infradead.org>,
- Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH 03/10] tests/avocado/intel_iommu.py: increase timeout
-In-Reply-To: <8734w8fzbc.fsf@draig.linaro.org>
+ <pbonzini@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ kvm@vger.kernel.org, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud?=
+ =?utf-8?Q?=C3=A9?=
+ <philmd@linaro.org>, Beraldo Leal <bleal@redhat.com>, Wainer dos Santos
+ Moschetta <wainersm@redhat.com>, Sriram Yagnaraman
+ <sriram.yagnaraman@est.tech>, David Woodhouse <dwmw2@infradead.org>
+Subject: Re: [PATCH 04/10] tests/avocado: machine aarch64: standardize
+ location and RO/RW access
+In-Reply-To: <2972842d-e4bf-49eb-9d72-01b8049f18bf@linaro.org>
 References: <20231208190911.102879-1-crosa@redhat.com>
- <20231208190911.102879-4-crosa@redhat.com>
- <8734w8fzbc.fsf@draig.linaro.org>
-Date: Wed, 13 Dec 2023 15:08:26 -0500
-Message-ID: <87sf45vpad.fsf@p1.localdomain>
+ <20231208190911.102879-5-crosa@redhat.com>
+ <2972842d-e4bf-49eb-9d72-01b8049f18bf@linaro.org>
+Date: Wed, 13 Dec 2023 16:01:39 -0500
+Message-ID: <87le9xvmto.fsf@p1.localdomain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-X-TUID: L2bzoNhZIlMg
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+X-TUID: 7RP+AuGWThXj
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org> writes:
 
-> Cleber Rosa <crosa@redhat.com> writes:
+> W dniu 8.12.2023 o=C2=A020:09, Cleber Rosa pisze:
+>> The tests under machine_aarch64_virt.py do not need read-write access
+>> to the ISOs.  The ones under machine_aarch64_sbsaref.py, on the other
+>> hand, will need read-write access, so let's give each test an unique
+>> file.
+>>=20
+>> And while at it, let's use a single code style and hash for the ISO
+>> url.
+>>=20
+>> Signed-off-by: Cleber Rosa<crosa@redhat.com>
 >
->> Based on many runs, the average run time for these 4 tests is around
->> 250 seconds, with 320 seconds being the ceiling.  In any way, the
->> default 120 seconds timeout is inappropriate in my experience.
+> It is ISO file, so sbsa-ref tests should be fine with readonly as well.
 >
-> I would rather see these tests updated to fix:
->
->  - Don't use such an old Fedora 31 image
+> Nothing gets installed so nothing is written. We only test does boot work=
+s.
 
-I remember proposing a bump in Fedora version used by default in
-avocado_qemu.LinuxTest (which would propagate to tests such as
-boot_linux.py and others), but that was not well accepted.  I can
-definitely work on such a version bump again.
+That was my original expectation too.  But, with nothing but the
+following change:
 
->  - Avoid updating image packages (when will RH stop serving them?)
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machi=
+ne_aarch64_sbsaref.py
+index 528c7d2934..436da4b156 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -129,7 +129,7 @@ def boot_alpine_linux(self, cpu):
+             "-cpu",
+             cpu,
+             "-drive",
+-            f"file=3D{iso_path},format=3Draw",
++            f"file=3D{iso_path},readonly=3Don,format=3Draw",
+             "-device",
+             "virtio-rng-pci,rng=3Drng0",
+             "-object",
 
-IIUC the only reason for updating the packages is to test the network
-from the guest, and could/should be done another way.
+We get:
 
-Eric, could you confirm this?
+15:55:10 DEBUG| VM launch command: './qemu-system-aarch64 -display none -vg=
+a none -chardev socket,id=3Dmon,fd=3D15 -mon chardev=3Dmon,mode=3Dcontrol -=
+machine sbsa-ref -
+chardev socket,id=3Dconsole,fd=3D20 -serial chardev:console -cpu cortex-a57=
+ -drive if=3Dpflash,file=3D/home/cleber/avocado/job-results/job-2023-12-13T=
+15.55-28ef2b5/test
+-results/tmp_dirx8p5xzt4/1-tests_avocado_machine_aarch64_sbsaref.py_Aarch64=
+SbsarefMachine.test_sbsaref_alpine_linux_cortex_a57/SBSA_FLASH0.fd,format=
+=3Draw -drive=20
+if=3Dpflash,file=3D/home/cleber/avocado/job-results/job-2023-12-13T15.55-28=
+ef2b5/test-results/tmp_dirx8p5xzt4/1-tests_avocado_machine_aarch64_sbsaref.=
+py_Aarch64Sbsa
+refMachine.test_sbsaref_alpine_linux_cortex_a57/SBSA_FLASH1.fd,format=3Draw=
+ -smp 1 -machine sbsa-ref -cpu cortex-a57 -drive file=3D/home/cleber/avocad=
+o/data/cache/b
+y_location/0154b7cd3a4f5e135299060c8cabbeec10b70b6d/alpine-standard-3.17.2-=
+aarch64.iso,readonly=3Don,format=3Draw -device virtio-rng-pci,rng=3Drng0 -o=
+bject rng-random
+,id=3Drng0,filename=3D/dev/urandom'
 
->  - The "test" is a fairly basic check of dmesg/sysfs output
+Followed by:
 
-Maybe the network is also an implicit check here.  Let's see what Eric
-has to say.
+15:55:10 DEBUG| Failed to establish session:
+  | Traceback (most recent call last):
+  |   File "/home/cleber/src/qemu/python/qemu/qmp/protocol.py", line 425, i=
+n _session_guard
+  |     await coro
+  |   File "/home/cleber/src/qemu/python/qemu/qmp/qmp_client.py", line 253,=
+ in _establish_session
+  |     await self._negotiate()
+  |   File "/home/cleber/src/qemu/python/qemu/qmp/qmp_client.py", line 305,=
+ in _negotiate
+  |     reply =3D await self._recv()
+  |             ^^^^^^^^^^^^^^^^^^
+  |   File "/home/cleber/src/qemu/python/qemu/qmp/protocol.py", line 1009, =
+in _recv
+  |     message =3D await self._do_recv()
+  |               ^^^^^^^^^^^^^^^^^^^^^
+  |   File "/home/cleber/src/qemu/python/qemu/qmp/qmp_client.py", line 402,=
+ in _do_recv
+  |     msg_bytes =3D await self._readline()
+  |                 ^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/home/cleber/src/qemu/python/qemu/qmp/protocol.py", line 977, i=
+n _readline
+  |     raise EOFError
+  | EOFError
 
->
-> I think building a buildroot image with the tools pre-installed (with
-> perhaps more testing) would be a better use of our limited test time.
->
-> FWIW the runtime on my machine is:
->
-> =E2=9E=9C  env QEMU_TEST_FLAKY_TESTS=3D1 ./pyvenv/bin/avocado run ./tests=
-/avocado/intel_iommu.py
-> JOB ID     : 5c582ccf274f3aee279c2208f969a7af8ceb9943
-> JOB LOG    : /home/alex/avocado/job-results/job-2023-12-11T16.53-5c582cc/=
-job.log
->  (1/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu: PASS (=
-44.21 s)
->  (2/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu_strict:=
- PASS (78.60 s)
->  (3/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu_strict_=
-cm: PASS (65.57 s)
->  (4/4) ./tests/avocado/intel_iommu.py:IntelIOMMU.test_intel_iommu_pt: PAS=
-S (66.63 s)
-> RESULTS    : PASS 4 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | =
-CANCEL 0
-> JOB TIME   : 255.43 s
->
+With qemu-system-arch producing on stdout:
 
-Yes, I've also seen similar runtimes in other environments... so it
-looks like it depends a lot on the "dnf -y install numactl-devel".  If
-that can be removed, the tests would have much more predictable runtimes.
+   qemu-system-aarch64: Block node is read-only
+
+Any ideas on the reason or cause?
+
+Thanks,
+- Cleber.

@@ -1,149 +1,335 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1327306ejo;
-        Tue, 12 Dec 2023 17:49:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFAcXLRQogd1yvpuAr0/AjzBVoZOvpsAZzGSoArvcZdzIq88u3lIxHQACrwMtJ2+I+xOUc2
-X-Received: by 2002:ac8:5c01:0:b0:41e:39c8:97c7 with SMTP id i1-20020ac85c01000000b0041e39c897c7mr9723049qti.41.1702432195147;
-        Tue, 12 Dec 2023 17:49:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702432195; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1429464ejo;
+        Tue, 12 Dec 2023 22:37:16 -0800 (PST)
+X-Received: by 2002:a05:6808:140c:b0:3b9:ff46:fa9b with SMTP id w12-20020a056808140c00b003b9ff46fa9bmr8942771oiv.43.1702449436220;
+        Tue, 12 Dec 2023 22:37:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702449436; cv=none;
         d=google.com; s=arc-20160816;
-        b=I5EHaOL1oCojKTlsbOZFOXujKtzwcOvpmUfrqdtdgRBQl2SyqfM1STfALPQACv8sI7
-         Sm9Re9oAPaxGwfgS8w+ziAxquKqHiowRIpL+E5P+lIA0CMJZ1AEmaquxf2tvy61J9794
-         I5Y2/dKHZBL/GGj7GcfEARordtocIlfRiOKe4rqSYMc4J11bp43LuV5X50uusmmCH+at
-         0ze+RnFcFqFJ2/xlQ4K7tMF0768I3RaJ9LOsOGBnUnV/JzQICdGF2O+dREAIH6/xMvCr
-         eFNujHCTgBp9AspReMl3cdT+e3bE1Kiqnh1He2sbfS/lAaeOTYkp8VTZ9O8dm67kDuIc
-         prGQ==
+        b=QQhyG0sqwMEZxgDSJYpMGYT34skciyN+NUDM2IiMnqOyvBQAG8aG/7DbfRz+JwlvRO
+         CHpdC34OGCNAVo31f5CCduYe3Xm0d2aSYLGMoi/u13fMOFUjDsmdjxyuHF3dnqvwO7jL
+         jT4BPUVwHXDLsZk1H2tpYEadpjXFgu/WreCS5xW7ZSOsSZH2klfUhyjHzr8gLXyCD79U
+         yMTbldtwgWj7uELt8OUgxeYjcVU1gyzxj5Tn4IPuK5ez+mxmExasMvgDWK4LeBnJ2Olp
+         XmY3wWk8okbdqXZ4NAwVAyPKcFacXlYbjLEdkdfl9lmymYK/oyg9uawwUEZpSHJx+/Pg
+         TNcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MVVU9s00n1TGH1xdlGn64eFa0srxhzdvWLz07J4494s=;
-        fh=QmkLNIluqJsJNNgGhqTGmpYlLMx4+YPZOGeqXlmv2kE=;
-        b=t0lnhOodDUMUC87peOYpvcHj7Yz7iXs3EwMn6VXkF18j2Zx57U4tYzEnjQt7F94h/F
-         XNKbVuOtSM33YoDUZ24rlhz9KqJ9UHKbrqoOultdnmopgvBYAJLaYymKVRDQIEgQf4La
-         UaPq7KBwHzV8/XUv2k2EgddaA70/+Ut84TCKTmvTsJmhwTVOctXO1c6KS43hFeL0hDS2
-         LOJKZjIWzqsoDBZTr0ihOjy/YrNEveK22L2w4NAZcJ4L2SGb9BCGmW5hn7KB7HCJ6XEN
-         xtHMaRIeaIa6cXX7wniNI8w19XxIVFUv/IOoWqpOxtVQY/sFeqyGcFLIrHelUOBwlhBI
-         W0qA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=kMU0hw+gwGczR/gRWRQnDaEoeESPinDQdK01aukaVCQ=;
+        fh=JeM/hp+hAqRxMHudFSCG1nf1oGK3vaMhytTla9PPhQE=;
+        b=uruk3wzb4HS21fX3J/KM7Ar8AGNN6GJsk+aTMKshzNxhv0f4jPxKs1OKafpaLeNLKf
+         dJtgzFJimZIWtGjdOUzRn7Jk/4fwaMp1Jo89ViT0hVgY6NHGkekkmf4XFf+I522CWTeh
+         Z72yOdiQTCvExGLOmgx7FlSNjEPoaKWN/2PlwyErXTEDlzDTIgn7lrRswJ6NN6FyVb3U
+         r/OscEOfUrLp1ncgfUT1w8Zu3CvJYidoASWfem94NDXGWPUWGtawKfOd8Likyqsw1/4o
+         G2ILnvpcEoBwsSGNeBmG5+Vg8rZfSlKXaB4Bf+D9dzkB3DzEKkVg+bCqy3pMy700ig/f
+         kYNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=fDP0bKqM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x25-20020ac87ed9000000b004237f78489esi11739020qtj.463.2023.12.12.17.49.54
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=XpIuu6yU;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g14-20020aa79f0e000000b006ce6849ba6dsor3915553pfr.9.2023.12.12.22.37.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Dec 2023 17:49:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 12 Dec 2023 22:37:16 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=fDP0bKqM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rDENZ-0007T1-CC; Tue, 12 Dec 2023 20:49:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rDENY-0007Sg-62; Tue, 12 Dec 2023 20:49:40 -0500
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rDENW-0007uh-FJ; Tue, 12 Dec 2023 20:49:39 -0500
-Received: by mail-io1-xd2d.google.com with SMTP id
- ca18e2360f4ac-7b7039d30acso370227239f.3; 
- Tue, 12 Dec 2023 17:49:36 -0800 (PST)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=XpIuu6yU;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702432176; x=1703036976; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=MVVU9s00n1TGH1xdlGn64eFa0srxhzdvWLz07J4494s=;
- b=fDP0bKqMCrIyugmcgC32k7WCQX9qaLYLCW9eey7zIOiGQIeZyxOoxiMk1VVztfZa0U
- /e+b6MCQA+1gYOla4GZJAlceLpPVjN4JmxQ/fBm32aHJQN/zepehFfcIKyeCr82h4ZRP
- ejiajg6ZqZSQ76BF7NGznJrcl7Yy77KA3K+vBOY9N75+WqFFgujD5pMBr6VNAEcl8EoL
- XgnQK8/Szdj3rE6reoEeGXTslN3fyI22yeBASyse2fySTv/I46lJG3EIMfhpYe3OIV6s
- Iw3IS97kKWqle/MuYYwliD6pn03UtP8vVIcXNVco5eVCmS+f9gUWErUPHZ7LD5vbiq/i
- Om0A==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1702449435; x=1703054235; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kMU0hw+gwGczR/gRWRQnDaEoeESPinDQdK01aukaVCQ=;
+        b=XpIuu6yUk750QKgn6Hug0onFgupmOiD+PwzYo1EhfCbeFe4W8AYdhxaXEyw2dP/aaH
+         lipyP6zdh20QRpp9BUSAHxK0tHW6BL2Hqe3Z9dl6h+acR8B/4sItlH1NxYUFKxZVwovW
+         MRxP2Cx+ylcYG9GEcGSdBwvNUKw+x61BObSHYBoAjCco+GKuB9uiEIC8s0XkdHS9ewhg
+         19KRQv8kv1aVbheY0Wbcn82f3gm1cuHIJpjzY1aSE57VbITOVAxlnXIjljBBfWo2TkLI
+         F4SCfsm6F5ha+z30r95fah0UqV1ORZFxPNHzg/a85h32nxC51UMcqIZwAsvlL3Kl3Shm
+         4ewQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702432176; x=1703036976;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MVVU9s00n1TGH1xdlGn64eFa0srxhzdvWLz07J4494s=;
- b=tVAM0Or3ssv+FAoXBf/3nam1ARqX0NU5hIW4SiscAmwVnrJzTeER6GOCTEugaB43L7
- 9qIZDL+vsSss9//6P5IDhBrqYw0Sg1l7i+QbytHc9fNVjltTKLRFFFcrRZeIOw+0yut9
- DxH83sxcwHkLpr0C2VmIEr8r4B79kadVd3nsAujlbG0bQNRUZbVb8XR84X+fpeR6mWfP
- P14hJv4uMT1BEpwXIbFSh1607zHCQdZNU9E7DUAa0sAFXp1OFAHkbqTPJJke3lbR7J1g
- SkguYTCowK1yOlGgyxDxHD8Pu2/lzytRkdSCd75g/4Ezz40Ea5ReU2a8kn8ZhUEL8RUN
- WJDA==
-X-Gm-Message-State: AOJu0Yyww3xOCrpoVe7aTel8PgL5MVAZEssbvfdrgP9z1QnVgfpMU9mC
- 4VB/4OLT1tq//Na5yzgbZOWVk5TRnmVO9A==
-X-Received: by 2002:a92:c267:0:b0:35d:70c7:4c5b with SMTP id
- h7-20020a92c267000000b0035d70c74c5bmr11008025ild.33.1702432175836; 
- Tue, 12 Dec 2023 17:49:35 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- p11-20020a170903248b00b001cfd077fab4sm9314264plw.282.2023.12.12.17.49.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Dec 2023 17:49:34 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH] hw/sd/pxa2xx_mmci: Disable reentrancy detection
-Date: Tue, 12 Dec 2023 17:49:32 -0800
-Message-Id: <20231213014932.1748323-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.39.2
+        d=1e100.net; s=20230601; t=1702449435; x=1703054235;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kMU0hw+gwGczR/gRWRQnDaEoeESPinDQdK01aukaVCQ=;
+        b=VHOwPN3g61hzK2j+NugtbkXE1lY3h6jAklLv6LfBNqO7mM71KJFP+njanp0xU9K1is
+         qjU+7pXCJXvWxA3I7bVdkafzUhHeBO2507xohs/cmB8VJ3AZaTwlezGn/+re3MyyVw5u
+         uVA05U02PYMI9uUurSp2/SiM3GWj+DPGSlfUo+NHtEtYBFU6SKem9+cDp7K4ZzNTPgv/
+         MIPTR5kSc3CDFlWMuDQOz+CfL3+xScJ/vRHDiVIpdfpRTXt7LYH6TTmtzeiXWCXSHnfB
+         GEP2v3Y2VJvbTeEQbk3mP9mKiMbsJuEXUniTeGjHfVf3HC/PUx17bd1bOuC0fmZnykBT
+         27ug==
+X-Gm-Message-State: AOJu0YwIg2M6PoTla+syCb/sYN8PqT8F5AiXgExtgY2MBpM3/V2jydHJ
+	/kkWcuCMk4nIVPJdM2rm3CNTRg==
+X-Google-Smtp-Source: AGHT+IG5o/HJjzAe1oqBwjDmyKD+jnryCVy/PNKNBzfMqSP/v+UwSWZ7GhdbAoPzo3ay4ybD2HWbEQ==
+X-Received: by 2002:a17:902:eb87:b0:1d0:b944:6344 with SMTP id q7-20020a170902eb8700b001d0b9446344mr3145508plg.28.1702449435577;
+        Tue, 12 Dec 2023 22:37:15 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.205.15] ([157.82.205.15])
+        by smtp.gmail.com with ESMTPSA id u13-20020a170902e5cd00b001cff026df52sm9636038plf.221.2023.12.12.22.37.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Dec 2023 22:37:15 -0800 (PST)
+Message-ID: <389fff8c-9f5d-4b6b-acd2-bc3e2110a9b3@daynix.com>
+Date: Wed, 13 Dec 2023 15:37:00 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/5] system/cpus: rename qemu_mutex_lock_iothread() to
+ bql_lock()
+Content-Language: en-US
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Paul Durrant <paul@xen.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Alexander Graf <agraf@csgraf.de>, Hailiang Zhang
+ <zhanghailiang@xfusion.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Huacai Chen <chenhuacai@kernel.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Hyman Huang <yong.huang@smartx.com>, Fam Zheng <fam@euphon.net>,
+ Song Gao <gaosong@loongson.cn>, Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Leonardo Bras <leobras@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Cameron Esfahani <dirty@apple.com>,
+ qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Weiwei Li <liwei1518@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Reinoud Zandijk <reinoud@netbsd.org>, Kevin Wolf <kwolf@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, Sunil Muthuswamy
+ <sunilmut@microsoft.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-riscv@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Stafford Horne <shorne@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Juan Quintela <quintela@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Max Filippov <jcmvbkbc@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Eric Blake
+ <eblake@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Halil Pasic <pasic@linux.ibm.com>, xen-devel@lists.xenproject.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ David Woodhouse <dwmw@amazon.co.uk>
+References: <20231212153905.631119-1-stefanha@redhat.com>
+ <20231212153905.631119-2-stefanha@redhat.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20231212153905.631119-2-stefanha@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2d;
- envelope-from=groeck7@gmail.com; helo=mail-io1-xd2d.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6SFti4VcrvA7
+X-TUID: Qq0+O3t6A9OH
 
-All tests using pxa2xx_mmc to access mmc cards on pxa2xx platforms
-such as borzoi fail starting with commit a2e1753b80 ("memory: prevent
-dma-reentracy issues"). Disable reentrancy guard to fix the problem.
+On 2023/12/13 0:39, Stefan Hajnoczi wrote:
+> The Big QEMU Lock (BQL) has many names and they are confusing. The
+> actual QemuMutex variable is called qemu_global_mutex but it's commonly
+> referred to as the BQL in discussions and some code comments. The
+> locking APIs, however, are called qemu_mutex_lock_iothread() and
+> qemu_mutex_unlock_iothread().
+> 
+> The "iothread" name is historic and comes from when the main thread was
+> split into into KVM vcpu threads and the "iothread" (now called the main
+> loop thread). I have contributed to the confusion myself by introducing
+> a separate --object iothread, a separate concept unrelated to the BQL.
+> 
+> The "iothread" name is no longer appropriate for the BQL. Rename the
+> locking APIs to:
+> - void bql_lock(void)
+> - void bql_unlock(void)
+> - bool bql_locked(void)
+> 
+> There are more APIs with "iothread" in their names. Subsequent patches
+> will rename them. There are also comments and documentation that will be
+> updated in later patches.
+> 
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Reviewed-by: Paul Durrant <paul@xen.org>
+> Acked-by: Fabiano Rosas <farosas@suse.de>
+> Acked-by: David Woodhouse <dwmw@amazon.co.uk>
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Acked-by: Peter Xu <peterx@redhat.com>
+> Acked-by: Eric Farman <farman@linux.ibm.com>
+> Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
+> ---
+>   include/block/aio-wait.h             |   2 +-
+>   include/qemu/main-loop.h             |  40 ++++-----
+>   include/qemu/thread.h                |   2 +-
+>   accel/accel-blocker.c                |  10 +--
+>   accel/dummy-cpus.c                   |   8 +-
+>   accel/hvf/hvf-accel-ops.c            |   4 +-
+>   accel/kvm/kvm-accel-ops.c            |   4 +-
+>   accel/kvm/kvm-all.c                  |  22 ++---
+>   accel/tcg/cpu-exec.c                 |  26 +++---
+>   accel/tcg/cputlb.c                   |  16 ++--
+>   accel/tcg/tcg-accel-ops-icount.c     |   4 +-
+>   accel/tcg/tcg-accel-ops-mttcg.c      |  12 +--
+>   accel/tcg/tcg-accel-ops-rr.c         |  14 ++--
+>   accel/tcg/tcg-accel-ops.c            |   2 +-
+>   accel/tcg/translate-all.c            |   2 +-
+>   cpu-common.c                         |   4 +-
+>   dump/dump.c                          |   4 +-
+>   hw/core/cpu-common.c                 |   6 +-
+>   hw/i386/intel_iommu.c                |   6 +-
+>   hw/i386/kvm/xen_evtchn.c             |  16 ++--
+>   hw/i386/kvm/xen_overlay.c            |   2 +-
+>   hw/i386/kvm/xen_xenstore.c           |   2 +-
+>   hw/intc/arm_gicv3_cpuif.c            |   2 +-
+>   hw/intc/s390_flic.c                  |  18 ++--
+>   hw/misc/edu.c                        |   4 +-
+>   hw/misc/imx6_src.c                   |   2 +-
+>   hw/misc/imx7_src.c                   |   2 +-
+>   hw/net/xen_nic.c                     |   8 +-
+>   hw/ppc/pegasos2.c                    |   2 +-
+>   hw/ppc/ppc.c                         |   4 +-
+>   hw/ppc/spapr.c                       |   2 +-
+>   hw/ppc/spapr_rng.c                   |   4 +-
+>   hw/ppc/spapr_softmmu.c               |   4 +-
+>   hw/remote/mpqemu-link.c              |  20 ++---
+>   hw/remote/vfio-user-obj.c            |   2 +-
+>   hw/s390x/s390-skeys.c                |   2 +-
+>   migration/block-dirty-bitmap.c       |   4 +-
+>   migration/block.c                    |  16 ++--
+>   migration/colo.c                     |  60 +++++++-------
+>   migration/dirtyrate.c                |  12 +--
+>   migration/migration.c                |  52 ++++++------
+>   migration/ram.c                      |  12 +--
+>   replay/replay-internal.c             |   2 +-
+>   semihosting/console.c                |   8 +-
+>   stubs/iothread-lock.c                |   6 +-
+>   system/cpu-throttle.c                |   4 +-
+>   system/cpus.c                        |  51 ++++++------
+>   system/dirtylimit.c                  |   4 +-
+>   system/memory.c                      |   2 +-
+>   system/physmem.c                     |   8 +-
+>   system/runstate.c                    |   2 +-
+>   system/watchpoint.c                  |   4 +-
+>   target/arm/arm-powerctl.c            |  14 ++--
+>   target/arm/helper.c                  |   4 +-
+>   target/arm/hvf/hvf.c                 |   8 +-
+>   target/arm/kvm.c                     |   4 +-
+>   target/arm/kvm64.c                   |   4 +-
+>   target/arm/ptw.c                     |   6 +-
+>   target/arm/tcg/helper-a64.c          |   8 +-
+>   target/arm/tcg/m_helper.c            |   6 +-
+>   target/arm/tcg/op_helper.c           |  24 +++---
+>   target/arm/tcg/psci.c                |   2 +-
+>   target/hppa/int_helper.c             |   8 +-
+>   target/i386/hvf/hvf.c                |   6 +-
+>   target/i386/kvm/hyperv.c             |   4 +-
+>   target/i386/kvm/kvm.c                |  28 +++----
+>   target/i386/kvm/xen-emu.c            |  14 ++--
+>   target/i386/nvmm/nvmm-accel-ops.c    |   4 +-
+>   target/i386/nvmm/nvmm-all.c          |  20 ++---
+>   target/i386/tcg/sysemu/fpu_helper.c  |   6 +-
+>   target/i386/tcg/sysemu/misc_helper.c |   4 +-
+>   target/i386/whpx/whpx-accel-ops.c    |   4 +-
+>   target/i386/whpx/whpx-all.c          |  24 +++---
+>   target/loongarch/csr_helper.c        |   4 +-
+>   target/mips/kvm.c                    |   4 +-
+>   target/mips/tcg/sysemu/cp0_helper.c  |   4 +-
+>   target/openrisc/sys_helper.c         |  16 ++--
+>   target/ppc/excp_helper.c             |  12 +--
+>   target/ppc/kvm.c                     |   4 +-
+>   target/ppc/misc_helper.c             |   8 +-
+>   target/ppc/timebase_helper.c         |   8 +-
+>   target/s390x/kvm/kvm.c               |   4 +-
+>   target/s390x/tcg/misc_helper.c       | 118 +++++++++++++--------------
+>   target/sparc/int32_helper.c          |   2 +-
+>   target/sparc/int64_helper.c          |   6 +-
+>   target/sparc/win_helper.c            |  20 ++---
+>   target/xtensa/exc_helper.c           |   8 +-
+>   ui/spice-core.c                      |   4 +-
+>   util/async.c                         |   2 +-
+>   util/main-loop.c                     |   8 +-
+>   util/qsp.c                           |   6 +-
+>   util/rcu.c                           |  14 ++--
+>   audio/coreaudio.m                    |   4 +-
+>   memory_ldst.c.inc                    |  18 ++--
+>   target/i386/hvf/README.md            |   2 +-
+>   ui/cocoa.m                           |  50 ++++++------
+>   96 files changed, 530 insertions(+), 529 deletions(-)
+> 
+> diff --git a/include/block/aio-wait.h b/include/block/aio-wait.h
+> index 5449b6d742..d22ca24329 100644
+> --- a/include/block/aio-wait.h
+> +++ b/include/block/aio-wait.h
+> @@ -151,7 +151,7 @@ static inline bool in_aio_context_home_thread(AioContext *ctx)
+>       }
+>   
+>       if (ctx == qemu_get_aio_context()) {
+> -        return qemu_mutex_iothread_locked();
+> +        return bql_locked();
+>       } else {
+>           return false;
+>       }
+> diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
+> index 68e70e61aa..596a206acd 100644
+> --- a/include/qemu/main-loop.h
+> +++ b/include/qemu/main-loop.h
+> @@ -248,19 +248,19 @@ GSource *iohandler_get_g_source(void);
+>   AioContext *iohandler_get_aio_context(void);
+>   
+>   /**
+> - * qemu_mutex_iothread_locked: Return lock status of the main loop mutex.
+> + * bql_locked: Return lock status of the Big QEMU Lock (BQL)
+>    *
+> - * The main loop mutex is the coarsest lock in QEMU, and as such it
+> + * The Big QEMU Lock (BQL) is the coarsest lock in QEMU, and as such it
+>    * must always be taken outside other locks.  This function helps
+>    * functions take different paths depending on whether the current
+> - * thread is running within the main loop mutex.
+> + * thread is running within the BQL.
+>    *
+>    * This function should never be used in the block layer, because
+>    * unit tests, block layer tools and qemu-storage-daemon do not
+>    * have a BQL.
+>    * Please instead refer to qemu_in_main_thread().
+>    */
+> -bool qemu_mutex_iothread_locked(void);
+> +bool bql_locked(void);
+>   
+>   /**
+>    * qemu_in_main_thread: return whether it's possible to safely access
+> @@ -312,58 +312,58 @@ bool qemu_in_main_thread(void);
+>       } while (0)
+>   
+>   /**
+> - * qemu_mutex_lock_iothread: Lock the main loop mutex.
+> + * bql_lock: Lock the Big QEMU Lock (BQL).
+>    *
+> - * This function locks the main loop mutex.  The mutex is taken by
+> + * This function locks the Big QEMU Lock (BQL).  The lock is taken by
+>    * main() in vl.c and always taken except while waiting on
+> - * external events (such as with select).  The mutex should be taken
+> + * external events (such as with select).  The lock should be taken
+>    * by threads other than the main loop thread when calling
+>    * qemu_bh_new(), qemu_set_fd_handler() and basically all other
+>    * functions documented in this file.
+>    *
+> - * NOTE: tools currently are single-threaded and qemu_mutex_lock_iothread
+> + * NOTE: tools currently are single-threaded and bql_lock
+>    * is a no-op there.
+>    */
+> -#define qemu_mutex_lock_iothread()                      \
+> -    qemu_mutex_lock_iothread_impl(__FILE__, __LINE__)
+> -void qemu_mutex_lock_iothread_impl(const char *file, int line);
+> +#define bql_lock()                      \
+> +    bql_lock_impl(__FILE__, __LINE__)
 
-Fixes: a2e1753b80 ("memory: prevent dma-reentracy issues")
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- hw/sd/pxa2xx_mmci.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 5e8ea69188..27ae8f2888 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -555,6 +555,8 @@ static void pxa2xx_mmci_instance_init(Object *obj)
-     qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
-     qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
- 
-+    s->iomem.disable_reentrancy_guard = true;
-+
-     qbus_init(&s->sdbus, sizeof(s->sdbus),
-               TYPE_PXA2XX_MMCI_BUS, DEVICE(obj), "sd-bus");
- }
--- 
-2.39.2
-
+This line break is no longer necessary.

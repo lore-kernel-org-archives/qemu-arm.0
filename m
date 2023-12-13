@@ -1,163 +1,119 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1805491ejo;
-        Wed, 13 Dec 2023 10:04:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH4CDqNaHLiNEGdadQ3c20xOhJ9LXT+/n+TZLhQNPXndo8JmHhMU1Df7AZyFCrc0Nvooyd6
-X-Received: by 2002:a05:622a:10a:b0:423:708a:778c with SMTP id u10-20020a05622a010a00b00423708a778cmr12279484qtw.64.1702490679319;
-        Wed, 13 Dec 2023 10:04:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702490679; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1838254ejo;
+        Wed, 13 Dec 2023 11:01:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGDxwZVYX3nC3yoBOSw2KAqvlstBUF3DZfvZUpK/zYrEliDBHzRgzKScteWccNoe3RJ+PRb
+X-Received: by 2002:a81:4f11:0:b0:5e3:2360:4f66 with SMTP id d17-20020a814f11000000b005e323604f66mr639176ywb.5.1702494081928;
+        Wed, 13 Dec 2023 11:01:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702494081; cv=none;
         d=google.com; s=arc-20160816;
-        b=lpq6xTgxqggbbVnDk5T/3tpi37yjTXZ/lYJ7fRCW/38XNHgNQ05mE7tDVAt6rI3GEh
-         47ggpYyyI598Fh7Foy3bjcm8RiP0zBAHvu9lFGunE62ObCaINGBSsxqk2E2tHlfszItg
-         VeRLEhMMGWpRM4uFNNKNRH3z87hZ85egoQmiBkrlZRYzteVUKkKxYlm2ax0mYyRfSeDY
-         Bp1MAI/udbLnVVhg6FJSIFw5TfF3FBEBB6pXuHLj2FoM1qZc08OVUE68jsSDAfXwzxye
-         Q/3qgGge5+VnvjWiOMictZ6FzSO+wy6gLXkQ6bHFshp2ANDj5gD8IrQ6gRzFHHs+BMZX
-         vMlQ==
+        b=p9E0F+8wBogkNsHlNN4wgnn+jymkk417p4zoaQqNiu1t8mYTR1SpCTWeFAvSN+7pl7
+         LCNeqw3k4wfF62B8qy7gkn9n0aQVMLjTUq6q6M1e933aJp1oA/2tnEuIvs73FpbGI4PQ
+         v72RZKu/BiM95NfcNtDzEIHmRp911oMcPmlArSmBt4iBVyszHNj3m50DZsXlUsqioVH3
+         GPe4xABxd23pUVNYVAlDfYHbmRP65b1P3Ahy65fyMSZO1MtlqAYnBbQtxv4KdC8hFdl7
+         RU7c4J2d9P7ujqlq9/ouDZgISmpIvG7oWa7xUP8F90ILoYFtd3nXxSQm8OnlNsYJi234
+         o0Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:references:cc:to:content-language
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=9NCcGbwXfN+o9Uudz1Xx4Lrwa/mXkdncPsFm6ZKjOnk=;
-        fh=slGESwP/hltSNUyhGZ2JL7LfxQpDkSgitqep8rykOnM=;
-        b=xRwt6sIjWawhI79S9JZ4cvPK2GzX+6eUfoo+6V0cM2b/khW8C+QobBWzoFSNxXNYHX
-         HKye1CHDUu1gfvaeZSUqFAyFV7PJ5S5uNGx0WFtFC/t/7o7XdYlhbEme/ygoxofeJn9X
-         fAbKASN7KoqJnyPoaurpiVLRpccfspwKp6eSa/u3YQcZtQGFENbimfXDixoMpBJeQzod
-         skhxveLYYCo38x9EccOvqbnxvSxnEZR+BKZp8RhvqqYb2JVVVeLFNWWVoo5g+/KkeqpW
-         /ZBUteLM3eUB2OmXi498dv87A76WGdzbZzdaOE4rb3gEYb4GPRWiPOEFQM4iy+P/JlS9
-         1ZkA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=uju6HCro1RYQ8eo4/sl2eeTL4CgER9vxKG2dc3buWcI=;
+        fh=r3Z3o0Ta8uXsTsr5TggWjtrqoRbSB+OhEd8hQUjehDs=;
+        b=SADRtlH2T0qgKGOTDrGEKwih9TEILyLuili6N4mUgVI+gdfA92gs7/3XCSopVHcpat
+         WxTKTOnEKSQXNtA05QnEMb/lelMpEyvhx6lSQLzsaA/SG2BkkK4ZtrC1DLOHVY914ZSF
+         1i5+uiuQg1YPxVqCOawEPiL7bjdt1AftUYo73BKg5iRxLWZ6ftKQlonJa3FxfjJ71uvA
+         gzZtMYvRqnbkcDo4oVDbx1c1zNQdfUJjwZ9AXTQZhWMvuDbC7hkqXUvhasY0XD/Aiw8s
+         TEz72JgXqQi0bdaxI0EXo8agPQ770i/eOo6ZmC2N3v9h9eIcsNVFNrxxX86voirImIbr
+         VlDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=gOX614Iq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=K65edvol;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bt8-20020ac86908000000b00423988e1e87si15647453qtb.229.2023.12.13.10.04.39
+        by mx.google.com with ESMTPS id y18-20020a0dd612000000b005d7882a6edcsi8149125ywd.195.2023.12.13.11.01.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Dec 2023 10:04:39 -0800 (PST)
+        Wed, 13 Dec 2023 11:01:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=gOX614Iq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=K65edvol;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rDTas-0006Iy-5D; Wed, 13 Dec 2023 13:04:28 -0500
+	id 1rDUTJ-0002b4-He; Wed, 13 Dec 2023 14:00:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rDTam-0006Gz-6p; Wed, 13 Dec 2023 13:04:21 -0500
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rDUTI-0002ad-09
+ for qemu-arm@nongnu.org; Wed, 13 Dec 2023 14:00:40 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rDTai-0000Id-93; Wed, 13 Dec 2023 13:04:19 -0500
-Received: by mail-pg1-x531.google.com with SMTP id
- 41be03b00d2f7-5ca0b968d8dso1641908a12.1; 
- Wed, 13 Dec 2023 10:04:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rDUTG-0002WL-DB
+ for qemu-arm@nongnu.org; Wed, 13 Dec 2023 14:00:39 -0500
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-54c5ed26cf6so9298968a12.3
+ for <qemu-arm@nongnu.org>; Wed, 13 Dec 2023 11:00:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702490653; x=1703095453; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date:message-id:reply-to;
- bh=9NCcGbwXfN+o9Uudz1Xx4Lrwa/mXkdncPsFm6ZKjOnk=;
- b=gOX614IqbaJZl/sJzqxQ6/h0DXFrRDhc6x8cqB2SUB+Bx6ym3wxAtfw6uMQnuBVIRi
- doZMdSQdt8Oyd71KVlIU1Izbnn9KQeFcyO0mlAjhLHkKODNOucDuPc4qV7RCcN72zrVF
- YOVhXFJRYHsLh8LmvUkIa1JIZfnAmxCUE+s4QYDis6ofs0iKOrF0U3FVgZQDPCDjIk9E
- X5YzyE/EANennEN4NljZbSRwxF4GB2RLT/0UMi2wIj0Da/eBe9mlp3P0RO4qJnUBxOwA
- amMgOYumal2qk33/MRiNrd6qqVfXAb6BVy4CdzP+PG99vuvInim59nlpEOfuFtaA5TnP
- vS8g==
+ d=linaro.org; s=google; t=1702494036; x=1703098836; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uju6HCro1RYQ8eo4/sl2eeTL4CgER9vxKG2dc3buWcI=;
+ b=K65edvol/ANl8HPV7Pb+96FtxX1m6Or6ug71sdY+LfzVv0Z3OKUSLtkOPN1ehfmCH5
+ pgptzj0wSO/v+BEqchr2el+pa73ja5BzFAF6sTrJj29+mpDEhCV8By8InwhBRN2uQ9yC
+ gid+bxtLdkWJGNhQOA3ZmIV3fN50s+JzaSYWNw3FU2gaTHte1RnJGv1/5q9l+Dz5qjWo
+ HlK9MXk9qZvfXq7+GrSv2QNz5ofehdTy+dvOlzdnU9xb+fhH4OuBC9iV7NsKuSET0iLV
+ +Zyv7fTxaGRwEUfomvMmSt0QVwDhzzPsCMWCc2Rtc38BxvKKC2jv2LVi0bUP9KO+Vqwy
+ JnOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702490653; x=1703095453;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=9NCcGbwXfN+o9Uudz1Xx4Lrwa/mXkdncPsFm6ZKjOnk=;
- b=H0WdXGOkYryARFNZLIvBPxMcdZfFAQEgYMHn/N+B3CBjTL80ZCgYDWhBOqx3r3zCDY
- S4GzC5YMEBVoPX5FedkgileupAC/CO3YXTjMdzr6yr5JSSmpg0nQZAwnBF8pstMqLnPl
- YiWMCNubLsFpE5sKRkPzHmZkP7RsU/CFrwWf2iE8ZIf5SlE9EtLeMRAFow6A5hvNRwMO
- K5a8mjXW98A4/JX4DN4pEYT56Dd2cc4h1wFvFhv4KwEBAyykPt2CGFMrav5e15Gss12E
- ZhFeaDeyiFLxHEdhMNek1tJRe+rWALi/ut2yxRv0QQjtQJvEEJscxANet+Xr3FdF69+H
- BV0g==
-X-Gm-Message-State: AOJu0Yws9UUhWUDT20/4Ni3o+082oc8J2JEuQ7rrL+dkhQGrbyMLChOs
- NRMdEoTjf2Jhjb8dc3EJlvt3PUn/aiM=
-X-Received: by 2002:a05:6a20:938e:b0:190:9d87:f9f7 with SMTP id
- x14-20020a056a20938e00b001909d87f9f7mr3684007pzh.43.1702490653049; 
- Wed, 13 Dec 2023 10:04:13 -0800 (PST)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
- ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- x6-20020aa784c6000000b006c8b14f3f0asm10224214pfn.117.2023.12.13.10.04.12
+ d=1e100.net; s=20230601; t=1702494036; x=1703098836;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=uju6HCro1RYQ8eo4/sl2eeTL4CgER9vxKG2dc3buWcI=;
+ b=VBK9oooCbq+i6Jtm49dk32qaETCYnHkOqmWUN0vVeRAbrU22qntoO8sS7dyk28aNdy
+ qc2oWc8aoj+EchVy+ekOpreuaEROaGjUlnl8JSiO2Bj6v1XP994jqA1epOu4c4cFcBXF
+ vG3os+d76IH7AXzkvCIYMNCMfOJMh+v4rOxoDnKGXfmFj/mGxM19n13bGnNkpTfjduzv
+ h57FOREmR8Pagl2tghLuiEiNFi7u/xXc6PJB/D2SUxfhSO8kPm5mhmYd+TrOOkqLFpIH
+ fKvKGEseaC313P428EMWqCedP7YvwPS1E/h4J+nDfWMxxOsYugKWLalTifEXj14TTs8G
+ g1AQ==
+X-Gm-Message-State: AOJu0YwxLy2ijZs9Yh7ZUqwqfqkwRvl82zhrgfV3pg10OkT5I/52VnjS
+ sr+1oddki4LYz2eYz5LijQnW/Q==
+X-Received: by 2002:a17:906:c14e:b0:a19:a19b:5603 with SMTP id
+ dp14-20020a170906c14e00b00a19a19b5603mr5482995ejc.147.1702494036695; 
+ Wed, 13 Dec 2023 11:00:36 -0800 (PST)
+Received: from [192.168.1.120] (tmo-066-178.customers.d1-online.com.
+ [80.187.66.178]) by smtp.gmail.com with ESMTPSA id
+ cx11-20020a170907168b00b00a1d5ebe8871sm8155535ejd.28.2023.12.13.11.00.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Dec 2023 10:04:12 -0800 (PST)
-Message-ID: <77e4b77e-ce9f-41a2-b11a-f44ea6bb7412@roeck-us.net>
-Date: Wed, 13 Dec 2023 10:04:11 -0800
+ Wed, 13 Dec 2023 11:00:35 -0800 (PST)
+Message-ID: <96306f5d-db3d-466a-a9f7-800410d4b903@linaro.org>
+Date: Wed, 13 Dec 2023 20:00:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/sd/pxa2xx_mmci: Disable reentrancy detection
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+To: Guenter Roeck <linux@roeck-us.net>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20231213014932.1748323-1-linux@roeck-us.net>
  <CAFEAcA9KU855jn8xDQtbf58Byg0NCq-aB3tPcf8sB6YLyLkvWQ@mail.gmail.com>
  <9acdbf95-492d-4cce-98f5-d774a277d214@linaro.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <9acdbf95-492d-4cce-98f5-d774a277d214@linaro.org>
+ <77e4b77e-ce9f-41a2-b11a-f44ea6bb7412@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <77e4b77e-ce9f-41a2-b11a-f44ea6bb7412@roeck-us.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=groeck7@gmail.com; helo=mail-pg1-x531.google.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -172,53 +128,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UDUGpBmuN55Y
+X-TUID: fMZfnzZxlMCs
 
-On 12/13/23 09:19, Philippe Mathieu-Daudé wrote:
-> Hi Guenter,
-> 
-> On 13/12/23 18:12, Peter Maydell wrote:
->> On Wed, 13 Dec 2023 at 01:49, Guenter Roeck <linux@roeck-us.net> wrote:
->>>
->>> All tests using pxa2xx_mmc to access mmc cards on pxa2xx platforms
->>> such as borzoi fail starting with commit a2e1753b80 ("memory: prevent
->>> dma-reentracy issues"). Disable reentrancy guard to fix the problem.
->>>
->>> Fixes: a2e1753b80 ("memory: prevent dma-reentracy issues")
->>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->>> ---
->>>   hw/sd/pxa2xx_mmci.c | 2 ++
->>>   1 file changed, 2 insertions(+)
->>>
->>> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
->>> index 5e8ea69188..27ae8f2888 100644
->>> --- a/hw/sd/pxa2xx_mmci.c
->>> +++ b/hw/sd/pxa2xx_mmci.c
->>> @@ -555,6 +555,8 @@ static void pxa2xx_mmci_instance_init(Object *obj)
->>>       qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
->>>       qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
->>>
->>> +    s->iomem.disable_reentrancy_guard = true;
->>> +
+On 13/12/23 19:04, Guenter Roeck wrote:
+> On 12/13/23 09:19, Philippe Mathieu-Daudé wrote:
+>> Hi Guenter,
 >>
->> All patches that set this flag should include a comment which
->> explains what the device access path that triggers the reentrancy
->> is, please.
+>> On 13/12/23 18:12, Peter Maydell wrote:
+>>> On Wed, 13 Dec 2023 at 01:49, Guenter Roeck <linux@roeck-us.net> wrote:
+>>>>
+>>>> All tests using pxa2xx_mmc to access mmc cards on pxa2xx platforms
+>>>> such as borzoi fail starting with commit a2e1753b80 ("memory: prevent
+>>>> dma-reentracy issues"). Disable reentrancy guard to fix the problem.
+>>>>
+>>>> Fixes: a2e1753b80 ("memory: prevent dma-reentracy issues")
+>>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>>> ---
+>>>>   hw/sd/pxa2xx_mmci.c | 2 ++
+>>>>   1 file changed, 2 insertions(+)
+>>>>
+>>>> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+>>>> index 5e8ea69188..27ae8f2888 100644
+>>>> --- a/hw/sd/pxa2xx_mmci.c
+>>>> +++ b/hw/sd/pxa2xx_mmci.c
+>>>> @@ -555,6 +555,8 @@ static void pxa2xx_mmci_instance_init(Object *obj)
+>>>>       qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
+>>>>       qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
+>>>>
+>>>> +    s->iomem.disable_reentrancy_guard = true;
+>>>> +
+>>>
+>>> All patches that set this flag should include a comment which
+>>> explains what the device access path that triggers the reentrancy
+>>> is, please.
+>>
+>> Can we get a reproducer or backtrace please?
 > 
-> Can we get a reproducer or backtrace please?
+> qemu-system-arm: warning: Blocked re-entrant IO on MemoryRegion: 
+> pxa2xx-mmci at addr: 0x40
+> [    0.770246] mmc0: invalid bus width
+> [    0.770962] mmc0: error -22 whilst initialising SD card
+> [    0.828179] mmc0: invalid bus width
+> [    0.828445] mmc0: error -22 whilst initialising SD card
+> 
+> with:
+> 
+> qemu-system-arm -M borzoi -kernel arch/arm/boot/zImage -no-reboot 
+> -snapshot \
+>      -device sd-card,drive=d0 -drive 
+> file=/tmp/flash,format=raw,if=none,id=d0 \
+>      -usb -device usb-net,netdev=net0 -netdev user,id=net0 \
+>      --append "root=/dev/mmcblk0 rootwait console=ttyS0"
 
-qemu-system-arm: warning: Blocked re-entrant IO on MemoryRegion: pxa2xx-mmci at addr: 0x40
-[    0.770246] mmc0: invalid bus width
-[    0.770962] mmc0: error -22 whilst initialising SD card
-[    0.828179] mmc0: invalid bus width
-[    0.828445] mmc0: error -22 whilst initialising SD card
+Thank you, I'll have a look after Christmas.
 
-with:
+Regards,
 
-qemu-system-arm -M borzoi -kernel arch/arm/boot/zImage -no-reboot -snapshot \
-	-device sd-card,drive=d0 -drive file=/tmp/flash,format=raw,if=none,id=d0 \
-	-usb -device usb-net,netdev=net0 -netdev user,id=net0 \
-	--append "root=/dev/mmcblk0 rootwait console=ttyS0"
-
-Guenter
-
+Phil.

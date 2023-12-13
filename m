@@ -1,103 +1,105 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1798748ejo;
-        Wed, 13 Dec 2023 09:55:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF3cx93ZiKHpSM21Uf4mVbVjCP+rw94xZzzfgfOvGXBYLx1EllhiQQ1sar9VXmB+CZ1ff9X
-X-Received: by 2002:a05:620a:410a:b0:77f:78d8:7652 with SMTP id j10-20020a05620a410a00b0077f78d87652mr6689197qko.157.1702490156499;
-        Wed, 13 Dec 2023 09:55:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702490156; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1805491ejo;
+        Wed, 13 Dec 2023 10:04:39 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH4CDqNaHLiNEGdadQ3c20xOhJ9LXT+/n+TZLhQNPXndo8JmHhMU1Df7AZyFCrc0Nvooyd6
+X-Received: by 2002:a05:622a:10a:b0:423:708a:778c with SMTP id u10-20020a05622a010a00b00423708a778cmr12279484qtw.64.1702490679319;
+        Wed, 13 Dec 2023 10:04:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702490679; cv=none;
         d=google.com; s=arc-20160816;
-        b=LZWuqv0M0iZQRBYDK25yUxw1JPwHoCVMiCiuML/d8ybbe3KG35s7PWc4nTw1bniLp/
-         ZiZKcFscP4teVL+BbZ/pSNYAzPMREUlYxbiQDTPeWDqlk58yRElXccRwzzgJWmrBOwEa
-         c7NH0Yiq9QFQk9jNt6HsT3pQQoi/OYtfq57K7PI5R6mVYYVvc+i/9cAJT2mToGrr+pHK
-         AGWiEfadJyJuiVYmGsBrWvkrzH8mV++/GX0ZUpGF09eMgATJcsvmkshHBvn7tX24+qdO
-         JN23OdFEirzm+stJi7Wrd4295jNMukX3Sn2qSJynQPgRx0k/+AaRPsdcpJhkzo+dA1EI
-         jRgQ==
+        b=lpq6xTgxqggbbVnDk5T/3tpi37yjTXZ/lYJ7fRCW/38XNHgNQ05mE7tDVAt6rI3GEh
+         47ggpYyyI598Fh7Foy3bjcm8RiP0zBAHvu9lFGunE62ObCaINGBSsxqk2E2tHlfszItg
+         VeRLEhMMGWpRM4uFNNKNRH3z87hZ85egoQmiBkrlZRYzteVUKkKxYlm2ax0mYyRfSeDY
+         Bp1MAI/udbLnVVhg6FJSIFw5TfF3FBEBB6pXuHLj2FoM1qZc08OVUE68jsSDAfXwzxye
+         Q/3qgGge5+VnvjWiOMictZ6FzSO+wy6gLXkQ6bHFshp2ANDj5gD8IrQ6gRzFHHs+BMZX
+         vMlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:references:cc:to:content-language
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2bH89VGm5IlL42Otb6NowEZTKJ8MKSMNoXsWLopJC7o=;
-        fh=PpZ1CCXoZMh/DRvZh+FxXhmYvb7cgaexUeWdx5nsuRU=;
-        b=EaKVwHNanYo27baLWqMF1w2NDZxPiMQKK7h4ED7gBP2h0fep5V0TaU51PQ/LQgYJxX
-         v5edY7OLI4ZVPaEWtPApJFgtx24Wu26oLC1mnK5RS+8zmPdotGO3r/lR+GhuxOtZCQII
-         4QLAW+rmzJB8l5bsZ/h7zuQKF7MCoSvyQp9h1+yWjdsVc61u5YcYcuY9v/vw0NxSmvKE
-         6Rv1GHNYbUeHPjgMZIX8ht19FPtUM79wE2isZ4wCVViPIXsLUiCbTy4FVQ8Y1qAlpeW0
-         ib5jYi0DF0r6DsUE/hrcJCgl5stu9N7vqFmhs738Jvl04ihpUn7RXOGrKkOu4AAmQ2Il
-         W/6A==
+        bh=9NCcGbwXfN+o9Uudz1Xx4Lrwa/mXkdncPsFm6ZKjOnk=;
+        fh=slGESwP/hltSNUyhGZ2JL7LfxQpDkSgitqep8rykOnM=;
+        b=xRwt6sIjWawhI79S9JZ4cvPK2GzX+6eUfoo+6V0cM2b/khW8C+QobBWzoFSNxXNYHX
+         HKye1CHDUu1gfvaeZSUqFAyFV7PJ5S5uNGx0WFtFC/t/7o7XdYlhbEme/ygoxofeJn9X
+         fAbKASN7KoqJnyPoaurpiVLRpccfspwKp6eSa/u3YQcZtQGFENbimfXDixoMpBJeQzod
+         skhxveLYYCo38x9EccOvqbnxvSxnEZR+BKZp8RhvqqYb2JVVVeLFNWWVoo5g+/KkeqpW
+         /ZBUteLM3eUB2OmXi498dv87A76WGdzbZzdaOE4rb3gEYb4GPRWiPOEFQM4iy+P/JlS9
+         1ZkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b="FJ/77GRp";
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=gOX614Iq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qf2-20020a05620a660200b0077d7491f3dcsi13701551qkn.490.2023.12.13.09.55.56
+        by mx.google.com with ESMTPS id bt8-20020ac86908000000b00423988e1e87si15647453qtb.229.2023.12.13.10.04.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Dec 2023 09:55:56 -0800 (PST)
+        Wed, 13 Dec 2023 10:04:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b="FJ/77GRp";
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=gOX614Iq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rDTSR-0004St-Oq; Wed, 13 Dec 2023 12:55:44 -0500
+	id 1rDTas-0006Iy-5D; Wed, 13 Dec 2023 13:04:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rDTSQ-0004SZ-Vu; Wed, 13 Dec 2023 12:55:43 -0500
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ id 1rDTam-0006Gz-6p; Wed, 13 Dec 2023 13:04:21 -0500
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1rDTSO-0002xh-Ak; Wed, 13 Dec 2023 12:55:42 -0500
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-517ab9a4a13so6083276a12.1; 
- Wed, 13 Dec 2023 09:55:38 -0800 (PST)
+ id 1rDTai-0000Id-93; Wed, 13 Dec 2023 13:04:19 -0500
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-5ca0b968d8dso1641908a12.1; 
+ Wed, 13 Dec 2023 10:04:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702490137; x=1703094937; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702490653; x=1703095453; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :sender:from:to:cc:subject:date:message-id:reply-to;
- bh=2bH89VGm5IlL42Otb6NowEZTKJ8MKSMNoXsWLopJC7o=;
- b=FJ/77GRpFWc6WGcvtVH6Xl2duJPKzELXdYnt/dboAhVP0PXolrIQOLZ810kSWxiVbL
- OxxdZqUv9DtD2Ndbd6pyq8lUBUmeN9MEWjs5HVEcxKb3VW/WrQDPth73s7QK2xS5fjrX
- jYcuv7KfM3WoVAOKMBQcgjuDTB2AULwEGkLCTncArHKSzhMyeUdBSHimBCPhDHNv/Oae
- YH2/KEOvq29hdrYPUAZEVNdaBcSjCMQr9iVFieY6YNwO3Chlmh4J99AyGdkDb6uKTbKr
- tbw8vh/8AJ8wC9cZChTzUpYhZLkRikOOdaEkJIY8mZoRRXje9kHSelc3lQoL8nhCfidk
- Y8mQ==
+ bh=9NCcGbwXfN+o9Uudz1Xx4Lrwa/mXkdncPsFm6ZKjOnk=;
+ b=gOX614IqbaJZl/sJzqxQ6/h0DXFrRDhc6x8cqB2SUB+Bx6ym3wxAtfw6uMQnuBVIRi
+ doZMdSQdt8Oyd71KVlIU1Izbnn9KQeFcyO0mlAjhLHkKODNOucDuPc4qV7RCcN72zrVF
+ YOVhXFJRYHsLh8LmvUkIa1JIZfnAmxCUE+s4QYDis6ofs0iKOrF0U3FVgZQDPCDjIk9E
+ X5YzyE/EANennEN4NljZbSRwxF4GB2RLT/0UMi2wIj0Da/eBe9mlp3P0RO4qJnUBxOwA
+ amMgOYumal2qk33/MRiNrd6qqVfXAb6BVy4CdzP+PG99vuvInim59nlpEOfuFtaA5TnP
+ vS8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702490137; x=1703094937;
+ d=1e100.net; s=20230601; t=1702490653; x=1703095453;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :sender:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=2bH89VGm5IlL42Otb6NowEZTKJ8MKSMNoXsWLopJC7o=;
- b=hjY77xDT1S/4zL7m1hE0r+ofWneJIsSz85t++rQmzxudg9VS05Y9C19wu9rsS5e6u1
- zfNfYOKOQHPENTo7uoOPPU6XyZAsVPOImJX7lsfsUUIlnkzj/z/7NlQVWtIDAbWoiQN5
- hT+yy679NGrQeDZAx5DQ31UR6AOW7ApHjfrieHM+2Bfz7ifGStQMobem+dgxqhAsCLAD
- bOEMD8vcSTUos3j0UIlgS7lXNpyFOh/niAdta3b5REci5sw2hhi0YHEXRTCifg5HmQqU
- 0yxXfyrOEvNitWdOA6Ij++BX3i6E3NW6rqL5FeY5AVmnzIwArtUiDLR0vccvIHFQuwlp
- DZNQ==
-X-Gm-Message-State: AOJu0YygdunFMX1t791BlRFXV9v5s/ddVqrRgTrKBYEloxbEW5ajXNam
- rYwLAaB+BLL/JFFpFEN4ISU/9P4GuRY=
-X-Received: by 2002:a05:6a20:2583:b0:190:3fd8:45c1 with SMTP id
- k3-20020a056a20258300b001903fd845c1mr11401513pzd.0.1702490137362; 
- Wed, 13 Dec 2023 09:55:37 -0800 (PST)
+ bh=9NCcGbwXfN+o9Uudz1Xx4Lrwa/mXkdncPsFm6ZKjOnk=;
+ b=H0WdXGOkYryARFNZLIvBPxMcdZfFAQEgYMHn/N+B3CBjTL80ZCgYDWhBOqx3r3zCDY
+ S4GzC5YMEBVoPX5FedkgileupAC/CO3YXTjMdzr6yr5JSSmpg0nQZAwnBF8pstMqLnPl
+ YiWMCNubLsFpE5sKRkPzHmZkP7RsU/CFrwWf2iE8ZIf5SlE9EtLeMRAFow6A5hvNRwMO
+ K5a8mjXW98A4/JX4DN4pEYT56Dd2cc4h1wFvFhv4KwEBAyykPt2CGFMrav5e15Gss12E
+ ZhFeaDeyiFLxHEdhMNek1tJRe+rWALi/ut2yxRv0QQjtQJvEEJscxANet+Xr3FdF69+H
+ BV0g==
+X-Gm-Message-State: AOJu0Yws9UUhWUDT20/4Ni3o+082oc8J2JEuQ7rrL+dkhQGrbyMLChOs
+ NRMdEoTjf2Jhjb8dc3EJlvt3PUn/aiM=
+X-Received: by 2002:a05:6a20:938e:b0:190:9d87:f9f7 with SMTP id
+ x14-20020a056a20938e00b001909d87f9f7mr3684007pzh.43.1702490653049; 
+ Wed, 13 Dec 2023 10:04:13 -0800 (PST)
 Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
  ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- 17-20020aa79111000000b006ce6c661701sm9913390pfh.139.2023.12.13.09.55.35
+ x6-20020aa784c6000000b006c8b14f3f0asm10224214pfn.117.2023.12.13.10.04.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Dec 2023 09:55:36 -0800 (PST)
-Message-ID: <afcc27af-5d86-4d4c-851b-6182518055ad@roeck-us.net>
-Date: Wed, 13 Dec 2023 09:55:34 -0800
+ Wed, 13 Dec 2023 10:04:12 -0800 (PST)
+Message-ID: <77e4b77e-ce9f-41a2-b11a-f44ea6bb7412@roeck-us.net>
+Date: Wed, 13 Dec 2023 10:04:11 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/sd/pxa2xx_mmci: Disable reentrancy detection
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20231213014932.1748323-1-linux@roeck-us.net>
  <CAFEAcA9KU855jn8xDQtbf58Byg0NCq-aB3tPcf8sB6YLyLkvWQ@mail.gmail.com>
+ <9acdbf95-492d-4cce-98f5-d774a277d214@linaro.org>
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
  xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
@@ -142,11 +144,11 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
  HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
  mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <CAFEAcA9KU855jn8xDQtbf58Byg0NCq-aB3tPcf8sB6YLyLkvWQ@mail.gmail.com>
+In-Reply-To: <9acdbf95-492d-4cce-98f5-d774a277d214@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=groeck7@gmail.com; helo=mail-pg1-x52b.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=groeck7@gmail.com; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
@@ -170,44 +172,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UEhQQ8SQP+WH
+X-TUID: UDUGpBmuN55Y
 
-On 12/13/23 09:12, Peter Maydell wrote:
-> On Wed, 13 Dec 2023 at 01:49, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> All tests using pxa2xx_mmc to access mmc cards on pxa2xx platforms
->> such as borzoi fail starting with commit a2e1753b80 ("memory: prevent
->> dma-reentracy issues"). Disable reentrancy guard to fix the problem.
->>
->> Fixes: a2e1753b80 ("memory: prevent dma-reentracy issues")
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> ---
->>   hw/sd/pxa2xx_mmci.c | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
->> index 5e8ea69188..27ae8f2888 100644
->> --- a/hw/sd/pxa2xx_mmci.c
->> +++ b/hw/sd/pxa2xx_mmci.c
->> @@ -555,6 +555,8 @@ static void pxa2xx_mmci_instance_init(Object *obj)
->>       qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
->>       qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
->>
->> +    s->iomem.disable_reentrancy_guard = true;
->> +
+On 12/13/23 09:19, Philippe Mathieu-Daudé wrote:
+> Hi Guenter,
 > 
-> All patches that set this flag should include a comment which
-> explains what the device access path that triggers the reentrancy
-> is, please.
+> On 13/12/23 18:12, Peter Maydell wrote:
+>> On Wed, 13 Dec 2023 at 01:49, Guenter Roeck <linux@roeck-us.net> wrote:
+>>>
+>>> All tests using pxa2xx_mmc to access mmc cards on pxa2xx platforms
+>>> such as borzoi fail starting with commit a2e1753b80 ("memory: prevent
+>>> dma-reentracy issues"). Disable reentrancy guard to fix the problem.
+>>>
+>>> Fixes: a2e1753b80 ("memory: prevent dma-reentracy issues")
+>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>> ---
+>>>   hw/sd/pxa2xx_mmci.c | 2 ++
+>>>   1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+>>> index 5e8ea69188..27ae8f2888 100644
+>>> --- a/hw/sd/pxa2xx_mmci.c
+>>> +++ b/hw/sd/pxa2xx_mmci.c
+>>> @@ -555,6 +555,8 @@ static void pxa2xx_mmci_instance_init(Object *obj)
+>>>       qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
+>>>       qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
+>>>
+>>> +    s->iomem.disable_reentrancy_guard = true;
+>>> +
+>>
+>> All patches that set this flag should include a comment which
+>> explains what the device access path that triggers the reentrancy
+>> is, please.
 > 
+> Can we get a reproducer or backtrace please?
 
-No idea what that would be, sorry. I noticed that the reentrancy guard
-causes the affected emulations to fail, but I have no understanding or
-knowledge of the code itself. NP if this is insufficient to apply the patch.
-I am carrying it locally anyway, so for me it doesn't make a difference.
-Maybe someone with better understanding of the underlying code can pick
-it up at some point in the future and provide the necessary context.
+qemu-system-arm: warning: Blocked re-entrant IO on MemoryRegion: pxa2xx-mmci at addr: 0x40
+[    0.770246] mmc0: invalid bus width
+[    0.770962] mmc0: error -22 whilst initialising SD card
+[    0.828179] mmc0: invalid bus width
+[    0.828445] mmc0: error -22 whilst initialising SD card
 
-Thanks,
+with:
+
+qemu-system-arm -M borzoi -kernel arch/arm/boot/zImage -no-reboot -snapshot \
+	-device sd-card,drive=d0 -drive file=/tmp/flash,format=raw,if=none,id=d0 \
+	-usb -device usb-net,netdev=net0 -netdev user,id=net0 \
+	--append "root=/dev/mmcblk0 rootwait console=ttyS0"
+
 Guenter
 

@@ -1,322 +1,123 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1717680ejo;
-        Wed, 13 Dec 2023 07:54:28 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG4wVmU6RHPsKmhmkHCdcanwT/MENwapB6jfMQkqVF4KCvA5mz39M5GCe0tYWvYCVgoOTdX
-X-Received: by 2002:a05:6830:1bea:b0:6d9:d77e:50c with SMTP id k10-20020a0568301bea00b006d9d77e050cmr8899363otb.32.1702482868635;
-        Wed, 13 Dec 2023 07:54:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702482868; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp1761962ejo;
+        Wed, 13 Dec 2023 09:01:00 -0800 (PST)
+X-Received: by 2002:a17:906:86:b0:a1f:a6bf:4e5f with SMTP id 6-20020a170906008600b00a1fa6bf4e5fmr2443891ejc.151.1702486859929;
+        Wed, 13 Dec 2023 09:00:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702486859; cv=none;
         d=google.com; s=arc-20160816;
-        b=G4MhQdIi0ujDoWRMg0MGzR/d37D8FjR3jFk9DFI8k7yo4tmxhd9Rxl0Rk2kaDkHXIF
-         /+H96MnC5zIsV5sAUzvnM2/dLykJXMEW05O/UhV1W9Jx1/MkBMt1CZymkSiC4cG9F9rO
-         vD+6nsenPOg0SxAqsBd71eql2zWniVTd6XYBrP50TKVBY8qEPE4fhwAvi8bACmGs9LH/
-         h5vZlZc79epje6eJEF+fwpUS9IB4YmBVkpM8Xxe6x1MWPU+3zOSekcYsj1iW2Ow6C6SH
-         K6y4lL75BBoq+UoWfcb7yYLM6iizyLn5EX5Smgxrsm2eAk+p0G2bD+mUEwaIFiCa975d
-         o45A==
+        b=yHStc38JI4B5xC1mLrBPLEsAHyWXew3sruH1EDeDJelqm3mNAz3x2zI5A7zK7ixyrw
+         nqdcMC5Z+qGDhev7BvZleL3csyHniy4hLDtYbHTn6p20h/7esXaTxiMzYBxvh9HD6rs1
+         QdmRDHtpNnExDEbUwHkiQxHzp0vyH7liEbN9v8cYiCrK/s/GvInKnXWTHO5PCRwg7TV1
+         9AlvFeOH7QvvlmtAvRkYB1/G61VRfyt0+41oMJU0GpxCuqNSt6spHum7RGqW9SSdmZLq
+         LP0EIV/AKg2Gzpk55qrp37+iwRb+O++zTs8hRS9tSf5eYAmVhEMXW79Z1ACN0lUosUlu
+         YhCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=fVhUaD4LV3xz+Yg868h+s/S8v5llLdsxsR+12GXRwIo=;
-        fh=jsO9BbxCgNC+l7C+p+T98jSNnonsWAG7BfZ6fSMwF7E=;
-        b=fyABHAqnA3V1XrSKJoj02VV8RMmwcyBpIntxMOz8SrWEYh3qISM3HG0H+8j1Z5+HUv
-         EouWiFJ4pLDbJOJW0T5o7MOMfvnFdx2EtEzu3eSIsz08MW/x9SzuXs+GF2tC5CV5bgHC
-         G1CUY7EK1QWTP58+awlsqg0BUrhLdHrcZd5YnypKFmiy+hPiJMnFWpV0i0/pgmOpEpEz
-         9PLwStfyzAgZj69SaBNr737edAKBm++SOdDDl7oTZCB6DhaV7C4mTEjn6bp5ZNRDmzBg
-         aK/CWEXFAm9zipcyNc2ZrUGHnoGEnzGQu9FL5l0fyekvmW1KjRBw4j5ouBhdk9CqUuym
-         2hgw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=nPqK7GrcYmtiH3v3w3JzWW1DxNdjq8IQMp3DUklVk6o=;
+        fh=yYFNmNvL/D3H0o8D+rHRw8smM8fIHEKNAv1ttZa+Dkk=;
+        b=UbJyKnZuLdgIuJHsDcmulf16qfOJxWC1CXC27H0ykwFF+zufGy/Nfg6hsN4BEXgU7T
+         4uzhA9RcFkNZiwcuo6YH58eJXsvRpJHKc6SAYk8McpUWYvsEI/XMZEFVjLt/45QYlmzn
+         Gl+fzWhiNa7SurXdfpFDr1UimWs3vUyW8AWa+B1FJclVvNK1VzlDhWzx42Qm7FTTmDjc
+         G9WjybR87OsN4d3G+8zOFR5+aGClB+gLWPnqaUVHunqciuhaU9FkuY/tgs/FMLjD4vuj
+         Q8b15hvkFDJj2se/Pff15nHUP0qZwjsum7YH1jQ8Y9t8hdkmaCXQH/Wm3nWtooClfJZQ
+         yeXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wgPGBx8b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jWmK7+39;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5-20020a05620a28c500b0077d8a0d4053si13133956qkp.631.2023.12.13.07.54.28
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ml23-20020a170906cc1700b00a1d9fbdfe68sor3474534ejb.21.2023.12.13.09.00.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Dec 2023 07:54:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 13 Dec 2023 09:00:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wgPGBx8b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=jWmK7+39;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rDRYf-00031X-2V; Wed, 13 Dec 2023 10:54:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rDRYd-000313-RP
- for qemu-arm@nongnu.org; Wed, 13 Dec 2023 10:53:59 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rDRYb-0004SU-H8
- for qemu-arm@nongnu.org; Wed, 13 Dec 2023 10:53:59 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-40c46d6784eso32570445e9.3
- for <qemu-arm@nongnu.org>; Wed, 13 Dec 2023 07:53:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702482835; x=1703087635; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fVhUaD4LV3xz+Yg868h+s/S8v5llLdsxsR+12GXRwIo=;
- b=wgPGBx8b4gC/3g2j+t5HwoJV2bKNsHYUE9CJN3z72Z6DXrjXcmOBCSjOQj77V1LhtT
- CYFm7bJ3g95kMa1MbJCsHOho2tF0CDK0BPWyQj7BR7qYAxdEIu+wPnuZqZZosfXd9tpF
- btCkbRlJayDZaaqrTvovo1OrPGinZ/2b0+eWIXIQ0miXmrMMmnZbCZodymFVMdtM6gOG
- jLyc9EWn5yIBvDJh30zkE9b/CP+s6KPTMxRSZHSG17dVLGnKWuTeFABFNI9n/Jd5lRXz
- viQ8Rn4CbOYMTR5PAVgxpeqy5uiFhT+Noo7UqSa1ds8a4zfc+Pt2+Enm1VL43GEAo0lX
- hrlg==
+        d=linaro.org; s=google; t=1702486859; x=1703091659; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nPqK7GrcYmtiH3v3w3JzWW1DxNdjq8IQMp3DUklVk6o=;
+        b=jWmK7+397+PvpUHuq3FxnhRLPjPTEU42EBmWA21+bIYDTCD4e0y+CZwTkT5aOes+Uh
+         GY3WK5K99sMmoDoq33fjztF2FHbQYvaSlVZZ9XBxUXg7db9poQJjbbL0r9GttVeLH06K
+         Qvil5D4WN9QgfSarvjTkmxXiBIIhcDrqZXlFhefY06m5uqV3K7tswIKCyTTuH+c6l6Nq
+         xrpTgvq9htVk4k+fnGIft71Ykf83wWpuifPqAlJpcu4LW9RLCApeJKqWLTu/nj7VzONz
+         w7hLFvZODno16djK6RAEAkjTh1F5z/iKHotg1x19Ezg/GKYLk9/XxPeq0wr8nEuuFLjU
+         K3zQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702482835; x=1703087635;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fVhUaD4LV3xz+Yg868h+s/S8v5llLdsxsR+12GXRwIo=;
- b=ZCvbHTrngxVdes5a6vDZ7FZ9W/jaBMIKhYe5koTpSDUp+fsD2Q7Q91TCsdYzo/rwT8
- 7PZeWGh/7T0zhv/IwrHTMzMzZmulaSFQFGiQfyIGQtKTAzIBWFAx/e2sHOSh/hhs7qeG
- 3C5Q1FSADyDMTbOS21sg/cjwHO1jEVRrXvio4dZOy5kvi3jJWxB+DGzD0/RLnSOuskXT
- u4wqUii+Em7fWiEUBTfN37/Sc4haDo3w01vesU9Q5HIrBynb/Iswqzl08EaIHOm7tQIA
- oJulbcP29N7+h2gBwxbic/zOauP5K4GbmzTh3uLcnTY/B+e7cui//lot/dpayBu2BXmT
- lmxA==
-X-Gm-Message-State: AOJu0YyxuKjEJhDVLdOqP+O4ME7aQObHsw6fLcRTpv8Z3+D2Nn1vndzs
- sOZs07s+GDQgiIhQZhtGYnuNyA==
-X-Received: by 2002:a05:600c:1c1c:b0:40c:32d5:18e1 with SMTP id
- j28-20020a05600c1c1c00b0040c32d518e1mr3863088wms.179.1702482835118; 
- Wed, 13 Dec 2023 07:53:55 -0800 (PST)
-Received: from [192.168.71.175] (254.red-88-29-161.dynamicip.rima-tde.net.
- [88.29.161.254]) by smtp.gmail.com with ESMTPSA id
- g12-20020adfa48c000000b003335eded7f5sm13746968wrb.68.2023.12.13.07.53.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Dec 2023 07:53:54 -0800 (PST)
-Message-ID: <2d71f6a9-70c7-42b4-91dd-e5b7fc627fb7@linaro.org>
-Date: Wed, 13 Dec 2023 16:53:52 +0100
+        d=1e100.net; s=20230601; t=1702486859; x=1703091659;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nPqK7GrcYmtiH3v3w3JzWW1DxNdjq8IQMp3DUklVk6o=;
+        b=hNo3PRQdB8lZEY4B3QxsfLC62a/i+xgUSrLWxeqAZC6edNRyGPaXU5vzIhzLSUKF8V
+         xWkq6s7l78Rdx5c2zCaTc68I9fqNPzOQDsOYG/PFi5uiQKpXuaow5Wqr5pNHHiONp0B8
+         g8utsolKa2468tfBqq5EeEuycL96xJbFR4oNqFmFiXh6iQQAVB5sgSsrovpYUo0RPjtw
+         N0upbtenPA1HCESqKDJtreJri7JyoH7PFvpcVbJriA8hszPEfTIEXOXSmPDffFSLvgwO
+         bPNxTR4pOaKWjT4OThsKhDNqm+SnV2xobmrTV/pWAdG/KFlCADUWwv4je/GlXGSsCKhc
+         0jlA==
+X-Gm-Message-State: AOJu0Yy21EIwnd1CnWWg9uOg/ThJT+oF9x75jcE5mU+8+ZC1DViAiJIU
+	o/8TfXC8EpozI9fCWx2PZ+KqCCUu
+X-Google-Smtp-Source: AGHT+IGj0/KfsnmAFEqNG09uIgYWHMOTbaAWPiuoDfWlwAc+xnbcj8ZLgR9m5a7rGgg3UbFVjYS2Og==
+X-Received: by 2002:a17:907:20b4:b0:a1d:f19c:ab1e with SMTP id pw20-20020a17090720b400b00a1df19cab1emr5069227ejb.100.1702486859552;
+        Wed, 13 Dec 2023 09:00:59 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.79.175] ([93.23.251.22])
+        by smtp.gmail.com with ESMTPSA id ty6-20020a170907c70600b00a1d71c57cb1sm8132013ejc.68.2023.12.13.09.00.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Dec 2023 09:00:59 -0800 (PST)
+Message-ID: <0064f684-793e-4954-90cf-d39c21385a43@linaro.org>
+Date: Wed, 13 Dec 2023 18:00:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] fsl-imx: add simple RTC emulation for i.MX6 and i.MX7
- boards
+Subject: Re: [RFC PATCH-for-9.0 0/9] hw/xen: Have ARM targets use common
+ xen_memory_listener
 Content-Language: en-US
-To: Nikita Ostrenkov <n.ostrenkov@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20231213152408.2533-1-n.ostrenkov@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ David Woodhouse <dwmw@amazon.co.uk>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, xen-devel@lists.xenproject.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20231114163123.74888-1-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231213152408.2533-1-n.ostrenkov@gmail.com>
+In-Reply-To: <20231114163123.74888-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Rh87ZGR2kigT
+Content-Transfer-Encoding: 8bit
+X-TUID: XByWpo5GYMbM
 
-Hi Nikita,
+ping?
 
-On 13/12/23 16:24, Nikita Ostrenkov wrote:
-> Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-> ---
->   hw/misc/imx7_snvs.c         | 70 +++++++++++++++++++++++++++++++++----
->   hw/misc/trace-events        |  4 +--
->   include/hw/misc/imx7_snvs.h |  7 +++-
->   3 files changed, 71 insertions(+), 10 deletions(-)
+On 14/11/23 17:31, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
-> index a245f96cd4..98fe51aa66 100644
-> --- a/hw/misc/imx7_snvs.c
-> +++ b/hw/misc/imx7_snvs.c
-> @@ -13,28 +13,79 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qemu/timer.h"
->   #include "hw/misc/imx7_snvs.h"
->   #include "qemu/module.h"
-> +#include "sysemu/sysemu.h"
->   #include "sysemu/runstate.h"
->   #include "trace.h"
->   
-> +#define RTC_FREQ    32768ULL
-> +
-> +static uint64_t imx7_snvs_get_count(IMX7SNVSState *s)
-> +{
-> +    int64_t ticks = muldiv64(qemu_clock_get_ns(rtc_clock), RTC_FREQ,
-> +                             NANOSECONDS_PER_SECOND);
-> +    return s->tick_offset + ticks;
-> +}
-> +
->   static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
->   {
-> -    trace_imx7_snvs_read(offset, 0);
-> +    IMX7SNVSState *s = opaque;
-> +    uint64_t ret = 0;
->   
-> -    return 0;
-> +    switch (offset) {
-> +    case SNVS_LPSRTCMR:
-> +        ret = (imx7_snvs_get_count(s) >> 32) & 0x7fffU;
-
-Please have a look at extract64() which might make your code
-easier to read. It is declared in include/qemu/bitops.h.
-
-> +        break;
-> +    case SNVS_LPSRTCLR:
-> +        ret = imx7_snvs_get_count(s) & 0xffffffffU;
-
-Ditto.
-
-> +        break;
-> +    case SNVS_LPCR:
-> +        ret = s->lpcr;
-> +        break;
-> +    }
-> +
-> +    trace_imx7_snvs_read(offset, ret, size);
-> +
-> +    return ret;
->   }
->   
->   static void imx7_snvs_write(void *opaque, hwaddr offset,
->                               uint64_t v, unsigned size)
->   {
-> -    const uint32_t value = v;
-> -    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-> +    trace_imx7_snvs_write(offset, v, size);
-> +
-> +    IMX7SNVSState *s = opaque;
->   
-> -    trace_imx7_snvs_write(offset, value);
-> +    uint64_t new_value = 0, snvs_count = 0;
->   
-> -    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
-> -        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-> +    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
-> +        snvs_count = imx7_snvs_get_count(s);
-> +    }
-> +
-> +    switch (offset) {
-> +    case SNVS_LPSRTCMR:
-> +        new_value = (snvs_count & 0xffffffffU) | (v << 32);
-
-Here the equivalent is deposit64().
-
-> +        break;
-> +    case SNVS_LPSRTCLR:
-> +        new_value = (snvs_count & 0x7fff00000000ULL) | v;
-
-Ditto.
-
-> +        break;
-> +    case SNVS_LPCR: {
-> +        s->lpcr = v;
-> +
-> +        const uint32_t value = v;
-
-'value' is not really needed.
-
-> +        const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-> +
-> +        if ((value & mask) == mask) {
-> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-> +        }
-> +        break;
-> +    }
-> +    }
-> +
-> +    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
-> +        s->tick_offset += new_value - snvs_count;
->       }
->   }
->   
-> @@ -59,11 +110,16 @@ static void imx7_snvs_init(Object *obj)
->   {
->       SysBusDevice *sd = SYS_BUS_DEVICE(obj);
->       IMX7SNVSState *s = IMX7_SNVS(obj);
-> +    struct tm tm;
->   
->       memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
->                             TYPE_IMX7_SNVS, 0x1000);
->   
->       sysbus_init_mmio(sd, &s->mmio);
-> +
-> +    qemu_get_timedate(&tm, 0);
-> +    s->tick_offset = mktimegm(&tm) -
-> +        qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
-
-So 'tick_offset' should be saved for migration. But I wonder
-about replay, do we need this to be a property so user can set
-and offset to emulate a RTC in host past/future? Maybe out of
-scope, but still please add VMSTATE_INT64(tick_offset).
-
->   }
->   
->   static void imx7_snvs_class_init(ObjectClass *klass, void *data)
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index 05ff692441..85725506bf 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -116,8 +116,8 @@ imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
->   imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
->   
->   # imx7_snvs.c
-> -imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-> -imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-> +imx7_snvs_read(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS read: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
-> +imx7_snvs_write(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS write: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
->   
->   # mos6522.c
->   mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
-> diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
-> index 14a1d6fe6b..26c497b8ed 100644
-> --- a/include/hw/misc/imx7_snvs.h
-> +++ b/include/hw/misc/imx7_snvs.h
-> @@ -20,7 +20,9 @@
->   enum IMX7SNVSRegisters {
->       SNVS_LPCR = 0x38,
->       SNVS_LPCR_TOP   = BIT(6),
-> -    SNVS_LPCR_DP_EN = BIT(5)
-> +    SNVS_LPCR_DP_EN = BIT(5),
-
-(FWIW SNVS_LPCR_TOP/SNVS_LPCR_DP_EN aren't IMX7SNVSRegisters enum.)
-
-> +    SNVS_LPSRTCMR = 0x050, /* Secure Real Time Counter MSB Register */
-> +    SNVS_LPSRTCLR = 0x054, /* Secure Real Time Counter LSB Register */
->   };
->   
->   #define TYPE_IMX7_SNVS "imx7.snvs"
-> @@ -31,6 +33,9 @@ struct IMX7SNVSState {
->       SysBusDevice parent_obj;
->   
->       MemoryRegion mmio;
-> +
-> +    int64_t tick_offset;
-> +    uint64_t lpcr;
-
-Why do we need 'lpcr' in the instance state? It doesn't seem used.
-
->   };
->   
->   #endif /* IMX7_SNVS_H */
-
-Modulo few comments, the patch LGTM!
-
-Regards,
-
-Phil.
+> While looking at Xen target-specific code, I noticed some
+> generic code used by x86 which is not implemented for ARM.
+> 
+> Maybe ARM machines don't need it, I don't know. But I
+> wanted to see if I can get this common code target agnostic
+> and build it once, possibly bringing smth useful to ARM.
+> 
+> The changes don't break CI testing and Avocado local tests.
+> If this xen_memory_listener feature isn't required for ARM,
+> I'll send follow up patch that keep this series with common
+> xen_memory_listener but with a runtime flag to disable.
+> 
+> Patches do the usual "change target-specific API to a
+> target-agnostic one", in particular using "exec/target_page.h"
+> at runtime. Then non-x86 code is extracted, then merged to
+> the generic xen/xen-hvm-common.c.
+> 
+> Thoughts?
+> 
+> Regards,
+> 
+> Phil.
+> 
+> Based-on: <20231114143816.71079-1-philmd@linaro.org>

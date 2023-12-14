@@ -1,181 +1,193 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bi11-20020a05600c3d8b00b0040c2963e5f3sm23970057wmb.38.2023.12.14.02.34.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Dec 2023 02:34:41 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 758725F7D3;
-	Thu, 14 Dec 2023 10:34:41 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: qemu-devel@nongnu.org,  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Radoslaw
- Biernacki <rad@semihalf.com>,  Paul Durrant <paul@xen.org>,  Akihiko Odaki
- <akihiko.odaki@daynix.com>,  Leif Lindholm <quic_llindhol@quicinc.com>,
-  Peter Maydell <peter.maydell@linaro.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,  kvm@vger.kernel.org,  qemu-arm@nongnu.org,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Beraldo Leal
- <bleal@redhat.com>,  Wainer dos Santos Moschetta <wainersm@redhat.com>,
-  Sriram Yagnaraman <sriram.yagnaraman@est.tech>,  Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>,  David Woodhouse <dwmw2@infradead.org>
-Subject: Re: [PATCH 04/10] tests/avocado: machine aarch64: standardize
- location and RO/RW access
-In-Reply-To: <87h6klvm90.fsf@p1.localdomain> (Cleber Rosa's message of "Wed,
-	13 Dec 2023 16:14:03 -0500")
-References: <20231208190911.102879-1-crosa@redhat.com>
-	<20231208190911.102879-5-crosa@redhat.com>
-	<87wmtkeils.fsf@draig.linaro.org> <87h6klvm90.fsf@p1.localdomain>
-User-Agent: mu4e 1.11.26; emacs 29.1
-Date: Thu, 14 Dec 2023 10:34:41 +0000
-Message-ID: <87le9x843i.fsf@draig.linaro.org>
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp2244666ejo;
+        Thu, 14 Dec 2023 03:17:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEgmKXAaaA2o6U2WwhChQGI+F3OBNH1lgp/Ut9qO52cub/WOm5aK6RGmThTGS/QFDXIC6M3
+X-Received: by 2002:ae9:e314:0:b0:77f:36dc:b94a with SMTP id v20-20020ae9e314000000b0077f36dcb94amr9679588qkf.102.1702552627367;
+        Thu, 14 Dec 2023 03:17:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702552627; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gaGmOpE91nS4kKPUT0nHY8/jK+HtrdSGZPTb3MgWm4VgZBRpgI/n672pxCFITCji+b
+         TOv3kLih+8ALiIFsjoQIJMJaVcSRnS3YUmBuAoYXEFEOZlHfgIjCkIRySCnBKAyRaPqN
+         LttPUkmsC0GDD4LGpynvfBbKsqlDf4ojzr+n74NZyZHkIiRBONBTdewsMK1w4Fof6gaV
+         mBgdcZsyvwpiHuRs6Ee0X4U4LhuCmEnfQ9S7EIyH1oR+aJLwLrniEoDVRzQRIN5+EkmE
+         Tn/tCUyKlaCuTMWTeYv+hkLC+pS4zVFPRhev4IaonN4os+xdeO0dQTvKg2+Z6dmEJDB3
+         /Gqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=+ixpNKPZpuLlL+vxKt+44YSqclDVABkqfD62DzQ6s/o=;
+        fh=ZunbYo7vBCjqSWc9622LTLPHQcfFJMelhG0lIzAt0Bo=;
+        b=ccJ5iyukoyJ92dbK4daszTYwPb7oq0e6zoBsCZXr831P0Fc2PorenLGvMZ11uWLScL
+         Vkpcth4gtH4hasZ5MAC1XsT7gbDrIbPXrD+8cACvd3f7abbS92wqD/oGj1pz5BkTHVt+
+         Td3hFrm/odFrwWwi8bsceweFDbCQte5suGnghs6q4vhCE102T2rStNkDfiSKnw8LHVV1
+         osg4xNU35hxiejIfzqVzWD8kT0CoOLb+IyvH5aOkbIOpLpUfrTyCht5pQ+QNP+YVNSC8
+         rqnunORPRXbQpo7QJC4KaJLSID7H80kXu8xzjZPLqiWBpp4tJMiHTUahcnqbcVpBSCku
+         OYrg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hoLit8FY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id dz14-20020a05620a2b8e00b0077d6d82be81si16226005qkb.605.2023.12.14.03.17.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Dec 2023 03:17:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hoLit8FY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rDjha-0006E5-9O; Thu, 14 Dec 2023 06:16:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rDjhW-0006DW-1a
+ for qemu-arm@nongnu.org; Thu, 14 Dec 2023 06:16:23 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rDjhM-0004Sa-NP
+ for qemu-arm@nongnu.org; Thu, 14 Dec 2023 06:16:17 -0500
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-54f4b31494fso979722a12.1
+ for <qemu-arm@nongnu.org>; Thu, 14 Dec 2023 03:16:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1702552571; x=1703157371; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+ixpNKPZpuLlL+vxKt+44YSqclDVABkqfD62DzQ6s/o=;
+ b=hoLit8FYk7vWwLkvWYQMmn8pQRwhccvAHtiGPwTgMMJVzkWBUl0SBXct8LRW8ln0Ip
+ HmVRgdXYDz6nwd/5z3seXbdBm6QR35YHG4Fdk7AwHxSVntW17rXaDp4hrBKpfOSs4e6j
+ cFU6Ov25ZJY4ncFpg0PN0blPMCOBMsQ5coVaDb80XO8RxXMvixkfvmeYViX/rvUUhATb
+ 508cIuOecI9wX2sr0JhqwdX3oqxPUMDxm1tBEJv2fBjqqcZG4dT7lef/gP6lIWZ1atO+
+ lNnn+P2NG01wWCeUkact91PWINIbVHyOOp872TspzSvmEFxVcWi9N0fLgGhlfxwDNoYD
+ 6lEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1702552571; x=1703157371;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+ixpNKPZpuLlL+vxKt+44YSqclDVABkqfD62DzQ6s/o=;
+ b=VQpveBfKzk7UD5v5vbXJLoetRTlHn1aSbp18QUcLjpGMRwW6DlmUSEYckRbDPChg5m
+ 81konRtamO5h0cHFcxP/UhYfIE57xVcziXnUYWmqMJrEwyWR/ZljOfQefoFgGybNrJNJ
+ Nu2VLrX2NQViQ2ILg2WTkaFpfDRHF68EFp8suAKoDqM3/PGFjUEW0uwHb1sy94AiJnNp
+ 6etVFEWRw/aiJmvsMsOXLRCK6d1qkRkiiplFsp6bGqWCedbjE+VY6Q2CD3EvyHSbQmaS
+ yZ0T6N8I3Iutu28NDGyeWUdm4TWuLRCSQ8fz4DWaS8I+ukYvPEA3eqY8SaXt/jzI5od+
+ 35qw==
+X-Gm-Message-State: AOJu0YwJv1deP2FUAvBqu0NTADL7yzUb3z8IqFuNa16qNusuzd04+Pin
+ O1S1tOdNnUWRZ7qQbf0nWe7znW5eoGXi9LqpN+WzyA==
+X-Received: by 2002:aa7:d143:0:b0:552:1ce8:256 with SMTP id
+ r3-20020aa7d143000000b005521ce80256mr2661123edo.7.1702552570741; Thu, 14 Dec
+ 2023 03:16:10 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20231207111048.50568-1-philmd@linaro.org>
+ <461b2494-cc2e-4d0e-bcc0-8dcf93389eb4@linaro.org>
+In-Reply-To: <461b2494-cc2e-4d0e-bcc0-8dcf93389eb4@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Dec 2023 11:16:00 +0000
+Message-ID: <CAFEAcA-f2n+2RO74H-ii4eunH8bgUTQeN9sXfQqCkgFqQ1m1ag@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Restrict ARM_FEATURE_PMU to system emulation
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: dGo0uRBsjqUD
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tqTdS9ItqVCN
 
-Cleber Rosa <crosa@redhat.com> writes:
-
-> Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+On Thu, 7 Dec 2023 at 13:19, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
 >
->> Cleber Rosa <crosa@redhat.com> writes:
->>
->>> The tests under machine_aarch64_virt.py do not need read-write access
->>> to the ISOs.  The ones under machine_aarch64_sbsaref.py, on the other
->>> hand, will need read-write access, so let's give each test an unique
->>> file.
->>
->> I think we are making two separate changes here so probably best split
->> the patch.
->>
+> On 7/12/23 12:10, Philippe Mathieu-Daud=C3=A9 wrote:
+> > ARM Performance Monitor Unit is not reachable from user
+> > emulation, restrict it to system emulation.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+What's the aim of this patch? In general if we can avoid
+ifdefs then I prefer to avoid ifdefs, because they clutter
+up the code. So they should come with a justification of
+why they're necessary (eg "the QOM property is visible to
+the end-user but pointless" or "we want to be able to
+change this file to be compiled a different way and this is
+a necessary substep" or whatever the reason is).
+
+
+> > ---
+> >   target/arm/cpu.c | 4 +++-
+> >   1 file changed, 3 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index 51f57fd5b4..60cf747fd6 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -1410,6 +1410,7 @@ static Property arm_cpu_pmsav7_dregion_property =
+=3D
+> >                                              pmsav7_dregion,
+> >                                              qdev_prop_uint32, uint32_t=
+);
+> >
+> > +#ifndef CONFIG_USER_ONLY
+> >   static bool arm_get_pmu(Object *obj, Error **errp)
+> >   {
+> >       ARMCPU *cpu =3D ARM_CPU(obj);
+> > @@ -1432,6 +1433,7 @@ static void arm_set_pmu(Object *obj, bool value, =
+Error **errp)
+> >       }
+> >       cpu->has_pmu =3D value;
+> >   }
+> > +#endif
+> >
+> >   unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
+> >   {
+> > @@ -1592,12 +1594,12 @@ void arm_cpu_post_init(Object *obj)
+> >       if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
+> >           qdev_property_add_static(DEVICE(obj), &arm_cpu_has_el2_proper=
+ty);
+> >       }
+> > -#endif
+> >
+> >       if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+> >           cpu->has_pmu =3D true;
+> >           object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu=
+);
+> >       }
+> > +#endif
 >
-> Sure, but, do you mean separating the "readonly=3Don" and the "writable
-> file" changes?  Or separating those two from the ISO url code style
-> change?
+> I think this patch is incomplete: should the PMU registers in
+> v7_cp_reginfo[] be restricted to TCG?
 
-I was thinking about splitting the sbsaref and virt patches, but
-actually they are fairly related as they all use the alpine image so
-maybe no need.
+I can't remember if we had this conversation on IRC, but
+in general it's preferable not to restrict a regdef to
+TCG only because that means that gdb won't be able to read
+the register value if you're using KVM.
 
->
->>> And while at it, let's use a single code style and hash for the ISO
->>> url.
->>>
->>> Signed-off-by: Cleber Rosa <crosa@redhat.com>
->>> ---
->>>  tests/avocado/machine_aarch64_sbsaref.py |  9 +++++++--
->>>  tests/avocado/machine_aarch64_virt.py    | 14 +++++++-------
->>>  2 files changed, 14 insertions(+), 9 deletions(-)
->>>
->>> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/m=
-achine_aarch64_sbsaref.py
->>> index 528c7d2934..6ae84d77ac 100644
->>> --- a/tests/avocado/machine_aarch64_sbsaref.py
->>> +++ b/tests/avocado/machine_aarch64_sbsaref.py
->>> @@ -7,6 +7,7 @@
->>>  # SPDX-License-Identifier: GPL-2.0-or-later
->>>=20=20
->>>  import os
->>> +import shutil
->>>=20=20
->>>  from avocado import skipUnless
->>>  from avocado.utils import archive
->>> @@ -123,13 +124,15 @@ def boot_alpine_linux(self, cpu):
->>>=20=20
->>>          iso_hash =3D "5a36304ecf039292082d92b48152a9ec21009d3a62f459de=
-623e19c4bd9dc027"
->>>          iso_path =3D self.fetch_asset(iso_url, algorithm=3D"sha256", a=
-sset_hash=3Diso_hash)
->>> +        iso_path_rw =3D os.path.join(self.workdir, os.path.basename(is=
-o_path))
->>> +        shutil.copy(iso_path, iso_path_rw)
->>>=20=20
->>>          self.vm.set_console()
->>>          self.vm.add_args(
->>>              "-cpu",
->>>              cpu,
->>>              "-drive",
->>> -            f"file=3D{iso_path},format=3Draw",
->>> +            f"file=3D{iso_path_rw},format=3Draw",
->>
->> Instead of copying why not add ",snapshot=3Don" to preserve the original
->> image. We don't want to persist data between tests.
-
-Ahh yes these are isos so snapshot isn't needed.
-
->>
->>>              "-device",
->>>              "virtio-rng-pci,rng=3Drng0",
->>>              "-object",
->>> @@ -170,13 +173,15 @@ def boot_openbsd73(self, cpu):
->>>=20=20
->>>          img_hash =3D "7fc2c75401d6f01fbfa25f4953f72ad7d7c18650056d3075=
-5c44b9c129b707e5"
->>>          img_path =3D self.fetch_asset(img_url, algorithm=3D"sha256", a=
-sset_hash=3Dimg_hash)
->>> +        img_path_rw =3D os.path.join(self.workdir, os.path.basename(im=
-g_path))
->>> +        shutil.copy(img_path, img_path_rw)
->>>=20=20
->>>          self.vm.set_console()
->>>          self.vm.add_args(
->>>              "-cpu",
->>>              cpu,
->>>              "-drive",
->>> -            f"file=3D{img_path},format=3Draw",
->>> +            f"file=3D{img_path_rw},format=3Draw",
->>
->> ditto.
->>
->>
->>>              "-device",
->>>              "virtio-rng-pci,rng=3Drng0",
->>>              "-object",
->>> diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/mach=
-ine_aarch64_virt.py
->>> index a90dc6ff4b..093d68f837 100644
->>> --- a/tests/avocado/machine_aarch64_virt.py
->>> +++ b/tests/avocado/machine_aarch64_virt.py
->>> @@ -37,13 +37,13 @@ def test_alpine_virt_tcg_gic_max(self):
->>>          :avocado: tags=3Dmachine:virt
->>>          :avocado: tags=3Daccel:tcg
->>>          """
->>> -        iso_url =3D ('https://dl-cdn.alpinelinux.org/'
->>> -                   'alpine/v3.17/releases/aarch64/'
->>> -                   'alpine-standard-3.17.2-aarch64.iso')
->>> +        iso_url =3D (
->>> +            "https://dl-cdn.alpinelinux.org/"
->>> +            "alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarc=
-h64.iso"
->>> +        )
->>>=20=20
->>> -        # Alpine use sha256 so I recalculated this myself
->>> -        iso_sha1 =3D '76284fcd7b41fe899b0c2375ceb8470803eea839'
->>> -        iso_path =3D self.fetch_asset(iso_url, asset_hash=3Diso_sha1)
->>> +        iso_hash =3D "5a36304ecf039292082d92b48152a9ec21009d3a62f459de=
-623e19c4bd9dc027"
->>> +        iso_path =3D self.fetch_asset(iso_url, algorithm=3D"sha256", a=
-sset_hash=3Diso_hash)
->>>=20=20
->>>          self.vm.set_console()
->>>          kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
->>> @@ -60,7 +60,7 @@ def test_alpine_virt_tcg_gic_max(self):
->>>          self.vm.add_args("-smp", "2", "-m", "1024")
->>>          self.vm.add_args('-bios', os.path.join(BUILD_DIR, 'pc-bios',
->>>                                                 'edk2-aarch64-code.fd'))
->>> -        self.vm.add_args("-drive", f"file=3D{iso_path},format=3Draw")
->>> +        self.vm.add_args("-drive",
->>>          f"file=3D{iso_path},readonly=3Don,format=3Draw")
->>
->> Perhaps we can set ",media=3Dcdrom" here.
->>
->
-> Yes, but more importantly, adding both "readonly=3Don" and "media=3Dcdrom"
-> to the tests under machine_aarch64_sbsaref.py do the trick.  Now, the
-> behavior explained in my previous response still warrants investigation
-> IMO.
->
-> Thanks
-> - Cleber.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+thanks
+-- PMM

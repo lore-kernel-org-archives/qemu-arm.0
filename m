@@ -1,167 +1,204 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp2526620ejo;
-        Thu, 14 Dec 2023 10:30:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFLwf2MA8KKnkr1dbQY4o6EzJhgYuIgk1blLM6XWa/T4mt4uSsO/bicBRjGudpr5wKFK6WL
-X-Received: by 2002:a05:620a:84c5:b0:76f:5b9:3f29 with SMTP id pq5-20020a05620a84c500b0076f05b93f29mr15116070qkn.2.1702578624378;
-        Thu, 14 Dec 2023 10:30:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702578624; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp2614232ejo;
+        Thu, 14 Dec 2023 13:16:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFLb6bj4WieoSklT0gld9jiyicsQy5/MNAE/IKo+syo+JTn8cr94+mFixLhvKdrmVCnSR9R
+X-Received: by 2002:a05:6214:226d:b0:67f:f12:74be with SMTP id gs13-20020a056214226d00b0067f0f1274bemr1716750qvb.127.1702588562269;
+        Thu, 14 Dec 2023 13:16:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702588562; cv=none;
         d=google.com; s=arc-20160816;
-        b=fFfABvkGM4DnRepTXwoLXkWQ8xZ9ZJ8d7M5SuHCQt8vaRpx9z+yZbePYtN1h/7l7CG
-         zK7uXhpu7a89se64bO+25cjigcSq0lBcE7R1v2u/aPvot1BbdU4DYCbssMUJBc6yhDsh
-         XBq5bhmkNjpabEfqFAEPTSc3URNACQDLVLPAEOfMcyZ/oHVprTJQqWmaeJAyFFwv7ygs
-         TOHdtTRQ27NAWsC+ek38Nu5fSZ+SDl24aqeu6t4XygXEPNUOqxR3Kj1KC5h8Xu6y/qTE
-         nNF4zGW82y8lA9tchj6ODaEGcvzGIGAnHim/b8Dhr7cf3l/bjFJZFkn8qrnVgG6S5q57
-         lbGQ==
+        b=dfwZQSQvK3toHIju0BlUji0vrqGFXjwP6yPETQ1dtMBM/w/OaGQ2jujCaLaKVOy3Jj
+         ilHjiTrnL8g6inhnHroHUfo3TtOWmVnxDDkr2CVIqdfsVYPtMDcajbLrvk7oTL6WOrwB
+         s4ojvJzcPgTgildX37YvOXA3LOMO+Vo06xd2+6SLPOBEHDP/bTt2FHMh90PVxREYOxvU
+         fP27DZwUD0ZuRVR3CkCJ8Fs/G0oUmvKCGvs7hNV7K1GpxjJPmuOI1c6MPi97+FhBifvY
+         SuqhXR26VUSQzMnHnwn4mdj9vJpX4xyTeDCANzNqVxBuB9rNVWQjWr41scS0mRMkfNvV
+         t2Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=CPOZqa0ITrIxh6mhW86wXShisg+TCpntOgzYzAqQqzM=;
-        fh=4eeQJNwuoqOF0I+7AUXaRYUXx2oZpmO+5NUYuzIxseU=;
-        b=mkXFIL4S5tjuufpPdKUGq+nI1mv8bAAHix4EsOtXFB6xOPnHqPco1Ku93waZBd81Ec
-         3StlUiOKr8cn6OmCXYCA4DEQxapYRb9ZwmihoF6P98lCs8/DUlI7he1K/x2H6e0V7hh0
-         UDGc4oCP/Y8HESYYonimHKmFdJlNe8WKCMx6YS2BTw5zb5dfGvgyKTt2FHsHeux5ln1/
-         xcWY/ysSeduqmFoApy1KMdBDJjphSaSqbfla3GiXVjhqt9SVv6qgcHAFej4eX1P6YyBV
-         yPDtWPP8NAoqktAXSyGCXw2NbZZaeJCoObfzlqkJQ5SJn1XwLfSoiKgVmmJLtcJvEF2D
-         kfAQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=b6M3uz5PP3WI4WwD3266w4VvYWKVsbINj1ldzM3fELs=;
+        fh=+aVB0apLn7P4p3cMF9Qg7nFZ6+AnRx2Fcri+oFjNFtM=;
+        b=hZga/wIRwW9v2sv529YBefe0vC0FJ3dFWjjGCiTTYKEttb+XAQZj676aX3ajyr9bsg
+         nCwmwRyBgt8sUXtXwtRg+VOXzqQyHTHEOsqpWRdSpY6aHFjSH84Ac1rEGZkGU+TKHudW
+         RMN0crvImI2gdNroO4vyfXHjVVE0DtbNtDCKdFCCD0mLkamInNsJiO8mGFJYmEc0ilhR
+         aZdfBGvwnrP1Ka61OVcKi86iaiJ0uIf98CE6eqR/E4qEywNHQQltRnUPaNfd1lsCJYT9
+         5soQ4oCabmnafNC4JGiFrhpqi/WgqZmbWeg2WOhJ9xps6E+oUos81/nd7i/9aWv04Ykf
+         WyWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GLoaW/bO";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id n5-20020a05620a294500b00779db6b77dcsi16825105qkp.353.2023.12.14.10.30.24
+       dkim=pass header.i=@google.com header.s=20230601 header.b=WSguxils;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i4-20020a0cfcc4000000b0067a1fc7914bsi4805203qvq.236.2023.12.14.13.16.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Dec 2023 10:30:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Dec 2023 13:16:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GLoaW/bO";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702578624;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=CPOZqa0ITrIxh6mhW86wXShisg+TCpntOgzYzAqQqzM=;
-	b=GLoaW/bOKgcbrqdyUz1zPb9Db57FAd8kEM5nn6e8yn544TlOVuwJt80xP0w3iieD0Ba7kX
-	9UAhDO1l4b+f5owuV6J/9AxoGaJfyu5zAy41do1GfWiUnXCnzXAMRr+y060bzmy2Sb6AZP
-	bmLGh6IdAsn9JlvEAHJAD/Muz0F5B+w=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-410-zO2gLPGaN9KBQpR7_2ytjA-1; Thu, 14 Dec 2023 13:30:20 -0500
-X-MC-Unique: zO2gLPGaN9KBQpR7_2ytjA-1
-Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-67aa0c94343so14936916d6.1
-        for <alex.bennee@linaro.org>; Thu, 14 Dec 2023 10:30:20 -0800 (PST)
+       dkim=pass header.i=@google.com header.s=20230601 header.b=WSguxils;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rDt3d-0002UX-S0; Thu, 14 Dec 2023 16:15:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3cnB7ZQwKCHMeRSZYVjkVWReXffXcV.TfdhVdl-RidefeXel.fiX@flex--nabihestefan.bounces.google.com>)
+ id 1rDt3V-0002U7-KK
+ for qemu-arm@nongnu.org; Thu, 14 Dec 2023 16:15:42 -0500
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3cnB7ZQwKCHMeRSZYVjkVWReXffXcV.TfdhVdl-RidefeXel.fiX@flex--nabihestefan.bounces.google.com>)
+ id 1rDt3R-0005uK-3K
+ for qemu-arm@nongnu.org; Thu, 14 Dec 2023 16:15:41 -0500
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-5e19414f714so104867b3.0
+ for <qemu-arm@nongnu.org>; Thu, 14 Dec 2023 13:15:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1702588530; x=1703193330; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=b6M3uz5PP3WI4WwD3266w4VvYWKVsbINj1ldzM3fELs=;
+ b=WSguxils7jfyqY3wSxj/Ga3UD5OKH4O1LML2HWI8/EM8ENyMSRDi4aF9qhUgBHLDOn
+ 8q8k4aXlGm4ZrWhfWrQ/kXqXRfuSam/xbDaQrvjUmdDOxyrr4ZBeo3BxhzywiC0NhGCA
+ csO2kjE1hd3b5r9l/N/zFSFhK5dHq2KogBwYr4Q198f6XHoQnekM+yoBcokoi/BsKU15
+ nfqJQbSs2IJGaDmbn9ImmhVnnjoRY3KKNWiayGDaIGYs4ddupeccqor3PA8qGWuQCqiA
+ BQ+VP0hqlLN/NUO4POSSw3bGcqLffslfjcTgtFyeTsK63b+5O/2KiOrd3KpZoaJ45PZM
+ w3aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702578620; x=1703183420;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CPOZqa0ITrIxh6mhW86wXShisg+TCpntOgzYzAqQqzM=;
-        b=wLCcXbw9Wo33LhofzfbMdPSmFuaLr3nJ0/95m+/UgDcjmLztwze2cg52TIYRmhE0Ax
-         OO/mS64BiiYk8TF/KZj3U+rgO2nUvqUp+MRTa2PXi2i8uUJFde6aQby+gKkDNMjztmMx
-         vGsrjhtJf9mLn8UC1GgNtRfMdIwccOmm0249TjHGPkSiOkwv04+CxeZVPgU5SVJuAmD5
-         jnwsgxElM1vRxHj3eBDpT/+xwZCCmOu/xR/r1AjWJU99tI/kMUbZ9+ZBXpsv8xPYdVUC
-         MFR/LBVWuQv+YXZEvhDmoFWsSuW1WbCPwPkQ7iN7aevivSaa6FQIxa3OKJGNpUZSg7Nf
-         /HPg==
-X-Gm-Message-State: AOJu0YyLzaG9qijrLtYIB3+80jX7BQJRUMi8wHBvfcGIka5t1MF2MaAU
-	dKKUFzXkLCgoHNNj1s+HScJN1TAy1p7mAT0oT4Z7CGZA8ixDPduCYFBCJKsBE3n0wf9+UG/4pTL
-	+h/y8o042rJxC7gWf
-X-Received: by 2002:ad4:5742:0:b0:67e:b3ac:3c0 with SMTP id q2-20020ad45742000000b0067eb3ac03c0mr20387235qvx.47.1702578620403;
-        Thu, 14 Dec 2023 10:30:20 -0800 (PST)
-X-Received: by 2002:ad4:5742:0:b0:67e:b3ac:3c0 with SMTP id q2-20020ad45742000000b0067eb3ac03c0mr20387210qvx.47.1702578620160;
-        Thu, 14 Dec 2023 10:30:20 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.6] (ip-109-43-178-144.web.vodafone.de. [109.43.178.144])
-        by smtp.gmail.com with ESMTPSA id oo22-20020a05620a531600b0077703f31496sm5484433qkn.92.2023.12.14.10.30.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Dec 2023 10:30:19 -0800 (PST)
-Message-ID: <7b576994-9477-4b84-aa12-7e36d90e7529@redhat.com>
-Date: Thu, 14 Dec 2023 19:30:14 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 19/23] exec/user: Do not include 'cpu.h' in
- 'abitypes.h'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Claudio Fontana <cfontana@suse.de>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-riscv@nongnu.org, Brian Cain <bcain@quicinc.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Anton Johansson <anjo@rev.ng>, Warner Losh <imp@bsdimp.com>
-References: <20231212123401.37493-1-philmd@linaro.org>
- <20231212123401.37493-20-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20231212123401.37493-20-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: rOjIOFYxq59k
+ d=1e100.net; s=20230601; t=1702588530; x=1703193330;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=b6M3uz5PP3WI4WwD3266w4VvYWKVsbINj1ldzM3fELs=;
+ b=U/s7cO26B27kd74Ar5l7gcEZ3/GaeHNTnS2cTOJStrslrf+Tx3avZjk6xHXzHi6yFn
+ K3uZM7tMbnZz0nBWdaNMPLVpqpyejRgKPekiLYvpM+YghKiUrVVHSvWDzmwdfllzBozS
+ FCiM4PukpHO+WLQw7DezUPw+gqvAPwn4jCvybHkaH40IAn79tSh5O4mSW2CknbQLTVM2
+ J6oa/Becl00VmAF6C8QLN9RJoYONalr+br4VbylAZfLhVcQ44m4scmpLk5mMwI9gH9vn
+ xI+zC7Yl+yK/NM9qSz37YM9YdZDsW2kOT127SyKFI16br2i2GVn09o2s/9JbAw74MHMj
+ zgLA==
+X-Gm-Message-State: AOJu0Yw0ZgNJ8g0ZrFn+MWuf61b8h7hTqlWnNp1icO7jUseGZOjuoll/
+ YEAlaHl4xxyODB61m3XqJXfWrjVZ48PdQ3ttzq4=
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a25:2e0a:0:b0:dbc:c4a7:3bf7 with SMTP
+ id u10-20020a252e0a000000b00dbcc4a73bf7mr50320ybu.1.1702588530579; Thu, 14
+ Dec 2023 13:15:30 -0800 (PST)
+Date: Thu, 14 Dec 2023 21:15:16 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.43.0.472.g3155946c3a-goog
+Message-ID: <20231214211527.1946302-1-nabihestefan@google.com>
+Subject: [PATCH v8 00/11] Implementation of NPI Mailbox and GMAC Networking
+ Module
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasowang@redhat.com, avi.fishman@nuvoton.com, 
+ nabihestefan@google.com, kwliu@nuvoton.com, tomer.maimon@nuvoton.com, 
+ Hila.Miranda-Kuzi@nuvoton.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3cnB7ZQwKCHMeRSZYVjkVWReXffXcV.TfdhVdl-RidefeXel.fiX@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SYdZxFi5rHQs
 
-On 12/12/2023 13.33, Philippe Mathieu-Daudé wrote:
-> "exec/user/abitypes.h" requires:
-> 
->   - "exec/cpu-defs.h"           (TARGET_LONG_BITS)
->   - "exec/tswap.h"              (tswap32)
-> 
-> In order to avoid "cpu.h", pick the minimum required headers.
-> 
-> Assert this user-specific header is only included from user
-> emulation.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   include/exec/user/abitypes.h | 7 ++++++-
->   1 file changed, 6 insertions(+), 1 deletion(-)
+From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+[Changes since v7]
+Fixed patch 4 declaration of new NIC based on comments by Peter Maydell
+(peter.maydell@linaro.org)
+
+[Changes since v6]
+Remove the Change-Ids from the commit messages.
+
+[Changes since v5]
+Undid remove of some qtests that seem to have been caused by a merge
+conflict.
+
+[Changes since v4]
+Added Signed-off-by tag and fixed patch 4 commit message as suggested by
+Peter Maydell (peter.maydell@linaro.org)
+
+[Changes since v3]
+Fixed comments from Hao Wu (wuhaotsh@google.com)
+
+[Changes since v2]
+Fixed bugs related to the RC functionality of the GMAC. Added and
+squashed patches related to that.
+
+[Changes since v1]
+Fixed some errors in formatting.
+Fixed a merge error that I didn't see in v1.
+Removed Nuvoton 8xx references since that is a separate patch set.
+
+[Original Cover]
+Creates NPI Mailbox Module with data verification for read and write (internal and external),
+wiring to the Nuvoton SoC, and QTests.
+
+Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
+and registers. Also includes QTests for the different functionalities.
+
+Hao Wu (5):
+  hw/misc: Add Nuvoton's PCI Mailbox Module
+  hw/arm: Add PCI mailbox module to Nuvoton SoC
+  hw/misc: Add qtest for NPCM7xx PCI Mailbox
+  hw/net: Add NPCMXXX GMAC device
+  hw/arm: Add GMAC devices to NPCM7XX SoC
+
+Nabih Estefan Diaz (6):
+  tests/qtest: Creating qtest for GMAC Module
+  include/hw/net: Implemented Classes and Masks for GMAC Descriptors
+  hw/net: General GMAC Implementation
+  hw/net: GMAC Rx Implementation
+  hw/net: GMAC Tx Implementation
+  tests/qtest: Adding PCS Module test to GMAC Qtest
+
+ docs/system/arm/nuvoton.rst         |   2 +
+ hw/arm/npcm7xx.c                    |  53 +-
+ hw/misc/meson.build                 |   1 +
+ hw/misc/npcm7xx_pci_mbox.c          | 324 ++++++++++
+ hw/misc/trace-events                |   5 +
+ hw/net/meson.build                  |   2 +-
+ hw/net/npcm_gmac.c                  | 942 ++++++++++++++++++++++++++++
+ hw/net/trace-events                 |  19 +
+ include/hw/arm/npcm7xx.h            |   4 +
+ include/hw/misc/npcm7xx_pci_mbox.h  |  81 +++
+ include/hw/net/npcm_gmac.h          | 340 ++++++++++
+ tests/qtest/meson.build             |   3 +
+ tests/qtest/npcm7xx_pci_mbox-test.c | 238 +++++++
+ tests/qtest/npcm_gmac-test.c        | 341 ++++++++++
+ 14 files changed, 2351 insertions(+), 4 deletions(-)
+ create mode 100644 hw/misc/npcm7xx_pci_mbox.c
+ create mode 100644 hw/net/npcm_gmac.c
+ create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
+ create mode 100644 include/hw/net/npcm_gmac.h
+ create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
+ create mode 100644 tests/qtest/npcm_gmac-test.c
+
+-- 
+2.43.0.472.g3155946c3a-goog
 

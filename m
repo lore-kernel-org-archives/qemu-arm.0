@@ -1,145 +1,313 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp2928065ejo;
-        Fri, 15 Dec 2023 02:18:19 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFXMWtxWmasCuvKX7Gcrx9S6KCIQP2tKVY3f/JQOQfzxpdJKDngVLFYQ253ME4OVYRE9UHA
-X-Received: by 2002:a05:6830:140b:b0:6da:4e14:18f4 with SMTP id v11-20020a056830140b00b006da4e1418f4mr990996otp.48.1702635499394;
-        Fri, 15 Dec 2023 02:18:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702635499; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp3055450ejo;
+        Fri, 15 Dec 2023 06:04:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHdWktpFbHcgrb2X0TYfj9qS2uTQ2CMc7eXveEFlDJpeNHImQ3Pnb09FUnk291RBnygvI9V
+X-Received: by 2002:a05:6102:3ecd:b0:465:ea50:1ea7 with SMTP id n13-20020a0561023ecd00b00465ea501ea7mr10203309vsv.18.1702649061953;
+        Fri, 15 Dec 2023 06:04:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702649061; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hlt+6fzhgBLfyMUs6WfXpdp5/yZsomVu2yFRbIjUm0oWdxKO4s2yym/3NRm2xhg0cu
-         R6sHjCsqnIfQ2WxzUyhmIq7Zbseh8NqDq31za85NJys97lN7JdS+UsW0ki2dLg4+4NEr
-         Pd7w3RyTlB2fuRva5WGUd8IRXt2BMBGlr/uBSIaALe197nTTZXXIKNOpjsst9UN2DdMx
-         4H+8+m87iiDHS7XbBJesAIxV9pODHzJqaq8kaVtM0UIv+htYGG0rdKI+RQ6OSz+gQhHR
-         W4lvcMwiOBtEoup5RjnMLVaH5hRBdO7cSgQpSi1Y4tyZP8OUVeyB6DhT2GVDXQpoNPzN
-         OXGA==
+        b=g3R80xyjbX4HMxWA4PMKgetAhZPfxO9oboRaLvww0OW6I9trQBrSd8/TDzoBbXHBES
+         Qr88Pyq2EvTCszGwjfh90ayYl/+EzL2chEfyVzMSdVeF06QcdD7MtD+WZLToWN0JcSil
+         D3/tDAhvDY0We6YHICRTonJZJFoE0zuKkidOTPVpyx4RPqryiOGd5mWNH1lqyueEBx9M
+         /AiR/7hqVNgSoG1b/QKhjO3XVbOrXEnLsC22OALdva6g49sZB3Ln/fc2sCtMfhNWxxbM
+         JK/x9zBfQQtJZffwELvd9XjYL6d6x0edSueKh3RgEkKUrAxxgz+L4hsNangb0QmUEeKL
+         3s1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :references:message-id:in-reply-to:subject:cc:to:from:date
-         :dkim-signature;
-        bh=42FJiFvltYp2rdiqySuaRIVVGIjwc6Ht5anz+ABGSo8=;
-        fh=5wlUWyMuD+JqCOmHa0udg/FWBJZSC4QRfhDxCTE2BTg=;
-        b=vXvXd4EVDISW26y3lphw+Y9qgs3It1RQVItGjLFrOE+dV9JGAf8quDel55GSXdrAXt
-         px8Cy4OS8rGn/jQq9zCyC3p/JfzIBpUo63s8FJJz6tmcnWfE8vi4kogGxoUx6fDX59Y+
-         5IKUve8o2Rf9MAt8+jeOIgD6yfokwrXU6ThKH5nYA4NQosPYeHfwnbntW5JhWZQzsHnJ
-         5Ggl7M5nNAtXUfobyFk9COVAhMEgCbRIKX0lgkPt1tNc1yQnvXadojYbdeou4lFX5Nxl
-         rPOS2aZaom0BEp6/X+Z23JNtX7tL+92775K/xCkAT9Ajio3R7enCBo40hEI2hQMDnejr
-         hATw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Og75nzJUqr7aY5MfzChuNtBluhG+w+ZvrmwaurIZwUs=;
+        fh=r9uVkP6zMpQ7kbyvGtViUoiB1mYLelKqBHDSkbSM78s=;
+        b=rSDk08QRzmF6RkiQJYw3t366GhxhKiMUCYimopdGai4l1XlGbA6FGFjXcUF0bNNHNz
+         POwkPMQSRx+PYeoH0AmPgOCCc5NkGEi5Lb5QQz1Tx6o75zFfBNt/JF0bxf94xPG9NyC2
+         v/zxt6ZOStfF5XBft66ctMKOCHweUhKIGXthtFAFKWJju+VNEgbnafBmiMG4ruyW/drz
+         DbiAUPaYpRyf4+PdzSofXU5eERqfV2oJ8X1SPC5wLAF/oX0b4skm1ZAAT3/ZV2iY7JpK
+         qwdS1rzT374KJhfBWCBVkOQzawy7L1uIGsYXQpeUoz6LpJla0Mu2YmyMQNeXhUiKKyMR
+         TFNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HCknJ1SY;
-       spf=pass (google.com: domain of kvm+bounces-4557-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-4557-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-4557-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id h6-20020a056a00170600b006cb686c08f4si13000067pfc.211.2023.12.15.02.18.19
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lYfz3e23;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l18-20020a0561023f5200b004664a4a13d5si1945370vsv.822.2023.12.15.06.04.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Dec 2023 02:18:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-4557-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 Dec 2023 06:04:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HCknJ1SY;
-       spf=pass (google.com: domain of kvm+bounces-4557-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-4557-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id CC4B82853F1
-	for <alex.bennee@linaro.org>; Fri, 15 Dec 2023 10:18:18 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D9C8A1A70D;
-	Fri, 15 Dec 2023 10:17:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="HCknJ1SY"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E17B1A71C
-	for <kvm@vger.kernel.org>; Fri, 15 Dec 2023 10:17:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1702635474;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=42FJiFvltYp2rdiqySuaRIVVGIjwc6Ht5anz+ABGSo8=;
-	b=HCknJ1SYDuZgbw04xsPJb9DR+08q8GMa4E0MP5EvNoGkkPL5CwRH5ZRvcOGRlZQbHkSyIc
-	qIRZQI/uxnKDSgGlrmSF2QD9w1oAOCf59KOlvZy+hlOV1EjtS2EY7a2SRiFLCQmWjKmE5e
-	xPxD7SJafc8n40U0Ob6oC9bhTPp7VxY=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-22-Ar13ZUxTM5m2n2iBZNH5Iw-1; Fri, 15 Dec 2023 05:17:53 -0500
-X-MC-Unique: Ar13ZUxTM5m2n2iBZNH5Iw-1
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-77f6cd3da10so78109385a.1
-        for <kvm@vger.kernel.org>; Fri, 15 Dec 2023 02:17:52 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lYfz3e23;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rE8nF-0000Od-8t; Fri, 15 Dec 2023 09:03:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
+ id 1rE8nD-0000Nx-15; Fri, 15 Dec 2023 09:03:55 -0500
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
+ id 1rE8n9-0005HJ-MM; Fri, 15 Dec 2023 09:03:54 -0500
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-50bfd7be487so730049e87.0; 
+ Fri, 15 Dec 2023 06:03:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1702649028; x=1703253828; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Og75nzJUqr7aY5MfzChuNtBluhG+w+ZvrmwaurIZwUs=;
+ b=lYfz3e23ssjO8bK/loPBoNgAGHGhSWSTrlkDeuKZiVGzSBuVcPJ1oNs10cwtlZvxhk
+ K7gwEgbf/kxtpTyksqi8ST1jO1lCJT8m/I3kzoOJT3tQcw5SlOLbyb7k2BabvYrPjOBf
+ keo6M7rHaOU7Z60NEj2/NEZaKDcjfOVfNnJryaNsDbG3K/qrUW74OGNug+e1YMr35/7J
+ VEDwUlTT9SVWQ293Uy5h3zFn8+9fFJid9x5BJS/kJJQ9BRyEpo548dKV+Cc96dAgEozE
+ uv8R35xf3TX6LpM2z2lu74yQNj41eRVdx+IhWfFKK5XdZA8SAfbMNTrW4YdJslYOPHLI
+ sq2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702635472; x=1703240272;
-        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=42FJiFvltYp2rdiqySuaRIVVGIjwc6Ht5anz+ABGSo8=;
-        b=OOoaaaAflr7FWIUR23JEswQN9qa8w3LLhRz9/bwFxn5Tm8HmCKy6aiiDjHOOFQpHLb
-         479pL8oVYDo7EXiKcAiaXG3vhBsILRO1A7GpMt1KyE1iTFoFfovg0aAxNjHIa2M5uk4u
-         hy1JuBv60fEmRadZJwQBIGMLk930gy4WyLsuyv4thaoOnRjycTBSBgzbyWwhCDAj/GFq
-         0KoMvhfOuQbVfEC+eBlFm9HfjliazYGK6Z4KIqR9dmXWfvKk60Fi3V18m1TYKBMdroeb
-         pfOkrR96+j7yL0knnfuakG1lSVUCEknDk+VlImHI9Em1piwVJ/wRw1mAJrrfgrBnwQlr
-         I0ww==
-X-Gm-Message-State: AOJu0Yw1joeVYiwKvzJg+zjxmoiB5T6dSrMH9kVYoB/XpaAMQ4Va4UN6
-	WSjKUBtr5z7Y6KOw6ctW/UN30JTBPbXx4F69HR2b1L3h0ZzWewPIswhCS/1aprRdSo9mn2WysQ8
-	IO1tK/q16q0nH
-X-Received: by 2002:a05:620a:27cc:b0:77f:1382:e6ee with SMTP id i12-20020a05620a27cc00b0077f1382e6eemr13807785qkp.146.1702635472509;
-        Fri, 15 Dec 2023 02:17:52 -0800 (PST)
-X-Received: by 2002:a05:620a:27cc:b0:77f:1382:e6ee with SMTP id i12-20020a05620a27cc00b0077f1382e6eemr13807769qkp.146.1702635472240;
-        Fri, 15 Dec 2023 02:17:52 -0800 (PST)
-Received: from rh (p200300c93f174f005d25f1299b34cd9e.dip0.t-ipconnect.de. [2003:c9:3f17:4f00:5d25:f129:9b34:cd9e])
-        by smtp.gmail.com with ESMTPSA id w5-20020a05620a148500b0077d65ef6ca9sm5910268qkj.136.2023.12.15.02.17.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Dec 2023 02:17:52 -0800 (PST)
-Date: Fri, 15 Dec 2023 11:17:47 +0100 (CET)
-From: Sebastian Ott <sebott@redhat.com>
-To: Eric Auger <eauger@redhat.com>
-cc: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org, 
-    Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-    Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org, 
-    qemu-devel@nongnu.org
-Subject: Re: [PATCH v4] arm/kvm: Enable support for
- KVM_ARM_VCPU_PMU_V3_FILTER
-In-Reply-To: <f1b6dffb-0a23-82d2-7699-67e12691e5c4@redhat.com>
-Message-ID: <80bd3241-f3e2-f5ee-27b9-af5ad76144d4@redhat.com>
-References: <20231207103648.2925112-1-shahuang@redhat.com> <be70b17c-21cf-4f4e-8ec1-62c18ffd4100@redhat.com> <f1b6dffb-0a23-82d2-7699-67e12691e5c4@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1702649028; x=1703253828;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Og75nzJUqr7aY5MfzChuNtBluhG+w+ZvrmwaurIZwUs=;
+ b=SfQrJnCastRsHZRtlFL0HgyYaEr9Prh/7gx2nbaMyf0zycFCIBGA6P1+wwEVcwCN0r
+ D02Tgb0JMswa3Gxss8wLquVC0O1J0wf59Hao9J04PcaRXIdj7Ep7M4kU2LNdlKYGzNu8
+ ak0OQrsdJO/u1NgB/UsMwEaT++1LJITs5Q7YBHItZXZr0Tikq5hDl5YuTCNa+dy6TYpC
+ zOP/2DmvJGuwy06LH8aGdsAY803EFn28UI2v/KiaFjDgTKdt+AMnmciT4PXks0sWUykp
+ 1aUsburLHlqeZtyorFrgBvv+HzM8kOO5XKz9MnsHnjzpvOh3ZzkoknTzQ30Hohk/kBia
+ OYXQ==
+X-Gm-Message-State: AOJu0YzJFchkuS47PSrJf6kEYH1gyswsT27gKzsgduyydeYMwQrTqokW
+ ZMyeebwrYvU+R+h9dR8XcUlQEcrXi+ZWIiNl8s0=
+X-Received: by 2002:a05:6512:3d91:b0:50d:1479:f9db with SMTP id
+ k17-20020a0565123d9100b0050d1479f9dbmr7274712lfv.98.1702649027627; 
+ Fri, 15 Dec 2023 06:03:47 -0800 (PST)
+Received: from vm579946.eurodir.ru ([95.142.42.61])
+ by smtp.gmail.com with ESMTPSA id
+ i10-20020a056512340a00b0050be8d89aefsm2153306lfr.309.2023.12.15.06.03.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Dec 2023 06:03:47 -0800 (PST)
+From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>
+Subject: [PATCH v4] fsl-imx: add simple RTC emulation for i.MX6 and i.MX7
+ boards
+Date: Fri, 15 Dec 2023 17:03:46 +0300
+Message-Id: <20231215140346.3858-1-n.ostrenkov@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-TUID: qx5ZABUdnHEk
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=n.ostrenkov@gmail.com; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: x3HrXR/v2CF/
 
-On Fri, 15 Dec 2023, Sebastian Ott wrote:
-> On Thu, 14 Dec 2023, Eric Auger wrote:
->>  On 12/7/23 11:36, Shaoqin Huang wrote:
->>>  +    if (kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, &attr)) {
->>>  +        warn_report("The kernel doesn't support the PMU Event
->>>  Filter!\n");
->>>  +        return;
->>>  +    }
->>>  +
->>>  +    /* The filter only needs to be initialized for 1 vcpu. */
->>  Are you sure? This is a per vcpu device ctrl. Where is it written in the
->>  doc that this shall not be called for each vcpu
->
-> The interface is per vcpu but the filters are actually managed per vm
-> (kvm->arch.pmu_filter). From (kernel) commit 6ee7fca2a ("KVM: arm64: Add 
-> KVM_ARM_VCPU_PMU_V3_SET_PMU attribute"):
->  To ensure that KVM doesn't expose an asymmetric system to the guest, the
->  PMU set for one VCPU will be used by all other VCPUs. Once a VCPU has run,
->  the PMU cannot be changed in order to avoid changing the list of available
->  events for a VCPU, or to change the semantics of existing events.
+Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+---
+ hw/misc/imx7_snvs.c         | 93 ++++++++++++++++++++++++++++++++++---
+ hw/misc/trace-events        |  4 +-
+ include/hw/misc/imx7_snvs.h |  7 ++-
+ 3 files changed, 94 insertions(+), 10 deletions(-)
 
-I've managed to quote the wrong commit. It's that one:
-d7eec2360e3 ("KVM: arm64: Add PMU event filtering infrastructure")
-  Note that although the ioctl is per-vcpu, the map of allowed events is
-  global to the VM (it can be setup from any vcpu until the vcpu PMU is
-  initialized).
-
-Sebastian
+diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
+index a245f96cd4..711879e326 100644
+--- a/hw/misc/imx7_snvs.c
++++ b/hw/misc/imx7_snvs.c
+@@ -13,28 +13,100 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/bitops.h"
++#include "qemu/timer.h"
++#include "migration/vmstate.h"
+ #include "hw/misc/imx7_snvs.h"
++#include "qemu/cutils.h"
+ #include "qemu/module.h"
++#include "sysemu/sysemu.h"
++#include "sysemu/rtc.h"
+ #include "sysemu/runstate.h"
+ #include "trace.h"
+ 
++#define RTC_FREQ    32768ULL
++
++static const VMStateDescription vmstate_imx7_snvs = {
++    .name = TYPE_IMX7_SNVS,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT64(tick_offset, IMX7SNVSState),
++        VMSTATE_UINT64(lpcr, IMX7SNVSState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static uint64_t imx7_snvs_get_count(IMX7SNVSState *s)
++{
++    int64_t ticks = muldiv64(qemu_clock_get_ns(rtc_clock), RTC_FREQ,
++                             NANOSECONDS_PER_SECOND);
++    return s->tick_offset + ticks;
++}
++
+ static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
+ {
+-    trace_imx7_snvs_read(offset, 0);
++    IMX7SNVSState *s = IMX7_SNVS(opaque);
++    uint64_t ret = 0;
++
++    switch (offset) {
++    case SNVS_LPSRTCMR:
++        ret = extract64(imx7_snvs_get_count(s), 32, 15);
++        break;
++    case SNVS_LPSRTCLR:
++        ret = extract64(imx7_snvs_get_count(s), 0, 32);
++        break;
++    case SNVS_LPCR:
++        ret = s->lpcr;
++        break;
++    }
+ 
+-    return 0;
++    trace_imx7_snvs_read(offset, ret, size);
++
++    return ret;
++}
++
++static void imx7_snvs_reset(DeviceState *dev)
++{
++    IMX7SNVSState *s = IMX7_SNVS(dev);
++
++    s->lpcr = 0;
+ }
+ 
+ static void imx7_snvs_write(void *opaque, hwaddr offset,
+                             uint64_t v, unsigned size)
+ {
+-    const uint32_t value = v;
+-    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
++    trace_imx7_snvs_write(offset, v, size);
++
++    IMX7SNVSState *s = IMX7_SNVS(opaque);
+ 
+-    trace_imx7_snvs_write(offset, value);
++    uint64_t new_value = 0, snvs_count = 0;
+ 
+-    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
+-        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
++        snvs_count = imx7_snvs_get_count(s);
++    }
++
++    switch (offset) {
++    case SNVS_LPSRTCMR:
++        new_value = deposit64(snvs_count, 32, 32, v);
++        break;
++    case SNVS_LPSRTCLR:
++        new_value = deposit64(snvs_count, 0, 32, v);
++        break;
++    case SNVS_LPCR: {
++        s->lpcr = v;
++
++        const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
++
++        if ((v & mask) == mask) {
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++        }
++        break;
++    }
++    }
++
++    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
++        s->tick_offset += new_value - snvs_count;
+     }
+ }
+ 
+@@ -59,17 +131,24 @@ static void imx7_snvs_init(Object *obj)
+ {
+     SysBusDevice *sd = SYS_BUS_DEVICE(obj);
+     IMX7SNVSState *s = IMX7_SNVS(obj);
++    struct tm tm;
+ 
+     memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
+                           TYPE_IMX7_SNVS, 0x1000);
+ 
+     sysbus_init_mmio(sd, &s->mmio);
++
++    qemu_get_timedate(&tm, 0);
++    s->tick_offset = mktimegm(&tm) -
++        qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
+ }
+ 
+ static void imx7_snvs_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
++    dc->reset = imx7_snvs_reset;
++    dc->vmsd = &vmstate_imx7_snvs;
+     dc->desc  = "i.MX7 Secure Non-Volatile Storage Module";
+ }
+ 
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 05ff692441..85725506bf 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -116,8 +116,8 @@ imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
+ imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
+ 
+ # imx7_snvs.c
+-imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
+-imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
++imx7_snvs_read(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS read: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
++imx7_snvs_write(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS write: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
+ 
+ # mos6522.c
+ mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
+diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
+index 14a1d6fe6b..1272076086 100644
+--- a/include/hw/misc/imx7_snvs.h
++++ b/include/hw/misc/imx7_snvs.h
+@@ -20,7 +20,9 @@
+ enum IMX7SNVSRegisters {
+     SNVS_LPCR = 0x38,
+     SNVS_LPCR_TOP   = BIT(6),
+-    SNVS_LPCR_DP_EN = BIT(5)
++    SNVS_LPCR_DP_EN = BIT(5),
++    SNVS_LPSRTCMR = 0x050, /* Secure Real Time Counter MSB Register */
++    SNVS_LPSRTCLR = 0x054, /* Secure Real Time Counter LSB Register */
+ };
+ 
+ #define TYPE_IMX7_SNVS "imx7.snvs"
+@@ -31,6 +33,9 @@ struct IMX7SNVSState {
+     SysBusDevice parent_obj;
+ 
+     MemoryRegion mmio;
++
++    uint64_t tick_offset;
++    uint64_t lpcr;
+ };
+ 
+ #endif /* IMX7_SNVS_H */
+-- 
+2.34.1
 

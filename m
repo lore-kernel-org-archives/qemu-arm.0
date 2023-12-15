@@ -1,113 +1,112 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp3055450ejo;
-        Fri, 15 Dec 2023 06:04:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHdWktpFbHcgrb2X0TYfj9qS2uTQ2CMc7eXveEFlDJpeNHImQ3Pnb09FUnk291RBnygvI9V
-X-Received: by 2002:a05:6102:3ecd:b0:465:ea50:1ea7 with SMTP id n13-20020a0561023ecd00b00465ea501ea7mr10203309vsv.18.1702649061953;
-        Fri, 15 Dec 2023 06:04:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702649061; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp3085786ejo;
+        Fri, 15 Dec 2023 06:47:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE3YQ0XMvP4cVno4t1luAsOYazNWI1+ld7FGtYi1P2t0Tyvk9A7R7kWrizTSD5pAChcKwA0
+X-Received: by 2002:a05:620a:3181:b0:77f:aea4:6498 with SMTP id bi1-20020a05620a318100b0077faea46498mr1711133qkb.72.1702651650756;
+        Fri, 15 Dec 2023 06:47:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702651650; cv=none;
         d=google.com; s=arc-20160816;
-        b=g3R80xyjbX4HMxWA4PMKgetAhZPfxO9oboRaLvww0OW6I9trQBrSd8/TDzoBbXHBES
-         Qr88Pyq2EvTCszGwjfh90ayYl/+EzL2chEfyVzMSdVeF06QcdD7MtD+WZLToWN0JcSil
-         D3/tDAhvDY0We6YHICRTonJZJFoE0zuKkidOTPVpyx4RPqryiOGd5mWNH1lqyueEBx9M
-         /AiR/7hqVNgSoG1b/QKhjO3XVbOrXEnLsC22OALdva6g49sZB3Ln/fc2sCtMfhNWxxbM
-         JK/x9zBfQQtJZffwELvd9XjYL6d6x0edSueKh3RgEkKUrAxxgz+L4hsNangb0QmUEeKL
-         3s1A==
+        b=CxL2Uh1P+b0QRUu8zsjRPx6lRe3cYSr27VBRIIP6D6xUUImVy3KFHxaclFG8/SZNAw
+         7ODlkkPUthnyp8ut39Gp10P/GBChThVpOC86E/BzIkFUB7qBZAL9fNtwgeXQUbk7fEar
+         s8WhAZYrg+UJ5vPtgF4Ur0ZP+I2jfgDfZaJpLu9afxtQtBEFyPw1y9WEBTinPtr0xr0H
+         AK4t07V9g9FtcHI8zAZEEQ8NswxD4XyTt9biJ9pC4rGKgK3b1G2xBJhe7E16IOhw65er
+         8W5K8IVdOjjQVHfw7b/9UfxHk0Gvb19h8qZ9EZ1pYZS1l3ydFXlSUGqbUYRHu87ygLvy
+         LDgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Og75nzJUqr7aY5MfzChuNtBluhG+w+ZvrmwaurIZwUs=;
-        fh=r9uVkP6zMpQ7kbyvGtViUoiB1mYLelKqBHDSkbSM78s=;
-        b=rSDk08QRzmF6RkiQJYw3t366GhxhKiMUCYimopdGai4l1XlGbA6FGFjXcUF0bNNHNz
-         POwkPMQSRx+PYeoH0AmPgOCCc5NkGEi5Lb5QQz1Tx6o75zFfBNt/JF0bxf94xPG9NyC2
-         v/zxt6ZOStfF5XBft66ctMKOCHweUhKIGXthtFAFKWJju+VNEgbnafBmiMG4ruyW/drz
-         DbiAUPaYpRyf4+PdzSofXU5eERqfV2oJ8X1SPC5wLAF/oX0b4skm1ZAAT3/ZV2iY7JpK
-         qwdS1rzT374KJhfBWCBVkOQzawy7L1uIGsYXQpeUoz6LpJla0Mu2YmyMQNeXhUiKKyMR
-         TFNA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=GLUhWB/sN5MyI4nTfOKidTvS/BXLq0iibl/Vmt824Rc=;
+        fh=eznzJhaHZ4e2Zm64fSugIOQh2YxER8Nwaf9e6pI5Cng=;
+        b=poPqZg8G+IoGaeTXdiyLpbKqHcwWfPOTfF71ww/tnfPst5EfrktrhV2GqoplDm3bdD
+         3dYFTqYCmwcPpKAqCELL/8EcjWCutvwl1ShMaghogc7G88yer+NrXcnxTwZ+NItjjgPM
+         aredtj/R4yOteDKKKsTsOdB/d/GyQWiPkQs4ced0MTcwxpifHBuRsSFlUk8UioeXVjoj
+         k9Y4D2FFyYs5RfTGonYJKjDL3Urba1geXcYOhs8MYUc/iNqrqjlYcFKRINhQ1+qsHxar
+         iCxMu7p5gYItwCllFFbBq9RyEX8KxDlDmwyWUG0hphlTYznOFIT+GqwUA2S4td4xR5nN
+         vtvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lYfz3e23;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b51OXFZc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l18-20020a0561023f5200b004664a4a13d5si1945370vsv.822.2023.12.15.06.04.21
+        by mx.google.com with ESMTPS id qs16-20020a05620a395000b0077f75ac9319si7318496qkn.198.2023.12.15.06.47.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Dec 2023 06:04:21 -0800 (PST)
+        Fri, 15 Dec 2023 06:47:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lYfz3e23;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b51OXFZc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rE8nF-0000Od-8t; Fri, 15 Dec 2023 09:03:57 -0500
+	id 1rE9T5-0004jT-Ee; Fri, 15 Dec 2023 09:47:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rE8nD-0000Nx-15; Fri, 15 Dec 2023 09:03:55 -0500
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rE8n9-0005HJ-MM; Fri, 15 Dec 2023 09:03:54 -0500
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-50bfd7be487so730049e87.0; 
- Fri, 15 Dec 2023 06:03:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702649028; x=1703253828; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Og75nzJUqr7aY5MfzChuNtBluhG+w+ZvrmwaurIZwUs=;
- b=lYfz3e23ssjO8bK/loPBoNgAGHGhSWSTrlkDeuKZiVGzSBuVcPJ1oNs10cwtlZvxhk
- K7gwEgbf/kxtpTyksqi8ST1jO1lCJT8m/I3kzoOJT3tQcw5SlOLbyb7k2BabvYrPjOBf
- keo6M7rHaOU7Z60NEj2/NEZaKDcjfOVfNnJryaNsDbG3K/qrUW74OGNug+e1YMr35/7J
- VEDwUlTT9SVWQ293Uy5h3zFn8+9fFJid9x5BJS/kJJQ9BRyEpo548dKV+Cc96dAgEozE
- uv8R35xf3TX6LpM2z2lu74yQNj41eRVdx+IhWfFKK5XdZA8SAfbMNTrW4YdJslYOPHLI
- sq2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702649028; x=1703253828;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Og75nzJUqr7aY5MfzChuNtBluhG+w+ZvrmwaurIZwUs=;
- b=SfQrJnCastRsHZRtlFL0HgyYaEr9Prh/7gx2nbaMyf0zycFCIBGA6P1+wwEVcwCN0r
- D02Tgb0JMswa3Gxss8wLquVC0O1J0wf59Hao9J04PcaRXIdj7Ep7M4kU2LNdlKYGzNu8
- ak0OQrsdJO/u1NgB/UsMwEaT++1LJITs5Q7YBHItZXZr0Tikq5hDl5YuTCNa+dy6TYpC
- zOP/2DmvJGuwy06LH8aGdsAY803EFn28UI2v/KiaFjDgTKdt+AMnmciT4PXks0sWUykp
- 1aUsburLHlqeZtyorFrgBvv+HzM8kOO5XKz9MnsHnjzpvOh3ZzkoknTzQ30Hohk/kBia
- OYXQ==
-X-Gm-Message-State: AOJu0YzJFchkuS47PSrJf6kEYH1gyswsT27gKzsgduyydeYMwQrTqokW
- ZMyeebwrYvU+R+h9dR8XcUlQEcrXi+ZWIiNl8s0=
-X-Received: by 2002:a05:6512:3d91:b0:50d:1479:f9db with SMTP id
- k17-20020a0565123d9100b0050d1479f9dbmr7274712lfv.98.1702649027627; 
- Fri, 15 Dec 2023 06:03:47 -0800 (PST)
-Received: from vm579946.eurodir.ru ([95.142.42.61])
- by smtp.gmail.com with ESMTPSA id
- i10-20020a056512340a00b0050be8d89aefsm2153306lfr.309.2023.12.15.06.03.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Dec 2023 06:03:47 -0800 (PST)
-From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Subject: [PATCH v4] fsl-imx: add simple RTC emulation for i.MX6 and i.MX7
- boards
-Date: Fri, 15 Dec 2023 17:03:46 +0300
-Message-Id: <20231215140346.3858-1-n.ostrenkov@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1rE9T2-0004if-Kq
+ for qemu-arm@nongnu.org; Fri, 15 Dec 2023 09:47:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1rE9Sx-0005H9-Gi
+ for qemu-arm@nongnu.org; Fri, 15 Dec 2023 09:47:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1702651621;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GLUhWB/sN5MyI4nTfOKidTvS/BXLq0iibl/Vmt824Rc=;
+ b=b51OXFZcnk09h1HZyYSWXP8EK2oJXlwENOmevPL9kWsJwGrvWnj9d1ZfSJwtAV1ierta7x
+ eFX/13wsgnNL0xbON0UMaLCLTCaWcWZysObEjhie8gb5I2q077qkRLsb8tTsDGpufwml1w
+ NkH85re0AUJgpTrDGUO8XrPOM4VJbL4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-643-EoJS4xrVOBiqhgH5XEzE4A-1; Fri, 15 Dec 2023 09:46:58 -0500
+X-MC-Unique: EoJS4xrVOBiqhgH5XEzE4A-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D21D485A58A;
+ Fri, 15 Dec 2023 14:46:57 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.132])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9EFA33C25;
+ Fri, 15 Dec 2023 14:46:56 +0000 (UTC)
+Date: Fri, 15 Dec 2023 14:46:54 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] tests/qtest/npcm7xx_pwm-test: Only do full testing in
+ slow mode
+Message-ID: <ZXxm3vY4jzzaago_@redhat.com>
+References: <20231215143524.49241-1-thuth@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=n.ostrenkov@gmail.com; helo=mail-lf1-x132.google.com
+In-Reply-To: <20231215143524.49241-1-thuth@redhat.com>
+User-Agent: Mutt/2.2.10 (2023-03-25)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,194 +119,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x3HrXR/v2CF/
+X-TUID: zC4G+PDM1wP4
 
-Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
----
- hw/misc/imx7_snvs.c         | 93 ++++++++++++++++++++++++++++++++++---
- hw/misc/trace-events        |  4 +-
- include/hw/misc/imx7_snvs.h |  7 ++-
- 3 files changed, 94 insertions(+), 10 deletions(-)
+On Fri, Dec 15, 2023 at 03:35:24PM +0100, Thomas Huth wrote:
+> The npcm7xx_pwm-test can take quite a while when running with
+> --enable-debug on a loaded system. The tests here are quite
+> repetitive - by default it should be fine if we only execute
+> some of them and only execute all when running in slow testing mode.
 
-diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
-index a245f96cd4..711879e326 100644
---- a/hw/misc/imx7_snvs.c
-+++ b/hw/misc/imx7_snvs.c
-@@ -13,28 +13,100 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qemu/timer.h"
-+#include "migration/vmstate.h"
- #include "hw/misc/imx7_snvs.h"
-+#include "qemu/cutils.h"
- #include "qemu/module.h"
-+#include "sysemu/sysemu.h"
-+#include "sysemu/rtc.h"
- #include "sysemu/runstate.h"
- #include "trace.h"
- 
-+#define RTC_FREQ    32768ULL
-+
-+static const VMStateDescription vmstate_imx7_snvs = {
-+    .name = TYPE_IMX7_SNVS,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT64(tick_offset, IMX7SNVSState),
-+        VMSTATE_UINT64(lpcr, IMX7SNVSState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static uint64_t imx7_snvs_get_count(IMX7SNVSState *s)
-+{
-+    int64_t ticks = muldiv64(qemu_clock_get_ns(rtc_clock), RTC_FREQ,
-+                             NANOSECONDS_PER_SECOND);
-+    return s->tick_offset + ticks;
-+}
-+
- static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
- {
--    trace_imx7_snvs_read(offset, 0);
-+    IMX7SNVSState *s = IMX7_SNVS(opaque);
-+    uint64_t ret = 0;
-+
-+    switch (offset) {
-+    case SNVS_LPSRTCMR:
-+        ret = extract64(imx7_snvs_get_count(s), 32, 15);
-+        break;
-+    case SNVS_LPSRTCLR:
-+        ret = extract64(imx7_snvs_get_count(s), 0, 32);
-+        break;
-+    case SNVS_LPCR:
-+        ret = s->lpcr;
-+        break;
-+    }
- 
--    return 0;
-+    trace_imx7_snvs_read(offset, ret, size);
-+
-+    return ret;
-+}
-+
-+static void imx7_snvs_reset(DeviceState *dev)
-+{
-+    IMX7SNVSState *s = IMX7_SNVS(dev);
-+
-+    s->lpcr = 0;
- }
- 
- static void imx7_snvs_write(void *opaque, hwaddr offset,
-                             uint64_t v, unsigned size)
- {
--    const uint32_t value = v;
--    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-+    trace_imx7_snvs_write(offset, v, size);
-+
-+    IMX7SNVSState *s = IMX7_SNVS(opaque);
- 
--    trace_imx7_snvs_write(offset, value);
-+    uint64_t new_value = 0, snvs_count = 0;
- 
--    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
--        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
-+        snvs_count = imx7_snvs_get_count(s);
-+    }
-+
-+    switch (offset) {
-+    case SNVS_LPSRTCMR:
-+        new_value = deposit64(snvs_count, 32, 32, v);
-+        break;
-+    case SNVS_LPSRTCLR:
-+        new_value = deposit64(snvs_count, 0, 32, v);
-+        break;
-+    case SNVS_LPCR: {
-+        s->lpcr = v;
-+
-+        const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-+
-+        if ((v & mask) == mask) {
-+            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        }
-+        break;
-+    }
-+    }
-+
-+    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
-+        s->tick_offset += new_value - snvs_count;
-     }
- }
- 
-@@ -59,17 +131,24 @@ static void imx7_snvs_init(Object *obj)
- {
-     SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-     IMX7SNVSState *s = IMX7_SNVS(obj);
-+    struct tm tm;
- 
-     memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
-                           TYPE_IMX7_SNVS, 0x1000);
- 
-     sysbus_init_mmio(sd, &s->mmio);
-+
-+    qemu_get_timedate(&tm, 0);
-+    s->tick_offset = mktimegm(&tm) -
-+        qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
- }
- 
- static void imx7_snvs_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->reset = imx7_snvs_reset;
-+    dc->vmsd = &vmstate_imx7_snvs;
-     dc->desc  = "i.MX7 Secure Non-Volatile Storage Module";
- }
- 
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 05ff692441..85725506bf 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -116,8 +116,8 @@ imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
- imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
- 
- # imx7_snvs.c
--imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
--imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-+imx7_snvs_read(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS read: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
-+imx7_snvs_write(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS write: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
- 
- # mos6522.c
- mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
-diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
-index 14a1d6fe6b..1272076086 100644
---- a/include/hw/misc/imx7_snvs.h
-+++ b/include/hw/misc/imx7_snvs.h
-@@ -20,7 +20,9 @@
- enum IMX7SNVSRegisters {
-     SNVS_LPCR = 0x38,
-     SNVS_LPCR_TOP   = BIT(6),
--    SNVS_LPCR_DP_EN = BIT(5)
-+    SNVS_LPCR_DP_EN = BIT(5),
-+    SNVS_LPSRTCMR = 0x050, /* Secure Real Time Counter MSB Register */
-+    SNVS_LPSRTCLR = 0x054, /* Secure Real Time Counter LSB Register */
- };
- 
- #define TYPE_IMX7_SNVS "imx7.snvs"
-@@ -31,6 +33,9 @@ struct IMX7SNVSState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion mmio;
-+
-+    uint64_t tick_offset;
-+    uint64_t lpcr;
- };
- 
- #endif /* IMX7_SNVS_H */
+Yep, I think this change is not altering the code coverage
+in any noticable way.
+
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/qtest/npcm7xx_pwm-test.c | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+
+> 
+> diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
+> index ea4ca1d106..b53a43c417 100644
+> --- a/tests/qtest/npcm7xx_pwm-test.c
+> +++ b/tests/qtest/npcm7xx_pwm-test.c
+> @@ -606,6 +606,7 @@ static void test_toggle(gconstpointer test_data)
+>      uint32_t ppr, csr, pcr, cnr, cmr;
+>      int i, j, k, l;
+>      uint64_t expected_freq, expected_duty;
+> +    int cnr_step = g_test_quick() ? 2 : 1;
+>  
+>      mft_init(qts, td);
+>  
+> @@ -618,7 +619,7 @@ static void test_toggle(gconstpointer test_data)
+>              csr = csr_list[j];
+>              pwm_write_csr(qts, td, csr);
+>  
+> -            for (k = 0; k < ARRAY_SIZE(cnr_list); ++k) {
+> +            for (k = 0; k < ARRAY_SIZE(cnr_list); k += cnr_step) {
+>                  cnr = cnr_list[k];
+>                  pwm_write_cnr(qts, td, cnr);
+>  
+> @@ -678,6 +679,7 @@ static void pwm_add_test(const char *name, const TestData* td,
+>  int main(int argc, char **argv)
+>  {
+>      TestData test_data_list[ARRAY_SIZE(pwm_module_list) * ARRAY_SIZE(pwm_list)];
+> +    int pwm_module_list_cnt = 1, pwm_list_cnt = 1;
+>  
+>      char *v_env = getenv("V");
+>  
+> @@ -687,8 +689,13 @@ int main(int argc, char **argv)
+>  
+>      g_test_init(&argc, &argv, NULL);
+>  
+> -    for (int i = 0; i < ARRAY_SIZE(pwm_module_list); ++i) {
+> -        for (int j = 0; j < ARRAY_SIZE(pwm_list); ++j) {
+> +    if (!g_test_quick()) {
+> +        pwm_module_list_cnt = ARRAY_SIZE(pwm_module_list);
+> +        pwm_list_cnt = ARRAY_SIZE(pwm_list);
+> +    }
+> +
+> +    for (int i = 0; i < pwm_module_list_cnt; ++i) {
+> +        for (int j = 0; j < pwm_list_cnt; ++j) {
+>              TestData *td = &test_data_list[i * ARRAY_SIZE(pwm_list) + j];
+>  
+>              td->module = &pwm_module_list[i];
+> -- 
+> 2.43.0
+> 
+
+With regards,
+Daniel
 -- 
-2.34.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

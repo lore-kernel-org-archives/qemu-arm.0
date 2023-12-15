@@ -1,1106 +1,137 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp2834387ejo;
-        Thu, 14 Dec 2023 22:35:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFwgQJL2x6ViAa19LmrjO9gLqQ5bKtSvNAKGamEdEbLlQy7l4iQtJkORwGKUoVXNwKI7WyU
-X-Received: by 2002:a05:622a:93:b0:425:8cbf:c8c5 with SMTP id o19-20020a05622a009300b004258cbfc8c5mr9394795qtw.34.1702622115315;
-        Thu, 14 Dec 2023 22:35:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702622115; cv=none;
+Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp2916870ejo;
+        Fri, 15 Dec 2023 01:56:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFcB5PapfdbmJarD5A1k2HPckChuDvsGfdjJBMyp/KLhq7IdKovOm98wY/TMR9DS9GsjqBm
+X-Received: by 2002:a17:902:c113:b0:1d3:3f41:a9b8 with SMTP id 19-20020a170902c11300b001d33f41a9b8mr3324923pli.47.1702634170614;
+        Fri, 15 Dec 2023 01:56:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702634170; cv=none;
         d=google.com; s=arc-20160816;
-        b=zKUgPn/7KZ8N8U4A5kgcl8h8hu5yORzsAoMbB/YxQfo1esubPd+lyQm5rkZY9NuCIr
-         W0OEbbgPTBX8Jw0L9QQ/traV9TBZgLzC/eS62VbdqwvWKGre+aMjuUP7jfixfd7RycHa
-         N6+ZCL2M0S2v6kCTOIBvT3rXco/jUTZesY44pYQmfs3wwW39PdHBkvBEWbINx8tgWjMs
-         oAvXMNeh4BqMsk1T53KzKVUUiiaUUsqkHQuknEfSZ0/iES714GdcbFz1YmkbYTRHonf0
-         kDaInzSr50+9SpIEMpHD3ahY/V0hY0yYTo1VvoDkEstJab/vtMtwDHnbrSvGGH9und4o
-         ctuA==
+        b=IIVv+kPYiPhSThESbG/Ra39XomDrIQRqB+aiZk7+PZoHdHUZ8VLEYpYUK7vRcygx82
+         VLr+I3LA5X0O0h5/JV9kv2kk8vfAu3rKMHVOHmMan57xyzE0nKma39LYnbvJ2G9ZF1Fz
+         tqzbaUpbltjsPoz1R95s/lYlYz3780663y+b3GnhMS9Otdv5sLUoiGeA6TdW1cVI2ys/
+         Tq/KLJO84eCymIIJNJhysFyxCa+3nGzHL5zDdkPyIQaPhwvOTb2q9nw6meuB/cEqVG49
+         guNOx+OdTgqxSsqbqYU0IpOCRYqokFV11G6YY1p2/duygB77jnN5DI2DpPDq9YOofSde
+         0Jxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=g7yIY1t/2pqGM0mx/kf9jHGjzzX3qrBaXNa3AuE7ejQ=;
-        fh=SIQOmLlofeCYQmpiAeiDyq/grmjJTAbAhy1FFyYqPV4=;
-        b=RC57cwkfzOsMjgVntT6tHt6s0l2kNwNaUhBufEJOkkcGNQwT+Ces8NBkqsxlT6wV+7
-         D09FRzKZHK1DPsM3vJE4rSlD4pNwfQPG5ljkFjvSj02Ksyj6+zrIe6yLGwVv7aeebh5l
-         bfNgP/Hm6L4rGqJZfpb4NEvlqTSHzMAgp2+0BcbdrG9Mj9Y7pRHWznonG5lxHJTKELPa
-         rnbLkG9BkTJJwaEgvTnxvUZyQMxqjCr+ZnY47fdL4/c9tObRrJqw1Rewnqc458caULU+
-         Z72ee6SULrtDb+1h/d4osHlgp7aq3SOdgnpPE0hK40VgZ/O69QZi/OhQMbtGli1CTJR6
-         IAXQ==
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:in-reply-to:subject:cc:to:from:date
+         :dkim-signature;
+        bh=XsVx4MsxXeqsM9UmamEQoOhQwuatdwZpdHk8xWe7cXU=;
+        fh=5wlUWyMuD+JqCOmHa0udg/FWBJZSC4QRfhDxCTE2BTg=;
+        b=atL+UXprJBJGfCiGwNJfe8TlZapzKpp/Nk+pkHzrp8+ewwoe/uXFzLjJ7UdXIIqunX
+         Hml9OzoaG0vu95KjWPKv/melGl6tuwXZCWOzQ9/GIBX2qvALDp8rhDW5NlBlt/5D3RBb
+         8oEjor8r79viNbAlr1Dgw5d1uw/fZC8o6/9BXfRULxDVyNtbEwtx14Jhv5B2QXVYy6kj
+         zREyhgehPozrHfpRT6nWfs46O3zPB6BO2X3fvACdo/Y8hM5uO5UbXPQdghq7OG70PeRe
+         ymJULip0lv5n1nWHabtyGDBVkAEnoM6vdHyRsMcQIJWDKLTfh6chTyMzaBJIB6kJ/cGN
+         gdvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LAdYYyan;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8-20020ac85708000000b00425a7282412si17227069qtw.748.2023.12.14.22.35.15
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="BhWdUJ/4";
+       spf=pass (google.com: domain of kvm+bounces-4556-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-4556-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-4556-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id c1-20020a170902aa4100b001cfc4fd2a64si12587520plr.599.2023.12.15.01.56.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Dec 2023 22:35:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Dec 2023 01:56:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-4556-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LAdYYyan;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rE1mX-0005XJ-8h; Fri, 15 Dec 2023 01:34:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <irischenlj@gmail.com>)
- id 1rDyB9-0000Bo-UG; Thu, 14 Dec 2023 21:43:55 -0500
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <irischenlj@gmail.com>)
- id 1rDyB6-0001NO-Lz; Thu, 14 Dec 2023 21:43:55 -0500
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-28b1b5435c1so124300a91.2; 
- Thu, 14 Dec 2023 18:43:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702608225; x=1703213025; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=g7yIY1t/2pqGM0mx/kf9jHGjzzX3qrBaXNa3AuE7ejQ=;
- b=LAdYYyaneJhnsVPXtBffx9+O7sLsxIY5b/VUJ87zQDC7NeoQ6rJ1mYyeLHD60yi+8V
- uu9Gk2LpM71aydmU944F/ujm+pTE3Bsa6fL1xW7Tho4vRxKidgNRlOG4KzHo1pINjeje
- zFhV1CNeIVL/YP6p40slkbjGp8MWFknOBjYrESPnXVlkPza4XzlJnzruxtpDxVCGHCY0
- bPm4FEK+9oUU8o3HrUNUV8NcHDsP6vlv2XJ3nT4logQ0kAkusoQdvKbLNUlWL9Qz9wg6
- 06+3x1wRL+HqbX4OcSSflc5ua5lGmLYNpMAuyBrNHSEcZmaUrqoBQF27LYBMUuA6P1xB
- ReFg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="BhWdUJ/4";
+       spf=pass (google.com: domain of kvm+bounces-4556-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-4556-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 6D548B227BF
+	for <alex.bennee@linaro.org>; Fri, 15 Dec 2023 09:56:08 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 30B7F24B51;
+	Fri, 15 Dec 2023 09:56:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="BhWdUJ/4"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABEF324B22
+	for <kvm@vger.kernel.org>; Fri, 15 Dec 2023 09:56:00 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1702634159;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=XsVx4MsxXeqsM9UmamEQoOhQwuatdwZpdHk8xWe7cXU=;
+	b=BhWdUJ/4947x7hKIo0aCfsgf1Dxfl7TXoXvNhNd5NmBgy+BXsBs9qAsu/vfoLcFpmwNc2R
+	7QNxbt9VfV9mY+kU+kC/hym3jlM/+nm4BCPX6JruoyI6ZqPvbn+Xn2+QI+XkOrCK/uYAF6
+	rQPZG3I/G6MR39u8JFk/i1GRr1CwB6M=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-43-S88MhR2WOzWHxLQIT3r8Gg-1; Fri, 15 Dec 2023 04:55:58 -0500
+X-MC-Unique: S88MhR2WOzWHxLQIT3r8Gg-1
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-421b20c9893so7833331cf.0
+        for <kvm@vger.kernel.org>; Fri, 15 Dec 2023 01:55:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702608225; x=1703213025;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=g7yIY1t/2pqGM0mx/kf9jHGjzzX3qrBaXNa3AuE7ejQ=;
- b=fC7rUivSwUdon9e1BqyGJEvKWDOTp4WXVXmC4fBXmMFJTAePCmBSBTZtwCyDgWSaFA
- RLPKUdkP+p3zbwBFZKJSkfIbASO2mtzda8MtU60oKTXhKODXNnsn7IeFELSs9kvlJKlT
- HS6x54faSBNGUJqHZ2CmGPVfhEXv5owJInB3BrsbH9XWXzpxowauS8Nni54b6YdguNps
- B8kejU8U1BD5PgfkZJ3vK8iZJk9sq1YhwmwsWgVqrqMhQMA8JOdEHFyma+SVBtrnE6j4
- jP7YaOQlJHSuYiHAteq+Aabn1qpO0L0TwYGmeRBA18OLrPQc/lweMg0d3qHR/gjOqtdI
- VK2Q==
-X-Gm-Message-State: AOJu0YxBiGV5aIhD5xag0I3wnwS4NlV5t/2Dou0fiQ4w+EMviFFEXLQh
- QH+bsM9By6FjKSeNCldopSGDNgjgt52Fz/OPXLo=
-X-Received: by 2002:a17:90a:b311:b0:28a:f0de:6be0 with SMTP id
- d17-20020a17090ab31100b0028af0de6be0mr2454083pjr.99.1702608225139; Thu, 14
- Dec 2023 18:43:45 -0800 (PST)
+        d=1e100.net; s=20230601; t=1702634157; x=1703238957;
+        h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XsVx4MsxXeqsM9UmamEQoOhQwuatdwZpdHk8xWe7cXU=;
+        b=hOIezWwim+BVq5NZeqPUcEWybgeH3oGCvEyCMyKvqxfGv5Zlc8srekYKXx6NfpSPoX
+         lSwoF5ufAb+jwT4G1Y32OQMvzQ4UELJYARSviLReO/E5wQAwnVR5GWEBYaV82QrOXyYH
+         nuQV/ommGq3VNh3VlMgxIKwZd+G9dO9vVCHKThU0xYQxmjlrs9rNYY8OFiCuWXZeEzOR
+         t/ZaGtLWh8NiTnhNtFW05BKjx9J4FZ5Q1HCH5R9HqvbKId8xayAPiKN0TELN3NqA38be
+         Q8z8WZT6+d6TLoUk+orlwl8D7LNBa3QlyBP2H0Uqe9JAVWV0k/rGa7kbcNrFJehVQa3I
+         ywhQ==
+X-Gm-Message-State: AOJu0YwONPU3D/X4qwtO9jAlID0Oj17Ho4nmXvw4zPr+HkcH1MMvXS9t
+	ErYvBg9qMVSQQUqpR884EqF36rU8VWtha//g6jJAIHYxfGBCIxP60ezcDzkUi6MF2uepbK5p7cn
+	9YlDU7RaDVfCWXOowqz6B
+X-Received: by 2002:ac8:5d46:0:b0:425:aa00:cdd7 with SMTP id g6-20020ac85d46000000b00425aa00cdd7mr16876846qtx.85.1702634156952;
+        Fri, 15 Dec 2023 01:55:56 -0800 (PST)
+X-Received: by 2002:ac8:5d46:0:b0:425:aa00:cdd7 with SMTP id g6-20020ac85d46000000b00425aa00cdd7mr16876839qtx.85.1702634156712;
+        Fri, 15 Dec 2023 01:55:56 -0800 (PST)
+Received: from rh (p200300c93f174f005d25f1299b34cd9e.dip0.t-ipconnect.de. [2003:c9:3f17:4f00:5d25:f129:9b34:cd9e])
+        by smtp.gmail.com with ESMTPSA id cd5-20020a05622a418500b004255fd32eeasm6318380qtb.7.2023.12.15.01.55.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Dec 2023 01:55:56 -0800 (PST)
+Date: Fri, 15 Dec 2023 10:55:51 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eauger@redhat.com>
+cc: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org, 
+    Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+    Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org, 
+    qemu-devel@nongnu.org
+Subject: Re: [PATCH v4] arm/kvm: Enable support for
+ KVM_ARM_VCPU_PMU_V3_FILTER
+In-Reply-To: <be70b17c-21cf-4f4e-8ec1-62c18ffd4100@redhat.com>
+Message-ID: <f1b6dffb-0a23-82d2-7699-67e12691e5c4@redhat.com>
+References: <20231207103648.2925112-1-shahuang@redhat.com> <be70b17c-21cf-4f4e-8ec1-62c18ffd4100@redhat.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20220803023241.63739-1-irischenlj@gmail.com>
- <20220803023241.63739-2-irischenlj@gmail.com>
- <f3b384d6-10c7-42c7-aedb-1c4504e45085@roeck-us.net>
-In-Reply-To: <f3b384d6-10c7-42c7-aedb-1c4504e45085@roeck-us.net>
-From: Iris Chen <irischenlj@gmail.com>
-Date: Thu, 14 Dec 2023 21:43:28 -0500
-Message-ID: <CAJ9dz2jPoAScXSxvodzVJXed5oO=7v-qksftAWLVg0v3DfseWQ@mail.gmail.com>
-Subject: Re: [RFC 1/1] hw: tpmtisspi: add SPI support to QEMU TPM
- implementation
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: irischenlj@fb.com, peter@pjd.dev, pdel@fb.com, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, clg@kaod.org, patrick@stwcx.xyz, alistair@alistair23.me, 
- kwolf@redhat.com, hreitz@redhat.com, peter.maydell@linaro.org, 
- andrew@aj.id.au, joel@jms.id.au, thuth@redhat.com, lvivier@redhat.com, 
- pbonzini@redhat.com, qemu-block@nongnu.org, dz4list@gmail.com
-Content-Type: multipart/alternative; boundary="0000000000007380c2060c835e5f"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=irischenlj@gmail.com; helo=mail-pj1-x1033.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 15 Dec 2023 01:34:44 -0500
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PUyri+nh+wH+
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-TUID: vq3c5ZUrUw+u
 
---0000000000007380c2060c835e5f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Thu, 14 Dec 2023, Eric Auger wrote:
+> On 12/7/23 11:36, Shaoqin Huang wrote:
+>> +    if (kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, &attr)) {
+>> +        warn_report("The kernel doesn't support the PMU Event Filter!\n");
+>> +        return;
+>> +    }
+>> +
+>> +    /* The filter only needs to be initialized for 1 vcpu. */
+> Are you sure? This is a per vcpu device ctrl. Where is it written in the
+> doc that this shall not be called for each vcpu
 
-Hi Guenter,
+The interface is per vcpu but the filters are actually managed per vm
+(kvm->arch.pmu_filter). From (kernel) commit 6ee7fca2a ("KVM: arm64: Add 
+KVM_ARM_VCPU_PMU_V3_SET_PMU attribute"):
+  To ensure that KVM doesn't expose an asymmetric system to the guest, the
+  PMU set for one VCPU will be used by all other VCPUs. Once a VCPU has run,
+  the PMU cannot be changed in order to avoid changing the list of available
+  events for a VCPU, or to change the semantics of existing events.
 
-Not from me at this moment :)
+Sebastian
 
-Thanks,
-Iris
-
-On Wed, Dec 13, 2023 at 9:39=E2=80=AFAM Guenter Roeck <linux@roeck-us.net> =
-wrote:
-
-> Hi,
->
-> On Tue, Aug 02, 2022 at 07:32:41PM -0700, Iris Chen wrote:
-> > From: Iris Chen <irischenlj@fb.com>
-> >
-> > Signed-off-by: Iris Chen <irischenlj@fb.com>
-> > ---
->
-> Are there any plans to submit a new version of this patch ?
->
-> Thanks,
-> Guenter
->
-> >  configs/devices/arm-softmmu/default.mak |   1 +
-> >  hw/arm/Kconfig                          |   5 +
-> >  hw/tpm/Kconfig                          |   5 +
-> >  hw/tpm/meson.build                      |   1 +
-> >  hw/tpm/tpm_tis_spi.c                    | 311 ++++++++++++++++++++++++
-> >  include/sysemu/tpm.h                    |   3 +
-> >  6 files changed, 326 insertions(+)
-> >  create mode 100644 hw/tpm/tpm_tis_spi.c
-> >
-> > diff --git a/configs/devices/arm-softmmu/default.mak
-> b/configs/devices/arm-softmmu/default.mak
-> > index 6985a25377..80d2841568 100644
-> > --- a/configs/devices/arm-softmmu/default.mak
-> > +++ b/configs/devices/arm-softmmu/default.mak
-> > @@ -42,3 +42,4 @@ CONFIG_FSL_IMX6UL=3Dy
-> >  CONFIG_SEMIHOSTING=3Dy
-> >  CONFIG_ARM_COMPATIBLE_SEMIHOSTING=3Dy
-> >  CONFIG_ALLWINNER_H3=3Dy
-> > +CONFIG_FBOBMC_AST=3Dy
-> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> > index 15fa79afd3..193decaec1 100644
-> > --- a/hw/arm/Kconfig
-> > +++ b/hw/arm/Kconfig
-> > @@ -458,6 +458,11 @@ config ASPEED_SOC
-> >      select PMBUS
-> >      select MAX31785
-> >
-> > +config FBOBMC_AST
-> > +    bool
-> > +    select ASPEED_SOC
-> > +    select TPM_TIS_SPI
-> > +
-> >  config MPS2
-> >      bool
-> >      imply I2C_DEVICES
-> > diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
-> > index 29e82f3c92..370a43f045 100644
-> > --- a/hw/tpm/Kconfig
-> > +++ b/hw/tpm/Kconfig
-> > @@ -8,6 +8,11 @@ config TPM_TIS_SYSBUS
-> >      depends on TPM
-> >      select TPM_TIS
-> >
-> > +config TPM_TIS_SPI
-> > +    bool
-> > +    depends on TPM
-> > +    select TPM_TIS
-> > +
-> >  config TPM_TIS
-> >      bool
-> >      depends on TPM
-> > diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
-> > index 1c68d81d6a..1a057f4e36 100644
-> > --- a/hw/tpm/meson.build
-> > +++ b/hw/tpm/meson.build
-> > @@ -2,6 +2,7 @@ softmmu_ss.add(when: 'CONFIG_TPM_TIS', if_true:
-> files('tpm_tis_common.c'))
-> >  softmmu_ss.add(when: 'CONFIG_TPM_TIS_ISA', if_true:
-> files('tpm_tis_isa.c'))
-> >  softmmu_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true:
-> files('tpm_tis_sysbus.c'))
-> >  softmmu_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
-> > +softmmu_ss.add(when: 'CONFIG_TPM_TIS_SPI', if_true:
-> files('tpm_tis_spi.c'))
-> >
-> >  specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_TIS'], if_true:
-> files('tpm_ppi.c'))
-> >  specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TPM_CRB'], if_true:
-> files('tpm_ppi.c'))
-> > diff --git a/hw/tpm/tpm_tis_spi.c b/hw/tpm/tpm_tis_spi.c
-> > new file mode 100644
-> > index 0000000000..c98ddcfddb
-> > --- /dev/null
-> > +++ b/hw/tpm/tpm_tis_spi.c
-> > @@ -0,0 +1,311 @@
-> > +#include "qemu/osdep.h"
-> > +#include "hw/qdev-properties.h"
-> > +#include "migration/vmstate.h"
-> > +#include "hw/acpi/tpm.h"
-> > +#include "tpm_prop.h"
-> > +#include "tpm_tis.h"
-> > +#include "qom/object.h"
-> > +#include "hw/ssi/ssi.h"
-> > +#include "hw/ssi/spi_gpio.h"
-> > +
-> > +#define TPM_TIS_SPI_ADDR_BYTES 3
-> > +#define SPI_WRITE 0
-> > +
-> > +typedef enum {
-> > +    TIS_SPI_PKT_STATE_DEACTIVATED =3D 0,
-> > +    TIS_SPI_PKT_STATE_START,
-> > +    TIS_SPI_PKT_STATE_ADDRESS,
-> > +    TIS_SPI_PKT_STATE_DATA_WR,
-> > +    TIS_SPI_PKT_STATE_DATA_RD,
-> > +    TIS_SPI_PKT_STATE_DONE,
-> > +} TpmTisSpiPktState;
-> > +
-> > +union TpmTisRWSizeByte {
-> > +    uint8_t byte;
-> > +    struct {
-> > +        uint8_t data_expected_size:6;
-> > +        uint8_t resv:1;
-> > +        uint8_t rwflag:1;
-> > +    };
-> > +};
-> > +
-> > +union TpmTisSpiHwAddr {
-> > +    hwaddr addr;
-> > +    uint8_t bytes[sizeof(hwaddr)];
-> > +};
-> > +
-> > +union TpmTisSpiData {
-> > +    uint32_t data;
-> > +    uint8_t bytes[64];
-> > +};
-> > +
-> > +struct TpmTisSpiState {
-> > +    /*< private >*/
-> > +    SSIPeripheral parent_obj;
-> > +
-> > +    /*< public >*/
-> > +    TPMState tpm_state; /* not a QOM object */
-> > +    TpmTisSpiPktState tpm_tis_spi_state;
-> > +
-> > +    union TpmTisRWSizeByte first_byte;
-> > +    union TpmTisSpiHwAddr addr;
-> > +    union TpmTisSpiData data;
-> > +
-> > +    uint32_t data_size;
-> > +    uint8_t data_idx;
-> > +    uint8_t addr_idx;
-> > +};
-> > +
-> > +struct TpmTisSpiClass {
-> > +    SSIPeripheralClass parent_class;
-> > +};
-> > +
-> > +OBJECT_DECLARE_TYPE(TpmTisSpiState, TpmTisSpiClass, TPM_TIS_SPI)
-> > +
-> > +static void tpm_tis_spi_mmio_read(TpmTisSpiState *tts)
-> > +{
-> > +    uint16_t offset =3D tts->addr.addr & 0xffc;
-> > +
-> > +    switch (offset) {
-> > +    case TPM_TIS_REG_DATA_FIFO:
-> > +        for (uint8_t i =3D 0; i < tts->data_size; i++) {
-> > +            tts->data.bytes[i] =3D (uint8_t)tpm_tis_memory_ops.read(
-> > +                                          &tts->tpm_state,
-> > +                                          tts->addr.addr,
-> > +                                          1);
-> > +        }
-> > +        break;
-> > +    default:
-> > +        tts->data.data =3D (uint32_t)tpm_tis_memory_ops.read(
-> > +                                   &tts->tpm_state,
-> > +                                   tts->addr.addr,
-> > +                                   tts->data_size);
-> > +    }
-> > +}
-> > +
-> > +static void tpm_tis_spi_mmio_write(TpmTisSpiState *tts)
-> > +{
-> > +    uint16_t offset =3D tts->addr.addr & 0xffc;
-> > +
-> > +    switch (offset) {
-> > +    case TPM_TIS_REG_DATA_FIFO:
-> > +        for (uint8_t i =3D 0; i < tts->data_size; i++) {
-> > +            tpm_tis_memory_ops.write(&tts->tpm_state,
-> > +                                     tts->addr.addr,
-> > +                                     tts->data.bytes[i],
-> > +                                     1);
-> > +        }
-> > +        break;
-> > +    default:
-> > +        tpm_tis_memory_ops.write(&tts->tpm_state,
-> > +                                 tts->addr.addr,
-> > +                                 tts->data.data,
-> > +                                 tts->data_size);
-> > +        }
-> > +}
-> > +
-> > +static uint32_t tpm_tis_spi_transfer8(SSIPeripheral *ss, uint32_t tx)
-> > +{
-> > +    TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);
-> > +    uint32_t r =3D 1;
-> > +
-> > +    switch (tts->tpm_tis_spi_state) {
-> > +    case TIS_SPI_PKT_STATE_START:
-> > +        tts->first_byte.byte =3D (uint8_t)tx;
-> > +        tts->data_size =3D tts->first_byte.data_expected_size + 1;
-> > +        tts->data_idx =3D 0;
-> > +        tts->addr_idx =3D TPM_TIS_SPI_ADDR_BYTES;
-> > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_ADDRESS;
-> > +        break;
-> > +    case TIS_SPI_PKT_STATE_ADDRESS:
-> > +        assert(tts->addr_idx > 0);
-> > +        tts->addr.bytes[--tts->addr_idx] =3D (uint8_t)tx;
-> > +
-> > +        if (tts->addr_idx =3D=3D 0) {
-> > +            if (tts->first_byte.rwflag =3D=3D SPI_WRITE) {
-> > +                tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DATA_WR;
-> > +            } else { /* read and get the data ready */
-> > +                tpm_tis_spi_mmio_read(tts);
-> > +                tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DATA_RD;
-> > +            }
-> > +        }
-> > +        break;
-> > +    case TIS_SPI_PKT_STATE_DATA_WR:
-> > +        tts->data.bytes[tts->data_idx++] =3D (uint8_t)tx;
-> > +        if (tts->data_idx =3D=3D tts->data_size) {
-> > +            tpm_tis_spi_mmio_write(tts);
-> > +            tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DONE;
-> > +        }
-> > +        break;
-> > +    case TIS_SPI_PKT_STATE_DATA_RD:
-> > +        r =3D tts->data.bytes[tts->data_idx++];
-> > +        if (tts->data_idx =3D=3D tts->data_size) {
-> > +            tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DONE;
-> > +        }
-> > +        break;
-> > +    default:
-> > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DEACTIVATED;
-> > +        r =3D (uint32_t) -1;
-> > +    }
-> > +
-> > +    return r;
-> > +}
-> > +
-> > +/*
-> > + * Pre-reading logic for transfer:
-> > + * This is to fix the transaction between reading and writing.
-> > + * The first byte is arbitrarily inserted so we need to
-> > + * shift the all the output bytes (timeline) one byte right.
-> > + */
-> > +static uint32_t tpm_tis_spi_transfer8_ex(SSIPeripheral *ss, uint32_t t=
-x)
-> > +{
-> > +    TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);
-> > +    SSIBus *ssibus =3D (SSIBus *)qdev_get_parent_bus(DEVICE(tts));
-> > +
-> > +    TpmTisSpiPktState prev_state =3D tts->tpm_tis_spi_state;
-> > +    uint32_t r =3D tpm_tis_spi_transfer8(ss, tx);
-> > +    TpmTisSpiPktState curr_state =3D tts->tpm_tis_spi_state;
-> > +
-> > +    if (ssibus->preread &&
-> > +       /* cmd state has changed into DATA reading state */
-> > +       prev_state !=3D TIS_SPI_PKT_STATE_DATA_RD &&
-> > +       curr_state =3D=3D TIS_SPI_PKT_STATE_DATA_RD) {
-> > +        r =3D tpm_tis_spi_transfer8(ss, 0xFF);
-> > +    }
-> > +
-> > +    return r;
-> > +}
-> > +
-> > +static int tpm_tis_spi_cs(SSIPeripheral *ss, bool select)
-> > +{
-> > +    TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);
-> > +
-> > +    if (select) { /* cs de-assert */
-> > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_DEACTIVATED;
-> > +    } else {
-> > +        tts->tpm_tis_spi_state =3D TIS_SPI_PKT_STATE_START;
-> > +        tts->first_byte.byte =3D 0;
-> > +        tts->addr.addr =3D 0;
-> > +        tts->data.data =3D 0;
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +static int tpm_tis_pre_save_spi(void *opaque)
-> > +{
-> > +    TpmTisSpiState *sbdev =3D opaque;
-> > +
-> > +    return tpm_tis_pre_save(&sbdev->tpm_state);
-> > +}
-> > +
-> > +static const VMStateDescription vmstate_tpm_tis_spi =3D {
-> > +    .name =3D "tpm-tis-spi",
-> > +    .version_id =3D 0,
-> > +    .pre_save  =3D tpm_tis_pre_save_spi,
-> > +    .fields =3D (VMStateField[]) {
-> > +        VMSTATE_BUFFER(tpm_state.buffer, TpmTisSpiState),
-> > +        VMSTATE_UINT16(tpm_state.rw_offset, TpmTisSpiState),
-> > +        VMSTATE_UINT8(tpm_state.active_locty, TpmTisSpiState),
-> > +        VMSTATE_UINT8(tpm_state.aborting_locty, TpmTisSpiState),
-> > +        VMSTATE_UINT8(tpm_state.next_locty, TpmTisSpiState),
-> > +
-> > +        VMSTATE_STRUCT_ARRAY(tpm_state.loc, TpmTisSpiState,
-> TPM_TIS_NUM_LOCALITIES,
-> > +                             0, vmstate_locty, TPMLocality),
-> > +
-> > +        VMSTATE_END_OF_LIST()
-> > +    }
-> > +};
-> > +
-> > +static void tpm_tis_spi_request_completed(TPMIf *ti, int ret)
-> > +{
-> > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ti);
-> > +    TPMState *s =3D &sbdev->tpm_state;
-> > +
-> > +    tpm_tis_request_completed(s, ret);
-> > +}
-> > +
-> > +static enum TPMVersion tpm_tis_spi_get_tpm_version(TPMIf *ti)
-> > +{
-> > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ti);
-> > +    TPMState *s =3D &sbdev->tpm_state;
-> > +
-> > +    return tpm_tis_get_tpm_version(s);
-> > +}
-> > +
-> > +static void tpm_tis_spi_reset(DeviceState *dev)
-> > +{
-> > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(dev);
-> > +    TPMState *s =3D &sbdev->tpm_state;
-> > +
-> > +    return tpm_tis_reset(s);
-> > +}
-> > +
-> > +static Property tpm_tis_spi_properties[] =3D {
-> > +    DEFINE_PROP_UINT32("irq", TpmTisSpiState, tpm_state.irq_num,
-> TPM_TIS_IRQ),
-> > +    DEFINE_PROP_TPMBE("tpmdev", TpmTisSpiState, tpm_state.be_driver),
-> > +    DEFINE_PROP_BOOL("ppi", TpmTisSpiState, tpm_state.ppi_enabled,
-> false),
-> > +    DEFINE_PROP_END_OF_LIST(),
-> > +};
-> > +
-> > +static void tpm_tis_spi_realizefn(SSIPeripheral *ss, Error **errp)
-> > +{
-> > +    TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ss);
-> > +
-> > +    if (!tpm_find()) {
-> > +        error_setg(errp, "at most one TPM device is permitted");
-> > +        return;
-> > +    }
-> > +
-> > +    if (!sbdev->tpm_state.be_driver) {
-> > +        error_setg(errp, "'tpmdev' property is required");
-> > +        return;
-> > +    }
-> > +
-> > +    DeviceState *spi_gpio =3D qdev_find_recursive(sysbus_get_default()=
-,
-> > +                                                TYPE_SPI_GPIO);
-> > +    qdev_connect_gpio_out_named(spi_gpio,
-> > +                                "SPI_CS_out", 0,
-> > +                                qdev_get_gpio_in_named(DEVICE(ss),
-> > +                                SSI_GPIO_CS, 0));
-> > +}
-> > +
-> > +static void tpm_tis_spi_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +    SSIPeripheralClass *k =3D SSI_PERIPHERAL_CLASS(klass);
-> > +    TPMIfClass *tc =3D TPM_IF_CLASS(klass);
-> > +
-> > +    device_class_set_props(dc, tpm_tis_spi_properties);
-> > +    k->realize =3D tpm_tis_spi_realizefn;
-> > +    k->transfer =3D tpm_tis_spi_transfer8_ex;
-> > +    k->set_cs =3D tpm_tis_spi_cs;
-> > +    k->cs_polarity =3D SSI_CS_LOW;
-> > +
-> > +    dc->vmsd  =3D &vmstate_tpm_tis_spi;
-> > +    tc->model =3D TPM_MODEL_TPM_TIS;
-> > +    dc->user_creatable =3D true;
-> > +    dc->reset =3D tpm_tis_spi_reset;
-> > +    tc->request_completed =3D tpm_tis_spi_request_completed;
-> > +    tc->get_version =3D tpm_tis_spi_get_tpm_version;
-> > +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> > +}
-> > +
-> > +static const TypeInfo tpm_tis_spi_info =3D {
-> > +    .name =3D TYPE_TPM_TIS_SPI,
-> > +    .parent =3D TYPE_SSI_PERIPHERAL,
-> > +    .instance_size =3D sizeof(TpmTisSpiState),
-> > +    .class_size =3D sizeof(TpmTisSpiClass),
-> > +    .class_init  =3D tpm_tis_spi_class_init,
-> > +    .interfaces =3D (InterfaceInfo[]) {
-> > +        { TYPE_TPM_IF },
-> > +        { }
-> > +    }
-> > +};
-> > +
-> > +static void tpm_tis_spi_register(void)
-> > +{
-> > +    type_register_static(&tpm_tis_spi_info);
-> > +}
-> > +
-> > +type_init(tpm_tis_spi_register)
-> > diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
-> > index fb40e30ff6..6a6b311e47 100644
-> > --- a/include/sysemu/tpm.h
-> > +++ b/include/sysemu/tpm.h
-> > @@ -46,6 +46,7 @@ struct TPMIfClass {
-> >
-> >  #define TYPE_TPM_TIS_ISA            "tpm-tis"
-> >  #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
-> > +#define TYPE_TPM_TIS_SPI            "tpm-tis-spi-device"
-> >  #define TYPE_TPM_CRB                "tpm-crb"
-> >  #define TYPE_TPM_SPAPR              "tpm-spapr"
-> >
-> > @@ -53,6 +54,8 @@ struct TPMIfClass {
-> >      object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
-> >  #define TPM_IS_TIS_SYSBUS(chr)                      \
-> >      object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
-> > +#define TPM_IS_TIS_SPI(chr)                      \
-> > +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SPI)
-> >  #define TPM_IS_CRB(chr)                             \
-> >      object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
-> >  #define TPM_IS_SPAPR(chr)                           \
-> > --
-> > 2.30.2
-> >
-> >
->
-
---0000000000007380c2060c835e5f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Guenter,=C2=A0<div><br></div><div>Not from me at this m=
-oment :)=C2=A0</div><div><br></div><div>Thanks,=C2=A0</div><div>Iris=C2=A0<=
-/div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_a=
-ttr">On Wed, Dec 13, 2023 at 9:39=E2=80=AFAM Guenter Roeck &lt;<a href=3D"m=
-ailto:linux@roeck-us.net">linux@roeck-us.net</a>&gt; wrote:<br></div><block=
-quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-w=
-idth:1px;border-left-style:solid;border-left-color:rgb(204,204,204);padding=
--left:1ex">Hi,<br>
-<br>
-On Tue, Aug 02, 2022 at 07:32:41PM -0700, Iris Chen wrote:<br>
-&gt; From: Iris Chen &lt;<a href=3D"mailto:irischenlj@fb.com" target=3D"_bl=
-ank">irischenlj@fb.com</a>&gt;<br>
-&gt; <br>
-&gt; Signed-off-by: Iris Chen &lt;<a href=3D"mailto:irischenlj@fb.com" targ=
-et=3D"_blank">irischenlj@fb.com</a>&gt;<br>
-&gt; ---<br>
-<br>
-Are there any plans to submit a new version of this patch ?<br>
-<br>
-Thanks,<br>
-Guenter<br>
-<br>
-&gt;=C2=A0 configs/devices/arm-softmmu/default.mak |=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A05 +<br>
-&gt;=C2=A0 hw/tpm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A05 +<br>
-&gt;=C2=A0 hw/tpm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 hw/tpm/tpm_tis_spi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 311 ++++++++++++++++++++++++<br>
-&gt;=C2=A0 include/sysemu/tpm.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A03 +<br>
-&gt;=C2=A0 6 files changed, 326 insertions(+)<br>
-&gt;=C2=A0 create mode 100644 hw/tpm/tpm_tis_spi.c<br>
-&gt; <br>
-&gt; diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices=
-/arm-softmmu/default.mak<br>
-&gt; index 6985a25377..80d2841568 100644<br>
-&gt; --- a/configs/devices/arm-softmmu/default.mak<br>
-&gt; +++ b/configs/devices/arm-softmmu/default.mak<br>
-&gt; @@ -42,3 +42,4 @@ CONFIG_FSL_IMX6UL=3Dy<br>
-&gt;=C2=A0 CONFIG_SEMIHOSTING=3Dy<br>
-&gt;=C2=A0 CONFIG_ARM_COMPATIBLE_SEMIHOSTING=3Dy<br>
-&gt;=C2=A0 CONFIG_ALLWINNER_H3=3Dy<br>
-&gt; +CONFIG_FBOBMC_AST=3Dy<br>
-&gt; diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig<br>
-&gt; index 15fa79afd3..193decaec1 100644<br>
-&gt; --- a/hw/arm/Kconfig<br>
-&gt; +++ b/hw/arm/Kconfig<br>
-&gt; @@ -458,6 +458,11 @@ config ASPEED_SOC<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 select PMBUS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 select MAX31785<br>
-&gt;=C2=A0 <br>
-&gt; +config FBOBMC_AST<br>
-&gt; +=C2=A0 =C2=A0 bool<br>
-&gt; +=C2=A0 =C2=A0 select ASPEED_SOC<br>
-&gt; +=C2=A0 =C2=A0 select TPM_TIS_SPI<br>
-&gt; +<br>
-&gt;=C2=A0 config MPS2<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 bool<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 imply I2C_DEVICES<br>
-&gt; diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig<br>
-&gt; index 29e82f3c92..370a43f045 100644<br>
-&gt; --- a/hw/tpm/Kconfig<br>
-&gt; +++ b/hw/tpm/Kconfig<br>
-&gt; @@ -8,6 +8,11 @@ config TPM_TIS_SYSBUS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 depends on TPM<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 select TPM_TIS<br>
-&gt;=C2=A0 <br>
-&gt; +config TPM_TIS_SPI<br>
-&gt; +=C2=A0 =C2=A0 bool<br>
-&gt; +=C2=A0 =C2=A0 depends on TPM<br>
-&gt; +=C2=A0 =C2=A0 select TPM_TIS<br>
-&gt; +<br>
-&gt;=C2=A0 config TPM_TIS<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 bool<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 depends on TPM<br>
-&gt; diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build<br>
-&gt; index 1c68d81d6a..1a057f4e36 100644<br>
-&gt; --- a/hw/tpm/meson.build<br>
-&gt; +++ b/hw/tpm/meson.build<br>
-&gt; @@ -2,6 +2,7 @@ softmmu_ss.add(when: &#39;CONFIG_TPM_TIS&#39;, if_true=
-: files(&#39;tpm_tis_common.c&#39;))<br>
-&gt;=C2=A0 softmmu_ss.add(when: &#39;CONFIG_TPM_TIS_ISA&#39;, if_true: file=
-s(&#39;tpm_tis_isa.c&#39;))<br>
-&gt;=C2=A0 softmmu_ss.add(when: &#39;CONFIG_TPM_TIS_SYSBUS&#39;, if_true: f=
-iles(&#39;tpm_tis_sysbus.c&#39;))<br>
-&gt;=C2=A0 softmmu_ss.add(when: &#39;CONFIG_TPM_CRB&#39;, if_true: files(&#=
-39;tpm_crb.c&#39;))<br>
-&gt; +softmmu_ss.add(when: &#39;CONFIG_TPM_TIS_SPI&#39;, if_true: files(&#3=
-9;tpm_tis_spi.c&#39;))<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 specific_ss.add(when: [&#39;CONFIG_SOFTMMU&#39;, &#39;CONFIG_TPM=
-_TIS&#39;], if_true: files(&#39;tpm_ppi.c&#39;))<br>
-&gt;=C2=A0 specific_ss.add(when: [&#39;CONFIG_SOFTMMU&#39;, &#39;CONFIG_TPM=
-_CRB&#39;], if_true: files(&#39;tpm_ppi.c&#39;))<br>
-&gt; diff --git a/hw/tpm/tpm_tis_spi.c b/hw/tpm/tpm_tis_spi.c<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..c98ddcfddb<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/hw/tpm/tpm_tis_spi.c<br>
-&gt; @@ -0,0 +1,311 @@<br>
-&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt; +#include &quot;hw/qdev-properties.h&quot;<br>
-&gt; +#include &quot;migration/vmstate.h&quot;<br>
-&gt; +#include &quot;hw/acpi/tpm.h&quot;<br>
-&gt; +#include &quot;tpm_prop.h&quot;<br>
-&gt; +#include &quot;tpm_tis.h&quot;<br>
-&gt; +#include &quot;qom/object.h&quot;<br>
-&gt; +#include &quot;hw/ssi/ssi.h&quot;<br>
-&gt; +#include &quot;hw/ssi/spi_gpio.h&quot;<br>
-&gt; +<br>
-&gt; +#define TPM_TIS_SPI_ADDR_BYTES 3<br>
-&gt; +#define SPI_WRITE 0<br>
-&gt; +<br>
-&gt; +typedef enum {<br>
-&gt; +=C2=A0 =C2=A0 TIS_SPI_PKT_STATE_DEACTIVATED =3D 0,<br>
-&gt; +=C2=A0 =C2=A0 TIS_SPI_PKT_STATE_START,<br>
-&gt; +=C2=A0 =C2=A0 TIS_SPI_PKT_STATE_ADDRESS,<br>
-&gt; +=C2=A0 =C2=A0 TIS_SPI_PKT_STATE_DATA_WR,<br>
-&gt; +=C2=A0 =C2=A0 TIS_SPI_PKT_STATE_DATA_RD,<br>
-&gt; +=C2=A0 =C2=A0 TIS_SPI_PKT_STATE_DONE,<br>
-&gt; +} TpmTisSpiPktState;<br>
-&gt; +<br>
-&gt; +union TpmTisRWSizeByte {<br>
-&gt; +=C2=A0 =C2=A0 uint8_t byte;<br>
-&gt; +=C2=A0 =C2=A0 struct {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint8_t data_expected_size:6;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint8_t resv:1;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint8_t rwflag:1;<br>
-&gt; +=C2=A0 =C2=A0 };<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +union TpmTisSpiHwAddr {<br>
-&gt; +=C2=A0 =C2=A0 hwaddr addr;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t bytes[sizeof(hwaddr)];<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +union TpmTisSpiData {<br>
-&gt; +=C2=A0 =C2=A0 uint32_t data;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t bytes[64];<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +struct TpmTisSpiState {<br>
-&gt; +=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
-&gt; +=C2=A0 =C2=A0 SSIPeripheral parent_obj;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
-&gt; +=C2=A0 =C2=A0 TPMState tpm_state; /* not a QOM object */<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiPktState tpm_tis_spi_state;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 union TpmTisRWSizeByte first_byte;<br>
-&gt; +=C2=A0 =C2=A0 union TpmTisSpiHwAddr addr;<br>
-&gt; +=C2=A0 =C2=A0 union TpmTisSpiData data;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 uint32_t data_size;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t data_idx;<br>
-&gt; +=C2=A0 =C2=A0 uint8_t addr_idx;<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +struct TpmTisSpiClass {<br>
-&gt; +=C2=A0 =C2=A0 SSIPeripheralClass parent_class;<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +OBJECT_DECLARE_TYPE(TpmTisSpiState, TpmTisSpiClass, TPM_TIS_SPI)<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_mmio_read(TpmTisSpiState *tts)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 uint16_t offset =3D tts-&gt;addr.addr &amp; 0xffc;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 case TPM_TIS_REG_DATA_FIFO:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (uint8_t i =3D 0; i &lt; tts-&gt;data=
-_size; i++) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;data.bytes[i] =3D (=
-uint8_t)tpm_tis_memory_ops.read(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 &amp;tts-&gt;tpm_state,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 tts-&gt;addr.addr,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 1);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;data.data =3D (uint32_t)tpm_tis_m=
-emory_ops.read(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;tts-&gt;tpm_st=
-ate,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;addr.addr,<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;data_size);=
-<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_mmio_write(TpmTisSpiState *tts)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 uint16_t offset =3D tts-&gt;addr.addr &amp; 0xffc;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
-&gt; +=C2=A0 =C2=A0 case TPM_TIS_REG_DATA_FIFO:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (uint8_t i =3D 0; i &lt; tts-&gt;data=
-_size; i++) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tpm_tis_memory_ops.write(&a=
-mp;tts-&gt;tpm_state,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;addr=
-.addr,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;data=
-.bytes[i],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A01);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tpm_tis_memory_ops.write(&amp;tts-&gt;tpm=
-_state,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;addr.addr,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;data.data,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tts-&gt;data_size);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static uint32_t tpm_tis_spi_transfer8(SSIPeripheral *ss, uint32_t tx)=
-<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);<br>
-&gt; +=C2=A0 =C2=A0 uint32_t r =3D 1;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 switch (tts-&gt;tpm_tis_spi_state) {<br>
-&gt; +=C2=A0 =C2=A0 case TIS_SPI_PKT_STATE_START:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;first_byte.byte =3D (uint8_t)tx;<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;data_size =3D tts-&gt;first_byte.=
-data_expected_size + 1;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;data_idx =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;addr_idx =3D TPM_TIS_SPI_ADDR_BYT=
-ES;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_tis_spi_state =3D TIS_SPI_PKT=
-_STATE_ADDRESS;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case TIS_SPI_PKT_STATE_ADDRESS:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 assert(tts-&gt;addr_idx &gt; 0);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;addr.bytes[--tts-&gt;addr_idx] =
-=3D (uint8_t)tx;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tts-&gt;addr_idx =3D=3D 0) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tts-&gt;first_byte.rwfl=
-ag =3D=3D SPI_WRITE) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_t=
-is_spi_state =3D TIS_SPI_PKT_STATE_DATA_WR;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else { /* read and get th=
-e data ready */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tpm_tis_spi_m=
-mio_read(tts);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_t=
-is_spi_state =3D TIS_SPI_PKT_STATE_DATA_RD;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case TIS_SPI_PKT_STATE_DATA_WR:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;data.bytes[tts-&gt;data_idx++] =
-=3D (uint8_t)tx;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tts-&gt;data_idx =3D=3D tts-&gt;data_=
-size) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tpm_tis_spi_mmio_write(tts)=
-;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_tis_spi_state =
-=3D TIS_SPI_PKT_STATE_DONE;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 case TIS_SPI_PKT_STATE_DATA_RD:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 r =3D tts-&gt;data.bytes[tts-&gt;data_idx=
-++];<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tts-&gt;data_idx =3D=3D tts-&gt;data_=
-size) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_tis_spi_state =
-=3D TIS_SPI_PKT_STATE_DONE;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt; +=C2=A0 =C2=A0 default:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_tis_spi_state =3D TIS_SPI_PKT=
-_STATE_DEACTIVATED;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 r =3D (uint32_t) -1;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return r;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +/*<br>
-&gt; + * Pre-reading logic for transfer:<br>
-&gt; + * This is to fix the transaction between reading and writing.<br>
-&gt; + * The first byte is arbitrarily inserted so we need to<br>
-&gt; + * shift the all the output bytes (timeline) one byte right.<br>
-&gt; + */<br>
-&gt; +static uint32_t tpm_tis_spi_transfer8_ex(SSIPeripheral *ss, uint32_t =
-tx)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);<br>
-&gt; +=C2=A0 =C2=A0 SSIBus *ssibus =3D (SSIBus *)qdev_get_parent_bus(DEVICE=
-(tts));<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiPktState prev_state =3D tts-&gt;tpm_tis_spi_st=
-ate;<br>
-&gt; +=C2=A0 =C2=A0 uint32_t r =3D tpm_tis_spi_transfer8(ss, tx);<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiPktState curr_state =3D tts-&gt;tpm_tis_spi_st=
-ate;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (ssibus-&gt;preread &amp;&amp;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0/* cmd state has changed into DATA reading=
- state */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0prev_state !=3D TIS_SPI_PKT_STATE_DATA_RD =
-&amp;&amp;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0curr_state =3D=3D TIS_SPI_PKT_STATE_DATA_R=
-D) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 r =3D tpm_tis_spi_transfer8(ss, 0xFF);<br=
->
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return r;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static int tpm_tis_spi_cs(SSIPeripheral *ss, bool select)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *tts =3D TPM_TIS_SPI(ss);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (select) { /* cs de-assert */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_tis_spi_state =3D TIS_SPI_PKT=
-_STATE_DEACTIVATED;<br>
-&gt; +=C2=A0 =C2=A0 } else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;tpm_tis_spi_state =3D TIS_SPI_PKT=
-_STATE_START;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;first_byte.byte =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;addr.addr =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 tts-&gt;data.data =3D 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return 0;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static int tpm_tis_pre_save_spi(void *opaque)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *sbdev =3D opaque;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return tpm_tis_pre_save(&amp;sbdev-&gt;tpm_state);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const VMStateDescription vmstate_tpm_tis_spi =3D {<br>
-&gt; +=C2=A0 =C2=A0 .name =3D &quot;tpm-tis-spi&quot;,<br>
-&gt; +=C2=A0 =C2=A0 .version_id =3D 0,<br>
-&gt; +=C2=A0 =C2=A0 .pre_save=C2=A0 =3D tpm_tis_pre_save_spi,<br>
-&gt; +=C2=A0 =C2=A0 .fields =3D (VMStateField[]) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_BUFFER(tpm_state.buffer, TpmTisSp=
-iState),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT16(tpm_state.rw_offset, TpmTi=
-sSpiState),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(tpm_state.active_locty, Tpm=
-TisSpiState),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(tpm_state.aborting_locty, T=
-pmTisSpiState),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(tpm_state.next_locty, TpmTi=
-sSpiState),<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_STRUCT_ARRAY(tpm_state.loc, TpmTi=
-sSpiState, TPM_TIS_NUM_LOCALITIES,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00, vmstate_locty, TPMLocality),<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST()<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_request_completed(TPMIf *ti, int ret)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ti);<br>
-&gt; +=C2=A0 =C2=A0 TPMState *s =3D &amp;sbdev-&gt;tpm_state;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 tpm_tis_request_completed(s, ret);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static enum TPMVersion tpm_tis_spi_get_tpm_version(TPMIf *ti)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ti);<br>
-&gt; +=C2=A0 =C2=A0 TPMState *s =3D &amp;sbdev-&gt;tpm_state;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return tpm_tis_get_tpm_version(s);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_reset(DeviceState *dev)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *sbdev =3D TPM_TIS_SPI(dev);<br>
-&gt; +=C2=A0 =C2=A0 TPMState *s =3D &amp;sbdev-&gt;tpm_state;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 return tpm_tis_reset(s);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static Property tpm_tis_spi_properties[] =3D {<br>
-&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;irq&quot;, TpmTisSpiState, tpm=
-_state.irq_num, TPM_TIS_IRQ),<br>
-&gt; +=C2=A0 =C2=A0 DEFINE_PROP_TPMBE(&quot;tpmdev&quot;, TpmTisSpiState, t=
-pm_state.be_driver),<br>
-&gt; +=C2=A0 =C2=A0 DEFINE_PROP_BOOL(&quot;ppi&quot;, TpmTisSpiState, tpm_s=
-tate.ppi_enabled, false),<br>
-&gt; +=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST(),<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_realizefn(SSIPeripheral *ss, Error **errp)<br=
->
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 TpmTisSpiState *sbdev =3D TPM_TIS_SPI(ss);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (!tpm_find()) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;at most one TPM de=
-vice is permitted&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (!sbdev-&gt;tpm_state.be_driver) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;&#39;tpmdev&#39; p=
-roperty is required&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 DeviceState *spi_gpio =3D qdev_find_recursive(sysbus_ge=
-t_default(),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 TYPE_SPI_GPIO);<br>
-&gt; +=C2=A0 =C2=A0 qdev_connect_gpio_out_named(spi_gpio,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;SPI_CS_out&quot;, 0,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_get_gpio_in_named(DEVICE(ss=
-),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 SSI_GPIO_CS, 0));<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_class_init(ObjectClass *klass, void *data)<br=
->
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt; +=C2=A0 =C2=A0 SSIPeripheralClass *k =3D SSI_PERIPHERAL_CLASS(klass);<=
-br>
-&gt; +=C2=A0 =C2=A0 TPMIfClass *tc =3D TPM_IF_CLASS(klass);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 device_class_set_props(dc, tpm_tis_spi_properties);<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;realize =3D tpm_tis_spi_realizefn;<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;transfer =3D tpm_tis_spi_transfer8_ex;<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;set_cs =3D tpm_tis_spi_cs;<br>
-&gt; +=C2=A0 =C2=A0 k-&gt;cs_polarity =3D SSI_CS_LOW;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;vmsd=C2=A0 =3D &amp;vmstate_tpm_tis_spi;<br>
-&gt; +=C2=A0 =C2=A0 tc-&gt;model =3D TPM_MODEL_TPM_TIS;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;user_creatable =3D true;<br>
-&gt; +=C2=A0 =C2=A0 dc-&gt;reset =3D tpm_tis_spi_reset;<br>
-&gt; +=C2=A0 =C2=A0 tc-&gt;request_completed =3D tpm_tis_spi_request_comple=
-ted;<br>
-&gt; +=C2=A0 =C2=A0 tc-&gt;get_version =3D tpm_tis_spi_get_tpm_version;<br>
-&gt; +=C2=A0 =C2=A0 set_bit(DEVICE_CATEGORY_MISC, dc-&gt;categories);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const TypeInfo tpm_tis_spi_info =3D {<br>
-&gt; +=C2=A0 =C2=A0 .name =3D TYPE_TPM_TIS_SPI,<br>
-&gt; +=C2=A0 =C2=A0 .parent =3D TYPE_SSI_PERIPHERAL,<br>
-&gt; +=C2=A0 =C2=A0 .instance_size =3D sizeof(TpmTisSpiState),<br>
-&gt; +=C2=A0 =C2=A0 .class_size =3D sizeof(TpmTisSpiClass),<br>
-&gt; +=C2=A0 =C2=A0 .class_init=C2=A0 =3D tpm_tis_spi_class_init,<br>
-&gt; +=C2=A0 =C2=A0 .interfaces =3D (InterfaceInfo[]) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 { TYPE_TPM_IF },<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 { }<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +};<br>
-&gt; +<br>
-&gt; +static void tpm_tis_spi_register(void)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 type_register_static(&amp;tpm_tis_spi_info);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +type_init(tpm_tis_spi_register)<br>
-&gt; diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h<br>
-&gt; index fb40e30ff6..6a6b311e47 100644<br>
-&gt; --- a/include/sysemu/tpm.h<br>
-&gt; +++ b/include/sysemu/tpm.h<br>
-&gt; @@ -46,6 +46,7 @@ struct TPMIfClass {<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 #define TYPE_TPM_TIS_ISA=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 &quot;tpm-tis&quot;<br>
-&gt;=C2=A0 #define TYPE_TPM_TIS_SYSBUS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&qu=
-ot;tpm-tis-device&quot;<br>
-&gt; +#define TYPE_TPM_TIS_SPI=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &qu=
-ot;tpm-tis-spi-device&quot;<br>
-&gt;=C2=A0 #define TYPE_TPM_CRB=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 &quot;tpm-crb&quot;<br>
-&gt;=C2=A0 #define TYPE_TPM_SPAPR=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 &quot;tpm-spapr&quot;<br>
-&gt;=C2=A0 <br>
-&gt; @@ -53,6 +54,8 @@ struct TPMIfClass {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)=
-<br>
-&gt;=C2=A0 #define TPM_IS_TIS_SYSBUS(chr)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSB=
-US)<br>
-&gt; +#define TPM_IS_TIS_SPI(chr)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
-&gt; +=C2=A0 =C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SPI)<br>
-&gt;=C2=A0 #define TPM_IS_CRB(chr)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)<br>
-&gt;=C2=A0 #define TPM_IS_SPAPR(chr)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
-&gt; -- <br>
-&gt; 2.30.2<br>
-&gt; <br>
-&gt; <br>
-</blockquote></div>
-
---0000000000007380c2060c835e5f--

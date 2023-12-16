@@ -1,38 +1,37 @@
-Received: by 2002:a17:906:4e11:b0:a23:2eff:81d7 with SMTP id z17csp289734eju;
-        Sat, 16 Dec 2023 10:28:48 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGSvlwf0lkBL6B7QaJaZd2oYP++/GTztvgPyzsfcQjg5dHLA8mgI/ZpFSooPqVXancnpS6y
-X-Received: by 2002:ad4:5ecc:0:b0:67f:117c:9710 with SMTP id jm12-20020ad45ecc000000b0067f117c9710mr5903052qvb.9.1702751328178;
-        Sat, 16 Dec 2023 10:28:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702751328; cv=none;
+Received: by 2002:a17:906:4e11:b0:a23:2eff:81d7 with SMTP id z17csp289766eju;
+        Sat, 16 Dec 2023 10:28:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGIkTjdYptfy2NUemtAuDn7z2ojS/UjLuyq5g/kw3KO1HXYz+QG6C6+SqhzjvSkB6ZYdUUW
+X-Received: by 2002:a05:620a:468d:b0:77f:afbc:99d8 with SMTP id bq13-20020a05620a468d00b0077fafbc99d8mr4085467qkb.103.1702751333886;
+        Sat, 16 Dec 2023 10:28:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702751333; cv=none;
         d=google.com; s=arc-20160816;
-        b=FeQe2iGC8XAX9CFUrE0CTglqofd2aDQ1Sp9qDMPim6ETwL1P54weeHW8/W2oN87DKj
-         VBInnXYZhkbzKvYf7mGKYMLWtSKZd8Dz52ma1BhHXDOca3eLZJwYqhwQOpnPbBSF8z1V
-         j7oj3UwoDHPvBHbOU4bLjvRC+NJoQLgui6j1kHzcAvSeu6AkSbuL5JEFze+qQxYVi/P9
-         urGWHQxEpnEBo2MwzmUV6e19FXsFvFcT1/HoMV8/Mj5GBn7cq6By6LdyknXCIUTvl/+E
-         9q7Iov9tBWsfhAWtvjoQgiMSUjTvdPBX3hK02oECA7QBnKGVdgFS89jZD/zLTBWeMfSF
-         vZfw==
+        b=Xew7kf7wAp3CwydR1IezFNzgnlNLSsTRa+TYfdL1kV09D/qN6hgXIjkDUJXQ2oZ8+P
+         rVzt09CmWqxTayeMlDqaBdAEz9Zm62q7uKGmlQ2Roen8wWs+BmLxoHCct4e9oX2cj8k6
+         +JExWdMd4n2PEVdR5bjH4be1noB8PPWCnEVLiAkc0CuEtvn9VARnhnIw1vV8i8PQs4mW
+         SFcSI76N7t5W89a5AVIojje1nfnr6RMEReiHiuOs33BBJ1yOyXq1Pb7Z8TaESkl37hAl
+         BbZ6ckQjTSlFw4Qq7JAHaIhneigxZOQ4Lg98H2HKEG/HCbgYdvoHECvkUJNv46FMu7Qy
+         SC5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=jlWDMa9F/DMliRIFm/berg8WP23P6um4rpGtjYHxVMY=;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=8c8fO2J4P0ZAt6rtGDf2cDa84AEUmZR49PnfpkUC9FM=;
         fh=oGKIVXcH1r9KL/hdyO5aIi4Tl7S6YUHGM7njmdJqg74=;
-        b=yRoQtx/TUyosMo9KA+clMB7H48XRWvDxN1DucgrD1MJp/wbuQTZhQqhE4q1Su1o4kF
-         8JFG6uE1SdX+YVtL5p0Y50d5Pq4ysLfqfjKufAt8Y/3W4l184gEDS88j2AaNT7D9mfW4
-         mdHFvyxwvw2BNEiFwvJ1U9O77nJg69vQLHqFY7Ob0NDwMh9VGmUxJqGMYA8kxKVVJQg0
-         nCxvzAtPK2CnUUjXJmY7eGYPb5e734tXG0bG5E3iUPHShGHJQr4PYYX5ZibYJ2H+CwIU
-         hXmy8MRH429Qf4rJT6bxqGlji3LvrUnLbBVZt0Z9OrqTKw4M/g627ppQ1F6YnIpQFER4
-         gdCg==
+        b=qOO+10UCpDOF4ZogDNuIciNNyItpcgQpMzR0k8Z/NFWp3ZKL62yIFXD+iJlFYPq/DV
+         Dkc9730MZRpDQTPwn03pF+cmPRa9+rRtKpo9oiR54D/uQaMOoiEbHbX6365/W3Hh3iBa
+         UTcccQM64EkDgkObm0rJsU0gAsQCt47A9PwKrntDXVsZbYENXRvSyuLwnEptaln4VMNu
+         ddbKvaODPxmYPoH4uD15tUYwPN85dsMjg9ioSFy1wj5ICidYShRwoNpVCzgda9R1EtU+
+         JR/Lhm8Vd+slYEg8l1+hfphhYZqzCN07fQt9wByDcvwMq6mSDWhVi8rz8PXvZOIPeCi7
+         dtDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2-20020a0cb702000000b0067f2e6f65e3si954183qvd.204.2023.12.16.10.28.48
+        by mx.google.com with ESMTPS id oo22-20020a05620a531600b0077fb9d708b4si2723571qkn.662.2023.12.16.10.28.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Dec 2023 10:28:48 -0800 (PST)
+        Sat, 16 Dec 2023 10:28:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -40,18 +39,18 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rEZOG-0000R3-1N; Sat, 16 Dec 2023 13:27:56 -0500
+	id 1rEZOH-0000TK-Jv; Sat, 16 Dec 2023 13:27:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rEZOE-0000QF-Eb; Sat, 16 Dec 2023 13:27:54 -0500
+ id 1rEZOF-0000Qh-TE; Sat, 16 Dec 2023 13:27:55 -0500
 Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rEZOC-0006Wo-NW; Sat, 16 Dec 2023 13:27:54 -0500
+ id 1rEZOC-0006Wn-OM; Sat, 16 Dec 2023 13:27:55 -0500
 Received: from buffy.. (buffy [192.168.147.6])
- by zoidberg.rfc1149.net (Postfix) with ESMTP id 0CD1D80027;
- Sat, 16 Dec 2023 19:27:47 +0100 (CET)
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id CBEC980025;
+ Sat, 16 Dec 2023 19:27:46 +0100 (CET)
 Authentication-Results: zoidberg.rfc1149.net;
  dmarc=fail (p=none dis=none) header.from=rfc1149.net
 Authentication-Results: zoidberg.rfc1149.net;
@@ -62,12 +61,11 @@ Cc: Anton Kochkov <anton.kochkov@proton.me>, qemu-arm@nongnu.org,
  Alexandre Iooss <erdnaxe@crans.org>,
  Alistair Francis <alistair@alistair23.me>,
  Peter Maydell <peter.maydell@linaro.org>, Samuel Tardieu <sam@rfc1149.net>
-Subject: [PATCH 2/3] hw/arm/armv7m: alias the NVIC "num-prio-bits" property
-Date: Sat, 16 Dec 2023 19:27:39 +0100
-Message-ID: <20231216182740.3305724-3-sam@rfc1149.net>
+Subject: [PATCH 0/3] Add "num-prio-bits" property for Cortex-M devices
+Date: Sat, 16 Dec 2023 19:27:37 +0100
+Message-ID: <20231216182740.3305724-1-sam@rfc1149.net>
 X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231216182740.3305724-1-sam@rfc1149.net>
-References: <20231216182740.3305724-1-sam@rfc1149.net>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
@@ -91,26 +89,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RcjL8OrIM2kc
+X-TUID: Cxqxxf1Sp/eG
 
-Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
----
- hw/arm/armv7m.c | 2 ++
- 1 file changed, 2 insertions(+)
+This patch series builds on a discussion initiated by Anton Kochkov on this
+list in 2022. It allows setting the appropriate number of priority bits for
+Cortex-M devices. For example, FreeRTOS checks at startup that the right
+number of priority bits is available in order to guarantee its runtime
+structures safety. They added a configuration option specially for QEMU
+to disable this check because QEMU always use 2 bits for Cortex-M0/M0+/M1
+and 8 bits for other devices.
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index d10abb36a8..4fda2d1d47 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -256,6 +256,8 @@ static void armv7m_instance_init(Object *obj)
-     object_initialize_child(obj, "nvic", &s->nvic, TYPE_NVIC);
-     object_property_add_alias(obj, "num-irq",
-                               OBJECT(&s->nvic), "num-irq");
-+    object_property_add_alias(obj, "num-prio-bits",
-+                              OBJECT(&s->nvic), "num-prio-bits");
- 
-     object_initialize_child(obj, "systick-reg-ns", &s->systick[M_REG_NS],
-                             TYPE_SYSTICK);
+While this change allows the number of priority bits to be properly
+configured, it keeps the same default as before in order to preserve
+backward compatibility.
+
+Based-on: <20220813112559.1974427-1-anton.kochkov@proton.me>
+([PATCH] hw/arm/nvic: implement "num-prio-bits" property)
+
+Samuel Tardieu (3):
+  hw/intc/armv7m_nvic: add "num-prio-bits" property
+  hw/arm/armv7m: alias the NVIC "num-prio-bits" property
+  hw/arm/socs: configure priority bits for existing SOCs
+
+ hw/arm/armv7m.c        |  2 ++
+ hw/arm/stellaris.c     |  2 ++
+ hw/arm/stm32f100_soc.c |  1 +
+ hw/arm/stm32f205_soc.c |  1 +
+ hw/arm/stm32f405_soc.c |  1 +
+ hw/intc/armv7m_nvic.c  | 23 ++++++++++++++++++++++-
+ 6 files changed, 29 insertions(+), 1 deletion(-)
+
 -- 
 2.42.0
 

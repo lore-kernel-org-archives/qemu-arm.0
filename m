@@ -1,314 +1,168 @@
-Received: by 2002:a17:906:4e11:b0:a23:2eff:81d7 with SMTP id z17csp143346eju;
-        Sat, 16 Dec 2023 05:34:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGMtI4D71ZYQetHkIfl5m9XS8trLYujM2kVGakJr8dqNVEFxdIhVON4ss752h2F17lB14tj
-X-Received: by 2002:a05:622a:148f:b0:425:917c:7536 with SMTP id t15-20020a05622a148f00b00425917c7536mr17345131qtx.119.1702733689626;
-        Sat, 16 Dec 2023 05:34:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702733689; cv=none;
+Received: by 2002:a17:906:4e11:b0:a23:2eff:81d7 with SMTP id z17csp289658eju;
+        Sat, 16 Dec 2023 10:28:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGrwSPCDulMOOcwBIoI+XPWahAGez7nj/s+/crw+MoWDVRzOtwgtEZaufZA0dFF/3xzuflA
+X-Received: by 2002:a05:6214:c25:b0:67a:a721:830b with SMTP id a5-20020a0562140c2500b0067aa721830bmr17341738qvd.101.1702751316290;
+        Sat, 16 Dec 2023 10:28:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702751316; cv=none;
         d=google.com; s=arc-20160816;
-        b=BuDLhTdBv5z4pwC9KmVTwBYQ0gfYii3RDbQrEaO6ZP/B4zCNxu3JCzHuoXgC0qNKGz
-         eEkS5ChctKkCo3p6OUb4rzLKbIuGVgS4+AiTBLVeNG4TfYtZkmvIYqCutsvZuReQ/lF1
-         O3+oSC2jjKRhfnc0jGwSI89Q/8pwazeB4x0ruhyVuS68OmMvICcW4BuwL+cFdmyX1NwB
-         ut3b3W9uM5LSmbcXsKZAqayoyPwKmwqdwodkG4brTNBWKgfcPDn3j4QUJNiJzJ8+Bbkd
-         kgKK4S7qgswh8vBEPxr3kwLnABAfE92J4qhHG1fsKE9Y9riH13VEeXAIJZWjcMmKqCVM
-         ZIsw==
+        b=jKh2SniYNzdT46l9TPZcNCDH2YE3cYM5vKQXPs+qDXsEzsAPw1U+cUNWNRKoL1aFmj
+         md0tQ/TMc+76OP7D4NGZv9FwDLq7T4g7tcDfXB5WY5gInFf84VybCeR8eQ7PMLZXYA2n
+         CCa79HMD7IxgxGSZwsCleuQf+OPY5oHWnMgkjB2hCOv9sCTb095wiE0R2NeqZ3Q4FbvG
+         Sz3kGEgHWGbe4ihydcwsbD+Yamq8E0B/rK1UsZoTA2TNH/Fw4kG4Gw3/KCZzHHKa4cGq
+         SH3zp0vVedO8SoY87jbbZYJbdTV0W3fY0qi2Fr0jSx8cUA5CV8O69L2/amtEszPQCYas
+         epGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O2W0QElYAQhNmIc/YNz8sr3wa9RFaZ0en5zM9fmC/mo=;
-        fh=KfnoHZ/wiN3BSOhYhhc3G5ZDxcAUwTnuk+5EP+D6uS4=;
-        b=QffjqXf2YMF3jtN5/7lEe1SgbSltXAdCQ/mG7FEe3KnvJwUym6HThjMmOwfEPYW7mK
-         PTVDHAfp+NaAm1cFd5UsHkqmwEdQ46eworLMnBCUYwubtOuEsq9X0L7niPBKd1LWC6IT
-         gq3rbVGdn/uHiArvdylf8FFRbs+tk3amZ6itjSKDF+12WsAmOMIP/G1LEt4XzDhBToQE
-         DEvCpMsmZWhpeKF+HPqSenz7yLZpGHaYcDKQ3+G1OHCQtNZJlep5gKOdN+KTYz7ppYPc
-         4303dAjIxRou7UKx7tZuOP9lWSGWcAv7m8Vwp2HJGVGRzv3GPkk8iIIrgjn15IZzP92T
-         5n1A==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=PkTXigDYauoucvjBUtw2yaQyE7NWG9f3qiOiYzY+4gw=;
+        fh=oGKIVXcH1r9KL/hdyO5aIi4Tl7S6YUHGM7njmdJqg74=;
+        b=028kcr8Xjr4DeiI/7DiG/+V1NPb/U0UwEiBrnchH/KQ678HStOmto5FHFFM3+U1Jgf
+         TXadlcIa+xu+H/+F5LvfizxpUR+q916fHzlvkhqjKyQeWpC6y5/GN5vgFiUdXnKF7dN8
+         lx2g/A9wkP6O7sNqY7UPJ/3bh+zffIW6GW53vx8km3gPCHGGVFP632EDrfCVtKOD6GCW
+         UCUJArKjTiH4CclOd25EWorzdTp9F7V7eaucsvAsdfyiYlVy8uWAhWXeyIrwS4xPB6Kb
+         57GEX2DQgHnf2BKP732Nj2ulrt3/uPZx063ryQrCFM2DyuqaU1svrWAI8/FIKeUMZ97H
+         4I2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NG4caEAT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i19-20020ac85e53000000b00426177d0311si2611962qtx.43.2023.12.16.05.34.49
+        by mx.google.com with ESMTPS id y7-20020a0cc547000000b0067f35b9c13csi17728qvi.238.2023.12.16.10.28.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Dec 2023 05:34:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 16 Dec 2023 10:28:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NG4caEAT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rEUoE-00058h-BZ; Sat, 16 Dec 2023 08:34:26 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rEZOG-0000Sz-VU; Sat, 16 Dec 2023 13:27:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rEUoD-00058P-FS; Sat, 16 Dec 2023 08:34:25 -0500
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rEUoB-0001Me-LV; Sat, 16 Dec 2023 08:34:25 -0500
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2cc55698c81so11649411fa.0; 
- Sat, 16 Dec 2023 05:34:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702733661; x=1703338461; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=O2W0QElYAQhNmIc/YNz8sr3wa9RFaZ0en5zM9fmC/mo=;
- b=NG4caEATqeL3j8WpEYJxVi4vwwqoI1T1KSMFT5TucrXjinpzzo1xw69gnSjVGWVXq4
- 6i7eZiHHcMeQ05p3hc4NjIHvRaXqQpgDa4mLAz4ETnacum3OnyN3KWdlR5anuYw2B4dn
- aV3EcauPyK2D0gBdmYfR4yUZQBH2ho/tIYYur/ehsdGAAS1pjdHAroWegR4t+2xhlsN8
- x3DfUHlponu6C3GyasG9RTOwYEOWmHJx+NB4dsWGPv/VTfS/pB6OL2c8jo75qyu33TDY
- MOvbPYjb3jVvqndGa2GU8ZNvqq8OqMBaPjKDICMYVg4D20RhDKJeMohKIt0oCdBcieic
- DbEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702733661; x=1703338461;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=O2W0QElYAQhNmIc/YNz8sr3wa9RFaZ0en5zM9fmC/mo=;
- b=X/7EThnME69ioLTNfr07o9kCuDyyaBcVQPnK7KV4dY5L7w6/3OlE2VwdazsSqip4yq
- ekjaAEa6KxuOhElKX7yFuJuEKr9geiLoYpaeU9Icd2iwXZq5rHo+y505iIToYzNdPAb7
- MzC+dLu+haBOxp2aKR0m4Mi1TmV+PaVxmSwBIYSbs8P/e6/MLMngM76vnzKEWUxqIyzX
- T6j9gaD4A+ldDDdK184k8fH3XPpsRkx7tEI3IWmftUxnLhAuhSMdz0reRRdEprD45wwm
- EbNUaVDgXAWojUhL4Nbo5zYW69KaL9KSL839X3UaQ3pAyYkI5MW7ftJxbP79CdIYp8Ym
- R7gw==
-X-Gm-Message-State: AOJu0Yx6JotWB4ue5dd086yuCsAe/92uF9g0glZtVDYuRgIBDg49nTuo
- iBQvVcrHLnrz7KQiwFRBVs4FLlRyA1kb833aDZE=
-X-Received: by 2002:a2e:22c4:0:b0:2cc:2853:fb82 with SMTP id
- i187-20020a2e22c4000000b002cc2853fb82mr4490859lji.58.1702733660746; 
- Sat, 16 Dec 2023 05:34:20 -0800 (PST)
-Received: from localhost.localdomain ([176.120.189.69])
- by smtp.gmail.com with ESMTPSA id
- cy20-20020a2e9a14000000b002cc4ab0c174sm530021ljb.81.2023.12.16.05.34.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Dec 2023 05:34:20 -0800 (PST)
-From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rEZOE-0000QH-IO; Sat, 16 Dec 2023 13:27:54 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rEZOC-0006XS-O5; Sat, 16 Dec 2023 13:27:54 -0500
+Received: from buffy.. (buffy [192.168.147.6])
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id 2D5DD80028;
+ Sat, 16 Dec 2023 19:27:47 +0100 (CET)
+Authentication-Results: zoidberg.rfc1149.net;
+ dmarc=fail (p=none dis=none) header.from=rfc1149.net
+Authentication-Results: zoidberg.rfc1149.net;
+ spf=fail smtp.mailfrom=rfc1149.net
+From: Samuel Tardieu <sam@rfc1149.net>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Subject: [PATCH v5] fsl-imx: add simple RTC emulation for i.MX6 and i.MX7
- boards
-Date: Sat, 16 Dec 2023 13:34:08 +0000
-Message-Id: <20231216133408.2884-1-n.ostrenkov@gmail.com>
-X-Mailer: git-send-email 2.34.1
+Cc: Anton Kochkov <anton.kochkov@proton.me>, qemu-arm@nongnu.org,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH 3/3] hw/arm/socs: configure priority bits for existing SOCs
+Date: Sat, 16 Dec 2023 19:27:40 +0100
+Message-ID: <20231216182740.3305724-4-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231216182740.3305724-1-sam@rfc1149.net>
+References: <20231216182740.3305724-1-sam@rfc1149.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=n.ostrenkov@gmail.com; helo=mail-lj1-x22d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XOsmfN+5K0/Q
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ip+IqW5RRB2y
 
-Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+Update the number of priority bits for a number of existing
+SOCsaccording to their technical documentation:
+
+- STM32F100/F205/F405: 4 bits
+- Stellaris (Sandstorm/Fury): 3 bits
+
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
 ---
- hw/misc/imx7_snvs.c         | 93 ++++++++++++++++++++++++++++++++++---
- hw/misc/trace-events        |  4 +-
- include/hw/misc/imx7_snvs.h |  7 ++-
- 3 files changed, 94 insertions(+), 10 deletions(-)
+ hw/arm/stellaris.c     | 2 ++
+ hw/arm/stm32f100_soc.c | 1 +
+ hw/arm/stm32f205_soc.c | 1 +
+ hw/arm/stm32f405_soc.c | 1 +
+ 4 files changed, 5 insertions(+)
 
-diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
-index a245f96cd4..8e7f43187f 100644
---- a/hw/misc/imx7_snvs.c
-+++ b/hw/misc/imx7_snvs.c
-@@ -13,28 +13,100 @@
-  */
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index dd90f686bf..38981967f3 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -47,6 +47,7 @@
+ #define BP_GAMEPAD   0x04
  
- #include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qemu/timer.h"
-+#include "migration/vmstate.h"
- #include "hw/misc/imx7_snvs.h"
-+#include "qemu/cutils.h"
- #include "qemu/module.h"
-+#include "sysemu/sysemu.h"
-+#include "sysemu/rtc.h"
- #include "sysemu/runstate.h"
- #include "trace.h"
+ #define NUM_IRQ_LINES 64
++#define NUM_PRIO_BITS 3
  
-+#define RTC_FREQ    32768ULL
-+
-+static const VMStateDescription vmstate_imx7_snvs = {
-+    .name = TYPE_IMX7_SNVS,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT64(tick_offset, IMX7SNVSState),
-+        VMSTATE_UINT64(lpcr, IMX7SNVSState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static uint64_t imx7_snvs_get_count(IMX7SNVSState *s)
-+{
-+    uint64_t ticks = muldiv64(qemu_clock_get_ns(rtc_clock), RTC_FREQ,
-+                              NANOSECONDS_PER_SECOND);
-+    return s->tick_offset + ticks;
-+}
-+
- static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
- {
--    trace_imx7_snvs_read(offset, 0);
-+    IMX7SNVSState *s = IMX7_SNVS(opaque);
-+    uint64_t ret = 0;
-+
-+    switch (offset) {
-+    case SNVS_LPSRTCMR:
-+        ret = extract64(imx7_snvs_get_count(s), 32, 15);
-+        break;
-+    case SNVS_LPSRTCLR:
-+        ret = extract64(imx7_snvs_get_count(s), 0, 32);
-+        break;
-+    case SNVS_LPCR:
-+        ret = s->lpcr;
-+        break;
-+    }
+ typedef const struct {
+     const char *name;
+@@ -1067,6 +1068,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
  
--    return 0;
-+    trace_imx7_snvs_read(offset, ret, size);
-+
-+    return ret;
-+}
-+
-+static void imx7_snvs_reset(DeviceState *dev)
-+{
-+    IMX7SNVSState *s = IMX7_SNVS(dev);
-+
-+    s->lpcr = 0;
- }
+     nvic = qdev_new(TYPE_ARMV7M);
+     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
++    qdev_prop_set_uint8(nvic, "num-prio-bits", NUM_PRIO_BITS);
+     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
+     qdev_prop_set_bit(nvic, "enable-bitband", true);
+     qdev_connect_clock_in(nvic, "cpuclk",
+diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
+index b90d440d7a..808b783515 100644
+--- a/hw/arm/stm32f100_soc.c
++++ b/hw/arm/stm32f100_soc.c
+@@ -115,6 +115,7 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+     /* Init ARMv7m */
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 61);
++    qdev_prop_set_uint8(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index 1a548646f6..a451e21f59 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -127,6 +127,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
  
- static void imx7_snvs_write(void *opaque, hwaddr offset,
-                             uint64_t v, unsigned size)
- {
--    const uint32_t value = v;
--    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-+    trace_imx7_snvs_write(offset, v, size);
-+
-+    IMX7SNVSState *s = IMX7_SNVS(opaque);
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_uint8(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+index a65bbe298d..2ad5b79a06 100644
+--- a/hw/arm/stm32f405_soc.c
++++ b/hw/arm/stm32f405_soc.c
+@@ -149,6 +149,7 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
  
--    trace_imx7_snvs_write(offset, value);
-+    uint64_t new_value = 0, snvs_count = 0;
- 
--    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
--        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
-+        snvs_count = imx7_snvs_get_count(s);
-+    }
-+
-+    switch (offset) {
-+    case SNVS_LPSRTCMR:
-+        new_value = deposit64(snvs_count, 32, 32, v);
-+        break;
-+    case SNVS_LPSRTCLR:
-+        new_value = deposit64(snvs_count, 0, 32, v);
-+        break;
-+    case SNVS_LPCR: {
-+        s->lpcr = v;
-+
-+        const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
-+
-+        if ((v & mask) == mask) {
-+            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        }
-+        break;
-+    }
-+    }
-+
-+    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
-+        s->tick_offset += new_value - snvs_count;
-     }
- }
- 
-@@ -59,17 +131,24 @@ static void imx7_snvs_init(Object *obj)
- {
-     SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-     IMX7SNVSState *s = IMX7_SNVS(obj);
-+    struct tm tm;
- 
-     memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
-                           TYPE_IMX7_SNVS, 0x1000);
- 
-     sysbus_init_mmio(sd, &s->mmio);
-+
-+    qemu_get_timedate(&tm, 0);
-+    s->tick_offset = mktimegm(&tm) -
-+        qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
- }
- 
- static void imx7_snvs_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->reset = imx7_snvs_reset;
-+    dc->vmsd = &vmstate_imx7_snvs;
-     dc->desc  = "i.MX7 Secure Non-Volatile Storage Module";
- }
- 
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 05ff692441..85725506bf 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -116,8 +116,8 @@ imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
- imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
- 
- # imx7_snvs.c
--imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
--imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-+imx7_snvs_read(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS read: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
-+imx7_snvs_write(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS write: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
- 
- # mos6522.c
- mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
-diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
-index 14a1d6fe6b..1272076086 100644
---- a/include/hw/misc/imx7_snvs.h
-+++ b/include/hw/misc/imx7_snvs.h
-@@ -20,7 +20,9 @@
- enum IMX7SNVSRegisters {
-     SNVS_LPCR = 0x38,
-     SNVS_LPCR_TOP   = BIT(6),
--    SNVS_LPCR_DP_EN = BIT(5)
-+    SNVS_LPCR_DP_EN = BIT(5),
-+    SNVS_LPSRTCMR = 0x050, /* Secure Real Time Counter MSB Register */
-+    SNVS_LPSRTCLR = 0x054, /* Secure Real Time Counter LSB Register */
- };
- 
- #define TYPE_IMX7_SNVS "imx7.snvs"
-@@ -31,6 +33,9 @@ struct IMX7SNVSState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion mmio;
-+
-+    uint64_t tick_offset;
-+    uint64_t lpcr;
- };
- 
- #endif /* IMX7_SNVS_H */
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_uint8(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
 -- 
-2.34.1
+2.42.0
 

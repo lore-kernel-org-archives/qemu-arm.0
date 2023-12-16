@@ -1,112 +1,114 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp3107973ejo;
-        Fri, 15 Dec 2023 07:17:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH4aYJ9Qp3cVSsJ6ej8wihp8dEJm+HIMrPQVHu0QAE/pNNiRIW7fNiBCnFff5HWWeNn6CfS
-X-Received: by 2002:a0c:edd2:0:b0:67a:3e38:6d77 with SMTP id i18-20020a0cedd2000000b0067a3e386d77mr11553633qvr.26.1702653428198;
-        Fri, 15 Dec 2023 07:17:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702653428; cv=none;
+Received: by 2002:a17:906:4e11:b0:a23:2eff:81d7 with SMTP id z17csp143346eju;
+        Sat, 16 Dec 2023 05:34:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGMtI4D71ZYQetHkIfl5m9XS8trLYujM2kVGakJr8dqNVEFxdIhVON4ss752h2F17lB14tj
+X-Received: by 2002:a05:622a:148f:b0:425:917c:7536 with SMTP id t15-20020a05622a148f00b00425917c7536mr17345131qtx.119.1702733689626;
+        Sat, 16 Dec 2023 05:34:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702733689; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z6yjFkoEVbrQNLznCGPZBgZj1ERfXXZMTKhLVEGkyzEjgoJZRS3aqAi3wlOR9GVDSN
-         A4lhoEBItQN1iZdVhHfLcWRcekOdK+7N1vu0mXOGqhJYfvcq3Qw6EPrl53vNkG+ly9aC
-         dMrxUnHpIvM644K9EGnlA3DyKPJ5R3FWSAiTEWWvCIkw+Q1vUbVYoE1MiaWmGDOjhigh
-         BlU2Gj6LewT5fGFMJGEH5FhryMX7q6JNU1UxqVoXdbsBuZQWWBKftNf9YtbRsscTrgoD
-         5ClxyCf5kjZfN0arg7H9Rj8mbL+Qoy5obj6RR+DtQv4icMGWG+pm/RGMAYx7aiGzfi0G
-         Fb9g==
+        b=BuDLhTdBv5z4pwC9KmVTwBYQ0gfYii3RDbQrEaO6ZP/B4zCNxu3JCzHuoXgC0qNKGz
+         eEkS5ChctKkCo3p6OUb4rzLKbIuGVgS4+AiTBLVeNG4TfYtZkmvIYqCutsvZuReQ/lF1
+         O3+oSC2jjKRhfnc0jGwSI89Q/8pwazeB4x0ruhyVuS68OmMvICcW4BuwL+cFdmyX1NwB
+         ut3b3W9uM5LSmbcXsKZAqayoyPwKmwqdwodkG4brTNBWKgfcPDn3j4QUJNiJzJ8+Bbkd
+         kgKK4S7qgswh8vBEPxr3kwLnABAfE92J4qhHG1fsKE9Y9riH13VEeXAIJZWjcMmKqCVM
+         ZIsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FD5lcscTgLjr7YreIMa4Mn7D9UemU5jzp3PkrPYtuEY=;
-        fh=C2FsmRbQ7EWUl7lfPdfXyVHemm/cZPyko4K0Xw3sclA=;
-        b=OvBXEz6dMBTuWJjPifKBpbVRptcPI8E+44hrZH1SBbUNkOOGMw2WXoLmPw4eZ3eq5U
-         YLU9IkqC8SUBj8WqaJBOrsTkrIVaT1PHANYCMTQKj7deIrmAxgfl2aPET0qzreWBGKvp
-         G11/J3ZnhRRCgNhTR0yUetp+7UkTm7ecx5byQdrijyBby9jlp5DPpll10M6Ef83O+O9l
-         NfhIqoFUjbVchzEdC1FnxrJEdQHXjs6FnqKhIP+gqPJWDURoOvQZGIR8jHJsuv+gy3V3
-         /0iBOeByT2/AwCqz/Cl1bExi2JAWtQ4SroPhGV5ea646Kc1qtntlhBdm2JIyXgZEnj6U
-         nbGA==
+        bh=O2W0QElYAQhNmIc/YNz8sr3wa9RFaZ0en5zM9fmC/mo=;
+        fh=KfnoHZ/wiN3BSOhYhhc3G5ZDxcAUwTnuk+5EP+D6uS4=;
+        b=QffjqXf2YMF3jtN5/7lEe1SgbSltXAdCQ/mG7FEe3KnvJwUym6HThjMmOwfEPYW7mK
+         PTVDHAfp+NaAm1cFd5UsHkqmwEdQ46eworLMnBCUYwubtOuEsq9X0L7niPBKd1LWC6IT
+         gq3rbVGdn/uHiArvdylf8FFRbs+tk3amZ6itjSKDF+12WsAmOMIP/G1LEt4XzDhBToQE
+         DEvCpMsmZWhpeKF+HPqSenz7yLZpGHaYcDKQ3+G1OHCQtNZJlep5gKOdN+KTYz7ppYPc
+         4303dAjIxRou7UKx7tZuOP9lWSGWcAv7m8Vwp2HJGVGRzv3GPkk8iIIrgjn15IZzP92T
+         5n1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h4jtDbjA;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NG4caEAT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r13-20020a056214124d00b0067ed6dc31a3si12891477qvv.368.2023.12.15.07.17.07
+        by mx.google.com with ESMTPS id i19-20020ac85e53000000b00426177d0311si2611962qtx.43.2023.12.16.05.34.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Dec 2023 07:17:08 -0800 (PST)
+        Sat, 16 Dec 2023 05:34:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h4jtDbjA;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NG4caEAT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rE9vw-0000uy-R7; Fri, 15 Dec 2023 10:17:01 -0500
+	id 1rEUoE-00058h-BZ; Sat, 16 Dec 2023 08:34:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rE9vs-0000lb-HL
- for qemu-arm@nongnu.org; Fri, 15 Dec 2023 10:16:56 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
+ id 1rEUoD-00058P-FS; Sat, 16 Dec 2023 08:34:25 -0500
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1rE9vo-0005wV-L6
- for qemu-arm@nongnu.org; Fri, 15 Dec 2023 10:16:56 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-40c339d2b88so8223515e9.3
- for <qemu-arm@nongnu.org>; Fri, 15 Dec 2023 07:16:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
+ id 1rEUoB-0001Me-LV; Sat, 16 Dec 2023 08:34:25 -0500
+Received: by mail-lj1-x22d.google.com with SMTP id
+ 38308e7fff4ca-2cc55698c81so11649411fa.0; 
+ Sat, 16 Dec 2023 05:34:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702653410; x=1703258210; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702733661; x=1703338461; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=FD5lcscTgLjr7YreIMa4Mn7D9UemU5jzp3PkrPYtuEY=;
- b=h4jtDbjAvllWqGta7svmrLsBF/ex3u43Rqk5VkZfgBq0xJV7mNDC/6tHUgC+TZKfaa
- 1MED4Wz+2xN5hQPd2RYr7AIRjZXj0FkoXH7+xEyb8vpa9uIv9AKi+Yed35iXbdObqt87
- HpRk2+Zx+KLz6thaA5jlCLHYxdtsxqSb82Iwvm8ZiXFQMneS0fQ3gzIK1i19gITWynUI
- Agnm8PDMoBNnmKkHvvV4lGtwjTQ7JJLSyONENjOnuRjFc6Ogc7raANeDmjvn8NQwF2TJ
- vzjBu/WRVetaku725Jq/yMAiYwoWK6aL+v6F6IsiVriC9v+aYm4eo38VXlzy0rAWwSXq
- /bKA==
+ bh=O2W0QElYAQhNmIc/YNz8sr3wa9RFaZ0en5zM9fmC/mo=;
+ b=NG4caEATqeL3j8WpEYJxVi4vwwqoI1T1KSMFT5TucrXjinpzzo1xw69gnSjVGWVXq4
+ 6i7eZiHHcMeQ05p3hc4NjIHvRaXqQpgDa4mLAz4ETnacum3OnyN3KWdlR5anuYw2B4dn
+ aV3EcauPyK2D0gBdmYfR4yUZQBH2ho/tIYYur/ehsdGAAS1pjdHAroWegR4t+2xhlsN8
+ x3DfUHlponu6C3GyasG9RTOwYEOWmHJx+NB4dsWGPv/VTfS/pB6OL2c8jo75qyu33TDY
+ MOvbPYjb3jVvqndGa2GU8ZNvqq8OqMBaPjKDICMYVg4D20RhDKJeMohKIt0oCdBcieic
+ DbEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702653410; x=1703258210;
+ d=1e100.net; s=20230601; t=1702733661; x=1703338461;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=FD5lcscTgLjr7YreIMa4Mn7D9UemU5jzp3PkrPYtuEY=;
- b=GoudcMRdekxf0UAVWbSecZTLdJyN7r7a4qSQ7YIeWcU+TkEFV0tveiW7q2gDSv0pl4
- KrjEKGKeQ60tHnlfuzisQGBf15d0Oru2yn7rR8lwzpLYnqJ0FpUuPtvUl6FhczAzdalJ
- mdZWAM/d5bEUqVse52bTkiLJepE0d8RNv8GYldMi8NtfXT9xK3x308cV7OpvAv56ZExG
- 7aUI73Y7HJ5cFv5B1/svyQUDUK02szGvQxIRgs+MeaQ37wf4MZ2JH4Xt1NEuAzWTF+Z4
- aIHYHAEWFj97D5fvBiHaNDkBaihcNbNBpX91zK6af0t5UAwOPhwE4fCrNMtD3ucxR3eC
- oGng==
-X-Gm-Message-State: AOJu0YwJrreS9qRKTX8B1pS1b7WcaqXGtgHpIgNN8ts8X/Xv68C5cRko
- 2Ax/223tAmJN5GJZGzF6nPEzgA==
-X-Received: by 2002:a05:600c:1c1a:b0:40b:5e1c:af27 with SMTP id
- j26-20020a05600c1c1a00b0040b5e1caf27mr6205148wms.45.1702653410401; 
- Fri, 15 Dec 2023 07:16:50 -0800 (PST)
-Received: from localhost.localdomain ([2.221.137.100])
+ bh=O2W0QElYAQhNmIc/YNz8sr3wa9RFaZ0en5zM9fmC/mo=;
+ b=X/7EThnME69ioLTNfr07o9kCuDyyaBcVQPnK7KV4dY5L7w6/3OlE2VwdazsSqip4yq
+ ekjaAEa6KxuOhElKX7yFuJuEKr9geiLoYpaeU9Icd2iwXZq5rHo+y505iIToYzNdPAb7
+ MzC+dLu+haBOxp2aKR0m4Mi1TmV+PaVxmSwBIYSbs8P/e6/MLMngM76vnzKEWUxqIyzX
+ T6j9gaD4A+ldDDdK184k8fH3XPpsRkx7tEI3IWmftUxnLhAuhSMdz0reRRdEprD45wwm
+ EbNUaVDgXAWojUhL4Nbo5zYW69KaL9KSL839X3UaQ3pAyYkI5MW7ftJxbP79CdIYp8Ym
+ R7gw==
+X-Gm-Message-State: AOJu0Yx6JotWB4ue5dd086yuCsAe/92uF9g0glZtVDYuRgIBDg49nTuo
+ iBQvVcrHLnrz7KQiwFRBVs4FLlRyA1kb833aDZE=
+X-Received: by 2002:a2e:22c4:0:b0:2cc:2853:fb82 with SMTP id
+ i187-20020a2e22c4000000b002cc2853fb82mr4490859lji.58.1702733660746; 
+ Sat, 16 Dec 2023 05:34:20 -0800 (PST)
+Received: from localhost.localdomain ([176.120.189.69])
  by smtp.gmail.com with ESMTPSA id
- i1-20020a05600c354100b0040c411da99csm23981111wmq.48.2023.12.15.07.16.49
+ cy20-20020a2e9a14000000b002cc4ab0c174sm530021ljb.81.2023.12.16.05.34.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Dec 2023 07:16:50 -0800 (PST)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH] target/arm/helper: Propagate MDCR_EL2.HPMN into PMCR_EL0.N
-Date: Fri, 15 Dec 2023 14:46:53 +0000
-Message-ID: <20231215144652.4193815-2-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ Sat, 16 Dec 2023 05:34:20 -0800 (PST)
+From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>
+Subject: [PATCH v5] fsl-imx: add simple RTC emulation for i.MX6 and i.MX7
+ boards
+Date: Sat, 16 Dec 2023 13:34:08 +0000
+Message-Id: <20231216133408.2884-1-n.ostrenkov@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=n.ostrenkov@gmail.com; helo=mail-lj1-x22d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,66 +123,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 96w9g6E0iUqi
+X-TUID: XOsmfN+5K0/Q
 
-MDCR_EL2.HPMN allows an hypervisor to limit the number of PMU counters
-available to EL1 and EL0 (to keep the others to itself). QEMU already
-implements this split correctly, except for PMCR_EL0.N reads: the number
-of counters read by EL1 or EL0 should be the one configured in
-MDCR_EL2.HPMN.
-
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
 ---
- target/arm/helper.c | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+ hw/misc/imx7_snvs.c         | 93 ++++++++++++++++++++++++++++++++++---
+ hw/misc/trace-events        |  4 +-
+ include/hw/misc/imx7_snvs.h |  7 ++-
+ 3 files changed, 94 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ff1970981e..bec293bc93 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1475,6 +1475,22 @@ static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     pmu_op_finish(env);
- }
+diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
+index a245f96cd4..8e7f43187f 100644
+--- a/hw/misc/imx7_snvs.c
++++ b/hw/misc/imx7_snvs.c
+@@ -13,28 +13,100 @@
+  */
  
-+static uint64_t pmcr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    uint64_t pmcr = env->cp15.c9_pmcr;
+ #include "qemu/osdep.h"
++#include "qemu/bitops.h"
++#include "qemu/timer.h"
++#include "migration/vmstate.h"
+ #include "hw/misc/imx7_snvs.h"
++#include "qemu/cutils.h"
+ #include "qemu/module.h"
++#include "sysemu/sysemu.h"
++#include "sysemu/rtc.h"
+ #include "sysemu/runstate.h"
+ #include "trace.h"
+ 
++#define RTC_FREQ    32768ULL
 +
-+    /*
-+     * If EL2 is implemented and enabled for the current security state, reads
-+     * of PMCR.N from EL1 or EL0 return the value of MDCR_EL2.HPMN or HDCR.HPMN.
-+     */
-+    if (arm_current_el(env) <= 1 && arm_is_el2_enabled(env)) {
-+        pmcr &= ~PMCRN_MASK;
-+        pmcr |= (env->cp15.mdcr_el2 & MDCR_HPMN) << PMCRN_SHIFT;
++static const VMStateDescription vmstate_imx7_snvs = {
++    .name = TYPE_IMX7_SNVS,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT64(tick_offset, IMX7SNVSState),
++        VMSTATE_UINT64(lpcr, IMX7SNVSState),
++        VMSTATE_END_OF_LIST()
 +    }
++};
 +
-+    return pmcr;
++static uint64_t imx7_snvs_get_count(IMX7SNVSState *s)
++{
++    uint64_t ticks = muldiv64(qemu_clock_get_ns(rtc_clock), RTC_FREQ,
++                              NANOSECONDS_PER_SECOND);
++    return s->tick_offset + ticks;
 +}
 +
- static void pmswinc_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                           uint64_t value)
+ static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
  {
-@@ -7137,8 +7153,9 @@ static void define_pmu_regs(ARMCPU *cpu)
-         .fgt = FGT_PMCR_EL0,
-         .type = ARM_CP_IO | ARM_CP_ALIAS,
-         .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmcr),
--        .accessfn = pmreg_access, .writefn = pmcr_write,
--        .raw_writefn = raw_write,
-+        .accessfn = pmreg_access,
-+        .readfn = pmcr_read, .raw_readfn = raw_read,
-+        .writefn = pmcr_write, .raw_writefn = raw_write,
-     };
-     ARMCPRegInfo pmcr64 = {
-         .name = "PMCR_EL0", .state = ARM_CP_STATE_AA64,
-@@ -7148,6 +7165,7 @@ static void define_pmu_regs(ARMCPU *cpu)
-         .type = ARM_CP_IO,
-         .fieldoffset = offsetof(CPUARMState, cp15.c9_pmcr),
-         .resetvalue = cpu->isar.reset_pmcr_el0,
-+        .readfn = pmcr_read, .raw_readfn = raw_read,
-         .writefn = pmcr_write, .raw_writefn = raw_write,
-     };
+-    trace_imx7_snvs_read(offset, 0);
++    IMX7SNVSState *s = IMX7_SNVS(opaque);
++    uint64_t ret = 0;
++
++    switch (offset) {
++    case SNVS_LPSRTCMR:
++        ret = extract64(imx7_snvs_get_count(s), 32, 15);
++        break;
++    case SNVS_LPSRTCLR:
++        ret = extract64(imx7_snvs_get_count(s), 0, 32);
++        break;
++    case SNVS_LPCR:
++        ret = s->lpcr;
++        break;
++    }
  
+-    return 0;
++    trace_imx7_snvs_read(offset, ret, size);
++
++    return ret;
++}
++
++static void imx7_snvs_reset(DeviceState *dev)
++{
++    IMX7SNVSState *s = IMX7_SNVS(dev);
++
++    s->lpcr = 0;
+ }
+ 
+ static void imx7_snvs_write(void *opaque, hwaddr offset,
+                             uint64_t v, unsigned size)
+ {
+-    const uint32_t value = v;
+-    const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
++    trace_imx7_snvs_write(offset, v, size);
++
++    IMX7SNVSState *s = IMX7_SNVS(opaque);
+ 
+-    trace_imx7_snvs_write(offset, value);
++    uint64_t new_value = 0, snvs_count = 0;
+ 
+-    if (offset == SNVS_LPCR && ((value & mask) == mask)) {
+-        qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
++        snvs_count = imx7_snvs_get_count(s);
++    }
++
++    switch (offset) {
++    case SNVS_LPSRTCMR:
++        new_value = deposit64(snvs_count, 32, 32, v);
++        break;
++    case SNVS_LPSRTCLR:
++        new_value = deposit64(snvs_count, 0, 32, v);
++        break;
++    case SNVS_LPCR: {
++        s->lpcr = v;
++
++        const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
++
++        if ((v & mask) == mask) {
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++        }
++        break;
++    }
++    }
++
++    if (offset == SNVS_LPSRTCMR || offset == SNVS_LPSRTCLR) {
++        s->tick_offset += new_value - snvs_count;
+     }
+ }
+ 
+@@ -59,17 +131,24 @@ static void imx7_snvs_init(Object *obj)
+ {
+     SysBusDevice *sd = SYS_BUS_DEVICE(obj);
+     IMX7SNVSState *s = IMX7_SNVS(obj);
++    struct tm tm;
+ 
+     memory_region_init_io(&s->mmio, obj, &imx7_snvs_ops, s,
+                           TYPE_IMX7_SNVS, 0x1000);
+ 
+     sysbus_init_mmio(sd, &s->mmio);
++
++    qemu_get_timedate(&tm, 0);
++    s->tick_offset = mktimegm(&tm) -
++        qemu_clock_get_ns(rtc_clock) / NANOSECONDS_PER_SECOND;
+ }
+ 
+ static void imx7_snvs_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
++    dc->reset = imx7_snvs_reset;
++    dc->vmsd = &vmstate_imx7_snvs;
+     dc->desc  = "i.MX7 Secure Non-Volatile Storage Module";
+ }
+ 
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 05ff692441..85725506bf 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -116,8 +116,8 @@ imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
+ imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
+ 
+ # imx7_snvs.c
+-imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
+-imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
++imx7_snvs_read(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS read: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
++imx7_snvs_write(uint64_t offset, uint64_t value, unsigned size) "i.MX SNVS write: offset 0x%08" PRIx64 " value 0x%08" PRIx64 " size %u"
+ 
+ # mos6522.c
+ mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
+diff --git a/include/hw/misc/imx7_snvs.h b/include/hw/misc/imx7_snvs.h
+index 14a1d6fe6b..1272076086 100644
+--- a/include/hw/misc/imx7_snvs.h
++++ b/include/hw/misc/imx7_snvs.h
+@@ -20,7 +20,9 @@
+ enum IMX7SNVSRegisters {
+     SNVS_LPCR = 0x38,
+     SNVS_LPCR_TOP   = BIT(6),
+-    SNVS_LPCR_DP_EN = BIT(5)
++    SNVS_LPCR_DP_EN = BIT(5),
++    SNVS_LPSRTCMR = 0x050, /* Secure Real Time Counter MSB Register */
++    SNVS_LPSRTCLR = 0x054, /* Secure Real Time Counter LSB Register */
+ };
+ 
+ #define TYPE_IMX7_SNVS "imx7.snvs"
+@@ -31,6 +33,9 @@ struct IMX7SNVSState {
+     SysBusDevice parent_obj;
+ 
+     MemoryRegion mmio;
++
++    uint64_t tick_offset;
++    uint64_t lpcr;
+ };
+ 
+ #endif /* IMX7_SNVS_H */
 -- 
-2.43.0
+2.34.1
 

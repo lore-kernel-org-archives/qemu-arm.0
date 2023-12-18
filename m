@@ -1,138 +1,183 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp674405eji;
-        Mon, 18 Dec 2023 01:48:57 -0800 (PST)
-X-Received: by 2002:a2e:86cb:0:b0:2cc:778a:274d with SMTP id n11-20020a2e86cb000000b002cc778a274dmr251610ljj.23.1702892937280;
-        Mon, 18 Dec 2023 01:48:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702892937; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp676420eji;
+        Mon, 18 Dec 2023 01:54:18 -0800 (PST)
+X-Received: by 2002:a19:7910:0:b0:50e:3df2:c7bc with SMTP id u16-20020a197910000000b0050e3df2c7bcmr96913lfc.139.1702893258761;
+        Mon, 18 Dec 2023 01:54:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702893258; cv=none;
         d=google.com; s=arc-20160816;
-        b=NuwXnou9/3iuRKClUnvW8hg/StpHiCUgYjJhDxr3IWtsX2aDYvHwo0H3yIU+opTjoj
-         IMuGLW9w+UUx6UqS12qMHMmPp042j9r/jOVbV+5KDQutrweC3ePHLC0cEHOLfylHOyIS
-         /kcjKT+t4xWlawoXbMs6WFYyRutlvpDdspXXchTH9BV9vmFRUbuqoXDe0rI5U9m6OkSd
-         ZiUoRbZlZgp8y3IMGzGAY7CxcmpAbxgZiqz5Fa2LBtvYuZcwIGNknlFvgygaBm2ZnM/B
-         uoPpIOTQAHMNu0XeY1ROqMMP30/ndck+ESCLijuy0R3OKo9INOSzTBMN9IU6T4gYcONR
-         OfCw==
+        b=onnwD5SETYZH4SliQvLtdWpegCfUUFbIUQZ3fNbpou9eVJwvr/aOc3OVODRz8nUoe1
+         0dUYCuDeelKVBrJ17g8MwDddNQh+bmocOfG+KnbbRlCmE1yWxDdAm46nLQEYtvGN4qXp
+         mcuRMOuTMsAk36xHwvFVzsXB5+04/98LjIIM6Qq/sw44Y22wwqPYJe4lGGu+jN0xi8gV
+         dKEWcD3RvC7E+3cy2yVfNj5/SFH4VU997zT+DzySXGcXJ77lt/9Yx6ww1ybt5nDLDKYP
+         cx+jLHvdONuG16hC5NXWqiMTjsLu3M6auXISe8f563PR5r1jafDrZhADrCXu7813pKwh
+         0seg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=/rzm0E835i0JWDe+HCQaZ1ik9yylUdADi+Oh0GkKdvQ=;
-        fh=Vooc0W51SDTanS7KBfS3bbd23+a8MH2Kcqz8gmZrY70=;
-        b=tawWRdvO8iHEml84mmwk1n67z3S/Tr7KRjuXtCNU/AufFekqTQzuIIADe3c6b3HL2n
-         vZPvp8TM0l5FUrSYmYbR+YRrZLAk9u1tgAn91EPjeHERLbqD8ZQJzus/NYS/OjkOWmnX
-         cE11yoOTrbqdRxnKMx6OLtwCqzWyz5pERQqPrlG1CENumT7I8tDHrXOclrD2fLNhGJ+E
-         3UPHz5WDcdghzK7ufA2PGXOybF+EnoGGkV79zaWa1IGNRFZJZm6y674IAw9WGsC12g0j
-         XFS8zPQzpAfgtKa6tKVTft+xLOTrm0BtKLBnr2yn3qpWk7oZhB6j/iUOXQoBhqj80rGE
-         RMJg==
+        bh=22XHa7TU2HAZhqIoLxu+1GCExXKqhDp67R/omYu6sKM=;
+        fh=ULK/RLscXAijf4JMmJbcS0BGxDjKNuZXoRrjrLfjySo=;
+        b=gwN7UY+Wpm+n9KTU6JN8uRrf5xkMpnQDbUSf9Tx+0cZxhOHmc5LgbeZ1ghTs6lcuSA
+         5qEcgp0thFx9xV9GUsTQvx2pWaFlOPIBI1Lr2a0C8numxNsA1/IvUbTTKNj1/VOHiGyX
+         hIyJiSgD6WNaj8JGFjiKvPxiPlHlVgbNcI8cNgfG0mfQXz7qHp49VW2bQL6VyUxo7+LG
+         BR1HQGGjmfNsYHHPxTkrknb9ZV4IGQNLXvZLfHxr5y8R0c1aovCBqgz6wbHSu8CWDTYR
+         oLD/feANb0UvlS44dx0ZfbeFho9Uf8RZDwzwH5VjWzIIBe74qMqUIexqzZDMr9pq4nOJ
+         3DqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dtlkkZm5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LO6Zo6UL;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a98-20020a509eeb000000b005531bf4821bsor528036edf.10.2023.12.18.01.48.57
+        by mx.google.com with SMTPS id z1-20020a195e41000000b0050e20c72504sor1034820lfi.24.2023.12.18.01.54.18
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Dec 2023 01:48:57 -0800 (PST)
+        Mon, 18 Dec 2023 01:54:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dtlkkZm5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LO6Zo6UL;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1702892937; x=1703497737; darn=linaro.org;
+        d=linaro.org; s=google; t=1702893258; x=1703498058; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/rzm0E835i0JWDe+HCQaZ1ik9yylUdADi+Oh0GkKdvQ=;
-        b=dtlkkZm5kqR9WW13SW0Azb9rDxYnjijDr4hH/E38coMm1iZNW1jL/NEYJzCHoWP/FA
-         YsaQttyss/5diuvFGPm8IcoOWMb19S7mTXAZiZlDvWgcyqdRZunEe43qnp8ZPXnwZ5Km
-         OskIlLy/apWBUK2bPP9YCTBPpfLcGHvDAvoD1jtqENE0+pGas+woApzYwrkaHWVfEjoP
-         gN5ekeULChkK+N1DkJ33jhiwJl7YkQ+OoQX/7spH5Tw4VvUiFd0rM/TDSFzftEveqLO/
-         5kFVzMJxbDCsNui6f5FU+7ogJGr7jwsjIPCVQ60JrFt2tsvJT6eeueR8q/M9uKTYFU8L
-         PHmQ==
+        bh=22XHa7TU2HAZhqIoLxu+1GCExXKqhDp67R/omYu6sKM=;
+        b=LO6Zo6UL5qgDfNVPSXBfPmfpw3E1YUUHW54p/t30kzQqok9fDMhC7ydZAQMUDUrA2E
+         J9m+sjU7D3SkTFQ6uy3qYZ6phN4strrKK6+XbtCCUf/ZL8cCJF1Rq5VrvrVcQukyHw1p
+         ZzmuQ9uTemaD22L5RCUTjPiTVfKC2Km1+IwkjczcG+AO7hw58hrUXOOw7H3WTXZ9Kcz9
+         4cUkuGTyqckfKpafr/GSfP9gWJ4mJrzqy78d+4/4+V2TYg0CvTngTogl+qcyT9ZKBfPf
+         E2+xLeunrcSjVmkaXhqx6Dv42Fx75DG+tUX8YAapOLEvm7Zvca8bwo3rFb8VkA961JMi
+         uxCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702892937; x=1703497737;
+        d=1e100.net; s=20230601; t=1702893258; x=1703498058;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/rzm0E835i0JWDe+HCQaZ1ik9yylUdADi+Oh0GkKdvQ=;
-        b=CreVHY93EohOWujOvqEFV/QySLKD4E7PyzRonDpisZUUBVrSjn6SrjoEAFZr0WLzpO
-         KBqFe4hccyWIm/9GJhHMzjdgP6EWXwv+sWo7e2Y4UTOCOE1zeMXTmVJQ4pqiLMlrzs34
-         A0JSE6PFN3CCtELz7U7Vq2ZkLEGvpn8hiAvYraHHSgyPxaboPOvPZpM1CUIdqBMm9RQJ
-         ujpOM6Tgr7EjlKwpasnSb79WN2HWVovU4JAoCM0ub5Jxkh1O3uEh43vqUjPfyNEnsEBn
-         j32+2a/F/h+3zkUpCDZtyRarcHXCW/SQlW2kQ5sozwBJGgDlpz+CPL2vwKLkzyqwc/+m
-         4W9Q==
-X-Gm-Message-State: AOJu0Yzz/06la0hT8VVaXpacRPpHLCN0ch8hiihE7rF9j8HrqfunO+xi
-	lbEX002U7EXht5quLm77jpIt8EezNQ6WJpiK10Ffv1Ul
-X-Google-Smtp-Source: AGHT+IFJWliWDFQ7yEBF2WnXbPX+wma1ojFtmH+69LkCl7i7E2SDJTpqLA8dyC5YRvmUNLgU5V6Mn5iJofSTZ0jJpcQ=
-X-Received: by 2002:a50:ccdd:0:b0:553:5077:213c with SMTP id
- b29-20020a50ccdd000000b005535077213cmr583762edj.71.1702892936802; Mon, 18 Dec
- 2023 01:48:56 -0800 (PST)
+        bh=22XHa7TU2HAZhqIoLxu+1GCExXKqhDp67R/omYu6sKM=;
+        b=PfwW9oKwFIYTu3N9zSWKY7lj7yjnHfd6MWw90tO7oHLy4Va9lGchtPevqjLZl/ORR/
+         aZGkaE3r6qlJOJdMlJsReZL4u42GsFhPwRu2W3Fq1mwrXFu6jwlXJRnn+I9xR3HS4gtv
+         KDfQWNAXhm3REH913Zq4MA6nKix3vr8j/fe9sFQrtK7pLEXg1VusvYRjdYvNuuVNqFR2
+         SE7pjJSRMnSNhYwyRv+pqG3v2TswSaDxkymr4TIp1T7e4oaw0vC+1NcBKuVIVzklEeZB
+         KYrpVyljtsEvjytSId7K0tpqrEsAlVKqOziGGIAx51CESqpwG7uZIFaKtgLqeoTj1kY1
+         G9ZQ==
+X-Gm-Message-State: AOJu0YzFFTkojyHIgaAhUL9CtRp6gvHWN12o0W1HnAyKJaUd9ozOUPH1
+	ilpKi4LZndTBuxxZU8808tilObykSXtYRPN0IuHGCSW3
+X-Google-Smtp-Source: AGHT+IG8OYz2pq+QHf1MF7BM0rOkxLAelM2wX2KQDjadCOgPquG+JTMBma3kcPkXa0doXhtS2mks+vCRtXDZtTwFiE0=
+X-Received: by 2002:a2e:8608:0:b0:2cc:652b:9fd4 with SMTP id
+ a8-20020a2e8608000000b002cc652b9fd4mr450177lji.79.1702893258257; Mon, 18 Dec
+ 2023 01:54:18 -0800 (PST)
 MIME-Version: 1.0
-References: <20231214171447.44025-1-philmd@linaro.org> <CAFEAcA-Je+_tNCwiL_sQb-tDmCRJ2LWm5mAfuowtxbUBNEWQXQ@mail.gmail.com>
- <871qbkug24.fsf@pond.sub.org>
-In-Reply-To: <871qbkug24.fsf@pond.sub.org>
+References: <20231214171447.44025-1-philmd@linaro.org>
+In-Reply-To: <20231214171447.44025-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Dec 2023 09:48:45 +0000
-Message-ID: <CAFEAcA9vEvOeTseaC27hz9RKe13zs_2oPGjK-bLs8VL1wQF2jw@mail.gmail.com>
+Date: Mon, 18 Dec 2023 09:54:07 +0000
+Message-ID: <CAFEAcA8fmzv6qkN=N9TZoYVox+uQ0m5iLkGPQpcRDVA8eDEujg@mail.gmail.com>
 Subject: Re: [RFC PATCH] hw/arm: Prefer arm_feature() over object_property_find()
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
 	Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org, 
 	Leif Lindholm <quic_llindhol@quicinc.com>, Rob Herring <robh@kernel.org>, 
-	Alistair Francis <alistair@alistair23.me>, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+	Alistair Francis <alistair@alistair23.me>, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+	Markus Armbruster <armbru@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 5XOigYoLM36W
+X-TUID: PwiFR/z420dR
 
-On Mon, 18 Dec 2023 at 07:26, Markus Armbruster <armbru@redhat.com> wrote:
+On Thu, 14 Dec 2023 at 17:14, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
 >
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> QOM properties are added on the ARM vCPU object when a
+> feature is present. Rather than checking the property
+> is present, check the feature.
 >
-> > On Thu, 14 Dec 2023 at 17:14, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
-o.org> wrote:
-> >>
-> >> QOM properties are added on the ARM vCPU object when a
-> >> feature is present. Rather than checking the property
-> >> is present, check the feature.
-> >>
-> >> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> >> ---
-> >> RFC: If there is no objection on this patch, I can split
-> >>      as a per-feature series if necessary.
-> >>
-> >> Based-on: <20231123143813.42632-1-philmd@linaro.org>
-> >>   "hw: Simplify accesses to CPUState::'start-powered-off' property"
-> >
-> > I'm not a super-fan of board-level code looking inside
-> > the QOM object with direct use of arm_feature() when
-> > it doesn't have to. What's wrong with asking whether
-> > the property exists before trying to set it?
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+> RFC: If there is no objection on this patch, I can split
+>      as a per-feature series if necessary.
 >
-> I'm not a fan of using QOM instead of the native C interface.
+> Based-on: <20231123143813.42632-1-philmd@linaro.org>
+>   "hw: Simplify accesses to CPUState::'start-powered-off' property"
+> ---
+>  hw/arm/armv7m.c       | 21 ++++++++++++---------
+>  hw/arm/exynos4210.c   |  4 ++--
+>  hw/arm/highbank.c     |  3 ++-
+>  hw/arm/integratorcp.c |  5 ++---
+>  hw/arm/realview.c     |  2 +-
+>  hw/arm/sbsa-ref.c     |  3 ++-
+>  hw/arm/versatilepb.c  |  5 ++---
+>  hw/arm/vexpress.c     |  6 ++++--
+>  hw/arm/virt.c         | 27 +++++++++++++++------------
+>  hw/arm/xilinx_zynq.c  |  2 +-
+>  hw/cpu/a15mpcore.c    | 17 +++++++++++------
+>  hw/cpu/a9mpcore.c     |  6 +++---
+>  12 files changed, 57 insertions(+), 44 deletions(-)
 >
-> The native C interface is CPUArmState method arm_feature().
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index 3a6d72b0f3..932061c11a 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -302,28 +302,29 @@ static void armv7m_realize(DeviceState *dev, Error =
+**errp)
+>
+>      object_property_set_link(OBJECT(s->cpu), "memory", OBJECT(&s->contai=
+ner),
+>                               &error_abort);
+> -    if (object_property_find(OBJECT(s->cpu), "idau")) {
+> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY)) {
+>          object_property_set_link(OBJECT(s->cpu), "idau", s->idau,
+>                                   &error_abort);
+> -    }
+> -    if (object_property_find(OBJECT(s->cpu), "init-svtor")) {
+>          if (!object_property_set_uint(OBJECT(s->cpu), "init-svtor",
+>                                        s->init_svtor, errp)) {
+>              return;
+>          }
+>      }
+> -    if (object_property_find(OBJECT(s->cpu), "init-nsvtor")) {
+> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_M)) {
 
-But we don't in most of these cases really want to know "is this
-a CPU with feature foo?". What we're asking is "does this
-QOM property exist so it won't blow up if I set/get it?".
+This doesn't make sense as a check -- we shouldn't be able to get
+here if the CPU isn't M-profile.
 
-> Attempts to use it on anything but a CPUArmState * will be caught by the
-> compiler.  object_property_find() will happily take any Object.
->
-> Likewise, typos in its second argument will be caught by the compiler.
-> object_property_find() will happily return NULL then.
->
->
-> I also don't like adding QOM properties to instances.
-> arm_cpu_post_init() seems to do that.  I feel it's best to stick to
-> class properties whenever practical.
+>          if (!object_property_set_uint(OBJECT(s->cpu), "init-nsvtor",
+>                                        s->init_nsvtor, errp)) {
+>              return;
+>          }
+>      }
+> -    if (object_property_find(OBJECT(s->cpu), "vfp")) {
+> -        if (!object_property_set_bool(OBJECT(s->cpu), "vfp", s->vfp, err=
+p)) {
+> -            return;
+> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_AARCH64)) {
 
-I agree, and the Arm CPU is a bit of an outlier in what it's
-doing, for reasons that are largely I think historical. I'd
-be happy to review patches that change these to class properties
-where applicable, but I suspect that might be tricky...
+Similarly this can't possibly be an AArch64 CPU, so this is
+not the correct condition to check.
+
+> +        if (cpu_isar_feature(aa64_fp_simd, s->cpu)) {
+> +            if (!object_property_set_bool(OBJECT(s->cpu), "vfp", s->vfp,=
+ errp)) {
+> +                return;
+> +            }
+>          }
+>      }
+> -    if (object_property_find(OBJECT(s->cpu), "dsp")) {
+> +    if (arm_feature(&s->cpu->env, ARM_FEATURE_M) &&
+> +        arm_feature(&s->cpu->env, ARM_FEATURE_THUMB_DSP)) {
+>          if (!object_property_set_bool(OBJECT(s->cpu), "dsp", s->dsp, err=
+p)) {
+
+Another unnecessary "is this M-profile?" check. This also is
+introducing a point of potential future failure because now
+we have the condition for "do we have a dsp property" in two
+places: in the CPU object where we add it, and then again here
+when we set it. Now they can get out of sync.
+
+Most of the others are similar. There might be places where we're
+using the "does property X check" to do something more than just
+guard "now set property X"; those are probably worth looking at
+to see if they should be checking something else.
 
 thanks
 -- PMM

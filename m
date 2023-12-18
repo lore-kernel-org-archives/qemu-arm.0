@@ -1,114 +1,115 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp724070eji;
-        Mon, 18 Dec 2023 03:37:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFlPuQydlgwDKaVcZh3HNxb34OmDgp2IJR5TqueLP5ZbiVGPl34kxeUu1WsLZW7oPgjaOq+
-X-Received: by 2002:a05:6214:1c45:b0:67f:631:4856 with SMTP id if5-20020a0562141c4500b0067f06314856mr9948484qvb.111.1702899425154;
-        Mon, 18 Dec 2023 03:37:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899425; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp724303eji;
+        Mon, 18 Dec 2023 03:37:39 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH7wudfALFfkzhzJgZobd+5/KBBLOQ5OB7C5l8xSJaLLrPrz7+sRWaR7r2ejbhfVQb26voR
+X-Received: by 2002:a05:6902:150:b0:db9:6ad7:1abb with SMTP id p16-20020a056902015000b00db96ad71abbmr9107824ybh.12.1702899459518;
+        Mon, 18 Dec 2023 03:37:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899459; cv=none;
         d=google.com; s=arc-20160816;
-        b=E26pYtOH5pdp28hT42eRAdJ8vBVC6m4BVJZTRuevCpbN+SPOD4iHKebGJbJDksebUk
-         jHlibu8n7EmY7u4zvselquR4yaL40BxgWgQZtB2q+7f9vOhbPeLOHi7gdV4BnLipSGFn
-         KI4pFyKnd9r2B8J3fsS0wZyu1MNvIjUSZT8UuAHQK5dr2e0PZJAWFMVfhXXuWUboLyID
-         S+ycg+q7C4IDRjZqSC0XHE8coj7lyVvERuwPsNy+EbUxMkhNHdp1DemipH23BoJohTqn
-         2v9sESoEVLXh2xa2lSwKXQyJkoQcX0SwrKG1RoE/H15w6yWFKYTiY1mHMMvL8pWGgdaZ
-         XYbA==
+        b=L+wsc3i0pYp3X7twReN/gDS5NXHegHJxth2Hp1ZAYJ+KErmlvXQMgovHcZkdAfjliH
+         A+ZczSvC5zHVH4IlVYZOK8lzdV+Nbpefe52OyWfTowu+OjMA+Xz705FtE1GGo0iF2jB1
+         gSNEieq6T8J46+ddsOWd/t9r8hIG4y0bGWgovaiVqB/Vv9iXRQ712LpWAP3sUDTyVdkM
+         88gFFynIkt2LBU6jQAFeMY20GfLrvv4GJESDOEdd4dl3745ynA1PgnKPj4DGG9v5K/W8
+         s28AqrZYow0/CubPFLoTXOswn3mQwyS8tJQNiQf7uKTLMAQf1JP4EI8oLomy0rLYWp7+
+         fq4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NRuw6DRSRtcEOUgfTxYJIjGMHE4VBSQoJphbpoL6X/Y=;
+        bh=hqhZ/TYrEHVthS8Snx3nWwPfhsJPpj41dOm4FCOn7mk=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=O7WpBiB1vWHN/G02CJ7M9GdVtvGtSgwzlTEE7m8cUaoYTyXjyoINcLn5ywlYkrSKEK
-         r58RSm28astWM5bZ9XTKz8MHFgtwsUlLvWwvmZXwZ98EgOeOttqaDZHzMIrQItdYXjdL
-         M7KB7IXII+uFUqutG+tlnCV8/dg4aunpZtJ6j3Hj8fL4u/4/S1pbrkQqNYemFhyVEXJA
-         fqeNt6aEDJJWbzF4hnTMNClzLjcfHX4MoZo+H8iBSLQdR6MFFHjNwPaigNL4FrwWnb7L
-         hiSBhIbxS1tKqMJ6yWDVzNKI/8yHKJVjnx3vjd4KGzi9sYLEFARrdFnIbfE/yeIi9ZKP
-         5Qdg==
+        b=O3d8uAVF00WmZpQzcmGSmSLzT8KGMHCxSQUSpUDkecmev9usjQBUNybaoBMJtGKFKr
+         rcPL4LUC+6LsuTHvGxqnVu6pIEJSunl721/xhW2mHfFbHpb4cOoPxeRhxLkKkgZgBFtg
+         cb4DJ9gMIF/Ii2C5tuIo0/2oLEeXW0pnsJVcJGfo549cBh9+C0DtNlhEgz/VIkj/Lweh
+         FRy8P/P2xmGRq+UhZ0VSSSX/v6I+OWM/PW6t5GfWqwfddG93PyfovflP0CH3aGFxNFgb
+         2xnBjtSjYmYxui+rAWOpoVrAkCi0Nq2gQYP6pBzU13X3g2W4eFEjV7DQtlSRpaMoV4eM
+         MNQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ir0K8Kqe;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hYYwX/kI";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z3-20020a0cf243000000b0067ef5252853si405110qvl.352.2023.12.18.03.37.04
+        by mx.google.com with ESMTPS id cg6-20020a05622a408600b004257b245406si24798731qtb.210.2023.12.18.03.37.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:37:05 -0800 (PST)
+        Mon, 18 Dec 2023 03:37:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ir0K8Kqe;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hYYwX/kI";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rFBsT-0007AH-39; Mon, 18 Dec 2023 06:33:42 -0500
+	id 1rFBs8-0006en-Vn; Mon, 18 Dec 2023 06:33:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBsL-00077L-5v
- for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:33 -0500
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ id 1rFBs6-0006cP-LX
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:18 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBsA-0003Nu-9v
- for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:32 -0500
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-33668163949so694011f8f.2
- for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:21 -0800 (PST)
+ id 1rFBs0-0003IX-M2
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:18 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-3366af69d4bso374044f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899201; x=1703504001; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899191; x=1703503991; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=NRuw6DRSRtcEOUgfTxYJIjGMHE4VBSQoJphbpoL6X/Y=;
- b=ir0K8KqeqFlFdsBcVAgl8ztUaMxU1P83kfqwZ5qoO+9ByV6zr9auOvqyXueAFCZCRp
- 3w/uL8xgd6YueoMH2lKxeVWcE7Q1L3qzyjESQnJ9ZnhinUIDpB+we2Be5OoK2FSNxec+
- coDT2kO10JVDL06Xje2fB/nBlDzV66J+4BpbmvVIg+J41oaNVXRQAaUueAREpu7bN2he
- okuJQIyfGZ3SzCzDCxjtdS6JKYwyyeZVQq0d0/VEp9QxLYEgI18qwTSuCr9tj4pDrPBW
- Dlf+JuNl1ndxHczNEvgBqW4mgtwXx3IuTq+dIGLySE1T12cse2pKHXFRGvIf28HJNQQT
- fBBw==
+ :reply-to; bh=hqhZ/TYrEHVthS8Snx3nWwPfhsJPpj41dOm4FCOn7mk=;
+ b=hYYwX/kIsovbcAZBZkeuzf1mk2JCewCOeCpJPUUDRfBjUBPEfFSSsrlb//eHGDQV+C
+ A28hzHyR4WbO4C9chM+MQUPLBcipJSVFF3RfBuoM0iE1XTczGibudppN7aZ3c2DWUGI5
+ Kmn0QmVgvbLDgp18SU0CyBY+zo9RiArMrZKDkP9wL60Z4crWohvV827fvzpzvu3Za/95
+ vWKJPfIQw46cvTz5VmlRp3xjEJ0/BJ9vZxVfAdpMVnTCwn+okRKZhEj+XSaWyyhK/YZJ
+ vier0O5pN5giHrslSAXplrFHvcsr/Zw5tDnnAJO2wept4jkcxfJ/e5qhhaQVVuuaRE2c
+ 2pCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899201; x=1703504001;
+ d=1e100.net; s=20230601; t=1702899191; x=1703503991;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=NRuw6DRSRtcEOUgfTxYJIjGMHE4VBSQoJphbpoL6X/Y=;
- b=rQSNhlddWR8kV3BpmAnLW8BLCb0ke5crftALoClz72L3pICd/K1wGwRFQNDcAE0IcF
- 4P4ejwLDvoV8kcjT3LOWwFUggHmiiDDpHkZJ7VHq+7f3suCcr65nt9E3Vc9Khk2Mxw1B
- Tz25yf7IenNOqJKxwkBFShNvST3cPlZup38TZDYFMkqMjjYXWhWdsyRonljLjYLc3Xrz
- zbyxol+tfcf5j6XeeRjpIvSZz7rrWqjtCQaP0qps6KEVvjHtXv+AMcPWHMkfRjLN5I0t
- LFNJRxlJPWLYfS+iyb6Rb8YgSmxSQhuJ7Ky3g4zahxtft6+mNbzZe5hl8Q8/HccfTjWS
- 4qkA==
-X-Gm-Message-State: AOJu0Yy0qEqqn1POzGE80JlKZAGVFdYIDRffwcvet+ugdC2CRbQ+Cuet
- oUiITL+3hXis34VkiNBwtoatNw==
-X-Received: by 2002:a05:6000:1f07:b0:336:6600:c191 with SMTP id
- bv7-20020a0560001f0700b003366600c191mr640147wrb.107.1702899200798; 
- Mon, 18 Dec 2023 03:33:20 -0800 (PST)
+ bh=hqhZ/TYrEHVthS8Snx3nWwPfhsJPpj41dOm4FCOn7mk=;
+ b=e9Nz8uiY3LsNfZ2J/6ZTob7T5QPp9Dl73cUzlISk22hXbHimdzmpSOlUG78H3bln6w
+ BlA/5B+mIZR8dglH22g0UuYWiPxVGyYMBx/IXtFQpz3mlRkbRS7TVzC0mvJVXfnJdIlj
+ w2icSdUh9d6smhOeSsecexbm9wLBsxsBk2J/2vWQJVk8CyQH2fwZAULnBg2vV/qQACnL
+ zT+hcwesZJfB7pZF4tH00iDf15vFnowQY7dBhkCrfePfjd80/MpZrQJhvMkYdwVX67Nc
+ a6Nn1yT+XmXHsggQ1PALDODNMBzhJux3NH0FCncxyv3mdW3fxm21mEGT5UjqAllrNHq7
+ FxFQ==
+X-Gm-Message-State: AOJu0YzO8m5bJZmWRhbCpw4vGSGqLvhYJ+1J+X2+1Gxnv2pjaGrWkYhB
+ eeiViG8g+CdljQXGk9iD9SeaRg==
+X-Received: by 2002:adf:f551:0:b0:336:5e1d:bac0 with SMTP id
+ j17-20020adff551000000b003365e1dbac0mr2051500wrp.4.1702899191388; 
+ Mon, 18 Dec 2023 03:33:11 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.20
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:20 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:11 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 29/35] target/arm: Mark up VNCR offsets (offsets 0x100..0x160)
-Date: Mon, 18 Dec 2023 11:32:59 +0000
-Message-Id: <20231218113305.2511480-30-peter.maydell@linaro.org>
+Subject: [PATCH 10/35] target/arm: *_EL12 registers should UNDEF when
+ HCR_EL2.E2H is 0
+Date: Mon, 18 Dec 2023 11:32:40 +0000
+Message-Id: <20231218113305.2511480-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,144 +124,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MlW6+dwArGn0
+X-TUID: Gz0HimwA95Zw
 
-Mark up the cpreginfo structs to indicate offsets for system
-registers from VNCR_EL2, as defined in table D8-66 in rule R_CSRPQ in
-the Arm ARM.  This commit covers offsets 0x100 to 0x160.
-
-Many (but not all) of the registers in this range have _EL12 aliases,
-and the slot in memory is shared between the _EL12 version of the
-register and the _EL1 version.  Where we programmatically generate
-the regdef for the _EL12 register, arrange that its
-nv2_redirect_offset is set up correctly to do this.
+The alias registers like SCTLR_EL12 only exist when HCR_EL2.E2H
+is 1; they should UNDEF otherwise. We weren't implementing this.
+Add an intercept of the accessfn for these aliases, and implement
+the UNDEF check.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/debug_helper.c |  1 +
- target/arm/helper.c       | 22 ++++++++++++++++++++++
- 2 files changed, 23 insertions(+)
+ target/arm/cpregs.h |  3 ++-
+ target/arm/helper.c | 16 ++++++++++++++++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index b39144d5b93..7d856acddf2 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -960,6 +960,7 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_tda,
-       .fgt = FGT_MDSCR_EL1,
-+      .nv2_redirect_offset = 0x158,
-       .fieldoffset = offsetof(CPUARMState, cp15.mdscr_el1),
-       .resetvalue = 0 },
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index f1293d16c07..e748d184cb6 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -937,7 +937,7 @@ struct ARMCPRegInfo {
+     CPResetFn *resetfn;
+ 
      /*
+-     * "Original" writefn and readfn.
++     * "Original" readfn, writefn, accessfn.
+      * For ARMv8.1-VHE register aliases, we overwrite the read/write
+      * accessor functions of various EL1/EL0 to perform the runtime
+      * check for which sysreg should actually be modified, and then
+@@ -948,6 +948,7 @@ struct ARMCPRegInfo {
+      */
+     CPReadFn *orig_readfn;
+     CPWriteFn *orig_writefn;
++    CPAccessFn *orig_accessfn;
+ };
+ 
+ /*
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ff7f90fa4af..78c3c3ebd8d 100644
+index c6f069b74cd..e90eb5e16f3 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -647,6 +647,7 @@ static const ARMCPRegInfo cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 0, .crn = 13, .crm = 0, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_CONTEXTIDR_EL1,
-+      .nv2_redirect_offset = 0x108 | NV2_REDIR_NV1,
-       .secure = ARM_CP_SECSTATE_NS,
-       .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[1]),
-       .resetvalue = 0, .writefn = contextidr_write, .raw_writefn = raw_write, },
-@@ -883,6 +884,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
-     { .name = "CPACR", .state = ARM_CP_STATE_BOTH, .opc0 = 3,
-       .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 2, .accessfn = cpacr_access,
-       .fgt = FGT_CPACR_EL1,
-+      .nv2_redirect_offset = 0x100 | NV2_REDIR_NV1,
-       .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.cpacr_el1),
-       .resetfn = cpacr_reset, .writefn = cpacr_write, .readfn = cpacr_read },
- };
-@@ -2234,11 +2236,13 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_AFSR0_EL1,
-+      .nv2_redirect_offset = 0x128 | NV2_REDIR_NV1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "AFSR1_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_AFSR1_EL1,
-+      .nv2_redirect_offset = 0x130 | NV2_REDIR_NV1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     /*
-      * MAIR can just read-as-written because we don't implement caches
-@@ -2248,6 +2252,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_MAIR_EL1,
-+      .nv2_redirect_offset = 0x140 | NV2_REDIR_NV1,
-       .fieldoffset = offsetof(CPUARMState, cp15.mair_el[1]),
-       .resetvalue = 0 },
-     { .name = "MAIR_EL3", .state = ARM_CP_STATE_AA64,
-@@ -4271,6 +4276,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
-       .opc0 = 3, .crn = 5, .crm = 2, .opc1 = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_ESR_EL1,
-+      .nv2_redirect_offset = 0x138 | NV2_REDIR_NV1,
-       .fieldoffset = offsetof(CPUARMState, cp15.esr_el[1]), .resetvalue = 0, },
-     { .name = "TTBR0_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 0,
-@@ -4290,6 +4296,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
-       .opc0 = 3, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 2,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_TCR_EL1,
-+      .nv2_redirect_offset = 0x120 | NV2_REDIR_NV1,
-       .writefn = vmsa_tcr_el12_write,
-       .raw_writefn = raw_write,
-       .resetvalue = 0,
-@@ -4529,6 +4536,7 @@ static const ARMCPRegInfo lpae_cp_reginfo[] = {
-       .opc0 = 3, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .fgt = FGT_AMAIR_EL1,
-+      .nv2_redirect_offset = 0x148 | NV2_REDIR_NV1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     /* AMAIR1 is mapped to AMAIR_EL1[63:32] */
-     { .name = "AMAIR1", .cp = 15, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 1,
-@@ -5718,6 +5726,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .type = ARM_CP_ALIAS,
-       .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 0, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_nv1,
-+      .nv2_redirect_offset = 0x160 | NV2_REDIR_NV1,
-       .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_SVC]) },
-     /*
-      * We rely on the access checks not allowing the guest to write to the
-@@ -6710,6 +6719,17 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-         new_reg->writefn = el2_e2h_e12_write;
-         new_reg->accessfn = el2_e2h_e12_access;
+@@ -6519,6 +6519,20 @@ static void el2_e2h_e12_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     return ri->orig_writefn(env, ri->opaque, value);
+ }
  
-+        /*
-+         * If the _EL1 register is redirected to memory by FEAT_NV2,
-+         * then it shares the offset with the _EL12 register,
-+         * and which one is redirected depends on HCR_EL2.NV1.
-+         */
-+        if (new_reg->nv2_redirect_offset) {
-+            assert(new_reg->nv2_redirect_offset & NV2_REDIR_NV1);
-+            new_reg->nv2_redirect_offset &= ~NV2_REDIR_NV1;
-+            new_reg->nv2_redirect_offset |= NV2_REDIR_NO_NV1;
-+        }
++static CPAccessResult el2_e2h_e12_access(CPUARMState *env,
++                                         const ARMCPRegInfo *ri,
++                                         bool isread)
++{
++    /* FOO_EL12 aliases only exist when E2H is 1; otherwise they UNDEF */
++    if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
++        return CP_ACCESS_TRAP_UNCATEGORIZED;
++    }
++    if (ri->orig_accessfn) {
++        return ri->orig_accessfn(env, ri->opaque, isread);
++    }
++    return CP_ACCESS_OK;
++}
 +
+ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+ {
+     struct E2HAlias {
+@@ -6632,6 +6646,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+         new_reg->opaque = src_reg;
+         new_reg->orig_readfn = src_reg->readfn ?: raw_read;
+         new_reg->orig_writefn = src_reg->writefn ?: raw_write;
++        new_reg->orig_accessfn = src_reg->accessfn;
+         if (!new_reg->raw_readfn) {
+             new_reg->raw_readfn = raw_read;
+         }
+@@ -6640,6 +6655,7 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+         }
+         new_reg->readfn = el2_e2h_e12_read;
+         new_reg->writefn = el2_e2h_e12_write;
++        new_reg->accessfn = el2_e2h_e12_access;
+ 
          ok = g_hash_table_insert(cpu->cp_regs,
                                   (gpointer)(uintptr_t)a->new_key, new_reg);
-         g_assert(ok);
-@@ -9414,6 +9434,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "ACTLR_EL1", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 1,
-               .access = PL1_RW, .accessfn = access_tacr,
-+              .nv2_redirect_offset = 0x118,
-               .type = ARM_CP_CONST, .resetvalue = cpu->reset_auxcr },
-             { .name = "ACTLR_EL2", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 0, .opc2 = 1,
-@@ -9499,6 +9520,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 0,
-             .access = PL1_RW, .accessfn = access_tvm_trvm,
-             .fgt = FGT_SCTLR_EL1,
-+            .nv2_redirect_offset = 0x110 | NV2_REDIR_NV1,
-             .bank_fieldoffsets = { offsetof(CPUARMState, cp15.sctlr_s),
-                                    offsetof(CPUARMState, cp15.sctlr_ns) },
-             .writefn = sctlr_write, .resetvalue = cpu->reset_sctlr,
 -- 
 2.34.1
 

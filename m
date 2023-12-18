@@ -1,114 +1,115 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722964eji;
-        Mon, 18 Dec 2023 03:34:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEk1xnzjMn/dIpg6Q7ipcl9/zGkLBgJQ9erwCzVedUaYNXDGECmhielXd3giW1B867nU+NW
-X-Received: by 2002:a05:620a:1a1e:b0:77f:9b4:a0e1 with SMTP id bk30-20020a05620a1a1e00b0077f09b4a0e1mr24218500qkb.38.1702899286740;
-        Mon, 18 Dec 2023 03:34:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899286; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp723168eji;
+        Mon, 18 Dec 2023 03:35:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGAY0lL5TgW8VWmBBZ3ukLBux1lTkW3422HMAIFHcw3DICgiMzE8bUx4JktSkbKkc53whCJ
+X-Received: by 2002:a05:6808:3991:b0:3b9:fd0a:247f with SMTP id gq17-20020a056808399100b003b9fd0a247fmr23208234oib.90.1702899311020;
+        Mon, 18 Dec 2023 03:35:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899310; cv=none;
         d=google.com; s=arc-20160816;
-        b=JAHc7lPjBAjIyjGjulAdztmpSNlwFCnjjNV77b3Uqj1x5E+zt2Wa2sY9e7oNEalj6Q
-         OZ8Mfn7CME0l96gI80bJZ6GVbk7lrBryycHJfketr5XC+jaQBtgSKx2HeonDvn1rB4DD
-         BJ2AvbyUFJxwl4CJtbDz/wgRC2EmaSL/77m1zUtCtglkvr8cAdAIBMnhzoeeUP93rxjP
-         Srx16mtbFLYJIsNvD4sZT5ppkXxD0U5yvxoGuuEDVSpI3tET2AO5wl4ZleO6FaXlVT4z
-         3yN60+bxtr86LWAUdGhOeMJ4fVKjaqIiOS9DSVUALK7Qjoda5iinDlpzWwK+pQSZvX2v
-         254g==
+        b=k0FJS8tDXKWnSvTx8C0weLhfebvSMgx18iodmD4pVMFefxaldi6hn4flPh9oHQ3t4Z
+         OeLSVSGsN5eanhLtIX8t5Jhnvf9HN2No4UTzIykD9wuqeliQz+PoKEcGltPY6a3ZhnjJ
+         pjm3XXwXJaBz1LgEj1ydnwYd0XZVENVY2HwffoLhi8hHTYSIdVSNI3yeBXGye7BTTQj3
+         59urPwfcbilHNjrfoNrq87PfQxhF0/s3SMdn0wJ53e+ZJY2AKd6C5qI60R5JUou/9ts/
+         OE3CGqfaG4CvJcUlFF50EOM8Q2A89O9UUKMR22G/JRXx731Gh4XeASZABBODCG9JUPPX
+         65zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8VnUA3Fueqk12WZS/CbUJV8o9iWN9VQ36taC6t7Xhbo=;
+        bh=nDtTmxnTvjnXEk8xcvOOb8nCioQSxbevWpP7qdlO2bA=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=TVWNm4yovamhzObeML5jO4Zy/b/dU1IDFl+8U1ONdiIJT9amD7pDmMK8uspNftpHlx
-         piFCPH2SgYx/xqtBu3M07rb0pv8cwbfalEpgdwHCXuzu3ttqCpwp7RoBDcGf4jlAgeDt
-         B7OoAOlfHHu3KP/3PWwhqrFkaErA3Z8LVF2739+MYxK64512czuOWbl65eJsPW75GO8s
-         xHN/CH9XdOf6+sXcEpj7NYdN8B501ZuH+qLjkwOmphWWsE62XLnb0WHXTfbmc/Qlw0cW
-         S1D3V/gADsI81N6Hcivl6IB7+gpREnjAbsYFr1YgiTaQa2PknK/+PFwUoXAIbC8MoOCl
-         /GTg==
+        b=USYq8LP85Y5+UGf+iVFCGeYIlliyNGmefvEwn4UpNCy0WUEhfbrHFfHt2puzavsxiS
+         Se7KrcYHQZ8AkQVgSLl6RmROXTnEBnh2qyKIoRP6ciZjm13Ltb6WAzkfbOaqCrD3m4K9
+         htuAXxtOR25fZUrjt17goEO1uMTMISxymZIyH5FkwFuvhiFIT0GtJ/FmjNZrKYhCeuAe
+         PjBjXTnaFqzFmU/yOm5hkOF4GrnYZAXpgwSRDK5RWlZxHTJd8g2da7pUbA6qpbPi+dXi
+         oLCW91pG5VSnaIzW9xny9DI+H6EXFxRctMOHpqFd+S3UHvA2QH2hkSZKM6f8WpQd6vil
+         iclA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aXB69FuL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NP7stvqt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bk26-20020a05620a1a1a00b0077055f2ec4dsi25877962qkb.250.2023.12.18.03.34.46
+        by mx.google.com with ESMTPS id m6-20020a05620a220600b0077f10ed7a98si13347607qkh.489.2023.12.18.03.35.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:34:46 -0800 (PST)
+        Mon, 18 Dec 2023 03:35:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aXB69FuL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NP7stvqt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rFBsF-00070U-PB; Mon, 18 Dec 2023 06:33:27 -0500
+	id 1rFBsY-0007SW-VD; Mon, 18 Dec 2023 06:33:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBsD-0006vr-DJ
- for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:25 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1rFBsM-00077w-Re
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:35 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs5-0003LS-Mk
- for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:25 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3363aa1b7d2so2625819f8f.0
- for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:17 -0800 (PST)
+ id 1rFBsB-0003OS-3u
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:34 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-336672406f0so654679f8f.2
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899196; x=1703503996; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899201; x=1703504001; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=8VnUA3Fueqk12WZS/CbUJV8o9iWN9VQ36taC6t7Xhbo=;
- b=aXB69FuLQIO2bLbh6Oy8u3fVu8q1sTVD1QoiEQDUx62eRR+qOKIhVqAKNhghCJPMHY
- 8UPpo73UuX4FZ5eYV/f8ZpvH7cR8+U11YowB6S+GdGpBUCarHOGAfZaOO5Vz36O46f4J
- k5q+P4rMQu49pfdKeE8pszR1cL/yv8p4fi2SCD/uZP9JNOA0Ar17bEGU5TrZB5Z7V/od
- RmNcVQRSyYGpNap7NSOJtKA7hL5M0VJgXOph9Q8lZXMIQyrbR43iLsem8OsSCOtiUZZQ
- CT09bgPTAFMT8Un84/8sNkH4MvKJN+FHfQx/wVvnhr3yXLLbDotgOq2A5tL039WaBVQb
- Y8yQ==
+ :reply-to; bh=nDtTmxnTvjnXEk8xcvOOb8nCioQSxbevWpP7qdlO2bA=;
+ b=NP7stvqto2DP1dMJU4jwONfSRNkn9zFUNx9+gLUPftvVQFh6BGfFqtczEFe3z2kq3Q
+ UjS3vzuhPMSJB1tkm28wTB0eBKPEBW8fTWry4qxekqWTZbft/TPHyRN7JgbMJgf2piNF
+ xajNxMhOe6a00N4+W8LNdktHXjWsmetTxr07gbs8BORGnvlqV7V5dRvfKAcpfx+WjSzS
+ 5PGGhJs3QJN2scLgoT2kcE2VcDPPI5/MYqDVL/AGsyOyN4CdDAJ9dVxz2Ng6xdbIOhQK
+ hVcE42DwzErO0NgYwneSqtAclsioUm8miG+Cl8hVlLtJTxmQihnL0ITcTMbbvmSg1eZ1
+ FBLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899196; x=1703503996;
+ d=1e100.net; s=20230601; t=1702899201; x=1703504001;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8VnUA3Fueqk12WZS/CbUJV8o9iWN9VQ36taC6t7Xhbo=;
- b=pQhAMedjNr7GE98HSWUKQguJn2Gwz1NE7nMKhXo2MBuv6INsACp6v6iIYKyRp5uEnz
- akHx+cY9ATI+EmHY3WYPH2zpVKN02YrGfyOZneTronTQGxcRfOXUKYUyzPu8jkoO1rfE
- s7wa8Oip9FlJ7tVbkXn9YrZMWj/BL++vpyI4pe4wo0anqtAxaiBQ29Zfb6jmmR1XtklN
- VzGtnu2CUDrGs62rJMQnoiWmsM5BlRUVq0dffcofwmwgMjcviCGWCPSC1S61rMZdDsqy
- vjF8dxmRrt4esIDRQ7oWbLMSIrPpAyMp40fHZYRFOhh524GT/Q/TuJGq1EbfXVvtvlnR
- kI+w==
-X-Gm-Message-State: AOJu0YwDXgVc8Tj9ZD5yA7EkjB1ulcx5V0/2/XC4zONHrToZGZ2sMow8
- dEl8njZsnw0OyK4l6ijOSsp6hA==
-X-Received: by 2002:adf:ed09:0:b0:336:60ab:12b8 with SMTP id
- a9-20020adfed09000000b0033660ab12b8mr1225373wro.56.1702899196248; 
- Mon, 18 Dec 2023 03:33:16 -0800 (PST)
+ bh=nDtTmxnTvjnXEk8xcvOOb8nCioQSxbevWpP7qdlO2bA=;
+ b=gVpRlnwHkkJVk6NoAtOX+meZw7xjSDINIjRzu9NzwwVEPlbN/vAY0fEyisxz1X+nn6
+ dnlS49GI2g6EgWYciUWi8CieZ0GtB0uidi16dkQcGP8LdWOlC4nbTkueZglfmgH3aNo5
+ mOuiwoI2qHD2PXrdNoq7SelPnUXP0NeWYXl9s8uP5IyUXuWbW7bAPT3/kAK4r3H3I9Iw
+ fYZ67UR+vHp1nIJuIGmcUl9vpmKPP6z6m5Lhbo/jghwsfZQ2RmRoUkPYB/QWSQPmt7ea
+ Vd0+yKx+DBi3LoIyVLJeI8oPgjVWgFkJIJ/XGnUP5UVxDBobSLvCHaAevhthAmCGf5kW
+ VrQQ==
+X-Gm-Message-State: AOJu0YysXoGO1kUWlmEOKBRkJJ1h9GYVYsXXz6zED0Ax4LcO2VUWMot2
+ eUlCDc9Y1tAgWi+43cOZCSnnLnBfW9Fmz5IFXpg=
+X-Received: by 2002:a5d:5191:0:b0:333:3c28:2895 with SMTP id
+ k17-20020a5d5191000000b003333c282895mr7819790wrv.77.1702899201695; 
+ Mon, 18 Dec 2023 03:33:21 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.15
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:16 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:21 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 20/35] target/arm: Handle FEAT_NV page table attribute changes
-Date: Mon, 18 Dec 2023 11:32:50 +0000
-Message-Id: <20231218113305.2511480-21-peter.maydell@linaro.org>
+Subject: [PATCH 31/35] target/arm: Mark up VNCR offsets (offsets >= 0x200,
+ except GIC)
+Date: Mon, 18 Dec 2023 11:33:01 +0000
+Message-Id: <20231218113305.2511480-32-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,67 +124,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TghEomU7tRRY
+X-TUID: 2eTeCBxnwRYa
 
-FEAT_NV requires that when HCR_EL2.{NV,NV1} == {1,1} the handling
-of some of the page table attribute bits changes for the EL1&0
-translation regime:
+Mark up the cpreginfo structs to indicate offsets for system
+registers from VNCR_EL2, as defined in table D8-66 in rule R_CSRPQ in
+the Arm ARM.  This covers all the remaining offsets at 0x200 and
+above, except for the GIC ICH_* registers.
 
- * for block and page descriptors:
-  - bit [54] holds PXN, not UXN
-  - bit [53] is RES0, and the effective value of UXN is 0
-  - bit [6], AP[1], is treated as 0
- * for table descriptors, when hierarchical permissions are enabled:
-  - bit [60] holds PXNTable, not UXNTable
-  - bit [59] is RES0
-  - bit [61], APTable[0] is treated as 0
-
-Implement these changes to the page table attribute handling.
+(Note that because we don't implement FEAT_SPE, FEAT_TRF,
+FEAT_MPAM, FEAT_BRBE or FEAT_AMUv1p1 we don't implement any
+of the registers that use offsets at 0x800 and above.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/ptw.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ target/arm/helper.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 1762b058aec..cab30f0bf46 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1581,6 +1581,12 @@ static bool lpae_block_desc_valid(ARMCPU *cpu, bool ds,
-     }
- }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 6c33619d646..c72ce4aee09 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4271,6 +4271,7 @@ static const ARMCPRegInfo vmsa_pmsa_cp_reginfo[] = {
+       .opc0 = 3, .crn = 6, .crm = 0, .opc1 = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_FAR_EL1,
++      .nv2_redirect_offset = 0x220 | NV2_REDIR_NV1,
+       .fieldoffset = offsetof(CPUARMState, cp15.far_el[1]),
+       .resetvalue = 0, },
+ };
+@@ -4286,6 +4287,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_TTBR0_EL1,
++      .nv2_redirect_offset = 0x200 | NV2_REDIR_NV1,
+       .writefn = vmsa_ttbr_write, .resetvalue = 0, .raw_writefn = raw_write,
+       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ttbr0_s),
+                              offsetof(CPUARMState, cp15.ttbr0_ns) } },
+@@ -4293,6 +4295,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_TTBR1_EL1,
++      .nv2_redirect_offset = 0x210 | NV2_REDIR_NV1,
+       .writefn = vmsa_ttbr_write, .resetvalue = 0, .raw_writefn = raw_write,
+       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.ttbr1_s),
+                              offsetof(CPUARMState, cp15.ttbr1_ns) } },
+@@ -5725,6 +5728,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 0, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_nv1,
++      .nv2_redirect_offset = 0x230 | NV2_REDIR_NV1,
+       .fieldoffset = offsetof(CPUARMState, elr_el[1]) },
+     { .name = "SPSR_EL1", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+@@ -5744,6 +5748,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, sp_el[0]) },
+     { .name = "SP_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 1, .opc2 = 0,
++      .nv2_redirect_offset = 0x240,
+       .access = PL2_RW, .type = ARM_CP_ALIAS | ARM_CP_EL3_NO_EL2_KEEP,
+       .fieldoffset = offsetof(CPUARMState, sp_el[1]) },
+     { .name = "SPSel", .state = ARM_CP_STATE_AA64,
+@@ -6866,9 +6871,11 @@ static const ARMCPRegInfo minimal_ras_reginfo[] = {
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "VDISR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 1, .opc2 = 1,
++      .nv2_redirect_offset = 0x500,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.vdisr_el2) },
+     { .name = "VSESR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 2, .opc2 = 3,
++      .nv2_redirect_offset = 0x508,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.vsesr_el2) },
+ };
  
-+static bool nv_nv1_enabled(CPUARMState *env, S1Translate *ptw)
-+{
-+    uint64_t hcr = arm_hcr_el2_eff_secstate(env, ptw->in_space);
-+    return (hcr & (HCR_NV | HCR_NV1)) == (HCR_NV | HCR_NV1);
-+}
-+
- /**
-  * get_phys_addr_lpae: perform one stage of page table walk, LPAE format
-  *
-@@ -1989,6 +1995,21 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         xn = extract64(attrs, 54, 1);
-         pxn = extract64(attrs, 53, 1);
- 
-+        if (el == 1 && nv_nv1_enabled(env, ptw)) {
-+            /*
-+             * With FEAT_NV, when HCR_EL2.{NV,NV1} == {1,1}, the block/page
-+             * descriptor bit 54 holds PXN, 53 is RES0, and the effective value
-+             * of UXN is 0. Similarly for bits 59 and 60 in table descriptors
-+             * (which we have already folded into bits 53 and 54 of attrs).
-+             * AP[1] (descriptor bit 6, our ap bit 0) is treated as 0.
-+             * Similarly, APTable[0] from the table descriptor is treated as 0;
-+             * we already folded this into AP[1] and squashing that to 0 does
-+             * the right thing.
-+             */
-+            pxn = xn;
-+            xn = 0;
-+            ap &= ~1;
-+        }
-         /*
-          * Note that we modified ptw->in_space earlier for NSTable, but
-          * result->f.attrs retains a copy of the original security space.
+@@ -9524,6 +9531,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .access = PL1_RW, .writefn = vbar_write,
+               .accessfn = access_nv1,
+               .fgt = FGT_VBAR_EL1,
++              .nv2_redirect_offset = 0x250 | NV2_REDIR_NV1,
+               .bank_fieldoffsets = { offsetof(CPUARMState, cp15.vbar_s),
+                                      offsetof(CPUARMState, cp15.vbar_ns) },
+               .resetvalue = 0 },
 -- 
 2.34.1
 

@@ -1,353 +1,137 @@
-Received: by 2002:a17:906:535b:b0:a20:43fc:1f40 with SMTP id j27csp3059251ejo;
-        Fri, 15 Dec 2023 06:08:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFnGKNF2FVP+x42Gf5MawOTYraw49jRMl/Cb3MSYh4gwR9P6DrISzOPAIhAxcsCXDAtKMfn
-X-Received: by 2002:a9d:6751:0:b0:6d9:f6c3:9504 with SMTP id w17-20020a9d6751000000b006d9f6c39504mr11763856otm.64.1702649297996;
-        Fri, 15 Dec 2023 06:08:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702649297; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp618605eji;
+        Sun, 17 Dec 2023 23:26:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHRich7keYQ2etKvJa6va/fRaSxj577WAb+OmmSwNOPxWnvqTRYOEc+2u9MS0DXQQ3afn/O
+X-Received: by 2002:a05:6214:226a:b0:67f:2201:81df with SMTP id gs10-20020a056214226a00b0067f220181dfmr6231489qvb.28.1702884410365;
+        Sun, 17 Dec 2023 23:26:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702884410; cv=none;
         d=google.com; s=arc-20160816;
-        b=AJNaY+uizSUyYRHWyFOYWZdpHqTCgB1CBqeDcCy7dkPH8QBsaLKO9XKImOfQmEn/8S
-         n+JoK+h4v5iABAstBjcnSQe5at89AEey6wGyzntLpKDlurz2wXnGD0l6EAUdNcP4YScC
-         IjWC88yGuBgmZxNjHKGPlWMwaXZ0K7VQovJ1uEfQstnR8OcuCRdkiOMzoN242RkGicR8
-         XhcYewTfJESrBUSAsetWOrr1QkKQgmhHaqEcZqRQGg7UFjEExvBemMBRDcuiIBcPzC9M
-         5e5dYlom4h160FJ/VBbNrwDsrebqjdd1wRf2OR4dZU+G7+tYkUUWm4vf9cVZauYtZPhZ
-         irEA==
+        b=Kl0i1G3SKj4lZpoMwHQq+x2v9adtckbEv4ZXVr6Ltg/+CfNWDiLPae5g5KyseR8XbS
+         aRd/cejfOB5rPhGav1/+YOqtUwdfytEoAt4yuaBXysnvWgIJSVW15gD0Ynb5A4qi3o0/
+         pY4DZGqybGdPfrPZ/thKWSKdiXzwUdv/Ao5Yb3Po+Of7L8xzV8BUXjGc2I6x1sku11JC
+         axfakBkDbGMYLgs1XmysK5bM+oUGbGoZT6p+TGhTVRgoYI7VanN/WJvAFBc6jir8aqg9
+         b5awrwi3DhqGIzJwKqNKn23MGo1h1UTVDQokIkCUzmmbeeSXeRV9njmvXcRw2uHO1xtM
+         JBzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=c4HT5F+UK7/71bqtR8jPcbK9fR7Z9VZ3+y4MRuMODng=;
-        fh=v045sp/n/mLZv49zCKO2LE5RLzVm9wU5iQpoO1Uergo=;
-        b=eP/6QJ/GvntIORCSBHYOlmdq3kO3s8YAF0K8z6P79hfL43anlddNum6ur9Rht4oYSA
-         9suJoLLzQRlTeS/ZBBZBod7RAA3ZaHFDQSuayr3DNsGJddnbm+Rlgycqvh+XUMqmlXUz
-         JJnikrP9eqjfAolQW0zUPGrxQooXcx4TC/bBxpIS0Dmd4fja51yZH5ltqD6PgiN3/6cB
-         rzIqcjCfdW7KorL34PrXirq4mC2G0XU1cJMesDpsreGMJemPv+nvKq2W5xo+K8Lb1y2a
-         FHEuuD6nbdY0dnwiSiVlHQR2ji9/5taZgtZbQ/Y2oMrK5CX4NvfL2xkwO6qJAzaLaV6i
-         0Xyg==
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=HEP9cBYUupaX8fOw+ri2243FNDdUxVKWCm+ZN6/xHPU=;
+        fh=uqmWA2ihpJ25DJQ84lcaTSQdl3+LzsYg8tZLT4o72cs=;
+        b=efZMQ0meL8tvZ3zJEKNkp6eX6xMD+dI9Ejy0FTDkibeC0CUQGJezY8MYNZy+/E5oNc
+         KVxfvs01cWv6hAwrJ1jddxmfN4T+V84+qp4GlR6ZQjpr/e9t88Lr31QvUeosPuMUWjAD
+         YPCWqM2JEkm2Ke7UxFEYDMLEiF4XuhIhcd5TcrjXVbbQuHomYr1r6DYC9ebkxWEok1ly
+         /MfUwmnROGHJZqfu0MqG62HOEIRQxG2iiHAjKdS077ORDpjRV3Lw90PSb8KVqYn/VOjg
+         StEh48kg7LGFAmu1RYfZjr2E2ht73qxDkV0gP49LE9e4IbU63jWDIk16Yk8cYMiep8F7
+         0Djw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZBwwgtw5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o23-20020ab07617000000b007cb76480ce5si611456uap.43.2023.12.15.06.08.17
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CTRAyTQJ;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id b19-20020a05620a0f9300b0077f129f0a08si21775639qkn.784.2023.12.17.23.26.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Dec 2023 06:08:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 17 Dec 2023 23:26:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZBwwgtw5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rE8qd-000216-Af; Fri, 15 Dec 2023 09:07:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rE8qX-0001vN-Lz
- for qemu-arm@nongnu.org; Fri, 15 Dec 2023 09:07:23 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rE8qV-00082d-EO
- for qemu-arm@nongnu.org; Fri, 15 Dec 2023 09:07:21 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-551e6b99490so761253a12.0
- for <qemu-arm@nongnu.org>; Fri, 15 Dec 2023 06:07:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702649238; x=1703254038; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=c4HT5F+UK7/71bqtR8jPcbK9fR7Z9VZ3+y4MRuMODng=;
- b=ZBwwgtw5ILQkjAk07Mg39rtdFqqm9nx8jw5SjdqO/FuvvWiRe2ZdUJt5AnO7DvV2q5
- SL+noiIhwGCxhjdNIjcZyK/N67xDZfn6a1xg8h9GypKRgj9ni1tef/CyfohEKjqL2sHa
- okxeuCEhAfD2QwoCYE16CeWYl+y+OkyPxcRzX3gl7sbeprPDjTbGt8G/i8OXN8B/0AJx
- 8Zmx9h/2K1JkSuACgNc2d8/LWOWFp39DkwYR5+Bkplb4JqxzfnqUNcniM6iFKSQKogGe
- mdqGHKn5pDkTyzkMIVKjVi7gax/Advv01E6RyOadY+TwLkq+RSrWovtrzfz0J7q1LSeD
- zzaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702649238; x=1703254038;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=c4HT5F+UK7/71bqtR8jPcbK9fR7Z9VZ3+y4MRuMODng=;
- b=lH9EzpiWV8/FQMtvvN4SCDN/EVQ4V8nP1GbynY9YD4MxGg8zgX5QI8UI4c2R2lhQzj
- VCqIlf5GbaSXd05WaeLJceXh07yZtr9YPZPJ0qop/vEbmGU+SKVWYQHG/Wyz8cqwhV4t
- o5a+6T3gVxj+53e4qMtyhWn6m1g5R6O/vOIo15fkquLElJ07qUlxEjfxyWuc/epD9qkL
- uPEpbAYISwbgC05wyw7IsTrM7hDmfqjKlIRwaR64YHqHlJ6Kh759d+cgCbJsgszrQ0L6
- DMtndYm6IdH4Twnmgz3zdPKOdoCQbK3qWfGLcLvX4agy/uNANEkC/gfsw7Aa12CsuAbw
- V5WQ==
-X-Gm-Message-State: AOJu0Yx9PmMP5PYLhTeeuqeQ06pqseg6niziHDPBmr/seZ23BFz0hJpA
- P7PtliXFbr7fLKBbV4omHG+Vs0tRB3/QX4H5bWt8y/9hcFlcQCJ8
-X-Received: by 2002:a50:9b5c:0:b0:551:8766:7296 with SMTP id
- a28-20020a509b5c000000b0055187667296mr2014998edj.105.1702649237658; Fri, 15
- Dec 2023 06:07:17 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CTRAyTQJ;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1702884409;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HEP9cBYUupaX8fOw+ri2243FNDdUxVKWCm+ZN6/xHPU=;
+	b=CTRAyTQJSo3ZUECDSn8MOkWkux/s57vTpZ4+KWBFIym8wJBP8ApYkiyhX8+T5hRBOSUWt9
+	yq65LZsdWlFkVLSo609j2Upc0ZI/XTjiBBC/u2F4AqYEP7ekUjy0TOBZ2XnMahiW3tyas4
+	BssRw/ReSCX3R5uvOG6MQs8WJZKopTs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-614-EtXnlD6HM9aJ8mfvJTem4Q-1; Mon, 18 Dec 2023 02:26:45 -0500
+X-MC-Unique: EtXnlD6HM9aJ8mfvJTem4Q-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4B42784AC62;
+	Mon, 18 Dec 2023 07:26:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.129])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1A86140C6EB9;
+	Mon, 18 Dec 2023 07:26:44 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 2D43D21E6920; Mon, 18 Dec 2023 08:26:43 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+  qemu-devel@nongnu.org,
+  Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  "Edgar E.
+ Iglesias"
+ <edgar.iglesias@gmail.com>,  Igor Mitsyanko <i.mitsyanko@gmail.com>,
+  Radoslaw Biernacki <rad@semihalf.com>,  qemu-arm@nongnu.org,  Leif
+ Lindholm <quic_llindhol@quicinc.com>,  Rob Herring <robh@kernel.org>,
+  Alistair Francis <alistair@alistair23.me>,  Marcin Juszkiewicz
+ <marcin.juszkiewicz@linaro.org>
+Subject: Re: [RFC PATCH] hw/arm: Prefer arm_feature() over
+ object_property_find()
+In-Reply-To: <CAFEAcA-Je+_tNCwiL_sQb-tDmCRJ2LWm5mAfuowtxbUBNEWQXQ@mail.gmail.com>
+	(Peter Maydell's message of "Thu, 14 Dec 2023 17:25:36 +0000")
+References: <20231214171447.44025-1-philmd@linaro.org>
+	<CAFEAcA-Je+_tNCwiL_sQb-tDmCRJ2LWm5mAfuowtxbUBNEWQXQ@mail.gmail.com>
+Date: Mon, 18 Dec 2023 08:26:43 +0100
+Message-ID: <871qbkug24.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20231103182750.855577-1-peter.maydell@linaro.org>
-In-Reply-To: <20231103182750.855577-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Dec 2023 14:07:06 +0000
-Message-ID: <CAFEAcA-QXorAggMFLEknvkrrBtCZSEWpcW_Fx_GTrxD0RfqUFg@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/musicpal: Convert to qemu_add_kbd_event_handler()
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Jan Kiszka <jan.kiszka@web.de>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iWVuX0qI/9LA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+X-TUID: Ny6gCikW1G8E
 
-Ping for code review, since we're approaching the end of the
-8.2 freeze ?
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-thanks
--- PMM
+> On Thu, 14 Dec 2023 at 17:14, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
+org> wrote:
+>>
+>> QOM properties are added on the ARM vCPU object when a
+>> feature is present. Rather than checking the property
+>> is present, check the feature.
+>>
+>> Suggested-by: Markus Armbruster <armbru@redhat.com>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> ---
+>> RFC: If there is no objection on this patch, I can split
+>>      as a per-feature series if necessary.
+>>
+>> Based-on: <20231123143813.42632-1-philmd@linaro.org>
+>>   "hw: Simplify accesses to CPUState::'start-powered-off' property"
+>
+> I'm not a super-fan of board-level code looking inside
+> the QOM object with direct use of arm_feature() when
+> it doesn't have to. What's wrong with asking whether
+> the property exists before trying to set it?
 
-On Fri, 3 Nov 2023 at 18:27, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Convert the musicpal key input device to use
-> qemu_add_kbd_event_handler().  This lets us simplify it because we no
-> longer need to track whether we're in the middle of a PS/2 multibyte
-> key sequence.
->
-> In the conversion we move the keyboard handler registration from init
-> to realize, because devices shouldn't disturb the state of the
-> simulation by doing things like registering input handlers until
-> they're realized, so that device objects can be introspected
-> safely.
->
-> The behaviour where key-repeat is permitted for the arrow-keys only
-> is intentional (added in commit 7c6ce4baedfcd0c), so we retain it,
-> and add a comment to that effect.
->
-> This is a migration compatibility break for musicpal.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/musicpal.c | 131 +++++++++++++++++++++-------------------------
->  1 file changed, 61 insertions(+), 70 deletions(-)
->
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index 9703bfb97fb..e8c1250ab04 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -1043,20 +1043,6 @@ static const TypeInfo musicpal_gpio_info = {
->  };
->
->  /* Keyboard codes & masks */
-> -#define KEY_RELEASED            0x80
-> -#define KEY_CODE                0x7f
-> -
-> -#define KEYCODE_TAB             0x0f
-> -#define KEYCODE_ENTER           0x1c
-> -#define KEYCODE_F               0x21
-> -#define KEYCODE_M               0x32
-> -
-> -#define KEYCODE_EXTENDED        0xe0
-> -#define KEYCODE_UP              0x48
-> -#define KEYCODE_DOWN            0x50
-> -#define KEYCODE_LEFT            0x4b
-> -#define KEYCODE_RIGHT           0x4d
-> -
->  #define MP_KEY_WHEEL_VOL       (1 << 0)
->  #define MP_KEY_WHEEL_VOL_INV   (1 << 1)
->  #define MP_KEY_WHEEL_NAV       (1 << 2)
-> @@ -1074,67 +1060,66 @@ struct musicpal_key_state {
->      SysBusDevice parent_obj;
->      /*< public >*/
->
-> -    uint32_t kbd_extended;
->      uint32_t pressed_keys;
->      qemu_irq out[8];
->  };
->
-> -static void musicpal_key_event(void *opaque, int keycode)
-> +static void musicpal_key_event(DeviceState *dev, QemuConsole *src,
-> +                               InputEvent *evt)
->  {
-> -    musicpal_key_state *s = opaque;
-> +    musicpal_key_state *s = MUSICPAL_KEY(dev);
-> +    InputKeyEvent *key = evt->u.key.data;
-> +    int qcode = qemu_input_key_value_to_qcode(key->key);
->      uint32_t event = 0;
->      int i;
->
-> -    if (keycode == KEYCODE_EXTENDED) {
-> -        s->kbd_extended = 1;
-> -        return;
-> +    switch (qcode) {
-> +    case Q_KEY_CODE_UP:
-> +        event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
-> +        break;
-> +
-> +    case Q_KEY_CODE_DOWN:
-> +        event = MP_KEY_WHEEL_NAV;
-> +        break;
-> +
-> +    case Q_KEY_CODE_LEFT:
-> +        event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
-> +        break;
-> +
-> +    case Q_KEY_CODE_RIGHT:
-> +        event = MP_KEY_WHEEL_VOL;
-> +        break;
-> +
-> +    case Q_KEY_CODE_F:
-> +        event = MP_KEY_BTN_FAVORITS;
-> +        break;
-> +
-> +    case Q_KEY_CODE_TAB:
-> +        event = MP_KEY_BTN_VOLUME;
-> +        break;
-> +
-> +    case Q_KEY_CODE_RET:
-> +        event = MP_KEY_BTN_NAVIGATION;
-> +        break;
-> +
-> +    case Q_KEY_CODE_M:
-> +        event = MP_KEY_BTN_MENU;
-> +        break;
->      }
->
-> -    if (s->kbd_extended) {
-> -        switch (keycode & KEY_CODE) {
-> -        case KEYCODE_UP:
-> -            event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
-> -            break;
-> -
-> -        case KEYCODE_DOWN:
-> -            event = MP_KEY_WHEEL_NAV;
-> -            break;
-> -
-> -        case KEYCODE_LEFT:
-> -            event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
-> -            break;
-> -
-> -        case KEYCODE_RIGHT:
-> -            event = MP_KEY_WHEEL_VOL;
-> -            break;
-> -        }
-> -    } else {
-> -        switch (keycode & KEY_CODE) {
-> -        case KEYCODE_F:
-> -            event = MP_KEY_BTN_FAVORITS;
-> -            break;
-> -
-> -        case KEYCODE_TAB:
-> -            event = MP_KEY_BTN_VOLUME;
-> -            break;
-> -
-> -        case KEYCODE_ENTER:
-> -            event = MP_KEY_BTN_NAVIGATION;
-> -            break;
-> -
-> -        case KEYCODE_M:
-> -            event = MP_KEY_BTN_MENU;
-> -            break;
-> -        }
-> -        /* Do not repeat already pressed buttons */
-> -        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
-> +    /*
-> +     * We allow repeated wheel-events when the arrow keys are held down,
-> +     * but do not repeat already-pressed buttons for the other key inputs.
-> +     */
-> +    if (!(event & (MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_VOL))) {
-> +        if (key->down && (s->pressed_keys & event)) {
->              event = 0;
->          }
->      }
->
->      if (event) {
->          /* Raise GPIO pin first if repeating a key */
-> -        if (!(keycode & KEY_RELEASED) && (s->pressed_keys & event)) {
-> +        if (key->down && (s->pressed_keys & event)) {
->              for (i = 0; i <= 7; i++) {
->                  if (event & (1 << i)) {
->                      qemu_set_irq(s->out[i], 1);
-> @@ -1143,17 +1128,15 @@ static void musicpal_key_event(void *opaque, int keycode)
->          }
->          for (i = 0; i <= 7; i++) {
->              if (event & (1 << i)) {
-> -                qemu_set_irq(s->out[i], !!(keycode & KEY_RELEASED));
-> +                qemu_set_irq(s->out[i], !key->down);
->              }
->          }
-> -        if (keycode & KEY_RELEASED) {
-> -            s->pressed_keys &= ~event;
-> -        } else {
-> +        if (key->down) {
->              s->pressed_keys |= event;
-> +        } else {
-> +            s->pressed_keys &= ~event;
->          }
->      }
-> -
-> -    s->kbd_extended = 0;
->  }
->
->  static void musicpal_key_init(Object *obj)
-> @@ -1162,20 +1145,27 @@ static void musicpal_key_init(Object *obj)
->      DeviceState *dev = DEVICE(sbd);
->      musicpal_key_state *s = MUSICPAL_KEY(dev);
->
-> -    s->kbd_extended = 0;
->      s->pressed_keys = 0;
->
->      qdev_init_gpio_out(dev, s->out, ARRAY_SIZE(s->out));
-> +}
->
-> -    qemu_add_kbd_event_handler(musicpal_key_event, s);
-> +static const QemuInputHandler musicpal_key_handler = {
-> +    .name = "musicpal_key",
-> +    .mask = INPUT_EVENT_MASK_KEY,
-> +    .event = musicpal_key_event,
-> +};
-> +
-> +static void musicpal_key_realize(DeviceState *dev, Error **errp)
-> +{
-> +    qemu_input_handler_register(dev, &musicpal_key_handler);
->  }
->
->  static const VMStateDescription musicpal_key_vmsd = {
->      .name = "musicpal_key",
-> -    .version_id = 1,
-> -    .minimum_version_id = 1,
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
->      .fields = (VMStateField[]) {
-> -        VMSTATE_UINT32(kbd_extended, musicpal_key_state),
->          VMSTATE_UINT32(pressed_keys, musicpal_key_state),
->          VMSTATE_END_OF_LIST()
->      }
-> @@ -1186,6 +1176,7 @@ static void musicpal_key_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->
->      dc->vmsd = &musicpal_key_vmsd;
-> +    dc->realize = musicpal_key_realize;
->  }
->
->  static const TypeInfo musicpal_key_info = {
-> --
-> 2.34.1
->
+I'm not a fan of using QOM instead of the native C interface.
+
+The native C interface is CPUArmState method arm_feature().
+
+Attempts to use it on anything but a CPUArmState * will be caught by the
+compiler.  object_property_find() will happily take any Object.
+
+Likewise, typos in its second argument will be caught by the compiler.
+object_property_find() will happily return NULL then.
+
+
+I also don't like adding QOM properties to instances.
+arm_cpu_post_init() seems to do that.  I feel it's best to stick to
+class properties whenever practical.
+
+More so when management applications are expected to use them, because
+introspection is much easier to use correctly when existence of
+properties doesn't depend on run-time state.
+
+Kevin's "[RFC PATCH 00/12] QOM/QAPI integration part 1" explores
+QAPIfication of object configuration, loosely based on
+<https://wiki.qemu.org/Features/QOM-QAPI_integration>.  A QOM class's
+instance configuration interface becomes compile-time static.

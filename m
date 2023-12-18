@@ -1,108 +1,107 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722540eji;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722541eji;
         Mon, 18 Dec 2023 03:33:59 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFlunF9lCz91lcBqr+Sq0tIamRRN0IOWQo4LEWjhdg1luTrYHPlm8AD45yUH6btDazKJGGP
-X-Received: by 2002:a05:6870:fba5:b0:203:ae6a:5be8 with SMTP id kv37-20020a056870fba500b00203ae6a5be8mr3043104oab.104.1702899239674;
+X-Google-Smtp-Source: AGHT+IHZyZPTij3LPMyq54t4KQV2W/FYIxAVSBfBVxqZDlotTj0yIe7sD7ErjuhpfGZAk99b/Syk
+X-Received: by 2002:a05:622a:1316:b0:425:4043:5f3a with SMTP id v22-20020a05622a131600b0042540435f3amr21864964qtk.120.1702899239727;
         Mon, 18 Dec 2023 03:33:59 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1702899239; cv=none;
         d=google.com; s=arc-20160816;
-        b=cVKChTFTaRVp7r1SHkN/cNlerA99QOwye+kLy4X7W++ABUW6Nr5Q3LjaCAw8xtpaPF
-         PRFRhD+BjHbQRgQBVilpS50fPs9k0Q+Fx5F79FYmxt7M09ODTFP7Pc09IL4RHpoDZSW6
-         L0dN3JHFgfbGYvyhnaOLH+zK09xtqt738KpNjr5h7VR3nicPqL2HFVim0788yh6KPFcU
-         uNfydJz0fC0WYJv27OWuNzhSCZkCRZop1T2gcgJ9ZqpXxBN9dPKP2D0A9PldyEYTpfuV
-         RiCQLAxST9EA0i2gHYCMh3KGK9okUa6mln218ZtvJs2WBLbqrtiUsW8Sf5A/Gcx/3ywi
-         ZP/Q==
+        b=i2WhIGX6iqWfYaxjIlfkrh+aQxHMw3XNLMCXIhrxw8iMboiWK8vEtCi1MSAaGV2Kk+
+         sF9AwPNIEst0nukiJEwfY5rlv4KtZeQYjC2l5PqH2HG3miLZLMLcI64gwSD9mvzAHP7C
+         rP+hy5y/L6wTbKSW+4QHXdtSExmpfdoJYFWqDMvJxGQxP/oZg81dIqIuT55PkUIvCvZM
+         Kk1tyoOZZ2eO5U9/XQRFaW6kB3mWMn0kiY6Z52oUS0k1Nw8shOZN+mXRwpKM/J4r5wz0
+         c7FrX5k5Lllu75gtPyO0CnaR877Ecse148MIuERW1AnxO+V5XEsxILS2bbcbC/7+25yk
+         vsXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qPsvpxF310iFfemPS3jxwCbvqlyY2e5E1329lnZ8oYM=;
+        bh=RGHbSdgWQToF9XoPUEdqhKpPWx7yHvt4xz3UKyzm5Bg=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=FdX7FmMI5LJ6bMbiZgurdru34q8sRH6CeaiGRknoQjIlWvYL4U8Ajx8/YVkRKM2CPc
-         L7WjVeSN0ZI+liGCQfFm13OhsLMZjX6Vvl1VUpDnbZOjLpuoRS43x42OsrL7Xj0tfH1t
-         QijxgXm6a406Uh07A80UJKP2o6OxeY7hCexrTHdO6d/pefcMFsJI6F61lawscYFtGTyj
-         sYfBqhRuG/L1Y9bEotuJErxjygOIEjxAVl9NKyLneDaz9IXvzD7UeJzjWw/bwYxwNpiu
-         udU2ZNGdh/0HPvUSqvD/nMA4YQRUZPqWU2sBEpElXfXxVOnIHrW0GB0eSkxIDwaDHcma
-         4nAw==
+        b=drkt0ou4uptNoZsfL52KboVAeDrm0QhAe0HFolbWZVq+Qqf+vxtfM1CEPyxYDBT5Mg
+         U9s9w8qwhlCIb7DRxWcjRQ59vBlzKwIEqTXLvQlfw0cNqT3YYmMLtLgzc0leEtQ8EW11
+         dUehNzx0c/gQ6ekmQh7lAUQ3p7VNOfCcySruiZ8BSVFaF0WA+kn1Q128YWyO3fhBypmu
+         sTXv8vKQOtC5r69N9E+XGZ19lOlclSZEn1a7hBxvX3N2Ou0jwSGOk1A/jg4us85J7yhf
+         voXbDdI/D/JKZbPLUgqJxi+t1jmpExjDwPFCxO0bI17eJC5QqaHdc0Og9VPbPL84+MEG
+         3Htw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FYMktpti;
+       dkim=pass header.i=@linaro.org header.s=google header.b="K0tb4C/s";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1-20020a05622a010100b00425f9a67a1bsi11248678qtw.771.2023.12.18.03.33.59
+        by mx.google.com with ESMTPS id bz13-20020a05622a1e8d00b004254f1ddb34si25698767qtb.52.2023.12.18.03.33.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 18 Dec 2023 03:33:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FYMktpti;
+       dkim=pass header.i=@linaro.org header.s=google header.b="K0tb4C/s";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rFBs9-0006fY-Td; Mon, 18 Dec 2023 06:33:21 -0500
+	id 1rFBs5-0006bE-ML; Mon, 18 Dec 2023 06:33:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs7-0006dT-Qa
- for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:19 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1rFBs3-0006Za-OX
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:15 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs1-0003Is-G0
- for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:19 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-3364c9ff8e1so1715022f8f.0
- for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:13 -0800 (PST)
+ id 1rFBry-0003Hg-Un
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:15 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-336668a5a8dso978281f8f.1
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899192; x=1703503992; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899189; x=1703503989; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=qPsvpxF310iFfemPS3jxwCbvqlyY2e5E1329lnZ8oYM=;
- b=FYMktptijT/TXko/8fLvNN8IXTcKvyTWob/dKk33oQxzBhygXPa3CQdMz1qaf9Bior
- UBHQD3UObSK6PvqLRKs5GmFIixulWm+yeTGHjPkJMY4ablb7YTaMfMHRtOB0J29oXYAC
- ebKxLdmEbXXjqEDpP2xJOwP3jTHMesXJGszZmCER7srzAhGX91jiZjW1rKC1TG29Nsti
- nK5Y3GcIwf7qSvtGbeKMJGJONhVioYJoui+icnIE/689+NTfizGBniJuMEfjxGP18dmx
- CGYRoym/tjwMd+4F/I2U8FIU/h6zRXqvj/1wUMgiPcINFPJlTDGATw0mAB6l2fODchfo
- bBGA==
+ :reply-to; bh=RGHbSdgWQToF9XoPUEdqhKpPWx7yHvt4xz3UKyzm5Bg=;
+ b=K0tb4C/sh/RYGAVncMZmm4JvPTrd8Vjfo6S5PGeBuF29QLGfviH2YGa+7EKbCfcqYj
+ kv6uK+PjXb0bwWlRFfGq3IYE+xgsgm4vz4E5pnQegCSUC70ZTCxadEIqe0UzcJFum3mz
+ jwOoZfItcOlMJyjc8ZEejwXL3Rkk31vDJsHrJrS/LeYsXRYe6HOOn4J0EWU7Ydj29r0E
+ 8Q/Ol9u7fFDUJTNGz32UYbUIVmH4zwByWkA2dH8MbvnT9f8hm9MMfIOBTtCTa9wlL3hn
+ bTiGQklwhlgY0/zw85YPdwwAJJMe/JRuJa22Y5pa/LL3cwBBh1SvgJu3jFBYVQHQDugN
+ 80Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899192; x=1703503992;
+ d=1e100.net; s=20230601; t=1702899189; x=1703503989;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qPsvpxF310iFfemPS3jxwCbvqlyY2e5E1329lnZ8oYM=;
- b=c/9Gzfk38E20O32lnUmlGdkeSuFeuNbK0md9mvWUGbLklXtzWqOcWL/5gKOJOSe5+5
- 7aP7UBj7zPNZk/mAOf/2hKnr8vZBJmnkbnVr0OIUw0nIu7LkvvZ5ZFiyYGP4wptn9py+
- drHoLAdY50SMifaSYFzKluqtNPc+7DUlW6Tbh7qoPbFpdRWp8E7WbnulWTT4NkS4P2sv
- +gcOVfkbxVqjjnaIzZi8W7OO/Z+Iuvk6nKY0nV0bxc9Yt8YEESmRsANbx8W81joY/+Gr
- HhZ4tTaG8tV7giQIuuDcv+at52Pu+EchX0gQbbg5X/KfpEQsjq98gaV8KMYRMfsnstyK
- xHAQ==
-X-Gm-Message-State: AOJu0Ywrx0CIvFOM+JuRQ6ER8vYEZcEyvLwo8aWskZyHfapKwRB/QSDG
- 2PPzNIFjIJbXS0+WR5UD85MMdemqakGQoVtW77Q=
-X-Received: by 2002:a7b:c8d8:0:b0:40b:5e56:7b57 with SMTP id
- f24-20020a7bc8d8000000b0040b5e567b57mr8252810wml.160.1702899191903; 
- Mon, 18 Dec 2023 03:33:11 -0800 (PST)
+ bh=RGHbSdgWQToF9XoPUEdqhKpPWx7yHvt4xz3UKyzm5Bg=;
+ b=p4X8fDbQ4ip/1pexRQrOnWAE8xLv2ipsxsGY4vRH572TM/8f91Aa0CIDnKKzD/gMxx
+ TzMt199a81NdHuWBrqPJXBaZpNdQb1IZb6j+lMGQZv0uPLn25vLRDmtXDW07inXxx1BU
+ Oe/IOuDi3OtqmfUkTXHLu9NrvlpYTfIsQ5Jv8jY+53nk2icjypd8ilY1T4/1DGbAUfYJ
+ AEBbQ2ATAdLN0bvPJadQLDKXtXzTasjPKzoLzi/guPGqAWbCTNTgwS6LE5t+DVgnlvzr
+ UvZNhNs4y0NiFDsAk4fMrCLhgUetfwYfpd/4Aised79oznyLVObw7WN8xDLLYltM2PAY
+ 91Sg==
+X-Gm-Message-State: AOJu0Yz1rM/sD9VQNI1hoQe4b7UQRp5D8R7LyIOlyBmOHYXJnekkv44q
+ WkhYOd+LfPn4KCiBaPsewlknxw==
+X-Received: by 2002:a5d:64aa:0:b0:336:6a76:87c with SMTP id
+ m10-20020a5d64aa000000b003366a76087cmr613837wrp.40.1702899189591; 
+ Mon, 18 Dec 2023 03:33:09 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.11
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:11 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:09 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/35] target/arm: Make EL2 cpreg accessfns safe for FEAT_NV
- EL1 accesses
-Date: Mon, 18 Dec 2023 11:32:41 +0000
-Message-Id: <20231218113305.2511480-12-peter.maydell@linaro.org>
+Subject: [PATCH 06/35] target/arm: Enable trapping of ERET for FEAT_NV
+Date: Mon, 18 Dec 2023 11:32:36 +0000
+Message-Id: <20231218113305.2511480-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,188 +123,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EYBlxasV0Vnt
+X-TUID: vXm7RX6ZZ9Re
 
-FEAT_NV and FEAT_NV2 will allow EL1 to attempt to access cpregs that
-only exist at EL2. This means we're going to want to run their
-accessfns when the CPU is at EL1. In almost all cases, the behaviour
-we want is "the accessfn returns OK if at EL1".
+When FEAT_NV is turned on via the HCR_EL2.NV bit, ERET instructions
+are trapped, with the same syndrome information as for the existing
+FEAT_FGT fine-grained trap (in the pseudocode this is handled in
+AArch64.CheckForEretTrap()).
 
-Mostly the accessfn already does the right thing; in a few cases we
-need to explicitly check that the EL is not 1 before applying various
-trap controls, or split out an accessfn used both for an _EL1 and an
-_EL2 register into two so we can handle the FEAT_NV case correctly
-for the _EL2 register.
-
-There are two registers where we want the accessfn to trap for
-a FEAT_NV EL1 access: VSTTBR_EL2 and VSTCR_EL2 should UNDEF
-an access from NonSecure EL1, not trap to EL2 under FEAT_NV.
-The way we have written sel2_access() already results in this
-behaviour.
-
-We can identify the registers we care about here because they
-all have opc1 == 4 or 5.
+Rename the DisasContext and tbflag bits to reflect that they are
+no longer exclusively for FGT traps, and set the tbflag bit when
+FEAT_NV is enabled as well as when the FGT is enabled.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/debug_helper.c | 12 +++++++-
- target/arm/helper.c       | 65 ++++++++++++++++++++++++++++++++++-----
- 2 files changed, 69 insertions(+), 8 deletions(-)
+ target/arm/cpu.h               |  2 +-
+ target/arm/tcg/translate.h     |  4 ++--
+ target/arm/tcg/hflags.c        | 11 ++++++++++-
+ target/arm/tcg/translate-a64.c |  6 +++---
+ 4 files changed, 16 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 83d2619080f..b39144d5b93 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -844,6 +844,16 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a0282e0d281..167b3759ac9 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3235,7 +3235,7 @@ FIELD(TBFLAG_A64, PSTATE_ZA, 23, 1)
+ FIELD(TBFLAG_A64, SVL, 24, 4)
+ /* Indicates that SME Streaming mode is active, and SMCR_ELx.FA64 is not. */
+ FIELD(TBFLAG_A64, SME_TRAP_NONSTREAMING, 28, 1)
+-FIELD(TBFLAG_A64, FGT_ERET, 29, 1)
++FIELD(TBFLAG_A64, TRAP_ERET, 29, 1)
+ FIELD(TBFLAG_A64, NAA, 30, 1)
+ FIELD(TBFLAG_A64, ATA0, 31, 1)
  
-+static CPAccessResult access_dbgvcr32(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    /* MCDR_EL3.TDMA doesn't apply for FEAT_NV traps */
-+    if (arm_current_el(env) == 2 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
- /*
-  * Check for traps to Debug Comms Channel registers. If FEAT_FGT
-  * is implemented then these are controlled by MDCR_EL2.TDCC for
-@@ -1062,7 +1072,7 @@ static const ARMCPRegInfo debug_aa32_el1_reginfo[] = {
-      */
-     { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
--      .access = PL2_RW, .accessfn = access_tda,
-+      .access = PL2_RW, .accessfn = access_dbgvcr32,
-       .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
- };
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index 3c3bb3431ad..8c84377003c 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -138,10 +138,10 @@ typedef struct DisasContext {
+     bool mve_no_pred;
+     /* True if fine-grained traps are active */
+     bool fgt_active;
+-    /* True if fine-grained trap on ERET is enabled */
+-    bool fgt_eret;
+     /* True if fine-grained trap on SVC is enabled */
+     bool fgt_svc;
++    /* True if a trap on ERET is enabled (FGT or NV) */
++    bool trap_eret;
+     /* True if FEAT_LSE2 SCTLR_ELx.nAA is set */
+     bool naa;
+     /*
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index a6ebd7571a3..560fb7964ab 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -169,6 +169,7 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+     CPUARMTBFlags flags = {};
+     ARMMMUIdx stage1 = stage_1_mmu_idx(mmu_idx);
+     uint64_t tcr = regime_tcr(env, mmu_idx);
++    uint64_t hcr = arm_hcr_el2_eff(env);
+     uint64_t sctlr;
+     int tbii, tbid;
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e90eb5e16f3..44005665d12 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3308,6 +3308,11 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
- static CPAccessResult e2h_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  bool isread)
- {
-+    if (arm_current_el(env) == 1) {
-+        /* This must be a FEAT_NV access */
-+        /* TODO: FEAT_ECV will need to check CNTHCTL_EL2 here */
-+        return CP_ACCESS_OK;
-+    }
-     if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
-         return CP_ACCESS_TRAP;
+@@ -285,13 +286,21 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+     if (arm_fgt_active(env, el)) {
+         DP_TBFLAG_ANY(flags, FGT_ACTIVE, 1);
+         if (FIELD_EX64(env->cp15.fgt_exec[FGTREG_HFGITR], HFGITR_EL2, ERET)) {
+-            DP_TBFLAG_A64(flags, FGT_ERET, 1);
++            DP_TBFLAG_A64(flags, TRAP_ERET, 1);
+         }
+         if (fgt_svc(env, el)) {
+             DP_TBFLAG_ANY(flags, FGT_SVC, 1);
+         }
      }
-@@ -5998,7 +6003,7 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static CPAccessResult access_hxen(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
--    if (arm_current_el(env) < 3
-+    if (arm_current_el(env) == 2
-         && arm_feature(env, ARM_FEATURE_EL3)
-         && !(env->cp15.scr_el3 & SCR_HXEN)) {
-         return CP_ACCESS_TRAP_EL3;
-@@ -6523,6 +6528,15 @@ static CPAccessResult el2_e2h_e12_access(CPUARMState *env,
-                                          const ARMCPRegInfo *ri,
-                                          bool isread)
- {
-+    if (arm_current_el(env) == 1) {
-+        /*
-+         * This must be a FEAT_NV access (will either trap or redirect
-+         * to memory). None of the registers with _EL12 aliases want to
-+         * apply their trap controls for this kind of access, so don't
-+         * call the orig_accessfn or do the "UNDEF when E2H is 0" check.
-+         */
-+        return CP_ACCESS_OK;
-+    }
-     /* FOO_EL12 aliases only exist when E2H is 1; otherwise they UNDEF */
-     if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
-         return CP_ACCESS_TRAP_UNCATEGORIZED;
-@@ -6999,10 +7013,21 @@ static CPAccessResult access_tpidr2(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
  
--static CPAccessResult access_esm(CPUARMState *env, const ARMCPRegInfo *ri,
--                                 bool isread)
-+static CPAccessResult access_smprimap(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
-+    /* If EL1 this is a FEAT_NV access and CPTR_EL3.ESM doesn't apply */
-+    if (arm_current_el(env) == 2
-+        && arm_feature(env, ARM_FEATURE_EL3)
-+        && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
-+
-+static CPAccessResult access_smpri(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                   bool isread)
- {
--    /* TODO: FEAT_FGT for SMPRI_EL1 but not SMPRIMAP_EL2 */
-     if (arm_current_el(env) < 3
-         && arm_feature(env, ARM_FEATURE_EL3)
-         && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
-@@ -7121,12 +7146,12 @@ static const ARMCPRegInfo sme_reginfo[] = {
-      */
-     { .name = "SMPRI_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 2, .opc2 = 4,
--      .access = PL1_RW, .accessfn = access_esm,
-+      .access = PL1_RW, .accessfn = access_smpri,
-       .fgt = FGT_NSMPRI_EL1,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
-     { .name = "SMPRIMAP_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 2, .opc2 = 5,
--      .access = PL2_RW, .accessfn = access_esm,
-+      .access = PL2_RW, .accessfn = access_smprimap,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
- };
- 
-@@ -7769,7 +7794,33 @@ static CPAccessResult access_mte(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  bool isread)
- {
-     int el = arm_current_el(env);
-+    if (el < 2 && arm_is_el2_enabled(env)) {
-+        uint64_t hcr = arm_hcr_el2_eff(env);
-+        if (!(hcr & HCR_ATA) && (!(hcr & HCR_E2H) || !(hcr & HCR_TGE))) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-+    }
-+    if (el < 3 &&
-+        arm_feature(env, ARM_FEATURE_EL3) &&
-+        !(env->cp15.scr_el3 & SCR_ATA)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
-+}
- 
-+static CPAccessResult access_tfsr_el2(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                      bool isread)
-+{
 +    /*
-+     * TFSR_EL2: similar to generic access_mte(), but we need to
-+     * account for FEAT_NV. At EL1 this must be a FEAT_NV access;
-+     * we will trap to EL2 and the HCR/SCR traps do not apply.
++     * ERET can also be trapped for FEAT_NV. arm_hcr_el2_eff() takes care
++     * of "is EL2 enabled" and the NV bit can only be set if FEAT_NV is present.
 +     */
-+    int el = arm_current_el(env);
-+
-+    if (el == 1) {
-+        return CP_ACCESS_OK;
++    if (el == 1 && (hcr & HCR_NV)) {
++        DP_TBFLAG_A64(flags, TRAP_ERET, 1);
 +    }
-     if (el < 2 && arm_is_el2_enabled(env)) {
-         uint64_t hcr = arm_hcr_el2_eff(env);
-         if (!(hcr & HCR_ATA) && (!(hcr & HCR_E2H) || !(hcr & HCR_TGE))) {
-@@ -7805,7 +7856,7 @@ static const ARMCPRegInfo mte_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[1]) },
-     { .name = "TFSR_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 6, .opc2 = 0,
--      .access = PL2_RW, .accessfn = access_mte,
-+      .access = PL2_RW, .accessfn = access_tfsr_el2,
-       .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[2]) },
-     { .name = "TFSR_EL3", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 6, .crn = 5, .crm = 6, .opc2 = 0,
++
+     if (cpu_isar_feature(aa64_mte, env_archcpu(env))) {
+         /*
+          * Set MTE_ACTIVE if any access may be Checked, and leave clear
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index a2e49c39f9f..00d12e148ca 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -1605,7 +1605,7 @@ static bool trans_ERET(DisasContext *s, arg_ERET *a)
+     if (s->current_el == 0) {
+         return false;
+     }
+-    if (s->fgt_eret) {
++    if (s->trap_eret) {
+         gen_exception_insn_el(s, 0, EXCP_UDEF, syn_erettrap(0), 2);
+         return true;
+     }
+@@ -1632,7 +1632,7 @@ static bool trans_ERETA(DisasContext *s, arg_reta *a)
+         return false;
+     }
+     /* The FGT trap takes precedence over an auth trap. */
+-    if (s->fgt_eret) {
++    if (s->trap_eret) {
+         gen_exception_insn_el(s, 0, EXCP_UDEF, syn_erettrap(a->m ? 3 : 2), 2);
+         return true;
+     }
+@@ -13979,7 +13979,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->pstate_il = EX_TBFLAG_ANY(tb_flags, PSTATE__IL);
+     dc->fgt_active = EX_TBFLAG_ANY(tb_flags, FGT_ACTIVE);
+     dc->fgt_svc = EX_TBFLAG_ANY(tb_flags, FGT_SVC);
+-    dc->fgt_eret = EX_TBFLAG_A64(tb_flags, FGT_ERET);
++    dc->trap_eret = EX_TBFLAG_A64(tb_flags, TRAP_ERET);
+     dc->sve_excp_el = EX_TBFLAG_A64(tb_flags, SVEEXC_EL);
+     dc->sme_excp_el = EX_TBFLAG_A64(tb_flags, SMEEXC_EL);
+     dc->vl = (EX_TBFLAG_A64(tb_flags, VL) + 1) * 16;
 -- 
 2.34.1
 

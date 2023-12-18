@@ -1,107 +1,103 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722596eji;
-        Mon, 18 Dec 2023 03:34:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFfjf2zUeXA3JqzmEXN9ND3S/VjEPvUBPEeOUizcEwcv/CGUFbcrQReLJF3bApFuiV7gea7
-X-Received: by 2002:a05:6214:21a1:b0:67a:9b28:b4cc with SMTP id t1-20020a05621421a100b0067a9b28b4ccmr21857674qvc.31.1702899247043;
-        Mon, 18 Dec 2023 03:34:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899247; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722957eji;
+        Mon, 18 Dec 2023 03:34:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFsUrhiDDA9SGJ/XmRv9Eshe4xl9BZh01lcZVFQhqPxXkNj5f+EoxRXf7u54x1tqQI0fo2z
+X-Received: by 2002:a05:6358:60c4:b0:172:e18e:e61 with SMTP id i4-20020a05635860c400b00172e18e0e61mr757771rwi.17.1702899285719;
+        Mon, 18 Dec 2023 03:34:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899285; cv=none;
         d=google.com; s=arc-20160816;
-        b=JBD2u943ii1qhWj9CWHVzcCkAwFHbRcxpjdY5MX3ZI+HiEnccuouFXhPw2GYBhZuMZ
-         0DPMuwGf1ClsC8ejCXrkxtln8GdikIZ80PYegX8fq4Ge09o/W1cz8C6w8vloR81e3aVr
-         O8/6UhH3BPN132rDHxMCGu78e3XtGkOgoAYRvDBiMCEaLhA24/zHkgOvv1LMf+HQ1iCE
-         pAIcE/rp8ZKxo71QDyBfshsvoV6iqs2JHOSJAK7yvxffmt//0A64LDqmpxOPUiIXb9tc
-         JZNVLFHQnV9b/AqWI+cw9dNXrMcnzIuCkO71nQyy7vW7XZ9Ss4f5cxlKNc1Zz2UbV+17
-         lQeQ==
+        b=aU0kDFbSE9wgMglVxE6Mplq48ixZDjpW4lwACMZbbPLkdqaDMBV0i5Me3jidIk/gyn
+         ixEPGxEFDsYHk4y2bLqeP9ZBmSs68t+6szNOTHwztcquEgyUlKEfTOSrk8xcEO9uMvem
+         ft9H0FCPO74+b4E7OVvOUQm38POn98WyVFwglN6EiWNuiMiVJsu8V8hbHKYUu3vpm9dU
+         TWzyO5K4sQIecynyskyoCuGQOpAd/N3XNEOmgIi2hr5eRNFgOyglQvbID8aK7o80FcY6
+         wAAxFdtrU4CvTyxOqjP4nlVQnXK3qbpD3/RWROCjrSbMoNBudFY/qAzTUXNDMI60zoVo
+         fRTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=lyw7hmYvfBAXpzd5WD7qyMRqQcXNy82umQs3WP8yG8E=;
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ccFOH05Cbw63Xbc7/WOKzLyjuXWoZ8HlICGnlISMfys=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=IB+kUDqmfQn4K4Cyrv0GmgwS0HgKOZPf3eLsB/2LvCVtcbgHuszvF4cI7+Bfi0XIx/
-         DFnhhvgxy2jsT9itnCJaisSbYN/WOJoa/4DotDjaufE42LXrxEYf3izzxSTPA2sENHkH
-         GK/WhgEVft62157l9ubYXOrf17Cr0wGZy/OoQvWBSgj7mWsxsNJ5SSelTe7kQ4UTwB3h
-         NhGrnbDTr5BdXfLnFiDUMeoUo8FBd6QsfLLq3uN/cXYkv1xwdGTzZzGly9E8jJuy8pVA
-         HSUTSufxnotPT0dSYLtjBMFehiYq7EF0NEyMOiyUGrygQEtCR9BfKttrN0ROYcj8JWir
-         jwvw==
+        b=oHUHhRlY4/V1otzcr3KekBkT5au4eelXYOsjNV9prP8z3p9+4n0r3yBjyTjcaDUjuW
+         BSapT/7Gnr0C/q0z3AHiWJq8uHu9zlO+2LFejzyQYg8hLgxuOHhORnclyO8dyKMHb3uS
+         et7EjXiFx+kV40MFEk1I/ARjPDVcEhgc4kCd0fAK/0DMNVC8BZ4659QGN8qm9vVKzwCI
+         QNwF/92uh6SMPFmns6Qfe5en6wg0eZ/BHWQvFw8ftlti9Bp9sFYlM6+00YAR0qnoKdf+
+         nOU7eMApxwuoGkUbNR83RI503UrOYUpjN24jbF0sw4sQdklEApC0CeBlJA3EEqYtdg6/
+         hDNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qp7W+1Ix;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ptlCBnBr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10-20020a0cf14a000000b0067f2c592fffsi4788149qvl.307.2023.12.18.03.34.06
+        by mx.google.com with ESMTPS id a16-20020a0ce350000000b0067f518ca817si406809qvm.353.2023.12.18.03.34.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:34:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Dec 2023 03:34:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qp7W+1Ix;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ptlCBnBr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFBs0-0006WY-Pn; Mon, 18 Dec 2023 06:33:12 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rFBs0-0006WG-HH; Mon, 18 Dec 2023 06:33:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBrz-0006Vz-Vx
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:12 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1rFBrz-0006Vr-BR
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:11 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBrx-0003H7-L3
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:11 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-32f8441dfb5so2674285f8f.0
- for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:09 -0800 (PST)
+ id 1rFBrw-0003Gw-TI
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:11 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-336607f4d05so759406f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899188; x=1703503988; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=lyw7hmYvfBAXpzd5WD7qyMRqQcXNy82umQs3WP8yG8E=;
- b=Qp7W+1Ix6hRVgAink4bdpuBVLo6iIuHxSVu0ab6AItvUAzlAO0aaPWy9Zp0PvD07zj
- SQgBtgE/72ww03OGu73qRi0j5//7mcgRL5nvPzdvKZ3ENHgPQQW3wm3JFrHaTMeN81i7
- 8cgSS7/ir9Jln1AbDbaQjOBcVaTr7Ek/rTK4GOp9dfxKDLiTP+IGtA3vC+LYCtSkpP+x
- +8r56bnuYvnuMqyrnJTsuBYSTCe0vP2/S2I0gXVGSuMENZN66ibi9RcOwmQSM85SqbHf
- U0iHvCMYwG8x+sXCtDmbS00l3EaiJ/oOBYzSVCkB0WBz1J2ZL9HZPtrUg6AmS98h5zHT
- F2Qg==
+ d=linaro.org; s=google; t=1702899187; x=1703503987; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ccFOH05Cbw63Xbc7/WOKzLyjuXWoZ8HlICGnlISMfys=;
+ b=ptlCBnBrQE8iK3dzQ6Vy4vUEgM6a2DfMAheuD/Xcmq38BGpilpTcqLnko+iu4rsCCs
+ hh7e5NEWJ/9SLfeRPEyjRGDSqkjUAQd2gKmkvt/U5iSXlw7tZqRVWzyi7alGRBzfeRi+
+ g84qLlKR6H5dtwCQXTRYqc3VbT0iID1Xgc0bK2jZavmE4uOc6DHRAw41gCu1PZO1llC9
+ cgftxlGDOITD8ArvyX/7RF3OXogRJOnCZHgyEr28RH23VQhdvqidsGA3XeBAUVfoMd8c
+ yDwTlhjYA7vBFQyXji+XU6dYruNtDfVrG6YrgikarlVL2oBR6uAb+4pFGQjljOj+GJtj
+ fqrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899188; x=1703503988;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=lyw7hmYvfBAXpzd5WD7qyMRqQcXNy82umQs3WP8yG8E=;
- b=b9rGqhC8awHQYA5uHaus0IKQdCqGRU4tWPM6JzeDGeK6VhUhlc0vAihMBxAyjI2R/1
- fjOXqzoC7kD6vjLKl7pNjE7x3zbpKnsh52aIS4L9YgcOWq6aBu7xnOKZxsAU71V/AfTi
- E8XSQvTUfDGqbQ1YFaJybZUPWX5u5hD7TFZBY4J8l2hlxNCs636Ot5CRTnd1ISZe4Oxk
- PMgIznXciU1kWeNL4PyY842aBi6eohPxUNQEH+KrKYGjRhT/8aR1i67j3+Wv3ew6WSO3
- dl8m13VLmmFtf18LAhMNi9sOty8jXWOXvqScjXOCQ3y+/lRSQjkeEQ31v6GlejHsQ+pA
- xODw==
-X-Gm-Message-State: AOJu0Yxi0VW4MSkDes2rrXR8E3qnkERllV88Mu9tMI0hUPjxJq61DNLC
- 7SksxzlRTUCS8sT80auKezdHqqbw1LOB13UFC7w=
-X-Received: by 2002:a05:600c:1c93:b0:40b:5e59:e9f8 with SMTP id
- k19-20020a05600c1c9300b0040b5e59e9f8mr7900441wms.151.1702899187687; 
- Mon, 18 Dec 2023 03:33:07 -0800 (PST)
+ d=1e100.net; s=20230601; t=1702899187; x=1703503987;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ccFOH05Cbw63Xbc7/WOKzLyjuXWoZ8HlICGnlISMfys=;
+ b=ebFFCIbo8K72SltH4tnyAD1hHBfzhQHHKsZZKpVMhlhWdCXxj0xlK4T4CGtsZAysle
+ 2hO6mdV1OCuldxnzz9YpNICoYSj6NUaNmjsy8gEENW32y5YQgH1yDxGFYuYkramfx+L1
+ r+CG/KWp5yaaYQiiRMBsy8pl7OjYPlpk4jJKb4aLLc/dPAT4gWgHJi6AXY8m3/Nf0Qgb
+ 6jA85Od6AY7bAE/Le/blF0Q/4G9r0p9UHb7P72hFWFL0eOOVpIB8OEBT4si0gMT1EurH
+ gQiQ6RUpGFopyr2aT7We1WeUBO5AXTpMq8d27f8ElWsoYTZRcJ+UwmY9a4OX059a33ov
+ 05eA==
+X-Gm-Message-State: AOJu0Yx3k3SUaONATedyUOh2sqEWmKhY9kSN2l8P9DOGD9zIXc7AgAv1
+ miLMyxmla0o9JLclSpT6KRB9rg==
+X-Received: by 2002:a05:6000:124e:b0:336:5bb0:2f55 with SMTP id
+ j14-20020a056000124e00b003365bb02f55mr1733973wrx.5.1702899186692; 
+ Mon, 18 Dec 2023 03:33:06 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.07
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:07 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:06 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/35] target/arm: Set CTR_EL0.{IDC,DIC} for the 'max' CPU
-Date: Mon, 18 Dec 2023 11:32:32 +0000
-Message-Id: <20231218113305.2511480-3-peter.maydell@linaro.org>
+Subject: [PATCH 00/35] target/arm: Implement emulation of nested virtualization
+Date: Mon, 18 Dec 2023 11:32:30 +0000
+Message-Id: <20231218113305.2511480-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
-References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,63 +106,140 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +LN1SEXlRas6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: b2PwfW6er3qN
 
-The CTR_EL0 register has some bits which allow the implementation to
-tell the guest that it does not need to do cache maintenance for
-data-to-instruction coherence and instruction-to-data coherence.
-QEMU doesn't emulate caches and so our cache maintenance insns are
-all NOPs.
+This patchset adds support for emulating the Arm architectural features
+FEAT_NV and FEAT_NV2 which allow nested virtualization, i.e. where a
+hypervisor can run a guest which thinks it is running at EL2.
 
-We already have some models of specific CPUs where we set these bits
-(e.g.  the Neoverse V1), but the 'max' CPU still uses the settings it
-inherits from Cortex-A57.  Set the bits for 'max' as well, so the
-guest doesn't need to do unnecessary work.
+Nominally FEAT_NV is sufficient for this and FEAT_NV2 merely improves
+the performance in the nested-virt setup, but in practice hypervisors
+such as KVM are going to require FEAT_NV2 and not bother to support
+the FEAT_NV-only case, so I have implemented them one after the other
+in this single patchset.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is worthwhile anyway; it also works around what Marc Z
-and I think is a KVM bug where booting the L2 guest hangs
-if L0 thinks it needs to do cache maintenance ops, when
-running all this under QEMU's FEAT_NV/FEAT_NV2 emulation.
----
- target/arm/tcg/cpu64.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+The feature is essentially a collection of changes that allow the
+hypervisor to lie to the guest so that it thinks it is running in EL2
+when it's really at EL1. The best summary of what all the changes are
+is in section D8.11 "Nested virtualization" in the Arm ARM, but the
+short summary is:
+ * EL2 system registers etc trap to EL2 rather than UNDEFing
+ * ERET traps to EL2
+ * the CurrentEL register reports "EL2" when NV is enabled
+ * on exception entry, SPSR_EL1.M may report "EL2" as the EL the
+   exception was taken from
+ * when HCR_EL1.NV1 is also set, then there are some extra tweaks
+   (NV1 == 1 means "guest thinks it is running with HCR_EL2.E2H == 0")
+ * some AT S1 address translation insns can be trapped to EL2
+and FEAT_NV2 adds:
+ * accesses to some system registers are transformed into memory
+   accesses instead of trapping to EL2
+ * accesses to a few EL2 system registers are redirected to the
+   equivalent EL1 registers
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index fcda99e1583..40e7a45166f 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1105,6 +1105,16 @@ void aarch64_max_tcg_initfn(Object *obj)
-     u = FIELD_DP32(u, CLIDR_EL1, LOUU, 0);
-     cpu->clidr = u;
- 
-+    /*
-+     * Set CTR_EL0.DIC and IDC to tell the guest it doesnt' need to
-+     * do any cache maintenance for data-to-instruction or
-+     * instruction-to-guest coherence. (Our cache ops are nops.)
-+     */
-+    t = cpu->ctr;
-+    t = FIELD_DP64(t, CTR_EL0, IDC, 1);
-+    t = FIELD_DP64(t, CTR_EL0, DIC, 1);
-+    cpu->ctr = t;
-+
-     t = cpu->isar.id_aa64isar0;
-     t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2);      /* FEAT_PMULL */
-     t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);     /* FEAT_SHA1 */
+This patchset is sufficient that you can run an L0 guest kernel that
+has support for FEAT_NV/FEAT_NV2 in its KVM code, and then
+inside that start a nested L1 guest that thinks it has EL2 access,
+and then run an inner-nested L2 guest under that that can get
+to running userspace code. To do that you'll need some not-yet-upstream
+patches for both Linux and kvmtool:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git/log/?h=kvm-arm64/nv-6.8-nv2-only
+https://gitlab.arm.com/linux-arm/kvmtool/-/commits/nv-v6.6
+
+You'll also want to turn off SVE and SME emulation in QEMU
+(-cpu max,sve=off,sme=off) because at the moment the KVM patchset
+doesn't handle SVE and nested-virt together (the other option
+is to hack kvmtool to make it not ask for both at once, but this
+is easier).
+
+(kvmtool is needed here to run the L1 because QEMU itself as a VMM
+doesn't yet support asking KVM for an EL2 guest.)
+
+The first three patches in the series aren't strictly part of FEAT_NV:
+ * patch 1 is already reviewed; I put it here to avoid having
+   to deal with textual conflicts between it and this series
+ * patch 2 sets CTR_EL0.{IDC,DIC} for '-cpu max', which is a good
+   idea anyway and also works around what Marc Z and I think is
+   a KVM bug that otherwise causes boot of the L2 kernel to hang
+ * patch 3 is a GIC bug which is not FEAT_NV specific but for
+   some reason only manifests when booting an L1 kernel under NV
+
+thanks
+-- PMM
+
+Peter Maydell (35):
+  target/arm: Don't implement *32_EL2 registers when EL1 is AArch64 only
+  target/arm: Set CTR_EL0.{IDC,DIC} for the 'max' CPU
+  hw/intc/arm_gicv3_cpuif: handle LPIs in in the list registers
+  target/arm: Handle HCR_EL2 accesses for bits introduced with FEAT_NV
+  target/arm: Implement HCR_EL2.AT handling
+  target/arm: Enable trapping of ERET for FEAT_NV
+  target/arm: Always honour HCR_EL2.TSC when HCR_EL2.NV is set
+  target/arm: Allow use of upper 32 bits of TBFLAG_A64
+  target/arm: Record correct opcode fields in cpreg for E2H aliases
+  target/arm: *_EL12 registers should UNDEF when HCR_EL2.E2H is 0
+  target/arm: Make EL2 cpreg accessfns safe for FEAT_NV EL1 accesses
+  target/arm: Move FPU/SVE/SME access checks up above
+    ARM_CP_SPECIAL_MASK check
+  target/arm: Trap sysreg accesses for FEAT_NV
+  target/arm: Make NV reads of CurrentEL return EL2
+  target/arm: Set SPSR_EL1.M correctly when nested virt is enabled
+  target/arm: Trap registers when HCR_EL2.{NV,NV1} == {1,1}
+  target/arm: Always use arm_pan_enabled() when checking if PAN is
+    enabled
+  target/arm: Don't honour PSTATE.PAN when HCR_EL2.{NV,NV1} == {1,1}
+  target/arm: Treat LDTR* and STTR* as LDR/STR when NV,NV1 is 1,1
+  target/arm: Handle FEAT_NV page table attribute changes
+  target/arm: Add FEAT_NV to max, neoverse-n2, neoverse-v1 CPUs
+  target/arm: Handle HCR_EL2 accesses for FEAT_NV2 bits
+  target/arm: Implement VNCR_EL2 register
+  target/arm: Handle FEAT_NV2 changes to when SPSR_EL1.M reports EL2
+  target/arm: Handle FEAT_NV2 redirection of SPSR_EL2, ELR_EL2, ESR_EL2,
+    FAR_EL2
+  target/arm: Implement FEAT_NV2 redirection of sysregs to RAM
+  target/arm: Report VNCR_EL2 based faults correctly
+  target/arm: Mark up VNCR offsets (offsets 0x0..0xff)
+  target/arm: Mark up VNCR offsets (offsets 0x100..0x160)
+  target/arm: Mark up VNCR offsets (offsets 0x168..0x1f8)
+  target/arm: Mark up VNCR offsets (offsets >= 0x200, except GIC)
+  hw/intc/arm_gicv3_cpuif: Mark up VNCR offsets for GIC CPU registers
+  target/arm: Report HCR_EL2.{NV,NV1,NV2} in cpu dumps
+  target/arm: Enhance CPU_LOG_INT to show SPSR on AArch64
+    exception-entry
+  target/arm: Add FEAT_NV2 to max, neoverse-n2, neoverse-v1 CPUs
+
+ docs/system/arm/emulation.rst  |   2 +
+ target/arm/cpregs.h            |  54 ++++-
+ target/arm/cpu-features.h      |  10 +
+ target/arm/cpu.h               |  24 ++-
+ target/arm/syndrome.h          |  20 +-
+ target/arm/tcg/translate.h     |  16 +-
+ hw/intc/arm_gicv3_cpuif.c      |  28 ++-
+ target/arm/cpu.c               |   8 +-
+ target/arm/debug_helper.c      |  34 +++-
+ target/arm/helper.c            | 360 ++++++++++++++++++++++++++++-----
+ target/arm/ptw.c               |  21 ++
+ target/arm/tcg/cpu64.c         |  11 +
+ target/arm/tcg/hflags.c        |  30 ++-
+ target/arm/tcg/op_helper.c     |  16 +-
+ target/arm/tcg/tlb_helper.c    |  27 ++-
+ target/arm/tcg/translate-a64.c | 162 +++++++++++++--
+ 16 files changed, 725 insertions(+), 98 deletions(-)
+
 -- 
 2.34.1
 

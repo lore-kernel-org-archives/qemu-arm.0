@@ -1,304 +1,595 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp474433eji;
-        Sun, 17 Dec 2023 16:17:29 -0800 (PST)
-X-Received: by 2002:a92:c54c:0:b0:35f:7056:6454 with SMTP id a12-20020a92c54c000000b0035f70566454mr10715182ilj.49.1702858648814;
-        Sun, 17 Dec 2023 16:17:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702858648; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp544639eji;
+        Sun, 17 Dec 2023 19:53:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHDZd0PTEerE5ikkrSQ79GE8ZxmS0QcwWeckigxutrwuxOiceypeXQgWtxkEyrl+lJnPRDT
+X-Received: by 2002:a05:622a:138b:b0:425:4043:18bf with SMTP id o11-20020a05622a138b00b00425404318bfmr22104614qtk.114.1702871613255;
+        Sun, 17 Dec 2023 19:53:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702871613; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iqi1WZOrclEElcdXVqwNCQvpe9ziCQQsdbsDjSa9COn92waCqc5n85CeqNaBYkT10t
-         cM/AIDJnua3MV8rBid+/V9V/b85buoHsV6Zil2k9HfIvi3aXaac3nXzNUVt+aP3yIMVn
-         b8yYFAkjUZiDj5Tu+erS8TcbcvLZXSu6MPVLgApGGHGqqZzNwWCtNS6qRJYrEUbgQ0lA
-         RicQADso2vVpbjWWQhPztlfyFRV07o9jytC+b+2ALISJ5sdB5P0zgIf3HgNZj5zpYSSm
-         DPk/VOTSygH1Zx1iNe5GFbyOxoCz6ovIPjDzd9K4LHKpMpQwhCOFAWSFYlLF6z6wGlDD
-         vZMw==
+        b=Mb4zzq35M5doolbxaDdlzlM7PUgLPk8O6M+iPbUssyYXmvfe747wngxHphzj4aLopo
+         JI4MJrPupfAV7TAKd4kPl4RaOB4Uo1tWEk5f6n+Al4alrxh014Mc6Okay4T6uv3BmFv2
+         FNZlvEGcmYA2TIeD721j25uTyCGDDVmYf8pE3aWvupGPW/VSXw6jsyJ3KUKfNNTipvh3
+         Lk9ZyRKJD6zMzXm/znp2P7n0uGFoZmyo8x3Cx590+EWMjo+B6xDBKh+LpF/8P+fBDWNN
+         PRUbqXukL4NMeMKI2zN/1RORWUu52Dj3yePDPDwsO6U49xoU6jR87MUvWAbeRG8CWkY4
+         KL4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=z8Kkygl6dmdcmbHuqi3jkwPQEUDeFq6IZdUkP6LKZhs=;
-        fh=Gt/lz3GK60m/Am9UXEQy9rOHhg+D8NVlduM5JJ9m0LM=;
-        b=hfC1Mws5QY9oS07iYTm6KliXVfSqCJdauCYGgucGtpCKq1NhtmLWLIrOOApZxtpGef
-         RPdiFJIdTI7B17OhxVHkWmjzqrsOmNbVbFqbGVmvHOuNxIRJWVNh6xL3XEDFvp0DjqU3
-         yb0duPcgmSxpSaqFBX5X2EGUlh6EYdO5epiKhHBeIyi/zK9HwPxE8vIod2sqbJDtd6Dp
-         8TxGv+4IM1Z8aD6VTMkw0cjn7xIblhCsypLYGUTkgN4tmLsDZDyjxIf1N8NZaR9+Eppc
-         F4+ki1oszIs36As9xj/d/fMUWwULJc7XPG3jBlqmZaIuKWaT38vTQgs5glhaxQfEndl4
-         M8RA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=uHLDoLQeQIqg6hapRpVW6VLGaNZ1YybiLx8fc8VOCv4=;
+        fh=/LYgw7cjenuZHh1AdjNLJVyUid9oyKPPbsg85Sc1t6U=;
+        b=d/WgOffm01h13YKTCOdk1QHYthvSEh1xgFH1HC5ZbdR5CKYG0h89IptKDl+FKAwQBc
+         G/q49vR3AAh8yUG08UA9PvCLDEiNHqhv5eN31SezURFhwe7uNOFAwyIY/+G9X13b/gzA
+         bPvSWy6ex9JIsPdPj0dxGhyDk/SD4FKKXXkzr0ruy2dNZs40AenurhgvLkZRNKjb190V
+         tGU2wPCMclYqTRbSycTWU8IrVsU+cZ0vqHpKyl9A1XBDQt8MWxz28WvA2+hV3YB7xoxy
+         uKvtQ1llbkI7Qo+PcEM/bu7TyWQ5KUH6BXmHy4b1VcTfbeX/6Vq/zGHHcwF4ZfqLVLI9
+         CA6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mky8P3T8;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Ot+LfYtp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k10-20020a056e02156a00b0035f985f70fasor1593652ilu.7.2023.12.17.16.17.28
-        (Google Transport Security);
-        Sun, 17 Dec 2023 16:17:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z4-20020ac86b84000000b004254decb62fsi21676758qts.207.2023.12.17.19.53.33
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 Dec 2023 19:53:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mky8P3T8;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Ot+LfYtp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rF4gR-0001jz-5U; Sun, 17 Dec 2023 22:52:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rF4gO-0001jC-O5; Sun, 17 Dec 2023 22:52:45 -0500
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rF4gM-0008B7-57; Sun, 17 Dec 2023 22:52:44 -0500
+Received: by mail-ua1-x92a.google.com with SMTP id
+ a1e0cc1a2514c-7caa6ec63aaso790350241.2; 
+ Sun, 17 Dec 2023 19:52:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1702858648; x=1703463448; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=z8Kkygl6dmdcmbHuqi3jkwPQEUDeFq6IZdUkP6LKZhs=;
-        b=mky8P3T8iIY43ny7rVwIJXPlQ66bZ3304MODUKsJhUeUueyFF/Rk9PhLsLVQ1gyXQp
-         EwkZ94LSEVw+DTJpm6TaHkVOepWX+S684cOvca7f0Sy9TSTy9LaVlVvAEGDS5Ny2vH66
-         3z69X3usypxCIY7OVc9CIHn4kzrDk9/jOIpXrfk9E5iFGkYYjaLFMffUEztZCk3dfRnA
-         IK/Yt9hBEURS903O3Vuy0rX2GcCPDDoT+1IHIip+v9oiVMoRbT/GPM7rwTx+RpPMtAEO
-         hu6jGpQ3ZKN1BGBBIqveSyMxeT6t1n+z8o9PrZ1Ac7BUhiHI87BteqfCW169SKKr6XpP
-         v/Iw==
+ d=gmail.com; s=20230601; t=1702871560; x=1703476360; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uHLDoLQeQIqg6hapRpVW6VLGaNZ1YybiLx8fc8VOCv4=;
+ b=Ot+LfYtpxNPYnvVlv05YNPy+XI3AExKnqJBOsPs/mvvSyKeVnXS1ppnoPuHzdsnQdh
+ WNgd5/PdsZ1X1XFM9QhII/xFghM+rzfNse+X1tjPlLQJj9wOFSx+RC7xa7dVMxT3P4Iy
+ u4zCfbF0sFghRNFF4qLjYLhIVsIemgf771rnXKdtI7RDm/IAOi+52U/OLogDe002TCii
+ qExzfK6KFxBh1Sgo0niiqB4A2M2DIHUuaPj6Lpaq99BHdAiFLL8COZitrxB+0b1fEMtv
+ O5kx6NBk+fBunLeSWSKW+ELDsH2BuwpAaaY0JwuPOsDFZr9TBYlam8wiSmsokcUExUCu
+ gWXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1702858648; x=1703463448;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=z8Kkygl6dmdcmbHuqi3jkwPQEUDeFq6IZdUkP6LKZhs=;
-        b=JY2x8f9l0phDKzTKOUmieiYzJDxhgbhe/UtvfKLGdd6eTq9VAf99OoqIE1jC7L/QnA
-         7lC1woy11JkseWWtjDSSa+F4XPKnHOjLolU1TYV4Ms57j+3ey2LzmvNVCurD4pqmPJBF
-         ONHehdcOMcGH2iQcY8+W8odENC3QGlF9JkfEcr1EKwrrgljF32qz+k1QdRfthyvkbU5B
-         yJPvAzSOLYJNsYtksOBpzHVv8O97Gca76iDwc3IntWO9WHH9j37f9Fx9xC1FWK3ZJNgp
-         y7FbKtFkzyXNbVTF4AgyXzVkETGA7qnqCxf/rDjXTM9DoRAo3bbETQoQz1ZSZ+AVrEqH
-         bSOQ==
-X-Gm-Message-State: AOJu0YwgXwpZ2R0tUd/gautQmjpG3xMP9RlxgbK8NVtnenki3mjDkaQ9
-	8BwsNliy9hmkpnpXnxSpWx/ug/doesRB0s3OhWl7InfZw7Y=
-X-Google-Smtp-Source: AGHT+IFG5w88oEGXT3J7poB1TiYzkBpCr6Q0nrTAlYOefdMl3PdWg36aCKASbYZ2VSQbpi+ItwpEQLV9sQOiZ8LI5uw=
-X-Received: by 2002:a05:6e02:214d:b0:35d:a2c9:dac3 with SMTP id
- d13-20020a056e02214d00b0035da2c9dac3mr18534042ilv.33.1702858648353; Sun, 17
- Dec 2023 16:17:28 -0800 (PST)
+ d=1e100.net; s=20230601; t=1702871560; x=1703476360;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=uHLDoLQeQIqg6hapRpVW6VLGaNZ1YybiLx8fc8VOCv4=;
+ b=iAenGsHs/TEVP1MuHk2KiiIjvbWEMLdEhuvAYItbHiyxtIVuetttLtmhZPuys8QEIp
+ Up5d2AVRgNC7Cu0OY3RsZ4cDW0R8DLq2g3ybqigfIGFDeqBuDMQgxSG3yrO5jaVMxn40
+ AB3E756pPMYTRNZegeqYvvcbE8OhDqJl5VZg9MPqK/JmRwsjwYJoTErp7zquRvahFgQz
+ P1H5zvnus3+SW2bdIuKx4m8PXYBNns0IdDDXhQM0BUzaKOEWw6tKOmyoYPVbAzm5mkyA
+ JfQcZPKQE+Iu6aNx7AdFT0RG22v1qA39Qmnt/iuKsz5JhovjmEwUedIdAonTHNyyUAmE
+ cHTg==
+X-Gm-Message-State: AOJu0YzBMEKTGUSZeB8JbUr5NP97+KCG6dgLtA7zEZtJe9GGFMP+0wjn
+ WJxxosIDjkk8SuSFD9GBAq/ZFEo/pxDZ0YkE7yk=
+X-Received: by 2002:a05:6102:2d07:b0:466:9ec3:5cd2 with SMTP id
+ ih7-20020a0561022d0700b004669ec35cd2mr112926vsb.50.1702871560346; Sun, 17 Dec
+ 2023 19:52:40 -0800 (PST)
 MIME-Version: 1.0
-References: <20231213-gdb-v17-0-777047380591@daynix.com> <20231213-gdb-v17-9-777047380591@daynix.com>
-In-Reply-To: <20231213-gdb-v17-9-777047380591@daynix.com>
+References: <170223510627.13579.3191933474458037037-0@git.sr.ht>
+ <170223510627.13579.3191933474458037037-1@git.sr.ht>
+In-Reply-To: <170223510627.13579.3191933474458037037-1@git.sr.ht>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 18 Dec 2023 10:17:02 +1000
-Message-ID: <CAKmqyKMWYf1rad=9wapdMGfY8FPOGY09AK3cSRkmTvWD5UWCfQ@mail.gmail.com>
-Subject: Re: [PATCH v17 09/14] hw/core/cpu: Remove gdb_get_dynamic_xml member
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin <npiggin@gmail.com>, 
-	Daniel Henrique Barboza <danielhb413@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
-	Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>, 
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>, 
-	Laurent Vivier <laurent@vivier.eu>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Yanan Wang <wangyanan55@huawei.com>, Michael Rolnik <mrolnik@gmail.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, 
-	John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>, 
-	Mahmoud Mandour <ma.mandourr@gmail.com>, Mikhail Tyutin <m.tyutin@yadro.com>, 
-	Aleksandr Anenkov <a.anenkov@yadro.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, 
-	20231213-riscv-v7-0-a760156a337f@daynix.com
+Date: Mon, 18 Dec 2023 13:52:13 +1000
+Message-ID: <CAKmqyKNAGdc0fTErV4yb0PZYdJ9YraEn0EnRbWYcRCuwymoQvQ@mail.gmail.com>
+Subject: Re: [PATCH qemu 1/3] hw/misc: Implement STM32L4xx SYSCFG
+To: "~inesvarhol" <inesvarhol@proton.me>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alistair@alistair23.me, 
+ philmd@linaro.org, peter.maydell@linaro.org, ines.varhol@telecom-paris.fr, 
+ arnaud.minier@telecom-paris.fr
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 3kK/fuDrxwmE
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92a;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92a.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fBgpbxpg+opl
 
-On Wed, Dec 13, 2023 at 5:49=E2=80=AFPM Akihiko Odaki <akihiko.odaki@daynix=
-.com> wrote:
+On Mon, Dec 11, 2023 at 5:06=E2=80=AFAM ~inesvarhol <inesvarhol@git.sr.ht> =
+wrote:
 >
-> This function is no longer used.
+> From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 >
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>  hw/misc/Kconfig                    |   3 +
+>  hw/misc/meson.build                |   1 +
+>  hw/misc/stm32l4xx_syscfg.c         | 277 +++++++++++++++++++++++++++++
+>  hw/misc/trace-events               |   6 +
+>  include/hw/misc/stm32l4xx_syscfg.h |  62 +++++++
+>  5 files changed, 349 insertions(+)
+>  create mode 100644 hw/misc/stm32l4xx_syscfg.c
+>  create mode 100644 include/hw/misc/stm32l4xx_syscfg.h
+>
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 3efe3dc2cc..a20427a9be 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -90,6 +90,9 @@ config STM32F4XX_EXTI
+>  config STM32L4X5_EXTI
+>      bool
+>
+> +config STM32L4XX_SYSCFG
+> +    bool
+> +
+>  config MIPS_ITU
+>      bool
+>
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 16db6e228d..120c59d9f4 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -111,6 +111,7 @@ system_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_tru=
+e: files('stm32f2xx_syscfg.
+>  system_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx=
+_syscfg.c'))
+>  system_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_e=
+xti.c'))
+>  system_ss.add(when: 'CONFIG_STM32L4X5_EXTI', if_true: files('stm32l4x5_e=
+xti.c'))
+> +system_ss.add(when: 'CONFIG_STM32L4XX_SYSCFG', if_true: files('stm32l4xx=
+_syscfg.c'))
+>  system_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'=
+))
+>  system_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
+>
+> diff --git a/hw/misc/stm32l4xx_syscfg.c b/hw/misc/stm32l4xx_syscfg.c
+> new file mode 100644
+> index 0000000000..a8ef370117
+> --- /dev/null
+> +++ b/hw/misc/stm32l4xx_syscfg.c
+> @@ -0,0 +1,277 @@
+> +/*
+> + * STM32L4xx SYSCFG (System Configuration Controller)
+> + *
+> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
+> + * of this software and associated documentation files (the "Software"),=
+ to deal
+> + * in the Software without restriction, including without limitation the=
+ rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be includ=
+ed in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
+> + * THE SOFTWARE.
+> + *
+> + * Based on the stm32f4xx_syscfg by Alistair Francis.
+> + * The reference used is the STMicroElectronics RM0351 Reference manual
+> + * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
+> + * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "hw/irq.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/misc/stm32l4xx_syscfg.h"
+> +
+> +#define NUM_GPIOS 7
+> +
+> +#define SYSCFG_MEMRMP 0x00
+> +#define SYSCFG_CFGR1 0x04
+> +#define SYSCFG_EXTICR1 0x08
+> +#define SYSCFG_EXTICR2 0x0C
+> +#define SYSCFG_EXTICR3 0x10
+> +#define SYSCFG_EXTICR4 0x14
+> +#define SYSCFG_SCSR 0x18
+> +#define SYSCFG_CFGR2 0x1C
+> +#define SYSCFG_SWPR 0x20
+> +#define SYSCFG_SKR 0x24
+> +#define SYSCFG_SWPR2 0x28
+> +
+> +/* 00000000_00000000_00000001_00000111 */
+> +#define ACTIVABLE_BITS_MEMRP 0x00000107
+> +
+> +/* 11111100_11111111_00000001_00000000 */
+> +#define ACTIVABLE_BITS_CFGR1 0xFCFF0100
+> +/* 00000000_00000000_00000000_00000001 */
+> +#define FIREWALL_DISABLE_CFGR1 0x00000001
+> +
+> +/* 00000000_00000000_00000000_00000001 */
+> +#define ACTIVABLE_BITS_EXTICR 0x0000FFFF
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+This doesn't match the comment
+
+> +
+> +/* 00000000_00000000_00000000_00000011 */
+> +/* #define ACTIVABLE_BITS_SCSR 0x00000003 */
+> +
+> +/* 00000000_00000000_00000000_00001111 */
+> +#define ECC_LOCK_CFGR2 0x0000000F
+> +/* 00000000_00000000_00000001_00000000 */
+> +#define SRAM2_PARITY_ERROR_FLAG_CFGR2 0x00000100
+> +
+> +/* 00000000_00000000_00000000_11111111 */
+> +#define ACTIVABLE_BITS_SKR 0x000000FF
+> +
+> +static void stm32l4xx_syscfg_hold_reset(Object *obj)
+> +{
+> +    STM32L4xxSyscfgState *s =3D STM32L4XX_SYSCFG(obj);
+> +
+> +    s->memrmp =3D 0x00000000;
+> +    s->cfgr1 =3D 0x7C000001;
+> +    s->exticr[0] =3D 0x00000000;
+> +    s->exticr[1] =3D 0x00000000;
+> +    s->exticr[2] =3D 0x00000000;
+> +    s->exticr[3] =3D 0x00000000;
+> +    s->scsr =3D 0x00000000;
+> +    s->cfgr2 =3D 0x00000000;
+> +    s->swpr =3D 0x00000000;
+> +    s->skr =3D 0x00000000;
+> +    s->swpr2 =3D 0x00000000;
+> +}
+> +
+> +static void stm32l4xx_syscfg_set_irq(void *opaque, int irq, int level)
+> +{
+> +    STM32L4xxSyscfgState *s =3D opaque;
+> +    uint8_t gpio =3D irq / 16;
+> +    g_assert(gpio < NUM_GPIOS);
+> +
+> +    int line =3D irq % 16;
+> +    int exticr_reg =3D line / 4;
+> +    int startbit =3D (irq % 4) * 4;
+> +
+> +    trace_stm32l4xx_syscfg_set_irq(gpio, irq % 16, level);
+
+`irq % 16` is just `line`
+
+Also it would probably be worth replacing the 16 with a macro.
+
+Otherwise looks good
 
 Alistair
 
-> ---
->  include/hw/core/cpu.h |  4 ----
->  target/arm/cpu.h      |  6 ------
->  target/ppc/cpu.h      |  1 -
->  target/arm/cpu.c      |  1 -
->  target/arm/gdbstub.c  | 18 ------------------
->  target/ppc/cpu_init.c |  3 ---
->  target/ppc/gdbstub.c  | 10 ----------
->  target/riscv/cpu.c    | 14 --------------
->  8 files changed, 57 deletions(-)
+> +
+> +    if (extract32(s->exticr[exticr_reg], startbit, 4) =3D=3D gpio) {
+> +        trace_stm32l4xx_syscfg_pulse_exti(line);
+> +        qemu_set_irq(s->gpio_out[line], level);
+> +   }
+> +}
+> +
+> +static uint64_t stm32l4xx_syscfg_read(void *opaque, hwaddr addr,
+> +                                     unsigned int size)
+> +{
+> +    STM32L4xxSyscfgState *s =3D opaque;
+> +
+> +    trace_stm32l4xx_syscfg_read(addr);
+> +
+> +    switch (addr) {
+> +    case SYSCFG_MEMRMP:
+> +        return s->memrmp;
+> +    case SYSCFG_CFGR1:
+> +        return s->cfgr1;
+> +    case SYSCFG_EXTICR1...SYSCFG_EXTICR4:
+> +        return s->exticr[(addr - SYSCFG_EXTICR1) / 4];
+> +    case SYSCFG_SCSR:
+> +        return s->scsr;
+> +    case SYSCFG_CFGR2:
+> +        return s->cfgr2;
+> +    case SYSCFG_SWPR:
+> +        return s->swpr;
+> +    case SYSCFG_SKR:
+> +        return s->skr;
+> +    case SYSCFG_SWPR2:
+> +        return s->swpr2;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, add=
+r);
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void stm32l4xx_syscfg_write(void *opaque, hwaddr addr,
+> +                       uint64_t val64, unsigned int size)
+> +{
+> +    STM32L4xxSyscfgState *s =3D opaque;
+> +    uint32_t value =3D val64;
+> +
+> +    trace_stm32l4xx_syscfg_write(value, addr);
+> +
+> +    switch (addr) {
+> +    case SYSCFG_MEMRMP:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Changing the memory mapping isn't supported\n=
+",
+> +                      __func__);
+> +        s->memrmp =3D value & ACTIVABLE_BITS_MEMRP;
+> +        return;
+> +    case SYSCFG_CFGR1:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Functions in CFGRx aren't supported\n",
+> +                      __func__);
+> +        /* bit 0 (firewall dis.) is cleared by software, set only by res=
+et. */
+> +        s->cfgr1 =3D (s->cfgr1 & value & FIREWALL_DISABLE_CFGR1) |
+> +                          (value & ACTIVABLE_BITS_CFGR1);
+> +        return;
+> +    case SYSCFG_EXTICR1...SYSCFG_EXTICR4:
+> +        s->exticr[(addr - SYSCFG_EXTICR1) / 4] =3D
+> +                (value & ACTIVABLE_BITS_EXTICR);
+> +        return;
+> +    case SYSCFG_SCSR:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Erasing SRAM2 isn't supported\n",
+> +                      __func__);
+> +        /*
+> +         * only non reserved bits are :
+> +         * bit 0 (write-protected by a passkey), bit 1 (meant to be read=
+)
+> +         * so it serves no purpose yet to add :
+> +         * s->scsr =3D value & 0x3;
+> +         */
+> +        return;
+> +    case SYSCFG_CFGR2:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Functions in CFGRx aren't supported\n",
+> +                      __func__);
+> +        /* bit 8 (SRAM2 PEF) is cleared by software by writing a '1'.*/
+> +        /* bits[3:0] (ECC Lock) are set by software, cleared only by res=
+et.*/
+> +        s->cfgr2 =3D (s->cfgr2 | (value & ECC_LOCK_CFGR2)) &
+> +                          ~(value & SRAM2_PARITY_ERROR_FLAG_CFGR2);
+> +        return;
+> +    case SYSCFG_SWPR:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Write protecting SRAM2 isn't supported\n",
+> +                      __func__);
+> +        /* These bits are set by software and cleared only by reset.*/
+> +        s->swpr |=3D value;
+> +        return;
+> +    case SYSCFG_SKR:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Erasing SRAM2 isn't supported\n",
+> +                      __func__);
+> +        s->skr =3D value & ACTIVABLE_BITS_SKR;
+> +        return;
+> +    case SYSCFG_SWPR2:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Write protecting SRAM2 isn't supported\n",
+> +                      __func__);
+> +        /* These bits are set by software and cleared only by reset.*/
+> +        s->swpr2 |=3D value;
+> +        return;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, add=
+r);
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps stm32l4xx_syscfg_ops =3D {
+> +    .read =3D stm32l4xx_syscfg_read,
+> +    .write =3D stm32l4xx_syscfg_write,
+> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> +    .impl.min_access_size =3D 4,
+> +    .impl.max_access_size =3D 4,
+> +    .impl.unaligned =3D false,
+> +    .valid.min_access_size =3D 4,
+> +    .valid.max_access_size =3D 4,
+> +    .valid.unaligned =3D false,
+> +};
+> +
+> +static void stm32l4xx_syscfg_init(Object *obj)
+> +{
+> +    STM32L4xxSyscfgState *s =3D STM32L4XX_SYSCFG(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &stm32l4xx_syscfg_ops, s,
+> +                          TYPE_STM32L4XX_SYSCFG, 0x400);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +
+> +    qdev_init_gpio_in(DEVICE(obj), stm32l4xx_syscfg_set_irq, 16 * NUM_GP=
+IOS);
+> +    qdev_init_gpio_out(DEVICE(obj), s->gpio_out, 16);
+> +}
+> +
+> +static const VMStateDescription vmstate_stm32l4xx_syscfg =3D {
+> +    .name =3D TYPE_STM32L4XX_SYSCFG,
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .fields =3D (VMStateField[]) {
+> +        VMSTATE_UINT32(memrmp, STM32L4xxSyscfgState),
+> +        VMSTATE_UINT32(cfgr1, STM32L4xxSyscfgState),
+> +        VMSTATE_UINT32_ARRAY(exticr, STM32L4xxSyscfgState,
+> +                             SYSCFG_NUM_EXTICR),
+> +        VMSTATE_UINT32(scsr, STM32L4xxSyscfgState),
+> +        VMSTATE_UINT32(cfgr2, STM32L4xxSyscfgState),
+> +        VMSTATE_UINT32(swpr, STM32L4xxSyscfgState),
+> +        VMSTATE_UINT32(skr, STM32L4xxSyscfgState),
+> +        VMSTATE_UINT32(swpr2, STM32L4xxSyscfgState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void stm32l4xx_syscfg_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+> +
+> +    dc->vmsd =3D &vmstate_stm32l4xx_syscfg;
+> +    rc->phases.hold =3D stm32l4xx_syscfg_hold_reset;
+> +}
+> +
+> +static const TypeInfo stm32l4xx_syscfg_info[] =3D {
+> +    {
+> +        .name          =3D TYPE_STM32L4XX_SYSCFG,
+> +        .parent        =3D TYPE_SYS_BUS_DEVICE,
+> +        .instance_size =3D sizeof(STM32L4xxSyscfgState),
+> +        .instance_init =3D stm32l4xx_syscfg_init,
+> +        .class_init    =3D stm32l4xx_syscfg_class_init,
+> +    }
+> +};
+> +
+> +DEFINE_TYPES(stm32l4xx_syscfg_info)
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 2f01c62c0e..756cb45bd6 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -163,6 +163,12 @@ stm32f4xx_exti_set_irq(int irq, int level) "Set EXTI=
+: %d to %d"
+>  stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+>  stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%=
+" PRIx64 " val: 0x%" PRIx64 ""
 >
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index a6214610603f..17f99adc0f41 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -134,9 +134,6 @@ struct SysemuCPUOps;
->   *           before the insn which triggers a watchpoint rather than aft=
-er it.
->   * @gdb_arch_name: Optional callback that returns the architecture name =
-known
->   * to GDB. The caller must free the returned string with g_free.
-> - * @gdb_get_dynamic_xml: Callback to return dynamically generated XML fo=
-r the
-> - *   gdb stub. Returns a pointer to the XML contents for the specified X=
-ML file
-> - *   or NULL if the CPU doesn't have a dynamically generated content for=
- it.
->   * @disas_set_info: Setup architecture specific components of disassembl=
-y info
->   * @adjust_watchpoint_address: Perform a target-specific adjustment to a=
-n
->   * address before attempting to match it against watchpoints.
-> @@ -167,7 +164,6 @@ struct CPUClass {
->
->      const char *gdb_core_xml_file;
->      const gchar * (*gdb_arch_name)(CPUState *cpu);
-> -    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlna=
-me);
->
->      void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index b2f8ac81f06c..c8e77440f0f7 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1182,12 +1182,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState =
-*cpu, vaddr addr,
->  int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->
-> -/* Returns the dynamically generated XML for the gdb stub.
-> - * Returns a pointer to the XML contents for the specified XML file or N=
-ULL
-> - * if the XML name doesn't match the predefined one.
-> - */
-> -const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
-> -
->  int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->                               int cpuid, DumpState *s);
->  int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-> index f87c26f98a67..9f94282e13e9 100644
-> --- a/target/ppc/cpu.h
-> +++ b/target/ppc/cpu.h
-> @@ -1524,7 +1524,6 @@ int ppc_cpu_gdb_write_register(CPUState *cpu, uint8=
-_t *buf, int reg);
->  int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int re=
-g);
->  #ifndef CONFIG_USER_ONLY
->  hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> -const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
->  #endif
->  int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->                                 int cpuid, DumpState *s);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index efcc22b1446c..304538cca52a 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2499,7 +2499,6 @@ static void arm_cpu_class_init(ObjectClass *oc, voi=
-d *data)
->      cc->sysemu_ops =3D &arm_sysemu_ops;
->  #endif
->      cc->gdb_arch_name =3D arm_gdb_arch_name;
-> -    cc->gdb_get_dynamic_xml =3D arm_gdb_get_dynamic_xml;
->      cc->gdb_stop_before_watchpoint =3D true;
->      cc->disas_set_info =3D arm_disas_set_info;
->
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 059d84f98e52..a3bb73cfa7ce 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -474,24 +474,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_featu=
-re(CPUState *cs,
->  #endif
->  #endif /* CONFIG_TCG */
->
-> -const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
-> -{
-> -    ARMCPU *cpu =3D ARM_CPU(cs);
-> -
-> -    if (strcmp(xmlname, "system-registers.xml") =3D=3D 0) {
-> -        return cpu->dyn_sysreg_feature.desc.xml;
-> -    } else if (strcmp(xmlname, "sve-registers.xml") =3D=3D 0) {
-> -        return cpu->dyn_svereg_feature.desc.xml;
-> -    } else if (strcmp(xmlname, "arm-m-system.xml") =3D=3D 0) {
-> -        return cpu->dyn_m_systemreg_feature.desc.xml;
-> -#ifndef CONFIG_USER_ONLY
-> -    } else if (strcmp(xmlname, "arm-m-secext.xml") =3D=3D 0) {
-> -        return cpu->dyn_m_secextreg_feature.desc.xml;
-> -#endif
-> -    }
-> -    return NULL;
-> -}
-> -
->  void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
->  {
->      CPUState *cs =3D CPU(cpu);
-> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> index a0178c3ce80a..909d753b0221 100644
-> --- a/target/ppc/cpu_init.c
-> +++ b/target/ppc/cpu_init.c
-> @@ -7380,9 +7380,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, voi=
-d *data)
->  #endif
->
->      cc->gdb_num_core_regs =3D 71;
-> -#ifndef CONFIG_USER_ONLY
-> -    cc->gdb_get_dynamic_xml =3D ppc_gdb_get_dynamic_xml;
-> -#endif
->  #ifdef USE_APPLE_GDB
->      cc->gdb_read_register =3D ppc_cpu_gdb_read_register_apple;
->      cc->gdb_write_register =3D ppc_cpu_gdb_write_register_apple;
-> diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-> index 8ca37b6bf952..f47878a67bd1 100644
-> --- a/target/ppc/gdbstub.c
-> +++ b/target/ppc/gdbstub.c
-> @@ -342,16 +342,6 @@ static void gdb_gen_spr_feature(CPUState *cs)
->
->      gdb_feature_builder_end(&builder);
->  }
-> -
-> -const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
-> -{
-> -    PowerPCCPUClass *pcc =3D POWERPC_CPU_GET_CLASS(cs);
-> -
-> -    if (strcmp(xml_name, "power-spr.xml") =3D=3D 0) {
-> -        return pcc->gdb_spr.xml;
-> -    }
-> -    return NULL;
-> -}
->  #endif
->
->  #if !defined(CONFIG_USER_ONLY)
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index a3a98230ca87..1e3ac556b33e 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -1529,19 +1529,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *=
-cs)
->      }
->  }
->
-> -static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *x=
-mlname)
-> -{
-> -    RISCVCPU *cpu =3D RISCV_CPU(cs);
-> -
-> -    if (strcmp(xmlname, "riscv-csr.xml") =3D=3D 0) {
-> -        return cpu->dyn_csr_feature.xml;
-> -    } else if (strcmp(xmlname, "riscv-vector.xml") =3D=3D 0) {
-> -        return cpu->dyn_vreg_feature.xml;
-> -    }
-> -
-> -    return NULL;
-> -}
-> -
->  #ifndef CONFIG_USER_ONLY
->  static int64_t riscv_get_arch_id(CPUState *cs)
->  {
-> @@ -1695,7 +1682,6 @@ static void riscv_cpu_common_class_init(ObjectClass=
- *c, void *data)
->      cc->get_arch_id =3D riscv_get_arch_id;
->  #endif
->      cc->gdb_arch_name =3D riscv_gdb_arch_name;
-> -    cc->gdb_get_dynamic_xml =3D riscv_gdb_get_dynamic_xml;
->
->      object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendori=
-d,
->                                cpu_set_mvendorid, NULL, NULL);
->
+> +# stm32l4xx_syscfg.c
+> +stm32l4xx_syscfg_set_irq(int gpio, int line, int level) "irq from GPIO: =
+%d, line: %d, level: %d"
+> +stm32l4xx_syscfg_pulse_exti(int irq) "irq %d forwarded to EXTI"
+> +stm32l4xx_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+> +stm32l4xx_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr: 0=
+x%" PRIx64 " val: 0x%" PRIx64 ""
+> +
+>  # stm32l4x5_exti.c
+>  stm32l4x5_exti_set_irq(int irq, int level) "Set EXTI: %d to %d"
+>  stm32l4x5_exti_read(uint64_t addr, uint64_t data) "reg read: addr: 0x%" =
+PRIx64 " val: 0x%" PRIx64 ""
+> diff --git a/include/hw/misc/stm32l4xx_syscfg.h b/include/hw/misc/stm32l4=
+xx_syscfg.h
+> new file mode 100644
+> index 0000000000..d9ed4da74e
+> --- /dev/null
+> +++ b/include/hw/misc/stm32l4xx_syscfg.h
+> @@ -0,0 +1,62 @@
+> +/*
+> + * STM32L4xx SYSCFG (System Configuration Controller)
+> + *
+> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
+> + * of this software and associated documentation files (the "Software"),=
+ to deal
+> + * in the Software without restriction, including without limitation the=
+ rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be includ=
+ed in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
+> + * THE SOFTWARE.
+> + *
+> + * Based on the stm32f4xx_syscfg by Alistair Francis.
+> + * The reference used is the STMicroElectronics RM0351 Reference manual
+> + * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
+> + * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
+mentation.html
+> + */
+> +
+> +#ifndef HW_STM32L4XX_SYSCFG_H
+> +#define HW_STM32L4XX_SYSCFG_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "qom/object.h"
+> +
+> +#define TYPE_STM32L4XX_SYSCFG "stm32l4xx-syscfg"
+> +OBJECT_DECLARE_SIMPLE_TYPE(STM32L4xxSyscfgState, STM32L4XX_SYSCFG)
+> +
+> +#define SYSCFG_NUM_EXTICR 4
+> +
+> +struct STM32L4xxSyscfgState {
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion mmio;
+> +
+> +    uint32_t memrmp;
+> +    uint32_t cfgr1;
+> +    uint32_t exticr[SYSCFG_NUM_EXTICR];
+> +    uint32_t scsr;
+> +    uint32_t cfgr2;
+> +    uint32_t swpr;
+> +    uint32_t skr;
+> +    uint32_t swpr2;
+> +
+> +    qemu_irq gpio_out[16];
+> +};
+> +
+> +#endif
 > --
-> 2.43.0
+> 2.38.5
 >
 >

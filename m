@@ -1,108 +1,107 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722607eji;
-        Mon, 18 Dec 2023 03:34:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH1qCuzOF9/Ls2DaMZsfKoUdD0OaxMn/Td/gDAe1NvWPNbTID2o6DGXC2oQaB51OtrSb3wN
-X-Received: by 2002:ad4:5dca:0:b0:67f:13e7:7a4d with SMTP id m10-20020ad45dca000000b0067f13e77a4dmr8100081qvh.25.1702899247910;
-        Mon, 18 Dec 2023 03:34:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899247; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722673eji;
+        Mon, 18 Dec 2023 03:34:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGOiFaWVg3/AeLj/lfVFFJ2xtavQYfsQvUcC/0miryqFlADbt7WY1lUCVa67H7rWgsb+68I
+X-Received: by 2002:a05:620a:389d:b0:77f:3cb9:8b5c with SMTP id qp29-20020a05620a389d00b0077f3cb98b5cmr16958549qkn.18.1702899256834;
+        Mon, 18 Dec 2023 03:34:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899256; cv=none;
         d=google.com; s=arc-20160816;
-        b=GvEHtD8LUlmahozfmzmuW0SIt/IzkEJgPaGiWCPT7Pq2BMEGO6O4jwUCOCyocwpxB5
-         co17+0KBJJpaHCju/yStqCwE6TmC9RKFp2jIpG6Cj0grxrFekqzXtr6uMUzROqzfhUQc
-         DZWd8dxxlLmjfxR4MZZFgEka+lGS4DzFZGexY6ePtcqeDjwyAEFH6CPcVKGAeNAoKkH4
-         YfIBCrw7ouuXkJr3G5zY6Hv6S//bkzRukN/+itpHwAZZWGhmVtXmE1f6wlsWflTTT+aL
-         S7YLoDmJrAkh1WaiJ1VsMSiHDGQyRtbXctzOCQAu07F/QGQzc6Gj62HkSrRw4216vmP5
-         LGvA==
+        b=GohME7N+0GzhKbnVW1fAE/vuP429/yCeYYjJhl75AhF5zdLz25TCukyomszX7YNGtO
+         UjpWS5iYIM9U+2gb3Svs+AGQM2dlvUPL+lHx33q61pQGYimoxzuT1X7EWbfxMvYHA/83
+         D0HH0I2WoP1EzEsu+Q6sFw4n2AnhyeVZTM0vEDJ5nUKANyZkn5QG+MAqpuJaTpWQUT+d
+         +Mj9Z+0y7gFMoXtz6Qj+jQrcQZban4A0e6HsCIxk18r+UTHKuuPWN/zNHKnfc62OIr3f
+         IfwckWThVbFZc8iKNeDsAvtmU9LF0V/kIqCMhm8cV8unYZPls/fArER7GZDxJ0naIIfm
+         zldQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=J+EE0+mnHPHGCOMaG+C9/pWFxkc9Xq3u5HldCrY3Xbg=;
+        bh=lh3o7kEui0XF0sV1bPH07EOu1tlpcJ6HGtHE/IUXYQc=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=UBgvXUKMbZbz6zTOwZYAO+zilcPtdqN4BeHDEp631mPxe5pmvRWSr4LSE+MvkI9EpS
-         mbYuILChm3obCHNZ06JkrwFD+3bJaZRFbJ3DCtYse4R3ynYhpoJEkzdSOB/Vrvu1POtg
-         HE53UKLuE6cd5h6B01tBdkmLujvlQeya0PgKziRD19W34tUnZD3h0RxGbVa/pf4LE/GK
-         taIwzjhcBtfu8PaPaT/uQ2N3vIGyziqVUOhOXJY59NSSe4xqpk+eFwbMUcdgxfyLwfM/
-         3Fx+IelE73TiwSo+4WwIm0ZrGzGbpBHlGHYEB4bLx1fL6FbZAx/MB3WQO4GmT1UEacxW
-         4iLg==
+        b=rWMt83mXlfDR+XDhtQmVXa+bvXh9corh7l4oflmJAnOB9cAUPavuyrTxZ8U6imZ7eS
+         oazo2pPmZFhRXsvSOBfdl8uZiGCCtONnJv54YCKIK8k8jVGsbdaTSclmsvQ2hnA0VdCu
+         uZEuwjx/GL5XY1HFEff0MZYrfwHkvExEUGsLBAW3yMSJKldpADis7QxTLfwwO/VDqFSz
+         xFQFPWuv5Q9uMGr1oeDKZYTIPh4CmjjQ/VgMaI0k2Bb4mKi0Xvqi+uaCUAil++q15Xuo
+         yfR4urrbzMawxeT7KjVMR3wEvyH6Jg1knzo0qPYG///qQ9IgkC1mioy/MwH88FOtAsSp
+         9u2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DGHhG9lE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Da8AXuiG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w20-20020a0cdf94000000b0067f270c98b4si5351358qvl.415.2023.12.18.03.34.07
+        by mx.google.com with ESMTPS id m19-20020a05620a24d300b0077f62e42f75si21770715qkn.584.2023.12.18.03.34.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:34:07 -0800 (PST)
+        Mon, 18 Dec 2023 03:34:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DGHhG9lE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Da8AXuiG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFBsa-0007YT-Si; Mon, 18 Dec 2023 06:33:48 -0500
+	id 1rFBsB-0006hs-8T; Mon, 18 Dec 2023 06:33:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBsP-00079I-NG
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:38 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1rFBs8-0006e3-Ch
+ for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:20 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBsC-0003Px-UX
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:37 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-33621d443a7so2834229f8f.3
- for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:24 -0800 (PST)
+ id 1rFBs2-0003Jr-Qn
+ for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:20 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-40c31f18274so35455605e9.0
+ for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899203; x=1703504003; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899193; x=1703503993; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=J+EE0+mnHPHGCOMaG+C9/pWFxkc9Xq3u5HldCrY3Xbg=;
- b=DGHhG9lEckTZhGquDpAFOCJ595TFNdttLrhaL6ZCEZy+DhrDeP46khkaOib0DPVDAO
- uLfrbyRhhg3NA5mAUQaDvVsggsScLROvEbhioEXXPv8vvUBEqK/69JVh4UNQt8hi2TvS
- P7xMW2SYgjt2ZJQLYgX/q7fY2VgMU4ptbT+d6NsRimgzOn/mApG2OQC7aMr8wRKNCJ2N
- a8Sg187wENN+YonMUjWwQ84+425KGwbhhYtn80TOGBYA8+boH0XAMWVvG+DovAWBdZso
- pGLknKc8j8hehJLrMaMUwJUbGLJkNVueZ/InVoAVPPcXG3uwYi9YUiXSVBkuVI1EfqHZ
- qvwQ==
+ :reply-to; bh=lh3o7kEui0XF0sV1bPH07EOu1tlpcJ6HGtHE/IUXYQc=;
+ b=Da8AXuiG2XQ2Boowp7J+LK4748Kq8FbRbRFCFJHC35L+l8K1LB0Bei4pctT+AFiAxy
+ kSRGSh7mr6zthk+i7W8Nx9M6+rAm43yMi7SnaaKcf7hXNdnu0EZoif7DDt1o+QQ7mn4q
+ fLAfvz50cumKJmwml1aC9lo5WOGwV7JTDHm5PLXwEN34x9WXX5GCCYHu7nGIuHAPObst
+ HMh+Yz2OhM0CnNbmbX0cTLw3rTVgSEp1mv9o7a+k2XHnbkRGzWF3jr+jBmv+2gB285za
+ 9KKtq+xq90xJcUGszSjKkKuGdDUIsH87Ixg/jTcAhy4WC+e9UMK51WLeMnNLhTJX1CYj
+ DBmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899203; x=1703504003;
+ d=1e100.net; s=20230601; t=1702899193; x=1703503993;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=J+EE0+mnHPHGCOMaG+C9/pWFxkc9Xq3u5HldCrY3Xbg=;
- b=ZnDfL4Lg9asydgMDd/ehDgxoIRzOn9LsKXnmag/1lS61nyxVI7HJzxteGiPNZ9hgyE
- MlwVkrdabGadElW47AQCJ0DCQa/J8CikbZIU/9tQxa4dTP77LpQNP6apSfu6cDzdSmzG
- AebkbgCRhZd4ayUnB1xClihKGM6AMR22B33lZbbnSGo+yu6wfpTIS9rddsHv6gfyfdBU
- qjqIZbyplG+kkE/peKMmMv8HkK1GIV58KJc06IFvarTFfmG51X1QH9jAdpBjdsmyAbGF
- p/xL3mRk3YUZcd9824ZBRnkUGWACvofquy3ZV7uE9r19IN3ob1cmncIzsXLHtc+ZO/Od
- cRug==
-X-Gm-Message-State: AOJu0YwvXr1dYZU5u9fsRLxYUwTQ094hzaJffCs5i4+67l7aW9qb+Rdv
- Ee6oU9SOn6gMFYGdr02MpJWmCxHdhHkRKQXT1sY=
-X-Received: by 2002:a05:6000:1961:b0:336:6ba1:556e with SMTP id
- da1-20020a056000196100b003366ba1556emr422026wrb.4.1702899203633; 
- Mon, 18 Dec 2023 03:33:23 -0800 (PST)
+ bh=lh3o7kEui0XF0sV1bPH07EOu1tlpcJ6HGtHE/IUXYQc=;
+ b=fqpv4KzXoxd+A6/kvhcNSsC1T6UPXwNfz3lsfXaSNcsMAmzHOWSaniYK/tIuD2ju/B
+ ABpjDKIgBeRPQtVd8WOAQ9mKBG+hpHWeuFqrgkrIEHbbfUZM4fEAixQm5zLVM2DRtuXw
+ +5Ob8UI5gIhHsCOsmspn9T0E/33NsEhPK6hPAlycaQOskHfto77YjHI9uyf4mmBCkYqH
+ ZwAhQVsPz0B6E6AHSihM+sSDJqIzBieVMfUQ7KQlAd/tx1OJAY6NZddhYb8fGN2QWEtE
+ MHIsYsThVJflIOQYq4JR/ZHLndLb5LAmjDXoLDeNGSrLVw8VDSME5PyixhpkzCZYT2su
+ cn5Q==
+X-Gm-Message-State: AOJu0YxxcY+Cn9OTbiQ40Bnp749OaTNdzPOmyUK9gS/+T/di7R6nQgzA
+ WbWRvwTJZN/dEolq1s2G7PfIugb2acBV0oL2nt0=
+X-Received: by 2002:a05:600c:4507:b0:40c:909:42ab with SMTP id
+ t7-20020a05600c450700b0040c090942abmr7228640wmo.82.1702899193292; 
+ Mon, 18 Dec 2023 03:33:13 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.23
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:23 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:13 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 35/35] target/arm: Add FEAT_NV2 to max, neoverse-n2,
- neoverse-v1 CPUs
-Date: Mon, 18 Dec 2023 11:33:05 +0000
-Message-Id: <20231218113305.2511480-36-peter.maydell@linaro.org>
+Subject: [PATCH 14/35] target/arm: Make NV reads of CurrentEL return EL2
+Date: Mon, 18 Dec 2023 11:32:44 +0000
+Message-Id: <20231218113305.2511480-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,59 +123,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uLcuYcQFiOHC
+X-TUID: fLWNUI36Kqx6
 
-Enable FEAT_NV2 on the 'max' CPU, and stop filtering it out for
-the Neoverse N2 and Neoverse V1 CPUs.
+FEAT_NV requires that when HCR_EL2.NV is set reads of the CurrentEL
+register from EL1 always report EL2 rather than the real EL.
+Implement this.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/emulation.rst | 1 +
- target/arm/cpu.c              | 5 -----
- target/arm/tcg/cpu64.c        | 2 +-
- 3 files changed, 2 insertions(+), 6 deletions(-)
+ target/arm/tcg/translate-a64.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index d827b42de79..f67aea2d836 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -64,6 +64,7 @@ the following architecture extensions:
- - FEAT_MTE2 (Memory Tagging Extension)
- - FEAT_MTE3 (MTE Asymmetric Fault Handling)
- - FEAT_NV (Nested Virtualization)
-+- FEAT_NV2 (Enhanced nested virtualization support)
- - FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
- - FEAT_PACQARMA3 (Pointer authentication - QARMA3 algorithm)
- - FEAT_PACQARMA5 (Pointer authentication - QARMA5 algorithm)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d1d592609eb..65dc88ba864 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2243,11 +2243,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         /* FEAT_MPAM (Memory Partitioning and Monitoring Extension) */
-         cpu->isar.id_aa64pfr0 =
-             FIELD_DP64(cpu->isar.id_aa64pfr0, ID_AA64PFR0, MPAM, 0);
--        /* FEAT_NV2 (Enhanced Nested Virtualization support) */
--        if (FIELD_EX64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, NV) > 1) {
--            cpu->isar.id_aa64mmfr2 =
--                FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, NV, 1);
--        }
-     }
- 
-     /* MPU can be configured out of a PMSA CPU either by setting has-mpu
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 93f040e6e96..5fba2c0f040 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1204,7 +1204,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
-     t = FIELD_DP64(t, ID_AA64MMFR2, IESB, 1);     /* FEAT_IESB */
-     t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
--    t = FIELD_DP64(t, ID_AA64MMFR2, NV, 1);       /* FEAT_NV */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, NV, 2);       /* FEAT_NV2 */
-     t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
-     t = FIELD_DP64(t, ID_AA64MMFR2, AT, 1);       /* FEAT_LSE2 */
-     t = FIELD_DP64(t, ID_AA64MMFR2, IDS, 1);      /* FEAT_IDST */
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index d060e24356d..6bfc39d8ea7 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2240,12 +2240,17 @@ static void handle_sys(DisasContext *s, bool isread,
+         }
+         return;
+     case ARM_CP_CURRENTEL:
+-        /* Reads as current EL value from pstate, which is
++    {
++        /*
++         * Reads as current EL value from pstate, which is
+          * guaranteed to be constant by the tb flags.
++         * For nested virt we should report EL2.
+          */
++        int el = s->nv ? 2 : s->current_el;
+         tcg_rt = cpu_reg(s, rt);
+-        tcg_gen_movi_i64(tcg_rt, s->current_el << 2);
++        tcg_gen_movi_i64(tcg_rt, el << 2);
+         return;
++    }
+     case ARM_CP_DC_ZVA:
+         /* Writes clear the aligned block of memory which rt points into. */
+         if (s->mte_active[0]) {
 -- 
 2.34.1
 

@@ -1,115 +1,115 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722877eji;
-        Mon, 18 Dec 2023 03:34:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEEWIi6tRWvqylZ5r0+yAjmp7pOVBVpKtdpOTCXkpqeZobNv+JH3CtPbnIEY7Eo0V+/TaxS
-X-Received: by 2002:a05:622a:251:b0:418:1088:7d69 with SMTP id c17-20020a05622a025100b0041810887d69mr22489378qtx.18.1702899278355;
-        Mon, 18 Dec 2023 03:34:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899278; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722923eji;
+        Mon, 18 Dec 2023 03:34:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEBvSiV55LQL3OhFiLDvAJU7YDbnpJCOqVEFFmAFQClHeAFJQ9OzomUi1HA8DmfIanfTvI0
+X-Received: by 2002:a05:620a:26a4:b0:77f:d52:f791 with SMTP id c36-20020a05620a26a400b0077f0d52f791mr20046039qkp.68.1702899283232;
+        Mon, 18 Dec 2023 03:34:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899283; cv=none;
         d=google.com; s=arc-20160816;
-        b=hAGwzwlKe7gGRoxVMIVMUsqmwHCiPAFNqBxc7fg9F6GTc4e4m8EfW8ML0CSalxu9kC
-         JIu3a/VEVFZi0M3Zkl+KG3LBKHPpCZHs3uslp9u7aXYlHIXlJ8Fl0EAMMrEMCA+vvK0x
-         OlZ4tVJMRurLy+7rvkdAIvI+Ny1JOv65OrP7HPE3FvXMXtWV/pf3zOnxQXxQ1zB8Iva5
-         ylEy/G1T6N3nzR3nhv6kaJkdVWJ4ND/oNJ0w7Y76pjwrF1hwPK5JjSplULHu9gJqwwbR
-         svH3rlO25V0DUZkkMHzMaQeQ4OvzxqyeMtXL7MlTI8M/Orn5fLNZRtjSzpqSAotATj1g
-         /1mg==
+        b=Upc1x94AOQIhJW5vd/9SOil401ytWMz0E++CLUI+8D4OMmhmvUHtJO9NKQ2S3xdMZT
+         7nVvFstEsL1V5YQcUl8NmuJgDql7R5wrfNlxp1UBgtmyX008vpwhluXavdzPf3+uwR+f
+         lr49xZYkF4uUbxOPv48uMRkis3/TD4hD6DgbJfUNF+wIyK4dPHToiiJ4XO9wWNj3RBlj
+         ghZ+GGjc2d+wzy0shIG+c1E096Hfn2Y2eQ8d1Y38oULVRhIHtJ4XvVqdEhZpnIAkFjQU
+         2P/UZGtfAoZ4H6caSuZpJ0grPxENcwCGe7T6iLk4oBWQNHxQzOi/JhIAwnlsL+itdUUE
+         jE1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=rIyXbTygsThOVzP4jBkF7Rj3QO0R5JlePmQL1JlO97A=;
+        bh=gThDCBT1NLIns1yMSSTDgKj1hf4iO2zsqHlQHQg2dD0=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=WtbcVNWXy5GCjCx2+4dF7+XVKeEe0IMnn6580Fnd8uX/YVpT367m9KJfIGVmxvwonA
-         HOifoclHBNkIXbvc9lhgunZhKAGyJqlSouBKjve7GOC5OYjqqpZQI2rG2evCPXWKwcxI
-         RLtcMLqN9r+edDGpwaDcGeqW3TwPr9ZCt+Kp0JGthUIgeGUnSaX7576A330ppO8YaQB3
-         v3mKkkWV4dMSTBQswxbqIyOpMe6iQmogbrnLVuks/MGXET5IraHHFObvsLz6FLpL9WQ3
-         A9GszxojI2xH21mUaCu8IX3vrwu7Rbkowfwtibk5er3jeI8F/L4GbQG1v/nYBlE6oQL8
-         4uPQ==
+        b=xHszHWh0fgOuYHuExxBA9oJP1R5TwxSgS4kIiMPQZE6lB39N3T5C9xh5D4x98DmKuP
+         FXIqvMX/0sfAxEI447ueus0wOadBL0sjJmDq0z/Zcmwmusfpmk3IUxgF//KB6Ysv6qEN
+         iekHwG/1zDqzTXf7P5XZrS0rYZx9+nG0KpiVdmrtP7aSvqcExDSVAdZR7QH2SbAItef8
+         COVZwhJuUQ4bOGT/feJkdXUQWQlYQPt9vAxUDb4IMYRBGCwnTTc0fS0POUB6r2E+5OWf
+         cRtHYeHiO0sd3QhsaZoncGXHtm39EkEeqttCLp9KXiU2gMuE2XYEq6bbvenn5U+jSTZq
+         THoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IYkHe442;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EobsDH45;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cn12-20020a05622a248c00b004254e5138fesi26125014qtb.260.2023.12.18.03.34.38
+        by mx.google.com with ESMTPS id u21-20020a05620a121500b0077fb70aaaa1si6278657qkj.83.2023.12.18.03.34.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:34:38 -0800 (PST)
+        Mon, 18 Dec 2023 03:34:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IYkHe442;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EobsDH45;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFBs9-0006f0-C4; Mon, 18 Dec 2023 06:33:21 -0500
+	id 1rFBs9-0006fA-J8; Mon, 18 Dec 2023 06:33:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs6-0006bU-3a
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:18 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1rFBs8-0006dY-0x
+ for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:20 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs0-0003IH-AO
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:17 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-33664b4e038so957699f8f.3
- for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:11 -0800 (PST)
+ id 1rFBs1-0003JC-QU
+ for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:19 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-3366ddd1eddso114031f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899191; x=1703503991; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899192; x=1703503992; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=rIyXbTygsThOVzP4jBkF7Rj3QO0R5JlePmQL1JlO97A=;
- b=IYkHe442q5CBR70lIuFgjBrYM3Eyrk6VYnWQWYo/+TrH04Ur/fLevm/qM+/Kgc51We
- Tbm71kJHHw1wx5PtVpPDHykPpKVQEv2WRI0K/QeP7ShJUl7UJycv2doNtrawvEK+ALxO
- TlemXQopmoAeKVSjQTVZqGCkS5oq5DqscLcK7+SdVsqZ6+DGK24Kl/n0kSznLisGDdqx
- 0LEQSINn10sSs/mtuCryZX/+xZ2Th5uSBgw6uL3z3S5yrNw2oosoyYp/fnRJIjptta02
- N+IRUZtEq52eZ/OvI10688pVcohIRDYGclpV210X92uEN//imOZcrRqxkqPDKWPeeNRk
- WzPg==
+ :reply-to; bh=gThDCBT1NLIns1yMSSTDgKj1hf4iO2zsqHlQHQg2dD0=;
+ b=EobsDH453GwtUpWwiFLUjKldhTjHXn8VtQP50zzFbwNjeY2vKlBH8pd9j5MMkrl+W1
+ lBLuBHhA1D2Z1h1sGKUEi+gYvKmV4Xo8GJbtnmsuu6wGE9EFjDnmbiQ3bdNvC/KEC/L9
+ 08LDlP0FUXCXMxCCsnD7K5qae0r98RO/atr9VN2cJq8itR2Cv50/1FDESFt8J4GXF94J
+ U8hly7vRmrncbhnKI51xF6iDdzwV0xKpn1QEgZAif/Zq8TlfC5cr9AKpuUhqopfewFmb
+ AUO6K0DoQyRrQm0bqB2kraeP8VvAJq/VjV2oXAgyDdPGx68MjH6YCSZ6xuoiIFM7SvXJ
+ 9GKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899191; x=1703503991;
+ d=1e100.net; s=20230601; t=1702899192; x=1703503992;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=rIyXbTygsThOVzP4jBkF7Rj3QO0R5JlePmQL1JlO97A=;
- b=IWH4XIB1uyDWuIX+jYQDgdgsnZcHEF6rIWo1mV3AUeKocZF7LUwQ0brNAs77k+yNy6
- 4vjY5LdIiPiY4b52dI7zI5FvvO4ezAaoq/h7jnrsXaG2QY3DDKDXiSGNaUORTa1dgXz4
- hGKvNHx1jtl7mRssdeV1pcnNkU28tp1yBSAeteZkTKIgaunA8ItslqYdmcf9ZD+goMq/
- Xu2Ms02kJ92VhQYfqeLZJI+3LA2F6G1VDqn/kMNz+mNk/HsA9YUhfSaWIe3evc8a8E0f
- wDYi6Di3neyBWXAPpUBa9zN0nLEegJwke0ZmAtHjOS+/0XLraMiw/o8gNZgUe8GXAKH6
- OAKg==
-X-Gm-Message-State: AOJu0YyVVJaK/gyPVEmjq5Fw8Xt9dD1kD5uguBtMj7UFeOrc7GldSt0R
- /zuPYGLbei86KtSsuD2I+cI/MSYb05yH/U2yJS4=
-X-Received: by 2002:a05:6000:889:b0:336:96d:475c with SMTP id
- cs9-20020a056000088900b00336096d475cmr8115437wrb.5.1702899190943; 
- Mon, 18 Dec 2023 03:33:10 -0800 (PST)
+ bh=gThDCBT1NLIns1yMSSTDgKj1hf4iO2zsqHlQHQg2dD0=;
+ b=Fy/KwNqOlG1HvJo8byuXkqALGxvmMUULJEKlNfHzRO8ETycNv9VEBmEHi4skFtBP6f
+ kK0FwkKKIZn5njbEp/fw+6WYq6LeJSTj+2eTZFe6SJQ/im6aXLQPik5kW74gF3c9dIz9
+ O8BjhlelgxCkeGQ/oXGm691lSQUGdXRCKY3F4USOkur3W1I12oOlk4YsZSUP8a6U+GPo
+ quIKodgkw3IxgnwDTz9PuP+AkXnEmy0V+yAuoISiZpOPWnyUyFBm/VhJuZGero5XIsR1
+ HlG90urqGravqbzR5CKaiz1yWmEsnLVBdzxMl8cZPH6iot6T+ryEaI27dt5vlQXPILir
+ 0dSg==
+X-Gm-Message-State: AOJu0YzvpBLm35ZjzMfgnWQSdWLu0SrzVN+NtgOFHcfo8Hx8WS8q/QMa
+ U4VhfVyNTE5Zhf16PjtKXCpjpnn153WrygOjsw0=
+X-Received: by 2002:adf:f3ca:0:b0:336:64b8:9d3c with SMTP id
+ g10-20020adff3ca000000b0033664b89d3cmr502236wrp.67.1702899192343; 
+ Mon, 18 Dec 2023 03:33:12 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.10
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:10 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:12 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 09/35] target/arm: Record correct opcode fields in cpreg for
- E2H aliases
-Date: Mon, 18 Dec 2023 11:32:39 +0000
-Message-Id: <20231218113305.2511480-10-peter.maydell@linaro.org>
+Subject: [PATCH 12/35] target/arm: Move FPU/SVE/SME access checks up above
+ ARM_CP_SPECIAL_MASK check
+Date: Mon, 18 Dec 2023 11:32:42 +0000
+Message-Id: <20231218113305.2511480-13-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,90 +124,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dEPr0FnIDchD
+X-TUID: 3xivbHVrCWZr
 
-For FEAT_VHE, we define a set of register aliases, so that for instance:
- * the SCTLR_EL1 either accesses the real SCTLR_EL1, or (if E2H is 1)
-   SCTLR_EL2
- * a new SCTLR_EL12 register accesses SCTLR_EL1 if E2H is 1
+In handle_sys() we don't do the check for whether the register is
+marked as needing an FPU/SVE/SME access check until after we've
+handled the special cases covered by ARM_CP_SPECIAL_MASK.  This is
+conceptually the wrong way around, because if for example we happen
+to implement an FPU-access-checked register as ARM_CP_NOP, we should
+do the access check first.
 
-However when we create the 'new_reg' cpreg struct for the SCTLR_EL12
-register, we duplicate the information in the SCTLR_EL1 cpreg, which
-means the opcode fields are those of SCTLR_EL1, not SCTLR_EL12.  This
-is a problem for code which looks at the cpreg opcode fields to
-determine behaviour (e.g.  in access_check_cp_reg()). In practice
-the current checks we do there don't intersect with the *_EL12
-registers, but for FEAT_NV this will become a problem.
+Move the access checks up so they are with all the other access
+checks, not sandwiched between the special-case read/write handling
+and the normal-case read/write handling. This doesn't change
+behaviour at the moment, because we happen not to define any
+cpregs with both ARM_CPU_{FPU,SVE,SME} and one of the cases
+dealt with by ARM_CP_SPECIAL_MASK.
 
-Write the correct values from the encoding into the new_reg struct.
-This restores the invariant that the cpreg that you get back
-from the hashtable has opcode fields that match the key you used
-to retrieve it.
-
-When we call the readfn or writefn for the target register, we
-pass it the cpreg struct for that target register, not the one
-for the alias, in case the readfn/writefn want to look at the
-opcode fields to determine behaviour. This means we need to
-interpose custom read/writefns for the e12 aliases.
+Moving this code also means we have the correct place to put the
+FEAT_NV/FEAT_NV2 access handling, which should come after the access
+checks and before we try to do any read/write action.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ target/arm/tcg/translate-a64.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f1c7fbf319c..c6f069b74cd 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6506,6 +6506,19 @@ static void el2_e2h_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     writefn(env, ri, value);
- }
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 00d12e148ca..2d26cb6210f 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2189,6 +2189,14 @@ static void handle_sys(DisasContext *s, bool isread,
+         gen_a64_update_pc(s, 0);
+     }
  
-+static uint64_t el2_e2h_e12_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /* Pass the EL1 register accessor its ri, not the EL12 alias ri */
-+    return ri->orig_readfn(env, ri->opaque);
-+}
++    if ((ri->type & ARM_CP_FPU) && !fp_access_check_only(s)) {
++        return;
++    } else if ((ri->type & ARM_CP_SVE) && !sve_access_check(s)) {
++        return;
++    } else if ((ri->type & ARM_CP_SME) && !sme_access_check(s)) {
++        return;
++    }
 +
-+static void el2_e2h_e12_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                              uint64_t value)
-+{
-+    /* Pass the EL1 register accessor its ri, not the EL12 alias ri */
-+    return ri->orig_writefn(env, ri->opaque, value);
-+}
-+
- static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
- {
-     struct E2HAlias {
-@@ -6605,6 +6618,28 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
-         new_reg->type |= ARM_CP_ALIAS;
-         /* Remove PL1/PL0 access, leaving PL2/PL3 R/W in place.  */
-         new_reg->access &= PL2_RW | PL3_RW;
-+        /* The new_reg op fields are as per new_key, not the target reg */
-+        new_reg->crn = (a->new_key & CP_REG_ARM64_SYSREG_CRN_MASK)
-+            >> CP_REG_ARM64_SYSREG_CRN_SHIFT;
-+        new_reg->crm = (a->new_key & CP_REG_ARM64_SYSREG_CRM_MASK)
-+            >> CP_REG_ARM64_SYSREG_CRM_SHIFT;
-+        new_reg->opc0 = (a->new_key & CP_REG_ARM64_SYSREG_OP0_MASK)
-+            >> CP_REG_ARM64_SYSREG_OP0_SHIFT;
-+        new_reg->opc1 = (a->new_key & CP_REG_ARM64_SYSREG_OP1_MASK)
-+            >> CP_REG_ARM64_SYSREG_OP1_SHIFT;
-+        new_reg->opc2 = (a->new_key & CP_REG_ARM64_SYSREG_OP2_MASK)
-+            >> CP_REG_ARM64_SYSREG_OP2_SHIFT;
-+        new_reg->opaque = src_reg;
-+        new_reg->orig_readfn = src_reg->readfn ?: raw_read;
-+        new_reg->orig_writefn = src_reg->writefn ?: raw_write;
-+        if (!new_reg->raw_readfn) {
-+            new_reg->raw_readfn = raw_read;
-+        }
-+        if (!new_reg->raw_writefn) {
-+            new_reg->raw_writefn = raw_write;
-+        }
-+        new_reg->readfn = el2_e2h_e12_read;
-+        new_reg->writefn = el2_e2h_e12_write;
+     /* Handle special cases first */
+     switch (ri->type & ARM_CP_SPECIAL_MASK) {
+     case 0:
+@@ -2267,13 +2275,6 @@ static void handle_sys(DisasContext *s, bool isread,
+     default:
+         g_assert_not_reached();
+     }
+-    if ((ri->type & ARM_CP_FPU) && !fp_access_check_only(s)) {
+-        return;
+-    } else if ((ri->type & ARM_CP_SVE) && !sve_access_check(s)) {
+-        return;
+-    } else if ((ri->type & ARM_CP_SME) && !sme_access_check(s)) {
+-        return;
+-    }
  
-         ok = g_hash_table_insert(cpu->cp_regs,
-                                  (gpointer)(uintptr_t)a->new_key, new_reg);
+     if (ri->type & ARM_CP_IO) {
+         /* I/O operations must end the TB here (whether read or write) */
 -- 
 2.34.1
 

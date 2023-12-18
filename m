@@ -1,101 +1,100 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp724055eji;
-        Mon, 18 Dec 2023 03:37:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHkbZqH+M5tbuPKyn8oUqYvRQ62Z5UqsIhWtpNcZxQqlXdjOA2RtsUrQv3KQ7OUjVyxky38
-X-Received: by 2002:ad4:574c:0:b0:67f:dcb:57b1 with SMTP id q12-20020ad4574c000000b0067f0dcb57b1mr10449328qvx.54.1702899423909;
-        Mon, 18 Dec 2023 03:37:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899423; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp724070eji;
+        Mon, 18 Dec 2023 03:37:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFlPuQydlgwDKaVcZh3HNxb34OmDgp2IJR5TqueLP5ZbiVGPl34kxeUu1WsLZW7oPgjaOq+
+X-Received: by 2002:a05:6214:1c45:b0:67f:631:4856 with SMTP id if5-20020a0562141c4500b0067f06314856mr9948484qvb.111.1702899425154;
+        Mon, 18 Dec 2023 03:37:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899425; cv=none;
         d=google.com; s=arc-20160816;
-        b=djHFXYsrS7wLAjyUQeBMIYQSq48FM3/G/VQu+bIOk1E3eejTMJ1P3jQu8atydrz573
-         50YBDrgzEGz/vVrjJEB7o3F47f5CoKZQsMqCSprB639FOacV2Q88HzKo1xoTUg0DNJfi
-         UJpFywhHoH2ZuQuOFzwODSq8SOp2VGaHouiyscBan0a7p6x5Jw+Gkl8kLNlxNde6opld
-         ///Jv0Cd6f+CdF3ev0iwjM8jhbrSkGdgT+U9n+rultSx7ce49UAHEo6uJwuFVjuB2dak
-         4L2u//iNx2UrRXc4TzqEZ79irKnTYD+kdJeHg4VkHs2giITk595Ljeg7CUjeV/3r/bbQ
-         sL1A==
+        b=E26pYtOH5pdp28hT42eRAdJ8vBVC6m4BVJZTRuevCpbN+SPOD4iHKebGJbJDksebUk
+         jHlibu8n7EmY7u4zvselquR4yaL40BxgWgQZtB2q+7f9vOhbPeLOHi7gdV4BnLipSGFn
+         KI4pFyKnd9r2B8J3fsS0wZyu1MNvIjUSZT8UuAHQK5dr2e0PZJAWFMVfhXXuWUboLyID
+         S+ycg+q7C4IDRjZqSC0XHE8coj7lyVvERuwPsNy+EbUxMkhNHdp1DemipH23BoJohTqn
+         2v9sESoEVLXh2xa2lSwKXQyJkoQcX0SwrKG1RoE/H15w6yWFKYTiY1mHMMvL8pWGgdaZ
+         XYbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XBGAau5xQawMv1TIkYCOIFZhD76YOOoYpu6Y5VQfn/w=;
+        bh=NRuw6DRSRtcEOUgfTxYJIjGMHE4VBSQoJphbpoL6X/Y=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=UcmaoKgxMtDMhYLmUkDcRStVj3M+HRO5p/+smVuLKENkZXelwNLciVeJjlnUjNFD6J
-         dRHvv+ORYYpZ059gPAmE+G/bQYp7gjP0wIy6Pw7QItt4ksjrlgGvTJ1RK6GLy0OdrORF
-         7YnAgF1Ghu6o+lvY766BxmpqYXjT4YLPzldtS+bDpXQQeta+jRNiGAr/ybPU8ipce+Ym
-         fwoCCo6JVMcUgfUksM7eYI8pfVFlcvTEbcwS5ok2sN5XJ6PiMF/N9kwICoXkMoABxYTG
-         Em9Is0mLGC/ILLFitDuL9IbqM1m/jGGko2LdfLfyM4Cp7ZGSgJsyEnYFq6s7Fy979clu
-         Oq1g==
+        b=O7WpBiB1vWHN/G02CJ7M9GdVtvGtSgwzlTEE7m8cUaoYTyXjyoINcLn5ywlYkrSKEK
+         r58RSm28astWM5bZ9XTKz8MHFgtwsUlLvWwvmZXwZ98EgOeOttqaDZHzMIrQItdYXjdL
+         M7KB7IXII+uFUqutG+tlnCV8/dg4aunpZtJ6j3Hj8fL4u/4/S1pbrkQqNYemFhyVEXJA
+         fqeNt6aEDJJWbzF4hnTMNClzLjcfHX4MoZo+H8iBSLQdR6MFFHjNwPaigNL4FrwWnb7L
+         hiSBhIbxS1tKqMJ6yWDVzNKI/8yHKJVjnx3vjd4KGzi9sYLEFARrdFnIbfE/yeIi9ZKP
+         5Qdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="p1nx/xiz";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ir0K8Kqe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3-20020a0cd6c3000000b0067abb363a4bsi23400324qvi.231.2023.12.18.03.37.03
+        by mx.google.com with ESMTPS id z3-20020a0cf243000000b0067ef5252853si405110qvl.352.2023.12.18.03.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:37:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Dec 2023 03:37:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="p1nx/xiz";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ir0K8Kqe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFBsE-0006zU-TI; Mon, 18 Dec 2023 06:33:26 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rFBsT-0007AH-39; Mon, 18 Dec 2023 06:33:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBsD-0006w2-K0
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:25 -0500
+ id 1rFBsL-00077L-5v
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:33 -0500
 Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs6-0003Li-AG
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:25 -0500
+ id 1rFBsA-0003Nu-9v
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:32 -0500
 Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-33668cdb982so617252f8f.0
- for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:17 -0800 (PST)
+ ffacd0b85a97d-33668163949so694011f8f.2
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899196; x=1703503996; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899201; x=1703504001; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=XBGAau5xQawMv1TIkYCOIFZhD76YOOoYpu6Y5VQfn/w=;
- b=p1nx/xizLrpkfy5i/rxVvJxdN22v/GAJQne56MBnSRuBZvZOtlKlgmp4NT0TKUnBQn
- JuqdXo/XhaL82QhWyrStx4rIZkv9SdNo/90lEM2lkluZqhglRLK+25rg1f0vknL8ci6X
- x68X9dXwgkUNgiRINGOmYrqMI/e3AwRt9J44UnhJoSW+GgP4CcfJHvueR8pTAY13IsJ7
- MatwDNAI0Yy/16z6BNtzBSoraupwFANvxKXXszfYMdF3Zf2jzFBb07zFxx9XMklNq9fu
- z03IJFoPm2LRruqhJRXfiqFyrp8KoPZUz1B+SMGhe/rvFDEJ5PqYbmPYq98nlJa0Tz3T
- GUhg==
+ :reply-to; bh=NRuw6DRSRtcEOUgfTxYJIjGMHE4VBSQoJphbpoL6X/Y=;
+ b=ir0K8KqeqFlFdsBcVAgl8ztUaMxU1P83kfqwZ5qoO+9ByV6zr9auOvqyXueAFCZCRp
+ 3w/uL8xgd6YueoMH2lKxeVWcE7Q1L3qzyjESQnJ9ZnhinUIDpB+we2Be5OoK2FSNxec+
+ coDT2kO10JVDL06Xje2fB/nBlDzV66J+4BpbmvVIg+J41oaNVXRQAaUueAREpu7bN2he
+ okuJQIyfGZ3SzCzDCxjtdS6JKYwyyeZVQq0d0/VEp9QxLYEgI18qwTSuCr9tj4pDrPBW
+ Dlf+JuNl1ndxHczNEvgBqW4mgtwXx3IuTq+dIGLySE1T12cse2pKHXFRGvIf28HJNQQT
+ fBBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899196; x=1703503996;
+ d=1e100.net; s=20230601; t=1702899201; x=1703504001;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XBGAau5xQawMv1TIkYCOIFZhD76YOOoYpu6Y5VQfn/w=;
- b=erT5C5QZu/4fs8+HV/+Qrlb01HUTOJJ4aHhCCuaaTJT1oYpeFGOfNehDK6lRIS+2Sy
- BcZhTWLunNtzJaSvY5QhxiuhXKo7Z6kbFo6SSFCxbn4r4fNgVTzUWtLS0RsaJlcXRnW/
- /nPb7afL6aD0oAClqO+F5DUjfG54hB61zXt0440TmE91/2yfMp7ApGkfV3Vce+VNnI0c
- tofuWh5ahuNuM+xXX9ovonYCvoRVTZ3/smQp1oSCcjPdfL7scwakH/QEm/KK4E4eCKu1
- SogP//2JYwK5em+H3kmCy7G/I3WDvoANl9NypnTPHT/DHO/c3WiTCNi4prAJIyjjzG6u
- /7sA==
-X-Gm-Message-State: AOJu0Ywaej4T5AFgznLizAfBq7rVeAFH8xJDQ8bUGasEbvoujdpMg9Qv
- FDv8usjKF/mKyRvljlzojxpshfy8q5XrxFgTVcM=
-X-Received: by 2002:adf:e2c2:0:b0:332:eaa7:56b0 with SMTP id
- d2-20020adfe2c2000000b00332eaa756b0mr7873228wrj.14.1702899196728; 
- Mon, 18 Dec 2023 03:33:16 -0800 (PST)
+ bh=NRuw6DRSRtcEOUgfTxYJIjGMHE4VBSQoJphbpoL6X/Y=;
+ b=rQSNhlddWR8kV3BpmAnLW8BLCb0ke5crftALoClz72L3pICd/K1wGwRFQNDcAE0IcF
+ 4P4ejwLDvoV8kcjT3LOWwFUggHmiiDDpHkZJ7VHq+7f3suCcr65nt9E3Vc9Khk2Mxw1B
+ Tz25yf7IenNOqJKxwkBFShNvST3cPlZup38TZDYFMkqMjjYXWhWdsyRonljLjYLc3Xrz
+ zbyxol+tfcf5j6XeeRjpIvSZz7rrWqjtCQaP0qps6KEVvjHtXv+AMcPWHMkfRjLN5I0t
+ LFNJRxlJPWLYfS+iyb6Rb8YgSmxSQhuJ7Ky3g4zahxtft6+mNbzZe5hl8Q8/HccfTjWS
+ 4qkA==
+X-Gm-Message-State: AOJu0Yy0qEqqn1POzGE80JlKZAGVFdYIDRffwcvet+ugdC2CRbQ+Cuet
+ oUiITL+3hXis34VkiNBwtoatNw==
+X-Received: by 2002:a05:6000:1f07:b0:336:6600:c191 with SMTP id
+ bv7-20020a0560001f0700b003366600c191mr640147wrb.107.1702899200798; 
+ Mon, 18 Dec 2023 03:33:20 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.16
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:16 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:20 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 21/35] target/arm: Add FEAT_NV to max, neoverse-n2,
- neoverse-v1 CPUs
-Date: Mon, 18 Dec 2023 11:32:51 +0000
-Message-Id: <20231218113305.2511480-22-peter.maydell@linaro.org>
+Subject: [PATCH 29/35] target/arm: Mark up VNCR offsets (offsets 0x100..0x160)
+Date: Mon, 18 Dec 2023 11:32:59 +0000
+Message-Id: <20231218113305.2511480-30-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
@@ -109,77 +108,159 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EfrOblabm7jG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MlW6+dwArGn0
 
-Enable FEAT_NV on the 'max' CPU, and stop filtering it out for the
-Neoverse N2 and Neoverse V1 CPUs.  We continue to downgrade FEAT_NV2
-support to FEAT_NV for the latter two CPU types.
+Mark up the cpreginfo structs to indicate offsets for system
+registers from VNCR_EL2, as defined in table D8-66 in rule R_CSRPQ in
+the Arm ARM.  This commit covers offsets 0x100 to 0x160.
+
+Many (but not all) of the registers in this range have _EL12 aliases,
+and the slot in memory is shared between the _EL12 version of the
+register and the _EL1 version.  Where we programmatically generate
+the regdef for the _EL12 register, arrange that its
+nv2_redirect_offset is set up correctly to do this.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/emulation.rst | 1 +
- target/arm/cpu.c              | 8 +++++---
- target/arm/tcg/cpu64.c        | 1 +
- 3 files changed, 7 insertions(+), 3 deletions(-)
+ target/arm/debug_helper.c |  1 +
+ target/arm/helper.c       | 22 ++++++++++++++++++++++
+ 2 files changed, 23 insertions(+)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 0b604f90059..d827b42de79 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -63,6 +63,7 @@ the following architecture extensions:
- - FEAT_MTE (Memory Tagging Extension)
- - FEAT_MTE2 (Memory Tagging Extension)
- - FEAT_MTE3 (MTE Asymmetric Fault Handling)
-+- FEAT_NV (Nested Virtualization)
- - FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
- - FEAT_PACQARMA3 (Pointer authentication - QARMA3 algorithm)
- - FEAT_PACQARMA5 (Pointer authentication - QARMA5 algorithm)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index efb22a87f9e..da0c02f850b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2238,9 +2238,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         /* FEAT_MPAM (Memory Partitioning and Monitoring Extension) */
-         cpu->isar.id_aa64pfr0 =
-             FIELD_DP64(cpu->isar.id_aa64pfr0, ID_AA64PFR0, MPAM, 0);
--        /* FEAT_NV (Nested Virtualization) */
--        cpu->isar.id_aa64mmfr2 =
--            FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, NV, 0);
-+        /* FEAT_NV2 (Enhanced Nested Virtualization support) */
-+        if (FIELD_EX64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, NV) > 1) {
-+            cpu->isar.id_aa64mmfr2 =
-+                FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, NV, 1);
-+        }
-     }
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index b39144d5b93..7d856acddf2 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -960,6 +960,7 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
+       .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tda,
+       .fgt = FGT_MDSCR_EL1,
++      .nv2_redirect_offset = 0x158,
+       .fieldoffset = offsetof(CPUARMState, cp15.mdscr_el1),
+       .resetvalue = 0 },
+     /*
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ff7f90fa4af..78c3c3ebd8d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -647,6 +647,7 @@ static const ARMCPRegInfo cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 13, .crm = 0, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_CONTEXTIDR_EL1,
++      .nv2_redirect_offset = 0x108 | NV2_REDIR_NV1,
+       .secure = ARM_CP_SECSTATE_NS,
+       .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[1]),
+       .resetvalue = 0, .writefn = contextidr_write, .raw_writefn = raw_write, },
+@@ -883,6 +884,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
+     { .name = "CPACR", .state = ARM_CP_STATE_BOTH, .opc0 = 3,
+       .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 2, .accessfn = cpacr_access,
+       .fgt = FGT_CPACR_EL1,
++      .nv2_redirect_offset = 0x100 | NV2_REDIR_NV1,
+       .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.cpacr_el1),
+       .resetfn = cpacr_reset, .writefn = cpacr_write, .readfn = cpacr_read },
+ };
+@@ -2234,11 +2236,13 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_AFSR0_EL1,
++      .nv2_redirect_offset = 0x128 | NV2_REDIR_NV1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "AFSR1_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 5, .crm = 1, .opc2 = 1,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_AFSR1_EL1,
++      .nv2_redirect_offset = 0x130 | NV2_REDIR_NV1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     /*
+      * MAIR can just read-as-written because we don't implement caches
+@@ -2248,6 +2252,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_MAIR_EL1,
++      .nv2_redirect_offset = 0x140 | NV2_REDIR_NV1,
+       .fieldoffset = offsetof(CPUARMState, cp15.mair_el[1]),
+       .resetvalue = 0 },
+     { .name = "MAIR_EL3", .state = ARM_CP_STATE_AA64,
+@@ -4271,6 +4276,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
+       .opc0 = 3, .crn = 5, .crm = 2, .opc1 = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_ESR_EL1,
++      .nv2_redirect_offset = 0x138 | NV2_REDIR_NV1,
+       .fieldoffset = offsetof(CPUARMState, cp15.esr_el[1]), .resetvalue = 0, },
+     { .name = "TTBR0_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 2, .crm = 0, .opc2 = 0,
+@@ -4290,6 +4296,7 @@ static const ARMCPRegInfo vmsa_cp_reginfo[] = {
+       .opc0 = 3, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 2,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_TCR_EL1,
++      .nv2_redirect_offset = 0x120 | NV2_REDIR_NV1,
+       .writefn = vmsa_tcr_el12_write,
+       .raw_writefn = raw_write,
+       .resetvalue = 0,
+@@ -4529,6 +4536,7 @@ static const ARMCPRegInfo lpae_cp_reginfo[] = {
+       .opc0 = 3, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_tvm_trvm,
+       .fgt = FGT_AMAIR_EL1,
++      .nv2_redirect_offset = 0x148 | NV2_REDIR_NV1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     /* AMAIR1 is mapped to AMAIR_EL1[63:32] */
+     { .name = "AMAIR1", .cp = 15, .crn = 10, .crm = 3, .opc1 = 0, .opc2 = 1,
+@@ -5718,6 +5726,7 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 0, .opc2 = 0,
+       .access = PL1_RW, .accessfn = access_nv1,
++      .nv2_redirect_offset = 0x160 | NV2_REDIR_NV1,
+       .fieldoffset = offsetof(CPUARMState, banked_spsr[BANK_SVC]) },
+     /*
+      * We rely on the access checks not allowing the guest to write to the
+@@ -6710,6 +6719,17 @@ static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+         new_reg->writefn = el2_e2h_e12_write;
+         new_reg->accessfn = el2_e2h_e12_access;
  
-     /* MPU can be configured out of a PMSA CPU either by setting has-mpu
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 40e7a45166f..93f040e6e96 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1204,6 +1204,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);      /* FEAT_UAO */
-     t = FIELD_DP64(t, ID_AA64MMFR2, IESB, 1);     /* FEAT_IESB */
-     t = FIELD_DP64(t, ID_AA64MMFR2, VARANGE, 1);  /* FEAT_LVA */
-+    t = FIELD_DP64(t, ID_AA64MMFR2, NV, 1);       /* FEAT_NV */
-     t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1);       /* FEAT_TTST */
-     t = FIELD_DP64(t, ID_AA64MMFR2, AT, 1);       /* FEAT_LSE2 */
-     t = FIELD_DP64(t, ID_AA64MMFR2, IDS, 1);      /* FEAT_IDST */
++        /*
++         * If the _EL1 register is redirected to memory by FEAT_NV2,
++         * then it shares the offset with the _EL12 register,
++         * and which one is redirected depends on HCR_EL2.NV1.
++         */
++        if (new_reg->nv2_redirect_offset) {
++            assert(new_reg->nv2_redirect_offset & NV2_REDIR_NV1);
++            new_reg->nv2_redirect_offset &= ~NV2_REDIR_NV1;
++            new_reg->nv2_redirect_offset |= NV2_REDIR_NO_NV1;
++        }
++
+         ok = g_hash_table_insert(cpu->cp_regs,
+                                  (gpointer)(uintptr_t)a->new_key, new_reg);
+         g_assert(ok);
+@@ -9414,6 +9434,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             { .name = "ACTLR_EL1", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 1,
+               .access = PL1_RW, .accessfn = access_tacr,
++              .nv2_redirect_offset = 0x118,
+               .type = ARM_CP_CONST, .resetvalue = cpu->reset_auxcr },
+             { .name = "ACTLR_EL2", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 0, .opc2 = 1,
+@@ -9499,6 +9520,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 0,
+             .access = PL1_RW, .accessfn = access_tvm_trvm,
+             .fgt = FGT_SCTLR_EL1,
++            .nv2_redirect_offset = 0x110 | NV2_REDIR_NV1,
+             .bank_fieldoffsets = { offsetof(CPUARMState, cp15.sctlr_s),
+                                    offsetof(CPUARMState, cp15.sctlr_ns) },
+             .writefn = sctlr_write, .resetvalue = cpu->reset_sctlr,
 -- 
 2.34.1
 

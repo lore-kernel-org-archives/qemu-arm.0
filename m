@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp544887eji;
-        Sun, 17 Dec 2023 19:54:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFPl1fmTqMvKqo59qcMpN5qBYJJW8ZsJBwSNa1Jw4Jm87jQqPyAPL9miP8bddPXekB3Egc8
-X-Received: by 2002:a05:620a:1361:b0:77f:ad35:dc33 with SMTP id d1-20020a05620a136100b0077fad35dc33mr6989848qkl.65.1702871665037;
-        Sun, 17 Dec 2023 19:54:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702871665; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp545912eji;
+        Sun, 17 Dec 2023 19:58:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH/fmbRajBt4O6Wwp3b+oc/rZ47lWnyIyN+8HQaabaSCvoLbt246PAeU8e2GW+ddwafOqQw
+X-Received: by 2002:a05:622a:11c5:b0:425:a802:46a5 with SMTP id n5-20020a05622a11c500b00425a80246a5mr11919754qtk.43.1702871893160;
+        Sun, 17 Dec 2023 19:58:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702871893; cv=none;
         d=google.com; s=arc-20160816;
-        b=sniHrIFJrLonlsT643mr0znXiBF+ESt3HDELm2yrKdM1jnnO4UYzieTpUV9xAgb5Hl
-         LDXONRPjFmZ06mPJ/HF+0E2erYtL6Yv1JdW5u1sDje7p4nfMCtXmx0UUzWKfW3q7XOmy
-         AlQiudBuueG7sZq5XssvHE0u/khG7joBYYVDB5LsUgeQHGcGsu++KY/k0/O1Yj4/Qre0
-         w8F5KMfBJpS1b4Kx4GTEk+hh07tACXNWyZDnU9vakrl1alPzwj8iw8g2K+fFyZBMN3of
-         fav+c54W0jHxuiOsPbnKMjqpz25q7Lm606y9dnFWCis/JSSkqUVKVnuBttFDJCmNxUu6
-         gQ4g==
+        b=SRHf9Pfcc6yL3ZZhSKTTq57MicZ/AufdRhdYnAHlI5e+wLKTG1tfALLy8s2//OsFoS
+         KEa2fqxd93qlQguR+fbZJsfo8D8rXHvacWh4N18TNmfBIJid0etyrIBdS7655y6DbvEy
+         DgPWRDQldE50sRZrPC7aCESyZyJ+MV+5bNBD0nUAXtLLE77DfHk3VW9b7s8iqymFVqyv
+         GeU2d1jZ5Mp0DOU5zFTjYCDHmX/asTQlwLTPdBf4RWKueVU41Ax0EHegMSF31TaQcuVA
+         864pPP11y+TO4TSNPXwTjDqaE8Gmrr+WqmVpAHOr7/PQojhFVglJSvQ46aIN02Gx90sQ
+         oZWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=wN031gcCCNtfrxFzHxY93r20SOdcJsChBfIxrYUP6Rw=;
+        bh=2y9d+MCu2iNwj8qfDA/f4Nw3tEz5QnJLw9qz8CFKRc8=;
         fh=/LYgw7cjenuZHh1AdjNLJVyUid9oyKPPbsg85Sc1t6U=;
-        b=f8od9dReXs8gkd7sJ5BQwYtGvP6ocokfEorBbnX83hPjcpel1Ob4v1ajm8P9ZNeYDN
-         nZ4dUYdVyIoOvlniTibSBj9uTjg9WT3OvgqLAI0/ufYgq4zDfsYj5Y4Qw/OJC21q+HN2
-         GY5saVFo8RISiHwsesr9SBSGXrUBzaQedIuzCKYr3X//p3K6vSB627t/8AiwoclVdMZk
-         flFjcDE9mu2MRr17sAlwva97agKhxnQV7xfDkqz+uoyusKKbWVjEvsKe0fVev32AA84t
-         LaGNNQXZhr1KrNgEZBB9uo5yLnJemePrsbO9yM4YC/UEgkiY7Uadue5aKH2r0Z37Oy3b
-         Vzng==
+        b=AAWmgdxHNDUsN/tujn0a5NaBULtCd7pemY96oleYASyEZDYobsn97ar8bnxdXRYlUF
+         KzoN9fk7/nD8AAnqVi0xp+suhh6Pbx0hFAbvMCJj6Ynd3r0EC1jCp8gBZL4SIMcf9Asz
+         9tgwtLYdmbgQWCsj/D1E2TbvH1uNVpeWfeJaKFL2tD7BF2ucgQxXPWEXYz+uiUk1eUCN
+         im9sbz8pQ6GAOmwgiFvRi5E5EuA7lgZh45knJ6Z2pdsxJIDI54boMYqBvDiwsU8V9Jgq
+         zJt0EEJmN09BAVnzLxhl9m9IjyK/4BE668OTV7CrZff/Y/il0T6IQKBlBW1wMyvDMqNH
+         vVZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OhRAJjQm;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FhXnEAHQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qs14-20020a05620a394e00b0077dabd088desi20687404qkn.388.2023.12.17.19.54.24
+        by mx.google.com with ESMTPS id j22-20020ac86656000000b00423950e1200si21419735qtp.774.2023.12.17.19.58.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Dec 2023 19:54:25 -0800 (PST)
+        Sun, 17 Dec 2023 19:58:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OhRAJjQm;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FhXnEAHQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rF4hl-0002ZS-Ee; Sun, 17 Dec 2023 22:54:09 -0500
+	id 1rF4lN-0003RQ-7a; Sun, 17 Dec 2023 22:57:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rF4hj-0002Z8-RT; Sun, 17 Dec 2023 22:54:07 -0500
-Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
+ id 1rF4lL-0003Qt-Dk; Sun, 17 Dec 2023 22:57:51 -0500
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rF4hb-0008Sn-3j; Sun, 17 Dec 2023 22:54:07 -0500
-Received: by mail-ua1-x92d.google.com with SMTP id
- a1e0cc1a2514c-7c5bfd8858cso789823241.3; 
- Sun, 17 Dec 2023 19:53:58 -0800 (PST)
+ id 1rF4lJ-0000hy-Ou; Sun, 17 Dec 2023 22:57:51 -0500
+Received: by mail-qk1-x730.google.com with SMTP id
+ af79cd13be357-77f957a5ac5so129449585a.3; 
+ Sun, 17 Dec 2023 19:57:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702871637; x=1703476437; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702871868; x=1703476668; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wN031gcCCNtfrxFzHxY93r20SOdcJsChBfIxrYUP6Rw=;
- b=OhRAJjQmbcH094+KG8U0gGuJkE+tHyvWZYIXoU4RwTpO8Fmmc8fYe47sRGiAfeuAZ5
- qz6F1BMBHSDWmA/SU3cfkgByRU1fXHi/i/RJYjY8Wm0IcLZRv3fhSs6t/H/97MrE7t15
- 8Awbqn5lIcwXwakeKThTnPTIp9CR/10DqqfNnwdAIKPp4yrd1zjYqX9k5aFACoeV1P+0
- LVN+52irIqayw8vK1piYQEaKicV8xAnI6uaNBScUTNYoW17h/u/TR8hCBixLng56dDq8
- 7zcMZsjk/m62yzaOiXc5cpBACSi7x3jvm7t/bgfT64nKPKrt2pQqe1i3ax6ajM6df1Vd
- Fh1w==
+ bh=2y9d+MCu2iNwj8qfDA/f4Nw3tEz5QnJLw9qz8CFKRc8=;
+ b=FhXnEAHQMoOwiJQGgPYStr7tVy+xs9x+5+lO6dex4CPIbiYEDMP599BOUIS6NcHzdE
+ P4pRGuYfy1WduAZ/RUxZz92U/OfhOw+eD33MTSX387UAPZR2m9tbNVDDucwmqkpoXNeF
+ EGDORaArE0Lyl43T889/zM6WMN+lOHcYd/EEgqj1dWGvJ5coeRdsFxHiWaZvqqSKOgti
+ PjQz3hg+44X1PS4/tsj0MBXryxeRWAzisV8q97lPCwHlaF5HS5UN/MqSZUSsYrTqLSZd
+ SLxn7E7it4J4B+oRBkF06KJ04PfbbeVx606jnpUy8XVfh8QHhDucbCjmWXf7qH1Tjv54
+ Wgmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702871637; x=1703476437;
+ d=1e100.net; s=20230601; t=1702871868; x=1703476668;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=wN031gcCCNtfrxFzHxY93r20SOdcJsChBfIxrYUP6Rw=;
- b=Raoq4ezc2kqPJwas018wrebCHASLCxCVThz8444FnrCIcQcP2ESryKO/msbfYQ7rFD
- vD8XmwuNAE3u23Js5msihX/hL1xKhpP5zT66GehMpRk50zhl8sJ5NcSkcznlFwNR/pKn
- jhFJ23yRzNmt76H43b/LmqUnLp/4PkCXOpncphoL5x2F2CScAaPeOENgX4GzUmSvTlb0
- wTqnF6rvybzeY2Qv4hN7Qs94V0yEDbPQaL/UzPa774uoDGCrY3nLKOj+5+7yUp5X3y2A
- 09N9NmrmOisQKWy3HzqbPFkDnkMFMg2U3kLG2J0ipZRdjUgzfhugb4Zl2YbmEwbSOUYs
- BT/g==
-X-Gm-Message-State: AOJu0Yw74PUrSjCCcr7fk3Lymf5fWOUaYOphmxjsB9LzgDX9iIgbvzQq
- OA0yRJbtxX66RmBoJhBS3BlKYXPp+xerLg3PhRhRcX9AR2I=
-X-Received: by 2002:a05:6102:6697:b0:466:964d:ab60 with SMTP id
- gw23-20020a056102669700b00466964dab60mr356474vsb.52.1702871637427; Sun, 17
- Dec 2023 19:53:57 -0800 (PST)
+ bh=2y9d+MCu2iNwj8qfDA/f4Nw3tEz5QnJLw9qz8CFKRc8=;
+ b=hZ1Zus+JS0LlDRZB7ObqwHAtmnAKx9El43CkTpFXEysvkBIwV5K8yGkVeq+/Z/YBd1
+ ijlB1eBMiPnAh1z7DJHnoEy5k6abGMuvluXW5xp0sXoneNW/3CbiAZkhfrOsxU7Hoa5g
+ 5Cf/oiCulRgUBkHpFQnXkHhQQI7jChOBFlyymWpp+Ju0obme5Q9cJwIYMk7ISHNLjLxy
+ th483XmOtpiuekpY7lWJ6EJ7zZiqufG78ykyJwzf4UJmxkaXTBnEVTCPMy/GB/irxQHh
+ ICl21PSTgj6CUtNGC88IKx+lbeVnt1RAJmn5kTzfKOzr6esjiGBgChp7Ikl/FJU1bjJq
+ BlNA==
+X-Gm-Message-State: AOJu0Ywrh+VRbSQ4O61jPSa3b1X+sPXB2DBwagY6/u/ztSzOdA/GAXS0
+ 6U8uIjnv3idJHgH9dpIZDFRwWlkKckus93O9PWQ=
+X-Received: by 2002:a05:620a:c51:b0:77f:dc33:e522 with SMTP id
+ u17-20020a05620a0c5100b0077fdc33e522mr1998849qki.37.1702871868236; Sun, 17
+ Dec 2023 19:57:48 -0800 (PST)
 MIME-Version: 1.0
 References: <170223510627.13579.3191933474458037037-0@git.sr.ht>
- <170223510627.13579.3191933474458037037-2@git.sr.ht>
-In-Reply-To: <170223510627.13579.3191933474458037037-2@git.sr.ht>
+ <170223510627.13579.3191933474458037037-3@git.sr.ht>
+In-Reply-To: <170223510627.13579.3191933474458037037-3@git.sr.ht>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 18 Dec 2023 13:53:31 +1000
-Message-ID: <CAKmqyKOdU8EO23Qie-jz68SdrD1RsUaHD0zfw=h2nRGCmLKZSg@mail.gmail.com>
-Subject: Re: [PATCH qemu 2/3] tests/qtest: Add STM32L4xx SYSCFG QTest testcase
+Date: Mon, 18 Dec 2023 13:57:22 +1000
+Message-ID: <CAKmqyKOZbYaw9jE+audijuL-cuHhgNh9T3s1rB94DP6CoahZ8Q@mail.gmail.com>
+Subject: Re: [PATCH qemu 3/3] hw/arm: Connect STM32L4xx SYSCFG to STM32L4x5 SoC
 To: "~inesvarhol" <inesvarhol@proton.me>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alistair@alistair23.me, 
  philmd@linaro.org, peter.maydell@linaro.org, ines.varhol@telecom-paris.fr, 
  arnaud.minier@telecom-paris.fr
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92d;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
+ envelope-from=alistair23@gmail.com; helo=mail-qk1-x730.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -121,479 +121,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RKEtw6Plwbhs
+X-TUID: nz65Q0YiN8Bc
 
-On Mon, Dec 11, 2023 at 5:07=E2=80=AFAM ~inesvarhol <inesvarhol@git.sr.ht> =
+On Mon, Dec 11, 2023 at 5:06=E2=80=AFAM ~inesvarhol <inesvarhol@git.sr.ht> =
 wrote:
 >
 > From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 >
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>  hw/arm/Kconfig                 |  1 +
+>  hw/arm/stm32l4x5_soc.c         | 24 ++++++++++++++++--------
+>  include/hw/arm/stm32l4x5_soc.h |  2 ++
+>  3 files changed, 19 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 9c9d5bb541..ea77977d4b 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -458,6 +458,7 @@ config STM32L4X5_SOC
+>      bool
+>      select ARM_V7M
+>      select OR_IRQ
+> +    select STM32L4XX_SYSCFG
+>      select STM32L4X5_EXTI
+>
+>  config XLNX_ZYNQMP_ARM
+> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+> index cf786eac1d..9b45a9e606 100644
+> --- a/hw/arm/stm32l4x5_soc.c
+> +++ b/hw/arm/stm32l4x5_soc.c
+> @@ -46,6 +46,7 @@
+>  #define SRAM2_SIZE (32 * KiB)
+>
+>  #define EXTI_ADDR 0x40010400
+> +#define SYSCFG_ADDR 0x40010000
+>
+>  #define NUM_EXTI_IRQ 40
+>  /* Match exti line connections with their CPU IRQ number */
+> @@ -90,6 +91,8 @@ static void stm32l4x5_soc_initfn(Object *obj)
+>
+>      object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
+>
+> +    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_STM32L4XX_SY=
+SCFG);
+> +
+>      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
+;
+>      s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
+>  }
+> @@ -167,6 +170,15 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>          return;
+>      }
+>
+> +    /* System configuration controller */
+> +    dev =3D DEVICE(&s->syscfg);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->syscfg), errp)) {
+> +        return;
+> +    }
+> +    busdev =3D SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, SYSCFG_ADDR);
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+What about the SYSCFG in GPIOs?
+
+You don't have to connect them now, but it would be worth mentioning
+in the commit message that they aren't connected and why
 
 Alistair
 
-> ---
->  tests/qtest/meson.build             |   3 +-
->  tests/qtest/stm32l4xx_syscfg-test.c | 408 ++++++++++++++++++++++++++++
->  2 files changed, 410 insertions(+), 1 deletion(-)
->  create mode 100644 tests/qtest/stm32l4xx_syscfg-test.c
+> +
+> +    /* EXTI device */
+>      dev =3D DEVICE(&s->exti);
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
+>          return;
+> @@ -178,13 +190,10 @@ static void stm32l4x5_soc_realize(DeviceState *dev_=
+soc, Error **errp)
+>          sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
+i]));
+>      }
 >
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index d5126f4d86..06a04ed17d 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -196,7 +196,8 @@ qtests_aspeed =3D \
->     'aspeed_gpio-test']
+> -    /*
+> -     * Uncomment when Syscfg is implemented
+> -     * for (i =3D 0; i < 16; i++) {
+> -     *     qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
+> -     *                           qdev_get_gpio_in(dev, i));
+> -     * }
+> -     */
+> +    for (i =3D 0; i < 16; i++) {
+> +        qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
+> +                              qdev_get_gpio_in(dev, i));
+> +    }
 >
->  qtests_stm32l4x5 =3D \
-> -  ['stm32l4x5_exti-test']
-> +  ['stm32l4x5_exti-test',
-> +   'stm32l4xx_syscfg-test']
+>      /* APB1 BUS */
+>      create_unimplemented_device("TIM2",      0x40000000, 0x400);
+> @@ -223,7 +232,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
+c, Error **errp)
+>      /* RESERVED:    0x40009800, 0x6800 */
 >
->  qtests_arm =3D \
->    (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
-> diff --git a/tests/qtest/stm32l4xx_syscfg-test.c b/tests/qtest/stm32l4xx_=
-syscfg-test.c
-> new file mode 100644
-> index 0000000000..166b596ba6
-> --- /dev/null
-> +++ b/tests/qtest/stm32l4xx_syscfg-test.c
-> @@ -0,0 +1,408 @@
-> +/*
-> + * QTest testcase for STM32L4xx_SYSCFG
-> + *
-> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "libqtest-single.h"
-> +
-> +#define SYSCFG_BASE_ADDR 0x40010000
-> +#define SYSCFG_MEMRMP 0x00
-> +#define SYSCFG_CFGR1 0x04
-> +#define SYSCFG_EXTICR1 0x08
-> +#define SYSCFG_EXTICR2 0x0C
-> +#define SYSCFG_EXTICR3 0x10
-> +#define SYSCFG_EXTICR4 0x14
-> +#define SYSCFG_SCSR 0x18
-> +#define SYSCFG_CFGR2 0x1C
-> +#define SYSCFG_SWPR 0x20
-> +#define SYSCFG_SKR 0x24
-> +#define SYSCFG_SWPR2 0x28
-> +#define INVALID_ADDR 0x2C
-> +
-> +#define EXTI_BASE_ADDR 0x40010400
-> +#define EXTI_IMR1 0x00
-> +#define EXTI_RTSR1 0x08
-> +#define EXTI_FTSR1 0x0C
-> +
-> +static void syscfg_writel(unsigned int offset, uint32_t value)
-> +{
-> +    writel(SYSCFG_BASE_ADDR + offset, value);
-> +}
-> +
-> +static uint32_t syscfg_readl(unsigned int offset)
-> +{
-> +    return readl(SYSCFG_BASE_ADDR + offset);
-> +}
-> +
-> +static void exti_writel(unsigned int offset, uint32_t value)
-> +{
-> +    writel(EXTI_BASE_ADDR + offset, value);
-> +}
-> +
-> +static void system_reset(void)
-> +{
-> +    QDict *response;
-> +    response =3D qtest_qmp(global_qtest, "{'execute': 'system_reset'}");
-> +    g_assert(qdict_haskey(response, "return"));
-> +    qobject_unref(response);
-> +}
-> +
-> +static void test_reset(void)
-> +{
-> +    /*
-> +     * Test that registers are initialized at the correct values
-> +     */
-> +    const uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-> +    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-> +    g_assert_cmpuint(cfgr1, =3D=3D, 0x7C000001);
-> +
-> +    const uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-> +    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-> +    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-> +    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-> +    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t scsr =3D syscfg_readl(SYSCFG_SCSR);
-> +    g_assert_cmpuint(scsr, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t cfgr2 =3D syscfg_readl(SYSCFG_CFGR2);
-> +    g_assert_cmpuint(cfgr2, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t swpr =3D syscfg_readl(SYSCFG_SWPR);
-> +    g_assert_cmpuint(swpr, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
-> +    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
-> +
-> +    const uint32_t swpr2 =3D syscfg_readl(SYSCFG_SWPR2);
-> +    g_assert_cmpuint(swpr2, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_reserved_bits(void)
-> +{
-> +    /*
-> +     * Test that reserved bits stay at reset value
-> +     * (which is 0 for all of them) by writing '1'
-> +     * in all reserved bits (keeping reset value for
-> +     * other bits) and checking that the
-> +     * register is still at reset value
-> +     */
-> +    syscfg_writel(SYSCFG_MEMRMP, 0xFFFFFEF8);
-> +    const uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-> +    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_CFGR1, 0x7F00FEFF);
-> +    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-> +    g_assert_cmpuint(cfgr1, =3D=3D, 0x7C000001);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR1, 0xFFFF0000);
-> +    const uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-> +    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR2, 0xFFFF0000);
-> +    const uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-> +    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR3, 0xFFFF0000);
-> +    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-> +    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR4, 0xFFFF0000);
-> +    const uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-> +    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_SKR, 0xFFFFFF00);
-> +    const uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
-> +    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_set_and_clear(void)
-> +{
-> +    /*
-> +     * Test that regular bits can be set and cleared
-> +     */
-> +    syscfg_writel(SYSCFG_MEMRMP, 0x00000107);
-> +    uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-> +    g_assert_cmpuint(memrmp, =3D=3D, 0x00000107);
-> +    syscfg_writel(SYSCFG_MEMRMP, 0x00000000);
-> +    memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-> +    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
-> +
-> +    /* cfgr1 bit 0 is clear only so we keep it set */
-> +    syscfg_writel(SYSCFG_CFGR1, 0xFCFF0101);
-> +    uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-> +    g_assert_cmpuint(cfgr1, =3D=3D, 0xFCFF0101);
-> +    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
-> +    cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-> +    g_assert_cmpuint(cfgr1, =3D=3D, 0x00000001);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR1, 0x0000FFFF);
-> +    uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-> +    g_assert_cmpuint(exticr1, =3D=3D, 0x0000FFFF);
-> +    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-> +    exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-> +    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR2, 0x0000FFFF);
-> +    uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-> +    g_assert_cmpuint(exticr2, =3D=3D, 0x0000FFFF);
-> +    syscfg_writel(SYSCFG_EXTICR2, 0x00000000);
-> +    exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-> +    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR3, 0x0000FFFF);
-> +    uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-> +    g_assert_cmpuint(exticr3, =3D=3D, 0x0000FFFF);
-> +    syscfg_writel(SYSCFG_EXTICR3, 0x00000000);
-> +    exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-> +    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_EXTICR4, 0x0000FFFF);
-> +    uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-> +    g_assert_cmpuint(exticr4, =3D=3D, 0x0000FFFF);
-> +    syscfg_writel(SYSCFG_EXTICR4, 0x00000000);
-> +    exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-> +    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
-> +
-> +    syscfg_writel(SYSCFG_SKR, 0x000000FF);
-> +    uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
-> +    g_assert_cmpuint(skr, =3D=3D, 0x000000FF);
-> +    syscfg_writel(SYSCFG_SKR, 0x00000000);
-> +    skr =3D syscfg_readl(SYSCFG_SKR);
-> +    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_clear_by_writing_1(void)
-> +{
-> +    /*
-> +     * Test that writing '1' doesn't set the bit
-> +     */
-> +    syscfg_writel(SYSCFG_CFGR2, 0x00000100);
-> +    const uint32_t cfgr2 =3D syscfg_readl(SYSCFG_CFGR2);
-> +    g_assert_cmpuint(cfgr2, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_set_only_bits(void)
-> +{
-> +    /*
-> +     * Test that set only bits stay can't be cleared
-> +     */
-> +    syscfg_writel(SYSCFG_CFGR2, 0x0000000F);
-> +    syscfg_writel(SYSCFG_CFGR2, 0x00000000);
-> +    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_CFGR2);
-> +    g_assert_cmpuint(exticr3, =3D=3D, 0x0000000F);
-> +
-> +    syscfg_writel(SYSCFG_SWPR, 0xFFFFFFFF);
-> +    syscfg_writel(SYSCFG_SWPR, 0x00000000);
-> +    const uint32_t swpr =3D syscfg_readl(SYSCFG_SWPR);
-> +    g_assert_cmpuint(swpr, =3D=3D, 0xFFFFFFFF);
-> +
-> +    syscfg_writel(SYSCFG_SWPR2, 0xFFFFFFFF);
-> +    syscfg_writel(SYSCFG_SWPR2, 0x00000000);
-> +    const uint32_t swpr2 =3D syscfg_readl(SYSCFG_SWPR2);
-> +    g_assert_cmpuint(swpr2, =3D=3D, 0xFFFFFFFF);
-> +
-> +    system_reset();
-> +}
-> +
-> +static void test_clear_only_bits(void)
-> +{
-> +    /*
-> +     * Test that clear only bits stay can't be set
-> +     */
-> +    syscfg_writel(SYSCFG_CFGR1, 0x00000000);
-> +    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
-> +    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-> +    g_assert_cmpuint(cfgr1, =3D=3D, 0x00000000);
-> +
-> +    system_reset();
-> +}
-> +
-> +static void test_interrupt(void)
-> +{
-> +    /*
-> +     * Test that GPIO rising lines result in an irq
-> +     * with the right configuration
-> +     */
-> +    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/=
-exti");
-> +    /* Enable interrupt on rising edge of GPIO PA[0] */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000001);
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 1);
-> +
-> +    g_assert_true(get_irq(0));
-> +
-> +    /* Enable interrupt on rising edge of GPIO PA[15] */
-> +    exti_writel(EXTI_IMR1, 0x00008000);
-> +    exti_writel(EXTI_RTSR1, 0x00008000);
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 15, 1);
-> +
-> +    g_assert_true(get_irq(15));
-> +
-> +    /* Enable interrupt on rising edge of GPIO PB[1] */
-> +    syscfg_writel(SYSCFG_EXTICR1, 0x00000010);
-> +    exti_writel(EXTI_IMR1, 0x00000002);
-> +    exti_writel(EXTI_RTSR1, 0x00000002);
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 17, 1);
-> +
-> +    g_assert_true(get_irq(1));
-> +
-> +    /* Clean the test */
-> +    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 0);
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 15, 0);
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 17, 0);
-> +}
-> +
-> +static void test_irq_pin_multiplexer(void)
-> +{
-> +    /*
-> +     * Test that syscfg irq sets the right exti irq
-> +     */
-> +
-> +    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/=
-exti");
-> +
-> +    /* Enable interrupt on rising edge of GPIO PA[0] */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000001);
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 1);
-> +
-> +    /* Check that irq 0 was set and irq 15 wasn't */
-> +    g_assert_true(get_irq(0));
-> +    g_assert_false(get_irq(15));
-> +
-> +    /* Clean the test */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 0);
-> +
-> +    /* Enable interrupt on rising edge of GPIO PA[15] */
-> +    exti_writel(EXTI_IMR1, 0x00008000);
-> +    exti_writel(EXTI_RTSR1, 0x00008000);
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 15, 1);
-> +
-> +    /* Check that irq 15 was set and irq 0 wasn't */
-> +    g_assert_true(get_irq(15));
-> +    g_assert_false(get_irq(0));
-> +
-> +    /* Clean the test */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 15, 0);
-> +}
-> +
-> +static void test_irq_gpio_multiplexer(void)
-> +{
-> +    /*
-> +     * Test that an irq is generated only by the right GPIO
-> +     */
-> +
-> +    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/=
-exti");
-> +
-> +    /* Enable interrupt on rising edge of GPIO PA[0] */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000001);
-> +
-> +    /* Check that setting rising pin GPIOA[0] generates an irq */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 1);
-> +
-> +    g_assert_true(get_irq(0));
-> +
-> +    /* Clean the test */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 0);
-> +
-> +    /* Check that setting rising pin GPIOB[0] doesn't generate an irq */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 16, 1);
-> +
-> +    g_assert_false(get_irq(0));
-> +
-> +    /* Clean the test */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 16, 0);
-> +
-> +    /* Enable interrupt on rising edge of GPIO PB[0] */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000001);
-> +    syscfg_writel(SYSCFG_EXTICR1, 0x00000001);
-> +
-> +    /* Check that setting rising pin GPIOA[0] doesn't generate an irq */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 1);
-> +
-> +    g_assert_false(get_irq(0));
-> +
-> +    /* Clean the test */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 0, 0);
-> +
-> +    /* Check that setting rising pin GPIOB[0] generates an irq */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 16, 1);
-> +
-> +    g_assert_true(get_irq(0));
-> +
-> +    /* Clean the test */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg=
-",
-> +                     NULL, 16, 0);
-> +    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-> +}
-> +
-> +int main(int argc, char **argv)
-> +{
-> +    int ret;
-> +
-> +    g_test_init(&argc, &argv, NULL);
-> +    g_test_set_nonfatal_assertions();
-> +
-> +    qtest_add_func("stm32l4x5/syscfg/test_reset", test_reset);
-> +    qtest_add_func("stm32l4x5/syscfg/test_reserved_bits",
-> +                   test_reserved_bits);
-> +    qtest_add_func("stm32l4x5/syscfg/test_set_and_clear",
-> +                   test_set_and_clear);
-> +    qtest_add_func("stm32l4x5/syscfg/test_clear_by_writing_1",
-> +                   test_clear_by_writing_1);
-> +    qtest_add_func("stm32l4x5/syscfg/test_set_only_bits",
-> +                   test_set_only_bits);
-> +    qtest_add_func("stm32l4x5/syscfg/test_clear_only_bits",
-> +                   test_clear_only_bits);
-> +    qtest_add_func("stm32l4x5/syscfg/test_interrupt",
-> +                   test_interrupt);
-> +    qtest_add_func("stm32l4x5/syscfg/test_irq_pin_multiplexer",
-> +                   test_irq_pin_multiplexer);
-> +    qtest_add_func("stm32l4x5/syscfg/test_irq_gpio_multiplexer",
-> +                   test_irq_gpio_multiplexer);
-> +
-> +    qtest_start("-machine b-l475e-iot01a");
-> +    ret =3D g_test_run();
-> +    qtest_end();
-> +
-> +    return ret;
-> +}
+>      /* APB2 BUS */
+> -    create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
+>      create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
+>      create_unimplemented_device("COMP",      0x40010200, 0x200);
+>      /* RESERVED:    0x40010800, 0x1400 */
+> diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+> index ac47158596..5ff757f15b 100644
+> --- a/include/hw/arm/stm32l4x5_soc.h
+> +++ b/include/hw/arm/stm32l4x5_soc.h
+> @@ -37,6 +37,7 @@
+>  #include "qemu/units.h"
+>  #include "hw/qdev-core.h"
+>  #include "hw/arm/armv7m.h"
+> +#include "hw/misc/stm32l4xx_syscfg.h"
+>  #include "hw/misc/stm32l4x5_exti.h"
+>  #include "qom/object.h"
+>
+> @@ -52,6 +53,7 @@ struct Stm32l4x5SocState {
+>      ARMv7MState armv7m;
+>
+>      Stm32l4x5ExtiState exti;
+> +    STM32L4xxSyscfgState syscfg;
+>
+>      MemoryRegion sram1;
+>      MemoryRegion sram2;
 > --
 > 2.38.5
->
 >

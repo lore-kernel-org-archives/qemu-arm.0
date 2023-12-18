@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp723238eji;
-        Mon, 18 Dec 2023 03:35:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHw02kOT/yQjw9ELxBwhNa/SmcAk4L+RVkhYpdPrRA3paS6+2XERyGr8DXMHEf/ThUtNO2q
-X-Received: by 2002:a05:620a:4096:b0:77e:fbba:6454 with SMTP id f22-20020a05620a409600b0077efbba6454mr27007033qko.51.1702899316870;
-        Mon, 18 Dec 2023 03:35:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702899316; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp723251eji;
+        Mon, 18 Dec 2023 03:35:19 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFCyejrgRQWPfzdVG3/DrvP32yPAB84CBhMc0HFiYPVBWHNW8W+jHrMwqS1SV6T0Ht8jnlI
+X-Received: by 2002:a05:6358:6f12:b0:170:8017:d357 with SMTP id r18-20020a0563586f1200b001708017d357mr21054279rwn.25.1702899318856;
+        Mon, 18 Dec 2023 03:35:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899318; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tvh3GmvJMjJEAFMxMzIpTByJLlxYggnXpdnfdWJab9xQdhx/KCneGCEFHWbXSi6F3+
-         XRdmrUAqoZS5wsNRXhxQFXB05pbWYm8LLtyep50e+b0TVeWZ7tcx3N9KeOAgNM773KRq
-         itLwcpZMWUhwSvaucvFa0EOnfoN1wiT9mRftBCzmU7q7G8wqvi7aNIWu38XOBtEfu3Uv
-         7BdYHhMJWFslVDQxfjX0rYDVfJH+6FhY+1b/KjtJk/aqT0TynVn8SOQ4OXhK5KPI0CPE
-         +F7tvVma3/7XOvcSpvqaJJkNf3gEvFsq2R0EcRlLa7ZW+0I3pLCqD4y1fIsusrikAJ3E
-         NLZw==
+        b=u74TlhSlXeFjVBKa4r/9Ko/hHHi4SKeRwOYwBnDT0Q3eMJOng8/iQNUPdukougWSSj
+         QLur2H/c+rm6RGUFZG9J4L6MalWTxcqxgeSeq0t+S7JfJmhw48UnrLIDh32hahqd/D1I
+         ytv+697BAHfoCqLvsf6WsuOOATYO5ZBhBcu8/lqHfZ090MS1NX4vuUL5uk+In/QiEwTx
+         dsh9o5ZJzNR2iCdlna0zT5WFIze66112bclha5Ze+3PTouIWmZcBGC+zsBPejLCaFkHr
+         O/HCNLi5HhoWBmTvcQGQA+aUQdxmF5q2WxcFWututecn2iASu5ypL12ScwQ/eFfuNvuS
+         dH+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=SnG0PeEkl3mljhE/7fINvl5kXhOpcofwqugvUBbBLDU=;
+        bh=6tSWrfVlNJNsGkpqxISW8yYbk7W8USGKLzGliHCM/4s=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=qJxAhTCneoAuj2pTGk8os5qE8a4OkA13EQaypwRqzMQd98ZqwLgXDcnDqWSmuv1F6W
-         BgvdNrpJymgm45fXaFBaYVYvd6N1pWJ7MjZ6e21RZtLC/+N8FejZM4xpmXi7Ef6eicME
-         INhZRD/ptDko1mdQUyENhgq/ILo3BIVRXRQlYwnHsT1MFmF+DwbKu0AfioJSFajEmJaq
-         fM0Cl39NIEReGR6/J3+m1G+Jk5mCHGbSibo9X2nDsXgpUn6nxZfmoNtGuuRD17GYL7zM
-         orG28ki0yiI2QjljhYA3rd4iKsHNcmtI3YXVXt4cgdHnT97vpg8yQaskh+YSIu0UR71F
-         H2Ag==
+        b=j8jHWczE88K0VS0nmrTRdgI7oXanz+4S7Zra1w0fAtl7KiBJFCLRrSu4dNCM3wYrOm
+         S24dvkKg+E6pRoZ8aFQVxj0CqKeEHEGcrhf26Nv0fK0qpSdYx3Xf2v1enKMEiPOvPjW7
+         muDn90URc9jMxhb3TSmVuO7QJUDQWVGEBzr3GNan1yEfmUpOLeCmrhCwSUImy28a9fng
+         rNqoyCzGzFRr5XoJLbipkh0+jYaRKfmQoFTFRC6yk8jiBw7wRmvdh//x68D0+mCZfDfc
+         8yhoiRSpK8hDOc90JiP673WuaByibaxfl2cjWV2CFOPXgfFPyIg61jZZhmuAKKONO1zm
+         alXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nLwdacvJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WC5OpdR4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cf14-20020a05622a400e00b004254eb67101si26884499qtb.563.2023.12.18.03.35.16
+        by mx.google.com with ESMTPS id h5-20020a0cf405000000b0067f099cb65bsi2231189qvl.351.2023.12.18.03.35.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:35:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Dec 2023 03:35:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nLwdacvJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WC5OpdR4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFBs1-0006X7-85; Mon, 18 Dec 2023 06:33:13 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rFBs2-0006Yh-PV; Mon, 18 Dec 2023 06:33:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBs0-0006W7-9y
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:12 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1rFBs1-0006X9-DI
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:13 -0500
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFBrx-0003H3-9I
- for qemu-arm@nongnu.org; Mon, 18 Dec 2023 06:33:12 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-40c31f18274so35454455e9.0
- for <qemu-arm@nongnu.org>; Mon, 18 Dec 2023 03:33:08 -0800 (PST)
+ id 1rFBrx-0003HD-SR
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:13 -0500
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-50bf3efe2cbso2997593e87.2
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702899187; x=1703503987; darn=nongnu.org;
+ d=linaro.org; s=google; t=1702899188; x=1703503988; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=SnG0PeEkl3mljhE/7fINvl5kXhOpcofwqugvUBbBLDU=;
- b=nLwdacvJD3ViFui3Bhc7gb8IepM/Ydj8Hm1btqwLHLpzAhfG54CB/xmgZZM6wB5oDh
- mXfXuqrD3jrENeoyWEMFUerWxx8EQNRISGy3t7t7g02Fj4NQ3cG0nuCDmTNrFJ8o0bgl
- i5MGWe85zHK3kYU01odw2xOFwGuvxoYxw0xemEuQbzVZ78lxEjC9LgzJcfdwOhHfBN9T
- Ecbjf/DHHQCzr9o5vpbzEluKqNnFaJXj3sH3sPwRfpegGE75x1rcpCxZAplnZ2XHIcv9
- oe8+InSQRdHuiNq1jTr0tRzWf2/NtDsxu21m/Vt99seR6Pbf4gPzp5wHNNA9j7Ipj6VZ
- s9Rg==
+ :reply-to; bh=6tSWrfVlNJNsGkpqxISW8yYbk7W8USGKLzGliHCM/4s=;
+ b=WC5OpdR4aPtpOmMUvbopND0cXOONZ/4HcW1QPy9d67AAZssK9uul4B5xgnDXN0W8h3
+ ylApyJNv9WxhEKgA2VpZCjINyG1WDl+PQ7GHEF+Mmvde8033xiAOVDdyG9elbpmKdnq4
+ QWmhNwGAsqf2cMcFBMOwYZaaBGxTE+/aELqr7F9yBtLN1Gl1VwXplPNMYk7mmvuFGXXY
+ +o7yuwijxhNURjsPj0LE1iwYZqrssvJQOBMtDiZhzTG6nZtcWZ9q+9CtNV4cSqv81lWR
+ IJFwhnEvg1z2WwbKT04kwZzj68IdLcqmLFbr+/Z/lzUvK2Uv9zqEyOpFxEyLz8q6Yyzq
+ /9qA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702899187; x=1703503987;
+ d=1e100.net; s=20230601; t=1702899188; x=1703503988;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=SnG0PeEkl3mljhE/7fINvl5kXhOpcofwqugvUBbBLDU=;
- b=bRwYhSQ1MzEHzBYmuk/UJBT7oKPN7Pi849fI5lTaDLnS9eng63nGrW7dGX9WymRN5V
- 7ru+t8W4CyJvm0cGIzAsw3WA2rVU4KOHEPEAhKe7fwJbd7C1dLVh0syBGqrEoUcjkoiD
- +Vbk4Er8iFFXkbdANjaCOZzXuODuAmLgdQJBnKO6+n7E/RRMLE47xlId8Zr6/CNovFKw
- Q119sE6zRI4oDmMgvNrnl1qMKuSaJuO0zXFBMtjbfIcweozS1qFcRpkYME9SxhoIDmGJ
- 4Brd3rBilOxtmomCidiSDZzjYDWurNvFPMOI+5arY2BtGa2fHEU2rRBh8L/khbRGr12N
- 5RkA==
-X-Gm-Message-State: AOJu0Yy58+4Vd+OOLrQSVGPck+nCQSUqXqnpEVxsY+hhnQC8cbwnXopu
- bOtNSneUiWU3tvOKB9slAVwuIFf4xemdrsaZ0LA=
-X-Received: by 2002:a05:600c:181b:b0:40c:3dce:b02c with SMTP id
- n27-20020a05600c181b00b0040c3dceb02cmr7678930wmp.156.1702899187245; 
- Mon, 18 Dec 2023 03:33:07 -0800 (PST)
+ bh=6tSWrfVlNJNsGkpqxISW8yYbk7W8USGKLzGliHCM/4s=;
+ b=sLaCZCsY0dH7aeiOXEWvYwOKUbb8K9sFd4lZr9kYVGVcZny7WI9eMUS71UsEmHOh9N
+ imx0zfNPVfBbdfz6idQKDMABbHXP+/h9sW7Kx9YS2Wlpm1WSEbGjEQqytqg63zCO9veI
+ 0N8Fj832mUs4TmMmBN1GY2RQcBdG2z6sktkkyHw6lylFyVeOeIO68pQTk37iaYByEtAs
+ eBWwolGUMpoUpnsLtui7sltwyvrrAFqoG9XCsrHep4PNbycBUgl/nUrA0Wo7y/pgfnbE
+ oINfrbNEZv1xtTyH3DVhW82te5J3lAp+uN7YLPAKLR4B1F5SUS1g/52e7KdpVflnbevR
+ w4GQ==
+X-Gm-Message-State: AOJu0YwNK5i5PHNtyAgdQcXrZ8sE1gfFg1bHXhZmIwjO+NhkqawMG7uo
+ 2HxYhR06nPoJF/IbPcnZbUufpA==
+X-Received: by 2002:a05:6512:693:b0:50b:ee49:9b42 with SMTP id
+ t19-20020a056512069300b0050bee499b42mr4874376lfe.43.1702899188164; 
+ Mon, 18 Dec 2023 03:33:08 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.06
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Dec 2023 03:33:06 -0800 (PST)
+ Mon, 18 Dec 2023 03:33:07 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/35] target/arm: Don't implement *32_EL2 registers when EL1
- is AArch64 only
-Date: Mon, 18 Dec 2023 11:32:31 +0000
-Message-Id: <20231218113305.2511480-2-peter.maydell@linaro.org>
+Subject: [PATCH 03/35] hw/intc/arm_gicv3_cpuif: handle LPIs in in the list
+ registers
+Date: Mon, 18 Dec 2023 11:32:33 +0000
+Message-Id: <20231218113305.2511480-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,152 +111,82 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q8LzLiUQr1Rk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: c+PCwERxnIVy
 
-The system registers DBGVCR32_EL2, FPEXC32_EL2, DACR32_EL2 and
-IFSR32_EL2 are present only to allow an AArch64 EL2 or EL3 to read
-and write the contents of an AArch32-only system register.  The
-architecture requires that they are present only when EL1 can be
-AArch32, but we implement them unconditionally. This was OK when
-all our CPUs supported AArch32 EL1, but we have quite a lot of
-CPU models now which only support AArch64 at EL1:
- a64fx
- cortex-a76
- cortex-a710
- neoverse-n1
- neoverse-n2
- neoverse-v1
+The hypervisor can deliver (virtual) LPIs to a guest by setting up a
+list register to have an intid which is an LPI.  The GIC has to treat
+these a little differently to standard interrupt IDs, because LPIs
+have no Active state, and so the guest will only EOI them, it will
+not also deactivate them.  So icv_eoir_write() must do two things:
 
-Only define these registers for CPUs which allow AArch32 EL1.
+ * if the LPI ID is not in any list register, we drop the
+   priority but do not increment the EOI count
+ * if the LPI ID is in a list register, we immediately deactivate
+   it, regardless of the split-drop-and-deactivate control
 
+This can be seen in the VirtualWriteEOIR0() and VirtualWriteEOIR1()
+pseudocode in the GICv3 architecture specification.
+
+Without this fix, potentially a hypervisor guest might stall because
+LPIs get stuck in a bogus Active+Pending state.
+
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/debug_helper.c | 23 +++++++++++++++--------
- target/arm/helper.c       | 35 +++++++++++++++++++++--------------
- 2 files changed, 36 insertions(+), 22 deletions(-)
+Weirdly, I only saw this being a problem when the hypervisor guest
+was an EL2-enabled one under my FEAT_NV/FEAT_NV2 implementation.
+But there's nothing FEAT_NV specific about the bug.
+---
+ hw/intc/arm_gicv3_cpuif.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index cbfba532f50..83d2619080f 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -1026,14 +1026,6 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .cp = 14, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tda,
-       .type = ARM_CP_NOP },
--    /*
--     * Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
--     * to save and restore a 32-bit guest's DBGVCR)
--     */
--    { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
--      .access = PL2_RW, .accessfn = access_tda,
--      .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
-     /*
-      * Dummy MDCCINT_EL1, since we don't implement the Debug Communications
-      * Channel but Linux may try to access this register. The 32-bit
-@@ -1062,6 +1054,18 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.dbgclaim) },
- };
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index ab1a00508e6..258dee1b808 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1434,16 +1434,25 @@ static void icv_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     idx = icv_find_active(cs, irq);
  
-+/* These are present only when EL1 supports AArch32 */
-+static const ARMCPRegInfo debug_aa32_el1_reginfo[] = {
-+    /*
-+     * Dummy DBGVCR32_EL2 (which is only for a 64-bit hypervisor
-+     * to save and restore a 32-bit guest's DBGVCR)
-+     */
-+    { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
-+      .access = PL2_RW, .accessfn = access_tda,
-+      .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
-+};
-+
- static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
-     /* 64 bit access versions of the (dummy) debug registers */
-     { .name = "DBGDRAR", .cp = 14, .crm = 1, .opc1 = 0,
-@@ -1207,6 +1211,9 @@ void define_debug_regs(ARMCPU *cpu)
-     assert(ctx_cmps <= brps);
- 
-     define_arm_cp_regs(cpu, debug_cp_reginfo);
-+    if (cpu_isar_feature(aa64_aa32_el1, cpu)) {
-+        define_arm_cp_regs(cpu, debug_aa32_el1_reginfo);
-+    }
- 
-     if (arm_feature(&cpu->env, ARM_FEATURE_LPAE)) {
-         define_arm_cp_regs(cpu, debug_lpae_cp_reginfo);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2746d3fdac8..39830c7f948 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5698,20 +5698,6 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 2, .opc2 = 0,
-       .type = ARM_CP_NO_RAW,
-       .access = PL1_RW, .readfn = spsel_read, .writefn = spsel_write },
--    { .name = "FPEXC32_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 3, .opc2 = 0,
--      .access = PL2_RW,
--      .type = ARM_CP_ALIAS | ARM_CP_FPU | ARM_CP_EL3_NO_EL2_KEEP,
--      .fieldoffset = offsetof(CPUARMState, vfp.xregs[ARM_VFP_FPEXC]) },
--    { .name = "DACR32_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 0, .opc2 = 0,
--      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
--      .writefn = dacr_write, .raw_writefn = raw_write,
--      .fieldoffset = offsetof(CPUARMState, cp15.dacr32_el2) },
--    { .name = "IFSR32_EL2", .state = ARM_CP_STATE_AA64,
--      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 0, .opc2 = 1,
--      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
--      .fieldoffset = offsetof(CPUARMState, cp15.ifsr32_el2) },
-     { .name = "SPSR_IRQ", .state = ARM_CP_STATE_AA64,
-       .type = ARM_CP_ALIAS,
-       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 3, .opc2 = 0,
-@@ -5746,6 +5732,24 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .fieldoffset = offsetoflow32(CPUARMState, cp15.mdcr_el3) },
- };
- 
-+/* These are present only when EL1 supports AArch32 */
-+static const ARMCPRegInfo v8_aa32_el1_reginfo[] = {
-+    { .name = "FPEXC32_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 3, .opc2 = 0,
-+      .access = PL2_RW,
-+      .type = ARM_CP_ALIAS | ARM_CP_FPU | ARM_CP_EL3_NO_EL2_KEEP,
-+      .fieldoffset = offsetof(CPUARMState, vfp.xregs[ARM_VFP_FPEXC]) },
-+    { .name = "DACR32_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 3, .crm = 0, .opc2 = 0,
-+      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
-+      .writefn = dacr_write, .raw_writefn = raw_write,
-+      .fieldoffset = offsetof(CPUARMState, cp15.dacr32_el2) },
-+    { .name = "IFSR32_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 0, .opc2 = 1,
-+      .access = PL2_RW, .resetvalue = 0, .type = ARM_CP_EL3_NO_EL2_KEEP,
-+      .fieldoffset = offsetof(CPUARMState, cp15.ifsr32_el2) },
-+};
-+
- static void do_hcr_write(CPUARMState *env, uint64_t value, uint64_t valid_mask)
- {
-     ARMCPU *cpu = env_archcpu(env);
-@@ -8716,6 +8720,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         }
-         define_arm_cp_regs(cpu, v8_idregs);
-         define_arm_cp_regs(cpu, v8_cp_reginfo);
-+        if (cpu_isar_feature(aa64_aa32_el1, cpu)) {
-+            define_arm_cp_regs(cpu, v8_aa32_el1_reginfo);
+     if (idx < 0) {
+-        /* No valid list register corresponding to EOI ID */
+-        icv_increment_eoicount(cs);
++        /*
++         * No valid list register corresponding to EOI ID; if this is a vLPI
++         * not in the list regs then do nothing; otherwise increment EOI count
++         */
++        if (irq < GICV3_LPI_INTID_START) {
++            icv_increment_eoicount(cs);
 +        }
+     } else {
+         uint64_t lr = cs->ich_lr_el2[idx];
+         int thisgrp = (lr & ICH_LR_EL2_GROUP) ? GICV3_G1NS : GICV3_G0;
+         int lr_gprio = ich_lr_prio(lr) & icv_gprio_mask(cs, grp);
  
-         for (i = 4; i < 16; i++) {
-             /*
+         if (thisgrp == grp && lr_gprio == dropprio) {
+-            if (!icv_eoi_split(env, cs)) {
+-                /* Priority drop and deactivate not split: deactivate irq now */
++            if (!icv_eoi_split(env, cs) || irq >= GICV3_LPI_INTID_START) {
++                /*
++                 * Priority drop and deactivate not split: deactivate irq now.
++                 * LPIs always get their active state cleared immediately
++                 * because no separate deactivate is expected.
++                 */
+                 icv_deactivate_irq(cs, idx);
+             }
+         }
 -- 
 2.34.1
 

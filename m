@@ -1,79 +1,115 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp714403eji;
-        Mon, 18 Dec 2023 03:16:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF0xiM3uakisiavsLmd+du64oZexngVun3muOXnbSXIv9H/R5jE6Kku5MlkzmrL0pID07P+
-X-Received: by 2002:ad4:5ec9:0:b0:67f:3d47:5a82 with SMTP id jm9-20020ad45ec9000000b0067f3d475a82mr3393561qvb.78.1702898214818;
-        Mon, 18 Dec 2023 03:16:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702898214; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp722540eji;
+        Mon, 18 Dec 2023 03:33:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFlunF9lCz91lcBqr+Sq0tIamRRN0IOWQo4LEWjhdg1luTrYHPlm8AD45yUH6btDazKJGGP
+X-Received: by 2002:a05:6870:fba5:b0:203:ae6a:5be8 with SMTP id kv37-20020a056870fba500b00203ae6a5be8mr3043104oab.104.1702899239674;
+        Mon, 18 Dec 2023 03:33:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702899239; cv=none;
         d=google.com; s=arc-20160816;
-        b=JOVYAMJTp2KYDiUrrNlGJNNe7zGOrqTpWDz4VOBNZcdhCkRfgeHiDuYn+9tPDSEgxd
-         /vh3vCiyE8jLpZSQa8PC0jPdG+fmQcPaJ1Xzi0SDRuOrwf/JNXDlpwsRQzMgwbB4QLJe
-         h2TBSAHjpM9zsP2KTmpH3oiGTD8q/ZNhKClBaFwho6/ec/ai9IaB78PqBMJcurTFZT1G
-         HoSRtkiv5htoDZDdF2HMhjKRsCZsWHfVldul+J1OavuoAhrXvl51wHoAeJSPXSlQ696m
-         Lg6pxgys7NuaScj6hPzHESzvofLUKUrFeMpnmpNHwdLcdK855fK4VWt8/nN2K35qsgJZ
-         OCmw==
+        b=cVKChTFTaRVp7r1SHkN/cNlerA99QOwye+kLy4X7W++ABUW6Nr5Q3LjaCAw8xtpaPF
+         PRFRhD+BjHbQRgQBVilpS50fPs9k0Q+Fx5F79FYmxt7M09ODTFP7Pc09IL4RHpoDZSW6
+         L0dN3JHFgfbGYvyhnaOLH+zK09xtqt738KpNjr5h7VR3nicPqL2HFVim0788yh6KPFcU
+         uNfydJz0fC0WYJv27OWuNzhSCZkCRZop1T2gcgJ9ZqpXxBN9dPKP2D0A9PldyEYTpfuV
+         RiCQLAxST9EA0i2gHYCMh3KGK9okUa6mln218ZtvJs2WBLbqrtiUsW8Sf5A/Gcx/3ywi
+         ZP/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:mime-version
-         :subject:date:from;
-        bh=2NPSvRjjaS2LsT+llnehHUHvaQ5vPrNpzSffzlgcsaU=;
-        fh=ZT/vC6Y8mjJBKDjOrmjRH6K81Y/TtfGORCH+BBvMzeA=;
-        b=W+HfHlJqL18ShoxmIfsqX6r52oZaQYFavmvIx7iilh3Pf9/9vtbShV+duY6yMYIeOA
-         YHRxPQwgUxjkPVkocW/TOjbi16IiXhw4aCbHRYPGkxWkg34ixa7AroeJgFKfGdCrZW1N
-         pD3mimV4KZFgqtUpxKXF6pqYuh7HKxpCZs5ELifbvKMoknjBanTBLnqv62puJGtI0t2S
-         44ldRw6soUZQbIvmpkpTrDCrhNkMb4M96r1GtYK/Q9bOh83B/vFKoeTcpkd20tgP0tRg
-         6tpJYmROUxgi8ommKps99T30O618iRrd/KIff2aBlHpJ/WhUEOEwa1DLssaB5y8LHKks
-         V1Rw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=qPsvpxF310iFfemPS3jxwCbvqlyY2e5E1329lnZ8oYM=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=FdX7FmMI5LJ6bMbiZgurdru34q8sRH6CeaiGRknoQjIlWvYL4U8Ajx8/YVkRKM2CPc
+         L7WjVeSN0ZI+liGCQfFm13OhsLMZjX6Vvl1VUpDnbZOjLpuoRS43x42OsrL7Xj0tfH1t
+         QijxgXm6a406Uh07A80UJKP2o6OxeY7hCexrTHdO6d/pefcMFsJI6F61lawscYFtGTyj
+         sYfBqhRuG/L1Y9bEotuJErxjygOIEjxAVl9NKyLneDaz9IXvzD7UeJzjWw/bwYxwNpiu
+         udU2ZNGdh/0HPvUSqvD/nMA4YQRUZPqWU2sBEpElXfXxVOnIHrW0GB0eSkxIDwaDHcma
+         4nAw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FYMktpti;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h8-20020a0cf408000000b0067f28c68f6fsi5179521qvl.513.2023.12.18.03.16.54
+        by mx.google.com with ESMTPS id u1-20020a05622a010100b00425f9a67a1bsi11248678qtw.771.2023.12.18.03.33.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Dec 2023 03:16:54 -0800 (PST)
+        Mon, 18 Dec 2023 03:33:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FYMktpti;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rFBbD-00073r-HR; Mon, 18 Dec 2023 06:15:51 -0500
+	id 1rFBs9-0006fY-Td; Mon, 18 Dec 2023 06:33:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rFBb5-00071X-7v; Mon, 18 Dec 2023 06:15:43 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rFBb2-0008IP-Mc; Mon, 18 Dec 2023 06:15:42 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 3BF3011EFD3;
- Mon, 18 Dec 2023 11:15:39 +0000 (UTC)
-From: ~inesvarhol <inesvarhol@git.sr.ht>
-Date: Sun, 10 Dec 2023 18:55:05 +0100
-Subject: [PATCH qemu v2 2/3] tests/qtest: Add STM32L4x5 SYSCFG QTest testcase
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rFBs7-0006dT-Qa
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:19 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rFBs1-0003Is-G0
+ for qemu-devel@nongnu.org; Mon, 18 Dec 2023 06:33:19 -0500
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-3364c9ff8e1so1715022f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 18 Dec 2023 03:33:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1702899192; x=1703503992; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=qPsvpxF310iFfemPS3jxwCbvqlyY2e5E1329lnZ8oYM=;
+ b=FYMktptijT/TXko/8fLvNN8IXTcKvyTWob/dKk33oQxzBhygXPa3CQdMz1qaf9Bior
+ UBHQD3UObSK6PvqLRKs5GmFIixulWm+yeTGHjPkJMY4ablb7YTaMfMHRtOB0J29oXYAC
+ ebKxLdmEbXXjqEDpP2xJOwP3jTHMesXJGszZmCER7srzAhGX91jiZjW1rKC1TG29Nsti
+ nK5Y3GcIwf7qSvtGbeKMJGJONhVioYJoui+icnIE/689+NTfizGBniJuMEfjxGP18dmx
+ CGYRoym/tjwMd+4F/I2U8FIU/h6zRXqvj/1wUMgiPcINFPJlTDGATw0mAB6l2fODchfo
+ bBGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1702899192; x=1703503992;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qPsvpxF310iFfemPS3jxwCbvqlyY2e5E1329lnZ8oYM=;
+ b=c/9Gzfk38E20O32lnUmlGdkeSuFeuNbK0md9mvWUGbLklXtzWqOcWL/5gKOJOSe5+5
+ 7aP7UBj7zPNZk/mAOf/2hKnr8vZBJmnkbnVr0OIUw0nIu7LkvvZ5ZFiyYGP4wptn9py+
+ drHoLAdY50SMifaSYFzKluqtNPc+7DUlW6Tbh7qoPbFpdRWp8E7WbnulWTT4NkS4P2sv
+ +gcOVfkbxVqjjnaIzZi8W7OO/Z+Iuvk6nKY0nV0bxc9Yt8YEESmRsANbx8W81joY/+Gr
+ HhZ4tTaG8tV7giQIuuDcv+at52Pu+EchX0gQbbg5X/KfpEQsjq98gaV8KMYRMfsnstyK
+ xHAQ==
+X-Gm-Message-State: AOJu0Ywrx0CIvFOM+JuRQ6ER8vYEZcEyvLwo8aWskZyHfapKwRB/QSDG
+ 2PPzNIFjIJbXS0+WR5UD85MMdemqakGQoVtW77Q=
+X-Received: by 2002:a7b:c8d8:0:b0:40b:5e56:7b57 with SMTP id
+ f24-20020a7bc8d8000000b0040b5e567b57mr8252810wml.160.1702899191903; 
+ Mon, 18 Dec 2023 03:33:11 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ j18-20020adff012000000b003366da509ecsm671193wro.85.2023.12.18.03.33.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 Dec 2023 03:33:11 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 11/35] target/arm: Make EL2 cpreg accessfns safe for FEAT_NV
+ EL1 accesses
+Date: Mon, 18 Dec 2023 11:32:41 +0000
+Message-Id: <20231218113305.2511480-12-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231218113305.2511480-1-peter.maydell@linaro.org>
+References: <20231218113305.2511480-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Message-ID: <170289813862.19159.2545029501234884208-2@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <170289813862.19159.2545029501234884208-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, philmd@linaro.org,
- peter.maydell@linaro.org, ines.varhol@telecom-paris.fr,
- arnaud.minier@telecom-paris.fr
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 15
-X-Spam_score: 1.5
-X-Spam_bar: +
-X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,455 +122,190 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: ~inesvarhol <inesvarhol@proton.me>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GP4UIbFCc3Yz
+X-TUID: EYBlxasV0Vnt
 
-From: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+FEAT_NV and FEAT_NV2 will allow EL1 to attempt to access cpregs that
+only exist at EL2. This means we're going to want to run their
+accessfns when the CPU is at EL1. In almost all cases, the behaviour
+we want is "the accessfn returns OK if at EL1".
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Mostly the accessfn already does the right thing; in a few cases we
+need to explicitly check that the EL is not 1 before applying various
+trap controls, or split out an accessfn used both for an _EL1 and an
+_EL2 register into two so we can handle the FEAT_NV case correctly
+for the _EL2 register.
 
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+There are two registers where we want the accessfn to trap for
+a FEAT_NV EL1 access: VSTTBR_EL2 and VSTCR_EL2 should UNDEF
+an access from NonSecure EL1, not trap to EL2 under FEAT_NV.
+The way we have written sel2_access() already results in this
+behaviour.
+
+We can identify the registers we care about here because they
+all have opc1 == 4 or 5.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/meson.build             |   3 +-
- tests/qtest/stm32l4x5_syscfg-test.c | 408 ++++++++++++++++++++++++++++
- 2 files changed, 410 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/stm32l4x5_syscfg-test.c
+ target/arm/debug_helper.c | 12 +++++++-
+ target/arm/helper.c       | 65 ++++++++++++++++++++++++++++++++++-----
+ 2 files changed, 69 insertions(+), 8 deletions(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index d5126f4d86..a2213d60b3 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -196,7 +196,8 @@ qtests_aspeed =3D \
-    'aspeed_gpio-test']
-=20
- qtests_stm32l4x5 =3D \
--  ['stm32l4x5_exti-test']
-+  ['stm32l4x5_exti-test',
-+   'stm32l4x5_syscfg-test']
-=20
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_sysc=
-fg-test.c
-new file mode 100644
-index 0000000000..3edd13b222
---- /dev/null
-+++ b/tests/qtest/stm32l4x5_syscfg-test.c
-@@ -0,0 +1,408 @@
-+/*
-+ * QTest testcase for STM32L4x5_SYSCFG
-+ *
-+ * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+
-+#define SYSCFG_BASE_ADDR 0x40010000
-+#define SYSCFG_MEMRMP 0x00
-+#define SYSCFG_CFGR1 0x04
-+#define SYSCFG_EXTICR1 0x08
-+#define SYSCFG_EXTICR2 0x0C
-+#define SYSCFG_EXTICR3 0x10
-+#define SYSCFG_EXTICR4 0x14
-+#define SYSCFG_SCSR 0x18
-+#define SYSCFG_CFGR2 0x1C
-+#define SYSCFG_SWPR 0x20
-+#define SYSCFG_SKR 0x24
-+#define SYSCFG_SWPR2 0x28
-+#define INVALID_ADDR 0x2C
-+
-+#define EXTI_BASE_ADDR 0x40010400
-+#define EXTI_IMR1 0x00
-+#define EXTI_RTSR1 0x08
-+#define EXTI_FTSR1 0x0C
-+
-+static void syscfg_writel(unsigned int offset, uint32_t value)
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 83d2619080f..b39144d5b93 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -844,6 +844,16 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
+ }
+ 
++static CPAccessResult access_dbgvcr32(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
 +{
-+    writel(SYSCFG_BASE_ADDR + offset, value);
++    /* MCDR_EL3.TDMA doesn't apply for FEAT_NV traps */
++    if (arm_current_el(env) == 2 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
 +}
 +
-+static uint32_t syscfg_readl(unsigned int offset)
+ /*
+  * Check for traps to Debug Comms Channel registers. If FEAT_FGT
+  * is implemented then these are controlled by MDCR_EL2.TDCC for
+@@ -1062,7 +1072,7 @@ static const ARMCPRegInfo debug_aa32_el1_reginfo[] = {
+      */
+     { .name = "DBGVCR32_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 2, .opc1 = 4, .crn = 0, .crm = 7, .opc2 = 0,
+-      .access = PL2_RW, .accessfn = access_tda,
++      .access = PL2_RW, .accessfn = access_dbgvcr32,
+       .type = ARM_CP_NOP | ARM_CP_EL3_NO_EL2_KEEP },
+ };
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index e90eb5e16f3..44005665d12 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3308,6 +3308,11 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+ static CPAccessResult e2h_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  bool isread)
+ {
++    if (arm_current_el(env) == 1) {
++        /* This must be a FEAT_NV access */
++        /* TODO: FEAT_ECV will need to check CNTHCTL_EL2 here */
++        return CP_ACCESS_OK;
++    }
+     if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
+         return CP_ACCESS_TRAP;
+     }
+@@ -5998,7 +6003,7 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static CPAccessResult access_hxen(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   bool isread)
+ {
+-    if (arm_current_el(env) < 3
++    if (arm_current_el(env) == 2
+         && arm_feature(env, ARM_FEATURE_EL3)
+         && !(env->cp15.scr_el3 & SCR_HXEN)) {
+         return CP_ACCESS_TRAP_EL3;
+@@ -6523,6 +6528,15 @@ static CPAccessResult el2_e2h_e12_access(CPUARMState *env,
+                                          const ARMCPRegInfo *ri,
+                                          bool isread)
+ {
++    if (arm_current_el(env) == 1) {
++        /*
++         * This must be a FEAT_NV access (will either trap or redirect
++         * to memory). None of the registers with _EL12 aliases want to
++         * apply their trap controls for this kind of access, so don't
++         * call the orig_accessfn or do the "UNDEF when E2H is 0" check.
++         */
++        return CP_ACCESS_OK;
++    }
+     /* FOO_EL12 aliases only exist when E2H is 1; otherwise they UNDEF */
+     if (!(arm_hcr_el2_eff(env) & HCR_E2H)) {
+         return CP_ACCESS_TRAP_UNCATEGORIZED;
+@@ -6999,10 +7013,21 @@ static CPAccessResult access_tpidr2(CPUARMState *env, const ARMCPRegInfo *ri,
+     return CP_ACCESS_OK;
+ }
+ 
+-static CPAccessResult access_esm(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                 bool isread)
++static CPAccessResult access_smprimap(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
 +{
-+    return readl(SYSCFG_BASE_ADDR + offset);
++    /* If EL1 this is a FEAT_NV access and CPTR_EL3.ESM doesn't apply */
++    if (arm_current_el(env) == 2
++        && arm_feature(env, ARM_FEATURE_EL3)
++        && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
 +}
 +
-+static void exti_writel(unsigned int offset, uint32_t value)
-+{
-+    writel(EXTI_BASE_ADDR + offset, value);
++static CPAccessResult access_smpri(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   bool isread)
+ {
+-    /* TODO: FEAT_FGT for SMPRI_EL1 but not SMPRIMAP_EL2 */
+     if (arm_current_el(env) < 3
+         && arm_feature(env, ARM_FEATURE_EL3)
+         && !FIELD_EX64(env->cp15.cptr_el[3], CPTR_EL3, ESM)) {
+@@ -7121,12 +7146,12 @@ static const ARMCPRegInfo sme_reginfo[] = {
+      */
+     { .name = "SMPRI_EL1", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 2, .opc2 = 4,
+-      .access = PL1_RW, .accessfn = access_esm,
++      .access = PL1_RW, .accessfn = access_smpri,
+       .fgt = FGT_NSMPRI_EL1,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "SMPRIMAP_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 2, .opc2 = 5,
+-      .access = PL2_RW, .accessfn = access_esm,
++      .access = PL2_RW, .accessfn = access_smprimap,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+ };
+ 
+@@ -7769,7 +7794,33 @@ static CPAccessResult access_mte(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  bool isread)
+ {
+     int el = arm_current_el(env);
++    if (el < 2 && arm_is_el2_enabled(env)) {
++        uint64_t hcr = arm_hcr_el2_eff(env);
++        if (!(hcr & HCR_ATA) && (!(hcr & HCR_E2H) || !(hcr & HCR_TGE))) {
++            return CP_ACCESS_TRAP_EL2;
++        }
++    }
++    if (el < 3 &&
++        arm_feature(env, ARM_FEATURE_EL3) &&
++        !(env->cp15.scr_el3 & SCR_ATA)) {
++        return CP_ACCESS_TRAP_EL3;
++    }
++    return CP_ACCESS_OK;
 +}
-+
-+static void system_reset(void)
-+{
-+    QDict *response;
-+    response =3D qtest_qmp(global_qtest, "{'execute': 'system_reset'}");
-+    g_assert(qdict_haskey(response, "return"));
-+    qobject_unref(response);
-+}
-+
-+static void test_reset(void)
-+{
-+    /*
-+     * Test that registers are initialized at the correct values
-+     */
-+    const uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-+    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
-+
-+    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-+    g_assert_cmpuint(cfgr1, =3D=3D, 0x7C000001);
-+
-+    const uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-+    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
-+
-+    const uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-+    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
-+
-+    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-+    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
-+
-+    const uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-+    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
-+
-+    const uint32_t scsr =3D syscfg_readl(SYSCFG_SCSR);
-+    g_assert_cmpuint(scsr, =3D=3D, 0x00000000);
-+
-+    const uint32_t cfgr2 =3D syscfg_readl(SYSCFG_CFGR2);
-+    g_assert_cmpuint(cfgr2, =3D=3D, 0x00000000);
-+
-+    const uint32_t swpr =3D syscfg_readl(SYSCFG_SWPR);
-+    g_assert_cmpuint(swpr, =3D=3D, 0x00000000);
-+
-+    const uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
-+    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
-+
-+    const uint32_t swpr2 =3D syscfg_readl(SYSCFG_SWPR2);
-+    g_assert_cmpuint(swpr2, =3D=3D, 0x00000000);
-+}
-+
-+static void test_reserved_bits(void)
-+{
-+    /*
-+     * Test that reserved bits stay at reset value
-+     * (which is 0 for all of them) by writing '1'
-+     * in all reserved bits (keeping reset value for
-+     * other bits) and checking that the
-+     * register is still at reset value
-+     */
-+    syscfg_writel(SYSCFG_MEMRMP, 0xFFFFFEF8);
-+    const uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-+    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_CFGR1, 0x7F00FEFF);
-+    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-+    g_assert_cmpuint(cfgr1, =3D=3D, 0x7C000001);
-+
-+    syscfg_writel(SYSCFG_EXTICR1, 0xFFFF0000);
-+    const uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-+    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_EXTICR2, 0xFFFF0000);
-+    const uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-+    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_EXTICR3, 0xFFFF0000);
-+    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-+    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_EXTICR4, 0xFFFF0000);
-+    const uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-+    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_SKR, 0xFFFFFF00);
-+    const uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
-+    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
-+}
-+
-+static void test_set_and_clear(void)
+ 
++static CPAccessResult access_tfsr_el2(CPUARMState *env, const ARMCPRegInfo *ri,
++                                      bool isread)
 +{
 +    /*
-+     * Test that regular bits can be set and cleared
++     * TFSR_EL2: similar to generic access_mte(), but we need to
++     * account for FEAT_NV. At EL1 this must be a FEAT_NV access;
++     * we will trap to EL2 and the HCR/SCR traps do not apply.
 +     */
-+    syscfg_writel(SYSCFG_MEMRMP, 0x00000107);
-+    uint32_t memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-+    g_assert_cmpuint(memrmp, =3D=3D, 0x00000107);
-+    syscfg_writel(SYSCFG_MEMRMP, 0x00000000);
-+    memrmp =3D syscfg_readl(SYSCFG_MEMRMP);
-+    g_assert_cmpuint(memrmp, =3D=3D, 0x00000000);
++    int el = arm_current_el(env);
 +
-+    /* cfgr1 bit 0 is clear only so we keep it set */
-+    syscfg_writel(SYSCFG_CFGR1, 0xFCFF0101);
-+    uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-+    g_assert_cmpuint(cfgr1, =3D=3D, 0xFCFF0101);
-+    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
-+    cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-+    g_assert_cmpuint(cfgr1, =3D=3D, 0x00000001);
-+
-+    syscfg_writel(SYSCFG_EXTICR1, 0x0000FFFF);
-+    uint32_t exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-+    g_assert_cmpuint(exticr1, =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-+    exticr1 =3D syscfg_readl(SYSCFG_EXTICR1);
-+    g_assert_cmpuint(exticr1, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_EXTICR2, 0x0000FFFF);
-+    uint32_t exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-+    g_assert_cmpuint(exticr2, =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR2, 0x00000000);
-+    exticr2 =3D syscfg_readl(SYSCFG_EXTICR2);
-+    g_assert_cmpuint(exticr2, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_EXTICR3, 0x0000FFFF);
-+    uint32_t exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-+    g_assert_cmpuint(exticr3, =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR3, 0x00000000);
-+    exticr3 =3D syscfg_readl(SYSCFG_EXTICR3);
-+    g_assert_cmpuint(exticr3, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_EXTICR4, 0x0000FFFF);
-+    uint32_t exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-+    g_assert_cmpuint(exticr4, =3D=3D, 0x0000FFFF);
-+    syscfg_writel(SYSCFG_EXTICR4, 0x00000000);
-+    exticr4 =3D syscfg_readl(SYSCFG_EXTICR4);
-+    g_assert_cmpuint(exticr4, =3D=3D, 0x00000000);
-+
-+    syscfg_writel(SYSCFG_SKR, 0x000000FF);
-+    uint32_t skr =3D syscfg_readl(SYSCFG_SKR);
-+    g_assert_cmpuint(skr, =3D=3D, 0x000000FF);
-+    syscfg_writel(SYSCFG_SKR, 0x00000000);
-+    skr =3D syscfg_readl(SYSCFG_SKR);
-+    g_assert_cmpuint(skr, =3D=3D, 0x00000000);
-+}
-+
-+static void test_clear_by_writing_1(void)
-+{
-+    /*
-+     * Test that writing '1' doesn't set the bit
-+     */
-+    syscfg_writel(SYSCFG_CFGR2, 0x00000100);
-+    const uint32_t cfgr2 =3D syscfg_readl(SYSCFG_CFGR2);
-+    g_assert_cmpuint(cfgr2, =3D=3D, 0x00000000);
-+}
-+
-+static void test_set_only_bits(void)
-+{
-+    /*
-+     * Test that set only bits stay can't be cleared
-+     */
-+    syscfg_writel(SYSCFG_CFGR2, 0x0000000F);
-+    syscfg_writel(SYSCFG_CFGR2, 0x00000000);
-+    const uint32_t exticr3 =3D syscfg_readl(SYSCFG_CFGR2);
-+    g_assert_cmpuint(exticr3, =3D=3D, 0x0000000F);
-+
-+    syscfg_writel(SYSCFG_SWPR, 0xFFFFFFFF);
-+    syscfg_writel(SYSCFG_SWPR, 0x00000000);
-+    const uint32_t swpr =3D syscfg_readl(SYSCFG_SWPR);
-+    g_assert_cmpuint(swpr, =3D=3D, 0xFFFFFFFF);
-+
-+    syscfg_writel(SYSCFG_SWPR2, 0xFFFFFFFF);
-+    syscfg_writel(SYSCFG_SWPR2, 0x00000000);
-+    const uint32_t swpr2 =3D syscfg_readl(SYSCFG_SWPR2);
-+    g_assert_cmpuint(swpr2, =3D=3D, 0xFFFFFFFF);
-+
-+    system_reset();
-+}
-+
-+static void test_clear_only_bits(void)
-+{
-+    /*
-+     * Test that clear only bits stay can't be set
-+     */
-+    syscfg_writel(SYSCFG_CFGR1, 0x00000000);
-+    syscfg_writel(SYSCFG_CFGR1, 0x00000001);
-+    const uint32_t cfgr1 =3D syscfg_readl(SYSCFG_CFGR1);
-+    g_assert_cmpuint(cfgr1, =3D=3D, 0x00000000);
-+
-+    system_reset();
-+}
-+
-+static void test_interrupt(void)
-+{
-+    /*
-+     * Test that GPIO rising lines result in an irq
-+     * with the right configuration
-+     */
-+    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/exti=
-");
-+    /* Enable interrupt on rising edge of GPIO PA[0] */
-+    exti_writel(EXTI_IMR1, 0x00000001);
-+    exti_writel(EXTI_RTSR1, 0x00000001);
-+
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 1);
-+
-+    g_assert_true(get_irq(0));
-+
-+    /* Enable interrupt on rising edge of GPIO PA[15] */
-+    exti_writel(EXTI_IMR1, 0x00008000);
-+    exti_writel(EXTI_RTSR1, 0x00008000);
-+
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 15, 1);
-+
-+    g_assert_true(get_irq(15));
-+
-+    /* Enable interrupt on rising edge of GPIO PB[1] */
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000010);
-+    exti_writel(EXTI_IMR1, 0x00000002);
-+    exti_writel(EXTI_RTSR1, 0x00000002);
-+
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 17, 1);
-+
-+    g_assert_true(get_irq(1));
-+
-+    /* Clean the test */
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 0);
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 15, 0);
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 17, 0);
-+}
-+
-+static void test_irq_pin_multiplexer(void)
-+{
-+    /*
-+     * Test that syscfg irq sets the right exti irq
-+     */
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/exti=
-");
-+
-+    /* Enable interrupt on rising edge of GPIO PA[0] */
-+    exti_writel(EXTI_IMR1, 0x00000001);
-+    exti_writel(EXTI_RTSR1, 0x00000001);
-+
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 1);
-+
-+    /* Check that irq 0 was set and irq 15 wasn't */
-+    g_assert_true(get_irq(0));
-+    g_assert_false(get_irq(15));
-+
-+    /* Clean the test */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 0);
-+
-+    /* Enable interrupt on rising edge of GPIO PA[15] */
-+    exti_writel(EXTI_IMR1, 0x00008000);
-+    exti_writel(EXTI_RTSR1, 0x00008000);
-+
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 15, 1);
-+
-+    /* Check that irq 15 was set and irq 0 wasn't */
-+    g_assert_true(get_irq(15));
-+    g_assert_false(get_irq(0));
-+
-+    /* Clean the test */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 15, 0);
-+}
-+
-+static void test_irq_gpio_multiplexer(void)
-+{
-+    /*
-+     * Test that an irq is generated only by the right GPIO
-+     */
-+
-+    qtest_irq_intercept_in(global_qtest, "/machine/unattached/device[0]/exti=
-");
-+
-+    /* Enable interrupt on rising edge of GPIO PA[0] */
-+    exti_writel(EXTI_IMR1, 0x00000001);
-+    exti_writel(EXTI_RTSR1, 0x00000001);
-+
-+    /* Check that setting rising pin GPIOA[0] generates an irq */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 1);
-+
-+    g_assert_true(get_irq(0));
-+
-+    /* Clean the test */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 0);
-+
-+    /* Check that setting rising pin GPIOB[0] doesn't generate an irq */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 16, 1);
-+
-+    g_assert_false(get_irq(0));
-+
-+    /* Clean the test */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 16, 0);
-+
-+    /* Enable interrupt on rising edge of GPIO PB[0] */
-+    exti_writel(EXTI_IMR1, 0x00000001);
-+    exti_writel(EXTI_RTSR1, 0x00000001);
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000001);
-+
-+    /* Check that setting rising pin GPIOA[0] doesn't generate an irq */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 1);
-+
-+    g_assert_false(get_irq(0));
-+
-+    /* Clean the test */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 0, 0);
-+
-+    /* Check that setting rising pin GPIOB[0] generates an irq */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 16, 1);
-+
-+    g_assert_true(get_irq(0));
-+
-+    /* Clean the test */
-+    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/syscfg",
-+                     NULL, 16, 0);
-+    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+
-+    qtest_add_func("stm32l4x5/syscfg/test_reset", test_reset);
-+    qtest_add_func("stm32l4x5/syscfg/test_reserved_bits",
-+                   test_reserved_bits);
-+    qtest_add_func("stm32l4x5/syscfg/test_set_and_clear",
-+                   test_set_and_clear);
-+    qtest_add_func("stm32l4x5/syscfg/test_clear_by_writing_1",
-+                   test_clear_by_writing_1);
-+    qtest_add_func("stm32l4x5/syscfg/test_set_only_bits",
-+                   test_set_only_bits);
-+    qtest_add_func("stm32l4x5/syscfg/test_clear_only_bits",
-+                   test_clear_only_bits);
-+    qtest_add_func("stm32l4x5/syscfg/test_interrupt",
-+                   test_interrupt);
-+    qtest_add_func("stm32l4x5/syscfg/test_irq_pin_multiplexer",
-+                   test_irq_pin_multiplexer);
-+    qtest_add_func("stm32l4x5/syscfg/test_irq_gpio_multiplexer",
-+                   test_irq_gpio_multiplexer);
-+
-+    qtest_start("-machine b-l475e-iot01a");
-+    ret =3D g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
---=20
-2.38.5
++    if (el == 1) {
++        return CP_ACCESS_OK;
++    }
+     if (el < 2 && arm_is_el2_enabled(env)) {
+         uint64_t hcr = arm_hcr_el2_eff(env);
+         if (!(hcr & HCR_ATA) && (!(hcr & HCR_E2H) || !(hcr & HCR_TGE))) {
+@@ -7805,7 +7856,7 @@ static const ARMCPRegInfo mte_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[1]) },
+     { .name = "TFSR_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 6, .opc2 = 0,
+-      .access = PL2_RW, .accessfn = access_mte,
++      .access = PL2_RW, .accessfn = access_tfsr_el2,
+       .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[2]) },
+     { .name = "TFSR_EL3", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 6, .crn = 5, .crm = 6, .opc2 = 0,
+-- 
+2.34.1
 

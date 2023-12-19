@@ -1,105 +1,110 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1632531eji;
-        Tue, 19 Dec 2023 09:08:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF/EqETGehY5p7bfIbb6yrIo5w1KUXdoh5a4xWXZnpYpGA8dcvdHWpKz+Nij7+qYBZFgz4p
-X-Received: by 2002:a81:a202:0:b0:5d7:1940:8de4 with SMTP id w2-20020a81a202000000b005d719408de4mr8246963ywg.75.1703005711554;
-        Tue, 19 Dec 2023 09:08:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703005711; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1613266eji;
+        Tue, 19 Dec 2023 08:39:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEOwg8DFwMJsiQyfqQrEhbT7zP12wVsUGgwh8nHpruWgVoT9lLWPTEmnVclBjD18k8IRPxY
+X-Received: by 2002:ad4:5c4d:0:b0:67f:2c40:29ef with SMTP id a13-20020ad45c4d000000b0067f2c4029efmr8502107qva.108.1703003985785;
+        Tue, 19 Dec 2023 08:39:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703003985; cv=none;
         d=google.com; s=arc-20160816;
-        b=qEi8aLQejmm1P/ZK7T93m4Z7lLw4eqaoJP1PIoxyUjK039VruY782vrC99hZPDiuwU
-         C766pRM7EnC/d5IS9pIulxO/Gv8Kir3+iwD5bhhAUK9o3+nr58QsoKucIOvOT65LkxFs
-         TEZTXiTMb1dmD/4CW1tzcOpkFIyy7Z2BPlx3fEcIHjNpZwhPEx5022Eb95MA/iWQ9psV
-         Gda0xqXMLChHt8C3LbMgHwMznI56SGEGVqJ387vlJH7hgGKecKu+v+P3JDQUWJtZwdlw
-         1AE/5R1a2MlZuZcM/vGSRnBSKQhNVkh3zYaiXhBLsLWMcq2ecpkmEhX3MIonxzUQrHoD
-         KJJg==
+        b=NIP5XbqgDSHXBuP3+e6YIrDC/50mNPa8Ss2RCutq4xD2iAZOddfC3ycBjPGlivqNpZ
+         j048j/rbe+VSm0RGvv+fgOwvWD9d7LQ63kxYXbA8Y0EjDNfCPNhz+s4neAFkygPreM+K
+         9DXUbPMEhEbpYupxUlmPtdog/WzI0rKAp1ZWvWL00sL0VVzuzrhpsFPqFo6MGxsoU42K
+         gehUk537+THK2sMTqWsEkbyxBJCMsMd2Fcm4ciIc9NSV7Smb591gG7GSx3GuasagkFVH
+         xck74muvrXeISleUgatY9Q7niq/e+qGuYOVfFMqDFm91VDbEtSOX3vi6zgHlWPtdu8YK
+         1S7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=PCXyAIu/jeKJqzKZtcOb/EjX1QqsUCgYmtJR3QImNJg=;
-        fh=gV7Ffy3yiD9FgiaeRLJdX95Rtt40gj/ieyKYgARN1aY=;
-        b=p07gDnXr8+0d1AVg4CHWqhKx76LQ1dsSp3aEO/2sJd3lPz1NVF5k5d4Lt5RS8OnyEk
-         Qf54fyJhywOgBKu35Pji8V9CVi5hNE7ryTIBp90ahNKAS+U/5EwEK8Ucy5qhvSltJqIJ
-         ATVpX+Xme8qgHMXg9Q1HfC3W8FCZopYulCZOdQ1x08DzvpmFbwL3SbDM/v44MQOmNcom
-         DF8A+f19YpqKqkGi8XC3nE62BrhdpkJfhVepX7oEwDQg3uGER+wQwsRCftOTTi2nY25x
-         7tSzefw9X1sZzb4PfQOYGgZ+YQWjaCNsS11e2C1zTEfPXgLRJXD97PBLM1nbfRojDgqT
-         egFA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=zNyVUwo9s2DMl7y4XkvCvSPyuJ1m5Py0Vme19chLdcw=;
+        fh=yoHJ/04ooFxbw2Ls23fsQoxX/k15Oi+dv3vjdt3XQa4=;
+        b=cU5w75UfyJlmP1eYzKvlBp0TMw82xqZZ1dOGbHtrEYZug8/vJdFmJt/CKLAdc8gXID
+         cnI9UmM+/tIVwkO/C0ufhraowY7CQgsC8vnYiHEVhAbYcUzhEYWXalOOJgwDOIb/dQRI
+         yIbuUh414jwzlddoS0VCAcLhRq5tDCiWrbG+2FgLZa7H/bFpoe1f1eLaGihIEJm+bFa0
+         eD1eM5EA7dnPQUN6I+8gGQnC8YXbowCZpKXDFziUjbhT6MaqqVBZVRm6uBdY2v6X/Z3H
+         gkkWFuUcauYoTMnPSvqhASZh7jGJLyitaLBRJlhlZjI6lKt/WXYQzpySyTDcOXKs3IFt
+         ilqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="qFzyF6/8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3-20020a818403000000b005e76d78ca65si1561576ywf.364.2023.12.19.09.08.31
+        by mx.google.com with ESMTPS id d6-20020a0caa06000000b0067f3c4b6deesi5472521qvb.261.2023.12.19.08.39.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Dec 2023 09:08:31 -0800 (PST)
+        Tue, 19 Dec 2023 08:39:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="qFzyF6/8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFdZV-0003Jx-MG; Tue, 19 Dec 2023 12:07:58 -0500
+	id 1rFd7y-00042m-6J; Tue, 19 Dec 2023 11:39:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1rFdZR-0003Gj-KE; Tue, 19 Dec 2023 12:07:55 -0500
-Received: from hq-ms.auriga.com ([82.97.202.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1rFdZK-0005w1-SZ; Tue, 19 Dec 2023 12:07:49 -0500
-Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
- hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 19 Dec 2023 20:07:41 +0300
-Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
- hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%7]) with mapi id
- 15.02.1258.028; Tue, 19 Dec 2023 20:07:41 +0300
-From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: Sergey Kambalin <serg.oker@gmail.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v4 00/45] Raspberry Pi 4B machine
-Thread-Topic: [PATCH v4 00/45] Raspberry Pi 4B machine
-Thread-Index: AQHaMpYOsuJlg29jO0iqHAIolkCXkrCwx99y///UdoCAADdowQ==
-Date: Tue, 19 Dec 2023 17:07:41 +0000
-Message-ID: <1af36710e4ca4aefaced4ceadbdc8b4c@auriga.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rFd7w-000412-Oh
+ for qemu-arm@nongnu.org; Tue, 19 Dec 2023 11:39:28 -0500
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rFd7v-0000xE-5W
+ for qemu-arm@nongnu.org; Tue, 19 Dec 2023 11:39:28 -0500
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-54f4f7e88feso6515507a12.3
+ for <qemu-arm@nongnu.org>; Tue, 19 Dec 2023 08:39:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1703003965; x=1703608765; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=zNyVUwo9s2DMl7y4XkvCvSPyuJ1m5Py0Vme19chLdcw=;
+ b=qFzyF6/85dnfs2CL/+E7h89CO4kV+O1HFdjBPEEYqan3U6ilRivexzLULUMYWl5YCr
+ +UX8x1jUigPpiBvARXFka6QDfykqtycPLXFWYDPwsfKJS6Y3jcoUb0kVfFkkDeDuEJbp
+ Qm1BdkMMjdvG5qOFayFrIlKCY1EdXnY+3EAhvJynL3AHoZdEMy7QzJSrFnD6EOkaTGKd
+ 1LG4V5QsFdRuzz9s1nEFzkDbz2xG0kGnSyjqDBOz9jIrendVhWQ6Jomobx8nWzKmE3Ur
+ 6dXJuXv3w9TpnNvsrshJpIBvE7VMQwe58yT07XFSTjhOBRZTlHmJbiDCsfdGHa2CD6la
+ D00Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1703003965; x=1703608765;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zNyVUwo9s2DMl7y4XkvCvSPyuJ1m5Py0Vme19chLdcw=;
+ b=f4j/eoPGgR8enSbxu8M+e27pEnl3vGXCb7/ZC4YWar7I7H+V7GHfHVmBLmKUctSOXM
+ B077FA6SCoWJDjE7hAHgjfuu+xS0pm6ip1U4SztQBFF2VPWry2g9JbSNOaMtV6b2zoyb
+ nGfeoEC7/diLmG3s+LgUmXp+9uJm+h7CyTNBqTzB/1DEdjwyuEXtBg+PsWYA9jdZp3BU
+ IhKpCvQSkm5c8dTs1DPFiI/ixJMgo8PwETClbSyRhW5R5sAWVS1MA5aXpxEkeIaqpzDb
+ rQhXMa0Aesmtr8e9wmLi2O4UVwTlCIl+5gGR6oDK6k8vWdqTIGzLDhm99pEhwY7Ktbz1
+ Velw==
+X-Gm-Message-State: AOJu0Yx0m1qqRpXamrg6c7mHxfD7TM6IpZM4Y97Ln9Rg09NsZXvnwdXz
+ 4p5PsK/P59EAXbTJ/sWt3OVvL5CKd6iax1YTolGQDA==
+X-Received: by 2002:a50:d6d8:0:b0:553:37e1:a5a with SMTP id
+ l24-20020a50d6d8000000b0055337e10a5amr2527035edj.40.1703003964875; Tue, 19
+ Dec 2023 08:39:24 -0800 (PST)
+MIME-Version: 1.0
 References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
  <CAFEAcA_9yO8kY=fnT8+vn2AFtjyoJN25B4o2tcegaOxS41qhmg@mail.gmail.com>
- <431b825b51524907a3168007fada20e1@auriga.com>,
- <CAFEAcA8QHVy2xYYMxxO3TzLeUWk5AGcq4y6mKvXun02UayBzpw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8QHVy2xYYMxxO3TzLeUWk5AGcq4y6mKvXun02UayBzpw@mail.gmail.com>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.55.54.51]
-x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-28068.000
-x-tm-as-result: No-10--23.181900-8.000000
-x-tmase-matchedrid: Eu85Zv5f5g+JVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
- DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
- ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot5xyX
- VTGcOrS/vQDBFftKziA4mVc9r+gVK6S8yZYvyqCYwtGLqJlyGHMrX+p1uNztChUWS5fneQuc78u
- XuPefQ4+C1dPcxvQJQdQi9i5PHk84Z/aEcxwP1kXrumkbea2Mmok0CD5UnL6ySb8v8wgv7yUvT+
- tdwmjxujyxd4SkAxQQin6k0GuLUFShs77ng+LAb/McoAQhls9JsK0f4SCTIrctDr7iGkSem7FY/
- sCUPw065vHGdEqVSnybKVm4so6PpXF87GmHX6tK5i3jK3KDOopR+m8tBi6ZK+y4Y487IcASPFyc
- xHTa2P1NrRPJ9vJ8FO9mtymj1NEjsbw8P6b6JX8Jb881FGn9mfmd9HsjZ0UzIFcYKjRuw1Pkqrm
- 3IbK/OBzTY3o0ZQBV36oV2qtCy5319rGX8jiaGrm7DrUlmNkF+24nCsUSFNjaPj0W1qn0Q152Le
- cOHHI9aiM9dBaGPewe4JFZ+3aAe05QJn1VX1Bm0+ji1vmQW1Oy2/l7y7Tbw=
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--23.181900-8.000000
-x-tmase-version: SMEX-14.0.0.1158-9.0.1002-28068.000
-x-tm-snts-smtp: AFCCC313E2AAF2ABEDE0D36BC1790D21BFD9E3D039366EEF9970B5293A6608112000:8
-Content-Type: multipart/alternative;
- boundary="_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_"
-MIME-Version: 1.0
-Received-SPF: pass client-ip=82.97.202.32;
- envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ <431b825b51524907a3168007fada20e1@auriga.com>
+In-Reply-To: <431b825b51524907a3168007fada20e1@auriga.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Dec 2023 16:39:13 +0000
+Message-ID: <CAFEAcA8QHVy2xYYMxxO3TzLeUWk5AGcq4y6mKvXun02UayBzpw@mail.gmail.com>
+Subject: Re: [PATCH v4 00/45] Raspberry Pi 4B machine
+To: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+Cc: Sergey Kambalin <serg.oker@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,130 +120,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VVA0LDSjWUQ1
+X-TUID: 2L1EWgfakFzA
 
---_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+On Tue, 19 Dec 2023 at 16:18, Kambalin, Sergey
+<sergey.kambalin@auriga.com> wrote:
+>
+> Thank you a lot for the review Peter!
+>
+>
+> May I kindly ask you to take just a brief look at the first patches of GENET? I'd like to know if I've chosen the right way to replace bitfields with  QEMU REG32/FIELD32 macros.
 
-VGhhbmtzIQ0KDQpJIGtub3cgYWJvdXQgdGhlICdvZmZzZXQnIHBhcmFtZXRlciwgYnV0IGluIHRo
-aXMgcGFydGljdWxhciBjYXNlIEkgdXNlIHRoZXNlIHN0cnVjdHVyZXMgYXMgbGF5b3V0cyBvbmx5
-IGFuZCBkb24ndCAnc3dpdGNoJyBvdmVyIHRoZW0uIFNvIEkgZGVjaWRlZCB0byBzZXQgdGhlIG9m
-ZnNldHMgdG8gMCBpbiBvcmRlciB0byBzaW1wbGlmeSB0aGUgY29kZS4NCg0KDQpBbmQgZXh0cmEg
-dGhhbmtzIGZvciBoaWdobGlnaHRpbmcgdGhlIHBvdGVudGlhbCBpc3N1ZSB3aXRoIG1lbWNweSgp
-IPCfmIouIEknbGwgZml4IGl0IGluIFt2NV0gYXMgd2VsbCBhcyB0aGUgY29tbWVudHMgdG8gZmly
-c3QgMTAgcGF0Y2hlcy4NCg0KDQpIYXZlIGEgbmljZSBob2xpZGF5cyENCg0KDQoNClNlcmdleSBL
-YW1iYWxpbg0KU29mdHdhcmUgRGV2ZWxvcGVyLA0KQXVyaWdhIEluYy4NCg0KDQpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXw0K0J7RgjogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVs
-bEBsaW5hcm8ub3JnPg0K0J7RgtC/0YDQsNCy0LvQtdC90L46IDE5INC00LXQutCw0LHRgNGPIDIw
-MjMg0LMuIDEwOjM5OjEzDQrQmtC+0LzRgzogS2FtYmFsaW4sIFNlcmdleQ0K0JrQvtC/0LjRjzog
-U2VyZ2V5IEthbWJhbGluOyBxZW11LWFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5v
-cmcNCtCi0LXQvNCwOiBSZTogW1BBVENIIHY0IDAwLzQ1XSBSYXNwYmVycnkgUGkgNEIgbWFjaGlu
-ZQ0KDQpPbiBUdWUsIDE5IERlYyAyMDIzIGF0IDE2OjE4LCBLYW1iYWxpbiwgU2VyZ2V5DQo8c2Vy
-Z2V5LmthbWJhbGluQGF1cmlnYS5jb20+IHdyb3RlOg0KPg0KPiBUaGFuayB5b3UgYSBsb3QgZm9y
-IHRoZSByZXZpZXcgUGV0ZXIhDQo+DQo+DQo+IE1heSBJIGtpbmRseSBhc2sgeW91IHRvIHRha2Ug
-anVzdCBhIGJyaWVmIGxvb2sgYXQgdGhlIGZpcnN0IHBhdGNoZXMgb2YgR0VORVQ/IEknZCBsaWtl
-IHRvIGtub3cgaWYgSSd2ZSBjaG9zZW4gdGhlIHJpZ2h0IHdheSB0byByZXBsYWNlIGJpdGZpZWxk
-cyB3aXRoICBRRU1VIFJFRzMyL0ZJRUxEMzIgbWFjcm9zLg0KDQpUaGUgRklFTEQgYW5kIFJFRzMy
-IHVzZXMgbG9vayBtb3N0bHkgT0ssIGJ1dCB0aGUNCnNlY29uZCBhcmd1bWVudCB0byBSRUczMigp
-IHNob3VsZCBub3QgYmUgMCBlYWNoIHRpbWU6DQoNClJFRzMyKEdFTkVUX1NZU19SRVZfQ1RSTCwg
-ICAgICAgICAgICAgIDApDQpSRUczMihHRU5FVF9JTlRSTF8wLCAgICAgICAgICAgICAgICAwKQ0K
-DQpldGMuIFRoZSBpZGVhIGlzIHRoYXQgdGhhdCBzZWNvbmQgYXJndW1lbnQgaXMgdGhlIG9mZnNl
-dA0KaW4gdGhlIHJlZ2lzdGVyIGZpbGUgb2YgdGhlIHJlZ2lzdGVyOyB0aGVuIHRoZSBtYWNybw0K
-ZGVmaW5lcyB5b3UgYW4gQV9HRU5FVF9TWVNfUkVWX0NUUkwgd2hpY2ggaXMgdGhhdCB2YWx1ZSwN
-CmFuZCB5b3UgY2FuIHVzZSBpdCBhcyBhIGNhc2UgbGFiZWwgaW4gdGhlICJzd2l0Y2ggKG9mZnNl
-dCkgeyINCmluIHRoZSByZWFkL3dyaXRlIGZ1bmN0aW9uLg0KDQpJJ20gYSBhbHNvIGEgYml0IGNv
-bmZ1c2VkIGFib3V0IHRoZSB1c2Ugb2Ygb2Zmc2V0b2YoKSBpbiBwYXRjaCAyNy4NCg0KSW4gcGF0
-Y2ggMjggdGhlIGltcGxlbWVudGF0aW9uIG9mIGJjbTI4MzhfZ2VuZXRfcmVhZCgpIGFuZA0KYmNt
-MjgzOF9nZW5ldF93cml0ZSgpIHVzZSBhIG1lbWNweSgpIGJldHdlZW4gYSBsb2NhbCB2YXJpYWJs
-ZQ0KYW5kIG1lbW9yeSB3aGljaCBJJ20gYXNzdW1pbmcgaXMgYW4gaW5kZXggaW50byBvbmUgb2Yg
-dGhlc2UNCnJlZ2lzdGVyIHN0cnVjdHMsIHdoaWNoIHdvbid0IGRvIHRoZSByaWdodCB0aGluZyBp
-ZiB0aGUgaG9zdA0KaXMgYmlnLWVuZGlhbi4gSWYgeW91IG5lZWQgYSAibG9hZC9zdG9yZSBOIGJ5
-dGVzIHRvIG1lbW9yeSBpbg0KaG9zdCBvcmRlciIsIHdlIGhhdmUgbGRuX2hlX3AoKSBhbmQgc3Ru
-X2hlX3AoKTsgYWxzbyBhdmFpbGFibGUNCmluIF9sZV8gYW5kIF9iZV8gZmxhdm91cnMgZm9yIGxv
-YWQvc3RvcmUgaW4gc3BlY2lmaWMgZW5kaWFubmVzcy4NCg0KdGhhbmtzDQotLSBQTU0NCg==
+The FIELD and REG32 uses look mostly OK, but the
+second argument to REG32() should not be 0 each time:
 
---_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_
-Content-Type: text/html; charset="utf-8"
-Content-Transfer-Encoding: base64
+REG32(GENET_SYS_REV_CTRL,              0)
+REG32(GENET_INTRL_0,                0)
 
-PGh0bWw+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0i
-dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxtZXRhIG5hbWU9IkdlbmVyYXRvciIgY29udGVu
-dD0iTWljcm9zb2Z0IEV4Y2hhbmdlIFNlcnZlciI+DQo8IS0tIGNvbnZlcnRlZCBmcm9tIHRleHQg
-LS0+PHN0eWxlPjwhLS0gLkVtYWlsUXVvdGUgeyBtYXJnaW4tbGVmdDogMXB0OyBwYWRkaW5nLWxl
-ZnQ6IDRwdDsgYm9yZGVyLWxlZnQ6ICM4MDAwMDAgMnB4IHNvbGlkOyB9IC0tPjwvc3R5bGU+DQo8
-L2hlYWQ+DQo8Ym9keT4NCjxtZXRhIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD1VVEYtOCI+
-DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiIHN0eWxlPSIiPg0KPCEtLQ0KcA0KCXttYXJnaW4tdG9w
-OjA7DQoJbWFyZ2luLWJvdHRvbTowfQ0KLS0+DQo8L3N0eWxlPg0KPGRpdiBkaXI9Imx0ciI+DQo8
-ZGl2IGlkPSJ4X2RpdnRhZ2RlZmF1bHR3cmFwcGVyIiBkaXI9Imx0ciIgc3R5bGU9ImZvbnQtc2l6
-ZToxMnB0OyBjb2xvcjojMDAwMDAwOyBmb250LWZhbWlseTpDYWxpYnJpLEhlbHZldGljYSxzYW5z
-LXNlcmlmIj4NCjxwPlRoYW5rcyE8YnI+DQo8YnI+DQpJIGtub3cgYWJvdXQgdGhlICdvZmZzZXQn
-IHBhcmFtZXRlciwgYnV0IGluIHRoaXMgcGFydGljdWxhciBjYXNlIEkgdXNlIHRoZXNlIHN0cnVj
-dHVyZXMgYXMgbGF5b3V0cyBvbmx5IGFuZCBkb24ndCAnc3dpdGNoJyBvdmVyIHRoZW0uIFNvIEkg
-ZGVjaWRlZCB0byBzZXQgdGhlIG9mZnNldHMgdG8gMCBpbiBvcmRlciB0byBzaW1wbGlmeSB0aGUg
-Y29kZS48L3A+DQo8cD48YnI+DQo8L3A+DQo8cD5BbmQgZXh0cmEgdGhhbmtzIGZvciBoaWdobGln
-aHRpbmcgdGhlIHBvdGVudGlhbCBpc3N1ZSB3aXRoJm5ic3A7PHNwYW4+bWVtY3B5KCkgPHNwYW4+
-DQrwn5iKLiBJJ2xsIGZpeCBpdCBpbiBbdjVdIGFzIHdlbGwgYXMgdGhlIGNvbW1lbnRzIHRvIGZp
-cnN0IDEwIHBhdGNoZXMuPGJyPg0KPGJyPg0KPGJyPg0KSGF2ZSBhIG5pY2UgaG9saWRheXMhPC9z
-cGFuPjwvc3Bhbj48L3A+DQo8cD48YnI+DQo8L3A+DQo8cD48YnI+DQo8L3A+DQo8ZGl2IGlkPSJ4
-X1NpZ25hdHVyZSI+DQo8ZGl2IGlkPSJ4X2RpdnRhZ2RlZmF1bHR3cmFwcGVyIiBkaXI9Imx0ciIg
-c3R5bGU9ImZvbnQtc2l6ZToxMnB0OyBjb2xvcjpyZ2IoMCwwLDApOyBmb250LWZhbWlseTpDYWxp
-YnJpLEhlbHZldGljYSxzYW5zLXNlcmlmLEVtb2ppRm9udCwmcXVvdDtBcHBsZSBDb2xvciBFbW9q
-aSZxdW90OywmcXVvdDtTZWdvZSBVSSBFbW9qaSZxdW90OyxOb3RvQ29sb3JFbW9qaSwmcXVvdDtT
-ZWdvZSBVSSBTeW1ib2wmcXVvdDssJnF1b3Q7QW5kcm9pZCBFbW9qaSZxdW90OyxFbW9qaVN5bWJv
-bHMiPg0KPGZvbnQgc2l6ZT0iMyIgZmFjZT0iQ2FsaWJyaSxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIg
-Y29sb3I9ImJsYWNrIiBzdHlsZT0iZm9udC1mYW1pbHk6Q2FsaWJyaSxIZWx2ZXRpY2Esc2Fucy1z
-ZXJpZixzZXJpZiwmcXVvdDtFbW9qaUZvbnQmcXVvdDsiPjxmb250IHNpemU9IjMiIGZhY2U9IkNh
-bGlicmksSGVsdmV0aWNhLHNhbnMtc2VyaWYsRW1vamlGb250LEFwcGxlIENvbG9yIEVtb2ppLFNl
-Z29lIFVJIEVtb2ppLE5vdG9Db2xvckVtb2ppLFNlZ29lIFVJIFN5bWJvbCxBbmRyb2lkIEVtb2pp
-LEVtb2ppU3ltYm9scyIgY29sb3I9ImJsYWNrIj48aT48c3BhbiBzdHlsZT0iZm9udC1zaXplOjEw
-cHQiPjwvc3Bhbj48L2k+DQo8ZGl2IHN0eWxlPSJtYXJnaW4tdG9wOjA7IG1hcmdpbi1ib3R0b206
-MCI+PGk+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMHB0Ij5TZXJnZXkgS2FtYmFsaW48L3NwYW4+
-PC9pPjxpPjxicj4NCjwvaT48L2Rpdj4NCjxpPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTBwdCI+
-PC9zcGFuPjwvaT4NCjxkaXYgc3R5bGU9Im1hcmdpbi10b3A6MDsgbWFyZ2luLWJvdHRvbTowIj48
-aT48c3BhbiBzdHlsZT0iZm9udC1zaXplOjEwcHQiPlNvZnR3YXJlIERldmVsb3Blciw8L3NwYW4+
-PC9pPjwvZGl2Pg0KPGRpdiBzdHlsZT0ibWFyZ2luLXRvcDowOyBtYXJnaW4tYm90dG9tOjAiPjxp
-PjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTBwdCI+PHNwYW4+QXVyaWdhIEluYy48L3NwYW4+PGJy
-Pg0KPC9zcGFuPjwvaT48L2Rpdj4NCjwvZm9udD48L2ZvbnQ+PGJyPg0KPHA+PC9wPg0KPC9kaXY+
-DQo8L2Rpdj4NCjwvZGl2Pg0KPGhyIHRhYmluZGV4PSItMSIgc3R5bGU9ImRpc3BsYXk6aW5saW5l
-LWJsb2NrOyB3aWR0aDo5OCUiPg0KPGRpdiBpZD0ieF9kaXZScGx5RndkTXNnIiBkaXI9Imx0ciI+
-PGZvbnQgZmFjZT0iQ2FsaWJyaSwgc2Fucy1zZXJpZiIgY29sb3I9IiMwMDAwMDAiIHN0eWxlPSJm
-b250LXNpemU6MTFwdCI+PGI+0J7Rgjo8L2I+IFBldGVyIE1heWRlbGwgJmx0O3BldGVyLm1heWRl
-bGxAbGluYXJvLm9yZyZndDs8YnI+DQo8Yj7QntGC0L/RgNCw0LLQu9C10L3Qvjo8L2I+IDE5INC0
-0LXQutCw0LHRgNGPIDIwMjMg0LMuIDEwOjM5OjEzPGJyPg0KPGI+0JrQvtC80YM6PC9iPiBLYW1i
-YWxpbiwgU2VyZ2V5PGJyPg0KPGI+0JrQvtC/0LjRjzo8L2I+IFNlcmdleSBLYW1iYWxpbjsgcWVt
-dS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnPGJyPg0KPGI+0KLQtdC80LA6
-PC9iPiBSZTogW1BBVENIIHY0IDAwLzQ1XSBSYXNwYmVycnkgUGkgNEIgbWFjaGluZTwvZm9udD4N
-CjxkaXY+Jm5ic3A7PC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPGZvbnQgc2l6ZT0iMiI+PHNwYW4g
-c3R5bGU9ImZvbnQtc2l6ZToxMHB0OyI+DQo8ZGl2IGNsYXNzPSJQbGFpblRleHQiPk9uIFR1ZSwg
-MTkgRGVjIDIwMjMgYXQgMTY6MTgsIEthbWJhbGluLCBTZXJnZXk8YnI+DQombHQ7c2VyZ2V5Lmth
-bWJhbGluQGF1cmlnYS5jb20mZ3Q7IHdyb3RlOjxicj4NCiZndDs8YnI+DQomZ3Q7IFRoYW5rIHlv
-dSBhIGxvdCBmb3IgdGhlIHJldmlldyBQZXRlciE8YnI+DQomZ3Q7PGJyPg0KJmd0Ozxicj4NCiZn
-dDsgTWF5IEkga2luZGx5IGFzayB5b3UgdG8gdGFrZSBqdXN0IGEgYnJpZWYgbG9vayBhdCB0aGUg
-Zmlyc3QgcGF0Y2hlcyBvZiBHRU5FVD8gSSdkIGxpa2UgdG8ga25vdyBpZiBJJ3ZlIGNob3NlbiB0
-aGUgcmlnaHQgd2F5IHRvIHJlcGxhY2UgYml0ZmllbGRzIHdpdGgmbmJzcDsgUUVNVSBSRUczMi9G
-SUVMRDMyIG1hY3Jvcy48YnI+DQo8YnI+DQpUaGUgRklFTEQgYW5kIFJFRzMyIHVzZXMgbG9vayBt
-b3N0bHkgT0ssIGJ1dCB0aGU8YnI+DQpzZWNvbmQgYXJndW1lbnQgdG8gUkVHMzIoKSBzaG91bGQg
-bm90IGJlIDAgZWFjaCB0aW1lOjxicj4NCjxicj4NClJFRzMyKEdFTkVUX1NZU19SRVZfQ1RSTCwm
-bmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJz
-cDsmbmJzcDsmbmJzcDsmbmJzcDsgMCk8YnI+DQpSRUczMihHRU5FVF9JTlRSTF8wLCZuYnNwOyZu
-YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNw
-OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyAwKTxicj4NCjxicj4NCmV0Yy4gVGhlIGlkZWEgaXMg
-dGhhdCB0aGF0IHNlY29uZCBhcmd1bWVudCBpcyB0aGUgb2Zmc2V0PGJyPg0KaW4gdGhlIHJlZ2lz
-dGVyIGZpbGUgb2YgdGhlIHJlZ2lzdGVyOyB0aGVuIHRoZSBtYWNybzxicj4NCmRlZmluZXMgeW91
-IGFuIEFfR0VORVRfU1lTX1JFVl9DVFJMIHdoaWNoIGlzIHRoYXQgdmFsdWUsPGJyPg0KYW5kIHlv
-dSBjYW4gdXNlIGl0IGFzIGEgY2FzZSBsYWJlbCBpbiB0aGUgJnF1b3Q7c3dpdGNoIChvZmZzZXQp
-IHsmcXVvdDs8YnI+DQppbiB0aGUgcmVhZC93cml0ZSBmdW5jdGlvbi48YnI+DQo8YnI+DQpJJ20g
-YSBhbHNvIGEgYml0IGNvbmZ1c2VkIGFib3V0IHRoZSB1c2Ugb2Ygb2Zmc2V0b2YoKSBpbiBwYXRj
-aCAyNy48YnI+DQo8YnI+DQpJbiBwYXRjaCAyOCB0aGUgaW1wbGVtZW50YXRpb24gb2YgYmNtMjgz
-OF9nZW5ldF9yZWFkKCkgYW5kPGJyPg0KYmNtMjgzOF9nZW5ldF93cml0ZSgpIHVzZSBhIG1lbWNw
-eSgpIGJldHdlZW4gYSBsb2NhbCB2YXJpYWJsZTxicj4NCmFuZCBtZW1vcnkgd2hpY2ggSSdtIGFz
-c3VtaW5nIGlzIGFuIGluZGV4IGludG8gb25lIG9mIHRoZXNlPGJyPg0KcmVnaXN0ZXIgc3RydWN0
-cywgd2hpY2ggd29uJ3QgZG8gdGhlIHJpZ2h0IHRoaW5nIGlmIHRoZSBob3N0PGJyPg0KaXMgYmln
-LWVuZGlhbi4gSWYgeW91IG5lZWQgYSAmcXVvdDtsb2FkL3N0b3JlIE4gYnl0ZXMgdG8gbWVtb3J5
-IGluPGJyPg0KaG9zdCBvcmRlciZxdW90Oywgd2UgaGF2ZSBsZG5faGVfcCgpIGFuZCBzdG5faGVf
-cCgpOyBhbHNvIGF2YWlsYWJsZTxicj4NCmluIF9sZV8gYW5kIF9iZV8gZmxhdm91cnMgZm9yIGxv
-YWQvc3RvcmUgaW4gc3BlY2lmaWMgZW5kaWFubmVzcy48YnI+DQo8YnI+DQp0aGFua3M8YnI+DQot
-LSBQTU08YnI+DQo8L2Rpdj4NCjwvc3Bhbj48L2ZvbnQ+DQo8L2JvZHk+DQo8L2h0bWw+DQo=
+etc. The idea is that that second argument is the offset
+in the register file of the register; then the macro
+defines you an A_GENET_SYS_REV_CTRL which is that value,
+and you can use it as a case label in the "switch (offset) {"
+in the read/write function.
 
---_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_--
+I'm a also a bit confused about the use of offsetof() in patch 27.
+
+In patch 28 the implementation of bcm2838_genet_read() and
+bcm2838_genet_write() use a memcpy() between a local variable
+and memory which I'm assuming is an index into one of these
+register structs, which won't do the right thing if the host
+is big-endian. If you need a "load/store N bytes to memory in
+host order", we have ldn_he_p() and stn_he_p(); also available
+in _le_ and _be_ flavours for load/store in specific endianness.
+
+thanks
+-- PMM

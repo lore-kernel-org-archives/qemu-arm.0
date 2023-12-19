@@ -1,112 +1,110 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1400085eji;
-        Tue, 19 Dec 2023 02:55:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEB/RUTrji71QXOJ4W9Vg66KbAq90MMcZwH1sGZb6ldc1o5B5GNePiI+cIKaLiO7jFqF5Vs
-X-Received: by 2002:a05:620a:382:b0:781:75:4ea3 with SMTP id q2-20020a05620a038200b0078100754ea3mr662314qkm.113.1702983351392;
-        Tue, 19 Dec 2023 02:55:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1702983351; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1590813eji;
+        Tue, 19 Dec 2023 08:06:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHiCqUE4rPGguROGIFp65Dc6oFVKiQI/VmAKXIoItN1Lc+ffX65UGz/bh6Go+0xhEJJ6RQ6
+X-Received: by 2002:a05:6214:2468:b0:67f:62c6:dc61 with SMTP id im8-20020a056214246800b0067f62c6dc61mr1051016qvb.69.1703001980595;
+        Tue, 19 Dec 2023 08:06:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703001980; cv=none;
         d=google.com; s=arc-20160816;
-        b=IbYHPx8ZYjvFiQNIDT4tulbLP4EwRisNB+wsYyFV2vGeyyGIRovQYKm2cEWG74D/DU
-         9SD4K209r4uHdTfWWtOBuvtiHvbtOoOD2WlneMe2SEacuR6B37LMqSh2HqYo7kaV0fcw
-         yv9d0Sm4W0EpoX/8OwEoE6uzfbkHOOJc8n2KQGv0QPI/z3XOwjWffUaBCwe6yOsmCUcp
-         NoYurQkfhK0pOcrxpSQ0IyHvoc1Im1KhLBJM569t4Cu+E6arj3+a8T0lsP3FU4d0LS79
-         oRm0Hrmt7ib6nXUjXSfHpUDtpYizNn0TNHXxz8VKSgIng5y5ZX1teethzjBZcUJOL2Dv
-         gUug==
+        b=e2ohwikTLI1myYR8ag3a0IuSjYDMJUvFCFyVOkqARJy9guCSTk6hT28IQbGd6VISHf
+         yGZCXWbCNDWDkzM46T0ZJxVQMSe0BPh3IaZe0TzDDbu6z7+8ts9lFOkVRWWA2Cy0xnIs
+         jIsamWFHxcVdkeq0so2QRJzoNqtiTqNFyiQCr2fIDSdjoJidTll9z71DazAgs6Wxrztf
+         W5A7nk2lmjf+9hylvAk+V1DOYOLrFR0uGt1ujsbQNE/pUncaH8cw+snVySUdJ/gQx9di
+         yjdvfmBlthzStO5H1T1Cb1sNaQ9cNE3sUJlEteUaZk5SWG5w6xLR77XzNV8+dn7abHJT
+         OnNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lIRbGwXO6TvwI0IntgDTvlax6D6vei+jQDLXSTHmwHI=;
-        fh=iRZvBjYNFikRCMxTsHjYHZF0/bx8HGQ9VfRkjBVh0nc=;
-        b=y4lf4eErEmv2v2QzUqeTV/tlM7xhNsSNRfy3CFl3doMsHYEsdWDoblrsZRJqGXqQPv
-         KjAgwdmtaChaNXwE+1OTuhZmRHWTiBSdTbXwjf6bLI3owiYJ3pgg3rtsFtoimUmbqCjS
-         hkk8ANvJvUR7XEY7OYQ/e5I8cezuf9ZJSeT3k2JUkcgSa/Ppk+Q9zM0LDl/2IUrr6ifD
-         1UxpIBnRSJuRIUioX5hgq+H/aIrEZL7BU2BiBY5kokEvoIAI+gzNNDglIYjTBSBN6QyQ
-         SEfFZWEsv5HM5+jT6TX9Pt+JgfxI4cnY4qVBqWZNQFG67wgamkZa106uBTCRSYEyqH0i
-         EyDQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=fOKdS/r03mPWw+5f0KyqZFD6OmzNmBSvAaVBFMMXsTA=;
+        fh=2WHa1aBydZHOwlLWGyq1MgG017vpq3PjtKc+e48RhbQ=;
+        b=tk/IxmVwYZAHEbMJqJIM99qCNOV+2RY7jX2WZSfKXPZj7fZIgVBWlurWiAk8eFKLzG
+         MFX4ooAoijPAqrcPfuh+3vdge/9Mpv5ak1vjAEJGjRAUlqRjHSaVj2qT8k+BZpQkm+ak
+         kY4rZVHrKgIQxfqTP0ra54f3qY7uIWb0SXssUo5EM6XBKyXaB/e0Rhlccu/favUt6IB0
+         LfLLJf/e8xLNbvH+q9aZa/ipKpKfYr4wbDYfEvpSt4wnLWBgiRICgazhpB2fVQyXuqP8
+         eV5LyN17gHonCuqtQ7a0aopXW7Jsb5zTmv9IQcCcBq4Yfj7MsVqC+BtIC6ShTXCxTy46
+         9+gQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KlP51azA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vHDjRkD9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4-20020a37c404000000b0077dc10f937esi10526qki.485.2023.12.19.02.55.51
+        by mx.google.com with ESMTPS id w6-20020a0ce106000000b0067f2fc7fb70si7066811qvk.249.2023.12.19.08.06.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Dec 2023 02:55:51 -0800 (PST)
+        Tue, 19 Dec 2023 08:06:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KlP51azA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vHDjRkD9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFXlH-0003dx-Cj; Tue, 19 Dec 2023 05:55:43 -0500
+	id 1rFcbI-0002Rk-1f; Tue, 19 Dec 2023 11:05:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rFXlE-0003dC-1q; Tue, 19 Dec 2023 05:55:40 -0500
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rFcbC-0002O2-78
+ for qemu-arm@nongnu.org; Tue, 19 Dec 2023 11:05:39 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rFXl8-00082J-Ld; Tue, 19 Dec 2023 05:55:38 -0500
-Received: by mail-lf1-x131.google.com with SMTP id
- 2adb3069b0e04-50e384cd6ebso2547621e87.3; 
- Tue, 19 Dec 2023 02:55:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rFcb4-0002S5-Jk
+ for qemu-arm@nongnu.org; Tue, 19 Dec 2023 11:05:32 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-553b3ee88c0so246075a12.0
+ for <qemu-arm@nongnu.org>; Tue, 19 Dec 2023 08:05:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702983326; x=1703588126; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=lIRbGwXO6TvwI0IntgDTvlax6D6vei+jQDLXSTHmwHI=;
- b=KlP51azAP9zkUsdVrHvTf6KJHwzHTMu5C5ccWZAqmVG9UarVsr3v2icwr5abhyfRbt
- ABOx6W0lURqUs2KX+HzDKereY+c7WgBp1i1m0Q86zU+ODwc9YNnWUIOagOzfU6MAYjsK
- XqIIuXRsQ7LTpCFdqpH1z9wagkhLLmQ83IiDDu47HFm5xjuPiuLCBU1Lqs43UCI9MXZl
- ODHkynIyTa+rzhTq6wNbk3OjYZmhN9PM1LCdyKBdi4/cluPxP5TW8B42Gt1yawFghqau
- T1CmAW3RemNA5RAsJObwVw8PVPgwinYzxVxz5ge1XDmQ5G17QI6nDIKz3/yfdI5kMnZG
- Jm1A==
+ d=linaro.org; s=google; t=1703001924; x=1703606724; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=fOKdS/r03mPWw+5f0KyqZFD6OmzNmBSvAaVBFMMXsTA=;
+ b=vHDjRkD98UAgdCEfCcnFLk1CHlna6dgqejKgc80mk7oWNXzQpiexDyqwjPh+pyrM5K
+ 2ZztMSEHOCKLdCCpayW4vMIbyByhynZRhaxhQzB8MZivG5d1w/RC05pl/tS0Xei/tz9J
+ a4EA3IGS3u7yKQRcew7ditZ8ysu7O138J7yBD6gXR76x5lj8wpytzHpWoXyzLicgDx5g
+ bafyzjH8tRpRUTgPVdSEGDJtVPBrWeynn4oZLexbA6PS/f7DwMAdTdhnLOCTq3DSachC
+ kw3JO2mFak9Z4f68LioY4qxsIZdOJ4qBt0Y5APEqiKZhicYNAGq0ZwE8WjIP+nada5z1
+ Kchg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702983326; x=1703588126;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1703001924; x=1703606724;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=lIRbGwXO6TvwI0IntgDTvlax6D6vei+jQDLXSTHmwHI=;
- b=I3oI066zDk9n1p+ZqOkIqaHSGXY4IhASzm5jrT3k0SI5y1GK8Mk+XdhOcWWl/bsARb
- HRR3ZT+2mdRDkFdAdVjjxnxvR6Sbd+T3rTlTWLDx1UmQVIKEkDkOav1F5EKbKOwyyVJ+
- s+6Gf+5HyeIfbMQiiz0BhOLfwqkpG5CrxZDfInX61WxJ+1VWSeOHB7L0iZmSM4FwD9jR
- v9esxUXHDq29bIUgTETJeNkxIg2Hr/JqFmCmW27UWom7JYa+UHDJuzbyH1AfjuchpNcY
- QutKiyo76pt/DA5ZiOx5fLI6IyEgOHvHbm4g18tfp1T8L82JCjRrBblzYNQkudvGyMuy
- axdg==
-X-Gm-Message-State: AOJu0YyspiTMXVdDtbnUweGgQrItR2vCIf6nnwplwGAhfwlH6RPW30uO
- +5NZkcrYHhvM9qknuiIdCC4vaR3ecBSld8/7
-X-Received: by 2002:a05:6512:4024:b0:50e:4444:b94b with SMTP id
- br36-20020a056512402400b0050e4444b94bmr504873lfb.101.1702983325684; 
- Tue, 19 Dec 2023 02:55:25 -0800 (PST)
-Received: from localhost.localdomain ([176.120.189.69])
- by smtp.gmail.com with ESMTPSA id
- s16-20020a056512215000b0050be73a1c27sm3163749lfr.258.2023.12.19.02.55.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Dec 2023 02:55:25 -0800 (PST)
-From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Subject: [PATCH] hw/arm: add cache controller for Freescale i.MX6
-Date: Tue, 19 Dec 2023 10:55:10 +0000
-Message-Id: <20231219105510.4907-1-n.ostrenkov@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ bh=fOKdS/r03mPWw+5f0KyqZFD6OmzNmBSvAaVBFMMXsTA=;
+ b=nohmtv4rHubwYEf4Uc1rL7nyVuoh0kAGC1xx1WPb37Hnwprt0kDwck4fPsMTFxnh/3
+ 4uw0hyy3qmULByUeOhycY4W26VLyFzhSaAzXlqTcg3WJFLT3qlKhvEarGMgDq0bJIy4p
+ KXyJlLHOuU3aqpUFP9VhQK9yZbjLrQd6e1+b251/KP2v6RtS3zZ7m2tivc5OhpCHmQvQ
+ xjYMdx0IhlwpfiMj5aqIkeZZpR2A3TfURw6oXywb9g5bx1dNThqjIBC5iBr3Qt3X3yv2
+ byZZ5EW6TkodItgl/NQ+FLaPpNIhIX1JBeqtwM+egmtHPdY+V6QIodAD2q4LPzqyE4Ry
+ oQAQ==
+X-Gm-Message-State: AOJu0Yzq/5kTsEsDag8BjLHtrYxO8OVL/nJV2CoMBgaWM8RXd6T5R5/m
+ A8feMq9mE+LQduXtpeoe5y9lBzQrvyyJF/deDrz+Rg==
+X-Received: by 2002:a05:6402:604:b0:553:b3ee:5840 with SMTP id
+ n4-20020a056402060400b00553b3ee5840mr159074edv.79.1703001924393; Tue, 19 Dec
+ 2023 08:05:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::131;
- envelope-from=n.ostrenkov@gmail.com; helo=mail-lf1-x131.google.com
+References: <20231216182740.3305724-1-sam@rfc1149.net>
+ <878r5tqnyu.fsf@rfc1149.net>
+In-Reply-To: <878r5tqnyu.fsf@rfc1149.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Dec 2023 16:05:12 +0000
+Message-ID: <CAFEAcA8sTLZSQdqZmNGSv4yp3TZvq86kwbhU8gFmK2=j8vVZhQ@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Add "num-prio-bits" property for Cortex-M devices
+To: Samuel Tardieu <sam@rfc1149.net>
+Cc: qemu-devel@nongnu.org, Anton Kochkov <anton.kochkov@proton.me>,
+ qemu-arm@nongnu.org, 
+ Alexandre Iooss <erdnaxe@crans.org>, Alistair Francis <alistair@alistair23.me>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,40 +119,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kINd9C4UxSvE
+X-TUID: i31lXLFjT3qC
 
-Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
----
- hw/arm/Kconfig    | 1 +
- hw/arm/fsl-imx6.c | 3 +++
- 2 files changed, 4 insertions(+)
+On Sun, 17 Dec 2023 at 07:37, Samuel Tardieu <sam@rfc1149.net> wrote:
+>
+>
+> > Samuel Tardieu (3):
+> >   hw/intc/armv7m_nvic: add "num-prio-bits" property
+> >   hw/arm/armv7m: alias the NVIC "num-prio-bits" property
+> >   hw/arm/socs: configure priority bits for existing SOCs
+>
+> Any idea to why patchew fails to apply thoses patches? The mbox at
+> <https://patchew.org/QEMU/20231216182740.3305724-1-sam@rfc1149.net/>
+> applies cleanly on master AFAICS.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 3ada335a24..386f06840c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -536,6 +536,7 @@ config FSL_IMX6
-     select IMX_I2C
-     select IMX_USBPHY
-     select WDT_IMX2
-+    select PL310  # cache controller
-     select SDHCI
- 
- config ASPEED_SOC
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 7dc42cbfe6..f56130a7a7 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -154,6 +154,9 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + smp_cpus,
-                            qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FIQ));
-     }
-+    
-+    /* L2 cache controller */
-+    sysbus_create_simple("l2x0", FSL_IMX6_PL310_ADDR, NULL);
- 
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ccm), errp)) {
-         return;
--- 
-2.34.1
+This is because you put a Based-on: tag in the cover letter.
+Based-on: means "please apply this other patch first before this
+series, because there is a dependency" (we use it for things
+like "this patchset has to sit on top of some other cleanup
+patchset I sent last week and which hasn't got into git yet").
+So patchew applied Anton's original patch from 2022, and then tried
+to apply your three patches on top of that, which caused a conflict.
 
+Anyway, I just wanted to say that this patchset is on my
+todo list to review but I'm not going to be able to get to
+it before I break for Christmas, so I'll get back to it
+in January. Thanks for the contribution!
+
+-- PMM

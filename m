@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1603528eji;
-        Tue, 19 Dec 2023 08:24:01 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IETQ/pRQx91nX4vGDu2W4I9GiyENP+jXOIrhdUYUv9Op0a2T6cTqeibUubKbERyH4FHYiZs
-X-Received: by 2002:a05:622a:308:b0:425:4043:1da1 with SMTP id q8-20020a05622a030800b0042540431da1mr24113527qtw.116.1703003041139;
-        Tue, 19 Dec 2023 08:24:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703003041; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1632531eji;
+        Tue, 19 Dec 2023 09:08:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF/EqETGehY5p7bfIbb6yrIo5w1KUXdoh5a4xWXZnpYpGA8dcvdHWpKz+Nij7+qYBZFgz4p
+X-Received: by 2002:a81:a202:0:b0:5d7:1940:8de4 with SMTP id w2-20020a81a202000000b005d719408de4mr8246963ywg.75.1703005711554;
+        Tue, 19 Dec 2023 09:08:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703005711; cv=none;
         d=google.com; s=arc-20160816;
-        b=TwiCBnMxU7DOOBYxtQu1KtoGTFtLczT9fYvW/zvvTBJDJ/gbeuQVHmmYMO8HiPLwT4
-         tm8mMU6oiIZ+gJtuTXdnlKvoCWg8aQfOV5nWJMU0XvQkEDPC8c6yCKmFk4FMKhVgxVpk
-         Br39y/6xYfGio0cYPhr5ZIjwcLS98OUBaHhASUqfIGOYphtJ5yDXTyJvSJAleDeFZ7XN
-         T2gwlIYn1+O/39yxkvSiLj/wil3XnpJuc3ythLxWFkMKreSM+9LO3YcB+HYwEVpyDkAm
-         ss9Tw/sqTHaQTGmbZUGnedyIM1JvyZCv31V/GgPwbNmxiOFi2/RsxQX6n5a5rCKpDWsg
-         0okA==
+        b=qEi8aLQejmm1P/ZK7T93m4Z7lLw4eqaoJP1PIoxyUjK039VruY782vrC99hZPDiuwU
+         C766pRM7EnC/d5IS9pIulxO/Gv8Kir3+iwD5bhhAUK9o3+nr58QsoKucIOvOT65LkxFs
+         TEZTXiTMb1dmD/4CW1tzcOpkFIyy7Z2BPlx3fEcIHjNpZwhPEx5022Eb95MA/iWQ9psV
+         Gda0xqXMLChHt8C3LbMgHwMznI56SGEGVqJ387vlJH7hgGKecKu+v+P3JDQUWJtZwdlw
+         1AE/5R1a2MlZuZcM/vGSRnBSKQhNVkh3zYaiXhBLsLWMcq2ecpkmEhX3MIonxzUQrHoD
+         KJJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from;
-        bh=abR5OebUztfshFkPgVnR3wAiMPPT1b4Aq/wGxXojREU=;
-        fh=Yypr2VkbhmjuXW0VooRn9Uxrx6H7o63tNy03R06JsZ0=;
-        b=VhRqdcd6lXSiMNwe0utwjMnP5uzW5x6hNamA000NTiSBVUWyFJf+N9YuSbLfofJc6s
-         omy3XhxIjRDh4CracQT8HZmQa6v5VE5TepyI6Ggcnpv6HKgdZC9U0olJOafUWU/xE+VT
-         AYpVbzR+wtOGBACCr5D+29LQp079wmWqWrHKikX6Y7vlFGDwfbMtjRH+DNJTg5Ea/cRQ
-         5uCERKSuw5KdQ4Vx91d2vgstzkpE5pSBNuNQz9TpyMIg9TFXqZGXbbDOj5SU/ttJovuq
-         LAV/459bxD90SZ6lxDeg95m5MucNwzLSHcrmUoQAt2LeN/ZxhwXKF7Km9vCiEKs1HKNR
-         /qBQ==
+        bh=PCXyAIu/jeKJqzKZtcOb/EjX1QqsUCgYmtJR3QImNJg=;
+        fh=gV7Ffy3yiD9FgiaeRLJdX95Rtt40gj/ieyKYgARN1aY=;
+        b=p07gDnXr8+0d1AVg4CHWqhKx76LQ1dsSp3aEO/2sJd3lPz1NVF5k5d4Lt5RS8OnyEk
+         Qf54fyJhywOgBKu35Pji8V9CVi5hNE7ryTIBp90ahNKAS+U/5EwEK8Ucy5qhvSltJqIJ
+         ATVpX+Xme8qgHMXg9Q1HfC3W8FCZopYulCZOdQ1x08DzvpmFbwL3SbDM/v44MQOmNcom
+         DF8A+f19YpqKqkGi8XC3nE62BrhdpkJfhVepX7oEwDQg3uGER+wQwsRCftOTTi2nY25x
+         7tSzefw9X1sZzb4PfQOYGgZ+YQWjaCNsS11e2C1zTEfPXgLRJXD97PBLM1nbfRojDgqT
+         egFA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17-20020ac87e91000000b00425fe9c723esi13110697qtj.218.2023.12.19.08.24.00
+        by mx.google.com with ESMTPS id u3-20020a818403000000b005e76d78ca65si1561576ywf.364.2023.12.19.09.08.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Dec 2023 08:24:01 -0800 (PST)
+        Tue, 19 Dec 2023 09:08:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFcsm-0000FZ-Ne; Tue, 19 Dec 2023 11:23:49 -0500
+	id 1rFdZV-0003Jx-MG; Tue, 19 Dec 2023 12:07:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1rFcsl-0000FM-MT; Tue, 19 Dec 2023 11:23:47 -0500
+ id 1rFdZR-0003Gj-KE; Tue, 19 Dec 2023 12:07:55 -0500
 Received: from hq-ms.auriga.com ([82.97.202.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1rFcsj-00065a-QX; Tue, 19 Dec 2023 11:23:47 -0500
+ id 1rFdZK-0005w1-SZ; Tue, 19 Dec 2023 12:07:49 -0500
 Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
  hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.28; Tue, 19 Dec 2023 19:18:34 +0300
+ 15.2.1258.28; Tue, 19 Dec 2023 20:07:41 +0300
 Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
  hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%7]) with mapi id
- 15.02.1258.028; Tue, 19 Dec 2023 19:18:34 +0300
+ 15.02.1258.028; Tue, 19 Dec 2023 20:07:41 +0300
 From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Sergey Kambalin
- <serg.oker@gmail.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Sergey Kambalin <serg.oker@gmail.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Subject: Re: [PATCH v4 00/45] Raspberry Pi 4B machine
 Thread-Topic: [PATCH v4 00/45] Raspberry Pi 4B machine
-Thread-Index: AQHaMpYOsuJlg29jO0iqHAIolkCXkrCwx99y
-Date: Tue, 19 Dec 2023 16:18:34 +0000
-Message-ID: <431b825b51524907a3168007fada20e1@auriga.com>
-References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>,
+Thread-Index: AQHaMpYOsuJlg29jO0iqHAIolkCXkrCwx99y///UdoCAADdowQ==
+Date: Tue, 19 Dec 2023 17:07:41 +0000
+Message-ID: <1af36710e4ca4aefaced4ceadbdc8b4c@auriga.com>
+References: <20231208023145.1385775-1-sergey.kambalin@auriga.com>
  <CAFEAcA_9yO8kY=fnT8+vn2AFtjyoJN25B4o2tcegaOxS41qhmg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_9yO8kY=fnT8+vn2AFtjyoJN25B4o2tcegaOxS41qhmg@mail.gmail.com>
+ <431b825b51524907a3168007fada20e1@auriga.com>,
+ <CAFEAcA8QHVy2xYYMxxO3TzLeUWk5AGcq4y6mKvXun02UayBzpw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8QHVy2xYYMxxO3TzLeUWk5AGcq4y6mKvXun02UayBzpw@mail.gmail.com>
 Accept-Language: ru-RU, en-US
 Content-Language: ru-RU
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [192.55.54.51]
 x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-28068.000
-x-tm-as-result: No-10--21.884300-8.000000
-x-tmase-matchedrid: hanTHthjeUyJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
+x-tm-as-result: No-10--23.181900-8.000000
+x-tmase-matchedrid: Eu85Zv5f5g+JVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
  DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
- ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot4/2z
- 5u7TubFO41AO2PT8K0l4RbNy24wI1YdP7S7gvC5FspQ1CTrnQdqJNAg+VJy+skm/L/MIL+8lL0/
- rXcJo8bo8sXeEpAMUEjjWS1PTGQr9LYKRd+gtJeL4+sB3yBscndvovMm13clRKiNb69EtW/yYIi
- Bm/4N4sJ2N6lvoKB0pjZSdjxhJKtW/LVFLmRDI2zRPQ8T4oe5WCHSksKltZjNLboCUPVncO+M30
- 6Ro3W2oe8PG/QML7VY3U9gPuLxcDFkNQYjukgj0hwlOfYeSqxlDt5PQMgj013de2OoBqgwl7EdV
- ZXsXPv3oWXchjt1h8HKv4Hj14gfwH6tyOxWVhjGqSG/c50XgNcpWOjzFm1Pi2is8s1ivBkk+CX6
- 4Z7ST71YRrloPf+JhmQ64USgvO0PeRFyFd+GvNdO5srxAQCGRwMMtF4a3g9lNiW6P6kFUGeAiCm
- Px4NwA8QiWg48nCefQbIv+aL8zw4wHSyGpeEejZhxfKpGczVbOc9RTs1D5VzZVIrvkaL76cLjNC
- y48TLyAbOGxrZeKE=
+ ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot5xyX
+ VTGcOrS/vQDBFftKziA4mVc9r+gVK6S8yZYvyqCYwtGLqJlyGHMrX+p1uNztChUWS5fneQuc78u
+ XuPefQ4+C1dPcxvQJQdQi9i5PHk84Z/aEcxwP1kXrumkbea2Mmok0CD5UnL6ySb8v8wgv7yUvT+
+ tdwmjxujyxd4SkAxQQin6k0GuLUFShs77ng+LAb/McoAQhls9JsK0f4SCTIrctDr7iGkSem7FY/
+ sCUPw065vHGdEqVSnybKVm4so6PpXF87GmHX6tK5i3jK3KDOopR+m8tBi6ZK+y4Y487IcASPFyc
+ xHTa2P1NrRPJ9vJ8FO9mtymj1NEjsbw8P6b6JX8Jb881FGn9mfmd9HsjZ0UzIFcYKjRuw1Pkqrm
+ 3IbK/OBzTY3o0ZQBV36oV2qtCy5319rGX8jiaGrm7DrUlmNkF+24nCsUSFNjaPj0W1qn0Q152Le
+ cOHHI9aiM9dBaGPewe4JFZ+3aAe05QJn1VX1Bm0+ji1vmQW1Oy2/l7y7Tbw=
 x-tm-as-user-approved-sender: No
 x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--21.884300-8.000000
+x-tmase-result: 10--23.181900-8.000000
 x-tmase-version: SMEX-14.0.0.1158-9.0.1002-28068.000
-x-tm-snts-smtp: 2353D6CD6A546CE251D67CFFE6689ECC4C40EA733CBB9E918AA88F43F456FC492000:8
+x-tm-snts-smtp: AFCCC313E2AAF2ABEDE0D36BC1790D21BFD9E3D039366EEF9970B5293A6608112000:8
 Content-Type: multipart/alternative;
- boundary="_000_431b825b51524907a3168007fada20e1aurigacom_"
+ boundary="_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_"
 MIME-Version: 1.0
 Received-SPF: pass client-ip=82.97.202.32;
  envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,195 +115,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2RvvjVNpkpz0
+X-TUID: VVA0LDSjWUQ1
 
---_000_431b825b51524907a3168007fada20e1aurigacom_
-Content-Type: text/plain; charset="koi8-r"
-Content-Transfer-Encoding: quoted-printable
+--_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 
-Thank you a lot for the review Peter!
+VGhhbmtzIQ0KDQpJIGtub3cgYWJvdXQgdGhlICdvZmZzZXQnIHBhcmFtZXRlciwgYnV0IGluIHRo
+aXMgcGFydGljdWxhciBjYXNlIEkgdXNlIHRoZXNlIHN0cnVjdHVyZXMgYXMgbGF5b3V0cyBvbmx5
+IGFuZCBkb24ndCAnc3dpdGNoJyBvdmVyIHRoZW0uIFNvIEkgZGVjaWRlZCB0byBzZXQgdGhlIG9m
+ZnNldHMgdG8gMCBpbiBvcmRlciB0byBzaW1wbGlmeSB0aGUgY29kZS4NCg0KDQpBbmQgZXh0cmEg
+dGhhbmtzIGZvciBoaWdobGlnaHRpbmcgdGhlIHBvdGVudGlhbCBpc3N1ZSB3aXRoIG1lbWNweSgp
+IPCfmIouIEknbGwgZml4IGl0IGluIFt2NV0gYXMgd2VsbCBhcyB0aGUgY29tbWVudHMgdG8gZmly
+c3QgMTAgcGF0Y2hlcy4NCg0KDQpIYXZlIGEgbmljZSBob2xpZGF5cyENCg0KDQoNClNlcmdleSBL
+YW1iYWxpbg0KU29mdHdhcmUgRGV2ZWxvcGVyLA0KQXVyaWdhIEluYy4NCg0KDQpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXw0K0J7RgjogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVs
+bEBsaW5hcm8ub3JnPg0K0J7RgtC/0YDQsNCy0LvQtdC90L46IDE5INC00LXQutCw0LHRgNGPIDIw
+MjMg0LMuIDEwOjM5OjEzDQrQmtC+0LzRgzogS2FtYmFsaW4sIFNlcmdleQ0K0JrQvtC/0LjRjzog
+U2VyZ2V5IEthbWJhbGluOyBxZW11LWFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5v
+cmcNCtCi0LXQvNCwOiBSZTogW1BBVENIIHY0IDAwLzQ1XSBSYXNwYmVycnkgUGkgNEIgbWFjaGlu
+ZQ0KDQpPbiBUdWUsIDE5IERlYyAyMDIzIGF0IDE2OjE4LCBLYW1iYWxpbiwgU2VyZ2V5DQo8c2Vy
+Z2V5LmthbWJhbGluQGF1cmlnYS5jb20+IHdyb3RlOg0KPg0KPiBUaGFuayB5b3UgYSBsb3QgZm9y
+IHRoZSByZXZpZXcgUGV0ZXIhDQo+DQo+DQo+IE1heSBJIGtpbmRseSBhc2sgeW91IHRvIHRha2Ug
+anVzdCBhIGJyaWVmIGxvb2sgYXQgdGhlIGZpcnN0IHBhdGNoZXMgb2YgR0VORVQ/IEknZCBsaWtl
+IHRvIGtub3cgaWYgSSd2ZSBjaG9zZW4gdGhlIHJpZ2h0IHdheSB0byByZXBsYWNlIGJpdGZpZWxk
+cyB3aXRoICBRRU1VIFJFRzMyL0ZJRUxEMzIgbWFjcm9zLg0KDQpUaGUgRklFTEQgYW5kIFJFRzMy
+IHVzZXMgbG9vayBtb3N0bHkgT0ssIGJ1dCB0aGUNCnNlY29uZCBhcmd1bWVudCB0byBSRUczMigp
+IHNob3VsZCBub3QgYmUgMCBlYWNoIHRpbWU6DQoNClJFRzMyKEdFTkVUX1NZU19SRVZfQ1RSTCwg
+ICAgICAgICAgICAgIDApDQpSRUczMihHRU5FVF9JTlRSTF8wLCAgICAgICAgICAgICAgICAwKQ0K
+DQpldGMuIFRoZSBpZGVhIGlzIHRoYXQgdGhhdCBzZWNvbmQgYXJndW1lbnQgaXMgdGhlIG9mZnNl
+dA0KaW4gdGhlIHJlZ2lzdGVyIGZpbGUgb2YgdGhlIHJlZ2lzdGVyOyB0aGVuIHRoZSBtYWNybw0K
+ZGVmaW5lcyB5b3UgYW4gQV9HRU5FVF9TWVNfUkVWX0NUUkwgd2hpY2ggaXMgdGhhdCB2YWx1ZSwN
+CmFuZCB5b3UgY2FuIHVzZSBpdCBhcyBhIGNhc2UgbGFiZWwgaW4gdGhlICJzd2l0Y2ggKG9mZnNl
+dCkgeyINCmluIHRoZSByZWFkL3dyaXRlIGZ1bmN0aW9uLg0KDQpJJ20gYSBhbHNvIGEgYml0IGNv
+bmZ1c2VkIGFib3V0IHRoZSB1c2Ugb2Ygb2Zmc2V0b2YoKSBpbiBwYXRjaCAyNy4NCg0KSW4gcGF0
+Y2ggMjggdGhlIGltcGxlbWVudGF0aW9uIG9mIGJjbTI4MzhfZ2VuZXRfcmVhZCgpIGFuZA0KYmNt
+MjgzOF9nZW5ldF93cml0ZSgpIHVzZSBhIG1lbWNweSgpIGJldHdlZW4gYSBsb2NhbCB2YXJpYWJs
+ZQ0KYW5kIG1lbW9yeSB3aGljaCBJJ20gYXNzdW1pbmcgaXMgYW4gaW5kZXggaW50byBvbmUgb2Yg
+dGhlc2UNCnJlZ2lzdGVyIHN0cnVjdHMsIHdoaWNoIHdvbid0IGRvIHRoZSByaWdodCB0aGluZyBp
+ZiB0aGUgaG9zdA0KaXMgYmlnLWVuZGlhbi4gSWYgeW91IG5lZWQgYSAibG9hZC9zdG9yZSBOIGJ5
+dGVzIHRvIG1lbW9yeSBpbg0KaG9zdCBvcmRlciIsIHdlIGhhdmUgbGRuX2hlX3AoKSBhbmQgc3Ru
+X2hlX3AoKTsgYWxzbyBhdmFpbGFibGUNCmluIF9sZV8gYW5kIF9iZV8gZmxhdm91cnMgZm9yIGxv
+YWQvc3RvcmUgaW4gc3BlY2lmaWMgZW5kaWFubmVzcy4NCg0KdGhhbmtzDQotLSBQTU0NCg==
 
+--_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: base64
 
-May I kindly ask you to take just a brief look at the first patches of GENE=
-T? I'd like to know if I've chosen the right way to replace bitfields with =
- QEMU REG32/FIELD32 macros.
+PGh0bWw+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0i
+dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxtZXRhIG5hbWU9IkdlbmVyYXRvciIgY29udGVu
+dD0iTWljcm9zb2Z0IEV4Y2hhbmdlIFNlcnZlciI+DQo8IS0tIGNvbnZlcnRlZCBmcm9tIHRleHQg
+LS0+PHN0eWxlPjwhLS0gLkVtYWlsUXVvdGUgeyBtYXJnaW4tbGVmdDogMXB0OyBwYWRkaW5nLWxl
+ZnQ6IDRwdDsgYm9yZGVyLWxlZnQ6ICM4MDAwMDAgMnB4IHNvbGlkOyB9IC0tPjwvc3R5bGU+DQo8
+L2hlYWQ+DQo8Ym9keT4NCjxtZXRhIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD1VVEYtOCI+
+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiIHN0eWxlPSIiPg0KPCEtLQ0KcA0KCXttYXJnaW4tdG9w
+OjA7DQoJbWFyZ2luLWJvdHRvbTowfQ0KLS0+DQo8L3N0eWxlPg0KPGRpdiBkaXI9Imx0ciI+DQo8
+ZGl2IGlkPSJ4X2RpdnRhZ2RlZmF1bHR3cmFwcGVyIiBkaXI9Imx0ciIgc3R5bGU9ImZvbnQtc2l6
+ZToxMnB0OyBjb2xvcjojMDAwMDAwOyBmb250LWZhbWlseTpDYWxpYnJpLEhlbHZldGljYSxzYW5z
+LXNlcmlmIj4NCjxwPlRoYW5rcyE8YnI+DQo8YnI+DQpJIGtub3cgYWJvdXQgdGhlICdvZmZzZXQn
+IHBhcmFtZXRlciwgYnV0IGluIHRoaXMgcGFydGljdWxhciBjYXNlIEkgdXNlIHRoZXNlIHN0cnVj
+dHVyZXMgYXMgbGF5b3V0cyBvbmx5IGFuZCBkb24ndCAnc3dpdGNoJyBvdmVyIHRoZW0uIFNvIEkg
+ZGVjaWRlZCB0byBzZXQgdGhlIG9mZnNldHMgdG8gMCBpbiBvcmRlciB0byBzaW1wbGlmeSB0aGUg
+Y29kZS48L3A+DQo8cD48YnI+DQo8L3A+DQo8cD5BbmQgZXh0cmEgdGhhbmtzIGZvciBoaWdobGln
+aHRpbmcgdGhlIHBvdGVudGlhbCBpc3N1ZSB3aXRoJm5ic3A7PHNwYW4+bWVtY3B5KCkgPHNwYW4+
+DQrwn5iKLiBJJ2xsIGZpeCBpdCBpbiBbdjVdIGFzIHdlbGwgYXMgdGhlIGNvbW1lbnRzIHRvIGZp
+cnN0IDEwIHBhdGNoZXMuPGJyPg0KPGJyPg0KPGJyPg0KSGF2ZSBhIG5pY2UgaG9saWRheXMhPC9z
+cGFuPjwvc3Bhbj48L3A+DQo8cD48YnI+DQo8L3A+DQo8cD48YnI+DQo8L3A+DQo8ZGl2IGlkPSJ4
+X1NpZ25hdHVyZSI+DQo8ZGl2IGlkPSJ4X2RpdnRhZ2RlZmF1bHR3cmFwcGVyIiBkaXI9Imx0ciIg
+c3R5bGU9ImZvbnQtc2l6ZToxMnB0OyBjb2xvcjpyZ2IoMCwwLDApOyBmb250LWZhbWlseTpDYWxp
+YnJpLEhlbHZldGljYSxzYW5zLXNlcmlmLEVtb2ppRm9udCwmcXVvdDtBcHBsZSBDb2xvciBFbW9q
+aSZxdW90OywmcXVvdDtTZWdvZSBVSSBFbW9qaSZxdW90OyxOb3RvQ29sb3JFbW9qaSwmcXVvdDtT
+ZWdvZSBVSSBTeW1ib2wmcXVvdDssJnF1b3Q7QW5kcm9pZCBFbW9qaSZxdW90OyxFbW9qaVN5bWJv
+bHMiPg0KPGZvbnQgc2l6ZT0iMyIgZmFjZT0iQ2FsaWJyaSxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIg
+Y29sb3I9ImJsYWNrIiBzdHlsZT0iZm9udC1mYW1pbHk6Q2FsaWJyaSxIZWx2ZXRpY2Esc2Fucy1z
+ZXJpZixzZXJpZiwmcXVvdDtFbW9qaUZvbnQmcXVvdDsiPjxmb250IHNpemU9IjMiIGZhY2U9IkNh
+bGlicmksSGVsdmV0aWNhLHNhbnMtc2VyaWYsRW1vamlGb250LEFwcGxlIENvbG9yIEVtb2ppLFNl
+Z29lIFVJIEVtb2ppLE5vdG9Db2xvckVtb2ppLFNlZ29lIFVJIFN5bWJvbCxBbmRyb2lkIEVtb2pp
+LEVtb2ppU3ltYm9scyIgY29sb3I9ImJsYWNrIj48aT48c3BhbiBzdHlsZT0iZm9udC1zaXplOjEw
+cHQiPjwvc3Bhbj48L2k+DQo8ZGl2IHN0eWxlPSJtYXJnaW4tdG9wOjA7IG1hcmdpbi1ib3R0b206
+MCI+PGk+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxMHB0Ij5TZXJnZXkgS2FtYmFsaW48L3NwYW4+
+PC9pPjxpPjxicj4NCjwvaT48L2Rpdj4NCjxpPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTBwdCI+
+PC9zcGFuPjwvaT4NCjxkaXYgc3R5bGU9Im1hcmdpbi10b3A6MDsgbWFyZ2luLWJvdHRvbTowIj48
+aT48c3BhbiBzdHlsZT0iZm9udC1zaXplOjEwcHQiPlNvZnR3YXJlIERldmVsb3Blciw8L3NwYW4+
+PC9pPjwvZGl2Pg0KPGRpdiBzdHlsZT0ibWFyZ2luLXRvcDowOyBtYXJnaW4tYm90dG9tOjAiPjxp
+PjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTBwdCI+PHNwYW4+QXVyaWdhIEluYy48L3NwYW4+PGJy
+Pg0KPC9zcGFuPjwvaT48L2Rpdj4NCjwvZm9udD48L2ZvbnQ+PGJyPg0KPHA+PC9wPg0KPC9kaXY+
+DQo8L2Rpdj4NCjwvZGl2Pg0KPGhyIHRhYmluZGV4PSItMSIgc3R5bGU9ImRpc3BsYXk6aW5saW5l
+LWJsb2NrOyB3aWR0aDo5OCUiPg0KPGRpdiBpZD0ieF9kaXZScGx5RndkTXNnIiBkaXI9Imx0ciI+
+PGZvbnQgZmFjZT0iQ2FsaWJyaSwgc2Fucy1zZXJpZiIgY29sb3I9IiMwMDAwMDAiIHN0eWxlPSJm
+b250LXNpemU6MTFwdCI+PGI+0J7Rgjo8L2I+IFBldGVyIE1heWRlbGwgJmx0O3BldGVyLm1heWRl
+bGxAbGluYXJvLm9yZyZndDs8YnI+DQo8Yj7QntGC0L/RgNCw0LLQu9C10L3Qvjo8L2I+IDE5INC0
+0LXQutCw0LHRgNGPIDIwMjMg0LMuIDEwOjM5OjEzPGJyPg0KPGI+0JrQvtC80YM6PC9iPiBLYW1i
+YWxpbiwgU2VyZ2V5PGJyPg0KPGI+0JrQvtC/0LjRjzo8L2I+IFNlcmdleSBLYW1iYWxpbjsgcWVt
+dS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnPGJyPg0KPGI+0KLQtdC80LA6
+PC9iPiBSZTogW1BBVENIIHY0IDAwLzQ1XSBSYXNwYmVycnkgUGkgNEIgbWFjaGluZTwvZm9udD4N
+CjxkaXY+Jm5ic3A7PC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPGZvbnQgc2l6ZT0iMiI+PHNwYW4g
+c3R5bGU9ImZvbnQtc2l6ZToxMHB0OyI+DQo8ZGl2IGNsYXNzPSJQbGFpblRleHQiPk9uIFR1ZSwg
+MTkgRGVjIDIwMjMgYXQgMTY6MTgsIEthbWJhbGluLCBTZXJnZXk8YnI+DQombHQ7c2VyZ2V5Lmth
+bWJhbGluQGF1cmlnYS5jb20mZ3Q7IHdyb3RlOjxicj4NCiZndDs8YnI+DQomZ3Q7IFRoYW5rIHlv
+dSBhIGxvdCBmb3IgdGhlIHJldmlldyBQZXRlciE8YnI+DQomZ3Q7PGJyPg0KJmd0Ozxicj4NCiZn
+dDsgTWF5IEkga2luZGx5IGFzayB5b3UgdG8gdGFrZSBqdXN0IGEgYnJpZWYgbG9vayBhdCB0aGUg
+Zmlyc3QgcGF0Y2hlcyBvZiBHRU5FVD8gSSdkIGxpa2UgdG8ga25vdyBpZiBJJ3ZlIGNob3NlbiB0
+aGUgcmlnaHQgd2F5IHRvIHJlcGxhY2UgYml0ZmllbGRzIHdpdGgmbmJzcDsgUUVNVSBSRUczMi9G
+SUVMRDMyIG1hY3Jvcy48YnI+DQo8YnI+DQpUaGUgRklFTEQgYW5kIFJFRzMyIHVzZXMgbG9vayBt
+b3N0bHkgT0ssIGJ1dCB0aGU8YnI+DQpzZWNvbmQgYXJndW1lbnQgdG8gUkVHMzIoKSBzaG91bGQg
+bm90IGJlIDAgZWFjaCB0aW1lOjxicj4NCjxicj4NClJFRzMyKEdFTkVUX1NZU19SRVZfQ1RSTCwm
+bmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmbmJz
+cDsmbmJzcDsmbmJzcDsmbmJzcDsgMCk8YnI+DQpSRUczMihHRU5FVF9JTlRSTF8wLCZuYnNwOyZu
+YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNw
+OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyAwKTxicj4NCjxicj4NCmV0Yy4gVGhlIGlkZWEgaXMg
+dGhhdCB0aGF0IHNlY29uZCBhcmd1bWVudCBpcyB0aGUgb2Zmc2V0PGJyPg0KaW4gdGhlIHJlZ2lz
+dGVyIGZpbGUgb2YgdGhlIHJlZ2lzdGVyOyB0aGVuIHRoZSBtYWNybzxicj4NCmRlZmluZXMgeW91
+IGFuIEFfR0VORVRfU1lTX1JFVl9DVFJMIHdoaWNoIGlzIHRoYXQgdmFsdWUsPGJyPg0KYW5kIHlv
+dSBjYW4gdXNlIGl0IGFzIGEgY2FzZSBsYWJlbCBpbiB0aGUgJnF1b3Q7c3dpdGNoIChvZmZzZXQp
+IHsmcXVvdDs8YnI+DQppbiB0aGUgcmVhZC93cml0ZSBmdW5jdGlvbi48YnI+DQo8YnI+DQpJJ20g
+YSBhbHNvIGEgYml0IGNvbmZ1c2VkIGFib3V0IHRoZSB1c2Ugb2Ygb2Zmc2V0b2YoKSBpbiBwYXRj
+aCAyNy48YnI+DQo8YnI+DQpJbiBwYXRjaCAyOCB0aGUgaW1wbGVtZW50YXRpb24gb2YgYmNtMjgz
+OF9nZW5ldF9yZWFkKCkgYW5kPGJyPg0KYmNtMjgzOF9nZW5ldF93cml0ZSgpIHVzZSBhIG1lbWNw
+eSgpIGJldHdlZW4gYSBsb2NhbCB2YXJpYWJsZTxicj4NCmFuZCBtZW1vcnkgd2hpY2ggSSdtIGFz
+c3VtaW5nIGlzIGFuIGluZGV4IGludG8gb25lIG9mIHRoZXNlPGJyPg0KcmVnaXN0ZXIgc3RydWN0
+cywgd2hpY2ggd29uJ3QgZG8gdGhlIHJpZ2h0IHRoaW5nIGlmIHRoZSBob3N0PGJyPg0KaXMgYmln
+LWVuZGlhbi4gSWYgeW91IG5lZWQgYSAmcXVvdDtsb2FkL3N0b3JlIE4gYnl0ZXMgdG8gbWVtb3J5
+IGluPGJyPg0KaG9zdCBvcmRlciZxdW90Oywgd2UgaGF2ZSBsZG5faGVfcCgpIGFuZCBzdG5faGVf
+cCgpOyBhbHNvIGF2YWlsYWJsZTxicj4NCmluIF9sZV8gYW5kIF9iZV8gZmxhdm91cnMgZm9yIGxv
+YWQvc3RvcmUgaW4gc3BlY2lmaWMgZW5kaWFubmVzcy48YnI+DQo8YnI+DQp0aGFua3M8YnI+DQot
+LSBQTU08YnI+DQo8L2Rpdj4NCjwvc3Bhbj48L2ZvbnQ+DQo8L2JvZHk+DQo8L2h0bWw+DQo=
 
-
-Thanks,
-Sergey Kambalin
-Software Developer,
-Auriga Inc.
-
-
-________________________________
-=EF=D4: Peter Maydell <peter.maydell@linaro.org>
-=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 19 =C4=C5=CB=C1=C2=D2=D1 2023 =C7. 10:11:43
-=EB=CF=CD=D5: Sergey Kambalin
-=EB=CF=D0=C9=D1: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambalin, Serg=
-ey
-=F4=C5=CD=C1: Re: [PATCH v4 00/45] Raspberry Pi 4B machine
-
-On Fri, 8 Dec 2023 at 02:32, Sergey Kambalin <serg.oker@gmail.com> wrote:
->
-> Introducing Raspberry Pi 4B model.
-> It contains new BCM2838 SoC, PCIE subsystem,
-> RNG200, Thermal sensor and Genet network controller.
->
-> It can work with recent linux kernels 6.x.x.
-> Two avocado tests was added to check that.
->
-> Unit tests has been made as read/write operations
-> via mailbox properties.
->
-> Genet integration test is under development.
->
-> Every single commit
-> 1) builds without errors
-> 2) passes regression tests
-> 3) passes style check*
-> *the only exception is bcm2838-mbox-property-test.c file
-> containing heavy macros usage which cause a lot of
-> false-positives of checkpatch.pl.
->
-> I did my best to keep the commits less than 200 changes,
-> but had to make some of them a bit more in order to
-> keep their integrity.
->
-> This is v2 patchset with the most of v1 remarks fixed.
-> I named it as 'v4' because of mistakes while attempts to send previous pa=
-tchsets
-> Please ignore all other v1...v3 patchsets except the very first one.
-
-Thanks for the rework and resending these patches. As
-you've probably seen, I've reviewed patches 1-10, but
-I won't have time to do more than that before I break
-for the holiday season now; I will get back to the
-rest of the series in January.
-
--- PMM
-
---_000_431b825b51524907a3168007fada20e1aurigacom_
-Content-Type: text/html; charset="koi8-r"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
-<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
-<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
-ding-left: 4pt; border-left: #800000 2px solid; } --></style>
-</head>
-<body>
-<meta content=3D"text/html; charset=3DUTF-8">
-<style type=3D"text/css" style=3D"">
-<!--
-p
-	{margin-top:0;
-	margin-bottom:0}
--->
-</style>
-<div dir=3D"ltr">
-<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
-or:#000000; font-family:Calibri,Helvetica,sans-serif">
-<p>Thank you a lot for the review Peter!</p>
-<p><br>
-</p>
-<p>May I kindly ask you to take just a brief look at the first patches of G=
-ENET? I'd like to know if I've chosen the right way to replace bitfields wi=
-th&nbsp; QEMU REG32/FIELD32 macros.</p>
-<p><br>
-</p>
-<div id=3D"x_Signature">
-<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
-or:rgb(0,0,0); font-family:Calibri,Helvetica,sans-serif,EmojiFont,&quot;App=
-le Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe =
-UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
-<p><span lang=3D"en-US"><font size=3D"3" face=3D"Calibri,Helvetica,sans-ser=
-if" color=3D"black" style=3D"font-family:Calibri,Helvetica,sans-serif,serif=
-,&quot;EmojiFont&quot;"><span dir=3D"ltr" id=3D"x_divtagdefaultwrapper" sty=
-le=3D"font-size:12pt"><font size=3D"3" face=3D"Calibri,Helvetica,sans-serif=
-,EmojiFont,Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,=
-Android Emoji,EmojiSymbols" color=3D"black"><span id=3D"x_divtagdefaultwrap=
-per" style=3D"font-size:12pt"></span></font></span></font></span></p>
-<font size=3D"3" face=3D"Calibri,Helvetica,sans-serif" color=3D"black" styl=
-e=3D"font-family:Calibri,Helvetica,sans-serif,serif,&quot;EmojiFont&quot;">=
-<font size=3D"3" face=3D"Calibri,Helvetica,sans-serif,EmojiFont,Apple Color=
- Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSym=
-bols" color=3D"black">
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt">Thanks,</span></i></div>
-<i><span style=3D"font-size:10pt"></span></i>
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt">Sergey Kambalin</span></i><i><br>
-</i></div>
-<i><span style=3D"font-size:10pt"></span></i>
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt">Software Developer,</span></i></div>
-<div style=3D"margin-top:0; margin-bottom:0"><i><span style=3D"font-size:10=
-pt"><span>Auriga Inc.</span><br>
-</span></i></div>
-</font></font><br>
-<p></p>
-</div>
-</div>
-</div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
-;peter.maydell@linaro.org&gt;<br>
-<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 19 =C4=C5=CB=C1=C2=D2=D1 2023 =C7. 1=
-0:11:43<br>
-<b>=EB=CF=CD=D5:</b> Sergey Kambalin<br>
-<b>=EB=CF=D0=C9=D1:</b> qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambali=
-n, Sergey<br>
-<b>=F4=C5=CD=C1:</b> Re: [PATCH v4 00/45] Raspberry Pi 4B machine</font>
-<div>&nbsp;</div>
-</div>
-</div>
-<font size=3D"2"><span style=3D"font-size:10pt;">
-<div class=3D"PlainText">On Fri, 8 Dec 2023 at 02:32, Sergey Kambalin &lt;s=
-erg.oker@gmail.com&gt; wrote:<br>
-&gt;<br>
-&gt; Introducing Raspberry Pi 4B model.<br>
-&gt; It contains new BCM2838 SoC, PCIE subsystem,<br>
-&gt; RNG200, Thermal sensor and Genet network controller.<br>
-&gt;<br>
-&gt; It can work with recent linux kernels 6.x.x.<br>
-&gt; Two avocado tests was added to check that.<br>
-&gt;<br>
-&gt; Unit tests has been made as read/write operations<br>
-&gt; via mailbox properties.<br>
-&gt;<br>
-&gt; Genet integration test is under development.<br>
-&gt;<br>
-&gt; Every single commit<br>
-&gt; 1) builds without errors<br>
-&gt; 2) passes regression tests<br>
-&gt; 3) passes style check*<br>
-&gt; *the only exception is bcm2838-mbox-property-test.c file<br>
-&gt; containing heavy macros usage which cause a lot of<br>
-&gt; false-positives of checkpatch.pl.<br>
-&gt;<br>
-&gt; I did my best to keep the commits less than 200 changes,<br>
-&gt; but had to make some of them a bit more in order to<br>
-&gt; keep their integrity.<br>
-&gt;<br>
-&gt; This is v2 patchset with the most of v1 remarks fixed.<br>
-&gt; I named it as 'v4' because of mistakes while attempts to send previous=
- patchsets<br>
-&gt; Please ignore all other v1...v3 patchsets except the very first one.<b=
-r>
-<br>
-Thanks for the rework and resending these patches. As<br>
-you've probably seen, I've reviewed patches 1-10, but<br>
-I won't have time to do more than that before I break<br>
-for the holiday season now; I will get back to the<br>
-rest of the series in January.<br>
-<br>
--- PMM<br>
-</div>
-</span></font>
-</body>
-</html>
-
---_000_431b825b51524907a3168007fada20e1aurigacom_--
+--_000_1af36710e4ca4aefaced4ceadbdc8b4caurigacom_--

@@ -1,107 +1,95 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1702865eji;
-        Tue, 19 Dec 2023 11:06:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHUcbmWTCCOIKt7tBx1zQyXRYWIB2mA+ExhNV2h4PDa5+4zIY6ssIj/cmna0YyetqyzzJG1
-X-Received: by 2002:a05:6102:1609:b0:466:a4dc:dd16 with SMTP id cu9-20020a056102160900b00466a4dcdd16mr2018523vsb.51.1703012764739;
-        Tue, 19 Dec 2023 11:06:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703012764; cv=none;
+Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp1709682eji;
+        Tue, 19 Dec 2023 11:17:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG2KAVne6JxYq9CjjtocnIdQOjiDX4eA0tOxJoDNRmn1SKx+L52KvdO7/V0ClNLuKrHtVqG
+X-Received: by 2002:ac8:5c96:0:b0:427:840d:30ca with SMTP id r22-20020ac85c96000000b00427840d30camr465146qta.28.1703013466178;
+        Tue, 19 Dec 2023 11:17:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703013466; cv=none;
         d=google.com; s=arc-20160816;
-        b=SLJxGdgg9N++uzRRrE35QY8elrs2ssM7ABKoQohiy8S3csA3cm3j7YdtQbwwSH07ZO
-         ZFf9pGDyjiPT0qiJanIHbxp7rwXOMjLM8S8tWRv7icrm5V8zmA8mY4RWyGtV8W7mVWAV
-         Z32djcsdaHJZQDlbjVGYYUuNB2n3g2nD2s6mXR7sU7VNVMSrcCNOUUQ/C3KVEB57c1cY
-         cATCm7KGIL1gzPCuMumuf19kmDQNKceY+H00+SsWgQLMnXogq3lttY2MVJ03sh78bS+S
-         s1ZySS7F0pKer5qxJ7OUcpD/Eh51gFGDIEG3NFyUi52UXnf5xNN6IZNxmsUXwZPNpjfx
-         7V7g==
+        b=OE2I1NVI+oU0PdeXPJycSD0doAXud/akQDaZfXyI4lDsV+rj+rO2uH6Uy8jLVl4HvM
+         Xm/HcaZ/heopr/L6KEJ/K2kgx9JJCzjmo+CseXqWu8XQb9y9B0laGCufu1AJqJvODQzC
+         47DLCa2V071zZtVlQk2bY1hNQiT93Vf5TmVK2RImEXCNFeKSs3s0jd8pkQG5RBxNJK4H
+         RTkHL7Ud5sTQW+fJ4HB1Gp9yqwioNUc/nfGrvffCZAAFFTXDrWpcKLRxTJXKg2be0AJ2
+         vngLY0eYoh4AWOMrOiyZFMTij2Oy3J5V//1khNnRqYnVvBaB2yqw27erDKOQ9ilaCZrn
+         H4BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=o1gkDaoRWnuKADigBfLJemgjsZtPwZTBeG2A0bj8Ekw=;
-        fh=fnK5u6AleUgHwG2ARaM1rpJbRAMLaQj3Xqc0NYcQmaY=;
-        b=mBt3Q3uZmyoxlpN5JisG4Acc8Sei4tYp5++AltTxC17IanK5xjjLiZzsamLQ7Klt8Q
-         +2CytnOKs7/PSzj/F37gl0HoQMsx+t7iQjRsPUBniI1lz1kFP1VRwq9kwYizCpgHaDp6
-         JYU8d7T3gUk5azflheOpb1vaXU3bd7qTnETyLF9pSZkHmv/3fIpzaT2edJVvGXSa53pb
-         OTMVxy1cphzilfWSLba17GpSgyxVs370KdtyAse9AFS//F/Bozh5pg+3AVWPENmAiChl
-         lfq2sWM3X4vDuI2uRwwUl/c8eK6/UAAwhOMg+f7uFCaSAAAM4rXXNKM1zTnTZ6rIIoT7
-         JITg==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id
+         :in-reply-to:date:subject:cc:to:from:user-agent:references
+         :dkim-signature;
+        bh=+2n0eztlKQKtd+61w2wLkVjInLicXnvFmFlcQAWV2ZE=;
+        fh=K23jbVeYX8JyYCsNW43xPI8zhnzTVNF8hPRLQTJjE1Q=;
+        b=mlhWh6nQGaZUf2slwDB3hNQztdPJxrp/jC9JgVkKH3th/qIXUqrQAvbLUAZEvddgfU
+         tiPuxGJCShdGelqmG06yJulgwuUpJzVIqEM089nkliLqd4/XkDFu5/V+PxoU7MCtRUhE
+         xA5JtbjEFmmwgvqhEtImkDlGkv+abyU1iQVCodzNzp7cwTBsd4ulenS8XnLJ7Ez9rWtm
+         JdY1BPTcpqzH59PjzQsAptn/TxyMKKFyWfqKdOPuZAbhH458ZuSoKfDg2GC/yfJPMdwL
+         nCyDHKgPRGqtJtmpVAuRWjPZoGz7dCuq6lRifdg9GlNddVittKGZRJP7DYCGMXXfoPut
+         oipA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D7LJyZPD;
+       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=o9LVi3mV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12-20020a67e20c000000b00466af424971si376376vsa.72.2023.12.19.11.06.04
+        by mx.google.com with ESMTPS id t14-20020a05622a01ce00b00425840f70a2si28494380qtw.427.2023.12.19.11.17.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Dec 2023 11:06:04 -0800 (PST)
+        Tue, 19 Dec 2023 11:17:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=D7LJyZPD;
+       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=o9LVi3mV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rFfPk-0005sf-NA; Tue, 19 Dec 2023 14:06:00 -0500
+	id 1rFfZK-00086o-HW; Tue, 19 Dec 2023 14:15:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rFfPO-0005Rr-AM; Tue, 19 Dec 2023 14:05:40 -0500
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <n.ostrenkov@gmail.com>)
- id 1rFfPL-0000DE-Ms; Tue, 19 Dec 2023 14:05:38 -0500
-Received: by mail-yb1-xb34.google.com with SMTP id
- 3f1490d57ef6-dbd04e7d183so3168401276.1; 
- Tue, 19 Dec 2023 11:05:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1703012734; x=1703617534; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=o1gkDaoRWnuKADigBfLJemgjsZtPwZTBeG2A0bj8Ekw=;
- b=D7LJyZPDYd315bBmxEGlRGrmPYfOyIm7fl6SFSNpvDuERW8xtYqMo46EquWSpvoRvW
- WRPZoBe1fX3TpPcpt2URsKpZ4LRWXWyhZDCwXLIt72bsDa/Mch5eybcZKFpKaEW5OZr9
- U7kAn/tzMVT8BLA/9jyGYwpzAq2DogkikguL/gYCnWls3a5CBEnJa0banZLGdRNei011
- w3n5tXKvTxWYDKaXH8jf9+Z/h64sO751LJTqmf9mwvc/3hXSf4YeI1y+krA7/h7svxoh
- YvURoqneb+AO1jmN4arVSFCmz1kd6ZDV9mP4R/jpUFK1vZnzYda2dJI4PZ+IFkJzK/cw
- +j4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703012734; x=1703617534;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=o1gkDaoRWnuKADigBfLJemgjsZtPwZTBeG2A0bj8Ekw=;
- b=ksjjJ0bdzU2zhl05m/pfFB3ALAMA45n/Seh9xLOZGr5W/vT3wYiQIrAYati4xYebra
- tAC4gNgVAIKeu/Mzjr2n+nYEsMrobqoWXjWVgf1/yPx0lG3ipkkF0/e8FAxDdNH2FtJD
- 2uNCCKlGhyiTEYuS37Wb3RkZWkqjRORMCN56oiZjhn2qFJzUX0E2J2aGaZa/tq3I4ILz
- 2F5T1vrfYiVcV1xntIwBralib0K6J9kHzoP0VB3j01FVzgrYBpBI4YUcB8FBZQmOsIni
- W4ILAYbH6wSbCmk5QkmjPc9ZZRxiGaA+L8TxwTovgA3++wOFxnl0sK5TzFYd6GP2iGsA
- gk8Q==
-X-Gm-Message-State: AOJu0Yxk2K+m0dNDnI2XjVcbKCAosA40oXEbLysaTH+81rR7sfCiGh8j
- hx5bvgJUyKsKoZDQnzjzcfI6o36A/Xd42mw5YQU=
-X-Received: by 2002:a25:83cf:0:b0:dbd:4a26:957d with SMTP id
- v15-20020a2583cf000000b00dbd4a26957dmr1718559ybm.85.1703012734354; Tue, 19
- Dec 2023 11:05:34 -0800 (PST)
-MIME-Version: 1.0
-References: <20231219105510.4907-1-n.ostrenkov@gmail.com>
- <CAFEAcA-Gp-8ooEhHazJg5Q-xyQ5xB2ox2+fU_tNBYV0HTkwg6A@mail.gmail.com>
-In-Reply-To: <CAFEAcA-Gp-8ooEhHazJg5Q-xyQ5xB2ox2+fU_tNBYV0HTkwg6A@mail.gmail.com>
-From: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-Date: Tue, 19 Dec 2023 22:05:23 +0300
-Message-ID: <CAC8KSA0F-QtkS5T7fcEM=+iuVCNAk88SYUUcVaTKG2hXNn2Uhw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: add cache controller for Freescale i.MX6
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rFfZI-00081C-E5; Tue, 19 Dec 2023 14:15:52 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rFfZG-0002RP-1z; Tue, 19 Dec 2023 14:15:52 -0500
+Received: from 127.0.0.1 (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits)
+ server-digest SHA256) (Client did not present a certificate)
+ by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 7AD9880024;
+ Tue, 19 Dec 2023 20:15:43 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
+ t=1703013343; bh=0dClO786ziR8HNe1s46NWlhaDGUzRlloPD7GXUzTnJA=;
+ h=References:From:To:Cc:Subject:Date:In-reply-to;
+ b=o9LVi3mVPDajKlQCn+2UdzAmbWsadIpaPrMsAVQkf9I3ve8PrXT6Y3xVb+GtKaHqo
+ u++oiRkQN8Fiqlhb4stTKYwrIJB6RvxocGgTXVmXG/MGiSzYhGjnk0g0S8mRvV4s8p
+ MeCySE+t4qb6uu4qqyjIv0pSHKnTvLhcYQdZTXioX9djSfWAd7L7kAmCk9sJaLvvjj
+ cRVxcYOsLinrHNRfuBwjyZkBVYY9c7WcfUbO0c4relgCnkHUk984OAhrys3ly/7T7y
+ GRX348cRZestfzRvh4EaIyhutIsF1ffQIVUr5at0unvrG28JTLjrivbAdh/RuenZlU
+ zCHMClCstzmMw==
+References: <20231216182740.3305724-1-sam@rfc1149.net>
+ <878r5tqnyu.fsf@rfc1149.net>
+ <CAFEAcA8sTLZSQdqZmNGSv4yp3TZvq86kwbhU8gFmK2=j8vVZhQ@mail.gmail.com>
+User-agent: mu4e 1.10.8; emacs 29.1
+From: Samuel Tardieu <sam@rfc1149.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000144bae060ce18d1f"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
- envelope-from=n.ostrenkov@gmail.com; helo=mail-yb1-xb34.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Cc: qemu-devel@nongnu.org, Anton Kochkov <anton.kochkov@proton.me>,
+ qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>, Alistair Francis
+ <alistair@alistair23.me>
+Subject: Re: [PATCH 0/3] Add "num-prio-bits" property for Cortex-M devices
+Date: Tue, 19 Dec 2023 20:13:52 +0100
+In-reply-to: <CAFEAcA8sTLZSQdqZmNGSv4yp3TZvq86kwbhU8gFmK2=j8vVZhQ@mail.gmail.com>
+Message-ID: <87wmtaxaub.fsf@rfc1149.net>
+MIME-Version: 1.0
+Content-Type: text/plain; format=flowed
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ URIBL_CSS=0.1 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,61 +104,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3X34fO8vv/QE
+X-TUID: W6FCLJNv4chQ
 
---000000000000144bae060ce18d1f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-thanks for letting me know! Enjoy your holidays.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-=D0=B2=D1=82, 19 =D0=B4=D0=B5=D0=BA. 2023=E2=80=AF=D0=B3., 19:08 Peter Mayd=
-ell <peter.maydell@linaro.org>:
-
-> On Tue, 19 Dec 2023 at 10:55, Nikita Ostrenkov <n.ostrenkov@gmail.com>
-> wrote:
-> >
-> > Signed-off-by: Nikita Ostrenkov <n.ostrenkov@gmail.com>
-> > ---
-> >  hw/arm/Kconfig    | 1 +
-> >  hw/arm/fsl-imx6.c | 3 +++
-> >  2 files changed, 4 insertions(+)
+>> Any idea to why patchew fails to apply thoses patches? The mbox 
+>> at
+>> <https://patchew.org/QEMU/20231216182740.3305724-1-sam@rfc1149.net/>
+>> applies cleanly on master AFAICS.
 >
-> Thanks for this patch; it looks fairly obviously right,
-> but I wanted to let you know I won't be able to do proper patch
-> review and take it into the arm queue until I get back from holidays
-> in January.
->
-> -- PMM
->
+> This is because you put a Based-on: tag in the cover letter.
+> Based-on: means "please apply this other patch first before this
+> series, because there is a dependency" (we use it for things
+> like "this patchset has to sit on top of some other cleanup
+> patchset I sent last week and which hasn't got into git yet").
+> So patchew applied Anton's original patch from 2022, and then 
+> tried
+> to apply your three patches on top of that, which caused a 
+> conflict.
 
---000000000000144bae060ce18d1f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Thanks for the explanation. I thought "Based-on:" was just a 
+polite way of attributing credit to past discussions. I'll keep 
+that in mind. Do you want me to resubmit it as a v2 without the 
+"Based-on:" tag so that patchew gets it right?
 
-<div dir=3D"auto">thanks for letting me know! Enjoy your holidays.</div><br=
-><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=D0=B2=D1=
-=82, 19 =D0=B4=D0=B5=D0=BA. 2023=E2=80=AF=D0=B3., 19:08 Peter Maydell &lt;<=
-a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt;=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
-der-left:1px #ccc solid;padding-left:1ex">On Tue, 19 Dec 2023 at 10:55, Nik=
-ita Ostrenkov &lt;<a href=3D"mailto:n.ostrenkov@gmail.com" target=3D"_blank=
-" rel=3D"noreferrer">n.ostrenkov@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Signed-off-by: Nikita Ostrenkov &lt;<a href=3D"mailto:n.ostrenkov@gmai=
-l.com" target=3D"_blank" rel=3D"noreferrer">n.ostrenkov@gmail.com</a>&gt;<b=
-r>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/Kconfig=C2=A0 =C2=A0 | 1 +<br>
-&gt;=C2=A0 hw/arm/fsl-imx6.c | 3 +++<br>
-&gt;=C2=A0 2 files changed, 4 insertions(+)<br>
-<br>
-Thanks for this patch; it looks fairly obviously right,<br>
-but I wanted to let you know I won&#39;t be able to do proper patch<br>
-review and take it into the arm queue until I get back from holidays<br>
-in January.<br>
-<br>
--- PMM<br>
-</blockquote></div>
+> Anyway, I just wanted to say that this patchset is on my
+> todo list to review but I'm not going to be able to get to
+> it before I break for Christmas, so I'll get back to it
+> in January. Thanks for the contribution!
 
---000000000000144bae060ce18d1f--
+Noted!
+
+Best.
+
+  Sam
+-- 
+Samuel Tardieu

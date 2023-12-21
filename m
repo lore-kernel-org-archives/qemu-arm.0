@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l2-20020adfe582000000b003366cf8bda4sm1743661wrm.41.2023.12.21.02.46.59
+        by smtp.gmail.com with ESMTPSA id b2-20020a05600c4e0200b0040c440f9393sm3526366wmq.42.2023.12.21.02.46.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:47:01 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 764945F8DA;
-	Thu, 21 Dec 2023 10:38:20 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 149675F8FC;
+	Thu, 21 Dec 2023 10:38:22 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -50,43 +50,268 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH 16/40] tests/qtest: Bump the device-introspect-test timeout to 12 minutes
-Date: Thu, 21 Dec 2023 10:37:54 +0000
-Message-Id: <20231221103818.1633766-17-alex.bennee@linaro.org>
+	Bin Meng <bin.meng@windriver.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 31/40] gdbstub: Simplify XML lookup
+Date: Thu, 21 Dec 2023 10:38:09 +0000
+Message-Id: <20231221103818.1633766-32-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qHK1c9NaTrAD
+X-TUID: aorOAADQY2mF
 
-From: Thomas Huth <thuth@redhat.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-When running the test in slow mode on a very loaded system with the
-arm/aarch64 target and with --enable-debug, it can take longer than
-10 minutes to finish the introspection test. Bump the timeout to twelve
-minutes to make sure that it also finishes in such situations.
+Now we know all instances of GDBFeature that is used in CPU so we can
+traverse them to find XML. This removes the need for a CPU-specific
+lookup function for dynamic XMLs.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-13-thuth@redhat.com>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20231213-gdb-v17-7-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/qtest/meson.build | 1 +
- 1 file changed, 1 insertion(+)
+ include/exec/gdbstub.h |   6 +++
+ gdbstub/gdbstub.c      | 118 +++++++++++++++++++++--------------------
+ hw/core/cpu-common.c   |   5 +-
+ 3 files changed, 69 insertions(+), 60 deletions(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 6e8d00d53cb..16916ae857b 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -1,6 +1,7 @@
- slow_qtests = {
-   'aspeed_smc-test': 360,
-   'bios-tables-test' : 540,
-+  'device-introspect-test' : 720,
-   'migration-test' : 480,
-   'npcm7xx_pwm-test': 300,
-   'qom-test' : 900,
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index bcaab1bc750..82a8afa237f 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -27,6 +27,12 @@ typedef struct GDBFeatureBuilder {
+ typedef int (*gdb_get_reg_cb)(CPUState *cpu, GByteArray *buf, int reg);
+ typedef int (*gdb_set_reg_cb)(CPUState *cpu, uint8_t *buf, int reg);
+ 
++/**
++ * gdb_init_cpu(): Initialize the CPU for gdbstub.
++ * @cpu: The CPU to be initialized.
++ */
++void gdb_init_cpu(CPUState *cpu);
++
+ /**
+  * gdb_register_coprocessor() - register a supplemental set of registers
+  * @cpu - the CPU associated with registers
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 21fea7fffae..1d5c1da1b24 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -352,6 +352,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
+ {
+     CPUState *cpu = gdb_get_first_cpu_in_process(process);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
++    GDBRegisterState *r;
+     size_t len;
+ 
+     /*
+@@ -365,7 +366,6 @@ static const char *get_feature_xml(const char *p, const char **newp,
+     /* Is it the main target xml? */
+     if (strncmp(p, "target.xml", len) == 0) {
+         if (!process->target_xml) {
+-            GDBRegisterState *r;
+             g_autoptr(GPtrArray) xml = g_ptr_array_new_with_free_func(g_free);
+ 
+             g_ptr_array_add(
+@@ -380,18 +380,12 @@ static const char *get_feature_xml(const char *p, const char **newp,
+                     g_markup_printf_escaped("<architecture>%s</architecture>",
+                                             cc->gdb_arch_name(cpu)));
+             }
+-            g_ptr_array_add(
+-                xml,
+-                g_markup_printf_escaped("<xi:include href=\"%s\"/>",
+-                                        cc->gdb_core_xml_file));
+-            if (cpu->gdb_regs) {
+-                for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+-                    r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-                    g_ptr_array_add(
+-                        xml,
+-                        g_markup_printf_escaped("<xi:include href=\"%s\"/>",
+-                                                r->feature->xmlname));
+-                }
++            for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++                r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++                g_ptr_array_add(
++                    xml,
++                    g_markup_printf_escaped("<xi:include href=\"%s\"/>",
++                                            r->feature->xmlname));
+             }
+             g_ptr_array_add(xml, g_strdup("</target>"));
+             g_ptr_array_add(xml, NULL);
+@@ -400,20 +394,11 @@ static const char *get_feature_xml(const char *p, const char **newp,
+         }
+         return process->target_xml;
+     }
+-    /* Is it dynamically generated by the target? */
+-    if (cc->gdb_get_dynamic_xml) {
+-        g_autofree char *xmlname = g_strndup(p, len);
+-        const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
+-        if (xml) {
+-            return xml;
+-        }
+-    }
+-    /* Is it one of the encoded gdb-xml/ files? */
+-    for (int i = 0; gdb_static_features[i].xmlname; i++) {
+-        const char *name = gdb_static_features[i].xmlname;
+-        if ((strncmp(name, p, len) == 0) &&
+-            strlen(name) == len) {
+-            return gdb_static_features[i].xml;
++    /* Is it one of the features? */
++    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++        if (strncmp(p, r->feature->xmlname, len) == 0) {
++            return r->feature->xml;
+         }
+     }
+ 
+@@ -508,12 +493,10 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+         return cc->gdb_read_register(cpu, buf, reg);
+     }
+ 
+-    if (cpu->gdb_regs) {
+-        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+-            r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-            if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
+-                return r->get_reg(cpu, buf, reg - r->base_reg);
+-            }
++    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++        if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
++            return r->get_reg(cpu, buf, reg - r->base_reg);
+         }
+     }
+     return 0;
+@@ -528,51 +511,70 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
+         return cc->gdb_write_register(cpu, mem_buf, reg);
+     }
+ 
+-    if (cpu->gdb_regs) {
+-        for (guint i = 0; i < cpu->gdb_regs->len; i++) {
+-            r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-            if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
+-                return r->set_reg(cpu, mem_buf, reg - r->base_reg);
+-            }
++    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
++        r =  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++        if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
++            return r->set_reg(cpu, mem_buf, reg - r->base_reg);
+         }
+     }
+     return 0;
+ }
+ 
++static void gdb_register_feature(CPUState *cpu, int base_reg,
++                                 gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
++                                 const GDBFeature *feature)
++{
++    GDBRegisterState s = {
++        .base_reg = base_reg,
++        .get_reg = get_reg,
++        .set_reg = set_reg,
++        .feature = feature
++    };
++
++    g_array_append_val(cpu->gdb_regs, s);
++}
++
++void gdb_init_cpu(CPUState *cpu)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++    const GDBFeature *feature;
++
++    cpu->gdb_regs = g_array_new(false, false, sizeof(GDBRegisterState));
++
++    if (cc->gdb_core_xml_file) {
++        feature = gdb_find_static_feature(cc->gdb_core_xml_file);
++        gdb_register_feature(cpu, 0,
++                             cc->gdb_read_register, cc->gdb_write_register,
++                             feature);
++    }
++
++    cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
++}
++
+ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               const GDBFeature *feature, int g_pos)
+ {
+     GDBRegisterState *s;
+     guint i;
++    int base_reg = cpu->gdb_num_regs;
+ 
+-    if (cpu->gdb_regs) {
+-        for (i = 0; i < cpu->gdb_regs->len; i++) {
+-            /* Check for duplicates.  */
+-            s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-            if (s->feature == feature) {
+-                return;
+-            }
++    for (i = 0; i < cpu->gdb_regs->len; i++) {
++        /* Check for duplicates.  */
++        s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
++        if (s->feature == feature) {
++            return;
+         }
+-    } else {
+-        cpu->gdb_regs = g_array_new(false, false, sizeof(GDBRegisterState));
+-        i = 0;
+     }
+ 
+-    g_array_set_size(cpu->gdb_regs, i + 1);
+-    s = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
+-    s->base_reg = cpu->gdb_num_regs;
+-    s->get_reg = get_reg;
+-    s->set_reg = set_reg;
+-    s->feature = feature;
++    gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature);
+ 
+     /* Add to end of list.  */
+     cpu->gdb_num_regs += feature->num_regs;
+     if (g_pos) {
+-        if (g_pos != s->base_reg) {
++        if (g_pos != base_reg) {
+             error_report("Error: Bad gdb register numbering for '%s', "
+-                         "expected %d got %d", feature->xml,
+-                         g_pos, s->base_reg);
++                         "expected %d got %d", feature->xml, g_pos, base_reg);
+         } else {
+             cpu->gdb_num_g_regs = cpu->gdb_num_regs;
+         }
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 82dae51a550..cd7903ba6e7 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -27,6 +27,7 @@
+ #include "qemu/main-loop.h"
+ #include "exec/log.h"
+ #include "exec/cpu-common.h"
++#include "exec/gdbstub.h"
+ #include "qemu/error-report.h"
+ #include "qemu/qemu-print.h"
+ #include "sysemu/tcg.h"
+@@ -238,11 +239,10 @@ static void cpu_common_unrealizefn(DeviceState *dev)
+ static void cpu_common_initfn(Object *obj)
+ {
+     CPUState *cpu = CPU(obj);
+-    CPUClass *cc = CPU_GET_CLASS(obj);
+ 
++    gdb_init_cpu(cpu);
+     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
+     cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
+-    cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
+     /* user-mode doesn't have configurable SMP topology */
+     /* the default value is changed by qemu_init_vcpu() for system-mode */
+     cpu->nr_cores = 1;
+@@ -262,6 +262,7 @@ static void cpu_common_finalize(Object *obj)
+ {
+     CPUState *cpu = CPU(obj);
+ 
++    g_array_free(cpu->gdb_regs, TRUE);
+     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
+     qemu_mutex_destroy(&cpu->work_mutex);
+ }
 -- 
 2.39.2

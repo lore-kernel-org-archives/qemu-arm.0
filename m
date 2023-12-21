@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i2-20020adffc02000000b003364aa5cc13sm1744942wrr.1.2023.12.21.02.38.20
+        by smtp.gmail.com with ESMTPSA id l10-20020a05600c1d0a00b0040b2c195523sm10866240wms.31.2023.12.21.02.38.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Dec 2023 02:38:22 -0800 (PST)
+        Thu, 21 Dec 2023 02:38:29 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C70F85F7D4;
-	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 02CA65F8D4;
+	Thu, 21 Dec 2023 10:38:20 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -52,43 +52,40 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 09/40] qtest: bump test-hmp timeout to 4 minutes
-Date: Thu, 21 Dec 2023 10:37:47 +0000
-Message-Id: <20231221103818.1633766-10-alex.bennee@linaro.org>
+Subject: [PATCH 11/40] qtest: bump prom-env-test timeout to 6 minutes
+Date: Thu, 21 Dec 2023 10:37:49 +0000
+Message-Id: <20231221103818.1633766-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: p2H9Ugo6gicQ
+X-TUID: hblSihvFsxYn
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The hmp test takes just under 3 minutes in a --enable-debug
-build. Bumping to 4 minutes will give more headroom.
+The prom-env-test can take more than 5 minutes in a --enable-debug
+build on a loaded system. Bumping to 6 minutes will give more headroom.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20230717182859.707658-6-berrange@redhat.com>
-[thuth: fix copy-n-paste error in the description]
+[thuth: Bump timeout to 6 minutes instead of 3]
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-6-thuth@redhat.com>
+Message-Id: <20231215070357.10888-8-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/qtest/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 84cec0a847d..7a4160df046 100644
+index ec93d5a384f..c7944e8dbe9 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -3,7 +3,7 @@ slow_qtests = {
-   'migration-test' : 480,
-   'npcm7xx_pwm-test': 300,
+@@ -5,6 +5,7 @@ slow_qtests = {
    'qom-test' : 900,
--  'test-hmp' : 120,
-+  'test-hmp' : 240,
+   'test-hmp' : 240,
+   'pxe-test': 600,
++  'prom-env-test': 360,
  }
  
  qtests_generic = [

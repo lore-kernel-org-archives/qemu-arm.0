@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id fa18-20020a05600c519200b0040c4afa027csm2760102wmb.13.2023.12.21.02.38.20
+        by smtp.gmail.com with ESMTPSA id a4-20020adff7c4000000b003366da509ecsm1712592wrq.85.2023.12.21.02.38.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:38:22 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id DE2DB5F8D1;
+	by draig.lan (Postfix) with ESMTP id B0D745F8CF;
 	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,43 +52,44 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 10/40] qtest: bump pxe-test timeout to 10 minutes
-Date: Thu, 21 Dec 2023 10:37:48 +0000
-Message-Id: <20231221103818.1633766-11-alex.bennee@linaro.org>
+Subject: [PATCH 08/40] qtest: bump npcm7xx_pwn-test timeout to 5 minutes
+Date: Thu, 21 Dec 2023 10:37:46 +0000
+Message-Id: <20231221103818.1633766-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /X01GhqTqojs
+X-TUID: 0JBd4isya90p
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The pxe-test uses the boot_sector_test() function, and that already
-uses a timeout of 600 seconds. So adjust the timeout on the meson
-side accordingly.
+The npcm7xx_pwn-test takes 3 & 1/2 minutes in a --enable-debug build.
+Bumping to 5 minutes will give more headroom.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-[thuth: Bump timeout to 600s and adjust commit description]
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-ID: <20230717182859.707658-5-berrange@redhat.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-7-thuth@redhat.com>
+Message-Id: <20231215070357.10888-5-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/qtest/meson.build | 1 +
- 1 file changed, 1 insertion(+)
+ tests/qtest/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 7a4160df046..ec93d5a384f 100644
+index 000ac54b7d6..84cec0a847d 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -4,6 +4,7 @@ slow_qtests = {
-   'npcm7xx_pwm-test': 300,
+@@ -1,7 +1,7 @@
+ slow_qtests = {
+   'bios-tables-test' : 120,
+   'migration-test' : 480,
+-  'npcm7xx_pwm-test': 150,
++  'npcm7xx_pwm-test': 300,
    'qom-test' : 900,
-   'test-hmp' : 240,
-+  'pxe-test': 600,
+   'test-hmp' : 120,
  }
- 
- qtests_generic = [
 -- 
 2.39.2

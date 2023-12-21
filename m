@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l4-20020a05600c1d0400b0040d3276ba19sm2796728wms.25.2023.12.21.02.38.29
+        by smtp.gmail.com with ESMTPSA id e25-20020adfa459000000b003365951cef9sm1737078wra.55.2023.12.21.02.38.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:38:34 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A72A25F909;
+	by draig.lan (Postfix) with ESMTP id EE6705F8C5;
 	Thu, 21 Dec 2023 10:38:22 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,165 +52,358 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 36/40] gdbstub: expose api to find registers
-Date: Thu, 21 Dec 2023 10:38:14 +0000
-Message-Id: <20231221103818.1633766-37-alex.bennee@linaro.org>
+Subject: [PATCH 39/40] contrib/plugins: extend execlog to track register changes
+Date: Thu, 21 Dec 2023 10:38:17 +0000
+Message-Id: <20231221103818.1633766-40-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8eUOCZ+2mi9S
+X-TUID: V/CzV1VOgsZJ
 
-Expose an internal API to QEMU to return all the registers for a vCPU.
-The list containing the details required to called gdb_read_register().
+With the new plugin register API we can now track changes to register
+values. Currently the implementation is fairly dumb which will slow
+down if a large number of register values are being tracked. This
+could be improved by only instrumenting instructions which mention
+registers we are interested in tracking.
 
-Based-on: <20231025093128.33116-15-akihiko.odaki@daynix.com>
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+Example usage:
+
+  ./qemu-aarch64 -D plugin.log -d plugin \
+     -cpu max,sve256=on \
+     -plugin contrib/plugins/libexeclog.so,reg=sp,reg=z\* \
+     ./tests/tcg/aarch64-linux-user/sha512-sve
+
+will display in the execlog any changes to the stack pointer (sp) and
+the SVE Z registers.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+Based-On: <20231025093128.33116-19-akihiko.odaki@daynix.com>
 
 ---
 v2
-  - just make gdb_get_register_list return everything for a vCPU
+  - we now do the glob-like search in the plugin itself.
+  - fix some erroneous cpus->cpu
 
 vAJB:
 
-This principle difference is the find registers is a single call which
-can return a) multiple registers and b) is agnostic to the gdb
-feature. This is because I haven't so far found any duplicate
-registers in the system so I thing the regname by itself should be
-enough. However I do expose the gdb feature name in case the caller
-wants to do some additional filtering.
+Changes for the new API with a simpler glob based "reg" specifier
+which can be specified multiple times.
 ---
- include/exec/gdbstub.h | 47 +++++++++++++++++++++++++++++++++++
- gdbstub/gdbstub.c      | 56 +++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 102 insertions(+), 1 deletion(-)
+ docs/devel/tcg-plugins.rst |   9 +-
+ contrib/plugins/execlog.c  | 189 ++++++++++++++++++++++++++++---------
+ 2 files changed, 153 insertions(+), 45 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index da9ddfe54c5..7bddea8259e 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -111,6 +111,53 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
-  */
- const GDBFeature *gdb_find_static_feature(const char *xmlname);
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index 81dcd43a612..3a0962723d7 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -497,6 +497,14 @@ arguments if required::
+   $ qemu-system-arm $(QEMU_ARGS) \
+     -plugin ./contrib/plugins/libexeclog.so,ifilter=st1w,afilter=0x40001808 -d plugin
  
-+/**
-+ * gdb_find_feature() - Find a feature associated with a CPU.
-+ * @cpu: The CPU associated with the feature.
-+ * @name: The feature's name.
-+ *
-+ * Return: The feature's number.
-+ */
-+int gdb_find_feature(CPUState *cpu, const char *name);
++This plugin can also dump registers when they change value. Specify the name of the
++registers with multiple ``reg`` options. You can also use glob style matching if you wish::
 +
-+/**
-+ * gdb_find_feature_register() - Find a register associated with a CPU.
-+ * @cpu: The CPU associated with the register.
-+ * @feature: The feature's number returned by gdb_find_feature().
-+ * @name: The register's name.
-+ *
-+ * Return: The register's number.
-+ */
-+int gdb_find_feature_register(CPUState *cpu, int feature, const char *name);
++  $ qemu-system-arm $(QEMU_ARGS) \
++    -plugin ./contrib/plugins/libexeclog.so,reg=\*_el2,reg=sp -d plugin
 +
-+/**
-+ * gdb_read_register() - Read a register associated with a CPU.
-+ * @cpu: The CPU associated with the register.
-+ * @buf: The buffer that the read register will be appended to.
-+ * @reg: The register's number returned by gdb_find_feature_register().
-+ *
-+ * Return: The number of read bytes.
-+ */
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
++Be aware that each additional register to check will slow down execution quite considerably.
 +
-+/**
-+ * typedef GDBRegDesc - a register description from gdbstub
-+ */
+ - contrib/plugins/cache.c
+ 
+ Cache modelling plugin that measures the performance of a given L1 cache
+@@ -583,4 +591,3 @@ The following API is generated from the inline documentation in
+ include the full kernel-doc annotations.
+ 
+ .. kernel-doc:: include/qemu/qemu-plugin.h
+-
+diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
+index f262e5555eb..74fbf7c0e60 100644
+--- a/contrib/plugins/execlog.c
++++ b/contrib/plugins/execlog.c
+@@ -1,7 +1,7 @@
+ /*
+  * Copyright (C) 2021, Alexandre Iooss <erdnaxe@crans.org>
+  *
+- * Log instruction execution with memory access.
++ * Log instruction execution with memory access and register changes
+  *
+  * License: GNU GPL, version 2 or later.
+  *   See the COPYING file in the top-level directory.
+@@ -15,30 +15,29 @@
+ 
+ #include <qemu-plugin.h>
+ 
 +typedef struct {
-+    int gdb_reg;
++    struct qemu_plugin_register *handle;
++    GByteArray *last;
++    GByteArray *new;
 +    const char *name;
-+    const char *feature_name;
-+} GDBRegDesc;
++} Register;
 +
-+/**
-+ * gdb_get_register_list() - Return list of all registers for CPU
-+ * @cpu: The CPU being searched
-+ *
-+ * Returns a GArray of GDBRegDesc, caller frees array but not the
-+ * const strings.
-+ */
-+GArray *gdb_get_register_list(CPUState *cpu);
++typedef struct CPU {
++    /* Store last executed instruction on each vCPU as a GString */
++    GString *last_exec;
++    /* Ptr array of Register */
++    GPtrArray *registers;
++} CPU;
 +
- void gdb_set_stop_cpu(CPUState *cpu);
+ QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
  
- /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 420ab2a3766..b0230138246 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -490,7 +490,61 @@ const GDBFeature *gdb_find_static_feature(const char *xmlname)
-     g_assert_not_reached();
+-/* Store last executed instruction on each vCPU as a GString */
+-static GPtrArray *last_exec;
++static CPU *cpus;
++static int num_cpus;
+ static GRWLock expand_array_lock;
+ 
+ static GPtrArray *imatches;
+ static GArray *amatches;
+-
+-/*
+- * Expand last_exec array.
+- *
+- * As we could have multiple threads trying to do this we need to
+- * serialise the expansion under a lock.
+- */
+-static void expand_last_exec(int cpu_index)
+-{
+-    g_rw_lock_writer_lock(&expand_array_lock);
+-    while (cpu_index >= last_exec->len) {
+-        GString *s = g_string_new(NULL);
+-        g_ptr_array_add(last_exec, s);
+-    }
+-    g_rw_lock_writer_unlock(&expand_array_lock);
+-}
++static GPtrArray *rmatches;
+ 
+ /**
+  * Add memory read or write information to current instruction log
+@@ -50,8 +49,8 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
+ 
+     /* Find vCPU in array */
+     g_rw_lock_reader_lock(&expand_array_lock);
+-    g_assert(cpu_index < last_exec->len);
+-    s = g_ptr_array_index(last_exec, cpu_index);
++    g_assert(cpu_index < num_cpus);
++    s = cpus[cpu_index].last_exec;
+     g_rw_lock_reader_unlock(&expand_array_lock);
+ 
+     /* Indicate type of memory access */
+@@ -77,28 +76,46 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
+  */
+ static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
+ {
+-    GString *s;
++    CPU *cpu;
+ 
+-    /* Find or create vCPU in array */
+     g_rw_lock_reader_lock(&expand_array_lock);
+-    if (cpu_index >= last_exec->len) {
+-        g_rw_lock_reader_unlock(&expand_array_lock);
+-        expand_last_exec(cpu_index);
+-        g_rw_lock_reader_lock(&expand_array_lock);
+-    }
+-    s = g_ptr_array_index(last_exec, cpu_index);
++    g_assert(cpu_index < num_cpus);
++    cpu = &cpus[cpu_index];
+     g_rw_lock_reader_unlock(&expand_array_lock);
+ 
+     /* Print previous instruction in cache */
+-    if (s->len) {
+-        qemu_plugin_outs(s->str);
++    if (cpu->last_exec->len) {
++        if (cpu->registers) {
++            for (int n = 0; n < cpu->registers->len; n++) {
++                Register *reg = cpu->registers->pdata[n];
++                int sz;
++
++                g_byte_array_set_size(reg->new, 0);
++                sz = qemu_plugin_read_register(cpu_index, reg->handle, reg->new);
++                g_assert(sz == reg->last->len);
++
++                if (memcmp(reg->last->data, reg->new->data, sz)) {
++                    GByteArray *temp = reg->last;
++                    g_string_append_printf(cpu->last_exec, ", %s -> ", reg->name);
++                    /* TODO: handle BE properly */
++                    for (int i = sz; i >= 0; i--) {
++                        g_string_append_printf(cpu->last_exec, "%02x",
++                                               reg->new->data[i]);
++                    }
++                    reg->last = reg->new;
++                    reg->new = temp;
++                }
++            }
++        }
++
++        qemu_plugin_outs(cpu->last_exec->str);
+         qemu_plugin_outs("\n");
+     }
+ 
+     /* Store new instruction in cache */
+     /* vcpu_mem will add memory access information to last_exec */
+-    g_string_printf(s, "%u, ", cpu_index);
+-    g_string_append(s, (char *)udata);
++    g_string_printf(cpus[cpu_index].last_exec, "%u, ", cpu_index);
++    g_string_append(cpus[cpu_index].last_exec, (char *)udata);
  }
  
--static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-+int gdb_find_feature(CPUState *cpu, const char *name)
+ /**
+@@ -167,8 +184,10 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+                                              QEMU_PLUGIN_MEM_RW, NULL);
+ 
+             /* Register callback on instruction */
+-            qemu_plugin_register_vcpu_insn_exec_cb(insn, vcpu_insn_exec,
+-                                                   QEMU_PLUGIN_CB_NO_REGS, output);
++            qemu_plugin_register_vcpu_insn_exec_cb(
++                insn, vcpu_insn_exec,
++                rmatches ? QEMU_PLUGIN_CB_R_REGS : QEMU_PLUGIN_CB_NO_REGS,
++                output);
+ 
+             /* reset skip */
+             skip = (imatches || amatches);
+@@ -177,17 +196,86 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+     }
+ }
+ 
++static Register *init_vcpu_register(int vcpu_index,
++                                    qemu_plugin_reg_descriptor *desc)
 +{
-+    GDBRegisterState *r;
++    Register *reg = g_new0(Register, 1);
++    int r;
 +
-+    for (guint i = 0; i < cpu->gdb_regs->len; i++) {
-+        r = &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-+        if (!strcmp(name, r->feature->name)) {
-+            return i;
++    reg->handle = desc->handle;
++    reg->name = g_strdup(desc->name);
++    reg->last = g_byte_array_new();
++    reg->new = g_byte_array_new();
++
++    /* read the initial value */
++    r = qemu_plugin_read_register(vcpu_index, reg->handle, reg->last);
++    g_assert(r > 0);
++    return reg;
++}
++
++static registers_init(int vcpu_index)
++{
++    GPtrArray *registers = g_ptr_array_new();
++    g_autoptr(GArray) reg_list = qemu_plugin_get_registers(vcpu_index);
++
++    if (reg_list && reg_list->len) {
++        /*
++         * Go through each register in the complete list and
++         * see if we want to track it.
++         */
++        for (int r = 0; r < reg_list->len; r++) {
++            qemu_plugin_reg_descriptor *rd = &g_array_index(
++                reg_list, qemu_plugin_reg_descriptor, r);
++            for (int p = 0; p < rmatches->len; p++) {
++                g_autoptr(GPatternSpec) pat = g_pattern_spec_new(rmatches->pdata[p]);
++                if (g_pattern_match_string(pat, rd->name)) {
++                    Register *reg = init_vcpu_register(vcpu_index, rd);
++                    g_ptr_array_add(registers, reg);
++                }
++            }
++        }
++    }
++    cpus[num_cpus].registers = registers;
++}
++
++/*
++ * Initialise a new vcpu/thread with:
++ *   - last_exec tracking data
++ *   - list of tracked registers
++ *   - initial value of registers
++ *
++ * As we could have multiple threads trying to do this we need to
++ * serialise the expansion under a lock.
++ */
++static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
++{
++    g_rw_lock_writer_lock(&expand_array_lock);
++
++    if (vcpu_index >= num_cpus) {
++        cpus = g_realloc_n(cpus, vcpu_index + 1, sizeof(*cpus));
++        while (vcpu_index >= num_cpus) {
++            cpus[num_cpus].last_exec = g_string_new(NULL);
++
++            /* Any registers to track? */
++            if (rmatches && rmatches->len) {
++                registers_init(vcpu_index);
++            }
++            num_cpus++;
 +        }
 +    }
 +
-+    return -1;
++    g_rw_lock_writer_unlock(&expand_array_lock);
 +}
 +
-+int gdb_find_feature_register(CPUState *cpu, int feature, const char *name)
-+{
-+    GDBRegisterState *r;
-+
-+    r = &g_array_index(cpu->gdb_regs, GDBRegisterState, feature);
-+
-+    for (int i = 0; i < r->feature->num_regs; i++) {
-+        if (r->feature->regs[i] && !strcmp(name, r->feature->regs[i])) {
-+            return r->base_reg + i;
-+        }
-+    }
-+
-+    return -1;
-+}
-+
-+GArray *gdb_get_register_list(CPUState *cpu)
-+{
-+    GArray *results = g_array_new(true, true, sizeof(GDBRegDesc));
-+
-+    /* registers are only available once the CPU is initialised */
-+    if (!cpu->gdb_regs) {
-+        return results;
-+    }
-+
-+    for (int f = 0; f < cpu->gdb_regs->len; f++) {
-+        GDBRegisterState *r = &g_array_index(cpu->gdb_regs, GDBRegisterState, f);
-+        for (int i = 0; i < r->feature->num_regs; i++) {
-+            const char *name = r->feature->regs[i];
-+            GDBRegDesc desc = {
-+                r->base_reg + i,
-+                name,
-+                r->feature->name
-+            };
-+            g_array_append_val(results, desc);
-+        }
-+    }
-+
-+    return results;
-+}
-+
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+ /**
+  * On plugin exit, print last instruction in cache
+  */
+ static void plugin_exit(qemu_plugin_id_t id, void *p)
  {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-     GDBRegisterState *r;
+     guint i;
+-    GString *s;
+-    for (i = 0; i < last_exec->len; i++) {
+-        s = g_ptr_array_index(last_exec, i);
+-        if (s->str) {
+-            qemu_plugin_outs(s->str);
++    for (i = 0; i < num_cpus; i++) {
++        if (cpus[i].last_exec->str) {
++            qemu_plugin_outs(cpus[i].last_exec->str);
+             qemu_plugin_outs("\n");
+         }
+     }
+@@ -212,6 +300,18 @@ static void parse_vaddr_match(char *match)
+     g_array_append_val(amatches, v);
+ }
+ 
++/*
++ * We have to wait until vCPUs are started before we can check the
++ * patterns find anything.
++ */
++static void add_regpat(char *regpat)
++{
++    if (!rmatches) {
++        rmatches = g_ptr_array_new();
++    }
++    g_ptr_array_add(rmatches, g_strdup(regpat));
++}
++
+ /**
+  * Install the plugin
+  */
+@@ -224,9 +324,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+      * we don't know the size before emulation.
+      */
+     if (info->system_emulation) {
+-        last_exec = g_ptr_array_sized_new(info->system.max_vcpus);
+-    } else {
+-        last_exec = g_ptr_array_new();
++        cpus = g_new(CPU, info->system.max_vcpus);
+     }
+ 
+     for (int i = 0; i < argc; i++) {
+@@ -236,13 +334,16 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+             parse_insn_match(tokens[1]);
+         } else if (g_strcmp0(tokens[0], "afilter") == 0) {
+             parse_vaddr_match(tokens[1]);
++        } else if (g_strcmp0(tokens[0], "reg") == 0) {
++            add_regpat(tokens[1]);
+         } else {
+             fprintf(stderr, "option parsing failed: %s\n", opt);
+             return -1;
+         }
+     }
+ 
+-    /* Register translation block and exit callbacks */
++    /* Register init, translation block and exit callbacks */
++    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
+     qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
+     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
+ 
 -- 
 2.39.2

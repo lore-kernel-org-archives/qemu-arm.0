@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n5-20020a05600c4f8500b0040b36050f1bsm2768757wmq.44.2023.12.21.02.38.19
+        by smtp.gmail.com with ESMTPSA id fj8-20020a05600c0c8800b004094e565e71sm2824144wmb.23.2023.12.21.02.38.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Dec 2023 02:38:19 -0800 (PST)
+        Thu, 21 Dec 2023 02:38:22 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3C7585F8C5;
+	by draig.lan (Postfix) with ESMTP id 6C97E5F8CA;
 	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -50,48 +50,62 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH 03/40] gitlab: include microblazeel in testing
-Date: Thu, 21 Dec 2023 10:37:41 +0000
-Message-Id: <20231221103818.1633766-4-alex.bennee@linaro.org>
+	Bin Meng <bin.meng@windriver.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 05/40] qtest: bump min meson timeout to 60 seconds
+Date: Thu, 21 Dec 2023 10:37:43 +0000
+Message-Id: <20231221103818.1633766-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: mRhQulo0FA/2
+X-TUID: RSKX3IsJBxGU
 
-This reverts aeb5f8f248e (gitlab: build the correct microblaze target)
-now we actually have a little-endian test in avocado thanks to this
-years advent calendar.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
+Even some of the relatively fast qtests can sometimes hit the 30 second
+timeout in GitLab CI under high parallelism/load conditions. Bump the
+min to 60 seconds to give a higher margin for reliability.
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-ID: <20230717182859.707658-2-berrange@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231215070357.10888-2-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qtest/meson.build | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 91663946de4..ef71dfe8665 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -41,7 +41,7 @@ build-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     CONFIGURE_ARGS: --enable-docs
--    TARGETS: alpha-softmmu microblaze-softmmu mips64el-softmmu
-+    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
-     MAKE_CHECK_ARGS: check-build
- 
- check-system-ubuntu:
-@@ -61,7 +61,7 @@ avocado-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     MAKE_CHECK_ARGS: check-avocado
--    AVOCADO_TAGS: arch:alpha arch:microblaze arch:mips64el
-+    AVOCADO_TAGS: arch:alpha arch:microblazeel arch:mips64el
- 
- build-system-debian:
-   extends:
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 47dabf91d04..366872ed57b 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -1,12 +1,7 @@
+ slow_qtests = {
+-  'ahci-test' : 60,
+   'bios-tables-test' : 120,
+-  'boot-serial-test' : 60,
+   'migration-test' : 150,
+   'npcm7xx_pwm-test': 150,
+-  'prom-env-test' : 60,
+-  'pxe-test' : 60,
+-  'qos-test' : 60,
+   'qom-test' : 300,
+   'test-hmp' : 120,
+ }
+@@ -383,8 +378,8 @@ foreach dir : target_dirs
+          env: qtest_env,
+          args: ['--tap', '-k'],
+          protocol: 'tap',
+-         timeout: slow_qtests.get(test, 30),
+-         priority: slow_qtests.get(test, 30),
++         timeout: slow_qtests.get(test, 60),
++         priority: slow_qtests.get(test, 60),
+          suite: ['qtest', 'qtest-' + target_base])
+   endforeach
+ endforeach
 -- 
 2.39.2

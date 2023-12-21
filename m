@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id fj8-20020a05600c0c8800b004094e565e71sm2824144wmb.23.2023.12.21.02.38.20
+        by smtp.gmail.com with ESMTPSA id q21-20020adfb195000000b0033674734a58sm1744728wra.79.2023.12.21.02.38.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:38:22 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6C97E5F8CA;
+	by draig.lan (Postfix) with ESMTP id 9B5FE5F8CE;
 	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,60 +52,46 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 05/40] qtest: bump min meson timeout to 60 seconds
-Date: Thu, 21 Dec 2023 10:37:43 +0000
-Message-Id: <20231221103818.1633766-6-alex.bennee@linaro.org>
+Subject: [PATCH 07/40] qtest: bump qom-test timeout to 15 minutes
+Date: Thu, 21 Dec 2023 10:37:45 +0000
+Message-Id: <20231221103818.1633766-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RSKX3IsJBxGU
+X-TUID: DXlGdLtBXKBQ
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-Even some of the relatively fast qtests can sometimes hit the 30 second
-timeout in GitLab CI under high parallelism/load conditions. Bump the
-min to 60 seconds to give a higher margin for reliability.
+The qom-test is periodically hitting the 5 minute timeout when running
+on the aarch64 emulator under GitLab CI. With an --enable-debug build
+it can take over 10 minutes for arm/aarch64 targets. Setting timeout
+to 15 minutes gives enough headroom to hopefully make it reliable.
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-ID: <20230717182859.707658-2-berrange@redhat.com>
+Message-ID: <20230717182859.707658-4-berrange@redhat.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-2-thuth@redhat.com>
+Message-Id: <20231215070357.10888-4-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/qtest/meson.build | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ tests/qtest/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 47dabf91d04..366872ed57b 100644
+index f184d051cfe..000ac54b7d6 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -1,12 +1,7 @@
- slow_qtests = {
--  'ahci-test' : 60,
+@@ -2,7 +2,7 @@ slow_qtests = {
    'bios-tables-test' : 120,
--  'boot-serial-test' : 60,
-   'migration-test' : 150,
+   'migration-test' : 480,
    'npcm7xx_pwm-test': 150,
--  'prom-env-test' : 60,
--  'pxe-test' : 60,
--  'qos-test' : 60,
-   'qom-test' : 300,
+-  'qom-test' : 300,
++  'qom-test' : 900,
    'test-hmp' : 120,
  }
-@@ -383,8 +378,8 @@ foreach dir : target_dirs
-          env: qtest_env,
-          args: ['--tap', '-k'],
-          protocol: 'tap',
--         timeout: slow_qtests.get(test, 30),
--         priority: slow_qtests.get(test, 30),
-+         timeout: slow_qtests.get(test, 60),
-+         priority: slow_qtests.get(test, 60),
-          suite: ['qtest', 'qtest-' + target_base])
-   endforeach
- endforeach
+ 
 -- 
 2.39.2

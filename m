@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q21-20020adfb195000000b0033674734a58sm1744728wra.79.2023.12.21.02.38.20
+        by smtp.gmail.com with ESMTPSA id o11-20020a05600c510b00b0040b43da0bbasm2807635wms.30.2023.12.21.02.38.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:38:22 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9B5FE5F8CE;
+	by draig.lan (Postfix) with ESMTP id 83CF25F8CC;
 	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,46 +52,50 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 07/40] qtest: bump qom-test timeout to 15 minutes
-Date: Thu, 21 Dec 2023 10:37:45 +0000
-Message-Id: <20231221103818.1633766-8-alex.bennee@linaro.org>
+Subject: [PATCH 06/40] qtest: bump migration-test timeout to 8 minutes
+Date: Thu, 21 Dec 2023 10:37:44 +0000
+Message-Id: <20231221103818.1633766-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DXlGdLtBXKBQ
+X-TUID: HqXdhghjwr96
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The qom-test is periodically hitting the 5 minute timeout when running
-on the aarch64 emulator under GitLab CI. With an --enable-debug build
-it can take over 10 minutes for arm/aarch64 targets. Setting timeout
-to 15 minutes gives enough headroom to hopefully make it reliable.
+The migration test should take between 1 min 30 and 2 mins on reasonably
+modern hardware. The test is not especially compute bound, rather its
+running time is dominated by the guest RAM size relative to the
+bandwidth cap, which forces each iteration to take at least 30 seconds.
+None the less under high load conditions with multiple QEMU processes
+spawned and competing with other parallel tests, the worst case running
+time might be somewhat extended. Bumping the timeout to 8 minutes gives
+us good headroom, while still catching stuck tests relatively quickly.
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-ID: <20230717182859.707658-4-berrange@redhat.com>
+Message-ID: <20230717182859.707658-3-berrange@redhat.com>
+[thuth: Bump timeout to 8 minutes to make it work on very loaded systems, too]
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-4-thuth@redhat.com>
+Message-Id: <20231215070357.10888-3-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
  tests/qtest/meson.build | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index f184d051cfe..000ac54b7d6 100644
+index 366872ed57b..f184d051cfe 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -2,7 +2,7 @@ slow_qtests = {
+@@ -1,6 +1,6 @@
+ slow_qtests = {
    'bios-tables-test' : 120,
-   'migration-test' : 480,
+-  'migration-test' : 150,
++  'migration-test' : 480,
    'npcm7xx_pwm-test': 150,
--  'qom-test' : 300,
-+  'qom-test' : 900,
+   'qom-test' : 300,
    'test-hmp' : 120,
- }
- 
 -- 
 2.39.2

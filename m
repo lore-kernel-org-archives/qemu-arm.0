@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c18-20020a05600c0a5200b0040c6d559490sm2887676wmq.3.2023.12.21.02.38.19
+        by smtp.gmail.com with ESMTPSA id n5-20020a05600c4f8500b0040b36050f1bsm2768757wmq.44.2023.12.21.02.38.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:38:19 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0FE0E5F8AF;
+	by draig.lan (Postfix) with ESMTP id 3C7585F8C5;
 	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,71 +51,47 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH 01/40] tests/avocado: Add a test for a little-endian microblaze machine
-Date: Thu, 21 Dec 2023 10:37:39 +0000
-Message-Id: <20231221103818.1633766-2-alex.bennee@linaro.org>
+Subject: [PATCH 03/40] gitlab: include microblazeel in testing
+Date: Thu, 21 Dec 2023 10:37:41 +0000
+Message-Id: <20231221103818.1633766-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /6K/bZtrr85m
+X-TUID: mRhQulo0FA/2
 
-From: Thomas Huth <thuth@redhat.com>
+This reverts aeb5f8f248e (gitlab: build the correct microblaze target)
+now we actually have a little-endian test in avocado thanks to this
+years advent calendar.
 
-We've already got a test for a big endian microblaze machine, but so
-far we lack one for a little endian machine. Now that the QEMU advent
-calendar featured such an image, we can test the little endian mode,
-too.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215161851.71508-1-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/avocado/machine_microblaze.py | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ .gitlab-ci.d/buildtest.yml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/avocado/machine_microblaze.py b/tests/avocado/machine_microblaze.py
-index 8d0efff30d2..807709cd11e 100644
---- a/tests/avocado/machine_microblaze.py
-+++ b/tests/avocado/machine_microblaze.py
-@@ -5,6 +5,8 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 91663946de4..ef71dfe8665 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -41,7 +41,7 @@ build-system-ubuntu:
+   variables:
+     IMAGE: ubuntu2204
+     CONFIGURE_ARGS: --enable-docs
+-    TARGETS: alpha-softmmu microblaze-softmmu mips64el-softmmu
++    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
+     MAKE_CHECK_ARGS: check-build
  
-+import time
-+from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
- from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
-@@ -33,3 +35,27 @@ def test_microblaze_s3adsp1800(self):
-         # The kernel sometimes gets stuck after the "This architecture ..."
-         # message, that's why we don't test for a later string here. This
-         # needs some investigation by a microblaze wizard one day...
-+
-+    def test_microblazeel_s3adsp1800(self):
-+        """
-+        :avocado: tags=arch:microblazeel
-+        :avocado: tags=machine:petalogix-s3adsp1800
-+        """
-+
-+        self.require_netdev('user')
-+        tar_url = ('http://www.qemu-advent-calendar.org/2023/download/'
-+                   'day13.tar.gz')
-+        tar_hash = '6623d5fff5f84cfa8f34e286f32eff6a26546f44'
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        archive.extract(file_path, self.workdir)
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', self.workdir + '/day13/xmaton.bin')
-+        self.vm.add_args('-nic', 'user,tftp=' + self.workdir + '/day13/')
-+        self.vm.launch()
-+        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command_and_wait_for_pattern(self,
-+                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
-+                '821cd3cab8efd16ad6ee5acc3642a8ea')
+ check-system-ubuntu:
+@@ -61,7 +61,7 @@ avocado-system-ubuntu:
+   variables:
+     IMAGE: ubuntu2204
+     MAKE_CHECK_ARGS: check-avocado
+-    AVOCADO_TAGS: arch:alpha arch:microblaze arch:mips64el
++    AVOCADO_TAGS: arch:alpha arch:microblazeel arch:mips64el
+ 
+ build-system-debian:
+   extends:
 -- 
 2.39.2

@@ -1,259 +1,121 @@
-Received: by 2002:a17:906:d96:b0:a23:4dac:818 with SMTP id m22csp2540888eji;
-        Wed, 20 Dec 2023 16:18:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHQXig71uzTR7cX1XMr3B1eoqWtT/Ub3Gmc0AMFCLKlOVkqicKg7HA/zPrxE0Yi9xRs4Imf
-X-Received: by 2002:ac8:4995:0:b0:425:99f8:977f with SMTP id f21-20020ac84995000000b0042599f8977fmr4190996qtq.43.1703117934868;
-        Wed, 20 Dec 2023 16:18:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703117934; cv=none;
-        d=google.com; s=arc-20160816;
-        b=mGEF8vTOZf9LheqSyLZNJR/4Gjq6Zl8uzpq/XqBB1ouWMf7t4k/dpEPoKI4FxUNynv
-         STH5nWojATKbcsVNHEDtIRlzVvYUKXgRRHZaOhLrXHQW1G3JLGVllm4Ae64Hs60FW3iy
-         f9rVkcZNh/beFsYiVMcqe0OSdEjOX9g3lnEbO1aeqC0q/xn7W4bcUsibSv/byiCuFaEn
-         p0iHOEcA5d6MLohQ7LY40gDAGZ32PxJFWuhyQHAM4i6t5KObRfOLi9bMPsC6KqLjSVP5
-         yKF8jGijcn2xk6FJsI9trAsxgAAUE8mO5nieaT2pDsZLJa4Q+Sj2sgBZPo8AbeOz64HG
-         TIWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=yZU6zURwAT7SOBImdyaTfu9tQTE4/O9PC1lPYnvKOrU=;
-        fh=SqNJjHEDtlPLFz1ZadpBH6+TtBgrqxw7gCbH3ncfWh4=;
-        b=TZipMu/+Frx9ZkC1s7pejVg81AcRvDkaguBF0hjlAYltlZN9IF0HSCTWfO28d+tFz/
-         Rtmw7S4A1xrWf3tB5KfQtrPfnQa06XyqcRc1KzvGkVkqhlbsQ6JCH5X9Cgxm9tRMuJ5w
-         tBCvM3zKts4Eg0tY2WDIDw3E+jdorwUDHYfj0A9tx3c8MfmbZ3YodqpeLhr8HTNomOeh
-         Ffju/Q68D32pO2OhiqitXZo7NFfpI53Kbn+9e+ITtxppM8l/mCBblUvAET4WqYNB2b+r
-         TdqnYYIBs26gqEJ/Y47bEJ3EvNtCOY5sQBrxkumC1ud3f+ogDj3LCIRkDzMwe/68cwwZ
-         /sWw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=RBsNnVhU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q18-20020a05622a04d200b00425a9eedd9dsi905241qtx.88.2023.12.20.16.18.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Dec 2023 16:18:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=RBsNnVhU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rG6la-0004Zm-3p; Wed, 20 Dec 2023 19:18:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rG6lY-0004Yu-JD; Wed, 20 Dec 2023 19:18:20 -0500
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rG6lW-0007eS-N2; Wed, 20 Dec 2023 19:18:20 -0500
-Received: by mail-vs1-xe34.google.com with SMTP id
- ada2fe7eead31-466b3a84bc3so141037137.1; 
- Wed, 20 Dec 2023 16:18:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1703117896; x=1703722696; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=yZU6zURwAT7SOBImdyaTfu9tQTE4/O9PC1lPYnvKOrU=;
- b=RBsNnVhUsphzxg3SywYHB1AxVfdYplSslev2J+yIcl15rJpivVlkh0awMKgZKZVu4D
- g5Pn8uSpuTVIf1c9wlFvysglv3NHtob9NFZdXilFsjdR3aK/FTdv/gZwwsoxBFDdgvqY
- XPBVKsPLj/Wy5O19iCUj8cE1JGf3Ch5KlQoyhvQeq+ibTruVYEzqtm5q6IJWm9RtmI45
- 3bawEnENlmfp2amcFryVUIFcJLcE3tx/sWf8aoSyIMQkOEaaVlDjQ/PrQ0hexZh7KoCb
- PGTJnbNgaZG7CqVYCz+05qadjbkwW2ESUvYVnY38VeliOJR8PtpLLjnkgL2/SwEgYmII
- 6+3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703117896; x=1703722696;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=yZU6zURwAT7SOBImdyaTfu9tQTE4/O9PC1lPYnvKOrU=;
- b=W4uWbpNYWci1EFzRV7sSc+4pc5ZqREhXXkMmBzEgWdvfUF6y6tBcWYCT0WTwxnsYm8
- HmudCIghJlXTkbDpobgbaioUZBSqbATe223LvfHN1hlfXDBxXeDozj03IhzmQXp9nVB6
- inZcCQgl1JqkytLCKSirN4yFWhlVarYvIoa2ch6ucu4rR3n3kb1cne3x9WkfttwDm5uD
- c8sI6s1aqUicDdWKVbSsdhZVchZxS8TyIQQAr3pPfYvZfLXv6FMhKGKt5c5SR+zBFNNm
- aZQTDCg6R1v+g91niIhdHQ4vQ2ajDMS7ixgS+/CroUtnQppz/MCFkXRADBG7xR/FJDae
- qlGg==
-X-Gm-Message-State: AOJu0Yxp5Nhv/D1Rg9OiZqNabn4Aw9tPAXp3fYZY0LxZYDXwWYKq2t4G
- FORuR9ZUeqnQzLWCVYMFx/8xzAzCmNuVAVZmlHg=
-X-Received: by 2002:a05:6102:dd3:b0:464:7e3c:ccd4 with SMTP id
- e19-20020a0561020dd300b004647e3cccd4mr467320vst.27.1703117896193; Wed, 20 Dec
- 2023 16:18:16 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id c18-20020a05600c0a5200b0040c6d559490sm2887676wmq.3.2023.12.21.02.38.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Dec 2023 02:38:19 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 0FE0E5F8AF;
+	Thu, 21 Dec 2023 10:38:19 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	John Snow <jsnow@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Brian Cain <bcain@quicinc.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Weiwei Li <liwei1518@gmail.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paul Durrant <paul@xen.org>,
+	qemu-s390x@nongnu.org,
+	David Woodhouse <dwmw2@infradead.org>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	kvm@vger.kernel.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org,
+	Song Gao <gaosong@loongson.cn>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Bin Meng <bin.meng@windriver.com>
+Subject: [PATCH 01/40] tests/avocado: Add a test for a little-endian microblaze machine
+Date: Thu, 21 Dec 2023 10:37:39 +0000
+Message-Id: <20231221103818.1633766-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
+References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20231218150247.466427-1-sunilvl@ventanamicro.com>
-In-Reply-To: <20231218150247.466427-1-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 21 Dec 2023 10:17:49 +1000
-Message-ID: <CAKmqyKMcbnSNf3A+t99N5L3YywpNwjMB95nLjFz9EGuAa2mv6g@mail.gmail.com>
-Subject: Re: [PATCH v8 00/13] RISC-V: ACPI: Enable AIA, PLIC and update RHCT
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Anup Patel <apatel@ventanamicro.com>,
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e34;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe34.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8snShRGSbmMt
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: /6K/bZtrr85m
 
-On Tue, Dec 19, 2023 at 1:03=E2=80=AFAM Sunil V L <sunilvl@ventanamicro.com=
-> wrote:
->
-> This series primarily enables external interrupt controllers (AIA and PLI=
-C)
-> in ACPI tables for RISC-V virt platform. It also updates RHCT with CMO an=
-d
-> MMU related information.
->
-> Below ECRs for these changes are approved by ASWG and will be
-> available in next ACPI spec release.
->
-> 1) MADT (AIA) - https://drive.google.com/file/d/1oMGPyOD58JaPgMl1pKasT-VK=
-sIKia7zR/view?usp=3Dsharing
-> 2) RHCT - https://drive.google.com/file/d/1sKbOa8m1UZw1JkquZYe3F1zQBN1xXs=
-af/view?usp=3Dsharing
->
-> First two patches in this series are to migrate a couple of functions fro=
-m
-> ARM architecture to common code so that RISC-V doesn't need to duplicate
-> the same.
->
-> The patch set is based on Alistair's riscv-to-apply.next branch.
->
-> These changes are also available in  riscv_acpi_b2_v8 branch at:
-> https://github.com/vlsunil/qemu/
->
-> Changes since v7:
->         1) Prefixed gpex property names with "x-" as per feedback from Mi=
-chael Tsirkin.
->         2) Rebased to latest riscv-to-apply.next.
->
-> Changes since v6:
->         1) Fixed the qtest failure issue reported by Daniel in PATCH 2.
->
-> Changes since v5:
->         1) Fixed the issue in PATCH 2 reported by Daniel found when built=
- with
->            clang + --enable-debug.
->
-> Changes since v4:
->         1) Updated copyright for new files as per SPDX format suggested b=
-y Drew.
->         2) Updated RINTC patch to avoid code duplication as suggested by =
-Drew.
->         3) Moved mmu offset below cmo in MMU patch as suggested by Drew.
->         4) Updated tags.
->
-> Changes since v3:
->         1) Addressed comments from Daniel and Drew.
->         2) Added a new patch in microvm to use common function for virtio=
- in DSDT.
->         3) Rebased to latest riscv-to-apply.next branch and added tags.
->
-> Changes since v2:
->         1) Rebased to latest riscv-to-apply.next branch which needed
->            changing ext_icboz to ext_zicboz in CMO patch.
->         2) Fixed node type in MMU node.
->         3) Added latest tags.
->
-> Changes since v1:
->         1) As per Igor's suggestion, migrated fw_cfg and virtio creation
->            functions to device specific file instead of generic aml-build=
-.c.
->            Since ACPI is optional, new files are created and enabled for
->            build only when CONFIG_ACPI is enabled.
->         2) As per Igor's suggestion, properties are added to the GPEX PCI
->            host to indicate MMIO ranges. The platform fw can initialize
->            these to appropriate values and the DSDT generator can fetch
->            the information from the host bus itself. This makes the code
->            generic instead of machine specific.
->         3) Added PLIC patch from Haibo.
->         4) Rebased to latest riscv-to-apply.next and added RB tags as
->            appropriate.
->
-> Sunil V L (13):
->   hw/arm/virt-acpi-build.c: Migrate fw_cfg creation to common location
->   hw/arm/virt-acpi-build.c: Migrate virtio creation to common location
->   hw/i386/acpi-microvm.c: Use common function to add virtio in DSDT
->   hw/riscv: virt: Make few IMSIC macros and functions public
->   hw/riscv/virt-acpi-build.c: Add AIA support in RINTC
->   hw/riscv/virt-acpi-build.c: Add IMSIC in the MADT
->   hw/riscv/virt-acpi-build.c: Add APLIC in the MADT
->   hw/riscv/virt-acpi-build.c: Add CMO information in RHCT
->   hw/riscv/virt-acpi-build.c: Add MMU node in RHCT
->   hw/pci-host/gpex: Define properties for MMIO ranges
->   hw/riscv/virt: Update GPEX MMIO related properties
->   hw/riscv/virt-acpi-build.c: Add IO controllers and devices
->   hw/riscv/virt-acpi-build.c: Add PLIC in MADT
+From: Thomas Huth <thuth@redhat.com>
 
-Thanks!
+We've already got a test for a big endian microblaze machine, but so
+far we lack one for a little endian machine. Now that the QEMU advent
+calendar featured such an image, we can test the little endian mode,
+too.
 
-Applied to riscv-to-apply.next
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231215161851.71508-1-thuth@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/avocado/machine_microblaze.py | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-Alistair
-
->
->  hw/arm/virt-acpi-build.c        |  51 +----
->  hw/i386/acpi-microvm.c          |  15 +-
->  hw/nvram/fw_cfg-acpi.c          |  23 +++
->  hw/nvram/meson.build            |   1 +
->  hw/pci-host/gpex-acpi.c         |  13 ++
->  hw/pci-host/gpex.c              |  12 ++
->  hw/riscv/Kconfig                |   1 +
->  hw/riscv/virt-acpi-build.c      | 323 +++++++++++++++++++++++++++++---
->  hw/riscv/virt.c                 |  72 ++++---
->  hw/virtio/meson.build           |   1 +
->  hw/virtio/virtio-acpi.c         |  33 ++++
->  include/hw/nvram/fw_cfg_acpi.h  |  15 ++
->  include/hw/pci-host/gpex.h      |  28 ++-
->  include/hw/riscv/virt.h         |  26 +++
->  include/hw/virtio/virtio-acpi.h |  16 ++
->  15 files changed, 499 insertions(+), 131 deletions(-)
->  create mode 100644 hw/nvram/fw_cfg-acpi.c
->  create mode 100644 hw/virtio/virtio-acpi.c
->  create mode 100644 include/hw/nvram/fw_cfg_acpi.h
->  create mode 100644 include/hw/virtio/virtio-acpi.h
->
-> --
-> 2.39.2
->
->
+diff --git a/tests/avocado/machine_microblaze.py b/tests/avocado/machine_microblaze.py
+index 8d0efff30d2..807709cd11e 100644
+--- a/tests/avocado/machine_microblaze.py
++++ b/tests/avocado/machine_microblaze.py
+@@ -5,6 +5,8 @@
+ # This work is licensed under the terms of the GNU GPL, version 2 or
+ # later. See the COPYING file in the top-level directory.
+ 
++import time
++from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
+ from avocado_qemu import QemuSystemTest
+ from avocado_qemu import wait_for_console_pattern
+ from avocado.utils import archive
+@@ -33,3 +35,27 @@ def test_microblaze_s3adsp1800(self):
+         # The kernel sometimes gets stuck after the "This architecture ..."
+         # message, that's why we don't test for a later string here. This
+         # needs some investigation by a microblaze wizard one day...
++
++    def test_microblazeel_s3adsp1800(self):
++        """
++        :avocado: tags=arch:microblazeel
++        :avocado: tags=machine:petalogix-s3adsp1800
++        """
++
++        self.require_netdev('user')
++        tar_url = ('http://www.qemu-advent-calendar.org/2023/download/'
++                   'day13.tar.gz')
++        tar_hash = '6623d5fff5f84cfa8f34e286f32eff6a26546f44'
++        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
++        archive.extract(file_path, self.workdir)
++        self.vm.set_console()
++        self.vm.add_args('-kernel', self.workdir + '/day13/xmaton.bin')
++        self.vm.add_args('-nic', 'user,tftp=' + self.workdir + '/day13/')
++        self.vm.launch()
++        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
++        time.sleep(0.1)
++        exec_command(self, 'root')
++        time.sleep(0.1)
++        exec_command_and_wait_for_pattern(self,
++                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
++                '821cd3cab8efd16ad6ee5acc3642a8ea')
+-- 
+2.39.2

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n8-20020a5d4008000000b003366cc543casm1710259wrp.102.2023.12.21.02.46.58
+        by smtp.gmail.com with ESMTPSA id h5-20020adff4c5000000b0033668b27f8fsm288115wrp.4.2023.12.21.02.46.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:46:58 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 266695F8E9;
+	by draig.lan (Postfix) with ESMTP id 5C33E5F8EF;
 	Thu, 21 Dec 2023 10:38:21 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,545 +52,524 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 23/40] target/riscv: Move misa_mxl_max to class
-Date: Thu, 21 Dec 2023 10:38:01 +0000
-Message-Id: <20231221103818.1633766-24-alex.bennee@linaro.org>
+Subject: [PATCH 25/40] target/arm: Use GDBFeature for dynamic XML
+Date: Thu, 21 Dec 2023 10:38:03 +0000
+Message-Id: <20231221103818.1633766-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RHt/1+zrlDjT
+X-TUID: RBDG5AMiSHuE
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-misa_mxl_max is common for all instances of a RISC-V CPU class so they
-are better put into class.
+In preparation for a change to use GDBFeature as a parameter of
+gdb_register_coprocessor(), convert the internal representation of
+dynamic feature from plain XML to GDBFeature.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20231213-riscv-v7-3-a760156a337f@daynix.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231213-gdb-v17-1-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/riscv/cpu.h         |   4 +-
- target/riscv/cpu.c         | 118 +++++++++++++++++++------------------
- target/riscv/gdbstub.c     |  12 ++--
- target/riscv/kvm/kvm-cpu.c |  10 ++--
- target/riscv/machine.c     |   7 +--
- target/riscv/tcg/tcg-cpu.c |  12 ++--
- target/riscv/translate.c   |   3 +-
- 7 files changed, 87 insertions(+), 79 deletions(-)
+ target/arm/cpu.h       |  21 +++---
+ target/arm/internals.h |   2 +-
+ target/arm/gdbstub.c   | 142 ++++++++++++++++++++---------------------
+ target/arm/gdbstub64.c |  95 +++++++++++++--------------
+ 4 files changed, 123 insertions(+), 137 deletions(-)
 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index d74b361be64..060b7f69a74 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -169,7 +169,6 @@ struct CPUArchState {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a0282e0d281..b2f8ac81f06 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -25,6 +25,7 @@
+ #include "hw/registerfields.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#include "exec/gdbstub.h"
+ #include "qapi/qapi-types-common.h"
  
-     /* RISCVMXL, but uint32_t for vmstate migration */
-     uint32_t misa_mxl;      /* current mxl */
--    uint32_t misa_mxl_max;  /* max mxl for this cpu */
-     uint32_t misa_ext;      /* current extensions */
-     uint32_t misa_ext_mask; /* max ext for this cpu */
-     uint32_t xl;            /* current xlen */
-@@ -450,6 +449,7 @@ struct RISCVCPUClass {
+ /* ARM processors have a weak memory model */
+@@ -136,23 +137,21 @@ enum {
+  */
  
-     DeviceRealize parent_realize;
-     ResettablePhases parent_phases;
-+    uint32_t misa_mxl_max;  /* max mxl for this cpu */
- };
+ /**
+- * DynamicGDBXMLInfo:
+- * @desc: Contains the XML descriptions.
+- * @num: Number of the registers in this XML seen by GDB.
++ * DynamicGDBFeatureInfo:
++ * @desc: Contains the feature descriptions.
+  * @data: A union with data specific to the set of registers
+  *    @cpregs_keys: Array that contains the corresponding Key of
+  *                  a given cpreg with the same order of the cpreg
+  *                  in the XML description.
+  */
+-typedef struct DynamicGDBXMLInfo {
+-    char *desc;
+-    int num;
++typedef struct DynamicGDBFeatureInfo {
++    GDBFeature desc;
+     union {
+         struct {
+             uint32_t *keys;
+         } cpregs;
+     } data;
+-} DynamicGDBXMLInfo;
++} DynamicGDBFeatureInfo;
  
- static inline int riscv_has_ext(CPURISCVState *env, target_ulong ext)
-@@ -756,7 +756,7 @@ enum riscv_pmu_event_idx {
- /* used by tcg/tcg-cpu.c*/
- void isa_ext_update_enabled(RISCVCPU *cpu, uint32_t ext_offset, bool en);
- bool isa_ext_is_enabled(RISCVCPU *cpu, uint32_t ext_offset);
--void riscv_cpu_set_misa(CPURISCVState *env, RISCVMXL mxl, uint32_t ext);
-+void riscv_cpu_set_misa_ext(CPURISCVState *env, uint32_t ext);
+ /* CPU state for each instance of a generic timer (in cp15 c14) */
+ typedef struct ARMGenericTimer {
+@@ -878,10 +877,10 @@ struct ArchCPU {
+     uint64_t *cpreg_vmstate_values;
+     int32_t cpreg_vmstate_array_len;
  
- typedef struct RISCVCPUMultiExtConfig {
-     const char *name;
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 83c7c0cf07b..2ab61df2217 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -274,9 +274,8 @@ const char *riscv_cpu_get_trap_name(target_ulong cause, bool async)
-     }
+-    DynamicGDBXMLInfo dyn_sysreg_xml;
+-    DynamicGDBXMLInfo dyn_svereg_xml;
+-    DynamicGDBXMLInfo dyn_m_systemreg_xml;
+-    DynamicGDBXMLInfo dyn_m_secextreg_xml;
++    DynamicGDBFeatureInfo dyn_sysreg_feature;
++    DynamicGDBFeatureInfo dyn_svereg_feature;
++    DynamicGDBFeatureInfo dyn_m_systemreg_feature;
++    DynamicGDBFeatureInfo dyn_m_secextreg_feature;
+ 
+     /* Timers used by the generic (architected) timer */
+     QEMUTimer *gt_timer[NUM_GTIMERS];
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 143d57c0fe4..1136710741f 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1446,7 +1446,7 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
  }
  
--void riscv_cpu_set_misa(CPURISCVState *env, RISCVMXL mxl, uint32_t ext)
-+void riscv_cpu_set_misa_ext(CPURISCVState *env, uint32_t ext)
- {
--    env->misa_mxl_max = env->misa_mxl = mxl;
-     env->misa_ext_mask = env->misa_ext = ext;
+ #ifdef TARGET_AARCH64
+-int arm_gen_dynamic_svereg_xml(CPUState *cpu, int base_reg);
++GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cpu, int base_reg);
+ int aarch64_gdb_get_sve_reg(CPUARMState *env, GByteArray *buf, int reg);
+ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg);
+ int aarch64_gdb_get_fpu_reg(CPUARMState *env, GByteArray *buf, int reg);
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 28f546a5ff9..5949adfb31a 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -26,11 +26,11 @@
+ #include "cpu-features.h"
+ #include "cpregs.h"
+ 
+-typedef struct RegisterSysregXmlParam {
++typedef struct RegisterSysregFeatureParam {
+     CPUState *cs;
+-    GString *s;
++    GDBFeatureBuilder builder;
+     int n;
+-} RegisterSysregXmlParam;
++} RegisterSysregFeatureParam;
+ 
+ /* Old gdb always expect FPA registers.  Newer (xml-aware) gdb only expect
+    whatever the target description contains.  Due to a historical mishap
+@@ -216,7 +216,7 @@ static int arm_gdb_get_sysreg(CPUARMState *env, GByteArray *buf, int reg)
+     const ARMCPRegInfo *ri;
+     uint32_t key;
+ 
+-    key = cpu->dyn_sysreg_xml.data.cpregs.keys[reg];
++    key = cpu->dyn_sysreg_feature.data.cpregs.keys[reg];
+     ri = get_arm_cp_reginfo(cpu->cp_regs, key);
+     if (ri) {
+         if (cpreg_field_is_64bit(ri)) {
+@@ -233,34 +233,32 @@ static int arm_gdb_set_sysreg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0;
  }
  
-@@ -378,11 +377,7 @@ static void riscv_any_cpu_init(Object *obj)
+-static void arm_gen_one_xml_sysreg_tag(GString *s, DynamicGDBXMLInfo *dyn_xml,
++static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
++                                       DynamicGDBFeatureInfo *dyn_feature,
+                                        ARMCPRegInfo *ri, uint32_t ri_key,
+-                                       int bitsize, int regnum)
++                                       int bitsize, int n)
  {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--#if defined(TARGET_RISCV32)
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVA | RVF | RVD | RVC | RVU);
--#elif defined(TARGET_RISCV64)
--    riscv_cpu_set_misa(env, MXL_RV64, RVI | RVM | RVA | RVF | RVD | RVC | RVU);
--#endif
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVD | RVC | RVU);
- 
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(RISCV_CPU(obj),
-@@ -403,16 +398,14 @@ static void riscv_max_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--    RISCVMXL mlx = MXL_RV64;
- 
--#ifdef TARGET_RISCV32
--    mlx = MXL_RV32;
--#endif
--    riscv_cpu_set_misa(env, mlx, 0);
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
--    set_satp_mode_max_supported(RISCV_CPU(obj), mlx == MXL_RV32 ?
--                                VM_1_10_SV32 : VM_1_10_SV57);
-+#ifdef TARGET_RISCV32
-+    set_satp_mode_max_supported(cpu, VM_1_10_SV32);
-+#else
-+    set_satp_mode_max_supported(cpu, VM_1_10_SV57);
-+#endif
- #endif
- }
- 
-@@ -420,8 +413,6 @@ static void riscv_max_cpu_init(Object *obj)
- static void rv64_base_cpu_init(Object *obj)
- {
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
--    /* We set this in the realise function */
--    riscv_cpu_set_misa(env, MXL_RV64, 0);
-     /* Set latest version of privileged specification */
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
-@@ -433,8 +424,7 @@ static void rv64_sifive_u_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--    riscv_cpu_set_misa(env, MXL_RV64,
--                       RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(RISCV_CPU(obj), VM_1_10_SV39);
-@@ -452,7 +442,7 @@ static void rv64_sifive_e_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV64, RVI | RVM | RVA | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -469,7 +459,7 @@ static void rv64_thead_c906_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV64, RVG | RVC | RVS | RVU);
-+    riscv_cpu_set_misa_ext(env, RVG | RVC | RVS | RVU);
-     env->priv_ver = PRIV_VERSION_1_11_0;
- 
-     cpu->cfg.ext_zfa = true;
-@@ -500,7 +490,7 @@ static void rv64_veyron_v1_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV64, RVG | RVC | RVS | RVU | RVH);
-+    riscv_cpu_set_misa_ext(env, RVG | RVC | RVS | RVU | RVH);
-     env->priv_ver = PRIV_VERSION_1_12_0;
- 
-     /* Enable ISA extensions */
-@@ -544,8 +534,6 @@ static void rv128_base_cpu_init(Object *obj)
-         exit(EXIT_FAILURE);
-     }
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
--    /* We set this in the realise function */
--    riscv_cpu_set_misa(env, MXL_RV128, 0);
-     /* Set latest version of privileged specification */
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
-@@ -556,8 +544,6 @@ static void rv128_base_cpu_init(Object *obj)
- static void rv32_base_cpu_init(Object *obj)
- {
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
--    /* We set this in the realise function */
--    riscv_cpu_set_misa(env, MXL_RV32, 0);
-     /* Set latest version of privileged specification */
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
-@@ -569,8 +555,7 @@ static void rv32_sifive_u_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--    riscv_cpu_set_misa(env, MXL_RV32,
--                       RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(RISCV_CPU(obj), VM_1_10_SV32);
-@@ -588,7 +573,7 @@ static void rv32_sifive_e_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVA | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -605,7 +590,7 @@ static void rv32_ibex_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_12_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -622,7 +607,7 @@ static void rv32_imafcu_nommu_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVA | RVF | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -845,7 +830,7 @@ static void riscv_cpu_reset_hold(Object *obj)
-         mcc->parent_phases.hold(obj);
-     }
- #ifndef CONFIG_USER_ONLY
--    env->misa_mxl = env->misa_mxl_max;
-+    env->misa_mxl = mcc->misa_mxl_max;
-     env->priv = PRV_M;
-     env->mstatus &= ~(MSTATUS_MIE | MSTATUS_MPRV);
-     if (env->misa_mxl > MXL_RV32) {
-@@ -1213,6 +1198,12 @@ static void riscv_cpu_post_init(Object *obj)
- 
- static void riscv_cpu_init(Object *obj)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(obj);
-+    RISCVCPU *cpu = RISCV_CPU(obj);
-+    CPURISCVState *env = &cpu->env;
+-    g_string_append_printf(s, "<reg name=\"%s\"", ri->name);
+-    g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
+-    g_string_append_printf(s, " regnum=\"%d\"", regnum);
+-    g_string_append_printf(s, " group=\"cp_regs\"/>");
+-    dyn_xml->data.cpregs.keys[dyn_xml->num] = ri_key;
+-    dyn_xml->num++;
++    gdb_feature_builder_append_reg(builder, ri->name, bitsize, n,
++                                   "int", "cp_regs");
 +
-+    env->misa_mxl = mcc->misa_mxl_max;
-+
- #ifndef CONFIG_USER_ONLY
-     qdev_init_gpio_in(DEVICE(obj), riscv_cpu_set_irq,
-                       IRQ_LOCAL_MAX + IRQ_LOCAL_GUEST_MAX);
-@@ -1657,7 +1648,7 @@ static void cpu_get_marchid(Object *obj, Visitor *v, const char *name,
-     visit_type_bool(v, name, &value, errp);
++    dyn_feature->data.cpregs.keys[n] = ri_key;
  }
  
--static void riscv_cpu_class_init(ObjectClass *c, void *data)
-+static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
+-static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
+-                                        gpointer p)
++static void arm_register_sysreg_for_feature(gpointer key, gpointer value,
++                                            gpointer p)
  {
-     RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
-     CPUClass *cc = CPU_CLASS(c);
-@@ -1699,6 +1690,13 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     device_class_set_props(dc, riscv_cpu_properties);
+     uint32_t ri_key = (uintptr_t)key;
+     ARMCPRegInfo *ri = value;
+-    RegisterSysregXmlParam *param = (RegisterSysregXmlParam *)p;
+-    GString *s = param->s;
++    RegisterSysregFeatureParam *param = p;
+     ARMCPU *cpu = ARM_CPU(param->cs);
+     CPUARMState *env = &cpu->env;
+-    DynamicGDBXMLInfo *dyn_xml = &cpu->dyn_sysreg_xml;
++    DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
+ 
+     if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_NO_GDB))) {
+         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+             if (ri->state == ARM_CP_STATE_AA64) {
+-                arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
+-                                           param->n++);
++                arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
++                                           ri, ri_key, 64, param->n++);
+             }
+         } else {
+             if (ri->state == ARM_CP_STATE_AA32) {
+@@ -269,32 +267,32 @@ static void arm_register_sysreg_for_xml(gpointer key, gpointer value,
+                     return;
+                 }
+                 if (ri->type & ARM_CP_64BIT) {
+-                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 64,
+-                                               param->n++);
++                    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
++                                               ri, ri_key, 64, param->n++);
+                 } else {
+-                    arm_gen_one_xml_sysreg_tag(s , dyn_xml, ri, ri_key, 32,
+-                                               param->n++);
++                    arm_gen_one_feature_sysreg(&param->builder, dyn_feature,
++                                               ri, ri_key, 32, param->n++);
+                 }
+             }
+         }
+     }
  }
  
-+static void riscv_cpu_class_init(ObjectClass *c, void *data)
-+{
-+    RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
-+
-+    mcc->misa_mxl_max = (uint32_t)(uintptr_t)data;
-+}
-+
- static void riscv_isa_string_ext(RISCVCPU *cpu, char **isa_str,
-                                  int max_str_len)
+-static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
++static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
  {
-@@ -1764,18 +1762,22 @@ void riscv_cpu_list(void)
-     g_slist_free(list);
+     ARMCPU *cpu = ARM_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    RegisterSysregXmlParam param = {cs, s, base_reg};
+-
+-    cpu->dyn_sysreg_xml.num = 0;
+-    cpu->dyn_sysreg_xml.data.cpregs.keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.arm.sys.regs\">");
+-    g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_xml, &param);
+-    g_string_append_printf(s, "</feature>");
+-    cpu->dyn_sysreg_xml.desc = g_string_free(s, false);
+-    return cpu->dyn_sysreg_xml.num;
++    RegisterSysregFeatureParam param = {cs};
++    gsize num_regs = g_hash_table_size(cpu->cp_regs);
++
++    gdb_feature_builder_init(&param.builder,
++                             &cpu->dyn_sysreg_feature.desc,
++                             "org.qemu.gdb.arm.sys.regs",
++                             "system-registers.xml",
++                             base_reg);
++    cpu->dyn_sysreg_feature.data.cpregs.keys = g_new(uint32_t, num_regs);
++    g_hash_table_foreach(cpu->cp_regs, arm_register_sysreg_for_feature, &param);
++    gdb_feature_builder_end(&param.builder);
++    return &cpu->dyn_sysreg_feature.desc;
  }
  
--#define DEFINE_CPU(type_name, initfn)      \
--    {                                      \
--        .name = type_name,                 \
--        .parent = TYPE_RISCV_CPU,          \
--        .instance_init = initfn            \
-+#define DEFINE_CPU(type_name, misa_mxl_max, initfn)         \
-+    {                                                       \
-+        .name = (type_name),                                \
-+        .parent = TYPE_RISCV_CPU,                           \
-+        .instance_init = (initfn),                          \
-+        .class_init = riscv_cpu_class_init,                 \
-+        .class_data = (void *)(misa_mxl_max)                \
-     }
+ #ifdef CONFIG_TCG
+@@ -386,31 +384,29 @@ static int arm_gdb_set_m_systemreg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0; /* TODO */
+ }
  
--#define DEFINE_DYNAMIC_CPU(type_name, initfn) \
--    {                                         \
--        .name = type_name,                    \
--        .parent = TYPE_RISCV_DYNAMIC_CPU,     \
--        .instance_init = initfn               \
-+#define DEFINE_DYNAMIC_CPU(type_name, misa_mxl_max, initfn) \
-+    {                                                       \
-+        .name = (type_name),                                \
-+        .parent = TYPE_RISCV_DYNAMIC_CPU,                   \
-+        .instance_init = (initfn),                          \
-+        .class_init = riscv_cpu_class_init,                 \
-+        .class_data = (void *)(misa_mxl_max)                \
-     }
- 
- static const TypeInfo riscv_cpu_type_infos[] = {
-@@ -1788,29 +1790,31 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .instance_post_init = riscv_cpu_post_init,
-         .abstract = true,
-         .class_size = sizeof(RISCVCPUClass),
--        .class_init = riscv_cpu_class_init,
-+        .class_init = riscv_cpu_common_class_init,
-     },
-     {
-         .name = TYPE_RISCV_DYNAMIC_CPU,
-         .parent = TYPE_RISCV_CPU,
-         .abstract = true,
-     },
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_ANY,      riscv_any_cpu_init),
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_MAX,      riscv_max_cpu_init),
- #if defined(TARGET_RISCV32)
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE32,   rv32_base_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_IBEX,             rv32_ibex_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E31,       rv32_sifive_e_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E34,       rv32_imafcu_nommu_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U34,       rv32_sifive_u_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_ANY,     MXL_RV32,  riscv_any_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_MAX,     MXL_RV32,  riscv_max_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE32,  MXL_RV32,  rv32_base_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_IBEX,            MXL_RV32,  rv32_ibex_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E31,      MXL_RV32,  rv32_sifive_e_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E34,      MXL_RV32,  rv32_imafcu_nommu_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U34,      MXL_RV32,  rv32_sifive_u_cpu_init),
- #elif defined(TARGET_RISCV64)
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE64,   rv64_base_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E51,       rv64_sifive_e_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U54,       rv64_sifive_u_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SHAKTI_C,         rv64_sifive_u_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_THEAD_C906,       rv64_thead_c906_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_VEYRON_V1,        rv64_veyron_v1_cpu_init),
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE128,  rv128_base_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_ANY,     MXL_RV64,  riscv_any_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_MAX,     MXL_RV64,  riscv_max_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE64,  MXL_RV64,  rv64_base_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E51,      MXL_RV64,  rv64_sifive_e_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U54,      MXL_RV64,  rv64_sifive_u_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SHAKTI_C,        MXL_RV64,  rv64_sifive_u_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_THEAD_C906,      MXL_RV64,  rv64_thead_c906_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_VEYRON_V1,       MXL_RV64,  rv64_veyron_v1_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE128, MXL_RV128, rv128_base_cpu_init),
- #endif
- };
- 
-diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-index 58b3ace0fe9..365040228a1 100644
---- a/target/riscv/gdbstub.c
-+++ b/target/riscv/gdbstub.c
-@@ -49,6 +49,7 @@ static const struct TypeSize vec_lanes[] = {
- 
- int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+-static int arm_gen_dynamic_m_systemreg_xml(CPUState *cs, int orig_base_reg)
++static GDBFeature *arm_gen_dynamic_m_systemreg_feature(CPUState *cs,
++                                                       int base_reg)
  {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     target_ulong tmp;
-@@ -61,7 +62,7 @@ int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         return 0;
-     }
- 
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
-     case MXL_RV32:
-         return gdb_get_reg32(mem_buf, tmp);
-     case MXL_RV64:
-@@ -75,12 +76,13 @@ int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- 
- int riscv_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     int length = 0;
-     target_ulong tmp;
- 
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
-     case MXL_RV32:
-         tmp = (int32_t)ldl_p(mem_buf);
-         length = 4;
-@@ -214,11 +216,12 @@ static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
- 
- static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     GString *s = g_string_new(NULL);
-     riscv_csr_predicate_fn predicate;
--    int bitsize = 16 << env->misa_mxl_max;
-+    int bitsize = 16 << mcc->misa_mxl_max;
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+-    GString *s = g_string_new(NULL);
+-    int base_reg = orig_base_reg;
++    GDBFeatureBuilder builder;
++    int reg = 0;
      int i;
  
- #if !defined(CONFIG_USER_ONLY)
-@@ -310,6 +313,7 @@ static int ricsv_gen_dynamic_vector_xml(CPUState *cs, int base_reg)
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.m-system\">\n");
++    gdb_feature_builder_init(&builder, &cpu->dyn_m_systemreg_feature.desc,
++                             "org.gnu.gdb.arm.m-system", "arm-m-system.xml",
++                             base_reg);
  
- void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     if (env->misa_ext & RVD) {
-@@ -326,7 +330,7 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
-                                  ricsv_gen_dynamic_vector_xml(cs, base_reg),
-                                  "riscv-vector.xml", 0);
+     for (i = 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
+         if (arm_feature(env, m_sysreg_def[i].feature)) {
+-            g_string_append_printf(s,
+-                "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
+-                m_sysreg_def[i].name, base_reg++);
++            gdb_feature_builder_append_reg(&builder, m_sysreg_def[i].name, 32,
++                                           reg++, "int", NULL);
+         }
      }
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
-     case MXL_RV32:
-         gdb_register_coprocessor(cs, riscv_gdb_get_virtual,
-                                  riscv_gdb_set_virtual,
-diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
-index 45b6cf1cfa0..f5624e553b6 100644
---- a/target/riscv/kvm/kvm-cpu.c
-+++ b/target/riscv/kvm/kvm-cpu.c
-@@ -1501,14 +1501,14 @@ static void kvm_cpu_accel_register_types(void)
+ 
+-    g_string_append_printf(s, "</feature>");
+-    cpu->dyn_m_systemreg_xml.desc = g_string_free(s, false);
+-    cpu->dyn_m_systemreg_xml.num = base_reg - orig_base_reg;
++    gdb_feature_builder_end(&builder);
+ 
+-    return cpu->dyn_m_systemreg_xml.num;
++    return &cpu->dyn_m_systemreg_feature.desc;
  }
- type_init(kvm_cpu_accel_register_types);
  
--static void riscv_host_cpu_init(Object *obj)
-+static void riscv_host_cpu_class_init(ObjectClass *c, void *data)
+ #ifndef CONFIG_USER_ONLY
+@@ -428,31 +424,31 @@ static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0; /* TODO */
+ }
+ 
+-static int arm_gen_dynamic_m_secextreg_xml(CPUState *cs, int orig_base_reg)
++static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
++                                                       int base_reg)
  {
--    CPURISCVState *env = &RISCV_CPU(obj)->env;
-+    RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
+     ARMCPU *cpu = ARM_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    int base_reg = orig_base_reg;
++    GDBFeatureBuilder builder;
++    char *name;
++    int reg = 0;
+     int i;
  
- #if defined(TARGET_RISCV32)
--    env->misa_mxl_max = env->misa_mxl = MXL_RV32;
-+    mcc->misa_mxl_max = MXL_RV32;
- #elif defined(TARGET_RISCV64)
--    env->misa_mxl_max = env->misa_mxl = MXL_RV64;
-+    mcc->misa_mxl_max = MXL_RV64;
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.secext\">\n");
++    gdb_feature_builder_init(&builder, &cpu->dyn_m_secextreg_feature.desc,
++                             "org.gnu.gdb.arm.secext", "arm-m-secext.xml",
++                             base_reg);
+ 
+     for (i = 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
+-        g_string_append_printf(s,
+-            "<reg name=\"%s_ns\" bitsize=\"32\" regnum=\"%d\"/>\n",
+-            m_sysreg_def[i].name, base_reg++);
+-        g_string_append_printf(s,
+-            "<reg name=\"%s_s\" bitsize=\"32\" regnum=\"%d\"/>\n",
+-            m_sysreg_def[i].name, base_reg++);
++        name = g_strconcat(m_sysreg_def[i].name, "_ns", NULL);
++        gdb_feature_builder_append_reg(&builder, name, 32, reg++,
++                                       "int", NULL);
++        name = g_strconcat(m_sysreg_def[i].name, "_s", NULL);
++        gdb_feature_builder_append_reg(&builder, name, 32, reg++,
++                                       "int", NULL);
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
+-    cpu->dyn_m_secextreg_xml.desc = g_string_free(s, false);
+-    cpu->dyn_m_secextreg_xml.num = base_reg - orig_base_reg;
++    gdb_feature_builder_end(&builder);
+ 
+-    return cpu->dyn_m_secextreg_xml.num;
++    return &cpu->dyn_m_secextreg_feature.desc;
+ }
  #endif
+ #endif /* CONFIG_TCG */
+@@ -462,14 +458,14 @@ const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
+     if (strcmp(xmlname, "system-registers.xml") == 0) {
+-        return cpu->dyn_sysreg_xml.desc;
++        return cpu->dyn_sysreg_feature.desc.xml;
+     } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
+-        return cpu->dyn_svereg_xml.desc;
++        return cpu->dyn_svereg_feature.desc.xml;
+     } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
+-        return cpu->dyn_m_systemreg_xml.desc;
++        return cpu->dyn_m_systemreg_feature.desc.xml;
+ #ifndef CONFIG_USER_ONLY
+     } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
+-        return cpu->dyn_m_secextreg_xml.desc;
++        return cpu->dyn_m_secextreg_feature.desc.xml;
+ #endif
+     }
+     return NULL;
+@@ -487,7 +483,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+          */
+ #ifdef TARGET_AARCH64
+         if (isar_feature_aa64_sve(&cpu->isar)) {
+-            int nreg = arm_gen_dynamic_svereg_xml(cs, cs->gdb_num_regs);
++            int nreg = arm_gen_dynamic_svereg_feature(cs, cs->gdb_num_regs)->num_regs;
+             gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
+                                      aarch64_gdb_set_sve_reg, nreg,
+                                      "sve-registers.xml", 0);
+@@ -533,20 +529,20 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                  1, "arm-m-profile-mve.xml", 0);
+     }
+     gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
+-                             arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
++                             arm_gen_dynamic_sysreg_feature(cs, cs->gdb_num_regs)->num_regs,
+                              "system-registers.xml", 0);
+ 
+ #ifdef CONFIG_TCG
+     if (arm_feature(env, ARM_FEATURE_M) && tcg_enabled()) {
+         gdb_register_coprocessor(cs,
+             arm_gdb_get_m_systemreg, arm_gdb_set_m_systemreg,
+-            arm_gen_dynamic_m_systemreg_xml(cs, cs->gdb_num_regs),
++            arm_gen_dynamic_m_systemreg_feature(cs, cs->gdb_num_regs)->num_regs,
+             "arm-m-system.xml", 0);
+ #ifndef CONFIG_USER_ONLY
+         if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+             gdb_register_coprocessor(cs,
+                 arm_gdb_get_m_secextreg, arm_gdb_set_m_secextreg,
+-                arm_gen_dynamic_m_secextreg_xml(cs, cs->gdb_num_regs),
++                arm_gen_dynamic_m_secextreg_feature(cs, cs->gdb_num_regs)->num_regs,
+                 "arm-m-secext.xml", 0);
+         }
+ #endif
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index d7b79a6589b..5286d5c6043 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -247,7 +247,7 @@ int aarch64_gdb_set_pauth_reg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0;
  }
  
-@@ -1516,7 +1516,7 @@ static const TypeInfo riscv_kvm_cpu_type_infos[] = {
-     {
-         .name = TYPE_RISCV_CPU_HOST,
-         .parent = TYPE_RISCV_CPU,
--        .instance_init = riscv_host_cpu_init,
-+        .class_init = riscv_host_cpu_class_init,
-     }
- };
- 
-diff --git a/target/riscv/machine.c b/target/riscv/machine.c
-index fdde243e040..4c8d9a66595 100644
---- a/target/riscv/machine.c
-+++ b/target/riscv/machine.c
-@@ -178,10 +178,9 @@ static const VMStateDescription vmstate_pointermasking = {
- 
- static bool rv128_needed(void *opaque)
+-static void output_vector_union_type(GString *s, int reg_width,
++static void output_vector_union_type(GDBFeatureBuilder *builder, int reg_width,
+                                      const char *name)
  {
--    RISCVCPU *cpu = opaque;
--    CPURISCVState *env = &cpu->env;
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(opaque);
+     struct TypeSize {
+@@ -282,10 +282,10 @@ static void output_vector_union_type(GString *s, int reg_width,
  
--    return env->misa_mxl_max == MXL_RV128;
-+    return mcc->misa_mxl_max == MXL_RV128;
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-        g_string_append_printf(s,
+-                               "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
+-                               name, vec_lanes[i].sz, vec_lanes[i].suffix,
+-                               vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
++        gdb_feature_builder_append_tag(
++            builder, "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
++            name, vec_lanes[i].sz, vec_lanes[i].suffix,
++            vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
+     }
+ 
+     /*
+@@ -296,86 +296,77 @@ static void output_vector_union_type(GString *s, int reg_width,
+     for (i = 0; i < ARRAY_SIZE(suf); i++) {
+         int bits = 8 << i;
+ 
+-        g_string_append_printf(s, "<union id=\"%sn%c\">", name, suf[i]);
++        gdb_feature_builder_append_tag(builder, "<union id=\"%sn%c\">",
++                                       name, suf[i]);
+         for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
+             if (vec_lanes[j].size == bits) {
+-                g_string_append_printf(s, "<field name=\"%c\" type=\"%s%c%c\"/>",
+-                                       vec_lanes[j].suffix, name,
+-                                       vec_lanes[j].sz, vec_lanes[j].suffix);
++                gdb_feature_builder_append_tag(
++                    builder, "<field name=\"%c\" type=\"%s%c%c\"/>",
++                    vec_lanes[j].suffix, name,
++                    vec_lanes[j].sz, vec_lanes[j].suffix);
+             }
+         }
+-        g_string_append(s, "</union>");
++        gdb_feature_builder_append_tag(builder, "</union>");
+     }
+ 
+     /* And now the final union of unions */
+-    g_string_append_printf(s, "<union id=\"%s\">", name);
++    gdb_feature_builder_append_tag(builder, "<union id=\"%s\">", name);
+     for (i = ARRAY_SIZE(suf) - 1; i >= 0; i--) {
+-        g_string_append_printf(s, "<field name=\"%c\" type=\"%sn%c\"/>",
+-                               suf[i], name, suf[i]);
++        gdb_feature_builder_append_tag(builder,
++                                       "<field name=\"%c\" type=\"%sn%c\"/>",
++                                       suf[i], name, suf[i]);
+     }
+-    g_string_append(s, "</union>");
++    gdb_feature_builder_append_tag(builder, "</union>");
  }
  
- static const VMStateDescription vmstate_rv128 = {
-@@ -372,7 +371,7 @@ const VMStateDescription vmstate_riscv_cpu = {
-         VMSTATE_UINTTL(env.vext_ver, RISCVCPU),
-         VMSTATE_UINT32(env.misa_mxl, RISCVCPU),
-         VMSTATE_UINT32(env.misa_ext, RISCVCPU),
--        VMSTATE_UINT32(env.misa_mxl_max, RISCVCPU),
-+        VMSTATE_UNUSED(4),
-         VMSTATE_UINT32(env.misa_ext_mask, RISCVCPU),
-         VMSTATE_UINTTL(env.priv, RISCVCPU),
-         VMSTATE_BOOL(env.virt_enabled, RISCVCPU),
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index ee17f65afb6..7f6712c81a4 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -152,10 +152,9 @@ static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu)
+-int arm_gen_dynamic_svereg_xml(CPUState *cs, int orig_base_reg)
++GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
  {
-     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
-     CPUClass *cc = CPU_CLASS(mcc);
--    CPURISCVState *env = &cpu->env;
+     ARMCPU *cpu = ARM_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
+     int reg_width = cpu->sve_max_vq * 128;
+     int pred_width = cpu->sve_max_vq * 16;
+-    int base_reg = orig_base_reg;
++    GDBFeatureBuilder builder;
++    char *name;
++    int reg = 0;
+     int i;
  
-     /* Validate that MISA_MXL is set properly. */
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
- #ifdef TARGET_RISCV64
-     case MXL_RV64:
-     case MXL_RV128:
-@@ -274,6 +273,7 @@ static void riscv_cpu_disable_priv_spec_isa_exts(RISCVCPU *cpu)
-  */
- void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
-     CPURISCVState *env = &cpu->env;
-     Error *local_err = NULL;
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_svereg_feature.desc,
++                             "org.gnu.gdb.aarch64.sve", "sve-registers.xml",
++                             base_reg);
  
-@@ -454,7 +454,7 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcb), true);
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcmp), true);
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcmt), true);
--        if (riscv_has_ext(env, RVF) && env->misa_mxl_max == MXL_RV32) {
-+        if (riscv_has_ext(env, RVF) && mcc->misa_mxl_max == MXL_RV32) {
-             cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcf), true);
-         }
-     }
-@@ -462,7 +462,7 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-     /* zca, zcd and zcf has a PRIV 1.12.0 restriction */
-     if (riscv_has_ext(env, RVC) && env->priv_ver >= PRIV_VERSION_1_12_0) {
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zca), true);
--        if (riscv_has_ext(env, RVF) && env->misa_mxl_max == MXL_RV32) {
-+        if (riscv_has_ext(env, RVF) && mcc->misa_mxl_max == MXL_RV32) {
-             cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcf), true);
-         }
-         if (riscv_has_ext(env, RVD)) {
-@@ -470,7 +470,7 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-         }
+     /* Create the vector union type. */
+-    output_vector_union_type(s, reg_width, "svev");
++    output_vector_union_type(&builder, reg_width, "svev");
+ 
+     /* Create the predicate vector type. */
+-    g_string_append_printf(s,
+-                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
+-                           pred_width / 8);
++    gdb_feature_builder_append_tag(
++        &builder, "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
++        pred_width / 8);
+ 
+     /* Define the vector registers. */
+     for (i = 0; i < 32; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"z%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" type=\"svev\"/>",
+-                               i, reg_width, base_reg++);
++        name = g_strdup_printf("z%d", i);
++        gdb_feature_builder_append_reg(&builder, name, reg_width, reg++,
++                                       "svev", NULL);
      }
  
--    if (env->misa_mxl_max != MXL_RV32 && cpu->cfg.ext_zcf) {
-+    if (mcc->misa_mxl_max != MXL_RV32 && cpu->cfg.ext_zcf) {
-         error_setg(errp, "Zcf extension is only relevant to RV32");
-         return;
+     /* fpscr & status registers */
+-    g_string_append_printf(s, "<reg name=\"fpsr\" bitsize=\"32\""
+-                           " regnum=\"%d\" group=\"float\""
+-                           " type=\"int\"/>", base_reg++);
+-    g_string_append_printf(s, "<reg name=\"fpcr\" bitsize=\"32\""
+-                           " regnum=\"%d\" group=\"float\""
+-                           " type=\"int\"/>", base_reg++);
++    gdb_feature_builder_append_reg(&builder, "fpsr", 32, reg++,
++                                   "int", "float");
++    gdb_feature_builder_append_reg(&builder, "fpcr", 32, reg++,
++                                   "int", "float");
+ 
+     /* Define the predicate registers. */
+     for (i = 0; i < 16; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"p%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" type=\"svep\"/>",
+-                               i, pred_width, base_reg++);
++        name = g_strdup_printf("p%d", i);
++        gdb_feature_builder_append_reg(&builder, name, pred_width, reg++,
++                                       "svep", NULL);
      }
-@@ -956,7 +956,7 @@ static void riscv_init_max_cpu_extensions(Object *obj)
-     const RISCVCPUMultiExtConfig *prop;
+-    g_string_append_printf(s,
+-                           "<reg name=\"ffr\" bitsize=\"%d\""
+-                           " regnum=\"%d\" group=\"vector\""
+-                           " type=\"svep\"/>",
+-                           pred_width, base_reg++);
++    gdb_feature_builder_append_reg(&builder, "ffr", pred_width, reg++,
++                                   "svep", "vector");
  
-     /* Enable RVG, RVJ and RVV that are disabled by default */
--    riscv_cpu_set_misa(env, env->misa_mxl, env->misa_ext | RVG | RVJ | RVV);
-+    riscv_cpu_set_misa_ext(env, env->misa_ext | RVG | RVJ | RVV);
+     /* Define the vector length pseudo-register. */
+-    g_string_append_printf(s,
+-                           "<reg name=\"vg\" bitsize=\"64\""
+-                           " regnum=\"%d\" type=\"int\"/>",
+-                           base_reg++);
++    gdb_feature_builder_append_reg(&builder, "vg", 64, reg++, "int", NULL);
  
-     for (prop = riscv_cpu_extensions; prop && prop->name; prop++) {
-         isa_ext_update_enabled(cpu, prop->offset, true);
-diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-index f0be79bb160..7e383c5eebf 100644
---- a/target/riscv/translate.c
-+++ b/target/riscv/translate.c
-@@ -1167,6 +1167,7 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
- {
-     DisasContext *ctx = container_of(dcbase, DisasContext, base);
-     CPURISCVState *env = cpu_env(cs);
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     uint32_t tb_flags = ctx->base.tb->flags;
+-    g_string_append_printf(s, "</feature>");
++    gdb_feature_builder_end(&builder);
  
-@@ -1188,7 +1189,7 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     ctx->cfg_vta_all_1s = cpu->cfg.rvv_ta_all_1s;
-     ctx->vstart_eq_zero = FIELD_EX32(tb_flags, TB_FLAGS, VSTART_EQ_ZERO);
-     ctx->vl_eq_vlmax = FIELD_EX32(tb_flags, TB_FLAGS, VL_EQ_VLMAX);
--    ctx->misa_mxl_max = env->misa_mxl_max;
-+    ctx->misa_mxl_max = mcc->misa_mxl_max;
-     ctx->xl = FIELD_EX32(tb_flags, TB_FLAGS, XL);
-     ctx->address_xl = FIELD_EX32(tb_flags, TB_FLAGS, AXL);
-     ctx->cs = cs;
+-    info->desc = g_string_free(s, false);
+-    info->num = base_reg - orig_base_reg;
+-    return info->num;
++    return &cpu->dyn_svereg_feature.desc;
+ }
 -- 
 2.39.2

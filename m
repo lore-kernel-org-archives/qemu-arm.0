@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p7-20020adfe607000000b00336843ae919sm1571022wrm.49.2023.12.21.02.46.59
+        by smtp.gmail.com with ESMTPSA id l2-20020adfe582000000b003366cf8bda4sm1743661wrm.41.2023.12.21.02.46.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Dec 2023 02:47:01 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8A0115F8DC;
+	by draig.lan (Postfix) with ESMTP id 764945F8DA;
 	Thu, 21 Dec 2023 10:38:20 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,42 +51,42 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH 17/40] tests/unit: Bump test-aio-multithread test timeout to 2 minutes
-Date: Thu, 21 Dec 2023 10:37:55 +0000
-Message-Id: <20231221103818.1633766-18-alex.bennee@linaro.org>
+Subject: [PATCH 16/40] tests/qtest: Bump the device-introspect-test timeout to 12 minutes
+Date: Thu, 21 Dec 2023 10:37:54 +0000
+Message-Id: <20231221103818.1633766-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kI/4XHomnrT0
+X-TUID: qHK1c9NaTrAD
 
 From: Thomas Huth <thuth@redhat.com>
 
-When running the tests in slow mode on a very loaded system and with
---enable-debug, the test-aio-multithread can take longer than 1 minute.
-Bump the timeout to two minutes to make sure that it also passes in
-such situations.
+When running the test in slow mode on a very loaded system with the
+arm/aarch64 target and with --enable-debug, it can take longer than
+10 minutes to finish the introspection test. Bump the timeout to twelve
+minutes to make sure that it also finishes in such situations.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-14-thuth@redhat.com>
+Message-Id: <20231215070357.10888-13-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/unit/meson.build | 1 +
+ tests/qtest/meson.build | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index a05d4710904..0b0c7c14115 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -172,6 +172,7 @@ test_env.set('G_TEST_SRCDIR', meson.current_source_dir())
- test_env.set('G_TEST_BUILDDIR', meson.current_build_dir())
- 
- slow_tests = {
-+  'test-aio-multithread' : 120,
-   'test-crypto-tlscredsx509': 45,
-   'test-crypto-tlssession': 45
- }
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 6e8d00d53cb..16916ae857b 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -1,6 +1,7 @@
+ slow_qtests = {
+   'aspeed_smc-test': 360,
+   'bios-tables-test' : 540,
++  'device-introspect-test' : 720,
+   'migration-test' : 480,
+   'npcm7xx_pwm-test': 300,
+   'qom-test' : 900,
 -- 
 2.39.2

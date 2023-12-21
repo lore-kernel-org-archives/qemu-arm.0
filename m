@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z6-20020a5d4c86000000b003365fb3247csm1730355wrs.32.2023.12.21.02.38.31
+        by smtp.gmail.com with ESMTPSA id n35-20020a05600c3ba300b004064e3b94afsm10972520wms.4.2023.12.21.02.46.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Dec 2023 02:38:34 -0800 (PST)
+        Thu, 21 Dec 2023 02:47:01 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C06835F90B;
-	Thu, 21 Dec 2023 10:38:22 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 8D6CF5F8F3;
+	Thu, 21 Dec 2023 10:38:21 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -52,273 +52,227 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Bin Meng <bin.meng@windriver.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 37/40] plugins: add an API to read registers
-Date: Thu, 21 Dec 2023 10:38:15 +0000
-Message-Id: <20231221103818.1633766-38-alex.bennee@linaro.org>
+Subject: [PATCH 27/40] target/riscv: Use GDBFeature for dynamic XML
+Date: Thu, 21 Dec 2023 10:38:05 +0000
+Message-Id: <20231221103818.1633766-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231221103818.1633766-1-alex.bennee@linaro.org>
 References: <20231221103818.1633766-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kXsvo5HlwkFm
+X-TUID: iSaYbFGFm8kW
 
-We can only request a list of registers once the vCPU has been
-initialised so the user needs to use either call the get function on
-vCPU initialisation or during the translation phase.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-We don't expose the reg number to the plugin instead hiding it behind
-an opaque handle. This allows for a bit of future proofing should the
-internals need to be changed while also being hashed against the
-CPUClass so we can handle different register sets per-vCPU in
-hetrogenous situations.
+In preparation for a change to use GDBFeature as a parameter of
+gdb_register_coprocessor(), convert the internal representation of
+dynamic feature from plain XML to GDBFeature.
 
-Having an internal state within the plugins also allows us to expand
-the interface in future (for example providing callbacks on register
-change if the translator can track changes).
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20231213-gdb-v17-3-777047380591@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - use new get whole list api, and expose upwards
+ target/riscv/cpu.h     |  5 +--
+ target/riscv/cpu.c     |  4 +--
+ target/riscv/gdbstub.c | 79 +++++++++++++++++++-----------------------
+ 3 files changed, 40 insertions(+), 48 deletions(-)
 
-vAJB:
-
-The main difference to Akikio's version is hiding the gdb register
-detail from the plugin for the reasons described above.
----
- include/qemu/qemu-plugin.h   |  53 +++++++++++++++++-
- plugins/api.c                | 102 +++++++++++++++++++++++++++++++++++
- plugins/qemu-plugins.symbols |   2 +
- 3 files changed, 155 insertions(+), 2 deletions(-)
-
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 4daab6efd29..e3b35c6ee81 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -11,6 +11,7 @@
- #ifndef QEMU_QEMU_PLUGIN_H
- #define QEMU_QEMU_PLUGIN_H
- 
-+#include <glib.h>
- #include <inttypes.h>
- #include <stdbool.h>
- #include <stddef.h>
-@@ -227,8 +228,8 @@ struct qemu_plugin_insn;
-  * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
-  * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
-  *
-- * Note: currently unused, plugins cannot read or change system
-- * register state.
-+ * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
-+ * system register state.
-  */
- enum qemu_plugin_cb_flags {
-     QEMU_PLUGIN_CB_NO_REGS,
-@@ -708,4 +709,52 @@ uint64_t qemu_plugin_end_code(void);
- QEMU_PLUGIN_API
- uint64_t qemu_plugin_entry_code(void);
- 
-+/** struct qemu_plugin_register - Opaque handle for a translated instruction */
-+struct qemu_plugin_register;
-+
-+/**
-+ * typedef qemu_plugin_reg_descriptor - register descriptions
-+ *
-+ * @name: register name
-+ * @handle: opaque handle for retrieving value with qemu_plugin_read_register
-+ * @feature: optional feature descriptor, can be NULL
-+ */
-+typedef struct {
-+    char name[32];
-+    struct qemu_plugin_register *handle;
-+    const char *feature;
-+} qemu_plugin_reg_descriptor;
-+
-+/**
-+ * qemu_plugin_get_registers() - return register list for vCPU
-+ * @vcpu_index: vcpu to query
-+ *
-+ * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
-+ * frees the array (but not the const strings).
-+ *
-+ * As the register set of a given vCPU is only available once
-+ * the vCPU is initialised if you want to monitor registers from the
-+ * start you should call this from a qemu_plugin_register_vcpu_init_cb()
-+ * callback.
-+ */
-+GArray * qemu_plugin_get_registers(unsigned int vcpu_index);
-+
-+/**
-+ * qemu_plugin_read_register() - read register
-+ *
-+ * @vcpu: vcpu index
-+ * @handle: a @qemu_plugin_reg_handle handle
-+ * @buf: A GByteArray for the data owned by the plugin
-+ *
-+ * This function is only available in a context that register read access is
-+ * explicitly requested.
-+ *
-+ * Returns the size of the read register. The content of @buf is in target byte
-+ * order. On failure returns -1
-+ */
-+int qemu_plugin_read_register(unsigned int vcpu,
-+                              struct qemu_plugin_register *handle,
-+                              GByteArray *buf);
-+
-+
- #endif /* QEMU_QEMU_PLUGIN_H */
-diff --git a/plugins/api.c b/plugins/api.c
-index ac39cdea0b3..fc1f26e3440 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -8,6 +8,7 @@
-  *
-  *  qemu_plugin_tb
-  *  qemu_plugin_insn
-+ *  qemu_plugin_register
-  *
-  * Which can then be passed back into the API to do additional things.
-  * As such all the public functions in here are exported in
-@@ -35,10 +36,12 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
- #include "qemu/plugin.h"
- #include "qemu/log.h"
- #include "tcg/tcg.h"
- #include "exec/exec-all.h"
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 060b7f69a74..ad7236d7547 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -24,6 +24,7 @@
+ #include "hw/registerfields.h"
+ #include "hw/qdev-properties.h"
+ #include "exec/cpu-defs.h"
 +#include "exec/gdbstub.h"
- #include "exec/ram_addr.h"
- #include "disas/disas.h"
- #include "plugin.h"
-@@ -435,3 +438,102 @@ uint64_t qemu_plugin_entry_code(void)
- #endif
-     return entry;
+ #include "qemu/cpu-float.h"
+ #include "qom/object.h"
+ #include "qemu/int128.h"
+@@ -424,8 +425,8 @@ struct ArchCPU {
+ 
+     CPURISCVState env;
+ 
+-    char *dyn_csr_xml;
+-    char *dyn_vreg_xml;
++    GDBFeature dyn_csr_feature;
++    GDBFeature dyn_vreg_feature;
+ 
+     /* Configuration Settings */
+     RISCVCPUConfig cfg;
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index b799f133604..673e937a5d8 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -1534,9 +1534,9 @@ static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
+     RISCVCPU *cpu = RISCV_CPU(cs);
+ 
+     if (strcmp(xmlname, "riscv-csr.xml") == 0) {
+-        return cpu->dyn_csr_xml;
++        return cpu->dyn_csr_feature.xml;
+     } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
+-        return cpu->dyn_vreg_xml;
++        return cpu->dyn_vreg_feature.xml;
+     }
+ 
+     return NULL;
+diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
+index 365040228a1..76b72a95954 100644
+--- a/target/riscv/gdbstub.c
++++ b/target/riscv/gdbstub.c
+@@ -214,13 +214,14 @@ static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
+     return 0;
  }
-+
-+/*
-+ * Register handles
-+ *
-+ * The plugin infrastructure keeps hold of these internal data
-+ * structures which are presented to plugins as opaque handles. They
-+ * are global to the system and therefor additions to the hash table
-+ * must be protected by the @reg_handle_lock.
-+ *
-+ * In order to future proof for up-coming heterogeneous work we want
-+ * different entries for each CPU type while sharing them in the
-+ * common case of multiple cores of the same type.
-+ */
-+
-+static QemuMutex reg_handle_lock;
-+
-+struct qemu_plugin_register {
+ 
+-static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
++static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
+ {
+     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+-    GString *s = g_string_new(NULL);
++    GDBFeatureBuilder builder;
+     riscv_csr_predicate_fn predicate;
 +    const char *name;
-+    int gdb_reg_num;
-+};
+     int bitsize = 16 << mcc->misa_mxl_max;
+     int i;
+ 
+@@ -233,9 +234,9 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
+         bitsize = 64;
+     }
+ 
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.csr\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_csr_feature,
++                             "org.gnu.gdb.riscv.csr", "riscv-csr.xml",
++                             base_reg);
+ 
+     for (i = 0; i < CSR_TABLE_SIZE; i++) {
+         if (env->priv_ver < csr_ops[i].min_priv_ver) {
+@@ -243,72 +244,64 @@ static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
+         }
+         predicate = csr_ops[i].predicate;
+         if (predicate && (predicate(env, i) == RISCV_EXCP_NONE)) {
+-            if (csr_ops[i].name) {
+-                g_string_append_printf(s, "<reg name=\"%s\"", csr_ops[i].name);
+-            } else {
+-                g_string_append_printf(s, "<reg name=\"csr%03x\"", i);
++            g_autofree char *dynamic_name = NULL;
++            name = csr_ops[i].name;
++            if (!name) {
++                dynamic_name = g_strdup_printf("csr%03x", i);
++                name = dynamic_name;
+             }
+-            g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
+-            g_string_append_printf(s, " regnum=\"%d\"/>", base_reg + i);
 +
-+static GHashTable *reg_handles; /* hash table of PluginReg */
-+
-+/* Generate a stable key - would xxhash be overkill? */
-+static gpointer cpu_plus_reg_to_key(CPUState *cs, int gdb_regnum)
-+{
-+    uintptr_t key = (uintptr_t) cs->cc;
-+    key ^= gdb_regnum;
-+    return GUINT_TO_POINTER(key);
-+}
-+
-+/*
-+ * Create register handles.
-+ *
-+ * We need to create a handle for each register so the plugin
-+ * infrastructure can call gdbstub to read a register. We also
-+ * construct a result array with those handles and some ancillary data
-+ * the plugin might find useful.
-+ */
-+
-+static GArray * create_register_handles(CPUState *cs, GArray *gdbstub_regs) {
-+    GArray *find_data = g_array_new(true, true, sizeof(qemu_plugin_reg_descriptor));
-+
-+    WITH_QEMU_LOCK_GUARD(&reg_handle_lock) {
-+
-+        if (!reg_handles) {
-+            reg_handles = g_hash_table_new(g_direct_hash, g_direct_equal);
-+        }
-+
-+        for (int i=0; i < gdbstub_regs->len; i++) {
-+            GDBRegDesc *grd = &g_array_index(gdbstub_regs, GDBRegDesc, i);
-+            gpointer key = cpu_plus_reg_to_key(cs, grd->gdb_reg);
-+            struct qemu_plugin_register *val = g_hash_table_lookup(reg_handles, key);
-+
-+            /* Doesn't exist, create one */
-+            if (!val) {
-+                val = g_new0(struct qemu_plugin_register, 1);
-+                val->gdb_reg_num = grd->gdb_reg;
-+                val->name = grd->name;
-+
-+                g_hash_table_insert(reg_handles, key, val);
-+            }
-+
-+            /* Create a record for the plugin */
-+            qemu_plugin_reg_descriptor desc = {
-+                .handle = val,
-+                .feature = g_intern_string(grd->feature_name)
-+            };
-+            g_strlcpy(desc.name, val->name, sizeof(desc.name));
-+            g_array_append_val(find_data, desc);
-+        }
-+    }
-+
-+    return find_data;
-+}
-+
-+GArray * qemu_plugin_get_registers(unsigned int vcpu)
-+{
-+    CPUState *cs = qemu_get_cpu(vcpu);
-+    if (cs) {
-+        g_autoptr(GArray) regs = gdb_get_register_list(cs);
-+        return regs->len ? create_register_handles(cs, regs) : NULL;
-+    } else {
-+        return NULL;
-+    }
-+}
-+
-+int qemu_plugin_read_register(unsigned int vcpu, struct qemu_plugin_register *reg, GByteArray *buf)
-+{
-+    CPUState *cs = qemu_get_cpu(vcpu);
-+    /* assert with debugging on? */
-+    return gdb_read_register(cs, buf, reg->gdb_reg_num);
-+}
-+
-+static void __attribute__((__constructor__)) qemu_api_init(void)
-+{
-+    qemu_mutex_init(&reg_handle_lock);
-+
-+}
-diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-index 71f6c90549d..6963585c1ea 100644
---- a/plugins/qemu-plugins.symbols
-+++ b/plugins/qemu-plugins.symbols
-@@ -3,6 +3,7 @@
-   qemu_plugin_end_code;
-   qemu_plugin_entry_code;
-   qemu_plugin_get_hwaddr;
-+  qemu_plugin_get_registers;
-   qemu_plugin_hwaddr_device_name;
-   qemu_plugin_hwaddr_is_io;
-   qemu_plugin_hwaddr_phys_addr;
-@@ -20,6 +21,7 @@
-   qemu_plugin_n_vcpus;
-   qemu_plugin_outs;
-   qemu_plugin_path_to_binary;
-+  qemu_plugin_read_register;
-   qemu_plugin_register_atexit_cb;
-   qemu_plugin_register_flush_cb;
-   qemu_plugin_register_vcpu_exit_cb;
++            gdb_feature_builder_append_reg(&builder, name, bitsize, i,
++                                           "int", NULL);
+         }
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
+-
+-    cpu->dyn_csr_xml = g_string_free(s, false);
++    gdb_feature_builder_end(&builder);
+ 
+ #if !defined(CONFIG_USER_ONLY)
+     env->debugger = false;
+ #endif
+ 
+-    return CSR_TABLE_SIZE;
++    return &cpu->dyn_csr_feature;
+ }
+ 
+-static int ricsv_gen_dynamic_vector_xml(CPUState *cs, int base_reg)
++static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
+ {
+     RISCVCPU *cpu = RISCV_CPU(cs);
+-    GString *s = g_string_new(NULL);
+-    g_autoptr(GString) ts = g_string_new("");
++    GDBFeatureBuilder builder;
+     int reg_width = cpu->cfg.vlen;
+-    int num_regs = 0;
+     int i;
+ 
+-    g_string_printf(s, "<?xml version=\"1.0\"?>");
+-    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.riscv.vector\">");
++    gdb_feature_builder_init(&builder, &cpu->dyn_vreg_feature,
++                             "org.gnu.gdb.riscv.vector", "riscv-vector.xml",
++                             base_reg);
+ 
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+         int count = reg_width / vec_lanes[i].size;
+-        g_string_printf(ts, "%s", vec_lanes[i].id);
+-        g_string_append_printf(s,
+-                               "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+-                               ts->str, vec_lanes[i].gdb_type, count);
++        gdb_feature_builder_append_tag(
++            &builder, "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
++            vec_lanes[i].id, vec_lanes[i].gdb_type, count);
+     }
+ 
+     /* Define unions */
+-    g_string_append_printf(s, "<union id=\"riscv_vector\">");
++    gdb_feature_builder_append_tag(&builder, "<union id=\"riscv_vector\">");
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-        g_string_append_printf(s, "<field name=\"%c\" type=\"%s\"/>",
+-                               vec_lanes[i].suffix,
+-                               vec_lanes[i].id);
++        gdb_feature_builder_append_tag(&builder,
++                                       "<field name=\"%c\" type=\"%s\"/>",
++                                       vec_lanes[i].suffix, vec_lanes[i].id);
+     }
+-    g_string_append(s, "</union>");
++    gdb_feature_builder_append_tag(&builder, "</union>");
+ 
+     /* Define vector registers */
+     for (i = 0; i < 32; i++) {
+-        g_string_append_printf(s,
+-                               "<reg name=\"v%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" group=\"vector\""
+-                               " type=\"riscv_vector\"/>",
+-                               i, reg_width, base_reg++);
+-        num_regs++;
++        gdb_feature_builder_append_reg(&builder, g_strdup_printf("v%d", i),
++                                       reg_width, i, "riscv_vector", "vector");
+     }
+ 
+-    g_string_append_printf(s, "</feature>");
++    gdb_feature_builder_end(&builder);
+ 
+-    cpu->dyn_vreg_xml = g_string_free(s, false);
+-    return num_regs;
++    return &cpu->dyn_vreg_feature;
+ }
+ 
+ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+@@ -324,10 +317,9 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+                                  32, "riscv-32bit-fpu.xml", 0);
+     }
+     if (env->misa_ext & RVV) {
+-        int base_reg = cs->gdb_num_regs;
+         gdb_register_coprocessor(cs, riscv_gdb_get_vector,
+                                  riscv_gdb_set_vector,
+-                                 ricsv_gen_dynamic_vector_xml(cs, base_reg),
++                                 ricsv_gen_dynamic_vector_feature(cs, cs->gdb_num_regs)->num_regs,
+                                  "riscv-vector.xml", 0);
+     }
+     switch (mcc->misa_mxl_max) {
+@@ -347,9 +339,8 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
+     }
+ 
+     if (cpu->cfg.ext_zicsr) {
+-        int base_reg = cs->gdb_num_regs;
+         gdb_register_coprocessor(cs, riscv_gdb_get_csr, riscv_gdb_set_csr,
+-                                 riscv_gen_dynamic_csr_xml(cs, base_reg),
++                                 riscv_gen_dynamic_csr_feature(cs, cs->gdb_num_regs)->num_regs,
+                                  "riscv-csr.xml", 0);
+     }
+ }
 -- 
 2.39.2

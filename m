@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:3017:b0:a26:c056:f233 with SMTP id 23csp16455ejz;
-        Thu, 21 Dec 2023 20:37:34 -0800 (PST)
-X-Received: by 2002:a05:6808:3847:b0:3bb:74a5:4774 with SMTP id ej7-20020a056808384700b003bb74a54774mr1067476oib.20.1703219853839;
-        Thu, 21 Dec 2023 20:37:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703219853; cv=none;
+Received: by 2002:a17:906:3017:b0:a26:c056:f233 with SMTP id 23csp16546ejz;
+        Thu, 21 Dec 2023 20:37:55 -0800 (PST)
+X-Received: by 2002:a05:6808:1415:b0:3bb:6d9b:845 with SMTP id w21-20020a056808141500b003bb6d9b0845mr849571oiv.44.1703219875432;
+        Thu, 21 Dec 2023 20:37:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703219875; cv=none;
         d=google.com; s=arc-20160816;
-        b=HVC0jqii1mF7zXwNFvYOEEaqWFztZHGEoIguPHNfhUFulJURPMBhN4CO4fYqEXzEAY
-         anvhYM+ydb2WQhhnXFSiiWY+r6yt6o6f1O8SHinC5Yo7LZlpu70VRT91A571sVKTkaXZ
-         DGq5OTVWBBHA+6787Lic03DOlDsCHvKPjY7IuqSPn7d58TAv79FtD9EWwr2NM1xYm4z5
-         aVdkaF5tJTaCZBahIcDVXHoxoegiaoeUJ8nLS1ewjVwst9BjQ9OxxsGD8/uaSYFhon0X
-         5VysuwGuK02JNPqcI0uHSwIMlkH9HRWdrf/EiCsZFT96/mSLkqG+WRfH0CkixzzW7GrR
-         x7RA==
+        b=Muhu66Ib+oTnfVUlGT3In3MrGmNCaFmsTyT8UPlG9Bwo2ZT8019MhVl/i+os7XHIpW
+         uPoqBWZvJM9elf5SqXOjOwcbcRGG3Y5nVfSdJ5KhPDD5Nv0y5xxv16MYTANbQZfncqAS
+         8XklDdOUk5/jcrAlkOprNaqcYKAFMm4/bniSBHOE5wt9wQcaK0zZZqf0QPwCu2uVT9rA
+         kkY8wtD90xewc9MkxE4rvLapHRzODPfQIMrDxitoz8dIMbzsIVjUxv1jU0Dj6+noXjEv
+         nz+zFHOah2IbhpTzHgBlxL6xH7JrngEBkJSIZ0TEtxB9JpPBXieCfdKRds+d6b5bhbfW
+         6B7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:references:to:from:subject:cc:message-id:date
          :content-transfer-encoding:mime-version:dkim-signature;
-        bh=6vCrTpKSPPE7AfY3YWMhSKqdsTSH0jQJ5wDqlM3mFIs=;
-        fh=hy0XZNBjKm8+nfYjz+Vu5MJu7wlLZT1L9ZH4fkol/uk=;
-        b=zEODIwc1810vF5sidw3ywRxhvXrfepNT9gnFdoe1mjgbN1caUEi6SqAIl5kFB86+o2
-         R2IJrT2p/jBW4tC365VdIl26mezUupv9tR25mLw4nqAS3HTNaJK5antcvfgrYNtI7nxI
-         BvhkZIa461zv5FOvTOUDiAg/uhFCMUbZDHN/T4Hu9Mt/UMq9H7uXJN29fy2q/Nb0j4qa
-         eqo6mkjltkTiV9y8m3ioJ9N7tm+amrnClKexwtpIN2weobtkf+KSvVfNKsJTa1YfjZcm
-         ClIEDxeSCfYf/Vj56umQCrmCyrxX2B9J9HuKOA1DaDIs9D3GinwVoK6aEI1kR44Jwd9b
-         jIKA==
+        bh=ubXue0ZHyXpELIbpnzirK9Dyfve4h1EaxAGTUFo0d/k=;
+        fh=Hs0NBelrbu8Hrccpz+I/RDli2hRUqgrAXJmBwEce9ao=;
+        b=DOVfmy4ds8rHykrCgl2Olf4PUO3Kl3YQxZ0ZSxbTp8QoZCMfxJUfInLfQxDogs6CCs
+         VzZnwu2e3zqj+Jl18ml+ItXUs8shZMz1Wsa/xJIWq3BYnjR2KZfQEYeIX3DZZn4RL0E+
+         a2V9b0XBPoUWa3VS7x3/5uLcZQBrthDxmA7MeQruV9NPgL0u1f3TqB5nkR+ccecY4bHA
+         Sq8GXAUR9nLpshTZ6yn7lQSTNUGC75K567ErEdf6uSDe3pM/sGJ2DQWn4GdF+k79Q3lm
+         4GrmyK/rZx0jRZR2nq5dZ0Sll6Tw/LZzq6UBAIwaJotgoM8xtI6NeNmWPy4cGmpJlFM5
+         RZhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WjL9Obk8;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YBG1ROTK;
        spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <npiggin@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t27-20020a056808159b00b003bb787237a9sor1880430oiw.11.2023.12.21.20.37.33
+        by mx.google.com with SMTPS id o1-20020a05680803c100b003bb744333a5sor1934490oie.3.2023.12.21.20.37.55
         (Google Transport Security);
-        Thu, 21 Dec 2023 20:37:33 -0800 (PST)
+        Thu, 21 Dec 2023 20:37:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WjL9Obk8;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YBG1ROTK;
        spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703219853; x=1703824653; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1703219874; x=1703824674; darn=linaro.org;
         h=in-reply-to:references:to:from:subject:cc:message-id:date
          :content-transfer-encoding:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6vCrTpKSPPE7AfY3YWMhSKqdsTSH0jQJ5wDqlM3mFIs=;
-        b=WjL9Obk86EHPFK5bYKJSzw32lWIJrl9nXftpBdNDE385/Mybd1RjkvoQfO+KLPHF8k
-         4OFoWu01ByhbROzJwyhSxi4N2WSW/tvu41kcfte3bH4+4ItYkz3KZCEKmQ0D+kHbnffT
-         D65mPHmClBpkOQooBUAd8rLebSe1PlGOHcwrFYiYrF82cU4sjEuTMy3sqwm7CafTsl9E
-         M0M6YEhQn/N4Z7T/yAJqESRCAEzjNB7W9M3/hGpj4HI/GJBoZWMenZgUOdBIva5/RKVu
-         rawBqmalYpgKzHnuCXOcgwfZ4T4J1BZGFiC73mxG2GXQIohJ3mAaJzeQD5G3gfhALDvo
-         7k8A==
+        bh=ubXue0ZHyXpELIbpnzirK9Dyfve4h1EaxAGTUFo0d/k=;
+        b=YBG1ROTKNaA1caelkgcnCJDNALJVVBfJDVsexJAX/lLj6hWNm1Uqa0uec8Uoq0hMcj
+         aqlMCQSqptESQUCTK3WDMmgJj6kK4MTTZbmohmrjKL0MP3Rq5gog4IxrtbVUeJCQnXFA
+         rGjmj4RXpn4bwgJiYuCTpoyA8rIekm/z2AIxytxUJId1en9wUNt6pEu4uBXSE8k00Qxv
+         BdY4jiF3G7jraa10XBy6VnLhUAGYfwQ7xeJVeUzTlj6gAo36Hg6R5cjwQ+a/pmPgMR9E
+         M+dtash4oALM+sguBh8lgkU0dv3L0TNUerrEg8walgsTPep//aaMf4HQ0gXjUiYTUUys
+         4L7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703219853; x=1703824653;
+        d=1e100.net; s=20230601; t=1703219874; x=1703824674;
         h=in-reply-to:references:to:from:subject:cc:message-id:date
          :content-transfer-encoding:mime-version:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=6vCrTpKSPPE7AfY3YWMhSKqdsTSH0jQJ5wDqlM3mFIs=;
-        b=BmDL+xRCG3Fddyv3k2s0WtZEjaUwZkr8awgUP+Ywbk4Dlu1Olh3l+T8U+gbZFUQxY1
-         3wmpKyQKzcqoOM1PNYz1n7FfBo7ZE04yQi/Uyz7rh8F+oD1nXXMb/78BE+RBUsCeBr1o
-         vmrzNejXPaDrHbn2ZvT58SqTudM9Uw3Dhg7aas1qJ/hVw1iVyx6bm8SKiKjFrY9MeQ1I
-         1Xi19km8ebaNgy05NoEYump15liLrk2ztZNtDoG7JRsgOH1OJkjUzqwKrVo7iFjaRwmQ
-         yxEJ/uV7RJE4xirME5bsgs6DaaDHiJk4r9rx5g51DSxKnG3HIpT34zfeshz+VOLUX7YA
-         CrWA==
-X-Gm-Message-State: AOJu0Yyx7AnovkteFUvvWzcX3vC4RdHuW1DUkxIarR7wsjDTgV81UW0s
-	HMVOMlEdlJgHmi4H9G3y6/+AyO4Z2e8=
-X-Google-Smtp-Source: AGHT+IHyqKiLgDwap+e6Ff1oyWMkk2SvYahvVlCSei8SjPQGCsfhaHRHE2GxXfgIrKsVJYfS3tj9YA==
-X-Received: by 2002:a05:6359:4c19:b0:170:ec2e:4367 with SMTP id kj25-20020a0563594c1900b00170ec2e4367mr1074635rwc.1.1703219852827;
-        Thu, 21 Dec 2023 20:37:32 -0800 (PST)
+        bh=ubXue0ZHyXpELIbpnzirK9Dyfve4h1EaxAGTUFo0d/k=;
+        b=PKCY1p9EvYkLnfeogaLN4o5xAVX85oFv0yJGZAjA+T7WC3rPPJ4KSCRXGWSUKYWY42
+         BW/P3aukAr6t39ByxAq0nDsbP5lQt20dHvIBAImjOEl5I7WJZB/xsbuzmq95Ld4qnaGo
+         EKszDIUEzxFuJgzDZM3AZpQEesyDRumsx8Rv/5UqvL6JXUtS89edoAakHfUbln8ecMlf
+         Ok2aXw6c4dbIGec9mTNYbNOx84uL0xdSQd3kjt2OV18DTASv1XcmfpRjmU1uAhAKeuhF
+         ySMVDq1EqVfD0tuE/pvdZNXgnLLN4yAy469jUwF9AlHKKV3HzRC/5/s8vRz3R5ehSpuu
+         z5ug==
+X-Gm-Message-State: AOJu0Yzb63wNf/7WDDoQQl23Txy30Z6iscUoNuk5UYpcrTBu9DfE/W5q
+	sS0OPpoIeqL/Vlf9ZAWmRf7Xa8VR2MU=
+X-Google-Smtp-Source: AGHT+IF7n4AUbnBmECv575kazZeQ++dtW9tAC2x/p6q/pARNv7y29BoLqvElYyZiMFOUNvxEZ23OQA==
+X-Received: by 2002:a05:6808:128a:b0:3bb:7174:eb with SMTP id a10-20020a056808128a00b003bb717400ebmr926627oiw.60.1703219874450;
+        Thu, 21 Dec 2023 20:37:54 -0800 (PST)
 Return-Path: <npiggin@gmail.com>
 Received: from localhost ([1.146.126.39])
-        by smtp.gmail.com with ESMTPSA id d18-20020a17090b005200b0028b2ff2208esm6384674pjt.19.2023.12.21.20.37.21
+        by smtp.gmail.com with ESMTPSA id y22-20020a056a00191600b006cef521b151sm2433777pfi.168.2023.12.21.20.37.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 Dec 2023 20:37:32 -0800 (PST)
+        Thu, 21 Dec 2023 20:37:54 -0800 (PST)
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 22 Dec 2023 14:37:19 +1000
-Message-Id: <CXUL1KDTLCWC.3N2HSO3O5U9LM@wheely>
+Date: Fri, 22 Dec 2023 14:37:42 +1000
+Message-Id: <CXUL1V42EKAH.2TYZ3ZFJPHGZ5@wheely>
 Cc: "Ilya Leoshkevich" <iii@linux.ibm.com>, "Peter Xu" <peterx@redhat.com>,
  "Liu Zhiwei" <zhiwei_liu@linux.alibaba.com>, "Peter Maydell"
  <peter.maydell@linaro.org>, "Mark Cave-Ayland"
@@ -86,38 +86,42 @@ Cc: "Ilya Leoshkevich" <iii@linux.ibm.com>, "Peter Xu" <peterx@redhat.com>,
  Losh" <imp@bsdimp.com>, "Claudio Fontana" <cfontana@suse.de>, "Brian Cain"
  <bcain@quicinc.com>, "Daniel Henrique Barboza" <danielhb413@gmail.com>,
  "Richard Henderson" <richard.henderson@linaro.org>, "Thomas Huth"
- <thuth@redhat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "David Gibson" <david@gibson.dropbear.id.au>, "Harsh Prateek Bora"
- <harshpb@linux.ibm.com>
-Subject: Re: [PATCH 09/24] hw/ppc/spapr_hcall: Remove unused
- 'exec/exec-all.h' included header
+ <thuth@redhat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Subject: Re: [PATCH 17/24] target/ppc/excp_helper: Avoid 'abi_ptr' in system
+ emulation
 From: "Nicholas Piggin" <npiggin@gmail.com>
 To: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  <qemu-devel@nongnu.org>
 X-Mailer: aerc 0.15.2
 References: <20231211212003.21686-1-philmd@linaro.org>
- <20231211212003.21686-10-philmd@linaro.org>
-In-Reply-To: <20231211212003.21686-10-philmd@linaro.org>
-X-TUID: hz+VAxUyw9XK
+ <20231211212003.21686-18-philmd@linaro.org>
+In-Reply-To: <20231211212003.21686-18-philmd@linaro.org>
+X-TUID: aCF03UMbkmkl
 
 On Tue Dec 12, 2023 at 7:19 AM AEST, Philippe Mathieu-Daud=C3=A9 wrote:
+> 'abi_ptr' is a user specific type. The system emulation
+> equivalent is 'target_ulong'. Use it in ppc_ldl_code()
+> to emphasis this is not an user emulation function.
+>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 Acked-by: Nicholas Piggin <npiggin@gmail.com>
 
 > ---
->  hw/ppc/spapr_hcall.c | 1 -
->  1 file changed, 1 deletion(-)
+>  target/ppc/excp_helper.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
-> index 522a2396c7..fcefd1d1c7 100644
-> --- a/hw/ppc/spapr_hcall.c
-> +++ b/hw/ppc/spapr_hcall.c
-> @@ -8,7 +8,6 @@
->  #include "qemu/main-loop.h"
->  #include "qemu/module.h"
->  #include "qemu/error-report.h"
-> -#include "exec/exec-all.h"
->  #include "exec/tb-flush.h"
->  #include "helper_regs.h"
->  #include "hw/ppc/ppc.h"
+> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+> index a42743a3e0..3d7c9bbf1a 100644
+> --- a/target/ppc/excp_helper.c
+> +++ b/target/ppc/excp_helper.c
+> @@ -142,7 +142,7 @@ static inline bool insn_need_byteswap(CPUArchState *e=
+nv)
+>      return !!(env->msr & ((target_ulong)1 << MSR_LE));
+>  }
+> =20
+> -static uint32_t ppc_ldl_code(CPUArchState *env, abi_ptr addr)
+> +static uint32_t ppc_ldl_code(CPUArchState *env, target_ulong addr)
+>  {
+>      uint32_t insn =3D cpu_ldl_code(env, addr);
+> =20

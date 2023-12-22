@@ -1,79 +1,82 @@
-Received: by 2002:a17:906:3017:b0:a26:c056:f233 with SMTP id 23csp16546ejz;
-        Thu, 21 Dec 2023 20:37:55 -0800 (PST)
-X-Received: by 2002:a05:6808:1415:b0:3bb:6d9b:845 with SMTP id w21-20020a056808141500b003bb6d9b0845mr849571oiv.44.1703219875432;
-        Thu, 21 Dec 2023 20:37:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703219875; cv=none;
+Received: by 2002:a17:906:3017:b0:a26:c056:f233 with SMTP id 23csp87139ejz;
+        Fri, 22 Dec 2023 00:06:30 -0800 (PST)
+X-Received: by 2002:a17:902:ecc2:b0:1d3:9afa:1be4 with SMTP id a2-20020a170902ecc200b001d39afa1be4mr764585plh.124.1703232389921;
+        Fri, 22 Dec 2023 00:06:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703232389; cv=none;
         d=google.com; s=arc-20160816;
-        b=Muhu66Ib+oTnfVUlGT3In3MrGmNCaFmsTyT8UPlG9Bwo2ZT8019MhVl/i+os7XHIpW
-         uPoqBWZvJM9elf5SqXOjOwcbcRGG3Y5nVfSdJ5KhPDD5Nv0y5xxv16MYTANbQZfncqAS
-         8XklDdOUk5/jcrAlkOprNaqcYKAFMm4/bniSBHOE5wt9wQcaK0zZZqf0QPwCu2uVT9rA
-         kkY8wtD90xewc9MkxE4rvLapHRzODPfQIMrDxitoz8dIMbzsIVjUxv1jU0Dj6+noXjEv
-         nz+zFHOah2IbhpTzHgBlxL6xH7JrngEBkJSIZ0TEtxB9JpPBXieCfdKRds+d6b5bhbfW
-         6B7Q==
+        b=hVc8V9TX3xtaaKNPIx24+q9yTPNRbhCMq2a+HwAn0dS9r2NNt2t7lPwdIa6WFu+GL7
+         SJYn/tmMMMDZzjVtnFMWI7m/0BarJqtpWqguggLsmQVk5NU1e6Xi2QfswPaBG8ZBFIqw
+         YFklB3JatTL9L/pOIlmrFC28hiSsIBE3QT7Y8anHLHZQTywnbR4qT7fOccZLGwNrdPuO
+         pDQnSf+bo+8LzF77DVu+jV5LluE5OEDU8bPubXGEwWNtTc9k/gaE0YbLtaOAfCQL8PPz
+         cjFQtaveikCeuAIztNWA+Y0QrSSgJPFoJNNwU0e3+WuTRPA6Ffi4R+mUCLM4dHIRe0ZH
+         xKhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
          :content-transfer-encoding:mime-version:dkim-signature;
-        bh=ubXue0ZHyXpELIbpnzirK9Dyfve4h1EaxAGTUFo0d/k=;
-        fh=Hs0NBelrbu8Hrccpz+I/RDli2hRUqgrAXJmBwEce9ao=;
-        b=DOVfmy4ds8rHykrCgl2Olf4PUO3Kl3YQxZ0ZSxbTp8QoZCMfxJUfInLfQxDogs6CCs
-         VzZnwu2e3zqj+Jl18ml+ItXUs8shZMz1Wsa/xJIWq3BYnjR2KZfQEYeIX3DZZn4RL0E+
-         a2V9b0XBPoUWa3VS7x3/5uLcZQBrthDxmA7MeQruV9NPgL0u1f3TqB5nkR+ccecY4bHA
-         Sq8GXAUR9nLpshTZ6yn7lQSTNUGC75K567ErEdf6uSDe3pM/sGJ2DQWn4GdF+k79Q3lm
-         4GrmyK/rZx0jRZR2nq5dZ0Sll6Tw/LZzq6UBAIwaJotgoM8xtI6NeNmWPy4cGmpJlFM5
-         RZhw==
+        bh=Dy7zv8H2NWsKZUX8wVrMymGZN33/m0uz3ciTz2vhuko=;
+        fh=cqABqwFlKe669EsXXyAe5W1aGWpUXcVrkNkDiQHVt+M=;
+        b=GeUoVNtu214KJ/oaJTaUqMouVXNxdztEgHxDA6C/V9RKf+Of+2Bu4tWcg57CjpftMb
+         I/Qxp8f8d4uqK8ECeXsCJQSaS2FmSFgaMUsDZVxMZMkui7NDkgdN2D78+txIjcBHrFV4
+         U2KdOuM+DeajsRfXTP8Y3h024CN4qAmJHQBJyMnEI6zMEcSGFerlY61yk5j61U30cpfN
+         VmZ3pkYE0xEYo/zuUZMDfhrHS2QZkUolLtj0hi1OcKREElFoS0XMv4KCKjD44kO5i5uu
+         caQvEaPTCCOwLTu+ryR9xrGSX9oGBCPPDzb1whlC8hLBsYBpN6IrW4L7P51TakCUrZiL
+         Ltvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YBG1ROTK;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Qew59mLZ;
        spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <npiggin@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o1-20020a05680803c100b003bb744333a5sor1934490oie.3.2023.12.21.20.37.55
+        by mx.google.com with SMTPS id ja18-20020a170902efd200b001d3e52acb11sor1294692plb.10.2023.12.22.00.06.29
         (Google Transport Security);
-        Thu, 21 Dec 2023 20:37:55 -0800 (PST)
+        Fri, 22 Dec 2023 00:06:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=YBG1ROTK;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Qew59mLZ;
        spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1703219874; x=1703824674; darn=linaro.org;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
+        d=gmail.com; s=20230601; t=1703232389; x=1703837189; darn=linaro.org;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
          :content-transfer-encoding:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ubXue0ZHyXpELIbpnzirK9Dyfve4h1EaxAGTUFo0d/k=;
-        b=YBG1ROTKNaA1caelkgcnCJDNALJVVBfJDVsexJAX/lLj6hWNm1Uqa0uec8Uoq0hMcj
-         aqlMCQSqptESQUCTK3WDMmgJj6kK4MTTZbmohmrjKL0MP3Rq5gog4IxrtbVUeJCQnXFA
-         rGjmj4RXpn4bwgJiYuCTpoyA8rIekm/z2AIxytxUJId1en9wUNt6pEu4uBXSE8k00Qxv
-         BdY4jiF3G7jraa10XBy6VnLhUAGYfwQ7xeJVeUzTlj6gAo36Hg6R5cjwQ+a/pmPgMR9E
-         M+dtash4oALM+sguBh8lgkU0dv3L0TNUerrEg8walgsTPep//aaMf4HQ0gXjUiYTUUys
-         4L7g==
+        bh=Dy7zv8H2NWsKZUX8wVrMymGZN33/m0uz3ciTz2vhuko=;
+        b=Qew59mLZGP0hCUZhYQLFNBF0rbH4r1aOeDo6GXu5feoCUlyUBkVD2pltCqaRAn9ixW
+         ZVLB4eNQDRM/Uy1mYVoATUj4cK+CAvmpi8Br2s2i6IUfVkGuJIjlHSSNIq7zjNfNJlq2
+         wVmJJqOBWd0wWBsLBr7Hyg3TrkdpDz0USWXKlreObsmbQ8HicmgNZRqt6qpqnixfoGMa
+         Pvdu74oRphrWwIpRaG1mLkYmuqR6T8VfLWXWLh6B/6dX3FBd1KN2DPClDwgGzsWYuv/3
+         b3oLBe3BF4O0X3mcgOvMiPqyqRhCElmta/rtgjifCwVEe8XJLXTtiCj6prumecXDA7vS
+         SXIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703219874; x=1703824674;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
+        d=1e100.net; s=20230601; t=1703232389; x=1703837189;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
          :content-transfer-encoding:mime-version:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=ubXue0ZHyXpELIbpnzirK9Dyfve4h1EaxAGTUFo0d/k=;
-        b=PKCY1p9EvYkLnfeogaLN4o5xAVX85oFv0yJGZAjA+T7WC3rPPJ4KSCRXGWSUKYWY42
-         BW/P3aukAr6t39ByxAq0nDsbP5lQt20dHvIBAImjOEl5I7WJZB/xsbuzmq95Ld4qnaGo
-         EKszDIUEzxFuJgzDZM3AZpQEesyDRumsx8Rv/5UqvL6JXUtS89edoAakHfUbln8ecMlf
-         Ok2aXw6c4dbIGec9mTNYbNOx84uL0xdSQd3kjt2OV18DTASv1XcmfpRjmU1uAhAKeuhF
-         ySMVDq1EqVfD0tuE/pvdZNXgnLLN4yAy469jUwF9AlHKKV3HzRC/5/s8vRz3R5ehSpuu
-         z5ug==
-X-Gm-Message-State: AOJu0Yzb63wNf/7WDDoQQl23Txy30Z6iscUoNuk5UYpcrTBu9DfE/W5q
-	sS0OPpoIeqL/Vlf9ZAWmRf7Xa8VR2MU=
-X-Google-Smtp-Source: AGHT+IF7n4AUbnBmECv575kazZeQ++dtW9tAC2x/p6q/pARNv7y29BoLqvElYyZiMFOUNvxEZ23OQA==
-X-Received: by 2002:a05:6808:128a:b0:3bb:7174:eb with SMTP id a10-20020a056808128a00b003bb717400ebmr926627oiw.60.1703219874450;
-        Thu, 21 Dec 2023 20:37:54 -0800 (PST)
+        bh=Dy7zv8H2NWsKZUX8wVrMymGZN33/m0uz3ciTz2vhuko=;
+        b=MfWWlg1bRIoRsZ37NZgIYZ8kxqc+3xw41mZWG4d+fbTF2yNKUyElYHWHC50IXtJ2rl
+         jw2BsvBDCV8kAdsvgVZYpswVyxys0V8gEXY4O8MSF/0fayl0+Qj3+PTxKYky2mM3Rbzs
+         euEIjdPIVLQ0Q3lORRXokekPOxBdiPOE/+QcRWzMZkO7tVw1izYTLzXFxKT3UvesAP0h
+         xqbsiL5IYw7gJTF3cP2kfF19R+yWUZrXqsq4IDzZQgDh1nm82Ozf5Ux96XBjwSthPe9e
+         oUtPSDvbfbuSBPQqlOIFXzg4STm0SkFDmc/2MSoV7kFXaXn11ffM39gXsWfU0xOVq/42
+         x9Bg==
+X-Gm-Message-State: AOJu0Yxnm6JQc9CKohpFuQuP3c7tCXEB9hvDv2ebt516pz/PAH+7FIdx
+	or+UbyMIRReMn0fGM8eGA0LwLEvVfCM=
+X-Google-Smtp-Source: AGHT+IGrOcGhiSZsNJ9IeSdzELFp2R9wZrFeuViIHy9jE38BlPHv5DYK+IDBq5Jj+QGCL5877wvnHw==
+X-Received: by 2002:a17:903:22cc:b0:1d0:cf22:c6ca with SMTP id y12-20020a17090322cc00b001d0cf22c6camr723492plg.52.1703232388857;
+        Fri, 22 Dec 2023 00:06:28 -0800 (PST)
 Return-Path: <npiggin@gmail.com>
-Received: from localhost ([1.146.126.39])
-        by smtp.gmail.com with ESMTPSA id y22-20020a056a00191600b006cef521b151sm2433777pfi.168.2023.12.21.20.37.45
+Received: from localhost ([203.220.145.68])
+        by smtp.gmail.com with ESMTPSA id m10-20020a170902db0a00b001d3867b6424sm2849139plx.113.2023.12.22.00.06.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 Dec 2023 20:37:54 -0800 (PST)
+        Fri, 22 Dec 2023 00:06:28 -0800 (PST)
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 22 Dec 2023 14:37:42 +1000
-Message-Id: <CXUL1V42EKAH.2TYZ3ZFJPHGZ5@wheely>
+Date: Fri, 22 Dec 2023 18:06:11 +1000
+Message-Id: <CXUPHHNKAVYM.129IGW3MNKCSQ@wheely>
+From: "Nicholas Piggin" <npiggin@gmail.com>
+To: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>
 Cc: "Ilya Leoshkevich" <iii@linux.ibm.com>, "Peter Xu" <peterx@redhat.com>,
  "Liu Zhiwei" <zhiwei_liu@linux.alibaba.com>, "Peter Maydell"
  <peter.maydell@linaro.org>, "Mark Cave-Ayland"
@@ -86,42 +89,42 @@ Cc: "Ilya Leoshkevich" <iii@linux.ibm.com>, "Peter Xu" <peterx@redhat.com>,
  Losh" <imp@bsdimp.com>, "Claudio Fontana" <cfontana@suse.de>, "Brian Cain"
  <bcain@quicinc.com>, "Daniel Henrique Barboza" <danielhb413@gmail.com>,
  "Richard Henderson" <richard.henderson@linaro.org>, "Thomas Huth"
- <thuth@redhat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [PATCH 17/24] target/ppc/excp_helper: Avoid 'abi_ptr' in system
- emulation
-From: "Nicholas Piggin" <npiggin@gmail.com>
-To: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- <qemu-devel@nongnu.org>
+ <thuth@redhat.com>, "Riku Voipio" <riku.voipio@iki.fi>, "Kyle Evans"
+ <kevans@freebsd.org>, "BALATON Zoltan" <balaton@eik.bme.hu>, "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>, "Laurent Vivier" <laurent@vivier.eu>,
+ "Michael Rolnik" <mrolnik@gmail.com>, "Song Gao" <gaosong@loongson.cn>,
+ "Huacai Chen" <chenhuacai@kernel.org>, "Aurelien Jarno"
+ <aurelien@aurel32.net>, "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
+ "Aleksandar Rikalo" <aleksandar.rikalo@syrmia.com>, "Chris Wulff"
+ <crwulff@gmail.com>, "Marek Vasut" <marex@denx.de>, "Stafford Horne"
+ <shorne@gmail.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "Palmer Dabbelt" <palmer@dabbelt.com>, "Alistair Francis"
+ <alistair.francis@wdc.com>, "Bin Meng" <bin.meng@windriver.com>, "Weiwei
+ Li" <liwei1518@gmail.com>, "Yoshinori Sato" <ysato@users.sourceforge.jp>,
+ "Artyom Tarasenko" <atar4qemu@gmail.com>, "Bastian Koppelmann"
+ <kbastian@mail.uni-paderborn.de>, "Max Filippov" <jcmvbkbc@gmail.com>
+Subject: Re: [PATCH 23/24] exec/cpu-all: Extract page-protection definitions
+ to page-prot-common.h
 X-Mailer: aerc 0.15.2
 References: <20231211212003.21686-1-philmd@linaro.org>
- <20231211212003.21686-18-philmd@linaro.org>
-In-Reply-To: <20231211212003.21686-18-philmd@linaro.org>
-X-TUID: aCF03UMbkmkl
+ <20231211212003.21686-24-philmd@linaro.org>
+In-Reply-To: <20231211212003.21686-24-philmd@linaro.org>
+X-TUID: k8YXyuSdoha4
 
-On Tue Dec 12, 2023 at 7:19 AM AEST, Philippe Mathieu-Daud=C3=A9 wrote:
-> 'abi_ptr' is a user specific type. The system emulation
-> equivalent is 'target_ulong'. Use it in ppc_ldl_code()
-> to emphasis this is not an user emulation function.
+On Tue Dec 12, 2023 at 7:20 AM AEST, Philippe Mathieu-Daud=C3=A9 wrote:
+> Extract page-protection definitions from "exec/cpu-all.h"
+> to "exec/page-prot-common.h".
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-
-Acked-by: Nicholas Piggin <npiggin@gmail.com>
-
-> ---
->  target/ppc/excp_helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> The list of files requiring the new header was generated
+> using:
 >
-> diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-> index a42743a3e0..3d7c9bbf1a 100644
-> --- a/target/ppc/excp_helper.c
-> +++ b/target/ppc/excp_helper.c
-> @@ -142,7 +142,7 @@ static inline bool insn_need_byteswap(CPUArchState *e=
-nv)
->      return !!(env->msr & ((target_ulong)1 << MSR_LE));
->  }
-> =20
-> -static uint32_t ppc_ldl_code(CPUArchState *env, abi_ptr addr)
-> +static uint32_t ppc_ldl_code(CPUArchState *env, target_ulong addr)
->  {
->      uint32_t insn =3D cpu_ldl_code(env, addr);
-> =20
+> $ git grep -wE \
+>   'PAGE_(READ|WRITE|EXEC|BITS|VALID|ANON|RESERVED|TARGET_.|PASSTHROUGH)'
+
+Acked-by: Nicholas Piggin <npiggin@gmail.com> (ppc)
+
+Looks trivial for ppc, so fine. But what's the difference between
+-common.h and -all.h suffix?
+
+Thanks,
+Nick

@@ -1,268 +1,160 @@
-Received: by 2002:a17:906:18e2:b0:a26:ef9d:c53d with SMTP id e2csp423030ejf;
-        Sun, 24 Dec 2023 21:09:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFV+ftivYQeG+AydS9zDtVVQidywPfuzXWa7pL2aVBWysqscEiaGuY2iseoRWlVFMDzd3Xa
-X-Received: by 2002:a05:6870:e813:b0:1fb:75b:998f with SMTP id o19-20020a056870e81300b001fb075b998fmr4622993oan.62.1703480940491;
-        Sun, 24 Dec 2023 21:09:00 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1703480940; cv=pass;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp295207ejc;
+        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
+X-Received: by 2002:a05:600c:744:b0:40d:40b1:5184 with SMTP id j4-20020a05600c074400b0040d40b15184mr3760448wmn.187.1703589447494;
+        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703589447; cv=none;
         d=google.com; s=arc-20160816;
-        b=D3/uf5bMReOZNShxOv5Afze61Zsdrd8WB9OoJEs8EeFkHyj0BCUuRuS3O2raQ97IaR
-         SvemlXyMA/22NTmZQ8eisbvuuCtfjMkbmaevfzM3jZwu2pjmDIa4S/Ql9CztkIKCqybV
-         Nv21h3dtCN7DK0aBBSeQmLs7SIIXWd0h/JL0tKTGuw3N8C8KF1whBHuBK9j9ESGnFjf9
-         Nmm09KSxkuWylbJ+dijOK5nnwNUmP90+PnDbKsyjtojZO+ECqoq5yWHpyfqs/LPSlIRv
-         Mgn/G5pZYUZl2sZvVuebxuFgtfGr7e0oOn0DIoRAvQ5xnXVaCZ6wPw1oS+4H7eNhGiE0
-         8STw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=DYciJchzkQHvacMuWhaCco+i3hX9D/kcUHr0+N+Ddrk=;
-        fh=RoIJXaPzbCo+TwHFHvDzfQgY53HePXovXQTbiyIfhd0=;
-        b=MVCyWEtr3oMhjKABwLHXa080bOKUz/TKbDGro67gO6NkEsQCqiTI+Naq7Gf20Ay20Z
-         9EJusLYKFBQfbDU7iA+Zf/B1GQtrqR5IP/SZ50qx4F9CVqVkQ+m0xMknSykTu2YK1cd3
-         6Yd+jopi+lEV0+OObqDj1WgxIGWe+d7RMk1qdJOdBCDBW8PAXNQAp9Pzuphj7fD6NGJR
-         VJ8cuvp5YSt5T01gbEWwI7afdImQSL/bRyqhv45mAyKkauxtcs9oP6HaFxWg201jS19E
-         HPuWl5hlDpntOwejkZppFAQvAVSin4nIOeuviqkQYoLTBPwrZZmBlbBv3h4p9i4Q8Yyv
-         MwXQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=OqmwdId2;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2-20020a05620a11a200b0077d7b36c96fsi1664960qkk.135.2023.12.24.21.09.00
+        b=MB/M+DQsPxCbSp7nYrZLrJM6rMt/jzklf11ZPYxDbXw7UFLXd6ORx7T9u9aR+6dLYn
+         ZKvuQUkl8CCTj6u6b9YfK6PHSFZzfk84qYQzf7fUrWkS8feRlvKyklPaULgMoBk9T1Nz
+         o9dV1Ts/7Rnhithqf6SrjqPP0c+1tJZDcuOKHt2JAEMGPLm19qAWUgCKesqmj5DB6c6q
+         3VwiBAb9iGCjJernCXLzmMRQoeI1wk79u31lmnmdHzHPDmlTLppcu17GLde0Up5MMPN1
+         JpeDqAOzt8kzWwofAJqGFhTcLb3SH/UFv7kLdy6da6U9JY0elh4DLWmDYthZ1bfbpu5P
+         dgHg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=AWcLIU+t89Tu7OdXX76I4MYCQ86kFuCgTTPUe1ixuSk=;
+        fh=xw2wN4s20Y3gr+6wEzwu1e5rGC86OpNCaYyKcxNeofc=;
+        b=Zq8orbyfqWgDHZ8B3UXCbG2y1neYhVaA8d+6iALepevnQrsCTaIc8mWk/ue8C3Gnd+
+         y56OaRvB4sHo5P/pedpPXkirll55MFcY7h4n14wQUntLI5D4ee9daXZXaMSz8yvRr3P2
+         FUTqU76RZ7rUhHpTl+3XdO/JGxbd65mCieGP0XEV4gZC2wZlmXCU+YXLXJzT7uuKA1EY
+         qA5uuCk3/jZP7yopsH92nnPdzcpRY25YvDux89IJ7rAOFW6onq/orsXyZplzRuUVtQd0
+         Hd3kPbN2wbLD8Kr/kokmH2fng1XyPtYqYA1jvNHz18W/AfKmv2zAKkmVnnRWTVAtgXPR
+         PiSA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x4f++neQ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x4-20020a05600c188400b0040b1aa92b9dsor176093wmp.4.2023.12.26.03.17.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Dec 2023 21:09:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=OqmwdId2;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rHdCQ-0002UE-Tg; Mon, 25 Dec 2023 00:08:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rHdCO-0002TZ-MI; Mon, 25 Dec 2023 00:08:21 -0500
-Received: from mail-bn8nam12on20624.outbound.protection.outlook.com
- ([2a01:111:f400:fe5b::624]
- helo=NAM12-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1rHdCM-0003bw-1j; Mon, 25 Dec 2023 00:08:20 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OHbcwLfJyJLTPp7fgI+8lcDRxvbCqmZlRMeAE92nsEjEK9v3qySMaraY63qqvOpxoXma3lDM4PmHEwK7fKpB7ruChL/1s8VpvRREq7a4DDLyAfmxkdGvvGQIkFHlB0Lm8xSEjr/hIgvej6PiMGb9PBdYWlwkCN+n7ts3tPxP5jtsYSO3FJ6B9tf0ZKJTPVFzg/8Rwg/mNLCG94ARLgF5w3XY7dm6bnhhUqsFs+NZhs4zCi+to21tvPHkVDnVWcwyKOE0/HRSM3zxh4lBajEa0FH9sNodWidBUPi/ls6OXD5KlU+o4CBN3dK4eA8mHkprP8HJdxgpQxNeNfVx9+WzXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DYciJchzkQHvacMuWhaCco+i3hX9D/kcUHr0+N+Ddrk=;
- b=GBrVtdLa0FUkACpAt79OwAo1Hxz1xN9NHrIlS2mEiZNJ2gNsImmggE4yGmAFc/W8WsPsD5iIWb31h+XvaxLmR6ZLyfSL7UG+cFfW+cY4Ue/FVkTTfmPPgHFpM8gJGEfPQXJkswPpiUqusFR/HvFmwUOWLfx4o9bRWXeLzN6XBnhlsX1BLu2amWYd/fiMYivJNV95vXtG1RXZ5XunvEEOr8z8mQeFpHaUS7HoVVmer0sKWkvtzmhwuXsXwEwH+3mGdbv5KX1/hy1byelqI/vlgkHooVIFPRzGt0BH6lQbp4XxHtQfL7a6+ma8n1axRR6EkUxl5YNZ6SW07SIFyNexww==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DYciJchzkQHvacMuWhaCco+i3hX9D/kcUHr0+N+Ddrk=;
- b=OqmwdId2DXNULPgBIR/KA2eOErRYACgH4IzbGiTLIyIidTKUr6Ei1e70PwKvEujQJaC1EJ/V+E/XsAstxYHz3bo0DBhsbQ3B+w8rdKXqn+5r3T475GeCjHH5i3k7s0bm/DymeDI8+RRL5D4M1krfo9uXrrLuEx7ymCFoUwk5JE7GEL2XNYnz4hf7hcVtZNwBTJEPuXxMJLm6zU/VnRFG2a87xr47hta4DodgHAhkk7tbCUf2ZqK4pKmk34Wdjboeu0tL93xAsHHf2HyKiWgu46YPNS6aalXVzrVneidXo9oOyLPuzctL07zpn4dKGZfhUlMWC6ajWdK9rIqiYM3x6g==
-Received: from BY5PR12MB3763.namprd12.prod.outlook.com (2603:10b6:a03:1a8::24)
- by PH8PR12MB8431.namprd12.prod.outlook.com (2603:10b6:510:25a::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7113.26; Mon, 25 Dec
- 2023 05:08:11 +0000
-Received: from BY5PR12MB3763.namprd12.prod.outlook.com
- ([fe80::946b:df84:1f08:737a]) by BY5PR12MB3763.namprd12.prod.outlook.com
- ([fe80::946b:df84:1f08:737a%5]) with mapi id 15.20.7113.026; Mon, 25 Dec 2023
- 05:08:10 +0000
-From: Ankit Agrawal <ankita@nvidia.com>
-To: Markus Armbruster <armbru@redhat.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
- <eblake@redhat.com>, "david@redhat.com" <david@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, "Jonathan.Cameron@huawei.com"
- <Jonathan.Cameron@huawei.com>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
- <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
- (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
- Currid <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke
- <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 1/2] qom: new object to associate device to numa node
-Thread-Topic: [PATCH v5 1/2] qom: new object to associate device to numa node
-Thread-Index: AQHaJa5iZlrBdjt4jkCSP8Koa4pJ/bC1WpptgAQ4Ivk=
-Date: Mon, 25 Dec 2023 05:08:10 +0000
-Message-ID: <BY5PR12MB3763F9BE55E6948D8D204028B099A@BY5PR12MB3763.namprd12.prod.outlook.com>
-References: <20231203060245.31593-1-ankita@nvidia.com>
- <20231203060245.31593-2-ankita@nvidia.com> <87msu2h0ye.fsf@pond.sub.org>
-In-Reply-To: <87msu2h0ye.fsf@pond.sub.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|PH8PR12MB8431:EE_
-x-ms-office365-filtering-correlation-id: 8c146d85-92d2-405a-2843-08dc05077d4d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: DYdpSD99qDkuV6G/r+VCiuKOL63a13t2gFNXugJ0C/7JUnQUPTDBVrYnGHO2mGlwC2SBlvdsbVSSbQswuztU3j/ii+fGob5NOEFC1095AlHCDy5bd1FL031YlFQyfmc9N79P1C/jwlR9ELbnLiL6pck7y9HBsNEeNo4//RzhmfsSEZimh/MwRN9U6ELLcTJ3+NlIo952Fv9LkNLGA89m8n0owgrql9MQ4XRhPdzwjtRIJ1SeUdsvapVtugFCzz6SM6iB86TRL9dzekb+sw1xFC4amboi2PiVzTszuPQF3Rt0k8/rzFolLTichePlQEYb5BuWxT4CbtI6ElYoeoMKltoHO1nJzvkhuE2EW10Kvq45Sf4roBdwAnDCV4GA2oE/yCbnV4k5BnlPW7IZQsQ7xoUKT3vom0pM8Glv9JZJgoPx/tK6Usbda1lw3OG+C303GeWugruNQMcQ+6FeHIyoi7PApqJSWvJO92O4SDq8l/U1KAdjI/Zr9hcYwZf2RQ+/HhH4dblxOkZnY7VBdiWGtKes1MlXQBxG0uBrdyvV7lEAJ9LwuCcjpGujR/9GWTk4eFWnvduktvx4+wJQ6cxfjm0YmrimxNbX5YdUIYVGw9Q=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR12MB3763.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(39860400002)(376002)(346002)(396003)(136003)(230922051799003)(64100799003)(186009)(1800799012)(451199024)(83380400001)(33656002)(86362001)(41300700001)(122000001)(38100700002)(52536014)(478600001)(5660300002)(8936002)(8676002)(4326008)(91956017)(316002)(6916009)(64756008)(66446008)(66476007)(66556008)(66946007)(76116006)(54906003)(9686003)(26005)(6506007)(7696005)(7416002)(2906002)(71200400001)(38070700009)(55016003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?ZnlvWDbLgirZkEIL4NxVuAxxcILWZEHwAMsyOGBxB8UKl5uw9ibzYvXw1r?=
- =?iso-8859-1?Q?NV42voxza/x9o/HOBtsASCeFrxLAgxkZodQnkTB2m4UFmh7TDAc1RMx5jS?=
- =?iso-8859-1?Q?iJe2svSYJu3Oz/WQ5mxCvNUckgx4AR4+ksK0GN2LZjd9zvCP2GfWHKuCB1?=
- =?iso-8859-1?Q?Ked6uwNW986Fhtm9b9AMWyLiSl/fc9MVSMhAMal7IRw7RG+WskFFEnAs2M?=
- =?iso-8859-1?Q?op2sc/olHxL9EsAAMqDbhJ5Q6lOJsvtXfPxWKeM8cqIA1bhP0QFrycBxpJ?=
- =?iso-8859-1?Q?D1sht2HqbkOGEfx1QkBxGPk5Sxv/8ARsMG0RmSjj9/6H/SIYGkkcBwQ4zd?=
- =?iso-8859-1?Q?35vPdN7pivVmnOnWomeznc4e0usx8Ytq2Xwk+DuE0UtSEyAO4FOV8oNQLc?=
- =?iso-8859-1?Q?qgaFgaDeQDxWf7R37W7hy4mW+AFMUUkGxwlUwGj6WkAb9Nzx0JEaBdZneT?=
- =?iso-8859-1?Q?2ofolGJ8uuXC4Jr/UYu9zBgRxgqNIpEHOOikuMqArut+txHyLAvBm7MSm1?=
- =?iso-8859-1?Q?FnCutUexYOyN8ig2eG8JPB5sCtkJLY0dgcoag1EtzZqlNnIP8/0nPIlJtZ?=
- =?iso-8859-1?Q?kAhZwsDCawaXY9p2kgVZ2WnRhK/IUW9Mpyn2OqB3R+Ba8/Mql4/1x4wV0N?=
- =?iso-8859-1?Q?hG7tHzSAp1oC3nwEMf2NSC86TBT6H0Oc205sC4Y47yRNP/lPX/g1jxnOFQ?=
- =?iso-8859-1?Q?d1oxxNO9EE+dGAsk/Lk3s79f1YOpAkn5I6KFOMEOwe0CdFg2UAtddtKXL8?=
- =?iso-8859-1?Q?5/9HD46ntrnd8Gv6wkvOLXzmeo0HToKy6zowElhpUTNCF7CzkiLVsl5qFz?=
- =?iso-8859-1?Q?WiFLkL+crKedPeY5+nVYl24FksIalRQJGRJOLnbI8DWTwgXkaReHXQTwa4?=
- =?iso-8859-1?Q?yIlmglHN7XB/c3qIyYufwY0/S54OfgsFmG20g3Yrz2gPa5tjlvShPsUys1?=
- =?iso-8859-1?Q?8yijx5cypwV1Q9WiHBdGi9MYjDakSJe5HSSbtvWqC/+hgdX3ixT1Fm/kEm?=
- =?iso-8859-1?Q?Anwv7adKTfKJ91mDatc5r/dUIvoJ+Y6ETBUwqNWoszI60ZvQQhmtMtCrQY?=
- =?iso-8859-1?Q?/AQdPzhuB2m/d2kWCTqSe5IKA7nCwErz4rrT2ZJGVVAmEHcVztxZmIVyED?=
- =?iso-8859-1?Q?YMvMIpkTpnf8GL9sk3QjxFdb6MrqJikppUqwi4Z9P8xH/N4F0Q/qPdEGpb?=
- =?iso-8859-1?Q?2CpMw+YTcaQksesZtQT7+5RFx2lp4P1y+jOqcs1X+A6EMLxJa9tLrot3WA?=
- =?iso-8859-1?Q?r7DRzurdWmjZ9dlhe+xGhvRD8eBbuoXhQ6/rLiWv2e7EnPW++ibE20BnOL?=
- =?iso-8859-1?Q?sD+lm6nGKOcjGeW0k4VOE6soeKwe5Hn5MsELAK60N+9wq0c6+n4lur4v55?=
- =?iso-8859-1?Q?3ZMIpS6C/05oldTFxf27qIuAwDwk/oyd/9T+okySV4NWNDARgyq1n57clX?=
- =?iso-8859-1?Q?YUCSnzUhNnvYccIDWKYM6MiP9p1OMHzU+S2sQcvXRgWFpKlpkpKmhBBwtf?=
- =?iso-8859-1?Q?oghOJNPIdSUirJ3bA6q+E9YkrZo32mFTh4klMoRsCoPYSQ6K0SXlBXx4qq?=
- =?iso-8859-1?Q?lhdp2rn/AgFExvsgpOBlOsjW2kbowz+RlIKCHc2UVEVR/IHmdH99xMWC8d?=
- =?iso-8859-1?Q?If/eMogjZhKeA=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@linaro.org header.s=google header.b=x4f++neQ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1703589447; x=1704194247; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AWcLIU+t89Tu7OdXX76I4MYCQ86kFuCgTTPUe1ixuSk=;
+        b=x4f++neQznhEQiuTZDwr1D/dNLb5GbJA4tFTRt7q9GI7NLQzP1E/31fGIi6koavcLc
+         KL3GdBXnHcQgBZQwFpbVdNtyPsDp0+LR7HxTzWx0tTfZT5Er1WU6VVgtUmnK1YAURJMz
+         JAElzKPW2+fRsAkX6L4K/OjADrTlv54mBwOfiG0vkrreB6gvgKc0iJNgqs5So9W4VDXn
+         0xFfhukiCQYeVlr8GaAWpvA5qUrSB3b4sGBz6PZJTU+Wtc1uAk84sECKnXG+NbtGlZqQ
+         Xz8osmeL1id/nrWptfLApx/p5cEuE5SGMbsM6/tzPqHaKwnxIV2Vk9LIVbg0A1wY2F9n
+         6F9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1703589447; x=1704194247;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AWcLIU+t89Tu7OdXX76I4MYCQ86kFuCgTTPUe1ixuSk=;
+        b=Ou2rJ7KAKUiEkiG1qnpOjXCWw27pL1H7WeeiagC2ugQc0nty0ky5cFl6dHEX9u/7Z6
+         VO2TT0rKr6VDRGHjJXyaG33s5JiD6AWWMY34lCJ8UAXOoFuEhQ110CSixK6McGgg1bqN
+         549tjyNyJ/pqFvnaeDUH41522X/MbXsbFTmXhKc36oaAmQNilJV4NrAxW+l2dcq+5/GC
+         aqyYesymUL0XxzE3TsgL3ut1MRnvtvKBxNmtnDMXURtdgUnlz/eCrhmgjmAYVOJ2Wbkg
+         rj6IDqEXYtoBa9cP/BFJeIZqaaqPzg/nLzJaIUn9w9VTfsgg8EXtG4QiRtAftwG/YdkK
+         N+XA==
+X-Gm-Message-State: AOJu0YxswfY/AWW4Dh7/X6MiaMp3dMOt1aom6D95JgFV5ZEeFHdYd76f
+	hyjRkOvwKh/yYlA7byWZ7j18RPhdCIDSgYVl
+X-Google-Smtp-Source: AGHT+IGOP58ZhJ2vHhyk8HHFvlg9R4JbumcsOm+95vPNThGYjegNXCAGbDZa7oAQ+9rP49jsQzpR3g==
+X-Received: by 2002:a05:600c:2253:b0:40c:5777:da1a with SMTP id a19-20020a05600c225300b0040c5777da1amr4269997wmm.113.1703589447062;
+        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.96.175] (137.red-95-127-43.staticip.rima-tde.net. [95.127.43.137])
+        by smtp.gmail.com with ESMTPSA id b14-20020a05600c4e0e00b0040d5a5c26a9sm1868669wmq.43.2023.12.26.03.17.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Dec 2023 03:17:26 -0800 (PST)
+Message-ID: <f8a9df6e-fa49-4d4a-ba01-b0c419e8bd9e@linaro.org>
+Date: Tue, 26 Dec 2023 12:17:24 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3763.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8c146d85-92d2-405a-2843-08dc05077d4d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Dec 2023 05:08:10.4521 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: nky/6Z+ha+XtYZ8ZLXsG7V+7N1NBQsV6HKcy8sVumOtjHnUDQHBdvPayfkZ4CYnEFNCwXzxCWJjr1I7ern0ICw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB8431
-Received-SPF: softfail client-ip=2a01:111:f400:fe5b::624;
- envelope-from=ankita@nvidia.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.594,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4LD3ef5f+N1P
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
+ qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20231212162935.42910-1-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231212162935.42910-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 4C8Yd9b2Axg5
 
-Thanks Markus for the review.=0A=
-=0A=
->> Introduce a new acpi-generic-initiator object to allow host admin provid=
-e the=0A=
->> device and the corresponding NUMA nodes. Qemu maintain this association =
-and=0A=
->> use this object to build the requisite GI Affinity Structure.=0A=
->=0A=
-> Pardon my ignorance...=A0 What makes this object an "initiator", and why=
-=0A=
-> is it "generic"?=0A=
-=0A=
-In ACPI 6.3 (https://uefi.org/sites/default/files/resources/ACPI_6_3_final_=
-Jan30.pdf),=0A=
-a new table in System Resource Affinity Table called Generic initiator Affi=
-nity table=0A=
-was introduced to describe devices such as heterogeneous processors and=0A=
-accelerators, GPUs, and I/O devices with  integrated compute or DMA engines=
-=0A=
-(termed as Generic Initiator) that are present on the system. It is used to=
- associate=0A=
-a proximity domain with those devices.=0A=
-=0A=
-You may refer 5.2.16.6 in the aforementioned link. This patch implements th=
-at=0A=
-structure (Table 5-78) for Qemu ACPI.=0A=
-=0A=
->> An admin can provide the range of nodes through a uint16 array host-node=
-s=0A=
->> and link it to a device by providing its id. Currently, only PCI device =
-is=0A=
->> supported. The following sample creates 8 nodes and link them to the PCI=
-=0A=
->> device dev0:=0A=
->>=0A=
->> -numa node,nodeid=3D2 \=0A=
->> -numa node,nodeid=3D3 \=0A=
->> -numa node,nodeid=3D4 \=0A=
->> -numa node,nodeid=3D5 \=0A=
->> -numa node,nodeid=3D6 \=0A=
->> -numa node,nodeid=3D7 \=0A=
->> -numa node,nodeid=3D8 \=0A=
->> -numa node,nodeid=3D9 \=0A=
->> -device vfio-pci-nohotplug,host=3D0009:01:00.0,bus=3Dpcie.0,addr=3D04.0,=
-rombar=3D0,id=3Ddev0 \=0A=
->> -object acpi-generic-initiator,id=3Dgi0,pci-dev=3Ddev0,host-nodes=3D2-9 =
-\=0A=
->=0A=
-> Does this link *all* NUMA nodes to dev0?=0A=
->=0A=
-> Would an example involving two devices be more instructive?=0A=
-=0A=
-Sure, updated in v6.=0A=
-=0A=
->> diff --git a/qapi/qom.json b/qapi/qom.json=0A=
->> index c53ef978ff..efcc4b8dfd 100644=0A=
->> --- a/qapi/qom.json=0A=
->> +++ b/qapi/qom.json=0A=
->> @@ -794,6 +794,21 @@=0A=
->>=A0 { 'struct': 'VfioUserServerProperties',=0A=
->>=A0=A0=A0 'data': { 'socket': 'SocketAddress', 'device': 'str' } }=0A=
->>=0A=
->> +##=0A=
->> +# @AcpiGenericInitiatorProperties:=0A=
->> +#=0A=
->> +# Properties for acpi-generic-initiator objects.=0A=
->> +#=0A=
->> +# @pci-dev: PCI device ID to be associated with the node=0A=
->> +#=0A=
->> +# @host-nodes: numa node list=0A=
->=0A=
-> This feels a bit terse.=A0 The commit message makes me guess this=0A=
-> specifies the NUMA nodes to be linked to @pci-dev.=A0 Correct?=0A=
-=0A=
-Right, it could be made cleared. Done in v6.=
+Hi,
+
+ping for review?
+
+On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> When a MPCore cluster is used, the Cortex-A cores belong the the
+> cluster container, not to the board/soc layer. This series move
+> the creation of vCPUs to the MPCore private container.
+> 
+> Doing so we consolidate the QOM model, moving common code in a
+> central place (abstract MPCore parent).
+> 
+> This eventually allow removing one qemu_get_cpu() use, which we
+> want to remove in heterogeneous machines (machines using MPCore
+> are candidate for heterogeneous emulation).
+> 
+> Maybe these hw/cpu/arm/ files belong to hw/arm/...
+> 
+> Regards,
+> 
+> Phil.
+> 
+> Philippe Mathieu-Daudé (33):
+>    hw/arm/boot: Propagate vCPU to arm_load_dtb()
+>    hw/arm/fsl-imx6: Add a local 'gic' variable
+>    hw/arm/fsl-imx6ul: Add a local 'gic' variable
+>    hw/arm/fsl-imx7: Add a local 'gic' variable
+>    hw/cpu: Remove dead Kconfig
+>    hw/cpu/arm: Rename 'busdev' -> 'gicsbd' in a15mp_priv_realize()
+>    hw/cpu/arm: Alias 'num-cpu' property on TYPE_REALVIEW_MPCORE
+>    hw/cpu/arm: Declare CPU QOM types using DEFINE_TYPES() macro
+>    hw/cpu/arm: Merge {a9mpcore.h, a15mpcore.h} as cortex_mpcore.h
+>    hw/cpu/arm: Introduce abstract CORTEX_MPCORE_PRIV QOM type
+>    hw/cpu/arm: Have A9MPCORE/A15MPCORE inheritate common
+>      CORTEX_MPCORE_PRIV
+>    hw/cpu/arm: Create MPCore container in QOM parent
+>    hw/cpu/arm: Handle 'num_cores' property once in MPCore parent
+>    hw/cpu/arm: Handle 'has_el2/3' properties once in MPCore parent
+>    hw/cpu/arm: Handle 'gic-irq' property once in MPCore parent
+>    hw/cpu/arm: Handle GIC once in MPCore parent
+>    hw/cpu/arm: Document more properties of CORTEX_MPCORE_PRIV QOM type
+>    hw/cpu/arm: Replace A15MPPrivState by CortexMPPrivState
+>    hw/cpu/arm: Introduce TYPE_A7MPCORE_PRIV for Cortex-A7 MPCore
+>    hw/cpu/arm: Consolidate check on max GIC spi supported
+>    hw/cpu/arm: Create CPUs once in MPCore parent
+>    hw/arm/aspeed_ast2600: Let the A7MPcore create/wire the CPU cores
+>    hw/arm/exynos4210: Let the A9MPcore create/wire the CPU cores
+>    hw/arm/fsl-imx6: Let the A9MPcore create/wire the CPU cores
+>    hw/arm/fsl-imx6ul: Let the A7MPcore create/wire the CPU cores
+>    hw/arm/fsl-imx7: Let the A7MPcore create/wire the CPU cores
+>    hw/arm/highbank: Let the A9/A15MPcore create/wire the CPU cores
+>    hw/arm/vexpress: Let the A9/A15MPcore create/wire the CPU cores
+>    hw/arm/xilinx_zynq: Let the A9MPcore create/wire the CPU cores
+>    hw/arm/npcm7xx: Let the A9MPcore create/wire the CPU cores
+>    hw/cpu/a9mpcore: Remove legacy code
+>    hw/cpu/arm: Remove 'num-cpu' property alias
+>    hw/cpu/arm: Remove use of qemu_get_cpu() in A7/A15 realize()

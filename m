@@ -1,160 +1,151 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp295207ejc;
-        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
-X-Received: by 2002:a05:600c:744:b0:40d:40b1:5184 with SMTP id j4-20020a05600c074400b0040d40b15184mr3760448wmn.187.1703589447494;
-        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703589447; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp424048ejc;
+        Tue, 26 Dec 2023 07:22:45 -0800 (PST)
+X-Received: by 2002:a05:6000:c5:b0:336:80f7:431c with SMTP id q5-20020a05600000c500b0033680f7431cmr2509180wrx.186.1703604164993;
+        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703604164; cv=none;
         d=google.com; s=arc-20160816;
-        b=MB/M+DQsPxCbSp7nYrZLrJM6rMt/jzklf11ZPYxDbXw7UFLXd6ORx7T9u9aR+6dLYn
-         ZKvuQUkl8CCTj6u6b9YfK6PHSFZzfk84qYQzf7fUrWkS8feRlvKyklPaULgMoBk9T1Nz
-         o9dV1Ts/7Rnhithqf6SrjqPP0c+1tJZDcuOKHt2JAEMGPLm19qAWUgCKesqmj5DB6c6q
-         3VwiBAb9iGCjJernCXLzmMRQoeI1wk79u31lmnmdHzHPDmlTLppcu17GLde0Up5MMPN1
-         JpeDqAOzt8kzWwofAJqGFhTcLb3SH/UFv7kLdy6da6U9JY0elh4DLWmDYthZ1bfbpu5P
-         dgHg==
+        b=d5UHfiJ83w3d59okp/ysSFphskcO4LezRSWii31d4oAhZ1qGIS4PmjxVwipnQlqpTK
+         2lLrhDypuGDUlBvICaNL1PLZKiAb3nTypF5Dg0Lu6Q1hzB1VtWgoWBiTBsnrz/Ii2lj2
+         IIcfKgOts1/EcIVkUmqSeJy+tfn4z5tG13HIhfX2KqWLSri0YxvCOyov2rPKN+YHwbhE
+         DdPUg5KjxTMlYNNZZCvr6oHnqJkww8x5XgDJWdbcF6MShDsNrvtNeqYil6QMTTdOht1i
+         dAzk+bJXtpxsXiSSEGm0CIP7ZManfFjRmsIo87ZXbnO8ic16EASWmTh0zB9GskbmCLvE
+         nspw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=AWcLIU+t89Tu7OdXX76I4MYCQ86kFuCgTTPUe1ixuSk=;
-        fh=xw2wN4s20Y3gr+6wEzwu1e5rGC86OpNCaYyKcxNeofc=;
-        b=Zq8orbyfqWgDHZ8B3UXCbG2y1neYhVaA8d+6iALepevnQrsCTaIc8mWk/ue8C3Gnd+
-         y56OaRvB4sHo5P/pedpPXkirll55MFcY7h4n14wQUntLI5D4ee9daXZXaMSz8yvRr3P2
-         FUTqU76RZ7rUhHpTl+3XdO/JGxbd65mCieGP0XEV4gZC2wZlmXCU+YXLXJzT7uuKA1EY
-         qA5uuCk3/jZP7yopsH92nnPdzcpRY25YvDux89IJ7rAOFW6onq/orsXyZplzRuUVtQd0
-         Hd3kPbN2wbLD8Kr/kokmH2fng1XyPtYqYA1jvNHz18W/AfKmv2zAKkmVnnRWTVAtgXPR
-         PiSA==
+        bh=TGFyDMwWWcYIPV1sVKqkGaMC3O77Yt2NAwy/JQOu4Nw=;
+        fh=/KJbZHPiQhJke5vlvbdxiq9YrpHUQlWkU1Vkr9SpY08=;
+        b=GV7cno1ryrJ5oNFzlBXU5WdBrF/xOu9DdHGJ1pq2MlZyYRzAdmfmR50QirYU8zg5sE
+         CvyagY1vJY3JZDUhqW3UvAAO5QNouOKzsy9Ui8pP0MYxUJRpdtyxkEl8luopx2W1KwJW
+         jBtv4lkW3nQ5dg2ESc3bpC3my/0I+k/AGE7PlSVl33kTfWOASsIn3QkiL6Q7PntUCJnB
+         HCn8m4zSpdd9MVh94xzy9lstGhTWKnu5pmD04xhxl6nEzzT+XSiHtrYDKt/XQuccdhPd
+         7wOxT9wkgZ7wxr2SsBqNcCjfSwChe9gEpVgfwKLleT0dHcFXC9A42XiUzp5w4TTKA3Lg
+         66rg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x4f++neQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ksN59t8y;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x4-20020a05600c188400b0040b1aa92b9dsor176093wmp.4.2023.12.26.03.17.27
+        by mx.google.com with SMTPS id d7-20020a056000186700b00336c501cc08sor1063856wri.6.2023.12.26.07.22.44
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
+        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x4f++neQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ksN59t8y;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703589447; x=1704194247; darn=linaro.org;
+        d=linaro.org; s=google; t=1703604164; x=1704208964; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=AWcLIU+t89Tu7OdXX76I4MYCQ86kFuCgTTPUe1ixuSk=;
-        b=x4f++neQznhEQiuTZDwr1D/dNLb5GbJA4tFTRt7q9GI7NLQzP1E/31fGIi6koavcLc
-         KL3GdBXnHcQgBZQwFpbVdNtyPsDp0+LR7HxTzWx0tTfZT5Er1WU6VVgtUmnK1YAURJMz
-         JAElzKPW2+fRsAkX6L4K/OjADrTlv54mBwOfiG0vkrreB6gvgKc0iJNgqs5So9W4VDXn
-         0xFfhukiCQYeVlr8GaAWpvA5qUrSB3b4sGBz6PZJTU+Wtc1uAk84sECKnXG+NbtGlZqQ
-         Xz8osmeL1id/nrWptfLApx/p5cEuE5SGMbsM6/tzPqHaKwnxIV2Vk9LIVbg0A1wY2F9n
-         6F9A==
+        bh=TGFyDMwWWcYIPV1sVKqkGaMC3O77Yt2NAwy/JQOu4Nw=;
+        b=ksN59t8yBDzjhKtzNkP4PUhyBUgSaHZyYOa1D/dFa7HF9v1+6LgjxF/ZgffYaZ4BJP
+         WSdxeaKOc9kHKeKSiGQh44Sem1Zpwv8uFZP7wPa10ZiPyg7Jtm6CBPEYox8P5pOVuAmE
+         rOCODFyDRZbU/8DUodXfCfOwaYMJeIs+Dfku+119MvNi9nFvMQCiW3lQ2CpjJG68s17E
+         fObjCakoEg2FGAcxlre3fzVS6MD+WIC1Df0QCp/qgx32fuIHpaeyuPeQEe0buQA9hO9b
+         p1d85NspfeILul1BLm4imtdVjYk3DIBYx/qDAxEE9APVgeP7T8hgB5mE5qAxIH+LyPkE
+         Ftpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703589447; x=1704194247;
+        d=1e100.net; s=20230601; t=1703604164; x=1704208964;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AWcLIU+t89Tu7OdXX76I4MYCQ86kFuCgTTPUe1ixuSk=;
-        b=Ou2rJ7KAKUiEkiG1qnpOjXCWw27pL1H7WeeiagC2ugQc0nty0ky5cFl6dHEX9u/7Z6
-         VO2TT0rKr6VDRGHjJXyaG33s5JiD6AWWMY34lCJ8UAXOoFuEhQ110CSixK6McGgg1bqN
-         549tjyNyJ/pqFvnaeDUH41522X/MbXsbFTmXhKc36oaAmQNilJV4NrAxW+l2dcq+5/GC
-         aqyYesymUL0XxzE3TsgL3ut1MRnvtvKBxNmtnDMXURtdgUnlz/eCrhmgjmAYVOJ2Wbkg
-         rj6IDqEXYtoBa9cP/BFJeIZqaaqPzg/nLzJaIUn9w9VTfsgg8EXtG4QiRtAftwG/YdkK
-         N+XA==
-X-Gm-Message-State: AOJu0YxswfY/AWW4Dh7/X6MiaMp3dMOt1aom6D95JgFV5ZEeFHdYd76f
-	hyjRkOvwKh/yYlA7byWZ7j18RPhdCIDSgYVl
-X-Google-Smtp-Source: AGHT+IGOP58ZhJ2vHhyk8HHFvlg9R4JbumcsOm+95vPNThGYjegNXCAGbDZa7oAQ+9rP49jsQzpR3g==
-X-Received: by 2002:a05:600c:2253:b0:40c:5777:da1a with SMTP id a19-20020a05600c225300b0040c5777da1amr4269997wmm.113.1703589447062;
-        Tue, 26 Dec 2023 03:17:27 -0800 (PST)
+        bh=TGFyDMwWWcYIPV1sVKqkGaMC3O77Yt2NAwy/JQOu4Nw=;
+        b=JgwNNXsdRHmBBAPqbi8s2DGTt1aKuwP7XtHIb7rdl2I5sfagZWugDn2/SH51OfYxEn
+         PJcnv3YS8wEk8LRnPplKwNOyHBMlgoRx/nL2ujghgmZUfoe6zKSJGjHSk+BgKM26UBxT
+         wnKN2XBSsJ+z81XpZrBS01U9MUGcbcCG4GkhUoJ6BSgqQPG+b2QzSvjkGvb3uZ0/x0Ew
+         op3txZEhnxdsXRFCOB9kiuHIX2HXvWfj1qn9fsKAI6zDpx2je1sqCDSEZojYqw4ZX99h
+         6gFeJRMUMSuIPrj+z+U0wGjj34lkCkuhQjrv9AHwKat6OOGZnCg8yuetdJi8GfhkcJNp
+         HMVw==
+X-Gm-Message-State: AOJu0YyHnsdnfoPsYbKFEeoMNuH0NzhJsFEjdKqeDZV/6MYdwoQFfaxo
+	BwPvdDWngTEd9KtHShKY/9KJavT32dOrkokc
+X-Google-Smtp-Source: AGHT+IHA1ALC9hkDL2Z+mTf5dGvup3v7SwA0w9AIfvp5EezpO7Wzhrn4dLcfSylpl3kj+ZvaQJA1GA==
+X-Received: by 2002:adf:ea85:0:b0:333:2fd2:3bdf with SMTP id s5-20020adfea85000000b003332fd23bdfmr2519107wrm.152.1703604164518;
+        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
 Return-Path: <philmd@linaro.org>
-Received: from [192.168.96.175] (137.red-95-127-43.staticip.rima-tde.net. [95.127.43.137])
-        by smtp.gmail.com with ESMTPSA id b14-20020a05600c4e0e00b0040d5a5c26a9sm1868669wmq.43.2023.12.26.03.17.24
+Received: from [192.168.19.175] (131.red-88-29-190.dynamicip.rima-tde.net. [88.29.190.131])
+        by smtp.gmail.com with ESMTPSA id a4-20020adffb84000000b00336d24b4847sm2762191wrr.114.2023.12.26.07.22.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Dec 2023 03:17:26 -0800 (PST)
-Message-ID: <f8a9df6e-fa49-4d4a-ba01-b0c419e8bd9e@linaro.org>
-Date: Tue, 26 Dec 2023 12:17:24 +0100
+        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
+Message-ID: <545f08d6-d371-4fe6-a309-30ba2c8571f9@linaro.org>
+Date: Tue, 26 Dec 2023 16:22:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
- A7/A15 MPCore priv
+Subject: Re: [PATCH 23/24] exec/cpu-all: Extract page-protection definitions
+ to page-prot-common.h
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Anton Johansson <anjo@rev.ng>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
+To: Nicholas Piggin <npiggin@gmail.com>, qemu-devel@nongnu.org
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, qemu-riscv@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ Claudio Fontana <cfontana@suse.de>, Brian Cain <bcain@quicinc.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
+ Kyle Evans <kevans@freebsd.org>, BALATON Zoltan <balaton@eik.bme.hu>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20231212162935.42910-1-philmd@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>, Michael Rolnik <mrolnik@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Stafford Horne <shorne@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>
+References: <20231211212003.21686-1-philmd@linaro.org>
+ <20231211212003.21686-24-philmd@linaro.org>
+ <CXUPHHNKAVYM.129IGW3MNKCSQ@wheely>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231212162935.42910-1-philmd@linaro.org>
+In-Reply-To: <CXUPHHNKAVYM.129IGW3MNKCSQ@wheely>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 4C8Yd9b2Axg5
+X-TUID: digDHjSpXtET
 
-Hi,
+Hi Nicholas,
 
-ping for review?
+On 22/12/23 09:06, Nicholas Piggin wrote:
+> On Tue Dec 12, 2023 at 7:20 AM AEST, Philippe Mathieu-Daudé wrote:
+>> Extract page-protection definitions from "exec/cpu-all.h"
+>> to "exec/page-prot-common.h".
+>>
+>> The list of files requiring the new header was generated
+>> using:
+>>
+>> $ git grep -wE \
+>>    'PAGE_(READ|WRITE|EXEC|BITS|VALID|ANON|RESERVED|TARGET_.|PASSTHROUGH)'
+> 
+> Acked-by: Nicholas Piggin <npiggin@gmail.com> (ppc)
+> 
+> Looks trivial for ppc, so fine. But what's the difference between
+> -common.h and -all.h suffix?
 
-On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> When a MPCore cluster is used, the Cortex-A cores belong the the
-> cluster container, not to the board/soc layer. This series move
-> the creation of vCPUs to the MPCore private container.
-> 
-> Doing so we consolidate the QOM model, moving common code in a
-> central place (abstract MPCore parent).
-> 
-> This eventually allow removing one qemu_get_cpu() use, which we
-> want to remove in heterogeneous machines (machines using MPCore
-> are candidate for heterogeneous emulation).
-> 
-> Maybe these hw/cpu/arm/ files belong to hw/arm/...
-> 
-> Regards,
-> 
-> Phil.
-> 
-> Philippe Mathieu-Daudé (33):
->    hw/arm/boot: Propagate vCPU to arm_load_dtb()
->    hw/arm/fsl-imx6: Add a local 'gic' variable
->    hw/arm/fsl-imx6ul: Add a local 'gic' variable
->    hw/arm/fsl-imx7: Add a local 'gic' variable
->    hw/cpu: Remove dead Kconfig
->    hw/cpu/arm: Rename 'busdev' -> 'gicsbd' in a15mp_priv_realize()
->    hw/cpu/arm: Alias 'num-cpu' property on TYPE_REALVIEW_MPCORE
->    hw/cpu/arm: Declare CPU QOM types using DEFINE_TYPES() macro
->    hw/cpu/arm: Merge {a9mpcore.h, a15mpcore.h} as cortex_mpcore.h
->    hw/cpu/arm: Introduce abstract CORTEX_MPCORE_PRIV QOM type
->    hw/cpu/arm: Have A9MPCORE/A15MPCORE inheritate common
->      CORTEX_MPCORE_PRIV
->    hw/cpu/arm: Create MPCore container in QOM parent
->    hw/cpu/arm: Handle 'num_cores' property once in MPCore parent
->    hw/cpu/arm: Handle 'has_el2/3' properties once in MPCore parent
->    hw/cpu/arm: Handle 'gic-irq' property once in MPCore parent
->    hw/cpu/arm: Handle GIC once in MPCore parent
->    hw/cpu/arm: Document more properties of CORTEX_MPCORE_PRIV QOM type
->    hw/cpu/arm: Replace A15MPPrivState by CortexMPPrivState
->    hw/cpu/arm: Introduce TYPE_A7MPCORE_PRIV for Cortex-A7 MPCore
->    hw/cpu/arm: Consolidate check on max GIC spi supported
->    hw/cpu/arm: Create CPUs once in MPCore parent
->    hw/arm/aspeed_ast2600: Let the A7MPcore create/wire the CPU cores
->    hw/arm/exynos4210: Let the A9MPcore create/wire the CPU cores
->    hw/arm/fsl-imx6: Let the A9MPcore create/wire the CPU cores
->    hw/arm/fsl-imx6ul: Let the A7MPcore create/wire the CPU cores
->    hw/arm/fsl-imx7: Let the A7MPcore create/wire the CPU cores
->    hw/arm/highbank: Let the A9/A15MPcore create/wire the CPU cores
->    hw/arm/vexpress: Let the A9/A15MPcore create/wire the CPU cores
->    hw/arm/xilinx_zynq: Let the A9MPcore create/wire the CPU cores
->    hw/arm/npcm7xx: Let the A9MPcore create/wire the CPU cores
->    hw/cpu/a9mpcore: Remove legacy code
->    hw/cpu/arm: Remove 'num-cpu' property alias
->    hw/cpu/arm: Remove use of qemu_get_cpu() in A7/A15 realize()
+We believe historically '-all' was used for target-specific
+headers. However then headers got massaged and some ended
+using this suffix, although not anymore target specific.
+
+Today for clarity we prefer using '-common' for generic
+(target agnostic) headers, and '-target' for target-specific
+ones.
+
+I tried to clarify that here:
+https://lore.kernel.org/qemu-devel/20231226150441.97501-1-philmd@linaro.org/
+
+Thanks for your review,
+
+Phil.

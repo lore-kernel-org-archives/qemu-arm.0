@@ -1,183 +1,166 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1196168ejc;
-        Wed, 27 Dec 2023 14:20:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHgPedFb9qZYIyFkPIAutYR8IEx+15Vl8hK6ZqA/qxhXnfMoMtniFCUPuymYIgIOEGCFurL
-X-Received: by 2002:a0d:e5c4:0:b0:5d7:1940:7d8d with SMTP id o187-20020a0de5c4000000b005d719407d8dmr6243535ywe.100.1703715622053;
-        Wed, 27 Dec 2023 14:20:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703715622; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1197345ejc;
+        Wed, 27 Dec 2023 14:23:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFdYanAcw0Aiul1fIwKK/1wSoV6jYtGzoW1dSahtgRs1OmeMJwz65tMSbLHeRbq8sAdtTYW
+X-Received: by 2002:a05:622a:202:b0:425:78fc:446d with SMTP id b2-20020a05622a020200b0042578fc446dmr13682013qtx.29.1703715828816;
+        Wed, 27 Dec 2023 14:23:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703715828; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHDtTbbycD7JWZ4fdBb7cF0O4HnFuVp8PVpy+Si1aaspzZbNnrkokHuapqHErRnpAC
-         1hlvWxHPSjkhzOTD4hWMeHKAOgXe7viEN4Ro7yMlfcTjITfsZl1C+ss3GRjoFLpy4uqz
-         OgxorB6IF0Zfr8EDolrtA7iu+GMH8ti7ABbVK3hbLrkFKTQUnUj7yMM8fuw8b+MzqHvl
-         X2T6cwmjcngKA57lsbI6M75NDvVpPd/8jaYf/F957p0EUdzxg6wElJoQdXZ6GioSxETO
-         n4aiqHYT4P2/p4x+hDRFwcPvBXezh+BWCWbe2gBD+//vtodfUkPRJaPzoYdx1hwIkpJo
-         MEiQ==
+        b=a4o04voKXRdm7XIZvsJlqR6Y0TN+Ich58VufpnF6Px7w1fyF5OPxVp48cx+b2hpuBl
+         mmdplRpaRqSq569FfhSQx/qGl6RuiYrljkh2fRASf99BHNLmF16eS+nfP6KXueN4Vuuq
+         tmsaFJ501T/UUFjPdf82Po3MbwFGQwx6/EEc3TEmqrbu1VZ6fv/ieJqwFEbzwWkCOTzj
+         2pYIGAuQT13Md1NgaJFAcDYntonYnrRw3tf26I88k/TLLlhpa943fRwUU7k37AQtAd9x
+         nD0ac+4jvrnafhRyzrxRMSdZcxiI6m5a4YsKOKLF6yg0ussWosswLPT/Zt8ux+8PSdGi
+         cCeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=FmUHdkODkmAVcqBEkhPvnXi+rURTw5GQdE1Jd45GhVY=;
+        bh=1LTL4evVjSMfpAFEd57iHiBm/03GDdUJCNdVDH+Po9A=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=u7vS0gWB3hZ4NoBnOuYP3CxPKkOz1OPESa8/ELnj/jPJRuzZgSQfH8fXIlgUjbXwP3
-         tAP+ugxbGkZ/C5pfO7QzxOv5fq5f0H7gCZmP9FdsHDYKutWMwZO0lTjfEiy637YQQSTj
-         3Cf3oGvzqVQ7nfsWqtGDMoxqzWZq6cCg+JYrTPJcDzhxN1o2McCo16ta7sYa1ai1pZ7v
-         oy++CWlXw7bSM5PHcI1G9NXJjj77spnnd7PjjRglg1nAHfPWeYvtUQJKgsWPbhvRHFdr
-         NotI/REcpM4+3vxa6DcSseEwEg865v+bJtOdfeaNRcq0+xWDrMGBV3kRvMDIZcu+4nkj
-         3tiw==
+        b=AFfllJ8/rdUEvD5YCfio3A5/K4X2Y1dN1xFDgny+19uFelSH9i1K3ViVTpfp1Bvx1F
+         h5HW9ItMbbkldxH8h7VlJXS4EXcAIXir5j6JU0xXP7k7+sBLDh2e33lJgYpQQLSm6/iJ
+         9MtP0XunILGNo7H5hz8Eq9P9J1z34VyJfw3oH2nqoSv1BObrhRqzF26aRmrhrMCDonDT
+         qjjFBMXb/FZWLjNa3FwuFnj2Aphg9XiOo0dJGnBGKOxCMGlRlYQAihODVlE2APBI82XJ
+         xbX8iDHPKD7YGYNphxSOiilmpKr+UDa98wop0V0Z7TL0m4m2qpREstxdCxgRI/GN+oq8
+         hRuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MzKbxHDP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="KM/6wBtr";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u21-20020ac858d5000000b004259d9fde02si15159151qta.438.2023.12.27.14.20.21
+        by mx.google.com with ESMTPS id d11-20020a05622a05cb00b00427e7adb729si3195832qtb.720.2023.12.27.14.23.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Dec 2023 14:20:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Dec 2023 14:23:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MzKbxHDP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="KM/6wBtr";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rIcG1-0007Ma-2V; Wed, 27 Dec 2023 17:20:09 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rIcJL-0000X2-9M; Wed, 27 Dec 2023 17:23:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIcFz-0007LQ-0L
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 17:20:07 -0500
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+ id 1rIcJK-0000WZ-Fz
+ for qemu-devel@nongnu.org; Wed, 27 Dec 2023 17:23:34 -0500
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIcFx-0007kw-7H
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 17:20:06 -0500
-Received: by mail-oi1-x230.google.com with SMTP id
- 5614622812f47-3bb907d28fcso3020040b6e.1
- for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 14:20:04 -0800 (PST)
+ id 1rIcJI-0008F6-U3
+ for qemu-devel@nongnu.org; Wed, 27 Dec 2023 17:23:34 -0500
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-6d9aef87d44so761668b3a.0
+ for <qemu-devel@nongnu.org>; Wed, 27 Dec 2023 14:23:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703715603; x=1704320403; darn=nongnu.org;
+ d=linaro.org; s=google; t=1703715811; x=1704320611; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=FmUHdkODkmAVcqBEkhPvnXi+rURTw5GQdE1Jd45GhVY=;
- b=MzKbxHDP23hCI9u1EXqPVPoTt2l2iRAZo6gOYn1xd6grsJ3CPHBC4uskcqkoq6fbFX
- ukQ7o7dObRW0Xg7NqIkpme8IWk1CaHem2XFKbBnq8O3k5HH56VvUvewqnP3TnC0WDvUP
- gkNLFSFRnu/sV9EbN/yBptbWqNgy+RPRHZaL/0L/LDpLo6NeJmp0LW/Ck5PZlqa9wZWe
- epHBEdUj8d73LGpt/IlJi52Tyan2izWrbIhOczUvkyVo1Pq+47/q7YUl+7cTr8F2Bp6/
- pOhIHwk6MkanC/pXIHLxPDXQlz3c68vVjkm/Ziunn3uEtvGT/oZZZFBJ6NZ6meF3a/MQ
- UDkQ==
+ bh=1LTL4evVjSMfpAFEd57iHiBm/03GDdUJCNdVDH+Po9A=;
+ b=KM/6wBtr9w5ZsGBAZ8OvDcVRUVzvIHOoxuYrXV3vrM9bpnBylJYbUi0Mw90pATc+Vm
+ USM76hSF1cADTMm8Q5SeqMPO4S9wRlVDjDYu8EPxLMKdXI4vslNgnscMLCiHvnBgA65P
+ TU2zetarZIMFW51SIhvg+oTjAaU7tB+19ljbXLeD/xH8PVtp6s0rUcuMdrNqxIgLMLZD
+ 4o6Tt6p6DLkEucyNoxe5b3aBWqTCAYwQyrgO4Ya7U3Hu/bNxDdlJedsruq1f1Whp2moG
+ z7QdP5eQmm/7Pv69oSzy4XwXwnb7hXUnYmIc1S3r3OwasUrY6pVH159l7oisq1vDpBtE
+ z00w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703715603; x=1704320403;
+ d=1e100.net; s=20230601; t=1703715811; x=1704320611;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FmUHdkODkmAVcqBEkhPvnXi+rURTw5GQdE1Jd45GhVY=;
- b=szhUMTgyTZiKbJcSjeMzFhaNXUSWjTx8qQfAyE1c+Dvj20fIEhqCxFWY4YwDtX0cbT
- Q99v0kZXvbR4ckBn0Oy/aGuyaEvGa3MsBqKrxGRYW3fXnN+Ctg8hxW5gltqV89gjZVLq
- V9Y9pepVNj99tOR6iw466BJcu4LFNh5LylI7L0pue1BKDEDbR7GEHKtLirery+pvKxXx
- FtralO06wc2nArKHEdrvNXjvnFwiTzaR0MfZHbKuHZ/o+UZ0e0oqipHgC4JAszwfEJmu
- pvXW9jguwusgb9lJNbEZHGV5SK/dKfRnDllnnvqnxhaW5WPySQhRQJ/vmr0oysFO9cJB
- l4ZQ==
-X-Gm-Message-State: AOJu0Yw9r101lP7KzRaGJWvxxv+1sRqhb6dLQ/JHfj0W96K38XxLgnlH
- SAagN9kG/Flr60jkR6EDh4D8s8Q4+jdg7Q==
-X-Received: by 2002:a05:6358:f17:b0:174:c2e3:bca7 with SMTP id
- b23-20020a0563580f1700b00174c2e3bca7mr4038155rwj.12.1703715603376; 
- Wed, 27 Dec 2023 14:20:03 -0800 (PST)
+ bh=1LTL4evVjSMfpAFEd57iHiBm/03GDdUJCNdVDH+Po9A=;
+ b=ewErFKRGiabNC2NpaTJfJOkWAeejvF370lwDqVgvsQ/+bfpq6q1N//ieI7IY02W6+v
+ QBgxWcPgmPiVS6GLbncqbXosugoTIlGyu5M21Q/6NFwyHkixdB/VzxY/FMjKGUHMxYzn
+ Vy9tx3GL6ynCnnHis/RcMl7hDP4OqR8cmTBlIYOrEtfOYfJQZ26t4NDZ9aT1qy5ODmGM
+ 5AqlPnX3PW/yi1gFm2BXG8m3PJYHzc1qRKSGepl5Wvt8Uu94pEd87U81g8YyIkzzGH5q
+ zNDvrzkxPfPSp86rWJTCg9015VRtV9O275XhZ7XPXspajq+1lZEOa5WNJ4d9u+ctosmx
+ QaFQ==
+X-Gm-Message-State: AOJu0YyC0PHKzVQFoSEP+zEUw/wj6M+ZXmimL2RLvUlkkzjm2okoKDyU
+ KiTQOALaqYcbf3cymtlkcm9IO4U2Qn+So84SxfTKW81J7QnCUQ==
+X-Received: by 2002:a05:6a00:216a:b0:6d9:b385:26f9 with SMTP id
+ r10-20020a056a00216a00b006d9b38526f9mr2429177pff.2.1703715811249; 
+ Wed, 27 Dec 2023 14:23:31 -0800 (PST)
 Received: from ?IPV6:2001:8003:c020:6900:12c1:9684:874a:fb3a?
  ([2001:8003:c020:6900:12c1:9684:874a:fb3a])
  by smtp.gmail.com with ESMTPSA id
- c13-20020aa781cd000000b006d9fd64fdcasm1938353pfn.37.2023.12.27.14.20.01
+ z27-20020aa7991b000000b006da13bc46c0sm493064pff.171.2023.12.27.14.23.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Dec 2023 14:20:02 -0800 (PST)
-Message-ID: <7bae3b71-dbea-4fbf-8187-79d25069496d@linaro.org>
-Date: Thu, 28 Dec 2023 09:20:00 +1100
+ Wed, 27 Dec 2023 14:23:30 -0800 (PST)
+Message-ID: <97e6b2b0-6e6b-43c9-950c-62b4dddcdaa4@linaro.org>
+Date: Thu, 28 Dec 2023 09:23:26 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/35] target/arm: Allow use of upper 32 bits of TBFLAG_A64
+Subject: Re: [PATCH 09/35] target/arm: Record correct opcode fields in cpreg
+ for E2H aliases
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-9-peter.maydell@linaro.org>
+ <20231218113305.2511480-10-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231218113305.2511480-9-peter.maydell@linaro.org>
+In-Reply-To: <20231218113305.2511480-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::230;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x230.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JYdMuHGU7zpx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5Ur29iue5xEG
 
 On 12/18/23 22:32, Peter Maydell wrote:
-> The TBFLAG_A64 TB flag bits go in flags2, which for AArch64 guests
-> we know is 64 bits. However at the moment we use FIELD_EX32() and
-> FIELD_DP32() to read and write these bits, which only works for
-> bits 0 to 31. Since we're about to add a flag that uses bit 32,
-> switch to FIELD_EX64() and FIELD_DP64() so that this will work.
+> For FEAT_VHE, we define a set of register aliases, so that for instance:
+>   * the SCTLR_EL1 either accesses the real SCTLR_EL1, or (if E2H is 1)
+>     SCTLR_EL2
+>   * a new SCTLR_EL12 register accesses SCTLR_EL1 if E2H is 1
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> However when we create the 'new_reg' cpreg struct for the SCTLR_EL12
+> register, we duplicate the information in the SCTLR_EL1 cpreg, which
+> means the opcode fields are those of SCTLR_EL1, not SCTLR_EL12.  This
+> is a problem for code which looks at the cpreg opcode fields to
+> determine behaviour (e.g.  in access_check_cp_reg()). In practice
+> the current checks we do there don't intersect with the *_EL12
+> registers, but for FEAT_NV this will become a problem.
+> 
+> Write the correct values from the encoding into the new_reg struct.
+> This restores the invariant that the cpreg that you get back
+> from the hashtable has opcode fields that match the key you used
+> to retrieve it.
+> 
+> When we call the readfn or writefn for the target register, we
+> pass it the cpreg struct for that target register, not the one
+> for the alias, in case the readfn/writefn want to look at the
+> opcode fields to determine behaviour. This means we need to
+> interpose custom read/writefns for the e12 aliases.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/cpu.h | 8 +++++---
->   1 file changed, 5 insertions(+), 3 deletions(-)
-
-Oops, I hadn't intended this to be 32-bit from the start.
+>   target/arm/helper.c | 35 +++++++++++++++++++++++++++++++++++
+>   1 file changed, 35 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
 r~
-
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 167b3759ac9..91157db85ae 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -3240,12 +3240,14 @@ FIELD(TBFLAG_A64, NAA, 30, 1)
->   FIELD(TBFLAG_A64, ATA0, 31, 1)
->   
->   /*
-> - * Helpers for using the above.
-> + * Helpers for using the above. Note that only the A64 accessors use
-> + * FIELD_DP64() and FIELD_EX64(), because in the other cases the flags
-> + * word either is or might be 32 bits only.
->    */
->   #define DP_TBFLAG_ANY(DST, WHICH, VAL) \
->       (DST.flags = FIELD_DP32(DST.flags, TBFLAG_ANY, WHICH, VAL))
->   #define DP_TBFLAG_A64(DST, WHICH, VAL) \
-> -    (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_A64, WHICH, VAL))
-> +    (DST.flags2 = FIELD_DP64(DST.flags2, TBFLAG_A64, WHICH, VAL))
->   #define DP_TBFLAG_A32(DST, WHICH, VAL) \
->       (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_A32, WHICH, VAL))
->   #define DP_TBFLAG_M32(DST, WHICH, VAL) \
-> @@ -3254,7 +3256,7 @@ FIELD(TBFLAG_A64, ATA0, 31, 1)
->       (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_AM32, WHICH, VAL))
->   
->   #define EX_TBFLAG_ANY(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_ANY, WHICH)
-> -#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_A64, WHICH)
-> +#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX64(IN.flags2, TBFLAG_A64, WHICH)
->   #define EX_TBFLAG_A32(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_A32, WHICH)
->   #define EX_TBFLAG_M32(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_M32, WHICH)
->   #define EX_TBFLAG_AM32(IN, WHICH)  FIELD_EX32(IN.flags2, TBFLAG_AM32, WHICH)
-

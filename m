@@ -1,120 +1,119 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1195914ejc;
-        Wed, 27 Dec 2023 14:19:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE6ukYmRc/hZqXU4nIApjNOXaGv6xpNewnzdbkwuVSAy96kft5gegLagK0Urt5RBl3lLyWR
-X-Received: by 2002:a05:620a:4510:b0:781:5fbf:eeb4 with SMTP id t16-20020a05620a451000b007815fbfeeb4mr1667183qkp.37.1703715579587;
-        Wed, 27 Dec 2023 14:19:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703715579; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1196168ejc;
+        Wed, 27 Dec 2023 14:20:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHgPedFb9qZYIyFkPIAutYR8IEx+15Vl8hK6ZqA/qxhXnfMoMtniFCUPuymYIgIOEGCFurL
+X-Received: by 2002:a0d:e5c4:0:b0:5d7:1940:7d8d with SMTP id o187-20020a0de5c4000000b005d719407d8dmr6243535ywe.100.1703715622053;
+        Wed, 27 Dec 2023 14:20:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703715622; cv=none;
         d=google.com; s=arc-20160816;
-        b=izOrU0ePQQSpjLKvdviZ+At8zZgnhhj9SoCJDcjswQ7PqidteG8pwwUcWUAGxtFxRO
-         la4Nnb779im8Fi2iLELx+x5eqjDvYCVOfOsSihrXs3q3A3s22xVui1G+KlTc+gwMCboc
-         Rt56j5WvX+kcOs4I6723ZWNh5rmXglSaoMq7OCGrCzwifGfmvW0Nsr1fX9ns4Xd63mIO
-         Ldj5ww0kUKDkFrgT1XcSO0JJEqhUIfT2yRm42cIecPPJxsqkzJ16R5GLKG+9herEmmoz
-         Rle4qVrD13zt2eALrDfWHWGVtuB3ql6M6zE/sCcHKK4H7wE72FfK0rK3drldk75jKc57
-         WQyA==
+        b=bHDtTbbycD7JWZ4fdBb7cF0O4HnFuVp8PVpy+Si1aaspzZbNnrkokHuapqHErRnpAC
+         1hlvWxHPSjkhzOTD4hWMeHKAOgXe7viEN4Ro7yMlfcTjITfsZl1C+ss3GRjoFLpy4uqz
+         OgxorB6IF0Zfr8EDolrtA7iu+GMH8ti7ABbVK3hbLrkFKTQUnUj7yMM8fuw8b+MzqHvl
+         X2T6cwmjcngKA57lsbI6M75NDvVpPd/8jaYf/F957p0EUdzxg6wElJoQdXZ6GioSxETO
+         n4aiqHYT4P2/p4x+hDRFwcPvBXezh+BWCWbe2gBD+//vtodfUkPRJaPzoYdx1hwIkpJo
+         MEiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=ubOJege1Z61R1R1/YN94sPs6PJRX9iqv30pYobkbYBg=;
+        bh=FmUHdkODkmAVcqBEkhPvnXi+rURTw5GQdE1Jd45GhVY=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=GTYnA39U2u05+DFg6E8Y4+2ux3oqEgO9bGJbBwPB69NDsmVkm0F7AOi5Ua0ayrY/BP
-         JqAoYV4R97f0+cTsyT88cTJQhb9FJK8zQPwEfVnJ9QpUN+owhijYipvDDlY+ZxEuw+FM
-         6ZXeCWPex9vm+ZRx5zvAA8X+bnJvTHjWJLH2jSZCmIkW6gBPUoNiqVFWs74XVshOLph4
-         6mCTUzHKiLsG0ZRjMzPyFRCOOD0LL0Wq9joWkMt0iBzjKrwFMFHn6czprXdNYxelGq7U
-         dWC+LFTpewX1nmZUT+R+KaPFXQFdANFFMGjH2TcU0hh2/LCvF6esqvNmvxofeGLcSvQ+
-         j+tA==
+        b=u7vS0gWB3hZ4NoBnOuYP3CxPKkOz1OPESa8/ELnj/jPJRuzZgSQfH8fXIlgUjbXwP3
+         tAP+ugxbGkZ/C5pfO7QzxOv5fq5f0H7gCZmP9FdsHDYKutWMwZO0lTjfEiy637YQQSTj
+         3Cf3oGvzqVQ7nfsWqtGDMoxqzWZq6cCg+JYrTPJcDzhxN1o2McCo16ta7sYa1ai1pZ7v
+         oy++CWlXw7bSM5PHcI1G9NXJjj77spnnd7PjjRglg1nAHfPWeYvtUQJKgsWPbhvRHFdr
+         NotI/REcpM4+3vxa6DcSseEwEg865v+bJtOdfeaNRcq0+xWDrMGBV3kRvMDIZcu+4nkj
+         3tiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aGRxqc4M;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MzKbxHDP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6-20020a05620a0c8600b00781124edfc1si14786704qki.39.2023.12.27.14.19.39
+        by mx.google.com with ESMTPS id u21-20020ac858d5000000b004259d9fde02si15159151qta.438.2023.12.27.14.20.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Dec 2023 14:19:39 -0800 (PST)
+        Wed, 27 Dec 2023 14:20:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aGRxqc4M;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MzKbxHDP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rIcF5-0006xm-2F; Wed, 27 Dec 2023 17:19:11 -0500
+	id 1rIcG1-0007Ma-2V; Wed, 27 Dec 2023 17:20:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIcF2-0006xQ-VL
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 17:19:09 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1rIcFz-0007LQ-0L
+ for qemu-arm@nongnu.org; Wed, 27 Dec 2023 17:20:07 -0500
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIcF1-0007Rz-CC
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 17:19:08 -0500
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-6d9b267007fso846024b3a.3
- for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 14:19:06 -0800 (PST)
+ id 1rIcFx-0007kw-7H
+ for qemu-arm@nongnu.org; Wed, 27 Dec 2023 17:20:06 -0500
+Received: by mail-oi1-x230.google.com with SMTP id
+ 5614622812f47-3bb907d28fcso3020040b6e.1
+ for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 14:20:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703715546; x=1704320346; darn=nongnu.org;
+ d=linaro.org; s=google; t=1703715603; x=1704320403; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ubOJege1Z61R1R1/YN94sPs6PJRX9iqv30pYobkbYBg=;
- b=aGRxqc4Ma8joSmzrgmdUD2Jw3wALInlaLwk5IuSlvpfHIR+g32aj+8oLLi28oqJomw
- qkE2gZjSWVnPzGl6Bqv5cprFxQfb6M9X8cu016KxShG7dYRkPPFCZwscBCOQR5zYPOjC
- r9CFfXDL1HfQnk/u5unEcgsQ89bkfFM3aeALf3bp2BHlbw+4hSSCc4wFsGnFiD67uK8S
- lVX1v0y2jlh137jjcqI3nHvUO3CdTCGOGdxFPZjj2g3sjd+ofCmON9Y5/+njXzuLjq1F
- KQRBLQ+N8SI8OZdTG5SE6ARpkZWEF1q+Z4GFbQAaV0uAUXoukIafTudevAT1FJjsYfof
- djIQ==
+ bh=FmUHdkODkmAVcqBEkhPvnXi+rURTw5GQdE1Jd45GhVY=;
+ b=MzKbxHDP23hCI9u1EXqPVPoTt2l2iRAZo6gOYn1xd6grsJ3CPHBC4uskcqkoq6fbFX
+ ukQ7o7dObRW0Xg7NqIkpme8IWk1CaHem2XFKbBnq8O3k5HH56VvUvewqnP3TnC0WDvUP
+ gkNLFSFRnu/sV9EbN/yBptbWqNgy+RPRHZaL/0L/LDpLo6NeJmp0LW/Ck5PZlqa9wZWe
+ epHBEdUj8d73LGpt/IlJi52Tyan2izWrbIhOczUvkyVo1Pq+47/q7YUl+7cTr8F2Bp6/
+ pOhIHwk6MkanC/pXIHLxPDXQlz3c68vVjkm/Ziunn3uEtvGT/oZZZFBJ6NZ6meF3a/MQ
+ UDkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703715546; x=1704320346;
+ d=1e100.net; s=20230601; t=1703715603; x=1704320403;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ubOJege1Z61R1R1/YN94sPs6PJRX9iqv30pYobkbYBg=;
- b=kGbPQOnmTvLrr2WtWsc+QOqmrcCmi5XWDpWqM+ktXvj8BB2ywCB9/meP0l/8QTZTLq
- s1PFK7oD8S9Ennv+PwoUitD5RhjF6LD8S9BXXp/Zs3kJXSFAXmFSP805P6EdYYBVG4zB
- Q6/xexJGULUEpZad1zYZqvVtCsF2WCWYOxyhNZzWVvN6dpzMxRas5x/3xovl9e62GVjI
- SUuPNyIfyl14aVicwfy/e2mEBf6yS+d85ZiWC6zRFrwyofECTIqsL2Qt2pFHgsl566RR
- P0MdfaaB5IFZHqzZ7vMmMvSbzGHxrsEYadLYmTWDWJXwhDDx5aroXo28PJOrCOP4PRd+
- 6xzA==
-X-Gm-Message-State: AOJu0Yy6CfT2L5dGvWcSZEeRRymL2/a7ZHWsJXweoVtZa3LFYtZ/PS01
- iAmHVui4UcQ0RoRnADSilFtuF4ppKG7UOw1fkR344nVvb4TOtQ==
-X-Received: by 2002:a05:6a00:d0:b0:6d9:aa6d:e3d3 with SMTP id
- e16-20020a056a0000d000b006d9aa6de3d3mr2666937pfj.66.1703715545903; 
- Wed, 27 Dec 2023 14:19:05 -0800 (PST)
+ bh=FmUHdkODkmAVcqBEkhPvnXi+rURTw5GQdE1Jd45GhVY=;
+ b=szhUMTgyTZiKbJcSjeMzFhaNXUSWjTx8qQfAyE1c+Dvj20fIEhqCxFWY4YwDtX0cbT
+ Q99v0kZXvbR4ckBn0Oy/aGuyaEvGa3MsBqKrxGRYW3fXnN+Ctg8hxW5gltqV89gjZVLq
+ V9Y9pepVNj99tOR6iw466BJcu4LFNh5LylI7L0pue1BKDEDbR7GEHKtLirery+pvKxXx
+ FtralO06wc2nArKHEdrvNXjvnFwiTzaR0MfZHbKuHZ/o+UZ0e0oqipHgC4JAszwfEJmu
+ pvXW9jguwusgb9lJNbEZHGV5SK/dKfRnDllnnvqnxhaW5WPySQhRQJ/vmr0oysFO9cJB
+ l4ZQ==
+X-Gm-Message-State: AOJu0Yw9r101lP7KzRaGJWvxxv+1sRqhb6dLQ/JHfj0W96K38XxLgnlH
+ SAagN9kG/Flr60jkR6EDh4D8s8Q4+jdg7Q==
+X-Received: by 2002:a05:6358:f17:b0:174:c2e3:bca7 with SMTP id
+ b23-20020a0563580f1700b00174c2e3bca7mr4038155rwj.12.1703715603376; 
+ Wed, 27 Dec 2023 14:20:03 -0800 (PST)
 Received: from ?IPV6:2001:8003:c020:6900:12c1:9684:874a:fb3a?
  ([2001:8003:c020:6900:12c1:9684:874a:fb3a])
  by smtp.gmail.com with ESMTPSA id
- c13-20020aa781cd000000b006d9fd64fdcasm1938353pfn.37.2023.12.27.14.19.03
+ c13-20020aa781cd000000b006d9fd64fdcasm1938353pfn.37.2023.12.27.14.20.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Dec 2023 14:19:05 -0800 (PST)
-Message-ID: <3ef462b3-e54b-4f85-8c38-ef72e30e3a60@linaro.org>
-Date: Thu, 28 Dec 2023 09:18:59 +1100
+ Wed, 27 Dec 2023 14:20:02 -0800 (PST)
+Message-ID: <7bae3b71-dbea-4fbf-8187-79d25069496d@linaro.org>
+Date: Thu, 28 Dec 2023 09:20:00 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/35] target/arm: Always honour HCR_EL2.TSC when
- HCR_EL2.NV is set
+Subject: Re: [PATCH 08/35] target/arm: Allow use of upper 32 bits of TBFLAG_A64
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-8-peter.maydell@linaro.org>
+ <20231218113305.2511480-9-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231218113305.2511480-8-peter.maydell@linaro.org>
+In-Reply-To: <20231218113305.2511480-9-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::230;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,33 +128,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TnntdfmOlR/z
+X-TUID: JYdMuHGU7zpx
 
 On 12/18/23 22:32, Peter Maydell wrote:
-> The HCR_EL2.TSC trap for trapping EL1 execution of SMC instructions
-> has a behaviour change for FEAT_NV when EL3 is not implemented:
+> The TBFLAG_A64 TB flag bits go in flags2, which for AArch64 guests
+> we know is 64 bits. However at the moment we use FIELD_EX32() and
+> FIELD_DP32() to read and write these bits, which only works for
+> bits 0 to 31. Since we're about to add a flag that uses bit 32,
+> switch to FIELD_EX64() and FIELD_DP64() so that this will work.
 > 
->   * in older architecture versions TSC was required to have no
->     effect (i.e. the SMC insn UNDEFs)
->   * with FEAT_NV, when HCR_EL2.NV == 1 the trap must apply
->     (i.e. SMC traps to EL2, as it already does in all cases when
->     EL3 is implemented)
->   * in newer architecture versions, the behaviour either without
->     FEAT_NV or with FEAT_NV and HCR_EL2.NV == 0 is relaxed to
->     an IMPDEF choice between UNDEF and trap-to-EL2 (i.e. it is
->     permitted to always honour HCR_EL2.TSC) for AArch64 only
-> 
-> Add the condition to honour the trap bit when HCR_EL2.NV == 1.  We
-> leave the HCR_EL2.NV == 0 case with the existing (UNDEF) behaviour,
-> as our IMPDEF choice (both because it avoids a behaviour change
-> for older CPU models and because we'd have to distinguish AArch32
-> from AArch64 if we opted to trap to EL2).
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/arm/tcg/op_helper.c | 16 +++++++++++++---
->   1 file changed, 13 insertions(+), 3 deletions(-)
+>   target/arm/cpu.h | 8 +++++---
+>   1 file changed, 5 insertions(+), 3 deletions(-)
+
+Oops, I hadn't intended this to be 32-bit from the start.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+
 r~
+
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 167b3759ac9..91157db85ae 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -3240,12 +3240,14 @@ FIELD(TBFLAG_A64, NAA, 30, 1)
+>   FIELD(TBFLAG_A64, ATA0, 31, 1)
+>   
+>   /*
+> - * Helpers for using the above.
+> + * Helpers for using the above. Note that only the A64 accessors use
+> + * FIELD_DP64() and FIELD_EX64(), because in the other cases the flags
+> + * word either is or might be 32 bits only.
+>    */
+>   #define DP_TBFLAG_ANY(DST, WHICH, VAL) \
+>       (DST.flags = FIELD_DP32(DST.flags, TBFLAG_ANY, WHICH, VAL))
+>   #define DP_TBFLAG_A64(DST, WHICH, VAL) \
+> -    (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_A64, WHICH, VAL))
+> +    (DST.flags2 = FIELD_DP64(DST.flags2, TBFLAG_A64, WHICH, VAL))
+>   #define DP_TBFLAG_A32(DST, WHICH, VAL) \
+>       (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_A32, WHICH, VAL))
+>   #define DP_TBFLAG_M32(DST, WHICH, VAL) \
+> @@ -3254,7 +3256,7 @@ FIELD(TBFLAG_A64, ATA0, 31, 1)
+>       (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_AM32, WHICH, VAL))
+>   
+>   #define EX_TBFLAG_ANY(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_ANY, WHICH)
+> -#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_A64, WHICH)
+> +#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX64(IN.flags2, TBFLAG_A64, WHICH)
+>   #define EX_TBFLAG_A32(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_A32, WHICH)
+>   #define EX_TBFLAG_M32(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_M32, WHICH)
+>   #define EX_TBFLAG_AM32(IN, WHICH)  FIELD_EX32(IN.flags2, TBFLAG_AM32, WHICH)
+

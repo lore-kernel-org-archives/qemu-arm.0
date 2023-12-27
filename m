@@ -1,113 +1,113 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1211898ejc;
-        Wed, 27 Dec 2023 15:07:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG/HqmQObtcE5/0PqwrPlaRiHhJ2/+dnGiVsEyPCjpT1PghwqbhGKZnrSKPWYTiWIJ7RA08
-X-Received: by 2002:a05:620a:2943:b0:781:13b7:e8c0 with SMTP id n3-20020a05620a294300b0078113b7e8c0mr14236013qkp.86.1703718421858;
-        Wed, 27 Dec 2023 15:07:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703718421; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1214074ejc;
+        Wed, 27 Dec 2023 15:12:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE7LUlsC+/mErMGysAkCMAGz5uGFUklNR6QZmrckFis9L+UykEVksAU2N6avktfD9zMuCVx
+X-Received: by 2002:a05:622a:386:b0:425:902d:ebdc with SMTP id j6-20020a05622a038600b00425902debdcmr12930610qtx.130.1703718742015;
+        Wed, 27 Dec 2023 15:12:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703718742; cv=none;
         d=google.com; s=arc-20160816;
-        b=0iVJRrC0r1iQLnDZ/EhFbSrtJHFhBCrYO+24BdsR0tg9cEG7CsRXFkICZ6dB7vgHdM
-         X2ffIs4Ecmm7upvRwQcYVYMFAQskGQRTrZbHsxtXtQy9TRSRMyGvMMeIGpuUlMUWyUr/
-         aB4UXVeIUpgmqU57FrrPRx2BV6/MMJ1VnqXgdgiMKaTcnUOqmgYNGCTy3CZ4IMUOPeyt
-         FcxLY9RgCcuJqVqGDjxJsu+hCRF1wgQm9GLRJ8R5wNQCWNkYf4fZLnPF195Bj30ItcC5
-         CPGM2qe75lsbozZxFLJlkhFeDhixqSMqBVZ3XkYFDYSW+pYc4ea/5F0lbIvRBGD0Qhbn
-         xZjQ==
+        b=H14ZYqnSE1UB/yIC0shu7mVkCc9OKKMYK0zepCFUusFxRAed8RtsKfpwsayEGB0EB0
+         pqVvMiskwXzhCPz6HMbCtiSMyR9Kjfc5gonSI7hhrMWYE2E9LilX0IoImu/FOmXVYRoJ
+         dqfS5jSSzuPBT6kbtdyClHY0fL46rDT4krqpHgqyDDeRhcULG29QaHI4I/sXu/5yO4cY
+         rZsW2NPwh3kaZQbjdLaHNkYofNNO4msQPlABSmauWVji9sRECwKVUmi9QOX0BNX2k1EN
+         PEQq/OjNMiNlCCZNICUqDpiB7Jrf8Lm9AFv+O2Ct9QphfbD6A4x1vX77KL8fMyKsvTtr
+         hAlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=rvPajHIy8l1g3X2buf75zd7Xou3Ys9df3H+HTh42yEQ=;
+        bh=9KgtAhN/5fiK2u8i/qxHe/WuoM7E9YMnMGckaILBcY4=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=vEBGDYuzMSE+/wWRI5sMEgHO9wRbv9ty25ekz890qHEy+U8vdOzDjS3LeTkl8h1X6d
-         4uou/9WGPdblRqaHNYkz26Hqoz14dnw12DEyUTUlpEWWXAMqPtffEAEHC8oma0KfhN0u
-         jFpBgX42RdGHM7E9WkL6wqsoa817g2zU3Em96m1RJ//mmNetpwYOJTQBEP9W7f5cYdH2
-         +zF+ZJmmH2r5ZC9BrMnFpapxtoj6Vj4NFySVEpQidevkuSzV23btghdDeV3728osNDvU
-         /xC6F/sCJTrLpNLw6BfI0CSYzSoKdciU4Or0M/1O6TciIGC3S+f1HDHsbMTgWBfKXlfO
-         MtBg==
+        b=Yj8lKXJ/dlSZ8HMXEIcqOVrcyr+OLTnsxROmuT/dmYDMuryZ4jm13VjSPaeEj072dE
+         QGneu0WfapAaBgJ6vtvLELPJ9Z/xjaImJUJR23caJVELP6GHNvH8LjOSQMcLzhTlZKHH
+         5JZeUqQJu8O43ht9/PXThKQVE4m3wuBmevG0j94kUbS9JPnEW3W3qecOn/6NRoZW8Gkh
+         /3AU66ffyKPVTsL81O09r6Ragn4b4MrKVLbVBMsmTGpI4e5fqsFBOBDU8F+xbaq7agpj
+         xyzxgOco98HwcUz3ZpKqh3Furu/i+A0NZDeO6/bpurpEp90euPO1fnSdE+MBfq0yXgA1
+         lMpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fKUU520v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CV9WQfyj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2-20020ac87f42000000b0042578643a91si16122281qtk.123.2023.12.27.15.07.01
+        by mx.google.com with ESMTPS id h16-20020a05622a171000b00427ea705a08si2964896qtk.182.2023.12.27.15.12.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Dec 2023 15:07:01 -0800 (PST)
+        Wed, 27 Dec 2023 15:12:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fKUU520v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CV9WQfyj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rIcz6-0007W3-O7; Wed, 27 Dec 2023 18:06:44 -0500
+	id 1rId4A-0001ZG-DL; Wed, 27 Dec 2023 18:11:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIcyy-0007Q6-UI
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 18:06:37 -0500
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+ id 1rId48-0001Yf-Bu
+ for qemu-arm@nongnu.org; Wed, 27 Dec 2023 18:11:56 -0500
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIcyx-0007Iu-HF
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 18:06:36 -0500
-Received: by mail-oa1-x2b.google.com with SMTP id
- 586e51a60fabf-20389f2780fso4672762fac.2
- for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 15:06:34 -0800 (PST)
+ id 1rId44-0000Nd-9W
+ for qemu-arm@nongnu.org; Wed, 27 Dec 2023 18:11:54 -0500
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-1d3cfb1568eso45809305ad.1
+ for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 15:11:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703718393; x=1704323193; darn=nongnu.org;
+ d=linaro.org; s=google; t=1703718710; x=1704323510; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=rvPajHIy8l1g3X2buf75zd7Xou3Ys9df3H+HTh42yEQ=;
- b=fKUU520v4NtPZWq5pfe94qwJs6fld1+/Df0rmHfPSvkuWdLTJmVdXNwqylZvb3qUaR
- VkrvtISBm3Piz+tdyAcHf32Pc0MgYpafoHdi9mKQaM8d5xrU55/M1dEmclJ8jvMB42g7
- /wTK6fu+o2uXDvpwKn+GLrCpxa4o9DnhR+lDCpP19DuT1zVWUx/1AiiDUNSTRqwgwoQr
- a4Zlq313yGbax29TGb00NERVlt+ijRSiSW4+KDk+qQx0XO1xJA8Uz4/8l8VJdWY5Lr+d
- QIkPT8u3yC/bg/Lz1Y/6icYqvjWxsXUh5F699kyiT05SZfzuSv5ff+yR85qjh7TCsi3+
- UWiw==
+ bh=9KgtAhN/5fiK2u8i/qxHe/WuoM7E9YMnMGckaILBcY4=;
+ b=CV9WQfyjsJl3seOsdVRGSX40UZ0p+vRE413sPVdmta9fwwRB4mwc7s5hDUyI+QROqs
+ nBU3P/sfWSJwrGXv+ej1Gu0V2CnHLSJ6dbUZuybZiLn4Dr153bv4D3Vyc6hsNXOlL2Yr
+ nbLcikL2ZVzB5V6fQ8T7UV9YxEQCTQxwOGXrlMZXOenSN+lvkloP1Y5U0uSQLnKYeRaI
+ vDrmXIWCHeXWdEZXPTaHOsy7FGSLAezZVZyc5lZlJ9G0T50Iu7+YMf7evFwM3XP1FTud
+ C/rBLBeYlWdeQ9eK9iSUykl6B4mOj/MFWoqftgnqUS02XA2RWN84BP3yNjdW/mmQhh/9
+ aCaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703718393; x=1704323193;
+ d=1e100.net; s=20230601; t=1703718710; x=1704323510;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rvPajHIy8l1g3X2buf75zd7Xou3Ys9df3H+HTh42yEQ=;
- b=XuXqy5GdkzjHtRdIUdt+V/3azTrZEOonWJLj7KITeEmBk/l7vy+zgzs4fQHdITXiry
- xHf6ZQuBOCSA1kxHPvqeyhEc+w11odo12PTwvqUNRUe0Ju3Mjt14oLBVsEbSDLVjneZM
- ciFVo/jghZuo6m4CWzc2GciZQqVcqPsF3F6FGURQ9pc2KfNpRG9gO9RfUV9ZlBp97RJ/
- D4wzZnvc54FiKMyRMLXm2XbaZAPgXRiYHGLRZO5moWoQbv/1ZqR10vhRsmx6t0gefV4x
- nV7QiAuVVO23x3rWbh9X9gcJhNra8UjeBC3WF3iTi3b524m7uO/if3E9KGvMf56ZkxnX
- UTmw==
-X-Gm-Message-State: AOJu0Yz5oXAT46F/BNF7R2Di5NEkdntx3iTRpx61UBZ4W+psmcGrrup1
- LRjMKQsuZU+lo06BceqKOgIQ/gm04pc9t2BTVse1MCTFZVHyZw==
-X-Received: by 2002:a05:6870:3514:b0:1ea:2e2c:e9e7 with SMTP id
- k20-20020a056870351400b001ea2e2ce9e7mr11519898oah.59.1703718393281; 
- Wed, 27 Dec 2023 15:06:33 -0800 (PST)
+ bh=9KgtAhN/5fiK2u8i/qxHe/WuoM7E9YMnMGckaILBcY4=;
+ b=tupcMdEKUAOYAj7iUm0VlxsFqmRmMrfhnDhg5RB15QMlbl81oxFisQBC6Euhjx8LyT
+ oz45iFIy6WksSbLi5+ChZrLTeiyZ2A90L0RjEKZzzZMY/PTwsqjU/VZ3S5g2dxslK3o3
+ +RQprbbKlK6HvX9zLCiM98MkjdkBoVx/VvULvjSqHY/bnzZWaKEk3jbqzqjndb1tjfZW
+ FBvOOtHsdGzCQjrdav5VOHW437bNsWIt2UW6nvTi4qw7PJrvseoQ2IUyYxX6xfjXEJV0
+ 7SRDNnD3lNOYocfJlsbMrFmUICV+aBXfrkGOoAFOyEtVh/m/yXSSB687Ry0+WXt6+niH
+ jlLg==
+X-Gm-Message-State: AOJu0YxoHYE7eun2s8fiPEgreDCyN4pTEciiqe5ZsauHlMZxfRqt7fFm
+ OxdFMZHUbX1Pi7Fjn+kKEoUox+atxky3xA==
+X-Received: by 2002:a17:902:d508:b0:1d4:5939:51fd with SMTP id
+ b8-20020a170902d50800b001d4593951fdmr6448642plg.97.1703718710423; 
+ Wed, 27 Dec 2023 15:11:50 -0800 (PST)
 Received: from ?IPV6:2001:8003:c020:6900:12c1:9684:874a:fb3a?
  ([2001:8003:c020:6900:12c1:9684:874a:fb3a])
  by smtp.gmail.com with ESMTPSA id
- c13-20020aa781cd000000b006d9fd64fdcasm1975921pfn.37.2023.12.27.15.06.31
+ x5-20020a170902ec8500b001d04d730687sm12478731plg.103.2023.12.27.15.11.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Dec 2023 15:06:32 -0800 (PST)
-Message-ID: <cd9c4cc1-be3b-49d4-a049-c8157a9cae03@linaro.org>
-Date: Thu, 28 Dec 2023 10:06:27 +1100
+ Wed, 27 Dec 2023 15:11:50 -0800 (PST)
+Message-ID: <b67708f0-f4c4-47a8-b003-ff154136740c@linaro.org>
+Date: Thu, 28 Dec 2023 10:11:45 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 24/35] target/arm: Handle FEAT_NV2 changes to when
- SPSR_EL1.M reports EL2
+Subject: Re: [PATCH 25/35] target/arm: Handle FEAT_NV2 redirection of
+ SPSR_EL2, ELR_EL2, ESR_EL2, FAR_EL2
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-25-peter.maydell@linaro.org>
+ <20231218113305.2511480-26-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231218113305.2511480-25-peter.maydell@linaro.org>
+In-Reply-To: <20231218113305.2511480-26-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2b;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,55 +129,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3kAXQ+KNPxdT
+X-TUID: cYien5gsBFQP
 
 On 12/18/23 22:32, Peter Maydell wrote:
-> With FEAT_NV2, the condition for when SPSR_EL1.M should report that
-> an exception was taken from EL2 changes.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/helper.c | 16 ++++++++++++----
->   1 file changed, 12 insertions(+), 4 deletions(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 45444360f95..38e16c2f8a5 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -11405,10 +11405,18 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
->           aarch64_save_sp(env, arm_current_el(env));
->           env->elr_el[new_el] = env->pc;
->   
-> -        if (cur_el == 1 && new_el == 1 &&
-> -            ((arm_hcr_el2_eff(env) & (HCR_NV | HCR_NV1)) == HCR_NV)) {
-> -            /* I_ZJRNN: report EL2 in the SPSR by setting M[3:2] to 0b10 */
-> -            old_mode = deposit32(old_mode, 2, 2, 2);
-> +        if (cur_el == 1 && new_el == 1) {
-> +            uint64_t hcr = arm_hcr_el2_eff(env);
-> +            if ((hcr & (HCR_NV | HCR_NV1 | HCR_NV2)) == HCR_NV ||
-> +                (hcr & (HCR_NV | HCR_NV2)) == (HCR_NV | HCR_NV2)) {
+> @@ -2173,7 +2174,14 @@ static void handle_sys(DisasContext *s, bool isread,
+>            * for registers accessible at EL1).
+>            */
+>           skip_fp_access_checks = true;
+> -        if (s->nv && arm_cpreg_traps_in_nv(ri)) {
+> +        if (s->nv && s->nv2 && (ri->type & ARM_CP_NV2_REDIRECT)) {
 
-Maybe clearer as
+You've documented and implemented that nv2 is true iff nv, thus the nv test can be dropped.
 
-	if ((hcr & HCR_NV) && ((hcr & HCR_NV2) || !(hcr & HCR_NV1)))
-
-?
-
-Anyway,
+Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~
-
-> +                /*
-> +                 * FEAT_NV, FEAT_NV2 may need to report EL2 in the SPSR
-> +                 * by setting M[3:2] to 0b10.
-> +                 * If NV2 is disabled, change SPSR when NV,NV1 == 1,0 (I_ZJRNN)
-> +                 * If NV2 is enabled, change SPSR when NV is 1 (I_DBTLM)
-> +                 */
-> +                old_mode = deposit32(old_mode, 2, 2, 2);
-> +            }
->           }
->       } else {
->           old_mode = cpsr_read_for_spsr_elx(env);
-

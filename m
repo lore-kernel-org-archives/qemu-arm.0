@@ -1,151 +1,111 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp424048ejc;
-        Tue, 26 Dec 2023 07:22:45 -0800 (PST)
-X-Received: by 2002:a05:6000:c5:b0:336:80f7:431c with SMTP id q5-20020a05600000c500b0033680f7431cmr2509180wrx.186.1703604164993;
-        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703604164; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp986648ejc;
+        Wed, 27 Dec 2023 07:07:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHs7QFN7T/yNc7SwNvwxUR5v3w9p/tRrxCPSWQx8ZH7uDKq7zvopCRFFzcmw80R4RNyteKC
+X-Received: by 2002:ad4:5be3:0:b0:67f:1a6e:ce06 with SMTP id k3-20020ad45be3000000b0067f1a6ece06mr14942446qvc.68.1703689624028;
+        Wed, 27 Dec 2023 07:07:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703689623; cv=none;
         d=google.com; s=arc-20160816;
-        b=d5UHfiJ83w3d59okp/ysSFphskcO4LezRSWii31d4oAhZ1qGIS4PmjxVwipnQlqpTK
-         2lLrhDypuGDUlBvICaNL1PLZKiAb3nTypF5Dg0Lu6Q1hzB1VtWgoWBiTBsnrz/Ii2lj2
-         IIcfKgOts1/EcIVkUmqSeJy+tfn4z5tG13HIhfX2KqWLSri0YxvCOyov2rPKN+YHwbhE
-         DdPUg5KjxTMlYNNZZCvr6oHnqJkww8x5XgDJWdbcF6MShDsNrvtNeqYil6QMTTdOht1i
-         dAzk+bJXtpxsXiSSEGm0CIP7ZManfFjRmsIo87ZXbnO8ic16EASWmTh0zB9GskbmCLvE
-         nspw==
+        b=oFcWB+aDoh9pkR5fLziYCy9j8yQZmFxIXxTgzhmsbH+rFBqF4RZBgC9HuYOERNGhIP
+         1qJalPZfzWVbaCGi/wOKead78cd2YXqeaDr+0EjVVJ5DwTcYsq7ERArGDSoIe5Q4Mb5W
+         iViWrMRA9bSifpIQYNgly90aivKVgr0WRs636qGw+FbEXebeLLXEovCPqVdmnNN2VVyp
+         X4wdZnsKvF4Y6/+DWcVeNEyQ63NVLtTSDB3EpZ5GfRufmz/xhNXAWP5B3TX3hBrHzz43
+         ys2qS53XTT94LDJqFO4z7oP7Sfb2vx4NW0EWew4B387geszwLmu8cxIvaCtrWQuCE2ni
+         norA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=TGFyDMwWWcYIPV1sVKqkGaMC3O77Yt2NAwy/JQOu4Nw=;
-        fh=/KJbZHPiQhJke5vlvbdxiq9YrpHUQlWkU1Vkr9SpY08=;
-        b=GV7cno1ryrJ5oNFzlBXU5WdBrF/xOu9DdHGJ1pq2MlZyYRzAdmfmR50QirYU8zg5sE
-         CvyagY1vJY3JZDUhqW3UvAAO5QNouOKzsy9Ui8pP0MYxUJRpdtyxkEl8luopx2W1KwJW
-         jBtv4lkW3nQ5dg2ESc3bpC3my/0I+k/AGE7PlSVl33kTfWOASsIn3QkiL6Q7PntUCJnB
-         HCn8m4zSpdd9MVh94xzy9lstGhTWKnu5pmD04xhxl6nEzzT+XSiHtrYDKt/XQuccdhPd
-         7wOxT9wkgZ7wxr2SsBqNcCjfSwChe9gEpVgfwKLleT0dHcFXC9A42XiUzp5w4TTKA3Lg
-         66rg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=P11vohxqiXb6YTxPa+W8PnNkTvKer2U4sImXV9qoxCY=;
+        fh=9opAbzvFMbzdrexr/nqZVQK9innArJIGfjgv6694uII=;
+        b=xY6HVMduAQQude2W8fUES3JTBiuy8O5mpnllv7Kp0L1QONAWM69Ev8JgxKOhHR5FZ+
+         PYev+alPudseKToDoRkcejypJBmbJBseBCs3vXYqzMe/TjjUAb5qKxsrox1JsBNgeC7d
+         y0JIeLPUMU6EhWL31dgkJA65FgVBffcJvC82PuLHniAcm9856OvbCV+3lPtQdEEc9ghD
+         Hu+QxSdqiwTDnzZ05lZsbzppwh3iCQwM8HRRufc/yj5sOTfRfJ0goZhAY+BCBm3C1Ua/
+         of/PaLfjrbx9lEAnuKf0htAU/oNg3/wQzJvyKwmDP4w7tHw6XRsR4Uo9vxX8CCR+Higt
+         F8pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ksN59t8y;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d7-20020a056000186700b00336c501cc08sor1063856wri.6.2023.12.26.07.22.44
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id op33-20020a05620a536100b007815cbd3e21si1984770qkn.686.2023.12.27.07.07.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Dec 2023 07:07:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ksN59t8y;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1703604164; x=1704208964; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TGFyDMwWWcYIPV1sVKqkGaMC3O77Yt2NAwy/JQOu4Nw=;
-        b=ksN59t8yBDzjhKtzNkP4PUhyBUgSaHZyYOa1D/dFa7HF9v1+6LgjxF/ZgffYaZ4BJP
-         WSdxeaKOc9kHKeKSiGQh44Sem1Zpwv8uFZP7wPa10ZiPyg7Jtm6CBPEYox8P5pOVuAmE
-         rOCODFyDRZbU/8DUodXfCfOwaYMJeIs+Dfku+119MvNi9nFvMQCiW3lQ2CpjJG68s17E
-         fObjCakoEg2FGAcxlre3fzVS6MD+WIC1Df0QCp/qgx32fuIHpaeyuPeQEe0buQA9hO9b
-         p1d85NspfeILul1BLm4imtdVjYk3DIBYx/qDAxEE9APVgeP7T8hgB5mE5qAxIH+LyPkE
-         Ftpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1703604164; x=1704208964;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TGFyDMwWWcYIPV1sVKqkGaMC3O77Yt2NAwy/JQOu4Nw=;
-        b=JgwNNXsdRHmBBAPqbi8s2DGTt1aKuwP7XtHIb7rdl2I5sfagZWugDn2/SH51OfYxEn
-         PJcnv3YS8wEk8LRnPplKwNOyHBMlgoRx/nL2ujghgmZUfoe6zKSJGjHSk+BgKM26UBxT
-         wnKN2XBSsJ+z81XpZrBS01U9MUGcbcCG4GkhUoJ6BSgqQPG+b2QzSvjkGvb3uZ0/x0Ew
-         op3txZEhnxdsXRFCOB9kiuHIX2HXvWfj1qn9fsKAI6zDpx2je1sqCDSEZojYqw4ZX99h
-         6gFeJRMUMSuIPrj+z+U0wGjj34lkCkuhQjrv9AHwKat6OOGZnCg8yuetdJi8GfhkcJNp
-         HMVw==
-X-Gm-Message-State: AOJu0YyHnsdnfoPsYbKFEeoMNuH0NzhJsFEjdKqeDZV/6MYdwoQFfaxo
-	BwPvdDWngTEd9KtHShKY/9KJavT32dOrkokc
-X-Google-Smtp-Source: AGHT+IHA1ALC9hkDL2Z+mTf5dGvup3v7SwA0w9AIfvp5EezpO7Wzhrn4dLcfSylpl3kj+ZvaQJA1GA==
-X-Received: by 2002:adf:ea85:0:b0:333:2fd2:3bdf with SMTP id s5-20020adfea85000000b003332fd23bdfmr2519107wrm.152.1703604164518;
-        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.19.175] (131.red-88-29-190.dynamicip.rima-tde.net. [88.29.190.131])
-        by smtp.gmail.com with ESMTPSA id a4-20020adffb84000000b00336d24b4847sm2762191wrr.114.2023.12.26.07.22.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Dec 2023 07:22:44 -0800 (PST)
-Message-ID: <545f08d6-d371-4fe6-a309-30ba2c8571f9@linaro.org>
-Date: Tue, 26 Dec 2023 16:22:39 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rIVUd-0007XQ-0q; Wed, 27 Dec 2023 10:06:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <xiongyining1480@phytium.com.cn>)
+ id 1rIShq-0002IV-Ku; Wed, 27 Dec 2023 07:08:14 -0500
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <xiongyining1480@phytium.com.cn>)
+ id 1rIShd-0006Pe-KK; Wed, 27 Dec 2023 07:08:14 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDHzUWUE4xlj+hpBA--.1396S2;
+ Wed, 27 Dec 2023 20:07:48 +0800 (CST)
+Received: from phytium.com.cn (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwDX+OWSE4xldrYAAA--.2783S3;
+ Wed, 27 Dec 2023 20:07:47 +0800 (CST)
+From: Xiong Yining <xiongyining1480@phytium.com.cn>
+To: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, chenbaozi@phytium.com.cn,
+ Xiong Yining <xiongyining1480@phytium.com.cn>
+Subject: [PATCH 0/2] ARM Sbsa-ref: Enable CPU cluster topology
+Date: Wed, 27 Dec 2023 12:07:20 +0000
+Message-Id: <20231227120722.1683361-1-xiongyining1480@phytium.com.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 23/24] exec/cpu-all: Extract page-protection definitions
- to page-prot-common.h
-Content-Language: en-US
-To: Nicholas Piggin <npiggin@gmail.com>, qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>, Warner Losh <imp@bsdimp.com>,
- Claudio Fontana <cfontana@suse.de>, Brian Cain <bcain@quicinc.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
- Kyle Evans <kevans@freebsd.org>, BALATON Zoltan <balaton@eik.bme.hu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Michael Rolnik <mrolnik@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- Stafford Horne <shorne@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>
-References: <20231211212003.21686-1-philmd@linaro.org>
- <20231211212003.21686-24-philmd@linaro.org>
- <CXUPHHNKAVYM.129IGW3MNKCSQ@wheely>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CXUPHHNKAVYM.129IGW3MNKCSQ@wheely>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: digDHjSpXtET
+X-CM-TRANSID: AQAAfwDX+OWSE4xldrYAAA--.2783S3
+X-CM-SenderInfo: x0lr0wp1lqx0bjrumio6sk53xlxphulrpou0/1tbiAQAGBmWLKugHVgABs9
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=xiongyinin
+ g1480@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=xiongyining1480@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 27 Dec 2023 10:06:43 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DRzQePRnaUGQ
 
-Hi Nicholas,
+Enable CPU cluster support on SbsaQemu platform, so that users can
+specify a 4-level CPU hierarchy sockets/clusters/cores/threads. And this
+topology can be passed to the firmware through DT cpu-map.
 
-On 22/12/23 09:06, Nicholas Piggin wrote:
-> On Tue Dec 12, 2023 at 7:20 AM AEST, Philippe Mathieu-Daudé wrote:
->> Extract page-protection definitions from "exec/cpu-all.h"
->> to "exec/page-prot-common.h".
->>
->> The list of files requiring the new header was generated
->> using:
->>
->> $ git grep -wE \
->>    'PAGE_(READ|WRITE|EXEC|BITS|VALID|ANON|RESERVED|TARGET_.|PASSTHROUGH)'
-> 
-> Acked-by: Nicholas Piggin <npiggin@gmail.com> (ppc)
-> 
-> Looks trivial for ppc, so fine. But what's the difference between
-> -common.h and -all.h suffix?
+xiongyining1480 (2):
+  hw/arm/sbsa-ref:Enable CPU cluster on ARM sbsa machine
+  hw/arm/sbsa-ref: Add cpu-map to device tree
 
-We believe historically '-all' was used for target-specific
-headers. However then headers got massaged and some ended
-using this suffix, although not anymore target specific.
+ hw/arm/sbsa-ref.c | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-Today for clarity we prefer using '-common' for generic
-(target agnostic) headers, and '-target' for target-specific
-ones.
+-- 
+2.34.1
 
-I tried to clarify that here:
-https://lore.kernel.org/qemu-devel/20231226150441.97501-1-philmd@linaro.org/
-
-Thanks for your review,
-
-Phil.

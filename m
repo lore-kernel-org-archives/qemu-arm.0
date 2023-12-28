@@ -1,34 +1,33 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1548129ejc;
-        Thu, 28 Dec 2023 06:25:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFMXHOLuGL4V7vP+EFdTtuXhZIA350ryieRTQa8ocglafC5f0RTOW1CdFuRIz3N325z7Lf4
-X-Received: by 2002:ac8:7c41:0:b0:427:ea23:f9b9 with SMTP id o1-20020ac87c41000000b00427ea23f9b9mr4436060qtv.47.1703773508390;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1548141ejc;
+        Thu, 28 Dec 2023 06:25:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEzIjCqjnvT8g9l8U4n/mdDh1b6berhzFwd6g3dQpJB19h7m1YWMRqfaUE9z722C2N6vALF
+X-Received: by 2002:ad4:5b8b:0:b0:67f:6a10:aa1a with SMTP id 11-20020ad45b8b000000b0067f6a10aa1amr14174050qvp.86.1703773508478;
         Thu, 28 Dec 2023 06:25:08 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1703773508; cv=none;
         d=google.com; s=arc-20160816;
-        b=RrUm7Kj5AY3NaoNGWG5jA3KsgMyTCu3hZwl03+aGf35A1LY6uN0TtrXy5vpBJaTdoy
-         HlO0HyV1KVLYL+caVZ2WQ9OajS5xE1HcX7HkzA0zDoD+HxpZPQjYS/+e+U2cUMDa2vSW
-         glV7C3rSbU3IzhXhmUkOMzUA58N2p86bJMxj6STUc1MySK5oU/1cLYxZSRyueJ4FrvIw
-         /ABE4UKRANHkE721A+081LBBBuWNgOa/JMLoYHDTrJIu1uCS92guKkRAuDVhDhNCS1qv
-         vM8/Lil3PgsfkysS18MBrz9PRQhLEIglBm85uW8zl5WJi/fhjN6uuadkJX3lwgSnQvh8
-         fqEA==
+        b=jIRIuQMqfH1OO7paSLRflFaqMeAzUzRrgMF2QQXkzAfOREZwT8RHY+h/cTsOI1qQZx
+         bROeJR/r1hvUVATK46QYBV9Qi2NDNtlGqo1cEj8UoOcLDTldxzWhuwwpmFc2t7W1Y1Jx
+         26nS7c0kLlu3FkbqkHCETdUAErV+qi0xr80JTVO/irbWP39Iqnm1vw1crGjrydAy0VEW
+         z2aW5Z/XI3nOXF7jbvWlr9fX9vY9qQjTrY9DpLi/1ZJazAnvoGZ9xU7+FU65A5l86iDV
+         dIhOWfmhJM32EyKp94RFfOkX7l2rpbM4lQHNoLk6Fd1XwSO+cs1Le4POFmXPeN/CEcOG
+         EZlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=hNqbxwtcWjD9e8XIO+6PPatdEbHPnwtcFbGXLWwK1po=;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=6YeBpVUmWEVKIfmozkfv+ukIGSVTnm0w+5IheQ6AxuE=;
         fh=QbF/X0wJM1LtslEumBv3OBX7H1r/o++Lq4nWqCNLPUU=;
-        b=pjLUnMCnDZj2SZjo1+4cuihWAGuLpQrS/y31U6Vr0enRIa8pgcCJLn6Yqzj2vJ59lj
-         4vRsBg+PolybZ/vPzzKcIrEnV8/5htBHKc6YqbeGGKSt9wepWbHrPH7jdcOI2pIHOUQu
-         BZnPAKd49WUwP+4mau8VZ3gATKpb+oZ8eW09DVnnLjUGuzt50ZbNBLqUZ11BtXtpUjiv
-         9N2uRTc57ndDXiyFfuKyqQ7VfPoj9jpiZd7eZ8CwT1i10dpcdei/LqKPHd0NI5PUo4Pu
-         yNQEGI02f+EX+Jrz7xT/w5tIrCuxHS9ksTTT0DCynhw80NpAEWjz6S+ekQUB+oLPROzG
-         jkLQ==
+        b=VAqc964jYGHwgNJIUGWosavbx/cgGuf5azync4w2Jcb/+LXl/asY4SntEWWvRAzvFT
+         rsixk8YxcaZ1ccLSl8DgMC8vXZd2Eyt9//cTkCSsfaR+P5D3NjgVjlxkga9wkEA/TRrf
+         2SI3xYPP1HGtuioN+H1/bNhfmCNknihPVyrRd2/XkhZMr6HXbocFZWiLE1st+l9anbPf
+         IuIZWSS+XAQnIw46+UUtGoPp1IZ++LFz12ylfe2n5WNPbJTKC64O4HtqgH4eWKjk8ko5
+         4jnLUj7X29XJk5ROGK+zh2/buU5uKAD7qG5OEkCQnvB2bAmzWdvy+/JAof59aElwM+Ei
+         2iDw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv26-20020a05622a4a1a00b00427ea3374efsi4881651qtb.587.2023.12.28.06.25.08
+        by mx.google.com with ESMTPS id y10-20020a0cf14a000000b0067f9703900csi14050094qvl.375.2023.12.28.06.25.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 28 Dec 2023 06:25:08 -0800 (PST)
@@ -38,26 +37,26 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rIrJH-00041o-BF; Thu, 28 Dec 2023 09:24:31 -0500
+	id 1rIrJI-00042P-H8; Thu, 28 Dec 2023 09:24:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rIlPq-0004QO-KK; Thu, 28 Dec 2023 03:06:54 -0500
+ id 1rIlPw-0004RD-FY; Thu, 28 Dec 2023 03:07:00 -0500
 Received: from fd01.gateway.ufhost.com ([61.152.239.71])
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rIlPn-0002D0-S3; Thu, 28 Dec 2023 03:06:54 -0500
+ id 1rIlPu-0002CC-Ox; Thu, 28 Dec 2023 03:07:00 -0500
 Received: from EXMBX166.cuchost.com (unknown [175.102.18.54])
  (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
  (Client CN "EXMBX166", Issuer "EXMBX166" (not verified))
- by fd01.gateway.ufhost.com (Postfix) with ESMTP id B2CF97FFD;
- Thu, 28 Dec 2023 16:06:38 +0800 (CST)
+ by fd01.gateway.ufhost.com (Postfix) with ESMTP id B34BE8008;
+ Thu, 28 Dec 2023 16:06:24 +0800 (CST)
 Received: from EXMBX066.cuchost.com (172.16.7.66) by EXMBX166.cuchost.com
  (172.16.6.76) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Thu, 28 Dec
- 2023 16:06:38 +0800
+ 2023 16:06:24 +0800
 Received: from jsia-virtual-machine.localdomain (175.136.135.142) by
  EXMBX066.cuchost.com (172.16.6.66) with Microsoft SMTP Server (TLS) id
- 15.0.1497.42; Thu, 28 Dec 2023 16:06:33 +0800
+ 15.0.1497.42; Thu, 28 Dec 2023 16:06:19 +0800
 From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <qemu-riscv@nongnu.org>
 CC: <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
@@ -65,12 +64,10 @@ CC: <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
  <shannon.zhaosl@gmail.com>, <sunilvl@ventanamicro.com>, <palmer@dabbelt.com>, 
  <alistair.francis@wdc.com>, <bin.meng@windriver.com>, <liwei1518@gmail.com>,
  <dbarboza@ventanamicro.com>, <zhiwei_liu@linux.alibaba.com>
-Subject: [RFC v1 2/2] hw/riscv/virt-acpi-build.c: Generate SPCR table
-Date: Thu, 28 Dec 2023 16:06:16 +0800
-Message-ID: <20231228080616.158822-3-jeeheng.sia@starfivetech.com>
+Subject: [RFC v1 0/2] RISC-V: ACPI: Enable SPCR
+Date: Thu, 28 Dec 2023 16:06:14 +0800
+Message-ID: <20231228080616.158822-1-jeeheng.sia@starfivetech.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231228080616.158822-1-jeeheng.sia@starfivetech.com>
-References: <20231228080616.158822-1-jeeheng.sia@starfivetech.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [175.136.135.142]
@@ -100,76 +97,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +Bg2sV/DPBAl
+X-TUID: hxnulEc6kTCT
 
-Generate Serial Port Console Redirection Table (SPCR) for RISC-V
-virtual machine.
+This series focuses on enabling the Serial Port Console Redirection (SPCR=
+)
+table for the RISC-V virt platform. Considering that ARM utilizes the sam=
+e
+function, the initial patch involves migrating the build_spcr function to
+common code. This consolidation ensures that RISC-V avoids duplicating th=
+e
+function.
 
-Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
----
- hw/riscv/virt-acpi-build.c | 39 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+The patch set is built upon Alistair's riscv-to-apply.next branch and
+relies on Sunil's patches at [1].
 
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index d4a02579d6..388b3d1a84 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -174,6 +174,42 @@ acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *ua=
-rt_memmap,
-     aml_append(scope, dev);
- }
-=20
-+/*
-+ * Serial Port Console Redirection Table (SPCR)
-+ * Rev: 1.07
-+ */
-+
-+static void
-+build_spcr_rev2(GArray *table_data, BIOSLinker *linker, RISCVVirtState *=
-s)
-+{
-+    AcpiSpcrData serial =3D {
-+        .interface_type =3D 0,       /* 16550 compatible */
-+        .base_addr.id =3D AML_AS_SYSTEM_MEMORY,
-+        .base_addr.width =3D 32,
-+        .base_addr.offset =3D 0,
-+        .base_addr.size =3D 1,
-+        .base_addr.addr =3D s->memmap[VIRT_UART0].base,
-+        .interrupt_type =3D (1 << 4),/* Bit[4] RISC-V PLIC/APLIC */
-+        .pc_interrupt =3D 0,
-+        .interrupt =3D UART0_IRQ,
-+        .baud_rate =3D 7,            /* 15200 */
-+        .parity =3D 0,
-+        .stop_bits =3D 1,
-+        .flow_control =3D 0,
-+        .terminal_type =3D 3,        /* ANSI */
-+        .language =3D 0,             /* Language */
-+        .pci_device_id =3D 0xffff,   /* not a PCI device*/
-+        .pci_vendor_id =3D 0xffff,   /* not a PCI device*/
-+        .pci_bus =3D 0,
-+        .pci_device =3D 0,
-+        .pci_function =3D 0,
-+        .pci_flags =3D 0,
-+        .pci_segment =3D 0,
-+    };
-+
-+    build_spcr(table_data, linker, &serial, s->oem_id, s->oem_table_id);
-+}
-+
- /* RHCT Node[N] starts at offset 56 */
- #define RHCT_NODE_ARRAY_OFFSET 56
-=20
-@@ -555,6 +591,9 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBu=
-ildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_rhct(tables_blob, tables->linker, s);
-=20
-+    acpi_add_table(table_offsets, tables_blob);
-+    build_spcr_rev2(tables_blob, tables->linker, s);
-+
-     acpi_add_table(table_offsets, tables_blob);
-     {
-         AcpiMcfgInfo mcfg =3D {
+[1] https://lore.kernel.org/qemu-devel/20231218150247.466427-1-sunilvl@ve=
+ntanamicro.com/
+
+Sia Jee Heng (2):
+  hw/arm/virt-acpi-build.c: Migrate SPCR creation to common location
+  hw/riscv/virt-acpi-build.c: Generate SPCR table
+
+ hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
+ hw/riscv/virt-acpi-build.c  | 39 +++++++++++++++++++++
+ include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
+ include/hw/acpi/aml-build.h |  4 +++
+ 5 files changed, 154 insertions(+), 41 deletions(-)
+
 --=20
 2.34.1
 

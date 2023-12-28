@@ -1,120 +1,119 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1228104ejc;
-        Wed, 27 Dec 2023 15:55:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG9WZXu8p7i8ymgKLbQLpEBVSpVbqMbwVwOOTcIWo9Fz+7+A4eIb8jYfWBczmJ6dihkmUgF
-X-Received: by 2002:a05:622a:5cd:b0:427:f473:b116 with SMTP id d13-20020a05622a05cd00b00427f473b116mr640252qtb.51.1703721325998;
-        Wed, 27 Dec 2023 15:55:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703721325; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1231686ejc;
+        Wed, 27 Dec 2023 16:03:45 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGoJLvT1nbtIeZc+OidQDEWr6mLSNPbqcGdLaP6jbaDhOsf1t5A5WSx9uREbjgcS/cjl51T
+X-Received: by 2002:a05:6214:2481:b0:67a:a721:830a with SMTP id gi1-20020a056214248100b0067aa721830amr15267347qvb.100.1703721825376;
+        Wed, 27 Dec 2023 16:03:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703721825; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2KFvo4Jtqul9vlA/KjyUnmXtN61jfi3UWdwQA3S6ulruA3EAvXw1ZK2c+7+Ycwl1w
-         RMYobYfrDD1otZvSFa/wKv+IFHqnvlE7bdP7M/bK1ozG4yaMvYKyK6TNCon9buyCprhc
-         iu1fyDRsHaEeGhL0GivgfEuMWD+qabIbDXwP/k3X1Mo1vWduBfIiSEP0WJKJIUyvDOyj
-         AtdvPdSii5N1/oDldHTGLWD2rBKN3vdMotQuWEL5F0tfvaJ4WjFZru3q7l8ZBAcs2LXG
-         LVSBbW09QAIvqqg+VQxxmdIYzrxssPg6UnT9lYYkHB7qTrqZAxMoNdLll1+rfjIkbWEQ
-         3T+A==
+        b=uSA/RTrLKQbRJo63wN7sf3OCZ0bqPs/SNWqESs1qWi0NOqYs4/2MaDFILcfpOb37R+
+         mX0QagkICnkpOKoT7qud1YE2j7R9430drPASZUxQY1BlYVJp8DDzjpQaiUHk0dNzluyF
+         ICtLNJA/9X/iAQGrHFeKXhfn+tAjLRQzw3FDzI8p8RlBnJd2p57hJSvMIo9228i7rPYO
+         csob6lAZGauoIaYnQP7CrF4z+53XuDjBCmvJx8JPAVtia3EDT0IX95oo2N13dReB5fIE
+         S/IQfv+kbe8akLLv1dQin19PqQW+M817kim3F7Va/BbxGf1a1o7hmsEqInz1YHFnGzMP
+         bdxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=vIry2953MMeVuYtJmrDWgg1RNwX+P2/WfKs15U/O6QA=;
+        bh=J+nChfUKSb2m0urOd7n6/MYl+m/WZBr1+QmRZeRAisc=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=eS1qxdSzEwLVMhDWlfqvAf5UkTDg6WPgrdDTrRRksjQl7ASgFqhb8XNWYpNRTP/30+
-         TkkSJ5QOdddcR3b+0BStWKWVocRtNRmL3lzp5Nh5+gEjsC5BsBPoJmjPqZrjH0VJVKEW
-         dxgQDU3anmzjW/Hb0rOmGmloqEYf1j1Q+dXtMRh75NmD45P/oKZ8VEZwn35vZPFzcXGi
-         agrTyyOTZxG83h1AGOKDAuMmCalmbDTOyvcsg9C6YJuugXbCl57FJBB5DYysGD/ftvC4
-         nMLEwtCe+54vDudH89CETyefinf3xBnzykvVNLZr8hiBM9JdM3MVWlm5d9kREHGa/iK2
-         /pFg==
+        b=eCYKcBHX3m/JTWP7QOlHyZF0UEyL2FBX58vYehgL4KJDrpTt+su83AyTiFgbVd3Tur
+         pEmHES3sKaGb+AHL5M4HLMDSRge3GSGr59klfRvRoCUyyAHwiadB2I0yvGl5Mo1E06pr
+         IsJVWuJYpfALmiG1R2twVTGq+wf54t+fAV+shNBob174NtmqFQitQN7B4xVobailkbZn
+         VhJj9eErtCweHMXmDsgZemXRGvGpMPwJ1wzy7Y6DxN7JobECRouIcO2muuCcyuIR0e/I
+         upsm5S4gIJMIwPfaclRSGqlHGsBkM6Uf2//d5hsF3CLAnp9ZjWCf+a/QU4LAxE20rwLm
+         g+uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iHJi3ngE;
+       dkim=pass header.i=@linaro.org header.s=google header.b="y39Ali/8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13-20020a05622a044d00b00425814dac1asi15460759qtx.246.2023.12.27.15.55.25
+        by mx.google.com with ESMTPS id d14-20020a0cf0ce000000b0067aad4f088dsi15604935qvl.118.2023.12.27.16.03.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Dec 2023 15:55:25 -0800 (PST)
+        Wed, 27 Dec 2023 16:03:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iHJi3ngE;
+       dkim=pass header.i=@linaro.org header.s=google header.b="y39Ali/8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rIdk6-00075g-Vq; Wed, 27 Dec 2023 18:55:19 -0500
+	id 1rIds4-0008Uv-Kh; Wed, 27 Dec 2023 19:03:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIdk4-00075P-5S
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 18:55:16 -0500
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1rIds3-0008Ud-AV
+ for qemu-arm@nongnu.org; Wed, 27 Dec 2023 19:03:31 -0500
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rIdk2-000748-Gw
- for qemu-arm@nongnu.org; Wed, 27 Dec 2023 18:55:15 -0500
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-28be52a85b9so2814158a91.1
- for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 15:55:13 -0800 (PST)
+ id 1rIds1-0001sR-Mx
+ for qemu-arm@nongnu.org; Wed, 27 Dec 2023 19:03:31 -0500
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-5cddfe0cb64so1706577a12.0
+ for <qemu-arm@nongnu.org>; Wed, 27 Dec 2023 16:03:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703721312; x=1704326112; darn=nongnu.org;
+ d=linaro.org; s=google; t=1703721807; x=1704326607; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=vIry2953MMeVuYtJmrDWgg1RNwX+P2/WfKs15U/O6QA=;
- b=iHJi3ngEmKD3+WNkoBzNxKB+gcNc16LKi9mLU8T4Y3KanVeQF5X5fiDp3HftTiGrI6
- lA+GA0mCHvv2EzIH68WStu4sNORdHbV0zS7BDdvK9lVop/UY17ZLi+nZkUAbhFmkiNLa
- 6/X/n5SznOskckCoAVMAlb8kSHGYwlgmphpQfEj/tpYrHJQdFzWBGlaZBebjTOiRs/bP
- U0vO2AP1gs8t0Yc84cGcn+x0jICt517Ah8bO7rtro3XudrtyfgechZhtsl4ogtHYY60C
- yThUUsKG/AMmf7cNLVrvuJCoF7h189Ufb68419owWQTKYS/SHRnJBdzQUpIDl9CqQfga
- zW/w==
+ bh=J+nChfUKSb2m0urOd7n6/MYl+m/WZBr1+QmRZeRAisc=;
+ b=y39Ali/8vokVPwxRkStwsZr3Xo1KN+VMUE8TkfOw91MHnuFtksfYu9r6Enmy5kQ3/d
+ YXvQxkb40sCkxktPsCgffuF5sSHP+qGit/wm/GpsCAmBI7ax2fbnT1Gc/yje1vMr1OCj
+ y1ZAafDjB6YaJQc6vg2wD61ma013r41XJ0o6V40PHiYaGPC3Xcr2F42eXZnorPhDq8Ff
+ qgi6AGaj2nfVzwF6O1tbMX8FOnMQSxv3N4dTIHq4QlEopO6cbYhsIRjN52t0q8LLTEug
+ M8d8hX1cD4n/lbP7hwcxKZIViC8qLlh/GJxbHxIt8hHomhfxd3h4+FncRVFOqGyhpe/B
+ t8Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703721312; x=1704326112;
+ d=1e100.net; s=20230601; t=1703721807; x=1704326607;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vIry2953MMeVuYtJmrDWgg1RNwX+P2/WfKs15U/O6QA=;
- b=Ov1IuyRKzowgQgKdRaPwbU6WYbfl0E0IA7EJR2GkdEVLM0k1BfW4cgbpY0Igo3sU7V
- mrgS+4hFuCqgg92yymnU211G/taRg/EWrYUo1+wp4Y6Qto3rRykLEoWdVDGPEwlcn2fB
- olZ5HebkGehGmdPXPQjyJAHfPfuIT83EusWGto22bqDG0dtuLooExl0q3cmt87IW0jG0
- BoV7fV7GJ7fkqhEDkmxpYHhPM2CfP/i27ewSmKMOErNyxa2Z/uoCW+nzdH1yMxopmmpy
- nMJRzy25N8juh3INtbOet53ralE+GDGPqc2je5fUplkGum2UeyjjBTIazH9gY85khSWj
- ctMQ==
-X-Gm-Message-State: AOJu0YzEpZtDcQyaONh8NdelQqJvPtqQkvRP8D3GtP/kKYVR4eP0poFX
- oZkw03oLlRzeD8g1TIZntZKGRfo1TkhuvA==
-X-Received: by 2002:a17:90a:1f09:b0:28c:25db:2cd0 with SMTP id
- u9-20020a17090a1f0900b0028c25db2cd0mr1999317pja.53.1703721312393; 
- Wed, 27 Dec 2023 15:55:12 -0800 (PST)
+ bh=J+nChfUKSb2m0urOd7n6/MYl+m/WZBr1+QmRZeRAisc=;
+ b=bbhG3UldBhIreu1lFadGFqnYRi74yWt4nI+5KekOTcy5kglZ2CigEBW7NCrOEpdp81
+ jbDpsjWM1rLx4GlKh0iB1Uz49a77EWwBA0IFX9Y7IshYoIF1RCwPnqHs9RlKhByzWRx4
+ h5k9Rup/VNAjZL45OkaNWCffwnSZASKsvNOQfUhklofpQSVAhbyUg2TOnebETcPod2rQ
+ jWPI5WezKMt1evDeSPlEWWpsgegNZ5MZVgWXrtPZsvLFi8TPR2Nkl+5SL/mbnq5M1g+y
+ bL2KtBrUzcELK44wBdw6YWD0EAwJwqMZxQG+pneZ347wX5FuQa529vk90HdvGSKSj/4b
+ zRqw==
+X-Gm-Message-State: AOJu0YzKrsICINXR/KQYCuN53absDsdzgKAV2NNHrehl6MSNXISBIYYW
+ LDUnCtf3V+mS81w9RzqXYnlHKnX1LIfGPw==
+X-Received: by 2002:a05:6a20:42a5:b0:196:4a75:385d with SMTP id
+ o37-20020a056a2042a500b001964a75385dmr154037pzj.58.1703721807558; 
+ Wed, 27 Dec 2023 16:03:27 -0800 (PST)
 Received: from ?IPV6:2001:8003:c020:6900:12c1:9684:874a:fb3a?
  ([2001:8003:c020:6900:12c1:9684:874a:fb3a])
  by smtp.gmail.com with ESMTPSA id
- oe12-20020a17090b394c00b0028c94e8fecesm1707907pjb.31.2023.12.27.15.55.10
+ u17-20020a170903125100b001cfa0c04553sm12471567plh.116.2023.12.27.16.03.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Dec 2023 15:55:11 -0800 (PST)
-Message-ID: <88dcdb40-2fa3-449e-a3f7-41d75269a968@linaro.org>
-Date: Thu, 28 Dec 2023 10:55:06 +1100
+ Wed, 27 Dec 2023 16:03:27 -0800 (PST)
+Message-ID: <e0d3e790-a937-4f1d-9a30-e4ff04a7af93@linaro.org>
+Date: Thu, 28 Dec 2023 11:03:22 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 26/35] target/arm: Implement FEAT_NV2 redirection of
- sysregs to RAM
+Subject: Re: [PATCH 27/35] target/arm: Report VNCR_EL2 based faults correctly
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-27-peter.maydell@linaro.org>
+ <20231218113305.2511480-28-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231218113305.2511480-27-peter.maydell@linaro.org>
+In-Reply-To: <20231218113305.2511480-28-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,46 +128,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ahh5Cjqpc6yy
+X-TUID: vIpb4zFZgKdI
 
 On 12/18/23 22:32, Peter Maydell wrote:
-> +    if (s->nv && s->nv2 && ri->nv2_redirect_offset) {
+> If FEAT_NV2 redirects a system register access to a memory offset
+> from VNCR_EL2, that access might fault.  In this case we need to
+> report the correct syndrome information:
+>   * Data Abort, from same-EL
+>   * no ISS information
+>   * the VNCR bit (bit 13) is set
+> 
+> and the exception must be taken to EL2.
+> 
+> Save an appropriate syndrome template when generating code; we can
+> then use that to:
+>   * select the right target EL
+>   * reconstitute a correct final syndrome for the data abort
+>   * report the right syndrome if we take a FEAT_RME granule protection
+>     fault on the VNCR-based write
+> 
+> Note that because VNCR is bit 13, we must start keeping bit 13 in
+> template syndromes, by adjusting ARM_INSN_START_WORD2_SHIFT.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/cpu.h               |  4 ++--
+>   target/arm/syndrome.h          | 20 ++++++++++++++++----
+>   target/arm/tcg/tlb_helper.c    | 27 +++++++++++++++++++++++++--
+>   target/arm/tcg/translate-a64.c |  4 ++++
+>   4 files changed, 47 insertions(+), 8 deletions(-)
 
-Again, s->nv test is redundant.
-
-> +        /*
-> +         * Some registers always redirect to memory; some only do so if
-> +         * HCR_EL2.NV1 is 0, and some only if NV1 is 1 (these come in
-> +         * pairs which share an offset; see the table in R_CSRPQ).
-> +         */
-> +        if (ri->nv2_redirect_offset & NV2_REDIR_NV1) {
-> +            nv2_mem_redirect = s->nv1;
-> +        } else if (ri->nv2_redirect_offset & NV2_REDIR_NO_NV1) {
-> +            nv2_mem_redirect = !s->nv1;
-> +        } else {
-> +            nv2_mem_redirect = true;
-> +        }
-
-I wondered if it would be clearer with the "both" case having both bits set.  While I see 
-that the first defined offset is 0x20, offset 0x00 is still reserved and *could* be used. 
-At which point ri->nv2_redirect_offset would need a non-zero value for a zero offset.
-
-Maybe clearer as
-
-     nv2_mem_redirect = (ri->nv2_redirect_offset &
-                         (s->nv1 ? NV2_REDIR_NV1_1 : NV2_REDIR_NV1_0));
-
-?
-
-This is more verbose for the (common?) case of redirect regardless of nv1, so maybe not.
-
-> +        if (s->nv2_mem_be) {
-> +            mop |= MO_BE;
-> +        }
-
-MO_BSWAP is host dependent -- needs
-
-     mop |= (s->nv2_mem_be ? MO_BE : MO_LE);
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~

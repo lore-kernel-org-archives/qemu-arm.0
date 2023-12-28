@@ -1,89 +1,108 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1548141ejc;
-        Thu, 28 Dec 2023 06:25:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEzIjCqjnvT8g9l8U4n/mdDh1b6berhzFwd6g3dQpJB19h7m1YWMRqfaUE9z722C2N6vALF
-X-Received: by 2002:ad4:5b8b:0:b0:67f:6a10:aa1a with SMTP id 11-20020ad45b8b000000b0067f6a10aa1amr14174050qvp.86.1703773508478;
-        Thu, 28 Dec 2023 06:25:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703773508; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp1607646ejc;
+        Thu, 28 Dec 2023 08:07:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEu78meIhQd/V47lBEVABezlmHXlqX+DGHzRRb+HJ3XP4hBM8ym/1G9wwS9fdH/whkacpFM
+X-Received: by 2002:ac8:7d51:0:b0:427:99dd:a5ae with SMTP id h17-20020ac87d51000000b0042799dda5aemr11700231qtb.43.1703779629554;
+        Thu, 28 Dec 2023 08:07:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703779629; cv=none;
         d=google.com; s=arc-20160816;
-        b=jIRIuQMqfH1OO7paSLRflFaqMeAzUzRrgMF2QQXkzAfOREZwT8RHY+h/cTsOI1qQZx
-         bROeJR/r1hvUVATK46QYBV9Qi2NDNtlGqo1cEj8UoOcLDTldxzWhuwwpmFc2t7W1Y1Jx
-         26nS7c0kLlu3FkbqkHCETdUAErV+qi0xr80JTVO/irbWP39Iqnm1vw1crGjrydAy0VEW
-         z2aW5Z/XI3nOXF7jbvWlr9fX9vY9qQjTrY9DpLi/1ZJazAnvoGZ9xU7+FU65A5l86iDV
-         dIhOWfmhJM32EyKp94RFfOkX7l2rpbM4lQHNoLk6Fd1XwSO+cs1Le4POFmXPeN/CEcOG
-         EZlA==
+        b=MuOObkLWVICaGCcY8XFk/n87uHyIn6o7RYHnwEekMt9sobar+XTzLdoTvBb/JtqHec
+         Y0lKyUDm9Z7TC5pX+YTgG7zECjJVGmY+TlAv+qJ6fdNU5NlADydsn7xqFB7Jy78uoICc
+         KTaIYY6D925SCaQGeta5C5hmGlfQ1my7we643sV88AK1y5bGTMBNrd7OEV2EW/wg6Y/6
+         EhUXdSG+1j34Dq7Pe+cFHiZTUzXZnIKnoSP2x3fl6pVtGx5o9fkFrVliGNW2tZfPQQ19
+         1J4Hma++TgMLjT7p6F4ywHNqsc6BzXdL1fVkweaAM24t3iNCI7rJmcYktpWxWNafcVvE
+         A9dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=6YeBpVUmWEVKIfmozkfv+ukIGSVTnm0w+5IheQ6AxuE=;
-        fh=QbF/X0wJM1LtslEumBv3OBX7H1r/o++Lq4nWqCNLPUU=;
-        b=VAqc964jYGHwgNJIUGWosavbx/cgGuf5azync4w2Jcb/+LXl/asY4SntEWWvRAzvFT
-         rsixk8YxcaZ1ccLSl8DgMC8vXZd2Eyt9//cTkCSsfaR+P5D3NjgVjlxkga9wkEA/TRrf
-         2SI3xYPP1HGtuioN+H1/bNhfmCNknihPVyrRd2/XkhZMr6HXbocFZWiLE1st+l9anbPf
-         IuIZWSS+XAQnIw46+UUtGoPp1IZ++LFz12ylfe2n5WNPbJTKC64O4HtqgH4eWKjk8ko5
-         4jnLUj7X29XJk5ROGK+zh2/buU5uKAD7qG5OEkCQnvB2bAmzWdvy+/JAof59aElwM+Ei
-         2iDw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=XvTjD0GhPhtqUzN/jUsJejFiQl5qsoGcE2fMfXRqCzM=;
+        fh=IRqD+ASVO2NzoE6yEDdbpeTndJ8KfmmrSZw7+DugHNI=;
+        b=mbA2DIwfR6sFI/IST/+jlKQbjed4n/59phEgUnUFuIM6ziF4k8LFLvPUmOV8HYUCHB
+         +loAyPs7swGpaqnvnpvSezXvdYL3zOYNy7uhWb6p16qhi8sXkvW3KZmL2ITaLIJWt2jU
+         nuU9HdN5UUIoMMzvEI4zeDLDAFNrUgp79ibo22C7vnJAx5nZxIZQ66Ao35n/izQ8broy
+         cCFmYTtOehBwveblgPQaCRjIJ9dPK2qmqVX14SOhsHZbxPFrtjOrMQwKRIftb56Dvtba
+         nbgc+uKlqCPejNExrKUA4AqOUCjhIh5Ly2cppaMOjWjkFs4h5jGVdpI5NV9Ghx0ac79C
+         ltBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=kAct4Bpx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10-20020a0cf14a000000b0067f9703900csi14050094qvl.375.2023.12.28.06.25.08
+        by mx.google.com with ESMTPS id r22-20020ac85c96000000b00427f4effe61si2208257qta.401.2023.12.28.08.07.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Dec 2023 06:25:08 -0800 (PST)
+        Thu, 28 Dec 2023 08:07:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=kAct4Bpx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rIrJI-00042P-H8; Thu, 28 Dec 2023 09:24:33 -0500
+	id 1rIsuW-00023C-FK; Thu, 28 Dec 2023 11:07:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rIlPw-0004RD-FY; Thu, 28 Dec 2023 03:07:00 -0500
-Received: from fd01.gateway.ufhost.com ([61.152.239.71])
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rIlPu-0002CC-Ox; Thu, 28 Dec 2023 03:07:00 -0500
-Received: from EXMBX166.cuchost.com (unknown [175.102.18.54])
- (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
- (Client CN "EXMBX166", Issuer "EXMBX166" (not verified))
- by fd01.gateway.ufhost.com (Postfix) with ESMTP id B34BE8008;
- Thu, 28 Dec 2023 16:06:24 +0800 (CST)
-Received: from EXMBX066.cuchost.com (172.16.7.66) by EXMBX166.cuchost.com
- (172.16.6.76) with Microsoft SMTP Server (TLS) id 15.0.1497.42; Thu, 28 Dec
- 2023 16:06:24 +0800
-Received: from jsia-virtual-machine.localdomain (175.136.135.142) by
- EXMBX066.cuchost.com (172.16.6.66) with Microsoft SMTP Server (TLS) id
- 15.0.1497.42; Thu, 28 Dec 2023 16:06:19 +0800
-From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <qemu-riscv@nongnu.org>
-CC: <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
- <peter.maydell@linaro.org>, <jeeheng.sia@starfivetech.com>,
- <shannon.zhaosl@gmail.com>, <sunilvl@ventanamicro.com>, <palmer@dabbelt.com>, 
- <alistair.francis@wdc.com>, <bin.meng@windriver.com>, <liwei1518@gmail.com>,
- <dbarboza@ventanamicro.com>, <zhiwei_liu@linux.alibaba.com>
-Subject: [RFC v1 0/2] RISC-V: ACPI: Enable SPCR
-Date: Thu, 28 Dec 2023 16:06:14 +0800
-Message-ID: <20231228080616.158822-1-jeeheng.sia@starfivetech.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rIsuV-00022m-3c; Thu, 28 Dec 2023 11:07:03 -0500
+Received: from zproxy3.enst.fr ([137.194.2.222])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1rIsuS-0007D4-PM; Thu, 28 Dec 2023 11:07:02 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy3.enst.fr (Postfix) with ESMTP id 6153AA0585;
+ Thu, 28 Dec 2023 17:06:56 +0100 (CET)
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id kbZXC8VIS_bV; Thu, 28 Dec 2023 17:06:56 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy3.enst.fr (Postfix) with ESMTP id 0160BA051C;
+ Thu, 28 Dec 2023 17:06:56 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 0160BA051C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1703779616;
+ bh=XvTjD0GhPhtqUzN/jUsJejFiQl5qsoGcE2fMfXRqCzM=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=kAct4Bpx2qPNBOciGkBslZXwZPyq/PJdeis4SekaBn4hehUrPdH89QaEt1EadPumv
+ eurit/jAVBO77TZPsFXFq6DMqSrO5cSIyNznFRvZ1fBc42zaxpfUuyE6ggrIhTjG5r
+ g3JuqKrfH/4Y20DAkdcCW9GpviCh+k3+87GLwOmM=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id Utt7ZjZzJTIG; Thu, 28 Dec 2023 17:06:55 +0100 (CET)
+Received: from inesv-Inspiron-3501.lan (unknown
+ [IPv6:2001:861:4680:b1b0:3937:c54c:5417:70d4])
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id B1286A063C;
+ Thu, 28 Dec 2023 17:06:55 +0100 (CET)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Subject: [PATCH v4 3/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
+Date: Thu, 28 Dec 2023 17:06:32 +0100
+Message-ID: <20231228160649.299058-4-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20231228160649.299058-1-ines.varhol@telecom-paris.fr>
+References: <20231228160649.299058-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [175.136.135.142]
-X-ClientProxiedBy: EXCAS062.cuchost.com (172.16.6.22) To EXMBX066.cuchost.com
- (172.16.6.66)
-X-YovoleRuleAgent: yovoleflag
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=61.152.239.71;
- envelope-from=jeeheng.sia@starfivetech.com; helo=fd01.gateway.ufhost.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+Received-SPF: pass client-ip=137.194.2.222;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy3.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 28 Dec 2023 09:24:30 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,34 +116,149 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hxnulEc6kTCT
+X-TUID: dCC0QMBuMnnh
 
-This series focuses on enabling the Serial Port Console Redirection (SPCR=
-)
-table for the RISC-V virt platform. Considering that ARM utilizes the sam=
-e
-function, the initial patch involves migrating the build_spcr function to
-common code. This consolidation ensures that RISC-V avoids duplicating th=
-e
-function.
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+---
+ hw/arm/Kconfig                 |  1 +
+ hw/arm/stm32l4x5_soc.c         | 56 ++++++++++++++++++++++++++++++++--
+ include/hw/arm/stm32l4x5_soc.h |  3 ++
+ 3 files changed, 58 insertions(+), 2 deletions(-)
 
-The patch set is built upon Alistair's riscv-to-apply.next branch and
-relies on Sunil's patches at [1].
-
-[1] https://lore.kernel.org/qemu-devel/20231218150247.466427-1-sunilvl@ve=
-ntanamicro.com/
-
-Sia Jee Heng (2):
-  hw/arm/virt-acpi-build.c: Migrate SPCR creation to common location
-  hw/riscv/virt-acpi-build.c: Generate SPCR table
-
- hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
- hw/riscv/virt-acpi-build.c  | 39 +++++++++++++++++++++
- include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
- include/hw/acpi/aml-build.h |  4 +++
- 5 files changed, 154 insertions(+), 41 deletions(-)
-
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7520dc5cc0..9c9d5bb541 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -458,6 +458,7 @@ config STM32L4X5_SOC
+     bool
+     select ARM_V7M
+     select OR_IRQ
++    select STM32L4X5_EXTI
+=20
+ config XLNX_ZYNQMP_ARM
+     bool
+diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+index 7513db0d6a..08b8a4c2ed 100644
+--- a/hw/arm/stm32l4x5_soc.c
++++ b/hw/arm/stm32l4x5_soc.c
+@@ -36,10 +36,51 @@
+ #define SRAM2_BASE_ADDRESS 0x10000000
+ #define SRAM2_SIZE (32 * KiB)
+=20
++#define EXTI_ADDR 0x40010400
++
++#define NUM_EXTI_IRQ 40
++/* Match exti line connections with their CPU IRQ number */
++/* See Vector Table (Reference Manual p.396) */
++static const int exti_irq[NUM_EXTI_IRQ] =3D {
++    6,                      /* GPIO[0]                 */
++    7,                      /* GPIO[1]                 */
++    8,                      /* GPIO[2]                 */
++    9,                      /* GPIO[3]                 */
++    10,                     /* GPIO[4]                 */
++    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
++    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
++    1,                      /* PVD                     */
++    67,                     /* OTG_FS_WKUP, Direct     */
++    41,                     /* RTC_ALARM               */
++    2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
++    3,                      /* RTC wakeup timer        */
++    63,                     /* COMP1                   */
++    63,                     /* COMP2                   */
++    31,                     /* I2C1 wakeup, Direct     */
++    33,                     /* I2C2 wakeup, Direct     */
++    72,                     /* I2C3 wakeup, Direct     */
++    37,                     /* USART1 wakeup, Direct   */
++    38,                     /* USART2 wakeup, Direct   */
++    39,                     /* USART3 wakeup, Direct   */
++    52,                     /* UART4 wakeup, Direct    */
++    53,                     /* UART4 wakeup, Direct    */
++    70,                     /* LPUART1 wakeup, Direct  */
++    65,                     /* LPTIM1, Direct          */
++    66,                     /* LPTIM2, Direct          */
++    76,                     /* SWPMI1 wakeup, Direct   */
++    1,                      /* PVM1 wakeup             */
++    1,                      /* PVM2 wakeup             */
++    1,                      /* PVM3 wakeup             */
++    1,                      /* PVM4 wakeup             */
++    78                      /* LCD wakeup, Direct      */
++};
++
+ static void stm32l4x5_soc_initfn(Object *obj)
+ {
+     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
+=20
++    object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
++
+     s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
+;
+     s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
+ }
+@@ -50,7 +91,9 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc,=
+ Error **errp)
+     Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
+     const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
+     MemoryRegion *system_memory =3D get_system_memory();
+-    DeviceState *armv7m;
++    DeviceState *dev, *armv7m;
++    SysBusDevice *busdev;
++    int i;
+=20
+     /*
+      * We use s->refclk internally and only define it with qdev_init_clo=
+ck_in()
+@@ -115,6 +158,16 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+         return;
+     }
+=20
++    dev =3D DEVICE(&s->exti);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
++        return;
++    }
++    busdev =3D SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(busdev, 0, EXTI_ADDR);
++    for (i =3D 0; i < NUM_EXTI_IRQ; i++) {
++        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
+i]));
++    }
++
+     /* APB1 BUS */
+     create_unimplemented_device("TIM2",      0x40000000, 0x400);
+     create_unimplemented_device("TIM3",      0x40000400, 0x400);
+@@ -155,7 +208,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
+c, Error **errp)
+     create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
+     create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
+     create_unimplemented_device("COMP",      0x40010200, 0x200);
+-    create_unimplemented_device("EXTI",      0x40010400, 0x400);
+     /* RESERVED:    0x40010800, 0x1400 */
+     create_unimplemented_device("FIREWALL",  0x40011C00, 0x400);
+     /* RESERVED:    0x40012000, 0x800 */
+diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+index dce13a023d..6cba566a31 100644
+--- a/include/hw/arm/stm32l4x5_soc.h
++++ b/include/hw/arm/stm32l4x5_soc.h
+@@ -28,6 +28,7 @@
+ #include "qemu/units.h"
+ #include "hw/qdev-core.h"
+ #include "hw/arm/armv7m.h"
++#include "hw/misc/stm32l4x5_exti.h"
+ #include "qom/object.h"
+=20
+ #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
+@@ -41,6 +42,8 @@ struct Stm32l4x5SocState {
+=20
+     ARMv7MState armv7m;
+=20
++    Stm32l4x5ExtiState exti;
++
+     MemoryRegion sram1;
+     MemoryRegion sram2;
+     MemoryRegion flash;
 --=20
-2.34.1
+2.43.0
 

@@ -1,114 +1,113 @@
-Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp2063314ejc;
-        Fri, 29 Dec 2023 03:59:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHc1OmUuTyEuauGU56NmGqzC5oycdwV9M8Jp/uesk0ZciVAEdlTHaCEyrgS5cRnO/AqReZU
-X-Received: by 2002:a81:7289:0:b0:5d7:1940:7d62 with SMTP id n131-20020a817289000000b005d719407d62mr6774510ywc.57.1703851154089;
-        Fri, 29 Dec 2023 03:59:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1703851154; cv=none;
+Received: by 2002:a17:907:c9e:b0:a27:13b6:eed5 with SMTP id gi30csp2065180ejc;
+        Fri, 29 Dec 2023 04:02:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHDo955xj8obu128SeF92ArtjkNV2zvU/P5l8ibsQ9LTWs0dsQrtP7q5jigE3WIyDU36t6T
+X-Received: by 2002:a05:620a:ecb:b0:778:9be8:275c with SMTP id x11-20020a05620a0ecb00b007789be8275cmr12828302qkm.33.1703851331045;
+        Fri, 29 Dec 2023 04:02:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1703851331; cv=none;
         d=google.com; s=arc-20160816;
-        b=HVk0SDs10tFaQum3X1weGXOsXNzBhOhnVrXJtwJsmUCpa3KYPUxfRmJMgRPadF1q6l
-         0kgHHjQSCXUu8nhd8N9rm/0GT+PedNiCscI2cTaz9Vb0MnA0zCuC5euUkYiow/sEK1wx
-         PjgZ+7cRFAwe2S4b7JNMnuNqPy7/XMRBQCflZz3vqbuWO3LkITNYJ+V56uOKtnScrTWf
-         qa2rzupRIEcI3Q8oRKB2O6MIatpqqCmkeXwoiX6guIKWISU89KaFMnTFLO8NEJWPv6xP
-         bv1e2DHj/S1q/RUDzeaQw1ch2EM0SFXD+ijdjJ65GM9c+D9AcNkkwnvVxV82WkFsPaU+
-         vUwQ==
+        b=Xgm3zpJ7J9j7485emu3jPi7O5uuTcIEmwKkC0EIQcslgVs+B7dbWIw7R+07LlXFC5l
+         WQBYsbc47cENSK0Hz+otVHcM7WWmCAraUOsrNx32fEv5+FByiymkkaJw14DFyUy/Zlu3
+         ckX620aqUubzHHBrVIqm+vr/JBFjg/b2ZjvjUdCI8r32e0yguuzkoVNM7lJun7KnxMzx
+         mqQgsB+dLxbba06cU41Gluy2/5FG0L5z51oCc6JH0qpfLiNTMythvZRjK+6Mes5lDn9N
+         2GyFqNkV6CZUjXVCuvDgRTBzswxN/j+ZJIbHSgIEMwA241U2V6SiPckQ/eV8ubZleYY9
+         bRFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:organization:from:references:cc:to:content-language
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=NxTjd/49fScheKuPt1bDUmuncY+gFbOtfV2iJvLDxJ0=;
+        bh=7+PHEaS0uCelKNM/s+1g0UXrfcWmC0+x6QCJnv5+scU=;
         fh=wWgSgZTtVmQmltq6sTjmV3M8QLOfhMblXkOcfBEk3m8=;
-        b=ZvTLveg4+KZkhs55pJxjyGntp3+9mIbEAublNSvJ7Pj0hsz+47XhP+4KyMWDa/I3i5
-         wmiM9HipiHUlcEg2rMxdl/vW2G4vzIgG1XKppqY9ccArd8nfMqB7yJ70JGcAAA/D6KB+
-         ucY+WNQACOZGHy03WC+KqIOtuV9JQzacbHLQaqUPu9R/6N4vA9fUfzKFaB6Pt3E7+eTO
-         CAAwrGKWA+zXZdaqS0fGmUD1DwiJF0o8ek8t7XL37cC38UIjj283kUHK/pJCMkzgDltw
-         1faLxKz8XGv8uZYpB0xKtT81sqcJf1Nl5TCa48TLMemvCZMMEU8AuYk+SL7MNrkdTE96
-         0iow==
+        b=Unm34YDf5u/mmPNU1NkeAvjUl69PJGWxmUgWoCqQ1RL/qoUXW3GOfXYJifW4hpEpRQ
+         hZodBygNw2AFLoAlYBq1q9Q+jQfhnu0i7RG7OAeg/Enp0mDw7CYz2DTdn4cGs9/RsykK
+         BDHJBlRWyQ2MCgUzSXfodJHxS8uQAMlLDcmdkdwoCwlQjrhnWBlN7quq6obxpPeze4PU
+         QtYXgiqNFzbXOW8HoA/3bb0UgIJhnr/1UB+fY3+DtFcM5G3ENihe7hwt4VrPrUIJiGWB
+         Cw8SiLSg4kUY3Hy31g2XRtWo84682wYdIVXC6OBLFJM4+CrhJxnA3bW6y7nFqpbRw9Do
+         tM9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cdYAsf12;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GtJy73gr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15-20020a05620a450f00b0077f910fd6a4si19662078qkp.18.2023.12.29.03.59.13
+        by mx.google.com with ESMTPS id h11-20020a05620a244b00b0077fb4eb30d1si19697758qkn.116.2023.12.29.04.02.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Dec 2023 03:59:14 -0800 (PST)
+        Fri, 29 Dec 2023 04:02:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cdYAsf12;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GtJy73gr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rJBVe-0004RD-0l; Fri, 29 Dec 2023 06:58:38 -0500
+	id 1rJBYz-0005TC-A9; Fri, 29 Dec 2023 07:02:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rJBVc-0004QZ-M9
- for qemu-arm@nongnu.org; Fri, 29 Dec 2023 06:58:36 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1rJBYv-0005S3-UP
+ for qemu-arm@nongnu.org; Fri, 29 Dec 2023 07:02:02 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rJBVb-0007w8-65
- for qemu-arm@nongnu.org; Fri, 29 Dec 2023 06:58:36 -0500
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-a233bf14cafso781801566b.2
- for <qemu-arm@nongnu.org>; Fri, 29 Dec 2023 03:58:34 -0800 (PST)
+ id 1rJBYs-00023W-EU
+ for qemu-arm@nongnu.org; Fri, 29 Dec 2023 07:02:00 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-a233bf14cafso782105166b.2
+ for <qemu-arm@nongnu.org>; Fri, 29 Dec 2023 04:01:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703851112; x=1704455912; darn=nongnu.org;
+ d=linaro.org; s=google; t=1703851315; x=1704456115; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:organization:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=NxTjd/49fScheKuPt1bDUmuncY+gFbOtfV2iJvLDxJ0=;
- b=cdYAsf12BmKPU1XocjhwrNMvjgQsZHj16/lFHJJWal8XTxotsMMUkXFF+gppfznBju
- ikqURiF73AnKxs/XLeUAglMWgMzqt8EOIMtFueW+iDtGclOWKfCz1qAswdzquTdumWWZ
- 5ycP+ycxdly32JcU5S4umCu/R7KsB6+HyFUq19ZHQnA6k9LMWPNa+sQjykLgOyPrkHeR
- hi0tRrGlNfmtau8zjR0xC9LaTOSrkMZ0nMZaMIxqUNGciw6CIi8ENWQoPG/t1tz9YqWv
- CYSqjuTDEHwISUeMfuhUcYup8JLhLgfqo1IOFIEjp7XX5doilHjHq91a4UNW2u+pFk2S
- 6jFQ==
+ bh=7+PHEaS0uCelKNM/s+1g0UXrfcWmC0+x6QCJnv5+scU=;
+ b=GtJy73grY02ZF95GZMBspfFaRe8r4LmIPWFn4HBEnXgLkAgLDeXGiqOWIPqCRnrN2N
+ uTNw1oZWweYNiad69qpTsSiGSMj9KPo7nxNzlK3SU15e0Xrn3uW2M3WGepQhlVMAOqvZ
+ DB2lLRPWfNBr/Vfvp6oY3wLLS81+g+8av383IXUFk23CprbO33cBi9tAhS827C6PK0o3
+ 0g7Yylo0m4V50DQiX8ECwfUqQn0hufnujhUcP4RMS8reK+djcHrvWIKz9LC29fzSkFTY
+ Gg4/97H18GwRV3rQqlLHx34NI7r9aEyD9E4g2Jt0Dv5cS+pGzeIRUkf1Iuwk7xUkkQBR
+ 6l2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703851112; x=1704455912;
+ d=1e100.net; s=20230601; t=1703851315; x=1704456115;
  h=content-transfer-encoding:in-reply-to:organization:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=NxTjd/49fScheKuPt1bDUmuncY+gFbOtfV2iJvLDxJ0=;
- b=ICPsOjxQIbWIh6OgDpPiece/Nyl72GpKSRuU/scoDohoUWqn2yZCXFJLIXV4TB5ULc
- vNLCyVQBiQLZki7j+yd0X5KxKOUiM4gVFk4klPsLN4ZTetaVvla+SrDuDlDbUIomw/Ul
- eujejHa546kfjGxZji5Bvo/piZumnM/iKjQk0KYtVQGlVsudfEuYRWFiHhQTQ1bkq0t6
- IpbeQ2NhAXGiU/DaPks9k0mQSO76jgz6BvFInwa0AQhNpIAy62qRGpAo1rEh2AhYADQ4
- k3IPLpgb2Bz+lnjbtaUX5FuGFUNgW1dY63BwMyDHro9gTNQyhfZQyw6YWuCREw1wfu4X
- +4uQ==
-X-Gm-Message-State: AOJu0YwwVXthssR7HYVK0emgroAKAcuZaJarShTs4ml3HAw3sTEfB1z3
- YpSBSFJF06WuoOkEkygMwEbjID1cFiP6Bw==
-X-Received: by 2002:a17:906:10d7:b0:a27:59f9:5156 with SMTP id
- v23-20020a17090610d700b00a2759f95156mr1557319ejv.132.1703851111886; 
- Fri, 29 Dec 2023 03:58:31 -0800 (PST)
+ bh=7+PHEaS0uCelKNM/s+1g0UXrfcWmC0+x6QCJnv5+scU=;
+ b=crg3BYIv1RBIoRMnRqZ4ix+pJh2rrC35nM8bfqda15I5C65C5Tuv1M99bYcX//OrkR
+ cK3pDdGU+8OGtuIz7WxkJSdomw3pJjLpOgtE9TKqxG5taV+VkloFrzfu+4EeayA+gB/b
+ ruqmHxYfNjxe9B+PkYo/3JEybrMky0Fq7ZRVp2tum43l4WnEB/LMeKzvrBnY0eO87QkO
+ pqCoHNVFqFgFBT+1V0CDc+Ej02Ow1VX72GJ42O6fQe7LxZE/nAo6yblyHHNdMNXJAM4c
+ b4JFnn5R0lbX2C6j/Kreyu+5tWg6SGhRm0uH3cCkL7BkoG1eNtJquYKwAxVNaiVZC6W9
+ vJkQ==
+X-Gm-Message-State: AOJu0Yy4ZHDuJzqQyCFuuFxcxDdLAB33ei3TaZVQH/Pj5rxIptQ18IB/
+ qrXy0bW3pqzcM96HDKDlPV/QElDbJnxqAw==
+X-Received: by 2002:a17:907:1114:b0:a23:53f8:c956 with SMTP id
+ qu20-20020a170907111400b00a2353f8c956mr4117740ejb.42.1703851315094; 
+ Fri, 29 Dec 2023 04:01:55 -0800 (PST)
 Received: from [192.168.200.206] (83.11.185.71.ipv4.supernova.orange.pl.
  [83.11.185.71]) by smtp.gmail.com with ESMTPSA id
- fg8-20020a1709069c4800b00a26aaad6618sm5004181ejc.35.2023.12.29.03.58.31
+ p9-20020a170907910900b00a26ac5e3683sm7549570ejq.100.2023.12.29.04.01.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Dec 2023 03:58:31 -0800 (PST)
-Message-ID: <5bda0a91-5d8e-4c12-8e1e-93644108d723@linaro.org>
-Date: Fri, 29 Dec 2023 12:58:30 +0100
+ Fri, 29 Dec 2023 04:01:54 -0800 (PST)
+Message-ID: <c9f9c9a8-acd4-42cc-8dd8-ccaad6d74cba@linaro.org>
+Date: Fri, 29 Dec 2023 13:01:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] hw/arm/sbsa-ref: Add cpu-map to device tree
+Subject: Re: [PATCH 0/2] ARM Sbsa-ref: Enable CPU cluster topology
 Content-Language: pl-PL, en-GB, en-HK
 To: Xiong Yining <xiongyining1480@phytium.com.cn>, rad@semihalf.com,
  peter.maydell@linaro.org, quic_llindhol@quicinc.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, chenbaozi@phytium.com.cn
 References: <20231227120722.1683361-1-xiongyining1480@phytium.com.cn>
- <20231227120722.1683361-3-xiongyining1480@phytium.com.cn>
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 Organization: Linaro
-In-Reply-To: <20231227120722.1683361-3-xiongyining1480@phytium.com.cn>
+In-Reply-To: <20231227120722.1683361-1-xiongyining1480@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,74 +129,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2vpW6CUWm01b
+X-TUID: PydyPtgCY3lk
 
 W dniu 27.12.2023 o 13:07, Xiong Yining pisze:
-> From: xiongyining1480 <xiongyining1480@phytium.com.cn>
+> Enable CPU cluster support on SbsaQemu platform, so that users can
+> specify a 4-level CPU hierarchy sockets/clusters/cores/threads. And this
+> topology can be passed to the firmware through DT cpu-map.
 > 
-> Support CPU topology description through device tree.
+> xiongyining1480 (2):
+>    hw/arm/sbsa-ref:Enable CPU cluster on ARM sbsa machine
+>    hw/arm/sbsa-ref: Add cpu-map to device tree
 > 
-> Signed-off-by: Xiong Yining <xiongyining1480@phytium.com.cn>
-> Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn>
-> ---
->   hw/arm/sbsa-ref.c | 35 +++++++++++++++++++++++++++++++++++
->   1 file changed, 35 insertions(+)
+>   hw/arm/sbsa-ref.c | 36 ++++++++++++++++++++++++++++++++++++
+>   1 file changed, 36 insertions(+)
 > 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index e6cd612bc5..a3c851148a 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -283,10 +283,45 @@ static void create_fdt(SBSAMachineState *sms)
->                   ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
->           }
->   
-> +        qemu_fdt_setprop_cell(sms->fdt, nodename, "phandle",
-> +                        qemu_fdt_alloc_phandle(sms->fdt));
-> +
->           g_free(nodename);
->       }
->   
-> +
->       sbsa_fdt_add_gic_node(sms);
 
-Can you add vCPU topology code before ^^ line? So code would add /cpus/ 
-node and then go for /intc/ node.
+Tested-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-> +
-> +    /*
-> +     * Add vCPU topology description through fdt node cpu-map.
+Booted system with "-smp 8,sockets=2,clusters=2,cores=1,threads=2" and 
+got what I wanted:
 
-Maybe worth adding pointer to hw/arm/virt.c code for longer description?
+         cpus {
+                 #size-cells = <0x00>;
+                 #address-cells = <0x02>;
 
-> +     */
-> +    qemu_fdt_add_subnode(sms->fdt, "/cpus/cpu-map");
-> +
-> +    for (cpu = sms->smp_cpus - 1; cpu >= 0; cpu--) {
-> +        char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
-> +        char *map_path;
-> +
-> +        if (ms->smp.threads > 1) {
-> +            map_path = g_strdup_printf(
-> +                "/cpus/cpu-map/socket%d/cluster%d/core%d/thread%d",
-> +                cpu / (ms->smp.clusters * ms->smp.cores * ms->smp.threads),
-> +                (cpu / (ms->smp.cores * ms->smp.threads)) % ms->smp.clusters,
-> +                (cpu / ms->smp.threads) % ms->smp.cores,
-> +                cpu % ms->smp.threads);
-> +        } else {
-> +            map_path = g_strdup_printf(
-> +                "/cpus/cpu-map/socket%d/cluster%d/core%d",
-> +                cpu / (ms->smp.clusters * ms->smp.cores),
-> +                (cpu / ms->smp.cores) % ms->smp.clusters,
-> +                cpu % ms->smp.cores);
-> +        }
-> +        qemu_fdt_add_path(sms->fdt, map_path);
-> +        qemu_fdt_setprop_phandle(sms->fdt, map_path, "cpu", cpu_path);
-> +
-> +        g_free(map_path);
-> +        g_free(cpu_path);
-> +    }
-> +
->   }
->   
->   #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
+                 cpu-map {
+                         socket0 {
+                                 cluster0 {
+                                         core0 {
+                                                 thread0 {
+                                                         cpu = <0x8007>;
+                                                 };
+                                                 thread1 {
+                                                         cpu = <0x8006>;
+                                                 };
+                                         };
+                                 };
+                                 cluster1 {
+                                         core0 {
+                                                 thread0 {
+                                                         cpu = <0x8005>;
+                                                 };
+                                                 thread1 {
+                                                         cpu = <0x8004>;
+                                                 };
+                                         };
+                                 };
+                         };
+                         socket1 {
+                                 cluster0 {
+                                         core0 {
+                                                 thread0 {
+                                                         cpu = <0x8003>;
+                                                 };
+                                                 thread1 {
+                                                         cpu = <0x8002>;
+                                                 };
+                                         };
+                                 };
+                                 cluster1 {
+                                         core0 {
+                                                 thread0 {
+                                                         cpu = <0x8001>;
+                                                 };
+                                                 thread1 {
+                                                         cpu = <0x8000>;
+                                                 };
+                                         };
+                                 };
+                         };
+                 };
 
+                 cpu@0 {
+                         phandle = <0x8007>;
+                         reg = <0x00 0x00>;
+                 };
+
+                 cpu@1 {
+                         phandle = <0x8006>;
+                         reg = <0x00 0x01>;
+                 };
+
+                 cpu@2 {
+                         phandle = <0x8005>;
+                         reg = <0x00 0x02>;
+                 };
+
+                 cpu@3 {
+                         phandle = <0x8004>;
+                         reg = <0x00 0x03>;
+                 };
+
+                 cpu@4 {
+                         phandle = <0x8003>;
+                         reg = <0x00 0x04>;
+                 };
+
+                 cpu@5 {
+                         phandle = <0x8002>;
+                         reg = <0x00 0x05>;
+                 };
+
+                 cpu@6 {
+                         phandle = <0x8001>;
+                         reg = <0x00 0x06>;
+                 };
+
+                 cpu@7 {
+                         phandle = <0x8000>;
+                         reg = <0x00 0x07>;
+                 };
+         };

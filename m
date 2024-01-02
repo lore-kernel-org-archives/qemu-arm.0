@@ -1,52 +1,51 @@
-Received: by 2002:a17:906:eca:b0:a27:dfb7:c645 with SMTP id u10csp1350542eji;
-        Tue, 2 Jan 2024 06:23:34 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF20b8furwBubquEoaTBGa02L+AQC4pLUSa7gm2OMJQ04DmXC3vSw5bbl5dnAJIas0prbHQ
-X-Received: by 2002:a17:902:6849:b0:1d4:70e5:e188 with SMTP id f9-20020a170902684900b001d470e5e188mr4140167pln.94.1704205414681;
-        Tue, 02 Jan 2024 06:23:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704205414; cv=none;
+Received: by 2002:a17:906:eca:b0:a27:dfb7:c645 with SMTP id u10csp1350666eji;
+        Tue, 2 Jan 2024 06:23:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHQHBbVvhdafe0BRYf8TVqaYF4gQHscIp/pZ8jL/WaJj/oLZH269vIdHxQXhdrVuRIpbCK0
+X-Received: by 2002:a17:902:680b:b0:1d4:638f:3ff6 with SMTP id h11-20020a170902680b00b001d4638f3ff6mr12298022plk.66.1704205429719;
+        Tue, 02 Jan 2024 06:23:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704205429; cv=none;
         d=google.com; s=arc-20160816;
-        b=rpBSksT6/E1KDnl4uJTd7WxflfE+f1PqT8iSnvustz7vFP7Ddi4avoBN16d1PxSIB3
-         F++c69HIGFrf+mA9eKhjI4ULN6X0QuVlBWjSF32ILwQP27zgt2BA8WPfmyZ/3Ir6V/Lf
-         3VxxIb8EHKubga+mykCCzoCrg8L6kMPysLMLmlsfezN7+vuopDk16zWqMeZGOgBN2Y0N
-         ky/fqS0xt4mVLPPVliZghLOQ0lOM9rzoydC+DmrGeh711Xyu5uumhmScubC9MHQujpgc
-         dg0FOUG9rpZ1v4j9FLPQNqHNAxwW17V4I3edCPk71dG9YhOqjBvajXj3n6gdagTvKZBy
-         6ZEQ==
+        b=Zpxl6wk29MwN7v+L+2TJuCCqz0naLdN2CBixbwd7341awUbYGbomQReaSU69YHD9/Q
+         6sBdxjsArf+eiEVu1/bU/FxB3+yGXrMbjb1VxsrPAGNPi3m92BrH0/EZbL1si+ajj68k
+         /5yW+9MR7nskulG7/7rOJHy164IIzh6rEWu2YiPaUL0PG549WVahe9DhmQJXhTA9oPTS
+         cYx2qJD80SHCv1CDXa5SvDfiWS7ygi/qtzhJQBiiW4pjtFXIOUMpUOPTR9Q/z6/I4i/J
+         25GDj4WTN2PT6xAR6o5aAlk/JCin9xEKRfmdAUx28sV/ExXq/6Z8riu5QCbMPYJms5eq
+         wYgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=hJRBgHW/jpP6hegUq+xJakfs8R2odzvHhV6w3Pir+AY=;
+        bh=hR/FHoMgI6SJnNhy5tjuZqpaE1DtYT+DfFE2T30jEmA=;
         fh=+E/US/1Ju6gLetNBGXtM+LAEvu+9GnutnPYZSrJVors=;
-        b=T4geH0b0W99DG2sFNbJ8iyOpp8JpvLQ6ueNHuE4BEPwWP286NE4U57HRa2COgqGeUl
-         RxSyhANE8mjxmSs3jcPM8Ic5ZtwKNcty+cEGuHOWW+obttPPD91m/sN+wkeUakpvE+oF
-         58YrgDp2dCyS7q5Vio+t1NZoAVxFTouers8V7Sykijx+OSsbyJKLEJksBv4jFV2y4H0R
-         MMr5D6psk1tuobFV5wgcn/AGG3PBsLOOpOCAg85kX+TF0wok9/VjhvWeamUUCuKmi8Ui
-         4wfkuvseAnopIh/MNSZol34dgvyg4bELlYYaj/UOGvQd/t2ehJA7dSUcV4giLQFReR8Z
-         izcQ==
+        b=HhllB2M9jZrgWR3C56mgOjCdUozkELkGcih8wdw3VZ2zPU75K/PgyPpGietpbINxeG
+         27U3FfnqUwkca0J2oaMdBSA6U2wPQDmYQq8ZabkNj45EtasopJfUXSDAEPTjUQBDb84n
+         TsVc9rNuP0NlROoFAzs3Vty4bHSKgiq+2kiZDxnbeTNN1D1916/Rh39G6zB6FjvjebJn
+         hyfDOe4dHjjWsMC+bVf544kuMuI/tAKXS6Am7EY7D5DQpAOy7+4ymnFzSkGhBX3aZ2+X
+         Uey/EUoIYZ21Nn/KrpgomQzeVmaG3qRf4KQPj3czeSM2Qxwmn30ta0LAHRWOANyaSTOr
+         UUuw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of srs0=hbd0=im=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=hBD0=IM=kaod.org=clg@ozlabs.org"
 Return-Path: <SRS0=hBD0=IM=kaod.org=clg@ozlabs.org>
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
-        by mx.google.com with ESMTPS id e5-20020a17090301c500b001d3ac97bc75si18593560plh.455.2024.01.02.06.23.34
+        by mx.google.com with ESMTPS id p8-20020a170902e74800b001d41eb814b8si18364429plf.149.2024.01.02.06.23.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jan 2024 06:23:34 -0800 (PST)
+        Tue, 02 Jan 2024 06:23:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of srs0=hbd0=im=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of srs0=hbd0=im=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=hBD0=IM=kaod.org=clg@ozlabs.org"
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4T4FT02qWTz4x1v;
-	Wed,  3 Jan 2024 01:23:32 +1100 (AEDT)
+Received: from gandalf.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4T4FTH5n2pz4wxx;
+	Wed,  3 Jan 2024 01:23:47 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4T4FSv0QZgz4wnx;
-	Wed,  3 Jan 2024 01:23:26 +1100 (AEDT)
-Message-ID: <069fbb45-8a3c-479a-bfa1-f033e614b0d2@kaod.org>
-Date: Tue, 2 Jan 2024 15:23:25 +0100
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4T4FTB3MyQz4wnx;
+	Wed,  3 Jan 2024 01:23:42 +1100 (AEDT)
+Message-ID: <5afcc9a5-7329-461f-a2d2-1be50ae57b80@kaod.org>
+Date: Tue, 2 Jan 2024 15:23:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/33] hw/cpu/arm: Have A9MPCORE/A15MPCORE inheritate
- common CORTEX_MPCORE_PRIV
+Subject: Re: [PATCH 12/33] hw/cpu/arm: Create MPCore container in QOM parent
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -63,16 +62,17 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 References: <20231212162935.42910-1-philmd@linaro.org>
- <20231212162935.42910-12-philmd@linaro.org>
+ <20231212162935.42910-13-philmd@linaro.org>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231212162935.42910-12-philmd@linaro.org>
+In-Reply-To: <20231212162935.42910-13-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: GkqHMs3r4Tni
+X-TUID: xsJgLX1L7uyK
 
 On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
-> TYPE_CORTEX_MPCORE_PRIV becomes the common parent to
-> TYPE_A9MPCORE_PRIV and TYPE_A15MPCORE_PRIV.
+> Move the memory region container creation to the abstract QOM
+> parent. Children set the region size via the class 'container_size'
+> field.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

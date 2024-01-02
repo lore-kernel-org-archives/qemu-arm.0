@@ -1,75 +1,75 @@
-Received: by 2002:a05:7022:7e0d:b0:70:a3b7:dfe7 with SMTP id ut13csp6659179dlb;
-        Tue, 2 Jan 2024 08:05:11 -0800 (PST)
-X-Received: by 2002:a5d:43ca:0:b0:336:76dc:4d30 with SMTP id v10-20020a5d43ca000000b0033676dc4d30mr9583551wrr.45.1704211511574;
-        Tue, 02 Jan 2024 08:05:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704211511; cv=none;
+Received: by 2002:a05:7022:7e0d:b0:70:a3b7:dfe7 with SMTP id ut13csp6659286dlb;
+        Tue, 2 Jan 2024 08:05:18 -0800 (PST)
+X-Received: by 2002:a05:600c:4755:b0:40d:763d:c7fe with SMTP id w21-20020a05600c475500b0040d763dc7femr4070009wmo.121.1704211518704;
+        Tue, 02 Jan 2024 08:05:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704211518; cv=none;
         d=google.com; s=arc-20160816;
-        b=bu0H15ouLv6ZezDv9Q3QJQoWcq5KE7aNNaU3g0fYYHgZ1MiUfTu7FfMqXWloJwuDr6
-         W9qCODKu2pM022G5IOtyRDvw4a8mAwMjqAiugvN65lvqt1ZtuK88VwMn8x5ByMBTld13
-         6ucNbxHmEePvWpfA8HjAEEwZ6z6eBOLemzBXlvPeyhM3pdpVvUJw6Rke7C++gmTz5jMk
-         izKXHl8aWE33vXF1JWC9IfrIxwso9bmiLT8EE2rMe3dk6q4fVXDB/5P2iWaK4XLYQSjW
-         cADyju1cJoIVD5LloWjpa/8ybIu/HJqV5FDpYJZukLhenYW/d3wtDy6tlHAmi6aKdBEC
-         pa+w==
+        b=OaBnKjq1v6eb3qKXXMy0dFShKS2X/PYj7/4gG8TjrN0h+CZ45mdr3GY78euThdd2//
+         oh/Nayl8+0QbTbMfPmKdDlXprN8gVIc4jWR6oPVSh5U6SRgKjjcF+11YBflBG2w1zcML
+         X1ApyavFLIswe0FLT+q+WPVnY4MMDHw7WfFehgB2WsCZXuHKO/7uD4b+IcyBHeLYI8Qj
+         7c/tUW3ghD8IsKrbBvePKx/+PUe8vSCJZltjdIgx/afv71m7P8hM5m/gVVqRV3q8tTCO
+         wJUW9FTTlE8CuijHS6mlUjBHhhiyjsr/Zicf5HpiatLlh1R4dstM7UGwQE/fUOz5P4JB
+         QaMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ufonMTH/Sl8kmFdoBgYSf3okj9N+8Wa+NSxI0KCId+c=;
+        bh=J38P+ankfUbUztT5GJCTo6FfwFdn7YoTpHgRI5fDY8Q=;
         fh=Fbl4rt7vNadFyu+mhE5sPZ2m5GJmVL0UTbP+h3uuTlY=;
-        b=UFXH6/0uCGnjguZfgq0b8T2/Br3+JBQUql0kJKoD1lCc3Gq3Urrc9w9GUTzEx4Jso4
-         6ibMyfzZhiUwqNBjdZr57bHLxLohaAUnSrECK3L7m83La1Mc8YLzjclIa8DPEvgOtHBA
-         o6Le7cGYBgpOKOCt1mn0zAFfvt/W17VzDubaAJoTbK7AN4E2h8Uw8eyKSCi3K0AncW12
-         X1LWW/4eZ1OqyWD49MrCdfMhx9A++6IU+6B7TlaSN+6R7SkKAWTCy2NvnDKFendYRoDy
-         sMndAbtmwWZ2Sq8VWPTPEWQvxhBBWm4ty/9/bnytIdLCwL91mGgyNIYw0NJIVUX1rKqI
-         HyXA==
+        b=cQpke2JLkYD98EseX4/XDob1geEZp30sf3G/58X+qsBWRaw1ytjUEXA1FSxj/I3KIS
+         4g01al4P5SR2kFL5ILOxuX09MQ4p2yZ3PcPRopGPzc74OqPxC+fIKlJlz20aqTPAQGIS
+         WjrFLH+gTrhyI6O0vKELLSqb+i9t3i4so0ZMCMhX/OlVmQWxOMHKyM9MzFapd04hkixC
+         j/ieGv80UPjDri0Z0YYWE0kmwRkbWO6q+13Zi3/h6Cn9DIWHIjrjWFQeeV8o15RXo9zV
+         OKAJWRYYIyj3gVkpucyyDrtXBvy7vEuHMIAqkniBRwQPqHvD7xGm4D1rF0UHX2OQPXvV
+         Z6+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u5y32nfR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qgzZPy+C;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g3-20020a5d5543000000b003368d2e7296sor4936wrw.8.2024.01.02.08.05.11
+        by mx.google.com with SMTPS id k11-20020a05600c1c8b00b0040d46076156sor4212036wms.10.2024.01.02.08.05.18
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 02 Jan 2024 08:05:11 -0800 (PST)
+        Tue, 02 Jan 2024 08:05:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u5y32nfR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qgzZPy+C;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704211511; x=1704816311; darn=linaro.org;
+        d=linaro.org; s=google; t=1704211518; x=1704816318; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ufonMTH/Sl8kmFdoBgYSf3okj9N+8Wa+NSxI0KCId+c=;
-        b=u5y32nfRRFtgCbFiHS2uQkRmJNxt+1LeQt3AWRriy6oUGBrwbBZDJvpDms4qmG0N7U
-         huVwYKVyguVOczrKvEvEpOfKEYyk+D8mFfqUliDD40ThYQNk83lkYSJ38gZcXWwW5zoH
-         zYNY8fv93OSAmFZOs4qTO1I5UyH2oV2fzHYY/L4jaJtI2ulywj05OGVH2K8UKLqh3rGj
-         +lORhXdLf4I0j6VJePrjPOzSHQ5OHqyjbVbjFpgAsqjo/G4SQNxJxKhOOveYHTh6nAoc
-         5GOCOW2CDc1nMjxoGHJVMh+7LQ3pQR/CPt1I2tdipwsk5xmyncMW83ULiGx3XeLSWJ/V
-         iHxQ==
+        bh=J38P+ankfUbUztT5GJCTo6FfwFdn7YoTpHgRI5fDY8Q=;
+        b=qgzZPy+CS291f2PyEyed/PiU8N92oDIqwUwFMcmeYIHNcjyIKT4zk6BY1HEmJPP5Vv
+         KWt1smdWlq7WsqKqofCDZmWqr6Avrhlni7I8QJXCgHVQ3HyRWsfLkXxmCmxTzgZYlYIB
+         KYOx1xd/j5KXyMzO188l0GFbA4lC4iCpGiNrQQo22//I3oNvxNQJFuYY1jI2Hi0zFgLa
+         46yRap1lMimag/xh6oJ003iEiOsLx+t25b2WMsT9RSo930pR0Hi9vFxtwjd1jTAmrwJt
+         2XpLOU2T+6yJGKlw0u+0Kau7tZ2jeM8W5PSp8cVm00LTmj3yC1gsD/T1aEJlEly3+Vru
+         g4Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704211511; x=1704816311;
+        d=1e100.net; s=20230601; t=1704211518; x=1704816318;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ufonMTH/Sl8kmFdoBgYSf3okj9N+8Wa+NSxI0KCId+c=;
-        b=vj5N8Ai9SFDxOcTD5Nw9OB6w2VC8krF07QkfKd/f7wcwproRGSZt0Jaca5OiOoFvEM
-         6bqnV2Q/p/LGhUM3LVPz4VcpN0mb5QIXxkj/I9aJFiHCD4S4p5GZWyZDUbVhOxTCm8Of
-         LSA47BXGbZWQysSZCUd3ga4JNw2gLUpPFU1hoh4H38scZJ169C8cpobVn6MtLotTXyoi
-         z+/BhjGj1Z08jcdW58wW3uM46yJdBs9kRBkbQLLmV0L2xV8ePYRFf9KwWz1Tx+C5k+yt
-         6F5RZqAROhcPqsfJSyhOfeXrrZet/h5GaAvRwSbplRawdHxfaPN/9aeMaoEaCOzTRccL
-         tmnA==
-X-Gm-Message-State: AOJu0Yyu8fHJKkCw030jS2bNu/t1SzTI34JHMORyaWg9cZL8AjelHdQw
-	Hj2AI0WyE8A8JYnFw9hqFHYdEsFyWNDqA21O
-X-Google-Smtp-Source: AGHT+IEfenUzNg89P4j1gidzONQnhOe9H3bTMyqqyOK78NSJs8PafFY6IIv5Fgxey5SLF3EwUAq+cw==
-X-Received: by 2002:a05:600c:520c:b0:40d:8a04:a134 with SMTP id fb12-20020a05600c520c00b0040d8a04a134mr934490wmb.79.1704211511039;
-        Tue, 02 Jan 2024 08:05:11 -0800 (PST)
+        bh=J38P+ankfUbUztT5GJCTo6FfwFdn7YoTpHgRI5fDY8Q=;
+        b=HOS78u0WdBE1SASpWsOV4/uRUyJ8UToUSRV2uvbu5t/RiAmWfTD5ZeGZzbdzrJKuCN
+         uuvwsyBJ/ozorIbzEo05eh3P7GfOlWLxveF1amVXIo5bo1t0gdHw1jlsfCWGC+4SPGNe
+         PL8hCFSANgoj5kgtbKn2p3SlF4KTk4JPLl6NHuJ75g3jXVDDyfcZ6bgs99jDR8TvhXWP
+         0OcKojDFw34AaH0vsodttfWJNhdKQlKktDSK5fSgyeMUFj0pFIO/tw7Y4sRudkNOlkCy
+         8OLMUDf3iFguSNNcqOfwP6UlzGVGlAhD5VFGEP/NUPRU5uXrhoDPv5NIjIOn9lwePqpk
+         bPQw==
+X-Gm-Message-State: AOJu0YxcbdzKGvuIo7CzE3UfyHKJCkkS9yjU9WXKVM6GisX5Ty3HOMu+
+	nrYBfaei7GH7+oSYKHzB7ctMGOO+PPPF71SW
+X-Google-Smtp-Source: AGHT+IGK81sSXeAZVigy9QHy8W3v7E9N09SlmUg/+/UeieW3S9EWG4i4DkIxryo3kfAalZFebgBIRA==
+X-Received: by 2002:adf:ec82:0:b0:337:37c2:fc57 with SMTP id z2-20020adfec82000000b0033737c2fc57mr2610183wrn.106.1704211518286;
+        Tue, 02 Jan 2024 08:05:18 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (sal63-h02-176-184-16-71.dsl.sta.abo.bbox.fr. [176.184.16.71])
-        by smtp.gmail.com with ESMTPSA id bg29-20020a05600c3c9d00b0040d6d755c90sm19136952wmb.42.2024.01.02.08.05.09
+        by smtp.gmail.com with ESMTPSA id b16-20020a056000055000b003372dcd739csm9582956wrf.86.2024.01.02.08.05.15
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 02 Jan 2024 08:05:10 -0800 (PST)
+        Tue, 02 Jan 2024 08:05:17 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -85,95 +85,87 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Kevin Wolf <kwolf@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH 2/5] qdev-properties: Add OptionalBool QAPI type
-Date: Tue,  2 Jan 2024 17:04:51 +0100
-Message-ID: <20240102160455.68612-3-philmd@linaro.org>
+Subject: [RFC PATCH 3/5] hw/arm/armv7m: Convert ARMv7MState::vfp from bool to OptionalBool
+Date: Tue,  2 Jan 2024 17:04:52 +0100
+Message-ID: <20240102160455.68612-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240102160455.68612-1-philmd@linaro.org>
 References: <20240102160455.68612-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: t0cK5Oi82jBE
+X-TUID: NbLcvHqfQ1RQ
 
-To be able to distinct whether a boolean qdev property
-has been set or not, add the DEFINE_PROP_BOOL_NODEFAULT()
-qdev macro based on the tri-state OptionalBool QAPI type.
+We want to know if the 'vfp' property has been initialized.
+Convert it from boolean to OptionalBool (which contain the
+'unset' enum).
+
+Note the monitor output is changed as:
+
+  (qemu) info qtree
+    ...
+    dev: armv7m, id ""
+      gpio-in "NMI" 1
+      gpio-out "SYSRESETREQ" 1
+      gpio-in "" 96
+      clock-in "cpuclk" freq_hz=40 MHz
+      clock-in "refclk" freq_hz=0 Hz
+      cpu-type = "cortex-m33-arm-cpu"
+      init-svtor = 270532608 (0x10200000)
+      init-nsvtor = 0 (0x0)
+      enable-bitband = false
+      start-powered-off = false
+-     vfp = false
++     vfp = "false"
+      dsp = false
+      mpu-ns-regions = 8 (0x8)
+      mpu-s-regions = 8 (0x8)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- qapi/common.json             | 16 ++++++++++++++++
- include/hw/qdev-properties.h |  5 +++++
- hw/core/qdev-properties.c    | 10 ++++++++++
- 3 files changed, 31 insertions(+)
+ include/hw/arm/armv7m.h | 2 +-
+ hw/arm/armsse.c         | 2 +-
+ hw/arm/armv7m.c         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/qapi/common.json b/qapi/common.json
-index 6fed9cde1a..884c143e2a 100644
---- a/qapi/common.json
-+++ b/qapi/common.json
-@@ -207,3 +207,19 @@
- ##
- { 'struct': 'HumanReadableText',
-   'data': { 'human-readable-text': 'str' } }
-+
-+##
-+# @OptionalBool:
-+#
-+# An enumeration of three options: true, false, and unset
-+#
-+# @unset: Unset (default)
-+#
-+# @false: False
-+#
-+# @true: True
-+#
-+# Since: 9.0
-+##
-+{ 'enum': 'OptionalBool',
-+  'data': [ 'false', 'true', 'unset' ] }
-diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index 0e1930177e..8cf95da2c3 100644
---- a/include/hw/qdev-properties.h
-+++ b/include/hw/qdev-properties.h
-@@ -49,6 +49,7 @@ struct PropertyInfo {
- extern const PropertyInfo qdev_prop_bit;
- extern const PropertyInfo qdev_prop_bit64;
- extern const PropertyInfo qdev_prop_bool;
-+extern const PropertyInfo qdev_prop_bool_unset;
- extern const PropertyInfo qdev_prop_enum;
- extern const PropertyInfo qdev_prop_uint8;
- extern const PropertyInfo qdev_prop_uint16;
-@@ -105,6 +106,10 @@ extern const PropertyInfo qdev_prop_link;
-                 .set_default = true,                         \
-                 .defval.u    = (bool)_defval)
- 
-+#define DEFINE_PROP_BOOL_NODEFAULT(_name, _state, _field) \
-+    DEFINE_PROP_SIGNED(_name, _state, _field, OPTIONAL_BOOL_UNSET, \
-+                        qdev_prop_bool_unset, OptionalBool)
-+
- /**
-  * The DEFINE_PROP_UINT64_CHECKMASK macro checks a user-supplied value
-  * against corresponding bitmask, rejects the value if it violates.
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index 0c17a5de82..1bec8ee679 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -260,6 +260,16 @@ const PropertyInfo qdev_prop_bool = {
-     .set_default_value = set_default_value_bool,
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index e2cebbd15c..6c9e65b644 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -105,7 +105,7 @@ struct ARMv7MState {
+     uint32_t mpu_s_regions;
+     bool enable_bitband;
+     bool start_powered_off;
+-    bool vfp;
++    OptionalBool vfp;
+     bool dsp;
  };
  
-+/* --- optional bool --- */
-+
-+const PropertyInfo qdev_prop_bool_unset = {
-+    .name  = "OptionalBool",
-+    .enum_table  = &OptionalBool_lookup,
-+    .get   = qdev_propinfo_get_enum,
-+    .set   = qdev_propinfo_set_enum,
-+    .set_default_value = qdev_propinfo_set_default_value_enum,
-+};
-+
- /* --- 8bit integer --- */
- 
- static void get_uint8(Object *obj, Visitor *v, const char *name, void *opaque,
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 31acbf7347..472b16fc30 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -1028,7 +1028,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+             }
+         }
+         if (!s->cpu_fpu[i]) {
+-            if (!object_property_set_bool(cpuobj, "vfp", false, errp)) {
++            if (!object_property_set_str(cpuobj, "vfp", "false", errp)) {
+                 return;
+             }
+         }
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index d10abb36a8..3610f6f4a1 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -548,7 +548,7 @@ static Property armv7m_properties[] = {
+     DEFINE_PROP_BOOL("enable-bitband", ARMv7MState, enable_bitband, false),
+     DEFINE_PROP_BOOL("start-powered-off", ARMv7MState, start_powered_off,
+                      false),
+-    DEFINE_PROP_BOOL("vfp", ARMv7MState, vfp, true),
++    DEFINE_PROP_BOOL_NODEFAULT("vfp", ARMv7MState, vfp),
+     DEFINE_PROP_BOOL("dsp", ARMv7MState, dsp, true),
+     DEFINE_PROP_UINT32("mpu-ns-regions", ARMv7MState, mpu_ns_regions, UINT_MAX),
+     DEFINE_PROP_UINT32("mpu-s-regions", ARMv7MState, mpu_s_regions, UINT_MAX),
 -- 
 2.41.0

@@ -1,197 +1,211 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id az3-20020a05600c600300b0040d4954ac04sm1253567wmb.43.2023.12.22.05.45.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Dec 2023 05:45:07 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 734CF5F7DA;
-	Fri, 22 Dec 2023 13:45:07 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-  John Snow <jsnow@redhat.com>,  Aurelien Jarno <aurelien@aurel32.net>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Yanan Wang
- <wangyanan55@huawei.com>,  Eduardo Habkost <eduardo@habkost.net>,  Brian
- Cain <bcain@quicinc.com>,  Laurent Vivier <laurent@vivier.eu>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Cleber Rosa <crosa@redhat.com>,  David
- Hildenbrand <david@redhat.com>,  Beraldo Leal <bleal@redhat.com>,
-  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Weiwei Li
- <liwei1518@gmail.com>,  Paul Durrant <paul@xen.org>,
-  qemu-s390x@nongnu.org,  David Woodhouse <dwmw2@infradead.org>,  Liu
- Zhiwei <zhiwei_liu@linux.alibaba.com>,  Ilya Leoshkevich
- <iii@linux.ibm.com>,  Wainer dos Santos Moschetta <wainersm@redhat.com>,
-  Michael Rolnik <mrolnik@gmail.com>,  Alistair Francis
- <alistair.francis@wdc.com>,  Daniel Henrique Barboza
- <danielhb413@gmail.com>,  Laurent Vivier <lvivier@redhat.com>,
-  kvm@vger.kernel.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
-  Alexandre Iooss <erdnaxe@crans.org>,  Thomas Huth <thuth@redhat.com>,
-  Peter Maydell <peter.maydell@linaro.org>,  qemu-ppc@nongnu.org,  Paolo
- Bonzini <pbonzini@redhat.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Nicholas Piggin <npiggin@gmail.com>,
-  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,  Song Gao
- <gaosong@loongson.cn>,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  Richard Henderson <richard.henderson@linaro.org>,  Daniel Henrique
- Barboza <dbarboza@ventanamicro.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>,
-  Mahmoud Mandour <ma.mandourr@gmail.com>,  Bin Meng
- <bin.meng@windriver.com>
-Subject: Re: [PATCH 37/40] plugins: add an API to read registers
-In-Reply-To: <a26a55b2-240c-48c3-b341-48c1d7195bd9@daynix.com> (Akihiko
-	Odaki's message of "Thu, 21 Dec 2023 22:19:25 +0900")
-References: <20231221103818.1633766-1-alex.bennee@linaro.org>
-	<20231221103818.1633766-38-alex.bennee@linaro.org>
-	<a26a55b2-240c-48c3-b341-48c1d7195bd9@daynix.com>
-User-Agent: mu4e 1.11.26; emacs 29.1
-Date: Fri, 22 Dec 2023 13:45:07 +0000
-Message-ID: <87y1dmxsf0.fsf@draig.linaro.org>
+Received: by 2002:a17:906:eca:b0:a27:dfb7:c645 with SMTP id u10csp1289036eji;
+        Tue, 2 Jan 2024 04:28:52 -0800 (PST)
+X-Received: by 2002:a5d:4851:0:b0:336:77aa:7b2e with SMTP id n17-20020a5d4851000000b0033677aa7b2emr7376147wrs.11.1704198532250;
+        Tue, 02 Jan 2024 04:28:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704198532; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qzw7+/6fbyVEjrdyVylEOtsjYdM4VPGZqksi+XXa5GH97Y16N3pt8keMsUyn1P3B2n
+         PLnXb3xggf9pQD/x/IcNwiYweFtg6SK1xMomXAna6FXr2kHGP31v/Ledk8xoP7f7I4RL
+         o5NCclNcwbcTfXgFe9xLxCnotsbG54BFJ3JOgLDxmhVL3FV+u0V/h7n15inJMJD72zt/
+         TPhxlm/Y1SgSwzzuSkgkL+3Hu6dkwtl1qZb8Xoo61AjrGjycIA1uO0Vfdw1nSEUhTkCT
+         RzqaKQgGJfQd8GmIp/+qRvfz1Qev9hYQIOJgmd4+KjWgPh4NX6nqtuAOQ98FXwME0LaT
+         b3BA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=EGWivcS99+wHRa2vbtr7B5dRD4LP8waN05N4XbedEWs=;
+        fh=Ysji0tydBxZiNEzfwUMaMh6Hs5kQzZg0Gh+RsIMqUtY=;
+        b=yIyYE+CWfPvut6HT2kq/N/onByJHQtaPVw040DeatMUlM7wxHpTznQaVfnOfgtaRa+
+         P/NMjo5McSeCE1IAK2VjRWdly0/2CrV/EXSiPenVbw8tcPmchtA5tD4JfUxg1i1pgKBz
+         NRAV44gtcYKcefVuGDvPiyHqS5wG90K3+AYWVKWMbneZIhjwb86tJlV54N0N6WMNTLSL
+         OqDQ53Ci58XlHYDt1uQ6fqUyC8PtTGDbagvO0dPuvWHXH0QAhOlyO2t299IPtYMIONaE
+         P0dMPZDOnfOEtAjg8//yB9Omob7sPe8BVEFtgVMNgSQpHAHPuFA+CqzCdg6KjpLq5+AN
+         N5eQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="mfDWEYi/";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o8-20020a5d47c8000000b00336d8edac61sor1496955wrc.5.2024.01.02.04.28.52
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 02 Jan 2024 04:28:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="mfDWEYi/";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1704198532; x=1704803332; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EGWivcS99+wHRa2vbtr7B5dRD4LP8waN05N4XbedEWs=;
+        b=mfDWEYi/1RyiML21hHViGv8MiybWnUQhmbTU1BLRjjn8cqUEOqxPeGipPfWXIXsFGr
+         T8wAe+Ddt/etKNOTYgQMEkg5wnoHgNgHLGLruke7Zq0ezVdz7IDLcatWYnri/MLHGCb9
+         yTlgjNZwkPlsgC+LyLQdQt+0dC+8ANqWJu6E7KvNM+lsSm5BiI9ffUCD36amPHYMJo7L
+         DEPexv6PsyGdxeUTzwAVz/FDqDfPPlG848aSrjS/RmsFyeco+3lL8nPEdHCwWETSTB1+
+         1TFBkKW4DqlmhGBeJ9yptq5SknLQL3MFuFLRgisKCGdxINVD6oJPVLnttYF56N55M3tG
+         rEPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704198532; x=1704803332;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EGWivcS99+wHRa2vbtr7B5dRD4LP8waN05N4XbedEWs=;
+        b=uQFAvud64uJiLt5xqNimMoP4jAal1gpNBs0YfogjOx8Ov4RhY8hUt4fTHTnQHpLCDW
+         E+KIhS8kHDuU+HxCrS9EhnxYEjYB9h/XAMJAj0dTIXIxJwhaZBNz10xffnZHAqbgatmg
+         laK6QVJ+N+0Zb+GiqhBzjCZMzQBLaJMVFZXftdZSPnPg3TWWBKXkhH9Qgkh3eLvW/Z9e
+         evZ6gQzqFf0gcjrV5/X2gMCpDWn6Bgx+zmimBPT9bLkSmdt/tNDiBrrbP5Ez+4ryBeUn
+         QvfLq0kklASi9kvibOgio/oMs6xPa6ckKl8fV4r7MkjwtrR6hPg8PM5PWmHiHh6KM47j
+         h+BA==
+X-Gm-Message-State: AOJu0YwERUxG0BsuDqE54T2P6E9t2vMODDcJhWAilbmw824x8YN+0KFd
+	zkqym/oHj0jfIbysyv3lNEevXu3ldYRbT9yB
+X-Google-Smtp-Source: AGHT+IEwpcTL0Csf+EWLMVI9iqmJ7YDfPSWV44S+4HHothwKYStghNbHwsGo0zDVddU+owpDPGqmRw==
+X-Received: by 2002:a05:600c:5020:b0:40b:3322:2af6 with SMTP id n32-20020a05600c502000b0040b33222af6mr7727002wmr.5.1704198531712;
+        Tue, 02 Jan 2024 04:28:51 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (sal63-h02-176-184-16-71.dsl.sta.abo.bbox.fr. [176.184.16.71])
+        by smtp.gmail.com with ESMTPSA id i2-20020a05600c354200b0040d5ac00dc6sm25464652wmq.8.2024.01.02.04.28.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jan 2024 04:28:51 -0800 (PST)
+Message-ID: <9293e63b-8032-4ea0-b516-9db6949fb607@linaro.org>
+Date: Tue, 2 Jan 2024 13:28:48 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: bbQrXMSzxjGr
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] hw/arm: Prefer arm_feature() over
+ object_property_find()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Radoslaw Biernacki
+ <rad@semihalf.com>, qemu-arm@nongnu.org,
+ Leif Lindholm <quic_llindhol@quicinc.com>, Rob Herring <robh@kernel.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20231214171447.44025-1-philmd@linaro.org>
+ <CAFEAcA-Je+_tNCwiL_sQb-tDmCRJ2LWm5mAfuowtxbUBNEWQXQ@mail.gmail.com>
+ <871qbkug24.fsf@pond.sub.org>
+ <CAFEAcA9vEvOeTseaC27hz9RKe13zs_2oPGjK-bLs8VL1wQF2jw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA9vEvOeTseaC27hz9RKe13zs_2oPGjK-bLs8VL1wQF2jw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: jpkD3mPGHMV4
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+Hi,
 
-> On 2023/12/21 19:38, Alex Benn=C3=A9e wrote:
->> We can only request a list of registers once the vCPU has been
->> initialised so the user needs to use either call the get function on
->> vCPU initialisation or during the translation phase.
->> We don't expose the reg number to the plugin instead hiding it
->> behind
->> an opaque handle. This allows for a bit of future proofing should the
->> internals need to be changed while also being hashed against the
->> CPUClass so we can handle different register sets per-vCPU in
->> hetrogenous situations.
->> Having an internal state within the plugins also allows us to expand
->> the interface in future (for example providing callbacks on register
->> change if the translator can track changes).
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->> v2
->>    - use new get whole list api, and expose upwards
->> vAJB:
->> The main difference to Akikio's version is hiding the gdb register
->> detail from the plugin for the reasons described above.
->> ---
->>   include/qemu/qemu-plugin.h   |  53 +++++++++++++++++-
->>   plugins/api.c                | 102 +++++++++++++++++++++++++++++++++++
->>   plugins/qemu-plugins.symbols |   2 +
->>   3 files changed, 155 insertions(+), 2 deletions(-)
->> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
->> index 4daab6efd29..e3b35c6ee81 100644
->> --- a/include/qemu/qemu-plugin.h
->> +++ b/include/qemu/qemu-plugin.h
->> @@ -11,6 +11,7 @@
->>   #ifndef QEMU_QEMU_PLUGIN_H
->>   #define QEMU_QEMU_PLUGIN_H
->>   +#include <glib.h>
->>   #include <inttypes.h>
->>   #include <stdbool.h>
->>   #include <stddef.h>
->> @@ -227,8 +228,8 @@ struct qemu_plugin_insn;
->>    * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
->>    * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
->>    *
->> - * Note: currently unused, plugins cannot read or change system
->> - * register state.
->> + * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot cha=
-nge
->> + * system register state.
->>    */
->>   enum qemu_plugin_cb_flags {
->>       QEMU_PLUGIN_CB_NO_REGS,
->> @@ -708,4 +709,52 @@ uint64_t qemu_plugin_end_code(void);
->>   QEMU_PLUGIN_API
->>   uint64_t qemu_plugin_entry_code(void);
->>   +/** struct qemu_plugin_register - Opaque handle for a translated
->> instruction */
->> +struct qemu_plugin_register;
->
-> What about identifying a register with an index in an array returned
-> by qemu_plugin_get_registers(). That saves troubles having the handle
-> member in qemu_plugin_reg_descriptor.
->
->> +
->> +/**
->> + * typedef qemu_plugin_reg_descriptor - register descriptions
->> + *
->> + * @name: register name
->> + * @handle: opaque handle for retrieving value with qemu_plugin_read_re=
-gister
->> + * @feature: optional feature descriptor, can be NULL
->
-> Why can it be NULL?
->
->> + */
->> +typedef struct {
->> +    char name[32];
->
-> Why not const char *?
-
-I was trying to avoid too many free floating strings. I could intern it
-in the API though.
-
->
->> +    struct qemu_plugin_register *handle;
->> +    const char *feature;
->> +} qemu_plugin_reg_descriptor;
->> +
->> +/**
->> + * qemu_plugin_get_registers() - return register list for vCPU
->> + * @vcpu_index: vcpu to query
->> + *
->> + * Returns a GArray of qemu_plugin_reg_descriptor or NULL. Caller
->> + * frees the array (but not the const strings).
->> + *
->> + * As the register set of a given vCPU is only available once
->> + * the vCPU is initialised if you want to monitor registers from the
->> + * start you should call this from a qemu_plugin_register_vcpu_init_cb()
->> + * callback.
->
-> Is this note really necessary? You won't know vcpu_index before
-> qemu_plugin_register_vcpu_init_cb() anyway.
-
-Best to be clear I think.
-
->
->> + */
->> +GArray * qemu_plugin_get_registers(unsigned int vcpu_index);
->
-> Spurious space after *.
->
->> +
->> +/**
->> + * qemu_plugin_read_register() - read register
->> + *
->> + * @vcpu: vcpu index
->> + * @handle: a @qemu_plugin_reg_handle handle
->> + * @buf: A GByteArray for the data owned by the plugin
->> + *
->> + * This function is only available in a context that register read acce=
-ss is
->> + * explicitly requested.
->> + *
->> + * Returns the size of the read register. The content of @buf is in tar=
-get byte
->> + * order. On failure returns -1
->> + */
->> +int qemu_plugin_read_register(unsigned int vcpu,
->> +                              struct qemu_plugin_register *handle,
->> +                              GByteArray *buf);
->
-> Indention is not correct. docs/devel/style.rst says:
->
->> In case of function, there are several variants:
+On 18/12/23 10:48, Peter Maydell wrote:
+> On Mon, 18 Dec 2023 at 07:26, Markus Armbruster <armbru@redhat.com> wrote:
 >>
->> * 4 spaces indent from the beginning
->> * align the secondary lines just after the opening parenthesis of
->     the first
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>>> On Thu, 14 Dec 2023 at 17:14, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>>>
+>>>> QOM properties are added on the ARM vCPU object when a
+>>>> feature is present. Rather than checking the property
+>>>> is present, check the feature.
+>>>>
+>>>> Suggested-by: Markus Armbruster <armbru@redhat.com>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>> ---
+>>>> RFC: If there is no objection on this patch, I can split
+>>>>       as a per-feature series if necessary.
+>>>>
+>>>> Based-on: <20231123143813.42632-1-philmd@linaro.org>
+>>>>    "hw: Simplify accesses to CPUState::'start-powered-off' property"
+>>>
+>>> I'm not a super-fan of board-level code looking inside
+>>> the QOM object with direct use of arm_feature() when
+>>> it doesn't have to. What's wrong with asking whether
+>>> the property exists before trying to set it?
+>>
+>> I'm not a fan of using QOM instead of the native C interface.
+>>
+>> The native C interface is CPUArmState method arm_feature().
+> 
+> But we don't in most of these cases really want to know "is this
+> a CPU with feature foo?". What we're asking is "does this
+> QOM property exist so it won't blow up if I set/get it?".
 
-Isn't that what it does?
+[More analysis on this topic.]
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+ARMV7M (hw/arm/armv7m.c) is an interesting QOM use case.
+
+ARMV7M is a ARMCPU container, with few more things. (We have
+more complex cases with containers of array of vCPUs, so this
+single-vCPU case is a good start).
+
+We'd like to apply properties on ARMV7M which get forwarded
+to the embedded ARMCPU.
+Usually we create the ARMCPU in armv7m_instance_init(), call
+object_property_add_alias() to alias some ARMCPU to ARMV7M,
+so these properties can be set externally before ARMV7M is
+realized, being directly forwarded to the embedded ARMCPU [*].
+
+The problem with ARMV7M is it the ARMCPU QOM type is variable,
+so we don't know it in armv7m_instance_init() but only later
+in armv7m_realize(), thus we can not call QOM _add_alias() to
+alias them. One way to resolve this is to duplicate all possible
+ARMCPU properties we want to set on ARMV7M, and set them in
+armv7m_realize() after the ARMCPU is created and before it is
+realized (the current implementation):
+
+static void armv7m_realize(DeviceState *dev, Error **errp)
+{
+     ...
+     s->cpu = ARM_CPU(object_new_with_props(s->cpu_type,
+                                            OBJECT(s), "cpu",
+                                            &err, NULL));
+     ...
+
+     if (object_property_find(OBJECT(s->cpu), "vfp")) {
+         if (!object_property_set_bool(OBJECT(s->cpu), "vfp",
+                                       s->vfp, errp)) {
+             return;
+         }
+     }
+     ...
+
+     if (!qdev_realize(cpudev, NULL, errp)) {
+         return;
+     }
+     ...
+}
+
+static Property armv7m_properties[] = {
+     DEFINE_PROP_STRING("cpu-type", ARMv7MState, cpu_type),
+     ...
+     DEFINE_PROP_BOOL("vfp", ARMv7MState, vfp, true),
+     ...
+};
+
+Note ARMV7M "vfp" is a /static/ QOM property, so can not be
+unregistered if the ARMCPU doesn't expose it.
+
+* If ARMCPU doesn't provide "vfp", ARMV7M properties introspection
+   still shows 'vfp=true'.
+
+* If ARMCPU doesn't provide "vfp", requesting 'vfp=true' on ARMV7M
+   is silently ignored.
+
+* If ARMCPU doesn't provide "vfp", even if we unregister ARMV7M "vfp"
+   property in realize() for cleaner introspection, we can not check
+   whether user requested an explicit value before realize().
+   Possibly we could use a tri-state {unset/false/true} dynamic property
+   to check that.
+
+[*] object_property_add_alias() is a 1-1 static aliasing. In the
+     case of cluster of objects we don't have API to do a 1-N static
+     aliasing; the current way to do that is similar to dynamic
+     properties setters iterating on the array (getter usually return
+     the container property, ignoring the cluster values).
+
+Regards,
+
+Phil.

@@ -1,74 +1,75 @@
-Received: by 2002:a05:7022:7e0d:b0:70:a3b7:dfe7 with SMTP id ut13csp6658986dlb;
-        Tue, 2 Jan 2024 08:04:59 -0800 (PST)
-X-Received: by 2002:a7b:cb92:0:b0:40d:3ad5:7618 with SMTP id m18-20020a7bcb92000000b0040d3ad57618mr4905222wmi.183.1704211498794;
-        Tue, 02 Jan 2024 08:04:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704211498; cv=none;
+Received: by 2002:a05:7022:7e0d:b0:70:a3b7:dfe7 with SMTP id ut13csp6659084dlb;
+        Tue, 2 Jan 2024 08:05:05 -0800 (PST)
+X-Received: by 2002:adf:fc88:0:b0:336:8abb:c24f with SMTP id g8-20020adffc88000000b003368abbc24fmr8490290wrr.4.1704211505048;
+        Tue, 02 Jan 2024 08:05:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704211505; cv=none;
         d=google.com; s=arc-20160816;
-        b=dEop0dVyBUm+b/t1BitjVNi1lVmNA8KmlJS7XLdWu4+5hJOX88LV04r1OapMuZtvVu
-         Y64NDsfJQi/TvxH6lQUDC4at2LvMH9CpALUaxWlluB3rzpmS517zLKJM+rhbyAAKoGem
-         kiX5IogLb1vBBnyl03gX6aLeiCVFqLSlVwwf/JIjARswbYe317nCNarCI/VY8JlgKMW2
-         1am31gUfZBn7xHt9oinS4JIJ+UaIVElq13127rl0D4qt17wOgmkrvEgesFzBMnrlaCzf
-         J+rQtHNmAt+Cc5kHXwpg/8VK2XSVRTfhxZFUcTC/TeHUQJX6DV3lHntOHd0zsSfv0soN
-         F73w==
+        b=U8RbRZpMTZ1G9aC9iFeYI5aNChKv3bIpPhM6/Q7ycWoSnKyc5p7tz9tAzWlqqY4Zxc
+         BddL7UWtK554I89pem8hTAj1hh1crD0jX72ROr4luyDAhiBd7iBGsSEhvXDoRfSouvwm
+         4DSfJqht59PchTR2+raW++ORkQDT7c1a6a4A0g/M5Yn2XF62+z2j0/boN0lEQl7wXKIP
+         e1rSvhfZy8pmKvvzxPpRrOurXBW/O14aJJuYFIOoEHtuDv+hDcLDUbR+sRIf9yHykKRV
+         Y/e16HASfDW+GVtDOm70wZG38oM+Y9aXbjWroHIqX9GQICdI2JadNLzfMP7MiRc2ALMY
+         tOpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=BRQYwKaD5nL/etQUQHLcvnsdC8oyTg3NrDmrCWZHoMk=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=TVl3cttQKDPPU7GqDBLczNEA1v4uR7uW39llQJlVRbI=;
         fh=Fbl4rt7vNadFyu+mhE5sPZ2m5GJmVL0UTbP+h3uuTlY=;
-        b=APdlVfkhsO2QOOA+hFnwE+nVrNZ0DVtAx5U1/mSVN8aIbnbylXc6Qj9dsuHn2oeGym
-         OP/LXdYmQ0ATSsv4jHUlFpMkTXnzBRPJY/1bUMiFWyrImA+w9MIgsRhOtvqLgdll/cYU
-         ZxvzQ8vE+LwJG/vq8PP1hiId2r6MlVagKLBSiGGwGYZFfHeNZ23rOxT3Fp7Z6m50ECbi
-         UheXXlK+RqiNgEQ29uo6AkFi+vyjzWbbznUJ5qfeOA1ejVevSF+kF0k+JLPRxD7BzLmO
-         CVQXgrvWw4E8Tx1OXST07/WSesqZCdCyRXkHqYd7DIk+h+wc8rA9kivl4vmYQknjDTpx
-         zheA==
+        b=t5DF5vRovY9OleCsW+YcIVKsQvWJ816Zkd9+lU0MC9rXPZP3nns9INAn557LhIhj7S
+         4XgqWHahCKznFdSQY5Iwt9EtSNpEH7xkW6gVhskUinZJUdjar/9Ppzpc0791y3BLnuvn
+         LhQmLZPfbfuKatlONDp47BdlVHW53uvayqOMge8uQXnb/1fest85sm30ELRC7wOHHiD9
+         FBp9rNvwLbkENn3IYwPF65CyNO7AdLxle6QvenOheQ09Knt5MVzBJq2QB/yYXkvVtJd3
+         0OI/ugMCgSlzM8+btT83c251rqz4CXn49N+nUfhpG4nTtU39g2dQLTauJkyndBf0Atyw
+         QwdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jVm9CYZE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c1amK02r;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o11-20020a05600c510b00b0040d206f950esor1149241wms.3.2024.01.02.08.04.58
+        by mx.google.com with SMTPS id t8-20020adfe448000000b003367449011asor5018944wrm.2.2024.01.02.08.05.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 02 Jan 2024 08:04:58 -0800 (PST)
+        Tue, 02 Jan 2024 08:05:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jVm9CYZE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c1amK02r;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704211498; x=1704816298; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=BRQYwKaD5nL/etQUQHLcvnsdC8oyTg3NrDmrCWZHoMk=;
-        b=jVm9CYZElLprxcoSOiL8UhKpvycLHGf8vyXZyk/WhuCQk4h0l7O3hQS+A2M7jzGI6L
-         aI/24GHJmiN2ZasO1I8ZtyIu9BDNlPF7UO6TRnSd/30YvIUm3tGygA6AKa/h6GSuR3Yb
-         NgR3ZoiVRkMJJRIj6xdyb1xisxTNIYZfQ/s6bnEYKZgLbwbD8y4hdf/xYr50oPuEJy2B
-         y1jq50DShX3AvI0QyvDV1UJ98XuUgU8SXPGgXda+PgmDFZuOXgq0JUZIfLR+91+f2QWC
-         929ggONsA2sRWYEhbLQBeIJ8AyMHAXlzt5/2fMbpGAELWjohdgZpwhLhGf74lmeqxn5V
-         2ULA==
+        d=linaro.org; s=google; t=1704211504; x=1704816304; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TVl3cttQKDPPU7GqDBLczNEA1v4uR7uW39llQJlVRbI=;
+        b=c1amK02rEOoRfTLxjHTyldHwqLfa5jYeB8ME6329WpCj4HTnfgyjXke6/qmxL2a1A7
+         OSUHsuPumNu5XB7VTtzpm9Rn+BbSu79ieR/JxCr0jd1RkNBzVzUXuqIKZ2djNgb2fy/M
+         S8t2V9kOcOr6VHkc3RdjBb7j6ri5hDtXsYvtRZjB7lEbo3/aG9ptrfAjS9ruzj0rp34o
+         WQcF7xUXrh0cLsLfZVXQ87T5LRZyBh1MG0EC2QQOcnI02+eJeJUZyLmVBJaymwf7cV/e
+         orNEiRfBnp2G6iZVb0XrzpKHccG0P+hhb9hpfS9rMEGAuKZuXnrm2j1vmIZTkAbO94Mx
+         ZvhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704211498; x=1704816298;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=BRQYwKaD5nL/etQUQHLcvnsdC8oyTg3NrDmrCWZHoMk=;
-        b=lQbIFEjyymE1ha4kro3AGXhoVK9h3gDx18upalsSJF6zW46ncnfzvEVsUqcWXESfc8
-         bhTJg9qX8TA0OBsoLQYNopRV665WAR8pNebv1/AVPUQCfNBbEiy5W5Q/7cQSBiuAwwNS
-         1fZ024N+S86RLPx639ohdGDt4YUPDnpJVh/xdDWfNWj/hybUzllNq90llWaoqvyK0NiU
-         zYY4jAVxDuvP41UfEAATr//shUOFE6CmTwB5eWt0pcYyX0/C1aQ5nmLPMIVP8tNAZXg6
-         QaPnT+WJxCfR2fwduJwgJ9UgVWiIRx2QlOFSn/xQL0p4hwkqQwLRLOo0KaONVxSO9K1f
-         L5AQ==
-X-Gm-Message-State: AOJu0Yyt5B+TNuIgJl8D9P6eX3qwp0EWUVySAFZkD5r6l91SBv4JZ74v
-	mM0bu8Ey0K8QB5ADDW6eJJrhYjShm3oxjMeV
-X-Google-Smtp-Source: AGHT+IHQtwEk+w4KhJjo4/830fznlZXmm0bpqHzLPVNoK/axg8rCeYPG/UvnDRhCrnJNCEZZWj+TiA==
-X-Received: by 2002:a05:600c:4ed3:b0:40d:4d87:39f7 with SMTP id g19-20020a05600c4ed300b0040d4d8739f7mr4417565wmq.261.1704211498296;
-        Tue, 02 Jan 2024 08:04:58 -0800 (PST)
+        d=1e100.net; s=20230601; t=1704211504; x=1704816304;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TVl3cttQKDPPU7GqDBLczNEA1v4uR7uW39llQJlVRbI=;
+        b=BRe7S7urC9rTCxSx1AWxbOBw8MBVfIMB5AW7SKmmybJimHXC7gunzkL1S3lUXKqMs4
+         GYz9J0pGUNTm7m4/efb5BXwPB8caeQLnjyP2m2o3QyW9nz3f3ogvyGW02CCDpFo0leEL
+         LPmpXmX53gF3N3UqU+7BjLRvA4ZwuqwPuZrp+uaojOnBun8dx+/wdbTgNNohXaNwsnt/
+         39gSZxCpz8TLF1KfgBS5RHQ/RDEIHkU1t7Q8n336VcJ/M6dW+FBZXJOX28Xo9SCSpuoK
+         TfrFcMPbrwv80Cb+tgU4JxBKPEDXrcdwYunftgSHdbNOQZ9bgk+EIkZyW3IkpEO4oz7Z
+         JhWw==
+X-Gm-Message-State: AOJu0YzUfzyJcDjGBFhJArfW3vf9ooXPpLsjuq1ITLZPpoOSHeAVo45Z
+	Mpn/MdMxQgVezUIwDJrDD5ux/TUZvu9TiNUh
+X-Google-Smtp-Source: AGHT+IH+Obc3ne7AAB3LoQIBsTVjLSH2urrV19UtpdDS4OFzucuPmDYGorqkMdUbkefjSu8sXVfrDQ==
+X-Received: by 2002:a05:600c:4713:b0:40d:734e:665d with SMTP id v19-20020a05600c471300b0040d734e665dmr3139136wmo.41.1704211504678;
+        Tue, 02 Jan 2024 08:05:04 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (sal63-h02-176-184-16-71.dsl.sta.abo.bbox.fr. [176.184.16.71])
-        by smtp.gmail.com with ESMTPSA id w10-20020adfec4a000000b00336670abdcasm28690520wrn.40.2024.01.02.08.04.56
+        by smtp.gmail.com with ESMTPSA id j16-20020a05600c191000b0040c11fbe581sm45314295wmq.27.2024.01.02.08.05.03
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 02 Jan 2024 08:04:57 -0800 (PST)
+        Tue, 02 Jan 2024 08:05:04 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -84,44 +85,56 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Kevin Wolf <kwolf@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH 0/5] qdev-properties: Try to improve use of dynamic property introspection
-Date: Tue,  2 Jan 2024 17:04:49 +0100
-Message-ID: <20240102160455.68612-1-philmd@linaro.org>
+Subject: [RFC PATCH 1/5] qdev-properties: Add qdev_property_del_static()
+Date: Tue,  2 Jan 2024 17:04:50 +0100
+Message-ID: <20240102160455.68612-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240102160455.68612-1-philmd@linaro.org>
+References: <20240102160455.68612-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: JPJXIIMgSeQc
+X-TUID: Bg5DWFYxkoXs
 
-Hi,
+We can add properties with qdev_property_add_static().
+Add qdev_property_del_static() to delete them.
 
-This RFC series tries to work over some limitations exposed in
-https://lore.kernel.org/qemu-devel/9293e63b-8032-4ea0-b516-9db6949fb607@linaro.org/
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/qdev-properties.h | 2 ++
+ hw/core/qdev-properties.c    | 7 +++++++
+ 2 files changed, 9 insertions(+)
 
-Eventually all QDev objects would use static QOM properties,
-but in some cases we can not. ARMv7MState is a such example
-adding properties that might end up irrelevant.
-
-This is just an example, but thinking long term (in particular
-in the context of dynamic machines) I'm looking at how this
-could be improved. Thus this series. I don't like much this
-current approach (because more boiler place and complexity)
-however this seems to DTRT for the user.
-
-Philippe Mathieu-Daudé (5):
-  qdev-properties: Add qdev_property_del_static()
-  qdev-properties: Add OptionalBool QAPI type
-  hw/arm/armv7m: Convert ARMv7MState::vfp from bool to OptionalBool
-  hw/arm/armv7m: Error if trying to set unavailable ARMCPU::vfp property
-  hw/arm/armv7m: Do not expose 'vfp' property if ARM CPU doesn't have it
-
- qapi/common.json             | 16 ++++++++++++++++
- include/hw/arm/armv7m.h      |  2 +-
- include/hw/qdev-properties.h |  7 +++++++
- hw/arm/armsse.c              |  2 +-
- hw/arm/armv7m.c              | 12 +++++++++++-
- hw/core/qdev-properties.c    | 17 +++++++++++++++++
- 6 files changed, 53 insertions(+), 3 deletions(-)
-
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index 09aa04ca1e..0e1930177e 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -225,6 +225,8 @@ void error_set_from_qdev_prop_error(Error **errp, int ret, Object *obj,
+  */
+ void qdev_property_add_static(DeviceState *dev, Property *prop);
+ 
++void qdev_property_del_static(DeviceState *dev, Property *prop);
++
+ /**
+  * qdev_alias_all_properties: Create aliases on source for all target properties
+  * @target: Device which has properties to be aliased
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index 7d6fa726fd..0c17a5de82 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -994,6 +994,13 @@ void qdev_property_add_static(DeviceState *dev, Property *prop)
+     }
+ }
+ 
++void qdev_property_del_static(DeviceState *dev, Property *prop)
++{
++    Object *obj = OBJECT(dev);
++
++    object_property_del(obj, prop->name);
++}
++
+ static void qdev_class_add_property(DeviceClass *klass, const char *name,
+                                     Property *prop)
+ {
 -- 
 2.41.0

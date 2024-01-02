@@ -1,51 +1,51 @@
-Received: by 2002:a17:906:eca:b0:a27:dfb7:c645 with SMTP id u10csp1331004eji;
-        Tue, 2 Jan 2024 05:52:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG25P3BK4DLPKFYb3HhFKTrGRupCVcHtS3h0Y3H83FxZ2rmgPmHITqlZroebcmhY/CnvZvn
-X-Received: by 2002:a17:902:e88d:b0:1d4:be56:888b with SMTP id w13-20020a170902e88d00b001d4be56888bmr978812plg.1.1704203564136;
-        Tue, 02 Jan 2024 05:52:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704203564; cv=none;
+Received: by 2002:a17:906:eca:b0:a27:dfb7:c645 with SMTP id u10csp1331264eji;
+        Tue, 2 Jan 2024 05:53:19 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFDSszEYvpDwFOrLeeIOH9G6Wuv0/vSTdGhrYDwqtxk/GVKkRLMnsQSqVJIA1F6BeglHOLT
+X-Received: by 2002:a17:902:64d0:b0:1d4:32e2:3f4a with SMTP id y16-20020a17090264d000b001d432e23f4amr7554658pli.5.1704203599653;
+        Tue, 02 Jan 2024 05:53:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704203599; cv=none;
         d=google.com; s=arc-20160816;
-        b=zoXRyv9iIWSPNxBtQzwl37r3NpAawaFdTEyE3XkQ6zYtAZ17KJT96nmWIlinQ4NFJp
-         GJhgBxt5P8LRTNDF62wa7Py0a2lGrDvL5ngzwlhpJjbzOzHAKz71+PU4JpnDVGDqlErv
-         ZvTTTolmcS7blXV5/iKBHVuKE3vCRLP4iLmuvLhdK8A727owxXRzwOSZYGWYAMabaYYg
-         /DKEsJurXLLVUYCyKGH4RRvoSkuZz9/MfyMvW2ooV4GpuvKCD9Rt4IQ5hOjsiPPUFgtH
-         fhvWzIiYRqGQGfRUSbb/cATDHMJromwYhtv+oSbB6FTlyE9L4RPe/zYgtQREh5ofcYct
-         wRhg==
+        b=u+9z/bS/3emUlmwY4dV0XHkdyVoUs1HucYG3Q234YaoksOVHt3HwgsnXS4GhRbyA/T
+         UQl1APjLib475JZ1z1ZAzrsCfljd6pLeHlpv63kW/kAqUocVgGJrw26IcC19+ecJapDW
+         nBm673uEWoU+MD0hDPdtb63SOatxQrqCrKkbaMqnjeqc3yGVvLZuO1R3qjCYHKMPphNu
+         R1mLNeoC0P1kWaghITNdrtkbnSGWW6cw0S+b1BYJzyL4gil5RFsFoEISBTO/bgPmkg3Q
+         q6tXuETn094J/mvGwjgmWvXOtBBfVDw8ZasFMCvH6GNPpDtkipuwtjEzX/8zlJn2wvrA
+         UCRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
         bh=gUw6914ZNFnqUDDDhb6VvywE8ERaa6Zsc15Qkyz5uEE=;
         fh=+E/US/1Ju6gLetNBGXtM+LAEvu+9GnutnPYZSrJVors=;
-        b=yyUciB8va0/EopQ6nBjUuQIy/sHCwwx4zm+4xwslSyolxf1olvCP5LfuGz4VjeaEyI
-         By6moMHvbWnym5DFcqbdPd/MZ3FJTZrv4902LlQQVugTlz8678Bp6pF8IxCLACDv59Gq
-         NhS8uggeIKIRlKW0Iz0uArMm9stxFImkbfC1nFdDmvcfekjjwFbtquiyLHQOSdqcl/eU
-         MvOSaf3SNvhvQBa23ovs1XcbBn63dhafEV2g8i0jbknOQVh2WAcj3HmjN8dXU2fd2Quk
-         M9pk3RlrOSgyv1hO2516f5ZwUXuOZnrid3K6zMgSWiEUtbkRW6cfJ2lxWp010twy06qz
-         bOOA==
+        b=qOdMR0I0lHAb9JciWCwrfERVfHOWeJBsaf0RzssjGLaYW7vYwzGSkTOmeox+C1KyFy
+         soCNrxTbGFuCw6gvtFXihnnqTOLQN942GPDOVut8x0hcYzojqwmHLHOsYtneOIR/sLV1
+         lxzUVd6/ukQEO0dxW6GEuxqa3RC71unhWwIDR8xotk+DQBzaKPNiNy7Q5Ojof3yHcElw
+         QBcLOnWjmTS0zfuOWn2t+k1SO1gR4dNbFfFtwr3rTCgF+XOsnhErozyq40SekLgH8OQc
+         ISR3e36GDqslsKx2KUjAQ04PagnmoDZpmoBV+DrZSRc6wYARZ2JndDQdSmPCtsNAR4l/
+         SgqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of srs0=hbd0=im=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=hBD0=IM=kaod.org=clg@ozlabs.org"
 Return-Path: <SRS0=hBD0=IM=kaod.org=clg@ozlabs.org>
 Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
-        by mx.google.com with ESMTPS id m7-20020a170902768700b001d4b3f51b85si3712583pll.484.2024.01.02.05.52.43
+        by mx.google.com with ESMTPS id l12-20020a170903120c00b001d485a81276si9781669plh.262.2024.01.02.05.53.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jan 2024 05:52:44 -0800 (PST)
+        Tue, 02 Jan 2024 05:53:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of srs0=hbd0=im=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of srs0=hbd0=im=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=hBD0=IM=kaod.org=clg@ozlabs.org"
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4T4DnQ1sssz4x5K;
-	Wed,  3 Jan 2024 00:52:42 +1100 (AEDT)
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4T4Dp446DTz4x5l;
+	Wed,  3 Jan 2024 00:53:16 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4T4DnJ5slHz4wny;
-	Wed,  3 Jan 2024 00:52:36 +1100 (AEDT)
-Message-ID: <20a0ffb6-ac44-4c87-b49a-fec4a479f171@kaod.org>
-Date: Tue, 2 Jan 2024 14:52:35 +0100
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4T4Dnz1TLxz4x5h;
+	Wed,  3 Jan 2024 00:53:10 +1100 (AEDT)
+Message-ID: <03959676-a070-4a2f-a6ff-32d55aa9c6dd@kaod.org>
+Date: Tue, 2 Jan 2024 14:53:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/33] hw/arm/fsl-imx6ul: Add a local 'gic' variable
+Subject: Re: [PATCH 04/33] hw/arm/fsl-imx7: Add a local 'gic' variable
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -62,12 +62,12 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring <robh@kernel.org>,
  qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 References: <20231212162935.42910-1-philmd@linaro.org>
- <20231212162935.42910-4-philmd@linaro.org>
+ <20231212162935.42910-5-philmd@linaro.org>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231212162935.42910-4-philmd@linaro.org>
+In-Reply-To: <20231212162935.42910-5-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: T42qqc4fqkDd
+X-TUID: Hrm+6KravanJ
 
 On 12/12/23 17:29, Philippe Mathieu-Daudé wrote:
 > The A7MPCore forward the IRQs from its internal GIC.
@@ -81,5 +81,4 @@ Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Thanks,
 
 C.
-
 

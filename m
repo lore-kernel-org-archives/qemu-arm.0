@@ -1,185 +1,173 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp69654ejh;
-        Tue, 2 Jan 2024 10:33:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGWUgdx9nYaaZcyJ7kQB0iaEIf7eozP+49Dv73vPcx/kRZTHrYOyuouezWiJD2f0FsdP8ix
-X-Received: by 2002:a37:c20a:0:b0:781:5505:a730 with SMTP id i10-20020a37c20a000000b007815505a730mr15073820qkm.24.1704220386211;
-        Tue, 02 Jan 2024 10:33:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704220386; cv=none;
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp146010ejh;
+        Tue, 2 Jan 2024 13:37:15 -0800 (PST)
+X-Received: by 2002:a05:600c:46cd:b0:40d:86e0:83b5 with SMTP id q13-20020a05600c46cd00b0040d86e083b5mr1709833wmo.259.1704231435580;
+        Tue, 02 Jan 2024 13:37:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704231435; cv=none;
         d=google.com; s=arc-20160816;
-        b=D137PE1fE2sLtks7WWO0gUKw83J+qqjuF4IkSeR+TwBGp40ZKMF5+Axi0rEmjk43Zd
-         82STDQGvFPLn2f1UBphJRYe8MXDyhXiDsDOWqdX+9eIxm5q4PeJmkf/LFBMR9mzv3uBm
-         M2/GJsglXjNWLZ/oxcztiXygpZtAAsKdDPWlFuzLzGRDUHPj+3+4Bytzk7qAyA9LKLJf
-         fCp/530GU3e5BwZvaVPK8PBFS2jbqwiijjiERux84N8dmIYoEfk1La35YGAvatxjDcTC
-         Nzh3bcX1mNMji+CGIGPbjdVtmU+NWaFo+OZXi/kU1FMzi2XIq0DXn5SSFY1Fnf2NeMqv
-         05gw==
+        b=v8gJvOdrkgCP/DJmEZV4jtXJvCNJT8cfOg6XVdMu2vhnU/Fb7J0iM5wT+MVD+hV39U
+         bO1TTwxEG+c1iOrACQ1CanSGXHDtfxL91nUf3j2kKz7I6nouwCbZhGyAwWX+nqjWYtkq
+         5lR3qVWd/Pe/EF9Uut6Oa2sgx4TkqlwPBi4vXqnYmrFLuDWPYgaFNZ5n1B23OuIN/bhL
+         83iQ85BfnRdfLQKeLr7e+JsXs1iRmmLqFK14q2LI1+br8n4qQ+VA1DPLVBMgVowpdP0g
+         54S8YNYhDAUk2xO3RK/gZoyK3AUDSGTP2OZcu9+Q9JV/hoHbjgzmzwMERijpxqjLHNL8
+         EUUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=5ZSWH3wpkzPV65TxBNVdL/gu+vM8JlCQNGRe3viQK20=;
-        fh=fCmEQnPziUe60JUYtiqxt7QNA6C6QEcUJOTTqY3da3I=;
-        b=h87uYpEHY1JVh2D5y0MeMr/xiLNPtsOs9YCQJ11ZsAJWK5wfYTT2xMteo/PYAQzcZh
-         h6DdhMDAOg26lbx7I3RHdZygk8eWAWWaBSJmU+9gW9VJs8251vxWxn6WF3vl5LynhaZl
-         XKhxJcaNR/MgITZZO2sZWRgTeQQUelLkD91zSC6tVIha4TACe5gWwyYX6p5qz9FL12an
-         0sNFCpRiywg2jcdui5txgBfhHVX3sgUAjn4cUo2akqCYr/QSXVJNinp37G5I5wMs1fSS
-         w5WHMN4+s1b7OLSnNxOvwr0CXO+1mdNl0sLccdHYI4Ef9QXfjbhlXvi59gLvqk9QdIVX
-         0CbA==
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:subject:cc:to:from:date:dkim-signature;
+        bh=/j7/rdcZmoVQjecAI6/HxXOPJUcRBJCUvX9qQzCAcW8=;
+        fh=v1JMffJ9CSjS8rLFOjX4ECizuHzi6V75Wk9YrbuZeL8=;
+        b=FQXLkVs5ZqoKtlQzvVXlJXvxRC6p1weg25MMwIV2UdfL3pux1sk9eSM8LHw92rcJGH
+         LlWT5J5ygzCSKNEhyKBGvCEa9Mpjq9ElxhfbJ3QTf7JpeixDmU0e5EidlGtAvtaR2bcA
+         PJ3RYz2dFrJ7bA5nAUCV6PW4IJ0DmxOdS2ZslmjEfpxGmzhmi6SFfuvM1VKfUnYAItgS
+         7rYuRyRr6MIYdAD7SrotS5PyMH+z4FWuJfUzL23NbmuPeZ3z/6+yeUOo/gkJbqokIT6b
+         I7rQjHUq5BpOoYre9uD27frLKnDHtQlG1hmE/j89yMF2Z3xlsXjygV5bLAw7kP9IhL83
+         KJJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=sJMIadbf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u22-20020a05620a455600b00781d1750407si3310668qkp.637.2024.01.02.10.33.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jan 2024 10:33:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Q9lWwhCY;
+       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shentey@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f7-20020adfc987000000b00336c3920e79sor416573wrh.3.2024.01.02.13.37.15
+        (Google Transport Security);
+        Tue, 02 Jan 2024 13:37:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=sJMIadbf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=gmx.de
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rKjZ3-0006PJ-0z; Tue, 02 Jan 2024 13:32:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1rKjZ0-0006Of-OL; Tue, 02 Jan 2024 13:32:31 -0500
-Received: from mout.gmx.net ([212.227.15.19])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1rKjYx-0004I4-22; Tue, 02 Jan 2024 13:32:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1704220332; x=1704825132; i=xypron.glpk@gmx.de;
- bh=5ZSWH3wpkzPV65TxBNVdL/gu+vM8JlCQNGRe3viQK20=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
- In-Reply-To;
- b=sJMIadbfeLj8rrRXaeB05U1BgwCu1j2ebsMGsJKQjZdQqP3U/Ex2O5aPkOxlP9oR
- KYa79LAcpstaVBGzEAEnUWEIeHh7xvzBGJx0eD4UJDG9wO3IWcWHTnLyyXPFoxtjo
- pV76poIh5cIzZVtEdGDZhhQ+eu7h+Yiww2I25QWZPj6ikLhEyi4Jq3nLd2wZVCMac
- RJsobKa824KCWxk/AfDQCuIcwButa/ZTnYlDaj6Zxopf5b7tUcRRuS4TP1Ya+NhSG
- 6WYOLszrbffVPiWyriy5GKQohydgmyiHBd3TiAQ91abFwEOJqqtnGbSqzAaW3YB+C
- 6ArLppAre/h4AN959A==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.123.94] ([178.202.40.247]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MkHMZ-1qwzVy3Mgz-00kg6f; Tue, 02
- Jan 2024 19:32:11 +0100
-Message-ID: <f662a5cd-fa5b-4583-8864-6f1c1a1f6ec2@gmx.de>
-Date: Tue, 2 Jan 2024 19:32:00 +0100
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Q9lWwhCY;
+       spf=pass (google.com: domain of shentey@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=shentey@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1704231435; x=1704836235; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/j7/rdcZmoVQjecAI6/HxXOPJUcRBJCUvX9qQzCAcW8=;
+        b=Q9lWwhCYTLJdQc4CufhcYoXF//eDj0VolNxfBO5rETJyOjbabyFiFBNCo8gL8uN5Ll
+         z822teUd1fGyR97z374Ld4wz/H6YT69nXmApYQu/g7IWG8vnNMwSWRpvRBVoGQx9BBAE
+         J4obnlejjHfF9KjndgQVHAEnBRM7YVmNS0b763em4CfmbKuptMoinufI3FKD0liVs/UU
+         0I0iM+3dHS10G+MbF11oLVQi/lwUBJ2z1NyWjoQqh01eQQ8lcrUCRuemzjk6Cf6nF+HV
+         O08TnIqiW8UNdyTmSH5dhovQcTRGXrhIZUDa5ClHJkD34eAqUvcy2bzm06vbNhndv+AL
+         E/vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704231435; x=1704836235;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/j7/rdcZmoVQjecAI6/HxXOPJUcRBJCUvX9qQzCAcW8=;
+        b=nClECfwDIuKm0GT5+ekMXyMzKgbap4V/enkZinZNGi6R2TeJkpy2G1ZUb1Il6SgnxM
+         U9JUsgwXQKNRZ6XT9C/Z1QmO3Ik+Bs/N5XK2wkQCj+CmjBCP0Cbygd6z7I6bntge7NbH
+         cyjBa62Wy77C/p/8m4PJDGBvPMbaGyUKzdigzscNncy3+n51D3dYKsU3oADkdB8H2H9C
+         XWPHza43U7YesXwUOOmf0PBF/47w3gq0KnCSInf0ms10fRc1eYClLVD9XSmaRu2SsZPe
+         +HWq77gppAQ3eMEcpX5vS6A5EzYQTPwLld9Uet6wBxWzpUhIYhh5b4P+jdzuDFw3wRUd
+         le1g==
+X-Gm-Message-State: AOJu0Yy/n5q8m9Qp/ZEXbTq5NeRK2plw9bCqDwLhMHwnm5R19gTGOu4s
+	pOhpW1r6QavQkPHT3FZynks=
+X-Google-Smtp-Source: AGHT+IFrz+8G4XaufDC1u0mAfvhOGqc3F19J3DroZasFggdJGsufr8PGV5ZiaTqLN5DOoVoj9N8dAg==
+X-Received: by 2002:a7b:ce13:0:b0:40d:6f34:5c13 with SMTP id m19-20020a7bce13000000b0040d6f345c13mr2971570wmc.231.1704231434891;
+        Tue, 02 Jan 2024 13:37:14 -0800 (PST)
+Return-Path: <shentey@gmail.com>
+Received: from [127.0.0.1] (dynamic-089-014-091-072.89.14.pool.telefonica.de. [89.14.91.72])
+        by smtp.gmail.com with ESMTPSA id p34-20020a05600c1da200b0040d8b4ebd55sm252596wms.0.2024.01.02.13.37.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Jan 2024 13:37:14 -0800 (PST)
+Date: Tue, 02 Jan 2024 21:37:00 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Paul Durrant <paul@xen.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Alexander Graf <agraf@csgraf.de>, Hailiang Zhang <zhanghailiang@xfusion.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Hyman Huang <yong.huang@smartx.com>, Fam Zheng <fam@euphon.net>,
+ Song Gao <gaosong@loongson.cn>, Alistair Francis <alistair.francis@wdc.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Leonardo Bras <leobras@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Cameron Esfahani <dirty@apple.com>,
+ qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Weiwei Li <liwei1518@gmail.com>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-block@nongnu.org,
+ =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Reinoud Zandijk <reinoud@netbsd.org>, Kevin Wolf <kwolf@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Stafford Horne <shorne@gmail.com>,
+ Fabiano Rosas <farosas@suse.de>, Juan Quintela <quintela@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Eric Blake <eblake@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Halil Pasic <pasic@linux.ibm.com>,
+ xen-devel@lists.xenproject.org,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ David Woodhouse <dwmw@amazon.co.uk>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_1/5=5D_system/cpus=3A_rename_?= =?US-ASCII?Q?qemu=5Fmutex=5Flock=5Fiothread=28=29_to_bql=5Flock=28=29?=
+In-Reply-To: <20231212153905.631119-2-stefanha@redhat.com>
+References: <20231212153905.631119-1-stefanha@redhat.com> <20231212153905.631119-2-stefanha@redhat.com>
+Message-ID: <CFD7EE4A-D216-4CE8-B963-0CCEEA623E53@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for 8.2.1] hw/net: cadence_gem: Fix MDIO_OP_xxx values
-To: Bin Meng <bmeng@tinylab.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
- qemu-devel@nongnu.org, Luc Michel <luc.michel@amd.com>,
- qemu-trivial@nongnu.org
-References: <20240102141803.117631-1-bmeng@tinylab.org>
- <985e87d6-0f8c-4127-b425-f1efc6034879@linaro.org>
-Content-Language: en-US, de-DE
-From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-In-Reply-To: <985e87d6-0f8c-4127-b425-f1efc6034879@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:MkXgy5p95PN2giSDoOHisy5UNN9m+eM6ka72kbx7mp2ZDNicWgk
- PDczV5DsE0bvgriqmewg7SknrnrgK6p6XljHqABa28dRSURKa+nAZVaFqyBgJKcdN8Q8dM8
- 0DuCLvayaMiialqIkdZQ5KCbSOTwGbEbT1Ue2e6XupESrV6PpGY46tdTTp0B8/WDMbHxF34
- sk5HJ8d1k4K3SlwoNeeOg==
-UI-OutboundReport: notjunk:1;M01:P0:NsFWFYQ5lrs=;GEh9sdZDFasqhDd+B/2TVhcz+3P
- aGkkDP6cTnegGGme8Op+dSzeACNo6oj5/YAIxtuxExuC9ajGJJKi4Gqyk9fKcRZQ48HPm4ExX
- hsEAUxp2KUAehBNklnleNdGwNxhnKNDTy17cIcQ/t+R70RZ4g1eWl6KRLA0V63QwypwXFqGMg
- sqJgvwJXkejYYqjiNyCT5PX2yw13j6UtHKG4EVCRQNRwzaPIHXxjxg6nBq2S50R6qp+oTljwG
- vy9HNWti5AoySVcVPrkZWqMVrc5+x1Gq+GOyJvHdGdsoBaFrUkRTtxPTUr0v3OY2zpCp5xa6o
- 4BHPUYIJS1npkDwFZhEEXMMyAvdI0/y58cZaVVonrdlg2nn9Bnqh3zSWDWcjTDu3YLTiwEeWS
- 7KTjtSvEu2E7VlOiIe7GSuo7wrK2ZlY0XmE7Dq/hhjk/aACQtlcf+o52vtSfMOQsP4I9OVnpT
- vbaC+w7fSYLLc7kdmQ4Qne/bbtT8fp+EXkFgIqJu4+3eRse4w2V4y9XiQvTQgBSBL3fedY5cM
- 3WAjiKE/G6B5psJSEEjm23/BF21V/Xz/035TnH9Pg8MndTGwBwyWlh8+uNIHE+8cjrkoGyMsp
- FO63mxc5MIdA96vxtb4hUVMYzKlN6IQIFDoRUY2xbC+HxBRMGKjoXLiPwYkQMFNSYakfZaKYA
- Jf9S++1FhYZNiyBkJq79XhiDMhlyLRirT9n929POgfePRNQf8s/Dz1uF1XgzWGdM1ULj0f1Uz
- Nztd2rZFoxQxyX4fIs+4KNmasNnQIWxJD0TYMGPJFc8/G0anrbDyrNZ3gySwZ8JFAUFG7jq/q
- W+soH/fuYiMzw+bwIxJtY2O68BNf7fy4kuOXZmHyM9X+aAd60wuSBE1bJiAk/88PKpIOxRar1
- Oexv7CEplDVskK6AI/yDh3ZbTc0OPvJHLFJwMjNdDe2RPWiBfE7QFs1OEKM0u67oUomaHsvg1
- um9iGQlxz6i9X+/KE6sjSz8G7eo=
-Received-SPF: pass client-ip=212.227.15.19; envelope-from=xypron.glpk@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z3V3iu/9b8P/
+X-TUID: yq/7LQ4FYZ0A
 
-On 1/2/24 16:08, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 2/1/24 15:18, Bin Meng wrote:
->> Testing upstream U-Boot with 'sifive_u' machine we see:
->>
->> =C2=A0=C2=A0 =3D> dhcp
->> =C2=A0=C2=A0 ethernet@10090000: PHY present at 0
->> =C2=A0=C2=A0 Could not get PHY for ethernet@10090000: addr 0
->> =C2=A0=C2=A0 phy_connect failed
->>
->> This has been working till QEMU 8.1 but broken since QEMU 8.2.
+
+
+Am 12=2E Dezember 2023 15:39:00 UTC schrieb Stefan Hajnoczi <stefanha@redh=
+at=2Ecom>:
+>The Big QEMU Lock (BQL) has many names and they are confusing=2E The
+>actual QemuMutex variable is called qemu_global_mutex but it's commonly
+>referred to as the BQL in discussions and some code comments=2E The
+>locking APIs, however, are called qemu_mutex_lock_iothread() and
+>qemu_mutex_unlock_iothread()=2E
 >
-> s/till/until/?
+>The "iothread" name is historic and comes from when the main thread was
+>split into into KVM vcpu threads and the "iothread" (now called the main
 
-These are synonyms. Till is more informal. No need to change.
+Duplicate "into" here=2E
 
+>loop thread)=2E I have contributed to the confusion myself by introducing
+>a separate --object iothread, a separate concept unrelated to the BQL=2E
 >
->> Fixes: 1b09eeb122aa ("hw/net/cadence_gem: use FIELD to describe
->> PHYMNTNC register fields")
->> Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
->> Signed-off-by: Bin Meng <bmeng@tinylab.org>
->>
->> ---
->>
->> =C2=A0 hw/net/cadence_gem.c | 4 ++--
->> =C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
->> index 296bba238e..472ce9c8cf 100644
->> --- a/hw/net/cadence_gem.c
->> +++ b/hw/net/cadence_gem.c
->> @@ -199,8 +199,8 @@ REG32(PHYMNTNC, 0x34) /* Phy Maintenance reg */
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FIELD(PHYMNTNC, PHY_ADDR, 23, 5)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FIELD(PHYMNTNC, OP, 28, 2)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FIELD(PHYMNTNC, ST, 30, 2)
->> -#define MDIO_OP_READ=C2=A0=C2=A0=C2=A0 0x3
->> -#define MDIO_OP_WRITE=C2=A0=C2=A0 0x2
->> +#define MDIO_OP_READ=C2=A0=C2=A0=C2=A0 0x2
->> +#define MDIO_OP_WRITE=C2=A0=C2=A0 0x1
->> =C2=A0 REG32(RXPAUSE, 0x38) /* RX Pause Time reg */
->> =C2=A0 REG32(TXPAUSE, 0x3c) /* TX Pause Time reg */
+>The "iothread" name is no longer appropriate for the BQL=2E Rename the
+>locking APIs to:
+>- void bql_lock(void)
+>- void bql_unlock(void)
+>- bool bql_locked(void)
 >
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>There are more APIs with "iothread" in their names=2E Subsequent patches
+>will rename them=2E There are also comments and documentation that will b=
+e
+>updated in later patches=2E
 >
-
-Thank you Bin for the fix.
-
-With the fix I was able to download a file via TFTP to U-Boot
-sifive_unleashed_defconfig on the emulated board. Cf.
-docs/system/riscv/sifive_u.rst.
-
-Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+>Signed-off-by: Stefan Hajnoczi <stefanha@redhat=2Ecom>
+>Reviewed-by: Paul Durrant <paul@xen=2Eorg>
+>Acked-by: Fabiano Rosas <farosas@suse=2Ede>
+>Acked-by: David Woodhouse <dwmw@amazon=2Eco=2Euk>
+>Reviewed-by: C=C3=A9dric Le Goater <clg@kaod=2Eorg>
+>Acked-by: Peter Xu <peterx@redhat=2Ecom>
+>Acked-by: Eric Farman <farman@linux=2Eibm=2Ecom>
+>Reviewed-by: Harsh Prateek Bora <harshpb@linux=2Eibm=2Ecom>

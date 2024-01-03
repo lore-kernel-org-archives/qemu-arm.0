@@ -1,249 +1,144 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id k39-20020a05600c1ca700b0040d8af75e19sm2948860wms.24.2024.01.03.09.33.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jan 2024 09:34:03 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 06C1B5F9D2;
-	Wed,  3 Jan 2024 17:33:53 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org,
-	qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Song Gao <gaosong@loongson.cn>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Paul Durrant <paul@xen.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	kvm@vger.kernel.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	Weiwei Li <liwei1518@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	qemu-riscv@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 36/43] plugins: Use different helpers when reading registers
-Date: Wed,  3 Jan 2024 17:33:42 +0000
-Message-Id: <20240103173349.398526-37-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp627593ejh;
+        Wed, 3 Jan 2024 09:37:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFu5n3X7KsbZAWBN3hJrGxHWgroEFM8jw61RN++JZvEKj1KCcTtLu/hMZQZhF5XxOJsc7LD
+X-Received: by 2002:a05:6808:9a3:b0:3bb:ce1b:8769 with SMTP id e3-20020a05680809a300b003bbce1b8769mr5629889oig.12.1704303426179;
+        Wed, 03 Jan 2024 09:37:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704303426; cv=none;
+        d=google.com; s=arc-20160816;
+        b=E500Waryf4pTfdZn/xmpdwYObLXHk+USg1iEzb9mKksgGWl4AA7pVzM9fHXIIFBxlm
+         Gk6n0hZnN9tNLArSqeQsTumbLEFd/jSJIQAWBUe12to8dNqeJgvSPj7T0O17+/WC5+yI
+         wwriHN5XLvgqhey3gw9wBw3BeuACB78FGHGRbJhzFhwNewG7lAkhVsTCbANMFxGAMwBA
+         WGEhhJxboFjrSPrWfyhGCFHeCZ+7nMZAGwHGocsl73eHQIf6KSjkvbQ9J9kml94PWoEU
+         MyQZNcXesQSV5BuRR+MaG/sPGs1wgsRfSQihj0fcgRDDwPkBTx6H7Vv0Hqz7Ms8/SKGU
+         qwuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=KD8fHoYY9U39+j5t+ooqKoaHFyC3927TgphRWKKkdTI=;
+        fh=Sys7Xfxqrjgv7iuWL2112nMl9E9T6iv9btgIPGyKZyk=;
+        b=Ec2sxjq9iEh+FDVon/jIx/GMLq193sw19VivMXCgTZoOXz+vvezDpRnaJodgCu6mLy
+         MCAo1YchoMW9C0qMPEwHLlxrLZ0dnafKmgTPBYKwkFHizf7toeMHew6oRMYMDfUdQS1I
+         xfAgYfhujGNeSUxbWBIj53r2ts2f4yiVZ7ksjCug9Y2M3Ik4sCi1M4v47rnZ3jeXB5d2
+         TJw+qfb0tZLlatFMO7xuX7+vL83EoETzBMaLF9ut0xzmNmN6pxkwkUfG3Wh3F6vVXbEB
+         U4D/epUJkjBtRcSPx1RRKOLHSaCIRR020jHulHV8rQD3oyO+HxLKb4pqR66kEgt9Ttcp
+         aQnw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=inFojhz3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a1-20020a0cca81000000b0067f28a95983si30206214qvk.124.2024.01.03.09.37.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 03 Jan 2024 09:37:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=inFojhz3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rL59N-0005df-O3; Wed, 03 Jan 2024 12:35:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rL59K-0005Uf-NY
+ for qemu-arm@nongnu.org; Wed, 03 Jan 2024 12:35:26 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rL59E-0003DF-B4
+ for qemu-arm@nongnu.org; Wed, 03 Jan 2024 12:35:26 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-336c5b5c163so441200f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 03 Jan 2024 09:35:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704303319; x=1704908119; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=KD8fHoYY9U39+j5t+ooqKoaHFyC3927TgphRWKKkdTI=;
+ b=inFojhz3ZNH41mWAHV4CbUO3LZ9c5Z+UjWLfdi/39ty0uXFTk1A/t70oYYrXq35C3j
+ 0QlhME7KVvvXwefjo4OFZue6Sgjom4dSevoY5C19ijXDfbgXH1UXp79Quf8GhpUpxIpZ
+ NRDu5cqIKHCc9PSXUU6WuT6O1vGt/H1xBX8nlPNlZHK7fNW7TOv+uL2oPJ8U3nIayZKA
+ pB1TzD0rIofXpbK+pN2oh6OPG+U1jj/OBxsaPWd9xHbH7OXhNVxoBKJah8DST7G5mNui
+ jKrQZZOUymYZyaVvoNkXTI5vxi2bmtV3HU1xO1SHirc7jGTQmJFp0zKz8Vtg465nMoQv
+ +inA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704303319; x=1704908119;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=KD8fHoYY9U39+j5t+ooqKoaHFyC3927TgphRWKKkdTI=;
+ b=i3Lc79WK1hRWiRulK+OPi4L0rnh3cEHr0lMWb0Fe8/HD4I12yUYcoBhOYhD93L/5l7
+ 9mqfLgL/FJvXtUSILpILy048vo61bRPgkDKTYjCv+MWwYEKZHkVhvYzFYOn7YQLNLGn/
+ l4pA/DX4LabC+0vp6jjrU71+zJfLeRFRpHrxxQvd0dd4NADDu0c9RoQDXnJNDVua4vcF
+ ZoPURwnnlk6DHADiFYwEsSmXoBITrsoxHa9XQU0GOsJ2XvQjyyBt/ms0TejL5hzMybfw
+ VvplOBZPvmIOj2Rf2P8TnI/oqoSVU90XbyhNB4Jo7T2t32F4BXY4JOWJiuWWsOwn0FIZ
+ VttQ==
+X-Gm-Message-State: AOJu0YwvH8esfQf9Rg7JMKcIEJ7hHU3n8aHfO0KIJ8EsFP8nk4uBLJXz
+ +HuIDvJNNnXGZ5SUXaI2SlKoePjjsj4Azw==
+X-Received: by 2002:adf:ffc3:0:b0:336:8af0:1fd1 with SMTP id
+ x3-20020adfffc3000000b003368af01fd1mr660063wrs.11.1704303318825; 
+ Wed, 03 Jan 2024 09:35:18 -0800 (PST)
+Received: from [192.168.69.100] (tre93-h02-176-184-7-144.dsl.sta.abo.bbox.fr.
+ [176.184.7.144]) by smtp.gmail.com with ESMTPSA id
+ e14-20020a5d6d0e000000b00336cbbf2e0fsm21642247wrq.27.2024.01.03.09.35.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Jan 2024 09:35:18 -0800 (PST)
+Message-ID: <b6d96fea-ab43-43cd-bd7c-1da59ab7f2d1@linaro.org>
+Date: Wed, 3 Jan 2024 18:35:17 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] docs: use "buses" rather than "busses"
+Content-Language: en-US
+To: Samuel Tardieu <sam@rfc1149.net>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20240103172817.2197737-1-sam@rfc1149.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240103172817.2197737-1-sam@rfc1149.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: ptJG5gx3EeGN
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FN6beAzc/eQt
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+On 3/1/24 18:28, Samuel Tardieu wrote:
+> If "busses" might be encountered as a plural of "bus" (5 instances),
+> the correct spelling is "buses" (26 instances). Fixing those 5
+> instances makes the doc more consistent.
+> 
+> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+> ---
+>   docs/system/arm/palm.rst    | 2 +-
+>   docs/system/arm/xscale.rst  | 2 +-
+>   docs/system/devices/can.rst | 6 +++---
+>   3 files changed, 5 insertions(+), 5 deletions(-)
 
-This avoids optimizations incompatible when reading registers.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20231213-gdb-v17-12-777047380591@daynix.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- accel/tcg/plugin-helpers.h |  3 ++-
- include/qemu/plugin.h      |  1 +
- accel/tcg/plugin-gen.c     | 43 ++++++++++++++++++++++++++++++++++----
- plugins/api.c              | 12 +++++++++--
- 4 files changed, 52 insertions(+), 7 deletions(-)
-
-diff --git a/accel/tcg/plugin-helpers.h b/accel/tcg/plugin-helpers.h
-index 8e685e06545..11796436f35 100644
---- a/accel/tcg/plugin-helpers.h
-+++ b/accel/tcg/plugin-helpers.h
-@@ -1,4 +1,5 @@
- #ifdef CONFIG_PLUGIN
--DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
-+DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb_no_wg, TCG_CALL_NO_WG | TCG_CALL_PLUGIN, void, i32, ptr)
-+DEF_HELPER_FLAGS_2(plugin_vcpu_udata_cb_no_rwg, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, ptr)
- DEF_HELPER_FLAGS_4(plugin_vcpu_mem_cb, TCG_CALL_NO_RWG | TCG_CALL_PLUGIN, void, i32, i32, i64, ptr)
- #endif
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index 7fdc3a4849f..b0c5ac68293 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -73,6 +73,7 @@ enum plugin_dyn_cb_type {
- 
- enum plugin_dyn_cb_subtype {
-     PLUGIN_CB_REGULAR,
-+    PLUGIN_CB_REGULAR_R,
-     PLUGIN_CB_INLINE,
-     PLUGIN_N_CB_SUBTYPES,
- };
-diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
-index 78b331b2510..b37ce7683e6 100644
---- a/accel/tcg/plugin-gen.c
-+++ b/accel/tcg/plugin-gen.c
-@@ -79,6 +79,7 @@ enum plugin_gen_from {
- 
- enum plugin_gen_cb {
-     PLUGIN_GEN_CB_UDATA,
-+    PLUGIN_GEN_CB_UDATA_R,
-     PLUGIN_GEN_CB_INLINE,
-     PLUGIN_GEN_CB_MEM,
-     PLUGIN_GEN_ENABLE_MEM_HELPER,
-@@ -90,7 +91,10 @@ enum plugin_gen_cb {
-  * These helpers are stubs that get dynamically switched out for calls
-  * direct to the plugin if they are subscribed to.
-  */
--void HELPER(plugin_vcpu_udata_cb)(uint32_t cpu_index, void *udata)
-+void HELPER(plugin_vcpu_udata_cb_no_wg)(uint32_t cpu_index, void *udata)
-+{ }
-+
-+void HELPER(plugin_vcpu_udata_cb_no_rwg)(uint32_t cpu_index, void *udata)
- { }
- 
- void HELPER(plugin_vcpu_mem_cb)(unsigned int vcpu_index,
-@@ -98,7 +102,7 @@ void HELPER(plugin_vcpu_mem_cb)(unsigned int vcpu_index,
-                                 void *userdata)
- { }
- 
--static void gen_empty_udata_cb(void)
-+static void gen_empty_udata_cb(void (*gen_helper)(TCGv_i32, TCGv_ptr))
- {
-     TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
-     TCGv_ptr udata = tcg_temp_ebb_new_ptr();
-@@ -106,12 +110,22 @@ static void gen_empty_udata_cb(void)
-     tcg_gen_movi_ptr(udata, 0);
-     tcg_gen_ld_i32(cpu_index, tcg_env,
-                    -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
--    gen_helper_plugin_vcpu_udata_cb(cpu_index, udata);
-+    gen_helper(cpu_index, udata);
- 
-     tcg_temp_free_ptr(udata);
-     tcg_temp_free_i32(cpu_index);
- }
- 
-+static void gen_empty_udata_cb_no_wg(void)
-+{
-+    gen_empty_udata_cb(gen_helper_plugin_vcpu_udata_cb_no_wg);
-+}
-+
-+static void gen_empty_udata_cb_no_rwg(void)
-+{
-+    gen_empty_udata_cb(gen_helper_plugin_vcpu_udata_cb_no_rwg);
-+}
-+
- /*
-  * For now we only support addi_i64.
-  * When we support more ops, we can generate one empty inline cb for each.
-@@ -192,7 +206,8 @@ static void plugin_gen_empty_callback(enum plugin_gen_from from)
-                     gen_empty_mem_helper);
-         /* fall through */
-     case PLUGIN_GEN_FROM_TB:
--        gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb);
-+        gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb_no_rwg);
-+        gen_wrapped(from, PLUGIN_GEN_CB_UDATA_R, gen_empty_udata_cb_no_wg);
-         gen_wrapped(from, PLUGIN_GEN_CB_INLINE, gen_empty_inline_cb);
-         break;
-     default:
-@@ -588,6 +603,12 @@ static void plugin_gen_tb_udata(const struct qemu_plugin_tb *ptb,
-     inject_udata_cb(ptb->cbs[PLUGIN_CB_REGULAR], begin_op);
- }
- 
-+static void plugin_gen_tb_udata_r(const struct qemu_plugin_tb *ptb,
-+                                  TCGOp *begin_op)
-+{
-+    inject_udata_cb(ptb->cbs[PLUGIN_CB_REGULAR_R], begin_op);
-+}
-+
- static void plugin_gen_tb_inline(const struct qemu_plugin_tb *ptb,
-                                  TCGOp *begin_op)
- {
-@@ -602,6 +623,14 @@ static void plugin_gen_insn_udata(const struct qemu_plugin_tb *ptb,
-     inject_udata_cb(insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR], begin_op);
- }
- 
-+static void plugin_gen_insn_udata_r(const struct qemu_plugin_tb *ptb,
-+                                    TCGOp *begin_op, int insn_idx)
-+{
-+    struct qemu_plugin_insn *insn = g_ptr_array_index(ptb->insns, insn_idx);
-+
-+    inject_udata_cb(insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR_R], begin_op);
-+}
-+
- static void plugin_gen_insn_inline(const struct qemu_plugin_tb *ptb,
-                                    TCGOp *begin_op, int insn_idx)
- {
-@@ -721,6 +750,9 @@ static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
-                 case PLUGIN_GEN_CB_UDATA:
-                     plugin_gen_tb_udata(plugin_tb, op);
-                     break;
-+                case PLUGIN_GEN_CB_UDATA_R:
-+                    plugin_gen_tb_udata_r(plugin_tb, op);
-+                    break;
-                 case PLUGIN_GEN_CB_INLINE:
-                     plugin_gen_tb_inline(plugin_tb, op);
-                     break;
-@@ -737,6 +769,9 @@ static void plugin_gen_inject(struct qemu_plugin_tb *plugin_tb)
-                 case PLUGIN_GEN_CB_UDATA:
-                     plugin_gen_insn_udata(plugin_tb, op, insn_idx);
-                     break;
-+                case PLUGIN_GEN_CB_UDATA_R:
-+                    plugin_gen_insn_udata_r(plugin_tb, op, insn_idx);
-+                    break;
-                 case PLUGIN_GEN_CB_INLINE:
-                     plugin_gen_insn_inline(plugin_tb, op, insn_idx);
-                     break;
-diff --git a/plugins/api.c b/plugins/api.c
-index 5521b0ad36c..ac39cdea0b3 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -89,7 +89,11 @@ void qemu_plugin_register_vcpu_tb_exec_cb(struct qemu_plugin_tb *tb,
-                                           void *udata)
- {
-     if (!tb->mem_only) {
--        plugin_register_dyn_cb__udata(&tb->cbs[PLUGIN_CB_REGULAR],
-+        int index = flags == QEMU_PLUGIN_CB_R_REGS ||
-+                    flags == QEMU_PLUGIN_CB_RW_REGS ?
-+                    PLUGIN_CB_REGULAR_R : PLUGIN_CB_REGULAR;
-+
-+        plugin_register_dyn_cb__udata(&tb->cbs[index],
-                                       cb, flags, udata);
-     }
- }
-@@ -109,7 +113,11 @@ void qemu_plugin_register_vcpu_insn_exec_cb(struct qemu_plugin_insn *insn,
-                                             void *udata)
- {
-     if (!insn->mem_only) {
--        plugin_register_dyn_cb__udata(&insn->cbs[PLUGIN_CB_INSN][PLUGIN_CB_REGULAR],
-+        int index = flags == QEMU_PLUGIN_CB_R_REGS ||
-+                    flags == QEMU_PLUGIN_CB_RW_REGS ?
-+                    PLUGIN_CB_REGULAR_R : PLUGIN_CB_REGULAR;
-+
-+        plugin_register_dyn_cb__udata(&insn->cbs[PLUGIN_CB_INSN][index],
-                                       cb, flags, udata);
-     }
- }
--- 
-2.39.2

@@ -1,108 +1,82 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp429547ejh;
-        Wed, 3 Jan 2024 03:48:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHCjT+vOMESGATD/ud5GOsmmL5xI2tWcR+MT0f8wFkHJosLtIcgba0D0q5VeQXWWG3rOkEC
-X-Received: by 2002:a05:6214:23cc:b0:680:b72b:7d7f with SMTP id hr12-20020a05621423cc00b00680b72b7d7fmr5104676qvb.127.1704282523403;
-        Wed, 03 Jan 2024 03:48:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704282523; cv=none;
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp561210ejh;
+        Wed, 3 Jan 2024 07:54:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG39AmYb7NavimKSEDQtnSkjyUPnGvldRv9adVePQBaQNmRELfvBd7NX3QOT3oakx3IozKJ
+X-Received: by 2002:a05:620a:198a:b0:781:5e28:3edf with SMTP id bm10-20020a05620a198a00b007815e283edfmr15239542qkb.123.1704297244665;
+        Wed, 03 Jan 2024 07:54:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704297244; cv=none;
         d=google.com; s=arc-20160816;
-        b=XshsRJ9GdvNg4FWxxNhw/DJ3C2F+tFSU9GSUyAXPnE4o/lgzw295mvPTzhDNk46yUi
-         PE423KpwWNj9P8IaRznRqO2tXUNoipl34MlxCCyFsrlTTJ0E2+RmEbWYkIEX5hjTqJmA
-         mDcRDMgCfMS4YJiJsryS4cjHiyuXWN8YPjEf+L9xHT4lv62rWi2283haP4zTGsmn2bEx
-         2mU9WDwqimYsz+gRUGVyBPKNSoxuokci1Ls/9IggdZIX1CHPIB1L7wAp5jUesitMcyOn
-         3j+8dAlfCBl4aRMJNA45W9Y7XFlhrUcMiBXEBpIIDzfMDJ4IAW61Zp/4GZOGCsmkTZUF
-         S11Q==
+        b=XIS4K7oBxjHJi5WXrfNFz+TJyT4q8+iYzuOCkQn6xHouLKG270mvsfoMKbj47K1r6m
+         RJU/RyN5a5yavyIXdygZzPt1Bsj4Pg3AQoz695zYeXaiOkORR2f+3tvQDN7p0R/NiSM9
+         c/SELzR+FdmuIWzT7Alp8W2sTp2xNc+Axtxf4F2cvxc+6CB4HS7DRTNDRgOTY9d8f2xs
+         YjUtMoc8iAsbyxqm+39ppr2uYUKrFV8F05f9yraAaBNk/zHzv629TMm2E2NFrdj9gXcb
+         FyV9ojVPMQvjOOOCh43H6Gm4Yo0eV194UtzS4gPX03xBNVHL664vCgDgckJEM3JPEKbP
+         IOvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:references:cc:to:content-language
-         :subject:user-agent:mime-version:date:message-id;
-        bh=hib7labyihQ6mpbV/oAcPcy+W6WMcnmHUf6Hf6aGV9w=;
-        fh=agc1xzdUxi9z+vg4EBx2X676vi5JwdwNtVIR+uY5XYs=;
-        b=EdbwEDyN1heosAOuktIGYsk/QBJaPAE9dNFI30H+0ma6Li6lLhoMTzsaClV+zV+i7R
-         4acMYKP2yxXOqy+32CUG3ZDoEFvxlH7XGm07+5OcZjRDa2QgQqgVJeWH4JsLb7ywanVP
-         c1pvduJNt/6UAdyieqcKC1+Kss0sd4quTynlXQh5H1bfz+VWs0JKGlNr7LybCDzNeNT/
-         KlBlXv1hyb12FJqzarISdhd6yhvYnYQ8di/w6KuI6MDJEGzI32AGcW++56f86sETJXRy
-         p46kT/+ZcJUmqpam8emaRUQBlSTtPMXhVljzXK3JBuF9DEztq/AALBTWE2cp8tVytuVp
-         P9Ug==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=dyx+QZUu1cZi/JAuGNQGkddtlOwEGHnHjn7roZahdLU=;
+        fh=HXATX5/62pMJVs80a2Hs0Qv0Y5F0Xlxx6Qu533NYerI=;
+        b=zlOZq0fbmN6pN3aTKyqQ+I3EIPPuB+RcbPiJXF200HEPdjFi7C06QQ+coTxdF0eBBk
+         tJZTg6sPcQ+JmV2ASE5svHSC6SFRFQ8D9endrHtxmnvzdm8lqUo8iTFBMNiWRRdOwLEW
+         hvrIqAh5VdDDf4oQjYSemCTrLBckfcwmbywifEtDMwQsZZT5Nc7PI7t7cl2cRbPXrp+f
+         I7ThEFX0KpzgNT/v9Z0BCV9t0l1iaN+G+jGbQN4v6Y1xbFd9Hz54Wt7vzPNnBdPg34SU
+         P+8KUGX+MVfBsynSF4juig5tRtWJcwbeCtE3KVgrpXFsV1YfseDTXpARf3sghSadKGC7
+         +sig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8-20020a0c9c88000000b0067a8f8474eesi25322002qvf.528.2024.01.03.03.48.43
+        by mx.google.com with ESMTPS id s18-20020a05620a255200b007817232fbf1si14117322qko.161.2024.01.03.07.54.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jan 2024 03:48:43 -0800 (PST)
+        Wed, 03 Jan 2024 07:54:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rKzjU-00007u-3E; Wed, 03 Jan 2024 06:48:24 -0500
+	id 1rL3Z6-0004LX-Oi; Wed, 03 Jan 2024 10:53:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rKzjT-00007Q-1Q; Wed, 03 Jan 2024 06:48:23 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rL3Z5-0004Ke-Pp; Wed, 03 Jan 2024 10:53:55 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rKzjR-0000ku-4f; Wed, 03 Jan 2024 06:48:22 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 8E08040660;
- Wed,  3 Jan 2024 14:48:58 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id E5095593C4;
- Wed,  3 Jan 2024 14:48:14 +0300 (MSK)
-Message-ID: <a5a9d1e2-5bdf-4dc8-9a52-aae401077494@tls.msk.ru>
-Date: Wed, 3 Jan 2024 14:48:14 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for 8.2.1] hw/net: cadence_gem: Fix MDIO_OP_xxx values
-Content-Language: en-US
-To: Bin Meng <bmeng@tinylab.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Heinrich Schuchardt <xypron.glpk@gmx.de>,
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rL3Z2-00052C-Ko; Wed, 03 Jan 2024 10:53:55 -0500
+Received: from buffy.. (buffy [192.168.147.6])
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id 333A280024;
+ Wed,  3 Jan 2024 16:53:43 +0100 (CET)
+Authentication-Results: zoidberg.rfc1149.net;
+ dmarc=fail (p=none dis=none) header.from=rfc1149.net
+Authentication-Results: zoidberg.rfc1149.net;
+ spf=fail smtp.mailfrom=rfc1149.net
+From: Samuel Tardieu <sam@rfc1149.net>
+To: qemu-devel@nongnu.org
+Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
+ Anton Kochkov <anton.kochkov@proton.me>,
  Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-References: <20240102141803.117631-1-bmeng@tinylab.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240102141803.117631-1-bmeng@tinylab.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Alexandre Iooss <erdnaxe@crans.org>, Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH v2 0/3] Add "num-prio-bits" property for Cortex-M devices
+Date: Wed,  3 Jan 2024 16:53:34 +0100
+Message-ID: <20240103155337.2026946-1-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,24 +91,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: giXAhlbZBYdj
+X-TUID: NdDwk4/STtQu
 
-02.01.2024 17:18, Bin Meng:
-> Testing upstream U-Boot with 'sifive_u' machine we see:
-> 
->    => dhcp
->    ethernet@10090000: PHY present at 0
->    Could not get PHY for ethernet@10090000: addr 0
->    phy_connect failed
-> 
-> This has been working till QEMU 8.1 but broken since QEMU 8.2.
-> 
-> Fixes: 1b09eeb122aa ("hw/net/cadence_gem: use FIELD to describe PHYMNTNC register fields")
-> Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
-> Signed-off-by: Bin Meng <bmeng@tinylab.org>
+This patch series builds on a discussion initiated by Anton Kochkov on
+this list in 2022. It allows setting the appropriate number of priority
+bits for Cortex-M devices. For example, FreeRTOS checks at startup that
+the right number of priority bits is available in order to guarantee
+its runtime structures safety. They have added a configuration option
+to disable this check when running on QEMU because QEMU always use 2
+bits for Cortex-M0/M0+/M1 and 8 bits for other devices.
 
-Applied to trivial-patches tree, and marked to be picked up for stable.
+While this change allows the number of priority bits to be properly
+configured, it keeps the same default as before in order to preserve
+backward compatibility unless the SoC configures the exact value.
 
-Thanks,
+Changes from v1:
+- Add support for the STM32L4x5 SOC family (which is currently
+  under review for integration) and fix the Based-on: trailer
+  in the cover letter.
+- Fix a typo in one of the commit messages ("compatibility")
 
-/mjt
+Based-on: <20231221213838.54944-1-ines.varhol@telecom-paris.fr>
+([PATCH v4 0/2] Add minimal support for the B-L475E-IOT01A board)
+
+Samuel Tardieu (3):
+  hw/intc/armv7m_nvic: add "num-prio-bits" property
+  hw/arm/armv7m: alias the NVIC "num-prio-bits" property
+  hw/arm/socs: configure priority bits for existing SOCs
+
+ hw/arm/armv7m.c        |  2 ++
+ hw/arm/stellaris.c     |  2 ++
+ hw/arm/stm32f100_soc.c |  1 +
+ hw/arm/stm32f205_soc.c |  1 +
+ hw/arm/stm32f405_soc.c |  1 +
+ hw/arm/stm32l4x5_soc.c |  1 +
+ hw/intc/armv7m_nvic.c  | 23 ++++++++++++++++++++++-
+ 7 files changed, 30 insertions(+), 1 deletion(-)
+
+-- 
+2.42.0
+

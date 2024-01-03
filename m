@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id je2-20020a05600c1f8200b0040d934f48d3sm750166wmb.32.2024.01.03.09.33.49
+        by smtp.gmail.com with ESMTPSA id t12-20020adfe10c000000b00336f43fa654sm18186652wrz.22.2024.01.03.09.33.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 Jan 2024 09:33:50 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 93F3B5F932;
+	by draig.lan (Postfix) with ESMTP id 7EB765F92F;
 	Wed,  3 Jan 2024 17:33:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,47 +51,37 @@ Cc: qemu-s390x@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 03/43] gitlab: include microblazeel in testing
-Date: Wed,  3 Jan 2024 17:33:09 +0000
-Message-Id: <20240103173349.398526-4-alex.bennee@linaro.org>
+Subject: [PATCH v2 02/43] tests/avocado: use snapshot=on in kvm_xen_guest
+Date: Wed,  3 Jan 2024 17:33:08 +0000
+Message-Id: <20240103173349.398526-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DiWdNMj5R3sa
+X-TUID: AfcgFytge5rY
 
-This reverts aeb5f8f248e (gitlab: build the correct microblaze target)
-now we actually have a little-endian test in avocado thanks to this
-years advent calendar.
+This ensures the rootfs is never permanently changed as we don't need
+persistence between tests anyway.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/avocado/kvm_xen_guest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 91663946de4..ef71dfe8665 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -41,7 +41,7 @@ build-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     CONFIGURE_ARGS: --enable-docs
--    TARGETS: alpha-softmmu microblaze-softmmu mips64el-softmmu
-+    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
-     MAKE_CHECK_ARGS: check-build
- 
- check-system-ubuntu:
-@@ -61,7 +61,7 @@ avocado-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     MAKE_CHECK_ARGS: check-avocado
--    AVOCADO_TAGS: arch:alpha arch:microblaze arch:mips64el
-+    AVOCADO_TAGS: arch:alpha arch:microblazeel arch:mips64el
- 
- build-system-debian:
-   extends:
+diff --git a/tests/avocado/kvm_xen_guest.py b/tests/avocado/kvm_xen_guest.py
+index 5391283113e..f8cb458d5db 100644
+--- a/tests/avocado/kvm_xen_guest.py
++++ b/tests/avocado/kvm_xen_guest.py
+@@ -59,7 +59,7 @@ def common_vm_setup(self):
+     def run_and_check(self):
+         self.vm.add_args('-kernel', self.kernel_path,
+                          '-append', self.kernel_params,
+-                         '-drive',  f"file={self.rootfs},if=none,format=raw,id=drv0",
++                         '-drive',  f"file={self.rootfs},if=none,snapshot=on,format=raw,id=drv0",
+                          '-device', 'xen-disk,drive=drv0,vdev=xvda',
+                          '-device', 'virtio-net-pci,netdev=unet',
+                          '-netdev', 'user,id=unet,hostfwd=:127.0.0.1:0-:22')
 -- 
 2.39.2

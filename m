@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u12-20020a5d434c000000b00336ee9edbb3sm18617127wrr.94.2024.01.03.09.39.06
+        by smtp.gmail.com with ESMTPSA id z1-20020a05600c0a0100b0040c3953cda5sm2984624wmp.45.2024.01.03.09.39.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 Jan 2024 09:39:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8A9695F933;
-	Wed,  3 Jan 2024 17:33:51 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 83FBF5F9D6;
+	Wed,  3 Jan 2024 17:33:53 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org,
@@ -50,547 +50,363 @@ Cc: qemu-s390x@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 24/43] target/riscv: Move misa_mxl_max to class
-Date: Wed,  3 Jan 2024 17:33:30 +0000
-Message-Id: <20240103173349.398526-25-alex.bennee@linaro.org>
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH v2 41/43] contrib/plugins: optimise the register value tracking
+Date: Wed,  3 Jan 2024 17:33:47 +0000
+Message-Id: <20240103173349.398526-42-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: nw2kr9cPxLEu
+X-TUID: hKD0focF9Pgi
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+This adds an additional flag which attempts to optimise the register
+tracking by only instrumenting instructions which are likely to change
+its value. This relies on the disassembler showing up the register
+names in disassembly so is only enabled when asked for.
 
-misa_mxl_max is common for all instances of a RISC-V CPU class so they
-are better put into class.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20231213-riscv-v7-3-a760156a337f@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/riscv/cpu.h         |   4 +-
- target/riscv/cpu.c         | 118 +++++++++++++++++++------------------
- target/riscv/gdbstub.c     |  12 ++--
- target/riscv/kvm/kvm-cpu.c |  10 ++--
- target/riscv/machine.c     |   7 +--
- target/riscv/tcg/tcg-cpu.c |  12 ++--
- target/riscv/translate.c   |   3 +-
- 7 files changed, 87 insertions(+), 79 deletions(-)
+ docs/devel/tcg-plugins.rst |  10 +-
+ contrib/plugins/execlog.c  | 189 ++++++++++++++++++++++++++++++-------
+ 2 files changed, 165 insertions(+), 34 deletions(-)
 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index d74b361be64..060b7f69a74 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -169,7 +169,6 @@ struct CPUArchState {
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index 3a0962723d7..fa7421279f5 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -503,7 +503,15 @@ registers with multiple ``reg`` options. You can also use glob style matching if
+   $ qemu-system-arm $(QEMU_ARGS) \
+     -plugin ./contrib/plugins/libexeclog.so,reg=\*_el2,reg=sp -d plugin
  
-     /* RISCVMXL, but uint32_t for vmstate migration */
-     uint32_t misa_mxl;      /* current mxl */
--    uint32_t misa_mxl_max;  /* max mxl for this cpu */
-     uint32_t misa_ext;      /* current extensions */
-     uint32_t misa_ext_mask; /* max ext for this cpu */
-     uint32_t xl;            /* current xlen */
-@@ -450,6 +449,7 @@ struct RISCVCPUClass {
- 
-     DeviceRealize parent_realize;
-     ResettablePhases parent_phases;
-+    uint32_t misa_mxl_max;  /* max mxl for this cpu */
- };
- 
- static inline int riscv_has_ext(CPURISCVState *env, target_ulong ext)
-@@ -756,7 +756,7 @@ enum riscv_pmu_event_idx {
- /* used by tcg/tcg-cpu.c*/
- void isa_ext_update_enabled(RISCVCPU *cpu, uint32_t ext_offset, bool en);
- bool isa_ext_is_enabled(RISCVCPU *cpu, uint32_t ext_offset);
--void riscv_cpu_set_misa(CPURISCVState *env, RISCVMXL mxl, uint32_t ext);
-+void riscv_cpu_set_misa_ext(CPURISCVState *env, uint32_t ext);
- 
- typedef struct RISCVCPUMultiExtConfig {
-     const char *name;
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 83c7c0cf07b..2ab61df2217 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -274,9 +274,8 @@ const char *riscv_cpu_get_trap_name(target_ulong cause, bool async)
-     }
- }
- 
--void riscv_cpu_set_misa(CPURISCVState *env, RISCVMXL mxl, uint32_t ext)
-+void riscv_cpu_set_misa_ext(CPURISCVState *env, uint32_t ext)
- {
--    env->misa_mxl_max = env->misa_mxl = mxl;
-     env->misa_ext_mask = env->misa_ext = ext;
- }
- 
-@@ -378,11 +377,7 @@ static void riscv_any_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--#if defined(TARGET_RISCV32)
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVA | RVF | RVD | RVC | RVU);
--#elif defined(TARGET_RISCV64)
--    riscv_cpu_set_misa(env, MXL_RV64, RVI | RVM | RVA | RVF | RVD | RVC | RVU);
--#endif
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVD | RVC | RVU);
- 
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(RISCV_CPU(obj),
-@@ -403,16 +398,14 @@ static void riscv_max_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--    RISCVMXL mlx = MXL_RV64;
- 
--#ifdef TARGET_RISCV32
--    mlx = MXL_RV32;
--#endif
--    riscv_cpu_set_misa(env, mlx, 0);
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
--    set_satp_mode_max_supported(RISCV_CPU(obj), mlx == MXL_RV32 ?
--                                VM_1_10_SV32 : VM_1_10_SV57);
-+#ifdef TARGET_RISCV32
-+    set_satp_mode_max_supported(cpu, VM_1_10_SV32);
-+#else
-+    set_satp_mode_max_supported(cpu, VM_1_10_SV57);
-+#endif
- #endif
- }
- 
-@@ -420,8 +413,6 @@ static void riscv_max_cpu_init(Object *obj)
- static void rv64_base_cpu_init(Object *obj)
- {
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
--    /* We set this in the realise function */
--    riscv_cpu_set_misa(env, MXL_RV64, 0);
-     /* Set latest version of privileged specification */
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
-@@ -433,8 +424,7 @@ static void rv64_sifive_u_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--    riscv_cpu_set_misa(env, MXL_RV64,
--                       RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(RISCV_CPU(obj), VM_1_10_SV39);
-@@ -452,7 +442,7 @@ static void rv64_sifive_e_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV64, RVI | RVM | RVA | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -469,7 +459,7 @@ static void rv64_thead_c906_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV64, RVG | RVC | RVS | RVU);
-+    riscv_cpu_set_misa_ext(env, RVG | RVC | RVS | RVU);
-     env->priv_ver = PRIV_VERSION_1_11_0;
- 
-     cpu->cfg.ext_zfa = true;
-@@ -500,7 +490,7 @@ static void rv64_veyron_v1_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV64, RVG | RVC | RVS | RVU | RVH);
-+    riscv_cpu_set_misa_ext(env, RVG | RVC | RVS | RVU | RVH);
-     env->priv_ver = PRIV_VERSION_1_12_0;
- 
-     /* Enable ISA extensions */
-@@ -544,8 +534,6 @@ static void rv128_base_cpu_init(Object *obj)
-         exit(EXIT_FAILURE);
-     }
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
--    /* We set this in the realise function */
--    riscv_cpu_set_misa(env, MXL_RV128, 0);
-     /* Set latest version of privileged specification */
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
-@@ -556,8 +544,6 @@ static void rv128_base_cpu_init(Object *obj)
- static void rv32_base_cpu_init(Object *obj)
- {
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
--    /* We set this in the realise function */
--    riscv_cpu_set_misa(env, MXL_RV32, 0);
-     /* Set latest version of privileged specification */
-     env->priv_ver = PRIV_VERSION_LATEST;
- #ifndef CONFIG_USER_ONLY
-@@ -569,8 +555,7 @@ static void rv32_sifive_u_cpu_init(Object *obj)
- {
-     RISCVCPU *cpu = RISCV_CPU(obj);
-     CPURISCVState *env = &cpu->env;
--    riscv_cpu_set_misa(env, MXL_RV32,
--                       RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(RISCV_CPU(obj), VM_1_10_SV32);
-@@ -588,7 +573,7 @@ static void rv32_sifive_e_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVA | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -605,7 +590,7 @@ static void rv32_ibex_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_12_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -622,7 +607,7 @@ static void rv32_imafcu_nommu_cpu_init(Object *obj)
-     CPURISCVState *env = &RISCV_CPU(obj)->env;
-     RISCVCPU *cpu = RISCV_CPU(obj);
- 
--    riscv_cpu_set_misa(env, MXL_RV32, RVI | RVM | RVA | RVF | RVC | RVU);
-+    riscv_cpu_set_misa_ext(env, RVI | RVM | RVA | RVF | RVC | RVU);
-     env->priv_ver = PRIV_VERSION_1_10_0;
- #ifndef CONFIG_USER_ONLY
-     set_satp_mode_max_supported(cpu, VM_1_10_MBARE);
-@@ -845,7 +830,7 @@ static void riscv_cpu_reset_hold(Object *obj)
-         mcc->parent_phases.hold(obj);
-     }
- #ifndef CONFIG_USER_ONLY
--    env->misa_mxl = env->misa_mxl_max;
-+    env->misa_mxl = mcc->misa_mxl_max;
-     env->priv = PRV_M;
-     env->mstatus &= ~(MSTATUS_MIE | MSTATUS_MPRV);
-     if (env->misa_mxl > MXL_RV32) {
-@@ -1213,6 +1198,12 @@ static void riscv_cpu_post_init(Object *obj)
- 
- static void riscv_cpu_init(Object *obj)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(obj);
-+    RISCVCPU *cpu = RISCV_CPU(obj);
-+    CPURISCVState *env = &cpu->env;
+-Be aware that each additional register to check will slow down execution quite considerably.
++Be aware that each additional register to check will slow down
++execution quite considerably. You can optimise the number of register
++checks done by using the rdisas option. This will only instrument
++instructions that mention the registers in question in disassembly.
++This is not foolproof as some instructions implicitly change
++instructions. You can use the ifilter to catch these cases:
 +
-+    env->misa_mxl = mcc->misa_mxl_max;
-+
- #ifndef CONFIG_USER_ONLY
-     qdev_init_gpio_in(DEVICE(obj), riscv_cpu_set_irq,
-                       IRQ_LOCAL_MAX + IRQ_LOCAL_GUEST_MAX);
-@@ -1657,7 +1648,7 @@ static void cpu_get_marchid(Object *obj, Visitor *v, const char *name,
-     visit_type_bool(v, name, &value, errp);
++  $ qemu-system-arm $(QEMU_ARGS) \
++    -plugin ./contrib/plugins/libexeclog.so,ifilter=msr,ifilter=blr,reg=x30,reg=\*_el1,rdisas=on
+ 
+ - contrib/plugins/cache.c
+ 
+diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
+index c20e88a6941..a5269baf067 100644
+--- a/contrib/plugins/execlog.c
++++ b/contrib/plugins/execlog.c
+@@ -27,6 +27,7 @@ typedef struct CPU {
+     GString *last_exec;
+     /* Ptr array of Register */
+     GPtrArray *registers;
++    int index;
+ } CPU;
+ 
+ QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
+@@ -38,6 +39,9 @@ static GRWLock expand_array_lock;
+ static GPtrArray *imatches;
+ static GArray *amatches;
+ static GPtrArray *rmatches;
++static bool disas_assist;
++static GMutex add_reg_name_lock;
++static GPtrArray *all_reg_names;
+ 
+ /**
+  * Add memory read or write information to current instruction log
+@@ -72,9 +76,14 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugin_meminfo_t info,
  }
  
--static void riscv_cpu_class_init(ObjectClass *c, void *data)
-+static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
+ /**
+- * Log instruction execution
++ * Log instruction execution, outputting the last one.
++ *
++ * vcpu_insn_exec() is a copy and paste of vcpu_insn_exec_with_regs()
++ * without the checking of register values when we've attempted to
++ * optimise with disas_assist.
+  */
+-static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
++
++static CPU *get_cpu(int cpu_index)
  {
-     RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
-     CPUClass *cc = CPU_CLASS(c);
-@@ -1699,6 +1690,13 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     device_class_set_props(dc, riscv_cpu_properties);
- }
+     CPU *cpu;
  
-+static void riscv_cpu_class_init(ObjectClass *c, void *data)
-+{
-+    RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
-+
-+    mcc->misa_mxl_max = (uint32_t)(uintptr_t)data;
+@@ -83,39 +92,87 @@ static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
+     cpu = &cpus[cpu_index];
+     g_rw_lock_reader_unlock(&expand_array_lock);
+ 
++    return cpu;
 +}
 +
- static void riscv_isa_string_ext(RISCVCPU *cpu, char **isa_str,
-                                  int max_str_len)
- {
-@@ -1764,18 +1762,22 @@ void riscv_cpu_list(void)
-     g_slist_free(list);
- }
- 
--#define DEFINE_CPU(type_name, initfn)      \
--    {                                      \
--        .name = type_name,                 \
--        .parent = TYPE_RISCV_CPU,          \
--        .instance_init = initfn            \
-+#define DEFINE_CPU(type_name, misa_mxl_max, initfn)         \
-+    {                                                       \
-+        .name = (type_name),                                \
-+        .parent = TYPE_RISCV_CPU,                           \
-+        .instance_init = (initfn),                          \
-+        .class_init = riscv_cpu_class_init,                 \
-+        .class_data = (void *)(misa_mxl_max)                \
-     }
- 
--#define DEFINE_DYNAMIC_CPU(type_name, initfn) \
--    {                                         \
--        .name = type_name,                    \
--        .parent = TYPE_RISCV_DYNAMIC_CPU,     \
--        .instance_init = initfn               \
-+#define DEFINE_DYNAMIC_CPU(type_name, misa_mxl_max, initfn) \
-+    {                                                       \
-+        .name = (type_name),                                \
-+        .parent = TYPE_RISCV_DYNAMIC_CPU,                   \
-+        .instance_init = (initfn),                          \
-+        .class_init = riscv_cpu_class_init,                 \
-+        .class_data = (void *)(misa_mxl_max)                \
-     }
- 
- static const TypeInfo riscv_cpu_type_infos[] = {
-@@ -1788,29 +1790,31 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .instance_post_init = riscv_cpu_post_init,
-         .abstract = true,
-         .class_size = sizeof(RISCVCPUClass),
--        .class_init = riscv_cpu_class_init,
-+        .class_init = riscv_cpu_common_class_init,
-     },
-     {
-         .name = TYPE_RISCV_DYNAMIC_CPU,
-         .parent = TYPE_RISCV_CPU,
-         .abstract = true,
-     },
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_ANY,      riscv_any_cpu_init),
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_MAX,      riscv_max_cpu_init),
- #if defined(TARGET_RISCV32)
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE32,   rv32_base_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_IBEX,             rv32_ibex_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E31,       rv32_sifive_e_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E34,       rv32_imafcu_nommu_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U34,       rv32_sifive_u_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_ANY,     MXL_RV32,  riscv_any_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_MAX,     MXL_RV32,  riscv_max_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE32,  MXL_RV32,  rv32_base_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_IBEX,            MXL_RV32,  rv32_ibex_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E31,      MXL_RV32,  rv32_sifive_e_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E34,      MXL_RV32,  rv32_imafcu_nommu_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U34,      MXL_RV32,  rv32_sifive_u_cpu_init),
- #elif defined(TARGET_RISCV64)
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE64,   rv64_base_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E51,       rv64_sifive_e_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U54,       rv64_sifive_u_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_SHAKTI_C,         rv64_sifive_u_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_THEAD_C906,       rv64_thead_c906_cpu_init),
--    DEFINE_CPU(TYPE_RISCV_CPU_VEYRON_V1,        rv64_veyron_v1_cpu_init),
--    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE128,  rv128_base_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_ANY,     MXL_RV64,  riscv_any_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_MAX,     MXL_RV64,  riscv_max_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE64,  MXL_RV64,  rv64_base_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_E51,      MXL_RV64,  rv64_sifive_e_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SIFIVE_U54,      MXL_RV64,  rv64_sifive_u_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_SHAKTI_C,        MXL_RV64,  rv64_sifive_u_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_THEAD_C906,      MXL_RV64,  rv64_thead_c906_cpu_init),
-+    DEFINE_CPU(TYPE_RISCV_CPU_VEYRON_V1,       MXL_RV64,  rv64_veyron_v1_cpu_init),
-+    DEFINE_DYNAMIC_CPU(TYPE_RISCV_CPU_BASE128, MXL_RV128, rv128_base_cpu_init),
- #endif
- };
- 
-diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-index 58b3ace0fe9..365040228a1 100644
---- a/target/riscv/gdbstub.c
-+++ b/target/riscv/gdbstub.c
-@@ -49,6 +49,7 @@ static const struct TypeSize vec_lanes[] = {
- 
- int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     target_ulong tmp;
-@@ -61,7 +62,7 @@ int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         return 0;
-     }
- 
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
-     case MXL_RV32:
-         return gdb_get_reg32(mem_buf, tmp);
-     case MXL_RV64:
-@@ -75,12 +76,13 @@ int riscv_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- 
- int riscv_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     int length = 0;
-     target_ulong tmp;
- 
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
-     case MXL_RV32:
-         tmp = (int32_t)ldl_p(mem_buf);
-         length = 4;
-@@ -214,11 +216,12 @@ static int riscv_gdb_set_virtual(CPURISCVState *cs, uint8_t *mem_buf, int n)
- 
- static int riscv_gen_dynamic_csr_xml(CPUState *cs, int base_reg)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     GString *s = g_string_new(NULL);
-     riscv_csr_predicate_fn predicate;
--    int bitsize = 16 << env->misa_mxl_max;
-+    int bitsize = 16 << mcc->misa_mxl_max;
-     int i;
- 
- #if !defined(CONFIG_USER_ONLY)
-@@ -310,6 +313,7 @@ static int ricsv_gen_dynamic_vector_xml(CPUState *cs, int base_reg)
- 
- void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
-     if (env->misa_ext & RVD) {
-@@ -326,7 +330,7 @@ void riscv_cpu_register_gdb_regs_for_features(CPUState *cs)
-                                  ricsv_gen_dynamic_vector_xml(cs, base_reg),
-                                  "riscv-vector.xml", 0);
-     }
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
-     case MXL_RV32:
-         gdb_register_coprocessor(cs, riscv_gdb_get_virtual,
-                                  riscv_gdb_set_virtual,
-diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
-index 117e33cf90f..ed86f21b8f2 100644
---- a/target/riscv/kvm/kvm-cpu.c
-+++ b/target/riscv/kvm/kvm-cpu.c
-@@ -1499,14 +1499,14 @@ static void kvm_cpu_accel_register_types(void)
- }
- type_init(kvm_cpu_accel_register_types);
- 
--static void riscv_host_cpu_init(Object *obj)
-+static void riscv_host_cpu_class_init(ObjectClass *c, void *data)
- {
--    CPURISCVState *env = &RISCV_CPU(obj)->env;
-+    RISCVCPUClass *mcc = RISCV_CPU_CLASS(c);
- 
- #if defined(TARGET_RISCV32)
--    env->misa_mxl_max = env->misa_mxl = MXL_RV32;
-+    mcc->misa_mxl_max = MXL_RV32;
- #elif defined(TARGET_RISCV64)
--    env->misa_mxl_max = env->misa_mxl = MXL_RV64;
-+    mcc->misa_mxl_max = MXL_RV64;
- #endif
- }
- 
-@@ -1514,7 +1514,7 @@ static const TypeInfo riscv_kvm_cpu_type_infos[] = {
-     {
-         .name = TYPE_RISCV_CPU_HOST,
-         .parent = TYPE_RISCV_CPU,
--        .instance_init = riscv_host_cpu_init,
-+        .class_init = riscv_host_cpu_class_init,
-     }
- };
- 
-diff --git a/target/riscv/machine.c b/target/riscv/machine.c
-index fdde243e040..4c8d9a66595 100644
---- a/target/riscv/machine.c
-+++ b/target/riscv/machine.c
-@@ -178,10 +178,9 @@ static const VMStateDescription vmstate_pointermasking = {
- 
- static bool rv128_needed(void *opaque)
- {
--    RISCVCPU *cpu = opaque;
--    CPURISCVState *env = &cpu->env;
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(opaque);
- 
--    return env->misa_mxl_max == MXL_RV128;
-+    return mcc->misa_mxl_max == MXL_RV128;
- }
- 
- static const VMStateDescription vmstate_rv128 = {
-@@ -372,7 +371,7 @@ const VMStateDescription vmstate_riscv_cpu = {
-         VMSTATE_UINTTL(env.vext_ver, RISCVCPU),
-         VMSTATE_UINT32(env.misa_mxl, RISCVCPU),
-         VMSTATE_UINT32(env.misa_ext, RISCVCPU),
--        VMSTATE_UINT32(env.misa_mxl_max, RISCVCPU),
-+        VMSTATE_UNUSED(4),
-         VMSTATE_UINT32(env.misa_ext_mask, RISCVCPU),
-         VMSTATE_UINTTL(env.priv, RISCVCPU),
-         VMSTATE_BOOL(env.virt_enabled, RISCVCPU),
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index ee17f65afb6..7f6712c81a4 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -152,10 +152,9 @@ static void riscv_cpu_validate_misa_mxl(RISCVCPU *cpu)
- {
-     RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
-     CPUClass *cc = CPU_CLASS(mcc);
--    CPURISCVState *env = &cpu->env;
- 
-     /* Validate that MISA_MXL is set properly. */
--    switch (env->misa_mxl_max) {
-+    switch (mcc->misa_mxl_max) {
- #ifdef TARGET_RISCV64
-     case MXL_RV64:
-     case MXL_RV128:
-@@ -274,6 +273,7 @@ static void riscv_cpu_disable_priv_spec_isa_exts(RISCVCPU *cpu)
-  */
- void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
- {
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cpu);
-     CPURISCVState *env = &cpu->env;
-     Error *local_err = NULL;
- 
-@@ -454,7 +454,7 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcb), true);
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcmp), true);
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcmt), true);
--        if (riscv_has_ext(env, RVF) && env->misa_mxl_max == MXL_RV32) {
-+        if (riscv_has_ext(env, RVF) && mcc->misa_mxl_max == MXL_RV32) {
-             cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcf), true);
++static void insn_check_regs(CPU *cpu) {
++    for (int n = 0; n < cpu->registers->len; n++) {
++        Register *reg = cpu->registers->pdata[n];
++        int sz;
++
++        g_byte_array_set_size(reg->new, 0);
++        sz = qemu_plugin_read_register(cpu->index, reg->handle, reg->new);
++        g_assert(sz == reg->last->len);
++
++        if (memcmp(reg->last->data, reg->new->data, sz)) {
++            GByteArray *temp = reg->last;
++            g_string_append_printf(cpu->last_exec, ", %s -> 0x", reg->name);
++            /* TODO: handle BE properly */
++            for (int i = sz; i >= 0; i--) {
++                g_string_append_printf(cpu->last_exec, "%02x",
++                                       reg->new->data[i]);
++            }
++            reg->last = reg->new;
++            reg->new = temp;
++        }
++    }
++}
++
++/* Log last instruction while checking registers */
++static void vcpu_insn_exec_with_regs(unsigned int cpu_index, void *udata)
++{
++    CPU *cpu = get_cpu(cpu_index);
++
+     /* Print previous instruction in cache */
+     if (cpu->last_exec->len) {
+         if (cpu->registers) {
+-            for (int n = 0; n < cpu->registers->len; n++) {
+-                Register *reg = cpu->registers->pdata[n];
+-                int sz;
+-
+-                g_byte_array_set_size(reg->new, 0);
+-                sz = qemu_plugin_read_register(cpu_index, reg->handle, reg->new);
+-                g_assert(sz == reg->last->len);
+-
+-                if (memcmp(reg->last->data, reg->new->data, sz)) {
+-                    GByteArray *temp = reg->last;
+-                    g_string_append_printf(cpu->last_exec, ", %s -> 0x", reg->name);
+-                    /* TODO: handle BE properly */
+-                    for (int i = sz; i >= 0; i--) {
+-                        g_string_append_printf(cpu->last_exec, "%02x",
+-                                               reg->new->data[i]);
+-                    }
+-                    reg->last = reg->new;
+-                    reg->new = temp;
+-                }
+-            }
++            insn_check_regs(cpu);
++        }
++
++        qemu_plugin_outs(cpu->last_exec->str);
++        qemu_plugin_outs("\n");
++    }
++
++    /* Store new instruction in cache */
++    /* vcpu_mem will add memory access information to last_exec */
++    g_string_printf(cpu->last_exec, "%u, ", cpu_index);
++    g_string_append(cpu->last_exec, (char *)udata);
++}
++
++/* Log last instruction while checking registers, ignore next */
++static void vcpu_insn_exec_only_regs(unsigned int cpu_index, void *udata)
++{
++    CPU *cpu = get_cpu(cpu_index);
++
++    /* Print previous instruction in cache */
++    if (cpu->last_exec->len) {
++        if (cpu->registers) {
++            insn_check_regs(cpu);
          }
-     }
-@@ -462,7 +462,7 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-     /* zca, zcd and zcf has a PRIV 1.12.0 restriction */
-     if (riscv_has_ext(env, RVC) && env->priv_ver >= PRIV_VERSION_1_12_0) {
-         cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zca), true);
--        if (riscv_has_ext(env, RVF) && env->misa_mxl_max == MXL_RV32) {
-+        if (riscv_has_ext(env, RVF) && mcc->misa_mxl_max == MXL_RV32) {
-             cpu_cfg_ext_auto_update(cpu, CPU_CFG_OFFSET(ext_zcf), true);
-         }
-         if (riscv_has_ext(env, RVD)) {
-@@ -470,7 +470,7 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-         }
+ 
+         qemu_plugin_outs(cpu->last_exec->str);
+         qemu_plugin_outs("\n");
      }
  
--    if (env->misa_mxl_max != MXL_RV32 && cpu->cfg.ext_zcf) {
-+    if (mcc->misa_mxl_max != MXL_RV32 && cpu->cfg.ext_zcf) {
-         error_setg(errp, "Zcf extension is only relevant to RV32");
-         return;
-     }
-@@ -956,7 +956,7 @@ static void riscv_init_max_cpu_extensions(Object *obj)
-     const RISCVCPUMultiExtConfig *prop;
++    /* reset */
++    cpu->last_exec->len = 0;
++}
++
++/* Log last instruction without checking regs, setup next */
++static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
++{
++    CPU *cpu = get_cpu(cpu_index);
++
++    /* Print previous instruction in cache */
++    if (cpu->last_exec->len) {
++        qemu_plugin_outs(cpu->last_exec->str);
++        qemu_plugin_outs("\n");
++    }
++
+     /* Store new instruction in cache */
+     /* vcpu_mem will add memory access information to last_exec */
+-    g_string_printf(cpus[cpu_index].last_exec, "%u, ", cpu_index);
+-    g_string_append(cpus[cpu_index].last_exec, (char *)udata);
++    g_string_printf(cpu->last_exec, "%u, ", cpu_index);
++    g_string_append(cpu->last_exec, (char *)udata);
+ }
  
-     /* Enable RVG, RVJ and RVV that are disabled by default */
--    riscv_cpu_set_misa(env, env->misa_mxl, env->misa_ext | RVG | RVJ | RVV);
-+    riscv_cpu_set_misa_ext(env, env->misa_ext | RVG | RVJ | RVV);
- 
-     for (prop = riscv_cpu_extensions; prop && prop->name; prop++) {
-         isa_ext_update_enabled(cpu, prop->offset, true);
-diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-index f0be79bb160..7e383c5eebf 100644
---- a/target/riscv/translate.c
-+++ b/target/riscv/translate.c
-@@ -1167,6 +1167,7 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+ /**
+@@ -128,6 +185,8 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
  {
-     DisasContext *ctx = container_of(dcbase, DisasContext, base);
-     CPURISCVState *env = cpu_env(cs);
-+    RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(cs);
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     uint32_t tb_flags = ctx->base.tb->flags;
+     struct qemu_plugin_insn *insn;
+     bool skip = (imatches || amatches);
++    bool check_regs_this = rmatches;
++    bool check_regs_next = false;
  
-@@ -1188,7 +1189,7 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     ctx->cfg_vta_all_1s = cpu->cfg.rvv_ta_all_1s;
-     ctx->vstart_eq_zero = FIELD_EX32(tb_flags, TB_FLAGS, VSTART_EQ_ZERO);
-     ctx->vl_eq_vlmax = FIELD_EX32(tb_flags, TB_FLAGS, VL_EQ_VLMAX);
--    ctx->misa_mxl_max = env->misa_mxl_max;
-+    ctx->misa_mxl_max = mcc->misa_mxl_max;
-     ctx->xl = FIELD_EX32(tb_flags, TB_FLAGS, XL);
-     ctx->address_xl = FIELD_EX32(tb_flags, TB_FLAGS, AXL);
-     ctx->cs = cs;
+     size_t n = qemu_plugin_tb_n_insns(tb);
+     for (size_t i = 0; i < n; i++) {
+@@ -148,7 +207,8 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+         /*
+          * If we are filtering we better check out if we have any
+          * hits. The skip "latches" so we can track memory accesses
+-         * after the instruction we care about.
++         * after the instruction we care about. Also enable register
++         * checking on the next instruction.
+          */
+         if (skip && imatches) {
+             int j;
+@@ -156,6 +216,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+                 char *m = g_ptr_array_index(imatches, j);
+                 if (g_str_has_prefix(insn_disas, m)) {
+                     skip = false;
++                    check_regs_next = rmatches;
+                 }
+             }
+         }
+@@ -170,8 +231,38 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+             }
+         }
+ 
++        /*
++         * Check the disassembly to see if a register we care about
++         * will be affected by this instruction. This relies on the
++         * dissembler doing something sensible for the registers we
++         * care about.
++         */
++        if (disas_assist && rmatches) {
++            check_regs_next = false;
++            gchar *args = g_strstr_len(insn_disas, -1, " ");
++            for (int n = 0; n < all_reg_names->len; n++) {
++                gchar *reg = g_ptr_array_index(all_reg_names, n);
++                if (g_strrstr(args, reg)) {
++                    check_regs_next = true;
++                    skip = false;
++                }
++            }
++        }
++
++        /*
++         * We now have 3 choices:
++         *
++         * Log this instruction normally
++         * Log this instruction checking for register changes
++         * Don't log this instruction but check for register changes from the last one
++         */
++
+         if (skip) {
+-            g_free(insn_disas);
++            if (check_regs_this) {
++                qemu_plugin_register_vcpu_insn_exec_cb(insn,
++                                                       vcpu_insn_exec_only_regs,
++                                                       QEMU_PLUGIN_CB_R_REGS, NULL);
++            }
+         } else {
+             uint32_t insn_opcode;
+             insn_opcode = *((uint32_t *)qemu_plugin_insn_data(insn));
+@@ -184,15 +275,28 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+                                              QEMU_PLUGIN_MEM_RW, NULL);
+ 
+             /* Register callback on instruction */
+-            qemu_plugin_register_vcpu_insn_exec_cb(
+-                insn, vcpu_insn_exec,
+-                rmatches ? QEMU_PLUGIN_CB_R_REGS : QEMU_PLUGIN_CB_NO_REGS,
+-                output);
++            if (check_regs_this) {
++                qemu_plugin_register_vcpu_insn_exec_cb(
++                    insn, vcpu_insn_exec_with_regs,
++                    QEMU_PLUGIN_CB_R_REGS,
++                    output);
++            } else {
++                qemu_plugin_register_vcpu_insn_exec_cb(
++                    insn, vcpu_insn_exec,
++                    QEMU_PLUGIN_CB_NO_REGS,
++                    output);
++            }
+ 
+             /* reset skip */
+             skip = (imatches || amatches);
+         }
+ 
++        /* set regs for next */
++        if (disas_assist && rmatches) {
++            check_regs_this = check_regs_next;
++        }
++
++        g_free(insn_disas);
+     }
+ }
+ 
+@@ -200,10 +304,11 @@ static Register *init_vcpu_register(int vcpu_index,
+                                     qemu_plugin_reg_descriptor *desc)
+ {
+     Register *reg = g_new0(Register, 1);
++    g_autofree gchar *lower = g_utf8_strdown(desc->name, -1);
+     int r;
+ 
+     reg->handle = desc->handle;
+-    reg->name = g_strdup(desc->name);
++    reg->name = g_intern_string(lower);
+     reg->last = g_byte_array_new();
+     reg->new = g_byte_array_new();
+ 
+@@ -213,7 +318,7 @@ static Register *init_vcpu_register(int vcpu_index,
+     return reg;
+ }
+ 
+-static registers_init(int vcpu_index)
++static void registers_init(int vcpu_index)
+ {
+     GPtrArray *registers = g_ptr_array_new();
+     g_autoptr(GArray) reg_list = qemu_plugin_get_registers(vcpu_index);
+@@ -228,9 +333,20 @@ static registers_init(int vcpu_index)
+                 reg_list, qemu_plugin_reg_descriptor, r);
+             for (int p = 0; p < rmatches->len; p++) {
+                 g_autoptr(GPatternSpec) pat = g_pattern_spec_new(rmatches->pdata[p]);
+-                if (g_pattern_match_string(pat, rd->name)) {
++                g_autofree gchar *rd_lower = g_utf8_strdown(rd->name, -1);
++                if (g_pattern_match_string(pat, rd->name) ||
++                    g_pattern_match_string(pat, rd_lower)) {
+                     Register *reg = init_vcpu_register(vcpu_index, rd);
+                     g_ptr_array_add(registers, reg);
++
++                    /* we need a list of regnames at TB translation time */
++                    if (disas_assist) {
++                        g_mutex_lock(&add_reg_name_lock);
++                        if (!g_ptr_array_find(all_reg_names, reg->name, NULL)) {
++                            g_ptr_array_add(all_reg_names, reg->name);
++                        }
++                        g_mutex_unlock(&add_reg_name_lock);
++                    }
+                 }
+             }
+         }
+@@ -254,6 +370,7 @@ static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
+     if (vcpu_index >= num_cpus) {
+         cpus = g_realloc_n(cpus, vcpu_index + 1, sizeof(*cpus));
+         while (vcpu_index >= num_cpus) {
++            cpus[num_cpus].index = vcpu_index;
+             cpus[num_cpus].last_exec = g_string_new(NULL);
+ 
+             /* Any registers to track? */
+@@ -336,6 +453,12 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+             parse_vaddr_match(tokens[1]);
+         } else if (g_strcmp0(tokens[0], "reg") == 0) {
+             add_regpat(tokens[1]);
++        } else if (g_strcmp0(tokens[0], "rdisas") == 0) {
++            if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &disas_assist)) {
++                fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
++                return -1;
++            }
++            all_reg_names = g_ptr_array_new();
+         } else {
+             fprintf(stderr, "option parsing failed: %s\n", opt);
+             return -1;
 -- 
 2.39.2

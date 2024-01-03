@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id k4-20020a5d5244000000b003368c8d120fsm29995262wrc.7.2024.01.03.09.39.05
+        by smtp.gmail.com with ESMTPSA id fj7-20020a05600c0c8700b0040d77ebd55csm2974446wmb.13.2024.01.03.09.39.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 Jan 2024 09:39:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 57CC25F954;
-	Wed,  3 Jan 2024 17:33:51 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 9C6095F9D7;
+	Wed,  3 Jan 2024 17:33:53 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org,
@@ -50,42 +50,49 @@ Cc: qemu-s390x@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 22/43] hw/riscv: Use misa_mxl instead of misa_mxl_max
-Date: Wed,  3 Jan 2024 17:33:28 +0000
-Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH v2 42/43] docs/devel: lift example and plugin API sections up
+Date: Wed,  3 Jan 2024 17:33:48 +0000
+Message-Id: <20240103173349.398526-43-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rGHd2utdOHQL
+X-TUID: Ayqv7KtyHBHe
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+This makes them a bit more visible in the TCG emulation menu rather
+than hiding them away bellow the ToC limit.
 
-The effective MXL value matters when booting.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/riscv/boot.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/devel/tcg-plugins.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
-index 0ffca05189f..bc67c0bd189 100644
---- a/hw/riscv/boot.c
-+++ b/hw/riscv/boot.c
-@@ -36,7 +36,7 @@
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index fa7421279f5..535a74684c5 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -143,7 +143,7 @@ requested. The plugin isn't completely uninstalled until the safe work
+ has executed while all vCPUs are quiescent.
  
- bool riscv_is_32bit(RISCVHartArrayState *harts)
- {
--    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
-+    return harts->harts[0].env.misa_mxl == MXL_RV32;
- }
+ Example Plugins
+----------------
++===============
  
- /*
+ There are a number of plugins included with QEMU and you are
+ encouraged to contribute your own plugins plugins upstream. There is a
+@@ -591,8 +591,8 @@ The plugin has a number of arguments, all of them are optional:
+   configuration arguments implies ``l2=on``.
+   (default: N = 2097152 (2MB), B = 64, A = 16)
+ 
+-API
+----
++Plugin API
++==========
+ 
+ The following API is generated from the inline documentation in
+ ``include/qemu/qemu-plugin.h``. Please ensure any updates to the API
 -- 
 2.39.2

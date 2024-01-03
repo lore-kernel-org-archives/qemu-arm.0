@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t18-20020a5d4612000000b003367bb8898dsm31262714wrq.66.2024.01.03.09.33.53
+        by smtp.gmail.com with ESMTPSA id b7-20020adfe307000000b0033674734a58sm15715029wrj.79.2024.01.03.09.33.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jan 2024 09:33:54 -0800 (PST)
+        Wed, 03 Jan 2024 09:33:56 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 26B495F93F;
+	by draig.lan (Postfix) with ESMTP id 3CB4D5F92D;
 	Wed,  3 Jan 2024 17:33:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,43 +52,41 @@ Cc: qemu-s390x@nongnu.org,
 	qemu-riscv@nongnu.org,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 09/43] qtest: bump test-hmp timeout to 4 minutes
-Date: Wed,  3 Jan 2024 17:33:15 +0000
-Message-Id: <20240103173349.398526-10-alex.bennee@linaro.org>
+Subject: [PATCH v2 10/43] qtest: bump pxe-test timeout to 10 minutes
+Date: Wed,  3 Jan 2024 17:33:16 +0000
+Message-Id: <20240103173349.398526-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YCcFTFy4ydB5
+X-TUID: lInXHB2lUQl6
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The hmp test takes just under 3 minutes in a --enable-debug
-build. Bumping to 4 minutes will give more headroom.
+The pxe-test uses the boot_sector_test() function, and that already
+uses a timeout of 600 seconds. So adjust the timeout on the meson
+side accordingly.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20230717182859.707658-6-berrange@redhat.com>
-[thuth: fix copy-n-paste error in the description]
+[thuth: Bump timeout to 600s and adjust commit description]
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-6-thuth@redhat.com>
+Message-Id: <20231215070357.10888-7-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/qtest/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 84cec0a847d..7a4160df046 100644
+index 7a4160df046..ec93d5a384f 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -3,7 +3,7 @@ slow_qtests = {
-   'migration-test' : 480,
+@@ -4,6 +4,7 @@ slow_qtests = {
    'npcm7xx_pwm-test': 300,
    'qom-test' : 900,
--  'test-hmp' : 120,
-+  'test-hmp' : 240,
+   'test-hmp' : 240,
++  'pxe-test': 600,
  }
  
  qtests_generic = [

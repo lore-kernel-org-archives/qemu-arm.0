@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id dr16-20020a5d5f90000000b003373ef060d5sm8567186wrb.113.2024.01.03.09.39.05
+        by smtp.gmail.com with ESMTPSA id k4-20020a5d5244000000b003368c8d120fsm29995262wrc.7.2024.01.03.09.39.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 Jan 2024 09:39:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 298A25F950;
+	by draig.lan (Postfix) with ESMTP id 57CC25F954;
 	Wed,  3 Jan 2024 17:33:51 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,72 +51,41 @@ Cc: qemu-s390x@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 20/43] mtest2make: stop disabling meson test timeouts
-Date: Wed,  3 Jan 2024 17:33:26 +0000
-Message-Id: <20240103173349.398526-21-alex.bennee@linaro.org>
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v2 22/43] hw/riscv: Use misa_mxl instead of misa_mxl_max
+Date: Wed,  3 Jan 2024 17:33:28 +0000
+Message-Id: <20240103173349.398526-23-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: E4CmhBm7Ls+t
+X-TUID: rGHd2utdOHQL
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-The mtest2make.py script passes the arg '-t 0' to 'meson test' which
-disables all test timeouts. This is a major source of pain when running
-in GitLab CI and a test gets stuck. It will stall until GitLab kills the
-CI job. This leaves us with little easily consumable information about
-the stalled test. The TAP format doesn't show the test name until it is
-completed, and TAP output from multiple tests it interleaved. So we
-have to analyse the log to figure out what tests had un-finished TAP
-output present and thus infer which test case caused the hang. This is
-very time consuming and error prone.
+The effective MXL value matters when booting.
 
-By allowing meson to kill stalled tests, we get a direct display of what
-test program got stuck, which lets us more directly focus in on what
-specific test case within the test program hung.
-
-The other issue with disabling meson test timeouts by default is that it
-makes it more likely that maintainers inadvertantly introduce slowdowns.
-For example the recent-ish change that accidentally made migrate-test
-take 15-20 minutes instead of around 1 minute.
-
-The main risk of this change is that the individual test timeouts might
-be too short to allow completion in high load scenarios. Thus, there is
-likely to be some short term pain where we have to bump the timeouts for
-certain tests to make them reliable enough. The preceeding few patches
-raised the timeouts for all failures that were immediately apparent
-in GitLab CI.
-
-Even with the possible short term instability, this should still be a
-net win for debuggability of failed CI pipelines over the long term.
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20230717182859.707658-13-berrange@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215070357.10888-17-thuth@redhat.com>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20231213-riscv-v7-1-a760156a337f@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/mtest2make.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/riscv/boot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/scripts/mtest2make.py b/scripts/mtest2make.py
-index 179dd548718..eb01a05ddbd 100644
---- a/scripts/mtest2make.py
-+++ b/scripts/mtest2make.py
-@@ -27,7 +27,8 @@ def names(self, base):
- .speed.slow = $(foreach s,$(sort $(filter-out %-thorough, $1)), --suite $s)
- .speed.thorough = $(foreach s,$(sort $1), --suite $s)
+diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+index 0ffca05189f..bc67c0bd189 100644
+--- a/hw/riscv/boot.c
++++ b/hw/riscv/boot.c
+@@ -36,7 +36,7 @@
  
--.mtestargs = --no-rebuild -t 0
-+TIMEOUT_MULTIPLIER = 1
-+.mtestargs = --no-rebuild -t $(TIMEOUT_MULTIPLIER)
- ifneq ($(SPEED), quick)
- .mtestargs += --setup $(SPEED)
- endif
+ bool riscv_is_32bit(RISCVHartArrayState *harts)
+ {
+-    return harts->harts[0].env.misa_mxl_max == MXL_RV32;
++    return harts->harts[0].env.misa_mxl == MXL_RV32;
+ }
+ 
+ /*
 -- 
 2.39.2

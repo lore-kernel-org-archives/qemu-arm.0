@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id s7-20020a05600c45c700b0040d8d11bf63sm2903966wmo.41.2024.01.03.09.33.49
+        by smtp.gmail.com with ESMTPSA id iw13-20020a05600c54cd00b0040c11fbe581sm2914640wmb.27.2024.01.03.09.33.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 Jan 2024 09:33:49 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6A5105F92D;
+	by draig.lan (Postfix) with ESMTP id 53A845F926;
 	Wed,  3 Jan 2024 17:33:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,71 +51,160 @@ Cc: qemu-s390x@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 01/43] tests/avocado: Add a test for a little-endian microblaze machine
-Date: Wed,  3 Jan 2024 17:33:07 +0000
-Message-Id: <20240103173349.398526-2-alex.bennee@linaro.org>
+Subject: [PATCH v2 00/43] testing and plugin updates for 9.0 (pre-PR)
+Date: Wed,  3 Jan 2024 17:33:06 +0000
+Message-Id: <20240103173349.398526-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: 2kHfRg2p0kA/
+X-TUID: h6Fom0V29Jnv
 
-From: Thomas Huth <thuth@redhat.com>
+This brings in the first batch of testing updates for the next
+release. The main bulk of these is Daniel and Thomas' cleanups of the
+qtest timeouts and allowing meson control them. There are a few minor
+tweaks I've made to some avocado and gitlab tests.
 
-We've already got a test for a big endian microblaze machine, but so
-far we lack one for a little endian machine. Now that the QEMU advent
-calendar featured such an image, we can test the little endian mode,
-too.
+The big update is support for reading register values in TCG plugins.
+After feedback from Akihiko I've left all the smarts to the plugin and
+made the interface a simple "all the registers" dump. There is a
+follow on patch to make the register code a little more efficient by
+checking disassembly. However we can leave the door open for future
+API enhancements if the translator ever learns to reliably know when
+registers might be touched.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231215161851.71508-1-thuth@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/avocado/machine_microblaze.py | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+v2
+--
 
-diff --git a/tests/avocado/machine_microblaze.py b/tests/avocado/machine_microblaze.py
-index 8d0efff30d2..807709cd11e 100644
---- a/tests/avocado/machine_microblaze.py
-+++ b/tests/avocado/machine_microblaze.py
-@@ -5,6 +5,8 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
- 
-+import time
-+from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
- from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado.utils import archive
-@@ -33,3 +35,27 @@ def test_microblaze_s3adsp1800(self):
-         # The kernel sometimes gets stuck after the "This architecture ..."
-         # message, that's why we don't test for a later string here. This
-         # needs some investigation by a microblaze wizard one day...
-+
-+    def test_microblazeel_s3adsp1800(self):
-+        """
-+        :avocado: tags=arch:microblazeel
-+        :avocado: tags=machine:petalogix-s3adsp1800
-+        """
-+
-+        self.require_netdev('user')
-+        tar_url = ('http://www.qemu-advent-calendar.org/2023/download/'
-+                   'day13.tar.gz')
-+        tar_hash = '6623d5fff5f84cfa8f34e286f32eff6a26546f44'
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        archive.extract(file_path, self.workdir)
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', self.workdir + '/day13/xmaton.bin')
-+        self.vm.add_args('-nic', 'user,tftp=' + self.workdir + '/day13/')
-+        self.vm.launch()
-+        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command_and_wait_for_pattern(self,
-+                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
-+                '821cd3cab8efd16ad6ee5acc3642a8ea')
+ - Review feedback for register API
+ - readthedocs update
+ - add expectation docs for plugins
+
+The following still need review:
+
+  docs/devel: document some plugin assumptions
+  docs/devel: lift example and plugin API sections up
+  contrib/plugins: optimise the register value tracking
+  contrib/plugins: extend execlog to track register changes
+  contrib/plugins: fix imatch
+  plugins: add an API to read registers
+  gdbstub: expose api to find registers
+  readthodocs: fully specify a build environment
+  gitlab: include microblazeel in testing
+  tests/avocado: use snapshot=on in kvm_xen_guest
+
+Akihiko Odaki (15):
+  hw/riscv: Use misa_mxl instead of misa_mxl_max
+  target/riscv: Remove misa_mxl validation
+  target/riscv: Move misa_mxl_max to class
+  target/riscv: Validate misa_mxl_max only once
+  target/arm: Use GDBFeature for dynamic XML
+  target/ppc: Use GDBFeature for dynamic XML
+  target/riscv: Use GDBFeature for dynamic XML
+  gdbstub: Use GDBFeature for gdb_register_coprocessor
+  gdbstub: Use GDBFeature for GDBRegisterState
+  gdbstub: Change gdb_get_reg_cb and gdb_set_reg_cb
+  gdbstub: Simplify XML lookup
+  gdbstub: Infer number of core registers from XML
+  hw/core/cpu: Remove gdb_get_dynamic_xml member
+  gdbstub: Add members to identify registers to GDBFeature
+  plugins: Use different helpers when reading registers
+
+Alex Bennée (11):
+  tests/avocado: use snapshot=on in kvm_xen_guest
+  gitlab: include microblazeel in testing
+  chardev: use bool for fe_is_open
+  readthodocs: fully specify a build environment
+  gdbstub: expose api to find registers
+  plugins: add an API to read registers
+  contrib/plugins: fix imatch
+  contrib/plugins: extend execlog to track register changes
+  contrib/plugins: optimise the register value tracking
+  docs/devel: lift example and plugin API sections up
+  docs/devel: document some plugin assumptions
+
+Daniel P. Berrangé (12):
+  qtest: bump min meson timeout to 60 seconds
+  qtest: bump migration-test timeout to 8 minutes
+  qtest: bump qom-test timeout to 15 minutes
+  qtest: bump npcm7xx_pwn-test timeout to 5 minutes
+  qtest: bump test-hmp timeout to 4 minutes
+  qtest: bump pxe-test timeout to 10 minutes
+  qtest: bump prom-env-test timeout to 6 minutes
+  qtest: bump boot-serial-test timeout to 3 minutes
+  qtest: bump qos-test timeout to 2 minutes
+  qtest: bump aspeed_smc-test timeout to 6 minutes
+  qtest: bump bios-table-test timeout to 9 minutes
+  mtest2make: stop disabling meson test timeouts
+
+Thomas Huth (5):
+  tests/avocado: Add a test for a little-endian microblaze machine
+  tests/qtest: Bump the device-introspect-test timeout to 12 minutes
+  tests/unit: Bump test-aio-multithread test timeout to 2 minutes
+  tests/unit: Bump test-crypto-block test timeout to 5 minutes
+  tests/fp: Bump fp-test-mulAdd test timeout to 3 minutes
+
+ docs/devel/tcg-plugins.rst          |  72 ++++++-
+ docs/requirements.txt               |   2 +
+ accel/tcg/plugin-helpers.h          |   3 +-
+ include/chardev/char-fe.h           |  19 +-
+ include/exec/gdbstub.h              |  62 +++++-
+ include/hw/core/cpu.h               |   7 +-
+ include/qemu/plugin.h               |   1 +
+ include/qemu/qemu-plugin.h          |  51 ++++-
+ target/arm/cpu.h                    |  27 +--
+ target/arm/internals.h              |  14 +-
+ target/hexagon/internal.h           |   4 +-
+ target/microblaze/cpu.h             |   4 +-
+ target/ppc/cpu-qom.h                |   1 +
+ target/ppc/cpu.h                    |   5 +-
+ target/riscv/cpu.h                  |   9 +-
+ target/s390x/cpu.h                  |   2 -
+ accel/tcg/plugin-gen.c              |  43 +++-
+ chardev/char-fe.c                   |  16 +-
+ chardev/char.c                      |   2 +-
+ contrib/plugins/execlog.c           | 322 +++++++++++++++++++++++-----
+ gdbstub/gdbstub.c                   | 198 +++++++++++------
+ hw/core/cpu-common.c                |   5 +-
+ hw/riscv/boot.c                     |   2 +-
+ plugins/api.c                       | 114 +++++++++-
+ target/arm/cpu.c                    |   2 -
+ target/arm/cpu64.c                  |   1 -
+ target/arm/gdbstub.c                | 230 ++++++++++----------
+ target/arm/gdbstub64.c              | 122 +++++------
+ target/avr/cpu.c                    |   1 -
+ target/hexagon/cpu.c                |   4 +-
+ target/hexagon/gdbstub.c            |  10 +-
+ target/i386/cpu.c                   |   2 -
+ target/loongarch/cpu.c              |   2 -
+ target/loongarch/gdbstub.c          |  13 +-
+ target/m68k/cpu.c                   |   1 -
+ target/m68k/helper.c                |  26 ++-
+ target/microblaze/cpu.c             |   6 +-
+ target/microblaze/gdbstub.c         |   9 +-
+ target/ppc/cpu_init.c               |   7 -
+ target/ppc/gdbstub.c                | 114 +++++-----
+ target/riscv/cpu.c                  | 154 ++++++-------
+ target/riscv/gdbstub.c              | 151 +++++++------
+ target/riscv/kvm/kvm-cpu.c          |  10 +-
+ target/riscv/machine.c              |   7 +-
+ target/riscv/tcg/tcg-cpu.c          |  44 +---
+ target/riscv/translate.c            |   3 +-
+ target/rx/cpu.c                     |   1 -
+ target/s390x/cpu.c                  |   1 -
+ target/s390x/gdbstub.c              | 105 +++++----
+ .gitlab-ci.d/buildtest.yml          |   4 +-
+ .readthedocs.yml                    |  19 +-
+ plugins/qemu-plugins.symbols        |   2 +
+ scripts/feature_to_c.py             |  14 +-
+ scripts/mtest2make.py               |   3 +-
+ tests/avocado/kvm_xen_guest.py      |   2 +-
+ tests/avocado/machine_microblaze.py |  26 +++
+ tests/fp/meson.build                |   2 +-
+ tests/qtest/meson.build             |  25 +--
+ tests/unit/meson.build              |   2 +
+ 59 files changed, 1396 insertions(+), 714 deletions(-)
+ create mode 100644 docs/requirements.txt
+
 -- 
 2.39.2

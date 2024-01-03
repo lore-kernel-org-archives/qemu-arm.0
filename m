@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i15-20020a05600c354f00b0040d604dea3bsm2972869wmq.4.2024.01.03.09.39.05
+        by smtp.gmail.com with ESMTPSA id b13-20020a056000054d00b0033739c1da1dsm9906876wrf.67.2024.01.03.09.39.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jan 2024 09:39:05 -0800 (PST)
+        Wed, 03 Jan 2024 09:39:06 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 542725F9D4;
-	Wed,  3 Jan 2024 17:33:53 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id F1D055F94A;
+	Wed,  3 Jan 2024 17:33:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org,
@@ -51,37 +51,42 @@ Cc: qemu-s390x@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 39/43] contrib/plugins: fix imatch
-Date: Wed,  3 Jan 2024 17:33:45 +0000
-Message-Id: <20240103173349.398526-40-alex.bennee@linaro.org>
+Subject: [PATCH v2 18/43] tests/unit: Bump test-crypto-block test timeout to 5 minutes
+Date: Wed,  3 Jan 2024 17:33:24 +0000
+Message-Id: <20240103173349.398526-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jfo5XO29CvgT
+X-TUID: dqjJaYxXSc/f
 
-We can't directly save the ephemeral imatch from argv as that memory
-will get recycled.
+From: Thomas Huth <thuth@redhat.com>
 
+When running the tests in slow mode on a very loaded system and with
+--enable-debug, the test-crypto-block can take longer than 4 minutes.
+Bump the timeout to 5 minutes to make sure that it also passes in
+such situations.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231215070357.10888-15-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/execlog.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/unit/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
-index 82dc2f584e2..f262e5555eb 100644
---- a/contrib/plugins/execlog.c
-+++ b/contrib/plugins/execlog.c
-@@ -199,7 +199,7 @@ static void parse_insn_match(char *match)
-     if (!imatches) {
-         imatches = g_ptr_array_new();
-     }
--    g_ptr_array_add(imatches, match);
-+    g_ptr_array_add(imatches, g_strdup(match));
- }
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index 0b0c7c14115..a99dec43120 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -173,6 +173,7 @@ test_env.set('G_TEST_BUILDDIR', meson.current_build_dir())
  
- static void parse_vaddr_match(char *match)
+ slow_tests = {
+   'test-aio-multithread' : 120,
++  'test-crypto-block' : 300,
+   'test-crypto-tlscredsx509': 45,
+   'test-crypto-tlssession': 45
+ }
 -- 
 2.39.2

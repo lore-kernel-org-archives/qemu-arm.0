@@ -1,245 +1,149 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bl13-20020adfe24d000000b003365fcc1846sm31132628wrb.52.2024.01.03.09.39.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jan 2024 09:39:13 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C478B5F9D0;
-	Wed,  3 Jan 2024 17:33:52 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org,
-	qemu-ppc@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Song Gao <gaosong@loongson.cn>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Paul Durrant <paul@xen.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	kvm@vger.kernel.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	Weiwei Li <liwei1518@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	qemu-riscv@nongnu.org,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 34/43] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Wed,  3 Jan 2024 17:33:40 +0000
-Message-Id: <20240103173349.398526-35-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp629426ejh;
+        Wed, 3 Jan 2024 09:40:36 -0800 (PST)
+X-Received: by 2002:a05:600c:5187:b0:40d:8892:f4f2 with SMTP id fa7-20020a05600c518700b0040d8892f4f2mr2549612wmb.175.1704303636863;
+        Wed, 03 Jan 2024 09:40:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704303636; cv=none;
+        d=google.com; s=arc-20160816;
+        b=DhT2qVy6KHOVOpd5u9ojWVKTorkamvw8U/Na4EKpUraBhU9PmQW4NXLPRIPvZ00nG/
+         /e+sniR888LA2IGWiYfmsaFC4tgfqey+ZpsQYCUvOYegA2xQ2IfmlbiXL7jcMx7kBS2K
+         HzY4/Re9nXckQdmKhef8mPwEBmxyQ6PUlYHJ00iXBGvSD+lmJTnM1BxMvBMa+6Ll6tFo
+         CyTN7MczMds0kT02HaRnYT8umKlvproh63nicZJJmIS4GhypaoTggiwpbQtVr5VWZMeL
+         Bw61IeDQwsGSo1ncdUdunRk+t8YJLUQrzrOGtx3V/ubN6RyIq0QkTvQuTedL4OFrEvXt
+         M2Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=dIHFlhhFim1PtGeG0Zm6sx8pmWIRl7Sld9fdmoYExt4=;
+        fh=lmF7TvmYTprrEpgzLmwYMLYuqR3G5I5vHAJUBycJxq0=;
+        b=NIaIbowaBhE5yKCOU/1U6+cGJZo9e15IRnDiNAPif5+JiTjNEnAzFR4WQP6AP0NT7d
+         JAFAcY7GRFNN9urmbDHe0UU6SeoCFidsFvZ8FYtKFimCBfd8iw1bzqdNTSxGQypuX3Zt
+         8fy1rpEwtU6KicmYrkxrNmUUDse/n9RK+t6dtWfRozw8zwfhdjZp8IA5wFxudSeC5nF+
+         F+pjnJpn3UIxHosIppc4M8+MgN/bEEtCGbm2P4A/WEIgMaYXeMPbx7Gecz6K9+YWQDzh
+         0qU/EOHlb8KgBEcE919yOCl7D9Lmrpwj7oe6Tdub8yKTQYW7kEmLT9BlEiC/evTP1cxS
+         BO9g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VFokYROJ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 9-20020a05600c240900b0040d5ab899cbsor5733911wmp.11.2024.01.03.09.40.36
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 03 Jan 2024 09:40:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VFokYROJ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1704303636; x=1704908436; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dIHFlhhFim1PtGeG0Zm6sx8pmWIRl7Sld9fdmoYExt4=;
+        b=VFokYROJPyT7+yktOFKxiVbMgqIIUPdRKJSQZscy/g271aBWIg4ms4WMvQH4H0Q4no
+         YAy2g3qTGSg1+eIx0nx4+qwDAALzAnACiCT7Jvj4WphZhG3Gd+p9O4JY9iFhQi0dCsJ7
+         WmUA/eZfvP+hWkWljoPFxmE5qI/zXtIxm7lZzeE8Zj1saOBWdXGsyYl4o2z467z0Uxw9
+         Klx8iq51X06gTxwYQpUML9yaKL1Ry1kBtVGsRiztvnWaRcb00u/A/Ck9vnll5QwC7uvu
+         TpBzIPoaV/yeK/gW8u1Zpb8pd9/IsjXGY5dQsBOAfJAAOfcXssb86wPuy3eObzIcIa+m
+         Jtvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704303636; x=1704908436;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dIHFlhhFim1PtGeG0Zm6sx8pmWIRl7Sld9fdmoYExt4=;
+        b=O2ZgSmyv6NotnytlDUrO+f3ScCDFT1od35FchyLCoDcQ+TQ+U0pYL6BLyfJXGWtLCV
+         PMmAIji2x7txFuS4kmWYOWCMVuL1IUeN7nEjfP6ORMOzJroakgOq1bWl7mWQUgGjJmgB
+         9qn/LN3H0plNSYeBbtrRQTUH2MuwQZTxHFqUP72MGbC4LEHWZpz7HBvGS1n0qhx8+iQH
+         LedFKZDO6tdeCqaypZ0DnEc3RMDZwo09c/f5URRmdOYUU074BspY4OnbzZ4LYd0tl9AI
+         ePBM2Il1uDW3aJhL5/3885WK/I4x5GmaTYthYqNbqK4iUQ088O+9wr/pMtzQ/PNyq4EM
+         NA5A==
+X-Gm-Message-State: AOJu0YzthaUKCpWWwTLzlXDjQ7VLr8gRg1qJyPJhFMFfqJ/jOnu19PWb
+	T7mHIOLLukLFybcRWUc6qm9SlJC/V2LGn71y864r6c4dYlu1nQ==
+X-Google-Smtp-Source: AGHT+IHw8JLMQzv6qvy0MGZez2fPXn9kO2VaZ99bo/3mKuKZa50Y5vQTqY/gwP/E+CV4Edxm+vZCgA==
+X-Received: by 2002:a05:600c:2284:b0:40d:88b8:1bda with SMTP id 4-20020a05600c228400b0040d88b81bdamr2621257wmf.116.1704303636291;
+        Wed, 03 Jan 2024 09:40:36 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (tre93-h02-176-184-7-144.dsl.sta.abo.bbox.fr. [176.184.7.144])
+        by smtp.gmail.com with ESMTPSA id k39-20020a05600c1ca700b0040d8af75e19sm2963165wms.24.2024.01.03.09.40.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 03 Jan 2024 09:40:35 -0800 (PST)
+Message-ID: <084d127e-1d77-4c45-b8e9-fe3d867e7755@linaro.org>
+Date: Wed, 3 Jan 2024 18:40:31 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 08/43] qtest: bump npcm7xx_pwn-test timeout to 5
+ minutes
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Yanan Wang <wangyanan55@huawei.com>, Bin Meng <bin.meng@windriver.com>,
+ Laurent Vivier <lvivier@redhat.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, David Woodhouse <dwmw2@infradead.org>,
+ Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+ Brian Cain <bcain@quicinc.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Beraldo Leal <bleal@redhat.com>, Paul Durrant <paul@xen.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>,
+ kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, John Snow <jsnow@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+References: <20240103173349.398526-1-alex.bennee@linaro.org>
+ <20240103173349.398526-9-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240103173349.398526-9-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Z/c5wX3neWbQ
+X-TUID: eMIPJ2fcRSyN
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+On 3/1/24 18:33, Alex Bennée wrote:
+> From: Daniel P. Berrangé <berrange@redhat.com>
+> 
+> The npcm7xx_pwn-test takes 3 & 1/2 minutes in a --enable-debug build.
+> Bumping to 5 minutes will give more headroom.
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Message-ID: <20230717182859.707658-5-berrange@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Message-Id: <20231215070357.10888-5-thuth@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/qtest/meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 000ac54b7d6..84cec0a847d 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -1,7 +1,7 @@
+>   slow_qtests = {
+>     'bios-tables-test' : 120,
+>     'migration-test' : 480,
+> -  'npcm7xx_pwm-test': 150,
+> +  'npcm7xx_pwm-test': 300,
 
-This function is no longer used.
+The tests seem parallelizable, maybe this file could be split?
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231213-gdb-v17-9-777047380591@daynix.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
-
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index a6214610603..17f99adc0f4 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -134,9 +134,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -167,7 +164,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b2f8ac81f06..c8e77440f0f 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1182,12 +1182,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index f87c26f98a6..9f94282e13e 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1524,7 +1524,6 @@ int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 0a02d16220b..9514edaf041 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2499,7 +2499,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 059d84f98e5..a3bb73cfa7c 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -474,24 +474,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index a0178c3ce80..909d753b022 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7380,9 +7380,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 8ca37b6bf95..f47878a67bd 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -342,16 +342,6 @@ static void gdb_gen_spr_feature(CPUState *cs)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index a3a98230ca8..1e3ac556b33 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1529,19 +1529,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -1695,7 +1682,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
-                               cpu_set_mvendorid, NULL, NULL);
--- 
-2.39.2
+>     'qom-test' : 900,
+>     'test-hmp' : 120,
+>   }

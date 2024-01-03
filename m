@@ -1,37 +1,38 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp561210ejh;
-        Wed, 3 Jan 2024 07:54:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG39AmYb7NavimKSEDQtnSkjyUPnGvldRv9adVePQBaQNmRELfvBd7NX3QOT3oakx3IozKJ
-X-Received: by 2002:a05:620a:198a:b0:781:5e28:3edf with SMTP id bm10-20020a05620a198a00b007815e283edfmr15239542qkb.123.1704297244665;
-        Wed, 03 Jan 2024 07:54:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704297244; cv=none;
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp561409ejh;
+        Wed, 3 Jan 2024 07:54:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEpDdZHi7VIbyZ4QssXmRZZ5aDRsBGFgnvsUGZ759GBzB0cBjrqVS2r9GJT+M2NmJEtTYQO
+X-Received: by 2002:a05:622a:1014:b0:428:3478:ea7d with SMTP id d20-20020a05622a101400b004283478ea7dmr1861909qte.7.1704297269399;
+        Wed, 03 Jan 2024 07:54:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704297269; cv=none;
         d=google.com; s=arc-20160816;
-        b=XIS4K7oBxjHJi5WXrfNFz+TJyT4q8+iYzuOCkQn6xHouLKG270mvsfoMKbj47K1r6m
-         RJU/RyN5a5yavyIXdygZzPt1Bsj4Pg3AQoz695zYeXaiOkORR2f+3tvQDN7p0R/NiSM9
-         c/SELzR+FdmuIWzT7Alp8W2sTp2xNc+Axtxf4F2cvxc+6CB4HS7DRTNDRgOTY9d8f2xs
-         YjUtMoc8iAsbyxqm+39ppr2uYUKrFV8F05f9yraAaBNk/zHzv629TMm2E2NFrdj9gXcb
-         FyV9ojVPMQvjOOOCh43H6Gm4Yo0eV194UtzS4gPX03xBNVHL664vCgDgckJEM3JPEKbP
-         IOvQ==
+        b=zp190WgFE+n19c4erCgi+8yPlmDt3YZ0A75HHfQtZQDv2eYYTcPLmp4nusnbsvhp5W
+         V9LWp/XkEw8l7qlIaFcJYTxzzwViqxbJP87XsyDve3sb6lRnIkxA5WnZjdXGnJVXTHUr
+         P3wAQjrkM4hPTzJgXlLxE1CRv7Ytv+qPOmkkoVP55PapvGJ5CEah7zaKKK1yx7KpZ6rp
+         A3GrnBO51z501doWGM+0IiYBl/b1cCZspFQR62kQsA2CiGriwECJFLhUSK/bjc3bOF76
+         TOVjQE3akJCZx5SrVe1HmOaYtTsGXZxYkNz4rzjzu6A0XZB5RndzfZtoTkLFMu5HLvHm
+         JQqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=dyx+QZUu1cZi/JAuGNQGkddtlOwEGHnHjn7roZahdLU=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=ysl0wBdigS6FigyDJpEb6rCnXvTRgK0Cq62hkKC91ac=;
         fh=HXATX5/62pMJVs80a2Hs0Qv0Y5F0Xlxx6Qu533NYerI=;
-        b=zlOZq0fbmN6pN3aTKyqQ+I3EIPPuB+RcbPiJXF200HEPdjFi7C06QQ+coTxdF0eBBk
-         tJZTg6sPcQ+JmV2ASE5svHSC6SFRFQ8D9endrHtxmnvzdm8lqUo8iTFBMNiWRRdOwLEW
-         hvrIqAh5VdDDf4oQjYSemCTrLBckfcwmbywifEtDMwQsZZT5Nc7PI7t7cl2cRbPXrp+f
-         I7ThEFX0KpzgNT/v9Z0BCV9t0l1iaN+G+jGbQN4v6Y1xbFd9Hz54Wt7vzPNnBdPg34SU
-         P+8KUGX+MVfBsynSF4juig5tRtWJcwbeCtE3KVgrpXFsV1YfseDTXpARf3sghSadKGC7
-         +sig==
+        b=aYiTIuDx0Jms00z9/6RZsDkDbd8sk6MD3XWIZlasWAZRxdI7zXUKXakh1NkE+fUDUR
+         o4+Eio6DuFvoTWBzLfUSpr2qcYRu7x5PtWsbjA0vXUgeCH2PqvSjcdmBvNf9fEJKhfw6
+         fMEvnT8ZP6KVnUzkL5wWNdvpl0DP5B95m4+QC/4jeoyVhibMl2xCImpbuhjJIozOYV2V
+         xu920pvegh8bji5cGGvzQ03lOlIzW3aimMniSHDySkevYfQAr3V8CeCmEvCk8Xl8X6N0
+         bsin9+GvTmiGGvFgsifP8ggoqxqNKlGVL7IjijJ4XwaFvexU4ytczxlj7LeLmBJ/SUFo
+         oaXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s18-20020a05620a255200b007817232fbf1si14117322qko.161.2024.01.03.07.54.03
+        by mx.google.com with ESMTPS id u18-20020a05622a14d200b0042540184032si30368020qtx.336.2024.01.03.07.54.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jan 2024 07:54:04 -0800 (PST)
+        Wed, 03 Jan 2024 07:54:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,18 +40,18 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rL3Z6-0004LX-Oi; Wed, 03 Jan 2024 10:53:56 -0500
+	id 1rL3Z7-0004M9-Fk; Wed, 03 Jan 2024 10:53:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rL3Z5-0004Ke-Pp; Wed, 03 Jan 2024 10:53:55 -0500
+ id 1rL3Z5-0004Kh-Ul; Wed, 03 Jan 2024 10:53:55 -0500
 Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rL3Z2-00052C-Ko; Wed, 03 Jan 2024 10:53:55 -0500
+ id 1rL3Z2-00052L-Ko; Wed, 03 Jan 2024 10:53:55 -0500
 Received: from buffy.. (buffy [192.168.147.6])
- by zoidberg.rfc1149.net (Postfix) with ESMTP id 333A280024;
- Wed,  3 Jan 2024 16:53:43 +0100 (CET)
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id 42FAE80028;
+ Wed,  3 Jan 2024 16:53:44 +0100 (CET)
 Authentication-Results: zoidberg.rfc1149.net;
  dmarc=fail (p=none dis=none) header.from=rfc1149.net
 Authentication-Results: zoidberg.rfc1149.net;
@@ -63,11 +64,12 @@ Cc: Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Alexandre Iooss <erdnaxe@crans.org>, Samuel Tardieu <sam@rfc1149.net>
-Subject: [PATCH v2 0/3] Add "num-prio-bits" property for Cortex-M devices
-Date: Wed,  3 Jan 2024 16:53:34 +0100
-Message-ID: <20240103155337.2026946-1-sam@rfc1149.net>
+Subject: [PATCH v2 3/3] hw/arm/socs: configure priority bits for existing SOCs
+Date: Wed,  3 Jan 2024 16:53:37 +0100
+Message-ID: <20240103155337.2026946-4-sam@rfc1149.net>
 X-Mailer: git-send-email 2.42.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20240103155337.2026946-1-sam@rfc1149.net>
+References: <20240103155337.2026946-1-sam@rfc1149.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
@@ -91,43 +93,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NdDwk4/STtQu
+X-TUID: 98uHT/0Icbh2
 
-This patch series builds on a discussion initiated by Anton Kochkov on
-this list in 2022. It allows setting the appropriate number of priority
-bits for Cortex-M devices. For example, FreeRTOS checks at startup that
-the right number of priority bits is available in order to guarantee
-its runtime structures safety. They have added a configuration option
-to disable this check when running on QEMU because QEMU always use 2
-bits for Cortex-M0/M0+/M1 and 8 bits for other devices.
+Update the number of priority bits for a number of existing
+SoCs according to their technical documentation:
 
-While this change allows the number of priority bits to be properly
-configured, it keeps the same default as before in order to preserve
-backward compatibility unless the SoC configures the exact value.
+- STM32F100/F205/F405/L4x5: 4 bits
+- Stellaris (Sandstorm/Fury): 3 bits
 
-Changes from v1:
-- Add support for the STM32L4x5 SOC family (which is currently
-  under review for integration) and fix the Based-on: trailer
-  in the cover letter.
-- Fix a typo in one of the commit messages ("compatibility")
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+---
+ hw/arm/stellaris.c     | 2 ++
+ hw/arm/stm32f100_soc.c | 1 +
+ hw/arm/stm32f205_soc.c | 1 +
+ hw/arm/stm32f405_soc.c | 1 +
+ hw/arm/stm32l4x5_soc.c | 1 +
+ 5 files changed, 6 insertions(+)
 
-Based-on: <20231221213838.54944-1-ines.varhol@telecom-paris.fr>
-([PATCH v4 0/2] Add minimal support for the B-L475E-IOT01A board)
-
-Samuel Tardieu (3):
-  hw/intc/armv7m_nvic: add "num-prio-bits" property
-  hw/arm/armv7m: alias the NVIC "num-prio-bits" property
-  hw/arm/socs: configure priority bits for existing SOCs
-
- hw/arm/armv7m.c        |  2 ++
- hw/arm/stellaris.c     |  2 ++
- hw/arm/stm32f100_soc.c |  1 +
- hw/arm/stm32f205_soc.c |  1 +
- hw/arm/stm32f405_soc.c |  1 +
- hw/arm/stm32l4x5_soc.c |  1 +
- hw/intc/armv7m_nvic.c  | 23 ++++++++++++++++++++++-
- 7 files changed, 30 insertions(+), 1 deletion(-)
-
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index dd90f686bf..38981967f3 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -47,6 +47,7 @@
+ #define BP_GAMEPAD   0x04
+ 
+ #define NUM_IRQ_LINES 64
++#define NUM_PRIO_BITS 3
+ 
+ typedef const struct {
+     const char *name;
+@@ -1067,6 +1068,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+ 
+     nvic = qdev_new(TYPE_ARMV7M);
+     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
++    qdev_prop_set_uint8(nvic, "num-prio-bits", NUM_PRIO_BITS);
+     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
+     qdev_prop_set_bit(nvic, "enable-bitband", true);
+     qdev_connect_clock_in(nvic, "cpuclk",
+diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
+index b90d440d7a..808b783515 100644
+--- a/hw/arm/stm32f100_soc.c
++++ b/hw/arm/stm32f100_soc.c
+@@ -115,6 +115,7 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+     /* Init ARMv7m */
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 61);
++    qdev_prop_set_uint8(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index 1a548646f6..a451e21f59 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -127,6 +127,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+ 
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_uint8(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+index a65bbe298d..2ad5b79a06 100644
+--- a/hw/arm/stm32f405_soc.c
++++ b/hw/arm/stm32f405_soc.c
+@@ -149,6 +149,7 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
+ 
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_uint8(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+index 7513db0d6a..cc70c83d20 100644
+--- a/hw/arm/stm32l4x5_soc.c
++++ b/hw/arm/stm32l4x5_soc.c
+@@ -105,6 +105,7 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
+     object_initialize_child(OBJECT(dev_soc), "armv7m", &s->armv7m, TYPE_ARMV7M);
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
++    qdev_prop_set_uint32(armv7m, "num-prio-bits", 4);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
 -- 
 2.42.0
 

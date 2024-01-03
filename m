@@ -1,85 +1,84 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp631159ejh;
-        Wed, 3 Jan 2024 09:43:57 -0800 (PST)
-X-Received: by 2002:a05:600c:4503:b0:40d:83a3:4757 with SMTP id t3-20020a05600c450300b0040d83a34757mr1768352wmo.219.1704303837463;
-        Wed, 03 Jan 2024 09:43:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704303837; cv=none;
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp632893ejh;
+        Wed, 3 Jan 2024 09:47:25 -0800 (PST)
+X-Received: by 2002:a05:600c:1c1a:b0:40c:269c:518f with SMTP id j26-20020a05600c1c1a00b0040c269c518fmr698957wms.115.1704304043286;
+        Wed, 03 Jan 2024 09:47:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704304043; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZOPhu8TSZTyxRPYD5g9J36nmxhf8wI3Bj990uS804jk3CXqUV3ryfHWEmGsjjCKiGV
-         nO1/XyTHNI54UB9KQJQ4EmB8G4V3AC+QklszYYoVfazK3oFdKGNV7AaD6C8M7R/HV4rT
-         aisLYIpLQIPa42+e57dwaeIS9c+OnZg1F88KMFKYyNN7c24OlHb5j2pi4yTwDhScgLOE
-         CNqft5QgFY/ld7kC6SUNZ5gYHGW24BgDDKg1eXxrNgx2+Gtk8MpXw8LUopG8Ez2ZmEl+
-         Xw2rByI3y2lRC46EoKBJmKEES6+eQI+MpV9fdE/xqFH26ZBDXbBBYyu5D7yT6Ynk3ZeI
-         8Msg==
+        b=Hqbgl9MAm4VoJGxhRV47nFCUWgrMLoBGH60VJk4nTqKOQOtVdudCKmme4XRSeOGSjB
+         YZiRCIKCh+FplzO/YdyiKzqZbM/QsQprjkA5SedNiCbo9AKTnXMJaVNGr7efUryzoFty
+         iXp3FDTy9LzjT7gVByKUhedt1Agc0yZDUsYx2sC1EHUxn8IV8tPCRL106ADLe21QGQYp
+         XsU3li7caVbxbXZ9OZiGmrbDzHnHgeAnUh8v+iroeMaqJBUYXgUfA8I4LpyCXP+LnhBF
+         58V2/yJ2c56K+QbTeuHkMSDwRNRuz4zLmEPjRTnXCtuMvSF3dy7w0CvBCzHXv2bBzcCb
+         w9Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=V8US0ACJb4Hw/yRgDiojK+LPOeoUlnaAFyhJhDgbvbA=;
-        fh=Gh1S9b66JIsdzWzeVFItagA0XdxQJ3n9u6epL1S7MOg=;
-        b=i90sCh51QvTMiI5sfJtBzoSp0soyeKwGt0C1Tls+IxWMUuEt60wHAPzWcFJZvBex0p
-         /ex5BleKcszqyfzrMgp3LpwyaImUb96tM0vUhLzO2xZKjDksmSN2rhv0oTeNeDrp1djX
-         J8wNMMO9+7X8rjSQ7Vyaqb3n37hIZH638JUcV8OJ7TePvQUsH2pvXvb67feR9JLExdkr
-         y1BPAlFxKcIFBZ7/d6qIFHBEGzvcnfTf+F8JDMJwtQia/56MpER0vn4dfidvajyvAf9y
-         /M5SLqA7WsW+knFlLr1QOX2ePwBzC980qy7LO1ShFhduZVL5GuiWxIxRIEZJHzw2yhlf
-         Lq1w==
+        bh=aZn5H3BibQIjCm6XCuZSPBoWZOto2pSlAUY4r4Wn5U8=;
+        fh=JleVenhY0GMfmNwouuIH4nFj7DrXP4BS+eKknaf/j0c=;
+        b=xxd33J7m5J3Jysq+RgabFgFMWHd3LlAZazqQlPCawH9efiR0wPQylRUakiVCHC9fFV
+         obvj2H1Z9VQp6YcC5OB2oLot7HCfT5LRck+o2EnVJvmIR0GfeahpN7P1Q/tJaDARHKoy
+         sYkBEFi9sS6M53ekDzOVZdRxeWbwkj8F7BJbh96M29CcsciNWY3Ff7raUZ3aqO0Zu9Rb
+         TOilulmMXx4Uw4R5EwwUuL0+3eTxYeJKkCszokFWtPU2t3IXwzIxwfuDz5gf0CAfvHPl
+         WYs2d7ANmHeOycAZ3BJySq5ih/tmotZ1XjyKL1o4DDoOL6GVT9pjGzXHUjm8cN8R9w+r
+         iuiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=klhxFMfS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bxSvwzcf;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l4-20020a05600c1d0400b0040d91fac53esor526971wms.0.2024.01.03.09.43.57
+        by mx.google.com with SMTPS id l29-20020a05600c1d1d00b0040d90f651b9sor437589wms.1.2024.01.03.09.47.23
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 03 Jan 2024 09:43:57 -0800 (PST)
+        Wed, 03 Jan 2024 09:47:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=klhxFMfS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bxSvwzcf;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704303837; x=1704908637; darn=linaro.org;
+        d=linaro.org; s=google; t=1704304042; x=1704908842; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=V8US0ACJb4Hw/yRgDiojK+LPOeoUlnaAFyhJhDgbvbA=;
-        b=klhxFMfSsdrQdggeLj88EP31SFKvBaZZDLmufguYb/4M4bxqmrVP64eRkd5ghmiauZ
-         PXyKWz7ssXDLujOinMXq8USj1Nl/Jg3RddkfjEGZCAewQ2uKZm1oIXzx+D+N2DvLTATU
-         mIlldUGkKgLGCsK/jzFEQEvUiHqaJHzG56tgFL/c7W3wpsXRc4KEHdBqbWT163T8xjVt
-         jwp+NlMR170w0paacU60evJfWKrQ5ETSuiBEd5abHKuValALKyvrQUg26UZWdmdwnTj/
-         fwqSKonbiXTG2BU4uHXsbhm/402sMVahMVC4y8B9BcFDUtq62DAhpdiLktTZQUGf98gP
-         9OiA==
+        bh=aZn5H3BibQIjCm6XCuZSPBoWZOto2pSlAUY4r4Wn5U8=;
+        b=bxSvwzcf6kkWDCM52KSqXYti05cQb9NgIGMouKtj7/lZUPEpLHq59n23WGOKRWt99P
+         hPJhY6CjIEI+K2ge2u5hAokhvz/wbQzE4mkhrePHlOM82xHS/CPbyw7gfsSXad+fwuLQ
+         ULkWP2UeU4RCpQ1TFhTVD2E57y3CJj5z4mL/KKPwGaNK4tsV9xnrcdznaPxg80kiF50a
+         zqL8/vBc/9gHSt7cjpUK4nApkYqMDPmrJl8a8qOOP3Y2TcHiLP9oRSa8hDnx/kIsvXFp
+         Z3k9iZDVEI7RD0DJ7lJBVYCSr/WwAon5uHIPtJHLbolUmsMcXEyg+cnrC4shua6rU2Or
+         ZxQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704303837; x=1704908637;
+        d=1e100.net; s=20230601; t=1704304042; x=1704908842;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=V8US0ACJb4Hw/yRgDiojK+LPOeoUlnaAFyhJhDgbvbA=;
-        b=CIrit7YmE1nNnpcauxlI5rFMFFLNMwcNJY9zgRqBP8mr7CfYRqlUdVBgUmcJtqsAbJ
-         YU3NKn6/1njwxqs5vZBEsALl9PIMi05H6bMohJ59vJlRx1mAke17qoy7IEFsYCqZEsiO
-         UnrhmRfNcmjMSklQ3LY5RCYbl5tPdR6khHtrUQAB/lnjCDkOFReVIs/D30nwtjTHwUDB
-         dsvBzEQh8/UoPzwpkAOvBsfug7m8IUbfv8yBJCvGjugwiepdi/sSddUVM0rLylsN2CYN
-         6wy10o8taLLGgYKvkb07ss5K3wOJPFk03rEIgEKVFP/dFveR/8yAPk0Re1UlPQqdXgUb
-         ATeQ==
-X-Gm-Message-State: AOJu0YwF/v6QVOF+UHTKZdjJBAr80cZpwdc6RLTjgPVWqeQXlW0eyErC
-	WAV6G5qDFgQRqcGa//CfiSpxANy/3SDzR+6XkYSyYYOIMHUL+A==
-X-Google-Smtp-Source: AGHT+IG5G9mQ4BJ4FXQ/6LVXB48S3IsiORpTQTFyaxnxAOVk8KcHF9cASuMfoLN6MOOl0hYkw6H46w==
-X-Received: by 2002:a05:600c:3501:b0:40d:5a99:3bb6 with SMTP id h1-20020a05600c350100b0040d5a993bb6mr3579336wmq.41.1704303836866;
-        Wed, 03 Jan 2024 09:43:56 -0800 (PST)
+        bh=aZn5H3BibQIjCm6XCuZSPBoWZOto2pSlAUY4r4Wn5U8=;
+        b=N9eZ/zOzDF0MFEQZWKxAcJX3OBCqYMBXCEmvplgZj5ixvF2sy4cSjeKEu50sJsqx2k
+         oKkQjZAj1u5arKHnULN3ABO40by1avyrHHjT1Zx2viqJWjSQZxQLjvQwFOYucbcjKKXj
+         EtmhTYAnIFgCLBXcuejlJkocXb/rsXdac3T9158eOE23AjmUc50Ky6t7t0Op5T33XzHV
+         wgSai4AlE4Cboki7dzw/DBwhaKnmKhXBudbZJBxjr1VMSPk5EW0XKUAJQ/m9xX9FiHLc
+         XkRo07epvzNMWOOTWHXW8nHAgsB7KGoxuSSyUuNLGLTqdYHsBUkmEfXRn5gUIMhiRukS
+         h/UA==
+X-Gm-Message-State: AOJu0YxyEm2toKUgueuExxjnCSarDmav8UGIhrF0OPjzSfRCbSwAwGBn
+	/wcRd8exl5Fc8Txyg9y/MZzTxVGQaGxiuuGOJsQ3EilXkM0A9w==
+X-Google-Smtp-Source: AGHT+IEWSmwKYOBNA3zud+Rn8MIOuM7s/OmpOblX5Yr8XMRSMzRdlO4xFHDFR+JcT+JP+VwaTeY4Dw==
+X-Received: by 2002:a05:600c:4b27:b0:40d:81bd:9d12 with SMTP id i39-20020a05600c4b2700b0040d81bd9d12mr743994wmp.147.1704304042639;
+        Wed, 03 Jan 2024 09:47:22 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.100] (tre93-h02-176-184-7-144.dsl.sta.abo.bbox.fr. [176.184.7.144])
-        by smtp.gmail.com with ESMTPSA id p7-20020adfe607000000b00336843ae919sm30885254wrm.49.2024.01.03.09.43.53
+        by smtp.gmail.com with ESMTPSA id t16-20020a05600c199000b0040d5fcaefcesm2946862wmq.19.2024.01.03.09.47.18
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Jan 2024 09:43:56 -0800 (PST)
-Message-ID: <6826da51-3b97-4ecf-8517-9e5b5243e91f@linaro.org>
-Date: Wed, 3 Jan 2024 18:43:52 +0100
+        Wed, 03 Jan 2024 09:47:21 -0800 (PST)
+Message-ID: <f0fb7562-9af1-4448-b33a-ededd8072aef@linaro.org>
+Date: Wed, 3 Jan 2024 18:47:17 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/43] qtest: bump pxe-test timeout to 10 minutes
+Subject: Re: [PATCH v2 39/43] contrib/plugins: fix imatch
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
+ qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Song Gao <gaosong@loongson.cn>,
@@ -107,44 +106,37 @@ Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
  Alistair Francis <alistair.francis@wdc.com>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
- <20240103173349.398526-11-alex.bennee@linaro.org>
+ <20240103173349.398526-40-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240103173349.398526-11-alex.bennee@linaro.org>
+In-Reply-To: <20240103173349.398526-40-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: VkdhwdHKkeop
-
-Hi Daniel,
+X-TUID: 5OIVWN0gtIIY
 
 On 3/1/24 18:33, Alex Bennée wrote:
-> From: Daniel P. Berrangé <berrange@redhat.com>
+> We can't directly save the ephemeral imatch from argv as that memory
+> will get recycled.
 > 
-> The pxe-test uses the boot_sector_test() function, and that already
-> uses a timeout of 600 seconds. So adjust the timeout on the meson
-> side accordingly.
-
-IIRC few years ago you said tests running on CI ('Tier-1') should
-respect a time limit. IMO 10min seems too much for CI, should this
-test be skipped there?
-
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> [thuth: Bump timeout to 600s and adjust commit description]
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> Message-Id: <20231215070357.10888-7-thuth@redhat.com>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/qtest/meson.build | 1 +
->   1 file changed, 1 insertion(+)
+>   contrib/plugins/execlog.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 7a4160df046..ec93d5a384f 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -4,6 +4,7 @@ slow_qtests = {
->     'npcm7xx_pwm-test': 300,
->     'qom-test' : 900,
->     'test-hmp' : 240,
-> +  'pxe-test': 600,
+> diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
+> index 82dc2f584e2..f262e5555eb 100644
+> --- a/contrib/plugins/execlog.c
+> +++ b/contrib/plugins/execlog.c
+> @@ -199,7 +199,7 @@ static void parse_insn_match(char *match)
+
+Could 'match' become const?
+
+>       if (!imatches) {
+>           imatches = g_ptr_array_new();
+>       }
+> -    g_ptr_array_add(imatches, match);
+> +    g_ptr_array_add(imatches, g_strdup(match));
 >   }
 >   
->   qtests_generic = [
+>   static void parse_vaddr_match(char *match)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

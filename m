@@ -1,148 +1,121 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp622768ejh;
-        Wed, 3 Jan 2024 09:28:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHCIWs3/jGX+B6gmb+OnipQxgQ7v1HVOZJAN9C+36mlI6rlHSc/ufO8d8NWAlQrNhiuadi1
-X-Received: by 2002:a05:6830:13c9:b0:6d9:e320:2316 with SMTP id e9-20020a05683013c900b006d9e3202316mr14813853otq.0.1704302928759;
-        Wed, 03 Jan 2024 09:28:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704302928; cv=none;
-        d=google.com; s=arc-20160816;
-        b=IHqeVcDm7UGZu1cQkv7IMQkbUYPamMu3/iCln/Iz4VFW6Kaj7BlYxXLliAysL8w/rU
-         IIPJ29P5OaMlGVSvZPr39L6fUER2d1icJV8SxtPJFGkSJ/7DvUxVRzX08Bi3e3a6l94Y
-         ii1o4Km+0WIzI73wQzimKurbDYP9GPv4oPq1bgjGBT8sBDon2s6u3a9wA6BbbXnbYGUl
-         OXtmPZbSQd3VIa2Egx5CtleHfBC20Q6I16KXTfIVFDmaJ8tk7PSGZcpyZxto76oz+VVh
-         Mq/pspS2xvATBoHt+1AzNDmIYOB1+SgGHZ+cBgT9EOamoEp+NZ7BZ/d/GSDA4JV27Z8s
-         G81w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=N6hb9mQzro5xMtBLrZrLT4hGAhhufdbiPXtbwSNiuCE=;
-        fh=QNLEvrOw3mAjJFt6jW7FC2Bwi173pi9GOXb+vWcp/Fg=;
-        b=bQg+W/CfjNVwiAkGmdfqAhRFpFJRlXOJ5yml0zPuaImQ7HrzTAAfuurN0eMdm2nbPn
-         84PRpeeF2rSQ/MlXKxKaLywfcWkBt5AcbL5ENw4mWQXlGvjchmdmuerBLqfOSZEoOuKw
-         67YJEq/BdklsepYjQSAmDMh9jW/aEzP/Mm9fL6djpzWPsjSVZnyuF0av7gvxPEtMjCVR
-         uDdr2uSvDTlxv/mQrIIfIvfyaIQHdatIUpVBbpK4tlna7T03OJvwXFq6VNebWRQU0c9I
-         uKnflMOmCBA6mlIDjVd0pr4g6ZhBv5POiYwIfkPp29ejYhCSpHh5LL8MEhP+qo/fDXKi
-         p/Ig==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11-20020ac87d4b000000b004281e729016si7289894qtb.367.2024.01.03.09.28.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jan 2024 09:28:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rL52Y-0000vn-Ga; Wed, 03 Jan 2024 12:28:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rL52X-0000v8-0d; Wed, 03 Jan 2024 12:28:25 -0500
-Received: from zoidberg.rfc1149.net ([195.154.227.159])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rL52U-0000WM-RU; Wed, 03 Jan 2024 12:28:24 -0500
-Received: from buffy.. (buffy [192.168.147.6])
- by zoidberg.rfc1149.net (Postfix) with ESMTP id 3A59C80024;
- Wed,  3 Jan 2024 18:28:19 +0100 (CET)
-Authentication-Results: zoidberg.rfc1149.net;
- dmarc=fail (p=none dis=none) header.from=rfc1149.net
-Authentication-Results: zoidberg.rfc1149.net;
- spf=fail smtp.mailfrom=rfc1149.net
-From: Samuel Tardieu <sam@rfc1149.net>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id s7-20020a05600c45c700b0040d8d11bf63sm2903966wmo.41.2024.01.03.09.33.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Jan 2024 09:33:49 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 6A5105F92D;
+	Wed,  3 Jan 2024 17:33:49 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Vikram Garhwal <fnu.vikram@xilinx.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
- Peter Maydell <peter.maydell@linaro.org>, Samuel Tardieu <sam@rfc1149.net>
-Subject: [PATCH] docs: use "buses" rather than "busses"
-Date: Wed,  3 Jan 2024 18:28:17 +0100
-Message-ID: <20240103172817.2197737-1-sam@rfc1149.net>
-X-Mailer: git-send-email 2.42.0
+Cc: qemu-s390x@nongnu.org,
+	qemu-ppc@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Song Gao <gaosong@loongson.cn>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Brian Cain <bcain@quicinc.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Paul Durrant <paul@xen.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	kvm@vger.kernel.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	Weiwei Li <liwei1518@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	John Snow <jsnow@redhat.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	qemu-riscv@nongnu.org,
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH v2 01/43] tests/avocado: Add a test for a little-endian microblaze machine
+Date: Wed,  3 Jan 2024 17:33:07 +0000
+Message-Id: <20240103173349.398526-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
+References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
- helo=zoidberg.rfc1149.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X87bZg10YRws
+X-TUID: 2kHfRg2p0kA/
 
-If "busses" might be encountered as a plural of "bus" (5 instances),
-the correct spelling is "buses" (26 instances). Fixing those 5
-instances makes the doc more consistent.
+From: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+We've already got a test for a big endian microblaze machine, but so
+far we lack one for a little endian machine. Now that the QEMU advent
+calendar featured such an image, we can test the little endian mode,
+too.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231215161851.71508-1-thuth@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/system/arm/palm.rst    | 2 +-
- docs/system/arm/xscale.rst  | 2 +-
- docs/system/devices/can.rst | 6 +++---
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ tests/avocado/machine_microblaze.py | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst
-index 47ff9b36d4..61bc8d34f4 100644
---- a/docs/system/arm/palm.rst
-+++ b/docs/system/arm/palm.rst
-@@ -14,7 +14,7 @@ following elements:
- -  On-chip Real Time Clock
+diff --git a/tests/avocado/machine_microblaze.py b/tests/avocado/machine_microblaze.py
+index 8d0efff30d2..807709cd11e 100644
+--- a/tests/avocado/machine_microblaze.py
++++ b/tests/avocado/machine_microblaze.py
+@@ -5,6 +5,8 @@
+ # This work is licensed under the terms of the GNU GPL, version 2 or
+ # later. See the COPYING file in the top-level directory.
  
- -  TI TSC2102i touchscreen controller / analog-digital converter /
--   Audio CODEC, connected through MicroWire and |I2S| busses
-+   Audio CODEC, connected through MicroWire and |I2S| buses
- 
- -  GPIO-connected matrix keypad
- 
-diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst
-index d2d5949e10..e239136c3c 100644
---- a/docs/system/arm/xscale.rst
-+++ b/docs/system/arm/xscale.rst
-@@ -32,4 +32,4 @@ The clamshell PDA models emulation includes the following peripherals:
- 
- -  Three on-chip UARTs
- 
---  WM8750 audio CODEC on |I2C| and |I2S| busses
-+-  WM8750 audio CODEC on |I2C| and |I2S| buses
-diff --git a/docs/system/devices/can.rst b/docs/system/devices/can.rst
-index 0af3d9912a..09121836fd 100644
---- a/docs/system/devices/can.rst
-+++ b/docs/system/devices/can.rst
-@@ -1,12 +1,12 @@
- CAN Bus Emulation Support
- =========================
- The CAN bus emulation provides mechanism to connect multiple
--emulated CAN controller chips together by one or multiple CAN busses
--(the controller device "canbus"  parameter). The individual busses
-+emulated CAN controller chips together by one or multiple CAN buses
-+(the controller device "canbus"  parameter). The individual buses
- can be connected to host system CAN API (at this time only Linux
- SocketCAN is supported).
- 
--The concept of busses is generic and different CAN controllers
-+The concept of buses is generic and different CAN controllers
- can be implemented.
- 
- The initial submission implemented SJA1000 controller which
++import time
++from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
+ from avocado_qemu import QemuSystemTest
+ from avocado_qemu import wait_for_console_pattern
+ from avocado.utils import archive
+@@ -33,3 +35,27 @@ def test_microblaze_s3adsp1800(self):
+         # The kernel sometimes gets stuck after the "This architecture ..."
+         # message, that's why we don't test for a later string here. This
+         # needs some investigation by a microblaze wizard one day...
++
++    def test_microblazeel_s3adsp1800(self):
++        """
++        :avocado: tags=arch:microblazeel
++        :avocado: tags=machine:petalogix-s3adsp1800
++        """
++
++        self.require_netdev('user')
++        tar_url = ('http://www.qemu-advent-calendar.org/2023/download/'
++                   'day13.tar.gz')
++        tar_hash = '6623d5fff5f84cfa8f34e286f32eff6a26546f44'
++        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
++        archive.extract(file_path, self.workdir)
++        self.vm.set_console()
++        self.vm.add_args('-kernel', self.workdir + '/day13/xmaton.bin')
++        self.vm.add_args('-nic', 'user,tftp=' + self.workdir + '/day13/')
++        self.vm.launch()
++        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
++        time.sleep(0.1)
++        exec_command(self, 'root')
++        time.sleep(0.1)
++        exec_command_and_wait_for_pattern(self,
++                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
++                '821cd3cab8efd16ad6ee5acc3642a8ea')
 -- 
-2.42.0
-
+2.39.2

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id fl27-20020a05600c0b9b00b0040d2dfb10e0sm2979265wmb.11.2024.01.03.09.33.50
+        by smtp.gmail.com with ESMTPSA id je2-20020a05600c1f8200b0040d934f48d3sm750166wmb.32.2024.01.03.09.33.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 Jan 2024 09:33:50 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id AB9515F933;
+	by draig.lan (Postfix) with ESMTP id 93F3B5F932;
 	Wed,  3 Jan 2024 17:33:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,152 +51,47 @@ Cc: qemu-s390x@nongnu.org,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 04/43] chardev: use bool for fe_is_open
-Date: Wed,  3 Jan 2024 17:33:10 +0000
-Message-Id: <20240103173349.398526-5-alex.bennee@linaro.org>
+Subject: [PATCH v2 03/43] gitlab: include microblazeel in testing
+Date: Wed,  3 Jan 2024 17:33:09 +0000
+Message-Id: <20240103173349.398526-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240103173349.398526-1-alex.bennee@linaro.org>
 References: <20240103173349.398526-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kSHv39j7kdEU
+X-TUID: DiWdNMj5R3sa
 
-The function qemu_chr_fe_init already treats be->fe_open as a bool and
-if it acts like a bool it should be one. While we are at it make the
-variable name more descriptive and add kdoc decorations.
+This reverts aeb5f8f248e (gitlab: build the correct microblaze target)
+now we actually have a little-endian test in avocado thanks to this
+years advent calendar.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20231211145959.93759-1-alex.bennee@linaro.org>
-
 ---
-v2
-  - rename to fe_is_open at f4bug's request
----
- include/chardev/char-fe.h | 19 ++++++++++++-------
- chardev/char-fe.c         | 16 ++++++++--------
- chardev/char.c            |  2 +-
- 3 files changed, 21 insertions(+), 16 deletions(-)
+ .gitlab-ci.d/buildtest.yml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h
-index 0ff6f875116..ecef1828355 100644
---- a/include/chardev/char-fe.h
-+++ b/include/chardev/char-fe.h
-@@ -7,8 +7,12 @@
- typedef void IOEventHandler(void *opaque, QEMUChrEvent event);
- typedef int BackendChangeHandler(void *opaque);
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 91663946de4..ef71dfe8665 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -41,7 +41,7 @@ build-system-ubuntu:
+   variables:
+     IMAGE: ubuntu2204
+     CONFIGURE_ARGS: --enable-docs
+-    TARGETS: alpha-softmmu microblaze-softmmu mips64el-softmmu
++    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
+     MAKE_CHECK_ARGS: check-build
  
--/* This is the backend as seen by frontend, the actual backend is
-- * Chardev */
-+/**
-+ * struct CharBackend - back end as seen by front end
-+ * @fe_is_open: the front end is ready for IO
-+ *
-+ * The actual backend is Chardev
-+ */
- struct CharBackend {
-     Chardev *chr;
-     IOEventHandler *chr_event;
-@@ -17,7 +21,7 @@ struct CharBackend {
-     BackendChangeHandler *chr_be_change;
-     void *opaque;
-     int tag;
--    int fe_open;
-+    bool fe_is_open;
- };
+ check-system-ubuntu:
+@@ -61,7 +61,7 @@ avocado-system-ubuntu:
+   variables:
+     IMAGE: ubuntu2204
+     MAKE_CHECK_ARGS: check-avocado
+-    AVOCADO_TAGS: arch:alpha arch:microblaze arch:mips64el
++    AVOCADO_TAGS: arch:alpha arch:microblazeel arch:mips64el
  
- /**
-@@ -156,12 +160,13 @@ void qemu_chr_fe_set_echo(CharBackend *be, bool echo);
- 
- /**
-  * qemu_chr_fe_set_open:
-+ * @be: a CharBackend
-+ * @is_open: the front end open status
-  *
-- * Set character frontend open status.  This is an indication that the
-- * front end is ready (or not) to begin doing I/O.
-- * Without associated Chardev, do nothing.
-+ * This is an indication that the front end is ready (or not) to begin
-+ * doing I/O. Without associated Chardev, do nothing.
-  */
--void qemu_chr_fe_set_open(CharBackend *be, int fe_open);
-+void qemu_chr_fe_set_open(CharBackend *be, bool is_open);
- 
- /**
-  * qemu_chr_fe_printf:
-diff --git a/chardev/char-fe.c b/chardev/char-fe.c
-index 7789f7be9c8..20222a4cad5 100644
---- a/chardev/char-fe.c
-+++ b/chardev/char-fe.c
-@@ -211,7 +211,7 @@ bool qemu_chr_fe_init(CharBackend *b, Chardev *s, Error **errp)
-         }
-     }
- 
--    b->fe_open = false;
-+    b->fe_is_open = false;
-     b->tag = tag;
-     b->chr = s;
-     return true;
-@@ -257,7 +257,7 @@ void qemu_chr_fe_set_handlers_full(CharBackend *b,
-                                    bool sync_state)
- {
-     Chardev *s;
--    int fe_open;
-+    bool fe_open;
- 
-     s = b->chr;
-     if (!s) {
-@@ -265,10 +265,10 @@ void qemu_chr_fe_set_handlers_full(CharBackend *b,
-     }
- 
-     if (!opaque && !fd_can_read && !fd_read && !fd_event) {
--        fe_open = 0;
-+        fe_open = false;
-         remove_fd_in_watch(s);
-     } else {
--        fe_open = 1;
-+        fe_open = true;
-     }
-     b->chr_can_read = fd_can_read;
-     b->chr_read = fd_read;
-@@ -336,7 +336,7 @@ void qemu_chr_fe_set_echo(CharBackend *be, bool echo)
-     }
- }
- 
--void qemu_chr_fe_set_open(CharBackend *be, int fe_open)
-+void qemu_chr_fe_set_open(CharBackend *be, bool is_open)
- {
-     Chardev *chr = be->chr;
- 
-@@ -344,12 +344,12 @@ void qemu_chr_fe_set_open(CharBackend *be, int fe_open)
-         return;
-     }
- 
--    if (be->fe_open == fe_open) {
-+    if (be->fe_is_open == is_open) {
-         return;
-     }
--    be->fe_open = fe_open;
-+    be->fe_is_open = is_open;
-     if (CHARDEV_GET_CLASS(chr)->chr_set_fe_open) {
--        CHARDEV_GET_CLASS(chr)->chr_set_fe_open(chr, fe_open);
-+        CHARDEV_GET_CLASS(chr)->chr_set_fe_open(chr, is_open);
-     }
- }
- 
-diff --git a/chardev/char.c b/chardev/char.c
-index 996a024c7a2..0653b112e92 100644
---- a/chardev/char.c
-+++ b/chardev/char.c
-@@ -750,7 +750,7 @@ static int qmp_query_chardev_foreach(Object *obj, void *data)
- 
-     value->label = g_strdup(chr->label);
-     value->filename = g_strdup(chr->filename);
--    value->frontend_open = chr->be && chr->be->fe_open;
-+    value->frontend_open = chr->be && chr->be->fe_is_open;
- 
-     QAPI_LIST_PREPEND(*list, value);
- 
+ build-system-debian:
+   extends:
 -- 
 2.39.2

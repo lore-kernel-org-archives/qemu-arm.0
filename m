@@ -1,131 +1,237 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp634189ejh;
-        Wed, 3 Jan 2024 09:50:15 -0800 (PST)
-X-Received: by 2002:a05:6000:1885:b0:337:4bab:dd68 with SMTP id a5-20020a056000188500b003374babdd68mr1390092wri.82.1704304215209;
-        Wed, 03 Jan 2024 09:50:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704304215; cv=none;
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp694916ejh;
+        Wed, 3 Jan 2024 11:53:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH4Q5zxoaxCJshwLtaeE2uFBv8VUd7wPAptuzK5Qz6aESZBh0QZ58TJiMNv60i9gmmvZzty
+X-Received: by 2002:a05:6000:11c2:b0:337:39c7:2b52 with SMTP id i2-20020a05600011c200b0033739c72b52mr3353971wrx.36.1704311601448;
+        Wed, 03 Jan 2024 11:53:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704311601; cv=none;
         d=google.com; s=arc-20160816;
-        b=0H6YZtTylV1cTdQ3Sz6nlAU10ofPVoPaA2VTlW2aNEXbfAdJ3MU7eJywe8esgCCKBO
-         0U8bn2MwqsqSyzTlyJYvK0YDX7Nae57wFi/WnWmL3a2ZSvX4j27r2y5Oh/59LLAVAXiK
-         9JVK5Hh2hsalhiPcGVOODsHJZO6pc5wky2FmHMfPCMiMn4NBvPWgiccy3f/nLn9xb4iG
-         jzRbPBqyAsBmAZlnBq6HNyMoOscgqMkO14f9x+eP+wyi8XjZAOneFAmxP5MzUGvEBlkc
-         yU0faMDjvXFURBav5p5x3vwq2SEACpO1YyifKjFEUZo3efIGsSwFC7Frwrq6oocN67qr
-         VdYw==
+        b=kkNeXMYPU7yDOBy9ToW96txz6IX2c6OWz7mlY8qAH6f/226aX6Vis8oLNNlmPakvsA
+         Bz0JCoWb2ENx9iYDFDqdOBuXhSBkQgTdhiz5GKyHv49aY+phczkOi61Fxxf8NBBvi9i9
+         7hHZNpgvYcwzB21pjrmBGxGZX/r1OITxtpAjRNAVfOHckl1r4o60bIaIxYBoI5hwN1F/
+         G5tS0NtaN6R+N9XsZJNH+ETDe4sXL7CFbi6zb5OEzP5Ne7DEoqDSvoSE0z3CArHECDQO
+         YQRRliDmV/r9DBT674wRU+P2DIpDO2rxcSUO2+rX1HvD6at411x7gcJf7r1sl/w0teGM
+         kJkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=5F2VXYkjrYII2wHzAQk4L5HsWOBoBNWS2pQ57+FVJgY=;
-        fh=D0Odi6nYqqNhU0T1NFJPAV9GuK5M2uQe2atjYsAy/LU=;
-        b=rkuQdQHPWHUi6ljxrbpbz8txGts6YOTAUwBOlccqj8JV5nb3xKA7j+6jaXOmAdYyxK
-         gqjdJHHUkW36HVgxuQOj7HhGC25in7k10fhETyvSo9JVxAbvG5XL1AWAFwvFf65Z9SC2
-         TW58vRU/vww4/6aYbEo1lm3lAmjGK1LeYUJU41bFhe/Tj9LbWM+uXj2ec7VyKDq2/Ers
-         CxfFKZhGz4KpxrC437GbKmINcBXAGjTEMuPjoFaH9wXEzu32oODSnzDYIP2kidV3vdm6
-         GzqEqIoY9FfhMIjxxviwBIsihpmq0/wLy4Gmu5iajrHUfqhqbw4/2TuIsCtCRPO1Ulhe
-         uwHQ==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=WnrRHUoz0jts2thVWi4a43FMZwX2AvnPsl8a71ZrUsA=;
+        fh=V441W+niNHsEc6ANSJJrHKcMf6GxAW1s3Ky/DKgOTeQ=;
+        b=OyBdS4J7Fl6uZ559TKMGDAt2X5lAiiOSNzAYpHt9fckzSHrS5wZeIVgocDALJPJCqM
+         MeBTnSW001utHlidA5wF09krVc1vNLZoZObS1E9x6lFcTNbM19dZRuv9+x22DMSeYLfc
+         JJVVwGEVQGH4QxtQvjZ0zj13o+HSENoffLQkuXigPb3f0rtGFke7z9g2rBj4soCDjCmE
+         rWFokh7u+CKDuLiC8HhF7+46jaABnq/jpX4Gh+QiCNb6J4tGLBFbAz3qN8XWP7tqTYA5
+         FPSECDLGX2uhVCSfItOEUN2EVlmP29qhKAAaCrTOjRlYcFOBige5OW7MpJeLvXw2DRda
+         jwuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DsXbURPT;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bs3-20020a056000070300b0033686b04bf6sor195477wrb.6.2024.01.03.09.50.15
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 03 Jan 2024 09:50:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=GF3HFBPo;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=GF3HFBPo;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2a07:de40:b251:101:10:150:64:1])
+        by mx.google.com with ESMTPS id p8-20020adfcc88000000b003362a225f1dsi13231727wrj.170.2024.01.03.11.53.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Jan 2024 11:53:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) client-ip=2a07:de40:b251:101:10:150:64:1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DsXbURPT;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1704304214; x=1704909014; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5F2VXYkjrYII2wHzAQk4L5HsWOBoBNWS2pQ57+FVJgY=;
-        b=DsXbURPTgfIDVSyNg7YkZBS6zkb83LYMUUYk+DZhw8Y+4MqERpNi20YQhe5C4ZnxzK
-         oTD9dTY3JVaU+2XeeUQPnXQIWkI9v5R32UeDADVklOcoXDRyR5W1wC2q1eh0ymiGLU4h
-         amxEk59QtbfFrb4nHvfMWb9Wc11qKF09s1+c489CCCkOGTSkOCYRlOmeAYaF0nzLOukw
-         FwdzASLIjqDDV28l9+UcD2yEx3SaHV9NZ+qSLHLqDFsCKy4692sdzc4uWjN1PiKGr0bZ
-         GQuWyoZHy+Ikpg+k8Y45DQLty47JOMAK/c1In/5mvYDg+NyLdS9HAelpPt/aKWQbl8Bb
-         GpPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704304214; x=1704909014;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5F2VXYkjrYII2wHzAQk4L5HsWOBoBNWS2pQ57+FVJgY=;
-        b=CGq+3UjegtBzrWg9kNRtobt3zRf3mhZzERc5eID/C1Qvu2iBI061/aFmCs/xdQ2biL
-         CpylrGJHeqWspUqgoeJhcN1lk18ntXFCMczFS5LzfIf1s+UNtF5SHn/2D8sg3xehEKL2
-         TJ0FWDAYIIH3mZRKvCN+i2j88YybuzFENs+dPeAkwxkxZXXYiuF3x3J5JfF/NW3tHUiV
-         T3zRDuUS9FTea0G1K7QwN4WwFGMRmVLU7yvt5QDBtWihwSUEK5UFJZqWeKvLv/tWN6Jw
-         lnCCw1udU37wz5A5OK54OjX6cMM1O8lB77Qw5aHwaQ+qa//vIU0pKCXMsE2XAdmvEHrv
-         n6FQ==
-X-Gm-Message-State: AOJu0YzBHY4P7ucHDiTO/cLmE7eCCbttzyQ9iJ4Q6ktiICV/i7o8QOzr
-	WI5JAZOynYfC36LN0C5rN6v5vtIhrEtUDm8HDEU5kPK4qrIbEw==
-X-Google-Smtp-Source: AGHT+IHOec9oNkIrnlY9NK6/rK0VGc1b4NubPs5VB1Dj8nGfMZLG0FwRX19cqc26uA170W2Jd13kLQ==
-X-Received: by 2002:a5d:6910:0:b0:336:6dd7:4a13 with SMTP id t16-20020a5d6910000000b003366dd74a13mr10911726wru.121.1704304214537;
-        Wed, 03 Jan 2024 09:50:14 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (tre93-h02-176-184-7-144.dsl.sta.abo.bbox.fr. [176.184.7.144])
-        by smtp.gmail.com with ESMTPSA id c9-20020a056000104900b003368849129dsm30420818wrx.15.2024.01.03.09.50.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Jan 2024 09:50:14 -0800 (PST)
-Message-ID: <1a923274-8a4a-4811-a836-9a0866e2c852@linaro.org>
-Date: Wed, 3 Jan 2024 18:50:10 +0100
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=GF3HFBPo;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=GF3HFBPo;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 74DEE2207B;
+	Wed,  3 Jan 2024 19:53:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1704311600; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WnrRHUoz0jts2thVWi4a43FMZwX2AvnPsl8a71ZrUsA=;
+	b=GF3HFBPo5oaXerPCtqrpaFWf3HG1+dx3tB8RiNsD/R2S40Gii55rt6rzukwnAws9IV3Fq8
+	Do7/dMqrE/Aasdb27FhtL3SXLYK7Xq0oS1OYWtlO86gEefFKWpzaYSkKZhaMuISFTVndBV
+	yZJN4c6S4zOV/WFZO0bKfJi5JPtSvdw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1704311600;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WnrRHUoz0jts2thVWi4a43FMZwX2AvnPsl8a71ZrUsA=;
+	b=SqRkAj6zY5/CmGZTxvZXKXgac2U0yhhbSsKgk/RgDnnem1tAP6saTJD0WP/NrRI9VjPrTo
+	vQDzJLwDXYg0/dCg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1704311600; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WnrRHUoz0jts2thVWi4a43FMZwX2AvnPsl8a71ZrUsA=;
+	b=GF3HFBPo5oaXerPCtqrpaFWf3HG1+dx3tB8RiNsD/R2S40Gii55rt6rzukwnAws9IV3Fq8
+	Do7/dMqrE/Aasdb27FhtL3SXLYK7Xq0oS1OYWtlO86gEefFKWpzaYSkKZhaMuISFTVndBV
+	yZJN4c6S4zOV/WFZO0bKfJi5JPtSvdw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1704311600;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WnrRHUoz0jts2thVWi4a43FMZwX2AvnPsl8a71ZrUsA=;
+	b=SqRkAj6zY5/CmGZTxvZXKXgac2U0yhhbSsKgk/RgDnnem1tAP6saTJD0WP/NrRI9VjPrTo
+	vQDzJLwDXYg0/dCg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id E7FB51398A;
+	Wed,  3 Jan 2024 19:53:19 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id C1x1Ky+7lWXuHAAAD6G6ig
+	(envelope-from <farosas@suse.de>); Wed, 03 Jan 2024 19:53:19 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>, qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>, Eduardo Habkost <eduardo@habkost.net>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+ Anton Johansson <anjo@rev.ng>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Hao Wu <wuhaotsh@google.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, Igor Mitsyanko
+ <i.mitsyanko@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Rob Herring
+ <robh@kernel.org>, qemu-arm@nongnu.org, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>
+Subject: Re: [PATCH 00/33] hw/cpu/arm: Remove one use of qemu_get_cpu() in
+ A7/A15 MPCore priv
+In-Reply-To: <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org>
+References: <20231212162935.42910-1-philmd@linaro.org>
+ <03b969d3-1947-4186-b3ee-15e3cddc5f34@kaod.org>
+ <18a38b88-8f20-420c-9916-a03d1b4930a7@linaro.org>
+ <38cfa9de-874b-41dd-873e-5ad1f5a5805e@kaod.org>
+ <fe4d463f-b646-4b7b-9063-d16ad5dbb128@linaro.org>
+Date: Wed, 03 Jan 2024 16:53:17 -0300
+Message-ID: <87y1d6i47m.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 30/43] gdbstub: Use GDBFeature for GDBRegisterState
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- David Hildenbrand <david@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Yanan Wang <wangyanan55@huawei.com>, Bin Meng <bin.meng@windriver.com>,
- Laurent Vivier <lvivier@redhat.com>, Michael Rolnik <mrolnik@gmail.com>,
- Alexandre Iooss <erdnaxe@crans.org>, David Woodhouse <dwmw2@infradead.org>,
- Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
- Brian Cain <bcain@quicinc.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Beraldo Leal <bleal@redhat.com>, Paul Durrant <paul@xen.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>,
- kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, John Snow <jsnow@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
- <20240103173349.398526-31-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240103173349.398526-31-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: nRnRGjx2yy0V
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spam-Level: ****
+X-Spam-Level: 
+X-Spamd-Result: default: False [-1.60 / 50.00];
+	 RCVD_VIA_SMTP_AUTH(0.00)[];
+	 TO_DN_SOME(0.00)[];
+	 R_RATELIMIT(0.00)[to_ip_from(RLgn3pipxh44ye66tuwadwbnif)];
+	 RCVD_COUNT_THREE(0.00)[3];
+	 FROM_EQ_ENVFROM(0.00)[];
+	 MIME_TRACE(0.00)[0:+];
+	 MID_RHS_MATCH_FROM(0.00)[];
+	 BAYES_HAM(-3.00)[100.00%];
+	 ARC_NA(0.00)[];
+	 FROM_HAS_DN(0.00)[];
+	 FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	 TO_MATCH_ENVRCPT_ALL(0.00)[];
+	 TAGGED_RCPT(0.00)[];
+	 MIME_GOOD(-0.10)[text/plain];
+	 DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	 RCPT_COUNT_TWELVE(0.00)[23];
+	 DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email];
+	 FUZZY_BLOCKED(0.00)[rspamd.com];
+	 FREEMAIL_CC(0.00)[redhat.com,nuvoton.com,linaro.org,habkost.net,jms.id.au,alistair23.me,rev.ng,gmail.com,google.com,tribudubois.net,codeconstruct.com.au,kernel.org,nongnu.org,ilande.co.uk];
+	 RCVD_TLS_ALL(0.00)[];
+	 SUSPICIOUS_RECIPS(1.50)[]
+Authentication-Results: smtp-out1.suse.de;
+	none
+X-Spam-Score: -1.60
+X-Spam-Flag: NO
+X-TUID: qrpShlE50vst
 
-On 3/1/24 18:33, Alex Bennée wrote:
-> From: Akihiko Odaki <akihiko.odaki@daynix.com>
-> 
-> Simplify GDBRegisterState by replacing num_regs and xml members with
-> one member that points to GDBFeature.
-> 
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20231213-gdb-v17-5-777047380591@daynix.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   gdbstub/gdbstub.c | 14 ++++++--------
->   1 file changed, 6 insertions(+), 8 deletions(-)
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> +Peter/Fabiano
+>
+> On 2/1/24 17:41, C=C3=A9dric Le Goater wrote:
+>> On 1/2/24 17:15, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> Hi C=C3=A9dric,
+>>>
+>>> On 2/1/24 15:55, C=C3=A9dric Le Goater wrote:
+>>>> On 12/12/23 17:29, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>> Hi,
+>>>>>
+>>>>> When a MPCore cluster is used, the Cortex-A cores belong the the
+>>>>> cluster container, not to the board/soc layer. This series move
+>>>>> the creation of vCPUs to the MPCore private container.
+>>>>>
+>>>>> Doing so we consolidate the QOM model, moving common code in a
+>>>>> central place (abstract MPCore parent).
+>>>>
+>>>> Changing the QOM hierarchy has an impact on the state of the machine
+>>>> and some fixups are then required to maintain migration compatibility.
+>>>> This can become a real headache for KVM machines like virt for which
+>>>> migration compatibility is a feature, less for emulated ones.
+>>>
+>>> All changes are either moving properties (which are not migrated)
+>>> or moving non-migrated QOM members (i.e. pointers of ARMCPU, which
+>>> is still migrated elsewhere). So I don't see any obvious migration
+>>> problem, but I might be missing something, so I Cc'ed Juan :>
+
+FWIW, I didn't spot anything problematic either.
+
+I've ran this through my migration compatibility series [1] and it
+doesn't regress aarch64 migration from/to 8.2. The tests use '-M
+virt -cpu max', so the cortex-a7 and cortex-a15 are not covered. I don't
+think we even support migration of anything non-KVM on arm.
+
+1- https://gitlab.com/farosas/qemu/-/jobs/5853599533
+
+>> We broke migration compatibility by moving the IC object in the QOM
+>> hierarchy of the pseries machines in the past. These changes might
+>> be different. Here is the QOM tree of the ast2600 SoC.
+>>=20
+>> before :
+>>=20
+>>  =C2=A0 /soc (ast2600-a3)
+>>  =C2=A0=C2=A0=C2=A0 /a7mpcore (a15mpcore_priv)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /a15mp-priv-container[0] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic (arm_gic)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_cpu[0] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_cpu[1] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_cpu[2] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_dist[0] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_vcpu[0] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_viface[0] (memory-regio=
+n)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_viface[1] (memory-regio=
+n)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_viface[2] (memory-regio=
+n)
+>>  =C2=A0=C2=A0=C2=A0 /cpu[0] (cortex-a7-arm-cpu)
+>>  =C2=A0=C2=A0=C2=A0 /cpu[1] (cortex-a7-arm-cpu)
+>>=20
+>> after :
+>>=20
+>>  =C2=A0 /soc (ast2600-a3)
+>>  =C2=A0=C2=A0=C2=A0 /a7mpcore (a7mpcore_priv)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /cpu[0] (cortex-a7-arm-cpu)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /cpu[1] (cortex-a7-arm-cpu)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic (arm_gic)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_cpu[0] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_cpu[1] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_cpu[2] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /gic_dist[0] (memory-region)
+>>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /mpcore-priv-container[0] (memory-region)
+>>=20
+>>=20
+>> Thanks,
+>>=20
+>> C.
+>>=20
+>>=20
+>>=20

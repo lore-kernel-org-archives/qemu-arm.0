@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp92085ejo;
-        Thu, 4 Jan 2024 05:46:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG6MfLv2iY4xZZHi2WJ2Qi48AJo1w2Xs3RVzLE7fg7hz35u36qQAGYp0dz9QsKJYtUvaC+z
-X-Received: by 2002:ac8:7fd5:0:b0:427:fd4d:e383 with SMTP id b21-20020ac87fd5000000b00427fd4de383mr752123qtk.52.1704376002796;
-        Thu, 04 Jan 2024 05:46:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704376002; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp92328ejo;
+        Thu, 4 Jan 2024 05:47:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IExh9CnKInFyW+7/YheRCxFy4o61l2BdLsjas6GsBYUa2Bw0i21LdYJ/mK/3RH1Z0egLsDq
+X-Received: by 2002:a05:620a:2a05:b0:781:62be:76c2 with SMTP id o5-20020a05620a2a0500b0078162be76c2mr692957qkp.61.1704376025216;
+        Thu, 04 Jan 2024 05:47:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704376025; cv=none;
         d=google.com; s=arc-20160816;
-        b=SQAM0f3kNqVwUi4JgjohOUx4X/qEtg7dI7njbp1AXuOW9IvQNPIxMLcV4oXQ+8+2+5
-         nIDZxc8qb0oVsnuPs+B7bFfHzQomAR357r7SN4UHOsNO1dQfdh7sL2cYGOfU/DrwsQym
-         r0O31ifxxdMkR7cYMXn0xB9nsBmXjA7V2jJuqDGtqI3FWTjHgxRmQbirrEtl6lr+fj5B
-         wVowGkHaj8b20Ohw/R8D+BuI+MIDFZhh/Ql4jPNVqm5ta77s5wT2N21sjoTa1fYu+D2s
-         odgpMDxoZmWPYUoMEJ0lyvGeVzvzo3R0X34tP/kbHTeUAXEb7BrRIudJErm5KA6k1DR0
-         SaWQ==
+        b=OncxAxE+44xoTpKnMgPeDHXpaW4ezhxOXHwiyC3oxwH7Acq4VIaT3lKRKH2HSIRKLh
+         ibpuDuFMbfKR6yLBEPap12fBLOm6FX2QuGSDX0m+8zQRqimZsIYuc4yKm0XcbX/TGTOL
+         GWthFxb6ITlYO//7/EJEcUFZMn324Lo0Oy7W6gbu3Bo2bJ+wZmUxIzKmYn0Hu8u/9USn
+         SgmA7JmkWMeMde6wsAqYq/lrdzV9qI0KZC8uNWYslw4dvJfgCaE0VH0OVoZc88+3Qx17
+         4MHq8ACjBjvhTw4+VZijfrDJ0AHqOnbeYxS+5hnLTDvB6+fHEc5wZPgCF6EpZbr4ZPcs
+         WhEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:feedback-id:references:in-reply-to:message-id:subject
          :cc:from:to:date:dkim-signature;
-        bh=t0Yxl9VW5WvFjF/FalnTSQcUgwlftiRhZvicw8QVMmY=;
-        fh=+gjMF8BfOa8pM9LjJ/LEVpulnhpPRiKq5R0ON7+JShQ=;
-        b=SrR50/MfAcLj4uo+DDo6pUr0LD8KqW5tIymaGVFm64af7YUHYB9YjXbMvA4vZprSKt
-         /d5bRodSlpIYULEGErKOl3wZH1+Q3uOJBoKAWALvNpdHdn3+ITDobOuiTmDJ420LZif7
-         ivbBVVPs4VLTonBSHM7lvqvbvP+NvO0RJe6LXKR5KL/SCdblxGyvo1kdr8Mg+jKajfz+
-         xEbM955KRwjOZVEWR9pC0mX6DrjF9HAEpMbPMjAckyMgH7sQBBKC344E5wg3tMw8XiYz
-         dwz7eojNlobMAM9J+HNHaEPTHYPqExB0PgiwCUHyMLm/CNc7IjqA1/DyqcCTfAYX7GNG
-         ua+Q==
+        bh=qzVBR4lBcGJVgTKzHaiagV6F7F9YSUdTi14Y6w2hhuw=;
+        fh=4H2p4RgA4AhOsy/0kk3Vx36pU2TToCe2TMlmVj/Jtec=;
+        b=WVHV1cOeVjyH0vPtTs/QOh0Cvf2txim8mr+mPf1qmuP66RYWJTbGCMRkTTzSNFkk/m
+         FWI9zva1NsauYrik/Xfz88L0cYyJ20Oskv7j3T+qiwLp74vmXlSoVUeLtqZCTnYY8/U+
+         5ThbwT7Xx++OmSPFpA0cf6mAD3GfgyHJyr1WHWuuhgRDn1rfHRWZBaew30BcCa7hpch/
+         C+sRHataiVd3JHt8ZGW0KE///aRRekV1ywR1T9GmCO5nK5QGEq3GjgR4DITXG2RnggOR
+         z5jKlTyF/EGxLR7YyBKwT4tMhztpkjpDisTqtyH7MZKtwVGs80xZMBtgJxbC/6Em/bQx
+         9cpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@proton.me header.s=protonmail header.b=Xmsbs0p8;
+       dkim=pass header.i=@proton.me header.s=protonmail header.b=LsngcGav;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=proton.me
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o22-20020ac87c56000000b00428227121fasi8240019qtv.233.2024.01.04.05.46.42
+        by mx.google.com with ESMTPS id a20-20020a05620a439400b00780e42c417esi34822714qkp.737.2024.01.04.05.47.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 05:46:42 -0800 (PST)
+        Thu, 04 Jan 2024 05:47:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@proton.me header.s=protonmail header.b=Xmsbs0p8;
+       dkim=pass header.i=@proton.me header.s=protonmail header.b=LsngcGav;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=proton.me
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLO3D-0001rD-Ml; Thu, 04 Jan 2024 08:46:23 -0500
+	id 1rLO3E-0001s6-FD; Thu, 04 Jan 2024 08:46:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <inesvarhol@proton.me>)
- id 1rLO2e-0001W1-KZ
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:45:48 -0500
-Received: from mail-4324.protonmail.ch ([185.70.43.24])
+ id 1rLNv1-0006PV-Tp
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:37:55 -0500
+Received: from mail-0201.mail-europe.com ([51.77.79.158])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <inesvarhol@proton.me>)
- id 1rLO2b-00022R-Gr
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:45:48 -0500
+ id 1rLNuy-0006Lw-TJ
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:37:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail; t=1704375942; x=1704635142;
- bh=t0Yxl9VW5WvFjF/FalnTSQcUgwlftiRhZvicw8QVMmY=;
+ s=protonmail; t=1704375467; x=1704634667;
+ bh=qzVBR4lBcGJVgTKzHaiagV6F7F9YSUdTi14Y6w2hhuw=;
  h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
  Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
  Message-ID:BIMI-Selector;
- b=Xmsbs0p8SYvx52M5ajHJQRSQOKWOEqPHe5W8QOa6z5NbDtDqUW4o+OcOwnsd5hc7M
- cldVNyCaqmmDShfuhrXbpefEHWfVHQd/RPmnrpwQBQ70BC+gdeKt8i6Sit1mrB9Jmo
- UcdtdpDjp8P0e1vFvOz1wWRXNqFhqqYhSl4QhcBFTACnoBBN0LZkwreYaL8ylvCK65
- zu7p+c2hpVHN3ImPf0aLkNDio/LuQGHPge18jX8gAX1luxWvZM3DSCwO5K4A1tGJOX
- sWHbXXQr+SU5U/ZRebDVYiGUU2dKQCF4GGTOI0rm0AkPHCWQossqW3pMrlhkqocwEY
- o3G9Zw2TSf2dw==
-Date: Thu, 04 Jan 2024 13:45:21 +0000
+ b=LsngcGavZ3qKg8o41q4w5QIwSLInkO83ER4qMPjXtWHqxZuTtNUCyut4upaBB0ZZK
+ Nq+TLAUAbLbEgItGX3s3uzy2jO+XrbIMxUTgtPD6SeH7hm6d/vsA5M0fTYc4Ok90iw
+ 91pWXS/c/Y8y6LehE8hzqJ9Hj1waYHX9Ewt353ucXkvrmDkTMcqI5r7TI0QUgSW8V3
+ 21lJqSqB6lmFwDVHHj0AtmbUqNYQapKqUSIZSPuLMV6S8YvsuMokei3CXV914l1L1d
+ 16/V3J45D7u/kjV+Tk40WLjeBVYu6KHkp5ttNjgl8wm5S/dB9YcfhPnljpa7eoQK81
+ 06w86msCLWPzQ==
+Date: Thu, 04 Jan 2024 13:37:22 +0000
 To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 From: inesvarhol <inesvarhol@proton.me>
 Cc: =?utf-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org
 Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
-Message-ID: <vueSA6LNk2OEd9t7plxmNvtm9LVj_TIG9PEY1n8Gz9MMPMHL8jXTaStS6_-AddPqbYwLbbm-ZZgAbg0ezFyTS0_VQ5gq1-FvMG5m5tomJe8=@proton.me>
-In-Reply-To: <cd41459a-b96d-4b51-bc2a-37724ccc4db1@linaro.org>
+Message-ID: <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
+In-Reply-To: <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
 References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
  <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
- <cd41459a-b96d-4b51-bc2a-37724ccc4db1@linaro.org>
+ <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
 Feedback-ID: 78004345:user:proton
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=185.70.43.24; envelope-from=inesvarhol@proton.me;
- helo=mail-4324.protonmail.ch
+Received-SPF: pass client-ip=51.77.79.158; envelope-from=inesvarhol@proton.me;
+ helo=mail-0201.mail-europe.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 04 Jan 2024 08:46:23 -0500
+X-Mailman-Approved-At: Thu, 04 Jan 2024 08:46:22 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,114 +108,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MvQtvGE2X4Rh
-
-Le jeudi 4 janvier 2024 =C3=A0 14:33, Philippe Mathieu-Daud=C3=A9 <philmd@l=
-inaro.org> a =C3=A9crit :
+X-TUID: Xe9fFRcDqqlm
 
 
-> On 28/12/23 17:19, In=C3=A8s Varhol wrote:
->
-> > Signed-off-by: Arnaud Minier arnaud.minier@telecom-paris.fr
-> > Signed-off-by: In=C3=A8s Varhol ines.varhol@telecom-paris.fr
-> > ---
-> > tests/qtest/meson.build | 5 +
-> > tests/qtest/stm32l4x5_exti-test.c | 596 ++++++++++++++++++++++++++++++
-> > 2 files changed, 601 insertions(+)
-> > create mode 100644 tests/qtest/stm32l4x5_exti-test.c
->
->
-> Once the SoC parentship fixed in based series, this patch
-> requires:
->
-> -- >8 --
->
-> diff --git a/tests/qtest/stm32l4x5_exti-test.c
-> b/tests/qtest/stm32l4x5_exti-test.c
-> index 60c8297246..543199cd4d 100644
-> --- a/tests/qtest/stm32l4x5_exti-test.c
-> +++ b/tests/qtest/stm32l4x5_exti-test.c
-> @@ -287,4 +287,3 @@ static void test_edge_selector(void)
-> /* Configure EXTI line 0 irq on rising edge /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 1);
-> exti_writel(EXTI_IMR1, 0x00000001);
-> @@ -294,4 +293,3 @@ static void test_edge_selector(void)
-> / Test that an irq is raised on rising edge only /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 0);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 0);
->
-> @@ -301,4 +299,3 @@ static void test_edge_selector(void)
->
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 1);
->
-> @@ -316,4 +313,3 @@ static void test_edge_selector(void)
-> / Configure EXTI line 0 irq on falling edge /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 0);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 0);
-> exti_writel(EXTI_IMR1, 0x00000001);
-> @@ -323,4 +319,3 @@ static void test_edge_selector(void)
-> / Test that an irq is raised on falling edge only /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 1);
->
-> @@ -330,4 +325,3 @@ static void test_edge_selector(void)
->
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 0);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 0);
->
-> @@ -350,4 +344,3 @@ static void test_edge_selector(void)
-> / Test that an irq is raised on rising and falling edge /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 1);
->
-> @@ -357,4 +350,3 @@ static void test_edge_selector(void)
->
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 0);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 0);
->
-> @@ -377,4 +369,3 @@ static void test_edge_selector(void)
-> / Test that no irq is raised /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 1);
->
-> @@ -384,4 +375,3 @@ static void test_edge_selector(void)
->
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 0, 0);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 0, 0);
->
-> @@ -500,4 +490,3 @@ static void test_masked_interrupt(void)
-> / Simulate rising edge from GPIO line 1 /
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 1, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 1, 1);
->
-> @@ -550,4 +539,3 @@ static void test_interrupt(void)
-> / Simulate rising edge from GPIO line 1 */
-> - qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> - NULL, 1, 1);
-> + qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, 1, 1);
-> ---
->
-> Note you could use a helper to ease readability:
->
-> static void exti_set_irq(int num, int lvl)
-> {
-> qtest_set_irq_in(global_qtest, "/machine/soc/exti", NULL, num, lvl);
-> }
->
-> Tested-by: Philippe Mathieu-Daud=C3=A9 philmd@linaro.org
+Le jeudi 4 janvier 2024 =C3=A0 14:05, Philippe Mathieu-Daud=C3=A9 <philmd@l=
+inaro.org> a =C3=A9crit=C2=A0:
 
-Ok thank you a lot !
-And yes, we'll swap the 2nd and 3rd commit as you said.
+Hello,
+
+> > +static void test_edge_selector(void)
+> > +{
+> > + enable_nvic_irq(EXTI0_IRQ);
+> > +
+> > + / Configure EXTI line 0 irq on rising edge */
+> > + qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
+>=20
+>=20
+> Markus, this qtest use seems to expect some stability in QOM path...
+>=20
+> In=C3=A8s, Arnaud, having the SoC unattached is dubious, it belongs to
+> the machine.
+
+Noted, we will fix that.=20
+Should we be concerned about the "stability in QOM path" ?
+
+>=20
+> (qemu) info qom-tree
+> /machine (b-l475e-iot01a-machine)
+> /SYSCLK (clock)
+> /peripheral (container)
+> /peripheral-anon (container)
+> /unattached (container)
+> /device[0] (stm32l4x5xg-soc)
+>=20
+> Eh I don't see the 'exti' here...
+>=20
+> Indeed the test fails:
+>=20
+> 17/35 qemu:qtest+qtest-arm / qtest-arm/test-arm-mptimer
+> OK 0.44s 61 subtests passed
+> =E2=96=B6 18/35 /arm/stm32l4x5/exti/reg_write_read
+> FAIL
+> =E2=96=B6 18/35 /arm/stm32l4x5/exti/no_software_interrupt
+> FAIL
+> =E2=96=B6 18/35 /arm/stm32l4x5/exti/software_interrupt
+> FAIL
+> =E2=96=B6 18/35 /arm/stm32l4x5/exti/masked_interrupt
+> FAIL
+> =E2=96=B6 18/35 /arm/stm32l4x5/exti/interrupt
+> FAIL
+> =E2=96=B6 18/35 /arm/stm32l4x5/exti/test_edge_selector
+> FAIL
+> Listing only the last 100 lines from a long log.
+
+Yes indeed, the tests fail in this 2nd commit as the EXTI device isn't conn=
+ected to the SoC yet (3rd commit).
+I forgot to mention it in this in this version :/
+Swapping the 2nd and 3rd commmit seems more straightforward to do ?=20
+
+

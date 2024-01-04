@@ -1,110 +1,156 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp20203ejo;
-        Thu, 4 Jan 2024 03:36:35 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGFISVtdb6mhnZaLOULehyi5cKk3RjucJuZUN94MIyoMchxgDOhS2r8PPAArppLoWThZIFc
-X-Received: by 2002:a05:6808:191b:b0:3bc:1edb:1ee8 with SMTP id bf27-20020a056808191b00b003bc1edb1ee8mr513418oib.55.1704368195799;
-        Thu, 04 Jan 2024 03:36:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704368195; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp98623ejo;
+        Thu, 4 Jan 2024 06:00:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHaq+D9gtt1BFz+pj+ucwC/aYod1XrzXkhXHSxOSBsIzIlnNckbF6GIDaD7Jyszbsbo65WP
+X-Received: by 2002:a05:622a:1793:b0:428:2050:cb94 with SMTP id s19-20020a05622a179300b004282050cb94mr821365qtk.55.1704376810468;
+        Thu, 04 Jan 2024 06:00:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704376810; cv=none;
         d=google.com; s=arc-20160816;
-        b=UKgebWKyljFiVMJxWHwGjhP0jfP4ZaXa/+PF/xmKTwENYUjVRJTaNzmaJGAmBVHjMd
-         Z+WUMWfZQwDYE5SJDz7dzDljL+k48/Oxk3S7C29fhDKBDyVJ20xprFWQ38KQpvbcIfKp
-         uLPf5VYk70m6GHC1wHThV4EfEC+LzRwdkZi/8dcSiXpcqXJ+PmHrz3jR688Qbci/kCyt
-         1fLxqebGAWedc6ywpQj58+M0mqOauLSQOZ/OnGMC+2qGTSp2d3DpMNpqoDuFmyxtid34
-         sRVOaJ32S9ghIYBz530MTsUsoOFVpCnRF4iRQbu/fOp0w/JLrgSZW1Gi7RQTVjXm+9a4
-         4VkA==
+        b=tSpKgqJuxNesheCZUWyCMFpZOPx85JjiD/pat0jNFENRFjbntYs8c0aeK7Z0hpqoap
+         SWRsCSndl+UuIPlL0jQC6X9XOraaZMjPXRmm+yT7JDCDnrmBkWyjgucswu3CAym07utK
+         txpVIb6v8hlH0DrXjh8/kZZvVTL1S3TMlkHIlZnNBk86ki1P/bwKlaJNgyLI0WmxLhCI
+         +hhEzbMebxITgwEB87WfMS5Js4nk6328rT8ELIUGDeuB/sCXq/JYXbLsdbdtpoU3PGwC
+         Ruw8U4CEJnfDVLJy5wToXvUrhI4bDke+lz939uLdGmGRK1QNt7hH8Sy+BohQAJ0/nT/b
+         vzbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=JiqQFbCtgVfu5KxzxBNsgCQ4UrsbDGzvfy3R3hTLeQg=;
-        fh=0roCnE68VTjeaqD7vmkgCjO2ZabnBkjskiEy4oqcjws=;
-        b=AwllOEEwxzI8iGhiIwUDWlVHxuWEaNqA+SDD7Wx21UmVVDEjVL8E6MFnDAJoSXBfnc
-         szlZtUIp+T4OXWlg81NhktKY/Z2wXhvTVi4gMdLN6D++57y3il6eUMxzOuuR1pp66EuZ
-         p1CcVi8tZ6NNY8YHBjfAxzdhInb1E/NYARvNgF124mpcMdHE5kt/gZVeZQg0fYfu4GPQ
-         wwolak9DCSpYoDuLADbLEjS+KIIv2dW+3w1Ezx478iBYtK6KjKOivBvZvCPLSYy3Cb3C
-         hemqlQBVlj+PheeXPg19KCPL3vnLniiz8MS0vEZt5tr89JE0wdECMoqSICVEzcRUNWhr
-         pNsg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:autocrypt:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature:dkim-filter;
+        bh=RT/5EEyUFXLy4aIWJ6X5RYoImRe9pDsh/pHd5qXJirI=;
+        fh=/J/PagYvWbt+W1tds+wCW3dc+iIte6zZigNnp5S2CwI=;
+        b=Cb2dfFO5s3wfeAnNcYLhTFfGca3Kxj3XMJtxfs2ltc7lMLVV5EAZDTY+94phB9rvqE
+         H1RhzvNUp8tVdDBsHaTvwUGG7w1MqMuZ+qNDhM+RAgxyq2DwlSHTpK6OJhSkYSmMzMTy
+         WQEPRUEneaFfQAlsOISlM4ATrw1Dq5dxbHLi1UILikOWH1WgJzB2yCoLtBR3bpF/dmz6
+         tyjcvJ8LXdBOHJNWFTr4kXP53RO7qUE/HaGfPNVoqxBWVCZWD/zHP1n2ftm8AYwltpuF
+         E9P1RNhd4aS/iSbNYbHH8OSDUbQ3TFlVMm2fbLLJxgY1pDrqDqpbm4SDqkMrBPCsRrfA
+         bf/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rmqSPoPT;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=JtnaZeUR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq36-20020a05620a46a400b00777731bf89csi32768303qkb.150.2024.01.04.03.36.35
+        by mx.google.com with ESMTPS id q1-20020a05622a030100b0042771241179si31928940qtw.75.2024.01.04.06.00.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 03:36:35 -0800 (PST)
+        Thu, 04 Jan 2024 06:00:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rmqSPoPT;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=JtnaZeUR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLM1Q-00018L-SW; Thu, 04 Jan 2024 06:36:24 -0500
+	id 1rLOGG-00074Y-Av; Thu, 04 Jan 2024 08:59:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rLM1N-000149-7D
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 06:36:22 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rLM1L-0006ZY-Gy
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 06:36:20 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-555e07761acso536135a12.0
- for <qemu-arm@nongnu.org>; Thu, 04 Jan 2024 03:36:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704368178; x=1704972978; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=JiqQFbCtgVfu5KxzxBNsgCQ4UrsbDGzvfy3R3hTLeQg=;
- b=rmqSPoPTAqbKJIFwDC5MgkYMr/iwgOWVqoV4cozO5YUAONRpt8QlzG6KhO8kaJH/O1
- QqOygdjNt0tYgvZtdysj8xMBcbjTQwxZED+Nw9uOkKF7dP39im8CQLAQ1pJng6eXdr3j
- BX52wiLEDitPCD1CbeNXwXwvMjK3WL1aLkPyyOD2Jrt+llfrna5PDh0F2mQtr+RQryxJ
- 7VczhvjCQQVfcBmaJKSsndPG4WPN/ldfnkuS56cWrEWMUlkqxmb3PX97giHupeqSfFNW
- Np11q4eOvpcGWFOSY2Q5AgXUgn0FMQ8DB8W4mD5w1jn4AwxT75WV3xC+XJ9OoGuCQY1v
- gZmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704368178; x=1704972978;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=JiqQFbCtgVfu5KxzxBNsgCQ4UrsbDGzvfy3R3hTLeQg=;
- b=eInUYKhYFKry/FOr5sLQsl/r7JCeoXCzyub4qOX4MJ/wH9zKiEnJxn1UlW6JOPQvC6
- PEj4wJbQN0cSncLBMGBRiJnsxlDKgrzxnZtcj1RiMeJiS3PA9s9QoAG9GDlEvBmhs5A0
- U2+OuYTI4tuO0Y++TezgpDpx6Hqhk+LE48RVu0ROWGevKQxiAl9dDvyNztS0p1GXxbQE
- bQdjEh5KQdbg5+jkPNCa70Auam8LJA3ZZh6gjZLAbQ4LMhvVySyFQ07r4v/zqugTZp1Q
- HMboOPJlJ9jXHcfLyF3f5EZBmFMp+sYy6Ug7JNIlh1WGwDQc6bVCyoXugcJNZzgkBYYv
- GdHw==
-X-Gm-Message-State: AOJu0YyF7lEONcMAZKGrOUq1om/lDAh64nCHTKCenIXjbucijTQhXeTu
- oUbyXWOYeuZ0QRkfAeyRFhsRDd0DqHLALGwKXmO2RflFoyOD2w==
-X-Received: by 2002:a50:ab5a:0:b0:553:83ca:60c5 with SMTP id
- t26-20020a50ab5a000000b0055383ca60c5mr189382edc.3.1704368177873; Thu, 04 Jan
- 2024 03:36:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <samuel.tardieu@telecom-paris.fr>)
+ id 1rLOGF-00074L-6W; Thu, 04 Jan 2024 08:59:51 -0500
+Received: from zproxy2.enst.fr ([2001:660:330f:2::dd])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <samuel.tardieu@telecom-paris.fr>)
+ id 1rLOG4-0004fL-C6; Thu, 04 Jan 2024 08:59:50 -0500
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id D676C806FD;
+ Thu,  4 Jan 2024 14:59:33 +0100 (CET)
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id BLs-F1S1x9_9; Thu,  4 Jan 2024 14:59:33 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy2.enst.fr (Postfix) with ESMTP id 80462806F6;
+ Thu,  4 Jan 2024 14:59:33 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr 80462806F6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704376773;
+ bh=RT/5EEyUFXLy4aIWJ6X5RYoImRe9pDsh/pHd5qXJirI=;
+ h=Message-ID:Date:MIME-Version:To:From;
+ b=JtnaZeURk6tuuZ6iKzg9VxIBTaLbcHdIm9w8UZ4aitMQ/0Uuz17QnjsIKU+tLT9ww
+ 0T3ikON3Tsq3kO90zDybMBN/bPe2QAjF1cDiqW+5bGlJPjLcZitr4JgNnZAKKHonAk
+ egWA2ijBJk4HWhVS0RJ7DbKx5ST3UHKOHscGQ6bA=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy2.enst.fr ([IPv6:::1])
+ by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id MORqh4gQCaDx; Thu,  4 Jan 2024 14:59:33 +0100 (CET)
+Received: from [IPV6:2a01:e34:ec63:e440:de99:aaf:30a9:1726] (unknown
+ [IPv6:2a01:e34:ec63:e440:de99:aaf:30a9:1726])
+ by zproxy2.enst.fr (Postfix) with ESMTPSA id 39AAC8071B;
+ Thu,  4 Jan 2024 14:59:33 +0100 (CET)
+Content-Type: multipart/alternative;
+ boundary="------------v0t6mTOmJI5ml08UknmfLzhl"
+Message-ID: <2342eaa3-435b-4f21-bcd3-146733908a18@telecom-paris.fr>
+Date: Thu, 4 Jan 2024 14:59:32 +0100
 MIME-Version: 1.0
-References: <20231218113305.2511480-1-peter.maydell@linaro.org>
- <20231218113305.2511480-22-peter.maydell@linaro.org>
- <b411a3d8-9ae9-4f99-8a5f-4b3f29b10bce@linaro.org>
-In-Reply-To: <b411a3d8-9ae9-4f99-8a5f-4b3f29b10bce@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Jan 2024 11:36:06 +0000
-Message-ID: <CAFEAcA-9-EnybYA-hZ=kzeauRFcS6eB9VDD8DSGqUiN=9NZprg@mail.gmail.com>
-Subject: Re: [PATCH 21/35] target/arm: Add FEAT_NV to max, neoverse-n2,
- neoverse-v1 CPUs
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 1/3] hw/misc: Implement STM32L4x5 EXTI
+Content-Language: fr
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
+ <20231228161944.303768-2-ines.varhol@telecom-paris.fr>
+ <908650b4-3bb2-4cf2-8909-5bffc622950f@linaro.org>
+ <877ckpgrie.fsf@telecom-paris.fr>
+ <b0f06e83-aa11-4990-a3ed-e6738e7ebbbf@linaro.org>
+From: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
+Autocrypt: addr=samuel.tardieu@telecom-paris.fr; keydata=
+ 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
+ 0Qc4lE599nwZx5uXfjLY
+In-Reply-To: <b0f06e83-aa11-4990-a3ed-e6738e7ebbbf@linaro.org>
+Received-SPF: pass client-ip=2001:660:330f:2::dd;
+ envelope-from=samuel.tardieu@telecom-paris.fr; helo=zproxy2.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,46 +165,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vwkX0+sSjbyg
+X-TUID: Kg7GBeUwbF2m
 
-On Fri, 29 Dec 2023 at 11:37, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
+This is a multi-part message in MIME format.
+--------------v0t6mTOmJI5ml08UknmfLzhl
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+
+
+On 04/01/2024 14:40, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 4/1/24 14:23, Samuel Tardieu wrote:
+>>
+>> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+>>
+>>> This doesn't build:
+>>>
+>>> ../../hw/misc/stm32l4x5_exti.c:172:9: error: expected expression
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const uint32_t set1 =3D va=
+lue & ~DIRECT_LINE_MASK1;
+>>> [=E2=80=A6]
+>>> I could build using:
+>>> -=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1:
+>>> +=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1: {
+>>
+>> Out or curiosity, which C compiler or option do you use for checking?=20
+>> I have no problem building this using "./configure=20
+>> --target-list=3Darm-softmmu" with GCC 12.3.0.
 >
-> W dniu 18.12.2023 o 12:32, Peter Maydell pisze:
->
-> > Enable FEAT_NV on the 'max' CPU, and stop filtering it out for the
-> > Neoverse N2 and Neoverse V1 CPUs.  We continue to downgrade FEAT_NV2
-> > support to FEAT_NV for the latter two CPU types.
->
-> According to Neoverse-V1 TRM r1p2 it has FEAT_NV2. Similar with Neoverse-N2.
+> C compiler for the host machine: clang (clang 15.0.0 "Apple clang=20
+> version 15.0.0 (clang-1500.0.40.1)")
+> C linker for the host machine: clang ld64 1015.7
+Indeed, it looks like mixing labels, declarations and statements is a=20
+GCC extension. I've switched to clang and can reproduce the failure. Than=
+ks!
+--------------v0t6mTOmJI5ml08UknmfLzhl
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-I'm not sure what you're trying to say here ? Yes, the V1 has
-NV2, that's why we have to downgrade it to FEAT_NV for the moment
-when we're emulating, because at this point in the series we
-don't have FEAT_NV2 emulation. At the end of the series this downgrade
-goes away, because at that point we can emulate FEAT_NV2.
+<!DOCTYPE html>
+<html data-lt-installed=3D"true">
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
+-8">
+  </head>
+  <body style=3D"padding-bottom: 1px;">
+    <p><br>
+    </p>
+    <div class=3D"moz-cite-prefix">On 04/01/2024 14:40, Philippe
+      Mathieu-Daud=C3=A9 wrote:<br>
+    </div>
+    <blockquote type=3D"cite"
+      cite=3D"mid:b0f06e83-aa11-4990-a3ed-e6738e7ebbbf@linaro.org">On
+      4/1/24 14:23, Samuel Tardieu wrote:
+      <br>
+      <blockquote type=3D"cite">
+        <br>
+        Philippe Mathieu-Daud=C3=A9 <a class=3D"moz-txt-link-rfc2396E" hr=
+ef=3D"mailto:philmd@linaro.org">&lt;philmd@linaro.org&gt;</a> writes:
+        <br>
+        <br>
+        <blockquote type=3D"cite">This doesn't build:
+          <br>
+          <br>
+          ../../hw/misc/stm32l4x5_exti.c:172:9: error: expected
+          expression
+          <br>
+          =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const uint32_t set1 =
+=3D value &amp; ~DIRECT_LINE_MASK1;
+          <br>
+          [=E2=80=A6]
+          <br>
+          I could build using:
+          <br>
+          -=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1:
+          <br>
+          +=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1: {
+          <br>
+        </blockquote>
+        <br>
+        Out or curiosity, which C compiler or option do you use for
+        checking? I have no problem building this using "./configure
+        --target-list=3Darm-softmmu" with GCC 12.3.0.
+        <br>
+      </blockquote>
+      <br>
+      C compiler for the host machine: clang (clang 15.0.0 "Apple clang
+      version 15.0.0 (clang-1500.0.40.1)")
+      <br>
+      C linker for the host machine: clang ld64 1015.7
+      <br>
+    </blockquote>
+    Indeed, it looks like mixing labels, declarations and statements is
+    a GCC extension. I've switched to clang and can reproduce the
+    failure. Thanks!<br>
+    <div id=3D"grammalecte_menu_main_button_shadow_host"
+      style=3D"width: 0px; height: 0px;"></div>
+  </body>
+  <lt-container></lt-container>
+</html>
 
->
-> You wrote already:
->
-> > in practice hypervisors such as KVM are going to require FEAT_NV2
-> > and not bother to support the FEAT_NV-only case, so I have
-> > implemented them one after the other in this single patchset.
-> So maybe they both should be FEAT_NV2 and FEAT_NV will be left unused.
-> Or enable FEAT_NV for V1 (as being older) and FEAT_NV2 on N2.
-
-As usual, we emulate what the actual hardware has, to the extent
-that we are able to. For both of these CPUs that's both FEAT_NV
-and FEAT_NV2, and we enable emulation of each at the point in the
-series when we've implemented it.
-
-> This way if someone wants to test nested virtualization then both
-> versions will be available without use of 'max' cpu.
-
-In theory it might be nice to be able to emulate a pure FEAT_NV
-CPU, but in practice I don't expect anybody to want to do that.
-If anybody has a real use case for it we can add a -cpu suboption
-later.
-
-thanks
--- PMM
+--------------v0t6mTOmJI5ml08UknmfLzhl--

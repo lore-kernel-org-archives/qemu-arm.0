@@ -1,96 +1,96 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp862472ejh;
-        Wed, 3 Jan 2024 19:40:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH1EybtqjMPTcmGreaMAGNEKBzG0IIk9ZMYgEnzB7hDHbiibIpVLPzY8vUefE3GtUiWBY1o
-X-Received: by 2002:ad4:594d:0:b0:67f:1d52:2b6b with SMTP id eo13-20020ad4594d000000b0067f1d522b6bmr66429qvb.34.1704339605277;
-        Wed, 03 Jan 2024 19:40:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704339605; cv=none;
+Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp863454ejh;
+        Wed, 3 Jan 2024 19:44:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG/FeAPyu9iNAMnubaCMztVMIlui4iwufgs9g2H7dG8XZCCmgSMM9smh4ljgiVSpCg3FPps
+X-Received: by 2002:a0d:d793:0:b0:5e5:a519:33e4 with SMTP id z141-20020a0dd793000000b005e5a51933e4mr53282ywd.53.1704339851182;
+        Wed, 03 Jan 2024 19:44:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704339851; cv=none;
         d=google.com; s=arc-20160816;
-        b=UNIde0F2fMP05ZSDBLV7+GSlojblUkALae2wMU2gO+7QUngS0BaCU06Wbuyi2HqzL6
-         9TQAT9wy2eBMc4lBeWZ8N3hhtRo1U3wz4poYdG03uFsZK9ugLkCJH8GVR/G7Ghirelzu
-         +mVFZgx21BpFHZJh8lo/hACrPgW5etEj2oFEENMAU+1RXJIbC/pb6sni6BzZUQgAPXqA
-         nokZ8aYWrocjlOE4eZnacfQCJIS8qvClI/5FfvIDukQPEEtKQBWFL0jz3lv2T6fbuMKc
-         qV5gkv4rsl+6ysOu5+JUePpBssDnmHrF7cyx0ZKJCIzL18lbiLLLJDu7lXHyFL5VPt0H
-         yExg==
+        b=VlUgHUMGi6ZahoT4n3fa/Vvw1lwAY6awvucaXjyHfSloeeRMP6bipM/oY9aocflr6A
+         2CqbE3nPKtlIK4kCD0XY/yfByqHOhMHSa8Hb0paD2D4bx7McAP8GajfQ+3uU9NqzZNkB
+         6kv1v7LpT3SZQWRldmSUpsf5dDkPdj+0I7DdC75/MvE55QBFjF5PrDHBtQC64VajRoPD
+         loTH8BrdhWCnDisSVjQQrbkPwiUIjXhoIdhbdQo/GdK1Xy9PZXdpILek1QDEf0MPEOqr
+         TyVoZlRIZG8eyqchrC1M32Yr2peeUAXu+7GJs1pxbgbKt5YktXWX7qe295Si2Y33ald7
+         yqfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=YtL2a9/mbQnWkeq3vhFdVrITrp++cVl8L+LWhRAKfHY=;
+        bh=CDW1i/LNCdDrDdmh5cUciopryzeORMo2ZkjJjPLY5vw=;
         fh=j5vOUz07IYwoKwA8Hu0mbMtAAHkMmGWezE5mVjl0l1w=;
-        b=wrf3/6ML3xsoVEIU4bArTs5TGpVLf0NgGGcUTBhJDd1UU5fEZgqLZHfa/xJ8YxRmEU
-         +unOvnSOY8IrH6RYX1AqUjfOGSoReifG/BJBVcBN9A8ixv7T/9QXJA1xatPrcO0DCEMN
-         gofjo2rFX2yJ6dbzqsY07r6pIjL6w3M+dwgXbDy+v9P/iGpPQA5LwFLvS3/iVPw5hvCN
-         H7bjyUDTzNuOV7VCP83LS9d8QOTXTKP89VJ2HEXkUOW7hPILwcieTVgINtW44I8tC7rE
-         WWsxt37tloi8Mh04DcuWSbmYsRBGYm/9vzSX853otN8hnA5J0dzXRzIZJq1qwDTYJiQA
-         gG3g==
+        b=lwxaFOwJz1VaD3bel0AhnO/bt8x6XfbMcvvT39Q9+g9yiIsEO9MgxpRiNyqTxaS4KM
+         zcloJS+D1w+bVxbvF+oeLaGPkAtK2u4NabrlAOpOVDYty88/0ojiPoVVTj7jqH2aPh5+
+         RzS/NP96Rw56GvrhmVklf5jiKFZ41C7/s1BD+wPJJkAzSBtTgCVeRFDgUvmvjcpvniyK
+         NL7hWVryOjzey2CzG4kS27qmmy2I7Nk4gcUg/OKH1udHaNN6cqB9CvSys2ot9pJhxgCr
+         BZ+g5yGRU4bvs7sQdC5KoSDEH7pJXLlGNEO65S2o3TellWSyGtcdWjGFGs6abHqNKvY2
+         gPLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jwG036K3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fSn7sgNP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bm3-20020a05620a198300b00781e1c42b6csi4533746qkb.527.2024.01.03.19.40.05
+        by mx.google.com with ESMTPS id m17-20020a0cdb91000000b00680c567b656si4679183qvk.196.2024.01.03.19.44.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jan 2024 19:40:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Jan 2024 19:44:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jwG036K3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fSn7sgNP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLEaN-0003uH-0K; Wed, 03 Jan 2024 22:40:00 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rLEdw-0004un-Kk; Wed, 03 Jan 2024 22:43:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rLEaH-0003tY-9y; Wed, 03 Jan 2024 22:39:54 -0500
-Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
+ id 1rLEdZ-0004qv-SH; Wed, 03 Jan 2024 22:43:19 -0500
+Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rLEaE-00067Z-Ej; Wed, 03 Jan 2024 22:39:52 -0500
-Received: by mail-vk1-xa2b.google.com with SMTP id
- 71dfb90a1353d-4b756f2aec8so36746e0c.0; 
- Wed, 03 Jan 2024 19:39:49 -0800 (PST)
+ id 1rLEdX-0006tK-La; Wed, 03 Jan 2024 22:43:17 -0500
+Received: by mail-vk1-xa2d.google.com with SMTP id
+ 71dfb90a1353d-4b732dfa6e4so28253e0c.1; 
+ Wed, 03 Jan 2024 19:43:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1704339589; x=1704944389; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1704339794; x=1704944594; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YtL2a9/mbQnWkeq3vhFdVrITrp++cVl8L+LWhRAKfHY=;
- b=jwG036K3jtPBBE/Rp2F5Ipws2o7vGL0wF29bfq+VQSL9yduXn2BAkRyCwMfu1N7yDx
- 4K1Eu0LNWA8EOr+0DIvzFAu/weXigvnAEGEL+b37WnxyS0T/0zzfMPqvXR51ek4Vp4NE
- d1Noa5RGGch7WCLcuCVq3bGFreJwYNWzLFlwHa7zEBq/1hGkhrMZ1iIA3m8X5UZ6WP2T
- bMrKiPtwkpGMJhSMhsAbQwsFnCu+j4T2jczNYEqW8zHxwi7dsZvkUeLztWv3bg/7/fPd
- ZVb/llgvJfy3ciNUXd9ygx+n5SX1j3xhW0VjARHfxKtW0OkYaNgfR5910pSquxiohkkk
- xhBw==
+ bh=CDW1i/LNCdDrDdmh5cUciopryzeORMo2ZkjJjPLY5vw=;
+ b=fSn7sgNP1LDwjYHDjwcE3hW892VFvyeSZCFY6pmXHblKqXH8GDQt3J3UA6bVK1SEQM
+ SUV7CAibRiSM2Ep6wrzjT0c+FkYq9o+Cq+RSVV6IP1alstGHfiN/A4qM/9Y/puQlEvPd
+ pgrbKnpwZ0FO2A2NyAVNgzXMHWyfirnJ94HHhweQ3GoltKvC8yFrnpRVHMi27PBLF8Q3
+ OtFrI3ZwqzexZf9fce+lYhSgLDOH+VvL7GSMFENvdn1TYFiCywasEC34Ir5OBl49EtoV
+ 4+PR9NenrUA9RD+rty3IsUrEq1yR2DIi3nf34PqRAafGeC9scLKppGZ7IZ0BUSg29dFP
+ cVgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704339589; x=1704944389;
+ d=1e100.net; s=20230601; t=1704339794; x=1704944594;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YtL2a9/mbQnWkeq3vhFdVrITrp++cVl8L+LWhRAKfHY=;
- b=kItX+pm9KQCBsRQO3E6GlQ6dvVAd6FOkrdquDcQUmx0Q17jcQ+hcUSYeAbsMak40uC
- QWarTWkGsvVt79A3mzIP8OKfRgbT5YCDtbgpxWbW1eptKcy4SVU1bdkoFFGgPW2hMwzI
- wJsA8JUYyKACYz0ku8qaddOh4khSHNGr0pB6GklI+RwNJsHZPt6t544QawFjzLy6bco3
- ja5y7ZdzMYTbEeA7kAQO74KUgUhZTZmcHgwBAoSEb6fCFow+INcbasBP2oOTDRAfBXB1
- PPOLjenu+KpwzgaVxLeLXj7CZpm7V4GWkpNAqcv+EczMUFLx7xJaiTlCnMa/+t69NvID
- 82CA==
-X-Gm-Message-State: AOJu0Yy59iaFOxmMiaxYBVncYIdXNaWdZgQENMEg3g5PtzFZajLK51SO
- 9G/KJR53egH0VEVE1ppYnE4QB9w/fNQg6DFi6NU=
-X-Received: by 2002:ac5:c307:0:b0:4b6:f13f:8cd7 with SMTP id
- j7-20020ac5c307000000b004b6f13f8cd7mr9487vkk.15.1704339588731; Wed, 03 Jan
- 2024 19:39:48 -0800 (PST)
+ bh=CDW1i/LNCdDrDdmh5cUciopryzeORMo2ZkjJjPLY5vw=;
+ b=C235J0Aaf1N3CZEDuf7P3F9a0xkV97nN2U9zyezNklE7M4A6Xf0TpAgprTfLFViup3
+ 69ezSuf9vHpr/cz4BnM+5HykeSOaHhdm76u51aF9z+WqJJegm4pr3MgTGB8Wx67yR8G9
+ XB9q3/MNTKP018lOTLHfSuNTP2dKKMwQbTDnTvLgTpPigBoD16CDMGy3KbT+neLYm/Rr
+ j6UEkrgjG/sysXHFZkZ/V88MDSAZ9BPuldco47FiIArZhAViD4Dd19Qf5lDYzvFk++31
+ 49cLQJNdyT/GbC3cVEdbHPIf5i50J0V1PncSmNrnN4KAlvD5dUsGhTJMHku+AvWFi6cL
+ HxFg==
+X-Gm-Message-State: AOJu0YzR7n9tNicAPCXZ6EnsSx37YQymTlEdWKkrffHFNxYPSVjRhA7Z
+ CFd/FHANh4yEriTyDfg5z0TR5Vq4z6KckJPv7UE=
+X-Received: by 2002:ac5:c28e:0:b0:4b7:3875:72d2 with SMTP id
+ h14-20020ac5c28e000000b004b7387572d2mr10817vkk.1.1704339793987; Wed, 03 Jan
+ 2024 19:43:13 -0800 (PST)
 MIME-Version: 1.0
 References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
- <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
+ <20231228161944.303768-4-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20231228161944.303768-4-ines.varhol@telecom-paris.fr>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 4 Jan 2024 13:39:22 +1000
-Message-ID: <CAKmqyKMyHSeRaRAJaoKdL+i8DA42gzfsx_Qd=AE-XhvJQL-Syw@mail.gmail.com>
-Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
+Date: Thu, 4 Jan 2024 13:42:48 +1000
+Message-ID: <CAKmqyKM8qPYkKUnMni8kRwQSDZW+eZc7RcQ+GPHFs16Y0-YwAA@mail.gmail.com>
+Subject: Re: [PATCH v5 3/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
 To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
 Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
  Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
@@ -100,8 +100,8 @@ Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2b;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2d;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa2d.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -111,676 +111,170 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XfT4106vfh0l
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CHzcXWataJ++
 
-On Fri, Dec 29, 2023 at 3:34=E2=80=AFAM In=C3=A8s Varhol
+On Fri, Dec 29, 2023 at 2:21=E2=80=AFAM In=C3=A8s Varhol
 <ines.varhol@telecom-paris.fr> wrote:
 >
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  tests/qtest/meson.build           |   5 +
->  tests/qtest/stm32l4x5_exti-test.c | 596 ++++++++++++++++++++++++++++++
->  2 files changed, 601 insertions(+)
->  create mode 100644 tests/qtest/stm32l4x5_exti-test.c
+>  hw/arm/Kconfig                 |  1 +
+>  hw/arm/stm32l4x5_soc.c         | 56 ++++++++++++++++++++++++++++++++--
+>  include/hw/arm/stm32l4x5_soc.h |  3 ++
+>  3 files changed, 58 insertions(+), 2 deletions(-)
 >
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 47dabf91d0..d5126f4d86 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -194,6 +194,10 @@ qtests_aspeed =3D \
->    ['aspeed_hace-test',
->     'aspeed_smc-test',
->     'aspeed_gpio-test']
-> +
-> +qtests_stm32l4x5 =3D \
-> +  ['stm32l4x5_exti-test']
-> +
->  qtests_arm =3D \
->    (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) =
-+ \
->    (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-ap=
-b-dualtimer-test'] : []) + \
-> @@ -207,6 +211,7 @@ qtests_arm =3D \
->    (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test=
-'] : []) + \
->    (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] =
-: []) + \
->    (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : [=
-]) + \
-> +  (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5=
- : []) + \
->    ['arm-cpu-features',
->     'boot-serial-test']
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7520dc5cc0..9c9d5bb541 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -458,6 +458,7 @@ config STM32L4X5_SOC
+>      bool
+>      select ARM_V7M
+>      select OR_IRQ
+> +    select STM32L4X5_EXTI
 >
-> diff --git a/tests/qtest/stm32l4x5_exti-test.c b/tests/qtest/stm32l4x5_ex=
-ti-test.c
-> new file mode 100644
-> index 0000000000..60c8297246
-> --- /dev/null
-> +++ b/tests/qtest/stm32l4x5_exti-test.c
-> @@ -0,0 +1,596 @@
-> +/*
-> + * QTest testcase for STM32L4x5_EXTI
-> + *
-> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "libqtest-single.h"
-> +
-> +#define EXTI_BASE_ADDR 0x40010400
-> +#define EXTI_IMR1 0x00
-> +#define EXTI_EMR1 0x04
-> +#define EXTI_RTSR1 0x08
-> +#define EXTI_FTSR1 0x0C
-> +#define EXTI_SWIER1 0x10
-> +#define EXTI_PR1 0x14
-> +#define EXTI_IMR2 0x20
-> +#define EXTI_EMR2 0x24
-> +#define EXTI_RTSR2 0x28
-> +#define EXTI_FTSR2 0x2C
-> +#define EXTI_SWIER2 0x30
-> +#define EXTI_PR2 0x34
-> +
-> +#define NVIC_ISER 0xE000E100
-> +#define NVIC_ISPR 0xE000E200
-> +#define NVIC_ICPR 0xE000E280
-> +
-> +#define EXTI0_IRQ 6
-> +#define EXTI1_IRQ 7
-> +#define EXTI35_IRQ 1
-> +
-> +static void enable_nvic_irq(unsigned int n)
-> +{
-> +    writel(NVIC_ISER, 1 << n);
-> +}
-> +
-> +static void unpend_nvic_irq(unsigned int n)
-> +{
-> +    writel(NVIC_ICPR, 1 << n);
-> +}
-> +
-> +static bool check_nvic_pending(unsigned int n)
-> +{
-> +    return readl(NVIC_ISPR) & (1 << n);
-> +}
-> +
-> +static void exti_writel(unsigned int offset, uint32_t value)
-> +{
-> +    writel(EXTI_BASE_ADDR + offset, value);
-> +}
-> +
-> +static uint32_t exti_readl(unsigned int offset)
-> +{
-> +    return readl(EXTI_BASE_ADDR + offset);
-> +}
-> +
-> +static void test_reg_write_read(void)
-> +{
-> +    /* Test that non-reserved bits in xMR and xTSR can be set and cleare=
-d */
-> +
-> +    exti_writel(EXTI_IMR1, 0xFFFFFFFF);
-> +    uint32_t imr1 =3D exti_readl(EXTI_IMR1);
-> +    g_assert_cmpuint(imr1, =3D=3D, 0xFFFFFFFF);
-> +    exti_writel(EXTI_IMR1, 0x00000000);
-> +    imr1 =3D exti_readl(EXTI_IMR1);
-> +    g_assert_cmpuint(imr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_EMR1, 0xFFFFFFFF);
-> +    uint32_t emr1 =3D exti_readl(EXTI_EMR1);
-> +    g_assert_cmpuint(emr1, =3D=3D, 0xFFFFFFFF);
-> +    exti_writel(EXTI_EMR1, 0x00000000);
-> +    emr1 =3D exti_readl(EXTI_EMR1);
-> +    g_assert_cmpuint(emr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_RTSR1, 0xFFFFFFFF);
-> +    uint32_t rtsr1 =3D exti_readl(EXTI_RTSR1);
-> +    g_assert_cmpuint(rtsr1, =3D=3D, 0x007DFFFF);
-> +    exti_writel(EXTI_RTSR1, 0x00000000);
-> +    rtsr1 =3D exti_readl(EXTI_RTSR1);
-> +    g_assert_cmpuint(rtsr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_FTSR1, 0xFFFFFFFF);
-> +    uint32_t ftsr1 =3D exti_readl(EXTI_FTSR1);
-> +    g_assert_cmpuint(ftsr1, =3D=3D, 0x007DFFFF);
-> +    exti_writel(EXTI_FTSR1, 0x00000000);
-> +    ftsr1 =3D exti_readl(EXTI_FTSR1);
-> +    g_assert_cmpuint(ftsr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_IMR2, 0xFFFFFFFF);
-> +    uint32_t imr2 =3D exti_readl(EXTI_IMR2);
-> +    g_assert_cmpuint(imr2, =3D=3D, 0x000000FF);
-> +    exti_writel(EXTI_IMR2, 0x00000000);
-> +    imr2 =3D exti_readl(EXTI_IMR2);
-> +    g_assert_cmpuint(imr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_EMR2, 0xFFFFFFFF);
-> +    uint32_t emr2 =3D exti_readl(EXTI_EMR2);
-> +    g_assert_cmpuint(emr2, =3D=3D, 0x000000FF);
-> +    exti_writel(EXTI_EMR2, 0x00000000);
-> +    emr2 =3D exti_readl(EXTI_EMR2);
-> +    g_assert_cmpuint(emr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_RTSR2, 0xFFFFFFFF);
-> +    uint32_t rtsr2 =3D exti_readl(EXTI_RTSR2);
-> +    g_assert_cmpuint(rtsr2, =3D=3D, 0x00000078);
-> +    exti_writel(EXTI_RTSR2, 0x00000000);
-> +    rtsr2 =3D exti_readl(EXTI_RTSR2);
-> +    g_assert_cmpuint(rtsr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_FTSR2, 0xFFFFFFFF);
-> +    uint32_t ftsr2 =3D exti_readl(EXTI_FTSR2);
-> +    g_assert_cmpuint(ftsr2, =3D=3D, 0x00000078);
-> +    exti_writel(EXTI_FTSR2, 0x00000000);
-> +    ftsr2 =3D exti_readl(EXTI_FTSR2);
-> +    g_assert_cmpuint(ftsr2, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_direct_lines_write(void)
-> +{
-> +    /* Test that direct lines reserved bits are not written to */
-> +
-> +    exti_writel(EXTI_RTSR1, 0xFF820000);
-> +    uint32_t rtsr1 =3D exti_readl(EXTI_RTSR1);
-> +    g_assert_cmpuint(rtsr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_FTSR1, 0xFF820000);
-> +    uint32_t ftsr1 =3D exti_readl(EXTI_FTSR1);
-> +    g_assert_cmpuint(ftsr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_SWIER1, 0xFF820000);
-> +    uint32_t swier1 =3D exti_readl(EXTI_SWIER1);
-> +    g_assert_cmpuint(swier1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_PR1, 0xFF820000);
-> +    uint32_t pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_RTSR2, 0x00000087);
-> +    const uint32_t rtsr2 =3D exti_readl(EXTI_RTSR2);
-> +    g_assert_cmpuint(rtsr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_FTSR2, 0x00000087);
-> +    const uint32_t ftsr2 =3D exti_readl(EXTI_FTSR2);
-> +    g_assert_cmpuint(ftsr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_SWIER2, 0x00000087);
-> +    const uint32_t swier2 =3D exti_readl(EXTI_SWIER2);
-> +    g_assert_cmpuint(swier2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_PR2, 0x00000087);
-> +    const uint32_t pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_reserved_bits_write(void)
-> +{
-> +    /* Test that reserved bits stay are not written to */
-> +
-> +    exti_writel(EXTI_IMR2, 0xFFFFFF00);
-> +    uint32_t imr2 =3D exti_readl(EXTI_IMR2);
-> +    g_assert_cmpuint(imr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_EMR2, 0xFFFFFF00);
-> +    uint32_t emr2 =3D exti_readl(EXTI_EMR2);
-> +    g_assert_cmpuint(emr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_RTSR2, 0xFFFFFF00);
-> +    const uint32_t rtsr2 =3D exti_readl(EXTI_RTSR2);
-> +    g_assert_cmpuint(rtsr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_FTSR2, 0xFFFFFF00);
-> +    const uint32_t ftsr2 =3D exti_readl(EXTI_FTSR2);
-> +    g_assert_cmpuint(ftsr2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_SWIER2, 0xFFFFFF00);
-> +    const uint32_t swier2 =3D exti_readl(EXTI_SWIER2);
-> +    g_assert_cmpuint(swier2, =3D=3D, 0x00000000);
-> +
-> +    exti_writel(EXTI_PR2, 0xFFFFFF00);
-> +    const uint32_t pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +}
-> +
-> +static void test_software_interrupt(void)
-> +{
-> +    /*
-> +     * Test that we can launch a software irq by :
-> +     * - enabling its line in IMR
-> +     * - and then setting a bit from '0' to '1' in SWIER
-> +     *
-> +     * And that the interruption stays pending in NVIC
-> +     * even after clearing the pending bit in PR.
-> +     */
-> +
-> +    /*
-> +     * Testing interrupt line EXTI0
-> +     * Bit 0 in EXTI_*1 registers (EXTI0) corresponds to GPIO Px_0
-> +     */
-> +
-> +    enable_nvic_irq(EXTI0_IRQ);
-> +    /* Check that there are no interrupts already pending in PR */
-> +    uint32_t pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that this specific interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Enable interrupt line EXTI0 */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    /* Set the right SWIER bit from '0' to '1' */
-> +    exti_writel(EXTI_SWIER1, 0x00000000);
-> +    exti_writel(EXTI_SWIER1, 0x00000001);
-> +
-> +    /* Check that the write in SWIER was effective */
-> +    uint32_t swier1 =3D exti_readl(EXTI_SWIER1);
-> +    g_assert_cmpuint(swier1, =3D=3D, 0x00000001);
-> +    /* Check that the corresponding pending bit in PR is set */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000001);
-> +    /* Check that the corresponding interrupt is pending in the NVIC */
-> +    g_assert_true(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Clear the pending bit in PR */
-> +    exti_writel(EXTI_PR1, 0x00000001);
-> +
-> +    /* Check that the write in PR was effective */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that the corresponding bit in SWIER was cleared */
-> +    swier1 =3D exti_readl(EXTI_SWIER1);
-> +    g_assert_cmpuint(swier1, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt is still pending in the NVIC */
-> +    g_assert_true(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /*
-> +     * Testing interrupt line EXTI35
-> +     * Bit 3 in EXTI_*2 registers (EXTI35) corresponds to PVM 1 Wakeup
-> +     */
-> +
-> +    enable_nvic_irq(EXTI35_IRQ);
-> +    /* Check that there are no interrupts already pending */
-> +    uint32_t pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +    g_assert_false(check_nvic_pending(EXTI35_IRQ));
-> +
-> +    /* Enable interrupt line EXTI0 */
-> +    exti_writel(EXTI_IMR2, 0x00000008);
-> +    /* Set the right SWIER bit from '0' to '1' */
-> +    exti_writel(EXTI_SWIER2, 0x00000000);
-> +    exti_writel(EXTI_SWIER2, 0x00000008);
-> +
-> +    /* Check that the write in SWIER was effective */
-> +    uint32_t swier2 =3D exti_readl(EXTI_SWIER2);
-> +    g_assert_cmpuint(swier2, =3D=3D, 0x00000008);
-> +    /* Check that the corresponding pending bit in PR is set */
-> +    pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000008);
-> +    /* Check that the corresponding interrupt is pending in the NVIC */
-> +    g_assert_true(check_nvic_pending(EXTI35_IRQ));
-> +
-> +    /* Clear the pending bit in PR */
-> +    exti_writel(EXTI_PR2, 0x00000008);
-> +
-> +    /* Check that the write in PR was effective */
-> +    pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +    /* Check that the corresponding bit in SWIER was cleared */
-> +    swier2 =3D exti_readl(EXTI_SWIER2);
-> +    g_assert_cmpuint(swier2, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt is still pending in the NVIC */
-> +    g_assert_true(check_nvic_pending(EXTI35_IRQ));
-> +
-> +    /* Clean NVIC */
-> +    unpend_nvic_irq(EXTI0_IRQ);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +    unpend_nvic_irq(EXTI35_IRQ);
-> +    g_assert_false(check_nvic_pending(EXTI35_IRQ));
-> +}
-> +
-> +static void test_edge_selector(void)
-> +{
-> +    enable_nvic_irq(EXTI0_IRQ);
-> +
-> +    /* Configure EXTI line 0 irq on rising edge */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 1);
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000001);
-> +    exti_writel(EXTI_FTSR1, 0x00000000);
-> +
-> +    /* Test that an irq is raised on rising edge only */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 0);
-> +
-> +    uint32_t pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 1);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000001);
-> +    g_assert_true(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Clean the test */
-> +    exti_writel(EXTI_PR1, 0x00000001);
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    unpend_nvic_irq(EXTI0_IRQ);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Configure EXTI line 0 irq on falling edge */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 0);
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000000);
-> +    exti_writel(EXTI_FTSR1, 0x00000001);
-> +
-> +    /* Test that an irq is raised on falling edge only */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 1);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 0);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000001);
-> +    g_assert_true(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Clean the test */
-> +    exti_writel(EXTI_PR1, 0x00000001);
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    unpend_nvic_irq(EXTI0_IRQ);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Configure EXTI line 0 irq on falling and rising edge */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000001);
-> +    exti_writel(EXTI_FTSR1, 0x00000000);
-> +
-> +    /* Test that an irq is raised on rising and falling edge */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 1);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000001);
-> +    g_assert_true(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 0);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000001);
-> +    g_assert_true(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Clean the test */
-> +    exti_writel(EXTI_PR1, 0x00000001);
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    unpend_nvic_irq(EXTI0_IRQ);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Configure EXTI line 0 irq without selecting an edge trigger */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +    exti_writel(EXTI_RTSR1, 0x00000000);
-> +    exti_writel(EXTI_FTSR1, 0x00000000);
-> +
-> +    /* Test that no irq is raised */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 1);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 0, 0);
-> +
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +}
-> +
-> +static void test_no_software_interrupt(void)
-> +{
-> +    /*
-> +     * Test that software irq doesn't happen when :
-> +     * - corresponding bit in IMR isn't set
-> +     * - SWIER is set to 1 before IMR is set to 1
-> +     */
-> +
-> +    /*
-> +     * Testing interrupt line EXTI0
-> +     * Bit 0 in EXTI_*1 registers (EXTI0) corresponds to GPIO Px_0
-> +     */
-> +
-> +    enable_nvic_irq(EXTI0_IRQ);
-> +    /* Check that there are no interrupts already pending in PR */
-> +    uint32_t pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that this specific interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Mask interrupt line EXTI0 */
-> +    exti_writel(EXTI_IMR1, 0x00000000);
-> +    /* Set the corresponding SWIER bit from '0' to '1' */
-> +    exti_writel(EXTI_SWIER1, 0x00000000);
-> +    exti_writel(EXTI_SWIER1, 0x00000001);
-> +
-> +    /* Check that the write in SWIER was effective */
-> +    uint32_t swier1 =3D exti_readl(EXTI_SWIER1);
-> +    g_assert_cmpuint(swier1, =3D=3D, 0x00000001);
-> +    /* Check that the pending bit in PR wasn't set */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /* Enable interrupt line EXTI0 */
-> +    exti_writel(EXTI_IMR1, 0x00000001);
-> +
-> +    /* Check that the pending bit in PR wasn't set */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI0_IRQ));
-> +
-> +    /*
-> +     * Testing interrupt line EXTI35
-> +     * Bit 3 in EXTI_*2 registers (EXTI35) corresponds to PVM 1 Wakeup
-> +     */
-> +
-> +    enable_nvic_irq(EXTI35_IRQ);
-> +    /* Check that there are no interrupts already pending in PR */
-> +    uint32_t pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +    /* Check that this specific interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI35_IRQ));
-> +
-> +    /* Mask interrupt line EXTI35 */
-> +    exti_writel(EXTI_IMR2, 0x00000000);
-> +    /* Set the corresponding SWIER bit from '0' to '1' */
-> +    exti_writel(EXTI_SWIER2, 0x00000000);
-> +    exti_writel(EXTI_SWIER2, 0x00000008);
-> +
-> +    /* Check that the write in SWIER was effective */
-> +    uint32_t swier2 =3D exti_readl(EXTI_SWIER2);
-> +    g_assert_cmpuint(swier2, =3D=3D, 0x00000008);
-> +    /* Check that the pending bit in PR wasn't set */
-> +    pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI35_IRQ));
-> +
-> +    /* Enable interrupt line EXTI35 */
-> +    exti_writel(EXTI_IMR2, 0x00000008);
-> +
-> +    /* Check that the pending bit in PR wasn't set */
-> +    pr2 =3D exti_readl(EXTI_PR2);
-> +    g_assert_cmpuint(pr2, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI35_IRQ));
-> +}
-> +
-> +static void test_masked_interrupt(void)
-> +{
-> +    /*
-> +     * Test that irq doesn't happen when :
-> +     * - corresponding bit in IMR isn't set
-> +     * - SWIER is set to 1 before IMR is set to 1
-> +     */
-> +
-> +    /*
-> +     * Testing interrupt line EXTI1
-> +     * with rising edge from GPIOx pin 1
-> +     */
-> +
-> +    enable_nvic_irq(EXTI1_IRQ);
-> +    /* Check that there are no interrupts already pending in PR */
-> +    uint32_t pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that this specific interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI1_IRQ));
-> +
-> +    /* Mask interrupt line EXTI1 */
-> +    exti_writel(EXTI_IMR1, 0x00000000);
-> +
-> +    /* Configure interrupt on rising edge */
-> +    exti_writel(EXTI_RTSR1, 0x00000002);
-> +
-> +    /* Simulate rising edge from GPIO line 1 */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 1, 1);
-> +
-> +    /* Check that the pending bit in PR wasn't set */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI1_IRQ));
-> +
-> +    /* Enable interrupt line EXTI1 */
-> +    exti_writel(EXTI_IMR1, 0x00000002);
-> +
-> +    /* Check that the pending bit in PR wasn't set */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI1_IRQ));
-> +}
-> +
-> +static void test_interrupt(void)
-> +{
-> +    /*
-> +     * Test that we can launch an irq by :
-> +     * - enabling its line in IMR
-> +     * - configuring interrupt on rising edge
-> +     * - and then setting the input line from '0' to '1'
-> +     *
-> +     * And that the interruption stays pending in NVIC
-> +     * even after clearing the pending bit in PR.
-> +     */
-> +
-> +    /*
-> +     * Testing interrupt line EXTI1
-> +     * with rising edge from GPIOx pin 1
-> +     */
-> +
-> +    enable_nvic_irq(EXTI1_IRQ);
-> +    /* Check that there are no interrupts already pending in PR */
-> +    uint32_t pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that this specific interrupt isn't pending in NVIC */
-> +    g_assert_false(check_nvic_pending(EXTI1_IRQ));
-> +
-> +    /* Enable interrupt line EXTI1 */
-> +    exti_writel(EXTI_IMR1, 0x00000002);
-> +
-> +    /* Configure interrupt on rising edge */
-> +    exti_writel(EXTI_RTSR1, 0x00000002);
-> +
-> +    /* Simulate rising edge from GPIO line 1 */
-> +    qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> +                     NULL, 1, 1);
-> +
-> +    /* Check that the pending bit in PR was set */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000002);
-> +    /* Check that the interrupt is pending in NVIC */
-> +    g_assert_true(check_nvic_pending(EXTI1_IRQ));
-> +
-> +    /* Clear the pending bit in PR */
-> +    exti_writel(EXTI_PR1, 0x00000002);
-> +
-> +    /* Check that the write in PR was effective */
-> +    pr1 =3D exti_readl(EXTI_PR1);
-> +    g_assert_cmpuint(pr1, =3D=3D, 0x00000000);
-> +    /* Check that the interrupt is still pending in the NVIC */
-> +    g_assert_true(check_nvic_pending(EXTI1_IRQ));
-> +
-> +    /* Clean NVIC */
-> +    unpend_nvic_irq(EXTI1_IRQ);
-> +    g_assert_false(check_nvic_pending(EXTI1_IRQ));
-> +}
-> +
-> +int main(int argc, char **argv)
-> +{
-> +    int ret;
-> +
-> +    g_test_init(&argc, &argv, NULL);
-> +    g_test_set_nonfatal_assertions();
-> +    qtest_add_func("stm32l4x5/exti/direct_lines", test_direct_lines_writ=
-e);
-> +    qtest_add_func("stm32l4x5/exti/reserved_bits", test_reserved_bits_wr=
-ite);
-> +    qtest_add_func("stm32l4x5/exti/reg_write_read", test_reg_write_read)=
+>  config XLNX_ZYNQMP_ARM
+>      bool
+> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
+> index 7513db0d6a..08b8a4c2ed 100644
+> --- a/hw/arm/stm32l4x5_soc.c
+> +++ b/hw/arm/stm32l4x5_soc.c
+> @@ -36,10 +36,51 @@
+>  #define SRAM2_BASE_ADDRESS 0x10000000
+>  #define SRAM2_SIZE (32 * KiB)
+>
+> +#define EXTI_ADDR 0x40010400
+> +
+> +#define NUM_EXTI_IRQ 40
+> +/* Match exti line connections with their CPU IRQ number */
+> +/* See Vector Table (Reference Manual p.396) */
+> +static const int exti_irq[NUM_EXTI_IRQ] =3D {
+> +    6,                      /* GPIO[0]                 */
+> +    7,                      /* GPIO[1]                 */
+> +    8,                      /* GPIO[2]                 */
+> +    9,                      /* GPIO[3]                 */
+> +    10,                     /* GPIO[4]                 */
+> +    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
+> +    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
+> +    1,                      /* PVD                     */
+> +    67,                     /* OTG_FS_WKUP, Direct     */
+> +    41,                     /* RTC_ALARM               */
+> +    2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
+> +    3,                      /* RTC wakeup timer        */
+> +    63,                     /* COMP1                   */
+> +    63,                     /* COMP2                   */
+> +    31,                     /* I2C1 wakeup, Direct     */
+> +    33,                     /* I2C2 wakeup, Direct     */
+> +    72,                     /* I2C3 wakeup, Direct     */
+> +    37,                     /* USART1 wakeup, Direct   */
+> +    38,                     /* USART2 wakeup, Direct   */
+> +    39,                     /* USART3 wakeup, Direct   */
+> +    52,                     /* UART4 wakeup, Direct    */
+> +    53,                     /* UART4 wakeup, Direct    */
+> +    70,                     /* LPUART1 wakeup, Direct  */
+> +    65,                     /* LPTIM1, Direct          */
+> +    66,                     /* LPTIM2, Direct          */
+> +    76,                     /* SWPMI1 wakeup, Direct   */
+> +    1,                      /* PVM1 wakeup             */
+> +    1,                      /* PVM2 wakeup             */
+> +    1,                      /* PVM3 wakeup             */
+> +    1,                      /* PVM4 wakeup             */
+> +    78                      /* LCD wakeup, Direct      */
+> +};
+> +
+>  static void stm32l4x5_soc_initfn(Object *obj)
+>  {
+>      Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
+>
+> +    object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
+> +
+>      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
 ;
-> +    qtest_add_func("stm32l4x5/exti/no_software_interrupt",
-> +                   test_no_software_interrupt);
-> +    qtest_add_func("stm32l4x5/exti/software_interrupt",
-> +                   test_software_interrupt);
-> +    qtest_add_func("stm32l4x5/exti/masked_interrupt", test_masked_interr=
-upt);
-> +    qtest_add_func("stm32l4x5/exti/interrupt", test_interrupt);
-> +    qtest_add_func("stm32l4x5/exti/test_edge_selector", test_edge_select=
-or);
+>      s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
+>  }
+> @@ -50,7 +91,9 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc,=
+ Error **errp)
+>      Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
+>      const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
+>      MemoryRegion *system_memory =3D get_system_memory();
+> -    DeviceState *armv7m;
+> +    DeviceState *dev, *armv7m;
+> +    SysBusDevice *busdev;
+> +    int i;
+>
+>      /*
+>       * We use s->refclk internally and only define it with qdev_init_clo=
+ck_in()
+> @@ -115,6 +158,16 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>          return;
+>      }
+>
+> +    dev =3D DEVICE(&s->exti);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
+> +        return;
+> +    }
+> +    busdev =3D SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, EXTI_ADDR);
+> +    for (i =3D 0; i < NUM_EXTI_IRQ; i++) {
+> +        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
+i]));
+> +    }
 > +
-> +    qtest_start("-machine b-l475e-iot01a");
-> +    ret =3D g_test_run();
-> +    qtest_end();
+>      /* APB1 BUS */
+>      create_unimplemented_device("TIM2",      0x40000000, 0x400);
+>      create_unimplemented_device("TIM3",      0x40000400, 0x400);
+> @@ -155,7 +208,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
+c, Error **errp)
+>      create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
+>      create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
+>      create_unimplemented_device("COMP",      0x40010200, 0x200);
+> -    create_unimplemented_device("EXTI",      0x40010400, 0x400);
+>      /* RESERVED:    0x40010800, 0x1400 */
+>      create_unimplemented_device("FIREWALL",  0x40011C00, 0x400);
+>      /* RESERVED:    0x40012000, 0x800 */
+> diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
+c.h
+> index dce13a023d..6cba566a31 100644
+> --- a/include/hw/arm/stm32l4x5_soc.h
+> +++ b/include/hw/arm/stm32l4x5_soc.h
+> @@ -28,6 +28,7 @@
+>  #include "qemu/units.h"
+>  #include "hw/qdev-core.h"
+>  #include "hw/arm/armv7m.h"
+> +#include "hw/misc/stm32l4x5_exti.h"
+>  #include "qom/object.h"
+>
+>  #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
+> @@ -41,6 +42,8 @@ struct Stm32l4x5SocState {
+>
+>      ARMv7MState armv7m;
+>
+> +    Stm32l4x5ExtiState exti;
 > +
-> +    return ret;
-> +}
+>      MemoryRegion sram1;
+>      MemoryRegion sram2;
+>      MemoryRegion flash;
 > --
 > 2.43.0
 >

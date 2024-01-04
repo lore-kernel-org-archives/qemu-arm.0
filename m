@@ -1,267 +1,158 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp98623ejo;
-        Thu, 4 Jan 2024 06:00:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHaq+D9gtt1BFz+pj+ucwC/aYod1XrzXkhXHSxOSBsIzIlnNckbF6GIDaD7Jyszbsbo65WP
-X-Received: by 2002:a05:622a:1793:b0:428:2050:cb94 with SMTP id s19-20020a05622a179300b004282050cb94mr821365qtk.55.1704376810468;
-        Thu, 04 Jan 2024 06:00:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704376810; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp35563ejo;
+        Thu, 4 Jan 2024 04:10:43 -0800 (PST)
+X-Received: by 2002:a17:902:b789:b0:1d3:f245:ab27 with SMTP id e9-20020a170902b78900b001d3f245ab27mr330971pls.46.1704370243656;
+        Thu, 04 Jan 2024 04:10:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704370243; cv=none;
         d=google.com; s=arc-20160816;
-        b=tSpKgqJuxNesheCZUWyCMFpZOPx85JjiD/pat0jNFENRFjbntYs8c0aeK7Z0hpqoap
-         SWRsCSndl+UuIPlL0jQC6X9XOraaZMjPXRmm+yT7JDCDnrmBkWyjgucswu3CAym07utK
-         txpVIb6v8hlH0DrXjh8/kZZvVTL1S3TMlkHIlZnNBk86ki1P/bwKlaJNgyLI0WmxLhCI
-         +hhEzbMebxITgwEB87WfMS5Js4nk6328rT8ELIUGDeuB/sCXq/JYXbLsdbdtpoU3PGwC
-         Ruw8U4CEJnfDVLJy5wToXvUrhI4bDke+lz939uLdGmGRK1QNt7hH8Sy+BohQAJ0/nT/b
-         vzbQ==
+        b=s4b7m7+N3cr4/kq/auuaPHM0eFWL7j4+dCCfP/hL0Z8ajhHbggU8FoU9RR0nHG4/3g
+         TQ+6UUwnM25rQNFH8pgb65XMVGPT+AOaK6BU7+TfFScyAIr7V3yoxCmF48ANNXTQV9Mp
+         NoCP9Qc8rbvNYPYLp7Nt7EPN5PrJn76x0TZFhkPmZXLsk2bz/4jKgbRcccDg4vr2QLV6
+         Da+ymWva5dJNKGE65jAXTLzbVRJDC3Qq86420/fIqEtVf9TcPd0ODOgBDJHmZqPSN7Ve
+         H6tcYS6blLLR2d4mv1pLS132F5+Of7WRjziVzc59NcBXNhXHrrbveupJKNID1p5glrdo
+         PKRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:autocrypt:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature:dkim-filter;
-        bh=RT/5EEyUFXLy4aIWJ6X5RYoImRe9pDsh/pHd5qXJirI=;
-        fh=/J/PagYvWbt+W1tds+wCW3dc+iIte6zZigNnp5S2CwI=;
-        b=Cb2dfFO5s3wfeAnNcYLhTFfGca3Kxj3XMJtxfs2ltc7lMLVV5EAZDTY+94phB9rvqE
-         H1RhzvNUp8tVdDBsHaTvwUGG7w1MqMuZ+qNDhM+RAgxyq2DwlSHTpK6OJhSkYSmMzMTy
-         WQEPRUEneaFfQAlsOISlM4ATrw1Dq5dxbHLi1UILikOWH1WgJzB2yCoLtBR3bpF/dmz6
-         tyjcvJ8LXdBOHJNWFTr4kXP53RO7qUE/HaGfPNVoqxBWVCZWD/zHP1n2ftm8AYwltpuF
-         E9P1RNhd4aS/iSbNYbHH8OSDUbQ3TFlVMm2fbLLJxgY1pDrqDqpbm4SDqkMrBPCsRrfA
-         bf/A==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Q23i9yT7yrVEFxnf3fk5D4MyK0KHTuKJKDM3rop1kno=;
+        fh=V9VUOiBJX3bMk+YhYt4OJ7NszhI7n2O4X10wXqauf7g=;
+        b=LuJLioGcNvAvRZkXiXWd+zzNWfmN5Ynadn/9yQv/Vc0x/0x87/8nRwX8mKKdMfncXr
+         ePoPEMvDW4+Z/7jqDfa2ZL+lPfwUYQkCxvRmhNgA8ZU8AARNX8Xx4zwSWfwmI0l6BjYO
+         rZBl2B8SZ/H1PK9k+W1ftpQpJLB0ScNPiFJFM4xOq6f+UJnD7604lc+M6+goudnwi9hA
+         9Hvz67Qi54pvqnKw9JGe2pe3zXVyC1OJ/6IQG3ElAJHETkzB+8VJ30IVPC7QVpUHgh+w
+         M60jCKcEByjncq5gRra2beEeaHXb8xJkMvo1TDhAoAtId0iwDfPhlGTMeHfp7cCQQhmf
+         HdsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=JtnaZeUR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q1-20020a05622a030100b0042771241179si31928940qtw.75.2024.01.04.06.00.10
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=wXjEPj0T;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c15-20020a170902848f00b001d4beb1e16fsor2273696plo.7.2024.01.04.04.10.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 06:00:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 04 Jan 2024 04:10:43 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=JtnaZeUR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLOGG-00074Y-Av; Thu, 04 Jan 2024 08:59:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <samuel.tardieu@telecom-paris.fr>)
- id 1rLOGF-00074L-6W; Thu, 04 Jan 2024 08:59:51 -0500
-Received: from zproxy2.enst.fr ([2001:660:330f:2::dd])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <samuel.tardieu@telecom-paris.fr>)
- id 1rLOG4-0004fL-C6; Thu, 04 Jan 2024 08:59:50 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id D676C806FD;
- Thu,  4 Jan 2024 14:59:33 +0100 (CET)
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id BLs-F1S1x9_9; Thu,  4 Jan 2024 14:59:33 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 80462806F6;
- Thu,  4 Jan 2024 14:59:33 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr 80462806F6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704376773;
- bh=RT/5EEyUFXLy4aIWJ6X5RYoImRe9pDsh/pHd5qXJirI=;
- h=Message-ID:Date:MIME-Version:To:From;
- b=JtnaZeURk6tuuZ6iKzg9VxIBTaLbcHdIm9w8UZ4aitMQ/0Uuz17QnjsIKU+tLT9ww
- 0T3ikON3Tsq3kO90zDybMBN/bPe2QAjF1cDiqW+5bGlJPjLcZitr4JgNnZAKKHonAk
- egWA2ijBJk4HWhVS0RJ7DbKx5ST3UHKOHscGQ6bA=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id MORqh4gQCaDx; Thu,  4 Jan 2024 14:59:33 +0100 (CET)
-Received: from [IPV6:2a01:e34:ec63:e440:de99:aaf:30a9:1726] (unknown
- [IPv6:2a01:e34:ec63:e440:de99:aaf:30a9:1726])
- by zproxy2.enst.fr (Postfix) with ESMTPSA id 39AAC8071B;
- Thu,  4 Jan 2024 14:59:33 +0100 (CET)
-Content-Type: multipart/alternative;
- boundary="------------v0t6mTOmJI5ml08UknmfLzhl"
-Message-ID: <2342eaa3-435b-4f21-bcd3-146733908a18@telecom-paris.fr>
-Date: Thu, 4 Jan 2024 14:59:32 +0100
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=wXjEPj0T;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1704370243; x=1704975043; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Q23i9yT7yrVEFxnf3fk5D4MyK0KHTuKJKDM3rop1kno=;
+        b=wXjEPj0T2vqkEwjhn9R8pdNo/mgdRVhu3vUU2ttCaAbWjK1GsX5av45WLPToKLU5Uh
+         XkKXufFlQrtOhnumztAsIQ9FNIwN3T06vzCx0osfNDhkIqY3COrbwD7/97r/WBDWIIsG
+         D4meO5mNRiMq7MFwLewI4Cx1Y8J0LBeeU1L5mZY5vJQJuKcL1IPKIDtflbd1DFHOyb2V
+         pOisEBRwf32HwJDPKg5+Gh5V3AKcBXqGOEi3UKwkN/uu1k7sxmlop7PnZ4NHXFBFaenR
+         PU7/VSr0STwO9X/bxZXa9R2iGspOdcM5WyFceBsy9H0r9KnmlEDT+SGCxj2OLZW8VWys
+         w4gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1704370243; x=1704975043;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q23i9yT7yrVEFxnf3fk5D4MyK0KHTuKJKDM3rop1kno=;
+        b=wvJLMXT+ncqE6qoiEc3uXB2vpxeBCaxm5CxgZP3IsydZ0mF5dz7xee2lH5f5q2IfZk
+         jgs1nXrcC6CbXEI9UDaJkEXGBA05EHY6aAo9DjVxxExMTJkQGDveqO4Fvwp30X101zyQ
+         E8MqhmTv2RI76/FqbO5uwT4MHUyYkpxRnyQNqzLTC2JYjjRXCXaLojQdFkrXZ9wzodiO
+         6FvuYQms5G/hBayf4ZMU+yf159oHNgf5Bbfyyny946NwTTUqRsV0A2z/8shsTIPA66d1
+         R2hmigVWw6NGfkafX9a9mx0s8HEW1rUSBIC0jr676v6OvOyq2nXQyMSx/s70M2HZRd4V
+         63iQ==
+X-Gm-Message-State: AOJu0YxOdzkuLn42My2X8mnxiMv81jPLltwx2JtRqQAxWokTvc1xilMd
+	yshtJIZrUTSwdlhd6vbcVb+oi6nS45Xc9g==
+X-Google-Smtp-Source: AGHT+IEvVniyWW6+pm7fNDiUCukxNFVRQmngQJsY2M7PnvRddXZwN4RLgEaC/QIRqiAw2JDtmofBpQ==
+X-Received: by 2002:a17:903:1d1:b0:1d4:2b5a:9cb7 with SMTP id e17-20020a17090301d100b001d42b5a9cb7mr365235plh.47.1704370243101;
+        Thu, 04 Jan 2024 04:10:43 -0800 (PST)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+        by smtp.gmail.com with ESMTPSA id x22-20020a170902821600b001cfc1b931a9sm25324308pln.249.2024.01.04.04.10.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 04 Jan 2024 04:10:42 -0800 (PST)
+Message-ID: <480302ec-4fb2-4e97-8940-8ec27846efc5@daynix.com>
+Date: Thu, 4 Jan 2024 21:10:26 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/3] hw/misc: Implement STM32L4x5 EXTI
-Content-Language: fr
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
- <20231228161944.303768-2-ines.varhol@telecom-paris.fr>
- <908650b4-3bb2-4cf2-8909-5bffc622950f@linaro.org>
- <877ckpgrie.fsf@telecom-paris.fr>
- <b0f06e83-aa11-4990-a3ed-e6738e7ebbbf@linaro.org>
-From: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
-Autocrypt: addr=samuel.tardieu@telecom-paris.fr; keydata=
- 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
- 0Qc4lE599nwZx5uXfjLY
-In-Reply-To: <b0f06e83-aa11-4990-a3ed-e6738e7ebbbf@linaro.org>
-Received-SPF: pass client-ip=2001:660:330f:2::dd;
- envelope-from=samuel.tardieu@telecom-paris.fr; helo=zproxy2.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Kg7GBeUwbF2m
-
-This is a multi-part message in MIME format.
---------------v0t6mTOmJI5ml08UknmfLzhl
+Subject: Re: [PATCH v3 0/5] Make Big QEMU Lock naming consistent
+Content-Language: en-US
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc: Hanna Reitz <hreitz@redhat.com>, qemu-riscv@nongnu.org,
+ Roman Bolshakov <rbolshakov@ddn.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Thomas Huth <thuth@redhat.com>,
+ qemu-block@nongnu.org, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Huacai Chen
+ <chenhuacai@kernel.org>, Fam Zheng <fam@euphon.net>,
+ Gerd Hoffmann <kraxel@redhat.com>, David Gibson
+ <david@gibson.dropbear.id.au>, John Snow <jsnow@redhat.com>,
+ Stafford Horne <shorne@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Cameron Esfahani <dirty@apple.com>, Alexander Graf <agraf@csgraf.de>,
+ David Hildenbrand <david@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
+ Jiri Slaby <jslaby@suse.cz>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Eric Blake <eblake@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, Michael Roth <michael.roth@amd.com>,
+ Paul Durrant <paul@xen.org>, Jagannathan Raman <jag.raman@oracle.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Hyman Huang <yong.huang@smartx.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ xen-devel@lists.xenproject.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Song Gao <gaosong@loongson.cn>, Kevin Wolf <kwolf@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Artyom Tarasenko
+ <atar4qemu@gmail.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Reinoud Zandijk <reinoud@netbsd.org>, qemu-ppc@nongnu.org,
+ Marcelo Tosatti <mtosatti@redhat.com>, David Woodhouse
+ <dwmw2@infradead.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Leonardo Bras <leobras@redhat.com>,
+ Hailiang Zhang <zhanghailiang@xfusion.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, kvm@vger.kernel.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Eric Farman <farman@linux.ibm.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20240102153529.486531-1-stefanha@redhat.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20240102153529.486531-1-stefanha@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-TUID: 0FNNhAIgE8nI
 
+On 2024/01/03 0:35, Stefan Hajnoczi wrote:
+> v3:
+> - Rebase
+> - Define bql_lock() macro on a single line [Akihiko Odaki]
+> v2:
+> - Rename APIs bql_*() [PeterX]
+> - Spell out "Big QEMU Lock (BQL)" in doc comments [PeterX]
+> - Rename "iolock" variables in hw/remote/mpqemu-link.c [Harsh]
+> - Fix bql_auto_lock() indentation in Patch 2 [Ilya]
+> - "with BQL taken" -> "with the BQL taken" [Philippe]
+> - "under BQL" -> "under the BQL" [Philippe]
+> 
+> The Big QEMU Lock ("BQL") has two other names: "iothread lock" and "QEMU global
+> mutex". The term "iothread lock" is easily confused with the unrelated --object
+> iothread (iothread.c).
+> 
+> This series updates the code and documentation to consistently use "BQL". This
+> makes the code easier to understand.
 
-On 04/01/2024 14:40, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 4/1/24 14:23, Samuel Tardieu wrote:
->>
->> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>
->>> This doesn't build:
->>>
->>> ../../hw/misc/stm32l4x5_exti.c:172:9: error: expected expression
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const uint32_t set1 =3D va=
-lue & ~DIRECT_LINE_MASK1;
->>> [=E2=80=A6]
->>> I could build using:
->>> -=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1:
->>> +=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1: {
->>
->> Out or curiosity, which C compiler or option do you use for checking?=20
->> I have no problem building this using "./configure=20
->> --target-list=3Darm-softmmu" with GCC 12.3.0.
->
-> C compiler for the host machine: clang (clang 15.0.0 "Apple clang=20
-> version 15.0.0 (clang-1500.0.40.1)")
-> C linker for the host machine: clang ld64 1015.7
-Indeed, it looks like mixing labels, declarations and statements is a=20
-GCC extension. I've switched to clang and can reproduce the failure. Than=
-ks!
---------------v0t6mTOmJI5ml08UknmfLzhl
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+For the whole series,
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-<!DOCTYPE html>
-<html data-lt-installed=3D"true">
-  <head>
-    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
--8">
-  </head>
-  <body style=3D"padding-bottom: 1px;">
-    <p><br>
-    </p>
-    <div class=3D"moz-cite-prefix">On 04/01/2024 14:40, Philippe
-      Mathieu-Daud=C3=A9 wrote:<br>
-    </div>
-    <blockquote type=3D"cite"
-      cite=3D"mid:b0f06e83-aa11-4990-a3ed-e6738e7ebbbf@linaro.org">On
-      4/1/24 14:23, Samuel Tardieu wrote:
-      <br>
-      <blockquote type=3D"cite">
-        <br>
-        Philippe Mathieu-Daud=C3=A9 <a class=3D"moz-txt-link-rfc2396E" hr=
-ef=3D"mailto:philmd@linaro.org">&lt;philmd@linaro.org&gt;</a> writes:
-        <br>
-        <br>
-        <blockquote type=3D"cite">This doesn't build:
-          <br>
-          <br>
-          ../../hw/misc/stm32l4x5_exti.c:172:9: error: expected
-          expression
-          <br>
-          =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const uint32_t set1 =
-=3D value &amp; ~DIRECT_LINE_MASK1;
-          <br>
-          [=E2=80=A6]
-          <br>
-          I could build using:
-          <br>
-          -=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1:
-          <br>
-          +=C2=A0=C2=A0=C2=A0 case EXTI_SWIER1: {
-          <br>
-        </blockquote>
-        <br>
-        Out or curiosity, which C compiler or option do you use for
-        checking? I have no problem building this using "./configure
-        --target-list=3Darm-softmmu" with GCC 12.3.0.
-        <br>
-      </blockquote>
-      <br>
-      C compiler for the host machine: clang (clang 15.0.0 "Apple clang
-      version 15.0.0 (clang-1500.0.40.1)")
-      <br>
-      C linker for the host machine: clang ld64 1015.7
-      <br>
-    </blockquote>
-    Indeed, it looks like mixing labels, declarations and statements is
-    a GCC extension. I've switched to clang and can reproduce the
-    failure. Thanks!<br>
-    <div id=3D"grammalecte_menu_main_button_shadow_host"
-      style=3D"width: 0px; height: 0px;"></div>
-  </body>
-  <lt-container></lt-container>
-</html>
-
---------------v0t6mTOmJI5ml08UknmfLzhl--
+Thank you for sorting this out.

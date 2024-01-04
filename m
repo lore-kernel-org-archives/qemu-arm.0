@@ -1,212 +1,216 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp253371ejo;
-        Thu, 4 Jan 2024 10:04:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGwrcuORnU3zLSppvqcCe+EW9ck9QjqdVWulFNSz2FX+1q4/zzaMimq6kjre5v2K27Ita15
-X-Received: by 2002:a05:6870:353:b0:204:1932:e9e0 with SMTP id n19-20020a056870035300b002041932e9e0mr962254oaf.115.1704391496386;
-        Thu, 04 Jan 2024 10:04:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704391496; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp383588ejo;
+        Thu, 4 Jan 2024 14:56:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGfZ3WNjealJNJdRtufVcmGp7EfCm7+u94e/Vrs8CXD5++Kk52qXsr0EMiR0ns+0jnVConc
+X-Received: by 2002:a05:6214:19ed:b0:67f:aa5f:7df2 with SMTP id q13-20020a05621419ed00b0067faa5f7df2mr1368854qvc.82.1704408994575;
+        Thu, 04 Jan 2024 14:56:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704408994; cv=none;
         d=google.com; s=arc-20160816;
-        b=q7Rnwd9kTR5NExWY+VChoOif+oISHq0o05Jgi+jNlPeacV7j60KiHUwp3ru2GtKsap
-         Drb3tB5URWbCoOAkkfhIbrWKW9g07FgWxYnE1RS326j3EvqttwpQdMXkbEewkeIZLytC
-         f9P6eK696kLfEZoRvNiwgYMaJ2VZfhZJj3KULGR/G/HAYnpPE1jwboBijZYJ7hgo9HHa
-         S5hImz0IGhvSszNP5VH/I0gfSHXHiqXkNySIk7VpTwkIdotDMghshuFnFfkeK8As8Ofn
-         Q407LV34nwFNo9gAJ2kgSBiAtHw685ZqaKWKA7H1BKmYbGfXSYo+nFSvoDZdFKkcEC+K
-         ifAg==
+        b=Dw/kwtXYsIIZLB06Ogg1nYM5Z/SKl1o3rJbot9mGsJ/2z6MUwYjkkfdZKzUJLUM55o
+         juCZ0Pk8nthxR9oHy+LfIqQz967rQ7719QMvXIwtjQ1dgNMPn6kIIDgGvYkFmpXPy/u+
+         kX0SLhNhah73glvA9cpk2zTjw2xKWI+n2mtsEEKPChnQdy7z5fTwkI7e1e8A+7TYdVa9
+         YTLfVJ/+j8S08uJbZWDtvogi4cJKJCsm3xcKUJPy1xvGnl5TfzKdRfuyH92yE3aO3kAW
+         KQmT052D2OnXhHGK05iJ4Tt+lOhlWh8dPiNhJ/6KiE8VJHfwpOzd1ywWx517xEmgpR1q
+         YvQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:references:cc:to:from:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=MMFnyllcwPy0qW405I+eMlwhvboa9IaK0Wss3eV8Td4=;
-        fh=MNy/s+eWWV9V6tfmhb2gUwit/2o7TQkLbQD1zQm6hqY=;
-        b=yAOwOuvoFM00v0k7DsY4mKycr2AcG2Yohat6WZdhEylAPjpGWZRqAA5MBMbsN0Z8Qh
-         hKD8bRxPlHUv+X5rTTl2f3FAyOo1RpPtiZz1amn7uPj0iewZczP39DpNeumDo/V5780d
-         SKQD7ZJTJxJKM4QCF8Xe6TvwyiFZak/wtO8HWR4NRwJC8oo7c8wP6svXofeqm0TIvh7T
-         esggqlZrVPdH0LyNdqU2vcw/x3qyCUgPGk+SWmmrCr8+GQF+EmhvyoZdkVZqEy+lhhqT
-         epHBFFs12vvOVl2QiyXF2w/9f9Exj+s/bSg1uch3ZP1sd//3kBr3za9N1UomUgacb+G9
-         bdhw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=8S+JfPjRwqg4UIYq6sBhs6JXVD132NFyg7FFxV9kAG0=;
+        fh=fiFMQY7Hi/+x7hbepIPaKndpWT534oLkKLRjyFMmePs=;
+        b=YpGwPWWIDHSUawUduT5lKeWx5SlG8Mop0XWcwYgFqx8T9rIGQeGmHw8dcLfF8K+QdU
+         MLudpU1FtInYhiFA3IsKgAvryBPO5vSQrL0owvSPGw2Z13eFq07LzQXQbuHegW4pkktN
+         vv/BowLzanU2Xbm5YWE9uuRrvkBcC76hbQl7v2tIRWOswpAJib/xEYmNmMyDKhqLvN77
+         5LRDcRI0HeHdYhDUVjVVbddfdVFnAkYBbbQNkF2hgoYcsJcX5PBg6uas9rCIby9/T4lh
+         hgmA7xFud40aWQCnvJ5Usu5RchpBw5iEYuXSICqHsdhvmMfEy+CsVXNCjA5JW+ICpBHY
+         eajQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YLI6BJYu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l9wmG10q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15-20020a67e3af000000b00466fe08e171si2239243vsm.218.2024.01.04.10.04.55
+        by mx.google.com with ESMTPS id y9-20020a0ce049000000b00680684164a6si479712qvk.304.2024.01.04.14.56.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 10:04:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Jan 2024 14:56:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YLI6BJYu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l9wmG10q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLS4m-00035d-25; Thu, 04 Jan 2024 13:04:16 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rLWd8-000322-SR; Thu, 04 Jan 2024 17:56:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLS4f-00034X-Bh
- for qemu-devel@nongnu.org; Thu, 04 Jan 2024 13:04:09 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rLWd6-00031g-ON; Thu, 04 Jan 2024 17:56:00 -0500
+Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLS4c-0005S6-AS
- for qemu-devel@nongnu.org; Thu, 04 Jan 2024 13:04:09 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-40d858c56cbso8174525e9.2
- for <qemu-devel@nongnu.org>; Thu, 04 Jan 2024 10:04:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rLWd4-00089Y-VS; Thu, 04 Jan 2024 17:56:00 -0500
+Received: by mail-vs1-xe34.google.com with SMTP id
+ ada2fe7eead31-4676a37e2c4so269636137.1; 
+ Thu, 04 Jan 2024 14:55:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704391444; x=1704996244; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=MMFnyllcwPy0qW405I+eMlwhvboa9IaK0Wss3eV8Td4=;
- b=YLI6BJYuoE696Shlbt6TJWbYpCwTf/BVNtrCwTLaPSV62iD7hvR2xhX4fnMelYJaGS
- XQq0BvfYwGhUTXoCX9BjOV8H8BZiTmQ4U1hkbs2GkE2zDekCSGQkp6OHq7Q4HUHp2BME
- WAYE//f4JNefkIVxrKbcy+gq/DRl76S6JgVSF5FvKCJbX/MdSIRkLG1KiKBsVOvgXsI6
- +yuqo2g48rL4fF8MVJd3q1gAP5IKg80HEvngxRjRSwS8ARdREOjo2G+WnmzkAgm0dAtU
- DdFafBNF+QPkKq2FRaXnoUm/nHFkqZBYT59BDX3J4v0ZJC31kVGeZSFj2xX3XpLwraDQ
- HOIA==
+ d=gmail.com; s=20230601; t=1704408956; x=1705013756; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=8S+JfPjRwqg4UIYq6sBhs6JXVD132NFyg7FFxV9kAG0=;
+ b=l9wmG10qZfRdunzpwpF6uY2HnEQaKUpDaxDNQkSOJE7Oy1lfvkEohAoPGgdWbXe3Yl
+ VvxRQjcjFC4uAy4asNNMM/TGsgFfYCxRt6WSHDK5ZVT5Bs2k7HE1AWDtT2nmMB9MKr/t
+ yqGA+cpnQ5eyzr2nudWW+o+puLhkLuYNEDRFKBpTv2VUprtDTLZxlQb6zZ7+6Vgdfn0k
+ gPowc4aX9DKlFwufUtI0kdAinUOAizZfd071Z96Vp5hHG68MmuylN+Fqb7lLmQ5TlYeo
+ gNyHvB2pmEwD7ypoo2xIeZjf8QK9skUjYfVPPcKSxrxfsM5cVUdSuBT2R1It/WQWCSZv
+ lFgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704391444; x=1704996244;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MMFnyllcwPy0qW405I+eMlwhvboa9IaK0Wss3eV8Td4=;
- b=CvUgefdLH71HTshaVwJu5Oy6XgaUNFcbdP2w6+Ixl/Ls7AW5ZDHQmNL6BNxgxe01BP
- TD2/DgLoX4Uymg+jPa49afNLQ0GNBlIQvZeiW9ifQUrYL3tpaGZbjigoKHMzEnY6ZQIW
- xUgHbGBaFkdHBj8pVU3E0H9RoTdMLLkKDttMxUQWnkX7ybR54aruWiE9gl2et1FVsxJt
- k5Jj4lzPK9h/ZLyPHOrm1w/IpsbEH9EuXvTrM7VEsZFBpVbBTlvlUvJ490OSXW29Rjd5
- mBP6JZ/46GVYu2/cPKxDSelOKtfiTR59aDAFTrGoU7sw1KzszCgpoYOWBT+VUbgNRyOg
- QQAg==
-X-Gm-Message-State: AOJu0YzsxBQgmWojn23Ol7niI0kC5gs9AUOgYcowlSHNC1RY1Cv50xpo
- m7wLqS3sDunQYMTlxmX9cmqtDi4lEdfGtw==
-X-Received: by 2002:a05:600c:214:b0:40d:932b:c504 with SMTP id
- 20-20020a05600c021400b0040d932bc504mr629728wmi.24.1704391444051; 
- Thu, 04 Jan 2024 10:04:04 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.194.232])
- by smtp.gmail.com with ESMTPSA id
- e16-20020a05600c4e5000b0040d933ad598sm4351588wmq.27.2024.01.04.10.03.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Jan 2024 10:04:03 -0800 (PST)
-Message-ID: <04107470-8438-4e24-9a9a-03f6fa30bb31@linaro.org>
-Date: Thu, 4 Jan 2024 19:03:56 +0100
+ d=1e100.net; s=20230601; t=1704408956; x=1705013756;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8S+JfPjRwqg4UIYq6sBhs6JXVD132NFyg7FFxV9kAG0=;
+ b=Yowl8b+TJ+YQvehkHPW72BF9bTDnn4brzwpmttGk20YhiofJtXf1H1yTBwWjltz8ig
+ +3UKMqEBCQGK5jp8/DVqm18Cp8dT2PtE+6ykiWMV4acGpWWNNKf4AQab8WEDmnufOtoi
+ by6wCHwhzV8A0wYQXI3VlbRpHZdnP9OYOZALnRqkMlTx4tHT1FejSgW7Ww8VSiLK5k19
+ t9nDXq7QGJJm7mwr6+mlJ73udkelcDAtlCyNL6COAr1B741EWIor1gwXyiMnzVDl2Sj3
+ doxji7ptqKx0KSawHsoI1GFnJwMqUH6hBe6gZpX4rRx3Vc+1jgqK2e9ZkmwhXrR+4Jd1
+ 3yjw==
+X-Gm-Message-State: AOJu0YyHOCxyzMgtMM54nPL1Nxf174W/3nligE+/VOjx6WP6xKoN+z4a
+ hO+KVoSoKvDS7oRgZZoRRhn4viRFuJp0F66X6Jw=
+X-Received: by 2002:a05:6102:14a7:b0:466:f402:3db7 with SMTP id
+ d39-20020a05610214a700b00466f4023db7mr1301113vsv.35.1704408956577; Thu, 04
+ Jan 2024 14:55:56 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 01/31] target/alpha: Remove 'ev67' CPU class
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- imp@bsdimp.com, kevans@freebsd.org, richard.henderson@linaro.org,
- pbonzini@redhat.com, peter.maydell@linaro.org, imammedo@redhat.com,
- b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com,
- kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
- rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
- laurent@vivier.eu, vijai@behindbytes.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com,
- edgar.iglesias@gmail.com, bcain@quicinc.com, gaosong@loongson.cn,
- aurelien@aurel32.net, jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
- chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
- ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
- jcmvbkbc@gmail.com, shan.gavin@gmail.com
-References: <20231114235628.534334-1-gshan@redhat.com>
- <20231114235628.534334-2-gshan@redhat.com>
- <9fcd0827-a729-4cf8-a6ab-93cda04d88f9@linaro.org>
-In-Reply-To: <9fcd0827-a729-4cf8-a6ab-93cda04d88f9@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20240104141159.53883-1-philmd@linaro.org>
+In-Reply-To: <20240104141159.53883-1-philmd@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 5 Jan 2024 08:55:30 +1000
+Message-ID: <CAKmqyKPqbU6ik7WbJv9OiFqtDr=Sm5pz686a-Y+emtjAQNSp1A@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add missing QOM parent for v7-M SoCs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ qemu-arm@nongnu.org, 
+ Felipe Balbi <balbi@kernel.org>, Alexandre Iooss <erdnaxe@crans.org>, 
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
+ Alistair Francis <alistair@alistair23.me>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e34;
+ envelope-from=alistair23@gmail.com; helo=mail-vs1-xe34.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cgfNXxFvJna6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nayODK8/r5gY
 
-On 4/1/24 18:58, Philippe Mathieu-Daudé wrote:
-> On 15/11/23 00:55, Gavin Shan wrote:
->> 'ev67' CPU class will be returned to match everything, which makes
->> no sense as mentioned in the comments. Remove the logic to fall
->> back to 'ev67' CPU class to match everything.
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   target/alpha/cpu.c | 7 ++-----
->>   1 file changed, 2 insertions(+), 5 deletions(-)
->>
->> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
->> index 39cf841b3e..91fe8ae095 100644
->> --- a/target/alpha/cpu.c
->> +++ b/target/alpha/cpu.c
->> @@ -141,11 +141,8 @@ static ObjectClass *alpha_cpu_class_by_name(const 
->> char *cpu_model)
->>       typename = g_strdup_printf(ALPHA_CPU_TYPE_NAME("%s"), cpu_model);
->>       oc = object_class_by_name(typename);
->>       g_free(typename);
->> -
->> -    /* TODO: remove match everything nonsense */
->> -    if (!oc || object_class_is_abstract(oc)) {
->> -        /* Default to ev67; no reason not to emulate insns by 
->> default. */
->> -        oc = object_class_by_name(ALPHA_CPU_TYPE_NAME("ev67"));
->> +    if (!oc || !object_class_dynamic_cast(oc, TYPE_ALPHA_CPU)) {
->> +        return NULL;
->>       }
-> 
-> This breaks linux-user:
-> 
-> qemu-alpha: unable to find CPU model 'any'
+On Fri, Jan 5, 2024 at 12:12=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> QDev objects created with qdev_new() need to manually add
+> their parent relationship with object_property_add_child().
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Thread 1 "qemu-alpha" hit Breakpoint 1, alpha_cpu_class_by_name 
-(cpu_model=0x5555557202a0 "any") at target/alpha/cpu.c:123
-123	{
-(gdb) bt
-#0  alpha_cpu_class_by_name (cpu_model=0x5555557202a0 "any") at 
-target/alpha/cpu.c:123
-#1  0x0000555555583956 in cpu_class_by_name 
-(typename=typename@entry=0x555555674af8 "alpha-cpu", 
-cpu_model=0x5555557202a0 "any")
-     at hw/core/cpu-common.c:156
-#2  0x00005555555904a1 in parse_cpu_option (cpu_option=<optimized out>) 
-at cpu-target.c:257
-#3  0x00005555555822e9 in main (argc=2, argv=0x7fffffffe318, 
-envp=<optimized out>) at linux-user/main.c:784
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-in main():
+Alistair
 
-  781     if (cpu_model == NULL) {
-  782         cpu_model = cpu_get_model(get_elf_eflags(execfd));
-  783     }
-  784     cpu_type = parse_cpu_option(cpu_model);
-
-Having:
-
-$ cat linux-user/alpha/target_elf.h
-...
-#ifndef ALPHA_TARGET_ELF_H
-#define ALPHA_TARGET_ELF_H
-static inline const char *cpu_get_model(uint32_t eflags)
-{
-     return "any";
-}
-#endif
-
+> ---
+>  hw/arm/msf2-som.c          | 1 +
+>  hw/arm/netduino2.c         | 1 +
+>  hw/arm/netduinoplus2.c     | 1 +
+>  hw/arm/olimex-stm32-h405.c | 1 +
+>  hw/arm/stm32vldiscovery.c  | 1 +
+>  5 files changed, 5 insertions(+)
+>
+> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+> index 7b3106c790..e93c83c410 100644
+> --- a/hw/arm/msf2-som.c
+> +++ b/hw/arm/msf2-som.c
+> @@ -66,6 +66,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machi=
+ne)
+>      memory_region_add_subregion(sysmem, DDR_BASE_ADDRESS, ddr);
+>
+>      dev =3D qdev_new(TYPE_MSF2_SOC);
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
+>      qdev_prop_set_string(dev, "part-name", "M2S010");
+>      qdev_prop_set_string(dev, "cpu-type", mc->default_cpu_type);
+>
+> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+> index 501f63a77f..8b1a9a2437 100644
+> --- a/hw/arm/netduino2.c
+> +++ b/hw/arm/netduino2.c
+> @@ -44,6 +44,7 @@ static void netduino2_init(MachineState *machine)
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+>
+>      dev =3D qdev_new(TYPE_STM32F205_SOC);
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
+>      qdev_connect_clock_in(dev, "sysclk", sysclk);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>
+> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
+> index 2e58984947..bccd100354 100644
+> --- a/hw/arm/netduinoplus2.c
+> +++ b/hw/arm/netduinoplus2.c
+> @@ -44,6 +44,7 @@ static void netduinoplus2_init(MachineState *machine)
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+>
+>      dev =3D qdev_new(TYPE_STM32F405_SOC);
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
+>      qdev_connect_clock_in(dev, "sysclk", sysclk);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>
+> diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
+> index d793de7c97..4ad7b043be 100644
+> --- a/hw/arm/olimex-stm32-h405.c
+> +++ b/hw/arm/olimex-stm32-h405.c
+> @@ -47,6 +47,7 @@ static void olimex_stm32_h405_init(MachineState *machin=
+e)
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+>
+>      dev =3D qdev_new(TYPE_STM32F405_SOC);
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
+>      qdev_connect_clock_in(dev, "sysclk", sysclk);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>
+> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+> index 190db6118b..cc41935160 100644
+> --- a/hw/arm/stm32vldiscovery.c
+> +++ b/hw/arm/stm32vldiscovery.c
+> @@ -47,6 +47,7 @@ static void stm32vldiscovery_init(MachineState *machine=
+)
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+>
+>      dev =3D qdev_new(TYPE_STM32F100_SOC);
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
+>      qdev_connect_clock_in(dev, "sysclk", sysclk);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>
+> --
+> 2.41.0
+>
+>

@@ -1,112 +1,114 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp68680ejo;
-        Thu, 4 Jan 2024 05:12:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGuVSy/5vlTNnoz+cr+Al8bVG2tuUQrGB8UrRkt7GRMEubJYagRDoRYVRzldS43x9Ddzkvq
-X-Received: by 2002:a1f:7cc6:0:b0:4b6:c771:47e8 with SMTP id x189-20020a1f7cc6000000b004b6c77147e8mr256188vkc.20.1704373963404;
-        Thu, 04 Jan 2024 05:12:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704373963; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp72886ejo;
+        Thu, 4 Jan 2024 05:18:24 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGbYnjk588in6rFY3AdV19Wc6gfv9GeblWIdy9omPIaBXEXVoy94VMCJTGMelnQFyWuB4pi
+X-Received: by 2002:a05:6808:2013:b0:3bc:27a0:7b9b with SMTP id q19-20020a056808201300b003bc27a07b9bmr549959oiw.51.1704374304066;
+        Thu, 04 Jan 2024 05:18:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704374304; cv=none;
         d=google.com; s=arc-20160816;
-        b=dsnCjBTiNxhH0/JRYY01B+L0X/P7AJ3gzcM5hbosV5h8fudiBkOaxQDQCl17ltzci3
-         P2Z7/DuftJGOooZxwOpLWZnna0QDpiu4g0UzHM7NctFWf7O1uLIYXu4OVmqNUCPVgkYz
-         Po4S4YeSajcID8edGXmjSAyyYGEFtccD5xV5Tdy05kVc3uGnK5NXeQB317MalgH789mO
-         YER8C0Vxj/7b4BXXbLuvm5r5kScvoYAYCROF0v1Js59L7WPydV6mZp3eeet/1ebMV8VI
-         n63E4x8MsohqsDiHMCL5Bo+TGxmF0qJoxd6Viy4GDAjXQRWvdKbsLl68PQm4yo0P1Zzo
-         EwVg==
+        b=gzfadT+bjB440dMNo3gSwC4MzAff81/DGijSA/z+cdNL+IkhU6WZHYusIcvBhI02FC
+         udI1piK2gfx1T7jRIWZg9CBArAfz2e5xz84+WLI8kPAJp7/+SALUgL8jZPbYnWq4jUTD
+         NWI5LaknN2A5v28EQsAzDF+xJ13SNOcXZO+523iXxUGZRYyfcokAYYquAlhGHaI4P3nt
+         ZGxYQj0TwQC7sCE/BENhi5cekMAQWHzOYVKWZx8RGba6uc02kYpGSIrckZ3YUhKGGbwo
+         6adc9mgbWiCS/dj69fFEOIzJE50OqB56slw5DBLEZDxDTrgNPMFMRBNfXs/uUbC6xdZ6
+         aXGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=QCQK2YHF40/oVZdGanpblAG0qjgj40cOa4xxTM9PKAY=;
-        fh=xoLlTeCHUa3c1rGcl+ClR2Y4muigpeJPtfA+8BXqciM=;
-        b=OrOr5JVkDuJrqWax+wb2WdOi5ICvcYxvvtSVexnY3N7ctU3YYSYfIJNc3aUPIeYPas
-         cKASf7F6m9IDpkt3jEd85269dTM7awzFvq9j/LioDKBb+EcoOdbDm1WEB2dPsTdXT2uG
-         W5I4oYZq8ttRKSh+lVMrII7A5+MT47PHzDh4tfLXw45cXvIfx8AEHptFLuZwr0Pne+Hg
-         gWfIKrktTEIe87JgN5G/QTa7TCoigInJGXPc0CuhRU5kRACVmWgUP5owrHJUEjOFq7sT
-         ret3O7Kn2E2t3UtJE5HY9gruUOfxeHw7VCh1DjlRVe+SZqCNisXFits10+7II9oBgXBW
-         iKBQ==
+        bh=0nqpvXDtbcm8dXnlETyYiphTGxuBaT+IlARwQCABQIw=;
+        fh=QOGl9Zs+nNvNanknLTIuYJHxyygDHEWPeAwoechlFJk=;
+        b=n8ZWc67+fpHDODzDffIrjPlZbmFynsO2o+NL82zNeHizA4h8O+ft3GCI4ycNxgs1sF
+         dC1fGE/ofQsPvK9x2l1JAHTus/UkhSA6xnP0jdMUxhJgtPIZlvzknAb4hhRz4KgZNMMw
+         9lq25s5MhqiOKZvNDnTWatvgghwPR4NV/PxOq8JwbWzwzPDDPcb88Ib1zdrMjtlXRda3
+         XDVxquDGsj9iAkOepq6Igcbk/OsRd4IkrF5Rim/PjVgIiGnMRreD8E5SiUEF8UXs2mBb
+         HrMicJLWACiQYbeSkTDPFVz497UQT/1tE+4e0hO/Bnq713ewfdobrwBj8oDsJVeoEn9m
+         vhRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="y/5U+jgR";
+       dkim=pass header.i=@linaro.org header.s=google header.b=gLR+S4BE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ch33-20020a05612231a100b004b74f03630bsi2921797vkb.108.2024.01.04.05.12.43
+        by mx.google.com with ESMTPS id ey11-20020a0562140b6b00b00680503eb91bsi21206819qvb.165.2024.01.04.05.18.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 05:12:43 -0800 (PST)
+        Thu, 04 Jan 2024 05:18:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="y/5U+jgR";
+       dkim=pass header.i=@linaro.org header.s=google header.b=gLR+S4BE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLNW2-00030B-OU; Thu, 04 Jan 2024 08:12:06 -0500
+	id 1rLNc0-0005Fs-E7; Thu, 04 Jan 2024 08:18:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLNW0-0002zd-Vf
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:12:04 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLNbs-0005Dj-85
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:18:08 -0500
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLNVy-0006Jl-L7
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:12:04 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-33677fb38a3so451193f8f.0
- for <qemu-arm@nongnu.org>; Thu, 04 Jan 2024 05:12:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLNbp-0005XF-Ig
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 08:18:07 -0500
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-50eabd1c701so558056e87.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Jan 2024 05:18:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704373920; x=1704978720; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704374282; x=1704979082; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QCQK2YHF40/oVZdGanpblAG0qjgj40cOa4xxTM9PKAY=;
- b=y/5U+jgRNNU2gBPxRgtjwPUqe4v4mcfvj8L1yIOxk2nPdWfsNZnGRYJtgWGXN7H4r1
- M/xKUsEsTfPtrpZ51u7/qOd1WLzYmX84ROHGS2WCVSzM6k4H3ZnS5Z/JhoAscWgICkh0
- TlNRqZ+ojfcqKk3CYGJZLMMNuu8uhluVlfAH4trHIv2pJItL5K/BKYaGa87F7IpGTDnQ
- m55MJz96beZNeikRjl6v9m+FpRcqlRohA9s+PuRXAuKQcHRTcWARG3lJyubmeYhqhoK6
- gLzVDATM5z+XDU0opA7IchkFYjXAPRnhsTAnbfM4MQZ9iklYYTdPEljZwaWuVTkcT2dJ
- Q8gA==
+ bh=0nqpvXDtbcm8dXnlETyYiphTGxuBaT+IlARwQCABQIw=;
+ b=gLR+S4BEaWvTFey0cUrCyHgnCppMDW6icA9/aTLgM0QBlAA1ZjWFjAhzeeZBKAd4f5
+ ztQEY/SlQvqDpstYzRpBNWXz9rAbJwyugNHi2Fnos2Fl6dOy6B+C211xb4ZzC9W5Ht2J
+ O+1VBSa5OJ3EX0dhSjGGRJBoY0u+V6XXjtAE4IkZ/nkU+5IhvbYuTrgsic+9/nxYNS0e
+ QYJTelAAzFLHZSVswK5PW4jnvoxZGYBfIqb0FzbRmXaXLVyiIx0wmNv+/60POhCqZbHa
+ nl0uUedtckwFg038/RQOy7AC5TQOJJmU89GNdK3Oisy04WesNMuKqknpQsG4FrD6kVHd
+ lyVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704373920; x=1704978720;
+ d=1e100.net; s=20230601; t=1704374282; x=1704979082;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QCQK2YHF40/oVZdGanpblAG0qjgj40cOa4xxTM9PKAY=;
- b=rk5kS6zS0CqWpA7RFUi7KzYUwbszK5x2qzMFADYz7QiIkMS4beoh+U+44qXv3wX3Sg
- P6Ol/fTywMrCTkDqhJgmc60gvbGUgeI6xDVywIj+N9YY+uoYeb89pkUSf8TEcWOuY7HY
- q1XjE1EDp0cXbxkXPgEjHy2CVBMqQFXMOBFNpKeEqfSByGt6FDHuHi3zUb46/lq++09A
- vkvo5udmImV4set0Ct4HEh+L2h+2BIDm8hn5QRlf6OyFSeLYPM6GvAw+Pxjgp9mpw+AJ
- um9srPdmf28KzlewE5GCaf0Nnt8mrx0CJzbF5mv1vd+LA58SaEpRctQmzqdGPaTNxh9O
- f5vw==
-X-Gm-Message-State: AOJu0YxqIwoSEIW3vjwPqQKSiZOl4fmuG/aDydtnmbTqnaaEiByKMcE7
- qQpaCJEGMcUzwXdADzRmAh+mO/AvX7RGEg==
-X-Received: by 2002:a05:600c:518d:b0:40d:5c4d:478a with SMTP id
- fa13-20020a05600c518d00b0040d5c4d478amr291414wmb.32.1704373920463; 
- Thu, 04 Jan 2024 05:12:00 -0800 (PST)
+ bh=0nqpvXDtbcm8dXnlETyYiphTGxuBaT+IlARwQCABQIw=;
+ b=V+u26G/oLyMdFcIF4ct2mi6Kg+K8aIjAT/OwUEeNtBD5xvGcFcj7P4h9SrlVEfKW4X
+ 0G7s8SBaa2fXox0nfLaYjTwmYg7b4/HHMf0tl1x+qPFZkCJTchywdPANkU+jdMT0G7Sl
+ VvO2VkXaHc1VAWWcp/lLrz8HtFClwWQEDE5a56dHA1rZXk5UKHJcHgg1Lr7uAPaX9Vzi
+ BvOeXxtZUGYMPFKbfgP+HuwFbt3sHD0kjNYLZGUhJuIZO8JG9sJq09MVQm/3o9crY+Pe
+ R+xDb9JBoAmUxc58Gk0lXNZcLTg+sFTr1Bq7dMXQuAJ9yvMIOFZeaqegVKPGHvXzsM0H
+ 0ffQ==
+X-Gm-Message-State: AOJu0YzADQeA4ulVfNcsit3WbuOascKwDBuApF5/Bf8kGUGoaO8e2490
+ ZlLTauqlc66PvZnm6HHgBeGHoljQhlrb6Q==
+X-Received: by 2002:a05:6512:1091:b0:50e:4598:b836 with SMTP id
+ j17-20020a056512109100b0050e4598b836mr480262lfg.15.1704374282071; 
+ Thu, 04 Jan 2024 05:18:02 -0800 (PST)
 Received: from [192.168.69.100] ([176.187.194.232])
  by smtp.gmail.com with ESMTPSA id
- fa26-20020a05600c519a00b0040d5ab35657sm5731870wmb.4.2024.01.04.05.11.58
+ ck15-20020a0564021c0f00b00555f908b2e4sm7429756edb.40.2024.01.04.05.18.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Jan 2024 05:11:59 -0800 (PST)
-Message-ID: <1d15fc3d-1334-4ef0-8484-d8dcbfa10df3@linaro.org>
-Date: Thu, 4 Jan 2024 14:11:57 +0100
+ Thu, 04 Jan 2024 05:18:01 -0800 (PST)
+Message-ID: <88e6855d-4b5f-46aa-b926-142d60275d7c@linaro.org>
+Date: Thu, 4 Jan 2024 14:17:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] hw/arm: Add minimal support for the B-L475E-IOT01A
- board
+Subject: Re: [PATCH v5 3/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
 Content-Language: en-US
 To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alistair@alistair23.me, peter.maydell@linaro.org,
- arnaud.minier@telecom-paris.fr
-References: <20231221213838.54944-1-ines.varhol@telecom-paris.fr>
- <20231221213838.54944-3-ines.varhol@telecom-paris.fr>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org
+References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
+ <20231228161944.303768-4-ines.varhol@telecom-paris.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231221213838.54944-3-ines.varhol@telecom-paris.fr>
+In-Reply-To: <20231228161944.303768-4-ines.varhol@telecom-paris.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,141 +130,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hzI1+WlZjyC8
+X-TUID: /RBVqbqwUBF0
 
-On 21/12/23 22:32, Inès Varhol wrote:
-> This commit adds a new B-L475E-IOT01A board using the STM32L475VG SoC
-> as well as a dedicated documentation file.
-> The implementation is derived from the Netduino Plus 2 machine.
-> There are no peripherals implemented yet, only memory regions.
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
+On 28/12/23 17:19, Inès Varhol wrote:
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
 > ---
->   MAINTAINERS                             |  7 +++
->   configs/devices/arm-softmmu/default.mak |  1 +
->   docs/system/arm/b-l475e-iot01a.rst      | 46 ++++++++++++++++
->   docs/system/arm/stm32.rst               |  6 ++-
->   docs/system/target-arm.rst              |  1 +
->   hw/arm/Kconfig                          |  6 +++
->   hw/arm/b-l475e-iot01a.c                 | 70 +++++++++++++++++++++++++
->   hw/arm/meson.build                      |  1 +
->   8 files changed, 136 insertions(+), 2 deletions(-)
->   create mode 100644 docs/system/arm/b-l475e-iot01a.rst
->   create mode 100644 hw/arm/b-l475e-iot01a.c
+>   hw/arm/Kconfig                 |  1 +
+>   hw/arm/stm32l4x5_soc.c         | 56 ++++++++++++++++++++++++++++++++--
+>   include/hw/arm/stm32l4x5_soc.h |  3 ++
+>   3 files changed, 58 insertions(+), 2 deletions(-)
 
 
-> diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-> new file mode 100644
-> index 0000000000..c3790e3dc8
-> --- /dev/null
-> +++ b/hw/arm/b-l475e-iot01a.c
-> @@ -0,0 +1,70 @@
-> +/*
-> + * B-L475E-IOT01A Discovery Kit machine
-> + * (B-L475E-IOT01A IoT Node)
-> + *
-> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (c) 2023 Inès Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * This work is heavily inspired by the netduinoplus2 by Alistair Francis.
-> + * Original code is licensed under the MIT License:
-> + *
-> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-> + */
+>   static void stm32l4x5_soc_initfn(Object *obj)
+>   {
+>       Stm32l4x5SocState *s = STM32L4X5_SOC(obj);
+>   
+> +    object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
 > +
-> +/*
-> + * The reference used is the STMicroElectronics UM2153 User manual
-> + * Discovery kit for IoT node, multi-channel communication with STM32L4.
-> + * https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html#documentation
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/qdev-clock.h"
-> +#include "qemu/error-report.h"
-> +#include "hw/arm/stm32l4x5_soc.h"
-> +#include "hw/arm/boot.h"
-> +
-> +/* Main SYSCLK frequency in Hz (80MHz) */
-> +#define SYSCLK_FRQ 80000000ULL
-> +
-> +static void b_l475e_iot01a_init(MachineState *machine)
-> +{
-> +    const Stm32l4x5SocClass *sc;
-> +    DeviceState *dev;
-> +    Clock *sysclk;
-> +
-> +    /* This clock doesn't need migration because it is fixed-frequency */
-> +    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-> +    clock_set_hz(sysclk, SYSCLK_FRQ);
-> +
-> +    dev = qdev_new(TYPE_STM32L4X5XG_SOC);
+>       s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
+>       s->refclk = qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0);
+>   }
+> @@ -50,7 +91,9 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
+>       Stm32l4x5SocState *s = STM32L4X5_SOC(dev_soc);
+>       const Stm32l4x5SocClass *sc = STM32L4X5_SOC_GET_CLASS(dev_soc);
+>       MemoryRegion *system_memory = get_system_memory();
+> -    DeviceState *armv7m;
+> +    DeviceState *dev, *armv7m;
+> +    SysBusDevice *busdev;
+> +    int i;
+>   
+>       /*
+>        * We use s->refclk internally and only define it with qdev_init_clock_in()
+> @@ -115,6 +158,16 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc, Error **errp)
+>           return;
+>       }
+>   
+> +    dev = DEVICE(&s->exti);
 
-Missing machine parentship relation.
+'dev' isn't used, you can drop it and directly use:
 
-> +    sc = STM32L4X5_SOC_GET_CLASS(dev);
-> +    qdev_connect_clock_in(dev, "sysclk", sysclk);
-> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> +
-> +    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +                       machine->kernel_filename,
-> +                       0, sc->flash_size);
-> +}
+        busdev = SYS_BUS_DEVICE(&s->exti);
 
-Using:
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
 
--- >8 --
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-index c3790e3dc8..85b8cdcd57 100644
---- a/hw/arm/b-l475e-iot01a.c
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -45,10 +45,11 @@ static void b_l475e_iot01a_init(MachineState *machine)
-      clock_set_hz(sysclk, SYSCLK_FRQ);
+Here you can use 'busdev' directly.
 
-      dev = qdev_new(TYPE_STM32L4X5XG_SOC);
--    sc = STM32L4X5_SOC_GET_CLASS(dev);
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(dev));
-      qdev_connect_clock_in(dev, "sysclk", sysclk);
-      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> +        return;
+> +    }
+> +    busdev = SYS_BUS_DEVICE(dev);
+> +    sysbus_mmio_map(busdev, 0, EXTI_ADDR);
+> +    for (i = 0; i < NUM_EXTI_IRQ; i++) {
 
-+    sc = STM32L4X5_SOC_GET_CLASS(dev);
-      armv7m_load_kernel(ARM_CPU(first_cpu),
-                         machine->kernel_filename,
-                         0, sc->flash_size);
----
+Preferably reduce 'i' scope:
 
-we get:
+        for (unsigned i = 0; ...) {
 
-(qemu) info qom-tree
-/machine (b-l475e-iot01a-machine)
-   /SYSCLK (clock)
-   /peripheral (container)
-   /peripheral-anon (container)
-   /soc (stm32l4x5xg-soc)
-     /SRAM1[0] (memory-region)
-     /SRAM2[0] (memory-region)
-     /armv7m (armv7m)
-       /armv7m-container[0] (memory-region)
-       /bitband[0] (ARM-bitband-memory)
-         /bitband[0] (memory-region)
-       /bitband[1] (ARM-bitband-memory)
-         /bitband[0] (memory-region)
-       /cpu (cortex-m4-arm-cpu)
-         /unnamed-gpio-in[0] (irq)
-         /unnamed-gpio-in[1] (irq)
-         /unnamed-gpio-in[2] (irq)
-         /unnamed-gpio-in[3] (irq)
-       /cpuclk (clock)
-       /nvic (armv7m_nvic)
-         /NMI[0] (irq)
-         ...
+> +        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[i]));
+> +    }
+
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+With the comments addressed:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

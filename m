@@ -1,281 +1,164 @@
-Received: by 2002:a17:906:cc9:b0:a28:7ef3:d049 with SMTP id l9csp863454ejh;
-        Wed, 3 Jan 2024 19:44:11 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG/FeAPyu9iNAMnubaCMztVMIlui4iwufgs9g2H7dG8XZCCmgSMM9smh4ljgiVSpCg3FPps
-X-Received: by 2002:a0d:d793:0:b0:5e5:a519:33e4 with SMTP id z141-20020a0dd793000000b005e5a51933e4mr53282ywd.53.1704339851182;
-        Wed, 03 Jan 2024 19:44:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704339851; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp20203ejo;
+        Thu, 4 Jan 2024 03:36:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGFISVtdb6mhnZaLOULehyi5cKk3RjucJuZUN94MIyoMchxgDOhS2r8PPAArppLoWThZIFc
+X-Received: by 2002:a05:6808:191b:b0:3bc:1edb:1ee8 with SMTP id bf27-20020a056808191b00b003bc1edb1ee8mr513418oib.55.1704368195799;
+        Thu, 04 Jan 2024 03:36:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704368195; cv=none;
         d=google.com; s=arc-20160816;
-        b=VlUgHUMGi6ZahoT4n3fa/Vvw1lwAY6awvucaXjyHfSloeeRMP6bipM/oY9aocflr6A
-         2CqbE3nPKtlIK4kCD0XY/yfByqHOhMHSa8Hb0paD2D4bx7McAP8GajfQ+3uU9NqzZNkB
-         6kv1v7LpT3SZQWRldmSUpsf5dDkPdj+0I7DdC75/MvE55QBFjF5PrDHBtQC64VajRoPD
-         loTH8BrdhWCnDisSVjQQrbkPwiUIjXhoIdhbdQo/GdK1Xy9PZXdpILek1QDEf0MPEOqr
-         TyVoZlRIZG8eyqchrC1M32Yr2peeUAXu+7GJs1pxbgbKt5YktXWX7qe295Si2Y33ald7
-         yqfQ==
+        b=UKgebWKyljFiVMJxWHwGjhP0jfP4ZaXa/+PF/xmKTwENYUjVRJTaNzmaJGAmBVHjMd
+         Z+WUMWfZQwDYE5SJDz7dzDljL+k48/Oxk3S7C29fhDKBDyVJ20xprFWQ38KQpvbcIfKp
+         uLPf5VYk70m6GHC1wHThV4EfEC+LzRwdkZi/8dcSiXpcqXJ+PmHrz3jR688Qbci/kCyt
+         1fLxqebGAWedc6ywpQj58+M0mqOauLSQOZ/OnGMC+2qGTSp2d3DpMNpqoDuFmyxtid34
+         sRVOaJ32S9ghIYBz530MTsUsoOFVpCnRF4iRQbu/fOp0w/JLrgSZW1Gi7RQTVjXm+9a4
+         4VkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=CDW1i/LNCdDrDdmh5cUciopryzeORMo2ZkjJjPLY5vw=;
-        fh=j5vOUz07IYwoKwA8Hu0mbMtAAHkMmGWezE5mVjl0l1w=;
-        b=lwxaFOwJz1VaD3bel0AhnO/bt8x6XfbMcvvT39Q9+g9yiIsEO9MgxpRiNyqTxaS4KM
-         zcloJS+D1w+bVxbvF+oeLaGPkAtK2u4NabrlAOpOVDYty88/0ojiPoVVTj7jqH2aPh5+
-         RzS/NP96Rw56GvrhmVklf5jiKFZ41C7/s1BD+wPJJkAzSBtTgCVeRFDgUvmvjcpvniyK
-         NL7hWVryOjzey2CzG4kS27qmmy2I7Nk4gcUg/OKH1udHaNN6cqB9CvSys2ot9pJhxgCr
-         BZ+g5yGRU4bvs7sQdC5KoSDEH7pJXLlGNEO65S2o3TellWSyGtcdWjGFGs6abHqNKvY2
-         gPLQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=JiqQFbCtgVfu5KxzxBNsgCQ4UrsbDGzvfy3R3hTLeQg=;
+        fh=0roCnE68VTjeaqD7vmkgCjO2ZabnBkjskiEy4oqcjws=;
+        b=AwllOEEwxzI8iGhiIwUDWlVHxuWEaNqA+SDD7Wx21UmVVDEjVL8E6MFnDAJoSXBfnc
+         szlZtUIp+T4OXWlg81NhktKY/Z2wXhvTVi4gMdLN6D++57y3il6eUMxzOuuR1pp66EuZ
+         p1CcVi8tZ6NNY8YHBjfAxzdhInb1E/NYARvNgF124mpcMdHE5kt/gZVeZQg0fYfu4GPQ
+         wwolak9DCSpYoDuLADbLEjS+KIIv2dW+3w1Ezx478iBYtK6KjKOivBvZvCPLSYy3Cb3C
+         hemqlQBVlj+PheeXPg19KCPL3vnLniiz8MS0vEZt5tr89JE0wdECMoqSICVEzcRUNWhr
+         pNsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fSn7sgNP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=rmqSPoPT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17-20020a0cdb91000000b00680c567b656si4679183qvk.196.2024.01.03.19.44.10
+        by mx.google.com with ESMTPS id bq36-20020a05620a46a400b00777731bf89csi32768303qkb.150.2024.01.04.03.36.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jan 2024 19:44:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Jan 2024 03:36:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fSn7sgNP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=rmqSPoPT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLEdw-0004un-Kk; Wed, 03 Jan 2024 22:43:40 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rLM1Q-00018L-SW; Thu, 04 Jan 2024 06:36:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rLEdZ-0004qv-SH; Wed, 03 Jan 2024 22:43:19 -0500
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rLM1N-000149-7D
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 06:36:22 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rLEdX-0006tK-La; Wed, 03 Jan 2024 22:43:17 -0500
-Received: by mail-vk1-xa2d.google.com with SMTP id
- 71dfb90a1353d-4b732dfa6e4so28253e0c.1; 
- Wed, 03 Jan 2024 19:43:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rLM1L-0006ZY-Gy
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 06:36:20 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-555e07761acso536135a12.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Jan 2024 03:36:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1704339794; x=1704944594; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CDW1i/LNCdDrDdmh5cUciopryzeORMo2ZkjJjPLY5vw=;
- b=fSn7sgNP1LDwjYHDjwcE3hW892VFvyeSZCFY6pmXHblKqXH8GDQt3J3UA6bVK1SEQM
- SUV7CAibRiSM2Ep6wrzjT0c+FkYq9o+Cq+RSVV6IP1alstGHfiN/A4qM/9Y/puQlEvPd
- pgrbKnpwZ0FO2A2NyAVNgzXMHWyfirnJ94HHhweQ3GoltKvC8yFrnpRVHMi27PBLF8Q3
- OtFrI3ZwqzexZf9fce+lYhSgLDOH+VvL7GSMFENvdn1TYFiCywasEC34Ir5OBl49EtoV
- 4+PR9NenrUA9RD+rty3IsUrEq1yR2DIi3nf34PqRAafGeC9scLKppGZ7IZ0BUSg29dFP
- cVgQ==
+ d=linaro.org; s=google; t=1704368178; x=1704972978; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=JiqQFbCtgVfu5KxzxBNsgCQ4UrsbDGzvfy3R3hTLeQg=;
+ b=rmqSPoPTAqbKJIFwDC5MgkYMr/iwgOWVqoV4cozO5YUAONRpt8QlzG6KhO8kaJH/O1
+ QqOygdjNt0tYgvZtdysj8xMBcbjTQwxZED+Nw9uOkKF7dP39im8CQLAQ1pJng6eXdr3j
+ BX52wiLEDitPCD1CbeNXwXwvMjK3WL1aLkPyyOD2Jrt+llfrna5PDh0F2mQtr+RQryxJ
+ 7VczhvjCQQVfcBmaJKSsndPG4WPN/ldfnkuS56cWrEWMUlkqxmb3PX97giHupeqSfFNW
+ Np11q4eOvpcGWFOSY2Q5AgXUgn0FMQ8DB8W4mD5w1jn4AwxT75WV3xC+XJ9OoGuCQY1v
+ gZmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704339794; x=1704944594;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CDW1i/LNCdDrDdmh5cUciopryzeORMo2ZkjJjPLY5vw=;
- b=C235J0Aaf1N3CZEDuf7P3F9a0xkV97nN2U9zyezNklE7M4A6Xf0TpAgprTfLFViup3
- 69ezSuf9vHpr/cz4BnM+5HykeSOaHhdm76u51aF9z+WqJJegm4pr3MgTGB8Wx67yR8G9
- XB9q3/MNTKP018lOTLHfSuNTP2dKKMwQbTDnTvLgTpPigBoD16CDMGy3KbT+neLYm/Rr
- j6UEkrgjG/sysXHFZkZ/V88MDSAZ9BPuldco47FiIArZhAViD4Dd19Qf5lDYzvFk++31
- 49cLQJNdyT/GbC3cVEdbHPIf5i50J0V1PncSmNrnN4KAlvD5dUsGhTJMHku+AvWFi6cL
- HxFg==
-X-Gm-Message-State: AOJu0YzR7n9tNicAPCXZ6EnsSx37YQymTlEdWKkrffHFNxYPSVjRhA7Z
- CFd/FHANh4yEriTyDfg5z0TR5Vq4z6KckJPv7UE=
-X-Received: by 2002:ac5:c28e:0:b0:4b7:3875:72d2 with SMTP id
- h14-20020ac5c28e000000b004b7387572d2mr10817vkk.1.1704339793987; Wed, 03 Jan
- 2024 19:43:13 -0800 (PST)
+ d=1e100.net; s=20230601; t=1704368178; x=1704972978;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JiqQFbCtgVfu5KxzxBNsgCQ4UrsbDGzvfy3R3hTLeQg=;
+ b=eInUYKhYFKry/FOr5sLQsl/r7JCeoXCzyub4qOX4MJ/wH9zKiEnJxn1UlW6JOPQvC6
+ PEj4wJbQN0cSncLBMGBRiJnsxlDKgrzxnZtcj1RiMeJiS3PA9s9QoAG9GDlEvBmhs5A0
+ U2+OuYTI4tuO0Y++TezgpDpx6Hqhk+LE48RVu0ROWGevKQxiAl9dDvyNztS0p1GXxbQE
+ bQdjEh5KQdbg5+jkPNCa70Auam8LJA3ZZh6gjZLAbQ4LMhvVySyFQ07r4v/zqugTZp1Q
+ HMboOPJlJ9jXHcfLyF3f5EZBmFMp+sYy6Ug7JNIlh1WGwDQc6bVCyoXugcJNZzgkBYYv
+ GdHw==
+X-Gm-Message-State: AOJu0YyF7lEONcMAZKGrOUq1om/lDAh64nCHTKCenIXjbucijTQhXeTu
+ oUbyXWOYeuZ0QRkfAeyRFhsRDd0DqHLALGwKXmO2RflFoyOD2w==
+X-Received: by 2002:a50:ab5a:0:b0:553:83ca:60c5 with SMTP id
+ t26-20020a50ab5a000000b0055383ca60c5mr189382edc.3.1704368177873; Thu, 04 Jan
+ 2024 03:36:17 -0800 (PST)
 MIME-Version: 1.0
-References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
- <20231228161944.303768-4-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20231228161944.303768-4-ines.varhol@telecom-paris.fr>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 4 Jan 2024 13:42:48 +1000
-Message-ID: <CAKmqyKM8qPYkKUnMni8kRwQSDZW+eZc7RcQ+GPHFs16Y0-YwAA@mail.gmail.com>
-Subject: Re: [PATCH v5 3/3] hw/arm: Connect STM32L4x5 EXTI to STM32L4x5 SoC
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org
+References: <20231218113305.2511480-1-peter.maydell@linaro.org>
+ <20231218113305.2511480-22-peter.maydell@linaro.org>
+ <b411a3d8-9ae9-4f99-8a5f-4b3f29b10bce@linaro.org>
+In-Reply-To: <b411a3d8-9ae9-4f99-8a5f-4b3f29b10bce@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 Jan 2024 11:36:06 +0000
+Message-ID: <CAFEAcA-9-EnybYA-hZ=kzeauRFcS6eB9VDD8DSGqUiN=9NZprg@mail.gmail.com>
+Subject: Re: [PATCH 21/35] target/arm: Add FEAT_NV to max, neoverse-n2,
+ neoverse-v1 CPUs
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2d;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa2d.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CHzcXWataJ++
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vwkX0+sSjbyg
 
-On Fri, Dec 29, 2023 at 2:21=E2=80=AFAM In=C3=A8s Varhol
-<ines.varhol@telecom-paris.fr> wrote:
+On Fri, 29 Dec 2023 at 11:37, Marcin Juszkiewicz
+<marcin.juszkiewicz@linaro.org> wrote:
 >
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> W dniu 18.12.2023 o 12:32, Peter Maydell pisze:
+>
+> > Enable FEAT_NV on the 'max' CPU, and stop filtering it out for the
+> > Neoverse N2 and Neoverse V1 CPUs.  We continue to downgrade FEAT_NV2
+> > support to FEAT_NV for the latter two CPU types.
+>
+> According to Neoverse-V1 TRM r1p2 it has FEAT_NV2. Similar with Neoverse-N2.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+I'm not sure what you're trying to say here ? Yes, the V1 has
+NV2, that's why we have to downgrade it to FEAT_NV for the moment
+when we're emulating, because at this point in the series we
+don't have FEAT_NV2 emulation. At the end of the series this downgrade
+goes away, because at that point we can emulate FEAT_NV2.
 
-Alistair
+>
+> You wrote already:
+>
+> > in practice hypervisors such as KVM are going to require FEAT_NV2
+> > and not bother to support the FEAT_NV-only case, so I have
+> > implemented them one after the other in this single patchset.
+> So maybe they both should be FEAT_NV2 and FEAT_NV will be left unused.
+> Or enable FEAT_NV for V1 (as being older) and FEAT_NV2 on N2.
 
-> ---
->  hw/arm/Kconfig                 |  1 +
->  hw/arm/stm32l4x5_soc.c         | 56 ++++++++++++++++++++++++++++++++--
->  include/hw/arm/stm32l4x5_soc.h |  3 ++
->  3 files changed, 58 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 7520dc5cc0..9c9d5bb541 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -458,6 +458,7 @@ config STM32L4X5_SOC
->      bool
->      select ARM_V7M
->      select OR_IRQ
-> +    select STM32L4X5_EXTI
->
->  config XLNX_ZYNQMP_ARM
->      bool
-> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-> index 7513db0d6a..08b8a4c2ed 100644
-> --- a/hw/arm/stm32l4x5_soc.c
-> +++ b/hw/arm/stm32l4x5_soc.c
-> @@ -36,10 +36,51 @@
->  #define SRAM2_BASE_ADDRESS 0x10000000
->  #define SRAM2_SIZE (32 * KiB)
->
-> +#define EXTI_ADDR 0x40010400
-> +
-> +#define NUM_EXTI_IRQ 40
-> +/* Match exti line connections with their CPU IRQ number */
-> +/* See Vector Table (Reference Manual p.396) */
-> +static const int exti_irq[NUM_EXTI_IRQ] =3D {
-> +    6,                      /* GPIO[0]                 */
-> +    7,                      /* GPIO[1]                 */
-> +    8,                      /* GPIO[2]                 */
-> +    9,                      /* GPIO[3]                 */
-> +    10,                     /* GPIO[4]                 */
-> +    23, 23, 23, 23, 23,     /* GPIO[5..9]              */
-> +    40, 40, 40, 40, 40, 40, /* GPIO[10..15]            */
-> +    1,                      /* PVD                     */
-> +    67,                     /* OTG_FS_WKUP, Direct     */
-> +    41,                     /* RTC_ALARM               */
-> +    2,                      /* RTC_TAMP_STAMP2/CSS_LSE */
-> +    3,                      /* RTC wakeup timer        */
-> +    63,                     /* COMP1                   */
-> +    63,                     /* COMP2                   */
-> +    31,                     /* I2C1 wakeup, Direct     */
-> +    33,                     /* I2C2 wakeup, Direct     */
-> +    72,                     /* I2C3 wakeup, Direct     */
-> +    37,                     /* USART1 wakeup, Direct   */
-> +    38,                     /* USART2 wakeup, Direct   */
-> +    39,                     /* USART3 wakeup, Direct   */
-> +    52,                     /* UART4 wakeup, Direct    */
-> +    53,                     /* UART4 wakeup, Direct    */
-> +    70,                     /* LPUART1 wakeup, Direct  */
-> +    65,                     /* LPTIM1, Direct          */
-> +    66,                     /* LPTIM2, Direct          */
-> +    76,                     /* SWPMI1 wakeup, Direct   */
-> +    1,                      /* PVM1 wakeup             */
-> +    1,                      /* PVM2 wakeup             */
-> +    1,                      /* PVM3 wakeup             */
-> +    1,                      /* PVM4 wakeup             */
-> +    78                      /* LCD wakeup, Direct      */
-> +};
-> +
->  static void stm32l4x5_soc_initfn(Object *obj)
->  {
->      Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
->
-> +    object_initialize_child(obj, "exti", &s->exti, TYPE_STM32L4X5_EXTI);
-> +
->      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
-;
->      s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
-;
->  }
-> @@ -50,7 +91,9 @@ static void stm32l4x5_soc_realize(DeviceState *dev_soc,=
- Error **errp)
->      Stm32l4x5SocState *s =3D STM32L4X5_SOC(dev_soc);
->      const Stm32l4x5SocClass *sc =3D STM32L4X5_SOC_GET_CLASS(dev_soc);
->      MemoryRegion *system_memory =3D get_system_memory();
-> -    DeviceState *armv7m;
-> +    DeviceState *dev, *armv7m;
-> +    SysBusDevice *busdev;
-> +    int i;
->
->      /*
->       * We use s->refclk internally and only define it with qdev_init_clo=
-ck_in()
-> @@ -115,6 +158,16 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc, Error **errp)
->          return;
->      }
->
-> +    dev =3D DEVICE(&s->exti);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->exti), errp)) {
-> +        return;
-> +    }
-> +    busdev =3D SYS_BUS_DEVICE(dev);
-> +    sysbus_mmio_map(busdev, 0, EXTI_ADDR);
-> +    for (i =3D 0; i < NUM_EXTI_IRQ; i++) {
-> +        sysbus_connect_irq(busdev, i, qdev_get_gpio_in(armv7m, exti_irq[=
-i]));
-> +    }
-> +
->      /* APB1 BUS */
->      create_unimplemented_device("TIM2",      0x40000000, 0x400);
->      create_unimplemented_device("TIM3",      0x40000400, 0x400);
-> @@ -155,7 +208,6 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
->      create_unimplemented_device("SYSCFG",    0x40010000, 0x30);
->      create_unimplemented_device("VREFBUF",   0x40010030, 0x1D0);
->      create_unimplemented_device("COMP",      0x40010200, 0x200);
-> -    create_unimplemented_device("EXTI",      0x40010400, 0x400);
->      /* RESERVED:    0x40010800, 0x1400 */
->      create_unimplemented_device("FIREWALL",  0x40011C00, 0x400);
->      /* RESERVED:    0x40012000, 0x800 */
-> diff --git a/include/hw/arm/stm32l4x5_soc.h b/include/hw/arm/stm32l4x5_so=
-c.h
-> index dce13a023d..6cba566a31 100644
-> --- a/include/hw/arm/stm32l4x5_soc.h
-> +++ b/include/hw/arm/stm32l4x5_soc.h
-> @@ -28,6 +28,7 @@
->  #include "qemu/units.h"
->  #include "hw/qdev-core.h"
->  #include "hw/arm/armv7m.h"
-> +#include "hw/misc/stm32l4x5_exti.h"
->  #include "qom/object.h"
->
->  #define TYPE_STM32L4X5_SOC "stm32l4x5-soc"
-> @@ -41,6 +42,8 @@ struct Stm32l4x5SocState {
->
->      ARMv7MState armv7m;
->
-> +    Stm32l4x5ExtiState exti;
-> +
->      MemoryRegion sram1;
->      MemoryRegion sram2;
->      MemoryRegion flash;
-> --
-> 2.43.0
->
->
+As usual, we emulate what the actual hardware has, to the extent
+that we are able to. For both of these CPUs that's both FEAT_NV
+and FEAT_NV2, and we enable emulation of each at the point in the
+series when we've implemented it.
+
+> This way if someone wants to test nested virtualization then both
+> versions will be available without use of 'max' cpu.
+
+In theory it might be nice to be able to emulate a pure FEAT_NV
+CPU, but in practice I don't expect anybody to want to do that.
+If anybody has a real use case for it we can add a -cpu suboption
+later.
+
+thanks
+-- PMM

@@ -1,143 +1,134 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp226153ejo;
-        Thu, 4 Jan 2024 09:25:22 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFPvWvBgEuadYuYi8QNKkD6w1Go+or+VkZecoY+BwCfuynR+YkxYvPkdfitT6jqrBaBTX67
-X-Received: by 2002:a05:622a:64b:b0:428:1c0a:a19b with SMTP id a11-20020a05622a064b00b004281c0aa19bmr820482qtb.123.1704389121774;
-        Thu, 04 Jan 2024 09:25:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704389121; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp258735ejo;
+        Thu, 4 Jan 2024 10:12:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHmJ1si2RH/8MJKMBkN7wXevBX2byOIL3fgld0LDTyLom28hIlxXv+ZmIjD+jw8Y7aiPSRD
+X-Received: by 2002:a05:600c:3549:b0:40d:5e88:10bc with SMTP id i9-20020a05600c354900b0040d5e8810bcmr614958wmq.18.1704391969230;
+        Thu, 04 Jan 2024 10:12:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704391969; cv=none;
         d=google.com; s=arc-20160816;
-        b=hTeW/GghDR6AbzFCfvOP5YV+MTil6q/RzcBGvoeSR/JfrfmJwdQKcPYWF3+Jpk32QY
-         lDFjkmBe970dtVFpQEMLKDROwOFO+TFXdI1yE0+bvgIPMWjRNCOzs45awx97xXws/jE7
-         B7EcY9k9DHN+d2Fsxayt/g9dwUqz3jFpBXbljg/BhIVJ2NLmW1s4XoPGvsgpdPwCwyN0
-         f+FhH6MW8NiCmkA+l1S9QfHSrHhRnOIbtYvdRQGV10JLwujHRaQxO4UCiEPl1j5O1eV2
-         ZPNROhI90w/+5Co8ObKf/gk1BR9OJniC7xgCmo6lt4JGCRJ1kyeWiv0LW+L4YWiVKCG1
-         L48Q==
+        b=AQWiMWOXBrsVccJqPkrzyWLwtrOOr8hGByOrOoCiPN4X5e6QmOKDRxez8w1QWfxD6m
+         YHJq9ujK3I8bkAdH55Mykm7jSKTuIXdmU6tzjjptEg9FqE/B0rxoicSk+0iQpi7nrsTN
+         w8mp1jLIbIE+empOD8bITrY+SQXcAKLj0Rvb9bXW13Q2FOe1eE5L1vubH/bEYR8J9ZBB
+         iOizXXbQ3d4ZBfinGdRBJ9H9uaL2aAiefG+zkfQcmDJgaeKFZNnR3eEt5jzVbWYyCgZp
+         yQb3jPQKLjddl0MAVNVAyDbEjznsgs2InvZeqL2ObXxueZrKNlO6cEQt+UCnhjhz2VAe
+         Gosw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=mo7kU6CSBxH1ZHgRBlWO2ZmNH0eUj9iezatE1t0CIWQ=;
-        fh=KyXtQsGNqASDK2UfIAQ6SsKRCp1h+gEnlNy2TZEaKZk=;
-        b=qTCjZ1tQdM7BxdttQRdGMR7lgWTRhUgZls9WVz3t3cO4pdgQNqtdqLFpC656cZBIYW
-         6pm8EP4NmVjK5vtL8ex2b6xKn66jXAL+yeBm6ldyFi/1dKJS5JgPw1NkrfS31uVGg1LR
-         W3GxFtzLECACfOygCUhqzX1z4IHxD2p+BHH0/oLALNfhifERbS4qVhaKm9tQ/fxcJoli
-         8wM5DmvmPvJ2ndnBtg/KBzg5hkaY8A6bPliypYvkrBwgL1dA1RdZZpqfOtm0Cw68PTmW
-         mcz5mA64rSyk4sy0+5fUT8o+bhsb1Nj//5xGUKCVLr33ASLL05ZRQtC6FL3+3Zt9Ukqi
-         29uw==
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sDUuF9dozzTZnMqPT4WhJ/Hlq7qfud2Jb3j/6GkUXbQ=;
+        fh=kkXiFTARBZnvGvZovphXqG7wDCaoTBOjvPWmZGXRx6U=;
+        b=NZAAKrJi66e56lsJjVsnCeClnZAXQtFu9XLw2nwcYB285fWAtOSX8R4eGojWzMQHp2
+         VOgcVrgnRyuR4K/bv3N8OsBlSCngyT6mPFv+bFpaB8JeCkPmK7tj+oevgqD11P1KSBvR
+         fo5gZz/DAvZltueVHXjtLxI+fGTSfdu6d12Jo0gY+yDaVG8Ad7xNVssYNavmPdPvIR8n
+         xtArBOKLEpssEE4puAK1HZo67N0cLwCSqnymrB8CPbRVNoW0/bldxV746GBmDpDJNAiQ
+         3ZSKvH+bISI9JCFVtT/m0mkxa+GyVGykbpI+d8/ZHW1ygEddj5jQkGAe9Vtbpm+X77qF
+         7R/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dMyQaZMZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=veauWBtL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13-20020ac85d8d000000b004278776962asi31796527qtx.271.2024.01.04.09.25.21
+        by mx.google.com with ESMTPS id d13-20020adff2cd000000b003367b76466csi14151248wrp.815.2024.01.04.10.12.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 09:25:21 -0800 (PST)
+        Thu, 04 Jan 2024 10:12:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dMyQaZMZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=veauWBtL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLRSt-0007i1-5v; Thu, 04 Jan 2024 12:25:07 -0500
+	id 1rLSCl-0006V0-Qe; Thu, 04 Jan 2024 13:12:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1rLRSr-0007hF-U6
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 12:25:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1rLRSq-0000sc-49
- for qemu-arm@nongnu.org; Thu, 04 Jan 2024 12:25:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1704389102;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mo7kU6CSBxH1ZHgRBlWO2ZmNH0eUj9iezatE1t0CIWQ=;
- b=dMyQaZMZurGwAkFi34yjgH3YQlvOnW2dGFHnhY0y93keBJ4+3iXeNyR104EVD89Ql1X09M
- CEypRi4pbBByiqVuO94EJIn8w+OeZcd9xKVNxre4L2HnM/0hq80WUC1rzTm2cNlk7HdLvs
- w2SU5NBfi4ksNtSq17wdi0+JIuoEerM=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-22-aKcML9PONHK79ME5uVVUQw-1; Thu, 04 Jan 2024 12:23:03 -0500
-X-MC-Unique: aKcML9PONHK79ME5uVVUQw-1
-Received: by mail-io1-f70.google.com with SMTP id
- ca18e2360f4ac-7bbad6e08b0so78008339f.3
- for <qemu-arm@nongnu.org>; Thu, 04 Jan 2024 09:23:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLSCk-0006Ub-Im
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 13:12:30 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLSCQ-0000W1-Eh
+ for qemu-arm@nongnu.org; Thu, 04 Jan 2024 13:12:25 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-33678156e27so604232f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Jan 2024 10:12:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704391927; x=1704996727; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sDUuF9dozzTZnMqPT4WhJ/Hlq7qfud2Jb3j/6GkUXbQ=;
+ b=veauWBtLkDRXgf6jXnK2yDECVYuYQO2MkKz4UqK9R4VgT+gqej+tkZHFFoH8W7abhV
+ tnaYWkrbqLii5COHr72Q8WUepO5/4NWxVApQ5y66ZT+RQwd+YxZiaFpKXf5sMkqWN9jX
+ RegpJEAMJW1wuY8vrXQhHGtWGh8YXMQKn2w5tNZe9ynNYk3I0VkiZSu7tjZyGbLYe34s
+ C9LpU5YsQRX0GW5lo5nEkXVZHq3JaJWQ/Ni51dgIzE4Fdc94zcJARvsFzt0cb8dlF+vA
+ qe2Myu2f1YXmKiALhz4qtpP5e5TinQYGsDpCPcJjAwK/T7CSQVvcT8OGRCnDKk08ICok
+ EEjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704388983; x=1704993783;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nryjzsLAz0uQo500B7l/Kj+QhCCmbJ3uZDCprBYf0X8=;
- b=He+C8s6rucYH360rXJbu5CG8ms8fKDFVueUWC+m/yaXbO+IbSxMZJU5J/eTPeQqUQx
- 0JTWnGSjPy3Lsn/bIBb9zTpBzZleA7kxG5x2EeR48crLzkjWZoYPTbAofO7irvxcE3i2
- 77qUJx7UZbR9Gn31pqU8DoR20aDV2s2PRH39+U+zBbCbH4uirrfCRfCVa5AYWSFUn37g
- tU4GhAY5gaoqvBFkn35gy1AbMWLmeizxiejJBLLtZwC+K3HZDJBH/H0bscEYmbgS1pCK
- VMF9QLr4OLWNEgs7+aJZT/+zyY6z0E843xoUQ7Qf/457aquesHHwZIf1bwaWVjaJv/kg
- 5bsg==
-X-Gm-Message-State: AOJu0YybirSNEDexKn8VN2dwUCjFsS1wehs55N0e+9HZV09hi15zV/WN
- v8nylpG7t5LsUIv5ehYnz7oC9GTk6AzjTBZOzKTPQr73BpjIfm3D7lSiGzDaAPuw+XNIhO4Thzm
- rr8djUj0LxKLNMagoCNDC
-X-Received: by 2002:a6b:621a:0:b0:7bb:411c:3da2 with SMTP id
- f26-20020a6b621a000000b007bb411c3da2mr878474iog.38.1704388982793; 
- Thu, 04 Jan 2024 09:23:02 -0800 (PST)
-X-Received: by 2002:a6b:621a:0:b0:7bb:411c:3da2 with SMTP id
- f26-20020a6b621a000000b007bb411c3da2mr878466iog.38.1704388982487; 
- Thu, 04 Jan 2024 09:23:02 -0800 (PST)
-Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- cd15-20020a0566381a0f00b0046dfa8c080asm59956jab.136.2024.01.04.09.23.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jan 2024 09:23:02 -0800 (PST)
-Date: Thu, 4 Jan 2024 10:23:00 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Ankit Agrawal <ankita@nvidia.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Jason Gunthorpe
- <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
- "eblake@redhat.com" <eblake@redhat.com>, "armbru@redhat.com"
- <armbru@redhat.com>, "david@redhat.com" <david@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, Aniket Agashe <aniketa@nvidia.com>,
- Neo Jia <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun
- Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>,
- Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday
- Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v6 1/2] qom: new object to associate device to numa node
-Message-ID: <20240104102300.0f9e5aa1.alex.williamson@redhat.com>
-In-Reply-To: <SA1PR12MB7199DF47EDDA9419E22FD79FB067A@SA1PR12MB7199.namprd12.prod.outlook.com>
-References: <20231225045603.7654-1-ankita@nvidia.com>
- <20231225045603.7654-2-ankita@nvidia.com>
- <20240102125821.00001aa0@Huawei.com>
- <SA1PR12MB7199DF47EDDA9419E22FD79FB067A@SA1PR12MB7199.namprd12.prod.outlook.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1704391927; x=1704996727;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sDUuF9dozzTZnMqPT4WhJ/Hlq7qfud2Jb3j/6GkUXbQ=;
+ b=Ojqj0rvUtyV6TjGtsgvk21SF63Zabeo8AVOKgVIbZVEgKo+daQ9F3Zj4iKOEGsZtG5
+ uYCUDylaWWRjAwmsbVEjzecK34v27/ryeiYJoHcrKlM4RXpdJOS8vkxkF6/SNAoRxj7P
+ ti81nqK+l+YkgZp1JHA8T6MS71Jzz0Dm5sp5xlvMTBMJnOn6o5jRu1X+JmDZ5T0DNLvO
+ E9zDuYabibUufyymD3Hv9ayExMuJqXgaNFK9TxpcCBg1URXGnHRnZco6cQyh82Xt1gV5
+ jRKspi/FAsm+f69Jp6IoS7t5XbdBS4h5VE1KEp5upn/hdyq3j1RQJGsKuaqRNO5GgkNj
+ QhkA==
+X-Gm-Message-State: AOJu0Ywb5iU+L7ja9nhGZFEr9LLcd8i2h1FdtHZ47UTrshpX31Eg0Oqw
+ 6r2upa4xGV483vPYY7Mfij5W4aNYI5eTUQ==
+X-Received: by 2002:adf:f30e:0:b0:337:39c7:2c8 with SMTP id
+ i14-20020adff30e000000b0033739c702c8mr566203wro.110.1704391927570; 
+ Thu, 04 Jan 2024 10:12:07 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.194.232])
+ by smtp.gmail.com with ESMTPSA id
+ p9-20020adfcc89000000b003368100ff71sm33292931wrj.10.2024.01.04.10.12.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 04 Jan 2024 10:12:06 -0800 (PST)
+Message-ID: <6bff96da-acfe-4969-91fd-db9d9ef03d34@linaro.org>
+Date: Thu, 4 Jan 2024 19:12:00 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.691,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 01/31] target/alpha: Remove 'ev67' CPU class
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: Gavin Shan <gshan@redhat.com>, laurent@vivier.eu,
+ richard.henderson@linaro.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ imp@bsdimp.com, kevans@freebsd.org, pbonzini@redhat.com,
+ peter.maydell@linaro.org, imammedo@redhat.com, b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
+ qemu-arm@nongnu.org, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, vijai@behindbytes.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, mrolnik@gmail.com, edgar.iglesias@gmail.com,
+ bcain@quicinc.com, gaosong@loongson.cn, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, shorne@gmail.com, npiggin@gmail.com, clg@kaod.org,
+ ysato@users.sourceforge.jp, kbastian@mail.uni-paderborn.de,
+ jcmvbkbc@gmail.com, shan.gavin@gmail.com
+References: <20231114235628.534334-1-gshan@redhat.com>
+ <20231114235628.534334-2-gshan@redhat.com>
+ <9fcd0827-a729-4cf8-a6ab-93cda04d88f9@linaro.org>
+ <04107470-8438-4e24-9a9a-03f6fa30bb31@linaro.org>
+In-Reply-To: <04107470-8438-4e24-9a9a-03f6fa30bb31@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,92 +143,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dWDuOSjICsij
+X-TUID: D7VLKcdKg2rp
 
-On Thu, 4 Jan 2024 03:36:06 +0000
-Ankit Agrawal <ankita@nvidia.com> wrote:
+On 4/1/24 19:03, Philippe Mathieu-Daudé wrote:
+> On 4/1/24 18:58, Philippe Mathieu-Daudé wrote:
+>> On 15/11/23 00:55, Gavin Shan wrote:
+>>> 'ev67' CPU class will be returned to match everything, which makes
+>>> no sense as mentioned in the comments. Remove the logic to fall
+>>> back to 'ev67' CPU class to match everything.
+>>>
+>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>> ---
+>>>   target/alpha/cpu.c | 7 ++-----
+>>>   1 file changed, 2 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+>>> index 39cf841b3e..91fe8ae095 100644
+>>> --- a/target/alpha/cpu.c
+>>> +++ b/target/alpha/cpu.c
+>>> @@ -141,11 +141,8 @@ static ObjectClass 
+>>> *alpha_cpu_class_by_name(const char *cpu_model)
+>>>       typename = g_strdup_printf(ALPHA_CPU_TYPE_NAME("%s"), cpu_model);
+>>>       oc = object_class_by_name(typename);
+>>>       g_free(typename);
+>>> -
+>>> -    /* TODO: remove match everything nonsense */
+>>> -    if (!oc || object_class_is_abstract(oc)) {
+>>> -        /* Default to ev67; no reason not to emulate insns by 
+>>> default. */
+>>> -        oc = object_class_by_name(ALPHA_CPU_TYPE_NAME("ev67"));
+>>> +    if (!oc || !object_class_dynamic_cast(oc, TYPE_ALPHA_CPU)) {
+>>> +        return NULL;
+>>>       }
+>>
+>> This breaks linux-user:
+>>
+>> qemu-alpha: unable to find CPU model 'any'
+> 
+> Thread 1 "qemu-alpha" hit Breakpoint 1, alpha_cpu_class_by_name 
+> (cpu_model=0x5555557202a0 "any") at target/alpha/cpu.c:123
+> 123    {
+> (gdb) bt
+> #0  alpha_cpu_class_by_name (cpu_model=0x5555557202a0 "any") at 
+> target/alpha/cpu.c:123
+> #1  0x0000555555583956 in cpu_class_by_name 
+> (typename=typename@entry=0x555555674af8 "alpha-cpu", 
+> cpu_model=0x5555557202a0 "any")
+>      at hw/core/cpu-common.c:156
+> #2  0x00005555555904a1 in parse_cpu_option (cpu_option=<optimized out>) 
+> at cpu-target.c:257
+> #3  0x00005555555822e9 in main (argc=2, argv=0x7fffffffe318, 
+> envp=<optimized out>) at linux-user/main.c:784
+> 
+> in main():
+> 
+>   781     if (cpu_model == NULL) {
+>   782         cpu_model = cpu_get_model(get_elf_eflags(execfd));
+>   783     }
+>   784     cpu_type = parse_cpu_option(cpu_model);
+> 
+> Having:
+> 
+> $ cat linux-user/alpha/target_elf.h
+> ...
+> #ifndef ALPHA_TARGET_ELF_H
+> #define ALPHA_TARGET_ELF_H
+> static inline const char *cpu_get_model(uint32_t eflags)
+> {
+>      return "any";
+> }
+> #endif
 
-> Thanks Jonathan for the review.
->=20
-> > As per reply to the cover letter I definitely want to see SRAT table du=
-mps
-> > in here though so we can easily see what this is actually building. =20
->=20
-> Ack.
->=20
-> > I worry that some OS might make the assumption that it's one GI node
-> > per PCI device though. The language in the ACPI specification is:
-> >=20
-> > "The Generic Initiator Affinity Structure provides the association betw=
-een _a_
-> > generic initiator and _the_ proximity domain to which the initiator bel=
-ongs".
-> >=20
-> > The use of _a_ and _the_ in there makes it pretty explicitly a N:1 rela=
-tionship
-> > (multiple devices can be in same proximity domain, but a device may onl=
-y be in one).
-> > To avoid that confusion you will need an ACPI spec change.=C2=A0 I'd be=
- happy to
-> > support =20
->=20
-> Yeah, that's a good point. It won't hurt to make the spec change to make =
-the
-> possibility of the association between a device with multiple domains.
->=20
-> > The reason you can get away with this in Linux today is that I only imp=
-lemented
-> > a very minimal support for GIs with the mappings being provided the oth=
-er way
-> > around (_PXM in a PCIe node in DSDT).=C2=A0 If we finish that support o=
-ff I'd assume =20
->=20
-> Not sure if I understand this. Can you provide a reference to this DSDT r=
-elated
-> change?
->=20
-> > Also, this effectively creates a bunch of separate generic initiator no=
-des
-> > and lumping that under one object seems to imply they are in general co=
-nnected
-> > to each other.
-> >=20
-> > I'd be happier with a separate instance per GI node
-> >=20
-> >  -object acpi-generic-initiator,id=3Dgi1,pci-dev=3Ddev1,nodeid=3D10
-> >=C2=A0 -object acpi-generic-initiator,id=3Dgi2,pci-dev=3Ddev1,nodeid=3D1=
-1
-> > etc with the proviso that anyone using this on a system that assumes a =
-one
-> > to one mapping for PCI
-> >
-> > However, I'll leave it up to those more familiar with the QEMU numa
-> > control interface design to comment on whether this approach is prefera=
-ble
-> > to making the gi part of the numa node entry or doing it like hmat. =20
->=20
-> > -numa srat-gi,node-id=3D10,gi-pci-dev=3Ddev1 =20
->=20
-> The current way of acpi-generic-initiator object usage came out of the di=
-scussion
-> on v1 to essentially link all the device NUMA nodes to the device.
-> (https://lore.kernel.org/all/20230926131427.1e441670.alex.williamson@redh=
-at.com/)
->=20
-> Can Alex or David comment on which is preferable (the current mechanism v=
-s 1:1
-> mapping per object as suggested by Jonathan)?
+Laurent, Richard, are you OK with this fix?
 
-I imagine there are ways that either could work, but specifying a
-gi-pci-dev in the numa node declaration appears to get a bit messy if we
-have multiple gi-pci-dev devices to associate to the node whereas
-creating an acpi-generic-initiator object per individual device:node
-relationship feels a bit easier to iterate.
-
-Also if we do extend the ACPI spec to more explicitly allow a device to
-associate to multiple nodes, we could re-instate the list behavior of
-the acpi-generic-initiator whereas I don't see a representation of the
-association at the numa object that makes sense.  Thanks,
-
-Alex
+-- >8 --
+diff --git a/linux-user/alpha/target_elf.h b/linux-user/alpha/target_elf.h
+index 344e9f4d39..b77d638f6d 100644
+--- a/linux-user/alpha/target_elf.h
++++ b/linux-user/alpha/target_elf.h
+@@ -9,6 +9,6 @@
+  #define ALPHA_TARGET_ELF_H
+  static inline const char *cpu_get_model(uint32_t eflags)
+  {
+-    return "any";
++    return "ev67";
+  }
+  #endif
+---
 

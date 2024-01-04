@@ -1,204 +1,135 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp75825ejo;
-        Thu, 4 Jan 2024 05:22:49 -0800 (PST)
-X-Received: by 2002:a05:6a21:33a7:b0:196:577a:168b with SMTP id yy39-20020a056a2133a700b00196577a168bmr590405pzb.22.1704374569255;
-        Thu, 04 Jan 2024 05:22:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704374569; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp186100ejo;
+        Thu, 4 Jan 2024 08:19:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IETXiPH3CzCGtCTKDmTtGcUW7nbX4iI98Zi7AdVkZ8alhULGdD1+a5pvL8k54AXdu71y2ux
+X-Received: by 2002:a05:6122:59c:b0:4b7:4759:ac0c with SMTP id i28-20020a056122059c00b004b74759ac0cmr493162vko.22.1704385189271;
+        Thu, 04 Jan 2024 08:19:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704385189; cv=none;
         d=google.com; s=arc-20160816;
-        b=HARmd5w8YUL7Ib+pif9KiS2Wh1imHYa+/hn8ZioivdLBJWWOw4ZgHrGGKn+XV16w4R
-         qY1mqZG5ZfPYNvctJIDalLsLDu47Ht/h9wSgCjqXbC9/Lt5jcczYlOtUBFBkK7XhlgbV
-         LEBwBNO1i27rNpCqrfc9jecgAZqTdrhZ/WYw/jr64gMU7KR0OBJhEE/IkLMq9pOyrqz9
-         JynZWo/3axzHZy3hP3tlR8WzlN8700rKQAtG4guDmmshs1If9xtuZghE3iDjCv3ea6Dv
-         whLPPBjgYPPNCS59y7HsbGqF57/EBGFJLTLk58DJ+ulw+HhiEfjp+PivN3ce+gqwB/gz
-         kDOA==
+        b=xbiwS8RjPf1NZyID3x672z4APg4GRKERzKsoFQGENAhra62X5CGYLp9enjaSQ7Dl09
+         ky+d9IvCqgyxBbKv9RN2JEvG7RVp9Sy3TqHp1Ac68J5QsKUl48cHUVUokGbq/N6AltYc
+         ttjStSsF4TVTCa6yl++dt1pEr7njXrzYMN7fb82Iz2BCURPMm1SEjl1AbyPZRB9CSWpl
+         wj6OvfyTFx//nzuArD54YiJU3FXsYW35WP3g1A59bBr7VceDdjDCmYsgno1po49TkBu5
+         ys+eSt7kYBTVfWTDaSZzGJBIKwBygPR6ot5mg6pQQI8Ny3B1i0Wk/cNbJdZU2MDe+XaH
+         GeJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=+UaUoSEUxULvKOz2jhQuoYpr4rLktnoBGVluoHHYMOU=;
-        fh=gN9yGj5remEraU3fcPloYL4dXFqAuDa5qzWKs2Fyz/4=;
-        b=dcokB5318UsbOMNoPZjAGx8iZOVRt0rVT2WXPITa4r6ECcGlwN2o8Ng9tn2J9Yn8yJ
-         7DwFX5akprme//3MEzBF39q69oATdZaKbazHUwgRz1X4KheOU1XhuZiT/Od4HxwdPez+
-         JWXihSv+LmY5ntMZusW724bX1T3XfXfR3yFQftJyqHqyS7gB2VfGfag9WskNETm+nCqS
-         ZcKbvrY1NrcnN9H2n33/R0RUfNhuKuVtKCfra2I5SJGud+mECSXANMu9URVgj1EwwXSL
-         UP8fNIATLoarre7b2DPkKrEDNewsXH6c6u0036lnKM328DYjnCcGogdzH/QmAggMprlc
-         yZNg==
+        bh=ETzw13pxgK9Wn/XnxK2ycHa+lhvtUNccAgCESqMAupw=;
+        fh=pRXqezJrTS1a4pXm8qXTsRBdYSObk1rfHN6W3e/lF80=;
+        b=zg5/G+2faYPDz0XTNXLOdyRM2yA3bTTwbQ89T0C1BZygjz2E/VNkmAUWX3WNQ5a3U4
+         fO0XnPRb+l0Trm+acRgklIF19rAyNDHu7Y3Mn2S1vo/L0mu+rxxwW/D1zO+paPb9bpWe
+         39vSPciMdx4798t7GYkbAOVoWRmL3R79NnYFZ9EY8OrvCVJHFl3qZ4pLr8eNnZcpUayh
+         iUpm+pZbdxNeIv/uVhBl1MBkd8xgS35Acf9yh0CcNVRGjk6PZDXkGgucHrcW2ZJtlTLO
+         zWyPXv53XMj3kJa2+9S0hjLyPPkaHID/bXvPILzSpkhv4nRwOMYqTrHvfVyADIlIyobG
+         9xqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=KsngkOVC;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s42-20020a056a0017aa00b006d9ff12f6d5sor2139596pfg.9.2024.01.04.05.22.49
+       dkim=pass header.i=@intel.com header.s=Intel header.b=YE8GHgta;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q4-20020a1fd904000000b004b2d6ce6395si4388209vkg.251.2024.01.04.08.19.49
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 04 Jan 2024 05:22:49 -0800 (PST)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 04 Jan 2024 08:19:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=KsngkOVC;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1704374568; x=1704979368; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+UaUoSEUxULvKOz2jhQuoYpr4rLktnoBGVluoHHYMOU=;
-        b=KsngkOVCJav/M6saQgHc3e2LBIYk12fpOUwWLsRDcn/kfRNicGsM+a7Zju+k6qJUz1
-         C3oGU/t8DaoxMN0iy7n0K2uoeLNcJNyKJz+GU4luOWNyq7648m9V1gMxE5+TkI6+hHlA
-         mdT4Qo/3gYkbrryB5UNZplz4iRfP/9Q+a49zWKkgyxPHWrSeKXp8SuhWy4nYraGWC76+
-         Pih/C20bOS5QvAKr72kYuJSjZ2dtVKQ4vNek/Nyv8jHhVe6GjvaN8nE24mGYv8QpcnBL
-         ED/5Sdwr2QaDA0g4ZGwxs0AJl5L5WFGtk68DqKvUTSJjM4R6RFjj1zzNkcvx45GZcDwz
-         9rJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704374568; x=1704979368;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+UaUoSEUxULvKOz2jhQuoYpr4rLktnoBGVluoHHYMOU=;
-        b=aXzjLEyaa9nYYKxs5YxBnkIthz7GT+ZYj7xS7FDbw2bFlnAyFKpLyHjruKYeS9OLnA
-         Ejef4sKZqJX/J04gWlOxnjgVHr8EmgLSOoinx9g/cJIA6ISYFSSyGGtcwOXAthQ7U6KS
-         h6pYUXvZKk50go/FIiC8JdZuQlqsicrXWQZIYr4xcY46NmJ7D6L+S9rXtZi9uPeK/Qr0
-         I/vvUKekHRsp+3g2xTz4mLO3XkXQzDmVlXVRG3YVNzg5Rw/5decbyuJTyT8vS5DaTCz0
-         R4p9FacTxVz3v0hH+tSpSK1ZMoAza5IsNeNIuSof+zZPdNm62PJYSvKz9bxoHipg0TkW
-         67JA==
-X-Gm-Message-State: AOJu0YwoSja1HuwAihq73GIjo72h+Fa9MqaJIGBvenyxrK0cokrULLGB
-	ztBytRl1l8/nhYuBCtk4Ur0E4G1AGCKqWVLRwUWynjm/sVgt/w==
-X-Google-Smtp-Source: AGHT+IFokc8I4M12wpRZbGFseRS03dNmYQJFm1uTthsqLJ9zrTgE2OKJgGw72Fa3MExoY1OmaCb7cA==
-X-Received: by 2002:a05:6a20:1445:b0:199:247a:1044 with SMTP id a5-20020a056a20144500b00199247a1044mr201672pzi.17.1704374568632;
-        Thu, 04 Jan 2024 05:22:48 -0800 (PST)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with ESMTPSA id a25-20020a634d19000000b005c6617b52e6sm24378620pgb.5.2024.01.04.05.22.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 Jan 2024 05:22:48 -0800 (PST)
-Message-ID: <4cf878c6-0adf-4c97-b404-446d8a3dabf1@daynix.com>
-Date: Thu, 4 Jan 2024 22:22:39 +0900
+       dkim=pass header.i=@intel.com header.s=Intel header.b=YE8GHgta;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rLQRU-0007ZM-4g; Thu, 04 Jan 2024 11:19:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rLQRS-0007Wt-F5; Thu, 04 Jan 2024 11:19:34 -0500
+Received: from mgamail.intel.com ([192.198.163.9])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rLQRQ-0005NO-0W; Thu, 04 Jan 2024 11:19:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1704385172; x=1735921172;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=ETWmTlJlHbaTTOuyM0EieSosO/J9p965d/zZA24U6F0=;
+ b=YE8GHgtaHG72Igeei+/wGoYWgP8VS5pv+mqCtUNyXBKLchpoHeAYjBjZ
+ /p++fpwYzto/ZwawnhFGJpmMbVs2QB0x2zPTTmneucdtjYo+jsK9/A4r9
+ DvVoBjpycuGhdm1tPnqJuMJojqdAp4H+dtOZ23ywSzb4sQAMusCbz8vwd
+ NfjAQD9TNjerFevHNdbDPrUaCCz/wWcB7DmiOq7bdiOmr42oNTXfqHQEa
+ hB9Vb0mCgk6TDw263NPY6VrfLseY354y8Rx/1wku8SkFoUS2eiv0IZuWr
+ MRVnR1Wx5K6gRpfLoJ6lGlsa5ygiTppKvr6jqvEAARD5263oWQuqvNkvK Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10943"; a="4103005"
+X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; 
+   d="scan'208";a="4103005"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jan 2024 08:19:27 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; d="scan'208";a="28838743"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by orviesa001.jf.intel.com with ESMTP; 04 Jan 2024 08:19:24 -0800
+Date: Fri, 5 Jan 2024 00:32:17 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Samuel Tardieu <sam@rfc1149.net>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] docs: use "buses" rather than "busses"
+Message-ID: <ZZbdkTgmg3MsRjkv@intel.com>
+References: <20240103172817.2197737-1-sam@rfc1149.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 38/43] plugins: add an API to read registers
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- David Hildenbrand <david@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Yanan Wang <wangyanan55@huawei.com>, Bin Meng <bin.meng@windriver.com>,
- Laurent Vivier <lvivier@redhat.com>, Michael Rolnik <mrolnik@gmail.com>,
- Alexandre Iooss <erdnaxe@crans.org>, David Woodhouse <dwmw2@infradead.org>,
- Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
- Brian Cain <bcain@quicinc.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Beraldo Leal <bleal@redhat.com>, Paul Durrant <paul@xen.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>,
- kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, John Snow <jsnow@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20240103173349.398526-1-alex.bennee@linaro.org>
- <20240103173349.398526-39-alex.bennee@linaro.org>
- <52cac44e-a467-4748-8c5b-c9c47f5b0f79@daynix.com>
- <87cyuhguf4.fsf@draig.linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87cyuhguf4.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: HIXEQ05GkfUp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240103172817.2197737-1-sam@rfc1149.net>
+Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.691,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lwJaWQrymEb3
 
-On 2024/01/04 21:22, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+On Wed, Jan 03, 2024 at 06:28:17PM +0100, Samuel Tardieu wrote:
+> Date: Wed,  3 Jan 2024 18:28:17 +0100
+> From: Samuel Tardieu <sam@rfc1149.net>
+> Subject: [PATCH] docs: use "buses" rather than "busses"
+> X-Mailer: git-send-email 2.42.0
 > 
->> On 2024/01/04 2:33, Alex Bennée wrote:
->>> We can only request a list of registers once the vCPU has been
->>> initialised so the user needs to use either call the get function on
->>> vCPU initialisation or during the translation phase.
->>> We don't expose the reg number to the plugin instead hiding it
->>> behind
->>> an opaque handle. This allows for a bit of future proofing should the
->>> internals need to be changed while also being hashed against the
->>> CPUClass so we can handle different register sets per-vCPU in
->>> hetrogenous situations.
->>> Having an internal state within the plugins also allows us to expand
->>> the interface in future (for example providing callbacks on register
->>> change if the translator can track changes).
->>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1706
->>> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
->>> Based-on: <20231025093128.33116-18-akihiko.odaki@daynix.com>
->>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>> ---
->>> v3
->>>     - also g_intern_string the register name
->>>     - make get_registers documentation a bit less verbose
->>> v2
->>>     - use new get whole list api, and expose upwards
->>> vAJB:
->>> The main difference to Akikio's version is hiding the gdb register
->>> detail from the plugin for the reasons described above.
->>> ---
->>>    include/qemu/qemu-plugin.h   |  51 +++++++++++++++++-
->>>    plugins/api.c                | 102 +++++++++++++++++++++++++++++++++++
->>>    plugins/qemu-plugins.symbols |   2 +
->>>    3 files changed, 153 insertions(+), 2 deletions(-)
->>> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
->>> index 4daab6efd29..95380895f81 100644
->>> --- a/include/qemu/qemu-plugin.h
->>> +++ b/include/qemu/qemu-plugin.h
->>> @@ -11,6 +11,7 @@
->>>    #ifndef QEMU_QEMU_PLUGIN_H
->>>    #define QEMU_QEMU_PLUGIN_H
->>>    +#include <glib.h>
->>>    #include <inttypes.h>
->>>    #include <stdbool.h>
->>>    #include <stddef.h>
->>> @@ -227,8 +228,8 @@ struct qemu_plugin_insn;
->>>     * @QEMU_PLUGIN_CB_R_REGS: callback reads the CPU's regs
->>>     * @QEMU_PLUGIN_CB_RW_REGS: callback reads and writes the CPU's regs
->>>     *
->>> - * Note: currently unused, plugins cannot read or change system
->>> - * register state.
->>> + * Note: currently QEMU_PLUGIN_CB_RW_REGS is unused, plugins cannot change
->>> + * system register state.
->>>     */
->>>    enum qemu_plugin_cb_flags {
->>>        QEMU_PLUGIN_CB_NO_REGS,
->>> @@ -708,4 +709,50 @@ uint64_t qemu_plugin_end_code(void);
->>>    QEMU_PLUGIN_API
->>>    uint64_t qemu_plugin_entry_code(void);
->>>    +/** struct qemu_plugin_register - Opaque handle for register
->>> access */
->>> +struct qemu_plugin_register;
->>
->> Just in case you missed my comment for the earlier version:
->>
->> What about identifying a register with an index in an array returned
->> by qemu_plugin_get_registers(). That saves troubles having the handle
->> member in qemu_plugin_reg_descriptor.
+> If "busses" might be encountered as a plural of "bus" (5 instances),
+> the correct spelling is "buses" (26 instances). Fixing those 5
+> instances makes the doc more consistent.
 > 
-> The handle gets de-referenced internally in the plugin api and
-> additional checking could be added there. If we pass an index then we'd
-> end up having to track the index assigned during get_registers as well
-> as account for a potential skew in the index value if the register
-> layout varies between vCPUs (although I admit this is future proofing
-> for potential heterogeneous models).
+> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+> ---
+>  docs/system/arm/palm.rst    | 2 +-
+>  docs/system/arm/xscale.rst  | 2 +-
+>  docs/system/devices/can.rst | 6 +++---
+>  3 files changed, 5 insertions(+), 5 deletions(-)
 > 
-> The concept of opaque handle == pointer is fairly common in the QEMU
-> code base. We are not making it hard for a plugin author to bypass this
-> "protection", just making it clear if you do so your violating the
-> principle of the API.
 
-Now I get the idea. Indeed index values are not guaranteed to be stable 
-across CPUs.
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
-Why don't you pass gdb_reg_num as is then? qemu_plugin_register has the 
-name member, but it's unused so gdb_reg_num is effectively the only 
-member we need. You can even cast gdb_reg_num to (struct 
-qemu_plugin_register *), but I don't think pointers are more opaque or 
-future-proof than integers.
+

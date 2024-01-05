@@ -1,126 +1,112 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp847558ejo;
-        Fri, 5 Jan 2024 09:13:28 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEK0MAJ0dpm6uctIHBWt6u/moEYKCdE46s4NrVNgTLh/USj8zNyfiXvo7/e89NDbC/6TXtg
-X-Received: by 2002:ac8:4e4b:0:b0:428:206c:6c30 with SMTP id e11-20020ac84e4b000000b00428206c6c30mr2924555qtw.52.1704474807901;
-        Fri, 05 Jan 2024 09:13:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704474807; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp865481ejo;
+        Fri, 5 Jan 2024 09:46:28 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH06/pD4j4crJlF5BftZRHjISW+4eblb0x0qdK1AC7UOmC83aNPlUFwYKhFWzZ38pWF+csh
+X-Received: by 2002:a25:ab2f:0:b0:dbd:5cc3:8355 with SMTP id u44-20020a25ab2f000000b00dbd5cc38355mr2553344ybi.102.1704476788438;
+        Fri, 05 Jan 2024 09:46:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704476788; cv=none;
         d=google.com; s=arc-20160816;
-        b=KLnGH7m2htsMtVQGkhcNyBMkld/PKQJ9m6NcalD98XSQOyKcYKuLtUfLqMfTfLenic
-         C6KB1TVOM4ZU3kb8MIRyF6Rfb6CaZ3cTXji3G+zaDGm64GADXpQd3q9FUTVbK+rxWP8n
-         PVOS4keLG8LBsLiNF76Aq/PvshhGCGOVs1Fi/mNzMUFcwtNAuztQtscG1G8sfWYhXjlT
-         iT2OQDseefe3bI78Q7E63rs04MOHHaUhmXayw1MKPVucQ26cJcAs9CeARDeRCGQSAhBW
-         TL9z02SytU2v00I/I/nGnbBJGYDofUR9b+LaMvhodVEIq8Of9JrP6jzWv9s/FbtMWr0O
-         hlCQ==
+        b=0q+I0odziTcZxryJ/bZwk2gyEu2V+uh1+O5DsImG1oqtDB5jrbM9Mr2bIDgbHUtI2K
+         4Z4M51gU7e4v+U/LClUI9T9iBTKdnkP2xwDEvsz48UcKu1hmjOYB2Sw3qZZfzTE6DMJm
+         Ouq/lI1u5bLjYclNiiQPpg2oXmanDSOOY1PfsFKl4XRj/xq+MuR0HxfmCjd+BU6a61ig
+         4QdGXYihuPepU736jqnHdB5YCjrFOE6m1azHJvdPl/VrFKhyFdre+6ypkElIgBVGkm28
+         V4MtUvdYGQbaQcD3fV9m17+y8EJke6HYO2CSWZ6d/6UJBU1qQ9G6Rshueq5z2l7wheYD
+         zlmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2VV+6GUBPjLkx/5c8VXWyxeLSspJIwB/ya4y6DAP+no=;
-        fh=ZFifG+MQfczYAHniAfp0z/yV8F8nyCdepLuT9Mbl1XU=;
-        b=UnT49JWqAOYxcXmFzeE0IugOZ7nn5McUPYXaak13jitUfODWhv+yzYNGv5Dt2fqTdJ
-         4078j7aRhKL+IL6paeXyHm+NQMehwZpvCv6I7hapFFgkrEm/ZInTIx4PmUgGN5XSDT2B
-         9Gue7vNtKWyWpoOqWqF4urYdhusMHe/m91pbAqAdPDpW08iH6aAkXGiJbO0Bcdm7yc4k
-         MIWJmy1y2bPdjezxk/wFwtWsAALY9HGQkujxAnNIJlWLQDv6XJphsyXDZNUDAC9FwNng
-         Wz8o1aIQo3qfGflYSZexlBdkd8a65qflytZRKsvjCjHD3wa+vYrs82A0Z+TnLJeiTKIw
-         nRiA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Tt2KkEKR/O3GKUqEJluYFu++1FBZrwVdsu+Pdswpigo=;
+        fh=qdExgS/EC9wfn+jhDNphFdE7zpmUpTklI58gaAWmHTw=;
+        b=CUquPFPyPpqhfNIgfm5dTMcxJjVtXfPkwpMs2aIa2DFYi8ZG8OhSrhKhWJ5MREx/r+
+         r5p6NPMKQwwWFOA48TSikykmL/Bt2E9X90RG1vnmXCArQcyJ3Jwsg12D8YyfubccfuEU
+         h3tiVWJOLTfq2EXAYTzbsgj3Hcu9uOlrz/bQPCxVovsWvWXzTAF/FqtAwVMOvy/zIMGC
+         mnEZfLStuClq7t03bBg/ke5wkkKHtwA/n25czcRRbh+58qEbUm8jVBJaManTBjhghL8f
+         XUruLrg7/ZmeMlvpqaBrV8Czki5aJP9Wk3EMwrnwnBoHkVRiqw3A9yH6Chm1+tMjC3aS
+         MyYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K4GeJ95a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hCfyAKda;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w14-20020a05622a134e00b004297a143038si1193805qtk.20.2024.01.05.09.13.27
+        by mx.google.com with ESMTPS id v17-20020a05622a189100b004283bbb0cd7si2277544qtc.100.2024.01.05.09.46.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 09:13:27 -0800 (PST)
+        Fri, 05 Jan 2024 09:46:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K4GeJ95a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hCfyAKda;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLnkt-00035q-CJ; Fri, 05 Jan 2024 12:13:13 -0500
+	id 1rLoGW-0004fd-8x; Fri, 05 Jan 2024 12:45:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLnkq-000350-Sr
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 12:13:08 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rLoGU-0004fN-Jr
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 12:45:50 -0500
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLnkp-0002Zn-7x
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 12:13:08 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-a1915034144so204160266b.0
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 09:13:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rLoGS-0005Ws-Tk
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 12:45:50 -0500
+Received: by mail-lj1-x22a.google.com with SMTP id
+ 38308e7fff4ca-2cd0f4f306fso22259091fa.0
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 09:45:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704474784; x=1705079584; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=2VV+6GUBPjLkx/5c8VXWyxeLSspJIwB/ya4y6DAP+no=;
- b=K4GeJ95a3e+5fj27V4OvpQc/ssTKH6YQTZv4F5l4BL/EkVBW+aDEK/K6A8rWKbmhDd
- +GVom2IOxmJmxZ7+Idc5XxOdaHpNTnoLhiNN/QFmIXF06gucCEQ8az9/xEUzYQ24Orcg
- ZEeloEKbzFh7UUnGf6041LODKaizOs1DgVm+ZUM/8YtBn3PUbHsUbsF6EzXPWNm9H2eM
- aHea7qu4+qjI+IV026VjTc7zvmtw/ObzTdstSf9tvuwvU9vFG/jhsqLKxOtCOf90PAoV
- L2oydyVQoEXWGSy4MrLlAGLdNHSou8WPbfhRPpjrrcLIaaxYSysxCCvwcrjGxpwQUfeY
- hW0Q==
+ d=linaro.org; s=google; t=1704476746; x=1705081546; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Tt2KkEKR/O3GKUqEJluYFu++1FBZrwVdsu+Pdswpigo=;
+ b=hCfyAKdavCJuka5JaNmqthHNa/sTLOwQ2mmjm3vV6woupkHxoONcWeXKyIRzgK068g
+ jZzddLWKZo+0j+ysw5Dzx2UicjIHUNLKF+zKD8knWmRJ1iPk4TJhxn3TXGnD9Ra0/jDK
+ npNVaaiRt6yxqYjFPksLYSTLAxcaBFDT5J1B+Ol9pyIP/DwLdB2YzLJD+NF/AbxlzEdO
+ 2acrGQxmJ0CXXy3sf7HGFBXzQLtPlS1YjN+UvE+aHY1Z7vSL3PyxF9+TZOe7hybKqa/Z
+ xMiZsIRP+8Lg1xfxjyP0l8MrrapmUQSgrUJwpjIqD8UyD88B2pT5C8TFuZ/WQJqKJr0p
+ DjGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704474784; x=1705079584;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2VV+6GUBPjLkx/5c8VXWyxeLSspJIwB/ya4y6DAP+no=;
- b=lak2QJutOqtQ7uNVAsjz2UJ5KLnoEpGkqvbROnaTu54PbQMwe8jHsd5CZeqSY3HD+f
- 6nzjGt+DRVqYxGgVqbc3Ymp87JuwrneE9bd2wbTA8gYh2OwTfxupgLExdYFG1do//8sl
- E5Gh3QXe+mOBPmXfdPrgCtBM5Z6Tst6zMrkQr5n5C2ZEiEqpTDLw84RqLZqdZfUPJZi6
- pWMdQZCPO+cR835bype7A77nLW6UWyEMTfX8Fl/hLrGeNM/xXaFBMXRiO3QHnrueuyrI
- Ec0ZSeDzms1we42hS8qpAhL7CgND7pK1VSy27U8o590Amf9b9jYrmYzgdqM1/LZIvhva
- genw==
-X-Gm-Message-State: AOJu0YzxLKKdp3SiRhkVr0IOnT021IIFapEh4SZ8Yt9ddtWpModD0Pti
- XoitUa6k02xIcHZL5cNG8ZutU/Zsvwo5pg==
-X-Received: by 2002:a17:907:c88:b0:a27:9660:c2ae with SMTP id
- gi8-20020a1709070c8800b00a279660c2aemr1047501ejc.8.1704474783943; 
- Fri, 05 Jan 2024 09:13:03 -0800 (PST)
-Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
- [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- jo1-20020a170906f6c100b00a26ade46618sm1075431ejb.99.2024.01.05.09.13.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jan 2024 09:13:03 -0800 (PST)
-Message-ID: <87fcd410-4b25-4f28-80dc-04258dbe7580@linaro.org>
-Date: Fri, 5 Jan 2024 18:13:01 +0100
+ d=1e100.net; s=20230601; t=1704476746; x=1705081546;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Tt2KkEKR/O3GKUqEJluYFu++1FBZrwVdsu+Pdswpigo=;
+ b=KtUZyv4KEJUhLqmG+80zssqJ4ys/T51XTWQOYQWdSbPz0ZLxAse5H2mDsh+ye2otjn
+ 4iyStTRbQVkejSIc+MShHrzm2jbacVMfdtEobKzC8qkNlKL7uStrgrfViyuD+wLyYoW9
+ hv3+L8dYZkpZpyBPiL+/KmkoHvkQz3RW8iKOr40UBHcCGNcvaCdBl6Y59hopms/28KL7
+ Ea3z5xMKXjDFdIkSOyM/NSfEQItUSY6gZ5KjSbYuZBdFinDgF+bfejGOsSKwMg8mwo0x
+ dIFCQIm5YBor1SxjI1cA6jVmP4GfFohobgKZxzlt0qWD81yFKPUTKdcoyyzWI8YYvdEn
+ LhIg==
+X-Gm-Message-State: AOJu0Yx70qBwaNCOfIQcSQjum3fEftdk5zC3QSlOb7iCAmKct2sdbtHR
+ XtWX4ioeWb8ECXgaRiNRBctChIfo3olQgWBEtcboQ104qI5D/g==
+X-Received: by 2002:a05:651c:1a07:b0:2cc:866a:79e6 with SMTP id
+ by7-20020a05651c1a0700b002cc866a79e6mr1713551ljb.10.1704476746543; Fri, 05
+ Jan 2024 09:45:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.0 03/25] memory: Have
- memory_region_init_rom_nomigrate() handler return a boolean
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
- =?UTF-8?Q?C_=C3=A9_dric_Le_Goater?= <clg@kaod.org>,
- Peter Xu <peterx@redhat.com>
-References: <20231120213301.24349-1-philmd@linaro.org>
- <20231120213301.24349-4-philmd@linaro.org> <4h38a.h95poe276hnn@linaro.org>
- <af352e7d-3346-4705-be77-6eed86858d18@linaro.org>
- <CAFEAcA_yKxnTMnfWVdXWixPq27=OVQCZ0BjRdiPfSKKhqh=gVw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_yKxnTMnfWVdXWixPq27=OVQCZ0BjRdiPfSKKhqh=gVw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+References: <20240103155337.2026946-1-sam@rfc1149.net>
+ <20240103155337.2026946-2-sam@rfc1149.net>
+In-Reply-To: <20240103155337.2026946-2-sam@rfc1149.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 5 Jan 2024 17:45:35 +0000
+Message-ID: <CAFEAcA8oWpr+AO0tENSyS_ExPW8F5wLp5+5cDFF6gm0pQnAcCQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] hw/intc/armv7m_nvic: add "num-prio-bits" property
+To: Samuel Tardieu <sam@rfc1149.net>
+Cc: qemu-devel@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
+ qemu-arm@nongnu.org, Anton Kochkov <anton.kochkov@proton.me>, 
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
+ Alexandre Iooss <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,79 +121,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IC2RkxXzZ4AP
+X-TUID: aXRWXOrIRC5M
 
-Hi Peter,
+On Wed, 3 Jan 2024 at 15:53, Samuel Tardieu <sam@rfc1149.net> wrote:
+>
+> Cortex-M NVIC can have a different number of priority bits.
+> Cortex-M0/M0+/M1 devices must use 2 or more bits, while devices based
+> on ARMv7m and up must use 3 or more bits.
+>
+> This adds a "num-prio-bits" property which will get sensible default
+> values if unset (2 or 8 depending on the device). Unless a SOC
+> specifies the number of bits to use, the previous behavior is
+> maintained for backward compatibility.
+>
+> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+> Suggested-by: Anton Kochkov <anton.kochkov@proton.me>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1122
+> ---
 
-On 5/1/24 15:57, Peter Maydell wrote:
-> On Fri, 5 Jan 2024 at 14:46, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> On 21/11/23 13:10, Manos Pitsidianakis wrote:
->>> On Mon, 20 Nov 2023 23:32, Philippe Mathieu-Daudé <philmd@linaro.org>
->>> wrote:
->>>> Following the example documented since commit e3fe3988d7 ("error:
->>>> Document Error API usage rules"), have cpu_exec_realizefn()
->>>> return a boolean indicating whether an error is set or not.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> ---
->>>> include/exec/memory.h | 4 +++-
->>>> system/memory.c       | 8 ++++++--
->>>> 2 files changed, 9 insertions(+), 3 deletions(-)
->>
->>
->>>> diff --git a/system/memory.c b/system/memory.c
->>>> index 337b12a674..bfe0b62d59 100644
->>>> --- a/system/memory.c
->>>> +++ b/system/memory.c
->>>> @@ -1729,14 +1729,18 @@ void memory_region_init_alias(MemoryRegion *mr,
->>>>      mr->alias_offset = offset;
->>>> }
->>>>
->>>> -void memory_region_init_rom_nomigrate(MemoryRegion *mr,
->>>> +bool memory_region_init_rom_nomigrate(MemoryRegion *mr,
->>>>                                        Object *owner,
->>>>                                        const char *name,
->>>>                                        uint64_t size,
->>>>                                        Error **errp)
->>>> {
->>>> -    memory_region_init_ram_flags_nomigrate(mr, owner, name, size, 0,
->>>> errp);
->>>> +    bool rv;
->>>> +
->>>> +    rv = memory_region_init_ram_flags_nomigrate(mr, owner, name,
->>>> size, 0, errp);
->>>>      mr->readonly = true;
->>>> +
->>>
->>> By the way, do we want to set mr->readonly on failure? Should there be
->>> modifications if an error is propagated upwards?
->>
->> Good point
-> 
-> I don't think it matters much. If the init function fails,
-> then the MemoryRegion is not initialized, and there's
-> nothing you can do with the struct except free it (if it
-> was in allocated memory). Whether the readonly field is
-> true or false doesn't matter, because conceptually it's
-> all undefined-values. And memory_region_init_ram_flags_nomigrate()
-> has already written to some fields, so avoiding changing
-> mr->readonly specifically doesn't seem worthwhile.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-I concur with your analysis. QEMU Error* type is helpful to propagate
-errors, but the cleanup path is rarely well implemented. See for
-example the many returns in DeviceRealize handlers without releasing
-previously allocated mem.
-
-In this particular patch case, I find Manos suggestion useful, the
-code now uses a simpler pattern and avoid having to look at the
-callee implementation.
-
-The updated patch is already in a PR I posted before reading your
-comment. The changes seem innocuous to me, so not worthwhile to
-restore the previous patch content. But if you object, I don't mind
-reposting the PR.
-
-Regards,
-
-Phil.
+thanks
+-- PMM

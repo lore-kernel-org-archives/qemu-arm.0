@@ -1,120 +1,114 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp640841ejo;
-        Fri, 5 Jan 2024 03:11:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGfLWRmiVEN838f39XNRzpsTqvN8Yo3wtGaQBm+3DlkBG7F1Z0Mhi1IDK5cKJKFiXcSdrhT
-X-Received: by 2002:a05:6808:3c95:b0:3b9:e7d1:fa71 with SMTP id gs21-20020a0568083c9500b003b9e7d1fa71mr2427462oib.47.1704453080085;
-        Fri, 05 Jan 2024 03:11:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704453080; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp676119ejo;
+        Fri, 5 Jan 2024 04:27:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGe+sUJvRucdEdKgYg1xKfzyWMAzEAOzYVLlE6YSkh4nNKB16ju/TLLIou1+e/tGzePs4Mv
+X-Received: by 2002:a05:622a:d6:b0:427:e98a:41d3 with SMTP id p22-20020a05622a00d600b00427e98a41d3mr2146256qtw.57.1704457651096;
+        Fri, 05 Jan 2024 04:27:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704457651; cv=none;
         d=google.com; s=arc-20160816;
-        b=E7ZlKqbOTNe1we2RNg5eOvbGdWlT57tGyPA8V5/7eQKgAm5BebQ4e2sKRbS7XXQ9YB
-         scnlR/jKoqChWo/A78L4tfL7CbyN4Ys1ijWCDTnKPALCwJv3SN8hIztPfOukQ0sfuPTn
-         QmPKxkQeD9VwQsCpv1dGtNbhk+vif+EPEwP8JREOLd4HP0IseNdrGMogWvCabxZnmre+
-         n4/5rqFd/SEsctbl+VgNgY6O2wBsLp/tWb4EjmkCXpdcaZhGJQDLDZoNDdrZcfUiRTxW
-         ACiQ5W5rsee23FXLuA6rNmS5PSeyYz2oCEC6iXCOzDdPcraQiAdgwL5SM4enai4bo6uZ
-         EDEw==
+        b=yGl632Onm4dcYlX8kH+Ci1I9UGvue6tQymyI4ofE8A9n+0jyUmwKPZstlFLiaGktrt
+         xQRqDbh95opPPPxD6XItp6Oyj+5YGncG065kC7EVzxM26ytRcJAPjvjEi7zZMc9tqCA0
+         kWKLZ6JFHawJdCtujH2Pphydo7bFBNyhOpkwXtg6mBnSzSx9BojeBoD0eiiUJPI0dY/R
+         3tjgV21jr5FP81rldjKy8ng167n6YCehymirEhGCSkdsLagXSPftKRD1VnV8u33U8aUC
+         eHv5wpcqM8OSaNdISykNQ5QW9S0tetKHot6g1SdsyXkXk0w2nSLKEeLXshKanMpTxHOr
+         ZUEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=IjDO5m0dOcaqMNoq9200rzLpRXSkVfVuBa2ol+B/RjU=;
-        fh=wFiiLnqFhiQZ4hPRyiUFdle+r97LzM1NbCYn+9r8AOU=;
-        b=VQkf4RD4hgtGwxrLMcoR5EvGzQrsMh83YVv8POzIOwOcTH6DISeiEhjOG7SLXBAbdZ
-         Z1JklaxrZM73VDE3i6kU4/VU02jxbSbJRys8dTbajb0+RGDTSvQaQeDCAymikACAqxnL
-         vOjCjAe8oOLW2IlCgOisYT4SafWrve572Ifuwdu0PwJJsjrij+sYYzGdWS/jp65xq7a1
-         TCei87bxTSidtph2TT6fcYKbjaH3CJ99f8+zDzGG8su4mu9XS2lQt1tMna1tqY7Campn
-         XGd3i3FH9v0JZxm5yxkX8VXWZ2pzH1+XjTNULI5aDqD10l2nOx6s9t218aQ6rpHT/qm8
-         XjCA==
+        bh=1fuRmMn2/OEzC2xcyqjGVvOZ+85ANPKX5Ih5OYJKAfU=;
+        fh=4ywBP2fiVAQlRM5WXxtK01Tx7ASqpvBkuQiBVJkwLFA=;
+        b=P28S9ylKoqWCO9ucEBQYUOnC/pSCfpPcNcV9LEtE8W08fYFzrzbebT1frkvcYENTmN
+         jBdwQzr5ATiIsieRK0VUbeh6vxkE8QV1u0r8pyDj9VlRaTWoDBh0of45SG2tijEkbUcQ
+         SvXDwk6kss58lbyunkUK7Y+lc1KKhQtpS6CtbmEZ/zjHZUPNpOuoFJl/5Mncjc7xMgQC
+         E4yTYzWPu6JncnX3rSl/n/3Mwe6m7meoNuacXSofW9Frtd/UeQ/fIVHoSM8wkBqw5a4k
+         /Mx1AirOuhywPCDqDhxuRlplHAVI7ukolc+3tBRnZ9MSDBR5ZSjPYJXXbyrV1KrX1YLI
+         li6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ld5XkDJl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gm2qpv6Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10-20020a0cf14a000000b00680285e7c68si1523026qvl.424.2024.01.05.03.11.19
+        by mx.google.com with ESMTPS id v14-20020a05622a130e00b004297cb56dadsi264248qtk.582.2024.01.05.04.27.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 03:11:20 -0800 (PST)
+        Fri, 05 Jan 2024 04:27:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ld5XkDJl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gm2qpv6Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLi6P-0007Qa-Eq; Fri, 05 Jan 2024 06:11:01 -0500
+	id 1rLjIJ-0001dz-JX; Fri, 05 Jan 2024 07:27:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLi6M-0007Mn-3U
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 06:10:58 -0500
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1rLjII-0001dE-Dl
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 07:27:22 -0500
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLi6I-0003jT-C7
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 06:10:57 -0500
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-50e7f58c5fbso1854707e87.1
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 03:10:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1rLjIE-000612-9w
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 07:27:21 -0500
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-6da6b0eb2d4so966488b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 04:27:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704453051; x=1705057851; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1704457636; x=1705062436; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=IjDO5m0dOcaqMNoq9200rzLpRXSkVfVuBa2ol+B/RjU=;
- b=Ld5XkDJlqPnkKe7mhb4ecfAhcrf94Pcr3lIVENITo8rrd87SZFl3FHvAxy2RaTwbZB
- O7y0+jcMPN51UETUoGZSa8SZ3STtr68ZBlerObvauZY9n9dSHun1zM+1gFBD7842umAR
- IMC6qvZb2CiVdIsKsqioNisvLV4uUchgCu9/aaaE5FwKp/uBwX8HwEWhAopdh5Z8XQlS
- bzTfg57TmmpyL8YKYo/U56dhHFSrOfGjmYdqpIE5UIMmoyRvc5P50CZQbzmNC3uTReCa
- JlRyuneuqR798V3+7ATe5dMyGhoZPpNZ3Q61UAlPe9/4AC3uDHqucPu+pEECsukqruE7
- hFJA==
+ bh=1fuRmMn2/OEzC2xcyqjGVvOZ+85ANPKX5Ih5OYJKAfU=;
+ b=gm2qpv6Qy3Yzt7tCrTYzyr2rHmb28Sd13YGLvDYY5h/W0oOkbwuox5rzgNxqay8Qvj
+ GFGlUBb6/f+5PnYUmJYabpfgRgtA8DZgfA/LqVV6Ho/WFjhPNPAvPRhvcz+DD7IJKxNt
+ xrfMqkMf0OWSi29IX7kHnjbZq9SD97AarXxbo6WQ/HH4Udi25BRej7cepfuPOFRk09Tk
+ PP6/jntAJTVeZxC2T/zLka1Ai6VQqwrFoipyrKpv2ucDoyGUfcxx4ZDyzi/XGxvZ3Jy2
+ bHXEvXYjeYDuZPk1UnF+a5d4eOvgIOr7b87gmoQVh0AbNLGrpo6ZA1wCdkaaR+cFGKDb
+ rBXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704453051; x=1705057851;
+ d=1e100.net; s=20230601; t=1704457636; x=1705062436;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IjDO5m0dOcaqMNoq9200rzLpRXSkVfVuBa2ol+B/RjU=;
- b=uUqrWnCLdmyh3kG7FyX6X7CXPFkU7Iuw9hJbbpzAjw23ZcWlw3GV4gtLFubFZm+UbC
- cH04iqkVdjwRA7yRvX2fs5KTEjjw84DO5t38+6oenxUTR14J8bss3mzY5A6oxxG1DPYK
- rhBwBbeTg8FzAJbIYvOdYXDrT51y+WF/2DTFD7ZvbcTLpZZ+ba33vPO1aUhM119DuRLT
- CHP83CORd/r6268XQLeJCIEt//svCTZuWI5mOwbSy+yDCwO7Lg+gZ3EoaKYFZhfuQ8XR
- jqNt52cSHnNRWZjBBxVDT0Z5GEafE/EaNUB3ZEYxwsr7PNT/hl5+5Yh2+izz4rQTiOSl
- 7t3w==
-X-Gm-Message-State: AOJu0YyNRB+6iR2DSLVWIHB9d1hKvmTk1e4WU8eNV8+FWlxtJKvxPScT
- AiXTU9r6792iA1dmTDX7vOa+ilGDQvsthA==
-X-Received: by 2002:a05:6512:2351:b0:50e:55d0:855c with SMTP id
- p17-20020a056512235100b0050e55d0855cmr1334142lfu.17.1704453051109; 
- Fri, 05 Jan 2024 03:10:51 -0800 (PST)
-Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
- [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- a5-20020a1709063a4500b00a28d309b063sm757869ejf.220.2024.01.05.03.10.48
+ bh=1fuRmMn2/OEzC2xcyqjGVvOZ+85ANPKX5Ih5OYJKAfU=;
+ b=Ic6wCtGyFkhebvGUjW3Zzs6YdGFlVKLx+jmBkQVFjd4mz3kFr2UM1ECLVWUCMQeR40
+ POVTqjgRuuWL2ESFBCBTPxrYwGsKOzpdZimaQonalFqld30wXFDMLLQoWs86XcU6B8Or
+ h1C/rugYwK2i288JJPdzKqCeVBUA67G4FzRMNa+ziM5mH8dDLfle7K6eNvuQVWL4UtT2
+ ILiUjnO/ZWX+OVC1+vSSKYXFYjGAzEFzYvJ8pRWGP3JrhnO3zJDkaUBpYQFHA+cpIff4
+ +Vr+3lAVobm2mCIKD0YxOO01YxM3L96ucPgaeLiVjS3C4fVpln9f5WT9YnudxSOl4KUb
+ iNvw==
+X-Gm-Message-State: AOJu0YzbgpCdywlv2CjlR4NW1nAMwvUxoapl+hnMmu6tRnCJNXwkSq5Z
+ t9CvF1pGm/va5RjxuAitk6ctcpIZnHpdDA==
+X-Received: by 2002:a05:6a20:9150:b0:199:4546:bc0c with SMTP id
+ x16-20020a056a20915000b001994546bc0cmr421451pzc.83.1704457636406; 
+ Fri, 05 Jan 2024 04:27:16 -0800 (PST)
+Received: from [192.168.68.110] ([152.234.127.254])
+ by smtp.gmail.com with ESMTPSA id
+ r5-20020a62e405000000b006da76842a66sm1292898pfh.85.2024.01.05.04.27.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jan 2024 03:10:50 -0800 (PST)
-Message-ID: <c9c65355-7666-4749-b93b-5fb1c7f1585b@linaro.org>
-Date: Fri, 5 Jan 2024 12:10:47 +0100
+ Fri, 05 Jan 2024 04:27:15 -0800 (PST)
+Message-ID: <e7ee041b-4e71-458c-8a56-f0b91a3ace0f@ventanamicro.com>
+Date: Fri, 5 Jan 2024 09:27:10 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/9] machine: Introduce helper is_cpu_type_supported()
+Subject: Re: [RESEND RFC v1 2/2] hw/riscv/virt-acpi-build.c: Generate SPCR
+ table
 Content-Language: en-US
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
- imammedo@redhat.com, b.galvani@gmail.com, strahinja.p.jankovic@gmail.com,
- sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com,
- nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, vijai@behindbytes.com,
- palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
- liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com,
- Thomas Huth <thuth@redhat.com>
-References: <20231129042012.277831-1-gshan@redhat.com>
- <20231129042012.277831-3-gshan@redhat.com>
- <fd8715af-ef1c-4ccc-b602-25776a56fc76@linaro.org>
- <c9f68946-2824-48a5-a0a1-290d7ddba178@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <c9f68946-2824-48a5-a0a1-290d7ddba178@redhat.com>
+To: Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ sunilvl@ventanamicro.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com
+References: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
+ <20240105090608.5745-3-jeeheng.sia@starfivetech.com>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20240105090608.5745-3-jeeheng.sia@starfivetech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x134.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,101 +130,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cNYq/ar7VqjF
+X-TUID: Z/CEwJOyyqdu
 
-On 4/12/23 00:13, Gavin Shan wrote:
-> Hi Phil,
-> 
-> On 12/1/23 20:53, Philippe Mathieu-Daudé wrote:
->> On 29/11/23 05:20, Gavin Shan wrote:
->>> The logic, to check if the specified CPU type is supported in
->>> machine_run_board_init(), is independent enough. Factor it out into
->>> helper is_cpu_type_supported(). machine_run_board_init() looks a bit
->>> clean with this. Since we're here, @machine_class is renamed to @mc to
->>> avoid multiple line spanning of code. The comments are tweaked a bit
->>> either.
->>>
->>> No functional change intended.
->>>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>> v8: Move the precise message hint to PATCH[v8 3/9]        (Gavin)
->>> ---
->>>   hw/core/machine.c | 83 +++++++++++++++++++++++++----------------------
->>>   1 file changed, 45 insertions(+), 38 deletions(-)
->>>
->>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>> index bde7f4af6d..1797e002f9 100644
->>> --- a/hw/core/machine.c
->>> +++ b/hw/core/machine.c
->>> @@ -1387,13 +1387,53 @@ out:
->>>       return r;
->>>   }
->>> +static bool is_cpu_type_supported(const MachineState *machine, Error 
->>> **errp)
->>> +{
->>> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
->>> +    ObjectClass *oc = object_class_by_name(machine->cpu_type);
->>> +    CPUClass *cc;
->>> +    int i;
->>> +
->>> +    /*
->>> +     * Check if the user specified CPU type is supported when the valid
->>> +     * CPU types have been determined. Note that the user specified CPU
->>> +     * type is provided through '-cpu' option.
->>> +     */
->>> +    if (mc->valid_cpu_types && machine->cpu_type) {
->>> +        for (i = 0; mc->valid_cpu_types[i]; i++) {
->>> +            if (object_class_dynamic_cast(oc, 
->>> mc->valid_cpu_types[i])) {
->>> +                break;
->>> +            }
->>> +        }
->>> +
->>> +        /* The user specified CPU type isn't valid */
->>> +        if (!mc->valid_cpu_types[i]) {
->>> +            error_setg(errp, "Invalid CPU type: %s", 
->>> machine->cpu_type);
->>> +            error_append_hint(errp, "The valid types are: %s",
->>> +                              mc->valid_cpu_types[0]);
->>> +            for (i = 1; mc->valid_cpu_types[i]; i++) {
->>> +                error_append_hint(errp, ", %s", 
->>> mc->valid_cpu_types[i]);
->>> +            }
->>> +
->>> +            error_append_hint(errp, "\n");
->>> +            return false;
->>> +        }
->>> +    }
->>> +
->>> +    /* Check if CPU type is deprecated and warn if so */
->>> +    cc = CPU_CLASS(oc);
->>> +    if (cc && cc->deprecation_note) {
->>
->> cc can't be NULL, right? Otherwise,
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>
-> 
-> machine->cpu_type is either mc->default_cpu_type or returned from 
-> parse_cpu_option().
-> It can be NULL if mc->default_cpu_type is invalid, which is a program 
-> error. So
-> assert(cc != NULL) should be used instead. I will fold the change to 
-> PATCH[v9 3/9]
 
-cpu_type and cc an be NULL with the 'none' machine.
 
+On 1/5/24 06:06, Sia Jee Heng wrote:
+> Generate Serial Port Console Redirection Table (SPCR) for RISC-V
+> virtual machine.
 > 
->>> +        warn_report("CPU model %s is deprecated -- %s",
->>> +                    machine->cpu_type, cc->deprecation_note);
->>> +    }
->>> +
->>> +    return true;
->>> +}
->>
+> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> ---
+>   hw/riscv/virt-acpi-build.c | 39 ++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 39 insertions(+)
 > 
-> Thanks,
-> Gavin
-> 
+> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+> index d4a02579d6..388b3d1a84 100644
+> --- a/hw/riscv/virt-acpi-build.c
+> +++ b/hw/riscv/virt-acpi-build.c
+> @@ -174,6 +174,42 @@ acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+>       aml_append(scope, dev);
+>   }
+>   
+> +/*
+> + * Serial Port Console Redirection Table (SPCR)
+> + * Rev: 1.07
 
+Shouldn't it be "Rev: 2.0"? The function is calling the common build_spcr() that
+specifies
+
++    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = oem_id,
++                        .oem_table_id = oem_table_id };
+
+
+
+Code LGTM regardless of the "Rev: " comment value.
+
+
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+
+
+
+
+> + */
+> +
+> +static void
+> +build_spcr_rev2(GArray *table_data, BIOSLinker *linker, RISCVVirtState *s)
+> +{
+> +    AcpiSpcrData serial = {
+> +        .interface_type = 0,       /* 16550 compatible */
+> +        .base_addr.id = AML_AS_SYSTEM_MEMORY,
+> +        .base_addr.width = 32,
+> +        .base_addr.offset = 0,
+> +        .base_addr.size = 1,
+> +        .base_addr.addr = s->memmap[VIRT_UART0].base,
+> +        .interrupt_type = (1 << 4),/* Bit[4] RISC-V PLIC/APLIC */
+> +        .pc_interrupt = 0,
+> +        .interrupt = UART0_IRQ,
+> +        .baud_rate = 7,            /* 15200 */
+> +        .parity = 0,
+> +        .stop_bits = 1,
+> +        .flow_control = 0,
+> +        .terminal_type = 3,        /* ANSI */
+> +        .language = 0,             /* Language */
+> +        .pci_device_id = 0xffff,   /* not a PCI device*/
+> +        .pci_vendor_id = 0xffff,   /* not a PCI device*/
+> +        .pci_bus = 0,
+> +        .pci_device = 0,
+> +        .pci_function = 0,
+> +        .pci_flags = 0,
+> +        .pci_segment = 0,
+> +    };
+> +
+> +    build_spcr(table_data, linker, &serial, s->oem_id, s->oem_table_id);
+> +}
+> +
+>   /* RHCT Node[N] starts at offset 56 */
+>   #define RHCT_NODE_ARRAY_OFFSET 56
+>   
+> @@ -555,6 +591,9 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+>       acpi_add_table(table_offsets, tables_blob);
+>       build_rhct(tables_blob, tables->linker, s);
+>   
+> +    acpi_add_table(table_offsets, tables_blob);
+> +    build_spcr_rev2(tables_blob, tables->linker, s);
+> +
+>       acpi_add_table(table_offsets, tables_blob);
+>       {
+>           AcpiMcfgInfo mcfg = {

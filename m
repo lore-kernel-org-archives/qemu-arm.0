@@ -1,213 +1,269 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp797217ejo;
-        Fri, 5 Jan 2024 07:54:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEIP4QZzG9jEOU6UhUv0jmu3liKeptX4sNBThHTrERQUjx93ONcksXrT+z07IbW6WZLbtIn
-X-Received: by 2002:a05:6214:da1:b0:67f:89c6:27bb with SMTP id h1-20020a0562140da100b0067f89c627bbmr2560703qvh.79.1704470048621;
-        Fri, 05 Jan 2024 07:54:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704470048; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp797357ejo;
+        Fri, 5 Jan 2024 07:54:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE91KRoV6ZrEs00RsW/BSd4euMjOsQXCn7DPfGktpdWQU1ej/O76HSlhYYW0nOEv+kmGzeA
+X-Received: by 2002:a25:df41:0:b0:dbe:a092:7887 with SMTP id w62-20020a25df41000000b00dbea0927887mr2037290ybg.41.1704470062707;
+        Fri, 05 Jan 2024 07:54:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704470062; cv=none;
         d=google.com; s=arc-20160816;
-        b=oNrRu+T8Le+JxBl2MHRpts+ONA7tavLB/+h5+xdYwSjQ62X4IC8aXacwBfG9ZdTYsg
-         mOKcQdDxqgdQ5Z2jUQ5G3Rl8vnlWFLgeE4lD4RBIQ5RV6W375Md7WoQTcdnSEkYJ4JOX
-         Uj7R+/a470xQnh13bKuo7wcaUzn48A5DSgU9a0ECCiz/pzXt6ksaz6CJZTHEGg2nOKMb
-         JXSH1g80YMoPSBCf5+b7IM+4ngeiPJHhmqW81mDuzpc0svvVDr8kM0rr0YbO9SJ6xXbm
-         H7vAn1Uj3M75CcdCSOaCZi3j5Hg3sSWeG+5YWaYv5cLgarUdn1NUf4MmwSyG6p2m40qP
-         AYcQ==
+        b=FlXGHrAm0vMasAT1RD8x3vuu1ExKVCP1mxHh5F4RWBDSbXlnTJKQh0lssfrZBL9MGT
+         j2pVyNPXfFGXEARPYFXdUu0Yga1BtIforYCAhuFc93iObtulJLfqVjA+1ZNcvMSwcxvu
+         E9s1hQwVwl8CqWHQ3vW/hdDJRoraTFw1ZhYZGUWcBXUHPovL2GpywTGjd6BDysoJTIyh
+         sXu7WG6Oraid4sm7A4J1YqIWvMw9VpAL//yFhXtzB6D1IGlN8gzlcSsmNgRW0I9qCMuT
+         c4u7Q+ltlSGaKoTM7JIQDtQFkX7ezaBlXnUl4VGAE45TscOF/fBJ1GHPgLcy7yX6PS+E
+         OvFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Nno3VTCeo04e35HOY3p6uYOV1tAtecR5ZW2yhenY0Bs=;
-        fh=Wm46THIaMx/Gr7DBK5P4sUJlZBqXtbhLLlo6thGXO6E=;
-        b=ja4qzPVIL+7bBjeXE/k8XPxV98m0Y7wGFFQf69LRbIMlGp4zYMxfGuwU9vvlXmEODk
-         heJ5ra7nBU8I9qG5BFDIb5ZUZQ1PIOIY4I5A7HFLBBP2vMYhrS7Y2ai8d+H7B1P3pQaW
-         4BR9vbT1Z8Dis0BqeoB9V8ak32Yt6Cs2gVNE52Kt4RzinCiw78Sqkw/NyPJ7CkIU3qDG
-         2EunV+jUam6z6fNZ/zMy5jrbnowxQ791cny3k4ZGr0XI7tfMUzhRQEA93hJuASRyhp4a
-         4LLpxbFoNqpGfwC2va5vmyLeOLBFzmxwxbdjokaYthjfE8HHPU24vZMsPuaPY6Lx6KHe
-         3fjw==
+        bh=WY1HVSmMqBvEYUJRh+Ffc8mXYkbCc4MclKwdMWfHMLU=;
+        fh=ohy7VCZIgAkuFgQBo2ie5XMmNCqja1QqYZPjawlAGKM=;
+        b=WjNmSCongzvn9uUjWL11L6rkGK21FdKAwTcYUUaIneQOj8LcOFAPH6oyhNGmG+5FHu
+         wXx+7qHJSDX5QUKRN96T/PZ2n+vrvg0xmQyrnCwKm1aHEDaMQRPqzO8ia4qH8nja8k+1
+         kCv8gjyMBNkGmQvFrxfQ7YdBB5pDuKtPVz/13olz7vafIjeH8Z+jPG2U9L7BL5IhwM7c
+         pLNBXy11E2N/+XhkkyhlNadCcjJvaC55WcMrlZqiGMv5s7CcAMG1SE2LNYWDWlmYuflf
+         0WYZBWy8NBH33SXUSVkzeig6o41ml40107opRzW3FMo+nG3c4UAGMPLy3Sv0d5OcnVyT
+         Es6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WincsaJJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mXagiHF5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16-20020a0ce310000000b0067aa7e04719si2043334qvl.367.2024.01.05.07.54.08
+        by mx.google.com with ESMTPS id z15-20020ac87f8f000000b004297543e51bsi2042606qtj.679.2024.01.05.07.54.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:54:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Jan 2024 07:54:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WincsaJJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mXagiHF5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmTU-0003Wy-R1; Fri, 05 Jan 2024 10:51:08 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rLmTT-0003LH-Gg; Fri, 05 Jan 2024 10:51:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmSZ-0000ov-Gl
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:50:13 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmS9-0007vo-L1
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:49:46 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmSW-0001EK-81
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:50:10 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-33674f60184so1530282f8f.1
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:50:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmS7-0000pY-9I
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:49:45 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3373a30af67so1326527f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:49:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469806; x=1705074606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469780; x=1705074580; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Nno3VTCeo04e35HOY3p6uYOV1tAtecR5ZW2yhenY0Bs=;
- b=WincsaJJFH6/ydoWKzmDqEwadD24rT25SUPVLUTA2MOp2iyLtBxtrbgYvSnA+4cWEf
- C0LfAd4J2UhnX2wfrrTp3z7weXamxReN5VujcADpZJ5LYhwVJV1LPWRH77nwU1WtMOkf
- 7FtdzEcLWsNhbkBG6FNJ0ogpHrSl7LxL8mLhbqy29U0UZDgjvsqAqQ4N35PoqlODXJ1d
- CIbgnFXKKvnAA4FgZNwrJkd2ahJPqsZVWt8VCSUXS0ryZ6KnXhz8/4yANRdiw7SiUTNZ
- N2sZQni3D46JyI4hDbjUMpBpR4YoqyN34KLbp3D3kTbw5gc8Dd3xaygryrcbPS1ZNMQv
- 0mlA==
+ bh=WY1HVSmMqBvEYUJRh+Ffc8mXYkbCc4MclKwdMWfHMLU=;
+ b=mXagiHF54kfdUzGSesLI76REo2QBZplxlc1aW1qLhPd8wePZSbyZ39zD7DLoFUtIYt
+ jVuOToy6dQy681AXlDMqJDrRBXTrczgiy6uxzZL6IylVyQyYBUuLn8ZJVNy0riAkrN3M
+ BeJNEIj2SA94/Nqsct2y3fcoOVwznwK9JVOUHMooqNLgNRHgtjWERpZLrq+qXgL+q8Sz
+ Rv3ORrBQjlLZKmLYwZcvHN8tf6YvXJpB2xBAJH0qC9i9wOnmn7mPgB08i48O7KfoL3dr
+ kZSYZBzFoc84yiGT36iUbs/I57/IcUqwe4W0YbLDzGg6oauLsmVUgxKwAYY/TVGuUbXx
+ W1LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469806; x=1705074606;
+ d=1e100.net; s=20230601; t=1704469780; x=1705074580;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Nno3VTCeo04e35HOY3p6uYOV1tAtecR5ZW2yhenY0Bs=;
- b=Hv48RDlpvsB1HfG29FhsZvlLKDRXoy66anVJ2Sk/xN67XlLq4ZC5Tfv7kP67IuHK3M
- 0M8yP/ohr58+Hlx44+zbhPzDAYvfVsPlazbNt2q5NWn5MDEANdCaO9CiJEdftz2Am4f5
- 7YwjiuVl4pJkZwyYmzKZ/JF3mUtG09n8X5cIz3+vpeC+26/2EDa5VGrT/X7dgrPrE5oe
- Ho6QGhghCXcTAs31X60oxStpRfaiAngmAroJmN0ovo1AocPghJE5A/zpyOg0hHd0Iou9
- 2cpf9zN7b1I3E0Tk5NxoLvo6S6cV/ACsUdqqYEH3+zZMf8+fNPnHlzfEC6sB1Az8S0Ol
- FOzg==
-X-Gm-Message-State: AOJu0YzmgqewaLmNsudsGzTeZ7ptyzfP/3zzSdRzHX4o3olmDH59FH63
- g2awvG1JkAiTRwH0TQQxYZPGm+Ps0fxRA0VroeqqvUmQ5kU=
-X-Received: by 2002:a5d:62d0:0:b0:337:5cf8:b12a with SMTP id
- o16-20020a5d62d0000000b003375cf8b12amr235231wrv.135.1704469806693; 
- Fri, 05 Jan 2024 07:50:06 -0800 (PST)
+ bh=WY1HVSmMqBvEYUJRh+Ffc8mXYkbCc4MclKwdMWfHMLU=;
+ b=DNPbRqoyo9d7M7pPn/ReTZBXBa3O+ZAB3/dyLCR67xRzMnUvCyCLXsdt0zw5v3ve1W
+ dIvSQ0rycX6ySADNTGvUXcCDUn2TymLuaPN3PxLMD5p/ASC+7L0rJieHoK0KDqWPDDkH
+ HS1ED/LXJO+XvoCHSAi1xFqHMwwZCDQcUuIjpHniapyFTyK+HbHd/FEiU+GDls2ggFwE
+ rMfr5qrV9HLrsX60jl9iAYl48uE0fFLgWNL2jpGqNl0LQApugfX/3ajHufbq/RRb6tWq
+ 6RpJ+MFW19JSjJ085AVc+6iNnFCp/Z7NXvmj0rYZGZqYDe76q9pDlUVQ71Y0rMg6eFHP
+ 6YkA==
+X-Gm-Message-State: AOJu0YyEJv+wHl+RU9JjXBBjAWR6pM8XYedcokcUN7KDX/4bt9B7g2wc
+ p8FKxpAsTMPOX2j+8LpQG7Frv2LArjvTXskQhxfpp6ZJctg=
+X-Received: by 2002:a05:6000:1286:b0:337:39d7:3e16 with SMTP id
+ f6-20020a056000128600b0033739d73e16mr810103wrx.76.1704469780660; 
+ Fri, 05 Jan 2024 07:49:40 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- q9-20020a05600000c900b003367eae8e18sm1623623wrx.57.2024.01.05.07.50.05
+ q16-20020adfea10000000b003365fcc1846sm1607957wrm.52.2024.01.05.07.49.39
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:50:06 -0800 (PST)
+ Fri, 05 Jan 2024 07:49:40 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Thomas Huth <huth@tuxfamily.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 69/71] hw/m68k/mcf5206: Embed m5206_timer_state in
- m5206_mbar_state
-Date: Fri,  5 Jan 2024 16:43:02 +0100
-Message-ID: <20240105154307.21385-70-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Gavin Shan <gshan@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+Subject: [PULL 64/71] hw/arm: Simplify memory_region_init_rom() calls
+Date: Fri,  5 Jan 2024 16:42:57 +0100
+Message-ID: <20240105154307.21385-65-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ai3nH05h4kDn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2iCL1u3pnqZc
 
-From: Thomas Huth <huth@tuxfamily.org>
+Mechanical change using the following coccinelle script:
 
-There's no need to explicitely allocate the memory here, we can
-simply embed it into the m5206_mbar_state instead.
+@@
+expression mr, owner, arg3, arg4, errp;
+@@
+-   memory_region_init_rom(mr, owner, arg3, arg4, &errp);
+    if (
+-       errp
++       !memory_region_init_rom(mr, owner, arg3, arg4, &errp)
+    ) {
+        ...
+        return;
+    }
 
-Signed-off-by: Thomas Huth <huth@tuxfamily.org>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20231221122939.11001-1-huth@tuxfamily.org>
+and removing the local Error variable.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Message-Id: <20231120213301.24349-22-philmd@linaro.org>
 ---
- hw/m68k/mcf5206.c | 20 ++++++++------------
- 1 file changed, 8 insertions(+), 12 deletions(-)
+ hw/arm/fsl-imx25.c | 13 ++++---------
+ hw/arm/fsl-imx31.c | 13 ++++---------
+ hw/arm/fsl-imx6.c  | 13 ++++---------
+ 3 files changed, 12 insertions(+), 27 deletions(-)
 
-diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-index a46a23538d..183fd3cc08 100644
---- a/hw/m68k/mcf5206.c
-+++ b/hw/m68k/mcf5206.c
-@@ -148,15 +148,11 @@ static void m5206_timer_write(m5206_timer_state *s, uint32_t addr, uint32_t val)
-     m5206_timer_update(s);
- }
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index b15435ccaf..9d2fb75a68 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -81,7 +81,6 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+ {
+     FslIMX25State *s = FSL_IMX25(dev);
+     uint8_t i;
+-    Error *err = NULL;
  
--static m5206_timer_state *m5206_timer_init(qemu_irq irq)
-+static void m5206_timer_init(m5206_timer_state *s, qemu_irq irq)
- {
--    m5206_timer_state *s;
--
--    s = g_new0(m5206_timer_state, 1);
-     s->timer = ptimer_init(m5206_timer_trigger, s, PTIMER_POLICY_LEGACY);
-     s->irq = irq;
-     m5206_timer_reset(s);
--    return s;
- }
- 
- /* System Integration Module.  */
-@@ -167,7 +163,7 @@ typedef struct {
-     M68kCPU *cpu;
-     MemoryRegion iomem;
-     qemu_irq *pic;
--    m5206_timer_state *timer[2];
-+    m5206_timer_state timer[2];
-     DeviceState *uart[2];
-     uint8_t scr;
-     uint8_t icr[14];
-@@ -293,9 +289,9 @@ static uint64_t m5206_mbar_read(m5206_mbar_state *s,
-                                 uint16_t offset, unsigned size)
- {
-     if (offset >= 0x100 && offset < 0x120) {
--        return m5206_timer_read(s->timer[0], offset - 0x100);
-+        return m5206_timer_read(&s->timer[0], offset - 0x100);
-     } else if (offset >= 0x120 && offset < 0x140) {
--        return m5206_timer_read(s->timer[1], offset - 0x120);
-+        return m5206_timer_read(&s->timer[1], offset - 0x120);
-     } else if (offset >= 0x140 && offset < 0x160) {
-         return mcf_uart_read(s->uart[0], offset - 0x140, size);
-     } else if (offset >= 0x180 && offset < 0x1a0) {
-@@ -333,10 +329,10 @@ static void m5206_mbar_write(m5206_mbar_state *s, uint16_t offset,
-                              uint64_t value, unsigned size)
- {
-     if (offset >= 0x100 && offset < 0x120) {
--        m5206_timer_write(s->timer[0], offset - 0x100, value);
-+        m5206_timer_write(&s->timer[0], offset - 0x100, value);
+     if (!qdev_realize(DEVICE(&s->cpu), NULL, errp)) {
          return;
-     } else if (offset >= 0x120 && offset < 0x140) {
--        m5206_timer_write(s->timer[1], offset - 0x120, value);
-+        m5206_timer_write(&s->timer[1], offset - 0x120, value);
-         return;
-     } else if (offset >= 0x140 && offset < 0x160) {
-         mcf_uart_write(s->uart[0], offset - 0x140, value, size);
-@@ -598,8 +594,8 @@ static void mcf5206_mbar_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+@@ -281,18 +280,14 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                                        FSL_IMX25_WDT_IRQ));
  
-     s->pic = qemu_allocate_irqs(m5206_mbar_set_irq, s, 14);
--    s->timer[0] = m5206_timer_init(s->pic[9]);
--    s->timer[1] = m5206_timer_init(s->pic[10]);
-+    m5206_timer_init(&s->timer[0], s->pic[9]);
-+    m5206_timer_init(&s->timer[1], s->pic[10]);
-     s->uart[0] = mcf_uart_create(s->pic[12], serial_hd(0));
-     s->uart[1] = mcf_uart_create(s->pic[13], serial_hd(1));
- }
+     /* initialize 2 x 16 KB ROM */
+-    memory_region_init_rom(&s->rom[0], OBJECT(dev), "imx25.rom0",
+-                           FSL_IMX25_ROM0_SIZE, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_rom(&s->rom[0], OBJECT(dev), "imx25.rom0",
++                                FSL_IMX25_ROM0_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX25_ROM0_ADDR,
+                                 &s->rom[0]);
+-    memory_region_init_rom(&s->rom[1], OBJECT(dev), "imx25.rom1",
+-                           FSL_IMX25_ROM1_SIZE, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_rom(&s->rom[1], OBJECT(dev), "imx25.rom1",
++                                FSL_IMX25_ROM1_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX25_ROM1_ADDR,
+diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
+index 1d5dcd51e8..c0584e4dfc 100644
+--- a/hw/arm/fsl-imx31.c
++++ b/hw/arm/fsl-imx31.c
+@@ -63,7 +63,6 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
+ {
+     FslIMX31State *s = FSL_IMX31(dev);
+     uint16_t i;
+-    Error *err = NULL;
+ 
+     if (!qdev_realize(DEVICE(&s->cpu), NULL, errp)) {
+         return;
+@@ -188,20 +187,16 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0, FSL_IMX31_WDT_ADDR);
+ 
+     /* On a real system, the first 16k is a `secure boot rom' */
+-    memory_region_init_rom(&s->secure_rom, OBJECT(dev), "imx31.secure_rom",
+-                           FSL_IMX31_SECURE_ROM_SIZE, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_rom(&s->secure_rom, OBJECT(dev), "imx31.secure_rom",
++                                FSL_IMX31_SECURE_ROM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX31_SECURE_ROM_ADDR,
+                                 &s->secure_rom);
+ 
+     /* There is also a 16k ROM */
+-    memory_region_init_rom(&s->rom, OBJECT(dev), "imx31.rom",
+-                           FSL_IMX31_ROM_SIZE, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_rom(&s->rom, OBJECT(dev), "imx31.rom",
++                                FSL_IMX31_ROM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX31_ROM_ADDR,
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 58f37e7c11..b2153022c0 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -109,7 +109,6 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     MachineState *ms = MACHINE(qdev_get_machine());
+     FslIMX6State *s = FSL_IMX6(dev);
+     uint16_t i;
+-    Error *err = NULL;
+     unsigned int smp_cpus = ms->smp.cpus;
+ 
+     if (smp_cpus > FSL_IMX6_NUM_CPUS) {
+@@ -423,20 +422,16 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* ROM memory */
+-    memory_region_init_rom(&s->rom, OBJECT(dev), "imx6.rom",
+-                           FSL_IMX6_ROM_SIZE, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_rom(&s->rom, OBJECT(dev), "imx6.rom",
++                                FSL_IMX6_ROM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX6_ROM_ADDR,
+                                 &s->rom);
+ 
+     /* CAAM memory */
+-    memory_region_init_rom(&s->caam, OBJECT(dev), "imx6.caam",
+-                           FSL_IMX6_CAAM_MEM_SIZE, &err);
+-    if (err) {
+-        error_propagate(errp, err);
++    if (!memory_region_init_rom(&s->caam, OBJECT(dev), "imx6.caam",
++                                FSL_IMX6_CAAM_MEM_SIZE, errp)) {
+         return;
+     }
+     memory_region_add_subregion(get_system_memory(), FSL_IMX6_CAAM_MEM_ADDR,
 -- 
 2.41.0
 

@@ -1,97 +1,123 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp874692ejo;
-        Fri, 5 Jan 2024 10:03:59 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFT88aryKRWyJDWPwno+agyIVqNZLZm4FiPhS0Ubkm6a72ilIQJbidPSuFl/Jve5KE2Mhe8
-X-Received: by 2002:a05:6870:9f01:b0:203:7035:8a83 with SMTP id xl1-20020a0568709f0100b0020370358a83mr2676340oab.85.1704477838727;
-        Fri, 05 Jan 2024 10:03:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704477838; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp985112ejo;
+        Fri, 5 Jan 2024 14:09:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHTFBkF+5PVAfdZNAl1V8vGpYWQSqKRg/tSkV94U5XOScF6vh5oyYqzxeSCTWAgacScverg
+X-Received: by 2002:a05:620a:4628:b0:783:f6c:d1c0 with SMTP id br40-20020a05620a462800b007830f6cd1c0mr743551qkb.79.1704492573787;
+        Fri, 05 Jan 2024 14:09:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704492573; cv=none;
         d=google.com; s=arc-20160816;
-        b=gdsnzyPgR9XlOtcBJsXS4HvWGodgkO+3bF51hPV91yR8eakrcj6jLQ4g1lNmNDPxw2
-         Rn12VmAxyG5YXVV45c7f+pGl1yTNw3J1GuDu9m526q/i//ADuL1n19g5wj5R1Dc573+9
-         4qYjd/WPZ2hSuT96oeGz+A1oOCo81fNcEFKPmLhNxtU/GpGTkTuAacwT+jNFBjgkHdSW
-         CEAlFHekaKZDps3jE9SWkHYRL+2sq1WQOF9EKBjJdQY5MiH9WJXHs205WGWzRWLwCjDr
-         c3ikwKGnkvx00VDnnlRm2YwbUnPsDtJwZUFLs4CHmbUOFnGU4HgoZnn7n4vmppnPaTHg
-         VeHg==
+        b=HR50HJm1e/Iohh7sRmCPOmQp8/aN4TerWVG0A5q4BT4Omhv0pa8qd0dtYzgQGSp2ht
+         /XAhpaChu5TXmOV5tIKibriyMSry9zsQ8lKU76kOJd5QiI/UWqwnYU3lv6SM1kaurt95
+         0PcAWCJY1eXJl1saKkv05dC3RADN4B8Ff6aVsdlojZRkZMnh8FlRktI78WDgp2ULBK69
+         M94++Aslw600X+QiMM+maqUDDjGyovB/CRzWO58T2EZFhjXbyY9hR1D5A5cAYM0RnGGW
+         cPCbDHrLaC15SVO5kifvWhot5tkcHRT+br6Iq0xaoEbJHyaZq/RQl4eokbFtvmsZdjIe
+         jDOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:dkim-signature;
-        bh=JGF9G/ZjrtNOuannSGU1iqIsClShUQwFThX15Bq6IIk=;
-        fh=8ncLOMyy6Qpwc3mY9j53Q5Sj+2Omm1YoLu7+uDqwcsM=;
-        b=i2dJGCIUIM5BggwXPHY/yxzXiJWEkgJb26aLLupOQFzB++yTDY3UoSBUlCtR5ZS0nJ
-         BWvkKV5wLhNV35NZKBCAT4vTOcjJ7n1zYTcX5cXcfg6zln6xecP8XbYWOjVYUXUqVrO5
-         GOZZSODfcG5UzvDWz20NCVcwPLbPFZdn5Fdu5yuSRqdt37+992oh3LbtQEBnDck+8N+8
-         9hnZTi8Dy5Y0CUoju/E1hDAuBjG+GHoVBZme3Y8Z4QhDozChHPWB3vmdroKmck7gqp/F
-         /UE/1wEg0QpNfdW4wWAXqX0553XOAcRKTTiYHi4c9RkCgI9YDG0x1Bk7+g6gv4PJTcgW
-         PoBA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=0gROPC5fs6NdeS9QyqedB7eGwku9xj7SxpScPW1yzcI=;
+        fh=1Wre7Y5BWcly3RKZZf0DWR77AeLUi0gssqHNLPYoAqs=;
+        b=sqRuDtoVrHFTFbmAwtc3vfelANu+zz952RHPqQUe6t4T/pnMGz8Mdjv8e9nOg7xuCE
+         ag7zJ4qDPj4UPdgGIc0WbYxL8/IsBx3ahs/3rTtLxOrY5KHpBBErGaqdhixZTFFrai1p
+         sArgdELq0gNZgfjIr+fbKy9m198v1esT/bbr1pynxwdQgQVVwg31OL1951B2BlL+mIjh
+         9FCOC/fRV7PQlvQBA4w9FkpACWtoQBNgUo5C2XUTk3Ft8yFKoS5em05KL0L96TFbQI59
+         cfizn9mdZ5ywKzMrILP2jYzTf2KS0AayylzD44tcopl2pCyQmxdMlE0mLPp573pnWKFV
+         He+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=BGCDTHKP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tcK6KC1d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s125-20020a1fdb83000000b004b71dacba04si346110vkg.104.2024.01.05.10.03.58
+        by mx.google.com with ESMTPS id q17-20020a05620a0c9100b007815999244bsi2572042qki.22.2024.01.05.14.09.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 10:03:58 -0800 (PST)
+        Fri, 05 Jan 2024 14:09:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=BGCDTHKP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tcK6KC1d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLoXt-0004bc-JA; Fri, 05 Jan 2024 13:03:49 -0500
+	id 1rLsNU-0005Z2-Mu; Fri, 05 Jan 2024 17:09:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rLoXr-0004ae-PX; Fri, 05 Jan 2024 13:03:47 -0500
-Received: from zoidberg.rfc1149.net ([195.154.227.159])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1rLoXp-0000HO-Q1; Fri, 05 Jan 2024 13:03:47 -0500
-Received: from 127.0.0.1 (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits)
- server-digest SHA256) (Client did not present a certificate)
- by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 9DB0F80024;
- Fri,  5 Jan 2024 19:03:42 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
- t=1704477822; bh=iLoRepbx4vfuo3JSlCYs0nvNO2gl1nCFC2LADd1/OyM=;
- h=References:From:To:Cc:Subject:Date:In-reply-to;
- b=BGCDTHKPXAkFTJidrWh9BPj5g/5C/2AazBmCp6rDK7lZ0gtvyI3liT+tX4JGKD/WB
- g4ytX2Kdxaiwo+LpqI+pZfxZriFTNdJrIY10Itt8xQelzEgVRiob3mFOebgUwqFNbS
- EnxiqcRKSsttxucKuyAB6f4Tp85cysU/hDLrEafbMEd2Gi0BM0oymwVvmGTe+9EV9Q
- bGmIj4jK/VCaMmiv+wp9XVoS9GtE0zQgKKgiuRe/sVZBilplfYmijGsWfSsfvRWWqA
- 6EJRc0hPyOUslnpIEwQu5rwIJ+Vftou7VUruR3AwcuF2z4Wkqzc2fjQq0vOXYNNA3k
- ukN+AjBrbjOmQ==
-References: <20240103155337.2026946-1-sam@rfc1149.net>
- <20240103155337.2026946-3-sam@rfc1149.net>
- <CAFEAcA8k22X+8Ypw_gvpsFHVAm=pHnB2-_iVNwyMrHhhyP=JRA@mail.gmail.com>
-User-agent: mu4e 1.10.8; emacs 29.1
-From: Samuel Tardieu <sam@rfc1149.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- qemu-arm@nongnu.org, Anton Kochkov <anton.kochkov@proton.me>, Alistair
- Francis <alistair@alistair23.me>, =?utf-8?Q?In=C3=A8s?= Varhol
- <ines.varhol@telecom-paris.fr>, Alexandre Iooss <erdnaxe@crans.org>
-Subject: Re: [PATCH v2 2/3] hw/arm/armv7m: alias the NVIC "num-prio-bits"
- property
-Date: Fri, 05 Jan 2024 19:01:21 +0100
-In-reply-to: <CAFEAcA8k22X+8Ypw_gvpsFHVAm=pHnB2-_iVNwyMrHhhyP=JRA@mail.gmail.com>
-Message-ID: <87ttnrbqtd.fsf@rfc1149.net>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLsNQ-0005YB-Il
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 17:09:17 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLsNM-00061c-MZ
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 17:09:16 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-40d5d898162so259805e9.3
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 14:09:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704492550; x=1705097350; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=0gROPC5fs6NdeS9QyqedB7eGwku9xj7SxpScPW1yzcI=;
+ b=tcK6KC1d1RB/QrbCJ7csUU/0mRrp9+w1o4hop4VfRmFlTobdFysxdGkLPglQEvq2wZ
+ SMzWp7ZN61WEB1aDAxl/XjcKuCL6hL/MbXITjkCXcnvjpsOFAhMAHOHnhO+BXyXczn4E
+ /MKU+d6lU/DhbYc0c7mdkvJbHkYr/JM5CdARU7Gx69/9Z/haPTF93qXk8JJlQ73+Ojm+
+ 0J8SdqY+wp2t+UDdSDzjRpA8nkWPCBabhZMKksiaLMsQBvvv9U5nYMIae4DX81jZ1l9i
+ VZ5CthR68Oy1jvz2n4W1zo42QMwElH00i0t8BWHhucrfOaCOSP1FgZ26h36qZGOnkaJb
+ JwFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704492550; x=1705097350;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0gROPC5fs6NdeS9QyqedB7eGwku9xj7SxpScPW1yzcI=;
+ b=pEsFJlBMLgsBJ7M6Q2xgHMgl1xC5X6R6LNFcLEl4ZNdcd+eDPKXBNDbNPy41/5YE4z
+ gBxLbvT5uREwCdXQ0d5UqQt4uiq7OsUNilMR6rJ3QWkNtDklaFbjeFsUF+2F8070P5kz
+ ywsUcKGnxkhsEiweoRGkuNEGhOHtcsndtM5+ExsjqwLubnUvWk3UUDqRIZeyXyhLgjWx
+ yWIADUReQUJWZCMTOdb6/IFS+3cJiKcSTFLmSByJ6QSuiF91mOlj7fD0r4qO1nCVuzEz
+ kCnVGWcXxtIWWW1xM/DXeZDo9lIv6Tv0jtQxz3HwEX/9xowDfI3/I5hzENcArpanC3wW
+ qedA==
+X-Gm-Message-State: AOJu0Yzy31QHZZ7gK+S+vT4OAedmxyVvbAg4PciLlxZgVnZ7r0R2lWkx
+ KCjQsAioVrx5Al285scOunldgitntWOiVA==
+X-Received: by 2002:a05:600c:4f46:b0:40c:692e:257c with SMTP id
+ m6-20020a05600c4f4600b0040c692e257cmr76464wmq.125.1704492549911; 
+ Fri, 05 Jan 2024 14:09:09 -0800 (PST)
+Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
+ [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
+ p7-20020a05600c468700b0040d30af488asm2768347wmo.40.2024.01.05.14.09.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Jan 2024 14:09:09 -0800 (PST)
+Message-ID: <3ef0442a-800c-47ac-a685-2f31b0cb136c@linaro.org>
+Date: Fri, 5 Jan 2024 23:09:06 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
- helo=zoidberg.rfc1149.net
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 3/9] machine: Improve is_cpu_type_supported()
+Content-Language: en-US
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
+ b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, imammedo@redhat.com,
+ kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, armbru@redhat.com,
+ wangyanan55@huawei.com, vijai@behindbytes.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com
+References: <20231204004726.483558-1-gshan@redhat.com>
+ <20231204004726.483558-4-gshan@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231204004726.483558-4-gshan@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,22 +132,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8bNlQIIyr4MD
+X-TUID: txV2ck7ZMLos
 
+On 4/12/23 01:47, Gavin Shan wrote:
+> It's no sense to check the CPU type when mc->valid_cpu_types[0] is
+> NULL, which is a program error. Raise an assert on this.
+> 
+> A precise hint for the error message is given when mc->valid_cpu_types[0]
+> is the only valid entry. Besides, enumeration on mc->valid_cpu_types[0]
+> when we have mutiple valid entries there is avoided to increase the code
+> readability, as suggested by Philippe Mathieu-Daudé.
+> 
+> Besides, @cc comes from machine->cpu_type or mc->default_cpu_type. For
+> the later case, it can be NULL and it's also a program error. We should
+> use assert() in this case.
+> 
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> v9: assert(mc->valid_cpu_types[0] != NULL)                   (Phil)
+>      assert(cc != NULL);                                      (Phil)
+> ---
+>   hw/core/machine.c | 20 ++++++++++++++------
+>   1 file changed, 14 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 1797e002f9..4ae9aaee8e 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -1400,6 +1400,7 @@ static bool is_cpu_type_supported(const MachineState *machine, Error **errp)
+>        * type is provided through '-cpu' option.
+>        */
+>       if (mc->valid_cpu_types && machine->cpu_type) {
+> +        assert(mc->valid_cpu_types[0] != NULL);
+>           for (i = 0; mc->valid_cpu_types[i]; i++) {
+>               if (object_class_dynamic_cast(oc, mc->valid_cpu_types[i])) {
+>                   break;
+> @@ -1409,20 +1410,27 @@ static bool is_cpu_type_supported(const MachineState *machine, Error **errp)
+>           /* The user specified CPU type isn't valid */
+>           if (!mc->valid_cpu_types[i]) {
+>               error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
+> -            error_append_hint(errp, "The valid types are: %s",
+> -                              mc->valid_cpu_types[0]);
+> -            for (i = 1; mc->valid_cpu_types[i]; i++) {
+> -                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
+> +            if (!mc->valid_cpu_types[1]) {
+> +                error_append_hint(errp, "The only valid type is: %s\n",
+> +                                  mc->valid_cpu_types[0]);
+> +            } else {
+> +                error_append_hint(errp, "The valid types are: ");
+> +                for (i = 0; mc->valid_cpu_types[i]; i++) {
+> +                    error_append_hint(errp, "%s%s",
+> +                                      mc->valid_cpu_types[i],
+> +                                      mc->valid_cpu_types[i + 1] ? ", " : "");
+> +                }
+> +                error_append_hint(errp, "\n");
+>               }
+>   
+> -            error_append_hint(errp, "\n");
+>               return false;
+>           }
+>       }
+>   
+>       /* Check if CPU type is deprecated and warn if so */
+>       cc = CPU_CLASS(oc);
+> -    if (cc && cc->deprecation_note) {
+> +    assert(cc != NULL);
+> +    if (cc->deprecation_note) {
+>           warn_report("CPU model %s is deprecated -- %s",
+>                       machine->cpu_type, cc->deprecation_note);
+>       }
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Since we were getting:
 
-> There's a comment in include/hw/arm/armv7m.h which documents
-> all the GPIO inputs, QOM properties, etc, that this device
-> has -- that also needs a line adding to it for this property.
+$ qemu-system-s390x -M none
+QEMU 8.2.50 monitor - type 'help' for more information
+qemu-system-s390x: ../../hw/core/machine.c:1444: _Bool 
+is_cpu_type_supported(const MachineState *, Error **): Assertion `cc != 
+NULL' failed.
+Aborted (core dumped)
 
-Thanks Peter for your review. I'll send a v3 containing the=20
-requested change after In=C3=A8s has submitted an updated version of=20
-her "Add minimal support for the B-L475E-IOT01A board" serie on=20
-which this one is based.
-
-Best.
-
-  Sam
---=20
-Samuel Tardieu
+I added a check on mc->valid_cpu_types before calling
+is_cpu_type_supported() in the previous patch. See commit acbadc5a29.

@@ -1,168 +1,197 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp563356ejo;
-        Thu, 4 Jan 2024 23:50:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEH4WX0uRwFr1nDaaZb2pI9rmrr6/+//frxu4MBa3HPDbi03GZoeuWCqxJWrzT+HQJPDouj
-X-Received: by 2002:a05:600c:acd:b0:40d:592d:3a93 with SMTP id c13-20020a05600c0acd00b0040d592d3a93mr847201wmr.155.1704441012782;
-        Thu, 04 Jan 2024 23:50:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704441012; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp628163ejo;
+        Fri, 5 Jan 2024 02:40:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGUgmgiyfgJBiXbHcesVyCpTxjOcTrh0PIQxKKkrxwlOcW4HkhW4NMTDy7tFshVvAbk9BWn
+X-Received: by 2002:a05:600c:2251:b0:40d:8587:abad with SMTP id a17-20020a05600c225100b0040d8587abadmr1040454wmm.107.1704451215173;
+        Fri, 05 Jan 2024 02:40:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704451215; cv=none;
         d=google.com; s=arc-20160816;
-        b=UmSYuNNRuNgK0UUTfpZaRdOwKmE2oXWddStwWryoV9o5x71HPFf98oeJIo87EmUDlc
-         jYYcya1/0AadNmBSG9bvlR0Ly5YI4Q/XFAw/JaELmAlfDEeGAV/zxUV+lW5Oc9Mya15L
-         WM2xd3j4n+iDJoR/c6l4+VH52iAlQQG/qFovakWxVL0pIBhAQlZTectk+aM6TjDzeHhe
-         RMjEhw0dfB4HwpmGXwIGCkse/PkFVbvLx7YiA0RhWMsJ7SyInfHSMSXySBd8Y/1bzFG8
-         IYC06bBsJrawBxCJqgrgOdDKS7eVUEroHO9QEQxsQQmmWhcpNwFCaPlkK5JalVjDBOkp
-         tadA==
+        b=nY05kPmD4WLATzMNgsdpala1M0QddHk8eiuDLYqgAdGclWP143GW3EUwIPJZj33vmU
+         WXQ7xgcQ+KJJp7n961VUrZpNuIB9DCKnSZI6SRDjy574MS5xwilcLM6cJdpyrJvFpzAM
+         NXTxkuepvtq9OrmTHkDeosSgva7n+GqfBGnX+QDb7JpFyee0TS4X0BuPLPH8sKMMG3hL
+         p9NFR+ZeGyXw+kOb8MGGC0ugTffjLrA6WdPIts5aUDkUEWHgPM2nmH6PFY/y/350YfdP
+         gd0n+Hj3K3T0mrnRu5AagCqTmyemUTlSXxnnTZrzDMgEwyiwkKf0cqlsFbyBpHD3DO7D
+         Inyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=ItHxcJHt/ybbZgZG9SSUK6DBvg6n/Sd5s8ugtIjRNIU=;
-        fh=iAm5A4zWGUYFq3Jtozfiktm/oazx9RljWkTzR1zwPVI=;
-        b=CZMKkEd1RD+aja8dBw1U02+MQnWCWo1CAfOitoCPaugGfds6sC/mDoAEODGSe/tzte
-         Bt+6cKvnA2adlCoyUCSAY6QvhT2SmUY3RGrOjKgoiCyD5KbGcno8BRFnkp7ktDieYjDn
-         pw54VqpyNh7L5uWvTky6z3pM6kPYk3fUdiOXsjbeX9W8lmK2RJXo4Dn/8H8bnz1Y8BJQ
-         T7RMlLrDtjx1yZircqrXBtBN//mZ6xgrHZbgO1vLcXAyb3Ni6UqxBorqZs+b4x5tGkuA
-         MTLFK3NWEemhUKZZFCRFQXiIt6E/kolvVZ+3mWRAmNFkBpHuAn6qxb5dcRvD9k8HfJTT
-         guGQ==
+        h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=fK6Qv4D36LeydRO1dcCj6qSHiDdgvNKuiGOyewsyvx8=;
+        fh=F/na6vGTZYEeGpQgR6hBzP52vgkqyt84mleU9haMIJE=;
+        b=XzhXeLmiSRkOj4SLfGQ50W6nBT9LFeDZfp8Fl9yL4t/BnH5/omjK2e5JTTOnDzk0c5
+         Fj2YeStIQaZKbHC2lJ+JRTn344T6htttR/m8DAxtdHs4h+JmuPqRA79COIQdcKymRkbO
+         CS08Oy/spFbDJjSOh35o6jfyePFACXZzeq3REKedrbshla4LILoBAI6TmxrGNEGUUSuM
+         XmL8/HLgnLHBwXqEn6ncEOkAKzg68ak2Ld9kvuK1BkbGmulHIav0QzVRa0u09IvgvwUx
+         OamjjQwaAcrobUoCTfJRixQQzoEc/X/eDjm+epZzDVQ/f0Cs8S2RYe3Mcck9e4sts3+g
+         nhpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b="DRrc86/G";
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <mark.cave-ayland@ilande.co.uk>
-Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
-        by mx.google.com with ESMTPS id e7-20020a05600c438700b0040d8afebf54si234379wmn.10.2024.01.04.23.50.12
+       dkim=pass header.i=@univ-grenoble-alpes.fr header.s=2020 header.b=bGZlwCNc;
+       spf=pass (google.com: domain of frederic.petrot@univ-grenoble-alpes.fr designates 152.77.200.56 as permitted sender) smtp.mailfrom=frederic.petrot@univ-grenoble-alpes.fr;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=univ-grenoble-alpes.fr
+Return-Path: <frederic.petrot@univ-grenoble-alpes.fr>
+Received: from zm-mta-out-3.u-ga.fr (zm-mta-out-3.u-ga.fr. [152.77.200.56])
+        by mx.google.com with ESMTPS id y23-20020a05600c341700b0040d93adecfcsi387840wmp.23.2024.01.05.02.40.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jan 2024 23:50:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
+        Fri, 05 Jan 2024 02:40:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of frederic.petrot@univ-grenoble-alpes.fr designates 152.77.200.56 as permitted sender) client-ip=152.77.200.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b="DRrc86/G";
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ItHxcJHt/ybbZgZG9SSUK6DBvg6n/Sd5s8ugtIjRNIU=; b=DRrc86/GWhzksneDa+7Lvt7KLW
-	WytNqGiiEXclBIF+94SJCjXq4az8JO4anJocDmcrwUpBw5zfC3pWruEU/BAR3WbRKkqi06LrLlRaB
-	r4zugRa2gNMs1E+OjIM6nYyAf20yPJxGMhG3gJrAhAawv6fvdcBRjdFyIsm7I2zG4acpUK1BFUpNB
-	sMvlzoNkFawCcm9xyCZ62EJjFfmgwxVfMoItyic9Rb1JMygVjtlBSW97tRgbyRBwXwtR85mzmv+HY
-	Qsx/miF8BAPSglHBjWVvA7h/fuMD4dM05AAH3tSY7Cz//o/yM+ez/OL8VLsJ1vhOa1Mx68/C4A4N4
-	ZjGSBymDhLg+FmWI1KOpWLJUEJSWXGXR2wIrPSy4AnZy47SWKiV4FT747Be/0u1qpqs4X1yaJSVQi
-	P4dJhzZwn8qREX3xCeglpvXUMGopFb7dgjn/Rf9VI34epuK83X9FOVkA1fZzjpy6r5Z77vCFbZ5yT
-	gFh46a9gBWslP42p+DVJWK9QNfviB1gFcwmPvIz5ikfj/bSwrrrAyK0AEvk01YcghSN04hIpXE0OP
-	CTBn+YPwC2Sq4iSFQO2Hl32uvoZSIUyZOWj2rFECJptMbWhFBdYeAl5BDBM4bh18GXKswIhZ2VkfJ
-	IbYjZqyYKYjcfswIDtwiJy+Du4oF7QjOEbkuMoLc0=;
-Received: from [2a00:23c4:8bb1:9800:2afe:393f:f9d8:dd75]
-	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1rLexb-0008xK-HG; Fri, 05 Jan 2024 07:49:43 +0000
-Message-ID: <525885a8-59f0-44e1-b210-0b4bcbbe4258@ilande.co.uk>
-Date: Fri, 5 Jan 2024 07:50:06 +0000
+       dkim=pass header.i=@univ-grenoble-alpes.fr header.s=2020 header.b=bGZlwCNc;
+       spf=pass (google.com: domain of frederic.petrot@univ-grenoble-alpes.fr designates 152.77.200.56 as permitted sender) smtp.mailfrom=frederic.petrot@univ-grenoble-alpes.fr;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=univ-grenoble-alpes.fr
+Received: from mailhub.u-ga.fr (mailhub-1.u-ga.fr [129.88.178.98])
+	by zm-mta-out-3.u-ga.fr (Postfix) with ESMTP id A35784029D;
+	Fri,  5 Jan 2024 11:40:14 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=univ-grenoble-alpes.fr; s=2020; t=1704451214;
+	bh=fykYQ/3tfgtb47HRmaF07GMFcUoSZCQqQeIoojbO0co=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bGZlwCNcHGdFrSuxIaCeVIxDt7xW9qhJkryj7uI8H5P1L7ig4A5ofNysvvRDmDTTr
+	 WV+aFWgfUAFf/tA6H+4xV4d8T7829T1K3QGnwveIWHl4vs2ZDit6b9ADoUZ2KVnHLq
+	 rab98zbF2wEpGTtPq0ioe2E04YAdmk743bb8LngLlLNN47Lmn36jPiPvcWV9fhRk45
+	 MvKQoccyEg0eElcpa4j6yU9HkZ/yreoV1IoZ1TUpJTa7UTgwecuOOFhxU34GZ5N9nW
+	 4zke6YTZeRqmKFmN9UDaYaf9PpHMJpuZIvCgA7A1KxVxYiyP7wKi8cuG/HkjxP9OCR
+	 Mg3SGiya5OvHA==
+Received: from smtps.univ-grenoble-alpes.fr (smtps3.u-ga.fr [195.83.24.62])
+	by mailhub.u-ga.fr (Postfix) with ESMTP id 9B13710005A;
+	Fri,  5 Jan 2024 11:40:14 +0100 (CET)
+Received: from [192.168.1.73] (static-176-185-194-185.axione.abo.bbox.fr [176.185.194.185])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: petrotf@univ-grenoble-alpes.fr)
+	by smtps.univ-grenoble-alpes.fr (Postfix) with ESMTPSA id 92FD640052;
+	Fri,  5 Jan 2024 11:40:09 +0100 (CET)
+Message-ID: <9f9b8359-d33b-4c94-8eb1-fc500d8fc2b4@univ-grenoble-alpes.fr>
+Date: Fri, 5 Jan 2024 11:40:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Subject: Re: [PATCH v2 40/43] contrib/plugins: extend execlog to track
+ register changes
+Content-Language: fr
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>, qemu-arm@nongnu.org
-References: <20231109192814.95977-1-philmd@linaro.org>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <20231109192814.95977-1-philmd@linaro.org>
+Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Yanan Wang <wangyanan55@huawei.com>, Bin Meng <bin.meng@windriver.com>,
+ Laurent Vivier <lvivier@redhat.com>, Michael Rolnik <mrolnik@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, David Woodhouse <dwmw2@infradead.org>,
+ Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+ Brian Cain <bcain@quicinc.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Beraldo Leal <bleal@redhat.com>, Paul Durrant <paul@xen.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>,
+ kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, John Snow <jsnow@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>
+References: <20240103173349.398526-1-alex.bennee@linaro.org>
+ <20240103173349.398526-41-alex.bennee@linaro.org>
+From: =?UTF-8?B?RnLDqWTDqXJpYyBQw6l0cm90?=
+ <frederic.petrot@univ-grenoble-alpes.fr>
+Autocrypt: addr=frederic.petrot@univ-grenoble-alpes.fr; keydata=
+ xsDiBEzGfDQRBACnR+QhOOA6gstLMoL8vexXgQ/shw+w6zEsACrydiwCrAXMOQfyozlXyGYf
+ XBO0cf4RKMh51NLdgntJbYlOoFalY7iGRwo8U64iy8kHBcXlfdFYGrYFbFYervlMwXoY89D6
+ 02uMzWK/UossWWWX2PkqfBenmYd0zk+JwghTwY8MVwCgtr1Z52ZRv8vPA7ZLn4WSJLC/qv0D
+ /1hBIaSsCAT/nO78oFZq9hzY51GsmiBT88hTofCma2PIotJT9qocJglgqzA9B+2ja4bgXJ1f
+ 0WFlvxyLTjga8jJ/lcdNpAGi13sFEhP6nyi2Zh2hFhrXlTPH+VtdnjTHSnzK23eLphZJv031
+ SxCqEYT6pgJPwwHIWOHyeDZq0ORdA/4+2U4eYUhCGfi9u60L3zRDzUVULScq3vXah1ak1yBs
+ Nxz/F1iMYVBUmp4SGSM6XFxVwvJxvSRPD+4zXIkr7+MfIheiXbiSzNoZdH3AwaAK6jGxhfWb
+ f8Jm8KuLvGkR2QaS7QT+rhhv0OLEhVBMmm8EXZpsrOV3ZVmE934+WoRDd807RnLDqWTDqXJp
+ YyBQw6l0cm90IDxmcmVkZXJpYy5wZXRyb3RAdW5pdi1ncmVub2JsZS1hbHBlcy5mcj7CeAQT
+ EQIAOBYhBGyr6EloIPZXrmtYU0QWC1i+uhtgBQJa/b5sAhsDBQsJCAcCBhUKCQgLAgQWAgMB
+ Ah4BAheAAAoJEEQWC1i+uhtgNooAnjAwrIMPDJ+mQr1svgh9+NFFZBUWAJwONXxE5DrxP9OV
+ R0tsDROd3EbvXs7BTQRMxnw0EAgA8XI4FU6LH2NryyrydYoopZfixTvfS3rra8Q3UN+eHvuG
+ jM4+oebZO+ZZ6KtdGj/RDpXtn0KW6SdFynKuLS5obLx8GGfq1tj5KGep14kr1/BRp3xTqKE+
+ rleeWvR1fGXryJhxIV/AQ/tY2Le1ExsgLbD5dbPQKJhpQUlScz6Y1U2UsyxnMV4c7PlCNNb9
+ 1ZWfxPN8c/w8XBSZDaE5UcBmxYxH9959yte9hsczuzqbMgiGa0DCN+iIgsQOYtD2csDxVQUL
+ vxtD530vdTB32tdlmcumIgZCH4X7RyLhdbv1Xj6gcZ9InGf2tRLHbnd0/uPY6qTX/5teXQ7g
+ 0xzVlvcWQwADBggAvXpFpXACegDPqglkroyA8+LQWNyumsFtcrlAc9mcC5WwDBqNsSeCbGcx
+ TXsUckRAC3DpJkzKLbBsFki4fcYEx3tjfJGkknxInPYmOIlKRinSnIMS0qFqXdy37w7vPhqv
+ KMLwbeHYronnGUAW0Z//ZXZZTl1KbEeKOEXK2dyE0aLUtoWj/aLwM1c2zuJCctI38GENtRC6
+ qaqFzCHKTqxjl7aL1LILSvKQ1sZGKdKjApw5KLoKnk6WbspFIfgIirXoC2gRo/lhhd1ctVZK
+ IptiyHp7dw2Rr6TEzjy+Z/rDHVf9lGCzUkMDJHm5XQB8+f/Va5kddgZ9gznRo17IPvR0jcJJ
+ BBgRAgAJBQJMxnw0AhsMAAoJEEQWC1i+uhtgg90An139WxG/GTGPRFVQCaxQRkycFiI3AJ40
+ aR3/xWYMOEUWfcXpCS8dzPbdDA==
+In-Reply-To: <20240103173349.398526-41-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb1:9800:2afe:393f:f9d8:dd75
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
-	mail.default.ilande.bv.iomart.io
-X-Spam-Level: 
-X-Spam-Status: No, score=-2.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
-	autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH-for-8.2 v4 00/10] hw/char/pl011: Implement TX (async) FIFO
- to avoid blocking the main loop
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-X-TUID: SkvccZKnj9a7
+X-Greylist: Whitelist-UGA SMTP Authentifie (petrotf@univ-grenoble-alpes.fr) via submission-587 ACL (41)
+X-TUID: OX2YwWGz881o
 
-On 09/11/2023 19:28, Philippe Mathieu-Daudé wrote:
+Hello Alex,
 
-> Missing review: #10
-> 
-> Hi,
-> 
-> This series add support for (async) FIFO on the transmit path
-> of the PL011 UART.
-> 
-> Since v3:
-> - Document migration bits (Alex, Richard)
-> - Just check FIFO is not empty in pl011_xmit_fifo_state_needed (rth)
-> - In pl011_xmit check TX enabled first, and ignore < 8-bit TX (rth)
-> 
-> Since v2:
-> - Added R-b tags
-> - Addressed Richard comments on migration
-> 
-> Since v1:
-> - Restrict pl011_ops[] impl access_size,
-> - Do not check transmitter is enabled (Peter),
-> - Addressed Alex's review comments,
-> - Simplified migration trying to care about backward compat,
->    but still unsure...
-> 
-> Philippe Mathieu-Daudé (10):
->    util/fifo8: Allow fifo8_pop_buf() to not populate popped length
->    util/fifo8: Introduce fifo8_peek_buf()
->    hw/char/pl011: Split RX/TX path of pl011_reset_fifo()
->    hw/char/pl011: Extract pl011_write_txdata() from pl011_write()
->    hw/char/pl011: Extract pl011_read_rxdata() from pl011_read()
->    hw/char/pl011: Warn when using disabled transmitter
->    hw/char/pl011: Check if receiver is enabled
->    hw/char/pl011: Rename RX FIFO methods
->    hw/char/pl011: Add transmit FIFO to PL011State
->    hw/char/pl011: Implement TX FIFO
-> 
->   include/hw/char/pl011.h |   2 +
->   include/qemu/fifo8.h    |  37 ++++++-
->   hw/char/pl011.c         | 239 +++++++++++++++++++++++++++++++++-------
->   util/fifo8.c            |  28 ++++-
->   hw/char/trace-events    |   8 +-
->   5 files changed, 263 insertions(+), 51 deletions(-)
+   just reporting below what might be a riscv only oddity (also applies to
+   patch 41 but easier to report here).
 
-Hi Phil,
+Le 03/01/2024 à 18:33, Alex Bennée a écrit :
+> With the new plugin register API we can now track changes to register
+> values. Currently the implementation is fairly dumb which will slow
+> down if a large number of register values are being tracked. This
+> could be improved by only instrumenting instructions which mention
+> registers we are interested in tracking.
+> 
+> Example usage:
+> 
+>    ./qemu-aarch64 -D plugin.log -d plugin \
+>       -cpu max,sve256=on \
+>       -plugin contrib/plugins/libexeclog.so,reg=sp,reg=z\* \
+>       ./tests/tcg/aarch64-linux-user/sha512-sve
+> 
+> will display in the execlog any changes to the stack pointer (sp) and
+> the SVE Z registers.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Based-On: <20231025093128.33116-19-akihiko.odaki@daynix.com>
 
-Happy New Year! Are there plans to queue this series for 9.0 soon? I'm particularly 
-interested in the first 2 patches as I've made use of the new fifo8_peek_buf() 
-function as part of my latest ESP updates.
+> +static registers_init(int vcpu_index)
+> +{
+> +    GPtrArray *registers = g_ptr_array_new();
+> +    g_autoptr(GArray) reg_list = qemu_plugin_get_registers(vcpu_index);
+> +
+> +    if (reg_list && reg_list->len) {
+> +        /*
+> +         * Go through each register in the complete list and
+> +         * see if we want to track it.
+> +         */
+> +        for (int r = 0; r < reg_list->len; r++) {
+> +            qemu_plugin_reg_descriptor *rd = &g_array_index(
+> +                reg_list, qemu_plugin_reg_descriptor, r);
 
+riscv csrs are not continously numbered and the dynamically generated gdb xml
+seems to follow that scheme.
+So the calls to Glib string functions output quite a few assertion
+warnings because for the non existing csrs rd->name is NULL (and there
+are a bit less than 4000 such cases for rv64g).
+Checking for NULL and then continue is a simple way to solve the issue, but
+I am not sure this is the proper way to proceed, as it might stand in the
+generation of the riscv xml description for gdb.
 
-ATB,
+Cheers,
+Frédéric
 
-Mark.
+> +            for (int p = 0; p < rmatches->len; p++) {
+> +                g_autoptr(GPatternSpec) pat = g_pattern_spec_new(rmatches->pdata[p]);
+> +                if (g_pattern_match_string(pat, rd->name)) {
+> +                    Register *reg = init_vcpu_register(vcpu_index, rd);
+> +                    g_ptr_array_add(registers, reg);
+> +                }
+> +            }
+> +        }
+> +    }
+> +    cpus[num_cpus].registers = registers;
+> +}
+> 

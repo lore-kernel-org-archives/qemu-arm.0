@@ -1,156 +1,128 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp592956ejo;
-        Fri, 5 Jan 2024 01:07:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFBnaIt2LMvJ4nzztmZRcR/MrQcBySjHj+yEFJk1S2Vkt4h+tEWPi3gqYsH9K7YkqijltUK
-X-Received: by 2002:a05:620a:3190:b0:781:45db:8024 with SMTP id bi16-20020a05620a319000b0078145db8024mr1951833qkb.53.1704445665761;
-        Fri, 05 Jan 2024 01:07:45 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1704445665; cv=pass;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp620626ejo;
+        Fri, 5 Jan 2024 02:19:42 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEJx4yKU3GSmNSWcBFvAdFeSshyWxWP/bgWFx44Ucm0aeo8KRRuFFUhr8/wkTjRwQHbDgZz
+X-Received: by 2002:a05:6214:1d25:b0:67f:7780:e7e9 with SMTP id f5-20020a0562141d2500b0067f7780e7e9mr1940422qvd.21.1704449982132;
+        Fri, 05 Jan 2024 02:19:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704449982; cv=none;
         d=google.com; s=arc-20160816;
-        b=qU5uRd6DtsVcWoDd3hTybZhBJX4imc3DwwqybJdwDaLWSYXWGThpujBUy+XaMwxdUw
-         VEoV4QGE4j/eYI9brTqPGQ2NFR782Q7eiBjcLvEWzSHkDckGzaFVhgXh/1p1N8PjxPBq
-         yGrs56KjFN7vlRgLCshbRFjbP27TA/+l/YdjN57d3dQHIjjDsc9zdxcC5q5xFHP4qNAe
-         miQnTTOuF+yO2DKLde5xLn/NhbuzUJhcN3VQK1YmavC5TcmUBqxZvLZK61sqma1gVFMW
-         rPJPeXK40Y6SjfWVT7CnuDb3IHYsFWoer6ktOOR/2lHhP3obK7AAGloo0NqjFO0IJh1Y
-         g7YA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=e2dU3vFhyL0LdwQuuNQfQE2vaWOFXyrHr/0Sqvj7IqEDCfxZSmLVjzcZtgI3InZTHO
+         OzQryLSx1IXf/PAqUWG3av/RyyTpElSIR3/fH2+Gn8fRFuFEv+N2So31NAlo+ywPFURx
+         5IceaN0BDlXfWYTfDzdBIddKQhu5YA+qrvSb6rX22N3rReGIVbdO/6LxB5pp/dfLhOT5
+         Zr0DdRgAI4djPjzPdCJD6otFg3VJZGnvXcqQbOZS8YTDTrB2y5UTLhoV0Y9ogUdu9EGV
+         q6LQ2peq7PHEhjJi3PVjlqO1g/PUjEcY2oDHd6/TL/oHT6nU2Udj6DS8p8JMRYRmHwsA
+         RRYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from;
-        bh=PDcgZh74fta9rwyvzCLiZ8DlQlJ+CqiToaRZYcBYn6w=;
-        fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
-        b=vymueziKwUEQWt3N+QvCvvWSE3TC4Na9nULVvbWfLTvh5ArX23OBYtkkdOMbCWXU1c
-         6YFDVMUI3xiRvwPocsdHIsM1VI+6TSqIII/54v1LwThaZ+EkS2tUCHgfvG35Bbi5OZYN
-         8xlNUCKsn5iwCgme1Aim2UTAD0Bpw+m60+h3u0eLDQa3qF9+tDpzE6VMB2Dfw4dvNo9e
-         SNn/wplOxfMKyFzWgAgrMyqHuzRALTJF7hEXFAxO9HDIJ6F+lOTggXv40pRuSPj0GAq1
-         b9RHGwWXVvWavhyTMsJ0l9pDtVCeXeHRlBm6Fg1ywEDb0+WfV1dkgOr0jNCI+zb3Vanl
-         dYyw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=JrpZJsC+JCf4DKhNEEKL+YgSEbHMOxskxIftU0vEodU=;
+        fh=pLk7IlYeOw9gEUp1FsbFqgDAiPe5JHHXs+b90EKpYi8=;
+        b=leQehwUFQDMp+BvjMZjUKGBCFGb0PaOPbTdYuE5zI5++04jvcL1coRwcjiUeI0i0Vw
+         M11AuzpI8vaial4KROP/mhBKeYRmIahWbcWJrUureuYthyMmDJAgN9aFmycvNaTij3R8
+         HiOckYyZzfjP7qJEEfFhM5JCe48bQnc6M+7gM9yMEVrfExmEZqElnwlpO+VeBnneQ0TX
+         wZf2SuhdpuQo6u7b+HbdGKmEzazbWdolUyenMqjcR14bamaju2Y9l+rNtsZQhc9sk4DP
+         Tquc94wAVlHbOA5/+qT63O9+qFstXqbiYlJlg3YpAulZdiWt5QlzU5MO9EsEBtEVwwIJ
+         ntrg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OatCxACR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a05620a094700b007742f841ec5si1302586qkw.383.2024.01.05.01.07.45
+        by mx.google.com with ESMTPS id v9-20020a0c8e09000000b0067f30be7df2si1385847qvb.496.2024.01.05.02.19.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 01:07:45 -0800 (PST)
+        Fri, 05 Jan 2024 02:19:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=OatCxACR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLgAB-0001Nr-An; Fri, 05 Jan 2024 04:06:47 -0500
+	id 1rLhIS-0006Tw-M2; Fri, 05 Jan 2024 05:19:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rLgA9-0001NA-F4; Fri, 05 Jan 2024 04:06:45 -0500
-Received: from mail-sh0chn02on2061d.outbound.protection.partner.outlook.cn
- ([2406:e500:4420:2::61d]
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1rLgA6-0008TI-UB; Fri, 05 Jan 2024 04:06:45 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lOdFmwFvrsFxc9Vs+VjxXT4qb/mIhHp2jarpk6XcNuVuTkzuatIYOO4bgjVhPn+eaYqUdoD0uqkvHJZY9MlW6iCqt3bGh1NBSHH4RJ1XpVomUBGUuJra/UhVPDJBcfhN6IXkuYtVVJ7adJ0k4GCxB7V/M1J30NreXxBDZlgunABhh9lkIyL2D1L6Y2EBKOVV4HMfGH3sr8xL7jgdW7FzocgviwCAm4YdHVF7UfH0PKLcmVqzoxISIc4x6dHnVr3n+dkjjlIRQWsFksM8LZA5sgLoQPmTibHZeE4ykC1Q3iVXB/tqAxvO0ntLcPPmkf9mbwb0AntcevxC1hffFVkAUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PDcgZh74fta9rwyvzCLiZ8DlQlJ+CqiToaRZYcBYn6w=;
- b=FbGyiP87hgbnwUAf5+DFUWbf7aVdD027X/uAyEVg4Jsfn3OrvSnVKW07GVQRKTUsRT7wyWpWwGbFXSD3GpUFP17XbRBH/4eAA7rMc2xcSCBS6biz7RzVOVFvpcR/Xi/ukEFmsMYCsdr7EgApwBA1zF9FoNCnR+W633oS/O07AfDPikMC180XARlqWztYP3q+c9g/BF5KG9HalKC8i9HtMd9lleo5O+feyLeXCjYAlL67db5bac4DuYad5jdxAmBIbQZdx+mWBQA7OQVgJkOxRENoyAVrIxn5ETNuUZCHjEMm7RD8cuWFK5N5UqAIqlzFXoI0gpq81XZmMbeBbMG7Jg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:f::16) by BJSPR01MB0755.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:1c::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7135.29; Fri, 5 Jan
- 2024 09:06:29 +0000
-Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- ([fe80::3862:65b4:c857:c4a6]) by
- BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::3862:65b4:c857:c4a6%4])
- with mapi id 15.20.7135.028; Fri, 5 Jan 2024 09:06:29 +0000
-From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, jeeheng.sia@starfivetech.com,
- shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: [RESEND RFC v1 2/2] hw/riscv/virt-acpi-build.c: Generate SPCR table
-Date: Fri,  5 Jan 2024 17:06:08 +0800
-Message-Id: <20240105090608.5745-3-jeeheng.sia@starfivetech.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
-References: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SH0PR01CA0007.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c311:5::19) To BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c211:f::16)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLhIR-0006TH-2W
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 05:19:23 -0500
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLhIM-0001qN-Lw
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 05:19:20 -0500
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-50e741123acso1602959e87.0
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 02:19:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704449955; x=1705054755; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JrpZJsC+JCf4DKhNEEKL+YgSEbHMOxskxIftU0vEodU=;
+ b=OatCxACRDqIQhAUiVMmjpMDUtT9F1ygNGRbswS9eCcfeyccdbRrJyyIj2ViME3giCi
+ GBI/elw0FSgyayH/L33Y6GdESiAQlmE4Ju5EJg50xp7Rbb7u6Ynsi+5f9I/DIHH/thRf
+ YvPEJ3i+QUTVfFkw9JrPU03kVdyJHHM5cEBR9NfDEKdtx9/jdDAwLCoq1VhKkhhMiLZt
+ 48aIXnWPXIVrcHjUlIRSwXKTKgvSkY8vsD72GmQtyY/CA4KipcnkdTg75+nbrl3eTqzr
+ xYJqVc3NUZcEbQuob01Xb4Y/yPiTXHC3uk1CGd5o05YjNsoMRW1D5b/hyVk4LoieVqG4
+ xbpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704449955; x=1705054755;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=JrpZJsC+JCf4DKhNEEKL+YgSEbHMOxskxIftU0vEodU=;
+ b=a60eR7NfcuOZlXN2A1+++VxsBA/y1GkkFLuPG7oH8XPHvs6E9zcg9Y8O152LgPT0vQ
+ 0GKlPT1YWlm0HiSsutK56d64xCBROD03UQIwoqWmGGk+PKIKJyTYDzixp6uzU8hUHa5Y
+ 8RAvKwe9fXvFG921djVxHR2d9dTM/jcTs+rsOMy4xtrm6fndGX6Ae51Fk9HX4uUKgwHT
+ 4Bsfoq6M6PRqcWkNBTMxpDQPsk+gWl8SZH0mk3D2xpMqvLPkPyw/ZrxNL6jTwH4tR7xd
+ GQdkg5QLtGn0hu8VEmQs5HC4TjRbJby3GEGDXwwA7k/hbeljcCBrdXs2+CgudUSznS6F
+ 1j0A==
+X-Gm-Message-State: AOJu0YxkHY1Ady+v4ceBn4H9fYI1SY115egIBes8SYVKA4+GY5t9cvvT
+ tfRKAFsWM6sLZ03P/YLmh3/0TW7jQ/etzA==
+X-Received: by 2002:a05:6512:3e05:b0:50e:7bbb:55c with SMTP id
+ i5-20020a0565123e0500b0050e7bbb055cmr1140634lfv.139.1704449955448; 
+ Fri, 05 Jan 2024 02:19:15 -0800 (PST)
+Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
+ [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
+ p4-20020a170906604400b00a298ade2e72sm83965ejj.195.2024.01.05.02.19.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Jan 2024 02:19:14 -0800 (PST)
+Message-ID: <805ca196-5464-4023-a1c1-97d5a6699c1b@linaro.org>
+Date: Fri, 5 Jan 2024 11:19:12 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BJSPR01MB0561:EE_|BJSPR01MB0755:EE_
-X-MS-Office365-Filtering-Correlation-Id: 90d5167b-1572-49d0-deaf-08dc0dcd9ad5
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VQxCZ1+krjHlZLduEh3puSuOPCZ8nrWt7tWucw0idIF64O0GF3IlVSjYXCAPSQ7J/9JkoCZjyy8TG4YQHiEDAXqzO37wPYUbfsDqjPm0Wb+vUI8pIS5/o01ndrz1qC9IS7Up/DdKAvSoojZ3KkJLcOYMldnXb3LyHaK5ZtaOPR6YPsqcRes6kkSDeRSFfNJLzs9bDOTO9lJh0XLWlm+KxuJ6zeaj7nY0k4HD0O+RjR+uGMzENdbsWTeZIZcR/u8DkbfT1tz+oatl3E38VrVQJuIi37QdqctV3x/HziSy7zNMRGP1aXJ4SjBUsw2EdfYJKLY08tvwKTjyOezX9E8CJWXCwL4qM3MkKyvokm4j+0MS8Ng5nOs3QV3XE7UX/rfnIcCKtsWIs+E+4WbAEJSm6CUyOIWlSUg+1aX23zJSfCyJoBAPn43pMzZTsYRJl4FJ2nu3dRJG9SIVNPZE8jAYovYzevp5ci89jzkk8MeyZdz/Jgzepq/h65aKt+HRO5Z5wmmzQ2nIMThcguI5mAKHfk7IzHHzOI7zcsEETBmmfV83aTW4A8vUQTr00K1T0vdG
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230031)(39830400003)(136003)(346002)(366004)(396003)(230922051799003)(186009)(64100799003)(451199024)(1800799012)(2616005)(1076003)(26005)(52116002)(6666004)(40160700002)(36756003)(86362001)(38100700002)(40180700001)(38350700005)(5660300002)(7416002)(4326008)(55236004)(41300700001)(66946007)(66556008)(66476007)(2906002)(8676002)(508600001)(8936002)(41320700001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?URYE1dsyAPiRgxgM4M3nZOWfSrawJ0zumxQJ2SCmR+FirP6HZsAb2ycjjCIw?=
- =?us-ascii?Q?+I5DHxPdFM0IO6ov0nhEr7g6jbRlQw+LVy4H/OIgndrCmPUdbJv7TudCfTGO?=
- =?us-ascii?Q?XJnD+jNHeWCymDEqRtYucFgtrbOoIs1bEg308y2YhJDYiOEVNB0RWqbmiAHP?=
- =?us-ascii?Q?ogZekZR9Z/hJ4X22DEz7T6Yqc/TaTLUF84ju+kJLGAVIXkvk33GHLyw0oEyd?=
- =?us-ascii?Q?3yAZaxs0wU9/5P1KFCVRKfBv+4zk2SIyofQqxKXM+ePRhKy4pIl204LozNYR?=
- =?us-ascii?Q?rO91UtDzJJJwXzAh6uuXFIYRpl+JCiSh6W21LMGYwZaK9FAPX11RqfJSum8q?=
- =?us-ascii?Q?oG/+sv2JSRIrYAu7cgy3+iMnETxtLKaqsflwpXQ41orpScHlJDYVZnPltFZG?=
- =?us-ascii?Q?+aR0EXpGQ/XdEseJH3/RU1dAvW1DnQo6TvQyRgV0FqCzhhETSNVpUkBRDqX7?=
- =?us-ascii?Q?iRI91lVBC9JR9b1/NKgyIXaCgHbYL0FORf/dYNX6fxdSoAkpyb9RZyO++Hf0?=
- =?us-ascii?Q?a3/Zw5qU811tos1d7vLOcysuJkCfKdlmta+ei/zBVlKk7TMTYZwelLgKigRK?=
- =?us-ascii?Q?OOcPlLjsJaZAqI2nPQJ1RgmyI05fvVRzhyVKrI2KkkIQ4rbWyCyXrMKK8QPb?=
- =?us-ascii?Q?LovJNH4/XcDsXywl9bMlQT+Bvgxeo20L1xf2XpaICJIxVokUcVAeelluuysz?=
- =?us-ascii?Q?N1Zgd1eBqj2wVJIeDCEzb9MYKwMV8ryJrFPwKKBqrUi+lm+Vm2+UBwR2pT30?=
- =?us-ascii?Q?aafp54ip5VDeURA/YeJIWAI0CAI42VIuOgHVZ3f/5i2/x94xC184EUzPvJ/v?=
- =?us-ascii?Q?qCvEUGYCzNG5Q6eyH9+IfXaK0KqnhyENXrEJrf0HxquXKbVOzf+p0BaHES2s?=
- =?us-ascii?Q?H4wZ1rdWzt5ogJDnhzxYtYIc4lHjJKSDB7NAFjj0ka6BMWRlH1xQqolKUIOw?=
- =?us-ascii?Q?cZ2SxWZ1wo2+bIudnQVsjAZ8Uss23h1P7Kf6xL/R8TMizNRVHnVjxQM2C3ml?=
- =?us-ascii?Q?yXDhxhdqjXjOzCIkUkGTizkdF+nHLNRb1x8WfK4BuMWGtTGMz5F7Rt0tr1Rk?=
- =?us-ascii?Q?V+PMVF8sdRm/uGAIwCq9IUzvY7TDC86ZY3lz3QbO7UawzvqqfhhlvOd6Jvwg?=
- =?us-ascii?Q?YoPcUgJful48xhejwgTDQ/HN7vSrruao4D8Qcrayx35yNnF4dJmV5XqtM8sr?=
- =?us-ascii?Q?iyM9OOj+E4Li8Ld6msPWYxHWD7jzLoS9Y3rV4Yw4M3vZOn2oev1jXECurLA1?=
- =?us-ascii?Q?GJkmMv37bMxxfQd7gQfgzayEiAF6LLAtO3kKLUicoEPrXlYNMXoqqeaUPTql?=
- =?us-ascii?Q?UtsnQrTaVU9t/exjwLVXVikguxT1Z0iETGJASM0mTTDXUZ384rr5kfdCRdT2?=
- =?us-ascii?Q?FcNL+zUPrHMrmLjVdrcdn9X5KOny9zoS3NS1z8qiYP0Jc4KjOGAffvbQBtEl?=
- =?us-ascii?Q?Kq4czGkKc9+e1pFRiSSfYbLGItuyQToJJ3aSHJ6V3JxpG+g6yLKD7KQkR4U/?=
- =?us-ascii?Q?4FXclNUbl9pW3cf5N9vCbAcaubL3hW4ArOV2rVHy311xesCSVnk3KMwM9C2r?=
- =?us-ascii?Q?1HBMTsfRuVUwJ8hV888ZjYgwKerjD9GYMSitGsG9nRsZBTkdZBzfaaYhSnux?=
- =?us-ascii?Q?EA2PVyJPPRtSI7UP5UVAIgA=3D?=
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 90d5167b-1572-49d0-deaf-08dc0dcd9ad5
-X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jan 2024 09:06:29.8614 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qeAj3dh9FJD6iDRmT+Ls8O1/UlwH4TnNo+CYuR80r2w3ytXBrX3LolZNZlmfak66DMDZcA0OmYz5YxK1UZSQFEnADZHLPfEwdaXI+hvZrbQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0755
-Received-SPF: pass client-ip=2406:e500:4420:2::61d;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: inesvarhol <inesvarhol@proton.me>,
+ =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
+ <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
+ <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
+ <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
+ <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
+In-Reply-To: <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,73 +137,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F5JJrWx09GLm
+X-TUID: sT9q/vPtza+A
 
-Generate Serial Port Console Redirection Table (SPCR) for RISC-V
-virtual machine.
+On 5/1/24 11:13, Philippe Mathieu-Daudé wrote:
+> (+Mark & Eduardo)
+> 
+> On 4/1/24 14:37, inesvarhol wrote:
+>>
+>> Le jeudi 4 janvier 2024 à 14:05, Philippe Mathieu-Daudé 
+>> <philmd@linaro.org> a écrit :
+>>
+>> Hello,
+>>
+>>>> +static void test_edge_selector(void)
+>>>> +{
+>>>> + enable_nvic_irq(EXTI0_IRQ);
+>>>> +
+>>>> + / Configure EXTI line 0 irq on rising edge */
+>>>> + qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
+>>>
+>>>
+>>> Markus, this qtest use seems to expect some stability in QOM path...
+>>>
+>>> Inès, Arnaud, having the SoC unattached is dubious, it belongs to
+>>> the machine.
+>>
+>> Noted, we will fix that.
+>> Should we be concerned about the "stability in QOM path" ?
+> 
+> Don't worry about this Inès, I wanted to raise Markus attention on this.
+> 
+> You showed a legit use of stable QOM path, and Markus told me recently
+> there is no contract for QOM paths (it shouldn't be considered as a
+> stable API). IIRC Markus explanation, "/unattached" container was
+> added as a temporary hack to allow migrating QDev objects to QOM (see
+> around commit da57febfed "qdev: give all devices a canonical path",
+> 11 years ago).
 
-Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
----
- hw/riscv/virt-acpi-build.c | 39 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+Hmm am I getting confused with "/peripheral-anon" (commit 8eb02831af
+"dev: add an anonymous peripheral container")?
 
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index d4a02579d6..388b3d1a84 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -174,6 +174,42 @@ acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-     aml_append(scope, dev);
- }
- 
-+/*
-+ * Serial Port Console Redirection Table (SPCR)
-+ * Rev: 1.07
-+ */
-+
-+static void
-+build_spcr_rev2(GArray *table_data, BIOSLinker *linker, RISCVVirtState *s)
-+{
-+    AcpiSpcrData serial = {
-+        .interface_type = 0,       /* 16550 compatible */
-+        .base_addr.id = AML_AS_SYSTEM_MEMORY,
-+        .base_addr.width = 32,
-+        .base_addr.offset = 0,
-+        .base_addr.size = 1,
-+        .base_addr.addr = s->memmap[VIRT_UART0].base,
-+        .interrupt_type = (1 << 4),/* Bit[4] RISC-V PLIC/APLIC */
-+        .pc_interrupt = 0,
-+        .interrupt = UART0_IRQ,
-+        .baud_rate = 7,            /* 15200 */
-+        .parity = 0,
-+        .stop_bits = 1,
-+        .flow_control = 0,
-+        .terminal_type = 3,        /* ANSI */
-+        .language = 0,             /* Language */
-+        .pci_device_id = 0xffff,   /* not a PCI device*/
-+        .pci_vendor_id = 0xffff,   /* not a PCI device*/
-+        .pci_bus = 0,
-+        .pci_device = 0,
-+        .pci_function = 0,
-+        .pci_flags = 0,
-+        .pci_segment = 0,
-+    };
-+
-+    build_spcr(table_data, linker, &serial, s->oem_id, s->oem_table_id);
-+}
-+
- /* RHCT Node[N] starts at offset 56 */
- #define RHCT_NODE_ARRAY_OFFSET 56
- 
-@@ -555,6 +591,9 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_rhct(tables_blob, tables->linker, s);
- 
-+    acpi_add_table(table_offsets, tables_blob);
-+    build_spcr_rev2(tables_blob, tables->linker, s);
-+
-     acpi_add_table(table_offsets, tables_blob);
-     {
-         AcpiMcfgInfo mcfg = {
--- 
-2.34.1
+> I agree anything under "/unattached" can be expected to be stable
+> (but we need a community consensus). Then the big question remaining
+> is "can any qom-path out of /unattached be considered stable?"
+> 
+> Regards,
+> 
+> Phil.
 

@@ -1,111 +1,110 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp791899ejo;
-        Fri, 5 Jan 2024 07:44:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHBH8BJ5IHScNI792FP9xu8Q9PeSwNtoS7qhEZRAOWdoixrsgZD9gWqKD+4PvEyVQ8q6Fr7
-X-Received: by 2002:a05:6830:71a3:b0:6db:fc35:54f5 with SMTP id el35-20020a05683071a300b006dbfc3554f5mr2405458otb.42.1704469467250;
-        Fri, 05 Jan 2024 07:44:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469467; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp791978ejo;
+        Fri, 5 Jan 2024 07:44:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEFAJY99dg18RoPis8owmG4mgurJPPuki0TeSSSfYkC5bJb3KBJTQqfhh8VlhoGHeTkpKlT
+X-Received: by 2002:a05:6808:1a27:b0:3bc:3627:9aa5 with SMTP id bk39-20020a0568081a2700b003bc36279aa5mr1128117oib.32.1704469474411;
+        Fri, 05 Jan 2024 07:44:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469474; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmVj/+3HllyJNa01yCUKB9ONMgex09kbAKepQXf2TP+W02GIEPHF8wR4QhLsg4QXpP
-         lnCQJFnmvmTVL5+FMZH+pKvnug4Q/b7zZN4HDUR43AuB0QPZKNjJKoa1m8FIbq99QN0o
-         Oi7IZth2TiO90VUJc61ngej8EdjMj6rD7nnhpLdwGJBB3V4a9fzJKvuboG/C9OY0GeWz
-         XULcYtI1Ar5L+dM8UTJjCZEAfeZgwCEdF9jmdmmI3Ra2DJWSJhfGeVXfFe/80wLYjSk4
-         pjlfuPNkaKCCaMZhipOtobOCQ4EU5A4IeHzqROH66gu+FQCGCK0g/OwHOnpbisV/iRSR
-         MNjQ==
+        b=fI/GB/btJlyLZDmL3WRJNAkiFuPk9KT/7LpZQpkOO3Lmm40vvBL3eMPo4dsZVmUlhL
+         Sm+1oo6oAAVuLnp0W3/xPD0nFJu+kvbLmAcYk1bH1Ecn2ajgiAZMbQWb5wI9n6K1xKX1
+         QBO100OpYREBQuSR3uYRt14Nct0ruNVNg2Ar/jSKeTo7EGcnsqb1p/C77tTjdrA9h8cS
+         X8HQCdrNkuUaONPUlicpJzqFgR9gYdyDFEaX3ToEyqwzGnA2yBLKUU5GdvHbx4y4vjq1
+         NITknPOb/tavuobQHVThKCjsgZPqTmY7Cjlz7GRgwHbT9alNV3TLz7RTo97zcQpnhqdQ
+         iF0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZrhO0fF/4wCYRBDkij/JpNIZFZJdEux3joJ/5vLZ4GY=;
-        fh=V7uVG1DgPEiI/Dn5AyTMYxZqYu+WhPESNN5nDmV3BtE=;
-        b=UFObbvgevSQPTpKJC6u12649t3/utSM/+tbMnE2o1k+/XnHoXN1uEheAuFjYYl8MeP
-         rCTRmS4Sv5rubJ6BgmG9vfg1/c/H7G18NqX89TnCCha3DY4o+pvApsJtNFbFyF4eXiBh
-         1tcNwIJgsSecJqDbEVx+c61CUmA7S9/GLrK2qp8JM+GxP4F1FJgt0QPbIeZxu2CSK8sj
-         mTCh4CbW8qtqMWuBimzdJYEg1wDKnISNJixcw9hx9VTl9tmKwWyQ1rX77J4EVUSSM7kN
-         LOzQqvdVskFBTQeVMNExPqV01vHTCdlDLHR1ESyu2ZqjhQwctv9zsLFMYYcZLjEgBhPO
-         2E1g==
+        bh=rLV8uDs3E9nSqverOGkh+8mNeXXqUDlTZQBJE1rP3g0=;
+        fh=E3k/bJOAyn8KVkDcw46+fm61XnY03SPmE0lR/AkVOTI=;
+        b=HVSWU+AkFhklxSRzBLehylhzMP1NYB7OUrYYOOPZtAirkMUbrzlYrMazoS6xfIa9Qp
+         e8BvKlWtwTtK5xbzEmecVIl1msS7GgYhp6toqLnRxxg766r6BYcyvkUwAI/DucnS1zZR
+         6t2dX4y7WFz2I3QM5Lqf5nodb9w0fVt+jfYwWWA2X9uEJReY7UQU/qQqsZp0RHIICjLM
+         1PqB577VkXGoyeF3APC1Q3apqFkSNQvfiBrN6JK866uJa1GvSsjQqsrd7XmP+SWYGzm3
+         So81xyAzP/ZOybYr+T9EU78GrQSZDplzCI/UeSuEhH+Oj833fjZ4h6VzOtCLvAKByUTm
+         7zQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bwi3kpzG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SKcVvpLX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11-20020a05622a144b00b00427eed70967si2060325qtx.547.2024.01.05.07.44.27
+        by mx.google.com with ESMTPS id q3-20020a0c8cc3000000b0067f57e10b34si1912176qvb.595.2024.01.05.07.44.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:44:27 -0800 (PST)
+        Fri, 05 Jan 2024 07:44:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bwi3kpzG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SKcVvpLX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLmM6-0004QK-UT; Fri, 05 Jan 2024 10:43:30 -0500
+	id 1rLmMU-0004dk-7H; Fri, 05 Jan 2024 10:43:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmM1-0004Id-Ii
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:27 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMS-0004cz-F5
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:52 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmLz-0002zA-8y
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:24 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-40d5ac76667so12842245e9.1
- for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:43:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMQ-0003AO-9J
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:52 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-40d858c56cbso19526265e9.2
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:43:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469401; x=1705074201; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469428; x=1705074228; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZrhO0fF/4wCYRBDkij/JpNIZFZJdEux3joJ/5vLZ4GY=;
- b=bwi3kpzGGNXCOg+20oW7rcdO6hXQlCRbkxobFttj7cxuRBleMFixnF2Ffg1G7TqmrC
- zyWrEFwzJZGrK8EdQzJLdfazNeoKvWs7HZK2MNvl+tD56VzMbScGxjlhxq6K0NZAIP3H
- GIt1Fq4zu/EwWdj/2oNgAA9VaZWUBLEADJkyV34Oyt+MtzQ+plYOnI4DGDXL8SentVz0
- upHwkNMV60xGHNiqhX1Bq7nmm3M+3eanaKYgES8SO3B+eS6NqQ5jw0UFfxIL8aa6EwxO
- YHBPIxJlKa+zxEEMbe4jnbi4w2Oy/+63Hkwin2DLwSWNVdOesNH0kVhn7t2w5Pc9YWgd
- Q7pw==
+ bh=rLV8uDs3E9nSqverOGkh+8mNeXXqUDlTZQBJE1rP3g0=;
+ b=SKcVvpLX5hYD/oCShDsCadOdmGIZpC29ktiYlOnsidG8LcdFmOvFmSH1QEuhh/qESa
+ YYPGBWkW2a1rPzYYFglCaIbw7bnOZJw0joqB5Kudwh1BN3duuCilg9ORZ4/nGBnXCjA5
+ BKZKh9/wDUHQIbVidQMa9V9a6t/iO9S+jU7y4NC9ecaLfJxJ/0uOaoffaKvLR75JTPJt
+ +IpnIYY5Cdtv3zgFUSH1U3xry7p0AYApE0oc9BCO/SAavCZaIv9RUgjp2ARlmcKOwB9T
+ vxjD/J/1iAdHvdCqXWaKzR3pb0QbEjR4EFELolDRJAFV7ufficbheNvpRmMPHhto/OXv
+ KjNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469401; x=1705074201;
+ d=1e100.net; s=20230601; t=1704469428; x=1705074228;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZrhO0fF/4wCYRBDkij/JpNIZFZJdEux3joJ/5vLZ4GY=;
- b=Cn/l0Q3ntTjnh7ez5KmpVWZ1ED+XoS16rJzqm3YMBJv1dyP5GHo99bpxDyZ7OWe2le
- HQsk2511spyUlRhL4MSJMDuJvEdGE12Jz+JOD+euyxWh3LC5xe2XgxY2ZW6IEAZLwt/2
- xNt+Jdej/aiJPT1hV1J5h/ozM3ccmPYb5BDILZf8ClaW3HKo6MQFN5JEQI0XrUBWasil
- L1dwZexkhJPPr8Q5qNTaVHz2QF+UGSqpXMCJS+8IR6230dfmlp4F9PIIn5jVdgvyjD7m
- nJK+TYUXpNxVemaI0T2A9Im0q2dij03hTl78V+u/okFtPIpnd41FiJgdQEha5PgrhGES
- 2OBg==
-X-Gm-Message-State: AOJu0YwlwbvmQhgNaVb8HiBOj3094WCcyI8yV+87zOBkbVLTSIBOtdMP
- paRia0zJ+QJguhI3r9TePUq2ZXz74AimxZi/sCt5c2ROfb8=
-X-Received: by 2002:adf:f282:0:b0:337:39e3:3b71 with SMTP id
- k2-20020adff282000000b0033739e33b71mr1335279wro.74.1704469401108; 
- Fri, 05 Jan 2024 07:43:21 -0800 (PST)
+ bh=rLV8uDs3E9nSqverOGkh+8mNeXXqUDlTZQBJE1rP3g0=;
+ b=naGuM6t1v4v1oqIDrss44Mm9+iNDrU4orwTFC1qW8D6/GjZ064ga140FimuAxj+hBD
+ ptLlDo5F1V/f9+KddI5Z61ETODKu/Vcu5NvlEN7jgjwtWka3jm3a3/kvaDFJ9RNKr/ow
+ Jm+Oc5Kq+jdOzrDqbR+7f4mCG5UCaxyDf9Vjo7hF/V5Z06HbfHVlVcInDitBEP8GwREt
+ ieS9XNN36pg9DQYbHyulGjQdIz21SujewSudTcO8N5rIRi2agit/hxFWHzFGWcDVLnng
+ xRHJ+SfMscrwHUWowh75KaumYmUDa3idDIU0uqXJsSKA8iYW47I6p/X4ZsDLPAEn/Qix
+ DwYQ==
+X-Gm-Message-State: AOJu0YzsxTNIP2d+gdt9xgzkEKQCYL9bEnkMHmyRRtpAPUGk+rJ9wLOH
+ jlTMq/3gallDIsdz5z/rNHcw92K5k/K0hqg0cGx98/SzrH0=
+X-Received: by 2002:a05:600c:a45:b0:40e:3511:2c39 with SMTP id
+ c5-20020a05600c0a4500b0040e35112c39mr1353505wmq.172.1704469428691; 
+ Fri, 05 Jan 2024 07:43:48 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- f11-20020a5d50cb000000b00336ebf27d59sm1602952wrt.78.2024.01.05.07.43.20
+ k7-20020a5d6d47000000b0033725783839sm1599738wri.110.2024.01.05.07.43.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:43:20 -0800 (PST)
+ Fri, 05 Jan 2024 07:43:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Gavin Shan <gshan@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 02/71] target/alpha: Remove fallback to ev67 cpu class
-Date: Fri,  5 Jan 2024 16:41:55 +0100
-Message-ID: <20240105154307.21385-3-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 07/71] target/alpha: Use generic cpu_list()
+Date: Fri,  5 Jan 2024 16:42:00 +0100
+Message-ID: <20240105154307.21385-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,55 +126,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jra0K9Ilqmuu
+X-TUID: j2gEL8SN+Fzh
 
 From: Gavin Shan <gshan@redhat.com>
 
-'ev67' CPU class will be returned to match everything, which makes
-no sense as mentioned in the comments. Remove the logic to fall
-back to 'ev67' CPU class to match everything.
+Before it's applied:
+
+[gshan@gshan q]$ ./build/qemu-system-alpha -cpu ?
+Available CPUs:
+  ev4-alpha-cpu
+  ev5-alpha-cpu
+  ev56-alpha-cpu
+  ev6-alpha-cpu
+  ev67-alpha-cpu
+  ev68-alpha-cpu
+  pca56-alpha-cpu
+
+After it's applied:
+
+[gshan@gshan q]$ ./build/qemu-system-alpha -cpu ?
+Available CPUs:
+  ev4
+  ev5
+  ev56
+  ev6
+  ev67
+  ev68
+  pca56
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20231114235628.534334-2-gshan@redhat.com>
-[PMD: Reword subject, replace 'any' -> 'ev67' on linux-user]
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <20231114235628.534334-8-gshan@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- linux-user/alpha/target_elf.h | 2 +-
- target/alpha/cpu.c            | 7 ++-----
- 2 files changed, 3 insertions(+), 6 deletions(-)
+ target/alpha/cpu.h |  3 ---
+ target/alpha/cpu.c | 17 -----------------
+ 2 files changed, 20 deletions(-)
 
-diff --git a/linux-user/alpha/target_elf.h b/linux-user/alpha/target_elf.h
-index 344e9f4d39..b77d638f6d 100644
---- a/linux-user/alpha/target_elf.h
-+++ b/linux-user/alpha/target_elf.h
-@@ -9,6 +9,6 @@
- #define ALPHA_TARGET_ELF_H
- static inline const char *cpu_get_model(uint32_t eflags)
- {
--    return "any";
-+    return "ev67";
- }
- #endif
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index d672e911dd..ce806587ca 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -292,8 +292,6 @@ void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
+ int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int alpha_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ 
+-#define cpu_list alpha_cpu_list
+-
+ #include "exec/cpu-all.h"
+ 
+ enum {
+@@ -441,7 +439,6 @@ void alpha_translate_init(void);
+ 
+ #define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
+ 
+-void alpha_cpu_list(void);
+ G_NORETURN void dynamic_excp(CPUAlphaState *, uintptr_t, int, int);
+ G_NORETURN void arith_excp(CPUAlphaState *, uintptr_t, int, uint64_t);
+ 
 diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-index 39cf841b3e..91fe8ae095 100644
+index 83345c5c7d..b8ed29e343 100644
 --- a/target/alpha/cpu.c
 +++ b/target/alpha/cpu.c
-@@ -141,11 +141,8 @@ static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
-     typename = g_strdup_printf(ALPHA_CPU_TYPE_NAME("%s"), cpu_model);
-     oc = object_class_by_name(typename);
-     g_free(typename);
--
--    /* TODO: remove match everything nonsense */
--    if (!oc || object_class_is_abstract(oc)) {
--        /* Default to ev67; no reason not to emulate insns by default. */
--        oc = object_class_by_name(ALPHA_CPU_TYPE_NAME("ev67"));
-+    if (!oc || !object_class_dynamic_cast(oc, TYPE_ALPHA_CPU)) {
-+        return NULL;
-     }
+@@ -87,23 +87,6 @@ static void alpha_cpu_realizefn(DeviceState *dev, Error **errp)
+     acc->parent_realize(dev, errp);
+ }
  
-     return oc;
+-static void alpha_cpu_list_entry(gpointer data, gpointer user_data)
+-{
+-    ObjectClass *oc = data;
+-
+-    qemu_printf("  %s\n", object_class_get_name(oc));
+-}
+-
+-void alpha_cpu_list(void)
+-{
+-    GSList *list;
+-
+-    list = object_class_get_list_sorted(TYPE_ALPHA_CPU, false);
+-    qemu_printf("Available CPUs:\n");
+-    g_slist_foreach(list, alpha_cpu_list_entry, NULL);
+-    g_slist_free(list);
+-}
+-
+ /* Models */
+ typedef struct AlphaCPUAlias {
+     const char *alias;
 -- 
 2.41.0
 

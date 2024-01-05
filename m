@@ -1,110 +1,111 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp792118ejo;
-        Fri, 5 Jan 2024 07:44:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEqOdRikcEhJCQzw+HQ1Dd5K0xdrkf+kMIcUBfrrUTPxwQ+1rJK03ywuvelUAFmfrlNnJAd
-X-Received: by 2002:a05:6214:d66:b0:680:d1da:bcba with SMTP id 6-20020a0562140d6600b00680d1dabcbamr2940420qvs.112.1704469485558;
-        Fri, 05 Jan 2024 07:44:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469485; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp792155ejo;
+        Fri, 5 Jan 2024 07:44:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGuSKwZb5IcJ4vWPK/fvIgQs0LS4OvqhYVVxS3cceJtq5AFxe9cxLYT6EiY66Zi351V+nBP
+X-Received: by 2002:ae9:f81a:0:b0:77f:4e1b:4b03 with SMTP id x26-20020ae9f81a000000b0077f4e1b4b03mr2180918qkh.156.1704469490227;
+        Fri, 05 Jan 2024 07:44:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469490; cv=none;
         d=google.com; s=arc-20160816;
-        b=1J0NX7r3Rt0WgqvLF2+RcXpkMGeIYcGBkpOZ6Wm2kJ0S930BtZAo821t+MKB4/HCoR
-         exnunp1xb8PuoMt1BH8zy6bMpgaEexw0jxHwcxYPlU5y307iKBDxaLK2weQWBiXikBv1
-         liyl+Zz/3HbbjXq3drb0KJdrF13+b0G5nZMa+GgcZ59Qhi7yj1uMA7GbBeaLBNDckvWC
-         PC8yFJ+CzVo6xQdek859nlQPSL6a6SKhNRhICBbfCnlAnutTc8zzBAa7oQBRJqeJ3IFR
-         zL+z7jXYt404obuOzxfOW7wx7k/6b79urTTHwWpPA1Cp6F3Qd9eRjb6UwzZ+6LbNhi7G
-         U+Lg==
+        b=0Z6lS8Z0dThunQa5Q6fdKWcaHazlMf8vbprH43qWClfJVfXbKnjSqSVLnwt3dBd3Y3
+         BULrHBnd8SEz95703gxfji9KCeUinoFIHTHyLs6/K9du6cqHOw+38j2Dk9qm+PAeavyE
+         BUz0CQ5NZIGEqCo3pvFmgAyv/tEh1Kd+VOw5Nf90BcXgqhDhY2prTEaGbQW4q935kMxp
+         PhnWbz5v7F8NgGKQ8Fja0xgFTrTTWt9R1zFdnRmnBlfbj6gTc/LyPzKQFEI5cQJBNh7x
+         FoYisa2NZP5euinizxNWAxFNRxYlw+RwsULEfhKD/qYQzuoMStrrpngDf6dM4NG2Oybn
+         pPvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=eJb6ytKuwy0SF9EvoPkrRPYTidmv1mDxbmTN6G8AydI=;
-        fh=E3k/bJOAyn8KVkDcw46+fm61XnY03SPmE0lR/AkVOTI=;
-        b=HVSblqJ76gUt4nSRt3V73IldxlZqpythVbUxz7FHdk96hI2hz/CuUAFLGyEn+qCDr1
-         bInqHnAS45k97p4KEGUyRk91LotxYvxOCN4M1H5Xcojdaf+h7mbQ4PoRBZXW0Nx6l8fZ
-         rHe/NJrdyyLuKo85aeFkNx3609Ps2yysfZFtYpoAgeafpoPcc69qar5UtFHf55btDLgK
-         isw3Ior8XVdCFTBHUd6rFc14MilTrHPatOty6A8b7A06F5LtpafPzeNqTAQXTpHWMhLH
-         oAL+j6+9Yqnp1qONYN+AD13uL0auHwSgEIRgOk1BBiAYxppmT+Sk4p6lukq4FyNHTzyy
-         nfnA==
+        bh=7xMSbSX6JUqisE+ZC80AlkX0gZxRGpO/C3MZvmfxXXw=;
+        fh=V7uVG1DgPEiI/Dn5AyTMYxZqYu+WhPESNN5nDmV3BtE=;
+        b=jovK64G6p9G+gR5UigT26jDtRg6EuZzsrXoUKwP30yBghgvF08t/af7k8Gs+z6IYVg
+         OIJBn+II2Zc+SWuCdSXEwZWWM0LZ8vXojoO5sKAOx+UcHdiMFAYgDg9W2FHm01PgwfHm
+         pIgG+1rLi8Yh2xok3cVvCItLAVX2reMexz1a+eW/9byBempMCjAGQdGFVzMQ2RIyRbf3
+         73aUc5aMankxucOBwtzeuI0Uz1gK3wUsS8yIBNqmy8L6LOcIG2Ot+BiGy/WoArCzPpLX
+         cwXDL9taHB3kiO7XhfJepFHCXXScqtIIObOTHsFlW7u6quNfPpGHhRmvRYRz34Tq4DR0
+         kbdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cfSamfYJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LXY91qUU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y17-20020a0c9a91000000b006800ed678bfsi1938529qvd.314.2024.01.05.07.44.45
+        by mx.google.com with ESMTPS id ea11-20020a05620a488b00b00781634089c1si1982301qkb.521.2024.01.05.07.44.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:44:45 -0800 (PST)
+        Fri, 05 Jan 2024 07:44:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cfSamfYJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LXY91qUU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmMz-0005hF-6p; Fri, 05 Jan 2024 10:44:25 -0500
+	id 1rLmNC-0006lI-Tq; Fri, 05 Jan 2024 10:44:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMx-0005bT-SK
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:44:23 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmNA-0006UB-LY
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:44:36 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMw-0003I6-7a
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:44:23 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-40d5b89e2bfso16264585e9.0
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:44:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmN8-0003Kh-SO
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:44:36 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-40e3712d259so10384735e9.3
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:44:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469461; x=1705074261; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469473; x=1705074273; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=eJb6ytKuwy0SF9EvoPkrRPYTidmv1mDxbmTN6G8AydI=;
- b=cfSamfYJHvttQZI8Hlw7NrxUWt7IHcgswNdOC/7jRPSGjPJHXM1phYlj9ij4zeBhbY
- Cya5Vxqm9tOIKMuuQxXhllcdJ7fzv9wPQyab0cL0ToP63txI8j1McsX3uSDkobRUmi+M
- iqGXG3/WJwfa9d/J4w9pXLFuqaz2OKeBUp3bRHlq2Zc3kjfz5kyEHDZyWXOeAdPaOl0o
- yCMjFSoy+s4iboDDITIqpKbW53XQuhMNijTUSUTE0bZPbPRv8yc90prpbWYGU7otXYws
- 9n/huM3w2FpolaNrWj6MayhMopyZhsxHCh9btHLmZQAKa29BWrFwS9DdWYKZUKE7aPtL
- N7ag==
+ bh=7xMSbSX6JUqisE+ZC80AlkX0gZxRGpO/C3MZvmfxXXw=;
+ b=LXY91qUUH1TUmvuQBu09q4hAozPHbS2k9DAfDt+/kStq0aiWQuk8boP1tWxU2Iz0Mh
+ 2Z0HidpLfbAgEh17zxkdnnTO4ZQfFVJx4MHAnX3PKLxnNlSwXMUpnmQYfZgSZ5sOYVLZ
+ WpARwsXsNNln+7mHTjrtxAUXSVnFfHrsggqDP67xhFo7+v1Hf2ngjOz924Wxvl62fZxk
+ K8+Vik8J75c/9euLvAyAHXR2QUaervBwNX2FCxkN2I+UEF/F8ol+SFH8RFmvQmCUIsf4
+ 1FRXD9L4RLmCt1GABjhBFmDLrWAHa6Yf8iNcWA2PHyTfU/iAyZ17VvmWA0MRD9pkzCci
+ 0+FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469461; x=1705074261;
+ d=1e100.net; s=20230601; t=1704469473; x=1705074273;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eJb6ytKuwy0SF9EvoPkrRPYTidmv1mDxbmTN6G8AydI=;
- b=sFWx3v7mYudNPe7qDCEwqiPFxi/6pVhMV32Bd9ImGmq+l2yLskOq9NAornRA1OnMgo
- ZyUfuYwapebAs4BRksduneFKG5uJ0OLR44rQ3eQj+sJB9u8e2+hWkHwYTZJH2EnyKJLe
- h1LiR1RH6oAnmr1dGqn82L7EY3O+OC9tk+kSeewxhK/0zxBSIPVgARlQ9/pdBqH4Zppm
- 7IXnSnpDq2lCOKi4ikqUvENba+DQBbiJwQct890/rOGadCO8/5wjOqhTLTanpxSW/0lE
- u4c3RhFAYx4Zh50LK37j4edYHMSwOKMDZidwyqZ9wwgWxCtNvP6SO5sLUwkyiRFvJ5yF
- 3H6Q==
-X-Gm-Message-State: AOJu0Yy9F9z9OX1wyueYrHhJt/z750wwQ6+v12xDzHrMSqFoLujxagiS
- mnBSENvuQU1jhG2kgAaO/j6dc4mERPFu3A==
-X-Received: by 2002:a05:600c:a001:b0:40d:5e0e:8648 with SMTP id
- jg1-20020a05600ca00100b0040d5e0e8648mr1228913wmb.159.1704469460842; 
- Fri, 05 Jan 2024 07:44:20 -0800 (PST)
+ bh=7xMSbSX6JUqisE+ZC80AlkX0gZxRGpO/C3MZvmfxXXw=;
+ b=pHSuF8aM3FiHdXskGCXYFx0qBU/lP3g/q0p2q/QQpUP2+0udgWQYf0ZzsPVGOPOo2z
+ hUpXIz+PGRoYTwAYLU6Yfjn2mzDMCX5pYIvZtNhEZk/x3YgesCRVrcLocD93iAUsGk2r
+ 8rdkJcQm7FD/yy7krT2IAfTjnWynyIjeCCTASqcK/0WvDViwsrPdkYokGVxlKVCbMyjI
+ m0eMHMPo9ErWLLFFOTvS+6eSg43/DgcuGuGx2//Rwi7OlJStnPuXEbH347zuVO0aE4uw
+ wqQVYuiuF62fbjTQd9MWGdEZrQtqZAnTi3GAL7loiT6XxONVPh3M4t2DpkALyzDtcI48
+ vgoA==
+X-Gm-Message-State: AOJu0Yx55aq1+rt+Wp0dIUKqzNoyUG4TTwrSRhQ6GE0HneLpBtPVo2tl
+ B10HlpHg5RmlHq7qYWT9qy6RrslID+KahP0hpOt6mhRaFkY=
+X-Received: by 2002:a05:600c:19c7:b0:40c:2671:1553 with SMTP id
+ u7-20020a05600c19c700b0040c26711553mr827570wmq.36.1704469473620; 
+ Fri, 05 Jan 2024 07:44:33 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- l3-20020a5d4bc3000000b00336843ae919sm1609483wrt.49.2024.01.05.07.44.18
+ fm26-20020a05600c0c1a00b0040d5e53d7c3sm1972654wmb.23.2024.01.05.07.44.32
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:44:20 -0800 (PST)
+ Fri, 05 Jan 2024 07:44:33 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Gavin Shan <gshan@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 12/71] target/hppa: Use generic cpu_list()
-Date: Fri,  5 Jan 2024 16:42:05 +0100
-Message-ID: <20240105154307.21385-13-philmd@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 14/71] target/m68k: Use generic cpu_list()
+Date: Fri,  5 Jan 2024 16:42:07 +0100
+Message-ID: <20240105154307.21385-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,74 +127,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S2D4wZzGUq0R
+X-TUID: T8yzxxZsiqMG
 
 From: Gavin Shan <gshan@redhat.com>
 
-No changes in the output from the following command.
+Before it's applied:
 
-[gshan@gshan q]$ ./build/qemu-system-hppa -cpu ?
+[gshan@gshan q]$ ./build/qemu-system-m68k -cpu ?
+cfv4e
+m5206
+m5208
+m68000
+m68010
+m68020
+m68030
+m68040
+m68060
+any
+
+After it's applied:
+
+[gshan@gshan q]$ ./build/qemu-system-m68k -cpu ?
 Available CPUs:
-  hppa
-  hppa64
+  any
+  cfv4e
+  m5206
+  m5208
+  m68000
+  m68010
+  m68020
+  m68030
+  m68040
+  m68060
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20231114235628.534334-13-gshan@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20231114235628.534334-15-gshan@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/hppa/cpu.h |  3 ---
- target/hppa/cpu.c | 24 ------------------------
- 2 files changed, 27 deletions(-)
+ target/m68k/cpu.h    |  4 ----
+ target/m68k/helper.c | 40 ----------------------------------------
+ 2 files changed, 44 deletions(-)
 
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 8be45c69c9..fd659ca88b 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -402,7 +402,4 @@ G_NORETURN void hppa_dynamic_excp(CPUHPPAState *env, int excp, uintptr_t ra);
- 
- #define CPU_RESOLVING_TYPE TYPE_HPPA_CPU
- 
--#define cpu_list hppa_cpu_list
--void hppa_cpu_list(void);
--
- #endif /* HPPA_CPU_H */
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-index 1a5fb6c65b..e1f252cc45 100644
---- a/target/hppa/cpu.c
-+++ b/target/hppa/cpu.c
-@@ -164,30 +164,6 @@ static ObjectClass *hppa_cpu_class_by_name(const char *cpu_model)
-     return object_class_by_name(typename);
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 6cfc696d2b..d13427b0fe 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -556,8 +556,6 @@ static inline bool m68k_feature(CPUM68KState *env, int feature)
+     return (env->features & BIT_ULL(feature)) != 0;
  }
  
--static void hppa_cpu_list_entry(gpointer data, gpointer user_data)
--{
--    ObjectClass *oc = data;
--    CPUClass *cc = CPU_CLASS(oc);
--    const char *tname = object_class_get_name(oc);
--    g_autofree char *name = g_strndup(tname, strchr(tname, '-') - tname);
+-void m68k_cpu_list(void);
 -
--    if (cc->deprecation_note) {
--        qemu_printf("  %s (deprecated)\n", name);
+ void register_m68k_insns (CPUM68KState *env);
+ 
+ enum {
+@@ -576,8 +574,6 @@ enum {
+ 
+ #define CPU_RESOLVING_TYPE TYPE_M68K_CPU
+ 
+-#define cpu_list m68k_cpu_list
+-
+ /* MMU modes definitions */
+ #define MMU_KERNEL_IDX 0
+ #define MMU_USER_IDX 1
+diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+index 0a1544cd68..14508dfa11 100644
+--- a/target/m68k/helper.c
++++ b/target/m68k/helper.c
+@@ -29,46 +29,6 @@
+ 
+ #define SIGNBIT (1u << 31)
+ 
+-/* Sort alphabetically, except for "any". */
+-static gint m68k_cpu_list_compare(gconstpointer a, gconstpointer b)
+-{
+-    ObjectClass *class_a = (ObjectClass *)a;
+-    ObjectClass *class_b = (ObjectClass *)b;
+-    const char *name_a, *name_b;
+-
+-    name_a = object_class_get_name(class_a);
+-    name_b = object_class_get_name(class_b);
+-    if (strcmp(name_a, "any-" TYPE_M68K_CPU) == 0) {
+-        return 1;
+-    } else if (strcmp(name_b, "any-" TYPE_M68K_CPU) == 0) {
+-        return -1;
 -    } else {
--        qemu_printf("  %s\n", name);
+-        return strcasecmp(name_a, name_b);
 -    }
 -}
 -
--void hppa_cpu_list(void)
+-static void m68k_cpu_list_entry(gpointer data, gpointer user_data)
+-{
+-    ObjectClass *c = data;
+-    const char *typename;
+-    char *name;
+-
+-    typename = object_class_get_name(c);
+-    name = g_strndup(typename, strlen(typename) - strlen("-" TYPE_M68K_CPU));
+-    qemu_printf("%s\n", name);
+-    g_free(name);
+-}
+-
+-void m68k_cpu_list(void)
 -{
 -    GSList *list;
 -
--    list = object_class_get_list_sorted(TYPE_HPPA_CPU, false);
--    qemu_printf("Available CPUs:\n");
--    g_slist_foreach(list, hppa_cpu_list_entry, NULL);
+-    list = object_class_get_list(TYPE_M68K_CPU, false);
+-    list = g_slist_sort(list, m68k_cpu_list_compare);
+-    g_slist_foreach(list, m68k_cpu_list_entry, NULL);
 -    g_slist_free(list);
 -}
 -
- #ifndef CONFIG_USER_ONLY
- #include "hw/core/sysemu-cpu-ops.h"
- 
+ static int cf_fpu_gdb_get_reg(CPUM68KState *env, GByteArray *mem_buf, int n)
+ {
+     if (n < 8) {
 -- 
 2.41.0
 

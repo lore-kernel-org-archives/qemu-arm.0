@@ -1,112 +1,110 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp793851ejo;
-        Fri, 5 Jan 2024 07:47:47 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG2HwBWz/6MrBoviavZaSTsicrp3bNhz5yi6xIWfffCuh0IMtkOUPI+qCF+XEx7XHE9HBBP
-X-Received: by 2002:a05:620a:12d6:b0:781:d098:4c9f with SMTP id e22-20020a05620a12d600b00781d0984c9fmr2500899qkl.39.1704469667139;
-        Fri, 05 Jan 2024 07:47:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469667; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp794047ejo;
+        Fri, 5 Jan 2024 07:48:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEJY0SuSmahYkTVDq/bCKttYvAaP8bzc5Z/ADrRTcNm5/wzus8F+2xKpnPcdL/GMcZDzcRp
+X-Received: by 2002:a05:6808:d46:b0:3bc:1b09:d51c with SMTP id w6-20020a0568080d4600b003bc1b09d51cmr2771647oik.8.1704469687177;
+        Fri, 05 Jan 2024 07:48:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469687; cv=none;
         d=google.com; s=arc-20160816;
-        b=YCi2CfdbxAAgipW7vqOmMkDiIVRsWX70Nrtuis+7Qtu6nNI9qYywhM2ZetmCFU8u8X
-         F0rv5MwUObHusvkNLtQno0tSa4AeyjorWU7S1UxD8TJvysbt3ef0G39hc3GaT+sGlPPv
-         03VICcLlPsOiXnDs9/0UDx7flZCWzlbPgQKB+6fmh/eDrOvlI9b2aw7AXbGuglFY4P+Y
-         x+Q5mqn2o2atZM5JBBMoz65BECflTO3231eBS5NnwoaSzJCEU+WZihYx0CHn+FO2REhU
-         umfzQiGWwE9YW4/SQLlaE/McQH0oL/v75kF11OC7U3vzrZKYSnnVxtSL2Vq+PwMJ0Bq7
-         rpRw==
+        b=bw8dQXVb1TU3qu4R/G3M3/o36fel7GmKLb0q0bvQB9Pr8u9UFajOq9lt5zjoVLPTaw
+         F8X8oW2wgNWTdTe9+yyUZW2moGcwS3IoOC1rk3W+DjyUvYjecgKBcaRrxi2EPM9qZ/4r
+         smeCek43CJ4D/QkB4jIPNbFW5d6gBnW6sC6ANWdxTXO+jlAOlZq+AITuxo/NJu0SibMl
+         nh24pgd5NPIOS5YGx6DRKqLvs33lRVFu0DKcpA6+Cc3jUiQHAxo3QaZ6PA5o7pzBRgLn
+         sxEnLIXMB4/EHLMBEaYzzMfRl9iuxAGZ7R+U+kwSvDjwi924o/GkKHkW3nOo5jKo2Cac
+         okYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3jkeu47vffO/ERd6kLypsT3czQKlKT7aS4JG6Pky2DY=;
-        fh=td9QpBWgYy8BIxWFOzE6sPVwtXswtNuSqozG5aJoYjk=;
-        b=zrsZZQ03QI/OgCd/GPxea4CQjuNEyB+vdARN7R2ormEqhBPSEZDyoKgLJRQ3eqSoke
-         udTs5FJwkzKE0r55oVTIc/O5ZDlDVfsV8eYJjlp9UiB3fs4PgfFOKEjtMUmvuN1Rv7+q
-         ACmdZTN/BeAOPjtBLYuVqGowFk70c41GnM7I3TBHfQovIqJrJZLYIls7gyv+jHunsbEl
-         KuIRfDJW2LaNIyBGyrN0avjiY0/6KaoPuiECpMc1nIR7jijv+q8+4e++unxCZGi2kc0R
-         xGyYPCH6AbyKTk1RpOrTLGAfz259wCYabJrfurZbqn/JzWy1+032Esq4q5oU1xvkfthe
-         fhSQ==
+        bh=amIzVl4R3+PRNgzKiNHopIA/d217u9I/36YG2i2vTZM=;
+        fh=EffBFCgdZIL4LPk3Vbs/dTsBkj9cOUXHQrnKN2XKWQw=;
+        b=URNM30O4j6l8j0NnrKvynqX9Hd8P3FbrISnGijIC9bj20dreqTI0hRyx3k9rM572+g
+         rRpqXPmRGLbQCWbLHIMiLkHS/vrWVy3oMurCyzSM82Tt3675zVjb3S/HjEZnbrTdEd3F
+         87x2/2pnmCTs/1NWeMs6jTaCtgZJaVLIoCV7CHmbCSKTvl+7WabzpRlFSaqtnrz1eUxU
+         rKQ7Si8ASvJCEvZQkQqiz9IE8gyZWV39GBzY7OsL9Nh1pL1t2698nX0Q6P/GlSfIYHLh
+         5BZOI80kA3U+SNa22IVbL3JtjfJFpXYWcp0XZxe3skuplU6nwIyvcilxcspVxAfL7aO+
+         RneA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h9EycmOG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jo4c14uM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6-20020a05620a280600b0078158dfa71asi2068912qkp.665.2024.01.05.07.47.46
+        by mx.google.com with ESMTPS id u18-20020a0cf1d2000000b0067f5276bd62si1996083qvl.309.2024.01.05.07.48.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:47:47 -0800 (PST)
+        Fri, 05 Jan 2024 07:48:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h9EycmOG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jo4c14uM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLmPJ-0003j0-Fz; Fri, 05 Jan 2024 10:46:49 -0500
+	id 1rLmPC-0002zZ-CN; Fri, 05 Jan 2024 10:46:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmOa-0001iO-P6
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:46:06 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmO2-0001NS-NK
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:45:35 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmOU-0003mg-Tu
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:46:01 -0500
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-3367632ce7bso1226428f8f.2
- for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:45:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmNy-0003jr-PR
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:45:30 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-337520892f7so389818f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:45:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469549; x=1705074349; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469524; x=1705074324; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3jkeu47vffO/ERd6kLypsT3czQKlKT7aS4JG6Pky2DY=;
- b=h9EycmOGdrNO5rvwWd01oYWHv05fzv3TQOZuWVJE4irUf8D6knzOusi9vZM65kRooH
- BEm9jur62/mXsreihLsy0Ttwdqcp6z8LIde3lXEc6xdDoz/dJhY32YF4Yx1slTjbfU/y
- XD3f1tVWwy3d+lsa3TQD0TtFURSS4fvcSiW6s6TvHWtpQfgghuaCSAoCYOmBNKht3aDc
- HbttmLSi7tlKkplwsxdxnnhu8F/YZ8CS08Tea+Pwx49ZGs9oHyd0WCxZVjeKYSuGPluZ
- eZS8RDARtOWdy8jD9QopSseYJuZWLC0lSd3ghyYrIZM1d0AYuvJTLPHdmMbO6/Sj246l
- NDdA==
+ bh=amIzVl4R3+PRNgzKiNHopIA/d217u9I/36YG2i2vTZM=;
+ b=jo4c14uMlTmfF7eTggkWu51n178e1EZRoMEUHTEbJi2FO0JGfgbLcSV8d4fTEzouPc
+ uZ75aS29g4RJRozIdJQmXqC8F5pxlC32ao+vUeZZQFmdvgVHcLAXS1dC3AMCUOduJ0ir
+ Gv6cgk783qjPXF2Lrga1PYOFRfmRV2D6yOF+bw+JIitCKGkYolpU8pbN3onp4kRVHvdI
+ 3088w1Syvt1/9ce1RN3SbCkaJ09m8+0x2F+Kc1dgW0nV4TxFkMOOgPYfhDgZTMbIJ3b1
+ gs2Bvsz22P7LnoCCG4IHrvMA4IrbxeCidQU7fKV6M8fFIJuYDj7d7/j3bILKR/QYqJ1+
+ cYMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469549; x=1705074349;
+ d=1e100.net; s=20230601; t=1704469524; x=1705074324;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3jkeu47vffO/ERd6kLypsT3czQKlKT7aS4JG6Pky2DY=;
- b=mnWQtfd3l/bvBpKqBVhyLknSEAZPiqCju0tgYiqSuI12Xk5QMNE0TMRQARSgZEMZw+
- oAWH+LXKsmVieIFog6Dj/rh+hTYQ8sI+JhBvIwT/vSf7vTjRQAPBqMqHPp8UF6CklAj5
- wfxKID5wiasSXfhl/QMRYhmeuQxeEi/Lraaenxwt+SbFlqXbFafpRjRM1MACiWBpWYi9
- RvrLJ9CFOB1Os/MBXyjTHOy1xJ9XN5+XspbeJTLoNG8dJIfNKI/2FlwTOnobb5b+Vh5/
- uXOk/70PykpNsAyc+lztUomkBYWZNh9Ck38Apm3b40hO5ZrwH7n4MoQD3ve9KqQC9JnQ
- bGlg==
-X-Gm-Message-State: AOJu0Yy5m2FNcFjoy/RwZn9vaRL9cLL7I6ALsYH7Noz78XH3Lk4rwU5s
- vWZ3mbs5a88I3tCrkLta8Hl9KpsNcW5FUTC+Sqok4rs1z1A=
-X-Received: by 2002:a5d:5227:0:b0:337:5588:801f with SMTP id
- i7-20020a5d5227000000b003375588801fmr1201012wra.57.1704469549409; 
- Fri, 05 Jan 2024 07:45:49 -0800 (PST)
+ bh=amIzVl4R3+PRNgzKiNHopIA/d217u9I/36YG2i2vTZM=;
+ b=S6jJF0RF2PZnNOsZ6PTMUyorqqSBYzVyGRK2lPXIT2tT87fQ+/TznuZ7EKYbD/Ao0G
+ H8Cm839ZILGWOFROY8DjpOXV/IbbZg9t/0pyLgcWfBXvLqf3txF76ifwMnDKwpHw2D7z
+ YGeDORQ2xLncKikNVOJYNJiy14uLXRhs62cXSuZLIDo5M4h/g2NWrrEygj2vlOeKpWjy
+ kgjA7HZuKbifcl3i+AEbbNdi8MypphEClZbJflFdAdLE2owbPwIA+DUdQ2HJwFrbYjem
+ qDvw7D7AvzgxAHB1QWv0BdoCe7Y82VFDyxNbVkyUFaXaLecKUY7egISEdp70Uv/w7sWd
+ 7Q4w==
+X-Gm-Message-State: AOJu0YxO0m7VRtle7sok6ZWfrESdNMIcNsto0Flbrh5XDXvaokCOY32O
+ fwv+u9ZFXH4bN4Rhl/zCJYQKmOnMsijlZGv4Vf6l22RRhSg=
+X-Received: by 2002:a05:600c:34c7:b0:40d:5ae4:a487 with SMTP id
+ d7-20020a05600c34c700b0040d5ae4a487mr1247589wmq.25.1704469524057; 
+ Fri, 05 Jan 2024 07:45:24 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- d7-20020adfe2c7000000b00336d24b4847sm1592885wrj.114.2024.01.05.07.45.48
+ w15-20020adfe04f000000b00336471bc7ffsm1592013wrh.109.2024.01.05.07.45.22
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:45:49 -0800 (PST)
+ Fri, 05 Jan 2024 07:45:23 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Gavin Shan <gshan@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 23/71] hw/core: Add machine_class_default_cpu_type()
-Date: Fri,  5 Jan 2024 16:42:16 +0100
-Message-ID: <20240105154307.21385-24-philmd@linaro.org>
+ Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PULL 21/71] target/xtensa: Use generic cpu_list()
+Date: Fri,  5 Jan 2024 16:42:14 +0100
+Message-ID: <20240105154307.21385-22-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,71 +126,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dWuwZDAX1n2f
+X-TUID: TkbnEHv7F6zv
 
-Add a helper to return a machine default CPU type.
+From: Gavin Shan <gshan@redhat.com>
 
-If this machine is restricted to a single CPU type,
-use it as default, obviously.
+Before it's applied:
 
+[gshan@gshan q]$ ./build/qemu-system-xtensa -cpu ?
+Available CPUs:
+  test_mmuhifi_c3
+  sample_controller
+  lx106
+  dsp3400
+  de233_fpu
+  de212
+  dc233c
+  dc232b
+
+After it's applied:
+
+[gshan@gshan q]$ ./build/qemu-system-xtensa -cpu ?
+Available CPUs:
+  dc232b
+  dc233c
+  de212
+  de233_fpu
+  dsp3400
+  lx106
+  sample_controller
+  test_mmuhifi_c3
+
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Message-ID: <20231114235628.534334-22-gshan@redhat.com>
+[PMD: Split patch in 2, only include the "Use generic cpu_list" change]
+Message-ID: <51ffd060-b2f8-405c-83e1-a0663c0183f5@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20231116163726.28952-1-philmd@linaro.org>
 ---
- include/hw/boards.h | 6 ++++++
- hw/core/machine.c   | 8 ++++++++
- system/vl.c         | 2 +-
- 3 files changed, 15 insertions(+), 1 deletion(-)
+ target/xtensa/cpu.h    | 3 ---
+ target/xtensa/helper.c | 9 ---------
+ 2 files changed, 12 deletions(-)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 8af165f4dc..bcfde8a84d 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -24,6 +24,12 @@ OBJECT_DECLARE_TYPE(MachineState, MachineClass, MACHINE)
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index dd81729306..d9c49a35fa 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -600,8 +600,6 @@ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+                                                MMUAccessType access_type, int mmu_idx,
+                                                uintptr_t retaddr);
  
- extern MachineState *current_machine;
+-#define cpu_list xtensa_cpu_list
+-
+ #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
  
-+/**
-+ * machine_class_default_cpu_type: Return the machine default CPU type.
-+ * @mc: Machine class
-+ */
-+const char *machine_class_default_cpu_type(MachineClass *mc);
-+
- void machine_add_audiodev_property(MachineClass *mc);
- void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp);
- bool machine_usb(MachineState *machine);
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 2699bcba53..0198b54b39 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1390,6 +1390,14 @@ out:
-     return r;
+ #if TARGET_BIG_ENDIAN
+@@ -626,7 +624,6 @@ void check_interrupts(CPUXtensaState *s);
+ void xtensa_irq_init(CPUXtensaState *env);
+ qemu_irq *xtensa_get_extints(CPUXtensaState *env);
+ qemu_irq xtensa_get_runstall(CPUXtensaState *env);
+-void xtensa_cpu_list(void);
+ void xtensa_sync_window_from_phys(CPUXtensaState *env);
+ void xtensa_sync_phys_from_window(CPUXtensaState *env);
+ void xtensa_rotate_window(CPUXtensaState *env, uint32_t delta);
+diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
+index dbeb97a953..f6632df646 100644
+--- a/target/xtensa/helper.c
++++ b/target/xtensa/helper.c
+@@ -234,15 +234,6 @@ void xtensa_breakpoint_handler(CPUState *cs)
+     }
  }
  
-+const char *machine_class_default_cpu_type(MachineClass *mc)
-+{
-+    if (mc->valid_cpu_types && !mc->valid_cpu_types[1]) {
-+        /* Only a single CPU type allowed: use it as default. */
-+        return mc->valid_cpu_types[0];
-+    }
-+    return mc->default_cpu_type;
-+}
- 
- void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp)
- {
-diff --git a/system/vl.c b/system/vl.c
-index 6b87bfa32c..fbdf8bd55a 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -3737,7 +3737,7 @@ void qemu_init(int argc, char **argv)
-     migration_object_init();
- 
-     /* parse features once if machine provides default cpu_type */
--    current_machine->cpu_type = machine_class->default_cpu_type;
-+    current_machine->cpu_type = machine_class_default_cpu_type(machine_class);
-     if (cpu_option) {
-         current_machine->cpu_type = parse_cpu_option(cpu_option);
-     }
+-void xtensa_cpu_list(void)
+-{
+-    XtensaConfigList *core = xtensa_cores;
+-    qemu_printf("Available CPUs:\n");
+-    for (; core; core = core->next) {
+-        qemu_printf("  %s\n", core->config->name);
+-    }
+-}
+-
+ #ifndef CONFIG_USER_ONLY
+ void xtensa_cpu_do_unaligned_access(CPUState *cs,
+                                     vaddr addr, MMUAccessType access_type,
 -- 
 2.41.0
 

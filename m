@@ -1,119 +1,122 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp794230ejo;
-        Fri, 5 Jan 2024 07:48:30 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHcjAZh+N+B8x4B0vriDNFXLHJgQOfVat5JTwAI1E7GbQtm1PXzZ06AJooJ+coQNZc+Vv9O
-X-Received: by 2002:a05:620a:bd4:b0:781:61c:2398 with SMTP id s20-20020a05620a0bd400b00781061c2398mr2833269qki.56.1704469710760;
-        Fri, 05 Jan 2024 07:48:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469710; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp794238ejo;
+        Fri, 5 Jan 2024 07:48:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFPJAGC/2JwyeKKSTX2DSdieQFaM7Q6WuJjJzbIvgrdMHOQ6R2N73NM7j5ajdAr6Qm63VUM
+X-Received: by 2002:a05:620a:47d2:b0:781:df48:3d7d with SMTP id du18-20020a05620a47d200b00781df483d7dmr2249404qkb.9.1704469711278;
+        Fri, 05 Jan 2024 07:48:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469711; cv=none;
         d=google.com; s=arc-20160816;
-        b=eXMRWEq349KhDVVjORQqoO8AbtgQV/qWcmMDBaKwPW6p0rIWsAavUU6At26Po32ThZ
-         nx8OfjVM+kepYmUgvfyB4R6qGUsmpi6l1iFIbX2YIf8wP6e1557euUqZT84PF9PqIWun
-         2aFzC81m61QZFyNWcKFheXanIbaeEecLp5rjIU3siy67gdRpF1BawOmRmmEVU1FXeAZ1
-         BGvqhtNmJ2GDrnnHzJ1gjaw61y954M9xv8S/WqiH2TqBHfq32Ttl3d12bATEr68mGUwo
-         yHRgUgzEkEVsvX1oTes9fCOeHTfA2vslpGjUiCum31DbuERT9a0C8rKDVIAsRRnnJ6sF
-         miOQ==
+        b=t/Myxm54xD1BXBAushaITyM/EAE+a9GCyUA6YuhoOzODqBEiXLIdRE6l2tzw3cWYJP
+         FRhdc+AlbNJ4AhthUKEu60SQ84GKB1jqyJhv/AwwVpc8d3GSavFra8iafEerMpUSXP8w
+         zH0oZGVq7ixMA+pYNiKTe5qOw9D2SC1SQV2YwfEGScV3vGRpJ3gIXIPNyuAqfiFlVxmy
+         m9PjOFKptDpm7kp9aTzereLRgNAJ2pG7N6vSZIIv+AgZaxx6EcbU1D1GxO/pzjoYL1vc
+         3pbnVnrBFSPRKHE08t/YXO6IR5fMjAqHTVvjNeW+hO5M9HdQ4Woy6dDSUf3UjZ/0mVm2
+         o5Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Z1uFhaGSAXCVtK5H8w3hTtFzEkQOw8kna05bCiblS/M=;
-        fh=3nCCaiiW3tvaCvW7R3dnb3A1HVjFyaxnPEYthLbnaW4=;
-        b=F7FcEpZThmNJh3DLu84mvBciattOI98e5qM5jJnpMSlQzNp8eDtKwU/sqBO7EfrJnQ
-         vwrVGS3tKQQlz223U2ZJ/F3MSz1W62ZHljf8h4yXhp87fl2RV8sf7heMB00YJAkhTmKW
-         TaeupLmmpE0M/KUDDa0S5IHmnpBt7KIXvehVhqBH64dLRN7ioRTS09Vi6vA6bBd2jZGp
-         8ov9RK9nx52UaY3Rr3lb4rA3c1u6i2JnT0zUY4rvt1MC2GC1EbqHLtJmB1LNlGbWnZCY
-         bPBd/7YWoK2RcMb4YtWFstEPzHC9isAG3xJNxRlu64zWZ4GWldZREEjom3dOfFA89TLZ
-         1Qcw==
+        bh=H4P3qee4jFL51Nbb/746jQf4mN+fePYfOB7VeiIaJ9s=;
+        fh=5Ta8+zkVYsUaAj/mRnVEpKYttBANBvhDfDKAxLPIHLM=;
+        b=JIy6wLeHgY+aL88ixNJJIjmwTEfL2fhHn4sDiTIByNfigfdk1TMUrEpPpmM5VoalA2
+         MT/e4GJcOK72ZVoR3A4lZvDUxSosqMhohQpD/P2LdY40+Pl7DXA8nvfT1RlsjsDm3oMg
+         aXz1ixz/mfZjtD4/UsBhx+NvUWIIhV2xXiPBP+FNuzjnbE8dJy0QPTW8SHqRLfKrlx/M
+         x8LpteS0YJHlWxcGVKhmKISVGbmNURtV+aaE6haSVseyARjlgAq+s4k6GfF+p6aLD3iw
+         zqSA6TXb425jta+S6GtNdNJUGWHd/6TjNyJ68ffe3PzB3VOJHm9OKReFY+h0re9ED3fn
+         bgoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f+PT+rUv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kkwah4b1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id po8-20020a05620a384800b00781dde92148si1849068qkn.595.2024.01.05.07.48.30
+        by mx.google.com with ESMTPS id i9-20020a05620a404900b007830d587161si628746qko.593.2024.01.05.07.48.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:48:30 -0800 (PST)
+        Fri, 05 Jan 2024 07:48:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f+PT+rUv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Kkwah4b1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmPJ-0003qf-Fv; Fri, 05 Jan 2024 10:46:49 -0500
+	id 1rLmQS-0008R5-HC; Fri, 05 Jan 2024 10:48:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmOc-0001mD-QG
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:46:06 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmPQ-0004Ku-T2
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:46:58 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmOa-0003nw-HA
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:46:06 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-40d3352b525so16183225e9.1
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:46:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmPJ-0003y4-76
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:46:55 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-33748c4f33dso1401696f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:46:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469561; x=1705074361; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469608; x=1705074408; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Z1uFhaGSAXCVtK5H8w3hTtFzEkQOw8kna05bCiblS/M=;
- b=f+PT+rUvYR9fqDBm8gjVu32P9inyKy7hXUYxxSF8Nm5iMU6IIL/QaayarcXkX86jN0
- ddqtdXG29N9ymQdvb/Q4DIkDf7qtkmW5KtkNRv8wBMVR/dqD8yCg8HuVmZiooWz8kYW+
- T4EVbq3y1P8OdhUnDoWCgionN9RQoFVQ/lxWP14p5UwHRKDzgO4AT9HWSOip9AeOXb7g
- MwAZsFozCxcCk0Qf/kqrZ07wOE7Kyy6RyBgfXUaqTyzdQkv8dVOpjegVm8iHvXDVuRNp
- 3AL5ocMUl6zbxkiD/5bqwyJXiLtsffKsBzSFPyoPVcYbZeMBYduoLC7oF93QCrbRwaWg
- F1TA==
+ bh=H4P3qee4jFL51Nbb/746jQf4mN+fePYfOB7VeiIaJ9s=;
+ b=Kkwah4b1tougeMRIpTCAQAwZ9p+kwT5uP9F0d1TekDZxKNFruCjHlyyMhiRX/Eaq5Y
+ 620c6kZHtKSeyiKEdKRLGJpUM+wRdzTLIY1sAWXrDEbW9OnKXBKyPrVdxXOGm5aIiCEV
+ EThdXcWqHbRbHXDHBIXJ/REptiyqGo5hX5F+fFLoCxiIC6puZ/cTTiP9sdNeBeuBGtWe
+ EYROdmlU8GkXnBy1y0PhRsD9TiIIMQsRoqLeqGFXFc/x8sYh/Aew/MXHLuAi8H7WhNwz
+ gRT3HYkCGkE3vheDOhyo7w8g+XACjxGXEIa0DMGezH5n5CPlcoVZQGPTX6CNyAzXrRGe
+ wZRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469561; x=1705074361;
+ d=1e100.net; s=20230601; t=1704469608; x=1705074408;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Z1uFhaGSAXCVtK5H8w3hTtFzEkQOw8kna05bCiblS/M=;
- b=wza+M3Gczh8wAVaAM1M7i0NFkh4CuftEuj1KaM/wUYb5d++Pnwho5xFxEx1Er2fri8
- raCXvugjWm8gN8GGhCe6pU/Ir5jUGbTgI9aGjtRbslpraBZhaOb6uVnJwM10kRQCDkRb
- 3KyzC9GHCT7P6vte30P58v/uA5HHGLn05Xv01TdEoYRaLOznlt9ezK8aJKynFbKga6gY
- cBbgH29EDvOoAGLi3Rl75AE/edmL5u+g07RF3QtLHx1wME/xtyuekrQrjx+XtIk/7ed7
- KoJHL+BCfDopet3D4c6NNhia0L4hdWaJnk3nTpzwRqcrb0uLD6hAV1YfsAhGZLiqP6Wq
- JN5A==
-X-Gm-Message-State: AOJu0Yyugeph8cPB3zrLgBhnXW6xC/FTgmsXwkeisi50a8s1UHaLlnsq
- R8pNhmHB6RyphlfDI2PytlqNjBXi0WfH9w==
-X-Received: by 2002:a05:600c:3b95:b0:40e:3532:2f6f with SMTP id
- n21-20020a05600c3b9500b0040e35322f6fmr1208080wms.182.1704469560809; 
- Fri, 05 Jan 2024 07:46:00 -0800 (PST)
+ bh=H4P3qee4jFL51Nbb/746jQf4mN+fePYfOB7VeiIaJ9s=;
+ b=H821kkFsY3NvIfhVMOkxXhpKK4y0z6y3LoC887+4RuD/yRWg67w/7cN8OcT93pcHJz
+ knLR1Q9Hqjhc9bGzdrsLMYGlZpfKhOn2NerYSSVhPee4yumLcXOElbxFkLPx7+76aJnD
+ hco5aJVM4MVlnfkWTLYwEH6AvV8Y43PuFV5OWg4B9uYzya/7+dy97JaL26eGyFvj0gKa
+ 4RP9+ImtqMLlBOuaEc4CR5a7Uo5KqlF16EDtYy3H6JYaGoCjDTmMXE5A0GxPfsl2ZPdC
+ xPc2/U5GexquCpvrgZbz54+k6FoJvUEpSsO+0Uv83z4blHgqxuXQOz2nHHkiFHKLlwIk
+ Pibw==
+X-Gm-Message-State: AOJu0Yxv65fCKhe31/wOlvkngyUfepsQs6jXahjb0KYmii/9rYr984fe
+ KxFNvRc3RaBdIt82YX53eoQ/EBsuN63oGA==
+X-Received: by 2002:a05:6000:1972:b0:337:4221:5525 with SMTP id
+ da18-20020a056000197200b0033742215525mr1273664wrb.46.1704469607760; 
+ Fri, 05 Jan 2024 07:46:47 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- f13-20020a05600c154d00b0040e3635ca65sm1945854wmg.2.2024.01.05.07.45.59
+ d18-20020adff2d2000000b003374d8306cesm1606073wrp.86.2024.01.05.07.46.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:46:00 -0800 (PST)
+ Fri, 05 Jan 2024 07:46:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Gavin Shan <gshan@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PULL 25/71] machine: Introduce helper is_cpu_type_supported()
-Date: Fri,  5 Jan 2024 16:42:18 +0100
-Message-ID: <20240105154307.21385-26-philmd@linaro.org>
+ Vijai Kumar K <vijai@behindbytes.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: [PULL 32/71] hw/riscv/shakti_c: Check CPU type in
+ machine_run_board_init()
+Date: Fri,  5 Jan 2024 16:42:25 +0100
+Message-ID: <20240105154307.21385-33-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,134 +131,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fnzxYYGsLzIW
+X-TUID: t8d/psxwSXrY
 
 From: Gavin Shan <gshan@redhat.com>
 
-The logic, to check if the specified CPU type is supported in
-machine_run_board_init(), is independent enough. Factor it out into
-helper is_cpu_type_supported(). machine_run_board_init() looks a bit
-clean with this. Since we're here, @machine_class is renamed to @mc to
-avoid multiple line spanning of code. The comments are tweaked a bit
-either.
-
-No functional change intended.
+Set mc->valid_cpu_types so that the user specified CPU type can
+be validated in machine_run_board_init(). We needn't to do it
+by ourselves.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20231204004726.483558-3-gshan@redhat.com>
-[PMD: Only call new helper if machine->cpu_type is not NULL]
+Message-ID: <20231204004726.483558-10-gshan@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/core/machine.c | 84 ++++++++++++++++++++++++++---------------------
- 1 file changed, 46 insertions(+), 38 deletions(-)
+ hw/riscv/shakti_c.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 1898d1d1d7..0119b11fc8 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1399,12 +1399,53 @@ const char *machine_class_default_cpu_type(MachineClass *mc)
-     return mc->default_cpu_type;
- }
+diff --git a/hw/riscv/shakti_c.c b/hw/riscv/shakti_c.c
+index 12ea74b032..3888034c2b 100644
+--- a/hw/riscv/shakti_c.c
++++ b/hw/riscv/shakti_c.c
+@@ -28,7 +28,6 @@
+ #include "exec/address-spaces.h"
+ #include "hw/riscv/boot.h"
  
-+static bool is_cpu_type_supported(const MachineState *machine, Error **errp)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    ObjectClass *oc = object_class_by_name(machine->cpu_type);
-+    CPUClass *cc;
-+    int i;
-+
-+    /*
-+     * Check if the user specified CPU type is supported when the valid
-+     * CPU types have been determined. Note that the user specified CPU
-+     * type is provided through '-cpu' option.
-+     */
-+    if (mc->valid_cpu_types) {
-+        for (i = 0; mc->valid_cpu_types[i]; i++) {
-+            if (object_class_dynamic_cast(oc, mc->valid_cpu_types[i])) {
-+                break;
-+            }
-+        }
-+
-+        /* The user specified CPU type isn't valid */
-+        if (!mc->valid_cpu_types[i]) {
-+            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
-+            error_append_hint(errp, "The valid types are: %s",
-+                              mc->valid_cpu_types[0]);
-+            for (i = 1; mc->valid_cpu_types[i]; i++) {
-+                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
-+            }
-+
-+            error_append_hint(errp, "\n");
-+            return false;
-+        }
-+    }
-+
-+    /* Check if CPU type is deprecated and warn if so */
-+    cc = CPU_CLASS(oc);
-+    if (cc && cc->deprecation_note) {
-+        warn_report("CPU model %s is deprecated -- %s",
-+                    machine->cpu_type, cc->deprecation_note);
-+    }
-+
-+    return true;
-+}
-+
- void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp)
- {
-     ERRP_GUARD();
-     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
--    ObjectClass *oc = object_class_by_name(machine->cpu_type);
--    CPUClass *cc;
+-
+ static const struct MemmapEntry {
+     hwaddr base;
+     hwaddr size;
+@@ -47,12 +46,6 @@ static void shakti_c_machine_state_init(MachineState *mstate)
+     ShaktiCMachineState *sms = RISCV_SHAKTI_MACHINE(mstate);
+     MemoryRegion *system_memory = get_system_memory();
  
-     /* This checkpoint is required by replay to separate prior clock
-        reading from the other reads, because timer polling functions query
-@@ -1459,42 +1500,9 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
-         machine->ram = machine_consume_memdev(machine, machine->memdev);
-     }
- 
--    /* If the machine supports the valid_cpu_types check and the user
--     * specified a CPU with -cpu check here that the user CPU is supported.
--     */
--    if (machine_class->valid_cpu_types && machine->cpu_type) {
--        int i;
--
--        for (i = 0; machine_class->valid_cpu_types[i]; i++) {
--            if (object_class_dynamic_cast(oc,
--                                          machine_class->valid_cpu_types[i])) {
--                /* The user specified CPU is in the valid field, we are
--                 * good to go.
--                 */
--                break;
--            }
--        }
--
--        if (!machine_class->valid_cpu_types[i]) {
--            /* The user specified CPU is not valid */
--            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
--            error_append_hint(errp, "The valid types are: %s",
--                              machine_class->valid_cpu_types[0]);
--            for (i = 1; machine_class->valid_cpu_types[i]; i++) {
--                error_append_hint(errp, ", %s",
--                                  machine_class->valid_cpu_types[i]);
--            }
--
--            error_append_hint(errp, "\n");
--            return;
--        }
+-    /* Allow only Shakti C CPU for this platform */
+-    if (strcmp(mstate->cpu_type, TYPE_RISCV_CPU_SHAKTI_C) != 0) {
+-        error_report("This board can only be used with Shakti C CPU");
+-        exit(1);
 -    }
 -
--    /* Check if CPU type is deprecated and warn if so */
--    cc = CPU_CLASS(oc);
--    if (cc && cc->deprecation_note) {
--        warn_report("CPU model %s is deprecated -- %s", machine->cpu_type,
--                    cc->deprecation_note);
-+    /* Check if the CPU type is supported */
-+    if (machine->cpu_type && !is_cpu_type_supported(machine, errp)) {
-+        return;
-     }
+     /* Initialize SoC */
+     object_initialize_child(OBJECT(mstate), "soc", &sms->soc,
+                             TYPE_RISCV_SHAKTI_SOC);
+@@ -82,9 +75,15 @@ static void shakti_c_machine_instance_init(Object *obj)
+ static void shakti_c_machine_class_init(ObjectClass *klass, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(klass);
++    static const char * const valid_cpu_types[] = {
++        RISCV_CPU_TYPE_NAME("shakti-c"),
++        NULL
++    };
++
+     mc->desc = "RISC-V Board compatible with Shakti SDK";
+     mc->init = shakti_c_machine_state_init;
+     mc->default_cpu_type = TYPE_RISCV_CPU_SHAKTI_C;
++    mc->valid_cpu_types = valid_cpu_types;
+     mc->default_ram_id = "riscv.shakti.c.ram";
+ }
  
-     if (machine->cgs) {
 -- 
 2.41.0
 

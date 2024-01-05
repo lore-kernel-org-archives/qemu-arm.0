@@ -1,117 +1,119 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp796160ejo;
-        Fri, 5 Jan 2024 07:52:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFvumAGJqUDjW5YDg1pGV4KlTAJF1PGmxFPyY3lvmYNCVF93CYxZLbaLrgp7i6PSkd3YpoO
-X-Received: by 2002:a4a:988e:0:b0:596:26a2:9f12 with SMTP id a14-20020a4a988e000000b0059626a29f12mr2005514ooj.10.1704469927904;
-        Fri, 05 Jan 2024 07:52:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469927; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp796386ejo;
+        Fri, 5 Jan 2024 07:52:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG4nTtKTrwg8oYOQ5qSOVb4b3IaWaRc2Qpij7B3dggLA/XOyb29IwVPNcOphFIOJyDcrj3b
+X-Received: by 2002:a05:622a:512:b0:425:4043:41c9 with SMTP id l18-20020a05622a051200b00425404341c9mr2248839qtx.117.1704469955495;
+        Fri, 05 Jan 2024 07:52:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469955; cv=none;
         d=google.com; s=arc-20160816;
-        b=vhu8UKzuUYT6Pl1QJW5wMIsXUvkU1GyyJ8zkFr/uIwjh39TxTfw54l3LeTA60Iu0wf
-         RSUApJG5u4NGlr5iWKu0bY5vsbihO0+08dSlR9t2dOevqQ3sVjEN30s6XQFIgJumamkP
-         o1fSvmhFBIf4ZJD5qzgfSFMuOdzeiBDLKHrsX71eRsYB9QVsdtmCBg8w3jF7pAGXfvG4
-         qYok/29qIi6Z8C1a0mnbW/HusLh0EAeH+2q6wVbNSj7o0hh/eJ3lUavJ+Y8yL/Ui6uV8
-         JpkEChZBWgUPywUSAb2IFlb0W7sydSisBKwaTleQAa6BNwesESRQee3nAYFB3bwvW9kr
-         WLfQ==
+        b=XYK+MebEFKY0XKQSZRfWUbrX4VsAvLiJXbsxVEeIsukL7KVyGcphDjV+TuiVGDXcHP
+         6okcxGubQt3LVx4arMda3mVD5/aCA1LBL76Pd5jGoXESGOZqS6MbJnWyoGpq0l/7qz4Y
+         0L3nSEY90mz4M9Yi9FAZ1TUuUKw/fDUDeUQiHaW8d8U/8apz1FTR92aUjGPvMzLfv8An
+         G3VkcbeDecQsD6Rw2dJd668TqZp/SPfrwnakiPItx5fr73k+s8GL0In8/kx5bJ09/IR8
+         WWbjj9LfypQo7C2N4omzLFq8oG2Q3P78Mn5U6yEHw5jgsh6SHrIay3rF9Ien2NYn6Mjr
+         PFgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iQqVZQAplGXwt087ddAaGknca/07pmUL/gFu1d2+27U=;
-        fh=cQ2FfVt2/IZC0ZMISg8I4sbY1PJjpClPDf1skqRY4EQ=;
-        b=CjSSjIIpPcOV3LKZAivSp2Vm9KqIKfWrozmY2URM0yo2P2P45GrHj2eIZbNqHymkD4
-         bNhNSnZIKpzw+0xHMRllocBD0X3uc+38oCthrkRLi+pki6NaUyUss6AUa5wje95IEyrj
-         0WRe8wIMayXObjQwO7HsaN6PebIKbeKWi073UZzplnmjAxmOcWyDsM1g5ikEiNpkeGUR
-         lfx8gyfhxoA2XK3UElJ1+CBcrc9F3oTwUIPKbY/nVS0SvWRfJUtjL5BvrgdZI/PEGsL+
-         8QHDDBbe0d6bSO95I6ZIpsGu9VUoTHcsJgYBq5HVwDJ1MGvMRGZFlgWNKHkh28sx3yAj
-         G4Dw==
+        bh=/MHct3O8aNA/2/UVwnbSfbe+2Bg3uf1okl2NSMgEytw=;
+        fh=9e/GdPOc9kaFcZwUUs4wJrMLrLita2N4fbrPz9ApZsQ=;
+        b=aYHVWlJJ7nHOuOfDe1tXDk1kb+F2FnsjVQD+FPdZ+3ChJ4c6xhw0x8bjlq3hWQYEeq
+         9cGoKX+J/eYejc6KGue4K4uzgHVbzrehcLMa9IpbMVsjDiVEAVl5xPO+avZ6pm0+3alB
+         WsKQrFU1eu048khIgKUQu46ASDPEW87QTUwdorv70jWyvX4UP3XzftaEsZSaMKZ5IbZh
+         pJJwET+7e+ccEF1mqwRtxwE7zAUTBnu2jAI0kiYsBLeOLxj9OSNNRFxcURYpskKZWyyB
+         APYx2tWMmszFLGQyTtSMDF+rQPP/LoqFt3VXOu0hDcuiC1aflFHolU2+ZJpb3nmmkWiE
+         4cpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rBQ6eBIX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RDI1Rcxa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f30-20020a05622a1a1e00b004236fb00c24si2045341qtb.674.2024.01.05.07.52.07
+        by mx.google.com with ESMTPS id f20-20020a05622a1a1400b004297c73fcc4si722364qtb.407.2024.01.05.07.52.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:52:07 -0800 (PST)
+        Fri, 05 Jan 2024 07:52:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rBQ6eBIX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RDI1Rcxa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmQj-0000a7-Dc; Fri, 05 Jan 2024 10:48:20 -0500
+	id 1rLmSh-0001EH-49; Fri, 05 Jan 2024 10:50:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmPs-0005aA-Dk
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:47:26 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmRX-00064q-3o
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:49:07 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmPp-00047R-Lx
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:47:22 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-3368d1c7b23so1308992f8f.0
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:47:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmRT-0007JM-SB
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:49:06 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-40d88fff7faso14894775e9.3
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:49:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469640; x=1705074440; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469742; x=1705074542; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iQqVZQAplGXwt087ddAaGknca/07pmUL/gFu1d2+27U=;
- b=rBQ6eBIXuAdfLu0GR0eKsWS8Azq3u6wuQt/JBZFPQA+UTw1BKa/4aqxs2MlLyDkxHa
- Dmybi4K6P90/kCOiGPp2usL4/dwMPfcqH+zZrUDqv3EyikR2zLsQtZHQE3qbcDGAOmEa
- wPZKoWXBjmPDfeF6OMULLPtdOE8ukQJD5SuD+86lD1MMo17Fgj7aIHczzKJvC9Jr14WL
- jnYu6MaFy2xKM7Ur1xTqjl1flVigApzvxBjIEOCWe1GaOlid4kY9wYAi6XpqqOhpODW0
- qyE9bL84xhawbACVPZSv2pzucEcTBZyYN8JEHUn1LA/5cPTOtZmhjD/1VlzqX1o2xpgN
- wgWw==
+ bh=/MHct3O8aNA/2/UVwnbSfbe+2Bg3uf1okl2NSMgEytw=;
+ b=RDI1RcxaxyKuatpifuVlVk6C8weM19gQADJK+wWa/W8BqYpddrTeT39IE8QJ04aJ1Q
+ o+7WitPm8Qj++IzirnQ1Qa3zC8eMvjp827JfBQbuk7ABH4xnY07Ki71DL51XhtxoDQ3M
+ wgtbbJ7vQVBEL//1D+a6Sy0cy2ewN5LUCs/8akLrgUvb5BCT5R1pxMJ384O6nP1DN6Ds
+ wct+R5/zeElK2Tj693/ZdvdqkNwTtbN/PVKDu3phXgTDvEoBFl8EhiuiLEEgRD100H0G
+ K56bgZ4UaRf8oFvCQ0BUKAwh+oQ8nyGitPySgZZlHE/3rOQnAcQIBSo/TXmEP5pHM7WH
+ oqdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469640; x=1705074440;
+ d=1e100.net; s=20230601; t=1704469742; x=1705074542;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iQqVZQAplGXwt087ddAaGknca/07pmUL/gFu1d2+27U=;
- b=oXLPXTyxuo+2u2zp70I7Z45f2DqcSCu2rpXjn4hLZLFtl/Y27+T7mZY7rMnj/5irlG
- 4t9Jc9q3kUBxn5wph716XHEc8A6lTdhHalP6XXA79QI3JBpKdRcU0LQIPaZPNCypfXCz
- 1xMDuANldA6isC/q0LyN2Etz7ogOXYn9OdSZsX4sonSmyTA06uZuebaXOiKSd82iDRbO
- f2S1su+GWskPTeBR4808CDCSJ+uEO7jWfHehuaDmMWlq5PfUD80n/J9p/Nb75nKlc4xT
- uyakWNJ23sBeN13BmYcNnYo7wutDlWQBEfYz9DLQP6o+5d6aB4h8V7ZRrJAonseGnazd
- I2RA==
-X-Gm-Message-State: AOJu0Yw2NM7Lwl7qkDPJTj7VjJPgRHwXR1uyBpR6k6MhZc2K1b99DLoF
- MqCcd++JnCaQbjAfb+ONw5MNquclnFBZnw==
-X-Received: by 2002:adf:ed8c:0:b0:337:d82:5106 with SMTP id
- c12-20020adfed8c000000b003370d825106mr1218971wro.99.1704469639779; 
- Fri, 05 Jan 2024 07:47:19 -0800 (PST)
+ bh=/MHct3O8aNA/2/UVwnbSfbe+2Bg3uf1okl2NSMgEytw=;
+ b=n1C625fLBGIttvQ0aJv6RiImb9GDHhwBxuGz0wERhS0ioqLy++PguZzaiwtp27s0NR
+ ZQAxjvJYJp7ohEcujXgEnSi1Era3/P9X5O86q/ulQudhPpR2DAPIVzEOaLYtoIxfnGwc
+ KpTfPu/e2BS39xZ2jfjJlH/ZfbHagqZ4H/ZLurbXgmu0qNMpJPj/qJOij64uwWypakuv
+ YzRkjLYvHezOUPHjqaKqJQqRPR76haEzHTlfo0gtCtyIjXbVOxX6UbceOkxaqXbrP6Xj
+ RDGtHV/c9qS29qSrzotXzezsV5d90W3nXAtHMesUem9G/+VYaUnCTSoXuKksIWa1gazg
+ plmw==
+X-Gm-Message-State: AOJu0Yy0DP9WWND5+8GqhCbMbR1vIPKE6eQ0bIbc6/EyYB1lidjIEnKT
+ 19zIPiEyCqZsOax5uJFSoI16SIrLBSQoTg==
+X-Received: by 2002:a05:600c:4583:b0:40c:a5b:d28b with SMTP id
+ r3-20020a05600c458300b0040c0a5bd28bmr634654wmo.86.1704469742377; 
+ Fri, 05 Jan 2024 07:49:02 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- k7-20020a5d6d47000000b0033725783839sm1605061wri.110.2024.01.05.07.47.18
+ z6-20020a5d4c86000000b00337464bf723sm1611623wrs.18.2024.01.05.07.49.01
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:47:19 -0800 (PST)
+ Fri, 05 Jan 2024 07:49:02 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 38/71] hw/arm/bcm2836: Simplify use of 'reset-cbar' property
-Date: Fri,  5 Jan 2024 16:42:31 +0100
-Message-ID: <20240105154307.21385-39-philmd@linaro.org>
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Gavin Shan <gshan@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>
+Subject: [PULL 57/71] backends: Use g_autofree in
+ HostMemoryBackendClass::alloc() handlers
+Date: Fri,  5 Jan 2024 16:42:50 +0100
+Message-ID: <20240105154307.21385-58-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,46 +128,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iasVnc+D+DdE
+X-TUID: GKeS5m+7zdxi
 
-bcm2836_realize() is called by
-
- - bcm2836_class_init() which sets:
-
-    bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a7")
-
- - bcm2837_class_init() which sets:
-
-    bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a53")
-
-Both Cortex-A7 / A53 have the ARM_FEATURE_CBAR set. If it isn't,
-then this is a programming error: use &error_abort.
+In preparation of having HostMemoryBackendClass::alloc() handlers
+return a boolean, have them use g_autofree.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20231123143813.42632-3-philmd@linaro.org>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Message-Id: <20231120213301.24349-15-philmd@linaro.org>
 ---
- hw/arm/bcm2836.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ backends/hostmem-epc.c   | 3 +--
+ backends/hostmem-file.c  | 3 +--
+ backends/hostmem-memfd.c | 3 +--
+ backends/hostmem-ram.c   | 3 +--
+ 4 files changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 166dc896c0..a1bd1406e1 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -131,10 +131,8 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
-         s->cpu[n].core.mp_affinity = (bc->clusterid << 8) | n;
+diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
+index 4e162d6789..3ceb079f9e 100644
+--- a/backends/hostmem-epc.c
++++ b/backends/hostmem-epc.c
+@@ -20,8 +20,8 @@
+ static void
+ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+ {
++    g_autofree char *name = NULL;
+     uint32_t ram_flags;
+-    char *name;
+     int fd;
  
-         /* set periphbase/CBAR value for CPU-local registers */
--        if (!object_property_set_int(OBJECT(&s->cpu[n].core), "reset-cbar",
--                                     bc->peri_base, errp)) {
--            return;
--        }
-+        object_property_set_int(OBJECT(&s->cpu[n].core), "reset-cbar",
-+                                bc->peri_base, &error_abort);
+     if (!backend->size) {
+@@ -41,7 +41,6 @@ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend),
+                                    name, backend->size, ram_flags,
+                                    fd, 0, errp);
+-    g_free(name);
+ }
  
-         /* start powered off if not enabled */
-         if (!object_property_set_bool(OBJECT(&s->cpu[n].core),
+ static void sgx_epc_backend_instance_init(Object *obj)
+diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
+index 361d4a8103..fe8c481f8f 100644
+--- a/backends/hostmem-file.c
++++ b/backends/hostmem-file.c
+@@ -44,8 +44,8 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+                object_get_typename(OBJECT(backend)));
+ #else
+     HostMemoryBackendFile *fb = MEMORY_BACKEND_FILE(backend);
++    g_autofree gchar *name = NULL;
+     uint32_t ram_flags;
+-    gchar *name;
+ 
+     if (!backend->size) {
+         error_setg(errp, "can't create backend with size 0");
+@@ -89,7 +89,6 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     memory_region_init_ram_from_file(&backend->mr, OBJECT(backend), name,
+                                      backend->size, fb->align, ram_flags,
+                                      fb->mem_path, fb->offset, errp);
+-    g_free(name);
+ #endif
+ }
+ 
+diff --git a/backends/hostmem-memfd.c b/backends/hostmem-memfd.c
+index 3fc85c3db8..db28ab5a56 100644
+--- a/backends/hostmem-memfd.c
++++ b/backends/hostmem-memfd.c
+@@ -35,8 +35,8 @@ static void
+ memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+ {
+     HostMemoryBackendMemfd *m = MEMORY_BACKEND_MEMFD(backend);
++    g_autofree char *name = NULL;
+     uint32_t ram_flags;
+-    char *name;
+     int fd;
+ 
+     if (!backend->size) {
+@@ -57,7 +57,6 @@ memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
+     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend), name,
+                                    backend->size, ram_flags, fd, 0, errp);
+-    g_free(name);
+ }
+ 
+ static bool
+diff --git a/backends/hostmem-ram.c b/backends/hostmem-ram.c
+index b8e55cdbd0..0a670fc22a 100644
+--- a/backends/hostmem-ram.c
++++ b/backends/hostmem-ram.c
+@@ -19,8 +19,8 @@
+ static void
+ ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+ {
++    g_autofree char *name = NULL;
+     uint32_t ram_flags;
+-    char *name;
+ 
+     if (!backend->size) {
+         error_setg(errp, "can't create backend with size 0");
+@@ -32,7 +32,6 @@ ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
+     memory_region_init_ram_flags_nomigrate(&backend->mr, OBJECT(backend), name,
+                                            backend->size, ram_flags, errp);
+-    g_free(name);
+ }
+ 
+ static void
 -- 
 2.41.0
 

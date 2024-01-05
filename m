@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp796386ejo;
-        Fri, 5 Jan 2024 07:52:35 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG4nTtKTrwg8oYOQ5qSOVb4b3IaWaRc2Qpij7B3dggLA/XOyb29IwVPNcOphFIOJyDcrj3b
-X-Received: by 2002:a05:622a:512:b0:425:4043:41c9 with SMTP id l18-20020a05622a051200b00425404341c9mr2248839qtx.117.1704469955495;
-        Fri, 05 Jan 2024 07:52:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704469955; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp796430ejo;
+        Fri, 5 Jan 2024 07:52:40 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEjB+4AEiop62jAnN8osAhOxksmdAAwOk4Msdf7hySUecpOQKnJam1Xb1leryc2+A4oR2AJ
+X-Received: by 2002:a05:620a:bcd:b0:781:5905:c7f6 with SMTP id s13-20020a05620a0bcd00b007815905c7f6mr2773578qki.57.1704469959843;
+        Fri, 05 Jan 2024 07:52:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469959; cv=none;
         d=google.com; s=arc-20160816;
-        b=XYK+MebEFKY0XKQSZRfWUbrX4VsAvLiJXbsxVEeIsukL7KVyGcphDjV+TuiVGDXcHP
-         6okcxGubQt3LVx4arMda3mVD5/aCA1LBL76Pd5jGoXESGOZqS6MbJnWyoGpq0l/7qz4Y
-         0L3nSEY90mz4M9Yi9FAZ1TUuUKw/fDUDeUQiHaW8d8U/8apz1FTR92aUjGPvMzLfv8An
-         G3VkcbeDecQsD6Rw2dJd668TqZp/SPfrwnakiPItx5fr73k+s8GL0In8/kx5bJ09/IR8
-         WWbjj9LfypQo7C2N4omzLFq8oG2Q3P78Mn5U6yEHw5jgsh6SHrIay3rF9Ien2NYn6Mjr
-         PFgQ==
+        b=lwLBm6k6HDUTRrfs2uxY0j/vUmVbzlAKfnGOTg/dJTdlY4X4u2AL3OzHSHJAAkPHSW
+         juFihMOc8dJvWrA2I8OJ14Sv/POqCqWx5fm+yGQtpVPjb3gNqt5STFN3dNtbPitN6x/f
+         Rk+pKG7sqnvu0mvKk0ZWKjJfxcqPJ+Gq7sogvm2jSJc9gA8ji0gcmdz5P50ArO1+aaJV
+         /jFytOb76UuE6xxFuD6OkQSK+SzOWRNWuGvQ9OkIUpjxxG3WDCUFQrhowZ96r1Ihf+Qv
+         hDTz4m6vwPjlazyVoMCZw2cCt1JMaDHUO/Z2OqEDGtsXvQvl48ycGgFK1n17za0q0w2S
+         2iqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/MHct3O8aNA/2/UVwnbSfbe+2Bg3uf1okl2NSMgEytw=;
+        bh=Ux8OTSc8Ad9jOVNGlPCxH1dshjQrIfyvWA7mV8zeD70=;
         fh=9e/GdPOc9kaFcZwUUs4wJrMLrLita2N4fbrPz9ApZsQ=;
-        b=aYHVWlJJ7nHOuOfDe1tXDk1kb+F2FnsjVQD+FPdZ+3ChJ4c6xhw0x8bjlq3hWQYEeq
-         9cGoKX+J/eYejc6KGue4K4uzgHVbzrehcLMa9IpbMVsjDiVEAVl5xPO+avZ6pm0+3alB
-         WsKQrFU1eu048khIgKUQu46ASDPEW87QTUwdorv70jWyvX4UP3XzftaEsZSaMKZ5IbZh
-         pJJwET+7e+ccEF1mqwRtxwE7zAUTBnu2jAI0kiYsBLeOLxj9OSNNRFxcURYpskKZWyyB
-         APYx2tWMmszFLGQyTtSMDF+rQPP/LoqFt3VXOu0hDcuiC1aflFHolU2+ZJpb3nmmkWiE
-         4cpQ==
+        b=KYksc4KCFXU3vbcmYNshJrOJ0XyRmge059bxVeo/SlneNg0jqUtijOReNfnwu8ptG7
+         pKTKfpFeFnYexWiRQhgRYd63qYu0aBizt2nrxjuy5UnMi6271jozCSPsh5ZslqsQnu91
+         INVR5lcJCM8DKmEM+Tj/7GwDhBmqJSN1eetZ/p2lBjWPm+wey2wCPuYOg+TVcIlLi8tc
+         eMh1jVy/fASdIatWybU2T7Tp+Kwh91bIHtmFptxfbDGDsKWg+L3zsLHdS8nZoKlNF0v7
+         ub6iAz0ET7GQnS1gmXHmBB5muEhGIk3r3s4NLwzTzu3qr/lUovje/wSFkMtwUHqFjaGT
+         eY/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RDI1Rcxa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KvLiuHot;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20-20020a05622a1a1400b004297c73fcc4si722364qtb.407.2024.01.05.07.52.35
+        by mx.google.com with ESMTPS id pj16-20020a05620a1d9000b0077f8c4cfd9csi1931175qkn.186.2024.01.05.07.52.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:52:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Jan 2024 07:52:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RDI1Rcxa;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KvLiuHot;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLmSh-0001EH-49; Fri, 05 Jan 2024 10:50:20 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rLmSY-0000eJ-Md; Fri, 05 Jan 2024 10:50:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmRX-00064q-3o
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:49:07 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmRd-00074G-7i
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:49:16 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmRT-0007JM-SB
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:49:06 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-40d88fff7faso14894775e9.3
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:49:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmRZ-0007fu-LZ
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:49:12 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-33686649b72so1473637f8f.3
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:49:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469742; x=1705074542; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469748; x=1705074548; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/MHct3O8aNA/2/UVwnbSfbe+2Bg3uf1okl2NSMgEytw=;
- b=RDI1RcxaxyKuatpifuVlVk6C8weM19gQADJK+wWa/W8BqYpddrTeT39IE8QJ04aJ1Q
- o+7WitPm8Qj++IzirnQ1Qa3zC8eMvjp827JfBQbuk7ABH4xnY07Ki71DL51XhtxoDQ3M
- wgtbbJ7vQVBEL//1D+a6Sy0cy2ewN5LUCs/8akLrgUvb5BCT5R1pxMJ384O6nP1DN6Ds
- wct+R5/zeElK2Tj693/ZdvdqkNwTtbN/PVKDu3phXgTDvEoBFl8EhiuiLEEgRD100H0G
- K56bgZ4UaRf8oFvCQ0BUKAwh+oQ8nyGitPySgZZlHE/3rOQnAcQIBSo/TXmEP5pHM7WH
- oqdA==
+ bh=Ux8OTSc8Ad9jOVNGlPCxH1dshjQrIfyvWA7mV8zeD70=;
+ b=KvLiuHotPLFzDY5cGRIYlx7MzPpNJHtlWFKoRlRM92gtTF6gcJZHZFac9pzvl+4OjA
+ 5Y7TUBAgkt91UmhVpooMo3vFLsXkW3/L6pLDFmvOgwc1KiL5P3AntWTx+NUqLz9coDyk
+ mvDzDYMpREBNgkwfKy/w9196OppRfEOwe1TJ6tHtldw9W1wufNkcbzOFzR1HxJfb9bO3
+ r79ie326Qqf4mbWYFWkRaGuDfFFsrR8E0gf6FqgTAUwZtTaPJCMV3NVcUWdGfNvjwC4o
+ nUVBfbVrHyZ732LbSWFdfHcPw3nXUut+r4dkawPydxjoMBIKh7PiKS5uSu6oV2u0Hto8
+ s3xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469742; x=1705074542;
+ d=1e100.net; s=20230601; t=1704469748; x=1705074548;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/MHct3O8aNA/2/UVwnbSfbe+2Bg3uf1okl2NSMgEytw=;
- b=n1C625fLBGIttvQ0aJv6RiImb9GDHhwBxuGz0wERhS0ioqLy++PguZzaiwtp27s0NR
- ZQAxjvJYJp7ohEcujXgEnSi1Era3/P9X5O86q/ulQudhPpR2DAPIVzEOaLYtoIxfnGwc
- KpTfPu/e2BS39xZ2jfjJlH/ZfbHagqZ4H/ZLurbXgmu0qNMpJPj/qJOij64uwWypakuv
- YzRkjLYvHezOUPHjqaKqJQqRPR76haEzHTlfo0gtCtyIjXbVOxX6UbceOkxaqXbrP6Xj
- RDGtHV/c9qS29qSrzotXzezsV5d90W3nXAtHMesUem9G/+VYaUnCTSoXuKksIWa1gazg
- plmw==
-X-Gm-Message-State: AOJu0Yy0DP9WWND5+8GqhCbMbR1vIPKE6eQ0bIbc6/EyYB1lidjIEnKT
- 19zIPiEyCqZsOax5uJFSoI16SIrLBSQoTg==
-X-Received: by 2002:a05:600c:4583:b0:40c:a5b:d28b with SMTP id
- r3-20020a05600c458300b0040c0a5bd28bmr634654wmo.86.1704469742377; 
- Fri, 05 Jan 2024 07:49:02 -0800 (PST)
+ bh=Ux8OTSc8Ad9jOVNGlPCxH1dshjQrIfyvWA7mV8zeD70=;
+ b=hhCfOeKjAYo6mPFS8hSTFokyUhrM3sKtymZ+azbKwRa5ir6MlO9R9rksbCAULdb6e4
+ 8nKsEF7jkTy5hL4rxTDqOJluJPtgasnx3qDP3RDRcGIDaoSYh8Ew+Dq8mEJ+3t0r0vQt
+ rjlVG9CmjA8ioxHfdJJkvM1g3Dptjc56Tz0OhRlz//sjZUT39KlJ0XdJHIS+VvG3EXk+
+ qV7gZWe4p4/kjOoqXhyGL4o9oT13hqihOw4j6Je5yEwucvkrSprNG3f/Mjl2gyW7tiyT
+ JRrXay3UjTW8g0zirKNrca4hvvpRGqReDHnnccODRsnqzKQNaVQ+/WMTavGCqZyYp6az
+ 3iYg==
+X-Gm-Message-State: AOJu0Ywij7XlZHUCJq6hYexSvCNraDs8SSyuE814E7szxuhXKy/+9QIK
+ KOGy05pjc8Y4EbDjCceZ0zvB0fQIaE7kicKxTPQ3bk5j8xA=
+X-Received: by 2002:a5d:4a84:0:b0:336:7bd0:47a2 with SMTP id
+ o4-20020a5d4a84000000b003367bd047a2mr1392275wrq.112.1704469747954; 
+ Fri, 05 Jan 2024 07:49:07 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- z6-20020a5d4c86000000b00337464bf723sm1611623wrs.18.2024.01.05.07.49.01
+ v11-20020a5d4a4b000000b0033755d8ce7asm1612139wrs.76.2024.01.05.07.49.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:49:02 -0800 (PST)
+ Fri, 05 Jan 2024 07:49:07 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
@@ -95,18 +95,17 @@ Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Gavin Shan <gshan@redhat.com>, David Hildenbrand <david@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>
-Subject: [PULL 57/71] backends: Use g_autofree in
- HostMemoryBackendClass::alloc() handlers
-Date: Fri,  5 Jan 2024 16:42:50 +0100
-Message-ID: <20240105154307.21385-58-philmd@linaro.org>
+Subject: [PULL 58/71] backends: Simplify host_memory_backend_memory_complete()
+Date: Fri,  5 Jan 2024 16:42:51 +0100
+Message-ID: <20240105154307.21385-59-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,123 +114,191 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GKeS5m+7zdxi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LbaHB0OioTAD
 
-In preparation of having HostMemoryBackendClass::alloc() handlers
-return a boolean, have them use g_autofree.
+Return early if bc->alloc is NULL. De-indent the if() ladder.
+
+Note, this avoids a pointless call to error_propagate() with
+errp=NULL at the 'out:' label.
+
+Change trivial when reviewed with 'git-diff --ignore-all-space'.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Reviewed-by: Gavin Shan <gshan@redhat.com>
-Message-Id: <20231120213301.24349-15-philmd@linaro.org>
+Message-Id: <20231120213301.24349-16-philmd@linaro.org>
 ---
- backends/hostmem-epc.c   | 3 +--
- backends/hostmem-file.c  | 3 +--
- backends/hostmem-memfd.c | 3 +--
- backends/hostmem-ram.c   | 3 +--
- 4 files changed, 4 insertions(+), 8 deletions(-)
+ backends/hostmem.c | 133 +++++++++++++++++++++++----------------------
+ 1 file changed, 67 insertions(+), 66 deletions(-)
 
-diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
-index 4e162d6789..3ceb079f9e 100644
---- a/backends/hostmem-epc.c
-+++ b/backends/hostmem-epc.c
-@@ -20,8 +20,8 @@
- static void
- sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
- {
-+    g_autofree char *name = NULL;
-     uint32_t ram_flags;
--    char *name;
-     int fd;
+diff --git a/backends/hostmem.c b/backends/hostmem.c
+index 747e7838c0..1723c19165 100644
+--- a/backends/hostmem.c
++++ b/backends/hostmem.c
+@@ -328,83 +328,84 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
+     void *ptr;
+     uint64_t sz;
  
-     if (!backend->size) {
-@@ -41,7 +41,6 @@ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend),
-                                    name, backend->size, ram_flags,
-                                    fd, 0, errp);
--    g_free(name);
- }
+-    if (bc->alloc) {
+-        bc->alloc(backend, &local_err);
+-        if (local_err) {
+-            goto out;
+-        }
++    if (!bc->alloc) {
++        return;
++    }
++    bc->alloc(backend, &local_err);
++    if (local_err) {
++        goto out;
++    }
  
- static void sgx_epc_backend_instance_init(Object *obj)
-diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
-index 361d4a8103..fe8c481f8f 100644
---- a/backends/hostmem-file.c
-+++ b/backends/hostmem-file.c
-@@ -44,8 +44,8 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-                object_get_typename(OBJECT(backend)));
- #else
-     HostMemoryBackendFile *fb = MEMORY_BACKEND_FILE(backend);
-+    g_autofree gchar *name = NULL;
-     uint32_t ram_flags;
--    gchar *name;
+-        ptr = memory_region_get_ram_ptr(&backend->mr);
+-        sz = memory_region_size(&backend->mr);
++    ptr = memory_region_get_ram_ptr(&backend->mr);
++    sz = memory_region_size(&backend->mr);
  
-     if (!backend->size) {
-         error_setg(errp, "can't create backend with size 0");
-@@ -89,7 +89,6 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     memory_region_init_ram_from_file(&backend->mr, OBJECT(backend), name,
-                                      backend->size, fb->align, ram_flags,
-                                      fb->mem_path, fb->offset, errp);
--    g_free(name);
+-        if (backend->merge) {
+-            qemu_madvise(ptr, sz, QEMU_MADV_MERGEABLE);
+-        }
+-        if (!backend->dump) {
+-            qemu_madvise(ptr, sz, QEMU_MADV_DONTDUMP);
+-        }
++    if (backend->merge) {
++        qemu_madvise(ptr, sz, QEMU_MADV_MERGEABLE);
++    }
++    if (!backend->dump) {
++        qemu_madvise(ptr, sz, QEMU_MADV_DONTDUMP);
++    }
+ #ifdef CONFIG_NUMA
+-        unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
+-        /* lastbit == MAX_NODES means maxnode = 0 */
+-        unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
+-        /* ensure policy won't be ignored in case memory is preallocated
+-         * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
+-         * this doesn't catch hugepage case. */
+-        unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
+-        int mode = backend->policy;
++    unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
++    /* lastbit == MAX_NODES means maxnode = 0 */
++    unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
++    /* ensure policy won't be ignored in case memory is preallocated
++     * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
++     * this doesn't catch hugepage case. */
++    unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
++    int mode = backend->policy;
+ 
+-        /* check for invalid host-nodes and policies and give more verbose
+-         * error messages than mbind(). */
+-        if (maxnode && backend->policy == MPOL_DEFAULT) {
+-            error_setg(errp, "host-nodes must be empty for policy default,"
+-                       " or you should explicitly specify a policy other"
+-                       " than default");
+-            return;
+-        } else if (maxnode == 0 && backend->policy != MPOL_DEFAULT) {
+-            error_setg(errp, "host-nodes must be set for policy %s",
+-                       HostMemPolicy_str(backend->policy));
+-            return;
+-        }
++    /* check for invalid host-nodes and policies and give more verbose
++     * error messages than mbind(). */
++    if (maxnode && backend->policy == MPOL_DEFAULT) {
++        error_setg(errp, "host-nodes must be empty for policy default,"
++                   " or you should explicitly specify a policy other"
++                   " than default");
++        return;
++    } else if (maxnode == 0 && backend->policy != MPOL_DEFAULT) {
++        error_setg(errp, "host-nodes must be set for policy %s",
++                   HostMemPolicy_str(backend->policy));
++        return;
++    }
+ 
+-        /* We can have up to MAX_NODES nodes, but we need to pass maxnode+1
+-         * as argument to mbind() due to an old Linux bug (feature?) which
+-         * cuts off the last specified node. This means backend->host_nodes
+-         * must have MAX_NODES+1 bits available.
+-         */
+-        assert(sizeof(backend->host_nodes) >=
+-               BITS_TO_LONGS(MAX_NODES + 1) * sizeof(unsigned long));
+-        assert(maxnode <= MAX_NODES);
++    /* We can have up to MAX_NODES nodes, but we need to pass maxnode+1
++     * as argument to mbind() due to an old Linux bug (feature?) which
++     * cuts off the last specified node. This means backend->host_nodes
++     * must have MAX_NODES+1 bits available.
++     */
++    assert(sizeof(backend->host_nodes) >=
++           BITS_TO_LONGS(MAX_NODES + 1) * sizeof(unsigned long));
++    assert(maxnode <= MAX_NODES);
+ 
+ #ifdef HAVE_NUMA_HAS_PREFERRED_MANY
+-        if (mode == MPOL_PREFERRED && numa_has_preferred_many() > 0) {
+-            /*
+-             * Replace with MPOL_PREFERRED_MANY otherwise the mbind() below
+-             * silently picks the first node.
+-             */
+-            mode = MPOL_PREFERRED_MANY;
+-        }
++    if (mode == MPOL_PREFERRED && numa_has_preferred_many() > 0) {
++        /*
++         * Replace with MPOL_PREFERRED_MANY otherwise the mbind() below
++         * silently picks the first node.
++         */
++        mode = MPOL_PREFERRED_MANY;
++    }
  #endif
- }
  
-diff --git a/backends/hostmem-memfd.c b/backends/hostmem-memfd.c
-index 3fc85c3db8..db28ab5a56 100644
---- a/backends/hostmem-memfd.c
-+++ b/backends/hostmem-memfd.c
-@@ -35,8 +35,8 @@ static void
- memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
- {
-     HostMemoryBackendMemfd *m = MEMORY_BACKEND_MEMFD(backend);
-+    g_autofree char *name = NULL;
-     uint32_t ram_flags;
--    char *name;
-     int fd;
- 
-     if (!backend->size) {
-@@ -57,7 +57,6 @@ memfd_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
-     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend), name,
-                                    backend->size, ram_flags, fd, 0, errp);
--    g_free(name);
- }
- 
- static bool
-diff --git a/backends/hostmem-ram.c b/backends/hostmem-ram.c
-index b8e55cdbd0..0a670fc22a 100644
---- a/backends/hostmem-ram.c
-+++ b/backends/hostmem-ram.c
-@@ -19,8 +19,8 @@
- static void
- ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
- {
-+    g_autofree char *name = NULL;
-     uint32_t ram_flags;
--    char *name;
- 
-     if (!backend->size) {
-         error_setg(errp, "can't create backend with size 0");
-@@ -32,7 +32,6 @@ ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-     ram_flags |= backend->reserve ? 0 : RAM_NORESERVE;
-     memory_region_init_ram_flags_nomigrate(&backend->mr, OBJECT(backend), name,
-                                            backend->size, ram_flags, errp);
--    g_free(name);
- }
- 
- static void
+-        if (maxnode &&
+-            mbind(ptr, sz, mode, backend->host_nodes, maxnode + 1, flags)) {
+-            if (backend->policy != MPOL_DEFAULT || errno != ENOSYS) {
+-                error_setg_errno(errp, errno,
+-                                 "cannot bind memory to host NUMA nodes");
+-                return;
+-            }
++    if (maxnode &&
++        mbind(ptr, sz, mode, backend->host_nodes, maxnode + 1, flags)) {
++        if (backend->policy != MPOL_DEFAULT || errno != ENOSYS) {
++            error_setg_errno(errp, errno,
++                             "cannot bind memory to host NUMA nodes");
++            return;
+         }
++    }
+ #endif
+-        /* Preallocate memory after the NUMA policy has been instantiated.
+-         * This is necessary to guarantee memory is allocated with
+-         * specified NUMA policy in place.
+-         */
+-        if (backend->prealloc) {
+-            qemu_prealloc_mem(memory_region_get_fd(&backend->mr), ptr, sz,
+-                              backend->prealloc_threads,
+-                              backend->prealloc_context, &local_err);
+-            if (local_err) {
+-                goto out;
+-            }
++    /* Preallocate memory after the NUMA policy has been instantiated.
++     * This is necessary to guarantee memory is allocated with
++     * specified NUMA policy in place.
++     */
++    if (backend->prealloc) {
++        qemu_prealloc_mem(memory_region_get_fd(&backend->mr), ptr, sz,
++                          backend->prealloc_threads,
++                          backend->prealloc_context, &local_err);
++        if (local_err) {
++            goto out;
+         }
+     }
+ out:
 -- 
 2.41.0
 

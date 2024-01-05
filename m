@@ -1,114 +1,116 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp676119ejo;
-        Fri, 5 Jan 2024 04:27:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGe+sUJvRucdEdKgYg1xKfzyWMAzEAOzYVLlE6YSkh4nNKB16ju/TLLIou1+e/tGzePs4Mv
-X-Received: by 2002:a05:622a:d6:b0:427:e98a:41d3 with SMTP id p22-20020a05622a00d600b00427e98a41d3mr2146256qtw.57.1704457651096;
-        Fri, 05 Jan 2024 04:27:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704457651; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp767979ejo;
+        Fri, 5 Jan 2024 07:05:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHVVBko4ERBXu4aTUMwrwV2LsQV3X+Ln868jkOTmliGPEq77H4KKQUTfRgm1ebyDwK3BQqg
+X-Received: by 2002:a1f:e642:0:b0:4b7:31a2:fa90 with SMTP id d63-20020a1fe642000000b004b731a2fa90mr1892740vkh.22.1704467121437;
+        Fri, 05 Jan 2024 07:05:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704467121; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGl632Onm4dcYlX8kH+Ci1I9UGvue6tQymyI4ofE8A9n+0jyUmwKPZstlFLiaGktrt
-         xQRqDbh95opPPPxD6XItp6Oyj+5YGncG065kC7EVzxM26ytRcJAPjvjEi7zZMc9tqCA0
-         kWKLZ6JFHawJdCtujH2Pphydo7bFBNyhOpkwXtg6mBnSzSx9BojeBoD0eiiUJPI0dY/R
-         3tjgV21jr5FP81rldjKy8ng167n6YCehymirEhGCSkdsLagXSPftKRD1VnV8u33U8aUC
-         eHv5wpcqM8OSaNdISykNQ5QW9S0tetKHot6g1SdsyXkXk0w2nSLKEeLXshKanMpTxHOr
-         ZUEw==
+        b=KMMV67pKGLVsErkSyMGC5gI83GhCuVMMuD8wCS6UlQcokQTYlJLtPsDCmEk2lO2lVn
+         hvmIyH7w9e2CzXDaT00MzG4r9tBd7Wwe5p9sQyymJDU9GRT5mDhMHb9C+Z+diuaaRRLM
+         JsEFUol8L73T4wrUatqfKHw0qdtUuKZm3UTwcmuYKt1zOquYFVm48bwFQXjrduHQOH3W
+         viJdD/+UFkIo/k4gJCXD5Zg2RQY3pSBgloFQorxzD93JOblK4+347DRI2dsFB0rd/5/o
+         Ki/vkz6Lpm9TZd6yv7AS9j2+Yj5SJb4yzX2oVk2cIAMoPCiiUjmH85WhNxEMpw60pW/F
+         lJlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1fuRmMn2/OEzC2xcyqjGVvOZ+85ANPKX5Ih5OYJKAfU=;
-        fh=4ywBP2fiVAQlRM5WXxtK01Tx7ASqpvBkuQiBVJkwLFA=;
-        b=P28S9ylKoqWCO9ucEBQYUOnC/pSCfpPcNcV9LEtE8W08fYFzrzbebT1frkvcYENTmN
-         jBdwQzr5ATiIsieRK0VUbeh6vxkE8QV1u0r8pyDj9VlRaTWoDBh0of45SG2tijEkbUcQ
-         SvXDwk6kss58lbyunkUK7Y+lc1KKhQtpS6CtbmEZ/zjHZUPNpOuoFJl/5Mncjc7xMgQC
-         E4yTYzWPu6JncnX3rSl/n/3Mwe6m7meoNuacXSofW9Frtd/UeQ/fIVHoSM8wkBqw5a4k
-         /Mx1AirOuhywPCDqDhxuRlplHAVI7ukolc+3tBRnZ9MSDBR5ZSjPYJXXbyrV1KrX1YLI
-         li6Q==
+        bh=G+b+UhhWUTTADKOHH3dFD6R5H8/Kn+xlE1Fw01Bx6hI=;
+        fh=49AeW+NYNsG3hGxkZQvNw58/XIQ4V8cxM8Np40Mh5h4=;
+        b=Tu2QdxfVtj1Ott0kJQ4mVGj02BnnMT27rPytv1hXJ5GiHM4LKrso58jiGpowI1c65K
+         v9imUbtNeiEmpeR7wbFDEcl9n0FNA4cn826ioSm7+CTAJZNcJ+9nD+nXVac0QKewo9zW
+         fbd9sJ7GtUKSkuCICahgWmOqvgSHtY29JWQCVyO+31S5dgv2lB6yQPN90R1XhrRMZEGT
+         H3h3B5Oloc6/EbNckv1DRCebE4ITs0brJIcHXXgy2eN9UN2e8BwFtVP1z8FWYgIgVoHY
+         UNQWrT7g/kRnNMM5TC4u84iiCGdZVWKioabQgT093Ob7j6q9Zx4hxWKp6DJDxnXhuHLU
+         shLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gm2qpv6Q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=opWrk3RH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v14-20020a05622a130e00b004297cb56dadsi264248qtk.582.2024.01.05.04.27.30
+        by mx.google.com with ESMTPS id c9-20020a67ce89000000b004670980198asi148513vse.743.2024.01.05.07.05.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 04:27:31 -0800 (PST)
+        Fri, 05 Jan 2024 07:05:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gm2qpv6Q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=opWrk3RH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLjIJ-0001dz-JX; Fri, 05 Jan 2024 07:27:23 -0500
+	id 1rLll1-0001rM-T7; Fri, 05 Jan 2024 10:05:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rLjII-0001dE-Dl
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 07:27:22 -0500
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLlku-0001qT-4x
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:05:04 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rLjIE-000612-9w
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 07:27:21 -0500
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-6da6b0eb2d4so966488b3a.1
- for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 04:27:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLlkh-0000js-Rv
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 10:05:03 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-40e3a67ca9fso3394135e9.0
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 07:04:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1704457636; x=1705062436; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704467088; x=1705071888; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=1fuRmMn2/OEzC2xcyqjGVvOZ+85ANPKX5Ih5OYJKAfU=;
- b=gm2qpv6Qy3Yzt7tCrTYzyr2rHmb28Sd13YGLvDYY5h/W0oOkbwuox5rzgNxqay8Qvj
- GFGlUBb6/f+5PnYUmJYabpfgRgtA8DZgfA/LqVV6Ho/WFjhPNPAvPRhvcz+DD7IJKxNt
- xrfMqkMf0OWSi29IX7kHnjbZq9SD97AarXxbo6WQ/HH4Udi25BRej7cepfuPOFRk09Tk
- PP6/jntAJTVeZxC2T/zLka1Ai6VQqwrFoipyrKpv2ucDoyGUfcxx4ZDyzi/XGxvZ3Jy2
- bHXEvXYjeYDuZPk1UnF+a5d4eOvgIOr7b87gmoQVh0AbNLGrpo6ZA1wCdkaaR+cFGKDb
- rBXg==
+ bh=G+b+UhhWUTTADKOHH3dFD6R5H8/Kn+xlE1Fw01Bx6hI=;
+ b=opWrk3RH0wKJjf7hH+d8k0vIGi5OWXbJglJUpQIE898DICijgXvu2on/wfwx8IlMms
+ BmFLBjvCcrAli5X6T3WidhRbsoBG/gZZXL5p0v6ivfwDmeaPN0DnRkv9gWnfyTB7h5Db
+ ohW3OpyEK4gkDPqjyG0X8+Oz2qsB9Vp0X2Q2hlviqAJBcJxLJXVu4bJK4nYgobMePGhK
+ rPNEG9zFwr4aHV84IY8Ek2ROHb7q8bsxt++YtdeVagR2jy/ChG5N/rrqWIw/5TkOXmE3
+ KYHN0bkW3k7iVzRHa73a3PHR/o11hkL6d9F1ciHz4ZtrQUs7nuliVt1TapYESqr3WTxb
+ yWew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704457636; x=1705062436;
+ d=1e100.net; s=20230601; t=1704467088; x=1705071888;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1fuRmMn2/OEzC2xcyqjGVvOZ+85ANPKX5Ih5OYJKAfU=;
- b=Ic6wCtGyFkhebvGUjW3Zzs6YdGFlVKLx+jmBkQVFjd4mz3kFr2UM1ECLVWUCMQeR40
- POVTqjgRuuWL2ESFBCBTPxrYwGsKOzpdZimaQonalFqld30wXFDMLLQoWs86XcU6B8Or
- h1C/rugYwK2i288JJPdzKqCeVBUA67G4FzRMNa+ziM5mH8dDLfle7K6eNvuQVWL4UtT2
- ILiUjnO/ZWX+OVC1+vSSKYXFYjGAzEFzYvJ8pRWGP3JrhnO3zJDkaUBpYQFHA+cpIff4
- +Vr+3lAVobm2mCIKD0YxOO01YxM3L96ucPgaeLiVjS3C4fVpln9f5WT9YnudxSOl4KUb
- iNvw==
-X-Gm-Message-State: AOJu0YzbgpCdywlv2CjlR4NW1nAMwvUxoapl+hnMmu6tRnCJNXwkSq5Z
- t9CvF1pGm/va5RjxuAitk6ctcpIZnHpdDA==
-X-Received: by 2002:a05:6a20:9150:b0:199:4546:bc0c with SMTP id
- x16-20020a056a20915000b001994546bc0cmr421451pzc.83.1704457636406; 
- Fri, 05 Jan 2024 04:27:16 -0800 (PST)
-Received: from [192.168.68.110] ([152.234.127.254])
- by smtp.gmail.com with ESMTPSA id
- r5-20020a62e405000000b006da76842a66sm1292898pfh.85.2024.01.05.04.27.12
+ bh=G+b+UhhWUTTADKOHH3dFD6R5H8/Kn+xlE1Fw01Bx6hI=;
+ b=qzKGpN5as9/37obvkC5nPR14Pzz23MYAOnB4zjQljY+SfA9Vm+18lhKaMuVoxkNjm3
+ pTLfYnmCjcABjg4GjowcIRYWnTM3EfklPNEmFV1xX7qYek+uYrlw7lsyIXeYViX3ZPBl
+ mUuYwEN3HZfrmbefwVQvKivHYUsE8YJF+299Bta6M+5TX0eM4yM76fA8Y2bR2/ubzSWF
+ a7RFHKy08HA5kkZMKisBf0KTkBCRNe54P/3RQeyORSErcZFIgFkIdHvSiyxoeyVDuloS
+ flB1NG2coELmh/JE9mSEd/+BPgHFfvcQRyO5wzoWQKIgk5K76hUqusM5AOMaV/WEp9IG
+ GX7g==
+X-Gm-Message-State: AOJu0Yz/pf3nMlnxOoGrShn5C+jVmThgXV3jm4PDY1Z8KYo7Q+cRje/8
+ gMA7/ZuJD9CSqW6vhEk9T2oNw4B+P6ApHw==
+X-Received: by 2002:a7b:cb97:0:b0:40d:8128:bc9e with SMTP id
+ m23-20020a7bcb97000000b0040d8128bc9emr1441109wmi.163.1704467088670; 
+ Fri, 05 Jan 2024 07:04:48 -0800 (PST)
+Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
+ [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
+ iv14-20020a05600c548e00b0040e3733a32bsm1822953wmb.41.2024.01.05.07.04.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jan 2024 04:27:15 -0800 (PST)
-Message-ID: <e7ee041b-4e71-458c-8a56-f0b91a3ace0f@ventanamicro.com>
-Date: Fri, 5 Jan 2024 09:27:10 -0300
+ Fri, 05 Jan 2024 07:04:48 -0800 (PST)
+Message-ID: <b103923e-1f89-4dc6-8cb3-95f77878bd82@linaro.org>
+Date: Fri, 5 Jan 2024 16:04:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND RFC v1 2/2] hw/riscv/virt-acpi-build.c: Generate SPCR
- table
+Subject: Re: [PATCH-for-9.0 19/25] misc: Simplify qemu_prealloc_mem() calls
 Content-Language: en-US
-To: Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, qemu-riscv@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- sunilvl@ventanamicro.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com
-References: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
- <20240105090608.5745-3-jeeheng.sia@starfivetech.com>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20240105090608.5745-3-jeeheng.sia@starfivetech.com>
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?C_=C3=A9_dric_Le_Goater?= <clg@kaod.org>,
+ Peter Xu <peterx@redhat.com>
+References: <20231120213301.24349-1-philmd@linaro.org>
+ <20231120213301.24349-20-philmd@linaro.org> <4ild1.0v3gsvmc0lqe@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <4ild1.0v3gsvmc0lqe@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pf1-x42d.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,91 +132,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z/CEwJOyyqdu
+X-TUID: Yqr1Y9kiKMxj
 
-
-
-On 1/5/24 06:06, Sia Jee Heng wrote:
-> Generate Serial Port Console Redirection Table (SPCR) for RISC-V
-> virtual machine.
+On 22/11/23 08:38, Manos Pitsidianakis wrote:
+> On Mon, 20 Nov 2023 23:32, Philippe Mathieu-Daudé <philmd@linaro.org> 
+> wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
 > 
-> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-> ---
->   hw/riscv/virt-acpi-build.c | 39 ++++++++++++++++++++++++++++++++++++++
->   1 file changed, 39 insertions(+)
-> 
-> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-> index d4a02579d6..388b3d1a84 100644
-> --- a/hw/riscv/virt-acpi-build.c
-> +++ b/hw/riscv/virt-acpi-build.c
-> @@ -174,6 +174,42 @@ acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->       aml_append(scope, dev);
->   }
->   
-> +/*
-> + * Serial Port Console Redirection Table (SPCR)
-> + * Rev: 1.07
+> Commit message missing but indeed there's not much to say
 
-Shouldn't it be "Rev: 2.0"? The function is calling the common build_spcr() that
-specifies
+I amended:
 
-+    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = oem_id,
-+                        .oem_table_id = oem_table_id };
+   Since qemu_prealloc_mem() returns whether or not an error
+   occured, we don't need to check the @errp pointer. Remove
+   local_err uses when we can return directly.
 
+> Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-
-Code LGTM regardless of the "Rev: " comment value.
-
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
-
-
-
-
-> + */
-> +
-> +static void
-> +build_spcr_rev2(GArray *table_data, BIOSLinker *linker, RISCVVirtState *s)
-> +{
-> +    AcpiSpcrData serial = {
-> +        .interface_type = 0,       /* 16550 compatible */
-> +        .base_addr.id = AML_AS_SYSTEM_MEMORY,
-> +        .base_addr.width = 32,
-> +        .base_addr.offset = 0,
-> +        .base_addr.size = 1,
-> +        .base_addr.addr = s->memmap[VIRT_UART0].base,
-> +        .interrupt_type = (1 << 4),/* Bit[4] RISC-V PLIC/APLIC */
-> +        .pc_interrupt = 0,
-> +        .interrupt = UART0_IRQ,
-> +        .baud_rate = 7,            /* 15200 */
-> +        .parity = 0,
-> +        .stop_bits = 1,
-> +        .flow_control = 0,
-> +        .terminal_type = 3,        /* ANSI */
-> +        .language = 0,             /* Language */
-> +        .pci_device_id = 0xffff,   /* not a PCI device*/
-> +        .pci_vendor_id = 0xffff,   /* not a PCI device*/
-> +        .pci_bus = 0,
-> +        .pci_device = 0,
-> +        .pci_function = 0,
-> +        .pci_flags = 0,
-> +        .pci_segment = 0,
-> +    };
-> +
-> +    build_spcr(table_data, linker, &serial, s->oem_id, s->oem_table_id);
-> +}
-> +
->   /* RHCT Node[N] starts at offset 56 */
->   #define RHCT_NODE_ARRAY_OFFSET 56
->   
-> @@ -555,6 +591,9 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
->       acpi_add_table(table_offsets, tables_blob);
->       build_rhct(tables_blob, tables->linker, s);
->   
-> +    acpi_add_table(table_offsets, tables_blob);
-> +    build_spcr_rev2(tables_blob, tables->linker, s);
-> +
->       acpi_add_table(table_offsets, tables_blob);
->       {
->           AcpiMcfgInfo mcfg = {
+Thanks!

@@ -1,115 +1,123 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp798497ejo;
-        Fri, 5 Jan 2024 07:56:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGbfT0+M82XhQZiivqLGdXnHyPrYDLesqELniD7fVygCwQN7PPoJhDLut0JZMAyvDchnNzU
-X-Received: by 2002:a05:620a:25c9:b0:781:a890:1c55 with SMTP id y9-20020a05620a25c900b00781a8901c55mr2382291qko.112.1704470183928;
-        Fri, 05 Jan 2024 07:56:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704470183; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp791644ejo;
+        Fri, 5 Jan 2024 07:44:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGdUDSHM3+bsqbLlnHQ2MznTGkrXSdhkFt10nXNYVKSu7pDkhlZbv3Vb2mR3V/VcFHp3WAM
+X-Received: by 2002:a05:622a:4cb:b0:427:8706:c74a with SMTP id q11-20020a05622a04cb00b004278706c74amr2207418qtx.49.1704469440472;
+        Fri, 05 Jan 2024 07:44:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469440; cv=none;
         d=google.com; s=arc-20160816;
-        b=GBCcUZ934SrrSEhaQnmYS7EufGHDbPWaJJkOPY8r6irPcdfPilr6KD3QvNskv6EzVn
-         xDVK615zGt/WuIwmm+lSUY22RSB0ZGKIxvjOSs1jZpvxSJe37Lu/imz9Vop+g8VkCdac
-         Cl78wSKMMz/WiY+8CZDTyXrLWTaX8GdXKY2K5xdA3TVPUCyH/zht1dFgxct217im8cUw
-         7NRyIdOAGttr8yrz0C40jm7Ztu1XvKdi5kQ85sE59tj+LxSzRuCbLI/tceuYHKgi4vTY
-         c+T0EZyGMH3W07DO48xVwzXHATs34Wr+EDpFtiMQr/Xmm2uUemG3xBBzRtCDad6YDqny
-         chfw==
+        b=rhRMPdSc4lnm33/UETI2YHgBn9qesZhHqvXJEMuGzQMXVKTcAc8t0qs8MFMZE1GxUd
+         hIEfH+Oj5RTXPZdeahnKqcAyeQGjRw0+y3/xG6lHkWNWJsLJQtlT93vyYgPnJlqz7M9v
+         SEBGkqqisEZmcRN5OFqIP/YUIpr7WtDbph4wuc0nMDVvy8cJl5MwVGyWeLiqWFPl21Gn
+         KZeD47EP7lix8ZspMY5a8DPiLQj7c0yVlusxgZEk+bWmy/ox6YWjwNVxuna7FU/A30Tl
+         tAHD+XpV/jjV71ei+QK4fz2Fyw2DF29CNHOErpESI55/UPpvPtMcgJFusIkf2UWuPeWd
+         shPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/qHj/5uAdYCvRnDozLLxG4HVXbbh9wIM2eiBwuzcy8E=;
-        fh=PC1N9TByiSiFL4HDhxWgbHq+kzV4suSQZA+CstPXMFM=;
-        b=aoGUktulsT09o5ASsqNmplgYYBR3KOx+V0wPDeMYz9CbCgRW+xC0gvyRL2LWTIFRVm
-         1TLctmFX6rqy1A97LG1BCsJf1y5jV6k1bj/KbO45zQeH4QTVElN2lmIjhj3vJEOyDAkR
-         p68/BlkaOSxj1SEAsEGtISCUEZ4K+IKe69AaRkgnhERxTBRYiBT27SvSQPy6dubwAkZP
-         9tySmlx6rT4iSTfU2l+ExsPv8bgpv9jfoIexJrWweOuqinxNEn7ssMk3TmfTenfVTKPt
-         Mo6UUDWtJXpN2hkkQ2c5QvqwlWzNYI5CFC2ise59hqKHTMc88DkRE8pqturiVbBC19zC
-         wRKQ==
+        bh=/gOHeYXZaENDpXVCc7dFmhih0x0gAZTHQNBrKsITHc4=;
+        fh=mp1QisbMzD3WGnBsnTu2VzBtBm6Z6g4we33B+2s0mSY=;
+        b=CwIB6EakUMGo/Y43VxQgjZSyvKc69bBvXlz0maydoAa0e1p0rs0+IxD5yjQZQsln/7
+         P7jkfkhCpmZCgZdROf+QoAjGJKInRF77gXzwGQhg6/xUDHUCVSoNTQyxmzABZfjL1aW8
+         JyYKl4L4uJBZnkdnxB6+U2rS//jhNNqppaeWud+z9Ck1XreQ2SRC45Xd9+DRVcm2Khpp
+         jMEw5xY6qLMS86+2aZP6NJNvhnpTlVWpoxZoYBQkbWQXTzAO2WVqY3VXcgi4YdkQ2aIJ
+         gKIbw3z92qhp6M/acvQcvXCgPx4vpDgL/YBN6pDlXJoenbod5wGI36oWrNkTTXhW5MKr
+         J6KA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O6thLAWU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y8mQE3h2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ea4-20020a05620a488400b007815d6a1eaesi2053570qkb.767.2024.01.05.07.56.23
+        by mx.google.com with ESMTPS id j16-20020a05622a039000b00425892cae8esi2103669qtx.225.2024.01.05.07.44.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 07:56:23 -0800 (PST)
+        Fri, 05 Jan 2024 07:44:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O6thLAWU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y8mQE3h2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLmTR-00034u-4i; Fri, 05 Jan 2024 10:51:05 -0500
+	id 1rLmMF-0004WV-Mt; Fri, 05 Jan 2024 10:43:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmS7-0007pc-HB
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:49:44 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMD-0004VC-N4
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:37 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmS4-0000au-TP
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:49:42 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-336746a545fso411337f8f.0
- for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:49:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMA-000322-2P
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:37 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-40d8e7a50c1so18915465e9.2
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:43:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704469775; x=1705074575; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704469412; x=1705074212; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/qHj/5uAdYCvRnDozLLxG4HVXbbh9wIM2eiBwuzcy8E=;
- b=O6thLAWUIs+mpGnt3fcHUY2d+6DiM5HlAlAv/iQ7Fr0KqxtaYdnmgujwU5LX4cOHnI
- TRBPVsIdGacvsdSE4JULGcXZ37MXJyoZMGi2J97hGoOGpnNnppIJbVsShplKGBxtE7K2
- Ro+YfmT04YRZ5Oo4QY4PsWJ8Kxm+KywzbePWYvGxTzFUfJGTqeNtoHhiSg4pJqjGlK7r
- 7nTpn/8XYky0sGBDkaOBw2PjzQZUNNgxrcJt5UbWbUrHP6P2MKL0oypX11k2hMpg/VZP
- Z1pOnAzb9gCSA1gVhgFS8HM3IkswqKhqFwK4A7P7Fea/yRPYwZDmcjq2SV8bxaOym+io
- 5kFQ==
+ bh=/gOHeYXZaENDpXVCc7dFmhih0x0gAZTHQNBrKsITHc4=;
+ b=y8mQE3h2tzrsIz9htvdngU0RPnnNiPdLIrqgWqaN6zRO47rzMwoKvm5cUHjzeZaJHc
+ m5Uvixz/uMz3WDg2AGXQMhBOo44yPq+1pIRbfr67y2cRjhPdwm0vrxKoQHHzcY9ygT0p
+ i0XxSCdWtlTrNuPm5b6aJOUzd1Ab6y5XIGpjFBCeDnwHAXEaDBDw8DzUOb59Y4l6d48U
+ TkXCaYnQ8qj+T11tPJqz4hOWQpgjJeeaLIbhkrNzCWYwdgUGMQuFos24M2pKTrnqKGbc
+ i1Eh6AfjOH2Np8HwEz9g74nu/Y8GD1LCg4Dd0LVHhksQ+kCsbQfyss0H4VT8AjwQ2eth
+ kWGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704469775; x=1705074575;
+ d=1e100.net; s=20230601; t=1704469412; x=1705074212;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/qHj/5uAdYCvRnDozLLxG4HVXbbh9wIM2eiBwuzcy8E=;
- b=QOwx7zbq9vj8smNJq0aXfB70+K+RYGNxmr25byXQzme0RPpWAFqXkyaMJLEGRsirhF
- FUBHv1irj60PzT+Q34+ITdIhB682nXH0GtpGI/PdtG+k2Sc4a2xtqcW4ccLpzCsNce6n
- SxPSUbBuKLdIpW+6rcmfpEuASF0FgO0hBHpQZabqobliaarE57ttmWEUL2g7rwpWb57X
- Znq333g/KDoWh1EM5hN0jN9WJHiBis9x/0M/bIlQlfMNjflnfMHIBcgv2siIt1bZYOhQ
- wWcXJ03VJCclx+D1DSITYP4g/v/T7SjpLri4atSdDzYvMkcNDSsxHqg213dCDG7K7W0h
- Fsuw==
-X-Gm-Message-State: AOJu0YybH2z+GqTm9FMBDNeJmVKR81heU/SxB+nYC0G9NsV0FgLm7HGq
- VOfd/m1UV/4LdkL35oRfTiymlOs+h5KjPk9oK6Yz8g7jjOo=
-X-Received: by 2002:a5d:42cc:0:b0:337:5c9c:2a52 with SMTP id
- t12-20020a5d42cc000000b003375c9c2a52mr361625wrr.20.1704469775442; 
- Fri, 05 Jan 2024 07:49:35 -0800 (PST)
+ bh=/gOHeYXZaENDpXVCc7dFmhih0x0gAZTHQNBrKsITHc4=;
+ b=jsMHQLOT3TEOAcSQDl58CNd1VZgQIPdG9bTLWViJIBMfx0tj9VgdUUyLVvhw6VbkpE
+ nulzU5X1bLaW/9QuCr0/ccdkNvgYMKRL9uU7qHRxK6bCPsrGqeqNEjc8KEBS5MyToCaz
+ sx2Zrp4KaLdUbg+UTFJzV97+0+mKr/UYLZgcz6TXQph7UV/DOe/H/VoXr9BKOwp2N9pV
+ yRdPyvmShPQhFtsDcFI83WzSJqAiULy6VILQxxpq9sDzSHsMjyM0HL5W3XOxsD1VV2kY
+ E/ljow6k/HbZs0XDqkeeToyNl8TrCwAdQeR8L46+tadNQ+nvW7CrzKGjMQrnP9rxH+Fk
+ MxTQ==
+X-Gm-Message-State: AOJu0YxLNHV1a1XyrRjKRexfnI6DdSr3TcOspChnwGyRNRLpTJD5N2Yl
+ GjGFopDx5BsErpE4xvJIWTaLFjSbHFBtT6+qtypFDgAemzU=
+X-Received: by 2002:a05:600c:470b:b0:40d:5c50:573 with SMTP id
+ v11-20020a05600c470b00b0040d5c500573mr1142490wmo.213.1704469412529; 
+ Fri, 05 Jan 2024 07:43:32 -0800 (PST)
 Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- cs18-20020a056000089200b00333359b522dsm1615912wrb.77.2024.01.05.07.49.34
+ i1-20020a05600c354100b0040d8ff79fd8sm1938104wmq.7.2024.01.05.07.43.30
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 05 Jan 2024 07:49:35 -0800 (PST)
+ Fri, 05 Jan 2024 07:43:32 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Gavin Shan <gshan@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PULL 63/71] hw: Simplify memory_region_init_ram() calls
-Date: Fri,  5 Jan 2024 16:42:56 +0100
-Message-ID: <20240105154307.21385-64-philmd@linaro.org>
+ Gavin Shan <gshan@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>,
+ Laurent Vivier <laurent@vivier.eu>, Stafford Horne <shorne@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PULL 04/71] cpu: Call object_class_dynamic_cast() once in
+ cpu_class_by_name()
+Date: Fri,  5 Jan 2024 16:41:57 +0100
+Message-ID: <20240105154307.21385-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
 References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,208 +139,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DmgvUeI0BBca
+X-TUID: qtoTxkLtaPRc
 
-Mechanical change using the following coccinelle script:
-
-@@
-expression mr, owner, arg3, arg4, errp;
-@@
--   memory_region_init_ram(mr, owner, arg3, arg4, &errp);
-    if (
--       errp
-+       !memory_region_init_ram(mr, owner, arg3, arg4, &errp)
-    ) {
-        ...
-        return;
-    }
-
-and removing the local Error variable.
+For all targets, the CPU class returned from CPUClass::class_by_name()
+and object_class_dynamic_cast(oc, CPU_RESOLVING_TYPE) need to be
+compatible. Lets apply the check in cpu_class_by_name() for once,
+instead of having the check in CPUClass::class_by_name() for individual
+target.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au> # aspeed
 Reviewed-by: Gavin Shan <gshan@redhat.com>
-Message-Id: <20231120213301.24349-21-philmd@linaro.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Message-ID: <20231114235628.534334-4-gshan@redhat.com>
 ---
- hw/arm/aspeed_ast2400.c | 6 ++----
- hw/arm/aspeed_ast2600.c | 6 ++----
- hw/arm/fsl-imx25.c      | 6 ++----
- hw/arm/fsl-imx31.c      | 6 ++----
- hw/arm/fsl-imx6.c       | 6 ++----
- hw/arm/integratorcp.c   | 7 ++-----
- hw/arm/nrf51_soc.c      | 7 ++-----
- hw/ppc/rs6000_mc.c      | 7 ++-----
- 8 files changed, 16 insertions(+), 35 deletions(-)
+ hw/core/cpu-common.c   | 8 +++++---
+ target/alpha/cpu.c     | 3 ---
+ target/arm/cpu.c       | 4 +---
+ target/avr/cpu.c       | 8 +-------
+ target/cris/cpu.c      | 4 +---
+ target/hexagon/cpu.c   | 4 +---
+ target/hppa/cpu.c      | 6 +-----
+ target/loongarch/cpu.c | 8 +-------
+ target/m68k/cpu.c      | 4 +---
+ target/openrisc/cpu.c  | 4 +---
+ target/riscv/cpu.c     | 4 +---
+ target/tricore/cpu.c   | 4 +---
+ target/xtensa/cpu.c    | 4 +---
+ 13 files changed, 16 insertions(+), 49 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index a4334c81b8..0baa2ff96e 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -247,7 +247,6 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
-     Aspeed2400SoCState *a = ASPEED2400_SOC(dev);
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    Error *err = NULL;
-     g_autofree char *sram_name = NULL;
- 
-     /* Default boot region (SPI memory or ROMs) */
-@@ -276,9 +275,8 @@ static void aspeed_ast2400_soc_realize(DeviceState *dev, Error **errp)
- 
-     /* SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
-+                                errp)) {
-         return;
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 82dae51a55..d0e7bbdf06 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -154,10 +154,12 @@ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
+     assert(cc->class_by_name);
+     assert(cpu_model);
+     oc = cc->class_by_name(cpu_model);
+-    if (oc == NULL || object_class_is_abstract(oc)) {
+-        return NULL;
++    if (object_class_dynamic_cast(oc, typename) &&
++        !object_class_is_abstract(oc)) {
++        return oc;
      }
-     memory_region_add_subregion(s->memory,
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index b965fbab5e..3a9a303ab8 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -282,7 +282,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     Aspeed2600SoCState *a = ASPEED2600_SOC(dev);
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    Error *err = NULL;
-     qemu_irq irq;
-     g_autofree char *sram_name = NULL;
+-    return oc;
++
++    return NULL;
+ }
  
-@@ -355,9 +354,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+ static void cpu_common_parse_features(const char *typename, char *features,
+diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+index 91fe8ae095..83345c5c7d 100644
+--- a/target/alpha/cpu.c
++++ b/target/alpha/cpu.c
+@@ -141,9 +141,6 @@ static ObjectClass *alpha_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(ALPHA_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_ALPHA_CPU)) {
+-        return NULL;
+-    }
  
-     /* SRAM */
-     sram_name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
--    memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size,
-+                                errp)) {
-         return;
-     }
-     memory_region_add_subregion(s->memory,
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 9aabbf7f58..b15435ccaf 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -299,10 +299,8 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-                                 &s->rom[1]);
+     return oc;
+ }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 650e09b29c..1c8b787482 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2411,9 +2411,7 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_ARM_CPU)) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
  
-     /* initialize internal RAM (128 KB) */
--    memory_region_init_ram(&s->iram, NULL, "imx25.iram", FSL_IMX25_IRAM_SIZE,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->iram, NULL, "imx25.iram",
-+                                FSL_IMX25_IRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX25_IRAM_ADDR,
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index def27bb913..1d5dcd51e8 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -208,10 +208,8 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
-                                 &s->rom);
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 999c010ded..3e478294a6 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -160,13 +160,7 @@ static Property avr_cpu_properties[] = {
  
-     /* initialize internal RAM (16 KB) */
--    memory_region_init_ram(&s->iram, NULL, "imx31.iram", FSL_IMX31_IRAM_SIZE,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->iram, NULL, "imx31.iram",
-+                                FSL_IMX31_IRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX31_IRAM_ADDR,
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 7dc42cbfe6..58f37e7c11 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -443,10 +443,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                                 &s->caam);
- 
-     /* OCRAM memory */
--    memory_region_init_ram(&s->ocram, NULL, "imx6.ocram", FSL_IMX6_OCRAM_SIZE,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->ocram, NULL, "imx6.ocram",
-+                                FSL_IMX6_OCRAM_SIZE, errp)) {
-         return;
-     }
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_OCRAM_ADDR,
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index e602ca5e14..1830e1d785 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -291,12 +291,9 @@ static void integratorcm_realize(DeviceState *d, Error **errp)
+ static ObjectClass *avr_cpu_class_by_name(const char *cpu_model)
  {
-     IntegratorCMState *s = INTEGRATOR_CM(d);
-     SysBusDevice *dev = SYS_BUS_DEVICE(d);
--    Error *local_err = NULL;
+-    ObjectClass *oc;
+-
+-    oc = object_class_by_name(cpu_model);
+-    if (object_class_dynamic_cast(oc, TYPE_AVR_CPU) == NULL) {
+-        oc = NULL;
+-    }
+-    return oc;
++    return object_class_by_name(cpu_model);
+ }
  
--    memory_region_init_ram(&s->flash, OBJECT(d), "integrator.flash", 0x100000,
--                           &local_err);
--    if (local_err) {
--        error_propagate(errp, local_err);
-+    if (!memory_region_init_ram(&s->flash, OBJECT(d), "integrator.flash",
-+                                0x100000, errp)) {
-         return;
-     }
+ static void avr_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index 675b73ac04..a5083a0077 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -95,9 +95,7 @@ static ObjectClass *cris_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(CRIS_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && !object_class_dynamic_cast(oc, TYPE_CRIS_CPU)) {
+-        oc = NULL;
+-    }
++
+     return oc;
+ }
  
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index 34da0d62f0..ac53441630 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -58,7 +58,6 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+index 9d1ffc3b4b..aa48f5fe89 100644
+--- a/target/hexagon/cpu.c
++++ b/target/hexagon/cpu.c
+@@ -63,9 +63,7 @@ static ObjectClass *hexagon_cpu_class_by_name(const char *cpu_model)
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_HEXAGON_CPU)) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
+ 
+diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+index e3e7200b1d..1a5fb6c65b 100644
+--- a/target/hppa/cpu.c
++++ b/target/hppa/cpu.c
+@@ -160,12 +160,8 @@ static void hppa_cpu_initfn(Object *obj)
+ static ObjectClass *hppa_cpu_class_by_name(const char *cpu_model)
  {
-     NRF51State *s = NRF51_SOC(dev_soc);
-     MemoryRegion *mr;
--    Error *err = NULL;
-     uint8_t i = 0;
-     hwaddr base_addr = 0;
+     g_autofree char *typename = g_strconcat(cpu_model, "-cpu", NULL);
+-    ObjectClass *oc = object_class_by_name(typename);
  
-@@ -92,10 +91,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+-    if (oc && object_class_dynamic_cast(oc, TYPE_HPPA_CPU)) {
+-        return oc;
+-    }
+-    return NULL;
++    return object_class_by_name(typename);
+ }
  
-     memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
- 
--    memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
--                           &err);
--    if (err) {
--        error_propagate(errp, err);
-+    if (!memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
-+                                errp)) {
-         return;
+ static void hppa_cpu_list_entry(gpointer data, gpointer user_data)
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index 07319d6fb9..81f2d8d8ed 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -718,15 +718,9 @@ static ObjectClass *loongarch_cpu_class_by_name(const char *cpu_model)
+         g_autofree char *typename
+             = g_strdup_printf(LOONGARCH_CPU_TYPE_NAME("%s"), cpu_model);
+         oc = object_class_by_name(typename);
+-        if (!oc) {
+-            return NULL;
+-        }
      }
-     memory_region_add_subregion(&s->container, NRF51_SRAM_BASE, &s->sram);
-diff --git a/hw/ppc/rs6000_mc.c b/hw/ppc/rs6000_mc.c
-index b35f8ba112..e6ec4b4c40 100644
---- a/hw/ppc/rs6000_mc.c
-+++ b/hw/ppc/rs6000_mc.c
-@@ -143,7 +143,6 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
-     RS6000MCState *s = RS6000MC(dev);
-     int socket = 0;
-     unsigned int ram_size = s->ram_size / MiB;
--    Error *local_err = NULL;
  
-     while (socket < 6) {
-         if (ram_size >= 64) {
-@@ -165,10 +164,8 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
-         if (s->simm_size[socket]) {
-             char name[] = "simm.?";
-             name[5] = socket + '0';
--            memory_region_init_ram(&s->simm[socket], OBJECT(dev), name,
--                                   s->simm_size[socket] * MiB, &local_err);
--            if (local_err) {
--                error_propagate(errp, local_err);
-+            if (!memory_region_init_ram(&s->simm[socket], OBJECT(dev), name,
-+                                        s->simm_size[socket] * MiB, errp)) {
-                 return;
-             }
-             memory_region_add_subregion_overlap(get_system_memory(), 0,
+-    if (object_class_dynamic_cast(oc, TYPE_LOONGARCH_CPU)) {
+-        return oc;
+-    }
+-    return NULL;
++    return oc;
+ }
+ 
+ void loongarch_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 43b1bde21c..1421e77c2c 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -111,9 +111,7 @@ static ObjectClass *m68k_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(M68K_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && object_class_dynamic_cast(oc, TYPE_M68K_CPU) == NULL) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
+ 
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index 1173260017..f7d53c592a 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -164,9 +164,7 @@ static ObjectClass *openrisc_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(OPENRISC_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && !object_class_dynamic_cast(oc, TYPE_OPENRISC_CPU)) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
+ 
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 83c7c0cf07..523e9a16ea 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -646,9 +646,7 @@ static ObjectClass *riscv_cpu_class_by_name(const char *cpu_model)
+     oc = object_class_by_name(typename);
+     g_strfreev(cpuname);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_RISCV_CPU)) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
+ 
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 034e01c189..8acacdf0c0 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -132,9 +132,7 @@ static ObjectClass *tricore_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(TRICORE_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (!oc || !object_class_dynamic_cast(oc, TYPE_TRICORE_CPU)) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
+ 
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index e20fe87bf2..93e782a6e0 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -141,9 +141,7 @@ static ObjectClass *xtensa_cpu_class_by_name(const char *cpu_model)
+     typename = g_strdup_printf(XTENSA_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc == NULL || !object_class_dynamic_cast(oc, TYPE_XTENSA_CPU)) {
+-        return NULL;
+-    }
++
+     return oc;
+ }
+ 
 -- 
 2.41.0
 

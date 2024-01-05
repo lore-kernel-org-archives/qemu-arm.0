@@ -1,121 +1,117 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp762506ejo;
-        Fri, 5 Jan 2024 06:58:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFzM/TPsW4Q+6UGqK3o3dXY96HdLIk/PpHLPIhfE5ypSoJZP/vQikXKWtOVjW8/3HRa0JOH
-X-Received: by 2002:ad4:5bac:0:b0:67f:39f9:32e9 with SMTP id 12-20020ad45bac000000b0067f39f932e9mr2279515qvq.82.1704466716313;
-        Fri, 05 Jan 2024 06:58:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704466716; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp791641ejo;
+        Fri, 5 Jan 2024 07:44:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGFyPFC3rwao9PUt9lvWnmveyyq1SjcVS96p7zQfEXjm4Et2gBrkdp6OxEfOVBsMteeFbz8
+X-Received: by 2002:a05:6830:1e4b:b0:6dc:5f77:d60b with SMTP id e11-20020a0568301e4b00b006dc5f77d60bmr2253992otj.9.1704469440247;
+        Fri, 05 Jan 2024 07:44:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704469440; cv=none;
         d=google.com; s=arc-20160816;
-        b=K6T0/AfILIuEbHXvXs0gF6rwzUv+xhu9lxa0Y5MVkcr2HvG7B4nsLQ9ejhR+xz3QWL
-         koENpBTM5c6rz8xUP49GeHsWNQrW4Aasv6ETknhcj9MWfKpO76c11p4zuD4R1ok9rY6l
-         mkDYjJfK084klK7PtsrOmWUcuP9ywU5l97cnk0xcf4PC6oUUHD/Iau493iccStS8An5L
-         q5MhSBI/ckIXkFf9SJQb0RHxdwXtGlCJQsqXm4fDDa2z8nd0+cRggKkcmokb5Xm6KYqY
-         RVsSWhqoTYtbvg+iye6QBDDPI1dCzp+wDKFoSaaA1hfmxuXwwRfwbGuVBEyCkIwR19ar
-         O/Kw==
+        b=x8CQHJYPS4UXH7X1+AR7u8TTKCyYcWZ5N9gQG1/T9jj1/rrJDjrOvprMpQl2yeI0Sd
+         zD+Hm1tTeIxySKQRex+EAmefwRLWkGkvzDe2KA4WIAVcGIYnTV6CWf/Cf5mKEntu0zB6
+         OYwc0xS0qUmjV5YcPQk41pbU3UwClkruW6AUZ4/49Ewu0gnkEYSs7qL7cKWqOBXbwK9e
+         kATsO5p/30JvCKJUKf1GLv6MV1ngXqN24sjcZVLQ8JUCTlbMWvmZPh5sDFt6FpiO3RbH
+         CJ08TdIlxCht+aXnqpMaMOCL5dIWtpaM+h+t92nt+4uadeX9DjASCcu0fBQyqOUCtkym
+         ySPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=itu+JwLJHwRCZPfVP49tBSwhZMj0Z3KwKhApjwEVvng=;
-        fh=HH0wEvt0upJleKhGnsnu13PpP3dGDLA1Qg6X4FBsiB0=;
-        b=IkWbDXqrh/QdE5+QZ/26FBqJIVCBY2EqkZeccXdBR6hFY+UX/00KijJIUoN5HcHFNH
-         IOzbcD4ws+AgzvsW3ri2pdAik04lVhiUcasi4Nfwk5S4gIIgu4AyvPNZIlE5Iv5rgKCM
-         FAkHZQa/qBEGFDv2iq0uzBjZm3M0mln3rpHHpGHr5AnlrdkriBIQSDv+uCpuhFOG0KLL
-         jfrJry7x0RKAwbxS07KQTYa3C6yqjhoWe8lCBB7ORqTfEfgh0m+f6nZ6eV8kkntIOs4r
-         2C2zfp2UwwdIuFmFcj6kEWS7xMKOJjhS7QD1nk0J9OIspmfBUdKzqO/ZwgF+LA4hnljZ
-         iIPw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=kfCx4/gtR4YY4ivQoLXNfOFMl7NDjjAvmzs8gXTbe8k=;
+        fh=gTmaJj2E1hs4HyEUKXnyq8OKcC/EaIkRfqHsQQPBpKE=;
+        b=fu1KRc4zNqIH6hESzWciLN6i00KJF1MuRYjAqnbSwDZ6dgzSwFVl/IzCRP741TLuLK
+         27tvPVi5VpVOzVOJZomVGSa4q7rMZezHg+sMqqGwlSo4ypj7bYrABA67CkKFghgpy5pQ
+         +W1XKZjLffIyuaPv4H+AgnWty3qWzx4bSbTWzLOn70HmLwpzll95WAe71YjsVD3l7b0T
+         IJN2f5vIXy6K6Cm0nkiaUKnmrp4ZPr/RvsWQPkCm68n9QNVDppr7UBuP4o+iywDrU3j4
+         +OHoyAmTibFgePV46oz0zcFHfPqrHTohWuINOnF9W54yTetT4+wjZb8wZkVSind5/1Hp
+         ZF3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcuvsORT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pUhC2F9f;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14-20020a05622a110e00b004280329c06bsi1895046qty.118.2024.01.05.06.58.36
+        by mx.google.com with ESMTPS id cj12-20020a05622a258c00b00427ebce48b9si2075197qtb.143.2024.01.05.07.44.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 06:58:36 -0800 (PST)
+        Fri, 05 Jan 2024 07:44:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcuvsORT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pUhC2F9f;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLleU-00085c-9o; Fri, 05 Jan 2024 09:58:26 -0500
+	id 1rLmMJ-0004YE-2D; Fri, 05 Jan 2024 10:43:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rLleH-000827-Sl
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 09:58:13 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmMI-0004Xg-48
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:42 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rLleF-0003KA-V6
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 09:58:13 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-555144cd330so2129608a12.2
- for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 06:58:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLmM4-00030R-1H
+ for qemu-devel@nongnu.org; Fri, 05 Jan 2024 10:43:41 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-40e3b43173eso2006805e9.1
+ for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 07:43:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704466689; x=1705071489; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1704469406; x=1705074206; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=itu+JwLJHwRCZPfVP49tBSwhZMj0Z3KwKhApjwEVvng=;
- b=rcuvsORTH5DqJ5Ig/asI/1tUfyLu8v64OW15uJIep9mWhx/msPZCExr2pTjLtaEWak
- GxXoJZgvr3Fr6EjOPLWZZ34KelKyBu0LuxJqaMauX5UHh2688koR9FrHz0x/FceY9pdi
- NMtxT7xonKQLRkj5ZAA7ePImmPrzDf9xCBBLnhxiocfUWpUv2m6WSZS8V295KAooaBKD
- 8rIi1SWOKWEXast48pwODjvxfXCjBM6377HlmGv63uzwZbR9bvy2uGMtl2IuswSK+WNQ
- HrgSyXaXcU9eipyEYG0nrnF9+B6/VwN7soXLnWuSkP3PqBJJeBD8vFhb19Jrg4RM7IbI
- mMiA==
+ bh=kfCx4/gtR4YY4ivQoLXNfOFMl7NDjjAvmzs8gXTbe8k=;
+ b=pUhC2F9fWeiAW4HljsTiPYeOoM69zTLlFisGRC9T5nR52G8chwGncaBbHWAs4owznH
+ yJ76w7XWpHvcLa0nVeDSPjO6g9rE0dC+dxreiuOwGj1K1mL48DnScxHs4zV2iXg1cs8F
+ 6fYfuLxJlcrNM2LAbcr2zzJWuKlFVLEup2UhiZxifxK2hyKjFYnK0cnSFWes713vrG8D
+ Jmxu5paBVlQ3DbqPYpoMhdyJ9k46T1jIBg1DrFmu7mHMtKftw0IOWbn3EJtowPkgTdWY
+ fQONH2H9w21hXWsFPNX0s3lXFvvSCIbTBfaSwCOBTxwoefeR6n2C7n1XkdP6YXvq06Ao
+ h0hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704466689; x=1705071489;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1704469406; x=1705074206;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=itu+JwLJHwRCZPfVP49tBSwhZMj0Z3KwKhApjwEVvng=;
- b=YsJuS0x5n8worCnDPL/N/dGqc/0cG+SQs6JKp9r4VDWoMZdVtqW1zPW8KpsYe577bZ
- d3+iZOUTP1aP7QtkQiUHdCK1qELRifOeweqY0/bZ5bdhvu7t5iTYibbqwBMhaknDdB8a
- NBLCE9W6991nBJAjENsVSrAjGc+T7VSuyeMOnbhTnxXBHGDVBxmPoujQNIBoTNmqC9So
- dqu6vEm0D7/hnS5uMZ0bEVh3N7T95wEIY6VyMcCv/4ptoOxNAAssV1F/P0SM/xshhWA6
- kWt2JuXtQ2UCx6DTrBmg2x/7LSWBk+mI7tMlgj+gi52NsGkrIg70SqqelBzZIGVFs3vA
- f48Q==
-X-Gm-Message-State: AOJu0YySNP8ktck35buC0Fx5xSJi3zle/Xr5koBVOW6TDtnUzGMuVMMt
- dtQZa/HSiHVb+IFNtmoxqgywoQ7ZRjZFxFuAJvdEhqQO8uIN+g==
-X-Received: by 2002:a50:9354:0:b0:557:1af5:d4e0 with SMTP id
- n20-20020a509354000000b005571af5d4e0mr806678eda.63.1704466689281; Fri, 05 Jan
- 2024 06:58:09 -0800 (PST)
+ bh=kfCx4/gtR4YY4ivQoLXNfOFMl7NDjjAvmzs8gXTbe8k=;
+ b=G6xi6WSyaorV3279xGk0avnqDEszfPWeK1HWebTBKBtF0JJUgkDTauhMiIcXh1IKjn
+ qk3pwV6XV531oLcBmoR9Plg9xCa/iW1PAkcX3CCExlDL5G3lbWInPKCQ35UF3RhSvmM7
+ 7Sxo9vaWVt5m8Eu6yLttQWnluRMltABDx3xHz6MasxDI93ygjHTEt+2CvZ6o/OvUGxIe
+ YGwtBDMC1zE7LU2L2lC6ZP6wkr8jqz3lbzjLUbUiRF+2AHnvUHFeVlAkCquQG9mqCivl
+ bCh4yHJrGfBReFIWarUFTrozwe/9SaKVG7qYy/A15YciD3eNQsKW4nRM2GBD6sS6gY29
+ UYzQ==
+X-Gm-Message-State: AOJu0Ywv/PLwCnjpnoaLv3gnypYlwq3tap4TiAb5ugm76pXfx9bhgqaY
+ BH42UMr39Bo0L+E+OoQIxACELRl8+hTfLgUS8k/cHv+B5Xw=
+X-Received: by 2002:a05:600c:1910:b0:40c:91f:506e with SMTP id
+ j16-20020a05600c191000b0040c091f506emr829441wmq.126.1704469406291; 
+ Fri, 05 Jan 2024 07:43:26 -0800 (PST)
+Received: from m1x-phil.lan (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
+ [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
+ j26-20020a05600c1c1a00b0040e3804ea71sm1941923wms.10.2024.01.05.07.43.25
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 05 Jan 2024 07:43:25 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Gavin Shan <gshan@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 03/71] target/hppa: Remove object_class_is_abstract()
+Date: Fri,  5 Jan 2024 16:41:56 +0100
+Message-ID: <20240105154307.21385-4-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240105154307.21385-1-philmd@linaro.org>
+References: <20240105154307.21385-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20231120213301.24349-1-philmd@linaro.org>
- <20231120213301.24349-4-philmd@linaro.org>
- <4h38a.h95poe276hnn@linaro.org>
- <af352e7d-3346-4705-be77-6eed86858d18@linaro.org>
-In-Reply-To: <af352e7d-3346-4705-be77-6eed86858d18@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Jan 2024 14:57:57 +0000
-Message-ID: <CAFEAcA_yKxnTMnfWVdXWixPq27=OVQCZ0BjRdiPfSKKhqh=gVw@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 03/25] memory: Have
- memory_region_init_rom_nomigrate() handler return a boolean
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, qemu-ppc@nongnu.org, 
- =?UTF-8?Q?C_=C3=A9_dric_Le_Goater?= <clg@kaod.org>, 
- Peter Xu <peterx@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,63 +126,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u+emWAXsms/m
+X-TUID: UZBaOtd54Cfb
 
-On Fri, 5 Jan 2024 at 14:46, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> On 21/11/23 13:10, Manos Pitsidianakis wrote:
-> > On Mon, 20 Nov 2023 23:32, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
-rg>
-> > wrote:
-> >> Following the example documented since commit e3fe3988d7 ("error:
-> >> Document Error API usage rules"), have cpu_exec_realizefn()
-> >> return a boolean indicating whether an error is set or not.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> >> ---
-> >> include/exec/memory.h | 4 +++-
-> >> system/memory.c       | 8 ++++++--
-> >> 2 files changed, 9 insertions(+), 3 deletions(-)
->
->
-> >> diff --git a/system/memory.c b/system/memory.c
-> >> index 337b12a674..bfe0b62d59 100644
-> >> --- a/system/memory.c
-> >> +++ b/system/memory.c
-> >> @@ -1729,14 +1729,18 @@ void memory_region_init_alias(MemoryRegion *mr=
-,
-> >>     mr->alias_offset =3D offset;
-> >> }
-> >>
-> >> -void memory_region_init_rom_nomigrate(MemoryRegion *mr,
-> >> +bool memory_region_init_rom_nomigrate(MemoryRegion *mr,
-> >>                                       Object *owner,
-> >>                                       const char *name,
-> >>                                       uint64_t size,
-> >>                                       Error **errp)
-> >> {
-> >> -    memory_region_init_ram_flags_nomigrate(mr, owner, name, size, 0,
-> >> errp);
-> >> +    bool rv;
-> >> +
-> >> +    rv =3D memory_region_init_ram_flags_nomigrate(mr, owner, name,
-> >> size, 0, errp);
-> >>     mr->readonly =3D true;
-> >> +
-> >
-> > By the way, do we want to set mr->readonly on failure? Should there be
-> > modifications if an error is propagated upwards?
->
-> Good point
+From: Gavin Shan <gshan@redhat.com>
 
-I don't think it matters much. If the init function fails,
-then the MemoryRegion is not initialized, and there's
-nothing you can do with the struct except free it (if it
-was in allocated memory). Whether the readonly field is
-true or false doesn't matter, because conceptually it's
-all undefined-values. And memory_region_init_ram_flags_nomigrate()
-has already written to some fields, so avoiding changing
-mr->readonly specifically doesn't seem worthwhile.
+Since commit 3a9d0d7b64 ("hw/cpu: Call object_class_is_abstract()
+once in cpu_class_by_name()"), there is no need to check if @oc is
+abstract because it has been covered by cpu_class_by_name().
 
--- PMM
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20231114235628.534334-3-gshan@redhat.com>
+[PMD: Mention commit 3a9d0d7b64]
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/hppa/cpu.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+index 04de1689d7..e3e7200b1d 100644
+--- a/target/hppa/cpu.c
++++ b/target/hppa/cpu.c
+@@ -162,9 +162,7 @@ static ObjectClass *hppa_cpu_class_by_name(const char *cpu_model)
+     g_autofree char *typename = g_strconcat(cpu_model, "-cpu", NULL);
+     ObjectClass *oc = object_class_by_name(typename);
+ 
+-    if (oc &&
+-        !object_class_is_abstract(oc) &&
+-        object_class_dynamic_cast(oc, TYPE_HPPA_CPU)) {
++    if (oc && object_class_dynamic_cast(oc, TYPE_HPPA_CPU)) {
+         return oc;
+     }
+     return NULL;
+-- 
+2.41.0
+

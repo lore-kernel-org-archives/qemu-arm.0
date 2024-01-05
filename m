@@ -1,117 +1,120 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp635331ejo;
-        Fri, 5 Jan 2024 03:00:58 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEoGHppucnSI3HdSatLPnfPjiNOLGF5a7u2p1gNLL6znmYEZR4w3STPj6wO5WFMabio+i4v
-X-Received: by 2002:ac8:5714:0:b0:429:7bdc:e645 with SMTP id 20-20020ac85714000000b004297bdce645mr201330qtw.96.1704452458157;
-        Fri, 05 Jan 2024 03:00:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704452458; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp618362ejo;
+        Fri, 5 Jan 2024 02:13:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHQk4dzhFjBsLqKuaCO2EHDix/e5fMZFFEHEOL2D5nJsUCnvPkbtwvCuOgXNY7s3YLNzBE3
+X-Received: by 2002:a05:620a:8516:b0:781:7091:b641 with SMTP id pe22-20020a05620a851600b007817091b641mr1805421qkn.121.1704449627257;
+        Fri, 05 Jan 2024 02:13:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704449627; cv=none;
         d=google.com; s=arc-20160816;
-        b=nTU2ee/ByIK/K3Nk2Ku8wYWokjQBirEvEKLrp7ZA2NtKi2OOGumcpvjLEtXRjvRgwh
-         /Um7u9dR/SvXj1z+6lBGXW+aN2jjN+fZ/bnmzB06dW7hFeaKuR4/7TzmRtVJuflcz6yG
-         DmDpUo5tAvolxfXap/WodiOe53zXzzhkIy9y85GtW8getj1QLw6wKA1yCrDpVm92b/Se
-         XAXNDX3DoTUQnGlSDHYEPif2wQZ0dC48ECVQQ9EwmDEgmL5ewcoGyrrwYQyblmhz+WjN
-         9tpkXL6r6xx3nDHEo1yeMSKBke8dc14DXTUQ9QGVuY2J/zkaMIDmGy/akeBVLi8Y2c+f
-         liAg==
+        b=IObY7ykTyEB3xJNgLXuLaWEjONdQGIIYVMO2wX6BWG7O4S0//p0V6Oz2mUID/6xaCg
+         ejaqgt3UEk/u0cdD3f9OX1TFHZ2KANndvfugPhd7qLic+j+EYiQXWdBIhb2mNzpy4pTj
+         s66FrEpISNhubK18aXQRBYLHmwY7EUcS8j03+orIudClx5Rx5j3GCi+NOr/uJLcolru9
+         jQChTyxblDx88koI9iGqXVIU+s+EPQdn4BAt2P87zrBFq2fQmHwdHiprvKGGCp8wkL7e
+         qDG/JCFTyCOowuZ+OqHYpICCtpnwxJkKfNuXpQ8LzNh0591pMt157XflQebTh+r6Ez2D
+         Gurg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2oQ8RmKNSwUYagdexe6ijrxEbemFp9CmA2w04t1AZZg=;
-        fh=Mas2d8IijYM9e5N4NE8HHLuJSdNCVfs0z8u4YuDP8fc=;
-        b=z7gUDBk2JcQdnDWY1zw9PtGxJp/wS+r7w1ByW33ny7FXCyYpM/xWrr0cEZ5QzvLRJG
-         c8csNXwKRIq1j3Iqcdu/jQ/uwinA9JP1GDs3LNpixCeo72v7p9Ni8WzBN2COBX6Dp7gv
-         ZIl21oeiun4eh+4OQKtNtbYUBnM0xuMgRWDOfKOI+9QxfK2BGoUU2LQk745PdboKcroj
-         ZjU6UmNlz2EOOEL242N3GIimdLW1Kz+CcVpKzKt/yz8mRRgq68+XjHvX3bphoHgML2mz
-         3hhiR/whN6qOWdnQC1oaJTNhhUJcNHftTxrPMulMRoDNkC3wriw7nKv67fXwZ5SYWE+7
-         I1yw==
+        bh=xjJ+95yF+JJvIZcDqZBEdqJd9NZpOgcervqv2+aiesI=;
+        fh=pLk7IlYeOw9gEUp1FsbFqgDAiPe5JHHXs+b90EKpYi8=;
+        b=ChzJdduK8KX8NLo3tU4IPSMBGqoWbuO+vjJX33F0a4y1UFFsHg9zLxVvBm3VfWtplB
+         Hvsu/1wH8IsuV12wR9O5qC/A08jCLKT53CNg4EPNTv5tz4hK7EYo8OC4lPXVNj2SWSjP
+         QKOl8KzSANv4AFwcpwElRPBPZGrrpJzWBI4Y2U3GMjlaUrMHZCK62kFyEgG5Q/EGQtN2
+         3ZecYdWNnioJXKB7j1x216vdztMDGhi0/wpD6Z3YZej01+zcoGn70xWedDGIsEuCE60Q
+         R6z+wH+kfZzeHuj6mkCXpikeaK9nSzaQTNzmmH7P+7iQZIANXDrDengPMzlUhHDMZZYV
+         x+xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fa7ulPCj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dP8NE0xn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10-20020ac84e4a000000b00423dfaba41asi1521623qtw.644.2024.01.05.03.00.57
+        by mx.google.com with ESMTPS id u16-20020a05620a121000b0078110391418si1326272qkj.776.2024.01.05.02.13.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 03:00:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Jan 2024 02:13:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fa7ulPCj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dP8NE0xn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rLhwG-0004pR-Ti; Fri, 05 Jan 2024 06:00:33 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rLhCu-0004ff-3v; Fri, 05 Jan 2024 05:13:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLhw8-0004on-3i
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 06:00:25 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLhCs-0004f4-3G
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 05:13:38 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLhw6-0004yY-6V
- for qemu-devel@nongnu.org; Fri, 05 Jan 2024 06:00:23 -0500
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-5572a9b3420so801109a12.1
- for <qemu-devel@nongnu.org>; Fri, 05 Jan 2024 03:00:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLhCq-00014k-Cu
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 05:13:37 -0500
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a28f66dc7ffso77588066b.0
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 02:13:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704452420; x=1705057220; darn=nongnu.org;
+ d=linaro.org; s=google; t=1704449614; x=1705054414; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=2oQ8RmKNSwUYagdexe6ijrxEbemFp9CmA2w04t1AZZg=;
- b=Fa7ulPCj4jV8V51Tc3/gUyHzmNTISOk22BVxttN35FfmpVNEpI4zFnlBX4g5qKbSf3
- FcqNzRee1JcPcq34Xqz3XrD8IUnEjyk3Lh5ohRVyUg52K2tG4xCSwhtXwEEx/bJxKd05
- SrcR7AKj48Z0D/CvgqaH5fFnAR+SISo1VWVZticev5lQiggPogGjCpTG+G8fMB8EjQp0
- 4tNwh1zMDa82sW9b06VlEh9XJF63EyD1qHaVPq3k/Tz43JuEYvGM63g3BGUQ2iumwZ9v
- gWV26jC429s+5tM1vAwopbOgPkzaxuih+ikD3xGDa0jkFMyZHNWj5uL+Jl69j0hUAQQP
- c/wQ==
+ bh=xjJ+95yF+JJvIZcDqZBEdqJd9NZpOgcervqv2+aiesI=;
+ b=dP8NE0xnotjLDmFOb3J4ARNZIFAXVzE+rKEJaYKDFiqRzeTYfzELE0ro+fLc4xH3Et
+ kZUfbQg4ztZ3LPP8OLRtk+wZtYixMNYUz/xv7yBvvei4BA0gXy7Y6SQXVzLsUoPO3puk
+ K2JmM48CgDLGiJaUytu5/14AGSB3XeJ4x3aqwzjLDh0pd3CHDz9a32fkrNcuiNes2kNr
+ FOrLZndFoHwTF5vYrjN/0maLZQzRrSqMtvj64Yi/veH05VUQdRyoe+PnFlyQxV/csMZa
+ Nc6/S1u2D6lwsFQmkKsp9kpBlWPzzxiB82ltatqyWAP5S4KFvxFOxdLBQXGUIjpjs7c6
+ gu2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704452420; x=1705057220;
+ d=1e100.net; s=20230601; t=1704449614; x=1705054414;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2oQ8RmKNSwUYagdexe6ijrxEbemFp9CmA2w04t1AZZg=;
- b=dSKbH+fdjkPM7WcExBSaKjVhGSfbs24Oick3bDWJHFhO1iOig3T94YIlRxkxhlQP4p
- 5QqUOaTo759dumKqwocn/2NGBFP9dH55kxeLHG2YB1bMgnEeWeGHuN6Tj4ZD+w+hU376
- xDP9MeBG5X4/4tc/hjZ1uN7QvUxaN2nu7UiowMlVrTQB/bu0obbkWhsXrZclWY4OFtkR
- e/wUbgcuwMvg/N8B8tv9f9C0VkzBU/+//KForG78963/zgiLwYa6ipSCzYyMeIeBnBO7
- E/eW/bkATabJONu+LNJvJ5DSYqFQcg51YVJjGvbkk4eqVMSsrvmFFm1swblg0bn4489C
- BFAw==
-X-Gm-Message-State: AOJu0Yy3xz0zgRnlAekupEY3OHXCbdnx6VmFNrhIQ4nGBKEAZEBHDQO4
- NNoOgeg6tH8fRIiFMPFuTiMCBRPsPYTX0A==
-X-Received: by 2002:a17:907:bb93:b0:a28:abfa:e405 with SMTP id
- xo19-20020a170907bb9300b00a28abfae405mr1912612ejc.58.1704452420161; 
- Fri, 05 Jan 2024 03:00:20 -0800 (PST)
+ bh=xjJ+95yF+JJvIZcDqZBEdqJd9NZpOgcervqv2+aiesI=;
+ b=a0ZVZXgPBk+W6aPyUhiCxAFKfw3XeQ/+AJhIApBqJmJWyMFb4AN77MI9teDA6A9oP+
+ vH/CXq/VmSuZaQlLcIIKWglTlLOgLAB4YXaUed6QP0TtPvSMKUthiBJllCXitpWC9Ivo
+ nnXGcvtNt0/xqIRCa4Hltk/eU7U6TennNpPh6UeGVsCURfM+8dFE2mS7c3cKlXuyT0YO
+ ZHHk3CQDskF36Pw3AsKuBIhv36uSqKQsfpNhBICX2PM1DukeZ0Bt/dBE84hzFVFwaCdj
+ o0FDOv6dAtWV0ikBoGzjqANsvdwSiV6G55tD7ifxwAfH3n5QxLZ8Y6xYXtmkOpvfui/y
+ xqug==
+X-Gm-Message-State: AOJu0YzeqPZrwaGRwupTn+nxBM69R/oLef6rOi9PSaCGPkG7pC80Hsw+
+ PW3nyG/ackPKyoPGMYqvRp5HbTW3m3lvNg==
+X-Received: by 2002:a17:906:4a4e:b0:a28:26e9:a13d with SMTP id
+ a14-20020a1709064a4e00b00a2826e9a13dmr1732495ejv.55.1704449614711; 
+ Fri, 05 Jan 2024 02:13:34 -0800 (PST)
 Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
  [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
- oz39-20020a170906cd2700b00a1f7ab65d3fsm751363ejb.131.2024.01.05.03.00.17
+ t13-20020a170906178d00b00a28cf49520asm701067eje.203.2024.01.05.02.13.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jan 2024 03:00:19 -0800 (PST)
-Message-ID: <0bbd5bff-2f38-4625-9e0b-12245f512c01@linaro.org>
-Date: Fri, 5 Jan 2024 12:00:16 +0100
+ Fri, 05 Jan 2024 02:13:34 -0800 (PST)
+Message-ID: <5f624a13-0ba0-4d9a-8910-2ef1c784a295@linaro.org>
+Date: Fri, 5 Jan 2024 11:13:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 1/9] machine: Use error handling when CPU type is
- checked
+Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
 Content-Language: en-US
-To: Gavin Shan <gshan@redhat.com>, armbru@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
- b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, imammedo@redhat.com,
- kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
- rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, wangyanan55@huawei.com,
- vijai@behindbytes.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com, qemu-arm@nongnu.org
-References: <20231204004726.483558-1-gshan@redhat.com>
- <20231204004726.483558-2-gshan@redhat.com>
+To: inesvarhol <inesvarhol@proton.me>,
+ =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Markus Armbruster <armbru@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
+ <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
+ <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
+ <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231204004726.483558-2-gshan@redhat.com>
+In-Reply-To: <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x529.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,88 +123,58 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xnmp1w4iKV2Q
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: X5m8vpKsINzF
 
-On 4/12/23 01:47, Gavin Shan wrote:
-> Functions that use an Error **errp parameter to return errors should
-> not also report them to the user, because reporting is the caller's
-> job. The principle is violated by machine_run_board_init() because
-> it calls error_report(), error_printf(), and exit(1) when the machine
-> doesn't support the requested CPU type.
+(+Mark & Eduardo)
+
+On 4/1/24 14:37, inesvarhol wrote:
 > 
-> Clean this up by using error_setg() and error_append_hint() instead.
-> No functional change, as the only caller passes &error_fatal.
+> Le jeudi 4 janvier 2024 à 14:05, Philippe Mathieu-Daudé <philmd@linaro.org> a écrit :
 > 
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> ---
-> v9: Improved change log                                  (Markus)
-> ---
->   hw/core/machine.c | 13 +++++++------
->   1 file changed, 7 insertions(+), 6 deletions(-)
+> Hello,
 > 
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 0c17398141..bde7f4af6d 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -1466,15 +1466,16 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
->   
->           if (!machine_class->valid_cpu_types[i]) {
->               /* The user specified CPU is not valid */
-> -            error_report("Invalid CPU type: %s", machine->cpu_type);
-> -            error_printf("The valid types are: %s",
-> -                         machine_class->valid_cpu_types[0]);
-> +            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
-> +            error_append_hint(errp, "The valid types are: %s",
-> +                              machine_class->valid_cpu_types[0]);
->               for (i = 1; machine_class->valid_cpu_types[i]; i++) {
-> -                error_printf(", %s", machine_class->valid_cpu_types[i]);
-> +                error_append_hint(errp, ", %s",
-> +                                  machine_class->valid_cpu_types[i]);
->               }
-> -            error_printf("\n");
->   
-> -            exit(1);
-> +            error_append_hint(&errp, "\n");
+>>> +static void test_edge_selector(void)
+>>> +{
+>>> + enable_nvic_irq(EXTI0_IRQ);
+>>> +
+>>> + / Configure EXTI line 0 irq on rising edge */
+>>> + qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
+>>
+>>
+>> Markus, this qtest use seems to expect some stability in QOM path...
+>>
+>> Inès, Arnaud, having the SoC unattached is dubious, it belongs to
+>> the machine.
+> 
+> Noted, we will fix that.
+> Should we be concerned about the "stability in QOM path" ?
 
-This doesn't build:
+Don't worry about this Inès, I wanted to raise Markus attention on this.
 
-hw/core/machine.c:1488:31: error: incompatible pointer types passing 
-'Error ***' (aka 'struct Error ***') to parameter of type 'Error *const 
-*' (aka 'struct Error *const *'); remove & 
-[-Werror,-Wincompatible-pointer-types]
-             error_append_hint(&errp, "\n");
-                               ^~~~~
+You showed a legit use of stable QOM path, and Markus told me recently
+there is no contract for QOM paths (it shouldn't be considered as a
+stable API). IIRC Markus explanation, "/unattached" container was
+added as a temporary hack to allow migrating QDev objects to QOM (see
+around commit da57febfed "qdev: give all devices a canonical path",
+11 years ago).
 
-> +            return;
->           }
->       }
->   
+I agree anything under "/unattached" can be expected to be stable
+(but we need a community consensus). Then the big question remaining
+is "can any qom-path out of /unattached be considered stable?"
 
-Squashing:
--- >8 --
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 021044aaaf..1898d1d1d7 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1487,3 +1487,3 @@ void machine_run_board_init(MachineState *machine, 
-const char *mem_path, Error *
+Regards,
 
--            error_append_hint(&errp, "\n");
-+            error_append_hint(errp, "\n");
-              return;
----
+Phil.

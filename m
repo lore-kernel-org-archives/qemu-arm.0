@@ -1,119 +1,126 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp622509ejo;
-        Fri, 5 Jan 2024 02:24:57 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF20YFJC1vXt4BGdnkk8dn6SnnYShn5qIA155AIt3GAFG/xxQg0RkDI/Wf5AHW6+UK/VHXq
-X-Received: by 2002:ad4:5bcc:0:b0:680:b55c:4814 with SMTP id t12-20020ad45bcc000000b00680b55c4814mr1557151qvt.84.1704450297503;
-        Fri, 05 Jan 2024 02:24:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704450297; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp640841ejo;
+        Fri, 5 Jan 2024 03:11:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGfLWRmiVEN838f39XNRzpsTqvN8Yo3wtGaQBm+3DlkBG7F1Z0Mhi1IDK5cKJKFiXcSdrhT
+X-Received: by 2002:a05:6808:3c95:b0:3b9:e7d1:fa71 with SMTP id gs21-20020a0568083c9500b003b9e7d1fa71mr2427462oib.47.1704453080085;
+        Fri, 05 Jan 2024 03:11:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1704453080; cv=none;
         d=google.com; s=arc-20160816;
-        b=MJLw/oA/47lj85WN5CgTDTVQoJ8tp8h/XU/Qn0feWQEQdHbXjJhgeUYEoRea0K0KhJ
-         BB+6P/Oe77k1Ilm59NJ0liOK+IY3Bc26qGI5MhUwrVWaC6+Zipk2/vVQhN6S44OzuBAv
-         F95/0fwcFqT4X2nNf/csQjeoozjdW4gSj81Fi7lSEpOO3O+uoYn8wSbU2e0JGsyiwiBp
-         28eTFuEZG7SNMKVObDWMcIFi933XU8pqBz1JvJAYQY/JTSCTDiJs4G51VCwfuF9ZPQPW
-         lXTQ5FAeVnyQvpbtKSCTB9cJtjjsql/7Auwtnux9tOs0xkxKDXO8tEC448IbGaiq+uhX
-         4oDA==
+        b=E7ZlKqbOTNe1we2RNg5eOvbGdWlT57tGyPA8V5/7eQKgAm5BebQ4e2sKRbS7XXQ9YB
+         scnlR/jKoqChWo/A78L4tfL7CbyN4Ys1ijWCDTnKPALCwJv3SN8hIztPfOukQ0sfuPTn
+         QmPKxkQeD9VwQsCpv1dGtNbhk+vif+EPEwP8JREOLd4HP0IseNdrGMogWvCabxZnmre+
+         n4/5rqFd/SEsctbl+VgNgY6O2wBsLp/tWb4EjmkCXpdcaZhGJQDLDZoNDdrZcfUiRTxW
+         ACiQ5W5rsee23FXLuA6rNmS5PSeyYz2oCEC6iXCOzDdPcraQiAdgwL5SM4enai4bo6uZ
+         EDEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=44Pwp+PjhFelFbehevxkbvLQtNBmswpxMCXTdBeXr8k=;
-        fh=LW+Im8ADPh5iSVUaDuLpjEqbqU3kGe+Gb8BRnn+EFLU=;
-        b=v/heW3ScL7a2xfItvkSvlbDLprhxGQ3mGCwgDW0wmrbHauXxMGB0D1JfxDBA6kvFeZ
-         pt2yw9ogGg7VGj5PxLaFF55nnTPwG9XElfiJQKs0jIWlj8pShHT7OHcJsrB6o19hGkeN
-         mzk5KbYxvkpZ+tfmWqobhctliiDCUk7kqEZ7m+8bpxf7t4Z/lO2JgSZ+WgZxHm9IP4nS
-         6keXklvW5lhbdDc9eGr0GPwTJ5Dtq2ijSUy9B0Dvn/cxwRxBHHY1ePy1NGMUWdOyFGdC
-         tsRTsv8sJtX2bHhaiGoxXDeu3Xn/TmxfMjK6A/9R1WHZnl65aM2APpPqGeCg9vWRs0im
-         uYrQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=IjDO5m0dOcaqMNoq9200rzLpRXSkVfVuBa2ol+B/RjU=;
+        fh=wFiiLnqFhiQZ4hPRyiUFdle+r97LzM1NbCYn+9r8AOU=;
+        b=VQkf4RD4hgtGwxrLMcoR5EvGzQrsMh83YVv8POzIOwOcTH6DISeiEhjOG7SLXBAbdZ
+         Z1JklaxrZM73VDE3i6kU4/VU02jxbSbJRys8dTbajb0+RGDTSvQaQeDCAymikACAqxnL
+         vOjCjAe8oOLW2IlCgOisYT4SafWrve572Ifuwdu0PwJJsjrij+sYYzGdWS/jp65xq7a1
+         TCei87bxTSidtph2TT6fcYKbjaH3CJ99f8+zDzGG8su4mu9XS2lQt1tMna1tqY7Campn
+         XGd3i3FH9v0JZxm5yxkX8VXWZ2pzH1+XjTNULI5aDqD10l2nOx6s9t218aQ6rpHT/qm8
+         XjCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OtW7+ppF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ld5XkDJl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4-20020a0cf344000000b0067fb9da9822si1455436qvm.170.2024.01.05.02.24.57
+        by mx.google.com with ESMTPS id y10-20020a0cf14a000000b00680285e7c68si1523026qvl.424.2024.01.05.03.11.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jan 2024 02:24:57 -0800 (PST)
+        Fri, 05 Jan 2024 03:11:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OtW7+ppF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ld5XkDJl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLhNP-0007ir-7S; Fri, 05 Jan 2024 05:24:31 -0500
+	id 1rLi6P-0007Qa-Eq; Fri, 05 Jan 2024 06:11:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1rLhNO-0007iT-8U
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 05:24:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1rLhNM-0004KO-My
- for qemu-arm@nongnu.org; Fri, 05 Jan 2024 05:24:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1704450268;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=44Pwp+PjhFelFbehevxkbvLQtNBmswpxMCXTdBeXr8k=;
- b=OtW7+ppF5q6R90JGEpuFYS7Dbn2w5GgV4P+QT/bj8QJ02ke2MY62JUqbOM6TsG+VCOovTH
- uf0TyUdwDLHcPqpGRMCAQGnzC1D9Z1NdFasB2MxsfG05Qb+8rbjPk8R2UU3pYy/dSGhKTj
- CF73txf+2cgUDY2fVwemnzHWZWwGURc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-126-6E-6JjouOIG8lyUotBQOQQ-1; Fri, 05 Jan 2024 05:24:20 -0500
-X-MC-Unique: 6E-6JjouOIG8lyUotBQOQQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 11AB1101A52A;
- Fri,  5 Jan 2024 10:24:20 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.183])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DEC42492BC6;
- Fri,  5 Jan 2024 10:24:17 +0000 (UTC)
-Date: Fri, 5 Jan 2024 10:24:15 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: inesvarhol <inesvarhol@proton.me>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 2/3] tests/qtest: Add STM32L4x5 EXTI QTest testcase
-Message-ID: <ZZfYvlmcxBCiaeWE@redhat.com>
-References: <20231228161944.303768-1-ines.varhol@telecom-paris.fr>
- <20231228161944.303768-3-ines.varhol@telecom-paris.fr>
- <61fd13b3-7cc9-4e27-bf91-bd2b4aedf97b@linaro.org>
- <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLi6M-0007Mn-3U
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 06:10:58 -0500
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rLi6I-0003jT-C7
+ for qemu-arm@nongnu.org; Fri, 05 Jan 2024 06:10:57 -0500
+Received: by mail-lf1-x134.google.com with SMTP id
+ 2adb3069b0e04-50e7f58c5fbso1854707e87.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Jan 2024 03:10:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704453051; x=1705057851; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IjDO5m0dOcaqMNoq9200rzLpRXSkVfVuBa2ol+B/RjU=;
+ b=Ld5XkDJlqPnkKe7mhb4ecfAhcrf94Pcr3lIVENITo8rrd87SZFl3FHvAxy2RaTwbZB
+ O7y0+jcMPN51UETUoGZSa8SZ3STtr68ZBlerObvauZY9n9dSHun1zM+1gFBD7842umAR
+ IMC6qvZb2CiVdIsKsqioNisvLV4uUchgCu9/aaaE5FwKp/uBwX8HwEWhAopdh5Z8XQlS
+ bzTfg57TmmpyL8YKYo/U56dhHFSrOfGjmYdqpIE5UIMmoyRvc5P50CZQbzmNC3uTReCa
+ JlRyuneuqR798V3+7ATe5dMyGhoZPpNZ3Q61UAlPe9/4AC3uDHqucPu+pEECsukqruE7
+ hFJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704453051; x=1705057851;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IjDO5m0dOcaqMNoq9200rzLpRXSkVfVuBa2ol+B/RjU=;
+ b=uUqrWnCLdmyh3kG7FyX6X7CXPFkU7Iuw9hJbbpzAjw23ZcWlw3GV4gtLFubFZm+UbC
+ cH04iqkVdjwRA7yRvX2fs5KTEjjw84DO5t38+6oenxUTR14J8bss3mzY5A6oxxG1DPYK
+ rhBwBbeTg8FzAJbIYvOdYXDrT51y+WF/2DTFD7ZvbcTLpZZ+ba33vPO1aUhM119DuRLT
+ CHP83CORd/r6268XQLeJCIEt//svCTZuWI5mOwbSy+yDCwO7Lg+gZ3EoaKYFZhfuQ8XR
+ jqNt52cSHnNRWZjBBxVDT0Z5GEafE/EaNUB3ZEYxwsr7PNT/hl5+5Yh2+izz4rQTiOSl
+ 7t3w==
+X-Gm-Message-State: AOJu0YyNRB+6iR2DSLVWIHB9d1hKvmTk1e4WU8eNV8+FWlxtJKvxPScT
+ AiXTU9r6792iA1dmTDX7vOa+ilGDQvsthA==
+X-Received: by 2002:a05:6512:2351:b0:50e:55d0:855c with SMTP id
+ p17-20020a056512235100b0050e55d0855cmr1334142lfu.17.1704453051109; 
+ Fri, 05 Jan 2024 03:10:51 -0800 (PST)
+Received: from [192.168.69.100] (juv34-h02-176-184-26-1.dsl.sta.abo.bbox.fr.
+ [176.184.26.1]) by smtp.gmail.com with ESMTPSA id
+ a5-20020a1709063a4500b00a28d309b063sm757869ejf.220.2024.01.05.03.10.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Jan 2024 03:10:50 -0800 (PST)
+Message-ID: <c9c65355-7666-4749-b93b-5fb1c7f1585b@linaro.org>
+Date: Fri, 5 Jan 2024 12:10:47 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 2/9] machine: Introduce helper is_cpu_type_supported()
+Content-Language: en-US
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
+ imammedo@redhat.com, b.galvani@gmail.com, strahinja.p.jankovic@gmail.com,
+ sundeep.lkml@gmail.com, kfting@nuvoton.com, wuhaotsh@google.com,
+ nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, vijai@behindbytes.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, shan.gavin@gmail.com,
+ Thomas Huth <thuth@redhat.com>
+References: <20231129042012.277831-1-gshan@redhat.com>
+ <20231129042012.277831-3-gshan@redhat.com>
+ <fd8715af-ef1c-4ccc-b602-25776a56fc76@linaro.org>
+ <c9f68946-2824-48a5-a0a1-290d7ddba178@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <c9f68946-2824-48a5-a0a1-290d7ddba178@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZjC6phtwjcDoQP-NDP6GF-dvCVK8Ctk9EeW_JezuNBqnQq4-V6NU6eAhECMqxJzMDRxwjbb-LPcHTvysc6YGuLD7ckWhbtpqD1g9lnklofI=@proton.me>
-User-Agent: Mutt/2.2.10 (2023-03-25)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.691,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -127,56 +134,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zQQtrDz03eWV
+X-TUID: cNYq/ar7VqjF
 
-On Thu, Jan 04, 2024 at 01:37:22PM +0000, inesvarhol wrote:
+On 4/12/23 00:13, Gavin Shan wrote:
+> Hi Phil,
 > 
-> Le jeudi 4 janvier 2024 à 14:05, Philippe Mathieu-Daudé <philmd@linaro.org> a écrit :
+> On 12/1/23 20:53, Philippe Mathieu-Daudé wrote:
+>> On 29/11/23 05:20, Gavin Shan wrote:
+>>> The logic, to check if the specified CPU type is supported in
+>>> machine_run_board_init(), is independent enough. Factor it out into
+>>> helper is_cpu_type_supported(). machine_run_board_init() looks a bit
+>>> clean with this. Since we're here, @machine_class is renamed to @mc to
+>>> avoid multiple line spanning of code. The comments are tweaked a bit
+>>> either.
+>>>
+>>> No functional change intended.
+>>>
+>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>> ---
+>>> v8: Move the precise message hint to PATCH[v8 3/9]        (Gavin)
+>>> ---
+>>>   hw/core/machine.c | 83 +++++++++++++++++++++++++----------------------
+>>>   1 file changed, 45 insertions(+), 38 deletions(-)
+>>>
+>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>>> index bde7f4af6d..1797e002f9 100644
+>>> --- a/hw/core/machine.c
+>>> +++ b/hw/core/machine.c
+>>> @@ -1387,13 +1387,53 @@ out:
+>>>       return r;
+>>>   }
+>>> +static bool is_cpu_type_supported(const MachineState *machine, Error 
+>>> **errp)
+>>> +{
+>>> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+>>> +    ObjectClass *oc = object_class_by_name(machine->cpu_type);
+>>> +    CPUClass *cc;
+>>> +    int i;
+>>> +
+>>> +    /*
+>>> +     * Check if the user specified CPU type is supported when the valid
+>>> +     * CPU types have been determined. Note that the user specified CPU
+>>> +     * type is provided through '-cpu' option.
+>>> +     */
+>>> +    if (mc->valid_cpu_types && machine->cpu_type) {
+>>> +        for (i = 0; mc->valid_cpu_types[i]; i++) {
+>>> +            if (object_class_dynamic_cast(oc, 
+>>> mc->valid_cpu_types[i])) {
+>>> +                break;
+>>> +            }
+>>> +        }
+>>> +
+>>> +        /* The user specified CPU type isn't valid */
+>>> +        if (!mc->valid_cpu_types[i]) {
+>>> +            error_setg(errp, "Invalid CPU type: %s", 
+>>> machine->cpu_type);
+>>> +            error_append_hint(errp, "The valid types are: %s",
+>>> +                              mc->valid_cpu_types[0]);
+>>> +            for (i = 1; mc->valid_cpu_types[i]; i++) {
+>>> +                error_append_hint(errp, ", %s", 
+>>> mc->valid_cpu_types[i]);
+>>> +            }
+>>> +
+>>> +            error_append_hint(errp, "\n");
+>>> +            return false;
+>>> +        }
+>>> +    }
+>>> +
+>>> +    /* Check if CPU type is deprecated and warn if so */
+>>> +    cc = CPU_CLASS(oc);
+>>> +    if (cc && cc->deprecation_note) {
+>>
+>> cc can't be NULL, right? Otherwise,
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
 > 
-> Hello,
+> machine->cpu_type is either mc->default_cpu_type or returned from 
+> parse_cpu_option().
+> It can be NULL if mc->default_cpu_type is invalid, which is a program 
+> error. So
+> assert(cc != NULL) should be used instead. I will fold the change to 
+> PATCH[v9 3/9]
+
+cpu_type and cc an be NULL with the 'none' machine.
+
 > 
-> > > +static void test_edge_selector(void)
-> > > +{
-> > > + enable_nvic_irq(EXTI0_IRQ);
-> > > +
-> > > + / Configure EXTI line 0 irq on rising edge */
-> > > + qtest_set_irq_in(global_qtest, "/machine/unattached/device[0]/exti",
-> > 
-> > 
-> > Markus, this qtest use seems to expect some stability in QOM path...
-> > 
-> > Inès, Arnaud, having the SoC unattached is dubious, it belongs to
-> > the machine.
+>>> +        warn_report("CPU model %s is deprecated -- %s",
+>>> +                    machine->cpu_type, cc->deprecation_note);
+>>> +    }
+>>> +
+>>> +    return true;
+>>> +}
+>>
 > 
-> Noted, we will fix that. 
-> Should we be concerned about the "stability in QOM path" ?
-
-QTest is a functional test harness that intentionally has knowledge
-about QEMU internals.
-
-IOW, usage of particular QOM path in qtest does *not* imply that
-QOM path needs to be stable.  If QEMU internals change for whatever
-reason, it is expected that QTests may need some updates to match.
-
-QOM path stability only matters if there's a mgmt app facing use
-case, which requires the app to have hardcoded knowledge of the
-path.
-
-Even a mgmt app can use unstable QOM paths, provided it has a way
-to dynamically detect the path to be used, instead of hardcoding
-it.
-
-
-None the less, you may still choose to move it out of /unattached
-at your discretion.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> Thanks,
+> Gavin
+> 
 

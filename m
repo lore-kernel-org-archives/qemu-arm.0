@@ -1,115 +1,157 @@
-Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp512587ejo;
-        Thu, 4 Jan 2024 21:13:57 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE5kHQU0Q/qrOKPui77Q90LjOtBKDZk8Mv52El4OoAc9O5zB/GUNw9QtT+qzEshrvAbqsIF
-X-Received: by 2002:a05:622a:1454:b0:429:78f0:2c61 with SMTP id v20-20020a05622a145400b0042978f02c61mr234266qtx.32.1704431637694;
-        Thu, 04 Jan 2024 21:13:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1704431637; cv=none;
+Received: by 2002:a17:906:6698:b0:a28:f940:7a27 with SMTP id z24csp592541ejo;
+        Fri, 5 Jan 2024 01:06:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFEL9ACbxov0y9szy4vKagtqpGu12tIFXENod5YuC0sOGKlkyRiqgNtsD/bU9mGVQsfAgdp
+X-Received: by 2002:a05:6214:411e:b0:67f:457c:21ac with SMTP id kc30-20020a056214411e00b0067f457c21acmr2432136qvb.48.1704445611433;
+        Fri, 05 Jan 2024 01:06:51 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1704445611; cv=pass;
         d=google.com; s=arc-20160816;
-        b=y4yoNklBsTNUd0cexlJQvy3Wz26pemZEXuJ58ccC8ylnDXW40NwpCT6wpXHSiEE+Y+
-         UEAn7Lt3x5fxgUSXiUsRhcDDGRF4rAgc2vcIG/0tiZvF2gl0k2ovQLx7nUZsvwRMq6Qz
-         KYiOzGo2rPBrP7hAxUCgi5LSu1oFPfHlWveW2MAblXmkhJEf4CfTzHxfC94rKAuTPQpZ
-         nhsHFStPcH9fLVxHrcrnTKDquz+GOZBMs4mj8oY3cxVYlFQpnsF0PQeOPF5Y4sXJVByK
-         YfBLur4qI7Tpdty7AoAK8FjzxNo3pBr5XT6vCR1a5VhCfiF9tSOM/cd2lUOIbjEl1o1V
-         YlZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=m3+5oKl/WDOeo5zctCqwFiof4WoVNLV6fNXvJqVdi9VTCAWyVAmjI1AlppXhPXltmj
+         3mEl8mMxY5pP64nBjkL5GqChZrVjP1bF/TmMvguKC38432fz59Q42LnQOqgnkkZTxAE+
+         wCWfiiqEljAJ8QCnNkYFStXLZWucul7w5x2DEPqzeT+pkLBufmyvEeaNT7wgyauYtlEb
+         AOznHr2NphqhxzKnSu7Ls16xPeBNTascxaSHbBDBpdXXhQexwyzi2sq1b6E6LumPZlaV
+         uzjBPogKDgP76FTAn0a02B0fcAUMIH0KnwdEQdRj8FtUL2n9TYrZRv5dT9JOUrvPGCw8
+         HaeQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=TsStT1aL1F5Xto+hQYk49czhhwQbVKvz07rD0+xxXiI=;
-        fh=WDtS/ntXS/H3qlkGZlEJM6O1BrTBrSSrbYpBqrVDOY4=;
-        b=hLszowbwC+umxJx/5aInu6Jd0iAyrJ39g9YYVOP2Kp4raQ9sBsib4fmuiLqsS9H1Aa
-         p1ynwJqEOpJPhlRHMX7Ism1CxCyg7Jj2O91TVc0GojE+u2gWUvL/bjvvkXu02khkX8M+
-         fyztJtelBkKrDqefYQ3nxfi//SVWIOyHAMtSYQEEbHQhds3OMQE6SyYQEwhbS6bvv3bl
-         Q6fiz7NrrDDchTufcutzumJYVq9aWMcfRYNkP4MRjcbmVPG761GzVDm4jyXbBmY1yfEL
-         UIrDAJ/2zuf+jJxB3Wfc/c17jB1Kr1JC2xcn8y/b0hT3EQeATg34qDH9lY1qpV55Md3a
-         iZPA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OhSMVzpA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from;
+        bh=/GU8wZxWukKO5ottAlSfJnZgoLvlBp4LP5kVOrDA27o=;
+        fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
+        b=UjRwlJMEPNxtZzemLjjLiacMunOhJAa5OxiILHTZuEwIi2YLtclIk1Ema31D60AB1+
+         hNWVdKjmIjEioO376S4LQsOJ8ryn6SIlp6NNSEjTNaam4ZxhBFDsuCB5twdJV/0Egf1/
+         1zhE9N8BzRbEIsGTBetFpcFGcPKV+k1v7rLQ2Gd03iw66zqQ+qIEb+3QSh81bHiYdaln
+         UMrM4tU0IF15o373sh9LrhACKuKxVKtd2LPIohTIp+iltFDt3Vx3kWxl2y/+Dga92wdo
+         B9mJOd+rBiFTrcx4FYuiwqKkr+wh/BuAOS2fpbGR6B3ZXASMA9dTRoy66pzQMNo3RqmV
+         0gTA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h21-20020a05622a171500b0042542269fa8si1142114qtk.12.2024.01.04.21.13.57
+        by mx.google.com with ESMTPS id k18-20020a0cb252000000b006807f793250si1308414qve.499.2024.01.05.01.06.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jan 2024 21:13:57 -0800 (PST)
+        Fri, 05 Jan 2024 01:06:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OhSMVzpA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rLcWT-0001DV-Ik; Fri, 05 Jan 2024 00:13:33 -0500
+	id 1rLgA7-0001MR-Bh; Fri, 05 Jan 2024 04:06:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rLcWM-00019z-1s; Fri, 05 Jan 2024 00:13:27 -0500
-Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rLcWJ-00032v-GG; Fri, 05 Jan 2024 00:13:25 -0500
-Received: by mail-ua1-x92f.google.com with SMTP id
- a1e0cc1a2514c-7cbebe9ca1dso444826241.2; 
- Thu, 04 Jan 2024 21:13:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1704431601; x=1705036401; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TsStT1aL1F5Xto+hQYk49czhhwQbVKvz07rD0+xxXiI=;
- b=OhSMVzpAs5AbeDAhgusGhG2WGWpuYhJ9VjMgKz+rpjQhJRZ6oDcnB4DBnEjzgvosQ5
- ePwUybb5cl2sL2CqqXdXc/MaXfNXSJow+ai4uctU1yCTByadG0Eq6T4zOdfV6dWTYVUE
- kgJDgI/F4BqbEHZ6pGEoPpS1zI1K+T8YTj2j0ZC7wunQlcj0W2TQcwRWDZ2Rp+J4YZ16
- m+NzVrIZzSEBCw30spO+WCyA9vtDs5nqMMsPgKknwDRIAwi6s3NS4nqiSiNxROlG6OCE
- 4FgRLC2xtCexBuH3whfqz/Q56oET7Ua1AH0Fmj39iVak/SPLaSmop6xQegsxJsd8ZHIc
- Yb/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704431601; x=1705036401;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TsStT1aL1F5Xto+hQYk49czhhwQbVKvz07rD0+xxXiI=;
- b=AEu4oLt/0uaSxKLQYJXuSqe6Y1qu/0g3HI8O26npwWozKPKJhg4Uaw47gotv0eGxHO
- CEkber8Mkhcqyzlj7i/+UDO8qPr0d3TiotHtdr8+uFr0HkqWS+EJRExq//Va56jCxfjJ
- I8PkKqPIvaApeSo+6HTVe0x1vb0yIq8Bk5i6AVoC5SuGtYF5fYljNmDfQORnroleHs2t
- r9reFBW6z9QhuCZOQBK/x56Y3baP51mUL+/Y2kuqIKhezNSY3H2tMxRmGJu12AMyNsAA
- 5Z9R0tQ+ICKhw7Dc9KODIug8oZxPthrsuGS3XPRh9rrOh1a7IzqC5x8RazsUNklYAKpu
- 3/HA==
-X-Gm-Message-State: AOJu0YzWOUzCvZ3MWOHNNZOW0mBydyr0h/7fFyuV0dCht2kn2Ti1BG+e
- 9gZGGyGevRbMuERjE6N3X1kWqJBaCLuRlNEebLO6vLJ+
-X-Received: by 2002:a05:6102:3f4c:b0:467:2430:6bba with SMTP id
- l12-20020a0561023f4c00b0046724306bbamr1746246vsv.15.1704431601349; Thu, 04
- Jan 2024 21:13:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1rLgA5-0001Lq-Qk; Fri, 05 Jan 2024 04:06:41 -0500
+Received: from mail-sh0chn02on2061d.outbound.protection.partner.outlook.cn
+ ([2406:e500:4420:2::61d]
+ helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1rLgA3-0008TI-Kw; Fri, 05 Jan 2024 04:06:41 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZgmYHax7mGW8C0gj59fG/wzCI3SKIpxH+prXP7X9Z1Z7jI9SXYc4eIKuNVklvCIkeQQPoEi0W5pyvDkFiILTd4GlpJemhJix1/+wxQF92O6NgOI2sb1uJbvgBMZJXfIxsUSEfECQdHq8PcblyuvGpw7eXP54B97qYxQyPhrBtLNrFYIj+1uBaudiisGLATeiROncY9VFFu+S6MKeaTzEqZDCwxbp/IzdzaJA+fM5SC72xS/WRyhT758iw+bliytcW636jWt0I1vxaSooIt7UqO3frIqdqpoywCnSrak6YO4l7MAEHwNG+0/2yPA9wWcdM2z6z2nxA+V9/9pqdZs6jQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/GU8wZxWukKO5ottAlSfJnZgoLvlBp4LP5kVOrDA27o=;
+ b=lQpejTSH75kvREm8BFkLQB4KxmQK9WBo8fbrC/aZxeD8gm8wUXEGaWhcHSbtLHELHGAjuQL3VWoLCs/vbybVTNe+iEVsHbHeA4gD09B2VaQl3ptwPOtrBA/1KSdq4pEvgQzyEG5epnzcjlECok9FiYssLB0qe5Z5ad3CO05SkEUA6/91qJ1gL/iG5SLIpyJ0Lcz6OINMDFUaSF8XJsD9sv8WrfF43CYmW+PZAFNHYlD4d/rwbasgwARERFyPe/dJCw7V9JR5c8fljYiT9EL8BAOZW9GUHmjjiRNkV7xSDnbf8U+a4x7WqQOQol/fesTA/yt/U8NHMvKpY+7J9H6FjQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:f::16) by BJSPR01MB0755.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:1c::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7135.29; Fri, 5 Jan
+ 2024 09:06:26 +0000
+Received: from BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ ([fe80::3862:65b4:c857:c4a6]) by
+ BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn ([fe80::3862:65b4:c857:c4a6%4])
+ with mapi id 15.20.7135.028; Fri, 5 Jan 2024 09:06:26 +0000
+From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, jeeheng.sia@starfivetech.com,
+ shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
+Subject: [RESEND RFC v1 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR creation
+ to common location
+Date: Fri,  5 Jan 2024 17:06:07 +0800
+Message-Id: <20240105090608.5745-2-jeeheng.sia@starfivetech.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
+References: <20240105090608.5745-1-jeeheng.sia@starfivetech.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SH0PR01CA0007.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c311:5::19) To BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:f::16)
 MIME-Version: 1.0
-References: <20231229164915.133199-1-ines.varhol@telecom-paris.fr>
- <20231229164915.133199-2-ines.varhol@telecom-paris.fr>
-In-Reply-To: <20231229164915.133199-2-ines.varhol@telecom-paris.fr>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 5 Jan 2024 15:12:55 +1000
-Message-ID: <CAKmqyKNBxBLyXdzLjMGDNPtZDjQUHSS+87N4SNTUKCjg9gwXFQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] hw/misc: Implement STM32L4x5 SYSCFG
-To: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92f.google.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BJSPR01MB0561:EE_|BJSPR01MB0755:EE_
+X-MS-Office365-Filtering-Correlation-Id: f85dfeb2-3b01-4a37-2c2c-08dc0dcd9890
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: kHlB8qA/kXu6mz598WHhmwN7/MUw4JNgG2YitJsS5Cn/Fb7y2s0ymeId4Dd4nYz/+K1MLQZPQr+IIpJY+F5cr+JhOtrTZKnHDVhVQ2qpu2ULNKZuMfQrOni0nK7Ryc8MCCJ9LWLqK0Q54oOtrxyPcgQjbBvGoGrA2q0iK2Kaxx/GaDc3i3IlSRreIOQr14GA9wmxni/QMDP2k2BshrOUW8SYw3+A2nIYq09mW0IioJIhwqK0+1nI/IlikfycZyxIq5KCmqvgXAFD7qWf51OxZa/AP6bpbpJtqKKMs+dhUDJZXty4x4mQK+RdC3uAUh2UDoTrvD3/caeZIoPvLwwJ3Kh+Smg7YtwjtZCX37QzM3ZVjSyCmmZFmGMlpnbaJ25rrtYXAYvL6wUgK3pjTVfVOxqWb8L4svoFhKNDo289E29Ug/mWOGUIZ8zqYR49aDeTfky5PTqM3kbNaizPnsUAWw2D9vuqOyyNX4NIzmXIvDwe/nr6D1QvOHAvGug4Nrrh6XOMcIWWNWn/eJILirvzP3F9qDbszgssJKZriz2eS7HoK6650hUPyRolutFMRVPj
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn; PTR:;
+ CAT:NONE;
+ SFS:(13230031)(39830400003)(136003)(346002)(366004)(396003)(230922051799003)(186009)(64100799003)(451199024)(1800799012)(2616005)(1076003)(26005)(52116002)(6666004)(83380400001)(40160700002)(36756003)(86362001)(38100700002)(40180700001)(38350700005)(5660300002)(7416002)(4326008)(55236004)(41300700001)(66946007)(66556008)(66476007)(2906002)(8676002)(508600001)(8936002)(41320700001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?82CEamZmXITypUXthCqiLj4rnYlrQKzvGUUIAvuBouMhGQrYL7q9YK8Tpx4o?=
+ =?us-ascii?Q?2SiYXDxVMCsOCC3Ka8mb/w5Wsm+h4y/e4LaPE9kKsh7ha0IcoYZf2UhOOACo?=
+ =?us-ascii?Q?pTfBCFsaRPkEYJ0oGiD1k1AfFLmFObzJPSW1xnE05Fxuqnidk7dKSeKXuKls?=
+ =?us-ascii?Q?bLXN8gHYtMiIYWz1NB+Gf5ZLFeagtzVoKzuag6ZSgLbGVnwCgCCQY3nlfLc/?=
+ =?us-ascii?Q?H0oAiJQQ4rA16EMeBRXFFJsGKY4s56AebMhJCR7FHq21Q35E4IpSDJG8xaUR?=
+ =?us-ascii?Q?moUas4qWYwFkKMjmrbRVu9umhF1OJaFR0XWPVsvP60sVb4u00LgIkJfUZb6t?=
+ =?us-ascii?Q?lGZ3Lr9i5qRG8+FeQx7Iw0jScmb3BI/TyhOGRJjkZ7udY9Ub4vhecDqYoNQT?=
+ =?us-ascii?Q?TkjyfzGib8LcJgwcvvyrYLO2+CR18jdNIQpq9pdejQEkrys52N1nB65AAaM4?=
+ =?us-ascii?Q?mxagMbCbcPOtdQg5lZE5UWnCrbV6KRZyqKs/qxVutDuTZMjekAHFHZS2fwDv?=
+ =?us-ascii?Q?X2XxZeaaxrKY7JQ/xAhuf4s+nQ39jM6dE9y9m6ldMqL9LcM6gRQbS0XHZQuT?=
+ =?us-ascii?Q?eOZ4PejxQRx6vax+IpxRiqIp+fz+hkEq9a3fX94wUSFxBbU1lNRSW1HKt4st?=
+ =?us-ascii?Q?D0Lwi44+/waR4AyfOzqXIXdeGBXIM/NuiKvxCaLYjOg1e+vtwLGYuLFekgaU?=
+ =?us-ascii?Q?a+GLzK7fw7kFp4O28IDl1UcGyCgl1/r+eiNo8KE7mC9l9KWoF2ZElRS/fXi5?=
+ =?us-ascii?Q?qeteaskGaiQ3GAgPm9GYdALrg6CFdGnwDLqqhClzK5Bk78kkMvM+QcIVkaiL?=
+ =?us-ascii?Q?4DfmecJWazAveG+3tT9OlT59izPvz0o6sACR2nMU8D/WGx2p3G+eaILtLzls?=
+ =?us-ascii?Q?ZPDysxVhryyNRias5ewc5vjRVRIRTMS8NA6J65p9dQf2fr9RF4r3OqyKNgmg?=
+ =?us-ascii?Q?YXrWPMRVDA248onH30cjwAGvRKku8MNX2COPrQMc8H9DXiLeMXpZlshcuBHg?=
+ =?us-ascii?Q?RFBNAUfrhP6xVvetQs2eDi65RoPjdU9mCydqpKczI6S8hXvJCaWc/WXGuuk9?=
+ =?us-ascii?Q?cIUH7vsADOt6iJkxodn5r7hArwCZ7PMsHts1kU9OpcBq5GYh8w9c1rcuWL5j?=
+ =?us-ascii?Q?ijBrjUxA3vUDKhHuAwrm1+daawLBtwiUWc+p6rWtORtiTNQ89nT/pPgrwNYh?=
+ =?us-ascii?Q?Q4DqhGjfOtItFZFyhQCAAYwd4TW0AGbdmKXO9Rk4XZi7K+p3rgZHa/iMvayV?=
+ =?us-ascii?Q?ZTbgdzqpUHagDgdGE3qsFFBSOjwDFgXcarq5a6BUTKtvPgoO8kMWG+PM6Tw3?=
+ =?us-ascii?Q?TqWxUwoYLyW5vXUH1Y1o3d0GT0vfBQ28g1EPa6oAsHpmwzgIS5KDhBQnvRSr?=
+ =?us-ascii?Q?NMxvu51VaM1SnC1sPzIHE/xMzFJ/qSJCCZMclmP9WGanIEInq3h0ng4JR+il?=
+ =?us-ascii?Q?CDGz8m+hHe8wwIKUanSLtQgkxwzz86ZMJVN4XqeyhhwOWf/P1t8dOCFCySBq?=
+ =?us-ascii?Q?L37wXM1J7rBZ4j2wl4U3bFONwzDhO2XQ6i+wjU90jc/1a2hPIk0/qXQTmnpM?=
+ =?us-ascii?Q?ubB9mPpO37w978iN6m3U/Q0fRZoYIT6SS2YmxehNQEah4ofbhBkc1mLkSqnr?=
+ =?us-ascii?Q?Uw=3D=3D?=
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f85dfeb2-3b01-4a37-2c2c-08dc0dcd9890
+X-MS-Exchange-CrossTenant-AuthSource: BJSPR01MB0561.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jan 2024 09:06:26.0924 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HiliKadkRre83PhGwq9vm6Qck0kGQsHpdDsj1FuduynNrRnhvXmF5ctG+C35AzcNh8Z50FDuVmcSsZH915HaP7zEXl3pgKU4NSbQukFuoa4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BJSPR01MB0755
+Received-SPF: pass client-ip=2406:e500:4420:2::61d;
+ envelope-from=jeeheng.sia@starfivetech.com;
+ helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,449 +166,227 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7om/yUtsoR7S
+X-TUID: y9zVlzlc0A2y
 
-On Sat, Dec 30, 2023 at 2:50=E2=80=AFAM In=C3=A8s Varhol
-<ines.varhol@telecom-paris.fr> wrote:
->
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+RISC-V should also generate the SPCR in a manner similar to ARM.
+Therefore, instead of replicating the code, relocate this function
+to the common AML build.
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+---
+ hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    | 68 +++++++++++++++----------------------
+ include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
+ include/hw/acpi/aml-build.h |  4 +++
+ 4 files changed, 115 insertions(+), 41 deletions(-)
 
-Alistair
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index af66bde0f5..1efa534aa8 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GArray *tbl, uint32_t flags,
+     }
+ }
+ 
++void build_spcr(GArray *table_data, BIOSLinker *linker,
++                const AcpiSpcrData *f, const char *oem_id,
++                const char *oem_table_id)
++{
++    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = oem_id,
++                        .oem_table_id = oem_table_id };
++
++    acpi_table_begin(&table, table_data);
++    /* Interface type */
++    build_append_int_noprefix(table_data, f->interface_type, 1);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 3);
++    /* Base Address */
++    build_append_gas(table_data, f->base_addr.id, f->base_addr.width,
++                     f->base_addr.offset, f->base_addr.size,
++                     f->base_addr.addr);
++    /* Interrupt type */
++    build_append_int_noprefix(table_data, f->interrupt_type, 1);
++    /* IRQ */
++    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
++    /* Global System Interrupt */
++    build_append_int_noprefix(table_data, f->interrupt, 4);
++    /* Baud Rate */
++    build_append_int_noprefix(table_data, f->baud_rate, 1);
++    /* Parity */
++    build_append_int_noprefix(table_data, f->parity, 1);
++    /* Stop Bits */
++    build_append_int_noprefix(table_data, f->stop_bits, 1);
++    /* Flow Control */
++    build_append_int_noprefix(table_data, f->flow_control, 1);
++    /* Terminal Type */
++    build_append_int_noprefix(table_data, f->terminal_type, 1);
++    /* PCI Device ID  */
++    build_append_int_noprefix(table_data, f->pci_device_id, 2);
++    /* PCI Vendor ID */
++    build_append_int_noprefix(table_data, f->pci_vendor_id, 2);
++    /* PCI Bus Number */
++    build_append_int_noprefix(table_data, f->pci_bus, 1);
++    /* PCI Device Number */
++    build_append_int_noprefix(table_data, f->pci_device, 1);
++    /* PCI Function Number */
++    build_append_int_noprefix(table_data, f->pci_function, 1);
++    /* PCI Flags */
++    build_append_int_noprefix(table_data, f->pci_flags, 4);
++    /* PCI Segment */
++    build_append_int_noprefix(table_data, f->pci_segment, 1);
++    /* Reserved */
++    build_append_int_noprefix(table_data, 0, 4);
++
++    acpi_table_end(linker, &table);
++}
+ /*
+  * ACPI spec, Revision 6.3
+  * 5.2.29 Processor Properties Topology Table (PPTT)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 510ab0dcca..a31f736d1a 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -431,48 +431,34 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+  * Rev: 1.07
+  */
+ static void
+-build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++build_spcr_v2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
+-    AcpiTable table = { .sig = "SPCR", .rev = 2, .oem_id = vms->oem_id,
+-                        .oem_table_id = vms->oem_table_id };
+-
+-    acpi_table_begin(&table, table_data);
+-
+-    /* Interface Type */
+-    build_append_int_noprefix(table_data, 3, 1); /* ARM PL011 UART */
+-    build_append_int_noprefix(table_data, 0, 3); /* Reserved */
+-    /* Base Address */
+-    build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 32, 0, 3,
+-                     vms->memmap[VIRT_UART].base);
+-    /* Interrupt Type */
+-    build_append_int_noprefix(table_data,
+-        (1 << 3) /* Bit[3] ARMH GIC interrupt */, 1);
+-    build_append_int_noprefix(table_data, 0, 1); /* IRQ */
+-    /* Global System Interrupt */
+-    build_append_int_noprefix(table_data,
+-                              vms->irqmap[VIRT_UART] + ARM_SPI_BASE, 4);
+-    build_append_int_noprefix(table_data, 3 /* 9600 */, 1); /* Baud Rate */
+-    build_append_int_noprefix(table_data, 0 /* No Parity */, 1); /* Parity */
+-    /* Stop Bits */
+-    build_append_int_noprefix(table_data, 1 /* 1 Stop bit */, 1);
+-    /* Flow Control */
+-    build_append_int_noprefix(table_data,
+-        (1 << 1) /* RTS/CTS hardware flow control */, 1);
+-    /* Terminal Type */
+-    build_append_int_noprefix(table_data, 0 /* VT100 */, 1);
+-    build_append_int_noprefix(table_data, 0, 1); /* Language */
+-    /* PCI Device ID  */
+-    build_append_int_noprefix(table_data, 0xffff /* not a PCI device*/, 2);
+-    /* PCI Vendor ID */
+-    build_append_int_noprefix(table_data, 0xffff /* not a PCI device*/, 2);
+-    build_append_int_noprefix(table_data, 0, 1); /* PCI Bus Number */
+-    build_append_int_noprefix(table_data, 0, 1); /* PCI Device Number */
+-    build_append_int_noprefix(table_data, 0, 1); /* PCI Function Number */
+-    build_append_int_noprefix(table_data, 0, 4); /* PCI Flags */
+-    build_append_int_noprefix(table_data, 0, 1); /* PCI Segment */
+-    build_append_int_noprefix(table_data, 0, 4); /* Reserved */
++    AcpiSpcrData serial = {
++        .interface_type = 3,       /* ARM PL011 UART */
++        .base_addr.id = AML_AS_SYSTEM_MEMORY,
++        .base_addr.width = 32,
++        .base_addr.offset = 0,
++        .base_addr.size = 3,
++        .base_addr.addr = vms->memmap[VIRT_UART].base,
++        .interrupt_type = (1 << 3),/* Bit[3] ARMH GIC interrupt*/
++        .pc_interrupt = 0,         /* IRQ */
++        .interrupt = (vms->irqmap[VIRT_UART] + ARM_SPI_BASE),
++        .baud_rate = 3,            /* 9600 */
++        .parity = 0,               /* No Parity */
++        .stop_bits = 1,            /* 1 Stop bit */
++        .flow_control = 1 << 1,    /* RTS/CTS hardware flow control */
++        .terminal_type = 0,        /* VT100 */
++        .language = 0,             /* Language */
++        .pci_device_id = 0xffff,   /* not a PCI device*/
++        .pci_vendor_id = 0xffff,   /* not a PCI device*/
++        .pci_bus = 0,
++        .pci_device = 0,
++        .pci_function = 0,
++        .pci_flags = 0,
++        .pci_segment = 0,
++    };
+ 
+-    acpi_table_end(linker, &table);
++    build_spcr(table_data, linker, &serial, vms->oem_id, vms->oem_table_id);
+ }
+ 
+ /*
+@@ -930,7 +916,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_spcr(tables_blob, tables->linker, vms);
++    build_spcr_v2(tables_blob, tables->linker, vms);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_dbg2(tables_blob, tables->linker, vms);
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 2b42e4192b..0e6e82b339 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -90,6 +90,39 @@ typedef struct AcpiFadtData {
+     unsigned *xdsdt_tbl_offset;
+ } AcpiFadtData;
+ 
++typedef struct AcpiGas {
++    uint8_t id;                /* Address space ID */
++    uint8_t width;             /* Register bit width */
++    uint8_t offset;            /* Register bit offset */
++    uint8_t size;              /* Access size */
++    uint64_t addr;             /* Address */
++} AcpiGas;
++
++/* SPCR (Serial Port Console Redirection table) */
++typedef struct AcpiSpcrData {
++    uint8_t interface_type;
++    uint8_t reserved[3];
++    struct AcpiGas base_addr;
++    uint8_t interrupt_type;
++    uint8_t pc_interrupt;
++    uint32_t interrupt;        /* Global system interrupt */
++    uint8_t baud_rate;
++    uint8_t parity;
++    uint8_t stop_bits;
++    uint8_t flow_control;
++    uint8_t terminal_type;
++    uint8_t language;
++    uint8_t reserved1;
++    uint16_t pci_device_id;    /* Must be 0xffff if not PCI device */
++    uint16_t pci_vendor_id;    /* Must be 0xffff if not PCI device */
++    uint8_t pci_bus;
++    uint8_t pci_device;
++    uint8_t pci_function;
++    uint32_t pci_flags;
++    uint8_t pci_segment;
++    uint32_t reserved2;
++} AcpiSpcrData;
++
+ #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
+ #define ACPI_FADT_ARM_PSCI_USE_HVC    (1 << 1)
+ 
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index ff2a310270..44e03e76bd 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -497,4 +497,8 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+ 
+ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+                 const char *oem_id, const char *oem_table_id);
++
++void build_spcr(GArray *table_data, BIOSLinker *linker,
++                const AcpiSpcrData *f, const char *oem_id,
++                const char *oem_table_id);
+ #endif
+-- 
+2.34.1
 
-> ---
->  docs/system/arm/b-l475e-iot01a.rst |   2 +-
->  hw/misc/Kconfig                    |   3 +
->  hw/misc/meson.build                |   1 +
->  hw/misc/stm32l4x5_syscfg.c         | 265 +++++++++++++++++++++++++++++
->  hw/misc/trace-events               |   6 +
->  include/hw/misc/stm32l4x5_syscfg.h |  54 ++++++
->  6 files changed, 330 insertions(+), 1 deletion(-)
->  create mode 100644 hw/misc/stm32l4x5_syscfg.c
->  create mode 100644 include/hw/misc/stm32l4x5_syscfg.h
->
-> diff --git a/docs/system/arm/b-l475e-iot01a.rst b/docs/system/arm/b-l475e=
--iot01a.rst
-> index 72f256ace7..1a021b306a 100644
-> --- a/docs/system/arm/b-l475e-iot01a.rst
-> +++ b/docs/system/arm/b-l475e-iot01a.rst
-> @@ -16,6 +16,7 @@ Currently B-L475E-IOT01A machine's only supports the fo=
-llowing devices:
->
->  - Cortex-M4F based STM32L4x5 SoC
->  - STM32L4x5 EXTI (Extended interrupts and events controller)
-> +- STM32L4x5 SYSCFG (System configuration controller)
->
->  Missing devices
->  """""""""""""""
-> @@ -24,7 +25,6 @@ The B-L475E-IOT01A does *not* support the following dev=
-ices:
->
->  - Reset and clock control (RCC)
->  - Serial ports (UART)
-> -- System configuration controller (SYSCFG)
->  - General-purpose I/Os (GPIO)
->  - Analog to Digital Converter (ADC)
->  - SPI controller
-> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> index 3efe3dc2cc..4fc6b29b43 100644
-> --- a/hw/misc/Kconfig
-> +++ b/hw/misc/Kconfig
-> @@ -90,6 +90,9 @@ config STM32F4XX_EXTI
->  config STM32L4X5_EXTI
->      bool
->
-> +config STM32L4X5_SYSCFG
-> +    bool
-> +
->  config MIPS_ITU
->      bool
->
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 16db6e228d..2ca2ce4b62 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -111,6 +111,7 @@ system_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_tru=
-e: files('stm32f2xx_syscfg.
->  system_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx=
-_syscfg.c'))
->  system_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_e=
-xti.c'))
->  system_ss.add(when: 'CONFIG_STM32L4X5_EXTI', if_true: files('stm32l4x5_e=
-xti.c'))
-> +system_ss.add(when: 'CONFIG_STM32L4X5_SYSCFG', if_true: files('stm32l4x5=
-_syscfg.c'))
->  system_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'=
-))
->  system_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
->
-> diff --git a/hw/misc/stm32l4x5_syscfg.c b/hw/misc/stm32l4x5_syscfg.c
-> new file mode 100644
-> index 0000000000..36ac8956f9
-> --- /dev/null
-> +++ b/hw/misc/stm32l4x5_syscfg.c
-> @@ -0,0 +1,265 @@
-> +/*
-> + * STM32L4x5 SYSCFG (System Configuration Controller)
-> + *
-> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * This work is based on the stm32f4xx_syscfg by Alistair Francis.
-> + * Original code is licensed under the MIT License:
-> + *
-> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-> + */
-> +
-> +/*
-> + * The reference used is the STMicroElectronics RM0351 Reference manual
-> + * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
-> + * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
-mentation.html
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "trace.h"
-> +#include "hw/irq.h"
-> +#include "migration/vmstate.h"
-> +#include "hw/misc/stm32l4x5_syscfg.h"
-> +
-> +#define SYSCFG_MEMRMP 0x00
-> +#define SYSCFG_CFGR1 0x04
-> +#define SYSCFG_EXTICR1 0x08
-> +#define SYSCFG_EXTICR2 0x0C
-> +#define SYSCFG_EXTICR3 0x10
-> +#define SYSCFG_EXTICR4 0x14
-> +#define SYSCFG_SCSR 0x18
-> +#define SYSCFG_CFGR2 0x1C
-> +#define SYSCFG_SWPR 0x20
-> +#define SYSCFG_SKR 0x24
-> +#define SYSCFG_SWPR2 0x28
-> +
-> +/* 00000000_00000000_00000001_00000111 */
-> +#define ACTIVABLE_BITS_MEMRP 0x00000107
-> +
-> +/* 11111100_11111111_00000001_00000000 */
-> +#define ACTIVABLE_BITS_CFGR1 0xFCFF0100
-> +/* 00000000_00000000_00000000_00000001 */
-> +#define FIREWALL_DISABLE_CFGR1 0x00000001
-> +
-> +/* 00000000_00000000_11111111_11111111 */
-> +#define ACTIVABLE_BITS_EXTICR 0x0000FFFF
-> +
-> +/* 00000000_00000000_00000000_00000011 */
-> +/* #define ACTIVABLE_BITS_SCSR 0x00000003 */
-> +
-> +/* 00000000_00000000_00000000_00001111 */
-> +#define ECC_LOCK_CFGR2 0x0000000F
-> +/* 00000000_00000000_00000001_00000000 */
-> +#define SRAM2_PARITY_ERROR_FLAG_CFGR2 0x00000100
-> +
-> +/* 00000000_00000000_00000000_11111111 */
-> +#define ACTIVABLE_BITS_SKR 0x000000FF
-> +
-> +static void stm32l4x5_syscfg_hold_reset(Object *obj)
-> +{
-> +    Stm32l4x5SyscfgState *s =3D STM32L4X5_SYSCFG(obj);
-> +
-> +    s->memrmp =3D 0x00000000;
-> +    s->cfgr1 =3D 0x7C000001;
-> +    s->exticr[0] =3D 0x00000000;
-> +    s->exticr[1] =3D 0x00000000;
-> +    s->exticr[2] =3D 0x00000000;
-> +    s->exticr[3] =3D 0x00000000;
-> +    s->scsr =3D 0x00000000;
-> +    s->cfgr2 =3D 0x00000000;
-> +    s->swpr =3D 0x00000000;
-> +    s->skr =3D 0x00000000;
-> +    s->swpr2 =3D 0x00000000;
-> +}
-> +
-> +static void stm32l4x5_syscfg_set_irq(void *opaque, int irq, int level)
-> +{
-> +    Stm32l4x5SyscfgState *s =3D opaque;
-> +    uint8_t gpio =3D irq / GPIO_NUM_PINS;
-> +    g_assert(gpio < NUM_GPIOS);
-> +
-> +    int line =3D irq % GPIO_NUM_PINS;
-> +    int exticr_reg =3D line / 4;
-> +    int startbit =3D (irq % 4) * 4;
-> +
-> +    trace_stm32l4x5_syscfg_set_irq(gpio, line, level);
-> +
-> +    if (extract32(s->exticr[exticr_reg], startbit, 4) =3D=3D gpio) {
-> +        trace_stm32l4x5_syscfg_forward_exti(line);
-> +        qemu_set_irq(s->gpio_out[line], level);
-> +   }
-> +}
-> +
-> +static uint64_t stm32l4x5_syscfg_read(void *opaque, hwaddr addr,
-> +                                      unsigned int size)
-> +{
-> +    Stm32l4x5SyscfgState *s =3D opaque;
-> +
-> +    trace_stm32l4x5_syscfg_read(addr);
-> +
-> +    switch (addr) {
-> +    case SYSCFG_MEMRMP:
-> +        return s->memrmp;
-> +    case SYSCFG_CFGR1:
-> +        return s->cfgr1;
-> +    case SYSCFG_EXTICR1...SYSCFG_EXTICR4:
-> +        return s->exticr[(addr - SYSCFG_EXTICR1) / 4];
-> +    case SYSCFG_SCSR:
-> +        return s->scsr;
-> +    case SYSCFG_CFGR2:
-> +        return s->cfgr2;
-> +    case SYSCFG_SWPR:
-> +        return s->swpr;
-> +    case SYSCFG_SKR:
-> +        return s->skr;
-> +    case SYSCFG_SWPR2:
-> +        return s->swpr2;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, add=
-r);
-> +        return 0;
-> +    }
-> +}
-> +static void stm32l4x5_syscfg_write(void *opaque, hwaddr addr,
-> +                                   uint64_t val64, unsigned int size)
-> +{
-> +    Stm32l4x5SyscfgState *s =3D opaque;
-> +    uint32_t value =3D val64;
-> +
-> +    trace_stm32l4x5_syscfg_write(addr, value);
-> +
-> +    switch (addr) {
-> +    case SYSCFG_MEMRMP:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Changing the memory mapping isn't supported\n=
-",
-> +                      __func__);
-> +        s->memrmp =3D value & ACTIVABLE_BITS_MEMRP;
-> +        return;
-> +    case SYSCFG_CFGR1:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Functions in CFGRx aren't supported\n",
-> +                      __func__);
-> +        /* bit 0 (firewall dis.) is cleared by software, set only by res=
-et. */
-> +        s->cfgr1 =3D (s->cfgr1 & value & FIREWALL_DISABLE_CFGR1) |
-> +                   (value & ACTIVABLE_BITS_CFGR1);
-> +        return;
-> +    case SYSCFG_EXTICR1...SYSCFG_EXTICR4:
-> +        s->exticr[(addr - SYSCFG_EXTICR1) / 4] =3D
-> +                (value & ACTIVABLE_BITS_EXTICR);
-> +        return;
-> +    case SYSCFG_SCSR:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Erasing SRAM2 isn't supported\n",
-> +                      __func__);
-> +        /*
-> +         * only non reserved bits are :
-> +         * bit 0 (write-protected by a passkey), bit 1 (meant to be read=
-)
-> +         * so it serves no purpose yet to add :
-> +         * s->scsr =3D value & 0x3;
-> +         */
-> +        return;
-> +    case SYSCFG_CFGR2:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Functions in CFGRx aren't supported\n",
-> +                      __func__);
-> +        /* bit 8 (SRAM2 PEF) is cleared by software by writing a '1'.*/
-> +        /* bits[3:0] (ECC Lock) are set by software, cleared only by res=
-et.*/
-> +        s->cfgr2 =3D (s->cfgr2 | (value & ECC_LOCK_CFGR2)) &
-> +                   ~(value & SRAM2_PARITY_ERROR_FLAG_CFGR2);
-> +        return;
-> +    case SYSCFG_SWPR:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Write protecting SRAM2 isn't supported\n",
-> +                      __func__);
-> +        /* These bits are set by software and cleared only by reset.*/
-> +        s->swpr |=3D value;
-> +        return;
-> +    case SYSCFG_SKR:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Erasing SRAM2 isn't supported\n",
-> +                      __func__);
-> +        s->skr =3D value & ACTIVABLE_BITS_SKR;
-> +        return;
-> +    case SYSCFG_SWPR2:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Write protecting SRAM2 isn't supported\n",
-> +                      __func__);
-> +        /* These bits are set by software and cleared only by reset.*/
-> +        s->swpr2 |=3D value;
-> +        return;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, add=
-r);
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps stm32l4x5_syscfg_ops =3D {
-> +    .read =3D stm32l4x5_syscfg_read,
-> +    .write =3D stm32l4x5_syscfg_write,
-> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
-> +    .impl.min_access_size =3D 4,
-> +    .impl.max_access_size =3D 4,
-> +    .impl.unaligned =3D false,
-> +    .valid.min_access_size =3D 4,
-> +    .valid.max_access_size =3D 4,
-> +    .valid.unaligned =3D false,
-> +};
-> +
-> +static void stm32l4x5_syscfg_init(Object *obj)
-> +{
-> +    Stm32l4x5SyscfgState *s =3D STM32L4X5_SYSCFG(obj);
-> +
-> +    memory_region_init_io(&s->mmio, obj, &stm32l4x5_syscfg_ops, s,
-> +                          TYPE_STM32L4X5_SYSCFG, 0x400);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-> +
-> +    qdev_init_gpio_in(DEVICE(obj), stm32l4x5_syscfg_set_irq,
-> +                      GPIO_NUM_PINS * NUM_GPIOS);
-> +    qdev_init_gpio_out(DEVICE(obj), s->gpio_out, GPIO_NUM_PINS);
-> +}
-> +
-> +static const VMStateDescription vmstate_stm32l4x5_syscfg =3D {
-> +    .name =3D TYPE_STM32L4X5_SYSCFG,
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(memrmp, Stm32l4x5SyscfgState),
-> +        VMSTATE_UINT32(cfgr1, Stm32l4x5SyscfgState),
-> +        VMSTATE_UINT32_ARRAY(exticr, Stm32l4x5SyscfgState,
-> +                             SYSCFG_NUM_EXTICR),
-> +        VMSTATE_UINT32(scsr, Stm32l4x5SyscfgState),
-> +        VMSTATE_UINT32(cfgr2, Stm32l4x5SyscfgState),
-> +        VMSTATE_UINT32(swpr, Stm32l4x5SyscfgState),
-> +        VMSTATE_UINT32(skr, Stm32l4x5SyscfgState),
-> +        VMSTATE_UINT32(swpr2, Stm32l4x5SyscfgState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void stm32l4x5_syscfg_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> +
-> +    dc->vmsd =3D &vmstate_stm32l4x5_syscfg;
-> +    rc->phases.hold =3D stm32l4x5_syscfg_hold_reset;
-> +}
-> +
-> +static const TypeInfo stm32l4x5_syscfg_info[] =3D {
-> +    {
-> +        .name          =3D TYPE_STM32L4X5_SYSCFG,
-> +        .parent        =3D TYPE_SYS_BUS_DEVICE,
-> +        .instance_size =3D sizeof(Stm32l4x5SyscfgState),
-> +        .instance_init =3D stm32l4x5_syscfg_init,
-> +        .class_init    =3D stm32l4x5_syscfg_class_init,
-> +    }
-> +};
-> +
-> +DEFINE_TYPES(stm32l4x5_syscfg_info)
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index 2f01c62c0e..60d0a14e74 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -163,6 +163,12 @@ stm32f4xx_exti_set_irq(int irq, int level) "Set EXTI=
-: %d to %d"
->  stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
->  stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%=
-" PRIx64 " val: 0x%" PRIx64 ""
->
-> +# stm32l4x5_syscfg.c
-> +stm32l4x5_syscfg_set_irq(int gpio, int line, int level) "irq from GPIO: =
-%d, line: %d, level: %d"
-> +stm32l4x5_syscfg_forward_exti(int irq) "irq %d forwarded to EXTI"
-> +stm32l4x5_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
-> +stm32l4x5_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr: 0=
-x%" PRIx64 " val: 0x%" PRIx64 ""
-> +
->  # stm32l4x5_exti.c
->  stm32l4x5_exti_set_irq(int irq, int level) "Set EXTI: %d to %d"
->  stm32l4x5_exti_read(uint64_t addr, uint64_t data) "reg read: addr: 0x%" =
-PRIx64 " val: 0x%" PRIx64 ""
-> diff --git a/include/hw/misc/stm32l4x5_syscfg.h b/include/hw/misc/stm32l4=
-x5_syscfg.h
-> new file mode 100644
-> index 0000000000..76bdcf5189
-> --- /dev/null
-> +++ b/include/hw/misc/stm32l4x5_syscfg.h
-> @@ -0,0 +1,54 @@
-> +/*
-> + * STM32L4x5 SYSCFG (System Configuration Controller)
-> + *
-> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * This work is based on the stm32f4xx_syscfg by Alistair Francis.
-> + * Original code is licensed under the MIT License:
-> + *
-> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
-> + */
-> +
-> +/*
-> + * The reference used is the STMicroElectronics RM0351 Reference manual
-> + * for STM32L4x5 and STM32L4x6 advanced Arm =C2=AE -based 32-bit MCUs.
-> + * https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5/docu=
-mentation.html
-> + */
-> +
-> +#ifndef HW_STM32L4X5_SYSCFG_H
-> +#define HW_STM32L4X5_SYSCFG_H
-> +
-> +#include "hw/sysbus.h"
-> +#include "qom/object.h"
-> +
-> +#define TYPE_STM32L4X5_SYSCFG "stm32l4x5-syscfg"
-> +OBJECT_DECLARE_SIMPLE_TYPE(Stm32l4x5SyscfgState, STM32L4X5_SYSCFG)
-> +
-> +#define NUM_GPIOS 8
-> +#define GPIO_NUM_PINS 16
-> +#define SYSCFG_NUM_EXTICR 4
-> +
-> +struct Stm32l4x5SyscfgState {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion mmio;
-> +
-> +    uint32_t memrmp;
-> +    uint32_t cfgr1;
-> +    uint32_t exticr[SYSCFG_NUM_EXTICR];
-> +    uint32_t scsr;
-> +    uint32_t cfgr2;
-> +    uint32_t swpr;
-> +    uint32_t skr;
-> +    uint32_t swpr2;
-> +
-> +    qemu_irq gpio_out[16];
-> +};
-> +
-> +#endif
-> --
-> 2.43.0
->
->
